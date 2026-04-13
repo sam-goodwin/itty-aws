@@ -24,24 +24,18 @@ const svc = T.Service({
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelOperationRequest",
-  }) as any as Schema.Schema<CancelOperationRequest>;
+export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelOperationRequest" });
 
 export interface ImportInstanceRequest {
   /** Path to the import folder in Google Cloud Storage, in the form `gs://bucketName/folderName`. */
   gcsUri?: string;
 }
 
-export const ImportInstanceRequest: Schema.Schema<ImportInstanceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ImportInstanceRequest",
-  }) as any as Schema.Schema<ImportInstanceRequest>;
+export const ImportInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gcsUri: Schema.optional(Schema.String),
+}).annotate({ identifier: "ImportInstanceRequest" });
 
 export interface Location {
   /** The canonical id for this location. For example: `"us-east1"`. */
@@ -56,16 +50,13 @@ export interface Location {
   labels?: Record<string, string>;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locationId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      name: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locationId: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  name: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "Location" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -74,15 +65,10 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(Location)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface OperationMetadata {
   /** API version used to start the operation. */
@@ -101,20 +87,15 @@ export interface OperationMetadata {
   createTime?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      apiVersion: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      target: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  requestedCancellation: Schema.optional(Schema.Boolean),
+  target: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  statusMessage: Schema.optional(Schema.String),
+  verb: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationMetadata" });
 
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -125,16 +106,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
@@ -149,16 +127,13 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      done: Schema.optional(Schema.Boolean),
-      error: Schema.optional(Status),
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  done: Schema.optional(Schema.Boolean),
+  error: Schema.optional(Status),
+  name: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Operation" });
 
 export interface ListOperationsResponse {
   /** The standard List next-page token. */
@@ -169,16 +144,13 @@ export interface ListOperationsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      operations: Schema.optional(Schema.Array(Operation)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    nextPageToken: Schema.optional(Schema.String),
+    operations: Schema.optional(Schema.Array(Operation)),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 export interface Looker_Date {
   /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
@@ -189,16 +161,11 @@ export interface Looker_Date {
   year?: number;
 }
 
-export const Looker_Date: Schema.Schema<Looker_Date> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      month: Schema.optional(Schema.Number),
-      day: Schema.optional(Schema.Number),
-      year: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "Looker_Date",
-  }) as any as Schema.Schema<Looker_Date>;
+export const Looker_Date = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  month: Schema.optional(Schema.Number),
+  day: Schema.optional(Schema.Number),
+  year: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Looker_Date" });
 
 export interface TimeOfDay {
   /** Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds. */
@@ -211,15 +178,12 @@ export interface TimeOfDay {
   nanos?: number;
 }
 
-export const TimeOfDay: Schema.Schema<TimeOfDay> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      seconds: Schema.optional(Schema.Number),
-      hours: Schema.optional(Schema.Number),
-      minutes: Schema.optional(Schema.Number),
-      nanos: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "TimeOfDay" }) as any as Schema.Schema<TimeOfDay>;
+export const TimeOfDay = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  seconds: Schema.optional(Schema.Number),
+  hours: Schema.optional(Schema.Number),
+  minutes: Schema.optional(Schema.Number),
+  nanos: Schema.optional(Schema.Number),
+}).annotate({ identifier: "TimeOfDay" });
 
 export interface DenyMaintenancePeriod {
   /** Required. Start date of the deny maintenance period. */
@@ -230,16 +194,11 @@ export interface DenyMaintenancePeriod {
   endDate?: Looker_Date;
 }
 
-export const DenyMaintenancePeriod: Schema.Schema<DenyMaintenancePeriod> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startDate: Schema.optional(Looker_Date),
-      time: Schema.optional(TimeOfDay),
-      endDate: Schema.optional(Looker_Date),
-    }),
-  ).annotate({
-    identifier: "DenyMaintenancePeriod",
-  }) as any as Schema.Schema<DenyMaintenancePeriod>;
+export const DenyMaintenancePeriod = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startDate: Schema.optional(Looker_Date),
+  time: Schema.optional(TimeOfDay),
+  endDate: Schema.optional(Looker_Date),
+}).annotate({ identifier: "DenyMaintenancePeriod" });
 
 export interface ExportMetadataEncryptionKey {
   /** Name of the CMEK. */
@@ -248,22 +207,17 @@ export interface ExportMetadataEncryptionKey {
   version?: string;
 }
 
-export const ExportMetadataEncryptionKey: Schema.Schema<ExportMetadataEncryptionKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cmek: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ExportMetadataEncryptionKey",
-  }) as any as Schema.Schema<ExportMetadataEncryptionKey>;
+export const ExportMetadataEncryptionKey =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cmek: Schema.optional(Schema.String),
+    version: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ExportMetadataEncryptionKey" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface ServiceAttachment {
   /** Optional. Fully qualified domain name that will be used in the private DNS record created for the service attachment. */
@@ -285,18 +239,13 @@ export interface ServiceAttachment {
     | (string & {});
 }
 
-export const ServiceAttachment: Schema.Schema<ServiceAttachment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      localFqdn: Schema.optional(Schema.String),
-      localFqdns: Schema.optional(Schema.Array(Schema.String)),
-      failureReason: Schema.optional(Schema.String),
-      targetServiceAttachmentUri: Schema.optional(Schema.String),
-      connectionStatus: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ServiceAttachment",
-  }) as any as Schema.Schema<ServiceAttachment>;
+export const ServiceAttachment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  localFqdn: Schema.optional(Schema.String),
+  localFqdns: Schema.optional(Schema.Array(Schema.String)),
+  failureReason: Schema.optional(Schema.String),
+  targetServiceAttachmentUri: Schema.optional(Schema.String),
+  connectionStatus: Schema.optional(Schema.String),
+}).annotate({ identifier: "ServiceAttachment" });
 
 export interface PscConfig {
   /** Output only. URI of the Looker service attachment. */
@@ -307,28 +256,20 @@ export interface PscConfig {
   allowedVpcs?: Array<string>;
 }
 
-export const PscConfig: Schema.Schema<PscConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lookerServiceAttachmentUri: Schema.optional(Schema.String),
-      serviceAttachments: Schema.optional(Schema.Array(ServiceAttachment)),
-      allowedVpcs: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "PscConfig" }) as any as Schema.Schema<PscConfig>;
+export const PscConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  lookerServiceAttachmentUri: Schema.optional(Schema.String),
+  serviceAttachments: Schema.optional(Schema.Array(ServiceAttachment)),
+  allowedVpcs: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "PscConfig" });
 
 export interface AdminSettings {
   /** Email domain allowlist for the instance. */
   allowedEmailDomains?: Array<string>;
 }
 
-export const AdminSettings: Schema.Schema<AdminSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      allowedEmailDomains: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AdminSettings",
-  }) as any as Schema.Schema<AdminSettings>;
+export const AdminSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  allowedEmailDomains: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "AdminSettings" });
 
 export interface MaintenanceSchedule {
   /** The scheduled start time for the maintenance. */
@@ -337,15 +278,10 @@ export interface MaintenanceSchedule {
   endTime?: string;
 }
 
-export const MaintenanceSchedule: Schema.Schema<MaintenanceSchedule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MaintenanceSchedule",
-  }) as any as Schema.Schema<MaintenanceSchedule>;
+export const MaintenanceSchedule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "MaintenanceSchedule" });
 
 export interface IngressIpAllowlistRule {
   /** Optional. The IP range to allow ingress traffic from. */
@@ -354,15 +290,12 @@ export interface IngressIpAllowlistRule {
   description?: string;
 }
 
-export const IngressIpAllowlistRule: Schema.Schema<IngressIpAllowlistRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ipRange: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "IngressIpAllowlistRule",
-  }) as any as Schema.Schema<IngressIpAllowlistRule>;
+export const IngressIpAllowlistRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    ipRange: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "IngressIpAllowlistRule" });
 
 export interface IngressIpAllowlistConfig {
   /** Optional. Whether ingress IP allowlist functionality is enabled on the Looker instance. */
@@ -373,16 +306,12 @@ export interface IngressIpAllowlistConfig {
   allowlistRules?: Array<IngressIpAllowlistRule>;
 }
 
-export const IngressIpAllowlistConfig: Schema.Schema<IngressIpAllowlistConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-      googleServicesEnabled: Schema.optional(Schema.Boolean),
-      allowlistRules: Schema.optional(Schema.Array(IngressIpAllowlistRule)),
-    }),
-  ).annotate({
-    identifier: "IngressIpAllowlistConfig",
-  }) as any as Schema.Schema<IngressIpAllowlistConfig>;
+export const IngressIpAllowlistConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+    googleServicesEnabled: Schema.optional(Schema.Boolean),
+    allowlistRules: Schema.optional(Schema.Array(IngressIpAllowlistRule)),
+  }).annotate({ identifier: "IngressIpAllowlistConfig" });
 
 export interface MaintenanceWindow {
   /** Required. Time in UTC when the period starts. Maintenance will be scheduled within 60 minutes. */
@@ -400,15 +329,10 @@ export interface MaintenanceWindow {
     | (string & {});
 }
 
-export const MaintenanceWindow: Schema.Schema<MaintenanceWindow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(TimeOfDay),
-      dayOfWeek: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MaintenanceWindow",
-  }) as any as Schema.Schema<MaintenanceWindow>;
+export const MaintenanceWindow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startTime: Schema.optional(TimeOfDay),
+  dayOfWeek: Schema.optional(Schema.String),
+}).annotate({ identifier: "MaintenanceWindow" });
 
 export interface EncryptionConfig {
   /** Output only. Status of the CMEK key. */
@@ -423,16 +347,11 @@ export interface EncryptionConfig {
   kmsKeyNameVersion?: string;
 }
 
-export const EncryptionConfig: Schema.Schema<EncryptionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kmsKeyState: Schema.optional(Schema.String),
-      kmsKeyName: Schema.optional(Schema.String),
-      kmsKeyNameVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EncryptionConfig",
-  }) as any as Schema.Schema<EncryptionConfig>;
+export const EncryptionConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kmsKeyState: Schema.optional(Schema.String),
+  kmsKeyName: Schema.optional(Schema.String),
+  kmsKeyNameVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "EncryptionConfig" });
 
 export interface UserMetadata {
   /** Optional. The number of additional viewer users the instance owner has purchased. */
@@ -443,16 +362,11 @@ export interface UserMetadata {
   additionalDeveloperUserCount?: number;
 }
 
-export const UserMetadata: Schema.Schema<UserMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      additionalViewerUserCount: Schema.optional(Schema.Number),
-      additionalStandardUserCount: Schema.optional(Schema.Number),
-      additionalDeveloperUserCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "UserMetadata",
-  }) as any as Schema.Schema<UserMetadata>;
+export const UserMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  additionalViewerUserCount: Schema.optional(Schema.Number),
+  additionalStandardUserCount: Schema.optional(Schema.Number),
+  additionalDeveloperUserCount: Schema.optional(Schema.Number),
+}).annotate({ identifier: "UserMetadata" });
 
 export interface OAuthConfig {
   /** Input only. Client secret from an external OAuth application. This is an input-only field, and thus will not be set in any responses. */
@@ -463,16 +377,11 @@ export interface OAuthConfig {
   sharedOauthClientEnabled?: boolean;
 }
 
-export const OAuthConfig: Schema.Schema<OAuthConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clientSecret: Schema.optional(Schema.String),
-      clientId: Schema.optional(Schema.String),
-      sharedOauthClientEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "OAuthConfig",
-  }) as any as Schema.Schema<OAuthConfig>;
+export const OAuthConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  clientSecret: Schema.optional(Schema.String),
+  clientId: Schema.optional(Schema.String),
+  sharedOauthClientEnabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "OAuthConfig" });
 
 export interface CustomDomain {
   /** Domain state. */
@@ -489,15 +398,10 @@ export interface CustomDomain {
   domain?: string;
 }
 
-export const CustomDomain: Schema.Schema<CustomDomain> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      domain: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomDomain",
-  }) as any as Schema.Schema<CustomDomain>;
+export const CustomDomain = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}).annotate({ identifier: "CustomDomain" });
 
 export interface PeriodicExportConfig {
   /** Required. Cloud Storage bucket URI for periodic export. Format: gs://{bucket_name} */
@@ -508,16 +412,11 @@ export interface PeriodicExportConfig {
   kmsKey?: string;
 }
 
-export const PeriodicExportConfig: Schema.Schema<PeriodicExportConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsUri: Schema.optional(Schema.String),
-      startTime: Schema.optional(TimeOfDay),
-      kmsKey: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PeriodicExportConfig",
-  }) as any as Schema.Schema<PeriodicExportConfig>;
+export const PeriodicExportConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gcsUri: Schema.optional(Schema.String),
+  startTime: Schema.optional(TimeOfDay),
+  kmsKey: Schema.optional(Schema.String),
+}).annotate({ identifier: "PeriodicExportConfig" });
 
 export interface ControlledEgressConfig {
   /** Optional. List of fully qualified domain names to be added to the allowlist for outbound traffic. */
@@ -528,16 +427,13 @@ export interface ControlledEgressConfig {
   webProxyIps?: Array<string>;
 }
 
-export const ControlledEgressConfig: Schema.Schema<ControlledEgressConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      egressFqdns: Schema.optional(Schema.Array(Schema.String)),
-      marketplaceEnabled: Schema.optional(Schema.Boolean),
-      webProxyIps: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ControlledEgressConfig",
-  }) as any as Schema.Schema<ControlledEgressConfig>;
+export const ControlledEgressConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    egressFqdns: Schema.optional(Schema.Array(Schema.String)),
+    marketplaceEnabled: Schema.optional(Schema.Boolean),
+    webProxyIps: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "ControlledEgressConfig" });
 
 export interface Instance {
   /** Output only. The Looker version that the instance is using. */
@@ -637,47 +533,44 @@ export interface Instance {
   publicIpEnabled?: boolean;
 }
 
-export const Instance: Schema.Schema<Instance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lookerVersion: Schema.optional(Schema.String),
-      classType: Schema.optional(Schema.String),
-      consumerNetwork: Schema.optional(Schema.String),
-      reservedRange: Schema.optional(Schema.String),
-      catalogIntegrationOptOut: Schema.optional(Schema.Boolean),
-      privateIpEnabled: Schema.optional(Schema.Boolean),
-      ingressPrivateIp: Schema.optional(Schema.String),
-      pscConfig: Schema.optional(PscConfig),
-      createTime: Schema.optional(Schema.String),
-      lookerUri: Schema.optional(Schema.String),
-      satisfiesPzs: Schema.optional(Schema.Boolean),
-      denyMaintenancePeriod: Schema.optional(DenyMaintenancePeriod),
-      geminiEnabled: Schema.optional(Schema.Boolean),
-      pscEnabled: Schema.optional(Schema.Boolean),
-      adminSettings: Schema.optional(AdminSettings),
-      fipsEnabled: Schema.optional(Schema.Boolean),
-      controlledEgressEnabled: Schema.optional(Schema.Boolean),
-      maintenanceSchedule: Schema.optional(MaintenanceSchedule),
-      ingressIpAllowlistConfig: Schema.optional(IngressIpAllowlistConfig),
-      state: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      egressPublicIp: Schema.optional(Schema.String),
-      maintenanceWindow: Schema.optional(MaintenanceWindow),
-      encryptionConfig: Schema.optional(EncryptionConfig),
-      userMetadata: Schema.optional(UserMetadata),
-      oauthConfig: Schema.optional(OAuthConfig),
-      ingressPublicIp: Schema.optional(Schema.String),
-      customDomain: Schema.optional(CustomDomain),
-      linkedLspProjectNumber: Schema.optional(Schema.String),
-      satisfiesPzi: Schema.optional(Schema.Boolean),
-      periodicExportConfig: Schema.optional(PeriodicExportConfig),
-      lastDenyMaintenancePeriod: Schema.optional(DenyMaintenancePeriod),
-      platformEdition: Schema.optional(Schema.String),
-      controlledEgressConfig: Schema.optional(ControlledEgressConfig),
-      name: Schema.optional(Schema.String),
-      publicIpEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "Instance" }) as any as Schema.Schema<Instance>;
+export const Instance = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  lookerVersion: Schema.optional(Schema.String),
+  classType: Schema.optional(Schema.String),
+  consumerNetwork: Schema.optional(Schema.String),
+  reservedRange: Schema.optional(Schema.String),
+  catalogIntegrationOptOut: Schema.optional(Schema.Boolean),
+  privateIpEnabled: Schema.optional(Schema.Boolean),
+  ingressPrivateIp: Schema.optional(Schema.String),
+  pscConfig: Schema.optional(PscConfig),
+  createTime: Schema.optional(Schema.String),
+  lookerUri: Schema.optional(Schema.String),
+  satisfiesPzs: Schema.optional(Schema.Boolean),
+  denyMaintenancePeriod: Schema.optional(DenyMaintenancePeriod),
+  geminiEnabled: Schema.optional(Schema.Boolean),
+  pscEnabled: Schema.optional(Schema.Boolean),
+  adminSettings: Schema.optional(AdminSettings),
+  fipsEnabled: Schema.optional(Schema.Boolean),
+  controlledEgressEnabled: Schema.optional(Schema.Boolean),
+  maintenanceSchedule: Schema.optional(MaintenanceSchedule),
+  ingressIpAllowlistConfig: Schema.optional(IngressIpAllowlistConfig),
+  state: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  egressPublicIp: Schema.optional(Schema.String),
+  maintenanceWindow: Schema.optional(MaintenanceWindow),
+  encryptionConfig: Schema.optional(EncryptionConfig),
+  userMetadata: Schema.optional(UserMetadata),
+  oauthConfig: Schema.optional(OAuthConfig),
+  ingressPublicIp: Schema.optional(Schema.String),
+  customDomain: Schema.optional(CustomDomain),
+  linkedLspProjectNumber: Schema.optional(Schema.String),
+  satisfiesPzi: Schema.optional(Schema.Boolean),
+  periodicExportConfig: Schema.optional(PeriodicExportConfig),
+  lastDenyMaintenancePeriod: Schema.optional(DenyMaintenancePeriod),
+  platformEdition: Schema.optional(Schema.String),
+  controlledEgressConfig: Schema.optional(ControlledEgressConfig),
+  name: Schema.optional(Schema.String),
+  publicIpEnabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Instance" });
 
 export interface ListInstancesResponse {
   /** If provided, a page token that can look up the next ListInstancesRequest.pageSize results. If empty, the results list is exhausted. */
@@ -688,30 +581,22 @@ export interface ListInstancesResponse {
   unreachable?: Array<string>;
 }
 
-export const ListInstancesResponse: Schema.Schema<ListInstancesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      instances: Schema.optional(Schema.Array(Instance)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListInstancesResponse",
-  }) as any as Schema.Schema<ListInstancesResponse>;
+export const ListInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  instances: Schema.optional(Schema.Array(Instance)),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ListInstancesResponse" });
 
 export interface ExportEncryptionConfig {
   /** Required. Name of the CMEK key in KMS. */
   kmsKeyName?: string;
 }
 
-export const ExportEncryptionConfig: Schema.Schema<ExportEncryptionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kmsKeyName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ExportEncryptionConfig",
-  }) as any as Schema.Schema<ExportEncryptionConfig>;
+export const ExportEncryptionConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    kmsKeyName: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ExportEncryptionConfig" });
 
 export interface ExportInstanceRequest {
   /** The path to the folder in Google Cloud Storage where the export will be stored. The URI is in the form `gs://bucketName/folderName`. */
@@ -720,15 +605,10 @@ export interface ExportInstanceRequest {
   encryptionConfig?: ExportEncryptionConfig;
 }
 
-export const ExportInstanceRequest: Schema.Schema<ExportInstanceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsUri: Schema.optional(Schema.String),
-      encryptionConfig: Schema.optional(ExportEncryptionConfig),
-    }),
-  ).annotate({
-    identifier: "ExportInstanceRequest",
-  }) as any as Schema.Schema<ExportInstanceRequest>;
+export const ExportInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gcsUri: Schema.optional(Schema.String),
+  encryptionConfig: Schema.optional(ExportEncryptionConfig),
+}).annotate({ identifier: "ExportInstanceRequest" });
 
 export interface ExportMetadata {
   /** The source type of the migration. */
@@ -751,20 +631,15 @@ export interface ExportMetadata {
   exportEncryptionKey?: ExportMetadataEncryptionKey;
 }
 
-export const ExportMetadata: Schema.Schema<ExportMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      source: Schema.optional(Schema.String),
-      lookerPlatformEdition: Schema.optional(Schema.String),
-      lookerInstance: Schema.optional(Schema.String),
-      lookerVersion: Schema.optional(Schema.String),
-      filePaths: Schema.optional(Schema.Array(Schema.String)),
-      lookerEncryptionKey: Schema.optional(Schema.String),
-      exportEncryptionKey: Schema.optional(ExportMetadataEncryptionKey),
-    }),
-  ).annotate({
-    identifier: "ExportMetadata",
-  }) as any as Schema.Schema<ExportMetadata>;
+export const ExportMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  source: Schema.optional(Schema.String),
+  lookerPlatformEdition: Schema.optional(Schema.String),
+  lookerInstance: Schema.optional(Schema.String),
+  lookerVersion: Schema.optional(Schema.String),
+  filePaths: Schema.optional(Schema.Array(Schema.String)),
+  lookerEncryptionKey: Schema.optional(Schema.String),
+  exportEncryptionKey: Schema.optional(ExportMetadataEncryptionKey),
+}).annotate({ identifier: "ExportMetadata" });
 
 export interface InstanceBackup {
   /** Output only. The time when the backup will be deleted. */
@@ -785,25 +660,19 @@ export interface InstanceBackup {
     | (string & {});
 }
 
-export const InstanceBackup: Schema.Schema<InstanceBackup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expireTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      encryptionConfig: Schema.optional(EncryptionConfig),
-      name: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InstanceBackup",
-  }) as any as Schema.Schema<InstanceBackup>;
+export const InstanceBackup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  expireTime: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  encryptionConfig: Schema.optional(EncryptionConfig),
+  name: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+}).annotate({ identifier: "InstanceBackup" });
 
 export interface RestartInstanceRequest {}
 
-export const RestartInstanceRequest: Schema.Schema<RestartInstanceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "RestartInstanceRequest",
-  }) as any as Schema.Schema<RestartInstanceRequest>;
+export const RestartInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "RestartInstanceRequest" });
 
 export interface ListInstanceBackupsResponse {
   /** Locations that could not be reached. */
@@ -814,30 +683,23 @@ export interface ListInstanceBackupsResponse {
   nextPageToken?: string;
 }
 
-export const ListInstanceBackupsResponse: Schema.Schema<ListInstanceBackupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      instanceBackups: Schema.optional(Schema.Array(InstanceBackup)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListInstanceBackupsResponse",
-  }) as any as Schema.Schema<ListInstanceBackupsResponse>;
+export const ListInstanceBackupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    instanceBackups: Schema.optional(Schema.Array(InstanceBackup)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListInstanceBackupsResponse" });
 
 export interface RestoreInstanceRequest {
   /** Required. Backup being used to restore the instance Format: projects/{project}/locations/{location}/instances/{instance}/backups/{backup} */
   backup?: string;
 }
 
-export const RestoreInstanceRequest: Schema.Schema<RestoreInstanceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      backup: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RestoreInstanceRequest",
-  }) as any as Schema.Schema<RestoreInstanceRequest>;
+export const RestoreInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    backup: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "RestoreInstanceRequest" });
 
 // ==========================================================================
 // Operations

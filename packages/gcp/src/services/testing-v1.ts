@@ -40,16 +40,11 @@ export interface SessionStateEvent {
   stateMessage?: string;
 }
 
-export const SessionStateEvent: Schema.Schema<SessionStateEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sessionState: Schema.optional(Schema.String),
-      eventTime: Schema.optional(Schema.String),
-      stateMessage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SessionStateEvent",
-  }) as any as Schema.Schema<SessionStateEvent>;
+export const SessionStateEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sessionState: Schema.optional(Schema.String),
+  eventTime: Schema.optional(Schema.String),
+  stateMessage: Schema.optional(Schema.String),
+}).annotate({ identifier: "SessionStateEvent" });
 
 export interface AndroidDevice {
   /** Required. The id of the Android device to be used. Use the TestEnvironmentDiscoveryService to get supported options. */
@@ -62,17 +57,12 @@ export interface AndroidDevice {
   androidVersionId?: string;
 }
 
-export const AndroidDevice: Schema.Schema<AndroidDevice> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      androidModelId: Schema.optional(Schema.String),
-      locale: Schema.optional(Schema.String),
-      orientation: Schema.optional(Schema.String),
-      androidVersionId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AndroidDevice",
-  }) as any as Schema.Schema<AndroidDevice>;
+export const AndroidDevice = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  androidModelId: Schema.optional(Schema.String),
+  locale: Schema.optional(Schema.String),
+  orientation: Schema.optional(Schema.String),
+  androidVersionId: Schema.optional(Schema.String),
+}).annotate({ identifier: "AndroidDevice" });
 
 export interface DeviceSession {
   /** Output only. The historical state transitions of the session_state message including the current session state. */
@@ -106,23 +96,18 @@ export interface DeviceSession {
   name?: string;
 }
 
-export const DeviceSession: Schema.Schema<DeviceSession> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stateHistories: Schema.optional(Schema.Array(SessionStateEvent)),
-      inactivityTimeout: Schema.optional(Schema.String),
-      androidDevice: Schema.optional(AndroidDevice),
-      createTime: Schema.optional(Schema.String),
-      expireTime: Schema.optional(Schema.String),
-      ttl: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      activeStartTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DeviceSession",
-  }) as any as Schema.Schema<DeviceSession>;
+export const DeviceSession = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  stateHistories: Schema.optional(Schema.Array(SessionStateEvent)),
+  inactivityTimeout: Schema.optional(Schema.String),
+  androidDevice: Schema.optional(AndroidDevice),
+  createTime: Schema.optional(Schema.String),
+  expireTime: Schema.optional(Schema.String),
+  ttl: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  activeStartTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "DeviceSession" });
 
 export interface EnvironmentVariable {
   /** Key for the environment variable. */
@@ -131,15 +116,10 @@ export interface EnvironmentVariable {
   value?: string;
 }
 
-export const EnvironmentVariable: Schema.Schema<EnvironmentVariable> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      key: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnvironmentVariable",
-  }) as any as Schema.Schema<EnvironmentVariable>;
+export const EnvironmentVariable = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  key: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+}).annotate({ identifier: "EnvironmentVariable" });
 
 export interface LabInfo {
   /** Lab name where the device is hosted. If empty, the device is hosted in a Google owned lab. */
@@ -148,13 +128,10 @@ export interface LabInfo {
   regionCode?: string;
 }
 
-export const LabInfo: Schema.Schema<LabInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      regionCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "LabInfo" }) as any as Schema.Schema<LabInfo>;
+export const LabInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  regionCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "LabInfo" });
 
 export interface DirectAccessVersionInfo {
   /** Whether direct access is supported at all. Clients are expected to filter down the device list to only android models and versions which support Direct Access when that is the user intent. */
@@ -163,15 +140,11 @@ export interface DirectAccessVersionInfo {
   minimumAndroidStudioVersion?: string;
 }
 
-export const DirectAccessVersionInfo: Schema.Schema<DirectAccessVersionInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      directAccessSupported: Schema.optional(Schema.Boolean),
-      minimumAndroidStudioVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DirectAccessVersionInfo",
-  }) as any as Schema.Schema<DirectAccessVersionInfo>;
+export const DirectAccessVersionInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    directAccessSupported: Schema.optional(Schema.Boolean),
+    minimumAndroidStudioVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DirectAccessVersionInfo" });
 
 export interface PerAndroidVersionInfo {
   /** The number of online devices for an Android version. */
@@ -190,17 +163,12 @@ export interface PerAndroidVersionInfo {
   interactiveDeviceAvailabilityEstimate?: string;
 }
 
-export const PerAndroidVersionInfo: Schema.Schema<PerAndroidVersionInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deviceCapacity: Schema.optional(Schema.String),
-      versionId: Schema.optional(Schema.String),
-      directAccessVersionInfo: Schema.optional(DirectAccessVersionInfo),
-      interactiveDeviceAvailabilityEstimate: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PerAndroidVersionInfo",
-  }) as any as Schema.Schema<PerAndroidVersionInfo>;
+export const PerAndroidVersionInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  deviceCapacity: Schema.optional(Schema.String),
+  versionId: Schema.optional(Schema.String),
+  directAccessVersionInfo: Schema.optional(DirectAccessVersionInfo),
+  interactiveDeviceAvailabilityEstimate: Schema.optional(Schema.String),
+}).annotate({ identifier: "PerAndroidVersionInfo" });
 
 export interface AndroidModel {
   /** Output only. Lab info of this device. */
@@ -257,31 +225,26 @@ export interface AndroidModel {
   screenY?: number;
 }
 
-export const AndroidModel: Schema.Schema<AndroidModel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labInfo: Schema.optional(LabInfo),
-      codename: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      brand: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      screenDensity: Schema.optional(Schema.Number),
-      tags: Schema.optional(Schema.Array(Schema.String)),
-      manufacturer: Schema.optional(Schema.String),
-      formFactor: Schema.optional(Schema.String),
-      lowFpsVideoRecording: Schema.optional(Schema.Boolean),
-      thumbnailUrl: Schema.optional(Schema.String),
-      form: Schema.optional(Schema.String),
-      supportedAbis: Schema.optional(Schema.Array(Schema.String)),
-      perVersionInfo: Schema.optional(Schema.Array(PerAndroidVersionInfo)),
-      supportedVersionIds: Schema.optional(Schema.Array(Schema.String)),
-      accessDeniedReasons: Schema.optional(Schema.Array(Schema.String)),
-      screenX: Schema.optional(Schema.Number),
-      screenY: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "AndroidModel",
-  }) as any as Schema.Schema<AndroidModel>;
+export const AndroidModel = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  labInfo: Schema.optional(LabInfo),
+  codename: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  brand: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  screenDensity: Schema.optional(Schema.Number),
+  tags: Schema.optional(Schema.Array(Schema.String)),
+  manufacturer: Schema.optional(Schema.String),
+  formFactor: Schema.optional(Schema.String),
+  lowFpsVideoRecording: Schema.optional(Schema.Boolean),
+  thumbnailUrl: Schema.optional(Schema.String),
+  form: Schema.optional(Schema.String),
+  supportedAbis: Schema.optional(Schema.Array(Schema.String)),
+  perVersionInfo: Schema.optional(Schema.Array(PerAndroidVersionInfo)),
+  supportedVersionIds: Schema.optional(Schema.Array(Schema.String)),
+  accessDeniedReasons: Schema.optional(Schema.Array(Schema.String)),
+  screenX: Schema.optional(Schema.Number),
+  screenY: Schema.optional(Schema.Number),
+}).annotate({ identifier: "AndroidModel" });
 
 export interface Locale {
   /** A human-friendly name for this language/locale. Example: "English". */
@@ -294,15 +257,12 @@ export interface Locale {
   region?: string;
 }
 
-export const Locale: Schema.Schema<Locale> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      tags: Schema.optional(Schema.Array(Schema.String)),
-      id: Schema.optional(Schema.String),
-      region: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Locale" }) as any as Schema.Schema<Locale>;
+export const Locale = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Array(Schema.String)),
+  id: Schema.optional(Schema.String),
+  region: Schema.optional(Schema.String),
+}).annotate({ identifier: "Locale" });
 
 export interface Orientation {
   /** A human-friendly name for this orientation. Example: "portrait". */
@@ -313,16 +273,11 @@ export interface Orientation {
   id?: string;
 }
 
-export const Orientation: Schema.Schema<Orientation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      tags: Schema.optional(Schema.Array(Schema.String)),
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Orientation",
-  }) as any as Schema.Schema<Orientation>;
+export const Orientation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Array(Schema.String)),
+  id: Schema.optional(Schema.String),
+}).annotate({ identifier: "Orientation" });
 
 export interface AndroidRuntimeConfiguration {
   /** The set of available locales. */
@@ -331,15 +286,11 @@ export interface AndroidRuntimeConfiguration {
   orientations?: Array<Orientation>;
 }
 
-export const AndroidRuntimeConfiguration: Schema.Schema<AndroidRuntimeConfiguration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locales: Schema.optional(Schema.Array(Locale)),
-      orientations: Schema.optional(Schema.Array(Orientation)),
-    }),
-  ).annotate({
-    identifier: "AndroidRuntimeConfiguration",
-  }) as any as Schema.Schema<AndroidRuntimeConfiguration>;
+export const AndroidRuntimeConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locales: Schema.optional(Schema.Array(Locale)),
+    orientations: Schema.optional(Schema.Array(Orientation)),
+  }).annotate({ identifier: "AndroidRuntimeConfiguration" });
 
 export interface Testing_Date {
   /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
@@ -350,16 +301,11 @@ export interface Testing_Date {
   year?: number;
 }
 
-export const Testing_Date: Schema.Schema<Testing_Date> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      month: Schema.optional(Schema.Number),
-      day: Schema.optional(Schema.Number),
-      year: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "Testing_Date",
-  }) as any as Schema.Schema<Testing_Date>;
+export const Testing_Date = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  month: Schema.optional(Schema.Number),
+  day: Schema.optional(Schema.Number),
+  year: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Testing_Date" });
 
 export interface Distribution {
   /** Output only. The estimated fraction (0-1) of the total market with this configuration. */
@@ -368,15 +314,10 @@ export interface Distribution {
   measurementTime?: string;
 }
 
-export const Distribution: Schema.Schema<Distribution> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      marketShare: Schema.optional(Schema.Number),
-      measurementTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Distribution",
-  }) as any as Schema.Schema<Distribution>;
+export const Distribution = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  marketShare: Schema.optional(Schema.Number),
+  measurementTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Distribution" });
 
 export interface AndroidVersion {
   /** A string representing this version of the Android OS. Examples: "4.3", "4.4". */
@@ -395,20 +336,15 @@ export interface AndroidVersion {
   distribution?: Distribution;
 }
 
-export const AndroidVersion: Schema.Schema<AndroidVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      versionString: Schema.optional(Schema.String),
-      apiLevel: Schema.optional(Schema.Number),
-      releaseDate: Schema.optional(Testing_Date),
-      codeName: Schema.optional(Schema.String),
-      tags: Schema.optional(Schema.Array(Schema.String)),
-      id: Schema.optional(Schema.String),
-      distribution: Schema.optional(Distribution),
-    }),
-  ).annotate({
-    identifier: "AndroidVersion",
-  }) as any as Schema.Schema<AndroidVersion>;
+export const AndroidVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  versionString: Schema.optional(Schema.String),
+  apiLevel: Schema.optional(Schema.Number),
+  releaseDate: Schema.optional(Testing_Date),
+  codeName: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Array(Schema.String)),
+  id: Schema.optional(Schema.String),
+  distribution: Schema.optional(Distribution),
+}).annotate({ identifier: "AndroidVersion" });
 
 export interface AndroidDeviceCatalog {
   /** The set of supported Android device models. */
@@ -419,16 +355,11 @@ export interface AndroidDeviceCatalog {
   versions?: Array<AndroidVersion>;
 }
 
-export const AndroidDeviceCatalog: Schema.Schema<AndroidDeviceCatalog> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      models: Schema.optional(Schema.Array(AndroidModel)),
-      runtimeConfiguration: Schema.optional(AndroidRuntimeConfiguration),
-      versions: Schema.optional(Schema.Array(AndroidVersion)),
-    }),
-  ).annotate({
-    identifier: "AndroidDeviceCatalog",
-  }) as any as Schema.Schema<AndroidDeviceCatalog>;
+export const AndroidDeviceCatalog = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  models: Schema.optional(Schema.Array(AndroidModel)),
+  runtimeConfiguration: Schema.optional(AndroidRuntimeConfiguration),
+  versions: Schema.optional(Schema.Array(AndroidVersion)),
+}).annotate({ identifier: "AndroidDeviceCatalog" });
 
 export interface MatrixErrorDetail {
   /** Output only. The reason for the error. This is a constant value in UPPER_SNAKE_CASE that identifies the cause of the error. */
@@ -437,15 +368,10 @@ export interface MatrixErrorDetail {
   message?: string;
 }
 
-export const MatrixErrorDetail: Schema.Schema<MatrixErrorDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reason: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MatrixErrorDetail",
-  }) as any as Schema.Schema<MatrixErrorDetail>;
+export const MatrixErrorDetail = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  reason: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+}).annotate({ identifier: "MatrixErrorDetail" });
 
 export interface CancelTestMatrixResponse {
   /** The current rolled-up state of the test matrix. If this state is already final, then the cancelation request will have no effect. */
@@ -464,14 +390,10 @@ export interface CancelTestMatrixResponse {
     | (string & {});
 }
 
-export const CancelTestMatrixResponse: Schema.Schema<CancelTestMatrixResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      testState: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CancelTestMatrixResponse",
-  }) as any as Schema.Schema<CancelTestMatrixResponse>;
+export const CancelTestMatrixResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    testState: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CancelTestMatrixResponse" });
 
 export interface IosVersion {
   /** The available Xcode versions for this version. */
@@ -486,30 +408,22 @@ export interface IosVersion {
   id?: string;
 }
 
-export const IosVersion: Schema.Schema<IosVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      supportedXcodeVersionIds: Schema.optional(Schema.Array(Schema.String)),
-      minorVersion: Schema.optional(Schema.Number),
-      tags: Schema.optional(Schema.Array(Schema.String)),
-      majorVersion: Schema.optional(Schema.Number),
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "IosVersion" }) as any as Schema.Schema<IosVersion>;
+export const IosVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  supportedXcodeVersionIds: Schema.optional(Schema.Array(Schema.String)),
+  minorVersion: Schema.optional(Schema.Number),
+  tags: Schema.optional(Schema.Array(Schema.String)),
+  majorVersion: Schema.optional(Schema.Number),
+  id: Schema.optional(Schema.String),
+}).annotate({ identifier: "IosVersion" });
 
 export interface FileReference {
   /** A path to a file in Google Cloud Storage. Example: gs://build-app-1414623860166/app%40debug-unaligned.apk These paths are expected to be url encoded (percent encoding) */
   gcsPath?: string;
 }
 
-export const FileReference: Schema.Schema<FileReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsPath: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FileReference",
-  }) as any as Schema.Schema<FileReference>;
+export const FileReference = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gcsPath: Schema.optional(Schema.String),
+}).annotate({ identifier: "FileReference" });
 
 export interface Apk {
   /** The path to an APK to be installed on the device before the test begins. */
@@ -518,27 +432,19 @@ export interface Apk {
   packageName?: string;
 }
 
-export const Apk: Schema.Schema<Apk> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      location: Schema.optional(FileReference),
-      packageName: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Apk" }) as any as Schema.Schema<Apk>;
+export const Apk = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  location: Schema.optional(FileReference),
+  packageName: Schema.optional(Schema.String),
+}).annotate({ identifier: "Apk" });
 
 export interface GoogleCloudStorage {
   /** Required. The path to a directory in GCS that will eventually contain the results for this test. The requesting user must have write access on the bucket in the supplied path. */
   gcsPath?: string;
 }
 
-export const GoogleCloudStorage: Schema.Schema<GoogleCloudStorage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsPath: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudStorage",
-  }) as any as Schema.Schema<GoogleCloudStorage>;
+export const GoogleCloudStorage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gcsPath: Schema.optional(Schema.String),
+}).annotate({ identifier: "GoogleCloudStorage" });
 
 export interface ToolResultsExecution {
   /** Output only. A tool results execution ID. */
@@ -549,16 +455,11 @@ export interface ToolResultsExecution {
   historyId?: string;
 }
 
-export const ToolResultsExecution: Schema.Schema<ToolResultsExecution> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      executionId: Schema.optional(Schema.String),
-      projectId: Schema.optional(Schema.String),
-      historyId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ToolResultsExecution",
-  }) as any as Schema.Schema<ToolResultsExecution>;
+export const ToolResultsExecution = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  executionId: Schema.optional(Schema.String),
+  projectId: Schema.optional(Schema.String),
+  historyId: Schema.optional(Schema.String),
+}).annotate({ identifier: "ToolResultsExecution" });
 
 export interface ToolResultsHistory {
   /** Required. The cloud project that owns the tool results history. */
@@ -567,15 +468,10 @@ export interface ToolResultsHistory {
   historyId?: string;
 }
 
-export const ToolResultsHistory: Schema.Schema<ToolResultsHistory> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      projectId: Schema.optional(Schema.String),
-      historyId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ToolResultsHistory",
-  }) as any as Schema.Schema<ToolResultsHistory>;
+export const ToolResultsHistory = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  projectId: Schema.optional(Schema.String),
+  historyId: Schema.optional(Schema.String),
+}).annotate({ identifier: "ToolResultsHistory" });
 
 export interface ResultStorage {
   /** Required. */
@@ -588,31 +484,21 @@ export interface ResultStorage {
   toolResultsHistory?: ToolResultsHistory;
 }
 
-export const ResultStorage: Schema.Schema<ResultStorage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      googleCloudStorage: Schema.optional(GoogleCloudStorage),
-      toolResultsExecution: Schema.optional(ToolResultsExecution),
-      resultsUrl: Schema.optional(Schema.String),
-      toolResultsHistory: Schema.optional(ToolResultsHistory),
-    }),
-  ).annotate({
-    identifier: "ResultStorage",
-  }) as any as Schema.Schema<ResultStorage>;
+export const ResultStorage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  googleCloudStorage: Schema.optional(GoogleCloudStorage),
+  toolResultsExecution: Schema.optional(ToolResultsExecution),
+  resultsUrl: Schema.optional(Schema.String),
+  toolResultsHistory: Schema.optional(ToolResultsHistory),
+}).annotate({ identifier: "ResultStorage" });
 
 export interface AndroidDeviceList {
   /** Required. A list of Android devices. */
   androidDevices?: Array<AndroidDevice>;
 }
 
-export const AndroidDeviceList: Schema.Schema<AndroidDeviceList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      androidDevices: Schema.optional(Schema.Array(AndroidDevice)),
-    }),
-  ).annotate({
-    identifier: "AndroidDeviceList",
-  }) as any as Schema.Schema<AndroidDeviceList>;
+export const AndroidDeviceList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  androidDevices: Schema.optional(Schema.Array(AndroidDevice)),
+}).annotate({ identifier: "AndroidDeviceList" });
 
 export interface AndroidMatrix {
   /** Required. The ids of the set of Android OS version to be used. Use the TestEnvironmentDiscoveryService to get supported options. */
@@ -625,17 +511,12 @@ export interface AndroidMatrix {
   locales?: Array<string>;
 }
 
-export const AndroidMatrix: Schema.Schema<AndroidMatrix> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      androidVersionIds: Schema.optional(Schema.Array(Schema.String)),
-      orientations: Schema.optional(Schema.Array(Schema.String)),
-      androidModelIds: Schema.optional(Schema.Array(Schema.String)),
-      locales: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AndroidMatrix",
-  }) as any as Schema.Schema<AndroidMatrix>;
+export const AndroidMatrix = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  androidVersionIds: Schema.optional(Schema.Array(Schema.String)),
+  orientations: Schema.optional(Schema.Array(Schema.String)),
+  androidModelIds: Schema.optional(Schema.Array(Schema.String)),
+  locales: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "AndroidMatrix" });
 
 export interface IosDevice {
   /** Required. The id of the iOS device to be used. Use the TestEnvironmentDiscoveryService to get supported options. */
@@ -648,29 +529,21 @@ export interface IosDevice {
   iosVersionId?: string;
 }
 
-export const IosDevice: Schema.Schema<IosDevice> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      iosModelId: Schema.optional(Schema.String),
-      locale: Schema.optional(Schema.String),
-      orientation: Schema.optional(Schema.String),
-      iosVersionId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "IosDevice" }) as any as Schema.Schema<IosDevice>;
+export const IosDevice = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  iosModelId: Schema.optional(Schema.String),
+  locale: Schema.optional(Schema.String),
+  orientation: Schema.optional(Schema.String),
+  iosVersionId: Schema.optional(Schema.String),
+}).annotate({ identifier: "IosDevice" });
 
 export interface IosDeviceList {
   /** Required. A list of iOS devices. */
   iosDevices?: Array<IosDevice>;
 }
 
-export const IosDeviceList: Schema.Schema<IosDeviceList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      iosDevices: Schema.optional(Schema.Array(IosDevice)),
-    }),
-  ).annotate({
-    identifier: "IosDeviceList",
-  }) as any as Schema.Schema<IosDeviceList>;
+export const IosDeviceList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  iosDevices: Schema.optional(Schema.Array(IosDevice)),
+}).annotate({ identifier: "IosDeviceList" });
 
 export interface EnvironmentMatrix {
   /** A list of Android devices; the test will be run only on the specified devices. */
@@ -681,16 +554,11 @@ export interface EnvironmentMatrix {
   iosDeviceList?: IosDeviceList;
 }
 
-export const EnvironmentMatrix: Schema.Schema<EnvironmentMatrix> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      androidDeviceList: Schema.optional(AndroidDeviceList),
-      androidMatrix: Schema.optional(AndroidMatrix),
-      iosDeviceList: Schema.optional(IosDeviceList),
-    }),
-  ).annotate({
-    identifier: "EnvironmentMatrix",
-  }) as any as Schema.Schema<EnvironmentMatrix>;
+export const EnvironmentMatrix = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  androidDeviceList: Schema.optional(AndroidDeviceList),
+  androidMatrix: Schema.optional(AndroidMatrix),
+  iosDeviceList: Schema.optional(IosDeviceList),
+}).annotate({ identifier: "EnvironmentMatrix" });
 
 export interface ClientInfoDetail {
   /** Required. The key of detailed client information. */
@@ -699,15 +567,10 @@ export interface ClientInfoDetail {
   value?: string;
 }
 
-export const ClientInfoDetail: Schema.Schema<ClientInfoDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      key: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ClientInfoDetail",
-  }) as any as Schema.Schema<ClientInfoDetail>;
+export const ClientInfoDetail = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  key: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+}).annotate({ identifier: "ClientInfoDetail" });
 
 export interface ClientInfo {
   /** Required. Client name, such as gcloud. */
@@ -716,13 +579,10 @@ export interface ClientInfo {
   clientInfoDetails?: Array<ClientInfoDetail>;
 }
 
-export const ClientInfo: Schema.Schema<ClientInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      clientInfoDetails: Schema.optional(Schema.Array(ClientInfoDetail)),
-    }),
-  ).annotate({ identifier: "ClientInfo" }) as any as Schema.Schema<ClientInfo>;
+export const ClientInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  clientInfoDetails: Schema.optional(Schema.Array(ClientInfoDetail)),
+}).annotate({ identifier: "ClientInfo" });
 
 export interface RoboDirective {
   /** The text that Robo is directed to set. If left empty, the directive will be treated as a CLICK on the element matching the resource_name. */
@@ -738,23 +598,17 @@ export interface RoboDirective {
   resourceName?: string;
 }
 
-export const RoboDirective: Schema.Schema<RoboDirective> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inputText: Schema.optional(Schema.String),
-      actionType: Schema.optional(Schema.String),
-      resourceName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RoboDirective",
-  }) as any as Schema.Schema<RoboDirective>;
+export const RoboDirective = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  inputText: Schema.optional(Schema.String),
+  actionType: Schema.optional(Schema.String),
+  resourceName: Schema.optional(Schema.String),
+}).annotate({ identifier: "RoboDirective" });
 
 export interface LauncherActivityIntent {}
 
-export const LauncherActivityIntent: Schema.Schema<LauncherActivityIntent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "LauncherActivityIntent",
-  }) as any as Schema.Schema<LauncherActivityIntent>;
+export const LauncherActivityIntent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "LauncherActivityIntent" });
 
 export interface StartActivityIntent {
   /** URI for the action. */
@@ -765,23 +619,17 @@ export interface StartActivityIntent {
   categories?: Array<string>;
 }
 
-export const StartActivityIntent: Schema.Schema<StartActivityIntent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-      action: Schema.optional(Schema.String),
-      categories: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "StartActivityIntent",
-  }) as any as Schema.Schema<StartActivityIntent>;
+export const StartActivityIntent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  uri: Schema.optional(Schema.String),
+  action: Schema.optional(Schema.String),
+  categories: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "StartActivityIntent" });
 
 export interface NoActivityIntent {}
 
-export const NoActivityIntent: Schema.Schema<NoActivityIntent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "NoActivityIntent",
-  }) as any as Schema.Schema<NoActivityIntent>;
+export const NoActivityIntent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "NoActivityIntent" });
 
 export interface RoboStartingIntent {
   /** An intent that starts the main launcher activity. */
@@ -794,29 +642,21 @@ export interface RoboStartingIntent {
   timeout?: string;
 }
 
-export const RoboStartingIntent: Schema.Schema<RoboStartingIntent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      launcherActivity: Schema.optional(LauncherActivityIntent),
-      startActivity: Schema.optional(StartActivityIntent),
-      noActivity: Schema.optional(NoActivityIntent),
-      timeout: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RoboStartingIntent",
-  }) as any as Schema.Schema<RoboStartingIntent>;
+export const RoboStartingIntent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  launcherActivity: Schema.optional(LauncherActivityIntent),
+  startActivity: Schema.optional(StartActivityIntent),
+  noActivity: Schema.optional(NoActivityIntent),
+  timeout: Schema.optional(Schema.String),
+}).annotate({ identifier: "RoboStartingIntent" });
 
 export interface ApkSplits {
   /** A list of .apk files generated by bundletool to install to the device under test as a single android app with adb install-multiple. If specified, requires one or more bundle_splits. The first split specified represents the base APK, while subsequent splits represent feature apks. */
   bundleSplits?: Array<FileReference>;
 }
 
-export const ApkSplits: Schema.Schema<ApkSplits> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bundleSplits: Schema.optional(Schema.Array(FileReference)),
-    }),
-  ).annotate({ identifier: "ApkSplits" }) as any as Schema.Schema<ApkSplits>;
+export const ApkSplits = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bundleSplits: Schema.optional(Schema.Array(FileReference)),
+}).annotate({ identifier: "ApkSplits" });
 
 export interface AppBundle {
   /** .aab file representing the app bundle under test. */
@@ -825,13 +665,10 @@ export interface AppBundle {
   apks?: ApkSplits;
 }
 
-export const AppBundle: Schema.Schema<AppBundle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bundleLocation: Schema.optional(FileReference),
-      apks: Schema.optional(ApkSplits),
-    }),
-  ).annotate({ identifier: "AppBundle" }) as any as Schema.Schema<AppBundle>;
+export const AppBundle = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bundleLocation: Schema.optional(FileReference),
+  apks: Schema.optional(ApkSplits),
+}).annotate({ identifier: "AppBundle" });
 
 export interface AndroidRoboTest {
   /** A set of directives Robo should apply during the crawl. This allows users to customize the crawl. For example, the username and password for a test account can be provided. */
@@ -860,23 +697,18 @@ export interface AndroidRoboTest {
   maxSteps?: number;
 }
 
-export const AndroidRoboTest: Schema.Schema<AndroidRoboTest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      roboDirectives: Schema.optional(Schema.Array(RoboDirective)),
-      roboMode: Schema.optional(Schema.String),
-      appPackageId: Schema.optional(Schema.String),
-      startingIntents: Schema.optional(Schema.Array(RoboStartingIntent)),
-      appInitialActivity: Schema.optional(Schema.String),
-      maxDepth: Schema.optional(Schema.Number),
-      appApk: Schema.optional(FileReference),
-      appBundle: Schema.optional(AppBundle),
-      roboScript: Schema.optional(FileReference),
-      maxSteps: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "AndroidRoboTest",
-  }) as any as Schema.Schema<AndroidRoboTest>;
+export const AndroidRoboTest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  roboDirectives: Schema.optional(Schema.Array(RoboDirective)),
+  roboMode: Schema.optional(Schema.String),
+  appPackageId: Schema.optional(Schema.String),
+  startingIntents: Schema.optional(Schema.Array(RoboStartingIntent)),
+  appInitialActivity: Schema.optional(Schema.String),
+  maxDepth: Schema.optional(Schema.Number),
+  appApk: Schema.optional(FileReference),
+  appBundle: Schema.optional(AppBundle),
+  roboScript: Schema.optional(FileReference),
+  maxSteps: Schema.optional(Schema.Number),
+}).annotate({ identifier: "AndroidRoboTest" });
 
 export interface IosDeviceFile {
   /** The bundle id of the app where this file lives. iOS apps sandbox their own filesystem, so app files must specify which app installed on the device. */
@@ -887,16 +719,11 @@ export interface IosDeviceFile {
   devicePath?: string;
 }
 
-export const IosDeviceFile: Schema.Schema<IosDeviceFile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bundleId: Schema.optional(Schema.String),
-      content: Schema.optional(FileReference),
-      devicePath: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "IosDeviceFile",
-  }) as any as Schema.Schema<IosDeviceFile>;
+export const IosDeviceFile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bundleId: Schema.optional(Schema.String),
+  content: Schema.optional(FileReference),
+  devicePath: Schema.optional(Schema.String),
+}).annotate({ identifier: "IosDeviceFile" });
 
 export interface IosTestSetup {
   /** List of directories on the device to upload to Cloud Storage at the end of the test. Directories should either be in a shared directory (such as /private/var/mobile/Media) or within an accessible directory inside the app's filesystem (such as /Documents) by specifying the bundle ID. */
@@ -909,50 +736,36 @@ export interface IosTestSetup {
   pushFiles?: Array<IosDeviceFile>;
 }
 
-export const IosTestSetup: Schema.Schema<IosTestSetup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pullDirectories: Schema.optional(Schema.Array(IosDeviceFile)),
-      additionalIpas: Schema.optional(Schema.Array(FileReference)),
-      networkProfile: Schema.optional(Schema.String),
-      pushFiles: Schema.optional(Schema.Array(IosDeviceFile)),
-    }),
-  ).annotate({
-    identifier: "IosTestSetup",
-  }) as any as Schema.Schema<IosTestSetup>;
+export const IosTestSetup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pullDirectories: Schema.optional(Schema.Array(IosDeviceFile)),
+  additionalIpas: Schema.optional(Schema.Array(FileReference)),
+  networkProfile: Schema.optional(Schema.String),
+  pushFiles: Schema.optional(Schema.Array(IosDeviceFile)),
+}).annotate({ identifier: "IosTestSetup" });
 
 export interface SystraceSetup {
   /** Systrace duration in seconds. Should be between 1 and 30 seconds. 0 disables systrace. */
   durationSeconds?: number;
 }
 
-export const SystraceSetup: Schema.Schema<SystraceSetup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      durationSeconds: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "SystraceSetup",
-  }) as any as Schema.Schema<SystraceSetup>;
+export const SystraceSetup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  durationSeconds: Schema.optional(Schema.Number),
+}).annotate({ identifier: "SystraceSetup" });
 
 export interface GoogleAuto {}
 
-export const GoogleAuto: Schema.Schema<GoogleAuto> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "GoogleAuto",
-  }) as any as Schema.Schema<GoogleAuto>;
+export const GoogleAuto = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "GoogleAuto" });
 
 export interface Account {
   /** An automatic google login account. */
   googleAuto?: GoogleAuto;
 }
 
-export const Account: Schema.Schema<Account> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      googleAuto: Schema.optional(GoogleAuto),
-    }),
-  ).annotate({ identifier: "Account" }) as any as Schema.Schema<Account>;
+export const Account = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  googleAuto: Schema.optional(GoogleAuto),
+}).annotate({ identifier: "Account" });
 
 export interface ObbFile {
   /** Required. OBB file name which must conform to the format as specified by Android e.g. [main|patch].0300110.com.example.android.obb which will be installed into \/Android/obb/\/ on the device. */
@@ -961,13 +774,10 @@ export interface ObbFile {
   obb?: FileReference;
 }
 
-export const ObbFile: Schema.Schema<ObbFile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      obbFileName: Schema.optional(Schema.String),
-      obb: Schema.optional(FileReference),
-    }),
-  ).annotate({ identifier: "ObbFile" }) as any as Schema.Schema<ObbFile>;
+export const ObbFile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  obbFileName: Schema.optional(Schema.String),
+  obb: Schema.optional(FileReference),
+}).annotate({ identifier: "ObbFile" });
 
 export interface RegularFile {
   /** Required. The source file. */
@@ -976,15 +786,10 @@ export interface RegularFile {
   devicePath?: string;
 }
 
-export const RegularFile: Schema.Schema<RegularFile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      content: Schema.optional(FileReference),
-      devicePath: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RegularFile",
-  }) as any as Schema.Schema<RegularFile>;
+export const RegularFile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  content: Schema.optional(FileReference),
+  devicePath: Schema.optional(Schema.String),
+}).annotate({ identifier: "RegularFile" });
 
 export interface DeviceFile {
   /** A reference to an opaque binary blob file. */
@@ -993,13 +798,10 @@ export interface DeviceFile {
   regularFile?: RegularFile;
 }
 
-export const DeviceFile: Schema.Schema<DeviceFile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      obbFile: Schema.optional(ObbFile),
-      regularFile: Schema.optional(RegularFile),
-    }),
-  ).annotate({ identifier: "DeviceFile" }) as any as Schema.Schema<DeviceFile>;
+export const DeviceFile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  obbFile: Schema.optional(ObbFile),
+  regularFile: Schema.optional(RegularFile),
+}).annotate({ identifier: "DeviceFile" });
 
 export interface TestSetup {
   /** Optional. Initial setup APKs to install before the app under test is installed. Limited to a combined total of 100 initial setup and additional files. */
@@ -1022,20 +824,17 @@ export interface TestSetup {
   directoriesToPull?: Array<string>;
 }
 
-export const TestSetup: Schema.Schema<TestSetup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      initialSetupApks: Schema.optional(Schema.Array(Apk)),
-      dontAutograntPermissions: Schema.optional(Schema.Boolean),
-      networkProfile: Schema.optional(Schema.String),
-      systrace: Schema.optional(SystraceSetup),
-      account: Schema.optional(Account),
-      filesToPush: Schema.optional(Schema.Array(DeviceFile)),
-      additionalApks: Schema.optional(Schema.Array(Apk)),
-      environmentVariables: Schema.optional(Schema.Array(EnvironmentVariable)),
-      directoriesToPull: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "TestSetup" }) as any as Schema.Schema<TestSetup>;
+export const TestSetup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  initialSetupApks: Schema.optional(Schema.Array(Apk)),
+  dontAutograntPermissions: Schema.optional(Schema.Boolean),
+  networkProfile: Schema.optional(Schema.String),
+  systrace: Schema.optional(SystraceSetup),
+  account: Schema.optional(Account),
+  filesToPush: Schema.optional(Schema.Array(DeviceFile)),
+  additionalApks: Schema.optional(Schema.Array(Apk)),
+  environmentVariables: Schema.optional(Schema.Array(EnvironmentVariable)),
+  directoriesToPull: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "TestSetup" });
 
 export interface IosTestLoop {
   /** The list of scenarios that should be run during the test. Defaults to the single scenario 0 if unspecified. */
@@ -1046,16 +845,11 @@ export interface IosTestLoop {
   appIpa?: FileReference;
 }
 
-export const IosTestLoop: Schema.Schema<IosTestLoop> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scenarios: Schema.optional(Schema.Array(Schema.Number)),
-      appBundleId: Schema.optional(Schema.String),
-      appIpa: Schema.optional(FileReference),
-    }),
-  ).annotate({
-    identifier: "IosTestLoop",
-  }) as any as Schema.Schema<IosTestLoop>;
+export const IosTestLoop = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  scenarios: Schema.optional(Schema.Array(Schema.Number)),
+  appBundleId: Schema.optional(Schema.String),
+  appIpa: Schema.optional(FileReference),
+}).annotate({ identifier: "IosTestLoop" });
 
 export interface IosXcTest {
   /** The Xcode version that should be used for the test. Use the TestEnvironmentDiscoveryService to get supported options. Defaults to the latest Xcode version Firebase Test Lab supports. */
@@ -1070,72 +864,49 @@ export interface IosXcTest {
   testsZip?: FileReference;
 }
 
-export const IosXcTest: Schema.Schema<IosXcTest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      xcodeVersion: Schema.optional(Schema.String),
-      testSpecialEntitlements: Schema.optional(Schema.Boolean),
-      xctestrun: Schema.optional(FileReference),
-      appBundleId: Schema.optional(Schema.String),
-      testsZip: Schema.optional(FileReference),
-    }),
-  ).annotate({ identifier: "IosXcTest" }) as any as Schema.Schema<IosXcTest>;
+export const IosXcTest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  xcodeVersion: Schema.optional(Schema.String),
+  testSpecialEntitlements: Schema.optional(Schema.Boolean),
+  xctestrun: Schema.optional(FileReference),
+  appBundleId: Schema.optional(Schema.String),
+  testsZip: Schema.optional(FileReference),
+}).annotate({ identifier: "IosXcTest" });
 
 export interface UniformSharding {
   /** Required. The total number of shards to create. This must always be a positive number that is no greater than the total number of test cases. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 200. When you select only x86 virtual devices, it must be <= 500. */
   numShards?: number;
 }
 
-export const UniformSharding: Schema.Schema<UniformSharding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      numShards: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "UniformSharding",
-  }) as any as Schema.Schema<UniformSharding>;
+export const UniformSharding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  numShards: Schema.optional(Schema.Number),
+}).annotate({ identifier: "UniformSharding" });
 
 export interface SmartSharding {
   /** The amount of time tests within a shard should take. Default: 300 seconds (5 minutes). The minimum allowed: 120 seconds (2 minutes). The shard count is dynamically set based on time, up to the maximum shard limit (described below). To guarantee at least one test case for each shard, the number of shards will not exceed the number of test cases. Shard duration will be exceeded if: - The maximum shard limit is reached and there is more calculated test time remaining to allocate into shards. - Any individual test is estimated to be longer than the targeted shard duration. Shard duration is not guaranteed because smart sharding uses test case history and default durations which may not be accurate. The rules for finding the test case timing records are: - If the service has processed a test case in the last 30 days, the record of the latest successful test case will be used. - For new test cases, the average duration of other known test cases will be used. - If there are no previous test case timing records available, the default test case duration is 15 seconds. Because the actual shard duration can exceed the targeted shard duration, we recommend that you set the targeted value at least 5 minutes less than the maximum allowed test timeout (45 minutes for physical devices and 60 minutes for virtual), or that you use the custom test timeout value that you set. This approach avoids cancelling the shard before all tests can finish. Note that there is a limit for maximum number of shards. When you select one or more physical devices, the number of shards must be <= 50. When you select one or more ARM virtual devices, it must be <= 200. When you select only x86 virtual devices, it must be <= 500. To guarantee at least one test case for per shard, the number of shards will not exceed the number of test cases. Each shard created counts toward daily test quota. */
   targetedShardDuration?: string;
 }
 
-export const SmartSharding: Schema.Schema<SmartSharding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetedShardDuration: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SmartSharding",
-  }) as any as Schema.Schema<SmartSharding>;
+export const SmartSharding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  targetedShardDuration: Schema.optional(Schema.String),
+}).annotate({ identifier: "SmartSharding" });
 
 export interface TestTargetsForShard {
   /** Group of packages, classes, and/or test methods to be run for each shard. The targets need to be specified in AndroidJUnitRunner argument format. For example, "package com.my.packages" "class com.my.package.MyClass". The number of test_targets must be greater than 0. */
   testTargets?: Array<string>;
 }
 
-export const TestTargetsForShard: Schema.Schema<TestTargetsForShard> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      testTargets: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestTargetsForShard",
-  }) as any as Schema.Schema<TestTargetsForShard>;
+export const TestTargetsForShard = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  testTargets: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "TestTargetsForShard" });
 
 export interface ManualSharding {
   /** Required. Group of packages, classes, and/or test methods to be run for each manually-created shard. You must specify at least one shard if this field is present. When you select one or more physical devices, the number of repeated test_targets_for_shard must be <= 50. When you select one or more ARM virtual devices, it must be <= 200. When you select only x86 virtual devices, it must be <= 500. */
   testTargetsForShard?: Array<TestTargetsForShard>;
 }
 
-export const ManualSharding: Schema.Schema<ManualSharding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      testTargetsForShard: Schema.optional(Schema.Array(TestTargetsForShard)),
-    }),
-  ).annotate({
-    identifier: "ManualSharding",
-  }) as any as Schema.Schema<ManualSharding>;
+export const ManualSharding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  testTargetsForShard: Schema.optional(Schema.Array(TestTargetsForShard)),
+}).annotate({ identifier: "ManualSharding" });
 
 export interface ShardingOption {
   /** Uniformly shards test cases given a total number of shards. */
@@ -1146,16 +917,11 @@ export interface ShardingOption {
   manualSharding?: ManualSharding;
 }
 
-export const ShardingOption: Schema.Schema<ShardingOption> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uniformSharding: Schema.optional(UniformSharding),
-      smartSharding: Schema.optional(SmartSharding),
-      manualSharding: Schema.optional(ManualSharding),
-    }),
-  ).annotate({
-    identifier: "ShardingOption",
-  }) as any as Schema.Schema<ShardingOption>;
+export const ShardingOption = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  uniformSharding: Schema.optional(UniformSharding),
+  smartSharding: Schema.optional(SmartSharding),
+  manualSharding: Schema.optional(ManualSharding),
+}).annotate({ identifier: "ShardingOption" });
 
 export interface AndroidInstrumentationTest {
   /** Required. The APK containing the test code to be executed. */
@@ -1182,22 +948,18 @@ export interface AndroidInstrumentationTest {
   appPackageId?: string;
 }
 
-export const AndroidInstrumentationTest: Schema.Schema<AndroidInstrumentationTest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      testApk: Schema.optional(FileReference),
-      testPackageId: Schema.optional(Schema.String),
-      appApk: Schema.optional(FileReference),
-      appBundle: Schema.optional(AppBundle),
-      testRunnerClass: Schema.optional(Schema.String),
-      testTargets: Schema.optional(Schema.Array(Schema.String)),
-      orchestratorOption: Schema.optional(Schema.String),
-      shardingOption: Schema.optional(ShardingOption),
-      appPackageId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AndroidInstrumentationTest",
-  }) as any as Schema.Schema<AndroidInstrumentationTest>;
+export const AndroidInstrumentationTest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    testApk: Schema.optional(FileReference),
+    testPackageId: Schema.optional(Schema.String),
+    appApk: Schema.optional(FileReference),
+    appBundle: Schema.optional(AppBundle),
+    testRunnerClass: Schema.optional(Schema.String),
+    testTargets: Schema.optional(Schema.Array(Schema.String)),
+    orchestratorOption: Schema.optional(Schema.String),
+    shardingOption: Schema.optional(ShardingOption),
+    appPackageId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AndroidInstrumentationTest" });
 
 export interface AndroidTestLoop {
   /** The java package for the application under test. The default is determined by examining the application's manifest. */
@@ -1212,18 +974,13 @@ export interface AndroidTestLoop {
   scenarios?: Array<number>;
 }
 
-export const AndroidTestLoop: Schema.Schema<AndroidTestLoop> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      appPackageId: Schema.optional(Schema.String),
-      scenarioLabels: Schema.optional(Schema.Array(Schema.String)),
-      appApk: Schema.optional(FileReference),
-      appBundle: Schema.optional(AppBundle),
-      scenarios: Schema.optional(Schema.Array(Schema.Number)),
-    }),
-  ).annotate({
-    identifier: "AndroidTestLoop",
-  }) as any as Schema.Schema<AndroidTestLoop>;
+export const AndroidTestLoop = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  appPackageId: Schema.optional(Schema.String),
+  scenarioLabels: Schema.optional(Schema.Array(Schema.String)),
+  appApk: Schema.optional(FileReference),
+  appBundle: Schema.optional(AppBundle),
+  scenarios: Schema.optional(Schema.Array(Schema.Number)),
+}).annotate({ identifier: "AndroidTestLoop" });
 
 export interface IosRoboTest {
   /** Required. The ipa stored at this file should be used to run the test. */
@@ -1234,16 +991,11 @@ export interface IosRoboTest {
   roboScript?: FileReference;
 }
 
-export const IosRoboTest: Schema.Schema<IosRoboTest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      appIpa: Schema.optional(FileReference),
-      appBundleId: Schema.optional(Schema.String),
-      roboScript: Schema.optional(FileReference),
-    }),
-  ).annotate({
-    identifier: "IosRoboTest",
-  }) as any as Schema.Schema<IosRoboTest>;
+export const IosRoboTest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  appIpa: Schema.optional(FileReference),
+  appBundleId: Schema.optional(Schema.String),
+  roboScript: Schema.optional(FileReference),
+}).annotate({ identifier: "IosRoboTest" });
 
 export interface TestSpecification {
   /** An Android robo test. */
@@ -1270,24 +1022,19 @@ export interface TestSpecification {
   iosRoboTest?: IosRoboTest;
 }
 
-export const TestSpecification: Schema.Schema<TestSpecification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      androidRoboTest: Schema.optional(AndroidRoboTest),
-      disablePerformanceMetrics: Schema.optional(Schema.Boolean),
-      iosTestSetup: Schema.optional(IosTestSetup),
-      testSetup: Schema.optional(TestSetup),
-      iosTestLoop: Schema.optional(IosTestLoop),
-      iosXcTest: Schema.optional(IosXcTest),
-      testTimeout: Schema.optional(Schema.String),
-      androidInstrumentationTest: Schema.optional(AndroidInstrumentationTest),
-      disableVideoRecording: Schema.optional(Schema.Boolean),
-      androidTestLoop: Schema.optional(AndroidTestLoop),
-      iosRoboTest: Schema.optional(IosRoboTest),
-    }),
-  ).annotate({
-    identifier: "TestSpecification",
-  }) as any as Schema.Schema<TestSpecification>;
+export const TestSpecification = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  androidRoboTest: Schema.optional(AndroidRoboTest),
+  disablePerformanceMetrics: Schema.optional(Schema.Boolean),
+  iosTestSetup: Schema.optional(IosTestSetup),
+  testSetup: Schema.optional(TestSetup),
+  iosTestLoop: Schema.optional(IosTestLoop),
+  iosXcTest: Schema.optional(IosXcTest),
+  testTimeout: Schema.optional(Schema.String),
+  androidInstrumentationTest: Schema.optional(AndroidInstrumentationTest),
+  disableVideoRecording: Schema.optional(Schema.Boolean),
+  androidTestLoop: Schema.optional(AndroidTestLoop),
+  iosRoboTest: Schema.optional(IosRoboTest),
+}).annotate({ identifier: "TestSpecification" });
 
 export interface Environment {
   /** An Android device which must be used with an Android test. */
@@ -1296,15 +1043,10 @@ export interface Environment {
   iosDevice?: IosDevice;
 }
 
-export const Environment: Schema.Schema<Environment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      androidDevice: Schema.optional(AndroidDevice),
-      iosDevice: Schema.optional(IosDevice),
-    }),
-  ).annotate({
-    identifier: "Environment",
-  }) as any as Schema.Schema<Environment>;
+export const Environment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  androidDevice: Schema.optional(AndroidDevice),
+  iosDevice: Schema.optional(IosDevice),
+}).annotate({ identifier: "Environment" });
 
 export interface Shard {
   /** Output only. The index of the shard among all the shards. */
@@ -1317,15 +1059,12 @@ export interface Shard {
   numShards?: number;
 }
 
-export const Shard: Schema.Schema<Shard> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      shardIndex: Schema.optional(Schema.Number),
-      testTargetsForShard: Schema.optional(TestTargetsForShard),
-      estimatedShardDuration: Schema.optional(Schema.String),
-      numShards: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Shard" }) as any as Schema.Schema<Shard>;
+export const Shard = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  shardIndex: Schema.optional(Schema.Number),
+  testTargetsForShard: Schema.optional(TestTargetsForShard),
+  estimatedShardDuration: Schema.optional(Schema.String),
+  numShards: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Shard" });
 
 export interface ToolResultsStep {
   /** Output only. A tool results step ID. */
@@ -1338,17 +1077,12 @@ export interface ToolResultsStep {
   executionId?: string;
 }
 
-export const ToolResultsStep: Schema.Schema<ToolResultsStep> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stepId: Schema.optional(Schema.String),
-      projectId: Schema.optional(Schema.String),
-      historyId: Schema.optional(Schema.String),
-      executionId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ToolResultsStep",
-  }) as any as Schema.Schema<ToolResultsStep>;
+export const ToolResultsStep = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  stepId: Schema.optional(Schema.String),
+  projectId: Schema.optional(Schema.String),
+  historyId: Schema.optional(Schema.String),
+  executionId: Schema.optional(Schema.String),
+}).annotate({ identifier: "ToolResultsStep" });
 
 export interface TestDetails {
   /** Output only. Human-readable, detailed descriptions of the test's progress. For example: "Provisioning a device", "Starting Test". During the course of execution new data may be appended to the end of progress_messages. */
@@ -1357,15 +1091,10 @@ export interface TestDetails {
   errorMessage?: string;
 }
 
-export const TestDetails: Schema.Schema<TestDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      progressMessages: Schema.optional(Schema.Array(Schema.String)),
-      errorMessage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TestDetails",
-  }) as any as Schema.Schema<TestDetails>;
+export const TestDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  progressMessages: Schema.optional(Schema.Array(Schema.String)),
+  errorMessage: Schema.optional(Schema.String),
+}).annotate({ identifier: "TestDetails" });
 
 export interface TestExecution {
   /** Output only. Unique id set by the service. */
@@ -1402,23 +1131,18 @@ export interface TestExecution {
   projectId?: string;
 }
 
-export const TestExecution: Schema.Schema<TestExecution> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      environment: Schema.optional(Environment),
-      matrixId: Schema.optional(Schema.String),
-      shard: Schema.optional(Shard),
-      testSpecification: Schema.optional(TestSpecification),
-      toolResultsStep: Schema.optional(ToolResultsStep),
-      timestamp: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      testDetails: Schema.optional(TestDetails),
-      projectId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TestExecution",
-  }) as any as Schema.Schema<TestExecution>;
+export const TestExecution = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  environment: Schema.optional(Environment),
+  matrixId: Schema.optional(Schema.String),
+  shard: Schema.optional(Shard),
+  testSpecification: Schema.optional(TestSpecification),
+  toolResultsStep: Schema.optional(ToolResultsStep),
+  timestamp: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  testDetails: Schema.optional(TestDetails),
+  projectId: Schema.optional(Schema.String),
+}).annotate({ identifier: "TestExecution" });
 
 export interface TestMatrix {
   /** Required. Where the results for the matrix are written. */
@@ -1509,27 +1233,24 @@ export interface TestMatrix {
     | (string & {});
 }
 
-export const TestMatrix: Schema.Schema<TestMatrix> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resultStorage: Schema.optional(ResultStorage),
-      timestamp: Schema.optional(Schema.String),
-      failFast: Schema.optional(Schema.Boolean),
-      flakyTestAttempts: Schema.optional(Schema.Number),
-      testMatrixId: Schema.optional(Schema.String),
-      projectId: Schema.optional(Schema.String),
-      environmentMatrix: Schema.optional(EnvironmentMatrix),
-      invalidMatrixDetails: Schema.optional(Schema.String),
-      outcomeSummary: Schema.optional(Schema.String),
-      clientInfo: Schema.optional(ClientInfo),
-      testSpecification: Schema.optional(TestSpecification),
-      extendedInvalidMatrixDetails: Schema.optional(
-        Schema.Array(MatrixErrorDetail),
-      ),
-      testExecutions: Schema.optional(Schema.Array(TestExecution)),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "TestMatrix" }) as any as Schema.Schema<TestMatrix>;
+export const TestMatrix = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resultStorage: Schema.optional(ResultStorage),
+  timestamp: Schema.optional(Schema.String),
+  failFast: Schema.optional(Schema.Boolean),
+  flakyTestAttempts: Schema.optional(Schema.Number),
+  testMatrixId: Schema.optional(Schema.String),
+  projectId: Schema.optional(Schema.String),
+  environmentMatrix: Schema.optional(EnvironmentMatrix),
+  invalidMatrixDetails: Schema.optional(Schema.String),
+  outcomeSummary: Schema.optional(Schema.String),
+  clientInfo: Schema.optional(ClientInfo),
+  testSpecification: Schema.optional(TestSpecification),
+  extendedInvalidMatrixDetails: Schema.optional(
+    Schema.Array(MatrixErrorDetail),
+  ),
+  testExecutions: Schema.optional(Schema.Array(TestExecution)),
+  state: Schema.optional(Schema.String),
+}).annotate({ identifier: "TestMatrix" });
 
 export interface ProvidedSoftwareCatalog {
   /** Deprecated: Use AndroidX Test Orchestrator going forward. A string representing the current version of Android Test Orchestrator that is used in the environment. The package is available at https://maven.google.com/web/index.html#com.android.support.test:orchestrator. */
@@ -1538,15 +1259,11 @@ export interface ProvidedSoftwareCatalog {
   androidxOrchestratorVersion?: string;
 }
 
-export const ProvidedSoftwareCatalog: Schema.Schema<ProvidedSoftwareCatalog> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      orchestratorVersion: Schema.optional(Schema.String),
-      androidxOrchestratorVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProvidedSoftwareCatalog",
-  }) as any as Schema.Schema<ProvidedSoftwareCatalog>;
+export const ProvidedSoftwareCatalog =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    orchestratorVersion: Schema.optional(Schema.String),
+    androidxOrchestratorVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ProvidedSoftwareCatalog" });
 
 export interface UsesFeature {
   /** The android:name value */
@@ -1555,15 +1272,10 @@ export interface UsesFeature {
   isRequired?: boolean;
 }
 
-export const UsesFeature: Schema.Schema<UsesFeature> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      isRequired: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "UsesFeature",
-  }) as any as Schema.Schema<UsesFeature>;
+export const UsesFeature = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  isRequired: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "UsesFeature" });
 
 export interface Metadata {
   /** The android:value value */
@@ -1572,13 +1284,10 @@ export interface Metadata {
   name?: string;
 }
 
-export const Metadata: Schema.Schema<Metadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Metadata" }) as any as Schema.Schema<Metadata>;
+export const Metadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Metadata" });
 
 export interface IntentFilter {
   /** The android:name value of the tag. */
@@ -1589,16 +1298,11 @@ export interface IntentFilter {
   mimeType?: string;
 }
 
-export const IntentFilter: Schema.Schema<IntentFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      categoryNames: Schema.optional(Schema.Array(Schema.String)),
-      actionNames: Schema.optional(Schema.Array(Schema.String)),
-      mimeType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "IntentFilter",
-  }) as any as Schema.Schema<IntentFilter>;
+export const IntentFilter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  categoryNames: Schema.optional(Schema.Array(Schema.String)),
+  actionNames: Schema.optional(Schema.Array(Schema.String)),
+  mimeType: Schema.optional(Schema.String),
+}).annotate({ identifier: "IntentFilter" });
 
 export interface Service {
   /** Intent filters in the service */
@@ -1607,13 +1311,10 @@ export interface Service {
   name?: string;
 }
 
-export const Service: Schema.Schema<Service> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      intentFilter: Schema.optional(Schema.Array(IntentFilter)),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Service" }) as any as Schema.Schema<Service>;
+export const Service = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  intentFilter: Schema.optional(Schema.Array(IntentFilter)),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Service" });
 
 export interface UsesPermissionTag {
   /** The android:name value */
@@ -1622,15 +1323,10 @@ export interface UsesPermissionTag {
   maxSdkVersion?: number;
 }
 
-export const UsesPermissionTag: Schema.Schema<UsesPermissionTag> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      maxSdkVersion: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "UsesPermissionTag",
-  }) as any as Schema.Schema<UsesPermissionTag>;
+export const UsesPermissionTag = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  maxSdkVersion: Schema.optional(Schema.Number),
+}).annotate({ identifier: "UsesPermissionTag" });
 
 export interface ApkManifest {
   /** Full Java-style package name for this application, e.g. "com.example.foo". */
@@ -1659,37 +1355,29 @@ export interface ApkManifest {
   usesPermissionTags?: Array<UsesPermissionTag>;
 }
 
-export const ApkManifest: Schema.Schema<ApkManifest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      packageName: Schema.optional(Schema.String),
-      versionCode: Schema.optional(Schema.String),
-      usesFeature: Schema.optional(Schema.Array(UsesFeature)),
-      metadata: Schema.optional(Schema.Array(Metadata)),
-      maxSdkVersion: Schema.optional(Schema.Number),
-      services: Schema.optional(Schema.Array(Service)),
-      versionName: Schema.optional(Schema.String),
-      intentFilters: Schema.optional(Schema.Array(IntentFilter)),
-      minSdkVersion: Schema.optional(Schema.Number),
-      applicationLabel: Schema.optional(Schema.String),
-      targetSdkVersion: Schema.optional(Schema.Number),
-      usesPermission: Schema.optional(Schema.Array(Schema.String)),
-      usesPermissionTags: Schema.optional(Schema.Array(UsesPermissionTag)),
-    }),
-  ).annotate({
-    identifier: "ApkManifest",
-  }) as any as Schema.Schema<ApkManifest>;
+export const ApkManifest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  packageName: Schema.optional(Schema.String),
+  versionCode: Schema.optional(Schema.String),
+  usesFeature: Schema.optional(Schema.Array(UsesFeature)),
+  metadata: Schema.optional(Schema.Array(Metadata)),
+  maxSdkVersion: Schema.optional(Schema.Number),
+  services: Schema.optional(Schema.Array(Service)),
+  versionName: Schema.optional(Schema.String),
+  intentFilters: Schema.optional(Schema.Array(IntentFilter)),
+  minSdkVersion: Schema.optional(Schema.Number),
+  applicationLabel: Schema.optional(Schema.String),
+  targetSdkVersion: Schema.optional(Schema.Number),
+  usesPermission: Schema.optional(Schema.Array(Schema.String)),
+  usesPermissionTags: Schema.optional(Schema.Array(UsesPermissionTag)),
+}).annotate({ identifier: "ApkManifest" });
 
 export interface ApkDetail {
   apkManifest?: ApkManifest;
 }
 
-export const ApkDetail: Schema.Schema<ApkDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      apkManifest: Schema.optional(ApkManifest),
-    }),
-  ).annotate({ identifier: "ApkDetail" }) as any as Schema.Schema<ApkDetail>;
+export const ApkDetail = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  apkManifest: Schema.optional(ApkManifest),
+}).annotate({ identifier: "ApkDetail" });
 
 export interface IosRuntimeConfiguration {
   /** The set of available locales. */
@@ -1698,15 +1386,11 @@ export interface IosRuntimeConfiguration {
   orientations?: Array<Orientation>;
 }
 
-export const IosRuntimeConfiguration: Schema.Schema<IosRuntimeConfiguration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locales: Schema.optional(Schema.Array(Locale)),
-      orientations: Schema.optional(Schema.Array(Orientation)),
-    }),
-  ).annotate({
-    identifier: "IosRuntimeConfiguration",
-  }) as any as Schema.Schema<IosRuntimeConfiguration>;
+export const IosRuntimeConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locales: Schema.optional(Schema.Array(Locale)),
+    orientations: Schema.optional(Schema.Array(Orientation)),
+  }).annotate({ identifier: "IosRuntimeConfiguration" });
 
 export interface XcodeVersion {
   /** The id for this version. Example: "9.2". */
@@ -1715,15 +1399,10 @@ export interface XcodeVersion {
   tags?: Array<string>;
 }
 
-export const XcodeVersion: Schema.Schema<XcodeVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.String),
-      tags: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "XcodeVersion",
-  }) as any as Schema.Schema<XcodeVersion>;
+export const XcodeVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "XcodeVersion" });
 
 export interface PerIosVersionInfo {
   /** An iOS version. */
@@ -1738,15 +1417,10 @@ export interface PerIosVersionInfo {
     | (string & {});
 }
 
-export const PerIosVersionInfo: Schema.Schema<PerIosVersionInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      versionId: Schema.optional(Schema.String),
-      deviceCapacity: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PerIosVersionInfo",
-  }) as any as Schema.Schema<PerIosVersionInfo>;
+export const PerIosVersionInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  versionId: Schema.optional(Schema.String),
+  deviceCapacity: Schema.optional(Schema.String),
+}).annotate({ identifier: "PerIosVersionInfo" });
 
 export interface IosModel {
   /** The set of iOS major software versions this device supports. */
@@ -1780,21 +1454,18 @@ export interface IosModel {
   screenDensity?: number;
 }
 
-export const IosModel: Schema.Schema<IosModel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      supportedVersionIds: Schema.optional(Schema.Array(Schema.String)),
-      perVersionInfo: Schema.optional(Schema.Array(PerIosVersionInfo)),
-      name: Schema.optional(Schema.String),
-      formFactor: Schema.optional(Schema.String),
-      screenX: Schema.optional(Schema.Number),
-      screenY: Schema.optional(Schema.Number),
-      id: Schema.optional(Schema.String),
-      tags: Schema.optional(Schema.Array(Schema.String)),
-      deviceCapabilities: Schema.optional(Schema.Array(Schema.String)),
-      screenDensity: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "IosModel" }) as any as Schema.Schema<IosModel>;
+export const IosModel = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  supportedVersionIds: Schema.optional(Schema.Array(Schema.String)),
+  perVersionInfo: Schema.optional(Schema.Array(PerIosVersionInfo)),
+  name: Schema.optional(Schema.String),
+  formFactor: Schema.optional(Schema.String),
+  screenX: Schema.optional(Schema.Number),
+  screenY: Schema.optional(Schema.Number),
+  id: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Array(Schema.String)),
+  deviceCapabilities: Schema.optional(Schema.Array(Schema.String)),
+  screenDensity: Schema.optional(Schema.Number),
+}).annotate({ identifier: "IosModel" });
 
 export interface IosDeviceCatalog {
   /** The set of supported runtime configurations. */
@@ -1807,17 +1478,12 @@ export interface IosDeviceCatalog {
   models?: Array<IosModel>;
 }
 
-export const IosDeviceCatalog: Schema.Schema<IosDeviceCatalog> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      runtimeConfiguration: Schema.optional(IosRuntimeConfiguration),
-      versions: Schema.optional(Schema.Array(IosVersion)),
-      xcodeVersions: Schema.optional(Schema.Array(XcodeVersion)),
-      models: Schema.optional(Schema.Array(IosModel)),
-    }),
-  ).annotate({
-    identifier: "IosDeviceCatalog",
-  }) as any as Schema.Schema<IosDeviceCatalog>;
+export const IosDeviceCatalog = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  runtimeConfiguration: Schema.optional(IosRuntimeConfiguration),
+  versions: Schema.optional(Schema.Array(IosVersion)),
+  xcodeVersions: Schema.optional(Schema.Array(XcodeVersion)),
+  models: Schema.optional(Schema.Array(IosModel)),
+}).annotate({ identifier: "IosDeviceCatalog" });
 
 export interface DeviceIpBlock {
   /** The date this block was added to Firebase Test Lab */
@@ -1833,30 +1499,20 @@ export interface DeviceIpBlock {
     | (string & {});
 }
 
-export const DeviceIpBlock: Schema.Schema<DeviceIpBlock> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      addedDate: Schema.optional(Testing_Date),
-      block: Schema.optional(Schema.String),
-      form: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DeviceIpBlock",
-  }) as any as Schema.Schema<DeviceIpBlock>;
+export const DeviceIpBlock = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  addedDate: Schema.optional(Testing_Date),
+  block: Schema.optional(Schema.String),
+  form: Schema.optional(Schema.String),
+}).annotate({ identifier: "DeviceIpBlock" });
 
 export interface DeviceIpBlockCatalog {
   /** The device IP blocks used by Firebase Test Lab */
   ipBlocks?: Array<DeviceIpBlock>;
 }
 
-export const DeviceIpBlockCatalog: Schema.Schema<DeviceIpBlockCatalog> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ipBlocks: Schema.optional(Schema.Array(DeviceIpBlock)),
-    }),
-  ).annotate({
-    identifier: "DeviceIpBlockCatalog",
-  }) as any as Schema.Schema<DeviceIpBlockCatalog>;
+export const DeviceIpBlockCatalog = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ipBlocks: Schema.optional(Schema.Array(DeviceIpBlock)),
+}).annotate({ identifier: "DeviceIpBlockCatalog" });
 
 export interface TrafficRule {
   /** Packet duplication ratio (0.0 - 1.0). */
@@ -1871,18 +1527,13 @@ export interface TrafficRule {
   burst?: number;
 }
 
-export const TrafficRule: Schema.Schema<TrafficRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      packetDuplicationRatio: Schema.optional(Schema.Number),
-      bandwidth: Schema.optional(Schema.Number),
-      packetLossRatio: Schema.optional(Schema.Number),
-      delay: Schema.optional(Schema.String),
-      burst: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "TrafficRule",
-  }) as any as Schema.Schema<TrafficRule>;
+export const TrafficRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  packetDuplicationRatio: Schema.optional(Schema.Number),
+  bandwidth: Schema.optional(Schema.Number),
+  packetLossRatio: Schema.optional(Schema.Number),
+  delay: Schema.optional(Schema.String),
+  burst: Schema.optional(Schema.Number),
+}).annotate({ identifier: "TrafficRule" });
 
 export interface NetworkConfiguration {
   /** The emulation rule applying to the download traffic. */
@@ -1893,29 +1544,20 @@ export interface NetworkConfiguration {
   upRule?: TrafficRule;
 }
 
-export const NetworkConfiguration: Schema.Schema<NetworkConfiguration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      downRule: Schema.optional(TrafficRule),
-      id: Schema.optional(Schema.String),
-      upRule: Schema.optional(TrafficRule),
-    }),
-  ).annotate({
-    identifier: "NetworkConfiguration",
-  }) as any as Schema.Schema<NetworkConfiguration>;
+export const NetworkConfiguration = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  downRule: Schema.optional(TrafficRule),
+  id: Schema.optional(Schema.String),
+  upRule: Schema.optional(TrafficRule),
+}).annotate({ identifier: "NetworkConfiguration" });
 
 export interface NetworkConfigurationCatalog {
   configurations?: Array<NetworkConfiguration>;
 }
 
-export const NetworkConfigurationCatalog: Schema.Schema<NetworkConfigurationCatalog> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      configurations: Schema.optional(Schema.Array(NetworkConfiguration)),
-    }),
-  ).annotate({
-    identifier: "NetworkConfigurationCatalog",
-  }) as any as Schema.Schema<NetworkConfigurationCatalog>;
+export const NetworkConfigurationCatalog =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    configurations: Schema.optional(Schema.Array(NetworkConfiguration)),
+  }).annotate({ identifier: "NetworkConfigurationCatalog" });
 
 export interface TestEnvironmentCatalog {
   /** Supported Android devices. */
@@ -1930,18 +1572,15 @@ export interface TestEnvironmentCatalog {
   networkConfigurationCatalog?: NetworkConfigurationCatalog;
 }
 
-export const TestEnvironmentCatalog: Schema.Schema<TestEnvironmentCatalog> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      androidDeviceCatalog: Schema.optional(AndroidDeviceCatalog),
-      softwareCatalog: Schema.optional(ProvidedSoftwareCatalog),
-      iosDeviceCatalog: Schema.optional(IosDeviceCatalog),
-      deviceIpBlockCatalog: Schema.optional(DeviceIpBlockCatalog),
-      networkConfigurationCatalog: Schema.optional(NetworkConfigurationCatalog),
-    }),
-  ).annotate({
-    identifier: "TestEnvironmentCatalog",
-  }) as any as Schema.Schema<TestEnvironmentCatalog>;
+export const TestEnvironmentCatalog = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    androidDeviceCatalog: Schema.optional(AndroidDeviceCatalog),
+    softwareCatalog: Schema.optional(ProvidedSoftwareCatalog),
+    iosDeviceCatalog: Schema.optional(IosDeviceCatalog),
+    deviceIpBlockCatalog: Schema.optional(DeviceIpBlockCatalog),
+    networkConfigurationCatalog: Schema.optional(NetworkConfigurationCatalog),
+  },
+).annotate({ identifier: "TestEnvironmentCatalog" });
 
 export interface ListDeviceSessionsResponse {
   /** The sessions matching the specified filter in the given cloud project. */
@@ -1950,43 +1589,33 @@ export interface ListDeviceSessionsResponse {
   nextPageToken?: string;
 }
 
-export const ListDeviceSessionsResponse: Schema.Schema<ListDeviceSessionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deviceSessions: Schema.optional(Schema.Array(DeviceSession)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListDeviceSessionsResponse",
-  }) as any as Schema.Schema<ListDeviceSessionsResponse>;
+export const ListDeviceSessionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deviceSessions: Schema.optional(Schema.Array(DeviceSession)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListDeviceSessionsResponse" });
 
 export interface CancelDeviceSessionRequest {}
 
-export const CancelDeviceSessionRequest: Schema.Schema<CancelDeviceSessionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const CancelDeviceSessionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelDeviceSessionRequest",
-  }) as any as Schema.Schema<CancelDeviceSessionRequest>;
+  });
 
 export interface GetApkDetailsResponse {
   /** Details of the Android App. */
   apkDetail?: ApkDetail;
 }
 
-export const GetApkDetailsResponse: Schema.Schema<GetApkDetailsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      apkDetail: Schema.optional(ApkDetail),
-    }),
-  ).annotate({
-    identifier: "GetApkDetailsResponse",
-  }) as any as Schema.Schema<GetApkDetailsResponse>;
+export const GetApkDetailsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  apkDetail: Schema.optional(ApkDetail),
+}).annotate({ identifier: "GetApkDetailsResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 // ==========================================================================
 // Operations

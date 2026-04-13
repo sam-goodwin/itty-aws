@@ -38,18 +38,14 @@ export interface CivicinfoSchemaV2Election {
     | (string & {});
 }
 
-export const CivicinfoSchemaV2Election: Schema.Schema<CivicinfoSchemaV2Election> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      electionDay: Schema.optional(Schema.String),
-      ocdDivisionId: Schema.optional(Schema.String),
-      shapeLookupBehavior: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CivicinfoSchemaV2Election",
-  }) as any as Schema.Schema<CivicinfoSchemaV2Election>;
+export const CivicinfoSchemaV2Election =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    electionDay: Schema.optional(Schema.String),
+    ocdDivisionId: Schema.optional(Schema.String),
+    shapeLookupBehavior: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CivicinfoSchemaV2Election" });
 
 export interface CivicinfoSchemaV2SimpleAddressType {
   /** The name of the location. */
@@ -69,21 +65,17 @@ export interface CivicinfoSchemaV2SimpleAddressType {
   zip?: string;
 }
 
-export const CivicinfoSchemaV2SimpleAddressType: Schema.Schema<CivicinfoSchemaV2SimpleAddressType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locationName: Schema.optional(Schema.String),
-      line1: Schema.optional(Schema.String),
-      line2: Schema.optional(Schema.String),
-      line3: Schema.optional(Schema.String),
-      addressLine: Schema.optional(Schema.Array(Schema.String)),
-      city: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      zip: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CivicinfoSchemaV2SimpleAddressType",
-  }) as any as Schema.Schema<CivicinfoSchemaV2SimpleAddressType>;
+export const CivicinfoSchemaV2SimpleAddressType =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locationName: Schema.optional(Schema.String),
+    line1: Schema.optional(Schema.String),
+    line2: Schema.optional(Schema.String),
+    line3: Schema.optional(Schema.String),
+    addressLine: Schema.optional(Schema.Array(Schema.String)),
+    city: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    zip: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CivicinfoSchemaV2SimpleAddressType" });
 
 export interface CivicinfoSchemaV2Source {
   /** The name of the data source. */
@@ -92,15 +84,11 @@ export interface CivicinfoSchemaV2Source {
   official?: boolean;
 }
 
-export const CivicinfoSchemaV2Source: Schema.Schema<CivicinfoSchemaV2Source> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      official: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "CivicinfoSchemaV2Source",
-  }) as any as Schema.Schema<CivicinfoSchemaV2Source>;
+export const CivicinfoSchemaV2Source =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    official: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "CivicinfoSchemaV2Source" });
 
 export interface CivicinfoSchemaV2PollingLocation {
   /** The address of the location. */
@@ -125,23 +113,19 @@ export interface CivicinfoSchemaV2PollingLocation {
   sources?: Array<CivicinfoSchemaV2Source>;
 }
 
-export const CivicinfoSchemaV2PollingLocation: Schema.Schema<CivicinfoSchemaV2PollingLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      address: Schema.optional(CivicinfoSchemaV2SimpleAddressType),
-      notes: Schema.optional(Schema.String),
-      pollingHours: Schema.optional(Schema.String),
-      latitude: Schema.optional(Schema.Number),
-      longitude: Schema.optional(Schema.Number),
-      name: Schema.optional(Schema.String),
-      voterServices: Schema.optional(Schema.String),
-      startDate: Schema.optional(Schema.String),
-      endDate: Schema.optional(Schema.String),
-      sources: Schema.optional(Schema.Array(CivicinfoSchemaV2Source)),
-    }),
-  ).annotate({
-    identifier: "CivicinfoSchemaV2PollingLocation",
-  }) as any as Schema.Schema<CivicinfoSchemaV2PollingLocation>;
+export const CivicinfoSchemaV2PollingLocation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    address: Schema.optional(CivicinfoSchemaV2SimpleAddressType),
+    notes: Schema.optional(Schema.String),
+    pollingHours: Schema.optional(Schema.String),
+    latitude: Schema.optional(Schema.Number),
+    longitude: Schema.optional(Schema.Number),
+    name: Schema.optional(Schema.String),
+    voterServices: Schema.optional(Schema.String),
+    startDate: Schema.optional(Schema.String),
+    endDate: Schema.optional(Schema.String),
+    sources: Schema.optional(Schema.Array(CivicinfoSchemaV2Source)),
+  }).annotate({ identifier: "CivicinfoSchemaV2PollingLocation" });
 
 export interface CivicinfoSchemaV2ElectoralDistrict {
   /** The name of the district. */
@@ -167,16 +151,12 @@ export interface CivicinfoSchemaV2ElectoralDistrict {
   id?: string;
 }
 
-export const CivicinfoSchemaV2ElectoralDistrict: Schema.Schema<CivicinfoSchemaV2ElectoralDistrict> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      scope: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CivicinfoSchemaV2ElectoralDistrict",
-  }) as any as Schema.Schema<CivicinfoSchemaV2ElectoralDistrict>;
+export const CivicinfoSchemaV2ElectoralDistrict =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    scope: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CivicinfoSchemaV2ElectoralDistrict" });
 
 export interface CivicinfoSchemaV2Channel {
   /** The type of channel. The following is a list of types of channels, but is not exhaustive. More channel types may be added at a later time. One of: GooglePlus, YouTube, Facebook, Twitter */
@@ -185,15 +165,11 @@ export interface CivicinfoSchemaV2Channel {
   id?: string;
 }
 
-export const CivicinfoSchemaV2Channel: Schema.Schema<CivicinfoSchemaV2Channel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CivicinfoSchemaV2Channel",
-  }) as any as Schema.Schema<CivicinfoSchemaV2Channel>;
+export const CivicinfoSchemaV2Channel =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CivicinfoSchemaV2Channel" });
 
 export interface CivicinfoSchemaV2Candidate {
   /** The candidate's name. If this is a joint ticket it will indicate the name of the candidate at the top of a ticket followed by a / and that name of candidate at the bottom of the ticket. e.g. "Mitt Romney / Paul Ryan" */
@@ -214,21 +190,17 @@ export interface CivicinfoSchemaV2Candidate {
   channels?: Array<CivicinfoSchemaV2Channel>;
 }
 
-export const CivicinfoSchemaV2Candidate: Schema.Schema<CivicinfoSchemaV2Candidate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      party: Schema.optional(Schema.String),
-      candidateUrl: Schema.optional(Schema.String),
-      phone: Schema.optional(Schema.String),
-      photoUrl: Schema.optional(Schema.String),
-      email: Schema.optional(Schema.String),
-      orderOnBallot: Schema.optional(Schema.String),
-      channels: Schema.optional(Schema.Array(CivicinfoSchemaV2Channel)),
-    }),
-  ).annotate({
-    identifier: "CivicinfoSchemaV2Candidate",
-  }) as any as Schema.Schema<CivicinfoSchemaV2Candidate>;
+export const CivicinfoSchemaV2Candidate =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    party: Schema.optional(Schema.String),
+    candidateUrl: Schema.optional(Schema.String),
+    phone: Schema.optional(Schema.String),
+    photoUrl: Schema.optional(Schema.String),
+    email: Schema.optional(Schema.String),
+    orderOnBallot: Schema.optional(Schema.String),
+    channels: Schema.optional(Schema.Array(CivicinfoSchemaV2Channel)),
+  }).annotate({ identifier: "CivicinfoSchemaV2Candidate" });
 
 export interface CivicinfoSchemaV2Contest {
   /** The type of contest. Usually this will be 'General', 'Primary', or 'Run-off' for contests with candidates. For referenda this will be 'Referendum'. For Retention contests this will typically be 'Retention'. */
@@ -306,37 +278,33 @@ export interface CivicinfoSchemaV2Contest {
   candidates?: Array<CivicinfoSchemaV2Candidate>;
 }
 
-export const CivicinfoSchemaV2Contest: Schema.Schema<CivicinfoSchemaV2Contest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      primaryParties: Schema.optional(Schema.Array(Schema.String)),
-      electorateSpecifications: Schema.optional(Schema.String),
-      special: Schema.optional(Schema.String),
-      ballotTitle: Schema.optional(Schema.String),
-      office: Schema.optional(Schema.String),
-      level: Schema.optional(Schema.Array(Schema.String)),
-      roles: Schema.optional(Schema.Array(Schema.String)),
-      district: Schema.optional(CivicinfoSchemaV2ElectoralDistrict),
-      numberElected: Schema.optional(Schema.String),
-      numberVotingFor: Schema.optional(Schema.String),
-      ballotPlacement: Schema.optional(Schema.String),
-      referendumTitle: Schema.optional(Schema.String),
-      referendumSubtitle: Schema.optional(Schema.String),
-      referendumUrl: Schema.optional(Schema.String),
-      referendumBrief: Schema.optional(Schema.String),
-      referendumText: Schema.optional(Schema.String),
-      referendumProStatement: Schema.optional(Schema.String),
-      referendumConStatement: Schema.optional(Schema.String),
-      referendumPassageThreshold: Schema.optional(Schema.String),
-      referendumEffectOfAbstain: Schema.optional(Schema.String),
-      referendumBallotResponses: Schema.optional(Schema.Array(Schema.String)),
-      sources: Schema.optional(Schema.Array(CivicinfoSchemaV2Source)),
-      candidates: Schema.optional(Schema.Array(CivicinfoSchemaV2Candidate)),
-    }),
-  ).annotate({
-    identifier: "CivicinfoSchemaV2Contest",
-  }) as any as Schema.Schema<CivicinfoSchemaV2Contest>;
+export const CivicinfoSchemaV2Contest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    primaryParties: Schema.optional(Schema.Array(Schema.String)),
+    electorateSpecifications: Schema.optional(Schema.String),
+    special: Schema.optional(Schema.String),
+    ballotTitle: Schema.optional(Schema.String),
+    office: Schema.optional(Schema.String),
+    level: Schema.optional(Schema.Array(Schema.String)),
+    roles: Schema.optional(Schema.Array(Schema.String)),
+    district: Schema.optional(CivicinfoSchemaV2ElectoralDistrict),
+    numberElected: Schema.optional(Schema.String),
+    numberVotingFor: Schema.optional(Schema.String),
+    ballotPlacement: Schema.optional(Schema.String),
+    referendumTitle: Schema.optional(Schema.String),
+    referendumSubtitle: Schema.optional(Schema.String),
+    referendumUrl: Schema.optional(Schema.String),
+    referendumBrief: Schema.optional(Schema.String),
+    referendumText: Schema.optional(Schema.String),
+    referendumProStatement: Schema.optional(Schema.String),
+    referendumConStatement: Schema.optional(Schema.String),
+    referendumPassageThreshold: Schema.optional(Schema.String),
+    referendumEffectOfAbstain: Schema.optional(Schema.String),
+    referendumBallotResponses: Schema.optional(Schema.Array(Schema.String)),
+    sources: Schema.optional(Schema.Array(CivicinfoSchemaV2Source)),
+    candidates: Schema.optional(Schema.Array(CivicinfoSchemaV2Candidate)),
+  }).annotate({ identifier: "CivicinfoSchemaV2Contest" });
 
 export interface CivicinfoSchemaV2ElectionOfficial {
   /** The full name of the election official. */
@@ -351,18 +319,14 @@ export interface CivicinfoSchemaV2ElectionOfficial {
   emailAddress?: string;
 }
 
-export const CivicinfoSchemaV2ElectionOfficial: Schema.Schema<CivicinfoSchemaV2ElectionOfficial> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      officePhoneNumber: Schema.optional(Schema.String),
-      faxNumber: Schema.optional(Schema.String),
-      emailAddress: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CivicinfoSchemaV2ElectionOfficial",
-  }) as any as Schema.Schema<CivicinfoSchemaV2ElectionOfficial>;
+export const CivicinfoSchemaV2ElectionOfficial =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    title: Schema.optional(Schema.String),
+    officePhoneNumber: Schema.optional(Schema.String),
+    faxNumber: Schema.optional(Schema.String),
+    emailAddress: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CivicinfoSchemaV2ElectionOfficial" });
 
 export interface CivicinfoSchemaV2AdministrativeBody {
   /** The name of this election administrative body. */
@@ -397,32 +361,26 @@ export interface CivicinfoSchemaV2AdministrativeBody {
   electionOfficials?: Array<CivicinfoSchemaV2ElectionOfficial>;
 }
 
-export const CivicinfoSchemaV2AdministrativeBody: Schema.Schema<CivicinfoSchemaV2AdministrativeBody> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      electionInfoUrl: Schema.optional(Schema.String),
-      electionRegistrationUrl: Schema.optional(Schema.String),
-      electionRegistrationConfirmationUrl: Schema.optional(Schema.String),
-      absenteeVotingInfoUrl: Schema.optional(Schema.String),
-      votingLocationFinderUrl: Schema.optional(Schema.String),
-      ballotInfoUrl: Schema.optional(Schema.String),
-      electionRulesUrl: Schema.optional(Schema.String),
-      voter_services: Schema.optional(Schema.Array(Schema.String)),
-      hoursOfOperation: Schema.optional(Schema.String),
-      correspondenceAddress: Schema.optional(
-        CivicinfoSchemaV2SimpleAddressType,
-      ),
-      physicalAddress: Schema.optional(CivicinfoSchemaV2SimpleAddressType),
-      electionNoticeText: Schema.optional(Schema.String),
-      electionNoticeUrl: Schema.optional(Schema.String),
-      electionOfficials: Schema.optional(
-        Schema.Array(CivicinfoSchemaV2ElectionOfficial),
-      ),
-    }),
-  ).annotate({
-    identifier: "CivicinfoSchemaV2AdministrativeBody",
-  }) as any as Schema.Schema<CivicinfoSchemaV2AdministrativeBody>;
+export const CivicinfoSchemaV2AdministrativeBody =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    electionInfoUrl: Schema.optional(Schema.String),
+    electionRegistrationUrl: Schema.optional(Schema.String),
+    electionRegistrationConfirmationUrl: Schema.optional(Schema.String),
+    absenteeVotingInfoUrl: Schema.optional(Schema.String),
+    votingLocationFinderUrl: Schema.optional(Schema.String),
+    ballotInfoUrl: Schema.optional(Schema.String),
+    electionRulesUrl: Schema.optional(Schema.String),
+    voter_services: Schema.optional(Schema.Array(Schema.String)),
+    hoursOfOperation: Schema.optional(Schema.String),
+    correspondenceAddress: Schema.optional(CivicinfoSchemaV2SimpleAddressType),
+    physicalAddress: Schema.optional(CivicinfoSchemaV2SimpleAddressType),
+    electionNoticeText: Schema.optional(Schema.String),
+    electionNoticeUrl: Schema.optional(Schema.String),
+    electionOfficials: Schema.optional(
+      Schema.Array(CivicinfoSchemaV2ElectionOfficial),
+    ),
+  }).annotate({ identifier: "CivicinfoSchemaV2AdministrativeBody" });
 
 export interface CivicinfoSchemaV2AdministrationRegion {
   /** The name of the jurisdiction. */
@@ -482,27 +440,23 @@ export interface CivicinfoSchemaV2Precinct {
   spatialBoundaryId?: Array<string>;
 }
 
-export const CivicinfoSchemaV2Precinct: Schema.Schema<CivicinfoSchemaV2Precinct> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      datasetId: Schema.optional(Schema.String),
-      ocdId: Schema.optional(Schema.Array(Schema.String)),
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      number: Schema.optional(Schema.String),
-      splitName: Schema.optional(Schema.String),
-      mailOnly: Schema.optional(Schema.Boolean),
-      ward: Schema.optional(Schema.String),
-      contestId: Schema.optional(Schema.Array(Schema.String)),
-      administrationRegionId: Schema.optional(Schema.String),
-      electoralDistrictId: Schema.optional(Schema.Array(Schema.String)),
-      pollingLocationId: Schema.optional(Schema.Array(Schema.String)),
-      earlyVoteSiteId: Schema.optional(Schema.Array(Schema.String)),
-      spatialBoundaryId: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "CivicinfoSchemaV2Precinct",
-  }) as any as Schema.Schema<CivicinfoSchemaV2Precinct>;
+export const CivicinfoSchemaV2Precinct =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    datasetId: Schema.optional(Schema.String),
+    ocdId: Schema.optional(Schema.Array(Schema.String)),
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    number: Schema.optional(Schema.String),
+    splitName: Schema.optional(Schema.String),
+    mailOnly: Schema.optional(Schema.Boolean),
+    ward: Schema.optional(Schema.String),
+    contestId: Schema.optional(Schema.Array(Schema.String)),
+    administrationRegionId: Schema.optional(Schema.String),
+    electoralDistrictId: Schema.optional(Schema.Array(Schema.String)),
+    pollingLocationId: Schema.optional(Schema.Array(Schema.String)),
+    earlyVoteSiteId: Schema.optional(Schema.Array(Schema.String)),
+    spatialBoundaryId: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "CivicinfoSchemaV2Precinct" });
 
 export interface CivicinfoApiprotosV2VoterInfoResponse {
   /** The election that was queried. */
@@ -530,33 +484,27 @@ export interface CivicinfoApiprotosV2VoterInfoResponse {
   kind?: string;
 }
 
-export const CivicinfoApiprotosV2VoterInfoResponse: Schema.Schema<CivicinfoApiprotosV2VoterInfoResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      election: Schema.optional(CivicinfoSchemaV2Election),
-      otherElections: Schema.optional(Schema.Array(CivicinfoSchemaV2Election)),
-      normalizedInput: Schema.optional(CivicinfoSchemaV2SimpleAddressType),
-      pollingLocations: Schema.optional(
-        Schema.Array(CivicinfoSchemaV2PollingLocation),
-      ),
-      earlyVoteSites: Schema.optional(
-        Schema.Array(CivicinfoSchemaV2PollingLocation),
-      ),
-      dropOffLocations: Schema.optional(
-        Schema.Array(CivicinfoSchemaV2PollingLocation),
-      ),
-      contests: Schema.optional(Schema.Array(CivicinfoSchemaV2Contest)),
-      state: Schema.optional(
-        Schema.Array(CivicinfoSchemaV2AdministrationRegion),
-      ),
-      precinctId: Schema.optional(Schema.String),
-      mailOnly: Schema.optional(Schema.Boolean),
-      precincts: Schema.optional(Schema.Array(CivicinfoSchemaV2Precinct)),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CivicinfoApiprotosV2VoterInfoResponse",
-  }) as any as Schema.Schema<CivicinfoApiprotosV2VoterInfoResponse>;
+export const CivicinfoApiprotosV2VoterInfoResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    election: Schema.optional(CivicinfoSchemaV2Election),
+    otherElections: Schema.optional(Schema.Array(CivicinfoSchemaV2Election)),
+    normalizedInput: Schema.optional(CivicinfoSchemaV2SimpleAddressType),
+    pollingLocations: Schema.optional(
+      Schema.Array(CivicinfoSchemaV2PollingLocation),
+    ),
+    earlyVoteSites: Schema.optional(
+      Schema.Array(CivicinfoSchemaV2PollingLocation),
+    ),
+    dropOffLocations: Schema.optional(
+      Schema.Array(CivicinfoSchemaV2PollingLocation),
+    ),
+    contests: Schema.optional(Schema.Array(CivicinfoSchemaV2Contest)),
+    state: Schema.optional(Schema.Array(CivicinfoSchemaV2AdministrationRegion)),
+    precinctId: Schema.optional(Schema.String),
+    mailOnly: Schema.optional(Schema.Boolean),
+    precincts: Schema.optional(Schema.Array(CivicinfoSchemaV2Precinct)),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CivicinfoApiprotosV2VoterInfoResponse" });
 
 export interface CivicinfoApiprotosV2ElectionsQueryResponse {
   /** A list of available elections */
@@ -565,15 +513,11 @@ export interface CivicinfoApiprotosV2ElectionsQueryResponse {
   kind?: string;
 }
 
-export const CivicinfoApiprotosV2ElectionsQueryResponse: Schema.Schema<CivicinfoApiprotosV2ElectionsQueryResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      elections: Schema.optional(Schema.Array(CivicinfoSchemaV2Election)),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CivicinfoApiprotosV2ElectionsQueryResponse",
-  }) as any as Schema.Schema<CivicinfoApiprotosV2ElectionsQueryResponse>;
+export const CivicinfoApiprotosV2ElectionsQueryResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    elections: Schema.optional(Schema.Array(CivicinfoSchemaV2Election)),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CivicinfoApiprotosV2ElectionsQueryResponse" });
 
 export interface CivicinfoApiprotosV2DivisionSearchResult {
   /** The unique Open Civic Data identifier for this division */
@@ -584,16 +528,12 @@ export interface CivicinfoApiprotosV2DivisionSearchResult {
   aliases?: Array<string>;
 }
 
-export const CivicinfoApiprotosV2DivisionSearchResult: Schema.Schema<CivicinfoApiprotosV2DivisionSearchResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ocdId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      aliases: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "CivicinfoApiprotosV2DivisionSearchResult",
-  }) as any as Schema.Schema<CivicinfoApiprotosV2DivisionSearchResult>;
+export const CivicinfoApiprotosV2DivisionSearchResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ocdId: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    aliases: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "CivicinfoApiprotosV2DivisionSearchResult" });
 
 export interface CivicinfoApiprotosV2DivisionSearchResponse {
   results?: Array<CivicinfoApiprotosV2DivisionSearchResult>;
@@ -601,17 +541,13 @@ export interface CivicinfoApiprotosV2DivisionSearchResponse {
   kind?: string;
 }
 
-export const CivicinfoApiprotosV2DivisionSearchResponse: Schema.Schema<CivicinfoApiprotosV2DivisionSearchResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      results: Schema.optional(
-        Schema.Array(CivicinfoApiprotosV2DivisionSearchResult),
-      ),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CivicinfoApiprotosV2DivisionSearchResponse",
-  }) as any as Schema.Schema<CivicinfoApiprotosV2DivisionSearchResponse>;
+export const CivicinfoApiprotosV2DivisionSearchResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    results: Schema.optional(
+      Schema.Array(CivicinfoApiprotosV2DivisionSearchResult),
+    ),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CivicinfoApiprotosV2DivisionSearchResponse" });
 
 export interface CivicinfoSchemaV2GeographicDivision {
   /** The name of the division. */
@@ -622,16 +558,12 @@ export interface CivicinfoSchemaV2GeographicDivision {
   officeIndices?: Array<number>;
 }
 
-export const CivicinfoSchemaV2GeographicDivision: Schema.Schema<CivicinfoSchemaV2GeographicDivision> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      alsoKnownAs: Schema.optional(Schema.Array(Schema.String)),
-      officeIndices: Schema.optional(Schema.Array(Schema.Number)),
-    }),
-  ).annotate({
-    identifier: "CivicinfoSchemaV2GeographicDivision",
-  }) as any as Schema.Schema<CivicinfoSchemaV2GeographicDivision>;
+export const CivicinfoSchemaV2GeographicDivision =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    alsoKnownAs: Schema.optional(Schema.Array(Schema.String)),
+    officeIndices: Schema.optional(Schema.Array(Schema.Number)),
+  }).annotate({ identifier: "CivicinfoSchemaV2GeographicDivision" });
 
 export interface CivicinfoApiprotosV2DivisionByAddressResponse {
   /** The normalized version of the requested address. */
@@ -639,17 +571,13 @@ export interface CivicinfoApiprotosV2DivisionByAddressResponse {
   divisions?: Record<string, CivicinfoSchemaV2GeographicDivision>;
 }
 
-export const CivicinfoApiprotosV2DivisionByAddressResponse: Schema.Schema<CivicinfoApiprotosV2DivisionByAddressResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      normalizedInput: Schema.optional(CivicinfoSchemaV2SimpleAddressType),
-      divisions: Schema.optional(
-        Schema.Record(Schema.String, CivicinfoSchemaV2GeographicDivision),
-      ),
-    }),
-  ).annotate({
-    identifier: "CivicinfoApiprotosV2DivisionByAddressResponse",
-  }) as any as Schema.Schema<CivicinfoApiprotosV2DivisionByAddressResponse>;
+export const CivicinfoApiprotosV2DivisionByAddressResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    normalizedInput: Schema.optional(CivicinfoSchemaV2SimpleAddressType),
+    divisions: Schema.optional(
+      Schema.Record(Schema.String, CivicinfoSchemaV2GeographicDivision),
+    ),
+  }).annotate({ identifier: "CivicinfoApiprotosV2DivisionByAddressResponse" });
 
 // ==========================================================================
 // Operations

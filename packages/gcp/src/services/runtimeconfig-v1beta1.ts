@@ -29,29 +29,19 @@ export interface Cardinality {
   number?: number;
 }
 
-export const Cardinality: Schema.Schema<Cardinality> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      path: Schema.optional(Schema.String),
-      number: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "Cardinality",
-  }) as any as Schema.Schema<Cardinality>;
+export const Cardinality = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  path: Schema.optional(Schema.String),
+  number: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Cardinality" });
 
 export interface EndCondition {
   /** The cardinality of the `EndCondition`. */
   cardinality?: Cardinality;
 }
 
-export const EndCondition: Schema.Schema<EndCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cardinality: Schema.optional(Cardinality),
-    }),
-  ).annotate({
-    identifier: "EndCondition",
-  }) as any as Schema.Schema<EndCondition>;
+export const EndCondition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cardinality: Schema.optional(Cardinality),
+}).annotate({ identifier: "EndCondition" });
 
 export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -62,16 +52,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      message: Schema.optional(Schema.String),
-      code: Schema.optional(Schema.Number),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  message: Schema.optional(Schema.String),
+  code: Schema.optional(Schema.Number),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface Waiter {
   /** Output only. If the value is `false`, it means the waiter is still waiting for one of its conditions to be met. If true, the waiter has finished. If the waiter finished due to a timeout or failure, `error` will be set. */
@@ -90,18 +77,15 @@ export interface Waiter {
   timeout?: string;
 }
 
-export const Waiter: Schema.Schema<Waiter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      done: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      failure: Schema.optional(EndCondition),
-      success: Schema.optional(EndCondition),
-      error: Schema.optional(Status),
-      timeout: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Waiter" }) as any as Schema.Schema<Waiter>;
+export const Waiter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  done: Schema.optional(Schema.Boolean),
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  failure: Schema.optional(EndCondition),
+  success: Schema.optional(EndCondition),
+  error: Schema.optional(Status),
+  timeout: Schema.optional(Schema.String),
+}).annotate({ identifier: "Waiter" });
 
 export interface ListWaitersResponse {
   /** Found waiters in the project. */
@@ -110,15 +94,10 @@ export interface ListWaitersResponse {
   nextPageToken?: string;
 }
 
-export const ListWaitersResponse: Schema.Schema<ListWaitersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      waiters: Schema.optional(Schema.Array(Waiter)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListWaitersResponse",
-  }) as any as Schema.Schema<ListWaitersResponse>;
+export const ListWaitersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  waiters: Schema.optional(Schema.Array(Waiter)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListWaitersResponse" });
 
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -133,30 +112,23 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      error: Schema.optional(Status),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  done: Schema.optional(Schema.Boolean),
+  error: Schema.optional(Status),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Operation" });
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsRequest",
-  }) as any as Schema.Schema<TestIamPermissionsRequest>;
+export const TestIamPermissionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsRequest" });
 
 export interface Expr {
   /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
@@ -169,15 +141,12 @@ export interface Expr {
   description?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      location: Schema.optional(Schema.String),
-      expression: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Expr" }) as any as Schema.Schema<Expr>;
+export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  location: Schema.optional(Schema.String),
+  expression: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "Expr" });
 
 export interface Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -188,14 +157,11 @@ export interface Binding {
   members?: Array<string>;
 }
 
-export const Binding: Schema.Schema<Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      condition: Schema.optional(Expr),
-      role: Schema.optional(Schema.String),
-      members: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "Binding" }) as any as Schema.Schema<Binding>;
+export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  condition: Schema.optional(Expr),
+  role: Schema.optional(Schema.String),
+  members: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Binding" });
 
 export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -206,49 +172,36 @@ export interface Policy {
   etag?: string;
 }
 
-export const Policy: Schema.Schema<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.Number),
-      bindings: Schema.optional(Schema.Array(Binding)),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Policy" }) as any as Schema.Schema<Policy>;
+export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.Number),
+  bindings: Schema.optional(Schema.Array(Binding)),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "Policy" });
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsResponse",
-  }) as any as Schema.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsResponse" });
 
 export interface WatchVariableRequest {
   /** If specified, checks the current timestamp of the variable and if the current timestamp is newer than `newerThan` timestamp, the method returns immediately. If not specified or the variable has an older timestamp, the watcher waits for a the value to change before returning. */
   newerThan?: string;
 }
 
-export const WatchVariableRequest: Schema.Schema<WatchVariableRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      newerThan: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WatchVariableRequest",
-  }) as any as Schema.Schema<WatchVariableRequest>;
+export const WatchVariableRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  newerThan: Schema.optional(Schema.String),
+}).annotate({ identifier: "WatchVariableRequest" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface RuntimeConfig {
   /** The resource name of a runtime config. The name must have the format: projects/[PROJECT_ID]/configs/[CONFIG_NAME] The `[PROJECT_ID]` must be a valid project ID, and `[CONFIG_NAME]` is an arbitrary name that matches the `[0-9A-Za-z](?:[_.A-Za-z0-9-]{0,62}[_.A-Za-z0-9])?` regular expression. The length of `[CONFIG_NAME]` must be less than 64 characters. You pick the RuntimeConfig resource name, but the server will validate that the name adheres to this format. After you create the resource, you cannot change the resource's name. */
@@ -257,15 +210,10 @@ export interface RuntimeConfig {
   description?: string;
 }
 
-export const RuntimeConfig: Schema.Schema<RuntimeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RuntimeConfig",
-  }) as any as Schema.Schema<RuntimeConfig>;
+export const RuntimeConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "RuntimeConfig" });
 
 export interface ListConfigsResponse {
   /** This token allows you to get the next page of results for list requests. If the number of results is larger than `pageSize`, use the `nextPageToken` as a value for the query parameter `pageToken` in the next list request. Subsequent list requests will have their own `nextPageToken` to continue paging through the results */
@@ -274,29 +222,19 @@ export interface ListConfigsResponse {
   configs?: Array<RuntimeConfig>;
 }
 
-export const ListConfigsResponse: Schema.Schema<ListConfigsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      configs: Schema.optional(Schema.Array(RuntimeConfig)),
-    }),
-  ).annotate({
-    identifier: "ListConfigsResponse",
-  }) as any as Schema.Schema<ListConfigsResponse>;
+export const ListConfigsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  configs: Schema.optional(Schema.Array(RuntimeConfig)),
+}).annotate({ identifier: "ListConfigsResponse" });
 
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: Policy;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policy: Schema.optional(Policy),
-    }),
-  ).annotate({
-    identifier: "SetIamPolicyRequest",
-  }) as any as Schema.Schema<SetIamPolicyRequest>;
+export const SetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policy: Schema.optional(Policy),
+}).annotate({ identifier: "SetIamPolicyRequest" });
 
 export interface Variable {
   /** The string value of the variable. The length of the value must be less than 4096 bytes. Empty values are also accepted. For example, `text: "my text value"`. The string must be valid UTF-8. */
@@ -311,16 +249,13 @@ export interface Variable {
   updateTime?: string;
 }
 
-export const Variable: Schema.Schema<Variable> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Variable" }) as any as Schema.Schema<Variable>;
+export const Variable = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  text: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Variable" });
 
 export interface ListVariablesResponse {
   /** This token allows you to get the next page of results for list requests. If the number of results is larger than `pageSize`, use the `nextPageToken` as a value for the query parameter `pageToken` in the next list request. Subsequent list requests will have their own `nextPageToken` to continue paging through the results */
@@ -329,15 +264,10 @@ export interface ListVariablesResponse {
   variables?: Array<Variable>;
 }
 
-export const ListVariablesResponse: Schema.Schema<ListVariablesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      variables: Schema.optional(Schema.Array(Variable)),
-    }),
-  ).annotate({
-    identifier: "ListVariablesResponse",
-  }) as any as Schema.Schema<ListVariablesResponse>;
+export const ListVariablesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  variables: Schema.optional(Schema.Array(Variable)),
+}).annotate({ identifier: "ListVariablesResponse" });
 
 // ==========================================================================
 // Operations

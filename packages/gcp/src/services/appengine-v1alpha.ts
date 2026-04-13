@@ -29,13 +29,10 @@ export interface GceTag {
   parent?: Array<string>;
 }
 
-export const GceTag: Schema.Schema<GceTag> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tag: Schema.optional(Schema.String),
-      parent: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "GceTag" }) as any as Schema.Schema<GceTag>;
+export const GceTag = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tag: Schema.optional(Schema.String),
+  parent: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "GceTag" });
 
 export interface ManagedCertificate {
   /** Time at which the certificate was last renewed. The renewal process is fully managed. Certificate renewal will automatically occur before the certificate expires. Renewal errors can be tracked via ManagementStatus.@OutputOnly */
@@ -53,15 +50,10 @@ export interface ManagedCertificate {
     | (string & {});
 }
 
-export const ManagedCertificate: Schema.Schema<ManagedCertificate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lastRenewalTime: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ManagedCertificate",
-  }) as any as Schema.Schema<ManagedCertificate>;
+export const ManagedCertificate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  lastRenewalTime: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.String),
+}).annotate({ identifier: "ManagedCertificate" });
 
 export interface CertificateRawData {
   /** PEM encoded x.509 public key certificate. This field is set once on certificate creation. Must include the header and footer. Example: -----BEGIN CERTIFICATE----- -----END CERTIFICATE----- */
@@ -70,15 +62,10 @@ export interface CertificateRawData {
   privateKey?: string;
 }
 
-export const CertificateRawData: Schema.Schema<CertificateRawData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      publicCertificate: Schema.optional(Schema.String),
-      privateKey: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CertificateRawData",
-  }) as any as Schema.Schema<CertificateRawData>;
+export const CertificateRawData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  publicCertificate: Schema.optional(Schema.String),
+  privateKey: Schema.optional(Schema.String),
+}).annotate({ identifier: "CertificateRawData" });
 
 export interface AuthorizedCertificate {
   /** Only applicable if this certificate is managed by App Engine. Managed certificates are tied to the lifecycle of a DomainMapping and cannot be updated or deleted via the AuthorizedCertificates API. If this certificate is manually administered by the user, this field will be empty.@OutputOnly */
@@ -101,36 +88,27 @@ export interface AuthorizedCertificate {
   expireTime?: string;
 }
 
-export const AuthorizedCertificate: Schema.Schema<AuthorizedCertificate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      managedCertificate: Schema.optional(ManagedCertificate),
-      domainMappingsCount: Schema.optional(Schema.Number),
-      id: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      domainNames: Schema.optional(Schema.Array(Schema.String)),
-      visibleDomainMappings: Schema.optional(Schema.Array(Schema.String)),
-      certificateRawData: Schema.optional(CertificateRawData),
-      name: Schema.optional(Schema.String),
-      expireTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AuthorizedCertificate",
-  }) as any as Schema.Schema<AuthorizedCertificate>;
+export const AuthorizedCertificate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  managedCertificate: Schema.optional(ManagedCertificate),
+  domainMappingsCount: Schema.optional(Schema.Number),
+  id: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  domainNames: Schema.optional(Schema.Array(Schema.String)),
+  visibleDomainMappings: Schema.optional(Schema.Array(Schema.String)),
+  certificateRawData: Schema.optional(CertificateRawData),
+  name: Schema.optional(Schema.String),
+  expireTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "AuthorizedCertificate" });
 
 export interface CreateVersionMetadataV1Alpha {
   /** The Cloud Build ID if one was created as part of the version create. @OutputOnly */
   cloudBuildId?: string;
 }
 
-export const CreateVersionMetadataV1Alpha: Schema.Schema<CreateVersionMetadataV1Alpha> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cloudBuildId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreateVersionMetadataV1Alpha",
-  }) as any as Schema.Schema<CreateVersionMetadataV1Alpha>;
+export const CreateVersionMetadataV1Alpha =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cloudBuildId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CreateVersionMetadataV1Alpha" });
 
 export interface OperationMetadataV1Alpha {
   /** Name of the resource that this operation is acting on. Example: apps/myapp/services/default.@OutputOnly */
@@ -150,21 +128,17 @@ export interface OperationMetadataV1Alpha {
   warning?: Array<string>;
 }
 
-export const OperationMetadataV1Alpha: Schema.Schema<OperationMetadataV1Alpha> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      target: Schema.optional(Schema.String),
-      insertTime: Schema.optional(Schema.String),
-      method: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      ephemeralMessage: Schema.optional(Schema.String),
-      createVersionMetadata: Schema.optional(CreateVersionMetadataV1Alpha),
-      user: Schema.optional(Schema.String),
-      warning: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "OperationMetadataV1Alpha",
-  }) as any as Schema.Schema<OperationMetadataV1Alpha>;
+export const OperationMetadataV1Alpha =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    target: Schema.optional(Schema.String),
+    insertTime: Schema.optional(Schema.String),
+    method: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    ephemeralMessage: Schema.optional(Schema.String),
+    createVersionMetadata: Schema.optional(CreateVersionMetadataV1Alpha),
+    user: Schema.optional(Schema.String),
+    warning: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "OperationMetadataV1Alpha" });
 
 export interface AuthorizedDomain {
   /** Full path to the AuthorizedDomain resource in the API. Example: apps/myapp/authorizedDomains/example.com.@OutputOnly */
@@ -173,15 +147,10 @@ export interface AuthorizedDomain {
   id?: string;
 }
 
-export const AuthorizedDomain: Schema.Schema<AuthorizedDomain> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AuthorizedDomain",
-  }) as any as Schema.Schema<AuthorizedDomain>;
+export const AuthorizedDomain = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+}).annotate({ identifier: "AuthorizedDomain" });
 
 export interface ListAuthorizedDomainsResponse {
   /** The authorized domains belonging to the user. */
@@ -190,15 +159,11 @@ export interface ListAuthorizedDomainsResponse {
   nextPageToken?: string;
 }
 
-export const ListAuthorizedDomainsResponse: Schema.Schema<ListAuthorizedDomainsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      domains: Schema.optional(Schema.Array(AuthorizedDomain)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAuthorizedDomainsResponse",
-  }) as any as Schema.Schema<ListAuthorizedDomainsResponse>;
+export const ListAuthorizedDomainsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    domains: Schema.optional(Schema.Array(AuthorizedDomain)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListAuthorizedDomainsResponse" });
 
 export interface Reasons {
   dataGovernance?:
@@ -239,16 +204,13 @@ export interface Reasons {
     | (string & {});
 }
 
-export const Reasons: Schema.Schema<Reasons> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataGovernance: Schema.optional(Schema.String),
-      billing: Schema.optional(Schema.String),
-      abuse: Schema.optional(Schema.String),
-      serviceActivation: Schema.optional(Schema.String),
-      serviceManagement: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Reasons" }) as any as Schema.Schema<Reasons>;
+export const Reasons = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dataGovernance: Schema.optional(Schema.String),
+  billing: Schema.optional(Schema.String),
+  abuse: Schema.optional(Schema.String),
+  serviceActivation: Schema.optional(Schema.String),
+  serviceManagement: Schema.optional(Schema.String),
+}).annotate({ identifier: "Reasons" });
 
 export interface ContainerState {
   /** The current state of the container. This state is the culmination of all of the opinions from external systems that CCFE knows about of the container. */
@@ -258,16 +220,11 @@ export interface ContainerState {
   currentReasons?: Reasons;
 }
 
-export const ContainerState: Schema.Schema<ContainerState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      previousReasons: Schema.optional(Reasons),
-      currentReasons: Schema.optional(Reasons),
-    }),
-  ).annotate({
-    identifier: "ContainerState",
-  }) as any as Schema.Schema<ContainerState>;
+export const ContainerState = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.String),
+  previousReasons: Schema.optional(Reasons),
+  currentReasons: Schema.optional(Reasons),
+}).annotate({ identifier: "ContainerState" });
 
 export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -278,16 +235,13 @@ export interface Status {
   code?: number;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      code: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  code: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the name should be a resource name ending with operations/{unique_id}. */
@@ -302,30 +256,23 @@ export interface Operation {
   error?: Status;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      error: Schema.optional(Status),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  done: Schema.optional(Schema.Boolean),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  error: Schema.optional(Status),
+}).annotate({ identifier: "Operation" });
 
 export interface CreateVersionMetadataV1 {
   /** The Cloud Build ID if one was created as part of the version create. @OutputOnly */
   cloudBuildId?: string;
 }
 
-export const CreateVersionMetadataV1: Schema.Schema<CreateVersionMetadataV1> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cloudBuildId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreateVersionMetadataV1",
-  }) as any as Schema.Schema<CreateVersionMetadataV1>;
+export const CreateVersionMetadataV1 =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cloudBuildId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CreateVersionMetadataV1" });
 
 export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets ListOperationsRequest.return_partial_success and reads across collections. For example, when attempting to list all resources across all supported locations. */
@@ -336,16 +283,13 @@ export interface ListOperationsResponse {
   operations?: Array<Operation>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-      operations: Schema.optional(Schema.Array(Operation)),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+    operations: Schema.optional(Schema.Array(Operation)),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 export interface ResourceRecord {
   /** Relative name of the object affected by this record. Only applicable for CNAME records. Example: 'www'. */
@@ -356,16 +300,11 @@ export interface ResourceRecord {
   type?: "A" | "AAAA" | "CNAME" | (string & {});
 }
 
-export const ResourceRecord: Schema.Schema<ResourceRecord> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      rrdata: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ResourceRecord",
-  }) as any as Schema.Schema<ResourceRecord>;
+export const ResourceRecord = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  rrdata: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "ResourceRecord" });
 
 export interface ProjectsMetadata {
   /** The CCFE state of the consumer project. It is the same state that is communicated to the CLH during project events. Notice that this field is not set in the DB, it is only set in this proto when communicated to CLH in the side channel. */
@@ -395,23 +334,18 @@ export interface ProjectsMetadata {
   gceTag?: Array<GceTag>;
 }
 
-export const ProjectsMetadata: Schema.Schema<ProjectsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      consumerProjectState: Schema.optional(Schema.String),
-      tenantProjectNumber: Schema.optional(Schema.String),
-      consumerProjectNumber: Schema.optional(Schema.String),
-      consumerProjectId: Schema.optional(Schema.String),
-      tenantProjectId: Schema.optional(Schema.String),
-      p4ServiceAccount: Schema.optional(Schema.String),
-      isGceProjectDeprovisioning: Schema.optional(Schema.Boolean),
-      producerProjectId: Schema.optional(Schema.String),
-      producerProjectNumber: Schema.optional(Schema.String),
-      gceTag: Schema.optional(Schema.Array(GceTag)),
-    }),
-  ).annotate({
-    identifier: "ProjectsMetadata",
-  }) as any as Schema.Schema<ProjectsMetadata>;
+export const ProjectsMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  consumerProjectState: Schema.optional(Schema.String),
+  tenantProjectNumber: Schema.optional(Schema.String),
+  consumerProjectNumber: Schema.optional(Schema.String),
+  consumerProjectId: Schema.optional(Schema.String),
+  tenantProjectId: Schema.optional(Schema.String),
+  p4ServiceAccount: Schema.optional(Schema.String),
+  isGceProjectDeprovisioning: Schema.optional(Schema.Boolean),
+  producerProjectId: Schema.optional(Schema.String),
+  producerProjectNumber: Schema.optional(Schema.String),
+  gceTag: Schema.optional(Schema.Array(GceTag)),
+}).annotate({ identifier: "ProjectsMetadata" });
 
 export interface ResourceEvent {
   /** The name of the resource for which this event is. required */
@@ -422,16 +356,11 @@ export interface ResourceEvent {
   eventId?: string;
 }
 
-export const ResourceEvent: Schema.Schema<ResourceEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      state: Schema.optional(ContainerState),
-      eventId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ResourceEvent",
-  }) as any as Schema.Schema<ResourceEvent>;
+export const ResourceEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  state: Schema.optional(ContainerState),
+  eventId: Schema.optional(Schema.String),
+}).annotate({ identifier: "ResourceEvent" });
 
 export interface Location {
   /** The canonical id for this location. For example: "us-east1". */
@@ -446,16 +375,13 @@ export interface Location {
   metadata?: Record<string, unknown>;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locationId: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      displayName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locationId: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  displayName: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Location" });
 
 export interface ListLocationsResponse {
   /** The standard List next-page token. */
@@ -464,15 +390,10 @@ export interface ListLocationsResponse {
   locations?: Array<Location>;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      locations: Schema.optional(Schema.Array(Location)),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  locations: Schema.optional(Schema.Array(Location)),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface LocationMetadata {
   /** App Engine flexible environment is available in the given location.@OutputOnly */
@@ -483,16 +404,11 @@ export interface LocationMetadata {
   searchApiAvailable?: boolean;
 }
 
-export const LocationMetadata: Schema.Schema<LocationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      flexibleEnvironmentAvailable: Schema.optional(Schema.Boolean),
-      standardEnvironmentAvailable: Schema.optional(Schema.Boolean),
-      searchApiAvailable: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "LocationMetadata",
-  }) as any as Schema.Schema<LocationMetadata>;
+export const LocationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  flexibleEnvironmentAvailable: Schema.optional(Schema.Boolean),
+  standardEnvironmentAvailable: Schema.optional(Schema.Boolean),
+  searchApiAvailable: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "LocationMetadata" });
 
 export interface ListAuthorizedCertificatesResponse {
   /** The SSL certificates the user is authorized to administer. */
@@ -501,29 +417,21 @@ export interface ListAuthorizedCertificatesResponse {
   nextPageToken?: string;
 }
 
-export const ListAuthorizedCertificatesResponse: Schema.Schema<ListAuthorizedCertificatesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      certificates: Schema.optional(Schema.Array(AuthorizedCertificate)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAuthorizedCertificatesResponse",
-  }) as any as Schema.Schema<ListAuthorizedCertificatesResponse>;
+export const ListAuthorizedCertificatesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    certificates: Schema.optional(Schema.Array(AuthorizedCertificate)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListAuthorizedCertificatesResponse" });
 
 export interface CreateVersionMetadataV1Beta {
   /** The Cloud Build ID if one was created as part of the version create. @OutputOnly */
   cloudBuildId?: string;
 }
 
-export const CreateVersionMetadataV1Beta: Schema.Schema<CreateVersionMetadataV1Beta> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cloudBuildId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreateVersionMetadataV1Beta",
-  }) as any as Schema.Schema<CreateVersionMetadataV1Beta>;
+export const CreateVersionMetadataV1Beta =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cloudBuildId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CreateVersionMetadataV1Beta" });
 
 export interface OperationMetadataV1 {
   /** Ephemeral message that may change every time the operation is polled. @OutputOnly */
@@ -543,21 +451,16 @@ export interface OperationMetadataV1 {
   insertTime?: string;
 }
 
-export const OperationMetadataV1: Schema.Schema<OperationMetadataV1> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ephemeralMessage: Schema.optional(Schema.String),
-      createVersionMetadata: Schema.optional(CreateVersionMetadataV1),
-      user: Schema.optional(Schema.String),
-      warning: Schema.optional(Schema.Array(Schema.String)),
-      method: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      insertTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadataV1",
-  }) as any as Schema.Schema<OperationMetadataV1>;
+export const OperationMetadataV1 = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ephemeralMessage: Schema.optional(Schema.String),
+  createVersionMetadata: Schema.optional(CreateVersionMetadataV1),
+  user: Schema.optional(Schema.String),
+  warning: Schema.optional(Schema.Array(Schema.String)),
+  method: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  insertTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationMetadataV1" });
 
 export interface ProjectEvent {
   /** The unique ID for this project event. CLHs can use this value to dedup repeated calls. required */
@@ -574,17 +477,12 @@ export interface ProjectEvent {
     | (string & {});
 }
 
-export const ProjectEvent: Schema.Schema<ProjectEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      eventId: Schema.optional(Schema.String),
-      state: Schema.optional(ContainerState),
-      projectMetadata: Schema.optional(ProjectsMetadata),
-      phase: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProjectEvent",
-  }) as any as Schema.Schema<ProjectEvent>;
+export const ProjectEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  eventId: Schema.optional(Schema.String),
+  state: Schema.optional(ContainerState),
+  projectMetadata: Schema.optional(ProjectsMetadata),
+  phase: Schema.optional(Schema.String),
+}).annotate({ identifier: "ProjectEvent" });
 
 export interface OperationMetadataV1Beta {
   /** Ephemeral message that may change every time the operation is polled. @OutputOnly */
@@ -604,21 +502,17 @@ export interface OperationMetadataV1Beta {
   insertTime?: string;
 }
 
-export const OperationMetadataV1Beta: Schema.Schema<OperationMetadataV1Beta> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ephemeralMessage: Schema.optional(Schema.String),
-      createVersionMetadata: Schema.optional(CreateVersionMetadataV1Beta),
-      user: Schema.optional(Schema.String),
-      warning: Schema.optional(Schema.Array(Schema.String)),
-      method: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      insertTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadataV1Beta",
-  }) as any as Schema.Schema<OperationMetadataV1Beta>;
+export const OperationMetadataV1Beta =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ephemeralMessage: Schema.optional(Schema.String),
+    createVersionMetadata: Schema.optional(CreateVersionMetadataV1Beta),
+    user: Schema.optional(Schema.String),
+    warning: Schema.optional(Schema.Array(Schema.String)),
+    method: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+    insertTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OperationMetadataV1Beta" });
 
 export interface SslSettings {
   /** Output only. Whether the mapped certificate is an App Engine managed certificate. Managed certificates are created by default with a domain mapping. To opt out, specify no_managed_certificate on a CREATE or UPDATE request.@OutputOnly */
@@ -627,15 +521,10 @@ export interface SslSettings {
   certificateId?: string;
 }
 
-export const SslSettings: Schema.Schema<SslSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      isManagedCertificate: Schema.optional(Schema.Boolean),
-      certificateId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SslSettings",
-  }) as any as Schema.Schema<SslSettings>;
+export const SslSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  isManagedCertificate: Schema.optional(Schema.Boolean),
+  certificateId: Schema.optional(Schema.String),
+}).annotate({ identifier: "SslSettings" });
 
 export interface GoogleAppengineV1betaLocationMetadata {
   /** App Engine flexible environment is available in the given location.@OutputOnly */
@@ -646,23 +535,18 @@ export interface GoogleAppengineV1betaLocationMetadata {
   searchApiAvailable?: boolean;
 }
 
-export const GoogleAppengineV1betaLocationMetadata: Schema.Schema<GoogleAppengineV1betaLocationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      flexibleEnvironmentAvailable: Schema.optional(Schema.Boolean),
-      standardEnvironmentAvailable: Schema.optional(Schema.Boolean),
-      searchApiAvailable: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleAppengineV1betaLocationMetadata",
-  }) as any as Schema.Schema<GoogleAppengineV1betaLocationMetadata>;
+export const GoogleAppengineV1betaLocationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    flexibleEnvironmentAvailable: Schema.optional(Schema.Boolean),
+    standardEnvironmentAvailable: Schema.optional(Schema.Boolean),
+    searchApiAvailable: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleAppengineV1betaLocationMetadata" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface DomainMapping {
   /** Output only. Full path to the DomainMapping resource in the API. Example: apps/myapp/domainMapping/example.com.@OutputOnly */
@@ -675,17 +559,12 @@ export interface DomainMapping {
   resourceRecords?: Array<ResourceRecord>;
 }
 
-export const DomainMapping: Schema.Schema<DomainMapping> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      sslSettings: Schema.optional(SslSettings),
-      id: Schema.optional(Schema.String),
-      resourceRecords: Schema.optional(Schema.Array(ResourceRecord)),
-    }),
-  ).annotate({
-    identifier: "DomainMapping",
-  }) as any as Schema.Schema<DomainMapping>;
+export const DomainMapping = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  sslSettings: Schema.optional(SslSettings),
+  id: Schema.optional(Schema.String),
+  resourceRecords: Schema.optional(Schema.Array(ResourceRecord)),
+}).annotate({ identifier: "DomainMapping" });
 
 export interface ListDomainMappingsResponse {
   /** The domain mappings for the application. */
@@ -694,15 +573,11 @@ export interface ListDomainMappingsResponse {
   nextPageToken?: string;
 }
 
-export const ListDomainMappingsResponse: Schema.Schema<ListDomainMappingsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      domainMappings: Schema.optional(Schema.Array(DomainMapping)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListDomainMappingsResponse",
-  }) as any as Schema.Schema<ListDomainMappingsResponse>;
+export const ListDomainMappingsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    domainMappings: Schema.optional(Schema.Array(DomainMapping)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListDomainMappingsResponse" });
 
 // ==========================================================================
 // Operations

@@ -24,24 +24,19 @@ const svc = T.Service({
 
 export interface GoogleFirestoreAdminV1GoogleDefaultEncryptionOptions {}
 
-export const GoogleFirestoreAdminV1GoogleDefaultEncryptionOptions: Schema.Schema<GoogleFirestoreAdminV1GoogleDefaultEncryptionOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleFirestoreAdminV1GoogleDefaultEncryptionOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleFirestoreAdminV1GoogleDefaultEncryptionOptions",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1GoogleDefaultEncryptionOptions>;
+  });
 
 export interface DocumentsTarget {
   /** The names of the documents to retrieve. In the format: `projects/{project_id}/databases/{database_id}/documents/{document_path}`. The request will fail if any of the document is not a child resource of the given `database`. Duplicate names will be elided. */
   documents?: Array<string>;
 }
 
-export const DocumentsTarget: Schema.Schema<DocumentsTarget> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      documents: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "DocumentsTarget",
-  }) as any as Schema.Schema<DocumentsTarget>;
+export const DocumentsTarget = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  documents: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "DocumentsTarget" });
 
 export interface Precondition {
   /** When set to `true`, the target document must exist. When set to `false`, the target document must not exist. */
@@ -50,22 +45,17 @@ export interface Precondition {
   updateTime?: string;
 }
 
-export const Precondition: Schema.Schema<Precondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      exists: Schema.optional(Schema.Boolean),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Precondition",
-  }) as any as Schema.Schema<Precondition>;
+export const Precondition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  exists: Schema.optional(Schema.Boolean),
+  updateTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Precondition" });
 
 export interface GoogleFirestoreAdminV1DailyRecurrence {}
 
-export const GoogleFirestoreAdminV1DailyRecurrence: Schema.Schema<GoogleFirestoreAdminV1DailyRecurrence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleFirestoreAdminV1DailyRecurrence =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleFirestoreAdminV1DailyRecurrence",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1DailyRecurrence>;
+  });
 
 export interface GoogleFirestoreAdminV1WeeklyRecurrence {
   /** The day of week to run. DAY_OF_WEEK_UNSPECIFIED is not allowed. */
@@ -81,14 +71,10 @@ export interface GoogleFirestoreAdminV1WeeklyRecurrence {
     | (string & {});
 }
 
-export const GoogleFirestoreAdminV1WeeklyRecurrence: Schema.Schema<GoogleFirestoreAdminV1WeeklyRecurrence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      day: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1WeeklyRecurrence",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1WeeklyRecurrence>;
+export const GoogleFirestoreAdminV1WeeklyRecurrence =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    day: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1WeeklyRecurrence" });
 
 export interface GoogleFirestoreAdminV1BackupSchedule {
   /** At what relative time in the future, compared to its creation time, the backup should be deleted, e.g. keep backups for 7 days. The maximum supported retention period is 14 weeks. */
@@ -105,35 +91,29 @@ export interface GoogleFirestoreAdminV1BackupSchedule {
   updateTime?: string;
 }
 
-export const GoogleFirestoreAdminV1BackupSchedule: Schema.Schema<GoogleFirestoreAdminV1BackupSchedule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      retention: Schema.optional(Schema.String),
-      dailyRecurrence: Schema.optional(GoogleFirestoreAdminV1DailyRecurrence),
-      weeklyRecurrence: Schema.optional(GoogleFirestoreAdminV1WeeklyRecurrence),
-      createTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1BackupSchedule",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1BackupSchedule>;
+export const GoogleFirestoreAdminV1BackupSchedule =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    retention: Schema.optional(Schema.String),
+    dailyRecurrence: Schema.optional(GoogleFirestoreAdminV1DailyRecurrence),
+    weeklyRecurrence: Schema.optional(GoogleFirestoreAdminV1WeeklyRecurrence),
+    createTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1BackupSchedule" });
 
 export interface GoogleFirestoreAdminV1ListBackupSchedulesResponse {
   /** List of all backup schedules. */
   backupSchedules?: Array<GoogleFirestoreAdminV1BackupSchedule>;
 }
 
-export const GoogleFirestoreAdminV1ListBackupSchedulesResponse: Schema.Schema<GoogleFirestoreAdminV1ListBackupSchedulesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      backupSchedules: Schema.optional(
-        Schema.Array(GoogleFirestoreAdminV1BackupSchedule),
-      ),
-    }),
-  ).annotate({
+export const GoogleFirestoreAdminV1ListBackupSchedulesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    backupSchedules: Schema.optional(
+      Schema.Array(GoogleFirestoreAdminV1BackupSchedule),
+    ),
+  }).annotate({
     identifier: "GoogleFirestoreAdminV1ListBackupSchedulesResponse",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1ListBackupSchedulesResponse>;
+  });
 
 export interface Firestore_Function {
   /** Required. The name of the function to evaluate. **Requires:** * must be in snake case (lower case with underscore separator). */
@@ -204,13 +184,10 @@ export interface LatLng {
   longitude?: number;
 }
 
-export const LatLng: Schema.Schema<LatLng> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      latitude: Schema.optional(Schema.Number),
-      longitude: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "LatLng" }) as any as Schema.Schema<LatLng>;
+export const LatLng = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  latitude: Schema.optional(Schema.Number),
+  longitude: Schema.optional(Schema.Number),
+}).annotate({ identifier: "LatLng" });
 
 export interface Value {
   /** A value that represents an unevaluated expression. **Requires:** * Not allowed to be used when writing documents. */
@@ -287,30 +264,20 @@ export interface DocumentDelete {
   removedTargetIds?: Array<number>;
 }
 
-export const DocumentDelete: Schema.Schema<DocumentDelete> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      document: Schema.optional(Schema.String),
-      readTime: Schema.optional(Schema.String),
-      removedTargetIds: Schema.optional(Schema.Array(Schema.Number)),
-    }),
-  ).annotate({
-    identifier: "DocumentDelete",
-  }) as any as Schema.Schema<DocumentDelete>;
+export const DocumentDelete = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  document: Schema.optional(Schema.String),
+  readTime: Schema.optional(Schema.String),
+  removedTargetIds: Schema.optional(Schema.Array(Schema.Number)),
+}).annotate({ identifier: "DocumentDelete" });
 
 export interface FieldReference {
   /** A reference to a field in a document. Requires: * MUST be a dot-delimited (`.`) string of segments, where each segment conforms to document field name limitations. */
   fieldPath?: string;
 }
 
-export const FieldReference: Schema.Schema<FieldReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fieldPath: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FieldReference",
-  }) as any as Schema.Schema<FieldReference>;
+export const FieldReference = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fieldPath: Schema.optional(Schema.String),
+}).annotate({ identifier: "FieldReference" });
 
 export interface FieldFilter {
   /** The operator to filter by. */
@@ -333,16 +300,11 @@ export interface FieldFilter {
   value?: Value;
 }
 
-export const FieldFilter: Schema.Schema<FieldFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      op: Schema.optional(Schema.String),
-      field: Schema.optional(FieldReference),
-      value: Schema.optional(Value),
-    }),
-  ).annotate({
-    identifier: "FieldFilter",
-  }) as any as Schema.Schema<FieldFilter>;
+export const FieldFilter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  op: Schema.optional(Schema.String),
+  field: Schema.optional(FieldReference),
+  value: Schema.optional(Value),
+}).annotate({ identifier: "FieldFilter" });
 
 export interface UnaryFilter {
   /** The unary operator to apply. */
@@ -357,15 +319,10 @@ export interface UnaryFilter {
   field?: FieldReference;
 }
 
-export const UnaryFilter: Schema.Schema<UnaryFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      op: Schema.optional(Schema.String),
-      field: Schema.optional(FieldReference),
-    }),
-  ).annotate({
-    identifier: "UnaryFilter",
-  }) as any as Schema.Schema<UnaryFilter>;
+export const UnaryFilter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  op: Schema.optional(Schema.String),
+  field: Schema.optional(FieldReference),
+}).annotate({ identifier: "UnaryFilter" });
 
 export interface Filter {
   /** A composite filter. */
@@ -407,14 +364,9 @@ export interface ExplainOptions {
   analyze?: boolean;
 }
 
-export const ExplainOptions: Schema.Schema<ExplainOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      analyze: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ExplainOptions",
-  }) as any as Schema.Schema<ExplainOptions>;
+export const ExplainOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  analyze: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "ExplainOptions" });
 
 export interface GoogleFirestoreAdminV1SearchIndexOptions {
   /** Optional. The language to use for text search indexes. Used as the default language if not overridden at the document level by specifying the `text_language_override_field`. The language is specified as a BCP 47 language code. For indexes with MONGODB_COMPATIBLE_API ApiScope: If unspecified, the default language is English. For indexes with `ANY_API` ApiScope: If unspecified, the default behavior is autodetect. */
@@ -423,15 +375,11 @@ export interface GoogleFirestoreAdminV1SearchIndexOptions {
   textLanguageOverrideFieldPath?: string;
 }
 
-export const GoogleFirestoreAdminV1SearchIndexOptions: Schema.Schema<GoogleFirestoreAdminV1SearchIndexOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      textLanguage: Schema.optional(Schema.String),
-      textLanguageOverrideFieldPath: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1SearchIndexOptions",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1SearchIndexOptions>;
+export const GoogleFirestoreAdminV1SearchIndexOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    textLanguage: Schema.optional(Schema.String),
+    textLanguageOverrideFieldPath: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1SearchIndexOptions" });
 
 export interface GoogleFirestoreAdminV1SearchTextIndexSpec {
   /** Required. How to index the text field value. */
@@ -440,45 +388,33 @@ export interface GoogleFirestoreAdminV1SearchTextIndexSpec {
   matchType?: "TEXT_MATCH_TYPE_UNSPECIFIED" | "MATCH_GLOBALLY" | (string & {});
 }
 
-export const GoogleFirestoreAdminV1SearchTextIndexSpec: Schema.Schema<GoogleFirestoreAdminV1SearchTextIndexSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      indexType: Schema.optional(Schema.String),
-      matchType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1SearchTextIndexSpec",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1SearchTextIndexSpec>;
+export const GoogleFirestoreAdminV1SearchTextIndexSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    indexType: Schema.optional(Schema.String),
+    matchType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1SearchTextIndexSpec" });
 
 export interface GoogleFirestoreAdminV1SearchTextSpec {
   /** Required. Specifications for how the field should be indexed. Repeated so that the field can be indexed in multiple ways. */
   indexSpecs?: Array<GoogleFirestoreAdminV1SearchTextIndexSpec>;
 }
 
-export const GoogleFirestoreAdminV1SearchTextSpec: Schema.Schema<GoogleFirestoreAdminV1SearchTextSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      indexSpecs: Schema.optional(
-        Schema.Array(GoogleFirestoreAdminV1SearchTextIndexSpec),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1SearchTextSpec",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1SearchTextSpec>;
+export const GoogleFirestoreAdminV1SearchTextSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    indexSpecs: Schema.optional(
+      Schema.Array(GoogleFirestoreAdminV1SearchTextIndexSpec),
+    ),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1SearchTextSpec" });
 
 export interface GoogleFirestoreAdminV1SearchGeoSpec {
   /** Optional. Disables geoJSON indexing for the field. By default, geoJSON points are indexed. */
   geoJsonIndexingDisabled?: boolean;
 }
 
-export const GoogleFirestoreAdminV1SearchGeoSpec: Schema.Schema<GoogleFirestoreAdminV1SearchGeoSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      geoJsonIndexingDisabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1SearchGeoSpec",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1SearchGeoSpec>;
+export const GoogleFirestoreAdminV1SearchGeoSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    geoJsonIndexingDisabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1SearchGeoSpec" });
 
 export interface GoogleFirestoreAdminV1SearchConfig {
   /** Optional. The specification for building a text search index for a field. */
@@ -487,22 +423,18 @@ export interface GoogleFirestoreAdminV1SearchConfig {
   geoSpec?: GoogleFirestoreAdminV1SearchGeoSpec;
 }
 
-export const GoogleFirestoreAdminV1SearchConfig: Schema.Schema<GoogleFirestoreAdminV1SearchConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      textSpec: Schema.optional(GoogleFirestoreAdminV1SearchTextSpec),
-      geoSpec: Schema.optional(GoogleFirestoreAdminV1SearchGeoSpec),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1SearchConfig",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1SearchConfig>;
+export const GoogleFirestoreAdminV1SearchConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    textSpec: Schema.optional(GoogleFirestoreAdminV1SearchTextSpec),
+    geoSpec: Schema.optional(GoogleFirestoreAdminV1SearchGeoSpec),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1SearchConfig" });
 
 export interface GoogleFirestoreAdminV1FlatIndex {}
 
-export const GoogleFirestoreAdminV1FlatIndex: Schema.Schema<GoogleFirestoreAdminV1FlatIndex> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleFirestoreAdminV1FlatIndex =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleFirestoreAdminV1FlatIndex",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1FlatIndex>;
+  });
 
 export interface GoogleFirestoreAdminV1VectorConfig {
   /** Required. The vector dimension this configuration applies to. The resulting index will only include vectors of this dimension, and can be used for vector search with the same dimension. */
@@ -511,15 +443,11 @@ export interface GoogleFirestoreAdminV1VectorConfig {
   flat?: GoogleFirestoreAdminV1FlatIndex;
 }
 
-export const GoogleFirestoreAdminV1VectorConfig: Schema.Schema<GoogleFirestoreAdminV1VectorConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dimension: Schema.optional(Schema.Number),
-      flat: Schema.optional(GoogleFirestoreAdminV1FlatIndex),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1VectorConfig",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1VectorConfig>;
+export const GoogleFirestoreAdminV1VectorConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dimension: Schema.optional(Schema.Number),
+    flat: Schema.optional(GoogleFirestoreAdminV1FlatIndex),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1VectorConfig" });
 
 export interface GoogleFirestoreAdminV1IndexField {
   /** Can be __name__. For single field indexes, this must match the name of the field or may be omitted. */
@@ -534,18 +462,14 @@ export interface GoogleFirestoreAdminV1IndexField {
   vectorConfig?: GoogleFirestoreAdminV1VectorConfig;
 }
 
-export const GoogleFirestoreAdminV1IndexField: Schema.Schema<GoogleFirestoreAdminV1IndexField> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fieldPath: Schema.optional(Schema.String),
-      searchConfig: Schema.optional(GoogleFirestoreAdminV1SearchConfig),
-      order: Schema.optional(Schema.String),
-      arrayConfig: Schema.optional(Schema.String),
-      vectorConfig: Schema.optional(GoogleFirestoreAdminV1VectorConfig),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1IndexField",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1IndexField>;
+export const GoogleFirestoreAdminV1IndexField =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fieldPath: Schema.optional(Schema.String),
+    searchConfig: Schema.optional(GoogleFirestoreAdminV1SearchConfig),
+    order: Schema.optional(Schema.String),
+    arrayConfig: Schema.optional(Schema.String),
+    vectorConfig: Schema.optional(GoogleFirestoreAdminV1VectorConfig),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1IndexField" });
 
 export interface GoogleFirestoreAdminV1Index {
   /** Optional. Options for search indexes that are at the index definition level. This field is only currently supported for indexes with MONGODB_COMPATIBLE_API ApiScope. */
@@ -589,25 +513,21 @@ export interface GoogleFirestoreAdminV1Index {
     | (string & {});
 }
 
-export const GoogleFirestoreAdminV1Index: Schema.Schema<GoogleFirestoreAdminV1Index> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      searchIndexOptions: Schema.optional(
-        GoogleFirestoreAdminV1SearchIndexOptions,
-      ),
-      fields: Schema.optional(Schema.Array(GoogleFirestoreAdminV1IndexField)),
-      apiScope: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      shardCount: Schema.optional(Schema.Number),
-      density: Schema.optional(Schema.String),
-      multikey: Schema.optional(Schema.Boolean),
-      unique: Schema.optional(Schema.Boolean),
-      queryScope: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1Index",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1Index>;
+export const GoogleFirestoreAdminV1Index =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    searchIndexOptions: Schema.optional(
+      GoogleFirestoreAdminV1SearchIndexOptions,
+    ),
+    fields: Schema.optional(Schema.Array(GoogleFirestoreAdminV1IndexField)),
+    apiScope: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    shardCount: Schema.optional(Schema.Number),
+    density: Schema.optional(Schema.String),
+    multikey: Schema.optional(Schema.Boolean),
+    unique: Schema.optional(Schema.Boolean),
+    queryScope: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1Index" });
 
 export interface GoogleFirestoreAdminV1IndexConfigDelta {
   /** Specifies how the index is changing. */
@@ -616,15 +536,11 @@ export interface GoogleFirestoreAdminV1IndexConfigDelta {
   index?: GoogleFirestoreAdminV1Index;
 }
 
-export const GoogleFirestoreAdminV1IndexConfigDelta: Schema.Schema<GoogleFirestoreAdminV1IndexConfigDelta> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      changeType: Schema.optional(Schema.String),
-      index: Schema.optional(GoogleFirestoreAdminV1Index),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1IndexConfigDelta",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1IndexConfigDelta>;
+export const GoogleFirestoreAdminV1IndexConfigDelta =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    changeType: Schema.optional(Schema.String),
+    index: Schema.optional(GoogleFirestoreAdminV1Index),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1IndexConfigDelta" });
 
 export interface GoogleFirestoreAdminV1Progress {
   /** The amount of work completed. */
@@ -633,15 +549,11 @@ export interface GoogleFirestoreAdminV1Progress {
   estimatedWork?: string;
 }
 
-export const GoogleFirestoreAdminV1Progress: Schema.Schema<GoogleFirestoreAdminV1Progress> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      completedWork: Schema.optional(Schema.String),
-      estimatedWork: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1Progress",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1Progress>;
+export const GoogleFirestoreAdminV1Progress =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    completedWork: Schema.optional(Schema.String),
+    estimatedWork: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1Progress" });
 
 export interface GoogleFirestoreAdminV1TtlConfigDelta {
   /** The offset, relative to the timestamp value in the TTL-enabled field, used determine the document's expiration time. */
@@ -650,15 +562,11 @@ export interface GoogleFirestoreAdminV1TtlConfigDelta {
   changeType?: "CHANGE_TYPE_UNSPECIFIED" | "ADD" | "REMOVE" | (string & {});
 }
 
-export const GoogleFirestoreAdminV1TtlConfigDelta: Schema.Schema<GoogleFirestoreAdminV1TtlConfigDelta> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expirationOffset: Schema.optional(Schema.String),
-      changeType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1TtlConfigDelta",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1TtlConfigDelta>;
+export const GoogleFirestoreAdminV1TtlConfigDelta =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    expirationOffset: Schema.optional(Schema.String),
+    changeType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1TtlConfigDelta" });
 
 export interface GoogleFirestoreAdminV1FieldOperationMetadata {
   /** The time this operation completed. Will be unset if operation still in progress. */
@@ -688,23 +596,19 @@ export interface GoogleFirestoreAdminV1FieldOperationMetadata {
   progressDocuments?: GoogleFirestoreAdminV1Progress;
 }
 
-export const GoogleFirestoreAdminV1FieldOperationMetadata: Schema.Schema<GoogleFirestoreAdminV1FieldOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endTime: Schema.optional(Schema.String),
-      indexConfigDeltas: Schema.optional(
-        Schema.Array(GoogleFirestoreAdminV1IndexConfigDelta),
-      ),
-      progressBytes: Schema.optional(GoogleFirestoreAdminV1Progress),
-      startTime: Schema.optional(Schema.String),
-      field: Schema.optional(Schema.String),
-      ttlConfigDelta: Schema.optional(GoogleFirestoreAdminV1TtlConfigDelta),
-      state: Schema.optional(Schema.String),
-      progressDocuments: Schema.optional(GoogleFirestoreAdminV1Progress),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1FieldOperationMetadata",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1FieldOperationMetadata>;
+export const GoogleFirestoreAdminV1FieldOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endTime: Schema.optional(Schema.String),
+    indexConfigDeltas: Schema.optional(
+      Schema.Array(GoogleFirestoreAdminV1IndexConfigDelta),
+    ),
+    progressBytes: Schema.optional(GoogleFirestoreAdminV1Progress),
+    startTime: Schema.optional(Schema.String),
+    field: Schema.optional(Schema.String),
+    ttlConfigDelta: Schema.optional(GoogleFirestoreAdminV1TtlConfigDelta),
+    state: Schema.optional(Schema.String),
+    progressDocuments: Schema.optional(GoogleFirestoreAdminV1Progress),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1FieldOperationMetadata" });
 
 export interface Cursor {
   /** If the position is just before or just after the given values, relative to the sort order defined by the query. */
@@ -713,13 +617,10 @@ export interface Cursor {
   values?: Array<Value>;
 }
 
-export const Cursor: Schema.Schema<Cursor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      before: Schema.optional(Schema.Boolean),
-      values: Schema.optional(Schema.Array(Value)),
-    }),
-  ).annotate({ identifier: "Cursor" }) as any as Schema.Schema<Cursor>;
+export const Cursor = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  before: Schema.optional(Schema.Boolean),
+  values: Schema.optional(Schema.Array(Value)),
+}).annotate({ identifier: "Cursor" });
 
 export interface GoogleFirestoreAdminV1ExportDocumentsRequest {
   /** IDs of the collection groups to export. Unspecified means all collection groups. Each collection group in this list must be unique. */
@@ -732,17 +633,13 @@ export interface GoogleFirestoreAdminV1ExportDocumentsRequest {
   snapshotTime?: string;
 }
 
-export const GoogleFirestoreAdminV1ExportDocumentsRequest: Schema.Schema<GoogleFirestoreAdminV1ExportDocumentsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      collectionIds: Schema.optional(Schema.Array(Schema.String)),
-      outputUriPrefix: Schema.optional(Schema.String),
-      namespaceIds: Schema.optional(Schema.Array(Schema.String)),
-      snapshotTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1ExportDocumentsRequest",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1ExportDocumentsRequest>;
+export const GoogleFirestoreAdminV1ExportDocumentsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    collectionIds: Schema.optional(Schema.Array(Schema.String)),
+    outputUriPrefix: Schema.optional(Schema.String),
+    namespaceIds: Schema.optional(Schema.Array(Schema.String)),
+    snapshotTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1ExportDocumentsRequest" });
 
 export interface GoogleFirestoreAdminV1CmekConfig {
   /** Output only. Currently in-use [KMS key versions](https://cloud.google.com/kms/docs/resource-hierarchy#key_versions). During [key rotation](https://cloud.google.com/kms/docs/key-rotation), there can be multiple in-use key versions. The expected format is `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}/cryptoKeyVersions/{key_version}`. */
@@ -751,29 +648,21 @@ export interface GoogleFirestoreAdminV1CmekConfig {
   kmsKeyName?: string;
 }
 
-export const GoogleFirestoreAdminV1CmekConfig: Schema.Schema<GoogleFirestoreAdminV1CmekConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      activeKeyVersion: Schema.optional(Schema.Array(Schema.String)),
-      kmsKeyName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1CmekConfig",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1CmekConfig>;
+export const GoogleFirestoreAdminV1CmekConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    activeKeyVersion: Schema.optional(Schema.Array(Schema.String)),
+    kmsKeyName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1CmekConfig" });
 
 export interface GoogleFirestoreAdminV1BackupSource {
   /** The resource name of the backup that was used to restore this database. Format: `projects/{project}/locations/{location}/backups/{backup}`. */
   backup?: string;
 }
 
-export const GoogleFirestoreAdminV1BackupSource: Schema.Schema<GoogleFirestoreAdminV1BackupSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      backup: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1BackupSource",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1BackupSource>;
+export const GoogleFirestoreAdminV1BackupSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    backup: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1BackupSource" });
 
 export interface GoogleFirestoreAdminV1SourceInfo {
   /** If set, this database was restored from the specified backup (or a snapshot thereof). */
@@ -782,15 +671,11 @@ export interface GoogleFirestoreAdminV1SourceInfo {
   operation?: string;
 }
 
-export const GoogleFirestoreAdminV1SourceInfo: Schema.Schema<GoogleFirestoreAdminV1SourceInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      backup: Schema.optional(GoogleFirestoreAdminV1BackupSource),
-      operation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1SourceInfo",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1SourceInfo>;
+export const GoogleFirestoreAdminV1SourceInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    backup: Schema.optional(GoogleFirestoreAdminV1BackupSource),
+    operation: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1SourceInfo" });
 
 export interface GoogleFirestoreAdminV1Database {
   /** State of delete protection for the database. */
@@ -880,37 +765,33 @@ export interface GoogleFirestoreAdminV1Database {
   tags?: Record<string, string>;
 }
 
-export const GoogleFirestoreAdminV1Database: Schema.Schema<GoogleFirestoreAdminV1Database> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deleteProtectionState: Schema.optional(Schema.String),
-      versionRetentionPeriod: Schema.optional(Schema.String),
-      earliestVersionTime: Schema.optional(Schema.String),
-      concurrencyMode: Schema.optional(Schema.String),
-      databaseEdition: Schema.optional(Schema.String),
-      appEngineIntegrationMode: Schema.optional(Schema.String),
-      keyPrefix: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      locationId: Schema.optional(Schema.String),
-      cmekConfig: Schema.optional(GoogleFirestoreAdminV1CmekConfig),
-      pointInTimeRecoveryEnablement: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      uid: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      firestoreDataAccessMode: Schema.optional(Schema.String),
-      previousId: Schema.optional(Schema.String),
-      freeTier: Schema.optional(Schema.Boolean),
-      etag: Schema.optional(Schema.String),
-      realtimeUpdatesMode: Schema.optional(Schema.String),
-      mongodbCompatibleDataAccessMode: Schema.optional(Schema.String),
-      deleteTime: Schema.optional(Schema.String),
-      sourceInfo: Schema.optional(GoogleFirestoreAdminV1SourceInfo),
-      tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1Database",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1Database>;
+export const GoogleFirestoreAdminV1Database =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deleteProtectionState: Schema.optional(Schema.String),
+    versionRetentionPeriod: Schema.optional(Schema.String),
+    earliestVersionTime: Schema.optional(Schema.String),
+    concurrencyMode: Schema.optional(Schema.String),
+    databaseEdition: Schema.optional(Schema.String),
+    appEngineIntegrationMode: Schema.optional(Schema.String),
+    keyPrefix: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    locationId: Schema.optional(Schema.String),
+    cmekConfig: Schema.optional(GoogleFirestoreAdminV1CmekConfig),
+    pointInTimeRecoveryEnablement: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    uid: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    firestoreDataAccessMode: Schema.optional(Schema.String),
+    previousId: Schema.optional(Schema.String),
+    freeTier: Schema.optional(Schema.Boolean),
+    etag: Schema.optional(Schema.String),
+    realtimeUpdatesMode: Schema.optional(Schema.String),
+    mongodbCompatibleDataAccessMode: Schema.optional(Schema.String),
+    deleteTime: Schema.optional(Schema.String),
+    sourceInfo: Schema.optional(GoogleFirestoreAdminV1SourceInfo),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1Database" });
 
 export interface GoogleFirestoreAdminV1ListDatabasesResponse {
   /** The databases in the project. */
@@ -919,63 +800,47 @@ export interface GoogleFirestoreAdminV1ListDatabasesResponse {
   unreachable?: Array<string>;
 }
 
-export const GoogleFirestoreAdminV1ListDatabasesResponse: Schema.Schema<GoogleFirestoreAdminV1ListDatabasesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      databases: Schema.optional(Schema.Array(GoogleFirestoreAdminV1Database)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1ListDatabasesResponse",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1ListDatabasesResponse>;
+export const GoogleFirestoreAdminV1ListDatabasesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    databases: Schema.optional(Schema.Array(GoogleFirestoreAdminV1Database)),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1ListDatabasesResponse" });
 
 export interface Projection {
   /** The fields to return. If empty, all fields are returned. To only return the name of the document, use `['__name__']`. */
   fields?: Array<FieldReference>;
 }
 
-export const Projection: Schema.Schema<Projection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fields: Schema.optional(Schema.Array(FieldReference)),
-    }),
-  ).annotate({ identifier: "Projection" }) as any as Schema.Schema<Projection>;
+export const Projection = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fields: Schema.optional(Schema.Array(FieldReference)),
+}).annotate({ identifier: "Projection" });
 
 export interface Avg {
   /** The field to aggregate on. */
   field?: FieldReference;
 }
 
-export const Avg: Schema.Schema<Avg> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      field: Schema.optional(FieldReference),
-    }),
-  ).annotate({ identifier: "Avg" }) as any as Schema.Schema<Avg>;
+export const Avg = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  field: Schema.optional(FieldReference),
+}).annotate({ identifier: "Avg" });
 
 export interface Count {
   /** Optional. Optional constraint on the maximum number of documents to count. This provides a way to set an upper bound on the number of documents to scan, limiting latency, and cost. Unspecified is interpreted as no bound. High-Level Example: ``` AGGREGATE COUNT_UP_TO(1000) OVER ( SELECT * FROM k ); ``` Requires: * Must be greater than zero when present. */
   upTo?: string;
 }
 
-export const Count: Schema.Schema<Count> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      upTo: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Count" }) as any as Schema.Schema<Count>;
+export const Count = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  upTo: Schema.optional(Schema.String),
+}).annotate({ identifier: "Count" });
 
 export interface ReadWrite {
   /** An optional transaction to retry. */
   retryTransaction?: string;
 }
 
-export const ReadWrite: Schema.Schema<ReadWrite> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      retryTransaction: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "ReadWrite" }) as any as Schema.Schema<ReadWrite>;
+export const ReadWrite = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  retryTransaction: Schema.optional(Schema.String),
+}).annotate({ identifier: "ReadWrite" });
 
 export interface GoogleFirestoreAdminV1BulkDeleteDocumentsRequest {
   /** Optional. IDs of the collection groups to delete. Unspecified means all collection groups. Each collection group in this list must be unique. */
@@ -984,15 +849,13 @@ export interface GoogleFirestoreAdminV1BulkDeleteDocumentsRequest {
   namespaceIds?: Array<string>;
 }
 
-export const GoogleFirestoreAdminV1BulkDeleteDocumentsRequest: Schema.Schema<GoogleFirestoreAdminV1BulkDeleteDocumentsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      collectionIds: Schema.optional(Schema.Array(Schema.String)),
-      namespaceIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleFirestoreAdminV1BulkDeleteDocumentsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    collectionIds: Schema.optional(Schema.Array(Schema.String)),
+    namespaceIds: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleFirestoreAdminV1BulkDeleteDocumentsRequest",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1BulkDeleteDocumentsRequest>;
+  });
 
 export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -1003,23 +866,20 @@ export interface Status {
   code?: number;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      code: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  code: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Status" });
 
 export interface GoogleFirestoreAdminV1DeleteDatabaseMetadata {}
 
-export const GoogleFirestoreAdminV1DeleteDatabaseMetadata: Schema.Schema<GoogleFirestoreAdminV1DeleteDatabaseMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleFirestoreAdminV1DeleteDatabaseMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleFirestoreAdminV1DeleteDatabaseMetadata",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1DeleteDatabaseMetadata>;
+  });
 
 export interface GoogleFirestoreAdminV1IndexConfig {
   /** Output only. Specifies the resource name of the `Field` from which this field's index configuration is set (when `uses_ancestor_config` is true), or from which it *would* be set if this field had no index configuration (when `uses_ancestor_config` is false). */
@@ -1032,17 +892,13 @@ export interface GoogleFirestoreAdminV1IndexConfig {
   reverting?: boolean;
 }
 
-export const GoogleFirestoreAdminV1IndexConfig: Schema.Schema<GoogleFirestoreAdminV1IndexConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ancestorField: Schema.optional(Schema.String),
-      indexes: Schema.optional(Schema.Array(GoogleFirestoreAdminV1Index)),
-      usesAncestorConfig: Schema.optional(Schema.Boolean),
-      reverting: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1IndexConfig",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1IndexConfig>;
+export const GoogleFirestoreAdminV1IndexConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ancestorField: Schema.optional(Schema.String),
+    indexes: Schema.optional(Schema.Array(GoogleFirestoreAdminV1Index)),
+    usesAncestorConfig: Schema.optional(Schema.Boolean),
+    reverting: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1IndexConfig" });
 
 export interface GoogleFirestoreAdminV1TtlConfig {
   /** Output only. The state of the TTL configuration. */
@@ -1056,15 +912,11 @@ export interface GoogleFirestoreAdminV1TtlConfig {
   expirationOffset?: string;
 }
 
-export const GoogleFirestoreAdminV1TtlConfig: Schema.Schema<GoogleFirestoreAdminV1TtlConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      expirationOffset: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1TtlConfig",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1TtlConfig>;
+export const GoogleFirestoreAdminV1TtlConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+    expirationOffset: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1TtlConfig" });
 
 export interface GoogleFirestoreAdminV1Field {
   /** Required. A field name of the form: `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_path}` A field path can be a simple field name, e.g. `address` or a path to fields within `map_value` , e.g. `address.city`, or a special field path. The only valid special field is `*`, which represents any field. Field paths can be quoted using `` ` `` (backtick). The only character that must be escaped within a quoted field path is the backtick character itself, escaped using a backslash. Special characters in field paths that must be quoted include: `*`, `.`, `` ` `` (backtick), `[`, `]`, as well as any ascii symbolic characters. Examples: `` `address.city` `` represents a field named `address.city`, not the map key `city` in the field `address`. `` `*` `` represents a field named `*`, not any field. A special `Field` contains the default indexing settings for all fields. This field's resource name is: `projects/{project_id}/databases/{database_id}/collectionGroups/__default__/fields/*` Indexes defined on this `Field` will be applied to all fields which do not have their own `Field` index configuration. */
@@ -1075,16 +927,12 @@ export interface GoogleFirestoreAdminV1Field {
   ttlConfig?: GoogleFirestoreAdminV1TtlConfig;
 }
 
-export const GoogleFirestoreAdminV1Field: Schema.Schema<GoogleFirestoreAdminV1Field> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      indexConfig: Schema.optional(GoogleFirestoreAdminV1IndexConfig),
-      ttlConfig: Schema.optional(GoogleFirestoreAdminV1TtlConfig),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1Field",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1Field>;
+export const GoogleFirestoreAdminV1Field =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    indexConfig: Schema.optional(GoogleFirestoreAdminV1IndexConfig),
+    ttlConfig: Schema.optional(GoogleFirestoreAdminV1TtlConfig),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1Field" });
 
 export interface GoogleFirestoreAdminV1ListFieldsResponse {
   /** The requested fields. */
@@ -1093,15 +941,11 @@ export interface GoogleFirestoreAdminV1ListFieldsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleFirestoreAdminV1ListFieldsResponse: Schema.Schema<GoogleFirestoreAdminV1ListFieldsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fields: Schema.optional(Schema.Array(GoogleFirestoreAdminV1Field)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1ListFieldsResponse",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1ListFieldsResponse>;
+export const GoogleFirestoreAdminV1ListFieldsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fields: Schema.optional(Schema.Array(GoogleFirestoreAdminV1Field)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1ListFieldsResponse" });
 
 export interface WriteResult {
   /** The last update time of the document after applying the write. Not set after a `delete`. If the write did not actually change the document, this will be the previous update_time. */
@@ -1110,15 +954,10 @@ export interface WriteResult {
   transformResults?: Array<Value>;
 }
 
-export const WriteResult: Schema.Schema<WriteResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateTime: Schema.optional(Schema.String),
-      transformResults: Schema.optional(Schema.Array(Value)),
-    }),
-  ).annotate({
-    identifier: "WriteResult",
-  }) as any as Schema.Schema<WriteResult>;
+export const WriteResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  updateTime: Schema.optional(Schema.String),
+  transformResults: Schema.optional(Schema.Array(Value)),
+}).annotate({ identifier: "WriteResult" });
 
 export interface WriteResponse {
   /** The time at which the commit occurred. Any read with an equal or greater `read_time` is guaranteed to see the effects of the write. */
@@ -1131,17 +970,12 @@ export interface WriteResponse {
   streamToken?: string;
 }
 
-export const WriteResponse: Schema.Schema<WriteResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commitTime: Schema.optional(Schema.String),
-      streamId: Schema.optional(Schema.String),
-      writeResults: Schema.optional(Schema.Array(WriteResult)),
-      streamToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WriteResponse",
-  }) as any as Schema.Schema<WriteResponse>;
+export const WriteResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  commitTime: Schema.optional(Schema.String),
+  streamId: Schema.optional(Schema.String),
+  writeResults: Schema.optional(Schema.Array(WriteResult)),
+  streamToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "WriteResponse" });
 
 export interface CollectionSelector {
   /** The collection ID. When set, selects only collections with this ID. */
@@ -1150,15 +984,10 @@ export interface CollectionSelector {
   allDescendants?: boolean;
 }
 
-export const CollectionSelector: Schema.Schema<CollectionSelector> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      collectionId: Schema.optional(Schema.String),
-      allDescendants: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "CollectionSelector",
-  }) as any as Schema.Schema<CollectionSelector>;
+export const CollectionSelector = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  collectionId: Schema.optional(Schema.String),
+  allDescendants: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "CollectionSelector" });
 
 export interface ExecutionStats {
   /** Total number of results returned, including documents, projections, aggregation results, keys. */
@@ -1171,33 +1000,23 @@ export interface ExecutionStats {
   executionDuration?: string;
 }
 
-export const ExecutionStats: Schema.Schema<ExecutionStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resultsReturned: Schema.optional(Schema.String),
-      readOperations: Schema.optional(Schema.String),
-      debugStats: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      executionDuration: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ExecutionStats",
-  }) as any as Schema.Schema<ExecutionStats>;
+export const ExecutionStats = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resultsReturned: Schema.optional(Schema.String),
+  readOperations: Schema.optional(Schema.String),
+  debugStats: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  executionDuration: Schema.optional(Schema.String),
+}).annotate({ identifier: "ExecutionStats" });
 
 export interface PlanSummary {
   /** The indexes selected for the query. For example: [ {"query_scope": "Collection", "properties": "(foo ASC, __name__ ASC)"}, {"query_scope": "Collection", "properties": "(bar ASC, __name__ ASC)"} ] */
   indexesUsed?: Array<Record<string, unknown>>;
 }
 
-export const PlanSummary: Schema.Schema<PlanSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      indexesUsed: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({
-    identifier: "PlanSummary",
-  }) as any as Schema.Schema<PlanSummary>;
+export const PlanSummary = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  indexesUsed: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "PlanSummary" });
 
 export interface ExplainMetrics {
   /** Aggregated stats from the execution of the query. Only present when ExplainOptions.analyze is set to true. */
@@ -1206,15 +1025,10 @@ export interface ExplainMetrics {
   planSummary?: PlanSummary;
 }
 
-export const ExplainMetrics: Schema.Schema<ExplainMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      executionStats: Schema.optional(ExecutionStats),
-      planSummary: Schema.optional(PlanSummary),
-    }),
-  ).annotate({
-    identifier: "ExplainMetrics",
-  }) as any as Schema.Schema<ExplainMetrics>;
+export const ExplainMetrics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  executionStats: Schema.optional(ExecutionStats),
+  planSummary: Schema.optional(PlanSummary),
+}).annotate({ identifier: "ExplainMetrics" });
 
 export interface FindNearest {
   /** Required. The query vector that we are searching on. Must be a vector of no more than 2048 dimensions. */
@@ -1236,19 +1050,14 @@ export interface FindNearest {
   distanceResultField?: string;
 }
 
-export const FindNearest: Schema.Schema<FindNearest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      queryVector: Schema.optional(Value),
-      distanceMeasure: Schema.optional(Schema.String),
-      limit: Schema.optional(Schema.Number),
-      vectorField: Schema.optional(FieldReference),
-      distanceThreshold: Schema.optional(Schema.Number),
-      distanceResultField: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FindNearest",
-  }) as any as Schema.Schema<FindNearest>;
+export const FindNearest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  queryVector: Schema.optional(Value),
+  distanceMeasure: Schema.optional(Schema.String),
+  limit: Schema.optional(Schema.Number),
+  vectorField: Schema.optional(FieldReference),
+  distanceThreshold: Schema.optional(Schema.Number),
+  distanceResultField: Schema.optional(Schema.String),
+}).annotate({ identifier: "FindNearest" });
 
 export interface Order {
   /** The field to order by. */
@@ -1261,13 +1070,10 @@ export interface Order {
     | (string & {});
 }
 
-export const Order: Schema.Schema<Order> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      field: Schema.optional(FieldReference),
-      direction: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Order" }) as any as Schema.Schema<Order>;
+export const Order = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  field: Schema.optional(FieldReference),
+  direction: Schema.optional(Schema.String),
+}).annotate({ identifier: "Order" });
 
 export interface StructuredQuery {
   /** A potential prefix of a position in the result set to end the query at. This is similar to `START_AT` but with it controlling the end position rather than the start position. Requires: * The number of values cannot be greater than the number of fields specified in the `ORDER BY` clause. */
@@ -1290,22 +1096,17 @@ export interface StructuredQuery {
   offset?: number;
 }
 
-export const StructuredQuery: Schema.Schema<StructuredQuery> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endAt: Schema.optional(Cursor),
-      findNearest: Schema.optional(FindNearest),
-      select: Schema.optional(Projection),
-      where: Schema.optional(Filter),
-      startAt: Schema.optional(Cursor),
-      orderBy: Schema.optional(Schema.Array(Order)),
-      limit: Schema.optional(Schema.Number),
-      from: Schema.optional(Schema.Array(CollectionSelector)),
-      offset: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "StructuredQuery",
-  }) as any as Schema.Schema<StructuredQuery>;
+export const StructuredQuery = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  endAt: Schema.optional(Cursor),
+  findNearest: Schema.optional(FindNearest),
+  select: Schema.optional(Projection),
+  where: Schema.optional(Filter),
+  startAt: Schema.optional(Cursor),
+  orderBy: Schema.optional(Schema.Array(Order)),
+  limit: Schema.optional(Schema.Number),
+  from: Schema.optional(Schema.Array(CollectionSelector)),
+  offset: Schema.optional(Schema.Number),
+}).annotate({ identifier: "StructuredQuery" });
 
 export interface Document {
   /** The resource name of the document, for example `projects/{project_id}/databases/{database_id}/documents/{document_path}`. */
@@ -1318,15 +1119,12 @@ export interface Document {
   createTime?: string;
 }
 
-export const Document: Schema.Schema<Document> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      fields: Schema.optional(Schema.Record(Schema.String, Value)),
-      updateTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Document" }) as any as Schema.Schema<Document>;
+export const Document = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  fields: Schema.optional(Schema.Record(Schema.String, Value)),
+  updateTime: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Document" });
 
 export interface BatchGetDocumentsResponse {
   /** A document that was requested. */
@@ -1339,31 +1137,22 @@ export interface BatchGetDocumentsResponse {
   transaction?: string;
 }
 
-export const BatchGetDocumentsResponse: Schema.Schema<BatchGetDocumentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      found: Schema.optional(Document),
-      missing: Schema.optional(Schema.String),
-      readTime: Schema.optional(Schema.String),
-      transaction: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BatchGetDocumentsResponse",
-  }) as any as Schema.Schema<BatchGetDocumentsResponse>;
+export const BatchGetDocumentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    found: Schema.optional(Document),
+    missing: Schema.optional(Schema.String),
+    readTime: Schema.optional(Schema.String),
+    transaction: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BatchGetDocumentsResponse" });
 
 export interface AggregationResult {
   /** The result of the aggregation functions, ex: `COUNT(*) AS total_docs`. The key is the alias assigned to the aggregation function on input and the size of this map equals the number of aggregation functions in the query. */
   aggregateFields?: Record<string, Value>;
 }
 
-export const AggregationResult: Schema.Schema<AggregationResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      aggregateFields: Schema.optional(Schema.Record(Schema.String, Value)),
-    }),
-  ).annotate({
-    identifier: "AggregationResult",
-  }) as any as Schema.Schema<AggregationResult>;
+export const AggregationResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  aggregateFields: Schema.optional(Schema.Record(Schema.String, Value)),
+}).annotate({ identifier: "AggregationResult" });
 
 export interface RunAggregationQueryResponse {
   /** A single aggregation result. Not present when reporting partial progress. */
@@ -1376,17 +1165,13 @@ export interface RunAggregationQueryResponse {
   readTime?: string;
 }
 
-export const RunAggregationQueryResponse: Schema.Schema<RunAggregationQueryResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      result: Schema.optional(AggregationResult),
-      transaction: Schema.optional(Schema.String),
-      explainMetrics: Schema.optional(ExplainMetrics),
-      readTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RunAggregationQueryResponse",
-  }) as any as Schema.Schema<RunAggregationQueryResponse>;
+export const RunAggregationQueryResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    result: Schema.optional(AggregationResult),
+    transaction: Schema.optional(Schema.String),
+    explainMetrics: Schema.optional(ExplainMetrics),
+    readTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RunAggregationQueryResponse" });
 
 export interface Location {
   /** The canonical id for this location. For example: `"us-east1"`. */
@@ -1401,16 +1186,13 @@ export interface Location {
   metadata?: Record<string, unknown>;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locationId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locationId: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Location" });
 
 export interface ListLocationsResponse {
   /** The standard List next-page token. */
@@ -1419,15 +1201,10 @@ export interface ListLocationsResponse {
   locations?: Array<Location>;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      locations: Schema.optional(Schema.Array(Location)),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  locations: Schema.optional(Schema.Array(Location)),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface QueryTarget {
   /** The parent resource name. In the format: `projects/{project_id}/databases/{database_id}/documents` or `projects/{project_id}/databases/{database_id}/documents/{document_path}`. For example: `projects/my-project/databases/my-database/documents` or `projects/my-project/databases/my-database/documents/chatrooms/my-chatroom` */
@@ -1436,15 +1213,10 @@ export interface QueryTarget {
   structuredQuery?: StructuredQuery;
 }
 
-export const QueryTarget: Schema.Schema<QueryTarget> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parent: Schema.optional(Schema.String),
-      structuredQuery: Schema.optional(StructuredQuery),
-    }),
-  ).annotate({
-    identifier: "QueryTarget",
-  }) as any as Schema.Schema<QueryTarget>;
+export const QueryTarget = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  parent: Schema.optional(Schema.String),
+  structuredQuery: Schema.optional(StructuredQuery),
+}).annotate({ identifier: "QueryTarget" });
 
 export interface GoogleFirestoreAdminV1BulkDeleteDocumentsMetadata {
   /** The timestamp that corresponds to the version of the database that is being read to get the list of documents to delete. This time can also be used as the timestamp of PITR in case of disaster recovery (subject to PITR window limit). */
@@ -1474,42 +1246,38 @@ export interface GoogleFirestoreAdminV1BulkDeleteDocumentsMetadata {
   progressDocuments?: GoogleFirestoreAdminV1Progress;
 }
 
-export const GoogleFirestoreAdminV1BulkDeleteDocumentsMetadata: Schema.Schema<GoogleFirestoreAdminV1BulkDeleteDocumentsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      snapshotTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      collectionIds: Schema.optional(Schema.Array(Schema.String)),
-      progressBytes: Schema.optional(GoogleFirestoreAdminV1Progress),
-      operationState: Schema.optional(Schema.String),
-      namespaceIds: Schema.optional(Schema.Array(Schema.String)),
-      progressDocuments: Schema.optional(GoogleFirestoreAdminV1Progress),
-    }),
-  ).annotate({
+export const GoogleFirestoreAdminV1BulkDeleteDocumentsMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    snapshotTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    collectionIds: Schema.optional(Schema.Array(Schema.String)),
+    progressBytes: Schema.optional(GoogleFirestoreAdminV1Progress),
+    operationState: Schema.optional(Schema.String),
+    namespaceIds: Schema.optional(Schema.Array(Schema.String)),
+    progressDocuments: Schema.optional(GoogleFirestoreAdminV1Progress),
+  }).annotate({
     identifier: "GoogleFirestoreAdminV1BulkDeleteDocumentsMetadata",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1BulkDeleteDocumentsMetadata>;
+  });
 
 export interface GoogleFirestoreAdminV1SourceEncryptionOptions {}
 
-export const GoogleFirestoreAdminV1SourceEncryptionOptions: Schema.Schema<GoogleFirestoreAdminV1SourceEncryptionOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleFirestoreAdminV1SourceEncryptionOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleFirestoreAdminV1SourceEncryptionOptions",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1SourceEncryptionOptions>;
+  });
 
 export interface GoogleFirestoreAdminV1CustomerManagedEncryptionOptions {
   /** Required. Only keys in the same location as the database are allowed to be used for encryption. For Firestore's nam5 multi-region, this corresponds to Cloud KMS multi-region us. For Firestore's eur3 multi-region, this corresponds to Cloud KMS multi-region europe. See https://cloud.google.com/kms/docs/locations. The expected format is `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`. */
   kmsKeyName?: string;
 }
 
-export const GoogleFirestoreAdminV1CustomerManagedEncryptionOptions: Schema.Schema<GoogleFirestoreAdminV1CustomerManagedEncryptionOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kmsKeyName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleFirestoreAdminV1CustomerManagedEncryptionOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kmsKeyName: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleFirestoreAdminV1CustomerManagedEncryptionOptions",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1CustomerManagedEncryptionOptions>;
+  });
 
 export interface GoogleFirestoreAdminV1EncryptionConfig {
   /** Use Google default encryption. */
@@ -1520,22 +1288,18 @@ export interface GoogleFirestoreAdminV1EncryptionConfig {
   customerManagedEncryption?: GoogleFirestoreAdminV1CustomerManagedEncryptionOptions;
 }
 
-export const GoogleFirestoreAdminV1EncryptionConfig: Schema.Schema<GoogleFirestoreAdminV1EncryptionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      googleDefaultEncryption: Schema.optional(
-        GoogleFirestoreAdminV1GoogleDefaultEncryptionOptions,
-      ),
-      useSourceEncryption: Schema.optional(
-        GoogleFirestoreAdminV1SourceEncryptionOptions,
-      ),
-      customerManagedEncryption: Schema.optional(
-        GoogleFirestoreAdminV1CustomerManagedEncryptionOptions,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1EncryptionConfig",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1EncryptionConfig>;
+export const GoogleFirestoreAdminV1EncryptionConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    googleDefaultEncryption: Schema.optional(
+      GoogleFirestoreAdminV1GoogleDefaultEncryptionOptions,
+    ),
+    useSourceEncryption: Schema.optional(
+      GoogleFirestoreAdminV1SourceEncryptionOptions,
+    ),
+    customerManagedEncryption: Schema.optional(
+      GoogleFirestoreAdminV1CustomerManagedEncryptionOptions,
+    ),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1EncryptionConfig" });
 
 export interface GoogleFirestoreAdminV1PitrSnapshot {
   /** Output only. Public UUID of the database the snapshot was associated with. */
@@ -1546,16 +1310,12 @@ export interface GoogleFirestoreAdminV1PitrSnapshot {
   snapshotTime?: string;
 }
 
-export const GoogleFirestoreAdminV1PitrSnapshot: Schema.Schema<GoogleFirestoreAdminV1PitrSnapshot> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      databaseUid: Schema.optional(Schema.String),
-      database: Schema.optional(Schema.String),
-      snapshotTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1PitrSnapshot",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1PitrSnapshot>;
+export const GoogleFirestoreAdminV1PitrSnapshot =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    databaseUid: Schema.optional(Schema.String),
+    database: Schema.optional(Schema.String),
+    snapshotTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1PitrSnapshot" });
 
 export interface GoogleFirestoreAdminV1CloneDatabaseRequest {
   /** Optional. Encryption configuration for the cloned database. If this field is not specified, the cloned database will use the same encryption configuration as the source database, namely use_source_encryption. */
@@ -1568,31 +1328,23 @@ export interface GoogleFirestoreAdminV1CloneDatabaseRequest {
   pitrSnapshot?: GoogleFirestoreAdminV1PitrSnapshot;
 }
 
-export const GoogleFirestoreAdminV1CloneDatabaseRequest: Schema.Schema<GoogleFirestoreAdminV1CloneDatabaseRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      encryptionConfig: Schema.optional(GoogleFirestoreAdminV1EncryptionConfig),
-      tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      databaseId: Schema.optional(Schema.String),
-      pitrSnapshot: Schema.optional(GoogleFirestoreAdminV1PitrSnapshot),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1CloneDatabaseRequest",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1CloneDatabaseRequest>;
+export const GoogleFirestoreAdminV1CloneDatabaseRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    encryptionConfig: Schema.optional(GoogleFirestoreAdminV1EncryptionConfig),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    databaseId: Schema.optional(Schema.String),
+    pitrSnapshot: Schema.optional(GoogleFirestoreAdminV1PitrSnapshot),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1CloneDatabaseRequest" });
 
 export interface GoogleFirestoreAdminV1ResourceIdentity {
   /** Output only. Principal identifier string. See: https://cloud.google.com/iam/docs/principal-identifiers */
   principal?: string;
 }
 
-export const GoogleFirestoreAdminV1ResourceIdentity: Schema.Schema<GoogleFirestoreAdminV1ResourceIdentity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      principal: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1ResourceIdentity",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1ResourceIdentity>;
+export const GoogleFirestoreAdminV1ResourceIdentity =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    principal: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1ResourceIdentity" });
 
 export interface GoogleFirestoreAdminV1UserCreds {
   /** Resource Identity descriptor. */
@@ -1609,26 +1361,22 @@ export interface GoogleFirestoreAdminV1UserCreds {
   securePassword?: string;
 }
 
-export const GoogleFirestoreAdminV1UserCreds: Schema.Schema<GoogleFirestoreAdminV1UserCreds> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceIdentity: Schema.optional(GoogleFirestoreAdminV1ResourceIdentity),
-      state: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      securePassword: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1UserCreds",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1UserCreds>;
+export const GoogleFirestoreAdminV1UserCreds =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceIdentity: Schema.optional(GoogleFirestoreAdminV1ResourceIdentity),
+    state: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    securePassword: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1UserCreds" });
 
 export interface GoogleFirestoreAdminV1DisableUserCredsRequest {}
 
-export const GoogleFirestoreAdminV1DisableUserCredsRequest: Schema.Schema<GoogleFirestoreAdminV1DisableUserCredsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleFirestoreAdminV1DisableUserCredsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleFirestoreAdminV1DisableUserCredsRequest",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1DisableUserCredsRequest>;
+  });
 
 export interface FieldTransform {
   /** Sets the field to the minimum of its current value and the given value. This must be an integer or a double value. If the field is not an integer or double, or if the field does not yet exist, the transformation will set the field to the input value. If a minimum operation is applied where the field and the input value are of mixed types (that is - one is an integer and one is a double) the field takes on the type of the smaller operand. If the operands are equivalent (e.g. 3 and 3.0), the field does not change. 0, 0.0, and -0.0 are all zero. The minimum of a zero stored value and zero input value is always the stored value. The minimum of any numeric value x and NaN is NaN. */
@@ -1650,20 +1398,15 @@ export interface FieldTransform {
   appendMissingElements?: ArrayValue;
 }
 
-export const FieldTransform: Schema.Schema<FieldTransform> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      minimum: Schema.optional(Value),
-      removeAllFromArray: Schema.optional(ArrayValue),
-      increment: Schema.optional(Value),
-      setToServerValue: Schema.optional(Schema.String),
-      maximum: Schema.optional(Value),
-      fieldPath: Schema.optional(Schema.String),
-      appendMissingElements: Schema.optional(ArrayValue),
-    }),
-  ).annotate({
-    identifier: "FieldTransform",
-  }) as any as Schema.Schema<FieldTransform>;
+export const FieldTransform = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  minimum: Schema.optional(Value),
+  removeAllFromArray: Schema.optional(ArrayValue),
+  increment: Schema.optional(Value),
+  setToServerValue: Schema.optional(Schema.String),
+  maximum: Schema.optional(Value),
+  fieldPath: Schema.optional(Schema.String),
+  appendMissingElements: Schema.optional(ArrayValue),
+}).annotate({ identifier: "FieldTransform" });
 
 export interface DocumentTransform {
   /** The name of the document to transform. */
@@ -1672,29 +1415,19 @@ export interface DocumentTransform {
   fieldTransforms?: Array<FieldTransform>;
 }
 
-export const DocumentTransform: Schema.Schema<DocumentTransform> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      document: Schema.optional(Schema.String),
-      fieldTransforms: Schema.optional(Schema.Array(FieldTransform)),
-    }),
-  ).annotate({
-    identifier: "DocumentTransform",
-  }) as any as Schema.Schema<DocumentTransform>;
+export const DocumentTransform = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  document: Schema.optional(Schema.String),
+  fieldTransforms: Schema.optional(Schema.Array(FieldTransform)),
+}).annotate({ identifier: "DocumentTransform" });
 
 export interface DocumentMask {
   /** The list of field paths in the mask. See Document.fields for a field path syntax reference. */
   fieldPaths?: Array<string>;
 }
 
-export const DocumentMask: Schema.Schema<DocumentMask> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fieldPaths: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "DocumentMask",
-  }) as any as Schema.Schema<DocumentMask>;
+export const DocumentMask = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fieldPaths: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "DocumentMask" });
 
 export interface Write {
   /** A document to write. */
@@ -1711,17 +1444,14 @@ export interface Write {
   updateTransforms?: Array<FieldTransform>;
 }
 
-export const Write: Schema.Schema<Write> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      update: Schema.optional(Document),
-      delete: Schema.optional(Schema.String),
-      transform: Schema.optional(DocumentTransform),
-      currentDocument: Schema.optional(Precondition),
-      updateMask: Schema.optional(DocumentMask),
-      updateTransforms: Schema.optional(Schema.Array(FieldTransform)),
-    }),
-  ).annotate({ identifier: "Write" }) as any as Schema.Schema<Write>;
+export const Write = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  update: Schema.optional(Document),
+  delete: Schema.optional(Schema.String),
+  transform: Schema.optional(DocumentTransform),
+  currentDocument: Schema.optional(Precondition),
+  updateMask: Schema.optional(DocumentMask),
+  updateTransforms: Schema.optional(Schema.Array(FieldTransform)),
+}).annotate({ identifier: "Write" });
 
 export interface CommitRequest {
   /** If set, applies all writes in this transaction, and commits it. */
@@ -1730,36 +1460,26 @@ export interface CommitRequest {
   writes?: Array<Write>;
 }
 
-export const CommitRequest: Schema.Schema<CommitRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      transaction: Schema.optional(Schema.String),
-      writes: Schema.optional(Schema.Array(Write)),
-    }),
-  ).annotate({
-    identifier: "CommitRequest",
-  }) as any as Schema.Schema<CommitRequest>;
+export const CommitRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  transaction: Schema.optional(Schema.String),
+  writes: Schema.optional(Schema.Array(Write)),
+}).annotate({ identifier: "CommitRequest" });
 
 export interface GoogleLongrunningCancelOperationRequest {}
 
-export const GoogleLongrunningCancelOperationRequest: Schema.Schema<GoogleLongrunningCancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleLongrunningCancelOperationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleLongrunningCancelOperationRequest",
-  }) as any as Schema.Schema<GoogleLongrunningCancelOperationRequest>;
+  });
 
 export interface ExplainStats {
   /** The format depends on the `output_format` options in the request. Currently there are two supported options: `TEXT` and `JSON`. Both supply a `google.protobuf.StringValue`. */
   data?: Record<string, unknown>;
 }
 
-export const ExplainStats: Schema.Schema<ExplainStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      data: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
-    identifier: "ExplainStats",
-  }) as any as Schema.Schema<ExplainStats>;
+export const ExplainStats = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  data: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "ExplainStats" });
 
 export interface ExecutePipelineResponse {
   /** The time at which the results are valid. This is a (not strictly) monotonically increasing value across multiple responses in the same stream. The API guarantees that all previously returned results are still valid at the latest `execution_time`. This allows the API consumer to treat the query if it ran at the latest `execution_time` returned. If the query returns no results, a response with `execution_time` and no `results` will be sent, and this represents the time at which the operation was run. */
@@ -1772,31 +1492,23 @@ export interface ExecutePipelineResponse {
   results?: Array<Document>;
 }
 
-export const ExecutePipelineResponse: Schema.Schema<ExecutePipelineResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      executionTime: Schema.optional(Schema.String),
-      transaction: Schema.optional(Schema.String),
-      explainStats: Schema.optional(ExplainStats),
-      results: Schema.optional(Schema.Array(Document)),
-    }),
-  ).annotate({
-    identifier: "ExecutePipelineResponse",
-  }) as any as Schema.Schema<ExecutePipelineResponse>;
+export const ExecutePipelineResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    executionTime: Schema.optional(Schema.String),
+    transaction: Schema.optional(Schema.String),
+    explainStats: Schema.optional(ExplainStats),
+    results: Schema.optional(Schema.Array(Document)),
+  }).annotate({ identifier: "ExecutePipelineResponse" });
 
 export interface GoogleFirestoreAdminV1ExportDocumentsResponse {
   /** Location of the output files. This can be used to begin an import into Cloud Firestore (this project or another project) after the operation completes successfully. */
   outputUriPrefix?: string;
 }
 
-export const GoogleFirestoreAdminV1ExportDocumentsResponse: Schema.Schema<GoogleFirestoreAdminV1ExportDocumentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      outputUriPrefix: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1ExportDocumentsResponse",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1ExportDocumentsResponse>;
+export const GoogleFirestoreAdminV1ExportDocumentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    outputUriPrefix: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1ExportDocumentsResponse" });
 
 export interface GoogleFirestoreAdminV1ImportDocumentsMetadata {
   /** The time this operation completed. Will be unset if operation still in progress. */
@@ -1826,21 +1538,17 @@ export interface GoogleFirestoreAdminV1ImportDocumentsMetadata {
   namespaceIds?: Array<string>;
 }
 
-export const GoogleFirestoreAdminV1ImportDocumentsMetadata: Schema.Schema<GoogleFirestoreAdminV1ImportDocumentsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endTime: Schema.optional(Schema.String),
-      progressBytes: Schema.optional(GoogleFirestoreAdminV1Progress),
-      startTime: Schema.optional(Schema.String),
-      collectionIds: Schema.optional(Schema.Array(Schema.String)),
-      operationState: Schema.optional(Schema.String),
-      inputUriPrefix: Schema.optional(Schema.String),
-      progressDocuments: Schema.optional(GoogleFirestoreAdminV1Progress),
-      namespaceIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1ImportDocumentsMetadata",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1ImportDocumentsMetadata>;
+export const GoogleFirestoreAdminV1ImportDocumentsMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endTime: Schema.optional(Schema.String),
+    progressBytes: Schema.optional(GoogleFirestoreAdminV1Progress),
+    startTime: Schema.optional(Schema.String),
+    collectionIds: Schema.optional(Schema.Array(Schema.String)),
+    operationState: Schema.optional(Schema.String),
+    inputUriPrefix: Schema.optional(Schema.String),
+    progressDocuments: Schema.optional(GoogleFirestoreAdminV1Progress),
+    namespaceIds: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1ImportDocumentsMetadata" });
 
 export interface BatchWriteRequest {
   /** The writes to apply. Method does not apply writes atomically and does not guarantee ordering. Each write succeeds or fails independently. You cannot write to the same document more than once per request. */
@@ -1849,36 +1557,26 @@ export interface BatchWriteRequest {
   labels?: Record<string, string>;
 }
 
-export const BatchWriteRequest: Schema.Schema<BatchWriteRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      writes: Schema.optional(Schema.Array(Write)),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "BatchWriteRequest",
-  }) as any as Schema.Schema<BatchWriteRequest>;
+export const BatchWriteRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  writes: Schema.optional(Schema.Array(Write)),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "BatchWriteRequest" });
 
 export interface RollbackRequest {
   /** Required. The transaction to roll back. */
   transaction?: string;
 }
 
-export const RollbackRequest: Schema.Schema<RollbackRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      transaction: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RollbackRequest",
-  }) as any as Schema.Schema<RollbackRequest>;
+export const RollbackRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  transaction: Schema.optional(Schema.String),
+}).annotate({ identifier: "RollbackRequest" });
 
 export interface GoogleFirestoreAdminV1LocationMetadata {}
 
-export const GoogleFirestoreAdminV1LocationMetadata: Schema.Schema<GoogleFirestoreAdminV1LocationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleFirestoreAdminV1LocationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleFirestoreAdminV1LocationMetadata",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1LocationMetadata>;
+  });
 
 export interface GoogleFirestoreAdminV1ListIndexesResponse {
   /** The requested indexes. */
@@ -1887,15 +1585,11 @@ export interface GoogleFirestoreAdminV1ListIndexesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleFirestoreAdminV1ListIndexesResponse: Schema.Schema<GoogleFirestoreAdminV1ListIndexesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      indexes: Schema.optional(Schema.Array(GoogleFirestoreAdminV1Index)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1ListIndexesResponse",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1ListIndexesResponse>;
+export const GoogleFirestoreAdminV1ListIndexesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    indexes: Schema.optional(Schema.Array(GoogleFirestoreAdminV1Index)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1ListIndexesResponse" });
 
 export interface GoogleLongrunningOperation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -1910,18 +1604,14 @@ export interface GoogleLongrunningOperation {
   metadata?: Record<string, unknown>;
 }
 
-export const GoogleLongrunningOperation: Schema.Schema<GoogleLongrunningOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      done: Schema.optional(Schema.Boolean),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      error: Schema.optional(Status),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
-    identifier: "GoogleLongrunningOperation",
-  }) as any as Schema.Schema<GoogleLongrunningOperation>;
+export const GoogleLongrunningOperation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    done: Schema.optional(Schema.Boolean),
+    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    error: Schema.optional(Status),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "GoogleLongrunningOperation" });
 
 export interface GoogleLongrunningListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
@@ -1932,28 +1622,21 @@ export interface GoogleLongrunningListOperationsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleLongrunningListOperationsResponse: Schema.Schema<GoogleLongrunningListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleLongrunningListOperationsResponse",
-  }) as any as Schema.Schema<GoogleLongrunningListOperationsResponse>;
+export const GoogleLongrunningListOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleLongrunningListOperationsResponse" });
 
 export interface ReadOnly {
   /** Reads documents at the given time. This must be a microsecond precision timestamp within the past one hour, or if Point-in-Time Recovery is enabled, can additionally be a whole minute timestamp within the past 7 days. */
   readTime?: string;
 }
 
-export const ReadOnly: Schema.Schema<ReadOnly> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      readTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "ReadOnly" }) as any as Schema.Schema<ReadOnly>;
+export const ReadOnly = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  readTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "ReadOnly" });
 
 export interface GoogleFirestoreAdminV1CloneDatabaseMetadata {
   /** The snapshot from which this database was cloned. */
@@ -1979,33 +1662,25 @@ export interface GoogleFirestoreAdminV1CloneDatabaseMetadata {
   endTime?: string;
 }
 
-export const GoogleFirestoreAdminV1CloneDatabaseMetadata: Schema.Schema<GoogleFirestoreAdminV1CloneDatabaseMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pitrSnapshot: Schema.optional(GoogleFirestoreAdminV1PitrSnapshot),
-      operationState: Schema.optional(Schema.String),
-      progressPercentage: Schema.optional(GoogleFirestoreAdminV1Progress),
-      database: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1CloneDatabaseMetadata",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1CloneDatabaseMetadata>;
+export const GoogleFirestoreAdminV1CloneDatabaseMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pitrSnapshot: Schema.optional(GoogleFirestoreAdminV1PitrSnapshot),
+    operationState: Schema.optional(Schema.String),
+    progressPercentage: Schema.optional(GoogleFirestoreAdminV1Progress),
+    database: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1CloneDatabaseMetadata" });
 
 export interface GoogleFirestoreAdminV1ListUserCredsResponse {
   /** The user creds for the database. */
   userCreds?: Array<GoogleFirestoreAdminV1UserCreds>;
 }
 
-export const GoogleFirestoreAdminV1ListUserCredsResponse: Schema.Schema<GoogleFirestoreAdminV1ListUserCredsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userCreds: Schema.optional(Schema.Array(GoogleFirestoreAdminV1UserCreds)),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1ListUserCredsResponse",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1ListUserCredsResponse>;
+export const GoogleFirestoreAdminV1ListUserCredsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userCreds: Schema.optional(Schema.Array(GoogleFirestoreAdminV1UserCreds)),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1ListUserCredsResponse" });
 
 export interface GoogleFirestoreAdminV1Stats {
   /** Output only. The total number of index entries contained in the backup. */
@@ -2016,16 +1691,12 @@ export interface GoogleFirestoreAdminV1Stats {
   documentCount?: string;
 }
 
-export const GoogleFirestoreAdminV1Stats: Schema.Schema<GoogleFirestoreAdminV1Stats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      indexCount: Schema.optional(Schema.String),
-      sizeBytes: Schema.optional(Schema.String),
-      documentCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1Stats",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1Stats>;
+export const GoogleFirestoreAdminV1Stats =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    indexCount: Schema.optional(Schema.String),
+    sizeBytes: Schema.optional(Schema.String),
+    documentCount: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1Stats" });
 
 export interface StructuredPipeline {
   /** Required. The pipeline query to execute. */
@@ -2034,15 +1705,10 @@ export interface StructuredPipeline {
   options?: Record<string, Value>;
 }
 
-export const StructuredPipeline: Schema.Schema<StructuredPipeline> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pipeline: Schema.optional(Pipeline),
-      options: Schema.optional(Schema.Record(Schema.String, Value)),
-    }),
-  ).annotate({
-    identifier: "StructuredPipeline",
-  }) as any as Schema.Schema<StructuredPipeline>;
+export const StructuredPipeline = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pipeline: Schema.optional(Pipeline),
+  options: Schema.optional(Schema.Record(Schema.String, Value)),
+}).annotate({ identifier: "StructuredPipeline" });
 
 export interface DocumentChange {
   /** The new state of the Document. If `mask` is set, contains only fields that were updated or added. */
@@ -2053,16 +1719,11 @@ export interface DocumentChange {
   targetIds?: Array<number>;
 }
 
-export const DocumentChange: Schema.Schema<DocumentChange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      document: Schema.optional(Document),
-      removedTargetIds: Schema.optional(Schema.Array(Schema.Number)),
-      targetIds: Schema.optional(Schema.Array(Schema.Number)),
-    }),
-  ).annotate({
-    identifier: "DocumentChange",
-  }) as any as Schema.Schema<DocumentChange>;
+export const DocumentChange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  document: Schema.optional(Document),
+  removedTargetIds: Schema.optional(Schema.Array(Schema.Number)),
+  targetIds: Schema.optional(Schema.Array(Schema.Number)),
+}).annotate({ identifier: "DocumentChange" });
 
 export interface TransactionOptions {
   /** The transaction can only be used for read operations. */
@@ -2071,15 +1732,10 @@ export interface TransactionOptions {
   readWrite?: ReadWrite;
 }
 
-export const TransactionOptions: Schema.Schema<TransactionOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      readOnly: Schema.optional(ReadOnly),
-      readWrite: Schema.optional(ReadWrite),
-    }),
-  ).annotate({
-    identifier: "TransactionOptions",
-  }) as any as Schema.Schema<TransactionOptions>;
+export const TransactionOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  readOnly: Schema.optional(ReadOnly),
+  readWrite: Schema.optional(ReadWrite),
+}).annotate({ identifier: "TransactionOptions" });
 
 export interface ExecutePipelineRequest {
   /** Run the query within an already active transaction. The value here is the opaque transaction ID to execute the query in. */
@@ -2092,17 +1748,14 @@ export interface ExecutePipelineRequest {
   readTime?: string;
 }
 
-export const ExecutePipelineRequest: Schema.Schema<ExecutePipelineRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      transaction: Schema.optional(Schema.String),
-      newTransaction: Schema.optional(TransactionOptions),
-      structuredPipeline: Schema.optional(StructuredPipeline),
-      readTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ExecutePipelineRequest",
-  }) as any as Schema.Schema<ExecutePipelineRequest>;
+export const ExecutePipelineRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    transaction: Schema.optional(Schema.String),
+    newTransaction: Schema.optional(TransactionOptions),
+    structuredPipeline: Schema.optional(StructuredPipeline),
+    readTime: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ExecutePipelineRequest" });
 
 export interface DocumentRemove {
   /** The resource name of the Document that has gone out of view. */
@@ -2113,16 +1766,11 @@ export interface DocumentRemove {
   removedTargetIds?: Array<number>;
 }
 
-export const DocumentRemove: Schema.Schema<DocumentRemove> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      document: Schema.optional(Schema.String),
-      readTime: Schema.optional(Schema.String),
-      removedTargetIds: Schema.optional(Schema.Array(Schema.Number)),
-    }),
-  ).annotate({
-    identifier: "DocumentRemove",
-  }) as any as Schema.Schema<DocumentRemove>;
+export const DocumentRemove = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  document: Schema.optional(Schema.String),
+  readTime: Schema.optional(Schema.String),
+  removedTargetIds: Schema.optional(Schema.Array(Schema.Number)),
+}).annotate({ identifier: "DocumentRemove" });
 
 export interface GoogleFirestoreAdminV1Backup {
   /** Output only. The unique resource name of the Backup. Format is `projects/{project}/locations/{location}/backups/{backup}`. The location in the name will be the Standard Managed Multi-Region (SMMR) location (e.g. `us`) if the backup was created with an SMMR location, or the Google Managed Multi-Region (GMMR) location (e.g. `nam5`) if the backup was created with a GMMR location. */
@@ -2146,20 +1794,16 @@ export interface GoogleFirestoreAdminV1Backup {
   stats?: GoogleFirestoreAdminV1Stats;
 }
 
-export const GoogleFirestoreAdminV1Backup: Schema.Schema<GoogleFirestoreAdminV1Backup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      database: Schema.optional(Schema.String),
-      databaseUid: Schema.optional(Schema.String),
-      expireTime: Schema.optional(Schema.String),
-      snapshotTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      stats: Schema.optional(GoogleFirestoreAdminV1Stats),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1Backup",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1Backup>;
+export const GoogleFirestoreAdminV1Backup =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    database: Schema.optional(Schema.String),
+    databaseUid: Schema.optional(Schema.String),
+    expireTime: Schema.optional(Schema.String),
+    snapshotTime: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    stats: Schema.optional(GoogleFirestoreAdminV1Stats),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1Backup" });
 
 export interface TargetChange {
   /** The target IDs of targets that have changed. If empty, the change applies to all targets. The order of the target IDs is not defined. */
@@ -2180,18 +1824,13 @@ export interface TargetChange {
   cause?: Status;
 }
 
-export const TargetChange: Schema.Schema<TargetChange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetIds: Schema.optional(Schema.Array(Schema.Number)),
-      resumeToken: Schema.optional(Schema.String),
-      targetChangeType: Schema.optional(Schema.String),
-      readTime: Schema.optional(Schema.String),
-      cause: Schema.optional(Status),
-    }),
-  ).annotate({
-    identifier: "TargetChange",
-  }) as any as Schema.Schema<TargetChange>;
+export const TargetChange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  targetIds: Schema.optional(Schema.Array(Schema.Number)),
+  resumeToken: Schema.optional(Schema.String),
+  targetChangeType: Schema.optional(Schema.String),
+  readTime: Schema.optional(Schema.String),
+  cause: Schema.optional(Status),
+}).annotate({ identifier: "TargetChange" });
 
 export interface CommitResponse {
   /** The result of applying the writes. This i-th write result corresponds to the i-th write in the request. */
@@ -2200,15 +1839,10 @@ export interface CommitResponse {
   commitTime?: string;
 }
 
-export const CommitResponse: Schema.Schema<CommitResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      writeResults: Schema.optional(Schema.Array(WriteResult)),
-      commitTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CommitResponse",
-  }) as any as Schema.Schema<CommitResponse>;
+export const CommitResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  writeResults: Schema.optional(Schema.Array(WriteResult)),
+  commitTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "CommitResponse" });
 
 export interface ListCollectionIdsRequest {
   /** A page token. Must be a value from ListCollectionIdsResponse. */
@@ -2219,16 +1853,12 @@ export interface ListCollectionIdsRequest {
   readTime?: string;
 }
 
-export const ListCollectionIdsRequest: Schema.Schema<ListCollectionIdsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pageToken: Schema.optional(Schema.String),
-      pageSize: Schema.optional(Schema.Number),
-      readTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListCollectionIdsRequest",
-  }) as any as Schema.Schema<ListCollectionIdsRequest>;
+export const ListCollectionIdsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageToken: Schema.optional(Schema.String),
+    pageSize: Schema.optional(Schema.Number),
+    readTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListCollectionIdsRequest" });
 
 export interface Target {
   /** The number of documents that last matched the query at the resume token or read time. This value is only relevant when a `resume_type` is provided. This value being present and greater than zero signals that the client wants `ExistenceFilter.unchanged_names` to be included in the response. */
@@ -2247,18 +1877,15 @@ export interface Target {
   once?: boolean;
 }
 
-export const Target: Schema.Schema<Target> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expectedCount: Schema.optional(Schema.Number),
-      targetId: Schema.optional(Schema.Number),
-      readTime: Schema.optional(Schema.String),
-      query: Schema.optional(QueryTarget),
-      documents: Schema.optional(DocumentsTarget),
-      resumeToken: Schema.optional(Schema.String),
-      once: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "Target" }) as any as Schema.Schema<Target>;
+export const Target = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  expectedCount: Schema.optional(Schema.Number),
+  targetId: Schema.optional(Schema.Number),
+  readTime: Schema.optional(Schema.String),
+  query: Schema.optional(QueryTarget),
+  documents: Schema.optional(DocumentsTarget),
+  resumeToken: Schema.optional(Schema.String),
+  once: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Target" });
 
 export interface GoogleFirestoreAdminV1ExportDocumentsMetadata {
   /** The state of the export operation. */
@@ -2290,36 +1917,28 @@ export interface GoogleFirestoreAdminV1ExportDocumentsMetadata {
   collectionIds?: Array<string>;
 }
 
-export const GoogleFirestoreAdminV1ExportDocumentsMetadata: Schema.Schema<GoogleFirestoreAdminV1ExportDocumentsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operationState: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      outputUriPrefix: Schema.optional(Schema.String),
-      progressDocuments: Schema.optional(GoogleFirestoreAdminV1Progress),
-      namespaceIds: Schema.optional(Schema.Array(Schema.String)),
-      endTime: Schema.optional(Schema.String),
-      snapshotTime: Schema.optional(Schema.String),
-      progressBytes: Schema.optional(GoogleFirestoreAdminV1Progress),
-      collectionIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1ExportDocumentsMetadata",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1ExportDocumentsMetadata>;
+export const GoogleFirestoreAdminV1ExportDocumentsMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operationState: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    outputUriPrefix: Schema.optional(Schema.String),
+    progressDocuments: Schema.optional(GoogleFirestoreAdminV1Progress),
+    namespaceIds: Schema.optional(Schema.Array(Schema.String)),
+    endTime: Schema.optional(Schema.String),
+    snapshotTime: Schema.optional(Schema.String),
+    progressBytes: Schema.optional(GoogleFirestoreAdminV1Progress),
+    collectionIds: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1ExportDocumentsMetadata" });
 
 export interface BeginTransactionRequest {
   /** The options for the transaction. Defaults to a read-write transaction. */
   options?: TransactionOptions;
 }
 
-export const BeginTransactionRequest: Schema.Schema<BeginTransactionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      options: Schema.optional(TransactionOptions),
-    }),
-  ).annotate({
-    identifier: "BeginTransactionRequest",
-  }) as any as Schema.Schema<BeginTransactionRequest>;
+export const BeginTransactionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    options: Schema.optional(TransactionOptions),
+  }).annotate({ identifier: "BeginTransactionRequest" });
 
 export interface ListCollectionIdsResponse {
   /** A page token that may be used to continue the list. */
@@ -2328,15 +1947,11 @@ export interface ListCollectionIdsResponse {
   collectionIds?: Array<string>;
 }
 
-export const ListCollectionIdsResponse: Schema.Schema<ListCollectionIdsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      collectionIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListCollectionIdsResponse",
-  }) as any as Schema.Schema<ListCollectionIdsResponse>;
+export const ListCollectionIdsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    collectionIds: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListCollectionIdsResponse" });
 
 export interface BitSequence {
   /** The bytes that encode the bit sequence. May have a length of zero. */
@@ -2345,15 +1960,10 @@ export interface BitSequence {
   padding?: number;
 }
 
-export const BitSequence: Schema.Schema<BitSequence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bitmap: Schema.optional(Schema.String),
-      padding: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "BitSequence",
-  }) as any as Schema.Schema<BitSequence>;
+export const BitSequence = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bitmap: Schema.optional(Schema.String),
+  padding: Schema.optional(Schema.Number),
+}).annotate({ identifier: "BitSequence" });
 
 export interface BloomFilter {
   /** The bloom filter data. */
@@ -2362,27 +1972,19 @@ export interface BloomFilter {
   hashCount?: number;
 }
 
-export const BloomFilter: Schema.Schema<BloomFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bits: Schema.optional(BitSequence),
-      hashCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "BloomFilter",
-  }) as any as Schema.Schema<BloomFilter>;
+export const BloomFilter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bits: Schema.optional(BitSequence),
+  hashCount: Schema.optional(Schema.Number),
+}).annotate({ identifier: "BloomFilter" });
 
 export interface Sum {
   /** The field to aggregate on. */
   field?: FieldReference;
 }
 
-export const Sum: Schema.Schema<Sum> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      field: Schema.optional(FieldReference),
-    }),
-  ).annotate({ identifier: "Sum" }) as any as Schema.Schema<Sum>;
+export const Sum = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  field: Schema.optional(FieldReference),
+}).annotate({ identifier: "Sum" });
 
 export interface Aggregation {
   /** Count aggregator. */
@@ -2395,17 +1997,12 @@ export interface Aggregation {
   alias?: string;
 }
 
-export const Aggregation: Schema.Schema<Aggregation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      count: Schema.optional(Count),
-      sum: Schema.optional(Sum),
-      avg: Schema.optional(Avg),
-      alias: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Aggregation",
-  }) as any as Schema.Schema<Aggregation>;
+export const Aggregation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  count: Schema.optional(Count),
+  sum: Schema.optional(Sum),
+  avg: Schema.optional(Avg),
+  alias: Schema.optional(Schema.String),
+}).annotate({ identifier: "Aggregation" });
 
 export interface StructuredAggregationQuery {
   /** Nested structured query. */
@@ -2414,36 +2011,31 @@ export interface StructuredAggregationQuery {
   aggregations?: Array<Aggregation>;
 }
 
-export const StructuredAggregationQuery: Schema.Schema<StructuredAggregationQuery> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      structuredQuery: Schema.optional(StructuredQuery),
-      aggregations: Schema.optional(Schema.Array(Aggregation)),
-    }),
-  ).annotate({
-    identifier: "StructuredAggregationQuery",
-  }) as any as Schema.Schema<StructuredAggregationQuery>;
+export const StructuredAggregationQuery =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    structuredQuery: Schema.optional(StructuredQuery),
+    aggregations: Schema.optional(Schema.Array(Aggregation)),
+  }).annotate({ identifier: "StructuredAggregationQuery" });
 
 export interface GoogleFirestoreAdminV1EnableUserCredsRequest {}
 
-export const GoogleFirestoreAdminV1EnableUserCredsRequest: Schema.Schema<GoogleFirestoreAdminV1EnableUserCredsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleFirestoreAdminV1EnableUserCredsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleFirestoreAdminV1EnableUserCredsRequest",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1EnableUserCredsRequest>;
+  });
 
 export interface GoogleFirestoreAdminV1CreateDatabaseMetadata {}
 
-export const GoogleFirestoreAdminV1CreateDatabaseMetadata: Schema.Schema<GoogleFirestoreAdminV1CreateDatabaseMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleFirestoreAdminV1CreateDatabaseMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleFirestoreAdminV1CreateDatabaseMetadata",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1CreateDatabaseMetadata>;
+  });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface RunAggregationQueryRequest {
   /** Run the aggregation within an already active transaction. The value here is the opaque transaction ID to execute the query in. */
@@ -2458,18 +2050,14 @@ export interface RunAggregationQueryRequest {
   readTime?: string;
 }
 
-export const RunAggregationQueryRequest: Schema.Schema<RunAggregationQueryRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      transaction: Schema.optional(Schema.String),
-      explainOptions: Schema.optional(ExplainOptions),
-      newTransaction: Schema.optional(TransactionOptions),
-      structuredAggregationQuery: Schema.optional(StructuredAggregationQuery),
-      readTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RunAggregationQueryRequest",
-  }) as any as Schema.Schema<RunAggregationQueryRequest>;
+export const RunAggregationQueryRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    transaction: Schema.optional(Schema.String),
+    explainOptions: Schema.optional(ExplainOptions),
+    newTransaction: Schema.optional(TransactionOptions),
+    structuredAggregationQuery: Schema.optional(StructuredAggregationQuery),
+    readTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RunAggregationQueryRequest" });
 
 export interface ListDocumentsResponse {
   /** The Documents found. */
@@ -2478,15 +2066,10 @@ export interface ListDocumentsResponse {
   nextPageToken?: string;
 }
 
-export const ListDocumentsResponse: Schema.Schema<ListDocumentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      documents: Schema.optional(Schema.Array(Document)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListDocumentsResponse",
-  }) as any as Schema.Schema<ListDocumentsResponse>;
+export const ListDocumentsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  documents: Schema.optional(Schema.Array(Document)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListDocumentsResponse" });
 
 export interface BatchGetDocumentsRequest {
   /** Reads documents as they were at the given time. This must be a microsecond precision timestamp within the past one hour, or if Point-in-Time Recovery is enabled, can additionally be a whole minute timestamp within the past 7 days. */
@@ -2501,18 +2084,14 @@ export interface BatchGetDocumentsRequest {
   newTransaction?: TransactionOptions;
 }
 
-export const BatchGetDocumentsRequest: Schema.Schema<BatchGetDocumentsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      readTime: Schema.optional(Schema.String),
-      mask: Schema.optional(DocumentMask),
-      transaction: Schema.optional(Schema.String),
-      documents: Schema.optional(Schema.Array(Schema.String)),
-      newTransaction: Schema.optional(TransactionOptions),
-    }),
-  ).annotate({
-    identifier: "BatchGetDocumentsRequest",
-  }) as any as Schema.Schema<BatchGetDocumentsRequest>;
+export const BatchGetDocumentsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    readTime: Schema.optional(Schema.String),
+    mask: Schema.optional(DocumentMask),
+    transaction: Schema.optional(Schema.String),
+    documents: Schema.optional(Schema.Array(Schema.String)),
+    newTransaction: Schema.optional(TransactionOptions),
+  }).annotate({ identifier: "BatchGetDocumentsRequest" });
 
 export interface GoogleFirestoreAdminV1RestoreDatabaseMetadata {
   /** The name of the database being restored to. */
@@ -2538,19 +2117,15 @@ export interface GoogleFirestoreAdminV1RestoreDatabaseMetadata {
   progressPercentage?: GoogleFirestoreAdminV1Progress;
 }
 
-export const GoogleFirestoreAdminV1RestoreDatabaseMetadata: Schema.Schema<GoogleFirestoreAdminV1RestoreDatabaseMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      database: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      backup: Schema.optional(Schema.String),
-      operationState: Schema.optional(Schema.String),
-      progressPercentage: Schema.optional(GoogleFirestoreAdminV1Progress),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1RestoreDatabaseMetadata",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1RestoreDatabaseMetadata>;
+export const GoogleFirestoreAdminV1RestoreDatabaseMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    database: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    backup: Schema.optional(Schema.String),
+    operationState: Schema.optional(Schema.String),
+    progressPercentage: Schema.optional(GoogleFirestoreAdminV1Progress),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1RestoreDatabaseMetadata" });
 
 export interface ListenRequest {
   /** The ID of a target to remove from this stream. */
@@ -2561,16 +2136,11 @@ export interface ListenRequest {
   labels?: Record<string, string>;
 }
 
-export const ListenRequest: Schema.Schema<ListenRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      removeTarget: Schema.optional(Schema.Number),
-      addTarget: Schema.optional(Target),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListenRequest",
-  }) as any as Schema.Schema<ListenRequest>;
+export const ListenRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  removeTarget: Schema.optional(Schema.Number),
+  addTarget: Schema.optional(Target),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "ListenRequest" });
 
 export interface ExistenceFilter {
   /** The target ID to which this filter applies. */
@@ -2581,16 +2151,11 @@ export interface ExistenceFilter {
   count?: number;
 }
 
-export const ExistenceFilter: Schema.Schema<ExistenceFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetId: Schema.optional(Schema.Number),
-      unchangedNames: Schema.optional(BloomFilter),
-      count: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "ExistenceFilter",
-  }) as any as Schema.Schema<ExistenceFilter>;
+export const ExistenceFilter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  targetId: Schema.optional(Schema.Number),
+  unchangedNames: Schema.optional(BloomFilter),
+  count: Schema.optional(Schema.Number),
+}).annotate({ identifier: "ExistenceFilter" });
 
 export interface ListenResponse {
   /** A Document has been removed from a target (because it is no longer relevant to that target). */
@@ -2605,18 +2170,13 @@ export interface ListenResponse {
   filter?: ExistenceFilter;
 }
 
-export const ListenResponse: Schema.Schema<ListenResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      documentRemove: Schema.optional(DocumentRemove),
-      documentChange: Schema.optional(DocumentChange),
-      documentDelete: Schema.optional(DocumentDelete),
-      targetChange: Schema.optional(TargetChange),
-      filter: Schema.optional(ExistenceFilter),
-    }),
-  ).annotate({
-    identifier: "ListenResponse",
-  }) as any as Schema.Schema<ListenResponse>;
+export const ListenResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  documentRemove: Schema.optional(DocumentRemove),
+  documentChange: Schema.optional(DocumentChange),
+  documentDelete: Schema.optional(DocumentDelete),
+  targetChange: Schema.optional(TargetChange),
+  filter: Schema.optional(ExistenceFilter),
+}).annotate({ identifier: "ListenResponse" });
 
 export interface GoogleFirestoreAdminV1ImportDocumentsRequest {
   /** IDs of the collection groups to import. Unspecified means all collection groups that were included in the export. Each collection group in this list must be unique. */
@@ -2627,23 +2187,19 @@ export interface GoogleFirestoreAdminV1ImportDocumentsRequest {
   inputUriPrefix?: string;
 }
 
-export const GoogleFirestoreAdminV1ImportDocumentsRequest: Schema.Schema<GoogleFirestoreAdminV1ImportDocumentsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      collectionIds: Schema.optional(Schema.Array(Schema.String)),
-      namespaceIds: Schema.optional(Schema.Array(Schema.String)),
-      inputUriPrefix: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1ImportDocumentsRequest",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1ImportDocumentsRequest>;
+export const GoogleFirestoreAdminV1ImportDocumentsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    collectionIds: Schema.optional(Schema.Array(Schema.String)),
+    namespaceIds: Schema.optional(Schema.Array(Schema.String)),
+    inputUriPrefix: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1ImportDocumentsRequest" });
 
 export interface GoogleFirestoreAdminV1ResetUserPasswordRequest {}
 
-export const GoogleFirestoreAdminV1ResetUserPasswordRequest: Schema.Schema<GoogleFirestoreAdminV1ResetUserPasswordRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleFirestoreAdminV1ResetUserPasswordRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleFirestoreAdminV1ResetUserPasswordRequest",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1ResetUserPasswordRequest>;
+  });
 
 export interface PartitionQueryResponse {
   /** Partition results. Each partition is a split point that can be used by RunQuery as a starting or end point for the query results. The RunQuery requests must be made with the same query supplied to this PartitionQuery request. The partition cursors will be ordered according to same ordering as the results of the query supplied to PartitionQuery. For example, if a PartitionQuery request returns partition cursors A and B, running the following three queries will return the entire result set of the original query: * query, end_at A * query, start_at A, end_at B * query, start_at B An empty result may indicate that the query has too few results to be partitioned, or that the query is not yet supported for partitioning. */
@@ -2652,29 +2208,22 @@ export interface PartitionQueryResponse {
   nextPageToken?: string;
 }
 
-export const PartitionQueryResponse: Schema.Schema<PartitionQueryResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      partitions: Schema.optional(Schema.Array(Cursor)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PartitionQueryResponse",
-  }) as any as Schema.Schema<PartitionQueryResponse>;
+export const PartitionQueryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    partitions: Schema.optional(Schema.Array(Cursor)),
+    nextPageToken: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "PartitionQueryResponse" });
 
 export interface BeginTransactionResponse {
   /** The transaction that was started. */
   transaction?: string;
 }
 
-export const BeginTransactionResponse: Schema.Schema<BeginTransactionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      transaction: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BeginTransactionResponse",
-  }) as any as Schema.Schema<BeginTransactionResponse>;
+export const BeginTransactionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    transaction: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BeginTransactionResponse" });
 
 export interface RunQueryRequest {
   /** Reads documents as they were at the given time. This must be a microsecond precision timestamp within the past one hour, or if Point-in-Time Recovery is enabled, can additionally be a whole minute timestamp within the past 7 days. */
@@ -2689,18 +2238,13 @@ export interface RunQueryRequest {
   newTransaction?: TransactionOptions;
 }
 
-export const RunQueryRequest: Schema.Schema<RunQueryRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      readTime: Schema.optional(Schema.String),
-      transaction: Schema.optional(Schema.String),
-      explainOptions: Schema.optional(ExplainOptions),
-      structuredQuery: Schema.optional(StructuredQuery),
-      newTransaction: Schema.optional(TransactionOptions),
-    }),
-  ).annotate({
-    identifier: "RunQueryRequest",
-  }) as any as Schema.Schema<RunQueryRequest>;
+export const RunQueryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  readTime: Schema.optional(Schema.String),
+  transaction: Schema.optional(Schema.String),
+  explainOptions: Schema.optional(ExplainOptions),
+  structuredQuery: Schema.optional(StructuredQuery),
+  newTransaction: Schema.optional(TransactionOptions),
+}).annotate({ identifier: "RunQueryRequest" });
 
 export interface BatchWriteResponse {
   /** The result of applying the writes. This i-th write result corresponds to the i-th write in the request. */
@@ -2709,22 +2253,17 @@ export interface BatchWriteResponse {
   status?: Array<Status>;
 }
 
-export const BatchWriteResponse: Schema.Schema<BatchWriteResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      writeResults: Schema.optional(Schema.Array(WriteResult)),
-      status: Schema.optional(Schema.Array(Status)),
-    }),
-  ).annotate({
-    identifier: "BatchWriteResponse",
-  }) as any as Schema.Schema<BatchWriteResponse>;
+export const BatchWriteResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  writeResults: Schema.optional(Schema.Array(WriteResult)),
+  status: Schema.optional(Schema.Array(Status)),
+}).annotate({ identifier: "BatchWriteResponse" });
 
 export interface GoogleFirestoreAdminV1UpdateDatabaseMetadata {}
 
-export const GoogleFirestoreAdminV1UpdateDatabaseMetadata: Schema.Schema<GoogleFirestoreAdminV1UpdateDatabaseMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleFirestoreAdminV1UpdateDatabaseMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleFirestoreAdminV1UpdateDatabaseMetadata",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1UpdateDatabaseMetadata>;
+  });
 
 export interface RunQueryResponse {
   /** The time at which the document was read. This may be monotonically increasing; in this case, the previous documents in the result stream are guaranteed not to have changed between their `read_time` and this one. If the query returns no results, a response with `read_time` and no `document` will be sent, and this represents the time at which the query was run. */
@@ -2741,19 +2280,14 @@ export interface RunQueryResponse {
   explainMetrics?: ExplainMetrics;
 }
 
-export const RunQueryResponse: Schema.Schema<RunQueryResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      readTime: Schema.optional(Schema.String),
-      done: Schema.optional(Schema.Boolean),
-      document: Schema.optional(Document),
-      transaction: Schema.optional(Schema.String),
-      skippedResults: Schema.optional(Schema.Number),
-      explainMetrics: Schema.optional(ExplainMetrics),
-    }),
-  ).annotate({
-    identifier: "RunQueryResponse",
-  }) as any as Schema.Schema<RunQueryResponse>;
+export const RunQueryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  readTime: Schema.optional(Schema.String),
+  done: Schema.optional(Schema.Boolean),
+  document: Schema.optional(Document),
+  transaction: Schema.optional(Schema.String),
+  skippedResults: Schema.optional(Schema.Number),
+  explainMetrics: Schema.optional(ExplainMetrics),
+}).annotate({ identifier: "RunQueryResponse" });
 
 export interface PartitionQueryRequest {
   /** The desired maximum number of partition points. The partitions may be returned across multiple pages of results. The number must be positive. The actual number of partitions returned may be fewer. For example, this may be set to one fewer than the number of parallel queries to be run, or in running a data pipeline job, one fewer than the number of workers or compute instances available. */
@@ -2768,18 +2302,13 @@ export interface PartitionQueryRequest {
   pageSize?: number;
 }
 
-export const PartitionQueryRequest: Schema.Schema<PartitionQueryRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      partitionCount: Schema.optional(Schema.String),
-      readTime: Schema.optional(Schema.String),
-      pageToken: Schema.optional(Schema.String),
-      structuredQuery: Schema.optional(StructuredQuery),
-      pageSize: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "PartitionQueryRequest",
-  }) as any as Schema.Schema<PartitionQueryRequest>;
+export const PartitionQueryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  partitionCount: Schema.optional(Schema.String),
+  readTime: Schema.optional(Schema.String),
+  pageToken: Schema.optional(Schema.String),
+  structuredQuery: Schema.optional(StructuredQuery),
+  pageSize: Schema.optional(Schema.Number),
+}).annotate({ identifier: "PartitionQueryRequest" });
 
 export interface GoogleFirestoreAdminV1RestoreDatabaseRequest {
   /** Optional. Encryption configuration for the restored database. If this field is not specified, the restored database will use the same encryption configuration as the backup, namely use_source_encryption. */
@@ -2792,17 +2321,13 @@ export interface GoogleFirestoreAdminV1RestoreDatabaseRequest {
   backup?: string;
 }
 
-export const GoogleFirestoreAdminV1RestoreDatabaseRequest: Schema.Schema<GoogleFirestoreAdminV1RestoreDatabaseRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      encryptionConfig: Schema.optional(GoogleFirestoreAdminV1EncryptionConfig),
-      tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      databaseId: Schema.optional(Schema.String),
-      backup: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1RestoreDatabaseRequest",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1RestoreDatabaseRequest>;
+export const GoogleFirestoreAdminV1RestoreDatabaseRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    encryptionConfig: Schema.optional(GoogleFirestoreAdminV1EncryptionConfig),
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    databaseId: Schema.optional(Schema.String),
+    backup: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1RestoreDatabaseRequest" });
 
 export interface GoogleFirestoreAdminV1ListBackupsResponse {
   /** List of all backups for the project. */
@@ -2811,15 +2336,11 @@ export interface GoogleFirestoreAdminV1ListBackupsResponse {
   unreachable?: Array<string>;
 }
 
-export const GoogleFirestoreAdminV1ListBackupsResponse: Schema.Schema<GoogleFirestoreAdminV1ListBackupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      backups: Schema.optional(Schema.Array(GoogleFirestoreAdminV1Backup)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1ListBackupsResponse",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1ListBackupsResponse>;
+export const GoogleFirestoreAdminV1ListBackupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    backups: Schema.optional(Schema.Array(GoogleFirestoreAdminV1Backup)),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1ListBackupsResponse" });
 
 export interface WriteRequest {
   /** The ID of the write stream to resume. This may only be set in the first message. When left empty, a new write stream will be created. */
@@ -2832,17 +2353,12 @@ export interface WriteRequest {
   writes?: Array<Write>;
 }
 
-export const WriteRequest: Schema.Schema<WriteRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      streamId: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      streamToken: Schema.optional(Schema.String),
-      writes: Schema.optional(Schema.Array(Write)),
-    }),
-  ).annotate({
-    identifier: "WriteRequest",
-  }) as any as Schema.Schema<WriteRequest>;
+export const WriteRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  streamId: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  streamToken: Schema.optional(Schema.String),
+  writes: Schema.optional(Schema.Array(Write)),
+}).annotate({ identifier: "WriteRequest" });
 
 export interface GoogleFirestoreAdminV1IndexOperationMetadata {
   /** The progress, in bytes, of this operation. */
@@ -2868,19 +2384,15 @@ export interface GoogleFirestoreAdminV1IndexOperationMetadata {
     | (string & {});
 }
 
-export const GoogleFirestoreAdminV1IndexOperationMetadata: Schema.Schema<GoogleFirestoreAdminV1IndexOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      progressBytes: Schema.optional(GoogleFirestoreAdminV1Progress),
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      progressDocuments: Schema.optional(GoogleFirestoreAdminV1Progress),
-      index: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1IndexOperationMetadata",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1IndexOperationMetadata>;
+export const GoogleFirestoreAdminV1IndexOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    progressBytes: Schema.optional(GoogleFirestoreAdminV1Progress),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    progressDocuments: Schema.optional(GoogleFirestoreAdminV1Progress),
+    index: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1IndexOperationMetadata" });
 
 // ==========================================================================
 // Operations

@@ -39,20 +39,16 @@ export interface GoogleCloudCommonOperationMetadata {
   createTime?: string;
 }
 
-export const GoogleCloudCommonOperationMetadata: Schema.Schema<GoogleCloudCommonOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      statusDetail: Schema.optional(Schema.String),
-      cancelRequested: Schema.optional(Schema.Boolean),
-      endTime: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      apiVersion: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudCommonOperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudCommonOperationMetadata>;
+export const GoogleCloudCommonOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    statusDetail: Schema.optional(Schema.String),
+    cancelRequested: Schema.optional(Schema.Boolean),
+    endTime: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudCommonOperationMetadata" });
 
 export interface GoogleTypeExpr {
   /** Textual representation of an expression in Common Expression Language syntax. */
@@ -65,17 +61,12 @@ export interface GoogleTypeExpr {
   location?: string;
 }
 
-export const GoogleTypeExpr: Schema.Schema<GoogleTypeExpr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expression: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleTypeExpr",
-  }) as any as Schema.Schema<GoogleTypeExpr>;
+export const GoogleTypeExpr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  expression: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+}).annotate({ identifier: "GoogleTypeExpr" });
 
 export interface GoogleIamV2DenyRule {
   /** Specifies the permissions that this rule excludes from the set of denied permissions given by `denied_permissions`. If a permission appears in `denied_permissions` _and_ in `exception_permissions` then it will _not_ be denied. The excluded permissions can be specified using the same syntax as `denied_permissions`. */
@@ -90,18 +81,13 @@ export interface GoogleIamV2DenyRule {
   denialCondition?: GoogleTypeExpr;
 }
 
-export const GoogleIamV2DenyRule: Schema.Schema<GoogleIamV2DenyRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      exceptionPermissions: Schema.optional(Schema.Array(Schema.String)),
-      deniedPrincipals: Schema.optional(Schema.Array(Schema.String)),
-      deniedPermissions: Schema.optional(Schema.Array(Schema.String)),
-      exceptionPrincipals: Schema.optional(Schema.Array(Schema.String)),
-      denialCondition: Schema.optional(GoogleTypeExpr),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV2DenyRule",
-  }) as any as Schema.Schema<GoogleIamV2DenyRule>;
+export const GoogleIamV2DenyRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  exceptionPermissions: Schema.optional(Schema.Array(Schema.String)),
+  deniedPrincipals: Schema.optional(Schema.Array(Schema.String)),
+  deniedPermissions: Schema.optional(Schema.Array(Schema.String)),
+  exceptionPrincipals: Schema.optional(Schema.Array(Schema.String)),
+  denialCondition: Schema.optional(GoogleTypeExpr),
+}).annotate({ identifier: "GoogleIamV2DenyRule" });
 
 export interface GoogleIamAdminV1AuditDataPermissionDelta {
   /** Removed permissions. */
@@ -110,31 +96,21 @@ export interface GoogleIamAdminV1AuditDataPermissionDelta {
   addedPermissions?: Array<string>;
 }
 
-export const GoogleIamAdminV1AuditDataPermissionDelta: Schema.Schema<GoogleIamAdminV1AuditDataPermissionDelta> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      removedPermissions: Schema.optional(Schema.Array(Schema.String)),
-      addedPermissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleIamAdminV1AuditDataPermissionDelta",
-  }) as any as Schema.Schema<GoogleIamAdminV1AuditDataPermissionDelta>;
+export const GoogleIamAdminV1AuditDataPermissionDelta =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    removedPermissions: Schema.optional(Schema.Array(Schema.String)),
+    addedPermissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleIamAdminV1AuditDataPermissionDelta" });
 
 export interface GoogleIamAdminV1AuditData {
   /** The permission_delta when when creating or updating a Role. */
   permissionDelta?: GoogleIamAdminV1AuditDataPermissionDelta;
 }
 
-export const GoogleIamAdminV1AuditData: Schema.Schema<GoogleIamAdminV1AuditData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissionDelta: Schema.optional(
-        GoogleIamAdminV1AuditDataPermissionDelta,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleIamAdminV1AuditData",
-  }) as any as Schema.Schema<GoogleIamAdminV1AuditData>;
+export const GoogleIamAdminV1AuditData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissionDelta: Schema.optional(GoogleIamAdminV1AuditDataPermissionDelta),
+  }).annotate({ identifier: "GoogleIamAdminV1AuditData" });
 
 export interface GoogleIamV2PolicyRule {
   /** A rule for a deny policy. */
@@ -143,15 +119,10 @@ export interface GoogleIamV2PolicyRule {
   description?: string;
 }
 
-export const GoogleIamV2PolicyRule: Schema.Schema<GoogleIamV2PolicyRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      denyRule: Schema.optional(GoogleIamV2DenyRule),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV2PolicyRule",
-  }) as any as Schema.Schema<GoogleIamV2PolicyRule>;
+export const GoogleIamV2PolicyRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  denyRule: Schema.optional(GoogleIamV2DenyRule),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "GoogleIamV2PolicyRule" });
 
 export interface GoogleIamV1BindingDelta {
   /** Role that is assigned to `members`. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. Required */
@@ -164,45 +135,34 @@ export interface GoogleIamV1BindingDelta {
   condition?: GoogleTypeExpr;
 }
 
-export const GoogleIamV1BindingDelta: Schema.Schema<GoogleIamV1BindingDelta> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      role: Schema.optional(Schema.String),
-      action: Schema.optional(Schema.String),
-      member: Schema.optional(Schema.String),
-      condition: Schema.optional(GoogleTypeExpr),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1BindingDelta",
-  }) as any as Schema.Schema<GoogleIamV1BindingDelta>;
+export const GoogleIamV1BindingDelta =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    role: Schema.optional(Schema.String),
+    action: Schema.optional(Schema.String),
+    member: Schema.optional(Schema.String),
+    condition: Schema.optional(GoogleTypeExpr),
+  }).annotate({ identifier: "GoogleIamV1BindingDelta" });
 
 export interface GoogleIamV1PolicyDelta {
   /** The delta for Bindings between two policies. */
   bindingDeltas?: Array<GoogleIamV1BindingDelta>;
 }
 
-export const GoogleIamV1PolicyDelta: Schema.Schema<GoogleIamV1PolicyDelta> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bindingDeltas: Schema.optional(Schema.Array(GoogleIamV1BindingDelta)),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1PolicyDelta",
-  }) as any as Schema.Schema<GoogleIamV1PolicyDelta>;
+export const GoogleIamV1PolicyDelta = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    bindingDeltas: Schema.optional(Schema.Array(GoogleIamV1BindingDelta)),
+  },
+).annotate({ identifier: "GoogleIamV1PolicyDelta" });
 
 export interface GoogleIamV1LoggingAuditData {
   /** Policy delta between the original policy and the newly set policy. */
   policyDelta?: GoogleIamV1PolicyDelta;
 }
 
-export const GoogleIamV1LoggingAuditData: Schema.Schema<GoogleIamV1LoggingAuditData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policyDelta: Schema.optional(GoogleIamV1PolicyDelta),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1LoggingAuditData",
-  }) as any as Schema.Schema<GoogleIamV1LoggingAuditData>;
+export const GoogleIamV1LoggingAuditData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policyDelta: Schema.optional(GoogleIamV1PolicyDelta),
+  }).annotate({ identifier: "GoogleIamV1LoggingAuditData" });
 
 export interface CloudControl2SharedOperationsReconciliationOperationMetadata {
   /** DEPRECATED. Use exclusive_action instead. */
@@ -215,15 +175,13 @@ export interface CloudControl2SharedOperationsReconciliationOperationMetadata {
     | (string & {});
 }
 
-export const CloudControl2SharedOperationsReconciliationOperationMetadata: Schema.Schema<CloudControl2SharedOperationsReconciliationOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deleteResource: Schema.optional(Schema.Boolean),
-      exclusiveAction: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const CloudControl2SharedOperationsReconciliationOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deleteResource: Schema.optional(Schema.Boolean),
+    exclusiveAction: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "CloudControl2SharedOperationsReconciliationOperationMetadata",
-  }) as any as Schema.Schema<CloudControl2SharedOperationsReconciliationOperationMetadata>;
+  });
 
 export interface GoogleIamV2Policy {
   /** Immutable. The resource name of the `Policy`, which must be unique. Format: `policies/{attachment_point}/denypolicies/{policy_id}` The attachment point is identified by its URL-encoded full resource name, which means that the forward-slash character, `/`, must be written as `%2F`. For example, `policies/cloudresourcemanager.googleapis.com%2Fprojects%2Fmy-project/denypolicies/my-deny-policy`. For organizations and folders, use the numeric ID in the full resource name. For projects, requests can use the alphanumeric or the numeric ID. Responses always contain the numeric ID. */
@@ -248,30 +206,25 @@ export interface GoogleIamV2Policy {
   updateTime?: string;
 }
 
-export const GoogleIamV2Policy: Schema.Schema<GoogleIamV2Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      deleteTime: Schema.optional(Schema.String),
-      rules: Schema.optional(Schema.Array(GoogleIamV2PolicyRule)),
-      etag: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      uid: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV2Policy",
-  }) as any as Schema.Schema<GoogleIamV2Policy>;
+export const GoogleIamV2Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  deleteTime: Schema.optional(Schema.String),
+  rules: Schema.optional(Schema.Array(GoogleIamV2PolicyRule)),
+  etag: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  uid: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  updateTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "GoogleIamV2Policy" });
 
 export interface GoogleIamV1betaWorkloadIdentityPoolOperationMetadata {}
 
-export const GoogleIamV1betaWorkloadIdentityPoolOperationMetadata: Schema.Schema<GoogleIamV1betaWorkloadIdentityPoolOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleIamV1betaWorkloadIdentityPoolOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleIamV1betaWorkloadIdentityPoolOperationMetadata",
-  }) as any as Schema.Schema<GoogleIamV1betaWorkloadIdentityPoolOperationMetadata>;
+  });
 
 export interface GoogleIamV3alphaOperationMetadata {
   /** Output only. Human-readable status of the operation, if any. */
@@ -290,34 +243,26 @@ export interface GoogleIamV3alphaOperationMetadata {
   target?: string;
 }
 
-export const GoogleIamV3alphaOperationMetadata: Schema.Schema<GoogleIamV3alphaOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      statusMessage: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      createTime: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      apiVersion: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV3alphaOperationMetadata",
-  }) as any as Schema.Schema<GoogleIamV3alphaOperationMetadata>;
+export const GoogleIamV3alphaOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    statusMessage: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    requestedCancellation: Schema.optional(Schema.Boolean),
+    createTime: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleIamV3alphaOperationMetadata" });
 
 export interface GoogleIamV2PolicyOperationMetadata {
   /** Timestamp when the `google.longrunning.Operation` was created. */
   createTime?: string;
 }
 
-export const GoogleIamV2PolicyOperationMetadata: Schema.Schema<GoogleIamV2PolicyOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV2PolicyOperationMetadata",
-  }) as any as Schema.Schema<GoogleIamV2PolicyOperationMetadata>;
+export const GoogleIamV2PolicyOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleIamV2PolicyOperationMetadata" });
 
 export interface GoogleIamV3mainOperationMetadata {
   /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
@@ -336,20 +281,16 @@ export interface GoogleIamV3mainOperationMetadata {
   endTime?: string;
 }
 
-export const GoogleIamV3mainOperationMetadata: Schema.Schema<GoogleIamV3mainOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      createTime: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      apiVersion: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV3mainOperationMetadata",
-  }) as any as Schema.Schema<GoogleIamV3mainOperationMetadata>;
+export const GoogleIamV3mainOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestedCancellation: Schema.optional(Schema.Boolean),
+    createTime: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+    statusMessage: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleIamV3mainOperationMetadata" });
 
 export interface GoogleIamV3OperationMetadata {
   /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
@@ -368,20 +309,16 @@ export interface GoogleIamV3OperationMetadata {
   endTime?: string;
 }
 
-export const GoogleIamV3OperationMetadata: Schema.Schema<GoogleIamV3OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      createTime: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      apiVersion: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV3OperationMetadata",
-  }) as any as Schema.Schema<GoogleIamV3OperationMetadata>;
+export const GoogleIamV3OperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestedCancellation: Schema.optional(Schema.Boolean),
+    createTime: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+    statusMessage: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleIamV3OperationMetadata" });
 
 export interface GoogleIamV2ListPoliciesResponse {
   /** A page token that you can use in a ListPoliciesRequest to retrieve the next page. If this field is omitted, there are no additional pages. */
@@ -390,15 +327,11 @@ export interface GoogleIamV2ListPoliciesResponse {
   policies?: Array<GoogleIamV2Policy>;
 }
 
-export const GoogleIamV2ListPoliciesResponse: Schema.Schema<GoogleIamV2ListPoliciesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      policies: Schema.optional(Schema.Array(GoogleIamV2Policy)),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV2ListPoliciesResponse",
-  }) as any as Schema.Schema<GoogleIamV2ListPoliciesResponse>;
+export const GoogleIamV2ListPoliciesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    policies: Schema.optional(Schema.Array(GoogleIamV2Policy)),
+  }).annotate({ identifier: "GoogleIamV2ListPoliciesResponse" });
 
 export interface GoogleRpcStatus {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -409,18 +342,13 @@ export interface GoogleRpcStatus {
   details?: Array<Record<string, unknown>>;
 }
 
-export const GoogleRpcStatus: Schema.Schema<GoogleRpcStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleRpcStatus",
-  }) as any as Schema.Schema<GoogleRpcStatus>;
+export const GoogleRpcStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "GoogleRpcStatus" });
 
 export interface GoogleLongrunningOperation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
@@ -435,18 +363,14 @@ export interface GoogleLongrunningOperation {
   metadata?: Record<string, unknown>;
 }
 
-export const GoogleLongrunningOperation: Schema.Schema<GoogleLongrunningOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      error: Schema.optional(GoogleRpcStatus),
-      name: Schema.optional(Schema.String),
-      done: Schema.optional(Schema.Boolean),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
-    identifier: "GoogleLongrunningOperation",
-  }) as any as Schema.Schema<GoogleLongrunningOperation>;
+export const GoogleLongrunningOperation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    error: Schema.optional(GoogleRpcStatus),
+    name: Schema.optional(Schema.String),
+    done: Schema.optional(Schema.Boolean),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "GoogleLongrunningOperation" });
 
 export interface GoogleIamV3betaOperationMetadata {
   /** Output only. Server-defined resource path for the target of the */
@@ -465,20 +389,16 @@ export interface GoogleIamV3betaOperationMetadata {
   statusMessage?: string;
 }
 
-export const GoogleIamV3betaOperationMetadata: Schema.Schema<GoogleIamV3betaOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      target: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      apiVersion: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      endTime: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV3betaOperationMetadata",
-  }) as any as Schema.Schema<GoogleIamV3betaOperationMetadata>;
+export const GoogleIamV3betaOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    target: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    requestedCancellation: Schema.optional(Schema.Boolean),
+    endTime: Schema.optional(Schema.String),
+    statusMessage: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleIamV3betaOperationMetadata" });
 
 // ==========================================================================
 // Operations

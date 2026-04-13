@@ -33,15 +33,12 @@ export interface TimeOfDay {
   nanos?: number;
 }
 
-export const TimeOfDay: Schema.Schema<TimeOfDay> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      seconds: Schema.optional(Schema.Number),
-      minutes: Schema.optional(Schema.Number),
-      hours: Schema.optional(Schema.Number),
-      nanos: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "TimeOfDay" }) as any as Schema.Schema<TimeOfDay>;
+export const TimeOfDay = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  seconds: Schema.optional(Schema.Number),
+  minutes: Schema.optional(Schema.Number),
+  hours: Schema.optional(Schema.Number),
+  nanos: Schema.optional(Schema.Number),
+}).annotate({ identifier: "TimeOfDay" });
 
 export interface WeeklyWindow {
   /** Optional. Days of week. If left empty, all days of the week will be included. */
@@ -62,16 +59,11 @@ export interface WeeklyWindow {
   endTime?: TimeOfDay;
 }
 
-export const WeeklyWindow: Schema.Schema<WeeklyWindow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      daysOfWeek: Schema.optional(Schema.Array(Schema.String)),
-      startTime: Schema.optional(TimeOfDay),
-      endTime: Schema.optional(TimeOfDay),
-    }),
-  ).annotate({
-    identifier: "WeeklyWindow",
-  }) as any as Schema.Schema<WeeklyWindow>;
+export const WeeklyWindow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  daysOfWeek: Schema.optional(Schema.Array(Schema.String)),
+  startTime: Schema.optional(TimeOfDay),
+  endTime: Schema.optional(TimeOfDay),
+}).annotate({ identifier: "WeeklyWindow" });
 
 export interface CloudRunRenderMetadata {
   /** Output only. The name of the Cloud Run Worker Pool in the rendered manifest. Format is `projects/{project}/locations/{location}/workerPools/{worker_pool}`. */
@@ -84,31 +76,23 @@ export interface CloudRunRenderMetadata {
   service?: string;
 }
 
-export const CloudRunRenderMetadata: Schema.Schema<CloudRunRenderMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      workerPool: Schema.optional(Schema.String),
-      revision: Schema.optional(Schema.String),
-      job: Schema.optional(Schema.String),
-      service: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CloudRunRenderMetadata",
-  }) as any as Schema.Schema<CloudRunRenderMetadata>;
+export const CloudRunRenderMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    workerPool: Schema.optional(Schema.String),
+    revision: Schema.optional(Schema.String),
+    job: Schema.optional(Schema.String),
+    service: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "CloudRunRenderMetadata" });
 
 export interface CustomMetadata {
   /** Output only. Key-value pairs provided by the user-defined operation. */
   values?: Record<string, string>;
 }
 
-export const CustomMetadata: Schema.Schema<CustomMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      values: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "CustomMetadata",
-  }) as any as Schema.Schema<CustomMetadata>;
+export const CustomMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  values: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "CustomMetadata" });
 
 export interface KubernetesRenderMetadata {
   /** Output only. Name of the Kubernetes Deployment that will be applied to the GKE cluster. Only set if a single Deployment was provided in the rendered manifest. */
@@ -119,16 +103,12 @@ export interface KubernetesRenderMetadata {
   canaryDeployment?: string;
 }
 
-export const KubernetesRenderMetadata: Schema.Schema<KubernetesRenderMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deployment: Schema.optional(Schema.String),
-      kubernetesNamespace: Schema.optional(Schema.String),
-      canaryDeployment: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "KubernetesRenderMetadata",
-  }) as any as Schema.Schema<KubernetesRenderMetadata>;
+export const KubernetesRenderMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deployment: Schema.optional(Schema.String),
+    kubernetesNamespace: Schema.optional(Schema.String),
+    canaryDeployment: Schema.optional(Schema.String),
+  }).annotate({ identifier: "KubernetesRenderMetadata" });
 
 export interface RenderMetadata {
   /** Output only. Metadata associated with rendering for Cloud Run. */
@@ -139,16 +119,11 @@ export interface RenderMetadata {
   kubernetes?: KubernetesRenderMetadata;
 }
 
-export const RenderMetadata: Schema.Schema<RenderMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cloudRun: Schema.optional(CloudRunRenderMetadata),
-      custom: Schema.optional(CustomMetadata),
-      kubernetes: Schema.optional(KubernetesRenderMetadata),
-    }),
-  ).annotate({
-    identifier: "RenderMetadata",
-  }) as any as Schema.Schema<RenderMetadata>;
+export const RenderMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cloudRun: Schema.optional(CloudRunRenderMetadata),
+  custom: Schema.optional(CustomMetadata),
+  kubernetes: Schema.optional(KubernetesRenderMetadata),
+}).annotate({ identifier: "RenderMetadata" });
 
 export interface TargetRender {
   /** Output only. Additional information about the render failure, if available. */
@@ -177,18 +152,13 @@ export interface TargetRender {
   metadata?: RenderMetadata;
 }
 
-export const TargetRender: Schema.Schema<TargetRender> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      failureMessage: Schema.optional(Schema.String),
-      renderingBuild: Schema.optional(Schema.String),
-      renderingState: Schema.optional(Schema.String),
-      failureCause: Schema.optional(Schema.String),
-      metadata: Schema.optional(RenderMetadata),
-    }),
-  ).annotate({
-    identifier: "TargetRender",
-  }) as any as Schema.Schema<TargetRender>;
+export const TargetRender = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  failureMessage: Schema.optional(Schema.String),
+  renderingBuild: Schema.optional(Schema.String),
+  renderingState: Schema.optional(Schema.String),
+  failureCause: Schema.optional(Schema.String),
+  metadata: Schema.optional(RenderMetadata),
+}).annotate({ identifier: "TargetRender" });
 
 export interface SkaffoldGCSSource {
   /** Required. Cloud Storage source paths to copy recursively. For example, providing "gs://my-bucket/dir/configs/*" will result in Skaffold copying all files within the "dir/configs" directory in the bucket "my-bucket". */
@@ -197,15 +167,10 @@ export interface SkaffoldGCSSource {
   path?: string;
 }
 
-export const SkaffoldGCSSource: Schema.Schema<SkaffoldGCSSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      source: Schema.optional(Schema.String),
-      path: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SkaffoldGCSSource",
-  }) as any as Schema.Schema<SkaffoldGCSSource>;
+export const SkaffoldGCSSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  source: Schema.optional(Schema.String),
+  path: Schema.optional(Schema.String),
+}).annotate({ identifier: "SkaffoldGCSSource" });
 
 export interface SkaffoldGitSource {
   /** Optional. Git branch or tag to use when cloning the repository. */
@@ -216,16 +181,11 @@ export interface SkaffoldGitSource {
   path?: string;
 }
 
-export const SkaffoldGitSource: Schema.Schema<SkaffoldGitSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ref: Schema.optional(Schema.String),
-      repo: Schema.optional(Schema.String),
-      path: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SkaffoldGitSource",
-  }) as any as Schema.Schema<SkaffoldGitSource>;
+export const SkaffoldGitSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ref: Schema.optional(Schema.String),
+  repo: Schema.optional(Schema.String),
+  path: Schema.optional(Schema.String),
+}).annotate({ identifier: "SkaffoldGitSource" });
 
 export interface SkaffoldGCBRepoSource {
   /** Optional. Branch or tag to use when cloning the repository. */
@@ -236,16 +196,11 @@ export interface SkaffoldGCBRepoSource {
   path?: string;
 }
 
-export const SkaffoldGCBRepoSource: Schema.Schema<SkaffoldGCBRepoSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ref: Schema.optional(Schema.String),
-      repository: Schema.optional(Schema.String),
-      path: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SkaffoldGCBRepoSource",
-  }) as any as Schema.Schema<SkaffoldGCBRepoSource>;
+export const SkaffoldGCBRepoSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ref: Schema.optional(Schema.String),
+  repository: Schema.optional(Schema.String),
+  path: Schema.optional(Schema.String),
+}).annotate({ identifier: "SkaffoldGCBRepoSource" });
 
 export interface SkaffoldModules {
   /** Optional. Cloud Storage bucket containing the Skaffold Config modules. */
@@ -258,17 +213,12 @@ export interface SkaffoldModules {
   configs?: Array<string>;
 }
 
-export const SkaffoldModules: Schema.Schema<SkaffoldModules> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      googleCloudStorage: Schema.optional(SkaffoldGCSSource),
-      git: Schema.optional(SkaffoldGitSource),
-      googleCloudBuildRepo: Schema.optional(SkaffoldGCBRepoSource),
-      configs: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "SkaffoldModules",
-  }) as any as Schema.Schema<SkaffoldModules>;
+export const SkaffoldModules = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  googleCloudStorage: Schema.optional(SkaffoldGCSSource),
+  git: Schema.optional(SkaffoldGitSource),
+  googleCloudBuildRepo: Schema.optional(SkaffoldGCBRepoSource),
+  configs: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "SkaffoldModules" });
 
 export interface CustomTargetSkaffoldActions {
   /** Optional. The Skaffold custom action responsible for render operations. If not provided then Cloud Deploy will perform the render operations via `skaffold render`. */
@@ -279,16 +229,12 @@ export interface CustomTargetSkaffoldActions {
   deployAction?: string;
 }
 
-export const CustomTargetSkaffoldActions: Schema.Schema<CustomTargetSkaffoldActions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      renderAction: Schema.optional(Schema.String),
-      includeSkaffoldModules: Schema.optional(Schema.Array(SkaffoldModules)),
-      deployAction: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomTargetSkaffoldActions",
-  }) as any as Schema.Schema<CustomTargetSkaffoldActions>;
+export const CustomTargetSkaffoldActions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    renderAction: Schema.optional(Schema.String),
+    includeSkaffoldModules: Schema.optional(Schema.Array(SkaffoldModules)),
+    deployAction: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CustomTargetSkaffoldActions" });
 
 export interface ContainerTask {
   /** Optional. Environment variables that are set in the container. */
@@ -301,29 +247,21 @@ export interface ContainerTask {
   command?: Array<string>;
 }
 
-export const ContainerTask: Schema.Schema<ContainerTask> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      env: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      args: Schema.optional(Schema.Array(Schema.String)),
-      image: Schema.optional(Schema.String),
-      command: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ContainerTask",
-  }) as any as Schema.Schema<ContainerTask>;
+export const ContainerTask = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  env: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  args: Schema.optional(Schema.Array(Schema.String)),
+  image: Schema.optional(Schema.String),
+  command: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ContainerTask" });
 
 export interface Task {
   /** Optional. This task is represented by a container that is executed in the Cloud Build execution environment. */
   container?: ContainerTask;
 }
 
-export const Task: Schema.Schema<Task> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      container: Schema.optional(ContainerTask),
-    }),
-  ).annotate({ identifier: "Task" }) as any as Schema.Schema<Task>;
+export const Task = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  container: Schema.optional(ContainerTask),
+}).annotate({ identifier: "Task" });
 
 export interface CustomTargetTasks {
   /** Optional. The task responsible for render operations. If not provided then Cloud Deploy will perform its default rendering operation. */
@@ -332,15 +270,10 @@ export interface CustomTargetTasks {
   deploy?: Task;
 }
 
-export const CustomTargetTasks: Schema.Schema<CustomTargetTasks> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      render: Schema.optional(Task),
-      deploy: Schema.optional(Task),
-    }),
-  ).annotate({
-    identifier: "CustomTargetTasks",
-  }) as any as Schema.Schema<CustomTargetTasks>;
+export const CustomTargetTasks = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  render: Schema.optional(Task),
+  deploy: Schema.optional(Task),
+}).annotate({ identifier: "CustomTargetTasks" });
 
 export interface CustomTargetType {
   /** Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes. */
@@ -367,24 +300,19 @@ export interface CustomTargetType {
   createTime?: string;
 }
 
-export const CustomTargetType: Schema.Schema<CustomTargetType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      customActions: Schema.optional(CustomTargetSkaffoldActions),
-      etag: Schema.optional(Schema.String),
-      tasks: Schema.optional(CustomTargetTasks),
-      uid: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      customTargetTypeId: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomTargetType",
-  }) as any as Schema.Schema<CustomTargetType>;
+export const CustomTargetType = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  customActions: Schema.optional(CustomTargetSkaffoldActions),
+  etag: Schema.optional(Schema.String),
+  tasks: Schema.optional(CustomTargetTasks),
+  uid: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  customTargetTypeId: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "CustomTargetType" });
 
 export interface PipelineReadyCondition {
   /** Last time the condition was updated. */
@@ -393,15 +321,12 @@ export interface PipelineReadyCondition {
   status?: boolean;
 }
 
-export const PipelineReadyCondition: Schema.Schema<PipelineReadyCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateTime: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "PipelineReadyCondition",
-  }) as any as Schema.Schema<PipelineReadyCondition>;
+export const PipelineReadyCondition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    updateTime: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.Boolean),
+  },
+).annotate({ identifier: "PipelineReadyCondition" });
 
 export interface TargetsPresentCondition {
   /** Last time the condition was updated. */
@@ -412,16 +337,12 @@ export interface TargetsPresentCondition {
   status?: boolean;
 }
 
-export const TargetsPresentCondition: Schema.Schema<TargetsPresentCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateTime: Schema.optional(Schema.String),
-      missingTargets: Schema.optional(Schema.Array(Schema.String)),
-      status: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "TargetsPresentCondition",
-  }) as any as Schema.Schema<TargetsPresentCondition>;
+export const TargetsPresentCondition =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateTime: Schema.optional(Schema.String),
+    missingTargets: Schema.optional(Schema.Array(Schema.String)),
+    status: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "TargetsPresentCondition" });
 
 export interface TargetsTypeCondition {
   /** True if the targets are all a comparable type. For example this is true if all targets are GKE clusters. This is false if some targets are Cloud Run targets and others are GKE clusters. */
@@ -430,15 +351,10 @@ export interface TargetsTypeCondition {
   errorDetails?: string;
 }
 
-export const TargetsTypeCondition: Schema.Schema<TargetsTypeCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      status: Schema.optional(Schema.Boolean),
-      errorDetails: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TargetsTypeCondition",
-  }) as any as Schema.Schema<TargetsTypeCondition>;
+export const TargetsTypeCondition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  status: Schema.optional(Schema.Boolean),
+  errorDetails: Schema.optional(Schema.String),
+}).annotate({ identifier: "TargetsTypeCondition" });
 
 export interface PipelineCondition {
   /** Details around the Pipeline's overall status. */
@@ -449,16 +365,11 @@ export interface PipelineCondition {
   targetsTypeCondition?: TargetsTypeCondition;
 }
 
-export const PipelineCondition: Schema.Schema<PipelineCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pipelineReadyCondition: Schema.optional(PipelineReadyCondition),
-      targetsPresentCondition: Schema.optional(TargetsPresentCondition),
-      targetsTypeCondition: Schema.optional(TargetsTypeCondition),
-    }),
-  ).annotate({
-    identifier: "PipelineCondition",
-  }) as any as Schema.Schema<PipelineCondition>;
+export const PipelineCondition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pipelineReadyCondition: Schema.optional(PipelineReadyCondition),
+  targetsPresentCondition: Schema.optional(TargetsPresentCondition),
+  targetsTypeCondition: Schema.optional(TargetsTypeCondition),
+}).annotate({ identifier: "PipelineCondition" });
 
 export interface DeployParameters {
   /** Required. Values are deploy parameters in key-value pairs. */
@@ -467,17 +378,12 @@ export interface DeployParameters {
   matchTargetLabels?: Record<string, string>;
 }
 
-export const DeployParameters: Schema.Schema<DeployParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      values: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      matchTargetLabels: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-    }),
-  ).annotate({
-    identifier: "DeployParameters",
-  }) as any as Schema.Schema<DeployParameters>;
+export const DeployParameters = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  values: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  matchTargetLabels: Schema.optional(
+    Schema.Record(Schema.String, Schema.String),
+  ),
+}).annotate({ identifier: "DeployParameters" });
 
 export interface RouteDestinations {
   /** Required. The clusters where the Gateway API HTTPRoute resource will be deployed to. Valid entries include the associated entities IDs configured in the Target resource and "@self" to include the Target cluster. */
@@ -486,15 +392,10 @@ export interface RouteDestinations {
   propagateService?: boolean;
 }
 
-export const RouteDestinations: Schema.Schema<RouteDestinations> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      destinationIds: Schema.optional(Schema.Array(Schema.String)),
-      propagateService: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "RouteDestinations",
-  }) as any as Schema.Schema<RouteDestinations>;
+export const RouteDestinations = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  destinationIds: Schema.optional(Schema.Array(Schema.String)),
+  propagateService: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "RouteDestinations" });
 
 export interface GatewayServiceMesh {
   /** Required. Name of the Kubernetes Service. */
@@ -513,20 +414,15 @@ export interface GatewayServiceMesh {
   routeDestinations?: RouteDestinations;
 }
 
-export const GatewayServiceMesh: Schema.Schema<GatewayServiceMesh> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      service: Schema.optional(Schema.String),
-      stableCutbackDuration: Schema.optional(Schema.String),
-      deployment: Schema.optional(Schema.String),
-      httpRoute: Schema.optional(Schema.String),
-      podSelectorLabel: Schema.optional(Schema.String),
-      routeUpdateWaitTime: Schema.optional(Schema.String),
-      routeDestinations: Schema.optional(RouteDestinations),
-    }),
-  ).annotate({
-    identifier: "GatewayServiceMesh",
-  }) as any as Schema.Schema<GatewayServiceMesh>;
+export const GatewayServiceMesh = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  service: Schema.optional(Schema.String),
+  stableCutbackDuration: Schema.optional(Schema.String),
+  deployment: Schema.optional(Schema.String),
+  httpRoute: Schema.optional(Schema.String),
+  podSelectorLabel: Schema.optional(Schema.String),
+  routeUpdateWaitTime: Schema.optional(Schema.String),
+  routeDestinations: Schema.optional(RouteDestinations),
+}).annotate({ identifier: "GatewayServiceMesh" });
 
 export interface ServiceNetworking {
   /** Optional. Whether to disable Pod overprovisioning. If Pod overprovisioning is disabled then Cloud Deploy will limit the number of total Pods used for the deployment strategy to the number of Pods the Deployment has on the cluster. */
@@ -539,17 +435,12 @@ export interface ServiceNetworking {
   podSelectorLabel?: string;
 }
 
-export const ServiceNetworking: Schema.Schema<ServiceNetworking> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      disablePodOverprovisioning: Schema.optional(Schema.Boolean),
-      service: Schema.optional(Schema.String),
-      deployment: Schema.optional(Schema.String),
-      podSelectorLabel: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ServiceNetworking",
-  }) as any as Schema.Schema<ServiceNetworking>;
+export const ServiceNetworking = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  disablePodOverprovisioning: Schema.optional(Schema.Boolean),
+  service: Schema.optional(Schema.String),
+  deployment: Schema.optional(Schema.String),
+  podSelectorLabel: Schema.optional(Schema.String),
+}).annotate({ identifier: "ServiceNetworking" });
 
 export interface KubernetesConfig {
   /** Optional. Kubernetes Gateway API service mesh configuration. */
@@ -558,15 +449,10 @@ export interface KubernetesConfig {
   serviceNetworking?: ServiceNetworking;
 }
 
-export const KubernetesConfig: Schema.Schema<KubernetesConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gatewayServiceMesh: Schema.optional(GatewayServiceMesh),
-      serviceNetworking: Schema.optional(ServiceNetworking),
-    }),
-  ).annotate({
-    identifier: "KubernetesConfig",
-  }) as any as Schema.Schema<KubernetesConfig>;
+export const KubernetesConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gatewayServiceMesh: Schema.optional(GatewayServiceMesh),
+  serviceNetworking: Schema.optional(ServiceNetworking),
+}).annotate({ identifier: "KubernetesConfig" });
 
 export interface CloudRunConfig {
   /** Optional. A list of tags that are added to the canary revision while the canary phase is in progress. */
@@ -579,17 +465,12 @@ export interface CloudRunConfig {
   stableRevisionTags?: Array<string>;
 }
 
-export const CloudRunConfig: Schema.Schema<CloudRunConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      canaryRevisionTags: Schema.optional(Schema.Array(Schema.String)),
-      automaticTrafficControl: Schema.optional(Schema.Boolean),
-      priorRevisionTags: Schema.optional(Schema.Array(Schema.String)),
-      stableRevisionTags: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "CloudRunConfig",
-  }) as any as Schema.Schema<CloudRunConfig>;
+export const CloudRunConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  canaryRevisionTags: Schema.optional(Schema.Array(Schema.String)),
+  automaticTrafficControl: Schema.optional(Schema.Boolean),
+  priorRevisionTags: Schema.optional(Schema.Array(Schema.String)),
+  stableRevisionTags: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "CloudRunConfig" });
 
 export interface RuntimeConfig {
   /** Optional. Kubernetes runtime configuration. */
@@ -598,15 +479,10 @@ export interface RuntimeConfig {
   cloudRun?: CloudRunConfig;
 }
 
-export const RuntimeConfig: Schema.Schema<RuntimeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kubernetes: Schema.optional(KubernetesConfig),
-      cloudRun: Schema.optional(CloudRunConfig),
-    }),
-  ).annotate({
-    identifier: "RuntimeConfig",
-  }) as any as Schema.Schema<RuntimeConfig>;
+export const RuntimeConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kubernetes: Schema.optional(KubernetesConfig),
+  cloudRun: Schema.optional(CloudRunConfig),
+}).annotate({ identifier: "RuntimeConfig" });
 
 export interface Postdeploy {
   /** Optional. The tasks that will run as a part of the postdeploy job. The tasks are executed sequentially in the order specified. Only one of `actions` or `tasks` can be specified. */
@@ -615,25 +491,19 @@ export interface Postdeploy {
   actions?: Array<string>;
 }
 
-export const Postdeploy: Schema.Schema<Postdeploy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tasks: Schema.optional(Schema.Array(Task)),
-      actions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "Postdeploy" }) as any as Schema.Schema<Postdeploy>;
+export const Postdeploy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tasks: Schema.optional(Schema.Array(Task)),
+  actions: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Postdeploy" });
 
 export interface Verify {
   /** Optional. The tasks that will run as a part of the verify job. The tasks are executed sequentially in the order specified. */
   tasks?: Array<Task>;
 }
 
-export const Verify: Schema.Schema<Verify> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tasks: Schema.optional(Schema.Array(Task)),
-    }),
-  ).annotate({ identifier: "Verify" }) as any as Schema.Schema<Verify>;
+export const Verify = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tasks: Schema.optional(Schema.Array(Task)),
+}).annotate({ identifier: "Verify" });
 
 export interface CustomCheck {
   /** Required. The ID of the custom Analysis check. */
@@ -644,16 +514,11 @@ export interface CustomCheck {
   task?: Task;
 }
 
-export const CustomCheck: Schema.Schema<CustomCheck> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      frequency: Schema.optional(Schema.String),
-      task: Schema.optional(Task),
-    }),
-  ).annotate({
-    identifier: "CustomCheck",
-  }) as any as Schema.Schema<CustomCheck>;
+export const CustomCheck = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  frequency: Schema.optional(Schema.String),
+  task: Schema.optional(Task),
+}).annotate({ identifier: "CustomCheck" });
 
 export interface AlertPolicyCheck {
   /** Required. The ID of the analysis check. */
@@ -664,30 +529,20 @@ export interface AlertPolicyCheck {
   alertPolicies?: Array<string>;
 }
 
-export const AlertPolicyCheck: Schema.Schema<AlertPolicyCheck> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      alertPolicies: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AlertPolicyCheck",
-  }) as any as Schema.Schema<AlertPolicyCheck>;
+export const AlertPolicyCheck = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  alertPolicies: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "AlertPolicyCheck" });
 
 export interface GoogleCloudAnalysis {
   /** Optional. A list of Cloud Monitoring Alert Policy checks to perform as part of the analysis. */
   alertPolicyChecks?: Array<AlertPolicyCheck>;
 }
 
-export const GoogleCloudAnalysis: Schema.Schema<GoogleCloudAnalysis> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      alertPolicyChecks: Schema.optional(Schema.Array(AlertPolicyCheck)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudAnalysis",
-  }) as any as Schema.Schema<GoogleCloudAnalysis>;
+export const GoogleCloudAnalysis = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  alertPolicyChecks: Schema.optional(Schema.Array(AlertPolicyCheck)),
+}).annotate({ identifier: "GoogleCloudAnalysis" });
 
 export interface Analysis {
   /** Optional. Custom analysis checks from 3P metric providers. */
@@ -698,14 +553,11 @@ export interface Analysis {
   googleCloud?: GoogleCloudAnalysis;
 }
 
-export const Analysis: Schema.Schema<Analysis> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customChecks: Schema.optional(Schema.Array(CustomCheck)),
-      duration: Schema.optional(Schema.String),
-      googleCloud: Schema.optional(GoogleCloudAnalysis),
-    }),
-  ).annotate({ identifier: "Analysis" }) as any as Schema.Schema<Analysis>;
+export const Analysis = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  customChecks: Schema.optional(Schema.Array(CustomCheck)),
+  duration: Schema.optional(Schema.String),
+  googleCloud: Schema.optional(GoogleCloudAnalysis),
+}).annotate({ identifier: "Analysis" });
 
 export interface Predeploy {
   /** Optional. The tasks that will run as a part of the predeploy job. The tasks are executed sequentially in the order specified. Only one of `actions` or `tasks` can be specified. */
@@ -714,13 +566,10 @@ export interface Predeploy {
   actions?: Array<string>;
 }
 
-export const Predeploy: Schema.Schema<Predeploy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tasks: Schema.optional(Schema.Array(Task)),
-      actions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "Predeploy" }) as any as Schema.Schema<Predeploy>;
+export const Predeploy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tasks: Schema.optional(Schema.Array(Task)),
+  actions: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Predeploy" });
 
 export interface CanaryDeployment {
   /** Optional. Whether to run verify tests after each percentage deployment via `skaffold verify`. */
@@ -737,19 +586,14 @@ export interface CanaryDeployment {
   predeploy?: Predeploy;
 }
 
-export const CanaryDeployment: Schema.Schema<CanaryDeployment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      verify: Schema.optional(Schema.Boolean),
-      percentages: Schema.optional(Schema.Array(Schema.Number)),
-      postdeploy: Schema.optional(Postdeploy),
-      verifyConfig: Schema.optional(Verify),
-      analysis: Schema.optional(Analysis),
-      predeploy: Schema.optional(Predeploy),
-    }),
-  ).annotate({
-    identifier: "CanaryDeployment",
-  }) as any as Schema.Schema<CanaryDeployment>;
+export const CanaryDeployment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  verify: Schema.optional(Schema.Boolean),
+  percentages: Schema.optional(Schema.Array(Schema.Number)),
+  postdeploy: Schema.optional(Postdeploy),
+  verifyConfig: Schema.optional(Verify),
+  analysis: Schema.optional(Analysis),
+  predeploy: Schema.optional(Predeploy),
+}).annotate({ identifier: "CanaryDeployment" });
 
 export interface PhaseConfig {
   /** Optional. Configuration for the postdeploy job of this phase. If this is not configured, there will be no postdeploy job for this phase. */
@@ -770,35 +614,27 @@ export interface PhaseConfig {
   predeploy?: Predeploy;
 }
 
-export const PhaseConfig: Schema.Schema<PhaseConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      postdeploy: Schema.optional(Postdeploy),
-      phaseId: Schema.optional(Schema.String),
-      analysis: Schema.optional(Analysis),
-      profiles: Schema.optional(Schema.Array(Schema.String)),
-      percentage: Schema.optional(Schema.Number),
-      verify: Schema.optional(Schema.Boolean),
-      verifyConfig: Schema.optional(Verify),
-      predeploy: Schema.optional(Predeploy),
-    }),
-  ).annotate({
-    identifier: "PhaseConfig",
-  }) as any as Schema.Schema<PhaseConfig>;
+export const PhaseConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  postdeploy: Schema.optional(Postdeploy),
+  phaseId: Schema.optional(Schema.String),
+  analysis: Schema.optional(Analysis),
+  profiles: Schema.optional(Schema.Array(Schema.String)),
+  percentage: Schema.optional(Schema.Number),
+  verify: Schema.optional(Schema.Boolean),
+  verifyConfig: Schema.optional(Verify),
+  predeploy: Schema.optional(Predeploy),
+}).annotate({ identifier: "PhaseConfig" });
 
 export interface CustomCanaryDeployment {
   /** Required. Configuration for each phase in the canary deployment in the order executed. */
   phaseConfigs?: Array<PhaseConfig>;
 }
 
-export const CustomCanaryDeployment: Schema.Schema<CustomCanaryDeployment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      phaseConfigs: Schema.optional(Schema.Array(PhaseConfig)),
-    }),
-  ).annotate({
-    identifier: "CustomCanaryDeployment",
-  }) as any as Schema.Schema<CustomCanaryDeployment>;
+export const CustomCanaryDeployment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    phaseConfigs: Schema.optional(Schema.Array(PhaseConfig)),
+  },
+).annotate({ identifier: "CustomCanaryDeployment" });
 
 export interface Canary {
   /** Optional. Runtime specific configurations for the deployment strategy. The runtime configuration is used to determine how Cloud Deploy will split traffic to enable a progressive deployment. */
@@ -809,14 +645,11 @@ export interface Canary {
   customCanaryDeployment?: CustomCanaryDeployment;
 }
 
-export const Canary: Schema.Schema<Canary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      runtimeConfig: Schema.optional(RuntimeConfig),
-      canaryDeployment: Schema.optional(CanaryDeployment),
-      customCanaryDeployment: Schema.optional(CustomCanaryDeployment),
-    }),
-  ).annotate({ identifier: "Canary" }) as any as Schema.Schema<Canary>;
+export const Canary = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  runtimeConfig: Schema.optional(RuntimeConfig),
+  canaryDeployment: Schema.optional(CanaryDeployment),
+  customCanaryDeployment: Schema.optional(CustomCanaryDeployment),
+}).annotate({ identifier: "Canary" });
 
 export interface Standard {
   /** Optional. Whether to verify a deployment via `skaffold verify`. */
@@ -831,16 +664,13 @@ export interface Standard {
   analysis?: Analysis;
 }
 
-export const Standard: Schema.Schema<Standard> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      verify: Schema.optional(Schema.Boolean),
-      verifyConfig: Schema.optional(Verify),
-      predeploy: Schema.optional(Predeploy),
-      postdeploy: Schema.optional(Postdeploy),
-      analysis: Schema.optional(Analysis),
-    }),
-  ).annotate({ identifier: "Standard" }) as any as Schema.Schema<Standard>;
+export const Standard = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  verify: Schema.optional(Schema.Boolean),
+  verifyConfig: Schema.optional(Verify),
+  predeploy: Schema.optional(Predeploy),
+  postdeploy: Schema.optional(Postdeploy),
+  analysis: Schema.optional(Analysis),
+}).annotate({ identifier: "Standard" });
 
 export interface Strategy {
   /** Optional. Canary deployment strategy provides progressive percentage based deployments to a Target. */
@@ -849,13 +679,10 @@ export interface Strategy {
   standard?: Standard;
 }
 
-export const Strategy: Schema.Schema<Strategy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      canary: Schema.optional(Canary),
-      standard: Schema.optional(Standard),
-    }),
-  ).annotate({ identifier: "Strategy" }) as any as Schema.Schema<Strategy>;
+export const Strategy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  canary: Schema.optional(Canary),
+  standard: Schema.optional(Standard),
+}).annotate({ identifier: "Strategy" });
 
 export interface Stage {
   /** Optional. The target_id to which this stage points. This field refers exclusively to the last segment of a target name. For example, this field would just be `my-target` (rather than `projects/project/locations/location/targets/my-target`). The location of the `Target` is inferred to be the same as the location of the `DeliveryPipeline` that contains this `Stage`. */
@@ -868,29 +695,21 @@ export interface Stage {
   profiles?: Array<string>;
 }
 
-export const Stage: Schema.Schema<Stage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetId: Schema.optional(Schema.String),
-      deployParameters: Schema.optional(Schema.Array(DeployParameters)),
-      strategy: Schema.optional(Strategy),
-      profiles: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "Stage" }) as any as Schema.Schema<Stage>;
+export const Stage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  targetId: Schema.optional(Schema.String),
+  deployParameters: Schema.optional(Schema.Array(DeployParameters)),
+  strategy: Schema.optional(Strategy),
+  profiles: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Stage" });
 
 export interface SerialPipeline {
   /** Optional. Each stage specifies configuration for a `Target`. The ordering of this list defines the promotion flow. */
   stages?: Array<Stage>;
 }
 
-export const SerialPipeline: Schema.Schema<SerialPipeline> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stages: Schema.optional(Schema.Array(Stage)),
-    }),
-  ).annotate({
-    identifier: "SerialPipeline",
-  }) as any as Schema.Schema<SerialPipeline>;
+export const SerialPipeline = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  stages: Schema.optional(Schema.Array(Stage)),
+}).annotate({ identifier: "SerialPipeline" });
 
 export interface DeliveryPipeline {
   /** Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes. */
@@ -917,38 +736,28 @@ export interface DeliveryPipeline {
   serialPipeline?: SerialPipeline;
 }
 
-export const DeliveryPipeline: Schema.Schema<DeliveryPipeline> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      etag: Schema.optional(Schema.String),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      updateTime: Schema.optional(Schema.String),
-      uid: Schema.optional(Schema.String),
-      condition: Schema.optional(PipelineCondition),
-      description: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      suspended: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-      serialPipeline: Schema.optional(SerialPipeline),
-    }),
-  ).annotate({
-    identifier: "DeliveryPipeline",
-  }) as any as Schema.Schema<DeliveryPipeline>;
+export const DeliveryPipeline = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  etag: Schema.optional(Schema.String),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  updateTime: Schema.optional(Schema.String),
+  uid: Schema.optional(Schema.String),
+  condition: Schema.optional(PipelineCondition),
+  description: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  suspended: Schema.optional(Schema.Boolean),
+  name: Schema.optional(Schema.String),
+  serialPipeline: Schema.optional(SerialPipeline),
+}).annotate({ identifier: "DeliveryPipeline" });
 
 export interface CustomTarget {
   /** Required. The name of the CustomTargetType. Format must be `projects/{project}/locations/{location}/customTargetTypes/{custom_target_type}`. */
   customTargetType?: string;
 }
 
-export const CustomTarget: Schema.Schema<CustomTarget> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customTargetType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomTarget",
-  }) as any as Schema.Schema<CustomTarget>;
+export const CustomTarget = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  customTargetType: Schema.optional(Schema.String),
+}).annotate({ identifier: "CustomTarget" });
 
 export interface GkeCluster {
   /** Optional. Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`. */
@@ -961,15 +770,12 @@ export interface GkeCluster {
   internalIp?: boolean;
 }
 
-export const GkeCluster: Schema.Schema<GkeCluster> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cluster: Schema.optional(Schema.String),
-      proxyUrl: Schema.optional(Schema.String),
-      dnsEndpoint: Schema.optional(Schema.Boolean),
-      internalIp: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "GkeCluster" }) as any as Schema.Schema<GkeCluster>;
+export const GkeCluster = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cluster: Schema.optional(Schema.String),
+  proxyUrl: Schema.optional(Schema.String),
+  dnsEndpoint: Schema.optional(Schema.Boolean),
+  internalIp: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "GkeCluster" });
 
 export interface DefaultPool {
   /** Optional. Cloud Storage location where execution outputs should be stored. This can either be a bucket ("gs://my-bucket") or a path within a bucket ("gs://my-bucket/my-dir"). If unspecified, a default bucket located in the same region will be used. */
@@ -978,15 +784,10 @@ export interface DefaultPool {
   serviceAccount?: string;
 }
 
-export const DefaultPool: Schema.Schema<DefaultPool> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      artifactStorage: Schema.optional(Schema.String),
-      serviceAccount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DefaultPool",
-  }) as any as Schema.Schema<DefaultPool>;
+export const DefaultPool = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  artifactStorage: Schema.optional(Schema.String),
+  serviceAccount: Schema.optional(Schema.String),
+}).annotate({ identifier: "DefaultPool" });
 
 export interface PrivatePool {
   /** Optional. Google service account to use for execution. If unspecified, the project execution service account (-compute@developer.gserviceaccount.com) will be used. */
@@ -997,16 +798,11 @@ export interface PrivatePool {
   artifactStorage?: string;
 }
 
-export const PrivatePool: Schema.Schema<PrivatePool> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serviceAccount: Schema.optional(Schema.String),
-      workerPool: Schema.optional(Schema.String),
-      artifactStorage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PrivatePool",
-  }) as any as Schema.Schema<PrivatePool>;
+export const PrivatePool = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  serviceAccount: Schema.optional(Schema.String),
+  workerPool: Schema.optional(Schema.String),
+  artifactStorage: Schema.optional(Schema.String),
+}).annotate({ identifier: "PrivatePool" });
 
 export interface ExecutionConfig {
   /** Optional. If true, additional logging will be enabled when running builds in this execution environment. */
@@ -1036,49 +832,34 @@ export interface ExecutionConfig {
   workerPool?: string;
 }
 
-export const ExecutionConfig: Schema.Schema<ExecutionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      verbose: Schema.optional(Schema.Boolean),
-      executionTimeout: Schema.optional(Schema.String),
-      usages: Schema.optional(Schema.Array(Schema.String)),
-      artifactStorage: Schema.optional(Schema.String),
-      defaultPool: Schema.optional(DefaultPool),
-      privatePool: Schema.optional(PrivatePool),
-      serviceAccount: Schema.optional(Schema.String),
-      workerPool: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ExecutionConfig",
-  }) as any as Schema.Schema<ExecutionConfig>;
+export const ExecutionConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  verbose: Schema.optional(Schema.Boolean),
+  executionTimeout: Schema.optional(Schema.String),
+  usages: Schema.optional(Schema.Array(Schema.String)),
+  artifactStorage: Schema.optional(Schema.String),
+  defaultPool: Schema.optional(DefaultPool),
+  privatePool: Schema.optional(PrivatePool),
+  serviceAccount: Schema.optional(Schema.String),
+  workerPool: Schema.optional(Schema.String),
+}).annotate({ identifier: "ExecutionConfig" });
 
 export interface CloudRunLocation {
   /** Required. The location for the Cloud Run Service. Format must be `projects/{project}/locations/{location}`. */
   location?: string;
 }
 
-export const CloudRunLocation: Schema.Schema<CloudRunLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      location: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CloudRunLocation",
-  }) as any as Schema.Schema<CloudRunLocation>;
+export const CloudRunLocation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  location: Schema.optional(Schema.String),
+}).annotate({ identifier: "CloudRunLocation" });
 
 export interface AnthosCluster {
   /** Optional. Membership of the GKE Hub-registered cluster to which to apply the Skaffold configuration. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`. */
   membership?: string;
 }
 
-export const AnthosCluster: Schema.Schema<AnthosCluster> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      membership: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AnthosCluster",
-  }) as any as Schema.Schema<AnthosCluster>;
+export const AnthosCluster = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  membership: Schema.optional(Schema.String),
+}).annotate({ identifier: "AnthosCluster" });
 
 export interface AssociatedEntities {
   /** Optional. Information specifying Anthos clusters as associated entities. */
@@ -1087,29 +868,19 @@ export interface AssociatedEntities {
   gkeClusters?: Array<GkeCluster>;
 }
 
-export const AssociatedEntities: Schema.Schema<AssociatedEntities> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      anthosClusters: Schema.optional(Schema.Array(AnthosCluster)),
-      gkeClusters: Schema.optional(Schema.Array(GkeCluster)),
-    }),
-  ).annotate({
-    identifier: "AssociatedEntities",
-  }) as any as Schema.Schema<AssociatedEntities>;
+export const AssociatedEntities = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  anthosClusters: Schema.optional(Schema.Array(AnthosCluster)),
+  gkeClusters: Schema.optional(Schema.Array(GkeCluster)),
+}).annotate({ identifier: "AssociatedEntities" });
 
 export interface MultiTarget {
   /** Required. The target_ids of this multiTarget. */
   targetIds?: Array<string>;
 }
 
-export const MultiTarget: Schema.Schema<MultiTarget> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "MultiTarget",
-  }) as any as Schema.Schema<MultiTarget>;
+export const MultiTarget = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  targetIds: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "MultiTarget" });
 
 export interface Target {
   /** Output only. Unique identifier of the `Target`. */
@@ -1150,33 +921,30 @@ export interface Target {
   labels?: Record<string, string>;
 }
 
-export const Target: Schema.Schema<Target> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uid: Schema.optional(Schema.String),
-      customTarget: Schema.optional(CustomTarget),
-      description: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      gke: Schema.optional(GkeCluster),
-      executionConfigs: Schema.optional(Schema.Array(ExecutionConfig)),
-      run: Schema.optional(CloudRunLocation),
-      updateTime: Schema.optional(Schema.String),
-      deployParameters: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      etag: Schema.optional(Schema.String),
-      targetId: Schema.optional(Schema.String),
-      associatedEntities: Schema.optional(
-        Schema.Record(Schema.String, AssociatedEntities),
-      ),
-      name: Schema.optional(Schema.String),
-      multiTarget: Schema.optional(MultiTarget),
-      requireApproval: Schema.optional(Schema.Boolean),
-      anthosCluster: Schema.optional(AnthosCluster),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({ identifier: "Target" }) as any as Schema.Schema<Target>;
+export const Target = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  uid: Schema.optional(Schema.String),
+  customTarget: Schema.optional(CustomTarget),
+  description: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  gke: Schema.optional(GkeCluster),
+  executionConfigs: Schema.optional(Schema.Array(ExecutionConfig)),
+  run: Schema.optional(CloudRunLocation),
+  updateTime: Schema.optional(Schema.String),
+  deployParameters: Schema.optional(
+    Schema.Record(Schema.String, Schema.String),
+  ),
+  etag: Schema.optional(Schema.String),
+  targetId: Schema.optional(Schema.String),
+  associatedEntities: Schema.optional(
+    Schema.Record(Schema.String, AssociatedEntities),
+  ),
+  name: Schema.optional(Schema.String),
+  multiTarget: Schema.optional(MultiTarget),
+  requireApproval: Schema.optional(Schema.Boolean),
+  anthosCluster: Schema.optional(AnthosCluster),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "Target" });
 
 export interface ToolVersions {
   /** Optional. The Docker version to use for Cloud Deploy operations. */
@@ -1193,19 +961,14 @@ export interface ToolVersions {
   skaffold?: string;
 }
 
-export const ToolVersions: Schema.Schema<ToolVersions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      docker: Schema.optional(Schema.String),
-      kustomize: Schema.optional(Schema.String),
-      helm: Schema.optional(Schema.String),
-      kpt: Schema.optional(Schema.String),
-      kubectl: Schema.optional(Schema.String),
-      skaffold: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ToolVersions",
-  }) as any as Schema.Schema<ToolVersions>;
+export const ToolVersions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  docker: Schema.optional(Schema.String),
+  kustomize: Schema.optional(Schema.String),
+  helm: Schema.optional(Schema.String),
+  kpt: Schema.optional(Schema.String),
+  kubectl: Schema.optional(Schema.String),
+  skaffold: Schema.optional(Schema.String),
+}).annotate({ identifier: "ToolVersions" });
 
 export interface PhaseArtifact {
   /** Output only. File path of the resolved Skaffold configuration relative to the URI. */
@@ -1216,16 +979,11 @@ export interface PhaseArtifact {
   manifestPath?: string;
 }
 
-export const PhaseArtifact: Schema.Schema<PhaseArtifact> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      skaffoldConfigPath: Schema.optional(Schema.String),
-      jobManifestsPath: Schema.optional(Schema.String),
-      manifestPath: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PhaseArtifact",
-  }) as any as Schema.Schema<PhaseArtifact>;
+export const PhaseArtifact = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  skaffoldConfigPath: Schema.optional(Schema.String),
+  jobManifestsPath: Schema.optional(Schema.String),
+  manifestPath: Schema.optional(Schema.String),
+}).annotate({ identifier: "PhaseArtifact" });
 
 export interface TargetArtifact {
   /** Output only. Map from the phase ID to the phase artifacts for the `Target`. */
@@ -1238,19 +996,12 @@ export interface TargetArtifact {
   skaffoldConfigPath?: string;
 }
 
-export const TargetArtifact: Schema.Schema<TargetArtifact> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      phaseArtifacts: Schema.optional(
-        Schema.Record(Schema.String, PhaseArtifact),
-      ),
-      manifestPath: Schema.optional(Schema.String),
-      artifactUri: Schema.optional(Schema.String),
-      skaffoldConfigPath: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TargetArtifact",
-  }) as any as Schema.Schema<TargetArtifact>;
+export const TargetArtifact = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  phaseArtifacts: Schema.optional(Schema.Record(Schema.String, PhaseArtifact)),
+  manifestPath: Schema.optional(Schema.String),
+  artifactUri: Schema.optional(Schema.String),
+  skaffoldConfigPath: Schema.optional(Schema.String),
+}).annotate({ identifier: "TargetArtifact" });
 
 export interface BuildArtifact {
   /** Optional. Image name in Skaffold configuration. */
@@ -1259,29 +1010,19 @@ export interface BuildArtifact {
   tag?: string;
 }
 
-export const BuildArtifact: Schema.Schema<BuildArtifact> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      image: Schema.optional(Schema.String),
-      tag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BuildArtifact",
-  }) as any as Schema.Schema<BuildArtifact>;
+export const BuildArtifact = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  image: Schema.optional(Schema.String),
+  tag: Schema.optional(Schema.String),
+}).annotate({ identifier: "BuildArtifact" });
 
 export interface ReleaseReadyCondition {
   /** True if the Release is in a valid state. Otherwise at least one condition in `ReleaseCondition` is in an invalid state. Iterate over those conditions and see which condition(s) has status = false to find out what is wrong with the Release. */
   status?: boolean;
 }
 
-export const ReleaseReadyCondition: Schema.Schema<ReleaseReadyCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      status: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ReleaseReadyCondition",
-  }) as any as Schema.Schema<ReleaseReadyCondition>;
+export const ReleaseReadyCondition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  status: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "ReleaseReadyCondition" });
 
 export interface ToolVersionSupportedCondition {
   /** Output only. The tool support state for this release's version of the tool. */
@@ -1299,17 +1040,13 @@ export interface ToolVersionSupportedCondition {
   maintenanceModeTime?: string;
 }
 
-export const ToolVersionSupportedCondition: Schema.Schema<ToolVersionSupportedCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      toolVersionSupportState: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.Boolean),
-      supportExpirationTime: Schema.optional(Schema.String),
-      maintenanceModeTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ToolVersionSupportedCondition",
-  }) as any as Schema.Schema<ToolVersionSupportedCondition>;
+export const ToolVersionSupportedCondition =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    toolVersionSupportState: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.Boolean),
+    supportExpirationTime: Schema.optional(Schema.String),
+    maintenanceModeTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ToolVersionSupportedCondition" });
 
 export interface SkaffoldSupportedCondition {
   /** The time at which this release's version of Skaffold will enter maintenance mode. */
@@ -1327,17 +1064,13 @@ export interface SkaffoldSupportedCondition {
   status?: boolean;
 }
 
-export const SkaffoldSupportedCondition: Schema.Schema<SkaffoldSupportedCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      maintenanceModeTime: Schema.optional(Schema.String),
-      skaffoldSupportState: Schema.optional(Schema.String),
-      supportExpirationTime: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "SkaffoldSupportedCondition",
-  }) as any as Schema.Schema<SkaffoldSupportedCondition>;
+export const SkaffoldSupportedCondition =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    maintenanceModeTime: Schema.optional(Schema.String),
+    skaffoldSupportState: Schema.optional(Schema.String),
+    supportExpirationTime: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "SkaffoldSupportedCondition" });
 
 export interface ReleaseCondition {
   /** Details around the Releases's overall status. */
@@ -1358,33 +1091,24 @@ export interface ReleaseCondition {
   skaffoldVersionSupportedCondition?: ToolVersionSupportedCondition;
 }
 
-export const ReleaseCondition: Schema.Schema<ReleaseCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      releaseReadyCondition: Schema.optional(ReleaseReadyCondition),
-      kubectlVersionSupportedCondition: Schema.optional(
-        ToolVersionSupportedCondition,
-      ),
-      skaffoldSupportedCondition: Schema.optional(SkaffoldSupportedCondition),
-      dockerVersionSupportedCondition: Schema.optional(
-        ToolVersionSupportedCondition,
-      ),
-      kustomizeVersionSupportedCondition: Schema.optional(
-        ToolVersionSupportedCondition,
-      ),
-      helmVersionSupportedCondition: Schema.optional(
-        ToolVersionSupportedCondition,
-      ),
-      kptVersionSupportedCondition: Schema.optional(
-        ToolVersionSupportedCondition,
-      ),
-      skaffoldVersionSupportedCondition: Schema.optional(
-        ToolVersionSupportedCondition,
-      ),
-    }),
-  ).annotate({
-    identifier: "ReleaseCondition",
-  }) as any as Schema.Schema<ReleaseCondition>;
+export const ReleaseCondition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  releaseReadyCondition: Schema.optional(ReleaseReadyCondition),
+  kubectlVersionSupportedCondition: Schema.optional(
+    ToolVersionSupportedCondition,
+  ),
+  skaffoldSupportedCondition: Schema.optional(SkaffoldSupportedCondition),
+  dockerVersionSupportedCondition: Schema.optional(
+    ToolVersionSupportedCondition,
+  ),
+  kustomizeVersionSupportedCondition: Schema.optional(
+    ToolVersionSupportedCondition,
+  ),
+  helmVersionSupportedCondition: Schema.optional(ToolVersionSupportedCondition),
+  kptVersionSupportedCondition: Schema.optional(ToolVersionSupportedCondition),
+  skaffoldVersionSupportedCondition: Schema.optional(
+    ToolVersionSupportedCondition,
+  ),
+}).annotate({ identifier: "ReleaseCondition" });
 
 export interface Release {
   /** Output only. Time at which the render completed. */
@@ -1440,42 +1164,35 @@ export interface Release {
   description?: string;
 }
 
-export const Release: Schema.Schema<Release> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      renderEndTime: Schema.optional(Schema.String),
-      skaffoldVersion: Schema.optional(Schema.String),
-      customTargetTypeSnapshots: Schema.optional(
-        Schema.Array(CustomTargetType),
-      ),
-      renderStartTime: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      deliveryPipelineSnapshot: Schema.optional(DeliveryPipeline),
-      skaffoldConfigUri: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      skaffoldConfigPath: Schema.optional(Schema.String),
-      renderState: Schema.optional(Schema.String),
-      abandoned: Schema.optional(Schema.Boolean),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      targetRenders: Schema.optional(
-        Schema.Record(Schema.String, TargetRender),
-      ),
-      deployParameters: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      targetSnapshots: Schema.optional(Schema.Array(Target)),
-      toolVersions: Schema.optional(ToolVersions),
-      targetArtifacts: Schema.optional(
-        Schema.Record(Schema.String, TargetArtifact),
-      ),
-      uid: Schema.optional(Schema.String),
-      buildArtifacts: Schema.optional(Schema.Array(BuildArtifact)),
-      condition: Schema.optional(ReleaseCondition),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Release" }) as any as Schema.Schema<Release>;
+export const Release = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  renderEndTime: Schema.optional(Schema.String),
+  skaffoldVersion: Schema.optional(Schema.String),
+  customTargetTypeSnapshots: Schema.optional(Schema.Array(CustomTargetType)),
+  renderStartTime: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  deliveryPipelineSnapshot: Schema.optional(DeliveryPipeline),
+  skaffoldConfigUri: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  skaffoldConfigPath: Schema.optional(Schema.String),
+  renderState: Schema.optional(Schema.String),
+  abandoned: Schema.optional(Schema.Boolean),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  targetRenders: Schema.optional(Schema.Record(Schema.String, TargetRender)),
+  deployParameters: Schema.optional(
+    Schema.Record(Schema.String, Schema.String),
+  ),
+  targetSnapshots: Schema.optional(Schema.Array(Target)),
+  toolVersions: Schema.optional(ToolVersions),
+  targetArtifacts: Schema.optional(
+    Schema.Record(Schema.String, TargetArtifact),
+  ),
+  uid: Schema.optional(Schema.String),
+  buildArtifacts: Schema.optional(Schema.Array(BuildArtifact)),
+  condition: Schema.optional(ReleaseCondition),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "Release" });
 
 export interface AdvanceRolloutOperation {
   /** Output only. How long the operation will be paused. */
@@ -1488,17 +1205,13 @@ export interface AdvanceRolloutOperation {
   destinationPhase?: string;
 }
 
-export const AdvanceRolloutOperation: Schema.Schema<AdvanceRolloutOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      wait: Schema.optional(Schema.String),
-      sourcePhase: Schema.optional(Schema.String),
-      rollout: Schema.optional(Schema.String),
-      destinationPhase: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AdvanceRolloutOperation",
-  }) as any as Schema.Schema<AdvanceRolloutOperation>;
+export const AdvanceRolloutOperation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    wait: Schema.optional(Schema.String),
+    sourcePhase: Schema.optional(Schema.String),
+    rollout: Schema.optional(Schema.String),
+    destinationPhase: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AdvanceRolloutOperation" });
 
 export interface TargetAttribute {
   /** Target labels. */
@@ -1507,29 +1220,20 @@ export interface TargetAttribute {
   id?: string;
 }
 
-export const TargetAttribute: Schema.Schema<TargetAttribute> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TargetAttribute",
-  }) as any as Schema.Schema<TargetAttribute>;
+export const TargetAttribute = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  id: Schema.optional(Schema.String),
+}).annotate({ identifier: "TargetAttribute" });
 
 export interface AutomationResourceSelector {
   /** Optional. Contains attributes about a target. */
   targets?: Array<TargetAttribute>;
 }
 
-export const AutomationResourceSelector: Schema.Schema<AutomationResourceSelector> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targets: Schema.optional(Schema.Array(TargetAttribute)),
-    }),
-  ).annotate({
-    identifier: "AutomationResourceSelector",
-  }) as any as Schema.Schema<AutomationResourceSelector>;
+export const AutomationResourceSelector =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targets: Schema.optional(Schema.Array(TargetAttribute)),
+  }).annotate({ identifier: "AutomationResourceSelector" });
 
 export interface Rollback {
   /** Optional. If pending rollout exists on the target, the rollback operation will be aborted. */
@@ -1538,13 +1242,10 @@ export interface Rollback {
   destinationPhase?: string;
 }
 
-export const Rollback: Schema.Schema<Rollback> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      disableRollbackIfRolloutPending: Schema.optional(Schema.Boolean),
-      destinationPhase: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Rollback" }) as any as Schema.Schema<Rollback>;
+export const Rollback = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  disableRollbackIfRolloutPending: Schema.optional(Schema.Boolean),
+  destinationPhase: Schema.optional(Schema.String),
+}).annotate({ identifier: "Rollback" });
 
 export interface Retry {
   /** Optional. The pattern of how wait time will be increased. Default is linear. Backoff mode will be ignored if `wait` is 0. */
@@ -1559,14 +1260,11 @@ export interface Retry {
   wait?: string;
 }
 
-export const Retry: Schema.Schema<Retry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      backoffMode: Schema.optional(Schema.String),
-      attempts: Schema.optional(Schema.String),
-      wait: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Retry" }) as any as Schema.Schema<Retry>;
+export const Retry = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  backoffMode: Schema.optional(Schema.String),
+  attempts: Schema.optional(Schema.String),
+  wait: Schema.optional(Schema.String),
+}).annotate({ identifier: "Retry" });
 
 export interface RepairPhaseConfig {
   /** Optional. Rolls back a `Rollout`. */
@@ -1575,15 +1273,10 @@ export interface RepairPhaseConfig {
   retry?: Retry;
 }
 
-export const RepairPhaseConfig: Schema.Schema<RepairPhaseConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rollback: Schema.optional(Rollback),
-      retry: Schema.optional(Retry),
-    }),
-  ).annotate({
-    identifier: "RepairPhaseConfig",
-  }) as any as Schema.Schema<RepairPhaseConfig>;
+export const RepairPhaseConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  rollback: Schema.optional(Rollback),
+  retry: Schema.optional(Retry),
+}).annotate({ identifier: "RepairPhaseConfig" });
 
 export interface Targets {
   /** Optional. The source target ID. */
@@ -1592,13 +1285,10 @@ export interface Targets {
   destinationTargetId?: string;
 }
 
-export const Targets: Schema.Schema<Targets> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sourceTargetId: Schema.optional(Schema.String),
-      destinationTargetId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Targets" }) as any as Schema.Schema<Targets>;
+export const Targets = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sourceTargetId: Schema.optional(Schema.String),
+  destinationTargetId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Targets" });
 
 export interface TimedPromoteReleaseCondition {
   /** Output only. A list of targets involved in the upcoming timed promotion(s). */
@@ -1607,15 +1297,11 @@ export interface TimedPromoteReleaseCondition {
   nextPromotionTime?: string;
 }
 
-export const TimedPromoteReleaseCondition: Schema.Schema<TimedPromoteReleaseCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetsList: Schema.optional(Schema.Array(Targets)),
-      nextPromotionTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TimedPromoteReleaseCondition",
-  }) as any as Schema.Schema<TimedPromoteReleaseCondition>;
+export const TimedPromoteReleaseCondition =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetsList: Schema.optional(Schema.Array(Targets)),
+    nextPromotionTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "TimedPromoteReleaseCondition" });
 
 export interface AutomationRuleCondition {
   /** Optional. TimedPromoteReleaseCondition contains rule conditions specific to a an Automation with a timed promote release rule defined. */
@@ -1624,17 +1310,11 @@ export interface AutomationRuleCondition {
   targetsPresentCondition?: TargetsPresentCondition;
 }
 
-export const AutomationRuleCondition: Schema.Schema<AutomationRuleCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      timedPromoteReleaseCondition: Schema.optional(
-        TimedPromoteReleaseCondition,
-      ),
-      targetsPresentCondition: Schema.optional(TargetsPresentCondition),
-    }),
-  ).annotate({
-    identifier: "AutomationRuleCondition",
-  }) as any as Schema.Schema<AutomationRuleCondition>;
+export const AutomationRuleCondition =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    timedPromoteReleaseCondition: Schema.optional(TimedPromoteReleaseCondition),
+    targetsPresentCondition: Schema.optional(TargetsPresentCondition),
+  }).annotate({ identifier: "AutomationRuleCondition" });
 
 export interface RepairRolloutRule {
   /** Required. Defines the types of automatic repair phases for failed jobs. */
@@ -1649,18 +1329,13 @@ export interface RepairRolloutRule {
   id?: string;
 }
 
-export const RepairRolloutRule: Schema.Schema<RepairRolloutRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      repairPhases: Schema.optional(Schema.Array(RepairPhaseConfig)),
-      phases: Schema.optional(Schema.Array(Schema.String)),
-      jobs: Schema.optional(Schema.Array(Schema.String)),
-      condition: Schema.optional(AutomationRuleCondition),
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RepairRolloutRule",
-  }) as any as Schema.Schema<RepairRolloutRule>;
+export const RepairRolloutRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  repairPhases: Schema.optional(Schema.Array(RepairPhaseConfig)),
+  phases: Schema.optional(Schema.Array(Schema.String)),
+  jobs: Schema.optional(Schema.Array(Schema.String)),
+  condition: Schema.optional(AutomationRuleCondition),
+  id: Schema.optional(Schema.String),
+}).annotate({ identifier: "RepairRolloutRule" });
 
 export interface TimedPromoteReleaseRule {
   /** Optional. The ID of the stage in the pipeline to which this `Release` is deploying. If unspecified, default it to the next stage in the promotion flow. The value of this field could be one of the following: * The last segment of a target name * "@next", the next target in the promotion sequence */
@@ -1677,19 +1352,15 @@ export interface TimedPromoteReleaseRule {
   schedule?: string;
 }
 
-export const TimedPromoteReleaseRule: Schema.Schema<TimedPromoteReleaseRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      destinationTargetId: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      condition: Schema.optional(AutomationRuleCondition),
-      timeZone: Schema.optional(Schema.String),
-      destinationPhase: Schema.optional(Schema.String),
-      schedule: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TimedPromoteReleaseRule",
-  }) as any as Schema.Schema<TimedPromoteReleaseRule>;
+export const TimedPromoteReleaseRule =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    destinationTargetId: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    condition: Schema.optional(AutomationRuleCondition),
+    timeZone: Schema.optional(Schema.String),
+    destinationPhase: Schema.optional(Schema.String),
+    schedule: Schema.optional(Schema.String),
+  }).annotate({ identifier: "TimedPromoteReleaseRule" });
 
 export interface AdvanceRolloutRule {
   /** Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `[a-z]([a-z0-9-]{0,61}[a-z0-9])?`. */
@@ -1702,17 +1373,12 @@ export interface AdvanceRolloutRule {
   condition?: AutomationRuleCondition;
 }
 
-export const AdvanceRolloutRule: Schema.Schema<AdvanceRolloutRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      sourcePhases: Schema.optional(Schema.Array(Schema.String)),
-      wait: Schema.optional(Schema.String),
-      condition: Schema.optional(AutomationRuleCondition),
-    }),
-  ).annotate({
-    identifier: "AdvanceRolloutRule",
-  }) as any as Schema.Schema<AdvanceRolloutRule>;
+export const AdvanceRolloutRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  sourcePhases: Schema.optional(Schema.Array(Schema.String)),
+  wait: Schema.optional(Schema.String),
+  condition: Schema.optional(AutomationRuleCondition),
+}).annotate({ identifier: "AdvanceRolloutRule" });
 
 export interface PromoteReleaseRule {
   /** Optional. The starting phase of the rollout created by this operation. Default to the first phase. */
@@ -1727,18 +1393,13 @@ export interface PromoteReleaseRule {
   condition?: AutomationRuleCondition;
 }
 
-export const PromoteReleaseRule: Schema.Schema<PromoteReleaseRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      destinationPhase: Schema.optional(Schema.String),
-      destinationTargetId: Schema.optional(Schema.String),
-      wait: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      condition: Schema.optional(AutomationRuleCondition),
-    }),
-  ).annotate({
-    identifier: "PromoteReleaseRule",
-  }) as any as Schema.Schema<PromoteReleaseRule>;
+export const PromoteReleaseRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  destinationPhase: Schema.optional(Schema.String),
+  destinationTargetId: Schema.optional(Schema.String),
+  wait: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  condition: Schema.optional(AutomationRuleCondition),
+}).annotate({ identifier: "PromoteReleaseRule" });
 
 export interface AutomationRule {
   /** Optional. The `RepairRolloutRule` will automatically repair a failed rollout. */
@@ -1751,17 +1412,12 @@ export interface AutomationRule {
   promoteReleaseRule?: PromoteReleaseRule;
 }
 
-export const AutomationRule: Schema.Schema<AutomationRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      repairRolloutRule: Schema.optional(RepairRolloutRule),
-      timedPromoteReleaseRule: Schema.optional(TimedPromoteReleaseRule),
-      advanceRolloutRule: Schema.optional(AdvanceRolloutRule),
-      promoteReleaseRule: Schema.optional(PromoteReleaseRule),
-    }),
-  ).annotate({
-    identifier: "AutomationRule",
-  }) as any as Schema.Schema<AutomationRule>;
+export const AutomationRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  repairRolloutRule: Schema.optional(RepairRolloutRule),
+  timedPromoteReleaseRule: Schema.optional(TimedPromoteReleaseRule),
+  advanceRolloutRule: Schema.optional(AdvanceRolloutRule),
+  promoteReleaseRule: Schema.optional(PromoteReleaseRule),
+}).annotate({ identifier: "AutomationRule" });
 
 export interface Automation {
   /** Optional. Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 63 characters. */
@@ -1790,23 +1446,20 @@ export interface Automation {
   rules?: Array<AutomationRule>;
 }
 
-export const Automation: Schema.Schema<Automation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      updateTime: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      uid: Schema.optional(Schema.String),
-      selector: Schema.optional(AutomationResourceSelector),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      createTime: Schema.optional(Schema.String),
-      suspended: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-      serviceAccount: Schema.optional(Schema.String),
-      rules: Schema.optional(Schema.Array(AutomationRule)),
-    }),
-  ).annotate({ identifier: "Automation" }) as any as Schema.Schema<Automation>;
+export const Automation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  updateTime: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  uid: Schema.optional(Schema.String),
+  selector: Schema.optional(AutomationResourceSelector),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  createTime: Schema.optional(Schema.String),
+  suspended: Schema.optional(Schema.Boolean),
+  name: Schema.optional(Schema.String),
+  serviceAccount: Schema.optional(Schema.String),
+  rules: Schema.optional(Schema.Array(AutomationRule)),
+}).annotate({ identifier: "Automation" });
 
 export interface ListAutomationsResponse {
   /** The `Automation` objects. */
@@ -1817,28 +1470,21 @@ export interface ListAutomationsResponse {
   nextPageToken?: string;
 }
 
-export const ListAutomationsResponse: Schema.Schema<ListAutomationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      automations: Schema.optional(Schema.Array(Automation)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAutomationsResponse",
-  }) as any as Schema.Schema<ListAutomationsResponse>;
+export const ListAutomationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    automations: Schema.optional(Schema.Array(Automation)),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListAutomationsResponse" });
 
 export interface VerifyJob {
   /** Output only. The tasks that are executed as part of the verify Job. */
   tasks?: Array<Task>;
 }
 
-export const VerifyJob: Schema.Schema<VerifyJob> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tasks: Schema.optional(Schema.Array(Task)),
-    }),
-  ).annotate({ identifier: "VerifyJob" }) as any as Schema.Schema<VerifyJob>;
+export const VerifyJob = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tasks: Schema.optional(Schema.Array(Task)),
+}).annotate({ identifier: "VerifyJob" });
 
 export interface PredeployJob {
   /** Output only. The custom actions that the predeploy Job executes. */
@@ -1847,15 +1493,10 @@ export interface PredeployJob {
   tasks?: Array<Task>;
 }
 
-export const PredeployJob: Schema.Schema<PredeployJob> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      actions: Schema.optional(Schema.Array(Schema.String)),
-      tasks: Schema.optional(Schema.Array(Task)),
-    }),
-  ).annotate({
-    identifier: "PredeployJob",
-  }) as any as Schema.Schema<PredeployJob>;
+export const PredeployJob = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  actions: Schema.optional(Schema.Array(Schema.String)),
+  tasks: Schema.optional(Schema.Array(Task)),
+}).annotate({ identifier: "PredeployJob" });
 
 export interface AnalysisJob {
   /** Output only. Google Cloud - based analysis checks that are run as part of the analysis Job. */
@@ -1866,16 +1507,11 @@ export interface AnalysisJob {
   duration?: string;
 }
 
-export const AnalysisJob: Schema.Schema<AnalysisJob> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      googleCloud: Schema.optional(GoogleCloudAnalysis),
-      customChecks: Schema.optional(Schema.Array(CustomCheck)),
-      duration: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AnalysisJob",
-  }) as any as Schema.Schema<AnalysisJob>;
+export const AnalysisJob = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  googleCloud: Schema.optional(GoogleCloudAnalysis),
+  customChecks: Schema.optional(Schema.Array(CustomCheck)),
+  duration: Schema.optional(Schema.String),
+}).annotate({ identifier: "AnalysisJob" });
 
 export interface PostdeployJob {
   /** Output only. The custom actions that the postdeploy Job executes. */
@@ -1884,36 +1520,28 @@ export interface PostdeployJob {
   tasks?: Array<Task>;
 }
 
-export const PostdeployJob: Schema.Schema<PostdeployJob> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      actions: Schema.optional(Schema.Array(Schema.String)),
-      tasks: Schema.optional(Schema.Array(Task)),
-    }),
-  ).annotate({
-    identifier: "PostdeployJob",
-  }) as any as Schema.Schema<PostdeployJob>;
+export const PostdeployJob = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  actions: Schema.optional(Schema.Array(Schema.String)),
+  tasks: Schema.optional(Schema.Array(Task)),
+}).annotate({ identifier: "PostdeployJob" });
 
 export interface AdvanceChildRolloutJob {}
 
-export const AdvanceChildRolloutJob: Schema.Schema<AdvanceChildRolloutJob> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "AdvanceChildRolloutJob",
-  }) as any as Schema.Schema<AdvanceChildRolloutJob>;
+export const AdvanceChildRolloutJob = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "AdvanceChildRolloutJob" });
 
 export interface DeployJob {}
 
-export const DeployJob: Schema.Schema<DeployJob> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "DeployJob",
-  }) as any as Schema.Schema<DeployJob>;
+export const DeployJob = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate(
+  { identifier: "DeployJob" },
+);
 
 export interface CreateChildRolloutJob {}
 
-export const CreateChildRolloutJob: Schema.Schema<CreateChildRolloutJob> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CreateChildRolloutJob",
-  }) as any as Schema.Schema<CreateChildRolloutJob>;
+export const CreateChildRolloutJob = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CreateChildRolloutJob" });
 
 export interface Job {
   /** Output only. A verify Job. */
@@ -1950,22 +1578,19 @@ export interface Job {
   createChildRolloutJob?: CreateChildRolloutJob;
 }
 
-export const Job: Schema.Schema<Job> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      verifyJob: Schema.optional(VerifyJob),
-      state: Schema.optional(Schema.String),
-      predeployJob: Schema.optional(PredeployJob),
-      analysisJob: Schema.optional(AnalysisJob),
-      postdeployJob: Schema.optional(PostdeployJob),
-      advanceChildRolloutJob: Schema.optional(AdvanceChildRolloutJob),
-      jobRun: Schema.optional(Schema.String),
-      deployJob: Schema.optional(DeployJob),
-      skipMessage: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      createChildRolloutJob: Schema.optional(CreateChildRolloutJob),
-    }),
-  ).annotate({ identifier: "Job" }) as any as Schema.Schema<Job>;
+export const Job = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  verifyJob: Schema.optional(VerifyJob),
+  state: Schema.optional(Schema.String),
+  predeployJob: Schema.optional(PredeployJob),
+  analysisJob: Schema.optional(AnalysisJob),
+  postdeployJob: Schema.optional(PostdeployJob),
+  advanceChildRolloutJob: Schema.optional(AdvanceChildRolloutJob),
+  jobRun: Schema.optional(Schema.String),
+  deployJob: Schema.optional(DeployJob),
+  skipMessage: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  createChildRolloutJob: Schema.optional(CreateChildRolloutJob),
+}).annotate({ identifier: "Job" });
 
 export interface ChildRolloutJobs {
   /** Output only. List of CreateChildRolloutJobs */
@@ -1974,15 +1599,10 @@ export interface ChildRolloutJobs {
   advanceRolloutJobs?: Array<Job>;
 }
 
-export const ChildRolloutJobs: Schema.Schema<ChildRolloutJobs> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createRolloutJobs: Schema.optional(Schema.Array(Job)),
-      advanceRolloutJobs: Schema.optional(Schema.Array(Job)),
-    }),
-  ).annotate({
-    identifier: "ChildRolloutJobs",
-  }) as any as Schema.Schema<ChildRolloutJobs>;
+export const ChildRolloutJobs = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createRolloutJobs: Schema.optional(Schema.Array(Job)),
+  advanceRolloutJobs: Schema.optional(Schema.Array(Job)),
+}).annotate({ identifier: "ChildRolloutJobs" });
 
 export interface DeploymentJobs {
   /** Output only. The postdeploy Job, which is the last job on the phase. */
@@ -1997,18 +1617,13 @@ export interface DeploymentJobs {
   verifyJob?: Job;
 }
 
-export const DeploymentJobs: Schema.Schema<DeploymentJobs> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      postdeployJob: Schema.optional(Job),
-      analysisJob: Schema.optional(Job),
-      predeployJob: Schema.optional(Job),
-      deployJob: Schema.optional(Job),
-      verifyJob: Schema.optional(Job),
-    }),
-  ).annotate({
-    identifier: "DeploymentJobs",
-  }) as any as Schema.Schema<DeploymentJobs>;
+export const DeploymentJobs = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  postdeployJob: Schema.optional(Job),
+  analysisJob: Schema.optional(Job),
+  predeployJob: Schema.optional(Job),
+  deployJob: Schema.optional(Job),
+  verifyJob: Schema.optional(Job),
+}).annotate({ identifier: "DeploymentJobs" });
 
 export interface Phase {
   /** Output only. ChildRollout job composition. */
@@ -2031,16 +1646,13 @@ export interface Phase {
     | (string & {});
 }
 
-export const Phase: Schema.Schema<Phase> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      childRolloutJobs: Schema.optional(ChildRolloutJobs),
-      id: Schema.optional(Schema.String),
-      deploymentJobs: Schema.optional(DeploymentJobs),
-      skipMessage: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Phase" }) as any as Schema.Schema<Phase>;
+export const Phase = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  childRolloutJobs: Schema.optional(ChildRolloutJobs),
+  id: Schema.optional(Schema.String),
+  deploymentJobs: Schema.optional(DeploymentJobs),
+  skipMessage: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+}).annotate({ identifier: "Phase" });
 
 export interface AutomationRolloutMetadata {
   /** Output only. The name of the AutomationRun initiated by a promote release rule. */
@@ -2051,16 +1663,12 @@ export interface AutomationRolloutMetadata {
   advanceAutomationRuns?: Array<string>;
 }
 
-export const AutomationRolloutMetadata: Schema.Schema<AutomationRolloutMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      promoteAutomationRun: Schema.optional(Schema.String),
-      repairAutomationRuns: Schema.optional(Schema.Array(Schema.String)),
-      advanceAutomationRuns: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AutomationRolloutMetadata",
-  }) as any as Schema.Schema<AutomationRolloutMetadata>;
+export const AutomationRolloutMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    promoteAutomationRun: Schema.optional(Schema.String),
+    repairAutomationRuns: Schema.optional(Schema.Array(Schema.String)),
+    advanceAutomationRuns: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "AutomationRolloutMetadata" });
 
 export interface CloudRunMetadata {
   /** Output only. The Cloud Run Service urls that are associated with a `Rollout`. */
@@ -2077,19 +1685,14 @@ export interface CloudRunMetadata {
   previousRevision?: string;
 }
 
-export const CloudRunMetadata: Schema.Schema<CloudRunMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serviceUrls: Schema.optional(Schema.Array(Schema.String)),
-      revision: Schema.optional(Schema.String),
-      workerPool: Schema.optional(Schema.String),
-      job: Schema.optional(Schema.String),
-      service: Schema.optional(Schema.String),
-      previousRevision: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CloudRunMetadata",
-  }) as any as Schema.Schema<CloudRunMetadata>;
+export const CloudRunMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  serviceUrls: Schema.optional(Schema.Array(Schema.String)),
+  revision: Schema.optional(Schema.String),
+  workerPool: Schema.optional(Schema.String),
+  job: Schema.optional(Schema.String),
+  service: Schema.optional(Schema.String),
+  previousRevision: Schema.optional(Schema.String),
+}).annotate({ identifier: "CloudRunMetadata" });
 
 export interface Metadata {
   /** Output only. AutomationRolloutMetadata contains the information about the interactions between Automation service and this rollout. */
@@ -2100,14 +1703,11 @@ export interface Metadata {
   cloudRun?: CloudRunMetadata;
 }
 
-export const Metadata: Schema.Schema<Metadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      automation: Schema.optional(AutomationRolloutMetadata),
-      custom: Schema.optional(CustomMetadata),
-      cloudRun: Schema.optional(CloudRunMetadata),
-    }),
-  ).annotate({ identifier: "Metadata" }) as any as Schema.Schema<Metadata>;
+export const Metadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  automation: Schema.optional(AutomationRolloutMetadata),
+  custom: Schema.optional(CustomMetadata),
+  cloudRun: Schema.optional(CloudRunMetadata),
+}).annotate({ identifier: "Metadata" });
 
 export interface Rollout {
   /** Output only. The resource name of the Cloud Build `Build` object that is used to deploy the Rollout. Format is `projects/{project}/locations/{location}/builds/{build}`. */
@@ -2186,34 +1786,31 @@ export interface Rollout {
   annotations?: Record<string, string>;
 }
 
-export const Rollout: Schema.Schema<Rollout> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deployingBuild: Schema.optional(Schema.String),
-      rollbackOfRollout: Schema.optional(Schema.String),
-      approvalState: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      deployFailureCause: Schema.optional(Schema.String),
-      enqueueTime: Schema.optional(Schema.String),
-      failureReason: Schema.optional(Schema.String),
-      rolledBackByRollouts: Schema.optional(Schema.Array(Schema.String)),
-      controllerRollout: Schema.optional(Schema.String),
-      deployStartTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      phases: Schema.optional(Schema.Array(Phase)),
-      activeRepairAutomationRun: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      uid: Schema.optional(Schema.String),
-      targetId: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      approveTime: Schema.optional(Schema.String),
-      metadata: Schema.optional(Metadata),
-      deployEndTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({ identifier: "Rollout" }) as any as Schema.Schema<Rollout>;
+export const Rollout = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  deployingBuild: Schema.optional(Schema.String),
+  rollbackOfRollout: Schema.optional(Schema.String),
+  approvalState: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  deployFailureCause: Schema.optional(Schema.String),
+  enqueueTime: Schema.optional(Schema.String),
+  failureReason: Schema.optional(Schema.String),
+  rolledBackByRollouts: Schema.optional(Schema.Array(Schema.String)),
+  controllerRollout: Schema.optional(Schema.String),
+  deployStartTime: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  phases: Schema.optional(Schema.Array(Phase)),
+  activeRepairAutomationRun: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  uid: Schema.optional(Schema.String),
+  targetId: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  approveTime: Schema.optional(Schema.String),
+  metadata: Schema.optional(Metadata),
+  deployEndTime: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "Rollout" });
 
 export interface ReleaseNotificationEvent {
   /** Unique identifier of the `Release`. */
@@ -2238,18 +1835,14 @@ export interface ReleaseNotificationEvent {
   pipelineUid?: string;
 }
 
-export const ReleaseNotificationEvent: Schema.Schema<ReleaseNotificationEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      releaseUid: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      release: Schema.optional(Schema.String),
-      pipelineUid: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ReleaseNotificationEvent",
-  }) as any as Schema.Schema<ReleaseNotificationEvent>;
+export const ReleaseNotificationEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    releaseUid: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    release: Schema.optional(Schema.String),
+    pipelineUid: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ReleaseNotificationEvent" });
 
 export interface Clouddeploy_Date {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
@@ -2260,16 +1853,11 @@ export interface Clouddeploy_Date {
   month?: number;
 }
 
-export const Clouddeploy_Date: Schema.Schema<Clouddeploy_Date> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      year: Schema.optional(Schema.Number),
-      day: Schema.optional(Schema.Number),
-      month: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "Clouddeploy_Date",
-  }) as any as Schema.Schema<Clouddeploy_Date>;
+export const Clouddeploy_Date = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  year: Schema.optional(Schema.Number),
+  day: Schema.optional(Schema.Number),
+  month: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Clouddeploy_Date" });
 
 export interface OneTimeWindow {
   /** Required. Start time (inclusive). Use 00:00 for the beginning of the day. */
@@ -2282,17 +1870,12 @@ export interface OneTimeWindow {
   startDate?: Clouddeploy_Date;
 }
 
-export const OneTimeWindow: Schema.Schema<OneTimeWindow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(TimeOfDay),
-      endTime: Schema.optional(TimeOfDay),
-      endDate: Schema.optional(Clouddeploy_Date),
-      startDate: Schema.optional(Clouddeploy_Date),
-    }),
-  ).annotate({
-    identifier: "OneTimeWindow",
-  }) as any as Schema.Schema<OneTimeWindow>;
+export const OneTimeWindow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startTime: Schema.optional(TimeOfDay),
+  endTime: Schema.optional(TimeOfDay),
+  endDate: Schema.optional(Clouddeploy_Date),
+  startDate: Schema.optional(Clouddeploy_Date),
+}).annotate({ identifier: "OneTimeWindow" });
 
 export interface TimeWindows {
   /** Optional. One-time windows within which actions are restricted. */
@@ -2303,16 +1886,11 @@ export interface TimeWindows {
   timeZone?: string;
 }
 
-export const TimeWindows: Schema.Schema<TimeWindows> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      oneTimeWindows: Schema.optional(Schema.Array(OneTimeWindow)),
-      weeklyWindows: Schema.optional(Schema.Array(WeeklyWindow)),
-      timeZone: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TimeWindows",
-  }) as any as Schema.Schema<TimeWindows>;
+export const TimeWindows = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  oneTimeWindows: Schema.optional(Schema.Array(OneTimeWindow)),
+  weeklyWindows: Schema.optional(Schema.Array(WeeklyWindow)),
+  timeZone: Schema.optional(Schema.String),
+}).annotate({ identifier: "TimeWindows" });
 
 export interface RolloutRestriction {
   /** Optional. Rollout actions to be restricted as part of the policy. If left empty, all actions will be restricted. */
@@ -2338,31 +1916,21 @@ export interface RolloutRestriction {
   timeWindows?: TimeWindows;
 }
 
-export const RolloutRestriction: Schema.Schema<RolloutRestriction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      actions: Schema.optional(Schema.Array(Schema.String)),
-      invokers: Schema.optional(Schema.Array(Schema.String)),
-      id: Schema.optional(Schema.String),
-      timeWindows: Schema.optional(TimeWindows),
-    }),
-  ).annotate({
-    identifier: "RolloutRestriction",
-  }) as any as Schema.Schema<RolloutRestriction>;
+export const RolloutRestriction = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  actions: Schema.optional(Schema.Array(Schema.String)),
+  invokers: Schema.optional(Schema.Array(Schema.String)),
+  id: Schema.optional(Schema.String),
+  timeWindows: Schema.optional(TimeWindows),
+}).annotate({ identifier: "RolloutRestriction" });
 
 export interface VerifyJobRunMetadata {
   /** Output only. Custom metadata provided by user-defined verify operation. */
   custom?: CustomMetadata;
 }
 
-export const VerifyJobRunMetadata: Schema.Schema<VerifyJobRunMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      custom: Schema.optional(CustomMetadata),
-    }),
-  ).annotate({
-    identifier: "VerifyJobRunMetadata",
-  }) as any as Schema.Schema<VerifyJobRunMetadata>;
+export const VerifyJobRunMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  custom: Schema.optional(CustomMetadata),
+}).annotate({ identifier: "VerifyJobRunMetadata" });
 
 export interface VerifyJobRun {
   /** Output only. The resource name of the Cloud Build `Build` object that is used to verify. Format is `projects/{project}/locations/{location}/builds/{build}`. */
@@ -2386,33 +1954,24 @@ export interface VerifyJobRun {
   eventLogPath?: string;
 }
 
-export const VerifyJobRun: Schema.Schema<VerifyJobRun> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      build: Schema.optional(Schema.String),
-      failureMessage: Schema.optional(Schema.String),
-      artifactUri: Schema.optional(Schema.String),
-      failureCause: Schema.optional(Schema.String),
-      metadata: Schema.optional(VerifyJobRunMetadata),
-      eventLogPath: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VerifyJobRun",
-  }) as any as Schema.Schema<VerifyJobRun>;
+export const VerifyJobRun = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  build: Schema.optional(Schema.String),
+  failureMessage: Schema.optional(Schema.String),
+  artifactUri: Schema.optional(Schema.String),
+  failureCause: Schema.optional(Schema.String),
+  metadata: Schema.optional(VerifyJobRunMetadata),
+  eventLogPath: Schema.optional(Schema.String),
+}).annotate({ identifier: "VerifyJobRun" });
 
 export interface CustomTargetDeployMetadata {
   /** Output only. Skip message provided in the results of a custom deploy operation. */
   skipMessage?: string;
 }
 
-export const CustomTargetDeployMetadata: Schema.Schema<CustomTargetDeployMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      skipMessage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomTargetDeployMetadata",
-  }) as any as Schema.Schema<CustomTargetDeployMetadata>;
+export const CustomTargetDeployMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    skipMessage: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CustomTargetDeployMetadata" });
 
 export interface DeployJobRunMetadata {
   /** Output only. Custom Target metadata associated with a `DeployJobRun`. */
@@ -2423,16 +1982,11 @@ export interface DeployJobRunMetadata {
   custom?: CustomMetadata;
 }
 
-export const DeployJobRunMetadata: Schema.Schema<DeployJobRunMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customTarget: Schema.optional(CustomTargetDeployMetadata),
-      cloudRun: Schema.optional(CloudRunMetadata),
-      custom: Schema.optional(CustomMetadata),
-    }),
-  ).annotate({
-    identifier: "DeployJobRunMetadata",
-  }) as any as Schema.Schema<DeployJobRunMetadata>;
+export const DeployJobRunMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  customTarget: Schema.optional(CustomTargetDeployMetadata),
+  cloudRun: Schema.optional(CloudRunMetadata),
+  custom: Schema.optional(CustomMetadata),
+}).annotate({ identifier: "DeployJobRunMetadata" });
 
 export interface ListTargetsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -2443,16 +1997,11 @@ export interface ListTargetsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListTargetsResponse: Schema.Schema<ListTargetsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      targets: Schema.optional(Schema.Array(Target)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListTargetsResponse",
-  }) as any as Schema.Schema<ListTargetsResponse>;
+export const ListTargetsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  targets: Schema.optional(Schema.Array(Target)),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ListTargetsResponse" });
 
 export interface DeliveryPipelineAttribute {
   /** DeliveryPipeline labels. */
@@ -2461,15 +2010,11 @@ export interface DeliveryPipelineAttribute {
   id?: string;
 }
 
-export const DeliveryPipelineAttribute: Schema.Schema<DeliveryPipelineAttribute> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DeliveryPipelineAttribute",
-  }) as any as Schema.Schema<DeliveryPipelineAttribute>;
+export const DeliveryPipelineAttribute =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    id: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DeliveryPipelineAttribute" });
 
 export interface DeployPolicyResourceSelector {
   /** Optional. Contains attributes about a delivery pipeline. */
@@ -2478,15 +2023,11 @@ export interface DeployPolicyResourceSelector {
   target?: TargetAttribute;
 }
 
-export const DeployPolicyResourceSelector: Schema.Schema<DeployPolicyResourceSelector> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deliveryPipeline: Schema.optional(DeliveryPipelineAttribute),
-      target: Schema.optional(TargetAttribute),
-    }),
-  ).annotate({
-    identifier: "DeployPolicyResourceSelector",
-  }) as any as Schema.Schema<DeployPolicyResourceSelector>;
+export const DeployPolicyResourceSelector =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deliveryPipeline: Schema.optional(DeliveryPipelineAttribute),
+    target: Schema.optional(TargetAttribute),
+  }).annotate({ identifier: "DeployPolicyResourceSelector" });
 
 export interface ListDeliveryPipelinesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -2497,16 +2038,12 @@ export interface ListDeliveryPipelinesResponse {
   deliveryPipelines?: Array<DeliveryPipeline>;
 }
 
-export const ListDeliveryPipelinesResponse: Schema.Schema<ListDeliveryPipelinesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      deliveryPipelines: Schema.optional(Schema.Array(DeliveryPipeline)),
-    }),
-  ).annotate({
-    identifier: "ListDeliveryPipelinesResponse",
-  }) as any as Schema.Schema<ListDeliveryPipelinesResponse>;
+export const ListDeliveryPipelinesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    deliveryPipelines: Schema.optional(Schema.Array(DeliveryPipeline)),
+  }).annotate({ identifier: "ListDeliveryPipelinesResponse" });
 
 export interface DeployPolicyEvaluationEvent {
   /** Unique identifier of the `Delivery Pipeline`. */
@@ -2550,26 +2087,22 @@ export interface DeployPolicyEvaluationEvent {
   allowed?: boolean;
 }
 
-export const DeployPolicyEvaluationEvent: Schema.Schema<DeployPolicyEvaluationEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pipelineUid: Schema.optional(Schema.String),
-      targetUid: Schema.optional(Schema.String),
-      deployPolicy: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      rule: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-      overrides: Schema.optional(Schema.Array(Schema.String)),
-      deployPolicyUid: Schema.optional(Schema.String),
-      invoker: Schema.optional(Schema.String),
-      ruleType: Schema.optional(Schema.String),
-      deliveryPipeline: Schema.optional(Schema.String),
-      verdict: Schema.optional(Schema.String),
-      allowed: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "DeployPolicyEvaluationEvent",
-  }) as any as Schema.Schema<DeployPolicyEvaluationEvent>;
+export const DeployPolicyEvaluationEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pipelineUid: Schema.optional(Schema.String),
+    targetUid: Schema.optional(Schema.String),
+    deployPolicy: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+    rule: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+    overrides: Schema.optional(Schema.Array(Schema.String)),
+    deployPolicyUid: Schema.optional(Schema.String),
+    invoker: Schema.optional(Schema.String),
+    ruleType: Schema.optional(Schema.String),
+    deliveryPipeline: Schema.optional(Schema.String),
+    verdict: Schema.optional(Schema.String),
+    allowed: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "DeployPolicyEvaluationEvent" });
 
 export interface AdvanceRolloutRequest {
   /** Optional. Deploy policies to override. Format is `projects/{project}/locations/{location}/deployPolicies/{deployPolicy}`. */
@@ -2578,29 +2111,23 @@ export interface AdvanceRolloutRequest {
   phaseId?: string;
 }
 
-export const AdvanceRolloutRequest: Schema.Schema<AdvanceRolloutRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      overrideDeployPolicy: Schema.optional(Schema.Array(Schema.String)),
-      phaseId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AdvanceRolloutRequest",
-  }) as any as Schema.Schema<AdvanceRolloutRequest>;
+export const AdvanceRolloutRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  overrideDeployPolicy: Schema.optional(Schema.Array(Schema.String)),
+  phaseId: Schema.optional(Schema.String),
+}).annotate({ identifier: "AdvanceRolloutRequest" });
 
 export interface AbandonReleaseResponse {}
 
-export const AbandonReleaseResponse: Schema.Schema<AbandonReleaseResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "AbandonReleaseResponse",
-  }) as any as Schema.Schema<AbandonReleaseResponse>;
+export const AbandonReleaseResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "AbandonReleaseResponse" });
 
 export interface CancelAutomationRunResponse {}
 
-export const CancelAutomationRunResponse: Schema.Schema<CancelAutomationRunResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const CancelAutomationRunResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelAutomationRunResponse",
-  }) as any as Schema.Schema<CancelAutomationRunResponse>;
+  });
 
 export interface AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
@@ -2614,15 +2141,10 @@ export interface AuditLogConfig {
     | (string & {});
 }
 
-export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
-      logType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AuditLogConfig",
-  }) as any as Schema.Schema<AuditLogConfig>;
+export const AuditLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
+  logType: Schema.optional(Schema.String),
+}).annotate({ identifier: "AuditLogConfig" });
 
 export interface AuditConfig {
   /** The configuration for logging of each type of permission. */
@@ -2631,15 +2153,10 @@ export interface AuditConfig {
   service?: string;
 }
 
-export const AuditConfig: Schema.Schema<AuditConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
-      service: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AuditConfig",
-  }) as any as Schema.Schema<AuditConfig>;
+export const AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
+  service: Schema.optional(Schema.String),
+}).annotate({ identifier: "AuditConfig" });
 
 export interface RolloutUpdateEvent {
   /** The name of the `Release`. */
@@ -2685,21 +2202,16 @@ export interface RolloutUpdateEvent {
   pipelineUid?: string;
 }
 
-export const RolloutUpdateEvent: Schema.Schema<RolloutUpdateEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      release: Schema.optional(Schema.String),
-      targetId: Schema.optional(Schema.String),
-      rollout: Schema.optional(Schema.String),
-      releaseUid: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      rolloutUpdateType: Schema.optional(Schema.String),
-      pipelineUid: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RolloutUpdateEvent",
-  }) as any as Schema.Schema<RolloutUpdateEvent>;
+export const RolloutUpdateEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  release: Schema.optional(Schema.String),
+  targetId: Schema.optional(Schema.String),
+  rollout: Schema.optional(Schema.String),
+  releaseUid: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  rolloutUpdateType: Schema.optional(Schema.String),
+  pipelineUid: Schema.optional(Schema.String),
+}).annotate({ identifier: "RolloutUpdateEvent" });
 
 export interface Expr {
   /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
@@ -2712,15 +2224,12 @@ export interface Expr {
   title?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      location: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      expression: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Expr" }) as any as Schema.Schema<Expr>;
+export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  location: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  expression: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+}).annotate({ identifier: "Expr" });
 
 export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
@@ -2731,14 +2240,11 @@ export interface Binding {
   condition?: Expr;
 }
 
-export const Binding: Schema.Schema<Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      role: Schema.optional(Schema.String),
-      members: Schema.optional(Schema.Array(Schema.String)),
-      condition: Schema.optional(Expr),
-    }),
-  ).annotate({ identifier: "Binding" }) as any as Schema.Schema<Binding>;
+export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  role: Schema.optional(Schema.String),
+  members: Schema.optional(Schema.Array(Schema.String)),
+  condition: Schema.optional(Expr),
+}).annotate({ identifier: "Binding" });
 
 export interface Policy {
   /** Specifies cloud audit logging configuration for this policy. */
@@ -2751,15 +2257,12 @@ export interface Policy {
   bindings?: Array<Binding>;
 }
 
-export const Policy: Schema.Schema<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
-      etag: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.Number),
-      bindings: Schema.optional(Schema.Array(Binding)),
-    }),
-  ).annotate({ identifier: "Policy" }) as any as Schema.Schema<Policy>;
+export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
+  etag: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.Number),
+  bindings: Schema.optional(Schema.Array(Binding)),
+}).annotate({ identifier: "Policy" });
 
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
@@ -2768,15 +2271,10 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policy: Schema.optional(Policy),
-      updateMask: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SetIamPolicyRequest",
-  }) as any as Schema.Schema<SetIamPolicyRequest>;
+export const SetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policy: Schema.optional(Policy),
+  updateMask: Schema.optional(Schema.String),
+}).annotate({ identifier: "SetIamPolicyRequest" });
 
 export interface AutomationRunEvent {
   /** Identifier of the `Automation` rule. */
@@ -2805,20 +2303,15 @@ export interface AutomationRunEvent {
   destinationTargetId?: string;
 }
 
-export const AutomationRunEvent: Schema.Schema<AutomationRunEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ruleId: Schema.optional(Schema.String),
-      automationId: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      pipelineUid: Schema.optional(Schema.String),
-      automationRun: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-      destinationTargetId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AutomationRunEvent",
-  }) as any as Schema.Schema<AutomationRunEvent>;
+export const AutomationRunEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ruleId: Schema.optional(Schema.String),
+  automationId: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  pipelineUid: Schema.optional(Schema.String),
+  automationRun: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+  destinationTargetId: Schema.optional(Schema.String),
+}).annotate({ identifier: "AutomationRunEvent" });
 
 export interface OperationMetadata {
   /** Output only. The time the operation finished running. */
@@ -2837,20 +2330,15 @@ export interface OperationMetadata {
   statusMessage?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endTime: Schema.optional(Schema.String),
-      apiVersion: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      target: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  endTime: Schema.optional(Schema.String),
+  apiVersion: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  verb: Schema.optional(Schema.String),
+  requestedCancellation: Schema.optional(Schema.Boolean),
+  target: Schema.optional(Schema.String),
+  statusMessage: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationMetadata" });
 
 export interface PromoteReleaseOperation {
   /** Output only. How long the operation will be paused. */
@@ -2863,17 +2351,13 @@ export interface PromoteReleaseOperation {
   rollout?: string;
 }
 
-export const PromoteReleaseOperation: Schema.Schema<PromoteReleaseOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      wait: Schema.optional(Schema.String),
-      targetId: Schema.optional(Schema.String),
-      phase: Schema.optional(Schema.String),
-      rollout: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PromoteReleaseOperation",
-  }) as any as Schema.Schema<PromoteReleaseOperation>;
+export const PromoteReleaseOperation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    wait: Schema.optional(Schema.String),
+    targetId: Schema.optional(Schema.String),
+    phase: Schema.optional(Schema.String),
+    rollout: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PromoteReleaseOperation" });
 
 export interface PolicyViolationDetails {
   /** User readable message about why the request violated a policy. This is not intended for machine parsing. */
@@ -2884,32 +2368,22 @@ export interface PolicyViolationDetails {
   policy?: string;
 }
 
-export const PolicyViolationDetails: Schema.Schema<PolicyViolationDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      failureMessage: Schema.optional(Schema.String),
-      ruleId: Schema.optional(Schema.String),
-      policy: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PolicyViolationDetails",
-  }) as any as Schema.Schema<PolicyViolationDetails>;
+export const PolicyViolationDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    failureMessage: Schema.optional(Schema.String),
+    ruleId: Schema.optional(Schema.String),
+    policy: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "PolicyViolationDetails" });
 
 export interface PolicyViolation {
   /** Policy violation details. */
   policyViolationDetails?: Array<PolicyViolationDetails>;
 }
 
-export const PolicyViolation: Schema.Schema<PolicyViolation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policyViolationDetails: Schema.optional(
-        Schema.Array(PolicyViolationDetails),
-      ),
-    }),
-  ).annotate({
-    identifier: "PolicyViolation",
-  }) as any as Schema.Schema<PolicyViolation>;
+export const PolicyViolation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policyViolationDetails: Schema.optional(Schema.Array(PolicyViolationDetails)),
+}).annotate({ identifier: "PolicyViolation" });
 
 export interface TimedPromoteReleaseOperation {
   /** Output only. The ID of the target that represents the promotion stage to which the release will be promoted. The value of this field is the last segment of a target name. */
@@ -2920,16 +2394,12 @@ export interface TimedPromoteReleaseOperation {
   release?: string;
 }
 
-export const TimedPromoteReleaseOperation: Schema.Schema<TimedPromoteReleaseOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetId: Schema.optional(Schema.String),
-      phase: Schema.optional(Schema.String),
-      release: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TimedPromoteReleaseOperation",
-  }) as any as Schema.Schema<TimedPromoteReleaseOperation>;
+export const TimedPromoteReleaseOperation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetId: Schema.optional(Schema.String),
+    phase: Schema.optional(Schema.String),
+    release: Schema.optional(Schema.String),
+  }).annotate({ identifier: "TimedPromoteReleaseOperation" });
 
 export interface RollbackAttempt {
   /** Output only. ID of the rollback `Rollout` to create. */
@@ -2952,18 +2422,13 @@ export interface RollbackAttempt {
   disableRollbackIfRolloutPending?: boolean;
 }
 
-export const RollbackAttempt: Schema.Schema<RollbackAttempt> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rolloutId: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      stateDesc: Schema.optional(Schema.String),
-      destinationPhase: Schema.optional(Schema.String),
-      disableRollbackIfRolloutPending: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "RollbackAttempt",
-  }) as any as Schema.Schema<RollbackAttempt>;
+export const RollbackAttempt = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  rolloutId: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  stateDesc: Schema.optional(Schema.String),
+  destinationPhase: Schema.optional(Schema.String),
+  disableRollbackIfRolloutPending: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "RollbackAttempt" });
 
 export interface RetryAttempt {
   /** Output only. How long the operation will be paused. */
@@ -2984,17 +2449,12 @@ export interface RetryAttempt {
     | (string & {});
 }
 
-export const RetryAttempt: Schema.Schema<RetryAttempt> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      wait: Schema.optional(Schema.String),
-      stateDesc: Schema.optional(Schema.String),
-      attempt: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RetryAttempt",
-  }) as any as Schema.Schema<RetryAttempt>;
+export const RetryAttempt = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  wait: Schema.optional(Schema.String),
+  stateDesc: Schema.optional(Schema.String),
+  attempt: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+}).annotate({ identifier: "RetryAttempt" });
 
 export interface RetryPhase {
   /** Output only. The number of attempts that have been made. */
@@ -3009,14 +2469,11 @@ export interface RetryPhase {
   attempts?: Array<RetryAttempt>;
 }
 
-export const RetryPhase: Schema.Schema<RetryPhase> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      totalAttempts: Schema.optional(Schema.String),
-      backoffMode: Schema.optional(Schema.String),
-      attempts: Schema.optional(Schema.Array(RetryAttempt)),
-    }),
-  ).annotate({ identifier: "RetryPhase" }) as any as Schema.Schema<RetryPhase>;
+export const RetryPhase = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  totalAttempts: Schema.optional(Schema.String),
+  backoffMode: Schema.optional(Schema.String),
+  attempts: Schema.optional(Schema.Array(RetryAttempt)),
+}).annotate({ identifier: "RetryPhase" });
 
 export interface RepairPhase {
   /** Output only. Rollback attempt for rollback repair mode . */
@@ -3025,15 +2482,10 @@ export interface RepairPhase {
   retry?: RetryPhase;
 }
 
-export const RepairPhase: Schema.Schema<RepairPhase> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rollback: Schema.optional(RollbackAttempt),
-      retry: Schema.optional(RetryPhase),
-    }),
-  ).annotate({
-    identifier: "RepairPhase",
-  }) as any as Schema.Schema<RepairPhase>;
+export const RepairPhase = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  rollback: Schema.optional(RollbackAttempt),
+  retry: Schema.optional(RetryPhase),
+}).annotate({ identifier: "RepairPhase" });
 
 export interface RepairRolloutOperation {
   /** Output only. The phase ID of the phase that includes the job being repaired. */
@@ -3048,18 +2500,15 @@ export interface RepairRolloutOperation {
   jobId?: string;
 }
 
-export const RepairRolloutOperation: Schema.Schema<RepairRolloutOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      phaseId: Schema.optional(Schema.String),
-      repairPhases: Schema.optional(Schema.Array(RepairPhase)),
-      currentRepairPhaseIndex: Schema.optional(Schema.String),
-      rollout: Schema.optional(Schema.String),
-      jobId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RepairRolloutOperation",
-  }) as any as Schema.Schema<RepairRolloutOperation>;
+export const RepairRolloutOperation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    phaseId: Schema.optional(Schema.String),
+    repairPhases: Schema.optional(Schema.Array(RepairPhase)),
+    currentRepairPhaseIndex: Schema.optional(Schema.String),
+    rollout: Schema.optional(Schema.String),
+    jobId: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "RepairRolloutOperation" });
 
 export interface AutomationRun {
   /** Output only. Explains the current state of the `AutomationRun`. Present only when an explanation is needed. */
@@ -3110,34 +2559,27 @@ export interface AutomationRun {
   repairRolloutOperation?: RepairRolloutOperation;
 }
 
-export const AutomationRun: Schema.Schema<AutomationRun> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stateDescription: Schema.optional(Schema.String),
-      targetId: Schema.optional(Schema.String),
-      promoteReleaseOperation: Schema.optional(PromoteReleaseOperation),
-      advanceRolloutOperation: Schema.optional(AdvanceRolloutOperation),
-      etag: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      automationId: Schema.optional(Schema.String),
-      automationSnapshot: Schema.optional(Automation),
-      expireTime: Schema.optional(Schema.String),
-      policyViolation: Schema.optional(PolicyViolation),
-      createTime: Schema.optional(Schema.String),
-      serviceAccount: Schema.optional(Schema.String),
-      waitUntilTime: Schema.optional(Schema.String),
-      timedPromoteReleaseOperation: Schema.optional(
-        TimedPromoteReleaseOperation,
-      ),
-      state: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      uid: Schema.optional(Schema.String),
-      ruleId: Schema.optional(Schema.String),
-      repairRolloutOperation: Schema.optional(RepairRolloutOperation),
-    }),
-  ).annotate({
-    identifier: "AutomationRun",
-  }) as any as Schema.Schema<AutomationRun>;
+export const AutomationRun = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  stateDescription: Schema.optional(Schema.String),
+  targetId: Schema.optional(Schema.String),
+  promoteReleaseOperation: Schema.optional(PromoteReleaseOperation),
+  advanceRolloutOperation: Schema.optional(AdvanceRolloutOperation),
+  etag: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  automationId: Schema.optional(Schema.String),
+  automationSnapshot: Schema.optional(Automation),
+  expireTime: Schema.optional(Schema.String),
+  policyViolation: Schema.optional(PolicyViolation),
+  createTime: Schema.optional(Schema.String),
+  serviceAccount: Schema.optional(Schema.String),
+  waitUntilTime: Schema.optional(Schema.String),
+  timedPromoteReleaseOperation: Schema.optional(TimedPromoteReleaseOperation),
+  state: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  uid: Schema.optional(Schema.String),
+  ruleId: Schema.optional(Schema.String),
+  repairRolloutOperation: Schema.optional(RepairRolloutOperation),
+}).annotate({ identifier: "AutomationRun" });
 
 export interface ListAutomationRunsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -3148,23 +2590,18 @@ export interface ListAutomationRunsResponse {
   automationRuns?: Array<AutomationRun>;
 }
 
-export const ListAutomationRunsResponse: Schema.Schema<ListAutomationRunsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      automationRuns: Schema.optional(Schema.Array(AutomationRun)),
-    }),
-  ).annotate({
-    identifier: "ListAutomationRunsResponse",
-  }) as any as Schema.Schema<ListAutomationRunsResponse>;
+export const ListAutomationRunsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    automationRuns: Schema.optional(Schema.Array(AutomationRun)),
+  }).annotate({ identifier: "ListAutomationRunsResponse" });
 
 export interface IgnoreJobResponse {}
 
-export const IgnoreJobResponse: Schema.Schema<IgnoreJobResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "IgnoreJobResponse",
-  }) as any as Schema.Schema<IgnoreJobResponse>;
+export const IgnoreJobResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "IgnoreJobResponse" });
 
 export interface RollbackTargetConfig {
   /** Optional. The rollback `Rollout` to create. */
@@ -3173,15 +2610,10 @@ export interface RollbackTargetConfig {
   startingPhaseId?: string;
 }
 
-export const RollbackTargetConfig: Schema.Schema<RollbackTargetConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rollout: Schema.optional(Rollout),
-      startingPhaseId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RollbackTargetConfig",
-  }) as any as Schema.Schema<RollbackTargetConfig>;
+export const RollbackTargetConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  rollout: Schema.optional(Rollout),
+  startingPhaseId: Schema.optional(Schema.String),
+}).annotate({ identifier: "RollbackTargetConfig" });
 
 export interface RollbackTargetRequest {
   /** Optional. Configs for the rollback `Rollout`. */
@@ -3200,20 +2632,15 @@ export interface RollbackTargetRequest {
   overrideDeployPolicy?: Array<string>;
 }
 
-export const RollbackTargetRequest: Schema.Schema<RollbackTargetRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rollbackConfig: Schema.optional(RollbackTargetConfig),
-      releaseId: Schema.optional(Schema.String),
-      rolloutToRollBack: Schema.optional(Schema.String),
-      rolloutId: Schema.optional(Schema.String),
-      targetId: Schema.optional(Schema.String),
-      validateOnly: Schema.optional(Schema.Boolean),
-      overrideDeployPolicy: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "RollbackTargetRequest",
-  }) as any as Schema.Schema<RollbackTargetRequest>;
+export const RollbackTargetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  rollbackConfig: Schema.optional(RollbackTargetConfig),
+  releaseId: Schema.optional(Schema.String),
+  rolloutToRollBack: Schema.optional(Schema.String),
+  rolloutId: Schema.optional(Schema.String),
+  targetId: Schema.optional(Schema.String),
+  validateOnly: Schema.optional(Schema.Boolean),
+  overrideDeployPolicy: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "RollbackTargetRequest" });
 
 export interface DeployArtifact {
   /** Output only. URI of a directory containing the artifacts. All paths are relative to this location. */
@@ -3222,15 +2649,10 @@ export interface DeployArtifact {
   manifestPaths?: Array<string>;
 }
 
-export const DeployArtifact: Schema.Schema<DeployArtifact> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      artifactUri: Schema.optional(Schema.String),
-      manifestPaths: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "DeployArtifact",
-  }) as any as Schema.Schema<DeployArtifact>;
+export const DeployArtifact = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  artifactUri: Schema.optional(Schema.String),
+  manifestPaths: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "DeployArtifact" });
 
 export interface DeployJobRun {
   /** Output only. Metadata containing information about the deploy job run. */
@@ -3253,18 +2675,13 @@ export interface DeployJobRun {
   artifact?: DeployArtifact;
 }
 
-export const DeployJobRun: Schema.Schema<DeployJobRun> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadata: Schema.optional(DeployJobRunMetadata),
-      failureMessage: Schema.optional(Schema.String),
-      build: Schema.optional(Schema.String),
-      failureCause: Schema.optional(Schema.String),
-      artifact: Schema.optional(DeployArtifact),
-    }),
-  ).annotate({
-    identifier: "DeployJobRun",
-  }) as any as Schema.Schema<DeployJobRun>;
+export const DeployJobRun = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metadata: Schema.optional(DeployJobRunMetadata),
+  failureMessage: Schema.optional(Schema.String),
+  build: Schema.optional(Schema.String),
+  failureCause: Schema.optional(Schema.String),
+  artifact: Schema.optional(DeployArtifact),
+}).annotate({ identifier: "DeployJobRun" });
 
 export interface AdvanceChildRolloutJobRun {
   /** Output only. Name of the `ChildRollout`. Format is `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/{rollout}`. */
@@ -3273,15 +2690,11 @@ export interface AdvanceChildRolloutJobRun {
   rolloutPhaseId?: string;
 }
 
-export const AdvanceChildRolloutJobRun: Schema.Schema<AdvanceChildRolloutJobRun> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rollout: Schema.optional(Schema.String),
-      rolloutPhaseId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AdvanceChildRolloutJobRun",
-  }) as any as Schema.Schema<AdvanceChildRolloutJobRun>;
+export const AdvanceChildRolloutJobRun =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rollout: Schema.optional(Schema.String),
+    rolloutPhaseId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AdvanceChildRolloutJobRun" });
 
 export interface CreateChildRolloutJobRun {
   /** Output only. Name of the `ChildRollout`. Format is `projects/{project}/locations/{location}/deliveryPipelines/{deliveryPipeline}/releases/{release}/rollouts/{rollout}`. */
@@ -3290,15 +2703,11 @@ export interface CreateChildRolloutJobRun {
   rolloutPhaseId?: string;
 }
 
-export const CreateChildRolloutJobRun: Schema.Schema<CreateChildRolloutJobRun> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rollout: Schema.optional(Schema.String),
-      rolloutPhaseId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreateChildRolloutJobRun",
-  }) as any as Schema.Schema<CreateChildRolloutJobRun>;
+export const CreateChildRolloutJobRun =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rollout: Schema.optional(Schema.String),
+    rolloutPhaseId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CreateChildRolloutJobRun" });
 
 export interface FailedAlertPolicy {
   /** Output only. Open alerts for the alerting policies that matched the alert policy check configuration. */
@@ -3307,15 +2716,10 @@ export interface FailedAlertPolicy {
   alertPolicy?: string;
 }
 
-export const FailedAlertPolicy: Schema.Schema<FailedAlertPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      alerts: Schema.optional(Schema.Array(Schema.String)),
-      alertPolicy: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FailedAlertPolicy",
-  }) as any as Schema.Schema<FailedAlertPolicy>;
+export const FailedAlertPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  alerts: Schema.optional(Schema.Array(Schema.String)),
+  alertPolicy: Schema.optional(Schema.String),
+}).annotate({ identifier: "FailedAlertPolicy" });
 
 export interface AlertPolicyCheckStatus {
   /** Output only. The alert policies that were found to be firing during this check. This will be empty if no incidents were found. */
@@ -3330,18 +2734,15 @@ export interface AlertPolicyCheckStatus {
   alertPolicies?: Array<string>;
 }
 
-export const AlertPolicyCheckStatus: Schema.Schema<AlertPolicyCheckStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      failedAlertPolicies: Schema.optional(Schema.Array(FailedAlertPolicy)),
-      id: Schema.optional(Schema.String),
-      failureMessage: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      alertPolicies: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AlertPolicyCheckStatus",
-  }) as any as Schema.Schema<AlertPolicyCheckStatus>;
+export const AlertPolicyCheckStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    failedAlertPolicies: Schema.optional(Schema.Array(FailedAlertPolicy)),
+    id: Schema.optional(Schema.String),
+    failureMessage: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    alertPolicies: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "AlertPolicyCheckStatus" });
 
 export interface CustomCheckStatus {
   /** Output only. Additional information about the analysis failure, if available. */
@@ -3366,20 +2767,15 @@ export interface CustomCheckStatus {
   frequency?: string;
 }
 
-export const CustomCheckStatus: Schema.Schema<CustomCheckStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      failureMessage: Schema.optional(Schema.String),
-      latestBuild: Schema.optional(Schema.String),
-      task: Schema.optional(Task),
-      metadata: Schema.optional(CustomMetadata),
-      failureCause: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      frequency: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomCheckStatus",
-  }) as any as Schema.Schema<CustomCheckStatus>;
+export const CustomCheckStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  failureMessage: Schema.optional(Schema.String),
+  latestBuild: Schema.optional(Schema.String),
+  task: Schema.optional(Task),
+  metadata: Schema.optional(CustomMetadata),
+  failureCause: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  frequency: Schema.optional(Schema.String),
+}).annotate({ identifier: "CustomCheckStatus" });
 
 export interface AnalysisJobRun {
   /** Output only. The ID of the configured check that failed. This will always be blank while the analysis is in progress or if it succeeded. */
@@ -3390,32 +2786,21 @@ export interface AnalysisJobRun {
   customCheckAnalyses?: Array<CustomCheckStatus>;
 }
 
-export const AnalysisJobRun: Schema.Schema<AnalysisJobRun> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      failedCheckId: Schema.optional(Schema.String),
-      alertPolicyAnalyses: Schema.optional(
-        Schema.Array(AlertPolicyCheckStatus),
-      ),
-      customCheckAnalyses: Schema.optional(Schema.Array(CustomCheckStatus)),
-    }),
-  ).annotate({
-    identifier: "AnalysisJobRun",
-  }) as any as Schema.Schema<AnalysisJobRun>;
+export const AnalysisJobRun = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  failedCheckId: Schema.optional(Schema.String),
+  alertPolicyAnalyses: Schema.optional(Schema.Array(AlertPolicyCheckStatus)),
+  customCheckAnalyses: Schema.optional(Schema.Array(CustomCheckStatus)),
+}).annotate({ identifier: "AnalysisJobRun" });
 
 export interface PredeployJobRunMetadata {
   /** Output only. Custom metadata provided by user-defined predeploy operation. */
   custom?: CustomMetadata;
 }
 
-export const PredeployJobRunMetadata: Schema.Schema<PredeployJobRunMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      custom: Schema.optional(CustomMetadata),
-    }),
-  ).annotate({
-    identifier: "PredeployJobRunMetadata",
-  }) as any as Schema.Schema<PredeployJobRunMetadata>;
+export const PredeployJobRunMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    custom: Schema.optional(CustomMetadata),
+  }).annotate({ identifier: "PredeployJobRunMetadata" });
 
 export interface PredeployJobRun {
   /** Output only. Additional information about the predeploy failure, if available. */
@@ -3434,31 +2819,22 @@ export interface PredeployJobRun {
     | (string & {});
 }
 
-export const PredeployJobRun: Schema.Schema<PredeployJobRun> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      failureMessage: Schema.optional(Schema.String),
-      metadata: Schema.optional(PredeployJobRunMetadata),
-      build: Schema.optional(Schema.String),
-      failureCause: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PredeployJobRun",
-  }) as any as Schema.Schema<PredeployJobRun>;
+export const PredeployJobRun = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  failureMessage: Schema.optional(Schema.String),
+  metadata: Schema.optional(PredeployJobRunMetadata),
+  build: Schema.optional(Schema.String),
+  failureCause: Schema.optional(Schema.String),
+}).annotate({ identifier: "PredeployJobRun" });
 
 export interface PostdeployJobRunMetadata {
   /** Output only. Custom metadata provided by user-defined postdeploy operation. */
   custom?: CustomMetadata;
 }
 
-export const PostdeployJobRunMetadata: Schema.Schema<PostdeployJobRunMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      custom: Schema.optional(CustomMetadata),
-    }),
-  ).annotate({
-    identifier: "PostdeployJobRunMetadata",
-  }) as any as Schema.Schema<PostdeployJobRunMetadata>;
+export const PostdeployJobRunMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    custom: Schema.optional(CustomMetadata),
+  }).annotate({ identifier: "PostdeployJobRunMetadata" });
 
 export interface PostdeployJobRun {
   /** Output only. The resource name of the Cloud Build `Build` object that is used to execute the custom actions associated with the postdeploy Job. Format is `projects/{project}/locations/{location}/builds/{build}`. */
@@ -3477,17 +2853,12 @@ export interface PostdeployJobRun {
   metadata?: PostdeployJobRunMetadata;
 }
 
-export const PostdeployJobRun: Schema.Schema<PostdeployJobRun> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      build: Schema.optional(Schema.String),
-      failureMessage: Schema.optional(Schema.String),
-      failureCause: Schema.optional(Schema.String),
-      metadata: Schema.optional(PostdeployJobRunMetadata),
-    }),
-  ).annotate({
-    identifier: "PostdeployJobRun",
-  }) as any as Schema.Schema<PostdeployJobRun>;
+export const PostdeployJobRun = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  build: Schema.optional(Schema.String),
+  failureMessage: Schema.optional(Schema.String),
+  failureCause: Schema.optional(Schema.String),
+  metadata: Schema.optional(PostdeployJobRunMetadata),
+}).annotate({ identifier: "PostdeployJobRun" });
 
 export interface JobRun {
   /** Output only. Information specific to a deploy `JobRun`. */
@@ -3531,27 +2902,24 @@ export interface JobRun {
   etag?: string;
 }
 
-export const JobRun: Schema.Schema<JobRun> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deployJobRun: Schema.optional(DeployJobRun),
-      jobId: Schema.optional(Schema.String),
-      uid: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      advanceChildRolloutJobRun: Schema.optional(AdvanceChildRolloutJobRun),
-      phaseId: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      createChildRolloutJobRun: Schema.optional(CreateChildRolloutJobRun),
-      createTime: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      analysisJobRun: Schema.optional(AnalysisJobRun),
-      predeployJobRun: Schema.optional(PredeployJobRun),
-      verifyJobRun: Schema.optional(VerifyJobRun),
-      postdeployJobRun: Schema.optional(PostdeployJobRun),
-      name: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "JobRun" }) as any as Schema.Schema<JobRun>;
+export const JobRun = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  deployJobRun: Schema.optional(DeployJobRun),
+  jobId: Schema.optional(Schema.String),
+  uid: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  advanceChildRolloutJobRun: Schema.optional(AdvanceChildRolloutJobRun),
+  phaseId: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  createChildRolloutJobRun: Schema.optional(CreateChildRolloutJobRun),
+  createTime: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+  analysisJobRun: Schema.optional(AnalysisJobRun),
+  predeployJobRun: Schema.optional(PredeployJobRun),
+  verifyJobRun: Schema.optional(VerifyJobRun),
+  postdeployJobRun: Schema.optional(PostdeployJobRun),
+  name: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "JobRun" });
 
 export interface ListJobRunsResponse {
   /** The `JobRun` objects. */
@@ -3562,16 +2930,11 @@ export interface ListJobRunsResponse {
   nextPageToken?: string;
 }
 
-export const ListJobRunsResponse: Schema.Schema<ListJobRunsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      jobRuns: Schema.optional(Schema.Array(JobRun)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListJobRunsResponse",
-  }) as any as Schema.Schema<ListJobRunsResponse>;
+export const ListJobRunsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  jobRuns: Schema.optional(Schema.Array(JobRun)),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListJobRunsResponse" });
 
 export interface RetryJobRequest {
   /** Required. The phase ID the Job to retry belongs to. */
@@ -3582,16 +2945,11 @@ export interface RetryJobRequest {
   overrideDeployPolicy?: Array<string>;
 }
 
-export const RetryJobRequest: Schema.Schema<RetryJobRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      phaseId: Schema.optional(Schema.String),
-      jobId: Schema.optional(Schema.String),
-      overrideDeployPolicy: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "RetryJobRequest",
-  }) as any as Schema.Schema<RetryJobRequest>;
+export const RetryJobRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  phaseId: Schema.optional(Schema.String),
+  jobId: Schema.optional(Schema.String),
+  overrideDeployPolicy: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "RetryJobRequest" });
 
 export interface AutomationEvent {
   /** Debug message for when there is an update on the AutomationRun. Provides further details about the resource creation or state change. */
@@ -3614,29 +2972,21 @@ export interface AutomationEvent {
   automation?: string;
 }
 
-export const AutomationEvent: Schema.Schema<AutomationEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      message: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      pipelineUid: Schema.optional(Schema.String),
-      automation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AutomationEvent",
-  }) as any as Schema.Schema<AutomationEvent>;
+export const AutomationEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  message: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  pipelineUid: Schema.optional(Schema.String),
+  automation: Schema.optional(Schema.String),
+}).annotate({ identifier: "AutomationEvent" });
 
 export interface PolicyRule {
   /** Optional. Rollout restrictions. */
   rolloutRestriction?: RolloutRestriction;
 }
 
-export const PolicyRule: Schema.Schema<PolicyRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rolloutRestriction: Schema.optional(RolloutRestriction),
-    }),
-  ).annotate({ identifier: "PolicyRule" }) as any as Schema.Schema<PolicyRule>;
+export const PolicyRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  rolloutRestriction: Schema.optional(RolloutRestriction),
+}).annotate({ identifier: "PolicyRule" });
 
 export interface DeployPolicy {
   /** Labels are attributes that can be set and used by both the user and by Cloud Deploy. Labels must meet the following constraints: * Keys and values can contain only lowercase letters, numeric characters, underscores, and dashes. * All characters must use UTF-8 encoding, and international characters are allowed. * Keys must start with a lowercase letter or international character. * Each resource is limited to a maximum of 64 labels. Both keys and values are additionally constrained to be <= 128 bytes. */
@@ -3663,24 +3013,19 @@ export interface DeployPolicy {
   annotations?: Record<string, string>;
 }
 
-export const DeployPolicy: Schema.Schema<DeployPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      uid: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      selectors: Schema.optional(Schema.Array(DeployPolicyResourceSelector)),
-      updateTime: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      rules: Schema.optional(Schema.Array(PolicyRule)),
-      suspended: Schema.optional(Schema.Boolean),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "DeployPolicy",
-  }) as any as Schema.Schema<DeployPolicy>;
+export const DeployPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  uid: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  selectors: Schema.optional(Schema.Array(DeployPolicyResourceSelector)),
+  updateTime: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  rules: Schema.optional(Schema.Array(PolicyRule)),
+  suspended: Schema.optional(Schema.Boolean),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "DeployPolicy" });
 
 export interface ListReleasesResponse {
   /** The `Release` objects. */
@@ -3691,16 +3036,11 @@ export interface ListReleasesResponse {
   nextPageToken?: string;
 }
 
-export const ListReleasesResponse: Schema.Schema<ListReleasesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      releases: Schema.optional(Schema.Array(Release)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListReleasesResponse",
-  }) as any as Schema.Schema<ListReleasesResponse>;
+export const ListReleasesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  releases: Schema.optional(Schema.Array(Release)),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListReleasesResponse" });
 
 export interface RolloutNotificationEvent {
   /** Unique identifier of the `Rollout`. */
@@ -3731,28 +3071,23 @@ export interface RolloutNotificationEvent {
     | (string & {});
 }
 
-export const RolloutNotificationEvent: Schema.Schema<RolloutNotificationEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rolloutUid: Schema.optional(Schema.String),
-      releaseUid: Schema.optional(Schema.String),
-      rollout: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-      targetId: Schema.optional(Schema.String),
-      release: Schema.optional(Schema.String),
-      pipelineUid: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RolloutNotificationEvent",
-  }) as any as Schema.Schema<RolloutNotificationEvent>;
+export const RolloutNotificationEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rolloutUid: Schema.optional(Schema.String),
+    releaseUid: Schema.optional(Schema.String),
+    rollout: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+    targetId: Schema.optional(Schema.String),
+    release: Schema.optional(Schema.String),
+    pipelineUid: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RolloutNotificationEvent" });
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelOperationRequest",
-  }) as any as Schema.Schema<CancelOperationRequest>;
+export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelOperationRequest" });
 
 export interface ListDeployPoliciesResponse {
   /** Locations that could not be reached. */
@@ -3763,16 +3098,12 @@ export interface ListDeployPoliciesResponse {
   nextPageToken?: string;
 }
 
-export const ListDeployPoliciesResponse: Schema.Schema<ListDeployPoliciesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      deployPolicies: Schema.optional(Schema.Array(DeployPolicy)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListDeployPoliciesResponse",
-  }) as any as Schema.Schema<ListDeployPoliciesResponse>;
+export const ListDeployPoliciesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    deployPolicies: Schema.optional(Schema.Array(DeployPolicy)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListDeployPoliciesResponse" });
 
 export interface SkaffoldVersion {
   /** The time at which this version of Skaffold will no longer be supported. */
@@ -3785,17 +3116,12 @@ export interface SkaffoldVersion {
   version?: string;
 }
 
-export const SkaffoldVersion: Schema.Schema<SkaffoldVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      supportExpirationTime: Schema.optional(Schema.String),
-      supportEndDate: Schema.optional(Clouddeploy_Date),
-      maintenanceModeTime: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SkaffoldVersion",
-  }) as any as Schema.Schema<SkaffoldVersion>;
+export const SkaffoldVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  supportExpirationTime: Schema.optional(Schema.String),
+  supportEndDate: Schema.optional(Clouddeploy_Date),
+  maintenanceModeTime: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+}).annotate({ identifier: "SkaffoldVersion" });
 
 export interface Config {
   /** All supported versions of Skaffold. */
@@ -3808,57 +3134,43 @@ export interface Config {
   defaultToolVersions?: ToolVersions;
 }
 
-export const Config: Schema.Schema<Config> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      supportedVersions: Schema.optional(Schema.Array(SkaffoldVersion)),
-      name: Schema.optional(Schema.String),
-      defaultSkaffoldVersion: Schema.optional(Schema.String),
-      defaultToolVersions: Schema.optional(ToolVersions),
-    }),
-  ).annotate({ identifier: "Config" }) as any as Schema.Schema<Config>;
+export const Config = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  supportedVersions: Schema.optional(Schema.Array(SkaffoldVersion)),
+  name: Schema.optional(Schema.String),
+  defaultSkaffoldVersion: Schema.optional(Schema.String),
+  defaultToolVersions: Schema.optional(ToolVersions),
+}).annotate({ identifier: "Config" });
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsRequest",
-  }) as any as Schema.Schema<TestIamPermissionsRequest>;
+export const TestIamPermissionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsRequest" });
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsResponse",
-  }) as any as Schema.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsResponse" });
 
 export interface TerminateJobRunRequest {
   /** Optional. Deploy policies to override. Format is `projects/{project}/locations/{location}/deployPolicies/{deployPolicy}`. */
   overrideDeployPolicy?: Array<string>;
 }
 
-export const TerminateJobRunRequest: Schema.Schema<TerminateJobRunRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      overrideDeployPolicy: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TerminateJobRunRequest",
-  }) as any as Schema.Schema<TerminateJobRunRequest>;
+export const TerminateJobRunRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    overrideDeployPolicy: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "TerminateJobRunRequest" });
 
 export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
@@ -3869,16 +3181,13 @@ export interface Status {
   code?: number;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      message: Schema.optional(Schema.String),
-      code: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  message: Schema.optional(Schema.String),
+  code: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
@@ -3893,37 +3202,30 @@ export interface Operation {
   error?: Status;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      error: Schema.optional(Status),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  done: Schema.optional(Schema.Boolean),
+  name: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  error: Schema.optional(Status),
+}).annotate({ identifier: "Operation" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface RollbackTargetResponse {
   /** The config of the rollback `Rollout` created or will be created. */
   rollbackConfig?: RollbackTargetConfig;
 }
 
-export const RollbackTargetResponse: Schema.Schema<RollbackTargetResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rollbackConfig: Schema.optional(RollbackTargetConfig),
-    }),
-  ).annotate({
-    identifier: "RollbackTargetResponse",
-  }) as any as Schema.Schema<RollbackTargetResponse>;
+export const RollbackTargetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    rollbackConfig: Schema.optional(RollbackTargetConfig),
+  },
+).annotate({ identifier: "RollbackTargetResponse" });
 
 export interface DeliveryPipelineNotificationEvent {
   /** The name of the `Delivery Pipeline`. */
@@ -3946,73 +3248,60 @@ export interface DeliveryPipelineNotificationEvent {
   pipelineUid?: string;
 }
 
-export const DeliveryPipelineNotificationEvent: Schema.Schema<DeliveryPipelineNotificationEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deliveryPipeline: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      pipelineUid: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DeliveryPipelineNotificationEvent",
-  }) as any as Schema.Schema<DeliveryPipelineNotificationEvent>;
+export const DeliveryPipelineNotificationEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deliveryPipeline: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    pipelineUid: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DeliveryPipelineNotificationEvent" });
 
 export interface AdvanceRolloutResponse {}
 
-export const AdvanceRolloutResponse: Schema.Schema<AdvanceRolloutResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "AdvanceRolloutResponse",
-  }) as any as Schema.Schema<AdvanceRolloutResponse>;
+export const AdvanceRolloutResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "AdvanceRolloutResponse" });
 
 export interface CancelAutomationRunRequest {}
 
-export const CancelAutomationRunRequest: Schema.Schema<CancelAutomationRunRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const CancelAutomationRunRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelAutomationRunRequest",
-  }) as any as Schema.Schema<CancelAutomationRunRequest>;
+  });
 
 export interface CancelRolloutRequest {
   /** Optional. Deploy policies to override. Format is `projects/{project}/locations/{location}/deployPolicies/{deployPolicy}`. */
   overrideDeployPolicy?: Array<string>;
 }
 
-export const CancelRolloutRequest: Schema.Schema<CancelRolloutRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      overrideDeployPolicy: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "CancelRolloutRequest",
-  }) as any as Schema.Schema<CancelRolloutRequest>;
+export const CancelRolloutRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  overrideDeployPolicy: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "CancelRolloutRequest" });
 
 export interface RetryJobResponse {}
 
-export const RetryJobResponse: Schema.Schema<RetryJobResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "RetryJobResponse",
-  }) as any as Schema.Schema<RetryJobResponse>;
+export const RetryJobResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "RetryJobResponse" });
 
 export interface TerminateJobRunResponse {}
 
-export const TerminateJobRunResponse: Schema.Schema<TerminateJobRunResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const TerminateJobRunResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "TerminateJobRunResponse",
-  }) as any as Schema.Schema<TerminateJobRunResponse>;
+  });
 
 export interface AbandonReleaseRequest {}
 
-export const AbandonReleaseRequest: Schema.Schema<AbandonReleaseRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "AbandonReleaseRequest",
-  }) as any as Schema.Schema<AbandonReleaseRequest>;
+export const AbandonReleaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "AbandonReleaseRequest" });
 
 export interface CancelRolloutResponse {}
 
-export const CancelRolloutResponse: Schema.Schema<CancelRolloutResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelRolloutResponse",
-  }) as any as Schema.Schema<CancelRolloutResponse>;
+export const CancelRolloutResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelRolloutResponse" });
 
 export interface IgnoreJobRequest {
   /** Required. The job ID for the Job to ignore. */
@@ -4023,16 +3312,11 @@ export interface IgnoreJobRequest {
   overrideDeployPolicy?: Array<string>;
 }
 
-export const IgnoreJobRequest: Schema.Schema<IgnoreJobRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      jobId: Schema.optional(Schema.String),
-      phaseId: Schema.optional(Schema.String),
-      overrideDeployPolicy: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "IgnoreJobRequest",
-  }) as any as Schema.Schema<IgnoreJobRequest>;
+export const IgnoreJobRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  jobId: Schema.optional(Schema.String),
+  phaseId: Schema.optional(Schema.String),
+  overrideDeployPolicy: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "IgnoreJobRequest" });
 
 export interface TargetNotificationEvent {
   /** Type of this notification, e.g. for a Pub/Sub failure. */
@@ -4053,16 +3337,12 @@ export interface TargetNotificationEvent {
   message?: string;
 }
 
-export const TargetNotificationEvent: Schema.Schema<TargetNotificationEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TargetNotificationEvent",
-  }) as any as Schema.Schema<TargetNotificationEvent>;
+export const TargetNotificationEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+  }).annotate({ identifier: "TargetNotificationEvent" });
 
 export interface ApproveRolloutRequest {
   /** Required. True = approve; false = reject */
@@ -4071,15 +3351,10 @@ export interface ApproveRolloutRequest {
   overrideDeployPolicy?: Array<string>;
 }
 
-export const ApproveRolloutRequest: Schema.Schema<ApproveRolloutRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      approved: Schema.optional(Schema.Boolean),
-      overrideDeployPolicy: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ApproveRolloutRequest",
-  }) as any as Schema.Schema<ApproveRolloutRequest>;
+export const ApproveRolloutRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  approved: Schema.optional(Schema.Boolean),
+  overrideDeployPolicy: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ApproveRolloutRequest" });
 
 export interface CustomTargetTypeNotificationEvent {
   /** Type of this notification, e.g. for a Pub/Sub failure. */
@@ -4102,17 +3377,13 @@ export interface CustomTargetTypeNotificationEvent {
   customTargetTypeUid?: string;
 }
 
-export const CustomTargetTypeNotificationEvent: Schema.Schema<CustomTargetTypeNotificationEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-      customTargetType: Schema.optional(Schema.String),
-      customTargetTypeUid: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomTargetTypeNotificationEvent",
-  }) as any as Schema.Schema<CustomTargetTypeNotificationEvent>;
+export const CustomTargetTypeNotificationEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+    customTargetType: Schema.optional(Schema.String),
+    customTargetTypeUid: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CustomTargetTypeNotificationEvent" });
 
 export interface ReleaseRenderEvent {
   /** The state of the release render. */
@@ -4142,18 +3413,13 @@ export interface ReleaseRenderEvent {
   pipelineUid?: string;
 }
 
-export const ReleaseRenderEvent: Schema.Schema<ReleaseRenderEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      releaseRenderState: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      release: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-      pipelineUid: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ReleaseRenderEvent",
-  }) as any as Schema.Schema<ReleaseRenderEvent>;
+export const ReleaseRenderEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  releaseRenderState: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  release: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+  pipelineUid: Schema.optional(Schema.String),
+}).annotate({ identifier: "ReleaseRenderEvent" });
 
 export interface ListCustomTargetTypesResponse {
   /** Locations that could not be reached. */
@@ -4164,16 +3430,12 @@ export interface ListCustomTargetTypesResponse {
   nextPageToken?: string;
 }
 
-export const ListCustomTargetTypesResponse: Schema.Schema<ListCustomTargetTypesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      customTargetTypes: Schema.optional(Schema.Array(CustomTargetType)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListCustomTargetTypesResponse",
-  }) as any as Schema.Schema<ListCustomTargetTypesResponse>;
+export const ListCustomTargetTypesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    customTargetTypes: Schema.optional(Schema.Array(CustomTargetType)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListCustomTargetTypesResponse" });
 
 export interface Location {
   /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
@@ -4188,16 +3450,13 @@ export interface Location {
   labels?: Record<string, string>;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      name: Schema.optional(Schema.String),
-      locationId: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  name: Schema.optional(Schema.String),
+  locationId: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "Location" });
 
 export interface ListRolloutsResponse {
   /** The `Rollout` objects. */
@@ -4208,16 +3467,11 @@ export interface ListRolloutsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListRolloutsResponse: Schema.Schema<ListRolloutsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rollouts: Schema.optional(Schema.Array(Rollout)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListRolloutsResponse",
-  }) as any as Schema.Schema<ListRolloutsResponse>;
+export const ListRolloutsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  rollouts: Schema.optional(Schema.Array(Rollout)),
+  nextPageToken: Schema.optional(Schema.String),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ListRolloutsResponse" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -4226,15 +3480,10 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(Location)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface DeployPolicyNotificationEvent {
   /** Unique identifier of the deploy policy. */
@@ -4257,24 +3506,19 @@ export interface DeployPolicyNotificationEvent {
   deployPolicy?: string;
 }
 
-export const DeployPolicyNotificationEvent: Schema.Schema<DeployPolicyNotificationEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deployPolicyUid: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-      deployPolicy: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DeployPolicyNotificationEvent",
-  }) as any as Schema.Schema<DeployPolicyNotificationEvent>;
+export const DeployPolicyNotificationEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deployPolicyUid: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+    deployPolicy: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DeployPolicyNotificationEvent" });
 
 export interface ApproveRolloutResponse {}
 
-export const ApproveRolloutResponse: Schema.Schema<ApproveRolloutResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "ApproveRolloutResponse",
-  }) as any as Schema.Schema<ApproveRolloutResponse>;
+export const ApproveRolloutResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "ApproveRolloutResponse" });
 
 export interface JobRunNotificationEvent {
   /** Unique identifier of the `Rollout`. */
@@ -4307,22 +3551,18 @@ export interface JobRunNotificationEvent {
   releaseUid?: string;
 }
 
-export const JobRunNotificationEvent: Schema.Schema<JobRunNotificationEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rolloutUid: Schema.optional(Schema.String),
-      rollout: Schema.optional(Schema.String),
-      targetId: Schema.optional(Schema.String),
-      pipelineUid: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      jobRun: Schema.optional(Schema.String),
-      release: Schema.optional(Schema.String),
-      releaseUid: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "JobRunNotificationEvent",
-  }) as any as Schema.Schema<JobRunNotificationEvent>;
+export const JobRunNotificationEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rolloutUid: Schema.optional(Schema.String),
+    rollout: Schema.optional(Schema.String),
+    targetId: Schema.optional(Schema.String),
+    pipelineUid: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    jobRun: Schema.optional(Schema.String),
+    release: Schema.optional(Schema.String),
+    releaseUid: Schema.optional(Schema.String),
+  }).annotate({ identifier: "JobRunNotificationEvent" });
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -4333,16 +3573,13 @@ export interface ListOperationsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(Schema.Array(Operation)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    operations: Schema.optional(Schema.Array(Operation)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 // ==========================================================================
 // Operations

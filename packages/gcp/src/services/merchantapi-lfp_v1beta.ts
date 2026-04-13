@@ -24,10 +24,9 @@ const svc = T.Service({
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface CountrySettings {
   /** True if this merchant has enabled local inventory ads in MC. */
@@ -66,20 +65,15 @@ export interface CountrySettings {
     | (string & {});
 }
 
-export const CountrySettings: Schema.Schema<CountrySettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      localInventoryAdsEnabled: Schema.optional(Schema.Boolean),
-      inventoryVerificationState: Schema.optional(Schema.String),
-      pickupServingVerificationState: Schema.optional(Schema.String),
-      instockServingVerificationState: Schema.optional(Schema.String),
-      freeLocalListingsEnabled: Schema.optional(Schema.Boolean),
-      regionCode: Schema.optional(Schema.String),
-      productPageType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CountrySettings",
-  }) as any as Schema.Schema<CountrySettings>;
+export const CountrySettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  localInventoryAdsEnabled: Schema.optional(Schema.Boolean),
+  inventoryVerificationState: Schema.optional(Schema.String),
+  pickupServingVerificationState: Schema.optional(Schema.String),
+  instockServingVerificationState: Schema.optional(Schema.String),
+  freeLocalListingsEnabled: Schema.optional(Schema.Boolean),
+  regionCode: Schema.optional(Schema.String),
+  productPageType: Schema.optional(Schema.String),
+}).annotate({ identifier: "CountrySettings" });
 
 export interface LfpStore {
   /** Required. The street address of the store. Example: 1600 Amphitheatre Pkwy, Mountain View, CA 94043, USA. */
@@ -110,22 +104,19 @@ export interface LfpStore {
   targetAccount?: string;
 }
 
-export const LfpStore: Schema.Schema<LfpStore> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      storeAddress: Schema.optional(Schema.String),
-      phoneNumber: Schema.optional(Schema.String),
-      storeCode: Schema.optional(Schema.String),
-      placeId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      storeName: Schema.optional(Schema.String),
-      matchingStateHint: Schema.optional(Schema.String),
-      gcidCategory: Schema.optional(Schema.Array(Schema.String)),
-      matchingState: Schema.optional(Schema.String),
-      websiteUri: Schema.optional(Schema.String),
-      targetAccount: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "LfpStore" }) as any as Schema.Schema<LfpStore>;
+export const LfpStore = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  storeAddress: Schema.optional(Schema.String),
+  phoneNumber: Schema.optional(Schema.String),
+  storeCode: Schema.optional(Schema.String),
+  placeId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  storeName: Schema.optional(Schema.String),
+  matchingStateHint: Schema.optional(Schema.String),
+  gcidCategory: Schema.optional(Schema.Array(Schema.String)),
+  matchingState: Schema.optional(Schema.String),
+  websiteUri: Schema.optional(Schema.String),
+  targetAccount: Schema.optional(Schema.String),
+}).annotate({ identifier: "LfpStore" });
 
 export interface ListLfpStoresResponse {
   /** The stores from the specified merchant. */
@@ -134,15 +125,10 @@ export interface ListLfpStoresResponse {
   nextPageToken?: string;
 }
 
-export const ListLfpStoresResponse: Schema.Schema<ListLfpStoresResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lfpStores: Schema.optional(Schema.Array(LfpStore)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLfpStoresResponse",
-  }) as any as Schema.Schema<ListLfpStoresResponse>;
+export const ListLfpStoresResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  lfpStores: Schema.optional(Schema.Array(LfpStore)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLfpStoresResponse" });
 
 export interface LfpStoreState {
   /** Required. Immutable. The identifier of this store. */
@@ -157,16 +143,11 @@ export interface LfpStoreState {
   matchingStateHint?: string;
 }
 
-export const LfpStoreState: Schema.Schema<LfpStoreState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      storeCode: Schema.optional(Schema.String),
-      matchingState: Schema.optional(Schema.String),
-      matchingStateHint: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LfpStoreState",
-  }) as any as Schema.Schema<LfpStoreState>;
+export const LfpStoreState = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  storeCode: Schema.optional(Schema.String),
+  matchingState: Schema.optional(Schema.String),
+  matchingStateHint: Schema.optional(Schema.String),
+}).annotate({ identifier: "LfpStoreState" });
 
 export interface ProductChange {
   /** The old value of the changed resource or attribute. If empty, it means that the product was created. Will have one of these values : (`approved`, `pending`, `disapproved`, ``) */
@@ -200,17 +181,12 @@ export interface ProductChange {
     | (string & {});
 }
 
-export const ProductChange: Schema.Schema<ProductChange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      oldValue: Schema.optional(Schema.String),
-      newValue: Schema.optional(Schema.String),
-      regionCode: Schema.optional(Schema.String),
-      reportingContext: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProductChange",
-  }) as any as Schema.Schema<ProductChange>;
+export const ProductChange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  oldValue: Schema.optional(Schema.String),
+  newValue: Schema.optional(Schema.String),
+  regionCode: Schema.optional(Schema.String),
+  reportingContext: Schema.optional(Schema.String),
+}).annotate({ identifier: "ProductChange" });
 
 export interface ProductStatusChangeMessage {
   /** A message to describe the change that happened to the product */
@@ -233,22 +209,18 @@ export interface ProductStatusChangeMessage {
   eventTime?: string;
 }
 
-export const ProductStatusChangeMessage: Schema.Schema<ProductStatusChangeMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      changes: Schema.optional(Schema.Array(ProductChange)),
-      managingAccount: Schema.optional(Schema.String),
-      account: Schema.optional(Schema.String),
-      resourceId: Schema.optional(Schema.String),
-      resourceType: Schema.optional(Schema.String),
-      resource: Schema.optional(Schema.String),
-      expirationTime: Schema.optional(Schema.String),
-      attribute: Schema.optional(Schema.String),
-      eventTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProductStatusChangeMessage",
-  }) as any as Schema.Schema<ProductStatusChangeMessage>;
+export const ProductStatusChangeMessage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    changes: Schema.optional(Schema.Array(ProductChange)),
+    managingAccount: Schema.optional(Schema.String),
+    account: Schema.optional(Schema.String),
+    resourceId: Schema.optional(Schema.String),
+    resourceType: Schema.optional(Schema.String),
+    resource: Schema.optional(Schema.String),
+    expirationTime: Schema.optional(Schema.String),
+    attribute: Schema.optional(Schema.String),
+    eventTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ProductStatusChangeMessage" });
 
 export interface InventoryStats {
   /** Number of submitted in stock entries. */
@@ -261,17 +233,12 @@ export interface InventoryStats {
   unsubmittedEntries?: string;
 }
 
-export const InventoryStats: Schema.Schema<InventoryStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      submittedInStockEntries: Schema.optional(Schema.String),
-      submittedProducts: Schema.optional(Schema.String),
-      submittedEntries: Schema.optional(Schema.String),
-      unsubmittedEntries: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InventoryStats",
-  }) as any as Schema.Schema<InventoryStats>;
+export const InventoryStats = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  submittedInStockEntries: Schema.optional(Schema.String),
+  submittedProducts: Schema.optional(Schema.String),
+  submittedEntries: Schema.optional(Schema.String),
+  unsubmittedEntries: Schema.optional(Schema.String),
+}).annotate({ identifier: "InventoryStats" });
 
 export interface Price {
   /** The price represented as a number in micros (1 million micros is an equivalent to one's currency standard unit, for example, 1 USD = 1000000 micros). */
@@ -280,13 +247,10 @@ export interface Price {
   currencyCode?: string;
 }
 
-export const Price: Schema.Schema<Price> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      amountMicros: Schema.optional(Schema.String),
-      currencyCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Price" }) as any as Schema.Schema<Price>;
+export const Price = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  amountMicros: Schema.optional(Schema.String),
+  currencyCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "Price" });
 
 export interface LfpSale {
   /** Required. The Global Trade Item Number of the sold product. */
@@ -315,23 +279,20 @@ export interface LfpSale {
   saleTime?: string;
 }
 
-export const LfpSale: Schema.Schema<LfpSale> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gtin: Schema.optional(Schema.String),
-      targetAccount: Schema.optional(Schema.String),
-      contentLanguage: Schema.optional(Schema.String),
-      quantity: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      storeCode: Schema.optional(Schema.String),
-      uid: Schema.optional(Schema.String),
-      price: Schema.optional(Price),
-      feedLabel: Schema.optional(Schema.String),
-      offerId: Schema.optional(Schema.String),
-      regionCode: Schema.optional(Schema.String),
-      saleTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "LfpSale" }) as any as Schema.Schema<LfpSale>;
+export const LfpSale = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gtin: Schema.optional(Schema.String),
+  targetAccount: Schema.optional(Schema.String),
+  contentLanguage: Schema.optional(Schema.String),
+  quantity: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  storeCode: Schema.optional(Schema.String),
+  uid: Schema.optional(Schema.String),
+  price: Schema.optional(Price),
+  feedLabel: Schema.optional(Schema.String),
+  offerId: Schema.optional(Schema.String),
+  regionCode: Schema.optional(Schema.String),
+  saleTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "LfpSale" });
 
 export interface LfpInventory {
   /** Required. Availability of the product at this store. For accepted attribute values, see the [local product inventory data specification](https://support.google.com/merchants/answer/3061342) */
@@ -364,27 +325,22 @@ export interface LfpInventory {
   price?: Price;
 }
 
-export const LfpInventory: Schema.Schema<LfpInventory> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      availability: Schema.optional(Schema.String),
-      pickupSla: Schema.optional(Schema.String),
-      collectionTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      quantity: Schema.optional(Schema.String),
-      targetAccount: Schema.optional(Schema.String),
-      contentLanguage: Schema.optional(Schema.String),
-      offerId: Schema.optional(Schema.String),
-      feedLabel: Schema.optional(Schema.String),
-      storeCode: Schema.optional(Schema.String),
-      gtin: Schema.optional(Schema.String),
-      pickupMethod: Schema.optional(Schema.String),
-      regionCode: Schema.optional(Schema.String),
-      price: Schema.optional(Price),
-    }),
-  ).annotate({
-    identifier: "LfpInventory",
-  }) as any as Schema.Schema<LfpInventory>;
+export const LfpInventory = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  availability: Schema.optional(Schema.String),
+  pickupSla: Schema.optional(Schema.String),
+  collectionTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  quantity: Schema.optional(Schema.String),
+  targetAccount: Schema.optional(Schema.String),
+  contentLanguage: Schema.optional(Schema.String),
+  offerId: Schema.optional(Schema.String),
+  feedLabel: Schema.optional(Schema.String),
+  storeCode: Schema.optional(Schema.String),
+  gtin: Schema.optional(Schema.String),
+  pickupMethod: Schema.optional(Schema.String),
+  regionCode: Schema.optional(Schema.String),
+  price: Schema.optional(Price),
+}).annotate({ identifier: "LfpInventory" });
 
 export interface LfpMerchantState {
   /** Output only. The state per store from the specified merchant. The field will be absent if the merchant has no stores submitted through LFP. */
@@ -399,18 +355,13 @@ export interface LfpMerchantState {
   countrySettings?: Array<CountrySettings>;
 }
 
-export const LfpMerchantState: Schema.Schema<LfpMerchantState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      storeStates: Schema.optional(Schema.Array(LfpStoreState)),
-      name: Schema.optional(Schema.String),
-      inventoryStats: Schema.optional(InventoryStats),
-      linkedGbps: Schema.optional(Schema.String),
-      countrySettings: Schema.optional(Schema.Array(CountrySettings)),
-    }),
-  ).annotate({
-    identifier: "LfpMerchantState",
-  }) as any as Schema.Schema<LfpMerchantState>;
+export const LfpMerchantState = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  storeStates: Schema.optional(Schema.Array(LfpStoreState)),
+  name: Schema.optional(Schema.String),
+  inventoryStats: Schema.optional(InventoryStats),
+  linkedGbps: Schema.optional(Schema.String),
+  countrySettings: Schema.optional(Schema.Array(CountrySettings)),
+}).annotate({ identifier: "LfpMerchantState" });
 
 // ==========================================================================
 // Operations

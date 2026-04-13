@@ -29,29 +29,19 @@ export interface KaclsKeyMetadata {
   kaclsUri?: string;
 }
 
-export const KaclsKeyMetadata: Schema.Schema<KaclsKeyMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kaclsData: Schema.optional(Schema.String),
-      kaclsUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "KaclsKeyMetadata",
-  }) as any as Schema.Schema<KaclsKeyMetadata>;
+export const KaclsKeyMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kaclsData: Schema.optional(Schema.String),
+  kaclsUri: Schema.optional(Schema.String),
+}).annotate({ identifier: "KaclsKeyMetadata" });
 
 export interface HardwareKeyMetadata {
   /** Description about the hardware key. */
   description?: string;
 }
 
-export const HardwareKeyMetadata: Schema.Schema<HardwareKeyMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "HardwareKeyMetadata",
-  }) as any as Schema.Schema<HardwareKeyMetadata>;
+export const HardwareKeyMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "HardwareKeyMetadata" });
 
 export interface CsePrivateKeyMetadata {
   /** Output only. The immutable ID for the private key metadata instance. */
@@ -62,16 +52,11 @@ export interface CsePrivateKeyMetadata {
   hardwareKeyMetadata?: HardwareKeyMetadata;
 }
 
-export const CsePrivateKeyMetadata: Schema.Schema<CsePrivateKeyMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      privateKeyMetadataId: Schema.optional(Schema.String),
-      kaclsKeyMetadata: Schema.optional(KaclsKeyMetadata),
-      hardwareKeyMetadata: Schema.optional(HardwareKeyMetadata),
-    }),
-  ).annotate({
-    identifier: "CsePrivateKeyMetadata",
-  }) as any as Schema.Schema<CsePrivateKeyMetadata>;
+export const CsePrivateKeyMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  privateKeyMetadataId: Schema.optional(Schema.String),
+  kaclsKeyMetadata: Schema.optional(KaclsKeyMetadata),
+  hardwareKeyMetadata: Schema.optional(HardwareKeyMetadata),
+}).annotate({ identifier: "CsePrivateKeyMetadata" });
 
 export interface CseKeyPair {
   /** Output only. If a key pair is set to `DISABLED`, the time that the key pair's state changed from `ENABLED` to `DISABLED`. This field is present only when the key pair is in state `DISABLED`. */
@@ -90,18 +75,15 @@ export interface CseKeyPair {
   privateKeyMetadata?: Array<CsePrivateKeyMetadata>;
 }
 
-export const CseKeyPair: Schema.Schema<CseKeyPair> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      disableTime: Schema.optional(Schema.String),
-      pkcs7: Schema.optional(Schema.String),
-      keyPairId: Schema.optional(Schema.String),
-      pem: Schema.optional(Schema.String),
-      subjectEmailAddresses: Schema.optional(Schema.Array(Schema.String)),
-      enablementState: Schema.optional(Schema.String),
-      privateKeyMetadata: Schema.optional(Schema.Array(CsePrivateKeyMetadata)),
-    }),
-  ).annotate({ identifier: "CseKeyPair" }) as any as Schema.Schema<CseKeyPair>;
+export const CseKeyPair = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  disableTime: Schema.optional(Schema.String),
+  pkcs7: Schema.optional(Schema.String),
+  keyPairId: Schema.optional(Schema.String),
+  pem: Schema.optional(Schema.String),
+  subjectEmailAddresses: Schema.optional(Schema.Array(Schema.String)),
+  enablementState: Schema.optional(Schema.String),
+  privateKeyMetadata: Schema.optional(Schema.Array(CsePrivateKeyMetadata)),
+}).annotate({ identifier: "CseKeyPair" });
 
 export interface ListCseKeyPairsResponse {
   /** One page of the list of CSE key pairs installed for the user. */
@@ -110,15 +92,11 @@ export interface ListCseKeyPairsResponse {
   nextPageToken?: string;
 }
 
-export const ListCseKeyPairsResponse: Schema.Schema<ListCseKeyPairsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cseKeyPairs: Schema.optional(Schema.Array(CseKeyPair)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListCseKeyPairsResponse",
-  }) as any as Schema.Schema<ListCseKeyPairsResponse>;
+export const ListCseKeyPairsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cseKeyPairs: Schema.optional(Schema.Array(CseKeyPair)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListCseKeyPairsResponse" });
 
 export interface SmimeInfo {
   /** Whether this SmimeInfo is the default one for this user's send-as address. */
@@ -137,18 +115,15 @@ export interface SmimeInfo {
   pkcs12?: string;
 }
 
-export const SmimeInfo: Schema.Schema<SmimeInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      isDefault: Schema.optional(Schema.Boolean),
-      expiration: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      issuerCn: Schema.optional(Schema.String),
-      encryptedKeyPassword: Schema.optional(Schema.String),
-      pem: Schema.optional(Schema.String),
-      pkcs12: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "SmimeInfo" }) as any as Schema.Schema<SmimeInfo>;
+export const SmimeInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  isDefault: Schema.optional(Schema.Boolean),
+  expiration: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  issuerCn: Schema.optional(Schema.String),
+  encryptedKeyPassword: Schema.optional(Schema.String),
+  pem: Schema.optional(Schema.String),
+  pkcs12: Schema.optional(Schema.String),
+}).annotate({ identifier: "SmimeInfo" });
 
 export interface Profile {
   /** The total number of messages in the mailbox. */
@@ -161,15 +136,12 @@ export interface Profile {
   threadsTotal?: number;
 }
 
-export const Profile: Schema.Schema<Profile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      messagesTotal: Schema.optional(Schema.Number),
-      emailAddress: Schema.optional(Schema.String),
-      historyId: Schema.optional(Schema.String),
-      threadsTotal: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Profile" }) as any as Schema.Schema<Profile>;
+export const Profile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  messagesTotal: Schema.optional(Schema.Number),
+  emailAddress: Schema.optional(Schema.String),
+  historyId: Schema.optional(Schema.String),
+  threadsTotal: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Profile" });
 
 export interface MessagePartBody {
   /** When present, contains the ID of an external attachment that can be retrieved in a separate `messages.attachments.get` request. When not present, the entire content of the message part body is contained in the data field. */
@@ -180,16 +152,11 @@ export interface MessagePartBody {
   data?: string;
 }
 
-export const MessagePartBody: Schema.Schema<MessagePartBody> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      attachmentId: Schema.optional(Schema.String),
-      size: Schema.optional(Schema.Number),
-      data: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MessagePartBody",
-  }) as any as Schema.Schema<MessagePartBody>;
+export const MessagePartBody = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  attachmentId: Schema.optional(Schema.String),
+  size: Schema.optional(Schema.Number),
+  data: Schema.optional(Schema.String),
+}).annotate({ identifier: "MessagePartBody" });
 
 export interface MessagePartHeader {
   /** The name of the header before the `:` separator. For example, `To`. */
@@ -198,15 +165,10 @@ export interface MessagePartHeader {
   value?: string;
 }
 
-export const MessagePartHeader: Schema.Schema<MessagePartHeader> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MessagePartHeader",
-  }) as any as Schema.Schema<MessagePartHeader>;
+export const MessagePartHeader = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+}).annotate({ identifier: "MessagePartHeader" });
 
 export interface MessagePart {
   /** The child MIME message parts of this part. This only applies to container MIME message parts, for example `multipart/*`. For non- container MIME message part types, such as `text/plain`, this field is empty. For more information, see RFC 1521. */
@@ -244,15 +206,11 @@ export interface ClassificationLabelFieldValue {
   selection?: string;
 }
 
-export const ClassificationLabelFieldValue: Schema.Schema<ClassificationLabelFieldValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fieldId: Schema.optional(Schema.String),
-      selection: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ClassificationLabelFieldValue",
-  }) as any as Schema.Schema<ClassificationLabelFieldValue>;
+export const ClassificationLabelFieldValue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fieldId: Schema.optional(Schema.String),
+    selection: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ClassificationLabelFieldValue" });
 
 export interface ClassificationLabelValue {
   /** Required. The canonical or raw alphanumeric classification label ID. Maps to the ID field of the Google Drive Label resource. */
@@ -261,15 +219,11 @@ export interface ClassificationLabelValue {
   fields?: Array<ClassificationLabelFieldValue>;
 }
 
-export const ClassificationLabelValue: Schema.Schema<ClassificationLabelValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labelId: Schema.optional(Schema.String),
-      fields: Schema.optional(Schema.Array(ClassificationLabelFieldValue)),
-    }),
-  ).annotate({
-    identifier: "ClassificationLabelValue",
-  }) as any as Schema.Schema<ClassificationLabelValue>;
+export const ClassificationLabelValue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    labelId: Schema.optional(Schema.String),
+    fields: Schema.optional(Schema.Array(ClassificationLabelFieldValue)),
+  }).annotate({ identifier: "ClassificationLabelValue" });
 
 export interface Message {
   /** The entire email message in an RFC 2822 formatted and base64url encoded string. Returned in `messages.get` and `drafts.get` responses when the `format=RAW` parameter is supplied. */
@@ -294,23 +248,20 @@ export interface Message {
   id?: string;
 }
 
-export const Message: Schema.Schema<Message> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      raw: Schema.optional(Schema.String),
-      threadId: Schema.optional(Schema.String),
-      labelIds: Schema.optional(Schema.Array(Schema.String)),
-      payload: Schema.optional(MessagePart),
-      classificationLabelValues: Schema.optional(
-        Schema.Array(ClassificationLabelValue),
-      ),
-      historyId: Schema.optional(Schema.String),
-      internalDate: Schema.optional(Schema.String),
-      snippet: Schema.optional(Schema.String),
-      sizeEstimate: Schema.optional(Schema.Number),
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Message" }) as any as Schema.Schema<Message>;
+export const Message = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  raw: Schema.optional(Schema.String),
+  threadId: Schema.optional(Schema.String),
+  labelIds: Schema.optional(Schema.Array(Schema.String)),
+  payload: Schema.optional(MessagePart),
+  classificationLabelValues: Schema.optional(
+    Schema.Array(ClassificationLabelValue),
+  ),
+  historyId: Schema.optional(Schema.String),
+  internalDate: Schema.optional(Schema.String),
+  snippet: Schema.optional(Schema.String),
+  sizeEstimate: Schema.optional(Schema.Number),
+  id: Schema.optional(Schema.String),
+}).annotate({ identifier: "Message" });
 
 export interface Thread {
   /** The unique ID of the thread. */
@@ -323,15 +274,12 @@ export interface Thread {
   historyId?: string;
 }
 
-export const Thread: Schema.Schema<Thread> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      snippet: Schema.optional(Schema.String),
-      messages: Schema.optional(Schema.Array(Message)),
-      historyId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Thread" }) as any as Schema.Schema<Thread>;
+export const Thread = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  snippet: Schema.optional(Schema.String),
+  messages: Schema.optional(Schema.Array(Message)),
+  historyId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Thread" });
 
 export interface Delegate {
   /** The email address of the delegate. */
@@ -346,27 +294,19 @@ export interface Delegate {
     | (string & {});
 }
 
-export const Delegate: Schema.Schema<Delegate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      delegateEmail: Schema.optional(Schema.String),
-      verificationStatus: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Delegate" }) as any as Schema.Schema<Delegate>;
+export const Delegate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  delegateEmail: Schema.optional(Schema.String),
+  verificationStatus: Schema.optional(Schema.String),
+}).annotate({ identifier: "Delegate" });
 
 export interface ListDelegatesResponse {
   /** List of the user's delegates (with any verification status). If an account doesn't have delegates, this field doesn't appear. */
   delegates?: Array<Delegate>;
 }
 
-export const ListDelegatesResponse: Schema.Schema<ListDelegatesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      delegates: Schema.optional(Schema.Array(Delegate)),
-    }),
-  ).annotate({
-    identifier: "ListDelegatesResponse",
-  }) as any as Schema.Schema<ListDelegatesResponse>;
+export const ListDelegatesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  delegates: Schema.optional(Schema.Array(Delegate)),
+}).annotate({ identifier: "ListDelegatesResponse" });
 
 export interface SignAndEncryptKeyPairs {
   /** The ID of the CseKeyPair that signs outgoing mail. */
@@ -375,15 +315,12 @@ export interface SignAndEncryptKeyPairs {
   encryptionKeyPairId?: string;
 }
 
-export const SignAndEncryptKeyPairs: Schema.Schema<SignAndEncryptKeyPairs> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      signingKeyPairId: Schema.optional(Schema.String),
-      encryptionKeyPairId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SignAndEncryptKeyPairs",
-  }) as any as Schema.Schema<SignAndEncryptKeyPairs>;
+export const SignAndEncryptKeyPairs = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    signingKeyPairId: Schema.optional(Schema.String),
+    encryptionKeyPairId: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "SignAndEncryptKeyPairs" });
 
 export interface LabelColor {
   /** The text color of the label, represented as hex string. This field is required in order to set the color of a label. Only the following predefined set of color values are allowed: \#000000, #434343, #666666, #999999, #cccccc, #efefef, #f3f3f3, #ffffff, \#fb4c2f, #ffad47, #fad165, #16a766, #43d692, #4a86e8, #a479e2, #f691b3, \#f6c5be, #ffe6c7, #fef1d1, #b9e4d0, #c6f3de, #c9daf8, #e4d7f5, #fcdee8, \#efa093, #ffd6a2, #fce8b3, #89d3b2, #a0eac9, #a4c2f4, #d0bcf1, #fbc8d9, \#e66550, #ffbc6b, #fcda83, #44b984, #68dfa9, #6d9eeb, #b694e8, #f7a7c0, \#cc3a21, #eaa041, #f2c960, #149e60, #3dc789, #3c78d8, #8e63ce, #e07798, \#ac2b16, #cf8933, #d5ae49, #0b804b, #2a9c68, #285bac, #653e9b, #b65775, \#822111, #a46a21, #aa8831, #076239, #1a764d, #1c4587, #41236d, #83334c \#464646, #e7e7e7, #0d3472, #b6cff5, #0d3b44, #98d7e4, #3d188e, #e3d7ff, \#711a36, #fbd3e0, #8a1c0a, #f2b2a8, #7a2e0b, #ffc8af, #7a4706, #ffdeb5, \#594c05, #fbe983, #684e07, #fdedc1, #0b4f30, #b3efd3, #04502e, #a2dcc1, \#c2c2c2, #4986e7, #2da2bb, #b99aff, #994a64, #f691b2, #ff7537, #ffad46, \#662e37, #ebdbde, #cca6ac, #094228, #42d692, #16a765 */
@@ -392,13 +329,10 @@ export interface LabelColor {
   backgroundColor?: string;
 }
 
-export const LabelColor: Schema.Schema<LabelColor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      textColor: Schema.optional(Schema.String),
-      backgroundColor: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "LabelColor" }) as any as Schema.Schema<LabelColor>;
+export const LabelColor = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  textColor: Schema.optional(Schema.String),
+  backgroundColor: Schema.optional(Schema.String),
+}).annotate({ identifier: "LabelColor" });
 
 export interface Label {
   /** The visibility of the label in the label list in the Gmail web interface. */
@@ -427,35 +361,27 @@ export interface Label {
   messagesTotal?: number;
 }
 
-export const Label: Schema.Schema<Label> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labelListVisibility: Schema.optional(Schema.String),
-      messagesUnread: Schema.optional(Schema.Number),
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      threadsTotal: Schema.optional(Schema.Number),
-      threadsUnread: Schema.optional(Schema.Number),
-      messageListVisibility: Schema.optional(Schema.String),
-      color: Schema.optional(LabelColor),
-      id: Schema.optional(Schema.String),
-      messagesTotal: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Label" }) as any as Schema.Schema<Label>;
+export const Label = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  labelListVisibility: Schema.optional(Schema.String),
+  messagesUnread: Schema.optional(Schema.Number),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  threadsTotal: Schema.optional(Schema.Number),
+  threadsUnread: Schema.optional(Schema.Number),
+  messageListVisibility: Schema.optional(Schema.String),
+  color: Schema.optional(LabelColor),
+  id: Schema.optional(Schema.String),
+  messagesTotal: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Label" });
 
 export interface ListLabelsResponse {
   /** List of labels. Note that each label resource only contains an `id`, `name`, `messageListVisibility`, `labelListVisibility`, and `type`. The [`labels.get`](https://developers.google.com/workspace/gmail/api/v1/reference/users/labels/get) method can fetch additional label details. */
   labels?: Array<Label>;
 }
 
-export const ListLabelsResponse: Schema.Schema<ListLabelsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labels: Schema.optional(Schema.Array(Label)),
-    }),
-  ).annotate({
-    identifier: "ListLabelsResponse",
-  }) as any as Schema.Schema<ListLabelsResponse>;
+export const ListLabelsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  labels: Schema.optional(Schema.Array(Label)),
+}).annotate({ identifier: "ListLabelsResponse" });
 
 export interface VacationSettings {
   /** Response body in plain text format. If both `response_body_plain_text` and `response_body_html` are specified, `response_body_html` will be used. */
@@ -476,35 +402,25 @@ export interface VacationSettings {
   endTime?: string;
 }
 
-export const VacationSettings: Schema.Schema<VacationSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      responseBodyPlainText: Schema.optional(Schema.String),
-      responseBodyHtml: Schema.optional(Schema.String),
-      restrictToContacts: Schema.optional(Schema.Boolean),
-      restrictToDomain: Schema.optional(Schema.Boolean),
-      enableAutoReply: Schema.optional(Schema.Boolean),
-      responseSubject: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VacationSettings",
-  }) as any as Schema.Schema<VacationSettings>;
+export const VacationSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  responseBodyPlainText: Schema.optional(Schema.String),
+  responseBodyHtml: Schema.optional(Schema.String),
+  restrictToContacts: Schema.optional(Schema.Boolean),
+  restrictToDomain: Schema.optional(Schema.Boolean),
+  enableAutoReply: Schema.optional(Schema.Boolean),
+  responseSubject: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "VacationSettings" });
 
 export interface ListSmimeInfoResponse {
   /** List of SmimeInfo. */
   smimeInfo?: Array<SmimeInfo>;
 }
 
-export const ListSmimeInfoResponse: Schema.Schema<ListSmimeInfoResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      smimeInfo: Schema.optional(Schema.Array(SmimeInfo)),
-    }),
-  ).annotate({
-    identifier: "ListSmimeInfoResponse",
-  }) as any as Schema.Schema<ListSmimeInfoResponse>;
+export const ListSmimeInfoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  smimeInfo: Schema.optional(Schema.Array(SmimeInfo)),
+}).annotate({ identifier: "ListSmimeInfoResponse" });
 
 export interface FilterAction {
   /** List of labels to add to the message. */
@@ -515,16 +431,11 @@ export interface FilterAction {
   forward?: string;
 }
 
-export const FilterAction: Schema.Schema<FilterAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      addLabelIds: Schema.optional(Schema.Array(Schema.String)),
-      removeLabelIds: Schema.optional(Schema.Array(Schema.String)),
-      forward: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FilterAction",
-  }) as any as Schema.Schema<FilterAction>;
+export const FilterAction = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  addLabelIds: Schema.optional(Schema.Array(Schema.String)),
+  removeLabelIds: Schema.optional(Schema.Array(Schema.String)),
+  forward: Schema.optional(Schema.String),
+}).annotate({ identifier: "FilterAction" });
 
 export interface FilterCriteria {
   /** Only return messages matching the specified query. Supports the same query format as the Gmail search box. For example, `"from:someuser@example.com rfc822msgid: is:unread"`. */
@@ -547,22 +458,17 @@ export interface FilterCriteria {
   excludeChats?: boolean;
 }
 
-export const FilterCriteria: Schema.Schema<FilterCriteria> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      query: Schema.optional(Schema.String),
-      to: Schema.optional(Schema.String),
-      sizeComparison: Schema.optional(Schema.String),
-      size: Schema.optional(Schema.Number),
-      from: Schema.optional(Schema.String),
-      subject: Schema.optional(Schema.String),
-      negatedQuery: Schema.optional(Schema.String),
-      hasAttachment: Schema.optional(Schema.Boolean),
-      excludeChats: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "FilterCriteria",
-  }) as any as Schema.Schema<FilterCriteria>;
+export const FilterCriteria = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  query: Schema.optional(Schema.String),
+  to: Schema.optional(Schema.String),
+  sizeComparison: Schema.optional(Schema.String),
+  size: Schema.optional(Schema.Number),
+  from: Schema.optional(Schema.String),
+  subject: Schema.optional(Schema.String),
+  negatedQuery: Schema.optional(Schema.String),
+  hasAttachment: Schema.optional(Schema.Boolean),
+  excludeChats: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "FilterCriteria" });
 
 export interface Filter {
   /** Action that the filter performs. */
@@ -573,27 +479,19 @@ export interface Filter {
   criteria?: FilterCriteria;
 }
 
-export const Filter: Schema.Schema<Filter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      action: Schema.optional(FilterAction),
-      id: Schema.optional(Schema.String),
-      criteria: Schema.optional(FilterCriteria),
-    }),
-  ).annotate({ identifier: "Filter" }) as any as Schema.Schema<Filter>;
+export const Filter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  action: Schema.optional(FilterAction),
+  id: Schema.optional(Schema.String),
+  criteria: Schema.optional(FilterCriteria),
+}).annotate({ identifier: "Filter" });
 
 export interface HistoryMessageAdded {
   message?: Message;
 }
 
-export const HistoryMessageAdded: Schema.Schema<HistoryMessageAdded> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      message: Schema.optional(Message),
-    }),
-  ).annotate({
-    identifier: "HistoryMessageAdded",
-  }) as any as Schema.Schema<HistoryMessageAdded>;
+export const HistoryMessageAdded = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  message: Schema.optional(Message),
+}).annotate({ identifier: "HistoryMessageAdded" });
 
 export interface ForwardingAddress {
   /** Indicates whether this address has been verified and is usable for forwarding. Read-only. */
@@ -606,29 +504,20 @@ export interface ForwardingAddress {
   forwardingEmail?: string;
 }
 
-export const ForwardingAddress: Schema.Schema<ForwardingAddress> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      verificationStatus: Schema.optional(Schema.String),
-      forwardingEmail: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ForwardingAddress",
-  }) as any as Schema.Schema<ForwardingAddress>;
+export const ForwardingAddress = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  verificationStatus: Schema.optional(Schema.String),
+  forwardingEmail: Schema.optional(Schema.String),
+}).annotate({ identifier: "ForwardingAddress" });
 
 export interface ListForwardingAddressesResponse {
   /** List of addresses that may be used for forwarding. */
   forwardingAddresses?: Array<ForwardingAddress>;
 }
 
-export const ListForwardingAddressesResponse: Schema.Schema<ListForwardingAddressesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      forwardingAddresses: Schema.optional(Schema.Array(ForwardingAddress)),
-    }),
-  ).annotate({
-    identifier: "ListForwardingAddressesResponse",
-  }) as any as Schema.Schema<ListForwardingAddressesResponse>;
+export const ListForwardingAddressesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    forwardingAddresses: Schema.optional(Schema.Array(ForwardingAddress)),
+  }).annotate({ identifier: "ListForwardingAddressesResponse" });
 
 export interface WatchResponse {
   /** The ID of the mailbox's current history record. */
@@ -637,15 +526,10 @@ export interface WatchResponse {
   expiration?: string;
 }
 
-export const WatchResponse: Schema.Schema<WatchResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      historyId: Schema.optional(Schema.String),
-      expiration: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WatchResponse",
-  }) as any as Schema.Schema<WatchResponse>;
+export const WatchResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  historyId: Schema.optional(Schema.String),
+  expiration: Schema.optional(Schema.String),
+}).annotate({ identifier: "WatchResponse" });
 
 export interface AutoForwarding {
   /** The state that a message should be left in after it has been forwarded. */
@@ -662,16 +546,11 @@ export interface AutoForwarding {
   emailAddress?: string;
 }
 
-export const AutoForwarding: Schema.Schema<AutoForwarding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      disposition: Schema.optional(Schema.String),
-      enabled: Schema.optional(Schema.Boolean),
-      emailAddress: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AutoForwarding",
-  }) as any as Schema.Schema<AutoForwarding>;
+export const AutoForwarding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  disposition: Schema.optional(Schema.String),
+  enabled: Schema.optional(Schema.Boolean),
+  emailAddress: Schema.optional(Schema.String),
+}).annotate({ identifier: "AutoForwarding" });
 
 export interface Draft {
   /** The immutable ID of the draft. */
@@ -680,13 +559,10 @@ export interface Draft {
   message?: Message;
 }
 
-export const Draft: Schema.Schema<Draft> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      message: Schema.optional(Message),
-    }),
-  ).annotate({ identifier: "Draft" }) as any as Schema.Schema<Draft>;
+export const Draft = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  message: Schema.optional(Message),
+}).annotate({ identifier: "Draft" });
 
 export interface ListMessagesResponse {
   /** Token to retrieve the next page of results in the list. */
@@ -697,16 +573,11 @@ export interface ListMessagesResponse {
   resultSizeEstimate?: number;
 }
 
-export const ListMessagesResponse: Schema.Schema<ListMessagesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      messages: Schema.optional(Schema.Array(Message)),
-      resultSizeEstimate: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "ListMessagesResponse",
-  }) as any as Schema.Schema<ListMessagesResponse>;
+export const ListMessagesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  messages: Schema.optional(Schema.Array(Message)),
+  resultSizeEstimate: Schema.optional(Schema.Number),
+}).annotate({ identifier: "ListMessagesResponse" });
 
 export interface SmtpMsa {
   /** The port of the SMTP service. Required. */
@@ -726,16 +597,13 @@ export interface SmtpMsa {
   host?: string;
 }
 
-export const SmtpMsa: Schema.Schema<SmtpMsa> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      port: Schema.optional(Schema.Number),
-      securityMode: Schema.optional(Schema.String),
-      username: Schema.optional(Schema.String),
-      password: Schema.optional(Schema.String),
-      host: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "SmtpMsa" }) as any as Schema.Schema<SmtpMsa>;
+export const SmtpMsa = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  port: Schema.optional(Schema.Number),
+  securityMode: Schema.optional(Schema.String),
+  username: Schema.optional(Schema.String),
+  password: Schema.optional(Schema.String),
+  host: Schema.optional(Schema.String),
+}).annotate({ identifier: "SmtpMsa" });
 
 export interface SendAs {
   /** The email address that appears in the "From:" header for mail sent using this alias. This is read-only for all operations except create. */
@@ -762,41 +630,33 @@ export interface SendAs {
   isPrimary?: boolean;
 }
 
-export const SendAs: Schema.Schema<SendAs> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sendAsEmail: Schema.optional(Schema.String),
-      replyToAddress: Schema.optional(Schema.String),
-      smtpMsa: Schema.optional(SmtpMsa),
-      isDefault: Schema.optional(Schema.Boolean),
-      verificationStatus: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      signature: Schema.optional(Schema.String),
-      treatAsAlias: Schema.optional(Schema.Boolean),
-      isPrimary: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "SendAs" }) as any as Schema.Schema<SendAs>;
+export const SendAs = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sendAsEmail: Schema.optional(Schema.String),
+  replyToAddress: Schema.optional(Schema.String),
+  smtpMsa: Schema.optional(SmtpMsa),
+  isDefault: Schema.optional(Schema.Boolean),
+  verificationStatus: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  signature: Schema.optional(Schema.String),
+  treatAsAlias: Schema.optional(Schema.Boolean),
+  isPrimary: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "SendAs" });
 
 export interface ListSendAsResponse {
   /** List of send-as aliases. */
   sendAs?: Array<SendAs>;
 }
 
-export const ListSendAsResponse: Schema.Schema<ListSendAsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sendAs: Schema.optional(Schema.Array(SendAs)),
-    }),
-  ).annotate({
-    identifier: "ListSendAsResponse",
-  }) as any as Schema.Schema<ListSendAsResponse>;
+export const ListSendAsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sendAs: Schema.optional(Schema.Array(SendAs)),
+}).annotate({ identifier: "ListSendAsResponse" });
 
 export interface DisableCseKeyPairRequest {}
 
-export const DisableCseKeyPairRequest: Schema.Schema<DisableCseKeyPairRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const DisableCseKeyPairRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DisableCseKeyPairRequest",
-  }) as any as Schema.Schema<DisableCseKeyPairRequest>;
+  });
 
 export interface PopSettings {
   /** The range of messages which are accessible via POP. */
@@ -816,29 +676,19 @@ export interface PopSettings {
     | (string & {});
 }
 
-export const PopSettings: Schema.Schema<PopSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accessWindow: Schema.optional(Schema.String),
-      disposition: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PopSettings",
-  }) as any as Schema.Schema<PopSettings>;
+export const PopSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  accessWindow: Schema.optional(Schema.String),
+  disposition: Schema.optional(Schema.String),
+}).annotate({ identifier: "PopSettings" });
 
 export interface LanguageSettings {
   /** The language to display Gmail in, formatted as an RFC 3066 Language Tag (for example `en-GB`, `fr` or `ja` for British English, French, or Japanese respectively). The set of languages supported by Gmail evolves over time, so please refer to the "Language" dropdown in the Gmail settings for all available options, as described in the language settings help article. For a table of sample values, see [Manage language settings](https://developers.google.com/workspace/gmail/api/guides/language-settings). Not all Gmail clients can display the same set of languages. In the case that a user's display language is not available for use on a particular client, said client automatically chooses to display in the closest supported variant (or a reasonable default). */
   displayLanguage?: string;
 }
 
-export const LanguageSettings: Schema.Schema<LanguageSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayLanguage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LanguageSettings",
-  }) as any as Schema.Schema<LanguageSettings>;
+export const LanguageSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayLanguage: Schema.optional(Schema.String),
+}).annotate({ identifier: "LanguageSettings" });
 
 export interface HistoryLabelRemoved {
   message?: Message;
@@ -846,15 +696,10 @@ export interface HistoryLabelRemoved {
   labelIds?: Array<string>;
 }
 
-export const HistoryLabelRemoved: Schema.Schema<HistoryLabelRemoved> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      message: Schema.optional(Message),
-      labelIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "HistoryLabelRemoved",
-  }) as any as Schema.Schema<HistoryLabelRemoved>;
+export const HistoryLabelRemoved = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  message: Schema.optional(Message),
+  labelIds: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "HistoryLabelRemoved" });
 
 export interface HistoryLabelAdded {
   message?: Message;
@@ -862,28 +707,18 @@ export interface HistoryLabelAdded {
   labelIds?: Array<string>;
 }
 
-export const HistoryLabelAdded: Schema.Schema<HistoryLabelAdded> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      message: Schema.optional(Message),
-      labelIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "HistoryLabelAdded",
-  }) as any as Schema.Schema<HistoryLabelAdded>;
+export const HistoryLabelAdded = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  message: Schema.optional(Message),
+  labelIds: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "HistoryLabelAdded" });
 
 export interface HistoryMessageDeleted {
   message?: Message;
 }
 
-export const HistoryMessageDeleted: Schema.Schema<HistoryMessageDeleted> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      message: Schema.optional(Message),
-    }),
-  ).annotate({
-    identifier: "HistoryMessageDeleted",
-  }) as any as Schema.Schema<HistoryMessageDeleted>;
+export const HistoryMessageDeleted = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  message: Schema.optional(Message),
+}).annotate({ identifier: "HistoryMessageDeleted" });
 
 export interface History {
   /** Labels removed from messages in this history record. */
@@ -900,17 +735,14 @@ export interface History {
   messagesDeleted?: Array<HistoryMessageDeleted>;
 }
 
-export const History: Schema.Schema<History> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labelsRemoved: Schema.optional(Schema.Array(HistoryLabelRemoved)),
-      messagesAdded: Schema.optional(Schema.Array(HistoryMessageAdded)),
-      messages: Schema.optional(Schema.Array(Message)),
-      id: Schema.optional(Schema.String),
-      labelsAdded: Schema.optional(Schema.Array(HistoryLabelAdded)),
-      messagesDeleted: Schema.optional(Schema.Array(HistoryMessageDeleted)),
-    }),
-  ).annotate({ identifier: "History" }) as any as Schema.Schema<History>;
+export const History = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  labelsRemoved: Schema.optional(Schema.Array(HistoryLabelRemoved)),
+  messagesAdded: Schema.optional(Schema.Array(HistoryMessageAdded)),
+  messages: Schema.optional(Schema.Array(Message)),
+  id: Schema.optional(Schema.String),
+  labelsAdded: Schema.optional(Schema.Array(HistoryLabelAdded)),
+  messagesDeleted: Schema.optional(Schema.Array(HistoryMessageDeleted)),
+}).annotate({ identifier: "History" });
 
 export interface ListHistoryResponse {
   /** List of history records. Any `messages` contained in the response will typically only have `id` and `threadId` fields populated. */
@@ -921,16 +753,11 @@ export interface ListHistoryResponse {
   historyId?: string;
 }
 
-export const ListHistoryResponse: Schema.Schema<ListHistoryResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      history: Schema.optional(Schema.Array(History)),
-      nextPageToken: Schema.optional(Schema.String),
-      historyId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListHistoryResponse",
-  }) as any as Schema.Schema<ListHistoryResponse>;
+export const ListHistoryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  history: Schema.optional(Schema.Array(History)),
+  nextPageToken: Schema.optional(Schema.String),
+  historyId: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListHistoryResponse" });
 
 export interface ModifyMessageRequest {
   /** A list of IDs of labels to add to this message. You can add up to 100 labels with each update. */
@@ -939,22 +766,17 @@ export interface ModifyMessageRequest {
   removeLabelIds?: Array<string>;
 }
 
-export const ModifyMessageRequest: Schema.Schema<ModifyMessageRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      addLabelIds: Schema.optional(Schema.Array(Schema.String)),
-      removeLabelIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ModifyMessageRequest",
-  }) as any as Schema.Schema<ModifyMessageRequest>;
+export const ModifyMessageRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  addLabelIds: Schema.optional(Schema.Array(Schema.String)),
+  removeLabelIds: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ModifyMessageRequest" });
 
 export interface ObliterateCseKeyPairRequest {}
 
-export const ObliterateCseKeyPairRequest: Schema.Schema<ObliterateCseKeyPairRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const ObliterateCseKeyPairRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ObliterateCseKeyPairRequest",
-  }) as any as Schema.Schema<ObliterateCseKeyPairRequest>;
+  });
 
 export interface CseIdentity {
   /** The email address for the sending identity. The email address must be the primary email address of the authenticated user. */
@@ -965,16 +787,11 @@ export interface CseIdentity {
   primaryKeyPairId?: string;
 }
 
-export const CseIdentity: Schema.Schema<CseIdentity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      emailAddress: Schema.optional(Schema.String),
-      signAndEncryptKeyPairs: Schema.optional(SignAndEncryptKeyPairs),
-      primaryKeyPairId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CseIdentity",
-  }) as any as Schema.Schema<CseIdentity>;
+export const CseIdentity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  emailAddress: Schema.optional(Schema.String),
+  signAndEncryptKeyPairs: Schema.optional(SignAndEncryptKeyPairs),
+  primaryKeyPairId: Schema.optional(Schema.String),
+}).annotate({ identifier: "CseIdentity" });
 
 export interface ListCseIdentitiesResponse {
   /** One page of the list of CSE identities configured for the user. */
@@ -983,15 +800,11 @@ export interface ListCseIdentitiesResponse {
   nextPageToken?: string;
 }
 
-export const ListCseIdentitiesResponse: Schema.Schema<ListCseIdentitiesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cseIdentities: Schema.optional(Schema.Array(CseIdentity)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListCseIdentitiesResponse",
-  }) as any as Schema.Schema<ListCseIdentitiesResponse>;
+export const ListCseIdentitiesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cseIdentities: Schema.optional(Schema.Array(CseIdentity)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListCseIdentitiesResponse" });
 
 export interface ListDraftsResponse {
   /** Estimated total number of results. */
@@ -1002,16 +815,11 @@ export interface ListDraftsResponse {
   nextPageToken?: string;
 }
 
-export const ListDraftsResponse: Schema.Schema<ListDraftsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resultSizeEstimate: Schema.optional(Schema.Number),
-      drafts: Schema.optional(Schema.Array(Draft)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListDraftsResponse",
-  }) as any as Schema.Schema<ListDraftsResponse>;
+export const ListDraftsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resultSizeEstimate: Schema.optional(Schema.Number),
+  drafts: Schema.optional(Schema.Array(Draft)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListDraftsResponse" });
 
 export interface BatchModifyMessagesRequest {
   /** A list of label IDs to add to messages. */
@@ -1022,16 +830,12 @@ export interface BatchModifyMessagesRequest {
   ids?: Array<string>;
 }
 
-export const BatchModifyMessagesRequest: Schema.Schema<BatchModifyMessagesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      addLabelIds: Schema.optional(Schema.Array(Schema.String)),
-      removeLabelIds: Schema.optional(Schema.Array(Schema.String)),
-      ids: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "BatchModifyMessagesRequest",
-  }) as any as Schema.Schema<BatchModifyMessagesRequest>;
+export const BatchModifyMessagesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    addLabelIds: Schema.optional(Schema.Array(Schema.String)),
+    removeLabelIds: Schema.optional(Schema.Array(Schema.String)),
+    ids: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "BatchModifyMessagesRequest" });
 
 export interface WatchRequest {
   /** A fully qualified Google Cloud Pub/Sub API topic name to publish the events to. This topic name **must** already exist in Cloud Pub/Sub and you **must** have already granted gmail "publish" permission on it. For example, "projects/my-project-identifier/topics/my-topic-name" (using the Cloud Pub/Sub "v1" topic naming format). Note that the "my-project-identifier" portion must exactly match your Google developer project id (the one executing this watch request). */
@@ -1044,17 +848,12 @@ export interface WatchRequest {
   labelFilterAction?: "include" | "exclude" | (string & {});
 }
 
-export const WatchRequest: Schema.Schema<WatchRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      topicName: Schema.optional(Schema.String),
-      labelFilterBehavior: Schema.optional(Schema.String),
-      labelIds: Schema.optional(Schema.Array(Schema.String)),
-      labelFilterAction: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WatchRequest",
-  }) as any as Schema.Schema<WatchRequest>;
+export const WatchRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  topicName: Schema.optional(Schema.String),
+  labelFilterBehavior: Schema.optional(Schema.String),
+  labelIds: Schema.optional(Schema.Array(Schema.String)),
+  labelFilterAction: Schema.optional(Schema.String),
+}).annotate({ identifier: "WatchRequest" });
 
 export interface ListThreadsResponse {
   /** Page token to retrieve the next page of results in the list. */
@@ -1065,37 +864,28 @@ export interface ListThreadsResponse {
   threads?: Array<Thread>;
 }
 
-export const ListThreadsResponse: Schema.Schema<ListThreadsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      resultSizeEstimate: Schema.optional(Schema.Number),
-      threads: Schema.optional(Schema.Array(Thread)),
-    }),
-  ).annotate({
-    identifier: "ListThreadsResponse",
-  }) as any as Schema.Schema<ListThreadsResponse>;
+export const ListThreadsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  resultSizeEstimate: Schema.optional(Schema.Number),
+  threads: Schema.optional(Schema.Array(Thread)),
+}).annotate({ identifier: "ListThreadsResponse" });
 
 export interface BatchDeleteMessagesRequest {
   /** The IDs of the messages to delete. */
   ids?: Array<string>;
 }
 
-export const BatchDeleteMessagesRequest: Schema.Schema<BatchDeleteMessagesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ids: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "BatchDeleteMessagesRequest",
-  }) as any as Schema.Schema<BatchDeleteMessagesRequest>;
+export const BatchDeleteMessagesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ids: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "BatchDeleteMessagesRequest" });
 
 export interface EnableCseKeyPairRequest {}
 
-export const EnableCseKeyPairRequest: Schema.Schema<EnableCseKeyPairRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const EnableCseKeyPairRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "EnableCseKeyPairRequest",
-  }) as any as Schema.Schema<EnableCseKeyPairRequest>;
+  });
 
 export interface ModifyThreadRequest {
   /** A list of IDs of labels to add to this thread. You can add up to 100 labels with each update. */
@@ -1104,29 +894,19 @@ export interface ModifyThreadRequest {
   removeLabelIds?: Array<string>;
 }
 
-export const ModifyThreadRequest: Schema.Schema<ModifyThreadRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      addLabelIds: Schema.optional(Schema.Array(Schema.String)),
-      removeLabelIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ModifyThreadRequest",
-  }) as any as Schema.Schema<ModifyThreadRequest>;
+export const ModifyThreadRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  addLabelIds: Schema.optional(Schema.Array(Schema.String)),
+  removeLabelIds: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ModifyThreadRequest" });
 
 export interface ListFiltersResponse {
   /** List of a user's filters. */
   filter?: Array<Filter>;
 }
 
-export const ListFiltersResponse: Schema.Schema<ListFiltersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filter: Schema.optional(Schema.Array(Filter)),
-    }),
-  ).annotate({
-    identifier: "ListFiltersResponse",
-  }) as any as Schema.Schema<ListFiltersResponse>;
+export const ListFiltersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  filter: Schema.optional(Schema.Array(Filter)),
+}).annotate({ identifier: "ListFiltersResponse" });
 
 export interface ImapSettings {
   /** The action that will be executed on a message when it is marked as deleted and expunged from the last visible IMAP folder. */
@@ -1144,17 +924,12 @@ export interface ImapSettings {
   autoExpunge?: boolean;
 }
 
-export const ImapSettings: Schema.Schema<ImapSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expungeBehavior: Schema.optional(Schema.String),
-      maxFolderSize: Schema.optional(Schema.Number),
-      enabled: Schema.optional(Schema.Boolean),
-      autoExpunge: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ImapSettings",
-  }) as any as Schema.Schema<ImapSettings>;
+export const ImapSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  expungeBehavior: Schema.optional(Schema.String),
+  maxFolderSize: Schema.optional(Schema.Number),
+  enabled: Schema.optional(Schema.Boolean),
+  autoExpunge: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "ImapSettings" });
 
 // ==========================================================================
 // Operations

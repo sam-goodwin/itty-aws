@@ -33,17 +33,12 @@ export interface ApigatewayExpr {
   expression?: string;
 }
 
-export const ApigatewayExpr: Schema.Schema<ApigatewayExpr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      location: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      expression: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ApigatewayExpr",
-  }) as any as Schema.Schema<ApigatewayExpr>;
+export const ApigatewayExpr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  location: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  expression: Schema.optional(Schema.String),
+}).annotate({ identifier: "ApigatewayExpr" });
 
 export interface ApigatewayBinding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
@@ -54,16 +49,11 @@ export interface ApigatewayBinding {
   members?: Array<string>;
 }
 
-export const ApigatewayBinding: Schema.Schema<ApigatewayBinding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      role: Schema.optional(Schema.String),
-      condition: Schema.optional(ApigatewayExpr),
-      members: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ApigatewayBinding",
-  }) as any as Schema.Schema<ApigatewayBinding>;
+export const ApigatewayBinding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  role: Schema.optional(Schema.String),
+  condition: Schema.optional(ApigatewayExpr),
+  members: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ApigatewayBinding" });
 
 export interface ApigatewayAuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
@@ -77,15 +67,11 @@ export interface ApigatewayAuditLogConfig {
     | (string & {});
 }
 
-export const ApigatewayAuditLogConfig: Schema.Schema<ApigatewayAuditLogConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
-      logType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ApigatewayAuditLogConfig",
-  }) as any as Schema.Schema<ApigatewayAuditLogConfig>;
+export const ApigatewayAuditLogConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
+    logType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ApigatewayAuditLogConfig" });
 
 export interface ApigatewayAuditConfig {
   /** The configuration for logging of each type of permission. */
@@ -94,15 +80,10 @@ export interface ApigatewayAuditConfig {
   service?: string;
 }
 
-export const ApigatewayAuditConfig: Schema.Schema<ApigatewayAuditConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      auditLogConfigs: Schema.optional(Schema.Array(ApigatewayAuditLogConfig)),
-      service: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ApigatewayAuditConfig",
-  }) as any as Schema.Schema<ApigatewayAuditConfig>;
+export const ApigatewayAuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  auditLogConfigs: Schema.optional(Schema.Array(ApigatewayAuditLogConfig)),
+  service: Schema.optional(Schema.String),
+}).annotate({ identifier: "ApigatewayAuditConfig" });
 
 export interface ApigatewayPolicy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -115,17 +96,12 @@ export interface ApigatewayPolicy {
   etag?: string;
 }
 
-export const ApigatewayPolicy: Schema.Schema<ApigatewayPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.Number),
-      bindings: Schema.optional(Schema.Array(ApigatewayBinding)),
-      auditConfigs: Schema.optional(Schema.Array(ApigatewayAuditConfig)),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ApigatewayPolicy",
-  }) as any as Schema.Schema<ApigatewayPolicy>;
+export const ApigatewayPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.Number),
+  bindings: Schema.optional(Schema.Array(ApigatewayBinding)),
+  auditConfigs: Schema.optional(Schema.Array(ApigatewayAuditConfig)),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "ApigatewayPolicy" });
 
 export interface ApigatewaySetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
@@ -134,15 +110,11 @@ export interface ApigatewaySetIamPolicyRequest {
   updateMask?: string;
 }
 
-export const ApigatewaySetIamPolicyRequest: Schema.Schema<ApigatewaySetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policy: Schema.optional(ApigatewayPolicy),
-      updateMask: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ApigatewaySetIamPolicyRequest",
-  }) as any as Schema.Schema<ApigatewaySetIamPolicyRequest>;
+export const ApigatewaySetIamPolicyRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policy: Schema.optional(ApigatewayPolicy),
+    updateMask: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ApigatewaySetIamPolicyRequest" });
 
 export interface ApigatewayApiConfigFile {
   /** The file path (full or relative path). This is typically the path of the file when it is uploaded. */
@@ -151,15 +123,11 @@ export interface ApigatewayApiConfigFile {
   contents?: string;
 }
 
-export const ApigatewayApiConfigFile: Schema.Schema<ApigatewayApiConfigFile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      path: Schema.optional(Schema.String),
-      contents: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ApigatewayApiConfigFile",
-  }) as any as Schema.Schema<ApigatewayApiConfigFile>;
+export const ApigatewayApiConfigFile =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    path: Schema.optional(Schema.String),
+    contents: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ApigatewayApiConfigFile" });
 
 export interface ApigatewayApiConfigGrpcServiceDefinition {
   /** Optional. Uncompiled proto files associated with the descriptor set, used for display purposes (server-side compilation is not supported). These should match the inputs to 'protoc' command used to generate file_descriptor_set. */
@@ -168,57 +136,41 @@ export interface ApigatewayApiConfigGrpcServiceDefinition {
   fileDescriptorSet?: ApigatewayApiConfigFile;
 }
 
-export const ApigatewayApiConfigGrpcServiceDefinition: Schema.Schema<ApigatewayApiConfigGrpcServiceDefinition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      source: Schema.optional(Schema.Array(ApigatewayApiConfigFile)),
-      fileDescriptorSet: Schema.optional(ApigatewayApiConfigFile),
-    }),
-  ).annotate({
-    identifier: "ApigatewayApiConfigGrpcServiceDefinition",
-  }) as any as Schema.Schema<ApigatewayApiConfigGrpcServiceDefinition>;
+export const ApigatewayApiConfigGrpcServiceDefinition =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    source: Schema.optional(Schema.Array(ApigatewayApiConfigFile)),
+    fileDescriptorSet: Schema.optional(ApigatewayApiConfigFile),
+  }).annotate({ identifier: "ApigatewayApiConfigGrpcServiceDefinition" });
 
 export interface ApigatewayApiConfigOpenApiDocument {
   /** The OpenAPI Specification document file. */
   document?: ApigatewayApiConfigFile;
 }
 
-export const ApigatewayApiConfigOpenApiDocument: Schema.Schema<ApigatewayApiConfigOpenApiDocument> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      document: Schema.optional(ApigatewayApiConfigFile),
-    }),
-  ).annotate({
-    identifier: "ApigatewayApiConfigOpenApiDocument",
-  }) as any as Schema.Schema<ApigatewayApiConfigOpenApiDocument>;
+export const ApigatewayApiConfigOpenApiDocument =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    document: Schema.optional(ApigatewayApiConfigFile),
+  }).annotate({ identifier: "ApigatewayApiConfigOpenApiDocument" });
 
 export interface ApigatewayBackendConfig {
   /** Google Cloud IAM service account used to sign OIDC tokens for backends that have authentication configured (https://cloud.google.com/service-infrastructure/docs/service-management/reference/rest/v1/services.configs#backend). This may either be the Service Account's email (i.e. "{ACCOUNT_ID}@{PROJECT}.iam.gserviceaccount.com") or its full resource name (i.e. "projects/{PROJECT}/accounts/{UNIQUE_ID}"). This is most often used when the backend is a GCP resource such as a Cloud Run Service or an IAP-secured service. Note that this token is always sent as an authorization header bearer token. The audience of the OIDC token is configured in the associated Service Config in the BackendRule option (https://github.com/googleapis/googleapis/blob/master/google/api/backend.proto#L125). */
   googleServiceAccount?: string;
 }
 
-export const ApigatewayBackendConfig: Schema.Schema<ApigatewayBackendConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      googleServiceAccount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ApigatewayBackendConfig",
-  }) as any as Schema.Schema<ApigatewayBackendConfig>;
+export const ApigatewayBackendConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    googleServiceAccount: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ApigatewayBackendConfig" });
 
 export interface ApigatewayGatewayConfig {
   /** Required. Backend settings that are applied to all backends of the Gateway. */
   backendConfig?: ApigatewayBackendConfig;
 }
 
-export const ApigatewayGatewayConfig: Schema.Schema<ApigatewayGatewayConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      backendConfig: Schema.optional(ApigatewayBackendConfig),
-    }),
-  ).annotate({
-    identifier: "ApigatewayGatewayConfig",
-  }) as any as Schema.Schema<ApigatewayGatewayConfig>;
+export const ApigatewayGatewayConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    backendConfig: Schema.optional(ApigatewayBackendConfig),
+  }).annotate({ identifier: "ApigatewayGatewayConfig" });
 
 export interface ApigatewayApiConfig {
   /** Optional. Display name. */
@@ -255,38 +207,31 @@ export interface ApigatewayApiConfig {
     | (string & {});
 }
 
-export const ApigatewayApiConfig: Schema.Schema<ApigatewayApiConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      serviceConfigId: Schema.optional(Schema.String),
-      grpcServices: Schema.optional(
-        Schema.Array(ApigatewayApiConfigGrpcServiceDefinition),
-      ),
-      updateTime: Schema.optional(Schema.String),
-      managedServiceConfigs: Schema.optional(
-        Schema.Array(ApigatewayApiConfigFile),
-      ),
-      createTime: Schema.optional(Schema.String),
-      openapiDocuments: Schema.optional(
-        Schema.Array(ApigatewayApiConfigOpenApiDocument),
-      ),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      name: Schema.optional(Schema.String),
-      gatewayConfig: Schema.optional(ApigatewayGatewayConfig),
-      gatewayServiceAccount: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ApigatewayApiConfig",
-  }) as any as Schema.Schema<ApigatewayApiConfig>;
+export const ApigatewayApiConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+  serviceConfigId: Schema.optional(Schema.String),
+  grpcServices: Schema.optional(
+    Schema.Array(ApigatewayApiConfigGrpcServiceDefinition),
+  ),
+  updateTime: Schema.optional(Schema.String),
+  managedServiceConfigs: Schema.optional(Schema.Array(ApigatewayApiConfigFile)),
+  createTime: Schema.optional(Schema.String),
+  openapiDocuments: Schema.optional(
+    Schema.Array(ApigatewayApiConfigOpenApiDocument),
+  ),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  name: Schema.optional(Schema.String),
+  gatewayConfig: Schema.optional(ApigatewayGatewayConfig),
+  gatewayServiceAccount: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+}).annotate({ identifier: "ApigatewayApiConfig" });
 
 export interface ApigatewayCancelOperationRequest {}
 
-export const ApigatewayCancelOperationRequest: Schema.Schema<ApigatewayCancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const ApigatewayCancelOperationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ApigatewayCancelOperationRequest",
-  }) as any as Schema.Schema<ApigatewayCancelOperationRequest>;
+  });
 
 export interface ApigatewayStatus {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -297,18 +242,13 @@ export interface ApigatewayStatus {
   details?: Array<Record<string, unknown>>;
 }
 
-export const ApigatewayStatus: Schema.Schema<ApigatewayStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({
-    identifier: "ApigatewayStatus",
-  }) as any as Schema.Schema<ApigatewayStatus>;
+export const ApigatewayStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "ApigatewayStatus" });
 
 export interface ApigatewayGateway {
   /** Output only. Updated time. */
@@ -336,21 +276,16 @@ export interface ApigatewayGateway {
   displayName?: string;
 }
 
-export const ApigatewayGateway: Schema.Schema<ApigatewayGateway> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      defaultHostname: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      apiConfig: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ApigatewayGateway",
-  }) as any as Schema.Schema<ApigatewayGateway>;
+export const ApigatewayGateway = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  updateTime: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  defaultHostname: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  apiConfig: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+}).annotate({ identifier: "ApigatewayGateway" });
 
 export interface ApigatewayApi {
   /** Output only. Created time. */
@@ -376,20 +311,15 @@ export interface ApigatewayApi {
   displayName?: string;
 }
 
-export const ApigatewayApi: Schema.Schema<ApigatewayApi> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      name: Schema.optional(Schema.String),
-      managedService: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ApigatewayApi",
-  }) as any as Schema.Schema<ApigatewayApi>;
+export const ApigatewayApi = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createTime: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  name: Schema.optional(Schema.String),
+  managedService: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+}).annotate({ identifier: "ApigatewayApi" });
 
 export interface ApigatewayListApiConfigsResponse {
   /** API Configs. */
@@ -400,16 +330,12 @@ export interface ApigatewayListApiConfigsResponse {
   unreachableLocations?: Array<string>;
 }
 
-export const ApigatewayListApiConfigsResponse: Schema.Schema<ApigatewayListApiConfigsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      apiConfigs: Schema.optional(Schema.Array(ApigatewayApiConfig)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachableLocations: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ApigatewayListApiConfigsResponse",
-  }) as any as Schema.Schema<ApigatewayListApiConfigsResponse>;
+export const ApigatewayListApiConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apiConfigs: Schema.optional(Schema.Array(ApigatewayApiConfig)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachableLocations: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ApigatewayListApiConfigsResponse" });
 
 export interface ApigatewayOperation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
@@ -424,18 +350,13 @@ export interface ApigatewayOperation {
   done?: boolean;
 }
 
-export const ApigatewayOperation: Schema.Schema<ApigatewayOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      error: Schema.optional(ApigatewayStatus),
-      name: Schema.optional(Schema.String),
-      done: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ApigatewayOperation",
-  }) as any as Schema.Schema<ApigatewayOperation>;
+export const ApigatewayOperation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  error: Schema.optional(ApigatewayStatus),
+  name: Schema.optional(Schema.String),
+  done: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "ApigatewayOperation" });
 
 export interface ApigatewayLocation {
   /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
@@ -450,18 +371,13 @@ export interface ApigatewayLocation {
   metadata?: Record<string, unknown>;
 }
 
-export const ApigatewayLocation: Schema.Schema<ApigatewayLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      locationId: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
-    identifier: "ApigatewayLocation",
-  }) as any as Schema.Schema<ApigatewayLocation>;
+export const ApigatewayLocation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  locationId: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "ApigatewayLocation" });
 
 export interface ApigatewayListGatewaysResponse {
   /** Next page token. */
@@ -472,16 +388,12 @@ export interface ApigatewayListGatewaysResponse {
   gateways?: Array<ApigatewayGateway>;
 }
 
-export const ApigatewayListGatewaysResponse: Schema.Schema<ApigatewayListGatewaysResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      unreachableLocations: Schema.optional(Schema.Array(Schema.String)),
-      gateways: Schema.optional(Schema.Array(ApigatewayGateway)),
-    }),
-  ).annotate({
-    identifier: "ApigatewayListGatewaysResponse",
-  }) as any as Schema.Schema<ApigatewayListGatewaysResponse>;
+export const ApigatewayListGatewaysResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    unreachableLocations: Schema.optional(Schema.Array(Schema.String)),
+    gateways: Schema.optional(Schema.Array(ApigatewayGateway)),
+  }).annotate({ identifier: "ApigatewayListGatewaysResponse" });
 
 export interface ApigatewayListApisResponse {
   /** APIs. */
@@ -492,37 +404,28 @@ export interface ApigatewayListApisResponse {
   unreachableLocations?: Array<string>;
 }
 
-export const ApigatewayListApisResponse: Schema.Schema<ApigatewayListApisResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      apis: Schema.optional(Schema.Array(ApigatewayApi)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachableLocations: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ApigatewayListApisResponse",
-  }) as any as Schema.Schema<ApigatewayListApisResponse>;
+export const ApigatewayListApisResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apis: Schema.optional(Schema.Array(ApigatewayApi)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachableLocations: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ApigatewayListApisResponse" });
 
 export interface ApigatewayTestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: Array<string>;
 }
 
-export const ApigatewayTestIamPermissionsResponse: Schema.Schema<ApigatewayTestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ApigatewayTestIamPermissionsResponse",
-  }) as any as Schema.Schema<ApigatewayTestIamPermissionsResponse>;
+export const ApigatewayTestIamPermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ApigatewayTestIamPermissionsResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface ApigatewayOperationMetadataDiagnostic {
   /** Location of the diagnostic. */
@@ -531,15 +434,11 @@ export interface ApigatewayOperationMetadataDiagnostic {
   message?: string;
 }
 
-export const ApigatewayOperationMetadataDiagnostic: Schema.Schema<ApigatewayOperationMetadataDiagnostic> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      location: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ApigatewayOperationMetadataDiagnostic",
-  }) as any as Schema.Schema<ApigatewayOperationMetadataDiagnostic>;
+export const ApigatewayOperationMetadataDiagnostic =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ApigatewayOperationMetadataDiagnostic" });
 
 export interface ApigatewayListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -548,29 +447,21 @@ export interface ApigatewayListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ApigatewayListLocationsResponse: Schema.Schema<ApigatewayListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(ApigatewayLocation)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ApigatewayListLocationsResponse",
-  }) as any as Schema.Schema<ApigatewayListLocationsResponse>;
+export const ApigatewayListLocationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locations: Schema.optional(Schema.Array(ApigatewayLocation)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ApigatewayListLocationsResponse" });
 
 export interface ApigatewayTestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: Array<string>;
 }
 
-export const ApigatewayTestIamPermissionsRequest: Schema.Schema<ApigatewayTestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ApigatewayTestIamPermissionsRequest",
-  }) as any as Schema.Schema<ApigatewayTestIamPermissionsRequest>;
+export const ApigatewayTestIamPermissionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ApigatewayTestIamPermissionsRequest" });
 
 export interface ApigatewayOperationMetadata {
   /** Output only. The time the operation was created. */
@@ -591,23 +482,19 @@ export interface ApigatewayOperationMetadata {
   apiVersion?: string;
 }
 
-export const ApigatewayOperationMetadata: Schema.Schema<ApigatewayOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      diagnostics: Schema.optional(
-        Schema.Array(ApigatewayOperationMetadataDiagnostic),
-      ),
-      endTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-      apiVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ApigatewayOperationMetadata",
-  }) as any as Schema.Schema<ApigatewayOperationMetadata>;
+export const ApigatewayOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+    requestedCancellation: Schema.optional(Schema.Boolean),
+    diagnostics: Schema.optional(
+      Schema.Array(ApigatewayOperationMetadataDiagnostic),
+    ),
+    endTime: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+    statusMessage: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ApigatewayOperationMetadata" });
 
 export interface ApigatewayListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -618,16 +505,12 @@ export interface ApigatewayListOperationsResponse {
   unreachable?: Array<string>;
 }
 
-export const ApigatewayListOperationsResponse: Schema.Schema<ApigatewayListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(Schema.Array(ApigatewayOperation)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ApigatewayListOperationsResponse",
-  }) as any as Schema.Schema<ApigatewayListOperationsResponse>;
+export const ApigatewayListOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operations: Schema.optional(Schema.Array(ApigatewayOperation)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ApigatewayListOperationsResponse" });
 
 // ==========================================================================
 // Operations

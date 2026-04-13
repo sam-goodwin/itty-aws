@@ -33,15 +33,11 @@ export interface StringTargetingDimension {
   values?: Array<string>;
 }
 
-export const StringTargetingDimension: Schema.Schema<StringTargetingDimension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetingMode: Schema.optional(Schema.String),
-      values: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "StringTargetingDimension",
-  }) as any as Schema.Schema<StringTargetingDimension>;
+export const StringTargetingDimension =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetingMode: Schema.optional(Schema.String),
+    values: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "StringTargetingDimension" });
 
 export interface NumericTargetingDimension {
   /** The IDs included in a config. */
@@ -50,15 +46,11 @@ export interface NumericTargetingDimension {
   excludedIds?: Array<string>;
 }
 
-export const NumericTargetingDimension: Schema.Schema<NumericTargetingDimension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      includedIds: Schema.optional(Schema.Array(Schema.String)),
-      excludedIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "NumericTargetingDimension",
-  }) as any as Schema.Schema<NumericTargetingDimension>;
+export const NumericTargetingDimension =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    includedIds: Schema.optional(Schema.Array(Schema.String)),
+    excludedIds: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "NumericTargetingDimension" });
 
 export interface AppTargeting {
   /** Targeted app IDs. App IDs can refer to those found in an app store or ones that are not published in an app store. A maximum of 30,000 app IDs can be targeted. */
@@ -67,15 +59,10 @@ export interface AppTargeting {
   mobileAppCategoryTargeting?: NumericTargetingDimension;
 }
 
-export const AppTargeting: Schema.Schema<AppTargeting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mobileAppTargeting: Schema.optional(StringTargetingDimension),
-      mobileAppCategoryTargeting: Schema.optional(NumericTargetingDimension),
-    }),
-  ).annotate({
-    identifier: "AppTargeting",
-  }) as any as Schema.Schema<AppTargeting>;
+export const AppTargeting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  mobileAppTargeting: Schema.optional(StringTargetingDimension),
+  mobileAppCategoryTargeting: Schema.optional(NumericTargetingDimension),
+}).annotate({ identifier: "AppTargeting" });
 
 export interface Realtimebidding_Date {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
@@ -86,16 +73,11 @@ export interface Realtimebidding_Date {
   month?: number;
 }
 
-export const Realtimebidding_Date: Schema.Schema<Realtimebidding_Date> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      year: Schema.optional(Schema.Number),
-      day: Schema.optional(Schema.Number),
-      month: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "Realtimebidding_Date",
-  }) as any as Schema.Schema<Realtimebidding_Date>;
+export const Realtimebidding_Date = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  year: Schema.optional(Schema.Number),
+  day: Schema.optional(Schema.Number),
+  month: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Realtimebidding_Date" });
 
 export interface UrlRestriction {
   /** The restriction type for the specified URL. */
@@ -118,31 +100,22 @@ export interface UrlRestriction {
   endDate?: Realtimebidding_Date;
 }
 
-export const UrlRestriction: Schema.Schema<UrlRestriction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      restrictionType: Schema.optional(Schema.String),
-      url: Schema.optional(Schema.String),
-      startDate: Schema.optional(Realtimebidding_Date),
-      endDate: Schema.optional(Realtimebidding_Date),
-    }),
-  ).annotate({
-    identifier: "UrlRestriction",
-  }) as any as Schema.Schema<UrlRestriction>;
+export const UrlRestriction = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  restrictionType: Schema.optional(Schema.String),
+  url: Schema.optional(Schema.String),
+  startDate: Schema.optional(Realtimebidding_Date),
+  endDate: Schema.optional(Realtimebidding_Date),
+}).annotate({ identifier: "UrlRestriction" });
 
 export interface BatchApprovePublisherConnectionsRequest {
   /** Required. The names of the publishers with which connections will be approved. In the pattern `bidders/{bidder}/publisherConnections/{publisher}` where `{bidder}` is the account ID of the bidder, and `{publisher}` is the ads.txt/app-ads.txt publisher ID. */
   names?: Array<string>;
 }
 
-export const BatchApprovePublisherConnectionsRequest: Schema.Schema<BatchApprovePublisherConnectionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      names: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "BatchApprovePublisherConnectionsRequest",
-  }) as any as Schema.Schema<BatchApprovePublisherConnectionsRequest>;
+export const BatchApprovePublisherConnectionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    names: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "BatchApprovePublisherConnectionsRequest" });
 
 export interface DestinationNotWorkingEvidence {
   /** HTTP redirect chain error. */
@@ -186,35 +159,27 @@ export interface DestinationNotWorkingEvidence {
     | (string & {});
 }
 
-export const DestinationNotWorkingEvidence: Schema.Schema<DestinationNotWorkingEvidence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      redirectionError: Schema.optional(Schema.String),
-      dnsError: Schema.optional(Schema.String),
-      httpError: Schema.optional(Schema.Number),
-      lastCheckTime: Schema.optional(Schema.String),
-      invalidPage: Schema.optional(Schema.String),
-      urlRejected: Schema.optional(Schema.String),
-      expandedUrl: Schema.optional(Schema.String),
-      platform: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DestinationNotWorkingEvidence",
-  }) as any as Schema.Schema<DestinationNotWorkingEvidence>;
+export const DestinationNotWorkingEvidence =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    redirectionError: Schema.optional(Schema.String),
+    dnsError: Schema.optional(Schema.String),
+    httpError: Schema.optional(Schema.Number),
+    lastCheckTime: Schema.optional(Schema.String),
+    invalidPage: Schema.optional(Schema.String),
+    urlRejected: Schema.optional(Schema.String),
+    expandedUrl: Schema.optional(Schema.String),
+    platform: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DestinationNotWorkingEvidence" });
 
 export interface RemoveTargetedPublishersRequest {
   /** A list of publisher IDs to stop targeting in the pretargeting configuration. These values will be removed from the list of targeted publisher IDs in PretargetingConfig.publisherTargeting.values. Publishers are identified by their publisher ID from ads.txt / app-ads.txt. See https://iabtechlab.com/ads-txt/ and https://iabtechlab.com/app-ads-txt/ for more details. */
   publisherIds?: Array<string>;
 }
 
-export const RemoveTargetedPublishersRequest: Schema.Schema<RemoveTargetedPublishersRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      publisherIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "RemoveTargetedPublishersRequest",
-  }) as any as Schema.Schema<RemoveTargetedPublishersRequest>;
+export const RemoveTargetedPublishersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    publisherIds: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "RemoveTargetedPublishersRequest" });
 
 export interface Bidder {
   /** Output only. The buyer's network ID used for cookie matching. This ID corresponds to the `google_nid` parameter in the URL used in cookie match requests. Refer to https://developers.google.com/authorized-buyers/rtb/cookie-guide for further information. */
@@ -229,16 +194,13 @@ export interface Bidder {
   dealsBillingId?: string;
 }
 
-export const Bidder: Schema.Schema<Bidder> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cookieMatchingNetworkId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      cookieMatchingUrl: Schema.optional(Schema.String),
-      bypassNonguaranteedDealsPretargeting: Schema.optional(Schema.Boolean),
-      dealsBillingId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Bidder" }) as any as Schema.Schema<Bidder>;
+export const Bidder = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cookieMatchingNetworkId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  cookieMatchingUrl: Schema.optional(Schema.String),
+  bypassNonguaranteedDealsPretargeting: Schema.optional(Schema.Boolean),
+  dealsBillingId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Bidder" });
 
 export interface ListBiddersResponse {
   /** List of bidders. */
@@ -247,22 +209,17 @@ export interface ListBiddersResponse {
   nextPageToken?: string;
 }
 
-export const ListBiddersResponse: Schema.Schema<ListBiddersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bidders: Schema.optional(Schema.Array(Bidder)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListBiddersResponse",
-  }) as any as Schema.Schema<ListBiddersResponse>;
+export const ListBiddersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bidders: Schema.optional(Schema.Array(Bidder)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListBiddersResponse" });
 
 export interface ActivatePretargetingConfigRequest {}
 
-export const ActivatePretargetingConfigRequest: Schema.Schema<ActivatePretargetingConfigRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const ActivatePretargetingConfigRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ActivatePretargetingConfigRequest",
-  }) as any as Schema.Schema<ActivatePretargetingConfigRequest>;
+  });
 
 export interface Image {
   /** The URL of the image. */
@@ -273,14 +230,11 @@ export interface Image {
   height?: number;
 }
 
-export const Image: Schema.Schema<Image> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      url: Schema.optional(Schema.String),
-      width: Schema.optional(Schema.Number),
-      height: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Image" }) as any as Schema.Schema<Image>;
+export const Image = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  url: Schema.optional(Schema.String),
+  width: Schema.optional(Schema.Number),
+  height: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Image" });
 
 export interface NativeContent {
   /** A large image. */
@@ -311,26 +265,21 @@ export interface NativeContent {
   videoVastXml?: string;
 }
 
-export const NativeContent: Schema.Schema<NativeContent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      image: Schema.optional(Image),
-      clickLinkUrl: Schema.optional(Schema.String),
-      priceDisplayText: Schema.optional(Schema.String),
-      clickTrackingUrl: Schema.optional(Schema.String),
-      body: Schema.optional(Schema.String),
-      logo: Schema.optional(Image),
-      headline: Schema.optional(Schema.String),
-      callToAction: Schema.optional(Schema.String),
-      videoUrl: Schema.optional(Schema.String),
-      starRating: Schema.optional(Schema.Number),
-      advertiserName: Schema.optional(Schema.String),
-      appIcon: Schema.optional(Image),
-      videoVastXml: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NativeContent",
-  }) as any as Schema.Schema<NativeContent>;
+export const NativeContent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  image: Schema.optional(Image),
+  clickLinkUrl: Schema.optional(Schema.String),
+  priceDisplayText: Schema.optional(Schema.String),
+  clickTrackingUrl: Schema.optional(Schema.String),
+  body: Schema.optional(Schema.String),
+  logo: Schema.optional(Image),
+  headline: Schema.optional(Schema.String),
+  callToAction: Schema.optional(Schema.String),
+  videoUrl: Schema.optional(Schema.String),
+  starRating: Schema.optional(Schema.Number),
+  advertiserName: Schema.optional(Schema.String),
+  appIcon: Schema.optional(Image),
+  videoVastXml: Schema.optional(Schema.String),
+}).annotate({ identifier: "NativeContent" });
 
 export interface HtmlContent {
   /** The HTML snippet that displays the ad when inserted in the web page. */
@@ -341,16 +290,11 @@ export interface HtmlContent {
   height?: number;
 }
 
-export const HtmlContent: Schema.Schema<HtmlContent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      snippet: Schema.optional(Schema.String),
-      width: Schema.optional(Schema.Number),
-      height: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "HtmlContent",
-  }) as any as Schema.Schema<HtmlContent>;
+export const HtmlContent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  snippet: Schema.optional(Schema.String),
+  width: Schema.optional(Schema.Number),
+  height: Schema.optional(Schema.Number),
+}).annotate({ identifier: "HtmlContent" });
 
 export interface AdTechnologyProviders {
   /** Domains of detected unidentified ad technology providers (if any). You must ensure that the creatives used in bids placed for inventory that will serve to EEA or UK users does not contain unidentified ad technology providers. Google reserves the right to filter non-compliant bids. */
@@ -361,30 +305,22 @@ export interface AdTechnologyProviders {
   detectedGvlIds?: Array<string>;
 }
 
-export const AdTechnologyProviders: Schema.Schema<AdTechnologyProviders> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unidentifiedProviderDomains: Schema.optional(Schema.Array(Schema.String)),
-      detectedProviderIds: Schema.optional(Schema.Array(Schema.String)),
-      detectedGvlIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AdTechnologyProviders",
-  }) as any as Schema.Schema<AdTechnologyProviders>;
+export const AdTechnologyProviders = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  unidentifiedProviderDomains: Schema.optional(Schema.Array(Schema.String)),
+  detectedProviderIds: Schema.optional(Schema.Array(Schema.String)),
+  detectedGvlIds: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "AdTechnologyProviders" });
 
 export interface DestinationUrlEvidence {
   /** The full landing page URL of the destination. */
   destinationUrl?: string;
 }
 
-export const DestinationUrlEvidence: Schema.Schema<DestinationUrlEvidence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      destinationUrl: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DestinationUrlEvidence",
-  }) as any as Schema.Schema<DestinationUrlEvidence>;
+export const DestinationUrlEvidence = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    destinationUrl: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "DestinationUrlEvidence" });
 
 export interface UrlDownloadSize {
   /** The normalized URL with query parameters and fragment removed. */
@@ -393,15 +329,10 @@ export interface UrlDownloadSize {
   downloadSizeKb?: number;
 }
 
-export const UrlDownloadSize: Schema.Schema<UrlDownloadSize> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      normalizedUrl: Schema.optional(Schema.String),
-      downloadSizeKb: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "UrlDownloadSize",
-  }) as any as Schema.Schema<UrlDownloadSize>;
+export const UrlDownloadSize = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  normalizedUrl: Schema.optional(Schema.String),
+  downloadSizeKb: Schema.optional(Schema.Number),
+}).annotate({ identifier: "UrlDownloadSize" });
 
 export interface DownloadSizeEvidence {
   /** Download size broken down by URLs with the top download size. */
@@ -410,31 +341,19 @@ export interface DownloadSizeEvidence {
   totalDownloadSizeKb?: number;
 }
 
-export const DownloadSizeEvidence: Schema.Schema<DownloadSizeEvidence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      topUrlDownloadSizeBreakdowns: Schema.optional(
-        Schema.Array(UrlDownloadSize),
-      ),
-      totalDownloadSizeKb: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "DownloadSizeEvidence",
-  }) as any as Schema.Schema<DownloadSizeEvidence>;
+export const DownloadSizeEvidence = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  topUrlDownloadSizeBreakdowns: Schema.optional(Schema.Array(UrlDownloadSize)),
+  totalDownloadSizeKb: Schema.optional(Schema.Number),
+}).annotate({ identifier: "DownloadSizeEvidence" });
 
 export interface HttpCallEvidence {
   /** URLs of HTTP calls made by the creative. */
   urls?: Array<string>;
 }
 
-export const HttpCallEvidence: Schema.Schema<HttpCallEvidence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      urls: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "HttpCallEvidence",
-  }) as any as Schema.Schema<HttpCallEvidence>;
+export const HttpCallEvidence = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  urls: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "HttpCallEvidence" });
 
 export interface DestinationNotCrawlableEvidence {
   /** Reason of destination not crawlable. */
@@ -451,16 +370,12 @@ export interface DestinationNotCrawlableEvidence {
   crawledUrl?: string;
 }
 
-export const DestinationNotCrawlableEvidence: Schema.Schema<DestinationNotCrawlableEvidence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reason: Schema.optional(Schema.String),
-      crawlTime: Schema.optional(Schema.String),
-      crawledUrl: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DestinationNotCrawlableEvidence",
-  }) as any as Schema.Schema<DestinationNotCrawlableEvidence>;
+export const DestinationNotCrawlableEvidence =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reason: Schema.optional(Schema.String),
+    crawlTime: Schema.optional(Schema.String),
+    crawledUrl: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DestinationNotCrawlableEvidence" });
 
 export interface DomainCalls {
   /** Number of HTTP calls made to the domain. */
@@ -469,15 +384,10 @@ export interface DomainCalls {
   domain?: string;
 }
 
-export const DomainCalls: Schema.Schema<DomainCalls> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      httpCallCount: Schema.optional(Schema.Number),
-      domain: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DomainCalls",
-  }) as any as Schema.Schema<DomainCalls>;
+export const DomainCalls = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  httpCallCount: Schema.optional(Schema.Number),
+  domain: Schema.optional(Schema.String),
+}).annotate({ identifier: "DomainCalls" });
 
 export interface DomainCallEvidence {
   /** Breakdown of the most frequent domains called through HTTP by the creative. */
@@ -486,15 +396,10 @@ export interface DomainCallEvidence {
   totalHttpCallCount?: number;
 }
 
-export const DomainCallEvidence: Schema.Schema<DomainCallEvidence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      topHttpCallDomains: Schema.optional(Schema.Array(DomainCalls)),
-      totalHttpCallCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "DomainCallEvidence",
-  }) as any as Schema.Schema<DomainCallEvidence>;
+export const DomainCallEvidence = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  topHttpCallDomains: Schema.optional(Schema.Array(DomainCalls)),
+  totalHttpCallCount: Schema.optional(Schema.Number),
+}).annotate({ identifier: "DomainCallEvidence" });
 
 export interface HttpCookieEvidence {
   /** Names of cookies that violate Google policies. For TOO_MANY_COOKIES policy, this will be the cookie names of top domains with the largest number of cookies. For other policies, this will be all the cookie names that violate the policy. */
@@ -503,15 +408,10 @@ export interface HttpCookieEvidence {
   maxCookieCount?: number;
 }
 
-export const HttpCookieEvidence: Schema.Schema<HttpCookieEvidence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cookieNames: Schema.optional(Schema.Array(Schema.String)),
-      maxCookieCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "HttpCookieEvidence",
-  }) as any as Schema.Schema<HttpCookieEvidence>;
+export const HttpCookieEvidence = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cookieNames: Schema.optional(Schema.Array(Schema.String)),
+  maxCookieCount: Schema.optional(Schema.Number),
+}).annotate({ identifier: "HttpCookieEvidence" });
 
 export interface PolicyTopicEvidence {
   /** The creative's destination URL did not function properly or was incorrectly set up. */
@@ -530,20 +430,15 @@ export interface PolicyTopicEvidence {
   httpCookie?: HttpCookieEvidence;
 }
 
-export const PolicyTopicEvidence: Schema.Schema<PolicyTopicEvidence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      destinationNotWorking: Schema.optional(DestinationNotWorkingEvidence),
-      destinationUrl: Schema.optional(DestinationUrlEvidence),
-      downloadSize: Schema.optional(DownloadSizeEvidence),
-      httpCall: Schema.optional(HttpCallEvidence),
-      destinationNotCrawlable: Schema.optional(DestinationNotCrawlableEvidence),
-      domainCall: Schema.optional(DomainCallEvidence),
-      httpCookie: Schema.optional(HttpCookieEvidence),
-    }),
-  ).annotate({
-    identifier: "PolicyTopicEvidence",
-  }) as any as Schema.Schema<PolicyTopicEvidence>;
+export const PolicyTopicEvidence = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  destinationNotWorking: Schema.optional(DestinationNotWorkingEvidence),
+  destinationUrl: Schema.optional(DestinationUrlEvidence),
+  downloadSize: Schema.optional(DownloadSizeEvidence),
+  httpCall: Schema.optional(HttpCallEvidence),
+  destinationNotCrawlable: Schema.optional(DestinationNotCrawlableEvidence),
+  domainCall: Schema.optional(DomainCallEvidence),
+  httpCookie: Schema.optional(HttpCookieEvidence),
+}).annotate({ identifier: "PolicyTopicEvidence" });
 
 export interface PolicyTopicEntry {
   /** Pieces of evidence associated with this policy topic entry. */
@@ -556,17 +451,12 @@ export interface PolicyTopicEntry {
   missingCertificate?: boolean;
 }
 
-export const PolicyTopicEntry: Schema.Schema<PolicyTopicEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      evidences: Schema.optional(Schema.Array(PolicyTopicEvidence)),
-      helpCenterUrl: Schema.optional(Schema.String),
-      policyTopic: Schema.optional(Schema.String),
-      missingCertificate: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "PolicyTopicEntry",
-  }) as any as Schema.Schema<PolicyTopicEntry>;
+export const PolicyTopicEntry = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  evidences: Schema.optional(Schema.Array(PolicyTopicEvidence)),
+  helpCenterUrl: Schema.optional(Schema.String),
+  policyTopic: Schema.optional(Schema.String),
+  missingCertificate: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "PolicyTopicEntry" });
 
 export interface PolicyCompliance {
   /** Serving status for the given transaction type (for example, open auction, deals) or region (for example, China, Russia). Can be used to filter the response of the creatives.list method. */
@@ -581,15 +471,10 @@ export interface PolicyCompliance {
   topics?: Array<PolicyTopicEntry>;
 }
 
-export const PolicyCompliance: Schema.Schema<PolicyCompliance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      status: Schema.optional(Schema.String),
-      topics: Schema.optional(Schema.Array(PolicyTopicEntry)),
-    }),
-  ).annotate({
-    identifier: "PolicyCompliance",
-  }) as any as Schema.Schema<PolicyCompliance>;
+export const PolicyCompliance = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  status: Schema.optional(Schema.String),
+  topics: Schema.optional(Schema.Array(PolicyTopicEntry)),
+}).annotate({ identifier: "PolicyCompliance" });
 
 export interface AdvertiserAndBrand {
   /** See https://storage.googleapis.com/adx-rtb-dictionaries/advertisers.txt for the list of possible values. Can be used to filter the response of the creatives.list method. */
@@ -602,17 +487,12 @@ export interface AdvertiserAndBrand {
   brandName?: string;
 }
 
-export const AdvertiserAndBrand: Schema.Schema<AdvertiserAndBrand> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      advertiserId: Schema.optional(Schema.String),
-      brandId: Schema.optional(Schema.String),
-      advertiserName: Schema.optional(Schema.String),
-      brandName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AdvertiserAndBrand",
-  }) as any as Schema.Schema<AdvertiserAndBrand>;
+export const AdvertiserAndBrand = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  advertiserId: Schema.optional(Schema.String),
+  brandId: Schema.optional(Schema.String),
+  advertiserName: Schema.optional(Schema.String),
+  brandName: Schema.optional(Schema.String),
+}).annotate({ identifier: "AdvertiserAndBrand" });
 
 export interface CreativeServingDecision {
   /** The detected ad technology providers. */
@@ -696,30 +576,26 @@ export interface CreativeServingDecision {
   lastStatusUpdate?: string;
 }
 
-export const CreativeServingDecision: Schema.Schema<CreativeServingDecision> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      adTechnologyProviders: Schema.optional(AdTechnologyProviders),
-      detectedVendorIds: Schema.optional(Schema.Array(Schema.Number)),
-      dealsPolicyCompliance: Schema.optional(PolicyCompliance),
-      detectedCategories: Schema.optional(Schema.Array(Schema.String)),
-      detectedLanguages: Schema.optional(Schema.Array(Schema.String)),
-      detectedAdvertisers: Schema.optional(Schema.Array(AdvertiserAndBrand)),
-      platformPolicyCompliance: Schema.optional(PolicyCompliance),
-      detectedDomains: Schema.optional(Schema.Array(Schema.String)),
-      russiaPolicyCompliance: Schema.optional(PolicyCompliance),
-      detectedSensitiveCategories: Schema.optional(Schema.Array(Schema.Number)),
-      detectedClickThroughUrls: Schema.optional(Schema.Array(Schema.String)),
-      networkPolicyCompliance: Schema.optional(PolicyCompliance),
-      detectedCategoriesTaxonomy: Schema.optional(Schema.String),
-      chinaPolicyCompliance: Schema.optional(PolicyCompliance),
-      detectedProductCategories: Schema.optional(Schema.Array(Schema.Number)),
-      detectedAttributes: Schema.optional(Schema.Array(Schema.String)),
-      lastStatusUpdate: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreativeServingDecision",
-  }) as any as Schema.Schema<CreativeServingDecision>;
+export const CreativeServingDecision =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    adTechnologyProviders: Schema.optional(AdTechnologyProviders),
+    detectedVendorIds: Schema.optional(Schema.Array(Schema.Number)),
+    dealsPolicyCompliance: Schema.optional(PolicyCompliance),
+    detectedCategories: Schema.optional(Schema.Array(Schema.String)),
+    detectedLanguages: Schema.optional(Schema.Array(Schema.String)),
+    detectedAdvertisers: Schema.optional(Schema.Array(AdvertiserAndBrand)),
+    platformPolicyCompliance: Schema.optional(PolicyCompliance),
+    detectedDomains: Schema.optional(Schema.Array(Schema.String)),
+    russiaPolicyCompliance: Schema.optional(PolicyCompliance),
+    detectedSensitiveCategories: Schema.optional(Schema.Array(Schema.Number)),
+    detectedClickThroughUrls: Schema.optional(Schema.Array(Schema.String)),
+    networkPolicyCompliance: Schema.optional(PolicyCompliance),
+    detectedCategoriesTaxonomy: Schema.optional(Schema.String),
+    chinaPolicyCompliance: Schema.optional(PolicyCompliance),
+    detectedProductCategories: Schema.optional(Schema.Array(Schema.Number)),
+    detectedAttributes: Schema.optional(Schema.Array(Schema.String)),
+    lastStatusUpdate: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CreativeServingDecision" });
 
 export interface MediaFile {
   /** Bitrate of the video file, in Kbps. Can be used to filter the response of the creatives.list method. */
@@ -747,13 +623,10 @@ export interface MediaFile {
     | (string & {});
 }
 
-export const MediaFile: Schema.Schema<MediaFile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bitrate: Schema.optional(Schema.String),
-      mimeType: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "MediaFile" }) as any as Schema.Schema<MediaFile>;
+export const MediaFile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bitrate: Schema.optional(Schema.String),
+  mimeType: Schema.optional(Schema.String),
+}).annotate({ identifier: "MediaFile" });
 
 export interface VideoMetadata {
   /** Is this a VPAID ad? Can be used to filter the response of the creatives.list method. */
@@ -776,19 +649,14 @@ export interface VideoMetadata {
     | (string & {});
 }
 
-export const VideoMetadata: Schema.Schema<VideoMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      isVpaid: Schema.optional(Schema.Boolean),
-      mediaFiles: Schema.optional(Schema.Array(MediaFile)),
-      skipOffset: Schema.optional(Schema.String),
-      duration: Schema.optional(Schema.String),
-      isValidVast: Schema.optional(Schema.Boolean),
-      vastVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VideoMetadata",
-  }) as any as Schema.Schema<VideoMetadata>;
+export const VideoMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  isVpaid: Schema.optional(Schema.Boolean),
+  mediaFiles: Schema.optional(Schema.Array(MediaFile)),
+  skipOffset: Schema.optional(Schema.String),
+  duration: Schema.optional(Schema.String),
+  isValidVast: Schema.optional(Schema.Boolean),
+  vastVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "VideoMetadata" });
 
 export interface VideoContent {
   /** The URL to fetch a video ad. The URL should return an XML response that conforms to the VAST 2.0, 3.0 or 4.x standard. */
@@ -799,16 +667,11 @@ export interface VideoContent {
   videoVastXml?: string;
 }
 
-export const VideoContent: Schema.Schema<VideoContent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      videoUrl: Schema.optional(Schema.String),
-      videoMetadata: Schema.optional(VideoMetadata),
-      videoVastXml: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VideoContent",
-  }) as any as Schema.Schema<VideoContent>;
+export const VideoContent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  videoUrl: Schema.optional(Schema.String),
+  videoMetadata: Schema.optional(VideoMetadata),
+  videoVastXml: Schema.optional(Schema.String),
+}).annotate({ identifier: "VideoContent" });
 
 export interface Creative {
   /** All declared restricted categories for the ads that may be shown from this creative. Can be used to filter the response of the creatives.list method. */
@@ -905,34 +768,29 @@ export interface Creative {
   declaredVendorIds?: Array<number>;
 }
 
-export const Creative: Schema.Schema<Creative> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      declaredRestrictedCategories: Schema.optional(
-        Schema.Array(Schema.String),
-      ),
-      native: Schema.optional(NativeContent),
-      adChoicesDestinationUrl: Schema.optional(Schema.String),
-      apiUpdateTime: Schema.optional(Schema.String),
-      dealIds: Schema.optional(Schema.Array(Schema.String)),
-      advertiserName: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-      creativeId: Schema.optional(Schema.String),
-      restrictedCategories: Schema.optional(Schema.Array(Schema.String)),
-      agencyId: Schema.optional(Schema.String),
-      creativeFormat: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      impressionTrackingUrls: Schema.optional(Schema.Array(Schema.String)),
-      declaredAttributes: Schema.optional(Schema.Array(Schema.String)),
-      html: Schema.optional(HtmlContent),
-      declaredClickThroughUrls: Schema.optional(Schema.Array(Schema.String)),
-      renderUrl: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.Number),
-      creativeServingDecision: Schema.optional(CreativeServingDecision),
-      video: Schema.optional(VideoContent),
-      declaredVendorIds: Schema.optional(Schema.Array(Schema.Number)),
-    }),
-  ).annotate({ identifier: "Creative" }) as any as Schema.Schema<Creative>;
+export const Creative = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  declaredRestrictedCategories: Schema.optional(Schema.Array(Schema.String)),
+  native: Schema.optional(NativeContent),
+  adChoicesDestinationUrl: Schema.optional(Schema.String),
+  apiUpdateTime: Schema.optional(Schema.String),
+  dealIds: Schema.optional(Schema.Array(Schema.String)),
+  advertiserName: Schema.optional(Schema.String),
+  accountId: Schema.optional(Schema.String),
+  creativeId: Schema.optional(Schema.String),
+  restrictedCategories: Schema.optional(Schema.Array(Schema.String)),
+  agencyId: Schema.optional(Schema.String),
+  creativeFormat: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  impressionTrackingUrls: Schema.optional(Schema.Array(Schema.String)),
+  declaredAttributes: Schema.optional(Schema.Array(Schema.String)),
+  html: Schema.optional(HtmlContent),
+  declaredClickThroughUrls: Schema.optional(Schema.Array(Schema.String)),
+  renderUrl: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.Number),
+  creativeServingDecision: Schema.optional(CreativeServingDecision),
+  video: Schema.optional(VideoContent),
+  declaredVendorIds: Schema.optional(Schema.Array(Schema.Number)),
+}).annotate({ identifier: "Creative" });
 
 export interface ListCreativesResponse {
   /** The list of creatives. */
@@ -941,36 +799,26 @@ export interface ListCreativesResponse {
   nextPageToken?: string;
 }
 
-export const ListCreativesResponse: Schema.Schema<ListCreativesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      creatives: Schema.optional(Schema.Array(Creative)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListCreativesResponse",
-  }) as any as Schema.Schema<ListCreativesResponse>;
+export const ListCreativesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  creatives: Schema.optional(Schema.Array(Creative)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListCreativesResponse" });
 
 export interface GetRemarketingTagResponse {
   /** An HTML tag that can be placed on the advertiser's page to add users to a user list. For more information and code samples on using snippets on your website, refer to [Tag your site for remarketing](https://support.google.com/google-ads/answer/2476688). */
   snippet?: string;
 }
 
-export const GetRemarketingTagResponse: Schema.Schema<GetRemarketingTagResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      snippet: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GetRemarketingTagResponse",
-  }) as any as Schema.Schema<GetRemarketingTagResponse>;
+export const GetRemarketingTagResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    snippet: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GetRemarketingTagResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface PublisherConnection {
   /** Output only. Whether the publisher is an Ad Manager or AdMob publisher. */
@@ -994,32 +842,23 @@ export interface PublisherConnection {
   name?: string;
 }
 
-export const PublisherConnection: Schema.Schema<PublisherConnection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      publisherPlatform: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      biddingState: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PublisherConnection",
-  }) as any as Schema.Schema<PublisherConnection>;
+export const PublisherConnection = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  publisherPlatform: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  biddingState: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "PublisherConnection" });
 
 export interface BatchApprovePublisherConnectionsResponse {
   /** The publisher connections that have been approved. */
   publisherConnections?: Array<PublisherConnection>;
 }
 
-export const BatchApprovePublisherConnectionsResponse: Schema.Schema<BatchApprovePublisherConnectionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      publisherConnections: Schema.optional(Schema.Array(PublisherConnection)),
-    }),
-  ).annotate({
-    identifier: "BatchApprovePublisherConnectionsResponse",
-  }) as any as Schema.Schema<BatchApprovePublisherConnectionsResponse>;
+export const BatchApprovePublisherConnectionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    publisherConnections: Schema.optional(Schema.Array(PublisherConnection)),
+  }).annotate({ identifier: "BatchApprovePublisherConnectionsResponse" });
 
 export interface Buyer {
   /** Output only. The number of creatives that this buyer submitted through the API or bid with in the last 30 days. This is counted against the maximum number of active creatives. */
@@ -1036,17 +875,14 @@ export interface Buyer {
   displayName?: string;
 }
 
-export const Buyer: Schema.Schema<Buyer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      activeCreativeCount: Schema.optional(Schema.String),
-      billingIds: Schema.optional(Schema.Array(Schema.String)),
-      maximumActiveCreativeCount: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      bidder: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Buyer" }) as any as Schema.Schema<Buyer>;
+export const Buyer = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  activeCreativeCount: Schema.optional(Schema.String),
+  billingIds: Schema.optional(Schema.Array(Schema.String)),
+  maximumActiveCreativeCount: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  bidder: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+}).annotate({ identifier: "Buyer" });
 
 export interface ListBuyersResponse {
   /** List of buyers. */
@@ -1055,36 +891,27 @@ export interface ListBuyersResponse {
   nextPageToken?: string;
 }
 
-export const ListBuyersResponse: Schema.Schema<ListBuyersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      buyers: Schema.optional(Schema.Array(Buyer)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListBuyersResponse",
-  }) as any as Schema.Schema<ListBuyersResponse>;
+export const ListBuyersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  buyers: Schema.optional(Schema.Array(Buyer)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListBuyersResponse" });
 
 export interface RemoveTargetedAppsRequest {
   /** A list of app IDs to stop targeting in the pretargeting configuration. These values will be removed from the list of targeted app IDs in PretargetingConfig.appTargeting.mobileAppTargeting.values. */
   appIds?: Array<string>;
 }
 
-export const RemoveTargetedAppsRequest: Schema.Schema<RemoveTargetedAppsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      appIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "RemoveTargetedAppsRequest",
-  }) as any as Schema.Schema<RemoveTargetedAppsRequest>;
+export const RemoveTargetedAppsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    appIds: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "RemoveTargetedAppsRequest" });
 
 export interface SuspendPretargetingConfigRequest {}
 
-export const SuspendPretargetingConfigRequest: Schema.Schema<SuspendPretargetingConfigRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const SuspendPretargetingConfigRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "SuspendPretargetingConfigRequest",
-  }) as any as Schema.Schema<SuspendPretargetingConfigRequest>;
+  });
 
 export interface AddTargetedPublishersRequest {
   /** A list of publisher IDs to target in the pretargeting configuration. These values will be added to the list of targeted publisher IDs in PretargetingConfig.publisherTargeting.values. Publishers are identified by their publisher ID from ads.txt / app-ads.txt. See https://iabtechlab.com/ads-txt/ and https://iabtechlab.com/app-ads-txt/ for more details. */
@@ -1097,22 +924,17 @@ export interface AddTargetedPublishersRequest {
     | (string & {});
 }
 
-export const AddTargetedPublishersRequest: Schema.Schema<AddTargetedPublishersRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      publisherIds: Schema.optional(Schema.Array(Schema.String)),
-      targetingMode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AddTargetedPublishersRequest",
-  }) as any as Schema.Schema<AddTargetedPublishersRequest>;
+export const AddTargetedPublishersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    publisherIds: Schema.optional(Schema.Array(Schema.String)),
+    targetingMode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AddTargetedPublishersRequest" });
 
 export interface WatchCreativesRequest {}
 
-export const WatchCreativesRequest: Schema.Schema<WatchCreativesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "WatchCreativesRequest",
-  }) as any as Schema.Schema<WatchCreativesRequest>;
+export const WatchCreativesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "WatchCreativesRequest" });
 
 export interface AddTargetedSitesRequest {
   /** Required. The targeting mode that should be applied to the list of site URLs. If there are existing targeted sites, must be equal to the existing PretargetingConfig.webTargeting.targetingMode or a 400 bad request error will be returned. */
@@ -1125,15 +947,11 @@ export interface AddTargetedSitesRequest {
   sites?: Array<string>;
 }
 
-export const AddTargetedSitesRequest: Schema.Schema<AddTargetedSitesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetingMode: Schema.optional(Schema.String),
-      sites: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AddTargetedSitesRequest",
-  }) as any as Schema.Schema<AddTargetedSitesRequest>;
+export const AddTargetedSitesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetingMode: Schema.optional(Schema.String),
+    sites: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "AddTargetedSitesRequest" });
 
 export interface ListPublisherConnectionsResponse {
   /** The list of publisher connections. */
@@ -1142,22 +960,17 @@ export interface ListPublisherConnectionsResponse {
   nextPageToken?: string;
 }
 
-export const ListPublisherConnectionsResponse: Schema.Schema<ListPublisherConnectionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      publisherConnections: Schema.optional(Schema.Array(PublisherConnection)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListPublisherConnectionsResponse",
-  }) as any as Schema.Schema<ListPublisherConnectionsResponse>;
+export const ListPublisherConnectionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    publisherConnections: Schema.optional(Schema.Array(PublisherConnection)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListPublisherConnectionsResponse" });
 
 export interface OpenUserListRequest {}
 
-export const OpenUserListRequest: Schema.Schema<OpenUserListRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "OpenUserListRequest",
-  }) as any as Schema.Schema<OpenUserListRequest>;
+export const OpenUserListRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "OpenUserListRequest" });
 
 export interface UserList {
   /** Output only. The status of the user list. A new user list starts out as open. */
@@ -1174,17 +987,14 @@ export interface UserList {
   displayName?: string;
 }
 
-export const UserList: Schema.Schema<UserList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      status: Schema.optional(Schema.String),
-      urlRestriction: Schema.optional(UrlRestriction),
-      description: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      membershipDurationDays: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "UserList" }) as any as Schema.Schema<UserList>;
+export const UserList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  status: Schema.optional(Schema.String),
+  urlRestriction: Schema.optional(UrlRestriction),
+  description: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  membershipDurationDays: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+}).annotate({ identifier: "UserList" });
 
 export interface WatchCreativesResponse {
   /** The Pub/Sub topic that will be used to publish creative serving status notifications. This would be of the format `projects/{project_id}/topics/{topic_id}`. */
@@ -1193,15 +1003,12 @@ export interface WatchCreativesResponse {
   subscription?: string;
 }
 
-export const WatchCreativesResponse: Schema.Schema<WatchCreativesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      topic: Schema.optional(Schema.String),
-      subscription: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WatchCreativesResponse",
-  }) as any as Schema.Schema<WatchCreativesResponse>;
+export const WatchCreativesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    topic: Schema.optional(Schema.String),
+    subscription: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "WatchCreativesResponse" });
 
 export interface CreativeDimensions {
   /** The width of the creative in pixels. */
@@ -1210,50 +1017,36 @@ export interface CreativeDimensions {
   height?: string;
 }
 
-export const CreativeDimensions: Schema.Schema<CreativeDimensions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      width: Schema.optional(Schema.String),
-      height: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreativeDimensions",
-  }) as any as Schema.Schema<CreativeDimensions>;
+export const CreativeDimensions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  width: Schema.optional(Schema.String),
+  height: Schema.optional(Schema.String),
+}).annotate({ identifier: "CreativeDimensions" });
 
 export interface BatchRejectPublisherConnectionsRequest {
   /** Required. The names of the publishers with whom connection will be rejected. In the pattern `bidders/{bidder}/publisherConnections/{publisher}` where `{bidder}` is the account ID of the bidder, and `{publisher}` is the ads.txt/app-ads.txt publisher ID. */
   names?: Array<string>;
 }
 
-export const BatchRejectPublisherConnectionsRequest: Schema.Schema<BatchRejectPublisherConnectionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      names: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "BatchRejectPublisherConnectionsRequest",
-  }) as any as Schema.Schema<BatchRejectPublisherConnectionsRequest>;
+export const BatchRejectPublisherConnectionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    names: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "BatchRejectPublisherConnectionsRequest" });
 
 export interface RemoveTargetedSitesRequest {
   /** A list of site URLs to stop targeting in the pretargeting configuration. These values will be removed from the list of targeted URLs in PretargetingConfig.webTargeting.values. */
   sites?: Array<string>;
 }
 
-export const RemoveTargetedSitesRequest: Schema.Schema<RemoveTargetedSitesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sites: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "RemoveTargetedSitesRequest",
-  }) as any as Schema.Schema<RemoveTargetedSitesRequest>;
+export const RemoveTargetedSitesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sites: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "RemoveTargetedSitesRequest" });
 
 export interface CloseUserListRequest {}
 
-export const CloseUserListRequest: Schema.Schema<CloseUserListRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CloseUserListRequest",
-  }) as any as Schema.Schema<CloseUserListRequest>;
+export const CloseUserListRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CloseUserListRequest" });
 
 export interface PretargetingConfig {
   /** The verticals included or excluded in this config as defined in https://developers.google.com/authorized-buyers/rtb/downloads/publisher-verticals */
@@ -1332,40 +1125,33 @@ export interface PretargetingConfig {
   displayName?: string;
 }
 
-export const PretargetingConfig: Schema.Schema<PretargetingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      verticalTargeting: Schema.optional(NumericTargetingDimension),
-      includedPlatforms: Schema.optional(Schema.Array(Schema.String)),
-      appTargeting: Schema.optional(AppTargeting),
-      state: Schema.optional(Schema.String),
-      invalidGeoIds: Schema.optional(Schema.Array(Schema.String)),
-      allowedUserTargetingModes: Schema.optional(Schema.Array(Schema.String)),
-      includedLanguages: Schema.optional(Schema.Array(Schema.String)),
-      webTargeting: Schema.optional(StringTargetingDimension),
-      interstitialTargeting: Schema.optional(Schema.String),
-      includedCreativeDimensions: Schema.optional(
-        Schema.Array(CreativeDimensions),
-      ),
-      name: Schema.optional(Schema.String),
-      userListTargeting: Schema.optional(NumericTargetingDimension),
-      publisherTargeting: Schema.optional(StringTargetingDimension),
-      excludedContentLabelIds: Schema.optional(Schema.Array(Schema.String)),
-      includedMobileOperatingSystemIds: Schema.optional(
-        Schema.Array(Schema.String),
-      ),
-      minimumViewabilityDecile: Schema.optional(Schema.Number),
-      maximumQps: Schema.optional(Schema.String),
-      includedUserIdTypes: Schema.optional(Schema.Array(Schema.String)),
-      geoTargeting: Schema.optional(NumericTargetingDimension),
-      includedEnvironments: Schema.optional(Schema.Array(Schema.String)),
-      includedFormats: Schema.optional(Schema.Array(Schema.String)),
-      billingId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PretargetingConfig",
-  }) as any as Schema.Schema<PretargetingConfig>;
+export const PretargetingConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  verticalTargeting: Schema.optional(NumericTargetingDimension),
+  includedPlatforms: Schema.optional(Schema.Array(Schema.String)),
+  appTargeting: Schema.optional(AppTargeting),
+  state: Schema.optional(Schema.String),
+  invalidGeoIds: Schema.optional(Schema.Array(Schema.String)),
+  allowedUserTargetingModes: Schema.optional(Schema.Array(Schema.String)),
+  includedLanguages: Schema.optional(Schema.Array(Schema.String)),
+  webTargeting: Schema.optional(StringTargetingDimension),
+  interstitialTargeting: Schema.optional(Schema.String),
+  includedCreativeDimensions: Schema.optional(Schema.Array(CreativeDimensions)),
+  name: Schema.optional(Schema.String),
+  userListTargeting: Schema.optional(NumericTargetingDimension),
+  publisherTargeting: Schema.optional(StringTargetingDimension),
+  excludedContentLabelIds: Schema.optional(Schema.Array(Schema.String)),
+  includedMobileOperatingSystemIds: Schema.optional(
+    Schema.Array(Schema.String),
+  ),
+  minimumViewabilityDecile: Schema.optional(Schema.Number),
+  maximumQps: Schema.optional(Schema.String),
+  includedUserIdTypes: Schema.optional(Schema.Array(Schema.String)),
+  geoTargeting: Schema.optional(NumericTargetingDimension),
+  includedEnvironments: Schema.optional(Schema.Array(Schema.String)),
+  includedFormats: Schema.optional(Schema.Array(Schema.String)),
+  billingId: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+}).annotate({ identifier: "PretargetingConfig" });
 
 export interface ListPretargetingConfigsResponse {
   /** List of pretargeting configurations. */
@@ -1374,29 +1160,21 @@ export interface ListPretargetingConfigsResponse {
   nextPageToken?: string;
 }
 
-export const ListPretargetingConfigsResponse: Schema.Schema<ListPretargetingConfigsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pretargetingConfigs: Schema.optional(Schema.Array(PretargetingConfig)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListPretargetingConfigsResponse",
-  }) as any as Schema.Schema<ListPretargetingConfigsResponse>;
+export const ListPretargetingConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pretargetingConfigs: Schema.optional(Schema.Array(PretargetingConfig)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListPretargetingConfigsResponse" });
 
 export interface BatchRejectPublisherConnectionsResponse {
   /** The publisher connections that have been rejected. */
   publisherConnections?: Array<PublisherConnection>;
 }
 
-export const BatchRejectPublisherConnectionsResponse: Schema.Schema<BatchRejectPublisherConnectionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      publisherConnections: Schema.optional(Schema.Array(PublisherConnection)),
-    }),
-  ).annotate({
-    identifier: "BatchRejectPublisherConnectionsResponse",
-  }) as any as Schema.Schema<BatchRejectPublisherConnectionsResponse>;
+export const BatchRejectPublisherConnectionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    publisherConnections: Schema.optional(Schema.Array(PublisherConnection)),
+  }).annotate({ identifier: "BatchRejectPublisherConnectionsResponse" });
 
 export interface ListUserListsResponse {
   /** List of user lists from the search. */
@@ -1405,15 +1183,10 @@ export interface ListUserListsResponse {
   nextPageToken?: string;
 }
 
-export const ListUserListsResponse: Schema.Schema<ListUserListsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userLists: Schema.optional(Schema.Array(UserList)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListUserListsResponse",
-  }) as any as Schema.Schema<ListUserListsResponse>;
+export const ListUserListsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  userLists: Schema.optional(Schema.Array(UserList)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListUserListsResponse" });
 
 export interface Endpoint {
   /** Output only. The URL that bid requests should be sent to. */
@@ -1439,16 +1212,13 @@ export interface Endpoint {
     | (string & {});
 }
 
-export const Endpoint: Schema.Schema<Endpoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      url: Schema.optional(Schema.String),
-      maximumQps: Schema.optional(Schema.String),
-      bidProtocol: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      tradingLocation: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Endpoint" }) as any as Schema.Schema<Endpoint>;
+export const Endpoint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  url: Schema.optional(Schema.String),
+  maximumQps: Schema.optional(Schema.String),
+  bidProtocol: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  tradingLocation: Schema.optional(Schema.String),
+}).annotate({ identifier: "Endpoint" });
 
 export interface ListEndpointsResponse {
   /** List of bidder endpoints. */
@@ -1457,15 +1227,10 @@ export interface ListEndpointsResponse {
   nextPageToken?: string;
 }
 
-export const ListEndpointsResponse: Schema.Schema<ListEndpointsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endpoints: Schema.optional(Schema.Array(Endpoint)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListEndpointsResponse",
-  }) as any as Schema.Schema<ListEndpointsResponse>;
+export const ListEndpointsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  endpoints: Schema.optional(Schema.Array(Endpoint)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListEndpointsResponse" });
 
 export interface AddTargetedAppsRequest {
   /** A list of app IDs to target in the pretargeting configuration. These values will be added to the list of targeted app IDs in PretargetingConfig.appTargeting.mobileAppTargeting.values. */
@@ -1478,15 +1243,12 @@ export interface AddTargetedAppsRequest {
     | (string & {});
 }
 
-export const AddTargetedAppsRequest: Schema.Schema<AddTargetedAppsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      appIds: Schema.optional(Schema.Array(Schema.String)),
-      targetingMode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AddTargetedAppsRequest",
-  }) as any as Schema.Schema<AddTargetedAppsRequest>;
+export const AddTargetedAppsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    appIds: Schema.optional(Schema.Array(Schema.String)),
+    targetingMode: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "AddTargetedAppsRequest" });
 
 // ==========================================================================
 // Operations

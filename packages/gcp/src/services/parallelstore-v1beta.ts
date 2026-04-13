@@ -77,26 +77,23 @@ export interface Instance {
   reservedIpRange?: string;
 }
 
-export const Instance: Schema.Schema<Instance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fileStripeLevel: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      deploymentType: Schema.optional(Schema.String),
-      daosVersion: Schema.optional(Schema.String),
-      network: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      effectiveReservedIpRange: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      directoryStripeLevel: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      accessPoints: Schema.optional(Schema.Array(Schema.String)),
-      capacityGib: Schema.optional(Schema.String),
-      reservedIpRange: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Instance" }) as any as Schema.Schema<Instance>;
+export const Instance = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fileStripeLevel: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  deploymentType: Schema.optional(Schema.String),
+  daosVersion: Schema.optional(Schema.String),
+  network: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  effectiveReservedIpRange: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  directoryStripeLevel: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  accessPoints: Schema.optional(Schema.Array(Schema.String)),
+  capacityGib: Schema.optional(Schema.String),
+  reservedIpRange: Schema.optional(Schema.String),
+}).annotate({ identifier: "Instance" });
 
 export interface ListInstancesResponse {
   /** Locations that could not be reached. */
@@ -107,51 +104,35 @@ export interface ListInstancesResponse {
   nextPageToken?: string;
 }
 
-export const ListInstancesResponse: Schema.Schema<ListInstancesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      instances: Schema.optional(Schema.Array(Instance)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListInstancesResponse",
-  }) as any as Schema.Schema<ListInstancesResponse>;
+export const ListInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+  instances: Schema.optional(Schema.Array(Instance)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListInstancesResponse" });
 
 export interface SourceParallelstore {
   /** Optional. Root directory path to the Paralellstore filesystem, starting with `/`. Defaults to `/` if unset. */
   path?: string;
 }
 
-export const SourceParallelstore: Schema.Schema<SourceParallelstore> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      path: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SourceParallelstore",
-  }) as any as Schema.Schema<SourceParallelstore>;
+export const SourceParallelstore = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  path: Schema.optional(Schema.String),
+}).annotate({ identifier: "SourceParallelstore" });
 
 export interface GoogleProtobufEmpty {}
 
-export const GoogleProtobufEmpty: Schema.Schema<GoogleProtobufEmpty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "GoogleProtobufEmpty",
-  }) as any as Schema.Schema<GoogleProtobufEmpty>;
+export const GoogleProtobufEmpty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "GoogleProtobufEmpty" });
 
 export interface DestinationGcsBucket {
   /** Required. URI to a Cloud Storage bucket in the format: `gs:///`. The path inside the bucket is optional. */
   uri?: string;
 }
 
-export const DestinationGcsBucket: Schema.Schema<DestinationGcsBucket> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DestinationGcsBucket",
-  }) as any as Schema.Schema<DestinationGcsBucket>;
+export const DestinationGcsBucket = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  uri: Schema.optional(Schema.String),
+}).annotate({ identifier: "DestinationGcsBucket" });
 
 export interface TransferMetadataOptions {
   /** Optional. The UID preservation behavior. */
@@ -162,16 +143,12 @@ export interface TransferMetadataOptions {
   mode?: "MODE_UNSPECIFIED" | "MODE_SKIP" | "MODE_PRESERVE" | (string & {});
 }
 
-export const TransferMetadataOptions: Schema.Schema<TransferMetadataOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uid: Schema.optional(Schema.String),
-      gid: Schema.optional(Schema.String),
-      mode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TransferMetadataOptions",
-  }) as any as Schema.Schema<TransferMetadataOptions>;
+export const TransferMetadataOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uid: Schema.optional(Schema.String),
+    gid: Schema.optional(Schema.String),
+    mode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "TransferMetadataOptions" });
 
 export interface ExportDataRequest {
   /** Cloud Storage destination. */
@@ -186,32 +163,22 @@ export interface ExportDataRequest {
   requestId?: string;
 }
 
-export const ExportDataRequest: Schema.Schema<ExportDataRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      destinationGcsBucket: Schema.optional(DestinationGcsBucket),
-      sourceParallelstore: Schema.optional(SourceParallelstore),
-      metadataOptions: Schema.optional(TransferMetadataOptions),
-      serviceAccount: Schema.optional(Schema.String),
-      requestId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ExportDataRequest",
-  }) as any as Schema.Schema<ExportDataRequest>;
+export const ExportDataRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  destinationGcsBucket: Schema.optional(DestinationGcsBucket),
+  sourceParallelstore: Schema.optional(SourceParallelstore),
+  metadataOptions: Schema.optional(TransferMetadataOptions),
+  serviceAccount: Schema.optional(Schema.String),
+  requestId: Schema.optional(Schema.String),
+}).annotate({ identifier: "ExportDataRequest" });
 
 export interface SourceGcsBucket {
   /** Required. URI to a Cloud Storage bucket in the format: `gs:///`. The path inside the bucket is optional. */
   uri?: string;
 }
 
-export const SourceGcsBucket: Schema.Schema<SourceGcsBucket> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SourceGcsBucket",
-  }) as any as Schema.Schema<SourceGcsBucket>;
+export const SourceGcsBucket = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  uri: Schema.optional(Schema.String),
+}).annotate({ identifier: "SourceGcsBucket" });
 
 export interface Location {
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
@@ -226,16 +193,13 @@ export interface Location {
   metadata?: Record<string, unknown>;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      locationId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  locationId: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Location" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -244,29 +208,20 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(Location)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface DestinationParallelstore {
   /** Optional. Root directory path to the Paralellstore filesystem, starting with `/`. Defaults to `/` if unset. */
   path?: string;
 }
 
-export const DestinationParallelstore: Schema.Schema<DestinationParallelstore> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      path: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DestinationParallelstore",
-  }) as any as Schema.Schema<DestinationParallelstore>;
+export const DestinationParallelstore =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    path: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DestinationParallelstore" });
 
 export interface OperationMetadata {
   /** Output only. Server-defined resource path for the target of the operation. */
@@ -285,20 +240,15 @@ export interface OperationMetadata {
   verb?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      target: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-      apiVersion: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      verb: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  target: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  statusMessage: Schema.optional(Schema.String),
+  apiVersion: Schema.optional(Schema.String),
+  requestedCancellation: Schema.optional(Schema.Boolean),
+  verb: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationMetadata" });
 
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -309,16 +259,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -333,16 +280,13 @@ export interface Operation {
   metadata?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      error: Schema.optional(Status),
-      done: Schema.optional(Schema.Boolean),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  error: Schema.optional(Status),
+  done: Schema.optional(Schema.Boolean),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Operation" });
 
 export interface ImportDataRequest {
   /** Optional. The transfer metadata options for the import data. */
@@ -357,18 +301,13 @@ export interface ImportDataRequest {
   requestId?: string;
 }
 
-export const ImportDataRequest: Schema.Schema<ImportDataRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadataOptions: Schema.optional(TransferMetadataOptions),
-      destinationParallelstore: Schema.optional(DestinationParallelstore),
-      sourceGcsBucket: Schema.optional(SourceGcsBucket),
-      serviceAccount: Schema.optional(Schema.String),
-      requestId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ImportDataRequest",
-  }) as any as Schema.Schema<ImportDataRequest>;
+export const ImportDataRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metadataOptions: Schema.optional(TransferMetadataOptions),
+  destinationParallelstore: Schema.optional(DestinationParallelstore),
+  sourceGcsBucket: Schema.optional(SourceGcsBucket),
+  serviceAccount: Schema.optional(Schema.String),
+  requestId: Schema.optional(Schema.String),
+}).annotate({ identifier: "ImportDataRequest" });
 
 export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections e.g. when attempting to list all resources across all supported locations. */
@@ -379,16 +318,13 @@ export interface ListOperationsResponse {
   operations?: Array<Operation>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-      operations: Schema.optional(Schema.Array(Operation)),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+    operations: Schema.optional(Schema.Array(Operation)),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 export interface ReconciliationOperationMetadata {
   /** Excluisive action returned by the CLH. */
@@ -401,15 +337,11 @@ export interface ReconciliationOperationMetadata {
   deleteResource?: boolean;
 }
 
-export const ReconciliationOperationMetadata: Schema.Schema<ReconciliationOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      exclusiveAction: Schema.optional(Schema.String),
-      deleteResource: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ReconciliationOperationMetadata",
-  }) as any as Schema.Schema<ReconciliationOperationMetadata>;
+export const ReconciliationOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    exclusiveAction: Schema.optional(Schema.String),
+    deleteResource: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "ReconciliationOperationMetadata" });
 
 // ==========================================================================
 // Operations

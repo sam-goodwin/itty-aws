@@ -31,14 +31,11 @@ export interface Money {
   nanos?: number;
 }
 
-export const Money: Schema.Schema<Money> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      currencyCode: Schema.optional(Schema.String),
-      units: Schema.optional(Schema.String),
-      nanos: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Money" }) as any as Schema.Schema<Money>;
+export const Money = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  currencyCode: Schema.optional(Schema.String),
+  units: Schema.optional(Schema.String),
+  nanos: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Money" });
 
 export interface SavingsOverTime {
   /** Using the assumed discount rate, what is the present value of the cumulative 20-year savings? */
@@ -55,19 +52,14 @@ export interface SavingsOverTime {
   presentValueOfSavingsLifetime?: Money;
 }
 
-export const SavingsOverTime: Schema.Schema<SavingsOverTime> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      presentValueOfSavingsYear20: Schema.optional(Money),
-      savingsYear1: Schema.optional(Money),
-      savingsYear20: Schema.optional(Money),
-      financiallyViable: Schema.optional(Schema.Boolean),
-      savingsLifetime: Schema.optional(Money),
-      presentValueOfSavingsLifetime: Schema.optional(Money),
-    }),
-  ).annotate({
-    identifier: "SavingsOverTime",
-  }) as any as Schema.Schema<SavingsOverTime>;
+export const SavingsOverTime = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  presentValueOfSavingsYear20: Schema.optional(Money),
+  savingsYear1: Schema.optional(Money),
+  savingsYear20: Schema.optional(Money),
+  financiallyViable: Schema.optional(Schema.Boolean),
+  savingsLifetime: Schema.optional(Money),
+  presentValueOfSavingsLifetime: Schema.optional(Money),
+}).annotate({ identifier: "SavingsOverTime" });
 
 export interface Solar_Date {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
@@ -78,14 +70,11 @@ export interface Solar_Date {
   month?: number;
 }
 
-export const Solar_Date: Schema.Schema<Solar_Date> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      year: Schema.optional(Schema.Number),
-      day: Schema.optional(Schema.Number),
-      month: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Solar_Date" }) as any as Schema.Schema<Solar_Date>;
+export const Solar_Date = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  year: Schema.optional(Schema.Number),
+  day: Schema.optional(Schema.Number),
+  month: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Solar_Date" });
 
 export interface SizeAndSunshineStats {
   /** Quantiles of the pointwise sunniness across the area. If there are N values here, this represents the (N-1)-iles. For example, if there are 5 values, then they would be the quartiles (min, 25%, 50%, 75%, max). Values are in annual kWh/kW like max_sunshine_hours_per_year. */
@@ -96,16 +85,11 @@ export interface SizeAndSunshineStats {
   groundAreaMeters2?: number;
 }
 
-export const SizeAndSunshineStats: Schema.Schema<SizeAndSunshineStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sunshineQuantiles: Schema.optional(Schema.Array(Schema.Number)),
-      areaMeters2: Schema.optional(Schema.Number),
-      groundAreaMeters2: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "SizeAndSunshineStats",
-  }) as any as Schema.Schema<SizeAndSunshineStats>;
+export const SizeAndSunshineStats = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sunshineQuantiles: Schema.optional(Schema.Array(Schema.Number)),
+  areaMeters2: Schema.optional(Schema.Number),
+  groundAreaMeters2: Schema.optional(Schema.Number),
+}).annotate({ identifier: "SizeAndSunshineStats" });
 
 export interface CashPurchaseSavings {
   /** Initial cost after tax incentives: it's the amount that must be paid during first year. Contrast with `out_of_pocket_cost`, which is before tax incentives. */
@@ -120,18 +104,13 @@ export interface CashPurchaseSavings {
   paybackYears?: number;
 }
 
-export const CashPurchaseSavings: Schema.Schema<CashPurchaseSavings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      upfrontCost: Schema.optional(Money),
-      rebateValue: Schema.optional(Money),
-      outOfPocketCost: Schema.optional(Money),
-      savings: Schema.optional(SavingsOverTime),
-      paybackYears: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "CashPurchaseSavings",
-  }) as any as Schema.Schema<CashPurchaseSavings>;
+export const CashPurchaseSavings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  upfrontCost: Schema.optional(Money),
+  rebateValue: Schema.optional(Money),
+  outOfPocketCost: Schema.optional(Money),
+  savings: Schema.optional(SavingsOverTime),
+  paybackYears: Schema.optional(Schema.Number),
+}).annotate({ identifier: "CashPurchaseSavings" });
 
 export interface FinancialDetails {
   /** Whether net metering is allowed. */
@@ -156,23 +135,18 @@ export interface FinancialDetails {
   solarPercentage?: number;
 }
 
-export const FinancialDetails: Schema.Schema<FinancialDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      netMeteringAllowed: Schema.optional(Schema.Boolean),
-      federalIncentive: Schema.optional(Money),
-      percentageExportedToGrid: Schema.optional(Schema.Number),
-      costOfElectricityWithoutSolar: Schema.optional(Money),
-      initialAcKwhPerYear: Schema.optional(Schema.Number),
-      lifetimeSrecTotal: Schema.optional(Money),
-      remainingLifetimeUtilityBill: Schema.optional(Money),
-      utilityIncentive: Schema.optional(Money),
-      stateIncentive: Schema.optional(Money),
-      solarPercentage: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "FinancialDetails",
-  }) as any as Schema.Schema<FinancialDetails>;
+export const FinancialDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  netMeteringAllowed: Schema.optional(Schema.Boolean),
+  federalIncentive: Schema.optional(Money),
+  percentageExportedToGrid: Schema.optional(Schema.Number),
+  costOfElectricityWithoutSolar: Schema.optional(Money),
+  initialAcKwhPerYear: Schema.optional(Schema.Number),
+  lifetimeSrecTotal: Schema.optional(Money),
+  remainingLifetimeUtilityBill: Schema.optional(Money),
+  utilityIncentive: Schema.optional(Money),
+  stateIncentive: Schema.optional(Money),
+  solarPercentage: Schema.optional(Schema.Number),
+}).annotate({ identifier: "FinancialDetails" });
 
 export interface RoofSegmentSummary {
   /** Angle of the roof segment relative to the theoretical ground plane. 0 = parallel to the ground, 90 = perpendicular to the ground. */
@@ -187,18 +161,13 @@ export interface RoofSegmentSummary {
   panelsCount?: number;
 }
 
-export const RoofSegmentSummary: Schema.Schema<RoofSegmentSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pitchDegrees: Schema.optional(Schema.Number),
-      segmentIndex: Schema.optional(Schema.Number),
-      azimuthDegrees: Schema.optional(Schema.Number),
-      yearlyEnergyDcKwh: Schema.optional(Schema.Number),
-      panelsCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "RoofSegmentSummary",
-  }) as any as Schema.Schema<RoofSegmentSummary>;
+export const RoofSegmentSummary = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pitchDegrees: Schema.optional(Schema.Number),
+  segmentIndex: Schema.optional(Schema.Number),
+  azimuthDegrees: Schema.optional(Schema.Number),
+  yearlyEnergyDcKwh: Schema.optional(Schema.Number),
+  panelsCount: Schema.optional(Schema.Number),
+}).annotate({ identifier: "RoofSegmentSummary" });
 
 export interface LeasingSavings {
   /** Whether leases are supported in this juristiction by the financial calculation engine. If this field is false, then the values in this message should probably be ignored. This is independent of `leases_allowed`: in some areas leases are allowed, but under conditions that aren't handled by the financial models. */
@@ -211,17 +180,12 @@ export interface LeasingSavings {
   annualLeasingCost?: Money;
 }
 
-export const LeasingSavings: Schema.Schema<LeasingSavings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      leasesSupported: Schema.optional(Schema.Boolean),
-      savings: Schema.optional(SavingsOverTime),
-      leasesAllowed: Schema.optional(Schema.Boolean),
-      annualLeasingCost: Schema.optional(Money),
-    }),
-  ).annotate({
-    identifier: "LeasingSavings",
-  }) as any as Schema.Schema<LeasingSavings>;
+export const LeasingSavings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  leasesSupported: Schema.optional(Schema.Boolean),
+  savings: Schema.optional(SavingsOverTime),
+  leasesAllowed: Schema.optional(Schema.Boolean),
+  annualLeasingCost: Schema.optional(Money),
+}).annotate({ identifier: "LeasingSavings" });
 
 export interface DataLayers {
   /** When the source imagery (from which all the other data are derived) in this region was taken. It is necessarily somewhat approximate, as the images may have been taken over more than one day. */
@@ -250,20 +214,17 @@ export interface DataLayers {
     | (string & {});
 }
 
-export const DataLayers: Schema.Schema<DataLayers> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      imageryDate: Schema.optional(Solar_Date),
-      imageryProcessedDate: Schema.optional(Solar_Date),
-      maskUrl: Schema.optional(Schema.String),
-      annualFluxUrl: Schema.optional(Schema.String),
-      monthlyFluxUrl: Schema.optional(Schema.String),
-      dsmUrl: Schema.optional(Schema.String),
-      rgbUrl: Schema.optional(Schema.String),
-      hourlyShadeUrls: Schema.optional(Schema.Array(Schema.String)),
-      imageryQuality: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "DataLayers" }) as any as Schema.Schema<DataLayers>;
+export const DataLayers = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  imageryDate: Schema.optional(Solar_Date),
+  imageryProcessedDate: Schema.optional(Solar_Date),
+  maskUrl: Schema.optional(Schema.String),
+  annualFluxUrl: Schema.optional(Schema.String),
+  monthlyFluxUrl: Schema.optional(Schema.String),
+  dsmUrl: Schema.optional(Schema.String),
+  rgbUrl: Schema.optional(Schema.String),
+  hourlyShadeUrls: Schema.optional(Schema.Array(Schema.String)),
+  imageryQuality: Schema.optional(Schema.String),
+}).annotate({ identifier: "DataLayers" });
 
 export interface HttpBody {
   /** The HTTP Content-Type header value specifying the content type of the body. */
@@ -274,16 +235,13 @@ export interface HttpBody {
   extensions?: Array<Record<string, unknown>>;
 }
 
-export const HttpBody: Schema.Schema<HttpBody> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contentType: Schema.optional(Schema.String),
-      data: Schema.optional(Schema.String),
-      extensions: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "HttpBody" }) as any as Schema.Schema<HttpBody>;
+export const HttpBody = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  contentType: Schema.optional(Schema.String),
+  data: Schema.optional(Schema.String),
+  extensions: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "HttpBody" });
 
 export interface LatLng {
   /** The latitude in degrees. It must be in the range [-90.0, +90.0]. */
@@ -292,13 +250,10 @@ export interface LatLng {
   longitude?: number;
 }
 
-export const LatLng: Schema.Schema<LatLng> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      latitude: Schema.optional(Schema.Number),
-      longitude: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "LatLng" }) as any as Schema.Schema<LatLng>;
+export const LatLng = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  latitude: Schema.optional(Schema.Number),
+  longitude: Schema.optional(Schema.Number),
+}).annotate({ identifier: "LatLng" });
 
 export interface LatLngBox {
   /** The southwest corner of the box. */
@@ -307,13 +262,10 @@ export interface LatLngBox {
   ne?: LatLng;
 }
 
-export const LatLngBox: Schema.Schema<LatLngBox> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sw: Schema.optional(LatLng),
-      ne: Schema.optional(LatLng),
-    }),
-  ).annotate({ identifier: "LatLngBox" }) as any as Schema.Schema<LatLngBox>;
+export const LatLngBox = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sw: Schema.optional(LatLng),
+  ne: Schema.optional(LatLng),
+}).annotate({ identifier: "LatLngBox" });
 
 export interface RoofSegmentSizeAndSunshineStats {
   /** Total size and sunlight quantiles for the roof segment. */
@@ -330,19 +282,15 @@ export interface RoofSegmentSizeAndSunshineStats {
   planeHeightAtCenterMeters?: number;
 }
 
-export const RoofSegmentSizeAndSunshineStats: Schema.Schema<RoofSegmentSizeAndSunshineStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stats: Schema.optional(SizeAndSunshineStats),
-      pitchDegrees: Schema.optional(Schema.Number),
-      center: Schema.optional(LatLng),
-      azimuthDegrees: Schema.optional(Schema.Number),
-      boundingBox: Schema.optional(LatLngBox),
-      planeHeightAtCenterMeters: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "RoofSegmentSizeAndSunshineStats",
-  }) as any as Schema.Schema<RoofSegmentSizeAndSunshineStats>;
+export const RoofSegmentSizeAndSunshineStats =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    stats: Schema.optional(SizeAndSunshineStats),
+    pitchDegrees: Schema.optional(Schema.Number),
+    center: Schema.optional(LatLng),
+    azimuthDegrees: Schema.optional(Schema.Number),
+    boundingBox: Schema.optional(LatLngBox),
+    planeHeightAtCenterMeters: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "RoofSegmentSizeAndSunshineStats" });
 
 export interface SolarPanelConfig {
   /** Total number of panels. Note that this is redundant to (the sum of) the corresponding fields in roof_segment_summaries. */
@@ -353,16 +301,11 @@ export interface SolarPanelConfig {
   roofSegmentSummaries?: Array<RoofSegmentSummary>;
 }
 
-export const SolarPanelConfig: Schema.Schema<SolarPanelConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      panelsCount: Schema.optional(Schema.Number),
-      yearlyEnergyDcKwh: Schema.optional(Schema.Number),
-      roofSegmentSummaries: Schema.optional(Schema.Array(RoofSegmentSummary)),
-    }),
-  ).annotate({
-    identifier: "SolarPanelConfig",
-  }) as any as Schema.Schema<SolarPanelConfig>;
+export const SolarPanelConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  panelsCount: Schema.optional(Schema.Number),
+  yearlyEnergyDcKwh: Schema.optional(Schema.Number),
+  roofSegmentSummaries: Schema.optional(Schema.Array(RoofSegmentSummary)),
+}).annotate({ identifier: "SolarPanelConfig" });
 
 export interface SolarPanel {
   /** The orientation of the panel. */
@@ -379,15 +322,12 @@ export interface SolarPanel {
   segmentIndex?: number;
 }
 
-export const SolarPanel: Schema.Schema<SolarPanel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      orientation: Schema.optional(Schema.String),
-      yearlyEnergyDcKwh: Schema.optional(Schema.Number),
-      center: Schema.optional(LatLng),
-      segmentIndex: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "SolarPanel" }) as any as Schema.Schema<SolarPanel>;
+export const SolarPanel = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  orientation: Schema.optional(Schema.String),
+  yearlyEnergyDcKwh: Schema.optional(Schema.Number),
+  center: Schema.optional(LatLng),
+  segmentIndex: Schema.optional(Schema.Number),
+}).annotate({ identifier: "SolarPanel" });
 
 export interface FinancedPurchaseSavings {
   /** Annual loan payments. */
@@ -400,17 +340,13 @@ export interface FinancedPurchaseSavings {
   savings?: SavingsOverTime;
 }
 
-export const FinancedPurchaseSavings: Schema.Schema<FinancedPurchaseSavings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      annualLoanPayment: Schema.optional(Money),
-      rebateValue: Schema.optional(Money),
-      loanInterestRate: Schema.optional(Schema.Number),
-      savings: Schema.optional(SavingsOverTime),
-    }),
-  ).annotate({
-    identifier: "FinancedPurchaseSavings",
-  }) as any as Schema.Schema<FinancedPurchaseSavings>;
+export const FinancedPurchaseSavings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    annualLoanPayment: Schema.optional(Money),
+    rebateValue: Schema.optional(Money),
+    loanInterestRate: Schema.optional(Schema.Number),
+    savings: Schema.optional(SavingsOverTime),
+  }).annotate({ identifier: "FinancedPurchaseSavings" });
 
 export interface FinancialAnalysis {
   /** Cost and benefit of buying the solar panels with cash. */
@@ -431,21 +367,16 @@ export interface FinancialAnalysis {
   averageKwhPerMonth?: number;
 }
 
-export const FinancialAnalysis: Schema.Schema<FinancialAnalysis> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cashPurchaseSavings: Schema.optional(CashPurchaseSavings),
-      financedPurchaseSavings: Schema.optional(FinancedPurchaseSavings),
-      financialDetails: Schema.optional(FinancialDetails),
-      panelConfigIndex: Schema.optional(Schema.Number),
-      leasingSavings: Schema.optional(LeasingSavings),
-      monthlyBill: Schema.optional(Money),
-      defaultBill: Schema.optional(Schema.Boolean),
-      averageKwhPerMonth: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "FinancialAnalysis",
-  }) as any as Schema.Schema<FinancialAnalysis>;
+export const FinancialAnalysis = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cashPurchaseSavings: Schema.optional(CashPurchaseSavings),
+  financedPurchaseSavings: Schema.optional(FinancedPurchaseSavings),
+  financialDetails: Schema.optional(FinancialDetails),
+  panelConfigIndex: Schema.optional(Schema.Number),
+  leasingSavings: Schema.optional(LeasingSavings),
+  monthlyBill: Schema.optional(Money),
+  defaultBill: Schema.optional(Schema.Boolean),
+  averageKwhPerMonth: Schema.optional(Schema.Number),
+}).annotate({ identifier: "FinancialAnalysis" });
 
 export interface SolarPotential {
   /** Size and sunlight quantiles for the entire building, including parts of the roof that were not assigned to some roof segment. Because the orientations of these parts are not well characterised, the roof area estimate is unreliable, but the ground area estimate is reliable. It may be that a more reliable whole building roof area can be obtained by scaling the roof area from whole_roof_stats by the ratio of the ground areas of `building_stats` and `whole_roof_stats`. */
@@ -478,29 +409,24 @@ export interface SolarPotential {
   financialAnalyses?: Array<FinancialAnalysis>;
 }
 
-export const SolarPotential: Schema.Schema<SolarPotential> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      buildingStats: Schema.optional(SizeAndSunshineStats),
-      wholeRoofStats: Schema.optional(SizeAndSunshineStats),
-      roofSegmentStats: Schema.optional(
-        Schema.Array(RoofSegmentSizeAndSunshineStats),
-      ),
-      solarPanelConfigs: Schema.optional(Schema.Array(SolarPanelConfig)),
-      maxArrayPanelsCount: Schema.optional(Schema.Number),
-      maxSunshineHoursPerYear: Schema.optional(Schema.Number),
-      panelHeightMeters: Schema.optional(Schema.Number),
-      maxArrayAreaMeters2: Schema.optional(Schema.Number),
-      carbonOffsetFactorKgPerMwh: Schema.optional(Schema.Number),
-      panelLifetimeYears: Schema.optional(Schema.Number),
-      panelCapacityWatts: Schema.optional(Schema.Number),
-      solarPanels: Schema.optional(Schema.Array(SolarPanel)),
-      panelWidthMeters: Schema.optional(Schema.Number),
-      financialAnalyses: Schema.optional(Schema.Array(FinancialAnalysis)),
-    }),
-  ).annotate({
-    identifier: "SolarPotential",
-  }) as any as Schema.Schema<SolarPotential>;
+export const SolarPotential = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  buildingStats: Schema.optional(SizeAndSunshineStats),
+  wholeRoofStats: Schema.optional(SizeAndSunshineStats),
+  roofSegmentStats: Schema.optional(
+    Schema.Array(RoofSegmentSizeAndSunshineStats),
+  ),
+  solarPanelConfigs: Schema.optional(Schema.Array(SolarPanelConfig)),
+  maxArrayPanelsCount: Schema.optional(Schema.Number),
+  maxSunshineHoursPerYear: Schema.optional(Schema.Number),
+  panelHeightMeters: Schema.optional(Schema.Number),
+  maxArrayAreaMeters2: Schema.optional(Schema.Number),
+  carbonOffsetFactorKgPerMwh: Schema.optional(Schema.Number),
+  panelLifetimeYears: Schema.optional(Schema.Number),
+  panelCapacityWatts: Schema.optional(Schema.Number),
+  solarPanels: Schema.optional(Schema.Array(SolarPanel)),
+  panelWidthMeters: Schema.optional(Schema.Number),
+  financialAnalyses: Schema.optional(Schema.Array(FinancialAnalysis)),
+}).annotate({ identifier: "SolarPotential" });
 
 export interface BuildingInsights {
   /** Solar potential of the building. */
@@ -533,24 +459,19 @@ export interface BuildingInsights {
   statisticalArea?: string;
 }
 
-export const BuildingInsights: Schema.Schema<BuildingInsights> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      solarPotential: Schema.optional(SolarPotential),
-      center: Schema.optional(LatLng),
-      administrativeArea: Schema.optional(Schema.String),
-      postalCode: Schema.optional(Schema.String),
-      regionCode: Schema.optional(Schema.String),
-      imageryQuality: Schema.optional(Schema.String),
-      imageryDate: Schema.optional(Solar_Date),
-      name: Schema.optional(Schema.String),
-      imageryProcessedDate: Schema.optional(Solar_Date),
-      boundingBox: Schema.optional(LatLngBox),
-      statisticalArea: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BuildingInsights",
-  }) as any as Schema.Schema<BuildingInsights>;
+export const BuildingInsights = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  solarPotential: Schema.optional(SolarPotential),
+  center: Schema.optional(LatLng),
+  administrativeArea: Schema.optional(Schema.String),
+  postalCode: Schema.optional(Schema.String),
+  regionCode: Schema.optional(Schema.String),
+  imageryQuality: Schema.optional(Schema.String),
+  imageryDate: Schema.optional(Solar_Date),
+  name: Schema.optional(Schema.String),
+  imageryProcessedDate: Schema.optional(Solar_Date),
+  boundingBox: Schema.optional(LatLngBox),
+  statisticalArea: Schema.optional(Schema.String),
+}).annotate({ identifier: "BuildingInsights" });
 
 // ==========================================================================
 // Operations

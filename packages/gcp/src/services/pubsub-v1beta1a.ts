@@ -27,12 +27,9 @@ export interface Topic {
   name?: string;
 }
 
-export const Topic: Schema.Schema<Topic> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Topic" }) as any as Schema.Schema<Topic>;
+export const Topic = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Topic" });
 
 export interface Label {
   /** The key of a label is a syntactically valid URL (as per RFC 1738) with the "scheme" and initial slashes omitted and with the additional restrictions noted below. Each key should be globally unique. The "host" portion is called the "namespace" and is not necessarily resolvable to a network endpoint. Instead, the namespace indicates what system or entity defines the semantics of the label. Namespaces do not restrict the set of objects to which a label may be associated. Keys are defined by the following grammar: key = hostname "/" kpath kpath = ksegment *[ "/" ksegment ] ksegment = alphadigit | *[ alphadigit | "-" | "_" | "." ] where "hostname" and "alphadigit" are defined as in RFC 1738. Example key: spanner.google.com/universe */
@@ -43,14 +40,11 @@ export interface Label {
   numValue?: string;
 }
 
-export const Label: Schema.Schema<Label> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      key: Schema.optional(Schema.String),
-      strValue: Schema.optional(Schema.String),
-      numValue: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Label" }) as any as Schema.Schema<Label>;
+export const Label = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  key: Schema.optional(Schema.String),
+  strValue: Schema.optional(Schema.String),
+  numValue: Schema.optional(Schema.String),
+}).annotate({ identifier: "Label" });
 
 export interface PubsubMessage {
   /** The message payload. */
@@ -63,17 +57,12 @@ export interface PubsubMessage {
   publishTime?: string;
 }
 
-export const PubsubMessage: Schema.Schema<PubsubMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      data: Schema.optional(Schema.String),
-      label: Schema.optional(Schema.Array(Label)),
-      messageId: Schema.optional(Schema.String),
-      publishTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PubsubMessage",
-  }) as any as Schema.Schema<PubsubMessage>;
+export const PubsubMessage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  data: Schema.optional(Schema.String),
+  label: Schema.optional(Schema.Array(Label)),
+  messageId: Schema.optional(Schema.String),
+  publishTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "PubsubMessage" });
 
 export interface PublishRequest {
   /** The message in the request will be published on this topic. */
@@ -82,22 +71,16 @@ export interface PublishRequest {
   message?: PubsubMessage;
 }
 
-export const PublishRequest: Schema.Schema<PublishRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      topic: Schema.optional(Schema.String),
-      message: Schema.optional(PubsubMessage),
-    }),
-  ).annotate({
-    identifier: "PublishRequest",
-  }) as any as Schema.Schema<PublishRequest>;
+export const PublishRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  topic: Schema.optional(Schema.String),
+  message: Schema.optional(PubsubMessage),
+}).annotate({ identifier: "PublishRequest" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface PublishBatchRequest {
   /** The messages in the request will be published on this topic. */
@@ -106,29 +89,19 @@ export interface PublishBatchRequest {
   messages?: Array<PubsubMessage>;
 }
 
-export const PublishBatchRequest: Schema.Schema<PublishBatchRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      topic: Schema.optional(Schema.String),
-      messages: Schema.optional(Schema.Array(PubsubMessage)),
-    }),
-  ).annotate({
-    identifier: "PublishBatchRequest",
-  }) as any as Schema.Schema<PublishBatchRequest>;
+export const PublishBatchRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  topic: Schema.optional(Schema.String),
+  messages: Schema.optional(Schema.Array(PubsubMessage)),
+}).annotate({ identifier: "PublishBatchRequest" });
 
 export interface PublishBatchResponse {
   /** The server-assigned ID of each published message, in the same order as the messages in the request. IDs are guaranteed to be unique within the topic. */
   messageIds?: Array<string>;
 }
 
-export const PublishBatchResponse: Schema.Schema<PublishBatchResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      messageIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "PublishBatchResponse",
-  }) as any as Schema.Schema<PublishBatchResponse>;
+export const PublishBatchResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  messageIds: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "PublishBatchResponse" });
 
 export interface ListTopicsResponse {
   /** The resulting topics. */
@@ -137,27 +110,19 @@ export interface ListTopicsResponse {
   nextPageToken?: string;
 }
 
-export const ListTopicsResponse: Schema.Schema<ListTopicsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      topic: Schema.optional(Schema.Array(Topic)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListTopicsResponse",
-  }) as any as Schema.Schema<ListTopicsResponse>;
+export const ListTopicsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  topic: Schema.optional(Schema.Array(Topic)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListTopicsResponse" });
 
 export interface PushConfig {
   /** A URL locating the endpoint to which messages should be pushed. For example, a Webhook endpoint might use "https://example.com/push". */
   pushEndpoint?: string;
 }
 
-export const PushConfig: Schema.Schema<PushConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pushEndpoint: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "PushConfig" }) as any as Schema.Schema<PushConfig>;
+export const PushConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pushEndpoint: Schema.optional(Schema.String),
+}).annotate({ identifier: "PushConfig" });
 
 export interface Subscription {
   /** Name of the subscription. */
@@ -170,17 +135,12 @@ export interface Subscription {
   ackDeadlineSeconds?: number;
 }
 
-export const Subscription: Schema.Schema<Subscription> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      topic: Schema.optional(Schema.String),
-      pushConfig: Schema.optional(PushConfig),
-      ackDeadlineSeconds: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "Subscription",
-  }) as any as Schema.Schema<Subscription>;
+export const Subscription = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  topic: Schema.optional(Schema.String),
+  pushConfig: Schema.optional(PushConfig),
+  ackDeadlineSeconds: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Subscription" });
 
 export interface ListSubscriptionsResponse {
   /** The subscriptions that match the request. */
@@ -189,15 +149,11 @@ export interface ListSubscriptionsResponse {
   nextPageToken?: string;
 }
 
-export const ListSubscriptionsResponse: Schema.Schema<ListSubscriptionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subscription: Schema.optional(Schema.Array(Subscription)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListSubscriptionsResponse",
-  }) as any as Schema.Schema<ListSubscriptionsResponse>;
+export const ListSubscriptionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscription: Schema.optional(Schema.Array(Subscription)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListSubscriptionsResponse" });
 
 export interface ModifyPushConfigRequest {
   /** The name of the subscription. */
@@ -206,15 +162,11 @@ export interface ModifyPushConfigRequest {
   pushConfig?: PushConfig;
 }
 
-export const ModifyPushConfigRequest: Schema.Schema<ModifyPushConfigRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subscription: Schema.optional(Schema.String),
-      pushConfig: Schema.optional(PushConfig),
-    }),
-  ).annotate({
-    identifier: "ModifyPushConfigRequest",
-  }) as any as Schema.Schema<ModifyPushConfigRequest>;
+export const ModifyPushConfigRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscription: Schema.optional(Schema.String),
+    pushConfig: Schema.optional(PushConfig),
+  }).annotate({ identifier: "ModifyPushConfigRequest" });
 
 export interface PullRequest {
   /** The subscription from which a message should be pulled. */
@@ -223,15 +175,10 @@ export interface PullRequest {
   returnImmediately?: boolean;
 }
 
-export const PullRequest: Schema.Schema<PullRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subscription: Schema.optional(Schema.String),
-      returnImmediately: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "PullRequest",
-  }) as any as Schema.Schema<PullRequest>;
+export const PullRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscription: Schema.optional(Schema.String),
+  returnImmediately: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "PullRequest" });
 
 export interface PubsubEvent {
   /** The subscription that received the event. */
@@ -244,17 +191,12 @@ export interface PubsubEvent {
   deleted?: boolean;
 }
 
-export const PubsubEvent: Schema.Schema<PubsubEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subscription: Schema.optional(Schema.String),
-      message: Schema.optional(PubsubMessage),
-      truncated: Schema.optional(Schema.Boolean),
-      deleted: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "PubsubEvent",
-  }) as any as Schema.Schema<PubsubEvent>;
+export const PubsubEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscription: Schema.optional(Schema.String),
+  message: Schema.optional(PubsubMessage),
+  truncated: Schema.optional(Schema.Boolean),
+  deleted: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "PubsubEvent" });
 
 export interface PullResponse {
   /** This ID must be used to acknowledge the received event or message. */
@@ -263,15 +205,10 @@ export interface PullResponse {
   pubsubEvent?: PubsubEvent;
 }
 
-export const PullResponse: Schema.Schema<PullResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ackId: Schema.optional(Schema.String),
-      pubsubEvent: Schema.optional(PubsubEvent),
-    }),
-  ).annotate({
-    identifier: "PullResponse",
-  }) as any as Schema.Schema<PullResponse>;
+export const PullResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ackId: Schema.optional(Schema.String),
+  pubsubEvent: Schema.optional(PubsubEvent),
+}).annotate({ identifier: "PullResponse" });
 
 export interface PullBatchRequest {
   /** The subscription from which messages should be pulled. */
@@ -282,30 +219,20 @@ export interface PullBatchRequest {
   maxEvents?: number;
 }
 
-export const PullBatchRequest: Schema.Schema<PullBatchRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subscription: Schema.optional(Schema.String),
-      returnImmediately: Schema.optional(Schema.Boolean),
-      maxEvents: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "PullBatchRequest",
-  }) as any as Schema.Schema<PullBatchRequest>;
+export const PullBatchRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscription: Schema.optional(Schema.String),
+  returnImmediately: Schema.optional(Schema.Boolean),
+  maxEvents: Schema.optional(Schema.Number),
+}).annotate({ identifier: "PullBatchRequest" });
 
 export interface PullBatchResponse {
   /** Received Pub/Sub messages or status events. The Pub/Sub system will return zero messages if there are no more messages available in the backlog. The Pub/Sub system may return fewer than the max_events requested even if there are more messages available in the backlog. */
   pullResponses?: Array<PullResponse>;
 }
 
-export const PullBatchResponse: Schema.Schema<PullBatchResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pullResponses: Schema.optional(Schema.Array(PullResponse)),
-    }),
-  ).annotate({
-    identifier: "PullBatchResponse",
-  }) as any as Schema.Schema<PullBatchResponse>;
+export const PullBatchResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pullResponses: Schema.optional(Schema.Array(PullResponse)),
+}).annotate({ identifier: "PullBatchResponse" });
 
 export interface ModifyAckDeadlineRequest {
   /** Next Index: 5 The name of the subscription from which messages are being pulled. */
@@ -318,17 +245,13 @@ export interface ModifyAckDeadlineRequest {
   ackDeadlineSeconds?: number;
 }
 
-export const ModifyAckDeadlineRequest: Schema.Schema<ModifyAckDeadlineRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subscription: Schema.optional(Schema.String),
-      ackId: Schema.optional(Schema.String),
-      ackIds: Schema.optional(Schema.Array(Schema.String)),
-      ackDeadlineSeconds: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "ModifyAckDeadlineRequest",
-  }) as any as Schema.Schema<ModifyAckDeadlineRequest>;
+export const ModifyAckDeadlineRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscription: Schema.optional(Schema.String),
+    ackId: Schema.optional(Schema.String),
+    ackIds: Schema.optional(Schema.Array(Schema.String)),
+    ackDeadlineSeconds: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "ModifyAckDeadlineRequest" });
 
 export interface AcknowledgeRequest {
   /** The subscription whose message is being acknowledged. */
@@ -337,15 +260,10 @@ export interface AcknowledgeRequest {
   ackId?: Array<string>;
 }
 
-export const AcknowledgeRequest: Schema.Schema<AcknowledgeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subscription: Schema.optional(Schema.String),
-      ackId: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AcknowledgeRequest",
-  }) as any as Schema.Schema<AcknowledgeRequest>;
+export const AcknowledgeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscription: Schema.optional(Schema.String),
+  ackId: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "AcknowledgeRequest" });
 
 // ==========================================================================
 // Operations

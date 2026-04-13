@@ -29,15 +29,10 @@ export interface SignJwtResponse {
   signedJwt?: string;
 }
 
-export const SignJwtResponse: Schema.Schema<SignJwtResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      keyId: Schema.optional(Schema.String),
-      signedJwt: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SignJwtResponse",
-  }) as any as Schema.Schema<SignJwtResponse>;
+export const SignJwtResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  keyId: Schema.optional(Schema.String),
+  signedJwt: Schema.optional(Schema.String),
+}).annotate({ identifier: "SignJwtResponse" });
 
 export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
@@ -48,16 +43,13 @@ export interface Status {
   code?: number;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      message: Schema.optional(Schema.String),
-      code: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  message: Schema.optional(Schema.String),
+  code: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Status" });
 
 export interface ExtendedStatus {
   /** The key for this extended status. */
@@ -70,15 +62,10 @@ export interface ExtendedStatus {
   value?: string;
 }
 
-export const ExtendedStatus: Schema.Schema<ExtendedStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      key: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ExtendedStatus",
-  }) as any as Schema.Schema<ExtendedStatus>;
+export const ExtendedStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  key: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+}).annotate({ identifier: "ExtendedStatus" });
 
 export interface ServiceAccountKey {
   /** The private key data. Only provided in `CreateServiceAccountKey` responses. Make sure to keep the private key data secure because it allows for the assertion of the service account identity. When base64 decoded, the private key data can be used to authenticate with Google API client libraries and with gcloud auth activate-service-account. */
@@ -128,25 +115,20 @@ export interface ServiceAccountKey {
     | (string & {});
 }
 
-export const ServiceAccountKey: Schema.Schema<ServiceAccountKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      privateKeyData: Schema.optional(Schema.String),
-      keyType: Schema.optional(Schema.String),
-      validBeforeTime: Schema.optional(Schema.String),
-      extendedStatus: Schema.optional(Schema.Array(ExtendedStatus)),
-      publicKeyData: Schema.optional(Schema.String),
-      keyOrigin: Schema.optional(Schema.String),
-      validAfterTime: Schema.optional(Schema.String),
-      disableReason: Schema.optional(Schema.String),
-      privateKeyType: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      disabled: Schema.optional(Schema.Boolean),
-      keyAlgorithm: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ServiceAccountKey",
-  }) as any as Schema.Schema<ServiceAccountKey>;
+export const ServiceAccountKey = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  privateKeyData: Schema.optional(Schema.String),
+  keyType: Schema.optional(Schema.String),
+  validBeforeTime: Schema.optional(Schema.String),
+  extendedStatus: Schema.optional(Schema.Array(ExtendedStatus)),
+  publicKeyData: Schema.optional(Schema.String),
+  keyOrigin: Schema.optional(Schema.String),
+  validAfterTime: Schema.optional(Schema.String),
+  disableReason: Schema.optional(Schema.String),
+  privateKeyType: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  disabled: Schema.optional(Schema.Boolean),
+  keyAlgorithm: Schema.optional(Schema.String),
+}).annotate({ identifier: "ServiceAccountKey" });
 
 export interface OperationMetadata {
   /** Output only. The time the operation finished running. */
@@ -165,20 +147,15 @@ export interface OperationMetadata {
   cancelRequested?: boolean;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endTime: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      statusDetail: Schema.optional(Schema.String),
-      apiVersion: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      cancelRequested: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  endTime: Schema.optional(Schema.String),
+  verb: Schema.optional(Schema.String),
+  statusDetail: Schema.optional(Schema.String),
+  apiVersion: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  cancelRequested: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "OperationMetadata" });
 
 export interface AuditLogConfig {
   /** The log type that this config enables. */
@@ -192,15 +169,10 @@ export interface AuditLogConfig {
   exemptedMembers?: Array<string>;
 }
 
-export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      logType: Schema.optional(Schema.String),
-      exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AuditLogConfig",
-  }) as any as Schema.Schema<AuditLogConfig>;
+export const AuditLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  logType: Schema.optional(Schema.String),
+  exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "AuditLogConfig" });
 
 export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
@@ -209,43 +181,28 @@ export interface AuditConfig {
   auditLogConfigs?: Array<AuditLogConfig>;
 }
 
-export const AuditConfig: Schema.Schema<AuditConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      service: Schema.optional(Schema.String),
-      auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
-    }),
-  ).annotate({
-    identifier: "AuditConfig",
-  }) as any as Schema.Schema<AuditConfig>;
+export const AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  service: Schema.optional(Schema.String),
+  auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
+}).annotate({ identifier: "AuditConfig" });
 
 export interface IntermediateCA {
   /** PEM certificate of the PKI used for validation. Must only contain one ca certificate. */
   pemCertificate?: string;
 }
 
-export const IntermediateCA: Schema.Schema<IntermediateCA> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pemCertificate: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "IntermediateCA",
-  }) as any as Schema.Schema<IntermediateCA>;
+export const IntermediateCA = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pemCertificate: Schema.optional(Schema.String),
+}).annotate({ identifier: "IntermediateCA" });
 
 export interface TrustAnchor {
   /** PEM certificate of the PKI used for validation. Must only contain one ca certificate (either root or intermediate cert). */
   pemCertificate?: string;
 }
 
-export const TrustAnchor: Schema.Schema<TrustAnchor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pemCertificate: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TrustAnchor",
-  }) as any as Schema.Schema<TrustAnchor>;
+export const TrustAnchor = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pemCertificate: Schema.optional(Schema.String),
+}).annotate({ identifier: "TrustAnchor" });
 
 export interface TrustStore {
   /** Optional. Set of intermediate CA certificates used for building the trust chain to the trust anchor. Important: Intermediate CAs are only supported for X.509 federation. */
@@ -256,30 +213,22 @@ export interface TrustStore {
   trustDefaultSharedCa?: boolean;
 }
 
-export const TrustStore: Schema.Schema<TrustStore> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      intermediateCas: Schema.optional(Schema.Array(IntermediateCA)),
-      trustAnchors: Schema.optional(Schema.Array(TrustAnchor)),
-      trustDefaultSharedCa: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "TrustStore" }) as any as Schema.Schema<TrustStore>;
+export const TrustStore = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  intermediateCas: Schema.optional(Schema.Array(IntermediateCA)),
+  trustAnchors: Schema.optional(Schema.Array(TrustAnchor)),
+  trustDefaultSharedCa: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "TrustStore" });
 
 export interface InlineTrustConfig {
   /** Optional. Maps specific trust domains (e.g., "example.com") to their corresponding TrustStore, which contain the trusted root certificates for that domain. There can be a maximum of 10 trust domain entries in this map. Note that a trust domain automatically trusts itself and don't need to be specified here. If however, this WorkloadIdentityPool's trust domain contains any trust anchors in the additional_trust_bundles map, those trust anchors will be *appended to* the trust bundle automatically derived from your InlineCertificateIssuanceConfig's ca_pools. */
   additionalTrustBundles?: Record<string, TrustStore>;
 }
 
-export const InlineTrustConfig: Schema.Schema<InlineTrustConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      additionalTrustBundles: Schema.optional(
-        Schema.Record(Schema.String, TrustStore),
-      ),
-    }),
-  ).annotate({
-    identifier: "InlineTrustConfig",
-  }) as any as Schema.Schema<InlineTrustConfig>;
+export const InlineTrustConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  additionalTrustBundles: Schema.optional(
+    Schema.Record(Schema.String, TrustStore),
+  ),
+}).annotate({ identifier: "InlineTrustConfig" });
 
 export interface InlineCertificateIssuanceConfig {
   /** Optional. Rotation window percentage, the percentage of remaining lifetime after which certificate rotation is initiated. Must be between 50 and 80. If no value is specified, rotation window percentage is defaulted to 50. */
@@ -301,18 +250,14 @@ export interface InlineCertificateIssuanceConfig {
     | (string & {});
 }
 
-export const InlineCertificateIssuanceConfig: Schema.Schema<InlineCertificateIssuanceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rotationWindowPercentage: Schema.optional(Schema.Number),
-      caPools: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      useDefaultSharedCa: Schema.optional(Schema.Boolean),
-      lifetime: Schema.optional(Schema.String),
-      keyAlgorithm: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InlineCertificateIssuanceConfig",
-  }) as any as Schema.Schema<InlineCertificateIssuanceConfig>;
+export const InlineCertificateIssuanceConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rotationWindowPercentage: Schema.optional(Schema.Number),
+    caPools: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    useDefaultSharedCa: Schema.optional(Schema.Boolean),
+    lifetime: Schema.optional(Schema.String),
+    keyAlgorithm: Schema.optional(Schema.String),
+  }).annotate({ identifier: "InlineCertificateIssuanceConfig" });
 
 export interface WorkloadIdentityPool {
   /** Optional. A description of the pool. Cannot exceed 256 characters. */
@@ -340,24 +285,19 @@ export interface WorkloadIdentityPool {
   expireTime?: string;
 }
 
-export const WorkloadIdentityPool: Schema.Schema<WorkloadIdentityPool> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      mode: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      disabled: Schema.optional(Schema.Boolean),
-      inlineTrustConfig: Schema.optional(InlineTrustConfig),
-      inlineCertificateIssuanceConfig: Schema.optional(
-        InlineCertificateIssuanceConfig,
-      ),
-      displayName: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      expireTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WorkloadIdentityPool",
-  }) as any as Schema.Schema<WorkloadIdentityPool>;
+export const WorkloadIdentityPool = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  mode: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  disabled: Schema.optional(Schema.Boolean),
+  inlineTrustConfig: Schema.optional(InlineTrustConfig),
+  inlineCertificateIssuanceConfig: Schema.optional(
+    InlineCertificateIssuanceConfig,
+  ),
+  displayName: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  expireTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "WorkloadIdentityPool" });
 
 export interface ListWorkloadIdentityPoolsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -366,53 +306,38 @@ export interface ListWorkloadIdentityPoolsResponse {
   workloadIdentityPools?: Array<WorkloadIdentityPool>;
 }
 
-export const ListWorkloadIdentityPoolsResponse: Schema.Schema<ListWorkloadIdentityPoolsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      workloadIdentityPools: Schema.optional(
-        Schema.Array(WorkloadIdentityPool),
-      ),
-    }),
-  ).annotate({
-    identifier: "ListWorkloadIdentityPoolsResponse",
-  }) as any as Schema.Schema<ListWorkloadIdentityPoolsResponse>;
+export const ListWorkloadIdentityPoolsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    workloadIdentityPools: Schema.optional(Schema.Array(WorkloadIdentityPool)),
+  }).annotate({ identifier: "ListWorkloadIdentityPoolsResponse" });
 
 export interface Aws {
   /** Required. The AWS account ID. */
   accountId?: string;
 }
 
-export const Aws: Schema.Schema<Aws> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accountId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Aws" }) as any as Schema.Schema<Aws>;
+export const Aws = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  accountId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Aws" });
 
 export interface X509 {
   /** Required. A TrustStore. Use this trust store as a wrapper to config the trust anchor and optional intermediate cas to help build the trust chain for the incoming end entity certificate. Follow the X.509 guidelines to define those PEM encoded certs. Only one trust store is currently supported. */
   trustStore?: TrustStore;
 }
 
-export const X509: Schema.Schema<X509> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      trustStore: Schema.optional(TrustStore),
-    }),
-  ).annotate({ identifier: "X509" }) as any as Schema.Schema<X509>;
+export const X509 = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  trustStore: Schema.optional(TrustStore),
+}).annotate({ identifier: "X509" });
 
 export interface Saml {
   /** Required. SAML identity provider (IdP) configuration metadata XML doc. The XML document must comply with the [SAML 2.0 specification](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf). The maximum size of an acceptable XML document is 128K characters. The SAML metadata XML document must satisfy the following constraints: * Must contain an IdP Entity ID. * Must contain at least one non-expired signing certificate. * For each signing certificate, the expiration must be: * From no more than 7 days in the future. * To no more than 25 years in the future. * Up to three IdP signing keys are allowed. When updating the provider's metadata XML, at least one non-expired signing key must overlap with the existing metadata. This requirement is skipped if there are no non-expired signing keys present in the existing metadata. */
   idpMetadataXml?: string;
 }
 
-export const Saml: Schema.Schema<Saml> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      idpMetadataXml: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Saml" }) as any as Schema.Schema<Saml>;
+export const Saml = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  idpMetadataXml: Schema.optional(Schema.String),
+}).annotate({ identifier: "Saml" });
 
 export interface Oidc {
   /** Optional. OIDC JWKs in JSON String format. For details on the definition of a JWK, see https://tools.ietf.org/html/rfc7517. If not set, the `jwks_uri` from the discovery document(fetched from the .well-known path of the `issuer_uri`) will be used. Currently, RSA and EC asymmetric keys are supported. The JWK must use following format and include only the following fields: { "keys": [ { "kty": "RSA/EC", "alg": "", "use": "sig", "kid": "", "n": "", "e": "", "x": "", "y": "", "crv": "" } ] } */
@@ -423,14 +348,11 @@ export interface Oidc {
   allowedAudiences?: Array<string>;
 }
 
-export const Oidc: Schema.Schema<Oidc> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      jwksJson: Schema.optional(Schema.String),
-      issuerUri: Schema.optional(Schema.String),
-      allowedAudiences: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "Oidc" }) as any as Schema.Schema<Oidc>;
+export const Oidc = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  jwksJson: Schema.optional(Schema.String),
+  issuerUri: Schema.optional(Schema.String),
+  allowedAudiences: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Oidc" });
 
 export interface WorkloadIdentityPoolProvider {
   /** An Amazon Web Services identity provider. */
@@ -459,27 +381,23 @@ export interface WorkloadIdentityPoolProvider {
   attributeMapping?: Record<string, string>;
 }
 
-export const WorkloadIdentityPoolProvider: Schema.Schema<WorkloadIdentityPoolProvider> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      aws: Schema.optional(Aws),
-      state: Schema.optional(Schema.String),
-      x509: Schema.optional(X509),
-      attributeCondition: Schema.optional(Schema.String),
-      saml: Schema.optional(Saml),
-      expireTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      disabled: Schema.optional(Schema.Boolean),
-      description: Schema.optional(Schema.String),
-      oidc: Schema.optional(Oidc),
-      displayName: Schema.optional(Schema.String),
-      attributeMapping: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-    }),
-  ).annotate({
-    identifier: "WorkloadIdentityPoolProvider",
-  }) as any as Schema.Schema<WorkloadIdentityPoolProvider>;
+export const WorkloadIdentityPoolProvider =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    aws: Schema.optional(Aws),
+    state: Schema.optional(Schema.String),
+    x509: Schema.optional(X509),
+    attributeCondition: Schema.optional(Schema.String),
+    saml: Schema.optional(Saml),
+    expireTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    disabled: Schema.optional(Schema.Boolean),
+    description: Schema.optional(Schema.String),
+    oidc: Schema.optional(Oidc),
+    displayName: Schema.optional(Schema.String),
+    attributeMapping: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+  }).annotate({ identifier: "WorkloadIdentityPoolProvider" });
 
 export interface ListWorkloadIdentityPoolProvidersResponse {
   /** A list of providers. */
@@ -488,31 +406,22 @@ export interface ListWorkloadIdentityPoolProvidersResponse {
   nextPageToken?: string;
 }
 
-export const ListWorkloadIdentityPoolProvidersResponse: Schema.Schema<ListWorkloadIdentityPoolProvidersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      workloadIdentityPoolProviders: Schema.optional(
-        Schema.Array(WorkloadIdentityPoolProvider),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListWorkloadIdentityPoolProvidersResponse",
-  }) as any as Schema.Schema<ListWorkloadIdentityPoolProvidersResponse>;
+export const ListWorkloadIdentityPoolProvidersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    workloadIdentityPoolProviders: Schema.optional(
+      Schema.Array(WorkloadIdentityPoolProvider),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListWorkloadIdentityPoolProvidersResponse" });
 
 export interface SignBlobRequest {
   /** Required. Deprecated. [Migrate to Service Account Credentials API](https://cloud.google.com/iam/help/credentials/migrate-api). The bytes to sign. */
   bytesToSign?: string;
 }
 
-export const SignBlobRequest: Schema.Schema<SignBlobRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bytesToSign: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SignBlobRequest",
-  }) as any as Schema.Schema<SignBlobRequest>;
+export const SignBlobRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bytesToSign: Schema.optional(Schema.String),
+}).annotate({ identifier: "SignBlobRequest" });
 
 export interface Expr {
   /** Textual representation of an expression in Common Expression Language syntax. */
@@ -525,15 +434,12 @@ export interface Expr {
   location?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expression: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Expr" }) as any as Schema.Schema<Expr>;
+export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  expression: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+}).annotate({ identifier: "Expr" });
 
 export interface Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -544,14 +450,11 @@ export interface Binding {
   members?: Array<string>;
 }
 
-export const Binding: Schema.Schema<Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      condition: Schema.optional(Expr),
-      role: Schema.optional(Schema.String),
-      members: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "Binding" }) as any as Schema.Schema<Binding>;
+export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  condition: Schema.optional(Expr),
+  role: Schema.optional(Schema.String),
+  members: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Binding" });
 
 export interface Policy {
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
@@ -564,15 +467,12 @@ export interface Policy {
   auditConfigs?: Array<AuditConfig>;
 }
 
-export const Policy: Schema.Schema<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      etag: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.Number),
-      bindings: Schema.optional(Schema.Array(Binding)),
-      auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
-    }),
-  ).annotate({ identifier: "Policy" }) as any as Schema.Schema<Policy>;
+export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  etag: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.Number),
+  bindings: Schema.optional(Schema.Array(Binding)),
+  auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
+}).annotate({ identifier: "Policy" });
 
 export interface SetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
@@ -581,29 +481,19 @@ export interface SetIamPolicyRequest {
   policy?: Policy;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateMask: Schema.optional(Schema.String),
-      policy: Schema.optional(Policy),
-    }),
-  ).annotate({
-    identifier: "SetIamPolicyRequest",
-  }) as any as Schema.Schema<SetIamPolicyRequest>;
+export const SetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  updateMask: Schema.optional(Schema.String),
+  policy: Schema.optional(Policy),
+}).annotate({ identifier: "SetIamPolicyRequest" });
 
 export interface OwnerService {
   /** Required. The service agent principal subject, e.g. "serviceAccount:service-1234@gcp-sa-gkehub.iam.gserviceaccount.com". */
   principalSubject?: string;
 }
 
-export const OwnerService: Schema.Schema<OwnerService> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      principalSubject: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OwnerService",
-  }) as any as Schema.Schema<OwnerService>;
+export const OwnerService = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  principalSubject: Schema.optional(Schema.String),
+}).annotate({ identifier: "OwnerService" });
 
 export interface WorkloadIdentityPoolNamespace {
   /** Output only. Time after which the namespace will be permanently purged and cannot be recovered. */
@@ -620,19 +510,15 @@ export interface WorkloadIdentityPoolNamespace {
   description?: string;
 }
 
-export const WorkloadIdentityPoolNamespace: Schema.Schema<WorkloadIdentityPoolNamespace> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expireTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      disabled: Schema.optional(Schema.Boolean),
-      ownerService: Schema.optional(OwnerService),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WorkloadIdentityPoolNamespace",
-  }) as any as Schema.Schema<WorkloadIdentityPoolNamespace>;
+export const WorkloadIdentityPoolNamespace =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    expireTime: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    disabled: Schema.optional(Schema.Boolean),
+    ownerService: Schema.optional(OwnerService),
+    description: Schema.optional(Schema.String),
+  }).annotate({ identifier: "WorkloadIdentityPoolNamespace" });
 
 export interface ListWorkloadIdentityPoolNamespacesResponse {
   /** A list of namespaces. */
@@ -641,17 +527,13 @@ export interface ListWorkloadIdentityPoolNamespacesResponse {
   nextPageToken?: string;
 }
 
-export const ListWorkloadIdentityPoolNamespacesResponse: Schema.Schema<ListWorkloadIdentityPoolNamespacesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      workloadIdentityPoolNamespaces: Schema.optional(
-        Schema.Array(WorkloadIdentityPoolNamespace),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListWorkloadIdentityPoolNamespacesResponse",
-  }) as any as Schema.Schema<ListWorkloadIdentityPoolNamespacesResponse>;
+export const ListWorkloadIdentityPoolNamespacesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    workloadIdentityPoolNamespaces: Schema.optional(
+      Schema.Array(WorkloadIdentityPoolNamespace),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListWorkloadIdentityPoolNamespacesResponse" });
 
 export interface QueryGrantableRolesRequest {
   /** Optional limit on the number of roles to include in the response. The default is 300, and the maximum is 2,000. */
@@ -663,45 +545,31 @@ export interface QueryGrantableRolesRequest {
   fullResourceName?: string;
 }
 
-export const QueryGrantableRolesRequest: Schema.Schema<QueryGrantableRolesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pageSize: Schema.optional(Schema.Number),
-      view: Schema.optional(Schema.String),
-      pageToken: Schema.optional(Schema.String),
-      fullResourceName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "QueryGrantableRolesRequest",
-  }) as any as Schema.Schema<QueryGrantableRolesRequest>;
+export const QueryGrantableRolesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageSize: Schema.optional(Schema.Number),
+    view: Schema.optional(Schema.String),
+    pageToken: Schema.optional(Schema.String),
+    fullResourceName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "QueryGrantableRolesRequest" });
 
 export interface SignJwtRequest {
   /** Required. Deprecated. [Migrate to Service Account Credentials API](https://cloud.google.com/iam/help/credentials/migrate-api). The JWT payload to sign. Must be a serialized JSON object that contains a JWT Claims Set. For example: `{"sub": "user@example.com", "iat": 313435}` If the JWT Claims Set contains an expiration time (`exp`) claim, it must be an integer timestamp that is not in the past and no more than 12 hours in the future. If the JWT Claims Set does not contain an expiration time (`exp`) claim, this claim is added automatically, with a timestamp that is 1 hour in the future. */
   payload?: string;
 }
 
-export const SignJwtRequest: Schema.Schema<SignJwtRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      payload: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SignJwtRequest",
-  }) as any as Schema.Schema<SignJwtRequest>;
+export const SignJwtRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  payload: Schema.optional(Schema.String),
+}).annotate({ identifier: "SignJwtRequest" });
 
 export interface AttestationRule {
   /** Optional. A single workload operating on Google Cloud. For example: `//compute.googleapis.com/projects/123/uid/zones/us-central1-a/instances/12345`. */
   googleCloudResource?: string;
 }
 
-export const AttestationRule: Schema.Schema<AttestationRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      googleCloudResource: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AttestationRule",
-  }) as any as Schema.Schema<AttestationRule>;
+export const AttestationRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  googleCloudResource: Schema.optional(Schema.String),
+}).annotate({ identifier: "AttestationRule" });
 
 export interface ListAttestationRulesResponse {
   /** A list of AttestationRules. */
@@ -710,15 +578,11 @@ export interface ListAttestationRulesResponse {
   nextPageToken?: string;
 }
 
-export const ListAttestationRulesResponse: Schema.Schema<ListAttestationRulesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      attestationRules: Schema.optional(Schema.Array(AttestationRule)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAttestationRulesResponse",
-  }) as any as Schema.Schema<ListAttestationRulesResponse>;
+export const ListAttestationRulesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    attestationRules: Schema.optional(Schema.Array(AttestationRule)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListAttestationRulesResponse" });
 
 export interface BindingDelta {
   /** The action that was performed on a Binding. Required */
@@ -731,71 +595,50 @@ export interface BindingDelta {
   member?: string;
 }
 
-export const BindingDelta: Schema.Schema<BindingDelta> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      action: Schema.optional(Schema.String),
-      condition: Schema.optional(Expr),
-      role: Schema.optional(Schema.String),
-      member: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BindingDelta",
-  }) as any as Schema.Schema<BindingDelta>;
+export const BindingDelta = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  action: Schema.optional(Schema.String),
+  condition: Schema.optional(Expr),
+  role: Schema.optional(Schema.String),
+  member: Schema.optional(Schema.String),
+}).annotate({ identifier: "BindingDelta" });
 
 export interface PolicyDelta {
   /** The delta for Bindings between two policies. */
   bindingDeltas?: Array<BindingDelta>;
 }
 
-export const PolicyDelta: Schema.Schema<PolicyDelta> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bindingDeltas: Schema.optional(Schema.Array(BindingDelta)),
-    }),
-  ).annotate({
-    identifier: "PolicyDelta",
-  }) as any as Schema.Schema<PolicyDelta>;
+export const PolicyDelta = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bindingDeltas: Schema.optional(Schema.Array(BindingDelta)),
+}).annotate({ identifier: "PolicyDelta" });
 
 export interface AuditData {
   /** Policy delta between the original policy and the newly set policy. */
   policyDelta?: PolicyDelta;
 }
 
-export const AuditData: Schema.Schema<AuditData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policyDelta: Schema.optional(PolicyDelta),
-    }),
-  ).annotate({ identifier: "AuditData" }) as any as Schema.Schema<AuditData>;
+export const AuditData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policyDelta: Schema.optional(PolicyDelta),
+}).annotate({ identifier: "AuditData" });
 
 export interface RemoveAttestationRuleRequest {
   /** Required. The attestation rule to be removed. */
   attestationRule?: AttestationRule;
 }
 
-export const RemoveAttestationRuleRequest: Schema.Schema<RemoveAttestationRuleRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      attestationRule: Schema.optional(AttestationRule),
-    }),
-  ).annotate({
-    identifier: "RemoveAttestationRuleRequest",
-  }) as any as Schema.Schema<RemoveAttestationRuleRequest>;
+export const RemoveAttestationRuleRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    attestationRule: Schema.optional(AttestationRule),
+  }).annotate({ identifier: "RemoveAttestationRuleRequest" });
 
 export interface AddAttestationRuleRequest {
   /** Required. The attestation rule to be added. */
   attestationRule?: AttestationRule;
 }
 
-export const AddAttestationRuleRequest: Schema.Schema<AddAttestationRuleRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      attestationRule: Schema.optional(AttestationRule),
-    }),
-  ).annotate({
-    identifier: "AddAttestationRuleRequest",
-  }) as any as Schema.Schema<AddAttestationRuleRequest>;
+export const AddAttestationRuleRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    attestationRule: Schema.optional(AttestationRule),
+  }).annotate({ identifier: "AddAttestationRuleRequest" });
 
 export interface GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValue {
   /** Optional. Input only. The plain text of the client secret value. For security reasons, this field is only used for input and will never be populated in any response. */
@@ -804,15 +647,13 @@ export interface GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValue {
   thumbprint?: string;
 }
 
-export const GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValue: Schema.Schema<GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      plainText: Schema.optional(Schema.String),
-      thumbprint: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    plainText: Schema.optional(Schema.String),
+    thumbprint: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValue",
-  }) as any as Schema.Schema<GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValue>;
+  });
 
 export interface ServiceAccount {
   /** Optional. A user-specified, human-readable name for the service account. The maximum length is 100 UTF-8 bytes. */
@@ -835,22 +676,17 @@ export interface ServiceAccount {
   uniqueId?: string;
 }
 
-export const ServiceAccount: Schema.Schema<ServiceAccount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      projectId: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      email: Schema.optional(Schema.String),
-      oauth2ClientId: Schema.optional(Schema.String),
-      disabled: Schema.optional(Schema.Boolean),
-      etag: Schema.optional(Schema.String),
-      uniqueId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ServiceAccount",
-  }) as any as Schema.Schema<ServiceAccount>;
+export const ServiceAccount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+  projectId: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  email: Schema.optional(Schema.String),
+  oauth2ClientId: Schema.optional(Schema.String),
+  disabled: Schema.optional(Schema.Boolean),
+  etag: Schema.optional(Schema.String),
+  uniqueId: Schema.optional(Schema.String),
+}).annotate({ identifier: "ServiceAccount" });
 
 export interface CreateServiceAccountRequest {
   /** Required. The account id that is used to generate the service account email address and a stable unique id. It is unique within a project, must be 6-30 characters long, and match the regular expression `[a-z]([-a-z0-9]*[a-z0-9])` to comply with RFC1035. */
@@ -859,85 +695,73 @@ export interface CreateServiceAccountRequest {
   serviceAccount?: ServiceAccount;
 }
 
-export const CreateServiceAccountRequest: Schema.Schema<CreateServiceAccountRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accountId: Schema.optional(Schema.String),
-      serviceAccount: Schema.optional(ServiceAccount),
-    }),
-  ).annotate({
-    identifier: "CreateServiceAccountRequest",
-  }) as any as Schema.Schema<CreateServiceAccountRequest>;
+export const CreateServiceAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountId: Schema.optional(Schema.String),
+    serviceAccount: Schema.optional(ServiceAccount),
+  }).annotate({ identifier: "CreateServiceAccountRequest" });
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsResponse",
-  }) as any as Schema.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsResponse" });
 
 export interface UndeleteWorkforcePoolProviderScimTenantRequest {}
 
-export const UndeleteWorkforcePoolProviderScimTenantRequest: Schema.Schema<UndeleteWorkforcePoolProviderScimTenantRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const UndeleteWorkforcePoolProviderScimTenantRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UndeleteWorkforcePoolProviderScimTenantRequest",
-  }) as any as Schema.Schema<UndeleteWorkforcePoolProviderScimTenantRequest>;
+  });
 
 export interface UndeleteWorkforcePoolSubjectRequest {}
 
-export const UndeleteWorkforcePoolSubjectRequest: Schema.Schema<UndeleteWorkforcePoolSubjectRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const UndeleteWorkforcePoolSubjectRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UndeleteWorkforcePoolSubjectRequest",
-  }) as any as Schema.Schema<UndeleteWorkforcePoolSubjectRequest>;
+  });
 
 export interface UndeleteServiceAccountRequest {}
 
-export const UndeleteServiceAccountRequest: Schema.Schema<UndeleteServiceAccountRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const UndeleteServiceAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UndeleteServiceAccountRequest",
-  }) as any as Schema.Schema<UndeleteServiceAccountRequest>;
+  });
 
 export interface UndeleteOauthClientRequest {}
 
-export const UndeleteOauthClientRequest: Schema.Schema<UndeleteOauthClientRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const UndeleteOauthClientRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UndeleteOauthClientRequest",
-  }) as any as Schema.Schema<UndeleteOauthClientRequest>;
+  });
 
 export interface WorkloadIdentityPoolOperationMetadata {}
 
-export const WorkloadIdentityPoolOperationMetadata: Schema.Schema<WorkloadIdentityPoolOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const WorkloadIdentityPoolOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "WorkloadIdentityPoolOperationMetadata",
-  }) as any as Schema.Schema<WorkloadIdentityPoolOperationMetadata>;
+  });
 
 export interface UndeleteWorkforcePoolProviderRequest {}
 
-export const UndeleteWorkforcePoolProviderRequest: Schema.Schema<UndeleteWorkforcePoolProviderRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const UndeleteWorkforcePoolProviderRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UndeleteWorkforcePoolProviderRequest",
-  }) as any as Schema.Schema<UndeleteWorkforcePoolProviderRequest>;
+  });
 
 export interface GoogleIamAdminV1WorkforcePoolProviderSaml {
   /** Required. SAML Identity provider configuration metadata xml doc. The xml document should comply with [SAML 2.0 specification](https://docs.oasis-open.org/security/saml/v2.0/saml-metadata-2.0-os.pdf). The max size of the acceptable xml document will be bounded to 128k characters. The metadata xml document should satisfy the following constraints: 1) Must contain an Identity Provider Entity ID. 2) Must contain at least one non-expired signing key certificate. 3) For each signing key: a) Valid from should be no more than 7 days from now. b) Valid to should be no more than 25 years in the future. 4) Up to 3 IdP signing keys are allowed in the metadata xml. When updating the provider's metadata xml, at least one non-expired signing key must overlap with the existing metadata. This requirement is skipped if there are no non-expired signing keys present in the existing metadata. */
   idpMetadataXml?: string;
 }
 
-export const GoogleIamAdminV1WorkforcePoolProviderSaml: Schema.Schema<GoogleIamAdminV1WorkforcePoolProviderSaml> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      idpMetadataXml: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleIamAdminV1WorkforcePoolProviderSaml",
-  }) as any as Schema.Schema<GoogleIamAdminV1WorkforcePoolProviderSaml>;
+export const GoogleIamAdminV1WorkforcePoolProviderSaml =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    idpMetadataXml: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleIamAdminV1WorkforcePoolProviderSaml" });
 
 export interface GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig {
   /** Optional. Additional scopes to request for in the OIDC authentication request on top of scopes requested by default. By default, the `openid`, `profile` and `email` scopes that are supported by the identity provider are requested. Each additional scope may be at most 256 characters. A maximum of 10 additional scopes may be configured. */
@@ -956,32 +780,28 @@ export interface GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig {
     | (string & {});
 }
 
-export const GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig: Schema.Schema<GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      additionalScopes: Schema.optional(Schema.Array(Schema.String)),
-      responseType: Schema.optional(Schema.String),
-      assertionClaimsBehavior: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    additionalScopes: Schema.optional(Schema.Array(Schema.String)),
+    responseType: Schema.optional(Schema.String),
+    assertionClaimsBehavior: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig",
-  }) as any as Schema.Schema<GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig>;
+  });
 
 export interface GoogleIamAdminV1WorkforcePoolProviderOidcClientSecret {
   /** The value of the client secret. */
   value?: GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValue;
 }
 
-export const GoogleIamAdminV1WorkforcePoolProviderOidcClientSecret: Schema.Schema<GoogleIamAdminV1WorkforcePoolProviderOidcClientSecret> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(
-        GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValue,
-      ),
-    }),
-  ).annotate({
+export const GoogleIamAdminV1WorkforcePoolProviderOidcClientSecret =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      GoogleIamAdminV1WorkforcePoolProviderOidcClientSecretValue,
+    ),
+  }).annotate({
     identifier: "GoogleIamAdminV1WorkforcePoolProviderOidcClientSecret",
-  }) as any as Schema.Schema<GoogleIamAdminV1WorkforcePoolProviderOidcClientSecret>;
+  });
 
 export interface GoogleIamAdminV1WorkforcePoolProviderOidc {
   /** Required. Configuration for web single sign-on for the OIDC provider. Here, web sign-in refers to console sign-in and gcloud sign-in through the browser. */
@@ -996,37 +816,31 @@ export interface GoogleIamAdminV1WorkforcePoolProviderOidc {
   clientId?: string;
 }
 
-export const GoogleIamAdminV1WorkforcePoolProviderOidc: Schema.Schema<GoogleIamAdminV1WorkforcePoolProviderOidc> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      webSsoConfig: Schema.optional(
-        GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig,
-      ),
-      clientSecret: Schema.optional(
-        GoogleIamAdminV1WorkforcePoolProviderOidcClientSecret,
-      ),
-      jwksJson: Schema.optional(Schema.String),
-      issuerUri: Schema.optional(Schema.String),
-      clientId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleIamAdminV1WorkforcePoolProviderOidc",
-  }) as any as Schema.Schema<GoogleIamAdminV1WorkforcePoolProviderOidc>;
+export const GoogleIamAdminV1WorkforcePoolProviderOidc =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    webSsoConfig: Schema.optional(
+      GoogleIamAdminV1WorkforcePoolProviderOidcWebSsoConfig,
+    ),
+    clientSecret: Schema.optional(
+      GoogleIamAdminV1WorkforcePoolProviderOidcClientSecret,
+    ),
+    jwksJson: Schema.optional(Schema.String),
+    issuerUri: Schema.optional(Schema.String),
+    clientId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleIamAdminV1WorkforcePoolProviderOidc" });
 
 export interface GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2ClientQueryParameters {
   /** Optional. The filter used to request specific records from the IdP. By default, all of the groups that are associated with a user are fetched. For Microsoft Entra ID, you can add `$search` query parameters using [Keyword Query Language] (https://learn.microsoft.com/en-us/sharepoint/dev/general-development/keyword-query-language-kql-syntax-reference). To learn more about `$search` querying in Microsoft Entra ID, see [Use the `$search` query parameter] (https://learn.microsoft.com/en-us/graph/search-query-parameter). Additionally, Workforce Identity Federation automatically adds the following [`$filter` query parameters] (https://learn.microsoft.com/en-us/graph/filter-query-parameter), based on the value of `attributes_type`. Values passed to `filter` are converted to `$search` query parameters. Additional `$filter` query parameters cannot be added using this field. * `AZURE_AD_GROUPS_MAIL`: `mailEnabled` and `securityEnabled` filters are applied. * `AZURE_AD_GROUPS_ID`: `securityEnabled` filter is applied. */
   filter?: string;
 }
 
-export const GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2ClientQueryParameters: Schema.Schema<GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2ClientQueryParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filter: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2ClientQueryParameters =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filter: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2ClientQueryParameters",
-  }) as any as Schema.Schema<GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2ClientQueryParameters>;
+  });
 
 export interface GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client {
   /** Required. The OIDC identity provider's issuer URI. Must be a valid URI using the `https` scheme. Required to get the OIDC discovery document. */
@@ -1046,23 +860,21 @@ export interface GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Clien
     | (string & {});
 }
 
-export const GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client: Schema.Schema<GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      issuerUri: Schema.optional(Schema.String),
-      clientId: Schema.optional(Schema.String),
-      clientSecret: Schema.optional(
-        GoogleIamAdminV1WorkforcePoolProviderOidcClientSecret,
-      ),
-      queryParameters: Schema.optional(
-        GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2ClientQueryParameters,
-      ),
-      attributesType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    issuerUri: Schema.optional(Schema.String),
+    clientId: Schema.optional(Schema.String),
+    clientSecret: Schema.optional(
+      GoogleIamAdminV1WorkforcePoolProviderOidcClientSecret,
+    ),
+    queryParameters: Schema.optional(
+      GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2ClientQueryParameters,
+    ),
+    attributesType: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client",
-  }) as any as Schema.Schema<GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client>;
+  });
 
 export interface WorkforcePoolProvider {
   /** A SAML identity provider configuration. */
@@ -1095,33 +907,28 @@ export interface WorkforcePoolProvider {
   disabled?: boolean;
 }
 
-export const WorkforcePoolProvider: Schema.Schema<WorkforcePoolProvider> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      saml: Schema.optional(GoogleIamAdminV1WorkforcePoolProviderSaml),
-      state: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      attributeMapping: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      description: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      attributeCondition: Schema.optional(Schema.String),
-      scimUsage: Schema.optional(Schema.String),
-      expireTime: Schema.optional(Schema.String),
-      oidc: Schema.optional(GoogleIamAdminV1WorkforcePoolProviderOidc),
-      extraAttributesOauth2Client: Schema.optional(
-        GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client,
-      ),
-      extendedAttributesOauth2Client: Schema.optional(
-        GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client,
-      ),
-      detailedAuditLogging: Schema.optional(Schema.Boolean),
-      disabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "WorkforcePoolProvider",
-  }) as any as Schema.Schema<WorkforcePoolProvider>;
+export const WorkforcePoolProvider = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  saml: Schema.optional(GoogleIamAdminV1WorkforcePoolProviderSaml),
+  state: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  attributeMapping: Schema.optional(
+    Schema.Record(Schema.String, Schema.String),
+  ),
+  description: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  attributeCondition: Schema.optional(Schema.String),
+  scimUsage: Schema.optional(Schema.String),
+  expireTime: Schema.optional(Schema.String),
+  oidc: Schema.optional(GoogleIamAdminV1WorkforcePoolProviderOidc),
+  extraAttributesOauth2Client: Schema.optional(
+    GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client,
+  ),
+  extendedAttributesOauth2Client: Schema.optional(
+    GoogleIamAdminV1WorkforcePoolProviderExtraAttributesOAuth2Client,
+  ),
+  detailedAuditLogging: Schema.optional(Schema.Boolean),
+  disabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "WorkforcePoolProvider" });
 
 export interface ListWorkforcePoolProvidersResponse {
   /** A list of providers. */
@@ -1130,31 +937,27 @@ export interface ListWorkforcePoolProvidersResponse {
   nextPageToken?: string;
 }
 
-export const ListWorkforcePoolProvidersResponse: Schema.Schema<ListWorkforcePoolProvidersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      workforcePoolProviders: Schema.optional(
-        Schema.Array(WorkforcePoolProvider),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListWorkforcePoolProvidersResponse",
-  }) as any as Schema.Schema<ListWorkforcePoolProvidersResponse>;
+export const ListWorkforcePoolProvidersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    workforcePoolProviders: Schema.optional(
+      Schema.Array(WorkforcePoolProvider),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListWorkforcePoolProvidersResponse" });
 
 export interface UndeleteWorkloadIdentityPoolRequest {}
 
-export const UndeleteWorkloadIdentityPoolRequest: Schema.Schema<UndeleteWorkloadIdentityPoolRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const UndeleteWorkloadIdentityPoolRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UndeleteWorkloadIdentityPoolRequest",
-  }) as any as Schema.Schema<UndeleteWorkloadIdentityPoolRequest>;
+  });
 
 export interface UndeleteWorkloadIdentityPoolNamespaceRequest {}
 
-export const UndeleteWorkloadIdentityPoolNamespaceRequest: Schema.Schema<UndeleteWorkloadIdentityPoolNamespaceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const UndeleteWorkloadIdentityPoolNamespaceRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UndeleteWorkloadIdentityPoolNamespaceRequest",
-  }) as any as Schema.Schema<UndeleteWorkloadIdentityPoolNamespaceRequest>;
+  });
 
 export interface WorkforcePoolProviderScimTenant {
   /** Output only. Gemini Enterprise only. The state of the tenant. */
@@ -1175,79 +978,60 @@ export interface WorkforcePoolProviderScimTenant {
   claimMapping?: Record<string, string>;
 }
 
-export const WorkforcePoolProviderScimTenant: Schema.Schema<WorkforcePoolProviderScimTenant> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      purgeTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      serviceAgent: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      baseUri: Schema.optional(Schema.String),
-      claimMapping: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-    }),
-  ).annotate({
-    identifier: "WorkforcePoolProviderScimTenant",
-  }) as any as Schema.Schema<WorkforcePoolProviderScimTenant>;
+export const WorkforcePoolProviderScimTenant =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    purgeTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    serviceAgent: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    baseUri: Schema.optional(Schema.String),
+    claimMapping: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({ identifier: "WorkforcePoolProviderScimTenant" });
 
 export interface UndeleteWorkloadIdentityPoolManagedIdentityRequest {}
 
-export const UndeleteWorkloadIdentityPoolManagedIdentityRequest: Schema.Schema<UndeleteWorkloadIdentityPoolManagedIdentityRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const UndeleteWorkloadIdentityPoolManagedIdentityRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UndeleteWorkloadIdentityPoolManagedIdentityRequest",
-  }) as any as Schema.Schema<UndeleteWorkloadIdentityPoolManagedIdentityRequest>;
+  });
 
 export interface AuditableService {
   /** Public name of the service. For example, the service name for IAM is 'iam.googleapis.com'. */
   name?: string;
 }
 
-export const AuditableService: Schema.Schema<AuditableService> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AuditableService",
-  }) as any as Schema.Schema<AuditableService>;
+export const AuditableService = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "AuditableService" });
 
 export interface QueryAuditableServicesResponse {
   /** The auditable services for a resource. */
   services?: Array<AuditableService>;
 }
 
-export const QueryAuditableServicesResponse: Schema.Schema<QueryAuditableServicesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      services: Schema.optional(Schema.Array(AuditableService)),
-    }),
-  ).annotate({
-    identifier: "QueryAuditableServicesResponse",
-  }) as any as Schema.Schema<QueryAuditableServicesResponse>;
+export const QueryAuditableServicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    services: Schema.optional(Schema.Array(AuditableService)),
+  }).annotate({ identifier: "QueryAuditableServicesResponse" });
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsRequest",
-  }) as any as Schema.Schema<TestIamPermissionsRequest>;
+export const TestIamPermissionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsRequest" });
 
 export interface UndeleteWorkforcePoolProviderKeyRequest {}
 
-export const UndeleteWorkforcePoolProviderKeyRequest: Schema.Schema<UndeleteWorkforcePoolProviderKeyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const UndeleteWorkforcePoolProviderKeyRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UndeleteWorkforcePoolProviderKeyRequest",
-  }) as any as Schema.Schema<UndeleteWorkforcePoolProviderKeyRequest>;
+  });
 
 export interface DisableServiceAccountKeyRequest {
   /** Optional. Describes the reason this key is being disabled. If unspecified, the default value of SERVICE_ACCOUNT_KEY_DISABLE_REASON_USER_INITIATED will be used. */
@@ -1261,15 +1045,11 @@ export interface DisableServiceAccountKeyRequest {
   extendedStatusMessage?: string;
 }
 
-export const DisableServiceAccountKeyRequest: Schema.Schema<DisableServiceAccountKeyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serviceAccountKeyDisableReason: Schema.optional(Schema.String),
-      extendedStatusMessage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DisableServiceAccountKeyRequest",
-  }) as any as Schema.Schema<DisableServiceAccountKeyRequest>;
+export const DisableServiceAccountKeyRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    serviceAccountKeyDisableReason: Schema.optional(Schema.String),
+    extendedStatusMessage: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DisableServiceAccountKeyRequest" });
 
 export interface WorkforcePoolProviderScimToken {
   /** Output only. Gemini Enterprise only. The token string. Provide this to the IdP for authentication. Will be set only during creation. */
@@ -1282,17 +1062,13 @@ export interface WorkforcePoolProviderScimToken {
   name?: string;
 }
 
-export const WorkforcePoolProviderScimToken: Schema.Schema<WorkforcePoolProviderScimToken> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      securityToken: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WorkforcePoolProviderScimToken",
-  }) as any as Schema.Schema<WorkforcePoolProviderScimToken>;
+export const WorkforcePoolProviderScimToken =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    securityToken: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "WorkforcePoolProviderScimToken" });
 
 export interface ListWorkforcePoolProviderScimTokensResponse {
   /** Output only. Gemini Enterprise only. A list of SCIM tokens. */
@@ -1301,31 +1077,27 @@ export interface ListWorkforcePoolProviderScimTokensResponse {
   nextPageToken?: string;
 }
 
-export const ListWorkforcePoolProviderScimTokensResponse: Schema.Schema<ListWorkforcePoolProviderScimTokensResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      workforcePoolProviderScimTokens: Schema.optional(
-        Schema.Array(WorkforcePoolProviderScimToken),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListWorkforcePoolProviderScimTokensResponse",
-  }) as any as Schema.Schema<ListWorkforcePoolProviderScimTokensResponse>;
+export const ListWorkforcePoolProviderScimTokensResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    workforcePoolProviderScimTokens: Schema.optional(
+      Schema.Array(WorkforcePoolProviderScimToken),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListWorkforcePoolProviderScimTokensResponse" });
 
 export interface EnableServiceAccountKeyRequest {}
 
-export const EnableServiceAccountKeyRequest: Schema.Schema<EnableServiceAccountKeyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const EnableServiceAccountKeyRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "EnableServiceAccountKeyRequest",
-  }) as any as Schema.Schema<EnableServiceAccountKeyRequest>;
+  });
 
 export interface UndeleteWorkloadIdentityPoolProviderRequest {}
 
-export const UndeleteWorkloadIdentityPoolProviderRequest: Schema.Schema<UndeleteWorkloadIdentityPoolProviderRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const UndeleteWorkloadIdentityPoolProviderRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UndeleteWorkloadIdentityPoolProviderRequest",
-  }) as any as Schema.Schema<UndeleteWorkloadIdentityPoolProviderRequest>;
+  });
 
 export interface PermissionDelta {
   /** Added permissions. */
@@ -1334,22 +1106,17 @@ export interface PermissionDelta {
   removedPermissions?: Array<string>;
 }
 
-export const PermissionDelta: Schema.Schema<PermissionDelta> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      addedPermissions: Schema.optional(Schema.Array(Schema.String)),
-      removedPermissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "PermissionDelta",
-  }) as any as Schema.Schema<PermissionDelta>;
+export const PermissionDelta = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  addedPermissions: Schema.optional(Schema.Array(Schema.String)),
+  removedPermissions: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "PermissionDelta" });
 
 export interface UndeleteWorkloadIdentityPoolProviderKeyRequest {}
 
-export const UndeleteWorkloadIdentityPoolProviderKeyRequest: Schema.Schema<UndeleteWorkloadIdentityPoolProviderKeyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const UndeleteWorkloadIdentityPoolProviderKeyRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UndeleteWorkloadIdentityPoolProviderKeyRequest",
-  }) as any as Schema.Schema<UndeleteWorkloadIdentityPoolProviderKeyRequest>;
+  });
 
 export interface Role {
   /** The current deleted state of the role. This field is read only. It will be ignored in calls to CreateRole and UpdateRole. */
@@ -1375,32 +1142,25 @@ export interface Role {
     | (string & {});
 }
 
-export const Role: Schema.Schema<Role> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deleted: Schema.optional(Schema.Boolean),
-      title: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      includedPermissions: Schema.optional(Schema.Array(Schema.String)),
-      stage: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Role" }) as any as Schema.Schema<Role>;
+export const Role = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  deleted: Schema.optional(Schema.Boolean),
+  title: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  includedPermissions: Schema.optional(Schema.Array(Schema.String)),
+  stage: Schema.optional(Schema.String),
+}).annotate({ identifier: "Role" });
 
 export interface SetAttestationRulesRequest {
   /** Required. The attestation rules to be set. At most 50 attestation rules can be set. */
   attestationRules?: Array<AttestationRule>;
 }
 
-export const SetAttestationRulesRequest: Schema.Schema<SetAttestationRulesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      attestationRules: Schema.optional(Schema.Array(AttestationRule)),
-    }),
-  ).annotate({
-    identifier: "SetAttestationRulesRequest",
-  }) as any as Schema.Schema<SetAttestationRulesRequest>;
+export const SetAttestationRulesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    attestationRules: Schema.optional(Schema.Array(AttestationRule)),
+  }).annotate({ identifier: "SetAttestationRulesRequest" });
 
 export interface ListRolesResponse {
   /** To retrieve the next page of results, set `ListRolesRequest.page_token` to this value. */
@@ -1409,29 +1169,19 @@ export interface ListRolesResponse {
   roles?: Array<Role>;
 }
 
-export const ListRolesResponse: Schema.Schema<ListRolesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      roles: Schema.optional(Schema.Array(Role)),
-    }),
-  ).annotate({
-    identifier: "ListRolesResponse",
-  }) as any as Schema.Schema<ListRolesResponse>;
+export const ListRolesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  roles: Schema.optional(Schema.Array(Role)),
+}).annotate({ identifier: "ListRolesResponse" });
 
 export interface ServiceConfig {
   /** Optional. Domain name of the service. Example: console.cloud.google */
   domain?: string;
 }
 
-export const ServiceConfig: Schema.Schema<ServiceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      domain: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ServiceConfig",
-  }) as any as Schema.Schema<ServiceConfig>;
+export const ServiceConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  domain: Schema.optional(Schema.String),
+}).annotate({ identifier: "ServiceConfig" });
 
 export interface LintResult {
   /** The validation unit level. */
@@ -1455,31 +1205,23 @@ export interface LintResult {
     | (string & {});
 }
 
-export const LintResult: Schema.Schema<LintResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      level: Schema.optional(Schema.String),
-      locationOffset: Schema.optional(Schema.Number),
-      debugMessage: Schema.optional(Schema.String),
-      fieldName: Schema.optional(Schema.String),
-      validationUnitName: Schema.optional(Schema.String),
-      severity: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "LintResult" }) as any as Schema.Schema<LintResult>;
+export const LintResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  level: Schema.optional(Schema.String),
+  locationOffset: Schema.optional(Schema.Number),
+  debugMessage: Schema.optional(Schema.String),
+  fieldName: Schema.optional(Schema.String),
+  validationUnitName: Schema.optional(Schema.String),
+  severity: Schema.optional(Schema.String),
+}).annotate({ identifier: "LintResult" });
 
 export interface LintPolicyResponse {
   /** List of lint results sorted by `severity` in descending order. */
   lintResults?: Array<LintResult>;
 }
 
-export const LintPolicyResponse: Schema.Schema<LintPolicyResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lintResults: Schema.optional(Schema.Array(LintResult)),
-    }),
-  ).annotate({
-    identifier: "LintPolicyResponse",
-  }) as any as Schema.Schema<LintPolicyResponse>;
+export const LintPolicyResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  lintResults: Schema.optional(Schema.Array(LintResult)),
+}).annotate({ identifier: "LintPolicyResponse" });
 
 export interface KeyData {
   /** Output only. The key data. The format of the key is represented by the format field. */
@@ -1499,16 +1241,13 @@ export interface KeyData {
   notAfterTime?: string;
 }
 
-export const KeyData: Schema.Schema<KeyData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      key: Schema.optional(Schema.String),
-      keySpec: Schema.optional(Schema.String),
-      notBeforeTime: Schema.optional(Schema.String),
-      format: Schema.optional(Schema.String),
-      notAfterTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "KeyData" }) as any as Schema.Schema<KeyData>;
+export const KeyData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  key: Schema.optional(Schema.String),
+  keySpec: Schema.optional(Schema.String),
+  notBeforeTime: Schema.optional(Schema.String),
+  format: Schema.optional(Schema.String),
+  notAfterTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "KeyData" });
 
 export interface WorkforcePoolProviderKey {
   /** Output only. The state of the key. */
@@ -1523,25 +1262,21 @@ export interface WorkforcePoolProviderKey {
   expireTime?: string;
 }
 
-export const WorkforcePoolProviderKey: Schema.Schema<WorkforcePoolProviderKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      keyData: Schema.optional(KeyData),
-      name: Schema.optional(Schema.String),
-      use: Schema.optional(Schema.String),
-      expireTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WorkforcePoolProviderKey",
-  }) as any as Schema.Schema<WorkforcePoolProviderKey>;
+export const WorkforcePoolProviderKey =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+    keyData: Schema.optional(KeyData),
+    name: Schema.optional(Schema.String),
+    use: Schema.optional(Schema.String),
+    expireTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "WorkforcePoolProviderKey" });
 
 export interface DisableServiceAccountRequest {}
 
-export const DisableServiceAccountRequest: Schema.Schema<DisableServiceAccountRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const DisableServiceAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DisableServiceAccountRequest",
-  }) as any as Schema.Schema<DisableServiceAccountRequest>;
+  });
 
 export interface Operation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
@@ -1556,16 +1291,13 @@ export interface Operation {
   name?: string;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      error: Schema.optional(Status),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  done: Schema.optional(Schema.Boolean),
+  error: Schema.optional(Status),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Operation" });
 
 export interface WorkloadIdentityPoolProviderKey {
   /** Required. The purpose of the key. */
@@ -1580,18 +1312,14 @@ export interface WorkloadIdentityPoolProviderKey {
   name?: string;
 }
 
-export const WorkloadIdentityPoolProviderKey: Schema.Schema<WorkloadIdentityPoolProviderKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      use: Schema.optional(Schema.String),
-      expireTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      keyData: Schema.optional(KeyData),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WorkloadIdentityPoolProviderKey",
-  }) as any as Schema.Schema<WorkloadIdentityPoolProviderKey>;
+export const WorkloadIdentityPoolProviderKey =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    use: Schema.optional(Schema.String),
+    expireTime: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    keyData: Schema.optional(KeyData),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "WorkloadIdentityPoolProviderKey" });
 
 export interface ListWorkloadIdentityPoolProviderKeysResponse {
   /** A list of WorkloadIdentityPoolProviderKey */
@@ -1600,31 +1328,22 @@ export interface ListWorkloadIdentityPoolProviderKeysResponse {
   nextPageToken?: string;
 }
 
-export const ListWorkloadIdentityPoolProviderKeysResponse: Schema.Schema<ListWorkloadIdentityPoolProviderKeysResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      workloadIdentityPoolProviderKeys: Schema.optional(
-        Schema.Array(WorkloadIdentityPoolProviderKey),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListWorkloadIdentityPoolProviderKeysResponse",
-  }) as any as Schema.Schema<ListWorkloadIdentityPoolProviderKeysResponse>;
+export const ListWorkloadIdentityPoolProviderKeysResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    workloadIdentityPoolProviderKeys: Schema.optional(
+      Schema.Array(WorkloadIdentityPoolProviderKey),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListWorkloadIdentityPoolProviderKeysResponse" });
 
 export interface AdminAuditData {
   /** The permission_delta when when creating or updating a Role. */
   permissionDelta?: PermissionDelta;
 }
 
-export const AdminAuditData: Schema.Schema<AdminAuditData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissionDelta: Schema.optional(PermissionDelta),
-    }),
-  ).annotate({
-    identifier: "AdminAuditData",
-  }) as any as Schema.Schema<AdminAuditData>;
+export const AdminAuditData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  permissionDelta: Schema.optional(PermissionDelta),
+}).annotate({ identifier: "AdminAuditData" });
 
 export interface AccessRestrictions {
   /** Optional. Disable programmatic sign-in by disabling token issue via the Security Token API endpoint. See [Security Token Service API] (https://cloud.google.com/iam/docs/reference/sts/rest). */
@@ -1633,30 +1352,21 @@ export interface AccessRestrictions {
   allowedServices?: Array<ServiceConfig>;
 }
 
-export const AccessRestrictions: Schema.Schema<AccessRestrictions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      disableProgrammaticSignin: Schema.optional(Schema.Boolean),
-      allowedServices: Schema.optional(Schema.Array(ServiceConfig)),
-    }),
-  ).annotate({
-    identifier: "AccessRestrictions",
-  }) as any as Schema.Schema<AccessRestrictions>;
+export const AccessRestrictions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  disableProgrammaticSignin: Schema.optional(Schema.Boolean),
+  allowedServices: Schema.optional(Schema.Array(ServiceConfig)),
+}).annotate({ identifier: "AccessRestrictions" });
 
 export interface PatchServiceAccountRequest {
   updateMask?: string;
   serviceAccount?: ServiceAccount;
 }
 
-export const PatchServiceAccountRequest: Schema.Schema<PatchServiceAccountRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateMask: Schema.optional(Schema.String),
-      serviceAccount: Schema.optional(ServiceAccount),
-    }),
-  ).annotate({
-    identifier: "PatchServiceAccountRequest",
-  }) as any as Schema.Schema<PatchServiceAccountRequest>;
+export const PatchServiceAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateMask: Schema.optional(Schema.String),
+    serviceAccount: Schema.optional(ServiceAccount),
+  }).annotate({ identifier: "PatchServiceAccountRequest" });
 
 export interface WorkloadIdentityPoolManagedIdentity {
   /** Output only. Time after which the managed identity will be permanently purged and cannot be recovered. */
@@ -1671,81 +1381,59 @@ export interface WorkloadIdentityPoolManagedIdentity {
   state?: "STATE_UNSPECIFIED" | "ACTIVE" | "DELETED" | (string & {});
 }
 
-export const WorkloadIdentityPoolManagedIdentity: Schema.Schema<WorkloadIdentityPoolManagedIdentity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expireTime: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      disabled: Schema.optional(Schema.Boolean),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WorkloadIdentityPoolManagedIdentity",
-  }) as any as Schema.Schema<WorkloadIdentityPoolManagedIdentity>;
+export const WorkloadIdentityPoolManagedIdentity =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    expireTime: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    disabled: Schema.optional(Schema.Boolean),
+    state: Schema.optional(Schema.String),
+  }).annotate({ identifier: "WorkloadIdentityPoolManagedIdentity" });
 
 export interface ListServiceAccountKeysResponse {
   /** The public keys for the service account. */
   keys?: Array<ServiceAccountKey>;
 }
 
-export const ListServiceAccountKeysResponse: Schema.Schema<ListServiceAccountKeysResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      keys: Schema.optional(Schema.Array(ServiceAccountKey)),
-    }),
-  ).annotate({
-    identifier: "ListServiceAccountKeysResponse",
-  }) as any as Schema.Schema<ListServiceAccountKeysResponse>;
+export const ListServiceAccountKeysResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    keys: Schema.optional(Schema.Array(ServiceAccountKey)),
+  }).annotate({ identifier: "ListServiceAccountKeysResponse" });
 
 export interface GetPolicyOptions {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   requestedPolicyVersion?: number;
 }
 
-export const GetPolicyOptions: Schema.Schema<GetPolicyOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestedPolicyVersion: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GetPolicyOptions",
-  }) as any as Schema.Schema<GetPolicyOptions>;
+export const GetPolicyOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  requestedPolicyVersion: Schema.optional(Schema.Number),
+}).annotate({ identifier: "GetPolicyOptions" });
 
 export interface GetIamPolicyRequest {
   /** OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`. */
   options?: GetPolicyOptions;
 }
 
-export const GetIamPolicyRequest: Schema.Schema<GetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      options: Schema.optional(GetPolicyOptions),
-    }),
-  ).annotate({
-    identifier: "GetIamPolicyRequest",
-  }) as any as Schema.Schema<GetIamPolicyRequest>;
+export const GetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  options: Schema.optional(GetPolicyOptions),
+}).annotate({ identifier: "GetIamPolicyRequest" });
 
 export interface UndeleteWorkforcePoolRequest {}
 
-export const UndeleteWorkforcePoolRequest: Schema.Schema<UndeleteWorkforcePoolRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const UndeleteWorkforcePoolRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UndeleteWorkforcePoolRequest",
-  }) as any as Schema.Schema<UndeleteWorkforcePoolRequest>;
+  });
 
 export interface UndeleteServiceAccountResponse {
   /** Metadata for the restored service account. */
   restoredAccount?: ServiceAccount;
 }
 
-export const UndeleteServiceAccountResponse: Schema.Schema<UndeleteServiceAccountResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      restoredAccount: Schema.optional(ServiceAccount),
-    }),
-  ).annotate({
-    identifier: "UndeleteServiceAccountResponse",
-  }) as any as Schema.Schema<UndeleteServiceAccountResponse>;
+export const UndeleteServiceAccountResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    restoredAccount: Schema.optional(ServiceAccount),
+  }).annotate({ identifier: "UndeleteServiceAccountResponse" });
 
 export interface CreateServiceAccountKeyRequest {
   /** The output format of the private key. The default value is `TYPE_GOOGLE_CREDENTIALS_FILE`, which is the Google Credentials File format. */
@@ -1762,22 +1450,17 @@ export interface CreateServiceAccountKeyRequest {
     | (string & {});
 }
 
-export const CreateServiceAccountKeyRequest: Schema.Schema<CreateServiceAccountKeyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      privateKeyType: Schema.optional(Schema.String),
-      keyAlgorithm: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreateServiceAccountKeyRequest",
-  }) as any as Schema.Schema<CreateServiceAccountKeyRequest>;
+export const CreateServiceAccountKeyRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    privateKeyType: Schema.optional(Schema.String),
+    keyAlgorithm: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CreateServiceAccountKeyRequest" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface OauthClientCredential {
   /** Immutable. Identifier. The resource name of the OauthClientCredential. Format: `projects/{project}/locations/{location}/oauthClients/{oauth_client}/credentials/{credential}` */
@@ -1790,33 +1473,24 @@ export interface OauthClientCredential {
   clientSecret?: string;
 }
 
-export const OauthClientCredential: Schema.Schema<OauthClientCredential> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      disabled: Schema.optional(Schema.Boolean),
-      displayName: Schema.optional(Schema.String),
-      clientSecret: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OauthClientCredential",
-  }) as any as Schema.Schema<OauthClientCredential>;
+export const OauthClientCredential = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  disabled: Schema.optional(Schema.Boolean),
+  displayName: Schema.optional(Schema.String),
+  clientSecret: Schema.optional(Schema.String),
+}).annotate({ identifier: "OauthClientCredential" });
 
 export interface ListOauthClientCredentialsResponse {
   /** A list of OauthClientCredentials. */
   oauthClientCredentials?: Array<OauthClientCredential>;
 }
 
-export const ListOauthClientCredentialsResponse: Schema.Schema<ListOauthClientCredentialsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      oauthClientCredentials: Schema.optional(
-        Schema.Array(OauthClientCredential),
-      ),
-    }),
-  ).annotate({
-    identifier: "ListOauthClientCredentialsResponse",
-  }) as any as Schema.Schema<ListOauthClientCredentialsResponse>;
+export const ListOauthClientCredentialsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    oauthClientCredentials: Schema.optional(
+      Schema.Array(OauthClientCredential),
+    ),
+  }).annotate({ identifier: "ListOauthClientCredentialsResponse" });
 
 export interface ListWorkforcePoolProviderKeysResponse {
   /** A list of WorkforcePoolProviderKeys. */
@@ -1825,17 +1499,13 @@ export interface ListWorkforcePoolProviderKeysResponse {
   nextPageToken?: string;
 }
 
-export const ListWorkforcePoolProviderKeysResponse: Schema.Schema<ListWorkforcePoolProviderKeysResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      workforcePoolProviderKeys: Schema.optional(
-        Schema.Array(WorkforcePoolProviderKey),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListWorkforcePoolProviderKeysResponse",
-  }) as any as Schema.Schema<ListWorkforcePoolProviderKeysResponse>;
+export const ListWorkforcePoolProviderKeysResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    workforcePoolProviderKeys: Schema.optional(
+      Schema.Array(WorkforcePoolProviderKey),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListWorkforcePoolProviderKeysResponse" });
 
 export interface OauthClient {
   /** Output only. The state of the OauthClient. */
@@ -1871,24 +1541,19 @@ export interface OauthClient {
   displayName?: string;
 }
 
-export const OauthClient: Schema.Schema<OauthClient> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      allowedScopes: Schema.optional(Schema.Array(Schema.String)),
-      expireTime: Schema.optional(Schema.String),
-      allowedRedirectUris: Schema.optional(Schema.Array(Schema.String)),
-      allowedGrantTypes: Schema.optional(Schema.Array(Schema.String)),
-      clientType: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      disabled: Schema.optional(Schema.Boolean),
-      clientId: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OauthClient",
-  }) as any as Schema.Schema<OauthClient>;
+export const OauthClient = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.String),
+  allowedScopes: Schema.optional(Schema.Array(Schema.String)),
+  expireTime: Schema.optional(Schema.String),
+  allowedRedirectUris: Schema.optional(Schema.Array(Schema.String)),
+  allowedGrantTypes: Schema.optional(Schema.Array(Schema.String)),
+  clientType: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  disabled: Schema.optional(Schema.Boolean),
+  clientId: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+}).annotate({ identifier: "OauthClient" });
 
 export interface CreateRoleRequest {
   /** The role ID to use for this role. A role ID may contain alphanumeric characters, underscores (`_`), and periods (`.`). It must contain a minimum of 3 characters and a maximum of 64 characters. */
@@ -1897,15 +1562,10 @@ export interface CreateRoleRequest {
   role?: Role;
 }
 
-export const CreateRoleRequest: Schema.Schema<CreateRoleRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      roleId: Schema.optional(Schema.String),
-      role: Schema.optional(Role),
-    }),
-  ).annotate({
-    identifier: "CreateRoleRequest",
-  }) as any as Schema.Schema<CreateRoleRequest>;
+export const CreateRoleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  roleId: Schema.optional(Schema.String),
+  role: Schema.optional(Role),
+}).annotate({ identifier: "CreateRoleRequest" });
 
 export interface ListWorkloadIdentityPoolManagedIdentitiesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -1914,24 +1574,22 @@ export interface ListWorkloadIdentityPoolManagedIdentitiesResponse {
   workloadIdentityPoolManagedIdentities?: Array<WorkloadIdentityPoolManagedIdentity>;
 }
 
-export const ListWorkloadIdentityPoolManagedIdentitiesResponse: Schema.Schema<ListWorkloadIdentityPoolManagedIdentitiesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      workloadIdentityPoolManagedIdentities: Schema.optional(
-        Schema.Array(WorkloadIdentityPoolManagedIdentity),
-      ),
-    }),
-  ).annotate({
+export const ListWorkloadIdentityPoolManagedIdentitiesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    workloadIdentityPoolManagedIdentities: Schema.optional(
+      Schema.Array(WorkloadIdentityPoolManagedIdentity),
+    ),
+  }).annotate({
     identifier: "ListWorkloadIdentityPoolManagedIdentitiesResponse",
-  }) as any as Schema.Schema<ListWorkloadIdentityPoolManagedIdentitiesResponse>;
+  });
 
 export interface EnableServiceAccountRequest {}
 
-export const EnableServiceAccountRequest: Schema.Schema<EnableServiceAccountRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const EnableServiceAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "EnableServiceAccountRequest",
-  }) as any as Schema.Schema<EnableServiceAccountRequest>;
+  });
 
 export interface Permission {
   onlyInPredefinedRoles?: boolean;
@@ -1955,19 +1613,16 @@ export interface Permission {
   primaryPermission?: string;
 }
 
-export const Permission: Schema.Schema<Permission> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      onlyInPredefinedRoles: Schema.optional(Schema.Boolean),
-      stage: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      customRolesSupportLevel: Schema.optional(Schema.String),
-      apiDisabled: Schema.optional(Schema.Boolean),
-      title: Schema.optional(Schema.String),
-      primaryPermission: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Permission" }) as any as Schema.Schema<Permission>;
+export const Permission = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  onlyInPredefinedRoles: Schema.optional(Schema.Boolean),
+  stage: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  customRolesSupportLevel: Schema.optional(Schema.String),
+  apiDisabled: Schema.optional(Schema.Boolean),
+  title: Schema.optional(Schema.String),
+  primaryPermission: Schema.optional(Schema.String),
+}).annotate({ identifier: "Permission" });
 
 export interface WorkforcePool {
   /** Immutable. The resource name of the parent. Format: `organizations/{org-id}`. */
@@ -1990,22 +1645,17 @@ export interface WorkforcePool {
   displayName?: string;
 }
 
-export const WorkforcePool: Schema.Schema<WorkforcePool> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parent: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      sessionDuration: Schema.optional(Schema.String),
-      expireTime: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      disabled: Schema.optional(Schema.Boolean),
-      accessRestrictions: Schema.optional(AccessRestrictions),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WorkforcePool",
-  }) as any as Schema.Schema<WorkforcePool>;
+export const WorkforcePool = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  parent: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  sessionDuration: Schema.optional(Schema.String),
+  expireTime: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  disabled: Schema.optional(Schema.Boolean),
+  accessRestrictions: Schema.optional(AccessRestrictions),
+  displayName: Schema.optional(Schema.String),
+}).annotate({ identifier: "WorkforcePool" });
 
 export interface ReconciliationOperationMetadata {
   /** Excluisive action returned by the CLH. */
@@ -2018,15 +1668,11 @@ export interface ReconciliationOperationMetadata {
   deleteResource?: boolean;
 }
 
-export const ReconciliationOperationMetadata: Schema.Schema<ReconciliationOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      exclusiveAction: Schema.optional(Schema.String),
-      deleteResource: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ReconciliationOperationMetadata",
-  }) as any as Schema.Schema<ReconciliationOperationMetadata>;
+export const ReconciliationOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    exclusiveAction: Schema.optional(Schema.String),
+    deleteResource: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "ReconciliationOperationMetadata" });
 
 export interface ListWorkforcePoolProviderScimTenantsResponse {
   /** Output only. Gemini Enterprise only. A list of SCIM tenants. */
@@ -2035,17 +1681,13 @@ export interface ListWorkforcePoolProviderScimTenantsResponse {
   nextPageToken?: string;
 }
 
-export const ListWorkforcePoolProviderScimTenantsResponse: Schema.Schema<ListWorkforcePoolProviderScimTenantsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      workforcePoolProviderScimTenants: Schema.optional(
-        Schema.Array(WorkforcePoolProviderScimTenant),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListWorkforcePoolProviderScimTenantsResponse",
-  }) as any as Schema.Schema<ListWorkforcePoolProviderScimTenantsResponse>;
+export const ListWorkforcePoolProviderScimTenantsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    workforcePoolProviderScimTenants: Schema.optional(
+      Schema.Array(WorkforcePoolProviderScimTenant),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListWorkforcePoolProviderScimTenantsResponse" });
 
 export interface ListOauthClientsResponse {
   /** A list of OauthClients. */
@@ -2054,15 +1696,11 @@ export interface ListOauthClientsResponse {
   nextPageToken?: string;
 }
 
-export const ListOauthClientsResponse: Schema.Schema<ListOauthClientsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      oauthClients: Schema.optional(Schema.Array(OauthClient)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListOauthClientsResponse",
-  }) as any as Schema.Schema<ListOauthClientsResponse>;
+export const ListOauthClientsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    oauthClients: Schema.optional(Schema.Array(OauthClient)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListOauthClientsResponse" });
 
 export interface ListWorkforcePoolsResponse {
   /** A list of pools. */
@@ -2071,29 +1709,21 @@ export interface ListWorkforcePoolsResponse {
   nextPageToken?: string;
 }
 
-export const ListWorkforcePoolsResponse: Schema.Schema<ListWorkforcePoolsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      workforcePools: Schema.optional(Schema.Array(WorkforcePool)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListWorkforcePoolsResponse",
-  }) as any as Schema.Schema<ListWorkforcePoolsResponse>;
+export const ListWorkforcePoolsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    workforcePools: Schema.optional(Schema.Array(WorkforcePool)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListWorkforcePoolsResponse" });
 
 export interface QueryAuditableServicesRequest {
   /** Required. The full resource name to query from the list of auditable services. The name follows the Google Cloud Platform resource format. For example, a Cloud Platform project with id `my-project` will be named `//cloudresourcemanager.googleapis.com/projects/my-project`. */
   fullResourceName?: string;
 }
 
-export const QueryAuditableServicesRequest: Schema.Schema<QueryAuditableServicesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fullResourceName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "QueryAuditableServicesRequest",
-  }) as any as Schema.Schema<QueryAuditableServicesRequest>;
+export const QueryAuditableServicesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fullResourceName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "QueryAuditableServicesRequest" });
 
 export interface SignBlobResponse {
   /** Deprecated. [Migrate to Service Account Credentials API](https://cloud.google.com/iam/help/credentials/migrate-api). The signed blob. */
@@ -2102,15 +1732,10 @@ export interface SignBlobResponse {
   keyId?: string;
 }
 
-export const SignBlobResponse: Schema.Schema<SignBlobResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      signature: Schema.optional(Schema.String),
-      keyId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SignBlobResponse",
-  }) as any as Schema.Schema<SignBlobResponse>;
+export const SignBlobResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  signature: Schema.optional(Schema.String),
+  keyId: Schema.optional(Schema.String),
+}).annotate({ identifier: "SignBlobResponse" });
 
 export interface LintPolicyRequest {
   /** google.iam.v1.Binding.condition object to be linted. */
@@ -2119,29 +1744,19 @@ export interface LintPolicyRequest {
   fullResourceName?: string;
 }
 
-export const LintPolicyRequest: Schema.Schema<LintPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      condition: Schema.optional(Expr),
-      fullResourceName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LintPolicyRequest",
-  }) as any as Schema.Schema<LintPolicyRequest>;
+export const LintPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  condition: Schema.optional(Expr),
+  fullResourceName: Schema.optional(Schema.String),
+}).annotate({ identifier: "LintPolicyRequest" });
 
 export interface UndeleteRoleRequest {
   /** Used to perform a consistent read-modify-write. */
   etag?: string;
 }
 
-export const UndeleteRoleRequest: Schema.Schema<UndeleteRoleRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UndeleteRoleRequest",
-  }) as any as Schema.Schema<UndeleteRoleRequest>;
+export const UndeleteRoleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "UndeleteRoleRequest" });
 
 export interface ListServiceAccountsResponse {
   /** To retrieve the next page of results, set ListServiceAccountsRequest.page_token to this value. */
@@ -2150,15 +1765,11 @@ export interface ListServiceAccountsResponse {
   accounts?: Array<ServiceAccount>;
 }
 
-export const ListServiceAccountsResponse: Schema.Schema<ListServiceAccountsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      accounts: Schema.optional(Schema.Array(ServiceAccount)),
-    }),
-  ).annotate({
-    identifier: "ListServiceAccountsResponse",
-  }) as any as Schema.Schema<ListServiceAccountsResponse>;
+export const ListServiceAccountsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    accounts: Schema.optional(Schema.Array(ServiceAccount)),
+  }).annotate({ identifier: "ListServiceAccountsResponse" });
 
 export interface QueryTestablePermissionsResponse {
   /** The Permissions testable on the requested resource. */
@@ -2167,15 +1778,11 @@ export interface QueryTestablePermissionsResponse {
   nextPageToken?: string;
 }
 
-export const QueryTestablePermissionsResponse: Schema.Schema<QueryTestablePermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Permission)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "QueryTestablePermissionsResponse",
-  }) as any as Schema.Schema<QueryTestablePermissionsResponse>;
+export const QueryTestablePermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Permission)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "QueryTestablePermissionsResponse" });
 
 export interface QueryTestablePermissionsRequest {
   /** Optional pagination token returned in an earlier QueryTestablePermissionsRequest. */
@@ -2186,30 +1793,22 @@ export interface QueryTestablePermissionsRequest {
   pageSize?: number;
 }
 
-export const QueryTestablePermissionsRequest: Schema.Schema<QueryTestablePermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pageToken: Schema.optional(Schema.String),
-      fullResourceName: Schema.optional(Schema.String),
-      pageSize: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "QueryTestablePermissionsRequest",
-  }) as any as Schema.Schema<QueryTestablePermissionsRequest>;
+export const QueryTestablePermissionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageToken: Schema.optional(Schema.String),
+    fullResourceName: Schema.optional(Schema.String),
+    pageSize: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "QueryTestablePermissionsRequest" });
 
 export interface UploadServiceAccountKeyRequest {
   /** The public key to associate with the service account. Must be an RSA public key that is wrapped in an X.509 v3 certificate. Include the first line, `-----BEGIN CERTIFICATE-----`, and the last line, `-----END CERTIFICATE-----`. */
   publicKeyData?: string;
 }
 
-export const UploadServiceAccountKeyRequest: Schema.Schema<UploadServiceAccountKeyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      publicKeyData: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UploadServiceAccountKeyRequest",
-  }) as any as Schema.Schema<UploadServiceAccountKeyRequest>;
+export const UploadServiceAccountKeyRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    publicKeyData: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UploadServiceAccountKeyRequest" });
 
 export interface QueryGrantableRolesResponse {
   /** To retrieve the next page of results, set `QueryGrantableRolesRequest.page_token` to this value. */
@@ -2218,15 +1817,11 @@ export interface QueryGrantableRolesResponse {
   roles?: Array<Role>;
 }
 
-export const QueryGrantableRolesResponse: Schema.Schema<QueryGrantableRolesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      roles: Schema.optional(Schema.Array(Role)),
-    }),
-  ).annotate({
-    identifier: "QueryGrantableRolesResponse",
-  }) as any as Schema.Schema<QueryGrantableRolesResponse>;
+export const QueryGrantableRolesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    roles: Schema.optional(Schema.Array(Role)),
+  }).annotate({ identifier: "QueryGrantableRolesResponse" });
 
 // ==========================================================================
 // Operations

@@ -24,24 +24,20 @@ const svc = T.Service({
 
 export interface SetPublishedDeployPercentageResponse {}
 
-export const SetPublishedDeployPercentageResponse: Schema.Schema<SetPublishedDeployPercentageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const SetPublishedDeployPercentageResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "SetPublishedDeployPercentageResponse",
-  }) as any as Schema.Schema<SetPublishedDeployPercentageResponse>;
+  });
 
 export interface SetPublishedDeployPercentageRequest {
   /** Required. Unscaled percentage value for the publised revision (nonnegative number between 0 and 100). It must be larger than the existing target percentage. */
   deployPercentage?: number;
 }
 
-export const SetPublishedDeployPercentageRequest: Schema.Schema<SetPublishedDeployPercentageRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deployPercentage: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "SetPublishedDeployPercentageRequest",
-  }) as any as Schema.Schema<SetPublishedDeployPercentageRequest>;
+export const SetPublishedDeployPercentageRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deployPercentage: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "SetPublishedDeployPercentageRequest" });
 
 export interface PublishItemResponse {
   /** The name of the item that was submitted */
@@ -60,35 +56,27 @@ export interface PublishItemResponse {
     | (string & {});
 }
 
-export const PublishItemResponse: Schema.Schema<PublishItemResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      itemId: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PublishItemResponse",
-  }) as any as Schema.Schema<PublishItemResponse>;
+export const PublishItemResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  itemId: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+}).annotate({ identifier: "PublishItemResponse" });
 
 export interface CancelSubmissionResponse {}
 
-export const CancelSubmissionResponse: Schema.Schema<CancelSubmissionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const CancelSubmissionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelSubmissionResponse",
-  }) as any as Schema.Schema<CancelSubmissionResponse>;
+  });
 
 export interface DeployInfo {
   /** Required. The current deploy percentage for the release channel (nonnegative number between 0 and 100). */
   deployPercentage?: number;
 }
 
-export const DeployInfo: Schema.Schema<DeployInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deployPercentage: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "DeployInfo" }) as any as Schema.Schema<DeployInfo>;
+export const DeployInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  deployPercentage: Schema.optional(Schema.Number),
+}).annotate({ identifier: "DeployInfo" });
 
 export interface PublishItemRequest {
   /** Optional. Use this to control if the item is published immediately on approval or staged for publishing in the future. Defaults to `DEFAULT_PUBLISH` if unset. */
@@ -103,23 +91,18 @@ export interface PublishItemRequest {
   skipReview?: boolean;
 }
 
-export const PublishItemRequest: Schema.Schema<PublishItemRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      publishType: Schema.optional(Schema.String),
-      deployInfos: Schema.optional(Schema.Array(DeployInfo)),
-      skipReview: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "PublishItemRequest",
-  }) as any as Schema.Schema<PublishItemRequest>;
+export const PublishItemRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  publishType: Schema.optional(Schema.String),
+  deployInfos: Schema.optional(Schema.Array(DeployInfo)),
+  skipReview: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "PublishItemRequest" });
 
 export interface CancelSubmissionRequest {}
 
-export const CancelSubmissionRequest: Schema.Schema<CancelSubmissionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const CancelSubmissionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelSubmissionRequest",
-  }) as any as Schema.Schema<CancelSubmissionRequest>;
+  });
 
 export interface DistributionChannel {
   /** The extension version provided in the manifest of the uploaded package. */
@@ -128,15 +111,10 @@ export interface DistributionChannel {
   deployPercentage?: number;
 }
 
-export const DistributionChannel: Schema.Schema<DistributionChannel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      crxVersion: Schema.optional(Schema.String),
-      deployPercentage: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "DistributionChannel",
-  }) as any as Schema.Schema<DistributionChannel>;
+export const DistributionChannel = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  crxVersion: Schema.optional(Schema.String),
+  deployPercentage: Schema.optional(Schema.Number),
+}).annotate({ identifier: "DistributionChannel" });
 
 export interface UploadItemPackageResponse {
   /** The name of the item the package was uploaded to. */
@@ -155,17 +133,13 @@ export interface UploadItemPackageResponse {
   crxVersion?: string;
 }
 
-export const UploadItemPackageResponse: Schema.Schema<UploadItemPackageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      uploadState: Schema.optional(Schema.String),
-      itemId: Schema.optional(Schema.String),
-      crxVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UploadItemPackageResponse",
-  }) as any as Schema.Schema<UploadItemPackageResponse>;
+export const UploadItemPackageResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    uploadState: Schema.optional(Schema.String),
+    itemId: Schema.optional(Schema.String),
+    crxVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UploadItemPackageResponse" });
 
 export interface ItemRevisionStatus {
   /** Output only. Current state of the item */
@@ -182,15 +156,10 @@ export interface ItemRevisionStatus {
   distributionChannels?: Array<DistributionChannel>;
 }
 
-export const ItemRevisionStatus: Schema.Schema<ItemRevisionStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      distributionChannels: Schema.optional(Schema.Array(DistributionChannel)),
-    }),
-  ).annotate({
-    identifier: "ItemRevisionStatus",
-  }) as any as Schema.Schema<ItemRevisionStatus>;
+export const ItemRevisionStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.String),
+  distributionChannels: Schema.optional(Schema.Array(DistributionChannel)),
+}).annotate({ identifier: "ItemRevisionStatus" });
 
 export interface FetchItemStatusResponse {
   /** Output only. The state of the last async upload for an item. Only set when there has been an async upload for the item in the past 24 hours. */
@@ -217,28 +186,24 @@ export interface FetchItemStatusResponse {
   takenDown?: boolean;
 }
 
-export const FetchItemStatusResponse: Schema.Schema<FetchItemStatusResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lastAsyncUploadState: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      itemId: Schema.optional(Schema.String),
-      submittedItemRevisionStatus: Schema.optional(ItemRevisionStatus),
-      publicKey: Schema.optional(Schema.String),
-      publishedItemRevisionStatus: Schema.optional(ItemRevisionStatus),
-      warned: Schema.optional(Schema.Boolean),
-      takenDown: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "FetchItemStatusResponse",
-  }) as any as Schema.Schema<FetchItemStatusResponse>;
+export const FetchItemStatusResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    lastAsyncUploadState: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    itemId: Schema.optional(Schema.String),
+    submittedItemRevisionStatus: Schema.optional(ItemRevisionStatus),
+    publicKey: Schema.optional(Schema.String),
+    publishedItemRevisionStatus: Schema.optional(ItemRevisionStatus),
+    warned: Schema.optional(Schema.Boolean),
+    takenDown: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "FetchItemStatusResponse" });
 
 export interface UploadItemPackageRequest {}
 
-export const UploadItemPackageRequest: Schema.Schema<UploadItemPackageRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const UploadItemPackageRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UploadItemPackageRequest",
-  }) as any as Schema.Schema<UploadItemPackageRequest>;
+  });
 
 // ==========================================================================
 // Operations

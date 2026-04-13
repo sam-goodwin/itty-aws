@@ -29,13 +29,10 @@ export interface Count {
   value?: string;
 }
 
-export const Count: Schema.Schema<Count> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unit: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Count" }) as any as Schema.Schema<Count>;
+export const Count = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  unit: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+}).annotate({ identifier: "Count" });
 
 export interface Issue {
   /** Longer description of the issue focused on how to resolve it. */
@@ -67,20 +64,17 @@ export interface Issue {
     | (string & {});
 }
 
-export const Issue: Schema.Schema<Issue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      attribute: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      timestamp: Schema.optional(Schema.String),
-      severity: Schema.optional(Schema.String),
-      destination: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      applicableCountries: Schema.optional(Schema.Array(Schema.String)),
-      resolution: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Issue" }) as any as Schema.Schema<Issue>;
+export const Issue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  attribute: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  timestamp: Schema.optional(Schema.String),
+  severity: Schema.optional(Schema.String),
+  destination: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  applicableCountries: Schema.optional(Schema.Array(Schema.String)),
+  resolution: Schema.optional(Schema.String),
+}).annotate({ identifier: "Issue" });
 
 export interface Image {
   /** The status of the image. @OutputOnly */
@@ -105,14 +99,11 @@ export interface Image {
   imageUrl?: string;
 }
 
-export const Image: Schema.Schema<Image> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      status: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      imageUrl: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Image" }) as any as Schema.Schema<Image>;
+export const Image = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  status: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  imageUrl: Schema.optional(Schema.String),
+}).annotate({ identifier: "Image" });
 
 export interface ProductDetail {
   /** The value of the attribute. */
@@ -123,16 +114,11 @@ export interface ProductDetail {
   attributeName?: string;
 }
 
-export const ProductDetail: Schema.Schema<ProductDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      attributeValue: Schema.optional(Schema.String),
-      sectionName: Schema.optional(Schema.String),
-      attributeName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProductDetail",
-  }) as any as Schema.Schema<ProductDetail>;
+export const ProductDetail = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  attributeValue: Schema.optional(Schema.String),
+  sectionName: Schema.optional(Schema.String),
+  attributeName: Schema.optional(Schema.String),
+}).annotate({ identifier: "ProductDetail" });
 
 export interface Price {
   /** The numeric value of the price. */
@@ -141,13 +127,10 @@ export interface Price {
   currency?: string;
 }
 
-export const Price: Schema.Schema<Price> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      amount: Schema.optional(Schema.String),
-      currency: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Price" }) as any as Schema.Schema<Price>;
+export const Price = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  amount: Schema.optional(Schema.String),
+  currency: Schema.optional(Schema.String),
+}).annotate({ identifier: "Price" });
 
 export interface FloatUnit {
   /** amount. */
@@ -156,13 +139,10 @@ export interface FloatUnit {
   unit?: string;
 }
 
-export const FloatUnit: Schema.Schema<FloatUnit> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      amount: Schema.optional(Schema.Number),
-      unit: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "FloatUnit" }) as any as Schema.Schema<FloatUnit>;
+export const FloatUnit = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  amount: Schema.optional(Schema.Number),
+  unit: Schema.optional(Schema.String),
+}).annotate({ identifier: "FloatUnit" });
 
 export interface VoluntaryNutritionFact {
   /** Value. */
@@ -173,16 +153,13 @@ export interface VoluntaryNutritionFact {
   name?: string;
 }
 
-export const VoluntaryNutritionFact: Schema.Schema<VoluntaryNutritionFact> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(FloatUnit),
-      dailyPercentage: Schema.optional(Schema.Number),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VoluntaryNutritionFact",
-  }) as any as Schema.Schema<VoluntaryNutritionFact>;
+export const VoluntaryNutritionFact = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    value: Schema.optional(FloatUnit),
+    dailyPercentage: Schema.optional(Schema.Number),
+    name: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "VoluntaryNutritionFact" });
 
 export interface Nutrition {
   /** Total fat. */
@@ -273,56 +250,51 @@ export interface Nutrition {
   vitaminD?: FloatUnit;
 }
 
-export const Nutrition: Schema.Schema<Nutrition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      totalFat: Schema.optional(FloatUnit),
-      cholesterol: Schema.optional(FloatUnit),
-      vitaminDDailyPercentage: Schema.optional(Schema.Number),
-      energyFromFat: Schema.optional(FloatUnit),
-      voluntaryNutritionFact: Schema.optional(
-        Schema.Array(VoluntaryNutritionFact),
-      ),
-      folateMcgDfe: Schema.optional(Schema.Number),
-      sodium: Schema.optional(FloatUnit),
-      polyunsaturatedFat: Schema.optional(FloatUnit),
-      totalCarbohydrateDailyPercentage: Schema.optional(Schema.Number),
-      totalSugarsDailyPercentage: Schema.optional(Schema.Number),
-      iron: Schema.optional(FloatUnit),
-      saturatedFat: Schema.optional(FloatUnit),
-      starch: Schema.optional(FloatUnit),
-      totalCarbohydrate: Schema.optional(FloatUnit),
-      potassiumDailyPercentage: Schema.optional(Schema.Number),
-      addedSugarsDailyPercentage: Schema.optional(Schema.Number),
-      nutritionFactMeasure: Schema.optional(Schema.String),
-      proteinDailyPercentage: Schema.optional(Schema.Number),
-      potassium: Schema.optional(FloatUnit),
-      sodiumDailyPercentage: Schema.optional(Schema.Number),
-      preparedSizeDescription: Schema.optional(Schema.String),
-      dietaryFiberDailyPercentage: Schema.optional(Schema.Number),
-      cholesterolDailyPercentage: Schema.optional(Schema.Number),
-      energy: Schema.optional(FloatUnit),
-      totalFatDailyPercentage: Schema.optional(Schema.Number),
-      transFat: Schema.optional(FloatUnit),
-      transFatDailyPercentage: Schema.optional(Schema.Number),
-      folateDailyPercentage: Schema.optional(Schema.Number),
-      servingsPerContainer: Schema.optional(Schema.String),
-      ironDailyPercentage: Schema.optional(Schema.Number),
-      folateFolicAcid: Schema.optional(FloatUnit),
-      dietaryFiber: Schema.optional(FloatUnit),
-      calciumDailyPercentage: Schema.optional(Schema.Number),
-      monounsaturatedFat: Schema.optional(FloatUnit),
-      servingSizeDescription: Schema.optional(Schema.String),
-      totalSugars: Schema.optional(FloatUnit),
-      calcium: Schema.optional(FloatUnit),
-      polyols: Schema.optional(FloatUnit),
-      protein: Schema.optional(FloatUnit),
-      saturatedFatDailyPercentage: Schema.optional(Schema.Number),
-      addedSugars: Schema.optional(FloatUnit),
-      servingSizeMeasure: Schema.optional(FloatUnit),
-      vitaminD: Schema.optional(FloatUnit),
-    }),
-  ).annotate({ identifier: "Nutrition" }) as any as Schema.Schema<Nutrition>;
+export const Nutrition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  totalFat: Schema.optional(FloatUnit),
+  cholesterol: Schema.optional(FloatUnit),
+  vitaminDDailyPercentage: Schema.optional(Schema.Number),
+  energyFromFat: Schema.optional(FloatUnit),
+  voluntaryNutritionFact: Schema.optional(Schema.Array(VoluntaryNutritionFact)),
+  folateMcgDfe: Schema.optional(Schema.Number),
+  sodium: Schema.optional(FloatUnit),
+  polyunsaturatedFat: Schema.optional(FloatUnit),
+  totalCarbohydrateDailyPercentage: Schema.optional(Schema.Number),
+  totalSugarsDailyPercentage: Schema.optional(Schema.Number),
+  iron: Schema.optional(FloatUnit),
+  saturatedFat: Schema.optional(FloatUnit),
+  starch: Schema.optional(FloatUnit),
+  totalCarbohydrate: Schema.optional(FloatUnit),
+  potassiumDailyPercentage: Schema.optional(Schema.Number),
+  addedSugarsDailyPercentage: Schema.optional(Schema.Number),
+  nutritionFactMeasure: Schema.optional(Schema.String),
+  proteinDailyPercentage: Schema.optional(Schema.Number),
+  potassium: Schema.optional(FloatUnit),
+  sodiumDailyPercentage: Schema.optional(Schema.Number),
+  preparedSizeDescription: Schema.optional(Schema.String),
+  dietaryFiberDailyPercentage: Schema.optional(Schema.Number),
+  cholesterolDailyPercentage: Schema.optional(Schema.Number),
+  energy: Schema.optional(FloatUnit),
+  totalFatDailyPercentage: Schema.optional(Schema.Number),
+  transFat: Schema.optional(FloatUnit),
+  transFatDailyPercentage: Schema.optional(Schema.Number),
+  folateDailyPercentage: Schema.optional(Schema.Number),
+  servingsPerContainer: Schema.optional(Schema.String),
+  ironDailyPercentage: Schema.optional(Schema.Number),
+  folateFolicAcid: Schema.optional(FloatUnit),
+  dietaryFiber: Schema.optional(FloatUnit),
+  calciumDailyPercentage: Schema.optional(Schema.Number),
+  monounsaturatedFat: Schema.optional(FloatUnit),
+  servingSizeDescription: Schema.optional(Schema.String),
+  totalSugars: Schema.optional(FloatUnit),
+  calcium: Schema.optional(FloatUnit),
+  polyols: Schema.optional(FloatUnit),
+  protein: Schema.optional(FloatUnit),
+  saturatedFatDailyPercentage: Schema.optional(Schema.Number),
+  addedSugars: Schema.optional(FloatUnit),
+  servingSizeMeasure: Schema.optional(FloatUnit),
+  vitaminD: Schema.optional(FloatUnit),
+}).annotate({ identifier: "Nutrition" });
 
 export interface GoogleShoppingManufacturersV1ProductCertification {
   /** Optional. The expiration date (UTC). */
@@ -341,20 +313,18 @@ export interface GoogleShoppingManufacturersV1ProductCertification {
   authority?: string;
 }
 
-export const GoogleShoppingManufacturersV1ProductCertification: Schema.Schema<GoogleShoppingManufacturersV1ProductCertification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      validUntil: Schema.optional(Schema.String),
-      logo: Schema.optional(Schema.String),
-      code: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-      link: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      authority: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleShoppingManufacturersV1ProductCertification =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    validUntil: Schema.optional(Schema.String),
+    logo: Schema.optional(Schema.String),
+    code: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
+    link: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    authority: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleShoppingManufacturersV1ProductCertification",
-  }) as any as Schema.Schema<GoogleShoppingManufacturersV1ProductCertification>;
+  });
 
 export interface Capacity {
   /** The numeric value of the capacity. */
@@ -363,13 +333,10 @@ export interface Capacity {
   unit?: string;
 }
 
-export const Capacity: Schema.Schema<Capacity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-      unit: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Capacity" }) as any as Schema.Schema<Capacity>;
+export const Capacity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.String),
+  unit: Schema.optional(Schema.String),
+}).annotate({ identifier: "Capacity" });
 
 export interface Grocery {
   /** Nutrition claim. */
@@ -392,20 +359,17 @@ export interface Grocery {
   alcoholByVolume?: number;
 }
 
-export const Grocery: Schema.Schema<Grocery> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nutritionClaim: Schema.optional(Schema.Array(Schema.String)),
-      directions: Schema.optional(Schema.String),
-      derivedNutritionClaim: Schema.optional(Schema.Array(Schema.String)),
-      indications: Schema.optional(Schema.String),
-      activeIngredients: Schema.optional(Schema.String),
-      allergens: Schema.optional(Schema.String),
-      storageInstructions: Schema.optional(Schema.String),
-      ingredients: Schema.optional(Schema.String),
-      alcoholByVolume: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Grocery" }) as any as Schema.Schema<Grocery>;
+export const Grocery = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nutritionClaim: Schema.optional(Schema.Array(Schema.String)),
+  directions: Schema.optional(Schema.String),
+  derivedNutritionClaim: Schema.optional(Schema.Array(Schema.String)),
+  indications: Schema.optional(Schema.String),
+  activeIngredients: Schema.optional(Schema.String),
+  allergens: Schema.optional(Schema.String),
+  storageInstructions: Schema.optional(Schema.String),
+  ingredients: Schema.optional(Schema.String),
+  alcoholByVolume: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Grocery" });
 
 export interface FeatureDescription {
   /** An optional image describing the feature. */
@@ -416,16 +380,11 @@ export interface FeatureDescription {
   text?: string;
 }
 
-export const FeatureDescription: Schema.Schema<FeatureDescription> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      image: Schema.optional(Image),
-      headline: Schema.optional(Schema.String),
-      text: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FeatureDescription",
-  }) as any as Schema.Schema<FeatureDescription>;
+export const FeatureDescription = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  image: Schema.optional(Image),
+  headline: Schema.optional(Schema.String),
+  text: Schema.optional(Schema.String),
+}).annotate({ identifier: "FeatureDescription" });
 
 export interface Attributes {
   /** The flavor of the product. For more information, see https://support.google.com/manufacturers/answer/6124116#flavor. */
@@ -514,55 +473,52 @@ export interface Attributes {
   sizeType?: Array<string>;
 }
 
-export const Attributes: Schema.Schema<Attributes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      flavor: Schema.optional(Schema.String),
-      theme: Schema.optional(Schema.String),
-      imageLink: Schema.optional(Image),
-      sizeSystem: Schema.optional(Schema.String),
-      format: Schema.optional(Schema.String),
-      itemGroupId: Schema.optional(Schema.String),
-      pattern: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      includedDestination: Schema.optional(Schema.Array(Schema.String)),
-      productDetail: Schema.optional(Schema.Array(ProductDetail)),
-      richProductContent: Schema.optional(Schema.Array(Schema.String)),
-      suggestedRetailPrice: Schema.optional(Price),
-      gtin: Schema.optional(Schema.Array(Schema.String)),
-      mpn: Schema.optional(Schema.String),
-      excludedDestination: Schema.optional(Schema.Array(Schema.String)),
-      disclosureDate: Schema.optional(Schema.String),
-      productType: Schema.optional(Schema.Array(Schema.String)),
-      ageGroup: Schema.optional(Schema.String),
-      targetClientId: Schema.optional(Schema.String),
-      intendedCountry: Schema.optional(Schema.Array(Schema.String)),
-      scent: Schema.optional(Schema.String),
-      size: Schema.optional(Schema.String),
-      material: Schema.optional(Schema.String),
-      nutrition: Schema.optional(Nutrition),
-      virtualModelLink: Schema.optional(Schema.String),
-      productPageUrl: Schema.optional(Schema.String),
-      productHighlight: Schema.optional(Schema.Array(Schema.String)),
-      productName: Schema.optional(Schema.String),
-      certification: Schema.optional(
-        Schema.Array(GoogleShoppingManufacturersV1ProductCertification),
-      ),
-      capacity: Schema.optional(Capacity),
-      brand: Schema.optional(Schema.String),
-      color: Schema.optional(Schema.String),
-      grocery: Schema.optional(Grocery),
-      additionalImageLink: Schema.optional(Schema.Array(Image)),
-      featureDescription: Schema.optional(Schema.Array(FeatureDescription)),
-      releaseDate: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      count: Schema.optional(Count),
-      videoLink: Schema.optional(Schema.Array(Schema.String)),
-      productLine: Schema.optional(Schema.String),
-      gender: Schema.optional(Schema.String),
-      sizeType: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "Attributes" }) as any as Schema.Schema<Attributes>;
+export const Attributes = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  flavor: Schema.optional(Schema.String),
+  theme: Schema.optional(Schema.String),
+  imageLink: Schema.optional(Image),
+  sizeSystem: Schema.optional(Schema.String),
+  format: Schema.optional(Schema.String),
+  itemGroupId: Schema.optional(Schema.String),
+  pattern: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  includedDestination: Schema.optional(Schema.Array(Schema.String)),
+  productDetail: Schema.optional(Schema.Array(ProductDetail)),
+  richProductContent: Schema.optional(Schema.Array(Schema.String)),
+  suggestedRetailPrice: Schema.optional(Price),
+  gtin: Schema.optional(Schema.Array(Schema.String)),
+  mpn: Schema.optional(Schema.String),
+  excludedDestination: Schema.optional(Schema.Array(Schema.String)),
+  disclosureDate: Schema.optional(Schema.String),
+  productType: Schema.optional(Schema.Array(Schema.String)),
+  ageGroup: Schema.optional(Schema.String),
+  targetClientId: Schema.optional(Schema.String),
+  intendedCountry: Schema.optional(Schema.Array(Schema.String)),
+  scent: Schema.optional(Schema.String),
+  size: Schema.optional(Schema.String),
+  material: Schema.optional(Schema.String),
+  nutrition: Schema.optional(Nutrition),
+  virtualModelLink: Schema.optional(Schema.String),
+  productPageUrl: Schema.optional(Schema.String),
+  productHighlight: Schema.optional(Schema.Array(Schema.String)),
+  productName: Schema.optional(Schema.String),
+  certification: Schema.optional(
+    Schema.Array(GoogleShoppingManufacturersV1ProductCertification),
+  ),
+  capacity: Schema.optional(Capacity),
+  brand: Schema.optional(Schema.String),
+  color: Schema.optional(Schema.String),
+  grocery: Schema.optional(Grocery),
+  additionalImageLink: Schema.optional(Schema.Array(Image)),
+  featureDescription: Schema.optional(Schema.Array(FeatureDescription)),
+  releaseDate: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  count: Schema.optional(Count),
+  videoLink: Schema.optional(Schema.Array(Schema.String)),
+  productLine: Schema.optional(Schema.String),
+  gender: Schema.optional(Schema.String),
+  sizeType: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Attributes" });
 
 export interface DestinationStatus {
   /** The name of the destination. */
@@ -577,18 +533,13 @@ export interface DestinationStatus {
   status?: "UNKNOWN" | "ACTIVE" | "PENDING" | "DISAPPROVED" | (string & {});
 }
 
-export const DestinationStatus: Schema.Schema<DestinationStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      destination: Schema.optional(Schema.String),
-      pendingCountries: Schema.optional(Schema.Array(Schema.String)),
-      disapprovedCountries: Schema.optional(Schema.Array(Schema.String)),
-      approvedCountries: Schema.optional(Schema.Array(Schema.String)),
-      status: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DestinationStatus",
-  }) as any as Schema.Schema<DestinationStatus>;
+export const DestinationStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  destination: Schema.optional(Schema.String),
+  pendingCountries: Schema.optional(Schema.Array(Schema.String)),
+  disapprovedCountries: Schema.optional(Schema.Array(Schema.String)),
+  approvedCountries: Schema.optional(Schema.Array(Schema.String)),
+  status: Schema.optional(Schema.String),
+}).annotate({ identifier: "DestinationStatus" });
 
 export interface Product {
   /** Optional. The feed label for the product. */
@@ -611,20 +562,17 @@ export interface Product {
   contentLanguage?: string;
 }
 
-export const Product: Schema.Schema<Product> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      feedLabel: Schema.optional(Schema.String),
-      productId: Schema.optional(Schema.String),
-      parent: Schema.optional(Schema.String),
-      issues: Schema.optional(Schema.Array(Issue)),
-      attributes: Schema.optional(Attributes),
-      name: Schema.optional(Schema.String),
-      destinationStatuses: Schema.optional(Schema.Array(DestinationStatus)),
-      targetCountry: Schema.optional(Schema.String),
-      contentLanguage: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Product" }) as any as Schema.Schema<Product>;
+export const Product = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  feedLabel: Schema.optional(Schema.String),
+  productId: Schema.optional(Schema.String),
+  parent: Schema.optional(Schema.String),
+  issues: Schema.optional(Schema.Array(Issue)),
+  attributes: Schema.optional(Attributes),
+  name: Schema.optional(Schema.String),
+  destinationStatuses: Schema.optional(Schema.Array(DestinationStatus)),
+  targetCountry: Schema.optional(Schema.String),
+  contentLanguage: Schema.optional(Schema.String),
+}).annotate({ identifier: "Product" });
 
 export interface ListProductsResponse {
   /** List of the products. */
@@ -633,15 +581,10 @@ export interface ListProductsResponse {
   nextPageToken?: string;
 }
 
-export const ListProductsResponse: Schema.Schema<ListProductsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      products: Schema.optional(Schema.Array(Product)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListProductsResponse",
-  }) as any as Schema.Schema<ListProductsResponse>;
+export const ListProductsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  products: Schema.optional(Schema.Array(Product)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListProductsResponse" });
 
 export interface Certification {
   /** Optional. A URL link to the certification logo. */
@@ -660,27 +603,21 @@ export interface Certification {
   value?: string;
 }
 
-export const Certification: Schema.Schema<Certification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      logo: Schema.optional(Schema.String),
-      validUntil: Schema.optional(Schema.String),
-      link: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      authority: Schema.optional(Schema.String),
-      code: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Certification",
-  }) as any as Schema.Schema<Certification>;
+export const Certification = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  logo: Schema.optional(Schema.String),
+  validUntil: Schema.optional(Schema.String),
+  link: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  authority: Schema.optional(Schema.String),
+  code: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+}).annotate({ identifier: "Certification" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface ProductCertification {
   /** Optional. These are your own product categorization system in your product data. */
@@ -705,23 +642,18 @@ export interface ProductCertification {
   certification?: Array<Certification>;
 }
 
-export const ProductCertification: Schema.Schema<ProductCertification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      productType: Schema.optional(Schema.Array(Schema.String)),
-      destinationStatuses: Schema.optional(Schema.Array(DestinationStatus)),
-      name: Schema.optional(Schema.String),
-      productCode: Schema.optional(Schema.Array(Schema.String)),
-      title: Schema.optional(Schema.String),
-      brand: Schema.optional(Schema.String),
-      mpn: Schema.optional(Schema.Array(Schema.String)),
-      countryCode: Schema.optional(Schema.Array(Schema.String)),
-      issues: Schema.optional(Schema.Array(Issue)),
-      certification: Schema.optional(Schema.Array(Certification)),
-    }),
-  ).annotate({
-    identifier: "ProductCertification",
-  }) as any as Schema.Schema<ProductCertification>;
+export const ProductCertification = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  productType: Schema.optional(Schema.Array(Schema.String)),
+  destinationStatuses: Schema.optional(Schema.Array(DestinationStatus)),
+  name: Schema.optional(Schema.String),
+  productCode: Schema.optional(Schema.Array(Schema.String)),
+  title: Schema.optional(Schema.String),
+  brand: Schema.optional(Schema.String),
+  mpn: Schema.optional(Schema.Array(Schema.String)),
+  countryCode: Schema.optional(Schema.Array(Schema.String)),
+  issues: Schema.optional(Schema.Array(Issue)),
+  certification: Schema.optional(Schema.Array(Certification)),
+}).annotate({ identifier: "ProductCertification" });
 
 export interface ListProductCertificationsResponse {
   /** The product certifications from the specified certification body. */
@@ -730,17 +662,11 @@ export interface ListProductCertificationsResponse {
   nextPageToken?: string;
 }
 
-export const ListProductCertificationsResponse: Schema.Schema<ListProductCertificationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      productCertifications: Schema.optional(
-        Schema.Array(ProductCertification),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListProductCertificationsResponse",
-  }) as any as Schema.Schema<ListProductCertificationsResponse>;
+export const ListProductCertificationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    productCertifications: Schema.optional(Schema.Array(ProductCertification)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListProductCertificationsResponse" });
 
 // ==========================================================================
 // Operations

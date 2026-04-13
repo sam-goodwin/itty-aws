@@ -29,15 +29,11 @@ export interface FilestoreInstanceDataSourceProperties {
   name?: string;
 }
 
-export const FilestoreInstanceDataSourceProperties: Schema.Schema<FilestoreInstanceDataSourceProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      instanceCreateTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FilestoreInstanceDataSourceProperties",
-  }) as any as Schema.Schema<FilestoreInstanceDataSourceProperties>;
+export const FilestoreInstanceDataSourceProperties =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    instanceCreateTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "FilestoreInstanceDataSourceProperties" });
 
 export interface ComputeInstanceDataSourceProperties {
   /** The description of the Compute Engine instance. */
@@ -52,18 +48,14 @@ export interface ComputeInstanceDataSourceProperties {
   machineType?: string;
 }
 
-export const ComputeInstanceDataSourceProperties: Schema.Schema<ComputeInstanceDataSourceProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      totalDiskCount: Schema.optional(Schema.String),
-      totalDiskSizeGb: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      machineType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ComputeInstanceDataSourceProperties",
-  }) as any as Schema.Schema<ComputeInstanceDataSourceProperties>;
+export const ComputeInstanceDataSourceProperties =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    totalDiskCount: Schema.optional(Schema.String),
+    totalDiskSizeGb: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    machineType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ComputeInstanceDataSourceProperties" });
 
 export interface AlloyDbPitrWindow {
   /** Output only. The end time of the PITR window. It is not set if the corresponding Backup Plan Association is active. */
@@ -74,16 +66,11 @@ export interface AlloyDbPitrWindow {
   startTime?: string;
 }
 
-export const AlloyDbPitrWindow: Schema.Schema<AlloyDbPitrWindow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endTime: Schema.optional(Schema.String),
-      logRetentionDays: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AlloyDbPitrWindow",
-  }) as any as Schema.Schema<AlloyDbPitrWindow>;
+export const AlloyDbPitrWindow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  endTime: Schema.optional(Schema.String),
+  logRetentionDays: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "AlloyDbPitrWindow" });
 
 export interface AlloyDBClusterDataSourceProperties {
   /** Output only. Point in time recovery windows. The order is guaranteed to be ascending by start time. */
@@ -94,16 +81,12 @@ export interface AlloyDBClusterDataSourceProperties {
   clusterUid?: string;
 }
 
-export const AlloyDBClusterDataSourceProperties: Schema.Schema<AlloyDBClusterDataSourceProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pitrWindows: Schema.optional(Schema.Array(AlloyDbPitrWindow)),
-      name: Schema.optional(Schema.String),
-      clusterUid: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AlloyDBClusterDataSourceProperties",
-  }) as any as Schema.Schema<AlloyDBClusterDataSourceProperties>;
+export const AlloyDBClusterDataSourceProperties =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pitrWindows: Schema.optional(Schema.Array(AlloyDbPitrWindow)),
+    name: Schema.optional(Schema.String),
+    clusterUid: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AlloyDBClusterDataSourceProperties" });
 
 export interface DiskDataSourceProperties {
   /** Name of the disk backed up by the datasource. */
@@ -116,17 +99,13 @@ export interface DiskDataSourceProperties {
   sizeGb?: string;
 }
 
-export const DiskDataSourceProperties: Schema.Schema<DiskDataSourceProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      sizeGb: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DiskDataSourceProperties",
-  }) as any as Schema.Schema<DiskDataSourceProperties>;
+export const DiskDataSourceProperties =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    sizeGb: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DiskDataSourceProperties" });
 
 export interface CloudSqlInstanceDataSourceProperties {
   /** Output only. The installed database version of the Cloud SQL instance. */
@@ -139,17 +118,13 @@ export interface CloudSqlInstanceDataSourceProperties {
   instanceTier?: string;
 }
 
-export const CloudSqlInstanceDataSourceProperties: Schema.Schema<CloudSqlInstanceDataSourceProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      databaseInstalledVersion: Schema.optional(Schema.String),
-      instanceCreateTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      instanceTier: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CloudSqlInstanceDataSourceProperties",
-  }) as any as Schema.Schema<CloudSqlInstanceDataSourceProperties>;
+export const CloudSqlInstanceDataSourceProperties =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    databaseInstalledVersion: Schema.optional(Schema.String),
+    instanceCreateTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    instanceTier: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CloudSqlInstanceDataSourceProperties" });
 
 export interface DataSourceGcpResource {
   /** The type of the Google Cloud resource. Use the Unified Resource Type, eg. compute.googleapis.com/Instance. */
@@ -170,29 +145,24 @@ export interface DataSourceGcpResource {
   cloudSqlInstanceDatasourceProperties?: CloudSqlInstanceDataSourceProperties;
 }
 
-export const DataSourceGcpResource: Schema.Schema<DataSourceGcpResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      filestoreInstanceDatasourceProperties: Schema.optional(
-        FilestoreInstanceDataSourceProperties,
-      ),
-      computeInstanceDatasourceProperties: Schema.optional(
-        ComputeInstanceDataSourceProperties,
-      ),
-      alloyDbClusterDatasourceProperties: Schema.optional(
-        AlloyDBClusterDataSourceProperties,
-      ),
-      diskDatasourceProperties: Schema.optional(DiskDataSourceProperties),
-      gcpResourcename: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-      cloudSqlInstanceDatasourceProperties: Schema.optional(
-        CloudSqlInstanceDataSourceProperties,
-      ),
-    }),
-  ).annotate({
-    identifier: "DataSourceGcpResource",
-  }) as any as Schema.Schema<DataSourceGcpResource>;
+export const DataSourceGcpResource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  filestoreInstanceDatasourceProperties: Schema.optional(
+    FilestoreInstanceDataSourceProperties,
+  ),
+  computeInstanceDatasourceProperties: Schema.optional(
+    ComputeInstanceDataSourceProperties,
+  ),
+  alloyDbClusterDatasourceProperties: Schema.optional(
+    AlloyDBClusterDataSourceProperties,
+  ),
+  diskDatasourceProperties: Schema.optional(DiskDataSourceProperties),
+  gcpResourcename: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  cloudSqlInstanceDatasourceProperties: Schema.optional(
+    CloudSqlInstanceDataSourceProperties,
+  ),
+}).annotate({ identifier: "DataSourceGcpResource" });
 
 export interface DataSourceBackupApplianceApplication {
   /** The name of the Application as known to the Backup Appliance. */
@@ -211,20 +181,16 @@ export interface DataSourceBackupApplianceApplication {
   hostId?: string;
 }
 
-export const DataSourceBackupApplianceApplication: Schema.Schema<DataSourceBackupApplianceApplication> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      applicationName: Schema.optional(Schema.String),
-      applianceId: Schema.optional(Schema.String),
-      hostname: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      backupAppliance: Schema.optional(Schema.String),
-      applicationId: Schema.optional(Schema.String),
-      hostId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DataSourceBackupApplianceApplication",
-  }) as any as Schema.Schema<DataSourceBackupApplianceApplication>;
+export const DataSourceBackupApplianceApplication =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    applicationName: Schema.optional(Schema.String),
+    applianceId: Schema.optional(Schema.String),
+    hostname: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    backupAppliance: Schema.optional(Schema.String),
+    applicationId: Schema.optional(Schema.String),
+    hostId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DataSourceBackupApplianceApplication" });
 
 export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -235,16 +201,13 @@ export interface Status {
   code?: number;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      code: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  code: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Status" });
 
 export interface GcpBackupConfig {
   /** The description of the backup plan. */
@@ -261,19 +224,14 @@ export interface GcpBackupConfig {
   backupPlan?: string;
 }
 
-export const GcpBackupConfig: Schema.Schema<GcpBackupConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      backupPlanDescription: Schema.optional(Schema.String),
-      backupPlanRules: Schema.optional(Schema.Array(Schema.String)),
-      backupPlanRevisionName: Schema.optional(Schema.String),
-      backupPlanAssociation: Schema.optional(Schema.String),
-      backupPlanRevisionId: Schema.optional(Schema.String),
-      backupPlan: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GcpBackupConfig",
-  }) as any as Schema.Schema<GcpBackupConfig>;
+export const GcpBackupConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  backupPlanDescription: Schema.optional(Schema.String),
+  backupPlanRules: Schema.optional(Schema.Array(Schema.String)),
+  backupPlanRevisionName: Schema.optional(Schema.String),
+  backupPlanAssociation: Schema.optional(Schema.String),
+  backupPlanRevisionId: Schema.optional(Schema.String),
+  backupPlan: Schema.optional(Schema.String),
+}).annotate({ identifier: "GcpBackupConfig" });
 
 export interface BackupApplianceBackupConfig {
   /** The name of the backup appliance. */
@@ -292,20 +250,16 @@ export interface BackupApplianceBackupConfig {
   applicationName?: string;
 }
 
-export const BackupApplianceBackupConfig: Schema.Schema<BackupApplianceBackupConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      backupApplianceName: Schema.optional(Schema.String),
-      backupApplianceId: Schema.optional(Schema.String),
-      hostName: Schema.optional(Schema.String),
-      slpName: Schema.optional(Schema.String),
-      sltName: Schema.optional(Schema.String),
-      slaId: Schema.optional(Schema.String),
-      applicationName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BackupApplianceBackupConfig",
-  }) as any as Schema.Schema<BackupApplianceBackupConfig>;
+export const BackupApplianceBackupConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    backupApplianceName: Schema.optional(Schema.String),
+    backupApplianceId: Schema.optional(Schema.String),
+    hostName: Schema.optional(Schema.String),
+    slpName: Schema.optional(Schema.String),
+    sltName: Schema.optional(Schema.String),
+    slaId: Schema.optional(Schema.String),
+    applicationName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BackupApplianceBackupConfig" });
 
 export interface BackupConfigInfo {
   /** Output only. If the last backup were successful, this field has the consistency date. */
@@ -326,18 +280,13 @@ export interface BackupConfigInfo {
   backupApplianceBackupConfig?: BackupApplianceBackupConfig;
 }
 
-export const BackupConfigInfo: Schema.Schema<BackupConfigInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lastSuccessfulBackupConsistencyTime: Schema.optional(Schema.String),
-      lastBackupError: Schema.optional(Status),
-      gcpBackupConfig: Schema.optional(GcpBackupConfig),
-      lastBackupState: Schema.optional(Schema.String),
-      backupApplianceBackupConfig: Schema.optional(BackupApplianceBackupConfig),
-    }),
-  ).annotate({
-    identifier: "BackupConfigInfo",
-  }) as any as Schema.Schema<BackupConfigInfo>;
+export const BackupConfigInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  lastSuccessfulBackupConsistencyTime: Schema.optional(Schema.String),
+  lastBackupError: Schema.optional(Status),
+  gcpBackupConfig: Schema.optional(GcpBackupConfig),
+  lastBackupState: Schema.optional(Schema.String),
+  backupApplianceBackupConfig: Schema.optional(BackupApplianceBackupConfig),
+}).annotate({ identifier: "BackupConfigInfo" });
 
 export interface DataSource {
   /** Optional. Resource labels to represent user provided metadata. No labels currently defined: */
@@ -378,26 +327,23 @@ export interface DataSource {
   backupConfigInfo?: BackupConfigInfo;
 }
 
-export const DataSource: Schema.Schema<DataSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      totalStoredBytes: Schema.optional(Schema.String),
-      dataSourceGcpResource: Schema.optional(DataSourceGcpResource),
-      configState: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      dataSourceBackupApplianceApplication: Schema.optional(
-        DataSourceBackupApplianceApplication,
-      ),
-      name: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      backupBlockedByVaultAccessRestriction: Schema.optional(Schema.Boolean),
-      backupCount: Schema.optional(Schema.String),
-      backupConfigInfo: Schema.optional(BackupConfigInfo),
-    }),
-  ).annotate({ identifier: "DataSource" }) as any as Schema.Schema<DataSource>;
+export const DataSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  totalStoredBytes: Schema.optional(Schema.String),
+  dataSourceGcpResource: Schema.optional(DataSourceGcpResource),
+  configState: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  dataSourceBackupApplianceApplication: Schema.optional(
+    DataSourceBackupApplianceApplication,
+  ),
+  name: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  backupBlockedByVaultAccessRestriction: Schema.optional(Schema.Boolean),
+  backupCount: Schema.optional(Schema.String),
+  backupConfigInfo: Schema.optional(BackupConfigInfo),
+}).annotate({ identifier: "DataSource" });
 
 export interface InitializeParams {
   /** Optional. Specifies the disk name. If not specified, the default is to use the name of the instance. */
@@ -406,15 +352,10 @@ export interface InitializeParams {
   replicaZones?: Array<string>;
 }
 
-export const InitializeParams: Schema.Schema<InitializeParams> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      diskName: Schema.optional(Schema.String),
-      replicaZones: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "InitializeParams",
-  }) as any as Schema.Schema<InitializeParams>;
+export const InitializeParams = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  diskName: Schema.optional(Schema.String),
+  replicaZones: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "InitializeParams" });
 
 export interface GuestOsFeature {
   /** The ID of a supported feature. */
@@ -437,14 +378,9 @@ export interface GuestOsFeature {
     | (string & {});
 }
 
-export const GuestOsFeature: Schema.Schema<GuestOsFeature> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GuestOsFeature",
-  }) as any as Schema.Schema<GuestOsFeature>;
+export const GuestOsFeature = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "GuestOsFeature" });
 
 export interface CustomerEncryptionKey {
   /** Optional. The name of the encryption key that is stored in Google Cloud KMS. */
@@ -457,17 +393,12 @@ export interface CustomerEncryptionKey {
   rawKey?: string;
 }
 
-export const CustomerEncryptionKey: Schema.Schema<CustomerEncryptionKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kmsKeyName: Schema.optional(Schema.String),
-      kmsKeyServiceAccount: Schema.optional(Schema.String),
-      rsaEncryptedKey: Schema.optional(Schema.String),
-      rawKey: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomerEncryptionKey",
-  }) as any as Schema.Schema<CustomerEncryptionKey>;
+export const CustomerEncryptionKey = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kmsKeyName: Schema.optional(Schema.String),
+  kmsKeyServiceAccount: Schema.optional(Schema.String),
+  rsaEncryptedKey: Schema.optional(Schema.String),
+  rawKey: Schema.optional(Schema.String),
+}).annotate({ identifier: "CustomerEncryptionKey" });
 
 export interface AttachedDisk {
   /** Optional. Any valid publicly visible licenses. */
@@ -521,30 +452,25 @@ export interface AttachedDisk {
   diskEncryptionKey?: CustomerEncryptionKey;
 }
 
-export const AttachedDisk: Schema.Schema<AttachedDisk> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      license: Schema.optional(Schema.Array(Schema.String)),
-      mode: Schema.optional(Schema.String),
-      savedState: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      diskType: Schema.optional(Schema.String),
-      autoDelete: Schema.optional(Schema.Boolean),
-      initializeParams: Schema.optional(InitializeParams),
-      diskTypeDeprecated: Schema.optional(Schema.String),
-      guestOsFeature: Schema.optional(Schema.Array(GuestOsFeature)),
-      index: Schema.optional(Schema.String),
-      boot: Schema.optional(Schema.Boolean),
-      deviceName: Schema.optional(Schema.String),
-      source: Schema.optional(Schema.String),
-      diskInterface: Schema.optional(Schema.String),
-      diskSizeGb: Schema.optional(Schema.String),
-      diskEncryptionKey: Schema.optional(CustomerEncryptionKey),
-    }),
-  ).annotate({
-    identifier: "AttachedDisk",
-  }) as any as Schema.Schema<AttachedDisk>;
+export const AttachedDisk = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  license: Schema.optional(Schema.Array(Schema.String)),
+  mode: Schema.optional(Schema.String),
+  savedState: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  diskType: Schema.optional(Schema.String),
+  autoDelete: Schema.optional(Schema.Boolean),
+  initializeParams: Schema.optional(InitializeParams),
+  diskTypeDeprecated: Schema.optional(Schema.String),
+  guestOsFeature: Schema.optional(Schema.Array(GuestOsFeature)),
+  index: Schema.optional(Schema.String),
+  boot: Schema.optional(Schema.Boolean),
+  deviceName: Schema.optional(Schema.String),
+  source: Schema.optional(Schema.String),
+  diskInterface: Schema.optional(Schema.String),
+  diskSizeGb: Schema.optional(Schema.String),
+  diskEncryptionKey: Schema.optional(CustomerEncryptionKey),
+}).annotate({ identifier: "AttachedDisk" });
 
 export interface WorkforceIdentityBasedOAuth2ClientID {
   /** Output only. First party OAuth Client ID for Google Identities. */
@@ -553,15 +479,11 @@ export interface WorkforceIdentityBasedOAuth2ClientID {
   thirdPartyOauth2ClientId?: string;
 }
 
-export const WorkforceIdentityBasedOAuth2ClientID: Schema.Schema<WorkforceIdentityBasedOAuth2ClientID> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      firstPartyOauth2ClientId: Schema.optional(Schema.String),
-      thirdPartyOauth2ClientId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WorkforceIdentityBasedOAuth2ClientID",
-  }) as any as Schema.Schema<WorkforceIdentityBasedOAuth2ClientID>;
+export const WorkforceIdentityBasedOAuth2ClientID =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    firstPartyOauth2ClientId: Schema.optional(Schema.String),
+    thirdPartyOauth2ClientId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "WorkforceIdentityBasedOAuth2ClientID" });
 
 export interface RegionDiskTargetEnvironment {
   /** Required. Target project for the disk. */
@@ -572,30 +494,21 @@ export interface RegionDiskTargetEnvironment {
   replicaZones?: Array<string>;
 }
 
-export const RegionDiskTargetEnvironment: Schema.Schema<RegionDiskTargetEnvironment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      project: Schema.optional(Schema.String),
-      region: Schema.optional(Schema.String),
-      replicaZones: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "RegionDiskTargetEnvironment",
-  }) as any as Schema.Schema<RegionDiskTargetEnvironment>;
+export const RegionDiskTargetEnvironment =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    project: Schema.optional(Schema.String),
+    region: Schema.optional(Schema.String),
+    replicaZones: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "RegionDiskTargetEnvironment" });
 
 export interface AbandonBackupRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
 
-export const AbandonBackupRequest: Schema.Schema<AbandonBackupRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AbandonBackupRequest",
-  }) as any as Schema.Schema<AbandonBackupRequest>;
+export const AbandonBackupRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  requestId: Schema.optional(Schema.String),
+}).annotate({ identifier: "AbandonBackupRequest" });
 
 export interface GcpResource {
   /** Type of the resource. Use the Unified Resource Type, eg. compute.googleapis.com/Instance. */
@@ -606,30 +519,20 @@ export interface GcpResource {
   location?: string;
 }
 
-export const GcpResource: Schema.Schema<GcpResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      gcpResourcename: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GcpResource",
-  }) as any as Schema.Schema<GcpResource>;
+export const GcpResource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  gcpResourcename: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+}).annotate({ identifier: "GcpResource" });
 
 export interface TargetResource {
   /** Details of the native Google Cloud resource created as part of restore. */
   gcpResource?: GcpResource;
 }
 
-export const TargetResource: Schema.Schema<TargetResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcpResource: Schema.optional(GcpResource),
-    }),
-  ).annotate({
-    identifier: "TargetResource",
-  }) as any as Schema.Schema<TargetResource>;
+export const TargetResource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gcpResource: Schema.optional(GcpResource),
+}).annotate({ identifier: "TargetResource" });
 
 export interface Trial {
   /** Identifier. The resource name of the trial. Format: projects/{project}/locations/{location}/trial */
@@ -655,30 +558,22 @@ export interface Trial {
     | (string & {});
 }
 
-export const Trial: Schema.Schema<Trial> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      endReason: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Trial" }) as any as Schema.Schema<Trial>;
+export const Trial = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  endReason: Schema.optional(Schema.String),
+}).annotate({ identifier: "Trial" });
 
 export interface PitrSettings {
   /** Output only. Number of days to retain the backup. */
   retentionDays?: number;
 }
 
-export const PitrSettings: Schema.Schema<PitrSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      retentionDays: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "PitrSettings",
-  }) as any as Schema.Schema<PitrSettings>;
+export const PitrSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  retentionDays: Schema.optional(Schema.Number),
+}).annotate({ identifier: "PitrSettings" });
 
 export interface InitiateBackupRequest {
   /** Required. Resource ID of the Backup resource. */
@@ -687,15 +582,10 @@ export interface InitiateBackupRequest {
   requestId?: string;
 }
 
-export const InitiateBackupRequest: Schema.Schema<InitiateBackupRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      backupId: Schema.optional(Schema.String),
-      requestId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InitiateBackupRequest",
-  }) as any as Schema.Schema<InitiateBackupRequest>;
+export const InitiateBackupRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  backupId: Schema.optional(Schema.String),
+  requestId: Schema.optional(Schema.String),
+}).annotate({ identifier: "InitiateBackupRequest" });
 
 export interface AliasIpRange {
   /** Optional. The IP alias ranges to allocate for this interface. */
@@ -704,15 +594,10 @@ export interface AliasIpRange {
   subnetworkRangeName?: string;
 }
 
-export const AliasIpRange: Schema.Schema<AliasIpRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ipCidrRange: Schema.optional(Schema.String),
-      subnetworkRangeName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AliasIpRange",
-  }) as any as Schema.Schema<AliasIpRange>;
+export const AliasIpRange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ipCidrRange: Schema.optional(Schema.String),
+  subnetworkRangeName: Schema.optional(Schema.String),
+}).annotate({ identifier: "AliasIpRange" });
 
 export interface AccessConfig {
   /** Optional. In accessConfigs (IPv4), the default and only option is ONE_TO_ONE_NAT. In ipv6AccessConfigs, the default and only option is DIRECT_IPV6. */
@@ -741,21 +626,16 @@ export interface AccessConfig {
     | (string & {});
 }
 
-export const AccessConfig: Schema.Schema<AccessConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      natIP: Schema.optional(Schema.String),
-      externalIpv6: Schema.optional(Schema.String),
-      publicPtrDomainName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      externalIpv6PrefixLength: Schema.optional(Schema.Number),
-      setPublicPtr: Schema.optional(Schema.Boolean),
-      networkTier: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccessConfig",
-  }) as any as Schema.Schema<AccessConfig>;
+export const AccessConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  natIP: Schema.optional(Schema.String),
+  externalIpv6: Schema.optional(Schema.String),
+  publicPtrDomainName: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  externalIpv6PrefixLength: Schema.optional(Schema.Number),
+  setPublicPtr: Schema.optional(Schema.Boolean),
+  networkTier: Schema.optional(Schema.String),
+}).annotate({ identifier: "AccessConfig" });
 
 export interface NetworkInterface {
   /** Optional. [Output Only] One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork. */
@@ -796,27 +676,22 @@ export interface NetworkInterface {
   networkIP?: string;
 }
 
-export const NetworkInterface: Schema.Schema<NetworkInterface> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ipv6AccessType: Schema.optional(Schema.String),
-      network: Schema.optional(Schema.String),
-      subnetwork: Schema.optional(Schema.String),
-      aliasIpRanges: Schema.optional(Schema.Array(AliasIpRange)),
-      queueCount: Schema.optional(Schema.Number),
-      networkAttachment: Schema.optional(Schema.String),
-      accessConfigs: Schema.optional(Schema.Array(AccessConfig)),
-      ipv6Address: Schema.optional(Schema.String),
-      ipv6AccessConfigs: Schema.optional(Schema.Array(AccessConfig)),
-      nicType: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      internalIpv6PrefixLength: Schema.optional(Schema.Number),
-      stackType: Schema.optional(Schema.String),
-      networkIP: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NetworkInterface",
-  }) as any as Schema.Schema<NetworkInterface>;
+export const NetworkInterface = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ipv6AccessType: Schema.optional(Schema.String),
+  network: Schema.optional(Schema.String),
+  subnetwork: Schema.optional(Schema.String),
+  aliasIpRanges: Schema.optional(Schema.Array(AliasIpRange)),
+  queueCount: Schema.optional(Schema.Number),
+  networkAttachment: Schema.optional(Schema.String),
+  accessConfigs: Schema.optional(Schema.Array(AccessConfig)),
+  ipv6Address: Schema.optional(Schema.String),
+  ipv6AccessConfigs: Schema.optional(Schema.Array(AccessConfig)),
+  nicType: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  internalIpv6PrefixLength: Schema.optional(Schema.Number),
+  stackType: Schema.optional(Schema.String),
+  networkIP: Schema.optional(Schema.String),
+}).annotate({ identifier: "NetworkInterface" });
 
 export interface BackupDrPlanRule {
   /** Output only. Unique Id of the backup rule. */
@@ -825,29 +700,19 @@ export interface BackupDrPlanRule {
   lastSuccessfulBackupTime?: string;
 }
 
-export const BackupDrPlanRule: Schema.Schema<BackupDrPlanRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ruleId: Schema.optional(Schema.String),
-      lastSuccessfulBackupTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BackupDrPlanRule",
-  }) as any as Schema.Schema<BackupDrPlanRule>;
+export const BackupDrPlanRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ruleId: Schema.optional(Schema.String),
+  lastSuccessfulBackupTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "BackupDrPlanRule" });
 
 export interface BackupDrPlanConfig {
   /** Backup rules of the backup plan resource. */
   backupDrPlanRules?: Array<BackupDrPlanRule>;
 }
 
-export const BackupDrPlanConfig: Schema.Schema<BackupDrPlanConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      backupDrPlanRules: Schema.optional(Schema.Array(BackupDrPlanRule)),
-    }),
-  ).annotate({
-    identifier: "BackupDrPlanConfig",
-  }) as any as Schema.Schema<BackupDrPlanConfig>;
+export const BackupDrPlanConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  backupDrPlanRules: Schema.optional(Schema.Array(BackupDrPlanRule)),
+}).annotate({ identifier: "BackupDrPlanConfig" });
 
 export interface Expr {
   /** Textual representation of an expression in Common Expression Language syntax. */
@@ -860,15 +725,12 @@ export interface Expr {
   location?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expression: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Expr" }) as any as Schema.Schema<Expr>;
+export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  expression: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+}).annotate({ identifier: "Expr" });
 
 export interface Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -879,14 +741,11 @@ export interface Binding {
   members?: Array<string>;
 }
 
-export const Binding: Schema.Schema<Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      condition: Schema.optional(Expr),
-      role: Schema.optional(Schema.String),
-      members: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "Binding" }) as any as Schema.Schema<Binding>;
+export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  condition: Schema.optional(Expr),
+  role: Schema.optional(Schema.String),
+  members: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Binding" });
 
 export interface AuditLogConfig {
   /** The log type that this config enables. */
@@ -900,15 +759,10 @@ export interface AuditLogConfig {
   exemptedMembers?: Array<string>;
 }
 
-export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      logType: Schema.optional(Schema.String),
-      exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AuditLogConfig",
-  }) as any as Schema.Schema<AuditLogConfig>;
+export const AuditLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  logType: Schema.optional(Schema.String),
+  exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "AuditLogConfig" });
 
 export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
@@ -917,15 +771,10 @@ export interface AuditConfig {
   auditLogConfigs?: Array<AuditLogConfig>;
 }
 
-export const AuditConfig: Schema.Schema<AuditConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      service: Schema.optional(Schema.String),
-      auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
-    }),
-  ).annotate({
-    identifier: "AuditConfig",
-  }) as any as Schema.Schema<AuditConfig>;
+export const AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  service: Schema.optional(Schema.String),
+  auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
+}).annotate({ identifier: "AuditConfig" });
 
 export interface Policy {
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
@@ -938,15 +787,12 @@ export interface Policy {
   version?: number;
 }
 
-export const Policy: Schema.Schema<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      etag: Schema.optional(Schema.String),
-      bindings: Schema.optional(Schema.Array(Binding)),
-      auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
-      version: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Policy" }) as any as Schema.Schema<Policy>;
+export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  etag: Schema.optional(Schema.String),
+  bindings: Schema.optional(Schema.Array(Binding)),
+  auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
+  version: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Policy" });
 
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
@@ -955,15 +801,10 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policy: Schema.optional(Policy),
-      updateMask: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SetIamPolicyRequest",
-  }) as any as Schema.Schema<SetIamPolicyRequest>;
+export const SetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policy: Schema.optional(Policy),
+  updateMask: Schema.optional(Schema.String),
+}).annotate({ identifier: "SetIamPolicyRequest" });
 
 export interface FilestoreInstanceDataSourceReferenceProperties {
   /** Output only. Name of the Filestore instance backed up by the datasource. Format: projects/{project}/instances/{instance} */
@@ -972,15 +813,11 @@ export interface FilestoreInstanceDataSourceReferenceProperties {
   instanceCreateTime?: string;
 }
 
-export const FilestoreInstanceDataSourceReferenceProperties: Schema.Schema<FilestoreInstanceDataSourceReferenceProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      instanceCreateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FilestoreInstanceDataSourceReferenceProperties",
-  }) as any as Schema.Schema<FilestoreInstanceDataSourceReferenceProperties>;
+export const FilestoreInstanceDataSourceReferenceProperties =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    instanceCreateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "FilestoreInstanceDataSourceReferenceProperties" });
 
 export interface CloudSqlInstanceDataSourceReferenceProperties {
   /** Output only. The installed database version of the Cloud SQL instance. */
@@ -993,31 +830,23 @@ export interface CloudSqlInstanceDataSourceReferenceProperties {
   instanceTier?: string;
 }
 
-export const CloudSqlInstanceDataSourceReferenceProperties: Schema.Schema<CloudSqlInstanceDataSourceReferenceProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      databaseInstalledVersion: Schema.optional(Schema.String),
-      instanceCreateTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      instanceTier: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CloudSqlInstanceDataSourceReferenceProperties",
-  }) as any as Schema.Schema<CloudSqlInstanceDataSourceReferenceProperties>;
+export const CloudSqlInstanceDataSourceReferenceProperties =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    databaseInstalledVersion: Schema.optional(Schema.String),
+    instanceCreateTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    instanceTier: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CloudSqlInstanceDataSourceReferenceProperties" });
 
 export interface AlloyDBClusterDataSourceReferenceProperties {
   /** Output only. Name of the AlloyDB cluster backed up by the datasource. Format: projects/{project}/locations/{location}/clusters/{cluster} */
   name?: string;
 }
 
-export const AlloyDBClusterDataSourceReferenceProperties: Schema.Schema<AlloyDBClusterDataSourceReferenceProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AlloyDBClusterDataSourceReferenceProperties",
-  }) as any as Schema.Schema<AlloyDBClusterDataSourceReferenceProperties>;
+export const AlloyDBClusterDataSourceReferenceProperties =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AlloyDBClusterDataSourceReferenceProperties" });
 
 export interface DataSourceGcpResourceInfo {
   /** Output only. The type of the Google Cloud resource. Ex: compute.googleapis.com/Instance */
@@ -1034,25 +863,21 @@ export interface DataSourceGcpResourceInfo {
   alloyDbClusterProperties?: AlloyDBClusterDataSourceReferenceProperties;
 }
 
-export const DataSourceGcpResourceInfo: Schema.Schema<DataSourceGcpResourceInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      filestoreInstanceProperties: Schema.optional(
-        FilestoreInstanceDataSourceReferenceProperties,
-      ),
-      gcpResourcename: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-      cloudSqlInstanceProperties: Schema.optional(
-        CloudSqlInstanceDataSourceReferenceProperties,
-      ),
-      alloyDbClusterProperties: Schema.optional(
-        AlloyDBClusterDataSourceReferenceProperties,
-      ),
-    }),
-  ).annotate({
-    identifier: "DataSourceGcpResourceInfo",
-  }) as any as Schema.Schema<DataSourceGcpResourceInfo>;
+export const DataSourceGcpResourceInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    filestoreInstanceProperties: Schema.optional(
+      FilestoreInstanceDataSourceReferenceProperties,
+    ),
+    gcpResourcename: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    cloudSqlInstanceProperties: Schema.optional(
+      CloudSqlInstanceDataSourceReferenceProperties,
+    ),
+    alloyDbClusterProperties: Schema.optional(
+      AlloyDBClusterDataSourceReferenceProperties,
+    ),
+  }).annotate({ identifier: "DataSourceGcpResourceInfo" });
 
 export interface ServiceAccount {
   /** Optional. The list of scopes to be made available for this service account. */
@@ -1061,15 +886,10 @@ export interface ServiceAccount {
   email?: string;
 }
 
-export const ServiceAccount: Schema.Schema<ServiceAccount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scopes: Schema.optional(Schema.Array(Schema.String)),
-      email: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ServiceAccount",
-  }) as any as Schema.Schema<ServiceAccount>;
+export const ServiceAccount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  scopes: Schema.optional(Schema.Array(Schema.String)),
+  email: Schema.optional(Schema.String),
+}).annotate({ identifier: "ServiceAccount" });
 
 export interface WorkforceIdentityBasedManagementURI {
   /** Output only. First party Management URI for Google Identities. */
@@ -1078,15 +898,11 @@ export interface WorkforceIdentityBasedManagementURI {
   thirdPartyManagementUri?: string;
 }
 
-export const WorkforceIdentityBasedManagementURI: Schema.Schema<WorkforceIdentityBasedManagementURI> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      firstPartyManagementUri: Schema.optional(Schema.String),
-      thirdPartyManagementUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WorkforceIdentityBasedManagementURI",
-  }) as any as Schema.Schema<WorkforceIdentityBasedManagementURI>;
+export const WorkforceIdentityBasedManagementURI =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    firstPartyManagementUri: Schema.optional(Schema.String),
+    thirdPartyManagementUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "WorkforceIdentityBasedManagementURI" });
 
 export interface ManagementURI {
   /** Output only. The ManagementServer AGM/RD WebUI URL. */
@@ -1095,15 +911,10 @@ export interface ManagementURI {
   api?: string;
 }
 
-export const ManagementURI: Schema.Schema<ManagementURI> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      webUi: Schema.optional(Schema.String),
-      api: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ManagementURI",
-  }) as any as Schema.Schema<ManagementURI>;
+export const ManagementURI = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  webUi: Schema.optional(Schema.String),
+  api: Schema.optional(Schema.String),
+}).annotate({ identifier: "ManagementURI" });
 
 export interface NetworkConfig {
   /** Optional. The resource name of the Google Compute Engine VPC network to which the ManagementServer instance is connected. */
@@ -1115,15 +926,10 @@ export interface NetworkConfig {
     | (string & {});
 }
 
-export const NetworkConfig: Schema.Schema<NetworkConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      network: Schema.optional(Schema.String),
-      peeringMode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NetworkConfig",
-  }) as any as Schema.Schema<NetworkConfig>;
+export const NetworkConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  network: Schema.optional(Schema.String),
+  peeringMode: Schema.optional(Schema.String),
+}).annotate({ identifier: "NetworkConfig" });
 
 export interface ManagementServer {
   /** Optional. The type of the ManagementServer resource. */
@@ -1169,47 +975,37 @@ export interface ManagementServer {
   oauth2ClientId?: string;
 }
 
-export const ManagementServer: Schema.Schema<ManagementServer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      satisfiesPzs: Schema.optional(Schema.Boolean),
-      workforceIdentityBasedManagementUri: Schema.optional(
-        WorkforceIdentityBasedManagementURI,
-      ),
-      description: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      managementUri: Schema.optional(ManagementURI),
-      networks: Schema.optional(Schema.Array(NetworkConfig)),
-      name: Schema.optional(Schema.String),
-      workforceIdentityBasedOauth2ClientId: Schema.optional(
-        WorkforceIdentityBasedOAuth2ClientID,
-      ),
-      updateTime: Schema.optional(Schema.String),
-      baProxyUri: Schema.optional(Schema.Array(Schema.String)),
-      satisfiesPzi: Schema.optional(Schema.Boolean),
-      oauth2ClientId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ManagementServer",
-  }) as any as Schema.Schema<ManagementServer>;
+export const ManagementServer = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  satisfiesPzs: Schema.optional(Schema.Boolean),
+  workforceIdentityBasedManagementUri: Schema.optional(
+    WorkforceIdentityBasedManagementURI,
+  ),
+  description: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  managementUri: Schema.optional(ManagementURI),
+  networks: Schema.optional(Schema.Array(NetworkConfig)),
+  name: Schema.optional(Schema.String),
+  workforceIdentityBasedOauth2ClientId: Schema.optional(
+    WorkforceIdentityBasedOAuth2ClientID,
+  ),
+  updateTime: Schema.optional(Schema.String),
+  baProxyUri: Schema.optional(Schema.Array(Schema.String)),
+  satisfiesPzi: Schema.optional(Schema.Boolean),
+  oauth2ClientId: Schema.optional(Schema.String),
+}).annotate({ identifier: "ManagementServer" });
 
 export interface DisplayDevice {
   /** Optional. Enables display for the Compute Engine VM */
   enableDisplay?: boolean;
 }
 
-export const DisplayDevice: Schema.Schema<DisplayDevice> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableDisplay: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "DisplayDevice",
-  }) as any as Schema.Schema<DisplayDevice>;
+export const DisplayDevice = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enableDisplay: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "DisplayDevice" });
 
 export interface InitiateBackupResponse {
   /** The generation id of the base backup. It is needed for the incremental backups. */
@@ -1220,16 +1016,13 @@ export interface InitiateBackupResponse {
   backup?: string;
 }
 
-export const InitiateBackupResponse: Schema.Schema<InitiateBackupResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      baseBackupGenerationId: Schema.optional(Schema.Number),
-      newBackupGenerationId: Schema.optional(Schema.Number),
-      backup: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InitiateBackupResponse",
-  }) as any as Schema.Schema<InitiateBackupResponse>;
+export const InitiateBackupResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    baseBackupGenerationId: Schema.optional(Schema.Number),
+    newBackupGenerationId: Schema.optional(Schema.Number),
+    backup: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "InitiateBackupResponse" });
 
 export interface Location {
   /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
@@ -1244,16 +1037,13 @@ export interface Location {
   name?: string;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      displayName: Schema.optional(Schema.String),
-      locationId: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  displayName: Schema.optional(Schema.String),
+  locationId: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Location" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -1262,15 +1052,10 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(Location)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface CloudSqlInstanceInitializationConfig {
   /** Required. The edition of the Cloud SQL instance. */
@@ -1281,14 +1066,10 @@ export interface CloudSqlInstanceInitializationConfig {
     | (string & {});
 }
 
-export const CloudSqlInstanceInitializationConfig: Schema.Schema<CloudSqlInstanceInitializationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      edition: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CloudSqlInstanceInitializationConfig",
-  }) as any as Schema.Schema<CloudSqlInstanceInitializationConfig>;
+export const CloudSqlInstanceInitializationConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    edition: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CloudSqlInstanceInitializationConfig" });
 
 export interface InitializeServiceRequest {
   /** Optional. The location where the BackupPlan will be created. This field is required for multi-region BackupVaults and is optional for regional BackupVaults. It is useful when creating a Backup Vault in a multi-region, allowing the BackupPlan to reside in a specific region within that multi-region. If this field is not provided, the BackupPlan will be created in the same location as specified in the `name` field. */
@@ -1301,19 +1082,15 @@ export interface InitializeServiceRequest {
   cloudSqlInstanceInitializationConfig?: CloudSqlInstanceInitializationConfig;
 }
 
-export const InitializeServiceRequest: Schema.Schema<InitializeServiceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      backupPlanLocation: Schema.optional(Schema.String),
-      requestId: Schema.optional(Schema.String),
-      resourceType: Schema.optional(Schema.String),
-      cloudSqlInstanceInitializationConfig: Schema.optional(
-        CloudSqlInstanceInitializationConfig,
-      ),
-    }),
-  ).annotate({
-    identifier: "InitializeServiceRequest",
-  }) as any as Schema.Schema<InitializeServiceRequest>;
+export const InitializeServiceRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    backupPlanLocation: Schema.optional(Schema.String),
+    requestId: Schema.optional(Schema.String),
+    resourceType: Schema.optional(Schema.String),
+    cloudSqlInstanceInitializationConfig: Schema.optional(
+      CloudSqlInstanceInitializationConfig,
+    ),
+  }).annotate({ identifier: "InitializeServiceRequest" });
 
 export interface SchedulingDuration {
   /** Optional. Span of time at a resolution of a second. */
@@ -1322,15 +1099,10 @@ export interface SchedulingDuration {
   nanos?: number;
 }
 
-export const SchedulingDuration: Schema.Schema<SchedulingDuration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      seconds: Schema.optional(Schema.String),
-      nanos: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "SchedulingDuration",
-  }) as any as Schema.Schema<SchedulingDuration>;
+export const SchedulingDuration = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  seconds: Schema.optional(Schema.String),
+  nanos: Schema.optional(Schema.Number),
+}).annotate({ identifier: "SchedulingDuration" });
 
 export interface NodeAffinity {
   /** Optional. Defines the operation of node selection. */
@@ -1341,16 +1113,11 @@ export interface NodeAffinity {
   values?: Array<string>;
 }
 
-export const NodeAffinity: Schema.Schema<NodeAffinity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operator: Schema.optional(Schema.String),
-      key: Schema.optional(Schema.String),
-      values: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "NodeAffinity",
-  }) as any as Schema.Schema<NodeAffinity>;
+export const NodeAffinity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  operator: Schema.optional(Schema.String),
+  key: Schema.optional(Schema.String),
+  values: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "NodeAffinity" });
 
 export interface Scheduling {
   /** Optional. Specifies the provisioning model of the instance. */
@@ -1383,33 +1150,26 @@ export interface Scheduling {
     | (string & {});
 }
 
-export const Scheduling: Schema.Schema<Scheduling> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      provisioningModel: Schema.optional(Schema.String),
-      localSsdRecoveryTimeout: Schema.optional(SchedulingDuration),
-      preemptible: Schema.optional(Schema.Boolean),
-      nodeAffinities: Schema.optional(Schema.Array(NodeAffinity)),
-      onHostMaintenance: Schema.optional(Schema.String),
-      minNodeCpus: Schema.optional(Schema.Number),
-      automaticRestart: Schema.optional(Schema.Boolean),
-      instanceTerminationAction: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Scheduling" }) as any as Schema.Schema<Scheduling>;
+export const Scheduling = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provisioningModel: Schema.optional(Schema.String),
+  localSsdRecoveryTimeout: Schema.optional(SchedulingDuration),
+  preemptible: Schema.optional(Schema.Boolean),
+  nodeAffinities: Schema.optional(Schema.Array(NodeAffinity)),
+  onHostMaintenance: Schema.optional(Schema.String),
+  minNodeCpus: Schema.optional(Schema.Number),
+  automaticRestart: Schema.optional(Schema.Boolean),
+  instanceTerminationAction: Schema.optional(Schema.String),
+}).annotate({ identifier: "Scheduling" });
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsRequest",
-  }) as any as Schema.Schema<TestIamPermissionsRequest>;
+export const TestIamPermissionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsRequest" });
 
 export interface FinalizeBackupRequest {
   /** The point in time when this backup was captured from the source. This will be assigned to the consistency_time field of the newly created Backup. */
@@ -1428,20 +1188,15 @@ export interface FinalizeBackupRequest {
   retentionDuration?: string;
 }
 
-export const FinalizeBackupRequest: Schema.Schema<FinalizeBackupRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      consistencyTime: Schema.optional(Schema.String),
-      recoveryRangeStartTime: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      backupId: Schema.optional(Schema.String),
-      recoveryRangeEndTime: Schema.optional(Schema.String),
-      requestId: Schema.optional(Schema.String),
-      retentionDuration: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FinalizeBackupRequest",
-  }) as any as Schema.Schema<FinalizeBackupRequest>;
+export const FinalizeBackupRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  consistencyTime: Schema.optional(Schema.String),
+  recoveryRangeStartTime: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  backupId: Schema.optional(Schema.String),
+  recoveryRangeEndTime: Schema.optional(Schema.String),
+  requestId: Schema.optional(Schema.String),
+  retentionDuration: Schema.optional(Schema.String),
+}).annotate({ identifier: "FinalizeBackupRequest" });
 
 export interface WeekDayOfMonth {
   /** Required. Specifies the week of the month. */
@@ -1466,15 +1221,10 @@ export interface WeekDayOfMonth {
     | (string & {});
 }
 
-export const WeekDayOfMonth: Schema.Schema<WeekDayOfMonth> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      weekOfMonth: Schema.optional(Schema.String),
-      dayOfWeek: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WeekDayOfMonth",
-  }) as any as Schema.Schema<WeekDayOfMonth>;
+export const WeekDayOfMonth = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  weekOfMonth: Schema.optional(Schema.String),
+  dayOfWeek: Schema.optional(Schema.String),
+}).annotate({ identifier: "WeekDayOfMonth" });
 
 export interface BackupWindow {
   /** Required. The hour of day (1-24) when the window end for example if value of end hour of day is 10 that mean backup window end time is 10:00. End hour of day should be greater than start hour of day. 0 <= start_hour_of_day < end_hour_of_day <= 24 End hour of day is not include in backup window that mean if end_hour_of_day= 10 jobs should start before 10:00. */
@@ -1483,15 +1233,10 @@ export interface BackupWindow {
   startHourOfDay?: number;
 }
 
-export const BackupWindow: Schema.Schema<BackupWindow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endHourOfDay: Schema.optional(Schema.Number),
-      startHourOfDay: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "BackupWindow",
-  }) as any as Schema.Schema<BackupWindow>;
+export const BackupWindow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  endHourOfDay: Schema.optional(Schema.Number),
+  startHourOfDay: Schema.optional(Schema.Number),
+}).annotate({ identifier: "BackupWindow" });
 
 export interface StandardSchedule {
   /** Optional. Specifies frequency for hourly backups. A hourly frequency of 2 means jobs will run every 2 hours from start time till end time defined. This is required for `recurrence_type`, `HOURLY` and is not applicable otherwise. A validation error will occur if a value is supplied and `recurrence_type` is not `HOURLY`. Value of hourly frequency should be between 4 and 23. Reason for limit : We found that there is bandwidth limitation of 3GB/S for GMI while taking a backup and 5GB/S while doing a restore. Given the amount of parallel backups and restore we are targeting, this will potentially take the backup time to mins and hours (in worst case scenario). */
@@ -1544,21 +1289,16 @@ export interface StandardSchedule {
   >;
 }
 
-export const StandardSchedule: Schema.Schema<StandardSchedule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hourlyFrequency: Schema.optional(Schema.Number),
-      daysOfMonth: Schema.optional(Schema.Array(Schema.Number)),
-      recurrenceType: Schema.optional(Schema.String),
-      daysOfWeek: Schema.optional(Schema.Array(Schema.String)),
-      timeZone: Schema.optional(Schema.String),
-      weekDayOfMonth: Schema.optional(WeekDayOfMonth),
-      backupWindow: Schema.optional(BackupWindow),
-      months: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "StandardSchedule",
-  }) as any as Schema.Schema<StandardSchedule>;
+export const StandardSchedule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  hourlyFrequency: Schema.optional(Schema.Number),
+  daysOfMonth: Schema.optional(Schema.Array(Schema.Number)),
+  recurrenceType: Schema.optional(Schema.String),
+  daysOfWeek: Schema.optional(Schema.Array(Schema.String)),
+  timeZone: Schema.optional(Schema.String),
+  weekDayOfMonth: Schema.optional(WeekDayOfMonth),
+  backupWindow: Schema.optional(BackupWindow),
+  months: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "StandardSchedule" });
 
 export interface BackupRule {
   /** Required. Immutable. The unique id of this `BackupRule`. The `rule_id` is unique per `BackupPlan`.The `rule_id` must start with a lowercase letter followed by up to 62 lowercase letters, numbers, or hyphens. Pattern, /a-z{,62}/. */
@@ -1569,42 +1309,31 @@ export interface BackupRule {
   standardSchedule?: StandardSchedule;
 }
 
-export const BackupRule: Schema.Schema<BackupRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ruleId: Schema.optional(Schema.String),
-      backupRetentionDays: Schema.optional(Schema.Number),
-      standardSchedule: Schema.optional(StandardSchedule),
-    }),
-  ).annotate({ identifier: "BackupRule" }) as any as Schema.Schema<BackupRule>;
+export const BackupRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ruleId: Schema.optional(Schema.String),
+  backupRetentionDays: Schema.optional(Schema.Number),
+  standardSchedule: Schema.optional(StandardSchedule),
+}).annotate({ identifier: "BackupRule" });
 
 export interface ComputeInstanceBackupPlanProperties {
   /** Optional. Indicates whether to perform a guest flush operation before taking a compute backup. When set to false, the system will create crash-consistent backups. Default value is false. */
   guestFlush?: boolean;
 }
 
-export const ComputeInstanceBackupPlanProperties: Schema.Schema<ComputeInstanceBackupPlanProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      guestFlush: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ComputeInstanceBackupPlanProperties",
-  }) as any as Schema.Schema<ComputeInstanceBackupPlanProperties>;
+export const ComputeInstanceBackupPlanProperties =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    guestFlush: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "ComputeInstanceBackupPlanProperties" });
 
 export interface DiskBackupPlanProperties {
   /** Optional. Indicates whether to perform a guest flush operation before taking a disk backup. When set to false, the system will create crash-consistent backups. Default value is false. */
   guestFlush?: boolean;
 }
 
-export const DiskBackupPlanProperties: Schema.Schema<DiskBackupPlanProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      guestFlush: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "DiskBackupPlanProperties",
-  }) as any as Schema.Schema<DiskBackupPlanProperties>;
+export const DiskBackupPlanProperties =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    guestFlush: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "DiskBackupPlanProperties" });
 
 export interface BackupPlan {
   /** Output only. When the `BackupPlan` was last updated. */
@@ -1652,31 +1381,28 @@ export interface BackupPlan {
   description?: string;
 }
 
-export const BackupPlan: Schema.Schema<BackupPlan> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateTime: Schema.optional(Schema.String),
-      backupVaultServiceAccount: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      revisionName: Schema.optional(Schema.String),
-      supportedResourceTypes: Schema.optional(Schema.Array(Schema.String)),
-      backupRules: Schema.optional(Schema.Array(BackupRule)),
-      backupVault: Schema.optional(Schema.String),
-      revisionId: Schema.optional(Schema.String),
-      maxCustomOnDemandRetentionDays: Schema.optional(Schema.Number),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      computeInstanceBackupPlanProperties: Schema.optional(
-        ComputeInstanceBackupPlanProperties,
-      ),
-      logRetentionDays: Schema.optional(Schema.String),
-      diskBackupPlanProperties: Schema.optional(DiskBackupPlanProperties),
-      state: Schema.optional(Schema.String),
-      resourceType: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "BackupPlan" }) as any as Schema.Schema<BackupPlan>;
+export const BackupPlan = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  updateTime: Schema.optional(Schema.String),
+  backupVaultServiceAccount: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  revisionName: Schema.optional(Schema.String),
+  supportedResourceTypes: Schema.optional(Schema.Array(Schema.String)),
+  backupRules: Schema.optional(Schema.Array(BackupRule)),
+  backupVault: Schema.optional(Schema.String),
+  revisionId: Schema.optional(Schema.String),
+  maxCustomOnDemandRetentionDays: Schema.optional(Schema.Number),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  computeInstanceBackupPlanProperties: Schema.optional(
+    ComputeInstanceBackupPlanProperties,
+  ),
+  logRetentionDays: Schema.optional(Schema.String),
+  diskBackupPlanProperties: Schema.optional(DiskBackupPlanProperties),
+  state: Schema.optional(Schema.String),
+  resourceType: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "BackupPlan" });
 
 export interface DataSourceBackupConfigInfo {
   /** Output only. The status of the last backup in this DataSource */
@@ -1691,15 +1417,11 @@ export interface DataSourceBackupConfigInfo {
   lastSuccessfulBackupConsistencyTime?: string;
 }
 
-export const DataSourceBackupConfigInfo: Schema.Schema<DataSourceBackupConfigInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lastBackupState: Schema.optional(Schema.String),
-      lastSuccessfulBackupConsistencyTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DataSourceBackupConfigInfo",
-  }) as any as Schema.Schema<DataSourceBackupConfigInfo>;
+export const DataSourceBackupConfigInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    lastBackupState: Schema.optional(Schema.String),
+    lastSuccessfulBackupConsistencyTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DataSourceBackupConfigInfo" });
 
 export interface DataSourceReference {
   /** Output only. The resource name of the DataSource. Format: projects/{project}/locations/{location}/backupVaults/{backupVault}/dataSources/{dataSource} */
@@ -1724,21 +1446,16 @@ export interface DataSourceReference {
   dataSourceBackupConfigInfo?: DataSourceBackupConfigInfo;
 }
 
-export const DataSourceReference: Schema.Schema<DataSourceReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataSource: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      dataSourceBackupConfigState: Schema.optional(Schema.String),
-      dataSourceGcpResourceInfo: Schema.optional(DataSourceGcpResourceInfo),
-      totalStoredBytes: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      dataSourceBackupCount: Schema.optional(Schema.String),
-      dataSourceBackupConfigInfo: Schema.optional(DataSourceBackupConfigInfo),
-    }),
-  ).annotate({
-    identifier: "DataSourceReference",
-  }) as any as Schema.Schema<DataSourceReference>;
+export const DataSourceReference = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dataSource: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  dataSourceBackupConfigState: Schema.optional(Schema.String),
+  dataSourceGcpResourceInfo: Schema.optional(DataSourceGcpResourceInfo),
+  totalStoredBytes: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  dataSourceBackupCount: Schema.optional(Schema.String),
+  dataSourceBackupConfigInfo: Schema.optional(DataSourceBackupConfigInfo),
+}).annotate({ identifier: "DataSourceReference" });
 
 export interface ListDataSourceReferencesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -1749,16 +1466,12 @@ export interface ListDataSourceReferencesResponse {
   dataSourceReferences?: Array<DataSourceReference>;
 }
 
-export const ListDataSourceReferencesResponse: Schema.Schema<ListDataSourceReferencesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      dataSourceReferences: Schema.optional(Schema.Array(DataSourceReference)),
-    }),
-  ).annotate({
-    identifier: "ListDataSourceReferencesResponse",
-  }) as any as Schema.Schema<ListDataSourceReferencesResponse>;
+export const ListDataSourceReferencesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    dataSourceReferences: Schema.optional(Schema.Array(DataSourceReference)),
+  }).annotate({ identifier: "ListDataSourceReferencesResponse" });
 
 export interface EndTrialRequest {
   /** Required. The reason for ending the trial. */
@@ -1769,14 +1482,9 @@ export interface EndTrialRequest {
     | (string & {});
 }
 
-export const EndTrialRequest: Schema.Schema<EndTrialRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endReason: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EndTrialRequest",
-  }) as any as Schema.Schema<EndTrialRequest>;
+export const EndTrialRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  endReason: Schema.optional(Schema.String),
+}).annotate({ identifier: "EndTrialRequest" });
 
 export interface GCPBackupPlanInfo {
   /** Resource name of the backup plan revision which triggered this backup in case of scheduled backup or used for on demand backup. Format: projects/{project}/locations/{location}/backupPlans/{backupPlanId}/revisions/{revisionId} */
@@ -1789,17 +1497,12 @@ export interface GCPBackupPlanInfo {
   backupPlanRevisionId?: string;
 }
 
-export const GCPBackupPlanInfo: Schema.Schema<GCPBackupPlanInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      backupPlanRevisionName: Schema.optional(Schema.String),
-      backupPlan: Schema.optional(Schema.String),
-      backupPlanRuleId: Schema.optional(Schema.String),
-      backupPlanRevisionId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GCPBackupPlanInfo",
-  }) as any as Schema.Schema<GCPBackupPlanInfo>;
+export const GCPBackupPlanInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  backupPlanRevisionName: Schema.optional(Schema.String),
+  backupPlan: Schema.optional(Schema.String),
+  backupPlanRuleId: Schema.optional(Schema.String),
+  backupPlanRevisionId: Schema.optional(Schema.String),
+}).annotate({ identifier: "GCPBackupPlanInfo" });
 
 export interface DiskBackupProperties {
   /** The architecture of the source disk. Valid values are ARM64 or X86_64. */
@@ -1844,31 +1547,26 @@ export interface DiskBackupProperties {
   storagePool?: string;
 }
 
-export const DiskBackupProperties: Schema.Schema<DiskBackupProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      architecture: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      replicaZones: Schema.optional(Schema.Array(Schema.String)),
-      zone: Schema.optional(Schema.String),
-      provisionedThroughput: Schema.optional(Schema.String),
-      enableConfidentialCompute: Schema.optional(Schema.Boolean),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      sizeGb: Schema.optional(Schema.String),
-      physicalBlockSizeBytes: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      guestOsFeature: Schema.optional(Schema.Array(GuestOsFeature)),
-      licenses: Schema.optional(Schema.Array(Schema.String)),
-      guestFlush: Schema.optional(Schema.Boolean),
-      sourceDisk: Schema.optional(Schema.String),
-      accessMode: Schema.optional(Schema.String),
-      region: Schema.optional(Schema.String),
-      provisionedIops: Schema.optional(Schema.String),
-      storagePool: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DiskBackupProperties",
-  }) as any as Schema.Schema<DiskBackupProperties>;
+export const DiskBackupProperties = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  architecture: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  replicaZones: Schema.optional(Schema.Array(Schema.String)),
+  zone: Schema.optional(Schema.String),
+  provisionedThroughput: Schema.optional(Schema.String),
+  enableConfidentialCompute: Schema.optional(Schema.Boolean),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  sizeGb: Schema.optional(Schema.String),
+  physicalBlockSizeBytes: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  guestOsFeature: Schema.optional(Schema.Array(GuestOsFeature)),
+  licenses: Schema.optional(Schema.Array(Schema.String)),
+  guestFlush: Schema.optional(Schema.Boolean),
+  sourceDisk: Schema.optional(Schema.String),
+  accessMode: Schema.optional(Schema.String),
+  region: Schema.optional(Schema.String),
+  provisionedIops: Schema.optional(Schema.String),
+  storagePool: Schema.optional(Schema.String),
+}).annotate({ identifier: "DiskBackupProperties" });
 
 export interface BackupGcpResource {
   /** Name of the Google Cloud resource. */
@@ -1879,30 +1577,20 @@ export interface BackupGcpResource {
   type?: string;
 }
 
-export const BackupGcpResource: Schema.Schema<BackupGcpResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcpResourcename: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BackupGcpResource",
-  }) as any as Schema.Schema<BackupGcpResource>;
+export const BackupGcpResource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gcpResourcename: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "BackupGcpResource" });
 
 export interface ServiceLockInfo {
   /** Output only. The name of the operation that created this lock. The lock will automatically be released when the operation completes. */
   operation?: string;
 }
 
-export const ServiceLockInfo: Schema.Schema<ServiceLockInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ServiceLockInfo",
-  }) as any as Schema.Schema<ServiceLockInfo>;
+export const ServiceLockInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  operation: Schema.optional(Schema.String),
+}).annotate({ identifier: "ServiceLockInfo" });
 
 export interface BackupApplianceLockInfo {
   /** The SLA on the backup/recovery appliance that owns the lock. */
@@ -1919,19 +1607,15 @@ export interface BackupApplianceLockInfo {
   backupImage?: string;
 }
 
-export const BackupApplianceLockInfo: Schema.Schema<BackupApplianceLockInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      slaId: Schema.optional(Schema.String),
-      lockReason: Schema.optional(Schema.String),
-      jobName: Schema.optional(Schema.String),
-      backupApplianceId: Schema.optional(Schema.String),
-      backupApplianceName: Schema.optional(Schema.String),
-      backupImage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BackupApplianceLockInfo",
-  }) as any as Schema.Schema<BackupApplianceLockInfo>;
+export const BackupApplianceLockInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    slaId: Schema.optional(Schema.String),
+    lockReason: Schema.optional(Schema.String),
+    jobName: Schema.optional(Schema.String),
+    backupApplianceId: Schema.optional(Schema.String),
+    backupApplianceName: Schema.optional(Schema.String),
+    backupImage: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BackupApplianceLockInfo" });
 
 export interface BackupLock {
   /** Required. The time after which this lock is not considered valid and will no longer protect the Backup from deletion. */
@@ -1942,28 +1626,21 @@ export interface BackupLock {
   backupApplianceLockInfo?: BackupApplianceLockInfo;
 }
 
-export const BackupLock: Schema.Schema<BackupLock> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lockUntilTime: Schema.optional(Schema.String),
-      serviceLockInfo: Schema.optional(ServiceLockInfo),
-      backupApplianceLockInfo: Schema.optional(BackupApplianceLockInfo),
-    }),
-  ).annotate({ identifier: "BackupLock" }) as any as Schema.Schema<BackupLock>;
+export const BackupLock = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  lockUntilTime: Schema.optional(Schema.String),
+  serviceLockInfo: Schema.optional(ServiceLockInfo),
+  backupApplianceLockInfo: Schema.optional(BackupApplianceLockInfo),
+}).annotate({ identifier: "BackupLock" });
 
 export interface FilestoreInstanceBackupProperties {
   /** Output only. The source instance of the backup. */
   sourceInstance?: string;
 }
 
-export const FilestoreInstanceBackupProperties: Schema.Schema<FilestoreInstanceBackupProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sourceInstance: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FilestoreInstanceBackupProperties",
-  }) as any as Schema.Schema<FilestoreInstanceBackupProperties>;
+export const FilestoreInstanceBackupProperties =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sourceInstance: Schema.optional(Schema.String),
+  }).annotate({ identifier: "FilestoreInstanceBackupProperties" });
 
 export interface Entry {
   /** Optional. Value for the metadata entry. These are free-form strings, and only have meaning as interpreted by the image running in the instance. The only restriction placed on values is that their size must be less than or equal to 262144 bytes (256 KiB). */
@@ -1972,25 +1649,19 @@ export interface Entry {
   key?: string;
 }
 
-export const Entry: Schema.Schema<Entry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-      key: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Entry" }) as any as Schema.Schema<Entry>;
+export const Entry = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.String),
+  key: Schema.optional(Schema.String),
+}).annotate({ identifier: "Entry" });
 
 export interface Metadata {
   /** Optional. Array of key/value pairs. The total size of all keys and values must be less than 512 KB. */
   items?: Array<Entry>;
 }
 
-export const Metadata: Schema.Schema<Metadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      items: Schema.optional(Schema.Array(Entry)),
-    }),
-  ).annotate({ identifier: "Metadata" }) as any as Schema.Schema<Metadata>;
+export const Metadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  items: Schema.optional(Schema.Array(Entry)),
+}).annotate({ identifier: "Metadata" });
 
 export interface AcceleratorConfig {
   /** Optional. The number of the guest accelerator cards exposed to this instance. */
@@ -1999,27 +1670,19 @@ export interface AcceleratorConfig {
   acceleratorType?: string;
 }
 
-export const AcceleratorConfig: Schema.Schema<AcceleratorConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      acceleratorCount: Schema.optional(Schema.Number),
-      acceleratorType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AcceleratorConfig",
-  }) as any as Schema.Schema<AcceleratorConfig>;
+export const AcceleratorConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  acceleratorCount: Schema.optional(Schema.Number),
+  acceleratorType: Schema.optional(Schema.String),
+}).annotate({ identifier: "AcceleratorConfig" });
 
 export interface Tags {
   /** Optional. An array of tags. Each tag must be 1-63 characters long, and comply with RFC1035. */
   items?: Array<string>;
 }
 
-export const Tags: Schema.Schema<Tags> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      items: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "Tags" }) as any as Schema.Schema<Tags>;
+export const Tags = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  items: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Tags" });
 
 export interface ComputeInstanceBackupProperties {
   /** A list of service accounts with specified scopes. Access tokens for these service accounts are available to the instances that are created from these properties. Use metadata queries to obtain the access tokens for these instances. */
@@ -2058,28 +1721,24 @@ export interface ComputeInstanceBackupProperties {
   scheduling?: Scheduling;
 }
 
-export const ComputeInstanceBackupProperties: Schema.Schema<ComputeInstanceBackupProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serviceAccount: Schema.optional(Schema.Array(ServiceAccount)),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      metadata: Schema.optional(Metadata),
-      description: Schema.optional(Schema.String),
-      guestAccelerator: Schema.optional(Schema.Array(AcceleratorConfig)),
-      sourceInstance: Schema.optional(Schema.String),
-      keyRevocationActionType: Schema.optional(Schema.String),
-      canIpForward: Schema.optional(Schema.Boolean),
-      tags: Schema.optional(Tags),
-      minCpuPlatform: Schema.optional(Schema.String),
-      guestFlush: Schema.optional(Schema.Boolean),
-      machineType: Schema.optional(Schema.String),
-      disk: Schema.optional(Schema.Array(AttachedDisk)),
-      networkInterface: Schema.optional(Schema.Array(NetworkInterface)),
-      scheduling: Schema.optional(Scheduling),
-    }),
-  ).annotate({
-    identifier: "ComputeInstanceBackupProperties",
-  }) as any as Schema.Schema<ComputeInstanceBackupProperties>;
+export const ComputeInstanceBackupProperties =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    serviceAccount: Schema.optional(Schema.Array(ServiceAccount)),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    metadata: Schema.optional(Metadata),
+    description: Schema.optional(Schema.String),
+    guestAccelerator: Schema.optional(Schema.Array(AcceleratorConfig)),
+    sourceInstance: Schema.optional(Schema.String),
+    keyRevocationActionType: Schema.optional(Schema.String),
+    canIpForward: Schema.optional(Schema.Boolean),
+    tags: Schema.optional(Tags),
+    minCpuPlatform: Schema.optional(Schema.String),
+    guestFlush: Schema.optional(Schema.Boolean),
+    machineType: Schema.optional(Schema.String),
+    disk: Schema.optional(Schema.Array(AttachedDisk)),
+    networkInterface: Schema.optional(Schema.Array(NetworkInterface)),
+    scheduling: Schema.optional(Scheduling),
+  }).annotate({ identifier: "ComputeInstanceBackupProperties" });
 
 export interface BackupApplianceBackupProperties {
   /** Output only. The numeric generation ID of the backup (monotonically increasing). */
@@ -2092,17 +1751,13 @@ export interface BackupApplianceBackupProperties {
   recoveryRangeStartTime?: string;
 }
 
-export const BackupApplianceBackupProperties: Schema.Schema<BackupApplianceBackupProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      generationId: Schema.optional(Schema.Number),
-      recoveryRangeEndTime: Schema.optional(Schema.String),
-      finalizeTime: Schema.optional(Schema.String),
-      recoveryRangeStartTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BackupApplianceBackupProperties",
-  }) as any as Schema.Schema<BackupApplianceBackupProperties>;
+export const BackupApplianceBackupProperties =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    generationId: Schema.optional(Schema.Number),
+    recoveryRangeEndTime: Schema.optional(Schema.String),
+    finalizeTime: Schema.optional(Schema.String),
+    recoveryRangeStartTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BackupApplianceBackupProperties" });
 
 export interface AlloyDbClusterBackupProperties {
   /** Output only. The PostgreSQL major version of the AlloyDB cluster when the backup was taken. */
@@ -2115,17 +1770,13 @@ export interface AlloyDbClusterBackupProperties {
   description?: string;
 }
 
-export const AlloyDbClusterBackupProperties: Schema.Schema<AlloyDbClusterBackupProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      databaseVersion: Schema.optional(Schema.String),
-      storedBytes: Schema.optional(Schema.String),
-      chainId: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AlloyDbClusterBackupProperties",
-  }) as any as Schema.Schema<AlloyDbClusterBackupProperties>;
+export const AlloyDbClusterBackupProperties =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    databaseVersion: Schema.optional(Schema.String),
+    storedBytes: Schema.optional(Schema.String),
+    chainId: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AlloyDbClusterBackupProperties" });
 
 export interface CloudSqlInstanceBackupProperties {
   /** Output only. The source instance of the backup. Format: projects/{project}/instances/{instance} */
@@ -2142,19 +1793,15 @@ export interface CloudSqlInstanceBackupProperties {
   instanceDeleteTime?: string;
 }
 
-export const CloudSqlInstanceBackupProperties: Schema.Schema<CloudSqlInstanceBackupProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sourceInstance: Schema.optional(Schema.String),
-      instanceCreateTime: Schema.optional(Schema.String),
-      instanceTier: Schema.optional(Schema.String),
-      databaseInstalledVersion: Schema.optional(Schema.String),
-      finalBackup: Schema.optional(Schema.Boolean),
-      instanceDeleteTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CloudSqlInstanceBackupProperties",
-  }) as any as Schema.Schema<CloudSqlInstanceBackupProperties>;
+export const CloudSqlInstanceBackupProperties =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sourceInstance: Schema.optional(Schema.String),
+    instanceCreateTime: Schema.optional(Schema.String),
+    instanceTier: Schema.optional(Schema.String),
+    databaseInstalledVersion: Schema.optional(Schema.String),
+    finalBackup: Schema.optional(Schema.Boolean),
+    instanceDeleteTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CloudSqlInstanceBackupProperties" });
 
 export interface Backup {
   /** Output only. Identifier. Name of the backup to create. It must have the format`"projects//locations//backupVaults//dataSources/{datasource}/backups/{backup}"`. `{backup}` cannot be changed after creation. It must be between 3-63 characters long and must be unique within the datasource. */
@@ -2227,45 +1874,42 @@ export interface Backup {
   etag?: string;
 }
 
-export const Backup: Schema.Schema<Backup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      enforcedRetentionEndTime: Schema.optional(Schema.String),
-      gcpBackupPlanInfo: Schema.optional(GCPBackupPlanInfo),
-      diskBackupProperties: Schema.optional(DiskBackupProperties),
-      satisfiesPzi: Schema.optional(Schema.Boolean),
-      resourceSizeBytes: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      gcpResource: Schema.optional(BackupGcpResource),
-      serviceLocks: Schema.optional(Schema.Array(BackupLock)),
-      filestoreInstanceBackupProperties: Schema.optional(
-        FilestoreInstanceBackupProperties,
-      ),
-      computeInstanceBackupProperties: Schema.optional(
-        ComputeInstanceBackupProperties,
-      ),
-      createTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      backupApplianceBackupProperties: Schema.optional(
-        BackupApplianceBackupProperties,
-      ),
-      alloyDbBackupProperties: Schema.optional(AlloyDbClusterBackupProperties),
-      backupType: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      cloudSqlInstanceBackupProperties: Schema.optional(
-        CloudSqlInstanceBackupProperties,
-      ),
-      consistencyTime: Schema.optional(Schema.String),
-      kmsKeyVersions: Schema.optional(Schema.Array(Schema.String)),
-      expireTime: Schema.optional(Schema.String),
-      backupApplianceLocks: Schema.optional(Schema.Array(BackupLock)),
-      backupRetentionInheritance: Schema.optional(Schema.String),
-      satisfiesPzs: Schema.optional(Schema.Boolean),
-      description: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Backup" }) as any as Schema.Schema<Backup>;
+export const Backup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  enforcedRetentionEndTime: Schema.optional(Schema.String),
+  gcpBackupPlanInfo: Schema.optional(GCPBackupPlanInfo),
+  diskBackupProperties: Schema.optional(DiskBackupProperties),
+  satisfiesPzi: Schema.optional(Schema.Boolean),
+  resourceSizeBytes: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  gcpResource: Schema.optional(BackupGcpResource),
+  serviceLocks: Schema.optional(Schema.Array(BackupLock)),
+  filestoreInstanceBackupProperties: Schema.optional(
+    FilestoreInstanceBackupProperties,
+  ),
+  computeInstanceBackupProperties: Schema.optional(
+    ComputeInstanceBackupProperties,
+  ),
+  createTime: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  backupApplianceBackupProperties: Schema.optional(
+    BackupApplianceBackupProperties,
+  ),
+  alloyDbBackupProperties: Schema.optional(AlloyDbClusterBackupProperties),
+  backupType: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  cloudSqlInstanceBackupProperties: Schema.optional(
+    CloudSqlInstanceBackupProperties,
+  ),
+  consistencyTime: Schema.optional(Schema.String),
+  kmsKeyVersions: Schema.optional(Schema.Array(Schema.String)),
+  expireTime: Schema.optional(Schema.String),
+  backupApplianceLocks: Schema.optional(Schema.Array(BackupLock)),
+  backupRetentionInheritance: Schema.optional(Schema.String),
+  satisfiesPzs: Schema.optional(Schema.Boolean),
+  description: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "Backup" });
 
 export interface FetchBackupsForResourceTypeResponse {
   /** The Backups from the specified parent. */
@@ -2274,15 +1918,11 @@ export interface FetchBackupsForResourceTypeResponse {
   nextPageToken?: string;
 }
 
-export const FetchBackupsForResourceTypeResponse: Schema.Schema<FetchBackupsForResourceTypeResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      backups: Schema.optional(Schema.Array(Backup)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FetchBackupsForResourceTypeResponse",
-  }) as any as Schema.Schema<FetchBackupsForResourceTypeResponse>;
+export const FetchBackupsForResourceTypeResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    backups: Schema.optional(Schema.Array(Backup)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "FetchBackupsForResourceTypeResponse" });
 
 export interface ComputeInstanceTargetEnvironment {
   /** Required. The zone of the Compute Engine instance. */
@@ -2291,15 +1931,11 @@ export interface ComputeInstanceTargetEnvironment {
   project?: string;
 }
 
-export const ComputeInstanceTargetEnvironment: Schema.Schema<ComputeInstanceTargetEnvironment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      zone: Schema.optional(Schema.String),
-      project: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ComputeInstanceTargetEnvironment",
-  }) as any as Schema.Schema<ComputeInstanceTargetEnvironment>;
+export const ComputeInstanceTargetEnvironment =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zone: Schema.optional(Schema.String),
+    project: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ComputeInstanceTargetEnvironment" });
 
 export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
@@ -2314,16 +1950,13 @@ export interface Operation {
   error?: Status;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      name: Schema.optional(Schema.String),
-      done: Schema.optional(Schema.Boolean),
-      error: Schema.optional(Status),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  name: Schema.optional(Schema.String),
+  done: Schema.optional(Schema.Boolean),
+  error: Schema.optional(Status),
+}).annotate({ identifier: "Operation" });
 
 export interface ListOperationsResponse {
   /** The standard List next-page token. */
@@ -2334,16 +1967,13 @@ export interface ListOperationsResponse {
   operations?: Array<Operation>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      operations: Schema.optional(Schema.Array(Operation)),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    operations: Schema.optional(Schema.Array(Operation)),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 export interface BackupDrTemplateConfig {
   /** Output only. The URI of the BackupDr template resource for the first party identity users. */
@@ -2352,15 +1982,12 @@ export interface BackupDrTemplateConfig {
   thirdPartyManagementUri?: string;
 }
 
-export const BackupDrTemplateConfig: Schema.Schema<BackupDrTemplateConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      firstPartyManagementUri: Schema.optional(Schema.String),
-      thirdPartyManagementUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BackupDrTemplateConfig",
-  }) as any as Schema.Schema<BackupDrTemplateConfig>;
+export const BackupDrTemplateConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    firstPartyManagementUri: Schema.optional(Schema.String),
+    thirdPartyManagementUri: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "BackupDrTemplateConfig" });
 
 export interface BackupLocation {
   /** Output only. The id of the cloud location. Example: "us-central1" */
@@ -2374,15 +2001,10 @@ export interface BackupLocation {
     | (string & {});
 }
 
-export const BackupLocation: Schema.Schema<BackupLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locationId: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BackupLocation",
-  }) as any as Schema.Schema<BackupLocation>;
+export const BackupLocation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locationId: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "BackupLocation" });
 
 export interface BackupConfigDetails {
   /** Output only. Point in time recovery settings of the backup configuration resource. */
@@ -2415,38 +2037,31 @@ export interface BackupConfigDetails {
   backupConfigSource?: string;
 }
 
-export const BackupConfigDetails: Schema.Schema<BackupConfigDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pitrSettings: Schema.optional(PitrSettings),
-      backupConfigSourceDisplayName: Schema.optional(Schema.String),
-      backupVault: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      applicableResource: Schema.optional(Schema.String),
-      latestSuccessfulBackupTime: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      backupDrTemplateConfig: Schema.optional(BackupDrTemplateConfig),
-      backupDrPlanConfig: Schema.optional(BackupDrPlanConfig),
-      backupLocations: Schema.optional(Schema.Array(BackupLocation)),
-      backupConfigSource: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BackupConfigDetails",
-  }) as any as Schema.Schema<BackupConfigDetails>;
+export const BackupConfigDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pitrSettings: Schema.optional(PitrSettings),
+  backupConfigSourceDisplayName: Schema.optional(Schema.String),
+  backupVault: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  applicableResource: Schema.optional(Schema.String),
+  latestSuccessfulBackupTime: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  backupDrTemplateConfig: Schema.optional(BackupDrTemplateConfig),
+  backupDrPlanConfig: Schema.optional(BackupDrPlanConfig),
+  backupLocations: Schema.optional(Schema.Array(BackupLocation)),
+  backupConfigSource: Schema.optional(Schema.String),
+}).annotate({ identifier: "BackupConfigDetails" });
 
 export interface FilestoreInstanceBackupPlanAssociationProperties {
   /** Output only. The time when the instance was created. */
   instanceCreateTime?: string;
 }
 
-export const FilestoreInstanceBackupPlanAssociationProperties: Schema.Schema<FilestoreInstanceBackupPlanAssociationProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      instanceCreateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const FilestoreInstanceBackupPlanAssociationProperties =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    instanceCreateTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "FilestoreInstanceBackupPlanAssociationProperties",
-  }) as any as Schema.Schema<FilestoreInstanceBackupPlanAssociationProperties>;
+  });
 
 export interface DiskRestoreProperties {
   /** Optional. Resource manager tags to be bound to the disk. */
@@ -2493,39 +2108,33 @@ export interface DiskRestoreProperties {
   storagePool?: string;
 }
 
-export const DiskRestoreProperties: Schema.Schema<DiskRestoreProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceManagerTags: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      architecture: Schema.optional(Schema.String),
-      provisionedThroughput: Schema.optional(Schema.String),
-      enableConfidentialCompute: Schema.optional(Schema.Boolean),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      type: Schema.optional(Schema.String),
-      physicalBlockSizeBytes: Schema.optional(Schema.String),
-      sizeGb: Schema.optional(Schema.String),
-      guestOsFeature: Schema.optional(Schema.Array(GuestOsFeature)),
-      description: Schema.optional(Schema.String),
-      licenses: Schema.optional(Schema.Array(Schema.String)),
-      name: Schema.optional(Schema.String),
-      diskEncryptionKey: Schema.optional(CustomerEncryptionKey),
-      accessMode: Schema.optional(Schema.String),
-      resourcePolicy: Schema.optional(Schema.Array(Schema.String)),
-      provisionedIops: Schema.optional(Schema.String),
-      storagePool: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DiskRestoreProperties",
-  }) as any as Schema.Schema<DiskRestoreProperties>;
+export const DiskRestoreProperties = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceManagerTags: Schema.optional(
+    Schema.Record(Schema.String, Schema.String),
+  ),
+  architecture: Schema.optional(Schema.String),
+  provisionedThroughput: Schema.optional(Schema.String),
+  enableConfidentialCompute: Schema.optional(Schema.Boolean),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  type: Schema.optional(Schema.String),
+  physicalBlockSizeBytes: Schema.optional(Schema.String),
+  sizeGb: Schema.optional(Schema.String),
+  guestOsFeature: Schema.optional(Schema.Array(GuestOsFeature)),
+  description: Schema.optional(Schema.String),
+  licenses: Schema.optional(Schema.Array(Schema.String)),
+  name: Schema.optional(Schema.String),
+  diskEncryptionKey: Schema.optional(CustomerEncryptionKey),
+  accessMode: Schema.optional(Schema.String),
+  resourcePolicy: Schema.optional(Schema.Array(Schema.String)),
+  provisionedIops: Schema.optional(Schema.String),
+  storagePool: Schema.optional(Schema.String),
+}).annotate({ identifier: "DiskRestoreProperties" });
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelOperationRequest",
-  }) as any as Schema.Schema<CancelOperationRequest>;
+export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelOperationRequest" });
 
 export interface ResourceBackupConfig {
   /** Labels associated with the target resource. */
@@ -2555,38 +2164,28 @@ export interface ResourceBackupConfig {
   targetResource?: string;
 }
 
-export const ResourceBackupConfig: Schema.Schema<ResourceBackupConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetResourceLabels: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      uid: Schema.optional(Schema.String),
-      targetResourceType: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      targetResourceDisplayName: Schema.optional(Schema.String),
-      backupConfigsDetails: Schema.optional(Schema.Array(BackupConfigDetails)),
-      vaulted: Schema.optional(Schema.Boolean),
-      backupConfigured: Schema.optional(Schema.Boolean),
-      targetResource: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ResourceBackupConfig",
-  }) as any as Schema.Schema<ResourceBackupConfig>;
+export const ResourceBackupConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  targetResourceLabels: Schema.optional(
+    Schema.Record(Schema.String, Schema.String),
+  ),
+  uid: Schema.optional(Schema.String),
+  targetResourceType: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  targetResourceDisplayName: Schema.optional(Schema.String),
+  backupConfigsDetails: Schema.optional(Schema.Array(BackupConfigDetails)),
+  vaulted: Schema.optional(Schema.Boolean),
+  backupConfigured: Schema.optional(Schema.Boolean),
+  targetResource: Schema.optional(Schema.String),
+}).annotate({ identifier: "ResourceBackupConfig" });
 
 export interface EncryptionConfig {
   /** Optional. The Cloud KMS key name to encrypt backups in this backup vault. Must be in the same region as the vault. Some workload backups like compute disk backups may use their inherited source key instead. Format: projects/{project}/locations/{location}/keyRings/{ring}/cryptoKeys/{key} */
   kmsKeyName?: string;
 }
 
-export const EncryptionConfig: Schema.Schema<EncryptionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kmsKeyName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EncryptionConfig",
-  }) as any as Schema.Schema<EncryptionConfig>;
+export const EncryptionConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kmsKeyName: Schema.optional(Schema.String),
+}).annotate({ identifier: "EncryptionConfig" });
 
 export interface BackupPlanRevision {
   /** Output only. The user friendly revision ID of the `BackupPlanRevision`. Example: v0, v1, v2, etc. */
@@ -2607,18 +2206,13 @@ export interface BackupPlanRevision {
     | (string & {});
 }
 
-export const BackupPlanRevision: Schema.Schema<BackupPlanRevision> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      revisionId: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      backupPlanSnapshot: Schema.optional(BackupPlan),
-      name: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BackupPlanRevision",
-  }) as any as Schema.Schema<BackupPlanRevision>;
+export const BackupPlanRevision = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  revisionId: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  backupPlanSnapshot: Schema.optional(BackupPlan),
+  name: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+}).annotate({ identifier: "BackupPlanRevision" });
 
 export interface ListBackupPlanRevisionsResponse {
   /** The list of `BackupPlanRevisions` in the project for the specified location. If the `{location}` value in the request is "-", the response contains a list of resources from all locations. In case any location is unreachable, the response will only return backup plans in reachable locations and the 'unreachable' field will be populated with a list of unreachable locations. */
@@ -2629,30 +2223,22 @@ export interface ListBackupPlanRevisionsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListBackupPlanRevisionsResponse: Schema.Schema<ListBackupPlanRevisionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      backupPlanRevisions: Schema.optional(Schema.Array(BackupPlanRevision)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListBackupPlanRevisionsResponse",
-  }) as any as Schema.Schema<ListBackupPlanRevisionsResponse>;
+export const ListBackupPlanRevisionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    backupPlanRevisions: Schema.optional(Schema.Array(BackupPlanRevision)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListBackupPlanRevisionsResponse" });
 
 export interface FetchAccessTokenRequest {
   /** Required. The generation of the backup to update. */
   generationId?: number;
 }
 
-export const FetchAccessTokenRequest: Schema.Schema<FetchAccessTokenRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      generationId: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "FetchAccessTokenRequest",
-  }) as any as Schema.Schema<FetchAccessTokenRequest>;
+export const FetchAccessTokenRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    generationId: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "FetchAccessTokenRequest" });
 
 export interface AllocationAffinity {
   /** Optional. Corresponds to the label key of a reservation resource. */
@@ -2668,100 +2254,72 @@ export interface AllocationAffinity {
     | (string & {});
 }
 
-export const AllocationAffinity: Schema.Schema<AllocationAffinity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      key: Schema.optional(Schema.String),
-      values: Schema.optional(Schema.Array(Schema.String)),
-      consumeReservationType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AllocationAffinity",
-  }) as any as Schema.Schema<AllocationAffinity>;
+export const AllocationAffinity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  key: Schema.optional(Schema.String),
+  values: Schema.optional(Schema.Array(Schema.String)),
+  consumeReservationType: Schema.optional(Schema.String),
+}).annotate({ identifier: "AllocationAffinity" });
 
 export interface RestoreBackupResponse {
   /** Details of the target resource created/modified as part of restore. */
   targetResource?: TargetResource;
 }
 
-export const RestoreBackupResponse: Schema.Schema<RestoreBackupResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetResource: Schema.optional(TargetResource),
-    }),
-  ).annotate({
-    identifier: "RestoreBackupResponse",
-  }) as any as Schema.Schema<RestoreBackupResponse>;
+export const RestoreBackupResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  targetResource: Schema.optional(TargetResource),
+}).annotate({ identifier: "RestoreBackupResponse" });
 
 export interface RemoveDataSourceRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
 
-export const RemoveDataSourceRequest: Schema.Schema<RemoveDataSourceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RemoveDataSourceRequest",
-  }) as any as Schema.Schema<RemoveDataSourceRequest>;
+export const RemoveDataSourceRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RemoveDataSourceRequest" });
 
 export interface CloudSqlInstanceBackupPlanAssociationProperties {
   /** Output only. The time when the instance was created. */
   instanceCreateTime?: string;
 }
 
-export const CloudSqlInstanceBackupPlanAssociationProperties: Schema.Schema<CloudSqlInstanceBackupPlanAssociationProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      instanceCreateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const CloudSqlInstanceBackupPlanAssociationProperties =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    instanceCreateTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "CloudSqlInstanceBackupPlanAssociationProperties",
-  }) as any as Schema.Schema<CloudSqlInstanceBackupPlanAssociationProperties>;
+  });
 
 export interface FetchMsComplianceMetadataRequest {
   /** Required. The project id of the target project */
   projectId?: string;
 }
 
-export const FetchMsComplianceMetadataRequest: Schema.Schema<FetchMsComplianceMetadataRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      projectId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FetchMsComplianceMetadataRequest",
-  }) as any as Schema.Schema<FetchMsComplianceMetadataRequest>;
+export const FetchMsComplianceMetadataRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    projectId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "FetchMsComplianceMetadataRequest" });
 
 export interface ConfidentialInstanceConfig {
   /** Optional. Defines whether the instance should have confidential compute enabled. */
   enableConfidentialCompute?: boolean;
 }
 
-export const ConfidentialInstanceConfig: Schema.Schema<ConfidentialInstanceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableConfidentialCompute: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ConfidentialInstanceConfig",
-  }) as any as Schema.Schema<ConfidentialInstanceConfig>;
+export const ConfidentialInstanceConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enableConfidentialCompute: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "ConfidentialInstanceConfig" });
 
 export interface AlloyDBClusterBackupPlanAssociationProperties {
   /** Output only. The cluster UID of the AlloyDB cluster. */
   clusterUid?: string;
 }
 
-export const AlloyDBClusterBackupPlanAssociationProperties: Schema.Schema<AlloyDBClusterBackupPlanAssociationProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clusterUid: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AlloyDBClusterBackupPlanAssociationProperties",
-  }) as any as Schema.Schema<AlloyDBClusterBackupPlanAssociationProperties>;
+export const AlloyDBClusterBackupPlanAssociationProperties =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    clusterUid: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AlloyDBClusterBackupPlanAssociationProperties" });
 
 export interface SetInternalStatusRequest {
   /** Required. Output only. The new BackupConfigState to set for the DataSource. */
@@ -2776,16 +2334,12 @@ export interface SetInternalStatusRequest {
   value?: string;
 }
 
-export const SetInternalStatusRequest: Schema.Schema<SetInternalStatusRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      backupConfigState: Schema.optional(Schema.String),
-      requestId: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SetInternalStatusRequest",
-  }) as any as Schema.Schema<SetInternalStatusRequest>;
+export const SetInternalStatusRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    backupConfigState: Schema.optional(Schema.String),
+    requestId: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SetInternalStatusRequest" });
 
 export interface RuleConfigInfo {
   /** Output only. Backup Rule id fetched from backup plan. */
@@ -2804,17 +2358,12 @@ export interface RuleConfigInfo {
   lastBackupError?: Status;
 }
 
-export const RuleConfigInfo: Schema.Schema<RuleConfigInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ruleId: Schema.optional(Schema.String),
-      lastSuccessfulBackupConsistencyTime: Schema.optional(Schema.String),
-      lastBackupState: Schema.optional(Schema.String),
-      lastBackupError: Schema.optional(Status),
-    }),
-  ).annotate({
-    identifier: "RuleConfigInfo",
-  }) as any as Schema.Schema<RuleConfigInfo>;
+export const RuleConfigInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ruleId: Schema.optional(Schema.String),
+  lastSuccessfulBackupConsistencyTime: Schema.optional(Schema.String),
+  lastBackupState: Schema.optional(Schema.String),
+  lastBackupError: Schema.optional(Status),
+}).annotate({ identifier: "RuleConfigInfo" });
 
 export interface BackupPlanAssociation {
   /** Output only. The resource id of the `BackupPlanRevision`. Format: `projects/{project}/locations/{location}/backupPlans/{backup_plan}/revisions/{revision_id}` */
@@ -2854,33 +2403,28 @@ export interface BackupPlanAssociation {
   updateTime?: string;
 }
 
-export const BackupPlanAssociation: Schema.Schema<BackupPlanAssociation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      backupPlanRevisionName: Schema.optional(Schema.String),
-      cloudSqlInstanceBackupPlanAssociationProperties: Schema.optional(
-        CloudSqlInstanceBackupPlanAssociationProperties,
-      ),
-      dataSource: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      backupPlanRevisionId: Schema.optional(Schema.String),
-      rulesConfigInfo: Schema.optional(Schema.Array(RuleConfigInfo)),
-      resourceType: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      filestoreInstanceBackupPlanAssociationProperties: Schema.optional(
-        FilestoreInstanceBackupPlanAssociationProperties,
-      ),
-      backupPlan: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      alloydbClusterBackupPlanAssociationProperties: Schema.optional(
-        AlloyDBClusterBackupPlanAssociationProperties,
-      ),
-      resource: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BackupPlanAssociation",
-  }) as any as Schema.Schema<BackupPlanAssociation>;
+export const BackupPlanAssociation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  backupPlanRevisionName: Schema.optional(Schema.String),
+  cloudSqlInstanceBackupPlanAssociationProperties: Schema.optional(
+    CloudSqlInstanceBackupPlanAssociationProperties,
+  ),
+  dataSource: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  backupPlanRevisionId: Schema.optional(Schema.String),
+  rulesConfigInfo: Schema.optional(Schema.Array(RuleConfigInfo)),
+  resourceType: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  filestoreInstanceBackupPlanAssociationProperties: Schema.optional(
+    FilestoreInstanceBackupPlanAssociationProperties,
+  ),
+  backupPlan: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  alloydbClusterBackupPlanAssociationProperties: Schema.optional(
+    AlloyDBClusterBackupPlanAssociationProperties,
+  ),
+  resource: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "BackupPlanAssociation" });
 
 export interface ListBackupPlanAssociationsResponse {
   /** The list of Backup Plan Associations in the project for the specified location. If the `{location}` value in the request is "-", the response contains a list of instances from all locations. In case any location is unreachable, the response will only return backup plan associations in reachable locations and the 'unreachable' field will be populated with a list of unreachable locations. */
@@ -2891,18 +2435,14 @@ export interface ListBackupPlanAssociationsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListBackupPlanAssociationsResponse: Schema.Schema<ListBackupPlanAssociationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      backupPlanAssociations: Schema.optional(
-        Schema.Array(BackupPlanAssociation),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListBackupPlanAssociationsResponse",
-  }) as any as Schema.Schema<ListBackupPlanAssociationsResponse>;
+export const ListBackupPlanAssociationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    backupPlanAssociations: Schema.optional(
+      Schema.Array(BackupPlanAssociation),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListBackupPlanAssociationsResponse" });
 
 export interface NetworkPerformanceConfig {
   /** Optional. The tier of the total egress bandwidth. */
@@ -2913,30 +2453,21 @@ export interface NetworkPerformanceConfig {
     | (string & {});
 }
 
-export const NetworkPerformanceConfig: Schema.Schema<NetworkPerformanceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      totalEgressBandwidthTier: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NetworkPerformanceConfig",
-  }) as any as Schema.Schema<NetworkPerformanceConfig>;
+export const NetworkPerformanceConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    totalEgressBandwidthTier: Schema.optional(Schema.String),
+  }).annotate({ identifier: "NetworkPerformanceConfig" });
 
 export interface InstanceParams {
   /** Optional. Resource manager tags to be bound to the instance. */
   resourceManagerTags?: Record<string, string>;
 }
 
-export const InstanceParams: Schema.Schema<InstanceParams> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceManagerTags: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-    }),
-  ).annotate({
-    identifier: "InstanceParams",
-  }) as any as Schema.Schema<InstanceParams>;
+export const InstanceParams = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceManagerTags: Schema.optional(
+    Schema.Record(Schema.String, Schema.String),
+  ),
+}).annotate({ identifier: "InstanceParams" });
 
 export interface AdvancedMachineFeatures {
   /** Optional. Whether to enable UEFI networking for instance creation. */
@@ -2949,17 +2480,13 @@ export interface AdvancedMachineFeatures {
   enableNestedVirtualization?: boolean;
 }
 
-export const AdvancedMachineFeatures: Schema.Schema<AdvancedMachineFeatures> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableUefiNetworking: Schema.optional(Schema.Boolean),
-      threadsPerCore: Schema.optional(Schema.Number),
-      visibleCoreCount: Schema.optional(Schema.Number),
-      enableNestedVirtualization: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "AdvancedMachineFeatures",
-  }) as any as Schema.Schema<AdvancedMachineFeatures>;
+export const AdvancedMachineFeatures =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enableUefiNetworking: Schema.optional(Schema.Boolean),
+    threadsPerCore: Schema.optional(Schema.Number),
+    visibleCoreCount: Schema.optional(Schema.Number),
+    enableNestedVirtualization: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "AdvancedMachineFeatures" });
 
 export interface ComputeInstanceRestoreProperties {
   /** Optional. A list of the type and count of accelerator cards attached to the instance. */
@@ -3023,38 +2550,34 @@ export interface ComputeInstanceRestoreProperties {
   reservationAffinity?: AllocationAffinity;
 }
 
-export const ComputeInstanceRestoreProperties: Schema.Schema<ComputeInstanceRestoreProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      guestAccelerators: Schema.optional(Schema.Array(AcceleratorConfig)),
-      minCpuPlatform: Schema.optional(Schema.String),
-      resourcePolicies: Schema.optional(Schema.Array(Schema.String)),
-      tags: Schema.optional(Tags),
-      canIpForward: Schema.optional(Schema.Boolean),
-      keyRevocationActionType: Schema.optional(Schema.String),
-      serviceAccounts: Schema.optional(Schema.Array(ServiceAccount)),
-      networkPerformanceConfig: Schema.optional(NetworkPerformanceConfig),
-      displayDevice: Schema.optional(DisplayDevice),
-      hostname: Schema.optional(Schema.String),
-      machineType: Schema.optional(Schema.String),
-      params: Schema.optional(InstanceParams),
-      advancedMachineFeatures: Schema.optional(AdvancedMachineFeatures),
-      description: Schema.optional(Schema.String),
-      confidentialInstanceConfig: Schema.optional(ConfidentialInstanceConfig),
-      deletionProtection: Schema.optional(Schema.Boolean),
-      networkInterfaces: Schema.optional(Schema.Array(NetworkInterface)),
-      disks: Schema.optional(Schema.Array(AttachedDisk)),
-      name: Schema.optional(Schema.String),
-      privateIpv6GoogleAccess: Schema.optional(Schema.String),
-      scheduling: Schema.optional(Scheduling),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      metadata: Schema.optional(Metadata),
-      instanceEncryptionKey: Schema.optional(CustomerEncryptionKey),
-      reservationAffinity: Schema.optional(AllocationAffinity),
-    }),
-  ).annotate({
-    identifier: "ComputeInstanceRestoreProperties",
-  }) as any as Schema.Schema<ComputeInstanceRestoreProperties>;
+export const ComputeInstanceRestoreProperties =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    guestAccelerators: Schema.optional(Schema.Array(AcceleratorConfig)),
+    minCpuPlatform: Schema.optional(Schema.String),
+    resourcePolicies: Schema.optional(Schema.Array(Schema.String)),
+    tags: Schema.optional(Tags),
+    canIpForward: Schema.optional(Schema.Boolean),
+    keyRevocationActionType: Schema.optional(Schema.String),
+    serviceAccounts: Schema.optional(Schema.Array(ServiceAccount)),
+    networkPerformanceConfig: Schema.optional(NetworkPerformanceConfig),
+    displayDevice: Schema.optional(DisplayDevice),
+    hostname: Schema.optional(Schema.String),
+    machineType: Schema.optional(Schema.String),
+    params: Schema.optional(InstanceParams),
+    advancedMachineFeatures: Schema.optional(AdvancedMachineFeatures),
+    description: Schema.optional(Schema.String),
+    confidentialInstanceConfig: Schema.optional(ConfidentialInstanceConfig),
+    deletionProtection: Schema.optional(Schema.Boolean),
+    networkInterfaces: Schema.optional(Schema.Array(NetworkInterface)),
+    disks: Schema.optional(Schema.Array(AttachedDisk)),
+    name: Schema.optional(Schema.String),
+    privateIpv6GoogleAccess: Schema.optional(Schema.String),
+    scheduling: Schema.optional(Scheduling),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    metadata: Schema.optional(Metadata),
+    instanceEncryptionKey: Schema.optional(CustomerEncryptionKey),
+    reservationAffinity: Schema.optional(AllocationAffinity),
+  }).annotate({ identifier: "ComputeInstanceRestoreProperties" });
 
 export interface BackupVault {
   /** Optional. The encryption config of the backup vault. */
@@ -3112,31 +2635,26 @@ export interface BackupVault {
   annotations?: Record<string, string>;
 }
 
-export const BackupVault: Schema.Schema<BackupVault> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      encryptionConfig: Schema.optional(EncryptionConfig),
-      name: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      backupMinimumEnforcedRetentionDuration: Schema.optional(Schema.String),
-      uid: Schema.optional(Schema.String),
-      effectiveTime: Schema.optional(Schema.String),
-      deletable: Schema.optional(Schema.Boolean),
-      backupCount: Schema.optional(Schema.String),
-      serviceAccount: Schema.optional(Schema.String),
-      backupRetentionInheritance: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      totalStoredBytes: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      accessRestriction: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "BackupVault",
-  }) as any as Schema.Schema<BackupVault>;
+export const BackupVault = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  encryptionConfig: Schema.optional(EncryptionConfig),
+  name: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  backupMinimumEnforcedRetentionDuration: Schema.optional(Schema.String),
+  uid: Schema.optional(Schema.String),
+  effectiveTime: Schema.optional(Schema.String),
+  deletable: Schema.optional(Schema.Boolean),
+  backupCount: Schema.optional(Schema.String),
+  serviceAccount: Schema.optional(Schema.String),
+  backupRetentionInheritance: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  totalStoredBytes: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  accessRestriction: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "BackupVault" });
 
 export interface ListBackupVaultsResponse {
   /** A token identifying a page of results the server should return. */
@@ -3147,16 +2665,12 @@ export interface ListBackupVaultsResponse {
   backupVaults?: Array<BackupVault>;
 }
 
-export const ListBackupVaultsResponse: Schema.Schema<ListBackupVaultsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      backupVaults: Schema.optional(Schema.Array(BackupVault)),
-    }),
-  ).annotate({
-    identifier: "ListBackupVaultsResponse",
-  }) as any as Schema.Schema<ListBackupVaultsResponse>;
+export const ListBackupVaultsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    backupVaults: Schema.optional(Schema.Array(BackupVault)),
+  }).annotate({ identifier: "ListBackupVaultsResponse" });
 
 export interface LocationMetadata {
   /** List of features that are not supported in the location. */
@@ -3177,14 +2691,9 @@ export interface LocationMetadata {
   >;
 }
 
-export const LocationMetadata: Schema.Schema<LocationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unsupportedFeatures: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "LocationMetadata",
-  }) as any as Schema.Schema<LocationMetadata>;
+export const LocationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  unsupportedFeatures: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "LocationMetadata" });
 
 export interface ListBackupsResponse {
   /** A token identifying a page of results the server should return. */
@@ -3195,16 +2704,11 @@ export interface ListBackupsResponse {
   backups?: Array<Backup>;
 }
 
-export const ListBackupsResponse: Schema.Schema<ListBackupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      backups: Schema.optional(Schema.Array(Backup)),
-    }),
-  ).annotate({
-    identifier: "ListBackupsResponse",
-  }) as any as Schema.Schema<ListBackupsResponse>;
+export const ListBackupsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+  backups: Schema.optional(Schema.Array(Backup)),
+}).annotate({ identifier: "ListBackupsResponse" });
 
 export interface ListResourceBackupConfigsResponse {
   /** The list of ResourceBackupConfigs for the specified scope. */
@@ -3213,52 +2717,38 @@ export interface ListResourceBackupConfigsResponse {
   nextPageToken?: string;
 }
 
-export const ListResourceBackupConfigsResponse: Schema.Schema<ListResourceBackupConfigsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceBackupConfigs: Schema.optional(
-        Schema.Array(ResourceBackupConfig),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListResourceBackupConfigsResponse",
-  }) as any as Schema.Schema<ListResourceBackupConfigsResponse>;
+export const ListResourceBackupConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceBackupConfigs: Schema.optional(Schema.Array(ResourceBackupConfig)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListResourceBackupConfigsResponse" });
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsResponse",
-  }) as any as Schema.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsResponse" });
 
 export interface SetInternalStatusResponse {}
 
-export const SetInternalStatusResponse: Schema.Schema<SetInternalStatusResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const SetInternalStatusResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "SetInternalStatusResponse",
-  }) as any as Schema.Schema<SetInternalStatusResponse>;
+  });
 
 export interface FetchMsComplianceMetadataResponse {
   /** The ms compliance metadata of the target project, if the project is an Assured Workloads project, values will be true, otherwise false. */
   isAssuredWorkload?: boolean;
 }
 
-export const FetchMsComplianceMetadataResponse: Schema.Schema<FetchMsComplianceMetadataResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      isAssuredWorkload: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "FetchMsComplianceMetadataResponse",
-  }) as any as Schema.Schema<FetchMsComplianceMetadataResponse>;
+export const FetchMsComplianceMetadataResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    isAssuredWorkload: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "FetchMsComplianceMetadataResponse" });
 
 export interface ListManagementServersResponse {
   /** The list of ManagementServer instances in the project for the specified location. If the '{location}' value in the request is "-", the response contains a list of instances from all locations. In case any location is unreachable, the response will only return management servers in reachable locations and the 'unreachable' field will be populated with a list of unreachable locations. */
@@ -3269,30 +2759,24 @@ export interface ListManagementServersResponse {
   unreachable?: Array<string>;
 }
 
-export const ListManagementServersResponse: Schema.Schema<ListManagementServersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      managementServers: Schema.optional(Schema.Array(ManagementServer)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListManagementServersResponse",
-  }) as any as Schema.Schema<ListManagementServersResponse>;
+export const ListManagementServersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    managementServers: Schema.optional(Schema.Array(ManagementServer)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListManagementServersResponse" });
 
 export interface SubscribeTrialRequest {}
 
-export const SubscribeTrialRequest: Schema.Schema<SubscribeTrialRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "SubscribeTrialRequest",
-  }) as any as Schema.Schema<SubscribeTrialRequest>;
+export const SubscribeTrialRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "SubscribeTrialRequest" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface ListBackupPlansResponse {
   /** A token which may be sent as page_token in a subsequent `ListBackupPlans` call to retrieve the next page of results. If this field is omitted or empty, then there are no more results to return. */
@@ -3303,16 +2787,12 @@ export interface ListBackupPlansResponse {
   backupPlans?: Array<BackupPlan>;
 }
 
-export const ListBackupPlansResponse: Schema.Schema<ListBackupPlansResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      backupPlans: Schema.optional(Schema.Array(BackupPlan)),
-    }),
-  ).annotate({
-    identifier: "ListBackupPlansResponse",
-  }) as any as Schema.Schema<ListBackupPlansResponse>;
+export const ListBackupPlansResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    backupPlans: Schema.optional(Schema.Array(BackupPlan)),
+  }).annotate({ identifier: "ListBackupPlansResponse" });
 
 export interface FetchAccessTokenResponse {
   /** The location in bucket that can be used for writing. */
@@ -3325,17 +2805,13 @@ export interface FetchAccessTokenResponse {
   token?: string;
 }
 
-export const FetchAccessTokenResponse: Schema.Schema<FetchAccessTokenResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      writeLocation: Schema.optional(Schema.String),
-      readLocation: Schema.optional(Schema.String),
-      expireTime: Schema.optional(Schema.String),
-      token: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FetchAccessTokenResponse",
-  }) as any as Schema.Schema<FetchAccessTokenResponse>;
+export const FetchAccessTokenResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    writeLocation: Schema.optional(Schema.String),
+    readLocation: Schema.optional(Schema.String),
+    expireTime: Schema.optional(Schema.String),
+    token: Schema.optional(Schema.String),
+  }).annotate({ identifier: "FetchAccessTokenResponse" });
 
 export interface FetchBackupPlanAssociationsForResourceTypeResponse {
   /** Output only. The BackupPlanAssociations from the specified parent. */
@@ -3344,17 +2820,15 @@ export interface FetchBackupPlanAssociationsForResourceTypeResponse {
   nextPageToken?: string;
 }
 
-export const FetchBackupPlanAssociationsForResourceTypeResponse: Schema.Schema<FetchBackupPlanAssociationsForResourceTypeResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      backupPlanAssociations: Schema.optional(
-        Schema.Array(BackupPlanAssociation),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const FetchBackupPlanAssociationsForResourceTypeResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    backupPlanAssociations: Schema.optional(
+      Schema.Array(BackupPlanAssociation),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "FetchBackupPlanAssociationsForResourceTypeResponse",
-  }) as any as Schema.Schema<FetchBackupPlanAssociationsForResourceTypeResponse>;
+  });
 
 export interface DiskTargetEnvironment {
   /** Required. Target project for the disk. */
@@ -3363,15 +2837,10 @@ export interface DiskTargetEnvironment {
   zone?: string;
 }
 
-export const DiskTargetEnvironment: Schema.Schema<DiskTargetEnvironment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      project: Schema.optional(Schema.String),
-      zone: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DiskTargetEnvironment",
-  }) as any as Schema.Schema<DiskTargetEnvironment>;
+export const DiskTargetEnvironment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  project: Schema.optional(Schema.String),
+  zone: Schema.optional(Schema.String),
+}).annotate({ identifier: "DiskTargetEnvironment" });
 
 export interface RestoreBackupRequest {
   /** Region disk target environment to be used during restore. */
@@ -3390,24 +2859,19 @@ export interface RestoreBackupRequest {
   diskRestoreProperties?: DiskRestoreProperties;
 }
 
-export const RestoreBackupRequest: Schema.Schema<RestoreBackupRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      regionDiskTargetEnvironment: Schema.optional(RegionDiskTargetEnvironment),
-      diskTargetEnvironment: Schema.optional(DiskTargetEnvironment),
-      requestId: Schema.optional(Schema.String),
-      clearOverridesFieldMask: Schema.optional(Schema.String),
-      computeInstanceRestoreProperties: Schema.optional(
-        ComputeInstanceRestoreProperties,
-      ),
-      computeInstanceTargetEnvironment: Schema.optional(
-        ComputeInstanceTargetEnvironment,
-      ),
-      diskRestoreProperties: Schema.optional(DiskRestoreProperties),
-    }),
-  ).annotate({
-    identifier: "RestoreBackupRequest",
-  }) as any as Schema.Schema<RestoreBackupRequest>;
+export const RestoreBackupRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  regionDiskTargetEnvironment: Schema.optional(RegionDiskTargetEnvironment),
+  diskTargetEnvironment: Schema.optional(DiskTargetEnvironment),
+  requestId: Schema.optional(Schema.String),
+  clearOverridesFieldMask: Schema.optional(Schema.String),
+  computeInstanceRestoreProperties: Schema.optional(
+    ComputeInstanceRestoreProperties,
+  ),
+  computeInstanceTargetEnvironment: Schema.optional(
+    ComputeInstanceTargetEnvironment,
+  ),
+  diskRestoreProperties: Schema.optional(DiskRestoreProperties),
+}).annotate({ identifier: "RestoreBackupRequest" });
 
 export interface FetchDataSourceReferencesForResourceTypeResponse {
   /** The DataSourceReferences from the specified parent. */
@@ -3416,15 +2880,13 @@ export interface FetchDataSourceReferencesForResourceTypeResponse {
   nextPageToken?: string;
 }
 
-export const FetchDataSourceReferencesForResourceTypeResponse: Schema.Schema<FetchDataSourceReferencesForResourceTypeResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataSourceReferences: Schema.optional(Schema.Array(DataSourceReference)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const FetchDataSourceReferencesForResourceTypeResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataSourceReferences: Schema.optional(Schema.Array(DataSourceReference)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "FetchDataSourceReferencesForResourceTypeResponse",
-  }) as any as Schema.Schema<FetchDataSourceReferencesForResourceTypeResponse>;
+  });
 
 export interface FetchUsableBackupVaultsResponse {
   /** The list of BackupVault instances in the project for the specified location. If the '{location}' value in the request is "-", the response contains a list of instances from all locations. In case any location is unreachable, the response will only return backup vaults in reachable locations and the 'unreachable' field will be populated with a list of unreachable locations. */
@@ -3435,16 +2897,12 @@ export interface FetchUsableBackupVaultsResponse {
   unreachable?: Array<string>;
 }
 
-export const FetchUsableBackupVaultsResponse: Schema.Schema<FetchUsableBackupVaultsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      backupVaults: Schema.optional(Schema.Array(BackupVault)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "FetchUsableBackupVaultsResponse",
-  }) as any as Schema.Schema<FetchUsableBackupVaultsResponse>;
+export const FetchUsableBackupVaultsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    backupVaults: Schema.optional(Schema.Array(BackupVault)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "FetchUsableBackupVaultsResponse" });
 
 export interface ListDataSourcesResponse {
   /** The list of DataSource instances in the project for the specified location. If the '{location}' value in the request is "-", the response contains a list of instances from all locations. In case any location is unreachable, the response will only return data sources in reachable locations and the 'unreachable' field will be populated with a list of unreachable locations. */
@@ -3455,16 +2913,12 @@ export interface ListDataSourcesResponse {
   unreachable?: Array<string>;
 }
 
-export const ListDataSourcesResponse: Schema.Schema<ListDataSourcesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataSources: Schema.optional(Schema.Array(DataSource)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListDataSourcesResponse",
-  }) as any as Schema.Schema<ListDataSourcesResponse>;
+export const ListDataSourcesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataSources: Schema.optional(Schema.Array(DataSource)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListDataSourcesResponse" });
 
 export interface GoogleCloudBackupdrV1OperationMetadata {
   /** Output only. Server-defined resource path for the target of the operation. */
@@ -3485,23 +2939,19 @@ export interface GoogleCloudBackupdrV1OperationMetadata {
   requestedCancellation?: boolean;
 }
 
-export const GoogleCloudBackupdrV1OperationMetadata: Schema.Schema<GoogleCloudBackupdrV1OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      target: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      apiVersion: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      additionalInfo: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      verb: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudBackupdrV1OperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudBackupdrV1OperationMetadata>;
+export const GoogleCloudBackupdrV1OperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    target: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    statusMessage: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    additionalInfo: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    verb: Schema.optional(Schema.String),
+    requestedCancellation: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudBackupdrV1OperationMetadata" });
 
 export interface TriggerBackupRequest {
   /** Optional. Labels to be applied on the backup. */
@@ -3514,17 +2964,12 @@ export interface TriggerBackupRequest {
   customRetentionDays?: number;
 }
 
-export const TriggerBackupRequest: Schema.Schema<TriggerBackupRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      ruleId: Schema.optional(Schema.String),
-      requestId: Schema.optional(Schema.String),
-      customRetentionDays: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "TriggerBackupRequest",
-  }) as any as Schema.Schema<TriggerBackupRequest>;
+export const TriggerBackupRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  ruleId: Schema.optional(Schema.String),
+  requestId: Schema.optional(Schema.String),
+  customRetentionDays: Schema.optional(Schema.Number),
+}).annotate({ identifier: "TriggerBackupRequest" });
 
 // ==========================================================================
 // Operations

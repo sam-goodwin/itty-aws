@@ -29,15 +29,13 @@ export interface GoogleFirestoreAdminV1beta2ExportDocumentsRequest {
   outputUriPrefix?: string;
 }
 
-export const GoogleFirestoreAdminV1beta2ExportDocumentsRequest: Schema.Schema<GoogleFirestoreAdminV1beta2ExportDocumentsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      collectionIds: Schema.optional(Schema.Array(Schema.String)),
-      outputUriPrefix: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleFirestoreAdminV1beta2ExportDocumentsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    collectionIds: Schema.optional(Schema.Array(Schema.String)),
+    outputUriPrefix: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleFirestoreAdminV1beta2ExportDocumentsRequest",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1beta2ExportDocumentsRequest>;
+  });
 
 export interface GoogleFirestoreAdminV1beta2IndexField {
   /** Can be __name__. For single field indexes, this must match the name of the field or may be omitted. */
@@ -48,23 +46,19 @@ export interface GoogleFirestoreAdminV1beta2IndexField {
   order?: "ORDER_UNSPECIFIED" | "ASCENDING" | "DESCENDING" | (string & {});
 }
 
-export const GoogleFirestoreAdminV1beta2IndexField: Schema.Schema<GoogleFirestoreAdminV1beta2IndexField> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fieldPath: Schema.optional(Schema.String),
-      arrayConfig: Schema.optional(Schema.String),
-      order: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1beta2IndexField",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1beta2IndexField>;
+export const GoogleFirestoreAdminV1beta2IndexField =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fieldPath: Schema.optional(Schema.String),
+    arrayConfig: Schema.optional(Schema.String),
+    order: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1beta2IndexField" });
 
 export interface GoogleFirestoreAdminV1UpdateDatabaseMetadata {}
 
-export const GoogleFirestoreAdminV1UpdateDatabaseMetadata: Schema.Schema<GoogleFirestoreAdminV1UpdateDatabaseMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleFirestoreAdminV1UpdateDatabaseMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleFirestoreAdminV1UpdateDatabaseMetadata",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1UpdateDatabaseMetadata>;
+  });
 
 export interface GoogleFirestoreAdminV1beta2Index {
   /** Indexes with a collection query scope specified allow queries against a collection that is the child of a specific document, specified at query time, and that has the same collection id. Indexes with a collection group query scope specified allow queries against all collections descended from a specific document, specified at query time, and that have the same collection id as this index. */
@@ -86,19 +80,15 @@ export interface GoogleFirestoreAdminV1beta2Index {
     | (string & {});
 }
 
-export const GoogleFirestoreAdminV1beta2Index: Schema.Schema<GoogleFirestoreAdminV1beta2Index> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      queryScope: Schema.optional(Schema.String),
-      fields: Schema.optional(
-        Schema.Array(GoogleFirestoreAdminV1beta2IndexField),
-      ),
-      name: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1beta2Index",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1beta2Index>;
+export const GoogleFirestoreAdminV1beta2Index =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    queryScope: Schema.optional(Schema.String),
+    fields: Schema.optional(
+      Schema.Array(GoogleFirestoreAdminV1beta2IndexField),
+    ),
+    name: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1beta2Index" });
 
 export interface GoogleFirestoreAdminV1beta2Progress {
   /** The amount of work estimated. */
@@ -107,15 +97,11 @@ export interface GoogleFirestoreAdminV1beta2Progress {
   completedWork?: string;
 }
 
-export const GoogleFirestoreAdminV1beta2Progress: Schema.Schema<GoogleFirestoreAdminV1beta2Progress> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      estimatedWork: Schema.optional(Schema.String),
-      completedWork: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1beta2Progress",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1beta2Progress>;
+export const GoogleFirestoreAdminV1beta2Progress =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    estimatedWork: Schema.optional(Schema.String),
+    completedWork: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1beta2Progress" });
 
 export interface GoogleFirestoreAdminV1beta2ImportDocumentsMetadata {
   /** The progress, in bytes, of this operation. */
@@ -143,34 +129,30 @@ export interface GoogleFirestoreAdminV1beta2ImportDocumentsMetadata {
   collectionIds?: Array<string>;
 }
 
-export const GoogleFirestoreAdminV1beta2ImportDocumentsMetadata: Schema.Schema<GoogleFirestoreAdminV1beta2ImportDocumentsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      progressBytes: Schema.optional(GoogleFirestoreAdminV1beta2Progress),
-      inputUriPrefix: Schema.optional(Schema.String),
-      operationState: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      progressDocuments: Schema.optional(GoogleFirestoreAdminV1beta2Progress),
-      startTime: Schema.optional(Schema.String),
-      collectionIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleFirestoreAdminV1beta2ImportDocumentsMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    progressBytes: Schema.optional(GoogleFirestoreAdminV1beta2Progress),
+    inputUriPrefix: Schema.optional(Schema.String),
+    operationState: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    progressDocuments: Schema.optional(GoogleFirestoreAdminV1beta2Progress),
+    startTime: Schema.optional(Schema.String),
+    collectionIds: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleFirestoreAdminV1beta2ImportDocumentsMetadata",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1beta2ImportDocumentsMetadata>;
+  });
 
 export interface GoogleFirestoreAdminV1beta2ExportDocumentsResponse {
   /** Location of the output files. This can be used to begin an import into Cloud Firestore (this project or another project) after the operation completes successfully. */
   outputUriPrefix?: string;
 }
 
-export const GoogleFirestoreAdminV1beta2ExportDocumentsResponse: Schema.Schema<GoogleFirestoreAdminV1beta2ExportDocumentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      outputUriPrefix: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleFirestoreAdminV1beta2ExportDocumentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    outputUriPrefix: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleFirestoreAdminV1beta2ExportDocumentsResponse",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1beta2ExportDocumentsResponse>;
+  });
 
 export interface GoogleFirestoreAdminV1beta2ImportDocumentsRequest {
   /** Location of the exported files. This must match the output_uri_prefix of an ExportDocumentsResponse from an export that has completed successfully. See: google.firestore.admin.v1beta2.ExportDocumentsResponse.output_uri_prefix. */
@@ -179,22 +161,19 @@ export interface GoogleFirestoreAdminV1beta2ImportDocumentsRequest {
   collectionIds?: Array<string>;
 }
 
-export const GoogleFirestoreAdminV1beta2ImportDocumentsRequest: Schema.Schema<GoogleFirestoreAdminV1beta2ImportDocumentsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inputUriPrefix: Schema.optional(Schema.String),
-      collectionIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleFirestoreAdminV1beta2ImportDocumentsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    inputUriPrefix: Schema.optional(Schema.String),
+    collectionIds: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleFirestoreAdminV1beta2ImportDocumentsRequest",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1beta2ImportDocumentsRequest>;
+  });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface GoogleFirestoreAdminV1beta2IndexConfigDelta {
   /** Specifies how the index is changing. */
@@ -203,15 +182,11 @@ export interface GoogleFirestoreAdminV1beta2IndexConfigDelta {
   index?: GoogleFirestoreAdminV1beta2Index;
 }
 
-export const GoogleFirestoreAdminV1beta2IndexConfigDelta: Schema.Schema<GoogleFirestoreAdminV1beta2IndexConfigDelta> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      changeType: Schema.optional(Schema.String),
-      index: Schema.optional(GoogleFirestoreAdminV1beta2Index),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1beta2IndexConfigDelta",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1beta2IndexConfigDelta>;
+export const GoogleFirestoreAdminV1beta2IndexConfigDelta =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    changeType: Schema.optional(Schema.String),
+    index: Schema.optional(GoogleFirestoreAdminV1beta2Index),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1beta2IndexConfigDelta" });
 
 export interface GoogleFirestoreAdminV1beta2IndexOperationMetadata {
   /** The time this operation started. */
@@ -237,19 +212,17 @@ export interface GoogleFirestoreAdminV1beta2IndexOperationMetadata {
   progressBytes?: GoogleFirestoreAdminV1beta2Progress;
 }
 
-export const GoogleFirestoreAdminV1beta2IndexOperationMetadata: Schema.Schema<GoogleFirestoreAdminV1beta2IndexOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      progressDocuments: Schema.optional(GoogleFirestoreAdminV1beta2Progress),
-      index: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      progressBytes: Schema.optional(GoogleFirestoreAdminV1beta2Progress),
-    }),
-  ).annotate({
+export const GoogleFirestoreAdminV1beta2IndexOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    progressDocuments: Schema.optional(GoogleFirestoreAdminV1beta2Progress),
+    index: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    progressBytes: Schema.optional(GoogleFirestoreAdminV1beta2Progress),
+  }).annotate({
     identifier: "GoogleFirestoreAdminV1beta2IndexOperationMetadata",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1beta2IndexOperationMetadata>;
+  });
 
 export interface GoogleFirestoreAdminV1beta2IndexConfig {
   /** The indexes supported for this field. */
@@ -262,17 +235,13 @@ export interface GoogleFirestoreAdminV1beta2IndexConfig {
   ancestorField?: string;
 }
 
-export const GoogleFirestoreAdminV1beta2IndexConfig: Schema.Schema<GoogleFirestoreAdminV1beta2IndexConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      indexes: Schema.optional(Schema.Array(GoogleFirestoreAdminV1beta2Index)),
-      usesAncestorConfig: Schema.optional(Schema.Boolean),
-      reverting: Schema.optional(Schema.Boolean),
-      ancestorField: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1beta2IndexConfig",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1beta2IndexConfig>;
+export const GoogleFirestoreAdminV1beta2IndexConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    indexes: Schema.optional(Schema.Array(GoogleFirestoreAdminV1beta2Index)),
+    usesAncestorConfig: Schema.optional(Schema.Boolean),
+    reverting: Schema.optional(Schema.Boolean),
+    ancestorField: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1beta2IndexConfig" });
 
 export interface GoogleFirestoreAdminV1beta2Field {
   /** A field name of the form `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_path}` A field path may be a simple field name, e.g. `address` or a path to fields within map_value , e.g. `address.city`, or a special field path. The only valid special field is `*`, which represents any field. Field paths may be quoted using ` (backtick). The only character that needs to be escaped within a quoted field path is the backtick character itself, escaped using a backslash. Special characters in field paths that must be quoted include: `*`, `.`, ``` (backtick), `[`, `]`, as well as any ascii symbolic characters. Examples: (Note: Comments here are written in markdown syntax, so there is an additional layer of backticks to represent a code block) `\`address.city\`` represents a field named `address.city`, not the map key `city` in the field `address`. `\`*\`` represents a field named `*`, not any field. A special `Field` contains the default indexing settings for all fields. This field's resource name is: `projects/{project_id}/databases/{database_id}/collectionGroups/__default__/fields/*` Indexes defined on this `Field` will be applied to all fields which do not have their own `Field` index configuration. */
@@ -281,15 +250,11 @@ export interface GoogleFirestoreAdminV1beta2Field {
   indexConfig?: GoogleFirestoreAdminV1beta2IndexConfig;
 }
 
-export const GoogleFirestoreAdminV1beta2Field: Schema.Schema<GoogleFirestoreAdminV1beta2Field> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      indexConfig: Schema.optional(GoogleFirestoreAdminV1beta2IndexConfig),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1beta2Field",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1beta2Field>;
+export const GoogleFirestoreAdminV1beta2Field =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    indexConfig: Schema.optional(GoogleFirestoreAdminV1beta2IndexConfig),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1beta2Field" });
 
 export interface GoogleFirestoreAdminV1beta2ListFieldsResponse {
   /** A page token that may be used to request another page of results. If blank, this is the last page. */
@@ -298,15 +263,11 @@ export interface GoogleFirestoreAdminV1beta2ListFieldsResponse {
   fields?: Array<GoogleFirestoreAdminV1beta2Field>;
 }
 
-export const GoogleFirestoreAdminV1beta2ListFieldsResponse: Schema.Schema<GoogleFirestoreAdminV1beta2ListFieldsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      fields: Schema.optional(Schema.Array(GoogleFirestoreAdminV1beta2Field)),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1beta2ListFieldsResponse",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1beta2ListFieldsResponse>;
+export const GoogleFirestoreAdminV1beta2ListFieldsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    fields: Schema.optional(Schema.Array(GoogleFirestoreAdminV1beta2Field)),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1beta2ListFieldsResponse" });
 
 export interface GoogleFirestoreAdminV1Progress {
   /** The amount of work estimated. */
@@ -315,15 +276,11 @@ export interface GoogleFirestoreAdminV1Progress {
   completedWork?: string;
 }
 
-export const GoogleFirestoreAdminV1Progress: Schema.Schema<GoogleFirestoreAdminV1Progress> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      estimatedWork: Schema.optional(Schema.String),
-      completedWork: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1Progress",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1Progress>;
+export const GoogleFirestoreAdminV1Progress =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    estimatedWork: Schema.optional(Schema.String),
+    completedWork: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1Progress" });
 
 export interface GoogleFirestoreAdminV1PitrSnapshot {
   /** Required. The name of the database that this was a snapshot of. Format: `projects/{project}/databases/{database}`. */
@@ -334,16 +291,12 @@ export interface GoogleFirestoreAdminV1PitrSnapshot {
   snapshotTime?: string;
 }
 
-export const GoogleFirestoreAdminV1PitrSnapshot: Schema.Schema<GoogleFirestoreAdminV1PitrSnapshot> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      database: Schema.optional(Schema.String),
-      databaseUid: Schema.optional(Schema.String),
-      snapshotTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1PitrSnapshot",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1PitrSnapshot>;
+export const GoogleFirestoreAdminV1PitrSnapshot =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    database: Schema.optional(Schema.String),
+    databaseUid: Schema.optional(Schema.String),
+    snapshotTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1PitrSnapshot" });
 
 export interface GoogleFirestoreAdminV1CloneDatabaseMetadata {
   /** The operation state of the clone. */
@@ -369,19 +322,15 @@ export interface GoogleFirestoreAdminV1CloneDatabaseMetadata {
   endTime?: string;
 }
 
-export const GoogleFirestoreAdminV1CloneDatabaseMetadata: Schema.Schema<GoogleFirestoreAdminV1CloneDatabaseMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operationState: Schema.optional(Schema.String),
-      pitrSnapshot: Schema.optional(GoogleFirestoreAdminV1PitrSnapshot),
-      database: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      progressPercentage: Schema.optional(GoogleFirestoreAdminV1Progress),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1CloneDatabaseMetadata",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1CloneDatabaseMetadata>;
+export const GoogleFirestoreAdminV1CloneDatabaseMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operationState: Schema.optional(Schema.String),
+    pitrSnapshot: Schema.optional(GoogleFirestoreAdminV1PitrSnapshot),
+    database: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    progressPercentage: Schema.optional(GoogleFirestoreAdminV1Progress),
+    endTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1CloneDatabaseMetadata" });
 
 export interface GoogleFirestoreAdminV1beta2FieldOperationMetadata {
   /** The field resource that this operation is acting on. For example: `projects/{project_id}/databases/{database_id}/collectionGroups/{collection_id}/fields/{field_path}` */
@@ -409,29 +358,27 @@ export interface GoogleFirestoreAdminV1beta2FieldOperationMetadata {
   endTime?: string;
 }
 
-export const GoogleFirestoreAdminV1beta2FieldOperationMetadata: Schema.Schema<GoogleFirestoreAdminV1beta2FieldOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      field: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      documentProgress: Schema.optional(GoogleFirestoreAdminV1beta2Progress),
-      bytesProgress: Schema.optional(GoogleFirestoreAdminV1beta2Progress),
-      startTime: Schema.optional(Schema.String),
-      indexConfigDeltas: Schema.optional(
-        Schema.Array(GoogleFirestoreAdminV1beta2IndexConfigDelta),
-      ),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleFirestoreAdminV1beta2FieldOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    field: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    documentProgress: Schema.optional(GoogleFirestoreAdminV1beta2Progress),
+    bytesProgress: Schema.optional(GoogleFirestoreAdminV1beta2Progress),
+    startTime: Schema.optional(Schema.String),
+    indexConfigDeltas: Schema.optional(
+      Schema.Array(GoogleFirestoreAdminV1beta2IndexConfigDelta),
+    ),
+    endTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleFirestoreAdminV1beta2FieldOperationMetadata",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1beta2FieldOperationMetadata>;
+  });
 
 export interface GoogleFirestoreAdminV1DeleteDatabaseMetadata {}
 
-export const GoogleFirestoreAdminV1DeleteDatabaseMetadata: Schema.Schema<GoogleFirestoreAdminV1DeleteDatabaseMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleFirestoreAdminV1DeleteDatabaseMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleFirestoreAdminV1DeleteDatabaseMetadata",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1DeleteDatabaseMetadata>;
+  });
 
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -442,16 +389,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface GoogleFirestoreAdminV1RestoreDatabaseMetadata {
   /** The name of the database being restored to. */
@@ -477,19 +421,15 @@ export interface GoogleFirestoreAdminV1RestoreDatabaseMetadata {
   progressPercentage?: GoogleFirestoreAdminV1Progress;
 }
 
-export const GoogleFirestoreAdminV1RestoreDatabaseMetadata: Schema.Schema<GoogleFirestoreAdminV1RestoreDatabaseMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      database: Schema.optional(Schema.String),
-      operationState: Schema.optional(Schema.String),
-      backup: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      progressPercentage: Schema.optional(GoogleFirestoreAdminV1Progress),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1RestoreDatabaseMetadata",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1RestoreDatabaseMetadata>;
+export const GoogleFirestoreAdminV1RestoreDatabaseMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    database: Schema.optional(Schema.String),
+    operationState: Schema.optional(Schema.String),
+    backup: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    progressPercentage: Schema.optional(GoogleFirestoreAdminV1Progress),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1RestoreDatabaseMetadata" });
 
 export interface GoogleFirestoreAdminV1beta2ListIndexesResponse {
   /** The requested indexes. */
@@ -498,15 +438,11 @@ export interface GoogleFirestoreAdminV1beta2ListIndexesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleFirestoreAdminV1beta2ListIndexesResponse: Schema.Schema<GoogleFirestoreAdminV1beta2ListIndexesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      indexes: Schema.optional(Schema.Array(GoogleFirestoreAdminV1beta2Index)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirestoreAdminV1beta2ListIndexesResponse",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1beta2ListIndexesResponse>;
+export const GoogleFirestoreAdminV1beta2ListIndexesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    indexes: Schema.optional(Schema.Array(GoogleFirestoreAdminV1beta2Index)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirestoreAdminV1beta2ListIndexesResponse" });
 
 export interface GoogleLongrunningOperation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -521,18 +457,14 @@ export interface GoogleLongrunningOperation {
   done?: boolean;
 }
 
-export const GoogleLongrunningOperation: Schema.Schema<GoogleLongrunningOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      error: Schema.optional(Status),
-      done: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleLongrunningOperation",
-  }) as any as Schema.Schema<GoogleLongrunningOperation>;
+export const GoogleLongrunningOperation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    error: Schema.optional(Status),
+    done: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleLongrunningOperation" });
 
 export interface GoogleFirestoreAdminV1beta2ExportDocumentsMetadata {
   /** The progress, in bytes, of this operation. */
@@ -560,27 +492,25 @@ export interface GoogleFirestoreAdminV1beta2ExportDocumentsMetadata {
   collectionIds?: Array<string>;
 }
 
-export const GoogleFirestoreAdminV1beta2ExportDocumentsMetadata: Schema.Schema<GoogleFirestoreAdminV1beta2ExportDocumentsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      progressBytes: Schema.optional(GoogleFirestoreAdminV1beta2Progress),
-      outputUriPrefix: Schema.optional(Schema.String),
-      operationState: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      progressDocuments: Schema.optional(GoogleFirestoreAdminV1beta2Progress),
-      startTime: Schema.optional(Schema.String),
-      collectionIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleFirestoreAdminV1beta2ExportDocumentsMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    progressBytes: Schema.optional(GoogleFirestoreAdminV1beta2Progress),
+    outputUriPrefix: Schema.optional(Schema.String),
+    operationState: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    progressDocuments: Schema.optional(GoogleFirestoreAdminV1beta2Progress),
+    startTime: Schema.optional(Schema.String),
+    collectionIds: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleFirestoreAdminV1beta2ExportDocumentsMetadata",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1beta2ExportDocumentsMetadata>;
+  });
 
 export interface GoogleFirestoreAdminV1CreateDatabaseMetadata {}
 
-export const GoogleFirestoreAdminV1CreateDatabaseMetadata: Schema.Schema<GoogleFirestoreAdminV1CreateDatabaseMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleFirestoreAdminV1CreateDatabaseMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleFirestoreAdminV1CreateDatabaseMetadata",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1CreateDatabaseMetadata>;
+  });
 
 export interface GoogleFirestoreAdminV1BulkDeleteDocumentsMetadata {
   /** The time this operation started. */
@@ -610,21 +540,19 @@ export interface GoogleFirestoreAdminV1BulkDeleteDocumentsMetadata {
   namespaceIds?: Array<string>;
 }
 
-export const GoogleFirestoreAdminV1BulkDeleteDocumentsMetadata: Schema.Schema<GoogleFirestoreAdminV1BulkDeleteDocumentsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Schema.String),
-      collectionIds: Schema.optional(Schema.Array(Schema.String)),
-      endTime: Schema.optional(Schema.String),
-      progressDocuments: Schema.optional(GoogleFirestoreAdminV1Progress),
-      snapshotTime: Schema.optional(Schema.String),
-      operationState: Schema.optional(Schema.String),
-      progressBytes: Schema.optional(GoogleFirestoreAdminV1Progress),
-      namespaceIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleFirestoreAdminV1BulkDeleteDocumentsMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startTime: Schema.optional(Schema.String),
+    collectionIds: Schema.optional(Schema.Array(Schema.String)),
+    endTime: Schema.optional(Schema.String),
+    progressDocuments: Schema.optional(GoogleFirestoreAdminV1Progress),
+    snapshotTime: Schema.optional(Schema.String),
+    operationState: Schema.optional(Schema.String),
+    progressBytes: Schema.optional(GoogleFirestoreAdminV1Progress),
+    namespaceIds: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleFirestoreAdminV1BulkDeleteDocumentsMetadata",
-  }) as any as Schema.Schema<GoogleFirestoreAdminV1BulkDeleteDocumentsMetadata>;
+  });
 
 // ==========================================================================
 // Operations

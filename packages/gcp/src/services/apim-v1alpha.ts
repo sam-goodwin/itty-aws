@@ -29,31 +29,22 @@ export interface GclbObservationSourcePscNetworkConfig {
   subnetwork?: string;
 }
 
-export const GclbObservationSourcePscNetworkConfig: Schema.Schema<GclbObservationSourcePscNetworkConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      network: Schema.optional(Schema.String),
-      subnetwork: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GclbObservationSourcePscNetworkConfig",
-  }) as any as Schema.Schema<GclbObservationSourcePscNetworkConfig>;
+export const GclbObservationSourcePscNetworkConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    network: Schema.optional(Schema.String),
+    subnetwork: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GclbObservationSourcePscNetworkConfig" });
 
 export interface GclbObservationSource {
   /** Required. The VPC networks where traffic will be observed. All load balancers within this network will be observed. Currently, this is limited to only one network. */
   pscNetworkConfigs?: Array<GclbObservationSourcePscNetworkConfig>;
 }
 
-export const GclbObservationSource: Schema.Schema<GclbObservationSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pscNetworkConfigs: Schema.optional(
-        Schema.Array(GclbObservationSourcePscNetworkConfig),
-      ),
-    }),
-  ).annotate({
-    identifier: "GclbObservationSource",
-  }) as any as Schema.Schema<GclbObservationSource>;
+export const GclbObservationSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pscNetworkConfigs: Schema.optional(
+    Schema.Array(GclbObservationSourcePscNetworkConfig),
+  ),
+}).annotate({ identifier: "GclbObservationSource" });
 
 export interface Location {
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
@@ -68,16 +59,13 @@ export interface Location {
   metadata?: Record<string, unknown>;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      locationId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  locationId: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Location" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -86,22 +74,17 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(Location)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface DisableObservationJobRequest {}
 
-export const DisableObservationJobRequest: Schema.Schema<DisableObservationJobRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const DisableObservationJobRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DisableObservationJobRequest",
-  }) as any as Schema.Schema<DisableObservationJobRequest>;
+  });
 
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -112,16 +95,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** The error result of the operation in case of failure or cancellation. */
@@ -136,16 +116,13 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      error: Schema.optional(Status),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  error: Schema.optional(Status),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  done: Schema.optional(Schema.Boolean),
+  name: Schema.optional(Schema.String),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Operation" });
 
 export interface TagAction {
   /** Required. Tag to be added or removed */
@@ -154,13 +131,10 @@ export interface TagAction {
   action?: "ACTION_UNSPECIFIED" | "ADD" | "REMOVE" | (string & {});
 }
 
-export const TagAction: Schema.Schema<TagAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tag: Schema.optional(Schema.String),
-      action: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "TagAction" }) as any as Schema.Schema<TagAction>;
+export const TagAction = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tag: Schema.optional(Schema.String),
+  action: Schema.optional(Schema.String),
+}).annotate({ identifier: "TagAction" });
 
 export interface EditTagsApiObservationsRequest {
   /** Required. Identifier of ApiObservation need to be edit tags Format example: "apigee.googleapis.com|us-west1|443" */
@@ -169,29 +143,21 @@ export interface EditTagsApiObservationsRequest {
   tagActions?: Array<TagAction>;
 }
 
-export const EditTagsApiObservationsRequest: Schema.Schema<EditTagsApiObservationsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      apiObservationId: Schema.optional(Schema.String),
-      tagActions: Schema.optional(Schema.Array(TagAction)),
-    }),
-  ).annotate({
-    identifier: "EditTagsApiObservationsRequest",
-  }) as any as Schema.Schema<EditTagsApiObservationsRequest>;
+export const EditTagsApiObservationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apiObservationId: Schema.optional(Schema.String),
+    tagActions: Schema.optional(Schema.Array(TagAction)),
+  }).annotate({ identifier: "EditTagsApiObservationsRequest" });
 
 export interface BatchEditTagsApiObservationsRequest {
   /** Required. The request message specifying the resources to update. A maximum of 1000 apiObservations can be modified in a batch. */
   requests?: Array<EditTagsApiObservationsRequest>;
 }
 
-export const BatchEditTagsApiObservationsRequest: Schema.Schema<BatchEditTagsApiObservationsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requests: Schema.optional(Schema.Array(EditTagsApiObservationsRequest)),
-    }),
-  ).annotate({
-    identifier: "BatchEditTagsApiObservationsRequest",
-  }) as any as Schema.Schema<BatchEditTagsApiObservationsRequest>;
+export const BatchEditTagsApiObservationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requests: Schema.optional(Schema.Array(EditTagsApiObservationsRequest)),
+  }).annotate({ identifier: "BatchEditTagsApiObservationsRequest" });
 
 export interface OperationMetadata {
   /** Output only. Human-readable status of the operation, if any. */
@@ -210,20 +176,15 @@ export interface OperationMetadata {
   verb?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      statusMessage: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      apiVersion: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  statusMessage: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  requestedCancellation: Schema.optional(Schema.Boolean),
+  createTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  apiVersion: Schema.optional(Schema.String),
+  verb: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationMetadata" });
 
 export interface ListOperationsResponse {
   /** The standard List next-page token. */
@@ -234,16 +195,13 @@ export interface ListOperationsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      operations: Schema.optional(Schema.Array(Operation)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    nextPageToken: Schema.optional(Schema.String),
+    operations: Schema.optional(Schema.Array(Operation)),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 export interface HttpOperationHeader {
   /** Header name. */
@@ -261,16 +219,11 @@ export interface HttpOperationHeader {
   count?: string;
 }
 
-export const HttpOperationHeader: Schema.Schema<HttpOperationHeader> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      dataType: Schema.optional(Schema.String),
-      count: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "HttpOperationHeader",
-  }) as any as Schema.Schema<HttpOperationHeader>;
+export const HttpOperationHeader = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  dataType: Schema.optional(Schema.String),
+  count: Schema.optional(Schema.String),
+}).annotate({ identifier: "HttpOperationHeader" });
 
 export interface HttpOperationHttpResponse {
   /** Unordered map from header name to header metadata */
@@ -279,19 +232,11 @@ export interface HttpOperationHttpResponse {
   responseCodes?: Record<string, string>;
 }
 
-export const HttpOperationHttpResponse: Schema.Schema<HttpOperationHttpResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      headers: Schema.optional(
-        Schema.Record(Schema.String, HttpOperationHeader),
-      ),
-      responseCodes: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-    }),
-  ).annotate({
-    identifier: "HttpOperationHttpResponse",
-  }) as any as Schema.Schema<HttpOperationHttpResponse>;
+export const HttpOperationHttpResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    headers: Schema.optional(Schema.Record(Schema.String, HttpOperationHeader)),
+    responseCodes: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({ identifier: "HttpOperationHttpResponse" });
 
 export interface HttpOperationQueryParam {
   /** Name of query param */
@@ -309,16 +254,12 @@ export interface HttpOperationQueryParam {
   count?: string;
 }
 
-export const HttpOperationQueryParam: Schema.Schema<HttpOperationQueryParam> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      dataType: Schema.optional(Schema.String),
-      count: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "HttpOperationQueryParam",
-  }) as any as Schema.Schema<HttpOperationQueryParam>;
+export const HttpOperationQueryParam =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    dataType: Schema.optional(Schema.String),
+    count: Schema.optional(Schema.String),
+  }).annotate({ identifier: "HttpOperationQueryParam" });
 
 export interface HttpOperationPathParam {
   /** Segment location in the path, 1-indexed */
@@ -334,31 +275,22 @@ export interface HttpOperationPathParam {
     | (string & {});
 }
 
-export const HttpOperationPathParam: Schema.Schema<HttpOperationPathParam> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      position: Schema.optional(Schema.Number),
-      dataType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "HttpOperationPathParam",
-  }) as any as Schema.Schema<HttpOperationPathParam>;
+export const HttpOperationPathParam = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    position: Schema.optional(Schema.Number),
+    dataType: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "HttpOperationPathParam" });
 
 export interface HttpOperationHttpRequest {
   /** Unordered map from header name to header metadata */
   headers?: Record<string, HttpOperationHeader>;
 }
 
-export const HttpOperationHttpRequest: Schema.Schema<HttpOperationHttpRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      headers: Schema.optional(
-        Schema.Record(Schema.String, HttpOperationHeader),
-      ),
-    }),
-  ).annotate({
-    identifier: "HttpOperationHttpRequest",
-  }) as any as Schema.Schema<HttpOperationHttpRequest>;
+export const HttpOperationHttpRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    headers: Schema.optional(Schema.Record(Schema.String, HttpOperationHeader)),
+  }).annotate({ identifier: "HttpOperationHttpRequest" });
 
 export interface HttpOperation {
   /** HTTP Method. */
@@ -386,21 +318,16 @@ export interface HttpOperation {
   request?: HttpOperationHttpRequest;
 }
 
-export const HttpOperation: Schema.Schema<HttpOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      method: Schema.optional(Schema.String),
-      path: Schema.optional(Schema.String),
-      response: Schema.optional(HttpOperationHttpResponse),
-      queryParams: Schema.optional(
-        Schema.Record(Schema.String, HttpOperationQueryParam),
-      ),
-      pathParams: Schema.optional(Schema.Array(HttpOperationPathParam)),
-      request: Schema.optional(HttpOperationHttpRequest),
-    }),
-  ).annotate({
-    identifier: "HttpOperation",
-  }) as any as Schema.Schema<HttpOperation>;
+export const HttpOperation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  method: Schema.optional(Schema.String),
+  path: Schema.optional(Schema.String),
+  response: Schema.optional(HttpOperationHttpResponse),
+  queryParams: Schema.optional(
+    Schema.Record(Schema.String, HttpOperationQueryParam),
+  ),
+  pathParams: Schema.optional(Schema.Array(HttpOperationPathParam)),
+  request: Schema.optional(HttpOperationHttpRequest),
+}).annotate({ identifier: "HttpOperation" });
 
 export interface ApiOperation {
   /** An HTTP Operation. */
@@ -415,18 +342,13 @@ export interface ApiOperation {
   count?: string;
 }
 
-export const ApiOperation: Schema.Schema<ApiOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      httpOperation: Schema.optional(HttpOperation),
-      name: Schema.optional(Schema.String),
-      lastSeenTime: Schema.optional(Schema.String),
-      firstSeenTime: Schema.optional(Schema.String),
-      count: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ApiOperation",
-  }) as any as Schema.Schema<ApiOperation>;
+export const ApiOperation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  httpOperation: Schema.optional(HttpOperation),
+  name: Schema.optional(Schema.String),
+  lastSeenTime: Schema.optional(Schema.String),
+  firstSeenTime: Schema.optional(Schema.String),
+  count: Schema.optional(Schema.String),
+}).annotate({ identifier: "ApiOperation" });
 
 export interface ObservationSource {
   /** Identifier. name of resource For MVP, each region can only have 1 source. */
@@ -447,18 +369,13 @@ export interface ObservationSource {
   createTime?: string;
 }
 
-export const ObservationSource: Schema.Schema<ObservationSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      gclbObservationSource: Schema.optional(GclbObservationSource),
-      updateTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ObservationSource",
-  }) as any as Schema.Schema<ObservationSource>;
+export const ObservationSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  gclbObservationSource: Schema.optional(GclbObservationSource),
+  updateTime: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "ObservationSource" });
 
 export interface ObservationJob {
   /** Output only. The observation job state */
@@ -482,18 +399,13 @@ export interface ObservationJob {
   createTime?: string;
 }
 
-export const ObservationJob: Schema.Schema<ObservationJob> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      sources: Schema.optional(Schema.Array(Schema.String)),
-      updateTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ObservationJob",
-  }) as any as Schema.Schema<ObservationJob>;
+export const ObservationJob = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  sources: Schema.optional(Schema.Array(Schema.String)),
+  updateTime: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "ObservationJob" });
 
 export interface ListObservationSourcesResponse {
   /** Locations that could not be reached. */
@@ -504,16 +416,12 @@ export interface ListObservationSourcesResponse {
   nextPageToken?: string;
 }
 
-export const ListObservationSourcesResponse: Schema.Schema<ListObservationSourcesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      observationSources: Schema.optional(Schema.Array(ObservationSource)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListObservationSourcesResponse",
-  }) as any as Schema.Schema<ListObservationSourcesResponse>;
+export const ListObservationSourcesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    observationSources: Schema.optional(Schema.Array(ObservationSource)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListObservationSourcesResponse" });
 
 export interface ListApiObservationTagsResponse {
   /** The tags from the specified project */
@@ -522,15 +430,11 @@ export interface ListApiObservationTagsResponse {
   nextPageToken?: string;
 }
 
-export const ListApiObservationTagsResponse: Schema.Schema<ListApiObservationTagsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      apiObservationTags: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListApiObservationTagsResponse",
-  }) as any as Schema.Schema<ListApiObservationTagsResponse>;
+export const ListApiObservationTagsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apiObservationTags: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListApiObservationTagsResponse" });
 
 export interface ListApiOperationsResponse {
   /** The ApiOperations from the specified project and location and ObservationJob and ApiObservation. */
@@ -539,22 +443,17 @@ export interface ListApiOperationsResponse {
   nextPageToken?: string;
 }
 
-export const ListApiOperationsResponse: Schema.Schema<ListApiOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      apiOperations: Schema.optional(Schema.Array(ApiOperation)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListApiOperationsResponse",
-  }) as any as Schema.Schema<ListApiOperationsResponse>;
+export const ListApiOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apiOperations: Schema.optional(Schema.Array(ApiOperation)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListApiOperationsResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface ListObservationJobsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -565,30 +464,25 @@ export interface ListObservationJobsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListObservationJobsResponse: Schema.Schema<ListObservationJobsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      observationJobs: Schema.optional(Schema.Array(ObservationJob)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListObservationJobsResponse",
-  }) as any as Schema.Schema<ListObservationJobsResponse>;
+export const ListObservationJobsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    observationJobs: Schema.optional(Schema.Array(ObservationJob)),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListObservationJobsResponse" });
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelOperationRequest",
-  }) as any as Schema.Schema<CancelOperationRequest>;
+export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelOperationRequest" });
 
 export interface EnableObservationJobRequest {}
 
-export const EnableObservationJobRequest: Schema.Schema<EnableObservationJobRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const EnableObservationJobRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "EnableObservationJobRequest",
-  }) as any as Schema.Schema<EnableObservationJobRequest>;
+  });
 
 export interface ApiObservation {
   /** The number of observed API Operations. */
@@ -613,23 +507,18 @@ export interface ApiObservation {
   hostname?: string;
 }
 
-export const ApiObservation: Schema.Schema<ApiObservation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      apiOperationCount: Schema.optional(Schema.String),
-      lastEventDetectedTime: Schema.optional(Schema.String),
-      serverIps: Schema.optional(Schema.Array(Schema.String)),
-      style: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      sourceLocations: Schema.optional(Schema.Array(Schema.String)),
-      name: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      tags: Schema.optional(Schema.Array(Schema.String)),
-      hostname: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ApiObservation",
-  }) as any as Schema.Schema<ApiObservation>;
+export const ApiObservation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  apiOperationCount: Schema.optional(Schema.String),
+  lastEventDetectedTime: Schema.optional(Schema.String),
+  serverIps: Schema.optional(Schema.Array(Schema.String)),
+  style: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  sourceLocations: Schema.optional(Schema.Array(Schema.String)),
+  name: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Array(Schema.String)),
+  hostname: Schema.optional(Schema.String),
+}).annotate({ identifier: "ApiObservation" });
 
 export interface Entitlement {
   /** Whether API Observation is entitled. */
@@ -644,18 +533,13 @@ export interface Entitlement {
   updateTime?: string;
 }
 
-export const Entitlement: Schema.Schema<Entitlement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      apiObservationEntitled: Schema.optional(Schema.Boolean),
-      createTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      billingProjectNumber: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Entitlement",
-  }) as any as Schema.Schema<Entitlement>;
+export const Entitlement = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  apiObservationEntitled: Schema.optional(Schema.Boolean),
+  createTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  billingProjectNumber: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Entitlement" });
 
 export interface ListApiObservationsResponse {
   /** The ApiObservation from the specified project and location and ObservationJobs. */
@@ -664,29 +548,21 @@ export interface ListApiObservationsResponse {
   nextPageToken?: string;
 }
 
-export const ListApiObservationsResponse: Schema.Schema<ListApiObservationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      apiObservations: Schema.optional(Schema.Array(ApiObservation)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListApiObservationsResponse",
-  }) as any as Schema.Schema<ListApiObservationsResponse>;
+export const ListApiObservationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apiObservations: Schema.optional(Schema.Array(ApiObservation)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListApiObservationsResponse" });
 
 export interface BatchEditTagsApiObservationsResponse {
   /** ApiObservations that were changed */
   apiObservations?: Array<ApiObservation>;
 }
 
-export const BatchEditTagsApiObservationsResponse: Schema.Schema<BatchEditTagsApiObservationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      apiObservations: Schema.optional(Schema.Array(ApiObservation)),
-    }),
-  ).annotate({
-    identifier: "BatchEditTagsApiObservationsResponse",
-  }) as any as Schema.Schema<BatchEditTagsApiObservationsResponse>;
+export const BatchEditTagsApiObservationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apiObservations: Schema.optional(Schema.Array(ApiObservation)),
+  }).annotate({ identifier: "BatchEditTagsApiObservationsResponse" });
 
 // ==========================================================================
 // Operations

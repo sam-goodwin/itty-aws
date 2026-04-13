@@ -45,21 +45,18 @@ export interface Channel {
   type?: string;
 }
 
-export const Channel: Schema.Schema<Channel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      params: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      resourceId: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      resourceUri: Schema.optional(Schema.String),
-      address: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      expiration: Schema.optional(Schema.String),
-      payload: Schema.optional(Schema.Boolean),
-      token: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Channel" }) as any as Schema.Schema<Channel>;
+export const Channel = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  params: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  resourceId: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  resourceUri: Schema.optional(Schema.String),
+  address: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  expiration: Schema.optional(Schema.String),
+  payload: Schema.optional(Schema.Boolean),
+  token: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "Channel" });
 
 export interface Setting {
   /** Value of the user setting. The format of the value depends on the ID of the setting. It must always be a UTF-8 string of length up to 1024 characters. */
@@ -72,15 +69,12 @@ export interface Setting {
   etag?: string;
 }
 
-export const Setting: Schema.Schema<Setting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Setting" }) as any as Schema.Schema<Setting>;
+export const Setting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "Setting" });
 
 export interface Settings {
   /** Etag of the collection. */
@@ -95,16 +89,13 @@ export interface Settings {
   kind?: string;
 }
 
-export const Settings: Schema.Schema<Settings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      etag: Schema.optional(Schema.String),
-      nextPageToken: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(Setting)),
-      nextSyncToken: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Settings" }) as any as Schema.Schema<Settings>;
+export const Settings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  etag: Schema.optional(Schema.String),
+  nextPageToken: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(Setting)),
+  nextSyncToken: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "Settings" });
 
 export interface CalendarNotification {
   /** The method used to deliver the notification. The possible value is: - "email" - Notifications are sent via email. Required when adding a notification. */
@@ -113,29 +104,20 @@ export interface CalendarNotification {
   type?: string;
 }
 
-export const CalendarNotification: Schema.Schema<CalendarNotification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      method: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CalendarNotification",
-  }) as any as Schema.Schema<CalendarNotification>;
+export const CalendarNotification = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  method: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "CalendarNotification" });
 
 export interface ConferenceRequestStatus {
   /** The current status of the conference create request. Read-only. The possible values are: - "pending": the conference create request is still being processed. - "success": the conference create request succeeded, the entry points are populated. - "failure": the conference create request failed, there are no entry points. */
   statusCode?: string;
 }
 
-export const ConferenceRequestStatus: Schema.Schema<ConferenceRequestStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      statusCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConferenceRequestStatus",
-  }) as any as Schema.Schema<ConferenceRequestStatus>;
+export const ConferenceRequestStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    statusCode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ConferenceRequestStatus" });
 
 export type LabelProperties = unknown;
 export const LabelProperties = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
@@ -149,16 +131,12 @@ export interface EventFocusTimeProperties {
   autoDeclineMode?: string;
 }
 
-export const EventFocusTimeProperties: Schema.Schema<EventFocusTimeProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      declineMessage: Schema.optional(Schema.String),
-      chatStatus: Schema.optional(Schema.String),
-      autoDeclineMode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EventFocusTimeProperties",
-  }) as any as Schema.Schema<EventFocusTimeProperties>;
+export const EventFocusTimeProperties =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    declineMessage: Schema.optional(Schema.String),
+    chatStatus: Schema.optional(Schema.String),
+    autoDeclineMode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EventFocusTimeProperties" });
 
 export interface TimePeriod {
   /** The (exclusive) end of the time period. */
@@ -167,13 +145,10 @@ export interface TimePeriod {
   start?: string;
 }
 
-export const TimePeriod: Schema.Schema<TimePeriod> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      end: Schema.optional(Schema.String),
-      start: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "TimePeriod" }) as any as Schema.Schema<TimePeriod>;
+export const TimePeriod = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  end: Schema.optional(Schema.String),
+  start: Schema.optional(Schema.String),
+}).annotate({ identifier: "TimePeriod" });
 
 export interface Calendar_Error {
   /** Domain, or broad category, of the error. */
@@ -182,15 +157,10 @@ export interface Calendar_Error {
   reason?: string;
 }
 
-export const Calendar_Error: Schema.Schema<Calendar_Error> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      domain: Schema.optional(Schema.String),
-      reason: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Calendar_Error",
-  }) as any as Schema.Schema<Calendar_Error>;
+export const Calendar_Error = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  domain: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+}).annotate({ identifier: "Calendar_Error" });
 
 export interface FreeBusyCalendar {
   /** List of time ranges during which this calendar should be regarded as busy. */
@@ -199,15 +169,10 @@ export interface FreeBusyCalendar {
   errors?: Array<Calendar_Error>;
 }
 
-export const FreeBusyCalendar: Schema.Schema<FreeBusyCalendar> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      busy: Schema.optional(Schema.Array(TimePeriod)),
-      errors: Schema.optional(Schema.Array(Calendar_Error)),
-    }),
-  ).annotate({
-    identifier: "FreeBusyCalendar",
-  }) as any as Schema.Schema<FreeBusyCalendar>;
+export const FreeBusyCalendar = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  busy: Schema.optional(Schema.Array(TimePeriod)),
+  errors: Schema.optional(Schema.Array(Calendar_Error)),
+}).annotate({ identifier: "FreeBusyCalendar" });
 
 export interface ColorDefinition {
   /** The background color associated with this color definition. */
@@ -216,15 +181,10 @@ export interface ColorDefinition {
   foreground?: string;
 }
 
-export const ColorDefinition: Schema.Schema<ColorDefinition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      background: Schema.optional(Schema.String),
-      foreground: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ColorDefinition",
-  }) as any as Schema.Schema<ColorDefinition>;
+export const ColorDefinition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  background: Schema.optional(Schema.String),
+  foreground: Schema.optional(Schema.String),
+}).annotate({ identifier: "ColorDefinition" });
 
 export interface Colors {
   /** A global palette of event colors, mapping from the color ID to its definition. An event resource may refer to one of these color IDs in its colorId field. Read-only. */
@@ -237,29 +197,21 @@ export interface Colors {
   updated?: string;
 }
 
-export const Colors: Schema.Schema<Colors> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      event: Schema.optional(Schema.Record(Schema.String, ColorDefinition)),
-      calendar: Schema.optional(Schema.Record(Schema.String, ColorDefinition)),
-      kind: Schema.optional(Schema.String),
-      updated: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Colors" }) as any as Schema.Schema<Colors>;
+export const Colors = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  event: Schema.optional(Schema.Record(Schema.String, ColorDefinition)),
+  calendar: Schema.optional(Schema.Record(Schema.String, ColorDefinition)),
+  kind: Schema.optional(Schema.String),
+  updated: Schema.optional(Schema.String),
+}).annotate({ identifier: "Colors" });
 
 export interface ConferenceSolutionKey {
   /** The conference solution type. If a client encounters an unfamiliar or empty type, it should still be able to display the entry points. However, it should disallow modifications. The possible values are: - "eventHangout" for Hangouts for consumers (deprecated; existing events may show this conference solution type but new conferences cannot be created) - "eventNamedHangout" for classic Hangouts for Google Workspace users (deprecated; existing events may show this conference solution type but new conferences cannot be created) - "hangoutsMeet" for Google Meet (http://meet.google.com) - "addOn" for 3P conference providers */
   type?: string;
 }
 
-export const ConferenceSolutionKey: Schema.Schema<ConferenceSolutionKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConferenceSolutionKey",
-  }) as any as Schema.Schema<ConferenceSolutionKey>;
+export const ConferenceSolutionKey = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "ConferenceSolutionKey" });
 
 export interface CreateConferenceRequest {
   /** The conference solution, such as Hangouts or Google Meet. */
@@ -270,32 +222,21 @@ export interface CreateConferenceRequest {
   status?: ConferenceRequestStatus;
 }
 
-export const CreateConferenceRequest: Schema.Schema<CreateConferenceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conferenceSolutionKey: Schema.optional(ConferenceSolutionKey),
-      requestId: Schema.optional(Schema.String),
-      status: Schema.optional(ConferenceRequestStatus),
-    }),
-  ).annotate({
-    identifier: "CreateConferenceRequest",
-  }) as any as Schema.Schema<CreateConferenceRequest>;
+export const CreateConferenceRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conferenceSolutionKey: Schema.optional(ConferenceSolutionKey),
+    requestId: Schema.optional(Schema.String),
+    status: Schema.optional(ConferenceRequestStatus),
+  }).annotate({ identifier: "CreateConferenceRequest" });
 
 export interface ConferenceProperties {
   /** The types of conference solutions that are supported for this calendar. The possible values are: - "eventHangout" - "eventNamedHangout" - "hangoutsMeet" Optional. */
   allowedConferenceSolutionTypes?: Array<string>;
 }
 
-export const ConferenceProperties: Schema.Schema<ConferenceProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      allowedConferenceSolutionTypes: Schema.optional(
-        Schema.Array(Schema.String),
-      ),
-    }),
-  ).annotate({
-    identifier: "ConferenceProperties",
-  }) as any as Schema.Schema<ConferenceProperties>;
+export const ConferenceProperties = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  allowedConferenceSolutionTypes: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ConferenceProperties" });
 
 export interface Calendar {
   /** Description of the calendar. Optional. */
@@ -320,21 +261,18 @@ export interface Calendar {
   location?: string;
 }
 
-export const Calendar: Schema.Schema<Calendar> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      autoAcceptInvitations: Schema.optional(Schema.Boolean),
-      summary: Schema.optional(Schema.String),
-      conferenceProperties: Schema.optional(ConferenceProperties),
-      etag: Schema.optional(Schema.String),
-      dataOwner: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      timeZone: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Calendar" }) as any as Schema.Schema<Calendar>;
+export const Calendar = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  autoAcceptInvitations: Schema.optional(Schema.Boolean),
+  summary: Schema.optional(Schema.String),
+  conferenceProperties: Schema.optional(ConferenceProperties),
+  etag: Schema.optional(Schema.String),
+  dataOwner: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  timeZone: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+}).annotate({ identifier: "Calendar" });
 
 export interface EventOutOfOfficeProperties {
   /** Whether to decline meeting invitations which overlap Out of office events. Valid values are declineNone, meaning that no meeting invitations are declined; declineAllConflictingInvitations, meaning that all conflicting meeting invitations that conflict with the event are declined; and declineOnlyNewConflictingInvitations, meaning that only new conflicting meeting invitations which arrive while the Out of office event is present are to be declined. */
@@ -343,15 +281,11 @@ export interface EventOutOfOfficeProperties {
   declineMessage?: string;
 }
 
-export const EventOutOfOfficeProperties: Schema.Schema<EventOutOfOfficeProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      autoDeclineMode: Schema.optional(Schema.String),
-      declineMessage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EventOutOfOfficeProperties",
-  }) as any as Schema.Schema<EventOutOfOfficeProperties>;
+export const EventOutOfOfficeProperties =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    autoDeclineMode: Schema.optional(Schema.String),
+    declineMessage: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EventOutOfOfficeProperties" });
 
 export interface FreeBusyGroup {
   /** List of calendars' identifiers within a group. */
@@ -360,15 +294,10 @@ export interface FreeBusyGroup {
   errors?: Array<Calendar_Error>;
 }
 
-export const FreeBusyGroup: Schema.Schema<FreeBusyGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      calendars: Schema.optional(Schema.Array(Schema.String)),
-      errors: Schema.optional(Schema.Array(Calendar_Error)),
-    }),
-  ).annotate({
-    identifier: "FreeBusyGroup",
-  }) as any as Schema.Schema<FreeBusyGroup>;
+export const FreeBusyGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  calendars: Schema.optional(Schema.Array(Schema.String)),
+  errors: Schema.optional(Schema.Array(Calendar_Error)),
+}).annotate({ identifier: "FreeBusyGroup" });
 
 export interface FreeBusyResponse {
   /** Type of the resource ("calendar#freeBusy"). */
@@ -383,20 +312,13 @@ export interface FreeBusyResponse {
   calendars?: Record<string, FreeBusyCalendar>;
 }
 
-export const FreeBusyResponse: Schema.Schema<FreeBusyResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      timeMin: Schema.optional(Schema.String),
-      timeMax: Schema.optional(Schema.String),
-      groups: Schema.optional(Schema.Record(Schema.String, FreeBusyGroup)),
-      calendars: Schema.optional(
-        Schema.Record(Schema.String, FreeBusyCalendar),
-      ),
-    }),
-  ).annotate({
-    identifier: "FreeBusyResponse",
-  }) as any as Schema.Schema<FreeBusyResponse>;
+export const FreeBusyResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  timeMin: Schema.optional(Schema.String),
+  timeMax: Schema.optional(Schema.String),
+  groups: Schema.optional(Schema.Record(Schema.String, FreeBusyGroup)),
+  calendars: Schema.optional(Schema.Record(Schema.String, FreeBusyCalendar)),
+}).annotate({ identifier: "FreeBusyResponse" });
 
 export interface EventReminder {
   /** The method used by this reminder. Possible values are: - "email" - Reminders are sent via email. - "popup" - Reminders are sent via a UI popup. Required when adding a reminder. */
@@ -405,15 +327,10 @@ export interface EventReminder {
   minutes?: number;
 }
 
-export const EventReminder: Schema.Schema<EventReminder> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      method: Schema.optional(Schema.String),
-      minutes: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "EventReminder",
-  }) as any as Schema.Schema<EventReminder>;
+export const EventReminder = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  method: Schema.optional(Schema.String),
+  minutes: Schema.optional(Schema.Number),
+}).annotate({ identifier: "EventReminder" });
 
 export interface CalendarListEntry {
   /** The summary that the authenticated user has set for this calendar. Optional. */
@@ -460,38 +377,33 @@ export interface CalendarListEntry {
   colorId?: string;
 }
 
-export const CalendarListEntry: Schema.Schema<CalendarListEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const CalendarListEntry = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  summaryOverride: Schema.optional(Schema.String),
+  foregroundColor: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  backgroundColor: Schema.optional(Schema.String),
+  dataOwner: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  deleted: Schema.optional(Schema.Boolean),
+  primary: Schema.optional(Schema.Boolean),
+  conferenceProperties: Schema.optional(ConferenceProperties),
+  autoAcceptInvitations: Schema.optional(Schema.Boolean),
+  accessRole: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  selected: Schema.optional(Schema.Boolean),
+  defaultReminders: Schema.optional(Schema.Array(EventReminder)),
+  timeZone: Schema.optional(Schema.String),
+  hidden: Schema.optional(Schema.Boolean),
+  etag: Schema.optional(Schema.String),
+  summary: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  notificationSettings: Schema.optional(
     Schema.Struct({
-      summaryOverride: Schema.optional(Schema.String),
-      foregroundColor: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      backgroundColor: Schema.optional(Schema.String),
-      dataOwner: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      deleted: Schema.optional(Schema.Boolean),
-      primary: Schema.optional(Schema.Boolean),
-      conferenceProperties: Schema.optional(ConferenceProperties),
-      autoAcceptInvitations: Schema.optional(Schema.Boolean),
-      accessRole: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-      selected: Schema.optional(Schema.Boolean),
-      defaultReminders: Schema.optional(Schema.Array(EventReminder)),
-      timeZone: Schema.optional(Schema.String),
-      hidden: Schema.optional(Schema.Boolean),
-      etag: Schema.optional(Schema.String),
-      summary: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      notificationSettings: Schema.optional(
-        Schema.Struct({
-          notifications: Schema.optional(Schema.Array(CalendarNotification)),
-        }),
-      ),
-      colorId: Schema.optional(Schema.String),
+      notifications: Schema.optional(Schema.Array(CalendarNotification)),
     }),
-  ).annotate({
-    identifier: "CalendarListEntry",
-  }) as any as Schema.Schema<CalendarListEntry>;
+  ),
+  colorId: Schema.optional(Schema.String),
+}).annotate({ identifier: "CalendarListEntry" });
 
 export interface CalendarList {
   /** ETag of the collection. */
@@ -506,31 +418,22 @@ export interface CalendarList {
   nextSyncToken?: string;
 }
 
-export const CalendarList: Schema.Schema<CalendarList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      etag: Schema.optional(Schema.String),
-      nextPageToken: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(CalendarListEntry)),
-      nextSyncToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CalendarList",
-  }) as any as Schema.Schema<CalendarList>;
+export const CalendarList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  etag: Schema.optional(Schema.String),
+  nextPageToken: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(CalendarListEntry)),
+  nextSyncToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "CalendarList" });
 
 export interface ConferenceParametersAddOnParameters {
   parameters?: Record<string, string>;
 }
 
-export const ConferenceParametersAddOnParameters: Schema.Schema<ConferenceParametersAddOnParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ConferenceParametersAddOnParameters",
-  }) as any as Schema.Schema<ConferenceParametersAddOnParameters>;
+export const ConferenceParametersAddOnParameters =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({ identifier: "ConferenceParametersAddOnParameters" });
 
 export type EventLabel = unknown;
 export const EventLabel = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
@@ -558,23 +461,18 @@ export interface EventAttendee {
   optional?: boolean;
 }
 
-export const EventAttendee: Schema.Schema<EventAttendee> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      self: Schema.optional(Schema.Boolean),
-      additionalGuests: Schema.optional(Schema.Number),
-      responseStatus: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      email: Schema.optional(Schema.String),
-      resource: Schema.optional(Schema.Boolean),
-      id: Schema.optional(Schema.String),
-      organizer: Schema.optional(Schema.Boolean),
-      comment: Schema.optional(Schema.String),
-      optional: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "EventAttendee",
-  }) as any as Schema.Schema<EventAttendee>;
+export const EventAttendee = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  self: Schema.optional(Schema.Boolean),
+  additionalGuests: Schema.optional(Schema.Number),
+  responseStatus: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  email: Schema.optional(Schema.String),
+  resource: Schema.optional(Schema.Boolean),
+  id: Schema.optional(Schema.String),
+  organizer: Schema.optional(Schema.Boolean),
+  comment: Schema.optional(Schema.String),
+  optional: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "EventAttendee" });
 
 export interface EventBirthdayProperties {
   /** Custom type label specified for this event. This is populated if birthdayProperties.type is set to "custom". Read-only. */
@@ -585,30 +483,21 @@ export interface EventBirthdayProperties {
   type?: string;
 }
 
-export const EventBirthdayProperties: Schema.Schema<EventBirthdayProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customTypeName: Schema.optional(Schema.String),
-      contact: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EventBirthdayProperties",
-  }) as any as Schema.Schema<EventBirthdayProperties>;
+export const EventBirthdayProperties =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customTypeName: Schema.optional(Schema.String),
+    contact: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EventBirthdayProperties" });
 
 export interface FreeBusyRequestItem {
   /** The identifier of a calendar or a group. */
   id?: string;
 }
 
-export const FreeBusyRequestItem: Schema.Schema<FreeBusyRequestItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FreeBusyRequestItem",
-  }) as any as Schema.Schema<FreeBusyRequestItem>;
+export const FreeBusyRequestItem = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+}).annotate({ identifier: "FreeBusyRequestItem" });
 
 export interface FreeBusyRequest {
   /** Time zone used in the response. Optional. The default is UTC. */
@@ -625,33 +514,23 @@ export interface FreeBusyRequest {
   timeMax?: string;
 }
 
-export const FreeBusyRequest: Schema.Schema<FreeBusyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      timeZone: Schema.optional(Schema.String),
-      calendarExpansionMax: Schema.optional(Schema.Number),
-      items: Schema.optional(Schema.Array(FreeBusyRequestItem)),
-      timeMin: Schema.optional(Schema.String),
-      groupExpansionMax: Schema.optional(Schema.Number),
-      timeMax: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FreeBusyRequest",
-  }) as any as Schema.Schema<FreeBusyRequest>;
+export const FreeBusyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  timeZone: Schema.optional(Schema.String),
+  calendarExpansionMax: Schema.optional(Schema.Number),
+  items: Schema.optional(Schema.Array(FreeBusyRequestItem)),
+  timeMin: Schema.optional(Schema.String),
+  groupExpansionMax: Schema.optional(Schema.Number),
+  timeMax: Schema.optional(Schema.String),
+}).annotate({ identifier: "FreeBusyRequest" });
 
 export interface ConferenceParameters {
   /** Additional add-on specific data. */
   addOnParameters?: ConferenceParametersAddOnParameters;
 }
 
-export const ConferenceParameters: Schema.Schema<ConferenceParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      addOnParameters: Schema.optional(ConferenceParametersAddOnParameters),
-    }),
-  ).annotate({
-    identifier: "ConferenceParameters",
-  }) as any as Schema.Schema<ConferenceParameters>;
+export const ConferenceParameters = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  addOnParameters: Schema.optional(ConferenceParametersAddOnParameters),
+}).annotate({ identifier: "ConferenceParameters" });
 
 export interface EntryPoint {
   /** The CLDR/ISO 3166 region code for the country associated with this phone access. Example: "SE" for Sweden. Calendar backend will populate this field only for EntryPointType.PHONE. */
@@ -676,21 +555,18 @@ export interface EntryPoint {
   meetingCode?: string;
 }
 
-export const EntryPoint: Schema.Schema<EntryPoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      regionCode: Schema.optional(Schema.String),
-      passcode: Schema.optional(Schema.String),
-      password: Schema.optional(Schema.String),
-      uri: Schema.optional(Schema.String),
-      pin: Schema.optional(Schema.String),
-      entryPointFeatures: Schema.optional(Schema.Array(Schema.String)),
-      accessCode: Schema.optional(Schema.String),
-      entryPointType: Schema.optional(Schema.String),
-      label: Schema.optional(Schema.String),
-      meetingCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "EntryPoint" }) as any as Schema.Schema<EntryPoint>;
+export const EntryPoint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  regionCode: Schema.optional(Schema.String),
+  passcode: Schema.optional(Schema.String),
+  password: Schema.optional(Schema.String),
+  uri: Schema.optional(Schema.String),
+  pin: Schema.optional(Schema.String),
+  entryPointFeatures: Schema.optional(Schema.Array(Schema.String)),
+  accessCode: Schema.optional(Schema.String),
+  entryPointType: Schema.optional(Schema.String),
+  label: Schema.optional(Schema.String),
+  meetingCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "EntryPoint" });
 
 export interface EventAttachment {
   /** Internet media type (MIME type) of the attachment. */
@@ -705,18 +581,13 @@ export interface EventAttachment {
   title?: string;
 }
 
-export const EventAttachment: Schema.Schema<EventAttachment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mimeType: Schema.optional(Schema.String),
-      fileId: Schema.optional(Schema.String),
-      iconLink: Schema.optional(Schema.String),
-      fileUrl: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EventAttachment",
-  }) as any as Schema.Schema<EventAttachment>;
+export const EventAttachment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  mimeType: Schema.optional(Schema.String),
+  fileId: Schema.optional(Schema.String),
+  iconLink: Schema.optional(Schema.String),
+  fileUrl: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+}).annotate({ identifier: "EventAttachment" });
 
 export interface EventWorkingLocationProperties {
   /** If present, specifies that the user is working from a custom location. */
@@ -735,27 +606,23 @@ export interface EventWorkingLocationProperties {
   homeOffice?: unknown;
 }
 
-export const EventWorkingLocationProperties: Schema.Schema<EventWorkingLocationProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customLocation: Schema.optional(
-        Schema.Struct({ label: Schema.optional(Schema.String) }),
-      ),
-      officeLocation: Schema.optional(
-        Schema.Struct({
-          label: Schema.optional(Schema.String),
-          floorSectionId: Schema.optional(Schema.String),
-          deskId: Schema.optional(Schema.String),
-          floorId: Schema.optional(Schema.String),
-          buildingId: Schema.optional(Schema.String),
-        }),
-      ),
-      type: Schema.optional(Schema.String),
-      homeOffice: Schema.optional(Schema.Unknown),
-    }),
-  ).annotate({
-    identifier: "EventWorkingLocationProperties",
-  }) as any as Schema.Schema<EventWorkingLocationProperties>;
+export const EventWorkingLocationProperties =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customLocation: Schema.optional(
+      Schema.Struct({ label: Schema.optional(Schema.String) }),
+    ),
+    officeLocation: Schema.optional(
+      Schema.Struct({
+        label: Schema.optional(Schema.String),
+        floorSectionId: Schema.optional(Schema.String),
+        deskId: Schema.optional(Schema.String),
+        floorId: Schema.optional(Schema.String),
+        buildingId: Schema.optional(Schema.String),
+      }),
+    ),
+    type: Schema.optional(Schema.String),
+    homeOffice: Schema.optional(Schema.Unknown),
+  }).annotate({ identifier: "EventWorkingLocationProperties" });
 
 export interface ConferenceSolution {
   /** The user-visible icon for this solution. */
@@ -766,16 +633,11 @@ export interface ConferenceSolution {
   key?: ConferenceSolutionKey;
 }
 
-export const ConferenceSolution: Schema.Schema<ConferenceSolution> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      iconUri: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      key: Schema.optional(ConferenceSolutionKey),
-    }),
-  ).annotate({
-    identifier: "ConferenceSolution",
-  }) as any as Schema.Schema<ConferenceSolution>;
+export const ConferenceSolution = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  iconUri: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  key: Schema.optional(ConferenceSolutionKey),
+}).annotate({ identifier: "ConferenceSolution" });
 
 export interface ConferenceData {
   /** The ID of the conference. Can be used by developers to keep track of conferences, should not be displayed to users. The ID value is formed differently for each conference solution type: - eventHangout: ID is not set. (This conference type is deprecated.) - eventNamedHangout: ID is the name of the Hangout. (This conference type is deprecated.) - hangoutsMeet: ID is the 10-letter meeting code, for example aaa-bbbb-ccc. - addOn: ID is defined by the third-party provider. Optional. */
@@ -794,20 +656,15 @@ export interface ConferenceData {
   parameters?: ConferenceParameters;
 }
 
-export const ConferenceData: Schema.Schema<ConferenceData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conferenceId: Schema.optional(Schema.String),
-      conferenceSolution: Schema.optional(ConferenceSolution),
-      signature: Schema.optional(Schema.String),
-      createRequest: Schema.optional(CreateConferenceRequest),
-      entryPoints: Schema.optional(Schema.Array(EntryPoint)),
-      notes: Schema.optional(Schema.String),
-      parameters: Schema.optional(ConferenceParameters),
-    }),
-  ).annotate({
-    identifier: "ConferenceData",
-  }) as any as Schema.Schema<ConferenceData>;
+export const ConferenceData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  conferenceId: Schema.optional(Schema.String),
+  conferenceSolution: Schema.optional(ConferenceSolution),
+  signature: Schema.optional(Schema.String),
+  createRequest: Schema.optional(CreateConferenceRequest),
+  entryPoints: Schema.optional(Schema.Array(EntryPoint)),
+  notes: Schema.optional(Schema.String),
+  parameters: Schema.optional(ConferenceParameters),
+}).annotate({ identifier: "ConferenceData" });
 
 export interface AclRule {
   /** Type of the resource ("calendar#aclRule"). */
@@ -822,21 +679,18 @@ export interface AclRule {
   etag?: string;
 }
 
-export const AclRule: Schema.Schema<AclRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const AclRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  scope: Schema.optional(
     Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      scope: Schema.optional(
-        Schema.Struct({
-          type: Schema.optional(Schema.String),
-          value: Schema.optional(Schema.String),
-        }),
-      ),
-      role: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      value: Schema.optional(Schema.String),
     }),
-  ).annotate({ identifier: "AclRule" }) as any as Schema.Schema<AclRule>;
+  ),
+  role: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "AclRule" });
 
 export interface Acl {
   /** List of rules on the access control list. */
@@ -851,16 +705,13 @@ export interface Acl {
   etag?: string;
 }
 
-export const Acl: Schema.Schema<Acl> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      items: Schema.optional(Schema.Array(AclRule)),
-      nextSyncToken: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      nextPageToken: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Acl" }) as any as Schema.Schema<Acl>;
+export const Acl = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  items: Schema.optional(Schema.Array(AclRule)),
+  nextSyncToken: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  nextPageToken: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "Acl" });
 
 export interface EventDateTime {
   /** The time, as a combined date-time value (formatted according to RFC3339). A time zone offset is required unless a time zone is explicitly specified in timeZone. */
@@ -871,16 +722,11 @@ export interface EventDateTime {
   timeZone?: string;
 }
 
-export const EventDateTime: Schema.Schema<EventDateTime> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dateTime: Schema.optional(Schema.String),
-      date: Schema.optional(Schema.String),
-      timeZone: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EventDateTime",
-  }) as any as Schema.Schema<EventDateTime>;
+export const EventDateTime = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dateTime: Schema.optional(Schema.String),
+  date: Schema.optional(Schema.String),
+  timeZone: Schema.optional(Schema.String),
+}).annotate({ identifier: "EventDateTime" });
 
 export interface Event {
   /** Title of the event. */
@@ -993,98 +839,91 @@ export interface Event {
   privateCopy?: boolean;
 }
 
-export const Event: Schema.Schema<Event> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const Event = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  summary: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  colorId: Schema.optional(Schema.String),
+  recurringEventId: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  anyoneCanAddSelf: Schema.optional(Schema.Boolean),
+  visibility: Schema.optional(Schema.String),
+  guestsCanInviteOthers: Schema.optional(Schema.Boolean),
+  created: Schema.optional(Schema.String),
+  conferenceData: Schema.optional(ConferenceData),
+  hangoutLink: Schema.optional(Schema.String),
+  recurrence: Schema.optional(Schema.Array(Schema.String)),
+  creator: Schema.optional(
     Schema.Struct({
-      summary: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      colorId: Schema.optional(Schema.String),
-      recurringEventId: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-      anyoneCanAddSelf: Schema.optional(Schema.Boolean),
-      visibility: Schema.optional(Schema.String),
-      guestsCanInviteOthers: Schema.optional(Schema.Boolean),
-      created: Schema.optional(Schema.String),
-      conferenceData: Schema.optional(ConferenceData),
-      hangoutLink: Schema.optional(Schema.String),
-      recurrence: Schema.optional(Schema.Array(Schema.String)),
-      creator: Schema.optional(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          displayName: Schema.optional(Schema.String),
-          email: Schema.optional(Schema.String),
-          self: Schema.optional(Schema.Boolean),
-        }),
-      ),
-      locked: Schema.optional(Schema.Boolean),
-      organizer: Schema.optional(
-        Schema.Struct({
-          displayName: Schema.optional(Schema.String),
-          email: Schema.optional(Schema.String),
-          self: Schema.optional(Schema.Boolean),
-          id: Schema.optional(Schema.String),
-        }),
-      ),
-      kind: Schema.optional(Schema.String),
-      eventType: Schema.optional(Schema.String),
       id: Schema.optional(Schema.String),
-      start: Schema.optional(EventDateTime),
-      guestsCanModify: Schema.optional(Schema.Boolean),
-      outOfOfficeProperties: Schema.optional(EventOutOfOfficeProperties),
-      transparency: Schema.optional(Schema.String),
-      updated: Schema.optional(Schema.String),
-      attendeesOmitted: Schema.optional(Schema.Boolean),
-      description: Schema.optional(Schema.String),
-      htmlLink: Schema.optional(Schema.String),
-      birthdayProperties: Schema.optional(EventBirthdayProperties),
-      iCalUID: Schema.optional(Schema.String),
-      workingLocationProperties: Schema.optional(
-        EventWorkingLocationProperties,
-      ),
-      attendees: Schema.optional(Schema.Array(EventAttendee)),
-      status: Schema.optional(Schema.String),
-      originalStartTime: Schema.optional(EventDateTime),
-      sequence: Schema.optional(Schema.Number),
-      reminders: Schema.optional(
-        Schema.Struct({
-          overrides: Schema.optional(Schema.Array(EventReminder)),
-          useDefault: Schema.optional(Schema.Boolean),
-        }),
-      ),
-      endTimeUnspecified: Schema.optional(Schema.Boolean),
-      extendedProperties: Schema.optional(
-        Schema.Struct({
-          private: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-          shared: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-        }),
-      ),
-      focusTimeProperties: Schema.optional(EventFocusTimeProperties),
-      guestsCanSeeOtherGuests: Schema.optional(Schema.Boolean),
-      attachments: Schema.optional(Schema.Array(EventAttachment)),
-      source: Schema.optional(
-        Schema.Struct({
-          url: Schema.optional(Schema.String),
-          title: Schema.optional(Schema.String),
-        }),
-      ),
-      gadget: Schema.optional(
-        Schema.Struct({
-          height: Schema.optional(Schema.Number),
-          width: Schema.optional(Schema.Number),
-          display: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-          iconLink: Schema.optional(Schema.String),
-          link: Schema.optional(Schema.String),
-          title: Schema.optional(Schema.String),
-          preferences: Schema.optional(
-            Schema.Record(Schema.String, Schema.String),
-          ),
-        }),
-      ),
-      end: Schema.optional(EventDateTime),
-      privateCopy: Schema.optional(Schema.Boolean),
+      displayName: Schema.optional(Schema.String),
+      email: Schema.optional(Schema.String),
+      self: Schema.optional(Schema.Boolean),
     }),
-  ).annotate({ identifier: "Event" }) as any as Schema.Schema<Event>;
+  ),
+  locked: Schema.optional(Schema.Boolean),
+  organizer: Schema.optional(
+    Schema.Struct({
+      displayName: Schema.optional(Schema.String),
+      email: Schema.optional(Schema.String),
+      self: Schema.optional(Schema.Boolean),
+      id: Schema.optional(Schema.String),
+    }),
+  ),
+  kind: Schema.optional(Schema.String),
+  eventType: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  start: Schema.optional(EventDateTime),
+  guestsCanModify: Schema.optional(Schema.Boolean),
+  outOfOfficeProperties: Schema.optional(EventOutOfOfficeProperties),
+  transparency: Schema.optional(Schema.String),
+  updated: Schema.optional(Schema.String),
+  attendeesOmitted: Schema.optional(Schema.Boolean),
+  description: Schema.optional(Schema.String),
+  htmlLink: Schema.optional(Schema.String),
+  birthdayProperties: Schema.optional(EventBirthdayProperties),
+  iCalUID: Schema.optional(Schema.String),
+  workingLocationProperties: Schema.optional(EventWorkingLocationProperties),
+  attendees: Schema.optional(Schema.Array(EventAttendee)),
+  status: Schema.optional(Schema.String),
+  originalStartTime: Schema.optional(EventDateTime),
+  sequence: Schema.optional(Schema.Number),
+  reminders: Schema.optional(
+    Schema.Struct({
+      overrides: Schema.optional(Schema.Array(EventReminder)),
+      useDefault: Schema.optional(Schema.Boolean),
+    }),
+  ),
+  endTimeUnspecified: Schema.optional(Schema.Boolean),
+  extendedProperties: Schema.optional(
+    Schema.Struct({
+      private: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+      shared: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    }),
+  ),
+  focusTimeProperties: Schema.optional(EventFocusTimeProperties),
+  guestsCanSeeOtherGuests: Schema.optional(Schema.Boolean),
+  attachments: Schema.optional(Schema.Array(EventAttachment)),
+  source: Schema.optional(
+    Schema.Struct({
+      url: Schema.optional(Schema.String),
+      title: Schema.optional(Schema.String),
+    }),
+  ),
+  gadget: Schema.optional(
+    Schema.Struct({
+      height: Schema.optional(Schema.Number),
+      width: Schema.optional(Schema.Number),
+      display: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      iconLink: Schema.optional(Schema.String),
+      link: Schema.optional(Schema.String),
+      title: Schema.optional(Schema.String),
+      preferences: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    }),
+  ),
+  end: Schema.optional(EventDateTime),
+  privateCopy: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Event" });
 
 export interface Events {
   /** Token used to access the next page of this result. Omitted if no further results are available, in which case nextSyncToken is provided. */
@@ -1111,22 +950,19 @@ export interface Events {
   kind?: string;
 }
 
-export const Events: Schema.Schema<Events> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      summary: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(Event)),
-      updated: Schema.optional(Schema.String),
-      accessRole: Schema.optional(Schema.String),
-      defaultReminders: Schema.optional(Schema.Array(EventReminder)),
-      nextSyncToken: Schema.optional(Schema.String),
-      timeZone: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Events" }) as any as Schema.Schema<Events>;
+export const Events = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  summary: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(Event)),
+  updated: Schema.optional(Schema.String),
+  accessRole: Schema.optional(Schema.String),
+  defaultReminders: Schema.optional(Schema.Array(EventReminder)),
+  nextSyncToken: Schema.optional(Schema.String),
+  timeZone: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "Events" });
 
 // ==========================================================================
 // Operations

@@ -27,28 +27,22 @@ export interface GoogleChecksReportV1alphaPermission {
   id?: string;
 }
 
-export const GoogleChecksReportV1alphaPermission: Schema.Schema<GoogleChecksReportV1alphaPermission> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksReportV1alphaPermission",
-  }) as any as Schema.Schema<GoogleChecksReportV1alphaPermission>;
+export const GoogleChecksReportV1alphaPermission =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChecksReportV1alphaPermission" });
 
 export interface GoogleChecksReportV1alphaDataTypePermissionEvidence {
   /** Permission declared by your app. */
   permission?: GoogleChecksReportV1alphaPermission;
 }
 
-export const GoogleChecksReportV1alphaDataTypePermissionEvidence: Schema.Schema<GoogleChecksReportV1alphaDataTypePermissionEvidence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permission: Schema.optional(GoogleChecksReportV1alphaPermission),
-    }),
-  ).annotate({
+export const GoogleChecksReportV1alphaDataTypePermissionEvidence =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permission: Schema.optional(GoogleChecksReportV1alphaPermission),
+  }).annotate({
     identifier: "GoogleChecksReportV1alphaDataTypePermissionEvidence",
-  }) as any as Schema.Schema<GoogleChecksReportV1alphaDataTypePermissionEvidence>;
+  });
 
 export interface GoogleChecksReportV1alphaPolicyFragment {
   /** Policy URL. */
@@ -57,87 +51,69 @@ export interface GoogleChecksReportV1alphaPolicyFragment {
   htmlContent?: string;
 }
 
-export const GoogleChecksReportV1alphaPolicyFragment: Schema.Schema<GoogleChecksReportV1alphaPolicyFragment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sourceUri: Schema.optional(Schema.String),
-      htmlContent: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksReportV1alphaPolicyFragment",
-  }) as any as Schema.Schema<GoogleChecksReportV1alphaPolicyFragment>;
+export const GoogleChecksReportV1alphaPolicyFragment =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sourceUri: Schema.optional(Schema.String),
+    htmlContent: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChecksReportV1alphaPolicyFragment" });
 
 export interface GoogleChecksReportV1alphaDataTypePrivacyPolicyTextEvidence {
   /** The privacy policy fragment that implies collection of the data type. */
   policyFragment?: GoogleChecksReportV1alphaPolicyFragment;
 }
 
-export const GoogleChecksReportV1alphaDataTypePrivacyPolicyTextEvidence: Schema.Schema<GoogleChecksReportV1alphaDataTypePrivacyPolicyTextEvidence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policyFragment: Schema.optional(GoogleChecksReportV1alphaPolicyFragment),
-    }),
-  ).annotate({
+export const GoogleChecksReportV1alphaDataTypePrivacyPolicyTextEvidence =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policyFragment: Schema.optional(GoogleChecksReportV1alphaPolicyFragment),
+  }).annotate({
     identifier: "GoogleChecksReportV1alphaDataTypePrivacyPolicyTextEvidence",
-  }) as any as Schema.Schema<GoogleChecksReportV1alphaDataTypePrivacyPolicyTextEvidence>;
+  });
 
 export interface GoogleChecksReportV1alphaEndpoint {
   /** Domain name (e.g. ads.google.com). */
   domain?: string;
 }
 
-export const GoogleChecksReportV1alphaEndpoint: Schema.Schema<GoogleChecksReportV1alphaEndpoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      domain: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksReportV1alphaEndpoint",
-  }) as any as Schema.Schema<GoogleChecksReportV1alphaEndpoint>;
+export const GoogleChecksReportV1alphaEndpoint =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    domain: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChecksReportV1alphaEndpoint" });
 
 export interface GoogleChecksReportV1alphaDataTypeEndpointEvidenceEndpointDetails {
   /** Endpoint the data type was sent to. */
   endpoint?: GoogleChecksReportV1alphaEndpoint;
 }
 
-export const GoogleChecksReportV1alphaDataTypeEndpointEvidenceEndpointDetails: Schema.Schema<GoogleChecksReportV1alphaDataTypeEndpointEvidenceEndpointDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endpoint: Schema.optional(GoogleChecksReportV1alphaEndpoint),
-    }),
-  ).annotate({
+export const GoogleChecksReportV1alphaDataTypeEndpointEvidenceEndpointDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endpoint: Schema.optional(GoogleChecksReportV1alphaEndpoint),
+  }).annotate({
     identifier:
       "GoogleChecksReportV1alphaDataTypeEndpointEvidenceEndpointDetails",
-  }) as any as Schema.Schema<GoogleChecksReportV1alphaDataTypeEndpointEvidenceEndpointDetails>;
+  });
 
 export interface GoogleChecksReportV1alphaSdk {
   /** SDK identifier. */
   id?: string;
 }
 
-export const GoogleChecksReportV1alphaSdk: Schema.Schema<GoogleChecksReportV1alphaSdk> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksReportV1alphaSdk",
-  }) as any as Schema.Schema<GoogleChecksReportV1alphaSdk>;
+export const GoogleChecksReportV1alphaSdk =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChecksReportV1alphaSdk" });
 
 export interface GoogleChecksReportV1alphaDataTypeEndpointEvidenceAttributedSdk {
   /** SDK that is attributed to the exfiltration. */
   sdk?: GoogleChecksReportV1alphaSdk;
 }
 
-export const GoogleChecksReportV1alphaDataTypeEndpointEvidenceAttributedSdk: Schema.Schema<GoogleChecksReportV1alphaDataTypeEndpointEvidenceAttributedSdk> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sdk: Schema.optional(GoogleChecksReportV1alphaSdk),
-    }),
-  ).annotate({
+export const GoogleChecksReportV1alphaDataTypeEndpointEvidenceAttributedSdk =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sdk: Schema.optional(GoogleChecksReportV1alphaSdk),
+  }).annotate({
     identifier:
       "GoogleChecksReportV1alphaDataTypeEndpointEvidenceAttributedSdk",
-  }) as any as Schema.Schema<GoogleChecksReportV1alphaDataTypeEndpointEvidenceAttributedSdk>;
+  });
 
 export interface GoogleChecksReportV1alphaDataTypeEndpointEvidence {
   /** Type of data that was exfiltrated. */
@@ -168,24 +144,22 @@ export interface GoogleChecksReportV1alphaDataTypeEndpointEvidence {
   attributedSdks?: Array<GoogleChecksReportV1alphaDataTypeEndpointEvidenceAttributedSdk>;
 }
 
-export const GoogleChecksReportV1alphaDataTypeEndpointEvidence: Schema.Schema<GoogleChecksReportV1alphaDataTypeEndpointEvidence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      exfiltratedDataType: Schema.optional(Schema.String),
-      endpointDetails: Schema.optional(
-        Schema.Array(
-          GoogleChecksReportV1alphaDataTypeEndpointEvidenceEndpointDetails,
-        ),
+export const GoogleChecksReportV1alphaDataTypeEndpointEvidence =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    exfiltratedDataType: Schema.optional(Schema.String),
+    endpointDetails: Schema.optional(
+      Schema.Array(
+        GoogleChecksReportV1alphaDataTypeEndpointEvidenceEndpointDetails,
       ),
-      attributedSdks: Schema.optional(
-        Schema.Array(
-          GoogleChecksReportV1alphaDataTypeEndpointEvidenceAttributedSdk,
-        ),
+    ),
+    attributedSdks: Schema.optional(
+      Schema.Array(
+        GoogleChecksReportV1alphaDataTypeEndpointEvidenceAttributedSdk,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier: "GoogleChecksReportV1alphaDataTypeEndpointEvidence",
-  }) as any as Schema.Schema<GoogleChecksReportV1alphaDataTypeEndpointEvidence>;
+  });
 
 export interface GoogleChecksReportV1alphaDataTypeEvidence {
   /** List of included permissions that imply collection of the data type. */
@@ -196,24 +170,18 @@ export interface GoogleChecksReportV1alphaDataTypeEvidence {
   endpoints?: Array<GoogleChecksReportV1alphaDataTypeEndpointEvidence>;
 }
 
-export const GoogleChecksReportV1alphaDataTypeEvidence: Schema.Schema<GoogleChecksReportV1alphaDataTypeEvidence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(
-        Schema.Array(GoogleChecksReportV1alphaDataTypePermissionEvidence),
-      ),
-      privacyPolicyTexts: Schema.optional(
-        Schema.Array(
-          GoogleChecksReportV1alphaDataTypePrivacyPolicyTextEvidence,
-        ),
-      ),
-      endpoints: Schema.optional(
-        Schema.Array(GoogleChecksReportV1alphaDataTypeEndpointEvidence),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksReportV1alphaDataTypeEvidence",
-  }) as any as Schema.Schema<GoogleChecksReportV1alphaDataTypeEvidence>;
+export const GoogleChecksReportV1alphaDataTypeEvidence =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(
+      Schema.Array(GoogleChecksReportV1alphaDataTypePermissionEvidence),
+    ),
+    privacyPolicyTexts: Schema.optional(
+      Schema.Array(GoogleChecksReportV1alphaDataTypePrivacyPolicyTextEvidence),
+    ),
+    endpoints: Schema.optional(
+      Schema.Array(GoogleChecksReportV1alphaDataTypeEndpointEvidence),
+    ),
+  }).annotate({ identifier: "GoogleChecksReportV1alphaDataTypeEvidence" });
 
 export interface GoogleChecksReportV1alphaCheckDataTypeEvidence {
   /** The data type that was found in your app. */
@@ -262,17 +230,13 @@ export interface GoogleChecksReportV1alphaCheckDataTypeEvidence {
   dataTypeEvidence?: GoogleChecksReportV1alphaDataTypeEvidence;
 }
 
-export const GoogleChecksReportV1alphaCheckDataTypeEvidence: Schema.Schema<GoogleChecksReportV1alphaCheckDataTypeEvidence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataType: Schema.optional(Schema.String),
-      dataTypeEvidence: Schema.optional(
-        GoogleChecksReportV1alphaDataTypeEvidence,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksReportV1alphaCheckDataTypeEvidence",
-  }) as any as Schema.Schema<GoogleChecksReportV1alphaCheckDataTypeEvidence>;
+export const GoogleChecksReportV1alphaCheckDataTypeEvidence =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataType: Schema.optional(Schema.String),
+    dataTypeEvidence: Schema.optional(
+      GoogleChecksReportV1alphaDataTypeEvidence,
+    ),
+  }).annotate({ identifier: "GoogleChecksReportV1alphaCheckDataTypeEvidence" });
 
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -283,16 +247,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -307,16 +268,13 @@ export interface Operation {
   metadata?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      error: Schema.optional(Status),
-      done: Schema.optional(Schema.Boolean),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  error: Schema.optional(Status),
+  done: Schema.optional(Schema.Boolean),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Operation" });
 
 export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
@@ -327,16 +285,13 @@ export interface ListOperationsResponse {
   operations?: Array<Operation>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-      operations: Schema.optional(Schema.Array(Operation)),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+    operations: Schema.optional(Schema.Array(Operation)),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 export interface GoogleChecksReportV1alphaDataMonitoringResultMetadata {
   /** Your app's version name when this result was last detected within the last 8 weeks. If not set, it wasn't detected within the last 8 weeks. */
@@ -351,17 +306,15 @@ export interface GoogleChecksReportV1alphaDataMonitoringResultMetadata {
   >;
 }
 
-export const GoogleChecksReportV1alphaDataMonitoringResultMetadata: Schema.Schema<GoogleChecksReportV1alphaDataMonitoringResultMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lastDetectedAppVersion: Schema.optional(Schema.String),
-      firstDetectedTime: Schema.optional(Schema.String),
-      lastDetectedTime: Schema.optional(Schema.String),
-      badges: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleChecksReportV1alphaDataMonitoringResultMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    lastDetectedAppVersion: Schema.optional(Schema.String),
+    firstDetectedTime: Schema.optional(Schema.String),
+    lastDetectedTime: Schema.optional(Schema.String),
+    badges: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleChecksReportV1alphaDataMonitoringResultMetadata",
-  }) as any as Schema.Schema<GoogleChecksReportV1alphaDataMonitoringResultMetadata>;
+  });
 
 export interface GoogleChecksReportV1alphaDataMonitoringEndpointResult {
   /** The number of times this endpoint was contacted by your app. */
@@ -372,18 +325,16 @@ export interface GoogleChecksReportV1alphaDataMonitoringEndpointResult {
   metadata?: GoogleChecksReportV1alphaDataMonitoringResultMetadata;
 }
 
-export const GoogleChecksReportV1alphaDataMonitoringEndpointResult: Schema.Schema<GoogleChecksReportV1alphaDataMonitoringEndpointResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hitCount: Schema.optional(Schema.Number),
-      endpoint: Schema.optional(GoogleChecksReportV1alphaEndpoint),
-      metadata: Schema.optional(
-        GoogleChecksReportV1alphaDataMonitoringResultMetadata,
-      ),
-    }),
-  ).annotate({
+export const GoogleChecksReportV1alphaDataMonitoringEndpointResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    hitCount: Schema.optional(Schema.Number),
+    endpoint: Schema.optional(GoogleChecksReportV1alphaEndpoint),
+    metadata: Schema.optional(
+      GoogleChecksReportV1alphaDataMonitoringResultMetadata,
+    ),
+  }).annotate({
     identifier: "GoogleChecksReportV1alphaDataMonitoringEndpointResult",
-  }) as any as Schema.Schema<GoogleChecksReportV1alphaDataMonitoringEndpointResult>;
+  });
 
 export interface GoogleChecksReportV1alphaAnalyzeUploadRequest {
   /** Optional. Git commit hash or changelist number associated with the upload. */
@@ -397,15 +348,11 @@ export interface GoogleChecksReportV1alphaAnalyzeUploadRequest {
     | (string & {});
 }
 
-export const GoogleChecksReportV1alphaAnalyzeUploadRequest: Schema.Schema<GoogleChecksReportV1alphaAnalyzeUploadRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      codeReferenceId: Schema.optional(Schema.String),
-      appBinaryFileType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksReportV1alphaAnalyzeUploadRequest",
-  }) as any as Schema.Schema<GoogleChecksReportV1alphaAnalyzeUploadRequest>;
+export const GoogleChecksReportV1alphaAnalyzeUploadRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    codeReferenceId: Schema.optional(Schema.String),
+    appBinaryFileType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChecksReportV1alphaAnalyzeUploadRequest" });
 
 export interface GoogleChecksRepoScanV1alphaPullRequest {
   /** Required. This can be supplied by the user or parsed automatically from predefined CI environment variables. */
@@ -414,15 +361,11 @@ export interface GoogleChecksRepoScanV1alphaPullRequest {
   baseBranch?: string;
 }
 
-export const GoogleChecksRepoScanV1alphaPullRequest: Schema.Schema<GoogleChecksRepoScanV1alphaPullRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      prNumber: Schema.optional(Schema.String),
-      baseBranch: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksRepoScanV1alphaPullRequest",
-  }) as any as Schema.Schema<GoogleChecksRepoScanV1alphaPullRequest>;
+export const GoogleChecksRepoScanV1alphaPullRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    prNumber: Schema.optional(Schema.String),
+    baseBranch: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChecksRepoScanV1alphaPullRequest" });
 
 export interface GoogleChecksRepoScanV1alphaScmMetadata {
   /** Optional. Contains info about the associated pull request. This is only populated for pull request scans. */
@@ -435,17 +378,13 @@ export interface GoogleChecksRepoScanV1alphaScmMetadata {
   remoteUri?: string;
 }
 
-export const GoogleChecksRepoScanV1alphaScmMetadata: Schema.Schema<GoogleChecksRepoScanV1alphaScmMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pullRequest: Schema.optional(GoogleChecksRepoScanV1alphaPullRequest),
-      branch: Schema.optional(Schema.String),
-      revisionId: Schema.optional(Schema.String),
-      remoteUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksRepoScanV1alphaScmMetadata",
-  }) as any as Schema.Schema<GoogleChecksRepoScanV1alphaScmMetadata>;
+export const GoogleChecksRepoScanV1alphaScmMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pullRequest: Schema.optional(GoogleChecksRepoScanV1alphaPullRequest),
+    branch: Schema.optional(Schema.String),
+    revisionId: Schema.optional(Schema.String),
+    remoteUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChecksRepoScanV1alphaScmMetadata" });
 
 export interface GoogleChecksRepoScanV1alphaCodeAttribution {
   /** Required. Path of the file. */
@@ -458,17 +397,13 @@ export interface GoogleChecksRepoScanV1alphaCodeAttribution {
   startLineNumber?: number;
 }
 
-export const GoogleChecksRepoScanV1alphaCodeAttribution: Schema.Schema<GoogleChecksRepoScanV1alphaCodeAttribution> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      path: Schema.optional(Schema.String),
-      lineNumber: Schema.optional(Schema.Number),
-      codeExcerpt: Schema.optional(Schema.String),
-      startLineNumber: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksRepoScanV1alphaCodeAttribution",
-  }) as any as Schema.Schema<GoogleChecksRepoScanV1alphaCodeAttribution>;
+export const GoogleChecksRepoScanV1alphaCodeAttribution =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    path: Schema.optional(Schema.String),
+    lineNumber: Schema.optional(Schema.Number),
+    codeExcerpt: Schema.optional(Schema.String),
+    startLineNumber: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleChecksRepoScanV1alphaCodeAttribution" });
 
 export interface GoogleChecksRepoScanV1alphaSource {
   /** Optional. Source code attribution for the finding. */
@@ -519,18 +454,14 @@ export interface GoogleChecksRepoScanV1alphaSource {
     | (string & {});
 }
 
-export const GoogleChecksRepoScanV1alphaSource: Schema.Schema<GoogleChecksRepoScanV1alphaSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      codeAttribution: Schema.optional(
-        GoogleChecksRepoScanV1alphaCodeAttribution,
-      ),
-      falsePositive: Schema.optional(Schema.Boolean),
-      dataType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksRepoScanV1alphaSource",
-  }) as any as Schema.Schema<GoogleChecksRepoScanV1alphaSource>;
+export const GoogleChecksRepoScanV1alphaSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    codeAttribution: Schema.optional(
+      GoogleChecksRepoScanV1alphaCodeAttribution,
+    ),
+    falsePositive: Schema.optional(Schema.Boolean),
+    dataType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChecksRepoScanV1alphaSource" });
 
 export interface GoogleChecksRepoScanV1alphaCodeScanDataTypeClassification {
   /** Required. Candidate data type. */
@@ -579,15 +510,13 @@ export interface GoogleChecksRepoScanV1alphaCodeScanDataTypeClassification {
   lineNumber?: number;
 }
 
-export const GoogleChecksRepoScanV1alphaCodeScanDataTypeClassification: Schema.Schema<GoogleChecksRepoScanV1alphaCodeScanDataTypeClassification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataType: Schema.optional(Schema.String),
-      lineNumber: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleChecksRepoScanV1alphaCodeScanDataTypeClassification =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataType: Schema.optional(Schema.String),
+    lineNumber: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleChecksRepoScanV1alphaCodeScanDataTypeClassification",
-  }) as any as Schema.Schema<GoogleChecksRepoScanV1alphaCodeScanDataTypeClassification>;
+  });
 
 export interface GoogleChecksRepoScanV1alphaSourceCode {
   /** Required. Path of the file. */
@@ -600,17 +529,13 @@ export interface GoogleChecksRepoScanV1alphaSourceCode {
   endLine?: number;
 }
 
-export const GoogleChecksRepoScanV1alphaSourceCode: Schema.Schema<GoogleChecksRepoScanV1alphaSourceCode> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      path: Schema.optional(Schema.String),
-      startLine: Schema.optional(Schema.Number),
-      code: Schema.optional(Schema.String),
-      endLine: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksRepoScanV1alphaSourceCode",
-  }) as any as Schema.Schema<GoogleChecksRepoScanV1alphaSourceCode>;
+export const GoogleChecksRepoScanV1alphaSourceCode =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    path: Schema.optional(Schema.String),
+    startLine: Schema.optional(Schema.Number),
+    code: Schema.optional(Schema.String),
+    endLine: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleChecksRepoScanV1alphaSourceCode" });
 
 export interface GoogleChecksRepoScanV1alphaCodeScan {
   /** Optional. Data type classification requests. */
@@ -619,17 +544,13 @@ export interface GoogleChecksRepoScanV1alphaCodeScan {
   sourceCode?: GoogleChecksRepoScanV1alphaSourceCode;
 }
 
-export const GoogleChecksRepoScanV1alphaCodeScan: Schema.Schema<GoogleChecksRepoScanV1alphaCodeScan> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataTypeClassifications: Schema.optional(
-        Schema.Array(GoogleChecksRepoScanV1alphaCodeScanDataTypeClassification),
-      ),
-      sourceCode: Schema.optional(GoogleChecksRepoScanV1alphaSourceCode),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksRepoScanV1alphaCodeScan",
-  }) as any as Schema.Schema<GoogleChecksRepoScanV1alphaCodeScan>;
+export const GoogleChecksRepoScanV1alphaCodeScan =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataTypeClassifications: Schema.optional(
+      Schema.Array(GoogleChecksRepoScanV1alphaCodeScanDataTypeClassification),
+    ),
+    sourceCode: Schema.optional(GoogleChecksRepoScanV1alphaSourceCode),
+  }).annotate({ identifier: "GoogleChecksRepoScanV1alphaCodeScan" });
 
 export interface GoogleChecksRepoScanV1alphaCliAnalysis {
   /** Optional. Data sources detected in the scan. */
@@ -638,17 +559,13 @@ export interface GoogleChecksRepoScanV1alphaCliAnalysis {
   codeScans?: Array<GoogleChecksRepoScanV1alphaCodeScan>;
 }
 
-export const GoogleChecksRepoScanV1alphaCliAnalysis: Schema.Schema<GoogleChecksRepoScanV1alphaCliAnalysis> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sources: Schema.optional(Schema.Array(GoogleChecksRepoScanV1alphaSource)),
-      codeScans: Schema.optional(
-        Schema.Array(GoogleChecksRepoScanV1alphaCodeScan),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksRepoScanV1alphaCliAnalysis",
-  }) as any as Schema.Schema<GoogleChecksRepoScanV1alphaCliAnalysis>;
+export const GoogleChecksRepoScanV1alphaCliAnalysis =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sources: Schema.optional(Schema.Array(GoogleChecksRepoScanV1alphaSource)),
+    codeScans: Schema.optional(
+      Schema.Array(GoogleChecksRepoScanV1alphaCodeScan),
+    ),
+  }).annotate({ identifier: "GoogleChecksRepoScanV1alphaCliAnalysis" });
 
 export interface GoogleChecksRepoScanV1alphaGenerateScanRequest {
   /** Required. CLI version. */
@@ -661,17 +578,13 @@ export interface GoogleChecksRepoScanV1alphaGenerateScanRequest {
   cliAnalysis?: GoogleChecksRepoScanV1alphaCliAnalysis;
 }
 
-export const GoogleChecksRepoScanV1alphaGenerateScanRequest: Schema.Schema<GoogleChecksRepoScanV1alphaGenerateScanRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cliVersion: Schema.optional(Schema.String),
-      scmMetadata: Schema.optional(GoogleChecksRepoScanV1alphaScmMetadata),
-      localScanPath: Schema.optional(Schema.String),
-      cliAnalysis: Schema.optional(GoogleChecksRepoScanV1alphaCliAnalysis),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksRepoScanV1alphaGenerateScanRequest",
-  }) as any as Schema.Schema<GoogleChecksRepoScanV1alphaGenerateScanRequest>;
+export const GoogleChecksRepoScanV1alphaGenerateScanRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cliVersion: Schema.optional(Schema.String),
+    scmMetadata: Schema.optional(GoogleChecksRepoScanV1alphaScmMetadata),
+    localScanPath: Schema.optional(Schema.String),
+    cliAnalysis: Schema.optional(GoogleChecksRepoScanV1alphaCliAnalysis),
+  }).annotate({ identifier: "GoogleChecksRepoScanV1alphaGenerateScanRequest" });
 
 export interface GoogleChecksReportV1alphaCheckCitation {
   /** Citation type. */
@@ -706,14 +619,10 @@ export interface GoogleChecksReportV1alphaCheckCitation {
     | (string & {});
 }
 
-export const GoogleChecksReportV1alphaCheckCitation: Schema.Schema<GoogleChecksReportV1alphaCheckCitation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksReportV1alphaCheckCitation",
-  }) as any as Schema.Schema<GoogleChecksReportV1alphaCheckCitation>;
+export const GoogleChecksReportV1alphaCheckCitation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChecksReportV1alphaCheckCitation" });
 
 export interface GoogleChecksReportV1alphaCheckStateMetadata {
   /** The last time the check failed. */
@@ -730,16 +639,12 @@ export interface GoogleChecksReportV1alphaCheckStateMetadata {
   >;
 }
 
-export const GoogleChecksReportV1alphaCheckStateMetadata: Schema.Schema<GoogleChecksReportV1alphaCheckStateMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lastFailingTime: Schema.optional(Schema.String),
-      firstFailingTime: Schema.optional(Schema.String),
-      badges: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksReportV1alphaCheckStateMetadata",
-  }) as any as Schema.Schema<GoogleChecksReportV1alphaCheckStateMetadata>;
+export const GoogleChecksReportV1alphaCheckStateMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    lastFailingTime: Schema.optional(Schema.String),
+    firstFailingTime: Schema.optional(Schema.String),
+    badges: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleChecksReportV1alphaCheckStateMetadata" });
 
 export interface GoogleChecksReportV1alphaCheckSdkIssueEvidence {
   /** The SDK with an issue. */
@@ -748,205 +653,173 @@ export interface GoogleChecksReportV1alphaCheckSdkIssueEvidence {
   sdkVersion?: string;
 }
 
-export const GoogleChecksReportV1alphaCheckSdkIssueEvidence: Schema.Schema<GoogleChecksReportV1alphaCheckSdkIssueEvidence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sdk: Schema.optional(GoogleChecksReportV1alphaSdk),
-      sdkVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksReportV1alphaCheckSdkIssueEvidence",
-  }) as any as Schema.Schema<GoogleChecksReportV1alphaCheckSdkIssueEvidence>;
+export const GoogleChecksReportV1alphaCheckSdkIssueEvidence =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sdk: Schema.optional(GoogleChecksReportV1alphaSdk),
+    sdkVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChecksReportV1alphaCheckSdkIssueEvidence" });
 
 export interface GoogleChecksReportV1alphaCheckSdkEvidence {
   /** The SDK that was found in your app. */
   sdk?: GoogleChecksReportV1alphaSdk;
 }
 
-export const GoogleChecksReportV1alphaCheckSdkEvidence: Schema.Schema<GoogleChecksReportV1alphaCheckSdkEvidence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sdk: Schema.optional(GoogleChecksReportV1alphaSdk),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksReportV1alphaCheckSdkEvidence",
-  }) as any as Schema.Schema<GoogleChecksReportV1alphaCheckSdkEvidence>;
+export const GoogleChecksReportV1alphaCheckSdkEvidence =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sdk: Schema.optional(GoogleChecksReportV1alphaSdk),
+  }).annotate({ identifier: "GoogleChecksReportV1alphaCheckSdkEvidence" });
 
 export interface GoogleChecksReportV1alphaCheckPermissionEvidence {
   /** The permission that was found in your app. */
   permission?: GoogleChecksReportV1alphaPermission;
 }
 
-export const GoogleChecksReportV1alphaCheckPermissionEvidence: Schema.Schema<GoogleChecksReportV1alphaCheckPermissionEvidence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permission: Schema.optional(GoogleChecksReportV1alphaPermission),
-    }),
-  ).annotate({
+export const GoogleChecksReportV1alphaCheckPermissionEvidence =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permission: Schema.optional(GoogleChecksReportV1alphaPermission),
+  }).annotate({
     identifier: "GoogleChecksReportV1alphaCheckPermissionEvidence",
-  }) as any as Schema.Schema<GoogleChecksReportV1alphaCheckPermissionEvidence>;
+  });
 
 export interface GoogleChecksReportV1alphaCheckPrivacyPolicyTextEvidence {
   /** The privacy policy fragment that was used during the check. */
   policyFragment?: GoogleChecksReportV1alphaPolicyFragment;
 }
 
-export const GoogleChecksReportV1alphaCheckPrivacyPolicyTextEvidence: Schema.Schema<GoogleChecksReportV1alphaCheckPrivacyPolicyTextEvidence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policyFragment: Schema.optional(GoogleChecksReportV1alphaPolicyFragment),
-    }),
-  ).annotate({
+export const GoogleChecksReportV1alphaCheckPrivacyPolicyTextEvidence =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policyFragment: Schema.optional(GoogleChecksReportV1alphaPolicyFragment),
+  }).annotate({
     identifier: "GoogleChecksReportV1alphaCheckPrivacyPolicyTextEvidence",
-  }) as any as Schema.Schema<GoogleChecksReportV1alphaCheckPrivacyPolicyTextEvidence>;
+  });
 
 export interface GoogleChecksReportV1alphaCheckEndpointEvidence {
   /** The endpoint that was contacted by your app. */
   endpoint?: GoogleChecksReportV1alphaEndpoint;
 }
 
-export const GoogleChecksReportV1alphaCheckEndpointEvidence: Schema.Schema<GoogleChecksReportV1alphaCheckEndpointEvidence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endpoint: Schema.optional(GoogleChecksReportV1alphaEndpoint),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksReportV1alphaCheckEndpointEvidence",
-  }) as any as Schema.Schema<GoogleChecksReportV1alphaCheckEndpointEvidence>;
+export const GoogleChecksReportV1alphaCheckEndpointEvidence =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endpoint: Schema.optional(GoogleChecksReportV1alphaEndpoint),
+  }).annotate({ identifier: "GoogleChecksReportV1alphaCheckEndpointEvidence" });
 
 export interface GoogleChecksReportV1alphaCheckDataSecurityEvidenceDataInTransitInfo {
   /** The URL contacted by your app. This includes the protocol, domain, and URL parameters. */
   uri?: string;
 }
 
-export const GoogleChecksReportV1alphaCheckDataSecurityEvidenceDataInTransitInfo: Schema.Schema<GoogleChecksReportV1alphaCheckDataSecurityEvidenceDataInTransitInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChecksReportV1alphaCheckDataSecurityEvidenceDataInTransitInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uri: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleChecksReportV1alphaCheckDataSecurityEvidenceDataInTransitInfo",
-  }) as any as Schema.Schema<GoogleChecksReportV1alphaCheckDataSecurityEvidenceDataInTransitInfo>;
+  });
 
 export interface GoogleChecksReportV1alphaCheckDataSecurityEvidence {
   /** Evidence related to data in transit. */
   dataInTransitInfo?: Array<GoogleChecksReportV1alphaCheckDataSecurityEvidenceDataInTransitInfo>;
 }
 
-export const GoogleChecksReportV1alphaCheckDataSecurityEvidence: Schema.Schema<GoogleChecksReportV1alphaCheckDataSecurityEvidence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataInTransitInfo: Schema.optional(
-        Schema.Array(
-          GoogleChecksReportV1alphaCheckDataSecurityEvidenceDataInTransitInfo,
-        ),
+export const GoogleChecksReportV1alphaCheckDataSecurityEvidence =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataInTransitInfo: Schema.optional(
+      Schema.Array(
+        GoogleChecksReportV1alphaCheckDataSecurityEvidenceDataInTransitInfo,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier: "GoogleChecksReportV1alphaCheckDataSecurityEvidence",
-  }) as any as Schema.Schema<GoogleChecksReportV1alphaCheckDataSecurityEvidence>;
+  });
 
 export interface GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceEndpointDetails {
   /** The endpoint in violation. */
   endpoint?: GoogleChecksReportV1alphaEndpoint;
 }
 
-export const GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceEndpointDetails: Schema.Schema<GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceEndpointDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endpoint: Schema.optional(GoogleChecksReportV1alphaEndpoint),
-    }),
-  ).annotate({
+export const GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceEndpointDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endpoint: Schema.optional(GoogleChecksReportV1alphaEndpoint),
+  }).annotate({
     identifier:
       "GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceEndpointDetails",
-  }) as any as Schema.Schema<GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceEndpointDetails>;
+  });
 
 export interface GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidence {
   /** Endpoints in violation. */
   endpointDetails?: Array<GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceEndpointDetails>;
 }
 
-export const GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidence: Schema.Schema<GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endpointDetails: Schema.optional(
-        Schema.Array(
-          GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceEndpointDetails,
-        ),
+export const GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidence =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endpointDetails: Schema.optional(
+      Schema.Array(
+        GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidenceEndpointDetails,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier:
       "GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidence",
-  }) as any as Schema.Schema<GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidence>;
+  });
 
 export interface GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSdkDetails {
   /** The SDK in violation. */
   sdk?: GoogleChecksReportV1alphaSdk;
 }
 
-export const GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSdkDetails: Schema.Schema<GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSdkDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sdk: Schema.optional(GoogleChecksReportV1alphaSdk),
-    }),
-  ).annotate({
+export const GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSdkDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sdk: Schema.optional(GoogleChecksReportV1alphaSdk),
+  }).annotate({
     identifier:
       "GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSdkDetails",
-  }) as any as Schema.Schema<GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSdkDetails>;
+  });
 
 export interface GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidence {
   /** SDKs in violation. */
   sdkDetails?: Array<GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSdkDetails>;
 }
 
-export const GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidence: Schema.Schema<GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sdkDetails: Schema.optional(
-        Schema.Array(
-          GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSdkDetails,
-        ),
+export const GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidence =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sdkDetails: Schema.optional(
+      Schema.Array(
+        GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidenceSdkDetails,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier: "GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidence",
-  }) as any as Schema.Schema<GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidence>;
+  });
 
 export interface GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidencePermissionDetails {
   /** The permission in violation. */
   permission?: GoogleChecksReportV1alphaPermission;
 }
 
-export const GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidencePermissionDetails: Schema.Schema<GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidencePermissionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permission: Schema.optional(GoogleChecksReportV1alphaPermission),
-    }),
-  ).annotate({
+export const GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidencePermissionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permission: Schema.optional(GoogleChecksReportV1alphaPermission),
+  }).annotate({
     identifier:
       "GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidencePermissionDetails",
-  }) as any as Schema.Schema<GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidencePermissionDetails>;
+  });
 
 export interface GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidence {
   /** Permissions in violation. */
   permissionDetails?: Array<GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidencePermissionDetails>;
 }
 
-export const GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidence: Schema.Schema<GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissionDetails: Schema.optional(
-        Schema.Array(
-          GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidencePermissionDetails,
-        ),
+export const GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidence =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissionDetails: Schema.optional(
+      Schema.Array(
+        GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidencePermissionDetails,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier:
       "GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidence",
-  }) as any as Schema.Schema<GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidence>;
+  });
 
 export interface GoogleChecksReportV1alphaCheckEvidence {
   /** Evidence concerning data types found in your app. */
@@ -971,49 +844,45 @@ export interface GoogleChecksReportV1alphaCheckEvidence {
   permissionRestrictionViolations?: Array<GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidence>;
 }
 
-export const GoogleChecksReportV1alphaCheckEvidence: Schema.Schema<GoogleChecksReportV1alphaCheckEvidence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataTypes: Schema.optional(
-        Schema.Array(GoogleChecksReportV1alphaCheckDataTypeEvidence),
+export const GoogleChecksReportV1alphaCheckEvidence =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataTypes: Schema.optional(
+      Schema.Array(GoogleChecksReportV1alphaCheckDataTypeEvidence),
+    ),
+    sdkIssues: Schema.optional(
+      Schema.Array(GoogleChecksReportV1alphaCheckSdkIssueEvidence),
+    ),
+    sdks: Schema.optional(
+      Schema.Array(GoogleChecksReportV1alphaCheckSdkEvidence),
+    ),
+    permissions: Schema.optional(
+      Schema.Array(GoogleChecksReportV1alphaCheckPermissionEvidence),
+    ),
+    privacyPolicyTexts: Schema.optional(
+      Schema.Array(GoogleChecksReportV1alphaCheckPrivacyPolicyTextEvidence),
+    ),
+    endpoints: Schema.optional(
+      Schema.Array(GoogleChecksReportV1alphaCheckEndpointEvidence),
+    ),
+    dataSecurity: Schema.optional(
+      GoogleChecksReportV1alphaCheckDataSecurityEvidence,
+    ),
+    endpointRestrictionViolations: Schema.optional(
+      Schema.Array(
+        GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidence,
       ),
-      sdkIssues: Schema.optional(
-        Schema.Array(GoogleChecksReportV1alphaCheckSdkIssueEvidence),
+    ),
+    sdkRestrictionViolations: Schema.optional(
+      Schema.Array(
+        GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidence,
       ),
-      sdks: Schema.optional(
-        Schema.Array(GoogleChecksReportV1alphaCheckSdkEvidence),
+    ),
+    permissionRestrictionViolations: Schema.optional(
+      Schema.Array(
+        GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidence,
       ),
-      permissions: Schema.optional(
-        Schema.Array(GoogleChecksReportV1alphaCheckPermissionEvidence),
-      ),
-      privacyPolicyTexts: Schema.optional(
-        Schema.Array(GoogleChecksReportV1alphaCheckPrivacyPolicyTextEvidence),
-      ),
-      endpoints: Schema.optional(
-        Schema.Array(GoogleChecksReportV1alphaCheckEndpointEvidence),
-      ),
-      dataSecurity: Schema.optional(
-        GoogleChecksReportV1alphaCheckDataSecurityEvidence,
-      ),
-      endpointRestrictionViolations: Schema.optional(
-        Schema.Array(
-          GoogleChecksReportV1alphaCheckEndpointRestrictionViolationEvidence,
-        ),
-      ),
-      sdkRestrictionViolations: Schema.optional(
-        Schema.Array(
-          GoogleChecksReportV1alphaCheckSdkRestrictionViolationEvidence,
-        ),
-      ),
-      permissionRestrictionViolations: Schema.optional(
-        Schema.Array(
-          GoogleChecksReportV1alphaCheckPermissionRestrictionViolationEvidence,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksReportV1alphaCheckEvidence",
-  }) as any as Schema.Schema<GoogleChecksReportV1alphaCheckEvidence>;
+    ),
+  }).annotate({ identifier: "GoogleChecksReportV1alphaCheckEvidence" });
 
 export interface GoogleChecksReportV1alphaCheck {
   /** The urgency or risk level of the check. */
@@ -1135,24 +1004,18 @@ export interface GoogleChecksReportV1alphaCheck {
   evidence?: GoogleChecksReportV1alphaCheckEvidence;
 }
 
-export const GoogleChecksReportV1alphaCheck: Schema.Schema<GoogleChecksReportV1alphaCheck> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      severity: Schema.optional(Schema.String),
-      citations: Schema.optional(
-        Schema.Array(GoogleChecksReportV1alphaCheckCitation),
-      ),
-      state: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      stateMetadata: Schema.optional(
-        GoogleChecksReportV1alphaCheckStateMetadata,
-      ),
-      regionCodes: Schema.optional(Schema.Array(Schema.String)),
-      evidence: Schema.optional(GoogleChecksReportV1alphaCheckEvidence),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksReportV1alphaCheck",
-  }) as any as Schema.Schema<GoogleChecksReportV1alphaCheck>;
+export const GoogleChecksReportV1alphaCheck =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    severity: Schema.optional(Schema.String),
+    citations: Schema.optional(
+      Schema.Array(GoogleChecksReportV1alphaCheckCitation),
+    ),
+    state: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    stateMetadata: Schema.optional(GoogleChecksReportV1alphaCheckStateMetadata),
+    regionCodes: Schema.optional(Schema.Array(Schema.String)),
+    evidence: Schema.optional(GoogleChecksReportV1alphaCheckEvidence),
+  }).annotate({ identifier: "GoogleChecksReportV1alphaCheck" });
 
 export interface GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResult {
   /** Type of the policy. */
@@ -1178,49 +1041,43 @@ export interface GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResult 
     | (string & {});
 }
 
-export const GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResult: Schema.Schema<GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policyType: Schema.optional(Schema.String),
-      score: Schema.optional(Schema.Number),
-      violationResult: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policyType: Schema.optional(Schema.String),
+    score: Schema.optional(Schema.Number),
+    violationResult: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResult",
-  }) as any as Schema.Schema<GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResult>;
+  });
 
 export interface GoogleChecksAisafetyV1alphaClassifyContentResponse {
   /** Results of the classification for each policy. */
   policyResults?: Array<GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResult>;
 }
 
-export const GoogleChecksAisafetyV1alphaClassifyContentResponse: Schema.Schema<GoogleChecksAisafetyV1alphaClassifyContentResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policyResults: Schema.optional(
-        Schema.Array(
-          GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResult,
-        ),
+export const GoogleChecksAisafetyV1alphaClassifyContentResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policyResults: Schema.optional(
+      Schema.Array(
+        GoogleChecksAisafetyV1alphaClassifyContentResponsePolicyResult,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier: "GoogleChecksAisafetyV1alphaClassifyContentResponse",
-  }) as any as Schema.Schema<GoogleChecksAisafetyV1alphaClassifyContentResponse>;
+  });
 
 export interface GoogleChecksAisafetyV1alphaClassifyContentRequestContext {
   /** Optional. Prompt that generated the model response. */
   prompt?: string;
 }
 
-export const GoogleChecksAisafetyV1alphaClassifyContentRequestContext: Schema.Schema<GoogleChecksAisafetyV1alphaClassifyContentRequestContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      prompt: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChecksAisafetyV1alphaClassifyContentRequestContext =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    prompt: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleChecksAisafetyV1alphaClassifyContentRequestContext",
-  }) as any as Schema.Schema<GoogleChecksAisafetyV1alphaClassifyContentRequestContext>;
+  });
 
 export interface GoogleChecksReportV1alphaAppBundle {
   /** Git commit hash or changelist number associated with the release. */
@@ -1239,18 +1096,14 @@ export interface GoogleChecksReportV1alphaAppBundle {
   version?: string;
 }
 
-export const GoogleChecksReportV1alphaAppBundle: Schema.Schema<GoogleChecksReportV1alphaAppBundle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      codeReferenceId: Schema.optional(Schema.String),
-      releaseType: Schema.optional(Schema.String),
-      versionId: Schema.optional(Schema.String),
-      bundleId: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksReportV1alphaAppBundle",
-  }) as any as Schema.Schema<GoogleChecksReportV1alphaAppBundle>;
+export const GoogleChecksReportV1alphaAppBundle =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    codeReferenceId: Schema.optional(Schema.String),
+    releaseType: Schema.optional(Schema.String),
+    versionId: Schema.optional(Schema.String),
+    bundleId: Schema.optional(Schema.String),
+    version: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChecksReportV1alphaAppBundle" });
 
 export interface GoogleChecksAccountV1alphaApp {
   /** The resource name of the app. Example: `accounts/123/apps/456` */
@@ -1259,15 +1112,11 @@ export interface GoogleChecksAccountV1alphaApp {
   title?: string;
 }
 
-export const GoogleChecksAccountV1alphaApp: Schema.Schema<GoogleChecksAccountV1alphaApp> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksAccountV1alphaApp",
-  }) as any as Schema.Schema<GoogleChecksAccountV1alphaApp>;
+export const GoogleChecksAccountV1alphaApp =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    title: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChecksAccountV1alphaApp" });
 
 export interface GoogleChecksAccountV1alphaListAppsResponse {
   /** The apps. */
@@ -1276,15 +1125,11 @@ export interface GoogleChecksAccountV1alphaListAppsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleChecksAccountV1alphaListAppsResponse: Schema.Schema<GoogleChecksAccountV1alphaListAppsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      apps: Schema.optional(Schema.Array(GoogleChecksAccountV1alphaApp)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksAccountV1alphaListAppsResponse",
-  }) as any as Schema.Schema<GoogleChecksAccountV1alphaListAppsResponse>;
+export const GoogleChecksAccountV1alphaListAppsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apps: Schema.optional(Schema.Array(GoogleChecksAccountV1alphaApp)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChecksAccountV1alphaListAppsResponse" });
 
 export interface GoogleChecksReportV1alphaDataMonitoringSdkResult {
   /** Metadata about the result. */
@@ -1293,17 +1138,15 @@ export interface GoogleChecksReportV1alphaDataMonitoringSdkResult {
   sdk?: GoogleChecksReportV1alphaSdk;
 }
 
-export const GoogleChecksReportV1alphaDataMonitoringSdkResult: Schema.Schema<GoogleChecksReportV1alphaDataMonitoringSdkResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadata: Schema.optional(
-        GoogleChecksReportV1alphaDataMonitoringResultMetadata,
-      ),
-      sdk: Schema.optional(GoogleChecksReportV1alphaSdk),
-    }),
-  ).annotate({
+export const GoogleChecksReportV1alphaDataMonitoringSdkResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    metadata: Schema.optional(
+      GoogleChecksReportV1alphaDataMonitoringResultMetadata,
+    ),
+    sdk: Schema.optional(GoogleChecksReportV1alphaSdk),
+  }).annotate({
     identifier: "GoogleChecksReportV1alphaDataMonitoringSdkResult",
-  }) as any as Schema.Schema<GoogleChecksReportV1alphaDataMonitoringSdkResult>;
+  });
 
 export interface GoogleChecksAisafetyV1alphaTextInput {
   /** Actual piece of text to be classified. */
@@ -1312,29 +1155,23 @@ export interface GoogleChecksAisafetyV1alphaTextInput {
   languageCode?: string;
 }
 
-export const GoogleChecksAisafetyV1alphaTextInput: Schema.Schema<GoogleChecksAisafetyV1alphaTextInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      content: Schema.optional(Schema.String),
-      languageCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksAisafetyV1alphaTextInput",
-  }) as any as Schema.Schema<GoogleChecksAisafetyV1alphaTextInput>;
+export const GoogleChecksAisafetyV1alphaTextInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    content: Schema.optional(Schema.String),
+    languageCode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChecksAisafetyV1alphaTextInput" });
 
 export interface GoogleChecksAisafetyV1alphaClassifyContentRequestInputContent {
   /** Content in text format. */
   textInput?: GoogleChecksAisafetyV1alphaTextInput;
 }
 
-export const GoogleChecksAisafetyV1alphaClassifyContentRequestInputContent: Schema.Schema<GoogleChecksAisafetyV1alphaClassifyContentRequestInputContent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      textInput: Schema.optional(GoogleChecksAisafetyV1alphaTextInput),
-    }),
-  ).annotate({
+export const GoogleChecksAisafetyV1alphaClassifyContentRequestInputContent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    textInput: Schema.optional(GoogleChecksAisafetyV1alphaTextInput),
+  }).annotate({
     identifier: "GoogleChecksAisafetyV1alphaClassifyContentRequestInputContent",
-  }) as any as Schema.Schema<GoogleChecksAisafetyV1alphaClassifyContentRequestInputContent>;
+  });
 
 export interface GoogleChecksReportV1alphaDataMonitoringDataTypeResult {
   /** Metadata about the result. */
@@ -1385,20 +1222,18 @@ export interface GoogleChecksReportV1alphaDataMonitoringDataTypeResult {
   dataTypeEvidence?: GoogleChecksReportV1alphaDataTypeEvidence;
 }
 
-export const GoogleChecksReportV1alphaDataMonitoringDataTypeResult: Schema.Schema<GoogleChecksReportV1alphaDataMonitoringDataTypeResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadata: Schema.optional(
-        GoogleChecksReportV1alphaDataMonitoringResultMetadata,
-      ),
-      dataType: Schema.optional(Schema.String),
-      dataTypeEvidence: Schema.optional(
-        GoogleChecksReportV1alphaDataTypeEvidence,
-      ),
-    }),
-  ).annotate({
+export const GoogleChecksReportV1alphaDataMonitoringDataTypeResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    metadata: Schema.optional(
+      GoogleChecksReportV1alphaDataMonitoringResultMetadata,
+    ),
+    dataType: Schema.optional(Schema.String),
+    dataTypeEvidence: Schema.optional(
+      GoogleChecksReportV1alphaDataTypeEvidence,
+    ),
+  }).annotate({
     identifier: "GoogleChecksReportV1alphaDataMonitoringDataTypeResult",
-  }) as any as Schema.Schema<GoogleChecksReportV1alphaDataMonitoringDataTypeResult>;
+  });
 
 export interface GoogleChecksReportV1alphaDataMonitoringPermissionResult {
   /** Metadata about the result. */
@@ -1407,17 +1242,15 @@ export interface GoogleChecksReportV1alphaDataMonitoringPermissionResult {
   permission?: GoogleChecksReportV1alphaPermission;
 }
 
-export const GoogleChecksReportV1alphaDataMonitoringPermissionResult: Schema.Schema<GoogleChecksReportV1alphaDataMonitoringPermissionResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadata: Schema.optional(
-        GoogleChecksReportV1alphaDataMonitoringResultMetadata,
-      ),
-      permission: Schema.optional(GoogleChecksReportV1alphaPermission),
-    }),
-  ).annotate({
+export const GoogleChecksReportV1alphaDataMonitoringPermissionResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    metadata: Schema.optional(
+      GoogleChecksReportV1alphaDataMonitoringResultMetadata,
+    ),
+    permission: Schema.optional(GoogleChecksReportV1alphaPermission),
+  }).annotate({
     identifier: "GoogleChecksReportV1alphaDataMonitoringPermissionResult",
-  }) as any as Schema.Schema<GoogleChecksReportV1alphaDataMonitoringPermissionResult>;
+  });
 
 export interface GoogleChecksReportV1alphaDataMonitoring {
   /** Endpoints that were found by dynamic analysis of your app. */
@@ -1430,25 +1263,21 @@ export interface GoogleChecksReportV1alphaDataMonitoring {
   permissions?: Array<GoogleChecksReportV1alphaDataMonitoringPermissionResult>;
 }
 
-export const GoogleChecksReportV1alphaDataMonitoring: Schema.Schema<GoogleChecksReportV1alphaDataMonitoring> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endpoints: Schema.optional(
-        Schema.Array(GoogleChecksReportV1alphaDataMonitoringEndpointResult),
-      ),
-      sdks: Schema.optional(
-        Schema.Array(GoogleChecksReportV1alphaDataMonitoringSdkResult),
-      ),
-      dataTypes: Schema.optional(
-        Schema.Array(GoogleChecksReportV1alphaDataMonitoringDataTypeResult),
-      ),
-      permissions: Schema.optional(
-        Schema.Array(GoogleChecksReportV1alphaDataMonitoringPermissionResult),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksReportV1alphaDataMonitoring",
-  }) as any as Schema.Schema<GoogleChecksReportV1alphaDataMonitoring>;
+export const GoogleChecksReportV1alphaDataMonitoring =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endpoints: Schema.optional(
+      Schema.Array(GoogleChecksReportV1alphaDataMonitoringEndpointResult),
+    ),
+    sdks: Schema.optional(
+      Schema.Array(GoogleChecksReportV1alphaDataMonitoringSdkResult),
+    ),
+    dataTypes: Schema.optional(
+      Schema.Array(GoogleChecksReportV1alphaDataMonitoringDataTypeResult),
+    ),
+    permissions: Schema.optional(
+      Schema.Array(GoogleChecksReportV1alphaDataMonitoringPermissionResult),
+    ),
+  }).annotate({ identifier: "GoogleChecksReportV1alphaDataMonitoring" });
 
 export interface GoogleChecksReportV1alphaReport {
   /** Resource name of the report. */
@@ -1463,18 +1292,14 @@ export interface GoogleChecksReportV1alphaReport {
   appBundle?: GoogleChecksReportV1alphaAppBundle;
 }
 
-export const GoogleChecksReportV1alphaReport: Schema.Schema<GoogleChecksReportV1alphaReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      dataMonitoring: Schema.optional(GoogleChecksReportV1alphaDataMonitoring),
-      resultsUri: Schema.optional(Schema.String),
-      checks: Schema.optional(Schema.Array(GoogleChecksReportV1alphaCheck)),
-      appBundle: Schema.optional(GoogleChecksReportV1alphaAppBundle),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksReportV1alphaReport",
-  }) as any as Schema.Schema<GoogleChecksReportV1alphaReport>;
+export const GoogleChecksReportV1alphaReport =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    dataMonitoring: Schema.optional(GoogleChecksReportV1alphaDataMonitoring),
+    resultsUri: Schema.optional(Schema.String),
+    checks: Schema.optional(Schema.Array(GoogleChecksReportV1alphaCheck)),
+    appBundle: Schema.optional(GoogleChecksReportV1alphaAppBundle),
+  }).annotate({ identifier: "GoogleChecksReportV1alphaReport" });
 
 export interface GoogleChecksRepoScanV1alphaRepoScan {
   /** CLI version. */
@@ -1491,19 +1316,15 @@ export interface GoogleChecksRepoScanV1alphaRepoScan {
   sources?: Array<GoogleChecksRepoScanV1alphaSource>;
 }
 
-export const GoogleChecksRepoScanV1alphaRepoScan: Schema.Schema<GoogleChecksRepoScanV1alphaRepoScan> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cliVersion: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      localScanPath: Schema.optional(Schema.String),
-      scmMetadata: Schema.optional(GoogleChecksRepoScanV1alphaScmMetadata),
-      resultsUri: Schema.optional(Schema.String),
-      sources: Schema.optional(Schema.Array(GoogleChecksRepoScanV1alphaSource)),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksRepoScanV1alphaRepoScan",
-  }) as any as Schema.Schema<GoogleChecksRepoScanV1alphaRepoScan>;
+export const GoogleChecksRepoScanV1alphaRepoScan =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cliVersion: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    localScanPath: Schema.optional(Schema.String),
+    scmMetadata: Schema.optional(GoogleChecksRepoScanV1alphaScmMetadata),
+    resultsUri: Schema.optional(Schema.String),
+    sources: Schema.optional(Schema.Array(GoogleChecksRepoScanV1alphaSource)),
+  }).annotate({ identifier: "GoogleChecksRepoScanV1alphaRepoScan" });
 
 export interface GoogleChecksRepoScanV1alphaListRepoScansResponse {
   /** The repo scans for the specified app. */
@@ -1512,17 +1333,15 @@ export interface GoogleChecksRepoScanV1alphaListRepoScansResponse {
   nextPageToken?: string;
 }
 
-export const GoogleChecksRepoScanV1alphaListRepoScansResponse: Schema.Schema<GoogleChecksRepoScanV1alphaListRepoScansResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      repoScans: Schema.optional(
-        Schema.Array(GoogleChecksRepoScanV1alphaRepoScan),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChecksRepoScanV1alphaListRepoScansResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    repoScans: Schema.optional(
+      Schema.Array(GoogleChecksRepoScanV1alphaRepoScan),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleChecksRepoScanV1alphaListRepoScansResponse",
-  }) as any as Schema.Schema<GoogleChecksRepoScanV1alphaListRepoScansResponse>;
+  });
 
 export interface GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfig {
   /** Required. Type of the policy. */
@@ -1541,29 +1360,22 @@ export interface GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfig {
   threshold?: number;
 }
 
-export const GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfig: Schema.Schema<GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policyType: Schema.optional(Schema.String),
-      threshold: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policyType: Schema.optional(Schema.String),
+    threshold: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfig",
-  }) as any as Schema.Schema<GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfig>;
+  });
 
 export interface WaitOperationRequest {
   /** The maximum duration to wait before timing out. If left blank, the wait will be at most the time permitted by the underlying HTTP/RPC protocol. If RPC context deadline is also specified, the shorter one will be used. */
   timeout?: string;
 }
 
-export const WaitOperationRequest: Schema.Schema<WaitOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      timeout: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WaitOperationRequest",
-  }) as any as Schema.Schema<WaitOperationRequest>;
+export const WaitOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  timeout: Schema.optional(Schema.String),
+}).annotate({ identifier: "WaitOperationRequest" });
 
 export interface GoogleChecksReportV1alphaListReportsResponse {
   /** The reports for the specified app. */
@@ -1572,29 +1384,23 @@ export interface GoogleChecksReportV1alphaListReportsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleChecksReportV1alphaListReportsResponse: Schema.Schema<GoogleChecksReportV1alphaListReportsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reports: Schema.optional(Schema.Array(GoogleChecksReportV1alphaReport)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChecksReportV1alphaListReportsResponse",
-  }) as any as Schema.Schema<GoogleChecksReportV1alphaListReportsResponse>;
+export const GoogleChecksReportV1alphaListReportsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reports: Schema.optional(Schema.Array(GoogleChecksReportV1alphaReport)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChecksReportV1alphaListReportsResponse" });
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelOperationRequest",
-  }) as any as Schema.Schema<CancelOperationRequest>;
+export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelOperationRequest" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface GoogleChecksAisafetyV1alphaClassifyContentRequest {
   /** Required. Content to be classified. */
@@ -1611,25 +1417,23 @@ export interface GoogleChecksAisafetyV1alphaClassifyContentRequest {
   policies?: Array<GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfig>;
 }
 
-export const GoogleChecksAisafetyV1alphaClassifyContentRequest: Schema.Schema<GoogleChecksAisafetyV1alphaClassifyContentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      input: Schema.optional(
-        GoogleChecksAisafetyV1alphaClassifyContentRequestInputContent,
+export const GoogleChecksAisafetyV1alphaClassifyContentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    input: Schema.optional(
+      GoogleChecksAisafetyV1alphaClassifyContentRequestInputContent,
+    ),
+    classifierVersion: Schema.optional(Schema.String),
+    context: Schema.optional(
+      GoogleChecksAisafetyV1alphaClassifyContentRequestContext,
+    ),
+    policies: Schema.optional(
+      Schema.Array(
+        GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfig,
       ),
-      classifierVersion: Schema.optional(Schema.String),
-      context: Schema.optional(
-        GoogleChecksAisafetyV1alphaClassifyContentRequestContext,
-      ),
-      policies: Schema.optional(
-        Schema.Array(
-          GoogleChecksAisafetyV1alphaClassifyContentRequestPolicyConfig,
-        ),
-      ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier: "GoogleChecksAisafetyV1alphaClassifyContentRequest",
-  }) as any as Schema.Schema<GoogleChecksAisafetyV1alphaClassifyContentRequest>;
+  });
 
 // ==========================================================================
 // Operations

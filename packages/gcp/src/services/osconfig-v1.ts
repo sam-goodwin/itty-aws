@@ -31,16 +31,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -55,16 +52,13 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      error: Schema.optional(Status),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  done: Schema.optional(Schema.Boolean),
+  error: Schema.optional(Status),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Operation" });
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -75,30 +69,25 @@ export interface ListOperationsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(Schema.Array(Operation)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    operations: Schema.optional(Schema.Array(Operation)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelOperationRequest",
-  }) as any as Schema.Schema<CancelOperationRequest>;
+export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelOperationRequest" });
 
 export interface ProjectFeatureSettings {
   /** Required. Immutable. Name specifies the URL for the ProjectFeatureSettings resource: projects/project_id/locations/global/projectFeatureSettings. */
@@ -111,29 +100,22 @@ export interface ProjectFeatureSettings {
     | (string & {});
 }
 
-export const ProjectFeatureSettings: Schema.Schema<ProjectFeatureSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      patchAndConfigFeatureSet: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProjectFeatureSettings",
-  }) as any as Schema.Schema<ProjectFeatureSettings>;
+export const ProjectFeatureSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    name: Schema.optional(Schema.String),
+    patchAndConfigFeatureSet: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ProjectFeatureSettings" });
 
 export interface PatchInstanceFilterGroupLabel {
   /** Compute Engine instance labels that must be present for a VM instance to be targeted by this filter. */
   labels?: Record<string, string>;
 }
 
-export const PatchInstanceFilterGroupLabel: Schema.Schema<PatchInstanceFilterGroupLabel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "PatchInstanceFilterGroupLabel",
-  }) as any as Schema.Schema<PatchInstanceFilterGroupLabel>;
+export const PatchInstanceFilterGroupLabel =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({ identifier: "PatchInstanceFilterGroupLabel" });
 
 export interface PatchInstanceFilter {
   /** Target all VM instances in the project. If true, no other criteria is permitted. */
@@ -148,18 +130,13 @@ export interface PatchInstanceFilter {
   instanceNamePrefixes?: Array<string>;
 }
 
-export const PatchInstanceFilter: Schema.Schema<PatchInstanceFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      all: Schema.optional(Schema.Boolean),
-      groupLabels: Schema.optional(Schema.Array(PatchInstanceFilterGroupLabel)),
-      zones: Schema.optional(Schema.Array(Schema.String)),
-      instances: Schema.optional(Schema.Array(Schema.String)),
-      instanceNamePrefixes: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "PatchInstanceFilter",
-  }) as any as Schema.Schema<PatchInstanceFilter>;
+export const PatchInstanceFilter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  all: Schema.optional(Schema.Boolean),
+  groupLabels: Schema.optional(Schema.Array(PatchInstanceFilterGroupLabel)),
+  zones: Schema.optional(Schema.Array(Schema.String)),
+  instances: Schema.optional(Schema.Array(Schema.String)),
+  instanceNamePrefixes: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "PatchInstanceFilter" });
 
 export interface AptSettings {
   /** By changing the type to DIST, the patching is performed using `apt-get dist-upgrade` instead. */
@@ -170,16 +147,11 @@ export interface AptSettings {
   exclusivePackages?: Array<string>;
 }
 
-export const AptSettings: Schema.Schema<AptSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      excludes: Schema.optional(Schema.Array(Schema.String)),
-      exclusivePackages: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AptSettings",
-  }) as any as Schema.Schema<AptSettings>;
+export const AptSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  excludes: Schema.optional(Schema.Array(Schema.String)),
+  exclusivePackages: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "AptSettings" });
 
 export interface YumSettings {
   /** Adds the `--security` flag to `yum update`. Not supported on all platforms. */
@@ -192,24 +164,18 @@ export interface YumSettings {
   exclusivePackages?: Array<string>;
 }
 
-export const YumSettings: Schema.Schema<YumSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      security: Schema.optional(Schema.Boolean),
-      minimal: Schema.optional(Schema.Boolean),
-      excludes: Schema.optional(Schema.Array(Schema.String)),
-      exclusivePackages: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "YumSettings",
-  }) as any as Schema.Schema<YumSettings>;
+export const YumSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  security: Schema.optional(Schema.Boolean),
+  minimal: Schema.optional(Schema.Boolean),
+  excludes: Schema.optional(Schema.Array(Schema.String)),
+  exclusivePackages: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "YumSettings" });
 
 export interface GooSettings {}
 
-export const GooSettings: Schema.Schema<GooSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "GooSettings",
-  }) as any as Schema.Schema<GooSettings>;
+export const GooSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "GooSettings" });
 
 export interface ZypperSettings {
   /** Adds the `--with-optional` flag to `zypper patch`. */
@@ -226,19 +192,14 @@ export interface ZypperSettings {
   exclusivePatches?: Array<string>;
 }
 
-export const ZypperSettings: Schema.Schema<ZypperSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      withOptional: Schema.optional(Schema.Boolean),
-      withUpdate: Schema.optional(Schema.Boolean),
-      categories: Schema.optional(Schema.Array(Schema.String)),
-      severities: Schema.optional(Schema.Array(Schema.String)),
-      excludes: Schema.optional(Schema.Array(Schema.String)),
-      exclusivePatches: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ZypperSettings",
-  }) as any as Schema.Schema<ZypperSettings>;
+export const ZypperSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  withOptional: Schema.optional(Schema.Boolean),
+  withUpdate: Schema.optional(Schema.Boolean),
+  categories: Schema.optional(Schema.Array(Schema.String)),
+  severities: Schema.optional(Schema.Array(Schema.String)),
+  excludes: Schema.optional(Schema.Array(Schema.String)),
+  exclusivePatches: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ZypperSettings" });
 
 export interface WindowsUpdateSettings {
   /** Only apply updates of these windows update classifications. If empty, all updates are applied. */
@@ -261,16 +222,11 @@ export interface WindowsUpdateSettings {
   exclusivePatches?: Array<string>;
 }
 
-export const WindowsUpdateSettings: Schema.Schema<WindowsUpdateSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      classifications: Schema.optional(Schema.Array(Schema.String)),
-      excludes: Schema.optional(Schema.Array(Schema.String)),
-      exclusivePatches: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "WindowsUpdateSettings",
-  }) as any as Schema.Schema<WindowsUpdateSettings>;
+export const WindowsUpdateSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  classifications: Schema.optional(Schema.Array(Schema.String)),
+  excludes: Schema.optional(Schema.Array(Schema.String)),
+  exclusivePatches: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "WindowsUpdateSettings" });
 
 export interface GcsObject {
   /** Required. Bucket of the Cloud Storage object. */
@@ -281,14 +237,11 @@ export interface GcsObject {
   generationNumber?: string;
 }
 
-export const GcsObject: Schema.Schema<GcsObject> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bucket: Schema.optional(Schema.String),
-      object: Schema.optional(Schema.String),
-      generationNumber: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "GcsObject" }) as any as Schema.Schema<GcsObject>;
+export const GcsObject = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bucket: Schema.optional(Schema.String),
+  object: Schema.optional(Schema.String),
+  generationNumber: Schema.optional(Schema.String),
+}).annotate({ identifier: "GcsObject" });
 
 export interface ExecStepConfig {
   /** An absolute path to the executable on the VM. */
@@ -306,17 +259,12 @@ export interface ExecStepConfig {
     | (string & {});
 }
 
-export const ExecStepConfig: Schema.Schema<ExecStepConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      localPath: Schema.optional(Schema.String),
-      gcsObject: Schema.optional(GcsObject),
-      allowedSuccessCodes: Schema.optional(Schema.Array(Schema.Number)),
-      interpreter: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ExecStepConfig",
-  }) as any as Schema.Schema<ExecStepConfig>;
+export const ExecStepConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  localPath: Schema.optional(Schema.String),
+  gcsObject: Schema.optional(GcsObject),
+  allowedSuccessCodes: Schema.optional(Schema.Array(Schema.Number)),
+  interpreter: Schema.optional(Schema.String),
+}).annotate({ identifier: "ExecStepConfig" });
 
 export interface ExecStep {
   /** The ExecStepConfig for all Linux VMs targeted by the PatchJob. */
@@ -325,13 +273,10 @@ export interface ExecStep {
   windowsExecStepConfig?: ExecStepConfig;
 }
 
-export const ExecStep: Schema.Schema<ExecStep> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      linuxExecStepConfig: Schema.optional(ExecStepConfig),
-      windowsExecStepConfig: Schema.optional(ExecStepConfig),
-    }),
-  ).annotate({ identifier: "ExecStep" }) as any as Schema.Schema<ExecStep>;
+export const ExecStep = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  linuxExecStepConfig: Schema.optional(ExecStepConfig),
+  windowsExecStepConfig: Schema.optional(ExecStepConfig),
+}).annotate({ identifier: "ExecStep" });
 
 export interface PatchConfig {
   /** Post-patch reboot settings. */
@@ -361,23 +306,18 @@ export interface PatchConfig {
   skipUnpatchableVms?: boolean;
 }
 
-export const PatchConfig: Schema.Schema<PatchConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rebootConfig: Schema.optional(Schema.String),
-      apt: Schema.optional(AptSettings),
-      yum: Schema.optional(YumSettings),
-      goo: Schema.optional(GooSettings),
-      zypper: Schema.optional(ZypperSettings),
-      windowsUpdate: Schema.optional(WindowsUpdateSettings),
-      preStep: Schema.optional(ExecStep),
-      postStep: Schema.optional(ExecStep),
-      migInstancesAllowed: Schema.optional(Schema.Boolean),
-      skipUnpatchableVms: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "PatchConfig",
-  }) as any as Schema.Schema<PatchConfig>;
+export const PatchConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  rebootConfig: Schema.optional(Schema.String),
+  apt: Schema.optional(AptSettings),
+  yum: Schema.optional(YumSettings),
+  goo: Schema.optional(GooSettings),
+  zypper: Schema.optional(ZypperSettings),
+  windowsUpdate: Schema.optional(WindowsUpdateSettings),
+  preStep: Schema.optional(ExecStep),
+  postStep: Schema.optional(ExecStep),
+  migInstancesAllowed: Schema.optional(Schema.Boolean),
+  skipUnpatchableVms: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "PatchConfig" });
 
 export interface FixedOrPercent {
   /** Specifies a fixed value. */
@@ -386,15 +326,10 @@ export interface FixedOrPercent {
   percent?: number;
 }
 
-export const FixedOrPercent: Schema.Schema<FixedOrPercent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fixed: Schema.optional(Schema.Number),
-      percent: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "FixedOrPercent",
-  }) as any as Schema.Schema<FixedOrPercent>;
+export const FixedOrPercent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fixed: Schema.optional(Schema.Number),
+  percent: Schema.optional(Schema.Number),
+}).annotate({ identifier: "FixedOrPercent" });
 
 export interface PatchRollout {
   /** Mode of the patch rollout. */
@@ -407,15 +342,10 @@ export interface PatchRollout {
   disruptionBudget?: FixedOrPercent;
 }
 
-export const PatchRollout: Schema.Schema<PatchRollout> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mode: Schema.optional(Schema.String),
-      disruptionBudget: Schema.optional(FixedOrPercent),
-    }),
-  ).annotate({
-    identifier: "PatchRollout",
-  }) as any as Schema.Schema<PatchRollout>;
+export const PatchRollout = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  mode: Schema.optional(Schema.String),
+  disruptionBudget: Schema.optional(FixedOrPercent),
+}).annotate({ identifier: "PatchRollout" });
 
 export interface ExecutePatchJobRequest {
   /** Description of the patch job. Length of the description is limited to 1024 characters. */
@@ -434,20 +364,17 @@ export interface ExecutePatchJobRequest {
   rollout?: PatchRollout;
 }
 
-export const ExecutePatchJobRequest: Schema.Schema<ExecutePatchJobRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      instanceFilter: Schema.optional(PatchInstanceFilter),
-      patchConfig: Schema.optional(PatchConfig),
-      duration: Schema.optional(Schema.String),
-      dryRun: Schema.optional(Schema.Boolean),
-      displayName: Schema.optional(Schema.String),
-      rollout: Schema.optional(PatchRollout),
-    }),
-  ).annotate({
-    identifier: "ExecutePatchJobRequest",
-  }) as any as Schema.Schema<ExecutePatchJobRequest>;
+export const ExecutePatchJobRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    description: Schema.optional(Schema.String),
+    instanceFilter: Schema.optional(PatchInstanceFilter),
+    patchConfig: Schema.optional(PatchConfig),
+    duration: Schema.optional(Schema.String),
+    dryRun: Schema.optional(Schema.Boolean),
+    displayName: Schema.optional(Schema.String),
+    rollout: Schema.optional(PatchRollout),
+  },
+).annotate({ identifier: "ExecutePatchJobRequest" });
 
 export interface PatchJobInstanceDetailsSummary {
   /** Number of instances pending patch job. */
@@ -484,29 +411,25 @@ export interface PatchJobInstanceDetailsSummary {
   skippedInstanceCount?: string;
 }
 
-export const PatchJobInstanceDetailsSummary: Schema.Schema<PatchJobInstanceDetailsSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pendingInstanceCount: Schema.optional(Schema.String),
-      inactiveInstanceCount: Schema.optional(Schema.String),
-      notifiedInstanceCount: Schema.optional(Schema.String),
-      startedInstanceCount: Schema.optional(Schema.String),
-      downloadingPatchesInstanceCount: Schema.optional(Schema.String),
-      applyingPatchesInstanceCount: Schema.optional(Schema.String),
-      rebootingInstanceCount: Schema.optional(Schema.String),
-      succeededInstanceCount: Schema.optional(Schema.String),
-      succeededRebootRequiredInstanceCount: Schema.optional(Schema.String),
-      failedInstanceCount: Schema.optional(Schema.String),
-      ackedInstanceCount: Schema.optional(Schema.String),
-      timedOutInstanceCount: Schema.optional(Schema.String),
-      prePatchStepInstanceCount: Schema.optional(Schema.String),
-      postPatchStepInstanceCount: Schema.optional(Schema.String),
-      noAgentDetectedInstanceCount: Schema.optional(Schema.String),
-      skippedInstanceCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PatchJobInstanceDetailsSummary",
-  }) as any as Schema.Schema<PatchJobInstanceDetailsSummary>;
+export const PatchJobInstanceDetailsSummary =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pendingInstanceCount: Schema.optional(Schema.String),
+    inactiveInstanceCount: Schema.optional(Schema.String),
+    notifiedInstanceCount: Schema.optional(Schema.String),
+    startedInstanceCount: Schema.optional(Schema.String),
+    downloadingPatchesInstanceCount: Schema.optional(Schema.String),
+    applyingPatchesInstanceCount: Schema.optional(Schema.String),
+    rebootingInstanceCount: Schema.optional(Schema.String),
+    succeededInstanceCount: Schema.optional(Schema.String),
+    succeededRebootRequiredInstanceCount: Schema.optional(Schema.String),
+    failedInstanceCount: Schema.optional(Schema.String),
+    ackedInstanceCount: Schema.optional(Schema.String),
+    timedOutInstanceCount: Schema.optional(Schema.String),
+    prePatchStepInstanceCount: Schema.optional(Schema.String),
+    postPatchStepInstanceCount: Schema.optional(Schema.String),
+    noAgentDetectedInstanceCount: Schema.optional(Schema.String),
+    skippedInstanceCount: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PatchJobInstanceDetailsSummary" });
 
 export interface PatchJob {
   /** Unique identifier for this patch job in the form `projects/* /patchJobs/*` */
@@ -551,33 +474,29 @@ export interface PatchJob {
   rollout?: PatchRollout;
 }
 
-export const PatchJob: Schema.Schema<PatchJob> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      instanceFilter: Schema.optional(PatchInstanceFilter),
-      patchConfig: Schema.optional(PatchConfig),
-      duration: Schema.optional(Schema.String),
-      instanceDetailsSummary: Schema.optional(PatchJobInstanceDetailsSummary),
-      dryRun: Schema.optional(Schema.Boolean),
-      errorMessage: Schema.optional(Schema.String),
-      percentComplete: Schema.optional(Schema.Number),
-      patchDeployment: Schema.optional(Schema.String),
-      rollout: Schema.optional(PatchRollout),
-    }),
-  ).annotate({ identifier: "PatchJob" }) as any as Schema.Schema<PatchJob>;
+export const PatchJob = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  instanceFilter: Schema.optional(PatchInstanceFilter),
+  patchConfig: Schema.optional(PatchConfig),
+  duration: Schema.optional(Schema.String),
+  instanceDetailsSummary: Schema.optional(PatchJobInstanceDetailsSummary),
+  dryRun: Schema.optional(Schema.Boolean),
+  errorMessage: Schema.optional(Schema.String),
+  percentComplete: Schema.optional(Schema.Number),
+  patchDeployment: Schema.optional(Schema.String),
+  rollout: Schema.optional(PatchRollout),
+}).annotate({ identifier: "PatchJob" });
 
 export interface CancelPatchJobRequest {}
 
-export const CancelPatchJobRequest: Schema.Schema<CancelPatchJobRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelPatchJobRequest",
-  }) as any as Schema.Schema<CancelPatchJobRequest>;
+export const CancelPatchJobRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelPatchJobRequest" });
 
 export interface ListPatchJobsResponse {
   /** The list of patch jobs. */
@@ -586,15 +505,10 @@ export interface ListPatchJobsResponse {
   nextPageToken?: string;
 }
 
-export const ListPatchJobsResponse: Schema.Schema<ListPatchJobsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      patchJobs: Schema.optional(Schema.Array(PatchJob)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListPatchJobsResponse",
-  }) as any as Schema.Schema<ListPatchJobsResponse>;
+export const ListPatchJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  patchJobs: Schema.optional(Schema.Array(PatchJob)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListPatchJobsResponse" });
 
 export interface PatchJobInstanceDetails {
   /** The instance name in the form `projects/* /zones/* /instances/*` */
@@ -627,18 +541,14 @@ export interface PatchJobInstanceDetails {
   attemptCount?: string;
 }
 
-export const PatchJobInstanceDetails: Schema.Schema<PatchJobInstanceDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      instanceSystemId: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      failureReason: Schema.optional(Schema.String),
-      attemptCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PatchJobInstanceDetails",
-  }) as any as Schema.Schema<PatchJobInstanceDetails>;
+export const PatchJobInstanceDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    instanceSystemId: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    failureReason: Schema.optional(Schema.String),
+    attemptCount: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PatchJobInstanceDetails" });
 
 export interface ListPatchJobInstanceDetailsResponse {
   /** A list of instance status. */
@@ -647,31 +557,22 @@ export interface ListPatchJobInstanceDetailsResponse {
   nextPageToken?: string;
 }
 
-export const ListPatchJobInstanceDetailsResponse: Schema.Schema<ListPatchJobInstanceDetailsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      patchJobInstanceDetails: Schema.optional(
-        Schema.Array(PatchJobInstanceDetails),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListPatchJobInstanceDetailsResponse",
-  }) as any as Schema.Schema<ListPatchJobInstanceDetailsResponse>;
+export const ListPatchJobInstanceDetailsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    patchJobInstanceDetails: Schema.optional(
+      Schema.Array(PatchJobInstanceDetails),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListPatchJobInstanceDetailsResponse" });
 
 export interface OneTimeSchedule {
   /** Required. The desired patch job execution time. */
   executeTime?: string;
 }
 
-export const OneTimeSchedule: Schema.Schema<OneTimeSchedule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      executeTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OneTimeSchedule",
-  }) as any as Schema.Schema<OneTimeSchedule>;
+export const OneTimeSchedule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  executeTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "OneTimeSchedule" });
 
 export interface TimeZone {
   /** IANA Time Zone Database time zone. For example "America/New_York". */
@@ -680,13 +581,10 @@ export interface TimeZone {
   version?: string;
 }
 
-export const TimeZone: Schema.Schema<TimeZone> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "TimeZone" }) as any as Schema.Schema<TimeZone>;
+export const TimeZone = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+}).annotate({ identifier: "TimeZone" });
 
 export interface TimeOfDay {
   /** Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time. */
@@ -699,15 +597,12 @@ export interface TimeOfDay {
   nanos?: number;
 }
 
-export const TimeOfDay: Schema.Schema<TimeOfDay> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hours: Schema.optional(Schema.Number),
-      minutes: Schema.optional(Schema.Number),
-      seconds: Schema.optional(Schema.Number),
-      nanos: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "TimeOfDay" }) as any as Schema.Schema<TimeOfDay>;
+export const TimeOfDay = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  hours: Schema.optional(Schema.Number),
+  minutes: Schema.optional(Schema.Number),
+  seconds: Schema.optional(Schema.Number),
+  nanos: Schema.optional(Schema.Number),
+}).annotate({ identifier: "TimeOfDay" });
 
 export interface WeeklySchedule {
   /** Required. Day of the week. */
@@ -723,14 +618,9 @@ export interface WeeklySchedule {
     | (string & {});
 }
 
-export const WeeklySchedule: Schema.Schema<WeeklySchedule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dayOfWeek: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WeeklySchedule",
-  }) as any as Schema.Schema<WeeklySchedule>;
+export const WeeklySchedule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dayOfWeek: Schema.optional(Schema.String),
+}).annotate({ identifier: "WeeklySchedule" });
 
 export interface WeekDayOfMonth {
   /** Required. Week number in a month. 1-4 indicates the 1st to 4th week of the month. -1 indicates the last week of the month. */
@@ -750,16 +640,11 @@ export interface WeekDayOfMonth {
   dayOffset?: number;
 }
 
-export const WeekDayOfMonth: Schema.Schema<WeekDayOfMonth> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      weekOrdinal: Schema.optional(Schema.Number),
-      dayOfWeek: Schema.optional(Schema.String),
-      dayOffset: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "WeekDayOfMonth",
-  }) as any as Schema.Schema<WeekDayOfMonth>;
+export const WeekDayOfMonth = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  weekOrdinal: Schema.optional(Schema.Number),
+  dayOfWeek: Schema.optional(Schema.String),
+  dayOffset: Schema.optional(Schema.Number),
+}).annotate({ identifier: "WeekDayOfMonth" });
 
 export interface MonthlySchedule {
   /** Required. Week day in a month. */
@@ -768,15 +653,10 @@ export interface MonthlySchedule {
   monthDay?: number;
 }
 
-export const MonthlySchedule: Schema.Schema<MonthlySchedule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      weekDayOfMonth: Schema.optional(WeekDayOfMonth),
-      monthDay: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "MonthlySchedule",
-  }) as any as Schema.Schema<MonthlySchedule>;
+export const MonthlySchedule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  weekDayOfMonth: Schema.optional(WeekDayOfMonth),
+  monthDay: Schema.optional(Schema.Number),
+}).annotate({ identifier: "MonthlySchedule" });
 
 export interface RecurringSchedule {
   /** Required. Defines the time zone that `time_of_day` is relative to. The rules for daylight saving time are determined by the chosen time zone. */
@@ -804,22 +684,17 @@ export interface RecurringSchedule {
   nextExecuteTime?: string;
 }
 
-export const RecurringSchedule: Schema.Schema<RecurringSchedule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      timeZone: Schema.optional(TimeZone),
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      timeOfDay: Schema.optional(TimeOfDay),
-      frequency: Schema.optional(Schema.String),
-      weekly: Schema.optional(WeeklySchedule),
-      monthly: Schema.optional(MonthlySchedule),
-      lastExecuteTime: Schema.optional(Schema.String),
-      nextExecuteTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RecurringSchedule",
-  }) as any as Schema.Schema<RecurringSchedule>;
+export const RecurringSchedule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  timeZone: Schema.optional(TimeZone),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  timeOfDay: Schema.optional(TimeOfDay),
+  frequency: Schema.optional(Schema.String),
+  weekly: Schema.optional(WeeklySchedule),
+  monthly: Schema.optional(MonthlySchedule),
+  lastExecuteTime: Schema.optional(Schema.String),
+  nextExecuteTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "RecurringSchedule" });
 
 export interface PatchDeployment {
   /** Unique name for the patch deployment resource in a project. The patch deployment name is in the form: `projects/{project_id}/patchDeployments/{patch_deployment_id}`. This field is ignored when you create a new patch deployment. */
@@ -848,25 +723,20 @@ export interface PatchDeployment {
   state?: "STATE_UNSPECIFIED" | "ACTIVE" | "PAUSED" | (string & {});
 }
 
-export const PatchDeployment: Schema.Schema<PatchDeployment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      instanceFilter: Schema.optional(PatchInstanceFilter),
-      patchConfig: Schema.optional(PatchConfig),
-      duration: Schema.optional(Schema.String),
-      oneTimeSchedule: Schema.optional(OneTimeSchedule),
-      recurringSchedule: Schema.optional(RecurringSchedule),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      lastExecuteTime: Schema.optional(Schema.String),
-      rollout: Schema.optional(PatchRollout),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PatchDeployment",
-  }) as any as Schema.Schema<PatchDeployment>;
+export const PatchDeployment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  instanceFilter: Schema.optional(PatchInstanceFilter),
+  patchConfig: Schema.optional(PatchConfig),
+  duration: Schema.optional(Schema.String),
+  oneTimeSchedule: Schema.optional(OneTimeSchedule),
+  recurringSchedule: Schema.optional(RecurringSchedule),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  lastExecuteTime: Schema.optional(Schema.String),
+  rollout: Schema.optional(PatchRollout),
+  state: Schema.optional(Schema.String),
+}).annotate({ identifier: "PatchDeployment" });
 
 export interface ListPatchDeploymentsResponse {
   /** The list of patch deployments. */
@@ -875,29 +745,25 @@ export interface ListPatchDeploymentsResponse {
   nextPageToken?: string;
 }
 
-export const ListPatchDeploymentsResponse: Schema.Schema<ListPatchDeploymentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      patchDeployments: Schema.optional(Schema.Array(PatchDeployment)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListPatchDeploymentsResponse",
-  }) as any as Schema.Schema<ListPatchDeploymentsResponse>;
+export const ListPatchDeploymentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    patchDeployments: Schema.optional(Schema.Array(PatchDeployment)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListPatchDeploymentsResponse" });
 
 export interface PausePatchDeploymentRequest {}
 
-export const PausePatchDeploymentRequest: Schema.Schema<PausePatchDeploymentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const PausePatchDeploymentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "PausePatchDeploymentRequest",
-  }) as any as Schema.Schema<PausePatchDeploymentRequest>;
+  });
 
 export interface ResumePatchDeploymentRequest {}
 
-export const ResumePatchDeploymentRequest: Schema.Schema<ResumePatchDeploymentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const ResumePatchDeploymentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ResumePatchDeploymentRequest",
-  }) as any as Schema.Schema<ResumePatchDeploymentRequest>;
+  });
 
 export interface OSPolicyInventoryFilter {
   /** Required. The OS short name */
@@ -906,29 +772,21 @@ export interface OSPolicyInventoryFilter {
   osVersion?: string;
 }
 
-export const OSPolicyInventoryFilter: Schema.Schema<OSPolicyInventoryFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      osShortName: Schema.optional(Schema.String),
-      osVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OSPolicyInventoryFilter",
-  }) as any as Schema.Schema<OSPolicyInventoryFilter>;
+export const OSPolicyInventoryFilter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    osShortName: Schema.optional(Schema.String),
+    osVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OSPolicyInventoryFilter" });
 
 export interface OSPolicyResourcePackageResourceAPT {
   /** Required. Package name. */
   name?: string;
 }
 
-export const OSPolicyResourcePackageResourceAPT: Schema.Schema<OSPolicyResourcePackageResourceAPT> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OSPolicyResourcePackageResourceAPT",
-  }) as any as Schema.Schema<OSPolicyResourcePackageResourceAPT>;
+export const OSPolicyResourcePackageResourceAPT =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OSPolicyResourcePackageResourceAPT" });
 
 export interface OSPolicyResourceFileRemote {
   /** Required. URI from which to fetch the object. It should contain both the protocol and path following the format `{protocol}://{location}`. */
@@ -937,15 +795,11 @@ export interface OSPolicyResourceFileRemote {
   sha256Checksum?: string;
 }
 
-export const OSPolicyResourceFileRemote: Schema.Schema<OSPolicyResourceFileRemote> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-      sha256Checksum: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OSPolicyResourceFileRemote",
-  }) as any as Schema.Schema<OSPolicyResourceFileRemote>;
+export const OSPolicyResourceFileRemote =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uri: Schema.optional(Schema.String),
+    sha256Checksum: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OSPolicyResourceFileRemote" });
 
 export interface OSPolicyResourceFileGcs {
   /** Required. Bucket of the Cloud Storage object. */
@@ -956,16 +810,12 @@ export interface OSPolicyResourceFileGcs {
   generation?: string;
 }
 
-export const OSPolicyResourceFileGcs: Schema.Schema<OSPolicyResourceFileGcs> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bucket: Schema.optional(Schema.String),
-      object: Schema.optional(Schema.String),
-      generation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OSPolicyResourceFileGcs",
-  }) as any as Schema.Schema<OSPolicyResourceFileGcs>;
+export const OSPolicyResourceFileGcs =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bucket: Schema.optional(Schema.String),
+    object: Schema.optional(Schema.String),
+    generation: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OSPolicyResourceFileGcs" });
 
 export interface OSPolicyResourceFile {
   /** A generic remote file. */
@@ -978,17 +828,12 @@ export interface OSPolicyResourceFile {
   allowInsecure?: boolean;
 }
 
-export const OSPolicyResourceFile: Schema.Schema<OSPolicyResourceFile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      remote: Schema.optional(OSPolicyResourceFileRemote),
-      gcs: Schema.optional(OSPolicyResourceFileGcs),
-      localPath: Schema.optional(Schema.String),
-      allowInsecure: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "OSPolicyResourceFile",
-  }) as any as Schema.Schema<OSPolicyResourceFile>;
+export const OSPolicyResourceFile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  remote: Schema.optional(OSPolicyResourceFileRemote),
+  gcs: Schema.optional(OSPolicyResourceFileGcs),
+  localPath: Schema.optional(Schema.String),
+  allowInsecure: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "OSPolicyResourceFile" });
 
 export interface OSPolicyResourcePackageResourceDeb {
   /** Required. A deb package. */
@@ -997,43 +842,31 @@ export interface OSPolicyResourcePackageResourceDeb {
   pullDeps?: boolean;
 }
 
-export const OSPolicyResourcePackageResourceDeb: Schema.Schema<OSPolicyResourcePackageResourceDeb> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      source: Schema.optional(OSPolicyResourceFile),
-      pullDeps: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "OSPolicyResourcePackageResourceDeb",
-  }) as any as Schema.Schema<OSPolicyResourcePackageResourceDeb>;
+export const OSPolicyResourcePackageResourceDeb =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    source: Schema.optional(OSPolicyResourceFile),
+    pullDeps: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "OSPolicyResourcePackageResourceDeb" });
 
 export interface OSPolicyResourcePackageResourceYUM {
   /** Required. Package name. */
   name?: string;
 }
 
-export const OSPolicyResourcePackageResourceYUM: Schema.Schema<OSPolicyResourcePackageResourceYUM> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OSPolicyResourcePackageResourceYUM",
-  }) as any as Schema.Schema<OSPolicyResourcePackageResourceYUM>;
+export const OSPolicyResourcePackageResourceYUM =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OSPolicyResourcePackageResourceYUM" });
 
 export interface OSPolicyResourcePackageResourceZypper {
   /** Required. Package name. */
   name?: string;
 }
 
-export const OSPolicyResourcePackageResourceZypper: Schema.Schema<OSPolicyResourcePackageResourceZypper> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OSPolicyResourcePackageResourceZypper",
-  }) as any as Schema.Schema<OSPolicyResourcePackageResourceZypper>;
+export const OSPolicyResourcePackageResourceZypper =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OSPolicyResourcePackageResourceZypper" });
 
 export interface OSPolicyResourcePackageResourceRPM {
   /** Required. An rpm package. */
@@ -1042,29 +875,21 @@ export interface OSPolicyResourcePackageResourceRPM {
   pullDeps?: boolean;
 }
 
-export const OSPolicyResourcePackageResourceRPM: Schema.Schema<OSPolicyResourcePackageResourceRPM> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      source: Schema.optional(OSPolicyResourceFile),
-      pullDeps: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "OSPolicyResourcePackageResourceRPM",
-  }) as any as Schema.Schema<OSPolicyResourcePackageResourceRPM>;
+export const OSPolicyResourcePackageResourceRPM =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    source: Schema.optional(OSPolicyResourceFile),
+    pullDeps: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "OSPolicyResourcePackageResourceRPM" });
 
 export interface OSPolicyResourcePackageResourceGooGet {
   /** Required. Package name. */
   name?: string;
 }
 
-export const OSPolicyResourcePackageResourceGooGet: Schema.Schema<OSPolicyResourcePackageResourceGooGet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OSPolicyResourcePackageResourceGooGet",
-  }) as any as Schema.Schema<OSPolicyResourcePackageResourceGooGet>;
+export const OSPolicyResourcePackageResourceGooGet =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OSPolicyResourcePackageResourceGooGet" });
 
 export interface OSPolicyResourcePackageResourceMSI {
   /** Required. The MSI package. */
@@ -1073,15 +898,11 @@ export interface OSPolicyResourcePackageResourceMSI {
   properties?: Array<string>;
 }
 
-export const OSPolicyResourcePackageResourceMSI: Schema.Schema<OSPolicyResourcePackageResourceMSI> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      source: Schema.optional(OSPolicyResourceFile),
-      properties: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "OSPolicyResourcePackageResourceMSI",
-  }) as any as Schema.Schema<OSPolicyResourcePackageResourceMSI>;
+export const OSPolicyResourcePackageResourceMSI =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    source: Schema.optional(OSPolicyResourceFile),
+    properties: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "OSPolicyResourcePackageResourceMSI" });
 
 export interface OSPolicyResourcePackageResource {
   /** Required. The desired state the agent should maintain for this package. */
@@ -1106,21 +927,17 @@ export interface OSPolicyResourcePackageResource {
   msi?: OSPolicyResourcePackageResourceMSI;
 }
 
-export const OSPolicyResourcePackageResource: Schema.Schema<OSPolicyResourcePackageResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      desiredState: Schema.optional(Schema.String),
-      apt: Schema.optional(OSPolicyResourcePackageResourceAPT),
-      deb: Schema.optional(OSPolicyResourcePackageResourceDeb),
-      yum: Schema.optional(OSPolicyResourcePackageResourceYUM),
-      zypper: Schema.optional(OSPolicyResourcePackageResourceZypper),
-      rpm: Schema.optional(OSPolicyResourcePackageResourceRPM),
-      googet: Schema.optional(OSPolicyResourcePackageResourceGooGet),
-      msi: Schema.optional(OSPolicyResourcePackageResourceMSI),
-    }),
-  ).annotate({
-    identifier: "OSPolicyResourcePackageResource",
-  }) as any as Schema.Schema<OSPolicyResourcePackageResource>;
+export const OSPolicyResourcePackageResource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    desiredState: Schema.optional(Schema.String),
+    apt: Schema.optional(OSPolicyResourcePackageResourceAPT),
+    deb: Schema.optional(OSPolicyResourcePackageResourceDeb),
+    yum: Schema.optional(OSPolicyResourcePackageResourceYUM),
+    zypper: Schema.optional(OSPolicyResourcePackageResourceZypper),
+    rpm: Schema.optional(OSPolicyResourcePackageResourceRPM),
+    googet: Schema.optional(OSPolicyResourcePackageResourceGooGet),
+    msi: Schema.optional(OSPolicyResourcePackageResourceMSI),
+  }).annotate({ identifier: "OSPolicyResourcePackageResource" });
 
 export interface OSPolicyResourceRepositoryResourceAptRepository {
   /** Required. Type of archive files in this repository. */
@@ -1135,18 +952,16 @@ export interface OSPolicyResourceRepositoryResourceAptRepository {
   gpgKey?: string;
 }
 
-export const OSPolicyResourceRepositoryResourceAptRepository: Schema.Schema<OSPolicyResourceRepositoryResourceAptRepository> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      archiveType: Schema.optional(Schema.String),
-      uri: Schema.optional(Schema.String),
-      distribution: Schema.optional(Schema.String),
-      components: Schema.optional(Schema.Array(Schema.String)),
-      gpgKey: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const OSPolicyResourceRepositoryResourceAptRepository =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    archiveType: Schema.optional(Schema.String),
+    uri: Schema.optional(Schema.String),
+    distribution: Schema.optional(Schema.String),
+    components: Schema.optional(Schema.Array(Schema.String)),
+    gpgKey: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "OSPolicyResourceRepositoryResourceAptRepository",
-  }) as any as Schema.Schema<OSPolicyResourceRepositoryResourceAptRepository>;
+  });
 
 export interface OSPolicyResourceRepositoryResourceYumRepository {
   /** Required. A one word, unique name for this repository. This is the `repo id` in the yum config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for resource conflicts. */
@@ -1159,17 +974,15 @@ export interface OSPolicyResourceRepositoryResourceYumRepository {
   gpgKeys?: Array<string>;
 }
 
-export const OSPolicyResourceRepositoryResourceYumRepository: Schema.Schema<OSPolicyResourceRepositoryResourceYumRepository> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      baseUrl: Schema.optional(Schema.String),
-      gpgKeys: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const OSPolicyResourceRepositoryResourceYumRepository =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    baseUrl: Schema.optional(Schema.String),
+    gpgKeys: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "OSPolicyResourceRepositoryResourceYumRepository",
-  }) as any as Schema.Schema<OSPolicyResourceRepositoryResourceYumRepository>;
+  });
 
 export interface OSPolicyResourceRepositoryResourceZypperRepository {
   /** Required. A one word, unique name for this repository. This is the `repo id` in the zypper config file and also the `display_name` if `display_name` is omitted. This id is also used as the unique identifier when checking for GuestPolicy conflicts. */
@@ -1182,17 +995,15 @@ export interface OSPolicyResourceRepositoryResourceZypperRepository {
   gpgKeys?: Array<string>;
 }
 
-export const OSPolicyResourceRepositoryResourceZypperRepository: Schema.Schema<OSPolicyResourceRepositoryResourceZypperRepository> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      baseUrl: Schema.optional(Schema.String),
-      gpgKeys: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const OSPolicyResourceRepositoryResourceZypperRepository =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    baseUrl: Schema.optional(Schema.String),
+    gpgKeys: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "OSPolicyResourceRepositoryResourceZypperRepository",
-  }) as any as Schema.Schema<OSPolicyResourceRepositoryResourceZypperRepository>;
+  });
 
 export interface OSPolicyResourceRepositoryResourceGooRepository {
   /** Required. The name of the repository. */
@@ -1201,15 +1012,13 @@ export interface OSPolicyResourceRepositoryResourceGooRepository {
   url?: string;
 }
 
-export const OSPolicyResourceRepositoryResourceGooRepository: Schema.Schema<OSPolicyResourceRepositoryResourceGooRepository> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      url: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const OSPolicyResourceRepositoryResourceGooRepository =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    url: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "OSPolicyResourceRepositoryResourceGooRepository",
-  }) as any as Schema.Schema<OSPolicyResourceRepositoryResourceGooRepository>;
+  });
 
 export interface OSPolicyResourceRepositoryResource {
   /** An Apt Repository. */
@@ -1222,19 +1031,13 @@ export interface OSPolicyResourceRepositoryResource {
   goo?: OSPolicyResourceRepositoryResourceGooRepository;
 }
 
-export const OSPolicyResourceRepositoryResource: Schema.Schema<OSPolicyResourceRepositoryResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      apt: Schema.optional(OSPolicyResourceRepositoryResourceAptRepository),
-      yum: Schema.optional(OSPolicyResourceRepositoryResourceYumRepository),
-      zypper: Schema.optional(
-        OSPolicyResourceRepositoryResourceZypperRepository,
-      ),
-      goo: Schema.optional(OSPolicyResourceRepositoryResourceGooRepository),
-    }),
-  ).annotate({
-    identifier: "OSPolicyResourceRepositoryResource",
-  }) as any as Schema.Schema<OSPolicyResourceRepositoryResource>;
+export const OSPolicyResourceRepositoryResource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apt: Schema.optional(OSPolicyResourceRepositoryResourceAptRepository),
+    yum: Schema.optional(OSPolicyResourceRepositoryResourceYumRepository),
+    zypper: Schema.optional(OSPolicyResourceRepositoryResourceZypperRepository),
+    goo: Schema.optional(OSPolicyResourceRepositoryResourceGooRepository),
+  }).annotate({ identifier: "OSPolicyResourceRepositoryResource" });
 
 export interface OSPolicyResourceExecResourceExec {
   /** A remote or local file. */
@@ -1254,18 +1057,14 @@ export interface OSPolicyResourceExecResourceExec {
   outputFilePath?: string;
 }
 
-export const OSPolicyResourceExecResourceExec: Schema.Schema<OSPolicyResourceExecResourceExec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      file: Schema.optional(OSPolicyResourceFile),
-      script: Schema.optional(Schema.String),
-      args: Schema.optional(Schema.Array(Schema.String)),
-      interpreter: Schema.optional(Schema.String),
-      outputFilePath: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OSPolicyResourceExecResourceExec",
-  }) as any as Schema.Schema<OSPolicyResourceExecResourceExec>;
+export const OSPolicyResourceExecResourceExec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    file: Schema.optional(OSPolicyResourceFile),
+    script: Schema.optional(Schema.String),
+    args: Schema.optional(Schema.Array(Schema.String)),
+    interpreter: Schema.optional(Schema.String),
+    outputFilePath: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OSPolicyResourceExecResourceExec" });
 
 export interface OSPolicyResourceExecResource {
   /** Required. What to run to validate this resource is in the desired state. An exit code of 100 indicates "in desired state", and exit code of 101 indicates "not in desired state". Any other exit code indicates a failure running validate. */
@@ -1274,15 +1073,11 @@ export interface OSPolicyResourceExecResource {
   enforce?: OSPolicyResourceExecResourceExec;
 }
 
-export const OSPolicyResourceExecResource: Schema.Schema<OSPolicyResourceExecResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      validate: Schema.optional(OSPolicyResourceExecResourceExec),
-      enforce: Schema.optional(OSPolicyResourceExecResourceExec),
-    }),
-  ).annotate({
-    identifier: "OSPolicyResourceExecResource",
-  }) as any as Schema.Schema<OSPolicyResourceExecResource>;
+export const OSPolicyResourceExecResource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    validate: Schema.optional(OSPolicyResourceExecResourceExec),
+    enforce: Schema.optional(OSPolicyResourceExecResourceExec),
+  }).annotate({ identifier: "OSPolicyResourceExecResource" });
 
 export interface OSPolicyResourceFileResource {
   /** A remote or local source. */
@@ -1302,18 +1097,14 @@ export interface OSPolicyResourceFileResource {
   permissions?: string;
 }
 
-export const OSPolicyResourceFileResource: Schema.Schema<OSPolicyResourceFileResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      file: Schema.optional(OSPolicyResourceFile),
-      content: Schema.optional(Schema.String),
-      path: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      permissions: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OSPolicyResourceFileResource",
-  }) as any as Schema.Schema<OSPolicyResourceFileResource>;
+export const OSPolicyResourceFileResource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    file: Schema.optional(OSPolicyResourceFile),
+    content: Schema.optional(Schema.String),
+    path: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    permissions: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OSPolicyResourceFileResource" });
 
 export interface OSPolicyResource {
   /** Required. The id of the resource with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the OS policy. */
@@ -1328,18 +1119,13 @@ export interface OSPolicyResource {
   file?: OSPolicyResourceFileResource;
 }
 
-export const OSPolicyResource: Schema.Schema<OSPolicyResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      pkg: Schema.optional(OSPolicyResourcePackageResource),
-      repository: Schema.optional(OSPolicyResourceRepositoryResource),
-      exec: Schema.optional(OSPolicyResourceExecResource),
-      file: Schema.optional(OSPolicyResourceFileResource),
-    }),
-  ).annotate({
-    identifier: "OSPolicyResource",
-  }) as any as Schema.Schema<OSPolicyResource>;
+export const OSPolicyResource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  pkg: Schema.optional(OSPolicyResourcePackageResource),
+  repository: Schema.optional(OSPolicyResourceRepositoryResource),
+  exec: Schema.optional(OSPolicyResourceExecResource),
+  file: Schema.optional(OSPolicyResourceFileResource),
+}).annotate({ identifier: "OSPolicyResource" });
 
 export interface OSPolicyResourceGroup {
   /** List of inventory filters for the resource group. The resources in this resource group are applied to the target VM if it satisfies at least one of the following inventory filters. For example, to apply this resource group to VMs running either `RHEL` or `CentOS` operating systems, specify 2 items for the list with following values: inventory_filters[0].os_short_name='rhel' and inventory_filters[1].os_short_name='centos' If the list is empty, this resource group will be applied to the target VM unconditionally. */
@@ -1348,15 +1134,10 @@ export interface OSPolicyResourceGroup {
   resources?: Array<OSPolicyResource>;
 }
 
-export const OSPolicyResourceGroup: Schema.Schema<OSPolicyResourceGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inventoryFilters: Schema.optional(Schema.Array(OSPolicyInventoryFilter)),
-      resources: Schema.optional(Schema.Array(OSPolicyResource)),
-    }),
-  ).annotate({
-    identifier: "OSPolicyResourceGroup",
-  }) as any as Schema.Schema<OSPolicyResourceGroup>;
+export const OSPolicyResourceGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  inventoryFilters: Schema.optional(Schema.Array(OSPolicyInventoryFilter)),
+  resources: Schema.optional(Schema.Array(OSPolicyResource)),
+}).annotate({ identifier: "OSPolicyResourceGroup" });
 
 export interface OSPolicy {
   /** Required. The id of the OS policy with the following restrictions: * Must contain only lowercase letters, numbers, and hyphens. * Must start with a letter. * Must be between 1-63 characters. * Must end with a number or a letter. * Must be unique within the assignment. */
@@ -1371,30 +1152,23 @@ export interface OSPolicy {
   allowNoResourceGroupMatch?: boolean;
 }
 
-export const OSPolicy: Schema.Schema<OSPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      mode: Schema.optional(Schema.String),
-      resourceGroups: Schema.optional(Schema.Array(OSPolicyResourceGroup)),
-      allowNoResourceGroupMatch: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "OSPolicy" }) as any as Schema.Schema<OSPolicy>;
+export const OSPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  mode: Schema.optional(Schema.String),
+  resourceGroups: Schema.optional(Schema.Array(OSPolicyResourceGroup)),
+  allowNoResourceGroupMatch: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "OSPolicy" });
 
 export interface OSPolicyAssignmentLabelSet {
   /** Labels are identified by key/value pairs in this map. A VM should contain all the key/value pairs specified in this map to be selected. */
   labels?: Record<string, string>;
 }
 
-export const OSPolicyAssignmentLabelSet: Schema.Schema<OSPolicyAssignmentLabelSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "OSPolicyAssignmentLabelSet",
-  }) as any as Schema.Schema<OSPolicyAssignmentLabelSet>;
+export const OSPolicyAssignmentLabelSet =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({ identifier: "OSPolicyAssignmentLabelSet" });
 
 export interface OSPolicyAssignmentInstanceFilterInventory {
   /** Required. The OS short name */
@@ -1403,15 +1177,11 @@ export interface OSPolicyAssignmentInstanceFilterInventory {
   osVersion?: string;
 }
 
-export const OSPolicyAssignmentInstanceFilterInventory: Schema.Schema<OSPolicyAssignmentInstanceFilterInventory> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      osShortName: Schema.optional(Schema.String),
-      osVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OSPolicyAssignmentInstanceFilterInventory",
-  }) as any as Schema.Schema<OSPolicyAssignmentInstanceFilterInventory>;
+export const OSPolicyAssignmentInstanceFilterInventory =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    osShortName: Schema.optional(Schema.String),
+    osVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OSPolicyAssignmentInstanceFilterInventory" });
 
 export interface OSPolicyAssignmentInstanceFilter {
   /** Target all VMs in the project. If true, no other criteria is permitted. */
@@ -1424,23 +1194,15 @@ export interface OSPolicyAssignmentInstanceFilter {
   inventories?: Array<OSPolicyAssignmentInstanceFilterInventory>;
 }
 
-export const OSPolicyAssignmentInstanceFilter: Schema.Schema<OSPolicyAssignmentInstanceFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      all: Schema.optional(Schema.Boolean),
-      inclusionLabels: Schema.optional(
-        Schema.Array(OSPolicyAssignmentLabelSet),
-      ),
-      exclusionLabels: Schema.optional(
-        Schema.Array(OSPolicyAssignmentLabelSet),
-      ),
-      inventories: Schema.optional(
-        Schema.Array(OSPolicyAssignmentInstanceFilterInventory),
-      ),
-    }),
-  ).annotate({
-    identifier: "OSPolicyAssignmentInstanceFilter",
-  }) as any as Schema.Schema<OSPolicyAssignmentInstanceFilter>;
+export const OSPolicyAssignmentInstanceFilter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    all: Schema.optional(Schema.Boolean),
+    inclusionLabels: Schema.optional(Schema.Array(OSPolicyAssignmentLabelSet)),
+    exclusionLabels: Schema.optional(Schema.Array(OSPolicyAssignmentLabelSet)),
+    inventories: Schema.optional(
+      Schema.Array(OSPolicyAssignmentInstanceFilterInventory),
+    ),
+  }).annotate({ identifier: "OSPolicyAssignmentInstanceFilter" });
 
 export interface OSPolicyAssignmentRollout {
   /** Required. The maximum number (or percentage) of VMs per zone to disrupt at any given moment. */
@@ -1449,15 +1211,11 @@ export interface OSPolicyAssignmentRollout {
   minWaitDuration?: string;
 }
 
-export const OSPolicyAssignmentRollout: Schema.Schema<OSPolicyAssignmentRollout> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      disruptionBudget: Schema.optional(FixedOrPercent),
-      minWaitDuration: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OSPolicyAssignmentRollout",
-  }) as any as Schema.Schema<OSPolicyAssignmentRollout>;
+export const OSPolicyAssignmentRollout =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    disruptionBudget: Schema.optional(FixedOrPercent),
+    minWaitDuration: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OSPolicyAssignmentRollout" });
 
 export interface OSPolicyAssignment {
   /** Resource name. Format: `projects/{project_number}/locations/{location}/osPolicyAssignments/{os_policy_assignment_id}` This field is ignored when you create an OS policy assignment. */
@@ -1494,26 +1252,21 @@ export interface OSPolicyAssignment {
   uid?: string;
 }
 
-export const OSPolicyAssignment: Schema.Schema<OSPolicyAssignment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      osPolicies: Schema.optional(Schema.Array(OSPolicy)),
-      instanceFilter: Schema.optional(OSPolicyAssignmentInstanceFilter),
-      rollout: Schema.optional(OSPolicyAssignmentRollout),
-      revisionId: Schema.optional(Schema.String),
-      revisionCreateTime: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      rolloutState: Schema.optional(Schema.String),
-      baseline: Schema.optional(Schema.Boolean),
-      deleted: Schema.optional(Schema.Boolean),
-      reconciling: Schema.optional(Schema.Boolean),
-      uid: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OSPolicyAssignment",
-  }) as any as Schema.Schema<OSPolicyAssignment>;
+export const OSPolicyAssignment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  osPolicies: Schema.optional(Schema.Array(OSPolicy)),
+  instanceFilter: Schema.optional(OSPolicyAssignmentInstanceFilter),
+  rollout: Schema.optional(OSPolicyAssignmentRollout),
+  revisionId: Schema.optional(Schema.String),
+  revisionCreateTime: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  rolloutState: Schema.optional(Schema.String),
+  baseline: Schema.optional(Schema.Boolean),
+  deleted: Schema.optional(Schema.Boolean),
+  reconciling: Schema.optional(Schema.Boolean),
+  uid: Schema.optional(Schema.String),
+}).annotate({ identifier: "OSPolicyAssignment" });
 
 export interface ListOSPolicyAssignmentsResponse {
   /** The list of assignments */
@@ -1522,15 +1275,11 @@ export interface ListOSPolicyAssignmentsResponse {
   nextPageToken?: string;
 }
 
-export const ListOSPolicyAssignmentsResponse: Schema.Schema<ListOSPolicyAssignmentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      osPolicyAssignments: Schema.optional(Schema.Array(OSPolicyAssignment)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListOSPolicyAssignmentsResponse",
-  }) as any as Schema.Schema<ListOSPolicyAssignmentsResponse>;
+export const ListOSPolicyAssignmentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    osPolicyAssignments: Schema.optional(Schema.Array(OSPolicyAssignment)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListOSPolicyAssignmentsResponse" });
 
 export interface ListOSPolicyAssignmentRevisionsResponse {
   /** The OS policy assignment revisions */
@@ -1539,15 +1288,11 @@ export interface ListOSPolicyAssignmentRevisionsResponse {
   nextPageToken?: string;
 }
 
-export const ListOSPolicyAssignmentRevisionsResponse: Schema.Schema<ListOSPolicyAssignmentRevisionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      osPolicyAssignments: Schema.optional(Schema.Array(OSPolicyAssignment)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListOSPolicyAssignmentRevisionsResponse",
-  }) as any as Schema.Schema<ListOSPolicyAssignmentRevisionsResponse>;
+export const ListOSPolicyAssignmentRevisionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    osPolicyAssignments: Schema.optional(Schema.Array(OSPolicyAssignment)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListOSPolicyAssignmentRevisionsResponse" });
 
 export interface OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep {
   /** Configuration step type. */
@@ -1562,31 +1307,27 @@ export interface OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompl
   errorMessage?: string;
 }
 
-export const OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep: Schema.Schema<OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      errorMessage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    errorMessage: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep",
-  }) as any as Schema.Schema<OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep>;
+  });
 
 export interface OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceExecResourceOutput {
   /** Output from enforcement phase output file (if run). Output size is limited to 100K bytes. */
   enforcementOutput?: string;
 }
 
-export const OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceExecResourceOutput: Schema.Schema<OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceExecResourceOutput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enforcementOutput: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceExecResourceOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enforcementOutput: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceExecResourceOutput",
-  }) as any as Schema.Schema<OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceExecResourceOutput>;
+  });
 
 export interface OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance {
   /** The ID of the OS policy resource. */
@@ -1601,25 +1342,23 @@ export interface OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompl
   execResourceOutput?: OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceExecResourceOutput;
 }
 
-export const OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance: Schema.Schema<OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      osPolicyResourceId: Schema.optional(Schema.String),
-      configSteps: Schema.optional(
-        Schema.Array(
-          OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep,
-        ),
+export const OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    osPolicyResourceId: Schema.optional(Schema.String),
+    configSteps: Schema.optional(
+      Schema.Array(
+        OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceOSPolicyResourceConfigStep,
       ),
-      complianceState: Schema.optional(Schema.String),
-      complianceStateReason: Schema.optional(Schema.String),
-      execResourceOutput: Schema.optional(
-        OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceExecResourceOutput,
-      ),
-    }),
-  ).annotate({
+    ),
+    complianceState: Schema.optional(Schema.String),
+    complianceStateReason: Schema.optional(Schema.String),
+    execResourceOutput: Schema.optional(
+      OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceComplianceExecResourceOutput,
+    ),
+  }).annotate({
     identifier:
       "OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance",
-  }) as any as Schema.Schema<OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance>;
+  });
 
 export interface OSPolicyAssignmentReportOSPolicyCompliance {
   /** The OS policy id */
@@ -1632,21 +1371,17 @@ export interface OSPolicyAssignmentReportOSPolicyCompliance {
   osPolicyResourceCompliances?: Array<OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance>;
 }
 
-export const OSPolicyAssignmentReportOSPolicyCompliance: Schema.Schema<OSPolicyAssignmentReportOSPolicyCompliance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      osPolicyId: Schema.optional(Schema.String),
-      complianceState: Schema.optional(Schema.String),
-      complianceStateReason: Schema.optional(Schema.String),
-      osPolicyResourceCompliances: Schema.optional(
-        Schema.Array(
-          OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance,
-        ),
+export const OSPolicyAssignmentReportOSPolicyCompliance =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    osPolicyId: Schema.optional(Schema.String),
+    complianceState: Schema.optional(Schema.String),
+    complianceStateReason: Schema.optional(Schema.String),
+    osPolicyResourceCompliances: Schema.optional(
+      Schema.Array(
+        OSPolicyAssignmentReportOSPolicyComplianceOSPolicyResourceCompliance,
       ),
-    }),
-  ).annotate({
-    identifier: "OSPolicyAssignmentReportOSPolicyCompliance",
-  }) as any as Schema.Schema<OSPolicyAssignmentReportOSPolicyCompliance>;
+    ),
+  }).annotate({ identifier: "OSPolicyAssignmentReportOSPolicyCompliance" });
 
 export interface OSPolicyAssignmentReport {
   /** The `OSPolicyAssignmentReport` API resource name. Format: `projects/{project_number}/locations/{location}/instances/{instance_id}/osPolicyAssignments/{os_policy_assignment_id}/report` */
@@ -1663,21 +1398,17 @@ export interface OSPolicyAssignmentReport {
   lastRunId?: string;
 }
 
-export const OSPolicyAssignmentReport: Schema.Schema<OSPolicyAssignmentReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      instance: Schema.optional(Schema.String),
-      osPolicyAssignment: Schema.optional(Schema.String),
-      osPolicyCompliances: Schema.optional(
-        Schema.Array(OSPolicyAssignmentReportOSPolicyCompliance),
-      ),
-      updateTime: Schema.optional(Schema.String),
-      lastRunId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OSPolicyAssignmentReport",
-  }) as any as Schema.Schema<OSPolicyAssignmentReport>;
+export const OSPolicyAssignmentReport =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    instance: Schema.optional(Schema.String),
+    osPolicyAssignment: Schema.optional(Schema.String),
+    osPolicyCompliances: Schema.optional(
+      Schema.Array(OSPolicyAssignmentReportOSPolicyCompliance),
+    ),
+    updateTime: Schema.optional(Schema.String),
+    lastRunId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OSPolicyAssignmentReport" });
 
 export interface ListOSPolicyAssignmentReportsResponse {
   /** List of OS policy assignment reports. */
@@ -1686,17 +1417,13 @@ export interface ListOSPolicyAssignmentReportsResponse {
   nextPageToken?: string;
 }
 
-export const ListOSPolicyAssignmentReportsResponse: Schema.Schema<ListOSPolicyAssignmentReportsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      osPolicyAssignmentReports: Schema.optional(
-        Schema.Array(OSPolicyAssignmentReport),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListOSPolicyAssignmentReportsResponse",
-  }) as any as Schema.Schema<ListOSPolicyAssignmentReportsResponse>;
+export const ListOSPolicyAssignmentReportsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    osPolicyAssignmentReports: Schema.optional(
+      Schema.Array(OSPolicyAssignmentReport),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListOSPolicyAssignmentReportsResponse" });
 
 export interface InventoryOsInfo {
   /** The VM hostname. */
@@ -1717,21 +1444,16 @@ export interface InventoryOsInfo {
   osconfigAgentVersion?: string;
 }
 
-export const InventoryOsInfo: Schema.Schema<InventoryOsInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hostname: Schema.optional(Schema.String),
-      longName: Schema.optional(Schema.String),
-      shortName: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-      architecture: Schema.optional(Schema.String),
-      kernelVersion: Schema.optional(Schema.String),
-      kernelRelease: Schema.optional(Schema.String),
-      osconfigAgentVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InventoryOsInfo",
-  }) as any as Schema.Schema<InventoryOsInfo>;
+export const InventoryOsInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  hostname: Schema.optional(Schema.String),
+  longName: Schema.optional(Schema.String),
+  shortName: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+  architecture: Schema.optional(Schema.String),
+  kernelVersion: Schema.optional(Schema.String),
+  kernelRelease: Schema.optional(Schema.String),
+  osconfigAgentVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "InventoryOsInfo" });
 
 export interface InventoryVersionedPackage {
   /** The name of the package. */
@@ -1742,16 +1464,12 @@ export interface InventoryVersionedPackage {
   version?: string;
 }
 
-export const InventoryVersionedPackage: Schema.Schema<InventoryVersionedPackage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      packageName: Schema.optional(Schema.String),
-      architecture: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InventoryVersionedPackage",
-  }) as any as Schema.Schema<InventoryVersionedPackage>;
+export const InventoryVersionedPackage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageName: Schema.optional(Schema.String),
+    architecture: Schema.optional(Schema.String),
+    version: Schema.optional(Schema.String),
+  }).annotate({ identifier: "InventoryVersionedPackage" });
 
 export interface InventoryZypperPatch {
   /** The name of the patch. */
@@ -1764,17 +1482,12 @@ export interface InventoryZypperPatch {
   summary?: string;
 }
 
-export const InventoryZypperPatch: Schema.Schema<InventoryZypperPatch> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      patchName: Schema.optional(Schema.String),
-      category: Schema.optional(Schema.String),
-      severity: Schema.optional(Schema.String),
-      summary: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InventoryZypperPatch",
-  }) as any as Schema.Schema<InventoryZypperPatch>;
+export const InventoryZypperPatch = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  patchName: Schema.optional(Schema.String),
+  category: Schema.optional(Schema.String),
+  severity: Schema.optional(Schema.String),
+  summary: Schema.optional(Schema.String),
+}).annotate({ identifier: "InventoryZypperPatch" });
 
 export interface InventoryWindowsUpdatePackageWindowsUpdateCategory {
   /** The identifier of the windows update category. */
@@ -1783,15 +1496,13 @@ export interface InventoryWindowsUpdatePackageWindowsUpdateCategory {
   name?: string;
 }
 
-export const InventoryWindowsUpdatePackageWindowsUpdateCategory: Schema.Schema<InventoryWindowsUpdatePackageWindowsUpdateCategory> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const InventoryWindowsUpdatePackageWindowsUpdateCategory =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "InventoryWindowsUpdatePackageWindowsUpdateCategory",
-  }) as any as Schema.Schema<InventoryWindowsUpdatePackageWindowsUpdateCategory>;
+  });
 
 export interface InventoryWindowsUpdatePackage {
   /** The localized title of the update package. */
@@ -1814,24 +1525,20 @@ export interface InventoryWindowsUpdatePackage {
   lastDeploymentChangeTime?: string;
 }
 
-export const InventoryWindowsUpdatePackage: Schema.Schema<InventoryWindowsUpdatePackage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      categories: Schema.optional(
-        Schema.Array(InventoryWindowsUpdatePackageWindowsUpdateCategory),
-      ),
-      kbArticleIds: Schema.optional(Schema.Array(Schema.String)),
-      supportUrl: Schema.optional(Schema.String),
-      moreInfoUrls: Schema.optional(Schema.Array(Schema.String)),
-      updateId: Schema.optional(Schema.String),
-      revisionNumber: Schema.optional(Schema.Number),
-      lastDeploymentChangeTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InventoryWindowsUpdatePackage",
-  }) as any as Schema.Schema<InventoryWindowsUpdatePackage>;
+export const InventoryWindowsUpdatePackage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    title: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    categories: Schema.optional(
+      Schema.Array(InventoryWindowsUpdatePackageWindowsUpdateCategory),
+    ),
+    kbArticleIds: Schema.optional(Schema.Array(Schema.String)),
+    supportUrl: Schema.optional(Schema.String),
+    moreInfoUrls: Schema.optional(Schema.Array(Schema.String)),
+    updateId: Schema.optional(Schema.String),
+    revisionNumber: Schema.optional(Schema.Number),
+    lastDeploymentChangeTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "InventoryWindowsUpdatePackage" });
 
 export interface InventoryWindowsQuickFixEngineeringPackage {
   /** A short textual description of the QFE update. */
@@ -1844,17 +1551,13 @@ export interface InventoryWindowsQuickFixEngineeringPackage {
   installTime?: string;
 }
 
-export const InventoryWindowsQuickFixEngineeringPackage: Schema.Schema<InventoryWindowsQuickFixEngineeringPackage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      caption: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      hotFixId: Schema.optional(Schema.String),
-      installTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InventoryWindowsQuickFixEngineeringPackage",
-  }) as any as Schema.Schema<InventoryWindowsQuickFixEngineeringPackage>;
+export const InventoryWindowsQuickFixEngineeringPackage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    caption: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    hotFixId: Schema.optional(Schema.String),
+    installTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "InventoryWindowsQuickFixEngineeringPackage" });
 
 export interface Osconfig_Date {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
@@ -1865,16 +1568,11 @@ export interface Osconfig_Date {
   day?: number;
 }
 
-export const Osconfig_Date: Schema.Schema<Osconfig_Date> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      year: Schema.optional(Schema.Number),
-      month: Schema.optional(Schema.Number),
-      day: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "Osconfig_Date",
-  }) as any as Schema.Schema<Osconfig_Date>;
+export const Osconfig_Date = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  year: Schema.optional(Schema.Number),
+  month: Schema.optional(Schema.Number),
+  day: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Osconfig_Date" });
 
 export interface InventoryWindowsApplication {
   /** The name of the application or product. */
@@ -1889,18 +1587,14 @@ export interface InventoryWindowsApplication {
   helpLink?: string;
 }
 
-export const InventoryWindowsApplication: Schema.Schema<InventoryWindowsApplication> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      displayVersion: Schema.optional(Schema.String),
-      publisher: Schema.optional(Schema.String),
-      installDate: Schema.optional(Osconfig_Date),
-      helpLink: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InventoryWindowsApplication",
-  }) as any as Schema.Schema<InventoryWindowsApplication>;
+export const InventoryWindowsApplication =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    displayVersion: Schema.optional(Schema.String),
+    publisher: Schema.optional(Schema.String),
+    installDate: Schema.optional(Osconfig_Date),
+    helpLink: Schema.optional(Schema.String),
+  }).annotate({ identifier: "InventoryWindowsApplication" });
 
 export interface InventorySoftwarePackage {
   /** Yum package info. For details about the yum package manager, see https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/ch-yum. */
@@ -1923,22 +1617,18 @@ export interface InventorySoftwarePackage {
   windowsApplication?: InventoryWindowsApplication;
 }
 
-export const InventorySoftwarePackage: Schema.Schema<InventorySoftwarePackage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      yumPackage: Schema.optional(InventoryVersionedPackage),
-      aptPackage: Schema.optional(InventoryVersionedPackage),
-      zypperPackage: Schema.optional(InventoryVersionedPackage),
-      googetPackage: Schema.optional(InventoryVersionedPackage),
-      zypperPatch: Schema.optional(InventoryZypperPatch),
-      wuaPackage: Schema.optional(InventoryWindowsUpdatePackage),
-      qfePackage: Schema.optional(InventoryWindowsQuickFixEngineeringPackage),
-      cosPackage: Schema.optional(InventoryVersionedPackage),
-      windowsApplication: Schema.optional(InventoryWindowsApplication),
-    }),
-  ).annotate({
-    identifier: "InventorySoftwarePackage",
-  }) as any as Schema.Schema<InventorySoftwarePackage>;
+export const InventorySoftwarePackage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    yumPackage: Schema.optional(InventoryVersionedPackage),
+    aptPackage: Schema.optional(InventoryVersionedPackage),
+    zypperPackage: Schema.optional(InventoryVersionedPackage),
+    googetPackage: Schema.optional(InventoryVersionedPackage),
+    zypperPatch: Schema.optional(InventoryZypperPatch),
+    wuaPackage: Schema.optional(InventoryWindowsUpdatePackage),
+    qfePackage: Schema.optional(InventoryWindowsQuickFixEngineeringPackage),
+    cosPackage: Schema.optional(InventoryVersionedPackage),
+    windowsApplication: Schema.optional(InventoryWindowsApplication),
+  }).annotate({ identifier: "InventorySoftwarePackage" });
 
 export interface InventoryItem {
   /** Identifier for this item, unique across items for this VM. */
@@ -1961,20 +1651,15 @@ export interface InventoryItem {
   availablePackage?: InventorySoftwarePackage;
 }
 
-export const InventoryItem: Schema.Schema<InventoryItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      originType: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      installedPackage: Schema.optional(InventorySoftwarePackage),
-      availablePackage: Schema.optional(InventorySoftwarePackage),
-    }),
-  ).annotate({
-    identifier: "InventoryItem",
-  }) as any as Schema.Schema<InventoryItem>;
+export const InventoryItem = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  originType: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  installedPackage: Schema.optional(InventorySoftwarePackage),
+  availablePackage: Schema.optional(InventorySoftwarePackage),
+}).annotate({ identifier: "InventoryItem" });
 
 export interface Inventory {
   /** Output only. The `Inventory` API resource name. Format: `projects/{project_number}/locations/{location}/instances/{instance_id}/inventory` */
@@ -1987,15 +1672,12 @@ export interface Inventory {
   updateTime?: string;
 }
 
-export const Inventory: Schema.Schema<Inventory> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      osInfo: Schema.optional(InventoryOsInfo),
-      items: Schema.optional(Schema.Record(Schema.String, InventoryItem)),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Inventory" }) as any as Schema.Schema<Inventory>;
+export const Inventory = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  osInfo: Schema.optional(InventoryOsInfo),
+  items: Schema.optional(Schema.Record(Schema.String, InventoryItem)),
+  updateTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Inventory" });
 
 export interface ListInventoriesResponse {
   /** List of inventory objects. */
@@ -2004,15 +1686,11 @@ export interface ListInventoriesResponse {
   nextPageToken?: string;
 }
 
-export const ListInventoriesResponse: Schema.Schema<ListInventoriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inventories: Schema.optional(Schema.Array(Inventory)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListInventoriesResponse",
-  }) as any as Schema.Schema<ListInventoriesResponse>;
+export const ListInventoriesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    inventories: Schema.optional(Schema.Array(Inventory)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListInventoriesResponse" });
 
 export interface CVSSv3 {
   /** The base score is a function of the base metric scores. https://www.first.org/cvss/specification-document#Base-Metrics */
@@ -2077,22 +1755,19 @@ export interface CVSSv3 {
     | (string & {});
 }
 
-export const CVSSv3: Schema.Schema<CVSSv3> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      baseScore: Schema.optional(Schema.Number),
-      exploitabilityScore: Schema.optional(Schema.Number),
-      impactScore: Schema.optional(Schema.Number),
-      attackVector: Schema.optional(Schema.String),
-      attackComplexity: Schema.optional(Schema.String),
-      privilegesRequired: Schema.optional(Schema.String),
-      userInteraction: Schema.optional(Schema.String),
-      scope: Schema.optional(Schema.String),
-      confidentialityImpact: Schema.optional(Schema.String),
-      integrityImpact: Schema.optional(Schema.String),
-      availabilityImpact: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "CVSSv3" }) as any as Schema.Schema<CVSSv3>;
+export const CVSSv3 = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  baseScore: Schema.optional(Schema.Number),
+  exploitabilityScore: Schema.optional(Schema.Number),
+  impactScore: Schema.optional(Schema.Number),
+  attackVector: Schema.optional(Schema.String),
+  attackComplexity: Schema.optional(Schema.String),
+  privilegesRequired: Schema.optional(Schema.String),
+  userInteraction: Schema.optional(Schema.String),
+  scope: Schema.optional(Schema.String),
+  confidentialityImpact: Schema.optional(Schema.String),
+  integrityImpact: Schema.optional(Schema.String),
+  availabilityImpact: Schema.optional(Schema.String),
+}).annotate({ identifier: "CVSSv3" });
 
 export interface VulnerabilityReportVulnerabilityDetailsReference {
   /** The url of the reference. */
@@ -2101,15 +1776,13 @@ export interface VulnerabilityReportVulnerabilityDetailsReference {
   source?: string;
 }
 
-export const VulnerabilityReportVulnerabilityDetailsReference: Schema.Schema<VulnerabilityReportVulnerabilityDetailsReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      url: Schema.optional(Schema.String),
-      source: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const VulnerabilityReportVulnerabilityDetailsReference =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    url: Schema.optional(Schema.String),
+    source: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "VulnerabilityReportVulnerabilityDetailsReference",
-  }) as any as Schema.Schema<VulnerabilityReportVulnerabilityDetailsReference>;
+  });
 
 export interface VulnerabilityReportVulnerabilityDetails {
   /** The CVE of the vulnerability. CVE cannot be empty and the combination of should be unique across vulnerabilities for a VM. */
@@ -2126,21 +1799,17 @@ export interface VulnerabilityReportVulnerabilityDetails {
   references?: Array<VulnerabilityReportVulnerabilityDetailsReference>;
 }
 
-export const VulnerabilityReportVulnerabilityDetails: Schema.Schema<VulnerabilityReportVulnerabilityDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cve: Schema.optional(Schema.String),
-      cvssV2Score: Schema.optional(Schema.Number),
-      cvssV3: Schema.optional(CVSSv3),
-      severity: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      references: Schema.optional(
-        Schema.Array(VulnerabilityReportVulnerabilityDetailsReference),
-      ),
-    }),
-  ).annotate({
-    identifier: "VulnerabilityReportVulnerabilityDetails",
-  }) as any as Schema.Schema<VulnerabilityReportVulnerabilityDetails>;
+export const VulnerabilityReportVulnerabilityDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cve: Schema.optional(Schema.String),
+    cvssV2Score: Schema.optional(Schema.Number),
+    cvssV3: Schema.optional(CVSSv3),
+    severity: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    references: Schema.optional(
+      Schema.Array(VulnerabilityReportVulnerabilityDetailsReference),
+    ),
+  }).annotate({ identifier: "VulnerabilityReportVulnerabilityDetails" });
 
 export interface VulnerabilityReportVulnerabilityItem {
   /** Corresponds to the `INSTALLED_PACKAGE` inventory item on the VM. This field displays the inventory items affected by this vulnerability. If the vulnerability report was not updated after the VM inventory update, these values might not display in VM inventory. For some operating systems, this field might be empty. */
@@ -2153,17 +1822,13 @@ export interface VulnerabilityReportVulnerabilityItem {
   upstreamFix?: string;
 }
 
-export const VulnerabilityReportVulnerabilityItem: Schema.Schema<VulnerabilityReportVulnerabilityItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      installedInventoryItemId: Schema.optional(Schema.String),
-      availableInventoryItemId: Schema.optional(Schema.String),
-      fixedCpeUri: Schema.optional(Schema.String),
-      upstreamFix: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VulnerabilityReportVulnerabilityItem",
-  }) as any as Schema.Schema<VulnerabilityReportVulnerabilityItem>;
+export const VulnerabilityReportVulnerabilityItem =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    installedInventoryItemId: Schema.optional(Schema.String),
+    availableInventoryItemId: Schema.optional(Schema.String),
+    fixedCpeUri: Schema.optional(Schema.String),
+    upstreamFix: Schema.optional(Schema.String),
+  }).annotate({ identifier: "VulnerabilityReportVulnerabilityItem" });
 
 export interface VulnerabilityReportVulnerability {
   /** Contains metadata as per the upstream feed of the operating system and NVD. */
@@ -2180,21 +1845,15 @@ export interface VulnerabilityReportVulnerability {
   items?: Array<VulnerabilityReportVulnerabilityItem>;
 }
 
-export const VulnerabilityReportVulnerability: Schema.Schema<VulnerabilityReportVulnerability> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      details: Schema.optional(VulnerabilityReportVulnerabilityDetails),
-      installedInventoryItemIds: Schema.optional(Schema.Array(Schema.String)),
-      availableInventoryItemIds: Schema.optional(Schema.Array(Schema.String)),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      items: Schema.optional(
-        Schema.Array(VulnerabilityReportVulnerabilityItem),
-      ),
-    }),
-  ).annotate({
-    identifier: "VulnerabilityReportVulnerability",
-  }) as any as Schema.Schema<VulnerabilityReportVulnerability>;
+export const VulnerabilityReportVulnerability =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    details: Schema.optional(VulnerabilityReportVulnerabilityDetails),
+    installedInventoryItemIds: Schema.optional(Schema.Array(Schema.String)),
+    availableInventoryItemIds: Schema.optional(Schema.Array(Schema.String)),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    items: Schema.optional(Schema.Array(VulnerabilityReportVulnerabilityItem)),
+  }).annotate({ identifier: "VulnerabilityReportVulnerability" });
 
 export interface VulnerabilityReport {
   /** Output only. The `vulnerabilityReport` API resource name. Format: `projects/{project_number}/locations/{location}/instances/{instance_id}/vulnerabilityReport` */
@@ -2215,19 +1874,14 @@ export interface VulnerabilityReport {
     | (string & {});
 }
 
-export const VulnerabilityReport: Schema.Schema<VulnerabilityReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      vulnerabilities: Schema.optional(
-        Schema.Array(VulnerabilityReportVulnerability),
-      ),
-      updateTime: Schema.optional(Schema.String),
-      highestUpgradableCveSeverity: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VulnerabilityReport",
-  }) as any as Schema.Schema<VulnerabilityReport>;
+export const VulnerabilityReport = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  vulnerabilities: Schema.optional(
+    Schema.Array(VulnerabilityReportVulnerability),
+  ),
+  updateTime: Schema.optional(Schema.String),
+  highestUpgradableCveSeverity: Schema.optional(Schema.String),
+}).annotate({ identifier: "VulnerabilityReport" });
 
 export interface ListVulnerabilityReportsResponse {
   /** List of vulnerabilityReport objects. */
@@ -2236,15 +1890,11 @@ export interface ListVulnerabilityReportsResponse {
   nextPageToken?: string;
 }
 
-export const ListVulnerabilityReportsResponse: Schema.Schema<ListVulnerabilityReportsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      vulnerabilityReports: Schema.optional(Schema.Array(VulnerabilityReport)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListVulnerabilityReportsResponse",
-  }) as any as Schema.Schema<ListVulnerabilityReportsResponse>;
+export const ListVulnerabilityReportsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    vulnerabilityReports: Schema.optional(Schema.Array(VulnerabilityReport)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListVulnerabilityReportsResponse" });
 
 export interface OSPolicyAssignmentOperationMetadata {
   /** Reference to the `OSPolicyAssignment` API resource. Format: `projects/{project_number}/locations/{location}/osPolicyAssignments/{os_policy_assignment_id@revision_id}` */
@@ -2270,18 +1920,14 @@ export interface OSPolicyAssignmentOperationMetadata {
   rolloutUpdateTime?: string;
 }
 
-export const OSPolicyAssignmentOperationMetadata: Schema.Schema<OSPolicyAssignmentOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      osPolicyAssignment: Schema.optional(Schema.String),
-      apiMethod: Schema.optional(Schema.String),
-      rolloutState: Schema.optional(Schema.String),
-      rolloutStartTime: Schema.optional(Schema.String),
-      rolloutUpdateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OSPolicyAssignmentOperationMetadata",
-  }) as any as Schema.Schema<OSPolicyAssignmentOperationMetadata>;
+export const OSPolicyAssignmentOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    osPolicyAssignment: Schema.optional(Schema.String),
+    apiMethod: Schema.optional(Schema.String),
+    rolloutState: Schema.optional(Schema.String),
+    rolloutStartTime: Schema.optional(Schema.String),
+    rolloutUpdateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OSPolicyAssignmentOperationMetadata" });
 
 export interface GoogleCloudOsconfigV1__OSPolicyAssignmentOperationMetadata {
   /** Reference to the `OSPolicyAssignment` API resource. Format: `projects/{project_number}/locations/{location}/osPolicyAssignments/{os_policy_assignment_id@revision_id}` */
@@ -2307,18 +1953,16 @@ export interface GoogleCloudOsconfigV1__OSPolicyAssignmentOperationMetadata {
   rolloutUpdateTime?: string;
 }
 
-export const GoogleCloudOsconfigV1__OSPolicyAssignmentOperationMetadata: Schema.Schema<GoogleCloudOsconfigV1__OSPolicyAssignmentOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      osPolicyAssignment: Schema.optional(Schema.String),
-      apiMethod: Schema.optional(Schema.String),
-      rolloutState: Schema.optional(Schema.String),
-      rolloutStartTime: Schema.optional(Schema.String),
-      rolloutUpdateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudOsconfigV1__OSPolicyAssignmentOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    osPolicyAssignment: Schema.optional(Schema.String),
+    apiMethod: Schema.optional(Schema.String),
+    rolloutState: Schema.optional(Schema.String),
+    rolloutStartTime: Schema.optional(Schema.String),
+    rolloutUpdateTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudOsconfigV1__OSPolicyAssignmentOperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudOsconfigV1__OSPolicyAssignmentOperationMetadata>;
+  });
 
 export interface GoogleCloudOsconfigV2__OperationMetadata {
   /** Output only. The time the operation was created. */
@@ -2337,20 +1981,16 @@ export interface GoogleCloudOsconfigV2__OperationMetadata {
   apiVersion?: string;
 }
 
-export const GoogleCloudOsconfigV2__OperationMetadata: Schema.Schema<GoogleCloudOsconfigV2__OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      apiVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudOsconfigV2__OperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudOsconfigV2__OperationMetadata>;
+export const GoogleCloudOsconfigV2__OperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+    statusMessage: Schema.optional(Schema.String),
+    requestedCancellation: Schema.optional(Schema.Boolean),
+    apiVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudOsconfigV2__OperationMetadata" });
 
 export interface GoogleCloudOsconfigV2beta__OperationMetadata {
   /** Output only. The time the operation was created. */
@@ -2369,20 +2009,16 @@ export interface GoogleCloudOsconfigV2beta__OperationMetadata {
   apiVersion?: string;
 }
 
-export const GoogleCloudOsconfigV2beta__OperationMetadata: Schema.Schema<GoogleCloudOsconfigV2beta__OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      apiVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudOsconfigV2beta__OperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudOsconfigV2beta__OperationMetadata>;
+export const GoogleCloudOsconfigV2beta__OperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+    statusMessage: Schema.optional(Schema.String),
+    requestedCancellation: Schema.optional(Schema.Boolean),
+    apiVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudOsconfigV2beta__OperationMetadata" });
 
 export interface GoogleCloudOsconfigCommonV1__OperationMetadata {
   /** Output only. The time the operation was created. */
@@ -2401,20 +2037,16 @@ export interface GoogleCloudOsconfigCommonV1__OperationMetadata {
   apiVersion?: string;
 }
 
-export const GoogleCloudOsconfigCommonV1__OperationMetadata: Schema.Schema<GoogleCloudOsconfigCommonV1__OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      apiVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudOsconfigCommonV1__OperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudOsconfigCommonV1__OperationMetadata>;
+export const GoogleCloudOsconfigCommonV1__OperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+    statusMessage: Schema.optional(Schema.String),
+    requestedCancellation: Schema.optional(Schema.Boolean),
+    apiVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudOsconfigCommonV1__OperationMetadata" });
 
 export interface GoogleCloudOsconfigCommonV1alpha__OperationMetadata {
   /** Output only. The time the operation was created. */
@@ -2433,20 +2065,18 @@ export interface GoogleCloudOsconfigCommonV1alpha__OperationMetadata {
   apiVersion?: string;
 }
 
-export const GoogleCloudOsconfigCommonV1alpha__OperationMetadata: Schema.Schema<GoogleCloudOsconfigCommonV1alpha__OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      apiVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudOsconfigCommonV1alpha__OperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+    statusMessage: Schema.optional(Schema.String),
+    requestedCancellation: Schema.optional(Schema.Boolean),
+    apiVersion: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudOsconfigCommonV1alpha__OperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudOsconfigCommonV1alpha__OperationMetadata>;
+  });
 
 export interface GoogleCloudOsconfigCommonV1main__OperationMetadata {
   /** Output only. The time the operation was created. */
@@ -2465,27 +2095,24 @@ export interface GoogleCloudOsconfigCommonV1main__OperationMetadata {
   apiVersion?: string;
 }
 
-export const GoogleCloudOsconfigCommonV1main__OperationMetadata: Schema.Schema<GoogleCloudOsconfigCommonV1main__OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      apiVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudOsconfigCommonV1main__OperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+    statusMessage: Schema.optional(Schema.String),
+    requestedCancellation: Schema.optional(Schema.Boolean),
+    apiVersion: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudOsconfigCommonV1main__OperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudOsconfigCommonV1main__OperationMetadata>;
+  });
 
 export interface MessageSet {}
 
-export const MessageSet: Schema.Schema<MessageSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "MessageSet",
-  }) as any as Schema.Schema<MessageSet>;
+export const MessageSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "MessageSet" });
 
 export interface StatusProto {
   /** Numeric code drawn from the space specified below. Often, this is the canonical error space, and code is drawn from google3/util/task/codes.proto copybara:strip_begin(b/383363683) copybara:strip_end_and_replace optional int32 code = 1; */
@@ -2500,18 +2127,13 @@ export interface StatusProto {
   messageSet?: MessageSet;
 }
 
-export const StatusProto: Schema.Schema<StatusProto> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      space: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-      canonicalCode: Schema.optional(Schema.Number),
-      messageSet: Schema.optional(MessageSet),
-    }),
-  ).annotate({
-    identifier: "StatusProto",
-  }) as any as Schema.Schema<StatusProto>;
+export const StatusProto = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  space: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+  canonicalCode: Schema.optional(Schema.Number),
+  messageSet: Schema.optional(MessageSet),
+}).annotate({ identifier: "StatusProto" });
 
 // ==========================================================================
 // Operations

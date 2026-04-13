@@ -37,14 +37,11 @@ export interface Site {
     | (string & {});
 }
 
-export const Site: Schema.Schema<Site> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      domain: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Site" }) as any as Schema.Schema<Site>;
+export const Site = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+}).annotate({ identifier: "Site" });
 
 export interface ListSitesResponse {
   /** The sites returned in this list response. */
@@ -53,15 +50,10 @@ export interface ListSitesResponse {
   nextPageToken?: string;
 }
 
-export const ListSitesResponse: Schema.Schema<ListSitesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sites: Schema.optional(Schema.Array(Site)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListSitesResponse",
-  }) as any as Schema.Schema<ListSitesResponse>;
+export const ListSitesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sites: Schema.optional(Schema.Array(Site)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListSitesResponse" });
 
 export interface TimeZone {
   /** Optional. IANA Time Zone Database version number. For example "2019a". */
@@ -70,25 +62,19 @@ export interface TimeZone {
   id?: string;
 }
 
-export const TimeZone: Schema.Schema<TimeZone> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "TimeZone" }) as any as Schema.Schema<TimeZone>;
+export const TimeZone = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+}).annotate({ identifier: "TimeZone" });
 
 export interface Decimal {
   /** The decimal value, as a string. The string representation consists of an optional sign, `+` (`U+002B`) or `-` (`U+002D`), followed by a sequence of zero or more decimal digits ("the integer"), optionally followed by a fraction, optionally followed by an exponent. An empty string **should** be interpreted as `0`. The fraction consists of a decimal point followed by zero or more decimal digits. The string must contain at least one digit in either the integer or the fraction. The number formed by the sign, the integer and the fraction is referred to as the significand. The exponent consists of the character `e` (`U+0065`) or `E` (`U+0045`) followed by one or more decimal digits. Services **should** normalize decimal values before storing them by: - Removing an explicitly-provided `+` sign (`+2.5` -> `2.5`). - Replacing a zero-length integer value with `0` (`.5` -> `0.5`). - Coercing the exponent character to upper-case, with explicit sign (`2.5e8` -> `2.5E+8`). - Removing an explicitly-provided zero exponent (`2.5E0` -> `2.5`). Services **may** perform additional normalization based on its own needs and the internal decimal implementation selected, such as shifting the decimal point and exponent value together (example: `2.5E-1` <-> `0.25`). Additionally, services **may** preserve trailing zeroes in the fraction to indicate increased precision, but are not required to do so. Note that only the `.` character is supported to divide the integer and the fraction; `,` **should not** be supported regardless of locale. Additionally, thousand separators **should not** be supported. If a service does support them, values **must** be normalized. The ENBF grammar is: DecimalString = '' | [Sign] Significand [Exponent]; Sign = '+' | '-'; Significand = Digits '.' | [Digits] '.' Digits; Exponent = ('e' | 'E') [Sign] Digits; Digits = { '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' }; Services **should** clearly document the range of supported values, the maximum supported precision (total number of digits), and, if applicable, the scale (number of digits after the decimal point), as well as how it behaves when receiving out-of-bounds values. Services **may** choose to accept values passed as input even when the value has a higher precision or scale than the service supports, and **should** round the value to fit the supported scale. Alternatively, the service **may** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if precision would be lost. Services **should** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if the service receives a value outside of the supported range. */
   value?: string;
 }
 
-export const Decimal: Schema.Schema<Decimal> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Decimal" }) as any as Schema.Schema<Decimal>;
+export const Decimal = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.String),
+}).annotate({ identifier: "Decimal" });
 
 export interface PlatformGroup {
   /** Required. Description of the PlatformGroup. */
@@ -99,16 +85,11 @@ export interface PlatformGroup {
   revshareMillipercent?: Decimal;
 }
 
-export const PlatformGroup: Schema.Schema<PlatformGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      revshareMillipercent: Schema.optional(Decimal),
-    }),
-  ).annotate({
-    identifier: "PlatformGroup",
-  }) as any as Schema.Schema<PlatformGroup>;
+export const PlatformGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  revshareMillipercent: Schema.optional(Decimal),
+}).annotate({ identifier: "PlatformGroup" });
 
 export interface ListPlatformGroupsResponse {
   /** The platform groups returned in this list response. */
@@ -117,15 +98,11 @@ export interface ListPlatformGroupsResponse {
   nextPageToken?: string;
 }
 
-export const ListPlatformGroupsResponse: Schema.Schema<ListPlatformGroupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      platformGroups: Schema.optional(Schema.Array(PlatformGroup)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListPlatformGroupsResponse",
-  }) as any as Schema.Schema<ListPlatformGroupsResponse>;
+export const ListPlatformGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    platformGroups: Schema.optional(Schema.Array(PlatformGroup)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListPlatformGroupsResponse" });
 
 export interface Account {
   /** Required. The IANA TZ timezone code of this account. For more information, see https://en.wikipedia.org/wiki/List_of_tz_database_time_zones. This field is used for reporting. It is recommended to set it to the same value for all child accounts. */
@@ -149,39 +126,30 @@ export interface Account {
   createTime?: string;
 }
 
-export const Account: Schema.Schema<Account> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      timeZone: Schema.optional(TimeZone),
-      creationRequestId: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      regionCode: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Account" }) as any as Schema.Schema<Account>;
+export const Account = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  timeZone: Schema.optional(TimeZone),
+  creationRequestId: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  regionCode: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Account" });
 
 export interface CloseAccountResponse {}
 
-export const CloseAccountResponse: Schema.Schema<CloseAccountResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CloseAccountResponse",
-  }) as any as Schema.Schema<CloseAccountResponse>;
+export const CloseAccountResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CloseAccountResponse" });
 
 export interface LookupAccountResponse {
   /** The name of the Account Format: platforms/{platform}/accounts/{account_id} */
   name?: string;
 }
 
-export const LookupAccountResponse: Schema.Schema<LookupAccountResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LookupAccountResponse",
-  }) as any as Schema.Schema<LookupAccountResponse>;
+export const LookupAccountResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "LookupAccountResponse" });
 
 export interface Platform {
   /** Output only. Description of the platform. */
@@ -192,14 +160,11 @@ export interface Platform {
   defaultPlatformGroup?: string;
 }
 
-export const Platform: Schema.Schema<Platform> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      defaultPlatformGroup: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Platform" }) as any as Schema.Schema<Platform>;
+export const Platform = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  defaultPlatformGroup: Schema.optional(Schema.String),
+}).annotate({ identifier: "Platform" });
 
 export interface ListPlatformsResponse {
   /** Continuation token used to page through platforms. To retrieve the next page of the results, set the next request's "page_token" value to this. */
@@ -208,15 +173,10 @@ export interface ListPlatformsResponse {
   platforms?: Array<Platform>;
 }
 
-export const ListPlatformsResponse: Schema.Schema<ListPlatformsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      platforms: Schema.optional(Schema.Array(Platform)),
-    }),
-  ).annotate({
-    identifier: "ListPlatformsResponse",
-  }) as any as Schema.Schema<ListPlatformsResponse>;
+export const ListPlatformsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  platforms: Schema.optional(Schema.Array(Platform)),
+}).annotate({ identifier: "ListPlatformsResponse" });
 
 export interface Address {
   /** Phone number with international code (i.e. +441234567890). */
@@ -241,28 +201,24 @@ export interface Address {
   regionCode?: string;
 }
 
-export const Address: Schema.Schema<Address> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      phone: Schema.optional(Schema.String),
-      city: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      address2: Schema.optional(Schema.String),
-      zip: Schema.optional(Schema.String),
-      contact: Schema.optional(Schema.String),
-      address1: Schema.optional(Schema.String),
-      fax: Schema.optional(Schema.String),
-      company: Schema.optional(Schema.String),
-      regionCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Address" }) as any as Schema.Schema<Address>;
+export const Address = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  phone: Schema.optional(Schema.String),
+  city: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  address2: Schema.optional(Schema.String),
+  zip: Schema.optional(Schema.String),
+  contact: Schema.optional(Schema.String),
+  address1: Schema.optional(Schema.String),
+  fax: Schema.optional(Schema.String),
+  company: Schema.optional(Schema.String),
+  regionCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "Address" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface PlatformChildSite {
   /** Identifier. Format: accounts/{account}/platforms/{platform}/childAccounts/{child_account}/sites/{platform_child_site} */
@@ -273,16 +229,11 @@ export interface PlatformChildSite {
   platformGroup?: string;
 }
 
-export const PlatformChildSite: Schema.Schema<PlatformChildSite> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      domain: Schema.optional(Schema.String),
-      platformGroup: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PlatformChildSite",
-  }) as any as Schema.Schema<PlatformChildSite>;
+export const PlatformChildSite = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+  platformGroup: Schema.optional(Schema.String),
+}).annotate({ identifier: "PlatformChildSite" });
 
 export interface ListPlatformChildSitesResponse {
   /** The platform child sites returned in this list response. */
@@ -291,22 +242,17 @@ export interface ListPlatformChildSitesResponse {
   nextPageToken?: string;
 }
 
-export const ListPlatformChildSitesResponse: Schema.Schema<ListPlatformChildSitesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      platformChildSites: Schema.optional(Schema.Array(PlatformChildSite)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListPlatformChildSitesResponse",
-  }) as any as Schema.Schema<ListPlatformChildSitesResponse>;
+export const ListPlatformChildSitesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    platformChildSites: Schema.optional(Schema.Array(PlatformChildSite)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListPlatformChildSitesResponse" });
 
 export interface CloseAccountRequest {}
 
-export const CloseAccountRequest: Schema.Schema<CloseAccountRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CloseAccountRequest",
-  }) as any as Schema.Schema<CloseAccountRequest>;
+export const CloseAccountRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CloseAccountRequest" });
 
 export interface EventInfo {
   /** Required. The email address that is associated with the publisher when performing the event. */
@@ -315,13 +261,10 @@ export interface EventInfo {
   billingAddress?: Address;
 }
 
-export const EventInfo: Schema.Schema<EventInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      email: Schema.optional(Schema.String),
-      billingAddress: Schema.optional(Address),
-    }),
-  ).annotate({ identifier: "EventInfo" }) as any as Schema.Schema<EventInfo>;
+export const EventInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  email: Schema.optional(Schema.String),
+  billingAddress: Schema.optional(Address),
+}).annotate({ identifier: "EventInfo" });
 
 export interface Event {
   /** Required. Event type. */
@@ -336,14 +279,11 @@ export interface Event {
   eventTime?: string;
 }
 
-export const Event: Schema.Schema<Event> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      eventType: Schema.optional(Schema.String),
-      eventInfo: Schema.optional(EventInfo),
-      eventTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Event" }) as any as Schema.Schema<Event>;
+export const Event = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  eventType: Schema.optional(Schema.String),
+  eventInfo: Schema.optional(EventInfo),
+  eventTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Event" });
 
 export interface ListAccountsResponse {
   /** The Accounts returned in the list response. Represented by a partial view of the Account resource, populating `name` and `creation_request_id`. */
@@ -352,22 +292,17 @@ export interface ListAccountsResponse {
   nextPageToken?: string;
 }
 
-export const ListAccountsResponse: Schema.Schema<ListAccountsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accounts: Schema.optional(Schema.Array(Account)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAccountsResponse",
-  }) as any as Schema.Schema<ListAccountsResponse>;
+export const ListAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  accounts: Schema.optional(Schema.Array(Account)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListAccountsResponse" });
 
 export interface RequestSiteReviewResponse {}
 
-export const RequestSiteReviewResponse: Schema.Schema<RequestSiteReviewResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const RequestSiteReviewResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RequestSiteReviewResponse",
-  }) as any as Schema.Schema<RequestSiteReviewResponse>;
+  });
 
 // ==========================================================================
 // Operations

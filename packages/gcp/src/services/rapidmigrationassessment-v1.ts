@@ -27,28 +27,18 @@ export interface VSphereScan {
   coreSource?: string;
 }
 
-export const VSphereScan: Schema.Schema<VSphereScan> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      coreSource: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VSphereScan",
-  }) as any as Schema.Schema<VSphereScan>;
+export const VSphereScan = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  coreSource: Schema.optional(Schema.String),
+}).annotate({ identifier: "VSphereScan" });
 
 export interface GuestOsScan {
   /** reference to the corresponding Guest OS Scan in MC Source. */
   coreSource?: string;
 }
 
-export const GuestOsScan: Schema.Schema<GuestOsScan> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      coreSource: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GuestOsScan",
-  }) as any as Schema.Schema<GuestOsScan>;
+export const GuestOsScan = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  coreSource: Schema.optional(Schema.String),
+}).annotate({ identifier: "GuestOsScan" });
 
 export interface Collector {
   /** Labels as key value pairs. */
@@ -93,26 +83,23 @@ export interface Collector {
   bucket?: string;
 }
 
-export const Collector: Schema.Schema<Collector> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      expectedAssetCount: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      vsphereScan: Schema.optional(VSphereScan),
-      eulaUri: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      guestOsScan: Schema.optional(GuestOsScan),
-      serviceAccount: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      clientVersion: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      collectionDays: Schema.optional(Schema.Number),
-      bucket: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Collector" }) as any as Schema.Schema<Collector>;
+export const Collector = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  expectedAssetCount: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  vsphereScan: Schema.optional(VSphereScan),
+  eulaUri: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  guestOsScan: Schema.optional(GuestOsScan),
+  serviceAccount: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  clientVersion: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  collectionDays: Schema.optional(Schema.Number),
+  bucket: Schema.optional(Schema.String),
+}).annotate({ identifier: "Collector" });
 
 export interface ListCollectorsResponse {
   /** Locations that could not be reached. */
@@ -123,37 +110,30 @@ export interface ListCollectorsResponse {
   nextPageToken?: string;
 }
 
-export const ListCollectorsResponse: Schema.Schema<ListCollectorsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      collectors: Schema.optional(Schema.Array(Collector)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListCollectorsResponse",
-  }) as any as Schema.Schema<ListCollectorsResponse>;
+export const ListCollectorsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    collectors: Schema.optional(Schema.Array(Collector)),
+    nextPageToken: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ListCollectorsResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface ResumeCollectorRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
 
-export const ResumeCollectorRequest: Schema.Schema<ResumeCollectorRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ResumeCollectorRequest",
-  }) as any as Schema.Schema<ResumeCollectorRequest>;
+export const ResumeCollectorRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    requestId: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ResumeCollectorRequest" });
 
 export interface OperationMetadata {
   /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
@@ -172,20 +152,15 @@ export interface OperationMetadata {
   statusMessage?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      apiVersion: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  requestedCancellation: Schema.optional(Schema.Boolean),
+  apiVersion: Schema.optional(Schema.String),
+  verb: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  statusMessage: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationMetadata" });
 
 export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -196,16 +171,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      message: Schema.optional(Schema.String),
-      code: Schema.optional(Schema.Number),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  message: Schema.optional(Schema.String),
+  code: Schema.optional(Schema.Number),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
@@ -220,16 +192,13 @@ export interface Operation {
   done?: boolean;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      name: Schema.optional(Schema.String),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      error: Schema.optional(Status),
-      done: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  name: Schema.optional(Schema.String),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  error: Schema.optional(Status),
+  done: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Operation" });
 
 export interface ListOperationsResponse {
   /** The standard List next-page token. */
@@ -238,15 +207,12 @@ export interface ListOperationsResponse {
   operations?: Array<Operation>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      operations: Schema.optional(Schema.Array(Operation)),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    nextPageToken: Schema.optional(Schema.String),
+    operations: Schema.optional(Schema.Array(Operation)),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 export interface Annotation {
   /** Output only. Update time stamp. */
@@ -265,16 +231,13 @@ export interface Annotation {
     | (string & {});
 }
 
-export const Annotation: Schema.Schema<Annotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Annotation" }) as any as Schema.Schema<Annotation>;
+export const Annotation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  updateTime: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "Annotation" });
 
 export interface Location {
   /** Service-specific metadata. For example the available capacity at the given location. */
@@ -289,51 +252,38 @@ export interface Location {
   name?: string;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      locationId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  locationId: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Location" });
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelOperationRequest",
-  }) as any as Schema.Schema<CancelOperationRequest>;
+export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelOperationRequest" });
 
 export interface PauseCollectorRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
 
-export const PauseCollectorRequest: Schema.Schema<PauseCollectorRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PauseCollectorRequest",
-  }) as any as Schema.Schema<PauseCollectorRequest>;
+export const PauseCollectorRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  requestId: Schema.optional(Schema.String),
+}).annotate({ identifier: "PauseCollectorRequest" });
 
 export interface RegisterCollectorRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
 
-export const RegisterCollectorRequest: Schema.Schema<RegisterCollectorRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RegisterCollectorRequest",
-  }) as any as Schema.Schema<RegisterCollectorRequest>;
+export const RegisterCollectorRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RegisterCollectorRequest" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -342,15 +292,10 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(Location)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 // ==========================================================================
 // Operations

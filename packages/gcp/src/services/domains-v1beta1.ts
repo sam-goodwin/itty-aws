@@ -58,15 +58,12 @@ export interface DsRecord {
   digest?: string;
 }
 
-export const DsRecord: Schema.Schema<DsRecord> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      algorithm: Schema.optional(Schema.String),
-      keyTag: Schema.optional(Schema.Number),
-      digestType: Schema.optional(Schema.String),
-      digest: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "DsRecord" }) as any as Schema.Schema<DsRecord>;
+export const DsRecord = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  algorithm: Schema.optional(Schema.String),
+  keyTag: Schema.optional(Schema.Number),
+  digestType: Schema.optional(Schema.String),
+  digest: Schema.optional(Schema.String),
+}).annotate({ identifier: "DsRecord" });
 
 export interface CustomDns {
   /** The list of DS records for this domain, which are used to enable DNSSEC. The domain's DNS provider can provide the values to set here. If this field is empty, DNSSEC is disabled. */
@@ -75,13 +72,10 @@ export interface CustomDns {
   nameServers?: Array<string>;
 }
 
-export const CustomDns: Schema.Schema<CustomDns> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dsRecords: Schema.optional(Schema.Array(DsRecord)),
-      nameServers: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "CustomDns" }) as any as Schema.Schema<CustomDns>;
+export const CustomDns = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dsRecords: Schema.optional(Schema.Array(DsRecord)),
+  nameServers: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "CustomDns" });
 
 export interface Money {
   /** Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000. */
@@ -92,14 +86,11 @@ export interface Money {
   units?: string;
 }
 
-export const Money: Schema.Schema<Money> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nanos: Schema.optional(Schema.Number),
-      currencyCode: Schema.optional(Schema.String),
-      units: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Money" }) as any as Schema.Schema<Money>;
+export const Money = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nanos: Schema.optional(Schema.Number),
+  currencyCode: Schema.optional(Schema.String),
+  units: Schema.optional(Schema.String),
+}).annotate({ identifier: "Money" });
 
 export interface RegisterParameters {
   /** Indicates whether the domain is available for registration. This value is accurate when obtained by calling `RetrieveRegisterParameters`, but is approximate when obtained by calling `SearchDomains`. */
@@ -128,18 +119,13 @@ export interface RegisterParameters {
   >;
 }
 
-export const RegisterParameters: Schema.Schema<RegisterParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      availability: Schema.optional(Schema.String),
-      supportedPrivacy: Schema.optional(Schema.Array(Schema.String)),
-      domainName: Schema.optional(Schema.String),
-      yearlyPrice: Schema.optional(Money),
-      domainNotices: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "RegisterParameters",
-  }) as any as Schema.Schema<RegisterParameters>;
+export const RegisterParameters = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  availability: Schema.optional(Schema.String),
+  supportedPrivacy: Schema.optional(Schema.Array(Schema.String)),
+  domainName: Schema.optional(Schema.String),
+  yearlyPrice: Schema.optional(Money),
+  domainNotices: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "RegisterParameters" });
 
 export interface PostalAddress {
   /** Unstructured address lines describing the lower levels of an address. Because values in `address_lines` do not have type information and may sometimes contain multiple values in a single field (for example, "Austin, TX"), it is important that the line order is clear. The order of address lines should be "envelope order" for the country or region of the address. In places where this can vary (for example, Japan), `address_language` is used to make it explicit (for example, "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). In this way, the most specific line of an address can be selected based on the language. The minimum permitted structural representation of an address consists of a `region_code` with all remaining information placed in the `address_lines`. It would be possible to format such an address very approximately without geocoding, but no semantic reasoning could be made about any of the address components until it was at least partially resolved. Creating an address only containing a `region_code` and `address_lines` and then geocoding is the recommended way to handle completely unstructured addresses (as opposed to guessing which parts of the address should be localities or administrative areas). */
@@ -166,24 +152,19 @@ export interface PostalAddress {
   organization?: string;
 }
 
-export const PostalAddress: Schema.Schema<PostalAddress> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      addressLines: Schema.optional(Schema.Array(Schema.String)),
-      sublocality: Schema.optional(Schema.String),
-      regionCode: Schema.optional(Schema.String),
-      postalCode: Schema.optional(Schema.String),
-      revision: Schema.optional(Schema.Number),
-      recipients: Schema.optional(Schema.Array(Schema.String)),
-      languageCode: Schema.optional(Schema.String),
-      locality: Schema.optional(Schema.String),
-      administrativeArea: Schema.optional(Schema.String),
-      sortingCode: Schema.optional(Schema.String),
-      organization: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PostalAddress",
-  }) as any as Schema.Schema<PostalAddress>;
+export const PostalAddress = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  addressLines: Schema.optional(Schema.Array(Schema.String)),
+  sublocality: Schema.optional(Schema.String),
+  regionCode: Schema.optional(Schema.String),
+  postalCode: Schema.optional(Schema.String),
+  revision: Schema.optional(Schema.Number),
+  recipients: Schema.optional(Schema.Array(Schema.String)),
+  languageCode: Schema.optional(Schema.String),
+  locality: Schema.optional(Schema.String),
+  administrativeArea: Schema.optional(Schema.String),
+  sortingCode: Schema.optional(Schema.String),
+  organization: Schema.optional(Schema.String),
+}).annotate({ identifier: "PostalAddress" });
 
 export interface Contact {
   /** Fax number of the contact in international format. For example, `"+1-800-555-0123"`. */
@@ -196,15 +177,12 @@ export interface Contact {
   phoneNumber?: string;
 }
 
-export const Contact: Schema.Schema<Contact> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      faxNumber: Schema.optional(Schema.String),
-      postalAddress: Schema.optional(PostalAddress),
-      email: Schema.optional(Schema.String),
-      phoneNumber: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Contact" }) as any as Schema.Schema<Contact>;
+export const Contact = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  faxNumber: Schema.optional(Schema.String),
+  postalAddress: Schema.optional(PostalAddress),
+  email: Schema.optional(Schema.String),
+  phoneNumber: Schema.optional(Schema.String),
+}).annotate({ identifier: "Contact" });
 
 export interface ContactSettings {
   /** Required. The registrant contact for the `Registration`. *Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.* *Warning: For new `Registration`s, the registrant receives an email confirmation that they must complete within 15 days to avoid domain suspension.* */
@@ -222,17 +200,12 @@ export interface ContactSettings {
     | (string & {});
 }
 
-export const ContactSettings: Schema.Schema<ContactSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      registrantContact: Schema.optional(Contact),
-      adminContact: Schema.optional(Contact),
-      technicalContact: Schema.optional(Contact),
-      privacy: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ContactSettings",
-  }) as any as Schema.Schema<ContactSettings>;
+export const ContactSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  registrantContact: Schema.optional(Contact),
+  adminContact: Schema.optional(Contact),
+  technicalContact: Schema.optional(Contact),
+  privacy: Schema.optional(Schema.String),
+}).annotate({ identifier: "ContactSettings" });
 
 export interface ManagementSettings {
   /** Optional. The desired renewal method for this `Registration`. The actual `renewal_method` is automatically updated to reflect this choice. If unset or equal to `RENEWAL_METHOD_UNSPECIFIED`, the actual `renewalMethod` is treated as if it were set to `AUTOMATIC_RENEWAL`. You cannot use `RENEWAL_DISABLED` during resource creation, and you can update the renewal status only when the `Registration` resource has state `ACTIVE` or `SUSPENDED`. When `preferred_renewal_method` is set to `AUTOMATIC_RENEWAL`, the actual `renewal_method` can be set to `RENEWAL_DISABLED` in case of problems with the billing account or reported domain abuse. In such cases, check the `issues` field on the `Registration`. After the problem is resolved, the `renewal_method` is automatically updated to `preferred_renewal_method` in a few hours. */
@@ -263,17 +236,12 @@ export interface ManagementSettings {
     | (string & {});
 }
 
-export const ManagementSettings: Schema.Schema<ManagementSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      preferredRenewalMethod: Schema.optional(Schema.String),
-      renewalMethod: Schema.optional(Schema.String),
-      transferLockState: Schema.optional(Schema.String),
-      effectiveTransferLockState: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ManagementSettings",
-  }) as any as Schema.Schema<ManagementSettings>;
+export const ManagementSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  preferredRenewalMethod: Schema.optional(Schema.String),
+  renewalMethod: Schema.optional(Schema.String),
+  transferLockState: Schema.optional(Schema.String),
+  effectiveTransferLockState: Schema.optional(Schema.String),
+}).annotate({ identifier: "ManagementSettings" });
 
 export interface GoogleDomainsDns {
   /** Output only. A list of name servers that store the DNS zone for this domain. Each name server is a domain name, with Unicode domain names expressed in Punycode format. This field is automatically populated with the name servers assigned to the Google Domains DNS zone. */
@@ -288,16 +256,11 @@ export interface GoogleDomainsDns {
   dsRecords?: Array<DsRecord>;
 }
 
-export const GoogleDomainsDns: Schema.Schema<GoogleDomainsDns> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nameServers: Schema.optional(Schema.Array(Schema.String)),
-      dsState: Schema.optional(Schema.String),
-      dsRecords: Schema.optional(Schema.Array(DsRecord)),
-    }),
-  ).annotate({
-    identifier: "GoogleDomainsDns",
-  }) as any as Schema.Schema<GoogleDomainsDns>;
+export const GoogleDomainsDns = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nameServers: Schema.optional(Schema.Array(Schema.String)),
+  dsState: Schema.optional(Schema.String),
+  dsRecords: Schema.optional(Schema.Array(DsRecord)),
+}).annotate({ identifier: "GoogleDomainsDns" });
 
 export interface GlueRecord {
   /** Required. Domain name of the host in Punycode format. */
@@ -308,14 +271,11 @@ export interface GlueRecord {
   ipv6Addresses?: Array<string>;
 }
 
-export const GlueRecord: Schema.Schema<GlueRecord> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hostName: Schema.optional(Schema.String),
-      ipv4Addresses: Schema.optional(Schema.Array(Schema.String)),
-      ipv6Addresses: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "GlueRecord" }) as any as Schema.Schema<GlueRecord>;
+export const GlueRecord = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  hostName: Schema.optional(Schema.String),
+  ipv4Addresses: Schema.optional(Schema.Array(Schema.String)),
+  ipv6Addresses: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "GlueRecord" });
 
 export interface DnsSettings {
   /** Deprecated: For more information, see [Cloud Domains feature deprecation](https://cloud.google.com/domains/docs/deprecations/feature-deprecations). The free DNS zone provided by [Google Domains](https://domains.google/). */
@@ -328,17 +288,12 @@ export interface DnsSettings {
   glueRecords?: Array<GlueRecord>;
 }
 
-export const DnsSettings: Schema.Schema<DnsSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      googleDomainsDns: Schema.optional(GoogleDomainsDns),
-      googleDomainsRedirectsDataAvailable: Schema.optional(Schema.Boolean),
-      customDns: Schema.optional(CustomDns),
-      glueRecords: Schema.optional(Schema.Array(GlueRecord)),
-    }),
-  ).annotate({
-    identifier: "DnsSettings",
-  }) as any as Schema.Schema<DnsSettings>;
+export const DnsSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  googleDomainsDns: Schema.optional(GoogleDomainsDns),
+  googleDomainsRedirectsDataAvailable: Schema.optional(Schema.Boolean),
+  customDns: Schema.optional(CustomDns),
+  glueRecords: Schema.optional(Schema.Array(GlueRecord)),
+}).annotate({ identifier: "DnsSettings" });
 
 export interface Registration {
   /** Output only. The set of issues with the `Registration` that require attention. */
@@ -420,28 +375,23 @@ export interface Registration {
   >;
 }
 
-export const Registration: Schema.Schema<Registration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      issues: Schema.optional(Schema.Array(Schema.String)),
-      pendingContactSettings: Schema.optional(ContactSettings),
-      domainProperties: Schema.optional(Schema.Array(Schema.String)),
-      state: Schema.optional(Schema.String),
-      transferFailureReason: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      name: Schema.optional(Schema.String),
-      managementSettings: Schema.optional(ManagementSettings),
-      expireTime: Schema.optional(Schema.String),
-      registerFailureReason: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      dnsSettings: Schema.optional(DnsSettings),
-      contactSettings: Schema.optional(ContactSettings),
-      domainName: Schema.optional(Schema.String),
-      supportedPrivacy: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "Registration",
-  }) as any as Schema.Schema<Registration>;
+export const Registration = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  issues: Schema.optional(Schema.Array(Schema.String)),
+  pendingContactSettings: Schema.optional(ContactSettings),
+  domainProperties: Schema.optional(Schema.Array(Schema.String)),
+  state: Schema.optional(Schema.String),
+  transferFailureReason: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  name: Schema.optional(Schema.String),
+  managementSettings: Schema.optional(ManagementSettings),
+  expireTime: Schema.optional(Schema.String),
+  registerFailureReason: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  dnsSettings: Schema.optional(DnsSettings),
+  contactSettings: Schema.optional(ContactSettings),
+  domainName: Schema.optional(Schema.String),
+  supportedPrivacy: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Registration" });
 
 export interface ListRegistrationsResponse {
   /** A list of `Registration`s. */
@@ -450,22 +400,18 @@ export interface ListRegistrationsResponse {
   nextPageToken?: string;
 }
 
-export const ListRegistrationsResponse: Schema.Schema<ListRegistrationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      registrations: Schema.optional(Schema.Array(Registration)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListRegistrationsResponse",
-  }) as any as Schema.Schema<ListRegistrationsResponse>;
+export const ListRegistrationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    registrations: Schema.optional(Schema.Array(Registration)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListRegistrationsResponse" });
 
 export interface ExportRegistrationRequest {}
 
-export const ExportRegistrationRequest: Schema.Schema<ExportRegistrationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const ExportRegistrationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ExportRegistrationRequest",
-  }) as any as Schema.Schema<ExportRegistrationRequest>;
+  });
 
 export interface AuditLogConfig {
   /** The log type that this config enables. */
@@ -479,15 +425,10 @@ export interface AuditLogConfig {
   exemptedMembers?: Array<string>;
 }
 
-export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      logType: Schema.optional(Schema.String),
-      exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AuditLogConfig",
-  }) as any as Schema.Schema<AuditLogConfig>;
+export const AuditLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  logType: Schema.optional(Schema.String),
+  exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "AuditLogConfig" });
 
 export interface AuditConfig {
   /** The configuration for logging of each type of permission. */
@@ -496,15 +437,10 @@ export interface AuditConfig {
   service?: string;
 }
 
-export const AuditConfig: Schema.Schema<AuditConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
-      service: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AuditConfig",
-  }) as any as Schema.Schema<AuditConfig>;
+export const AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
+  service: Schema.optional(Schema.String),
+}).annotate({ identifier: "AuditConfig" });
 
 export interface LoadBalancerTarget {
   /** The type of load balancer specified by this target. This value must match the configuration of the load balancer located at the LoadBalancerTarget's IP address, port, and region. Use the following: - *regionalL4ilb*: for a regional internal passthrough Network Load Balancer. - *regionalL7ilb*: for a regional internal Application Load Balancer. - *globalL7ilb*: for a global internal Application Load Balancer. */
@@ -528,20 +464,15 @@ export interface LoadBalancerTarget {
   project?: string;
 }
 
-export const LoadBalancerTarget: Schema.Schema<LoadBalancerTarget> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      loadBalancerType: Schema.optional(Schema.String),
-      port: Schema.optional(Schema.String),
-      ipProtocol: Schema.optional(Schema.String),
-      region: Schema.optional(Schema.String),
-      networkUrl: Schema.optional(Schema.String),
-      ipAddress: Schema.optional(Schema.String),
-      project: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LoadBalancerTarget",
-  }) as any as Schema.Schema<LoadBalancerTarget>;
+export const LoadBalancerTarget = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  loadBalancerType: Schema.optional(Schema.String),
+  port: Schema.optional(Schema.String),
+  ipProtocol: Schema.optional(Schema.String),
+  region: Schema.optional(Schema.String),
+  networkUrl: Schema.optional(Schema.String),
+  ipAddress: Schema.optional(Schema.String),
+  project: Schema.optional(Schema.String),
+}).annotate({ identifier: "LoadBalancerTarget" });
 
 export interface HealthCheckTargets {
   /** The Internet IP addresses to be health checked. The format matches the format of ResourceRecordSet.rrdata as defined in RFC 1035 (section 5) and RFC 1034 (section 3.6.1) */
@@ -550,15 +481,10 @@ export interface HealthCheckTargets {
   internalLoadBalancer?: Array<LoadBalancerTarget>;
 }
 
-export const HealthCheckTargets: Schema.Schema<HealthCheckTargets> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      externalEndpoints: Schema.optional(Schema.Array(Schema.String)),
-      internalLoadBalancer: Schema.optional(Schema.Array(LoadBalancerTarget)),
-    }),
-  ).annotate({
-    identifier: "HealthCheckTargets",
-  }) as any as Schema.Schema<HealthCheckTargets>;
+export const HealthCheckTargets = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  externalEndpoints: Schema.optional(Schema.Array(Schema.String)),
+  internalLoadBalancer: Schema.optional(Schema.Array(LoadBalancerTarget)),
+}).annotate({ identifier: "HealthCheckTargets" });
 
 export interface GeoPolicyItem {
   /** DNSSEC generated signatures for all the `rrdata` within this item. When using health-checked targets for DNSSEC-enabled zones, you can only use at most one health-checked IP address per item. */
@@ -570,17 +496,12 @@ export interface GeoPolicyItem {
   location?: string;
 }
 
-export const GeoPolicyItem: Schema.Schema<GeoPolicyItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      signatureRrdata: Schema.optional(Schema.Array(Schema.String)),
-      rrdata: Schema.optional(Schema.Array(Schema.String)),
-      healthCheckedTargets: Schema.optional(HealthCheckTargets),
-      location: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GeoPolicyItem",
-  }) as any as Schema.Schema<GeoPolicyItem>;
+export const GeoPolicyItem = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  signatureRrdata: Schema.optional(Schema.Array(Schema.String)),
+  rrdata: Schema.optional(Schema.Array(Schema.String)),
+  healthCheckedTargets: Schema.optional(HealthCheckTargets),
+  location: Schema.optional(Schema.String),
+}).annotate({ identifier: "GeoPolicyItem" });
 
 export interface GeoPolicy {
   /** The primary geo routing configuration. If there are multiple items with the same location, an error is returned instead. */
@@ -589,13 +510,10 @@ export interface GeoPolicy {
   enableFencing?: boolean;
 }
 
-export const GeoPolicy: Schema.Schema<GeoPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      item: Schema.optional(Schema.Array(GeoPolicyItem)),
-      enableFencing: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "GeoPolicy" }) as any as Schema.Schema<GeoPolicy>;
+export const GeoPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  item: Schema.optional(Schema.Array(GeoPolicyItem)),
+  enableFencing: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "GeoPolicy" });
 
 export interface PrimaryBackupPolicy {
   /** When serving state is `PRIMARY`, this field provides the option of sending a small percentage of the traffic to the backup targets. */
@@ -606,16 +524,11 @@ export interface PrimaryBackupPolicy {
   backupGeoTargets?: GeoPolicy;
 }
 
-export const PrimaryBackupPolicy: Schema.Schema<PrimaryBackupPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      trickleTraffic: Schema.optional(Schema.Number),
-      primaryTargets: Schema.optional(HealthCheckTargets),
-      backupGeoTargets: Schema.optional(GeoPolicy),
-    }),
-  ).annotate({
-    identifier: "PrimaryBackupPolicy",
-  }) as any as Schema.Schema<PrimaryBackupPolicy>;
+export const PrimaryBackupPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  trickleTraffic: Schema.optional(Schema.Number),
+  primaryTargets: Schema.optional(HealthCheckTargets),
+  backupGeoTargets: Schema.optional(GeoPolicy),
+}).annotate({ identifier: "PrimaryBackupPolicy" });
 
 export interface WrrPolicyItem {
   rrdata?: Array<string>;
@@ -627,28 +540,20 @@ export interface WrrPolicyItem {
   healthCheckedTargets?: HealthCheckTargets;
 }
 
-export const WrrPolicyItem: Schema.Schema<WrrPolicyItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rrdata: Schema.optional(Schema.Array(Schema.String)),
-      signatureRrdata: Schema.optional(Schema.Array(Schema.String)),
-      weight: Schema.optional(Schema.Number),
-      healthCheckedTargets: Schema.optional(HealthCheckTargets),
-    }),
-  ).annotate({
-    identifier: "WrrPolicyItem",
-  }) as any as Schema.Schema<WrrPolicyItem>;
+export const WrrPolicyItem = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  rrdata: Schema.optional(Schema.Array(Schema.String)),
+  signatureRrdata: Schema.optional(Schema.Array(Schema.String)),
+  weight: Schema.optional(Schema.Number),
+  healthCheckedTargets: Schema.optional(HealthCheckTargets),
+}).annotate({ identifier: "WrrPolicyItem" });
 
 export interface WrrPolicy {
   item?: Array<WrrPolicyItem>;
 }
 
-export const WrrPolicy: Schema.Schema<WrrPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      item: Schema.optional(Schema.Array(WrrPolicyItem)),
-    }),
-  ).annotate({ identifier: "WrrPolicy" }) as any as Schema.Schema<WrrPolicy>;
+export const WrrPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  item: Schema.optional(Schema.Array(WrrPolicyItem)),
+}).annotate({ identifier: "WrrPolicy" });
 
 export interface RRSetRoutingPolicy {
   geo?: GeoPolicy;
@@ -660,19 +565,14 @@ export interface RRSetRoutingPolicy {
   primaryBackup?: PrimaryBackupPolicy;
 }
 
-export const RRSetRoutingPolicy: Schema.Schema<RRSetRoutingPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      geo: Schema.optional(GeoPolicy),
-      healthCheck: Schema.optional(Schema.String),
-      wrr: Schema.optional(WrrPolicy),
-      geoPolicy: Schema.optional(GeoPolicy),
-      wrrPolicy: Schema.optional(WrrPolicy),
-      primaryBackup: Schema.optional(PrimaryBackupPolicy),
-    }),
-  ).annotate({
-    identifier: "RRSetRoutingPolicy",
-  }) as any as Schema.Schema<RRSetRoutingPolicy>;
+export const RRSetRoutingPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  geo: Schema.optional(GeoPolicy),
+  healthCheck: Schema.optional(Schema.String),
+  wrr: Schema.optional(WrrPolicy),
+  geoPolicy: Schema.optional(GeoPolicy),
+  wrrPolicy: Schema.optional(WrrPolicy),
+  primaryBackup: Schema.optional(PrimaryBackupPolicy),
+}).annotate({ identifier: "RRSetRoutingPolicy" });
 
 export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
@@ -683,16 +583,13 @@ export interface Status {
   message?: string;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+}).annotate({ identifier: "Status" });
 
 export interface Expr {
   /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
@@ -705,15 +602,12 @@ export interface Expr {
   description?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      location: Schema.optional(Schema.String),
-      expression: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Expr" }) as any as Schema.Schema<Expr>;
+export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  location: Schema.optional(Schema.String),
+  expression: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "Expr" });
 
 export interface Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
@@ -724,14 +618,11 @@ export interface Binding {
   role?: string;
 }
 
-export const Binding: Schema.Schema<Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      members: Schema.optional(Schema.Array(Schema.String)),
-      condition: Schema.optional(Expr),
-      role: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Binding" }) as any as Schema.Schema<Binding>;
+export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  members: Schema.optional(Schema.Array(Schema.String)),
+  condition: Schema.optional(Expr),
+  role: Schema.optional(Schema.String),
+}).annotate({ identifier: "Binding" });
 
 export interface Policy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
@@ -744,15 +635,12 @@ export interface Policy {
   etag?: string;
 }
 
-export const Policy: Schema.Schema<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bindings: Schema.optional(Schema.Array(Binding)),
-      auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
-      version: Schema.optional(Schema.Number),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Policy" }) as any as Schema.Schema<Policy>;
+export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bindings: Schema.optional(Schema.Array(Binding)),
+  auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
+  version: Schema.optional(Schema.Number),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "Policy" });
 
 export interface DomainForwarding {
   /** The subdomain of the registered domain that is being forwarded. E.g. `www.example.com`, `example.com` (i.e. the registered domain itself) or `*.example.com` (i.e. all subdomains). */
@@ -773,19 +661,14 @@ export interface DomainForwarding {
   sslEnabled?: boolean;
 }
 
-export const DomainForwarding: Schema.Schema<DomainForwarding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subdomain: Schema.optional(Schema.String),
-      pathForwarding: Schema.optional(Schema.Boolean),
-      pemCertificate: Schema.optional(Schema.String),
-      targetUri: Schema.optional(Schema.String),
-      redirectType: Schema.optional(Schema.String),
-      sslEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "DomainForwarding",
-  }) as any as Schema.Schema<DomainForwarding>;
+export const DomainForwarding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subdomain: Schema.optional(Schema.String),
+  pathForwarding: Schema.optional(Schema.Boolean),
+  pemCertificate: Schema.optional(Schema.String),
+  targetUri: Schema.optional(Schema.String),
+  redirectType: Schema.optional(Schema.String),
+  sslEnabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "DomainForwarding" });
 
 export interface ImportDomainRequest {
   /** Set of labels associated with the `Registration`. */
@@ -794,15 +677,10 @@ export interface ImportDomainRequest {
   domainName?: string;
 }
 
-export const ImportDomainRequest: Schema.Schema<ImportDomainRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      domainName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ImportDomainRequest",
-  }) as any as Schema.Schema<ImportDomainRequest>;
+export const ImportDomainRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  domainName: Schema.optional(Schema.String),
+}).annotate({ identifier: "ImportDomainRequest" });
 
 export interface ResourceRecordSet {
   /** The identifier of a supported record type. See the list of Supported DNS record types. */
@@ -819,33 +697,24 @@ export interface ResourceRecordSet {
   rrdata?: Array<string>;
 }
 
-export const ResourceRecordSet: Schema.Schema<ResourceRecordSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      routingPolicy: Schema.optional(RRSetRoutingPolicy),
-      name: Schema.optional(Schema.String),
-      ttl: Schema.optional(Schema.Number),
-      signatureRrdata: Schema.optional(Schema.Array(Schema.String)),
-      rrdata: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ResourceRecordSet",
-  }) as any as Schema.Schema<ResourceRecordSet>;
+export const ResourceRecordSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  routingPolicy: Schema.optional(RRSetRoutingPolicy),
+  name: Schema.optional(Schema.String),
+  ttl: Schema.optional(Schema.Number),
+  signatureRrdata: Schema.optional(Schema.Array(Schema.String)),
+  rrdata: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ResourceRecordSet" });
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsResponse",
-  }) as any as Schema.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsResponse" });
 
 export interface EmailForwarding {
   /** Target email that receives emails sent to the `alias`. */
@@ -854,29 +723,20 @@ export interface EmailForwarding {
   alias?: string;
 }
 
-export const EmailForwarding: Schema.Schema<EmailForwarding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetEmailAddress: Schema.optional(Schema.String),
-      alias: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EmailForwarding",
-  }) as any as Schema.Schema<EmailForwarding>;
+export const EmailForwarding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  targetEmailAddress: Schema.optional(Schema.String),
+  alias: Schema.optional(Schema.String),
+}).annotate({ identifier: "EmailForwarding" });
 
 export interface InitiatePushTransferRequest {
   /** Required. The Tag of the new registrar. Can be found at [List of registrars](https://nominet.uk/registrar-list/). */
   tag?: string;
 }
 
-export const InitiatePushTransferRequest: Schema.Schema<InitiatePushTransferRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InitiatePushTransferRequest",
-  }) as any as Schema.Schema<InitiatePushTransferRequest>;
+export const InitiatePushTransferRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tag: Schema.optional(Schema.String),
+  }).annotate({ identifier: "InitiatePushTransferRequest" });
 
 export interface Domain {
   /** The domain name. Unicode domain names are expressed in Punycode format. */
@@ -894,14 +754,11 @@ export interface Domain {
   yearlyPrice?: Money;
 }
 
-export const Domain: Schema.Schema<Domain> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      domainName: Schema.optional(Schema.String),
-      resourceState: Schema.optional(Schema.String),
-      yearlyPrice: Schema.optional(Money),
-    }),
-  ).annotate({ identifier: "Domain" }) as any as Schema.Schema<Domain>;
+export const Domain = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  domainName: Schema.optional(Schema.String),
+  resourceState: Schema.optional(Schema.String),
+  yearlyPrice: Schema.optional(Money),
+}).annotate({ identifier: "Domain" });
 
 export interface RetrieveImportableDomainsResponse {
   /** A list of domains that the calling user manages in Google Domains. */
@@ -910,15 +767,11 @@ export interface RetrieveImportableDomainsResponse {
   nextPageToken?: string;
 }
 
-export const RetrieveImportableDomainsResponse: Schema.Schema<RetrieveImportableDomainsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      domains: Schema.optional(Schema.Array(Domain)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RetrieveImportableDomainsResponse",
-  }) as any as Schema.Schema<RetrieveImportableDomainsResponse>;
+export const RetrieveImportableDomainsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    domains: Schema.optional(Schema.Array(Domain)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RetrieveImportableDomainsResponse" });
 
 export interface Operation {
   /** The error result of the operation in case of failure or cancellation. */
@@ -933,16 +786,13 @@ export interface Operation {
   done?: boolean;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      error: Schema.optional(Status),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      name: Schema.optional(Schema.String),
-      done: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  error: Schema.optional(Status),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  name: Schema.optional(Schema.String),
+  done: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Operation" });
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -953,23 +803,20 @@ export interface ListOperationsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(Schema.Array(Operation)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    operations: Schema.optional(Schema.Array(Operation)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 export interface ResetAuthorizationCodeRequest {}
 
-export const ResetAuthorizationCodeRequest: Schema.Schema<ResetAuthorizationCodeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const ResetAuthorizationCodeRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ResetAuthorizationCodeRequest",
-  }) as any as Schema.Schema<ResetAuthorizationCodeRequest>;
+  });
 
 export interface TransferParameters {
   /** The registrar that currently manages the domain. */
@@ -998,20 +845,15 @@ export interface TransferParameters {
     | (string & {});
 }
 
-export const TransferParameters: Schema.Schema<TransferParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      currentRegistrar: Schema.optional(Schema.String),
-      currentRegistrarUri: Schema.optional(Schema.String),
-      nameServers: Schema.optional(Schema.Array(Schema.String)),
-      yearlyPrice: Schema.optional(Money),
-      supportedPrivacy: Schema.optional(Schema.Array(Schema.String)),
-      domainName: Schema.optional(Schema.String),
-      transferLockState: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TransferParameters",
-  }) as any as Schema.Schema<TransferParameters>;
+export const TransferParameters = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  currentRegistrar: Schema.optional(Schema.String),
+  currentRegistrarUri: Schema.optional(Schema.String),
+  nameServers: Schema.optional(Schema.Array(Schema.String)),
+  yearlyPrice: Schema.optional(Money),
+  supportedPrivacy: Schema.optional(Schema.Array(Schema.String)),
+  domainName: Schema.optional(Schema.String),
+  transferLockState: Schema.optional(Schema.String),
+}).annotate({ identifier: "TransferParameters" });
 
 export interface OperationMetadata {
   /** The time the operation was created. */
@@ -1028,19 +870,14 @@ export interface OperationMetadata {
   apiVersion?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      statusDetail: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      apiVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  statusDetail: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  verb: Schema.optional(Schema.String),
+  apiVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationMetadata" });
 
 export interface RenewDomainRequest {
   /** Required. Acknowledgement of the price to renew the domain for one year. To get the price, see [Cloud Domains pricing](https://cloud.google.com/domains/pricing). If not provided, the expected price is returned in the error message. */
@@ -1049,15 +886,10 @@ export interface RenewDomainRequest {
   validateOnly?: boolean;
 }
 
-export const RenewDomainRequest: Schema.Schema<RenewDomainRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      yearlyPrice: Schema.optional(Money),
-      validateOnly: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "RenewDomainRequest",
-  }) as any as Schema.Schema<RenewDomainRequest>;
+export const RenewDomainRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  yearlyPrice: Schema.optional(Money),
+  validateOnly: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "RenewDomainRequest" });
 
 export interface ConfigureManagementSettingsRequest {
   /** Fields of the `ManagementSettings` to update. */
@@ -1066,15 +898,11 @@ export interface ConfigureManagementSettingsRequest {
   updateMask?: string;
 }
 
-export const ConfigureManagementSettingsRequest: Schema.Schema<ConfigureManagementSettingsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      managementSettings: Schema.optional(ManagementSettings),
-      updateMask: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConfigureManagementSettingsRequest",
-  }) as any as Schema.Schema<ConfigureManagementSettingsRequest>;
+export const ConfigureManagementSettingsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    managementSettings: Schema.optional(ManagementSettings),
+    updateMask: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ConfigureManagementSettingsRequest" });
 
 export interface ConfigureContactSettingsRequest {
   /** Fields of the `ContactSettings` to update. */
@@ -1091,17 +919,13 @@ export interface ConfigureContactSettingsRequest {
   >;
 }
 
-export const ConfigureContactSettingsRequest: Schema.Schema<ConfigureContactSettingsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contactSettings: Schema.optional(ContactSettings),
-      updateMask: Schema.optional(Schema.String),
-      validateOnly: Schema.optional(Schema.Boolean),
-      contactNotices: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ConfigureContactSettingsRequest",
-  }) as any as Schema.Schema<ConfigureContactSettingsRequest>;
+export const ConfigureContactSettingsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    contactSettings: Schema.optional(ContactSettings),
+    updateMask: Schema.optional(Schema.String),
+    validateOnly: Schema.optional(Schema.Boolean),
+    contactNotices: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ConfigureContactSettingsRequest" });
 
 export interface RegisterDomainRequest {
   /** Required. Yearly price to register or renew the domain. The value that should be put here can be obtained from RetrieveRegisterParameters or SearchDomains calls. */
@@ -1122,32 +946,22 @@ export interface RegisterDomainRequest {
   >;
 }
 
-export const RegisterDomainRequest: Schema.Schema<RegisterDomainRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      yearlyPrice: Schema.optional(Money),
-      domainNotices: Schema.optional(Schema.Array(Schema.String)),
-      validateOnly: Schema.optional(Schema.Boolean),
-      registration: Schema.optional(Registration),
-      contactNotices: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "RegisterDomainRequest",
-  }) as any as Schema.Schema<RegisterDomainRequest>;
+export const RegisterDomainRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  yearlyPrice: Schema.optional(Money),
+  domainNotices: Schema.optional(Schema.Array(Schema.String)),
+  validateOnly: Schema.optional(Schema.Boolean),
+  registration: Schema.optional(Registration),
+  contactNotices: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "RegisterDomainRequest" });
 
 export interface SearchDomainsResponse {
   /** Results of the domain name search. */
   registerParameters?: Array<RegisterParameters>;
 }
 
-export const SearchDomainsResponse: Schema.Schema<SearchDomainsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      registerParameters: Schema.optional(Schema.Array(RegisterParameters)),
-    }),
-  ).annotate({
-    identifier: "SearchDomainsResponse",
-  }) as any as Schema.Schema<SearchDomainsResponse>;
+export const SearchDomainsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  registerParameters: Schema.optional(Schema.Array(RegisterParameters)),
+}).annotate({ identifier: "SearchDomainsResponse" });
 
 export interface Location {
   /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
@@ -1162,16 +976,13 @@ export interface Location {
   locationId?: string;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      locationId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  locationId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Location" });
 
 export interface RetrieveGoogleDomainsForwardingConfigResponse {
   /** The list of email forwarding configurations. A forwarding configuration might not work correctly if the required DNS records are not present in the domain's authoritative DNS zone. */
@@ -1180,43 +991,30 @@ export interface RetrieveGoogleDomainsForwardingConfigResponse {
   domainForwardings?: Array<DomainForwarding>;
 }
 
-export const RetrieveGoogleDomainsForwardingConfigResponse: Schema.Schema<RetrieveGoogleDomainsForwardingConfigResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      emailForwardings: Schema.optional(Schema.Array(EmailForwarding)),
-      domainForwardings: Schema.optional(Schema.Array(DomainForwarding)),
-    }),
-  ).annotate({
-    identifier: "RetrieveGoogleDomainsForwardingConfigResponse",
-  }) as any as Schema.Schema<RetrieveGoogleDomainsForwardingConfigResponse>;
+export const RetrieveGoogleDomainsForwardingConfigResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    emailForwardings: Schema.optional(Schema.Array(EmailForwarding)),
+    domainForwardings: Schema.optional(Schema.Array(DomainForwarding)),
+  }).annotate({ identifier: "RetrieveGoogleDomainsForwardingConfigResponse" });
 
 export interface RetrieveRegisterParametersResponse {
   /** Parameters to use when calling the `RegisterDomain` method. */
   registerParameters?: RegisterParameters;
 }
 
-export const RetrieveRegisterParametersResponse: Schema.Schema<RetrieveRegisterParametersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      registerParameters: Schema.optional(RegisterParameters),
-    }),
-  ).annotate({
-    identifier: "RetrieveRegisterParametersResponse",
-  }) as any as Schema.Schema<RetrieveRegisterParametersResponse>;
+export const RetrieveRegisterParametersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    registerParameters: Schema.optional(RegisterParameters),
+  }).annotate({ identifier: "RetrieveRegisterParametersResponse" });
 
 export interface AuthorizationCode {
   /** The Authorization Code in ASCII. It can be used to transfer the domain to or from another registrar. */
   code?: string;
 }
 
-export const AuthorizationCode: Schema.Schema<AuthorizationCode> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AuthorizationCode",
-  }) as any as Schema.Schema<AuthorizationCode>;
+export const AuthorizationCode = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.String),
+}).annotate({ identifier: "AuthorizationCode" });
 
 export interface RetrieveGoogleDomainsDnsRecordsResponse {
   /** The resource record set resources (DNS Zone records). */
@@ -1225,29 +1023,21 @@ export interface RetrieveGoogleDomainsDnsRecordsResponse {
   nextPageToken?: string;
 }
 
-export const RetrieveGoogleDomainsDnsRecordsResponse: Schema.Schema<RetrieveGoogleDomainsDnsRecordsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rrset: Schema.optional(Schema.Array(ResourceRecordSet)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RetrieveGoogleDomainsDnsRecordsResponse",
-  }) as any as Schema.Schema<RetrieveGoogleDomainsDnsRecordsResponse>;
+export const RetrieveGoogleDomainsDnsRecordsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rrset: Schema.optional(Schema.Array(ResourceRecordSet)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RetrieveGoogleDomainsDnsRecordsResponse" });
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsRequest",
-  }) as any as Schema.Schema<TestIamPermissionsRequest>;
+export const TestIamPermissionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsRequest" });
 
 export interface ConfigureDnsSettingsRequest {
   /** Fields of the `DnsSettings` to update. */
@@ -1258,16 +1048,12 @@ export interface ConfigureDnsSettingsRequest {
   validateOnly?: boolean;
 }
 
-export const ConfigureDnsSettingsRequest: Schema.Schema<ConfigureDnsSettingsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dnsSettings: Schema.optional(DnsSettings),
-      updateMask: Schema.optional(Schema.String),
-      validateOnly: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ConfigureDnsSettingsRequest",
-  }) as any as Schema.Schema<ConfigureDnsSettingsRequest>;
+export const ConfigureDnsSettingsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dnsSettings: Schema.optional(DnsSettings),
+    updateMask: Schema.optional(Schema.String),
+    validateOnly: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "ConfigureDnsSettingsRequest" });
 
 export interface TransferDomainRequest {
   /** The list of contact notices that you acknowledge. The notices needed here depend on the values specified in `registration.contact_settings`. */
@@ -1286,18 +1072,13 @@ export interface TransferDomainRequest {
   authorizationCode?: AuthorizationCode;
 }
 
-export const TransferDomainRequest: Schema.Schema<TransferDomainRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contactNotices: Schema.optional(Schema.Array(Schema.String)),
-      registration: Schema.optional(Registration),
-      validateOnly: Schema.optional(Schema.Boolean),
-      yearlyPrice: Schema.optional(Money),
-      authorizationCode: Schema.optional(AuthorizationCode),
-    }),
-  ).annotate({
-    identifier: "TransferDomainRequest",
-  }) as any as Schema.Schema<TransferDomainRequest>;
+export const TransferDomainRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  contactNotices: Schema.optional(Schema.Array(Schema.String)),
+  registration: Schema.optional(Registration),
+  validateOnly: Schema.optional(Schema.Boolean),
+  yearlyPrice: Schema.optional(Money),
+  authorizationCode: Schema.optional(AuthorizationCode),
+}).annotate({ identifier: "TransferDomainRequest" });
 
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
@@ -1306,15 +1087,10 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policy: Schema.optional(Policy),
-      updateMask: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SetIamPolicyRequest",
-  }) as any as Schema.Schema<SetIamPolicyRequest>;
+export const SetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policy: Schema.optional(Policy),
+  updateMask: Schema.optional(Schema.String),
+}).annotate({ identifier: "SetIamPolicyRequest" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -1323,29 +1099,20 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(Location)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface RetrieveTransferParametersResponse {
   /** Parameters to use when calling the `TransferDomain` method. */
   transferParameters?: TransferParameters;
 }
 
-export const RetrieveTransferParametersResponse: Schema.Schema<RetrieveTransferParametersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      transferParameters: Schema.optional(TransferParameters),
-    }),
-  ).annotate({
-    identifier: "RetrieveTransferParametersResponse",
-  }) as any as Schema.Schema<RetrieveTransferParametersResponse>;
+export const RetrieveTransferParametersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    transferParameters: Schema.optional(TransferParameters),
+  }).annotate({ identifier: "RetrieveTransferParametersResponse" });
 
 // ==========================================================================
 // Operations

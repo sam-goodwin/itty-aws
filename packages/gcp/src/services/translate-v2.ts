@@ -29,29 +29,19 @@ export interface LanguagesResource {
   name?: string;
 }
 
-export const LanguagesResource: Schema.Schema<LanguagesResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      language: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LanguagesResource",
-  }) as any as Schema.Schema<LanguagesResource>;
+export const LanguagesResource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  language: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "LanguagesResource" });
 
 export interface LanguagesListResponse {
   /** List of source/target languages supported by the translation API. If target parameter is unspecified, the list is sorted by the ASCII code point order of the language code. If target parameter is specified, the list is sorted by the collation order of the language name in the target language. */
   languages?: Array<LanguagesResource>;
 }
 
-export const LanguagesListResponse: Schema.Schema<LanguagesListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      languages: Schema.optional(Schema.Array(LanguagesResource)),
-    }),
-  ).annotate({
-    identifier: "LanguagesListResponse",
-  }) as any as Schema.Schema<LanguagesListResponse>;
+export const LanguagesListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  languages: Schema.optional(Schema.Array(LanguagesResource)),
+}).annotate({ identifier: "LanguagesListResponse" });
 
 export type DetectionsResource = unknown;
 export const DetectionsResource = /*@__PURE__*/ /*#__PURE__*/ Schema.Unknown;
@@ -61,28 +51,20 @@ export interface DetectionsListResponse {
   detections?: Array<DetectionsResource>;
 }
 
-export const DetectionsListResponse: Schema.Schema<DetectionsListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      detections: Schema.optional(Schema.Array(DetectionsResource)),
-    }),
-  ).annotate({
-    identifier: "DetectionsListResponse",
-  }) as any as Schema.Schema<DetectionsListResponse>;
+export const DetectionsListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    detections: Schema.optional(Schema.Array(DetectionsResource)),
+  },
+).annotate({ identifier: "DetectionsListResponse" });
 
 export interface DetectLanguageRequest {
   /** The input text upon which to perform language detection. Repeat this parameter to perform language detection on multiple text inputs. */
   q?: Array<string>;
 }
 
-export const DetectLanguageRequest: Schema.Schema<DetectLanguageRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      q: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "DetectLanguageRequest",
-  }) as any as Schema.Schema<DetectLanguageRequest>;
+export const DetectLanguageRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  q: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "DetectLanguageRequest" });
 
 export interface TranslateTextRequest {
   /** The format of the source text, in either HTML (default) or plain-text. A value of "html" indicates HTML and a value of "text" indicates plain-text. */
@@ -97,32 +79,23 @@ export interface TranslateTextRequest {
   target?: string;
 }
 
-export const TranslateTextRequest: Schema.Schema<TranslateTextRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      format: Schema.optional(Schema.String),
-      source: Schema.optional(Schema.String),
-      model: Schema.optional(Schema.String),
-      q: Schema.optional(Schema.Array(Schema.String)),
-      target: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TranslateTextRequest",
-  }) as any as Schema.Schema<TranslateTextRequest>;
+export const TranslateTextRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  format: Schema.optional(Schema.String),
+  source: Schema.optional(Schema.String),
+  model: Schema.optional(Schema.String),
+  q: Schema.optional(Schema.Array(Schema.String)),
+  target: Schema.optional(Schema.String),
+}).annotate({ identifier: "TranslateTextRequest" });
 
 export interface GetSupportedLanguagesRequest {
   /** The language to use to return localized, human readable names of supported languages. */
   target?: string;
 }
 
-export const GetSupportedLanguagesRequest: Schema.Schema<GetSupportedLanguagesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      target: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GetSupportedLanguagesRequest",
-  }) as any as Schema.Schema<GetSupportedLanguagesRequest>;
+export const GetSupportedLanguagesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    target: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GetSupportedLanguagesRequest" });
 
 export interface TranslationsResource {
   /** The source language of the initial request, detected automatically, if no source language was passed within the initial request. If the source language was passed, auto-detection of the language will not occur and this field will be empty. */
@@ -133,30 +106,21 @@ export interface TranslationsResource {
   model?: string;
 }
 
-export const TranslationsResource: Schema.Schema<TranslationsResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      detectedSourceLanguage: Schema.optional(Schema.String),
-      translatedText: Schema.optional(Schema.String),
-      model: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TranslationsResource",
-  }) as any as Schema.Schema<TranslationsResource>;
+export const TranslationsResource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  detectedSourceLanguage: Schema.optional(Schema.String),
+  translatedText: Schema.optional(Schema.String),
+  model: Schema.optional(Schema.String),
+}).annotate({ identifier: "TranslationsResource" });
 
 export interface TranslationsListResponse {
   /** Translations contains list of translation results of given text */
   translations?: Array<TranslationsResource>;
 }
 
-export const TranslationsListResponse: Schema.Schema<TranslationsListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      translations: Schema.optional(Schema.Array(TranslationsResource)),
-    }),
-  ).annotate({
-    identifier: "TranslationsListResponse",
-  }) as any as Schema.Schema<TranslationsListResponse>;
+export const TranslationsListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    translations: Schema.optional(Schema.Array(TranslationsResource)),
+  }).annotate({ identifier: "TranslationsListResponse" });
 
 // ==========================================================================
 // Operations

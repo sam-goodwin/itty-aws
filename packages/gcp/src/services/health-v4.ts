@@ -31,16 +31,11 @@ export interface Health_Date {
   day?: number;
 }
 
-export const Health_Date: Schema.Schema<Health_Date> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      year: Schema.optional(Schema.Number),
-      month: Schema.optional(Schema.Number),
-      day: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "Health_Date",
-  }) as any as Schema.Schema<Health_Date>;
+export const Health_Date = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  year: Schema.optional(Schema.Number),
+  month: Schema.optional(Schema.Number),
+  day: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Health_Date" });
 
 export interface TimeOfDay {
   /** Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds. */
@@ -53,15 +48,12 @@ export interface TimeOfDay {
   nanos?: number;
 }
 
-export const TimeOfDay: Schema.Schema<TimeOfDay> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      seconds: Schema.optional(Schema.Number),
-      hours: Schema.optional(Schema.Number),
-      minutes: Schema.optional(Schema.Number),
-      nanos: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "TimeOfDay" }) as any as Schema.Schema<TimeOfDay>;
+export const TimeOfDay = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  seconds: Schema.optional(Schema.Number),
+  hours: Schema.optional(Schema.Number),
+  minutes: Schema.optional(Schema.Number),
+  nanos: Schema.optional(Schema.Number),
+}).annotate({ identifier: "TimeOfDay" });
 
 export interface CivilDateTime {
   /** Required. Calendar date. */
@@ -70,15 +62,10 @@ export interface CivilDateTime {
   time?: TimeOfDay;
 }
 
-export const CivilDateTime: Schema.Schema<CivilDateTime> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      date: Schema.optional(Health_Date),
-      time: Schema.optional(TimeOfDay),
-    }),
-  ).annotate({
-    identifier: "CivilDateTime",
-  }) as any as Schema.Schema<CivilDateTime>;
+export const CivilDateTime = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  date: Schema.optional(Health_Date),
+  time: Schema.optional(TimeOfDay),
+}).annotate({ identifier: "CivilDateTime" });
 
 export interface SessionTimeInterval {
   /** Required. The offset of the user's local time at the end of the session relative to the Coordinated Universal Time (UTC). */
@@ -95,19 +82,14 @@ export interface SessionTimeInterval {
   startTime?: string;
 }
 
-export const SessionTimeInterval: Schema.Schema<SessionTimeInterval> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endUtcOffset: Schema.optional(Schema.String),
-      civilStartTime: Schema.optional(CivilDateTime),
-      startUtcOffset: Schema.optional(Schema.String),
-      civilEndTime: Schema.optional(CivilDateTime),
-      endTime: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SessionTimeInterval",
-  }) as any as Schema.Schema<SessionTimeInterval>;
+export const SessionTimeInterval = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  endUtcOffset: Schema.optional(Schema.String),
+  civilStartTime: Schema.optional(CivilDateTime),
+  startUtcOffset: Schema.optional(Schema.String),
+  civilEndTime: Schema.optional(CivilDateTime),
+  endTime: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "SessionTimeInterval" });
 
 export interface VolumeQuantity {
   /** Required. Value representing the volume in milliliters. */
@@ -126,15 +108,10 @@ export interface VolumeQuantity {
     | (string & {});
 }
 
-export const VolumeQuantity: Schema.Schema<VolumeQuantity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      milliliters: Schema.optional(Schema.Number),
-      userProvidedUnit: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VolumeQuantity",
-  }) as any as Schema.Schema<VolumeQuantity>;
+export const VolumeQuantity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  milliliters: Schema.optional(Schema.Number),
+  userProvidedUnit: Schema.optional(Schema.String),
+}).annotate({ identifier: "VolumeQuantity" });
 
 export interface HydrationLog {
   /** Required. Observed interval. */
@@ -143,15 +120,10 @@ export interface HydrationLog {
   amountConsumed?: VolumeQuantity;
 }
 
-export const HydrationLog: Schema.Schema<HydrationLog> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      interval: Schema.optional(SessionTimeInterval),
-      amountConsumed: Schema.optional(VolumeQuantity),
-    }),
-  ).annotate({
-    identifier: "HydrationLog",
-  }) as any as Schema.Schema<HydrationLog>;
+export const HydrationLog = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  interval: Schema.optional(SessionTimeInterval),
+  amountConsumed: Schema.optional(VolumeQuantity),
+}).annotate({ identifier: "HydrationLog" });
 
 export interface RespiratoryRateSleepSummaryStatistics {
   /** Optional. How trustworthy the data is for the computation. */
@@ -162,16 +134,12 @@ export interface RespiratoryRateSleepSummaryStatistics {
   standardDeviation?: number;
 }
 
-export const RespiratoryRateSleepSummaryStatistics: Schema.Schema<RespiratoryRateSleepSummaryStatistics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      signalToNoise: Schema.optional(Schema.Number),
-      breathsPerMinute: Schema.optional(Schema.Number),
-      standardDeviation: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "RespiratoryRateSleepSummaryStatistics",
-  }) as any as Schema.Schema<RespiratoryRateSleepSummaryStatistics>;
+export const RespiratoryRateSleepSummaryStatistics =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    signalToNoise: Schema.optional(Schema.Number),
+    breathsPerMinute: Schema.optional(Schema.Number),
+    standardDeviation: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "RespiratoryRateSleepSummaryStatistics" });
 
 export interface ObservationSampleTime {
   /** Required. The offset of the user's local time during the observation relative to the Coordinated Universal Time (UTC). */
@@ -182,16 +150,11 @@ export interface ObservationSampleTime {
   civilTime?: CivilDateTime;
 }
 
-export const ObservationSampleTime: Schema.Schema<ObservationSampleTime> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      utcOffset: Schema.optional(Schema.String),
-      physicalTime: Schema.optional(Schema.String),
-      civilTime: Schema.optional(CivilDateTime),
-    }),
-  ).annotate({
-    identifier: "ObservationSampleTime",
-  }) as any as Schema.Schema<ObservationSampleTime>;
+export const ObservationSampleTime = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  utcOffset: Schema.optional(Schema.String),
+  physicalTime: Schema.optional(Schema.String),
+  civilTime: Schema.optional(CivilDateTime),
+}).annotate({ identifier: "ObservationSampleTime" });
 
 export interface RespiratoryRateSleepSummary {
   /** Optional. Respiratory rate statistics for light sleep. */
@@ -206,18 +169,14 @@ export interface RespiratoryRateSleepSummary {
   sampleTime?: ObservationSampleTime;
 }
 
-export const RespiratoryRateSleepSummary: Schema.Schema<RespiratoryRateSleepSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lightSleepStats: Schema.optional(RespiratoryRateSleepSummaryStatistics),
-      remSleepStats: Schema.optional(RespiratoryRateSleepSummaryStatistics),
-      fullSleepStats: Schema.optional(RespiratoryRateSleepSummaryStatistics),
-      deepSleepStats: Schema.optional(RespiratoryRateSleepSummaryStatistics),
-      sampleTime: Schema.optional(ObservationSampleTime),
-    }),
-  ).annotate({
-    identifier: "RespiratoryRateSleepSummary",
-  }) as any as Schema.Schema<RespiratoryRateSleepSummary>;
+export const RespiratoryRateSleepSummary =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    lightSleepStats: Schema.optional(RespiratoryRateSleepSummaryStatistics),
+    remSleepStats: Schema.optional(RespiratoryRateSleepSummaryStatistics),
+    fullSleepStats: Schema.optional(RespiratoryRateSleepSummaryStatistics),
+    deepSleepStats: Schema.optional(RespiratoryRateSleepSummaryStatistics),
+    sampleTime: Schema.optional(ObservationSampleTime),
+  }).annotate({ identifier: "RespiratoryRateSleepSummary" });
 
 export interface TimeInHeartRateZones {
   /** Optional. Time spent in light heart rate zone. */
@@ -230,17 +189,12 @@ export interface TimeInHeartRateZones {
   vigorousTime?: string;
 }
 
-export const TimeInHeartRateZones: Schema.Schema<TimeInHeartRateZones> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lightTime: Schema.optional(Schema.String),
-      peakTime: Schema.optional(Schema.String),
-      moderateTime: Schema.optional(Schema.String),
-      vigorousTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TimeInHeartRateZones",
-  }) as any as Schema.Schema<TimeInHeartRateZones>;
+export const TimeInHeartRateZones = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  lightTime: Schema.optional(Schema.String),
+  peakTime: Schema.optional(Schema.String),
+  moderateTime: Schema.optional(Schema.String),
+  vigorousTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "TimeInHeartRateZones" });
 
 export interface ObservationTimeInterval {
   /** Required. Observed interval start time. */
@@ -257,33 +211,24 @@ export interface ObservationTimeInterval {
   civilEndTime?: CivilDateTime;
 }
 
-export const ObservationTimeInterval: Schema.Schema<ObservationTimeInterval> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Schema.String),
-      civilStartTime: Schema.optional(CivilDateTime),
-      endUtcOffset: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      startUtcOffset: Schema.optional(Schema.String),
-      civilEndTime: Schema.optional(CivilDateTime),
-    }),
-  ).annotate({
-    identifier: "ObservationTimeInterval",
-  }) as any as Schema.Schema<ObservationTimeInterval>;
+export const ObservationTimeInterval =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startTime: Schema.optional(Schema.String),
+    civilStartTime: Schema.optional(CivilDateTime),
+    endUtcOffset: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    startUtcOffset: Schema.optional(Schema.String),
+    civilEndTime: Schema.optional(CivilDateTime),
+  }).annotate({ identifier: "ObservationTimeInterval" });
 
 export interface SedentaryPeriod {
   /** Required. Observed interval. */
   interval?: ObservationTimeInterval;
 }
 
-export const SedentaryPeriod: Schema.Schema<SedentaryPeriod> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      interval: Schema.optional(ObservationTimeInterval),
-    }),
-  ).annotate({
-    identifier: "SedentaryPeriod",
-  }) as any as Schema.Schema<SedentaryPeriod>;
+export const SedentaryPeriod = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  interval: Schema.optional(ObservationTimeInterval),
+}).annotate({ identifier: "SedentaryPeriod" });
 
 export interface ActiveMinutesByActivityLevel {
   /** Required. The level of activity. */
@@ -297,15 +242,11 @@ export interface ActiveMinutesByActivityLevel {
   activeMinutes?: string;
 }
 
-export const ActiveMinutesByActivityLevel: Schema.Schema<ActiveMinutesByActivityLevel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      activityLevel: Schema.optional(Schema.String),
-      activeMinutes: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ActiveMinutesByActivityLevel",
-  }) as any as Schema.Schema<ActiveMinutesByActivityLevel>;
+export const ActiveMinutesByActivityLevel =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    activityLevel: Schema.optional(Schema.String),
+    activeMinutes: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ActiveMinutesByActivityLevel" });
 
 export interface ActiveMinutes {
   /** Required. Observed interval. */
@@ -314,17 +255,12 @@ export interface ActiveMinutes {
   activeMinutesByActivityLevel?: Array<ActiveMinutesByActivityLevel>;
 }
 
-export const ActiveMinutes: Schema.Schema<ActiveMinutes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      interval: Schema.optional(ObservationTimeInterval),
-      activeMinutesByActivityLevel: Schema.optional(
-        Schema.Array(ActiveMinutesByActivityLevel),
-      ),
-    }),
-  ).annotate({
-    identifier: "ActiveMinutes",
-  }) as any as Schema.Schema<ActiveMinutes>;
+export const ActiveMinutes = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  interval: Schema.optional(ObservationTimeInterval),
+  activeMinutesByActivityLevel: Schema.optional(
+    Schema.Array(ActiveMinutesByActivityLevel),
+  ),
+}).annotate({ identifier: "ActiveMinutes" });
 
 export interface TimeInHeartRateZoneValue {
   /** The heart rate zone. */
@@ -339,29 +275,20 @@ export interface TimeInHeartRateZoneValue {
   duration?: string;
 }
 
-export const TimeInHeartRateZoneValue: Schema.Schema<TimeInHeartRateZoneValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      heartRateZone: Schema.optional(Schema.String),
-      duration: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TimeInHeartRateZoneValue",
-  }) as any as Schema.Schema<TimeInHeartRateZoneValue>;
+export const TimeInHeartRateZoneValue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    heartRateZone: Schema.optional(Schema.String),
+    duration: Schema.optional(Schema.String),
+  }).annotate({ identifier: "TimeInHeartRateZoneValue" });
 
 export interface FloorsRollupValue {
   /** Sum of the floors count. */
   countSum?: string;
 }
 
-export const FloorsRollupValue: Schema.Schema<FloorsRollupValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      countSum: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FloorsRollupValue",
-  }) as any as Schema.Schema<FloorsRollupValue>;
+export const FloorsRollupValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  countSum: Schema.optional(Schema.String),
+}).annotate({ identifier: "FloorsRollupValue" });
 
 export interface VolumeQuantityRollup {
   /** Required. The sum of volume in milliliters. */
@@ -380,29 +307,20 @@ export interface VolumeQuantityRollup {
     | (string & {});
 }
 
-export const VolumeQuantityRollup: Schema.Schema<VolumeQuantityRollup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      millilitersSum: Schema.optional(Schema.Number),
-      userProvidedUnitLast: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VolumeQuantityRollup",
-  }) as any as Schema.Schema<VolumeQuantityRollup>;
+export const VolumeQuantityRollup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  millilitersSum: Schema.optional(Schema.Number),
+  userProvidedUnitLast: Schema.optional(Schema.String),
+}).annotate({ identifier: "VolumeQuantityRollup" });
 
 export interface HydrationLogRollupValue {
   /** Rollup for amount consumed. */
   amountConsumed?: VolumeQuantityRollup;
 }
 
-export const HydrationLogRollupValue: Schema.Schema<HydrationLogRollupValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      amountConsumed: Schema.optional(VolumeQuantityRollup),
-    }),
-  ).annotate({
-    identifier: "HydrationLogRollupValue",
-  }) as any as Schema.Schema<HydrationLogRollupValue>;
+export const HydrationLogRollupValue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    amountConsumed: Schema.optional(VolumeQuantityRollup),
+  }).annotate({ identifier: "HydrationLogRollupValue" });
 
 export interface ExerciseMetadata {
   /** Optional. Pool length in millimeters. Only present in the swimming exercises. */
@@ -411,15 +329,10 @@ export interface ExerciseMetadata {
   hasGps?: boolean;
 }
 
-export const ExerciseMetadata: Schema.Schema<ExerciseMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      poolLengthMillimeters: Schema.optional(Schema.String),
-      hasGps: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ExerciseMetadata",
-  }) as any as Schema.Schema<ExerciseMetadata>;
+export const ExerciseMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  poolLengthMillimeters: Schema.optional(Schema.String),
+  hasGps: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "ExerciseMetadata" });
 
 export interface Profile {
   /** Output only. The date the user created their account. Updates to this field are currently not supported. */
@@ -438,18 +351,15 @@ export interface Profile {
   age?: number;
 }
 
-export const Profile: Schema.Schema<Profile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      membershipStartDate: Schema.optional(Health_Date),
-      userConfiguredWalkingStrideLengthMm: Schema.optional(Schema.Number),
-      autoWalkingStrideLengthMm: Schema.optional(Schema.Number),
-      autoRunningStrideLengthMm: Schema.optional(Schema.Number),
-      name: Schema.optional(Schema.String),
-      userConfiguredRunningStrideLengthMm: Schema.optional(Schema.Number),
-      age: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Profile" }) as any as Schema.Schema<Profile>;
+export const Profile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  membershipStartDate: Schema.optional(Health_Date),
+  userConfiguredWalkingStrideLengthMm: Schema.optional(Schema.Number),
+  autoWalkingStrideLengthMm: Schema.optional(Schema.Number),
+  autoRunningStrideLengthMm: Schema.optional(Schema.Number),
+  name: Schema.optional(Schema.String),
+  userConfiguredRunningStrideLengthMm: Schema.optional(Schema.Number),
+  age: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Profile" });
 
 export interface ExerciseEvent {
   /** Required. The type of the event, such as start, stop, pause, resume. */
@@ -468,16 +378,11 @@ export interface ExerciseEvent {
   eventUtcOffset?: string;
 }
 
-export const ExerciseEvent: Schema.Schema<ExerciseEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      exerciseEventType: Schema.optional(Schema.String),
-      eventTime: Schema.optional(Schema.String),
-      eventUtcOffset: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ExerciseEvent",
-  }) as any as Schema.Schema<ExerciseEvent>;
+export const ExerciseEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  exerciseEventType: Schema.optional(Schema.String),
+  eventTime: Schema.optional(Schema.String),
+  eventUtcOffset: Schema.optional(Schema.String),
+}).annotate({ identifier: "ExerciseEvent" });
 
 export interface HeartRateVariability {
   /** Optional. The standard deviation of the heart rate variability measurement. */
@@ -488,18 +393,13 @@ export interface HeartRateVariability {
   sampleTime?: ObservationSampleTime;
 }
 
-export const HeartRateVariability: Schema.Schema<HeartRateVariability> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      standardDeviationMilliseconds: Schema.optional(Schema.Number),
-      rootMeanSquareOfSuccessiveDifferencesMilliseconds: Schema.optional(
-        Schema.Number,
-      ),
-      sampleTime: Schema.optional(ObservationSampleTime),
-    }),
-  ).annotate({
-    identifier: "HeartRateVariability",
-  }) as any as Schema.Schema<HeartRateVariability>;
+export const HeartRateVariability = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  standardDeviationMilliseconds: Schema.optional(Schema.Number),
+  rootMeanSquareOfSuccessiveDifferencesMilliseconds: Schema.optional(
+    Schema.Number,
+  ),
+  sampleTime: Schema.optional(ObservationSampleTime),
+}).annotate({ identifier: "HeartRateVariability" });
 
 export interface Floors {
   /** Required. Observed interval */
@@ -508,13 +408,10 @@ export interface Floors {
   count?: string;
 }
 
-export const Floors: Schema.Schema<Floors> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      interval: Schema.optional(ObservationTimeInterval),
-      count: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Floors" }) as any as Schema.Schema<Floors>;
+export const Floors = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  interval: Schema.optional(ObservationTimeInterval),
+  count: Schema.optional(Schema.String),
+}).annotate({ identifier: "Floors" });
 
 export interface DailyRestingHeartRateMetadata {
   /** Required. The method used to calculate the resting heart rate. */
@@ -525,14 +422,10 @@ export interface DailyRestingHeartRateMetadata {
     | (string & {});
 }
 
-export const DailyRestingHeartRateMetadata: Schema.Schema<DailyRestingHeartRateMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      calculationMethod: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DailyRestingHeartRateMetadata",
-  }) as any as Schema.Schema<DailyRestingHeartRateMetadata>;
+export const DailyRestingHeartRateMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    calculationMethod: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DailyRestingHeartRateMetadata" });
 
 export interface DailyRestingHeartRate {
   /** Required. The resting heart rate value in beats per minute. */
@@ -543,18 +436,11 @@ export interface DailyRestingHeartRate {
   date?: Health_Date;
 }
 
-export const DailyRestingHeartRate: Schema.Schema<DailyRestingHeartRate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      beatsPerMinute: Schema.optional(Schema.String),
-      dailyRestingHeartRateMetadata: Schema.optional(
-        DailyRestingHeartRateMetadata,
-      ),
-      date: Schema.optional(Health_Date),
-    }),
-  ).annotate({
-    identifier: "DailyRestingHeartRate",
-  }) as any as Schema.Schema<DailyRestingHeartRate>;
+export const DailyRestingHeartRate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  beatsPerMinute: Schema.optional(Schema.String),
+  dailyRestingHeartRateMetadata: Schema.optional(DailyRestingHeartRateMetadata),
+  date: Schema.optional(Health_Date),
+}).annotate({ identifier: "DailyRestingHeartRate" });
 
 export interface Distance {
   /** Required. Observed interval. */
@@ -563,13 +449,10 @@ export interface Distance {
   millimeters?: string;
 }
 
-export const Distance: Schema.Schema<Distance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      interval: Schema.optional(ObservationTimeInterval),
-      millimeters: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Distance" }) as any as Schema.Schema<Distance>;
+export const Distance = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  interval: Schema.optional(ObservationTimeInterval),
+  millimeters: Schema.optional(Schema.String),
+}).annotate({ identifier: "Distance" });
 
 export interface Steps {
   /** Required. Observed interval. */
@@ -578,13 +461,10 @@ export interface Steps {
   count?: string;
 }
 
-export const Steps: Schema.Schema<Steps> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      interval: Schema.optional(ObservationTimeInterval),
-      count: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Steps" }) as any as Schema.Schema<Steps>;
+export const Steps = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  interval: Schema.optional(ObservationTimeInterval),
+  count: Schema.optional(Schema.String),
+}).annotate({ identifier: "Steps" });
 
 export interface DailyVO2Max {
   /** Required. The date for which the Daily VO2 max was measured. */
@@ -607,18 +487,13 @@ export interface DailyVO2Max {
     | (string & {});
 }
 
-export const DailyVO2Max: Schema.Schema<DailyVO2Max> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      date: Schema.optional(Health_Date),
-      vo2Max: Schema.optional(Schema.Number),
-      estimated: Schema.optional(Schema.Boolean),
-      vo2MaxCovariance: Schema.optional(Schema.Number),
-      cardioFitnessLevel: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DailyVO2Max",
-  }) as any as Schema.Schema<DailyVO2Max>;
+export const DailyVO2Max = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  date: Schema.optional(Health_Date),
+  vo2Max: Schema.optional(Schema.Number),
+  estimated: Schema.optional(Schema.Boolean),
+  vo2MaxCovariance: Schema.optional(Schema.Number),
+  cardioFitnessLevel: Schema.optional(Schema.String),
+}).annotate({ identifier: "DailyVO2Max" });
 
 export interface HeartRateMetadata {
   /** Optional. Indicates the user’s level of activity when the heart rate sample was measured */
@@ -639,15 +514,10 @@ export interface HeartRateMetadata {
     | (string & {});
 }
 
-export const HeartRateMetadata: Schema.Schema<HeartRateMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      motionContext: Schema.optional(Schema.String),
-      sensorLocation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "HeartRateMetadata",
-  }) as any as Schema.Schema<HeartRateMetadata>;
+export const HeartRateMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  motionContext: Schema.optional(Schema.String),
+  sensorLocation: Schema.optional(Schema.String),
+}).annotate({ identifier: "HeartRateMetadata" });
 
 export interface HeartRate {
   /** Optional. Metadata about the heart rate sample. */
@@ -658,14 +528,11 @@ export interface HeartRate {
   beatsPerMinute?: string;
 }
 
-export const HeartRate: Schema.Schema<HeartRate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadata: Schema.optional(HeartRateMetadata),
-      sampleTime: Schema.optional(ObservationSampleTime),
-      beatsPerMinute: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "HeartRate" }) as any as Schema.Schema<HeartRate>;
+export const HeartRate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metadata: Schema.optional(HeartRateMetadata),
+  sampleTime: Schema.optional(ObservationSampleTime),
+  beatsPerMinute: Schema.optional(Schema.String),
+}).annotate({ identifier: "HeartRate" });
 
 export interface BodyFat {
   /** Required. The time at which body fat was measured. */
@@ -674,13 +541,10 @@ export interface BodyFat {
   percentage?: number;
 }
 
-export const BodyFat: Schema.Schema<BodyFat> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sampleTime: Schema.optional(ObservationSampleTime),
-      percentage: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "BodyFat" }) as any as Schema.Schema<BodyFat>;
+export const BodyFat = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sampleTime: Schema.optional(ObservationSampleTime),
+  percentage: Schema.optional(Schema.Number),
+}).annotate({ identifier: "BodyFat" });
 
 export interface DailyRespiratoryRate {
   /** Required. The date on which the respiratory rate was measured. */
@@ -689,15 +553,10 @@ export interface DailyRespiratoryRate {
   breathsPerMinute?: number;
 }
 
-export const DailyRespiratoryRate: Schema.Schema<DailyRespiratoryRate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      date: Schema.optional(Health_Date),
-      breathsPerMinute: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "DailyRespiratoryRate",
-  }) as any as Schema.Schema<DailyRespiratoryRate>;
+export const DailyRespiratoryRate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  date: Schema.optional(Health_Date),
+  breathsPerMinute: Schema.optional(Schema.Number),
+}).annotate({ identifier: "DailyRespiratoryRate" });
 
 export interface Altitude {
   /** Required. Observed interval. */
@@ -706,13 +565,10 @@ export interface Altitude {
   gainMillimeters?: string;
 }
 
-export const Altitude: Schema.Schema<Altitude> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      interval: Schema.optional(ObservationTimeInterval),
-      gainMillimeters: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Altitude" }) as any as Schema.Schema<Altitude>;
+export const Altitude = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  interval: Schema.optional(ObservationTimeInterval),
+  gainMillimeters: Schema.optional(Schema.String),
+}).annotate({ identifier: "Altitude" });
 
 export interface DailyOxygenSaturation {
   /** Required. Date (in user's timezone) of the daily oxygen saturation record. */
@@ -727,18 +583,13 @@ export interface DailyOxygenSaturation {
   upperBoundPercentage?: number;
 }
 
-export const DailyOxygenSaturation: Schema.Schema<DailyOxygenSaturation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      date: Schema.optional(Health_Date),
-      averagePercentage: Schema.optional(Schema.Number),
-      lowerBoundPercentage: Schema.optional(Schema.Number),
-      standardDeviationPercentage: Schema.optional(Schema.Number),
-      upperBoundPercentage: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "DailyOxygenSaturation",
-  }) as any as Schema.Schema<DailyOxygenSaturation>;
+export const DailyOxygenSaturation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  date: Schema.optional(Health_Date),
+  averagePercentage: Schema.optional(Schema.Number),
+  lowerBoundPercentage: Schema.optional(Schema.Number),
+  standardDeviationPercentage: Schema.optional(Schema.Number),
+  upperBoundPercentage: Schema.optional(Schema.Number),
+}).annotate({ identifier: "DailyOxygenSaturation" });
 
 export interface OxygenSaturation {
   /** Required. The time at which oxygen saturation was measured. */
@@ -747,15 +598,10 @@ export interface OxygenSaturation {
   percentage?: number;
 }
 
-export const OxygenSaturation: Schema.Schema<OxygenSaturation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sampleTime: Schema.optional(ObservationSampleTime),
-      percentage: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "OxygenSaturation",
-  }) as any as Schema.Schema<OxygenSaturation>;
+export const OxygenSaturation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sampleTime: Schema.optional(ObservationSampleTime),
+  percentage: Schema.optional(Schema.Number),
+}).annotate({ identifier: "OxygenSaturation" });
 
 export interface Weight {
   /** Required. The time at which the weight was measured */
@@ -766,14 +612,11 @@ export interface Weight {
   notes?: string;
 }
 
-export const Weight: Schema.Schema<Weight> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sampleTime: Schema.optional(ObservationSampleTime),
-      weightGrams: Schema.optional(Schema.Number),
-      notes: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Weight" }) as any as Schema.Schema<Weight>;
+export const Weight = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sampleTime: Schema.optional(ObservationSampleTime),
+  weightGrams: Schema.optional(Schema.Number),
+  notes: Schema.optional(Schema.String),
+}).annotate({ identifier: "Weight" });
 
 export interface VO2Max {
   /** Required. The time at which VO2 max was measured. */
@@ -797,14 +640,11 @@ export interface VO2Max {
     | (string & {});
 }
 
-export const VO2Max: Schema.Schema<VO2Max> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sampleTime: Schema.optional(ObservationSampleTime),
-      vo2Max: Schema.optional(Schema.Number),
-      measurementMethod: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "VO2Max" }) as any as Schema.Schema<VO2Max>;
+export const VO2Max = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sampleTime: Schema.optional(ObservationSampleTime),
+  vo2Max: Schema.optional(Schema.Number),
+  measurementMethod: Schema.optional(Schema.String),
+}).annotate({ identifier: "VO2Max" });
 
 export interface OutOfBedSegment {
   /** Required. Segment tart time. */
@@ -817,17 +657,12 @@ export interface OutOfBedSegment {
   endTime?: string;
 }
 
-export const OutOfBedSegment: Schema.Schema<OutOfBedSegment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Schema.String),
-      endUtcOffset: Schema.optional(Schema.String),
-      startUtcOffset: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OutOfBedSegment",
-  }) as any as Schema.Schema<OutOfBedSegment>;
+export const OutOfBedSegment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startTime: Schema.optional(Schema.String),
+  endUtcOffset: Schema.optional(Schema.String),
+  startUtcOffset: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "OutOfBedSegment" });
 
 export interface SleepStage {
   /** Output only. Last update time of this sleep stages segment. */
@@ -854,18 +689,15 @@ export interface SleepStage {
   startTime?: string;
 }
 
-export const SleepStage: Schema.Schema<SleepStage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateTime: Schema.optional(Schema.String),
-      endUtcOffset: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      startUtcOffset: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "SleepStage" }) as any as Schema.Schema<SleepStage>;
+export const SleepStage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  updateTime: Schema.optional(Schema.String),
+  endUtcOffset: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  startUtcOffset: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "SleepStage" });
 
 export interface StageSummary {
   /** Output only. Total duration in minutes of a sleep stage. */
@@ -884,16 +716,11 @@ export interface StageSummary {
     | (string & {});
 }
 
-export const StageSummary: Schema.Schema<StageSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      minutes: Schema.optional(Schema.String),
-      count: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StageSummary",
-  }) as any as Schema.Schema<StageSummary>;
+export const StageSummary = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  minutes: Schema.optional(Schema.String),
+  count: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "StageSummary" });
 
 export interface SleepSummary {
   /** Output only. Delta between wake time and bedtime. It is the sum of all stages. */
@@ -910,19 +737,14 @@ export interface SleepSummary {
   minutesAsleep?: string;
 }
 
-export const SleepSummary: Schema.Schema<SleepSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      minutesInSleepPeriod: Schema.optional(Schema.String),
-      minutesAwake: Schema.optional(Schema.String),
-      stagesSummary: Schema.optional(Schema.Array(StageSummary)),
-      minutesAfterWakeUp: Schema.optional(Schema.String),
-      minutesToFallAsleep: Schema.optional(Schema.String),
-      minutesAsleep: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SleepSummary",
-  }) as any as Schema.Schema<SleepSummary>;
+export const SleepSummary = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  minutesInSleepPeriod: Schema.optional(Schema.String),
+  minutesAwake: Schema.optional(Schema.String),
+  stagesSummary: Schema.optional(Schema.Array(StageSummary)),
+  minutesAfterWakeUp: Schema.optional(Schema.String),
+  minutesToFallAsleep: Schema.optional(Schema.String),
+  minutesAsleep: Schema.optional(Schema.String),
+}).annotate({ identifier: "SleepSummary" });
 
 export interface SleepMetadata {
   /** Output only. Sleep and sleep stages algorithms finished processing. */
@@ -948,18 +770,13 @@ export interface SleepMetadata {
     | (string & {});
 }
 
-export const SleepMetadata: Schema.Schema<SleepMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      processed: Schema.optional(Schema.Boolean),
-      externalId: Schema.optional(Schema.String),
-      nap: Schema.optional(Schema.Boolean),
-      manuallyEdited: Schema.optional(Schema.Boolean),
-      stagesStatus: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SleepMetadata",
-  }) as any as Schema.Schema<SleepMetadata>;
+export const SleepMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  processed: Schema.optional(Schema.Boolean),
+  externalId: Schema.optional(Schema.String),
+  nap: Schema.optional(Schema.Boolean),
+  manuallyEdited: Schema.optional(Schema.Boolean),
+  stagesStatus: Schema.optional(Schema.String),
+}).annotate({ identifier: "SleepMetadata" });
 
 export interface Sleep {
   /** Optional. SleepType: classic or stages. */
@@ -980,19 +797,16 @@ export interface Sleep {
   createTime?: string;
 }
 
-export const Sleep: Schema.Schema<Sleep> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      outOfBedSegments: Schema.optional(Schema.Array(OutOfBedSegment)),
-      stages: Schema.optional(Schema.Array(SleepStage)),
-      summary: Schema.optional(SleepSummary),
-      updateTime: Schema.optional(Schema.String),
-      interval: Schema.optional(SessionTimeInterval),
-      metadata: Schema.optional(SleepMetadata),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Sleep" }) as any as Schema.Schema<Sleep>;
+export const Sleep = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  outOfBedSegments: Schema.optional(Schema.Array(OutOfBedSegment)),
+  stages: Schema.optional(Schema.Array(SleepStage)),
+  summary: Schema.optional(SleepSummary),
+  updateTime: Schema.optional(Schema.String),
+  interval: Schema.optional(SessionTimeInterval),
+  metadata: Schema.optional(SleepMetadata),
+  createTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Sleep" });
 
 export interface DailyHeartRateVariability {
   /** Optional. Non-REM heart rate */
@@ -1007,19 +821,16 @@ export interface DailyHeartRateVariability {
   averageHeartRateVariabilityMilliseconds?: number;
 }
 
-export const DailyHeartRateVariability: Schema.Schema<DailyHeartRateVariability> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nonRemHeartRateBeatsPerMinute: Schema.optional(Schema.String),
-      deepSleepRootMeanSquareOfSuccessiveDifferencesMilliseconds:
-        Schema.optional(Schema.Number),
-      date: Schema.optional(Health_Date),
-      entropy: Schema.optional(Schema.Number),
-      averageHeartRateVariabilityMilliseconds: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "DailyHeartRateVariability",
-  }) as any as Schema.Schema<DailyHeartRateVariability>;
+export const DailyHeartRateVariability =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nonRemHeartRateBeatsPerMinute: Schema.optional(Schema.String),
+    deepSleepRootMeanSquareOfSuccessiveDifferencesMilliseconds: Schema.optional(
+      Schema.Number,
+    ),
+    date: Schema.optional(Health_Date),
+    entropy: Schema.optional(Schema.Number),
+    averageHeartRateVariabilityMilliseconds: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "DailyHeartRateVariability" });
 
 export interface Application {
   /** Output only. A unique identifier for the mobile application that was the source of the data. This is typically the application's package name on Android (e.g., `com.google.fitbit`) or the bundle ID on iOS. This field is informational and helps trace data origin. This field is system-populated when the data is uploaded from the Fitbit mobile application, Health Connect or Health Kit. */
@@ -1030,16 +841,11 @@ export interface Application {
   googleWebClientId?: string;
 }
 
-export const Application: Schema.Schema<Application> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      packageName: Schema.optional(Schema.String),
-      webClientId: Schema.optional(Schema.String),
-      googleWebClientId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Application",
-  }) as any as Schema.Schema<Application>;
+export const Application = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  packageName: Schema.optional(Schema.String),
+  webClientId: Schema.optional(Schema.String),
+  googleWebClientId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Application" });
 
 export interface Device {
   /** Optional. Captures the form factor of the device. */
@@ -1061,14 +867,11 @@ export interface Device {
   manufacturer?: string;
 }
 
-export const Device: Schema.Schema<Device> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      formFactor: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      manufacturer: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Device" }) as any as Schema.Schema<Device>;
+export const Device = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  formFactor: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  manufacturer: Schema.optional(Schema.String),
+}).annotate({ identifier: "Device" });
 
 export interface DataSource {
   /** Output only. Captures the platform that uploaded the data. */
@@ -1098,15 +901,12 @@ export interface DataSource {
   device?: Device;
 }
 
-export const DataSource: Schema.Schema<DataSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      platform: Schema.optional(Schema.String),
-      application: Schema.optional(Application),
-      recordingMethod: Schema.optional(Schema.String),
-      device: Schema.optional(Device),
-    }),
-  ).annotate({ identifier: "DataSource" }) as any as Schema.Schema<DataSource>;
+export const DataSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  platform: Schema.optional(Schema.String),
+  application: Schema.optional(Application),
+  recordingMethod: Schema.optional(Schema.String),
+  device: Schema.optional(Device),
+}).annotate({ identifier: "DataSource" });
 
 export interface MobilityMetrics {
   /** Optional. Vertical oscillation/stride length between [5.0, 11.0]. */
@@ -1121,18 +921,13 @@ export interface MobilityMetrics {
   avgStrideLengthMillimeters?: string;
 }
 
-export const MobilityMetrics: Schema.Schema<MobilityMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      avgVerticalRatio: Schema.optional(Schema.Number),
-      avgCadenceStepsPerMinute: Schema.optional(Schema.Number),
-      avgVerticalOscillationMillimeters: Schema.optional(Schema.String),
-      avgGroundContactTimeDuration: Schema.optional(Schema.String),
-      avgStrideLengthMillimeters: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MobilityMetrics",
-  }) as any as Schema.Schema<MobilityMetrics>;
+export const MobilityMetrics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  avgVerticalRatio: Schema.optional(Schema.Number),
+  avgCadenceStepsPerMinute: Schema.optional(Schema.Number),
+  avgVerticalOscillationMillimeters: Schema.optional(Schema.String),
+  avgGroundContactTimeDuration: Schema.optional(Schema.String),
+  avgStrideLengthMillimeters: Schema.optional(Schema.String),
+}).annotate({ identifier: "MobilityMetrics" });
 
 export interface MetricsSummary {
   /** Optional. Average heart rate during the exercise. */
@@ -1161,25 +956,20 @@ export interface MetricsSummary {
   totalSwimLengths?: number;
 }
 
-export const MetricsSummary: Schema.Schema<MetricsSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      averageHeartRateBeatsPerMinute: Schema.optional(Schema.String),
-      steps: Schema.optional(Schema.String),
-      runVo2Max: Schema.optional(Schema.Number),
-      caloriesKcal: Schema.optional(Schema.Number),
-      distanceMillimeters: Schema.optional(Schema.Number),
-      heartRateZoneDurations: Schema.optional(TimeInHeartRateZones),
-      averagePaceSecondsPerMeter: Schema.optional(Schema.Number),
-      activeZoneMinutes: Schema.optional(Schema.String),
-      elevationGainMillimeters: Schema.optional(Schema.Number),
-      averageSpeedMillimetersPerSecond: Schema.optional(Schema.Number),
-      mobilityMetrics: Schema.optional(MobilityMetrics),
-      totalSwimLengths: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "MetricsSummary",
-  }) as any as Schema.Schema<MetricsSummary>;
+export const MetricsSummary = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  averageHeartRateBeatsPerMinute: Schema.optional(Schema.String),
+  steps: Schema.optional(Schema.String),
+  runVo2Max: Schema.optional(Schema.Number),
+  caloriesKcal: Schema.optional(Schema.Number),
+  distanceMillimeters: Schema.optional(Schema.Number),
+  heartRateZoneDurations: Schema.optional(TimeInHeartRateZones),
+  averagePaceSecondsPerMeter: Schema.optional(Schema.Number),
+  activeZoneMinutes: Schema.optional(Schema.String),
+  elevationGainMillimeters: Schema.optional(Schema.Number),
+  averageSpeedMillimetersPerSecond: Schema.optional(Schema.Number),
+  mobilityMetrics: Schema.optional(MobilityMetrics),
+  totalSwimLengths: Schema.optional(Schema.Number),
+}).annotate({ identifier: "MetricsSummary" });
 
 export interface SplitSummary {
   /** Required. Lap end time offset from UTC */
@@ -1204,20 +994,15 @@ export interface SplitSummary {
   metricsSummary?: MetricsSummary;
 }
 
-export const SplitSummary: Schema.Schema<SplitSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endUtcOffset: Schema.optional(Schema.String),
-      splitType: Schema.optional(Schema.String),
-      startUtcOffset: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      activeDuration: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      metricsSummary: Schema.optional(MetricsSummary),
-    }),
-  ).annotate({
-    identifier: "SplitSummary",
-  }) as any as Schema.Schema<SplitSummary>;
+export const SplitSummary = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  endUtcOffset: Schema.optional(Schema.String),
+  splitType: Schema.optional(Schema.String),
+  startUtcOffset: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  activeDuration: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+  metricsSummary: Schema.optional(MetricsSummary),
+}).annotate({ identifier: "SplitSummary" });
 
 export interface Exercise {
   /** Optional. Additional exercise metadata. */
@@ -1260,23 +1045,20 @@ export interface Exercise {
   notes?: string;
 }
 
-export const Exercise: Schema.Schema<Exercise> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      exerciseMetadata: Schema.optional(ExerciseMetadata),
-      createTime: Schema.optional(Schema.String),
-      interval: Schema.optional(SessionTimeInterval),
-      splits: Schema.optional(Schema.Array(SplitSummary)),
-      splitSummaries: Schema.optional(Schema.Array(SplitSummary)),
-      updateTime: Schema.optional(Schema.String),
-      exerciseType: Schema.optional(Schema.String),
-      activeDuration: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      exerciseEvents: Schema.optional(Schema.Array(ExerciseEvent)),
-      metricsSummary: Schema.optional(MetricsSummary),
-      notes: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Exercise" }) as any as Schema.Schema<Exercise>;
+export const Exercise = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  exerciseMetadata: Schema.optional(ExerciseMetadata),
+  createTime: Schema.optional(Schema.String),
+  interval: Schema.optional(SessionTimeInterval),
+  splits: Schema.optional(Schema.Array(SplitSummary)),
+  splitSummaries: Schema.optional(Schema.Array(SplitSummary)),
+  updateTime: Schema.optional(Schema.String),
+  exerciseType: Schema.optional(Schema.String),
+  activeDuration: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  exerciseEvents: Schema.optional(Schema.Array(ExerciseEvent)),
+  metricsSummary: Schema.optional(MetricsSummary),
+  notes: Schema.optional(Schema.String),
+}).annotate({ identifier: "Exercise" });
 
 export interface ActivityLevel {
   /** Required. Observed interval. */
@@ -1291,15 +1073,10 @@ export interface ActivityLevel {
     | (string & {});
 }
 
-export const ActivityLevel: Schema.Schema<ActivityLevel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      interval: Schema.optional(ObservationTimeInterval),
-      activityLevelType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ActivityLevel",
-  }) as any as Schema.Schema<ActivityLevel>;
+export const ActivityLevel = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  interval: Schema.optional(ObservationTimeInterval),
+  activityLevelType: Schema.optional(Schema.String),
+}).annotate({ identifier: "ActivityLevel" });
 
 export interface HeartRateZone {
   /** Required. The heart rate zone type. */
@@ -1316,16 +1093,11 @@ export interface HeartRateZone {
   maxBeatsPerMinute?: string;
 }
 
-export const HeartRateZone: Schema.Schema<HeartRateZone> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      heartRateZoneType: Schema.optional(Schema.String),
-      minBeatsPerMinute: Schema.optional(Schema.String),
-      maxBeatsPerMinute: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "HeartRateZone",
-  }) as any as Schema.Schema<HeartRateZone>;
+export const HeartRateZone = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  heartRateZoneType: Schema.optional(Schema.String),
+  minBeatsPerMinute: Schema.optional(Schema.String),
+  maxBeatsPerMinute: Schema.optional(Schema.String),
+}).annotate({ identifier: "HeartRateZone" });
 
 export interface DailyHeartRateZones {
   /** Required. Date (in user's timezone) of the heart rate zones record. */
@@ -1334,15 +1106,10 @@ export interface DailyHeartRateZones {
   heartRateZones?: Array<HeartRateZone>;
 }
 
-export const DailyHeartRateZones: Schema.Schema<DailyHeartRateZones> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      date: Schema.optional(Health_Date),
-      heartRateZones: Schema.optional(Schema.Array(HeartRateZone)),
-    }),
-  ).annotate({
-    identifier: "DailyHeartRateZones",
-  }) as any as Schema.Schema<DailyHeartRateZones>;
+export const DailyHeartRateZones = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  date: Schema.optional(Health_Date),
+  heartRateZones: Schema.optional(Schema.Array(HeartRateZone)),
+}).annotate({ identifier: "DailyHeartRateZones" });
 
 export interface DailySleepTemperatureDerivations {
   /** Required. Date for which the sleep temperature derivations are calculated. */
@@ -1355,17 +1122,13 @@ export interface DailySleepTemperatureDerivations {
   baselineTemperatureCelsius?: number;
 }
 
-export const DailySleepTemperatureDerivations: Schema.Schema<DailySleepTemperatureDerivations> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      date: Schema.optional(Health_Date),
-      nightlyTemperatureCelsius: Schema.optional(Schema.Number),
-      relativeNightlyStddev30dCelsius: Schema.optional(Schema.Number),
-      baselineTemperatureCelsius: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "DailySleepTemperatureDerivations",
-  }) as any as Schema.Schema<DailySleepTemperatureDerivations>;
+export const DailySleepTemperatureDerivations =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    date: Schema.optional(Health_Date),
+    nightlyTemperatureCelsius: Schema.optional(Schema.Number),
+    relativeNightlyStddev30dCelsius: Schema.optional(Schema.Number),
+    baselineTemperatureCelsius: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "DailySleepTemperatureDerivations" });
 
 export interface RunVO2Max {
   /** Required. The time at which the metric was measured. */
@@ -1374,13 +1137,10 @@ export interface RunVO2Max {
   runVo2Max?: number;
 }
 
-export const RunVO2Max: Schema.Schema<RunVO2Max> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sampleTime: Schema.optional(ObservationSampleTime),
-      runVo2Max: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "RunVO2Max" }) as any as Schema.Schema<RunVO2Max>;
+export const RunVO2Max = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sampleTime: Schema.optional(ObservationSampleTime),
+  runVo2Max: Schema.optional(Schema.Number),
+}).annotate({ identifier: "RunVO2Max" });
 
 export interface TimeInHeartRateZone {
   /** Required. Observed interval. */
@@ -1395,15 +1155,10 @@ export interface TimeInHeartRateZone {
     | (string & {});
 }
 
-export const TimeInHeartRateZone: Schema.Schema<TimeInHeartRateZone> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      interval: Schema.optional(ObservationTimeInterval),
-      heartRateZoneType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TimeInHeartRateZone",
-  }) as any as Schema.Schema<TimeInHeartRateZone>;
+export const TimeInHeartRateZone = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  interval: Schema.optional(ObservationTimeInterval),
+  heartRateZoneType: Schema.optional(Schema.String),
+}).annotate({ identifier: "TimeInHeartRateZone" });
 
 export interface ActiveZoneMinutes {
   /** Required. Observed interval. */
@@ -1419,16 +1174,11 @@ export interface ActiveZoneMinutes {
   activeZoneMinutes?: string;
 }
 
-export const ActiveZoneMinutes: Schema.Schema<ActiveZoneMinutes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      interval: Schema.optional(ObservationTimeInterval),
-      heartRateZone: Schema.optional(Schema.String),
-      activeZoneMinutes: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ActiveZoneMinutes",
-  }) as any as Schema.Schema<ActiveZoneMinutes>;
+export const ActiveZoneMinutes = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  interval: Schema.optional(ObservationTimeInterval),
+  heartRateZone: Schema.optional(Schema.String),
+  activeZoneMinutes: Schema.optional(Schema.String),
+}).annotate({ identifier: "ActiveZoneMinutes" });
 
 export interface DataPoint {
   /** Optional. Data for points in the `heart-rate-variability` sample data type collection. */
@@ -1491,42 +1241,39 @@ export interface DataPoint {
   sedentaryPeriod?: SedentaryPeriod;
 }
 
-export const DataPoint: Schema.Schema<DataPoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      heartRateVariability: Schema.optional(HeartRateVariability),
-      name: Schema.optional(Schema.String),
-      floors: Schema.optional(Floors),
-      dailyRestingHeartRate: Schema.optional(DailyRestingHeartRate),
-      distance: Schema.optional(Distance),
-      steps: Schema.optional(Steps),
-      dailyVo2Max: Schema.optional(DailyVO2Max),
-      respiratoryRateSleepSummary: Schema.optional(RespiratoryRateSleepSummary),
-      activeMinutes: Schema.optional(ActiveMinutes),
-      heartRate: Schema.optional(HeartRate),
-      bodyFat: Schema.optional(BodyFat),
-      dailyRespiratoryRate: Schema.optional(DailyRespiratoryRate),
-      altitude: Schema.optional(Altitude),
-      dailyOxygenSaturation: Schema.optional(DailyOxygenSaturation),
-      oxygenSaturation: Schema.optional(OxygenSaturation),
-      weight: Schema.optional(Weight),
-      vo2Max: Schema.optional(VO2Max),
-      sleep: Schema.optional(Sleep),
-      hydrationLog: Schema.optional(HydrationLog),
-      dailyHeartRateVariability: Schema.optional(DailyHeartRateVariability),
-      dataSource: Schema.optional(DataSource),
-      exercise: Schema.optional(Exercise),
-      activityLevel: Schema.optional(ActivityLevel),
-      dailyHeartRateZones: Schema.optional(DailyHeartRateZones),
-      dailySleepTemperatureDerivations: Schema.optional(
-        DailySleepTemperatureDerivations,
-      ),
-      runVo2Max: Schema.optional(RunVO2Max),
-      timeInHeartRateZone: Schema.optional(TimeInHeartRateZone),
-      activeZoneMinutes: Schema.optional(ActiveZoneMinutes),
-      sedentaryPeriod: Schema.optional(SedentaryPeriod),
-    }),
-  ).annotate({ identifier: "DataPoint" }) as any as Schema.Schema<DataPoint>;
+export const DataPoint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  heartRateVariability: Schema.optional(HeartRateVariability),
+  name: Schema.optional(Schema.String),
+  floors: Schema.optional(Floors),
+  dailyRestingHeartRate: Schema.optional(DailyRestingHeartRate),
+  distance: Schema.optional(Distance),
+  steps: Schema.optional(Steps),
+  dailyVo2Max: Schema.optional(DailyVO2Max),
+  respiratoryRateSleepSummary: Schema.optional(RespiratoryRateSleepSummary),
+  activeMinutes: Schema.optional(ActiveMinutes),
+  heartRate: Schema.optional(HeartRate),
+  bodyFat: Schema.optional(BodyFat),
+  dailyRespiratoryRate: Schema.optional(DailyRespiratoryRate),
+  altitude: Schema.optional(Altitude),
+  dailyOxygenSaturation: Schema.optional(DailyOxygenSaturation),
+  oxygenSaturation: Schema.optional(OxygenSaturation),
+  weight: Schema.optional(Weight),
+  vo2Max: Schema.optional(VO2Max),
+  sleep: Schema.optional(Sleep),
+  hydrationLog: Schema.optional(HydrationLog),
+  dailyHeartRateVariability: Schema.optional(DailyHeartRateVariability),
+  dataSource: Schema.optional(DataSource),
+  exercise: Schema.optional(Exercise),
+  activityLevel: Schema.optional(ActivityLevel),
+  dailyHeartRateZones: Schema.optional(DailyHeartRateZones),
+  dailySleepTemperatureDerivations: Schema.optional(
+    DailySleepTemperatureDerivations,
+  ),
+  runVo2Max: Schema.optional(RunVO2Max),
+  timeInHeartRateZone: Schema.optional(TimeInHeartRateZone),
+  activeZoneMinutes: Schema.optional(ActiveZoneMinutes),
+  sedentaryPeriod: Schema.optional(SedentaryPeriod),
+}).annotate({ identifier: "DataPoint" });
 
 export interface ListDataPointsResponse {
   /** Data points matching the query */
@@ -1535,15 +1282,12 @@ export interface ListDataPointsResponse {
   nextPageToken?: string;
 }
 
-export const ListDataPointsResponse: Schema.Schema<ListDataPointsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataPoints: Schema.optional(Schema.Array(DataPoint)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListDataPointsResponse",
-  }) as any as Schema.Schema<ListDataPointsResponse>;
+export const ListDataPointsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    dataPoints: Schema.optional(Schema.Array(DataPoint)),
+    nextPageToken: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ListDataPointsResponse" });
 
 export interface ActivityLevelRollupByActivityLevelType {
   /** Activity level type. */
@@ -1558,15 +1302,11 @@ export interface ActivityLevelRollupByActivityLevelType {
   totalDuration?: string;
 }
 
-export const ActivityLevelRollupByActivityLevelType: Schema.Schema<ActivityLevelRollupByActivityLevelType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      activityLevelType: Schema.optional(Schema.String),
-      totalDuration: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ActivityLevelRollupByActivityLevelType",
-  }) as any as Schema.Schema<ActivityLevelRollupByActivityLevelType>;
+export const ActivityLevelRollupByActivityLevelType =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    activityLevelType: Schema.optional(Schema.String),
+    totalDuration: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ActivityLevelRollupByActivityLevelType" });
 
 export interface ReconciledDataPoint {
   /** Data for points in the `steps` interval data type collection. */
@@ -1627,43 +1367,38 @@ export interface ReconciledDataPoint {
   activityLevel?: ActivityLevel;
 }
 
-export const ReconciledDataPoint: Schema.Schema<ReconciledDataPoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      steps: Schema.optional(Steps),
-      dailyVo2Max: Schema.optional(DailyVO2Max),
-      respiratoryRateSleepSummary: Schema.optional(RespiratoryRateSleepSummary),
-      heartRateVariability: Schema.optional(HeartRateVariability),
-      floors: Schema.optional(Floors),
-      dailyRestingHeartRate: Schema.optional(DailyRestingHeartRate),
-      distance: Schema.optional(Distance),
-      altitude: Schema.optional(Altitude),
-      activeMinutes: Schema.optional(ActiveMinutes),
-      heartRate: Schema.optional(HeartRate),
-      bodyFat: Schema.optional(BodyFat),
-      dailyRespiratoryRate: Schema.optional(DailyRespiratoryRate),
-      sleep: Schema.optional(Sleep),
-      hydrationLog: Schema.optional(HydrationLog),
-      dailyHeartRateVariability: Schema.optional(DailyHeartRateVariability),
-      dataPointName: Schema.optional(Schema.String),
-      dailyOxygenSaturation: Schema.optional(DailyOxygenSaturation),
-      oxygenSaturation: Schema.optional(OxygenSaturation),
-      weight: Schema.optional(Weight),
-      vo2Max: Schema.optional(VO2Max),
-      dailyHeartRateZones: Schema.optional(DailyHeartRateZones),
-      dailySleepTemperatureDerivations: Schema.optional(
-        DailySleepTemperatureDerivations,
-      ),
-      runVo2Max: Schema.optional(RunVO2Max),
-      timeInHeartRateZone: Schema.optional(TimeInHeartRateZone),
-      activeZoneMinutes: Schema.optional(ActiveZoneMinutes),
-      sedentaryPeriod: Schema.optional(SedentaryPeriod),
-      exercise: Schema.optional(Exercise),
-      activityLevel: Schema.optional(ActivityLevel),
-    }),
-  ).annotate({
-    identifier: "ReconciledDataPoint",
-  }) as any as Schema.Schema<ReconciledDataPoint>;
+export const ReconciledDataPoint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  steps: Schema.optional(Steps),
+  dailyVo2Max: Schema.optional(DailyVO2Max),
+  respiratoryRateSleepSummary: Schema.optional(RespiratoryRateSleepSummary),
+  heartRateVariability: Schema.optional(HeartRateVariability),
+  floors: Schema.optional(Floors),
+  dailyRestingHeartRate: Schema.optional(DailyRestingHeartRate),
+  distance: Schema.optional(Distance),
+  altitude: Schema.optional(Altitude),
+  activeMinutes: Schema.optional(ActiveMinutes),
+  heartRate: Schema.optional(HeartRate),
+  bodyFat: Schema.optional(BodyFat),
+  dailyRespiratoryRate: Schema.optional(DailyRespiratoryRate),
+  sleep: Schema.optional(Sleep),
+  hydrationLog: Schema.optional(HydrationLog),
+  dailyHeartRateVariability: Schema.optional(DailyHeartRateVariability),
+  dataPointName: Schema.optional(Schema.String),
+  dailyOxygenSaturation: Schema.optional(DailyOxygenSaturation),
+  oxygenSaturation: Schema.optional(OxygenSaturation),
+  weight: Schema.optional(Weight),
+  vo2Max: Schema.optional(VO2Max),
+  dailyHeartRateZones: Schema.optional(DailyHeartRateZones),
+  dailySleepTemperatureDerivations: Schema.optional(
+    DailySleepTemperatureDerivations,
+  ),
+  runVo2Max: Schema.optional(RunVO2Max),
+  timeInHeartRateZone: Schema.optional(TimeInHeartRateZone),
+  activeZoneMinutes: Schema.optional(ActiveZoneMinutes),
+  sedentaryPeriod: Schema.optional(SedentaryPeriod),
+  exercise: Schema.optional(Exercise),
+  activityLevel: Schema.optional(ActivityLevel),
+}).annotate({ identifier: "ReconciledDataPoint" });
 
 export interface Interval {
   /** Optional. Exclusive end of the interval. If specified, a Timestamp matching this interval will have to be before the end. */
@@ -1672,13 +1407,10 @@ export interface Interval {
   startTime?: string;
 }
 
-export const Interval: Schema.Schema<Interval> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endTime: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Interval" }) as any as Schema.Schema<Interval>;
+export const Interval = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  endTime: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Interval" });
 
 export interface RollUpDataPointsRequest {
   /** Required. Closed-open range of data points that will be rolled up. The maximum range for `calories-in-heart-rate-zone`, `heart-rate`, `active-minutes` and `total-calories` is 14 days. The maximum range for all other data types is 90 days. */
@@ -1693,18 +1425,14 @@ export interface RollUpDataPointsRequest {
   dataSourceFamily?: string;
 }
 
-export const RollUpDataPointsRequest: Schema.Schema<RollUpDataPointsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      range: Schema.optional(Interval),
-      pageToken: Schema.optional(Schema.String),
-      pageSize: Schema.optional(Schema.Number),
-      windowSize: Schema.optional(Schema.String),
-      dataSourceFamily: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RollUpDataPointsRequest",
-  }) as any as Schema.Schema<RollUpDataPointsRequest>;
+export const RollUpDataPointsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    range: Schema.optional(Interval),
+    pageToken: Schema.optional(Schema.String),
+    pageSize: Schema.optional(Schema.Number),
+    windowSize: Schema.optional(Schema.String),
+    dataSourceFamily: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RollUpDataPointsRequest" });
 
 export interface HeartRateRollupValue {
   /** The average heart rate value in the interval. */
@@ -1715,16 +1443,11 @@ export interface HeartRateRollupValue {
   beatsPerMinuteMin?: number;
 }
 
-export const HeartRateRollupValue: Schema.Schema<HeartRateRollupValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      beatsPerMinuteAvg: Schema.optional(Schema.Number),
-      beatsPerMinuteMax: Schema.optional(Schema.Number),
-      beatsPerMinuteMin: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "HeartRateRollupValue",
-  }) as any as Schema.Schema<HeartRateRollupValue>;
+export const HeartRateRollupValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  beatsPerMinuteAvg: Schema.optional(Schema.Number),
+  beatsPerMinuteMax: Schema.optional(Schema.Number),
+  beatsPerMinuteMin: Schema.optional(Schema.Number),
+}).annotate({ identifier: "HeartRateRollupValue" });
 
 export interface ActiveZoneMinutesRollupValue {
   /** Active zone minutes in `HeartRateZone.CARDIO`. */
@@ -1735,16 +1458,12 @@ export interface ActiveZoneMinutesRollupValue {
   sumInPeakHeartZone?: string;
 }
 
-export const ActiveZoneMinutesRollupValue: Schema.Schema<ActiveZoneMinutesRollupValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sumInCardioHeartZone: Schema.optional(Schema.String),
-      sumInFatBurnHeartZone: Schema.optional(Schema.String),
-      sumInPeakHeartZone: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ActiveZoneMinutesRollupValue",
-  }) as any as Schema.Schema<ActiveZoneMinutesRollupValue>;
+export const ActiveZoneMinutesRollupValue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sumInCardioHeartZone: Schema.optional(Schema.String),
+    sumInFatBurnHeartZone: Schema.optional(Schema.String),
+    sumInPeakHeartZone: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ActiveZoneMinutesRollupValue" });
 
 export interface ActiveMinutesRollupByActivityLevel {
   /** The level of activity. */
@@ -1758,31 +1477,23 @@ export interface ActiveMinutesRollupByActivityLevel {
   activeMinutesSum?: string;
 }
 
-export const ActiveMinutesRollupByActivityLevel: Schema.Schema<ActiveMinutesRollupByActivityLevel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      activityLevel: Schema.optional(Schema.String),
-      activeMinutesSum: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ActiveMinutesRollupByActivityLevel",
-  }) as any as Schema.Schema<ActiveMinutesRollupByActivityLevel>;
+export const ActiveMinutesRollupByActivityLevel =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    activityLevel: Schema.optional(Schema.String),
+    activeMinutesSum: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ActiveMinutesRollupByActivityLevel" });
 
 export interface ActiveMinutesRollupValue {
   /** Active minutes by activity level. At most one record per activity level is allowed. */
   activeMinutesRollupByActivityLevel?: Array<ActiveMinutesRollupByActivityLevel>;
 }
 
-export const ActiveMinutesRollupValue: Schema.Schema<ActiveMinutesRollupValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      activeMinutesRollupByActivityLevel: Schema.optional(
-        Schema.Array(ActiveMinutesRollupByActivityLevel),
-      ),
-    }),
-  ).annotate({
-    identifier: "ActiveMinutesRollupValue",
-  }) as any as Schema.Schema<ActiveMinutesRollupValue>;
+export const ActiveMinutesRollupValue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    activeMinutesRollupByActivityLevel: Schema.optional(
+      Schema.Array(ActiveMinutesRollupByActivityLevel),
+    ),
+  }).annotate({ identifier: "ActiveMinutesRollupValue" });
 
 export interface CaloriesInHeartRateZoneValue {
   /** The amount of kilocalories burned in the specified heart rate zone. */
@@ -1797,45 +1508,33 @@ export interface CaloriesInHeartRateZoneValue {
     | (string & {});
 }
 
-export const CaloriesInHeartRateZoneValue: Schema.Schema<CaloriesInHeartRateZoneValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kcal: Schema.optional(Schema.Number),
-      heartRateZone: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CaloriesInHeartRateZoneValue",
-  }) as any as Schema.Schema<CaloriesInHeartRateZoneValue>;
+export const CaloriesInHeartRateZoneValue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kcal: Schema.optional(Schema.Number),
+    heartRateZone: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CaloriesInHeartRateZoneValue" });
 
 export interface CaloriesInHeartRateZoneRollupValue {
   /** List of calories burned in each heart rate zone. */
   caloriesInHeartRateZones?: Array<CaloriesInHeartRateZoneValue>;
 }
 
-export const CaloriesInHeartRateZoneRollupValue: Schema.Schema<CaloriesInHeartRateZoneRollupValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      caloriesInHeartRateZones: Schema.optional(
-        Schema.Array(CaloriesInHeartRateZoneValue),
-      ),
-    }),
-  ).annotate({
-    identifier: "CaloriesInHeartRateZoneRollupValue",
-  }) as any as Schema.Schema<CaloriesInHeartRateZoneRollupValue>;
+export const CaloriesInHeartRateZoneRollupValue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    caloriesInHeartRateZones: Schema.optional(
+      Schema.Array(CaloriesInHeartRateZoneValue),
+    ),
+  }).annotate({ identifier: "CaloriesInHeartRateZoneRollupValue" });
 
 export interface ExportExerciseTcxResponse {
   /** Contains the exported TCX data. */
   tcxData?: string;
 }
 
-export const ExportExerciseTcxResponse: Schema.Schema<ExportExerciseTcxResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tcxData: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ExportExerciseTcxResponse",
-  }) as any as Schema.Schema<ExportExerciseTcxResponse>;
+export const ExportExerciseTcxResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tcxData: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ExportExerciseTcxResponse" });
 
 export interface RunVO2MaxRollupValue {
   /** Minimum value of run VO2 max in the interval.. */
@@ -1846,16 +1545,11 @@ export interface RunVO2MaxRollupValue {
   rateMax?: number;
 }
 
-export const RunVO2MaxRollupValue: Schema.Schema<RunVO2MaxRollupValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rateMin: Schema.optional(Schema.Number),
-      rateAvg: Schema.optional(Schema.Number),
-      rateMax: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "RunVO2MaxRollupValue",
-  }) as any as Schema.Schema<RunVO2MaxRollupValue>;
+export const RunVO2MaxRollupValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  rateMin: Schema.optional(Schema.Number),
+  rateAvg: Schema.optional(Schema.Number),
+  rateMax: Schema.optional(Schema.Number),
+}).annotate({ identifier: "RunVO2MaxRollupValue" });
 
 export interface Identity {
   /** Output only. The legacy Fitbit User identifier. This is the Fitbit ID used in the legacy Fitbit APIs (v1-v3). It can be referenced by clients migrating from the legacy Fitbit APIs to map their existing identifiers to the new Google user ID. It **must not** be used for any other purpose. It is not of any use for new clients using only the Google Health APIs. Valid values are strings of 1-63 characters, and valid characters are lowercase and uppercase letters, numbers, and hyphens. */
@@ -1866,42 +1560,30 @@ export interface Identity {
   name?: string;
 }
 
-export const Identity: Schema.Schema<Identity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      legacyUserId: Schema.optional(Schema.String),
-      healthUserId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Identity" }) as any as Schema.Schema<Identity>;
+export const Identity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  legacyUserId: Schema.optional(Schema.String),
+  healthUserId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Identity" });
 
 export interface TotalCaloriesRollupValue {
   /** Sum of the total calories in kilocalories. */
   kcalSum?: number;
 }
 
-export const TotalCaloriesRollupValue: Schema.Schema<TotalCaloriesRollupValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kcalSum: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "TotalCaloriesRollupValue",
-  }) as any as Schema.Schema<TotalCaloriesRollupValue>;
+export const TotalCaloriesRollupValue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kcalSum: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "TotalCaloriesRollupValue" });
 
 export interface BodyFatRollupValue {
   /** Average body fat percentage. */
   bodyFatPercentageAvg?: number;
 }
 
-export const BodyFatRollupValue: Schema.Schema<BodyFatRollupValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bodyFatPercentageAvg: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "BodyFatRollupValue",
-  }) as any as Schema.Schema<BodyFatRollupValue>;
+export const BodyFatRollupValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bodyFatPercentageAvg: Schema.optional(Schema.Number),
+}).annotate({ identifier: "BodyFatRollupValue" });
 
 export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
@@ -1912,16 +1594,13 @@ export interface Status {
   message?: string;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+}).annotate({ identifier: "Status" });
 
 export interface ReconcileDataPointsResponse {
   /** Data points matching the query */
@@ -1930,59 +1609,41 @@ export interface ReconcileDataPointsResponse {
   nextPageToken?: string;
 }
 
-export const ReconcileDataPointsResponse: Schema.Schema<ReconcileDataPointsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataPoints: Schema.optional(Schema.Array(ReconciledDataPoint)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ReconcileDataPointsResponse",
-  }) as any as Schema.Schema<ReconcileDataPointsResponse>;
+export const ReconcileDataPointsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataPoints: Schema.optional(Schema.Array(ReconciledDataPoint)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ReconcileDataPointsResponse" });
 
 export interface StepsRollupValue {
   /** Total number of steps in the interval. */
   countSum?: string;
 }
 
-export const StepsRollupValue: Schema.Schema<StepsRollupValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      countSum: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StepsRollupValue",
-  }) as any as Schema.Schema<StepsRollupValue>;
+export const StepsRollupValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  countSum: Schema.optional(Schema.String),
+}).annotate({ identifier: "StepsRollupValue" });
 
 export interface AltitudeRollupValue {
   /** Sum of the altitude gain in millimeters. */
   gainMillimetersSum?: string;
 }
 
-export const AltitudeRollupValue: Schema.Schema<AltitudeRollupValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gainMillimetersSum: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AltitudeRollupValue",
-  }) as any as Schema.Schema<AltitudeRollupValue>;
+export const AltitudeRollupValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gainMillimetersSum: Schema.optional(Schema.String),
+}).annotate({ identifier: "AltitudeRollupValue" });
 
 export interface ActivityLevelRollupValue {
   /** List of total durations in each activity level type. */
   activityLevelRollupsByActivityLevelType?: Array<ActivityLevelRollupByActivityLevelType>;
 }
 
-export const ActivityLevelRollupValue: Schema.Schema<ActivityLevelRollupValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      activityLevelRollupsByActivityLevelType: Schema.optional(
-        Schema.Array(ActivityLevelRollupByActivityLevelType),
-      ),
-    }),
-  ).annotate({
-    identifier: "ActivityLevelRollupValue",
-  }) as any as Schema.Schema<ActivityLevelRollupValue>;
+export const ActivityLevelRollupValue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    activityLevelRollupsByActivityLevelType: Schema.optional(
+      Schema.Array(ActivityLevelRollupByActivityLevelType),
+    ),
+  }).annotate({ identifier: "ActivityLevelRollupValue" });
 
 export interface TimeZone {
   /** IANA Time Zone Database time zone. For example "America/New_York". */
@@ -1991,13 +1652,10 @@ export interface TimeZone {
   version?: string;
 }
 
-export const TimeZone: Schema.Schema<TimeZone> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "TimeZone" }) as any as Schema.Schema<TimeZone>;
+export const TimeZone = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+}).annotate({ identifier: "TimeZone" });
 
 export interface DateTime {
   /** Optional. Fractions of seconds in nanoseconds. Must be from 0 to 999,999,999, defaults to 0. */
@@ -2020,20 +1678,17 @@ export interface DateTime {
   day?: number;
 }
 
-export const DateTime: Schema.Schema<DateTime> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nanos: Schema.optional(Schema.Number),
-      month: Schema.optional(Schema.Number),
-      seconds: Schema.optional(Schema.Number),
-      utcOffset: Schema.optional(Schema.String),
-      year: Schema.optional(Schema.Number),
-      minutes: Schema.optional(Schema.Number),
-      timeZone: Schema.optional(TimeZone),
-      hours: Schema.optional(Schema.Number),
-      day: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "DateTime" }) as any as Schema.Schema<DateTime>;
+export const DateTime = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nanos: Schema.optional(Schema.Number),
+  month: Schema.optional(Schema.Number),
+  seconds: Schema.optional(Schema.Number),
+  utcOffset: Schema.optional(Schema.String),
+  year: Schema.optional(Schema.Number),
+  minutes: Schema.optional(Schema.Number),
+  timeZone: Schema.optional(TimeZone),
+  hours: Schema.optional(Schema.Number),
+  day: Schema.optional(Schema.Number),
+}).annotate({ identifier: "DateTime" });
 
 export interface Settings {
   /** Optional. The measurement unit defined in the user's account settings. */
@@ -2106,83 +1761,62 @@ export interface Settings {
     | (string & {});
 }
 
-export const Settings: Schema.Schema<Settings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      heightUnit: Schema.optional(Schema.String),
-      strideLengthWalkingType: Schema.optional(Schema.String),
-      timeZone: Schema.optional(Schema.String),
-      utcOffset: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      swimUnit: Schema.optional(Schema.String),
-      glucoseUnit: Schema.optional(Schema.String),
-      strideLengthRunningType: Schema.optional(Schema.String),
-      languageLocale: Schema.optional(Schema.String),
-      weightUnit: Schema.optional(Schema.String),
-      waterUnit: Schema.optional(Schema.String),
-      distanceUnit: Schema.optional(Schema.String),
-      autoStrideEnabled: Schema.optional(Schema.Boolean),
-      temperatureUnit: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Settings" }) as any as Schema.Schema<Settings>;
+export const Settings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  heightUnit: Schema.optional(Schema.String),
+  strideLengthWalkingType: Schema.optional(Schema.String),
+  timeZone: Schema.optional(Schema.String),
+  utcOffset: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  swimUnit: Schema.optional(Schema.String),
+  glucoseUnit: Schema.optional(Schema.String),
+  strideLengthRunningType: Schema.optional(Schema.String),
+  languageLocale: Schema.optional(Schema.String),
+  weightUnit: Schema.optional(Schema.String),
+  waterUnit: Schema.optional(Schema.String),
+  distanceUnit: Schema.optional(Schema.String),
+  autoStrideEnabled: Schema.optional(Schema.Boolean),
+  temperatureUnit: Schema.optional(Schema.String),
+}).annotate({ identifier: "Settings" });
 
 export interface DistanceRollupValue {
   /** Sum of the distance in millimeters. */
   millimetersSum?: string;
 }
 
-export const DistanceRollupValue: Schema.Schema<DistanceRollupValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      millimetersSum: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DistanceRollupValue",
-  }) as any as Schema.Schema<DistanceRollupValue>;
+export const DistanceRollupValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  millimetersSum: Schema.optional(Schema.String),
+}).annotate({ identifier: "DistanceRollupValue" });
 
 export interface WeightRollupValue {
   /** Average weight in grams. */
   weightGramsAvg?: number;
 }
 
-export const WeightRollupValue: Schema.Schema<WeightRollupValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      weightGramsAvg: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "WeightRollupValue",
-  }) as any as Schema.Schema<WeightRollupValue>;
+export const WeightRollupValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  weightGramsAvg: Schema.optional(Schema.Number),
+}).annotate({ identifier: "WeightRollupValue" });
 
 export interface TimeInHeartRateZoneRollupValue {
   /** List of time spent in each heart rate zone. */
   timeInHeartRateZones?: Array<TimeInHeartRateZoneValue>;
 }
 
-export const TimeInHeartRateZoneRollupValue: Schema.Schema<TimeInHeartRateZoneRollupValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      timeInHeartRateZones: Schema.optional(
-        Schema.Array(TimeInHeartRateZoneValue),
-      ),
-    }),
-  ).annotate({
-    identifier: "TimeInHeartRateZoneRollupValue",
-  }) as any as Schema.Schema<TimeInHeartRateZoneRollupValue>;
+export const TimeInHeartRateZoneRollupValue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    timeInHeartRateZones: Schema.optional(
+      Schema.Array(TimeInHeartRateZoneValue),
+    ),
+  }).annotate({ identifier: "TimeInHeartRateZoneRollupValue" });
 
 export interface SedentaryPeriodRollupValue {
   /** The total time user spent sedentary during the interval. */
   durationSum?: string;
 }
 
-export const SedentaryPeriodRollupValue: Schema.Schema<SedentaryPeriodRollupValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      durationSum: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SedentaryPeriodRollupValue",
-  }) as any as Schema.Schema<SedentaryPeriodRollupValue>;
+export const SedentaryPeriodRollupValue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    durationSum: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SedentaryPeriodRollupValue" });
 
 export interface RollupDataPoint {
   /** Returned by default when rolling up data points from the `floors` data type, or when requested explicitly using the `floors` rollup type identifier. */
@@ -2223,33 +1857,26 @@ export interface RollupDataPoint {
   sedentaryPeriod?: SedentaryPeriodRollupValue;
 }
 
-export const RollupDataPoint: Schema.Schema<RollupDataPoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      floors: Schema.optional(FloorsRollupValue),
-      distance: Schema.optional(DistanceRollupValue),
-      weight: Schema.optional(WeightRollupValue),
-      caloriesInHeartRateZone: Schema.optional(
-        CaloriesInHeartRateZoneRollupValue,
-      ),
-      steps: Schema.optional(StepsRollupValue),
-      hydrationLog: Schema.optional(HydrationLogRollupValue),
-      totalCalories: Schema.optional(TotalCaloriesRollupValue),
-      endTime: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      activityLevel: Schema.optional(ActivityLevelRollupValue),
-      heartRate: Schema.optional(HeartRateRollupValue),
-      bodyFat: Schema.optional(BodyFatRollupValue),
-      activeMinutes: Schema.optional(ActiveMinutesRollupValue),
-      runVo2Max: Schema.optional(RunVO2MaxRollupValue),
-      timeInHeartRateZone: Schema.optional(TimeInHeartRateZoneRollupValue),
-      altitude: Schema.optional(AltitudeRollupValue),
-      activeZoneMinutes: Schema.optional(ActiveZoneMinutesRollupValue),
-      sedentaryPeriod: Schema.optional(SedentaryPeriodRollupValue),
-    }),
-  ).annotate({
-    identifier: "RollupDataPoint",
-  }) as any as Schema.Schema<RollupDataPoint>;
+export const RollupDataPoint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  floors: Schema.optional(FloorsRollupValue),
+  distance: Schema.optional(DistanceRollupValue),
+  weight: Schema.optional(WeightRollupValue),
+  caloriesInHeartRateZone: Schema.optional(CaloriesInHeartRateZoneRollupValue),
+  steps: Schema.optional(StepsRollupValue),
+  hydrationLog: Schema.optional(HydrationLogRollupValue),
+  totalCalories: Schema.optional(TotalCaloriesRollupValue),
+  endTime: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+  activityLevel: Schema.optional(ActivityLevelRollupValue),
+  heartRate: Schema.optional(HeartRateRollupValue),
+  bodyFat: Schema.optional(BodyFatRollupValue),
+  activeMinutes: Schema.optional(ActiveMinutesRollupValue),
+  runVo2Max: Schema.optional(RunVO2MaxRollupValue),
+  timeInHeartRateZone: Schema.optional(TimeInHeartRateZoneRollupValue),
+  altitude: Schema.optional(AltitudeRollupValue),
+  activeZoneMinutes: Schema.optional(ActiveZoneMinutesRollupValue),
+  sedentaryPeriod: Schema.optional(SedentaryPeriodRollupValue),
+}).annotate({ identifier: "RollupDataPoint" });
 
 export interface RestingHeartRatePersonalRangeRollupValue {
   /** The lower bound of the user's daily resting heart rate personal range. */
@@ -2258,15 +1885,11 @@ export interface RestingHeartRatePersonalRangeRollupValue {
   beatsPerMinuteMax?: number;
 }
 
-export const RestingHeartRatePersonalRangeRollupValue: Schema.Schema<RestingHeartRatePersonalRangeRollupValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      beatsPerMinuteMin: Schema.optional(Schema.Number),
-      beatsPerMinuteMax: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "RestingHeartRatePersonalRangeRollupValue",
-  }) as any as Schema.Schema<RestingHeartRatePersonalRangeRollupValue>;
+export const RestingHeartRatePersonalRangeRollupValue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    beatsPerMinuteMin: Schema.optional(Schema.Number),
+    beatsPerMinuteMax: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "RestingHeartRatePersonalRangeRollupValue" });
 
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -2281,30 +1904,23 @@ export interface Operation {
   error?: Status;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      error: Schema.optional(Status),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  done: Schema.optional(Schema.Boolean),
+  error: Schema.optional(Status),
+}).annotate({ identifier: "Operation" });
 
 export interface GoogleDevicesandservicesHealthV4DataType {
   /** Identifier. The resource name of the data type. Format: `users/{user}/dataTypes/{data_type}` See DataPoint.name for examples and possible values. */
   name?: string;
 }
 
-export const GoogleDevicesandservicesHealthV4DataType: Schema.Schema<GoogleDevicesandservicesHealthV4DataType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleDevicesandservicesHealthV4DataType",
-  }) as any as Schema.Schema<GoogleDevicesandservicesHealthV4DataType>;
+export const GoogleDevicesandservicesHealthV4DataType =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleDevicesandservicesHealthV4DataType" });
 
 export interface HeartRateVariabilityPersonalRangeRollupValue {
   /** The upper bound of the user's average heart rate variability personal range. */
@@ -2313,19 +1929,11 @@ export interface HeartRateVariabilityPersonalRangeRollupValue {
   averageHeartRateVariabilityMillisecondsMin?: number;
 }
 
-export const HeartRateVariabilityPersonalRangeRollupValue: Schema.Schema<HeartRateVariabilityPersonalRangeRollupValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      averageHeartRateVariabilityMillisecondsMax: Schema.optional(
-        Schema.Number,
-      ),
-      averageHeartRateVariabilityMillisecondsMin: Schema.optional(
-        Schema.Number,
-      ),
-    }),
-  ).annotate({
-    identifier: "HeartRateVariabilityPersonalRangeRollupValue",
-  }) as any as Schema.Schema<HeartRateVariabilityPersonalRangeRollupValue>;
+export const HeartRateVariabilityPersonalRangeRollupValue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    averageHeartRateVariabilityMillisecondsMax: Schema.optional(Schema.Number),
+    averageHeartRateVariabilityMillisecondsMin: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "HeartRateVariabilityPersonalRangeRollupValue" });
 
 export interface DailyRollupDataPoint {
   /** Returned by default when rolling up data points from the `run-vo2-max` data type, or when requested explicitly using the `run-vo2-max` rollup type identifier. */
@@ -2370,53 +1978,42 @@ export interface DailyRollupDataPoint {
   heartRateVariabilityPersonalRange?: HeartRateVariabilityPersonalRangeRollupValue;
 }
 
-export const DailyRollupDataPoint: Schema.Schema<DailyRollupDataPoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      runVo2Max: Schema.optional(RunVO2MaxRollupValue),
-      civilStartTime: Schema.optional(CivilDateTime),
-      activeZoneMinutes: Schema.optional(ActiveZoneMinutesRollupValue),
-      sedentaryPeriod: Schema.optional(SedentaryPeriodRollupValue),
-      restingHeartRatePersonalRange: Schema.optional(
-        RestingHeartRatePersonalRangeRollupValue,
-      ),
-      timeInHeartRateZone: Schema.optional(TimeInHeartRateZoneRollupValue),
-      altitude: Schema.optional(AltitudeRollupValue),
-      activityLevel: Schema.optional(ActivityLevelRollupValue),
-      heartRate: Schema.optional(HeartRateRollupValue),
-      bodyFat: Schema.optional(BodyFatRollupValue),
-      activeMinutes: Schema.optional(ActiveMinutesRollupValue),
-      steps: Schema.optional(StepsRollupValue),
-      hydrationLog: Schema.optional(HydrationLogRollupValue),
-      civilEndTime: Schema.optional(CivilDateTime),
-      totalCalories: Schema.optional(TotalCaloriesRollupValue),
-      caloriesInHeartRateZone: Schema.optional(
-        CaloriesInHeartRateZoneRollupValue,
-      ),
-      floors: Schema.optional(FloorsRollupValue),
-      distance: Schema.optional(DistanceRollupValue),
-      weight: Schema.optional(WeightRollupValue),
-      heartRateVariabilityPersonalRange: Schema.optional(
-        HeartRateVariabilityPersonalRangeRollupValue,
-      ),
-    }),
-  ).annotate({
-    identifier: "DailyRollupDataPoint",
-  }) as any as Schema.Schema<DailyRollupDataPoint>;
+export const DailyRollupDataPoint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  runVo2Max: Schema.optional(RunVO2MaxRollupValue),
+  civilStartTime: Schema.optional(CivilDateTime),
+  activeZoneMinutes: Schema.optional(ActiveZoneMinutesRollupValue),
+  sedentaryPeriod: Schema.optional(SedentaryPeriodRollupValue),
+  restingHeartRatePersonalRange: Schema.optional(
+    RestingHeartRatePersonalRangeRollupValue,
+  ),
+  timeInHeartRateZone: Schema.optional(TimeInHeartRateZoneRollupValue),
+  altitude: Schema.optional(AltitudeRollupValue),
+  activityLevel: Schema.optional(ActivityLevelRollupValue),
+  heartRate: Schema.optional(HeartRateRollupValue),
+  bodyFat: Schema.optional(BodyFatRollupValue),
+  activeMinutes: Schema.optional(ActiveMinutesRollupValue),
+  steps: Schema.optional(StepsRollupValue),
+  hydrationLog: Schema.optional(HydrationLogRollupValue),
+  civilEndTime: Schema.optional(CivilDateTime),
+  totalCalories: Schema.optional(TotalCaloriesRollupValue),
+  caloriesInHeartRateZone: Schema.optional(CaloriesInHeartRateZoneRollupValue),
+  floors: Schema.optional(FloorsRollupValue),
+  distance: Schema.optional(DistanceRollupValue),
+  weight: Schema.optional(WeightRollupValue),
+  heartRateVariabilityPersonalRange: Schema.optional(
+    HeartRateVariabilityPersonalRangeRollupValue,
+  ),
+}).annotate({ identifier: "DailyRollupDataPoint" });
 
 export interface DailyRollUpDataPointsResponse {
   /** Values for each aggregation time window. */
   rollupDataPoints?: Array<DailyRollupDataPoint>;
 }
 
-export const DailyRollUpDataPointsResponse: Schema.Schema<DailyRollUpDataPointsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rollupDataPoints: Schema.optional(Schema.Array(DailyRollupDataPoint)),
-    }),
-  ).annotate({
-    identifier: "DailyRollUpDataPointsResponse",
-  }) as any as Schema.Schema<DailyRollUpDataPointsResponse>;
+export const DailyRollUpDataPointsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rollupDataPoints: Schema.optional(Schema.Array(DailyRollupDataPoint)),
+  }).annotate({ identifier: "DailyRollUpDataPointsResponse" });
 
 export interface CivilTimeInterval {
   /** Required. The exclusive end of the range. */
@@ -2425,15 +2022,10 @@ export interface CivilTimeInterval {
   start?: CivilDateTime;
 }
 
-export const CivilTimeInterval: Schema.Schema<CivilTimeInterval> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      end: Schema.optional(CivilDateTime),
-      start: Schema.optional(CivilDateTime),
-    }),
-  ).annotate({
-    identifier: "CivilTimeInterval",
-  }) as any as Schema.Schema<CivilTimeInterval>;
+export const CivilTimeInterval = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  end: Schema.optional(CivilDateTime),
+  start: Schema.optional(CivilDateTime),
+}).annotate({ identifier: "CivilTimeInterval" });
 
 export interface RollUpDataPointsResponse {
   /** Values for each aggregation time window. */
@@ -2442,29 +2034,21 @@ export interface RollUpDataPointsResponse {
   nextPageToken?: string;
 }
 
-export const RollUpDataPointsResponse: Schema.Schema<RollUpDataPointsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rollupDataPoints: Schema.optional(Schema.Array(RollupDataPoint)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RollUpDataPointsResponse",
-  }) as any as Schema.Schema<RollUpDataPointsResponse>;
+export const RollUpDataPointsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rollupDataPoints: Schema.optional(Schema.Array(RollupDataPoint)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RollUpDataPointsResponse" });
 
 export interface BatchDeleteDataPointsRequest {
   /** Required. The names of the DataPoints to delete. A maximum of 10000 data points can be deleted in a single request. */
   names?: Array<string>;
 }
 
-export const BatchDeleteDataPointsRequest: Schema.Schema<BatchDeleteDataPointsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      names: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "BatchDeleteDataPointsRequest",
-  }) as any as Schema.Schema<BatchDeleteDataPointsRequest>;
+export const BatchDeleteDataPointsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    names: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "BatchDeleteDataPointsRequest" });
 
 export interface DailyRollUpDataPointsRequest {
   /** Optional. The data source family name to roll up. If empty, data points from all available data sources will be rolled up. Format: `users/me/dataSourceFamilies/{data_source_family}` The supported values are: - `users/me/dataSourceFamilies/all-sources` - default value - `users/me/dataSourceFamilies/google-wearables` - tracker devices - `users/me/dataSourceFamilies/google-sources` - Google first party sources */
@@ -2479,18 +2063,14 @@ export interface DailyRollUpDataPointsRequest {
   pageSize?: number;
 }
 
-export const DailyRollUpDataPointsRequest: Schema.Schema<DailyRollUpDataPointsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataSourceFamily: Schema.optional(Schema.String),
-      windowSizeDays: Schema.optional(Schema.Number),
-      range: Schema.optional(CivilTimeInterval),
-      pageToken: Schema.optional(Schema.String),
-      pageSize: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "DailyRollUpDataPointsRequest",
-  }) as any as Schema.Schema<DailyRollUpDataPointsRequest>;
+export const DailyRollUpDataPointsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataSourceFamily: Schema.optional(Schema.String),
+    windowSizeDays: Schema.optional(Schema.Number),
+    range: Schema.optional(CivilTimeInterval),
+    pageToken: Schema.optional(Schema.String),
+    pageSize: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "DailyRollUpDataPointsRequest" });
 
 // ==========================================================================
 // Operations

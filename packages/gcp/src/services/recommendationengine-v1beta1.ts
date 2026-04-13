@@ -24,10 +24,9 @@ const svc = T.Service({
 
 export interface GoogleProtobufEmpty {}
 
-export const GoogleProtobufEmpty: Schema.Schema<GoogleProtobufEmpty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "GoogleProtobufEmpty",
-  }) as any as Schema.Schema<GoogleProtobufEmpty>;
+export const GoogleProtobufEmpty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "GoogleProtobufEmpty" });
 
 export interface GoogleApiHttpBody {
   /** The HTTP request/response body as raw binary. */
@@ -38,33 +37,26 @@ export interface GoogleApiHttpBody {
   contentType?: string;
 }
 
-export const GoogleApiHttpBody: Schema.Schema<GoogleApiHttpBody> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      data: Schema.optional(Schema.String),
-      extensions: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      contentType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleApiHttpBody",
-  }) as any as Schema.Schema<GoogleApiHttpBody>;
+export const GoogleApiHttpBody = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  data: Schema.optional(Schema.String),
+  extensions: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  contentType: Schema.optional(Schema.String),
+}).annotate({ identifier: "GoogleApiHttpBody" });
 
 export interface GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy {
   /** Required. Catalog item categories. Each category should be a UTF-8 encoded string with a length limit of 2 KiB. Note that the order in the list denotes the specificity (from least to most specific). */
   categories?: Array<string>;
 }
 
-export const GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy: Schema.Schema<GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      categories: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    categories: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier:
       "GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy",
-  }) as any as Schema.Schema<GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy>;
+  });
 
 export interface GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice {
   /** Optional. Display price of the product. */
@@ -73,16 +65,14 @@ export interface GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPr
   originalPrice?: number;
 }
 
-export const GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice: Schema.Schema<GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayPrice: Schema.optional(Schema.Number),
-      originalPrice: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayPrice: Schema.optional(Schema.Number),
+    originalPrice: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice",
-  }) as any as Schema.Schema<GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice>;
+  });
 
 export interface GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange {
   /** Required. The maximum product price. */
@@ -91,16 +81,14 @@ export interface GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRa
   min?: number;
 }
 
-export const GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange: Schema.Schema<GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      max: Schema.optional(Schema.Number),
-      min: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    max: Schema.optional(Schema.Number),
+    min: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange",
-  }) as any as Schema.Schema<GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange>;
+  });
 
 export interface GoogleCloudRecommendationengineV1beta1Image {
   /** Required. URL of the image with a length limit of 5 KiB. */
@@ -111,16 +99,12 @@ export interface GoogleCloudRecommendationengineV1beta1Image {
   width?: number;
 }
 
-export const GoogleCloudRecommendationengineV1beta1Image: Schema.Schema<GoogleCloudRecommendationengineV1beta1Image> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-      height: Schema.optional(Schema.Number),
-      width: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecommendationengineV1beta1Image",
-  }) as any as Schema.Schema<GoogleCloudRecommendationengineV1beta1Image>;
+export const GoogleCloudRecommendationengineV1beta1Image =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uri: Schema.optional(Schema.String),
+    height: Schema.optional(Schema.Number),
+    width: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudRecommendationengineV1beta1Image" });
 
 export interface GoogleCloudRecommendationengineV1beta1ProductCatalogItem {
   /** Optional. The exact product price. */
@@ -147,55 +131,49 @@ export interface GoogleCloudRecommendationengineV1beta1ProductCatalogItem {
   currencyCode?: string;
 }
 
-export const GoogleCloudRecommendationengineV1beta1ProductCatalogItem: Schema.Schema<GoogleCloudRecommendationengineV1beta1ProductCatalogItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      exactPrice: Schema.optional(
-        GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice,
-      ),
-      stockState: Schema.optional(Schema.String),
-      priceRange: Schema.optional(
-        GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange,
-      ),
-      costs: Schema.optional(Schema.Record(Schema.String, Schema.Number)),
-      images: Schema.optional(
-        Schema.Array(GoogleCloudRecommendationengineV1beta1Image),
-      ),
-      canonicalProductUri: Schema.optional(Schema.String),
-      availableQuantity: Schema.optional(Schema.String),
-      currencyCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudRecommendationengineV1beta1ProductCatalogItem =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    exactPrice: Schema.optional(
+      GoogleCloudRecommendationengineV1beta1ProductCatalogItemExactPrice,
+    ),
+    stockState: Schema.optional(Schema.String),
+    priceRange: Schema.optional(
+      GoogleCloudRecommendationengineV1beta1ProductCatalogItemPriceRange,
+    ),
+    costs: Schema.optional(Schema.Record(Schema.String, Schema.Number)),
+    images: Schema.optional(
+      Schema.Array(GoogleCloudRecommendationengineV1beta1Image),
+    ),
+    canonicalProductUri: Schema.optional(Schema.String),
+    availableQuantity: Schema.optional(Schema.String),
+    currencyCode: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudRecommendationengineV1beta1ProductCatalogItem",
-  }) as any as Schema.Schema<GoogleCloudRecommendationengineV1beta1ProductCatalogItem>;
+  });
 
 export interface GoogleCloudRecommendationengineV1beta1FeatureMapStringList {
   /** String feature value with a length limit of 128 bytes. */
   value?: Array<string>;
 }
 
-export const GoogleCloudRecommendationengineV1beta1FeatureMapStringList: Schema.Schema<GoogleCloudRecommendationengineV1beta1FeatureMapStringList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudRecommendationengineV1beta1FeatureMapStringList =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudRecommendationengineV1beta1FeatureMapStringList",
-  }) as any as Schema.Schema<GoogleCloudRecommendationengineV1beta1FeatureMapStringList>;
+  });
 
 export interface GoogleCloudRecommendationengineV1beta1FeatureMapFloatList {
   /** Float feature value. */
   value?: Array<number>;
 }
 
-export const GoogleCloudRecommendationengineV1beta1FeatureMapFloatList: Schema.Schema<GoogleCloudRecommendationengineV1beta1FeatureMapFloatList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.Array(Schema.Number)),
-    }),
-  ).annotate({
+export const GoogleCloudRecommendationengineV1beta1FeatureMapFloatList =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(Schema.Array(Schema.Number)),
+  }).annotate({
     identifier: "GoogleCloudRecommendationengineV1beta1FeatureMapFloatList",
-  }) as any as Schema.Schema<GoogleCloudRecommendationengineV1beta1FeatureMapFloatList>;
+  });
 
 export interface GoogleCloudRecommendationengineV1beta1FeatureMap {
   /** Categorical features that can take on one of a limited number of possible values. Some examples would be the brand/maker of a product, or country of a customer. Feature names and values must be UTF-8 encoded strings. For example: `{ "colors": {"value": ["yellow", "green"]}, "sizes": {"value":["S", "M"]}` */
@@ -210,25 +188,23 @@ export interface GoogleCloudRecommendationengineV1beta1FeatureMap {
   >;
 }
 
-export const GoogleCloudRecommendationengineV1beta1FeatureMap: Schema.Schema<GoogleCloudRecommendationengineV1beta1FeatureMap> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      categoricalFeatures: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          GoogleCloudRecommendationengineV1beta1FeatureMapStringList,
-        ),
+export const GoogleCloudRecommendationengineV1beta1FeatureMap =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    categoricalFeatures: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        GoogleCloudRecommendationengineV1beta1FeatureMapStringList,
       ),
-      numericalFeatures: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          GoogleCloudRecommendationengineV1beta1FeatureMapFloatList,
-        ),
+    ),
+    numericalFeatures: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        GoogleCloudRecommendationengineV1beta1FeatureMapFloatList,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier: "GoogleCloudRecommendationengineV1beta1FeatureMap",
-  }) as any as Schema.Schema<GoogleCloudRecommendationengineV1beta1FeatureMap>;
+  });
 
 export interface GoogleCloudRecommendationengineV1beta1CatalogItem {
   /** Required. Catalog item categories. This field is repeated for supporting one catalog item belonging to several parallel category hierarchies. For example, if a shoes product belongs to both ["Shoes & Accessories" -> "Shoes"] and ["Sports & Fitness" -> "Athletic Clothing" -> "Shoes"], it could be represented as: "categoryHierarchies": [ { "categories": ["Shoes & Accessories", "Shoes"]}, { "categories": ["Sports & Fitness", "Athletic Clothing", "Shoes"] } ] */
@@ -251,30 +227,28 @@ export interface GoogleCloudRecommendationengineV1beta1CatalogItem {
   itemGroupId?: string;
 }
 
-export const GoogleCloudRecommendationengineV1beta1CatalogItem: Schema.Schema<GoogleCloudRecommendationengineV1beta1CatalogItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      categoryHierarchies: Schema.optional(
-        Schema.Array(
-          GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy,
-        ),
+export const GoogleCloudRecommendationengineV1beta1CatalogItem =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    categoryHierarchies: Schema.optional(
+      Schema.Array(
+        GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy,
       ),
-      languageCode: Schema.optional(Schema.String),
-      productMetadata: Schema.optional(
-        GoogleCloudRecommendationengineV1beta1ProductCatalogItem,
-      ),
-      description: Schema.optional(Schema.String),
-      itemAttributes: Schema.optional(
-        GoogleCloudRecommendationengineV1beta1FeatureMap,
-      ),
-      tags: Schema.optional(Schema.Array(Schema.String)),
-      title: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      itemGroupId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+    ),
+    languageCode: Schema.optional(Schema.String),
+    productMetadata: Schema.optional(
+      GoogleCloudRecommendationengineV1beta1ProductCatalogItem,
+    ),
+    description: Schema.optional(Schema.String),
+    itemAttributes: Schema.optional(
+      GoogleCloudRecommendationengineV1beta1FeatureMap,
+    ),
+    tags: Schema.optional(Schema.Array(Schema.String)),
+    title: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    itemGroupId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudRecommendationengineV1beta1CatalogItem",
-  }) as any as Schema.Schema<GoogleCloudRecommendationengineV1beta1CatalogItem>;
+  });
 
 export interface GoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse {
   /** If empty, the list is complete. If nonempty, the token to pass to the next request's ListCatalogItemRequest.page_token. */
@@ -283,18 +257,16 @@ export interface GoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse 
   catalogItems?: Array<GoogleCloudRecommendationengineV1beta1CatalogItem>;
 }
 
-export const GoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse: Schema.Schema<GoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      catalogItems: Schema.optional(
-        Schema.Array(GoogleCloudRecommendationengineV1beta1CatalogItem),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    catalogItems: Schema.optional(
+      Schema.Array(GoogleCloudRecommendationengineV1beta1CatalogItem),
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse",
-  }) as any as Schema.Schema<GoogleCloudRecommendationengineV1beta1ListCatalogItemsResponse>;
+  });
 
 export interface GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig {
   /** Optional. Level of the catalog at which events are uploaded. See https://cloud.google.com/recommendations-ai/docs/catalog#catalog-levels for more details. */
@@ -311,15 +283,13 @@ export interface GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig {
     | (string & {});
 }
 
-export const GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig: Schema.Schema<GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      eventItemLevel: Schema.optional(Schema.String),
-      predictItemLevel: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    eventItemLevel: Schema.optional(Schema.String),
+    predictItemLevel: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig",
-  }) as any as Schema.Schema<GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig>;
+  });
 
 export interface GoogleCloudRecommendationengineV1beta1Catalog {
   /** Required. The catalog display name. */
@@ -332,19 +302,15 @@ export interface GoogleCloudRecommendationengineV1beta1Catalog {
   defaultEventStoreId?: string;
 }
 
-export const GoogleCloudRecommendationengineV1beta1Catalog: Schema.Schema<GoogleCloudRecommendationengineV1beta1Catalog> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      catalogItemLevelConfig: Schema.optional(
-        GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig,
-      ),
-      name: Schema.optional(Schema.String),
-      defaultEventStoreId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecommendationengineV1beta1Catalog",
-  }) as any as Schema.Schema<GoogleCloudRecommendationengineV1beta1Catalog>;
+export const GoogleCloudRecommendationengineV1beta1Catalog =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    catalogItemLevelConfig: Schema.optional(
+      GoogleCloudRecommendationengineV1beta1CatalogItemLevelConfig,
+    ),
+    name: Schema.optional(Schema.String),
+    defaultEventStoreId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudRecommendationengineV1beta1Catalog" });
 
 export interface GoogleCloudRecommendationengineV1beta1ListCatalogsResponse {
   /** Output only. All the customer's catalogs. */
@@ -353,17 +319,15 @@ export interface GoogleCloudRecommendationengineV1beta1ListCatalogsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudRecommendationengineV1beta1ListCatalogsResponse: Schema.Schema<GoogleCloudRecommendationengineV1beta1ListCatalogsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      catalogs: Schema.optional(
-        Schema.Array(GoogleCloudRecommendationengineV1beta1Catalog),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudRecommendationengineV1beta1ListCatalogsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    catalogs: Schema.optional(
+      Schema.Array(GoogleCloudRecommendationengineV1beta1Catalog),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudRecommendationengineV1beta1ListCatalogsResponse",
-  }) as any as Schema.Schema<GoogleCloudRecommendationengineV1beta1ListCatalogsResponse>;
+  });
 
 export interface GoogleCloudRecommendationengineV1beta1PurchaseTransaction {
   /** Required. Currency code. Use three-character ISO-4217 code. This field is not required if the event type is `refund`. */
@@ -378,18 +342,16 @@ export interface GoogleCloudRecommendationengineV1beta1PurchaseTransaction {
   taxes?: Record<string, number>;
 }
 
-export const GoogleCloudRecommendationengineV1beta1PurchaseTransaction: Schema.Schema<GoogleCloudRecommendationengineV1beta1PurchaseTransaction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      currencyCode: Schema.optional(Schema.String),
-      revenue: Schema.optional(Schema.Number),
-      costs: Schema.optional(Schema.Record(Schema.String, Schema.Number)),
-      id: Schema.optional(Schema.String),
-      taxes: Schema.optional(Schema.Record(Schema.String, Schema.Number)),
-    }),
-  ).annotate({
+export const GoogleCloudRecommendationengineV1beta1PurchaseTransaction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    currencyCode: Schema.optional(Schema.String),
+    revenue: Schema.optional(Schema.Number),
+    costs: Schema.optional(Schema.Record(Schema.String, Schema.Number)),
+    id: Schema.optional(Schema.String),
+    taxes: Schema.optional(Schema.Record(Schema.String, Schema.Number)),
+  }).annotate({
     identifier: "GoogleCloudRecommendationengineV1beta1PurchaseTransaction",
-  }) as any as Schema.Schema<GoogleCloudRecommendationengineV1beta1PurchaseTransaction>;
+  });
 
 export interface GoogleCloudRecommendationengineV1beta1ProductDetail {
   /** Optional. Quantity of the product associated with the user event. For example, this field will be 2 if two products are added to the shopping cart for `add-to-cart` event. Required for `add-to-cart`, `add-to-list`, `remove-from-cart`, `checkout-start`, `purchase-complete`, `refund` event types. */
@@ -416,23 +378,21 @@ export interface GoogleCloudRecommendationengineV1beta1ProductDetail {
   itemAttributes?: GoogleCloudRecommendationengineV1beta1FeatureMap;
 }
 
-export const GoogleCloudRecommendationengineV1beta1ProductDetail: Schema.Schema<GoogleCloudRecommendationengineV1beta1ProductDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      quantity: Schema.optional(Schema.Number),
-      id: Schema.optional(Schema.String),
-      stockState: Schema.optional(Schema.String),
-      currencyCode: Schema.optional(Schema.String),
-      originalPrice: Schema.optional(Schema.Number),
-      displayPrice: Schema.optional(Schema.Number),
-      availableQuantity: Schema.optional(Schema.Number),
-      itemAttributes: Schema.optional(
-        GoogleCloudRecommendationengineV1beta1FeatureMap,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudRecommendationengineV1beta1ProductDetail =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    quantity: Schema.optional(Schema.Number),
+    id: Schema.optional(Schema.String),
+    stockState: Schema.optional(Schema.String),
+    currencyCode: Schema.optional(Schema.String),
+    originalPrice: Schema.optional(Schema.Number),
+    displayPrice: Schema.optional(Schema.Number),
+    availableQuantity: Schema.optional(Schema.Number),
+    itemAttributes: Schema.optional(
+      GoogleCloudRecommendationengineV1beta1FeatureMap,
+    ),
+  }).annotate({
     identifier: "GoogleCloudRecommendationengineV1beta1ProductDetail",
-  }) as any as Schema.Schema<GoogleCloudRecommendationengineV1beta1ProductDetail>;
+  });
 
 export interface GoogleCloudRecommendationengineV1beta1ProductEventDetail {
   /** Optional. A transaction represents the entire purchase transaction. Required for `purchase-complete` events. Optional for `checkout-start` events. Other event types should not set this field. */
@@ -449,27 +409,25 @@ export interface GoogleCloudRecommendationengineV1beta1ProductEventDetail {
   cartId?: string;
 }
 
-export const GoogleCloudRecommendationengineV1beta1ProductEventDetail: Schema.Schema<GoogleCloudRecommendationengineV1beta1ProductEventDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      purchaseTransaction: Schema.optional(
-        GoogleCloudRecommendationengineV1beta1PurchaseTransaction,
+export const GoogleCloudRecommendationengineV1beta1ProductEventDetail =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    purchaseTransaction: Schema.optional(
+      GoogleCloudRecommendationengineV1beta1PurchaseTransaction,
+    ),
+    pageCategories: Schema.optional(
+      Schema.Array(
+        GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy,
       ),
-      pageCategories: Schema.optional(
-        Schema.Array(
-          GoogleCloudRecommendationengineV1beta1CatalogItemCategoryHierarchy,
-        ),
-      ),
-      productDetails: Schema.optional(
-        Schema.Array(GoogleCloudRecommendationengineV1beta1ProductDetail),
-      ),
-      searchQuery: Schema.optional(Schema.String),
-      listId: Schema.optional(Schema.String),
-      cartId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+    ),
+    productDetails: Schema.optional(
+      Schema.Array(GoogleCloudRecommendationengineV1beta1ProductDetail),
+    ),
+    searchQuery: Schema.optional(Schema.String),
+    listId: Schema.optional(Schema.String),
+    cartId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudRecommendationengineV1beta1ProductEventDetail",
-  }) as any as Schema.Schema<GoogleCloudRecommendationengineV1beta1ProductEventDetail>;
+  });
 
 export interface GoogleCloudRecommendationengineV1beta1EventDetail {
   /** Optional. Recommendation token included in the recommendation prediction response. This field enables accurate attribution of recommendation model performance. This token enables us to accurately attribute page view or purchase back to the event and the particular predict response containing this clicked/purchased item. If user clicks on product K in the recommendation results, pass the `PredictResponse.recommendationToken` property as a url parameter to product K's page. When recording events on product K's page, log the PredictResponse.recommendation_token to this field. Optional, but highly encouraged for user events that are the result of a recommendation prediction query. */
@@ -486,21 +444,19 @@ export interface GoogleCloudRecommendationengineV1beta1EventDetail {
   eventAttributes?: GoogleCloudRecommendationengineV1beta1FeatureMap;
 }
 
-export const GoogleCloudRecommendationengineV1beta1EventDetail: Schema.Schema<GoogleCloudRecommendationengineV1beta1EventDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      recommendationToken: Schema.optional(Schema.String),
-      referrerUri: Schema.optional(Schema.String),
-      uri: Schema.optional(Schema.String),
-      experimentIds: Schema.optional(Schema.Array(Schema.String)),
-      pageViewId: Schema.optional(Schema.String),
-      eventAttributes: Schema.optional(
-        GoogleCloudRecommendationengineV1beta1FeatureMap,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudRecommendationengineV1beta1EventDetail =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    recommendationToken: Schema.optional(Schema.String),
+    referrerUri: Schema.optional(Schema.String),
+    uri: Schema.optional(Schema.String),
+    experimentIds: Schema.optional(Schema.Array(Schema.String)),
+    pageViewId: Schema.optional(Schema.String),
+    eventAttributes: Schema.optional(
+      GoogleCloudRecommendationengineV1beta1FeatureMap,
+    ),
+  }).annotate({
     identifier: "GoogleCloudRecommendationengineV1beta1EventDetail",
-  }) as any as Schema.Schema<GoogleCloudRecommendationengineV1beta1EventDetail>;
+  });
 
 export interface GoogleCloudRecommendationengineV1beta1UserInfo {
   /** Required. A unique identifier for tracking visitors with a length limit of 128 bytes. For example, this could be implemented with an HTTP cookie, which should be able to uniquely identify a visitor on a single device. This unique identifier should not change if the visitor logs in or out of the website. Maximum length 128 bytes. Cannot be empty. Don't set the field to the same fixed ID for different users. This mixes the event history of those users together, which results in degraded model quality. */
@@ -515,18 +471,14 @@ export interface GoogleCloudRecommendationengineV1beta1UserInfo {
   directUserRequest?: boolean;
 }
 
-export const GoogleCloudRecommendationengineV1beta1UserInfo: Schema.Schema<GoogleCloudRecommendationengineV1beta1UserInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      visitorId: Schema.optional(Schema.String),
-      userId: Schema.optional(Schema.String),
-      userAgent: Schema.optional(Schema.String),
-      ipAddress: Schema.optional(Schema.String),
-      directUserRequest: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecommendationengineV1beta1UserInfo",
-  }) as any as Schema.Schema<GoogleCloudRecommendationengineV1beta1UserInfo>;
+export const GoogleCloudRecommendationengineV1beta1UserInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    visitorId: Schema.optional(Schema.String),
+    userId: Schema.optional(Schema.String),
+    userAgent: Schema.optional(Schema.String),
+    ipAddress: Schema.optional(Schema.String),
+    directUserRequest: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudRecommendationengineV1beta1UserInfo" });
 
 export interface GoogleCloudRecommendationengineV1beta1UserEvent {
   /** Required. User event type. Allowed values are: * `add-to-cart` Products being added to cart. * `add-to-list` Items being added to a list (shopping list, favorites etc). * `category-page-view` Special pages such as sale or promotion pages viewed. * `checkout-start` User starting a checkout process. * `detail-page-view` Products detail page viewed. * `home-page-view` Homepage viewed. * `page-visit` Generic page visits not included in the event types above. * `purchase-complete` User finishing a purchase. * `refund` Purchased items being refunded or returned. * `remove-from-cart` Products being removed from cart. * `remove-from-list` Items being removed from a list. * `search` Product search. * `shopping-cart-page-view` User viewing a shopping cart. * `impression` List of items displayed. Used by Google Tag Manager. */
@@ -548,23 +500,21 @@ export interface GoogleCloudRecommendationengineV1beta1UserEvent {
     | (string & {});
 }
 
-export const GoogleCloudRecommendationengineV1beta1UserEvent: Schema.Schema<GoogleCloudRecommendationengineV1beta1UserEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      eventType: Schema.optional(Schema.String),
-      productEventDetail: Schema.optional(
-        GoogleCloudRecommendationengineV1beta1ProductEventDetail,
-      ),
-      eventTime: Schema.optional(Schema.String),
-      eventDetail: Schema.optional(
-        GoogleCloudRecommendationengineV1beta1EventDetail,
-      ),
-      userInfo: Schema.optional(GoogleCloudRecommendationengineV1beta1UserInfo),
-      eventSource: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudRecommendationengineV1beta1UserEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    eventType: Schema.optional(Schema.String),
+    productEventDetail: Schema.optional(
+      GoogleCloudRecommendationengineV1beta1ProductEventDetail,
+    ),
+    eventTime: Schema.optional(Schema.String),
+    eventDetail: Schema.optional(
+      GoogleCloudRecommendationengineV1beta1EventDetail,
+    ),
+    userInfo: Schema.optional(GoogleCloudRecommendationengineV1beta1UserInfo),
+    eventSource: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudRecommendationengineV1beta1UserEvent",
-  }) as any as Schema.Schema<GoogleCloudRecommendationengineV1beta1UserEvent>;
+  });
 
 export interface GoogleCloudRecommendationengineV1beta1PredictRequest {
   /** Required. Context about the user, what they are looking at and what action they took to trigger the predict request. Note that this user event detail won't be ingested to userEvent logs. Thus, a separate userEvent write request is required for event logging. Don't set UserInfo.visitor_id or UserInfo.user_id to the same fixed ID for different users. If you are trying to receive non-personalized recommendations (not recommended; this can negatively impact model performance), instead set UserInfo.visitor_id to a random unique ID and leave UserInfo.user_id unset. */
@@ -583,38 +533,32 @@ export interface GoogleCloudRecommendationengineV1beta1PredictRequest {
   params?: Record<string, unknown>;
 }
 
-export const GoogleCloudRecommendationengineV1beta1PredictRequest: Schema.Schema<GoogleCloudRecommendationengineV1beta1PredictRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userEvent: Schema.optional(
-        GoogleCloudRecommendationengineV1beta1UserEvent,
-      ),
-      dryRun: Schema.optional(Schema.Boolean),
-      pageSize: Schema.optional(Schema.Number),
-      pageToken: Schema.optional(Schema.String),
-      filter: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      params: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
+export const GoogleCloudRecommendationengineV1beta1PredictRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userEvent: Schema.optional(GoogleCloudRecommendationengineV1beta1UserEvent),
+    dryRun: Schema.optional(Schema.Boolean),
+    pageSize: Schema.optional(Schema.Number),
+    pageToken: Schema.optional(Schema.String),
+    filter: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    params: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({
     identifier: "GoogleCloudRecommendationengineV1beta1PredictRequest",
-  }) as any as Schema.Schema<GoogleCloudRecommendationengineV1beta1PredictRequest>;
+  });
 
 export interface GoogleCloudRecommendationengineV1beta1UserEventInlineSource {
   /** Optional. A list of user events to import. Recommended max of 10k items. */
   userEvents?: Array<GoogleCloudRecommendationengineV1beta1UserEvent>;
 }
 
-export const GoogleCloudRecommendationengineV1beta1UserEventInlineSource: Schema.Schema<GoogleCloudRecommendationengineV1beta1UserEventInlineSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userEvents: Schema.optional(
-        Schema.Array(GoogleCloudRecommendationengineV1beta1UserEvent),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudRecommendationengineV1beta1UserEventInlineSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userEvents: Schema.optional(
+      Schema.Array(GoogleCloudRecommendationengineV1beta1UserEvent),
+    ),
+  }).annotate({
     identifier: "GoogleCloudRecommendationengineV1beta1UserEventInlineSource",
-  }) as any as Schema.Schema<GoogleCloudRecommendationengineV1beta1UserEventInlineSource>;
+  });
 
 export interface GoogleCloudRecommendationengineV1beta1BigQuerySource {
   /** Required. The BigQuery data set to copy the data from. */
@@ -629,18 +573,16 @@ export interface GoogleCloudRecommendationengineV1beta1BigQuerySource {
   projectId?: string;
 }
 
-export const GoogleCloudRecommendationengineV1beta1BigQuerySource: Schema.Schema<GoogleCloudRecommendationengineV1beta1BigQuerySource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      datasetId: Schema.optional(Schema.String),
-      tableId: Schema.optional(Schema.String),
-      gcsStagingDir: Schema.optional(Schema.String),
-      dataSchema: Schema.optional(Schema.String),
-      projectId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudRecommendationengineV1beta1BigQuerySource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    datasetId: Schema.optional(Schema.String),
+    tableId: Schema.optional(Schema.String),
+    gcsStagingDir: Schema.optional(Schema.String),
+    dataSchema: Schema.optional(Schema.String),
+    projectId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudRecommendationengineV1beta1BigQuerySource",
-  }) as any as Schema.Schema<GoogleCloudRecommendationengineV1beta1BigQuerySource>;
+  });
 
 export interface GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult {
   /** ID of the recommended catalog item */
@@ -649,26 +591,22 @@ export interface GoogleCloudRecommendationengineV1beta1PredictResponsePrediction
   itemMetadata?: Record<string, unknown>;
 }
 
-export const GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult: Schema.Schema<GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      itemMetadata: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    itemMetadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({
     identifier:
       "GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult",
-  }) as any as Schema.Schema<GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult>;
+  });
 
 export interface GoogleCloudRecommendationengineV1beta1RejoinUserEventsMetadata {}
 
-export const GoogleCloudRecommendationengineV1beta1RejoinUserEventsMetadata: Schema.Schema<GoogleCloudRecommendationengineV1beta1RejoinUserEventsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudRecommendationengineV1beta1RejoinUserEventsMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudRecommendationengineV1beta1RejoinUserEventsMetadata",
-  }) as any as Schema.Schema<GoogleCloudRecommendationengineV1beta1RejoinUserEventsMetadata>;
+  });
 
 export interface GoogleCloudRecommendationengineV1beta1ImportMetadata {
   /** Count of entries that encountered errors while processing. */
@@ -685,35 +623,31 @@ export interface GoogleCloudRecommendationengineV1beta1ImportMetadata {
   requestId?: string;
 }
 
-export const GoogleCloudRecommendationengineV1beta1ImportMetadata: Schema.Schema<GoogleCloudRecommendationengineV1beta1ImportMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      failureCount: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      successCount: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      operationName: Schema.optional(Schema.String),
-      requestId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudRecommendationengineV1beta1ImportMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    failureCount: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    successCount: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    operationName: Schema.optional(Schema.String),
+    requestId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudRecommendationengineV1beta1ImportMetadata",
-  }) as any as Schema.Schema<GoogleCloudRecommendationengineV1beta1ImportMetadata>;
+  });
 
 export interface GoogleCloudRecommendationengineV1beta1CatalogInlineSource {
   /** Optional. A list of catalog items to update/create. Recommended max of 10k items. */
   catalogItems?: Array<GoogleCloudRecommendationengineV1beta1CatalogItem>;
 }
 
-export const GoogleCloudRecommendationengineV1beta1CatalogInlineSource: Schema.Schema<GoogleCloudRecommendationengineV1beta1CatalogInlineSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      catalogItems: Schema.optional(
-        Schema.Array(GoogleCloudRecommendationengineV1beta1CatalogItem),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudRecommendationengineV1beta1CatalogInlineSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    catalogItems: Schema.optional(
+      Schema.Array(GoogleCloudRecommendationengineV1beta1CatalogItem),
+    ),
+  }).annotate({
     identifier: "GoogleCloudRecommendationengineV1beta1CatalogInlineSource",
-  }) as any as Schema.Schema<GoogleCloudRecommendationengineV1beta1CatalogInlineSource>;
+  });
 
 export interface GoogleCloudRecommendationengineV1beta1GcsSource {
   /** Required. Google Cloud Storage URIs to input files. URI can be up to 2000 characters long. URIs can match the full object path (for example, `gs://bucket/directory/object.json`) or a pattern matching one or more files, such as `gs://bucket/directory/*.json`. A request can contain at most 100 files, and each file can be up to 2 GB. See [Importing catalog information](/recommendations-ai/docs/upload-catalog) for the expected file format and setup instructions. */
@@ -722,15 +656,13 @@ export interface GoogleCloudRecommendationengineV1beta1GcsSource {
   jsonSchema?: string;
 }
 
-export const GoogleCloudRecommendationengineV1beta1GcsSource: Schema.Schema<GoogleCloudRecommendationengineV1beta1GcsSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inputUris: Schema.optional(Schema.Array(Schema.String)),
-      jsonSchema: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudRecommendationengineV1beta1GcsSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    inputUris: Schema.optional(Schema.Array(Schema.String)),
+    jsonSchema: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudRecommendationengineV1beta1GcsSource",
-  }) as any as Schema.Schema<GoogleCloudRecommendationengineV1beta1GcsSource>;
+  });
 
 export interface GoogleCloudRecommendationengineV1beta1InputConfig {
   /** BigQuery input source. */
@@ -743,39 +675,33 @@ export interface GoogleCloudRecommendationengineV1beta1InputConfig {
   userEventInlineSource?: GoogleCloudRecommendationengineV1beta1UserEventInlineSource;
 }
 
-export const GoogleCloudRecommendationengineV1beta1InputConfig: Schema.Schema<GoogleCloudRecommendationengineV1beta1InputConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bigQuerySource: Schema.optional(
-        GoogleCloudRecommendationengineV1beta1BigQuerySource,
-      ),
-      catalogInlineSource: Schema.optional(
-        GoogleCloudRecommendationengineV1beta1CatalogInlineSource,
-      ),
-      gcsSource: Schema.optional(
-        GoogleCloudRecommendationengineV1beta1GcsSource,
-      ),
-      userEventInlineSource: Schema.optional(
-        GoogleCloudRecommendationengineV1beta1UserEventInlineSource,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudRecommendationengineV1beta1InputConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bigQuerySource: Schema.optional(
+      GoogleCloudRecommendationengineV1beta1BigQuerySource,
+    ),
+    catalogInlineSource: Schema.optional(
+      GoogleCloudRecommendationengineV1beta1CatalogInlineSource,
+    ),
+    gcsSource: Schema.optional(GoogleCloudRecommendationengineV1beta1GcsSource),
+    userEventInlineSource: Schema.optional(
+      GoogleCloudRecommendationengineV1beta1UserEventInlineSource,
+    ),
+  }).annotate({
     identifier: "GoogleCloudRecommendationengineV1beta1InputConfig",
-  }) as any as Schema.Schema<GoogleCloudRecommendationengineV1beta1InputConfig>;
+  });
 
 export interface GoogleCloudRecommendationengineV1beta1ImportErrorsConfig {
   /** Google Cloud Storage path for import errors. This must be an empty, existing Cloud Storage bucket. Import errors will be written to a file in this bucket, one per line, as a JSON-encoded `google.rpc.Status` message. */
   gcsPrefix?: string;
 }
 
-export const GoogleCloudRecommendationengineV1beta1ImportErrorsConfig: Schema.Schema<GoogleCloudRecommendationengineV1beta1ImportErrorsConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsPrefix: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudRecommendationengineV1beta1ImportErrorsConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gcsPrefix: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudRecommendationengineV1beta1ImportErrorsConfig",
-  }) as any as Schema.Schema<GoogleCloudRecommendationengineV1beta1ImportErrorsConfig>;
+  });
 
 export interface GoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest {
   /** Optional. Unique identifier provided by client, within the ancestor dataset scope. Ensures idempotency and used for request deduplication. Server-generated if unspecified. Up to 128 characters long. This is returned as google.longrunning.Operation.name in the response. */
@@ -788,37 +714,33 @@ export interface GoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest
   updateMask?: string;
 }
 
-export const GoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest: Schema.Schema<GoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestId: Schema.optional(Schema.String),
-      inputConfig: Schema.optional(
-        GoogleCloudRecommendationengineV1beta1InputConfig,
-      ),
-      errorsConfig: Schema.optional(
-        GoogleCloudRecommendationengineV1beta1ImportErrorsConfig,
-      ),
-      updateMask: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestId: Schema.optional(Schema.String),
+    inputConfig: Schema.optional(
+      GoogleCloudRecommendationengineV1beta1InputConfig,
+    ),
+    errorsConfig: Schema.optional(
+      GoogleCloudRecommendationengineV1beta1ImportErrorsConfig,
+    ),
+    updateMask: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest",
-  }) as any as Schema.Schema<GoogleCloudRecommendationengineV1beta1ImportCatalogItemsRequest>;
+  });
 
 export interface GoogleCloudRecommendationengineV1beta1RejoinUserEventsResponse {
   /** Number of user events that were joined with latest catalog items. */
   rejoinedUserEventsCount?: string;
 }
 
-export const GoogleCloudRecommendationengineV1beta1RejoinUserEventsResponse: Schema.Schema<GoogleCloudRecommendationengineV1beta1RejoinUserEventsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rejoinedUserEventsCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudRecommendationengineV1beta1RejoinUserEventsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rejoinedUserEventsCount: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudRecommendationengineV1beta1RejoinUserEventsResponse",
-  }) as any as Schema.Schema<GoogleCloudRecommendationengineV1beta1RejoinUserEventsResponse>;
+  });
 
 export interface GoogleRpcStatus {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
@@ -829,18 +751,13 @@ export interface GoogleRpcStatus {
   message?: string;
 }
 
-export const GoogleRpcStatus: Schema.Schema<GoogleRpcStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleRpcStatus",
-  }) as any as Schema.Schema<GoogleRpcStatus>;
+export const GoogleRpcStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+}).annotate({ identifier: "GoogleRpcStatus" });
 
 export interface GoogleLongrunningOperation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -855,18 +772,14 @@ export interface GoogleLongrunningOperation {
   response?: Record<string, unknown>;
 }
 
-export const GoogleLongrunningOperation: Schema.Schema<GoogleLongrunningOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      done: Schema.optional(Schema.Boolean),
-      error: Schema.optional(GoogleRpcStatus),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
-    identifier: "GoogleLongrunningOperation",
-  }) as any as Schema.Schema<GoogleLongrunningOperation>;
+export const GoogleLongrunningOperation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    done: Schema.optional(Schema.Boolean),
+    error: Schema.optional(GoogleRpcStatus),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "GoogleLongrunningOperation" });
 
 export interface GoogleCloudRecommendationengineV1beta1PredictResponse {
   /** Additional domain specific prediction response metadata. */
@@ -883,76 +796,68 @@ export interface GoogleCloudRecommendationengineV1beta1PredictResponse {
   results?: Array<GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult>;
 }
 
-export const GoogleCloudRecommendationengineV1beta1PredictResponse: Schema.Schema<GoogleCloudRecommendationengineV1beta1PredictResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      nextPageToken: Schema.optional(Schema.String),
-      itemsMissingInCatalog: Schema.optional(Schema.Array(Schema.String)),
-      dryRun: Schema.optional(Schema.Boolean),
-      recommendationToken: Schema.optional(Schema.String),
-      results: Schema.optional(
-        Schema.Array(
-          GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult,
-        ),
+export const GoogleCloudRecommendationengineV1beta1PredictResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    nextPageToken: Schema.optional(Schema.String),
+    itemsMissingInCatalog: Schema.optional(Schema.Array(Schema.String)),
+    dryRun: Schema.optional(Schema.Boolean),
+    recommendationToken: Schema.optional(Schema.String),
+    results: Schema.optional(
+      Schema.Array(
+        GoogleCloudRecommendationengineV1beta1PredictResponsePredictionResult,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier: "GoogleCloudRecommendationengineV1beta1PredictResponse",
-  }) as any as Schema.Schema<GoogleCloudRecommendationengineV1beta1PredictResponse>;
+  });
 
 export interface GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration {
   /** The API key. */
   apiKey?: string;
 }
 
-export const GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration: Schema.Schema<GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      apiKey: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apiKey: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration",
-  }) as any as Schema.Schema<GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration>;
+  });
 
 export interface GoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest {
   /** Required. The prediction API key registration. */
   predictionApiKeyRegistration?: GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration;
 }
 
-export const GoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest: Schema.Schema<GoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      predictionApiKeyRegistration: Schema.optional(
-        GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    predictionApiKeyRegistration: Schema.optional(
+      GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest",
-  }) as any as Schema.Schema<GoogleCloudRecommendationengineV1beta1CreatePredictionApiKeyRegistrationRequest>;
+  });
 
 export interface GoogleCloudRecommendationengineV1alphaRejoinCatalogResponse {
   /** Number of user events that were joined with latest catalog items. */
   rejoinedUserEventsCount?: string;
 }
 
-export const GoogleCloudRecommendationengineV1alphaRejoinCatalogResponse: Schema.Schema<GoogleCloudRecommendationengineV1alphaRejoinCatalogResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rejoinedUserEventsCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudRecommendationengineV1alphaRejoinCatalogResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rejoinedUserEventsCount: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudRecommendationengineV1alphaRejoinCatalogResponse",
-  }) as any as Schema.Schema<GoogleCloudRecommendationengineV1alphaRejoinCatalogResponse>;
+  });
 
 export interface GoogleCloudRecommendationengineV1alphaRejoinCatalogMetadata {}
 
-export const GoogleCloudRecommendationengineV1alphaRejoinCatalogMetadata: Schema.Schema<GoogleCloudRecommendationengineV1alphaRejoinCatalogMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudRecommendationengineV1alphaRejoinCatalogMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudRecommendationengineV1alphaRejoinCatalogMetadata",
-  }) as any as Schema.Schema<GoogleCloudRecommendationengineV1alphaRejoinCatalogMetadata>;
+  });
 
 export interface GoogleCloudRecommendationengineV1beta1ImportCatalogItemsResponse {
   /** A sample of errors encountered while processing the request. */
@@ -961,32 +866,28 @@ export interface GoogleCloudRecommendationengineV1beta1ImportCatalogItemsRespons
   errorsConfig?: GoogleCloudRecommendationengineV1beta1ImportErrorsConfig;
 }
 
-export const GoogleCloudRecommendationengineV1beta1ImportCatalogItemsResponse: Schema.Schema<GoogleCloudRecommendationengineV1beta1ImportCatalogItemsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errorSamples: Schema.optional(Schema.Array(GoogleRpcStatus)),
-      errorsConfig: Schema.optional(
-        GoogleCloudRecommendationengineV1beta1ImportErrorsConfig,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudRecommendationengineV1beta1ImportCatalogItemsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    errorSamples: Schema.optional(Schema.Array(GoogleRpcStatus)),
+    errorsConfig: Schema.optional(
+      GoogleCloudRecommendationengineV1beta1ImportErrorsConfig,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudRecommendationengineV1beta1ImportCatalogItemsResponse",
-  }) as any as Schema.Schema<GoogleCloudRecommendationengineV1beta1ImportCatalogItemsResponse>;
+  });
 
 export interface GoogleCloudRecommendationengineV1alphaTuningMetadata {
   /** The resource name of the recommendation model that this tune applies to. Format: projects/{project_number}/locations/{location_id}/catalogs/{catalog_id}/eventStores/{event_store_id}/recommendationModels/{recommendation_model_id} */
   recommendationModel?: string;
 }
 
-export const GoogleCloudRecommendationengineV1alphaTuningMetadata: Schema.Schema<GoogleCloudRecommendationengineV1alphaTuningMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      recommendationModel: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudRecommendationengineV1alphaTuningMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    recommendationModel: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudRecommendationengineV1alphaTuningMetadata",
-  }) as any as Schema.Schema<GoogleCloudRecommendationengineV1alphaTuningMetadata>;
+  });
 
 export interface GoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest {
   /** Required. The filter string to specify the events to be deleted. Empty string filter is not allowed. The eligible fields for filtering are: * `eventType`: UserEvent.eventType field of type string. * `eventTime`: in ISO 8601 "zulu" format. * `visitorId`: field of type string. Specifying this will delete all events associated with a visitor. * `userId`: field of type string. Specifying this will delete all events associated with a user. Examples: * Deleting all events in a time range: `eventTime > "2012-04-23T18:25:43.511Z" eventTime < "2012-04-23T18:30:43.511Z"` * Deleting specific eventType in time range: `eventTime > "2012-04-23T18:25:43.511Z" eventType = "detail-page-view"` * Deleting all events for a specific visitor: `visitorId = "visitor1024"` The filtering fields are assumed to have an implicit AND. */
@@ -995,15 +896,13 @@ export interface GoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest {
   force?: boolean;
 }
 
-export const GoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest: Schema.Schema<GoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filter: Schema.optional(Schema.String),
-      force: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filter: Schema.optional(Schema.String),
+    force: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest",
-  }) as any as Schema.Schema<GoogleCloudRecommendationengineV1beta1PurgeUserEventsRequest>;
+  });
 
 export interface GoogleCloudRecommendationengineV1beta1PurgeUserEventsResponse {
   /** The total count of events purged as a result of the operation. */
@@ -1012,17 +911,15 @@ export interface GoogleCloudRecommendationengineV1beta1PurgeUserEventsResponse {
   userEventsSample?: Array<GoogleCloudRecommendationengineV1beta1UserEvent>;
 }
 
-export const GoogleCloudRecommendationengineV1beta1PurgeUserEventsResponse: Schema.Schema<GoogleCloudRecommendationengineV1beta1PurgeUserEventsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      purgedEventsCount: Schema.optional(Schema.String),
-      userEventsSample: Schema.optional(
-        Schema.Array(GoogleCloudRecommendationengineV1beta1UserEvent),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudRecommendationengineV1beta1PurgeUserEventsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    purgedEventsCount: Schema.optional(Schema.String),
+    userEventsSample: Schema.optional(
+      Schema.Array(GoogleCloudRecommendationengineV1beta1UserEvent),
+    ),
+  }).annotate({
     identifier: "GoogleCloudRecommendationengineV1beta1PurgeUserEventsResponse",
-  }) as any as Schema.Schema<GoogleCloudRecommendationengineV1beta1PurgeUserEventsResponse>;
+  });
 
 export interface GoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse {
   /** The list of registered API keys. */
@@ -1031,20 +928,18 @@ export interface GoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegis
   nextPageToken?: string;
 }
 
-export const GoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse: Schema.Schema<GoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      predictionApiKeyRegistrations: Schema.optional(
-        Schema.Array(
-          GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration,
-        ),
+export const GoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    predictionApiKeyRegistrations: Schema.optional(
+      Schema.Array(
+        GoogleCloudRecommendationengineV1beta1PredictionApiKeyRegistration,
       ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse",
-  }) as any as Schema.Schema<GoogleCloudRecommendationengineV1beta1ListPredictionApiKeyRegistrationsResponse>;
+  });
 
 export interface GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest {
   /** Required. The type of the catalog rejoin to define the scope and range of the user events to be rejoined with catalog items. */
@@ -1055,14 +950,12 @@ export interface GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest {
     | (string & {});
 }
 
-export const GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest: Schema.Schema<GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userEventRejoinScope: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userEventRejoinScope: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest",
-  }) as any as Schema.Schema<GoogleCloudRecommendationengineV1beta1RejoinUserEventsRequest>;
+  });
 
 export interface GoogleCloudRecommendationengineV1beta1PurgeUserEventsMetadata {
   /** The ID of the request / operation. */
@@ -1071,15 +964,13 @@ export interface GoogleCloudRecommendationengineV1beta1PurgeUserEventsMetadata {
   createTime?: string;
 }
 
-export const GoogleCloudRecommendationengineV1beta1PurgeUserEventsMetadata: Schema.Schema<GoogleCloudRecommendationengineV1beta1PurgeUserEventsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operationName: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudRecommendationengineV1beta1PurgeUserEventsMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operationName: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudRecommendationengineV1beta1PurgeUserEventsMetadata",
-  }) as any as Schema.Schema<GoogleCloudRecommendationengineV1beta1PurgeUserEventsMetadata>;
+  });
 
 export interface GoogleCloudRecommendationengineV1beta1UserEventImportSummary {
   /** Count of user events imported with complete existing catalog information. */
@@ -1088,15 +979,13 @@ export interface GoogleCloudRecommendationengineV1beta1UserEventImportSummary {
   unjoinedEventsCount?: string;
 }
 
-export const GoogleCloudRecommendationengineV1beta1UserEventImportSummary: Schema.Schema<GoogleCloudRecommendationengineV1beta1UserEventImportSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      joinedEventsCount: Schema.optional(Schema.String),
-      unjoinedEventsCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudRecommendationengineV1beta1UserEventImportSummary =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    joinedEventsCount: Schema.optional(Schema.String),
+    unjoinedEventsCount: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudRecommendationengineV1beta1UserEventImportSummary",
-  }) as any as Schema.Schema<GoogleCloudRecommendationengineV1beta1UserEventImportSummary>;
+  });
 
 export interface GoogleCloudRecommendationengineV1beta1ImportUserEventsResponse {
   /** A sample of errors encountered while processing the request. */
@@ -1107,21 +996,19 @@ export interface GoogleCloudRecommendationengineV1beta1ImportUserEventsResponse 
   errorsConfig?: GoogleCloudRecommendationengineV1beta1ImportErrorsConfig;
 }
 
-export const GoogleCloudRecommendationengineV1beta1ImportUserEventsResponse: Schema.Schema<GoogleCloudRecommendationengineV1beta1ImportUserEventsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errorSamples: Schema.optional(Schema.Array(GoogleRpcStatus)),
-      importSummary: Schema.optional(
-        GoogleCloudRecommendationengineV1beta1UserEventImportSummary,
-      ),
-      errorsConfig: Schema.optional(
-        GoogleCloudRecommendationengineV1beta1ImportErrorsConfig,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudRecommendationengineV1beta1ImportUserEventsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    errorSamples: Schema.optional(Schema.Array(GoogleRpcStatus)),
+    importSummary: Schema.optional(
+      GoogleCloudRecommendationengineV1beta1UserEventImportSummary,
+    ),
+    errorsConfig: Schema.optional(
+      GoogleCloudRecommendationengineV1beta1ImportErrorsConfig,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudRecommendationengineV1beta1ImportUserEventsResponse",
-  }) as any as Schema.Schema<GoogleCloudRecommendationengineV1beta1ImportUserEventsResponse>;
+  });
 
 export interface GoogleCloudRecommendationengineV1beta1ImportUserEventsRequest {
   /** Optional. Unique identifier provided by client, within the ancestor dataset scope. Ensures idempotency for expensive long running operations. Server-generated if unspecified. Up to 128 characters long. This is returned as google.longrunning.Operation.name in the response. Note that this field must not be set if the desired input config is catalog_inline_source. */
@@ -1132,20 +1019,18 @@ export interface GoogleCloudRecommendationengineV1beta1ImportUserEventsRequest {
   errorsConfig?: GoogleCloudRecommendationengineV1beta1ImportErrorsConfig;
 }
 
-export const GoogleCloudRecommendationengineV1beta1ImportUserEventsRequest: Schema.Schema<GoogleCloudRecommendationengineV1beta1ImportUserEventsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestId: Schema.optional(Schema.String),
-      inputConfig: Schema.optional(
-        GoogleCloudRecommendationengineV1beta1InputConfig,
-      ),
-      errorsConfig: Schema.optional(
-        GoogleCloudRecommendationengineV1beta1ImportErrorsConfig,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudRecommendationengineV1beta1ImportUserEventsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestId: Schema.optional(Schema.String),
+    inputConfig: Schema.optional(
+      GoogleCloudRecommendationengineV1beta1InputConfig,
+    ),
+    errorsConfig: Schema.optional(
+      GoogleCloudRecommendationengineV1beta1ImportErrorsConfig,
+    ),
+  }).annotate({
     identifier: "GoogleCloudRecommendationengineV1beta1ImportUserEventsRequest",
-  }) as any as Schema.Schema<GoogleCloudRecommendationengineV1beta1ImportUserEventsRequest>;
+  });
 
 export interface GoogleLongrunningListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -1156,23 +1041,19 @@ export interface GoogleLongrunningListOperationsResponse {
   unreachable?: Array<string>;
 }
 
-export const GoogleLongrunningListOperationsResponse: Schema.Schema<GoogleLongrunningListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleLongrunningListOperationsResponse",
-  }) as any as Schema.Schema<GoogleLongrunningListOperationsResponse>;
+export const GoogleLongrunningListOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleLongrunningListOperationsResponse" });
 
 export interface GoogleCloudRecommendationengineV1alphaTuningResponse {}
 
-export const GoogleCloudRecommendationengineV1alphaTuningResponse: Schema.Schema<GoogleCloudRecommendationengineV1alphaTuningResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudRecommendationengineV1alphaTuningResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudRecommendationengineV1alphaTuningResponse",
-  }) as any as Schema.Schema<GoogleCloudRecommendationengineV1alphaTuningResponse>;
+  });
 
 export interface GoogleCloudRecommendationengineV1beta1ListUserEventsResponse {
   /** The user events. */
@@ -1181,17 +1062,15 @@ export interface GoogleCloudRecommendationengineV1beta1ListUserEventsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudRecommendationengineV1beta1ListUserEventsResponse: Schema.Schema<GoogleCloudRecommendationengineV1beta1ListUserEventsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userEvents: Schema.optional(
-        Schema.Array(GoogleCloudRecommendationengineV1beta1UserEvent),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudRecommendationengineV1beta1ListUserEventsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userEvents: Schema.optional(
+      Schema.Array(GoogleCloudRecommendationengineV1beta1UserEvent),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudRecommendationengineV1beta1ListUserEventsResponse",
-  }) as any as Schema.Schema<GoogleCloudRecommendationengineV1beta1ListUserEventsResponse>;
+  });
 
 // ==========================================================================
 // Operations

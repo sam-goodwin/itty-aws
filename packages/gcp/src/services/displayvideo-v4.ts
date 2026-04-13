@@ -41,17 +41,12 @@ export interface GoogleAudience {
   displayName?: string;
 }
 
-export const GoogleAudience: Schema.Schema<GoogleAudience> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      googleAudienceId: Schema.optional(Schema.String),
-      googleAudienceType: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAudience",
-  }) as any as Schema.Schema<GoogleAudience>;
+export const GoogleAudience = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  googleAudienceId: Schema.optional(Schema.String),
+  googleAudienceType: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+}).annotate({ identifier: "GoogleAudience" });
 
 export interface CombinedAudience {
   /** Output only. The resource name of the combined audience. */
@@ -62,16 +57,11 @@ export interface CombinedAudience {
   combinedAudienceId?: string;
 }
 
-export const CombinedAudience: Schema.Schema<CombinedAudience> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      combinedAudienceId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CombinedAudience",
-  }) as any as Schema.Schema<CombinedAudience>;
+export const CombinedAudience = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  combinedAudienceId: Schema.optional(Schema.String),
+}).annotate({ identifier: "CombinedAudience" });
 
 export interface Dimensions {
   /** The width in pixels. */
@@ -80,13 +70,10 @@ export interface Dimensions {
   heightPixels?: number;
 }
 
-export const Dimensions: Schema.Schema<Dimensions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      widthPixels: Schema.optional(Schema.Number),
-      heightPixels: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Dimensions" }) as any as Schema.Schema<Dimensions>;
+export const Dimensions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  widthPixels: Schema.optional(Schema.Number),
+  heightPixels: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Dimensions" });
 
 export interface ImageAsset {
   /** Output only. Metadata for this image at its original size. */
@@ -99,15 +86,12 @@ export interface ImageAsset {
   fileSize?: string;
 }
 
-export const ImageAsset: Schema.Schema<ImageAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fullSize: Schema.optional(Dimensions),
-      assetId: Schema.optional(Schema.String),
-      mimeType: Schema.optional(Schema.String),
-      fileSize: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "ImageAsset" }) as any as Schema.Schema<ImageAsset>;
+export const ImageAsset = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fullSize: Schema.optional(Dimensions),
+  assetId: Schema.optional(Schema.String),
+  mimeType: Schema.optional(Schema.String),
+  fileSize: Schema.optional(Schema.String),
+}).annotate({ identifier: "ImageAsset" });
 
 export interface YoutubeVideoDetails {
   /** Required. The YouTube video asset id. This is the adAssetId of an AdAsset resource. */
@@ -122,16 +106,11 @@ export interface YoutubeVideoDetails {
     | (string & {});
 }
 
-export const YoutubeVideoDetails: Schema.Schema<YoutubeVideoDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      videoAssetId: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      unavailableReason: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "YoutubeVideoDetails",
-  }) as any as Schema.Schema<YoutubeVideoDetails>;
+export const YoutubeVideoDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  videoAssetId: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  unavailableReason: Schema.optional(Schema.String),
+}).annotate({ identifier: "YoutubeVideoDetails" });
 
 export interface CommonInStreamAttribute {
   /** The webpage address that appears with the ad. */
@@ -150,20 +129,16 @@ export interface CommonInStreamAttribute {
   video?: YoutubeVideoDetails;
 }
 
-export const CommonInStreamAttribute: Schema.Schema<CommonInStreamAttribute> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayUrl: Schema.optional(Schema.String),
-      finalUrl: Schema.optional(Schema.String),
-      actionHeadline: Schema.optional(Schema.String),
-      actionButtonLabel: Schema.optional(Schema.String),
-      trackingUrl: Schema.optional(Schema.String),
-      companionBanner: Schema.optional(ImageAsset),
-      video: Schema.optional(YoutubeVideoDetails),
-    }),
-  ).annotate({
-    identifier: "CommonInStreamAttribute",
-  }) as any as Schema.Schema<CommonInStreamAttribute>;
+export const CommonInStreamAttribute =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayUrl: Schema.optional(Schema.String),
+    finalUrl: Schema.optional(Schema.String),
+    actionHeadline: Schema.optional(Schema.String),
+    actionButtonLabel: Schema.optional(Schema.String),
+    trackingUrl: Schema.optional(Schema.String),
+    companionBanner: Schema.optional(ImageAsset),
+    video: Schema.optional(YoutubeVideoDetails),
+  }).annotate({ identifier: "CommonInStreamAttribute" });
 
 export interface InStreamAd {
   /** The custom parameters and accompanying values to add to the tracking URL. */
@@ -172,15 +147,12 @@ export interface InStreamAd {
   commonInStreamAttribute?: CommonInStreamAttribute;
 }
 
-export const InStreamAd: Schema.Schema<InStreamAd> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customParameters: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      commonInStreamAttribute: Schema.optional(CommonInStreamAttribute),
-    }),
-  ).annotate({ identifier: "InStreamAd" }) as any as Schema.Schema<InStreamAd>;
+export const InStreamAd = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  customParameters: Schema.optional(
+    Schema.Record(Schema.String, Schema.String),
+  ),
+  commonInStreamAttribute: Schema.optional(CommonInStreamAttribute),
+}).annotate({ identifier: "InStreamAd" });
 
 export interface PerformanceGoal {
   /** The goal amount, in micros of the advertiser's currency. Applicable when performance_goal_type is one of: * `PERFORMANCE_GOAL_TYPE_CPM` * `PERFORMANCE_GOAL_TYPE_CPC` * `PERFORMANCE_GOAL_TYPE_CPA` * `PERFORMANCE_GOAL_TYPE_CPIAVC` * `PERFORMANCE_GOAL_TYPE_VCPM` For example 1500000 represents 1.5 standard units of the currency. */
@@ -210,17 +182,12 @@ export interface PerformanceGoal {
   performanceGoalString?: string;
 }
 
-export const PerformanceGoal: Schema.Schema<PerformanceGoal> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      performanceGoalAmountMicros: Schema.optional(Schema.String),
-      performanceGoalType: Schema.optional(Schema.String),
-      performanceGoalPercentageMicros: Schema.optional(Schema.String),
-      performanceGoalString: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PerformanceGoal",
-  }) as any as Schema.Schema<PerformanceGoal>;
+export const PerformanceGoal = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  performanceGoalAmountMicros: Schema.optional(Schema.String),
+  performanceGoalType: Schema.optional(Schema.String),
+  performanceGoalPercentageMicros: Schema.optional(Schema.String),
+  performanceGoalString: Schema.optional(Schema.String),
+}).annotate({ identifier: "PerformanceGoal" });
 
 export interface AudioVideoOffset {
   /** Optional. The offset in percentage of the audio or video duration. */
@@ -229,15 +196,10 @@ export interface AudioVideoOffset {
   seconds?: string;
 }
 
-export const AudioVideoOffset: Schema.Schema<AudioVideoOffset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      percentage: Schema.optional(Schema.String),
-      seconds: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AudioVideoOffset",
-  }) as any as Schema.Schema<AudioVideoOffset>;
+export const AudioVideoOffset = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  percentage: Schema.optional(Schema.String),
+  seconds: Schema.optional(Schema.String),
+}).annotate({ identifier: "AudioVideoOffset" });
 
 export interface TimerEvent {
   /** Required. The name of the timer event. */
@@ -246,13 +208,10 @@ export interface TimerEvent {
   reportingName?: string;
 }
 
-export const TimerEvent: Schema.Schema<TimerEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      reportingName: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "TimerEvent" }) as any as Schema.Schema<TimerEvent>;
+export const TimerEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  reportingName: Schema.optional(Schema.String),
+}).annotate({ identifier: "TimerEvent" });
 
 export interface ObaIcon {
   /** Optional. The URL of the OBA icon resource. */
@@ -279,19 +238,16 @@ export interface ObaIcon {
   viewTrackingUrl?: string;
 }
 
-export const ObaIcon: Schema.Schema<ObaIcon> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceUrl: Schema.optional(Schema.String),
-      resourceMimeType: Schema.optional(Schema.String),
-      clickTrackingUrl: Schema.optional(Schema.String),
-      landingPageUrl: Schema.optional(Schema.String),
-      dimensions: Schema.optional(Dimensions),
-      program: Schema.optional(Schema.String),
-      position: Schema.optional(Schema.String),
-      viewTrackingUrl: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "ObaIcon" }) as any as Schema.Schema<ObaIcon>;
+export const ObaIcon = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceUrl: Schema.optional(Schema.String),
+  resourceMimeType: Schema.optional(Schema.String),
+  clickTrackingUrl: Schema.optional(Schema.String),
+  landingPageUrl: Schema.optional(Schema.String),
+  dimensions: Schema.optional(Dimensions),
+  program: Schema.optional(Schema.String),
+  position: Schema.optional(Schema.String),
+  viewTrackingUrl: Schema.optional(Schema.String),
+}).annotate({ identifier: "ObaIcon" });
 
 export interface Transcode {
   /** Optional. The name of the transcoded file. */
@@ -314,20 +270,17 @@ export interface Transcode {
   transcoded?: boolean;
 }
 
-export const Transcode: Schema.Schema<Transcode> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      audioSampleRateHz: Schema.optional(Schema.String),
-      frameRate: Schema.optional(Schema.Number),
-      mimeType: Schema.optional(Schema.String),
-      bitRateKbps: Schema.optional(Schema.String),
-      dimensions: Schema.optional(Dimensions),
-      audioBitRateKbps: Schema.optional(Schema.String),
-      fileSizeBytes: Schema.optional(Schema.String),
-      transcoded: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "Transcode" }) as any as Schema.Schema<Transcode>;
+export const Transcode = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  audioSampleRateHz: Schema.optional(Schema.String),
+  frameRate: Schema.optional(Schema.Number),
+  mimeType: Schema.optional(Schema.String),
+  bitRateKbps: Schema.optional(Schema.String),
+  dimensions: Schema.optional(Dimensions),
+  audioBitRateKbps: Schema.optional(Schema.String),
+  fileSizeBytes: Schema.optional(Schema.String),
+  transcoded: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Transcode" });
 
 export interface ThirdPartyUrl {
   /** Optional. The type of interaction needs to be tracked by the tracking URL */
@@ -353,15 +306,10 @@ export interface ThirdPartyUrl {
   url?: string;
 }
 
-export const ThirdPartyUrl: Schema.Schema<ThirdPartyUrl> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      url: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ThirdPartyUrl",
-  }) as any as Schema.Schema<ThirdPartyUrl>;
+export const ThirdPartyUrl = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  url: Schema.optional(Schema.String),
+}).annotate({ identifier: "ThirdPartyUrl" });
 
 export interface CmTrackingAd {
   /** Optional. The creative ID of the campaign manager 360 tracking Ad. */
@@ -372,16 +320,11 @@ export interface CmTrackingAd {
   cmAdId?: string;
 }
 
-export const CmTrackingAd: Schema.Schema<CmTrackingAd> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cmCreativeId: Schema.optional(Schema.String),
-      cmPlacementId: Schema.optional(Schema.String),
-      cmAdId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CmTrackingAd",
-  }) as any as Schema.Schema<CmTrackingAd>;
+export const CmTrackingAd = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cmCreativeId: Schema.optional(Schema.String),
+  cmPlacementId: Schema.optional(Schema.String),
+  cmAdId: Schema.optional(Schema.String),
+}).annotate({ identifier: "CmTrackingAd" });
 
 export interface ExchangeReviewStatus {
   /** The exchange reviewing the creative. */
@@ -485,15 +428,10 @@ export interface ExchangeReviewStatus {
     | (string & {});
 }
 
-export const ExchangeReviewStatus: Schema.Schema<ExchangeReviewStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      exchange: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ExchangeReviewStatus",
-  }) as any as Schema.Schema<ExchangeReviewStatus>;
+export const ExchangeReviewStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  exchange: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.String),
+}).annotate({ identifier: "ExchangeReviewStatus" });
 
 export interface ReviewStatusInfo {
   /** Creative and landing page review status for the creative. */
@@ -522,19 +460,12 @@ export interface ReviewStatusInfo {
     | (string & {});
 }
 
-export const ReviewStatusInfo: Schema.Schema<ReviewStatusInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      creativeAndLandingPageReviewStatus: Schema.optional(Schema.String),
-      exchangeReviewStatuses: Schema.optional(
-        Schema.Array(ExchangeReviewStatus),
-      ),
-      contentAndPolicyReviewStatus: Schema.optional(Schema.String),
-      approvalStatus: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ReviewStatusInfo",
-  }) as any as Schema.Schema<ReviewStatusInfo>;
+export const ReviewStatusInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  creativeAndLandingPageReviewStatus: Schema.optional(Schema.String),
+  exchangeReviewStatuses: Schema.optional(Schema.Array(ExchangeReviewStatus)),
+  contentAndPolicyReviewStatus: Schema.optional(Schema.String),
+  approvalStatus: Schema.optional(Schema.String),
+}).annotate({ identifier: "ReviewStatusInfo" });
 
 export interface UniversalAdId {
   /** Optional. The unique creative identifier. */
@@ -550,15 +481,10 @@ export interface UniversalAdId {
     | (string & {});
 }
 
-export const UniversalAdId: Schema.Schema<UniversalAdId> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      registry: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UniversalAdId",
-  }) as any as Schema.Schema<UniversalAdId>;
+export const UniversalAdId = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  registry: Schema.optional(Schema.String),
+}).annotate({ identifier: "UniversalAdId" });
 
 export interface ExitEvent {
   /** Optional. The name of the click tag of the exit event. The name must be unique within one creative. Leave it empty or unset for creatives containing image assets only. */
@@ -575,15 +501,12 @@ export interface ExitEvent {
   reportingName?: string;
 }
 
-export const ExitEvent: Schema.Schema<ExitEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      url: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      reportingName: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "ExitEvent" }) as any as Schema.Schema<ExitEvent>;
+export const ExitEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  url: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  reportingName: Schema.optional(Schema.String),
+}).annotate({ identifier: "ExitEvent" });
 
 export interface CounterEvent {
   /** Required. The name of the counter event. */
@@ -592,15 +515,10 @@ export interface CounterEvent {
   reportingName?: string;
 }
 
-export const CounterEvent: Schema.Schema<CounterEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      reportingName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CounterEvent",
-  }) as any as Schema.Schema<CounterEvent>;
+export const CounterEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  reportingName: Schema.optional(Schema.String),
+}).annotate({ identifier: "CounterEvent" });
 
 export interface Asset {
   /** The asset content. For uploaded assets, the content is the serving path. */
@@ -609,13 +527,10 @@ export interface Asset {
   mediaId?: string;
 }
 
-export const Asset: Schema.Schema<Asset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      content: Schema.optional(Schema.String),
-      mediaId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Asset" }) as any as Schema.Schema<Asset>;
+export const Asset = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  content: Schema.optional(Schema.String),
+  mediaId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Asset" });
 
 export interface AssetAssociation {
   /** Optional. The associated asset. */
@@ -647,15 +562,10 @@ export interface AssetAssociation {
     | (string & {});
 }
 
-export const AssetAssociation: Schema.Schema<AssetAssociation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      asset: Schema.optional(Asset),
-      role: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AssetAssociation",
-  }) as any as Schema.Schema<AssetAssociation>;
+export const AssetAssociation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  asset: Schema.optional(Asset),
+  role: Schema.optional(Schema.String),
+}).annotate({ identifier: "AssetAssociation" });
 
 export interface Creative {
   /** Optional. The original third-party tag used for the creative. Required and only valid for third-party tag creatives. Third-party tag creatives are creatives with following hosting_source: * `HOSTING_SOURCE_THIRD_PARTY` combined with following creative_type: * `CREATIVE_TYPE_STANDARD` * `CREATIVE_TYPE_EXPANDABLE` */
@@ -804,58 +714,55 @@ export interface Creative {
   requireMraid?: boolean;
 }
 
-export const Creative: Schema.Schema<Creative> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      thirdPartyTag: Schema.optional(Schema.String),
-      expandingDirection: Schema.optional(Schema.String),
-      progressOffset: Schema.optional(AudioVideoOffset),
-      requirePingForAttribution: Schema.optional(Schema.Boolean),
-      vpaid: Schema.optional(Schema.Boolean),
-      timerEvents: Schema.optional(Schema.Array(TimerEvent)),
-      mediaDuration: Schema.optional(Schema.String),
-      requireHtml5: Schema.optional(Schema.Boolean),
-      integrationCode: Schema.optional(Schema.String),
-      dimensions: Schema.optional(Dimensions),
-      mp3Audio: Schema.optional(Schema.Boolean),
-      dynamic: Schema.optional(Schema.Boolean),
-      creativeAttributes: Schema.optional(Schema.Array(Schema.String)),
-      obaIcon: Schema.optional(ObaIcon),
-      advertiserId: Schema.optional(Schema.String),
-      appendedTag: Schema.optional(Schema.String),
-      html5Video: Schema.optional(Schema.Boolean),
-      additionalDimensions: Schema.optional(Schema.Array(Dimensions)),
-      vastTagUrl: Schema.optional(Schema.String),
-      transcodes: Schema.optional(Schema.Array(Transcode)),
-      expandOnHover: Schema.optional(Schema.Boolean),
-      iasCampaignMonitoring: Schema.optional(Schema.Boolean),
-      entityStatus: Schema.optional(Schema.String),
-      thirdPartyUrls: Schema.optional(Schema.Array(ThirdPartyUrl)),
-      creativeType: Schema.optional(Schema.String),
-      cmTrackingAd: Schema.optional(CmTrackingAd),
-      cmPlacementId: Schema.optional(Schema.String),
-      trackerUrls: Schema.optional(Schema.Array(Schema.String)),
-      skippable: Schema.optional(Schema.Boolean),
-      reviewStatus: Schema.optional(ReviewStatusInfo),
-      skipOffset: Schema.optional(AudioVideoOffset),
-      universalAdId: Schema.optional(UniversalAdId),
-      jsTrackerUrl: Schema.optional(Schema.String),
-      exitEvents: Schema.optional(Schema.Array(ExitEvent)),
-      displayName: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      hostingSource: Schema.optional(Schema.String),
-      oggAudio: Schema.optional(Schema.Boolean),
-      companionCreativeIds: Schema.optional(Schema.Array(Schema.String)),
-      lineItemIds: Schema.optional(Schema.Array(Schema.String)),
-      name: Schema.optional(Schema.String),
-      counterEvents: Schema.optional(Schema.Array(CounterEvent)),
-      creativeId: Schema.optional(Schema.String),
-      assets: Schema.optional(Schema.Array(AssetAssociation)),
-      notes: Schema.optional(Schema.String),
-      requireMraid: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "Creative" }) as any as Schema.Schema<Creative>;
+export const Creative = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  thirdPartyTag: Schema.optional(Schema.String),
+  expandingDirection: Schema.optional(Schema.String),
+  progressOffset: Schema.optional(AudioVideoOffset),
+  requirePingForAttribution: Schema.optional(Schema.Boolean),
+  vpaid: Schema.optional(Schema.Boolean),
+  timerEvents: Schema.optional(Schema.Array(TimerEvent)),
+  mediaDuration: Schema.optional(Schema.String),
+  requireHtml5: Schema.optional(Schema.Boolean),
+  integrationCode: Schema.optional(Schema.String),
+  dimensions: Schema.optional(Dimensions),
+  mp3Audio: Schema.optional(Schema.Boolean),
+  dynamic: Schema.optional(Schema.Boolean),
+  creativeAttributes: Schema.optional(Schema.Array(Schema.String)),
+  obaIcon: Schema.optional(ObaIcon),
+  advertiserId: Schema.optional(Schema.String),
+  appendedTag: Schema.optional(Schema.String),
+  html5Video: Schema.optional(Schema.Boolean),
+  additionalDimensions: Schema.optional(Schema.Array(Dimensions)),
+  vastTagUrl: Schema.optional(Schema.String),
+  transcodes: Schema.optional(Schema.Array(Transcode)),
+  expandOnHover: Schema.optional(Schema.Boolean),
+  iasCampaignMonitoring: Schema.optional(Schema.Boolean),
+  entityStatus: Schema.optional(Schema.String),
+  thirdPartyUrls: Schema.optional(Schema.Array(ThirdPartyUrl)),
+  creativeType: Schema.optional(Schema.String),
+  cmTrackingAd: Schema.optional(CmTrackingAd),
+  cmPlacementId: Schema.optional(Schema.String),
+  trackerUrls: Schema.optional(Schema.Array(Schema.String)),
+  skippable: Schema.optional(Schema.Boolean),
+  reviewStatus: Schema.optional(ReviewStatusInfo),
+  skipOffset: Schema.optional(AudioVideoOffset),
+  universalAdId: Schema.optional(UniversalAdId),
+  jsTrackerUrl: Schema.optional(Schema.String),
+  exitEvents: Schema.optional(Schema.Array(ExitEvent)),
+  displayName: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  hostingSource: Schema.optional(Schema.String),
+  oggAudio: Schema.optional(Schema.Boolean),
+  companionCreativeIds: Schema.optional(Schema.Array(Schema.String)),
+  lineItemIds: Schema.optional(Schema.Array(Schema.String)),
+  name: Schema.optional(Schema.String),
+  counterEvents: Schema.optional(Schema.Array(CounterEvent)),
+  creativeId: Schema.optional(Schema.String),
+  assets: Schema.optional(Schema.Array(AssetAssociation)),
+  notes: Schema.optional(Schema.String),
+  requireMraid: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Creative" });
 
 export interface ListCreativesResponse {
   /** The list of creatives. This list will be absent if empty. */
@@ -864,15 +771,10 @@ export interface ListCreativesResponse {
   nextPageToken?: string;
 }
 
-export const ListCreativesResponse: Schema.Schema<ListCreativesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      creatives: Schema.optional(Schema.Array(Creative)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListCreativesResponse",
-  }) as any as Schema.Schema<ListCreativesResponse>;
+export const ListCreativesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  creatives: Schema.optional(Schema.Array(Creative)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListCreativesResponse" });
 
 export interface Displayvideo_Date {
   /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
@@ -883,16 +785,11 @@ export interface Displayvideo_Date {
   day?: number;
 }
 
-export const Displayvideo_Date: Schema.Schema<Displayvideo_Date> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      month: Schema.optional(Schema.Number),
-      year: Schema.optional(Schema.Number),
-      day: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "Displayvideo_Date",
-  }) as any as Schema.Schema<Displayvideo_Date>;
+export const Displayvideo_Date = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  month: Schema.optional(Schema.Number),
+  year: Schema.optional(Schema.Number),
+  day: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Displayvideo_Date" });
 
 export interface DateRange {
   /** The lower bound of the date range, inclusive. Must specify a positive value for `year`, `month`, and `day`. */
@@ -901,13 +798,10 @@ export interface DateRange {
   endDate?: Displayvideo_Date;
 }
 
-export const DateRange: Schema.Schema<DateRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startDate: Schema.optional(Displayvideo_Date),
-      endDate: Schema.optional(Displayvideo_Date),
-    }),
-  ).annotate({ identifier: "DateRange" }) as any as Schema.Schema<DateRange>;
+export const DateRange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startDate: Schema.optional(Displayvideo_Date),
+  endDate: Schema.optional(Displayvideo_Date),
+}).annotate({ identifier: "DateRange" });
 
 export interface CampaignFlight {
   /** Required. The dates that the campaign is expected to run. They are resolved relative to the parent advertiser's time zone. * The dates specified here will not affect serving. They are used to generate alerts and warnings. For example, if the flight date of any child insertion order is outside the range of these dates, the user interface will show a warning. * `start_date` is required and must be the current date or later. * `end_date` is optional. If specified, it must be the `start_date` or later. * Any specified date must be before the year 2037. */
@@ -916,15 +810,10 @@ export interface CampaignFlight {
   plannedSpendAmountMicros?: string;
 }
 
-export const CampaignFlight: Schema.Schema<CampaignFlight> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      plannedDates: Schema.optional(DateRange),
-      plannedSpendAmountMicros: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CampaignFlight",
-  }) as any as Schema.Schema<CampaignFlight>;
+export const CampaignFlight = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  plannedDates: Schema.optional(DateRange),
+  plannedSpendAmountMicros: Schema.optional(Schema.String),
+}).annotate({ identifier: "CampaignFlight" });
 
 export interface AudioAd {
   /** The URL address loaded in the background for tracking purposes. */
@@ -937,43 +826,32 @@ export interface AudioAd {
   video?: YoutubeVideoDetails;
 }
 
-export const AudioAd: Schema.Schema<AudioAd> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      trackingUrl: Schema.optional(Schema.String),
-      displayUrl: Schema.optional(Schema.String),
-      finalUrl: Schema.optional(Schema.String),
-      video: Schema.optional(YoutubeVideoDetails),
-    }),
-  ).annotate({ identifier: "AudioAd" }) as any as Schema.Schema<AudioAd>;
+export const AudioAd = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  trackingUrl: Schema.optional(Schema.String),
+  displayUrl: Schema.optional(Schema.String),
+  finalUrl: Schema.optional(Schema.String),
+  video: Schema.optional(YoutubeVideoDetails),
+}).annotate({ identifier: "AudioAd" });
 
 export interface AdvertiserTargetingConfig {
   /** Whether or not connected TV devices are exempt from viewability targeting for all video line items under the advertiser. */
   exemptTvFromViewabilityTargeting?: boolean;
 }
 
-export const AdvertiserTargetingConfig: Schema.Schema<AdvertiserTargetingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      exemptTvFromViewabilityTargeting: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "AdvertiserTargetingConfig",
-  }) as any as Schema.Schema<AdvertiserTargetingConfig>;
+export const AdvertiserTargetingConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    exemptTvFromViewabilityTargeting: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "AdvertiserTargetingConfig" });
 
 export interface AdPolicyTopicEvidenceLegalRemovalLocalLegal {
   /** Type of law for the legal notice. */
   lawType?: string;
 }
 
-export const AdPolicyTopicEvidenceLegalRemovalLocalLegal: Schema.Schema<AdPolicyTopicEvidenceLegalRemovalLocalLegal> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lawType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AdPolicyTopicEvidenceLegalRemovalLocalLegal",
-  }) as any as Schema.Schema<AdPolicyTopicEvidenceLegalRemovalLocalLegal>;
+export const AdPolicyTopicEvidenceLegalRemovalLocalLegal =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    lawType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AdPolicyTopicEvidenceLegalRemovalLocalLegal" });
 
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -984,16 +862,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -1008,30 +883,23 @@ export interface Operation {
   metadata?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      error: Schema.optional(Status),
-      done: Schema.optional(Schema.Boolean),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  error: Schema.optional(Status),
+  done: Schema.optional(Schema.Boolean),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Operation" });
 
 export interface LanguageTargetingOptionDetails {
   /** Output only. The display name of the language (e.g., "French"). */
   displayName?: string;
 }
 
-export const LanguageTargetingOptionDetails: Schema.Schema<LanguageTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LanguageTargetingOptionDetails",
-  }) as any as Schema.Schema<LanguageTargetingOptionDetails>;
+export const LanguageTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "LanguageTargetingOptionDetails" });
 
 export interface ContentDurationTargetingOptionDetails {
   /** Output only. The content duration. */
@@ -1047,28 +915,20 @@ export interface ContentDurationTargetingOptionDetails {
     | (string & {});
 }
 
-export const ContentDurationTargetingOptionDetails: Schema.Schema<ContentDurationTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contentDuration: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ContentDurationTargetingOptionDetails",
-  }) as any as Schema.Schema<ContentDurationTargetingOptionDetails>;
+export const ContentDurationTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    contentDuration: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ContentDurationTargetingOptionDetails" });
 
 export interface AppCategoryTargetingOptionDetails {
   /** Output only. The name of the app collection. */
   displayName?: string;
 }
 
-export const AppCategoryTargetingOptionDetails: Schema.Schema<AppCategoryTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AppCategoryTargetingOptionDetails",
-  }) as any as Schema.Schema<AppCategoryTargetingOptionDetails>;
+export const AppCategoryTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AppCategoryTargetingOptionDetails" });
 
 export interface DoubleVerifyDisplayViewability {
   /** Target web and app inventory to maximize IAB viewable rate. */
@@ -1093,29 +953,21 @@ export interface DoubleVerifyDisplayViewability {
     | (string & {});
 }
 
-export const DoubleVerifyDisplayViewability: Schema.Schema<DoubleVerifyDisplayViewability> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      iab: Schema.optional(Schema.String),
-      viewableDuring: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DoubleVerifyDisplayViewability",
-  }) as any as Schema.Schema<DoubleVerifyDisplayViewability>;
+export const DoubleVerifyDisplayViewability =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    iab: Schema.optional(Schema.String),
+    viewableDuring: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DoubleVerifyDisplayViewability" });
 
 export interface OmidAssignedTargetingOptionDetails {
   /** Required. The type of Open Measurement enabled inventory. */
   omid?: "OMID_UNSPECIFIED" | "OMID_FOR_MOBILE_DISPLAY_ADS" | (string & {});
 }
 
-export const OmidAssignedTargetingOptionDetails: Schema.Schema<OmidAssignedTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      omid: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OmidAssignedTargetingOptionDetails",
-  }) as any as Schema.Schema<OmidAssignedTargetingOptionDetails>;
+export const OmidAssignedTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    omid: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OmidAssignedTargetingOptionDetails" });
 
 export interface AppAssignedTargetingOptionDetails {
   /** Required. The ID of the app. Android's Play store app uses bundle ID, for example `com.google.android.gm`. Apple's App store app ID uses 9 digit string, for example `422689480`. */
@@ -1143,17 +995,13 @@ export interface AppAssignedTargetingOptionDetails {
   displayName?: string;
 }
 
-export const AppAssignedTargetingOptionDetails: Schema.Schema<AppAssignedTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      appId: Schema.optional(Schema.String),
-      negative: Schema.optional(Schema.Boolean),
-      appPlatform: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AppAssignedTargetingOptionDetails",
-  }) as any as Schema.Schema<AppAssignedTargetingOptionDetails>;
+export const AppAssignedTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    appId: Schema.optional(Schema.String),
+    negative: Schema.optional(Schema.Boolean),
+    appPlatform: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AppAssignedTargetingOptionDetails" });
 
 export interface RegionalLocationListAssignedTargetingOptionDetails {
   /** Indicates if this option is being negatively targeted. */
@@ -1162,15 +1010,13 @@ export interface RegionalLocationListAssignedTargetingOptionDetails {
   regionalLocationListId?: string;
 }
 
-export const RegionalLocationListAssignedTargetingOptionDetails: Schema.Schema<RegionalLocationListAssignedTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      negative: Schema.optional(Schema.Boolean),
-      regionalLocationListId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const RegionalLocationListAssignedTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    negative: Schema.optional(Schema.Boolean),
+    regionalLocationListId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "RegionalLocationListAssignedTargetingOptionDetails",
-  }) as any as Schema.Schema<RegionalLocationListAssignedTargetingOptionDetails>;
+  });
 
 export interface ContentOutstreamPositionAssignedTargetingOptionDetails {
   /** Required. The content outstream position. */
@@ -1191,15 +1037,13 @@ export interface ContentOutstreamPositionAssignedTargetingOptionDetails {
     | (string & {});
 }
 
-export const ContentOutstreamPositionAssignedTargetingOptionDetails: Schema.Schema<ContentOutstreamPositionAssignedTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contentOutstreamPosition: Schema.optional(Schema.String),
-      adType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const ContentOutstreamPositionAssignedTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    contentOutstreamPosition: Schema.optional(Schema.String),
+    adType: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "ContentOutstreamPositionAssignedTargetingOptionDetails",
-  }) as any as Schema.Schema<ContentOutstreamPositionAssignedTargetingOptionDetails>;
+  });
 
 export interface CategoryAssignedTargetingOptionDetails {
   /** Output only. The display name of the category. */
@@ -1210,16 +1054,12 @@ export interface CategoryAssignedTargetingOptionDetails {
   targetingOptionId?: string;
 }
 
-export const CategoryAssignedTargetingOptionDetails: Schema.Schema<CategoryAssignedTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      negative: Schema.optional(Schema.Boolean),
-      targetingOptionId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CategoryAssignedTargetingOptionDetails",
-  }) as any as Schema.Schema<CategoryAssignedTargetingOptionDetails>;
+export const CategoryAssignedTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    negative: Schema.optional(Schema.Boolean),
+    targetingOptionId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CategoryAssignedTargetingOptionDetails" });
 
 export interface ProximityLocationListAssignedTargetingOptionDetails {
   /** Required. Radius expressed in the distance units set in proximity_radius_unit. This represents the size of the area around a chosen location that will be targeted. Radius should be between 1 and 500 miles or 800 kilometers. */
@@ -1234,16 +1074,14 @@ export interface ProximityLocationListAssignedTargetingOptionDetails {
     | (string & {});
 }
 
-export const ProximityLocationListAssignedTargetingOptionDetails: Schema.Schema<ProximityLocationListAssignedTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      proximityRadius: Schema.optional(Schema.Number),
-      proximityLocationListId: Schema.optional(Schema.String),
-      proximityRadiusUnit: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const ProximityLocationListAssignedTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    proximityRadius: Schema.optional(Schema.Number),
+    proximityLocationListId: Schema.optional(Schema.String),
+    proximityRadiusUnit: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "ProximityLocationListAssignedTargetingOptionDetails",
-  }) as any as Schema.Schema<ProximityLocationListAssignedTargetingOptionDetails>;
+  });
 
 export interface SessionPositionAssignedTargetingOptionDetails {
   /** The position where the ad will show in a session. */
@@ -1253,14 +1091,10 @@ export interface SessionPositionAssignedTargetingOptionDetails {
     | (string & {});
 }
 
-export const SessionPositionAssignedTargetingOptionDetails: Schema.Schema<SessionPositionAssignedTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sessionPosition: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SessionPositionAssignedTargetingOptionDetails",
-  }) as any as Schema.Schema<SessionPositionAssignedTargetingOptionDetails>;
+export const SessionPositionAssignedTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sessionPosition: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SessionPositionAssignedTargetingOptionDetails" });
 
 export interface DeviceTypeAssignedTargetingOptionDetails {
   /** Required. The display name of the device type. */
@@ -1276,15 +1110,11 @@ export interface DeviceTypeAssignedTargetingOptionDetails {
   youtubeAndPartnersBidMultiplier?: number;
 }
 
-export const DeviceTypeAssignedTargetingOptionDetails: Schema.Schema<DeviceTypeAssignedTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deviceType: Schema.optional(Schema.String),
-      youtubeAndPartnersBidMultiplier: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "DeviceTypeAssignedTargetingOptionDetails",
-  }) as any as Schema.Schema<DeviceTypeAssignedTargetingOptionDetails>;
+export const DeviceTypeAssignedTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deviceType: Schema.optional(Schema.String),
+    youtubeAndPartnersBidMultiplier: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "DeviceTypeAssignedTargetingOptionDetails" });
 
 export interface ContentGenreAssignedTargetingOptionDetails {
   /** Indicates if this option is being negatively targeted. */
@@ -1295,16 +1125,12 @@ export interface ContentGenreAssignedTargetingOptionDetails {
   displayName?: string;
 }
 
-export const ContentGenreAssignedTargetingOptionDetails: Schema.Schema<ContentGenreAssignedTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      negative: Schema.optional(Schema.Boolean),
-      targetingOptionId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ContentGenreAssignedTargetingOptionDetails",
-  }) as any as Schema.Schema<ContentGenreAssignedTargetingOptionDetails>;
+export const ContentGenreAssignedTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    negative: Schema.optional(Schema.Boolean),
+    targetingOptionId: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ContentGenreAssignedTargetingOptionDetails" });
 
 export interface ParentalStatusAssignedTargetingOptionDetails {
   /** Required. The parental status of the audience. */
@@ -1316,14 +1142,10 @@ export interface ParentalStatusAssignedTargetingOptionDetails {
     | (string & {});
 }
 
-export const ParentalStatusAssignedTargetingOptionDetails: Schema.Schema<ParentalStatusAssignedTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parentalStatus: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ParentalStatusAssignedTargetingOptionDetails",
-  }) as any as Schema.Schema<ParentalStatusAssignedTargetingOptionDetails>;
+export const ParentalStatusAssignedTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parentalStatus: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ParentalStatusAssignedTargetingOptionDetails" });
 
 export interface AgeRangeAssignedTargetingOptionDetails {
   /** Required. The age range of an audience. We only support targeting a continuous age range of an audience. Thus, the age range represented in this field can be 1) targeted solely, or, 2) part of a larger continuous age range. The reach of a continuous age range targeting can be expanded by also targeting an audience of an unknown age. */
@@ -1349,14 +1171,10 @@ export interface AgeRangeAssignedTargetingOptionDetails {
     | (string & {});
 }
 
-export const AgeRangeAssignedTargetingOptionDetails: Schema.Schema<AgeRangeAssignedTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ageRange: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AgeRangeAssignedTargetingOptionDetails",
-  }) as any as Schema.Schema<AgeRangeAssignedTargetingOptionDetails>;
+export const AgeRangeAssignedTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ageRange: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AgeRangeAssignedTargetingOptionDetails" });
 
 export interface SensitiveCategoryAssignedTargetingOptionDetails {
   /** Required. An enum for the DV360 Sensitive category content classified to be EXCLUDED. */
@@ -1384,14 +1202,12 @@ export interface SensitiveCategoryAssignedTargetingOptionDetails {
     | (string & {});
 }
 
-export const SensitiveCategoryAssignedTargetingOptionDetails: Schema.Schema<SensitiveCategoryAssignedTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      excludedSensitiveCategory: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const SensitiveCategoryAssignedTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    excludedSensitiveCategory: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "SensitiveCategoryAssignedTargetingOptionDetails",
-  }) as any as Schema.Schema<SensitiveCategoryAssignedTargetingOptionDetails>;
+  });
 
 export interface ViewabilityAssignedTargetingOptionDetails {
   /** Required. The predicted viewability percentage. */
@@ -1409,14 +1225,10 @@ export interface ViewabilityAssignedTargetingOptionDetails {
     | (string & {});
 }
 
-export const ViewabilityAssignedTargetingOptionDetails: Schema.Schema<ViewabilityAssignedTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      viewability: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ViewabilityAssignedTargetingOptionDetails",
-  }) as any as Schema.Schema<ViewabilityAssignedTargetingOptionDetails>;
+export const ViewabilityAssignedTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    viewability: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ViewabilityAssignedTargetingOptionDetails" });
 
 export interface ContentInstreamPositionAssignedTargetingOptionDetails {
   /** Output only. The ad type to target. Only applicable to insertion order targeting and new line items supporting the specified ad type will inherit this targeting option by default. Possible values are: * `AD_TYPE_VIDEO`, the setting will be inherited by new line item when line_item_type is `LINE_ITEM_TYPE_VIDEO_DEFAULT`. * `AD_TYPE_AUDIO`, the setting will be inherited by new line item when line_item_type is `LINE_ITEM_TYPE_AUDIO_DEFAULT`. */
@@ -1436,15 +1248,13 @@ export interface ContentInstreamPositionAssignedTargetingOptionDetails {
     | (string & {});
 }
 
-export const ContentInstreamPositionAssignedTargetingOptionDetails: Schema.Schema<ContentInstreamPositionAssignedTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      adType: Schema.optional(Schema.String),
-      contentInstreamPosition: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const ContentInstreamPositionAssignedTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    adType: Schema.optional(Schema.String),
+    contentInstreamPosition: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "ContentInstreamPositionAssignedTargetingOptionDetails",
-  }) as any as Schema.Schema<ContentInstreamPositionAssignedTargetingOptionDetails>;
+  });
 
 export interface KeywordAssignedTargetingOptionDetails {
   /** Required. The keyword, for example `car insurance`. Positive keyword cannot be offensive word. Must be UTF-8 encoded with a maximum size of 255 bytes. Maximum number of characters is 80. Maximum number of words is 10. */
@@ -1455,16 +1265,12 @@ export interface KeywordAssignedTargetingOptionDetails {
   negative?: boolean;
 }
 
-export const KeywordAssignedTargetingOptionDetails: Schema.Schema<KeywordAssignedTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      keyword: Schema.optional(Schema.String),
-      exemptedPolicyNames: Schema.optional(Schema.Array(Schema.String)),
-      negative: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "KeywordAssignedTargetingOptionDetails",
-  }) as any as Schema.Schema<KeywordAssignedTargetingOptionDetails>;
+export const KeywordAssignedTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    keyword: Schema.optional(Schema.String),
+    exemptedPolicyNames: Schema.optional(Schema.Array(Schema.String)),
+    negative: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "KeywordAssignedTargetingOptionDetails" });
 
 export interface GenderAssignedTargetingOptionDetails {
   /** Required. The gender of the audience. */
@@ -1476,14 +1282,10 @@ export interface GenderAssignedTargetingOptionDetails {
     | (string & {});
 }
 
-export const GenderAssignedTargetingOptionDetails: Schema.Schema<GenderAssignedTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gender: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GenderAssignedTargetingOptionDetails",
-  }) as any as Schema.Schema<GenderAssignedTargetingOptionDetails>;
+export const GenderAssignedTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gender: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GenderAssignedTargetingOptionDetails" });
 
 export interface OnScreenPositionAssignedTargetingOptionDetails {
   /** Required. The targeting_option_id field when targeting_type is `TARGETING_TYPE_ON_SCREEN_POSITION`. */
@@ -1504,44 +1306,34 @@ export interface OnScreenPositionAssignedTargetingOptionDetails {
     | (string & {});
 }
 
-export const OnScreenPositionAssignedTargetingOptionDetails: Schema.Schema<OnScreenPositionAssignedTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetingOptionId: Schema.optional(Schema.String),
-      adType: Schema.optional(Schema.String),
-      onScreenPosition: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OnScreenPositionAssignedTargetingOptionDetails",
-  }) as any as Schema.Schema<OnScreenPositionAssignedTargetingOptionDetails>;
+export const OnScreenPositionAssignedTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetingOptionId: Schema.optional(Schema.String),
+    adType: Schema.optional(Schema.String),
+    onScreenPosition: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OnScreenPositionAssignedTargetingOptionDetails" });
 
 export interface InventorySourceAssignedTargetingOptionDetails {
   /** Required. ID of the inventory source. Should refer to the inventory_source_id field of an InventorySource resource. */
   inventorySourceId?: string;
 }
 
-export const InventorySourceAssignedTargetingOptionDetails: Schema.Schema<InventorySourceAssignedTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inventorySourceId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InventorySourceAssignedTargetingOptionDetails",
-  }) as any as Schema.Schema<InventorySourceAssignedTargetingOptionDetails>;
+export const InventorySourceAssignedTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    inventorySourceId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "InventorySourceAssignedTargetingOptionDetails" });
 
 export interface InventorySourceGroupAssignedTargetingOptionDetails {
   /** Required. ID of the inventory source group. Should refer to the inventory_source_group_id field of an InventorySourceGroup resource. */
   inventorySourceGroupId?: string;
 }
 
-export const InventorySourceGroupAssignedTargetingOptionDetails: Schema.Schema<InventorySourceGroupAssignedTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inventorySourceGroupId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const InventorySourceGroupAssignedTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    inventorySourceGroupId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "InventorySourceGroupAssignedTargetingOptionDetails",
-  }) as any as Schema.Schema<InventorySourceGroupAssignedTargetingOptionDetails>;
+  });
 
 export interface UserRewardedContentAssignedTargetingOptionDetails {
   /** Required. The targeting_option_id field when targeting_type is `TARGETING_TYPE_USER_REWARDED_CONTENT`. */
@@ -1554,15 +1346,13 @@ export interface UserRewardedContentAssignedTargetingOptionDetails {
     | (string & {});
 }
 
-export const UserRewardedContentAssignedTargetingOptionDetails: Schema.Schema<UserRewardedContentAssignedTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetingOptionId: Schema.optional(Schema.String),
-      userRewardedContent: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const UserRewardedContentAssignedTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetingOptionId: Schema.optional(Schema.String),
+    userRewardedContent: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "UserRewardedContentAssignedTargetingOptionDetails",
-  }) as any as Schema.Schema<UserRewardedContentAssignedTargetingOptionDetails>;
+  });
 
 export interface ContentDurationAssignedTargetingOptionDetails {
   /** Output only. The content duration. */
@@ -1580,15 +1370,11 @@ export interface ContentDurationAssignedTargetingOptionDetails {
   targetingOptionId?: string;
 }
 
-export const ContentDurationAssignedTargetingOptionDetails: Schema.Schema<ContentDurationAssignedTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contentDuration: Schema.optional(Schema.String),
-      targetingOptionId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ContentDurationAssignedTargetingOptionDetails",
-  }) as any as Schema.Schema<ContentDurationAssignedTargetingOptionDetails>;
+export const ContentDurationAssignedTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    contentDuration: Schema.optional(Schema.String),
+    targetingOptionId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ContentDurationAssignedTargetingOptionDetails" });
 
 export interface BrowserAssignedTargetingOptionDetails {
   /** Output only. The display name of the browser. */
@@ -1599,16 +1385,12 @@ export interface BrowserAssignedTargetingOptionDetails {
   targetingOptionId?: string;
 }
 
-export const BrowserAssignedTargetingOptionDetails: Schema.Schema<BrowserAssignedTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      negative: Schema.optional(Schema.Boolean),
-      targetingOptionId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BrowserAssignedTargetingOptionDetails",
-  }) as any as Schema.Schema<BrowserAssignedTargetingOptionDetails>;
+export const BrowserAssignedTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    negative: Schema.optional(Schema.Boolean),
+    targetingOptionId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BrowserAssignedTargetingOptionDetails" });
 
 export interface DigitalContentLabelAssignedTargetingOptionDetails {
   /** Required. The display name of the digital content label rating tier to be EXCLUDED. */
@@ -1623,14 +1405,12 @@ export interface DigitalContentLabelAssignedTargetingOptionDetails {
     | (string & {});
 }
 
-export const DigitalContentLabelAssignedTargetingOptionDetails: Schema.Schema<DigitalContentLabelAssignedTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      excludedContentRatingTier: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const DigitalContentLabelAssignedTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    excludedContentRatingTier: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "DigitalContentLabelAssignedTargetingOptionDetails",
-  }) as any as Schema.Schema<DigitalContentLabelAssignedTargetingOptionDetails>;
+  });
 
 export interface CarrierAndIspAssignedTargetingOptionDetails {
   /** Output only. The display name of the carrier or ISP. */
@@ -1641,16 +1421,12 @@ export interface CarrierAndIspAssignedTargetingOptionDetails {
   negative?: boolean;
 }
 
-export const CarrierAndIspAssignedTargetingOptionDetails: Schema.Schema<CarrierAndIspAssignedTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      targetingOptionId: Schema.optional(Schema.String),
-      negative: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "CarrierAndIspAssignedTargetingOptionDetails",
-  }) as any as Schema.Schema<CarrierAndIspAssignedTargetingOptionDetails>;
+export const CarrierAndIspAssignedTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    targetingOptionId: Schema.optional(Schema.String),
+    negative: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "CarrierAndIspAssignedTargetingOptionDetails" });
 
 export interface NativeContentPositionAssignedTargetingOptionDetails {
   /** Required. The content position. */
@@ -1664,14 +1440,12 @@ export interface NativeContentPositionAssignedTargetingOptionDetails {
     | (string & {});
 }
 
-export const NativeContentPositionAssignedTargetingOptionDetails: Schema.Schema<NativeContentPositionAssignedTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contentPosition: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const NativeContentPositionAssignedTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    contentPosition: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "NativeContentPositionAssignedTargetingOptionDetails",
-  }) as any as Schema.Schema<NativeContentPositionAssignedTargetingOptionDetails>;
+  });
 
 export interface OperatingSystemAssignedTargetingOptionDetails {
   /** Indicates if this option is being negatively targeted. */
@@ -1682,30 +1456,22 @@ export interface OperatingSystemAssignedTargetingOptionDetails {
   displayName?: string;
 }
 
-export const OperatingSystemAssignedTargetingOptionDetails: Schema.Schema<OperatingSystemAssignedTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      negative: Schema.optional(Schema.Boolean),
-      targetingOptionId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperatingSystemAssignedTargetingOptionDetails",
-  }) as any as Schema.Schema<OperatingSystemAssignedTargetingOptionDetails>;
+export const OperatingSystemAssignedTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    negative: Schema.optional(Schema.Boolean),
+    targetingOptionId: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OperatingSystemAssignedTargetingOptionDetails" });
 
 export interface SubExchangeAssignedTargetingOptionDetails {
   /** Required. The targeting_option_id of a TargetingOption of type `TARGETING_TYPE_SUB_EXCHANGE`. */
   targetingOptionId?: string;
 }
 
-export const SubExchangeAssignedTargetingOptionDetails: Schema.Schema<SubExchangeAssignedTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetingOptionId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SubExchangeAssignedTargetingOptionDetails",
-  }) as any as Schema.Schema<SubExchangeAssignedTargetingOptionDetails>;
+export const SubExchangeAssignedTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetingOptionId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SubExchangeAssignedTargetingOptionDetails" });
 
 export interface EnvironmentAssignedTargetingOptionDetails {
   /** Required. The serving environment. */
@@ -1717,14 +1483,10 @@ export interface EnvironmentAssignedTargetingOptionDetails {
     | (string & {});
 }
 
-export const EnvironmentAssignedTargetingOptionDetails: Schema.Schema<EnvironmentAssignedTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      environment: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnvironmentAssignedTargetingOptionDetails",
-  }) as any as Schema.Schema<EnvironmentAssignedTargetingOptionDetails>;
+export const EnvironmentAssignedTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    environment: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnvironmentAssignedTargetingOptionDetails" });
 
 export interface AppCategoryAssignedTargetingOptionDetails {
   /** Output only. The display name of the app category. */
@@ -1735,16 +1497,12 @@ export interface AppCategoryAssignedTargetingOptionDetails {
   negative?: boolean;
 }
 
-export const AppCategoryAssignedTargetingOptionDetails: Schema.Schema<AppCategoryAssignedTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      targetingOptionId: Schema.optional(Schema.String),
-      negative: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "AppCategoryAssignedTargetingOptionDetails",
-  }) as any as Schema.Schema<AppCategoryAssignedTargetingOptionDetails>;
+export const AppCategoryAssignedTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    targetingOptionId: Schema.optional(Schema.String),
+    negative: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "AppCategoryAssignedTargetingOptionDetails" });
 
 export interface DoubleVerifyVideoViewability {
   /** Target web inventory to maximize IAB viewable rate. */
@@ -1780,16 +1538,12 @@ export interface DoubleVerifyVideoViewability {
     | (string & {});
 }
 
-export const DoubleVerifyVideoViewability: Schema.Schema<DoubleVerifyVideoViewability> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      videoIab: Schema.optional(Schema.String),
-      playerImpressionRate: Schema.optional(Schema.String),
-      videoViewableRate: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DoubleVerifyVideoViewability",
-  }) as any as Schema.Schema<DoubleVerifyVideoViewability>;
+export const DoubleVerifyVideoViewability =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    videoIab: Schema.optional(Schema.String),
+    playerImpressionRate: Schema.optional(Schema.String),
+    videoViewableRate: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DoubleVerifyVideoViewability" });
 
 export interface DoubleVerifyFraudInvalidTraffic {
   /** Insufficient Historical Fraud & IVT Stats. */
@@ -1808,15 +1562,11 @@ export interface DoubleVerifyFraudInvalidTraffic {
     | (string & {});
 }
 
-export const DoubleVerifyFraudInvalidTraffic: Schema.Schema<DoubleVerifyFraudInvalidTraffic> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      avoidInsufficientOption: Schema.optional(Schema.Boolean),
-      avoidedFraudOption: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DoubleVerifyFraudInvalidTraffic",
-  }) as any as Schema.Schema<DoubleVerifyFraudInvalidTraffic>;
+export const DoubleVerifyFraudInvalidTraffic =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    avoidInsufficientOption: Schema.optional(Schema.Boolean),
+    avoidedFraudOption: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DoubleVerifyFraudInvalidTraffic" });
 
 export interface DoubleVerifyBrandSafetyCategories {
   /** Unknown or unrateable. */
@@ -1860,20 +1610,14 @@ export interface DoubleVerifyBrandSafetyCategories {
   >;
 }
 
-export const DoubleVerifyBrandSafetyCategories: Schema.Schema<DoubleVerifyBrandSafetyCategories> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      avoidUnknownBrandSafetyCategory: Schema.optional(Schema.Boolean),
-      avoidedMediumSeverityCategories: Schema.optional(
-        Schema.Array(Schema.String),
-      ),
-      avoidedHighSeverityCategories: Schema.optional(
-        Schema.Array(Schema.String),
-      ),
-    }),
-  ).annotate({
-    identifier: "DoubleVerifyBrandSafetyCategories",
-  }) as any as Schema.Schema<DoubleVerifyBrandSafetyCategories>;
+export const DoubleVerifyBrandSafetyCategories =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    avoidUnknownBrandSafetyCategory: Schema.optional(Schema.Boolean),
+    avoidedMediumSeverityCategories: Schema.optional(
+      Schema.Array(Schema.String),
+    ),
+    avoidedHighSeverityCategories: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "DoubleVerifyBrandSafetyCategories" });
 
 export interface DoubleVerifyAppStarRating {
   /** Avoid bidding on apps with the star ratings. */
@@ -1891,15 +1635,11 @@ export interface DoubleVerifyAppStarRating {
   avoidInsufficientStarRating?: boolean;
 }
 
-export const DoubleVerifyAppStarRating: Schema.Schema<DoubleVerifyAppStarRating> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      avoidedStarRating: Schema.optional(Schema.String),
-      avoidInsufficientStarRating: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "DoubleVerifyAppStarRating",
-  }) as any as Schema.Schema<DoubleVerifyAppStarRating>;
+export const DoubleVerifyAppStarRating =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    avoidedStarRating: Schema.optional(Schema.String),
+    avoidInsufficientStarRating: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "DoubleVerifyAppStarRating" });
 
 export interface DoubleVerify {
   /** Video viewability settings (applicable to video line items only). */
@@ -1927,20 +1667,15 @@ export interface DoubleVerify {
   >;
 }
 
-export const DoubleVerify: Schema.Schema<DoubleVerify> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      videoViewability: Schema.optional(DoubleVerifyVideoViewability),
-      fraudInvalidTraffic: Schema.optional(DoubleVerifyFraudInvalidTraffic),
-      brandSafetyCategories: Schema.optional(DoubleVerifyBrandSafetyCategories),
-      appStarRating: Schema.optional(DoubleVerifyAppStarRating),
-      customSegmentId: Schema.optional(Schema.String),
-      displayViewability: Schema.optional(DoubleVerifyDisplayViewability),
-      avoidedAgeRatings: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "DoubleVerify",
-  }) as any as Schema.Schema<DoubleVerify>;
+export const DoubleVerify = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  videoViewability: Schema.optional(DoubleVerifyVideoViewability),
+  fraudInvalidTraffic: Schema.optional(DoubleVerifyFraudInvalidTraffic),
+  brandSafetyCategories: Schema.optional(DoubleVerifyBrandSafetyCategories),
+  appStarRating: Schema.optional(DoubleVerifyAppStarRating),
+  customSegmentId: Schema.optional(Schema.String),
+  displayViewability: Schema.optional(DoubleVerifyDisplayViewability),
+  avoidedAgeRatings: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "DoubleVerify" });
 
 export interface IntegralAdScience {
   /** Brand Safety - **Gambling**. */
@@ -2033,28 +1768,23 @@ export interface IntegralAdScience {
   customSegmentId?: Array<string>;
 }
 
-export const IntegralAdScience: Schema.Schema<IntegralAdScience> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      excludedGamblingRisk: Schema.optional(Schema.String),
-      excludedAlcoholRisk: Schema.optional(Schema.String),
-      excludedAdultRisk: Schema.optional(Schema.String),
-      excludedViolenceRisk: Schema.optional(Schema.String),
-      traqScoreOption: Schema.optional(Schema.String),
-      excludedOffensiveLanguageRisk: Schema.optional(Schema.String),
-      excludeUnrateable: Schema.optional(Schema.Boolean),
-      excludedAdFraudRisk: Schema.optional(Schema.String),
-      videoViewability: Schema.optional(Schema.String),
-      excludedHateSpeechRisk: Schema.optional(Schema.String),
-      qualitySyncCustomSegmentId: Schema.optional(Schema.Array(Schema.String)),
-      excludedIllegalDownloadsRisk: Schema.optional(Schema.String),
-      displayViewability: Schema.optional(Schema.String),
-      excludedDrugsRisk: Schema.optional(Schema.String),
-      customSegmentId: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "IntegralAdScience",
-  }) as any as Schema.Schema<IntegralAdScience>;
+export const IntegralAdScience = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  excludedGamblingRisk: Schema.optional(Schema.String),
+  excludedAlcoholRisk: Schema.optional(Schema.String),
+  excludedAdultRisk: Schema.optional(Schema.String),
+  excludedViolenceRisk: Schema.optional(Schema.String),
+  traqScoreOption: Schema.optional(Schema.String),
+  excludedOffensiveLanguageRisk: Schema.optional(Schema.String),
+  excludeUnrateable: Schema.optional(Schema.Boolean),
+  excludedAdFraudRisk: Schema.optional(Schema.String),
+  videoViewability: Schema.optional(Schema.String),
+  excludedHateSpeechRisk: Schema.optional(Schema.String),
+  qualitySyncCustomSegmentId: Schema.optional(Schema.Array(Schema.String)),
+  excludedIllegalDownloadsRisk: Schema.optional(Schema.String),
+  displayViewability: Schema.optional(Schema.String),
+  excludedDrugsRisk: Schema.optional(Schema.String),
+  customSegmentId: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "IntegralAdScience" });
 
 export interface Adloox {
   /** Optional. IAB viewability threshold for video ads. */
@@ -2190,32 +1920,27 @@ export interface Adloox {
     | (string & {});
 }
 
-export const Adloox: Schema.Schema<Adloox> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      videoIabViewability: Schema.optional(Schema.String),
-      armsAmmunitionContent: Schema.optional(Schema.String),
-      hateSpeechActsAggressionContent: Schema.optional(Schema.String),
-      spamHarmfulContent: Schema.optional(Schema.String),
-      terrorismContent: Schema.optional(Schema.String),
-      adultExplicitSexualContent: Schema.optional(Schema.String),
-      displayIabViewability: Schema.optional(Schema.String),
-      onlinePiracyContent: Schema.optional(Schema.String),
-      crimeHarmfulActsIndividualsSocietyHumanRightsViolationsContent:
-        Schema.optional(Schema.String),
-      excludedAdlooxCategories: Schema.optional(Schema.Array(Schema.String)),
-      excludedFraudIvtMfaCategories: Schema.optional(
-        Schema.Array(Schema.String),
-      ),
-      obscenityProfanityContent: Schema.optional(Schema.String),
-      illegalDrugsTobaccoEcigarettesVapingAlcoholContent: Schema.optional(
-        Schema.String,
-      ),
-      debatedSensitiveSocialIssueContent: Schema.optional(Schema.String),
-      misinformationContent: Schema.optional(Schema.String),
-      deathInjuryMilitaryConflictContent: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Adloox" }) as any as Schema.Schema<Adloox>;
+export const Adloox = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  videoIabViewability: Schema.optional(Schema.String),
+  armsAmmunitionContent: Schema.optional(Schema.String),
+  hateSpeechActsAggressionContent: Schema.optional(Schema.String),
+  spamHarmfulContent: Schema.optional(Schema.String),
+  terrorismContent: Schema.optional(Schema.String),
+  adultExplicitSexualContent: Schema.optional(Schema.String),
+  displayIabViewability: Schema.optional(Schema.String),
+  onlinePiracyContent: Schema.optional(Schema.String),
+  crimeHarmfulActsIndividualsSocietyHumanRightsViolationsContent:
+    Schema.optional(Schema.String),
+  excludedAdlooxCategories: Schema.optional(Schema.Array(Schema.String)),
+  excludedFraudIvtMfaCategories: Schema.optional(Schema.Array(Schema.String)),
+  obscenityProfanityContent: Schema.optional(Schema.String),
+  illegalDrugsTobaccoEcigarettesVapingAlcoholContent: Schema.optional(
+    Schema.String,
+  ),
+  debatedSensitiveSocialIssueContent: Schema.optional(Schema.String),
+  misinformationContent: Schema.optional(Schema.String),
+  deathInjuryMilitaryConflictContent: Schema.optional(Schema.String),
+}).annotate({ identifier: "Adloox" });
 
 export interface ThirdPartyVerifierAssignedTargetingOptionDetails {
   /** Third party brand verifier -- DoubleVerify. */
@@ -2226,16 +1951,14 @@ export interface ThirdPartyVerifierAssignedTargetingOptionDetails {
   adloox?: Adloox;
 }
 
-export const ThirdPartyVerifierAssignedTargetingOptionDetails: Schema.Schema<ThirdPartyVerifierAssignedTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      doubleVerify: Schema.optional(DoubleVerify),
-      integralAdScience: Schema.optional(IntegralAdScience),
-      adloox: Schema.optional(Adloox),
-    }),
-  ).annotate({
+export const ThirdPartyVerifierAssignedTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    doubleVerify: Schema.optional(DoubleVerify),
+    integralAdScience: Schema.optional(IntegralAdScience),
+    adloox: Schema.optional(Adloox),
+  }).annotate({
     identifier: "ThirdPartyVerifierAssignedTargetingOptionDetails",
-  }) as any as Schema.Schema<ThirdPartyVerifierAssignedTargetingOptionDetails>;
+  });
 
 export interface ExchangeAssignedTargetingOptionDetails {
   /** Required. The enum value for the exchange. */
@@ -2332,14 +2055,10 @@ export interface ExchangeAssignedTargetingOptionDetails {
     | (string & {});
 }
 
-export const ExchangeAssignedTargetingOptionDetails: Schema.Schema<ExchangeAssignedTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      exchange: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ExchangeAssignedTargetingOptionDetails",
-  }) as any as Schema.Schema<ExchangeAssignedTargetingOptionDetails>;
+export const ExchangeAssignedTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    exchange: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ExchangeAssignedTargetingOptionDetails" });
 
 export interface DayAndTimeAssignedTargetingOptionDetails {
   /** Required. The start hour for day and time targeting. Must be between 0 (start of day) and 23 (1 hour before end of day). */
@@ -2365,17 +2084,13 @@ export interface DayAndTimeAssignedTargetingOptionDetails {
   endHour?: number;
 }
 
-export const DayAndTimeAssignedTargetingOptionDetails: Schema.Schema<DayAndTimeAssignedTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startHour: Schema.optional(Schema.Number),
-      timeZoneResolution: Schema.optional(Schema.String),
-      dayOfWeek: Schema.optional(Schema.String),
-      endHour: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "DayAndTimeAssignedTargetingOptionDetails",
-  }) as any as Schema.Schema<DayAndTimeAssignedTargetingOptionDetails>;
+export const DayAndTimeAssignedTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startHour: Schema.optional(Schema.Number),
+    timeZoneResolution: Schema.optional(Schema.String),
+    dayOfWeek: Schema.optional(Schema.String),
+    endHour: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "DayAndTimeAssignedTargetingOptionDetails" });
 
 export interface ContentThemeAssignedTargetingOptionDetails {
   /** Required. ID of the content theme to be EXCLUDED. */
@@ -2408,16 +2123,12 @@ export interface ContentThemeAssignedTargetingOptionDetails {
     | (string & {});
 }
 
-export const ContentThemeAssignedTargetingOptionDetails: Schema.Schema<ContentThemeAssignedTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      excludedTargetingOptionId: Schema.optional(Schema.String),
-      contentTheme: Schema.optional(Schema.String),
-      excludedContentTheme: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ContentThemeAssignedTargetingOptionDetails",
-  }) as any as Schema.Schema<ContentThemeAssignedTargetingOptionDetails>;
+export const ContentThemeAssignedTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    excludedTargetingOptionId: Schema.optional(Schema.String),
+    contentTheme: Schema.optional(Schema.String),
+    excludedContentTheme: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ContentThemeAssignedTargetingOptionDetails" });
 
 export interface YoutubeVideoAssignedTargetingOptionDetails {
   /** YouTube video id as it appears on the YouTube watch page. */
@@ -2426,15 +2137,11 @@ export interface YoutubeVideoAssignedTargetingOptionDetails {
   negative?: boolean;
 }
 
-export const YoutubeVideoAssignedTargetingOptionDetails: Schema.Schema<YoutubeVideoAssignedTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      videoId: Schema.optional(Schema.String),
-      negative: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "YoutubeVideoAssignedTargetingOptionDetails",
-  }) as any as Schema.Schema<YoutubeVideoAssignedTargetingOptionDetails>;
+export const YoutubeVideoAssignedTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    videoId: Schema.optional(Schema.String),
+    negative: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "YoutubeVideoAssignedTargetingOptionDetails" });
 
 export interface YoutubeChannelAssignedTargetingOptionDetails {
   /** The YouTube uploader channel id or the channel code of a YouTube channel. */
@@ -2443,29 +2150,23 @@ export interface YoutubeChannelAssignedTargetingOptionDetails {
   negative?: boolean;
 }
 
-export const YoutubeChannelAssignedTargetingOptionDetails: Schema.Schema<YoutubeChannelAssignedTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      channelId: Schema.optional(Schema.String),
-      negative: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "YoutubeChannelAssignedTargetingOptionDetails",
-  }) as any as Schema.Schema<YoutubeChannelAssignedTargetingOptionDetails>;
+export const YoutubeChannelAssignedTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    channelId: Schema.optional(Schema.String),
+    negative: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "YoutubeChannelAssignedTargetingOptionDetails" });
 
 export interface NegativeKeywordListAssignedTargetingOptionDetails {
   /** Required. ID of the negative keyword list. Should refer to the negative_keyword_list_id field of a NegativeKeywordList resource. */
   negativeKeywordListId?: string;
 }
 
-export const NegativeKeywordListAssignedTargetingOptionDetails: Schema.Schema<NegativeKeywordListAssignedTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      negativeKeywordListId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const NegativeKeywordListAssignedTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    negativeKeywordListId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "NegativeKeywordListAssignedTargetingOptionDetails",
-  }) as any as Schema.Schema<NegativeKeywordListAssignedTargetingOptionDetails>;
+  });
 
 export interface AuthorizedSellerStatusAssignedTargetingOptionDetails {
   /** Output only. The authorized seller status to target. */
@@ -2478,15 +2179,13 @@ export interface AuthorizedSellerStatusAssignedTargetingOptionDetails {
   targetingOptionId?: string;
 }
 
-export const AuthorizedSellerStatusAssignedTargetingOptionDetails: Schema.Schema<AuthorizedSellerStatusAssignedTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      authorizedSellerStatus: Schema.optional(Schema.String),
-      targetingOptionId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const AuthorizedSellerStatusAssignedTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    authorizedSellerStatus: Schema.optional(Schema.String),
+    targetingOptionId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "AuthorizedSellerStatusAssignedTargetingOptionDetails",
-  }) as any as Schema.Schema<AuthorizedSellerStatusAssignedTargetingOptionDetails>;
+  });
 
 export interface BusinessChainAssignedTargetingOptionDetails {
   /** Output only. The display name of a business chain, e.g. "KFC", "Chase Bank". */
@@ -2503,17 +2202,13 @@ export interface BusinessChainAssignedTargetingOptionDetails {
   proximityRadiusAmount?: number;
 }
 
-export const BusinessChainAssignedTargetingOptionDetails: Schema.Schema<BusinessChainAssignedTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      proximityRadiusUnit: Schema.optional(Schema.String),
-      targetingOptionId: Schema.optional(Schema.String),
-      proximityRadiusAmount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "BusinessChainAssignedTargetingOptionDetails",
-  }) as any as Schema.Schema<BusinessChainAssignedTargetingOptionDetails>;
+export const BusinessChainAssignedTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    proximityRadiusUnit: Schema.optional(Schema.String),
+    targetingOptionId: Schema.optional(Schema.String),
+    proximityRadiusAmount: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "BusinessChainAssignedTargetingOptionDetails" });
 
 export interface PoiAssignedTargetingOptionDetails {
   /** Required. The targeting_option_id of a TargetingOption of type `TARGETING_TYPE_POI`. Accepted POI targeting option IDs can be retrieved using `targetingTypes.targetingOptions.search`. If targeting a specific latitude/longitude coordinate removed from an address or POI name, you can generate the necessary targeting option ID by rounding the desired coordinate values to the 6th decimal place, removing the decimals, and concatenating the string values separated by a semicolon. For example, you can target the latitude/longitude pair of 40.7414691, -74.003387 using the targeting option ID "40741469;-74003387". **Upon** **creation, this field value will be updated to append a semicolon and** **alphanumerical hash value if only latitude/longitude coordinates are** **provided.** */
@@ -2534,19 +2229,15 @@ export interface PoiAssignedTargetingOptionDetails {
   proximityRadiusAmount?: number;
 }
 
-export const PoiAssignedTargetingOptionDetails: Schema.Schema<PoiAssignedTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetingOptionId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      latitude: Schema.optional(Schema.Number),
-      proximityRadiusUnit: Schema.optional(Schema.String),
-      longitude: Schema.optional(Schema.Number),
-      proximityRadiusAmount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "PoiAssignedTargetingOptionDetails",
-  }) as any as Schema.Schema<PoiAssignedTargetingOptionDetails>;
+export const PoiAssignedTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetingOptionId: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    latitude: Schema.optional(Schema.Number),
+    proximityRadiusUnit: Schema.optional(Schema.String),
+    longitude: Schema.optional(Schema.Number),
+    proximityRadiusAmount: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "PoiAssignedTargetingOptionDetails" });
 
 export interface UrlAssignedTargetingOptionDetails {
   /** Indicates if this option is being negatively targeted. */
@@ -2555,15 +2246,11 @@ export interface UrlAssignedTargetingOptionDetails {
   url?: string;
 }
 
-export const UrlAssignedTargetingOptionDetails: Schema.Schema<UrlAssignedTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      negative: Schema.optional(Schema.Boolean),
-      url: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UrlAssignedTargetingOptionDetails",
-  }) as any as Schema.Schema<UrlAssignedTargetingOptionDetails>;
+export const UrlAssignedTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    negative: Schema.optional(Schema.Boolean),
+    url: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UrlAssignedTargetingOptionDetails" });
 
 export interface ChannelAssignedTargetingOptionDetails {
   /** Required. ID of the channel. Should refer to the channel ID field on a [Partner-owned channel](partners.channels#Channel.FIELDS.channel_id) or [advertiser-owned channel](advertisers.channels#Channel.FIELDS.channel_id) resource. */
@@ -2572,15 +2259,11 @@ export interface ChannelAssignedTargetingOptionDetails {
   negative?: boolean;
 }
 
-export const ChannelAssignedTargetingOptionDetails: Schema.Schema<ChannelAssignedTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      channelId: Schema.optional(Schema.String),
-      negative: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ChannelAssignedTargetingOptionDetails",
-  }) as any as Schema.Schema<ChannelAssignedTargetingOptionDetails>;
+export const ChannelAssignedTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    channelId: Schema.optional(Schema.String),
+    negative: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "ChannelAssignedTargetingOptionDetails" });
 
 export interface VideoPlayerSizeAssignedTargetingOptionDetails {
   /** Required. The video player size. */
@@ -2593,14 +2276,10 @@ export interface VideoPlayerSizeAssignedTargetingOptionDetails {
     | (string & {});
 }
 
-export const VideoPlayerSizeAssignedTargetingOptionDetails: Schema.Schema<VideoPlayerSizeAssignedTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      videoPlayerSize: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VideoPlayerSizeAssignedTargetingOptionDetails",
-  }) as any as Schema.Schema<VideoPlayerSizeAssignedTargetingOptionDetails>;
+export const VideoPlayerSizeAssignedTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    videoPlayerSize: Schema.optional(Schema.String),
+  }).annotate({ identifier: "VideoPlayerSizeAssignedTargetingOptionDetails" });
 
 export interface DeviceMakeModelAssignedTargetingOptionDetails {
   /** Output only. The display name of the device make and model. */
@@ -2611,44 +2290,31 @@ export interface DeviceMakeModelAssignedTargetingOptionDetails {
   negative?: boolean;
 }
 
-export const DeviceMakeModelAssignedTargetingOptionDetails: Schema.Schema<DeviceMakeModelAssignedTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      targetingOptionId: Schema.optional(Schema.String),
-      negative: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "DeviceMakeModelAssignedTargetingOptionDetails",
-  }) as any as Schema.Schema<DeviceMakeModelAssignedTargetingOptionDetails>;
+export const DeviceMakeModelAssignedTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    targetingOptionId: Schema.optional(Schema.String),
+    negative: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "DeviceMakeModelAssignedTargetingOptionDetails" });
 
 export interface GoogleAudienceTargetingSetting {
   /** Required. Google audience id of the Google audience targeting setting. This id is google_audience_id. */
   googleAudienceId?: string;
 }
 
-export const GoogleAudienceTargetingSetting: Schema.Schema<GoogleAudienceTargetingSetting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      googleAudienceId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAudienceTargetingSetting",
-  }) as any as Schema.Schema<GoogleAudienceTargetingSetting>;
+export const GoogleAudienceTargetingSetting =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    googleAudienceId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleAudienceTargetingSetting" });
 
 export interface GoogleAudienceGroup {
   /** Required. All Google audience targeting settings in Google audience group. Repeated settings with the same id will be ignored. */
   settings?: Array<GoogleAudienceTargetingSetting>;
 }
 
-export const GoogleAudienceGroup: Schema.Schema<GoogleAudienceGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      settings: Schema.optional(Schema.Array(GoogleAudienceTargetingSetting)),
-    }),
-  ).annotate({
-    identifier: "GoogleAudienceGroup",
-  }) as any as Schema.Schema<GoogleAudienceGroup>;
+export const GoogleAudienceGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  settings: Schema.optional(Schema.Array(GoogleAudienceTargetingSetting)),
+}).annotate({ identifier: "GoogleAudienceGroup" });
 
 export interface FirstPartyAndPartnerAudienceTargetingSetting {
   /** Required. The recency of the first party and partner audience targeting setting. Only applicable to first party audiences, otherwise will be ignored. For more info, refer to https://support.google.com/displayvideo/answer/2949947#recency When unspecified, no recency limit will be used. */
@@ -2688,87 +2354,61 @@ export interface FirstPartyAndPartnerAudienceTargetingSetting {
   firstPartyAndPartnerAudienceId?: string;
 }
 
-export const FirstPartyAndPartnerAudienceTargetingSetting: Schema.Schema<FirstPartyAndPartnerAudienceTargetingSetting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      recency: Schema.optional(Schema.String),
-      firstPartyAndPartnerAudienceId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FirstPartyAndPartnerAudienceTargetingSetting",
-  }) as any as Schema.Schema<FirstPartyAndPartnerAudienceTargetingSetting>;
+export const FirstPartyAndPartnerAudienceTargetingSetting =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    recency: Schema.optional(Schema.String),
+    firstPartyAndPartnerAudienceId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "FirstPartyAndPartnerAudienceTargetingSetting" });
 
 export interface FirstPartyAndPartnerAudienceGroup {
   /** Required. All first party and partner audience targeting settings in first party and partner audience group. Repeated settings with the same id are not allowed. */
   settings?: Array<FirstPartyAndPartnerAudienceTargetingSetting>;
 }
 
-export const FirstPartyAndPartnerAudienceGroup: Schema.Schema<FirstPartyAndPartnerAudienceGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      settings: Schema.optional(
-        Schema.Array(FirstPartyAndPartnerAudienceTargetingSetting),
-      ),
-    }),
-  ).annotate({
-    identifier: "FirstPartyAndPartnerAudienceGroup",
-  }) as any as Schema.Schema<FirstPartyAndPartnerAudienceGroup>;
+export const FirstPartyAndPartnerAudienceGroup =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    settings: Schema.optional(
+      Schema.Array(FirstPartyAndPartnerAudienceTargetingSetting),
+    ),
+  }).annotate({ identifier: "FirstPartyAndPartnerAudienceGroup" });
 
 export interface CombinedAudienceTargetingSetting {
   /** Required. Combined audience id of combined audience targeting setting. This id is combined_audience_id. */
   combinedAudienceId?: string;
 }
 
-export const CombinedAudienceTargetingSetting: Schema.Schema<CombinedAudienceTargetingSetting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      combinedAudienceId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CombinedAudienceTargetingSetting",
-  }) as any as Schema.Schema<CombinedAudienceTargetingSetting>;
+export const CombinedAudienceTargetingSetting =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    combinedAudienceId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CombinedAudienceTargetingSetting" });
 
 export interface CombinedAudienceGroup {
   /** Required. All combined audience targeting settings in combined audience group. Repeated settings with the same id will be ignored. The number of combined audience settings should be no more than five, error will be thrown otherwise. */
   settings?: Array<CombinedAudienceTargetingSetting>;
 }
 
-export const CombinedAudienceGroup: Schema.Schema<CombinedAudienceGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      settings: Schema.optional(Schema.Array(CombinedAudienceTargetingSetting)),
-    }),
-  ).annotate({
-    identifier: "CombinedAudienceGroup",
-  }) as any as Schema.Schema<CombinedAudienceGroup>;
+export const CombinedAudienceGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  settings: Schema.optional(Schema.Array(CombinedAudienceTargetingSetting)),
+}).annotate({ identifier: "CombinedAudienceGroup" });
 
 export interface CustomListTargetingSetting {
   /** Required. Custom id of custom list targeting setting. This id is custom_list_id. */
   customListId?: string;
 }
 
-export const CustomListTargetingSetting: Schema.Schema<CustomListTargetingSetting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customListId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomListTargetingSetting",
-  }) as any as Schema.Schema<CustomListTargetingSetting>;
+export const CustomListTargetingSetting =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customListId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CustomListTargetingSetting" });
 
 export interface CustomListGroup {
   /** Required. All custom list targeting settings in custom list group. Repeated settings with the same id will be ignored. */
   settings?: Array<CustomListTargetingSetting>;
 }
 
-export const CustomListGroup: Schema.Schema<CustomListGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      settings: Schema.optional(Schema.Array(CustomListTargetingSetting)),
-    }),
-  ).annotate({
-    identifier: "CustomListGroup",
-  }) as any as Schema.Schema<CustomListGroup>;
+export const CustomListGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  settings: Schema.optional(Schema.Array(CustomListTargetingSetting)),
+}).annotate({ identifier: "CustomListGroup" });
 
 export interface AudienceGroupAssignedTargetingOptionDetails {
   /** Optional. The Google audience ids of the included Google audience group. Contains Google audience ids only. */
@@ -2785,23 +2425,19 @@ export interface AudienceGroupAssignedTargetingOptionDetails {
   excludedGoogleAudienceGroup?: GoogleAudienceGroup;
 }
 
-export const AudienceGroupAssignedTargetingOptionDetails: Schema.Schema<AudienceGroupAssignedTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      includedGoogleAudienceGroup: Schema.optional(GoogleAudienceGroup),
-      includedFirstPartyAndPartnerAudienceGroups: Schema.optional(
-        Schema.Array(FirstPartyAndPartnerAudienceGroup),
-      ),
-      includedCombinedAudienceGroup: Schema.optional(CombinedAudienceGroup),
-      includedCustomListGroup: Schema.optional(CustomListGroup),
-      excludedFirstPartyAndPartnerAudienceGroup: Schema.optional(
-        FirstPartyAndPartnerAudienceGroup,
-      ),
-      excludedGoogleAudienceGroup: Schema.optional(GoogleAudienceGroup),
-    }),
-  ).annotate({
-    identifier: "AudienceGroupAssignedTargetingOptionDetails",
-  }) as any as Schema.Schema<AudienceGroupAssignedTargetingOptionDetails>;
+export const AudienceGroupAssignedTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    includedGoogleAudienceGroup: Schema.optional(GoogleAudienceGroup),
+    includedFirstPartyAndPartnerAudienceGroups: Schema.optional(
+      Schema.Array(FirstPartyAndPartnerAudienceGroup),
+    ),
+    includedCombinedAudienceGroup: Schema.optional(CombinedAudienceGroup),
+    includedCustomListGroup: Schema.optional(CustomListGroup),
+    excludedFirstPartyAndPartnerAudienceGroup: Schema.optional(
+      FirstPartyAndPartnerAudienceGroup,
+    ),
+    excludedGoogleAudienceGroup: Schema.optional(GoogleAudienceGroup),
+  }).annotate({ identifier: "AudienceGroupAssignedTargetingOptionDetails" });
 
 export interface ContentStreamTypeAssignedTargetingOptionDetails {
   /** Required. The targeting_option_id field when targeting_type is `TARGETING_TYPE_CONTENT_STREAM_TYPE`. */
@@ -2814,15 +2450,13 @@ export interface ContentStreamTypeAssignedTargetingOptionDetails {
     | (string & {});
 }
 
-export const ContentStreamTypeAssignedTargetingOptionDetails: Schema.Schema<ContentStreamTypeAssignedTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetingOptionId: Schema.optional(Schema.String),
-      contentStreamType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const ContentStreamTypeAssignedTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetingOptionId: Schema.optional(Schema.String),
+    contentStreamType: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "ContentStreamTypeAssignedTargetingOptionDetails",
-  }) as any as Schema.Schema<ContentStreamTypeAssignedTargetingOptionDetails>;
+  });
 
 export interface AudioContentTypeAssignedTargetingOptionDetails {
   /** Required. The audio content type. */
@@ -2835,14 +2469,10 @@ export interface AudioContentTypeAssignedTargetingOptionDetails {
     | (string & {});
 }
 
-export const AudioContentTypeAssignedTargetingOptionDetails: Schema.Schema<AudioContentTypeAssignedTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      audioContentType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AudioContentTypeAssignedTargetingOptionDetails",
-  }) as any as Schema.Schema<AudioContentTypeAssignedTargetingOptionDetails>;
+export const AudioContentTypeAssignedTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    audioContentType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AudioContentTypeAssignedTargetingOptionDetails" });
 
 export interface LanguageAssignedTargetingOptionDetails {
   /** Output only. The display name of the language (e.g., "French"). */
@@ -2853,16 +2483,12 @@ export interface LanguageAssignedTargetingOptionDetails {
   targetingOptionId?: string;
 }
 
-export const LanguageAssignedTargetingOptionDetails: Schema.Schema<LanguageAssignedTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      negative: Schema.optional(Schema.Boolean),
-      targetingOptionId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LanguageAssignedTargetingOptionDetails",
-  }) as any as Schema.Schema<LanguageAssignedTargetingOptionDetails>;
+export const LanguageAssignedTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    negative: Schema.optional(Schema.Boolean),
+    targetingOptionId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "LanguageAssignedTargetingOptionDetails" });
 
 export interface GeoRegionAssignedTargetingOptionDetails {
   /** Output only. The display name of the geographic region (e.g., "Ontario, Canada"). */
@@ -2915,17 +2541,13 @@ export interface GeoRegionAssignedTargetingOptionDetails {
   negative?: boolean;
 }
 
-export const GeoRegionAssignedTargetingOptionDetails: Schema.Schema<GeoRegionAssignedTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      targetingOptionId: Schema.optional(Schema.String),
-      geoRegionType: Schema.optional(Schema.String),
-      negative: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GeoRegionAssignedTargetingOptionDetails",
-  }) as any as Schema.Schema<GeoRegionAssignedTargetingOptionDetails>;
+export const GeoRegionAssignedTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    targetingOptionId: Schema.optional(Schema.String),
+    geoRegionType: Schema.optional(Schema.String),
+    negative: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GeoRegionAssignedTargetingOptionDetails" });
 
 export interface HouseholdIncomeAssignedTargetingOptionDetails {
   /** Required. The household income of the audience. */
@@ -2941,14 +2563,10 @@ export interface HouseholdIncomeAssignedTargetingOptionDetails {
     | (string & {});
 }
 
-export const HouseholdIncomeAssignedTargetingOptionDetails: Schema.Schema<HouseholdIncomeAssignedTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      householdIncome: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "HouseholdIncomeAssignedTargetingOptionDetails",
-  }) as any as Schema.Schema<HouseholdIncomeAssignedTargetingOptionDetails>;
+export const HouseholdIncomeAssignedTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    householdIncome: Schema.optional(Schema.String),
+  }).annotate({ identifier: "HouseholdIncomeAssignedTargetingOptionDetails" });
 
 export interface AssignedTargetingOption {
   /** Open Measurement enabled inventory details. This field will be populated when the targeting_type is `TARGETING_TYPE_OMID`. */
@@ -3117,157 +2735,149 @@ export interface AssignedTargetingOption {
   householdIncomeDetails?: HouseholdIncomeAssignedTargetingOptionDetails;
 }
 
-export const AssignedTargetingOption: Schema.Schema<AssignedTargetingOption> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      omidDetails: Schema.optional(OmidAssignedTargetingOptionDetails),
-      appDetails: Schema.optional(AppAssignedTargetingOptionDetails),
-      regionalLocationListDetails: Schema.optional(
-        RegionalLocationListAssignedTargetingOptionDetails,
-      ),
-      contentOutstreamPositionDetails: Schema.optional(
-        ContentOutstreamPositionAssignedTargetingOptionDetails,
-      ),
-      categoryDetails: Schema.optional(CategoryAssignedTargetingOptionDetails),
-      proximityLocationListDetails: Schema.optional(
-        ProximityLocationListAssignedTargetingOptionDetails,
-      ),
-      sessionPositionDetails: Schema.optional(
-        SessionPositionAssignedTargetingOptionDetails,
-      ),
-      deviceTypeDetails: Schema.optional(
-        DeviceTypeAssignedTargetingOptionDetails,
-      ),
-      contentGenreDetails: Schema.optional(
-        ContentGenreAssignedTargetingOptionDetails,
-      ),
-      parentalStatusDetails: Schema.optional(
-        ParentalStatusAssignedTargetingOptionDetails,
-      ),
-      ageRangeDetails: Schema.optional(AgeRangeAssignedTargetingOptionDetails),
-      sensitiveCategoryExclusionDetails: Schema.optional(
-        SensitiveCategoryAssignedTargetingOptionDetails,
-      ),
-      viewabilityDetails: Schema.optional(
-        ViewabilityAssignedTargetingOptionDetails,
-      ),
-      contentInstreamPositionDetails: Schema.optional(
-        ContentInstreamPositionAssignedTargetingOptionDetails,
-      ),
-      keywordDetails: Schema.optional(KeywordAssignedTargetingOptionDetails),
-      genderDetails: Schema.optional(GenderAssignedTargetingOptionDetails),
-      onScreenPositionDetails: Schema.optional(
-        OnScreenPositionAssignedTargetingOptionDetails,
-      ),
-      inventorySourceDetails: Schema.optional(
-        InventorySourceAssignedTargetingOptionDetails,
-      ),
-      inventorySourceGroupDetails: Schema.optional(
-        InventorySourceGroupAssignedTargetingOptionDetails,
-      ),
-      userRewardedContentDetails: Schema.optional(
-        UserRewardedContentAssignedTargetingOptionDetails,
-      ),
-      contentDurationDetails: Schema.optional(
-        ContentDurationAssignedTargetingOptionDetails,
-      ),
-      browserDetails: Schema.optional(BrowserAssignedTargetingOptionDetails),
-      digitalContentLabelExclusionDetails: Schema.optional(
-        DigitalContentLabelAssignedTargetingOptionDetails,
-      ),
-      carrierAndIspDetails: Schema.optional(
-        CarrierAndIspAssignedTargetingOptionDetails,
-      ),
-      nativeContentPositionDetails: Schema.optional(
-        NativeContentPositionAssignedTargetingOptionDetails,
-      ),
-      operatingSystemDetails: Schema.optional(
-        OperatingSystemAssignedTargetingOptionDetails,
-      ),
-      assignedTargetingOptionId: Schema.optional(Schema.String),
-      subExchangeDetails: Schema.optional(
-        SubExchangeAssignedTargetingOptionDetails,
-      ),
-      environmentDetails: Schema.optional(
-        EnvironmentAssignedTargetingOptionDetails,
-      ),
-      appCategoryDetails: Schema.optional(
-        AppCategoryAssignedTargetingOptionDetails,
-      ),
-      thirdPartyVerifierDetails: Schema.optional(
-        ThirdPartyVerifierAssignedTargetingOptionDetails,
-      ),
-      exchangeDetails: Schema.optional(ExchangeAssignedTargetingOptionDetails),
-      dayAndTimeDetails: Schema.optional(
-        DayAndTimeAssignedTargetingOptionDetails,
-      ),
-      contentThemeExclusionDetails: Schema.optional(
-        ContentThemeAssignedTargetingOptionDetails,
-      ),
-      youtubeVideoDetails: Schema.optional(
-        YoutubeVideoAssignedTargetingOptionDetails,
-      ),
-      youtubeChannelDetails: Schema.optional(
-        YoutubeChannelAssignedTargetingOptionDetails,
-      ),
-      negativeKeywordListDetails: Schema.optional(
-        NegativeKeywordListAssignedTargetingOptionDetails,
-      ),
-      authorizedSellerStatusDetails: Schema.optional(
-        AuthorizedSellerStatusAssignedTargetingOptionDetails,
-      ),
-      businessChainDetails: Schema.optional(
-        BusinessChainAssignedTargetingOptionDetails,
-      ),
-      poiDetails: Schema.optional(PoiAssignedTargetingOptionDetails),
-      urlDetails: Schema.optional(UrlAssignedTargetingOptionDetails),
-      name: Schema.optional(Schema.String),
-      channelDetails: Schema.optional(ChannelAssignedTargetingOptionDetails),
-      videoPlayerSizeDetails: Schema.optional(
-        VideoPlayerSizeAssignedTargetingOptionDetails,
-      ),
-      assignedTargetingOptionIdAlias: Schema.optional(Schema.String),
-      inheritance: Schema.optional(Schema.String),
-      deviceMakeModelDetails: Schema.optional(
-        DeviceMakeModelAssignedTargetingOptionDetails,
-      ),
-      audienceGroupDetails: Schema.optional(
-        AudienceGroupAssignedTargetingOptionDetails,
-      ),
-      targetingType: Schema.optional(Schema.String),
-      contentStreamTypeDetails: Schema.optional(
-        ContentStreamTypeAssignedTargetingOptionDetails,
-      ),
-      audioContentTypeDetails: Schema.optional(
-        AudioContentTypeAssignedTargetingOptionDetails,
-      ),
-      languageDetails: Schema.optional(LanguageAssignedTargetingOptionDetails),
-      geoRegionDetails: Schema.optional(
-        GeoRegionAssignedTargetingOptionDetails,
-      ),
-      householdIncomeDetails: Schema.optional(
-        HouseholdIncomeAssignedTargetingOptionDetails,
-      ),
-    }),
-  ).annotate({
-    identifier: "AssignedTargetingOption",
-  }) as any as Schema.Schema<AssignedTargetingOption>;
+export const AssignedTargetingOption =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    omidDetails: Schema.optional(OmidAssignedTargetingOptionDetails),
+    appDetails: Schema.optional(AppAssignedTargetingOptionDetails),
+    regionalLocationListDetails: Schema.optional(
+      RegionalLocationListAssignedTargetingOptionDetails,
+    ),
+    contentOutstreamPositionDetails: Schema.optional(
+      ContentOutstreamPositionAssignedTargetingOptionDetails,
+    ),
+    categoryDetails: Schema.optional(CategoryAssignedTargetingOptionDetails),
+    proximityLocationListDetails: Schema.optional(
+      ProximityLocationListAssignedTargetingOptionDetails,
+    ),
+    sessionPositionDetails: Schema.optional(
+      SessionPositionAssignedTargetingOptionDetails,
+    ),
+    deviceTypeDetails: Schema.optional(
+      DeviceTypeAssignedTargetingOptionDetails,
+    ),
+    contentGenreDetails: Schema.optional(
+      ContentGenreAssignedTargetingOptionDetails,
+    ),
+    parentalStatusDetails: Schema.optional(
+      ParentalStatusAssignedTargetingOptionDetails,
+    ),
+    ageRangeDetails: Schema.optional(AgeRangeAssignedTargetingOptionDetails),
+    sensitiveCategoryExclusionDetails: Schema.optional(
+      SensitiveCategoryAssignedTargetingOptionDetails,
+    ),
+    viewabilityDetails: Schema.optional(
+      ViewabilityAssignedTargetingOptionDetails,
+    ),
+    contentInstreamPositionDetails: Schema.optional(
+      ContentInstreamPositionAssignedTargetingOptionDetails,
+    ),
+    keywordDetails: Schema.optional(KeywordAssignedTargetingOptionDetails),
+    genderDetails: Schema.optional(GenderAssignedTargetingOptionDetails),
+    onScreenPositionDetails: Schema.optional(
+      OnScreenPositionAssignedTargetingOptionDetails,
+    ),
+    inventorySourceDetails: Schema.optional(
+      InventorySourceAssignedTargetingOptionDetails,
+    ),
+    inventorySourceGroupDetails: Schema.optional(
+      InventorySourceGroupAssignedTargetingOptionDetails,
+    ),
+    userRewardedContentDetails: Schema.optional(
+      UserRewardedContentAssignedTargetingOptionDetails,
+    ),
+    contentDurationDetails: Schema.optional(
+      ContentDurationAssignedTargetingOptionDetails,
+    ),
+    browserDetails: Schema.optional(BrowserAssignedTargetingOptionDetails),
+    digitalContentLabelExclusionDetails: Schema.optional(
+      DigitalContentLabelAssignedTargetingOptionDetails,
+    ),
+    carrierAndIspDetails: Schema.optional(
+      CarrierAndIspAssignedTargetingOptionDetails,
+    ),
+    nativeContentPositionDetails: Schema.optional(
+      NativeContentPositionAssignedTargetingOptionDetails,
+    ),
+    operatingSystemDetails: Schema.optional(
+      OperatingSystemAssignedTargetingOptionDetails,
+    ),
+    assignedTargetingOptionId: Schema.optional(Schema.String),
+    subExchangeDetails: Schema.optional(
+      SubExchangeAssignedTargetingOptionDetails,
+    ),
+    environmentDetails: Schema.optional(
+      EnvironmentAssignedTargetingOptionDetails,
+    ),
+    appCategoryDetails: Schema.optional(
+      AppCategoryAssignedTargetingOptionDetails,
+    ),
+    thirdPartyVerifierDetails: Schema.optional(
+      ThirdPartyVerifierAssignedTargetingOptionDetails,
+    ),
+    exchangeDetails: Schema.optional(ExchangeAssignedTargetingOptionDetails),
+    dayAndTimeDetails: Schema.optional(
+      DayAndTimeAssignedTargetingOptionDetails,
+    ),
+    contentThemeExclusionDetails: Schema.optional(
+      ContentThemeAssignedTargetingOptionDetails,
+    ),
+    youtubeVideoDetails: Schema.optional(
+      YoutubeVideoAssignedTargetingOptionDetails,
+    ),
+    youtubeChannelDetails: Schema.optional(
+      YoutubeChannelAssignedTargetingOptionDetails,
+    ),
+    negativeKeywordListDetails: Schema.optional(
+      NegativeKeywordListAssignedTargetingOptionDetails,
+    ),
+    authorizedSellerStatusDetails: Schema.optional(
+      AuthorizedSellerStatusAssignedTargetingOptionDetails,
+    ),
+    businessChainDetails: Schema.optional(
+      BusinessChainAssignedTargetingOptionDetails,
+    ),
+    poiDetails: Schema.optional(PoiAssignedTargetingOptionDetails),
+    urlDetails: Schema.optional(UrlAssignedTargetingOptionDetails),
+    name: Schema.optional(Schema.String),
+    channelDetails: Schema.optional(ChannelAssignedTargetingOptionDetails),
+    videoPlayerSizeDetails: Schema.optional(
+      VideoPlayerSizeAssignedTargetingOptionDetails,
+    ),
+    assignedTargetingOptionIdAlias: Schema.optional(Schema.String),
+    inheritance: Schema.optional(Schema.String),
+    deviceMakeModelDetails: Schema.optional(
+      DeviceMakeModelAssignedTargetingOptionDetails,
+    ),
+    audienceGroupDetails: Schema.optional(
+      AudienceGroupAssignedTargetingOptionDetails,
+    ),
+    targetingType: Schema.optional(Schema.String),
+    contentStreamTypeDetails: Schema.optional(
+      ContentStreamTypeAssignedTargetingOptionDetails,
+    ),
+    audioContentTypeDetails: Schema.optional(
+      AudioContentTypeAssignedTargetingOptionDetails,
+    ),
+    languageDetails: Schema.optional(LanguageAssignedTargetingOptionDetails),
+    geoRegionDetails: Schema.optional(GeoRegionAssignedTargetingOptionDetails),
+    householdIncomeDetails: Schema.optional(
+      HouseholdIncomeAssignedTargetingOptionDetails,
+    ),
+  }).annotate({ identifier: "AssignedTargetingOption" });
 
 export interface BulkEditPartnerAssignedTargetingOptionsResponse {
   /** The list of assigned targeting options that have been successfully created. This list will be absent if empty. */
   createdAssignedTargetingOptions?: Array<AssignedTargetingOption>;
 }
 
-export const BulkEditPartnerAssignedTargetingOptionsResponse: Schema.Schema<BulkEditPartnerAssignedTargetingOptionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createdAssignedTargetingOptions: Schema.optional(
-        Schema.Array(AssignedTargetingOption),
-      ),
-    }),
-  ).annotate({
+export const BulkEditPartnerAssignedTargetingOptionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createdAssignedTargetingOptions: Schema.optional(
+      Schema.Array(AssignedTargetingOption),
+    ),
+  }).annotate({
     identifier: "BulkEditPartnerAssignedTargetingOptionsResponse",
-  }) as any as Schema.Schema<BulkEditPartnerAssignedTargetingOptionsResponse>;
+  });
 
 export interface EditInventorySourceReadWriteAccessorsRequestAdvertisersUpdate {
   /** The advertisers to add. */
@@ -3276,15 +2886,13 @@ export interface EditInventorySourceReadWriteAccessorsRequestAdvertisersUpdate {
   removedAdvertisers?: Array<string>;
 }
 
-export const EditInventorySourceReadWriteAccessorsRequestAdvertisersUpdate: Schema.Schema<EditInventorySourceReadWriteAccessorsRequestAdvertisersUpdate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      addedAdvertisers: Schema.optional(Schema.Array(Schema.String)),
-      removedAdvertisers: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const EditInventorySourceReadWriteAccessorsRequestAdvertisersUpdate =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    addedAdvertisers: Schema.optional(Schema.Array(Schema.String)),
+    removedAdvertisers: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "EditInventorySourceReadWriteAccessorsRequestAdvertisersUpdate",
-  }) as any as Schema.Schema<EditInventorySourceReadWriteAccessorsRequestAdvertisersUpdate>;
+  });
 
 export interface EditInventorySourceReadWriteAccessorsRequest {
   /** The advertisers to add or remove from the list of advertisers that have read/write access to the inventory source. This change will remove an existing partner read/write accessor. */
@@ -3295,32 +2903,23 @@ export interface EditInventorySourceReadWriteAccessorsRequest {
   partnerId?: string;
 }
 
-export const EditInventorySourceReadWriteAccessorsRequest: Schema.Schema<EditInventorySourceReadWriteAccessorsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      advertisersUpdate: Schema.optional(
-        EditInventorySourceReadWriteAccessorsRequestAdvertisersUpdate,
-      ),
-      assignPartner: Schema.optional(Schema.Boolean),
-      partnerId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EditInventorySourceReadWriteAccessorsRequest",
-  }) as any as Schema.Schema<EditInventorySourceReadWriteAccessorsRequest>;
+export const EditInventorySourceReadWriteAccessorsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    advertisersUpdate: Schema.optional(
+      EditInventorySourceReadWriteAccessorsRequestAdvertisersUpdate,
+    ),
+    assignPartner: Schema.optional(Schema.Boolean),
+    partnerId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EditInventorySourceReadWriteAccessorsRequest" });
 
 export interface ThirdPartyOnlyConfig {
   /** Whether or not order ID reporting for pixels is enabled. This value cannot be changed once set to `true`. */
   pixelOrderIdReportingEnabled?: boolean;
 }
 
-export const ThirdPartyOnlyConfig: Schema.Schema<ThirdPartyOnlyConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pixelOrderIdReportingEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ThirdPartyOnlyConfig",
-  }) as any as Schema.Schema<ThirdPartyOnlyConfig>;
+export const ThirdPartyOnlyConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pixelOrderIdReportingEnabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "ThirdPartyOnlyConfig" });
 
 export interface CmHybridConfig {
   /** Required. Immutable. ID of the CM360 Floodlight configuration linked with the DV360 advertiser. */
@@ -3339,20 +2938,15 @@ export interface CmHybridConfig {
   dv360ToCmDataSharingEnabled?: boolean;
 }
 
-export const CmHybridConfig: Schema.Schema<CmHybridConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cmFloodlightConfigId: Schema.optional(Schema.String),
-      cmAccountId: Schema.optional(Schema.String),
-      dv360ToCmCostReportingEnabled: Schema.optional(Schema.Boolean),
-      cmFloodlightLinkingAuthorized: Schema.optional(Schema.Boolean),
-      cmAdvertiserIds: Schema.optional(Schema.Array(Schema.String)),
-      cmSyncableSiteIds: Schema.optional(Schema.Array(Schema.String)),
-      dv360ToCmDataSharingEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "CmHybridConfig",
-  }) as any as Schema.Schema<CmHybridConfig>;
+export const CmHybridConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cmFloodlightConfigId: Schema.optional(Schema.String),
+  cmAccountId: Schema.optional(Schema.String),
+  dv360ToCmCostReportingEnabled: Schema.optional(Schema.Boolean),
+  cmFloodlightLinkingAuthorized: Schema.optional(Schema.Boolean),
+  cmAdvertiserIds: Schema.optional(Schema.Array(Schema.String)),
+  cmSyncableSiteIds: Schema.optional(Schema.Array(Schema.String)),
+  dv360ToCmDataSharingEnabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "CmHybridConfig" });
 
 export interface AdvertiserAdServerConfig {
   /** The configuration for advertisers that use third-party ad servers only. */
@@ -3361,15 +2955,11 @@ export interface AdvertiserAdServerConfig {
   cmHybridConfig?: CmHybridConfig;
 }
 
-export const AdvertiserAdServerConfig: Schema.Schema<AdvertiserAdServerConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      thirdPartyOnlyConfig: Schema.optional(ThirdPartyOnlyConfig),
-      cmHybridConfig: Schema.optional(CmHybridConfig),
-    }),
-  ).annotate({
-    identifier: "AdvertiserAdServerConfig",
-  }) as any as Schema.Schema<AdvertiserAdServerConfig>;
+export const AdvertiserAdServerConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    thirdPartyOnlyConfig: Schema.optional(ThirdPartyOnlyConfig),
+    cmHybridConfig: Schema.optional(CmHybridConfig),
+  }).annotate({ identifier: "AdvertiserAdServerConfig" });
 
 export interface AdvertiserCreativeConfig {
   /** An ID for configuring campaign monitoring provided by Integral Ad Service (IAS). The DV360 system will append an IAS "Campaign Monitor" tag containing this ID to the creative tag. */
@@ -3382,17 +2972,13 @@ export interface AdvertiserCreativeConfig {
   videoCreativeDataSharingAuthorized?: boolean;
 }
 
-export const AdvertiserCreativeConfig: Schema.Schema<AdvertiserCreativeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      iasClientId: Schema.optional(Schema.String),
-      dynamicCreativeEnabled: Schema.optional(Schema.Boolean),
-      obaComplianceDisabled: Schema.optional(Schema.Boolean),
-      videoCreativeDataSharingAuthorized: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "AdvertiserCreativeConfig",
-  }) as any as Schema.Schema<AdvertiserCreativeConfig>;
+export const AdvertiserCreativeConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    iasClientId: Schema.optional(Schema.String),
+    dynamicCreativeEnabled: Schema.optional(Schema.Boolean),
+    obaComplianceDisabled: Schema.optional(Schema.Boolean),
+    videoCreativeDataSharingAuthorized: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "AdvertiserCreativeConfig" });
 
 export interface SdfConfig {
   /** Required. The version of SDF being used. */
@@ -3421,13 +3007,10 @@ export interface SdfConfig {
   adminEmail?: string;
 }
 
-export const SdfConfig: Schema.Schema<SdfConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.String),
-      adminEmail: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "SdfConfig" }) as any as Schema.Schema<SdfConfig>;
+export const SdfConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.String),
+  adminEmail: Schema.optional(Schema.String),
+}).annotate({ identifier: "SdfConfig" });
 
 export interface AdvertiserSdfConfig {
   /** The SDF configuration for the advertiser. * Required when overridePartnerSdfConfig is `true`. * Output only when overridePartnerSdfConfig is `false`. */
@@ -3436,29 +3019,20 @@ export interface AdvertiserSdfConfig {
   overridePartnerSdfConfig?: boolean;
 }
 
-export const AdvertiserSdfConfig: Schema.Schema<AdvertiserSdfConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sdfConfig: Schema.optional(SdfConfig),
-      overridePartnerSdfConfig: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "AdvertiserSdfConfig",
-  }) as any as Schema.Schema<AdvertiserSdfConfig>;
+export const AdvertiserSdfConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sdfConfig: Schema.optional(SdfConfig),
+  overridePartnerSdfConfig: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "AdvertiserSdfConfig" });
 
 export interface AdvertiserDataAccessConfig {
   /** Structured Data Files (SDF) settings for the advertiser. If not specified, the SDF settings of the parent partner are used. */
   sdfConfig?: AdvertiserSdfConfig;
 }
 
-export const AdvertiserDataAccessConfig: Schema.Schema<AdvertiserDataAccessConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sdfConfig: Schema.optional(AdvertiserSdfConfig),
-    }),
-  ).annotate({
-    identifier: "AdvertiserDataAccessConfig",
-  }) as any as Schema.Schema<AdvertiserDataAccessConfig>;
+export const AdvertiserDataAccessConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sdfConfig: Schema.optional(AdvertiserSdfConfig),
+  }).annotate({ identifier: "AdvertiserDataAccessConfig" });
 
 export interface IntegrationDetails {
   /** Additional details of the entry in string format. Must be UTF-8 encoded with a length of no more than 1000 characters. */
@@ -3467,29 +3041,20 @@ export interface IntegrationDetails {
   integrationCode?: string;
 }
 
-export const IntegrationDetails: Schema.Schema<IntegrationDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      details: Schema.optional(Schema.String),
-      integrationCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "IntegrationDetails",
-  }) as any as Schema.Schema<IntegrationDetails>;
+export const IntegrationDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  details: Schema.optional(Schema.String),
+  integrationCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "IntegrationDetails" });
 
 export interface AdvertiserBillingConfig {
   /** Required. The ID of a billing profile assigned to the advertiser. */
   billingProfileId?: string;
 }
 
-export const AdvertiserBillingConfig: Schema.Schema<AdvertiserBillingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      billingProfileId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AdvertiserBillingConfig",
-  }) as any as Schema.Schema<AdvertiserBillingConfig>;
+export const AdvertiserBillingConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    billingProfileId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AdvertiserBillingConfig" });
 
 export interface AdvertiserGeneralConfig {
   /** Required. The domain URL of the advertiser's primary website. The system will send this information to publishers that require website URL to associate a campaign with an advertiser. Provide a URL with no path or query string, beginning with `http:` or `https:`. For example, http://www.example.com */
@@ -3500,16 +3065,12 @@ export interface AdvertiserGeneralConfig {
   timeZone?: string;
 }
 
-export const AdvertiserGeneralConfig: Schema.Schema<AdvertiserGeneralConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      domainUrl: Schema.optional(Schema.String),
-      currencyCode: Schema.optional(Schema.String),
-      timeZone: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AdvertiserGeneralConfig",
-  }) as any as Schema.Schema<AdvertiserGeneralConfig>;
+export const AdvertiserGeneralConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    domainUrl: Schema.optional(Schema.String),
+    currencyCode: Schema.optional(Schema.String),
+    timeZone: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AdvertiserGeneralConfig" });
 
 export interface Advertiser {
   /** Required. Immutable. Ad server related settings of the advertiser. */
@@ -3555,26 +3116,23 @@ export interface Advertiser {
   partnerId?: string;
 }
 
-export const Advertiser: Schema.Schema<Advertiser> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      adServerConfig: Schema.optional(AdvertiserAdServerConfig),
-      containsEuPoliticalAds: Schema.optional(Schema.String),
-      creativeConfig: Schema.optional(AdvertiserCreativeConfig),
-      prismaEnabled: Schema.optional(Schema.Boolean),
-      dataAccessConfig: Schema.optional(AdvertiserDataAccessConfig),
-      servingConfig: Schema.optional(AdvertiserTargetingConfig),
-      name: Schema.optional(Schema.String),
-      advertiserId: Schema.optional(Schema.String),
-      integrationDetails: Schema.optional(IntegrationDetails),
-      billingConfig: Schema.optional(AdvertiserBillingConfig),
-      entityStatus: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      generalConfig: Schema.optional(AdvertiserGeneralConfig),
-      updateTime: Schema.optional(Schema.String),
-      partnerId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Advertiser" }) as any as Schema.Schema<Advertiser>;
+export const Advertiser = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  adServerConfig: Schema.optional(AdvertiserAdServerConfig),
+  containsEuPoliticalAds: Schema.optional(Schema.String),
+  creativeConfig: Schema.optional(AdvertiserCreativeConfig),
+  prismaEnabled: Schema.optional(Schema.Boolean),
+  dataAccessConfig: Schema.optional(AdvertiserDataAccessConfig),
+  servingConfig: Schema.optional(AdvertiserTargetingConfig),
+  name: Schema.optional(Schema.String),
+  advertiserId: Schema.optional(Schema.String),
+  integrationDetails: Schema.optional(IntegrationDetails),
+  billingConfig: Schema.optional(AdvertiserBillingConfig),
+  entityStatus: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  generalConfig: Schema.optional(AdvertiserGeneralConfig),
+  updateTime: Schema.optional(Schema.String),
+  partnerId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Advertiser" });
 
 export interface ListAdvertisersResponse {
   /** The list of advertisers. This list will be absent if empty. */
@@ -3583,15 +3141,11 @@ export interface ListAdvertisersResponse {
   nextPageToken?: string;
 }
 
-export const ListAdvertisersResponse: Schema.Schema<ListAdvertisersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      advertisers: Schema.optional(Schema.Array(Advertiser)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAdvertisersResponse",
-  }) as any as Schema.Schema<ListAdvertisersResponse>;
+export const ListAdvertisersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    advertisers: Schema.optional(Schema.Array(Advertiser)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListAdvertisersResponse" });
 
 export interface FrequencyCap {
   /** The number of time_unit the frequency cap will last. Required when unlimited is `false`. The following restrictions apply based on the value of time_unit: * `TIME_UNIT_MONTHS` - must be 1 * `TIME_UNIT_WEEKS` - must be between 1 and 4 * `TIME_UNIT_DAYS` - must be between 1 and 6 * `TIME_UNIT_HOURS` - must be between 1 and 23 * `TIME_UNIT_MINUTES` - must be between 1 and 59 */
@@ -3614,18 +3168,13 @@ export interface FrequencyCap {
   unlimited?: boolean;
 }
 
-export const FrequencyCap: Schema.Schema<FrequencyCap> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      timeUnitCount: Schema.optional(Schema.Number),
-      maxImpressions: Schema.optional(Schema.Number),
-      timeUnit: Schema.optional(Schema.String),
-      maxViews: Schema.optional(Schema.Number),
-      unlimited: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "FrequencyCap",
-  }) as any as Schema.Schema<FrequencyCap>;
+export const FrequencyCap = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  timeUnitCount: Schema.optional(Schema.Number),
+  maxImpressions: Schema.optional(Schema.Number),
+  timeUnit: Schema.optional(Schema.String),
+  maxViews: Schema.optional(Schema.Number),
+  unlimited: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "FrequencyCap" });
 
 export interface PoiTargetingOptionDetails {
   /** Output only. Longitude of the POI rounding to 6th decimal place. */
@@ -3636,16 +3185,12 @@ export interface PoiTargetingOptionDetails {
   displayName?: string;
 }
 
-export const PoiTargetingOptionDetails: Schema.Schema<PoiTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      longitude: Schema.optional(Schema.Number),
-      latitude: Schema.optional(Schema.Number),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PoiTargetingOptionDetails",
-  }) as any as Schema.Schema<PoiTargetingOptionDetails>;
+export const PoiTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    longitude: Schema.optional(Schema.Number),
+    latitude: Schema.optional(Schema.Number),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PoiTargetingOptionDetails" });
 
 export interface DeviceTypeTargetingOptionDetails {
   /** Output only. The device type that is used to be targeted. */
@@ -3659,28 +3204,20 @@ export interface DeviceTypeTargetingOptionDetails {
     | (string & {});
 }
 
-export const DeviceTypeTargetingOptionDetails: Schema.Schema<DeviceTypeTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deviceType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DeviceTypeTargetingOptionDetails",
-  }) as any as Schema.Schema<DeviceTypeTargetingOptionDetails>;
+export const DeviceTypeTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deviceType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DeviceTypeTargetingOptionDetails" });
 
 export interface ContentGenreTargetingOptionDetails {
   /** Output only. The display name of the content genre */
   displayName?: string;
 }
 
-export const ContentGenreTargetingOptionDetails: Schema.Schema<ContentGenreTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ContentGenreTargetingOptionDetails",
-  }) as any as Schema.Schema<ContentGenreTargetingOptionDetails>;
+export const ContentGenreTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ContentGenreTargetingOptionDetails" });
 
 export interface ParentalStatusTargetingOptionDetails {
   /** Output only. The parental status of an audience. */
@@ -3692,14 +3229,10 @@ export interface ParentalStatusTargetingOptionDetails {
     | (string & {});
 }
 
-export const ParentalStatusTargetingOptionDetails: Schema.Schema<ParentalStatusTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parentalStatus: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ParentalStatusTargetingOptionDetails",
-  }) as any as Schema.Schema<ParentalStatusTargetingOptionDetails>;
+export const ParentalStatusTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parentalStatus: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ParentalStatusTargetingOptionDetails" });
 
 export interface AgeRangeTargetingOptionDetails {
   /** Output only. The age range of an audience. */
@@ -3725,28 +3258,20 @@ export interface AgeRangeTargetingOptionDetails {
     | (string & {});
 }
 
-export const AgeRangeTargetingOptionDetails: Schema.Schema<AgeRangeTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ageRange: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AgeRangeTargetingOptionDetails",
-  }) as any as Schema.Schema<AgeRangeTargetingOptionDetails>;
+export const AgeRangeTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ageRange: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AgeRangeTargetingOptionDetails" });
 
 export interface CategoryTargetingOptionDetails {
   /** Output only. The display name of the category. */
   displayName?: string;
 }
 
-export const CategoryTargetingOptionDetails: Schema.Schema<CategoryTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CategoryTargetingOptionDetails",
-  }) as any as Schema.Schema<CategoryTargetingOptionDetails>;
+export const CategoryTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CategoryTargetingOptionDetails" });
 
 export interface AuthorizedSellerStatusTargetingOptionDetails {
   /** Output only. The authorized seller status. */
@@ -3757,14 +3282,10 @@ export interface AuthorizedSellerStatusTargetingOptionDetails {
     | (string & {});
 }
 
-export const AuthorizedSellerStatusTargetingOptionDetails: Schema.Schema<AuthorizedSellerStatusTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      authorizedSellerStatus: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AuthorizedSellerStatusTargetingOptionDetails",
-  }) as any as Schema.Schema<AuthorizedSellerStatusTargetingOptionDetails>;
+export const AuthorizedSellerStatusTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    authorizedSellerStatus: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AuthorizedSellerStatusTargetingOptionDetails" });
 
 export interface ContentThemeTargetingOptionDetails {
   /** Output only. An enum for the DV360 content theme content classifier. */
@@ -3782,14 +3303,10 @@ export interface ContentThemeTargetingOptionDetails {
     | (string & {});
 }
 
-export const ContentThemeTargetingOptionDetails: Schema.Schema<ContentThemeTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contentTheme: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ContentThemeTargetingOptionDetails",
-  }) as any as Schema.Schema<ContentThemeTargetingOptionDetails>;
+export const ContentThemeTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    contentTheme: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ContentThemeTargetingOptionDetails" });
 
 export interface BusinessChainTargetingOptionDetails {
   /** Output only. The display name of the business chain, e.g. "KFC", "Chase Bank". */
@@ -3840,16 +3357,12 @@ export interface BusinessChainTargetingOptionDetails {
     | (string & {});
 }
 
-export const BusinessChainTargetingOptionDetails: Schema.Schema<BusinessChainTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      businessChain: Schema.optional(Schema.String),
-      geoRegion: Schema.optional(Schema.String),
-      geoRegionType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BusinessChainTargetingOptionDetails",
-  }) as any as Schema.Schema<BusinessChainTargetingOptionDetails>;
+export const BusinessChainTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    businessChain: Schema.optional(Schema.String),
+    geoRegion: Schema.optional(Schema.String),
+    geoRegionType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BusinessChainTargetingOptionDetails" });
 
 export interface DigitalContentLabelTargetingOptionDetails {
   /** Output only. An enum for the content label brand safety tiers. */
@@ -3864,14 +3377,10 @@ export interface DigitalContentLabelTargetingOptionDetails {
     | (string & {});
 }
 
-export const DigitalContentLabelTargetingOptionDetails: Schema.Schema<DigitalContentLabelTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contentRatingTier: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DigitalContentLabelTargetingOptionDetails",
-  }) as any as Schema.Schema<DigitalContentLabelTargetingOptionDetails>;
+export const DigitalContentLabelTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    contentRatingTier: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DigitalContentLabelTargetingOptionDetails" });
 
 export interface ContentOutstreamPositionTargetingOptionDetails {
   /** Output only. The content outstream position. */
@@ -3885,14 +3394,10 @@ export interface ContentOutstreamPositionTargetingOptionDetails {
     | (string & {});
 }
 
-export const ContentOutstreamPositionTargetingOptionDetails: Schema.Schema<ContentOutstreamPositionTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contentOutstreamPosition: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ContentOutstreamPositionTargetingOptionDetails",
-  }) as any as Schema.Schema<ContentOutstreamPositionTargetingOptionDetails>;
+export const ContentOutstreamPositionTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    contentOutstreamPosition: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ContentOutstreamPositionTargetingOptionDetails" });
 
 export interface SensitiveCategoryTargetingOptionDetails {
   /** Output only. An enum for the DV360 Sensitive category content classifier. */
@@ -3920,14 +3425,10 @@ export interface SensitiveCategoryTargetingOptionDetails {
     | (string & {});
 }
 
-export const SensitiveCategoryTargetingOptionDetails: Schema.Schema<SensitiveCategoryTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sensitiveCategory: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SensitiveCategoryTargetingOptionDetails",
-  }) as any as Schema.Schema<SensitiveCategoryTargetingOptionDetails>;
+export const SensitiveCategoryTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sensitiveCategory: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SensitiveCategoryTargetingOptionDetails" });
 
 export interface EnvironmentTargetingOptionDetails {
   /** Output only. The serving environment. */
@@ -3939,42 +3440,30 @@ export interface EnvironmentTargetingOptionDetails {
     | (string & {});
 }
 
-export const EnvironmentTargetingOptionDetails: Schema.Schema<EnvironmentTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      environment: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnvironmentTargetingOptionDetails",
-  }) as any as Schema.Schema<EnvironmentTargetingOptionDetails>;
+export const EnvironmentTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    environment: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnvironmentTargetingOptionDetails" });
 
 export interface OmidTargetingOptionDetails {
   /** Output only. The type of Open Measurement enabled inventory. */
   omid?: "OMID_UNSPECIFIED" | "OMID_FOR_MOBILE_DISPLAY_ADS" | (string & {});
 }
 
-export const OmidTargetingOptionDetails: Schema.Schema<OmidTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      omid: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OmidTargetingOptionDetails",
-  }) as any as Schema.Schema<OmidTargetingOptionDetails>;
+export const OmidTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    omid: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OmidTargetingOptionDetails" });
 
 export interface SubExchangeTargetingOptionDetails {
   /** Output only. The display name of the sub-exchange. */
   displayName?: string;
 }
 
-export const SubExchangeTargetingOptionDetails: Schema.Schema<SubExchangeTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SubExchangeTargetingOptionDetails",
-  }) as any as Schema.Schema<SubExchangeTargetingOptionDetails>;
+export const SubExchangeTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SubExchangeTargetingOptionDetails" });
 
 export interface ExchangeTargetingOptionDetails {
   /** Output only. The type of exchange. */
@@ -4071,14 +3560,10 @@ export interface ExchangeTargetingOptionDetails {
     | (string & {});
 }
 
-export const ExchangeTargetingOptionDetails: Schema.Schema<ExchangeTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      exchange: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ExchangeTargetingOptionDetails",
-  }) as any as Schema.Schema<ExchangeTargetingOptionDetails>;
+export const ExchangeTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    exchange: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ExchangeTargetingOptionDetails" });
 
 export interface HouseholdIncomeTargetingOptionDetails {
   /** Output only. The household income of an audience. */
@@ -4094,28 +3579,20 @@ export interface HouseholdIncomeTargetingOptionDetails {
     | (string & {});
 }
 
-export const HouseholdIncomeTargetingOptionDetails: Schema.Schema<HouseholdIncomeTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      householdIncome: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "HouseholdIncomeTargetingOptionDetails",
-  }) as any as Schema.Schema<HouseholdIncomeTargetingOptionDetails>;
+export const HouseholdIncomeTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    householdIncome: Schema.optional(Schema.String),
+  }).annotate({ identifier: "HouseholdIncomeTargetingOptionDetails" });
 
 export interface OperatingSystemTargetingOptionDetails {
   /** Output only. The display name of the operating system. */
   displayName?: string;
 }
 
-export const OperatingSystemTargetingOptionDetails: Schema.Schema<OperatingSystemTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperatingSystemTargetingOptionDetails",
-  }) as any as Schema.Schema<OperatingSystemTargetingOptionDetails>;
+export const OperatingSystemTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OperatingSystemTargetingOptionDetails" });
 
 export interface GeoRegionTargetingOptionDetails {
   /** Output only. The display name of the geographic region (e.g., "Ontario, Canada"). */
@@ -4164,29 +3641,21 @@ export interface GeoRegionTargetingOptionDetails {
     | (string & {});
 }
 
-export const GeoRegionTargetingOptionDetails: Schema.Schema<GeoRegionTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      geoRegionType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GeoRegionTargetingOptionDetails",
-  }) as any as Schema.Schema<GeoRegionTargetingOptionDetails>;
+export const GeoRegionTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    geoRegionType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GeoRegionTargetingOptionDetails" });
 
 export interface BrowserTargetingOptionDetails {
   /** Output only. The display name of the browser. */
   displayName?: string;
 }
 
-export const BrowserTargetingOptionDetails: Schema.Schema<BrowserTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BrowserTargetingOptionDetails",
-  }) as any as Schema.Schema<BrowserTargetingOptionDetails>;
+export const BrowserTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BrowserTargetingOptionDetails" });
 
 export interface UserRewardedContentTargetingOptionDetails {
   /** Output only. User rewarded content status for video ads. */
@@ -4197,14 +3666,10 @@ export interface UserRewardedContentTargetingOptionDetails {
     | (string & {});
 }
 
-export const UserRewardedContentTargetingOptionDetails: Schema.Schema<UserRewardedContentTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userRewardedContent: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UserRewardedContentTargetingOptionDetails",
-  }) as any as Schema.Schema<UserRewardedContentTargetingOptionDetails>;
+export const UserRewardedContentTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userRewardedContent: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UserRewardedContentTargetingOptionDetails" });
 
 export interface NativeContentPositionTargetingOptionDetails {
   /** Output only. The content position. */
@@ -4218,14 +3683,10 @@ export interface NativeContentPositionTargetingOptionDetails {
     | (string & {});
 }
 
-export const NativeContentPositionTargetingOptionDetails: Schema.Schema<NativeContentPositionTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contentPosition: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NativeContentPositionTargetingOptionDetails",
-  }) as any as Schema.Schema<NativeContentPositionTargetingOptionDetails>;
+export const NativeContentPositionTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    contentPosition: Schema.optional(Schema.String),
+  }).annotate({ identifier: "NativeContentPositionTargetingOptionDetails" });
 
 export interface AudioContentTypeTargetingOptionDetails {
   /** Output only. The audio content type. */
@@ -4238,14 +3699,10 @@ export interface AudioContentTypeTargetingOptionDetails {
     | (string & {});
 }
 
-export const AudioContentTypeTargetingOptionDetails: Schema.Schema<AudioContentTypeTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      audioContentType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AudioContentTypeTargetingOptionDetails",
-  }) as any as Schema.Schema<AudioContentTypeTargetingOptionDetails>;
+export const AudioContentTypeTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    audioContentType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AudioContentTypeTargetingOptionDetails" });
 
 export interface CarrierAndIspTargetingOptionDetails {
   /** Output only. The display name of the carrier or ISP. */
@@ -4258,15 +3715,11 @@ export interface CarrierAndIspTargetingOptionDetails {
     | (string & {});
 }
 
-export const CarrierAndIspTargetingOptionDetails: Schema.Schema<CarrierAndIspTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CarrierAndIspTargetingOptionDetails",
-  }) as any as Schema.Schema<CarrierAndIspTargetingOptionDetails>;
+export const CarrierAndIspTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CarrierAndIspTargetingOptionDetails" });
 
 export interface ContentStreamTypeTargetingOptionDetails {
   /** Output only. The content stream type. */
@@ -4277,14 +3730,10 @@ export interface ContentStreamTypeTargetingOptionDetails {
     | (string & {});
 }
 
-export const ContentStreamTypeTargetingOptionDetails: Schema.Schema<ContentStreamTypeTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contentStreamType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ContentStreamTypeTargetingOptionDetails",
-  }) as any as Schema.Schema<ContentStreamTypeTargetingOptionDetails>;
+export const ContentStreamTypeTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    contentStreamType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ContentStreamTypeTargetingOptionDetails" });
 
 export interface OnScreenPositionTargetingOptionDetails {
   /** Output only. The on screen position. */
@@ -4296,28 +3745,20 @@ export interface OnScreenPositionTargetingOptionDetails {
     | (string & {});
 }
 
-export const OnScreenPositionTargetingOptionDetails: Schema.Schema<OnScreenPositionTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      onScreenPosition: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OnScreenPositionTargetingOptionDetails",
-  }) as any as Schema.Schema<OnScreenPositionTargetingOptionDetails>;
+export const OnScreenPositionTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    onScreenPosition: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OnScreenPositionTargetingOptionDetails" });
 
 export interface DeviceMakeModelTargetingOptionDetails {
   /** Output only. The display name of the device make and model. */
   displayName?: string;
 }
 
-export const DeviceMakeModelTargetingOptionDetails: Schema.Schema<DeviceMakeModelTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DeviceMakeModelTargetingOptionDetails",
-  }) as any as Schema.Schema<DeviceMakeModelTargetingOptionDetails>;
+export const DeviceMakeModelTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DeviceMakeModelTargetingOptionDetails" });
 
 export interface ViewabilityTargetingOptionDetails {
   /** Output only. The predicted viewability percentage. */
@@ -4335,14 +3776,10 @@ export interface ViewabilityTargetingOptionDetails {
     | (string & {});
 }
 
-export const ViewabilityTargetingOptionDetails: Schema.Schema<ViewabilityTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      viewability: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ViewabilityTargetingOptionDetails",
-  }) as any as Schema.Schema<ViewabilityTargetingOptionDetails>;
+export const ViewabilityTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    viewability: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ViewabilityTargetingOptionDetails" });
 
 export interface GenderTargetingOptionDetails {
   /** Output only. The gender of an audience. */
@@ -4354,14 +3791,10 @@ export interface GenderTargetingOptionDetails {
     | (string & {});
 }
 
-export const GenderTargetingOptionDetails: Schema.Schema<GenderTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gender: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GenderTargetingOptionDetails",
-  }) as any as Schema.Schema<GenderTargetingOptionDetails>;
+export const GenderTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gender: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GenderTargetingOptionDetails" });
 
 export interface ContentInstreamPositionTargetingOptionDetails {
   /** Output only. The content instream position. */
@@ -4374,14 +3807,10 @@ export interface ContentInstreamPositionTargetingOptionDetails {
     | (string & {});
 }
 
-export const ContentInstreamPositionTargetingOptionDetails: Schema.Schema<ContentInstreamPositionTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contentInstreamPosition: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ContentInstreamPositionTargetingOptionDetails",
-  }) as any as Schema.Schema<ContentInstreamPositionTargetingOptionDetails>;
+export const ContentInstreamPositionTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    contentInstreamPosition: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ContentInstreamPositionTargetingOptionDetails" });
 
 export interface VideoPlayerSizeTargetingOptionDetails {
   /** Output only. The video player size. */
@@ -4394,14 +3823,10 @@ export interface VideoPlayerSizeTargetingOptionDetails {
     | (string & {});
 }
 
-export const VideoPlayerSizeTargetingOptionDetails: Schema.Schema<VideoPlayerSizeTargetingOptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      videoPlayerSize: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VideoPlayerSizeTargetingOptionDetails",
-  }) as any as Schema.Schema<VideoPlayerSizeTargetingOptionDetails>;
+export const VideoPlayerSizeTargetingOptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    videoPlayerSize: Schema.optional(Schema.String),
+  }).annotate({ identifier: "VideoPlayerSizeTargetingOptionDetails" });
 
 export interface TargetingOption {
   /** POI resource details. */
@@ -4531,86 +3956,75 @@ export interface TargetingOption {
   videoPlayerSizeDetails?: VideoPlayerSizeTargetingOptionDetails;
 }
 
-export const TargetingOption: Schema.Schema<TargetingOption> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      poiDetails: Schema.optional(PoiTargetingOptionDetails),
-      deviceTypeDetails: Schema.optional(DeviceTypeTargetingOptionDetails),
-      contentGenreDetails: Schema.optional(ContentGenreTargetingOptionDetails),
-      targetingOptionId: Schema.optional(Schema.String),
-      parentalStatusDetails: Schema.optional(
-        ParentalStatusTargetingOptionDetails,
-      ),
-      ageRangeDetails: Schema.optional(AgeRangeTargetingOptionDetails),
-      categoryDetails: Schema.optional(CategoryTargetingOptionDetails),
-      authorizedSellerStatusDetails: Schema.optional(
-        AuthorizedSellerStatusTargetingOptionDetails,
-      ),
-      contentThemeDetails: Schema.optional(ContentThemeTargetingOptionDetails),
-      businessChainDetails: Schema.optional(
-        BusinessChainTargetingOptionDetails,
-      ),
-      digitalContentLabelDetails: Schema.optional(
-        DigitalContentLabelTargetingOptionDetails,
-      ),
-      contentOutstreamPositionDetails: Schema.optional(
-        ContentOutstreamPositionTargetingOptionDetails,
-      ),
-      sensitiveCategoryDetails: Schema.optional(
-        SensitiveCategoryTargetingOptionDetails,
-      ),
-      environmentDetails: Schema.optional(EnvironmentTargetingOptionDetails),
-      appCategoryDetails: Schema.optional(AppCategoryTargetingOptionDetails),
-      omidDetails: Schema.optional(OmidTargetingOptionDetails),
-      subExchangeDetails: Schema.optional(SubExchangeTargetingOptionDetails),
-      exchangeDetails: Schema.optional(ExchangeTargetingOptionDetails),
-      languageDetails: Schema.optional(LanguageTargetingOptionDetails),
-      householdIncomeDetails: Schema.optional(
-        HouseholdIncomeTargetingOptionDetails,
-      ),
-      operatingSystemDetails: Schema.optional(
-        OperatingSystemTargetingOptionDetails,
-      ),
-      geoRegionDetails: Schema.optional(GeoRegionTargetingOptionDetails),
-      browserDetails: Schema.optional(BrowserTargetingOptionDetails),
-      userRewardedContentDetails: Schema.optional(
-        UserRewardedContentTargetingOptionDetails,
-      ),
-      contentDurationDetails: Schema.optional(
-        ContentDurationTargetingOptionDetails,
-      ),
-      nativeContentPositionDetails: Schema.optional(
-        NativeContentPositionTargetingOptionDetails,
-      ),
-      audioContentTypeDetails: Schema.optional(
-        AudioContentTypeTargetingOptionDetails,
-      ),
-      targetingType: Schema.optional(Schema.String),
-      carrierAndIspDetails: Schema.optional(
-        CarrierAndIspTargetingOptionDetails,
-      ),
-      contentStreamTypeDetails: Schema.optional(
-        ContentStreamTypeTargetingOptionDetails,
-      ),
-      onScreenPositionDetails: Schema.optional(
-        OnScreenPositionTargetingOptionDetails,
-      ),
-      deviceMakeModelDetails: Schema.optional(
-        DeviceMakeModelTargetingOptionDetails,
-      ),
-      name: Schema.optional(Schema.String),
-      viewabilityDetails: Schema.optional(ViewabilityTargetingOptionDetails),
-      genderDetails: Schema.optional(GenderTargetingOptionDetails),
-      contentInstreamPositionDetails: Schema.optional(
-        ContentInstreamPositionTargetingOptionDetails,
-      ),
-      videoPlayerSizeDetails: Schema.optional(
-        VideoPlayerSizeTargetingOptionDetails,
-      ),
-    }),
-  ).annotate({
-    identifier: "TargetingOption",
-  }) as any as Schema.Schema<TargetingOption>;
+export const TargetingOption = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  poiDetails: Schema.optional(PoiTargetingOptionDetails),
+  deviceTypeDetails: Schema.optional(DeviceTypeTargetingOptionDetails),
+  contentGenreDetails: Schema.optional(ContentGenreTargetingOptionDetails),
+  targetingOptionId: Schema.optional(Schema.String),
+  parentalStatusDetails: Schema.optional(ParentalStatusTargetingOptionDetails),
+  ageRangeDetails: Schema.optional(AgeRangeTargetingOptionDetails),
+  categoryDetails: Schema.optional(CategoryTargetingOptionDetails),
+  authorizedSellerStatusDetails: Schema.optional(
+    AuthorizedSellerStatusTargetingOptionDetails,
+  ),
+  contentThemeDetails: Schema.optional(ContentThemeTargetingOptionDetails),
+  businessChainDetails: Schema.optional(BusinessChainTargetingOptionDetails),
+  digitalContentLabelDetails: Schema.optional(
+    DigitalContentLabelTargetingOptionDetails,
+  ),
+  contentOutstreamPositionDetails: Schema.optional(
+    ContentOutstreamPositionTargetingOptionDetails,
+  ),
+  sensitiveCategoryDetails: Schema.optional(
+    SensitiveCategoryTargetingOptionDetails,
+  ),
+  environmentDetails: Schema.optional(EnvironmentTargetingOptionDetails),
+  appCategoryDetails: Schema.optional(AppCategoryTargetingOptionDetails),
+  omidDetails: Schema.optional(OmidTargetingOptionDetails),
+  subExchangeDetails: Schema.optional(SubExchangeTargetingOptionDetails),
+  exchangeDetails: Schema.optional(ExchangeTargetingOptionDetails),
+  languageDetails: Schema.optional(LanguageTargetingOptionDetails),
+  householdIncomeDetails: Schema.optional(
+    HouseholdIncomeTargetingOptionDetails,
+  ),
+  operatingSystemDetails: Schema.optional(
+    OperatingSystemTargetingOptionDetails,
+  ),
+  geoRegionDetails: Schema.optional(GeoRegionTargetingOptionDetails),
+  browserDetails: Schema.optional(BrowserTargetingOptionDetails),
+  userRewardedContentDetails: Schema.optional(
+    UserRewardedContentTargetingOptionDetails,
+  ),
+  contentDurationDetails: Schema.optional(
+    ContentDurationTargetingOptionDetails,
+  ),
+  nativeContentPositionDetails: Schema.optional(
+    NativeContentPositionTargetingOptionDetails,
+  ),
+  audioContentTypeDetails: Schema.optional(
+    AudioContentTypeTargetingOptionDetails,
+  ),
+  targetingType: Schema.optional(Schema.String),
+  carrierAndIspDetails: Schema.optional(CarrierAndIspTargetingOptionDetails),
+  contentStreamTypeDetails: Schema.optional(
+    ContentStreamTypeTargetingOptionDetails,
+  ),
+  onScreenPositionDetails: Schema.optional(
+    OnScreenPositionTargetingOptionDetails,
+  ),
+  deviceMakeModelDetails: Schema.optional(
+    DeviceMakeModelTargetingOptionDetails,
+  ),
+  name: Schema.optional(Schema.String),
+  viewabilityDetails: Schema.optional(ViewabilityTargetingOptionDetails),
+  genderDetails: Schema.optional(GenderTargetingOptionDetails),
+  contentInstreamPositionDetails: Schema.optional(
+    ContentInstreamPositionTargetingOptionDetails,
+  ),
+  videoPlayerSizeDetails: Schema.optional(
+    VideoPlayerSizeTargetingOptionDetails,
+  ),
+}).annotate({ identifier: "TargetingOption" });
 
 export interface ListTargetingOptionsResponse {
   /** The list of targeting options. This list will be absent if empty. */
@@ -4619,15 +4033,11 @@ export interface ListTargetingOptionsResponse {
   nextPageToken?: string;
 }
 
-export const ListTargetingOptionsResponse: Schema.Schema<ListTargetingOptionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetingOptions: Schema.optional(Schema.Array(TargetingOption)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListTargetingOptionsResponse",
-  }) as any as Schema.Schema<ListTargetingOptionsResponse>;
+export const ListTargetingOptionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetingOptions: Schema.optional(Schema.Array(TargetingOption)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListTargetingOptionsResponse" });
 
 export interface AssignedUserRole {
   /** The ID of the partner that the assigned user role applies to. */
@@ -4653,17 +4063,12 @@ export interface AssignedUserRole {
   assignedUserRoleId?: string;
 }
 
-export const AssignedUserRole: Schema.Schema<AssignedUserRole> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      partnerId: Schema.optional(Schema.String),
-      userRole: Schema.optional(Schema.String),
-      advertiserId: Schema.optional(Schema.String),
-      assignedUserRoleId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AssignedUserRole",
-  }) as any as Schema.Schema<AssignedUserRole>;
+export const AssignedUserRole = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  partnerId: Schema.optional(Schema.String),
+  userRole: Schema.optional(Schema.String),
+  advertiserId: Schema.optional(Schema.String),
+  assignedUserRoleId: Schema.optional(Schema.String),
+}).annotate({ identifier: "AssignedUserRole" });
 
 export interface User {
   /** The assigned user roles. Required in CreateUser. Output only in UpdateUser. Can only be updated through BulkEditAssignedUserRoles. */
@@ -4680,17 +4085,14 @@ export interface User {
   lastLoginTime?: string;
 }
 
-export const User: Schema.Schema<User> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      assignedUserRoles: Schema.optional(Schema.Array(AssignedUserRole)),
-      email: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      userId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      lastLoginTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "User" }) as any as Schema.Schema<User>;
+export const User = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  assignedUserRoles: Schema.optional(Schema.Array(AssignedUserRole)),
+  email: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  userId: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  lastLoginTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "User" });
 
 export interface MastheadAd {
   /** The headline of the ad. */
@@ -4721,24 +4123,19 @@ export interface MastheadAd {
   callToActionButtonLabel?: string;
 }
 
-export const MastheadAd: Schema.Schema<MastheadAd> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      headline: Schema.optional(Schema.String),
-      callToActionTrackingUrl: Schema.optional(Schema.String),
-      callToActionFinalUrl: Schema.optional(Schema.String),
-      showChannelArt: Schema.optional(Schema.Boolean),
-      description: Schema.optional(Schema.String),
-      companionYoutubeVideos: Schema.optional(
-        Schema.Array(YoutubeVideoDetails),
-      ),
-      videoAspectRatio: Schema.optional(Schema.String),
-      autoplayVideoDuration: Schema.optional(Schema.String),
-      video: Schema.optional(YoutubeVideoDetails),
-      autoplayVideoStartMillisecond: Schema.optional(Schema.String),
-      callToActionButtonLabel: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "MastheadAd" }) as any as Schema.Schema<MastheadAd>;
+export const MastheadAd = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  headline: Schema.optional(Schema.String),
+  callToActionTrackingUrl: Schema.optional(Schema.String),
+  callToActionFinalUrl: Schema.optional(Schema.String),
+  showChannelArt: Schema.optional(Schema.Boolean),
+  description: Schema.optional(Schema.String),
+  companionYoutubeVideos: Schema.optional(Schema.Array(YoutubeVideoDetails)),
+  videoAspectRatio: Schema.optional(Schema.String),
+  autoplayVideoDuration: Schema.optional(Schema.String),
+  video: Schema.optional(YoutubeVideoDetails),
+  autoplayVideoStartMillisecond: Schema.optional(Schema.String),
+  callToActionButtonLabel: Schema.optional(Schema.String),
+}).annotate({ identifier: "MastheadAd" });
 
 export interface CarouselCard {
   /** Optional. The square marketing image shown on the card. */
@@ -4757,20 +4154,15 @@ export interface CarouselCard {
   callToAction?: string;
 }
 
-export const CarouselCard: Schema.Schema<CarouselCard> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      squareMarketingImage: Schema.optional(ImageAsset),
-      portraitMarketingImage: Schema.optional(ImageAsset),
-      marketingImage: Schema.optional(ImageAsset),
-      headline: Schema.optional(Schema.String),
-      finalUrl: Schema.optional(Schema.String),
-      finalMobileUrl: Schema.optional(Schema.String),
-      callToAction: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CarouselCard",
-  }) as any as Schema.Schema<CarouselCard>;
+export const CarouselCard = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  squareMarketingImage: Schema.optional(ImageAsset),
+  portraitMarketingImage: Schema.optional(ImageAsset),
+  marketingImage: Schema.optional(ImageAsset),
+  headline: Schema.optional(Schema.String),
+  finalUrl: Schema.optional(Schema.String),
+  finalMobileUrl: Schema.optional(Schema.String),
+  callToAction: Schema.optional(Schema.String),
+}).annotate({ identifier: "CarouselCard" });
 
 export interface DemandGenCarouselAd {
   /** Required. The description of the ad. */
@@ -4795,39 +4187,29 @@ export interface DemandGenCarouselAd {
   logo?: ImageAsset;
 }
 
-export const DemandGenCarouselAd: Schema.Schema<DemandGenCarouselAd> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      headline: Schema.optional(Schema.String),
-      finalUrl: Schema.optional(Schema.String),
-      customParameters: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      userSpecifiedTrackingUrl: Schema.optional(Schema.String),
-      businessName: Schema.optional(Schema.String),
-      cards: Schema.optional(Schema.Array(CarouselCard)),
-      trackingUrl: Schema.optional(Schema.String),
-      finalUrlSuffix: Schema.optional(Schema.String),
-      logo: Schema.optional(ImageAsset),
-    }),
-  ).annotate({
-    identifier: "DemandGenCarouselAd",
-  }) as any as Schema.Schema<DemandGenCarouselAd>;
+export const DemandGenCarouselAd = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  headline: Schema.optional(Schema.String),
+  finalUrl: Schema.optional(Schema.String),
+  customParameters: Schema.optional(
+    Schema.Record(Schema.String, Schema.String),
+  ),
+  userSpecifiedTrackingUrl: Schema.optional(Schema.String),
+  businessName: Schema.optional(Schema.String),
+  cards: Schema.optional(Schema.Array(CarouselCard)),
+  trackingUrl: Schema.optional(Schema.String),
+  finalUrlSuffix: Schema.optional(Schema.String),
+  logo: Schema.optional(ImageAsset),
+}).annotate({ identifier: "DemandGenCarouselAd" });
 
 export interface SdfDownloadTask {
   /** A resource name to be used in media.download to Download the prepared files. Resource names have the format `download/sdfdownloadtasks/media/{media_id}`. `media_id` will be made available by the long running operation service once the task status is done. */
   resourceName?: string;
 }
 
-export const SdfDownloadTask: Schema.Schema<SdfDownloadTask> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SdfDownloadTask",
-  }) as any as Schema.Schema<SdfDownloadTask>;
+export const SdfDownloadTask = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceName: Schema.optional(Schema.String),
+}).annotate({ identifier: "SdfDownloadTask" });
 
 export interface BulkUpdateLineItemsResponse {
   /** The IDs of successfully updated line items. */
@@ -4840,17 +4222,13 @@ export interface BulkUpdateLineItemsResponse {
   errors?: Array<Status>;
 }
 
-export const BulkUpdateLineItemsResponse: Schema.Schema<BulkUpdateLineItemsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updatedLineItemIds: Schema.optional(Schema.Array(Schema.String)),
-      skippedLineItemIds: Schema.optional(Schema.Array(Schema.String)),
-      failedLineItemIds: Schema.optional(Schema.Array(Schema.String)),
-      errors: Schema.optional(Schema.Array(Status)),
-    }),
-  ).annotate({
-    identifier: "BulkUpdateLineItemsResponse",
-  }) as any as Schema.Schema<BulkUpdateLineItemsResponse>;
+export const BulkUpdateLineItemsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updatedLineItemIds: Schema.optional(Schema.Array(Schema.String)),
+    skippedLineItemIds: Schema.optional(Schema.Array(Schema.String)),
+    failedLineItemIds: Schema.optional(Schema.Array(Schema.String)),
+    errors: Schema.optional(Schema.Array(Status)),
+  }).annotate({ identifier: "BulkUpdateLineItemsResponse" });
 
 export interface ListAdGroupAssignedTargetingOptionsResponse {
   /** A token identifying the next page of results. This value should be specified as the pageToken in a subsequent ListAdGroupAssignedTargetingOptionsRequest to fetch the next page of results. This token will be absent if there are no more AssignedTargetingOption resources to return. */
@@ -4859,17 +4237,13 @@ export interface ListAdGroupAssignedTargetingOptionsResponse {
   assignedTargetingOptions?: Array<AssignedTargetingOption>;
 }
 
-export const ListAdGroupAssignedTargetingOptionsResponse: Schema.Schema<ListAdGroupAssignedTargetingOptionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      assignedTargetingOptions: Schema.optional(
-        Schema.Array(AssignedTargetingOption),
-      ),
-    }),
-  ).annotate({
-    identifier: "ListAdGroupAssignedTargetingOptionsResponse",
-  }) as any as Schema.Schema<ListAdGroupAssignedTargetingOptionsResponse>;
+export const ListAdGroupAssignedTargetingOptionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    assignedTargetingOptions: Schema.optional(
+      Schema.Array(AssignedTargetingOption),
+    ),
+  }).annotate({ identifier: "ListAdGroupAssignedTargetingOptionsResponse" });
 
 export interface PrismaCpeCode {
   /** The Prisma client code. */
@@ -4880,16 +4254,11 @@ export interface PrismaCpeCode {
   prismaEstimateCode?: string;
 }
 
-export const PrismaCpeCode: Schema.Schema<PrismaCpeCode> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      prismaClientCode: Schema.optional(Schema.String),
-      prismaProductCode: Schema.optional(Schema.String),
-      prismaEstimateCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PrismaCpeCode",
-  }) as any as Schema.Schema<PrismaCpeCode>;
+export const PrismaCpeCode = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  prismaClientCode: Schema.optional(Schema.String),
+  prismaProductCode: Schema.optional(Schema.String),
+  prismaEstimateCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "PrismaCpeCode" });
 
 export interface PrismaConfig {
   /** Required. The entity allocated this budget (DSP, site, etc.). */
@@ -4908,16 +4277,11 @@ export interface PrismaConfig {
   prismaCpeCode?: PrismaCpeCode;
 }
 
-export const PrismaConfig: Schema.Schema<PrismaConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      supplier: Schema.optional(Schema.String),
-      prismaType: Schema.optional(Schema.String),
-      prismaCpeCode: Schema.optional(PrismaCpeCode),
-    }),
-  ).annotate({
-    identifier: "PrismaConfig",
-  }) as any as Schema.Schema<PrismaConfig>;
+export const PrismaConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  supplier: Schema.optional(Schema.String),
+  prismaType: Schema.optional(Schema.String),
+  prismaCpeCode: Schema.optional(PrismaCpeCode),
+}).annotate({ identifier: "PrismaConfig" });
 
 export interface CampaignBudget {
   /** The unique ID of the campaign budget. Assigned by the system. Do not set for new budgets. Must be included when updating or adding budgets to campaign_budgets. Otherwise, a new ID will be generated and assigned. */
@@ -4948,64 +4312,46 @@ export interface CampaignBudget {
   invoiceGroupingId?: string;
 }
 
-export const CampaignBudget: Schema.Schema<CampaignBudget> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      budgetId: Schema.optional(Schema.String),
-      prismaConfig: Schema.optional(PrismaConfig),
-      budgetAmountMicros: Schema.optional(Schema.String),
-      externalBudgetSource: Schema.optional(Schema.String),
-      budgetUnit: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      dateRange: Schema.optional(DateRange),
-      externalBudgetId: Schema.optional(Schema.String),
-      invoiceGroupingId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CampaignBudget",
-  }) as any as Schema.Schema<CampaignBudget>;
+export const CampaignBudget = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  budgetId: Schema.optional(Schema.String),
+  prismaConfig: Schema.optional(PrismaConfig),
+  budgetAmountMicros: Schema.optional(Schema.String),
+  externalBudgetSource: Schema.optional(Schema.String),
+  budgetUnit: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  dateRange: Schema.optional(DateRange),
+  externalBudgetId: Schema.optional(Schema.String),
+  invoiceGroupingId: Schema.optional(Schema.String),
+}).annotate({ identifier: "CampaignBudget" });
 
 export interface InventorySourceDisplayCreativeConfig {
   /** The size requirements for display creatives that can be assigned to the inventory source. */
   creativeSize?: Dimensions;
 }
 
-export const InventorySourceDisplayCreativeConfig: Schema.Schema<InventorySourceDisplayCreativeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      creativeSize: Schema.optional(Dimensions),
-    }),
-  ).annotate({
-    identifier: "InventorySourceDisplayCreativeConfig",
-  }) as any as Schema.Schema<InventorySourceDisplayCreativeConfig>;
+export const InventorySourceDisplayCreativeConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    creativeSize: Schema.optional(Dimensions),
+  }).annotate({ identifier: "InventorySourceDisplayCreativeConfig" });
 
 export interface DisplayVideoSourceAd {
   /** The ID of the source creative. */
   creativeId?: string;
 }
 
-export const DisplayVideoSourceAd: Schema.Schema<DisplayVideoSourceAd> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      creativeId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DisplayVideoSourceAd",
-  }) as any as Schema.Schema<DisplayVideoSourceAd>;
+export const DisplayVideoSourceAd = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  creativeId: Schema.optional(Schema.String),
+}).annotate({ identifier: "DisplayVideoSourceAd" });
 
 export interface AdPolicyTopicEvidenceDestinationTextList {
   /** Destination text that caused the policy finding. */
   destinationTexts?: Array<string>;
 }
 
-export const AdPolicyTopicEvidenceDestinationTextList: Schema.Schema<AdPolicyTopicEvidenceDestinationTextList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      destinationTexts: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AdPolicyTopicEvidenceDestinationTextList",
-  }) as any as Schema.Schema<AdPolicyTopicEvidenceDestinationTextList>;
+export const AdPolicyTopicEvidenceDestinationTextList =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    destinationTexts: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "AdPolicyTopicEvidenceDestinationTextList" });
 
 export interface NegativeKeyword {
   /** Output only. The resource name of the negative keyword. */
@@ -5014,29 +4360,20 @@ export interface NegativeKeyword {
   keywordValue?: string;
 }
 
-export const NegativeKeyword: Schema.Schema<NegativeKeyword> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      keywordValue: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NegativeKeyword",
-  }) as any as Schema.Schema<NegativeKeyword>;
+export const NegativeKeyword = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  keywordValue: Schema.optional(Schema.String),
+}).annotate({ identifier: "NegativeKeyword" });
 
 export interface BulkEditNegativeKeywordsResponse {
   /** The list of negative keywords that have been successfully created. This list will be absent if empty. */
   negativeKeywords?: Array<NegativeKeyword>;
 }
 
-export const BulkEditNegativeKeywordsResponse: Schema.Schema<BulkEditNegativeKeywordsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      negativeKeywords: Schema.optional(Schema.Array(NegativeKeyword)),
-    }),
-  ).annotate({
-    identifier: "BulkEditNegativeKeywordsResponse",
-  }) as any as Schema.Schema<BulkEditNegativeKeywordsResponse>;
+export const BulkEditNegativeKeywordsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    negativeKeywords: Schema.optional(Schema.Array(NegativeKeyword)),
+  }).annotate({ identifier: "BulkEditNegativeKeywordsResponse" });
 
 export interface YoutubeAndPartnersInventorySourceConfig {
   /** Optional. Whether to target inventory on YouTube. This includes both search, channels and videos. */
@@ -5047,16 +4384,12 @@ export interface YoutubeAndPartnersInventorySourceConfig {
   includeYoutubeVideoPartners?: boolean;
 }
 
-export const YoutubeAndPartnersInventorySourceConfig: Schema.Schema<YoutubeAndPartnersInventorySourceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      includeYoutube: Schema.optional(Schema.Boolean),
-      includeGoogleTv: Schema.optional(Schema.Boolean),
-      includeYoutubeVideoPartners: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "YoutubeAndPartnersInventorySourceConfig",
-  }) as any as Schema.Schema<YoutubeAndPartnersInventorySourceConfig>;
+export const YoutubeAndPartnersInventorySourceConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    includeYoutube: Schema.optional(Schema.Boolean),
+    includeGoogleTv: Schema.optional(Schema.Boolean),
+    includeYoutubeVideoPartners: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "YoutubeAndPartnersInventorySourceConfig" });
 
 export interface VideoAdSequenceStep {
   /** The interaction on the previous step that will lead the viewer to this step. The first step does not have interaction_type. */
@@ -5075,17 +4408,12 @@ export interface VideoAdSequenceStep {
   adGroupId?: string;
 }
 
-export const VideoAdSequenceStep: Schema.Schema<VideoAdSequenceStep> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      interactionType: Schema.optional(Schema.String),
-      previousStepId: Schema.optional(Schema.String),
-      stepId: Schema.optional(Schema.String),
-      adGroupId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VideoAdSequenceStep",
-  }) as any as Schema.Schema<VideoAdSequenceStep>;
+export const VideoAdSequenceStep = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  interactionType: Schema.optional(Schema.String),
+  previousStepId: Schema.optional(Schema.String),
+  stepId: Schema.optional(Schema.String),
+  adGroupId: Schema.optional(Schema.String),
+}).annotate({ identifier: "VideoAdSequenceStep" });
 
 export interface VideoAdSequenceSettings {
   /** The minimum time interval before the same user sees this sequence again. */
@@ -5098,15 +4426,11 @@ export interface VideoAdSequenceSettings {
   steps?: Array<VideoAdSequenceStep>;
 }
 
-export const VideoAdSequenceSettings: Schema.Schema<VideoAdSequenceSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      minimumDuration: Schema.optional(Schema.String),
-      steps: Schema.optional(Schema.Array(VideoAdSequenceStep)),
-    }),
-  ).annotate({
-    identifier: "VideoAdSequenceSettings",
-  }) as any as Schema.Schema<VideoAdSequenceSettings>;
+export const VideoAdSequenceSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    minimumDuration: Schema.optional(Schema.String),
+    steps: Schema.optional(Schema.Array(VideoAdSequenceStep)),
+  }).annotate({ identifier: "VideoAdSequenceSettings" });
 
 export interface VideoAdInventoryControl {
   /** Optional. Whether ads can serve as in-stream format. */
@@ -5117,16 +4441,12 @@ export interface VideoAdInventoryControl {
   allowShorts?: boolean;
 }
 
-export const VideoAdInventoryControl: Schema.Schema<VideoAdInventoryControl> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      allowInStream: Schema.optional(Schema.Boolean),
-      allowInFeed: Schema.optional(Schema.Boolean),
-      allowShorts: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "VideoAdInventoryControl",
-  }) as any as Schema.Schema<VideoAdInventoryControl>;
+export const VideoAdInventoryControl =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allowInStream: Schema.optional(Schema.Boolean),
+    allowInFeed: Schema.optional(Schema.Boolean),
+    allowShorts: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "VideoAdInventoryControl" });
 
 export interface ThirdPartyVendorConfig {
   /** The third-party measurement vendor. */
@@ -5157,15 +4477,12 @@ export interface ThirdPartyVendorConfig {
   placementId?: string;
 }
 
-export const ThirdPartyVendorConfig: Schema.Schema<ThirdPartyVendorConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      vendor: Schema.optional(Schema.String),
-      placementId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ThirdPartyVendorConfig",
-  }) as any as Schema.Schema<ThirdPartyVendorConfig>;
+export const ThirdPartyVendorConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    vendor: Schema.optional(Schema.String),
+    placementId: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ThirdPartyVendorConfig" });
 
 export interface ThirdPartyMeasurementConfigs {
   /** Optional. The third-party vendors measuring brand safety. The following third-party vendors are applicable: * `THIRD_PARTY_VENDOR_ZEFR` * `THIRD_PARTY_VENDOR_DOUBLE_VERIFY` * `THIRD_PARTY_VENDOR_INTEGRAL_AD_SCIENCE` */
@@ -5178,23 +4495,19 @@ export interface ThirdPartyMeasurementConfigs {
   viewabilityVendorConfigs?: Array<ThirdPartyVendorConfig>;
 }
 
-export const ThirdPartyMeasurementConfigs: Schema.Schema<ThirdPartyMeasurementConfigs> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      brandSafetyVendorConfigs: Schema.optional(
-        Schema.Array(ThirdPartyVendorConfig),
-      ),
-      reachVendorConfigs: Schema.optional(Schema.Array(ThirdPartyVendorConfig)),
-      brandLiftVendorConfigs: Schema.optional(
-        Schema.Array(ThirdPartyVendorConfig),
-      ),
-      viewabilityVendorConfigs: Schema.optional(
-        Schema.Array(ThirdPartyVendorConfig),
-      ),
-    }),
-  ).annotate({
-    identifier: "ThirdPartyMeasurementConfigs",
-  }) as any as Schema.Schema<ThirdPartyMeasurementConfigs>;
+export const ThirdPartyMeasurementConfigs =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    brandSafetyVendorConfigs: Schema.optional(
+      Schema.Array(ThirdPartyVendorConfig),
+    ),
+    reachVendorConfigs: Schema.optional(Schema.Array(ThirdPartyVendorConfig)),
+    brandLiftVendorConfigs: Schema.optional(
+      Schema.Array(ThirdPartyVendorConfig),
+    ),
+    viewabilityVendorConfigs: Schema.optional(
+      Schema.Array(ThirdPartyVendorConfig),
+    ),
+  }).annotate({ identifier: "ThirdPartyMeasurementConfigs" });
 
 export interface TargetFrequency {
   /** The unit of time in which the target frequency will be applied. The following time unit is applicable: * `TIME_UNIT_WEEKS` */
@@ -5213,16 +4526,11 @@ export interface TargetFrequency {
   timeUnitCount?: number;
 }
 
-export const TargetFrequency: Schema.Schema<TargetFrequency> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      timeUnit: Schema.optional(Schema.String),
-      targetCount: Schema.optional(Schema.String),
-      timeUnitCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "TargetFrequency",
-  }) as any as Schema.Schema<TargetFrequency>;
+export const TargetFrequency = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  timeUnit: Schema.optional(Schema.String),
+  targetCount: Schema.optional(Schema.String),
+  timeUnitCount: Schema.optional(Schema.Number),
+}).annotate({ identifier: "TargetFrequency" });
 
 export interface YoutubeAndPartnersSettings {
   /** The view frequency cap settings of the line item. The max_views field in this settings object must be used if assigning a limited cap. */
@@ -5259,28 +4567,22 @@ export interface YoutubeAndPartnersSettings {
   relatedVideoIds?: Array<string>;
 }
 
-export const YoutubeAndPartnersSettings: Schema.Schema<YoutubeAndPartnersSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      viewFrequencyCap: Schema.optional(FrequencyCap),
-      inventorySourceSettings: Schema.optional(
-        YoutubeAndPartnersInventorySourceConfig,
-      ),
-      linkedMerchantId: Schema.optional(Schema.String),
-      videoAdSequenceSettings: Schema.optional(VideoAdSequenceSettings),
-      videoAdInventoryControl: Schema.optional(VideoAdInventoryControl),
-      contentCategory: Schema.optional(Schema.String),
-      leadFormId: Schema.optional(Schema.String),
-      thirdPartyMeasurementConfigs: Schema.optional(
-        ThirdPartyMeasurementConfigs,
-      ),
-      effectiveContentCategory: Schema.optional(Schema.String),
-      targetFrequency: Schema.optional(TargetFrequency),
-      relatedVideoIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "YoutubeAndPartnersSettings",
-  }) as any as Schema.Schema<YoutubeAndPartnersSettings>;
+export const YoutubeAndPartnersSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    viewFrequencyCap: Schema.optional(FrequencyCap),
+    inventorySourceSettings: Schema.optional(
+      YoutubeAndPartnersInventorySourceConfig,
+    ),
+    linkedMerchantId: Schema.optional(Schema.String),
+    videoAdSequenceSettings: Schema.optional(VideoAdSequenceSettings),
+    videoAdInventoryControl: Schema.optional(VideoAdInventoryControl),
+    contentCategory: Schema.optional(Schema.String),
+    leadFormId: Schema.optional(Schema.String),
+    thirdPartyMeasurementConfigs: Schema.optional(ThirdPartyMeasurementConfigs),
+    effectiveContentCategory: Schema.optional(Schema.String),
+    targetFrequency: Schema.optional(TargetFrequency),
+    relatedVideoIds: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "YoutubeAndPartnersSettings" });
 
 export interface RemarketingConfig {
   /** Output only. The ID of the advertiser. */
@@ -5289,15 +4591,10 @@ export interface RemarketingConfig {
   remarketingEnabled?: boolean;
 }
 
-export const RemarketingConfig: Schema.Schema<RemarketingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      advertiserId: Schema.optional(Schema.String),
-      remarketingEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "RemarketingConfig",
-  }) as any as Schema.Schema<RemarketingConfig>;
+export const RemarketingConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  advertiserId: Schema.optional(Schema.String),
+  remarketingEnabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "RemarketingConfig" });
 
 export interface FloodlightActivity {
   /** Output only. IDs of the advertisers that have access to the parent Floodlight group. Only advertisers under the provided partner ID will be listed in this field. */
@@ -5322,21 +4619,16 @@ export interface FloodlightActivity {
   sslRequired?: boolean;
 }
 
-export const FloodlightActivity: Schema.Schema<FloodlightActivity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      advertiserIds: Schema.optional(Schema.Array(Schema.String)),
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      floodlightGroupId: Schema.optional(Schema.String),
-      remarketingConfigs: Schema.optional(Schema.Array(RemarketingConfig)),
-      floodlightActivityId: Schema.optional(Schema.String),
-      servingStatus: Schema.optional(Schema.String),
-      sslRequired: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "FloodlightActivity",
-  }) as any as Schema.Schema<FloodlightActivity>;
+export const FloodlightActivity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  advertiserIds: Schema.optional(Schema.Array(Schema.String)),
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  floodlightGroupId: Schema.optional(Schema.String),
+  remarketingConfigs: Schema.optional(Schema.Array(RemarketingConfig)),
+  floodlightActivityId: Schema.optional(Schema.String),
+  servingStatus: Schema.optional(Schema.String),
+  sslRequired: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "FloodlightActivity" });
 
 export interface Kpi {
   /** A KPI string, which can be empty. Must be UTF-8 encoded with a length of no more than 100 characters. Applicable when kpi_type is `KPI_TYPE_OTHER`. */
@@ -5373,30 +4665,22 @@ export interface Kpi {
   kpiAlgorithmId?: string;
 }
 
-export const Kpi: Schema.Schema<Kpi> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kpiString: Schema.optional(Schema.String),
-      kpiPercentageMicros: Schema.optional(Schema.String),
-      kpiAmountMicros: Schema.optional(Schema.String),
-      kpiType: Schema.optional(Schema.String),
-      kpiAlgorithmId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Kpi" }) as any as Schema.Schema<Kpi>;
+export const Kpi = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kpiString: Schema.optional(Schema.String),
+  kpiPercentageMicros: Schema.optional(Schema.String),
+  kpiAmountMicros: Schema.optional(Schema.String),
+  kpiType: Schema.optional(Schema.String),
+  kpiAlgorithmId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Kpi" });
 
 export interface YoutubeVideoAsset {
   /** Required. The YouTube video id of the asset. This is the 11 char string value used in the YouTube video URL. */
   youtubeVideoId?: string;
 }
 
-export const YoutubeVideoAsset: Schema.Schema<YoutubeVideoAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      youtubeVideoId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "YoutubeVideoAsset",
-  }) as any as Schema.Schema<YoutubeVideoAsset>;
+export const YoutubeVideoAsset = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  youtubeVideoId: Schema.optional(Schema.String),
+}).annotate({ identifier: "YoutubeVideoAsset" });
 
 export interface AssignedInventorySource {
   /** Output only. The resource name of the assigned inventory source. */
@@ -5407,16 +4691,12 @@ export interface AssignedInventorySource {
   inventorySourceId?: string;
 }
 
-export const AssignedInventorySource: Schema.Schema<AssignedInventorySource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      assignedInventorySourceId: Schema.optional(Schema.String),
-      inventorySourceId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AssignedInventorySource",
-  }) as any as Schema.Schema<AssignedInventorySource>;
+export const AssignedInventorySource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    assignedInventorySourceId: Schema.optional(Schema.String),
+    inventorySourceId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AssignedInventorySource" });
 
 export interface BulkEditAssignedInventorySourcesRequest {
   /** The ID of the partner that owns the inventory source group. Only this partner has write access to these assigned inventory sources. */
@@ -5429,21 +4709,17 @@ export interface BulkEditAssignedInventorySourcesRequest {
   createdAssignedInventorySources?: Array<AssignedInventorySource>;
 }
 
-export const BulkEditAssignedInventorySourcesRequest: Schema.Schema<BulkEditAssignedInventorySourcesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      partnerId: Schema.optional(Schema.String),
-      deletedAssignedInventorySources: Schema.optional(
-        Schema.Array(Schema.String),
-      ),
-      advertiserId: Schema.optional(Schema.String),
-      createdAssignedInventorySources: Schema.optional(
-        Schema.Array(AssignedInventorySource),
-      ),
-    }),
-  ).annotate({
-    identifier: "BulkEditAssignedInventorySourcesRequest",
-  }) as any as Schema.Schema<BulkEditAssignedInventorySourcesRequest>;
+export const BulkEditAssignedInventorySourcesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    partnerId: Schema.optional(Schema.String),
+    deletedAssignedInventorySources: Schema.optional(
+      Schema.Array(Schema.String),
+    ),
+    advertiserId: Schema.optional(Schema.String),
+    createdAssignedInventorySources: Schema.optional(
+      Schema.Array(AssignedInventorySource),
+    ),
+  }).annotate({ identifier: "BulkEditAssignedInventorySourcesRequest" });
 
 export interface AlgorithmRulesFloodlightActivityConversionSignal {
   /** Required. The type of conversions to be used in impression value computation, for example, post-click conversions. */
@@ -5465,16 +4741,14 @@ export interface AlgorithmRulesFloodlightActivityConversionSignal {
     | (string & {});
 }
 
-export const AlgorithmRulesFloodlightActivityConversionSignal: Schema.Schema<AlgorithmRulesFloodlightActivityConversionSignal> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conversionCounting: Schema.optional(Schema.String),
-      floodlightActivityId: Schema.optional(Schema.String),
-      countingMethod: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const AlgorithmRulesFloodlightActivityConversionSignal =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conversionCounting: Schema.optional(Schema.String),
+    floodlightActivityId: Schema.optional(Schema.String),
+    countingMethod: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "AlgorithmRulesFloodlightActivityConversionSignal",
-  }) as any as Schema.Schema<AlgorithmRulesFloodlightActivityConversionSignal>;
+  });
 
 export interface AlgorithmRulesSignalValue {
   /** Signal based on active views. Only `TIME_ON_SCREEN` is supported. This field is only supported for allowlisted partners. */
@@ -5493,18 +4767,14 @@ export interface AlgorithmRulesSignalValue {
   floodlightActivityConversionSignal?: AlgorithmRulesFloodlightActivityConversionSignal;
 }
 
-export const AlgorithmRulesSignalValue: Schema.Schema<AlgorithmRulesSignalValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      activeViewSignal: Schema.optional(Schema.String),
-      number: Schema.optional(Schema.Number),
-      floodlightActivityConversionSignal: Schema.optional(
-        AlgorithmRulesFloodlightActivityConversionSignal,
-      ),
-    }),
-  ).annotate({
-    identifier: "AlgorithmRulesSignalValue",
-  }) as any as Schema.Schema<AlgorithmRulesSignalValue>;
+export const AlgorithmRulesSignalValue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    activeViewSignal: Schema.optional(Schema.String),
+    number: Schema.optional(Schema.Number),
+    floodlightActivityConversionSignal: Schema.optional(
+      AlgorithmRulesFloodlightActivityConversionSignal,
+    ),
+  }).annotate({ identifier: "AlgorithmRulesSignalValue" });
 
 export interface DayAndTime {
   /** Required. The mechanism used to determine the relevant timezone. */
@@ -5528,14 +4798,11 @@ export interface DayAndTime {
   hourOfDay?: number;
 }
 
-export const DayAndTime: Schema.Schema<DayAndTime> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      timeZoneResolution: Schema.optional(Schema.String),
-      dayOfWeek: Schema.optional(Schema.String),
-      hourOfDay: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "DayAndTime" }) as any as Schema.Schema<DayAndTime>;
+export const DayAndTime = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  timeZoneResolution: Schema.optional(Schema.String),
+  dayOfWeek: Schema.optional(Schema.String),
+  hourOfDay: Schema.optional(Schema.Number),
+}).annotate({ identifier: "DayAndTime" });
 
 export interface AlgorithmRulesComparisonValue {
   /** Device type value. */
@@ -5695,27 +4962,23 @@ export interface AlgorithmRulesComparisonValue {
   creativeDimensionValue?: Dimensions;
 }
 
-export const AlgorithmRulesComparisonValue: Schema.Schema<AlgorithmRulesComparisonValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deviceTypeValue: Schema.optional(Schema.String),
-      onScreenPositionValue: Schema.optional(Schema.String),
-      int64Value: Schema.optional(Schema.String),
-      environmentValue: Schema.optional(Schema.String),
-      contentDurationValue: Schema.optional(Schema.String),
-      doubleValue: Schema.optional(Schema.Number),
-      contentGenreIdValue: Schema.optional(Schema.String),
-      boolValue: Schema.optional(Schema.Boolean),
-      exchangeValue: Schema.optional(Schema.String),
-      videoPlayerSizeValue: Schema.optional(Schema.String),
-      stringValue: Schema.optional(Schema.String),
-      dayAndTimeValue: Schema.optional(DayAndTime),
-      contentStreamTypeValue: Schema.optional(Schema.String),
-      creativeDimensionValue: Schema.optional(Dimensions),
-    }),
-  ).annotate({
-    identifier: "AlgorithmRulesComparisonValue",
-  }) as any as Schema.Schema<AlgorithmRulesComparisonValue>;
+export const AlgorithmRulesComparisonValue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deviceTypeValue: Schema.optional(Schema.String),
+    onScreenPositionValue: Schema.optional(Schema.String),
+    int64Value: Schema.optional(Schema.String),
+    environmentValue: Schema.optional(Schema.String),
+    contentDurationValue: Schema.optional(Schema.String),
+    doubleValue: Schema.optional(Schema.Number),
+    contentGenreIdValue: Schema.optional(Schema.String),
+    boolValue: Schema.optional(Schema.Boolean),
+    exchangeValue: Schema.optional(Schema.String),
+    videoPlayerSizeValue: Schema.optional(Schema.String),
+    stringValue: Schema.optional(Schema.String),
+    dayAndTimeValue: Schema.optional(DayAndTime),
+    contentStreamTypeValue: Schema.optional(Schema.String),
+    creativeDimensionValue: Schema.optional(Dimensions),
+  }).annotate({ identifier: "AlgorithmRulesComparisonValue" });
 
 export interface AlgorithmRulesSignal {
   /** Signal based on impressions. */
@@ -5750,16 +5013,11 @@ export interface AlgorithmRulesSignal {
     | (string & {});
 }
 
-export const AlgorithmRulesSignal: Schema.Schema<AlgorithmRulesSignal> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      impressionSignal: Schema.optional(Schema.String),
-      clickSignal: Schema.optional(Schema.String),
-      activeViewSignal: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AlgorithmRulesSignal",
-  }) as any as Schema.Schema<AlgorithmRulesSignal>;
+export const AlgorithmRulesSignal = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  impressionSignal: Schema.optional(Schema.String),
+  clickSignal: Schema.optional(Schema.String),
+  activeViewSignal: Schema.optional(Schema.String),
+}).annotate({ identifier: "AlgorithmRulesSignal" });
 
 export interface AlgorithmRulesSignalComparison {
   /** Value to compare signal to. */
@@ -5778,16 +5036,12 @@ export interface AlgorithmRulesSignalComparison {
   signal?: AlgorithmRulesSignal;
 }
 
-export const AlgorithmRulesSignalComparison: Schema.Schema<AlgorithmRulesSignalComparison> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      comparisonValue: Schema.optional(AlgorithmRulesComparisonValue),
-      comparisonOperator: Schema.optional(Schema.String),
-      signal: Schema.optional(AlgorithmRulesSignal),
-    }),
-  ).annotate({
-    identifier: "AlgorithmRulesSignalComparison",
-  }) as any as Schema.Schema<AlgorithmRulesSignalComparison>;
+export const AlgorithmRulesSignalComparison =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    comparisonValue: Schema.optional(AlgorithmRulesComparisonValue),
+    comparisonOperator: Schema.optional(Schema.String),
+    signal: Schema.optional(AlgorithmRulesSignal),
+  }).annotate({ identifier: "AlgorithmRulesSignalComparison" });
 
 export interface AlgorithmRulesRuleCondition {
   /** The value returned if the `signalComparisons` condition evaluates to `TRUE`. */
@@ -5796,17 +5050,13 @@ export interface AlgorithmRulesRuleCondition {
   signalComparisons?: Array<AlgorithmRulesSignalComparison>;
 }
 
-export const AlgorithmRulesRuleCondition: Schema.Schema<AlgorithmRulesRuleCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      returnValue: Schema.optional(AlgorithmRulesSignalValue),
-      signalComparisons: Schema.optional(
-        Schema.Array(AlgorithmRulesSignalComparison),
-      ),
-    }),
-  ).annotate({
-    identifier: "AlgorithmRulesRuleCondition",
-  }) as any as Schema.Schema<AlgorithmRulesRuleCondition>;
+export const AlgorithmRulesRuleCondition =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    returnValue: Schema.optional(AlgorithmRulesSignalValue),
+    signalComparisons: Schema.optional(
+      Schema.Array(AlgorithmRulesSignalComparison),
+    ),
+  }).annotate({ identifier: "AlgorithmRulesRuleCondition" });
 
 export interface AlgorithmRulesRule {
   /** List of conditions in this rule. The criteria among conditions should be mutually exclusive. */
@@ -5815,15 +5065,10 @@ export interface AlgorithmRulesRule {
   defaultReturnValue?: AlgorithmRulesSignalValue;
 }
 
-export const AlgorithmRulesRule: Schema.Schema<AlgorithmRulesRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conditions: Schema.optional(Schema.Array(AlgorithmRulesRuleCondition)),
-      defaultReturnValue: Schema.optional(AlgorithmRulesSignalValue),
-    }),
-  ).annotate({
-    identifier: "AlgorithmRulesRule",
-  }) as any as Schema.Schema<AlgorithmRulesRule>;
+export const AlgorithmRulesRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  conditions: Schema.optional(Schema.Array(AlgorithmRulesRuleCondition)),
+  defaultReturnValue: Schema.optional(AlgorithmRulesSignalValue),
+}).annotate({ identifier: "AlgorithmRulesRule" });
 
 export interface AlgorithmRulesRuleset {
   /** How to aggregate values of evaluated rules. */
@@ -5839,16 +5084,11 @@ export interface AlgorithmRulesRuleset {
   rules?: Array<AlgorithmRulesRule>;
 }
 
-export const AlgorithmRulesRuleset: Schema.Schema<AlgorithmRulesRuleset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      aggregationType: Schema.optional(Schema.String),
-      maxValue: Schema.optional(Schema.Number),
-      rules: Schema.optional(Schema.Array(AlgorithmRulesRule)),
-    }),
-  ).annotate({
-    identifier: "AlgorithmRulesRuleset",
-  }) as any as Schema.Schema<AlgorithmRulesRuleset>;
+export const AlgorithmRulesRuleset = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  aggregationType: Schema.optional(Schema.String),
+  maxValue: Schema.optional(Schema.Number),
+  rules: Schema.optional(Schema.Array(AlgorithmRulesRule)),
+}).annotate({ identifier: "AlgorithmRulesRuleset" });
 
 export interface AlgorithmRules {
   /** Attribution model for the algorithm. This field is only supported for allowlisted partners. */
@@ -5859,30 +5099,21 @@ export interface AlgorithmRules {
   postImpressionSignalRuleset?: AlgorithmRulesRuleset;
 }
 
-export const AlgorithmRules: Schema.Schema<AlgorithmRules> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      attributionModelId: Schema.optional(Schema.String),
-      impressionSignalRuleset: Schema.optional(AlgorithmRulesRuleset),
-      postImpressionSignalRuleset: Schema.optional(AlgorithmRulesRuleset),
-    }),
-  ).annotate({
-    identifier: "AlgorithmRules",
-  }) as any as Schema.Schema<AlgorithmRules>;
+export const AlgorithmRules = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  attributionModelId: Schema.optional(Schema.String),
+  impressionSignalRuleset: Schema.optional(AlgorithmRulesRuleset),
+  postImpressionSignalRuleset: Schema.optional(AlgorithmRulesRuleset),
+}).annotate({ identifier: "AlgorithmRules" });
 
 export interface PartnerDataAccessConfig {
   /** Structured Data Files (SDF) settings for the partner. The SDF configuration for the partner. */
   sdfConfig?: SdfConfig;
 }
 
-export const PartnerDataAccessConfig: Schema.Schema<PartnerDataAccessConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sdfConfig: Schema.optional(SdfConfig),
-    }),
-  ).annotate({
-    identifier: "PartnerDataAccessConfig",
-  }) as any as Schema.Schema<PartnerDataAccessConfig>;
+export const PartnerDataAccessConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sdfConfig: Schema.optional(SdfConfig),
+  }).annotate({ identifier: "PartnerDataAccessConfig" });
 
 export interface PartnerGeneralConfig {
   /** Immutable. The standard TZ database name of the partner's time zone. For example, `America/New_York`. See more at: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones */
@@ -5891,15 +5122,10 @@ export interface PartnerGeneralConfig {
   currencyCode?: string;
 }
 
-export const PartnerGeneralConfig: Schema.Schema<PartnerGeneralConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      timeZone: Schema.optional(Schema.String),
-      currencyCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PartnerGeneralConfig",
-  }) as any as Schema.Schema<PartnerGeneralConfig>;
+export const PartnerGeneralConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  timeZone: Schema.optional(Schema.String),
+  currencyCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "PartnerGeneralConfig" });
 
 export interface ExchangeConfigEnabledExchange {
   /** The enabled exchange. */
@@ -6002,47 +5228,33 @@ export interface ExchangeConfigEnabledExchange {
   seatId?: string;
 }
 
-export const ExchangeConfigEnabledExchange: Schema.Schema<ExchangeConfigEnabledExchange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      exchange: Schema.optional(Schema.String),
-      googleAdManagerAgencyId: Schema.optional(Schema.String),
-      googleAdManagerBuyerNetworkId: Schema.optional(Schema.String),
-      seatId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ExchangeConfigEnabledExchange",
-  }) as any as Schema.Schema<ExchangeConfigEnabledExchange>;
+export const ExchangeConfigEnabledExchange =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    exchange: Schema.optional(Schema.String),
+    googleAdManagerAgencyId: Schema.optional(Schema.String),
+    googleAdManagerBuyerNetworkId: Schema.optional(Schema.String),
+    seatId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ExchangeConfigEnabledExchange" });
 
 export interface ExchangeConfig {
   /** All enabled exchanges in the partner. Duplicate enabled exchanges will be ignored. */
   enabledExchanges?: Array<ExchangeConfigEnabledExchange>;
 }
 
-export const ExchangeConfig: Schema.Schema<ExchangeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabledExchanges: Schema.optional(
-        Schema.Array(ExchangeConfigEnabledExchange),
-      ),
-    }),
-  ).annotate({
-    identifier: "ExchangeConfig",
-  }) as any as Schema.Schema<ExchangeConfig>;
+export const ExchangeConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabledExchanges: Schema.optional(
+    Schema.Array(ExchangeConfigEnabledExchange),
+  ),
+}).annotate({ identifier: "ExchangeConfig" });
 
 export interface PartnerBillingConfig {
   /** The ID of a partner default billing profile. */
   billingProfileId?: string;
 }
 
-export const PartnerBillingConfig: Schema.Schema<PartnerBillingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      billingProfileId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PartnerBillingConfig",
-  }) as any as Schema.Schema<PartnerBillingConfig>;
+export const PartnerBillingConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  billingProfileId: Schema.optional(Schema.String),
+}).annotate({ identifier: "PartnerBillingConfig" });
 
 export interface MeasurementConfig {
   /** Whether or not to report DV360 cost to CM360. */
@@ -6051,29 +5263,19 @@ export interface MeasurementConfig {
   dv360ToCmDataSharingEnabled?: boolean;
 }
 
-export const MeasurementConfig: Schema.Schema<MeasurementConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dv360ToCmCostReportingEnabled: Schema.optional(Schema.Boolean),
-      dv360ToCmDataSharingEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "MeasurementConfig",
-  }) as any as Schema.Schema<MeasurementConfig>;
+export const MeasurementConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dv360ToCmCostReportingEnabled: Schema.optional(Schema.Boolean),
+  dv360ToCmDataSharingEnabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "MeasurementConfig" });
 
 export interface PartnerAdServerConfig {
   /** Measurement settings of a partner. */
   measurementConfig?: MeasurementConfig;
 }
 
-export const PartnerAdServerConfig: Schema.Schema<PartnerAdServerConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      measurementConfig: Schema.optional(MeasurementConfig),
-    }),
-  ).annotate({
-    identifier: "PartnerAdServerConfig",
-  }) as any as Schema.Schema<PartnerAdServerConfig>;
+export const PartnerAdServerConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  measurementConfig: Schema.optional(MeasurementConfig),
+}).annotate({ identifier: "PartnerAdServerConfig" });
 
 export interface Partner {
   /** Settings that control how partner data may be accessed. */
@@ -6105,21 +5307,18 @@ export interface Partner {
   name?: string;
 }
 
-export const Partner: Schema.Schema<Partner> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataAccessConfig: Schema.optional(PartnerDataAccessConfig),
-      partnerId: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      generalConfig: Schema.optional(PartnerGeneralConfig),
-      entityStatus: Schema.optional(Schema.String),
-      exchangeConfig: Schema.optional(ExchangeConfig),
-      billingConfig: Schema.optional(PartnerBillingConfig),
-      adServerConfig: Schema.optional(PartnerAdServerConfig),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Partner" }) as any as Schema.Schema<Partner>;
+export const Partner = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dataAccessConfig: Schema.optional(PartnerDataAccessConfig),
+  partnerId: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  generalConfig: Schema.optional(PartnerGeneralConfig),
+  entityStatus: Schema.optional(Schema.String),
+  exchangeConfig: Schema.optional(ExchangeConfig),
+  billingConfig: Schema.optional(PartnerBillingConfig),
+  adServerConfig: Schema.optional(PartnerAdServerConfig),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Partner" });
 
 export interface UploadAdAssetRequest {
   /** Required. The filename of the ad asset, including the file extension. The filename must be UTF-8 encoded with a maximum size of 240 bytes. */
@@ -6132,15 +5331,10 @@ export interface UploadAdAssetRequest {
     | (string & {});
 }
 
-export const UploadAdAssetRequest: Schema.Schema<UploadAdAssetRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filename: Schema.optional(Schema.String),
-      adAssetType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UploadAdAssetRequest",
-  }) as any as Schema.Schema<UploadAdAssetRequest>;
+export const UploadAdAssetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  filename: Schema.optional(Schema.String),
+  adAssetType: Schema.optional(Schema.String),
+}).annotate({ identifier: "UploadAdAssetRequest" });
 
 export interface YoutubeAndPartnersBiddingStrategy {
   /** The value used by the bidding strategy. When the bidding strategy is assigned at the line item level, this field is only applicable for the following strategy types: * `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPA` * `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_ROAS` * `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_RESERVE_SHARE_OF_VOICE` When the bidding strategy is assigned at the ad group level, this field is only applicable for the following strategy types: * `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MANUAL_CPM` * `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_MANUAL_CPV` * `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPA` * `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_CPM` * `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_RESERVE_CPM` * `YOUTUBE_AND_PARTNERS_BIDDING_STRATEGY_TYPE_TARGET_ROAS` If not using an applicable strategy, the value of this field will be 0. */
@@ -6169,17 +5363,13 @@ export interface YoutubeAndPartnersBiddingStrategy {
     | (string & {});
 }
 
-export const YoutubeAndPartnersBiddingStrategy: Schema.Schema<YoutubeAndPartnersBiddingStrategy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      adGroupEffectiveTargetCpaValue: Schema.optional(Schema.String),
-      adGroupEffectiveTargetCpaSource: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "YoutubeAndPartnersBiddingStrategy",
-  }) as any as Schema.Schema<YoutubeAndPartnersBiddingStrategy>;
+export const YoutubeAndPartnersBiddingStrategy =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    adGroupEffectiveTargetCpaValue: Schema.optional(Schema.String),
+    adGroupEffectiveTargetCpaSource: Schema.optional(Schema.String),
+  }).annotate({ identifier: "YoutubeAndPartnersBiddingStrategy" });
 
 export interface Consent {
   /** Represents consent for ad user data. */
@@ -6196,13 +5386,10 @@ export interface Consent {
     | (string & {});
 }
 
-export const Consent: Schema.Schema<Consent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      adUserData: Schema.optional(Schema.String),
-      adPersonalization: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Consent" }) as any as Schema.Schema<Consent>;
+export const Consent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  adUserData: Schema.optional(Schema.String),
+  adPersonalization: Schema.optional(Schema.String),
+}).annotate({ identifier: "Consent" });
 
 export interface MobileDeviceIdList {
   /** A list of mobile device IDs defining Customer Match audience members. The size of mobile_device_ids mustn't be greater than 500,000. */
@@ -6211,15 +5398,10 @@ export interface MobileDeviceIdList {
   consent?: Consent;
 }
 
-export const MobileDeviceIdList: Schema.Schema<MobileDeviceIdList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mobileDeviceIds: Schema.optional(Schema.Array(Schema.String)),
-      consent: Schema.optional(Consent),
-    }),
-  ).annotate({
-    identifier: "MobileDeviceIdList",
-  }) as any as Schema.Schema<MobileDeviceIdList>;
+export const MobileDeviceIdList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  mobileDeviceIds: Schema.optional(Schema.Array(Schema.String)),
+  consent: Schema.optional(Consent),
+}).annotate({ identifier: "MobileDeviceIdList" });
 
 export interface ListPartnerAssignedTargetingOptionsResponse {
   /** A token identifying the next page of results. This value should be specified as the pageToken in a subsequent ListPartnerAssignedTargetingOptionsRequest to fetch the next page of results. This token will be absent if there are no more assigned_targeting_options to return. */
@@ -6228,17 +5410,13 @@ export interface ListPartnerAssignedTargetingOptionsResponse {
   assignedTargetingOptions?: Array<AssignedTargetingOption>;
 }
 
-export const ListPartnerAssignedTargetingOptionsResponse: Schema.Schema<ListPartnerAssignedTargetingOptionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      assignedTargetingOptions: Schema.optional(
-        Schema.Array(AssignedTargetingOption),
-      ),
-    }),
-  ).annotate({
-    identifier: "ListPartnerAssignedTargetingOptionsResponse",
-  }) as any as Schema.Schema<ListPartnerAssignedTargetingOptionsResponse>;
+export const ListPartnerAssignedTargetingOptionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    assignedTargetingOptions: Schema.optional(
+      Schema.Array(AssignedTargetingOption),
+    ),
+  }).annotate({ identifier: "ListPartnerAssignedTargetingOptionsResponse" });
 
 export interface AdAsset {
   /** Output only. The ID of the ad asset. Referred to as the asset ID when assigned to an ad. */
@@ -6264,30 +5442,23 @@ export interface AdAsset {
     | (string & {});
 }
 
-export const AdAsset: Schema.Schema<AdAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      adAssetId: Schema.optional(Schema.String),
-      entityStatus: Schema.optional(Schema.String),
-      youtubeVideoAsset: Schema.optional(YoutubeVideoAsset),
-      name: Schema.optional(Schema.String),
-      adAssetType: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "AdAsset" }) as any as Schema.Schema<AdAsset>;
+export const AdAsset = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  adAssetId: Schema.optional(Schema.String),
+  entityStatus: Schema.optional(Schema.String),
+  youtubeVideoAsset: Schema.optional(YoutubeVideoAsset),
+  name: Schema.optional(Schema.String),
+  adAssetType: Schema.optional(Schema.String),
+}).annotate({ identifier: "AdAsset" });
 
 export interface BulkCreateAdAssetsRequest {
   /** Required. Ad assets to create. Only supports assets of AdAssetType `AD_ASSET_TYPE_YOUTUBE_VIDEO`. */
   adAssets?: Array<AdAsset>;
 }
 
-export const BulkCreateAdAssetsRequest: Schema.Schema<BulkCreateAdAssetsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      adAssets: Schema.optional(Schema.Array(AdAsset)),
-    }),
-  ).annotate({
-    identifier: "BulkCreateAdAssetsRequest",
-  }) as any as Schema.Schema<BulkCreateAdAssetsRequest>;
+export const BulkCreateAdAssetsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    adAssets: Schema.optional(Schema.Array(AdAsset)),
+  }).annotate({ identifier: "BulkCreateAdAssetsRequest" });
 
 export interface CustomList {
   /** Output only. The resource name of the custom list. */
@@ -6298,14 +5469,11 @@ export interface CustomList {
   customListId?: string;
 }
 
-export const CustomList: Schema.Schema<CustomList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      customListId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "CustomList" }) as any as Schema.Schema<CustomList>;
+export const CustomList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  customListId: Schema.optional(Schema.String),
+}).annotate({ identifier: "CustomList" });
 
 export interface Channel {
   /** The ID of the partner that owns the channel. */
@@ -6324,18 +5492,15 @@ export interface Channel {
   channelId?: string;
 }
 
-export const Channel: Schema.Schema<Channel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      partnerId: Schema.optional(Schema.String),
-      positivelyTargetedLineItemCount: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      negativelyTargetedLineItemCount: Schema.optional(Schema.String),
-      advertiserId: Schema.optional(Schema.String),
-      channelId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Channel" }) as any as Schema.Schema<Channel>;
+export const Channel = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  partnerId: Schema.optional(Schema.String),
+  positivelyTargetedLineItemCount: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  negativelyTargetedLineItemCount: Schema.optional(Schema.String),
+  advertiserId: Schema.optional(Schema.String),
+  channelId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Channel" });
 
 export interface ListAdAssetsResponse {
   /** The list of ad assets. The list will only contain assets of AdAssetType `AD_ASSET_TYPE_YOUTUBE_VIDEO`. This list will be absent if empty. */
@@ -6344,15 +5509,10 @@ export interface ListAdAssetsResponse {
   nextPageToken?: string;
 }
 
-export const ListAdAssetsResponse: Schema.Schema<ListAdAssetsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      adAssets: Schema.optional(Schema.Array(AdAsset)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAdAssetsResponse",
-  }) as any as Schema.Schema<ListAdAssetsResponse>;
+export const ListAdAssetsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  adAssets: Schema.optional(Schema.Array(AdAsset)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListAdAssetsResponse" });
 
 export interface IdFilter {
   /** Insertion Orders to download by ID. All IDs must belong to the same Advertiser or Partner specified in CreateSdfDownloadTaskRequest. */
@@ -6373,33 +5533,25 @@ export interface IdFilter {
   mediaProductIds?: Array<string>;
 }
 
-export const IdFilter: Schema.Schema<IdFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      insertionOrderIds: Schema.optional(Schema.Array(Schema.String)),
-      lineItemIds: Schema.optional(Schema.Array(Schema.String)),
-      adGroupIds: Schema.optional(Schema.Array(Schema.String)),
-      campaignIds: Schema.optional(Schema.Array(Schema.String)),
-      adGroupAdIds: Schema.optional(Schema.Array(Schema.String)),
-      lineItemQaIds: Schema.optional(Schema.Array(Schema.String)),
-      adGroupQaIds: Schema.optional(Schema.Array(Schema.String)),
-      mediaProductIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "IdFilter" }) as any as Schema.Schema<IdFilter>;
+export const IdFilter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  insertionOrderIds: Schema.optional(Schema.Array(Schema.String)),
+  lineItemIds: Schema.optional(Schema.Array(Schema.String)),
+  adGroupIds: Schema.optional(Schema.Array(Schema.String)),
+  campaignIds: Schema.optional(Schema.Array(Schema.String)),
+  adGroupAdIds: Schema.optional(Schema.Array(Schema.String)),
+  lineItemQaIds: Schema.optional(Schema.Array(Schema.String)),
+  adGroupQaIds: Schema.optional(Schema.Array(Schema.String)),
+  mediaProductIds: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "IdFilter" });
 
 export interface InventorySourceFilter {
   /** Inventory Sources to download by ID. All IDs must belong to the same Advertiser or Partner specified in CreateSdfDownloadTaskRequest. Leave empty to download all Inventory Sources for the selected Advertiser or Partner. */
   inventorySourceIds?: Array<string>;
 }
 
-export const InventorySourceFilter: Schema.Schema<InventorySourceFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inventorySourceIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "InventorySourceFilter",
-  }) as any as Schema.Schema<InventorySourceFilter>;
+export const InventorySourceFilter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  inventorySourceIds: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "InventorySourceFilter" });
 
 export interface CampaignGoal {
   /** Required. The performance goal of the campaign. Acceptable values for performance_goal_type are: * `PERFORMANCE_GOAL_TYPE_CPM` * `PERFORMANCE_GOAL_TYPE_CPC` * `PERFORMANCE_GOAL_TYPE_CPA` * `PERFORMANCE_GOAL_TYPE_CPIAVC` * `PERFORMANCE_GOAL_TYPE_CTR` * `PERFORMANCE_GOAL_TYPE_VIEWABILITY` * `PERFORMANCE_GOAL_TYPE_OTHER` */
@@ -6414,15 +5566,10 @@ export interface CampaignGoal {
     | (string & {});
 }
 
-export const CampaignGoal: Schema.Schema<CampaignGoal> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      performanceGoal: Schema.optional(PerformanceGoal),
-      campaignGoalType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CampaignGoal",
-  }) as any as Schema.Schema<CampaignGoal>;
+export const CampaignGoal = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  performanceGoal: Schema.optional(PerformanceGoal),
+  campaignGoalType: Schema.optional(Schema.String),
+}).annotate({ identifier: "CampaignGoal" });
 
 export interface Campaign {
   /** Required. The goal of the campaign. */
@@ -6454,21 +5601,18 @@ export interface Campaign {
   campaignBudgets?: Array<CampaignBudget>;
 }
 
-export const Campaign: Schema.Schema<Campaign> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      campaignGoal: Schema.optional(CampaignGoal),
-      advertiserId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      entityStatus: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      campaignFlight: Schema.optional(CampaignFlight),
-      campaignId: Schema.optional(Schema.String),
-      frequencyCap: Schema.optional(FrequencyCap),
-      displayName: Schema.optional(Schema.String),
-      campaignBudgets: Schema.optional(Schema.Array(CampaignBudget)),
-    }),
-  ).annotate({ identifier: "Campaign" }) as any as Schema.Schema<Campaign>;
+export const Campaign = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  campaignGoal: Schema.optional(CampaignGoal),
+  advertiserId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  entityStatus: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  campaignFlight: Schema.optional(CampaignFlight),
+  campaignId: Schema.optional(Schema.String),
+  frequencyCap: Schema.optional(FrequencyCap),
+  displayName: Schema.optional(Schema.String),
+  campaignBudgets: Schema.optional(Schema.Array(CampaignBudget)),
+}).annotate({ identifier: "Campaign" });
 
 export interface ListCampaignsResponse {
   /** The list of campaigns. This list will be absent if empty. */
@@ -6477,15 +5621,10 @@ export interface ListCampaignsResponse {
   nextPageToken?: string;
 }
 
-export const ListCampaignsResponse: Schema.Schema<ListCampaignsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      campaigns: Schema.optional(Schema.Array(Campaign)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListCampaignsResponse",
-  }) as any as Schema.Schema<ListCampaignsResponse>;
+export const ListCampaignsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  campaigns: Schema.optional(Schema.Array(Campaign)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListCampaignsResponse" });
 
 export interface SelectedInventories {
   /** Whether the ad group is opted-in to YouTube shorts inventory. */
@@ -6502,19 +5641,14 @@ export interface SelectedInventories {
   allowGoogleDisplayNetwork?: boolean;
 }
 
-export const SelectedInventories: Schema.Schema<SelectedInventories> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      allowYoutubeShorts: Schema.optional(Schema.Boolean),
-      allowYoutubeFeed: Schema.optional(Schema.Boolean),
-      allowDiscover: Schema.optional(Schema.Boolean),
-      allowGmail: Schema.optional(Schema.Boolean),
-      allowYoutubeStream: Schema.optional(Schema.Boolean),
-      allowGoogleDisplayNetwork: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "SelectedInventories",
-  }) as any as Schema.Schema<SelectedInventories>;
+export const SelectedInventories = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  allowYoutubeShorts: Schema.optional(Schema.Boolean),
+  allowYoutubeFeed: Schema.optional(Schema.Boolean),
+  allowDiscover: Schema.optional(Schema.Boolean),
+  allowGmail: Schema.optional(Schema.Boolean),
+  allowYoutubeStream: Schema.optional(Schema.Boolean),
+  allowGoogleDisplayNetwork: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "SelectedInventories" });
 
 export interface AdGroupInventoryControl {
   /** The inventory strategy. */
@@ -6527,15 +5661,11 @@ export interface AdGroupInventoryControl {
   selectedInventories?: SelectedInventories;
 }
 
-export const AdGroupInventoryControl: Schema.Schema<AdGroupInventoryControl> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      adGroupInventoryStrategy: Schema.optional(Schema.String),
-      selectedInventories: Schema.optional(SelectedInventories),
-    }),
-  ).annotate({
-    identifier: "AdGroupInventoryControl",
-  }) as any as Schema.Schema<AdGroupInventoryControl>;
+export const AdGroupInventoryControl =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    adGroupInventoryStrategy: Schema.optional(Schema.String),
+    selectedInventories: Schema.optional(SelectedInventories),
+  }).annotate({ identifier: "AdGroupInventoryControl" });
 
 export interface DcmTrackingInfo {
   /** Required. The DCM placement id. */
@@ -6546,16 +5676,11 @@ export interface DcmTrackingInfo {
   trackingAdId?: string;
 }
 
-export const DcmTrackingInfo: Schema.Schema<DcmTrackingInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      placementId: Schema.optional(Schema.String),
-      creativeId: Schema.optional(Schema.String),
-      trackingAdId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DcmTrackingInfo",
-  }) as any as Schema.Schema<DcmTrackingInfo>;
+export const DcmTrackingInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  placementId: Schema.optional(Schema.String),
+  creativeId: Schema.optional(Schema.String),
+  trackingAdId: Schema.optional(Schema.String),
+}).annotate({ identifier: "DcmTrackingInfo" });
 
 export interface AssignedLocation {
   /** Required. The ID of the targeting option assigned to the location list. */
@@ -6566,30 +5691,21 @@ export interface AssignedLocation {
   assignedLocationId?: string;
 }
 
-export const AssignedLocation: Schema.Schema<AssignedLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetingOptionId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      assignedLocationId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AssignedLocation",
-  }) as any as Schema.Schema<AssignedLocation>;
+export const AssignedLocation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  targetingOptionId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  assignedLocationId: Schema.optional(Schema.String),
+}).annotate({ identifier: "AssignedLocation" });
 
 export interface BulkEditAssignedLocationsResponse {
   /** The list of assigned locations that have been successfully created. This list will be absent if empty. */
   assignedLocations?: Array<AssignedLocation>;
 }
 
-export const BulkEditAssignedLocationsResponse: Schema.Schema<BulkEditAssignedLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      assignedLocations: Schema.optional(Schema.Array(AssignedLocation)),
-    }),
-  ).annotate({
-    identifier: "BulkEditAssignedLocationsResponse",
-  }) as any as Schema.Schema<BulkEditAssignedLocationsResponse>;
+export const BulkEditAssignedLocationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    assignedLocations: Schema.optional(Schema.Array(AssignedLocation)),
+  }).annotate({ identifier: "BulkEditAssignedLocationsResponse" });
 
 export interface DemandGenSettings {
   /** Optional. The ID of the Merchant Center account used to provide a product feed. This Merchant Center account must already be linked to the advertiser. */
@@ -6600,18 +5716,11 @@ export interface DemandGenSettings {
   thirdPartyMeasurementConfigs?: ThirdPartyMeasurementConfigs;
 }
 
-export const DemandGenSettings: Schema.Schema<DemandGenSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      linkedMerchantId: Schema.optional(Schema.String),
-      geoLanguageTargetingEnabled: Schema.optional(Schema.Boolean),
-      thirdPartyMeasurementConfigs: Schema.optional(
-        ThirdPartyMeasurementConfigs,
-      ),
-    }),
-  ).annotate({
-    identifier: "DemandGenSettings",
-  }) as any as Schema.Schema<DemandGenSettings>;
+export const DemandGenSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  linkedMerchantId: Schema.optional(Schema.String),
+  geoLanguageTargetingEnabled: Schema.optional(Schema.Boolean),
+  thirdPartyMeasurementConfigs: Schema.optional(ThirdPartyMeasurementConfigs),
+}).annotate({ identifier: "DemandGenSettings" });
 
 export interface AdPolicyCriterionRestriction {
   /** Localized name for the country. May be empty. */
@@ -6620,15 +5729,11 @@ export interface AdPolicyCriterionRestriction {
   countryCriterionId?: string;
 }
 
-export const AdPolicyCriterionRestriction: Schema.Schema<AdPolicyCriterionRestriction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      countryLabel: Schema.optional(Schema.String),
-      countryCriterionId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AdPolicyCriterionRestriction",
-  }) as any as Schema.Schema<AdPolicyCriterionRestriction>;
+export const AdPolicyCriterionRestriction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    countryLabel: Schema.optional(Schema.String),
+    countryCriterionId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AdPolicyCriterionRestriction" });
 
 export interface AdPolicyTopicEvidenceRegionalRequirementsRegionalRequirementsEntry {
   /** The legal policy that is being violated. */
@@ -6637,18 +5742,16 @@ export interface AdPolicyTopicEvidenceRegionalRequirementsRegionalRequirementsEn
   countryRestrictions?: Array<AdPolicyCriterionRestriction>;
 }
 
-export const AdPolicyTopicEvidenceRegionalRequirementsRegionalRequirementsEntry: Schema.Schema<AdPolicyTopicEvidenceRegionalRequirementsRegionalRequirementsEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      legalPolicy: Schema.optional(Schema.String),
-      countryRestrictions: Schema.optional(
-        Schema.Array(AdPolicyCriterionRestriction),
-      ),
-    }),
-  ).annotate({
+export const AdPolicyTopicEvidenceRegionalRequirementsRegionalRequirementsEntry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    legalPolicy: Schema.optional(Schema.String),
+    countryRestrictions: Schema.optional(
+      Schema.Array(AdPolicyCriterionRestriction),
+    ),
+  }).annotate({
     identifier:
       "AdPolicyTopicEvidenceRegionalRequirementsRegionalRequirementsEntry",
-  }) as any as Schema.Schema<AdPolicyTopicEvidenceRegionalRequirementsRegionalRequirementsEntry>;
+  });
 
 export interface MaximizeSpendBidStrategy {
   /** The maximum average CPM that may be bid, in micros of the advertiser's currency. Must be greater than or equal to a billable unit of the given currency. For example, 1500000 represents 1.5 standard units of the currency. */
@@ -6671,17 +5774,13 @@ export interface MaximizeSpendBidStrategy {
   customBiddingAlgorithmId?: string;
 }
 
-export const MaximizeSpendBidStrategy: Schema.Schema<MaximizeSpendBidStrategy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      maxAverageCpmBidAmountMicros: Schema.optional(Schema.String),
-      performanceGoalType: Schema.optional(Schema.String),
-      raiseBidForDeals: Schema.optional(Schema.Boolean),
-      customBiddingAlgorithmId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MaximizeSpendBidStrategy",
-  }) as any as Schema.Schema<MaximizeSpendBidStrategy>;
+export const MaximizeSpendBidStrategy =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    maxAverageCpmBidAmountMicros: Schema.optional(Schema.String),
+    performanceGoalType: Schema.optional(Schema.String),
+    raiseBidForDeals: Schema.optional(Schema.Boolean),
+    customBiddingAlgorithmId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "MaximizeSpendBidStrategy" });
 
 export interface DemandGenBiddingStrategy {
   /** Optional. The value used by the bidding strategy. This can be set when assigned to line items or ad groups. This field is only applicable for the following strategy types: * `DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_CPA` * `DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_CPC` * `DEMAND_GEN_BIDDING_STRATEGY_TYPE_TARGET_ROAS` Value of this field is in micros of the advertiser's currency or ROAS value. For example, 1000000 represents 1.0 standard units of the currency or 100% ROAS value. If not using an applicable strategy, the value of this field will be 0. */
@@ -6705,17 +5804,13 @@ export interface DemandGenBiddingStrategy {
     | (string & {});
 }
 
-export const DemandGenBiddingStrategy: Schema.Schema<DemandGenBiddingStrategy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      effectiveBiddingValue: Schema.optional(Schema.String),
-      effectiveBiddingValueSource: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DemandGenBiddingStrategy",
-  }) as any as Schema.Schema<DemandGenBiddingStrategy>;
+export const DemandGenBiddingStrategy =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    effectiveBiddingValue: Schema.optional(Schema.String),
+    effectiveBiddingValueSource: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DemandGenBiddingStrategy" });
 
 export interface PerformanceGoalBidStrategy {
   /** Required. The type of the performance goal that the bidding strategy will try to meet or beat. For line item level usage, the value must be one of: * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPA` * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CPC` * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_VIEWABLE_CPM` * `BIDDING_STRATEGY_PERFORMANCE_GOAL_TYPE_CUSTOM_ALGO`. */
@@ -6738,31 +5833,22 @@ export interface PerformanceGoalBidStrategy {
   maxAverageCpmBidAmountMicros?: string;
 }
 
-export const PerformanceGoalBidStrategy: Schema.Schema<PerformanceGoalBidStrategy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      performanceGoalType: Schema.optional(Schema.String),
-      performanceGoalAmountMicros: Schema.optional(Schema.String),
-      customBiddingAlgorithmId: Schema.optional(Schema.String),
-      maxAverageCpmBidAmountMicros: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PerformanceGoalBidStrategy",
-  }) as any as Schema.Schema<PerformanceGoalBidStrategy>;
+export const PerformanceGoalBidStrategy =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    performanceGoalType: Schema.optional(Schema.String),
+    performanceGoalAmountMicros: Schema.optional(Schema.String),
+    customBiddingAlgorithmId: Schema.optional(Schema.String),
+    maxAverageCpmBidAmountMicros: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PerformanceGoalBidStrategy" });
 
 export interface FixedBidStrategy {
   /** The fixed bid amount, in micros of the advertiser's currency. For insertion order entity, bid_amount_micros should be set as 0. For line item entity, bid_amount_micros must be greater than or equal to billable unit of the given currency and smaller than or equal to the upper limit 1000000000. For example, 1500000 represents 1.5 standard units of the currency. */
   bidAmountMicros?: string;
 }
 
-export const FixedBidStrategy: Schema.Schema<FixedBidStrategy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bidAmountMicros: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FixedBidStrategy",
-  }) as any as Schema.Schema<FixedBidStrategy>;
+export const FixedBidStrategy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bidAmountMicros: Schema.optional(Schema.String),
+}).annotate({ identifier: "FixedBidStrategy" });
 
 export interface BiddingStrategy {
   /** A bid strategy used by YouTube and Partners resources. It can only be used for a YouTube and Partners line item or ad group entity. */
@@ -6777,18 +5863,13 @@ export interface BiddingStrategy {
   fixedBid?: FixedBidStrategy;
 }
 
-export const BiddingStrategy: Schema.Schema<BiddingStrategy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      youtubeAndPartnersBid: Schema.optional(YoutubeAndPartnersBiddingStrategy),
-      maximizeSpendAutoBid: Schema.optional(MaximizeSpendBidStrategy),
-      demandGenBid: Schema.optional(DemandGenBiddingStrategy),
-      performanceGoalAutoBid: Schema.optional(PerformanceGoalBidStrategy),
-      fixedBid: Schema.optional(FixedBidStrategy),
-    }),
-  ).annotate({
-    identifier: "BiddingStrategy",
-  }) as any as Schema.Schema<BiddingStrategy>;
+export const BiddingStrategy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  youtubeAndPartnersBid: Schema.optional(YoutubeAndPartnersBiddingStrategy),
+  maximizeSpendAutoBid: Schema.optional(MaximizeSpendBidStrategy),
+  demandGenBid: Schema.optional(DemandGenBiddingStrategy),
+  performanceGoalAutoBid: Schema.optional(PerformanceGoalBidStrategy),
+  fixedBid: Schema.optional(FixedBidStrategy),
+}).annotate({ identifier: "BiddingStrategy" });
 
 export interface CustomLabel {
   /** The value of the label. */
@@ -6804,15 +5885,10 @@ export interface CustomLabel {
     | (string & {});
 }
 
-export const CustomLabel: Schema.Schema<CustomLabel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-      key: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomLabel",
-  }) as any as Schema.Schema<CustomLabel>;
+export const CustomLabel = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.String),
+  key: Schema.optional(Schema.String),
+}).annotate({ identifier: "CustomLabel" });
 
 export interface ProductMatchDimension {
   /** The custom label to match all the products with the label. */
@@ -6821,15 +5897,10 @@ export interface ProductMatchDimension {
   productOfferId?: string;
 }
 
-export const ProductMatchDimension: Schema.Schema<ProductMatchDimension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customLabel: Schema.optional(CustomLabel),
-      productOfferId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProductMatchDimension",
-  }) as any as Schema.Schema<ProductMatchDimension>;
+export const ProductMatchDimension = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  customLabel: Schema.optional(CustomLabel),
+  productOfferId: Schema.optional(Schema.String),
+}).annotate({ identifier: "ProductMatchDimension" });
 
 export interface ProductFeedData {
   /** Whether the product feed has opted-out of showing products. */
@@ -6845,18 +5916,11 @@ export interface ProductFeedData {
   productMatchDimensions?: Array<ProductMatchDimension>;
 }
 
-export const ProductFeedData: Schema.Schema<ProductFeedData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      isFeedDisabled: Schema.optional(Schema.Boolean),
-      productMatchType: Schema.optional(Schema.String),
-      productMatchDimensions: Schema.optional(
-        Schema.Array(ProductMatchDimension),
-      ),
-    }),
-  ).annotate({
-    identifier: "ProductFeedData",
-  }) as any as Schema.Schema<ProductFeedData>;
+export const ProductFeedData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  isFeedDisabled: Schema.optional(Schema.Boolean),
+  productMatchType: Schema.optional(Schema.String),
+  productMatchDimensions: Schema.optional(Schema.Array(ProductMatchDimension)),
+}).annotate({ identifier: "ProductFeedData" });
 
 export interface TargetingExpansionConfig {
   /** Output only. Whether to exclude seed list for audience expansion. This field only applies to YouTube and Partners line item and ad group resources. */
@@ -6875,17 +5939,13 @@ export interface TargetingExpansionConfig {
     | (string & {});
 }
 
-export const TargetingExpansionConfig: Schema.Schema<TargetingExpansionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      audienceExpansionSeedListExcluded: Schema.optional(Schema.Boolean),
-      enableOptimizedTargeting: Schema.optional(Schema.Boolean),
-      excludeDemographicExpansion: Schema.optional(Schema.Boolean),
-      audienceExpansionLevel: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TargetingExpansionConfig",
-  }) as any as Schema.Schema<TargetingExpansionConfig>;
+export const TargetingExpansionConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    audienceExpansionSeedListExcluded: Schema.optional(Schema.Boolean),
+    enableOptimizedTargeting: Schema.optional(Schema.Boolean),
+    excludeDemographicExpansion: Schema.optional(Schema.Boolean),
+    audienceExpansionLevel: Schema.optional(Schema.String),
+  }).annotate({ identifier: "TargetingExpansionConfig" });
 
 export interface AdGroup {
   /** Optional. The bidding strategy used by the ad group. Only the youtubeAndPartnersBid and demandGenBid field can be used in the bidding strategy. */
@@ -6930,22 +5990,19 @@ export interface AdGroup {
   targetingExpansion?: TargetingExpansionConfig;
 }
 
-export const AdGroup: Schema.Schema<AdGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bidStrategy: Schema.optional(BiddingStrategy),
-      displayName: Schema.optional(Schema.String),
-      productFeedData: Schema.optional(ProductFeedData),
-      advertiserId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      adGroupId: Schema.optional(Schema.String),
-      adGroupFormat: Schema.optional(Schema.String),
-      lineItemId: Schema.optional(Schema.String),
-      adGroupInventoryControl: Schema.optional(AdGroupInventoryControl),
-      entityStatus: Schema.optional(Schema.String),
-      targetingExpansion: Schema.optional(TargetingExpansionConfig),
-    }),
-  ).annotate({ identifier: "AdGroup" }) as any as Schema.Schema<AdGroup>;
+export const AdGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bidStrategy: Schema.optional(BiddingStrategy),
+  displayName: Schema.optional(Schema.String),
+  productFeedData: Schema.optional(ProductFeedData),
+  advertiserId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  adGroupId: Schema.optional(Schema.String),
+  adGroupFormat: Schema.optional(Schema.String),
+  lineItemId: Schema.optional(Schema.String),
+  adGroupInventoryControl: Schema.optional(AdGroupInventoryControl),
+  entityStatus: Schema.optional(Schema.String),
+  targetingExpansion: Schema.optional(TargetingExpansionConfig),
+}).annotate({ identifier: "AdGroup" });
 
 export interface ListAdGroupsResponse {
   /** The list of ad groups. This list will be absent if empty. */
@@ -6954,52 +6011,45 @@ export interface ListAdGroupsResponse {
   nextPageToken?: string;
 }
 
-export const ListAdGroupsResponse: Schema.Schema<ListAdGroupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      adGroups: Schema.optional(Schema.Array(AdGroup)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAdGroupsResponse",
-  }) as any as Schema.Schema<ListAdGroupsResponse>;
+export const ListAdGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  adGroups: Schema.optional(Schema.Array(AdGroup)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListAdGroupsResponse" });
 
 export interface AdPolicyTopicConstraintAdPolicyResellerConstraint {}
 
-export const AdPolicyTopicConstraintAdPolicyResellerConstraint: Schema.Schema<AdPolicyTopicConstraintAdPolicyResellerConstraint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const AdPolicyTopicConstraintAdPolicyResellerConstraint =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "AdPolicyTopicConstraintAdPolicyResellerConstraint",
-  }) as any as Schema.Schema<AdPolicyTopicConstraintAdPolicyResellerConstraint>;
+  });
 
 export interface AdPolicyTopicConstraintAdPolicyCountryConstraintList {
   /** Countries where the ad cannot serve. */
   countries?: Array<AdPolicyCriterionRestriction>;
 }
 
-export const AdPolicyTopicConstraintAdPolicyCountryConstraintList: Schema.Schema<AdPolicyTopicConstraintAdPolicyCountryConstraintList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      countries: Schema.optional(Schema.Array(AdPolicyCriterionRestriction)),
-    }),
-  ).annotate({
+export const AdPolicyTopicConstraintAdPolicyCountryConstraintList =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    countries: Schema.optional(Schema.Array(AdPolicyCriterionRestriction)),
+  }).annotate({
     identifier: "AdPolicyTopicConstraintAdPolicyCountryConstraintList",
-  }) as any as Schema.Schema<AdPolicyTopicConstraintAdPolicyCountryConstraintList>;
+  });
 
 export interface AdPolicyTopicConstraintAdPolicyGlobalCertificateMissingConstraint {}
 
-export const AdPolicyTopicConstraintAdPolicyGlobalCertificateMissingConstraint: Schema.Schema<AdPolicyTopicConstraintAdPolicyGlobalCertificateMissingConstraint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const AdPolicyTopicConstraintAdPolicyGlobalCertificateMissingConstraint =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "AdPolicyTopicConstraintAdPolicyGlobalCertificateMissingConstraint",
-  }) as any as Schema.Schema<AdPolicyTopicConstraintAdPolicyGlobalCertificateMissingConstraint>;
+  });
 
 export interface AdPolicyTopicConstraintAdPolicyGlobalCertificateDomainMismatchConstraint {}
 
-export const AdPolicyTopicConstraintAdPolicyGlobalCertificateDomainMismatchConstraint: Schema.Schema<AdPolicyTopicConstraintAdPolicyGlobalCertificateDomainMismatchConstraint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const AdPolicyTopicConstraintAdPolicyGlobalCertificateDomainMismatchConstraint =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "AdPolicyTopicConstraintAdPolicyGlobalCertificateDomainMismatchConstraint",
-  }) as any as Schema.Schema<AdPolicyTopicConstraintAdPolicyGlobalCertificateDomainMismatchConstraint>;
+  });
 
 export interface AdPolicyTopicConstraint {
   /** Reseller constraint. */
@@ -7018,64 +6068,52 @@ export interface AdPolicyTopicConstraint {
   countryConstraint?: AdPolicyTopicConstraintAdPolicyCountryConstraintList;
 }
 
-export const AdPolicyTopicConstraint: Schema.Schema<AdPolicyTopicConstraint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resellerConstraint: Schema.optional(
-        AdPolicyTopicConstraintAdPolicyResellerConstraint,
-      ),
-      certificateDomainMismatchCountryList: Schema.optional(
-        AdPolicyTopicConstraintAdPolicyCountryConstraintList,
-      ),
-      requestCertificateFormLink: Schema.optional(Schema.String),
-      certificateMissingCountryList: Schema.optional(
-        AdPolicyTopicConstraintAdPolicyCountryConstraintList,
-      ),
-      globalCertificateMissing: Schema.optional(
-        AdPolicyTopicConstraintAdPolicyGlobalCertificateMissingConstraint,
-      ),
-      globalCertificateDomainMismatch: Schema.optional(
-        AdPolicyTopicConstraintAdPolicyGlobalCertificateDomainMismatchConstraint,
-      ),
-      countryConstraint: Schema.optional(
-        AdPolicyTopicConstraintAdPolicyCountryConstraintList,
-      ),
-    }),
-  ).annotate({
-    identifier: "AdPolicyTopicConstraint",
-  }) as any as Schema.Schema<AdPolicyTopicConstraint>;
+export const AdPolicyTopicConstraint =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resellerConstraint: Schema.optional(
+      AdPolicyTopicConstraintAdPolicyResellerConstraint,
+    ),
+    certificateDomainMismatchCountryList: Schema.optional(
+      AdPolicyTopicConstraintAdPolicyCountryConstraintList,
+    ),
+    requestCertificateFormLink: Schema.optional(Schema.String),
+    certificateMissingCountryList: Schema.optional(
+      AdPolicyTopicConstraintAdPolicyCountryConstraintList,
+    ),
+    globalCertificateMissing: Schema.optional(
+      AdPolicyTopicConstraintAdPolicyGlobalCertificateMissingConstraint,
+    ),
+    globalCertificateDomainMismatch: Schema.optional(
+      AdPolicyTopicConstraintAdPolicyGlobalCertificateDomainMismatchConstraint,
+    ),
+    countryConstraint: Schema.optional(
+      AdPolicyTopicConstraintAdPolicyCountryConstraintList,
+    ),
+  }).annotate({ identifier: "AdPolicyTopicConstraint" });
 
 export interface AdPolicyTopicEvidenceWebsiteList {
   /** Websites that caused the policy finding. */
   websites?: Array<string>;
 }
 
-export const AdPolicyTopicEvidenceWebsiteList: Schema.Schema<AdPolicyTopicEvidenceWebsiteList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      websites: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AdPolicyTopicEvidenceWebsiteList",
-  }) as any as Schema.Schema<AdPolicyTopicEvidenceWebsiteList>;
+export const AdPolicyTopicEvidenceWebsiteList =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    websites: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "AdPolicyTopicEvidenceWebsiteList" });
 
 export interface AdPolicyTopicEvidenceRegionalRequirements {
   /** List of regional requirements. */
   regionalRequirementsEntries?: Array<AdPolicyTopicEvidenceRegionalRequirementsRegionalRequirementsEntry>;
 }
 
-export const AdPolicyTopicEvidenceRegionalRequirements: Schema.Schema<AdPolicyTopicEvidenceRegionalRequirements> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      regionalRequirementsEntries: Schema.optional(
-        Schema.Array(
-          AdPolicyTopicEvidenceRegionalRequirementsRegionalRequirementsEntry,
-        ),
+export const AdPolicyTopicEvidenceRegionalRequirements =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    regionalRequirementsEntries: Schema.optional(
+      Schema.Array(
+        AdPolicyTopicEvidenceRegionalRequirementsRegionalRequirementsEntry,
       ),
-    }),
-  ).annotate({
-    identifier: "AdPolicyTopicEvidenceRegionalRequirements",
-  }) as any as Schema.Schema<AdPolicyTopicEvidenceRegionalRequirements>;
+    ),
+  }).annotate({ identifier: "AdPolicyTopicEvidenceRegionalRequirements" });
 
 export interface AdPolicyTopicEvidenceDestinationMismatch {
   /** The set of URLs that do not match. The list can include single or multiple uri types. Example 1: [`DISPLAY_URL`, `FINAL_URL`] means ad display URL does not match with the ad final URL. Example 2: [`FINAL_URL`] means ad final URL did not match the crawled url, which is also considered as destination mismatch. */
@@ -7090,28 +6128,20 @@ export interface AdPolicyTopicEvidenceDestinationMismatch {
   >;
 }
 
-export const AdPolicyTopicEvidenceDestinationMismatch: Schema.Schema<AdPolicyTopicEvidenceDestinationMismatch> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uriTypes: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AdPolicyTopicEvidenceDestinationMismatch",
-  }) as any as Schema.Schema<AdPolicyTopicEvidenceDestinationMismatch>;
+export const AdPolicyTopicEvidenceDestinationMismatch =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uriTypes: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "AdPolicyTopicEvidenceDestinationMismatch" });
 
 export interface AdPolicyTopicEvidenceCounterfeit {
   /** The content or product owners that made a complaint. */
   owners?: Array<string>;
 }
 
-export const AdPolicyTopicEvidenceCounterfeit: Schema.Schema<AdPolicyTopicEvidenceCounterfeit> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      owners: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AdPolicyTopicEvidenceCounterfeit",
-  }) as any as Schema.Schema<AdPolicyTopicEvidenceCounterfeit>;
+export const AdPolicyTopicEvidenceCounterfeit =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    owners: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "AdPolicyTopicEvidenceCounterfeit" });
 
 export interface AdPolicyTopicEvidenceTrademark {
   /** The trademark content owner. */
@@ -7122,18 +6152,14 @@ export interface AdPolicyTopicEvidenceTrademark {
   countryRestrictions?: Array<AdPolicyCriterionRestriction>;
 }
 
-export const AdPolicyTopicEvidenceTrademark: Schema.Schema<AdPolicyTopicEvidenceTrademark> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      owner: Schema.optional(Schema.String),
-      term: Schema.optional(Schema.String),
-      countryRestrictions: Schema.optional(
-        Schema.Array(AdPolicyCriterionRestriction),
-      ),
-    }),
-  ).annotate({
-    identifier: "AdPolicyTopicEvidenceTrademark",
-  }) as any as Schema.Schema<AdPolicyTopicEvidenceTrademark>;
+export const AdPolicyTopicEvidenceTrademark =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    owner: Schema.optional(Schema.String),
+    term: Schema.optional(Schema.String),
+    countryRestrictions: Schema.optional(
+      Schema.Array(AdPolicyCriterionRestriction),
+    ),
+  }).annotate({ identifier: "AdPolicyTopicEvidenceTrademark" });
 
 export interface AdPolicyTopicEvidenceDestinationNotWorking {
   /** The full URL that didn't work. */
@@ -7157,32 +6183,24 @@ export interface AdPolicyTopicEvidenceDestinationNotWorking {
   lastCheckedTime?: string;
 }
 
-export const AdPolicyTopicEvidenceDestinationNotWorking: Schema.Schema<AdPolicyTopicEvidenceDestinationNotWorking> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expandedUri: Schema.optional(Schema.String),
-      device: Schema.optional(Schema.String),
-      httpErrorCode: Schema.optional(Schema.String),
-      dnsErrorType: Schema.optional(Schema.String),
-      lastCheckedTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AdPolicyTopicEvidenceDestinationNotWorking",
-  }) as any as Schema.Schema<AdPolicyTopicEvidenceDestinationNotWorking>;
+export const AdPolicyTopicEvidenceDestinationNotWorking =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    expandedUri: Schema.optional(Schema.String),
+    device: Schema.optional(Schema.String),
+    httpErrorCode: Schema.optional(Schema.String),
+    dnsErrorType: Schema.optional(Schema.String),
+    lastCheckedTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AdPolicyTopicEvidenceDestinationNotWorking" });
 
 export interface AdPolicyTopicEvidenceLegalRemovalDmca {
   /** The entity who made the legal complaint. */
   complainant?: string;
 }
 
-export const AdPolicyTopicEvidenceLegalRemovalDmca: Schema.Schema<AdPolicyTopicEvidenceLegalRemovalDmca> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      complainant: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AdPolicyTopicEvidenceLegalRemovalDmca",
-  }) as any as Schema.Schema<AdPolicyTopicEvidenceLegalRemovalDmca>;
+export const AdPolicyTopicEvidenceLegalRemovalDmca =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    complainant: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AdPolicyTopicEvidenceLegalRemovalDmca" });
 
 export interface AdPolicyTopicEvidenceLegalRemoval {
   /** The countries restricted due to the legal removal. */
@@ -7202,34 +6220,26 @@ export interface AdPolicyTopicEvidenceLegalRemoval {
     | (string & {});
 }
 
-export const AdPolicyTopicEvidenceLegalRemoval: Schema.Schema<AdPolicyTopicEvidenceLegalRemoval> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      countryRestrictions: Schema.optional(
-        Schema.Array(AdPolicyCriterionRestriction),
-      ),
-      localLegal: Schema.optional(AdPolicyTopicEvidenceLegalRemovalLocalLegal),
-      restrictedUris: Schema.optional(Schema.Array(Schema.String)),
-      dmca: Schema.optional(AdPolicyTopicEvidenceLegalRemovalDmca),
-      complaintType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AdPolicyTopicEvidenceLegalRemoval",
-  }) as any as Schema.Schema<AdPolicyTopicEvidenceLegalRemoval>;
+export const AdPolicyTopicEvidenceLegalRemoval =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    countryRestrictions: Schema.optional(
+      Schema.Array(AdPolicyCriterionRestriction),
+    ),
+    localLegal: Schema.optional(AdPolicyTopicEvidenceLegalRemovalLocalLegal),
+    restrictedUris: Schema.optional(Schema.Array(Schema.String)),
+    dmca: Schema.optional(AdPolicyTopicEvidenceLegalRemovalDmca),
+    complaintType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AdPolicyTopicEvidenceLegalRemoval" });
 
 export interface AdPolicyTopicEvidenceTextList {
   /** The fragments of text from the resource that caused the policy finding. */
   texts?: Array<string>;
 }
 
-export const AdPolicyTopicEvidenceTextList: Schema.Schema<AdPolicyTopicEvidenceTextList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      texts: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AdPolicyTopicEvidenceTextList",
-  }) as any as Schema.Schema<AdPolicyTopicEvidenceTextList>;
+export const AdPolicyTopicEvidenceTextList =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    texts: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "AdPolicyTopicEvidenceTextList" });
 
 export interface AdPolicyTopicEvidence {
   /** List of websites linked with the ad. */
@@ -7256,32 +6266,27 @@ export interface AdPolicyTopicEvidence {
   textList?: AdPolicyTopicEvidenceTextList;
 }
 
-export const AdPolicyTopicEvidence: Schema.Schema<AdPolicyTopicEvidence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      websiteList: Schema.optional(AdPolicyTopicEvidenceWebsiteList),
-      destinationTextList: Schema.optional(
-        AdPolicyTopicEvidenceDestinationTextList,
-      ),
-      regionalRequirements: Schema.optional(
-        AdPolicyTopicEvidenceRegionalRequirements,
-      ),
-      languageCode: Schema.optional(Schema.String),
-      destinationMismatch: Schema.optional(
-        AdPolicyTopicEvidenceDestinationMismatch,
-      ),
-      counterfeit: Schema.optional(AdPolicyTopicEvidenceCounterfeit),
-      trademark: Schema.optional(AdPolicyTopicEvidenceTrademark),
-      destinationNotWorking: Schema.optional(
-        AdPolicyTopicEvidenceDestinationNotWorking,
-      ),
-      legalRemoval: Schema.optional(AdPolicyTopicEvidenceLegalRemoval),
-      httpCode: Schema.optional(Schema.Number),
-      textList: Schema.optional(AdPolicyTopicEvidenceTextList),
-    }),
-  ).annotate({
-    identifier: "AdPolicyTopicEvidence",
-  }) as any as Schema.Schema<AdPolicyTopicEvidence>;
+export const AdPolicyTopicEvidence = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  websiteList: Schema.optional(AdPolicyTopicEvidenceWebsiteList),
+  destinationTextList: Schema.optional(
+    AdPolicyTopicEvidenceDestinationTextList,
+  ),
+  regionalRequirements: Schema.optional(
+    AdPolicyTopicEvidenceRegionalRequirements,
+  ),
+  languageCode: Schema.optional(Schema.String),
+  destinationMismatch: Schema.optional(
+    AdPolicyTopicEvidenceDestinationMismatch,
+  ),
+  counterfeit: Schema.optional(AdPolicyTopicEvidenceCounterfeit),
+  trademark: Schema.optional(AdPolicyTopicEvidenceTrademark),
+  destinationNotWorking: Schema.optional(
+    AdPolicyTopicEvidenceDestinationNotWorking,
+  ),
+  legalRemoval: Schema.optional(AdPolicyTopicEvidenceLegalRemoval),
+  httpCode: Schema.optional(Schema.Number),
+  textList: Schema.optional(AdPolicyTopicEvidenceTextList),
+}).annotate({ identifier: "AdPolicyTopicEvidence" });
 
 export interface AdPolicyTopicAppealInfo {
   /** Only available when appeal_type is `APPEAL_FORM`. */
@@ -7294,15 +6299,11 @@ export interface AdPolicyTopicAppealInfo {
     | (string & {});
 }
 
-export const AdPolicyTopicAppealInfo: Schema.Schema<AdPolicyTopicAppealInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      appealFormLink: Schema.optional(Schema.String),
-      appealType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AdPolicyTopicAppealInfo",
-  }) as any as Schema.Schema<AdPolicyTopicAppealInfo>;
+export const AdPolicyTopicAppealInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    appealFormLink: Schema.optional(Schema.String),
+    appealType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AdPolicyTopicAppealInfo" });
 
 export interface AdPolicyTopicEntry {
   /** Localized label text for policy. Examples include "Trademarks in text", "Contains Alcohol", etc. */
@@ -7343,27 +6344,20 @@ export interface AdPolicyTopicEntry {
     | (string & {});
 }
 
-export const AdPolicyTopicEntry: Schema.Schema<AdPolicyTopicEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policyLabel: Schema.optional(Schema.String),
-      policyTopicConstraints: Schema.optional(
-        Schema.Array(AdPolicyTopicConstraint),
-      ),
-      helpCenterLink: Schema.optional(Schema.String),
-      policyTopicType: Schema.optional(Schema.String),
-      policyTopicEvidences: Schema.optional(
-        Schema.Array(AdPolicyTopicEvidence),
-      ),
-      policyDecisionType: Schema.optional(Schema.String),
-      policyTopic: Schema.optional(Schema.String),
-      policyTopicDescription: Schema.optional(Schema.String),
-      appealInfo: Schema.optional(AdPolicyTopicAppealInfo),
-      policyEnforcementMeans: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AdPolicyTopicEntry",
-  }) as any as Schema.Schema<AdPolicyTopicEntry>;
+export const AdPolicyTopicEntry = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policyLabel: Schema.optional(Schema.String),
+  policyTopicConstraints: Schema.optional(
+    Schema.Array(AdPolicyTopicConstraint),
+  ),
+  helpCenterLink: Schema.optional(Schema.String),
+  policyTopicType: Schema.optional(Schema.String),
+  policyTopicEvidences: Schema.optional(Schema.Array(AdPolicyTopicEvidence)),
+  policyDecisionType: Schema.optional(Schema.String),
+  policyTopic: Schema.optional(Schema.String),
+  policyTopicDescription: Schema.optional(Schema.String),
+  appealInfo: Schema.optional(AdPolicyTopicAppealInfo),
+  policyEnforcementMeans: Schema.optional(Schema.String),
+}).annotate({ identifier: "AdPolicyTopicEntry" });
 
 export interface AdPolicy {
   /** The policy review status of an ad, indicating where in the review process the ad is currently. */
@@ -7386,56 +6380,40 @@ export interface AdPolicy {
   adPolicyTopicEntry?: Array<AdPolicyTopicEntry>;
 }
 
-export const AdPolicy: Schema.Schema<AdPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      adPolicyReviewStatus: Schema.optional(Schema.String),
-      adPolicyApprovalStatus: Schema.optional(Schema.String),
-      adPolicyTopicEntry: Schema.optional(Schema.Array(AdPolicyTopicEntry)),
-    }),
-  ).annotate({ identifier: "AdPolicy" }) as any as Schema.Schema<AdPolicy>;
+export const AdPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  adPolicyReviewStatus: Schema.optional(Schema.String),
+  adPolicyApprovalStatus: Schema.optional(Schema.String),
+  adPolicyTopicEntry: Schema.optional(Schema.Array(AdPolicyTopicEntry)),
+}).annotate({ identifier: "AdPolicy" });
 
 export interface CreateAssetResponse {
   /** The uploaded asset, if successful. */
   asset?: Asset;
 }
 
-export const CreateAssetResponse: Schema.Schema<CreateAssetResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      asset: Schema.optional(Asset),
-    }),
-  ).annotate({
-    identifier: "CreateAssetResponse",
-  }) as any as Schema.Schema<CreateAssetResponse>;
+export const CreateAssetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  asset: Schema.optional(Asset),
+}).annotate({ identifier: "CreateAssetResponse" });
 
 export interface InventorySourceAccessorsAdvertiserAccessors {
   /** The IDs of the advertisers. */
   advertiserIds?: Array<string>;
 }
 
-export const InventorySourceAccessorsAdvertiserAccessors: Schema.Schema<InventorySourceAccessorsAdvertiserAccessors> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      advertiserIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "InventorySourceAccessorsAdvertiserAccessors",
-  }) as any as Schema.Schema<InventorySourceAccessorsAdvertiserAccessors>;
+export const InventorySourceAccessorsAdvertiserAccessors =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    advertiserIds: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "InventorySourceAccessorsAdvertiserAccessors" });
 
 export interface InventorySourceAccessorsPartnerAccessor {
   /** The ID of the partner. */
   partnerId?: string;
 }
 
-export const InventorySourceAccessorsPartnerAccessor: Schema.Schema<InventorySourceAccessorsPartnerAccessor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      partnerId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InventorySourceAccessorsPartnerAccessor",
-  }) as any as Schema.Schema<InventorySourceAccessorsPartnerAccessor>;
+export const InventorySourceAccessorsPartnerAccessor =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    partnerId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "InventorySourceAccessorsPartnerAccessor" });
 
 export interface InventorySourceAccessors {
   /** The advertisers with access to the inventory source. All advertisers must belong to the same partner. */
@@ -7444,15 +6422,11 @@ export interface InventorySourceAccessors {
   partner?: InventorySourceAccessorsPartnerAccessor;
 }
 
-export const InventorySourceAccessors: Schema.Schema<InventorySourceAccessors> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      advertisers: Schema.optional(InventorySourceAccessorsAdvertiserAccessors),
-      partner: Schema.optional(InventorySourceAccessorsPartnerAccessor),
-    }),
-  ).annotate({
-    identifier: "InventorySourceAccessors",
-  }) as any as Schema.Schema<InventorySourceAccessors>;
+export const InventorySourceAccessors =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    advertisers: Schema.optional(InventorySourceAccessorsAdvertiserAccessors),
+    partner: Schema.optional(InventorySourceAccessorsPartnerAccessor),
+  }).annotate({ identifier: "InventorySourceAccessors" });
 
 export interface TimeRange {
   /** Required. The upper bound of a time range, inclusive. */
@@ -7461,13 +6435,10 @@ export interface TimeRange {
   startTime?: string;
 }
 
-export const TimeRange: Schema.Schema<TimeRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endTime: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "TimeRange" }) as any as Schema.Schema<TimeRange>;
+export const TimeRange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  endTime: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "TimeRange" });
 
 export interface InventorySourceStatus {
   /** Output only. The status set by the seller for the inventory source. Only applicable for inventory sources synced directly from the publishers. Acceptable values are `ENTITY_STATUS_ACTIVE` and `ENTITY_STATUS_PAUSED`. */
@@ -7500,32 +6471,23 @@ export interface InventorySourceStatus {
     | (string & {});
 }
 
-export const InventorySourceStatus: Schema.Schema<InventorySourceStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sellerStatus: Schema.optional(Schema.String),
-      entityPauseReason: Schema.optional(Schema.String),
-      sellerPauseReason: Schema.optional(Schema.String),
-      entityStatus: Schema.optional(Schema.String),
-      configStatus: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InventorySourceStatus",
-  }) as any as Schema.Schema<InventorySourceStatus>;
+export const InventorySourceStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sellerStatus: Schema.optional(Schema.String),
+  entityPauseReason: Schema.optional(Schema.String),
+  sellerPauseReason: Schema.optional(Schema.String),
+  entityStatus: Schema.optional(Schema.String),
+  configStatus: Schema.optional(Schema.String),
+}).annotate({ identifier: "InventorySourceStatus" });
 
 export interface InventorySourceVideoCreativeConfig {
   /** The duration requirements for the video creatives that can be assigned to the inventory source. */
   duration?: string;
 }
 
-export const InventorySourceVideoCreativeConfig: Schema.Schema<InventorySourceVideoCreativeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      duration: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InventorySourceVideoCreativeConfig",
-  }) as any as Schema.Schema<InventorySourceVideoCreativeConfig>;
+export const InventorySourceVideoCreativeConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    duration: Schema.optional(Schema.String),
+  }).annotate({ identifier: "InventorySourceVideoCreativeConfig" });
 
 export interface CreativeConfig {
   /** The configuration for video creatives. Applicable when creative_type is `CREATIVE_TYPE_VIDEO`. */
@@ -7553,18 +6515,11 @@ export interface CreativeConfig {
     | (string & {});
 }
 
-export const CreativeConfig: Schema.Schema<CreativeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      videoCreativeConfig: Schema.optional(InventorySourceVideoCreativeConfig),
-      displayCreativeConfig: Schema.optional(
-        InventorySourceDisplayCreativeConfig,
-      ),
-      creativeType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreativeConfig",
-  }) as any as Schema.Schema<CreativeConfig>;
+export const CreativeConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  videoCreativeConfig: Schema.optional(InventorySourceVideoCreativeConfig),
+  displayCreativeConfig: Schema.optional(InventorySourceDisplayCreativeConfig),
+  creativeType: Schema.optional(Schema.String),
+}).annotate({ identifier: "CreativeConfig" });
 
 export interface Money {
   /** Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000. */
@@ -7575,14 +6530,11 @@ export interface Money {
   currencyCode?: string;
 }
 
-export const Money: Schema.Schema<Money> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nanos: Schema.optional(Schema.Number),
-      units: Schema.optional(Schema.String),
-      currencyCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Money" }) as any as Schema.Schema<Money>;
+export const Money = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nanos: Schema.optional(Schema.Number),
+  units: Schema.optional(Schema.String),
+  currencyCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "Money" });
 
 export interface RateDetails {
   /** Required for guaranteed inventory sources. The number of impressions guaranteed by the seller. */
@@ -7602,17 +6554,12 @@ export interface RateDetails {
   minimumSpend?: Money;
 }
 
-export const RateDetails: Schema.Schema<RateDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unitsPurchased: Schema.optional(Schema.String),
-      rate: Schema.optional(Money),
-      inventorySourceRateType: Schema.optional(Schema.String),
-      minimumSpend: Schema.optional(Money),
-    }),
-  ).annotate({
-    identifier: "RateDetails",
-  }) as any as Schema.Schema<RateDetails>;
+export const RateDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  unitsPurchased: Schema.optional(Schema.String),
+  rate: Schema.optional(Money),
+  inventorySourceRateType: Schema.optional(Schema.String),
+  minimumSpend: Schema.optional(Money),
+}).annotate({ identifier: "RateDetails" });
 
 export interface InventorySource {
   /** The partner or advertisers that have read/write access to the inventory source. Output only when commitment is `INVENTORY_SOURCE_COMMITMENT_GUARANTEED`, in which case the read/write accessors are inherited from the parent guaranteed order. Required when commitment is `INVENTORY_SOURCE_COMMITMENT_NON_GUARANTEED`. If commitment is `INVENTORY_SOURCE_COMMITMENT_NON_GUARANTEED` and a partner is set in this field, all advertisers under this partner will automatically have read-only access to the inventory source. These advertisers will not be included in read_advertiser_ids. */
@@ -7768,46 +6715,36 @@ export interface InventorySource {
   readPartnerIds?: Array<string>;
 }
 
-export const InventorySource: Schema.Schema<InventorySource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      readWriteAccessors: Schema.optional(InventorySourceAccessors),
-      inventorySourceType: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      publisherName: Schema.optional(Schema.String),
-      readAdvertiserIds: Schema.optional(Schema.Array(Schema.String)),
-      inventorySourceId: Schema.optional(Schema.String),
-      commitment: Schema.optional(Schema.String),
-      guaranteedOrderId: Schema.optional(Schema.String),
-      timeRange: Schema.optional(TimeRange),
-      name: Schema.optional(Schema.String),
-      status: Schema.optional(InventorySourceStatus),
-      inventorySourceProductType: Schema.optional(Schema.String),
-      creativeConfigs: Schema.optional(Schema.Array(CreativeConfig)),
-      exchange: Schema.optional(Schema.String),
-      rateDetails: Schema.optional(RateDetails),
-      deliveryMethod: Schema.optional(Schema.String),
-      dealId: Schema.optional(Schema.String),
-      readPartnerIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "InventorySource",
-  }) as any as Schema.Schema<InventorySource>;
+export const InventorySource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  readWriteAccessors: Schema.optional(InventorySourceAccessors),
+  inventorySourceType: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  publisherName: Schema.optional(Schema.String),
+  readAdvertiserIds: Schema.optional(Schema.Array(Schema.String)),
+  inventorySourceId: Schema.optional(Schema.String),
+  commitment: Schema.optional(Schema.String),
+  guaranteedOrderId: Schema.optional(Schema.String),
+  timeRange: Schema.optional(TimeRange),
+  name: Schema.optional(Schema.String),
+  status: Schema.optional(InventorySourceStatus),
+  inventorySourceProductType: Schema.optional(Schema.String),
+  creativeConfigs: Schema.optional(Schema.Array(CreativeConfig)),
+  exchange: Schema.optional(Schema.String),
+  rateDetails: Schema.optional(RateDetails),
+  deliveryMethod: Schema.optional(Schema.String),
+  dealId: Schema.optional(Schema.String),
+  readPartnerIds: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "InventorySource" });
 
 export interface PoiSearchTerms {
   /** The search query for the desired POI name, street address, or coordinate of the desired POI. The query can be a prefix, e.g. "Times squar", "40.7505045,-73.99562", "315 W 44th St", etc. */
   poiQuery?: string;
 }
 
-export const PoiSearchTerms: Schema.Schema<PoiSearchTerms> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      poiQuery: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PoiSearchTerms",
-  }) as any as Schema.Schema<PoiSearchTerms>;
+export const PoiSearchTerms = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  poiQuery: Schema.optional(Schema.String),
+}).annotate({ identifier: "PoiSearchTerms" });
 
 export interface Site {
   /** Output only. The resource name of the site. */
@@ -7816,13 +6753,10 @@ export interface Site {
   urlOrAppId?: string;
 }
 
-export const Site: Schema.Schema<Site> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      urlOrAppId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Site" }) as any as Schema.Schema<Site>;
+export const Site = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  urlOrAppId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Site" });
 
 export interface ReplaceSitesRequest {
   /** The ID of the advertiser that owns the parent channel. */
@@ -7833,30 +6767,20 @@ export interface ReplaceSitesRequest {
   partnerId?: string;
 }
 
-export const ReplaceSitesRequest: Schema.Schema<ReplaceSitesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      advertiserId: Schema.optional(Schema.String),
-      newSites: Schema.optional(Schema.Array(Site)),
-      partnerId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ReplaceSitesRequest",
-  }) as any as Schema.Schema<ReplaceSitesRequest>;
+export const ReplaceSitesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  advertiserId: Schema.optional(Schema.String),
+  newSites: Schema.optional(Schema.Array(Site)),
+  partnerId: Schema.optional(Schema.String),
+}).annotate({ identifier: "ReplaceSitesRequest" });
 
 export interface GeoRegionSearchTerms {
   /** The search query for the desired geo region. The query can be a prefix, e.g. "New Yor", "Seattle", "USA", etc. */
   geoRegionQuery?: string;
 }
 
-export const GeoRegionSearchTerms: Schema.Schema<GeoRegionSearchTerms> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      geoRegionQuery: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GeoRegionSearchTerms",
-  }) as any as Schema.Schema<GeoRegionSearchTerms>;
+export const GeoRegionSearchTerms = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  geoRegionQuery: Schema.optional(Schema.String),
+}).annotate({ identifier: "GeoRegionSearchTerms" });
 
 export interface BusinessChainSearchTerms {
   /** The search query for the desired business chain. The query must be the full name of the business, e.g. "KFC", "mercedes-benz". */
@@ -7865,15 +6789,11 @@ export interface BusinessChainSearchTerms {
   regionQuery?: string;
 }
 
-export const BusinessChainSearchTerms: Schema.Schema<BusinessChainSearchTerms> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      businessChainQuery: Schema.optional(Schema.String),
-      regionQuery: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BusinessChainSearchTerms",
-  }) as any as Schema.Schema<BusinessChainSearchTerms>;
+export const BusinessChainSearchTerms =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    businessChainQuery: Schema.optional(Schema.String),
+    regionQuery: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BusinessChainSearchTerms" });
 
 export interface SearchTargetingOptionsRequest {
   /** Search terms for geo region targeting options. Can only be used when targeting_type is `TARGETING_TYPE_GEO_REGION`. */
@@ -7890,19 +6810,15 @@ export interface SearchTargetingOptionsRequest {
   businessChainSearchTerms?: BusinessChainSearchTerms;
 }
 
-export const SearchTargetingOptionsRequest: Schema.Schema<SearchTargetingOptionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      geoRegionSearchTerms: Schema.optional(GeoRegionSearchTerms),
-      pageToken: Schema.optional(Schema.String),
-      pageSize: Schema.optional(Schema.Number),
-      advertiserId: Schema.optional(Schema.String),
-      poiSearchTerms: Schema.optional(PoiSearchTerms),
-      businessChainSearchTerms: Schema.optional(BusinessChainSearchTerms),
-    }),
-  ).annotate({
-    identifier: "SearchTargetingOptionsRequest",
-  }) as any as Schema.Schema<SearchTargetingOptionsRequest>;
+export const SearchTargetingOptionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    geoRegionSearchTerms: Schema.optional(GeoRegionSearchTerms),
+    pageToken: Schema.optional(Schema.String),
+    pageSize: Schema.optional(Schema.Number),
+    advertiserId: Schema.optional(Schema.String),
+    poiSearchTerms: Schema.optional(PoiSearchTerms),
+    businessChainSearchTerms: Schema.optional(BusinessChainSearchTerms),
+  }).annotate({ identifier: "SearchTargetingOptionsRequest" });
 
 export interface CustomBiddingAlgorithmRulesError {
   /** The type of error. */
@@ -7914,28 +6830,20 @@ export interface CustomBiddingAlgorithmRulesError {
     | (string & {});
 }
 
-export const CustomBiddingAlgorithmRulesError: Schema.Schema<CustomBiddingAlgorithmRulesError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errorCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomBiddingAlgorithmRulesError",
-  }) as any as Schema.Schema<CustomBiddingAlgorithmRulesError>;
+export const CustomBiddingAlgorithmRulesError =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    errorCode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CustomBiddingAlgorithmRulesError" });
 
 export interface CustomBiddingAlgorithmRulesRef {
   /** A resource name to be used in media.download to download the rules files. Or media.upload to upload the rules files. Resource names have the format `customBiddingAlgorithms/{custom_bidding_algorithm_id}/rulesRef/{ref_id}`. */
   resourceName?: string;
 }
 
-export const CustomBiddingAlgorithmRulesRef: Schema.Schema<CustomBiddingAlgorithmRulesRef> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomBiddingAlgorithmRulesRef",
-  }) as any as Schema.Schema<CustomBiddingAlgorithmRulesRef>;
+export const CustomBiddingAlgorithmRulesRef =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CustomBiddingAlgorithmRulesRef" });
 
 export interface CustomBiddingAlgorithmRules {
   /** Output only. The state of the rules resource. */
@@ -7956,21 +6864,17 @@ export interface CustomBiddingAlgorithmRules {
   rules?: CustomBiddingAlgorithmRulesRef;
 }
 
-export const CustomBiddingAlgorithmRules: Schema.Schema<CustomBiddingAlgorithmRules> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      customBiddingAlgorithmId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      customBiddingAlgorithmRulesId: Schema.optional(Schema.String),
-      active: Schema.optional(Schema.Boolean),
-      createTime: Schema.optional(Schema.String),
-      error: Schema.optional(CustomBiddingAlgorithmRulesError),
-      rules: Schema.optional(CustomBiddingAlgorithmRulesRef),
-    }),
-  ).annotate({
-    identifier: "CustomBiddingAlgorithmRules",
-  }) as any as Schema.Schema<CustomBiddingAlgorithmRules>;
+export const CustomBiddingAlgorithmRules =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+    customBiddingAlgorithmId: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    customBiddingAlgorithmRulesId: Schema.optional(Schema.String),
+    active: Schema.optional(Schema.Boolean),
+    createTime: Schema.optional(Schema.String),
+    error: Schema.optional(CustomBiddingAlgorithmRulesError),
+    rules: Schema.optional(CustomBiddingAlgorithmRulesRef),
+  }).annotate({ identifier: "CustomBiddingAlgorithmRules" });
 
 export interface ContactInfo {
   /** SHA256 hashed first name of the member. Before hashing, remove all whitespace and make sure the string is all lowercase. Must also be set with the following fields: * country_code * hashed_last_name * zip_codes */
@@ -7987,19 +6891,14 @@ export interface ContactInfo {
   hashedLastName?: string;
 }
 
-export const ContactInfo: Schema.Schema<ContactInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hashedFirstName: Schema.optional(Schema.String),
-      zipCodes: Schema.optional(Schema.Array(Schema.String)),
-      hashedPhoneNumbers: Schema.optional(Schema.Array(Schema.String)),
-      hashedEmails: Schema.optional(Schema.Array(Schema.String)),
-      countryCode: Schema.optional(Schema.String),
-      hashedLastName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ContactInfo",
-  }) as any as Schema.Schema<ContactInfo>;
+export const ContactInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  hashedFirstName: Schema.optional(Schema.String),
+  zipCodes: Schema.optional(Schema.Array(Schema.String)),
+  hashedPhoneNumbers: Schema.optional(Schema.Array(Schema.String)),
+  hashedEmails: Schema.optional(Schema.Array(Schema.String)),
+  countryCode: Schema.optional(Schema.String),
+  hashedLastName: Schema.optional(Schema.String),
+}).annotate({ identifier: "ContactInfo" });
 
 export interface ContactInfoList {
   /** A list of ContactInfo objects defining Customer Match audience members. The size of members after splitting the contact_infos mustn't be greater than 500,000. */
@@ -8008,15 +6907,10 @@ export interface ContactInfoList {
   consent?: Consent;
 }
 
-export const ContactInfoList: Schema.Schema<ContactInfoList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contactInfos: Schema.optional(Schema.Array(ContactInfo)),
-      consent: Schema.optional(Consent),
-    }),
-  ).annotate({
-    identifier: "ContactInfoList",
-  }) as any as Schema.Schema<ContactInfoList>;
+export const ContactInfoList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  contactInfos: Schema.optional(Schema.Array(ContactInfo)),
+  consent: Schema.optional(Consent),
+}).annotate({ identifier: "ContactInfoList" });
 
 export interface EditCustomerMatchMembersRequest {
   /** Required. The ID of the owner advertiser of the updated Customer Match FirstAndThirdPartyAudience. */
@@ -8031,18 +6925,14 @@ export interface EditCustomerMatchMembersRequest {
   addedMobileDeviceIdList?: MobileDeviceIdList;
 }
 
-export const EditCustomerMatchMembersRequest: Schema.Schema<EditCustomerMatchMembersRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      advertiserId: Schema.optional(Schema.String),
-      addedContactInfoList: Schema.optional(ContactInfoList),
-      removedContactInfoList: Schema.optional(ContactInfoList),
-      removedMobileDeviceIdList: Schema.optional(MobileDeviceIdList),
-      addedMobileDeviceIdList: Schema.optional(MobileDeviceIdList),
-    }),
-  ).annotate({
-    identifier: "EditCustomerMatchMembersRequest",
-  }) as any as Schema.Schema<EditCustomerMatchMembersRequest>;
+export const EditCustomerMatchMembersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    advertiserId: Schema.optional(Schema.String),
+    addedContactInfoList: Schema.optional(ContactInfoList),
+    removedContactInfoList: Schema.optional(ContactInfoList),
+    removedMobileDeviceIdList: Schema.optional(MobileDeviceIdList),
+    addedMobileDeviceIdList: Schema.optional(MobileDeviceIdList),
+  }).annotate({ identifier: "EditCustomerMatchMembersRequest" });
 
 export interface LocationList {
   /** Required. Immutable. The type of location. All locations in the list will share this type. */
@@ -8061,18 +6951,13 @@ export interface LocationList {
   advertiserId?: string;
 }
 
-export const LocationList: Schema.Schema<LocationList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locationType: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      locationListId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      advertiserId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LocationList",
-  }) as any as Schema.Schema<LocationList>;
+export const LocationList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locationType: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  locationListId: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  advertiserId: Schema.optional(Schema.String),
+}).annotate({ identifier: "LocationList" });
 
 export interface ListLocationListsResponse {
   /** The list of location lists. This list will be absent if empty. */
@@ -8081,15 +6966,11 @@ export interface ListLocationListsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationListsResponse: Schema.Schema<ListLocationListsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locationLists: Schema.optional(Schema.Array(LocationList)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationListsResponse",
-  }) as any as Schema.Schema<ListLocationListsResponse>;
+export const ListLocationListsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locationLists: Schema.optional(Schema.Array(LocationList)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListLocationListsResponse" });
 
 export interface BulkEditAssignedUserRolesRequest {
   /** The assigned user roles to create in batch, specified as a list of AssignedUserRoles. */
@@ -8098,61 +6979,50 @@ export interface BulkEditAssignedUserRolesRequest {
   deletedAssignedUserRoles?: Array<string>;
 }
 
-export const BulkEditAssignedUserRolesRequest: Schema.Schema<BulkEditAssignedUserRolesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createdAssignedUserRoles: Schema.optional(Schema.Array(AssignedUserRole)),
-      deletedAssignedUserRoles: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "BulkEditAssignedUserRolesRequest",
-  }) as any as Schema.Schema<BulkEditAssignedUserRolesRequest>;
+export const BulkEditAssignedUserRolesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createdAssignedUserRoles: Schema.optional(Schema.Array(AssignedUserRole)),
+    deletedAssignedUserRoles: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "BulkEditAssignedUserRolesRequest" });
 
 export interface BumperAd {
   /** Common ad attributes. */
   commonInStreamAttribute?: CommonInStreamAttribute;
 }
 
-export const BumperAd: Schema.Schema<BumperAd> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonInStreamAttribute: Schema.optional(CommonInStreamAttribute),
-    }),
-  ).annotate({ identifier: "BumperAd" }) as any as Schema.Schema<BumperAd>;
+export const BumperAd = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  commonInStreamAttribute: Schema.optional(CommonInStreamAttribute),
+}).annotate({ identifier: "BumperAd" });
 
 export interface YoutubeAssetAssociationAffiliateLocationAssetFilterAffiliateLocationChain {
   /** Required. ID of the affiliate location chain. */
   chainId?: string;
 }
 
-export const YoutubeAssetAssociationAffiliateLocationAssetFilterAffiliateLocationChain: Schema.Schema<YoutubeAssetAssociationAffiliateLocationAssetFilterAffiliateLocationChain> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      chainId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const YoutubeAssetAssociationAffiliateLocationAssetFilterAffiliateLocationChain =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    chainId: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "YoutubeAssetAssociationAffiliateLocationAssetFilterAffiliateLocationChain",
-  }) as any as Schema.Schema<YoutubeAssetAssociationAffiliateLocationAssetFilterAffiliateLocationChain>;
+  });
 
 export interface YoutubeAssetAssociationAffiliateLocationAssetFilterAffiliateLocationMatchingFunction {
   /** Optional. The selected affiliate location chain IDs. This field is required if affiliate_location_matching_type is `SELECTED_CHAINS`. */
   chains?: Array<YoutubeAssetAssociationAffiliateLocationAssetFilterAffiliateLocationChain>;
 }
 
-export const YoutubeAssetAssociationAffiliateLocationAssetFilterAffiliateLocationMatchingFunction: Schema.Schema<YoutubeAssetAssociationAffiliateLocationAssetFilterAffiliateLocationMatchingFunction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      chains: Schema.optional(
-        Schema.Array(
-          YoutubeAssetAssociationAffiliateLocationAssetFilterAffiliateLocationChain,
-        ),
+export const YoutubeAssetAssociationAffiliateLocationAssetFilterAffiliateLocationMatchingFunction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    chains: Schema.optional(
+      Schema.Array(
+        YoutubeAssetAssociationAffiliateLocationAssetFilterAffiliateLocationChain,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier:
       "YoutubeAssetAssociationAffiliateLocationAssetFilterAffiliateLocationMatchingFunction",
-  }) as any as Schema.Schema<YoutubeAssetAssociationAffiliateLocationAssetFilterAffiliateLocationMatchingFunction>;
+  });
 
 export interface DeleteAssignedTargetingOptionsRequest {
   /** Required. Identifies the type of this assigned targeting option. */
@@ -8212,29 +7082,21 @@ export interface DeleteAssignedTargetingOptionsRequest {
   assignedTargetingOptionIds?: Array<string>;
 }
 
-export const DeleteAssignedTargetingOptionsRequest: Schema.Schema<DeleteAssignedTargetingOptionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetingType: Schema.optional(Schema.String),
-      assignedTargetingOptionIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "DeleteAssignedTargetingOptionsRequest",
-  }) as any as Schema.Schema<DeleteAssignedTargetingOptionsRequest>;
+export const DeleteAssignedTargetingOptionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetingType: Schema.optional(Schema.String),
+    assignedTargetingOptionIds: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "DeleteAssignedTargetingOptionsRequest" });
 
 export interface YoutubeAssetAssociationSitelinkAsset {
   /** Required. ID of the sitelink asset. */
   assetId?: string;
 }
 
-export const YoutubeAssetAssociationSitelinkAsset: Schema.Schema<YoutubeAssetAssociationSitelinkAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      assetId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "YoutubeAssetAssociationSitelinkAsset",
-  }) as any as Schema.Schema<YoutubeAssetAssociationSitelinkAsset>;
+export const YoutubeAssetAssociationSitelinkAsset =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    assetId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "YoutubeAssetAssociationSitelinkAsset" });
 
 export interface LookbackWindow {
   /** Lookback window, in days, from the last time a given user clicked on one of your ads. */
@@ -8243,15 +7105,10 @@ export interface LookbackWindow {
   impressionDays?: number;
 }
 
-export const LookbackWindow: Schema.Schema<LookbackWindow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clickDays: Schema.optional(Schema.Number),
-      impressionDays: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "LookbackWindow",
-  }) as any as Schema.Schema<LookbackWindow>;
+export const LookbackWindow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  clickDays: Schema.optional(Schema.Number),
+  impressionDays: Schema.optional(Schema.Number),
+}).annotate({ identifier: "LookbackWindow" });
 
 export interface CreateAssignedTargetingOptionsRequest {
   /** Required. Identifies the type of this assigned targeting option. */
@@ -8311,17 +7168,13 @@ export interface CreateAssignedTargetingOptionsRequest {
   assignedTargetingOptions?: Array<AssignedTargetingOption>;
 }
 
-export const CreateAssignedTargetingOptionsRequest: Schema.Schema<CreateAssignedTargetingOptionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetingType: Schema.optional(Schema.String),
-      assignedTargetingOptions: Schema.optional(
-        Schema.Array(AssignedTargetingOption),
-      ),
-    }),
-  ).annotate({
-    identifier: "CreateAssignedTargetingOptionsRequest",
-  }) as any as Schema.Schema<CreateAssignedTargetingOptionsRequest>;
+export const CreateAssignedTargetingOptionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetingType: Schema.optional(Schema.String),
+    assignedTargetingOptions: Schema.optional(
+      Schema.Array(AssignedTargetingOption),
+    ),
+  }).annotate({ identifier: "CreateAssignedTargetingOptionsRequest" });
 
 export interface BulkEditAssignedTargetingOptionsRequest {
   /** The assigned targeting options to create in batch, specified as a list of CreateAssignedTargetingOptionsRequest. Supported targeting types include: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_AUDIO_CONTENT_TYPE` * `TARGETING_TYPE_AUTHORIZED_SELLER_STATUS` * `TARGETING_TYPE_BROWSER` * `TARGETING_TYPE_BUSINESS_CHAIN` * `TARGETING_TYPE_CARRIER_AND_ISP` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_CONTENT_DURATION` * `TARGETING_TYPE_CONTENT_GENRE` * `TARGETING_TYPE_CONTENT_INSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_OUTSTREAM_POSITION` * `TARGETING_TYPE_CONTENT_STREAM_TYPE` * `TARGETING_TYPE_DAY_AND_TIME` * `TARGETING_TYPE_DEVICE_MAKE_MODEL` * `TARGETING_TYPE_DEVICE_TYPE` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_ENVIRONMENT` * `TARGETING_TYPE_EXCHANGE` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_INVENTORY_SOURCE` * `TARGETING_TYPE_INVENTORY_SOURCE_GROUP` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_NATIVE_CONTENT_POSITION` * `TARGETING_TYPE_NEGATIVE_KEYWORD_LIST` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_ON_SCREEN_POSITION` * `TARGETING_TYPE_OPERATING_SYSTEM` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_POI` * `TARGETING_TYPE_PROXIMITY_LOCATION_LIST` * `TARGETING_TYPE_REGIONAL_LOCATION_LIST` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_SUB_EXCHANGE` * `TARGETING_TYPE_THIRD_PARTY_VERIFIER` * `TARGETING_TYPE_URL` * `TARGETING_TYPE_USER_REWARDED_CONTENT` * `TARGETING_TYPE_VIDEO_PLAYER_SIZE` * `TARGETING_TYPE_VIEWABILITY` */
@@ -8332,20 +7185,16 @@ export interface BulkEditAssignedTargetingOptionsRequest {
   lineItemIds?: Array<string>;
 }
 
-export const BulkEditAssignedTargetingOptionsRequest: Schema.Schema<BulkEditAssignedTargetingOptionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createRequests: Schema.optional(
-        Schema.Array(CreateAssignedTargetingOptionsRequest),
-      ),
-      deleteRequests: Schema.optional(
-        Schema.Array(DeleteAssignedTargetingOptionsRequest),
-      ),
-      lineItemIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "BulkEditAssignedTargetingOptionsRequest",
-  }) as any as Schema.Schema<BulkEditAssignedTargetingOptionsRequest>;
+export const BulkEditAssignedTargetingOptionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createRequests: Schema.optional(
+      Schema.Array(CreateAssignedTargetingOptionsRequest),
+    ),
+    deleteRequests: Schema.optional(
+      Schema.Array(DeleteAssignedTargetingOptionsRequest),
+    ),
+    lineItemIds: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "BulkEditAssignedTargetingOptionsRequest" });
 
 export interface Pacing {
   /** Required. The type of pacing that defines how the budget amount will be spent across the pacing_period. `PACING_TYPE_ASAP` is not compatible with pacing_period `PACING_PERIOD_FLIGHT` for insertion orders. */
@@ -8367,15 +7216,12 @@ export interface Pacing {
   dailyMaxImpressions?: string;
 }
 
-export const Pacing: Schema.Schema<Pacing> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pacingType: Schema.optional(Schema.String),
-      pacingPeriod: Schema.optional(Schema.String),
-      dailyMaxMicros: Schema.optional(Schema.String),
-      dailyMaxImpressions: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Pacing" }) as any as Schema.Schema<Pacing>;
+export const Pacing = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pacingType: Schema.optional(Schema.String),
+  pacingPeriod: Schema.optional(Schema.String),
+  dailyMaxMicros: Schema.optional(Schema.String),
+  dailyMaxImpressions: Schema.optional(Schema.String),
+}).annotate({ identifier: "Pacing" });
 
 export interface LineItemFlight {
   /** The flight start and end dates of the line item. They are resolved relative to the parent advertiser's time zone. * Required when flight_date_type is `LINE_ITEM_FLIGHT_DATE_TYPE_CUSTOM`. Output only otherwise. * When creating a new flight, both `start_date` and `end_date` must be in the future. * An existing flight with a `start_date` in the past has a mutable `end_date` but an immutable `start_date`. * `end_date` must be the `start_date` or later, both before the year 2037. */
@@ -8388,15 +7234,10 @@ export interface LineItemFlight {
     | (string & {});
 }
 
-export const LineItemFlight: Schema.Schema<LineItemFlight> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dateRange: Schema.optional(DateRange),
-      flightDateType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LineItemFlight",
-  }) as any as Schema.Schema<LineItemFlight>;
+export const LineItemFlight = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dateRange: Schema.optional(DateRange),
+  flightDateType: Schema.optional(Schema.String),
+}).annotate({ identifier: "LineItemFlight" });
 
 export interface PartnerCost {
   /** The invoice type for this partner cost. * Required when cost_type is one of: - `PARTNER_COST_TYPE_ADLOOX` - `PARTNER_COST_TYPE_DOUBLE_VERIFY` - `PARTNER_COST_TYPE_INTEGRAL_AD_SCIENCE`. * Output only for other types. */
@@ -8450,18 +7291,13 @@ export interface PartnerCost {
   feePercentageMillis?: string;
 }
 
-export const PartnerCost: Schema.Schema<PartnerCost> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      invoiceType: Schema.optional(Schema.String),
-      feeAmount: Schema.optional(Schema.String),
-      feeType: Schema.optional(Schema.String),
-      costType: Schema.optional(Schema.String),
-      feePercentageMillis: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PartnerCost",
-  }) as any as Schema.Schema<PartnerCost>;
+export const PartnerCost = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  invoiceType: Schema.optional(Schema.String),
+  feeAmount: Schema.optional(Schema.String),
+  feeType: Schema.optional(Schema.String),
+  costType: Schema.optional(Schema.String),
+  feePercentageMillis: Schema.optional(Schema.String),
+}).annotate({ identifier: "PartnerCost" });
 
 export interface LineItemBudget {
   /** Output only. The budget unit specifies whether the budget is currency based or impression based. This value is inherited from the parent insertion order. */
@@ -8481,16 +7317,11 @@ export interface LineItemBudget {
     | (string & {});
 }
 
-export const LineItemBudget: Schema.Schema<LineItemBudget> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      budgetUnit: Schema.optional(Schema.String),
-      maxAmount: Schema.optional(Schema.String),
-      budgetAllocationType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LineItemBudget",
-  }) as any as Schema.Schema<LineItemBudget>;
+export const LineItemBudget = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  budgetUnit: Schema.optional(Schema.String),
+  maxAmount: Schema.optional(Schema.String),
+  budgetAllocationType: Schema.optional(Schema.String),
+}).annotate({ identifier: "LineItemBudget" });
 
 export interface MobileApp {
   /** Output only. The app name. */
@@ -8503,15 +7334,12 @@ export interface MobileApp {
   platform?: "PLATFORM_UNSPECIFIED" | "IOS" | "ANDROID" | (string & {});
 }
 
-export const MobileApp: Schema.Schema<MobileApp> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      publisher: Schema.optional(Schema.String),
-      appId: Schema.optional(Schema.String),
-      platform: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "MobileApp" }) as any as Schema.Schema<MobileApp>;
+export const MobileApp = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+  publisher: Schema.optional(Schema.String),
+  appId: Schema.optional(Schema.String),
+  platform: Schema.optional(Schema.String),
+}).annotate({ identifier: "MobileApp" });
 
 export interface TrackingFloodlightActivityConfig {
   /** Required. The ID of the Floodlight activity. */
@@ -8522,16 +7350,12 @@ export interface TrackingFloodlightActivityConfig {
   postViewLookbackWindowDays?: number;
 }
 
-export const TrackingFloodlightActivityConfig: Schema.Schema<TrackingFloodlightActivityConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      floodlightActivityId: Schema.optional(Schema.String),
-      postClickLookbackWindowDays: Schema.optional(Schema.Number),
-      postViewLookbackWindowDays: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "TrackingFloodlightActivityConfig",
-  }) as any as Schema.Schema<TrackingFloodlightActivityConfig>;
+export const TrackingFloodlightActivityConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    floodlightActivityId: Schema.optional(Schema.String),
+    postClickLookbackWindowDays: Schema.optional(Schema.Number),
+    postViewLookbackWindowDays: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "TrackingFloodlightActivityConfig" });
 
 export interface ConversionCountingConfig {
   /** The Floodlight activity configs used to track conversions. The number of conversions counted is the sum of all of the conversions counted by all of the Floodlight activity IDs specified in this field. This field can't be updated if a custom bidding algorithm is assigned to the line item. If you set this field and assign a custom bidding algorithm in the same request, the floodlight activities must match the ones used by the custom bidding algorithm. */
@@ -8542,18 +7366,14 @@ export interface ConversionCountingConfig {
   postViewCountPercentageMillis?: string;
 }
 
-export const ConversionCountingConfig: Schema.Schema<ConversionCountingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      floodlightActivityConfigs: Schema.optional(
-        Schema.Array(TrackingFloodlightActivityConfig),
-      ),
-      primaryAttributionModelId: Schema.optional(Schema.String),
-      postViewCountPercentageMillis: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConversionCountingConfig",
-  }) as any as Schema.Schema<ConversionCountingConfig>;
+export const ConversionCountingConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    floodlightActivityConfigs: Schema.optional(
+      Schema.Array(TrackingFloodlightActivityConfig),
+    ),
+    primaryAttributionModelId: Schema.optional(Schema.String),
+    postViewCountPercentageMillis: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ConversionCountingConfig" });
 
 export interface PartnerRevenueModel {
   /** Required. The markup type of the partner revenue model. This field must be set to `PARTNER_REVENUE_MODEL_MARKUP_TYPE_TOTAL_MEDIA_COST_MARKUP` for Demand Gen line items. */
@@ -8567,15 +7387,10 @@ export interface PartnerRevenueModel {
   markupAmount?: string;
 }
 
-export const PartnerRevenueModel: Schema.Schema<PartnerRevenueModel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      markupType: Schema.optional(Schema.String),
-      markupAmount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PartnerRevenueModel",
-  }) as any as Schema.Schema<PartnerRevenueModel>;
+export const PartnerRevenueModel = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  markupType: Schema.optional(Schema.String),
+  markupAmount: Schema.optional(Schema.String),
+}).annotate({ identifier: "PartnerRevenueModel" });
 
 export interface LineItem {
   /** Required. Controls whether or not the line item can spend its budget and bid on inventory. * For CreateLineItem method, only `ENTITY_STATUS_DRAFT` is allowed. To activate a line item, use UpdateLineItem method and update the status to `ENTITY_STATUS_ACTIVE` after creation. * A line item cannot be changed back to `ENTITY_STATUS_DRAFT` status from any other status. * If the line item's parent insertion order is not active, the line item can't spend its budget even if its own status is `ENTITY_STATUS_ACTIVE`. */
@@ -8689,38 +7504,35 @@ export interface LineItem {
   campaignId?: string;
 }
 
-export const LineItem: Schema.Schema<LineItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entityStatus: Schema.optional(Schema.String),
-      insertionOrderId: Schema.optional(Schema.String),
-      youtubeAndPartnersSettings: Schema.optional(YoutubeAndPartnersSettings),
-      advertiserId: Schema.optional(Schema.String),
-      pacing: Schema.optional(Pacing),
-      creativeIds: Schema.optional(Schema.Array(Schema.String)),
-      frequencyCap: Schema.optional(FrequencyCap),
-      demandGenSettings: Schema.optional(DemandGenSettings),
-      lineItemType: Schema.optional(Schema.String),
-      flight: Schema.optional(LineItemFlight),
-      partnerCosts: Schema.optional(Schema.Array(PartnerCost)),
-      warningMessages: Schema.optional(Schema.Array(Schema.String)),
-      bidStrategy: Schema.optional(BiddingStrategy),
-      integrationDetails: Schema.optional(IntegrationDetails),
-      name: Schema.optional(Schema.String),
-      reservationType: Schema.optional(Schema.String),
-      budget: Schema.optional(LineItemBudget),
-      updateTime: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      targetingExpansion: Schema.optional(TargetingExpansionConfig),
-      lineItemId: Schema.optional(Schema.String),
-      containsEuPoliticalAds: Schema.optional(Schema.String),
-      mobileApp: Schema.optional(MobileApp),
-      conversionCounting: Schema.optional(ConversionCountingConfig),
-      excludeNewExchanges: Schema.optional(Schema.Boolean),
-      partnerRevenueModel: Schema.optional(PartnerRevenueModel),
-      campaignId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "LineItem" }) as any as Schema.Schema<LineItem>;
+export const LineItem = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  entityStatus: Schema.optional(Schema.String),
+  insertionOrderId: Schema.optional(Schema.String),
+  youtubeAndPartnersSettings: Schema.optional(YoutubeAndPartnersSettings),
+  advertiserId: Schema.optional(Schema.String),
+  pacing: Schema.optional(Pacing),
+  creativeIds: Schema.optional(Schema.Array(Schema.String)),
+  frequencyCap: Schema.optional(FrequencyCap),
+  demandGenSettings: Schema.optional(DemandGenSettings),
+  lineItemType: Schema.optional(Schema.String),
+  flight: Schema.optional(LineItemFlight),
+  partnerCosts: Schema.optional(Schema.Array(PartnerCost)),
+  warningMessages: Schema.optional(Schema.Array(Schema.String)),
+  bidStrategy: Schema.optional(BiddingStrategy),
+  integrationDetails: Schema.optional(IntegrationDetails),
+  name: Schema.optional(Schema.String),
+  reservationType: Schema.optional(Schema.String),
+  budget: Schema.optional(LineItemBudget),
+  updateTime: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  targetingExpansion: Schema.optional(TargetingExpansionConfig),
+  lineItemId: Schema.optional(Schema.String),
+  containsEuPoliticalAds: Schema.optional(Schema.String),
+  mobileApp: Schema.optional(MobileApp),
+  conversionCounting: Schema.optional(ConversionCountingConfig),
+  excludeNewExchanges: Schema.optional(Schema.Boolean),
+  partnerRevenueModel: Schema.optional(PartnerRevenueModel),
+  campaignId: Schema.optional(Schema.String),
+}).annotate({ identifier: "LineItem" });
 
 export interface ListAssignedLocationsResponse {
   /** The list of assigned locations. This list will be absent if empty. */
@@ -8729,15 +7541,11 @@ export interface ListAssignedLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListAssignedLocationsResponse: Schema.Schema<ListAssignedLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      assignedLocations: Schema.optional(Schema.Array(AssignedLocation)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAssignedLocationsResponse",
-  }) as any as Schema.Schema<ListAssignedLocationsResponse>;
+export const ListAssignedLocationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    assignedLocations: Schema.optional(Schema.Array(AssignedLocation)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListAssignedLocationsResponse" });
 
 export interface ListLineItemsResponse {
   /** The list of line items. This list will be absent if empty. */
@@ -8746,15 +7554,10 @@ export interface ListLineItemsResponse {
   nextPageToken?: string;
 }
 
-export const ListLineItemsResponse: Schema.Schema<ListLineItemsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lineItems: Schema.optional(Schema.Array(LineItem)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLineItemsResponse",
-  }) as any as Schema.Schema<ListLineItemsResponse>;
+export const ListLineItemsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  lineItems: Schema.optional(Schema.Array(LineItem)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLineItemsResponse" });
 
 export interface BulkEditSitesRequest {
   /** The sites to delete in batch, specified as a list of site url_or_app_ids. */
@@ -8767,45 +7570,32 @@ export interface BulkEditSitesRequest {
   advertiserId?: string;
 }
 
-export const BulkEditSitesRequest: Schema.Schema<BulkEditSitesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deletedSites: Schema.optional(Schema.Array(Schema.String)),
-      partnerId: Schema.optional(Schema.String),
-      createdSites: Schema.optional(Schema.Array(Site)),
-      advertiserId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BulkEditSitesRequest",
-  }) as any as Schema.Schema<BulkEditSitesRequest>;
+export const BulkEditSitesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  deletedSites: Schema.optional(Schema.Array(Schema.String)),
+  partnerId: Schema.optional(Schema.String),
+  createdSites: Schema.optional(Schema.Array(Site)),
+  advertiserId: Schema.optional(Schema.String),
+}).annotate({ identifier: "BulkEditSitesRequest" });
 
 export interface ReplaceNegativeKeywordsRequest {
   /** The negative keywords that will replace the existing keywords in the negative keyword list, specified as a list of NegativeKeywords. */
   newNegativeKeywords?: Array<NegativeKeyword>;
 }
 
-export const ReplaceNegativeKeywordsRequest: Schema.Schema<ReplaceNegativeKeywordsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      newNegativeKeywords: Schema.optional(Schema.Array(NegativeKeyword)),
-    }),
-  ).annotate({
-    identifier: "ReplaceNegativeKeywordsRequest",
-  }) as any as Schema.Schema<ReplaceNegativeKeywordsRequest>;
+export const ReplaceNegativeKeywordsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    newNegativeKeywords: Schema.optional(Schema.Array(NegativeKeyword)),
+  }).annotate({ identifier: "ReplaceNegativeKeywordsRequest" });
 
 export interface DuplicateLineItemResponse {
   /** The ID of the created line item. */
   duplicateLineItemId?: string;
 }
 
-export const DuplicateLineItemResponse: Schema.Schema<DuplicateLineItemResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      duplicateLineItemId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DuplicateLineItemResponse",
-  }) as any as Schema.Schema<DuplicateLineItemResponse>;
+export const DuplicateLineItemResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    duplicateLineItemId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DuplicateLineItemResponse" });
 
 export interface NonSkippableAd {
   /** Common ad attributes. */
@@ -8814,31 +7604,21 @@ export interface NonSkippableAd {
   customParameters?: Record<string, string>;
 }
 
-export const NonSkippableAd: Schema.Schema<NonSkippableAd> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonInStreamAttribute: Schema.optional(CommonInStreamAttribute),
-      customParameters: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-    }),
-  ).annotate({
-    identifier: "NonSkippableAd",
-  }) as any as Schema.Schema<NonSkippableAd>;
+export const NonSkippableAd = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  commonInStreamAttribute: Schema.optional(CommonInStreamAttribute),
+  customParameters: Schema.optional(
+    Schema.Record(Schema.String, Schema.String),
+  ),
+}).annotate({ identifier: "NonSkippableAd" });
 
 export interface ReplaceSitesResponse {
   /** The list of sites in the channel after replacing. */
   sites?: Array<Site>;
 }
 
-export const ReplaceSitesResponse: Schema.Schema<ReplaceSitesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sites: Schema.optional(Schema.Array(Site)),
-    }),
-  ).annotate({
-    identifier: "ReplaceSitesResponse",
-  }) as any as Schema.Schema<ReplaceSitesResponse>;
+export const ReplaceSitesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sites: Schema.optional(Schema.Array(Site)),
+}).annotate({ identifier: "ReplaceSitesResponse" });
 
 export interface GuaranteedOrderStatus {
   /** Whether or not the guaranteed order is servable. Acceptable values are `ENTITY_STATUS_ACTIVE`, `ENTITY_STATUS_ARCHIVED`, and `ENTITY_STATUS_PAUSED`. Default value is `ENTITY_STATUS_ACTIVE`. */
@@ -8860,16 +7640,11 @@ export interface GuaranteedOrderStatus {
     | (string & {});
 }
 
-export const GuaranteedOrderStatus: Schema.Schema<GuaranteedOrderStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entityStatus: Schema.optional(Schema.String),
-      entityPauseReason: Schema.optional(Schema.String),
-      configStatus: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GuaranteedOrderStatus",
-  }) as any as Schema.Schema<GuaranteedOrderStatus>;
+export const GuaranteedOrderStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  entityStatus: Schema.optional(Schema.String),
+  entityPauseReason: Schema.optional(Schema.String),
+  configStatus: Schema.optional(Schema.String),
+}).annotate({ identifier: "GuaranteedOrderStatus" });
 
 export interface VideoDiscoveryAd {
   /** The headline of ad. */
@@ -8890,18 +7665,13 @@ export interface VideoDiscoveryAd {
   video?: YoutubeVideoDetails;
 }
 
-export const VideoDiscoveryAd: Schema.Schema<VideoDiscoveryAd> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      headline: Schema.optional(Schema.String),
-      description1: Schema.optional(Schema.String),
-      thumbnail: Schema.optional(Schema.String),
-      description2: Schema.optional(Schema.String),
-      video: Schema.optional(YoutubeVideoDetails),
-    }),
-  ).annotate({
-    identifier: "VideoDiscoveryAd",
-  }) as any as Schema.Schema<VideoDiscoveryAd>;
+export const VideoDiscoveryAd = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  headline: Schema.optional(Schema.String),
+  description1: Schema.optional(Schema.String),
+  thumbnail: Schema.optional(Schema.String),
+  description2: Schema.optional(Schema.String),
+  video: Schema.optional(YoutubeVideoDetails),
+}).annotate({ identifier: "VideoDiscoveryAd" });
 
 export interface ActiveViewVideoViewabilityMetricConfig {
   /** Required. The display name of the custom metric. */
@@ -8956,18 +7726,14 @@ export interface ActiveViewVideoViewabilityMetricConfig {
     | (string & {});
 }
 
-export const ActiveViewVideoViewabilityMetricConfig: Schema.Schema<ActiveViewVideoViewabilityMetricConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      minimumQuartile: Schema.optional(Schema.String),
-      minimumViewability: Schema.optional(Schema.String),
-      minimumVolume: Schema.optional(Schema.String),
-      minimumDuration: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ActiveViewVideoViewabilityMetricConfig",
-  }) as any as Schema.Schema<ActiveViewVideoViewabilityMetricConfig>;
+export const ActiveViewVideoViewabilityMetricConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    minimumQuartile: Schema.optional(Schema.String),
+    minimumViewability: Schema.optional(Schema.String),
+    minimumVolume: Schema.optional(Schema.String),
+    minimumDuration: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ActiveViewVideoViewabilityMetricConfig" });
 
 export interface FloodlightGroup {
   /** Required. The web tag type enabled for the Floodlight group. */
@@ -8991,36 +7757,26 @@ export interface FloodlightGroup {
   activeViewConfig?: ActiveViewVideoViewabilityMetricConfig;
 }
 
-export const FloodlightGroup: Schema.Schema<FloodlightGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      webTagType: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      lookbackWindow: Schema.optional(LookbackWindow),
-      floodlightGroupId: Schema.optional(Schema.String),
-      customVariables: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-      activeViewConfig: Schema.optional(ActiveViewVideoViewabilityMetricConfig),
-    }),
-  ).annotate({
-    identifier: "FloodlightGroup",
-  }) as any as Schema.Schema<FloodlightGroup>;
+export const FloodlightGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  webTagType: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  lookbackWindow: Schema.optional(LookbackWindow),
+  floodlightGroupId: Schema.optional(Schema.String),
+  customVariables: Schema.optional(
+    Schema.Record(Schema.String, Schema.Unknown),
+  ),
+  activeViewConfig: Schema.optional(ActiveViewVideoViewabilityMetricConfig),
+}).annotate({ identifier: "FloodlightGroup" });
 
 export interface GoogleBytestreamMedia {
   /** Name of the media resource. */
   resourceName?: string;
 }
 
-export const GoogleBytestreamMedia: Schema.Schema<GoogleBytestreamMedia> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleBytestreamMedia",
-  }) as any as Schema.Schema<GoogleBytestreamMedia>;
+export const GoogleBytestreamMedia = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceName: Schema.optional(Schema.String),
+}).annotate({ identifier: "GoogleBytestreamMedia" });
 
 export interface ScriptError {
   /** The column number in the script where the error was thrown. */
@@ -9038,31 +7794,23 @@ export interface ScriptError {
     | (string & {});
 }
 
-export const ScriptError: Schema.Schema<ScriptError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      column: Schema.optional(Schema.String),
-      errorMessage: Schema.optional(Schema.String),
-      line: Schema.optional(Schema.String),
-      errorCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ScriptError",
-  }) as any as Schema.Schema<ScriptError>;
+export const ScriptError = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  column: Schema.optional(Schema.String),
+  errorMessage: Schema.optional(Schema.String),
+  line: Schema.optional(Schema.String),
+  errorCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "ScriptError" });
 
 export interface CustomBiddingScriptRef {
   /** A resource name to be used in media.download to Download the script files. Or media.upload to Upload the script files. Resource names have the format `customBiddingAlgorithms/{custom_bidding_algorithm_id}/scriptRef/{ref_id}`. */
   resourceName?: string;
 }
 
-export const CustomBiddingScriptRef: Schema.Schema<CustomBiddingScriptRef> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomBiddingScriptRef",
-  }) as any as Schema.Schema<CustomBiddingScriptRef>;
+export const CustomBiddingScriptRef = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    resourceName: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "CustomBiddingScriptRef" });
 
 export interface CustomBiddingScript {
   /** Output only. The time when the script was created. */
@@ -9088,21 +7836,16 @@ export interface CustomBiddingScript {
     | (string & {});
 }
 
-export const CustomBiddingScript: Schema.Schema<CustomBiddingScript> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      active: Schema.optional(Schema.Boolean),
-      errors: Schema.optional(Schema.Array(ScriptError)),
-      script: Schema.optional(CustomBiddingScriptRef),
-      customBiddingAlgorithmId: Schema.optional(Schema.String),
-      customBiddingScriptId: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomBiddingScript",
-  }) as any as Schema.Schema<CustomBiddingScript>;
+export const CustomBiddingScript = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  active: Schema.optional(Schema.Boolean),
+  errors: Schema.optional(Schema.Array(ScriptError)),
+  script: Schema.optional(CustomBiddingScriptRef),
+  customBiddingAlgorithmId: Schema.optional(Schema.String),
+  customBiddingScriptId: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+}).annotate({ identifier: "CustomBiddingScript" });
 
 export interface YoutubeAssetAssociationLocationAssetFilterLocationMatchingFunction {
   /** Optional. The business name to match with. This field is optional and can only be set if location_matching_type is `FILTER`. */
@@ -9113,17 +7856,15 @@ export interface YoutubeAssetAssociationLocationAssetFilterLocationMatchingFunct
   locationAssetIds?: Array<string>;
 }
 
-export const YoutubeAssetAssociationLocationAssetFilterLocationMatchingFunction: Schema.Schema<YoutubeAssetAssociationLocationAssetFilterLocationMatchingFunction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      business: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Array(Schema.String)),
-      locationAssetIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const YoutubeAssetAssociationLocationAssetFilterLocationMatchingFunction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    business: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Array(Schema.String)),
+    locationAssetIds: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier:
       "YoutubeAssetAssociationLocationAssetFilterLocationMatchingFunction",
-  }) as any as Schema.Schema<YoutubeAssetAssociationLocationAssetFilterLocationMatchingFunction>;
+  });
 
 export interface BulkEditAssignedLocationsRequest {
   /** The assigned locations to create in bulk, specified as a list of AssignedLocation resources. */
@@ -9132,31 +7873,25 @@ export interface BulkEditAssignedLocationsRequest {
   deletedAssignedLocations?: Array<string>;
 }
 
-export const BulkEditAssignedLocationsRequest: Schema.Schema<BulkEditAssignedLocationsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createdAssignedLocations: Schema.optional(Schema.Array(AssignedLocation)),
-      deletedAssignedLocations: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "BulkEditAssignedLocationsRequest",
-  }) as any as Schema.Schema<BulkEditAssignedLocationsRequest>;
+export const BulkEditAssignedLocationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createdAssignedLocations: Schema.optional(Schema.Array(AssignedLocation)),
+    deletedAssignedLocations: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "BulkEditAssignedLocationsRequest" });
 
 export interface BulkEditAdvertiserAssignedTargetingOptionsResponse {
   /** The list of assigned targeting options that have been successfully created. This list will be absent if empty. */
   createdAssignedTargetingOptions?: Array<AssignedTargetingOption>;
 }
 
-export const BulkEditAdvertiserAssignedTargetingOptionsResponse: Schema.Schema<BulkEditAdvertiserAssignedTargetingOptionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createdAssignedTargetingOptions: Schema.optional(
-        Schema.Array(AssignedTargetingOption),
-      ),
-    }),
-  ).annotate({
+export const BulkEditAdvertiserAssignedTargetingOptionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createdAssignedTargetingOptions: Schema.optional(
+      Schema.Array(AssignedTargetingOption),
+    ),
+  }).annotate({
     identifier: "BulkEditAdvertiserAssignedTargetingOptionsResponse",
-  }) as any as Schema.Schema<BulkEditAdvertiserAssignedTargetingOptionsResponse>;
+  });
 
 export interface VideoPerformanceAd {
   /** The URL address loaded in the background for tracking purposes. */
@@ -9185,27 +7920,22 @@ export interface VideoPerformanceAd {
   descriptions?: Array<string>;
 }
 
-export const VideoPerformanceAd: Schema.Schema<VideoPerformanceAd> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      trackingUrl: Schema.optional(Schema.String),
-      companionBanners: Schema.optional(Schema.Array(ImageAsset)),
-      headlines: Schema.optional(Schema.Array(Schema.String)),
-      displayUrlBreadcrumb1: Schema.optional(Schema.String),
-      displayUrlBreadcrumb2: Schema.optional(Schema.String),
-      videos: Schema.optional(Schema.Array(YoutubeVideoDetails)),
-      actionButtonLabels: Schema.optional(Schema.Array(Schema.String)),
-      domain: Schema.optional(Schema.String),
-      finalUrl: Schema.optional(Schema.String),
-      customParameters: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      longHeadlines: Schema.optional(Schema.Array(Schema.String)),
-      descriptions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "VideoPerformanceAd",
-  }) as any as Schema.Schema<VideoPerformanceAd>;
+export const VideoPerformanceAd = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  trackingUrl: Schema.optional(Schema.String),
+  companionBanners: Schema.optional(Schema.Array(ImageAsset)),
+  headlines: Schema.optional(Schema.Array(Schema.String)),
+  displayUrlBreadcrumb1: Schema.optional(Schema.String),
+  displayUrlBreadcrumb2: Schema.optional(Schema.String),
+  videos: Schema.optional(Schema.Array(YoutubeVideoDetails)),
+  actionButtonLabels: Schema.optional(Schema.Array(Schema.String)),
+  domain: Schema.optional(Schema.String),
+  finalUrl: Schema.optional(Schema.String),
+  customParameters: Schema.optional(
+    Schema.Record(Schema.String, Schema.String),
+  ),
+  longHeadlines: Schema.optional(Schema.Array(Schema.String)),
+  descriptions: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "VideoPerformanceAd" });
 
 export interface LineItemAssignedTargetingOption {
   /** The ID of the line item the assigned targeting option is assigned to. */
@@ -9214,15 +7944,11 @@ export interface LineItemAssignedTargetingOption {
   assignedTargetingOption?: AssignedTargetingOption;
 }
 
-export const LineItemAssignedTargetingOption: Schema.Schema<LineItemAssignedTargetingOption> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lineItemId: Schema.optional(Schema.String),
-      assignedTargetingOption: Schema.optional(AssignedTargetingOption),
-    }),
-  ).annotate({
-    identifier: "LineItemAssignedTargetingOption",
-  }) as any as Schema.Schema<LineItemAssignedTargetingOption>;
+export const LineItemAssignedTargetingOption =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    lineItemId: Schema.optional(Schema.String),
+    assignedTargetingOption: Schema.optional(AssignedTargetingOption),
+  }).annotate({ identifier: "LineItemAssignedTargetingOption" });
 
 export interface BulkListAssignedTargetingOptionsResponse {
   /** A token identifying the next page of results. This value should be specified as the pageToken in a subsequent call to `BulkListAssignedTargetingOptions` to fetch the next page of results. This token will be absent if there are no more line_item_assigned_targeting_options to return. */
@@ -9231,17 +7957,13 @@ export interface BulkListAssignedTargetingOptionsResponse {
   lineItemAssignedTargetingOptions?: Array<LineItemAssignedTargetingOption>;
 }
 
-export const BulkListAssignedTargetingOptionsResponse: Schema.Schema<BulkListAssignedTargetingOptionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      lineItemAssignedTargetingOptions: Schema.optional(
-        Schema.Array(LineItemAssignedTargetingOption),
-      ),
-    }),
-  ).annotate({
-    identifier: "BulkListAssignedTargetingOptionsResponse",
-  }) as any as Schema.Schema<BulkListAssignedTargetingOptionsResponse>;
+export const BulkListAssignedTargetingOptionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    lineItemAssignedTargetingOptions: Schema.optional(
+      Schema.Array(LineItemAssignedTargetingOption),
+    ),
+  }).annotate({ identifier: "BulkListAssignedTargetingOptionsResponse" });
 
 export interface CustomBiddingModelDetails {
   /** The unique ID of the relevant advertiser. */
@@ -9264,16 +7986,12 @@ export interface CustomBiddingModelDetails {
     | (string & {});
 }
 
-export const CustomBiddingModelDetails: Schema.Schema<CustomBiddingModelDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      advertiserId: Schema.optional(Schema.String),
-      readinessState: Schema.optional(Schema.String),
-      suspensionState: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomBiddingModelDetails",
-  }) as any as Schema.Schema<CustomBiddingModelDetails>;
+export const CustomBiddingModelDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    advertiserId: Schema.optional(Schema.String),
+    readinessState: Schema.optional(Schema.String),
+    suspensionState: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CustomBiddingModelDetails" });
 
 export interface CustomBiddingAlgorithm {
   /** Controls whether or not the custom bidding algorithm can be used as a bidding strategy. Accepted values are: * `ENTITY_STATUS_ACTIVE` * `ENTITY_STATUS_ARCHIVED` */
@@ -9313,23 +8031,20 @@ export interface CustomBiddingAlgorithm {
   displayName?: string;
 }
 
-export const CustomBiddingAlgorithm: Schema.Schema<CustomBiddingAlgorithm> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entityStatus: Schema.optional(Schema.String),
-      customBiddingAlgorithmType: Schema.optional(Schema.String),
-      sharedAdvertiserIds: Schema.optional(Schema.Array(Schema.String)),
-      advertiserId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      modelDetails: Schema.optional(Schema.Array(CustomBiddingModelDetails)),
-      customBiddingAlgorithmId: Schema.optional(Schema.String),
-      thirdPartyOptimizationPartner: Schema.optional(Schema.String),
-      partnerId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomBiddingAlgorithm",
-  }) as any as Schema.Schema<CustomBiddingAlgorithm>;
+export const CustomBiddingAlgorithm = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    entityStatus: Schema.optional(Schema.String),
+    customBiddingAlgorithmType: Schema.optional(Schema.String),
+    sharedAdvertiserIds: Schema.optional(Schema.Array(Schema.String)),
+    advertiserId: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    modelDetails: Schema.optional(Schema.Array(CustomBiddingModelDetails)),
+    customBiddingAlgorithmId: Schema.optional(Schema.String),
+    thirdPartyOptimizationPartner: Schema.optional(Schema.String),
+    partnerId: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "CustomBiddingAlgorithm" });
 
 export interface ListCustomBiddingAlgorithmsResponse {
   /** The list of custom bidding algorithms. This list will be absent if empty. */
@@ -9338,17 +8053,13 @@ export interface ListCustomBiddingAlgorithmsResponse {
   nextPageToken?: string;
 }
 
-export const ListCustomBiddingAlgorithmsResponse: Schema.Schema<ListCustomBiddingAlgorithmsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customBiddingAlgorithms: Schema.optional(
-        Schema.Array(CustomBiddingAlgorithm),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListCustomBiddingAlgorithmsResponse",
-  }) as any as Schema.Schema<ListCustomBiddingAlgorithmsResponse>;
+export const ListCustomBiddingAlgorithmsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customBiddingAlgorithms: Schema.optional(
+      Schema.Array(CustomBiddingAlgorithm),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListCustomBiddingAlgorithmsResponse" });
 
 export interface InventorySourceGroup {
   /** Output only. The unique ID of the inventory source group. Assigned by the system. */
@@ -9359,16 +8070,11 @@ export interface InventorySourceGroup {
   displayName?: string;
 }
 
-export const InventorySourceGroup: Schema.Schema<InventorySourceGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inventorySourceGroupId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InventorySourceGroup",
-  }) as any as Schema.Schema<InventorySourceGroup>;
+export const InventorySourceGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  inventorySourceGroupId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+}).annotate({ identifier: "InventorySourceGroup" });
 
 export interface ParentEntityFilter {
   /** The IDs of the specified filter type. This is used to filter entities to fetch. If filter type is not `FILTER_TYPE_NONE`, at least one ID must be specified. */
@@ -9398,16 +8104,11 @@ export interface ParentEntityFilter {
     | (string & {});
 }
 
-export const ParentEntityFilter: Schema.Schema<ParentEntityFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filterIds: Schema.optional(Schema.Array(Schema.String)),
-      fileType: Schema.optional(Schema.Array(Schema.String)),
-      filterType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ParentEntityFilter",
-  }) as any as Schema.Schema<ParentEntityFilter>;
+export const ParentEntityFilter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  filterIds: Schema.optional(Schema.Array(Schema.String)),
+  fileType: Schema.optional(Schema.Array(Schema.String)),
+  filterType: Schema.optional(Schema.String),
+}).annotate({ identifier: "ParentEntityFilter" });
 
 export interface CreateSdfDownloadTaskRequest {
   /** Filters on Inventory Sources by their IDs. */
@@ -9444,19 +8145,15 @@ export interface CreateSdfDownloadTaskRequest {
     | (string & {});
 }
 
-export const CreateSdfDownloadTaskRequest: Schema.Schema<CreateSdfDownloadTaskRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inventorySourceFilter: Schema.optional(InventorySourceFilter),
-      partnerId: Schema.optional(Schema.String),
-      parentEntityFilter: Schema.optional(ParentEntityFilter),
-      advertiserId: Schema.optional(Schema.String),
-      idFilter: Schema.optional(IdFilter),
-      version: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreateSdfDownloadTaskRequest",
-  }) as any as Schema.Schema<CreateSdfDownloadTaskRequest>;
+export const CreateSdfDownloadTaskRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    inventorySourceFilter: Schema.optional(InventorySourceFilter),
+    partnerId: Schema.optional(Schema.String),
+    parentEntityFilter: Schema.optional(ParentEntityFilter),
+    advertiserId: Schema.optional(Schema.String),
+    idFilter: Schema.optional(IdFilter),
+    version: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CreateSdfDownloadTaskRequest" });
 
 export interface ListChannelsResponse {
   /** The list of channels. This list will be absent if empty. */
@@ -9465,15 +8162,10 @@ export interface ListChannelsResponse {
   nextPageToken?: string;
 }
 
-export const ListChannelsResponse: Schema.Schema<ListChannelsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      channels: Schema.optional(Schema.Array(Channel)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListChannelsResponse",
-  }) as any as Schema.Schema<ListChannelsResponse>;
+export const ListChannelsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  channels: Schema.optional(Schema.Array(Channel)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListChannelsResponse" });
 
 export interface NegativeKeywordList {
   /** Output only. The resource name of the negative keyword list. */
@@ -9488,18 +8180,13 @@ export interface NegativeKeywordList {
   targetedLineItemCount?: string;
 }
 
-export const NegativeKeywordList: Schema.Schema<NegativeKeywordList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      advertiserId: Schema.optional(Schema.String),
-      negativeKeywordListId: Schema.optional(Schema.String),
-      targetedLineItemCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NegativeKeywordList",
-  }) as any as Schema.Schema<NegativeKeywordList>;
+export const NegativeKeywordList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  advertiserId: Schema.optional(Schema.String),
+  negativeKeywordListId: Schema.optional(Schema.String),
+  targetedLineItemCount: Schema.optional(Schema.String),
+}).annotate({ identifier: "NegativeKeywordList" });
 
 export interface ListNegativeKeywordListsResponse {
   /** The list of negative keyword lists. This list will be absent if empty. */
@@ -9508,15 +8195,11 @@ export interface ListNegativeKeywordListsResponse {
   nextPageToken?: string;
 }
 
-export const ListNegativeKeywordListsResponse: Schema.Schema<ListNegativeKeywordListsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      negativeKeywordLists: Schema.optional(Schema.Array(NegativeKeywordList)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListNegativeKeywordListsResponse",
-  }) as any as Schema.Schema<ListNegativeKeywordListsResponse>;
+export const ListNegativeKeywordListsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    negativeKeywordLists: Schema.optional(Schema.Array(NegativeKeywordList)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListNegativeKeywordListsResponse" });
 
 export interface InsertionOrderBudgetSegment {
   /** Required. The budget amount the insertion order will spend for the given date_range. The amount is in micros. Must be greater than 0. For example, 500000000 represents 500 standard units of the currency. */
@@ -9529,17 +8212,13 @@ export interface InsertionOrderBudgetSegment {
   dateRange?: DateRange;
 }
 
-export const InsertionOrderBudgetSegment: Schema.Schema<InsertionOrderBudgetSegment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      budgetAmountMicros: Schema.optional(Schema.String),
-      campaignBudgetId: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      dateRange: Schema.optional(DateRange),
-    }),
-  ).annotate({
-    identifier: "InsertionOrderBudgetSegment",
-  }) as any as Schema.Schema<InsertionOrderBudgetSegment>;
+export const InsertionOrderBudgetSegment =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    budgetAmountMicros: Schema.optional(Schema.String),
+    campaignBudgetId: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    dateRange: Schema.optional(DateRange),
+  }).annotate({ identifier: "InsertionOrderBudgetSegment" });
 
 export interface InsertionOrderBudget {
   /** Required. Immutable. The budget unit specifies whether the budget is currency based or impression based. */
@@ -9559,18 +8238,11 @@ export interface InsertionOrderBudget {
   budgetSegments?: Array<InsertionOrderBudgetSegment>;
 }
 
-export const InsertionOrderBudget: Schema.Schema<InsertionOrderBudget> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      budgetUnit: Schema.optional(Schema.String),
-      automationType: Schema.optional(Schema.String),
-      budgetSegments: Schema.optional(
-        Schema.Array(InsertionOrderBudgetSegment),
-      ),
-    }),
-  ).annotate({
-    identifier: "InsertionOrderBudget",
-  }) as any as Schema.Schema<InsertionOrderBudget>;
+export const InsertionOrderBudget = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  budgetUnit: Schema.optional(Schema.String),
+  automationType: Schema.optional(Schema.String),
+  budgetSegments: Schema.optional(Schema.Array(InsertionOrderBudgetSegment)),
+}).annotate({ identifier: "InsertionOrderBudget" });
 
 export interface DemandGenVideoAd {
   /** Required. The list of long headlines shown on the ad. */
@@ -9627,31 +8299,26 @@ export interface DemandGenVideoAd {
     | (string & {});
 }
 
-export const DemandGenVideoAd: Schema.Schema<DemandGenVideoAd> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      longHeadlines: Schema.optional(Schema.Array(Schema.String)),
-      displayUrlBreadcrumb2: Schema.optional(Schema.String),
-      videos: Schema.optional(Schema.Array(YoutubeVideoDetails)),
-      finalUrlSuffix: Schema.optional(Schema.String),
-      descriptions: Schema.optional(Schema.Array(Schema.String)),
-      companionBanner: Schema.optional(ImageAsset),
-      finalUrl: Schema.optional(Schema.String),
-      customParameters: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      finalMobileUrl: Schema.optional(Schema.String),
-      displayUrlBreadcrumb1: Schema.optional(Schema.String),
-      businessName: Schema.optional(Schema.String),
-      userSpecifiedTrackingUrl: Schema.optional(Schema.String),
-      trackingUrl: Schema.optional(Schema.String),
-      headlines: Schema.optional(Schema.Array(Schema.String)),
-      logo: Schema.optional(ImageAsset),
-      callToAction: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DemandGenVideoAd",
-  }) as any as Schema.Schema<DemandGenVideoAd>;
+export const DemandGenVideoAd = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  longHeadlines: Schema.optional(Schema.Array(Schema.String)),
+  displayUrlBreadcrumb2: Schema.optional(Schema.String),
+  videos: Schema.optional(Schema.Array(YoutubeVideoDetails)),
+  finalUrlSuffix: Schema.optional(Schema.String),
+  descriptions: Schema.optional(Schema.Array(Schema.String)),
+  companionBanner: Schema.optional(ImageAsset),
+  finalUrl: Schema.optional(Schema.String),
+  customParameters: Schema.optional(
+    Schema.Record(Schema.String, Schema.String),
+  ),
+  finalMobileUrl: Schema.optional(Schema.String),
+  displayUrlBreadcrumb1: Schema.optional(Schema.String),
+  businessName: Schema.optional(Schema.String),
+  userSpecifiedTrackingUrl: Schema.optional(Schema.String),
+  trackingUrl: Schema.optional(Schema.String),
+  headlines: Schema.optional(Schema.Array(Schema.String)),
+  logo: Schema.optional(ImageAsset),
+  callToAction: Schema.optional(Schema.String),
+}).annotate({ identifier: "DemandGenVideoAd" });
 
 export interface ListAssignedInventorySourcesResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListAssignedInventorySources` method to retrieve the next page of results. */
@@ -9660,17 +8327,13 @@ export interface ListAssignedInventorySourcesResponse {
   assignedInventorySources?: Array<AssignedInventorySource>;
 }
 
-export const ListAssignedInventorySourcesResponse: Schema.Schema<ListAssignedInventorySourcesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      assignedInventorySources: Schema.optional(
-        Schema.Array(AssignedInventorySource),
-      ),
-    }),
-  ).annotate({
-    identifier: "ListAssignedInventorySourcesResponse",
-  }) as any as Schema.Schema<ListAssignedInventorySourcesResponse>;
+export const ListAssignedInventorySourcesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    assignedInventorySources: Schema.optional(
+      Schema.Array(AssignedInventorySource),
+    ),
+  }).annotate({ identifier: "ListAssignedInventorySourcesResponse" });
 
 export interface EditGuaranteedOrderReadAccessorsRequest {
   /** Whether to give all advertisers of the read/write accessor partner read access to the guaranteed order. Only applicable if read_write_partner_id is set in the guaranteed order. */
@@ -9683,17 +8346,13 @@ export interface EditGuaranteedOrderReadAccessorsRequest {
   addedAdvertisers?: Array<string>;
 }
 
-export const EditGuaranteedOrderReadAccessorsRequest: Schema.Schema<EditGuaranteedOrderReadAccessorsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      readAccessInherited: Schema.optional(Schema.Boolean),
-      partnerId: Schema.optional(Schema.String),
-      removedAdvertisers: Schema.optional(Schema.Array(Schema.String)),
-      addedAdvertisers: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "EditGuaranteedOrderReadAccessorsRequest",
-  }) as any as Schema.Schema<EditGuaranteedOrderReadAccessorsRequest>;
+export const EditGuaranteedOrderReadAccessorsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    readAccessInherited: Schema.optional(Schema.Boolean),
+    partnerId: Schema.optional(Schema.String),
+    removedAdvertisers: Schema.optional(Schema.Array(Schema.String)),
+    addedAdvertisers: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "EditGuaranteedOrderReadAccessorsRequest" });
 
 export interface FirstPartyAndPartnerAudience {
   /** Identifier. The unique ID of the first party and partner audience. Assigned by the system. */
@@ -9759,31 +8418,27 @@ export interface FirstPartyAndPartnerAudience {
   appId?: string;
 }
 
-export const FirstPartyAndPartnerAudience: Schema.Schema<FirstPartyAndPartnerAudience> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      firstPartyAndPartnerAudienceId: Schema.optional(Schema.String),
-      displayDesktopAudienceSize: Schema.optional(Schema.String),
-      displayAudienceSize: Schema.optional(Schema.String),
-      mobileDeviceIdList: Schema.optional(MobileDeviceIdList),
-      firstPartyAndPartnerAudienceType: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      membershipDurationDays: Schema.optional(Schema.String),
-      displayMobileAppAudienceSize: Schema.optional(Schema.String),
-      displayMobileWebAudienceSize: Schema.optional(Schema.String),
-      audienceType: Schema.optional(Schema.String),
-      youtubeAudienceSize: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      audienceSource: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      activeDisplayAudienceSize: Schema.optional(Schema.String),
-      gmailAudienceSize: Schema.optional(Schema.String),
-      contactInfoList: Schema.optional(ContactInfoList),
-      appId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FirstPartyAndPartnerAudience",
-  }) as any as Schema.Schema<FirstPartyAndPartnerAudience>;
+export const FirstPartyAndPartnerAudience =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    firstPartyAndPartnerAudienceId: Schema.optional(Schema.String),
+    displayDesktopAudienceSize: Schema.optional(Schema.String),
+    displayAudienceSize: Schema.optional(Schema.String),
+    mobileDeviceIdList: Schema.optional(MobileDeviceIdList),
+    firstPartyAndPartnerAudienceType: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    membershipDurationDays: Schema.optional(Schema.String),
+    displayMobileAppAudienceSize: Schema.optional(Schema.String),
+    displayMobileWebAudienceSize: Schema.optional(Schema.String),
+    audienceType: Schema.optional(Schema.String),
+    youtubeAudienceSize: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    audienceSource: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    activeDisplayAudienceSize: Schema.optional(Schema.String),
+    gmailAudienceSize: Schema.optional(Schema.String),
+    contactInfoList: Schema.optional(ContactInfoList),
+    appId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "FirstPartyAndPartnerAudience" });
 
 export interface YoutubeAssetAssociationLocationAssetFilter {
   /** Required. The matching type of this location asset filter. */
@@ -9800,18 +8455,14 @@ export interface YoutubeAssetAssociationLocationAssetFilter {
   assetSetId?: string;
 }
 
-export const YoutubeAssetAssociationLocationAssetFilter: Schema.Schema<YoutubeAssetAssociationLocationAssetFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locationMatchingType: Schema.optional(Schema.String),
-      locationMatchingFunction: Schema.optional(
-        YoutubeAssetAssociationLocationAssetFilterLocationMatchingFunction,
-      ),
-      assetSetId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "YoutubeAssetAssociationLocationAssetFilter",
-  }) as any as Schema.Schema<YoutubeAssetAssociationLocationAssetFilter>;
+export const YoutubeAssetAssociationLocationAssetFilter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locationMatchingType: Schema.optional(Schema.String),
+    locationMatchingFunction: Schema.optional(
+      YoutubeAssetAssociationLocationAssetFilterLocationMatchingFunction,
+    ),
+    assetSetId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "YoutubeAssetAssociationLocationAssetFilter" });
 
 export interface YoutubeAssetAssociationAffiliateLocationAssetFilter {
   /** Required. The matching type of this affiliate location asset filter. */
@@ -9827,18 +8478,16 @@ export interface YoutubeAssetAssociationAffiliateLocationAssetFilter {
   affiliateLocationMatchingFunction?: YoutubeAssetAssociationAffiliateLocationAssetFilterAffiliateLocationMatchingFunction;
 }
 
-export const YoutubeAssetAssociationAffiliateLocationAssetFilter: Schema.Schema<YoutubeAssetAssociationAffiliateLocationAssetFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      affiliateLocationMatchingType: Schema.optional(Schema.String),
-      assetSetId: Schema.optional(Schema.String),
-      affiliateLocationMatchingFunction: Schema.optional(
-        YoutubeAssetAssociationAffiliateLocationAssetFilterAffiliateLocationMatchingFunction,
-      ),
-    }),
-  ).annotate({
+export const YoutubeAssetAssociationAffiliateLocationAssetFilter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    affiliateLocationMatchingType: Schema.optional(Schema.String),
+    assetSetId: Schema.optional(Schema.String),
+    affiliateLocationMatchingFunction: Schema.optional(
+      YoutubeAssetAssociationAffiliateLocationAssetFilterAffiliateLocationMatchingFunction,
+    ),
+  }).annotate({
     identifier: "YoutubeAssetAssociationAffiliateLocationAssetFilter",
-  }) as any as Schema.Schema<YoutubeAssetAssociationAffiliateLocationAssetFilter>;
+  });
 
 export interface YoutubeAssetAssociationLinkedYouTubeAsset {
   /** A location asset filter. This can be set only when youtube_asset_type is `YOUTUBE_ASSET_TYPE_LOCATION`. */
@@ -9849,20 +8498,16 @@ export interface YoutubeAssetAssociationLinkedYouTubeAsset {
   affiliateLocationAssetFilter?: YoutubeAssetAssociationAffiliateLocationAssetFilter;
 }
 
-export const YoutubeAssetAssociationLinkedYouTubeAsset: Schema.Schema<YoutubeAssetAssociationLinkedYouTubeAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locationAssetFilter: Schema.optional(
-        YoutubeAssetAssociationLocationAssetFilter,
-      ),
-      sitelinkAsset: Schema.optional(YoutubeAssetAssociationSitelinkAsset),
-      affiliateLocationAssetFilter: Schema.optional(
-        YoutubeAssetAssociationAffiliateLocationAssetFilter,
-      ),
-    }),
-  ).annotate({
-    identifier: "YoutubeAssetAssociationLinkedYouTubeAsset",
-  }) as any as Schema.Schema<YoutubeAssetAssociationLinkedYouTubeAsset>;
+export const YoutubeAssetAssociationLinkedYouTubeAsset =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locationAssetFilter: Schema.optional(
+      YoutubeAssetAssociationLocationAssetFilter,
+    ),
+    sitelinkAsset: Schema.optional(YoutubeAssetAssociationSitelinkAsset),
+    affiliateLocationAssetFilter: Schema.optional(
+      YoutubeAssetAssociationAffiliateLocationAssetFilter,
+    ),
+  }).annotate({ identifier: "YoutubeAssetAssociationLinkedYouTubeAsset" });
 
 export interface DemandGenImageAd {
   /** Required. The URL address of the webpage that people reach after they click the ad. */
@@ -9895,29 +8540,24 @@ export interface DemandGenImageAd {
   portraitMarketingImages?: Array<ImageAsset>;
 }
 
-export const DemandGenImageAd: Schema.Schema<DemandGenImageAd> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      finalUrl: Schema.optional(Schema.String),
-      customParameters: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      finalMobileUrl: Schema.optional(Schema.String),
-      squareMarketingImages: Schema.optional(Schema.Array(ImageAsset)),
-      logoImages: Schema.optional(Schema.Array(ImageAsset)),
-      descriptions: Schema.optional(Schema.Array(Schema.String)),
-      callToAction: Schema.optional(Schema.String),
-      headlines: Schema.optional(Schema.Array(Schema.String)),
-      trackingUrl: Schema.optional(Schema.String),
-      userSpecifiedTrackingUrl: Schema.optional(Schema.String),
-      businessName: Schema.optional(Schema.String),
-      marketingImages: Schema.optional(Schema.Array(ImageAsset)),
-      finalUrlSuffix: Schema.optional(Schema.String),
-      portraitMarketingImages: Schema.optional(Schema.Array(ImageAsset)),
-    }),
-  ).annotate({
-    identifier: "DemandGenImageAd",
-  }) as any as Schema.Schema<DemandGenImageAd>;
+export const DemandGenImageAd = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  finalUrl: Schema.optional(Schema.String),
+  customParameters: Schema.optional(
+    Schema.Record(Schema.String, Schema.String),
+  ),
+  finalMobileUrl: Schema.optional(Schema.String),
+  squareMarketingImages: Schema.optional(Schema.Array(ImageAsset)),
+  logoImages: Schema.optional(Schema.Array(ImageAsset)),
+  descriptions: Schema.optional(Schema.Array(Schema.String)),
+  callToAction: Schema.optional(Schema.String),
+  headlines: Schema.optional(Schema.Array(Schema.String)),
+  trackingUrl: Schema.optional(Schema.String),
+  userSpecifiedTrackingUrl: Schema.optional(Schema.String),
+  businessName: Schema.optional(Schema.String),
+  marketingImages: Schema.optional(Schema.Array(ImageAsset)),
+  finalUrlSuffix: Schema.optional(Schema.String),
+  portraitMarketingImages: Schema.optional(Schema.Array(ImageAsset)),
+}).annotate({ identifier: "DemandGenImageAd" });
 
 export interface DemandGenProductAd {
   /** Required. The URL address of the webpage that people reach after they click the ad. */
@@ -9966,27 +8606,22 @@ export interface DemandGenProductAd {
   userSpecifiedTrackingUrl?: string;
 }
 
-export const DemandGenProductAd: Schema.Schema<DemandGenProductAd> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      finalUrl: Schema.optional(Schema.String),
-      customParameters: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      headline: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      logo: Schema.optional(ImageAsset),
-      callToAction: Schema.optional(Schema.String),
-      finalUrlSuffix: Schema.optional(Schema.String),
-      trackingUrl: Schema.optional(Schema.String),
-      businessName: Schema.optional(Schema.String),
-      displayUrlBreadcrumb1: Schema.optional(Schema.String),
-      displayUrlBreadcrumb2: Schema.optional(Schema.String),
-      userSpecifiedTrackingUrl: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DemandGenProductAd",
-  }) as any as Schema.Schema<DemandGenProductAd>;
+export const DemandGenProductAd = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  finalUrl: Schema.optional(Schema.String),
+  customParameters: Schema.optional(
+    Schema.Record(Schema.String, Schema.String),
+  ),
+  headline: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  logo: Schema.optional(ImageAsset),
+  callToAction: Schema.optional(Schema.String),
+  finalUrlSuffix: Schema.optional(Schema.String),
+  trackingUrl: Schema.optional(Schema.String),
+  businessName: Schema.optional(Schema.String),
+  displayUrlBreadcrumb1: Schema.optional(Schema.String),
+  displayUrlBreadcrumb2: Schema.optional(Schema.String),
+  userSpecifiedTrackingUrl: Schema.optional(Schema.String),
+}).annotate({ identifier: "DemandGenProductAd" });
 
 export interface AdUrl {
   /** The type of the Ad URL. */
@@ -10001,13 +8636,10 @@ export interface AdUrl {
   url?: string;
 }
 
-export const AdUrl: Schema.Schema<AdUrl> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      url: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "AdUrl" }) as any as Schema.Schema<AdUrl>;
+export const AdUrl = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  url: Schema.optional(Schema.String),
+}).annotate({ identifier: "AdUrl" });
 
 export interface AdGroupAd {
   /** Output only. Details of a [non-skippable short video ad](//support.google.com/displayvideo/answer/6274216), equal to or less than 6 seconds, used for reach. */
@@ -10061,32 +8693,29 @@ export interface AdGroupAd {
   adUrls?: Array<AdUrl>;
 }
 
-export const AdGroupAd: Schema.Schema<AdGroupAd> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bumperAd: Schema.optional(BumperAd),
-      inStreamAd: Schema.optional(InStreamAd),
-      videoPerformanceAd: Schema.optional(VideoPerformanceAd),
-      adPolicy: Schema.optional(AdPolicy),
-      mastheadAd: Schema.optional(MastheadAd),
-      adGroupAdId: Schema.optional(Schema.String),
-      audioAd: Schema.optional(AudioAd),
-      videoDiscoverAd: Schema.optional(VideoDiscoveryAd),
-      demandGenVideoAd: Schema.optional(DemandGenVideoAd),
-      dcmTrackingInfo: Schema.optional(DcmTrackingInfo),
-      name: Schema.optional(Schema.String),
-      advertiserId: Schema.optional(Schema.String),
-      nonSkippableAd: Schema.optional(NonSkippableAd),
-      entityStatus: Schema.optional(Schema.String),
-      demandGenCarouselAd: Schema.optional(DemandGenCarouselAd),
-      adGroupId: Schema.optional(Schema.String),
-      demandGenImageAd: Schema.optional(DemandGenImageAd),
-      displayName: Schema.optional(Schema.String),
-      displayVideoSourceAd: Schema.optional(DisplayVideoSourceAd),
-      demandGenProductAd: Schema.optional(DemandGenProductAd),
-      adUrls: Schema.optional(Schema.Array(AdUrl)),
-    }),
-  ).annotate({ identifier: "AdGroupAd" }) as any as Schema.Schema<AdGroupAd>;
+export const AdGroupAd = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bumperAd: Schema.optional(BumperAd),
+  inStreamAd: Schema.optional(InStreamAd),
+  videoPerformanceAd: Schema.optional(VideoPerformanceAd),
+  adPolicy: Schema.optional(AdPolicy),
+  mastheadAd: Schema.optional(MastheadAd),
+  adGroupAdId: Schema.optional(Schema.String),
+  audioAd: Schema.optional(AudioAd),
+  videoDiscoverAd: Schema.optional(VideoDiscoveryAd),
+  demandGenVideoAd: Schema.optional(DemandGenVideoAd),
+  dcmTrackingInfo: Schema.optional(DcmTrackingInfo),
+  name: Schema.optional(Schema.String),
+  advertiserId: Schema.optional(Schema.String),
+  nonSkippableAd: Schema.optional(NonSkippableAd),
+  entityStatus: Schema.optional(Schema.String),
+  demandGenCarouselAd: Schema.optional(DemandGenCarouselAd),
+  adGroupId: Schema.optional(Schema.String),
+  demandGenImageAd: Schema.optional(DemandGenImageAd),
+  displayName: Schema.optional(Schema.String),
+  displayVideoSourceAd: Schema.optional(DisplayVideoSourceAd),
+  demandGenProductAd: Schema.optional(DemandGenProductAd),
+  adUrls: Schema.optional(Schema.Array(AdUrl)),
+}).annotate({ identifier: "AdGroupAd" });
 
 export interface ListCombinedAudiencesResponse {
   /** The list of combined audiences. This list will be absent if empty. */
@@ -10095,43 +8724,29 @@ export interface ListCombinedAudiencesResponse {
   nextPageToken?: string;
 }
 
-export const ListCombinedAudiencesResponse: Schema.Schema<ListCombinedAudiencesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      combinedAudiences: Schema.optional(Schema.Array(CombinedAudience)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListCombinedAudiencesResponse",
-  }) as any as Schema.Schema<ListCombinedAudiencesResponse>;
+export const ListCombinedAudiencesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    combinedAudiences: Schema.optional(Schema.Array(CombinedAudience)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListCombinedAudiencesResponse" });
 
 export interface BulkEditSitesResponse {
   /** The list of sites that have been successfully created. This list will be absent if empty. */
   sites?: Array<Site>;
 }
 
-export const BulkEditSitesResponse: Schema.Schema<BulkEditSitesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sites: Schema.optional(Schema.Array(Site)),
-    }),
-  ).annotate({
-    identifier: "BulkEditSitesResponse",
-  }) as any as Schema.Schema<BulkEditSitesResponse>;
+export const BulkEditSitesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sites: Schema.optional(Schema.Array(Site)),
+}).annotate({ identifier: "BulkEditSitesResponse" });
 
 export interface UploadAdAssetResponse {
   /** The created ad asset. */
   adAsset?: AdAsset;
 }
 
-export const UploadAdAssetResponse: Schema.Schema<UploadAdAssetResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      adAsset: Schema.optional(AdAsset),
-    }),
-  ).annotate({
-    identifier: "UploadAdAssetResponse",
-  }) as any as Schema.Schema<UploadAdAssetResponse>;
+export const UploadAdAssetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  adAsset: Schema.optional(AdAsset),
+}).annotate({ identifier: "UploadAdAssetResponse" });
 
 export interface InsertionOrder {
   /** Output only. The timestamp when the insertion order was last updated. Assigned by the system. */
@@ -10195,30 +8810,25 @@ export interface InsertionOrder {
   partnerCosts?: Array<PartnerCost>;
 }
 
-export const InsertionOrder: Schema.Schema<InsertionOrder> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateTime: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      optimizationObjective: Schema.optional(Schema.String),
-      frequencyCap: Schema.optional(FrequencyCap),
-      reservationType: Schema.optional(Schema.String),
-      budget: Schema.optional(InsertionOrderBudget),
-      name: Schema.optional(Schema.String),
-      advertiserId: Schema.optional(Schema.String),
-      pacing: Schema.optional(Pacing),
-      entityStatus: Schema.optional(Schema.String),
-      kpi: Schema.optional(Kpi),
-      insertionOrderId: Schema.optional(Schema.String),
-      integrationDetails: Schema.optional(IntegrationDetails),
-      campaignId: Schema.optional(Schema.String),
-      insertionOrderType: Schema.optional(Schema.String),
-      bidStrategy: Schema.optional(BiddingStrategy),
-      partnerCosts: Schema.optional(Schema.Array(PartnerCost)),
-    }),
-  ).annotate({
-    identifier: "InsertionOrder",
-  }) as any as Schema.Schema<InsertionOrder>;
+export const InsertionOrder = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  updateTime: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  optimizationObjective: Schema.optional(Schema.String),
+  frequencyCap: Schema.optional(FrequencyCap),
+  reservationType: Schema.optional(Schema.String),
+  budget: Schema.optional(InsertionOrderBudget),
+  name: Schema.optional(Schema.String),
+  advertiserId: Schema.optional(Schema.String),
+  pacing: Schema.optional(Pacing),
+  entityStatus: Schema.optional(Schema.String),
+  kpi: Schema.optional(Kpi),
+  insertionOrderId: Schema.optional(Schema.String),
+  integrationDetails: Schema.optional(IntegrationDetails),
+  campaignId: Schema.optional(Schema.String),
+  insertionOrderType: Schema.optional(Schema.String),
+  bidStrategy: Schema.optional(BiddingStrategy),
+  partnerCosts: Schema.optional(Schema.Array(PartnerCost)),
+}).annotate({ identifier: "InsertionOrder" });
 
 export interface ListInsertionOrdersResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListInsertionOrders` method to retrieve the next page of results. */
@@ -10227,36 +8837,26 @@ export interface ListInsertionOrdersResponse {
   insertionOrders?: Array<InsertionOrder>;
 }
 
-export const ListInsertionOrdersResponse: Schema.Schema<ListInsertionOrdersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      insertionOrders: Schema.optional(Schema.Array(InsertionOrder)),
-    }),
-  ).annotate({
-    identifier: "ListInsertionOrdersResponse",
-  }) as any as Schema.Schema<ListInsertionOrdersResponse>;
+export const ListInsertionOrdersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    insertionOrders: Schema.optional(Schema.Array(InsertionOrder)),
+  }).annotate({ identifier: "ListInsertionOrdersResponse" });
 
 export interface CreateAdAssetRequest {
   /** Required. The ad asset to create. Only supports assets of AdAssetType `AD_ASSET_TYPE_YOUTUBE_VIDEO`. */
   adAsset?: AdAsset;
 }
 
-export const CreateAdAssetRequest: Schema.Schema<CreateAdAssetRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      adAsset: Schema.optional(AdAsset),
-    }),
-  ).annotate({
-    identifier: "CreateAdAssetRequest",
-  }) as any as Schema.Schema<CreateAdAssetRequest>;
+export const CreateAdAssetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  adAsset: Schema.optional(AdAsset),
+}).annotate({ identifier: "CreateAdAssetRequest" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface BulkEditNegativeKeywordsRequest {
   /** The negative keywords to delete in batch, specified as a list of keyword_values. */
@@ -10265,15 +8865,11 @@ export interface BulkEditNegativeKeywordsRequest {
   createdNegativeKeywords?: Array<NegativeKeyword>;
 }
 
-export const BulkEditNegativeKeywordsRequest: Schema.Schema<BulkEditNegativeKeywordsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deletedNegativeKeywords: Schema.optional(Schema.Array(Schema.String)),
-      createdNegativeKeywords: Schema.optional(Schema.Array(NegativeKeyword)),
-    }),
-  ).annotate({
-    identifier: "BulkEditNegativeKeywordsRequest",
-  }) as any as Schema.Schema<BulkEditNegativeKeywordsRequest>;
+export const BulkEditNegativeKeywordsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deletedNegativeKeywords: Schema.optional(Schema.Array(Schema.String)),
+    createdNegativeKeywords: Schema.optional(Schema.Array(NegativeKeyword)),
+  }).annotate({ identifier: "BulkEditNegativeKeywordsRequest" });
 
 export interface SdfDownloadTaskMetadata {
   /** The time when execution was completed. */
@@ -10304,16 +8900,12 @@ export interface SdfDownloadTaskMetadata {
   createTime?: string;
 }
 
-export const SdfDownloadTaskMetadata: Schema.Schema<SdfDownloadTaskMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endTime: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SdfDownloadTaskMetadata",
-  }) as any as Schema.Schema<SdfDownloadTaskMetadata>;
+export const SdfDownloadTaskMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endTime: Schema.optional(Schema.String),
+    version: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SdfDownloadTaskMetadata" });
 
 export interface ListFloodlightActivitiesResponse {
   /** The list of Floodlight activities. This list will be absent if empty. */
@@ -10322,15 +8914,11 @@ export interface ListFloodlightActivitiesResponse {
   nextPageToken?: string;
 }
 
-export const ListFloodlightActivitiesResponse: Schema.Schema<ListFloodlightActivitiesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      floodlightActivities: Schema.optional(Schema.Array(FloodlightActivity)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListFloodlightActivitiesResponse",
-  }) as any as Schema.Schema<ListFloodlightActivitiesResponse>;
+export const ListFloodlightActivitiesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    floodlightActivities: Schema.optional(Schema.Array(FloodlightActivity)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListFloodlightActivitiesResponse" });
 
 export interface AdGroupAssignedTargetingOption {
   /** The assigned targeting option resource. */
@@ -10339,15 +8927,11 @@ export interface AdGroupAssignedTargetingOption {
   adGroupId?: string;
 }
 
-export const AdGroupAssignedTargetingOption: Schema.Schema<AdGroupAssignedTargetingOption> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      assignedTargetingOption: Schema.optional(AssignedTargetingOption),
-      adGroupId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AdGroupAssignedTargetingOption",
-  }) as any as Schema.Schema<AdGroupAssignedTargetingOption>;
+export const AdGroupAssignedTargetingOption =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    assignedTargetingOption: Schema.optional(AssignedTargetingOption),
+    adGroupId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AdGroupAssignedTargetingOption" });
 
 export interface BulkListAdGroupAssignedTargetingOptionsResponse {
   /** The list of wrapper objects, each providing an assigned targeting option and the ad group it is assigned to. This list will be absent if empty. */
@@ -10356,17 +8940,15 @@ export interface BulkListAdGroupAssignedTargetingOptionsResponse {
   nextPageToken?: string;
 }
 
-export const BulkListAdGroupAssignedTargetingOptionsResponse: Schema.Schema<BulkListAdGroupAssignedTargetingOptionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      adGroupAssignedTargetingOptions: Schema.optional(
-        Schema.Array(AdGroupAssignedTargetingOption),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const BulkListAdGroupAssignedTargetingOptionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    adGroupAssignedTargetingOptions: Schema.optional(
+      Schema.Array(AdGroupAssignedTargetingOption),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "BulkListAdGroupAssignedTargetingOptionsResponse",
-  }) as any as Schema.Schema<BulkListAdGroupAssignedTargetingOptionsResponse>;
+  });
 
 export interface BudgetSummary {
   /** Relevant client, product, and estimate codes from the Mediaocean Prisma tool. Only applicable for campaign budgets with an external_budget_source of EXTERNAL_BUDGET_SOURCE_MEDIA_OCEAN. */
@@ -10381,18 +8963,13 @@ export interface BudgetSummary {
   totalAmountMicros?: string;
 }
 
-export const BudgetSummary: Schema.Schema<BudgetSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      prismaCpeCode: Schema.optional(PrismaCpeCode),
-      preTaxAmountMicros: Schema.optional(Schema.String),
-      externalBudgetId: Schema.optional(Schema.String),
-      taxAmountMicros: Schema.optional(Schema.String),
-      totalAmountMicros: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BudgetSummary",
-  }) as any as Schema.Schema<BudgetSummary>;
+export const BudgetSummary = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  prismaCpeCode: Schema.optional(PrismaCpeCode),
+  preTaxAmountMicros: Schema.optional(Schema.String),
+  externalBudgetId: Schema.optional(Schema.String),
+  taxAmountMicros: Schema.optional(Schema.String),
+  totalAmountMicros: Schema.optional(Schema.String),
+}).annotate({ identifier: "BudgetSummary" });
 
 export interface Invoice {
   /** The invoice total amount, in micros of the invoice's currency. For example, if currency_code is `USD`, then 1000000 represents one US dollar. */
@@ -10441,31 +9018,28 @@ export interface Invoice {
   nonBudgetMicros?: string;
 }
 
-export const Invoice: Schema.Schema<Invoice> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      totalAmountMicros: Schema.optional(Schema.String),
-      issueDate: Schema.optional(Displayvideo_Date),
-      purchaseOrderNumber: Schema.optional(Schema.String),
-      paymentsAccountId: Schema.optional(Schema.String),
-      invoiceType: Schema.optional(Schema.String),
-      correctedInvoiceId: Schema.optional(Schema.String),
-      pdfUrl: Schema.optional(Schema.String),
-      subtotalAmountMicros: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      replacedInvoiceIds: Schema.optional(Schema.Array(Schema.String)),
-      invoiceId: Schema.optional(Schema.String),
-      paymentsProfileId: Schema.optional(Schema.String),
-      totalTaxAmountMicros: Schema.optional(Schema.String),
-      currencyCode: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      dueDate: Schema.optional(Displayvideo_Date),
-      budgetSummaries: Schema.optional(Schema.Array(BudgetSummary)),
-      serviceDateRange: Schema.optional(DateRange),
-      budgetInvoiceGroupingId: Schema.optional(Schema.String),
-      nonBudgetMicros: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Invoice" }) as any as Schema.Schema<Invoice>;
+export const Invoice = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  totalAmountMicros: Schema.optional(Schema.String),
+  issueDate: Schema.optional(Displayvideo_Date),
+  purchaseOrderNumber: Schema.optional(Schema.String),
+  paymentsAccountId: Schema.optional(Schema.String),
+  invoiceType: Schema.optional(Schema.String),
+  correctedInvoiceId: Schema.optional(Schema.String),
+  pdfUrl: Schema.optional(Schema.String),
+  subtotalAmountMicros: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  replacedInvoiceIds: Schema.optional(Schema.Array(Schema.String)),
+  invoiceId: Schema.optional(Schema.String),
+  paymentsProfileId: Schema.optional(Schema.String),
+  totalTaxAmountMicros: Schema.optional(Schema.String),
+  currencyCode: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  dueDate: Schema.optional(Displayvideo_Date),
+  budgetSummaries: Schema.optional(Schema.Array(BudgetSummary)),
+  serviceDateRange: Schema.optional(DateRange),
+  budgetInvoiceGroupingId: Schema.optional(Schema.String),
+  nonBudgetMicros: Schema.optional(Schema.String),
+}).annotate({ identifier: "Invoice" });
 
 export interface ListInvoicesResponse {
   /** The list of invoices. This list will be absent if empty. */
@@ -10474,15 +9048,10 @@ export interface ListInvoicesResponse {
   nextPageToken?: string;
 }
 
-export const ListInvoicesResponse: Schema.Schema<ListInvoicesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      invoices: Schema.optional(Schema.Array(Invoice)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListInvoicesResponse",
-  }) as any as Schema.Schema<ListInvoicesResponse>;
+export const ListInvoicesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  invoices: Schema.optional(Schema.Array(Invoice)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListInvoicesResponse" });
 
 export interface BulkEditAdvertiserAssignedTargetingOptionsRequest {
   /** The assigned targeting options to delete in batch, specified as a list of `DeleteAssignedTargetingOptionsRequest`. Supported targeting types: * `TARGETING_TYPE_CHANNEL` * `TARGETING_TYPE_DIGITAL_CONTENT_LABEL_EXCLUSION` * `TARGETING_TYPE_OMID` * `TARGETING_TYPE_SENSITIVE_CATEGORY_EXCLUSION` * `TARGETING_TYPE_KEYWORD` */
@@ -10491,19 +9060,17 @@ export interface BulkEditAdvertiserAssignedTargetingOptionsRequest {
   createRequests?: Array<CreateAssignedTargetingOptionsRequest>;
 }
 
-export const BulkEditAdvertiserAssignedTargetingOptionsRequest: Schema.Schema<BulkEditAdvertiserAssignedTargetingOptionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deleteRequests: Schema.optional(
-        Schema.Array(DeleteAssignedTargetingOptionsRequest),
-      ),
-      createRequests: Schema.optional(
-        Schema.Array(CreateAssignedTargetingOptionsRequest),
-      ),
-    }),
-  ).annotate({
+export const BulkEditAdvertiserAssignedTargetingOptionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deleteRequests: Schema.optional(
+      Schema.Array(DeleteAssignedTargetingOptionsRequest),
+    ),
+    createRequests: Schema.optional(
+      Schema.Array(CreateAssignedTargetingOptionsRequest),
+    ),
+  }).annotate({
     identifier: "BulkEditAdvertiserAssignedTargetingOptionsRequest",
-  }) as any as Schema.Schema<BulkEditAdvertiserAssignedTargetingOptionsRequest>;
+  });
 
 export interface YoutubeAssetAssociation {
   /** Required. The type of YouTube asset associated with the resource. */
@@ -10519,18 +9086,14 @@ export interface YoutubeAssetAssociation {
   linkedYoutubeAsset?: YoutubeAssetAssociationLinkedYouTubeAsset;
 }
 
-export const YoutubeAssetAssociation: Schema.Schema<YoutubeAssetAssociation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      youtubeAssetType: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      linkedYoutubeAsset: Schema.optional(
-        YoutubeAssetAssociationLinkedYouTubeAsset,
-      ),
-    }),
-  ).annotate({
-    identifier: "YoutubeAssetAssociation",
-  }) as any as Schema.Schema<YoutubeAssetAssociation>;
+export const YoutubeAssetAssociation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    youtubeAssetType: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    linkedYoutubeAsset: Schema.optional(
+      YoutubeAssetAssociationLinkedYouTubeAsset,
+    ),
+  }).annotate({ identifier: "YoutubeAssetAssociation" });
 
 export interface ListInventorySourcesResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListInventorySources` method to retrieve the next page of results. */
@@ -10539,29 +9102,21 @@ export interface ListInventorySourcesResponse {
   inventorySources?: Array<InventorySource>;
 }
 
-export const ListInventorySourcesResponse: Schema.Schema<ListInventorySourcesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      inventorySources: Schema.optional(Schema.Array(InventorySource)),
-    }),
-  ).annotate({
-    identifier: "ListInventorySourcesResponse",
-  }) as any as Schema.Schema<ListInventorySourcesResponse>;
+export const ListInventorySourcesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    inventorySources: Schema.optional(Schema.Array(InventorySource)),
+  }).annotate({ identifier: "ListInventorySourcesResponse" });
 
 export interface LookupInvoiceCurrencyResponse {
   /** Currency used by the advertiser in ISO 4217 format. */
   currencyCode?: string;
 }
 
-export const LookupInvoiceCurrencyResponse: Schema.Schema<LookupInvoiceCurrencyResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      currencyCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LookupInvoiceCurrencyResponse",
-  }) as any as Schema.Schema<LookupInvoiceCurrencyResponse>;
+export const LookupInvoiceCurrencyResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    currencyCode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "LookupInvoiceCurrencyResponse" });
 
 export interface BulkListAdvertiserAssignedTargetingOptionsResponse {
   /** The list of assigned targeting options. This list will be absent if empty. */
@@ -10570,17 +9125,15 @@ export interface BulkListAdvertiserAssignedTargetingOptionsResponse {
   nextPageToken?: string;
 }
 
-export const BulkListAdvertiserAssignedTargetingOptionsResponse: Schema.Schema<BulkListAdvertiserAssignedTargetingOptionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      assignedTargetingOptions: Schema.optional(
-        Schema.Array(AssignedTargetingOption),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const BulkListAdvertiserAssignedTargetingOptionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    assignedTargetingOptions: Schema.optional(
+      Schema.Array(AssignedTargetingOption),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "BulkListAdvertiserAssignedTargetingOptionsResponse",
-  }) as any as Schema.Schema<BulkListAdvertiserAssignedTargetingOptionsResponse>;
+  });
 
 export interface ListLineItemAssignedTargetingOptionsResponse {
   /** The list of assigned targeting options. This list will be absent if empty. */
@@ -10589,17 +9142,13 @@ export interface ListLineItemAssignedTargetingOptionsResponse {
   nextPageToken?: string;
 }
 
-export const ListLineItemAssignedTargetingOptionsResponse: Schema.Schema<ListLineItemAssignedTargetingOptionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      assignedTargetingOptions: Schema.optional(
-        Schema.Array(AssignedTargetingOption),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLineItemAssignedTargetingOptionsResponse",
-  }) as any as Schema.Schema<ListLineItemAssignedTargetingOptionsResponse>;
+export const ListLineItemAssignedTargetingOptionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    assignedTargetingOptions: Schema.optional(
+      Schema.Array(AssignedTargetingOption),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListLineItemAssignedTargetingOptionsResponse" });
 
 export interface ListSitesResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListSites` method to retrieve the next page of results. */
@@ -10608,15 +9157,10 @@ export interface ListSitesResponse {
   sites?: Array<Site>;
 }
 
-export const ListSitesResponse: Schema.Schema<ListSitesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      sites: Schema.optional(Schema.Array(Site)),
-    }),
-  ).annotate({
-    identifier: "ListSitesResponse",
-  }) as any as Schema.Schema<ListSitesResponse>;
+export const ListSitesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  sites: Schema.optional(Schema.Array(Site)),
+}).annotate({ identifier: "ListSitesResponse" });
 
 export interface ListAdGroupAdsResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListAdGroupAds` method to retrieve the next page of results. */
@@ -10625,15 +9169,12 @@ export interface ListAdGroupAdsResponse {
   adGroupAds?: Array<AdGroupAd>;
 }
 
-export const ListAdGroupAdsResponse: Schema.Schema<ListAdGroupAdsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      adGroupAds: Schema.optional(Schema.Array(AdGroupAd)),
-    }),
-  ).annotate({
-    identifier: "ListAdGroupAdsResponse",
-  }) as any as Schema.Schema<ListAdGroupAdsResponse>;
+export const ListAdGroupAdsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    nextPageToken: Schema.optional(Schema.String),
+    adGroupAds: Schema.optional(Schema.Array(AdGroupAd)),
+  },
+).annotate({ identifier: "ListAdGroupAdsResponse" });
 
 export interface ListCustomBiddingScriptsResponse {
   /** The list of custom bidding scripts. This list will be absent if empty. */
@@ -10642,15 +9183,11 @@ export interface ListCustomBiddingScriptsResponse {
   nextPageToken?: string;
 }
 
-export const ListCustomBiddingScriptsResponse: Schema.Schema<ListCustomBiddingScriptsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customBiddingScripts: Schema.optional(Schema.Array(CustomBiddingScript)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListCustomBiddingScriptsResponse",
-  }) as any as Schema.Schema<ListCustomBiddingScriptsResponse>;
+export const ListCustomBiddingScriptsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customBiddingScripts: Schema.optional(Schema.Array(CustomBiddingScript)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListCustomBiddingScriptsResponse" });
 
 export interface ListGoogleAudiencesResponse {
   /** The list of Google audiences. This list will be absent if empty. */
@@ -10659,15 +9196,11 @@ export interface ListGoogleAudiencesResponse {
   nextPageToken?: string;
 }
 
-export const ListGoogleAudiencesResponse: Schema.Schema<ListGoogleAudiencesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      googleAudiences: Schema.optional(Schema.Array(GoogleAudience)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListGoogleAudiencesResponse",
-  }) as any as Schema.Schema<ListGoogleAudiencesResponse>;
+export const ListGoogleAudiencesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    googleAudiences: Schema.optional(Schema.Array(GoogleAudience)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListGoogleAudiencesResponse" });
 
 export interface ListPartnersResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListPartners` method to retrieve the next page of results. */
@@ -10676,43 +9209,30 @@ export interface ListPartnersResponse {
   partners?: Array<Partner>;
 }
 
-export const ListPartnersResponse: Schema.Schema<ListPartnersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      partners: Schema.optional(Schema.Array(Partner)),
-    }),
-  ).annotate({
-    identifier: "ListPartnersResponse",
-  }) as any as Schema.Schema<ListPartnersResponse>;
+export const ListPartnersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  partners: Schema.optional(Schema.Array(Partner)),
+}).annotate({ identifier: "ListPartnersResponse" });
 
 export interface BulkCreateAdAssetsResponse {
   /** The created ad assets. */
   adAssets?: Array<AdAsset>;
 }
 
-export const BulkCreateAdAssetsResponse: Schema.Schema<BulkCreateAdAssetsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      adAssets: Schema.optional(Schema.Array(AdAsset)),
-    }),
-  ).annotate({
-    identifier: "BulkCreateAdAssetsResponse",
-  }) as any as Schema.Schema<BulkCreateAdAssetsResponse>;
+export const BulkCreateAdAssetsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    adAssets: Schema.optional(Schema.Array(AdAsset)),
+  }).annotate({ identifier: "BulkCreateAdAssetsResponse" });
 
 export interface ReplaceNegativeKeywordsResponse {
   /** The full list of negative keywords now present in the negative keyword list. */
   negativeKeywords?: Array<NegativeKeyword>;
 }
 
-export const ReplaceNegativeKeywordsResponse: Schema.Schema<ReplaceNegativeKeywordsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      negativeKeywords: Schema.optional(Schema.Array(NegativeKeyword)),
-    }),
-  ).annotate({
-    identifier: "ReplaceNegativeKeywordsResponse",
-  }) as any as Schema.Schema<ReplaceNegativeKeywordsResponse>;
+export const ReplaceNegativeKeywordsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    negativeKeywords: Schema.optional(Schema.Array(NegativeKeyword)),
+  }).annotate({ identifier: "ReplaceNegativeKeywordsResponse" });
 
 export interface GuaranteedOrder {
   /** The advertiser with read/write access to the guaranteed order. This is also the default advertiser of the guaranteed order. */
@@ -10835,27 +9355,22 @@ export interface GuaranteedOrder {
   defaultAdvertiserId?: string;
 }
 
-export const GuaranteedOrder: Schema.Schema<GuaranteedOrder> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      readWriteAdvertiserId: Schema.optional(Schema.String),
-      guaranteedOrderId: Schema.optional(Schema.String),
-      publisherName: Schema.optional(Schema.String),
-      readAdvertiserIds: Schema.optional(Schema.Array(Schema.String)),
-      displayName: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      exchange: Schema.optional(Schema.String),
-      readWritePartnerId: Schema.optional(Schema.String),
-      status: Schema.optional(GuaranteedOrderStatus),
-      readAccessInherited: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-      legacyGuaranteedOrderId: Schema.optional(Schema.String),
-      defaultCampaignId: Schema.optional(Schema.String),
-      defaultAdvertiserId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GuaranteedOrder",
-  }) as any as Schema.Schema<GuaranteedOrder>;
+export const GuaranteedOrder = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  readWriteAdvertiserId: Schema.optional(Schema.String),
+  guaranteedOrderId: Schema.optional(Schema.String),
+  publisherName: Schema.optional(Schema.String),
+  readAdvertiserIds: Schema.optional(Schema.Array(Schema.String)),
+  displayName: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  exchange: Schema.optional(Schema.String),
+  readWritePartnerId: Schema.optional(Schema.String),
+  status: Schema.optional(GuaranteedOrderStatus),
+  readAccessInherited: Schema.optional(Schema.Boolean),
+  name: Schema.optional(Schema.String),
+  legacyGuaranteedOrderId: Schema.optional(Schema.String),
+  defaultCampaignId: Schema.optional(Schema.String),
+  defaultAdvertiserId: Schema.optional(Schema.String),
+}).annotate({ identifier: "GuaranteedOrder" });
 
 export interface BulkUpdateLineItemsRequest {
   /** Required. IDs of line items to update. */
@@ -10866,16 +9381,12 @@ export interface BulkUpdateLineItemsRequest {
   updateMask?: string;
 }
 
-export const BulkUpdateLineItemsRequest: Schema.Schema<BulkUpdateLineItemsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lineItemIds: Schema.optional(Schema.Array(Schema.String)),
-      targetLineItem: Schema.optional(LineItem),
-      updateMask: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BulkUpdateLineItemsRequest",
-  }) as any as Schema.Schema<BulkUpdateLineItemsRequest>;
+export const BulkUpdateLineItemsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    lineItemIds: Schema.optional(Schema.Array(Schema.String)),
+    targetLineItem: Schema.optional(LineItem),
+    updateMask: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BulkUpdateLineItemsRequest" });
 
 export interface SearchTargetingOptionsResponse {
   /** The list of targeting options that match the search criteria. This list will be absent if empty. */
@@ -10884,15 +9395,11 @@ export interface SearchTargetingOptionsResponse {
   nextPageToken?: string;
 }
 
-export const SearchTargetingOptionsResponse: Schema.Schema<SearchTargetingOptionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetingOptions: Schema.optional(Schema.Array(TargetingOption)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SearchTargetingOptionsResponse",
-  }) as any as Schema.Schema<SearchTargetingOptionsResponse>;
+export const SearchTargetingOptionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetingOptions: Schema.optional(Schema.Array(TargetingOption)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SearchTargetingOptionsResponse" });
 
 export interface ListGuaranteedOrdersResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListGuaranteedOrders` method to retrieve the next page of results. */
@@ -10901,15 +9408,11 @@ export interface ListGuaranteedOrdersResponse {
   guaranteedOrders?: Array<GuaranteedOrder>;
 }
 
-export const ListGuaranteedOrdersResponse: Schema.Schema<ListGuaranteedOrdersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      guaranteedOrders: Schema.optional(Schema.Array(GuaranteedOrder)),
-    }),
-  ).annotate({
-    identifier: "ListGuaranteedOrdersResponse",
-  }) as any as Schema.Schema<ListGuaranteedOrdersResponse>;
+export const ListGuaranteedOrdersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    guaranteedOrders: Schema.optional(Schema.Array(GuaranteedOrder)),
+  }).annotate({ identifier: "ListGuaranteedOrdersResponse" });
 
 export interface DuplicateLineItemRequest {
   /** The display name of the new line item. Must be UTF-8 encoded with a maximum size of 240 bytes. */
@@ -10922,15 +9425,11 @@ export interface DuplicateLineItemRequest {
     | (string & {});
 }
 
-export const DuplicateLineItemRequest: Schema.Schema<DuplicateLineItemRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetDisplayName: Schema.optional(Schema.String),
-      containsEuPoliticalAds: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DuplicateLineItemRequest",
-  }) as any as Schema.Schema<DuplicateLineItemRequest>;
+export const DuplicateLineItemRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetDisplayName: Schema.optional(Schema.String),
+    containsEuPoliticalAds: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DuplicateLineItemRequest" });
 
 export interface BulkEditPartnerAssignedTargetingOptionsRequest {
   /** The assigned targeting options to create in batch, specified as a list of `CreateAssignedTargetingOptionsRequest`. Supported targeting types: * `TARGETING_TYPE_CHANNEL` */
@@ -10939,33 +9438,24 @@ export interface BulkEditPartnerAssignedTargetingOptionsRequest {
   deleteRequests?: Array<DeleteAssignedTargetingOptionsRequest>;
 }
 
-export const BulkEditPartnerAssignedTargetingOptionsRequest: Schema.Schema<BulkEditPartnerAssignedTargetingOptionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createRequests: Schema.optional(
-        Schema.Array(CreateAssignedTargetingOptionsRequest),
-      ),
-      deleteRequests: Schema.optional(
-        Schema.Array(DeleteAssignedTargetingOptionsRequest),
-      ),
-    }),
-  ).annotate({
-    identifier: "BulkEditPartnerAssignedTargetingOptionsRequest",
-  }) as any as Schema.Schema<BulkEditPartnerAssignedTargetingOptionsRequest>;
+export const BulkEditPartnerAssignedTargetingOptionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createRequests: Schema.optional(
+      Schema.Array(CreateAssignedTargetingOptionsRequest),
+    ),
+    deleteRequests: Schema.optional(
+      Schema.Array(DeleteAssignedTargetingOptionsRequest),
+    ),
+  }).annotate({ identifier: "BulkEditPartnerAssignedTargetingOptionsRequest" });
 
 export interface CreateAssetRequest {
   /** Required. The filename of the asset, including the file extension. The filename must be UTF-8 encoded with a maximum size of 240 bytes. */
   filename?: string;
 }
 
-export const CreateAssetRequest: Schema.Schema<CreateAssetRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filename: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreateAssetRequest",
-  }) as any as Schema.Schema<CreateAssetRequest>;
+export const CreateAssetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  filename: Schema.optional(Schema.String),
+}).annotate({ identifier: "CreateAssetRequest" });
 
 export interface ListInventorySourceGroupsResponse {
   /** The list of inventory source groups. This list will be absent if empty. */
@@ -10974,31 +9464,21 @@ export interface ListInventorySourceGroupsResponse {
   nextPageToken?: string;
 }
 
-export const ListInventorySourceGroupsResponse: Schema.Schema<ListInventorySourceGroupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inventorySourceGroups: Schema.optional(
-        Schema.Array(InventorySourceGroup),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListInventorySourceGroupsResponse",
-  }) as any as Schema.Schema<ListInventorySourceGroupsResponse>;
+export const ListInventorySourceGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    inventorySourceGroups: Schema.optional(Schema.Array(InventorySourceGroup)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListInventorySourceGroupsResponse" });
 
 export interface BulkEditAssignedUserRolesResponse {
   /** The list of assigned user roles that have been successfully created. This list will be absent if empty. */
   createdAssignedUserRoles?: Array<AssignedUserRole>;
 }
 
-export const BulkEditAssignedUserRolesResponse: Schema.Schema<BulkEditAssignedUserRolesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createdAssignedUserRoles: Schema.optional(Schema.Array(AssignedUserRole)),
-    }),
-  ).annotate({
-    identifier: "BulkEditAssignedUserRolesResponse",
-  }) as any as Schema.Schema<BulkEditAssignedUserRolesResponse>;
+export const BulkEditAssignedUserRolesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createdAssignedUserRoles: Schema.optional(Schema.Array(AssignedUserRole)),
+  }).annotate({ identifier: "BulkEditAssignedUserRolesResponse" });
 
 export interface EditGuaranteedOrderReadAccessorsResponse {
   /** The IDs of advertisers with read access to the guaranteed order. */
@@ -11007,15 +9487,11 @@ export interface EditGuaranteedOrderReadAccessorsResponse {
   readAccessInherited?: boolean;
 }
 
-export const EditGuaranteedOrderReadAccessorsResponse: Schema.Schema<EditGuaranteedOrderReadAccessorsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      readAdvertiserIds: Schema.optional(Schema.Array(Schema.String)),
-      readAccessInherited: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "EditGuaranteedOrderReadAccessorsResponse",
-  }) as any as Schema.Schema<EditGuaranteedOrderReadAccessorsResponse>;
+export const EditGuaranteedOrderReadAccessorsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    readAdvertiserIds: Schema.optional(Schema.Array(Schema.String)),
+    readAccessInherited: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "EditGuaranteedOrderReadAccessorsResponse" });
 
 export interface ListUsersResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListUsers` method to retrieve the next page of results. This token will be absent if there are no more results to return. */
@@ -11024,15 +9500,10 @@ export interface ListUsersResponse {
   users?: Array<User>;
 }
 
-export const ListUsersResponse: Schema.Schema<ListUsersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      users: Schema.optional(Schema.Array(User)),
-    }),
-  ).annotate({
-    identifier: "ListUsersResponse",
-  }) as any as Schema.Schema<ListUsersResponse>;
+export const ListUsersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  users: Schema.optional(Schema.Array(User)),
+}).annotate({ identifier: "ListUsersResponse" });
 
 export interface AuditAdvertiserResponse {
   /** The number of negatively targeted channels created under this advertiser. These negatively targeted channels count towards the limit of 5 negatively targeted channels per advertiser. */
@@ -11053,21 +9524,17 @@ export interface AuditAdvertiserResponse {
   channelsCount?: string;
 }
 
-export const AuditAdvertiserResponse: Schema.Schema<AuditAdvertiserResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      negativelyTargetedChannelsCount: Schema.optional(Schema.String),
-      usedLineItemsCount: Schema.optional(Schema.String),
-      usedInsertionOrdersCount: Schema.optional(Schema.String),
-      usedCampaignsCount: Schema.optional(Schema.String),
-      negativeKeywordListsCount: Schema.optional(Schema.String),
-      adGroupCriteriaCount: Schema.optional(Schema.String),
-      campaignCriteriaCount: Schema.optional(Schema.String),
-      channelsCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AuditAdvertiserResponse",
-  }) as any as Schema.Schema<AuditAdvertiserResponse>;
+export const AuditAdvertiserResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    negativelyTargetedChannelsCount: Schema.optional(Schema.String),
+    usedLineItemsCount: Schema.optional(Schema.String),
+    usedInsertionOrdersCount: Schema.optional(Schema.String),
+    usedCampaignsCount: Schema.optional(Schema.String),
+    negativeKeywordListsCount: Schema.optional(Schema.String),
+    adGroupCriteriaCount: Schema.optional(Schema.String),
+    campaignCriteriaCount: Schema.optional(Schema.String),
+    channelsCount: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AuditAdvertiserResponse" });
 
 export interface ListCustomBiddingAlgorithmRulesResponse {
   /** The list of CustomBiddingAlgorithmRules resources. This list will be absent if empty. */
@@ -11076,17 +9543,13 @@ export interface ListCustomBiddingAlgorithmRulesResponse {
   nextPageToken?: string;
 }
 
-export const ListCustomBiddingAlgorithmRulesResponse: Schema.Schema<ListCustomBiddingAlgorithmRulesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customBiddingRules: Schema.optional(
-        Schema.Array(CustomBiddingAlgorithmRules),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListCustomBiddingAlgorithmRulesResponse",
-  }) as any as Schema.Schema<ListCustomBiddingAlgorithmRulesResponse>;
+export const ListCustomBiddingAlgorithmRulesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customBiddingRules: Schema.optional(
+      Schema.Array(CustomBiddingAlgorithmRules),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListCustomBiddingAlgorithmRulesResponse" });
 
 export interface BulkEditAdGroupAssignedTargetingOptionsRequest {
   /** Optional. The assigned targeting options to create in batch, specified as a list of `CreateAssignedTargetingOptionRequest`. Supported targeting types: * `TARGETING_TYPE_AGE_RANGE` * `TARGETING_TYPE_APP` * `TARGETING_TYPE_APP_CATEGORY` * `TARGETING_TYPE_AUDIENCE_GROUP` * `TARGETING_TYPE_CATEGORY` * `TARGETING_TYPE_GENDER` * `TARGETING_TYPE_GEO_REGION` * `TARGETING_TYPE_HOUSEHOLD_INCOME` * `TARGETING_TYPE_KEYWORD` * `TARGETING_TYPE_LANGUAGE` * `TARGETING_TYPE_PARENTAL_STATUS` * `TARGETING_TYPE_REGIONAL_LOCATION_LIST` * `TARGETING_TYPE_URL` * `TARGETING_TYPE_YOUTUBE_CHANNEL` * `TARGETING_TYPE_YOUTUBE_VIDEO` */
@@ -11097,34 +9560,26 @@ export interface BulkEditAdGroupAssignedTargetingOptionsRequest {
   deleteRequests?: Array<DeleteAssignedTargetingOptionsRequest>;
 }
 
-export const BulkEditAdGroupAssignedTargetingOptionsRequest: Schema.Schema<BulkEditAdGroupAssignedTargetingOptionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createRequests: Schema.optional(
-        Schema.Array(CreateAssignedTargetingOptionsRequest),
-      ),
-      adGroupIds: Schema.optional(Schema.Array(Schema.String)),
-      deleteRequests: Schema.optional(
-        Schema.Array(DeleteAssignedTargetingOptionsRequest),
-      ),
-    }),
-  ).annotate({
-    identifier: "BulkEditAdGroupAssignedTargetingOptionsRequest",
-  }) as any as Schema.Schema<BulkEditAdGroupAssignedTargetingOptionsRequest>;
+export const BulkEditAdGroupAssignedTargetingOptionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createRequests: Schema.optional(
+      Schema.Array(CreateAssignedTargetingOptionsRequest),
+    ),
+    adGroupIds: Schema.optional(Schema.Array(Schema.String)),
+    deleteRequests: Schema.optional(
+      Schema.Array(DeleteAssignedTargetingOptionsRequest),
+    ),
+  }).annotate({ identifier: "BulkEditAdGroupAssignedTargetingOptionsRequest" });
 
 export interface EditCustomerMatchMembersResponse {
   /** Required. The ID of the updated Customer Match FirstPartyAndPartnerAudience. */
   firstPartyAndPartnerAudienceId?: string;
 }
 
-export const EditCustomerMatchMembersResponse: Schema.Schema<EditCustomerMatchMembersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      firstPartyAndPartnerAudienceId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EditCustomerMatchMembersResponse",
-  }) as any as Schema.Schema<EditCustomerMatchMembersResponse>;
+export const EditCustomerMatchMembersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    firstPartyAndPartnerAudienceId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EditCustomerMatchMembersResponse" });
 
 export interface ListNegativeKeywordsResponse {
   /** The list of negative keywords. This list will be absent if empty. */
@@ -11133,15 +9588,11 @@ export interface ListNegativeKeywordsResponse {
   nextPageToken?: string;
 }
 
-export const ListNegativeKeywordsResponse: Schema.Schema<ListNegativeKeywordsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      negativeKeywords: Schema.optional(Schema.Array(NegativeKeyword)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListNegativeKeywordsResponse",
-  }) as any as Schema.Schema<ListNegativeKeywordsResponse>;
+export const ListNegativeKeywordsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    negativeKeywords: Schema.optional(Schema.Array(NegativeKeyword)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListNegativeKeywordsResponse" });
 
 export interface ListYoutubeAssetAssociationsResponse {
   /** The list of asset associations. This list will be absent if empty. */
@@ -11150,17 +9601,13 @@ export interface ListYoutubeAssetAssociationsResponse {
   nextPageToken?: string;
 }
 
-export const ListYoutubeAssetAssociationsResponse: Schema.Schema<ListYoutubeAssetAssociationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      youtubeAssetAssociations: Schema.optional(
-        Schema.Array(YoutubeAssetAssociation),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListYoutubeAssetAssociationsResponse",
-  }) as any as Schema.Schema<ListYoutubeAssetAssociationsResponse>;
+export const ListYoutubeAssetAssociationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    youtubeAssetAssociations: Schema.optional(
+      Schema.Array(YoutubeAssetAssociation),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListYoutubeAssetAssociationsResponse" });
 
 export interface BulkEditAdGroupAssignedTargetingOptionsResponse {
   /** Output only. The error information for each ad group that failed to update. */
@@ -11171,16 +9618,14 @@ export interface BulkEditAdGroupAssignedTargetingOptionsResponse {
   updatedAdGroupIds?: Array<string>;
 }
 
-export const BulkEditAdGroupAssignedTargetingOptionsResponse: Schema.Schema<BulkEditAdGroupAssignedTargetingOptionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errors: Schema.optional(Schema.Array(Status)),
-      failedAdGroupIds: Schema.optional(Schema.Array(Schema.String)),
-      updatedAdGroupIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const BulkEditAdGroupAssignedTargetingOptionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    errors: Schema.optional(Schema.Array(Status)),
+    failedAdGroupIds: Schema.optional(Schema.Array(Schema.String)),
+    updatedAdGroupIds: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "BulkEditAdGroupAssignedTargetingOptionsResponse",
-  }) as any as Schema.Schema<BulkEditAdGroupAssignedTargetingOptionsResponse>;
+  });
 
 export interface ListAdvertiserAssignedTargetingOptionsResponse {
   /** The list of assigned targeting options. This list will be absent if empty. */
@@ -11189,17 +9634,13 @@ export interface ListAdvertiserAssignedTargetingOptionsResponse {
   nextPageToken?: string;
 }
 
-export const ListAdvertiserAssignedTargetingOptionsResponse: Schema.Schema<ListAdvertiserAssignedTargetingOptionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      assignedTargetingOptions: Schema.optional(
-        Schema.Array(AssignedTargetingOption),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAdvertiserAssignedTargetingOptionsResponse",
-  }) as any as Schema.Schema<ListAdvertiserAssignedTargetingOptionsResponse>;
+export const ListAdvertiserAssignedTargetingOptionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    assignedTargetingOptions: Schema.optional(
+      Schema.Array(AssignedTargetingOption),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListAdvertiserAssignedTargetingOptionsResponse" });
 
 export interface ListFirstPartyAndPartnerAudiencesResponse {
   /** A token to retrieve the next page of results. Pass this value in the page_token field in the subsequent call to `ListFirstPartyAndPartnerAudiences` method to retrieve the next page of results. */
@@ -11208,17 +9649,13 @@ export interface ListFirstPartyAndPartnerAudiencesResponse {
   firstPartyAndPartnerAudiences?: Array<FirstPartyAndPartnerAudience>;
 }
 
-export const ListFirstPartyAndPartnerAudiencesResponse: Schema.Schema<ListFirstPartyAndPartnerAudiencesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      firstPartyAndPartnerAudiences: Schema.optional(
-        Schema.Array(FirstPartyAndPartnerAudience),
-      ),
-    }),
-  ).annotate({
-    identifier: "ListFirstPartyAndPartnerAudiencesResponse",
-  }) as any as Schema.Schema<ListFirstPartyAndPartnerAudiencesResponse>;
+export const ListFirstPartyAndPartnerAudiencesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    firstPartyAndPartnerAudiences: Schema.optional(
+      Schema.Array(FirstPartyAndPartnerAudience),
+    ),
+  }).annotate({ identifier: "ListFirstPartyAndPartnerAudiencesResponse" });
 
 export interface ListCustomListsResponse {
   /** The list of custom lists. This list will be absent if empty. */
@@ -11227,15 +9664,11 @@ export interface ListCustomListsResponse {
   nextPageToken?: string;
 }
 
-export const ListCustomListsResponse: Schema.Schema<ListCustomListsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customLists: Schema.optional(Schema.Array(CustomList)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListCustomListsResponse",
-  }) as any as Schema.Schema<ListCustomListsResponse>;
+export const ListCustomListsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customLists: Schema.optional(Schema.Array(CustomList)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListCustomListsResponse" });
 
 export interface BulkEditAssignedTargetingOptionsResponse {
   /** Output only. The IDs of the line items which successfully updated. */
@@ -11246,32 +9679,24 @@ export interface BulkEditAssignedTargetingOptionsResponse {
   errors?: Array<Status>;
 }
 
-export const BulkEditAssignedTargetingOptionsResponse: Schema.Schema<BulkEditAssignedTargetingOptionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updatedLineItemIds: Schema.optional(Schema.Array(Schema.String)),
-      failedLineItemIds: Schema.optional(Schema.Array(Schema.String)),
-      errors: Schema.optional(Schema.Array(Status)),
-    }),
-  ).annotate({
-    identifier: "BulkEditAssignedTargetingOptionsResponse",
-  }) as any as Schema.Schema<BulkEditAssignedTargetingOptionsResponse>;
+export const BulkEditAssignedTargetingOptionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updatedLineItemIds: Schema.optional(Schema.Array(Schema.String)),
+    failedLineItemIds: Schema.optional(Schema.Array(Schema.String)),
+    errors: Schema.optional(Schema.Array(Status)),
+  }).annotate({ identifier: "BulkEditAssignedTargetingOptionsResponse" });
 
 export interface BulkEditAssignedInventorySourcesResponse {
   /** The list of assigned inventory sources that have been successfully created. This list will be absent if empty. */
   assignedInventorySources?: Array<AssignedInventorySource>;
 }
 
-export const BulkEditAssignedInventorySourcesResponse: Schema.Schema<BulkEditAssignedInventorySourcesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      assignedInventorySources: Schema.optional(
-        Schema.Array(AssignedInventorySource),
-      ),
-    }),
-  ).annotate({
-    identifier: "BulkEditAssignedInventorySourcesResponse",
-  }) as any as Schema.Schema<BulkEditAssignedInventorySourcesResponse>;
+export const BulkEditAssignedInventorySourcesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    assignedInventorySources: Schema.optional(
+      Schema.Array(AssignedInventorySource),
+    ),
+  }).annotate({ identifier: "BulkEditAssignedInventorySourcesResponse" });
 
 // ==========================================================================
 // Operations

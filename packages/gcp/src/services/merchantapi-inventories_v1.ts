@@ -54,17 +54,12 @@ export interface ProductChange {
     | (string & {});
 }
 
-export const ProductChange: Schema.Schema<ProductChange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      regionCode: Schema.optional(Schema.String),
-      oldValue: Schema.optional(Schema.String),
-      newValue: Schema.optional(Schema.String),
-      reportingContext: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProductChange",
-  }) as any as Schema.Schema<ProductChange>;
+export const ProductChange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  regionCode: Schema.optional(Schema.String),
+  oldValue: Schema.optional(Schema.String),
+  newValue: Schema.optional(Schema.String),
+  reportingContext: Schema.optional(Schema.String),
+}).annotate({ identifier: "ProductChange" });
 
 export interface ProductStatusChangeMessage {
   /** The resource that changed, in this case it will always be `Product`. */
@@ -87,22 +82,18 @@ export interface ProductStatusChangeMessage {
   eventTime?: string;
 }
 
-export const ProductStatusChangeMessage: Schema.Schema<ProductStatusChangeMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceType: Schema.optional(Schema.String),
-      expirationTime: Schema.optional(Schema.String),
-      account: Schema.optional(Schema.String),
-      managingAccount: Schema.optional(Schema.String),
-      resourceId: Schema.optional(Schema.String),
-      resource: Schema.optional(Schema.String),
-      attribute: Schema.optional(Schema.String),
-      changes: Schema.optional(Schema.Array(ProductChange)),
-      eventTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProductStatusChangeMessage",
-  }) as any as Schema.Schema<ProductStatusChangeMessage>;
+export const ProductStatusChangeMessage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceType: Schema.optional(Schema.String),
+    expirationTime: Schema.optional(Schema.String),
+    account: Schema.optional(Schema.String),
+    managingAccount: Schema.optional(Schema.String),
+    resourceId: Schema.optional(Schema.String),
+    resource: Schema.optional(Schema.String),
+    attribute: Schema.optional(Schema.String),
+    changes: Schema.optional(Schema.Array(ProductChange)),
+    eventTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ProductStatusChangeMessage" });
 
 export interface Price {
   /** The price represented as a number in micros (1 million micros is an equivalent to one's currency standard unit, for example, 1 USD = 1000000 micros). */
@@ -111,13 +102,10 @@ export interface Price {
   currencyCode?: string;
 }
 
-export const Price: Schema.Schema<Price> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      amountMicros: Schema.optional(Schema.String),
-      currencyCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Price" }) as any as Schema.Schema<Price>;
+export const Price = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  amountMicros: Schema.optional(Schema.String),
+  currencyCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "Price" });
 
 export interface Interval {
   /** Optional. Inclusive start of the interval. If specified, a Timestamp matching this interval will have to be the same or after the start. */
@@ -126,13 +114,10 @@ export interface Interval {
   endTime?: string;
 }
 
-export const Interval: Schema.Schema<Interval> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Interval" }) as any as Schema.Schema<Interval>;
+export const Interval = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Interval" });
 
 export interface InventoryLoyaltyProgram {
   /** The price for members of the given tier, that is, the instant discount price. Must be smaller or equal to the regular price. */
@@ -151,20 +136,16 @@ export interface InventoryLoyaltyProgram {
   loyaltyPoints?: string;
 }
 
-export const InventoryLoyaltyProgram: Schema.Schema<InventoryLoyaltyProgram> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      price: Schema.optional(Price),
-      programLabel: Schema.optional(Schema.String),
-      memberPriceEffectiveInterval: Schema.optional(Interval),
-      shippingLabel: Schema.optional(Schema.String),
-      tierLabel: Schema.optional(Schema.String),
-      cashbackForFutureUse: Schema.optional(Price),
-      loyaltyPoints: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InventoryLoyaltyProgram",
-  }) as any as Schema.Schema<InventoryLoyaltyProgram>;
+export const InventoryLoyaltyProgram =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    price: Schema.optional(Price),
+    programLabel: Schema.optional(Schema.String),
+    memberPriceEffectiveInterval: Schema.optional(Interval),
+    shippingLabel: Schema.optional(Schema.String),
+    tierLabel: Schema.optional(Schema.String),
+    cashbackForFutureUse: Schema.optional(Price),
+    loyaltyPoints: Schema.optional(Schema.String),
+  }).annotate({ identifier: "InventoryLoyaltyProgram" });
 
 export interface RegionalInventoryAttributes {
   /** Optional. The `TimePeriod` of the sale price in this region. */
@@ -183,18 +164,14 @@ export interface RegionalInventoryAttributes {
   price?: Price;
 }
 
-export const RegionalInventoryAttributes: Schema.Schema<RegionalInventoryAttributes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      salePriceEffectiveDate: Schema.optional(Interval),
-      availability: Schema.optional(Schema.String),
-      loyaltyPrograms: Schema.optional(Schema.Array(InventoryLoyaltyProgram)),
-      salePrice: Schema.optional(Price),
-      price: Schema.optional(Price),
-    }),
-  ).annotate({
-    identifier: "RegionalInventoryAttributes",
-  }) as any as Schema.Schema<RegionalInventoryAttributes>;
+export const RegionalInventoryAttributes =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    salePriceEffectiveDate: Schema.optional(Interval),
+    availability: Schema.optional(Schema.String),
+    loyaltyPrograms: Schema.optional(Schema.Array(InventoryLoyaltyProgram)),
+    salePrice: Schema.optional(Price),
+    price: Schema.optional(Price),
+  }).annotate({ identifier: "RegionalInventoryAttributes" });
 
 export interface RegionalInventory {
   /** Optional. A list of regional inventory attributes. */
@@ -209,18 +186,13 @@ export interface RegionalInventory {
   name?: string;
 }
 
-export const RegionalInventory: Schema.Schema<RegionalInventory> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      regionalInventoryAttributes: Schema.optional(RegionalInventoryAttributes),
-      base64EncodedName: Schema.optional(Schema.String),
-      region: Schema.optional(Schema.String),
-      account: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RegionalInventory",
-  }) as any as Schema.Schema<RegionalInventory>;
+export const RegionalInventory = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  regionalInventoryAttributes: Schema.optional(RegionalInventoryAttributes),
+  base64EncodedName: Schema.optional(Schema.String),
+  region: Schema.optional(Schema.String),
+  account: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "RegionalInventory" });
 
 export interface LocalInventoryAttributes {
   /** Optional. Sale price of the product at this store. Mandatory if `salePriceEffectiveDate` is defined. */
@@ -266,22 +238,18 @@ export interface LocalInventoryAttributes {
   price?: Price;
 }
 
-export const LocalInventoryAttributes: Schema.Schema<LocalInventoryAttributes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      salePrice: Schema.optional(Price),
-      pickupMethod: Schema.optional(Schema.String),
-      salePriceEffectiveDate: Schema.optional(Interval),
-      availability: Schema.optional(Schema.String),
-      instoreProductLocation: Schema.optional(Schema.String),
-      loyaltyPrograms: Schema.optional(Schema.Array(InventoryLoyaltyProgram)),
-      quantity: Schema.optional(Schema.String),
-      pickupSla: Schema.optional(Schema.String),
-      price: Schema.optional(Price),
-    }),
-  ).annotate({
-    identifier: "LocalInventoryAttributes",
-  }) as any as Schema.Schema<LocalInventoryAttributes>;
+export const LocalInventoryAttributes =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    salePrice: Schema.optional(Price),
+    pickupMethod: Schema.optional(Schema.String),
+    salePriceEffectiveDate: Schema.optional(Interval),
+    availability: Schema.optional(Schema.String),
+    instoreProductLocation: Schema.optional(Schema.String),
+    loyaltyPrograms: Schema.optional(Schema.Array(InventoryLoyaltyProgram)),
+    quantity: Schema.optional(Schema.String),
+    pickupSla: Schema.optional(Schema.String),
+    price: Schema.optional(Price),
+  }).annotate({ identifier: "LocalInventoryAttributes" });
 
 export interface LocalInventory {
   /** Output only. The account that owns the product. This field will be ignored if set by the client. */
@@ -296,18 +264,13 @@ export interface LocalInventory {
   storeCode?: string;
 }
 
-export const LocalInventory: Schema.Schema<LocalInventory> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      account: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      localInventoryAttributes: Schema.optional(LocalInventoryAttributes),
-      base64EncodedName: Schema.optional(Schema.String),
-      storeCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LocalInventory",
-  }) as any as Schema.Schema<LocalInventory>;
+export const LocalInventory = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  account: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  localInventoryAttributes: Schema.optional(LocalInventoryAttributes),
+  base64EncodedName: Schema.optional(Schema.String),
+  storeCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "LocalInventory" });
 
 export interface ListLocalInventoriesResponse {
   /** The `LocalInventory` resources for the given product from the specified account. */
@@ -316,15 +279,11 @@ export interface ListLocalInventoriesResponse {
   nextPageToken?: string;
 }
 
-export const ListLocalInventoriesResponse: Schema.Schema<ListLocalInventoriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      localInventories: Schema.optional(Schema.Array(LocalInventory)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocalInventoriesResponse",
-  }) as any as Schema.Schema<ListLocalInventoriesResponse>;
+export const ListLocalInventoriesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    localInventories: Schema.optional(Schema.Array(LocalInventory)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListLocalInventoriesResponse" });
 
 export interface ListRegionalInventoriesResponse {
   /** The `RegionalInventory` resources for the given product from the specified account. */
@@ -333,22 +292,17 @@ export interface ListRegionalInventoriesResponse {
   nextPageToken?: string;
 }
 
-export const ListRegionalInventoriesResponse: Schema.Schema<ListRegionalInventoriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      regionalInventories: Schema.optional(Schema.Array(RegionalInventory)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListRegionalInventoriesResponse",
-  }) as any as Schema.Schema<ListRegionalInventoriesResponse>;
+export const ListRegionalInventoriesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    regionalInventories: Schema.optional(Schema.Array(RegionalInventory)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListRegionalInventoriesResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 // ==========================================================================
 // Operations

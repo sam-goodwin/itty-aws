@@ -42,32 +42,29 @@ export interface Promotion {
   title?: string;
 }
 
-export const Promotion: Schema.Schema<Promotion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const Promotion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  htmlTitle: Schema.optional(Schema.String),
+  bodyLines: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        link: Schema.optional(Schema.String),
+        htmlTitle: Schema.optional(Schema.String),
+        title: Schema.optional(Schema.String),
+        url: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
+  link: Schema.optional(Schema.String),
+  image: Schema.optional(
     Schema.Struct({
-      htmlTitle: Schema.optional(Schema.String),
-      bodyLines: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            link: Schema.optional(Schema.String),
-            htmlTitle: Schema.optional(Schema.String),
-            title: Schema.optional(Schema.String),
-            url: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      link: Schema.optional(Schema.String),
-      image: Schema.optional(
-        Schema.Struct({
-          height: Schema.optional(Schema.Number),
-          width: Schema.optional(Schema.Number),
-          source: Schema.optional(Schema.String),
-        }),
-      ),
-      displayLink: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
+      height: Schema.optional(Schema.Number),
+      width: Schema.optional(Schema.Number),
+      source: Schema.optional(Schema.String),
     }),
-  ).annotate({ identifier: "Promotion" }) as any as Schema.Schema<Promotion>;
+  ),
+  displayLink: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+}).annotate({ identifier: "Promotion" });
 
 export interface Result {
   /** The URL displayed after the snippet for each search result. */
@@ -114,44 +111,41 @@ export interface Result {
   title?: string;
 }
 
-export const Result: Schema.Schema<Result> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const Result = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  formattedUrl: Schema.optional(Schema.String),
+  fileFormat: Schema.optional(Schema.String),
+  link: Schema.optional(Schema.String),
+  image: Schema.optional(
     Schema.Struct({
-      formattedUrl: Schema.optional(Schema.String),
-      fileFormat: Schema.optional(Schema.String),
-      link: Schema.optional(Schema.String),
-      image: Schema.optional(
-        Schema.Struct({
-          height: Schema.optional(Schema.Number),
-          byteSize: Schema.optional(Schema.Number),
-          width: Schema.optional(Schema.Number),
-          thumbnailWidth: Schema.optional(Schema.Number),
-          contextLink: Schema.optional(Schema.String),
-          thumbnailLink: Schema.optional(Schema.String),
-          thumbnailHeight: Schema.optional(Schema.Number),
-        }),
-      ),
-      htmlSnippet: Schema.optional(Schema.String),
-      pagemap: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      htmlFormattedUrl: Schema.optional(Schema.String),
-      mime: Schema.optional(Schema.String),
-      cacheId: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      labels: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            displayName: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-            label_with_op: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      displayLink: Schema.optional(Schema.String),
-      snippet: Schema.optional(Schema.String),
-      htmlTitle: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
+      height: Schema.optional(Schema.Number),
+      byteSize: Schema.optional(Schema.Number),
+      width: Schema.optional(Schema.Number),
+      thumbnailWidth: Schema.optional(Schema.Number),
+      contextLink: Schema.optional(Schema.String),
+      thumbnailLink: Schema.optional(Schema.String),
+      thumbnailHeight: Schema.optional(Schema.Number),
     }),
-  ).annotate({ identifier: "Result" }) as any as Schema.Schema<Result>;
+  ),
+  htmlSnippet: Schema.optional(Schema.String),
+  pagemap: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  htmlFormattedUrl: Schema.optional(Schema.String),
+  mime: Schema.optional(Schema.String),
+  cacheId: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  labels: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        displayName: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        label_with_op: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
+  displayLink: Schema.optional(Schema.String),
+  snippet: Schema.optional(Schema.String),
+  htmlTitle: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+}).annotate({ identifier: "Result" });
 
 export interface Search {
   /** Unique identifier for the type of current object. For this API, it is customsearch#search. */
@@ -292,165 +286,162 @@ export interface Search {
   context?: Record<string, unknown>;
 }
 
-export const Search: Schema.Schema<Search> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const Search = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  queries: Schema.optional(
     Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      queries: Schema.optional(
-        Schema.Struct({
-          request: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                imgSize: Schema.optional(Schema.String),
-                totalResults: Schema.optional(Schema.String),
-                exactTerms: Schema.optional(Schema.String),
-                fileType: Schema.optional(Schema.String),
-                orTerms: Schema.optional(Schema.String),
-                siteSearch: Schema.optional(Schema.String),
-                title: Schema.optional(Schema.String),
-                rights: Schema.optional(Schema.String),
-                imgDominantColor: Schema.optional(Schema.String),
-                imgType: Schema.optional(Schema.String),
-                cx: Schema.optional(Schema.String),
-                hq: Schema.optional(Schema.String),
-                searchType: Schema.optional(Schema.String),
-                linkSite: Schema.optional(Schema.String),
-                startPage: Schema.optional(Schema.Number),
-                hl: Schema.optional(Schema.String),
-                language: Schema.optional(Schema.String),
-                siteSearchFilter: Schema.optional(Schema.String),
-                safe: Schema.optional(Schema.String),
-                relatedSite: Schema.optional(Schema.String),
-                filter: Schema.optional(Schema.String),
-                outputEncoding: Schema.optional(Schema.String),
-                highRange: Schema.optional(Schema.String),
-                inputEncoding: Schema.optional(Schema.String),
-                gl: Schema.optional(Schema.String),
-                googleHost: Schema.optional(Schema.String),
-                disableCnTwTranslation: Schema.optional(Schema.String),
-                imgColorType: Schema.optional(Schema.String),
-                lowRange: Schema.optional(Schema.String),
-                count: Schema.optional(Schema.Number),
-                excludeTerms: Schema.optional(Schema.String),
-                sort: Schema.optional(Schema.String),
-                cr: Schema.optional(Schema.String),
-                dateRestrict: Schema.optional(Schema.String),
-                startIndex: Schema.optional(Schema.Number),
-                searchTerms: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          nextPage: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                startPage: Schema.optional(Schema.Number),
-                hl: Schema.optional(Schema.String),
-                language: Schema.optional(Schema.String),
-                hq: Schema.optional(Schema.String),
-                searchType: Schema.optional(Schema.String),
-                linkSite: Schema.optional(Schema.String),
-                cx: Schema.optional(Schema.String),
-                imgDominantColor: Schema.optional(Schema.String),
-                imgType: Schema.optional(Schema.String),
-                title: Schema.optional(Schema.String),
-                rights: Schema.optional(Schema.String),
-                fileType: Schema.optional(Schema.String),
-                orTerms: Schema.optional(Schema.String),
-                siteSearch: Schema.optional(Schema.String),
-                imgSize: Schema.optional(Schema.String),
-                totalResults: Schema.optional(Schema.String),
-                exactTerms: Schema.optional(Schema.String),
-                startIndex: Schema.optional(Schema.Number),
-                searchTerms: Schema.optional(Schema.String),
-                sort: Schema.optional(Schema.String),
-                cr: Schema.optional(Schema.String),
-                dateRestrict: Schema.optional(Schema.String),
-                count: Schema.optional(Schema.Number),
-                excludeTerms: Schema.optional(Schema.String),
-                inputEncoding: Schema.optional(Schema.String),
-                gl: Schema.optional(Schema.String),
-                googleHost: Schema.optional(Schema.String),
-                disableCnTwTranslation: Schema.optional(Schema.String),
-                imgColorType: Schema.optional(Schema.String),
-                lowRange: Schema.optional(Schema.String),
-                filter: Schema.optional(Schema.String),
-                outputEncoding: Schema.optional(Schema.String),
-                highRange: Schema.optional(Schema.String),
-                relatedSite: Schema.optional(Schema.String),
-                siteSearchFilter: Schema.optional(Schema.String),
-                safe: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          previousPage: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                startPage: Schema.optional(Schema.Number),
-                hl: Schema.optional(Schema.String),
-                language: Schema.optional(Schema.String),
-                cx: Schema.optional(Schema.String),
-                searchType: Schema.optional(Schema.String),
-                linkSite: Schema.optional(Schema.String),
-                hq: Schema.optional(Schema.String),
-                rights: Schema.optional(Schema.String),
-                title: Schema.optional(Schema.String),
-                imgType: Schema.optional(Schema.String),
-                imgDominantColor: Schema.optional(Schema.String),
-                exactTerms: Schema.optional(Schema.String),
-                imgSize: Schema.optional(Schema.String),
-                totalResults: Schema.optional(Schema.String),
-                orTerms: Schema.optional(Schema.String),
-                siteSearch: Schema.optional(Schema.String),
-                fileType: Schema.optional(Schema.String),
-                sort: Schema.optional(Schema.String),
-                cr: Schema.optional(Schema.String),
-                dateRestrict: Schema.optional(Schema.String),
-                startIndex: Schema.optional(Schema.Number),
-                searchTerms: Schema.optional(Schema.String),
-                lowRange: Schema.optional(Schema.String),
-                inputEncoding: Schema.optional(Schema.String),
-                gl: Schema.optional(Schema.String),
-                googleHost: Schema.optional(Schema.String),
-                disableCnTwTranslation: Schema.optional(Schema.String),
-                imgColorType: Schema.optional(Schema.String),
-                excludeTerms: Schema.optional(Schema.String),
-                count: Schema.optional(Schema.Number),
-                relatedSite: Schema.optional(Schema.String),
-                outputEncoding: Schema.optional(Schema.String),
-                highRange: Schema.optional(Schema.String),
-                filter: Schema.optional(Schema.String),
-                safe: Schema.optional(Schema.String),
-                siteSearchFilter: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
+      request: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            imgSize: Schema.optional(Schema.String),
+            totalResults: Schema.optional(Schema.String),
+            exactTerms: Schema.optional(Schema.String),
+            fileType: Schema.optional(Schema.String),
+            orTerms: Schema.optional(Schema.String),
+            siteSearch: Schema.optional(Schema.String),
+            title: Schema.optional(Schema.String),
+            rights: Schema.optional(Schema.String),
+            imgDominantColor: Schema.optional(Schema.String),
+            imgType: Schema.optional(Schema.String),
+            cx: Schema.optional(Schema.String),
+            hq: Schema.optional(Schema.String),
+            searchType: Schema.optional(Schema.String),
+            linkSite: Schema.optional(Schema.String),
+            startPage: Schema.optional(Schema.Number),
+            hl: Schema.optional(Schema.String),
+            language: Schema.optional(Schema.String),
+            siteSearchFilter: Schema.optional(Schema.String),
+            safe: Schema.optional(Schema.String),
+            relatedSite: Schema.optional(Schema.String),
+            filter: Schema.optional(Schema.String),
+            outputEncoding: Schema.optional(Schema.String),
+            highRange: Schema.optional(Schema.String),
+            inputEncoding: Schema.optional(Schema.String),
+            gl: Schema.optional(Schema.String),
+            googleHost: Schema.optional(Schema.String),
+            disableCnTwTranslation: Schema.optional(Schema.String),
+            imgColorType: Schema.optional(Schema.String),
+            lowRange: Schema.optional(Schema.String),
+            count: Schema.optional(Schema.Number),
+            excludeTerms: Schema.optional(Schema.String),
+            sort: Schema.optional(Schema.String),
+            cr: Schema.optional(Schema.String),
+            dateRestrict: Schema.optional(Schema.String),
+            startIndex: Schema.optional(Schema.Number),
+            searchTerms: Schema.optional(Schema.String),
+          }),
+        ),
       ),
-      searchInformation: Schema.optional(
-        Schema.Struct({
-          searchTime: Schema.optional(Schema.Number),
-          formattedSearchTime: Schema.optional(Schema.String),
-          totalResults: Schema.optional(Schema.String),
-          formattedTotalResults: Schema.optional(Schema.String),
-        }),
+      nextPage: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            startPage: Schema.optional(Schema.Number),
+            hl: Schema.optional(Schema.String),
+            language: Schema.optional(Schema.String),
+            hq: Schema.optional(Schema.String),
+            searchType: Schema.optional(Schema.String),
+            linkSite: Schema.optional(Schema.String),
+            cx: Schema.optional(Schema.String),
+            imgDominantColor: Schema.optional(Schema.String),
+            imgType: Schema.optional(Schema.String),
+            title: Schema.optional(Schema.String),
+            rights: Schema.optional(Schema.String),
+            fileType: Schema.optional(Schema.String),
+            orTerms: Schema.optional(Schema.String),
+            siteSearch: Schema.optional(Schema.String),
+            imgSize: Schema.optional(Schema.String),
+            totalResults: Schema.optional(Schema.String),
+            exactTerms: Schema.optional(Schema.String),
+            startIndex: Schema.optional(Schema.Number),
+            searchTerms: Schema.optional(Schema.String),
+            sort: Schema.optional(Schema.String),
+            cr: Schema.optional(Schema.String),
+            dateRestrict: Schema.optional(Schema.String),
+            count: Schema.optional(Schema.Number),
+            excludeTerms: Schema.optional(Schema.String),
+            inputEncoding: Schema.optional(Schema.String),
+            gl: Schema.optional(Schema.String),
+            googleHost: Schema.optional(Schema.String),
+            disableCnTwTranslation: Schema.optional(Schema.String),
+            imgColorType: Schema.optional(Schema.String),
+            lowRange: Schema.optional(Schema.String),
+            filter: Schema.optional(Schema.String),
+            outputEncoding: Schema.optional(Schema.String),
+            highRange: Schema.optional(Schema.String),
+            relatedSite: Schema.optional(Schema.String),
+            siteSearchFilter: Schema.optional(Schema.String),
+            safe: Schema.optional(Schema.String),
+          }),
+        ),
       ),
-      items: Schema.optional(Schema.Array(Result)),
-      url: Schema.optional(
-        Schema.Struct({
-          type: Schema.optional(Schema.String),
-          template: Schema.optional(Schema.String),
-        }),
+      previousPage: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            startPage: Schema.optional(Schema.Number),
+            hl: Schema.optional(Schema.String),
+            language: Schema.optional(Schema.String),
+            cx: Schema.optional(Schema.String),
+            searchType: Schema.optional(Schema.String),
+            linkSite: Schema.optional(Schema.String),
+            hq: Schema.optional(Schema.String),
+            rights: Schema.optional(Schema.String),
+            title: Schema.optional(Schema.String),
+            imgType: Schema.optional(Schema.String),
+            imgDominantColor: Schema.optional(Schema.String),
+            exactTerms: Schema.optional(Schema.String),
+            imgSize: Schema.optional(Schema.String),
+            totalResults: Schema.optional(Schema.String),
+            orTerms: Schema.optional(Schema.String),
+            siteSearch: Schema.optional(Schema.String),
+            fileType: Schema.optional(Schema.String),
+            sort: Schema.optional(Schema.String),
+            cr: Schema.optional(Schema.String),
+            dateRestrict: Schema.optional(Schema.String),
+            startIndex: Schema.optional(Schema.Number),
+            searchTerms: Schema.optional(Schema.String),
+            lowRange: Schema.optional(Schema.String),
+            inputEncoding: Schema.optional(Schema.String),
+            gl: Schema.optional(Schema.String),
+            googleHost: Schema.optional(Schema.String),
+            disableCnTwTranslation: Schema.optional(Schema.String),
+            imgColorType: Schema.optional(Schema.String),
+            excludeTerms: Schema.optional(Schema.String),
+            count: Schema.optional(Schema.Number),
+            relatedSite: Schema.optional(Schema.String),
+            outputEncoding: Schema.optional(Schema.String),
+            highRange: Schema.optional(Schema.String),
+            filter: Schema.optional(Schema.String),
+            safe: Schema.optional(Schema.String),
+            siteSearchFilter: Schema.optional(Schema.String),
+          }),
+        ),
       ),
-      spelling: Schema.optional(
-        Schema.Struct({
-          correctedQuery: Schema.optional(Schema.String),
-          htmlCorrectedQuery: Schema.optional(Schema.String),
-        }),
-      ),
-      promotions: Schema.optional(Schema.Array(Promotion)),
-      context: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
     }),
-  ).annotate({ identifier: "Search" }) as any as Schema.Schema<Search>;
+  ),
+  searchInformation: Schema.optional(
+    Schema.Struct({
+      searchTime: Schema.optional(Schema.Number),
+      formattedSearchTime: Schema.optional(Schema.String),
+      totalResults: Schema.optional(Schema.String),
+      formattedTotalResults: Schema.optional(Schema.String),
+    }),
+  ),
+  items: Schema.optional(Schema.Array(Result)),
+  url: Schema.optional(
+    Schema.Struct({
+      type: Schema.optional(Schema.String),
+      template: Schema.optional(Schema.String),
+    }),
+  ),
+  spelling: Schema.optional(
+    Schema.Struct({
+      correctedQuery: Schema.optional(Schema.String),
+      htmlCorrectedQuery: Schema.optional(Schema.String),
+    }),
+  ),
+  promotions: Schema.optional(Schema.Array(Promotion)),
+  context: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Search" });
 
 // ==========================================================================
 // Operations

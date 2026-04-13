@@ -29,15 +29,13 @@ export interface GoogleCloudPolicyanalyzerV1beta1ObservationPeriod {
   startTime?: string;
 }
 
-export const GoogleCloudPolicyanalyzerV1beta1ObservationPeriod: Schema.Schema<GoogleCloudPolicyanalyzerV1beta1ObservationPeriod> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endTime: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudPolicyanalyzerV1beta1ObservationPeriod =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endTime: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudPolicyanalyzerV1beta1ObservationPeriod",
-  }) as any as Schema.Schema<GoogleCloudPolicyanalyzerV1beta1ObservationPeriod>;
+  });
 
 export interface GoogleCloudPolicyanalyzerV1beta1Activity {
   /** A struct of custom fields to explain the activity. */
@@ -50,19 +48,15 @@ export interface GoogleCloudPolicyanalyzerV1beta1Activity {
   observationPeriod?: GoogleCloudPolicyanalyzerV1beta1ObservationPeriod;
 }
 
-export const GoogleCloudPolicyanalyzerV1beta1Activity: Schema.Schema<GoogleCloudPolicyanalyzerV1beta1Activity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      activity: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      fullResourceName: Schema.optional(Schema.String),
-      activityType: Schema.optional(Schema.String),
-      observationPeriod: Schema.optional(
-        GoogleCloudPolicyanalyzerV1beta1ObservationPeriod,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudPolicyanalyzerV1beta1Activity",
-  }) as any as Schema.Schema<GoogleCloudPolicyanalyzerV1beta1Activity>;
+export const GoogleCloudPolicyanalyzerV1beta1Activity =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    activity: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    fullResourceName: Schema.optional(Schema.String),
+    activityType: Schema.optional(Schema.String),
+    observationPeriod: Schema.optional(
+      GoogleCloudPolicyanalyzerV1beta1ObservationPeriod,
+    ),
+  }).annotate({ identifier: "GoogleCloudPolicyanalyzerV1beta1Activity" });
 
 export interface GoogleCloudPolicyanalyzerV1beta1QueryActivityResponse {
   /** The set of activities that match the filter included in the request. */
@@ -71,17 +65,15 @@ export interface GoogleCloudPolicyanalyzerV1beta1QueryActivityResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudPolicyanalyzerV1beta1QueryActivityResponse: Schema.Schema<GoogleCloudPolicyanalyzerV1beta1QueryActivityResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      activities: Schema.optional(
-        Schema.Array(GoogleCloudPolicyanalyzerV1beta1Activity),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudPolicyanalyzerV1beta1QueryActivityResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    activities: Schema.optional(
+      Schema.Array(GoogleCloudPolicyanalyzerV1beta1Activity),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudPolicyanalyzerV1beta1QueryActivityResponse",
-  }) as any as Schema.Schema<GoogleCloudPolicyanalyzerV1beta1QueryActivityResponse>;
+  });
 
 // ==========================================================================
 // Operations

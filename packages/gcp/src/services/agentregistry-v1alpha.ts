@@ -31,16 +31,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -55,16 +52,13 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      error: Schema.optional(Status),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  done: Schema.optional(Schema.Boolean),
+  error: Schema.optional(Status),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Operation" });
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -75,30 +69,25 @@ export interface ListOperationsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(Schema.Array(Operation)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    operations: Schema.optional(Schema.Array(Operation)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelOperationRequest",
-  }) as any as Schema.Schema<CancelOperationRequest>;
+export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelOperationRequest" });
 
 export interface Interface {
   /** Required. The destination URL. */
@@ -112,13 +101,10 @@ export interface Interface {
     | (string & {});
 }
 
-export const Interface: Schema.Schema<Interface> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      url: Schema.optional(Schema.String),
-      protocolBinding: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Interface" }) as any as Schema.Schema<Interface>;
+export const Interface = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  url: Schema.optional(Schema.String),
+  protocolBinding: Schema.optional(Schema.String),
+}).annotate({ identifier: "Interface" });
 
 export interface Protocol {
   /** Output only. The type of the protocol. */
@@ -129,14 +115,11 @@ export interface Protocol {
   interfaces?: Array<Interface>;
 }
 
-export const Protocol: Schema.Schema<Protocol> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      protocolVersion: Schema.optional(Schema.String),
-      interfaces: Schema.optional(Schema.Array(Interface)),
-    }),
-  ).annotate({ identifier: "Protocol" }) as any as Schema.Schema<Protocol>;
+export const Protocol = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  protocolVersion: Schema.optional(Schema.String),
+  interfaces: Schema.optional(Schema.Array(Interface)),
+}).annotate({ identifier: "Protocol" });
 
 export interface Skill {
   /** Output only. A unique identifier for the agent's skill. */
@@ -151,16 +134,13 @@ export interface Skill {
   examples?: Array<string>;
 }
 
-export const Skill: Schema.Schema<Skill> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      tags: Schema.optional(Schema.Array(Schema.String)),
-      examples: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "Skill" }) as any as Schema.Schema<Skill>;
+export const Skill = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Array(Schema.String)),
+  examples: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Skill" });
 
 export interface Card {
   /** Output only. The type of agent card. */
@@ -169,13 +149,10 @@ export interface Card {
   content?: Record<string, unknown>;
 }
 
-export const Card: Schema.Schema<Card> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      content: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Card" }) as any as Schema.Schema<Card>;
+export const Card = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  content: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Card" });
 
 export interface Agent {
   /** Identifier. The resource name of an Agent. Format: `projects/{project}/locations/{location}/agents/{agent}`. */
@@ -206,29 +183,23 @@ export interface Agent {
   card?: Card;
 }
 
-export const Agent: Schema.Schema<Agent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      agentId: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-      protocols: Schema.optional(Schema.Array(Protocol)),
-      skills: Schema.optional(Schema.Array(Skill)),
-      uid: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      attributes: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          Schema.Record(Schema.String, Schema.Unknown),
-        ),
-      ),
-      card: Schema.optional(Card),
-    }),
-  ).annotate({ identifier: "Agent" }) as any as Schema.Schema<Agent>;
+export const Agent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  agentId: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+  protocols: Schema.optional(Schema.Array(Protocol)),
+  skills: Schema.optional(Schema.Array(Skill)),
+  uid: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  attributes: Schema.optional(
+    Schema.Record(Schema.String, Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  card: Schema.optional(Card),
+}).annotate({ identifier: "Agent" });
 
 export interface ListAgentsResponse {
   /** The list of Agents. */
@@ -237,15 +208,10 @@ export interface ListAgentsResponse {
   nextPageToken?: string;
 }
 
-export const ListAgentsResponse: Schema.Schema<ListAgentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      agents: Schema.optional(Schema.Array(Agent)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAgentsResponse",
-  }) as any as Schema.Schema<ListAgentsResponse>;
+export const ListAgentsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  agents: Schema.optional(Schema.Array(Agent)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListAgentsResponse" });
 
 export interface SearchAgentsRequest {
   /** Optional. Search criteria used to select the Agents to return. If no search criteria is specified then all accessible Agents will be returned. Search expressions can be used to restrict results based upon searchable fields, where the operators can be used along with the suffix wildcard symbol `*`. See [instructions](https://docs.cloud.google.com/agent-registry/search-agents-and-tools) for more details. Allowed operators: `=`, `:`, `NOT`, `AND`, `OR`, and `()`. Searchable fields: | Field | `=` | `:` | `*` | Keyword Search | |--------------------|-----|-----|-----|----------------| | agentId | Yes | Yes | Yes | Included | | name | No | Yes | Yes | Included | | displayName | No | Yes | Yes | Included | | description | No | Yes | No | Included | | skills | No | Yes | No | Included | | skills.id | No | Yes | No | Included | | skills.name | No | Yes | No | Included | | skills.description | No | Yes | No | Included | | skills.tags | No | Yes | No | Included | | skills.examples | No | Yes | No | Included | Examples: * `agentId=urn:agent:projects-123:projects:123:locations:us-central1:reasoningEngines:1234` to find the agent with the specified agent ID. * `name:important` to find agents whose name contains `important` as a word. * `displayName:works*` to find agents whose display name contains words that start with `works`. * `skills.tags:test` to find agents whose skills tags contain `test`. * `planner OR booking` to find agents whose metadata contains the words `planner` or `booking`. */
@@ -256,16 +222,11 @@ export interface SearchAgentsRequest {
   pageToken?: string;
 }
 
-export const SearchAgentsRequest: Schema.Schema<SearchAgentsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      searchString: Schema.optional(Schema.String),
-      pageSize: Schema.optional(Schema.Number),
-      pageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SearchAgentsRequest",
-  }) as any as Schema.Schema<SearchAgentsRequest>;
+export const SearchAgentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  searchString: Schema.optional(Schema.String),
+  pageSize: Schema.optional(Schema.Number),
+  pageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "SearchAgentsRequest" });
 
 export interface SearchAgentsResponse {
   /** A list of Agents that match the `search_string`. */
@@ -274,15 +235,10 @@ export interface SearchAgentsResponse {
   nextPageToken?: string;
 }
 
-export const SearchAgentsResponse: Schema.Schema<SearchAgentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      agents: Schema.optional(Schema.Array(Agent)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SearchAgentsResponse",
-  }) as any as Schema.Schema<SearchAgentsResponse>;
+export const SearchAgentsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  agents: Schema.optional(Schema.Array(Agent)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "SearchAgentsResponse" });
 
 export interface Endpoint {
   /** Identifier. The resource name of the Endpoint. Format: `projects/{project}/locations/{location}/endpoints/{endpoint}`. */
@@ -303,24 +259,18 @@ export interface Endpoint {
   attributes?: Record<string, Record<string, unknown>>;
 }
 
-export const Endpoint: Schema.Schema<Endpoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      endpointId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      interfaces: Schema.optional(Schema.Array(Interface)),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      attributes: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          Schema.Record(Schema.String, Schema.Unknown),
-        ),
-      ),
-    }),
-  ).annotate({ identifier: "Endpoint" }) as any as Schema.Schema<Endpoint>;
+export const Endpoint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  endpointId: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  interfaces: Schema.optional(Schema.Array(Interface)),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  attributes: Schema.optional(
+    Schema.Record(Schema.String, Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Endpoint" });
 
 export interface ListEndpointsResponse {
   /** The list of Endpoint resources matching the parent and filter criteria in the request. Each Endpoint resource follows the format: `projects/{project}/locations/{location}/endpoints/{endpoint}`. */
@@ -329,15 +279,10 @@ export interface ListEndpointsResponse {
   nextPageToken?: string;
 }
 
-export const ListEndpointsResponse: Schema.Schema<ListEndpointsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endpoints: Schema.optional(Schema.Array(Endpoint)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListEndpointsResponse",
-  }) as any as Schema.Schema<ListEndpointsResponse>;
+export const ListEndpointsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  endpoints: Schema.optional(Schema.Array(Endpoint)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListEndpointsResponse" });
 
 export interface Annotations {
   /** Output only. A human-readable title for the tool. */
@@ -352,18 +297,13 @@ export interface Annotations {
   readOnlyHint?: boolean;
 }
 
-export const Annotations: Schema.Schema<Annotations> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-      destructiveHint: Schema.optional(Schema.Boolean),
-      idempotentHint: Schema.optional(Schema.Boolean),
-      openWorldHint: Schema.optional(Schema.Boolean),
-      readOnlyHint: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "Annotations",
-  }) as any as Schema.Schema<Annotations>;
+export const Annotations = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  title: Schema.optional(Schema.String),
+  destructiveHint: Schema.optional(Schema.Boolean),
+  idempotentHint: Schema.optional(Schema.Boolean),
+  openWorldHint: Schema.optional(Schema.Boolean),
+  readOnlyHint: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Annotations" });
 
 export interface Tool {
   /** Output only. Human-readable name of the tool. */
@@ -374,14 +314,11 @@ export interface Tool {
   annotations?: Annotations;
 }
 
-export const Tool: Schema.Schema<Tool> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      annotations: Schema.optional(Annotations),
-    }),
-  ).annotate({ identifier: "Tool" }) as any as Schema.Schema<Tool>;
+export const Tool = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  annotations: Schema.optional(Annotations),
+}).annotate({ identifier: "Tool" });
 
 export interface McpServer {
   /** Identifier. The resource name of the MCP Server. Format: `projects/{project}/locations/{location}/mcpServers/{mcp_server}`. */
@@ -404,25 +341,19 @@ export interface McpServer {
   attributes?: Record<string, Record<string, unknown>>;
 }
 
-export const McpServer: Schema.Schema<McpServer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      mcpServerId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      interfaces: Schema.optional(Schema.Array(Interface)),
-      tools: Schema.optional(Schema.Array(Tool)),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      attributes: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          Schema.Record(Schema.String, Schema.Unknown),
-        ),
-      ),
-    }),
-  ).annotate({ identifier: "McpServer" }) as any as Schema.Schema<McpServer>;
+export const McpServer = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  mcpServerId: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  interfaces: Schema.optional(Schema.Array(Interface)),
+  tools: Schema.optional(Schema.Array(Tool)),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  attributes: Schema.optional(
+    Schema.Record(Schema.String, Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "McpServer" });
 
 export interface ListMcpServersResponse {
   /** The list of McpServers. */
@@ -431,15 +362,12 @@ export interface ListMcpServersResponse {
   nextPageToken?: string;
 }
 
-export const ListMcpServersResponse: Schema.Schema<ListMcpServersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mcpServers: Schema.optional(Schema.Array(McpServer)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListMcpServersResponse",
-  }) as any as Schema.Schema<ListMcpServersResponse>;
+export const ListMcpServersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    mcpServers: Schema.optional(Schema.Array(McpServer)),
+    nextPageToken: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ListMcpServersResponse" });
 
 export interface SearchMcpServersRequest {
   /** Optional. Search criteria used to select the MCP Servers to return. If no search criteria is specified then all accessible MCP Servers will be returned. Search expressions can be used to restrict results based upon searchable fields, where the operators can be used along with the suffix wildcard symbol `*`. See [instructions](https://docs.cloud.google.com/agent-registry/search-agents-and-tools) for more details. Allowed operators: `=`, `:`, `NOT`, `AND`, `OR`, and `()`. Searchable fields: | Field | `=` | `:` | `*` | Keyword Search | |--------------------|-----|-----|-----|----------------| | mcpServerId | Yes | Yes | Yes | Included | | name | No | Yes | Yes | Included | | displayName | No | Yes | Yes | Included | Examples: * `mcpServerId=urn:mcp:projects-123:projects:123:locations:us-central1:agentregistry:services:service-id` to find the MCP Server with the specified MCP Server ID. * `name:important` to find MCP Servers whose name contains `important` as a word. * `displayName:works*` to find MCP Servers whose display name contains words that start with `works`. * `planner OR booking` to find MCP Servers whose metadata contains the words `planner` or `booking`. * `mcpServerId:service-id AND (displayName:planner OR displayName:booking)` to find MCP Servers whose MCP Server ID contains `service-id` and whose display name contains `planner` or `booking`. */
@@ -450,16 +378,12 @@ export interface SearchMcpServersRequest {
   pageToken?: string;
 }
 
-export const SearchMcpServersRequest: Schema.Schema<SearchMcpServersRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      searchString: Schema.optional(Schema.String),
-      pageSize: Schema.optional(Schema.Number),
-      pageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SearchMcpServersRequest",
-  }) as any as Schema.Schema<SearchMcpServersRequest>;
+export const SearchMcpServersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    searchString: Schema.optional(Schema.String),
+    pageSize: Schema.optional(Schema.Number),
+    pageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SearchMcpServersRequest" });
 
 export interface SearchMcpServersResponse {
   /** A list of McpServers that match the `search_string`. */
@@ -468,15 +392,11 @@ export interface SearchMcpServersResponse {
   nextPageToken?: string;
 }
 
-export const SearchMcpServersResponse: Schema.Schema<SearchMcpServersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mcpServers: Schema.optional(Schema.Array(McpServer)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SearchMcpServersResponse",
-  }) as any as Schema.Schema<SearchMcpServersResponse>;
+export const SearchMcpServersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    mcpServers: Schema.optional(Schema.Array(McpServer)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SearchMcpServersResponse" });
 
 export interface AgentSpec {
   /** Required. The type of the agent spec content. */
@@ -485,13 +405,10 @@ export interface AgentSpec {
   content?: Record<string, unknown>;
 }
 
-export const AgentSpec: Schema.Schema<AgentSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      content: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "AgentSpec" }) as any as Schema.Schema<AgentSpec>;
+export const AgentSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  content: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "AgentSpec" });
 
 export interface McpServerSpec {
   /** Required. The type of the MCP Server spec content. */
@@ -500,15 +417,10 @@ export interface McpServerSpec {
   content?: Record<string, unknown>;
 }
 
-export const McpServerSpec: Schema.Schema<McpServerSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      content: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
-    identifier: "McpServerSpec",
-  }) as any as Schema.Schema<McpServerSpec>;
+export const McpServerSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  content: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "McpServerSpec" });
 
 export interface EndpointSpec {
   /** Required. The type of the endpoint spec content. */
@@ -517,15 +429,10 @@ export interface EndpointSpec {
   content?: Record<string, unknown>;
 }
 
-export const EndpointSpec: Schema.Schema<EndpointSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      content: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
-    identifier: "EndpointSpec",
-  }) as any as Schema.Schema<EndpointSpec>;
+export const EndpointSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  content: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "EndpointSpec" });
 
 export interface Service {
   /** Optional. The spec of the Agent. When `agent_spec` is set, the type of the service is Agent. */
@@ -550,21 +457,18 @@ export interface Service {
   updateTime?: string;
 }
 
-export const Service: Schema.Schema<Service> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      agentSpec: Schema.optional(AgentSpec),
-      mcpServerSpec: Schema.optional(McpServerSpec),
-      endpointSpec: Schema.optional(EndpointSpec),
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      interfaces: Schema.optional(Schema.Array(Interface)),
-      registryResource: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Service" }) as any as Schema.Schema<Service>;
+export const Service = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  agentSpec: Schema.optional(AgentSpec),
+  mcpServerSpec: Schema.optional(McpServerSpec),
+  endpointSpec: Schema.optional(EndpointSpec),
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  interfaces: Schema.optional(Schema.Array(Interface)),
+  registryResource: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Service" });
 
 export interface ListServicesResponse {
   /** The list of Service resources matching the parent and filter criteria in the request. Each Service resource follows the format: `projects/{project}/locations/{location}/services/{service}`. */
@@ -573,15 +477,10 @@ export interface ListServicesResponse {
   nextPageToken?: string;
 }
 
-export const ListServicesResponse: Schema.Schema<ListServicesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      services: Schema.optional(Schema.Array(Service)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListServicesResponse",
-  }) as any as Schema.Schema<ListServicesResponse>;
+export const ListServicesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  services: Schema.optional(Schema.Array(Service)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListServicesResponse" });
 
 export interface AuthProviderBinding {
   /** Required. The resource name of the target AuthProvider. Format: * `projects/{project}/locations/{location}/authProviders/{auth_provider}` */
@@ -592,40 +491,29 @@ export interface AuthProviderBinding {
   continueUri?: string;
 }
 
-export const AuthProviderBinding: Schema.Schema<AuthProviderBinding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      authProvider: Schema.optional(Schema.String),
-      scopes: Schema.optional(Schema.Array(Schema.String)),
-      continueUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AuthProviderBinding",
-  }) as any as Schema.Schema<AuthProviderBinding>;
+export const AuthProviderBinding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  authProvider: Schema.optional(Schema.String),
+  scopes: Schema.optional(Schema.Array(Schema.String)),
+  continueUri: Schema.optional(Schema.String),
+}).annotate({ identifier: "AuthProviderBinding" });
 
 export interface Source {
   /** The identifier of the source Agent. Format: * `urn:agent:{publisher}:{namespace}:{name}` */
   identifier?: string;
 }
 
-export const Source: Schema.Schema<Source> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      identifier: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Source" }) as any as Schema.Schema<Source>;
+export const Source = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  identifier: Schema.optional(Schema.String),
+}).annotate({ identifier: "Source" });
 
 export interface Target {
   /** The identifier of the target Agent, MCP Server, or Endpoint. Format: * `urn:agent:{publisher}:{namespace}:{name}` * `urn:mcp:{publisher}:{namespace}:{name}` * `urn:endpoint:{publisher}:{namespace}:{name}` */
   identifier?: string;
 }
 
-export const Target: Schema.Schema<Target> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      identifier: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Target" }) as any as Schema.Schema<Target>;
+export const Target = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  identifier: Schema.optional(Schema.String),
+}).annotate({ identifier: "Target" });
 
 export interface Binding {
   /** The binding for AuthProvider. */
@@ -646,19 +534,16 @@ export interface Binding {
   updateTime?: string;
 }
 
-export const Binding: Schema.Schema<Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      authProviderBinding: Schema.optional(AuthProviderBinding),
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      source: Schema.optional(Source),
-      target: Schema.optional(Target),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Binding" }) as any as Schema.Schema<Binding>;
+export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  authProviderBinding: Schema.optional(AuthProviderBinding),
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  source: Schema.optional(Source),
+  target: Schema.optional(Target),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Binding" });
 
 export interface ListBindingsResponse {
   /** The list of Binding resources matching the parent and filter criteria in the request. Each Binding resource follows the format: `projects/{project}/locations/{location}/bindings/{binding}`. */
@@ -667,15 +552,10 @@ export interface ListBindingsResponse {
   nextPageToken?: string;
 }
 
-export const ListBindingsResponse: Schema.Schema<ListBindingsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bindings: Schema.optional(Schema.Array(Binding)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListBindingsResponse",
-  }) as any as Schema.Schema<ListBindingsResponse>;
+export const ListBindingsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bindings: Schema.optional(Schema.Array(Binding)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListBindingsResponse" });
 
 export interface FetchAvailableBindingsResponse {
   /** The list of Bindings. */
@@ -684,15 +564,11 @@ export interface FetchAvailableBindingsResponse {
   nextPageToken?: string;
 }
 
-export const FetchAvailableBindingsResponse: Schema.Schema<FetchAvailableBindingsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bindings: Schema.optional(Schema.Array(Binding)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FetchAvailableBindingsResponse",
-  }) as any as Schema.Schema<FetchAvailableBindingsResponse>;
+export const FetchAvailableBindingsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bindings: Schema.optional(Schema.Array(Binding)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "FetchAvailableBindingsResponse" });
 
 export interface Location {
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
@@ -707,16 +583,13 @@ export interface Location {
   metadata?: Record<string, unknown>;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      locationId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  locationId: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Location" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -725,15 +598,10 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(Location)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface OperationMetadata {
   /** Output only. The time the operation was created. */
@@ -752,20 +620,15 @@ export interface OperationMetadata {
   apiVersion?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      apiVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  verb: Schema.optional(Schema.String),
+  statusMessage: Schema.optional(Schema.String),
+  requestedCancellation: Schema.optional(Schema.Boolean),
+  apiVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationMetadata" });
 
 // ==========================================================================
 // Operations

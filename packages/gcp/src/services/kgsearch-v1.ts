@@ -31,16 +31,11 @@ export interface SearchResponse {
   "@context"?: unknown;
 }
 
-export const SearchResponse: Schema.Schema<SearchResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      "@type": Schema.optional(Schema.Unknown),
-      itemListElement: Schema.optional(Schema.Array(Schema.Unknown)),
-      "@context": Schema.optional(Schema.Unknown),
-    }),
-  ).annotate({
-    identifier: "SearchResponse",
-  }) as any as Schema.Schema<SearchResponse>;
+export const SearchResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  "@type": Schema.optional(Schema.Unknown),
+  itemListElement: Schema.optional(Schema.Array(Schema.Unknown)),
+  "@context": Schema.optional(Schema.Unknown),
+}).annotate({ identifier: "SearchResponse" });
 
 // ==========================================================================
 // Operations

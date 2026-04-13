@@ -33,15 +33,12 @@ export interface Color {
   red?: number;
 }
 
-export const Color: Schema.Schema<Color> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      green: Schema.optional(Schema.Number),
-      alpha: Schema.optional(Schema.Number),
-      blue: Schema.optional(Schema.Number),
-      red: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Color" }) as any as Schema.Schema<Color>;
+export const Color = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  green: Schema.optional(Schema.Number),
+  alpha: Schema.optional(Schema.Number),
+  blue: Schema.optional(Schema.Number),
+  red: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Color" });
 
 export interface HttpBody {
   /** The HTTP request/response body as raw binary. */
@@ -52,16 +49,13 @@ export interface HttpBody {
   contentType?: string;
 }
 
-export const HttpBody: Schema.Schema<HttpBody> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      data: Schema.optional(Schema.String),
-      extensions: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      contentType: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "HttpBody" }) as any as Schema.Schema<HttpBody>;
+export const HttpBody = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  data: Schema.optional(Schema.String),
+  extensions: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  contentType: Schema.optional(Schema.String),
+}).annotate({ identifier: "HttpBody" });
 
 export interface Interval {
   /** Optional. Inclusive start of the interval. If specified, a Timestamp matching this interval will have to be the same or after the start. */
@@ -70,13 +64,10 @@ export interface Interval {
   endTime?: string;
 }
 
-export const Interval: Schema.Schema<Interval> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Interval" }) as any as Schema.Schema<Interval>;
+export const Interval = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Interval" });
 
 export interface CustomLocalAqi {
   /** The AQI to associate the country/region with. Value should be a [valid index](/maps/documentation/air-quality/laqis) code. */
@@ -85,15 +76,10 @@ export interface CustomLocalAqi {
   regionCode?: string;
 }
 
-export const CustomLocalAqi: Schema.Schema<CustomLocalAqi> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      aqi: Schema.optional(Schema.String),
-      regionCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomLocalAqi",
-  }) as any as Schema.Schema<CustomLocalAqi>;
+export const CustomLocalAqi = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  aqi: Schema.optional(Schema.String),
+  regionCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "CustomLocalAqi" });
 
 export interface LatLng {
   /** The longitude in degrees. It must be in the range [-180.0, +180.0]. */
@@ -102,13 +88,10 @@ export interface LatLng {
   latitude?: number;
 }
 
-export const LatLng: Schema.Schema<LatLng> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      longitude: Schema.optional(Schema.Number),
-      latitude: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "LatLng" }) as any as Schema.Schema<LatLng>;
+export const LatLng = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  longitude: Schema.optional(Schema.Number),
+  latitude: Schema.optional(Schema.Number),
+}).annotate({ identifier: "LatLng" });
 
 export interface Concentration {
   /** Value of the pollutant concentration. */
@@ -121,15 +104,10 @@ export interface Concentration {
     | (string & {});
 }
 
-export const Concentration: Schema.Schema<Concentration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.Number),
-      units: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Concentration",
-  }) as any as Schema.Schema<Concentration>;
+export const Concentration = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.Number),
+  units: Schema.optional(Schema.String),
+}).annotate({ identifier: "Concentration" });
 
 export interface AdditionalInfo {
   /** Text representing the pollutant's main health effects. */
@@ -138,15 +116,10 @@ export interface AdditionalInfo {
   sources?: string;
 }
 
-export const AdditionalInfo: Schema.Schema<AdditionalInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      effects: Schema.optional(Schema.String),
-      sources: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AdditionalInfo",
-  }) as any as Schema.Schema<AdditionalInfo>;
+export const AdditionalInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  effects: Schema.optional(Schema.String),
+  sources: Schema.optional(Schema.String),
+}).annotate({ identifier: "AdditionalInfo" });
 
 export interface Pollutant {
   /** The pollutant's concentration level measured by one of the standard air pollutation measure units. */
@@ -161,16 +134,13 @@ export interface Pollutant {
   displayName?: string;
 }
 
-export const Pollutant: Schema.Schema<Pollutant> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      concentration: Schema.optional(Concentration),
-      additionalInfo: Schema.optional(AdditionalInfo),
-      code: Schema.optional(Schema.String),
-      fullName: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Pollutant" }) as any as Schema.Schema<Pollutant>;
+export const Pollutant = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  concentration: Schema.optional(Concentration),
+  additionalInfo: Schema.optional(AdditionalInfo),
+  code: Schema.optional(Schema.String),
+  fullName: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+}).annotate({ identifier: "Pollutant" });
 
 export interface HealthRecommendations {
   /** No specific sensitivities. */
@@ -189,20 +159,15 @@ export interface HealthRecommendations {
   children?: string;
 }
 
-export const HealthRecommendations: Schema.Schema<HealthRecommendations> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      generalPopulation: Schema.optional(Schema.String),
-      lungDiseasePopulation: Schema.optional(Schema.String),
-      heartDiseasePopulation: Schema.optional(Schema.String),
-      pregnantWomen: Schema.optional(Schema.String),
-      athletes: Schema.optional(Schema.String),
-      elderly: Schema.optional(Schema.String),
-      children: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "HealthRecommendations",
-  }) as any as Schema.Schema<HealthRecommendations>;
+export const HealthRecommendations = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  generalPopulation: Schema.optional(Schema.String),
+  lungDiseasePopulation: Schema.optional(Schema.String),
+  heartDiseasePopulation: Schema.optional(Schema.String),
+  pregnantWomen: Schema.optional(Schema.String),
+  athletes: Schema.optional(Schema.String),
+  elderly: Schema.optional(Schema.String),
+  children: Schema.optional(Schema.String),
+}).annotate({ identifier: "HealthRecommendations" });
 
 export interface AirQualityIndex {
   /** The index's code. This field represents the index for programming purposes by using snake case instead of spaces. Examples: "uaqi", "fra_atmo". */
@@ -221,20 +186,15 @@ export interface AirQualityIndex {
   category?: string;
 }
 
-export const AirQualityIndex: Schema.Schema<AirQualityIndex> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.String),
-      aqi: Schema.optional(Schema.Number),
-      aqiDisplay: Schema.optional(Schema.String),
-      color: Schema.optional(Color),
-      dominantPollutant: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      category: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AirQualityIndex",
-  }) as any as Schema.Schema<AirQualityIndex>;
+export const AirQualityIndex = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.String),
+  aqi: Schema.optional(Schema.Number),
+  aqiDisplay: Schema.optional(Schema.String),
+  color: Schema.optional(Color),
+  dominantPollutant: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  category: Schema.optional(Schema.String),
+}).annotate({ identifier: "AirQualityIndex" });
 
 export interface LookupCurrentConditionsResponse {
   /** A list of pollutants affecting the location specified in the request. Note: This field will be returned only for requests that specified one or more of the following extra computations: POLLUTANT_ADDITIONAL_INFO, DOMINANT_POLLUTANT_CONCENTRATION, POLLUTANT_CONCENTRATION. */
@@ -249,18 +209,14 @@ export interface LookupCurrentConditionsResponse {
   indexes?: Array<AirQualityIndex>;
 }
 
-export const LookupCurrentConditionsResponse: Schema.Schema<LookupCurrentConditionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pollutants: Schema.optional(Schema.Array(Pollutant)),
-      dateTime: Schema.optional(Schema.String),
-      healthRecommendations: Schema.optional(HealthRecommendations),
-      regionCode: Schema.optional(Schema.String),
-      indexes: Schema.optional(Schema.Array(AirQualityIndex)),
-    }),
-  ).annotate({
-    identifier: "LookupCurrentConditionsResponse",
-  }) as any as Schema.Schema<LookupCurrentConditionsResponse>;
+export const LookupCurrentConditionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pollutants: Schema.optional(Schema.Array(Pollutant)),
+    dateTime: Schema.optional(Schema.String),
+    healthRecommendations: Schema.optional(HealthRecommendations),
+    regionCode: Schema.optional(Schema.String),
+    indexes: Schema.optional(Schema.Array(AirQualityIndex)),
+  }).annotate({ identifier: "LookupCurrentConditionsResponse" });
 
 export interface HourInfo {
   /** A list of pollutants affecting the location specified in the request. Note: This field will be returned only for requests that specified one or more of the following extra computations: POLLUTANT_ADDITIONAL_INFO, DOMINANT_POLLUTANT_CONCENTRATION, POLLUTANT_CONCENTRATION. */
@@ -273,15 +229,12 @@ export interface HourInfo {
   healthRecommendations?: HealthRecommendations;
 }
 
-export const HourInfo: Schema.Schema<HourInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pollutants: Schema.optional(Schema.Array(Pollutant)),
-      dateTime: Schema.optional(Schema.String),
-      indexes: Schema.optional(Schema.Array(AirQualityIndex)),
-      healthRecommendations: Schema.optional(HealthRecommendations),
-    }),
-  ).annotate({ identifier: "HourInfo" }) as any as Schema.Schema<HourInfo>;
+export const HourInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pollutants: Schema.optional(Schema.Array(Pollutant)),
+  dateTime: Schema.optional(Schema.String),
+  indexes: Schema.optional(Schema.Array(AirQualityIndex)),
+  healthRecommendations: Schema.optional(HealthRecommendations),
+}).annotate({ identifier: "HourInfo" });
 
 export interface LookupHistoryResponse {
   /** Optional. Contains the air quality information for each hour in the requested range. For example, if the request is for 48 hours of history there will be 48 elements of hourly info. */
@@ -292,16 +245,11 @@ export interface LookupHistoryResponse {
   nextPageToken?: string;
 }
 
-export const LookupHistoryResponse: Schema.Schema<LookupHistoryResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hoursInfo: Schema.optional(Schema.Array(HourInfo)),
-      regionCode: Schema.optional(Schema.String),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LookupHistoryResponse",
-  }) as any as Schema.Schema<LookupHistoryResponse>;
+export const LookupHistoryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  hoursInfo: Schema.optional(Schema.Array(HourInfo)),
+  regionCode: Schema.optional(Schema.String),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "LookupHistoryResponse" });
 
 export interface LookupCurrentConditionsRequest {
   /** Optional. Additional features that can be optionally enabled. Specifying extra computations will result in the relevant elements and fields to be returned in the response. */
@@ -331,19 +279,15 @@ export interface LookupCurrentConditionsRequest {
   location?: LatLng;
 }
 
-export const LookupCurrentConditionsRequest: Schema.Schema<LookupCurrentConditionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      extraComputations: Schema.optional(Schema.Array(Schema.String)),
-      universalAqi: Schema.optional(Schema.Boolean),
-      uaqiColorPalette: Schema.optional(Schema.String),
-      languageCode: Schema.optional(Schema.String),
-      customLocalAqis: Schema.optional(Schema.Array(CustomLocalAqi)),
-      location: Schema.optional(LatLng),
-    }),
-  ).annotate({
-    identifier: "LookupCurrentConditionsRequest",
-  }) as any as Schema.Schema<LookupCurrentConditionsRequest>;
+export const LookupCurrentConditionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    extraComputations: Schema.optional(Schema.Array(Schema.String)),
+    universalAqi: Schema.optional(Schema.Boolean),
+    uaqiColorPalette: Schema.optional(Schema.String),
+    languageCode: Schema.optional(Schema.String),
+    customLocalAqis: Schema.optional(Schema.Array(CustomLocalAqi)),
+    location: Schema.optional(LatLng),
+  }).annotate({ identifier: "LookupCurrentConditionsRequest" });
 
 export interface HourlyForecast {
   /** Health advice and recommended actions related to the reported air quality conditions. Recommendations are tailored differently for populations at risk, groups with greater sensitivities to pollutants, and the general population. */
@@ -356,17 +300,12 @@ export interface HourlyForecast {
   pollutants?: Array<Pollutant>;
 }
 
-export const HourlyForecast: Schema.Schema<HourlyForecast> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      healthRecommendations: Schema.optional(HealthRecommendations),
-      dateTime: Schema.optional(Schema.String),
-      indexes: Schema.optional(Schema.Array(AirQualityIndex)),
-      pollutants: Schema.optional(Schema.Array(Pollutant)),
-    }),
-  ).annotate({
-    identifier: "HourlyForecast",
-  }) as any as Schema.Schema<HourlyForecast>;
+export const HourlyForecast = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  healthRecommendations: Schema.optional(HealthRecommendations),
+  dateTime: Schema.optional(Schema.String),
+  indexes: Schema.optional(Schema.Array(AirQualityIndex)),
+  pollutants: Schema.optional(Schema.Array(Pollutant)),
+}).annotate({ identifier: "HourlyForecast" });
 
 export interface LookupForecastResponse {
   /** Optional. Contains the air quality information for each hour in the requested range. For example, if the request is for 48 hours of forecast there will be 48 elements of hourly forecasts. */
@@ -377,16 +316,13 @@ export interface LookupForecastResponse {
   nextPageToken?: string;
 }
 
-export const LookupForecastResponse: Schema.Schema<LookupForecastResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hourlyForecasts: Schema.optional(Schema.Array(HourlyForecast)),
-      regionCode: Schema.optional(Schema.String),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LookupForecastResponse",
-  }) as any as Schema.Schema<LookupForecastResponse>;
+export const LookupForecastResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    hourlyForecasts: Schema.optional(Schema.Array(HourlyForecast)),
+    regionCode: Schema.optional(Schema.String),
+    nextPageToken: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "LookupForecastResponse" });
 
 export interface LookupForecastRequest {
   /** Optional. The maximum number of hourly info records to return per page (default = 24). */
@@ -424,23 +360,18 @@ export interface LookupForecastRequest {
   universalAqi?: boolean;
 }
 
-export const LookupForecastRequest: Schema.Schema<LookupForecastRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pageSize: Schema.optional(Schema.Number),
-      location: Schema.optional(LatLng),
-      period: Schema.optional(Interval),
-      dateTime: Schema.optional(Schema.String),
-      uaqiColorPalette: Schema.optional(Schema.String),
-      customLocalAqis: Schema.optional(Schema.Array(CustomLocalAqi)),
-      pageToken: Schema.optional(Schema.String),
-      languageCode: Schema.optional(Schema.String),
-      extraComputations: Schema.optional(Schema.Array(Schema.String)),
-      universalAqi: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "LookupForecastRequest",
-  }) as any as Schema.Schema<LookupForecastRequest>;
+export const LookupForecastRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pageSize: Schema.optional(Schema.Number),
+  location: Schema.optional(LatLng),
+  period: Schema.optional(Interval),
+  dateTime: Schema.optional(Schema.String),
+  uaqiColorPalette: Schema.optional(Schema.String),
+  customLocalAqis: Schema.optional(Schema.Array(CustomLocalAqi)),
+  pageToken: Schema.optional(Schema.String),
+  languageCode: Schema.optional(Schema.String),
+  extraComputations: Schema.optional(Schema.Array(Schema.String)),
+  universalAqi: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "LookupForecastRequest" });
 
 export interface LookupHistoryRequest {
   /** Number from 1 to 720 that indicates the hours range for the request. For example: A value of 48 will yield data from the last 48 hours. */
@@ -480,24 +411,19 @@ export interface LookupHistoryRequest {
     | (string & {});
 }
 
-export const LookupHistoryRequest: Schema.Schema<LookupHistoryRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hours: Schema.optional(Schema.Number),
-      customLocalAqis: Schema.optional(Schema.Array(CustomLocalAqi)),
-      pageToken: Schema.optional(Schema.String),
-      languageCode: Schema.optional(Schema.String),
-      extraComputations: Schema.optional(Schema.Array(Schema.String)),
-      universalAqi: Schema.optional(Schema.Boolean),
-      pageSize: Schema.optional(Schema.Number),
-      location: Schema.optional(LatLng),
-      period: Schema.optional(Interval),
-      dateTime: Schema.optional(Schema.String),
-      uaqiColorPalette: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LookupHistoryRequest",
-  }) as any as Schema.Schema<LookupHistoryRequest>;
+export const LookupHistoryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  hours: Schema.optional(Schema.Number),
+  customLocalAqis: Schema.optional(Schema.Array(CustomLocalAqi)),
+  pageToken: Schema.optional(Schema.String),
+  languageCode: Schema.optional(Schema.String),
+  extraComputations: Schema.optional(Schema.Array(Schema.String)),
+  universalAqi: Schema.optional(Schema.Boolean),
+  pageSize: Schema.optional(Schema.Number),
+  location: Schema.optional(LatLng),
+  period: Schema.optional(Interval),
+  dateTime: Schema.optional(Schema.String),
+  uaqiColorPalette: Schema.optional(Schema.String),
+}).annotate({ identifier: "LookupHistoryRequest" });
 
 // ==========================================================================
 // Operations

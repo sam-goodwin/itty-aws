@@ -31,16 +31,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the name should be a resource name ending with operations/{unique_id}. */
@@ -55,16 +52,13 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      error: Schema.optional(Status),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  done: Schema.optional(Schema.Boolean),
+  error: Schema.optional(Status),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Operation" });
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -75,23 +69,19 @@ export interface ListOperationsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(Schema.Array(Operation)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    operations: Schema.optional(Schema.Array(Operation)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface PySparkBatch {
   /** Required. The HCFS URI of the main Python file to use as the Spark driver. Must be a .py file. */
@@ -108,19 +98,14 @@ export interface PySparkBatch {
   archiveUris?: Array<string>;
 }
 
-export const PySparkBatch: Schema.Schema<PySparkBatch> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mainPythonFileUri: Schema.optional(Schema.String),
-      args: Schema.optional(Schema.Array(Schema.String)),
-      pythonFileUris: Schema.optional(Schema.Array(Schema.String)),
-      jarFileUris: Schema.optional(Schema.Array(Schema.String)),
-      fileUris: Schema.optional(Schema.Array(Schema.String)),
-      archiveUris: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "PySparkBatch",
-  }) as any as Schema.Schema<PySparkBatch>;
+export const PySparkBatch = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  mainPythonFileUri: Schema.optional(Schema.String),
+  args: Schema.optional(Schema.Array(Schema.String)),
+  pythonFileUris: Schema.optional(Schema.Array(Schema.String)),
+  jarFileUris: Schema.optional(Schema.Array(Schema.String)),
+  fileUris: Schema.optional(Schema.Array(Schema.String)),
+  archiveUris: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "PySparkBatch" });
 
 export interface SparkBatch {
   /** Optional. The HCFS URI of the jar file that contains the main class. */
@@ -137,17 +122,14 @@ export interface SparkBatch {
   archiveUris?: Array<string>;
 }
 
-export const SparkBatch: Schema.Schema<SparkBatch> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mainJarFileUri: Schema.optional(Schema.String),
-      mainClass: Schema.optional(Schema.String),
-      args: Schema.optional(Schema.Array(Schema.String)),
-      jarFileUris: Schema.optional(Schema.Array(Schema.String)),
-      fileUris: Schema.optional(Schema.Array(Schema.String)),
-      archiveUris: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "SparkBatch" }) as any as Schema.Schema<SparkBatch>;
+export const SparkBatch = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  mainJarFileUri: Schema.optional(Schema.String),
+  mainClass: Schema.optional(Schema.String),
+  args: Schema.optional(Schema.Array(Schema.String)),
+  jarFileUris: Schema.optional(Schema.Array(Schema.String)),
+  fileUris: Schema.optional(Schema.Array(Schema.String)),
+  archiveUris: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "SparkBatch" });
 
 export interface SparkRBatch {
   /** Required. The HCFS URI of the main R file to use as the driver. Must be a .R or .r file. */
@@ -160,17 +142,12 @@ export interface SparkRBatch {
   archiveUris?: Array<string>;
 }
 
-export const SparkRBatch: Schema.Schema<SparkRBatch> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mainRFileUri: Schema.optional(Schema.String),
-      args: Schema.optional(Schema.Array(Schema.String)),
-      fileUris: Schema.optional(Schema.Array(Schema.String)),
-      archiveUris: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "SparkRBatch",
-  }) as any as Schema.Schema<SparkRBatch>;
+export const SparkRBatch = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  mainRFileUri: Schema.optional(Schema.String),
+  args: Schema.optional(Schema.Array(Schema.String)),
+  fileUris: Schema.optional(Schema.Array(Schema.String)),
+  archiveUris: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "SparkRBatch" });
 
 export interface SparkSqlBatch {
   /** Required. The HCFS URI of the script that contains Spark SQL queries to execute. */
@@ -181,18 +158,11 @@ export interface SparkSqlBatch {
   jarFileUris?: Array<string>;
 }
 
-export const SparkSqlBatch: Schema.Schema<SparkSqlBatch> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      queryFileUri: Schema.optional(Schema.String),
-      queryVariables: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      jarFileUris: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "SparkSqlBatch",
-  }) as any as Schema.Schema<SparkSqlBatch>;
+export const SparkSqlBatch = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  queryFileUri: Schema.optional(Schema.String),
+  queryVariables: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  jarFileUris: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "SparkSqlBatch" });
 
 export interface PySparkNotebookBatch {
   /** Required. The HCFS URI of the notebook file to execute. */
@@ -209,19 +179,14 @@ export interface PySparkNotebookBatch {
   archiveUris?: Array<string>;
 }
 
-export const PySparkNotebookBatch: Schema.Schema<PySparkNotebookBatch> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      notebookFileUri: Schema.optional(Schema.String),
-      params: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      pythonFileUris: Schema.optional(Schema.Array(Schema.String)),
-      jarFileUris: Schema.optional(Schema.Array(Schema.String)),
-      fileUris: Schema.optional(Schema.Array(Schema.String)),
-      archiveUris: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "PySparkNotebookBatch",
-  }) as any as Schema.Schema<PySparkNotebookBatch>;
+export const PySparkNotebookBatch = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  notebookFileUri: Schema.optional(Schema.String),
+  params: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  pythonFileUris: Schema.optional(Schema.Array(Schema.String)),
+  jarFileUris: Schema.optional(Schema.Array(Schema.String)),
+  fileUris: Schema.optional(Schema.Array(Schema.String)),
+  archiveUris: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "PySparkNotebookBatch" });
 
 export interface UsageMetrics {
   /** Optional. DCU (Dataproc Compute Units) usage in (milliDCU x seconds) (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)). */
@@ -236,18 +201,13 @@ export interface UsageMetrics {
   updateTime?: string;
 }
 
-export const UsageMetrics: Schema.Schema<UsageMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      milliDcuSeconds: Schema.optional(Schema.String),
-      shuffleStorageGbSeconds: Schema.optional(Schema.String),
-      milliAcceleratorSeconds: Schema.optional(Schema.String),
-      acceleratorType: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UsageMetrics",
-  }) as any as Schema.Schema<UsageMetrics>;
+export const UsageMetrics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  milliDcuSeconds: Schema.optional(Schema.String),
+  shuffleStorageGbSeconds: Schema.optional(Schema.String),
+  milliAcceleratorSeconds: Schema.optional(Schema.String),
+  acceleratorType: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "UsageMetrics" });
 
 export interface UsageSnapshot {
   /** Optional. Milli (one-thousandth) Dataproc Compute Units (DCUs) (see Dataproc Serverless pricing (https://cloud.google.com/dataproc-serverless/pricing)). */
@@ -266,20 +226,15 @@ export interface UsageSnapshot {
   snapshotTime?: string;
 }
 
-export const UsageSnapshot: Schema.Schema<UsageSnapshot> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      milliDcu: Schema.optional(Schema.String),
-      shuffleStorageGb: Schema.optional(Schema.String),
-      milliDcuPremium: Schema.optional(Schema.String),
-      shuffleStorageGbPremium: Schema.optional(Schema.String),
-      milliAccelerator: Schema.optional(Schema.String),
-      acceleratorType: Schema.optional(Schema.String),
-      snapshotTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UsageSnapshot",
-  }) as any as Schema.Schema<UsageSnapshot>;
+export const UsageSnapshot = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  milliDcu: Schema.optional(Schema.String),
+  shuffleStorageGb: Schema.optional(Schema.String),
+  milliDcuPremium: Schema.optional(Schema.String),
+  shuffleStorageGbPremium: Schema.optional(Schema.String),
+  milliAccelerator: Schema.optional(Schema.String),
+  acceleratorType: Schema.optional(Schema.String),
+  snapshotTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "UsageSnapshot" });
 
 export interface ValueInfo {
   /** Property value. */
@@ -290,30 +245,22 @@ export interface ValueInfo {
   overriddenValue?: string;
 }
 
-export const ValueInfo: Schema.Schema<ValueInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-      annotation: Schema.optional(Schema.String),
-      overriddenValue: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "ValueInfo" }) as any as Schema.Schema<ValueInfo>;
+export const ValueInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.String),
+  annotation: Schema.optional(Schema.String),
+  overriddenValue: Schema.optional(Schema.String),
+}).annotate({ identifier: "ValueInfo" });
 
 export interface PropertiesInfo {
   /** Output only. Properties set by autotuning engine. */
   autotuningProperties?: Record<string, ValueInfo>;
 }
 
-export const PropertiesInfo: Schema.Schema<PropertiesInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      autotuningProperties: Schema.optional(
-        Schema.Record(Schema.String, ValueInfo),
-      ),
-    }),
-  ).annotate({
-    identifier: "PropertiesInfo",
-  }) as any as Schema.Schema<PropertiesInfo>;
+export const PropertiesInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  autotuningProperties: Schema.optional(
+    Schema.Record(Schema.String, ValueInfo),
+  ),
+}).annotate({ identifier: "PropertiesInfo" });
 
 export interface CohortInfo {
   /** Output only. Final cohort that was used to tune the workload. */
@@ -326,13 +273,10 @@ export interface CohortInfo {
     | (string & {});
 }
 
-export const CohortInfo: Schema.Schema<CohortInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cohort: Schema.optional(Schema.String),
-      cohortSource: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "CohortInfo" }) as any as Schema.Schema<CohortInfo>;
+export const CohortInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cohort: Schema.optional(Schema.String),
+  cohortSource: Schema.optional(Schema.String),
+}).annotate({ identifier: "CohortInfo" });
 
 export interface RuntimeInfo {
   /** Output only. Map of remote access endpoints (such as web interfaces and APIs) to their URIs. */
@@ -351,48 +295,33 @@ export interface RuntimeInfo {
   cohortInfo?: CohortInfo;
 }
 
-export const RuntimeInfo: Schema.Schema<RuntimeInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endpoints: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      outputUri: Schema.optional(Schema.String),
-      diagnosticOutputUri: Schema.optional(Schema.String),
-      approximateUsage: Schema.optional(UsageMetrics),
-      currentUsage: Schema.optional(UsageSnapshot),
-      propertiesInfo: Schema.optional(PropertiesInfo),
-      cohortInfo: Schema.optional(CohortInfo),
-    }),
-  ).annotate({
-    identifier: "RuntimeInfo",
-  }) as any as Schema.Schema<RuntimeInfo>;
+export const RuntimeInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  endpoints: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  outputUri: Schema.optional(Schema.String),
+  diagnosticOutputUri: Schema.optional(Schema.String),
+  approximateUsage: Schema.optional(UsageMetrics),
+  currentUsage: Schema.optional(UsageSnapshot),
+  propertiesInfo: Schema.optional(PropertiesInfo),
+  cohortInfo: Schema.optional(CohortInfo),
+}).annotate({ identifier: "RuntimeInfo" });
 
 export interface PyPiRepositoryConfig {
   /** Optional. The PyPi repository address. Note: This field is not available for batch workloads. */
   pypiRepository?: string;
 }
 
-export const PyPiRepositoryConfig: Schema.Schema<PyPiRepositoryConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pypiRepository: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PyPiRepositoryConfig",
-  }) as any as Schema.Schema<PyPiRepositoryConfig>;
+export const PyPiRepositoryConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pypiRepository: Schema.optional(Schema.String),
+}).annotate({ identifier: "PyPiRepositoryConfig" });
 
 export interface RepositoryConfig {
   /** Optional. Configuration for PyPi repository. */
   pypiRepositoryConfig?: PyPiRepositoryConfig;
 }
 
-export const RepositoryConfig: Schema.Schema<RepositoryConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pypiRepositoryConfig: Schema.optional(PyPiRepositoryConfig),
-    }),
-  ).annotate({
-    identifier: "RepositoryConfig",
-  }) as any as Schema.Schema<RepositoryConfig>;
+export const RepositoryConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pypiRepositoryConfig: Schema.optional(PyPiRepositoryConfig),
+}).annotate({ identifier: "RepositoryConfig" });
 
 export interface AutotuningConfig {
   /** Optional. Scenarios for which tunings are applied. */
@@ -407,14 +336,9 @@ export interface AutotuningConfig {
   >;
 }
 
-export const AutotuningConfig: Schema.Schema<AutotuningConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scenarios: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AutotuningConfig",
-  }) as any as Schema.Schema<AutotuningConfig>;
+export const AutotuningConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  scenarios: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "AutotuningConfig" });
 
 export interface RuntimeConfig {
   /** Optional. Version of the batch runtime. */
@@ -431,19 +355,14 @@ export interface RuntimeConfig {
   cohort?: string;
 }
 
-export const RuntimeConfig: Schema.Schema<RuntimeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.String),
-      containerImage: Schema.optional(Schema.String),
-      properties: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      repositoryConfig: Schema.optional(RepositoryConfig),
-      autotuningConfig: Schema.optional(AutotuningConfig),
-      cohort: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RuntimeConfig",
-  }) as any as Schema.Schema<RuntimeConfig>;
+export const RuntimeConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.String),
+  containerImage: Schema.optional(Schema.String),
+  properties: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  repositoryConfig: Schema.optional(RepositoryConfig),
+  autotuningConfig: Schema.optional(AutotuningConfig),
+  cohort: Schema.optional(Schema.String),
+}).annotate({ identifier: "RuntimeConfig" });
 
 export interface AuthenticationConfig {
   /** Optional. Authentication type for the user workload running in containers. */
@@ -454,14 +373,9 @@ export interface AuthenticationConfig {
     | (string & {});
 }
 
-export const AuthenticationConfig: Schema.Schema<AuthenticationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userWorkloadAuthenticationType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AuthenticationConfig",
-  }) as any as Schema.Schema<AuthenticationConfig>;
+export const AuthenticationConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  userWorkloadAuthenticationType: Schema.optional(Schema.String),
+}).annotate({ identifier: "AuthenticationConfig" });
 
 export interface ExecutionConfig {
   /** Optional. Service account that used to execute workload. */
@@ -484,36 +398,27 @@ export interface ExecutionConfig {
   authenticationConfig?: AuthenticationConfig;
 }
 
-export const ExecutionConfig: Schema.Schema<ExecutionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serviceAccount: Schema.optional(Schema.String),
-      networkUri: Schema.optional(Schema.String),
-      subnetworkUri: Schema.optional(Schema.String),
-      networkTags: Schema.optional(Schema.Array(Schema.String)),
-      kmsKey: Schema.optional(Schema.String),
-      idleTtl: Schema.optional(Schema.String),
-      ttl: Schema.optional(Schema.String),
-      stagingBucket: Schema.optional(Schema.String),
-      authenticationConfig: Schema.optional(AuthenticationConfig),
-    }),
-  ).annotate({
-    identifier: "ExecutionConfig",
-  }) as any as Schema.Schema<ExecutionConfig>;
+export const ExecutionConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  serviceAccount: Schema.optional(Schema.String),
+  networkUri: Schema.optional(Schema.String),
+  subnetworkUri: Schema.optional(Schema.String),
+  networkTags: Schema.optional(Schema.Array(Schema.String)),
+  kmsKey: Schema.optional(Schema.String),
+  idleTtl: Schema.optional(Schema.String),
+  ttl: Schema.optional(Schema.String),
+  stagingBucket: Schema.optional(Schema.String),
+  authenticationConfig: Schema.optional(AuthenticationConfig),
+}).annotate({ identifier: "ExecutionConfig" });
 
 export interface SparkHistoryServerConfig {
   /** Optional. Resource name of an existing Dataproc Cluster to act as a Spark History Server for the workload.Example: projects/[project_id]/regions/[region]/clusters/[cluster_name] */
   dataprocCluster?: string;
 }
 
-export const SparkHistoryServerConfig: Schema.Schema<SparkHistoryServerConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataprocCluster: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SparkHistoryServerConfig",
-  }) as any as Schema.Schema<SparkHistoryServerConfig>;
+export const SparkHistoryServerConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataprocCluster: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SparkHistoryServerConfig" });
 
 export interface PeripheralsConfig {
   /** Optional. Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[region]/services/[service_id] */
@@ -522,15 +427,10 @@ export interface PeripheralsConfig {
   sparkHistoryServerConfig?: SparkHistoryServerConfig;
 }
 
-export const PeripheralsConfig: Schema.Schema<PeripheralsConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metastoreService: Schema.optional(Schema.String),
-      sparkHistoryServerConfig: Schema.optional(SparkHistoryServerConfig),
-    }),
-  ).annotate({
-    identifier: "PeripheralsConfig",
-  }) as any as Schema.Schema<PeripheralsConfig>;
+export const PeripheralsConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metastoreService: Schema.optional(Schema.String),
+  sparkHistoryServerConfig: Schema.optional(SparkHistoryServerConfig),
+}).annotate({ identifier: "PeripheralsConfig" });
 
 export interface EnvironmentConfig {
   /** Optional. Execution configuration for a workload. */
@@ -539,15 +439,10 @@ export interface EnvironmentConfig {
   peripheralsConfig?: PeripheralsConfig;
 }
 
-export const EnvironmentConfig: Schema.Schema<EnvironmentConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      executionConfig: Schema.optional(ExecutionConfig),
-      peripheralsConfig: Schema.optional(PeripheralsConfig),
-    }),
-  ).annotate({
-    identifier: "EnvironmentConfig",
-  }) as any as Schema.Schema<EnvironmentConfig>;
+export const EnvironmentConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  executionConfig: Schema.optional(ExecutionConfig),
+  peripheralsConfig: Schema.optional(PeripheralsConfig),
+}).annotate({ identifier: "EnvironmentConfig" });
 
 export interface StateHistory {
   /** Output only. The state of the batch at this point in history. */
@@ -566,16 +461,11 @@ export interface StateHistory {
   stateStartTime?: string;
 }
 
-export const StateHistory: Schema.Schema<StateHistory> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      stateMessage: Schema.optional(Schema.String),
-      stateStartTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StateHistory",
-  }) as any as Schema.Schema<StateHistory>;
+export const StateHistory = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.String),
+  stateMessage: Schema.optional(Schema.String),
+  stateStartTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "StateHistory" });
 
 export interface Batch {
   /** Output only. The resource name of the batch. */
@@ -624,29 +514,26 @@ export interface Batch {
   stateHistory?: Array<StateHistory>;
 }
 
-export const Batch: Schema.Schema<Batch> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      uuid: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      pysparkBatch: Schema.optional(PySparkBatch),
-      sparkBatch: Schema.optional(SparkBatch),
-      sparkRBatch: Schema.optional(SparkRBatch),
-      sparkSqlBatch: Schema.optional(SparkSqlBatch),
-      pysparkNotebookBatch: Schema.optional(PySparkNotebookBatch),
-      runtimeInfo: Schema.optional(RuntimeInfo),
-      state: Schema.optional(Schema.String),
-      stateMessage: Schema.optional(Schema.String),
-      stateTime: Schema.optional(Schema.String),
-      creator: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      runtimeConfig: Schema.optional(RuntimeConfig),
-      environmentConfig: Schema.optional(EnvironmentConfig),
-      operation: Schema.optional(Schema.String),
-      stateHistory: Schema.optional(Schema.Array(StateHistory)),
-    }),
-  ).annotate({ identifier: "Batch" }) as any as Schema.Schema<Batch>;
+export const Batch = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  uuid: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  pysparkBatch: Schema.optional(PySparkBatch),
+  sparkBatch: Schema.optional(SparkBatch),
+  sparkRBatch: Schema.optional(SparkRBatch),
+  sparkSqlBatch: Schema.optional(SparkSqlBatch),
+  pysparkNotebookBatch: Schema.optional(PySparkNotebookBatch),
+  runtimeInfo: Schema.optional(RuntimeInfo),
+  state: Schema.optional(Schema.String),
+  stateMessage: Schema.optional(Schema.String),
+  stateTime: Schema.optional(Schema.String),
+  creator: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  runtimeConfig: Schema.optional(RuntimeConfig),
+  environmentConfig: Schema.optional(EnvironmentConfig),
+  operation: Schema.optional(Schema.String),
+  stateHistory: Schema.optional(Schema.Array(StateHistory)),
+}).annotate({ identifier: "Batch" });
 
 export interface ListBatchesResponse {
   /** Output only. The batches from the specified collection. */
@@ -657,16 +544,11 @@ export interface ListBatchesResponse {
   unreachable?: Array<string>;
 }
 
-export const ListBatchesResponse: Schema.Schema<ListBatchesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      batches: Schema.optional(Schema.Array(Batch)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListBatchesResponse",
-  }) as any as Schema.Schema<ListBatchesResponse>;
+export const ListBatchesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  batches: Schema.optional(Schema.Array(Batch)),
+  nextPageToken: Schema.optional(Schema.String),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ListBatchesResponse" });
 
 export interface ApplicationAttemptInfo {
   attemptId?: string;
@@ -679,21 +561,18 @@ export interface ApplicationAttemptInfo {
   appSparkVersion?: string;
 }
 
-export const ApplicationAttemptInfo: Schema.Schema<ApplicationAttemptInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      attemptId: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      lastUpdated: Schema.optional(Schema.String),
-      durationMillis: Schema.optional(Schema.String),
-      sparkUser: Schema.optional(Schema.String),
-      completed: Schema.optional(Schema.Boolean),
-      appSparkVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ApplicationAttemptInfo",
-  }) as any as Schema.Schema<ApplicationAttemptInfo>;
+export const ApplicationAttemptInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    attemptId: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    lastUpdated: Schema.optional(Schema.String),
+    durationMillis: Schema.optional(Schema.String),
+    sparkUser: Schema.optional(Schema.String),
+    completed: Schema.optional(Schema.Boolean),
+    appSparkVersion: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ApplicationAttemptInfo" });
 
 export interface ApplicationInfo {
   applicationId?: string;
@@ -714,22 +593,17 @@ export interface ApplicationInfo {
     | (string & {});
 }
 
-export const ApplicationInfo: Schema.Schema<ApplicationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      applicationId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      coresGranted: Schema.optional(Schema.Number),
-      maxCores: Schema.optional(Schema.Number),
-      coresPerExecutor: Schema.optional(Schema.Number),
-      memoryPerExecutorMb: Schema.optional(Schema.Number),
-      attempts: Schema.optional(Schema.Array(ApplicationAttemptInfo)),
-      applicationContextIngestionStatus: Schema.optional(Schema.String),
-      quantileDataStatus: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ApplicationInfo",
-  }) as any as Schema.Schema<ApplicationInfo>;
+export const ApplicationInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  applicationId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  coresGranted: Schema.optional(Schema.Number),
+  maxCores: Schema.optional(Schema.Number),
+  coresPerExecutor: Schema.optional(Schema.Number),
+  memoryPerExecutorMb: Schema.optional(Schema.Number),
+  attempts: Schema.optional(Schema.Array(ApplicationAttemptInfo)),
+  applicationContextIngestionStatus: Schema.optional(Schema.String),
+  quantileDataStatus: Schema.optional(Schema.String),
+}).annotate({ identifier: "ApplicationInfo" });
 
 export interface SparkRuntimeInfo {
   javaVersion?: string;
@@ -737,16 +611,11 @@ export interface SparkRuntimeInfo {
   scalaVersion?: string;
 }
 
-export const SparkRuntimeInfo: Schema.Schema<SparkRuntimeInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      javaVersion: Schema.optional(Schema.String),
-      javaHome: Schema.optional(Schema.String),
-      scalaVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SparkRuntimeInfo",
-  }) as any as Schema.Schema<SparkRuntimeInfo>;
+export const SparkRuntimeInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  javaVersion: Schema.optional(Schema.String),
+  javaHome: Schema.optional(Schema.String),
+  scalaVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "SparkRuntimeInfo" });
 
 export interface ExecutorResourceRequest {
   resourceName?: string;
@@ -755,32 +624,23 @@ export interface ExecutorResourceRequest {
   vendor?: string;
 }
 
-export const ExecutorResourceRequest: Schema.Schema<ExecutorResourceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceName: Schema.optional(Schema.String),
-      amount: Schema.optional(Schema.String),
-      discoveryScript: Schema.optional(Schema.String),
-      vendor: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ExecutorResourceRequest",
-  }) as any as Schema.Schema<ExecutorResourceRequest>;
+export const ExecutorResourceRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceName: Schema.optional(Schema.String),
+    amount: Schema.optional(Schema.String),
+    discoveryScript: Schema.optional(Schema.String),
+    vendor: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ExecutorResourceRequest" });
 
 export interface TaskResourceRequest {
   resourceName?: string;
   amount?: number;
 }
 
-export const TaskResourceRequest: Schema.Schema<TaskResourceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceName: Schema.optional(Schema.String),
-      amount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "TaskResourceRequest",
-  }) as any as Schema.Schema<TaskResourceRequest>;
+export const TaskResourceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceName: Schema.optional(Schema.String),
+  amount: Schema.optional(Schema.Number),
+}).annotate({ identifier: "TaskResourceRequest" });
 
 export interface ResourceProfileInfo {
   resourceProfileId?: number;
@@ -788,20 +648,15 @@ export interface ResourceProfileInfo {
   taskResources?: Record<string, TaskResourceRequest>;
 }
 
-export const ResourceProfileInfo: Schema.Schema<ResourceProfileInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceProfileId: Schema.optional(Schema.Number),
-      executorResources: Schema.optional(
-        Schema.Record(Schema.String, ExecutorResourceRequest),
-      ),
-      taskResources: Schema.optional(
-        Schema.Record(Schema.String, TaskResourceRequest),
-      ),
-    }),
-  ).annotate({
-    identifier: "ResourceProfileInfo",
-  }) as any as Schema.Schema<ResourceProfileInfo>;
+export const ResourceProfileInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceProfileId: Schema.optional(Schema.Number),
+  executorResources: Schema.optional(
+    Schema.Record(Schema.String, ExecutorResourceRequest),
+  ),
+  taskResources: Schema.optional(
+    Schema.Record(Schema.String, TaskResourceRequest),
+  ),
+}).annotate({ identifier: "ResourceProfileInfo" });
 
 export interface ApplicationEnvironmentInfo {
   runtime?: SparkRuntimeInfo;
@@ -813,43 +668,36 @@ export interface ApplicationEnvironmentInfo {
   resourceProfiles?: Array<ResourceProfileInfo>;
 }
 
-export const ApplicationEnvironmentInfo: Schema.Schema<ApplicationEnvironmentInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      runtime: Schema.optional(SparkRuntimeInfo),
-      sparkProperties: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      hadoopProperties: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      systemProperties: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      metricsProperties: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      classpathEntries: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      resourceProfiles: Schema.optional(Schema.Array(ResourceProfileInfo)),
-    }),
-  ).annotate({
-    identifier: "ApplicationEnvironmentInfo",
-  }) as any as Schema.Schema<ApplicationEnvironmentInfo>;
+export const ApplicationEnvironmentInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    runtime: Schema.optional(SparkRuntimeInfo),
+    sparkProperties: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    hadoopProperties: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    systemProperties: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    metricsProperties: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    classpathEntries: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    resourceProfiles: Schema.optional(Schema.Array(ResourceProfileInfo)),
+  }).annotate({ identifier: "ApplicationEnvironmentInfo" });
 
 export interface AppSummary {
   numCompletedJobs?: number;
   numCompletedStages?: number;
 }
 
-export const AppSummary: Schema.Schema<AppSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      numCompletedJobs: Schema.optional(Schema.Number),
-      numCompletedStages: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "AppSummary" }) as any as Schema.Schema<AppSummary>;
+export const AppSummary = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  numCompletedJobs: Schema.optional(Schema.Number),
+  numCompletedStages: Schema.optional(Schema.Number),
+}).annotate({ identifier: "AppSummary" });
 
 export interface JobData {
   jobId?: string;
@@ -882,65 +730,52 @@ export interface JobData {
   sqlExecutionId?: string;
 }
 
-export const JobData: Schema.Schema<JobData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      jobId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      submissionTime: Schema.optional(Schema.String),
-      completionTime: Schema.optional(Schema.String),
-      stageIds: Schema.optional(Schema.Array(Schema.String)),
-      jobGroup: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-      numTasks: Schema.optional(Schema.Number),
-      numActiveTasks: Schema.optional(Schema.Number),
-      numCompletedTasks: Schema.optional(Schema.Number),
-      numSkippedTasks: Schema.optional(Schema.Number),
-      numFailedTasks: Schema.optional(Schema.Number),
-      numKilledTasks: Schema.optional(Schema.Number),
-      numCompletedIndices: Schema.optional(Schema.Number),
-      numActiveStages: Schema.optional(Schema.Number),
-      numCompletedStages: Schema.optional(Schema.Number),
-      numSkippedStages: Schema.optional(Schema.Number),
-      numFailedStages: Schema.optional(Schema.Number),
-      killTasksSummary: Schema.optional(
-        Schema.Record(Schema.String, Schema.Number),
-      ),
-      skippedStages: Schema.optional(Schema.Array(Schema.Number)),
-      sqlExecutionId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "JobData" }) as any as Schema.Schema<JobData>;
+export const JobData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  jobId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  submissionTime: Schema.optional(Schema.String),
+  completionTime: Schema.optional(Schema.String),
+  stageIds: Schema.optional(Schema.Array(Schema.String)),
+  jobGroup: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.String),
+  numTasks: Schema.optional(Schema.Number),
+  numActiveTasks: Schema.optional(Schema.Number),
+  numCompletedTasks: Schema.optional(Schema.Number),
+  numSkippedTasks: Schema.optional(Schema.Number),
+  numFailedTasks: Schema.optional(Schema.Number),
+  numKilledTasks: Schema.optional(Schema.Number),
+  numCompletedIndices: Schema.optional(Schema.Number),
+  numActiveStages: Schema.optional(Schema.Number),
+  numCompletedStages: Schema.optional(Schema.Number),
+  numSkippedStages: Schema.optional(Schema.Number),
+  numFailedStages: Schema.optional(Schema.Number),
+  killTasksSummary: Schema.optional(
+    Schema.Record(Schema.String, Schema.Number),
+  ),
+  skippedStages: Schema.optional(Schema.Array(Schema.Number)),
+  sqlExecutionId: Schema.optional(Schema.String),
+}).annotate({ identifier: "JobData" });
 
 export interface StageInputMetrics {
   bytesRead?: string;
   recordsRead?: string;
 }
 
-export const StageInputMetrics: Schema.Schema<StageInputMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bytesRead: Schema.optional(Schema.String),
-      recordsRead: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StageInputMetrics",
-  }) as any as Schema.Schema<StageInputMetrics>;
+export const StageInputMetrics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bytesRead: Schema.optional(Schema.String),
+  recordsRead: Schema.optional(Schema.String),
+}).annotate({ identifier: "StageInputMetrics" });
 
 export interface StageOutputMetrics {
   bytesWritten?: string;
   recordsWritten?: string;
 }
 
-export const StageOutputMetrics: Schema.Schema<StageOutputMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bytesWritten: Schema.optional(Schema.String),
-      recordsWritten: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StageOutputMetrics",
-  }) as any as Schema.Schema<StageOutputMetrics>;
+export const StageOutputMetrics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bytesWritten: Schema.optional(Schema.String),
+  recordsWritten: Schema.optional(Schema.String),
+}).annotate({ identifier: "StageOutputMetrics" });
 
 export interface StageShufflePushReadMetrics {
   corruptMergedBlockChunks?: string;
@@ -954,22 +789,18 @@ export interface StageShufflePushReadMetrics {
   remoteMergedReqsDuration?: string;
 }
 
-export const StageShufflePushReadMetrics: Schema.Schema<StageShufflePushReadMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      corruptMergedBlockChunks: Schema.optional(Schema.String),
-      mergedFetchFallbackCount: Schema.optional(Schema.String),
-      remoteMergedBlocksFetched: Schema.optional(Schema.String),
-      localMergedBlocksFetched: Schema.optional(Schema.String),
-      remoteMergedChunksFetched: Schema.optional(Schema.String),
-      localMergedChunksFetched: Schema.optional(Schema.String),
-      remoteMergedBytesRead: Schema.optional(Schema.String),
-      localMergedBytesRead: Schema.optional(Schema.String),
-      remoteMergedReqsDuration: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StageShufflePushReadMetrics",
-  }) as any as Schema.Schema<StageShufflePushReadMetrics>;
+export const StageShufflePushReadMetrics =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    corruptMergedBlockChunks: Schema.optional(Schema.String),
+    mergedFetchFallbackCount: Schema.optional(Schema.String),
+    remoteMergedBlocksFetched: Schema.optional(Schema.String),
+    localMergedBlocksFetched: Schema.optional(Schema.String),
+    remoteMergedChunksFetched: Schema.optional(Schema.String),
+    localMergedChunksFetched: Schema.optional(Schema.String),
+    remoteMergedBytesRead: Schema.optional(Schema.String),
+    localMergedBytesRead: Schema.optional(Schema.String),
+    remoteMergedReqsDuration: Schema.optional(Schema.String),
+  }).annotate({ identifier: "StageShufflePushReadMetrics" });
 
 export interface StageShuffleReadMetrics {
   remoteBlocksFetched?: string;
@@ -984,23 +815,19 @@ export interface StageShuffleReadMetrics {
   stageShufflePushReadMetrics?: StageShufflePushReadMetrics;
 }
 
-export const StageShuffleReadMetrics: Schema.Schema<StageShuffleReadMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      remoteBlocksFetched: Schema.optional(Schema.String),
-      localBlocksFetched: Schema.optional(Schema.String),
-      fetchWaitTimeMillis: Schema.optional(Schema.String),
-      remoteBytesRead: Schema.optional(Schema.String),
-      remoteBytesReadToDisk: Schema.optional(Schema.String),
-      localBytesRead: Schema.optional(Schema.String),
-      recordsRead: Schema.optional(Schema.String),
-      bytesRead: Schema.optional(Schema.String),
-      remoteReqsDuration: Schema.optional(Schema.String),
-      stageShufflePushReadMetrics: Schema.optional(StageShufflePushReadMetrics),
-    }),
-  ).annotate({
-    identifier: "StageShuffleReadMetrics",
-  }) as any as Schema.Schema<StageShuffleReadMetrics>;
+export const StageShuffleReadMetrics =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    remoteBlocksFetched: Schema.optional(Schema.String),
+    localBlocksFetched: Schema.optional(Schema.String),
+    fetchWaitTimeMillis: Schema.optional(Schema.String),
+    remoteBytesRead: Schema.optional(Schema.String),
+    remoteBytesReadToDisk: Schema.optional(Schema.String),
+    localBytesRead: Schema.optional(Schema.String),
+    recordsRead: Schema.optional(Schema.String),
+    bytesRead: Schema.optional(Schema.String),
+    remoteReqsDuration: Schema.optional(Schema.String),
+    stageShufflePushReadMetrics: Schema.optional(StageShufflePushReadMetrics),
+  }).annotate({ identifier: "StageShuffleReadMetrics" });
 
 export interface StageShuffleWriteMetrics {
   bytesWritten?: string;
@@ -1008,16 +835,12 @@ export interface StageShuffleWriteMetrics {
   recordsWritten?: string;
 }
 
-export const StageShuffleWriteMetrics: Schema.Schema<StageShuffleWriteMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bytesWritten: Schema.optional(Schema.String),
-      writeTimeNanos: Schema.optional(Schema.String),
-      recordsWritten: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StageShuffleWriteMetrics",
-  }) as any as Schema.Schema<StageShuffleWriteMetrics>;
+export const StageShuffleWriteMetrics =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bytesWritten: Schema.optional(Schema.String),
+    writeTimeNanos: Schema.optional(Schema.String),
+    recordsWritten: Schema.optional(Schema.String),
+  }).annotate({ identifier: "StageShuffleWriteMetrics" });
 
 export interface StageMetrics {
   executorDeserializeTimeMillis?: string;
@@ -1036,27 +859,22 @@ export interface StageMetrics {
   stageShuffleWriteMetrics?: StageShuffleWriteMetrics;
 }
 
-export const StageMetrics: Schema.Schema<StageMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      executorDeserializeTimeMillis: Schema.optional(Schema.String),
-      executorDeserializeCpuTimeNanos: Schema.optional(Schema.String),
-      executorRunTimeMillis: Schema.optional(Schema.String),
-      executorCpuTimeNanos: Schema.optional(Schema.String),
-      resultSize: Schema.optional(Schema.String),
-      jvmGcTimeMillis: Schema.optional(Schema.String),
-      resultSerializationTimeMillis: Schema.optional(Schema.String),
-      memoryBytesSpilled: Schema.optional(Schema.String),
-      diskBytesSpilled: Schema.optional(Schema.String),
-      peakExecutionMemoryBytes: Schema.optional(Schema.String),
-      stageInputMetrics: Schema.optional(StageInputMetrics),
-      stageOutputMetrics: Schema.optional(StageOutputMetrics),
-      stageShuffleReadMetrics: Schema.optional(StageShuffleReadMetrics),
-      stageShuffleWriteMetrics: Schema.optional(StageShuffleWriteMetrics),
-    }),
-  ).annotate({
-    identifier: "StageMetrics",
-  }) as any as Schema.Schema<StageMetrics>;
+export const StageMetrics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  executorDeserializeTimeMillis: Schema.optional(Schema.String),
+  executorDeserializeCpuTimeNanos: Schema.optional(Schema.String),
+  executorRunTimeMillis: Schema.optional(Schema.String),
+  executorCpuTimeNanos: Schema.optional(Schema.String),
+  resultSize: Schema.optional(Schema.String),
+  jvmGcTimeMillis: Schema.optional(Schema.String),
+  resultSerializationTimeMillis: Schema.optional(Schema.String),
+  memoryBytesSpilled: Schema.optional(Schema.String),
+  diskBytesSpilled: Schema.optional(Schema.String),
+  peakExecutionMemoryBytes: Schema.optional(Schema.String),
+  stageInputMetrics: Schema.optional(StageInputMetrics),
+  stageOutputMetrics: Schema.optional(StageOutputMetrics),
+  stageShuffleReadMetrics: Schema.optional(StageShuffleReadMetrics),
+  stageShuffleWriteMetrics: Schema.optional(StageShuffleWriteMetrics),
+}).annotate({ identifier: "StageMetrics" });
 
 export interface AccumulableInfo {
   accumullableInfoId?: string;
@@ -1065,47 +883,32 @@ export interface AccumulableInfo {
   value?: string;
 }
 
-export const AccumulableInfo: Schema.Schema<AccumulableInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accumullableInfoId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      update: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccumulableInfo",
-  }) as any as Schema.Schema<AccumulableInfo>;
+export const AccumulableInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  accumullableInfoId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  update: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+}).annotate({ identifier: "AccumulableInfo" });
 
 export interface InputMetrics {
   bytesRead?: string;
   recordsRead?: string;
 }
 
-export const InputMetrics: Schema.Schema<InputMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bytesRead: Schema.optional(Schema.String),
-      recordsRead: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InputMetrics",
-  }) as any as Schema.Schema<InputMetrics>;
+export const InputMetrics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bytesRead: Schema.optional(Schema.String),
+  recordsRead: Schema.optional(Schema.String),
+}).annotate({ identifier: "InputMetrics" });
 
 export interface OutputMetrics {
   bytesWritten?: string;
   recordsWritten?: string;
 }
 
-export const OutputMetrics: Schema.Schema<OutputMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bytesWritten: Schema.optional(Schema.String),
-      recordsWritten: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OutputMetrics",
-  }) as any as Schema.Schema<OutputMetrics>;
+export const OutputMetrics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bytesWritten: Schema.optional(Schema.String),
+  recordsWritten: Schema.optional(Schema.String),
+}).annotate({ identifier: "OutputMetrics" });
 
 export interface ShufflePushReadMetrics {
   corruptMergedBlockChunks?: string;
@@ -1119,22 +922,19 @@ export interface ShufflePushReadMetrics {
   remoteMergedReqsDuration?: string;
 }
 
-export const ShufflePushReadMetrics: Schema.Schema<ShufflePushReadMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      corruptMergedBlockChunks: Schema.optional(Schema.String),
-      mergedFetchFallbackCount: Schema.optional(Schema.String),
-      remoteMergedBlocksFetched: Schema.optional(Schema.String),
-      localMergedBlocksFetched: Schema.optional(Schema.String),
-      remoteMergedChunksFetched: Schema.optional(Schema.String),
-      localMergedChunksFetched: Schema.optional(Schema.String),
-      remoteMergedBytesRead: Schema.optional(Schema.String),
-      localMergedBytesRead: Schema.optional(Schema.String),
-      remoteMergedReqsDuration: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ShufflePushReadMetrics",
-  }) as any as Schema.Schema<ShufflePushReadMetrics>;
+export const ShufflePushReadMetrics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    corruptMergedBlockChunks: Schema.optional(Schema.String),
+    mergedFetchFallbackCount: Schema.optional(Schema.String),
+    remoteMergedBlocksFetched: Schema.optional(Schema.String),
+    localMergedBlocksFetched: Schema.optional(Schema.String),
+    remoteMergedChunksFetched: Schema.optional(Schema.String),
+    localMergedChunksFetched: Schema.optional(Schema.String),
+    remoteMergedBytesRead: Schema.optional(Schema.String),
+    localMergedBytesRead: Schema.optional(Schema.String),
+    remoteMergedReqsDuration: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ShufflePushReadMetrics" });
 
 export interface ShuffleReadMetrics {
   remoteBlocksFetched?: string;
@@ -1148,22 +948,17 @@ export interface ShuffleReadMetrics {
   shufflePushReadMetrics?: ShufflePushReadMetrics;
 }
 
-export const ShuffleReadMetrics: Schema.Schema<ShuffleReadMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      remoteBlocksFetched: Schema.optional(Schema.String),
-      localBlocksFetched: Schema.optional(Schema.String),
-      fetchWaitTimeMillis: Schema.optional(Schema.String),
-      remoteBytesRead: Schema.optional(Schema.String),
-      remoteBytesReadToDisk: Schema.optional(Schema.String),
-      localBytesRead: Schema.optional(Schema.String),
-      recordsRead: Schema.optional(Schema.String),
-      remoteReqsDuration: Schema.optional(Schema.String),
-      shufflePushReadMetrics: Schema.optional(ShufflePushReadMetrics),
-    }),
-  ).annotate({
-    identifier: "ShuffleReadMetrics",
-  }) as any as Schema.Schema<ShuffleReadMetrics>;
+export const ShuffleReadMetrics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  remoteBlocksFetched: Schema.optional(Schema.String),
+  localBlocksFetched: Schema.optional(Schema.String),
+  fetchWaitTimeMillis: Schema.optional(Schema.String),
+  remoteBytesRead: Schema.optional(Schema.String),
+  remoteBytesReadToDisk: Schema.optional(Schema.String),
+  localBytesRead: Schema.optional(Schema.String),
+  recordsRead: Schema.optional(Schema.String),
+  remoteReqsDuration: Schema.optional(Schema.String),
+  shufflePushReadMetrics: Schema.optional(ShufflePushReadMetrics),
+}).annotate({ identifier: "ShuffleReadMetrics" });
 
 export interface ShuffleWriteMetrics {
   bytesWritten?: string;
@@ -1171,16 +966,11 @@ export interface ShuffleWriteMetrics {
   recordsWritten?: string;
 }
 
-export const ShuffleWriteMetrics: Schema.Schema<ShuffleWriteMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bytesWritten: Schema.optional(Schema.String),
-      writeTimeNanos: Schema.optional(Schema.String),
-      recordsWritten: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ShuffleWriteMetrics",
-  }) as any as Schema.Schema<ShuffleWriteMetrics>;
+export const ShuffleWriteMetrics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bytesWritten: Schema.optional(Schema.String),
+  writeTimeNanos: Schema.optional(Schema.String),
+  recordsWritten: Schema.optional(Schema.String),
+}).annotate({ identifier: "ShuffleWriteMetrics" });
 
 export interface TaskMetrics {
   executorDeserializeTimeMillis?: string;
@@ -1199,27 +989,22 @@ export interface TaskMetrics {
   shuffleWriteMetrics?: ShuffleWriteMetrics;
 }
 
-export const TaskMetrics: Schema.Schema<TaskMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      executorDeserializeTimeMillis: Schema.optional(Schema.String),
-      executorDeserializeCpuTimeNanos: Schema.optional(Schema.String),
-      executorRunTimeMillis: Schema.optional(Schema.String),
-      executorCpuTimeNanos: Schema.optional(Schema.String),
-      resultSize: Schema.optional(Schema.String),
-      jvmGcTimeMillis: Schema.optional(Schema.String),
-      resultSerializationTimeMillis: Schema.optional(Schema.String),
-      memoryBytesSpilled: Schema.optional(Schema.String),
-      diskBytesSpilled: Schema.optional(Schema.String),
-      peakExecutionMemoryBytes: Schema.optional(Schema.String),
-      inputMetrics: Schema.optional(InputMetrics),
-      outputMetrics: Schema.optional(OutputMetrics),
-      shuffleReadMetrics: Schema.optional(ShuffleReadMetrics),
-      shuffleWriteMetrics: Schema.optional(ShuffleWriteMetrics),
-    }),
-  ).annotate({
-    identifier: "TaskMetrics",
-  }) as any as Schema.Schema<TaskMetrics>;
+export const TaskMetrics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  executorDeserializeTimeMillis: Schema.optional(Schema.String),
+  executorDeserializeCpuTimeNanos: Schema.optional(Schema.String),
+  executorRunTimeMillis: Schema.optional(Schema.String),
+  executorCpuTimeNanos: Schema.optional(Schema.String),
+  resultSize: Schema.optional(Schema.String),
+  jvmGcTimeMillis: Schema.optional(Schema.String),
+  resultSerializationTimeMillis: Schema.optional(Schema.String),
+  memoryBytesSpilled: Schema.optional(Schema.String),
+  diskBytesSpilled: Schema.optional(Schema.String),
+  peakExecutionMemoryBytes: Schema.optional(Schema.String),
+  inputMetrics: Schema.optional(InputMetrics),
+  outputMetrics: Schema.optional(OutputMetrics),
+  shuffleReadMetrics: Schema.optional(ShuffleReadMetrics),
+  shuffleWriteMetrics: Schema.optional(ShuffleWriteMetrics),
+}).annotate({ identifier: "TaskMetrics" });
 
 export interface TaskData {
   stageId?: string;
@@ -1245,47 +1030,37 @@ export interface TaskData {
   gettingResultTimeMillis?: string;
 }
 
-export const TaskData: Schema.Schema<TaskData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stageId: Schema.optional(Schema.String),
-      stageAttemptId: Schema.optional(Schema.Number),
-      taskId: Schema.optional(Schema.String),
-      index: Schema.optional(Schema.Number),
-      attempt: Schema.optional(Schema.Number),
-      partitionId: Schema.optional(Schema.Number),
-      launchTime: Schema.optional(Schema.String),
-      resultFetchStart: Schema.optional(Schema.String),
-      durationMillis: Schema.optional(Schema.String),
-      executorId: Schema.optional(Schema.String),
-      host: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-      taskLocality: Schema.optional(Schema.String),
-      speculative: Schema.optional(Schema.Boolean),
-      accumulatorUpdates: Schema.optional(Schema.Array(AccumulableInfo)),
-      errorMessage: Schema.optional(Schema.String),
-      hasMetrics: Schema.optional(Schema.Boolean),
-      taskMetrics: Schema.optional(TaskMetrics),
-      executorLogs: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      schedulerDelayMillis: Schema.optional(Schema.String),
-      gettingResultTimeMillis: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "TaskData" }) as any as Schema.Schema<TaskData>;
+export const TaskData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  stageId: Schema.optional(Schema.String),
+  stageAttemptId: Schema.optional(Schema.Number),
+  taskId: Schema.optional(Schema.String),
+  index: Schema.optional(Schema.Number),
+  attempt: Schema.optional(Schema.Number),
+  partitionId: Schema.optional(Schema.Number),
+  launchTime: Schema.optional(Schema.String),
+  resultFetchStart: Schema.optional(Schema.String),
+  durationMillis: Schema.optional(Schema.String),
+  executorId: Schema.optional(Schema.String),
+  host: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.String),
+  taskLocality: Schema.optional(Schema.String),
+  speculative: Schema.optional(Schema.Boolean),
+  accumulatorUpdates: Schema.optional(Schema.Array(AccumulableInfo)),
+  errorMessage: Schema.optional(Schema.String),
+  hasMetrics: Schema.optional(Schema.Boolean),
+  taskMetrics: Schema.optional(TaskMetrics),
+  executorLogs: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  schedulerDelayMillis: Schema.optional(Schema.String),
+  gettingResultTimeMillis: Schema.optional(Schema.String),
+}).annotate({ identifier: "TaskData" });
 
 export interface ExecutorMetrics {
   metrics?: Record<string, string>;
 }
 
-export const ExecutorMetrics: Schema.Schema<ExecutorMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metrics: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ExecutorMetrics",
-  }) as any as Schema.Schema<ExecutorMetrics>;
+export const ExecutorMetrics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metrics: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "ExecutorMetrics" });
 
 export interface ExecutorStageSummary {
   stageId?: string;
@@ -1309,32 +1084,27 @@ export interface ExecutorStageSummary {
   peakMemoryMetrics?: ExecutorMetrics;
 }
 
-export const ExecutorStageSummary: Schema.Schema<ExecutorStageSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stageId: Schema.optional(Schema.String),
-      stageAttemptId: Schema.optional(Schema.Number),
-      executorId: Schema.optional(Schema.String),
-      taskTimeMillis: Schema.optional(Schema.String),
-      failedTasks: Schema.optional(Schema.Number),
-      succeededTasks: Schema.optional(Schema.Number),
-      killedTasks: Schema.optional(Schema.Number),
-      inputBytes: Schema.optional(Schema.String),
-      inputRecords: Schema.optional(Schema.String),
-      outputBytes: Schema.optional(Schema.String),
-      outputRecords: Schema.optional(Schema.String),
-      shuffleRead: Schema.optional(Schema.String),
-      shuffleReadRecords: Schema.optional(Schema.String),
-      shuffleWrite: Schema.optional(Schema.String),
-      shuffleWriteRecords: Schema.optional(Schema.String),
-      memoryBytesSpilled: Schema.optional(Schema.String),
-      diskBytesSpilled: Schema.optional(Schema.String),
-      isExcludedForStage: Schema.optional(Schema.Boolean),
-      peakMemoryMetrics: Schema.optional(ExecutorMetrics),
-    }),
-  ).annotate({
-    identifier: "ExecutorStageSummary",
-  }) as any as Schema.Schema<ExecutorStageSummary>;
+export const ExecutorStageSummary = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  stageId: Schema.optional(Schema.String),
+  stageAttemptId: Schema.optional(Schema.Number),
+  executorId: Schema.optional(Schema.String),
+  taskTimeMillis: Schema.optional(Schema.String),
+  failedTasks: Schema.optional(Schema.Number),
+  succeededTasks: Schema.optional(Schema.Number),
+  killedTasks: Schema.optional(Schema.Number),
+  inputBytes: Schema.optional(Schema.String),
+  inputRecords: Schema.optional(Schema.String),
+  outputBytes: Schema.optional(Schema.String),
+  outputRecords: Schema.optional(Schema.String),
+  shuffleRead: Schema.optional(Schema.String),
+  shuffleReadRecords: Schema.optional(Schema.String),
+  shuffleWrite: Schema.optional(Schema.String),
+  shuffleWriteRecords: Schema.optional(Schema.String),
+  memoryBytesSpilled: Schema.optional(Schema.String),
+  diskBytesSpilled: Schema.optional(Schema.String),
+  isExcludedForStage: Schema.optional(Schema.Boolean),
+  peakMemoryMetrics: Schema.optional(ExecutorMetrics),
+}).annotate({ identifier: "ExecutorStageSummary" });
 
 export interface SpeculationStageSummary {
   stageId?: string;
@@ -1346,35 +1116,27 @@ export interface SpeculationStageSummary {
   numKilledTasks?: number;
 }
 
-export const SpeculationStageSummary: Schema.Schema<SpeculationStageSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stageId: Schema.optional(Schema.String),
-      stageAttemptId: Schema.optional(Schema.Number),
-      numTasks: Schema.optional(Schema.Number),
-      numActiveTasks: Schema.optional(Schema.Number),
-      numCompletedTasks: Schema.optional(Schema.Number),
-      numFailedTasks: Schema.optional(Schema.Number),
-      numKilledTasks: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "SpeculationStageSummary",
-  }) as any as Schema.Schema<SpeculationStageSummary>;
+export const SpeculationStageSummary =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    stageId: Schema.optional(Schema.String),
+    stageAttemptId: Schema.optional(Schema.Number),
+    numTasks: Schema.optional(Schema.Number),
+    numActiveTasks: Schema.optional(Schema.Number),
+    numCompletedTasks: Schema.optional(Schema.Number),
+    numFailedTasks: Schema.optional(Schema.Number),
+    numKilledTasks: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "SpeculationStageSummary" });
 
 export interface ExecutorPeakMetricsDistributions {
   quantiles?: Array<number>;
   executorMetrics?: Array<ExecutorMetrics>;
 }
 
-export const ExecutorPeakMetricsDistributions: Schema.Schema<ExecutorPeakMetricsDistributions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      quantiles: Schema.optional(Schema.Array(Schema.Number)),
-      executorMetrics: Schema.optional(Schema.Array(ExecutorMetrics)),
-    }),
-  ).annotate({
-    identifier: "ExecutorPeakMetricsDistributions",
-  }) as any as Schema.Schema<ExecutorPeakMetricsDistributions>;
+export const ExecutorPeakMetricsDistributions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    quantiles: Schema.optional(Schema.Array(Schema.Number)),
+    executorMetrics: Schema.optional(Schema.Array(ExecutorMetrics)),
+  }).annotate({ identifier: "ExecutorPeakMetricsDistributions" });
 
 export interface ExecutorMetricsDistributions {
   quantiles?: Array<number>;
@@ -1395,29 +1157,25 @@ export interface ExecutorMetricsDistributions {
   peakMemoryMetrics?: ExecutorPeakMetricsDistributions;
 }
 
-export const ExecutorMetricsDistributions: Schema.Schema<ExecutorMetricsDistributions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      quantiles: Schema.optional(Schema.Array(Schema.Number)),
-      taskTimeMillis: Schema.optional(Schema.Array(Schema.Number)),
-      failedTasks: Schema.optional(Schema.Array(Schema.Number)),
-      succeededTasks: Schema.optional(Schema.Array(Schema.Number)),
-      killedTasks: Schema.optional(Schema.Array(Schema.Number)),
-      inputBytes: Schema.optional(Schema.Array(Schema.Number)),
-      inputRecords: Schema.optional(Schema.Array(Schema.Number)),
-      outputBytes: Schema.optional(Schema.Array(Schema.Number)),
-      outputRecords: Schema.optional(Schema.Array(Schema.Number)),
-      shuffleRead: Schema.optional(Schema.Array(Schema.Number)),
-      shuffleReadRecords: Schema.optional(Schema.Array(Schema.Number)),
-      shuffleWrite: Schema.optional(Schema.Array(Schema.Number)),
-      shuffleWriteRecords: Schema.optional(Schema.Array(Schema.Number)),
-      memoryBytesSpilled: Schema.optional(Schema.Array(Schema.Number)),
-      diskBytesSpilled: Schema.optional(Schema.Array(Schema.Number)),
-      peakMemoryMetrics: Schema.optional(ExecutorPeakMetricsDistributions),
-    }),
-  ).annotate({
-    identifier: "ExecutorMetricsDistributions",
-  }) as any as Schema.Schema<ExecutorMetricsDistributions>;
+export const ExecutorMetricsDistributions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    quantiles: Schema.optional(Schema.Array(Schema.Number)),
+    taskTimeMillis: Schema.optional(Schema.Array(Schema.Number)),
+    failedTasks: Schema.optional(Schema.Array(Schema.Number)),
+    succeededTasks: Schema.optional(Schema.Array(Schema.Number)),
+    killedTasks: Schema.optional(Schema.Array(Schema.Number)),
+    inputBytes: Schema.optional(Schema.Array(Schema.Number)),
+    inputRecords: Schema.optional(Schema.Array(Schema.Number)),
+    outputBytes: Schema.optional(Schema.Array(Schema.Number)),
+    outputRecords: Schema.optional(Schema.Array(Schema.Number)),
+    shuffleRead: Schema.optional(Schema.Array(Schema.Number)),
+    shuffleReadRecords: Schema.optional(Schema.Array(Schema.Number)),
+    shuffleWrite: Schema.optional(Schema.Array(Schema.Number)),
+    shuffleWriteRecords: Schema.optional(Schema.Array(Schema.Number)),
+    memoryBytesSpilled: Schema.optional(Schema.Array(Schema.Number)),
+    diskBytesSpilled: Schema.optional(Schema.Array(Schema.Number)),
+    peakMemoryMetrics: Schema.optional(ExecutorPeakMetricsDistributions),
+  }).annotate({ identifier: "ExecutorMetricsDistributions" });
 
 export interface Quantiles {
   minimum?: string;
@@ -1429,48 +1187,35 @@ export interface Quantiles {
   count?: string;
 }
 
-export const Quantiles: Schema.Schema<Quantiles> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      minimum: Schema.optional(Schema.String),
-      percentile25: Schema.optional(Schema.String),
-      percentile50: Schema.optional(Schema.String),
-      percentile75: Schema.optional(Schema.String),
-      maximum: Schema.optional(Schema.String),
-      sum: Schema.optional(Schema.String),
-      count: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Quantiles" }) as any as Schema.Schema<Quantiles>;
+export const Quantiles = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  minimum: Schema.optional(Schema.String),
+  percentile25: Schema.optional(Schema.String),
+  percentile50: Schema.optional(Schema.String),
+  percentile75: Schema.optional(Schema.String),
+  maximum: Schema.optional(Schema.String),
+  sum: Schema.optional(Schema.String),
+  count: Schema.optional(Schema.String),
+}).annotate({ identifier: "Quantiles" });
 
 export interface InputQuantileMetrics {
   bytesRead?: Quantiles;
   recordsRead?: Quantiles;
 }
 
-export const InputQuantileMetrics: Schema.Schema<InputQuantileMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bytesRead: Schema.optional(Quantiles),
-      recordsRead: Schema.optional(Quantiles),
-    }),
-  ).annotate({
-    identifier: "InputQuantileMetrics",
-  }) as any as Schema.Schema<InputQuantileMetrics>;
+export const InputQuantileMetrics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bytesRead: Schema.optional(Quantiles),
+  recordsRead: Schema.optional(Quantiles),
+}).annotate({ identifier: "InputQuantileMetrics" });
 
 export interface OutputQuantileMetrics {
   bytesWritten?: Quantiles;
   recordsWritten?: Quantiles;
 }
 
-export const OutputQuantileMetrics: Schema.Schema<OutputQuantileMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bytesWritten: Schema.optional(Quantiles),
-      recordsWritten: Schema.optional(Quantiles),
-    }),
-  ).annotate({
-    identifier: "OutputQuantileMetrics",
-  }) as any as Schema.Schema<OutputQuantileMetrics>;
+export const OutputQuantileMetrics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bytesWritten: Schema.optional(Quantiles),
+  recordsWritten: Schema.optional(Quantiles),
+}).annotate({ identifier: "OutputQuantileMetrics" });
 
 export interface ShufflePushReadQuantileMetrics {
   corruptMergedBlockChunks?: Quantiles;
@@ -1484,22 +1229,18 @@ export interface ShufflePushReadQuantileMetrics {
   remoteMergedReqsDuration?: Quantiles;
 }
 
-export const ShufflePushReadQuantileMetrics: Schema.Schema<ShufflePushReadQuantileMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      corruptMergedBlockChunks: Schema.optional(Quantiles),
-      mergedFetchFallbackCount: Schema.optional(Quantiles),
-      remoteMergedBlocksFetched: Schema.optional(Quantiles),
-      localMergedBlocksFetched: Schema.optional(Quantiles),
-      remoteMergedChunksFetched: Schema.optional(Quantiles),
-      localMergedChunksFetched: Schema.optional(Quantiles),
-      remoteMergedBytesRead: Schema.optional(Quantiles),
-      localMergedBytesRead: Schema.optional(Quantiles),
-      remoteMergedReqsDuration: Schema.optional(Quantiles),
-    }),
-  ).annotate({
-    identifier: "ShufflePushReadQuantileMetrics",
-  }) as any as Schema.Schema<ShufflePushReadQuantileMetrics>;
+export const ShufflePushReadQuantileMetrics =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    corruptMergedBlockChunks: Schema.optional(Quantiles),
+    mergedFetchFallbackCount: Schema.optional(Quantiles),
+    remoteMergedBlocksFetched: Schema.optional(Quantiles),
+    localMergedBlocksFetched: Schema.optional(Quantiles),
+    remoteMergedChunksFetched: Schema.optional(Quantiles),
+    localMergedChunksFetched: Schema.optional(Quantiles),
+    remoteMergedBytesRead: Schema.optional(Quantiles),
+    localMergedBytesRead: Schema.optional(Quantiles),
+    remoteMergedReqsDuration: Schema.optional(Quantiles),
+  }).annotate({ identifier: "ShufflePushReadQuantileMetrics" });
 
 export interface ShuffleReadQuantileMetrics {
   readBytes?: Quantiles;
@@ -1514,23 +1255,19 @@ export interface ShuffleReadQuantileMetrics {
   shufflePushReadMetrics?: ShufflePushReadQuantileMetrics;
 }
 
-export const ShuffleReadQuantileMetrics: Schema.Schema<ShuffleReadQuantileMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      readBytes: Schema.optional(Quantiles),
-      readRecords: Schema.optional(Quantiles),
-      remoteBlocksFetched: Schema.optional(Quantiles),
-      localBlocksFetched: Schema.optional(Quantiles),
-      fetchWaitTimeMillis: Schema.optional(Quantiles),
-      remoteBytesRead: Schema.optional(Quantiles),
-      remoteBytesReadToDisk: Schema.optional(Quantiles),
-      totalBlocksFetched: Schema.optional(Quantiles),
-      remoteReqsDuration: Schema.optional(Quantiles),
-      shufflePushReadMetrics: Schema.optional(ShufflePushReadQuantileMetrics),
-    }),
-  ).annotate({
-    identifier: "ShuffleReadQuantileMetrics",
-  }) as any as Schema.Schema<ShuffleReadQuantileMetrics>;
+export const ShuffleReadQuantileMetrics =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    readBytes: Schema.optional(Quantiles),
+    readRecords: Schema.optional(Quantiles),
+    remoteBlocksFetched: Schema.optional(Quantiles),
+    localBlocksFetched: Schema.optional(Quantiles),
+    fetchWaitTimeMillis: Schema.optional(Quantiles),
+    remoteBytesRead: Schema.optional(Quantiles),
+    remoteBytesReadToDisk: Schema.optional(Quantiles),
+    totalBlocksFetched: Schema.optional(Quantiles),
+    remoteReqsDuration: Schema.optional(Quantiles),
+    shufflePushReadMetrics: Schema.optional(ShufflePushReadQuantileMetrics),
+  }).annotate({ identifier: "ShuffleReadQuantileMetrics" });
 
 export interface ShuffleWriteQuantileMetrics {
   writeBytes?: Quantiles;
@@ -1538,16 +1275,12 @@ export interface ShuffleWriteQuantileMetrics {
   writeTimeNanos?: Quantiles;
 }
 
-export const ShuffleWriteQuantileMetrics: Schema.Schema<ShuffleWriteQuantileMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      writeBytes: Schema.optional(Quantiles),
-      writeRecords: Schema.optional(Quantiles),
-      writeTimeNanos: Schema.optional(Quantiles),
-    }),
-  ).annotate({
-    identifier: "ShuffleWriteQuantileMetrics",
-  }) as any as Schema.Schema<ShuffleWriteQuantileMetrics>;
+export const ShuffleWriteQuantileMetrics =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    writeBytes: Schema.optional(Quantiles),
+    writeRecords: Schema.optional(Quantiles),
+    writeTimeNanos: Schema.optional(Quantiles),
+  }).annotate({ identifier: "ShuffleWriteQuantileMetrics" });
 
 export interface TaskQuantileMetrics {
   durationMillis?: Quantiles;
@@ -1569,30 +1302,25 @@ export interface TaskQuantileMetrics {
   shuffleWriteMetrics?: ShuffleWriteQuantileMetrics;
 }
 
-export const TaskQuantileMetrics: Schema.Schema<TaskQuantileMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      durationMillis: Schema.optional(Quantiles),
-      executorDeserializeTimeMillis: Schema.optional(Quantiles),
-      executorDeserializeCpuTimeNanos: Schema.optional(Quantiles),
-      executorRunTimeMillis: Schema.optional(Quantiles),
-      executorCpuTimeNanos: Schema.optional(Quantiles),
-      resultSize: Schema.optional(Quantiles),
-      jvmGcTimeMillis: Schema.optional(Quantiles),
-      resultSerializationTimeMillis: Schema.optional(Quantiles),
-      gettingResultTimeMillis: Schema.optional(Quantiles),
-      schedulerDelayMillis: Schema.optional(Quantiles),
-      peakExecutionMemoryBytes: Schema.optional(Quantiles),
-      memoryBytesSpilled: Schema.optional(Quantiles),
-      diskBytesSpilled: Schema.optional(Quantiles),
-      inputMetrics: Schema.optional(InputQuantileMetrics),
-      outputMetrics: Schema.optional(OutputQuantileMetrics),
-      shuffleReadMetrics: Schema.optional(ShuffleReadQuantileMetrics),
-      shuffleWriteMetrics: Schema.optional(ShuffleWriteQuantileMetrics),
-    }),
-  ).annotate({
-    identifier: "TaskQuantileMetrics",
-  }) as any as Schema.Schema<TaskQuantileMetrics>;
+export const TaskQuantileMetrics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  durationMillis: Schema.optional(Quantiles),
+  executorDeserializeTimeMillis: Schema.optional(Quantiles),
+  executorDeserializeCpuTimeNanos: Schema.optional(Quantiles),
+  executorRunTimeMillis: Schema.optional(Quantiles),
+  executorCpuTimeNanos: Schema.optional(Quantiles),
+  resultSize: Schema.optional(Quantiles),
+  jvmGcTimeMillis: Schema.optional(Quantiles),
+  resultSerializationTimeMillis: Schema.optional(Quantiles),
+  gettingResultTimeMillis: Schema.optional(Quantiles),
+  schedulerDelayMillis: Schema.optional(Quantiles),
+  peakExecutionMemoryBytes: Schema.optional(Quantiles),
+  memoryBytesSpilled: Schema.optional(Quantiles),
+  diskBytesSpilled: Schema.optional(Quantiles),
+  inputMetrics: Schema.optional(InputQuantileMetrics),
+  outputMetrics: Schema.optional(OutputQuantileMetrics),
+  shuffleReadMetrics: Schema.optional(ShuffleReadQuantileMetrics),
+  shuffleWriteMetrics: Schema.optional(ShuffleWriteQuantileMetrics),
+}).annotate({ identifier: "TaskQuantileMetrics" });
 
 export interface StageData {
   status?:
@@ -1638,50 +1366,45 @@ export interface StageData {
   taskQuantileMetrics?: TaskQuantileMetrics;
 }
 
-export const StageData: Schema.Schema<StageData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      status: Schema.optional(Schema.String),
-      stageId: Schema.optional(Schema.String),
-      stageAttemptId: Schema.optional(Schema.Number),
-      numTasks: Schema.optional(Schema.Number),
-      numActiveTasks: Schema.optional(Schema.Number),
-      numCompleteTasks: Schema.optional(Schema.Number),
-      numFailedTasks: Schema.optional(Schema.Number),
-      numKilledTasks: Schema.optional(Schema.Number),
-      numCompletedIndices: Schema.optional(Schema.Number),
-      submissionTime: Schema.optional(Schema.String),
-      firstTaskLaunchedTime: Schema.optional(Schema.String),
-      completionTime: Schema.optional(Schema.String),
-      failureReason: Schema.optional(Schema.String),
-      stageMetrics: Schema.optional(StageMetrics),
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      details: Schema.optional(Schema.String),
-      schedulingPool: Schema.optional(Schema.String),
-      rddIds: Schema.optional(Schema.Array(Schema.String)),
-      accumulatorUpdates: Schema.optional(Schema.Array(AccumulableInfo)),
-      tasks: Schema.optional(Schema.Record(Schema.String, TaskData)),
-      executorSummary: Schema.optional(
-        Schema.Record(Schema.String, ExecutorStageSummary),
-      ),
-      speculationSummary: Schema.optional(SpeculationStageSummary),
-      killedTasksSummary: Schema.optional(
-        Schema.Record(Schema.String, Schema.Number),
-      ),
-      resourceProfileId: Schema.optional(Schema.Number),
-      peakExecutorMetrics: Schema.optional(ExecutorMetrics),
-      executorMetricsDistributions: Schema.optional(
-        ExecutorMetricsDistributions,
-      ),
-      isShufflePushEnabled: Schema.optional(Schema.Boolean),
-      shuffleMergersCount: Schema.optional(Schema.Number),
-      jobIds: Schema.optional(Schema.Array(Schema.String)),
-      locality: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      parentStageIds: Schema.optional(Schema.Array(Schema.String)),
-      taskQuantileMetrics: Schema.optional(TaskQuantileMetrics),
-    }),
-  ).annotate({ identifier: "StageData" }) as any as Schema.Schema<StageData>;
+export const StageData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  status: Schema.optional(Schema.String),
+  stageId: Schema.optional(Schema.String),
+  stageAttemptId: Schema.optional(Schema.Number),
+  numTasks: Schema.optional(Schema.Number),
+  numActiveTasks: Schema.optional(Schema.Number),
+  numCompleteTasks: Schema.optional(Schema.Number),
+  numFailedTasks: Schema.optional(Schema.Number),
+  numKilledTasks: Schema.optional(Schema.Number),
+  numCompletedIndices: Schema.optional(Schema.Number),
+  submissionTime: Schema.optional(Schema.String),
+  firstTaskLaunchedTime: Schema.optional(Schema.String),
+  completionTime: Schema.optional(Schema.String),
+  failureReason: Schema.optional(Schema.String),
+  stageMetrics: Schema.optional(StageMetrics),
+  name: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  details: Schema.optional(Schema.String),
+  schedulingPool: Schema.optional(Schema.String),
+  rddIds: Schema.optional(Schema.Array(Schema.String)),
+  accumulatorUpdates: Schema.optional(Schema.Array(AccumulableInfo)),
+  tasks: Schema.optional(Schema.Record(Schema.String, TaskData)),
+  executorSummary: Schema.optional(
+    Schema.Record(Schema.String, ExecutorStageSummary),
+  ),
+  speculationSummary: Schema.optional(SpeculationStageSummary),
+  killedTasksSummary: Schema.optional(
+    Schema.Record(Schema.String, Schema.Number),
+  ),
+  resourceProfileId: Schema.optional(Schema.Number),
+  peakExecutorMetrics: Schema.optional(ExecutorMetrics),
+  executorMetricsDistributions: Schema.optional(ExecutorMetricsDistributions),
+  isShufflePushEnabled: Schema.optional(Schema.Boolean),
+  shuffleMergersCount: Schema.optional(Schema.Number),
+  jobIds: Schema.optional(Schema.Array(Schema.String)),
+  locality: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  parentStageIds: Schema.optional(Schema.Array(Schema.String)),
+  taskQuantileMetrics: Schema.optional(TaskQuantileMetrics),
+}).annotate({ identifier: "StageData" });
 
 export interface MemoryMetrics {
   usedOnHeapStorageMemory?: string;
@@ -1690,32 +1413,22 @@ export interface MemoryMetrics {
   totalOffHeapStorageMemory?: string;
 }
 
-export const MemoryMetrics: Schema.Schema<MemoryMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      usedOnHeapStorageMemory: Schema.optional(Schema.String),
-      usedOffHeapStorageMemory: Schema.optional(Schema.String),
-      totalOnHeapStorageMemory: Schema.optional(Schema.String),
-      totalOffHeapStorageMemory: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MemoryMetrics",
-  }) as any as Schema.Schema<MemoryMetrics>;
+export const MemoryMetrics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  usedOnHeapStorageMemory: Schema.optional(Schema.String),
+  usedOffHeapStorageMemory: Schema.optional(Schema.String),
+  totalOnHeapStorageMemory: Schema.optional(Schema.String),
+  totalOffHeapStorageMemory: Schema.optional(Schema.String),
+}).annotate({ identifier: "MemoryMetrics" });
 
 export interface ResourceInformation {
   name?: string;
   addresses?: Array<string>;
 }
 
-export const ResourceInformation: Schema.Schema<ResourceInformation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      addresses: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ResourceInformation",
-  }) as any as Schema.Schema<ResourceInformation>;
+export const ResourceInformation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  addresses: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ResourceInformation" });
 
 export interface ExecutorSummary {
   executorId?: string;
@@ -1749,46 +1462,37 @@ export interface ExecutorSummary {
   resourceProfileId?: number;
 }
 
-export const ExecutorSummary: Schema.Schema<ExecutorSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      executorId: Schema.optional(Schema.String),
-      hostPort: Schema.optional(Schema.String),
-      isActive: Schema.optional(Schema.Boolean),
-      rddBlocks: Schema.optional(Schema.Number),
-      memoryUsed: Schema.optional(Schema.String),
-      diskUsed: Schema.optional(Schema.String),
-      totalCores: Schema.optional(Schema.Number),
-      maxTasks: Schema.optional(Schema.Number),
-      activeTasks: Schema.optional(Schema.Number),
-      failedTasks: Schema.optional(Schema.Number),
-      completedTasks: Schema.optional(Schema.Number),
-      totalTasks: Schema.optional(Schema.Number),
-      totalDurationMillis: Schema.optional(Schema.String),
-      totalGcTimeMillis: Schema.optional(Schema.String),
-      totalInputBytes: Schema.optional(Schema.String),
-      totalShuffleRead: Schema.optional(Schema.String),
-      totalShuffleWrite: Schema.optional(Schema.String),
-      isExcluded: Schema.optional(Schema.Boolean),
-      maxMemory: Schema.optional(Schema.String),
-      addTime: Schema.optional(Schema.String),
-      removeTime: Schema.optional(Schema.String),
-      removeReason: Schema.optional(Schema.String),
-      executorLogs: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      memoryMetrics: Schema.optional(MemoryMetrics),
-      excludedInStages: Schema.optional(Schema.Array(Schema.String)),
-      peakMemoryMetrics: Schema.optional(ExecutorMetrics),
-      attributes: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      resources: Schema.optional(
-        Schema.Record(Schema.String, ResourceInformation),
-      ),
-      resourceProfileId: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "ExecutorSummary",
-  }) as any as Schema.Schema<ExecutorSummary>;
+export const ExecutorSummary = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  executorId: Schema.optional(Schema.String),
+  hostPort: Schema.optional(Schema.String),
+  isActive: Schema.optional(Schema.Boolean),
+  rddBlocks: Schema.optional(Schema.Number),
+  memoryUsed: Schema.optional(Schema.String),
+  diskUsed: Schema.optional(Schema.String),
+  totalCores: Schema.optional(Schema.Number),
+  maxTasks: Schema.optional(Schema.Number),
+  activeTasks: Schema.optional(Schema.Number),
+  failedTasks: Schema.optional(Schema.Number),
+  completedTasks: Schema.optional(Schema.Number),
+  totalTasks: Schema.optional(Schema.Number),
+  totalDurationMillis: Schema.optional(Schema.String),
+  totalGcTimeMillis: Schema.optional(Schema.String),
+  totalInputBytes: Schema.optional(Schema.String),
+  totalShuffleRead: Schema.optional(Schema.String),
+  totalShuffleWrite: Schema.optional(Schema.String),
+  isExcluded: Schema.optional(Schema.Boolean),
+  maxMemory: Schema.optional(Schema.String),
+  addTime: Schema.optional(Schema.String),
+  removeTime: Schema.optional(Schema.String),
+  removeReason: Schema.optional(Schema.String),
+  executorLogs: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  memoryMetrics: Schema.optional(MemoryMetrics),
+  excludedInStages: Schema.optional(Schema.Array(Schema.String)),
+  peakMemoryMetrics: Schema.optional(ExecutorMetrics),
+  attributes: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  resources: Schema.optional(Schema.Record(Schema.String, ResourceInformation)),
+  resourceProfileId: Schema.optional(Schema.Number),
+}).annotate({ identifier: "ExecutorSummary" });
 
 export interface RddDataDistribution {
   address?: string;
@@ -1801,21 +1505,16 @@ export interface RddDataDistribution {
   offHeapMemoryRemaining?: string;
 }
 
-export const RddDataDistribution: Schema.Schema<RddDataDistribution> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      address: Schema.optional(Schema.String),
-      memoryUsed: Schema.optional(Schema.String),
-      memoryRemaining: Schema.optional(Schema.String),
-      diskUsed: Schema.optional(Schema.String),
-      onHeapMemoryUsed: Schema.optional(Schema.String),
-      offHeapMemoryUsed: Schema.optional(Schema.String),
-      onHeapMemoryRemaining: Schema.optional(Schema.String),
-      offHeapMemoryRemaining: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RddDataDistribution",
-  }) as any as Schema.Schema<RddDataDistribution>;
+export const RddDataDistribution = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  address: Schema.optional(Schema.String),
+  memoryUsed: Schema.optional(Schema.String),
+  memoryRemaining: Schema.optional(Schema.String),
+  diskUsed: Schema.optional(Schema.String),
+  onHeapMemoryUsed: Schema.optional(Schema.String),
+  offHeapMemoryUsed: Schema.optional(Schema.String),
+  onHeapMemoryRemaining: Schema.optional(Schema.String),
+  offHeapMemoryRemaining: Schema.optional(Schema.String),
+}).annotate({ identifier: "RddDataDistribution" });
 
 export interface RddPartitionInfo {
   blockName?: string;
@@ -1825,18 +1524,13 @@ export interface RddPartitionInfo {
   executors?: Array<string>;
 }
 
-export const RddPartitionInfo: Schema.Schema<RddPartitionInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      blockName: Schema.optional(Schema.String),
-      storageLevel: Schema.optional(Schema.String),
-      memoryUsed: Schema.optional(Schema.String),
-      diskUsed: Schema.optional(Schema.String),
-      executors: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "RddPartitionInfo",
-  }) as any as Schema.Schema<RddPartitionInfo>;
+export const RddPartitionInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  blockName: Schema.optional(Schema.String),
+  storageLevel: Schema.optional(Schema.String),
+  memoryUsed: Schema.optional(Schema.String),
+  diskUsed: Schema.optional(Schema.String),
+  executors: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "RddPartitionInfo" });
 
 export interface RddStorageInfo {
   rddStorageId?: number;
@@ -1850,22 +1544,17 @@ export interface RddStorageInfo {
   partitions?: Array<RddPartitionInfo>;
 }
 
-export const RddStorageInfo: Schema.Schema<RddStorageInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rddStorageId: Schema.optional(Schema.Number),
-      name: Schema.optional(Schema.String),
-      numPartitions: Schema.optional(Schema.Number),
-      numCachedPartitions: Schema.optional(Schema.Number),
-      storageLevel: Schema.optional(Schema.String),
-      memoryUsed: Schema.optional(Schema.String),
-      diskUsed: Schema.optional(Schema.String),
-      dataDistribution: Schema.optional(Schema.Array(RddDataDistribution)),
-      partitions: Schema.optional(Schema.Array(RddPartitionInfo)),
-    }),
-  ).annotate({
-    identifier: "RddStorageInfo",
-  }) as any as Schema.Schema<RddStorageInfo>;
+export const RddStorageInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  rddStorageId: Schema.optional(Schema.Number),
+  name: Schema.optional(Schema.String),
+  numPartitions: Schema.optional(Schema.Number),
+  numCachedPartitions: Schema.optional(Schema.Number),
+  storageLevel: Schema.optional(Schema.String),
+  memoryUsed: Schema.optional(Schema.String),
+  diskUsed: Schema.optional(Schema.String),
+  dataDistribution: Schema.optional(Schema.Array(RddDataDistribution)),
+  partitions: Schema.optional(Schema.Array(RddPartitionInfo)),
+}).annotate({ identifier: "RddStorageInfo" });
 
 export interface StreamBlockData {
   name?: string;
@@ -1879,37 +1568,27 @@ export interface StreamBlockData {
   diskSize?: string;
 }
 
-export const StreamBlockData: Schema.Schema<StreamBlockData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      executorId: Schema.optional(Schema.String),
-      hostPort: Schema.optional(Schema.String),
-      storageLevel: Schema.optional(Schema.String),
-      useMemory: Schema.optional(Schema.Boolean),
-      useDisk: Schema.optional(Schema.Boolean),
-      deserialized: Schema.optional(Schema.Boolean),
-      memSize: Schema.optional(Schema.String),
-      diskSize: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StreamBlockData",
-  }) as any as Schema.Schema<StreamBlockData>;
+export const StreamBlockData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  executorId: Schema.optional(Schema.String),
+  hostPort: Schema.optional(Schema.String),
+  storageLevel: Schema.optional(Schema.String),
+  useMemory: Schema.optional(Schema.Boolean),
+  useDisk: Schema.optional(Schema.Boolean),
+  deserialized: Schema.optional(Schema.Boolean),
+  memSize: Schema.optional(Schema.String),
+  diskSize: Schema.optional(Schema.String),
+}).annotate({ identifier: "StreamBlockData" });
 
 export interface RddOperationEdge {
   fromId?: number;
   toId?: number;
 }
 
-export const RddOperationEdge: Schema.Schema<RddOperationEdge> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fromId: Schema.optional(Schema.Number),
-      toId: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "RddOperationEdge",
-  }) as any as Schema.Schema<RddOperationEdge>;
+export const RddOperationEdge = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fromId: Schema.optional(Schema.Number),
+  toId: Schema.optional(Schema.Number),
+}).annotate({ identifier: "RddOperationEdge" });
 
 export interface RddOperationNode {
   nodeId?: number;
@@ -1925,19 +1604,14 @@ export interface RddOperationNode {
     | (string & {});
 }
 
-export const RddOperationNode: Schema.Schema<RddOperationNode> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nodeId: Schema.optional(Schema.Number),
-      name: Schema.optional(Schema.String),
-      cached: Schema.optional(Schema.Boolean),
-      barrier: Schema.optional(Schema.Boolean),
-      callsite: Schema.optional(Schema.String),
-      outputDeterministicLevel: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RddOperationNode",
-  }) as any as Schema.Schema<RddOperationNode>;
+export const RddOperationNode = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nodeId: Schema.optional(Schema.Number),
+  name: Schema.optional(Schema.String),
+  cached: Schema.optional(Schema.Boolean),
+  barrier: Schema.optional(Schema.Boolean),
+  callsite: Schema.optional(Schema.String),
+  outputDeterministicLevel: Schema.optional(Schema.String),
+}).annotate({ identifier: "RddOperationNode" });
 
 export interface RddOperationCluster {
   rddClusterId?: string;
@@ -1966,31 +1640,23 @@ export interface RddOperationGraph {
   rootCluster?: RddOperationCluster;
 }
 
-export const RddOperationGraph: Schema.Schema<RddOperationGraph> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stageId: Schema.optional(Schema.String),
-      edges: Schema.optional(Schema.Array(RddOperationEdge)),
-      outgoingEdges: Schema.optional(Schema.Array(RddOperationEdge)),
-      incomingEdges: Schema.optional(Schema.Array(RddOperationEdge)),
-      rootCluster: Schema.optional(RddOperationCluster),
-    }),
-  ).annotate({
-    identifier: "RddOperationGraph",
-  }) as any as Schema.Schema<RddOperationGraph>;
+export const RddOperationGraph = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  stageId: Schema.optional(Schema.String),
+  edges: Schema.optional(Schema.Array(RddOperationEdge)),
+  outgoingEdges: Schema.optional(Schema.Array(RddOperationEdge)),
+  incomingEdges: Schema.optional(Schema.Array(RddOperationEdge)),
+  rootCluster: Schema.optional(RddOperationCluster),
+}).annotate({ identifier: "RddOperationGraph" });
 
 export interface PoolData {
   name?: string;
   stageIds?: Array<string>;
 }
 
-export const PoolData: Schema.Schema<PoolData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      stageIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "PoolData" }) as any as Schema.Schema<PoolData>;
+export const PoolData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  stageIds: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "PoolData" });
 
 export interface ProcessSummary {
   processId?: string;
@@ -2002,20 +1668,15 @@ export interface ProcessSummary {
   processLogs?: Record<string, string>;
 }
 
-export const ProcessSummary: Schema.Schema<ProcessSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      processId: Schema.optional(Schema.String),
-      hostPort: Schema.optional(Schema.String),
-      isActive: Schema.optional(Schema.Boolean),
-      totalCores: Schema.optional(Schema.Number),
-      addTime: Schema.optional(Schema.String),
-      removeTime: Schema.optional(Schema.String),
-      processLogs: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ProcessSummary",
-  }) as any as Schema.Schema<ProcessSummary>;
+export const ProcessSummary = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  processId: Schema.optional(Schema.String),
+  hostPort: Schema.optional(Schema.String),
+  isActive: Schema.optional(Schema.Boolean),
+  totalCores: Schema.optional(Schema.Number),
+  addTime: Schema.optional(Schema.String),
+  removeTime: Schema.optional(Schema.String),
+  processLogs: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "ProcessSummary" });
 
 export interface SqlPlanMetric {
   name?: string;
@@ -2023,16 +1684,11 @@ export interface SqlPlanMetric {
   metricType?: string;
 }
 
-export const SqlPlanMetric: Schema.Schema<SqlPlanMetric> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      accumulatorId: Schema.optional(Schema.String),
-      metricType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SqlPlanMetric",
-  }) as any as Schema.Schema<SqlPlanMetric>;
+export const SqlPlanMetric = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  accumulatorId: Schema.optional(Schema.String),
+  metricType: Schema.optional(Schema.String),
+}).annotate({ identifier: "SqlPlanMetric" });
 
 export interface SqlExecutionUiData {
   executionId?: string;
@@ -2059,31 +1715,22 @@ export interface SqlExecutionUiData {
   metricValues?: Record<string, string>;
 }
 
-export const SqlExecutionUiData: Schema.Schema<SqlExecutionUiData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      executionId: Schema.optional(Schema.String),
-      rootExecutionId: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      details: Schema.optional(Schema.String),
-      physicalPlanDescription: Schema.optional(Schema.String),
-      modifiedConfigs: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      metrics: Schema.optional(Schema.Array(SqlPlanMetric)),
-      submissionTime: Schema.optional(Schema.String),
-      completionTime: Schema.optional(Schema.String),
-      errorMessage: Schema.optional(Schema.String),
-      jobs: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      stages: Schema.optional(Schema.Array(Schema.String)),
-      metricValuesIsNull: Schema.optional(Schema.Boolean),
-      metricValues: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-    }),
-  ).annotate({
-    identifier: "SqlExecutionUiData",
-  }) as any as Schema.Schema<SqlExecutionUiData>;
+export const SqlExecutionUiData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  executionId: Schema.optional(Schema.String),
+  rootExecutionId: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  details: Schema.optional(Schema.String),
+  physicalPlanDescription: Schema.optional(Schema.String),
+  modifiedConfigs: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  metrics: Schema.optional(Schema.Array(SqlPlanMetric)),
+  submissionTime: Schema.optional(Schema.String),
+  completionTime: Schema.optional(Schema.String),
+  errorMessage: Schema.optional(Schema.String),
+  jobs: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  stages: Schema.optional(Schema.Array(Schema.String)),
+  metricValuesIsNull: Schema.optional(Schema.Boolean),
+  metricValues: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "SqlExecutionUiData" });
 
 export interface SparkPlanGraphNode {
   sparkPlanGraphNodeId?: string;
@@ -2094,18 +1741,13 @@ export interface SparkPlanGraphNode {
   metadata?: Record<string, string>;
 }
 
-export const SparkPlanGraphNode: Schema.Schema<SparkPlanGraphNode> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sparkPlanGraphNodeId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      desc: Schema.optional(Schema.String),
-      metrics: Schema.optional(Schema.Array(SqlPlanMetric)),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "SparkPlanGraphNode",
-  }) as any as Schema.Schema<SparkPlanGraphNode>;
+export const SparkPlanGraphNode = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sparkPlanGraphNodeId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  desc: Schema.optional(Schema.String),
+  metrics: Schema.optional(Schema.Array(SqlPlanMetric)),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "SparkPlanGraphNode" });
 
 export interface SparkPlanGraphCluster {
   sparkPlanGraphClusterId?: string;
@@ -2151,15 +1793,10 @@ export interface SparkPlanGraphEdge {
   toId?: string;
 }
 
-export const SparkPlanGraphEdge: Schema.Schema<SparkPlanGraphEdge> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fromId: Schema.optional(Schema.String),
-      toId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SparkPlanGraphEdge",
-  }) as any as Schema.Schema<SparkPlanGraphEdge>;
+export const SparkPlanGraphEdge = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fromId: Schema.optional(Schema.String),
+  toId: Schema.optional(Schema.String),
+}).annotate({ identifier: "SparkPlanGraphEdge" });
 
 export interface SparkPlanGraph {
   executionId?: string;
@@ -2167,16 +1804,11 @@ export interface SparkPlanGraph {
   edges?: Array<SparkPlanGraphEdge>;
 }
 
-export const SparkPlanGraph: Schema.Schema<SparkPlanGraph> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      executionId: Schema.optional(Schema.String),
-      nodes: Schema.optional(Schema.Array(SparkPlanGraphNodeWrapper)),
-      edges: Schema.optional(Schema.Array(SparkPlanGraphEdge)),
-    }),
-  ).annotate({
-    identifier: "SparkPlanGraph",
-  }) as any as Schema.Schema<SparkPlanGraph>;
+export const SparkPlanGraph = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  executionId: Schema.optional(Schema.String),
+  nodes: Schema.optional(Schema.Array(SparkPlanGraphNodeWrapper)),
+  edges: Schema.optional(Schema.Array(SparkPlanGraphEdge)),
+}).annotate({ identifier: "SparkPlanGraph" });
 
 export interface StreamingQueryData {
   name?: string;
@@ -2188,20 +1820,15 @@ export interface StreamingQueryData {
   endTimestamp?: string;
 }
 
-export const StreamingQueryData: Schema.Schema<StreamingQueryData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      streamingQueryId: Schema.optional(Schema.String),
-      runId: Schema.optional(Schema.String),
-      isActive: Schema.optional(Schema.Boolean),
-      exception: Schema.optional(Schema.String),
-      startTimestamp: Schema.optional(Schema.String),
-      endTimestamp: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StreamingQueryData",
-  }) as any as Schema.Schema<StreamingQueryData>;
+export const StreamingQueryData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  streamingQueryId: Schema.optional(Schema.String),
+  runId: Schema.optional(Schema.String),
+  isActive: Schema.optional(Schema.Boolean),
+  exception: Schema.optional(Schema.String),
+  startTimestamp: Schema.optional(Schema.String),
+  endTimestamp: Schema.optional(Schema.String),
+}).annotate({ identifier: "StreamingQueryData" });
 
 export interface StateOperatorProgress {
   operatorName?: string;
@@ -2218,27 +1845,20 @@ export interface StateOperatorProgress {
   customMetrics?: Record<string, string>;
 }
 
-export const StateOperatorProgress: Schema.Schema<StateOperatorProgress> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operatorName: Schema.optional(Schema.String),
-      numRowsTotal: Schema.optional(Schema.String),
-      numRowsUpdated: Schema.optional(Schema.String),
-      allUpdatesTimeMs: Schema.optional(Schema.String),
-      numRowsRemoved: Schema.optional(Schema.String),
-      allRemovalsTimeMs: Schema.optional(Schema.String),
-      commitTimeMs: Schema.optional(Schema.String),
-      memoryUsedBytes: Schema.optional(Schema.String),
-      numRowsDroppedByWatermark: Schema.optional(Schema.String),
-      numShufflePartitions: Schema.optional(Schema.String),
-      numStateStoreInstances: Schema.optional(Schema.String),
-      customMetrics: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-    }),
-  ).annotate({
-    identifier: "StateOperatorProgress",
-  }) as any as Schema.Schema<StateOperatorProgress>;
+export const StateOperatorProgress = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  operatorName: Schema.optional(Schema.String),
+  numRowsTotal: Schema.optional(Schema.String),
+  numRowsUpdated: Schema.optional(Schema.String),
+  allUpdatesTimeMs: Schema.optional(Schema.String),
+  numRowsRemoved: Schema.optional(Schema.String),
+  allRemovalsTimeMs: Schema.optional(Schema.String),
+  commitTimeMs: Schema.optional(Schema.String),
+  memoryUsedBytes: Schema.optional(Schema.String),
+  numRowsDroppedByWatermark: Schema.optional(Schema.String),
+  numShufflePartitions: Schema.optional(Schema.String),
+  numStateStoreInstances: Schema.optional(Schema.String),
+  customMetrics: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "StateOperatorProgress" });
 
 export interface SourceProgress {
   description?: string;
@@ -2251,21 +1871,16 @@ export interface SourceProgress {
   metrics?: Record<string, string>;
 }
 
-export const SourceProgress: Schema.Schema<SourceProgress> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      startOffset: Schema.optional(Schema.String),
-      endOffset: Schema.optional(Schema.String),
-      latestOffset: Schema.optional(Schema.String),
-      numInputRows: Schema.optional(Schema.String),
-      inputRowsPerSecond: Schema.optional(Schema.Number),
-      processedRowsPerSecond: Schema.optional(Schema.Number),
-      metrics: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "SourceProgress",
-  }) as any as Schema.Schema<SourceProgress>;
+export const SourceProgress = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  startOffset: Schema.optional(Schema.String),
+  endOffset: Schema.optional(Schema.String),
+  latestOffset: Schema.optional(Schema.String),
+  numInputRows: Schema.optional(Schema.String),
+  inputRowsPerSecond: Schema.optional(Schema.Number),
+  processedRowsPerSecond: Schema.optional(Schema.Number),
+  metrics: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "SourceProgress" });
 
 export interface SinkProgress {
   description?: string;
@@ -2273,16 +1888,11 @@ export interface SinkProgress {
   metrics?: Record<string, string>;
 }
 
-export const SinkProgress: Schema.Schema<SinkProgress> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      numOutputRows: Schema.optional(Schema.String),
-      metrics: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "SinkProgress",
-  }) as any as Schema.Schema<SinkProgress>;
+export const SinkProgress = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  numOutputRows: Schema.optional(Schema.String),
+  metrics: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "SinkProgress" });
 
 export interface StreamingQueryProgress {
   streamingQueryProgressId?: string;
@@ -2299,29 +1909,26 @@ export interface StreamingQueryProgress {
   observedMetrics?: Record<string, string>;
 }
 
-export const StreamingQueryProgress: Schema.Schema<StreamingQueryProgress> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      streamingQueryProgressId: Schema.optional(Schema.String),
-      runId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      timestamp: Schema.optional(Schema.String),
-      batchId: Schema.optional(Schema.String),
-      batchDuration: Schema.optional(Schema.String),
-      durationMillis: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      eventTime: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      stateOperators: Schema.optional(Schema.Array(StateOperatorProgress)),
-      sources: Schema.optional(Schema.Array(SourceProgress)),
-      sink: Schema.optional(SinkProgress),
-      observedMetrics: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-    }),
-  ).annotate({
-    identifier: "StreamingQueryProgress",
-  }) as any as Schema.Schema<StreamingQueryProgress>;
+export const StreamingQueryProgress = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    streamingQueryProgressId: Schema.optional(Schema.String),
+    runId: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    timestamp: Schema.optional(Schema.String),
+    batchId: Schema.optional(Schema.String),
+    batchDuration: Schema.optional(Schema.String),
+    durationMillis: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    eventTime: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    stateOperators: Schema.optional(Schema.Array(StateOperatorProgress)),
+    sources: Schema.optional(Schema.Array(SourceProgress)),
+    sink: Schema.optional(SinkProgress),
+    observedMetrics: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+  },
+).annotate({ identifier: "StreamingQueryProgress" });
 
 export interface BuildInfo {
   /** Optional. Build key. */
@@ -2330,13 +1937,10 @@ export interface BuildInfo {
   buildValue?: string;
 }
 
-export const BuildInfo: Schema.Schema<BuildInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      buildKey: Schema.optional(Schema.String),
-      buildValue: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "BuildInfo" }) as any as Schema.Schema<BuildInfo>;
+export const BuildInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  buildKey: Schema.optional(Schema.String),
+  buildValue: Schema.optional(Schema.String),
+}).annotate({ identifier: "BuildInfo" });
 
 export interface NativeBuildInfoUiData {
   /** Optional. Build related details. */
@@ -2345,15 +1949,10 @@ export interface NativeBuildInfoUiData {
   buildClass?: string;
 }
 
-export const NativeBuildInfoUiData: Schema.Schema<NativeBuildInfoUiData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      buildInfo: Schema.optional(Schema.Array(BuildInfo)),
-      buildClass: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NativeBuildInfoUiData",
-  }) as any as Schema.Schema<NativeBuildInfoUiData>;
+export const NativeBuildInfoUiData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  buildInfo: Schema.optional(Schema.Array(BuildInfo)),
+  buildClass: Schema.optional(Schema.String),
+}).annotate({ identifier: "NativeBuildInfoUiData" });
 
 export interface FallbackReason {
   /** Optional. Fallback node information. */
@@ -2362,15 +1961,10 @@ export interface FallbackReason {
   fallbackReason?: string;
 }
 
-export const FallbackReason: Schema.Schema<FallbackReason> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fallbackNode: Schema.optional(Schema.String),
-      fallbackReason: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FallbackReason",
-  }) as any as Schema.Schema<FallbackReason>;
+export const FallbackReason = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fallbackNode: Schema.optional(Schema.String),
+  fallbackReason: Schema.optional(Schema.String),
+}).annotate({ identifier: "FallbackReason" });
 
 export interface NativeSqlExecutionUiData {
   /** Required. Execution ID of the Native SQL Execution. */
@@ -2387,19 +1981,15 @@ export interface NativeSqlExecutionUiData {
   fallbackNodeToReason?: Array<FallbackReason>;
 }
 
-export const NativeSqlExecutionUiData: Schema.Schema<NativeSqlExecutionUiData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      executionId: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      numNativeNodes: Schema.optional(Schema.Number),
-      numFallbackNodes: Schema.optional(Schema.Number),
-      fallbackDescription: Schema.optional(Schema.String),
-      fallbackNodeToReason: Schema.optional(Schema.Array(FallbackReason)),
-    }),
-  ).annotate({
-    identifier: "NativeSqlExecutionUiData",
-  }) as any as Schema.Schema<NativeSqlExecutionUiData>;
+export const NativeSqlExecutionUiData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    executionId: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    numNativeNodes: Schema.optional(Schema.Number),
+    numFallbackNodes: Schema.optional(Schema.Number),
+    fallbackDescription: Schema.optional(Schema.String),
+    fallbackNodeToReason: Schema.optional(Schema.Array(FallbackReason)),
+  }).annotate({ identifier: "NativeSqlExecutionUiData" });
 
 export interface SparkConnectSessionInfo {
   /** Required. Session ID of the session. */
@@ -2414,18 +2004,14 @@ export interface SparkConnectSessionInfo {
   totalExecution?: string;
 }
 
-export const SparkConnectSessionInfo: Schema.Schema<SparkConnectSessionInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sessionId: Schema.optional(Schema.String),
-      userId: Schema.optional(Schema.String),
-      startTimestamp: Schema.optional(Schema.String),
-      finishTimestamp: Schema.optional(Schema.String),
-      totalExecution: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SparkConnectSessionInfo",
-  }) as any as Schema.Schema<SparkConnectSessionInfo>;
+export const SparkConnectSessionInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sessionId: Schema.optional(Schema.String),
+    userId: Schema.optional(Schema.String),
+    startTimestamp: Schema.optional(Schema.String),
+    finishTimestamp: Schema.optional(Schema.String),
+    totalExecution: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SparkConnectSessionInfo" });
 
 export interface SparkConnectExecutionInfo {
   /** Required. Job tag of the execution. */
@@ -2465,26 +2051,22 @@ export interface SparkConnectExecutionInfo {
   sqlExecIds?: Array<string>;
 }
 
-export const SparkConnectExecutionInfo: Schema.Schema<SparkConnectExecutionInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      jobTag: Schema.optional(Schema.String),
-      sessionId: Schema.optional(Schema.String),
-      statement: Schema.optional(Schema.String),
-      startTimestamp: Schema.optional(Schema.String),
-      userId: Schema.optional(Schema.String),
-      operationId: Schema.optional(Schema.String),
-      sparkSessionTags: Schema.optional(Schema.Array(Schema.String)),
-      finishTimestamp: Schema.optional(Schema.String),
-      closeTimestamp: Schema.optional(Schema.String),
-      detail: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      jobIds: Schema.optional(Schema.Array(Schema.String)),
-      sqlExecIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "SparkConnectExecutionInfo",
-  }) as any as Schema.Schema<SparkConnectExecutionInfo>;
+export const SparkConnectExecutionInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    jobTag: Schema.optional(Schema.String),
+    sessionId: Schema.optional(Schema.String),
+    statement: Schema.optional(Schema.String),
+    startTimestamp: Schema.optional(Schema.String),
+    userId: Schema.optional(Schema.String),
+    operationId: Schema.optional(Schema.String),
+    sparkSessionTags: Schema.optional(Schema.Array(Schema.String)),
+    finishTimestamp: Schema.optional(Schema.String),
+    closeTimestamp: Schema.optional(Schema.String),
+    detail: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    jobIds: Schema.optional(Schema.Array(Schema.String)),
+    sqlExecIds: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "SparkConnectExecutionInfo" });
 
 export interface SparkWrapperObject {
   /** VM Timestamp associated with the data object. */
@@ -2520,38 +2102,33 @@ export interface SparkWrapperObject {
   sparkConnectExecutionInfo?: SparkConnectExecutionInfo;
 }
 
-export const SparkWrapperObject: Schema.Schema<SparkWrapperObject> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      eventTimestamp: Schema.optional(Schema.String),
-      applicationId: Schema.optional(Schema.String),
-      applicationInfo: Schema.optional(ApplicationInfo),
-      applicationEnvironmentInfo: Schema.optional(ApplicationEnvironmentInfo),
-      resourceProfileInfo: Schema.optional(ResourceProfileInfo),
-      appSummary: Schema.optional(AppSummary),
-      jobData: Schema.optional(JobData),
-      stageData: Schema.optional(StageData),
-      taskData: Schema.optional(TaskData),
-      executorStageSummary: Schema.optional(ExecutorStageSummary),
-      speculationStageSummary: Schema.optional(SpeculationStageSummary),
-      executorSummary: Schema.optional(ExecutorSummary),
-      rddStorageInfo: Schema.optional(RddStorageInfo),
-      streamBlockData: Schema.optional(StreamBlockData),
-      rddOperationGraph: Schema.optional(RddOperationGraph),
-      poolData: Schema.optional(PoolData),
-      processSummary: Schema.optional(ProcessSummary),
-      sqlExecutionUiData: Schema.optional(SqlExecutionUiData),
-      sparkPlanGraph: Schema.optional(SparkPlanGraph),
-      streamingQueryData: Schema.optional(StreamingQueryData),
-      streamingQueryProgress: Schema.optional(StreamingQueryProgress),
-      nativeBuildInfoUiData: Schema.optional(NativeBuildInfoUiData),
-      nativeSqlExecutionUiData: Schema.optional(NativeSqlExecutionUiData),
-      sparkConnectSessionInfo: Schema.optional(SparkConnectSessionInfo),
-      sparkConnectExecutionInfo: Schema.optional(SparkConnectExecutionInfo),
-    }),
-  ).annotate({
-    identifier: "SparkWrapperObject",
-  }) as any as Schema.Schema<SparkWrapperObject>;
+export const SparkWrapperObject = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  eventTimestamp: Schema.optional(Schema.String),
+  applicationId: Schema.optional(Schema.String),
+  applicationInfo: Schema.optional(ApplicationInfo),
+  applicationEnvironmentInfo: Schema.optional(ApplicationEnvironmentInfo),
+  resourceProfileInfo: Schema.optional(ResourceProfileInfo),
+  appSummary: Schema.optional(AppSummary),
+  jobData: Schema.optional(JobData),
+  stageData: Schema.optional(StageData),
+  taskData: Schema.optional(TaskData),
+  executorStageSummary: Schema.optional(ExecutorStageSummary),
+  speculationStageSummary: Schema.optional(SpeculationStageSummary),
+  executorSummary: Schema.optional(ExecutorSummary),
+  rddStorageInfo: Schema.optional(RddStorageInfo),
+  streamBlockData: Schema.optional(StreamBlockData),
+  rddOperationGraph: Schema.optional(RddOperationGraph),
+  poolData: Schema.optional(PoolData),
+  processSummary: Schema.optional(ProcessSummary),
+  sqlExecutionUiData: Schema.optional(SqlExecutionUiData),
+  sparkPlanGraph: Schema.optional(SparkPlanGraph),
+  streamingQueryData: Schema.optional(StreamingQueryData),
+  streamingQueryProgress: Schema.optional(StreamingQueryProgress),
+  nativeBuildInfoUiData: Schema.optional(NativeBuildInfoUiData),
+  nativeSqlExecutionUiData: Schema.optional(NativeSqlExecutionUiData),
+  sparkConnectSessionInfo: Schema.optional(SparkConnectSessionInfo),
+  sparkConnectExecutionInfo: Schema.optional(SparkConnectExecutionInfo),
+}).annotate({ identifier: "SparkWrapperObject" });
 
 export interface WriteSparkApplicationContextRequest {
   /** Required. Parent (Batch) resource reference. */
@@ -2559,22 +2136,18 @@ export interface WriteSparkApplicationContextRequest {
   sparkWrapperObjects?: Array<SparkWrapperObject>;
 }
 
-export const WriteSparkApplicationContextRequest: Schema.Schema<WriteSparkApplicationContextRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parent: Schema.optional(Schema.String),
-      sparkWrapperObjects: Schema.optional(Schema.Array(SparkWrapperObject)),
-    }),
-  ).annotate({
-    identifier: "WriteSparkApplicationContextRequest",
-  }) as any as Schema.Schema<WriteSparkApplicationContextRequest>;
+export const WriteSparkApplicationContextRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.optional(Schema.String),
+    sparkWrapperObjects: Schema.optional(Schema.Array(SparkWrapperObject)),
+  }).annotate({ identifier: "WriteSparkApplicationContextRequest" });
 
 export interface WriteSparkApplicationContextResponse {}
 
-export const WriteSparkApplicationContextResponse: Schema.Schema<WriteSparkApplicationContextResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const WriteSparkApplicationContextResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "WriteSparkApplicationContextResponse",
-  }) as any as Schema.Schema<WriteSparkApplicationContextResponse>;
+  });
 
 export interface SparkApplication {
   /** Identifier. Name of the spark application */
@@ -2583,15 +2156,10 @@ export interface SparkApplication {
   application?: ApplicationInfo;
 }
 
-export const SparkApplication: Schema.Schema<SparkApplication> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      application: Schema.optional(ApplicationInfo),
-    }),
-  ).annotate({
-    identifier: "SparkApplication",
-  }) as any as Schema.Schema<SparkApplication>;
+export const SparkApplication = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  application: Schema.optional(ApplicationInfo),
+}).annotate({ identifier: "SparkApplication" });
 
 export interface SearchSparkApplicationsResponse {
   /** Output only. High level information corresponding to an application. */
@@ -2600,29 +2168,21 @@ export interface SearchSparkApplicationsResponse {
   nextPageToken?: string;
 }
 
-export const SearchSparkApplicationsResponse: Schema.Schema<SearchSparkApplicationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sparkApplications: Schema.optional(Schema.Array(SparkApplication)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SearchSparkApplicationsResponse",
-  }) as any as Schema.Schema<SearchSparkApplicationsResponse>;
+export const SearchSparkApplicationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sparkApplications: Schema.optional(Schema.Array(SparkApplication)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SearchSparkApplicationsResponse" });
 
 export interface AccessSparkApplicationResponse {
   /** Output only. High level information corresponding to an application. */
   application?: ApplicationInfo;
 }
 
-export const AccessSparkApplicationResponse: Schema.Schema<AccessSparkApplicationResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      application: Schema.optional(ApplicationInfo),
-    }),
-  ).annotate({
-    identifier: "AccessSparkApplicationResponse",
-  }) as any as Schema.Schema<AccessSparkApplicationResponse>;
+export const AccessSparkApplicationResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    application: Schema.optional(ApplicationInfo),
+  }).annotate({ identifier: "AccessSparkApplicationResponse" });
 
 export interface SearchSparkApplicationJobsResponse {
   /** Output only. Data corresponding to a spark job. */
@@ -2631,29 +2191,21 @@ export interface SearchSparkApplicationJobsResponse {
   nextPageToken?: string;
 }
 
-export const SearchSparkApplicationJobsResponse: Schema.Schema<SearchSparkApplicationJobsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sparkApplicationJobs: Schema.optional(Schema.Array(JobData)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SearchSparkApplicationJobsResponse",
-  }) as any as Schema.Schema<SearchSparkApplicationJobsResponse>;
+export const SearchSparkApplicationJobsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sparkApplicationJobs: Schema.optional(Schema.Array(JobData)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SearchSparkApplicationJobsResponse" });
 
 export interface AccessSparkApplicationJobResponse {
   /** Output only. Data corresponding to a spark job. */
   jobData?: JobData;
 }
 
-export const AccessSparkApplicationJobResponse: Schema.Schema<AccessSparkApplicationJobResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      jobData: Schema.optional(JobData),
-    }),
-  ).annotate({
-    identifier: "AccessSparkApplicationJobResponse",
-  }) as any as Schema.Schema<AccessSparkApplicationJobResponse>;
+export const AccessSparkApplicationJobResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    jobData: Schema.optional(JobData),
+  }).annotate({ identifier: "AccessSparkApplicationJobResponse" });
 
 export interface SearchSparkApplicationStagesResponse {
   /** Output only. Data corresponding to a stage. */
@@ -2662,15 +2214,11 @@ export interface SearchSparkApplicationStagesResponse {
   nextPageToken?: string;
 }
 
-export const SearchSparkApplicationStagesResponse: Schema.Schema<SearchSparkApplicationStagesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sparkApplicationStages: Schema.optional(Schema.Array(StageData)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SearchSparkApplicationStagesResponse",
-  }) as any as Schema.Schema<SearchSparkApplicationStagesResponse>;
+export const SearchSparkApplicationStagesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sparkApplicationStages: Schema.optional(Schema.Array(StageData)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SearchSparkApplicationStagesResponse" });
 
 export interface SearchSparkApplicationStageAttemptsResponse {
   /** Output only. Data corresponding to a stage attempts */
@@ -2679,29 +2227,21 @@ export interface SearchSparkApplicationStageAttemptsResponse {
   nextPageToken?: string;
 }
 
-export const SearchSparkApplicationStageAttemptsResponse: Schema.Schema<SearchSparkApplicationStageAttemptsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sparkApplicationStageAttempts: Schema.optional(Schema.Array(StageData)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SearchSparkApplicationStageAttemptsResponse",
-  }) as any as Schema.Schema<SearchSparkApplicationStageAttemptsResponse>;
+export const SearchSparkApplicationStageAttemptsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sparkApplicationStageAttempts: Schema.optional(Schema.Array(StageData)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SearchSparkApplicationStageAttemptsResponse" });
 
 export interface AccessSparkApplicationStageAttemptResponse {
   /** Output only. Data corresponding to a stage. */
   stageData?: StageData;
 }
 
-export const AccessSparkApplicationStageAttemptResponse: Schema.Schema<AccessSparkApplicationStageAttemptResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stageData: Schema.optional(StageData),
-    }),
-  ).annotate({
-    identifier: "AccessSparkApplicationStageAttemptResponse",
-  }) as any as Schema.Schema<AccessSparkApplicationStageAttemptResponse>;
+export const AccessSparkApplicationStageAttemptResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    stageData: Schema.optional(StageData),
+  }).annotate({ identifier: "AccessSparkApplicationStageAttemptResponse" });
 
 export interface SearchSparkApplicationStageAttemptTasksResponse {
   /** Output only. Data corresponding to tasks created by spark. */
@@ -2710,17 +2250,13 @@ export interface SearchSparkApplicationStageAttemptTasksResponse {
   nextPageToken?: string;
 }
 
-export const SearchSparkApplicationStageAttemptTasksResponse: Schema.Schema<SearchSparkApplicationStageAttemptTasksResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sparkApplicationStageAttemptTasks: Schema.optional(
-        Schema.Array(TaskData),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const SearchSparkApplicationStageAttemptTasksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sparkApplicationStageAttemptTasks: Schema.optional(Schema.Array(TaskData)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "SearchSparkApplicationStageAttemptTasksResponse",
-  }) as any as Schema.Schema<SearchSparkApplicationStageAttemptTasksResponse>;
+  });
 
 export interface SearchSparkApplicationExecutorsResponse {
   /** Details about executors used by the application. */
@@ -2729,15 +2265,11 @@ export interface SearchSparkApplicationExecutorsResponse {
   nextPageToken?: string;
 }
 
-export const SearchSparkApplicationExecutorsResponse: Schema.Schema<SearchSparkApplicationExecutorsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sparkApplicationExecutors: Schema.optional(Schema.Array(ExecutorSummary)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SearchSparkApplicationExecutorsResponse",
-  }) as any as Schema.Schema<SearchSparkApplicationExecutorsResponse>;
+export const SearchSparkApplicationExecutorsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sparkApplicationExecutors: Schema.optional(Schema.Array(ExecutorSummary)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SearchSparkApplicationExecutorsResponse" });
 
 export interface SearchSparkApplicationExecutorStageSummaryResponse {
   /** Details about executors used by the application stage. */
@@ -2746,17 +2278,15 @@ export interface SearchSparkApplicationExecutorStageSummaryResponse {
   nextPageToken?: string;
 }
 
-export const SearchSparkApplicationExecutorStageSummaryResponse: Schema.Schema<SearchSparkApplicationExecutorStageSummaryResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sparkApplicationStageExecutors: Schema.optional(
-        Schema.Array(ExecutorStageSummary),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const SearchSparkApplicationExecutorStageSummaryResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sparkApplicationStageExecutors: Schema.optional(
+      Schema.Array(ExecutorStageSummary),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "SearchSparkApplicationExecutorStageSummaryResponse",
-  }) as any as Schema.Schema<SearchSparkApplicationExecutorStageSummaryResponse>;
+  });
 
 export interface SearchSparkApplicationSqlQueriesResponse {
   /** Output only. SQL Execution Data */
@@ -2765,73 +2295,57 @@ export interface SearchSparkApplicationSqlQueriesResponse {
   nextPageToken?: string;
 }
 
-export const SearchSparkApplicationSqlQueriesResponse: Schema.Schema<SearchSparkApplicationSqlQueriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sparkApplicationSqlQueries: Schema.optional(
-        Schema.Array(SqlExecutionUiData),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SearchSparkApplicationSqlQueriesResponse",
-  }) as any as Schema.Schema<SearchSparkApplicationSqlQueriesResponse>;
+export const SearchSparkApplicationSqlQueriesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sparkApplicationSqlQueries: Schema.optional(
+      Schema.Array(SqlExecutionUiData),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SearchSparkApplicationSqlQueriesResponse" });
 
 export interface AccessSparkApplicationSqlQueryResponse {
   /** SQL Execution Data */
   executionData?: SqlExecutionUiData;
 }
 
-export const AccessSparkApplicationSqlQueryResponse: Schema.Schema<AccessSparkApplicationSqlQueryResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      executionData: Schema.optional(SqlExecutionUiData),
-    }),
-  ).annotate({
-    identifier: "AccessSparkApplicationSqlQueryResponse",
-  }) as any as Schema.Schema<AccessSparkApplicationSqlQueryResponse>;
+export const AccessSparkApplicationSqlQueryResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    executionData: Schema.optional(SqlExecutionUiData),
+  }).annotate({ identifier: "AccessSparkApplicationSqlQueryResponse" });
 
 export interface AccessSparkApplicationSqlSparkPlanGraphResponse {
   /** SparkPlanGraph for a Spark Application execution. */
   sparkPlanGraph?: SparkPlanGraph;
 }
 
-export const AccessSparkApplicationSqlSparkPlanGraphResponse: Schema.Schema<AccessSparkApplicationSqlSparkPlanGraphResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sparkPlanGraph: Schema.optional(SparkPlanGraph),
-    }),
-  ).annotate({
+export const AccessSparkApplicationSqlSparkPlanGraphResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sparkPlanGraph: Schema.optional(SparkPlanGraph),
+  }).annotate({
     identifier: "AccessSparkApplicationSqlSparkPlanGraphResponse",
-  }) as any as Schema.Schema<AccessSparkApplicationSqlSparkPlanGraphResponse>;
+  });
 
 export interface AccessSparkApplicationStageRddOperationGraphResponse {
   /** RDD operation graph for a Spark Application Stage. */
   rddOperationGraph?: RddOperationGraph;
 }
 
-export const AccessSparkApplicationStageRddOperationGraphResponse: Schema.Schema<AccessSparkApplicationStageRddOperationGraphResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rddOperationGraph: Schema.optional(RddOperationGraph),
-    }),
-  ).annotate({
+export const AccessSparkApplicationStageRddOperationGraphResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rddOperationGraph: Schema.optional(RddOperationGraph),
+  }).annotate({
     identifier: "AccessSparkApplicationStageRddOperationGraphResponse",
-  }) as any as Schema.Schema<AccessSparkApplicationStageRddOperationGraphResponse>;
+  });
 
 export interface AccessSparkApplicationEnvironmentInfoResponse {
   /** Details about the Environment that the application is running in. */
   applicationEnvironmentInfo?: ApplicationEnvironmentInfo;
 }
 
-export const AccessSparkApplicationEnvironmentInfoResponse: Schema.Schema<AccessSparkApplicationEnvironmentInfoResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      applicationEnvironmentInfo: Schema.optional(ApplicationEnvironmentInfo),
-    }),
-  ).annotate({
-    identifier: "AccessSparkApplicationEnvironmentInfoResponse",
-  }) as any as Schema.Schema<AccessSparkApplicationEnvironmentInfoResponse>;
+export const AccessSparkApplicationEnvironmentInfoResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    applicationEnvironmentInfo: Schema.optional(ApplicationEnvironmentInfo),
+  }).annotate({ identifier: "AccessSparkApplicationEnvironmentInfoResponse" });
 
 export interface JobsSummary {
   /** Spark Application Id */
@@ -2848,33 +2362,24 @@ export interface JobsSummary {
   attempts?: Array<ApplicationAttemptInfo>;
 }
 
-export const JobsSummary: Schema.Schema<JobsSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      applicationId: Schema.optional(Schema.String),
-      schedulingMode: Schema.optional(Schema.String),
-      activeJobs: Schema.optional(Schema.Number),
-      completedJobs: Schema.optional(Schema.Number),
-      failedJobs: Schema.optional(Schema.Number),
-      attempts: Schema.optional(Schema.Array(ApplicationAttemptInfo)),
-    }),
-  ).annotate({
-    identifier: "JobsSummary",
-  }) as any as Schema.Schema<JobsSummary>;
+export const JobsSummary = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  applicationId: Schema.optional(Schema.String),
+  schedulingMode: Schema.optional(Schema.String),
+  activeJobs: Schema.optional(Schema.Number),
+  completedJobs: Schema.optional(Schema.Number),
+  failedJobs: Schema.optional(Schema.Number),
+  attempts: Schema.optional(Schema.Array(ApplicationAttemptInfo)),
+}).annotate({ identifier: "JobsSummary" });
 
 export interface SummarizeSparkApplicationJobsResponse {
   /** Summary of a Spark Application Jobs */
   jobsSummary?: JobsSummary;
 }
 
-export const SummarizeSparkApplicationJobsResponse: Schema.Schema<SummarizeSparkApplicationJobsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      jobsSummary: Schema.optional(JobsSummary),
-    }),
-  ).annotate({
-    identifier: "SummarizeSparkApplicationJobsResponse",
-  }) as any as Schema.Schema<SummarizeSparkApplicationJobsResponse>;
+export const SummarizeSparkApplicationJobsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    jobsSummary: Schema.optional(JobsSummary),
+  }).annotate({ identifier: "SummarizeSparkApplicationJobsResponse" });
 
 export interface StagesSummary {
   applicationId?: string;
@@ -2885,33 +2390,24 @@ export interface StagesSummary {
   numPendingStages?: number;
 }
 
-export const StagesSummary: Schema.Schema<StagesSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      applicationId: Schema.optional(Schema.String),
-      numActiveStages: Schema.optional(Schema.Number),
-      numCompletedStages: Schema.optional(Schema.Number),
-      numSkippedStages: Schema.optional(Schema.Number),
-      numFailedStages: Schema.optional(Schema.Number),
-      numPendingStages: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "StagesSummary",
-  }) as any as Schema.Schema<StagesSummary>;
+export const StagesSummary = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  applicationId: Schema.optional(Schema.String),
+  numActiveStages: Schema.optional(Schema.Number),
+  numCompletedStages: Schema.optional(Schema.Number),
+  numSkippedStages: Schema.optional(Schema.Number),
+  numFailedStages: Schema.optional(Schema.Number),
+  numPendingStages: Schema.optional(Schema.Number),
+}).annotate({ identifier: "StagesSummary" });
 
 export interface SummarizeSparkApplicationStagesResponse {
   /** Summary of a Spark Application Stages */
   stagesSummary?: StagesSummary;
 }
 
-export const SummarizeSparkApplicationStagesResponse: Schema.Schema<SummarizeSparkApplicationStagesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stagesSummary: Schema.optional(StagesSummary),
-    }),
-  ).annotate({
-    identifier: "SummarizeSparkApplicationStagesResponse",
-  }) as any as Schema.Schema<SummarizeSparkApplicationStagesResponse>;
+export const SummarizeSparkApplicationStagesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    stagesSummary: Schema.optional(StagesSummary),
+  }).annotate({ identifier: "SummarizeSparkApplicationStagesResponse" });
 
 export interface StageAttemptTasksSummary {
   applicationId?: string;
@@ -2925,36 +2421,30 @@ export interface StageAttemptTasksSummary {
   numPendingTasks?: number;
 }
 
-export const StageAttemptTasksSummary: Schema.Schema<StageAttemptTasksSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      applicationId: Schema.optional(Schema.String),
-      stageId: Schema.optional(Schema.String),
-      stageAttemptId: Schema.optional(Schema.Number),
-      numTasks: Schema.optional(Schema.Number),
-      numRunningTasks: Schema.optional(Schema.Number),
-      numSuccessTasks: Schema.optional(Schema.Number),
-      numFailedTasks: Schema.optional(Schema.Number),
-      numKilledTasks: Schema.optional(Schema.Number),
-      numPendingTasks: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "StageAttemptTasksSummary",
-  }) as any as Schema.Schema<StageAttemptTasksSummary>;
+export const StageAttemptTasksSummary =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    applicationId: Schema.optional(Schema.String),
+    stageId: Schema.optional(Schema.String),
+    stageAttemptId: Schema.optional(Schema.Number),
+    numTasks: Schema.optional(Schema.Number),
+    numRunningTasks: Schema.optional(Schema.Number),
+    numSuccessTasks: Schema.optional(Schema.Number),
+    numFailedTasks: Schema.optional(Schema.Number),
+    numKilledTasks: Schema.optional(Schema.Number),
+    numPendingTasks: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "StageAttemptTasksSummary" });
 
 export interface SummarizeSparkApplicationStageAttemptTasksResponse {
   /** Summary of tasks for a Spark Application Stage Attempt */
   stageAttemptTasksSummary?: StageAttemptTasksSummary;
 }
 
-export const SummarizeSparkApplicationStageAttemptTasksResponse: Schema.Schema<SummarizeSparkApplicationStageAttemptTasksResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stageAttemptTasksSummary: Schema.optional(StageAttemptTasksSummary),
-    }),
-  ).annotate({
+export const SummarizeSparkApplicationStageAttemptTasksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    stageAttemptTasksSummary: Schema.optional(StageAttemptTasksSummary),
+  }).annotate({
     identifier: "SummarizeSparkApplicationStageAttemptTasksResponse",
-  }) as any as Schema.Schema<SummarizeSparkApplicationStageAttemptTasksResponse>;
+  });
 
 export interface ConsolidatedExecutorSummary {
   count?: number;
@@ -2976,30 +2466,26 @@ export interface ConsolidatedExecutorSummary {
   memoryMetrics?: MemoryMetrics;
 }
 
-export const ConsolidatedExecutorSummary: Schema.Schema<ConsolidatedExecutorSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      count: Schema.optional(Schema.Number),
-      rddBlocks: Schema.optional(Schema.Number),
-      memoryUsed: Schema.optional(Schema.String),
-      diskUsed: Schema.optional(Schema.String),
-      totalCores: Schema.optional(Schema.Number),
-      activeTasks: Schema.optional(Schema.Number),
-      failedTasks: Schema.optional(Schema.Number),
-      completedTasks: Schema.optional(Schema.Number),
-      totalTasks: Schema.optional(Schema.Number),
-      totalDurationMillis: Schema.optional(Schema.String),
-      totalGcTimeMillis: Schema.optional(Schema.String),
-      totalInputBytes: Schema.optional(Schema.String),
-      totalShuffleRead: Schema.optional(Schema.String),
-      totalShuffleWrite: Schema.optional(Schema.String),
-      isExcluded: Schema.optional(Schema.Number),
-      maxMemory: Schema.optional(Schema.String),
-      memoryMetrics: Schema.optional(MemoryMetrics),
-    }),
-  ).annotate({
-    identifier: "ConsolidatedExecutorSummary",
-  }) as any as Schema.Schema<ConsolidatedExecutorSummary>;
+export const ConsolidatedExecutorSummary =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    count: Schema.optional(Schema.Number),
+    rddBlocks: Schema.optional(Schema.Number),
+    memoryUsed: Schema.optional(Schema.String),
+    diskUsed: Schema.optional(Schema.String),
+    totalCores: Schema.optional(Schema.Number),
+    activeTasks: Schema.optional(Schema.Number),
+    failedTasks: Schema.optional(Schema.Number),
+    completedTasks: Schema.optional(Schema.Number),
+    totalTasks: Schema.optional(Schema.Number),
+    totalDurationMillis: Schema.optional(Schema.String),
+    totalGcTimeMillis: Schema.optional(Schema.String),
+    totalInputBytes: Schema.optional(Schema.String),
+    totalShuffleRead: Schema.optional(Schema.String),
+    totalShuffleWrite: Schema.optional(Schema.String),
+    isExcluded: Schema.optional(Schema.Number),
+    maxMemory: Schema.optional(Schema.String),
+    memoryMetrics: Schema.optional(MemoryMetrics),
+  }).annotate({ identifier: "ConsolidatedExecutorSummary" });
 
 export interface SummarizeSparkApplicationExecutorsResponse {
   /** Spark Application Id */
@@ -3012,17 +2498,13 @@ export interface SummarizeSparkApplicationExecutorsResponse {
   totalExecutorSummary?: ConsolidatedExecutorSummary;
 }
 
-export const SummarizeSparkApplicationExecutorsResponse: Schema.Schema<SummarizeSparkApplicationExecutorsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      applicationId: Schema.optional(Schema.String),
-      activeExecutorSummary: Schema.optional(ConsolidatedExecutorSummary),
-      deadExecutorSummary: Schema.optional(ConsolidatedExecutorSummary),
-      totalExecutorSummary: Schema.optional(ConsolidatedExecutorSummary),
-    }),
-  ).annotate({
-    identifier: "SummarizeSparkApplicationExecutorsResponse",
-  }) as any as Schema.Schema<SummarizeSparkApplicationExecutorsResponse>;
+export const SummarizeSparkApplicationExecutorsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    applicationId: Schema.optional(Schema.String),
+    activeExecutorSummary: Schema.optional(ConsolidatedExecutorSummary),
+    deadExecutorSummary: Schema.optional(ConsolidatedExecutorSummary),
+    totalExecutorSummary: Schema.optional(ConsolidatedExecutorSummary),
+  }).annotate({ identifier: "SummarizeSparkApplicationExecutorsResponse" });
 
 export interface ReservationAffinity {
   /** Optional. Type of reservation to consume */
@@ -3038,30 +2520,20 @@ export interface ReservationAffinity {
   values?: Array<string>;
 }
 
-export const ReservationAffinity: Schema.Schema<ReservationAffinity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      consumeReservationType: Schema.optional(Schema.String),
-      key: Schema.optional(Schema.String),
-      values: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ReservationAffinity",
-  }) as any as Schema.Schema<ReservationAffinity>;
+export const ReservationAffinity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  consumeReservationType: Schema.optional(Schema.String),
+  key: Schema.optional(Schema.String),
+  values: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ReservationAffinity" });
 
 export interface NodeGroupAffinity {
   /** Required. The URI of a sole-tenant node group resource (https://cloud.google.com/compute/docs/reference/rest/v1/nodeGroups) that the cluster will be created on.A full URL, partial URI, or node group name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone]/nodeGroups/node-group-1 projects/[project_id]/zones/[zone]/nodeGroups/node-group-1 node-group-1 */
   nodeGroupUri?: string;
 }
 
-export const NodeGroupAffinity: Schema.Schema<NodeGroupAffinity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nodeGroupUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NodeGroupAffinity",
-  }) as any as Schema.Schema<NodeGroupAffinity>;
+export const NodeGroupAffinity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nodeGroupUri: Schema.optional(Schema.String),
+}).annotate({ identifier: "NodeGroupAffinity" });
 
 export interface ShieldedInstanceConfig {
   /** Optional. Defines whether instances have Secure Boot enabled. */
@@ -3072,30 +2544,23 @@ export interface ShieldedInstanceConfig {
   enableIntegrityMonitoring?: boolean;
 }
 
-export const ShieldedInstanceConfig: Schema.Schema<ShieldedInstanceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableSecureBoot: Schema.optional(Schema.Boolean),
-      enableVtpm: Schema.optional(Schema.Boolean),
-      enableIntegrityMonitoring: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ShieldedInstanceConfig",
-  }) as any as Schema.Schema<ShieldedInstanceConfig>;
+export const ShieldedInstanceConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    enableSecureBoot: Schema.optional(Schema.Boolean),
+    enableVtpm: Schema.optional(Schema.Boolean),
+    enableIntegrityMonitoring: Schema.optional(Schema.Boolean),
+  },
+).annotate({ identifier: "ShieldedInstanceConfig" });
 
 export interface ConfidentialInstanceConfig {
   /** Optional. Defines whether the instance should have confidential compute enabled. */
   enableConfidentialCompute?: boolean;
 }
 
-export const ConfidentialInstanceConfig: Schema.Schema<ConfidentialInstanceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableConfidentialCompute: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ConfidentialInstanceConfig",
-  }) as any as Schema.Schema<ConfidentialInstanceConfig>;
+export const ConfidentialInstanceConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enableConfidentialCompute: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "ConfidentialInstanceConfig" });
 
 export interface GceClusterConfig {
   /** Optional. The Compute Engine zone where the Dataproc cluster will be located. If omitted, the service will pick a zone in the cluster's Compute Engine region. On a get request, zone will always be present.A full URL, partial URI, or short name are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone] projects/[project_id]/zones/[zone] [zone] */
@@ -3135,30 +2600,25 @@ export interface GceClusterConfig {
   resourceManagerTags?: Record<string, string>;
 }
 
-export const GceClusterConfig: Schema.Schema<GceClusterConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      zoneUri: Schema.optional(Schema.String),
-      autoZoneExcludeZoneUris: Schema.optional(Schema.Array(Schema.String)),
-      networkUri: Schema.optional(Schema.String),
-      subnetworkUri: Schema.optional(Schema.String),
-      internalIpOnly: Schema.optional(Schema.Boolean),
-      privateIpv6GoogleAccess: Schema.optional(Schema.String),
-      serviceAccount: Schema.optional(Schema.String),
-      serviceAccountScopes: Schema.optional(Schema.Array(Schema.String)),
-      tags: Schema.optional(Schema.Array(Schema.String)),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      reservationAffinity: Schema.optional(ReservationAffinity),
-      nodeGroupAffinity: Schema.optional(NodeGroupAffinity),
-      shieldedInstanceConfig: Schema.optional(ShieldedInstanceConfig),
-      confidentialInstanceConfig: Schema.optional(ConfidentialInstanceConfig),
-      resourceManagerTags: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-    }),
-  ).annotate({
-    identifier: "GceClusterConfig",
-  }) as any as Schema.Schema<GceClusterConfig>;
+export const GceClusterConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  zoneUri: Schema.optional(Schema.String),
+  autoZoneExcludeZoneUris: Schema.optional(Schema.Array(Schema.String)),
+  networkUri: Schema.optional(Schema.String),
+  subnetworkUri: Schema.optional(Schema.String),
+  internalIpOnly: Schema.optional(Schema.Boolean),
+  privateIpv6GoogleAccess: Schema.optional(Schema.String),
+  serviceAccount: Schema.optional(Schema.String),
+  serviceAccountScopes: Schema.optional(Schema.Array(Schema.String)),
+  tags: Schema.optional(Schema.Array(Schema.String)),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  reservationAffinity: Schema.optional(ReservationAffinity),
+  nodeGroupAffinity: Schema.optional(NodeGroupAffinity),
+  shieldedInstanceConfig: Schema.optional(ShieldedInstanceConfig),
+  confidentialInstanceConfig: Schema.optional(ConfidentialInstanceConfig),
+  resourceManagerTags: Schema.optional(
+    Schema.Record(Schema.String, Schema.String),
+  ),
+}).annotate({ identifier: "GceClusterConfig" });
 
 export interface InstanceReference {
   /** The user-friendly name of the Compute Engine instance. */
@@ -3171,17 +2631,12 @@ export interface InstanceReference {
   publicEciesKey?: string;
 }
 
-export const InstanceReference: Schema.Schema<InstanceReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      instanceName: Schema.optional(Schema.String),
-      instanceId: Schema.optional(Schema.String),
-      publicKey: Schema.optional(Schema.String),
-      publicEciesKey: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InstanceReference",
-  }) as any as Schema.Schema<InstanceReference>;
+export const InstanceReference = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  instanceName: Schema.optional(Schema.String),
+  instanceId: Schema.optional(Schema.String),
+  publicKey: Schema.optional(Schema.String),
+  publicEciesKey: Schema.optional(Schema.String),
+}).annotate({ identifier: "InstanceReference" });
 
 export interface AttachedDiskConfig {
   /** Optional. Disk type. */
@@ -3200,17 +2655,12 @@ export interface AttachedDiskConfig {
   provisionedThroughput?: string;
 }
 
-export const AttachedDiskConfig: Schema.Schema<AttachedDiskConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      diskType: Schema.optional(Schema.String),
-      diskSizeGb: Schema.optional(Schema.Number),
-      provisionedIops: Schema.optional(Schema.String),
-      provisionedThroughput: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AttachedDiskConfig",
-  }) as any as Schema.Schema<AttachedDiskConfig>;
+export const AttachedDiskConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  diskType: Schema.optional(Schema.String),
+  diskSizeGb: Schema.optional(Schema.Number),
+  provisionedIops: Schema.optional(Schema.String),
+  provisionedThroughput: Schema.optional(Schema.String),
+}).annotate({ identifier: "AttachedDiskConfig" });
 
 export interface DiskConfig {
   /** Optional. Type of the boot disk (default is "pd-standard"). Valid values: "pd-balanced" (Persistent Disk Balanced Solid State Drive), "pd-ssd" (Persistent Disk Solid State Drive), or "pd-standard" (Persistent Disk Hard Disk Drive). See Disk types (https://cloud.google.com/compute/docs/disks#disk-types). */
@@ -3229,18 +2679,15 @@ export interface DiskConfig {
   attachedDiskConfigs?: Array<AttachedDiskConfig>;
 }
 
-export const DiskConfig: Schema.Schema<DiskConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bootDiskType: Schema.optional(Schema.String),
-      bootDiskSizeGb: Schema.optional(Schema.Number),
-      numLocalSsds: Schema.optional(Schema.Number),
-      localSsdInterface: Schema.optional(Schema.String),
-      bootDiskProvisionedIops: Schema.optional(Schema.String),
-      bootDiskProvisionedThroughput: Schema.optional(Schema.String),
-      attachedDiskConfigs: Schema.optional(Schema.Array(AttachedDiskConfig)),
-    }),
-  ).annotate({ identifier: "DiskConfig" }) as any as Schema.Schema<DiskConfig>;
+export const DiskConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bootDiskType: Schema.optional(Schema.String),
+  bootDiskSizeGb: Schema.optional(Schema.Number),
+  numLocalSsds: Schema.optional(Schema.Number),
+  localSsdInterface: Schema.optional(Schema.String),
+  bootDiskProvisionedIops: Schema.optional(Schema.String),
+  bootDiskProvisionedThroughput: Schema.optional(Schema.String),
+  attachedDiskConfigs: Schema.optional(Schema.Array(AttachedDiskConfig)),
+}).annotate({ identifier: "DiskConfig" });
 
 export interface ManagedGroupConfig {
   /** Output only. The name of the Instance Template used for the Managed Instance Group. */
@@ -3251,16 +2698,11 @@ export interface ManagedGroupConfig {
   instanceGroupManagerUri?: string;
 }
 
-export const ManagedGroupConfig: Schema.Schema<ManagedGroupConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      instanceTemplateName: Schema.optional(Schema.String),
-      instanceGroupManagerName: Schema.optional(Schema.String),
-      instanceGroupManagerUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ManagedGroupConfig",
-  }) as any as Schema.Schema<ManagedGroupConfig>;
+export const ManagedGroupConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  instanceTemplateName: Schema.optional(Schema.String),
+  instanceGroupManagerName: Schema.optional(Schema.String),
+  instanceGroupManagerUri: Schema.optional(Schema.String),
+}).annotate({ identifier: "ManagedGroupConfig" });
 
 export interface AcceleratorConfig {
   /** Full URL, partial URI, or short name of the accelerator type resource to expose to this instance. See Compute Engine AcceleratorTypes (https://cloud.google.com/compute/docs/reference/v1/acceleratorTypes).Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/zones/[zone]/acceleratorTypes/nvidia-tesla-t4 projects/[project_id]/zones/[zone]/acceleratorTypes/nvidia-tesla-t4 nvidia-tesla-t4Auto Zone Exception: If you are using the Dataproc Auto Zone Placement (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/auto-zone#using_auto_zone_placement) feature, you must use the short name of the accelerator type resource, for example, nvidia-tesla-t4. */
@@ -3269,15 +2711,10 @@ export interface AcceleratorConfig {
   acceleratorCount?: number;
 }
 
-export const AcceleratorConfig: Schema.Schema<AcceleratorConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      acceleratorTypeUri: Schema.optional(Schema.String),
-      acceleratorCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "AcceleratorConfig",
-  }) as any as Schema.Schema<AcceleratorConfig>;
+export const AcceleratorConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  acceleratorTypeUri: Schema.optional(Schema.String),
+  acceleratorCount: Schema.optional(Schema.Number),
+}).annotate({ identifier: "AcceleratorConfig" });
 
 export interface ProvisioningModelMix {
   /** Optional. The base capacity that will always use Standard VMs to avoid risk of more preemption than the minimum capacity you need. Dataproc will create only standard VMs until it reaches standard_capacity_base, then it will start using standard_capacity_percent_above_base to mix Spot with Standard VMs. eg. If 15 instances are requested and standard_capacity_base is 5, Dataproc will create 5 standard VMs and then start mixing spot and standard VMs for remaining 10 instances. */
@@ -3286,15 +2723,10 @@ export interface ProvisioningModelMix {
   standardCapacityPercentAboveBase?: number;
 }
 
-export const ProvisioningModelMix: Schema.Schema<ProvisioningModelMix> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      standardCapacityBase: Schema.optional(Schema.Number),
-      standardCapacityPercentAboveBase: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "ProvisioningModelMix",
-  }) as any as Schema.Schema<ProvisioningModelMix>;
+export const ProvisioningModelMix = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  standardCapacityBase: Schema.optional(Schema.Number),
+  standardCapacityPercentAboveBase: Schema.optional(Schema.Number),
+}).annotate({ identifier: "ProvisioningModelMix" });
 
 export interface InstanceSelection {
   /** Optional. Full machine-type names, e.g. "n1-standard-16". */
@@ -3303,15 +2735,10 @@ export interface InstanceSelection {
   rank?: number;
 }
 
-export const InstanceSelection: Schema.Schema<InstanceSelection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      machineTypes: Schema.optional(Schema.Array(Schema.String)),
-      rank: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "InstanceSelection",
-  }) as any as Schema.Schema<InstanceSelection>;
+export const InstanceSelection = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  machineTypes: Schema.optional(Schema.Array(Schema.String)),
+  rank: Schema.optional(Schema.Number),
+}).annotate({ identifier: "InstanceSelection" });
 
 export interface InstanceSelectionResult {
   /** Output only. Full machine-type names, e.g. "n1-standard-16". */
@@ -3320,15 +2747,11 @@ export interface InstanceSelectionResult {
   vmCount?: number;
 }
 
-export const InstanceSelectionResult: Schema.Schema<InstanceSelectionResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      machineType: Schema.optional(Schema.String),
-      vmCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "InstanceSelectionResult",
-  }) as any as Schema.Schema<InstanceSelectionResult>;
+export const InstanceSelectionResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    machineType: Schema.optional(Schema.String),
+    vmCount: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "InstanceSelectionResult" });
 
 export interface InstanceFlexibilityPolicy {
   /** Optional. Defines how the Group selects the provisioning model to ensure required reliability. */
@@ -3341,35 +2764,26 @@ export interface InstanceFlexibilityPolicy {
   instanceMachineTypes?: Record<string, string>;
 }
 
-export const InstanceFlexibilityPolicy: Schema.Schema<InstanceFlexibilityPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      provisioningModelMix: Schema.optional(ProvisioningModelMix),
-      instanceSelectionList: Schema.optional(Schema.Array(InstanceSelection)),
-      instanceSelectionResults: Schema.optional(
-        Schema.Array(InstanceSelectionResult),
-      ),
-      instanceMachineTypes: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-    }),
-  ).annotate({
-    identifier: "InstanceFlexibilityPolicy",
-  }) as any as Schema.Schema<InstanceFlexibilityPolicy>;
+export const InstanceFlexibilityPolicy =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provisioningModelMix: Schema.optional(ProvisioningModelMix),
+    instanceSelectionList: Schema.optional(Schema.Array(InstanceSelection)),
+    instanceSelectionResults: Schema.optional(
+      Schema.Array(InstanceSelectionResult),
+    ),
+    instanceMachineTypes: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+  }).annotate({ identifier: "InstanceFlexibilityPolicy" });
 
 export interface StartupConfig {
   /** Optional. The config setting to enable cluster creation/ updation to be successful only after required_registration_fraction of instances are up and running. This configuration is applicable to only secondary workers for now. The cluster will fail if required_registration_fraction of instances are not available. This will include instance creation, agent registration, and service registration (if enabled). */
   requiredRegistrationFraction?: number;
 }
 
-export const StartupConfig: Schema.Schema<StartupConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requiredRegistrationFraction: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "StartupConfig",
-  }) as any as Schema.Schema<StartupConfig>;
+export const StartupConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  requiredRegistrationFraction: Schema.optional(Schema.Number),
+}).annotate({ identifier: "StartupConfig" });
 
 export interface InstanceGroupConfig {
   /** Optional. The number of VM instances in the instance group. For HA cluster master_config groups, must be set to 3. For standard cluster master_config groups, must be set to 1. */
@@ -3407,27 +2821,22 @@ export interface InstanceGroupConfig {
   startupConfig?: StartupConfig;
 }
 
-export const InstanceGroupConfig: Schema.Schema<InstanceGroupConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      numInstances: Schema.optional(Schema.Number),
-      instanceNames: Schema.optional(Schema.Array(Schema.String)),
-      instanceReferences: Schema.optional(Schema.Array(InstanceReference)),
-      imageUri: Schema.optional(Schema.String),
-      machineTypeUri: Schema.optional(Schema.String),
-      diskConfig: Schema.optional(DiskConfig),
-      isPreemptible: Schema.optional(Schema.Boolean),
-      preemptibility: Schema.optional(Schema.String),
-      managedGroupConfig: Schema.optional(ManagedGroupConfig),
-      accelerators: Schema.optional(Schema.Array(AcceleratorConfig)),
-      minCpuPlatform: Schema.optional(Schema.String),
-      minNumInstances: Schema.optional(Schema.Number),
-      instanceFlexibilityPolicy: Schema.optional(InstanceFlexibilityPolicy),
-      startupConfig: Schema.optional(StartupConfig),
-    }),
-  ).annotate({
-    identifier: "InstanceGroupConfig",
-  }) as any as Schema.Schema<InstanceGroupConfig>;
+export const InstanceGroupConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  numInstances: Schema.optional(Schema.Number),
+  instanceNames: Schema.optional(Schema.Array(Schema.String)),
+  instanceReferences: Schema.optional(Schema.Array(InstanceReference)),
+  imageUri: Schema.optional(Schema.String),
+  machineTypeUri: Schema.optional(Schema.String),
+  diskConfig: Schema.optional(DiskConfig),
+  isPreemptible: Schema.optional(Schema.Boolean),
+  preemptibility: Schema.optional(Schema.String),
+  managedGroupConfig: Schema.optional(ManagedGroupConfig),
+  accelerators: Schema.optional(Schema.Array(AcceleratorConfig)),
+  minCpuPlatform: Schema.optional(Schema.String),
+  minNumInstances: Schema.optional(Schema.Number),
+  instanceFlexibilityPolicy: Schema.optional(InstanceFlexibilityPolicy),
+  startupConfig: Schema.optional(StartupConfig),
+}).annotate({ identifier: "InstanceGroupConfig" });
 
 export interface SoftwareConfig {
   /** Optional. The version of software inside the cluster. It must be one of the supported Dataproc Versions (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#supported-dataproc-image-versions), such as "1.2" (including a subminor version, such as "1.2.29"), or the "preview" version (https://cloud.google.com/dataproc/docs/concepts/versioning/dataproc-versions#other_versions). If unspecified, it defaults to the latest Debian version. */
@@ -3459,16 +2868,11 @@ export interface SoftwareConfig {
   >;
 }
 
-export const SoftwareConfig: Schema.Schema<SoftwareConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      imageVersion: Schema.optional(Schema.String),
-      properties: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      optionalComponents: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "SoftwareConfig",
-  }) as any as Schema.Schema<SoftwareConfig>;
+export const SoftwareConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  imageVersion: Schema.optional(Schema.String),
+  properties: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  optionalComponents: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "SoftwareConfig" });
 
 export interface NodeInitializationAction {
   /** Required. Cloud Storage URI of executable file. */
@@ -3477,15 +2881,11 @@ export interface NodeInitializationAction {
   executionTimeout?: string;
 }
 
-export const NodeInitializationAction: Schema.Schema<NodeInitializationAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      executableFile: Schema.optional(Schema.String),
-      executionTimeout: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NodeInitializationAction",
-  }) as any as Schema.Schema<NodeInitializationAction>;
+export const NodeInitializationAction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    executableFile: Schema.optional(Schema.String),
+    executionTimeout: Schema.optional(Schema.String),
+  }).annotate({ identifier: "NodeInitializationAction" });
 
 export interface EncryptionConfig {
   /** Optional. The Cloud KMS key resource name to use for persistent disk encryption for all instances in the cluster. See Use CMEK with cluster data (https://cloud.google.com//dataproc/docs/concepts/configuring-clusters/customer-managed-encryption#use_cmek_with_cluster_data) for more information. */
@@ -3494,29 +2894,19 @@ export interface EncryptionConfig {
   kmsKey?: string;
 }
 
-export const EncryptionConfig: Schema.Schema<EncryptionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcePdKmsKeyName: Schema.optional(Schema.String),
-      kmsKey: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EncryptionConfig",
-  }) as any as Schema.Schema<EncryptionConfig>;
+export const EncryptionConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gcePdKmsKeyName: Schema.optional(Schema.String),
+  kmsKey: Schema.optional(Schema.String),
+}).annotate({ identifier: "EncryptionConfig" });
 
 export interface AutoscalingConfig {
   /** Optional. The autoscaling policy used by the cluster.Only resource names including projectid and location (region) are valid. Examples: https://www.googleapis.com/compute/v1/projects/[project_id]/locations/[dataproc_region]/autoscalingPolicies/[policy_id] projects/[project_id]/locations/[dataproc_region]/autoscalingPolicies/[policy_id]Note that the policy must be in the same project and Dataproc region. */
   policyUri?: string;
 }
 
-export const AutoscalingConfig: Schema.Schema<AutoscalingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policyUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AutoscalingConfig",
-  }) as any as Schema.Schema<AutoscalingConfig>;
+export const AutoscalingConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policyUri: Schema.optional(Schema.String),
+}).annotate({ identifier: "AutoscalingConfig" });
 
 export interface KerberosConfig {
   /** Optional. Flag to indicate whether to Kerberize the cluster (default: false). Set this field to true to enable Kerberos on a cluster. */
@@ -3551,44 +2941,34 @@ export interface KerberosConfig {
   realm?: string;
 }
 
-export const KerberosConfig: Schema.Schema<KerberosConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableKerberos: Schema.optional(Schema.Boolean),
-      rootPrincipalPasswordUri: Schema.optional(Schema.String),
-      kmsKeyUri: Schema.optional(Schema.String),
-      keystoreUri: Schema.optional(Schema.String),
-      truststoreUri: Schema.optional(Schema.String),
-      keystorePasswordUri: Schema.optional(Schema.String),
-      keyPasswordUri: Schema.optional(Schema.String),
-      truststorePasswordUri: Schema.optional(Schema.String),
-      crossRealmTrustRealm: Schema.optional(Schema.String),
-      crossRealmTrustKdc: Schema.optional(Schema.String),
-      crossRealmTrustAdminServer: Schema.optional(Schema.String),
-      crossRealmTrustSharedPasswordUri: Schema.optional(Schema.String),
-      kdcDbKeyUri: Schema.optional(Schema.String),
-      tgtLifetimeHours: Schema.optional(Schema.Number),
-      realm: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "KerberosConfig",
-  }) as any as Schema.Schema<KerberosConfig>;
+export const KerberosConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enableKerberos: Schema.optional(Schema.Boolean),
+  rootPrincipalPasswordUri: Schema.optional(Schema.String),
+  kmsKeyUri: Schema.optional(Schema.String),
+  keystoreUri: Schema.optional(Schema.String),
+  truststoreUri: Schema.optional(Schema.String),
+  keystorePasswordUri: Schema.optional(Schema.String),
+  keyPasswordUri: Schema.optional(Schema.String),
+  truststorePasswordUri: Schema.optional(Schema.String),
+  crossRealmTrustRealm: Schema.optional(Schema.String),
+  crossRealmTrustKdc: Schema.optional(Schema.String),
+  crossRealmTrustAdminServer: Schema.optional(Schema.String),
+  crossRealmTrustSharedPasswordUri: Schema.optional(Schema.String),
+  kdcDbKeyUri: Schema.optional(Schema.String),
+  tgtLifetimeHours: Schema.optional(Schema.Number),
+  realm: Schema.optional(Schema.String),
+}).annotate({ identifier: "KerberosConfig" });
 
 export interface IdentityConfig {
   /** Required. Map of user to service account. */
   userServiceAccountMapping?: Record<string, string>;
 }
 
-export const IdentityConfig: Schema.Schema<IdentityConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userServiceAccountMapping: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-    }),
-  ).annotate({
-    identifier: "IdentityConfig",
-  }) as any as Schema.Schema<IdentityConfig>;
+export const IdentityConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  userServiceAccountMapping: Schema.optional(
+    Schema.Record(Schema.String, Schema.String),
+  ),
+}).annotate({ identifier: "IdentityConfig" });
 
 export interface SecurityConfig {
   /** Optional. Kerberos related configuration. */
@@ -3597,15 +2977,10 @@ export interface SecurityConfig {
   identityConfig?: IdentityConfig;
 }
 
-export const SecurityConfig: Schema.Schema<SecurityConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kerberosConfig: Schema.optional(KerberosConfig),
-      identityConfig: Schema.optional(IdentityConfig),
-    }),
-  ).annotate({
-    identifier: "SecurityConfig",
-  }) as any as Schema.Schema<SecurityConfig>;
+export const SecurityConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kerberosConfig: Schema.optional(KerberosConfig),
+  identityConfig: Schema.optional(IdentityConfig),
+}).annotate({ identifier: "SecurityConfig" });
 
 export interface LifecycleConfig {
   /** Optional. The duration to keep the cluster alive while idling (when no jobs are running). Passing this threshold will cause the cluster to be deleted. Minimum value is 5 minutes; maximum value is 14 days (see JSON representation of Duration (https://developers.google.com/protocol-buffers/docs/proto3#json)). */
@@ -3624,20 +2999,15 @@ export interface LifecycleConfig {
   idleStartTime?: string;
 }
 
-export const LifecycleConfig: Schema.Schema<LifecycleConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      idleDeleteTtl: Schema.optional(Schema.String),
-      autoDeleteTime: Schema.optional(Schema.String),
-      autoDeleteTtl: Schema.optional(Schema.String),
-      idleStopTtl: Schema.optional(Schema.String),
-      autoStopTime: Schema.optional(Schema.String),
-      autoStopTtl: Schema.optional(Schema.String),
-      idleStartTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LifecycleConfig",
-  }) as any as Schema.Schema<LifecycleConfig>;
+export const LifecycleConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  idleDeleteTtl: Schema.optional(Schema.String),
+  autoDeleteTime: Schema.optional(Schema.String),
+  autoDeleteTtl: Schema.optional(Schema.String),
+  idleStopTtl: Schema.optional(Schema.String),
+  autoStopTime: Schema.optional(Schema.String),
+  autoStopTtl: Schema.optional(Schema.String),
+  idleStartTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "LifecycleConfig" });
 
 export interface EndpointConfig {
   /** Output only. The map of port descriptions to URLs. Will only be populated if enable_http_port_access is true. */
@@ -3646,29 +3016,19 @@ export interface EndpointConfig {
   enableHttpPortAccess?: boolean;
 }
 
-export const EndpointConfig: Schema.Schema<EndpointConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      httpPorts: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      enableHttpPortAccess: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "EndpointConfig",
-  }) as any as Schema.Schema<EndpointConfig>;
+export const EndpointConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  httpPorts: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  enableHttpPortAccess: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "EndpointConfig" });
 
 export interface MetastoreConfig {
   /** Required. Resource name of an existing Dataproc Metastore service.Example: projects/[project_id]/locations/[dataproc_region]/services/[service-name] */
   dataprocMetastoreService?: string;
 }
 
-export const MetastoreConfig: Schema.Schema<MetastoreConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataprocMetastoreService: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MetastoreConfig",
-  }) as any as Schema.Schema<MetastoreConfig>;
+export const MetastoreConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dataprocMetastoreService: Schema.optional(Schema.String),
+}).annotate({ identifier: "MetastoreConfig" });
 
 export interface NamespacedGkeDeploymentTarget {
   /** Optional. The target GKE cluster to deploy to. Format: 'projects/{project}/locations/{location}/clusters/{cluster_id}' */
@@ -3677,15 +3037,11 @@ export interface NamespacedGkeDeploymentTarget {
   clusterNamespace?: string;
 }
 
-export const NamespacedGkeDeploymentTarget: Schema.Schema<NamespacedGkeDeploymentTarget> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetGkeCluster: Schema.optional(Schema.String),
-      clusterNamespace: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NamespacedGkeDeploymentTarget",
-  }) as any as Schema.Schema<NamespacedGkeDeploymentTarget>;
+export const NamespacedGkeDeploymentTarget =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetGkeCluster: Schema.optional(Schema.String),
+    clusterNamespace: Schema.optional(Schema.String),
+  }).annotate({ identifier: "NamespacedGkeDeploymentTarget" });
 
 export interface GkeNodePoolAcceleratorConfig {
   /** The number of accelerator cards exposed to an instance. */
@@ -3696,16 +3052,12 @@ export interface GkeNodePoolAcceleratorConfig {
   gpuPartitionSize?: string;
 }
 
-export const GkeNodePoolAcceleratorConfig: Schema.Schema<GkeNodePoolAcceleratorConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      acceleratorCount: Schema.optional(Schema.String),
-      acceleratorType: Schema.optional(Schema.String),
-      gpuPartitionSize: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GkeNodePoolAcceleratorConfig",
-  }) as any as Schema.Schema<GkeNodePoolAcceleratorConfig>;
+export const GkeNodePoolAcceleratorConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    acceleratorCount: Schema.optional(Schema.String),
+    acceleratorType: Schema.optional(Schema.String),
+    gpuPartitionSize: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GkeNodePoolAcceleratorConfig" });
 
 export interface GkeNodeConfig {
   /** Optional. The name of a Compute Engine machine type (https://cloud.google.com/compute/docs/machine-types). */
@@ -3724,20 +3076,15 @@ export interface GkeNodeConfig {
   spot?: boolean;
 }
 
-export const GkeNodeConfig: Schema.Schema<GkeNodeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      machineType: Schema.optional(Schema.String),
-      localSsdCount: Schema.optional(Schema.Number),
-      preemptible: Schema.optional(Schema.Boolean),
-      accelerators: Schema.optional(Schema.Array(GkeNodePoolAcceleratorConfig)),
-      minCpuPlatform: Schema.optional(Schema.String),
-      bootDiskKmsKey: Schema.optional(Schema.String),
-      spot: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GkeNodeConfig",
-  }) as any as Schema.Schema<GkeNodeConfig>;
+export const GkeNodeConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  machineType: Schema.optional(Schema.String),
+  localSsdCount: Schema.optional(Schema.Number),
+  preemptible: Schema.optional(Schema.Boolean),
+  accelerators: Schema.optional(Schema.Array(GkeNodePoolAcceleratorConfig)),
+  minCpuPlatform: Schema.optional(Schema.String),
+  bootDiskKmsKey: Schema.optional(Schema.String),
+  spot: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "GkeNodeConfig" });
 
 export interface GkeNodePoolAutoscalingConfig {
   /** The minimum number of nodes in the node pool. Must be >= 0 and <= max_node_count. */
@@ -3746,15 +3093,11 @@ export interface GkeNodePoolAutoscalingConfig {
   maxNodeCount?: number;
 }
 
-export const GkeNodePoolAutoscalingConfig: Schema.Schema<GkeNodePoolAutoscalingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      minNodeCount: Schema.optional(Schema.Number),
-      maxNodeCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GkeNodePoolAutoscalingConfig",
-  }) as any as Schema.Schema<GkeNodePoolAutoscalingConfig>;
+export const GkeNodePoolAutoscalingConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    minNodeCount: Schema.optional(Schema.Number),
+    maxNodeCount: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GkeNodePoolAutoscalingConfig" });
 
 export interface GkeNodePoolConfig {
   /** Optional. The node pool configuration. */
@@ -3765,16 +3108,11 @@ export interface GkeNodePoolConfig {
   autoscaling?: GkeNodePoolAutoscalingConfig;
 }
 
-export const GkeNodePoolConfig: Schema.Schema<GkeNodePoolConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      config: Schema.optional(GkeNodeConfig),
-      locations: Schema.optional(Schema.Array(Schema.String)),
-      autoscaling: Schema.optional(GkeNodePoolAutoscalingConfig),
-    }),
-  ).annotate({
-    identifier: "GkeNodePoolConfig",
-  }) as any as Schema.Schema<GkeNodePoolConfig>;
+export const GkeNodePoolConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  config: Schema.optional(GkeNodeConfig),
+  locations: Schema.optional(Schema.Array(Schema.String)),
+  autoscaling: Schema.optional(GkeNodePoolAutoscalingConfig),
+}).annotate({ identifier: "GkeNodePoolConfig" });
 
 export interface GkeNodePoolTarget {
   /** Required. The target GKE node pool. Format: 'projects/{project}/locations/{location}/clusters/{cluster}/nodePools/{node_pool}' */
@@ -3792,16 +3130,11 @@ export interface GkeNodePoolTarget {
   nodePoolConfig?: GkeNodePoolConfig;
 }
 
-export const GkeNodePoolTarget: Schema.Schema<GkeNodePoolTarget> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nodePool: Schema.optional(Schema.String),
-      roles: Schema.optional(Schema.Array(Schema.String)),
-      nodePoolConfig: Schema.optional(GkeNodePoolConfig),
-    }),
-  ).annotate({
-    identifier: "GkeNodePoolTarget",
-  }) as any as Schema.Schema<GkeNodePoolTarget>;
+export const GkeNodePoolTarget = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nodePool: Schema.optional(Schema.String),
+  roles: Schema.optional(Schema.Array(Schema.String)),
+  nodePoolConfig: Schema.optional(GkeNodePoolConfig),
+}).annotate({ identifier: "GkeNodePoolTarget" });
 
 export interface GkeClusterConfig {
   /** Optional. Deprecated. Use gkeClusterTarget. Used only for the deprecated beta. A target for the deployment. */
@@ -3812,18 +3145,11 @@ export interface GkeClusterConfig {
   nodePoolTarget?: Array<GkeNodePoolTarget>;
 }
 
-export const GkeClusterConfig: Schema.Schema<GkeClusterConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      namespacedGkeDeploymentTarget: Schema.optional(
-        NamespacedGkeDeploymentTarget,
-      ),
-      gkeClusterTarget: Schema.optional(Schema.String),
-      nodePoolTarget: Schema.optional(Schema.Array(GkeNodePoolTarget)),
-    }),
-  ).annotate({
-    identifier: "GkeClusterConfig",
-  }) as any as Schema.Schema<GkeClusterConfig>;
+export const GkeClusterConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  namespacedGkeDeploymentTarget: Schema.optional(NamespacedGkeDeploymentTarget),
+  gkeClusterTarget: Schema.optional(Schema.String),
+  nodePoolTarget: Schema.optional(Schema.Array(GkeNodePoolTarget)),
+}).annotate({ identifier: "GkeClusterConfig" });
 
 export interface Metric {
   /** Required. A standard set of metrics is collected unless metricOverrides are specified for the metric source (see Custom metrics (https://cloud.google.com/dataproc/docs/guides/dataproc-metrics#custom_metrics) for more information). */
@@ -3842,27 +3168,19 @@ export interface Metric {
   metricOverrides?: Array<string>;
 }
 
-export const Metric: Schema.Schema<Metric> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metricSource: Schema.optional(Schema.String),
-      metricOverrides: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "Metric" }) as any as Schema.Schema<Metric>;
+export const Metric = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metricSource: Schema.optional(Schema.String),
+  metricOverrides: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Metric" });
 
 export interface DataprocMetricConfig {
   /** Required. Metrics sources to enable. */
   metrics?: Array<Metric>;
 }
 
-export const DataprocMetricConfig: Schema.Schema<DataprocMetricConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metrics: Schema.optional(Schema.Array(Metric)),
-    }),
-  ).annotate({
-    identifier: "DataprocMetricConfig",
-  }) as any as Schema.Schema<DataprocMetricConfig>;
+export const DataprocMetricConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metrics: Schema.optional(Schema.Array(Metric)),
+}).annotate({ identifier: "DataprocMetricConfig" });
 
 export interface NodeGroup {
   /** The Node group resource name (https://aip.dev/122). */
@@ -3875,15 +3193,12 @@ export interface NodeGroup {
   labels?: Record<string, string>;
 }
 
-export const NodeGroup: Schema.Schema<NodeGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      roles: Schema.optional(Schema.Array(Schema.String)),
-      nodeGroupConfig: Schema.optional(InstanceGroupConfig),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({ identifier: "NodeGroup" }) as any as Schema.Schema<NodeGroup>;
+export const NodeGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  roles: Schema.optional(Schema.Array(Schema.String)),
+  nodeGroupConfig: Schema.optional(InstanceGroupConfig),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "NodeGroup" });
 
 export interface AuxiliaryNodeGroup {
   /** Required. Node group configuration. */
@@ -3892,15 +3207,10 @@ export interface AuxiliaryNodeGroup {
   nodeGroupId?: string;
 }
 
-export const AuxiliaryNodeGroup: Schema.Schema<AuxiliaryNodeGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nodeGroup: Schema.optional(NodeGroup),
-      nodeGroupId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AuxiliaryNodeGroup",
-  }) as any as Schema.Schema<AuxiliaryNodeGroup>;
+export const AuxiliaryNodeGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nodeGroup: Schema.optional(NodeGroup),
+  nodeGroupId: Schema.optional(Schema.String),
+}).annotate({ identifier: "AuxiliaryNodeGroup" });
 
 export interface ClusterConfig {
   /** Optional. The type of the cluster. */
@@ -3956,36 +3266,31 @@ export interface ClusterConfig {
   diagnosticBucket?: string;
 }
 
-export const ClusterConfig: Schema.Schema<ClusterConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clusterType: Schema.optional(Schema.String),
-      clusterTier: Schema.optional(Schema.String),
-      engine: Schema.optional(Schema.String),
-      configBucket: Schema.optional(Schema.String),
-      tempBucket: Schema.optional(Schema.String),
-      gceClusterConfig: Schema.optional(GceClusterConfig),
-      masterConfig: Schema.optional(InstanceGroupConfig),
-      workerConfig: Schema.optional(InstanceGroupConfig),
-      secondaryWorkerConfig: Schema.optional(InstanceGroupConfig),
-      softwareConfig: Schema.optional(SoftwareConfig),
-      initializationActions: Schema.optional(
-        Schema.Array(NodeInitializationAction),
-      ),
-      encryptionConfig: Schema.optional(EncryptionConfig),
-      autoscalingConfig: Schema.optional(AutoscalingConfig),
-      securityConfig: Schema.optional(SecurityConfig),
-      lifecycleConfig: Schema.optional(LifecycleConfig),
-      endpointConfig: Schema.optional(EndpointConfig),
-      metastoreConfig: Schema.optional(MetastoreConfig),
-      gkeClusterConfig: Schema.optional(GkeClusterConfig),
-      dataprocMetricConfig: Schema.optional(DataprocMetricConfig),
-      auxiliaryNodeGroups: Schema.optional(Schema.Array(AuxiliaryNodeGroup)),
-      diagnosticBucket: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ClusterConfig",
-  }) as any as Schema.Schema<ClusterConfig>;
+export const ClusterConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  clusterType: Schema.optional(Schema.String),
+  clusterTier: Schema.optional(Schema.String),
+  engine: Schema.optional(Schema.String),
+  configBucket: Schema.optional(Schema.String),
+  tempBucket: Schema.optional(Schema.String),
+  gceClusterConfig: Schema.optional(GceClusterConfig),
+  masterConfig: Schema.optional(InstanceGroupConfig),
+  workerConfig: Schema.optional(InstanceGroupConfig),
+  secondaryWorkerConfig: Schema.optional(InstanceGroupConfig),
+  softwareConfig: Schema.optional(SoftwareConfig),
+  initializationActions: Schema.optional(
+    Schema.Array(NodeInitializationAction),
+  ),
+  encryptionConfig: Schema.optional(EncryptionConfig),
+  autoscalingConfig: Schema.optional(AutoscalingConfig),
+  securityConfig: Schema.optional(SecurityConfig),
+  lifecycleConfig: Schema.optional(LifecycleConfig),
+  endpointConfig: Schema.optional(EndpointConfig),
+  metastoreConfig: Schema.optional(MetastoreConfig),
+  gkeClusterConfig: Schema.optional(GkeClusterConfig),
+  dataprocMetricConfig: Schema.optional(DataprocMetricConfig),
+  auxiliaryNodeGroups: Schema.optional(Schema.Array(AuxiliaryNodeGroup)),
+  diagnosticBucket: Schema.optional(Schema.String),
+}).annotate({ identifier: "ClusterConfig" });
 
 export interface KubernetesSoftwareConfig {
   /** The components that should be installed in this Dataproc cluster. The key must be a string from the KubernetesComponent enumeration. The value is the version of the software to be installed. At least one entry must be specified. */
@@ -3994,17 +3299,13 @@ export interface KubernetesSoftwareConfig {
   properties?: Record<string, string>;
 }
 
-export const KubernetesSoftwareConfig: Schema.Schema<KubernetesSoftwareConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      componentVersion: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      properties: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "KubernetesSoftwareConfig",
-  }) as any as Schema.Schema<KubernetesSoftwareConfig>;
+export const KubernetesSoftwareConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    componentVersion: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    properties: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({ identifier: "KubernetesSoftwareConfig" });
 
 export interface KubernetesClusterConfig {
   /** Optional. A namespace within the Kubernetes cluster to deploy into. If this namespace does not exist, it is created. If it exists, Dataproc verifies that another Dataproc VirtualCluster is not installed into it. If not specified, the name of the Dataproc Cluster is used. */
@@ -4015,16 +3316,12 @@ export interface KubernetesClusterConfig {
   kubernetesSoftwareConfig?: KubernetesSoftwareConfig;
 }
 
-export const KubernetesClusterConfig: Schema.Schema<KubernetesClusterConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kubernetesNamespace: Schema.optional(Schema.String),
-      gkeClusterConfig: Schema.optional(GkeClusterConfig),
-      kubernetesSoftwareConfig: Schema.optional(KubernetesSoftwareConfig),
-    }),
-  ).annotate({
-    identifier: "KubernetesClusterConfig",
-  }) as any as Schema.Schema<KubernetesClusterConfig>;
+export const KubernetesClusterConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kubernetesNamespace: Schema.optional(Schema.String),
+    gkeClusterConfig: Schema.optional(GkeClusterConfig),
+    kubernetesSoftwareConfig: Schema.optional(KubernetesSoftwareConfig),
+  }).annotate({ identifier: "KubernetesClusterConfig" });
 
 export interface AuxiliaryServicesConfig {
   /** Optional. The Hive Metastore configuration for this workload. */
@@ -4033,15 +3330,11 @@ export interface AuxiliaryServicesConfig {
   sparkHistoryServerConfig?: SparkHistoryServerConfig;
 }
 
-export const AuxiliaryServicesConfig: Schema.Schema<AuxiliaryServicesConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metastoreConfig: Schema.optional(MetastoreConfig),
-      sparkHistoryServerConfig: Schema.optional(SparkHistoryServerConfig),
-    }),
-  ).annotate({
-    identifier: "AuxiliaryServicesConfig",
-  }) as any as Schema.Schema<AuxiliaryServicesConfig>;
+export const AuxiliaryServicesConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    metastoreConfig: Schema.optional(MetastoreConfig),
+    sparkHistoryServerConfig: Schema.optional(SparkHistoryServerConfig),
+  }).annotate({ identifier: "AuxiliaryServicesConfig" });
 
 export interface VirtualClusterConfig {
   /** Optional. A Cloud Storage bucket used to stage job dependencies, config files, and job driver console output. If you do not specify a staging bucket, Cloud Dataproc will determine a Cloud Storage location (US, ASIA, or EU) for your cluster's staging bucket according to the Compute Engine zone where your cluster is deployed, and then create and manage this project-level, per-location bucket (see Dataproc staging and temp buckets (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/staging-bucket)). This field requires a Cloud Storage bucket name, not a gs://... URI to a Cloud Storage bucket. */
@@ -4052,16 +3345,11 @@ export interface VirtualClusterConfig {
   auxiliaryServicesConfig?: AuxiliaryServicesConfig;
 }
 
-export const VirtualClusterConfig: Schema.Schema<VirtualClusterConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stagingBucket: Schema.optional(Schema.String),
-      kubernetesClusterConfig: Schema.optional(KubernetesClusterConfig),
-      auxiliaryServicesConfig: Schema.optional(AuxiliaryServicesConfig),
-    }),
-  ).annotate({
-    identifier: "VirtualClusterConfig",
-  }) as any as Schema.Schema<VirtualClusterConfig>;
+export const VirtualClusterConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  stagingBucket: Schema.optional(Schema.String),
+  kubernetesClusterConfig: Schema.optional(KubernetesClusterConfig),
+  auxiliaryServicesConfig: Schema.optional(AuxiliaryServicesConfig),
+}).annotate({ identifier: "VirtualClusterConfig" });
 
 export interface ClusterStatus {
   /** Output only. The cluster's state. */
@@ -4087,17 +3375,12 @@ export interface ClusterStatus {
   substate?: "UNSPECIFIED" | "UNHEALTHY" | "STALE_STATUS" | (string & {});
 }
 
-export const ClusterStatus: Schema.Schema<ClusterStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      detail: Schema.optional(Schema.String),
-      stateStartTime: Schema.optional(Schema.String),
-      substate: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ClusterStatus",
-  }) as any as Schema.Schema<ClusterStatus>;
+export const ClusterStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.String),
+  detail: Schema.optional(Schema.String),
+  stateStartTime: Schema.optional(Schema.String),
+  substate: Schema.optional(Schema.String),
+}).annotate({ identifier: "ClusterStatus" });
 
 export interface ClusterMetrics {
   /** The HDFS metrics. */
@@ -4106,15 +3389,10 @@ export interface ClusterMetrics {
   yarnMetrics?: Record<string, string>;
 }
 
-export const ClusterMetrics: Schema.Schema<ClusterMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hdfsMetrics: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      yarnMetrics: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ClusterMetrics",
-  }) as any as Schema.Schema<ClusterMetrics>;
+export const ClusterMetrics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  hdfsMetrics: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  yarnMetrics: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "ClusterMetrics" });
 
 export interface Cluster {
   /** Required. The Google Cloud Platform project ID that the cluster belongs to. */
@@ -4137,20 +3415,17 @@ export interface Cluster {
   metrics?: ClusterMetrics;
 }
 
-export const Cluster: Schema.Schema<Cluster> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      projectId: Schema.optional(Schema.String),
-      clusterName: Schema.optional(Schema.String),
-      config: Schema.optional(ClusterConfig),
-      virtualClusterConfig: Schema.optional(VirtualClusterConfig),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      status: Schema.optional(ClusterStatus),
-      statusHistory: Schema.optional(Schema.Array(ClusterStatus)),
-      clusterUuid: Schema.optional(Schema.String),
-      metrics: Schema.optional(ClusterMetrics),
-    }),
-  ).annotate({ identifier: "Cluster" }) as any as Schema.Schema<Cluster>;
+export const Cluster = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  projectId: Schema.optional(Schema.String),
+  clusterName: Schema.optional(Schema.String),
+  config: Schema.optional(ClusterConfig),
+  virtualClusterConfig: Schema.optional(VirtualClusterConfig),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  status: Schema.optional(ClusterStatus),
+  statusHistory: Schema.optional(Schema.Array(ClusterStatus)),
+  clusterUuid: Schema.optional(Schema.String),
+  metrics: Schema.optional(ClusterMetrics),
+}).annotate({ identifier: "Cluster" });
 
 export interface StopClusterRequest {
   /** Optional. Specifying the cluster_uuid means the RPC will fail (with error NOT_FOUND) if a cluster with the specified UUID does not exist. */
@@ -4159,15 +3434,10 @@ export interface StopClusterRequest {
   requestId?: string;
 }
 
-export const StopClusterRequest: Schema.Schema<StopClusterRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clusterUuid: Schema.optional(Schema.String),
-      requestId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StopClusterRequest",
-  }) as any as Schema.Schema<StopClusterRequest>;
+export const StopClusterRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  clusterUuid: Schema.optional(Schema.String),
+  requestId: Schema.optional(Schema.String),
+}).annotate({ identifier: "StopClusterRequest" });
 
 export interface StartClusterRequest {
   /** Optional. Specifying the cluster_uuid means the RPC will fail (with error NOT_FOUND) if a cluster with the specified UUID does not exist. */
@@ -4176,15 +3446,10 @@ export interface StartClusterRequest {
   requestId?: string;
 }
 
-export const StartClusterRequest: Schema.Schema<StartClusterRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clusterUuid: Schema.optional(Schema.String),
-      requestId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StartClusterRequest",
-  }) as any as Schema.Schema<StartClusterRequest>;
+export const StartClusterRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  clusterUuid: Schema.optional(Schema.String),
+  requestId: Schema.optional(Schema.String),
+}).annotate({ identifier: "StartClusterRequest" });
 
 export interface NodePool {
   /** Required. A unique id of the node pool. Primary and Secondary workers can be specified using special reserved ids PRIMARY_WORKER_POOL and SECONDARY_WORKER_POOL respectively. Aux node pools can be referenced using corresponding pool id. */
@@ -4195,14 +3460,11 @@ export interface NodePool {
   repairAction?: "REPAIR_ACTION_UNSPECIFIED" | "DELETE" | (string & {});
 }
 
-export const NodePool: Schema.Schema<NodePool> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      instanceNames: Schema.optional(Schema.Array(Schema.String)),
-      repairAction: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "NodePool" }) as any as Schema.Schema<NodePool>;
+export const NodePool = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  instanceNames: Schema.optional(Schema.Array(Schema.String)),
+  repairAction: Schema.optional(Schema.String),
+}).annotate({ identifier: "NodePool" });
 
 export interface ClusterToRepair {
   /** Required. Repair action to take on the cluster resource. */
@@ -4212,14 +3474,9 @@ export interface ClusterToRepair {
     | (string & {});
 }
 
-export const ClusterToRepair: Schema.Schema<ClusterToRepair> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clusterRepairAction: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ClusterToRepair",
-  }) as any as Schema.Schema<ClusterToRepair>;
+export const ClusterToRepair = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  clusterRepairAction: Schema.optional(Schema.String),
+}).annotate({ identifier: "ClusterToRepair" });
 
 export interface RepairClusterRequest {
   /** Optional. Specifying the cluster_uuid means the RPC will fail (with error NOT_FOUND) if a cluster with the specified UUID does not exist. */
@@ -4238,20 +3495,15 @@ export interface RepairClusterRequest {
   dataprocSuperUser?: boolean;
 }
 
-export const RepairClusterRequest: Schema.Schema<RepairClusterRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clusterUuid: Schema.optional(Schema.String),
-      requestId: Schema.optional(Schema.String),
-      nodePools: Schema.optional(Schema.Array(NodePool)),
-      gracefulDecommissionTimeout: Schema.optional(Schema.String),
-      parentOperationId: Schema.optional(Schema.String),
-      cluster: Schema.optional(ClusterToRepair),
-      dataprocSuperUser: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "RepairClusterRequest",
-  }) as any as Schema.Schema<RepairClusterRequest>;
+export const RepairClusterRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  clusterUuid: Schema.optional(Schema.String),
+  requestId: Schema.optional(Schema.String),
+  nodePools: Schema.optional(Schema.Array(NodePool)),
+  gracefulDecommissionTimeout: Schema.optional(Schema.String),
+  parentOperationId: Schema.optional(Schema.String),
+  cluster: Schema.optional(ClusterToRepair),
+  dataprocSuperUser: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "RepairClusterRequest" });
 
 export interface ListClustersResponse {
   /** Output only. The clusters in the project. */
@@ -4260,15 +3512,10 @@ export interface ListClustersResponse {
   nextPageToken?: string;
 }
 
-export const ListClustersResponse: Schema.Schema<ListClustersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clusters: Schema.optional(Schema.Array(Cluster)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListClustersResponse",
-  }) as any as Schema.Schema<ListClustersResponse>;
+export const ListClustersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  clusters: Schema.optional(Schema.Array(Cluster)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListClustersResponse" });
 
 export interface Interval {
   /** Optional. Inclusive start of the interval.If specified, a Timestamp matching this interval will have to be the same or after the start. */
@@ -4277,13 +3524,10 @@ export interface Interval {
   endTime?: string;
 }
 
-export const Interval: Schema.Schema<Interval> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Interval" }) as any as Schema.Schema<Interval>;
+export const Interval = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Interval" });
 
 export interface DiagnoseClusterRequest {
   /** Optional. (Optional) The output Cloud Storage directory for the diagnostic tarball. If not specified, a task-specific directory in the cluster's staging bucket will be used. */
@@ -4306,20 +3550,17 @@ export interface DiagnoseClusterRequest {
   yarnApplicationIds?: Array<string>;
 }
 
-export const DiagnoseClusterRequest: Schema.Schema<DiagnoseClusterRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tarballGcsDir: Schema.optional(Schema.String),
-      tarballAccess: Schema.optional(Schema.String),
-      diagnosisInterval: Schema.optional(Interval),
-      job: Schema.optional(Schema.String),
-      yarnApplicationId: Schema.optional(Schema.String),
-      jobs: Schema.optional(Schema.Array(Schema.String)),
-      yarnApplicationIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "DiagnoseClusterRequest",
-  }) as any as Schema.Schema<DiagnoseClusterRequest>;
+export const DiagnoseClusterRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    tarballGcsDir: Schema.optional(Schema.String),
+    tarballAccess: Schema.optional(Schema.String),
+    diagnosisInterval: Schema.optional(Interval),
+    job: Schema.optional(Schema.String),
+    yarnApplicationId: Schema.optional(Schema.String),
+    jobs: Schema.optional(Schema.Array(Schema.String)),
+    yarnApplicationIds: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "DiagnoseClusterRequest" });
 
 export interface InjectCredentialsRequest {
   /** Required. The cluster UUID. */
@@ -4328,15 +3569,11 @@ export interface InjectCredentialsRequest {
   credentialsCiphertext?: string;
 }
 
-export const InjectCredentialsRequest: Schema.Schema<InjectCredentialsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clusterUuid: Schema.optional(Schema.String),
-      credentialsCiphertext: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InjectCredentialsRequest",
-  }) as any as Schema.Schema<InjectCredentialsRequest>;
+export const InjectCredentialsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    clusterUuid: Schema.optional(Schema.String),
+    credentialsCiphertext: Schema.optional(Schema.String),
+  }).annotate({ identifier: "InjectCredentialsRequest" });
 
 export interface JupyterConfig {
   /** Optional. Kernel */
@@ -4345,22 +3582,16 @@ export interface JupyterConfig {
   displayName?: string;
 }
 
-export const JupyterConfig: Schema.Schema<JupyterConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kernel: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "JupyterConfig",
-  }) as any as Schema.Schema<JupyterConfig>;
+export const JupyterConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kernel: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+}).annotate({ identifier: "JupyterConfig" });
 
 export interface SparkConnectConfig {}
 
-export const SparkConnectConfig: Schema.Schema<SparkConnectConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "SparkConnectConfig",
-  }) as any as Schema.Schema<SparkConnectConfig>;
+export const SparkConnectConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "SparkConnectConfig" });
 
 export interface SessionStateHistory {
   /** Output only. The state of the session at this point in the session history. */
@@ -4378,16 +3609,11 @@ export interface SessionStateHistory {
   stateStartTime?: string;
 }
 
-export const SessionStateHistory: Schema.Schema<SessionStateHistory> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      stateMessage: Schema.optional(Schema.String),
-      stateStartTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SessionStateHistory",
-  }) as any as Schema.Schema<SessionStateHistory>;
+export const SessionStateHistory = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.String),
+  stateMessage: Schema.optional(Schema.String),
+  stateStartTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "SessionStateHistory" });
 
 export interface Session {
   /** Identifier. The resource name of the session. */
@@ -4431,27 +3657,24 @@ export interface Session {
   sessionTemplate?: string;
 }
 
-export const Session: Schema.Schema<Session> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      uuid: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      jupyterSession: Schema.optional(JupyterConfig),
-      sparkConnectSession: Schema.optional(SparkConnectConfig),
-      runtimeInfo: Schema.optional(RuntimeInfo),
-      state: Schema.optional(Schema.String),
-      stateMessage: Schema.optional(Schema.String),
-      stateTime: Schema.optional(Schema.String),
-      creator: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      runtimeConfig: Schema.optional(RuntimeConfig),
-      environmentConfig: Schema.optional(EnvironmentConfig),
-      user: Schema.optional(Schema.String),
-      stateHistory: Schema.optional(Schema.Array(SessionStateHistory)),
-      sessionTemplate: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Session" }) as any as Schema.Schema<Session>;
+export const Session = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  uuid: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  jupyterSession: Schema.optional(JupyterConfig),
+  sparkConnectSession: Schema.optional(SparkConnectConfig),
+  runtimeInfo: Schema.optional(RuntimeInfo),
+  state: Schema.optional(Schema.String),
+  stateMessage: Schema.optional(Schema.String),
+  stateTime: Schema.optional(Schema.String),
+  creator: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  runtimeConfig: Schema.optional(RuntimeConfig),
+  environmentConfig: Schema.optional(EnvironmentConfig),
+  user: Schema.optional(Schema.String),
+  stateHistory: Schema.optional(Schema.Array(SessionStateHistory)),
+  sessionTemplate: Schema.optional(Schema.String),
+}).annotate({ identifier: "Session" });
 
 export interface ListSessionsResponse {
   /** Output only. The sessions from the specified collection. */
@@ -4460,29 +3683,20 @@ export interface ListSessionsResponse {
   nextPageToken?: string;
 }
 
-export const ListSessionsResponse: Schema.Schema<ListSessionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sessions: Schema.optional(Schema.Array(Session)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListSessionsResponse",
-  }) as any as Schema.Schema<ListSessionsResponse>;
+export const ListSessionsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sessions: Schema.optional(Schema.Array(Session)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListSessionsResponse" });
 
 export interface TerminateSessionRequest {
   /** Optional. A unique ID used to identify the request. If the service receives two TerminateSessionRequest (https://cloud.google.com/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.TerminateSessionRequest)s with the same ID, the second request is ignored.Recommendation: Set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The value must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters. */
   requestId?: string;
 }
 
-export const TerminateSessionRequest: Schema.Schema<TerminateSessionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TerminateSessionRequest",
-  }) as any as Schema.Schema<TerminateSessionRequest>;
+export const TerminateSessionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "TerminateSessionRequest" });
 
 export interface WriteSessionSparkApplicationContextRequest {
   /** Required. Parent (Batch) resource reference. */
@@ -4491,22 +3705,18 @@ export interface WriteSessionSparkApplicationContextRequest {
   sparkWrapperObjects?: Array<SparkWrapperObject>;
 }
 
-export const WriteSessionSparkApplicationContextRequest: Schema.Schema<WriteSessionSparkApplicationContextRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parent: Schema.optional(Schema.String),
-      sparkWrapperObjects: Schema.optional(Schema.Array(SparkWrapperObject)),
-    }),
-  ).annotate({
-    identifier: "WriteSessionSparkApplicationContextRequest",
-  }) as any as Schema.Schema<WriteSessionSparkApplicationContextRequest>;
+export const WriteSessionSparkApplicationContextRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.optional(Schema.String),
+    sparkWrapperObjects: Schema.optional(Schema.Array(SparkWrapperObject)),
+  }).annotate({ identifier: "WriteSessionSparkApplicationContextRequest" });
 
 export interface WriteSessionSparkApplicationContextResponse {}
 
-export const WriteSessionSparkApplicationContextResponse: Schema.Schema<WriteSessionSparkApplicationContextResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const WriteSessionSparkApplicationContextResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "WriteSessionSparkApplicationContextResponse",
-  }) as any as Schema.Schema<WriteSessionSparkApplicationContextResponse>;
+  });
 
 export interface SearchSessionSparkApplicationsResponse {
   /** Output only. High level information corresponding to an application. */
@@ -4515,29 +3725,21 @@ export interface SearchSessionSparkApplicationsResponse {
   nextPageToken?: string;
 }
 
-export const SearchSessionSparkApplicationsResponse: Schema.Schema<SearchSessionSparkApplicationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sparkApplications: Schema.optional(Schema.Array(SparkApplication)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SearchSessionSparkApplicationsResponse",
-  }) as any as Schema.Schema<SearchSessionSparkApplicationsResponse>;
+export const SearchSessionSparkApplicationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sparkApplications: Schema.optional(Schema.Array(SparkApplication)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SearchSessionSparkApplicationsResponse" });
 
 export interface AccessSessionSparkApplicationResponse {
   /** Output only. High level information corresponding to an application. */
   application?: ApplicationInfo;
 }
 
-export const AccessSessionSparkApplicationResponse: Schema.Schema<AccessSessionSparkApplicationResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      application: Schema.optional(ApplicationInfo),
-    }),
-  ).annotate({
-    identifier: "AccessSessionSparkApplicationResponse",
-  }) as any as Schema.Schema<AccessSessionSparkApplicationResponse>;
+export const AccessSessionSparkApplicationResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    application: Schema.optional(ApplicationInfo),
+  }).annotate({ identifier: "AccessSessionSparkApplicationResponse" });
 
 export interface SearchSessionSparkApplicationJobsResponse {
   /** Output only. Data corresponding to a spark job. */
@@ -4546,29 +3748,21 @@ export interface SearchSessionSparkApplicationJobsResponse {
   nextPageToken?: string;
 }
 
-export const SearchSessionSparkApplicationJobsResponse: Schema.Schema<SearchSessionSparkApplicationJobsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sparkApplicationJobs: Schema.optional(Schema.Array(JobData)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SearchSessionSparkApplicationJobsResponse",
-  }) as any as Schema.Schema<SearchSessionSparkApplicationJobsResponse>;
+export const SearchSessionSparkApplicationJobsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sparkApplicationJobs: Schema.optional(Schema.Array(JobData)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SearchSessionSparkApplicationJobsResponse" });
 
 export interface AccessSessionSparkApplicationJobResponse {
   /** Output only. Data corresponding to a spark job. */
   jobData?: JobData;
 }
 
-export const AccessSessionSparkApplicationJobResponse: Schema.Schema<AccessSessionSparkApplicationJobResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      jobData: Schema.optional(JobData),
-    }),
-  ).annotate({
-    identifier: "AccessSessionSparkApplicationJobResponse",
-  }) as any as Schema.Schema<AccessSessionSparkApplicationJobResponse>;
+export const AccessSessionSparkApplicationJobResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    jobData: Schema.optional(JobData),
+  }).annotate({ identifier: "AccessSessionSparkApplicationJobResponse" });
 
 export interface SearchSessionSparkApplicationStagesResponse {
   /** Output only. Data corresponding to a stage. */
@@ -4577,15 +3771,11 @@ export interface SearchSessionSparkApplicationStagesResponse {
   nextPageToken?: string;
 }
 
-export const SearchSessionSparkApplicationStagesResponse: Schema.Schema<SearchSessionSparkApplicationStagesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sparkApplicationStages: Schema.optional(Schema.Array(StageData)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SearchSessionSparkApplicationStagesResponse",
-  }) as any as Schema.Schema<SearchSessionSparkApplicationStagesResponse>;
+export const SearchSessionSparkApplicationStagesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sparkApplicationStages: Schema.optional(Schema.Array(StageData)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SearchSessionSparkApplicationStagesResponse" });
 
 export interface SearchSessionSparkApplicationStageAttemptsResponse {
   /** Output only. Data corresponding to a stage attempts */
@@ -4594,29 +3784,25 @@ export interface SearchSessionSparkApplicationStageAttemptsResponse {
   nextPageToken?: string;
 }
 
-export const SearchSessionSparkApplicationStageAttemptsResponse: Schema.Schema<SearchSessionSparkApplicationStageAttemptsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sparkApplicationStageAttempts: Schema.optional(Schema.Array(StageData)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const SearchSessionSparkApplicationStageAttemptsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sparkApplicationStageAttempts: Schema.optional(Schema.Array(StageData)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "SearchSessionSparkApplicationStageAttemptsResponse",
-  }) as any as Schema.Schema<SearchSessionSparkApplicationStageAttemptsResponse>;
+  });
 
 export interface AccessSessionSparkApplicationStageAttemptResponse {
   /** Output only. Data corresponding to a stage. */
   stageData?: StageData;
 }
 
-export const AccessSessionSparkApplicationStageAttemptResponse: Schema.Schema<AccessSessionSparkApplicationStageAttemptResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stageData: Schema.optional(StageData),
-    }),
-  ).annotate({
+export const AccessSessionSparkApplicationStageAttemptResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    stageData: Schema.optional(StageData),
+  }).annotate({
     identifier: "AccessSessionSparkApplicationStageAttemptResponse",
-  }) as any as Schema.Schema<AccessSessionSparkApplicationStageAttemptResponse>;
+  });
 
 export interface SearchSessionSparkApplicationStageAttemptTasksResponse {
   /** Output only. Data corresponding to tasks created by spark. */
@@ -4625,17 +3811,13 @@ export interface SearchSessionSparkApplicationStageAttemptTasksResponse {
   nextPageToken?: string;
 }
 
-export const SearchSessionSparkApplicationStageAttemptTasksResponse: Schema.Schema<SearchSessionSparkApplicationStageAttemptTasksResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sparkApplicationStageAttemptTasks: Schema.optional(
-        Schema.Array(TaskData),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const SearchSessionSparkApplicationStageAttemptTasksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sparkApplicationStageAttemptTasks: Schema.optional(Schema.Array(TaskData)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "SearchSessionSparkApplicationStageAttemptTasksResponse",
-  }) as any as Schema.Schema<SearchSessionSparkApplicationStageAttemptTasksResponse>;
+  });
 
 export interface SearchSessionSparkApplicationExecutorsResponse {
   /** Details about executors used by the application. */
@@ -4644,15 +3826,11 @@ export interface SearchSessionSparkApplicationExecutorsResponse {
   nextPageToken?: string;
 }
 
-export const SearchSessionSparkApplicationExecutorsResponse: Schema.Schema<SearchSessionSparkApplicationExecutorsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sparkApplicationExecutors: Schema.optional(Schema.Array(ExecutorSummary)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SearchSessionSparkApplicationExecutorsResponse",
-  }) as any as Schema.Schema<SearchSessionSparkApplicationExecutorsResponse>;
+export const SearchSessionSparkApplicationExecutorsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sparkApplicationExecutors: Schema.optional(Schema.Array(ExecutorSummary)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SearchSessionSparkApplicationExecutorsResponse" });
 
 export interface SearchSessionSparkApplicationExecutorStageSummaryResponse {
   /** Details about executors used by the application stage. */
@@ -4661,17 +3839,15 @@ export interface SearchSessionSparkApplicationExecutorStageSummaryResponse {
   nextPageToken?: string;
 }
 
-export const SearchSessionSparkApplicationExecutorStageSummaryResponse: Schema.Schema<SearchSessionSparkApplicationExecutorStageSummaryResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sparkApplicationStageExecutors: Schema.optional(
-        Schema.Array(ExecutorStageSummary),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const SearchSessionSparkApplicationExecutorStageSummaryResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sparkApplicationStageExecutors: Schema.optional(
+      Schema.Array(ExecutorStageSummary),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "SearchSessionSparkApplicationExecutorStageSummaryResponse",
-  }) as any as Schema.Schema<SearchSessionSparkApplicationExecutorStageSummaryResponse>;
+  });
 
 export interface SearchSessionSparkApplicationSqlQueriesResponse {
   /** Output only. SQL Execution Data */
@@ -4680,115 +3856,93 @@ export interface SearchSessionSparkApplicationSqlQueriesResponse {
   nextPageToken?: string;
 }
 
-export const SearchSessionSparkApplicationSqlQueriesResponse: Schema.Schema<SearchSessionSparkApplicationSqlQueriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sparkApplicationSqlQueries: Schema.optional(
-        Schema.Array(SqlExecutionUiData),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const SearchSessionSparkApplicationSqlQueriesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sparkApplicationSqlQueries: Schema.optional(
+      Schema.Array(SqlExecutionUiData),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "SearchSessionSparkApplicationSqlQueriesResponse",
-  }) as any as Schema.Schema<SearchSessionSparkApplicationSqlQueriesResponse>;
+  });
 
 export interface AccessSessionSparkApplicationSqlQueryResponse {
   /** SQL Execution Data */
   executionData?: SqlExecutionUiData;
 }
 
-export const AccessSessionSparkApplicationSqlQueryResponse: Schema.Schema<AccessSessionSparkApplicationSqlQueryResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      executionData: Schema.optional(SqlExecutionUiData),
-    }),
-  ).annotate({
-    identifier: "AccessSessionSparkApplicationSqlQueryResponse",
-  }) as any as Schema.Schema<AccessSessionSparkApplicationSqlQueryResponse>;
+export const AccessSessionSparkApplicationSqlQueryResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    executionData: Schema.optional(SqlExecutionUiData),
+  }).annotate({ identifier: "AccessSessionSparkApplicationSqlQueryResponse" });
 
 export interface AccessSessionSparkApplicationSqlSparkPlanGraphResponse {
   /** SparkPlanGraph for a Spark Application execution. */
   sparkPlanGraph?: SparkPlanGraph;
 }
 
-export const AccessSessionSparkApplicationSqlSparkPlanGraphResponse: Schema.Schema<AccessSessionSparkApplicationSqlSparkPlanGraphResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sparkPlanGraph: Schema.optional(SparkPlanGraph),
-    }),
-  ).annotate({
+export const AccessSessionSparkApplicationSqlSparkPlanGraphResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sparkPlanGraph: Schema.optional(SparkPlanGraph),
+  }).annotate({
     identifier: "AccessSessionSparkApplicationSqlSparkPlanGraphResponse",
-  }) as any as Schema.Schema<AccessSessionSparkApplicationSqlSparkPlanGraphResponse>;
+  });
 
 export interface AccessSessionSparkApplicationStageRddOperationGraphResponse {
   /** RDD operation graph for a Spark Application Stage. */
   rddOperationGraph?: RddOperationGraph;
 }
 
-export const AccessSessionSparkApplicationStageRddOperationGraphResponse: Schema.Schema<AccessSessionSparkApplicationStageRddOperationGraphResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rddOperationGraph: Schema.optional(RddOperationGraph),
-    }),
-  ).annotate({
+export const AccessSessionSparkApplicationStageRddOperationGraphResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rddOperationGraph: Schema.optional(RddOperationGraph),
+  }).annotate({
     identifier: "AccessSessionSparkApplicationStageRddOperationGraphResponse",
-  }) as any as Schema.Schema<AccessSessionSparkApplicationStageRddOperationGraphResponse>;
+  });
 
 export interface AccessSessionSparkApplicationEnvironmentInfoResponse {
   /** Details about the Environment that the application is running in. */
   applicationEnvironmentInfo?: ApplicationEnvironmentInfo;
 }
 
-export const AccessSessionSparkApplicationEnvironmentInfoResponse: Schema.Schema<AccessSessionSparkApplicationEnvironmentInfoResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      applicationEnvironmentInfo: Schema.optional(ApplicationEnvironmentInfo),
-    }),
-  ).annotate({
+export const AccessSessionSparkApplicationEnvironmentInfoResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    applicationEnvironmentInfo: Schema.optional(ApplicationEnvironmentInfo),
+  }).annotate({
     identifier: "AccessSessionSparkApplicationEnvironmentInfoResponse",
-  }) as any as Schema.Schema<AccessSessionSparkApplicationEnvironmentInfoResponse>;
+  });
 
 export interface SummarizeSessionSparkApplicationJobsResponse {
   /** Summary of a Spark Application Jobs */
   jobsSummary?: JobsSummary;
 }
 
-export const SummarizeSessionSparkApplicationJobsResponse: Schema.Schema<SummarizeSessionSparkApplicationJobsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      jobsSummary: Schema.optional(JobsSummary),
-    }),
-  ).annotate({
-    identifier: "SummarizeSessionSparkApplicationJobsResponse",
-  }) as any as Schema.Schema<SummarizeSessionSparkApplicationJobsResponse>;
+export const SummarizeSessionSparkApplicationJobsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    jobsSummary: Schema.optional(JobsSummary),
+  }).annotate({ identifier: "SummarizeSessionSparkApplicationJobsResponse" });
 
 export interface SummarizeSessionSparkApplicationStagesResponse {
   /** Summary of a Spark Application Stages */
   stagesSummary?: StagesSummary;
 }
 
-export const SummarizeSessionSparkApplicationStagesResponse: Schema.Schema<SummarizeSessionSparkApplicationStagesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stagesSummary: Schema.optional(StagesSummary),
-    }),
-  ).annotate({
-    identifier: "SummarizeSessionSparkApplicationStagesResponse",
-  }) as any as Schema.Schema<SummarizeSessionSparkApplicationStagesResponse>;
+export const SummarizeSessionSparkApplicationStagesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    stagesSummary: Schema.optional(StagesSummary),
+  }).annotate({ identifier: "SummarizeSessionSparkApplicationStagesResponse" });
 
 export interface SummarizeSessionSparkApplicationStageAttemptTasksResponse {
   /** Summary of tasks for a Spark Application Stage Attempt */
   stageAttemptTasksSummary?: StageAttemptTasksSummary;
 }
 
-export const SummarizeSessionSparkApplicationStageAttemptTasksResponse: Schema.Schema<SummarizeSessionSparkApplicationStageAttemptTasksResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stageAttemptTasksSummary: Schema.optional(StageAttemptTasksSummary),
-    }),
-  ).annotate({
+export const SummarizeSessionSparkApplicationStageAttemptTasksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    stageAttemptTasksSummary: Schema.optional(StageAttemptTasksSummary),
+  }).annotate({
     identifier: "SummarizeSessionSparkApplicationStageAttemptTasksResponse",
-  }) as any as Schema.Schema<SummarizeSessionSparkApplicationStageAttemptTasksResponse>;
+  });
 
 export interface SummarizeSessionSparkApplicationExecutorsResponse {
   /** Spark Application Id */
@@ -4801,17 +3955,15 @@ export interface SummarizeSessionSparkApplicationExecutorsResponse {
   totalExecutorSummary?: ConsolidatedExecutorSummary;
 }
 
-export const SummarizeSessionSparkApplicationExecutorsResponse: Schema.Schema<SummarizeSessionSparkApplicationExecutorsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      applicationId: Schema.optional(Schema.String),
-      activeExecutorSummary: Schema.optional(ConsolidatedExecutorSummary),
-      deadExecutorSummary: Schema.optional(ConsolidatedExecutorSummary),
-      totalExecutorSummary: Schema.optional(ConsolidatedExecutorSummary),
-    }),
-  ).annotate({
+export const SummarizeSessionSparkApplicationExecutorsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    applicationId: Schema.optional(Schema.String),
+    activeExecutorSummary: Schema.optional(ConsolidatedExecutorSummary),
+    deadExecutorSummary: Schema.optional(ConsolidatedExecutorSummary),
+    totalExecutorSummary: Schema.optional(ConsolidatedExecutorSummary),
+  }).annotate({
     identifier: "SummarizeSessionSparkApplicationExecutorsResponse",
-  }) as any as Schema.Schema<SummarizeSessionSparkApplicationExecutorsResponse>;
+  });
 
 export interface AnalyzeBatchRequest {
   /** Optional. A unique ID used to identify the request. If the service receives two AnalyzeBatchRequest (http://cloud/dataproc/docs/reference/rpc/google.cloud.dataproc.v1#google.cloud.dataproc.v1.AnalyzeBatchRequest)s with the same request_id, the second request is ignored and the Operation that corresponds to the first request created and stored in the backend is returned.Recommendation: Set this value to a UUID (https://en.wikipedia.org/wiki/Universally_unique_identifier).The value must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). The maximum length is 40 characters. */
@@ -4820,15 +3972,10 @@ export interface AnalyzeBatchRequest {
   requestorId?: string;
 }
 
-export const AnalyzeBatchRequest: Schema.Schema<AnalyzeBatchRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestId: Schema.optional(Schema.String),
-      requestorId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AnalyzeBatchRequest",
-  }) as any as Schema.Schema<AnalyzeBatchRequest>;
+export const AnalyzeBatchRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  requestId: Schema.optional(Schema.String),
+  requestorId: Schema.optional(Schema.String),
+}).annotate({ identifier: "AnalyzeBatchRequest" });
 
 export interface BasicYarnAutoscalingConfig {
   /** Required. Timeout for YARN graceful decommissioning of Node Managers. Specifies the duration to wait for jobs to complete before forcefully removing workers (and potentially interrupting jobs). Only applicable to downscaling operations.Bounds: 0s, 1d. */
@@ -4843,18 +3990,14 @@ export interface BasicYarnAutoscalingConfig {
   scaleDownMinWorkerFraction?: number;
 }
 
-export const BasicYarnAutoscalingConfig: Schema.Schema<BasicYarnAutoscalingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gracefulDecommissionTimeout: Schema.optional(Schema.String),
-      scaleUpFactor: Schema.optional(Schema.Number),
-      scaleDownFactor: Schema.optional(Schema.Number),
-      scaleUpMinWorkerFraction: Schema.optional(Schema.Number),
-      scaleDownMinWorkerFraction: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "BasicYarnAutoscalingConfig",
-  }) as any as Schema.Schema<BasicYarnAutoscalingConfig>;
+export const BasicYarnAutoscalingConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gracefulDecommissionTimeout: Schema.optional(Schema.String),
+    scaleUpFactor: Schema.optional(Schema.Number),
+    scaleDownFactor: Schema.optional(Schema.Number),
+    scaleUpMinWorkerFraction: Schema.optional(Schema.Number),
+    scaleDownMinWorkerFraction: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "BasicYarnAutoscalingConfig" });
 
 export interface SparkStandaloneAutoscalingConfig {
   /** Required. Timeout for Spark graceful decommissioning of spark workers. Specifies the duration to wait for spark worker to complete spark decommissioning tasks before forcefully removing workers. Only applicable to downscaling operations.Bounds: 0s, 1d. */
@@ -4871,19 +4014,15 @@ export interface SparkStandaloneAutoscalingConfig {
   removeOnlyIdleWorkers?: boolean;
 }
 
-export const SparkStandaloneAutoscalingConfig: Schema.Schema<SparkStandaloneAutoscalingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gracefulDecommissionTimeout: Schema.optional(Schema.String),
-      scaleUpFactor: Schema.optional(Schema.Number),
-      scaleDownFactor: Schema.optional(Schema.Number),
-      scaleUpMinWorkerFraction: Schema.optional(Schema.Number),
-      scaleDownMinWorkerFraction: Schema.optional(Schema.Number),
-      removeOnlyIdleWorkers: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "SparkStandaloneAutoscalingConfig",
-  }) as any as Schema.Schema<SparkStandaloneAutoscalingConfig>;
+export const SparkStandaloneAutoscalingConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gracefulDecommissionTimeout: Schema.optional(Schema.String),
+    scaleUpFactor: Schema.optional(Schema.Number),
+    scaleDownFactor: Schema.optional(Schema.Number),
+    scaleUpMinWorkerFraction: Schema.optional(Schema.Number),
+    scaleDownMinWorkerFraction: Schema.optional(Schema.Number),
+    removeOnlyIdleWorkers: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "SparkStandaloneAutoscalingConfig" });
 
 export interface BasicAutoscalingAlgorithm {
   /** Optional. YARN autoscaling configuration. */
@@ -4894,16 +4033,12 @@ export interface BasicAutoscalingAlgorithm {
   cooldownPeriod?: string;
 }
 
-export const BasicAutoscalingAlgorithm: Schema.Schema<BasicAutoscalingAlgorithm> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      yarnConfig: Schema.optional(BasicYarnAutoscalingConfig),
-      sparkStandaloneConfig: Schema.optional(SparkStandaloneAutoscalingConfig),
-      cooldownPeriod: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BasicAutoscalingAlgorithm",
-  }) as any as Schema.Schema<BasicAutoscalingAlgorithm>;
+export const BasicAutoscalingAlgorithm =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    yarnConfig: Schema.optional(BasicYarnAutoscalingConfig),
+    sparkStandaloneConfig: Schema.optional(SparkStandaloneAutoscalingConfig),
+    cooldownPeriod: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BasicAutoscalingAlgorithm" });
 
 export interface InstanceGroupAutoscalingPolicyConfig {
   /** Optional. Minimum number of instances for this group.Primary workers - Bounds: 2, max_instances. Default: 2. Secondary workers - Bounds: 0, max_instances. Default: 0. */
@@ -4914,16 +4049,12 @@ export interface InstanceGroupAutoscalingPolicyConfig {
   weight?: number;
 }
 
-export const InstanceGroupAutoscalingPolicyConfig: Schema.Schema<InstanceGroupAutoscalingPolicyConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      minInstances: Schema.optional(Schema.Number),
-      maxInstances: Schema.optional(Schema.Number),
-      weight: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "InstanceGroupAutoscalingPolicyConfig",
-  }) as any as Schema.Schema<InstanceGroupAutoscalingPolicyConfig>;
+export const InstanceGroupAutoscalingPolicyConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    minInstances: Schema.optional(Schema.Number),
+    maxInstances: Schema.optional(Schema.Number),
+    weight: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "InstanceGroupAutoscalingPolicyConfig" });
 
 export interface AutoscalingPolicy {
   /** Required. The policy id.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters. */
@@ -4945,22 +4076,15 @@ export interface AutoscalingPolicy {
     | (string & {});
 }
 
-export const AutoscalingPolicy: Schema.Schema<AutoscalingPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      basicAlgorithm: Schema.optional(BasicAutoscalingAlgorithm),
-      workerConfig: Schema.optional(InstanceGroupAutoscalingPolicyConfig),
-      secondaryWorkerConfig: Schema.optional(
-        InstanceGroupAutoscalingPolicyConfig,
-      ),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      clusterType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AutoscalingPolicy",
-  }) as any as Schema.Schema<AutoscalingPolicy>;
+export const AutoscalingPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  basicAlgorithm: Schema.optional(BasicAutoscalingAlgorithm),
+  workerConfig: Schema.optional(InstanceGroupAutoscalingPolicyConfig),
+  secondaryWorkerConfig: Schema.optional(InstanceGroupAutoscalingPolicyConfig),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  clusterType: Schema.optional(Schema.String),
+}).annotate({ identifier: "AutoscalingPolicy" });
 
 export interface ListAutoscalingPoliciesResponse {
   /** Output only. Autoscaling policies list. */
@@ -4969,15 +4093,11 @@ export interface ListAutoscalingPoliciesResponse {
   nextPageToken?: string;
 }
 
-export const ListAutoscalingPoliciesResponse: Schema.Schema<ListAutoscalingPoliciesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policies: Schema.optional(Schema.Array(AutoscalingPolicy)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAutoscalingPoliciesResponse",
-  }) as any as Schema.Schema<ListAutoscalingPoliciesResponse>;
+export const ListAutoscalingPoliciesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policies: Schema.optional(Schema.Array(AutoscalingPolicy)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListAutoscalingPoliciesResponse" });
 
 export interface JobReference {
   /** Optional. The ID of the Google Cloud Platform project that the job belongs to. If specified, must match the request project ID. */
@@ -4986,15 +4106,10 @@ export interface JobReference {
   jobId?: string;
 }
 
-export const JobReference: Schema.Schema<JobReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      projectId: Schema.optional(Schema.String),
-      jobId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "JobReference",
-  }) as any as Schema.Schema<JobReference>;
+export const JobReference = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  projectId: Schema.optional(Schema.String),
+  jobId: Schema.optional(Schema.String),
+}).annotate({ identifier: "JobReference" });
 
 export interface JobPlacement {
   /** Required. The name of the cluster where the job will be submitted. */
@@ -5005,18 +4120,11 @@ export interface JobPlacement {
   clusterLabels?: Record<string, string>;
 }
 
-export const JobPlacement: Schema.Schema<JobPlacement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clusterName: Schema.optional(Schema.String),
-      clusterUuid: Schema.optional(Schema.String),
-      clusterLabels: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-    }),
-  ).annotate({
-    identifier: "JobPlacement",
-  }) as any as Schema.Schema<JobPlacement>;
+export const JobPlacement = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  clusterName: Schema.optional(Schema.String),
+  clusterUuid: Schema.optional(Schema.String),
+  clusterLabels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "JobPlacement" });
 
 export interface LoggingConfig {
   /** The per-package log levels for the driver. This can include "root" package name to configure rootLogger. Examples: - 'com.google = FATAL' - 'root = INFO' - 'org.apache = DEBUG' */
@@ -5035,16 +4143,9 @@ export interface LoggingConfig {
   >;
 }
 
-export const LoggingConfig: Schema.Schema<LoggingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      driverLogLevels: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-    }),
-  ).annotate({
-    identifier: "LoggingConfig",
-  }) as any as Schema.Schema<LoggingConfig>;
+export const LoggingConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  driverLogLevels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "LoggingConfig" });
 
 export interface HadoopJob {
   /** The HCFS URI of the jar file containing the main class. Examples: 'gs://foo-bucket/analytics-binaries/extract-useful-metrics-mr.jar' 'hdfs:/tmp/test-samples/custom-wordcount.jar' 'file:///home/usr/lib/hadoop-mapreduce/hadoop-mapreduce-examples.jar' */
@@ -5065,19 +4166,16 @@ export interface HadoopJob {
   loggingConfig?: LoggingConfig;
 }
 
-export const HadoopJob: Schema.Schema<HadoopJob> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mainJarFileUri: Schema.optional(Schema.String),
-      mainClass: Schema.optional(Schema.String),
-      args: Schema.optional(Schema.Array(Schema.String)),
-      jarFileUris: Schema.optional(Schema.Array(Schema.String)),
-      fileUris: Schema.optional(Schema.Array(Schema.String)),
-      archiveUris: Schema.optional(Schema.Array(Schema.String)),
-      properties: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      loggingConfig: Schema.optional(LoggingConfig),
-    }),
-  ).annotate({ identifier: "HadoopJob" }) as any as Schema.Schema<HadoopJob>;
+export const HadoopJob = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  mainJarFileUri: Schema.optional(Schema.String),
+  mainClass: Schema.optional(Schema.String),
+  args: Schema.optional(Schema.Array(Schema.String)),
+  jarFileUris: Schema.optional(Schema.Array(Schema.String)),
+  fileUris: Schema.optional(Schema.Array(Schema.String)),
+  archiveUris: Schema.optional(Schema.Array(Schema.String)),
+  properties: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  loggingConfig: Schema.optional(LoggingConfig),
+}).annotate({ identifier: "HadoopJob" });
 
 export interface SparkJob {
   /** The HCFS URI of the jar file that contains the main class. */
@@ -5098,19 +4196,16 @@ export interface SparkJob {
   loggingConfig?: LoggingConfig;
 }
 
-export const SparkJob: Schema.Schema<SparkJob> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mainJarFileUri: Schema.optional(Schema.String),
-      mainClass: Schema.optional(Schema.String),
-      args: Schema.optional(Schema.Array(Schema.String)),
-      jarFileUris: Schema.optional(Schema.Array(Schema.String)),
-      fileUris: Schema.optional(Schema.Array(Schema.String)),
-      archiveUris: Schema.optional(Schema.Array(Schema.String)),
-      properties: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      loggingConfig: Schema.optional(LoggingConfig),
-    }),
-  ).annotate({ identifier: "SparkJob" }) as any as Schema.Schema<SparkJob>;
+export const SparkJob = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  mainJarFileUri: Schema.optional(Schema.String),
+  mainClass: Schema.optional(Schema.String),
+  args: Schema.optional(Schema.Array(Schema.String)),
+  jarFileUris: Schema.optional(Schema.Array(Schema.String)),
+  fileUris: Schema.optional(Schema.Array(Schema.String)),
+  archiveUris: Schema.optional(Schema.Array(Schema.String)),
+  properties: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  loggingConfig: Schema.optional(LoggingConfig),
+}).annotate({ identifier: "SparkJob" });
 
 export interface PySparkJob {
   /** Required. The HCFS URI of the main Python file to use as the driver. Must be a .py file. */
@@ -5131,31 +4226,25 @@ export interface PySparkJob {
   loggingConfig?: LoggingConfig;
 }
 
-export const PySparkJob: Schema.Schema<PySparkJob> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mainPythonFileUri: Schema.optional(Schema.String),
-      args: Schema.optional(Schema.Array(Schema.String)),
-      pythonFileUris: Schema.optional(Schema.Array(Schema.String)),
-      jarFileUris: Schema.optional(Schema.Array(Schema.String)),
-      fileUris: Schema.optional(Schema.Array(Schema.String)),
-      archiveUris: Schema.optional(Schema.Array(Schema.String)),
-      properties: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      loggingConfig: Schema.optional(LoggingConfig),
-    }),
-  ).annotate({ identifier: "PySparkJob" }) as any as Schema.Schema<PySparkJob>;
+export const PySparkJob = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  mainPythonFileUri: Schema.optional(Schema.String),
+  args: Schema.optional(Schema.Array(Schema.String)),
+  pythonFileUris: Schema.optional(Schema.Array(Schema.String)),
+  jarFileUris: Schema.optional(Schema.Array(Schema.String)),
+  fileUris: Schema.optional(Schema.Array(Schema.String)),
+  archiveUris: Schema.optional(Schema.Array(Schema.String)),
+  properties: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  loggingConfig: Schema.optional(LoggingConfig),
+}).annotate({ identifier: "PySparkJob" });
 
 export interface QueryList {
   /** Required. The queries to execute. You do not need to end a query expression with a semicolon. Multiple queries can be specified in one string by separating each with a semicolon. Here is an example of a Dataproc API snippet that uses a QueryList to specify a HiveJob: "hiveJob": { "queryList": { "queries": [ "query1", "query2", "query3;query4", ] } } */
   queries?: Array<string>;
 }
 
-export const QueryList: Schema.Schema<QueryList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      queries: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "QueryList" }) as any as Schema.Schema<QueryList>;
+export const QueryList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  queries: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "QueryList" });
 
 export interface HiveJob {
   /** The HCFS URI of the script that contains Hive queries. */
@@ -5172,19 +4261,14 @@ export interface HiveJob {
   jarFileUris?: Array<string>;
 }
 
-export const HiveJob: Schema.Schema<HiveJob> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      queryFileUri: Schema.optional(Schema.String),
-      queryList: Schema.optional(QueryList),
-      continueOnFailure: Schema.optional(Schema.Boolean),
-      scriptVariables: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      properties: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      jarFileUris: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "HiveJob" }) as any as Schema.Schema<HiveJob>;
+export const HiveJob = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  queryFileUri: Schema.optional(Schema.String),
+  queryList: Schema.optional(QueryList),
+  continueOnFailure: Schema.optional(Schema.Boolean),
+  scriptVariables: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  properties: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  jarFileUris: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "HiveJob" });
 
 export interface PigJob {
   /** The HCFS URI of the script that contains the Pig queries. */
@@ -5203,20 +4287,15 @@ export interface PigJob {
   loggingConfig?: LoggingConfig;
 }
 
-export const PigJob: Schema.Schema<PigJob> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      queryFileUri: Schema.optional(Schema.String),
-      queryList: Schema.optional(QueryList),
-      continueOnFailure: Schema.optional(Schema.Boolean),
-      scriptVariables: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      properties: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      jarFileUris: Schema.optional(Schema.Array(Schema.String)),
-      loggingConfig: Schema.optional(LoggingConfig),
-    }),
-  ).annotate({ identifier: "PigJob" }) as any as Schema.Schema<PigJob>;
+export const PigJob = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  queryFileUri: Schema.optional(Schema.String),
+  queryList: Schema.optional(QueryList),
+  continueOnFailure: Schema.optional(Schema.Boolean),
+  scriptVariables: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  properties: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  jarFileUris: Schema.optional(Schema.Array(Schema.String)),
+  loggingConfig: Schema.optional(LoggingConfig),
+}).annotate({ identifier: "PigJob" });
 
 export interface SparkRJob {
   /** Required. The HCFS URI of the main R file to use as the driver. Must be a .R file. */
@@ -5233,17 +4312,14 @@ export interface SparkRJob {
   loggingConfig?: LoggingConfig;
 }
 
-export const SparkRJob: Schema.Schema<SparkRJob> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mainRFileUri: Schema.optional(Schema.String),
-      args: Schema.optional(Schema.Array(Schema.String)),
-      fileUris: Schema.optional(Schema.Array(Schema.String)),
-      archiveUris: Schema.optional(Schema.Array(Schema.String)),
-      properties: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      loggingConfig: Schema.optional(LoggingConfig),
-    }),
-  ).annotate({ identifier: "SparkRJob" }) as any as Schema.Schema<SparkRJob>;
+export const SparkRJob = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  mainRFileUri: Schema.optional(Schema.String),
+  args: Schema.optional(Schema.Array(Schema.String)),
+  fileUris: Schema.optional(Schema.Array(Schema.String)),
+  archiveUris: Schema.optional(Schema.Array(Schema.String)),
+  properties: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  loggingConfig: Schema.optional(LoggingConfig),
+}).annotate({ identifier: "SparkRJob" });
 
 export interface SparkSqlJob {
   /** The HCFS URI of the script that contains SQL queries. */
@@ -5260,21 +4336,14 @@ export interface SparkSqlJob {
   loggingConfig?: LoggingConfig;
 }
 
-export const SparkSqlJob: Schema.Schema<SparkSqlJob> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      queryFileUri: Schema.optional(Schema.String),
-      queryList: Schema.optional(QueryList),
-      scriptVariables: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      properties: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      jarFileUris: Schema.optional(Schema.Array(Schema.String)),
-      loggingConfig: Schema.optional(LoggingConfig),
-    }),
-  ).annotate({
-    identifier: "SparkSqlJob",
-  }) as any as Schema.Schema<SparkSqlJob>;
+export const SparkSqlJob = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  queryFileUri: Schema.optional(Schema.String),
+  queryList: Schema.optional(QueryList),
+  scriptVariables: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  properties: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  jarFileUris: Schema.optional(Schema.Array(Schema.String)),
+  loggingConfig: Schema.optional(LoggingConfig),
+}).annotate({ identifier: "SparkSqlJob" });
 
 export interface PrestoJob {
   /** The HCFS URI of the script that contains SQL queries. */
@@ -5293,18 +4362,15 @@ export interface PrestoJob {
   loggingConfig?: LoggingConfig;
 }
 
-export const PrestoJob: Schema.Schema<PrestoJob> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      queryFileUri: Schema.optional(Schema.String),
-      queryList: Schema.optional(QueryList),
-      continueOnFailure: Schema.optional(Schema.Boolean),
-      outputFormat: Schema.optional(Schema.String),
-      clientTags: Schema.optional(Schema.Array(Schema.String)),
-      properties: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      loggingConfig: Schema.optional(LoggingConfig),
-    }),
-  ).annotate({ identifier: "PrestoJob" }) as any as Schema.Schema<PrestoJob>;
+export const PrestoJob = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  queryFileUri: Schema.optional(Schema.String),
+  queryList: Schema.optional(QueryList),
+  continueOnFailure: Schema.optional(Schema.Boolean),
+  outputFormat: Schema.optional(Schema.String),
+  clientTags: Schema.optional(Schema.Array(Schema.String)),
+  properties: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  loggingConfig: Schema.optional(LoggingConfig),
+}).annotate({ identifier: "PrestoJob" });
 
 export interface TrinoJob {
   /** The HCFS URI of the script that contains SQL queries. */
@@ -5323,18 +4389,15 @@ export interface TrinoJob {
   loggingConfig?: LoggingConfig;
 }
 
-export const TrinoJob: Schema.Schema<TrinoJob> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      queryFileUri: Schema.optional(Schema.String),
-      queryList: Schema.optional(QueryList),
-      continueOnFailure: Schema.optional(Schema.Boolean),
-      outputFormat: Schema.optional(Schema.String),
-      clientTags: Schema.optional(Schema.Array(Schema.String)),
-      properties: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      loggingConfig: Schema.optional(LoggingConfig),
-    }),
-  ).annotate({ identifier: "TrinoJob" }) as any as Schema.Schema<TrinoJob>;
+export const TrinoJob = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  queryFileUri: Schema.optional(Schema.String),
+  queryList: Schema.optional(QueryList),
+  continueOnFailure: Schema.optional(Schema.Boolean),
+  outputFormat: Schema.optional(Schema.String),
+  clientTags: Schema.optional(Schema.Array(Schema.String)),
+  properties: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  loggingConfig: Schema.optional(LoggingConfig),
+}).annotate({ identifier: "TrinoJob" });
 
 export interface FlinkJob {
   /** The HCFS URI of the jar file that contains the main class. */
@@ -5353,18 +4416,15 @@ export interface FlinkJob {
   loggingConfig?: LoggingConfig;
 }
 
-export const FlinkJob: Schema.Schema<FlinkJob> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mainJarFileUri: Schema.optional(Schema.String),
-      mainClass: Schema.optional(Schema.String),
-      args: Schema.optional(Schema.Array(Schema.String)),
-      jarFileUris: Schema.optional(Schema.Array(Schema.String)),
-      savepointUri: Schema.optional(Schema.String),
-      properties: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      loggingConfig: Schema.optional(LoggingConfig),
-    }),
-  ).annotate({ identifier: "FlinkJob" }) as any as Schema.Schema<FlinkJob>;
+export const FlinkJob = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  mainJarFileUri: Schema.optional(Schema.String),
+  mainClass: Schema.optional(Schema.String),
+  args: Schema.optional(Schema.Array(Schema.String)),
+  jarFileUris: Schema.optional(Schema.Array(Schema.String)),
+  savepointUri: Schema.optional(Schema.String),
+  properties: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  loggingConfig: Schema.optional(LoggingConfig),
+}).annotate({ identifier: "FlinkJob" });
 
 export interface JobStatus {
   /** Output only. A state message specifying the overall job state. */
@@ -5393,15 +4453,12 @@ export interface JobStatus {
     | (string & {});
 }
 
-export const JobStatus: Schema.Schema<JobStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      details: Schema.optional(Schema.String),
-      stateStartTime: Schema.optional(Schema.String),
-      substate: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "JobStatus" }) as any as Schema.Schema<JobStatus>;
+export const JobStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.String),
+  details: Schema.optional(Schema.String),
+  stateStartTime: Schema.optional(Schema.String),
+  substate: Schema.optional(Schema.String),
+}).annotate({ identifier: "JobStatus" });
 
 export interface YarnApplication {
   /** Required. The application name. */
@@ -5428,19 +4485,14 @@ export interface YarnApplication {
   memoryMbSeconds?: string;
 }
 
-export const YarnApplication: Schema.Schema<YarnApplication> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      progress: Schema.optional(Schema.Number),
-      trackingUrl: Schema.optional(Schema.String),
-      vcoreSeconds: Schema.optional(Schema.String),
-      memoryMbSeconds: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "YarnApplication",
-  }) as any as Schema.Schema<YarnApplication>;
+export const YarnApplication = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  progress: Schema.optional(Schema.Number),
+  trackingUrl: Schema.optional(Schema.String),
+  vcoreSeconds: Schema.optional(Schema.String),
+  memoryMbSeconds: Schema.optional(Schema.String),
+}).annotate({ identifier: "YarnApplication" });
 
 export interface JobScheduling {
   /** Optional. Maximum number of times per hour a driver can be restarted as a result of driver exiting with non-zero code before job is reported failed.A job might be reported as thrashing if the driver exits with a non-zero code four times within a 10-minute window.Maximum value is 10.Note: This restartable job option is not supported in Dataproc workflow templates (https://cloud.google.com/dataproc/docs/concepts/workflows/using-workflows#adding_jobs_to_a_template). */
@@ -5449,15 +4501,10 @@ export interface JobScheduling {
   maxFailuresTotal?: number;
 }
 
-export const JobScheduling: Schema.Schema<JobScheduling> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      maxFailuresPerHour: Schema.optional(Schema.Number),
-      maxFailuresTotal: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "JobScheduling",
-  }) as any as Schema.Schema<JobScheduling>;
+export const JobScheduling = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  maxFailuresPerHour: Schema.optional(Schema.Number),
+  maxFailuresTotal: Schema.optional(Schema.Number),
+}).annotate({ identifier: "JobScheduling" });
 
 export interface DriverSchedulingConfig {
   /** Required. The amount of memory in MB the driver is requesting. */
@@ -5466,15 +4513,12 @@ export interface DriverSchedulingConfig {
   vcores?: number;
 }
 
-export const DriverSchedulingConfig: Schema.Schema<DriverSchedulingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      memoryMb: Schema.optional(Schema.Number),
-      vcores: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "DriverSchedulingConfig",
-  }) as any as Schema.Schema<DriverSchedulingConfig>;
+export const DriverSchedulingConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    memoryMb: Schema.optional(Schema.Number),
+    vcores: Schema.optional(Schema.Number),
+  },
+).annotate({ identifier: "DriverSchedulingConfig" });
 
 export interface Job {
   /** Optional. The fully qualified reference to the job, which can be used to obtain the equivalent REST path of the job resource. If this property is not specified when a job is created, the server generates a job_id. */
@@ -5523,33 +4567,30 @@ export interface Job {
   driverSchedulingConfig?: DriverSchedulingConfig;
 }
 
-export const Job: Schema.Schema<Job> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reference: Schema.optional(JobReference),
-      placement: Schema.optional(JobPlacement),
-      hadoopJob: Schema.optional(HadoopJob),
-      sparkJob: Schema.optional(SparkJob),
-      pysparkJob: Schema.optional(PySparkJob),
-      hiveJob: Schema.optional(HiveJob),
-      pigJob: Schema.optional(PigJob),
-      sparkRJob: Schema.optional(SparkRJob),
-      sparkSqlJob: Schema.optional(SparkSqlJob),
-      prestoJob: Schema.optional(PrestoJob),
-      trinoJob: Schema.optional(TrinoJob),
-      flinkJob: Schema.optional(FlinkJob),
-      status: Schema.optional(JobStatus),
-      statusHistory: Schema.optional(Schema.Array(JobStatus)),
-      yarnApplications: Schema.optional(Schema.Array(YarnApplication)),
-      driverOutputResourceUri: Schema.optional(Schema.String),
-      driverControlFilesUri: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      scheduling: Schema.optional(JobScheduling),
-      jobUuid: Schema.optional(Schema.String),
-      done: Schema.optional(Schema.Boolean),
-      driverSchedulingConfig: Schema.optional(DriverSchedulingConfig),
-    }),
-  ).annotate({ identifier: "Job" }) as any as Schema.Schema<Job>;
+export const Job = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  reference: Schema.optional(JobReference),
+  placement: Schema.optional(JobPlacement),
+  hadoopJob: Schema.optional(HadoopJob),
+  sparkJob: Schema.optional(SparkJob),
+  pysparkJob: Schema.optional(PySparkJob),
+  hiveJob: Schema.optional(HiveJob),
+  pigJob: Schema.optional(PigJob),
+  sparkRJob: Schema.optional(SparkRJob),
+  sparkSqlJob: Schema.optional(SparkSqlJob),
+  prestoJob: Schema.optional(PrestoJob),
+  trinoJob: Schema.optional(TrinoJob),
+  flinkJob: Schema.optional(FlinkJob),
+  status: Schema.optional(JobStatus),
+  statusHistory: Schema.optional(Schema.Array(JobStatus)),
+  yarnApplications: Schema.optional(Schema.Array(YarnApplication)),
+  driverOutputResourceUri: Schema.optional(Schema.String),
+  driverControlFilesUri: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  scheduling: Schema.optional(JobScheduling),
+  jobUuid: Schema.optional(Schema.String),
+  done: Schema.optional(Schema.Boolean),
+  driverSchedulingConfig: Schema.optional(DriverSchedulingConfig),
+}).annotate({ identifier: "Job" });
 
 export interface SubmitJobRequest {
   /** Required. The job resource. */
@@ -5558,15 +4599,10 @@ export interface SubmitJobRequest {
   requestId?: string;
 }
 
-export const SubmitJobRequest: Schema.Schema<SubmitJobRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      job: Schema.optional(Job),
-      requestId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SubmitJobRequest",
-  }) as any as Schema.Schema<SubmitJobRequest>;
+export const SubmitJobRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  job: Schema.optional(Job),
+  requestId: Schema.optional(Schema.String),
+}).annotate({ identifier: "SubmitJobRequest" });
 
 export interface ListJobsResponse {
   /** Output only. Jobs list. */
@@ -5577,23 +4613,17 @@ export interface ListJobsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListJobsResponse: Schema.Schema<ListJobsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      jobs: Schema.optional(Schema.Array(Job)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListJobsResponse",
-  }) as any as Schema.Schema<ListJobsResponse>;
+export const ListJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  jobs: Schema.optional(Schema.Array(Job)),
+  nextPageToken: Schema.optional(Schema.String),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ListJobsResponse" });
 
 export interface CancelJobRequest {}
 
-export const CancelJobRequest: Schema.Schema<CancelJobRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelJobRequest",
-  }) as any as Schema.Schema<CancelJobRequest>;
+export const CancelJobRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelJobRequest" });
 
 export interface SessionTemplate {
   /** Required. Identifier. The resource name of the session template. */
@@ -5620,24 +4650,19 @@ export interface SessionTemplate {
   uuid?: string;
 }
 
-export const SessionTemplate: Schema.Schema<SessionTemplate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      jupyterSession: Schema.optional(JupyterConfig),
-      sparkConnectSession: Schema.optional(SparkConnectConfig),
-      creator: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      runtimeConfig: Schema.optional(RuntimeConfig),
-      environmentConfig: Schema.optional(EnvironmentConfig),
-      updateTime: Schema.optional(Schema.String),
-      uuid: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SessionTemplate",
-  }) as any as Schema.Schema<SessionTemplate>;
+export const SessionTemplate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  jupyterSession: Schema.optional(JupyterConfig),
+  sparkConnectSession: Schema.optional(SparkConnectConfig),
+  creator: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  runtimeConfig: Schema.optional(RuntimeConfig),
+  environmentConfig: Schema.optional(EnvironmentConfig),
+  updateTime: Schema.optional(Schema.String),
+  uuid: Schema.optional(Schema.String),
+}).annotate({ identifier: "SessionTemplate" });
 
 export interface ListSessionTemplatesResponse {
   /** Output only. Session template list */
@@ -5646,15 +4671,11 @@ export interface ListSessionTemplatesResponse {
   nextPageToken?: string;
 }
 
-export const ListSessionTemplatesResponse: Schema.Schema<ListSessionTemplatesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sessionTemplates: Schema.optional(Schema.Array(SessionTemplate)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListSessionTemplatesResponse",
-  }) as any as Schema.Schema<ListSessionTemplatesResponse>;
+export const ListSessionTemplatesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sessionTemplates: Schema.optional(Schema.Array(SessionTemplate)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListSessionTemplatesResponse" });
 
 export interface ManagedCluster {
   /** Required. The cluster name prefix. A unique cluster name will be formed by appending a random suffix.The name must contain only lower-case letters (a-z), numbers (0-9), and hyphens (-). Must begin with a letter. Cannot begin or end with hyphen. Must consist of between 2 and 35 characters. */
@@ -5665,16 +4686,11 @@ export interface ManagedCluster {
   labels?: Record<string, string>;
 }
 
-export const ManagedCluster: Schema.Schema<ManagedCluster> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clusterName: Schema.optional(Schema.String),
-      config: Schema.optional(ClusterConfig),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ManagedCluster",
-  }) as any as Schema.Schema<ManagedCluster>;
+export const ManagedCluster = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  clusterName: Schema.optional(Schema.String),
+  config: Schema.optional(ClusterConfig),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "ManagedCluster" });
 
 export interface ClusterSelector {
   /** Optional. The zone where workflow process executes. This parameter does not affect the selection of the cluster.If unspecified, the zone of the first cluster matching the selector is used. */
@@ -5683,17 +4699,10 @@ export interface ClusterSelector {
   clusterLabels?: Record<string, string>;
 }
 
-export const ClusterSelector: Schema.Schema<ClusterSelector> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      zone: Schema.optional(Schema.String),
-      clusterLabels: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-    }),
-  ).annotate({
-    identifier: "ClusterSelector",
-  }) as any as Schema.Schema<ClusterSelector>;
+export const ClusterSelector = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  zone: Schema.optional(Schema.String),
+  clusterLabels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "ClusterSelector" });
 
 export interface WorkflowTemplatePlacement {
   /** A cluster that is managed by the workflow. */
@@ -5702,15 +4711,11 @@ export interface WorkflowTemplatePlacement {
   clusterSelector?: ClusterSelector;
 }
 
-export const WorkflowTemplatePlacement: Schema.Schema<WorkflowTemplatePlacement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      managedCluster: Schema.optional(ManagedCluster),
-      clusterSelector: Schema.optional(ClusterSelector),
-    }),
-  ).annotate({
-    identifier: "WorkflowTemplatePlacement",
-  }) as any as Schema.Schema<WorkflowTemplatePlacement>;
+export const WorkflowTemplatePlacement =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    managedCluster: Schema.optional(ManagedCluster),
+    clusterSelector: Schema.optional(ClusterSelector),
+  }).annotate({ identifier: "WorkflowTemplatePlacement" });
 
 export interface OrderedJob {
   /** Required. The step id. The id must be unique among all jobs within the template.The step id is used as prefix for job id, as job goog-dataproc-workflow-step-id label, and in prerequisiteStepIds field from other steps.The id must contain only letters (a-z, A-Z), numbers (0-9), underscores (_), and hyphens (-). Cannot begin or end with underscore or hyphen. Must consist of between 3 and 50 characters. */
@@ -5743,53 +4748,40 @@ export interface OrderedJob {
   prerequisiteStepIds?: Array<string>;
 }
 
-export const OrderedJob: Schema.Schema<OrderedJob> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stepId: Schema.optional(Schema.String),
-      hadoopJob: Schema.optional(HadoopJob),
-      sparkJob: Schema.optional(SparkJob),
-      pysparkJob: Schema.optional(PySparkJob),
-      hiveJob: Schema.optional(HiveJob),
-      pigJob: Schema.optional(PigJob),
-      sparkRJob: Schema.optional(SparkRJob),
-      sparkSqlJob: Schema.optional(SparkSqlJob),
-      prestoJob: Schema.optional(PrestoJob),
-      trinoJob: Schema.optional(TrinoJob),
-      flinkJob: Schema.optional(FlinkJob),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      scheduling: Schema.optional(JobScheduling),
-      prerequisiteStepIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "OrderedJob" }) as any as Schema.Schema<OrderedJob>;
+export const OrderedJob = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  stepId: Schema.optional(Schema.String),
+  hadoopJob: Schema.optional(HadoopJob),
+  sparkJob: Schema.optional(SparkJob),
+  pysparkJob: Schema.optional(PySparkJob),
+  hiveJob: Schema.optional(HiveJob),
+  pigJob: Schema.optional(PigJob),
+  sparkRJob: Schema.optional(SparkRJob),
+  sparkSqlJob: Schema.optional(SparkSqlJob),
+  prestoJob: Schema.optional(PrestoJob),
+  trinoJob: Schema.optional(TrinoJob),
+  flinkJob: Schema.optional(FlinkJob),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  scheduling: Schema.optional(JobScheduling),
+  prerequisiteStepIds: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "OrderedJob" });
 
 export interface RegexValidation {
   /** Required. RE2 regular expressions used to validate the parameter's value. The value must match the regex in its entirety (substring matches are not sufficient). */
   regexes?: Array<string>;
 }
 
-export const RegexValidation: Schema.Schema<RegexValidation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      regexes: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "RegexValidation",
-  }) as any as Schema.Schema<RegexValidation>;
+export const RegexValidation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  regexes: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "RegexValidation" });
 
 export interface ValueValidation {
   /** Required. List of allowed values for the parameter. */
   values?: Array<string>;
 }
 
-export const ValueValidation: Schema.Schema<ValueValidation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      values: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ValueValidation",
-  }) as any as Schema.Schema<ValueValidation>;
+export const ValueValidation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  values: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ValueValidation" });
 
 export interface ParameterValidation {
   /** Validation based on regular expressions. */
@@ -5798,15 +4790,10 @@ export interface ParameterValidation {
   values?: ValueValidation;
 }
 
-export const ParameterValidation: Schema.Schema<ParameterValidation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      regex: Schema.optional(RegexValidation),
-      values: Schema.optional(ValueValidation),
-    }),
-  ).annotate({
-    identifier: "ParameterValidation",
-  }) as any as Schema.Schema<ParameterValidation>;
+export const ParameterValidation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  regex: Schema.optional(RegexValidation),
+  values: Schema.optional(ValueValidation),
+}).annotate({ identifier: "ParameterValidation" });
 
 export interface TemplateParameter {
   /** Required. Parameter name. The parameter name is used as the key, and paired with the parameter value, which are passed to the template when the template is instantiated. The name must contain only capital letters (A-Z), numbers (0-9), and underscores (_), and must not start with a number. The maximum length is 40 characters. */
@@ -5819,31 +4806,24 @@ export interface TemplateParameter {
   validation?: ParameterValidation;
 }
 
-export const TemplateParameter: Schema.Schema<TemplateParameter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      fields: Schema.optional(Schema.Array(Schema.String)),
-      description: Schema.optional(Schema.String),
-      validation: Schema.optional(ParameterValidation),
-    }),
-  ).annotate({
-    identifier: "TemplateParameter",
-  }) as any as Schema.Schema<TemplateParameter>;
+export const TemplateParameter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  fields: Schema.optional(Schema.Array(Schema.String)),
+  description: Schema.optional(Schema.String),
+  validation: Schema.optional(ParameterValidation),
+}).annotate({ identifier: "TemplateParameter" });
 
 export interface GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig {
   /** Optional. The Cloud KMS key name to use for encrypting workflow template job arguments.When this this key is provided, the following workflow template job arguments (https://cloud.google.com/dataproc/docs/concepts/workflows/use-workflows#adding_jobs_to_a_template), if present, are CMEK encrypted (https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/customer-managed-encryption#use_cmek_with_workflow_template_data): FlinkJob args (https://cloud.google.com/dataproc/docs/reference/rest/v1/FlinkJob) HadoopJob args (https://cloud.google.com/dataproc/docs/reference/rest/v1/HadoopJob) SparkJob args (https://cloud.google.com/dataproc/docs/reference/rest/v1/SparkJob) SparkRJob args (https://cloud.google.com/dataproc/docs/reference/rest/v1/SparkRJob) PySparkJob args (https://cloud.google.com/dataproc/docs/reference/rest/v1/PySparkJob) SparkSqlJob (https://cloud.google.com/dataproc/docs/reference/rest/v1/SparkSqlJob) scriptVariables and queryList.queries HiveJob (https://cloud.google.com/dataproc/docs/reference/rest/v1/HiveJob) scriptVariables and queryList.queries PigJob (https://cloud.google.com/dataproc/docs/reference/rest/v1/PigJob) scriptVariables and queryList.queries PrestoJob (https://cloud.google.com/dataproc/docs/reference/rest/v1/PrestoJob) scriptVariables and queryList.queries */
   kmsKey?: string;
 }
 
-export const GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig: Schema.Schema<GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kmsKey: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kmsKey: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig",
-  }) as any as Schema.Schema<GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig>;
+  });
 
 export interface WorkflowTemplate {
   id?: string;
@@ -5869,26 +4849,21 @@ export interface WorkflowTemplate {
   encryptionConfig?: GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig;
 }
 
-export const WorkflowTemplate: Schema.Schema<WorkflowTemplate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.Number),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      placement: Schema.optional(WorkflowTemplatePlacement),
-      jobs: Schema.optional(Schema.Array(OrderedJob)),
-      parameters: Schema.optional(Schema.Array(TemplateParameter)),
-      dagTimeout: Schema.optional(Schema.String),
-      encryptionConfig: Schema.optional(
-        GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig,
-      ),
-    }),
-  ).annotate({
-    identifier: "WorkflowTemplate",
-  }) as any as Schema.Schema<WorkflowTemplate>;
+export const WorkflowTemplate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.Number),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  placement: Schema.optional(WorkflowTemplatePlacement),
+  jobs: Schema.optional(Schema.Array(OrderedJob)),
+  parameters: Schema.optional(Schema.Array(TemplateParameter)),
+  dagTimeout: Schema.optional(Schema.String),
+  encryptionConfig: Schema.optional(
+    GoogleCloudDataprocV1WorkflowTemplateEncryptionConfig,
+  ),
+}).annotate({ identifier: "WorkflowTemplate" });
 
 export interface InstantiateWorkflowTemplateRequest {
   /** Optional. The version of workflow template to instantiate. If specified, the workflow will be instantiated only if the current version of the workflow template has the supplied version.This option cannot be used to instantiate a previous version of workflow template. */
@@ -5899,16 +4874,12 @@ export interface InstantiateWorkflowTemplateRequest {
   parameters?: Record<string, string>;
 }
 
-export const InstantiateWorkflowTemplateRequest: Schema.Schema<InstantiateWorkflowTemplateRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.Number),
-      requestId: Schema.optional(Schema.String),
-      parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "InstantiateWorkflowTemplateRequest",
-  }) as any as Schema.Schema<InstantiateWorkflowTemplateRequest>;
+export const InstantiateWorkflowTemplateRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    version: Schema.optional(Schema.Number),
+    requestId: Schema.optional(Schema.String),
+    parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({ identifier: "InstantiateWorkflowTemplateRequest" });
 
 export interface ListWorkflowTemplatesResponse {
   /** Output only. WorkflowTemplates list. */
@@ -5919,16 +4890,12 @@ export interface ListWorkflowTemplatesResponse {
   unreachable?: Array<string>;
 }
 
-export const ListWorkflowTemplatesResponse: Schema.Schema<ListWorkflowTemplatesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      templates: Schema.optional(Schema.Array(WorkflowTemplate)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListWorkflowTemplatesResponse",
-  }) as any as Schema.Schema<ListWorkflowTemplatesResponse>;
+export const ListWorkflowTemplatesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    templates: Schema.optional(Schema.Array(WorkflowTemplate)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListWorkflowTemplatesResponse" });
 
 export interface ResizeNodeGroupRequest {
   /** Required. The number of running instances for the node group to maintain. The group adds or removes instances to maintain the number of instances specified by this parameter. */
@@ -5941,17 +4908,14 @@ export interface ResizeNodeGroupRequest {
   parentOperationId?: string;
 }
 
-export const ResizeNodeGroupRequest: Schema.Schema<ResizeNodeGroupRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      size: Schema.optional(Schema.Number),
-      requestId: Schema.optional(Schema.String),
-      gracefulDecommissionTimeout: Schema.optional(Schema.String),
-      parentOperationId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ResizeNodeGroupRequest",
-  }) as any as Schema.Schema<ResizeNodeGroupRequest>;
+export const ResizeNodeGroupRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    size: Schema.optional(Schema.Number),
+    requestId: Schema.optional(Schema.String),
+    gracefulDecommissionTimeout: Schema.optional(Schema.String),
+    parentOperationId: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ResizeNodeGroupRequest" });
 
 export interface RepairNodeGroupRequest {
   /** Required. Name of instances to be repaired. These instances must belong to specified node pool. */
@@ -5962,16 +4926,13 @@ export interface RepairNodeGroupRequest {
   requestId?: string;
 }
 
-export const RepairNodeGroupRequest: Schema.Schema<RepairNodeGroupRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      instanceNames: Schema.optional(Schema.Array(Schema.String)),
-      repairAction: Schema.optional(Schema.String),
-      requestId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RepairNodeGroupRequest",
-  }) as any as Schema.Schema<RepairNodeGroupRequest>;
+export const RepairNodeGroupRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    instanceNames: Schema.optional(Schema.Array(Schema.String)),
+    repairAction: Schema.optional(Schema.String),
+    requestId: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "RepairNodeGroupRequest" });
 
 export interface Expr {
   /** Textual representation of an expression in Common Expression Language syntax. */
@@ -5984,15 +4945,12 @@ export interface Expr {
   location?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expression: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Expr" }) as any as Schema.Schema<Expr>;
+export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  expression: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+}).annotate({ identifier: "Expr" });
 
 export interface Binding {
   /** Role that is assigned to the list of members, or principals. For example, roles/viewer, roles/editor, or roles/owner.For an overview of the IAM roles and permissions, see the IAM documentation (https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see here (https://cloud.google.com/iam/docs/understanding-roles). */
@@ -6003,14 +4961,11 @@ export interface Binding {
   condition?: Expr;
 }
 
-export const Binding: Schema.Schema<Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      role: Schema.optional(Schema.String),
-      members: Schema.optional(Schema.Array(Schema.String)),
-      condition: Schema.optional(Expr),
-    }),
-  ).annotate({ identifier: "Binding" }) as any as Schema.Schema<Binding>;
+export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  role: Schema.optional(Schema.String),
+  members: Schema.optional(Schema.Array(Schema.String)),
+  condition: Schema.optional(Expr),
+}).annotate({ identifier: "Binding" });
 
 export interface Policy {
   /** Specifies the format of the policy.Valid values are 0, 1, and 3. Requests that specify an invalid value are rejected.Any operation that affects conditional role bindings must specify version 3. This requirement applies to the following operations: Getting a policy that includes a conditional role binding Adding a conditional role binding to a policy Changing a conditional role binding in a policy Removing any role binding, with or without a condition, from a policy that includes conditionsImportant: If you use IAM Conditions, you must include the etag field whenever you call setIamPolicy. If you omit this field, then IAM allows you to overwrite a version 3 policy with a version 1 policy, and all of the conditions in the version 3 policy are lost.If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -6021,84 +4976,58 @@ export interface Policy {
   etag?: string;
 }
 
-export const Policy: Schema.Schema<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.Number),
-      bindings: Schema.optional(Schema.Array(Binding)),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Policy" }) as any as Schema.Schema<Policy>;
+export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.Number),
+  bindings: Schema.optional(Schema.Array(Binding)),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "Policy" });
 
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the resource. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: Policy;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policy: Schema.optional(Policy),
-    }),
-  ).annotate({
-    identifier: "SetIamPolicyRequest",
-  }) as any as Schema.Schema<SetIamPolicyRequest>;
+export const SetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policy: Schema.optional(Policy),
+}).annotate({ identifier: "SetIamPolicyRequest" });
 
 export interface GetPolicyOptions {
   /** Optional. The maximum policy version that will be used to format the policy.Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected.Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset.The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies). */
   requestedPolicyVersion?: number;
 }
 
-export const GetPolicyOptions: Schema.Schema<GetPolicyOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestedPolicyVersion: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GetPolicyOptions",
-  }) as any as Schema.Schema<GetPolicyOptions>;
+export const GetPolicyOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  requestedPolicyVersion: Schema.optional(Schema.Number),
+}).annotate({ identifier: "GetPolicyOptions" });
 
 export interface GetIamPolicyRequest {
   /** OPTIONAL: A GetPolicyOptions object for specifying options to GetIamPolicy. */
   options?: GetPolicyOptions;
 }
 
-export const GetIamPolicyRequest: Schema.Schema<GetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      options: Schema.optional(GetPolicyOptions),
-    }),
-  ).annotate({
-    identifier: "GetIamPolicyRequest",
-  }) as any as Schema.Schema<GetIamPolicyRequest>;
+export const GetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  options: Schema.optional(GetPolicyOptions),
+}).annotate({ identifier: "GetIamPolicyRequest" });
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the resource. Permissions with wildcards (such as * or storage.*) are not allowed. For more information see IAM Overview (https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsRequest",
-  }) as any as Schema.Schema<TestIamPermissionsRequest>;
+export const TestIamPermissionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsRequest" });
 
 export interface TestIamPermissionsResponse {
   /** A subset of TestPermissionsRequest.permissions that the caller is allowed. */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsResponse",
-  }) as any as Schema.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsResponse" });
 
 export interface AnalyzeOperationMetadata {
   /** Output only. name of the workload being analyzed. */
@@ -6119,21 +5048,17 @@ export interface AnalyzeOperationMetadata {
   warnings?: Array<string>;
 }
 
-export const AnalyzeOperationMetadata: Schema.Schema<AnalyzeOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      analyzedWorkloadName: Schema.optional(Schema.String),
-      analyzedWorkloadType: Schema.optional(Schema.String),
-      analyzedWorkloadUuid: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      doneTime: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      warnings: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AnalyzeOperationMetadata",
-  }) as any as Schema.Schema<AnalyzeOperationMetadata>;
+export const AnalyzeOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    analyzedWorkloadName: Schema.optional(Schema.String),
+    analyzedWorkloadType: Schema.optional(Schema.String),
+    analyzedWorkloadUuid: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    doneTime: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    warnings: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "AnalyzeOperationMetadata" });
 
 export interface BatchOperationMetadata {
   /** Name of the batch for the operation. */
@@ -6154,21 +5079,18 @@ export interface BatchOperationMetadata {
   warnings?: Array<string>;
 }
 
-export const BatchOperationMetadata: Schema.Schema<BatchOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      batch: Schema.optional(Schema.String),
-      batchUuid: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      doneTime: Schema.optional(Schema.String),
-      operationType: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      warnings: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "BatchOperationMetadata",
-  }) as any as Schema.Schema<BatchOperationMetadata>;
+export const BatchOperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    batch: Schema.optional(Schema.String),
+    batchUuid: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    doneTime: Schema.optional(Schema.String),
+    operationType: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    warnings: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "BatchOperationMetadata" });
 
 export interface ClusterOperationStatus {
   /** Output only. A message containing the operation state. */
@@ -6181,17 +5103,14 @@ export interface ClusterOperationStatus {
   stateStartTime?: string;
 }
 
-export const ClusterOperationStatus: Schema.Schema<ClusterOperationStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      innerState: Schema.optional(Schema.String),
-      details: Schema.optional(Schema.String),
-      stateStartTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ClusterOperationStatus",
-  }) as any as Schema.Schema<ClusterOperationStatus>;
+export const ClusterOperationStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    state: Schema.optional(Schema.String),
+    innerState: Schema.optional(Schema.String),
+    details: Schema.optional(Schema.String),
+    stateStartTime: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ClusterOperationStatus" });
 
 export interface ClusterOperationMetadata {
   /** Output only. Name of the cluster for the operation. */
@@ -6214,36 +5133,29 @@ export interface ClusterOperationMetadata {
   childOperationIds?: Array<string>;
 }
 
-export const ClusterOperationMetadata: Schema.Schema<ClusterOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clusterName: Schema.optional(Schema.String),
-      clusterUuid: Schema.optional(Schema.String),
-      status: Schema.optional(ClusterOperationStatus),
-      statusHistory: Schema.optional(Schema.Array(ClusterOperationStatus)),
-      operationType: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      warnings: Schema.optional(Schema.Array(Schema.String)),
-      childOperationIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ClusterOperationMetadata",
-  }) as any as Schema.Schema<ClusterOperationMetadata>;
+export const ClusterOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    clusterName: Schema.optional(Schema.String),
+    clusterUuid: Schema.optional(Schema.String),
+    status: Schema.optional(ClusterOperationStatus),
+    statusHistory: Schema.optional(Schema.Array(ClusterOperationStatus)),
+    operationType: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    warnings: Schema.optional(Schema.Array(Schema.String)),
+    childOperationIds: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ClusterOperationMetadata" });
 
 export interface DiagnoseClusterResults {
   /** Output only. The Cloud Storage URI of the diagnostic output. The output report is a plain text file with a summary of collected diagnostics. */
   outputUri?: string;
 }
 
-export const DiagnoseClusterResults: Schema.Schema<DiagnoseClusterResults> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      outputUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DiagnoseClusterResults",
-  }) as any as Schema.Schema<DiagnoseClusterResults>;
+export const DiagnoseClusterResults = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    outputUri: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "DiagnoseClusterResults" });
 
 export interface JobMetadata {
   /** Output only. The job id. */
@@ -6256,17 +5168,12 @@ export interface JobMetadata {
   startTime?: string;
 }
 
-export const JobMetadata: Schema.Schema<JobMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      jobId: Schema.optional(Schema.String),
-      status: Schema.optional(JobStatus),
-      operationType: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "JobMetadata",
-  }) as any as Schema.Schema<JobMetadata>;
+export const JobMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  jobId: Schema.optional(Schema.String),
+  status: Schema.optional(JobStatus),
+  operationType: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "JobMetadata" });
 
 export interface SessionOperationMetadata {
   /** Name of the session for the operation. */
@@ -6292,21 +5199,17 @@ export interface SessionOperationMetadata {
   warnings?: Array<string>;
 }
 
-export const SessionOperationMetadata: Schema.Schema<SessionOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      session: Schema.optional(Schema.String),
-      sessionUuid: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      doneTime: Schema.optional(Schema.String),
-      operationType: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      warnings: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "SessionOperationMetadata",
-  }) as any as Schema.Schema<SessionOperationMetadata>;
+export const SessionOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    session: Schema.optional(Schema.String),
+    sessionUuid: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    doneTime: Schema.optional(Schema.String),
+    operationType: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    warnings: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "SessionOperationMetadata" });
 
 export interface NodeGroupOperationMetadata {
   /** Output only. Node group ID for the operation. */
@@ -6338,21 +5241,17 @@ export interface NodeGroupOperationMetadata {
   warnings?: Array<string>;
 }
 
-export const NodeGroupOperationMetadata: Schema.Schema<NodeGroupOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nodeGroupId: Schema.optional(Schema.String),
-      clusterUuid: Schema.optional(Schema.String),
-      status: Schema.optional(ClusterOperationStatus),
-      statusHistory: Schema.optional(Schema.Array(ClusterOperationStatus)),
-      operationType: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      warnings: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "NodeGroupOperationMetadata",
-  }) as any as Schema.Schema<NodeGroupOperationMetadata>;
+export const NodeGroupOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nodeGroupId: Schema.optional(Schema.String),
+    clusterUuid: Schema.optional(Schema.String),
+    status: Schema.optional(ClusterOperationStatus),
+    statusHistory: Schema.optional(Schema.Array(ClusterOperationStatus)),
+    operationType: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    warnings: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "NodeGroupOperationMetadata" });
 
 export interface ClusterOperation {
   /** Output only. The id of the cluster operation. */
@@ -6363,16 +5262,11 @@ export interface ClusterOperation {
   done?: boolean;
 }
 
-export const ClusterOperation: Schema.Schema<ClusterOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operationId: Schema.optional(Schema.String),
-      error: Schema.optional(Schema.String),
-      done: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ClusterOperation",
-  }) as any as Schema.Schema<ClusterOperation>;
+export const ClusterOperation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  operationId: Schema.optional(Schema.String),
+  error: Schema.optional(Schema.String),
+  done: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "ClusterOperation" });
 
 export interface WorkflowNode {
   /** Output only. The name of the node. */
@@ -6394,32 +5288,22 @@ export interface WorkflowNode {
   error?: string;
 }
 
-export const WorkflowNode: Schema.Schema<WorkflowNode> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stepId: Schema.optional(Schema.String),
-      prerequisiteStepIds: Schema.optional(Schema.Array(Schema.String)),
-      jobId: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      error: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WorkflowNode",
-  }) as any as Schema.Schema<WorkflowNode>;
+export const WorkflowNode = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  stepId: Schema.optional(Schema.String),
+  prerequisiteStepIds: Schema.optional(Schema.Array(Schema.String)),
+  jobId: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  error: Schema.optional(Schema.String),
+}).annotate({ identifier: "WorkflowNode" });
 
 export interface WorkflowGraph {
   /** Output only. The workflow nodes. */
   nodes?: Array<WorkflowNode>;
 }
 
-export const WorkflowGraph: Schema.Schema<WorkflowGraph> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nodes: Schema.optional(Schema.Array(WorkflowNode)),
-    }),
-  ).annotate({
-    identifier: "WorkflowGraph",
-  }) as any as Schema.Schema<WorkflowGraph>;
+export const WorkflowGraph = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nodes: Schema.optional(Schema.Array(WorkflowNode)),
+}).annotate({ identifier: "WorkflowGraph" });
 
 export interface WorkflowMetadata {
   /** Output only. The resource name of the workflow template as described in https://cloud.google.com/apis/design/resource_names. For projects.regions.workflowTemplates, the resource name of the template has the following format: projects/{project_id}/regions/{region}/workflowTemplates/{template_id} For projects.locations.workflowTemplates, the resource name of the template has the following format: projects/{project_id}/locations/{location}/workflowTemplates/{template_id} */
@@ -6452,27 +5336,22 @@ export interface WorkflowMetadata {
   dagEndTime?: string;
 }
 
-export const WorkflowMetadata: Schema.Schema<WorkflowMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      template: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.Number),
-      createCluster: Schema.optional(ClusterOperation),
-      graph: Schema.optional(WorkflowGraph),
-      deleteCluster: Schema.optional(ClusterOperation),
-      state: Schema.optional(Schema.String),
-      clusterName: Schema.optional(Schema.String),
-      parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      clusterUuid: Schema.optional(Schema.String),
-      dagTimeout: Schema.optional(Schema.String),
-      dagStartTime: Schema.optional(Schema.String),
-      dagEndTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WorkflowMetadata",
-  }) as any as Schema.Schema<WorkflowMetadata>;
+export const WorkflowMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  template: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.Number),
+  createCluster: Schema.optional(ClusterOperation),
+  graph: Schema.optional(WorkflowGraph),
+  deleteCluster: Schema.optional(ClusterOperation),
+  state: Schema.optional(Schema.String),
+  clusterName: Schema.optional(Schema.String),
+  parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  clusterUuid: Schema.optional(Schema.String),
+  dagTimeout: Schema.optional(Schema.String),
+  dagStartTime: Schema.optional(Schema.String),
+  dagEndTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "WorkflowMetadata" });
 
 // ==========================================================================
 // Operations

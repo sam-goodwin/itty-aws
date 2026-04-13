@@ -37,24 +37,20 @@ export interface Job {
   id?: string;
 }
 
-export const Job: Schema.Schema<Job> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      reportTypeId: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      expireTime: Schema.optional(Schema.String),
-      systemManaged: Schema.optional(Schema.Boolean),
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Job" }) as any as Schema.Schema<Job>;
+export const Job = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  reportTypeId: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  expireTime: Schema.optional(Schema.String),
+  systemManaged: Schema.optional(Schema.Boolean),
+  id: Schema.optional(Schema.String),
+}).annotate({ identifier: "Job" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface ListJobsResponse {
   /** A token to retrieve next page of results. Pass this value in the ListJobsRequest.page_token field in the subsequent call to `ListJobs` method to retrieve the next page of results. */
@@ -63,15 +59,10 @@ export interface ListJobsResponse {
   jobs?: Array<Job>;
 }
 
-export const ListJobsResponse: Schema.Schema<ListJobsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      jobs: Schema.optional(Schema.Array(Job)),
-    }),
-  ).annotate({
-    identifier: "ListJobsResponse",
-  }) as any as Schema.Schema<ListJobsResponse>;
+export const ListJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  jobs: Schema.optional(Schema.Array(Job)),
+}).annotate({ identifier: "ListJobsResponse" });
 
 export interface ReportType {
   /** The ID of the report type (max. 100 characters). */
@@ -84,15 +75,12 @@ export interface ReportType {
   deprecateTime?: string;
 }
 
-export const ReportType: Schema.Schema<ReportType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      systemManaged: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-      deprecateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "ReportType" }) as any as Schema.Schema<ReportType>;
+export const ReportType = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  systemManaged: Schema.optional(Schema.Boolean),
+  name: Schema.optional(Schema.String),
+  deprecateTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "ReportType" });
 
 export interface GdataDownloadParameters {
   /** gdata */
@@ -101,15 +89,11 @@ export interface GdataDownloadParameters {
   ignoreRange?: boolean;
 }
 
-export const GdataDownloadParameters: Schema.Schema<GdataDownloadParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      allowGzipCompression: Schema.optional(Schema.Boolean),
-      ignoreRange: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GdataDownloadParameters",
-  }) as any as Schema.Schema<GdataDownloadParameters>;
+export const GdataDownloadParameters =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allowGzipCompression: Schema.optional(Schema.Boolean),
+    ignoreRange: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GdataDownloadParameters" });
 
 export interface Report {
   /** The date/time when this report was created. */
@@ -128,18 +112,15 @@ export interface Report {
   downloadUrl?: string;
 }
 
-export const Report: Schema.Schema<Report> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      jobExpireTime: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      jobId: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      downloadUrl: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Report" }) as any as Schema.Schema<Report>;
+export const Report = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createTime: Schema.optional(Schema.String),
+  jobExpireTime: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  jobId: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  downloadUrl: Schema.optional(Schema.String),
+}).annotate({ identifier: "Report" });
 
 export interface ListReportsResponse {
   /** A token to retrieve next page of results. Pass this value in the ListReportsRequest.page_token field in the subsequent call to `ListReports` method to retrieve the next page of results. */
@@ -148,15 +129,10 @@ export interface ListReportsResponse {
   reports?: Array<Report>;
 }
 
-export const ListReportsResponse: Schema.Schema<ListReportsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      reports: Schema.optional(Schema.Array(Report)),
-    }),
-  ).annotate({
-    identifier: "ListReportsResponse",
-  }) as any as Schema.Schema<ListReportsResponse>;
+export const ListReportsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  reports: Schema.optional(Schema.Array(Report)),
+}).annotate({ identifier: "ListReportsResponse" });
 
 export interface GdataBlobstore2Info {
   /** gdata */
@@ -175,20 +151,15 @@ export interface GdataBlobstore2Info {
   downloadExternalReadToken?: string;
 }
 
-export const GdataBlobstore2Info: Schema.Schema<GdataBlobstore2Info> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      blobId: Schema.optional(Schema.String),
-      uploadFragmentListCreationInfo: Schema.optional(Schema.String),
-      blobGeneration: Schema.optional(Schema.String),
-      readToken: Schema.optional(Schema.String),
-      uploadMetadataContainer: Schema.optional(Schema.String),
-      downloadReadHandle: Schema.optional(Schema.String),
-      downloadExternalReadToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GdataBlobstore2Info",
-  }) as any as Schema.Schema<GdataBlobstore2Info>;
+export const GdataBlobstore2Info = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  blobId: Schema.optional(Schema.String),
+  uploadFragmentListCreationInfo: Schema.optional(Schema.String),
+  blobGeneration: Schema.optional(Schema.String),
+  readToken: Schema.optional(Schema.String),
+  uploadMetadataContainer: Schema.optional(Schema.String),
+  downloadReadHandle: Schema.optional(Schema.String),
+  downloadExternalReadToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "GdataBlobstore2Info" });
 
 export interface GdataObjectId {
   /** gdata */
@@ -199,16 +170,11 @@ export interface GdataObjectId {
   generation?: string;
 }
 
-export const GdataObjectId: Schema.Schema<GdataObjectId> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bucketName: Schema.optional(Schema.String),
-      objectName: Schema.optional(Schema.String),
-      generation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GdataObjectId",
-  }) as any as Schema.Schema<GdataObjectId>;
+export const GdataObjectId = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bucketName: Schema.optional(Schema.String),
+  objectName: Schema.optional(Schema.String),
+  generation: Schema.optional(Schema.String),
+}).annotate({ identifier: "GdataObjectId" });
 
 export interface GdataCompositeMedia {
   /** gdata */
@@ -241,24 +207,19 @@ export interface GdataCompositeMedia {
   blobRef?: string;
 }
 
-export const GdataCompositeMedia: Schema.Schema<GdataCompositeMedia> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      path: Schema.optional(Schema.String),
-      length: Schema.optional(Schema.String),
-      cosmoBinaryReference: Schema.optional(Schema.String),
-      inline: Schema.optional(Schema.String),
-      crc32cHash: Schema.optional(Schema.Number),
-      referenceType: Schema.optional(Schema.String),
-      blobstore2Info: Schema.optional(GdataBlobstore2Info),
-      md5Hash: Schema.optional(Schema.String),
-      sha1Hash: Schema.optional(Schema.String),
-      objectId: Schema.optional(GdataObjectId),
-      blobRef: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GdataCompositeMedia",
-  }) as any as Schema.Schema<GdataCompositeMedia>;
+export const GdataCompositeMedia = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  path: Schema.optional(Schema.String),
+  length: Schema.optional(Schema.String),
+  cosmoBinaryReference: Schema.optional(Schema.String),
+  inline: Schema.optional(Schema.String),
+  crc32cHash: Schema.optional(Schema.Number),
+  referenceType: Schema.optional(Schema.String),
+  blobstore2Info: Schema.optional(GdataBlobstore2Info),
+  md5Hash: Schema.optional(Schema.String),
+  sha1Hash: Schema.optional(Schema.String),
+  objectId: Schema.optional(GdataObjectId),
+  blobRef: Schema.optional(Schema.String),
+}).annotate({ identifier: "GdataCompositeMedia" });
 
 export interface GdataDiffChecksumsResponse {
   /** gdata */
@@ -273,32 +234,24 @@ export interface GdataDiffChecksumsResponse {
   objectSizeBytes?: string;
 }
 
-export const GdataDiffChecksumsResponse: Schema.Schema<GdataDiffChecksumsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      checksumsLocation: Schema.optional(GdataCompositeMedia),
-      chunkSizeBytes: Schema.optional(Schema.String),
-      objectLocation: Schema.optional(GdataCompositeMedia),
-      objectVersion: Schema.optional(Schema.String),
-      objectSizeBytes: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GdataDiffChecksumsResponse",
-  }) as any as Schema.Schema<GdataDiffChecksumsResponse>;
+export const GdataDiffChecksumsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    checksumsLocation: Schema.optional(GdataCompositeMedia),
+    chunkSizeBytes: Schema.optional(Schema.String),
+    objectLocation: Schema.optional(GdataCompositeMedia),
+    objectVersion: Schema.optional(Schema.String),
+    objectSizeBytes: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GdataDiffChecksumsResponse" });
 
 export interface GdataDiffDownloadResponse {
   /** gdata */
   objectLocation?: GdataCompositeMedia;
 }
 
-export const GdataDiffDownloadResponse: Schema.Schema<GdataDiffDownloadResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      objectLocation: Schema.optional(GdataCompositeMedia),
-    }),
-  ).annotate({
-    identifier: "GdataDiffDownloadResponse",
-  }) as any as Schema.Schema<GdataDiffDownloadResponse>;
+export const GdataDiffDownloadResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    objectLocation: Schema.optional(GdataCompositeMedia),
+  }).annotate({ identifier: "GdataDiffDownloadResponse" });
 
 export interface GdataDiffUploadResponse {
   /** gdata */
@@ -307,15 +260,11 @@ export interface GdataDiffUploadResponse {
   objectVersion?: string;
 }
 
-export const GdataDiffUploadResponse: Schema.Schema<GdataDiffUploadResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      originalObject: Schema.optional(GdataCompositeMedia),
-      objectVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GdataDiffUploadResponse",
-  }) as any as Schema.Schema<GdataDiffUploadResponse>;
+export const GdataDiffUploadResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    originalObject: Schema.optional(GdataCompositeMedia),
+    objectVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GdataDiffUploadResponse" });
 
 export interface GdataDiffVersionResponse {
   /** gdata */
@@ -324,15 +273,11 @@ export interface GdataDiffVersionResponse {
   objectSizeBytes?: string;
 }
 
-export const GdataDiffVersionResponse: Schema.Schema<GdataDiffVersionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      objectVersion: Schema.optional(Schema.String),
-      objectSizeBytes: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GdataDiffVersionResponse",
-  }) as any as Schema.Schema<GdataDiffVersionResponse>;
+export const GdataDiffVersionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    objectVersion: Schema.optional(Schema.String),
+    objectSizeBytes: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GdataDiffVersionResponse" });
 
 export interface GdataDiffUploadRequest {
   /** gdata */
@@ -343,16 +288,13 @@ export interface GdataDiffUploadRequest {
   objectInfo?: GdataCompositeMedia;
 }
 
-export const GdataDiffUploadRequest: Schema.Schema<GdataDiffUploadRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      objectVersion: Schema.optional(Schema.String),
-      checksumsInfo: Schema.optional(GdataCompositeMedia),
-      objectInfo: Schema.optional(GdataCompositeMedia),
-    }),
-  ).annotate({
-    identifier: "GdataDiffUploadRequest",
-  }) as any as Schema.Schema<GdataDiffUploadRequest>;
+export const GdataDiffUploadRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    objectVersion: Schema.optional(Schema.String),
+    checksumsInfo: Schema.optional(GdataCompositeMedia),
+    objectInfo: Schema.optional(GdataCompositeMedia),
+  },
+).annotate({ identifier: "GdataDiffUploadRequest" });
 
 export interface GdataContentTypeInfo {
   /** gdata */
@@ -367,18 +309,13 @@ export interface GdataContentTypeInfo {
   fromFileName?: string;
 }
 
-export const GdataContentTypeInfo: Schema.Schema<GdataContentTypeInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fromUrlPath: Schema.optional(Schema.String),
-      fromHeader: Schema.optional(Schema.String),
-      fromBytes: Schema.optional(Schema.String),
-      bestGuess: Schema.optional(Schema.String),
-      fromFileName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GdataContentTypeInfo",
-  }) as any as Schema.Schema<GdataContentTypeInfo>;
+export const GdataContentTypeInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fromUrlPath: Schema.optional(Schema.String),
+  fromHeader: Schema.optional(Schema.String),
+  fromBytes: Schema.optional(Schema.String),
+  bestGuess: Schema.optional(Schema.String),
+  fromFileName: Schema.optional(Schema.String),
+}).annotate({ identifier: "GdataContentTypeInfo" });
 
 export interface GdataMedia {
   /** gdata */
@@ -457,41 +394,38 @@ export interface GdataMedia {
   algorithm?: string;
 }
 
-export const GdataMedia: Schema.Schema<GdataMedia> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      diffChecksumsResponse: Schema.optional(GdataDiffChecksumsResponse),
-      compositeMedia: Schema.optional(Schema.Array(GdataCompositeMedia)),
-      diffDownloadResponse: Schema.optional(GdataDiffDownloadResponse),
-      timestamp: Schema.optional(Schema.String),
-      diffUploadResponse: Schema.optional(GdataDiffUploadResponse),
-      sha256Hash: Schema.optional(Schema.String),
-      objectId: Schema.optional(GdataObjectId),
-      sha1Hash: Schema.optional(Schema.String),
-      isPotentialRetry: Schema.optional(Schema.Boolean),
-      hash: Schema.optional(Schema.String),
-      downloadParameters: Schema.optional(GdataDownloadParameters),
-      path: Schema.optional(Schema.String),
-      mediaId: Schema.optional(Schema.String),
-      inline: Schema.optional(Schema.String),
-      diffVersionResponse: Schema.optional(GdataDiffVersionResponse),
-      cosmoBinaryReference: Schema.optional(Schema.String),
-      length: Schema.optional(Schema.String),
-      bigstoreObjectRef: Schema.optional(Schema.String),
-      referenceType: Schema.optional(Schema.String),
-      blobstore2Info: Schema.optional(GdataBlobstore2Info),
-      contentType: Schema.optional(Schema.String),
-      filename: Schema.optional(Schema.String),
-      diffUploadRequest: Schema.optional(GdataDiffUploadRequest),
-      contentTypeInfo: Schema.optional(GdataContentTypeInfo),
-      crc32cHash: Schema.optional(Schema.Number),
-      token: Schema.optional(Schema.String),
-      hashVerified: Schema.optional(Schema.Boolean),
-      md5Hash: Schema.optional(Schema.String),
-      blobRef: Schema.optional(Schema.String),
-      algorithm: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "GdataMedia" }) as any as Schema.Schema<GdataMedia>;
+export const GdataMedia = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  diffChecksumsResponse: Schema.optional(GdataDiffChecksumsResponse),
+  compositeMedia: Schema.optional(Schema.Array(GdataCompositeMedia)),
+  diffDownloadResponse: Schema.optional(GdataDiffDownloadResponse),
+  timestamp: Schema.optional(Schema.String),
+  diffUploadResponse: Schema.optional(GdataDiffUploadResponse),
+  sha256Hash: Schema.optional(Schema.String),
+  objectId: Schema.optional(GdataObjectId),
+  sha1Hash: Schema.optional(Schema.String),
+  isPotentialRetry: Schema.optional(Schema.Boolean),
+  hash: Schema.optional(Schema.String),
+  downloadParameters: Schema.optional(GdataDownloadParameters),
+  path: Schema.optional(Schema.String),
+  mediaId: Schema.optional(Schema.String),
+  inline: Schema.optional(Schema.String),
+  diffVersionResponse: Schema.optional(GdataDiffVersionResponse),
+  cosmoBinaryReference: Schema.optional(Schema.String),
+  length: Schema.optional(Schema.String),
+  bigstoreObjectRef: Schema.optional(Schema.String),
+  referenceType: Schema.optional(Schema.String),
+  blobstore2Info: Schema.optional(GdataBlobstore2Info),
+  contentType: Schema.optional(Schema.String),
+  filename: Schema.optional(Schema.String),
+  diffUploadRequest: Schema.optional(GdataDiffUploadRequest),
+  contentTypeInfo: Schema.optional(GdataContentTypeInfo),
+  crc32cHash: Schema.optional(Schema.Number),
+  token: Schema.optional(Schema.String),
+  hashVerified: Schema.optional(Schema.Boolean),
+  md5Hash: Schema.optional(Schema.String),
+  blobRef: Schema.optional(Schema.String),
+  algorithm: Schema.optional(Schema.String),
+}).annotate({ identifier: "GdataMedia" });
 
 export interface ListReportTypesResponse {
   /** The list of report types. */
@@ -500,15 +434,11 @@ export interface ListReportTypesResponse {
   nextPageToken?: string;
 }
 
-export const ListReportTypesResponse: Schema.Schema<ListReportTypesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reportTypes: Schema.optional(Schema.Array(ReportType)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListReportTypesResponse",
-  }) as any as Schema.Schema<ListReportTypesResponse>;
+export const ListReportTypesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reportTypes: Schema.optional(Schema.Array(ReportType)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListReportTypesResponse" });
 
 // ==========================================================================
 // Operations

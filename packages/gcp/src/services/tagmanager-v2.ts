@@ -78,13 +78,10 @@ export interface Condition {
     | (string & {});
 }
 
-export const Condition: Schema.Schema<Condition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parameter: Schema.optional(Schema.Array(Parameter)),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Condition" }) as any as Schema.Schema<Condition>;
+export const Condition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  parameter: Schema.optional(Schema.Array(Parameter)),
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "Condition" });
 
 export interface ZoneBoundary {
   /** The conditions that, when conjoined, make up the boundary. */
@@ -93,15 +90,10 @@ export interface ZoneBoundary {
   customEvaluationTriggerId?: Array<string>;
 }
 
-export const ZoneBoundary: Schema.Schema<ZoneBoundary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      condition: Schema.optional(Schema.Array(Condition)),
-      customEvaluationTriggerId: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ZoneBoundary",
-  }) as any as Schema.Schema<ZoneBoundary>;
+export const ZoneBoundary = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  condition: Schema.optional(Schema.Array(Condition)),
+  customEvaluationTriggerId: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ZoneBoundary" });
 
 export interface ContainerFeatures {
   /** Whether this Container supports built-in variables */
@@ -134,27 +126,22 @@ export interface ContainerFeatures {
   supportTags?: boolean;
 }
 
-export const ContainerFeatures: Schema.Schema<ContainerFeatures> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      supportBuiltInVariables: Schema.optional(Schema.Boolean),
-      supportClients: Schema.optional(Schema.Boolean),
-      supportTriggers: Schema.optional(Schema.Boolean),
-      supportGtagConfigs: Schema.optional(Schema.Boolean),
-      supportTransformations: Schema.optional(Schema.Boolean),
-      supportVersions: Schema.optional(Schema.Boolean),
-      supportTemplates: Schema.optional(Schema.Boolean),
-      supportVariables: Schema.optional(Schema.Boolean),
-      supportEnvironments: Schema.optional(Schema.Boolean),
-      supportWorkspaces: Schema.optional(Schema.Boolean),
-      supportZones: Schema.optional(Schema.Boolean),
-      supportFolders: Schema.optional(Schema.Boolean),
-      supportUserPermissions: Schema.optional(Schema.Boolean),
-      supportTags: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ContainerFeatures",
-  }) as any as Schema.Schema<ContainerFeatures>;
+export const ContainerFeatures = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  supportBuiltInVariables: Schema.optional(Schema.Boolean),
+  supportClients: Schema.optional(Schema.Boolean),
+  supportTriggers: Schema.optional(Schema.Boolean),
+  supportGtagConfigs: Schema.optional(Schema.Boolean),
+  supportTransformations: Schema.optional(Schema.Boolean),
+  supportVersions: Schema.optional(Schema.Boolean),
+  supportTemplates: Schema.optional(Schema.Boolean),
+  supportVariables: Schema.optional(Schema.Boolean),
+  supportEnvironments: Schema.optional(Schema.Boolean),
+  supportWorkspaces: Schema.optional(Schema.Boolean),
+  supportZones: Schema.optional(Schema.Boolean),
+  supportFolders: Schema.optional(Schema.Boolean),
+  supportUserPermissions: Schema.optional(Schema.Boolean),
+  supportTags: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "ContainerFeatures" });
 
 export interface ZoneChildContainer {
   /** The child container's public id. */
@@ -163,15 +150,10 @@ export interface ZoneChildContainer {
   nickname?: string;
 }
 
-export const ZoneChildContainer: Schema.Schema<ZoneChildContainer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      publicId: Schema.optional(Schema.String),
-      nickname: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ZoneChildContainer",
-  }) as any as Schema.Schema<ZoneChildContainer>;
+export const ZoneChildContainer = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  publicId: Schema.optional(Schema.String),
+  nickname: Schema.optional(Schema.String),
+}).annotate({ identifier: "ZoneChildContainer" });
 
 export interface ZoneTypeRestriction {
   /** List of type public ids that have been whitelisted for use in this Zone. */
@@ -180,15 +162,10 @@ export interface ZoneTypeRestriction {
   enable?: boolean;
 }
 
-export const ZoneTypeRestriction: Schema.Schema<ZoneTypeRestriction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      whitelistedTypeId: Schema.optional(Schema.Array(Schema.String)),
-      enable: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ZoneTypeRestriction",
-  }) as any as Schema.Schema<ZoneTypeRestriction>;
+export const ZoneTypeRestriction = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  whitelistedTypeId: Schema.optional(Schema.Array(Schema.String)),
+  enable: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "ZoneTypeRestriction" });
 
 export interface Zone {
   /** GTM Zone's API relative path. */
@@ -217,23 +194,20 @@ export interface Zone {
   notes?: string;
 }
 
-export const Zone: Schema.Schema<Zone> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      path: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-      workspaceId: Schema.optional(Schema.String),
-      fingerprint: Schema.optional(Schema.String),
-      childContainer: Schema.optional(Schema.Array(ZoneChildContainer)),
-      containerId: Schema.optional(Schema.String),
-      boundary: Schema.optional(ZoneBoundary),
-      name: Schema.optional(Schema.String),
-      typeRestriction: Schema.optional(ZoneTypeRestriction),
-      tagManagerUrl: Schema.optional(Schema.String),
-      zoneId: Schema.optional(Schema.String),
-      notes: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Zone" }) as any as Schema.Schema<Zone>;
+export const Zone = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  path: Schema.optional(Schema.String),
+  accountId: Schema.optional(Schema.String),
+  workspaceId: Schema.optional(Schema.String),
+  fingerprint: Schema.optional(Schema.String),
+  childContainer: Schema.optional(Schema.Array(ZoneChildContainer)),
+  containerId: Schema.optional(Schema.String),
+  boundary: Schema.optional(ZoneBoundary),
+  name: Schema.optional(Schema.String),
+  typeRestriction: Schema.optional(ZoneTypeRestriction),
+  tagManagerUrl: Schema.optional(Schema.String),
+  zoneId: Schema.optional(Schema.String),
+  notes: Schema.optional(Schema.String),
+}).annotate({ identifier: "Zone" });
 
 export interface Folder {
   /** Auto generated link to the tag manager UI */
@@ -256,34 +230,26 @@ export interface Folder {
   accountId?: string;
 }
 
-export const Folder: Schema.Schema<Folder> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tagManagerUrl: Schema.optional(Schema.String),
-      folderId: Schema.optional(Schema.String),
-      notes: Schema.optional(Schema.String),
-      workspaceId: Schema.optional(Schema.String),
-      fingerprint: Schema.optional(Schema.String),
-      containerId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      path: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Folder" }) as any as Schema.Schema<Folder>;
+export const Folder = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tagManagerUrl: Schema.optional(Schema.String),
+  folderId: Schema.optional(Schema.String),
+  notes: Schema.optional(Schema.String),
+  workspaceId: Schema.optional(Schema.String),
+  fingerprint: Schema.optional(Schema.String),
+  containerId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  path: Schema.optional(Schema.String),
+  accountId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Folder" });
 
 export interface RevertFolderResponse {
   /** Folder as it appears in the latest container version since the last workspace synchronization operation. If no folder is present, that means the folder was deleted in the latest container version. */
   folder?: Folder;
 }
 
-export const RevertFolderResponse: Schema.Schema<RevertFolderResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      folder: Schema.optional(Folder),
-    }),
-  ).annotate({
-    identifier: "RevertFolderResponse",
-  }) as any as Schema.Schema<RevertFolderResponse>;
+export const RevertFolderResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  folder: Schema.optional(Folder),
+}).annotate({ identifier: "RevertFolderResponse" });
 
 export interface ContainerVersionHeader {
   /** GTM Container Version's API relative path. */
@@ -316,27 +282,24 @@ export interface ContainerVersionHeader {
   numGtagConfigs?: string;
 }
 
-export const ContainerVersionHeader: Schema.Schema<ContainerVersionHeader> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      path: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      containerId: Schema.optional(Schema.String),
-      numVariables: Schema.optional(Schema.String),
-      numTriggers: Schema.optional(Schema.String),
-      numZones: Schema.optional(Schema.String),
-      numTransformations: Schema.optional(Schema.String),
-      numCustomTemplates: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-      deleted: Schema.optional(Schema.Boolean),
-      numTags: Schema.optional(Schema.String),
-      containerVersionId: Schema.optional(Schema.String),
-      numClients: Schema.optional(Schema.String),
-      numGtagConfigs: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ContainerVersionHeader",
-  }) as any as Schema.Schema<ContainerVersionHeader>;
+export const ContainerVersionHeader = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    path: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    containerId: Schema.optional(Schema.String),
+    numVariables: Schema.optional(Schema.String),
+    numTriggers: Schema.optional(Schema.String),
+    numZones: Schema.optional(Schema.String),
+    numTransformations: Schema.optional(Schema.String),
+    numCustomTemplates: Schema.optional(Schema.String),
+    accountId: Schema.optional(Schema.String),
+    deleted: Schema.optional(Schema.Boolean),
+    numTags: Schema.optional(Schema.String),
+    containerVersionId: Schema.optional(Schema.String),
+    numClients: Schema.optional(Schema.String),
+    numGtagConfigs: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ContainerVersionHeader" });
 
 export interface Environment {
   /** Auto generated link to the tag manager UI */
@@ -371,28 +334,23 @@ export interface Environment {
   authorizationTimestamp?: string;
 }
 
-export const Environment: Schema.Schema<Environment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tagManagerUrl: Schema.optional(Schema.String),
-      enableDebug: Schema.optional(Schema.Boolean),
-      path: Schema.optional(Schema.String),
-      containerId: Schema.optional(Schema.String),
-      authorizationCode: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      environmentId: Schema.optional(Schema.String),
-      fingerprint: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      workspaceId: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-      url: Schema.optional(Schema.String),
-      containerVersionId: Schema.optional(Schema.String),
-      authorizationTimestamp: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Environment",
-  }) as any as Schema.Schema<Environment>;
+export const Environment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tagManagerUrl: Schema.optional(Schema.String),
+  enableDebug: Schema.optional(Schema.Boolean),
+  path: Schema.optional(Schema.String),
+  containerId: Schema.optional(Schema.String),
+  authorizationCode: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  environmentId: Schema.optional(Schema.String),
+  fingerprint: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  workspaceId: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  accountId: Schema.optional(Schema.String),
+  url: Schema.optional(Schema.String),
+  containerVersionId: Schema.optional(Schema.String),
+  authorizationTimestamp: Schema.optional(Schema.String),
+}).annotate({ identifier: "Environment" });
 
 export interface ListEnvironmentsResponse {
   /** Continuation token for fetching the next page of results. */
@@ -401,15 +359,11 @@ export interface ListEnvironmentsResponse {
   environment?: Array<Environment>;
 }
 
-export const ListEnvironmentsResponse: Schema.Schema<ListEnvironmentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      environment: Schema.optional(Schema.Array(Environment)),
-    }),
-  ).annotate({
-    identifier: "ListEnvironmentsResponse",
-  }) as any as Schema.Schema<ListEnvironmentsResponse>;
+export const ListEnvironmentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    environment: Schema.optional(Schema.Array(Environment)),
+  }).annotate({ identifier: "ListEnvironmentsResponse" });
 
 export interface TagConsentSetting {
   /** The tag's consent status. If set to NEEDED, the runtime will check that the consent types specified by the consent_type field have been granted. */
@@ -418,15 +372,10 @@ export interface TagConsentSetting {
   consentType?: Parameter;
 }
 
-export const TagConsentSetting: Schema.Schema<TagConsentSetting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      consentStatus: Schema.optional(Schema.String),
-      consentType: Schema.optional(Parameter),
-    }),
-  ).annotate({
-    identifier: "TagConsentSetting",
-  }) as any as Schema.Schema<TagConsentSetting>;
+export const TagConsentSetting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  consentStatus: Schema.optional(Schema.String),
+  consentType: Schema.optional(Parameter),
+}).annotate({ identifier: "TagConsentSetting" });
 
 export interface TeardownTag {
   /** The name of the teardown tag. */
@@ -435,15 +384,10 @@ export interface TeardownTag {
   stopTeardownOnFailure?: boolean;
 }
 
-export const TeardownTag: Schema.Schema<TeardownTag> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tagName: Schema.optional(Schema.String),
-      stopTeardownOnFailure: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "TeardownTag",
-  }) as any as Schema.Schema<TeardownTag>;
+export const TeardownTag = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tagName: Schema.optional(Schema.String),
+  stopTeardownOnFailure: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "TeardownTag" });
 
 export interface SetupTag {
   /** The name of the setup tag. */
@@ -452,13 +396,10 @@ export interface SetupTag {
   stopOnSetupFailure?: boolean;
 }
 
-export const SetupTag: Schema.Schema<SetupTag> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tagName: Schema.optional(Schema.String),
-      stopOnSetupFailure: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "SetupTag" }) as any as Schema.Schema<SetupTag>;
+export const SetupTag = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tagName: Schema.optional(Schema.String),
+  stopOnSetupFailure: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "SetupTag" });
 
 export interface Tag {
   /** The end timestamp in milliseconds to schedule a tag. */
@@ -518,50 +459,42 @@ export interface Tag {
   containerId?: string;
 }
 
-export const Tag: Schema.Schema<Tag> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scheduleEndMs: Schema.optional(Schema.String),
-      liveOnly: Schema.optional(Schema.Boolean),
-      tagManagerUrl: Schema.optional(Schema.String),
-      consentSettings: Schema.optional(TagConsentSetting),
-      tagId: Schema.optional(Schema.String),
-      tagFiringOption: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      monitoringMetadataTagNameKey: Schema.optional(Schema.String),
-      teardownTag: Schema.optional(Schema.Array(TeardownTag)),
-      type: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-      parentFolderId: Schema.optional(Schema.String),
-      priority: Schema.optional(Parameter),
-      scheduleStartMs: Schema.optional(Schema.String),
-      notes: Schema.optional(Schema.String),
-      parameter: Schema.optional(Schema.Array(Parameter)),
-      monitoringMetadata: Schema.optional(Parameter),
-      path: Schema.optional(Schema.String),
-      blockingTriggerId: Schema.optional(Schema.Array(Schema.String)),
-      firingTriggerId: Schema.optional(Schema.Array(Schema.String)),
-      workspaceId: Schema.optional(Schema.String),
-      fingerprint: Schema.optional(Schema.String),
-      paused: Schema.optional(Schema.Boolean),
-      setupTag: Schema.optional(Schema.Array(SetupTag)),
-      containerId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Tag" }) as any as Schema.Schema<Tag>;
+export const Tag = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  scheduleEndMs: Schema.optional(Schema.String),
+  liveOnly: Schema.optional(Schema.Boolean),
+  tagManagerUrl: Schema.optional(Schema.String),
+  consentSettings: Schema.optional(TagConsentSetting),
+  tagId: Schema.optional(Schema.String),
+  tagFiringOption: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  monitoringMetadataTagNameKey: Schema.optional(Schema.String),
+  teardownTag: Schema.optional(Schema.Array(TeardownTag)),
+  type: Schema.optional(Schema.String),
+  accountId: Schema.optional(Schema.String),
+  parentFolderId: Schema.optional(Schema.String),
+  priority: Schema.optional(Parameter),
+  scheduleStartMs: Schema.optional(Schema.String),
+  notes: Schema.optional(Schema.String),
+  parameter: Schema.optional(Schema.Array(Parameter)),
+  monitoringMetadata: Schema.optional(Parameter),
+  path: Schema.optional(Schema.String),
+  blockingTriggerId: Schema.optional(Schema.Array(Schema.String)),
+  firingTriggerId: Schema.optional(Schema.Array(Schema.String)),
+  workspaceId: Schema.optional(Schema.String),
+  fingerprint: Schema.optional(Schema.String),
+  paused: Schema.optional(Schema.Boolean),
+  setupTag: Schema.optional(Schema.Array(SetupTag)),
+  containerId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Tag" });
 
 export interface RevertTagResponse {
   /** Tag as it appears in the latest container version since the last workspace synchronization operation. If no tag is present, that means the tag was deleted in the latest container version. */
   tag?: Tag;
 }
 
-export const RevertTagResponse: Schema.Schema<RevertTagResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tag: Schema.optional(Tag),
-    }),
-  ).annotate({
-    identifier: "RevertTagResponse",
-  }) as any as Schema.Schema<RevertTagResponse>;
+export const RevertTagResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tag: Schema.optional(Tag),
+}).annotate({ identifier: "RevertTagResponse" });
 
 export interface ListZonesResponse {
   /** All GTM Zones of a GTM Container. */
@@ -570,15 +503,10 @@ export interface ListZonesResponse {
   nextPageToken?: string;
 }
 
-export const ListZonesResponse: Schema.Schema<ListZonesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      zone: Schema.optional(Schema.Array(Zone)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListZonesResponse",
-  }) as any as Schema.Schema<ListZonesResponse>;
+export const ListZonesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  zone: Schema.optional(Schema.Array(Zone)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListZonesResponse" });
 
 export interface SyncStatus {
   /** Synchornization operation detected a merge conflict. */
@@ -587,13 +515,10 @@ export interface SyncStatus {
   syncError?: boolean;
 }
 
-export const SyncStatus: Schema.Schema<SyncStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mergeConflict: Schema.optional(Schema.Boolean),
-      syncError: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "SyncStatus" }) as any as Schema.Schema<SyncStatus>;
+export const SyncStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  mergeConflict: Schema.optional(Schema.Boolean),
+  syncError: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "SyncStatus" });
 
 export interface Transformation {
   /** Auto generated link to the tag manager UI */
@@ -622,25 +547,20 @@ export interface Transformation {
   accountId?: string;
 }
 
-export const Transformation: Schema.Schema<Transformation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tagManagerUrl: Schema.optional(Schema.String),
-      parameter: Schema.optional(Schema.Array(Parameter)),
-      notes: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      parentFolderId: Schema.optional(Schema.String),
-      transformationId: Schema.optional(Schema.String),
-      workspaceId: Schema.optional(Schema.String),
-      fingerprint: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      containerId: Schema.optional(Schema.String),
-      path: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Transformation",
-  }) as any as Schema.Schema<Transformation>;
+export const Transformation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tagManagerUrl: Schema.optional(Schema.String),
+  parameter: Schema.optional(Schema.Array(Parameter)),
+  notes: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  parentFolderId: Schema.optional(Schema.String),
+  transformationId: Schema.optional(Schema.String),
+  workspaceId: Schema.optional(Schema.String),
+  fingerprint: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  containerId: Schema.optional(Schema.String),
+  path: Schema.optional(Schema.String),
+  accountId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Transformation" });
 
 export interface BuiltInVariable {
   /** GTM Container ID. */
@@ -775,19 +695,14 @@ export interface BuiltInVariable {
   accountId?: string;
 }
 
-export const BuiltInVariable: Schema.Schema<BuiltInVariable> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      containerId: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      workspaceId: Schema.optional(Schema.String),
-      path: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BuiltInVariable",
-  }) as any as Schema.Schema<BuiltInVariable>;
+export const BuiltInVariable = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  containerId: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  workspaceId: Schema.optional(Schema.String),
+  path: Schema.optional(Schema.String),
+  accountId: Schema.optional(Schema.String),
+}).annotate({ identifier: "BuiltInVariable" });
 
 export interface VariableFormatValue {
   /** The value to convert if a variable value is undefined. */
@@ -810,20 +725,15 @@ export interface VariableFormatValue {
   convertFalseToValue?: Parameter;
 }
 
-export const VariableFormatValue: Schema.Schema<VariableFormatValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      convertUndefinedToValue: Schema.optional(Parameter),
-      caseConversionType: Schema.optional(Schema.String),
-      convertTrueToValue: Schema.optional(Parameter),
-      convertToNumber: Schema.optional(Schema.String),
-      convertNullToValue: Schema.optional(Parameter),
-      convertToBoolean: Schema.optional(Schema.Boolean),
-      convertFalseToValue: Schema.optional(Parameter),
-    }),
-  ).annotate({
-    identifier: "VariableFormatValue",
-  }) as any as Schema.Schema<VariableFormatValue>;
+export const VariableFormatValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  convertUndefinedToValue: Schema.optional(Parameter),
+  caseConversionType: Schema.optional(Schema.String),
+  convertTrueToValue: Schema.optional(Parameter),
+  convertToNumber: Schema.optional(Schema.String),
+  convertNullToValue: Schema.optional(Parameter),
+  convertToBoolean: Schema.optional(Schema.Boolean),
+  convertFalseToValue: Schema.optional(Parameter),
+}).annotate({ identifier: "VariableFormatValue" });
 
 export interface Variable {
   /** Option to convert a variable value to other value. */
@@ -862,28 +772,25 @@ export interface Variable {
   fingerprint?: string;
 }
 
-export const Variable: Schema.Schema<Variable> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      formatValue: Schema.optional(VariableFormatValue),
-      type: Schema.optional(Schema.String),
-      disablingTriggerId: Schema.optional(Schema.Array(Schema.String)),
-      scheduleEndMs: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-      variableId: Schema.optional(Schema.String),
-      scheduleStartMs: Schema.optional(Schema.String),
-      parentFolderId: Schema.optional(Schema.String),
-      notes: Schema.optional(Schema.String),
-      parameter: Schema.optional(Schema.Array(Parameter)),
-      tagManagerUrl: Schema.optional(Schema.String),
-      enablingTriggerId: Schema.optional(Schema.Array(Schema.String)),
-      path: Schema.optional(Schema.String),
-      containerId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      workspaceId: Schema.optional(Schema.String),
-      fingerprint: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Variable" }) as any as Schema.Schema<Variable>;
+export const Variable = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  formatValue: Schema.optional(VariableFormatValue),
+  type: Schema.optional(Schema.String),
+  disablingTriggerId: Schema.optional(Schema.Array(Schema.String)),
+  scheduleEndMs: Schema.optional(Schema.String),
+  accountId: Schema.optional(Schema.String),
+  variableId: Schema.optional(Schema.String),
+  scheduleStartMs: Schema.optional(Schema.String),
+  parentFolderId: Schema.optional(Schema.String),
+  notes: Schema.optional(Schema.String),
+  parameter: Schema.optional(Schema.Array(Parameter)),
+  tagManagerUrl: Schema.optional(Schema.String),
+  enablingTriggerId: Schema.optional(Schema.Array(Schema.String)),
+  path: Schema.optional(Schema.String),
+  containerId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  workspaceId: Schema.optional(Schema.String),
+  fingerprint: Schema.optional(Schema.String),
+}).annotate({ identifier: "Variable" });
 
 export interface GtagConfig {
   /** Google tag config's API relative path. */
@@ -906,20 +813,17 @@ export interface GtagConfig {
   type?: string;
 }
 
-export const GtagConfig: Schema.Schema<GtagConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      path: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-      gtagConfigId: Schema.optional(Schema.String),
-      workspaceId: Schema.optional(Schema.String),
-      fingerprint: Schema.optional(Schema.String),
-      containerId: Schema.optional(Schema.String),
-      tagManagerUrl: Schema.optional(Schema.String),
-      parameter: Schema.optional(Schema.Array(Parameter)),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "GtagConfig" }) as any as Schema.Schema<GtagConfig>;
+export const GtagConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  path: Schema.optional(Schema.String),
+  accountId: Schema.optional(Schema.String),
+  gtagConfigId: Schema.optional(Schema.String),
+  workspaceId: Schema.optional(Schema.String),
+  fingerprint: Schema.optional(Schema.String),
+  containerId: Schema.optional(Schema.String),
+  tagManagerUrl: Schema.optional(Schema.String),
+  parameter: Schema.optional(Schema.Array(Parameter)),
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "GtagConfig" });
 
 export interface GalleryReference {
   /** The name of the host for the community gallery template. */
@@ -940,21 +844,16 @@ export interface GalleryReference {
   templateDeveloperId?: string;
 }
 
-export const GalleryReference: Schema.Schema<GalleryReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      host: Schema.optional(Schema.String),
-      galleryTemplateId: Schema.optional(Schema.String),
-      signature: Schema.optional(Schema.String),
-      owner: Schema.optional(Schema.String),
-      repository: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-      isModified: Schema.optional(Schema.Boolean),
-      templateDeveloperId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GalleryReference",
-  }) as any as Schema.Schema<GalleryReference>;
+export const GalleryReference = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  host: Schema.optional(Schema.String),
+  galleryTemplateId: Schema.optional(Schema.String),
+  signature: Schema.optional(Schema.String),
+  owner: Schema.optional(Schema.String),
+  repository: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+  isModified: Schema.optional(Schema.Boolean),
+  templateDeveloperId: Schema.optional(Schema.String),
+}).annotate({ identifier: "GalleryReference" });
 
 export interface CustomTemplate {
   /** The Custom Template ID uniquely identifies the GTM custom template. */
@@ -979,23 +878,18 @@ export interface CustomTemplate {
   fingerprint?: string;
 }
 
-export const CustomTemplate: Schema.Schema<CustomTemplate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      templateId: Schema.optional(Schema.String),
-      tagManagerUrl: Schema.optional(Schema.String),
-      templateData: Schema.optional(Schema.String),
-      path: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-      containerId: Schema.optional(Schema.String),
-      galleryReference: Schema.optional(GalleryReference),
-      name: Schema.optional(Schema.String),
-      workspaceId: Schema.optional(Schema.String),
-      fingerprint: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomTemplate",
-  }) as any as Schema.Schema<CustomTemplate>;
+export const CustomTemplate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  templateId: Schema.optional(Schema.String),
+  tagManagerUrl: Schema.optional(Schema.String),
+  templateData: Schema.optional(Schema.String),
+  path: Schema.optional(Schema.String),
+  accountId: Schema.optional(Schema.String),
+  containerId: Schema.optional(Schema.String),
+  galleryReference: Schema.optional(GalleryReference),
+  name: Schema.optional(Schema.String),
+  workspaceId: Schema.optional(Schema.String),
+  fingerprint: Schema.optional(Schema.String),
+}).annotate({ identifier: "CustomTemplate" });
 
 export interface Client {
   /** GTM Account ID. */
@@ -1026,24 +920,21 @@ export interface Client {
   priority?: number;
 }
 
-export const Client: Schema.Schema<Client> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accountId: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      workspaceId: Schema.optional(Schema.String),
-      fingerprint: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      containerId: Schema.optional(Schema.String),
-      path: Schema.optional(Schema.String),
-      tagManagerUrl: Schema.optional(Schema.String),
-      parameter: Schema.optional(Schema.Array(Parameter)),
-      notes: Schema.optional(Schema.String),
-      clientId: Schema.optional(Schema.String),
-      parentFolderId: Schema.optional(Schema.String),
-      priority: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Client" }) as any as Schema.Schema<Client>;
+export const Client = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  accountId: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  workspaceId: Schema.optional(Schema.String),
+  fingerprint: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  containerId: Schema.optional(Schema.String),
+  path: Schema.optional(Schema.String),
+  tagManagerUrl: Schema.optional(Schema.String),
+  parameter: Schema.optional(Schema.Array(Parameter)),
+  notes: Schema.optional(Schema.String),
+  clientId: Schema.optional(Schema.String),
+  parentFolderId: Schema.optional(Schema.String),
+  priority: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Client" });
 
 export interface Container {
   /** All Tag IDs that refer to this Container. */
@@ -1084,24 +975,21 @@ export interface Container {
   fingerprint?: string;
 }
 
-export const Container: Schema.Schema<Container> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tagIds: Schema.optional(Schema.Array(Schema.String)),
-      accountId: Schema.optional(Schema.String),
-      domainName: Schema.optional(Schema.Array(Schema.String)),
-      usageContext: Schema.optional(Schema.Array(Schema.String)),
-      notes: Schema.optional(Schema.String),
-      publicId: Schema.optional(Schema.String),
-      tagManagerUrl: Schema.optional(Schema.String),
-      features: Schema.optional(ContainerFeatures),
-      taggingServerUrls: Schema.optional(Schema.Array(Schema.String)),
-      path: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      containerId: Schema.optional(Schema.String),
-      fingerprint: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Container" }) as any as Schema.Schema<Container>;
+export const Container = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tagIds: Schema.optional(Schema.Array(Schema.String)),
+  accountId: Schema.optional(Schema.String),
+  domainName: Schema.optional(Schema.Array(Schema.String)),
+  usageContext: Schema.optional(Schema.Array(Schema.String)),
+  notes: Schema.optional(Schema.String),
+  publicId: Schema.optional(Schema.String),
+  tagManagerUrl: Schema.optional(Schema.String),
+  features: Schema.optional(ContainerFeatures),
+  taggingServerUrls: Schema.optional(Schema.Array(Schema.String)),
+  path: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  containerId: Schema.optional(Schema.String),
+  fingerprint: Schema.optional(Schema.String),
+}).annotate({ identifier: "Container" });
 
 export interface Trigger {
   /** Time between triggering recurring Timer Events (in milliseconds). Only valid for Timer triggers. */
@@ -1206,43 +1094,40 @@ export interface Trigger {
   continuousTimeMinMilliseconds?: Parameter;
 }
 
-export const Trigger: Schema.Schema<Trigger> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      interval: Schema.optional(Parameter),
-      notes: Schema.optional(Schema.String),
-      parameter: Schema.optional(Schema.Array(Parameter)),
-      uniqueTriggerId: Schema.optional(Parameter),
-      parentFolderId: Schema.optional(Schema.String),
-      visiblePercentageMax: Schema.optional(Parameter),
-      waitForTags: Schema.optional(Parameter),
-      workspaceId: Schema.optional(Schema.String),
-      fingerprint: Schema.optional(Schema.String),
-      totalTimeMinMilliseconds: Schema.optional(Parameter),
-      triggerId: Schema.optional(Schema.String),
-      containerId: Schema.optional(Schema.String),
-      path: Schema.optional(Schema.String),
-      maxTimerLengthSeconds: Schema.optional(Parameter),
-      type: Schema.optional(Schema.String),
-      customEventFilter: Schema.optional(Schema.Array(Condition)),
-      accountId: Schema.optional(Schema.String),
-      visiblePercentageMin: Schema.optional(Parameter),
-      selector: Schema.optional(Parameter),
-      tagManagerUrl: Schema.optional(Schema.String),
-      filter: Schema.optional(Schema.Array(Condition)),
-      limit: Schema.optional(Parameter),
-      verticalScrollPercentageList: Schema.optional(Parameter),
-      waitForTagsTimeout: Schema.optional(Parameter),
-      name: Schema.optional(Schema.String),
-      horizontalScrollPercentageList: Schema.optional(Parameter),
-      eventName: Schema.optional(Parameter),
-      checkValidation: Schema.optional(Parameter),
-      autoEventFilter: Schema.optional(Schema.Array(Condition)),
-      visibilitySelector: Schema.optional(Parameter),
-      intervalSeconds: Schema.optional(Parameter),
-      continuousTimeMinMilliseconds: Schema.optional(Parameter),
-    }),
-  ).annotate({ identifier: "Trigger" }) as any as Schema.Schema<Trigger>;
+export const Trigger = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  interval: Schema.optional(Parameter),
+  notes: Schema.optional(Schema.String),
+  parameter: Schema.optional(Schema.Array(Parameter)),
+  uniqueTriggerId: Schema.optional(Parameter),
+  parentFolderId: Schema.optional(Schema.String),
+  visiblePercentageMax: Schema.optional(Parameter),
+  waitForTags: Schema.optional(Parameter),
+  workspaceId: Schema.optional(Schema.String),
+  fingerprint: Schema.optional(Schema.String),
+  totalTimeMinMilliseconds: Schema.optional(Parameter),
+  triggerId: Schema.optional(Schema.String),
+  containerId: Schema.optional(Schema.String),
+  path: Schema.optional(Schema.String),
+  maxTimerLengthSeconds: Schema.optional(Parameter),
+  type: Schema.optional(Schema.String),
+  customEventFilter: Schema.optional(Schema.Array(Condition)),
+  accountId: Schema.optional(Schema.String),
+  visiblePercentageMin: Schema.optional(Parameter),
+  selector: Schema.optional(Parameter),
+  tagManagerUrl: Schema.optional(Schema.String),
+  filter: Schema.optional(Schema.Array(Condition)),
+  limit: Schema.optional(Parameter),
+  verticalScrollPercentageList: Schema.optional(Parameter),
+  waitForTagsTimeout: Schema.optional(Parameter),
+  name: Schema.optional(Schema.String),
+  horizontalScrollPercentageList: Schema.optional(Parameter),
+  eventName: Schema.optional(Parameter),
+  checkValidation: Schema.optional(Parameter),
+  autoEventFilter: Schema.optional(Schema.Array(Condition)),
+  visibilitySelector: Schema.optional(Parameter),
+  intervalSeconds: Schema.optional(Parameter),
+  continuousTimeMinMilliseconds: Schema.optional(Parameter),
+}).annotate({ identifier: "Trigger" });
 
 export interface ContainerVersion {
   /** The Container Version ID uniquely identifies the GTM Container Version. */
@@ -1287,33 +1172,28 @@ export interface ContainerVersion {
   folder?: Array<Folder>;
 }
 
-export const ContainerVersion: Schema.Schema<ContainerVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      containerVersionId: Schema.optional(Schema.String),
-      zone: Schema.optional(Schema.Array(Zone)),
-      accountId: Schema.optional(Schema.String),
-      deleted: Schema.optional(Schema.Boolean),
-      tag: Schema.optional(Schema.Array(Tag)),
-      transformation: Schema.optional(Schema.Array(Transformation)),
-      builtInVariable: Schema.optional(Schema.Array(BuiltInVariable)),
-      variable: Schema.optional(Schema.Array(Variable)),
-      gtagConfig: Schema.optional(Schema.Array(GtagConfig)),
-      description: Schema.optional(Schema.String),
-      fingerprint: Schema.optional(Schema.String),
-      containerId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      customTemplate: Schema.optional(Schema.Array(CustomTemplate)),
-      client: Schema.optional(Schema.Array(Client)),
-      path: Schema.optional(Schema.String),
-      tagManagerUrl: Schema.optional(Schema.String),
-      container: Schema.optional(Container),
-      trigger: Schema.optional(Schema.Array(Trigger)),
-      folder: Schema.optional(Schema.Array(Folder)),
-    }),
-  ).annotate({
-    identifier: "ContainerVersion",
-  }) as any as Schema.Schema<ContainerVersion>;
+export const ContainerVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  containerVersionId: Schema.optional(Schema.String),
+  zone: Schema.optional(Schema.Array(Zone)),
+  accountId: Schema.optional(Schema.String),
+  deleted: Schema.optional(Schema.Boolean),
+  tag: Schema.optional(Schema.Array(Tag)),
+  transformation: Schema.optional(Schema.Array(Transformation)),
+  builtInVariable: Schema.optional(Schema.Array(BuiltInVariable)),
+  variable: Schema.optional(Schema.Array(Variable)),
+  gtagConfig: Schema.optional(Schema.Array(GtagConfig)),
+  description: Schema.optional(Schema.String),
+  fingerprint: Schema.optional(Schema.String),
+  containerId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  customTemplate: Schema.optional(Schema.Array(CustomTemplate)),
+  client: Schema.optional(Schema.Array(Client)),
+  path: Schema.optional(Schema.String),
+  tagManagerUrl: Schema.optional(Schema.String),
+  container: Schema.optional(Container),
+  trigger: Schema.optional(Schema.Array(Trigger)),
+  folder: Schema.optional(Schema.Array(Folder)),
+}).annotate({ identifier: "ContainerVersion" });
 
 export interface CreateContainerVersionResponse {
   /** Whether version creation failed when syncing the workspace to the latest container version. */
@@ -1326,17 +1206,13 @@ export interface CreateContainerVersionResponse {
   compilerError?: boolean;
 }
 
-export const CreateContainerVersionResponse: Schema.Schema<CreateContainerVersionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      syncStatus: Schema.optional(SyncStatus),
-      newWorkspacePath: Schema.optional(Schema.String),
-      containerVersion: Schema.optional(ContainerVersion),
-      compilerError: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "CreateContainerVersionResponse",
-  }) as any as Schema.Schema<CreateContainerVersionResponse>;
+export const CreateContainerVersionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    syncStatus: Schema.optional(SyncStatus),
+    newWorkspacePath: Schema.optional(Schema.String),
+    containerVersion: Schema.optional(ContainerVersion),
+    compilerError: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "CreateContainerVersionResponse" });
 
 export interface ContainerAccess {
   /** GTM Container ID. */
@@ -1352,15 +1228,10 @@ export interface ContainerAccess {
     | (string & {});
 }
 
-export const ContainerAccess: Schema.Schema<ContainerAccess> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      containerId: Schema.optional(Schema.String),
-      permission: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ContainerAccess",
-  }) as any as Schema.Schema<ContainerAccess>;
+export const ContainerAccess = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  containerId: Schema.optional(Schema.String),
+  permission: Schema.optional(Schema.String),
+}).annotate({ identifier: "ContainerAccess" });
 
 export interface ListTransformationsResponse {
   /** All GTM Transformations of a GTM Container. */
@@ -1369,29 +1240,20 @@ export interface ListTransformationsResponse {
   nextPageToken?: string;
 }
 
-export const ListTransformationsResponse: Schema.Schema<ListTransformationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      transformation: Schema.optional(Schema.Array(Transformation)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListTransformationsResponse",
-  }) as any as Schema.Schema<ListTransformationsResponse>;
+export const ListTransformationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    transformation: Schema.optional(Schema.Array(Transformation)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListTransformationsResponse" });
 
 export interface RevertClientResponse {
   /** Client as it appears in the latest container version since the last workspace synchronization operation. If no client is present, that means the client was deleted in the latest container version. */
   client?: Client;
 }
 
-export const RevertClientResponse: Schema.Schema<RevertClientResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      client: Schema.optional(Client),
-    }),
-  ).annotate({
-    identifier: "RevertClientResponse",
-  }) as any as Schema.Schema<RevertClientResponse>;
+export const RevertClientResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  client: Schema.optional(Client),
+}).annotate({ identifier: "RevertClientResponse" });
 
 export interface Entity {
   /** The zone being represented by the entity. */
@@ -1424,22 +1286,19 @@ export interface Entity {
   builtInVariable?: BuiltInVariable;
 }
 
-export const Entity: Schema.Schema<Entity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      zone: Schema.optional(Zone),
-      customTemplate: Schema.optional(CustomTemplate),
-      client: Schema.optional(Client),
-      tag: Schema.optional(Tag),
-      transformation: Schema.optional(Transformation),
-      changeStatus: Schema.optional(Schema.String),
-      variable: Schema.optional(Variable),
-      folder: Schema.optional(Folder),
-      gtagConfig: Schema.optional(GtagConfig),
-      trigger: Schema.optional(Trigger),
-      builtInVariable: Schema.optional(BuiltInVariable),
-    }),
-  ).annotate({ identifier: "Entity" }) as any as Schema.Schema<Entity>;
+export const Entity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  zone: Schema.optional(Zone),
+  customTemplate: Schema.optional(CustomTemplate),
+  client: Schema.optional(Client),
+  tag: Schema.optional(Tag),
+  transformation: Schema.optional(Transformation),
+  changeStatus: Schema.optional(Schema.String),
+  variable: Schema.optional(Variable),
+  folder: Schema.optional(Folder),
+  gtagConfig: Schema.optional(GtagConfig),
+  trigger: Schema.optional(Trigger),
+  builtInVariable: Schema.optional(BuiltInVariable),
+}).annotate({ identifier: "Entity" });
 
 export interface MergeConflict {
   /** The workspace entity that has conflicting changes compared to the base version. If an entity is deleted in a workspace, it will still appear with a deleted change status. */
@@ -1448,15 +1307,10 @@ export interface MergeConflict {
   entityInBaseVersion?: Entity;
 }
 
-export const MergeConflict: Schema.Schema<MergeConflict> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entityInWorkspace: Schema.optional(Entity),
-      entityInBaseVersion: Schema.optional(Entity),
-    }),
-  ).annotate({
-    identifier: "MergeConflict",
-  }) as any as Schema.Schema<MergeConflict>;
+export const MergeConflict = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  entityInWorkspace: Schema.optional(Entity),
+  entityInBaseVersion: Schema.optional(Entity),
+}).annotate({ identifier: "MergeConflict" });
 
 export interface GetWorkspaceStatusResponse {
   /** Entities that have been changed in the workspace. */
@@ -1465,15 +1319,11 @@ export interface GetWorkspaceStatusResponse {
   mergeConflict?: Array<MergeConflict>;
 }
 
-export const GetWorkspaceStatusResponse: Schema.Schema<GetWorkspaceStatusResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      workspaceChange: Schema.optional(Schema.Array(Entity)),
-      mergeConflict: Schema.optional(Schema.Array(MergeConflict)),
-    }),
-  ).annotate({
-    identifier: "GetWorkspaceStatusResponse",
-  }) as any as Schema.Schema<GetWorkspaceStatusResponse>;
+export const GetWorkspaceStatusResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    workspaceChange: Schema.optional(Schema.Array(Entity)),
+    mergeConflict: Schema.optional(Schema.Array(MergeConflict)),
+  }).annotate({ identifier: "GetWorkspaceStatusResponse" });
 
 export interface ListVariablesResponse {
   /** All GTM Variables of a GTM Container. */
@@ -1482,15 +1332,10 @@ export interface ListVariablesResponse {
   nextPageToken?: string;
 }
 
-export const ListVariablesResponse: Schema.Schema<ListVariablesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      variable: Schema.optional(Schema.Array(Variable)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListVariablesResponse",
-  }) as any as Schema.Schema<ListVariablesResponse>;
+export const ListVariablesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  variable: Schema.optional(Schema.Array(Variable)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListVariablesResponse" });
 
 export interface AccountAccess {
   /** Whether the user has no access, user access, or admin access to an account. */
@@ -1502,14 +1347,9 @@ export interface AccountAccess {
     | (string & {});
 }
 
-export const AccountAccess: Schema.Schema<AccountAccess> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permission: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccountAccess",
-  }) as any as Schema.Schema<AccountAccess>;
+export const AccountAccess = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  permission: Schema.optional(Schema.String),
+}).annotate({ identifier: "AccountAccess" });
 
 export interface UserPermission {
   /** GTM Account access permissions. */
@@ -1524,18 +1364,13 @@ export interface UserPermission {
   containerAccess?: Array<ContainerAccess>;
 }
 
-export const UserPermission: Schema.Schema<UserPermission> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accountAccess: Schema.optional(AccountAccess),
-      path: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-      emailAddress: Schema.optional(Schema.String),
-      containerAccess: Schema.optional(Schema.Array(ContainerAccess)),
-    }),
-  ).annotate({
-    identifier: "UserPermission",
-  }) as any as Schema.Schema<UserPermission>;
+export const UserPermission = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  accountAccess: Schema.optional(AccountAccess),
+  path: Schema.optional(Schema.String),
+  accountId: Schema.optional(Schema.String),
+  emailAddress: Schema.optional(Schema.String),
+  containerAccess: Schema.optional(Schema.Array(ContainerAccess)),
+}).annotate({ identifier: "UserPermission" });
 
 export interface Destination {
   /** The fingerprint of the Google Tag Destination as computed at storage time. This value is recomputed whenever the destination is modified. */
@@ -1556,21 +1391,16 @@ export interface Destination {
   accountId?: string;
 }
 
-export const Destination: Schema.Schema<Destination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fingerprint: Schema.optional(Schema.String),
-      tagManagerUrl: Schema.optional(Schema.String),
-      containerId: Schema.optional(Schema.String),
-      destinationId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      destinationLinkId: Schema.optional(Schema.String),
-      path: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Destination",
-  }) as any as Schema.Schema<Destination>;
+export const Destination = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fingerprint: Schema.optional(Schema.String),
+  tagManagerUrl: Schema.optional(Schema.String),
+  containerId: Schema.optional(Schema.String),
+  destinationId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  destinationLinkId: Schema.optional(Schema.String),
+  path: Schema.optional(Schema.String),
+  accountId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Destination" });
 
 export interface QuickPreviewResponse {
   /** Whether quick previewing failed when syncing the workspace to the latest container version. */
@@ -1581,30 +1411,21 @@ export interface QuickPreviewResponse {
   containerVersion?: ContainerVersion;
 }
 
-export const QuickPreviewResponse: Schema.Schema<QuickPreviewResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      syncStatus: Schema.optional(SyncStatus),
-      compilerError: Schema.optional(Schema.Boolean),
-      containerVersion: Schema.optional(ContainerVersion),
-    }),
-  ).annotate({
-    identifier: "QuickPreviewResponse",
-  }) as any as Schema.Schema<QuickPreviewResponse>;
+export const QuickPreviewResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  syncStatus: Schema.optional(SyncStatus),
+  compilerError: Schema.optional(Schema.Boolean),
+  containerVersion: Schema.optional(ContainerVersion),
+}).annotate({ identifier: "QuickPreviewResponse" });
 
 export interface BulkUpdateWorkspaceResponse {
   /** The entities that were added or updated during the bulk-update. Does not include entities that were deleted or updated by the system. */
   changes?: Array<Entity>;
 }
 
-export const BulkUpdateWorkspaceResponse: Schema.Schema<BulkUpdateWorkspaceResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      changes: Schema.optional(Schema.Array(Entity)),
-    }),
-  ).annotate({
-    identifier: "BulkUpdateWorkspaceResponse",
-  }) as any as Schema.Schema<BulkUpdateWorkspaceResponse>;
+export const BulkUpdateWorkspaceResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    changes: Schema.optional(Schema.Array(Entity)),
+  }).annotate({ identifier: "BulkUpdateWorkspaceResponse" });
 
 export interface ListGtagConfigResponse {
   /** All Google tag configs in a Container. */
@@ -1613,15 +1434,12 @@ export interface ListGtagConfigResponse {
   nextPageToken?: string;
 }
 
-export const ListGtagConfigResponse: Schema.Schema<ListGtagConfigResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gtagConfig: Schema.optional(Schema.Array(GtagConfig)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListGtagConfigResponse",
-  }) as any as Schema.Schema<ListGtagConfigResponse>;
+export const ListGtagConfigResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    gtagConfig: Schema.optional(Schema.Array(GtagConfig)),
+    nextPageToken: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ListGtagConfigResponse" });
 
 export interface ListContainerVersionsResponse {
   /** Continuation token for fetching the next page of results. */
@@ -1630,31 +1448,23 @@ export interface ListContainerVersionsResponse {
   containerVersionHeader?: Array<ContainerVersionHeader>;
 }
 
-export const ListContainerVersionsResponse: Schema.Schema<ListContainerVersionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      containerVersionHeader: Schema.optional(
-        Schema.Array(ContainerVersionHeader),
-      ),
-    }),
-  ).annotate({
-    identifier: "ListContainerVersionsResponse",
-  }) as any as Schema.Schema<ListContainerVersionsResponse>;
+export const ListContainerVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    containerVersionHeader: Schema.optional(
+      Schema.Array(ContainerVersionHeader),
+    ),
+  }).annotate({ identifier: "ListContainerVersionsResponse" });
 
 export interface CreateBuiltInVariableResponse {
   /** List of created built-in variables. */
   builtInVariable?: Array<BuiltInVariable>;
 }
 
-export const CreateBuiltInVariableResponse: Schema.Schema<CreateBuiltInVariableResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      builtInVariable: Schema.optional(Schema.Array(BuiltInVariable)),
-    }),
-  ).annotate({
-    identifier: "CreateBuiltInVariableResponse",
-  }) as any as Schema.Schema<CreateBuiltInVariableResponse>;
+export const CreateBuiltInVariableResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    builtInVariable: Schema.optional(Schema.Array(BuiltInVariable)),
+  }).annotate({ identifier: "CreateBuiltInVariableResponse" });
 
 export interface FolderEntities {
   /** The list of tags inside the folder. */
@@ -1667,17 +1477,12 @@ export interface FolderEntities {
   trigger?: Array<Trigger>;
 }
 
-export const FolderEntities: Schema.Schema<FolderEntities> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tag: Schema.optional(Schema.Array(Tag)),
-      variable: Schema.optional(Schema.Array(Variable)),
-      nextPageToken: Schema.optional(Schema.String),
-      trigger: Schema.optional(Schema.Array(Trigger)),
-    }),
-  ).annotate({
-    identifier: "FolderEntities",
-  }) as any as Schema.Schema<FolderEntities>;
+export const FolderEntities = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tag: Schema.optional(Schema.Array(Tag)),
+  variable: Schema.optional(Schema.Array(Variable)),
+  nextPageToken: Schema.optional(Schema.String),
+  trigger: Schema.optional(Schema.Array(Trigger)),
+}).annotate({ identifier: "FolderEntities" });
 
 export interface ListTemplatesResponse {
   /** All GTM Custom Templates of a GTM Container. */
@@ -1686,15 +1491,10 @@ export interface ListTemplatesResponse {
   nextPageToken?: string;
 }
 
-export const ListTemplatesResponse: Schema.Schema<ListTemplatesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      template: Schema.optional(Schema.Array(CustomTemplate)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListTemplatesResponse",
-  }) as any as Schema.Schema<ListTemplatesResponse>;
+export const ListTemplatesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  template: Schema.optional(Schema.Array(CustomTemplate)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListTemplatesResponse" });
 
 export interface ListClientsResponse {
   /** All GTM Clients of a GTM Container. */
@@ -1703,15 +1503,10 @@ export interface ListClientsResponse {
   nextPageToken?: string;
 }
 
-export const ListClientsResponse: Schema.Schema<ListClientsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      client: Schema.optional(Schema.Array(Client)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListClientsResponse",
-  }) as any as Schema.Schema<ListClientsResponse>;
+export const ListClientsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  client: Schema.optional(Schema.Array(Client)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListClientsResponse" });
 
 export interface PublishContainerVersionResponse {
   /** Compiler errors or not. */
@@ -1720,15 +1515,11 @@ export interface PublishContainerVersionResponse {
   containerVersion?: ContainerVersion;
 }
 
-export const PublishContainerVersionResponse: Schema.Schema<PublishContainerVersionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      compilerError: Schema.optional(Schema.Boolean),
-      containerVersion: Schema.optional(ContainerVersion),
-    }),
-  ).annotate({
-    identifier: "PublishContainerVersionResponse",
-  }) as any as Schema.Schema<PublishContainerVersionResponse>;
+export const PublishContainerVersionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    compilerError: Schema.optional(Schema.Boolean),
+    containerVersion: Schema.optional(ContainerVersion),
+  }).annotate({ identifier: "PublishContainerVersionResponse" });
 
 export interface ListDestinationsResponse {
   /** Continuation token for fetching the next page of results. */
@@ -1737,43 +1528,31 @@ export interface ListDestinationsResponse {
   destination?: Array<Destination>;
 }
 
-export const ListDestinationsResponse: Schema.Schema<ListDestinationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      destination: Schema.optional(Schema.Array(Destination)),
-    }),
-  ).annotate({
-    identifier: "ListDestinationsResponse",
-  }) as any as Schema.Schema<ListDestinationsResponse>;
+export const ListDestinationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    destination: Schema.optional(Schema.Array(Destination)),
+  }).annotate({ identifier: "ListDestinationsResponse" });
 
 export interface RevertTemplateResponse {
   /** Template as it appears in the latest container version since the last workspace synchronization operation. If no template is present, that means the template was deleted in the latest container version. */
   template?: CustomTemplate;
 }
 
-export const RevertTemplateResponse: Schema.Schema<RevertTemplateResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      template: Schema.optional(CustomTemplate),
-    }),
-  ).annotate({
-    identifier: "RevertTemplateResponse",
-  }) as any as Schema.Schema<RevertTemplateResponse>;
+export const RevertTemplateResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    template: Schema.optional(CustomTemplate),
+  },
+).annotate({ identifier: "RevertTemplateResponse" });
 
 export interface RevertZoneResponse {
   /** Zone as it appears in the latest container version since the last workspace synchronization operation. If no zone is present, that means the zone was deleted in the latest container version. */
   zone?: Zone;
 }
 
-export const RevertZoneResponse: Schema.Schema<RevertZoneResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      zone: Schema.optional(Zone),
-    }),
-  ).annotate({
-    identifier: "RevertZoneResponse",
-  }) as any as Schema.Schema<RevertZoneResponse>;
+export const RevertZoneResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  zone: Schema.optional(Zone),
+}).annotate({ identifier: "RevertZoneResponse" });
 
 export interface CreateContainerVersionRequestVersionOptions {
   /** The name of the container version to be created. */
@@ -1782,15 +1561,11 @@ export interface CreateContainerVersionRequestVersionOptions {
   notes?: string;
 }
 
-export const CreateContainerVersionRequestVersionOptions: Schema.Schema<CreateContainerVersionRequestVersionOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      notes: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreateContainerVersionRequestVersionOptions",
-  }) as any as Schema.Schema<CreateContainerVersionRequestVersionOptions>;
+export const CreateContainerVersionRequestVersionOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    notes: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CreateContainerVersionRequestVersionOptions" });
 
 export interface ListUserPermissionsResponse {
   /** All GTM UserPermissions of a GTM Account. */
@@ -1799,43 +1574,32 @@ export interface ListUserPermissionsResponse {
   nextPageToken?: string;
 }
 
-export const ListUserPermissionsResponse: Schema.Schema<ListUserPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userPermission: Schema.optional(Schema.Array(UserPermission)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListUserPermissionsResponse",
-  }) as any as Schema.Schema<ListUserPermissionsResponse>;
+export const ListUserPermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userPermission: Schema.optional(Schema.Array(UserPermission)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListUserPermissionsResponse" });
 
 export interface RevertTransformationResponse {
   /** Transformation as it appears in the latest container version since the last workspace synchronization operation. If no transformation is present, that means the transformation was deleted in the latest container version. */
   transformation?: Transformation;
 }
 
-export const RevertTransformationResponse: Schema.Schema<RevertTransformationResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      transformation: Schema.optional(Transformation),
-    }),
-  ).annotate({
-    identifier: "RevertTransformationResponse",
-  }) as any as Schema.Schema<RevertTransformationResponse>;
+export const RevertTransformationResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    transformation: Schema.optional(Transformation),
+  }).annotate({ identifier: "RevertTransformationResponse" });
 
 export interface RevertVariableResponse {
   /** Variable as it appears in the latest container version since the last workspace synchronization operation. If no variable is present, that means the variable was deleted in the latest container version. */
   variable?: Variable;
 }
 
-export const RevertVariableResponse: Schema.Schema<RevertVariableResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      variable: Schema.optional(Variable),
-    }),
-  ).annotate({
-    identifier: "RevertVariableResponse",
-  }) as any as Schema.Schema<RevertVariableResponse>;
+export const RevertVariableResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    variable: Schema.optional(Variable),
+  },
+).annotate({ identifier: "RevertVariableResponse" });
 
 export interface ListTriggersResponse {
   /** Continuation token for fetching the next page of results. */
@@ -1844,15 +1608,10 @@ export interface ListTriggersResponse {
   trigger?: Array<Trigger>;
 }
 
-export const ListTriggersResponse: Schema.Schema<ListTriggersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      trigger: Schema.optional(Schema.Array(Trigger)),
-    }),
-  ).annotate({
-    identifier: "ListTriggersResponse",
-  }) as any as Schema.Schema<ListTriggersResponse>;
+export const ListTriggersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  trigger: Schema.optional(Schema.Array(Trigger)),
+}).annotate({ identifier: "ListTriggersResponse" });
 
 export interface Workspace {
   /** GTM Workspace's API relative path. */
@@ -1873,19 +1632,16 @@ export interface Workspace {
   tagManagerUrl?: string;
 }
 
-export const Workspace: Schema.Schema<Workspace> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      path: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-      containerId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      workspaceId: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      fingerprint: Schema.optional(Schema.String),
-      tagManagerUrl: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Workspace" }) as any as Schema.Schema<Workspace>;
+export const Workspace = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  path: Schema.optional(Schema.String),
+  accountId: Schema.optional(Schema.String),
+  containerId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  workspaceId: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  fingerprint: Schema.optional(Schema.String),
+  tagManagerUrl: Schema.optional(Schema.String),
+}).annotate({ identifier: "Workspace" });
 
 export interface ListWorkspacesResponse {
   /** Continuation token for fetching the next page of results. */
@@ -1894,15 +1650,12 @@ export interface ListWorkspacesResponse {
   workspace?: Array<Workspace>;
 }
 
-export const ListWorkspacesResponse: Schema.Schema<ListWorkspacesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      workspace: Schema.optional(Schema.Array(Workspace)),
-    }),
-  ).annotate({
-    identifier: "ListWorkspacesResponse",
-  }) as any as Schema.Schema<ListWorkspacesResponse>;
+export const ListWorkspacesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    nextPageToken: Schema.optional(Schema.String),
+    workspace: Schema.optional(Schema.Array(Workspace)),
+  },
+).annotate({ identifier: "ListWorkspacesResponse" });
 
 export interface SyncWorkspaceResponse {
   /** The merge conflict after sync. If this field is not empty, the sync is still treated as successful. But a version cannot be created until all conflicts are resolved. */
@@ -1911,15 +1664,10 @@ export interface SyncWorkspaceResponse {
   syncStatus?: SyncStatus;
 }
 
-export const SyncWorkspaceResponse: Schema.Schema<SyncWorkspaceResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mergeConflict: Schema.optional(Schema.Array(MergeConflict)),
-      syncStatus: Schema.optional(SyncStatus),
-    }),
-  ).annotate({
-    identifier: "SyncWorkspaceResponse",
-  }) as any as Schema.Schema<SyncWorkspaceResponse>;
+export const SyncWorkspaceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  mergeConflict: Schema.optional(Schema.Array(MergeConflict)),
+  syncStatus: Schema.optional(SyncStatus),
+}).annotate({ identifier: "SyncWorkspaceResponse" });
 
 export interface ListEnabledBuiltInVariablesResponse {
   /** All GTM BuiltInVariables of a GTM container. */
@@ -1928,29 +1676,20 @@ export interface ListEnabledBuiltInVariablesResponse {
   nextPageToken?: string;
 }
 
-export const ListEnabledBuiltInVariablesResponse: Schema.Schema<ListEnabledBuiltInVariablesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      builtInVariable: Schema.optional(Schema.Array(BuiltInVariable)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListEnabledBuiltInVariablesResponse",
-  }) as any as Schema.Schema<ListEnabledBuiltInVariablesResponse>;
+export const ListEnabledBuiltInVariablesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    builtInVariable: Schema.optional(Schema.Array(BuiltInVariable)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListEnabledBuiltInVariablesResponse" });
 
 export interface RevertTriggerResponse {
   /** Trigger as it appears in the latest container version since the last workspace synchronization operation. If no trigger is present, that means the trigger was deleted in the latest container version. */
   trigger?: Trigger;
 }
 
-export const RevertTriggerResponse: Schema.Schema<RevertTriggerResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      trigger: Schema.optional(Trigger),
-    }),
-  ).annotate({
-    identifier: "RevertTriggerResponse",
-  }) as any as Schema.Schema<RevertTriggerResponse>;
+export const RevertTriggerResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  trigger: Schema.optional(Trigger),
+}).annotate({ identifier: "RevertTriggerResponse" });
 
 export interface ListTagsResponse {
   /** All GTM Tags of a GTM Container. */
@@ -1959,29 +1698,20 @@ export interface ListTagsResponse {
   nextPageToken?: string;
 }
 
-export const ListTagsResponse: Schema.Schema<ListTagsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tag: Schema.optional(Schema.Array(Tag)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListTagsResponse",
-  }) as any as Schema.Schema<ListTagsResponse>;
+export const ListTagsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tag: Schema.optional(Schema.Array(Tag)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListTagsResponse" });
 
 export interface RevertBuiltInVariableResponse {
   /** Whether the built-in variable is enabled after reversion. */
   enabled?: boolean;
 }
 
-export const RevertBuiltInVariableResponse: Schema.Schema<RevertBuiltInVariableResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "RevertBuiltInVariableResponse",
-  }) as any as Schema.Schema<RevertBuiltInVariableResponse>;
+export const RevertBuiltInVariableResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "RevertBuiltInVariableResponse" });
 
 export interface GetContainerSnippetResponse {
   /** Tagging snippet for a Container. */
@@ -1990,15 +1720,11 @@ export interface GetContainerSnippetResponse {
   containerConfig?: string;
 }
 
-export const GetContainerSnippetResponse: Schema.Schema<GetContainerSnippetResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      snippet: Schema.optional(Schema.String),
-      containerConfig: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GetContainerSnippetResponse",
-  }) as any as Schema.Schema<GetContainerSnippetResponse>;
+export const GetContainerSnippetResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    snippet: Schema.optional(Schema.String),
+    containerConfig: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GetContainerSnippetResponse" });
 
 export interface ListFoldersResponse {
   /** All GTM Folders of a GTM Container. */
@@ -2007,15 +1733,10 @@ export interface ListFoldersResponse {
   nextPageToken?: string;
 }
 
-export const ListFoldersResponse: Schema.Schema<ListFoldersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      folder: Schema.optional(Schema.Array(Folder)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListFoldersResponse",
-  }) as any as Schema.Schema<ListFoldersResponse>;
+export const ListFoldersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  folder: Schema.optional(Schema.Array(Folder)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListFoldersResponse" });
 
 export interface AccountFeatures {
   /** Whether this Account supports user permissions managed by GTM. */
@@ -2024,29 +1745,19 @@ export interface AccountFeatures {
   supportMultipleContainers?: boolean;
 }
 
-export const AccountFeatures: Schema.Schema<AccountFeatures> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      supportUserPermissions: Schema.optional(Schema.Boolean),
-      supportMultipleContainers: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "AccountFeatures",
-  }) as any as Schema.Schema<AccountFeatures>;
+export const AccountFeatures = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  supportUserPermissions: Schema.optional(Schema.Boolean),
+  supportMultipleContainers: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "AccountFeatures" });
 
 export interface ProposedChange {
   /** The list of workspace changes to be applied. */
   changes?: Array<Entity>;
 }
 
-export const ProposedChange: Schema.Schema<ProposedChange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      changes: Schema.optional(Schema.Array(Entity)),
-    }),
-  ).annotate({
-    identifier: "ProposedChange",
-  }) as any as Schema.Schema<ProposedChange>;
+export const ProposedChange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  changes: Schema.optional(Schema.Array(Entity)),
+}).annotate({ identifier: "ProposedChange" });
 
 export interface Account {
   /** GTM Account's API relative path. */
@@ -2065,18 +1776,15 @@ export interface Account {
   name?: string;
 }
 
-export const Account: Schema.Schema<Account> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      path: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-      shareData: Schema.optional(Schema.Boolean),
-      fingerprint: Schema.optional(Schema.String),
-      tagManagerUrl: Schema.optional(Schema.String),
-      features: Schema.optional(AccountFeatures),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Account" }) as any as Schema.Schema<Account>;
+export const Account = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  path: Schema.optional(Schema.String),
+  accountId: Schema.optional(Schema.String),
+  shareData: Schema.optional(Schema.Boolean),
+  fingerprint: Schema.optional(Schema.String),
+  tagManagerUrl: Schema.optional(Schema.String),
+  features: Schema.optional(AccountFeatures),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Account" });
 
 export interface ListAccountsResponse {
   /** List of GTM Accounts that a user has access to. */
@@ -2085,15 +1793,10 @@ export interface ListAccountsResponse {
   nextPageToken?: string;
 }
 
-export const ListAccountsResponse: Schema.Schema<ListAccountsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      account: Schema.optional(Schema.Array(Account)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAccountsResponse",
-  }) as any as Schema.Schema<ListAccountsResponse>;
+export const ListAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  account: Schema.optional(Schema.Array(Account)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListAccountsResponse" });
 
 export interface ListContainersResponse {
   /** Continuation token for fetching the next page of results. */
@@ -2102,15 +1805,12 @@ export interface ListContainersResponse {
   container?: Array<Container>;
 }
 
-export const ListContainersResponse: Schema.Schema<ListContainersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      container: Schema.optional(Schema.Array(Container)),
-    }),
-  ).annotate({
-    identifier: "ListContainersResponse",
-  }) as any as Schema.Schema<ListContainersResponse>;
+export const ListContainersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    nextPageToken: Schema.optional(Schema.String),
+    container: Schema.optional(Schema.Array(Container)),
+  },
+).annotate({ identifier: "ListContainersResponse" });
 
 // ==========================================================================
 // Operations

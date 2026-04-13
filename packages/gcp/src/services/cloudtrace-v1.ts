@@ -39,18 +39,15 @@ export interface TraceSpan {
   name?: string;
 }
 
-export const TraceSpan: Schema.Schema<TraceSpan> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      spanId: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      kind: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      parentSpanId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "TraceSpan" }) as any as Schema.Schema<TraceSpan>;
+export const TraceSpan = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  spanId: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  kind: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  parentSpanId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "TraceSpan" });
 
 export interface Trace {
   /** Project ID of the Cloud project where the trace data is stored. */
@@ -61,33 +58,26 @@ export interface Trace {
   spans?: Array<TraceSpan>;
 }
 
-export const Trace: Schema.Schema<Trace> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      projectId: Schema.optional(Schema.String),
-      traceId: Schema.optional(Schema.String),
-      spans: Schema.optional(Schema.Array(TraceSpan)),
-    }),
-  ).annotate({ identifier: "Trace" }) as any as Schema.Schema<Trace>;
+export const Trace = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  projectId: Schema.optional(Schema.String),
+  traceId: Schema.optional(Schema.String),
+  spans: Schema.optional(Schema.Array(TraceSpan)),
+}).annotate({ identifier: "Trace" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface Traces {
   /** List of traces. */
   traces?: Array<Trace>;
 }
 
-export const Traces: Schema.Schema<Traces> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      traces: Schema.optional(Schema.Array(Trace)),
-    }),
-  ).annotate({ identifier: "Traces" }) as any as Schema.Schema<Traces>;
+export const Traces = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  traces: Schema.optional(Schema.Array(Trace)),
+}).annotate({ identifier: "Traces" });
 
 export interface ListTracesResponse {
   /** List of trace records as specified by the view parameter. */
@@ -96,15 +86,10 @@ export interface ListTracesResponse {
   nextPageToken?: string;
 }
 
-export const ListTracesResponse: Schema.Schema<ListTracesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      traces: Schema.optional(Schema.Array(Trace)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListTracesResponse",
-  }) as any as Schema.Schema<ListTracesResponse>;
+export const ListTracesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  traces: Schema.optional(Schema.Array(Trace)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListTracesResponse" });
 
 // ==========================================================================
 // Operations

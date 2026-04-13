@@ -29,13 +29,10 @@ export interface Parameter {
   doubleValue?: number;
 }
 
-export const Parameter: Schema.Schema<Parameter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      intValue: Schema.optional(Schema.String),
-      doubleValue: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Parameter" }) as any as Schema.Schema<Parameter>;
+export const Parameter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  intValue: Schema.optional(Schema.String),
+  doubleValue: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Parameter" });
 
 export interface AggregationFunction {
   /** Required. The type of aggregation function, must be one of the following: "none" - no function. "percentile" - APPROX_QUANTILES() - 1 parameter numeric value "average" - AVG() "count" - COUNT() "count-distinct" - COUNT(DISTINCT) "count-distinct-approx" - APPROX_COUNT_DISTINCT() "max" - MAX() "min" - MIN() "sum" - SUM() */
@@ -44,15 +41,10 @@ export interface AggregationFunction {
   parameters?: Array<Parameter>;
 }
 
-export const AggregationFunction: Schema.Schema<AggregationFunction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      parameters: Schema.optional(Schema.Array(Parameter)),
-    }),
-  ).annotate({
-    identifier: "AggregationFunction",
-  }) as any as Schema.Schema<AggregationFunction>;
+export const AggregationFunction = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  parameters: Schema.optional(Schema.Array(Parameter)),
+}).annotate({ identifier: "AggregationFunction" });
 
 export interface StatisticalTimeSeriesFilter {
   /** How many time series to output. */
@@ -64,15 +56,11 @@ export interface StatisticalTimeSeriesFilter {
     | (string & {});
 }
 
-export const StatisticalTimeSeriesFilter: Schema.Schema<StatisticalTimeSeriesFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      numTimeSeries: Schema.optional(Schema.Number),
-      rankingMethod: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StatisticalTimeSeriesFilter",
-  }) as any as Schema.Schema<StatisticalTimeSeriesFilter>;
+export const StatisticalTimeSeriesFilter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    numTimeSeries: Schema.optional(Schema.Number),
+    rankingMethod: Schema.optional(Schema.String),
+  }).annotate({ identifier: "StatisticalTimeSeriesFilter" });
 
 export interface OperationMetadata {
   /** Current state of the batch operation. */
@@ -89,16 +77,11 @@ export interface OperationMetadata {
   createTime?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationMetadata" });
 
 export interface ColumnSortingOptions {
   /** Optional. Column name to sort data by */
@@ -112,15 +95,10 @@ export interface ColumnSortingOptions {
     | (string & {});
 }
 
-export const ColumnSortingOptions: Schema.Schema<ColumnSortingOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      column: Schema.optional(Schema.String),
-      direction: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ColumnSortingOptions",
-  }) as any as Schema.Schema<ColumnSortingOptions>;
+export const ColumnSortingOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  column: Schema.optional(Schema.String),
+  direction: Schema.optional(Schema.String),
+}).annotate({ identifier: "ColumnSortingOptions" });
 
 export interface Measure {
   /** Required. The column name within in the dataset used for the measure. */
@@ -129,27 +107,19 @@ export interface Measure {
   aggregationFunction?: AggregationFunction;
 }
 
-export const Measure: Schema.Schema<Measure> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      column: Schema.optional(Schema.String),
-      aggregationFunction: Schema.optional(AggregationFunction),
-    }),
-  ).annotate({ identifier: "Measure" }) as any as Schema.Schema<Measure>;
+export const Measure = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  column: Schema.optional(Schema.String),
+  aggregationFunction: Schema.optional(AggregationFunction),
+}).annotate({ identifier: "Measure" });
 
 export interface OpsAnalyticsQuery {
   /** A SQL query to fetch time series, category series, or numeric series data. */
   sql?: string;
 }
 
-export const OpsAnalyticsQuery: Schema.Schema<OpsAnalyticsQuery> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sql: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OpsAnalyticsQuery",
-  }) as any as Schema.Schema<OpsAnalyticsQuery>;
+export const OpsAnalyticsQuery = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sql: Schema.optional(Schema.String),
+}).annotate({ identifier: "OpsAnalyticsQuery" });
 
 export interface Interval {
   /** Optional. Inclusive start of the interval.If specified, a Timestamp matching this interval will have to be the same or after the start. */
@@ -158,13 +128,10 @@ export interface Interval {
   endTime?: string;
 }
 
-export const Interval: Schema.Schema<Interval> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Interval" }) as any as Schema.Schema<Interval>;
+export const Interval = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Interval" });
 
 export interface PickTimeSeriesFilter {
   /** How many time series to allow to pass through the filter. */
@@ -184,17 +151,12 @@ export interface PickTimeSeriesFilter {
   direction?: "DIRECTION_UNSPECIFIED" | "TOP" | "BOTTOM" | (string & {});
 }
 
-export const PickTimeSeriesFilter: Schema.Schema<PickTimeSeriesFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      numTimeSeries: Schema.optional(Schema.Number),
-      rankingMethod: Schema.optional(Schema.String),
-      interval: Schema.optional(Interval),
-      direction: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PickTimeSeriesFilter",
-  }) as any as Schema.Schema<PickTimeSeriesFilter>;
+export const PickTimeSeriesFilter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  numTimeSeries: Schema.optional(Schema.Number),
+  rankingMethod: Schema.optional(Schema.String),
+  interval: Schema.optional(Interval),
+  direction: Schema.optional(Schema.String),
+}).annotate({ identifier: "PickTimeSeriesFilter" });
 
 export interface Aggregation {
   /** The alignment_period specifies a time interval, in seconds, that is used to divide the data in all the time series into consistent blocks of time. This will be done before the per-series aligner can be applied to the data.The value must be at least 60 seconds. If a per-series aligner other than ALIGN_NONE is specified, this field is required or an error is returned. If no per-series aligner is specified, or the aligner ALIGN_NONE is specified, then this field is ignored.The maximum value of the alignment_period is 2 years, or 104 weeks. */
@@ -242,17 +204,12 @@ export interface Aggregation {
   groupByFields?: Array<string>;
 }
 
-export const Aggregation: Schema.Schema<Aggregation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      alignmentPeriod: Schema.optional(Schema.String),
-      perSeriesAligner: Schema.optional(Schema.String),
-      crossSeriesReducer: Schema.optional(Schema.String),
-      groupByFields: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "Aggregation",
-  }) as any as Schema.Schema<Aggregation>;
+export const Aggregation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  alignmentPeriod: Schema.optional(Schema.String),
+  perSeriesAligner: Schema.optional(Schema.String),
+  crossSeriesReducer: Schema.optional(Schema.String),
+  groupByFields: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Aggregation" });
 
 export interface RatioPart {
   /** Required. The monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies the metric types, resources, and projects to query. */
@@ -261,13 +218,10 @@ export interface RatioPart {
   aggregation?: Aggregation;
 }
 
-export const RatioPart: Schema.Schema<RatioPart> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filter: Schema.optional(Schema.String),
-      aggregation: Schema.optional(Aggregation),
-    }),
-  ).annotate({ identifier: "RatioPart" }) as any as Schema.Schema<RatioPart>;
+export const RatioPart = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  filter: Schema.optional(Schema.String),
+  aggregation: Schema.optional(Aggregation),
+}).annotate({ identifier: "RatioPart" });
 
 export interface TimeSeriesFilterRatio {
   /** Ranking based time series filter. */
@@ -282,18 +236,13 @@ export interface TimeSeriesFilterRatio {
   denominator?: RatioPart;
 }
 
-export const TimeSeriesFilterRatio: Schema.Schema<TimeSeriesFilterRatio> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pickTimeSeriesFilter: Schema.optional(PickTimeSeriesFilter),
-      secondaryAggregation: Schema.optional(Aggregation),
-      statisticalTimeSeriesFilter: Schema.optional(StatisticalTimeSeriesFilter),
-      numerator: Schema.optional(RatioPart),
-      denominator: Schema.optional(RatioPart),
-    }),
-  ).annotate({
-    identifier: "TimeSeriesFilterRatio",
-  }) as any as Schema.Schema<TimeSeriesFilterRatio>;
+export const TimeSeriesFilterRatio = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pickTimeSeriesFilter: Schema.optional(PickTimeSeriesFilter),
+  secondaryAggregation: Schema.optional(Aggregation),
+  statisticalTimeSeriesFilter: Schema.optional(StatisticalTimeSeriesFilter),
+  numerator: Schema.optional(RatioPart),
+  denominator: Schema.optional(RatioPart),
+}).annotate({ identifier: "TimeSeriesFilterRatio" });
 
 export interface TimeSeriesFilter {
   /** Ranking based time series filter. */
@@ -308,18 +257,13 @@ export interface TimeSeriesFilter {
   filter?: string;
 }
 
-export const TimeSeriesFilter: Schema.Schema<TimeSeriesFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pickTimeSeriesFilter: Schema.optional(PickTimeSeriesFilter),
-      secondaryAggregation: Schema.optional(Aggregation),
-      aggregation: Schema.optional(Aggregation),
-      statisticalTimeSeriesFilter: Schema.optional(StatisticalTimeSeriesFilter),
-      filter: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TimeSeriesFilter",
-  }) as any as Schema.Schema<TimeSeriesFilter>;
+export const TimeSeriesFilter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pickTimeSeriesFilter: Schema.optional(PickTimeSeriesFilter),
+  secondaryAggregation: Schema.optional(Aggregation),
+  aggregation: Schema.optional(Aggregation),
+  statisticalTimeSeriesFilter: Schema.optional(StatisticalTimeSeriesFilter),
+  filter: Schema.optional(Schema.String),
+}).annotate({ identifier: "TimeSeriesFilter" });
 
 export interface TimeSeriesQuery {
   /** Preview: A query used to fetch a time series, category series, or numeric series with SQL. This is a preview feature and may be subject to change before final release. */
@@ -338,20 +282,15 @@ export interface TimeSeriesQuery {
   prometheusQuery?: string;
 }
 
-export const TimeSeriesQuery: Schema.Schema<TimeSeriesQuery> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      opsAnalyticsQuery: Schema.optional(OpsAnalyticsQuery),
-      timeSeriesFilterRatio: Schema.optional(TimeSeriesFilterRatio),
-      timeSeriesFilter: Schema.optional(TimeSeriesFilter),
-      unitOverride: Schema.optional(Schema.String),
-      outputFullDuration: Schema.optional(Schema.Boolean),
-      timeSeriesQueryLanguage: Schema.optional(Schema.String),
-      prometheusQuery: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TimeSeriesQuery",
-  }) as any as Schema.Schema<TimeSeriesQuery>;
+export const TimeSeriesQuery = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  opsAnalyticsQuery: Schema.optional(OpsAnalyticsQuery),
+  timeSeriesFilterRatio: Schema.optional(TimeSeriesFilterRatio),
+  timeSeriesFilter: Schema.optional(TimeSeriesFilter),
+  unitOverride: Schema.optional(Schema.String),
+  outputFullDuration: Schema.optional(Schema.Boolean),
+  timeSeriesQueryLanguage: Schema.optional(Schema.String),
+  prometheusQuery: Schema.optional(Schema.String),
+}).annotate({ identifier: "TimeSeriesQuery" });
 
 export interface Dimension {
   /** The column name to sort on for binning. This column can be the same column as this dimension or any other column used as a measure in the results. If sort_order is set to NONE, then this value is not used. */
@@ -377,19 +316,16 @@ export interface Dimension {
   numericBinSize?: number;
 }
 
-export const Dimension: Schema.Schema<Dimension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sortColumn: Schema.optional(Schema.String),
-      columnType: Schema.optional(Schema.String),
-      sortOrder: Schema.optional(Schema.String),
-      floatBinSize: Schema.optional(Schema.Number),
-      maxBinCount: Schema.optional(Schema.Number),
-      timeBinSize: Schema.optional(Schema.String),
-      column: Schema.optional(Schema.String),
-      numericBinSize: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Dimension" }) as any as Schema.Schema<Dimension>;
+export const Dimension = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sortColumn: Schema.optional(Schema.String),
+  columnType: Schema.optional(Schema.String),
+  sortOrder: Schema.optional(Schema.String),
+  floatBinSize: Schema.optional(Schema.Number),
+  maxBinCount: Schema.optional(Schema.Number),
+  timeBinSize: Schema.optional(Schema.String),
+  column: Schema.optional(Schema.String),
+  numericBinSize: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Dimension" });
 
 export interface PieChartDataSet {
   /** Optional. A template for the name of the slice. This name will be displayed in the legend and the tooltip of the pie chart. It replaces the auto-generated names for the slices. For example, if the template is set to ${resource.labels.zone}, the zone's value will be used for the name instead of the default name. */
@@ -404,18 +340,13 @@ export interface PieChartDataSet {
   dimensions?: Array<Dimension>;
 }
 
-export const PieChartDataSet: Schema.Schema<PieChartDataSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sliceNameTemplate: Schema.optional(Schema.String),
-      minAlignmentPeriod: Schema.optional(Schema.String),
-      measures: Schema.optional(Schema.Array(Measure)),
-      timeSeriesQuery: Schema.optional(TimeSeriesQuery),
-      dimensions: Schema.optional(Schema.Array(Dimension)),
-    }),
-  ).annotate({
-    identifier: "PieChartDataSet",
-  }) as any as Schema.Schema<PieChartDataSet>;
+export const PieChartDataSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sliceNameTemplate: Schema.optional(Schema.String),
+  minAlignmentPeriod: Schema.optional(Schema.String),
+  measures: Schema.optional(Schema.Array(Measure)),
+  timeSeriesQuery: Schema.optional(TimeSeriesQuery),
+  dimensions: Schema.optional(Schema.Array(Dimension)),
+}).annotate({ identifier: "PieChartDataSet" });
 
 export interface PieChart {
   /** Required. Indicates the visualization type for the PieChart. */
@@ -426,14 +357,11 @@ export interface PieChart {
   dataSets?: Array<PieChartDataSet>;
 }
 
-export const PieChart: Schema.Schema<PieChart> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      chartType: Schema.optional(Schema.String),
-      showLabels: Schema.optional(Schema.Boolean),
-      dataSets: Schema.optional(Schema.Array(PieChartDataSet)),
-    }),
-  ).annotate({ identifier: "PieChart" }) as any as Schema.Schema<PieChart>;
+export const PieChart = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  chartType: Schema.optional(Schema.String),
+  showLabels: Schema.optional(Schema.Boolean),
+  dataSets: Schema.optional(Schema.Array(PieChartDataSet)),
+}).annotate({ identifier: "PieChart" });
 
 export interface TemplateVariableCondition {
   /** The value to compare the template variable to. For example, if the comparator is REGEX_FULL_MATCH, this field should contain a regex. */
@@ -444,37 +372,27 @@ export interface TemplateVariableCondition {
   comparator?: "COMPARATOR_UNSPECIFIED" | "REGEX_FULL_MATCH" | (string & {});
 }
 
-export const TemplateVariableCondition: Schema.Schema<TemplateVariableCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      templateVariableValue: Schema.optional(Schema.String),
-      templateVariable: Schema.optional(Schema.String),
-      comparator: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TemplateVariableCondition",
-  }) as any as Schema.Schema<TemplateVariableCondition>;
+export const TemplateVariableCondition =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    templateVariableValue: Schema.optional(Schema.String),
+    templateVariable: Schema.optional(Schema.String),
+    comparator: Schema.optional(Schema.String),
+  }).annotate({ identifier: "TemplateVariableCondition" });
 
 export interface VisibilityCondition {
   /** A condition whose evaluation is based on the value of a template variable. */
   templateVariableCondition?: TemplateVariableCondition;
 }
 
-export const VisibilityCondition: Schema.Schema<VisibilityCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      templateVariableCondition: Schema.optional(TemplateVariableCondition),
-    }),
-  ).annotate({
-    identifier: "VisibilityCondition",
-  }) as any as Schema.Schema<VisibilityCondition>;
+export const VisibilityCondition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  templateVariableCondition: Schema.optional(TemplateVariableCondition),
+}).annotate({ identifier: "VisibilityCondition" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface TextStyle {
   /** The background color as a hex string. "#RRGGBB" or "#RGB" */
@@ -531,18 +449,15 @@ export interface TextStyle {
     | (string & {});
 }
 
-export const TextStyle: Schema.Schema<TextStyle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      backgroundColor: Schema.optional(Schema.String),
-      fontSize: Schema.optional(Schema.String),
-      pointerLocation: Schema.optional(Schema.String),
-      verticalAlignment: Schema.optional(Schema.String),
-      textColor: Schema.optional(Schema.String),
-      padding: Schema.optional(Schema.String),
-      horizontalAlignment: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "TextStyle" }) as any as Schema.Schema<TextStyle>;
+export const TextStyle = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  backgroundColor: Schema.optional(Schema.String),
+  fontSize: Schema.optional(Schema.String),
+  pointerLocation: Schema.optional(Schema.String),
+  verticalAlignment: Schema.optional(Schema.String),
+  textColor: Schema.optional(Schema.String),
+  padding: Schema.optional(Schema.String),
+  horizontalAlignment: Schema.optional(Schema.String),
+}).annotate({ identifier: "TextStyle" });
 
 export interface Text {
   /** The text content to be displayed. */
@@ -553,26 +468,20 @@ export interface Text {
   style?: TextStyle;
 }
 
-export const Text: Schema.Schema<Text> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      content: Schema.optional(Schema.String),
-      format: Schema.optional(Schema.String),
-      style: Schema.optional(TextStyle),
-    }),
-  ).annotate({ identifier: "Text" }) as any as Schema.Schema<Text>;
+export const Text = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  content: Schema.optional(Schema.String),
+  format: Schema.optional(Schema.String),
+  style: Schema.optional(TextStyle),
+}).annotate({ identifier: "Text" });
 
 export interface AlertChart {
   /** Required. The resource name of the alert policy. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[ALERT_POLICY_ID] */
   name?: string;
 }
 
-export const AlertChart: Schema.Schema<AlertChart> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "AlertChart" }) as any as Schema.Schema<AlertChart>;
+export const AlertChart = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "AlertChart" });
 
 export interface SectionHeader {
   /** The subtitle of the section */
@@ -581,43 +490,28 @@ export interface SectionHeader {
   dividerBelow?: boolean;
 }
 
-export const SectionHeader: Schema.Schema<SectionHeader> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subtitle: Schema.optional(Schema.String),
-      dividerBelow: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "SectionHeader",
-  }) as any as Schema.Schema<SectionHeader>;
+export const SectionHeader = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subtitle: Schema.optional(Schema.String),
+  dividerBelow: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "SectionHeader" });
 
 export interface SingleViewGroup {
   /** Optional. Determines how the widget selector will be displayed. */
   displayType?: "DISPLAY_TYPE_UNSPECIFIED" | "DROPDOWN" | "TAB" | (string & {});
 }
 
-export const SingleViewGroup: Schema.Schema<SingleViewGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SingleViewGroup",
-  }) as any as Schema.Schema<SingleViewGroup>;
+export const SingleViewGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayType: Schema.optional(Schema.String),
+}).annotate({ identifier: "SingleViewGroup" });
 
 export interface FilterControl {
   /** Name of the template variable the widget affects. */
   templateVariable?: string;
 }
 
-export const FilterControl: Schema.Schema<FilterControl> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      templateVariable: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FilterControl",
-  }) as any as Schema.Schema<FilterControl>;
+export const FilterControl = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  templateVariable: Schema.optional(Schema.String),
+}).annotate({ identifier: "FilterControl" });
 
 export interface Breakdown {
   /** Required. The sort order is applied to the values of the breakdown column. */
@@ -635,15 +529,12 @@ export interface Breakdown {
   limit?: number;
 }
 
-export const Breakdown: Schema.Schema<Breakdown> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sortOrder: Schema.optional(Schema.String),
-      column: Schema.optional(Schema.String),
-      aggregationFunction: Schema.optional(AggregationFunction),
-      limit: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Breakdown" }) as any as Schema.Schema<Breakdown>;
+export const Breakdown = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sortOrder: Schema.optional(Schema.String),
+  column: Schema.optional(Schema.String),
+  aggregationFunction: Schema.optional(AggregationFunction),
+  limit: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Breakdown" });
 
 export interface TreemapDataSet {
   /** Optional. A collection of measures. A measure is a measured value of a property in your data. For example, rainfall in inches, number of units sold, revenue gained, etc. */
@@ -654,16 +545,11 @@ export interface TreemapDataSet {
   timeSeriesQuery?: TimeSeriesQuery;
 }
 
-export const TreemapDataSet: Schema.Schema<TreemapDataSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      measures: Schema.optional(Schema.Array(Measure)),
-      breakdowns: Schema.optional(Schema.Array(Breakdown)),
-      timeSeriesQuery: Schema.optional(TimeSeriesQuery),
-    }),
-  ).annotate({
-    identifier: "TreemapDataSet",
-  }) as any as Schema.Schema<TreemapDataSet>;
+export const TreemapDataSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  measures: Schema.optional(Schema.Array(Measure)),
+  breakdowns: Schema.optional(Schema.Array(Breakdown)),
+  timeSeriesQuery: Schema.optional(TimeSeriesQuery),
+}).annotate({ identifier: "TreemapDataSet" });
 
 export interface Treemap {
   /** Required. Ordered labels representing the hierarchical treemap structure. */
@@ -672,13 +558,10 @@ export interface Treemap {
   dataSets?: Array<TreemapDataSet>;
 }
 
-export const Treemap: Schema.Schema<Treemap> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      treemapHierarchy: Schema.optional(Schema.Array(Schema.String)),
-      dataSets: Schema.optional(Schema.Array(TreemapDataSet)),
-    }),
-  ).annotate({ identifier: "Treemap" }) as any as Schema.Schema<Treemap>;
+export const Treemap = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  treemapHierarchy: Schema.optional(Schema.Array(Schema.String)),
+  dataSets: Schema.optional(Schema.Array(TreemapDataSet)),
+}).annotate({ identifier: "Treemap" });
 
 export interface Axis {
   /** The label of the axis. */
@@ -687,13 +570,10 @@ export interface Axis {
   scale?: "SCALE_UNSPECIFIED" | "LINEAR" | "LOG10" | (string & {});
 }
 
-export const Axis: Schema.Schema<Axis> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      label: Schema.optional(Schema.String),
-      scale: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Axis" }) as any as Schema.Schema<Axis>;
+export const Axis = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  label: Schema.optional(Schema.String),
+  scale: Schema.optional(Schema.String),
+}).annotate({ identifier: "Axis" });
 
 export interface Threshold {
   /** The direction for the current threshold. Direction is not allowed in a XyChart. */
@@ -708,16 +588,13 @@ export interface Threshold {
   value?: number;
 }
 
-export const Threshold: Schema.Schema<Threshold> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      direction: Schema.optional(Schema.String),
-      label: Schema.optional(Schema.String),
-      color: Schema.optional(Schema.String),
-      targetAxis: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Threshold" }) as any as Schema.Schema<Threshold>;
+export const Threshold = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  direction: Schema.optional(Schema.String),
+  label: Schema.optional(Schema.String),
+  color: Schema.optional(Schema.String),
+  targetAxis: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Threshold" });
 
 export interface DataSet {
   /** Optional. A collection of sort options, affects the order of the data and legend. */
@@ -746,20 +623,17 @@ export interface DataSet {
   dimensions?: Array<Dimension>;
 }
 
-export const DataSet: Schema.Schema<DataSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sort: Schema.optional(Schema.Array(ColumnSortingOptions)),
-      timeSeriesQuery: Schema.optional(TimeSeriesQuery),
-      legendTemplate: Schema.optional(Schema.String),
-      minAlignmentPeriod: Schema.optional(Schema.String),
-      targetAxis: Schema.optional(Schema.String),
-      measures: Schema.optional(Schema.Array(Measure)),
-      breakdowns: Schema.optional(Schema.Array(Breakdown)),
-      plotType: Schema.optional(Schema.String),
-      dimensions: Schema.optional(Schema.Array(Dimension)),
-    }),
-  ).annotate({ identifier: "DataSet" }) as any as Schema.Schema<DataSet>;
+export const DataSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sort: Schema.optional(Schema.Array(ColumnSortingOptions)),
+  timeSeriesQuery: Schema.optional(TimeSeriesQuery),
+  legendTemplate: Schema.optional(Schema.String),
+  minAlignmentPeriod: Schema.optional(Schema.String),
+  targetAxis: Schema.optional(Schema.String),
+  measures: Schema.optional(Schema.Array(Measure)),
+  breakdowns: Schema.optional(Schema.Array(Breakdown)),
+  plotType: Schema.optional(Schema.String),
+  dimensions: Schema.optional(Schema.Array(Dimension)),
+}).annotate({ identifier: "DataSet" });
 
 export interface ChartOptions {
   /** The chart mode. */
@@ -768,15 +642,10 @@ export interface ChartOptions {
   displayHorizontal?: boolean;
 }
 
-export const ChartOptions: Schema.Schema<ChartOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mode: Schema.optional(Schema.String),
-      displayHorizontal: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ChartOptions",
-  }) as any as Schema.Schema<ChartOptions>;
+export const ChartOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  mode: Schema.optional(Schema.String),
+  displayHorizontal: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "ChartOptions" });
 
 export interface XyChart {
   /** The properties applied to the y2-axis. */
@@ -795,32 +664,24 @@ export interface XyChart {
   chartOptions?: ChartOptions;
 }
 
-export const XyChart: Schema.Schema<XyChart> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      y2Axis: Schema.optional(Axis),
-      thresholds: Schema.optional(Schema.Array(Threshold)),
-      dataSets: Schema.optional(Schema.Array(DataSet)),
-      xAxis: Schema.optional(Axis),
-      yAxis: Schema.optional(Axis),
-      timeshiftDuration: Schema.optional(Schema.String),
-      chartOptions: Schema.optional(ChartOptions),
-    }),
-  ).annotate({ identifier: "XyChart" }) as any as Schema.Schema<XyChart>;
+export const XyChart = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  y2Axis: Schema.optional(Axis),
+  thresholds: Schema.optional(Schema.Array(Threshold)),
+  dataSets: Schema.optional(Schema.Array(DataSet)),
+  xAxis: Schema.optional(Axis),
+  yAxis: Schema.optional(Axis),
+  timeshiftDuration: Schema.optional(Schema.String),
+  chartOptions: Schema.optional(ChartOptions),
+}).annotate({ identifier: "XyChart" });
 
 export interface CollapsibleGroup {
   /** The collapsed state of the widget on first page load. */
   collapsed?: boolean;
 }
 
-export const CollapsibleGroup: Schema.Schema<CollapsibleGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      collapsed: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "CollapsibleGroup",
-  }) as any as Schema.Schema<CollapsibleGroup>;
+export const CollapsibleGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  collapsed: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "CollapsibleGroup" });
 
 export interface ErrorReportingPanel {
   /** An identifier of the service, such as the name of the executable, job, or Google App Engine service name. This field is expected to have a low number of values that are relatively stable over time, as opposed to version, which can be changed whenever new code is deployed.Contains the service name for error reports extracted from Google App Engine logs or default if the App Engine default service is used. */
@@ -831,30 +692,20 @@ export interface ErrorReportingPanel {
   projectNames?: Array<string>;
 }
 
-export const ErrorReportingPanel: Schema.Schema<ErrorReportingPanel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      services: Schema.optional(Schema.Array(Schema.String)),
-      versions: Schema.optional(Schema.Array(Schema.String)),
-      projectNames: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ErrorReportingPanel",
-  }) as any as Schema.Schema<ErrorReportingPanel>;
+export const ErrorReportingPanel = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  services: Schema.optional(Schema.Array(Schema.String)),
+  versions: Schema.optional(Schema.Array(Schema.String)),
+  projectNames: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ErrorReportingPanel" });
 
 export interface TableDisplayOptions {
   /** Optional. This field is unused and has been replaced by TimeSeriesTable.column_settings */
   shownColumns?: Array<string>;
 }
 
-export const TableDisplayOptions: Schema.Schema<TableDisplayOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      shownColumns: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TableDisplayOptions",
-  }) as any as Schema.Schema<TableDisplayOptions>;
+export const TableDisplayOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  shownColumns: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "TableDisplayOptions" });
 
 export interface TableDataSet {
   /** Optional. A template string for naming TimeSeries in the resulting data set. This should be a string with interpolations of the form ${label_name}, which will resolve to the label's value i.e. "${resource.labels.project_id}." */
@@ -867,17 +718,12 @@ export interface TableDataSet {
   minAlignmentPeriod?: string;
 }
 
-export const TableDataSet: Schema.Schema<TableDataSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tableTemplate: Schema.optional(Schema.String),
-      timeSeriesQuery: Schema.optional(TimeSeriesQuery),
-      tableDisplayOptions: Schema.optional(TableDisplayOptions),
-      minAlignmentPeriod: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TableDataSet",
-  }) as any as Schema.Schema<TableDataSet>;
+export const TableDataSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tableTemplate: Schema.optional(Schema.String),
+  timeSeriesQuery: Schema.optional(TimeSeriesQuery),
+  tableDisplayOptions: Schema.optional(TableDisplayOptions),
+  minAlignmentPeriod: Schema.optional(Schema.String),
+}).annotate({ identifier: "TableDataSet" });
 
 export interface ColumnSettings {
   /** Optional. Whether the column should be left / middle / right aligned */
@@ -897,18 +743,13 @@ export interface ColumnSettings {
   displayName?: string;
 }
 
-export const ColumnSettings: Schema.Schema<ColumnSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      alignment: Schema.optional(Schema.String),
-      thresholds: Schema.optional(Schema.Array(Threshold)),
-      column: Schema.optional(Schema.String),
-      visible: Schema.optional(Schema.Boolean),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ColumnSettings",
-  }) as any as Schema.Schema<ColumnSettings>;
+export const ColumnSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  alignment: Schema.optional(Schema.String),
+  thresholds: Schema.optional(Schema.Array(Threshold)),
+  column: Schema.optional(Schema.String),
+  visible: Schema.optional(Schema.Boolean),
+  displayName: Schema.optional(Schema.String),
+}).annotate({ identifier: "ColumnSettings" });
 
 export interface TimeSeriesTable {
   /** Required. The data displayed in this table. */
@@ -923,16 +764,11 @@ export interface TimeSeriesTable {
     | (string & {});
 }
 
-export const TimeSeriesTable: Schema.Schema<TimeSeriesTable> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataSets: Schema.optional(Schema.Array(TableDataSet)),
-      columnSettings: Schema.optional(Schema.Array(ColumnSettings)),
-      metricVisualization: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TimeSeriesTable",
-  }) as any as Schema.Schema<TimeSeriesTable>;
+export const TimeSeriesTable = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dataSets: Schema.optional(Schema.Array(TableDataSet)),
+  columnSettings: Schema.optional(Schema.Array(ColumnSettings)),
+  metricVisualization: Schema.optional(Schema.String),
+}).annotate({ identifier: "TimeSeriesTable" });
 
 export interface LogsPanel {
   /** A filter that chooses which log entries to return. See Advanced Logs Queries (https://cloud.google.com/logging/docs/view/advanced-queries). Only log entries that match the filter are returned. An empty filter matches all log entries. */
@@ -941,13 +777,10 @@ export interface LogsPanel {
   resourceNames?: Array<string>;
 }
 
-export const LogsPanel: Schema.Schema<LogsPanel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filter: Schema.optional(Schema.String),
-      resourceNames: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "LogsPanel" }) as any as Schema.Schema<LogsPanel>;
+export const LogsPanel = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  filter: Schema.optional(Schema.String),
+  resourceNames: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "LogsPanel" });
 
 export interface MonitoredResource {
   /** Required. The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types (https://cloud.google.com/monitoring/api/resources) and Logging resource types (https://cloud.google.com/logging/docs/api/v2/resource-list). */
@@ -956,15 +789,10 @@ export interface MonitoredResource {
   labels?: Record<string, string>;
 }
 
-export const MonitoredResource: Schema.Schema<MonitoredResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "MonitoredResource",
-  }) as any as Schema.Schema<MonitoredResource>;
+export const MonitoredResource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "MonitoredResource" });
 
 export interface IncidentList {
   /** Optional. A list of alert policy names to filter the incident list by. Don't include the project ID prefix in the policy name. For example, use alertPolicies/utilization. */
@@ -973,15 +801,10 @@ export interface IncidentList {
   monitoredResources?: Array<MonitoredResource>;
 }
 
-export const IncidentList: Schema.Schema<IncidentList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policyNames: Schema.optional(Schema.Array(Schema.String)),
-      monitoredResources: Schema.optional(Schema.Array(MonitoredResource)),
-    }),
-  ).annotate({
-    identifier: "IncidentList",
-  }) as any as Schema.Schema<IncidentList>;
+export const IncidentList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policyNames: Schema.optional(Schema.Array(Schema.String)),
+  monitoredResources: Schema.optional(Schema.Array(MonitoredResource)),
+}).annotate({ identifier: "IncidentList" });
 
 export interface GaugeView {
   /** The upper bound for this gauge chart. The value of the chart should always be less than or equal to this. */
@@ -990,13 +813,10 @@ export interface GaugeView {
   lowerBound?: number;
 }
 
-export const GaugeView: Schema.Schema<GaugeView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      upperBound: Schema.optional(Schema.Number),
-      lowerBound: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "GaugeView" }) as any as Schema.Schema<GaugeView>;
+export const GaugeView = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  upperBound: Schema.optional(Schema.Number),
+  lowerBound: Schema.optional(Schema.Number),
+}).annotate({ identifier: "GaugeView" });
 
 export interface SparkChartView {
   /** Required. The type of sparkchart to show in this chartView. */
@@ -1009,15 +829,10 @@ export interface SparkChartView {
   minAlignmentPeriod?: string;
 }
 
-export const SparkChartView: Schema.Schema<SparkChartView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sparkChartType: Schema.optional(Schema.String),
-      minAlignmentPeriod: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SparkChartView",
-  }) as any as Schema.Schema<SparkChartView>;
+export const SparkChartView = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sparkChartType: Schema.optional(Schema.String),
+  minAlignmentPeriod: Schema.optional(Schema.String),
+}).annotate({ identifier: "SparkChartView" });
 
 export interface Scorecard {
   /** Will cause the scorecard to show a gauge chart. */
@@ -1038,19 +853,16 @@ export interface Scorecard {
   thresholds?: Array<Threshold>;
 }
 
-export const Scorecard: Schema.Schema<Scorecard> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gaugeView: Schema.optional(GaugeView),
-      sparkChartView: Schema.optional(SparkChartView),
-      dimensions: Schema.optional(Schema.Array(Dimension)),
-      timeSeriesQuery: Schema.optional(TimeSeriesQuery),
-      blankView: Schema.optional(Empty),
-      measures: Schema.optional(Schema.Array(Measure)),
-      breakdowns: Schema.optional(Schema.Array(Breakdown)),
-      thresholds: Schema.optional(Schema.Array(Threshold)),
-    }),
-  ).annotate({ identifier: "Scorecard" }) as any as Schema.Schema<Scorecard>;
+export const Scorecard = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gaugeView: Schema.optional(GaugeView),
+  sparkChartView: Schema.optional(SparkChartView),
+  dimensions: Schema.optional(Schema.Array(Dimension)),
+  timeSeriesQuery: Schema.optional(TimeSeriesQuery),
+  blankView: Schema.optional(Empty),
+  measures: Schema.optional(Schema.Array(Measure)),
+  breakdowns: Schema.optional(Schema.Array(Breakdown)),
+  thresholds: Schema.optional(Schema.Array(Threshold)),
+}).annotate({ identifier: "Scorecard" });
 
 export interface Widget {
   /** A widget that displays timeseries data as a pie chart. */
@@ -1091,29 +903,26 @@ export interface Widget {
   scorecard?: Scorecard;
 }
 
-export const Widget: Schema.Schema<Widget> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pieChart: Schema.optional(PieChart),
-      visibilityCondition: Schema.optional(VisibilityCondition),
-      blank: Schema.optional(Empty),
-      title: Schema.optional(Schema.String),
-      text: Schema.optional(Text),
-      alertChart: Schema.optional(AlertChart),
-      sectionHeader: Schema.optional(SectionHeader),
-      singleViewGroup: Schema.optional(SingleViewGroup),
-      filterControl: Schema.optional(FilterControl),
-      treemap: Schema.optional(Treemap),
-      xyChart: Schema.optional(XyChart),
-      collapsibleGroup: Schema.optional(CollapsibleGroup),
-      errorReportingPanel: Schema.optional(ErrorReportingPanel),
-      timeSeriesTable: Schema.optional(TimeSeriesTable),
-      logsPanel: Schema.optional(LogsPanel),
-      incidentList: Schema.optional(IncidentList),
-      id: Schema.optional(Schema.String),
-      scorecard: Schema.optional(Scorecard),
-    }),
-  ).annotate({ identifier: "Widget" }) as any as Schema.Schema<Widget>;
+export const Widget = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pieChart: Schema.optional(PieChart),
+  visibilityCondition: Schema.optional(VisibilityCondition),
+  blank: Schema.optional(Empty),
+  title: Schema.optional(Schema.String),
+  text: Schema.optional(Text),
+  alertChart: Schema.optional(AlertChart),
+  sectionHeader: Schema.optional(SectionHeader),
+  singleViewGroup: Schema.optional(SingleViewGroup),
+  filterControl: Schema.optional(FilterControl),
+  treemap: Schema.optional(Treemap),
+  xyChart: Schema.optional(XyChart),
+  collapsibleGroup: Schema.optional(CollapsibleGroup),
+  errorReportingPanel: Schema.optional(ErrorReportingPanel),
+  timeSeriesTable: Schema.optional(TimeSeriesTable),
+  logsPanel: Schema.optional(LogsPanel),
+  incidentList: Schema.optional(IncidentList),
+  id: Schema.optional(Schema.String),
+  scorecard: Schema.optional(Scorecard),
+}).annotate({ identifier: "Widget" });
 
 export interface EventAnnotation {
   /** string filtering the events - event dependant. Example values: "resource.labels.pod_name = 'pod-1'" "protoPayload.authenticationInfo.principalEmail='user@example.com'" */
@@ -1154,18 +963,13 @@ export interface EventAnnotation {
   displayName?: string;
 }
 
-export const EventAnnotation: Schema.Schema<EventAnnotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filter: Schema.optional(Schema.String),
-      resourceNames: Schema.optional(Schema.Array(Schema.String)),
-      enabled: Schema.optional(Schema.Boolean),
-      eventType: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EventAnnotation",
-  }) as any as Schema.Schema<EventAnnotation>;
+export const EventAnnotation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  filter: Schema.optional(Schema.String),
+  resourceNames: Schema.optional(Schema.Array(Schema.String)),
+  enabled: Schema.optional(Schema.Boolean),
+  eventType: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+}).annotate({ identifier: "EventAnnotation" });
 
 export interface DashboardAnnotations {
   /** Dashboard level defaults for names of logging resources to search for events. Currently only projects are supported. Each individual EventAnnotation may have its own overrides. If both this field and the per annotation field is empty, then the scoping project is used. Limit: 50 projects. For example: “projects/some-project-id” */
@@ -1174,15 +978,10 @@ export interface DashboardAnnotations {
   eventAnnotations?: Array<EventAnnotation>;
 }
 
-export const DashboardAnnotations: Schema.Schema<DashboardAnnotations> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      defaultResourceNames: Schema.optional(Schema.Array(Schema.String)),
-      eventAnnotations: Schema.optional(Schema.Array(EventAnnotation)),
-    }),
-  ).annotate({
-    identifier: "DashboardAnnotations",
-  }) as any as Schema.Schema<DashboardAnnotations>;
+export const DashboardAnnotations = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  defaultResourceNames: Schema.optional(Schema.Array(Schema.String)),
+  eventAnnotations: Schema.optional(Schema.Array(EventAnnotation)),
+}).annotate({ identifier: "DashboardAnnotations" });
 
 export interface QueryExemplarsRequest {
   /** The start time to evaluate the query for. Either floating point UNIX seconds or RFC3339 formatted timestamp. */
@@ -1193,16 +992,11 @@ export interface QueryExemplarsRequest {
   end?: string;
 }
 
-export const QueryExemplarsRequest: Schema.Schema<QueryExemplarsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      start: Schema.optional(Schema.String),
-      query: Schema.optional(Schema.String),
-      end: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "QueryExemplarsRequest",
-  }) as any as Schema.Schema<QueryExemplarsRequest>;
+export const QueryExemplarsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  start: Schema.optional(Schema.String),
+  query: Schema.optional(Schema.String),
+  end: Schema.optional(Schema.String),
+}).annotate({ identifier: "QueryExemplarsRequest" });
 
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -1213,16 +1007,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** If the value is false, it means the operation is still in progress. If true, the operation is completed, and either error or response is available. */
@@ -1237,16 +1028,13 @@ export interface Operation {
   name?: string;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      done: Schema.optional(Schema.Boolean),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      error: Schema.optional(Status),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  done: Schema.optional(Schema.Boolean),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  error: Schema.optional(Status),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Operation" });
 
 export interface Tile {
   /** The height of the tile, measured in grid blocks. Tiles must have a minimum height of 1. */
@@ -1261,30 +1049,22 @@ export interface Tile {
   xPos?: number;
 }
 
-export const Tile: Schema.Schema<Tile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      height: Schema.optional(Schema.Number),
-      widget: Schema.optional(Widget),
-      width: Schema.optional(Schema.Number),
-      yPos: Schema.optional(Schema.Number),
-      xPos: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Tile" }) as any as Schema.Schema<Tile>;
+export const Tile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  height: Schema.optional(Schema.Number),
+  widget: Schema.optional(Widget),
+  width: Schema.optional(Schema.Number),
+  yPos: Schema.optional(Schema.Number),
+  xPos: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Tile" });
 
 export interface SourceContext {
   /** The path-qualified name of the .proto file that contained the associated protobuf element. For example: "google/protobuf/source_context.proto". */
   fileName?: string;
 }
 
-export const SourceContext: Schema.Schema<SourceContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fileName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SourceContext",
-  }) as any as Schema.Schema<SourceContext>;
+export const SourceContext = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fileName: Schema.optional(Schema.String),
+}).annotate({ identifier: "SourceContext" });
 
 export interface Column {
   /** The relative weight of this column. The column weight is used to adjust the width of columns on the screen (relative to peers). Greater the weight, greater the width of the column on the screen. If omitted, a value of 1 is used while rendering. */
@@ -1293,13 +1073,10 @@ export interface Column {
   widgets?: Array<Widget>;
 }
 
-export const Column: Schema.Schema<Column> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      weight: Schema.optional(Schema.String),
-      widgets: Schema.optional(Schema.Array(Widget)),
-    }),
-  ).annotate({ identifier: "Column" }) as any as Schema.Schema<Column>;
+export const Column = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  weight: Schema.optional(Schema.String),
+  widgets: Schema.optional(Schema.Array(Widget)),
+}).annotate({ identifier: "Column" });
 
 export interface Row {
   /** The relative weight of this row. The row weight is used to adjust the height of rows on the screen (relative to peers). Greater the weight, greater the height of the row on the screen. If omitted, a value of 1 is used while rendering. */
@@ -1308,13 +1085,10 @@ export interface Row {
   widgets?: Array<Widget>;
 }
 
-export const Row: Schema.Schema<Row> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      weight: Schema.optional(Schema.String),
-      widgets: Schema.optional(Schema.Array(Widget)),
-    }),
-  ).annotate({ identifier: "Row" }) as any as Schema.Schema<Row>;
+export const Row = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  weight: Schema.optional(Schema.String),
+  widgets: Schema.optional(Schema.Array(Widget)),
+}).annotate({ identifier: "Row" });
 
 export interface QueryRangeRequest {
   /** An upper bound timeout for the query. Either a Prometheus duration string (https://prometheus.io/docs/prometheus/latest/querying/basics/#time-durations) or floating point seconds. This non-standard encoding must be used for compatibility with the open source API. Clients may still implement timeouts at the connection level while ignoring this field. */
@@ -1329,32 +1103,22 @@ export interface QueryRangeRequest {
   query?: string;
 }
 
-export const QueryRangeRequest: Schema.Schema<QueryRangeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      timeout: Schema.optional(Schema.String),
-      start: Schema.optional(Schema.String),
-      step: Schema.optional(Schema.String),
-      end: Schema.optional(Schema.String),
-      query: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "QueryRangeRequest",
-  }) as any as Schema.Schema<QueryRangeRequest>;
+export const QueryRangeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  timeout: Schema.optional(Schema.String),
+  start: Schema.optional(Schema.String),
+  step: Schema.optional(Schema.String),
+  end: Schema.optional(Schema.String),
+  query: Schema.optional(Schema.String),
+}).annotate({ identifier: "QueryRangeRequest" });
 
 export interface StringArray {
   /** The values of the array */
   values?: Array<string>;
 }
 
-export const StringArray: Schema.Schema<StringArray> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      values: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "StringArray",
-  }) as any as Schema.Schema<StringArray>;
+export const StringArray = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  values: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "StringArray" });
 
 export interface DashboardFilter {
   /** A variable-length string value. If this field is set, value_type must be set to STRING or VALUE_TYPE_UNSPECIFIED */
@@ -1387,21 +1151,16 @@ export interface DashboardFilter {
     | (string & {});
 }
 
-export const DashboardFilter: Schema.Schema<DashboardFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stringValue: Schema.optional(Schema.String),
-      stringArrayValue: Schema.optional(StringArray),
-      timeSeriesQuery: Schema.optional(TimeSeriesQuery),
-      filterType: Schema.optional(Schema.String),
-      labelKey: Schema.optional(Schema.String),
-      templateVariable: Schema.optional(Schema.String),
-      stringArray: Schema.optional(StringArray),
-      valueType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DashboardFilter",
-  }) as any as Schema.Schema<DashboardFilter>;
+export const DashboardFilter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  stringValue: Schema.optional(Schema.String),
+  stringArrayValue: Schema.optional(StringArray),
+  timeSeriesQuery: Schema.optional(TimeSeriesQuery),
+  filterType: Schema.optional(Schema.String),
+  labelKey: Schema.optional(Schema.String),
+  templateVariable: Schema.optional(Schema.String),
+  stringArray: Schema.optional(StringArray),
+  valueType: Schema.optional(Schema.String),
+}).annotate({ identifier: "DashboardFilter" });
 
 export interface GridLayout {
   /** The number of columns into which the view's width is divided. If omitted or set to zero, a system default will be used while rendering. */
@@ -1410,39 +1169,28 @@ export interface GridLayout {
   widgets?: Array<Widget>;
 }
 
-export const GridLayout: Schema.Schema<GridLayout> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      columns: Schema.optional(Schema.String),
-      widgets: Schema.optional(Schema.Array(Widget)),
-    }),
-  ).annotate({ identifier: "GridLayout" }) as any as Schema.Schema<GridLayout>;
+export const GridLayout = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  columns: Schema.optional(Schema.String),
+  widgets: Schema.optional(Schema.Array(Widget)),
+}).annotate({ identifier: "GridLayout" });
 
 export interface RowLayout {
   /** The rows of content to display. */
   rows?: Array<Row>;
 }
 
-export const RowLayout: Schema.Schema<RowLayout> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rows: Schema.optional(Schema.Array(Row)),
-    }),
-  ).annotate({ identifier: "RowLayout" }) as any as Schema.Schema<RowLayout>;
+export const RowLayout = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  rows: Schema.optional(Schema.Array(Row)),
+}).annotate({ identifier: "RowLayout" });
 
 export interface ColumnLayout {
   /** The columns of content to display. */
   columns?: Array<Column>;
 }
 
-export const ColumnLayout: Schema.Schema<ColumnLayout> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      columns: Schema.optional(Schema.Array(Column)),
-    }),
-  ).annotate({
-    identifier: "ColumnLayout",
-  }) as any as Schema.Schema<ColumnLayout>;
+export const ColumnLayout = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  columns: Schema.optional(Schema.Array(Column)),
+}).annotate({ identifier: "ColumnLayout" });
 
 export interface MosaicLayout {
   /** The number of columns in the mosaic grid. The number of columns must be between 1 and 48, inclusive. */
@@ -1451,15 +1199,10 @@ export interface MosaicLayout {
   tiles?: Array<Tile>;
 }
 
-export const MosaicLayout: Schema.Schema<MosaicLayout> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      columns: Schema.optional(Schema.Number),
-      tiles: Schema.optional(Schema.Array(Tile)),
-    }),
-  ).annotate({
-    identifier: "MosaicLayout",
-  }) as any as Schema.Schema<MosaicLayout>;
+export const MosaicLayout = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  columns: Schema.optional(Schema.Number),
+  tiles: Schema.optional(Schema.Array(Tile)),
+}).annotate({ identifier: "MosaicLayout" });
 
 export interface Dashboard {
   /** etag is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. An etag is returned in the response to GetDashboard, and users are expected to put that etag in the request to UpdateDashboard to ensure that their change will be applied to the same version of the Dashboard configuration. The field should not be passed during dashboard creation. */
@@ -1484,21 +1227,18 @@ export interface Dashboard {
   annotations?: DashboardAnnotations;
 }
 
-export const Dashboard: Schema.Schema<Dashboard> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      etag: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      dashboardFilters: Schema.optional(Schema.Array(DashboardFilter)),
-      gridLayout: Schema.optional(GridLayout),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      rowLayout: Schema.optional(RowLayout),
-      name: Schema.optional(Schema.String),
-      columnLayout: Schema.optional(ColumnLayout),
-      mosaicLayout: Schema.optional(MosaicLayout),
-      annotations: Schema.optional(DashboardAnnotations),
-    }),
-  ).annotate({ identifier: "Dashboard" }) as any as Schema.Schema<Dashboard>;
+export const Dashboard = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  etag: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  dashboardFilters: Schema.optional(Schema.Array(DashboardFilter)),
+  gridLayout: Schema.optional(GridLayout),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  rowLayout: Schema.optional(RowLayout),
+  name: Schema.optional(Schema.String),
+  columnLayout: Schema.optional(ColumnLayout),
+  mosaicLayout: Schema.optional(MosaicLayout),
+  annotations: Schema.optional(DashboardAnnotations),
+}).annotate({ identifier: "Dashboard" });
 
 export interface Option {
   /** The option's name. For protobuf built-in options (options defined in descriptor.proto), this is the short name. For example, "map_entry". For custom options, it should be the fully-qualified name. For example, "google.api.http". */
@@ -1507,27 +1247,19 @@ export interface Option {
   value?: Record<string, unknown>;
 }
 
-export const Option: Schema.Schema<Option> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Option" }) as any as Schema.Schema<Option>;
+export const Option = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Option" });
 
 export interface SpanContext {
   /** The resource name of the span. The format is: projects/[PROJECT_ID_OR_NUMBER]/traces/[TRACE_ID]/spans/[SPAN_ID] [TRACE_ID] is a unique identifier for a trace within a project; it is a 32-character hexadecimal encoding of a 16-byte array.[SPAN_ID] is a unique identifier for a span within a trace; it is a 16-character hexadecimal encoding of an 8-byte array. */
   spanName?: string;
 }
 
-export const SpanContext: Schema.Schema<SpanContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      spanName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SpanContext",
-  }) as any as Schema.Schema<SpanContext>;
+export const SpanContext = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  spanName: Schema.optional(Schema.String),
+}).annotate({ identifier: "SpanContext" });
 
 export interface Field {
   /** The field type URL, without the scheme, for message or enumeration types. Example: "type.googleapis.com/google.protobuf.Timestamp". */
@@ -1577,21 +1309,18 @@ export interface Field {
     | (string & {});
 }
 
-export const Field: Schema.Schema<Field> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      typeUrl: Schema.optional(Schema.String),
-      jsonName: Schema.optional(Schema.String),
-      defaultValue: Schema.optional(Schema.String),
-      packed: Schema.optional(Schema.Boolean),
-      options: Schema.optional(Schema.Array(Option)),
-      kind: Schema.optional(Schema.String),
-      oneofIndex: Schema.optional(Schema.Number),
-      number: Schema.optional(Schema.Number),
-      name: Schema.optional(Schema.String),
-      cardinality: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Field" }) as any as Schema.Schema<Field>;
+export const Field = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  typeUrl: Schema.optional(Schema.String),
+  jsonName: Schema.optional(Schema.String),
+  defaultValue: Schema.optional(Schema.String),
+  packed: Schema.optional(Schema.Boolean),
+  options: Schema.optional(Schema.Array(Option)),
+  kind: Schema.optional(Schema.String),
+  oneofIndex: Schema.optional(Schema.Number),
+  number: Schema.optional(Schema.Number),
+  name: Schema.optional(Schema.String),
+  cardinality: Schema.optional(Schema.String),
+}).annotate({ identifier: "Field" });
 
 export interface Type {
   /** The protocol buffer options. */
@@ -1614,18 +1343,15 @@ export interface Type {
   edition?: string;
 }
 
-export const Type: Schema.Schema<Type> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      options: Schema.optional(Schema.Array(Option)),
-      sourceContext: Schema.optional(SourceContext),
-      fields: Schema.optional(Schema.Array(Field)),
-      oneofs: Schema.optional(Schema.Array(Schema.String)),
-      syntax: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      edition: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Type" }) as any as Schema.Schema<Type>;
+export const Type = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  options: Schema.optional(Schema.Array(Option)),
+  sourceContext: Schema.optional(SourceContext),
+  fields: Schema.optional(Schema.Array(Field)),
+  oneofs: Schema.optional(Schema.Array(Schema.String)),
+  syntax: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  edition: Schema.optional(Schema.String),
+}).annotate({ identifier: "Type" });
 
 export interface QueryInstantRequest {
   /** The single point in time to evaluate the query for. Either floating point UNIX seconds or RFC3339 formatted timestamp. */
@@ -1636,16 +1362,11 @@ export interface QueryInstantRequest {
   timeout?: string;
 }
 
-export const QueryInstantRequest: Schema.Schema<QueryInstantRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      time: Schema.optional(Schema.String),
-      query: Schema.optional(Schema.String),
-      timeout: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "QueryInstantRequest",
-  }) as any as Schema.Schema<QueryInstantRequest>;
+export const QueryInstantRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  time: Schema.optional(Schema.String),
+  query: Schema.optional(Schema.String),
+  timeout: Schema.optional(Schema.String),
+}).annotate({ identifier: "QueryInstantRequest" });
 
 export interface ListDashboardsResponse {
   /** The list of requested dashboards. */
@@ -1654,15 +1375,12 @@ export interface ListDashboardsResponse {
   nextPageToken?: string;
 }
 
-export const ListDashboardsResponse: Schema.Schema<ListDashboardsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dashboards: Schema.optional(Schema.Array(Dashboard)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListDashboardsResponse",
-  }) as any as Schema.Schema<ListDashboardsResponse>;
+export const ListDashboardsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    dashboards: Schema.optional(Schema.Array(Dashboard)),
+    nextPageToken: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ListDashboardsResponse" });
 
 export interface MonitoredProject {
   /** Output only. The time when this MonitoredProject was created. */
@@ -1673,16 +1391,11 @@ export interface MonitoredProject {
   name?: string;
 }
 
-export const MonitoredProject: Schema.Schema<MonitoredProject> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      isTombstoned: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MonitoredProject",
-  }) as any as Schema.Schema<MonitoredProject>;
+export const MonitoredProject = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createTime: Schema.optional(Schema.String),
+  isTombstoned: Schema.optional(Schema.Boolean),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "MonitoredProject" });
 
 export interface MetricsScope {
   /** Output only. The time when this Metrics Scope record was last updated. */
@@ -1695,17 +1408,12 @@ export interface MetricsScope {
   createTime?: string;
 }
 
-export const MetricsScope: Schema.Schema<MetricsScope> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateTime: Schema.optional(Schema.String),
-      monitoredProjects: Schema.optional(Schema.Array(MonitoredProject)),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MetricsScope",
-  }) as any as Schema.Schema<MetricsScope>;
+export const MetricsScope = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  updateTime: Schema.optional(Schema.String),
+  monitoredProjects: Schema.optional(Schema.Array(MonitoredProject)),
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "MetricsScope" });
 
 export interface QueryLabelsRequest {
   /** The start time to evaluate the query for. Either floating point UNIX seconds or RFC3339 formatted timestamp. */
@@ -1716,16 +1424,11 @@ export interface QueryLabelsRequest {
   match?: string;
 }
 
-export const QueryLabelsRequest: Schema.Schema<QueryLabelsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      start: Schema.optional(Schema.String),
-      end: Schema.optional(Schema.String),
-      match: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "QueryLabelsRequest",
-  }) as any as Schema.Schema<QueryLabelsRequest>;
+export const QueryLabelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  start: Schema.optional(Schema.String),
+  end: Schema.optional(Schema.String),
+  match: Schema.optional(Schema.String),
+}).annotate({ identifier: "QueryLabelsRequest" });
 
 export interface QuerySeriesRequest {
   /** The start time to evaluate the query for. Either floating point UNIX seconds or RFC3339 formatted timestamp. */
@@ -1734,43 +1437,29 @@ export interface QuerySeriesRequest {
   end?: string;
 }
 
-export const QuerySeriesRequest: Schema.Schema<QuerySeriesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      start: Schema.optional(Schema.String),
-      end: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "QuerySeriesRequest",
-  }) as any as Schema.Schema<QuerySeriesRequest>;
+export const QuerySeriesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  start: Schema.optional(Schema.String),
+  end: Schema.optional(Schema.String),
+}).annotate({ identifier: "QuerySeriesRequest" });
 
 export interface ListMetricsScopesByMonitoredProjectResponse {
   /** A set of all metrics scopes that the specified monitored project has been added to. */
   metricsScopes?: Array<MetricsScope>;
 }
 
-export const ListMetricsScopesByMonitoredProjectResponse: Schema.Schema<ListMetricsScopesByMonitoredProjectResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metricsScopes: Schema.optional(Schema.Array(MetricsScope)),
-    }),
-  ).annotate({
-    identifier: "ListMetricsScopesByMonitoredProjectResponse",
-  }) as any as Schema.Schema<ListMetricsScopesByMonitoredProjectResponse>;
+export const ListMetricsScopesByMonitoredProjectResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    metricsScopes: Schema.optional(Schema.Array(MetricsScope)),
+  }).annotate({ identifier: "ListMetricsScopesByMonitoredProjectResponse" });
 
 export interface DroppedLabels {
   /** Map from label to its value, for all labels dropped in any aggregation. */
   label?: Record<string, string>;
 }
 
-export const DroppedLabels: Schema.Schema<DroppedLabels> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      label: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "DroppedLabels",
-  }) as any as Schema.Schema<DroppedLabels>;
+export const DroppedLabels = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  label: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "DroppedLabels" });
 
 export interface HttpBody {
   /** The HTTP Content-Type header value specifying the content type of the body. */
@@ -1781,16 +1470,13 @@ export interface HttpBody {
   extensions?: Array<Record<string, unknown>>;
 }
 
-export const HttpBody: Schema.Schema<HttpBody> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contentType: Schema.optional(Schema.String),
-      data: Schema.optional(Schema.String),
-      extensions: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "HttpBody" }) as any as Schema.Schema<HttpBody>;
+export const HttpBody = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  contentType: Schema.optional(Schema.String),
+  data: Schema.optional(Schema.String),
+  extensions: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "HttpBody" });
 
 // ==========================================================================
 // Operations

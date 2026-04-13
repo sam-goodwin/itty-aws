@@ -27,21 +27,15 @@ export interface LookupAccountResponse {
   name?: string;
 }
 
-export const LookupAccountResponse: Schema.Schema<LookupAccountResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LookupAccountResponse",
-  }) as any as Schema.Schema<LookupAccountResponse>;
+export const LookupAccountResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "LookupAccountResponse" });
 
 export interface CloseAccountRequest {}
 
-export const CloseAccountRequest: Schema.Schema<CloseAccountRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CloseAccountRequest",
-  }) as any as Schema.Schema<CloseAccountRequest>;
+export const CloseAccountRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CloseAccountRequest" });
 
 export interface Address {
   /** State. Max length 60 bytes or 30 characters. */
@@ -66,21 +60,18 @@ export interface Address {
   regionCode?: string;
 }
 
-export const Address: Schema.Schema<Address> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      contact: Schema.optional(Schema.String),
-      city: Schema.optional(Schema.String),
-      zip: Schema.optional(Schema.String),
-      address1: Schema.optional(Schema.String),
-      fax: Schema.optional(Schema.String),
-      phone: Schema.optional(Schema.String),
-      address2: Schema.optional(Schema.String),
-      company: Schema.optional(Schema.String),
-      regionCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Address" }) as any as Schema.Schema<Address>;
+export const Address = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.String),
+  contact: Schema.optional(Schema.String),
+  city: Schema.optional(Schema.String),
+  zip: Schema.optional(Schema.String),
+  address1: Schema.optional(Schema.String),
+  fax: Schema.optional(Schema.String),
+  phone: Schema.optional(Schema.String),
+  address2: Schema.optional(Schema.String),
+  company: Schema.optional(Schema.String),
+  regionCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "Address" });
 
 export interface EventInfo {
   /** Required. The email address that is associated with the publisher when performing the event. */
@@ -89,13 +80,10 @@ export interface EventInfo {
   billingAddress?: Address;
 }
 
-export const EventInfo: Schema.Schema<EventInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      email: Schema.optional(Schema.String),
-      billingAddress: Schema.optional(Address),
-    }),
-  ).annotate({ identifier: "EventInfo" }) as any as Schema.Schema<EventInfo>;
+export const EventInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  email: Schema.optional(Schema.String),
+  billingAddress: Schema.optional(Address),
+}).annotate({ identifier: "EventInfo" });
 
 export interface Event {
   /** Required. Event type. */
@@ -110,28 +98,24 @@ export interface Event {
   eventTime?: string;
 }
 
-export const Event: Schema.Schema<Event> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      eventType: Schema.optional(Schema.String),
-      eventInfo: Schema.optional(EventInfo),
-      eventTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Event" }) as any as Schema.Schema<Event>;
+export const Event = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  eventType: Schema.optional(Schema.String),
+  eventInfo: Schema.optional(EventInfo),
+  eventTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Event" });
 
 export interface RequestSiteReviewResponse {}
 
-export const RequestSiteReviewResponse: Schema.Schema<RequestSiteReviewResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const RequestSiteReviewResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RequestSiteReviewResponse",
-  }) as any as Schema.Schema<RequestSiteReviewResponse>;
+  });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface Site {
   /** Domain/sub-domain of the site. Must be a valid domain complying with [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt) and formatted as punycode [RFC 3492](https://www.ietf.org/rfc/rfc3492.txt) in case the domain contains unicode characters. */
@@ -148,14 +132,11 @@ export interface Site {
   name?: string;
 }
 
-export const Site: Schema.Schema<Site> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      domain: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Site" }) as any as Schema.Schema<Site>;
+export const Site = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  domain: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Site" });
 
 export interface ListSitesResponse {
   /** The sites returned in this list response. */
@@ -164,15 +145,10 @@ export interface ListSitesResponse {
   nextPageToken?: string;
 }
 
-export const ListSitesResponse: Schema.Schema<ListSitesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sites: Schema.optional(Schema.Array(Site)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListSitesResponse",
-  }) as any as Schema.Schema<ListSitesResponse>;
+export const ListSitesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sites: Schema.optional(Schema.Array(Site)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListSitesResponse" });
 
 export interface TimeZone {
   /** IANA Time Zone Database time zone. For example "America/New_York". */
@@ -181,13 +157,10 @@ export interface TimeZone {
   version?: string;
 }
 
-export const TimeZone: Schema.Schema<TimeZone> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "TimeZone" }) as any as Schema.Schema<TimeZone>;
+export const TimeZone = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+}).annotate({ identifier: "TimeZone" });
 
 export interface Account {
   /** Required. An opaque token that uniquely identifies the account among all the platform's accounts. This string may contain at most 64 non-whitespace ASCII characters, but otherwise has no predefined structure. However, it is expected to be a platform-specific identifier for the user creating the account, so that only a single account can be created for any given user. This field must not contain any information that is recognizable as personally identifiable information. e.g. it should not be an email address or login name. Once an account has been created, a second attempt to create an account using the same creation_request_id will result in an ALREADY_EXISTS error. */
@@ -211,18 +184,15 @@ export interface Account {
     | (string & {});
 }
 
-export const Account: Schema.Schema<Account> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      creationRequestId: Schema.optional(Schema.String),
-      timeZone: Schema.optional(TimeZone),
-      regionCode: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Account" }) as any as Schema.Schema<Account>;
+export const Account = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  creationRequestId: Schema.optional(Schema.String),
+  timeZone: Schema.optional(TimeZone),
+  regionCode: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+}).annotate({ identifier: "Account" });
 
 export interface ListAccountsResponse {
   /** The Accounts returned in the list response. Represented by a partial view of the Account resource, populating `name` and `creation_request_id`. */
@@ -231,22 +201,16 @@ export interface ListAccountsResponse {
   nextPageToken?: string;
 }
 
-export const ListAccountsResponse: Schema.Schema<ListAccountsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accounts: Schema.optional(Schema.Array(Account)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAccountsResponse",
-  }) as any as Schema.Schema<ListAccountsResponse>;
+export const ListAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  accounts: Schema.optional(Schema.Array(Account)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListAccountsResponse" });
 
 export interface CloseAccountResponse {}
 
-export const CloseAccountResponse: Schema.Schema<CloseAccountResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CloseAccountResponse",
-  }) as any as Schema.Schema<CloseAccountResponse>;
+export const CloseAccountResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CloseAccountResponse" });
 
 // ==========================================================================
 // Operations

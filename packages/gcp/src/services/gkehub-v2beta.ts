@@ -32,12 +32,9 @@ export interface Origin {
     | (string & {});
 }
 
-export const Origin: Schema.Schema<Origin> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Origin" }) as any as Schema.Schema<Origin>;
+export const Origin = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "Origin" });
 
 export interface ConfigManagementConfigSyncDeploymentState {
   /** Deployment state of the importer pod. */
@@ -114,36 +111,28 @@ export interface ConfigManagementConfigSyncDeploymentState {
     | (string & {});
 }
 
-export const ConfigManagementConfigSyncDeploymentState: Schema.Schema<ConfigManagementConfigSyncDeploymentState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      importer: Schema.optional(Schema.String),
-      gitSync: Schema.optional(Schema.String),
-      resourceGroupControllerManager: Schema.optional(Schema.String),
-      admissionWebhook: Schema.optional(Schema.String),
-      syncer: Schema.optional(Schema.String),
-      rootReconciler: Schema.optional(Schema.String),
-      monitor: Schema.optional(Schema.String),
-      otelCollector: Schema.optional(Schema.String),
-      reconcilerManager: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConfigManagementConfigSyncDeploymentState",
-  }) as any as Schema.Schema<ConfigManagementConfigSyncDeploymentState>;
+export const ConfigManagementConfigSyncDeploymentState =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    importer: Schema.optional(Schema.String),
+    gitSync: Schema.optional(Schema.String),
+    resourceGroupControllerManager: Schema.optional(Schema.String),
+    admissionWebhook: Schema.optional(Schema.String),
+    syncer: Schema.optional(Schema.String),
+    rootReconciler: Schema.optional(Schema.String),
+    monitor: Schema.optional(Schema.String),
+    otelCollector: Schema.optional(Schema.String),
+    reconcilerManager: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ConfigManagementConfigSyncDeploymentState" });
 
 export interface ConfigManagementConfigSyncError {
   /** A string representing the user facing error message */
   errorMessage?: string;
 }
 
-export const ConfigManagementConfigSyncError: Schema.Schema<ConfigManagementConfigSyncError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errorMessage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConfigManagementConfigSyncError",
-  }) as any as Schema.Schema<ConfigManagementConfigSyncError>;
+export const ConfigManagementConfigSyncError =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    errorMessage: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ConfigManagementConfigSyncError" });
 
 export interface ConfigManagementGroupVersionKind {
   /** Kubernetes Version */
@@ -154,16 +143,12 @@ export interface ConfigManagementGroupVersionKind {
   group?: string;
 }
 
-export const ConfigManagementGroupVersionKind: Schema.Schema<ConfigManagementGroupVersionKind> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      group: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConfigManagementGroupVersionKind",
-  }) as any as Schema.Schema<ConfigManagementGroupVersionKind>;
+export const ConfigManagementGroupVersionKind =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    version: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    group: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ConfigManagementGroupVersionKind" });
 
 export interface ConfigManagementErrorResource {
   /** Metadata name of the resource that is causing an error */
@@ -176,17 +161,13 @@ export interface ConfigManagementErrorResource {
   sourcePath?: string;
 }
 
-export const ConfigManagementErrorResource: Schema.Schema<ConfigManagementErrorResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceName: Schema.optional(Schema.String),
-      resourceNamespace: Schema.optional(Schema.String),
-      resourceGvk: Schema.optional(ConfigManagementGroupVersionKind),
-      sourcePath: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConfigManagementErrorResource",
-  }) as any as Schema.Schema<ConfigManagementErrorResource>;
+export const ConfigManagementErrorResource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceName: Schema.optional(Schema.String),
+    resourceNamespace: Schema.optional(Schema.String),
+    resourceGvk: Schema.optional(ConfigManagementGroupVersionKind),
+    sourcePath: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ConfigManagementErrorResource" });
 
 export interface ConfigManagementSyncError {
   /** A description of the error */
@@ -197,18 +178,14 @@ export interface ConfigManagementSyncError {
   errorResources?: Array<ConfigManagementErrorResource>;
 }
 
-export const ConfigManagementSyncError: Schema.Schema<ConfigManagementSyncError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errorMessage: Schema.optional(Schema.String),
-      code: Schema.optional(Schema.String),
-      errorResources: Schema.optional(
-        Schema.Array(ConfigManagementErrorResource),
-      ),
-    }),
-  ).annotate({
-    identifier: "ConfigManagementSyncError",
-  }) as any as Schema.Schema<ConfigManagementSyncError>;
+export const ConfigManagementSyncError =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    errorMessage: Schema.optional(Schema.String),
+    code: Schema.optional(Schema.String),
+    errorResources: Schema.optional(
+      Schema.Array(ConfigManagementErrorResource),
+    ),
+  }).annotate({ identifier: "ConfigManagementSyncError" });
 
 export interface ConfigManagementSyncState {
   /** Sync status code. */
@@ -236,20 +213,16 @@ export interface ConfigManagementSyncState {
   syncToken?: string;
 }
 
-export const ConfigManagementSyncState: Schema.Schema<ConfigManagementSyncState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.String),
-      importToken: Schema.optional(Schema.String),
-      lastSyncTime: Schema.optional(Schema.String),
-      sourceToken: Schema.optional(Schema.String),
-      lastSync: Schema.optional(Schema.String),
-      errors: Schema.optional(Schema.Array(ConfigManagementSyncError)),
-      syncToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConfigManagementSyncState",
-  }) as any as Schema.Schema<ConfigManagementSyncState>;
+export const ConfigManagementSyncState =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    code: Schema.optional(Schema.String),
+    importToken: Schema.optional(Schema.String),
+    lastSyncTime: Schema.optional(Schema.String),
+    sourceToken: Schema.optional(Schema.String),
+    lastSync: Schema.optional(Schema.String),
+    errors: Schema.optional(Schema.Array(ConfigManagementSyncError)),
+    syncToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ConfigManagementSyncState" });
 
 export interface ConfigManagementConfigSyncVersion {
   /** Version of the deployed importer pod. */
@@ -272,22 +245,18 @@ export interface ConfigManagementConfigSyncVersion {
   reconcilerManager?: string;
 }
 
-export const ConfigManagementConfigSyncVersion: Schema.Schema<ConfigManagementConfigSyncVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      importer: Schema.optional(Schema.String),
-      gitSync: Schema.optional(Schema.String),
-      resourceGroupControllerManager: Schema.optional(Schema.String),
-      admissionWebhook: Schema.optional(Schema.String),
-      syncer: Schema.optional(Schema.String),
-      rootReconciler: Schema.optional(Schema.String),
-      monitor: Schema.optional(Schema.String),
-      otelCollector: Schema.optional(Schema.String),
-      reconcilerManager: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConfigManagementConfigSyncVersion",
-  }) as any as Schema.Schema<ConfigManagementConfigSyncVersion>;
+export const ConfigManagementConfigSyncVersion =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    importer: Schema.optional(Schema.String),
+    gitSync: Schema.optional(Schema.String),
+    resourceGroupControllerManager: Schema.optional(Schema.String),
+    admissionWebhook: Schema.optional(Schema.String),
+    syncer: Schema.optional(Schema.String),
+    rootReconciler: Schema.optional(Schema.String),
+    monitor: Schema.optional(Schema.String),
+    otelCollector: Schema.optional(Schema.String),
+    reconcilerManager: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ConfigManagementConfigSyncVersion" });
 
 export interface ConfigManagementConfigSyncState {
   /** Output only. Information about the deployment of ConfigSync, including the version. of the various Pods deployed */
@@ -333,24 +302,18 @@ export interface ConfigManagementConfigSyncState {
   version?: ConfigManagementConfigSyncVersion;
 }
 
-export const ConfigManagementConfigSyncState: Schema.Schema<ConfigManagementConfigSyncState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deploymentState: Schema.optional(
-        ConfigManagementConfigSyncDeploymentState,
-      ),
-      rootsyncCrd: Schema.optional(Schema.String),
-      reposyncCrd: Schema.optional(Schema.String),
-      errors: Schema.optional(Schema.Array(ConfigManagementConfigSyncError)),
-      crCount: Schema.optional(Schema.Number),
-      syncState: Schema.optional(ConfigManagementSyncState),
-      state: Schema.optional(Schema.String),
-      clusterLevelStopSyncingState: Schema.optional(Schema.String),
-      version: Schema.optional(ConfigManagementConfigSyncVersion),
-    }),
-  ).annotate({
-    identifier: "ConfigManagementConfigSyncState",
-  }) as any as Schema.Schema<ConfigManagementConfigSyncState>;
+export const ConfigManagementConfigSyncState =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deploymentState: Schema.optional(ConfigManagementConfigSyncDeploymentState),
+    rootsyncCrd: Schema.optional(Schema.String),
+    reposyncCrd: Schema.optional(Schema.String),
+    errors: Schema.optional(Schema.Array(ConfigManagementConfigSyncError)),
+    crCount: Schema.optional(Schema.Number),
+    syncState: Schema.optional(ConfigManagementSyncState),
+    state: Schema.optional(Schema.String),
+    clusterLevelStopSyncingState: Schema.optional(Schema.String),
+    version: Schema.optional(ConfigManagementConfigSyncVersion),
+  }).annotate({ identifier: "ConfigManagementConfigSyncState" });
 
 export interface RBACRoleBindingActuationRBACRoleBindingState {
   /** The reason for the failure. */
@@ -365,16 +328,12 @@ export interface RBACRoleBindingActuationRBACRoleBindingState {
   updateTime?: string;
 }
 
-export const RBACRoleBindingActuationRBACRoleBindingState: Schema.Schema<RBACRoleBindingActuationRBACRoleBindingState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RBACRoleBindingActuationRBACRoleBindingState",
-  }) as any as Schema.Schema<RBACRoleBindingActuationRBACRoleBindingState>;
+export const RBACRoleBindingActuationRBACRoleBindingState =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RBACRoleBindingActuationRBACRoleBindingState" });
 
 export interface RBACRoleBindingActuationState {
   /** Output only. The state of RBACRoleBindings using custom roles that exist on the cluster, keyed by RBACRoleBinding resource name with format: projects/{project}/locations/{location}/scopes/{scope}/rbacrolebindings/{rbacrolebinding}. */
@@ -384,19 +343,15 @@ export interface RBACRoleBindingActuationState {
   >;
 }
 
-export const RBACRoleBindingActuationState: Schema.Schema<RBACRoleBindingActuationState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rbacrolebindingStates: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          RBACRoleBindingActuationRBACRoleBindingState,
-        ),
+export const RBACRoleBindingActuationState =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rbacrolebindingStates: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        RBACRoleBindingActuationRBACRoleBindingState,
       ),
-    }),
-  ).annotate({
-    identifier: "RBACRoleBindingActuationState",
-  }) as any as Schema.Schema<RBACRoleBindingActuationState>;
+    ),
+  }).annotate({ identifier: "RBACRoleBindingActuationState" });
 
 export interface PolicyControllerOnClusterState {
   /** Surface potential errors or information logs. */
@@ -416,15 +371,11 @@ export interface PolicyControllerOnClusterState {
     | (string & {});
 }
 
-export const PolicyControllerOnClusterState: Schema.Schema<PolicyControllerOnClusterState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      details: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PolicyControllerOnClusterState",
-  }) as any as Schema.Schema<PolicyControllerOnClusterState>;
+export const PolicyControllerOnClusterState =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    details: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PolicyControllerOnClusterState" });
 
 export interface PolicyControllerPolicyContentState {
   /** The state of the template library */
@@ -435,20 +386,14 @@ export interface PolicyControllerPolicyContentState {
   bundleStates?: Record<string, PolicyControllerOnClusterState>;
 }
 
-export const PolicyControllerPolicyContentState: Schema.Schema<PolicyControllerPolicyContentState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      templateLibraryState: Schema.optional(PolicyControllerOnClusterState),
-      referentialSyncConfigState: Schema.optional(
-        PolicyControllerOnClusterState,
-      ),
-      bundleStates: Schema.optional(
-        Schema.Record(Schema.String, PolicyControllerOnClusterState),
-      ),
-    }),
-  ).annotate({
-    identifier: "PolicyControllerPolicyContentState",
-  }) as any as Schema.Schema<PolicyControllerPolicyContentState>;
+export const PolicyControllerPolicyContentState =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    templateLibraryState: Schema.optional(PolicyControllerOnClusterState),
+    referentialSyncConfigState: Schema.optional(PolicyControllerOnClusterState),
+    bundleStates: Schema.optional(
+      Schema.Record(Schema.String, PolicyControllerOnClusterState),
+    ),
+  }).annotate({ identifier: "PolicyControllerPolicyContentState" });
 
 export interface PolicyControllerState {
   /** Currently these include (also serving as map keys): 1. "admission" 2. "audit" 3. "mutation" */
@@ -470,18 +415,13 @@ export interface PolicyControllerState {
   policyContentState?: PolicyControllerPolicyContentState;
 }
 
-export const PolicyControllerState: Schema.Schema<PolicyControllerState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      componentStates: Schema.optional(
-        Schema.Record(Schema.String, PolicyControllerOnClusterState),
-      ),
-      state: Schema.optional(Schema.String),
-      policyContentState: Schema.optional(PolicyControllerPolicyContentState),
-    }),
-  ).annotate({
-    identifier: "PolicyControllerState",
-  }) as any as Schema.Schema<PolicyControllerState>;
+export const PolicyControllerState = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  componentStates: Schema.optional(
+    Schema.Record(Schema.String, PolicyControllerOnClusterState),
+  ),
+  state: Schema.optional(Schema.String),
+  policyContentState: Schema.optional(PolicyControllerPolicyContentState),
+}).annotate({ identifier: "PolicyControllerState" });
 
 export interface IdentityServiceAzureADConfig {
   /** ID for the registered client application that makes authentication requests to the Azure AD identity provider. */
@@ -500,34 +440,26 @@ export interface IdentityServiceAzureADConfig {
   encryptedClientSecret?: string;
 }
 
-export const IdentityServiceAzureADConfig: Schema.Schema<IdentityServiceAzureADConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clientId: Schema.optional(Schema.String),
-      tenant: Schema.optional(Schema.String),
-      kubectlRedirectUri: Schema.optional(Schema.String),
-      userClaim: Schema.optional(Schema.String),
-      clientSecret: Schema.optional(Schema.String),
-      groupFormat: Schema.optional(Schema.String),
-      encryptedClientSecret: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "IdentityServiceAzureADConfig",
-  }) as any as Schema.Schema<IdentityServiceAzureADConfig>;
+export const IdentityServiceAzureADConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    clientId: Schema.optional(Schema.String),
+    tenant: Schema.optional(Schema.String),
+    kubectlRedirectUri: Schema.optional(Schema.String),
+    userClaim: Schema.optional(Schema.String),
+    clientSecret: Schema.optional(Schema.String),
+    groupFormat: Schema.optional(Schema.String),
+    encryptedClientSecret: Schema.optional(Schema.String),
+  }).annotate({ identifier: "IdentityServiceAzureADConfig" });
 
 export interface IdentityServiceGoogleConfig {
   /** Disable automatic configuration of Google Plugin on supported platforms. */
   disable?: boolean;
 }
 
-export const IdentityServiceGoogleConfig: Schema.Schema<IdentityServiceGoogleConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      disable: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "IdentityServiceGoogleConfig",
-  }) as any as Schema.Schema<IdentityServiceGoogleConfig>;
+export const IdentityServiceGoogleConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    disable: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "IdentityServiceGoogleConfig" });
 
 export interface IdentityServiceSamlConfig {
   /** Required. The list of IdP certificates to validate the SAML response against. */
@@ -548,25 +480,19 @@ export interface IdentityServiceSamlConfig {
   userPrefix?: string;
 }
 
-export const IdentityServiceSamlConfig: Schema.Schema<IdentityServiceSamlConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      identityProviderCertificates: Schema.optional(
-        Schema.Array(Schema.String),
-      ),
-      groupPrefix: Schema.optional(Schema.String),
-      identityProviderId: Schema.optional(Schema.String),
-      groupsAttribute: Schema.optional(Schema.String),
-      attributeMapping: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      identityProviderSsoUri: Schema.optional(Schema.String),
-      userAttribute: Schema.optional(Schema.String),
-      userPrefix: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "IdentityServiceSamlConfig",
-  }) as any as Schema.Schema<IdentityServiceSamlConfig>;
+export const IdentityServiceSamlConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    identityProviderCertificates: Schema.optional(Schema.Array(Schema.String)),
+    groupPrefix: Schema.optional(Schema.String),
+    identityProviderId: Schema.optional(Schema.String),
+    groupsAttribute: Schema.optional(Schema.String),
+    attributeMapping: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    identityProviderSsoUri: Schema.optional(Schema.String),
+    userAttribute: Schema.optional(Schema.String),
+    userPrefix: Schema.optional(Schema.String),
+  }).annotate({ identifier: "IdentityServiceSamlConfig" });
 
 export interface IdentityServiceOidcConfig {
   /** PEM-encoded CA for OIDC provider. */
@@ -599,27 +525,23 @@ export interface IdentityServiceOidcConfig {
   groupsClaim?: string;
 }
 
-export const IdentityServiceOidcConfig: Schema.Schema<IdentityServiceOidcConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      certificateAuthorityData: Schema.optional(Schema.String),
-      groupPrefix: Schema.optional(Schema.String),
-      clientId: Schema.optional(Schema.String),
-      deployCloudConsoleProxy: Schema.optional(Schema.Boolean),
-      userPrefix: Schema.optional(Schema.String),
-      clientSecret: Schema.optional(Schema.String),
-      userClaim: Schema.optional(Schema.String),
-      encryptedClientSecret: Schema.optional(Schema.String),
-      kubectlRedirectUri: Schema.optional(Schema.String),
-      scopes: Schema.optional(Schema.String),
-      issuerUri: Schema.optional(Schema.String),
-      enableAccessToken: Schema.optional(Schema.Boolean),
-      extraParams: Schema.optional(Schema.String),
-      groupsClaim: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "IdentityServiceOidcConfig",
-  }) as any as Schema.Schema<IdentityServiceOidcConfig>;
+export const IdentityServiceOidcConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    certificateAuthorityData: Schema.optional(Schema.String),
+    groupPrefix: Schema.optional(Schema.String),
+    clientId: Schema.optional(Schema.String),
+    deployCloudConsoleProxy: Schema.optional(Schema.Boolean),
+    userPrefix: Schema.optional(Schema.String),
+    clientSecret: Schema.optional(Schema.String),
+    userClaim: Schema.optional(Schema.String),
+    encryptedClientSecret: Schema.optional(Schema.String),
+    kubectlRedirectUri: Schema.optional(Schema.String),
+    scopes: Schema.optional(Schema.String),
+    issuerUri: Schema.optional(Schema.String),
+    enableAccessToken: Schema.optional(Schema.Boolean),
+    extraParams: Schema.optional(Schema.String),
+    groupsClaim: Schema.optional(Schema.String),
+  }).annotate({ identifier: "IdentityServiceOidcConfig" });
 
 export interface IdentityServiceUserConfig {
   /** Optional. Filter to apply when searching for the user. This can be used to further restrict the user accounts which are allowed to login. This defaults to "(objectClass=User)". */
@@ -632,17 +554,13 @@ export interface IdentityServiceUserConfig {
   idAttribute?: string;
 }
 
-export const IdentityServiceUserConfig: Schema.Schema<IdentityServiceUserConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filter: Schema.optional(Schema.String),
-      baseDn: Schema.optional(Schema.String),
-      loginAttribute: Schema.optional(Schema.String),
-      idAttribute: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "IdentityServiceUserConfig",
-  }) as any as Schema.Schema<IdentityServiceUserConfig>;
+export const IdentityServiceUserConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filter: Schema.optional(Schema.String),
+    baseDn: Schema.optional(Schema.String),
+    loginAttribute: Schema.optional(Schema.String),
+    idAttribute: Schema.optional(Schema.String),
+  }).annotate({ identifier: "IdentityServiceUserConfig" });
 
 export interface IdentityServiceGroupConfig {
   /** Optional. The identifying name of each group a user belongs to. For example, if this is set to "distinguishedName" then RBACs and other group expectations should be written as full DNs. This defaults to "distinguishedName". */
@@ -653,16 +571,12 @@ export interface IdentityServiceGroupConfig {
   filter?: string;
 }
 
-export const IdentityServiceGroupConfig: Schema.Schema<IdentityServiceGroupConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      idAttribute: Schema.optional(Schema.String),
-      baseDn: Schema.optional(Schema.String),
-      filter: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "IdentityServiceGroupConfig",
-  }) as any as Schema.Schema<IdentityServiceGroupConfig>;
+export const IdentityServiceGroupConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    idAttribute: Schema.optional(Schema.String),
+    baseDn: Schema.optional(Schema.String),
+    filter: Schema.optional(Schema.String),
+  }).annotate({ identifier: "IdentityServiceGroupConfig" });
 
 export interface IdentityServiceSimpleBindCredentials {
   /** Required. The distinguished name(DN) of the service account object/user. */
@@ -673,32 +587,24 @@ export interface IdentityServiceSimpleBindCredentials {
   encryptedPassword?: string;
 }
 
-export const IdentityServiceSimpleBindCredentials: Schema.Schema<IdentityServiceSimpleBindCredentials> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dn: Schema.optional(Schema.String),
-      password: Schema.optional(Schema.String),
-      encryptedPassword: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "IdentityServiceSimpleBindCredentials",
-  }) as any as Schema.Schema<IdentityServiceSimpleBindCredentials>;
+export const IdentityServiceSimpleBindCredentials =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dn: Schema.optional(Schema.String),
+    password: Schema.optional(Schema.String),
+    encryptedPassword: Schema.optional(Schema.String),
+  }).annotate({ identifier: "IdentityServiceSimpleBindCredentials" });
 
 export interface IdentityServiceServiceAccountConfig {
   /** Credentials for basic auth. */
   simpleBindCredentials?: IdentityServiceSimpleBindCredentials;
 }
 
-export const IdentityServiceServiceAccountConfig: Schema.Schema<IdentityServiceServiceAccountConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      simpleBindCredentials: Schema.optional(
-        IdentityServiceSimpleBindCredentials,
-      ),
-    }),
-  ).annotate({
-    identifier: "IdentityServiceServiceAccountConfig",
-  }) as any as Schema.Schema<IdentityServiceServiceAccountConfig>;
+export const IdentityServiceServiceAccountConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    simpleBindCredentials: Schema.optional(
+      IdentityServiceSimpleBindCredentials,
+    ),
+  }).annotate({ identifier: "IdentityServiceServiceAccountConfig" });
 
 export interface IdentityServiceServerConfig {
   /** Optional. Defines the connection type to communicate with the LDAP server. If `starttls` or `ldaps` is specified, the certificate_authority_data should not be empty. */
@@ -709,16 +615,12 @@ export interface IdentityServiceServerConfig {
   host?: string;
 }
 
-export const IdentityServiceServerConfig: Schema.Schema<IdentityServiceServerConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      connectionType: Schema.optional(Schema.String),
-      certificateAuthorityData: Schema.optional(Schema.String),
-      host: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "IdentityServiceServerConfig",
-  }) as any as Schema.Schema<IdentityServiceServerConfig>;
+export const IdentityServiceServerConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    connectionType: Schema.optional(Schema.String),
+    certificateAuthorityData: Schema.optional(Schema.String),
+    host: Schema.optional(Schema.String),
+  }).annotate({ identifier: "IdentityServiceServerConfig" });
 
 export interface IdentityServiceLdapConfig {
   /** Required. Defines where users exist in the LDAP directory. */
@@ -731,17 +633,13 @@ export interface IdentityServiceLdapConfig {
   server?: IdentityServiceServerConfig;
 }
 
-export const IdentityServiceLdapConfig: Schema.Schema<IdentityServiceLdapConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      user: Schema.optional(IdentityServiceUserConfig),
-      group: Schema.optional(IdentityServiceGroupConfig),
-      serviceAccount: Schema.optional(IdentityServiceServiceAccountConfig),
-      server: Schema.optional(IdentityServiceServerConfig),
-    }),
-  ).annotate({
-    identifier: "IdentityServiceLdapConfig",
-  }) as any as Schema.Schema<IdentityServiceLdapConfig>;
+export const IdentityServiceLdapConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    user: Schema.optional(IdentityServiceUserConfig),
+    group: Schema.optional(IdentityServiceGroupConfig),
+    serviceAccount: Schema.optional(IdentityServiceServiceAccountConfig),
+    server: Schema.optional(IdentityServiceServerConfig),
+  }).annotate({ identifier: "IdentityServiceLdapConfig" });
 
 export interface IdentityServiceAuthMethod {
   /** Identifier for auth config. */
@@ -760,20 +658,16 @@ export interface IdentityServiceAuthMethod {
   ldapConfig?: IdentityServiceLdapConfig;
 }
 
-export const IdentityServiceAuthMethod: Schema.Schema<IdentityServiceAuthMethod> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      azureadConfig: Schema.optional(IdentityServiceAzureADConfig),
-      googleConfig: Schema.optional(IdentityServiceGoogleConfig),
-      proxy: Schema.optional(Schema.String),
-      samlConfig: Schema.optional(IdentityServiceSamlConfig),
-      oidcConfig: Schema.optional(IdentityServiceOidcConfig),
-      ldapConfig: Schema.optional(IdentityServiceLdapConfig),
-    }),
-  ).annotate({
-    identifier: "IdentityServiceAuthMethod",
-  }) as any as Schema.Schema<IdentityServiceAuthMethod>;
+export const IdentityServiceAuthMethod =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    azureadConfig: Schema.optional(IdentityServiceAzureADConfig),
+    googleConfig: Schema.optional(IdentityServiceGoogleConfig),
+    proxy: Schema.optional(Schema.String),
+    samlConfig: Schema.optional(IdentityServiceSamlConfig),
+    oidcConfig: Schema.optional(IdentityServiceOidcConfig),
+    ldapConfig: Schema.optional(IdentityServiceLdapConfig),
+  }).annotate({ identifier: "IdentityServiceAuthMethod" });
 
 export interface IdentityServiceDiagnosticInterface {
   /** Determines the expiration time of the diagnostic interface enablement. When reached, requests to the interface would be automatically rejected. */
@@ -782,15 +676,11 @@ export interface IdentityServiceDiagnosticInterface {
   enabled?: boolean;
 }
 
-export const IdentityServiceDiagnosticInterface: Schema.Schema<IdentityServiceDiagnosticInterface> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expirationTime: Schema.optional(Schema.String),
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "IdentityServiceDiagnosticInterface",
-  }) as any as Schema.Schema<IdentityServiceDiagnosticInterface>;
+export const IdentityServiceDiagnosticInterface =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    expirationTime: Schema.optional(Schema.String),
+    enabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "IdentityServiceDiagnosticInterface" });
 
 export interface IdentityServiceIdentityServiceOptions {
   /** Determines the lifespan of STS tokens issued by Anthos Identity Service. */
@@ -799,15 +689,11 @@ export interface IdentityServiceIdentityServiceOptions {
   diagnosticInterface?: IdentityServiceDiagnosticInterface;
 }
 
-export const IdentityServiceIdentityServiceOptions: Schema.Schema<IdentityServiceIdentityServiceOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sessionDuration: Schema.optional(Schema.String),
-      diagnosticInterface: Schema.optional(IdentityServiceDiagnosticInterface),
-    }),
-  ).annotate({
-    identifier: "IdentityServiceIdentityServiceOptions",
-  }) as any as Schema.Schema<IdentityServiceIdentityServiceOptions>;
+export const IdentityServiceIdentityServiceOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sessionDuration: Schema.optional(Schema.String),
+    diagnosticInterface: Schema.optional(IdentityServiceDiagnosticInterface),
+  }).annotate({ identifier: "IdentityServiceIdentityServiceOptions" });
 
 export interface IdentityServiceSpec {
   /** A member may support multiple auth methods. */
@@ -816,17 +702,12 @@ export interface IdentityServiceSpec {
   identityServiceOptions?: IdentityServiceIdentityServiceOptions;
 }
 
-export const IdentityServiceSpec: Schema.Schema<IdentityServiceSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      authMethods: Schema.optional(Schema.Array(IdentityServiceAuthMethod)),
-      identityServiceOptions: Schema.optional(
-        IdentityServiceIdentityServiceOptions,
-      ),
-    }),
-  ).annotate({
-    identifier: "IdentityServiceSpec",
-  }) as any as Schema.Schema<IdentityServiceSpec>;
+export const IdentityServiceSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  authMethods: Schema.optional(Schema.Array(IdentityServiceAuthMethod)),
+  identityServiceOptions: Schema.optional(
+    IdentityServiceIdentityServiceOptions,
+  ),
+}).annotate({ identifier: "IdentityServiceSpec" });
 
 export interface IdentityServiceState {
   /** Installed AIS version. This is the AIS version installed on this member. The values makes sense iff state is OK. */
@@ -839,17 +720,12 @@ export interface IdentityServiceState {
   memberConfig?: IdentityServiceSpec;
 }
 
-export const IdentityServiceState: Schema.Schema<IdentityServiceState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      installedVersion: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      failureReason: Schema.optional(Schema.String),
-      memberConfig: Schema.optional(IdentityServiceSpec),
-    }),
-  ).annotate({
-    identifier: "IdentityServiceState",
-  }) as any as Schema.Schema<IdentityServiceState>;
+export const IdentityServiceState = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  installedVersion: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  failureReason: Schema.optional(Schema.String),
+  memberConfig: Schema.optional(IdentityServiceSpec),
+}).annotate({ identifier: "IdentityServiceState" });
 
 export interface ConfigManagementHierarchyControllerConfig {
   /** Whether Hierarchy Controller is enabled in this cluster. */
@@ -860,30 +736,22 @@ export interface ConfigManagementHierarchyControllerConfig {
   enableHierarchicalResourceQuota?: boolean;
 }
 
-export const ConfigManagementHierarchyControllerConfig: Schema.Schema<ConfigManagementHierarchyControllerConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-      enablePodTreeLabels: Schema.optional(Schema.Boolean),
-      enableHierarchicalResourceQuota: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ConfigManagementHierarchyControllerConfig",
-  }) as any as Schema.Schema<ConfigManagementHierarchyControllerConfig>;
+export const ConfigManagementHierarchyControllerConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+    enablePodTreeLabels: Schema.optional(Schema.Boolean),
+    enableHierarchicalResourceQuota: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "ConfigManagementHierarchyControllerConfig" });
 
 export interface ConfigManagementBinauthzConfig {
   /** Whether binauthz is enabled in this cluster. */
   enabled?: boolean;
 }
 
-export const ConfigManagementBinauthzConfig: Schema.Schema<ConfigManagementBinauthzConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ConfigManagementBinauthzConfig",
-  }) as any as Schema.Schema<ConfigManagementBinauthzConfig>;
+export const ConfigManagementBinauthzConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "ConfigManagementBinauthzConfig" });
 
 export interface ConfigManagementGitConfig {
   /** Optional. Period in seconds between consecutive syncs. Default: 15. */
@@ -904,21 +772,17 @@ export interface ConfigManagementGitConfig {
   policyDir?: string;
 }
 
-export const ConfigManagementGitConfig: Schema.Schema<ConfigManagementGitConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      syncWaitSecs: Schema.optional(Schema.String),
-      secretType: Schema.optional(Schema.String),
-      syncRev: Schema.optional(Schema.String),
-      gcpServiceAccountEmail: Schema.optional(Schema.String),
-      httpsProxy: Schema.optional(Schema.String),
-      syncBranch: Schema.optional(Schema.String),
-      syncRepo: Schema.optional(Schema.String),
-      policyDir: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConfigManagementGitConfig",
-  }) as any as Schema.Schema<ConfigManagementGitConfig>;
+export const ConfigManagementGitConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    syncWaitSecs: Schema.optional(Schema.String),
+    secretType: Schema.optional(Schema.String),
+    syncRev: Schema.optional(Schema.String),
+    gcpServiceAccountEmail: Schema.optional(Schema.String),
+    httpsProxy: Schema.optional(Schema.String),
+    syncBranch: Schema.optional(Schema.String),
+    syncRepo: Schema.optional(Schema.String),
+    policyDir: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ConfigManagementGitConfig" });
 
 export interface ConfigManagementOciConfig {
   /** Required. The OCI image repository URL for the package to sync from. e.g. `LOCATION-docker.pkg.dev/PROJECT_ID/REPOSITORY_NAME/PACKAGE_NAME`. */
@@ -933,18 +797,14 @@ export interface ConfigManagementOciConfig {
   gcpServiceAccountEmail?: string;
 }
 
-export const ConfigManagementOciConfig: Schema.Schema<ConfigManagementOciConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      syncRepo: Schema.optional(Schema.String),
-      policyDir: Schema.optional(Schema.String),
-      syncWaitSecs: Schema.optional(Schema.String),
-      secretType: Schema.optional(Schema.String),
-      gcpServiceAccountEmail: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConfigManagementOciConfig",
-  }) as any as Schema.Schema<ConfigManagementOciConfig>;
+export const ConfigManagementOciConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    syncRepo: Schema.optional(Schema.String),
+    policyDir: Schema.optional(Schema.String),
+    syncWaitSecs: Schema.optional(Schema.String),
+    secretType: Schema.optional(Schema.String),
+    gcpServiceAccountEmail: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ConfigManagementOciConfig" });
 
 export interface ConfigManagementContainerOverride {
   /** Required. The name of the container. */
@@ -959,18 +819,14 @@ export interface ConfigManagementContainerOverride {
   memoryLimit?: string;
 }
 
-export const ConfigManagementContainerOverride: Schema.Schema<ConfigManagementContainerOverride> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      containerName: Schema.optional(Schema.String),
-      cpuRequest: Schema.optional(Schema.String),
-      memoryRequest: Schema.optional(Schema.String),
-      cpuLimit: Schema.optional(Schema.String),
-      memoryLimit: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConfigManagementContainerOverride",
-  }) as any as Schema.Schema<ConfigManagementContainerOverride>;
+export const ConfigManagementContainerOverride =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    containerName: Schema.optional(Schema.String),
+    cpuRequest: Schema.optional(Schema.String),
+    memoryRequest: Schema.optional(Schema.String),
+    cpuLimit: Schema.optional(Schema.String),
+    memoryLimit: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ConfigManagementContainerOverride" });
 
 export interface ConfigManagementDeploymentOverride {
   /** Required. The name of the deployment resource to be overridden. */
@@ -981,18 +837,14 @@ export interface ConfigManagementDeploymentOverride {
   deploymentNamespace?: string;
 }
 
-export const ConfigManagementDeploymentOverride: Schema.Schema<ConfigManagementDeploymentOverride> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deploymentName: Schema.optional(Schema.String),
-      containers: Schema.optional(
-        Schema.Array(ConfigManagementContainerOverride),
-      ),
-      deploymentNamespace: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConfigManagementDeploymentOverride",
-  }) as any as Schema.Schema<ConfigManagementDeploymentOverride>;
+export const ConfigManagementDeploymentOverride =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deploymentName: Schema.optional(Schema.String),
+    containers: Schema.optional(
+      Schema.Array(ConfigManagementContainerOverride),
+    ),
+    deploymentNamespace: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ConfigManagementDeploymentOverride" });
 
 export interface ConfigManagementConfigSync {
   /** Optional. Specifies whether the Config Sync repo is in `hierarchical` or `unstructured` mode. Defaults to `hierarchical`. See https://docs.cloud.google.com/kubernetes-engine/config-sync/docs/concepts/configs#organize-configs for an explanation. */
@@ -1013,23 +865,19 @@ export interface ConfigManagementConfigSync {
   deploymentOverrides?: Array<ConfigManagementDeploymentOverride>;
 }
 
-export const ConfigManagementConfigSync: Schema.Schema<ConfigManagementConfigSync> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sourceFormat: Schema.optional(Schema.String),
-      git: Schema.optional(ConfigManagementGitConfig),
-      enabled: Schema.optional(Schema.Boolean),
-      preventDrift: Schema.optional(Schema.Boolean),
-      metricsGcpServiceAccountEmail: Schema.optional(Schema.String),
-      oci: Schema.optional(ConfigManagementOciConfig),
-      stopSyncing: Schema.optional(Schema.Boolean),
-      deploymentOverrides: Schema.optional(
-        Schema.Array(ConfigManagementDeploymentOverride),
-      ),
-    }),
-  ).annotate({
-    identifier: "ConfigManagementConfigSync",
-  }) as any as Schema.Schema<ConfigManagementConfigSync>;
+export const ConfigManagementConfigSync =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sourceFormat: Schema.optional(Schema.String),
+    git: Schema.optional(ConfigManagementGitConfig),
+    enabled: Schema.optional(Schema.Boolean),
+    preventDrift: Schema.optional(Schema.Boolean),
+    metricsGcpServiceAccountEmail: Schema.optional(Schema.String),
+    oci: Schema.optional(ConfigManagementOciConfig),
+    stopSyncing: Schema.optional(Schema.Boolean),
+    deploymentOverrides: Schema.optional(
+      Schema.Array(ConfigManagementDeploymentOverride),
+    ),
+  }).annotate({ identifier: "ConfigManagementConfigSync" });
 
 export interface ConfigManagementPolicyControllerMonitoring {
   /** Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export. */
@@ -1041,14 +889,10 @@ export interface ConfigManagementPolicyControllerMonitoring {
   >;
 }
 
-export const ConfigManagementPolicyControllerMonitoring: Schema.Schema<ConfigManagementPolicyControllerMonitoring> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      backends: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ConfigManagementPolicyControllerMonitoring",
-  }) as any as Schema.Schema<ConfigManagementPolicyControllerMonitoring>;
+export const ConfigManagementPolicyControllerMonitoring =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    backends: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ConfigManagementPolicyControllerMonitoring" });
 
 export interface ConfigManagementPolicyController {
   /** Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated. */
@@ -1071,22 +915,18 @@ export interface ConfigManagementPolicyController {
   mutationEnabled?: boolean;
 }
 
-export const ConfigManagementPolicyController: Schema.Schema<ConfigManagementPolicyController> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      referentialRulesEnabled: Schema.optional(Schema.Boolean),
-      updateTime: Schema.optional(Schema.String),
-      auditIntervalSeconds: Schema.optional(Schema.String),
-      exemptableNamespaces: Schema.optional(Schema.Array(Schema.String)),
-      logDeniesEnabled: Schema.optional(Schema.Boolean),
-      monitoring: Schema.optional(ConfigManagementPolicyControllerMonitoring),
-      enabled: Schema.optional(Schema.Boolean),
-      templateLibraryInstalled: Schema.optional(Schema.Boolean),
-      mutationEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ConfigManagementPolicyController",
-  }) as any as Schema.Schema<ConfigManagementPolicyController>;
+export const ConfigManagementPolicyController =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    referentialRulesEnabled: Schema.optional(Schema.Boolean),
+    updateTime: Schema.optional(Schema.String),
+    auditIntervalSeconds: Schema.optional(Schema.String),
+    exemptableNamespaces: Schema.optional(Schema.Array(Schema.String)),
+    logDeniesEnabled: Schema.optional(Schema.Boolean),
+    monitoring: Schema.optional(ConfigManagementPolicyControllerMonitoring),
+    enabled: Schema.optional(Schema.Boolean),
+    templateLibraryInstalled: Schema.optional(Schema.Boolean),
+    mutationEnabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "ConfigManagementPolicyController" });
 
 export interface ConfigManagementSpec {
   /** Optional. Hierarchy Controller configuration for the cluster. Deprecated: Configuring Hierarchy Controller through the configmanagement feature is no longer recommended. Use https://github.com/kubernetes-sigs/hierarchical-namespaces instead. */
@@ -1109,22 +949,17 @@ export interface ConfigManagementSpec {
   version?: string;
 }
 
-export const ConfigManagementSpec: Schema.Schema<ConfigManagementSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hierarchyController: Schema.optional(
-        ConfigManagementHierarchyControllerConfig,
-      ),
-      cluster: Schema.optional(Schema.String),
-      management: Schema.optional(Schema.String),
-      binauthz: Schema.optional(ConfigManagementBinauthzConfig),
-      configSync: Schema.optional(ConfigManagementConfigSync),
-      policyController: Schema.optional(ConfigManagementPolicyController),
-      version: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConfigManagementSpec",
-  }) as any as Schema.Schema<ConfigManagementSpec>;
+export const ConfigManagementSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  hierarchyController: Schema.optional(
+    ConfigManagementHierarchyControllerConfig,
+  ),
+  cluster: Schema.optional(Schema.String),
+  management: Schema.optional(Schema.String),
+  binauthz: Schema.optional(ConfigManagementBinauthzConfig),
+  configSync: Schema.optional(ConfigManagementConfigSync),
+  policyController: Schema.optional(ConfigManagementPolicyController),
+  version: Schema.optional(Schema.String),
+}).annotate({ identifier: "ConfigManagementSpec" });
 
 export interface ConfigManagementHierarchyControllerVersion {
   /** Version for open source HNC. */
@@ -1133,15 +968,11 @@ export interface ConfigManagementHierarchyControllerVersion {
   extension?: string;
 }
 
-export const ConfigManagementHierarchyControllerVersion: Schema.Schema<ConfigManagementHierarchyControllerVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hnc: Schema.optional(Schema.String),
-      extension: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConfigManagementHierarchyControllerVersion",
-  }) as any as Schema.Schema<ConfigManagementHierarchyControllerVersion>;
+export const ConfigManagementHierarchyControllerVersion =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    hnc: Schema.optional(Schema.String),
+    extension: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ConfigManagementHierarchyControllerVersion" });
 
 export interface ConfigManagementHierarchyControllerDeploymentState {
   /** The deployment state for open source HNC (e.g. v0.7.0-hc.0). */
@@ -1162,15 +993,13 @@ export interface ConfigManagementHierarchyControllerDeploymentState {
     | (string & {});
 }
 
-export const ConfigManagementHierarchyControllerDeploymentState: Schema.Schema<ConfigManagementHierarchyControllerDeploymentState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hnc: Schema.optional(Schema.String),
-      extension: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const ConfigManagementHierarchyControllerDeploymentState =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    hnc: Schema.optional(Schema.String),
+    extension: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "ConfigManagementHierarchyControllerDeploymentState",
-  }) as any as Schema.Schema<ConfigManagementHierarchyControllerDeploymentState>;
+  });
 
 export interface ConfigManagementHierarchyControllerState {
   /** The version for Hierarchy Controller. */
@@ -1179,31 +1008,21 @@ export interface ConfigManagementHierarchyControllerState {
   state?: ConfigManagementHierarchyControllerDeploymentState;
 }
 
-export const ConfigManagementHierarchyControllerState: Schema.Schema<ConfigManagementHierarchyControllerState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(ConfigManagementHierarchyControllerVersion),
-      state: Schema.optional(
-        ConfigManagementHierarchyControllerDeploymentState,
-      ),
-    }),
-  ).annotate({
-    identifier: "ConfigManagementHierarchyControllerState",
-  }) as any as Schema.Schema<ConfigManagementHierarchyControllerState>;
+export const ConfigManagementHierarchyControllerState =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    version: Schema.optional(ConfigManagementHierarchyControllerVersion),
+    state: Schema.optional(ConfigManagementHierarchyControllerDeploymentState),
+  }).annotate({ identifier: "ConfigManagementHierarchyControllerState" });
 
 export interface ConfigManagementInstallError {
   /** A string representing the user facing error message. */
   errorMessage?: string;
 }
 
-export const ConfigManagementInstallError: Schema.Schema<ConfigManagementInstallError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errorMessage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConfigManagementInstallError",
-  }) as any as Schema.Schema<ConfigManagementInstallError>;
+export const ConfigManagementInstallError =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    errorMessage: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ConfigManagementInstallError" });
 
 export interface ConfigManagementOperatorState {
   /** The state of the Operator's deployment. */
@@ -1220,30 +1039,22 @@ export interface ConfigManagementOperatorState {
   version?: string;
 }
 
-export const ConfigManagementOperatorState: Schema.Schema<ConfigManagementOperatorState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deploymentState: Schema.optional(Schema.String),
-      errors: Schema.optional(Schema.Array(ConfigManagementInstallError)),
-      version: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConfigManagementOperatorState",
-  }) as any as Schema.Schema<ConfigManagementOperatorState>;
+export const ConfigManagementOperatorState =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deploymentState: Schema.optional(Schema.String),
+    errors: Schema.optional(Schema.Array(ConfigManagementInstallError)),
+    version: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ConfigManagementOperatorState" });
 
 export interface ConfigManagementPolicyControllerVersion {
   /** The gatekeeper image tag that is composed of ACM version, git tag, build number. */
   version?: string;
 }
 
-export const ConfigManagementPolicyControllerVersion: Schema.Schema<ConfigManagementPolicyControllerVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConfigManagementPolicyControllerVersion",
-  }) as any as Schema.Schema<ConfigManagementPolicyControllerVersion>;
+export const ConfigManagementPolicyControllerVersion =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    version: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ConfigManagementPolicyControllerVersion" });
 
 export interface ConfigManagementPolicyControllerMigration {
   /** Stage of the migration. */
@@ -1252,15 +1063,11 @@ export interface ConfigManagementPolicyControllerMigration {
   copyTime?: string;
 }
 
-export const ConfigManagementPolicyControllerMigration: Schema.Schema<ConfigManagementPolicyControllerMigration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stage: Schema.optional(Schema.String),
-      copyTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConfigManagementPolicyControllerMigration",
-  }) as any as Schema.Schema<ConfigManagementPolicyControllerMigration>;
+export const ConfigManagementPolicyControllerMigration =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    stage: Schema.optional(Schema.String),
+    copyTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ConfigManagementPolicyControllerMigration" });
 
 export interface ConfigManagementGatekeeperDeploymentState {
   /** Status of gatekeeper-controller-manager pod. */
@@ -1289,16 +1096,12 @@ export interface ConfigManagementGatekeeperDeploymentState {
     | (string & {});
 }
 
-export const ConfigManagementGatekeeperDeploymentState: Schema.Schema<ConfigManagementGatekeeperDeploymentState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gatekeeperControllerManagerState: Schema.optional(Schema.String),
-      gatekeeperMutation: Schema.optional(Schema.String),
-      gatekeeperAudit: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConfigManagementGatekeeperDeploymentState",
-  }) as any as Schema.Schema<ConfigManagementGatekeeperDeploymentState>;
+export const ConfigManagementGatekeeperDeploymentState =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gatekeeperControllerManagerState: Schema.optional(Schema.String),
+    gatekeeperMutation: Schema.optional(Schema.String),
+    gatekeeperAudit: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ConfigManagementGatekeeperDeploymentState" });
 
 export interface ConfigManagementPolicyControllerState {
   /** The version of Gatekeeper Policy Controller deployed. */
@@ -1309,32 +1112,22 @@ export interface ConfigManagementPolicyControllerState {
   deploymentState?: ConfigManagementGatekeeperDeploymentState;
 }
 
-export const ConfigManagementPolicyControllerState: Schema.Schema<ConfigManagementPolicyControllerState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(ConfigManagementPolicyControllerVersion),
-      migration: Schema.optional(ConfigManagementPolicyControllerMigration),
-      deploymentState: Schema.optional(
-        ConfigManagementGatekeeperDeploymentState,
-      ),
-    }),
-  ).annotate({
-    identifier: "ConfigManagementPolicyControllerState",
-  }) as any as Schema.Schema<ConfigManagementPolicyControllerState>;
+export const ConfigManagementPolicyControllerState =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    version: Schema.optional(ConfigManagementPolicyControllerVersion),
+    migration: Schema.optional(ConfigManagementPolicyControllerMigration),
+    deploymentState: Schema.optional(ConfigManagementGatekeeperDeploymentState),
+  }).annotate({ identifier: "ConfigManagementPolicyControllerState" });
 
 export interface ConfigManagementBinauthzVersion {
   /** The version of the binauthz webhook. */
   webhookVersion?: string;
 }
 
-export const ConfigManagementBinauthzVersion: Schema.Schema<ConfigManagementBinauthzVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      webhookVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConfigManagementBinauthzVersion",
-  }) as any as Schema.Schema<ConfigManagementBinauthzVersion>;
+export const ConfigManagementBinauthzVersion =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    webhookVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ConfigManagementBinauthzVersion" });
 
 export interface ConfigManagementBinauthzState {
   /** The version of binauthz that is installed. */
@@ -1349,15 +1142,11 @@ export interface ConfigManagementBinauthzState {
     | (string & {});
 }
 
-export const ConfigManagementBinauthzState: Schema.Schema<ConfigManagementBinauthzState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(ConfigManagementBinauthzVersion),
-      webhook: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConfigManagementBinauthzState",
-  }) as any as Schema.Schema<ConfigManagementBinauthzState>;
+export const ConfigManagementBinauthzState =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    version: Schema.optional(ConfigManagementBinauthzVersion),
+    webhook: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ConfigManagementBinauthzState" });
 
 export interface ConfigManagementState {
   /** Output only. Membership configuration in the cluster. This represents the actual state in the cluster, while the MembershipSpec in the FeatureSpec represents the intended state. */
@@ -1378,25 +1167,18 @@ export interface ConfigManagementState {
   binauthzState?: ConfigManagementBinauthzState;
 }
 
-export const ConfigManagementState: Schema.Schema<ConfigManagementState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      membershipSpec: Schema.optional(ConfigManagementSpec),
-      hierarchyControllerState: Schema.optional(
-        ConfigManagementHierarchyControllerState,
-      ),
-      operatorState: Schema.optional(ConfigManagementOperatorState),
-      configSyncState: Schema.optional(ConfigManagementConfigSyncState),
-      policyControllerState: Schema.optional(
-        ConfigManagementPolicyControllerState,
-      ),
-      kubernetesApiServerVersion: Schema.optional(Schema.String),
-      clusterName: Schema.optional(Schema.String),
-      binauthzState: Schema.optional(ConfigManagementBinauthzState),
-    }),
-  ).annotate({
-    identifier: "ConfigManagementState",
-  }) as any as Schema.Schema<ConfigManagementState>;
+export const ConfigManagementState = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  membershipSpec: Schema.optional(ConfigManagementSpec),
+  hierarchyControllerState: Schema.optional(
+    ConfigManagementHierarchyControllerState,
+  ),
+  operatorState: Schema.optional(ConfigManagementOperatorState),
+  configSyncState: Schema.optional(ConfigManagementConfigSyncState),
+  policyControllerState: Schema.optional(ConfigManagementPolicyControllerState),
+  kubernetesApiServerVersion: Schema.optional(Schema.String),
+  clusterName: Schema.optional(Schema.String),
+  binauthzState: Schema.optional(ConfigManagementBinauthzState),
+}).annotate({ identifier: "ConfigManagementState" });
 
 export interface WorkloadIdentityIdentityProviderStateDetail {
   /** A human-readable description of the current state or returned error. */
@@ -1409,15 +1191,11 @@ export interface WorkloadIdentityIdentityProviderStateDetail {
     | (string & {});
 }
 
-export const WorkloadIdentityIdentityProviderStateDetail: Schema.Schema<WorkloadIdentityIdentityProviderStateDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      code: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WorkloadIdentityIdentityProviderStateDetail",
-  }) as any as Schema.Schema<WorkloadIdentityIdentityProviderStateDetail>;
+export const WorkloadIdentityIdentityProviderStateDetail =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    code: Schema.optional(Schema.String),
+  }).annotate({ identifier: "WorkloadIdentityIdentityProviderStateDetail" });
 
 export interface WorkloadIdentityState {
   /** Deprecated, this field will be erased after code is changed to use the new field. */
@@ -1429,20 +1207,12 @@ export interface WorkloadIdentityState {
   >;
 }
 
-export const WorkloadIdentityState: Schema.Schema<WorkloadIdentityState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      identityProviderStateDetails: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          WorkloadIdentityIdentityProviderStateDetail,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "WorkloadIdentityState",
-  }) as any as Schema.Schema<WorkloadIdentityState>;
+export const WorkloadIdentityState = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  identityProviderStateDetails: Schema.optional(
+    Schema.Record(Schema.String, WorkloadIdentityIdentityProviderStateDetail),
+  ),
+}).annotate({ identifier: "WorkloadIdentityState" });
 
 export interface ClusterUpgradeIgnoredMembership {
   /** Time when the membership was first set to ignored. */
@@ -1451,15 +1221,11 @@ export interface ClusterUpgradeIgnoredMembership {
   reason?: string;
 }
 
-export const ClusterUpgradeIgnoredMembership: Schema.Schema<ClusterUpgradeIgnoredMembership> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ignoredTime: Schema.optional(Schema.String),
-      reason: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ClusterUpgradeIgnoredMembership",
-  }) as any as Schema.Schema<ClusterUpgradeIgnoredMembership>;
+export const ClusterUpgradeIgnoredMembership =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ignoredTime: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ClusterUpgradeIgnoredMembership" });
 
 export interface ClusterUpgradeGKEUpgrade {
   /** Version of the upgrade, e.g., "1.22.1-gke.100". */
@@ -1468,15 +1234,11 @@ export interface ClusterUpgradeGKEUpgrade {
   name?: string;
 }
 
-export const ClusterUpgradeGKEUpgrade: Schema.Schema<ClusterUpgradeGKEUpgrade> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ClusterUpgradeGKEUpgrade",
-  }) as any as Schema.Schema<ClusterUpgradeGKEUpgrade>;
+export const ClusterUpgradeGKEUpgrade =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    version: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ClusterUpgradeGKEUpgrade" });
 
 export interface ClusterUpgradeUpgradeStatus {
   /** Status code of the upgrade. */
@@ -1495,16 +1257,12 @@ export interface ClusterUpgradeUpgradeStatus {
   updateTime?: string;
 }
 
-export const ClusterUpgradeUpgradeStatus: Schema.Schema<ClusterUpgradeUpgradeStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.String),
-      reason: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ClusterUpgradeUpgradeStatus",
-  }) as any as Schema.Schema<ClusterUpgradeUpgradeStatus>;
+export const ClusterUpgradeUpgradeStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    code: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ClusterUpgradeUpgradeStatus" });
 
 export interface ClusterUpgradeMembershipGKEUpgradeState {
   /** Which upgrade to track the state. */
@@ -1513,15 +1271,11 @@ export interface ClusterUpgradeMembershipGKEUpgradeState {
   status?: ClusterUpgradeUpgradeStatus;
 }
 
-export const ClusterUpgradeMembershipGKEUpgradeState: Schema.Schema<ClusterUpgradeMembershipGKEUpgradeState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      upgrade: Schema.optional(ClusterUpgradeGKEUpgrade),
-      status: Schema.optional(ClusterUpgradeUpgradeStatus),
-    }),
-  ).annotate({
-    identifier: "ClusterUpgradeMembershipGKEUpgradeState",
-  }) as any as Schema.Schema<ClusterUpgradeMembershipGKEUpgradeState>;
+export const ClusterUpgradeMembershipGKEUpgradeState =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    upgrade: Schema.optional(ClusterUpgradeGKEUpgrade),
+    status: Schema.optional(ClusterUpgradeUpgradeStatus),
+  }).annotate({ identifier: "ClusterUpgradeMembershipGKEUpgradeState" });
 
 export interface ClusterUpgradeState {
   /** Whether this membership is ignored by the feature. For example, manually upgraded clusters can be ignored if they are newer than the default versions of its release channel. */
@@ -1530,17 +1284,12 @@ export interface ClusterUpgradeState {
   upgrades?: Array<ClusterUpgradeMembershipGKEUpgradeState>;
 }
 
-export const ClusterUpgradeState: Schema.Schema<ClusterUpgradeState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ignored: Schema.optional(ClusterUpgradeIgnoredMembership),
-      upgrades: Schema.optional(
-        Schema.Array(ClusterUpgradeMembershipGKEUpgradeState),
-      ),
-    }),
-  ).annotate({
-    identifier: "ClusterUpgradeState",
-  }) as any as Schema.Schema<ClusterUpgradeState>;
+export const ClusterUpgradeState = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ignored: Schema.optional(ClusterUpgradeIgnoredMembership),
+  upgrades: Schema.optional(
+    Schema.Array(ClusterUpgradeMembershipGKEUpgradeState),
+  ),
+}).annotate({ identifier: "ClusterUpgradeState" });
 
 export interface ServiceMeshCondition {
   /** Unique identifier of the condition which describes the condition recognizable to the user. */
@@ -1613,17 +1362,12 @@ export interface ServiceMeshCondition {
   details?: string;
 }
 
-export const ServiceMeshCondition: Schema.Schema<ServiceMeshCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.String),
-      documentationLink: Schema.optional(Schema.String),
-      severity: Schema.optional(Schema.String),
-      details: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ServiceMeshCondition",
-  }) as any as Schema.Schema<ServiceMeshCondition>;
+export const ServiceMeshCondition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.String),
+  documentationLink: Schema.optional(Schema.String),
+  severity: Schema.optional(Schema.String),
+  details: Schema.optional(Schema.String),
+}).annotate({ identifier: "ServiceMeshCondition" });
 
 export interface ServiceMeshType {
   /** A 7 character code matching `^IST[0-9]{4}$` or `^ASM[0-9]{4}$`, intended to uniquely identify the message type. (e.g. "IST0001" is mapped to the "InternalError" message type.) */
@@ -1632,15 +1376,10 @@ export interface ServiceMeshType {
   displayName?: string;
 }
 
-export const ServiceMeshType: Schema.Schema<ServiceMeshType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ServiceMeshType",
-  }) as any as Schema.Schema<ServiceMeshType>;
+export const ServiceMeshType = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+}).annotate({ identifier: "ServiceMeshType" });
 
 export interface ServiceMeshAnalysisMessageBase {
   /** A url pointing to the Service Mesh or Istio documentation for this specific error type. */
@@ -1651,16 +1390,12 @@ export interface ServiceMeshAnalysisMessageBase {
   level?: "LEVEL_UNSPECIFIED" | "ERROR" | "WARNING" | "INFO" | (string & {});
 }
 
-export const ServiceMeshAnalysisMessageBase: Schema.Schema<ServiceMeshAnalysisMessageBase> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      documentationUrl: Schema.optional(Schema.String),
-      type: Schema.optional(ServiceMeshType),
-      level: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ServiceMeshAnalysisMessageBase",
-  }) as any as Schema.Schema<ServiceMeshAnalysisMessageBase>;
+export const ServiceMeshAnalysisMessageBase =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    documentationUrl: Schema.optional(Schema.String),
+    type: Schema.optional(ServiceMeshType),
+    level: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ServiceMeshAnalysisMessageBase" });
 
 export interface ServiceMeshAnalysisMessage {
   /** A human readable description of what the error means. It is suitable for non-internationalize display purposes. */
@@ -1673,17 +1408,13 @@ export interface ServiceMeshAnalysisMessage {
   args?: Record<string, unknown>;
 }
 
-export const ServiceMeshAnalysisMessage: Schema.Schema<ServiceMeshAnalysisMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      messageBase: Schema.optional(ServiceMeshAnalysisMessageBase),
-      resourcePaths: Schema.optional(Schema.Array(Schema.String)),
-      args: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
-    identifier: "ServiceMeshAnalysisMessage",
-  }) as any as Schema.Schema<ServiceMeshAnalysisMessage>;
+export const ServiceMeshAnalysisMessage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    messageBase: Schema.optional(ServiceMeshAnalysisMessageBase),
+    resourcePaths: Schema.optional(Schema.Array(Schema.String)),
+    args: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "ServiceMeshAnalysisMessage" });
 
 export interface ServiceMeshStatusDetails {
   /** Human-readable explanation of code. */
@@ -1692,15 +1423,11 @@ export interface ServiceMeshStatusDetails {
   code?: string;
 }
 
-export const ServiceMeshStatusDetails: Schema.Schema<ServiceMeshStatusDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      details: Schema.optional(Schema.String),
-      code: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ServiceMeshStatusDetails",
-  }) as any as Schema.Schema<ServiceMeshStatusDetails>;
+export const ServiceMeshStatusDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    details: Schema.optional(Schema.String),
+    code: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ServiceMeshStatusDetails" });
 
 export interface ServiceMeshDataPlaneManagement {
   /** Lifecycle status of data plane management. */
@@ -1719,15 +1446,11 @@ export interface ServiceMeshDataPlaneManagement {
   details?: Array<ServiceMeshStatusDetails>;
 }
 
-export const ServiceMeshDataPlaneManagement: Schema.Schema<ServiceMeshDataPlaneManagement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      details: Schema.optional(Schema.Array(ServiceMeshStatusDetails)),
-    }),
-  ).annotate({
-    identifier: "ServiceMeshDataPlaneManagement",
-  }) as any as Schema.Schema<ServiceMeshDataPlaneManagement>;
+export const ServiceMeshDataPlaneManagement =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+    details: Schema.optional(Schema.Array(ServiceMeshStatusDetails)),
+  }).annotate({ identifier: "ServiceMeshDataPlaneManagement" });
 
 export interface ServiceMeshControlPlaneManagement {
   /** LifecycleState of control plane management. */
@@ -1753,16 +1476,12 @@ export interface ServiceMeshControlPlaneManagement {
   details?: Array<ServiceMeshStatusDetails>;
 }
 
-export const ServiceMeshControlPlaneManagement: Schema.Schema<ServiceMeshControlPlaneManagement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      implementation: Schema.optional(Schema.String),
-      details: Schema.optional(Schema.Array(ServiceMeshStatusDetails)),
-    }),
-  ).annotate({
-    identifier: "ServiceMeshControlPlaneManagement",
-  }) as any as Schema.Schema<ServiceMeshControlPlaneManagement>;
+export const ServiceMeshControlPlaneManagement =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+    implementation: Schema.optional(Schema.String),
+    details: Schema.optional(Schema.Array(ServiceMeshStatusDetails)),
+  }).annotate({ identifier: "ServiceMeshControlPlaneManagement" });
 
 export interface ServiceMeshState {
   /** The API version (i.e. Istio CRD version) for configuring service mesh in this cluster. This version is influenced by the `default_channel` field. */
@@ -1777,22 +1496,13 @@ export interface ServiceMeshState {
   controlPlaneManagement?: ServiceMeshControlPlaneManagement;
 }
 
-export const ServiceMeshState: Schema.Schema<ServiceMeshState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      configApiVersion: Schema.optional(Schema.String),
-      conditions: Schema.optional(Schema.Array(ServiceMeshCondition)),
-      analysisMessages: Schema.optional(
-        Schema.Array(ServiceMeshAnalysisMessage),
-      ),
-      dataPlaneManagement: Schema.optional(ServiceMeshDataPlaneManagement),
-      controlPlaneManagement: Schema.optional(
-        ServiceMeshControlPlaneManagement,
-      ),
-    }),
-  ).annotate({
-    identifier: "ServiceMeshState",
-  }) as any as Schema.Schema<ServiceMeshState>;
+export const ServiceMeshState = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  configApiVersion: Schema.optional(Schema.String),
+  conditions: Schema.optional(Schema.Array(ServiceMeshCondition)),
+  analysisMessages: Schema.optional(Schema.Array(ServiceMeshAnalysisMessage)),
+  dataPlaneManagement: Schema.optional(ServiceMeshDataPlaneManagement),
+  controlPlaneManagement: Schema.optional(ServiceMeshControlPlaneManagement),
+}).annotate({ identifier: "ServiceMeshState" });
 
 export interface MeteringState {
   /** The vCPUs capacity in the cluster according to the most recent measurement (1/1000 precision). */
@@ -1801,15 +1511,10 @@ export interface MeteringState {
   lastMeasurementTime?: string;
 }
 
-export const MeteringState: Schema.Schema<MeteringState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      preciseLastMeasuredClusterVcpuCapacity: Schema.optional(Schema.Number),
-      lastMeasurementTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MeteringState",
-  }) as any as Schema.Schema<MeteringState>;
+export const MeteringState = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  preciseLastMeasuredClusterVcpuCapacity: Schema.optional(Schema.Number),
+  lastMeasurementTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "MeteringState" });
 
 export interface AppDevExperienceStatus {
   /** Description is populated if Code is Failed, explaining why it has failed. */
@@ -1818,29 +1523,21 @@ export interface AppDevExperienceStatus {
   code?: "CODE_UNSPECIFIED" | "OK" | "FAILED" | "UNKNOWN" | (string & {});
 }
 
-export const AppDevExperienceStatus: Schema.Schema<AppDevExperienceStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      code: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AppDevExperienceStatus",
-  }) as any as Schema.Schema<AppDevExperienceStatus>;
+export const AppDevExperienceStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    description: Schema.optional(Schema.String),
+    code: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "AppDevExperienceStatus" });
 
 export interface AppDevExperienceState {
   /** Status of subcomponent that detects configured Service Mesh resources. */
   networkingInstallSucceeded?: AppDevExperienceStatus;
 }
 
-export const AppDevExperienceState: Schema.Schema<AppDevExperienceState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      networkingInstallSucceeded: Schema.optional(AppDevExperienceStatus),
-    }),
-  ).annotate({
-    identifier: "AppDevExperienceState",
-  }) as any as Schema.Schema<AppDevExperienceState>;
+export const AppDevExperienceState = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  networkingInstallSucceeded: Schema.optional(AppDevExperienceStatus),
+}).annotate({ identifier: "AppDevExperienceState" });
 
 export interface State {
   /** The time this status and any related Feature-specific details were updated. */
@@ -1851,14 +1548,11 @@ export interface State {
   code?: "CODE_UNSPECIFIED" | "OK" | "WARNING" | "ERROR" | (string & {});
 }
 
-export const State: Schema.Schema<State> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateTime: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      code: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "State" }) as any as Schema.Schema<State>;
+export const State = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  updateTime: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  code: Schema.optional(Schema.String),
+}).annotate({ identifier: "State" });
 
 export interface FeatureState {
   /** RBAC Role Binding Actuation state */
@@ -1883,30 +1577,24 @@ export interface FeatureState {
   state?: State;
 }
 
-export const FeatureState: Schema.Schema<FeatureState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rbacrolebindingactuation: Schema.optional(RBACRoleBindingActuationState),
-      policycontroller: Schema.optional(PolicyControllerState),
-      identityservice: Schema.optional(IdentityServiceState),
-      configmanagement: Schema.optional(ConfigManagementState),
-      workloadidentity: Schema.optional(WorkloadIdentityState),
-      clusterupgrade: Schema.optional(ClusterUpgradeState),
-      servicemesh: Schema.optional(ServiceMeshState),
-      metering: Schema.optional(MeteringState),
-      appdevexperience: Schema.optional(AppDevExperienceState),
-      state: Schema.optional(State),
-    }),
-  ).annotate({
-    identifier: "FeatureState",
-  }) as any as Schema.Schema<FeatureState>;
+export const FeatureState = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  rbacrolebindingactuation: Schema.optional(RBACRoleBindingActuationState),
+  policycontroller: Schema.optional(PolicyControllerState),
+  identityservice: Schema.optional(IdentityServiceState),
+  configmanagement: Schema.optional(ConfigManagementState),
+  workloadidentity: Schema.optional(WorkloadIdentityState),
+  clusterupgrade: Schema.optional(ClusterUpgradeState),
+  servicemesh: Schema.optional(ServiceMeshState),
+  metering: Schema.optional(MeteringState),
+  appdevexperience: Schema.optional(AppDevExperienceState),
+  state: Schema.optional(State),
+}).annotate({ identifier: "FeatureState" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface ServiceMeshSpec {
   /** Optional. Enables automatic Service Mesh management. */
@@ -1937,17 +1625,12 @@ export interface ServiceMeshSpec {
     | (string & {});
 }
 
-export const ServiceMeshSpec: Schema.Schema<ServiceMeshSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      management: Schema.optional(Schema.String),
-      configApi: Schema.optional(Schema.String),
-      controlPlane: Schema.optional(Schema.String),
-      defaultChannel: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ServiceMeshSpec",
-  }) as any as Schema.Schema<ServiceMeshSpec>;
+export const ServiceMeshSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  management: Schema.optional(Schema.String),
+  configApi: Schema.optional(Schema.String),
+  controlPlane: Schema.optional(Schema.String),
+  defaultChannel: Schema.optional(Schema.String),
+}).annotate({ identifier: "ServiceMeshSpec" });
 
 export interface Location {
   /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
@@ -1962,16 +1645,13 @@ export interface Location {
   metadata?: Record<string, unknown>;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      locationId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  locationId: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Location" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -1980,15 +1660,10 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(Location)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface GoogleRpcStatus {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
@@ -1999,18 +1674,13 @@ export interface GoogleRpcStatus {
   message?: string;
 }
 
-export const GoogleRpcStatus: Schema.Schema<GoogleRpcStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleRpcStatus",
-  }) as any as Schema.Schema<GoogleRpcStatus>;
+export const GoogleRpcStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+}).annotate({ identifier: "GoogleRpcStatus" });
 
 export interface Operation {
   /** The error result of the operation in case of failure or cancellation. */
@@ -2025,16 +1695,13 @@ export interface Operation {
   name?: string;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      error: Schema.optional(GoogleRpcStatus),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  error: Schema.optional(GoogleRpcStatus),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  done: Schema.optional(Schema.Boolean),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Operation" });
 
 export interface CloudBuildSpec {
   /** Version of the cloud build software on the cluster. */
@@ -2047,22 +1714,17 @@ export interface CloudBuildSpec {
     | (string & {});
 }
 
-export const CloudBuildSpec: Schema.Schema<CloudBuildSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.String),
-      securityPolicy: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CloudBuildSpec",
-  }) as any as Schema.Schema<CloudBuildSpec>;
+export const CloudBuildSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.String),
+  securityPolicy: Schema.optional(Schema.String),
+}).annotate({ identifier: "CloudBuildSpec" });
 
 export interface RBACRoleBindingActuationSpec {}
 
-export const RBACRoleBindingActuationSpec: Schema.Schema<RBACRoleBindingActuationSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const RBACRoleBindingActuationSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RBACRoleBindingActuationSpec",
-  }) as any as Schema.Schema<RBACRoleBindingActuationSpec>;
+  });
 
 export interface WorkloadCertificateSpec {
   /** CertificateManagement specifies workload certificate management. */
@@ -2073,28 +1735,20 @@ export interface WorkloadCertificateSpec {
     | (string & {});
 }
 
-export const WorkloadCertificateSpec: Schema.Schema<WorkloadCertificateSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      certificateManagement: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WorkloadCertificateSpec",
-  }) as any as Schema.Schema<WorkloadCertificateSpec>;
+export const WorkloadCertificateSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    certificateManagement: Schema.optional(Schema.String),
+  }).annotate({ identifier: "WorkloadCertificateSpec" });
 
 export interface PolicyControllerBundleInstallSpec {
   /** the set of namespaces to be exempted from the bundle */
   exemptedNamespaces?: Array<string>;
 }
 
-export const PolicyControllerBundleInstallSpec: Schema.Schema<PolicyControllerBundleInstallSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      exemptedNamespaces: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "PolicyControllerBundleInstallSpec",
-  }) as any as Schema.Schema<PolicyControllerBundleInstallSpec>;
+export const PolicyControllerBundleInstallSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    exemptedNamespaces: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "PolicyControllerBundleInstallSpec" });
 
 export interface PolicyControllerTemplateLibraryConfig {
   /** Configures the manner in which the template library is installed on the cluster. */
@@ -2105,14 +1759,10 @@ export interface PolicyControllerTemplateLibraryConfig {
     | (string & {});
 }
 
-export const PolicyControllerTemplateLibraryConfig: Schema.Schema<PolicyControllerTemplateLibraryConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      installation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PolicyControllerTemplateLibraryConfig",
-  }) as any as Schema.Schema<PolicyControllerTemplateLibraryConfig>;
+export const PolicyControllerTemplateLibraryConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    installation: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PolicyControllerTemplateLibraryConfig" });
 
 export interface PolicyControllerPolicyContentSpec {
   /** map of bundle name to BundleInstallSpec. The bundle name maps to the `bundleName` key in the `policycontroller.gke.io/constraintData` annotation on a constraint. */
@@ -2121,17 +1771,13 @@ export interface PolicyControllerPolicyContentSpec {
   templateLibrary?: PolicyControllerTemplateLibraryConfig;
 }
 
-export const PolicyControllerPolicyContentSpec: Schema.Schema<PolicyControllerPolicyContentSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bundles: Schema.optional(
-        Schema.Record(Schema.String, PolicyControllerBundleInstallSpec),
-      ),
-      templateLibrary: Schema.optional(PolicyControllerTemplateLibraryConfig),
-    }),
-  ).annotate({
-    identifier: "PolicyControllerPolicyContentSpec",
-  }) as any as Schema.Schema<PolicyControllerPolicyContentSpec>;
+export const PolicyControllerPolicyContentSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bundles: Schema.optional(
+      Schema.Record(Schema.String, PolicyControllerBundleInstallSpec),
+    ),
+    templateLibrary: Schema.optional(PolicyControllerTemplateLibraryConfig),
+  }).annotate({ identifier: "PolicyControllerPolicyContentSpec" });
 
 export interface PolicyControllerToleration {
   /** Matches a taint key (not necessarily unique). */
@@ -2144,17 +1790,13 @@ export interface PolicyControllerToleration {
   effect?: string;
 }
 
-export const PolicyControllerToleration: Schema.Schema<PolicyControllerToleration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      key: Schema.optional(Schema.String),
-      operator: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-      effect: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PolicyControllerToleration",
-  }) as any as Schema.Schema<PolicyControllerToleration>;
+export const PolicyControllerToleration =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    key: Schema.optional(Schema.String),
+    operator: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
+    effect: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PolicyControllerToleration" });
 
 export interface PolicyControllerResourceList {
   /** CPU requirement expressed in Kubernetes resource units. */
@@ -2163,15 +1805,11 @@ export interface PolicyControllerResourceList {
   memory?: string;
 }
 
-export const PolicyControllerResourceList: Schema.Schema<PolicyControllerResourceList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cpu: Schema.optional(Schema.String),
-      memory: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PolicyControllerResourceList",
-  }) as any as Schema.Schema<PolicyControllerResourceList>;
+export const PolicyControllerResourceList =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cpu: Schema.optional(Schema.String),
+    memory: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PolicyControllerResourceList" });
 
 export interface PolicyControllerResourceRequirements {
   /** Limits describes the maximum amount of compute resources allowed for use by the running container. */
@@ -2180,15 +1818,11 @@ export interface PolicyControllerResourceRequirements {
   requests?: PolicyControllerResourceList;
 }
 
-export const PolicyControllerResourceRequirements: Schema.Schema<PolicyControllerResourceRequirements> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      limits: Schema.optional(PolicyControllerResourceList),
-      requests: Schema.optional(PolicyControllerResourceList),
-    }),
-  ).annotate({
-    identifier: "PolicyControllerResourceRequirements",
-  }) as any as Schema.Schema<PolicyControllerResourceRequirements>;
+export const PolicyControllerResourceRequirements =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    limits: Schema.optional(PolicyControllerResourceList),
+    requests: Schema.optional(PolicyControllerResourceList),
+  }).annotate({ identifier: "PolicyControllerResourceRequirements" });
 
 export interface PolicyControllerPolicyControllerDeploymentConfig {
   /** Pod affinity configuration. */
@@ -2207,18 +1841,16 @@ export interface PolicyControllerPolicyControllerDeploymentConfig {
   containerResources?: PolicyControllerResourceRequirements;
 }
 
-export const PolicyControllerPolicyControllerDeploymentConfig: Schema.Schema<PolicyControllerPolicyControllerDeploymentConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      podAffinity: Schema.optional(Schema.String),
-      podAntiAffinity: Schema.optional(Schema.Boolean),
-      replicaCount: Schema.optional(Schema.String),
-      podTolerations: Schema.optional(Schema.Array(PolicyControllerToleration)),
-      containerResources: Schema.optional(PolicyControllerResourceRequirements),
-    }),
-  ).annotate({
+export const PolicyControllerPolicyControllerDeploymentConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    podAffinity: Schema.optional(Schema.String),
+    podAntiAffinity: Schema.optional(Schema.Boolean),
+    replicaCount: Schema.optional(Schema.String),
+    podTolerations: Schema.optional(Schema.Array(PolicyControllerToleration)),
+    containerResources: Schema.optional(PolicyControllerResourceRequirements),
+  }).annotate({
     identifier: "PolicyControllerPolicyControllerDeploymentConfig",
-  }) as any as Schema.Schema<PolicyControllerPolicyControllerDeploymentConfig>;
+  });
 
 export interface PolicyControllerMonitoringConfig {
   /** Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export. */
@@ -2230,14 +1862,10 @@ export interface PolicyControllerMonitoringConfig {
   >;
 }
 
-export const PolicyControllerMonitoringConfig: Schema.Schema<PolicyControllerMonitoringConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      backends: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "PolicyControllerMonitoringConfig",
-  }) as any as Schema.Schema<PolicyControllerMonitoringConfig>;
+export const PolicyControllerMonitoringConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    backends: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "PolicyControllerMonitoringConfig" });
 
 export interface PolicyControllerHubConfig {
   /** The install_spec represents the intended state specified by the latest request that mutated install_spec in the feature spec, not the lifecycle state of the feature observed by the Hub feature controller that is reported in the feature state. */
@@ -2271,28 +1899,24 @@ export interface PolicyControllerHubConfig {
   constraintViolationLimit?: string;
 }
 
-export const PolicyControllerHubConfig: Schema.Schema<PolicyControllerHubConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      installSpec: Schema.optional(Schema.String),
-      exemptableNamespaces: Schema.optional(Schema.Array(Schema.String)),
-      auditIntervalSeconds: Schema.optional(Schema.String),
-      policyContent: Schema.optional(PolicyControllerPolicyContentSpec),
-      deploymentConfigs: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          PolicyControllerPolicyControllerDeploymentConfig,
-        ),
+export const PolicyControllerHubConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    installSpec: Schema.optional(Schema.String),
+    exemptableNamespaces: Schema.optional(Schema.Array(Schema.String)),
+    auditIntervalSeconds: Schema.optional(Schema.String),
+    policyContent: Schema.optional(PolicyControllerPolicyContentSpec),
+    deploymentConfigs: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        PolicyControllerPolicyControllerDeploymentConfig,
       ),
-      referentialRulesEnabled: Schema.optional(Schema.Boolean),
-      mutationEnabled: Schema.optional(Schema.Boolean),
-      monitoring: Schema.optional(PolicyControllerMonitoringConfig),
-      logDeniesEnabled: Schema.optional(Schema.Boolean),
-      constraintViolationLimit: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PolicyControllerHubConfig",
-  }) as any as Schema.Schema<PolicyControllerHubConfig>;
+    ),
+    referentialRulesEnabled: Schema.optional(Schema.Boolean),
+    mutationEnabled: Schema.optional(Schema.Boolean),
+    monitoring: Schema.optional(PolicyControllerMonitoringConfig),
+    logDeniesEnabled: Schema.optional(Schema.Boolean),
+    constraintViolationLimit: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PolicyControllerHubConfig" });
 
 export interface PolicyControllerSpec {
   /** Policy Controller configuration for the cluster. */
@@ -2301,15 +1925,10 @@ export interface PolicyControllerSpec {
   version?: string;
 }
 
-export const PolicyControllerSpec: Schema.Schema<PolicyControllerSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policyControllerHubConfig: Schema.optional(PolicyControllerHubConfig),
-      version: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PolicyControllerSpec",
-  }) as any as Schema.Schema<PolicyControllerSpec>;
+export const PolicyControllerSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policyControllerHubConfig: Schema.optional(PolicyControllerHubConfig),
+  version: Schema.optional(Schema.String),
+}).annotate({ identifier: "PolicyControllerSpec" });
 
 export interface FeatureSpec {
   /** Cloudbuild-specific FeatureSpec. */
@@ -2330,21 +1949,16 @@ export interface FeatureSpec {
   policycontroller?: PolicyControllerSpec;
 }
 
-export const FeatureSpec: Schema.Schema<FeatureSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cloudbuild: Schema.optional(CloudBuildSpec),
-      rbacrolebindingactuation: Schema.optional(RBACRoleBindingActuationSpec),
-      workloadcertificate: Schema.optional(WorkloadCertificateSpec),
-      servicemesh: Schema.optional(ServiceMeshSpec),
-      identityservice: Schema.optional(IdentityServiceSpec),
-      configmanagement: Schema.optional(ConfigManagementSpec),
-      origin: Schema.optional(Origin),
-      policycontroller: Schema.optional(PolicyControllerSpec),
-    }),
-  ).annotate({
-    identifier: "FeatureSpec",
-  }) as any as Schema.Schema<FeatureSpec>;
+export const FeatureSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cloudbuild: Schema.optional(CloudBuildSpec),
+  rbacrolebindingactuation: Schema.optional(RBACRoleBindingActuationSpec),
+  workloadcertificate: Schema.optional(WorkloadCertificateSpec),
+  servicemesh: Schema.optional(ServiceMeshSpec),
+  identityservice: Schema.optional(IdentityServiceSpec),
+  configmanagement: Schema.optional(ConfigManagementSpec),
+  origin: Schema.optional(Origin),
+  policycontroller: Schema.optional(PolicyControllerSpec),
+}).annotate({ identifier: "FeatureSpec" });
 
 export interface LifecycleState {
   /** Output only. The current state of the Feature resource in the Hub API. */
@@ -2358,14 +1972,9 @@ export interface LifecycleState {
     | (string & {});
 }
 
-export const LifecycleState: Schema.Schema<LifecycleState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LifecycleState",
-  }) as any as Schema.Schema<LifecycleState>;
+export const LifecycleState = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.String),
+}).annotate({ identifier: "LifecycleState" });
 
 export interface MembershipFeature {
   /** Google Cloud labels for this MembershipFeature. */
@@ -2386,21 +1995,16 @@ export interface MembershipFeature {
   updateTime?: string;
 }
 
-export const MembershipFeature: Schema.Schema<MembershipFeature> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      spec: Schema.optional(FeatureSpec),
-      deleteTime: Schema.optional(Schema.String),
-      lifecycleState: Schema.optional(LifecycleState),
-      createTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      state: Schema.optional(FeatureState),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MembershipFeature",
-  }) as any as Schema.Schema<MembershipFeature>;
+export const MembershipFeature = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  spec: Schema.optional(FeatureSpec),
+  deleteTime: Schema.optional(Schema.String),
+  lifecycleState: Schema.optional(LifecycleState),
+  createTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  state: Schema.optional(FeatureState),
+  updateTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "MembershipFeature" });
 
 export interface ListMembershipFeaturesResponse {
   /** The list of matching MembershipFeatures. */
@@ -2411,16 +2015,12 @@ export interface ListMembershipFeaturesResponse {
   unreachable?: Array<string>;
 }
 
-export const ListMembershipFeaturesResponse: Schema.Schema<ListMembershipFeaturesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      membershipFeatures: Schema.optional(Schema.Array(MembershipFeature)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListMembershipFeaturesResponse",
-  }) as any as Schema.Schema<ListMembershipFeaturesResponse>;
+export const ListMembershipFeaturesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    membershipFeatures: Schema.optional(Schema.Array(MembershipFeature)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListMembershipFeaturesResponse" });
 
 export interface OperationMetadata {
   /** Output only. The time the operation was created. */
@@ -2439,27 +2039,21 @@ export interface OperationMetadata {
   statusDetail?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      cancelRequested: Schema.optional(Schema.Boolean),
-      endTime: Schema.optional(Schema.String),
-      apiVersion: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      statusDetail: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createTime: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  cancelRequested: Schema.optional(Schema.Boolean),
+  endTime: Schema.optional(Schema.String),
+  apiVersion: Schema.optional(Schema.String),
+  verb: Schema.optional(Schema.String),
+  statusDetail: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationMetadata" });
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelOperationRequest",
-  }) as any as Schema.Schema<CancelOperationRequest>;
+export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelOperationRequest" });
 
 export interface ListOperationsResponse {
   /** The standard List next-page token. */
@@ -2470,16 +2064,13 @@ export interface ListOperationsResponse {
   operations?: Array<Operation>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      operations: Schema.optional(Schema.Array(Operation)),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    operations: Schema.optional(Schema.Array(Operation)),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 // ==========================================================================
 // Operations

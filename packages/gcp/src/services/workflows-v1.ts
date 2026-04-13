@@ -24,10 +24,9 @@ const svc = T.Service({
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -38,16 +37,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      message: Schema.optional(Schema.String),
-      code: Schema.optional(Schema.Number),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  message: Schema.optional(Schema.String),
+  code: Schema.optional(Schema.Number),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
@@ -62,16 +58,13 @@ export interface Operation {
   error?: Status;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      name: Schema.optional(Schema.String),
-      error: Schema.optional(Status),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  done: Schema.optional(Schema.Boolean),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  name: Schema.optional(Schema.String),
+  error: Schema.optional(Status),
+}).annotate({ identifier: "Operation" });
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -82,16 +75,13 @@ export interface ListOperationsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(Schema.Array(Operation)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    operations: Schema.optional(Schema.Array(Operation)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 export interface StateError {
   /** Provides specifics about the error. */
@@ -100,13 +90,10 @@ export interface StateError {
   type?: "TYPE_UNSPECIFIED" | "KMS_ERROR" | (string & {});
 }
 
-export const StateError: Schema.Schema<StateError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      details: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "StateError" }) as any as Schema.Schema<StateError>;
+export const StateError = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  details: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "StateError" });
 
 export interface Workflow {
   /** Output only. The resource name of a KMS crypto key version used to encrypt or decrypt the data associated with the workflow. Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}/cryptoKeyVersions/{cryptoKeyVersion} */
@@ -158,30 +145,27 @@ export interface Workflow {
   sourceContents?: string;
 }
 
-export const Workflow: Schema.Schema<Workflow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cryptoKeyVersion: Schema.optional(Schema.String),
-      stateError: Schema.optional(StateError),
-      description: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      revisionId: Schema.optional(Schema.String),
-      allKmsKeysVersions: Schema.optional(Schema.Array(Schema.String)),
-      tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      allKmsKeys: Schema.optional(Schema.Array(Schema.String)),
-      revisionCreateTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      cryptoKeyName: Schema.optional(Schema.String),
-      serviceAccount: Schema.optional(Schema.String),
-      callLogLevel: Schema.optional(Schema.String),
-      userEnvVars: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      executionHistoryLevel: Schema.optional(Schema.String),
-      sourceContents: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Workflow" }) as any as Schema.Schema<Workflow>;
+export const Workflow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cryptoKeyVersion: Schema.optional(Schema.String),
+  stateError: Schema.optional(StateError),
+  description: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  revisionId: Schema.optional(Schema.String),
+  allKmsKeysVersions: Schema.optional(Schema.Array(Schema.String)),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  allKmsKeys: Schema.optional(Schema.Array(Schema.String)),
+  revisionCreateTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  cryptoKeyName: Schema.optional(Schema.String),
+  serviceAccount: Schema.optional(Schema.String),
+  callLogLevel: Schema.optional(Schema.String),
+  userEnvVars: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  executionHistoryLevel: Schema.optional(Schema.String),
+  sourceContents: Schema.optional(Schema.String),
+}).annotate({ identifier: "Workflow" });
 
 export interface ListWorkflowsResponse {
   /** The workflows that match the request. */
@@ -192,16 +176,11 @@ export interface ListWorkflowsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListWorkflowsResponse: Schema.Schema<ListWorkflowsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      workflows: Schema.optional(Schema.Array(Workflow)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListWorkflowsResponse",
-  }) as any as Schema.Schema<ListWorkflowsResponse>;
+export const ListWorkflowsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  workflows: Schema.optional(Schema.Array(Workflow)),
+  nextPageToken: Schema.optional(Schema.String),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ListWorkflowsResponse" });
 
 export interface ListWorkflowRevisionsResponse {
   /** The revisions of the workflow, ordered in reverse chronological order. */
@@ -210,15 +189,11 @@ export interface ListWorkflowRevisionsResponse {
   nextPageToken?: string;
 }
 
-export const ListWorkflowRevisionsResponse: Schema.Schema<ListWorkflowRevisionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      workflows: Schema.optional(Schema.Array(Workflow)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListWorkflowRevisionsResponse",
-  }) as any as Schema.Schema<ListWorkflowRevisionsResponse>;
+export const ListWorkflowRevisionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    workflows: Schema.optional(Schema.Array(Workflow)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListWorkflowRevisionsResponse" });
 
 export interface Location {
   /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
@@ -233,16 +208,13 @@ export interface Location {
   name?: string;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      locationId: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  locationId: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Location" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -251,15 +223,10 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(Location)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface OperationMetadata {
   /** The time the operation was created. */
@@ -274,18 +241,13 @@ export interface OperationMetadata {
   endTime?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      apiVersion: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createTime: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  apiVersion: Schema.optional(Schema.String),
+  verb: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationMetadata" });
 
 // ==========================================================================
 // Operations

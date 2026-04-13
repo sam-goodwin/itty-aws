@@ -24,10 +24,10 @@ const svc = T.Service({
 
 export interface GoogleCloudDataplexV1CancelDataScanJobResponse {}
 
-export const GoogleCloudDataplexV1CancelDataScanJobResponse: Schema.Schema<GoogleCloudDataplexV1CancelDataScanJobResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDataplexV1CancelDataScanJobResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDataplexV1CancelDataScanJobResponse",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1CancelDataScanJobResponse>;
+  });
 
 export interface GoogleCloudDataplexV1AssetDiscoveryStatusStats {
   /** The count of data items within the referenced resource. */
@@ -40,17 +40,13 @@ export interface GoogleCloudDataplexV1AssetDiscoveryStatusStats {
   tables?: string;
 }
 
-export const GoogleCloudDataplexV1AssetDiscoveryStatusStats: Schema.Schema<GoogleCloudDataplexV1AssetDiscoveryStatusStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataItems: Schema.optional(Schema.String),
-      dataSize: Schema.optional(Schema.String),
-      filesets: Schema.optional(Schema.String),
-      tables: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1AssetDiscoveryStatusStats",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1AssetDiscoveryStatusStats>;
+export const GoogleCloudDataplexV1AssetDiscoveryStatusStats =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataItems: Schema.optional(Schema.String),
+    dataSize: Schema.optional(Schema.String),
+    filesets: Schema.optional(Schema.String),
+    tables: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1AssetDiscoveryStatusStats" });
 
 export interface GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig {
   /** Optional. Determines whether to publish discovered tables as BigLake external tables or non-BigLake external tables. */
@@ -63,32 +59,26 @@ export interface GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig 
   location?: string;
 }
 
-export const GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig: Schema.Schema<GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tableType: Schema.optional(Schema.String),
-      connection: Schema.optional(Schema.String),
-      project: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tableType: Schema.optional(Schema.String),
+    connection: Schema.optional(Schema.String),
+    project: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig>;
+  });
 
 export interface GoogleCloudDataplexV1DataAccessSpec {
   /** Optional. The format of strings follows the pattern followed by IAM in the bindings. user:{email}, serviceAccount:{email} group:{email}. The set of principals to be granted reader role on data stored within resources. */
   readers?: Array<string>;
 }
 
-export const GoogleCloudDataplexV1DataAccessSpec: Schema.Schema<GoogleCloudDataplexV1DataAccessSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      readers: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1DataAccessSpec",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataAccessSpec>;
+export const GoogleCloudDataplexV1DataAccessSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    readers: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudDataplexV1DataAccessSpec" });
 
 export interface GoogleCloudDataplexV1ResourceAccessSpec {
   /** Optional. The set of principals to be granted writer role on the resource. */
@@ -99,16 +89,12 @@ export interface GoogleCloudDataplexV1ResourceAccessSpec {
   readers?: Array<string>;
 }
 
-export const GoogleCloudDataplexV1ResourceAccessSpec: Schema.Schema<GoogleCloudDataplexV1ResourceAccessSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      writers: Schema.optional(Schema.Array(Schema.String)),
-      owners: Schema.optional(Schema.Array(Schema.String)),
-      readers: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1ResourceAccessSpec",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1ResourceAccessSpec>;
+export const GoogleCloudDataplexV1ResourceAccessSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    writers: Schema.optional(Schema.Array(Schema.String)),
+    owners: Schema.optional(Schema.Array(Schema.String)),
+    readers: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudDataplexV1ResourceAccessSpec" });
 
 export interface GoogleCloudDataplexV1DataAttribute {
   /** Output only. The number of child attributes present for this attribute. */
@@ -137,27 +123,23 @@ export interface GoogleCloudDataplexV1DataAttribute {
   resourceAccessSpec?: GoogleCloudDataplexV1ResourceAccessSpec;
 }
 
-export const GoogleCloudDataplexV1DataAttribute: Schema.Schema<GoogleCloudDataplexV1DataAttribute> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      attributeCount: Schema.optional(Schema.Number),
-      createTime: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      dataAccessSpec: Schema.optional(GoogleCloudDataplexV1DataAccessSpec),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      uid: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      name: Schema.optional(Schema.String),
-      parentId: Schema.optional(Schema.String),
-      resourceAccessSpec: Schema.optional(
-        GoogleCloudDataplexV1ResourceAccessSpec,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1DataAttribute",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataAttribute>;
+export const GoogleCloudDataplexV1DataAttribute =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    attributeCount: Schema.optional(Schema.Number),
+    createTime: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    dataAccessSpec: Schema.optional(GoogleCloudDataplexV1DataAccessSpec),
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    uid: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    name: Schema.optional(Schema.String),
+    parentId: Schema.optional(Schema.String),
+    resourceAccessSpec: Schema.optional(
+      GoogleCloudDataplexV1ResourceAccessSpec,
+    ),
+  }).annotate({ identifier: "GoogleCloudDataplexV1DataAttribute" });
 
 export interface GoogleCloudDataplexV1DataDocumentationSpec {
   /** Optional. Whether to publish result to Dataplex Catalog. */
@@ -172,15 +154,11 @@ export interface GoogleCloudDataplexV1DataDocumentationSpec {
   >;
 }
 
-export const GoogleCloudDataplexV1DataDocumentationSpec: Schema.Schema<GoogleCloudDataplexV1DataDocumentationSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      catalogPublishingEnabled: Schema.optional(Schema.Boolean),
-      generationScopes: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1DataDocumentationSpec",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataDocumentationSpec>;
+export const GoogleCloudDataplexV1DataDocumentationSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    catalogPublishingEnabled: Schema.optional(Schema.Boolean),
+    generationScopes: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudDataplexV1DataDocumentationSpec" });
 
 export interface GoogleCloudDataplexV1DataDocumentationResultField {
   /** Output only. Generated description for columns and fields. */
@@ -215,17 +193,13 @@ export interface GoogleCloudDataplexV1Partition {
   values?: Array<string>;
 }
 
-export const GoogleCloudDataplexV1Partition: Schema.Schema<GoogleCloudDataplexV1Partition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      location: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      values: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1Partition",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1Partition>;
+export const GoogleCloudDataplexV1Partition =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    values: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudDataplexV1Partition" });
 
 export interface GoogleCloudDataplexV1EntryLinkEntryReference {
   /** Required. Immutable. The relative resource name of the referenced Entry, of the form: projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entries/{entry_id} */
@@ -236,16 +210,12 @@ export interface GoogleCloudDataplexV1EntryLinkEntryReference {
   type?: "UNSPECIFIED" | "SOURCE" | "TARGET" | (string & {});
 }
 
-export const GoogleCloudDataplexV1EntryLinkEntryReference: Schema.Schema<GoogleCloudDataplexV1EntryLinkEntryReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      path: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1EntryLinkEntryReference",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1EntryLinkEntryReference>;
+export const GoogleCloudDataplexV1EntryLinkEntryReference =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    path: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1EntryLinkEntryReference" });
 
 export interface GoogleCloudDataplexV1AspectSource {
   /** The time the aspect was last updated in the source system. */
@@ -256,16 +226,12 @@ export interface GoogleCloudDataplexV1AspectSource {
   createTime?: string;
 }
 
-export const GoogleCloudDataplexV1AspectSource: Schema.Schema<GoogleCloudDataplexV1AspectSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateTime: Schema.optional(Schema.String),
-      dataVersion: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1AspectSource",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1AspectSource>;
+export const GoogleCloudDataplexV1AspectSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateTime: Schema.optional(Schema.String),
+    dataVersion: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1AspectSource" });
 
 export interface GoogleCloudDataplexV1Aspect {
   /** Output only. The resource name of the type used to create this Aspect. */
@@ -282,19 +248,15 @@ export interface GoogleCloudDataplexV1Aspect {
   aspectSource?: GoogleCloudDataplexV1AspectSource;
 }
 
-export const GoogleCloudDataplexV1Aspect: Schema.Schema<GoogleCloudDataplexV1Aspect> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      aspectType: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      data: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      path: Schema.optional(Schema.String),
-      aspectSource: Schema.optional(GoogleCloudDataplexV1AspectSource),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1Aspect",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1Aspect>;
+export const GoogleCloudDataplexV1Aspect =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    aspectType: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    data: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    path: Schema.optional(Schema.String),
+    aspectSource: Schema.optional(GoogleCloudDataplexV1AspectSource),
+  }).annotate({ identifier: "GoogleCloudDataplexV1Aspect" });
 
 export interface GoogleCloudDataplexV1EntryLink {
   /** Output only. The time when the Entry Link was created. */
@@ -311,23 +273,19 @@ export interface GoogleCloudDataplexV1EntryLink {
   entryLinkType?: string;
 }
 
-export const GoogleCloudDataplexV1EntryLink: Schema.Schema<GoogleCloudDataplexV1EntryLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      entryReferences: Schema.optional(
-        Schema.Array(GoogleCloudDataplexV1EntryLinkEntryReference),
-      ),
-      name: Schema.optional(Schema.String),
-      aspects: Schema.optional(
-        Schema.Record(Schema.String, GoogleCloudDataplexV1Aspect),
-      ),
-      updateTime: Schema.optional(Schema.String),
-      entryLinkType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1EntryLink",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1EntryLink>;
+export const GoogleCloudDataplexV1EntryLink =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    entryReferences: Schema.optional(
+      Schema.Array(GoogleCloudDataplexV1EntryLinkEntryReference),
+    ),
+    name: Schema.optional(Schema.String),
+    aspects: Schema.optional(
+      Schema.Record(Schema.String, GoogleCloudDataplexV1Aspect),
+    ),
+    updateTime: Schema.optional(Schema.String),
+    entryLinkType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1EntryLink" });
 
 export interface GoogleCloudDataplexV1LookupEntryLinksResponse {
   /** List of entry links that reference the specified entry. */
@@ -336,15 +294,11 @@ export interface GoogleCloudDataplexV1LookupEntryLinksResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDataplexV1LookupEntryLinksResponse: Schema.Schema<GoogleCloudDataplexV1LookupEntryLinksResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entryLinks: Schema.optional(Schema.Array(GoogleCloudDataplexV1EntryLink)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1LookupEntryLinksResponse",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1LookupEntryLinksResponse>;
+export const GoogleCloudDataplexV1LookupEntryLinksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entryLinks: Schema.optional(Schema.Array(GoogleCloudDataplexV1EntryLink)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1LookupEntryLinksResponse" });
 
 export interface GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue {
   /** Required. Name of the enumvalue. This is the actual value that the aspect can contain. */
@@ -355,30 +309,26 @@ export interface GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue {
   deprecated?: string;
 }
 
-export const GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue: Schema.Schema<GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      index: Schema.optional(Schema.Number),
-      deprecated: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    index: Schema.optional(Schema.Number),
+    deprecated: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1AspectTypeMetadataTemplateEnumValue>;
+  });
 
 export interface GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraints {
   /** Optional. Marks this field as optional or required. */
   required?: boolean;
 }
 
-export const GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraints: Schema.Schema<GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraints> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      required: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraints =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    required: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraints",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1AspectTypeMetadataTemplateConstraints>;
+  });
 
 export interface GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntryLinkSource {
   /** Output only. The entry link name in the form of: projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entryLinks/{entry_link_id} */
@@ -387,16 +337,14 @@ export interface GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEn
   entryLinkType?: string;
 }
 
-export const GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntryLinkSource: Schema.Schema<GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntryLinkSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entryLink: Schema.optional(Schema.String),
-      entryLinkType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntryLinkSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entryLink: Schema.optional(Schema.String),
+    entryLinkType: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntryLinkSource",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntryLinkSource>;
+  });
 
 export interface GoogleCloudDataplexV1GlossaryTerm {
   /** Output only. The time at which the GlossaryTerm was last updated. */
@@ -417,66 +365,56 @@ export interface GoogleCloudDataplexV1GlossaryTerm {
   createTime?: string;
 }
 
-export const GoogleCloudDataplexV1GlossaryTerm: Schema.Schema<GoogleCloudDataplexV1GlossaryTerm> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateTime: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      parent: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      uid: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1GlossaryTerm",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1GlossaryTerm>;
+export const GoogleCloudDataplexV1GlossaryTerm =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateTime: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    parent: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    uid: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1GlossaryTerm" });
 
 export interface GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport {
   /** Optional. The BigQuery table to export DataProfileScan results to. Format: //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID */
   resultsTable?: string;
 }
 
-export const GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport: Schema.Schema<GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resultsTable: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resultsTable: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport>;
+  });
 
 export interface GoogleCloudDataplexV1DataProfileSpecPostScanActions {
   /** Optional. If set, results will be exported to the provided BigQuery table. */
   bigqueryExport?: GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport;
 }
 
-export const GoogleCloudDataplexV1DataProfileSpecPostScanActions: Schema.Schema<GoogleCloudDataplexV1DataProfileSpecPostScanActions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bigqueryExport: Schema.optional(
-        GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataProfileSpecPostScanActions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bigqueryExport: Schema.optional(
+      GoogleCloudDataplexV1DataProfileSpecPostScanActionsBigQueryExport,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1DataProfileSpecPostScanActions",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataProfileSpecPostScanActions>;
+  });
 
 export interface GoogleCloudDataplexV1DataProfileSpecSelectedFields {
   /** Optional. Expected input is a list of fully qualified names of fields as in the schema.Only top-level field names for nested fields are supported. For instance, if 'x' is of nested field type, listing 'x' is supported but 'x.y.z' is not supported. Here 'y' and 'y.z' are nested fields of 'x'. */
   fieldNames?: Array<string>;
 }
 
-export const GoogleCloudDataplexV1DataProfileSpecSelectedFields: Schema.Schema<GoogleCloudDataplexV1DataProfileSpecSelectedFields> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fieldNames: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataProfileSpecSelectedFields =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fieldNames: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1DataProfileSpecSelectedFields",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataProfileSpecSelectedFields>;
+  });
 
 export interface GoogleCloudDataplexV1DataProfileSpec {
   /** Optional. Actions to take upon job completion.. */
@@ -495,42 +433,36 @@ export interface GoogleCloudDataplexV1DataProfileSpec {
   catalogPublishingEnabled?: boolean;
 }
 
-export const GoogleCloudDataplexV1DataProfileSpec: Schema.Schema<GoogleCloudDataplexV1DataProfileSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      postScanActions: Schema.optional(
-        GoogleCloudDataplexV1DataProfileSpecPostScanActions,
-      ),
-      excludeFields: Schema.optional(
-        GoogleCloudDataplexV1DataProfileSpecSelectedFields,
-      ),
-      mode: Schema.optional(Schema.String),
-      includeFields: Schema.optional(
-        GoogleCloudDataplexV1DataProfileSpecSelectedFields,
-      ),
-      samplingPercent: Schema.optional(Schema.Number),
-      rowFilter: Schema.optional(Schema.String),
-      catalogPublishingEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1DataProfileSpec",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataProfileSpec>;
+export const GoogleCloudDataplexV1DataProfileSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    postScanActions: Schema.optional(
+      GoogleCloudDataplexV1DataProfileSpecPostScanActions,
+    ),
+    excludeFields: Schema.optional(
+      GoogleCloudDataplexV1DataProfileSpecSelectedFields,
+    ),
+    mode: Schema.optional(Schema.String),
+    includeFields: Schema.optional(
+      GoogleCloudDataplexV1DataProfileSpecSelectedFields,
+    ),
+    samplingPercent: Schema.optional(Schema.Number),
+    rowFilter: Schema.optional(Schema.String),
+    catalogPublishingEnabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudDataplexV1DataProfileSpec" });
 
 export interface GoogleCloudDataplexV1DataDocumentationResultSchema {
   /** Output only. The list of columns. */
   fields?: Array<GoogleCloudDataplexV1DataDocumentationResultField>;
 }
 
-export const GoogleCloudDataplexV1DataDocumentationResultSchema: Schema.Schema<GoogleCloudDataplexV1DataDocumentationResultSchema> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fields: Schema.optional(
-        Schema.Array(GoogleCloudDataplexV1DataDocumentationResultField),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataDocumentationResultSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fields: Schema.optional(
+      Schema.Array(GoogleCloudDataplexV1DataDocumentationResultField),
+    ),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1DataDocumentationResultSchema",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataDocumentationResultSchema>;
+  });
 
 export interface GoogleCloudDataplexV1DataDocumentationResultQuery {
   /** Output only. The description for the query. */
@@ -539,15 +471,13 @@ export interface GoogleCloudDataplexV1DataDocumentationResultQuery {
   sql?: string;
 }
 
-export const GoogleCloudDataplexV1DataDocumentationResultQuery: Schema.Schema<GoogleCloudDataplexV1DataDocumentationResultQuery> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      sql: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataDocumentationResultQuery =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    sql: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1DataDocumentationResultQuery",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataDocumentationResultQuery>;
+  });
 
 export interface GoogleCloudDataplexV1DataDocumentationResultTableResult {
   /** Output only. Generated description of the table. */
@@ -560,21 +490,17 @@ export interface GoogleCloudDataplexV1DataDocumentationResultTableResult {
   queries?: Array<GoogleCloudDataplexV1DataDocumentationResultQuery>;
 }
 
-export const GoogleCloudDataplexV1DataDocumentationResultTableResult: Schema.Schema<GoogleCloudDataplexV1DataDocumentationResultTableResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      overview: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      schema: Schema.optional(
-        GoogleCloudDataplexV1DataDocumentationResultSchema,
-      ),
-      queries: Schema.optional(
-        Schema.Array(GoogleCloudDataplexV1DataDocumentationResultQuery),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataDocumentationResultTableResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    overview: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    schema: Schema.optional(GoogleCloudDataplexV1DataDocumentationResultSchema),
+    queries: Schema.optional(
+      Schema.Array(GoogleCloudDataplexV1DataDocumentationResultQuery),
+    ),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1DataDocumentationResultTableResult",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataDocumentationResultTableResult>;
+  });
 
 export interface GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSchemaPaths {
   /** Output only. An ordered set of Paths to fields within the schema of the table. For fields nested within a top level field of type record, use '.' to separate field names. Examples: Top level field - top_level Nested field - top_level.child.sub_field */
@@ -583,16 +509,14 @@ export interface GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipS
   tableFqn?: string;
 }
 
-export const GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSchemaPaths: Schema.Schema<GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSchemaPaths> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      paths: Schema.optional(Schema.Array(Schema.String)),
-      tableFqn: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSchemaPaths =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    paths: Schema.optional(Schema.Array(Schema.String)),
+    tableFqn: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSchemaPaths",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSchemaPaths>;
+  });
 
 export interface GoogleCloudDataplexV1DataDocumentationResultSchemaRelationship {
   /** Output only. An ordered list of fields for the join from the first table. The size of this list must be the same as right_schema_paths. Each field at index i in this list must correspond to a field at the same index in the right_schema_paths list. */
@@ -611,22 +535,20 @@ export interface GoogleCloudDataplexV1DataDocumentationResultSchemaRelationship 
   >;
 }
 
-export const GoogleCloudDataplexV1DataDocumentationResultSchemaRelationship: Schema.Schema<GoogleCloudDataplexV1DataDocumentationResultSchemaRelationship> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      leftSchemaPaths: Schema.optional(
-        GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSchemaPaths,
-      ),
-      type: Schema.optional(Schema.String),
-      rightSchemaPaths: Schema.optional(
-        GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSchemaPaths,
-      ),
-      sources: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataDocumentationResultSchemaRelationship =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    leftSchemaPaths: Schema.optional(
+      GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSchemaPaths,
+    ),
+    type: Schema.optional(Schema.String),
+    rightSchemaPaths: Schema.optional(
+      GoogleCloudDataplexV1DataDocumentationResultSchemaRelationshipSchemaPaths,
+    ),
+    sources: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier:
       "GoogleCloudDataplexV1DataDocumentationResultSchemaRelationship",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataDocumentationResultSchemaRelationship>;
+  });
 
 export interface GoogleCloudDataplexV1DataDocumentationResultDatasetResult {
   /** Output only. Sample SQL queries for the dataset. */
@@ -637,22 +559,20 @@ export interface GoogleCloudDataplexV1DataDocumentationResultDatasetResult {
   overview?: string;
 }
 
-export const GoogleCloudDataplexV1DataDocumentationResultDatasetResult: Schema.Schema<GoogleCloudDataplexV1DataDocumentationResultDatasetResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      queries: Schema.optional(
-        Schema.Array(GoogleCloudDataplexV1DataDocumentationResultQuery),
+export const GoogleCloudDataplexV1DataDocumentationResultDatasetResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    queries: Schema.optional(
+      Schema.Array(GoogleCloudDataplexV1DataDocumentationResultQuery),
+    ),
+    schemaRelationships: Schema.optional(
+      Schema.Array(
+        GoogleCloudDataplexV1DataDocumentationResultSchemaRelationship,
       ),
-      schemaRelationships: Schema.optional(
-        Schema.Array(
-          GoogleCloudDataplexV1DataDocumentationResultSchemaRelationship,
-        ),
-      ),
-      overview: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+    ),
+    overview: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1DataDocumentationResultDatasetResult",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataDocumentationResultDatasetResult>;
+  });
 
 export interface GoogleCloudDataplexV1DataDocumentationResult {
   /** Output only. Insights for a Table resource. */
@@ -661,48 +581,40 @@ export interface GoogleCloudDataplexV1DataDocumentationResult {
   datasetResult?: GoogleCloudDataplexV1DataDocumentationResultDatasetResult;
 }
 
-export const GoogleCloudDataplexV1DataDocumentationResult: Schema.Schema<GoogleCloudDataplexV1DataDocumentationResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tableResult: Schema.optional(
-        GoogleCloudDataplexV1DataDocumentationResultTableResult,
-      ),
-      datasetResult: Schema.optional(
-        GoogleCloudDataplexV1DataDocumentationResultDatasetResult,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1DataDocumentationResult",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataDocumentationResult>;
+export const GoogleCloudDataplexV1DataDocumentationResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tableResult: Schema.optional(
+      GoogleCloudDataplexV1DataDocumentationResultTableResult,
+    ),
+    datasetResult: Schema.optional(
+      GoogleCloudDataplexV1DataDocumentationResultDatasetResult,
+    ),
+  }).annotate({ identifier: "GoogleCloudDataplexV1DataDocumentationResult" });
 
 export interface GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation {
   /** Optional. The SQL expression. */
   sqlExpression?: string;
 }
 
-export const GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation: Schema.Schema<GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sqlExpression: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sqlExpression: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation>;
+  });
 
 export interface GoogleCloudDataplexV1DataQualityRuleTemplateReferenceParameterValue {
   /** Required. Represents the string value of the parameter. */
   value?: string;
 }
 
-export const GoogleCloudDataplexV1DataQualityRuleTemplateReferenceParameterValue: Schema.Schema<GoogleCloudDataplexV1DataQualityRuleTemplateReferenceParameterValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataQualityRuleTemplateReferenceParameterValue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDataplexV1DataQualityRuleTemplateReferenceParameterValue",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataQualityRuleTemplateReferenceParameterValue>;
+  });
 
 export interface GoogleCloudDataplexV1DataQualityRuleTemplateParameterDescription {
   /** Output only. Description of the input parameter. It can include the type(s) supported by the parameter and intended usage. It is for information purposes only and does not affect the behavior of the rule template. */
@@ -711,30 +623,26 @@ export interface GoogleCloudDataplexV1DataQualityRuleTemplateParameterDescriptio
   defaultValue?: string;
 }
 
-export const GoogleCloudDataplexV1DataQualityRuleTemplateParameterDescription: Schema.Schema<GoogleCloudDataplexV1DataQualityRuleTemplateParameterDescription> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      defaultValue: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataQualityRuleTemplateParameterDescription =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    defaultValue: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDataplexV1DataQualityRuleTemplateParameterDescription",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataQualityRuleTemplateParameterDescription>;
+  });
 
 export interface GoogleCloudDataplexV1DataQualityRuleTemplateSql {
   /** Output only. Templatized SQL query for data quality rules. */
   query?: string;
 }
 
-export const GoogleCloudDataplexV1DataQualityRuleTemplateSql: Schema.Schema<GoogleCloudDataplexV1DataQualityRuleTemplateSql> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      query: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataQualityRuleTemplateSql =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    query: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1DataQualityRuleTemplateSql",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataQualityRuleTemplateSql>;
+  });
 
 export interface GoogleCloudDataplexV1DataQualityRuleTemplate {
   /** Output only. A list of features or properties supported by this rule template. */
@@ -752,25 +660,21 @@ export interface GoogleCloudDataplexV1DataQualityRuleTemplate {
   sqlCollection?: Array<GoogleCloudDataplexV1DataQualityRuleTemplateSql>;
 }
 
-export const GoogleCloudDataplexV1DataQualityRuleTemplate: Schema.Schema<GoogleCloudDataplexV1DataQualityRuleTemplate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      capabilities: Schema.optional(Schema.Array(Schema.String)),
-      name: Schema.optional(Schema.String),
-      dimension: Schema.optional(Schema.String),
-      inputParameters: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          GoogleCloudDataplexV1DataQualityRuleTemplateParameterDescription,
-        ),
+export const GoogleCloudDataplexV1DataQualityRuleTemplate =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    capabilities: Schema.optional(Schema.Array(Schema.String)),
+    name: Schema.optional(Schema.String),
+    dimension: Schema.optional(Schema.String),
+    inputParameters: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        GoogleCloudDataplexV1DataQualityRuleTemplateParameterDescription,
       ),
-      sqlCollection: Schema.optional(
-        Schema.Array(GoogleCloudDataplexV1DataQualityRuleTemplateSql),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1DataQualityRuleTemplate",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataQualityRuleTemplate>;
+    ),
+    sqlCollection: Schema.optional(
+      Schema.Array(GoogleCloudDataplexV1DataQualityRuleTemplateSql),
+    ),
+  }).annotate({ identifier: "GoogleCloudDataplexV1DataQualityRuleTemplate" });
 
 export interface GoogleCloudDataplexV1DataQualityRuleTemplateReference {
   /** Required. The template entry name. Entry must be of EntryType projects/dataplex-types/locations/global/entryTypes/data-quality-rule-template and contains top-level aspect of AspectType projects/dataplex-types/locations/global/aspectTypes/data-quality-rule-template. The format is: projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entries/{entry_id} */
@@ -786,24 +690,20 @@ export interface GoogleCloudDataplexV1DataQualityRuleTemplateReference {
   resolvedSql?: string;
 }
 
-export const GoogleCloudDataplexV1DataQualityRuleTemplateReference: Schema.Schema<GoogleCloudDataplexV1DataQualityRuleTemplateReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      values: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          GoogleCloudDataplexV1DataQualityRuleTemplateReferenceParameterValue,
-        ),
+export const GoogleCloudDataplexV1DataQualityRuleTemplateReference =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    values: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        GoogleCloudDataplexV1DataQualityRuleTemplateReferenceParameterValue,
       ),
-      ruleTemplate: Schema.optional(
-        GoogleCloudDataplexV1DataQualityRuleTemplate,
-      ),
-      resolvedSql: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+    ),
+    ruleTemplate: Schema.optional(GoogleCloudDataplexV1DataQualityRuleTemplate),
+    resolvedSql: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1DataQualityRuleTemplateReference",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataQualityRuleTemplateReference>;
+  });
 
 export interface GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation {
   /** Optional. Whether column statistic needs to be strictly lesser than ('<') the maximum, or if equality is allowed.Only relevant if a max_value has been defined. Default = false. */
@@ -818,39 +718,35 @@ export interface GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation {
   maxValue?: string;
 }
 
-export const GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation: Schema.Schema<GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      strictMaxEnabled: Schema.optional(Schema.Boolean),
-      statistic: Schema.optional(Schema.String),
-      strictMinEnabled: Schema.optional(Schema.Boolean),
-      minValue: Schema.optional(Schema.String),
-      maxValue: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    strictMaxEnabled: Schema.optional(Schema.Boolean),
+    statistic: Schema.optional(Schema.String),
+    strictMinEnabled: Schema.optional(Schema.Boolean),
+    minValue: Schema.optional(Schema.String),
+    maxValue: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation>;
+  });
 
 export interface GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation {}
 
-export const GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation: Schema.Schema<GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation>;
+  });
 
 export interface GoogleCloudDataplexV1DataQualityRuleSetExpectation {
   /** Optional. Expected values for the column value. */
   values?: Array<string>;
 }
 
-export const GoogleCloudDataplexV1DataQualityRuleSetExpectation: Schema.Schema<GoogleCloudDataplexV1DataQualityRuleSetExpectation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      values: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataQualityRuleSetExpectation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    values: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1DataQualityRuleSetExpectation",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataQualityRuleSetExpectation>;
+  });
 
 export interface GoogleCloudDataplexV1DataQualityRuleRangeExpectation {
   /** Optional. The minimum column value allowed for a row to pass this validation. At least one of min_value and max_value need to be provided. */
@@ -863,17 +759,15 @@ export interface GoogleCloudDataplexV1DataQualityRuleRangeExpectation {
   strictMinEnabled?: boolean;
 }
 
-export const GoogleCloudDataplexV1DataQualityRuleRangeExpectation: Schema.Schema<GoogleCloudDataplexV1DataQualityRuleRangeExpectation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      minValue: Schema.optional(Schema.String),
-      maxValue: Schema.optional(Schema.String),
-      strictMaxEnabled: Schema.optional(Schema.Boolean),
-      strictMinEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataQualityRuleRangeExpectation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    minValue: Schema.optional(Schema.String),
+    maxValue: Schema.optional(Schema.String),
+    strictMaxEnabled: Schema.optional(Schema.Boolean),
+    strictMinEnabled: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1DataQualityRuleRangeExpectation",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataQualityRuleRangeExpectation>;
+  });
 
 export interface GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntrySource {
   /** Output only. The entry name in the form of: projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entries/{entry_id} */
@@ -884,17 +778,15 @@ export interface GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEn
   entryType?: string;
 }
 
-export const GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntrySource: Schema.Schema<GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntrySource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entry: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      entryType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntrySource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entry: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    entryType: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntrySource",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntrySource>;
+  });
 
 export interface GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElement {
   /** Output only. Entry link source represents information about the entry link. */
@@ -903,86 +795,74 @@ export interface GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElement {
   entrySource?: GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntrySource;
 }
 
-export const GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElement: Schema.Schema<GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entryLinkSource: Schema.optional(
-        GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntryLinkSource,
-      ),
-      entrySource: Schema.optional(
-        GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntrySource,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElement =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entryLinkSource: Schema.optional(
+      GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntryLinkSource,
+    ),
+    entrySource: Schema.optional(
+      GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElementEntrySource,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElement",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElement>;
+  });
 
 export interface GoogleCloudDataplexV1DataQualityRuleRuleSource {
   /** Output only. Rule path elements represent information about the individual items in the relationship path between the scan resource and rule origin in that order. */
   rulePathElements?: Array<GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElement>;
 }
 
-export const GoogleCloudDataplexV1DataQualityRuleRuleSource: Schema.Schema<GoogleCloudDataplexV1DataQualityRuleRuleSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rulePathElements: Schema.optional(
-        Schema.Array(
-          GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElement,
-        ),
+export const GoogleCloudDataplexV1DataQualityRuleRuleSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rulePathElements: Schema.optional(
+      Schema.Array(
+        GoogleCloudDataplexV1DataQualityRuleRuleSourceRulePathElement,
       ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1DataQualityRuleRuleSource",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataQualityRuleRuleSource>;
+    ),
+  }).annotate({ identifier: "GoogleCloudDataplexV1DataQualityRuleRuleSource" });
 
 export interface GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation {
   /** Optional. The SQL expression. */
   sqlExpression?: string;
 }
 
-export const GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation: Schema.Schema<GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sqlExpression: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sqlExpression: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation>;
+  });
 
 export interface GoogleCloudDataplexV1DataQualityRuleNonNullExpectation {}
 
-export const GoogleCloudDataplexV1DataQualityRuleNonNullExpectation: Schema.Schema<GoogleCloudDataplexV1DataQualityRuleNonNullExpectation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDataplexV1DataQualityRuleNonNullExpectation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDataplexV1DataQualityRuleNonNullExpectation",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataQualityRuleNonNullExpectation>;
+  });
 
 export interface GoogleCloudDataplexV1DataQualityRuleRegexExpectation {
   /** Optional. A regular expression the column value is expected to match. */
   regex?: string;
 }
 
-export const GoogleCloudDataplexV1DataQualityRuleRegexExpectation: Schema.Schema<GoogleCloudDataplexV1DataQualityRuleRegexExpectation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      regex: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataQualityRuleRegexExpectation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    regex: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1DataQualityRuleRegexExpectation",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataQualityRuleRegexExpectation>;
+  });
 
 export interface GoogleCloudDataplexV1DataQualityRuleSqlAssertion {
   /** Optional. The SQL statement. */
   sqlStatement?: string;
 }
 
-export const GoogleCloudDataplexV1DataQualityRuleSqlAssertion: Schema.Schema<GoogleCloudDataplexV1DataQualityRuleSqlAssertion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sqlStatement: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataQualityRuleSqlAssertion =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sqlStatement: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1DataQualityRuleSqlAssertion",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataQualityRuleSqlAssertion>;
+  });
 
 export interface GoogleCloudDataplexV1DataQualityRuleDebugQuery {
   /** Required. Specifies the SQL statement to be executed. */
@@ -991,15 +871,11 @@ export interface GoogleCloudDataplexV1DataQualityRuleDebugQuery {
   description?: string;
 }
 
-export const GoogleCloudDataplexV1DataQualityRuleDebugQuery: Schema.Schema<GoogleCloudDataplexV1DataQualityRuleDebugQuery> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sqlStatement: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1DataQualityRuleDebugQuery",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataQualityRuleDebugQuery>;
+export const GoogleCloudDataplexV1DataQualityRuleDebugQuery =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sqlStatement: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1DataQualityRuleDebugQuery" });
 
 export interface GoogleCloudDataplexV1DataQualityRule {
   /** Optional. Rows with null values will automatically fail a rule, unless ignore_null is true. In that case, such null rows are trivially considered passing.This field is only valid for the following type of rules: RangeExpectation RegexExpectation SetExpectation UniquenessExpectation */
@@ -1044,117 +920,105 @@ export interface GoogleCloudDataplexV1DataQualityRule {
   description?: string;
 }
 
-export const GoogleCloudDataplexV1DataQualityRule: Schema.Schema<GoogleCloudDataplexV1DataQualityRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ignoreNull: Schema.optional(Schema.Boolean),
-      tableConditionExpectation: Schema.optional(
-        GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation,
-      ),
-      suspended: Schema.optional(Schema.Boolean),
-      attributes: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      templateReference: Schema.optional(
-        GoogleCloudDataplexV1DataQualityRuleTemplateReference,
-      ),
-      column: Schema.optional(Schema.String),
-      statisticRangeExpectation: Schema.optional(
-        GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation,
-      ),
-      dimension: Schema.optional(Schema.String),
-      uniquenessExpectation: Schema.optional(
-        GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation,
-      ),
-      setExpectation: Schema.optional(
-        GoogleCloudDataplexV1DataQualityRuleSetExpectation,
-      ),
-      rangeExpectation: Schema.optional(
-        GoogleCloudDataplexV1DataQualityRuleRangeExpectation,
-      ),
-      ruleSource: Schema.optional(
-        GoogleCloudDataplexV1DataQualityRuleRuleSource,
-      ),
-      rowConditionExpectation: Schema.optional(
-        GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation,
-      ),
-      nonNullExpectation: Schema.optional(
-        GoogleCloudDataplexV1DataQualityRuleNonNullExpectation,
-      ),
-      name: Schema.optional(Schema.String),
-      regexExpectation: Schema.optional(
-        GoogleCloudDataplexV1DataQualityRuleRegexExpectation,
-      ),
-      sqlAssertion: Schema.optional(
-        GoogleCloudDataplexV1DataQualityRuleSqlAssertion,
-      ),
-      threshold: Schema.optional(Schema.Number),
-      debugQueries: Schema.optional(
-        Schema.Array(GoogleCloudDataplexV1DataQualityRuleDebugQuery),
-      ),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1DataQualityRule",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataQualityRule>;
+export const GoogleCloudDataplexV1DataQualityRule =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ignoreNull: Schema.optional(Schema.Boolean),
+    tableConditionExpectation: Schema.optional(
+      GoogleCloudDataplexV1DataQualityRuleTableConditionExpectation,
+    ),
+    suspended: Schema.optional(Schema.Boolean),
+    attributes: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    templateReference: Schema.optional(
+      GoogleCloudDataplexV1DataQualityRuleTemplateReference,
+    ),
+    column: Schema.optional(Schema.String),
+    statisticRangeExpectation: Schema.optional(
+      GoogleCloudDataplexV1DataQualityRuleStatisticRangeExpectation,
+    ),
+    dimension: Schema.optional(Schema.String),
+    uniquenessExpectation: Schema.optional(
+      GoogleCloudDataplexV1DataQualityRuleUniquenessExpectation,
+    ),
+    setExpectation: Schema.optional(
+      GoogleCloudDataplexV1DataQualityRuleSetExpectation,
+    ),
+    rangeExpectation: Schema.optional(
+      GoogleCloudDataplexV1DataQualityRuleRangeExpectation,
+    ),
+    ruleSource: Schema.optional(GoogleCloudDataplexV1DataQualityRuleRuleSource),
+    rowConditionExpectation: Schema.optional(
+      GoogleCloudDataplexV1DataQualityRuleRowConditionExpectation,
+    ),
+    nonNullExpectation: Schema.optional(
+      GoogleCloudDataplexV1DataQualityRuleNonNullExpectation,
+    ),
+    name: Schema.optional(Schema.String),
+    regexExpectation: Schema.optional(
+      GoogleCloudDataplexV1DataQualityRuleRegexExpectation,
+    ),
+    sqlAssertion: Schema.optional(
+      GoogleCloudDataplexV1DataQualityRuleSqlAssertion,
+    ),
+    threshold: Schema.optional(Schema.Number),
+    debugQueries: Schema.optional(
+      Schema.Array(GoogleCloudDataplexV1DataQualityRuleDebugQuery),
+    ),
+    description: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1DataQualityRule" });
 
 export interface GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport {
   /** Optional. The BigQuery table to export DataQualityScan results to. Format: //bigquery.googleapis.com/projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID or projects/PROJECT_ID/datasets/DATASET_ID/tables/TABLE_ID */
   resultsTable?: string;
 }
 
-export const GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport: Schema.Schema<GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resultsTable: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resultsTable: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport>;
+  });
 
 export interface GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTrigger {}
 
-export const GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTrigger: Schema.Schema<GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTrigger> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTrigger =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTrigger",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTrigger>;
+  });
 
 export interface GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTrigger {
   /** Optional. The score range is in 0,100. */
   scoreThreshold?: number;
 }
 
-export const GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTrigger: Schema.Schema<GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTrigger> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scoreThreshold: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTrigger =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scoreThreshold: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTrigger",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTrigger>;
+  });
 
 export interface GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTrigger {}
 
-export const GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTrigger: Schema.Schema<GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTrigger> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTrigger =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTrigger",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTrigger>;
+  });
 
 export interface GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients {
   /** Optional. The email recipients who will receive the DataQualityScan results report. */
   emails?: Array<string>;
 }
 
-export const GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients: Schema.Schema<GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      emails: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    emails: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients>;
+  });
 
 export interface GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport {
   /** Optional. If set, report will be sent when a scan job fails. */
@@ -1167,26 +1031,24 @@ export interface GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotification
   recipients?: GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients;
 }
 
-export const GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport: Schema.Schema<GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      jobFailureTrigger: Schema.optional(
-        GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTrigger,
-      ),
-      scoreThresholdTrigger: Schema.optional(
-        GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTrigger,
-      ),
-      jobEndTrigger: Schema.optional(
-        GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTrigger,
-      ),
-      recipients: Schema.optional(
-        GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    jobFailureTrigger: Schema.optional(
+      GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobFailureTrigger,
+    ),
+    scoreThresholdTrigger: Schema.optional(
+      GoogleCloudDataplexV1DataQualitySpecPostScanActionsScoreThresholdTrigger,
+    ),
+    jobEndTrigger: Schema.optional(
+      GoogleCloudDataplexV1DataQualitySpecPostScanActionsJobEndTrigger,
+    ),
+    recipients: Schema.optional(
+      GoogleCloudDataplexV1DataQualitySpecPostScanActionsRecipients,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport>;
+  });
 
 export interface GoogleCloudDataplexV1DataQualitySpecPostScanActions {
   /** Optional. If set, results will be exported to the provided BigQuery table. */
@@ -1195,19 +1057,17 @@ export interface GoogleCloudDataplexV1DataQualitySpecPostScanActions {
   notificationReport?: GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport;
 }
 
-export const GoogleCloudDataplexV1DataQualitySpecPostScanActions: Schema.Schema<GoogleCloudDataplexV1DataQualitySpecPostScanActions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bigqueryExport: Schema.optional(
-        GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport,
-      ),
-      notificationReport: Schema.optional(
-        GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataQualitySpecPostScanActions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bigqueryExport: Schema.optional(
+      GoogleCloudDataplexV1DataQualitySpecPostScanActionsBigQueryExport,
+    ),
+    notificationReport: Schema.optional(
+      GoogleCloudDataplexV1DataQualitySpecPostScanActionsNotificationReport,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1DataQualitySpecPostScanActions",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataQualitySpecPostScanActions>;
+  });
 
 export interface GoogleCloudDataplexV1DataQualitySpec {
   /** Optional. A filter applied to all rows in a single DataScan job. The filter needs to be a valid SQL expression for a WHERE clause in GoogleSQL syntax (https://cloud.google.com/bigquery/docs/reference/standard-sql/query-syntax#where_clause).Example: col1 >= 0 AND col2 < 10 */
@@ -1226,24 +1086,18 @@ export interface GoogleCloudDataplexV1DataQualitySpec {
   postScanActions?: GoogleCloudDataplexV1DataQualitySpecPostScanActions;
 }
 
-export const GoogleCloudDataplexV1DataQualitySpec: Schema.Schema<GoogleCloudDataplexV1DataQualitySpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rowFilter: Schema.optional(Schema.String),
-      catalogPublishingEnabled: Schema.optional(Schema.Boolean),
-      enableCatalogBasedRules: Schema.optional(Schema.Boolean),
-      rules: Schema.optional(
-        Schema.Array(GoogleCloudDataplexV1DataQualityRule),
-      ),
-      samplingPercent: Schema.optional(Schema.Number),
-      filter: Schema.optional(Schema.String),
-      postScanActions: Schema.optional(
-        GoogleCloudDataplexV1DataQualitySpecPostScanActions,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1DataQualitySpec",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataQualitySpec>;
+export const GoogleCloudDataplexV1DataQualitySpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rowFilter: Schema.optional(Schema.String),
+    catalogPublishingEnabled: Schema.optional(Schema.Boolean),
+    enableCatalogBasedRules: Schema.optional(Schema.Boolean),
+    rules: Schema.optional(Schema.Array(GoogleCloudDataplexV1DataQualityRule)),
+    samplingPercent: Schema.optional(Schema.Number),
+    filter: Schema.optional(Schema.String),
+    postScanActions: Schema.optional(
+      GoogleCloudDataplexV1DataQualitySpecPostScanActions,
+    ),
+  }).annotate({ identifier: "GoogleCloudDataplexV1DataQualitySpec" });
 
 export interface GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing {
   /** Output only. The BigQuery dataset the discovered tables are published to. */
@@ -1252,15 +1106,13 @@ export interface GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing {
   location?: string;
 }
 
-export const GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing: Schema.Schema<GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataset: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataset: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing>;
+  });
 
 export interface GoogleCloudDataplexV1DataDiscoveryResultScanStatistics {
   /** The number of files scanned. */
@@ -1283,22 +1135,20 @@ export interface GoogleCloudDataplexV1DataDiscoveryResultScanStatistics {
   tablesUpdated?: number;
 }
 
-export const GoogleCloudDataplexV1DataDiscoveryResultScanStatistics: Schema.Schema<GoogleCloudDataplexV1DataDiscoveryResultScanStatistics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scannedFileCount: Schema.optional(Schema.Number),
-      filesetsUpdated: Schema.optional(Schema.Number),
-      tablesDeleted: Schema.optional(Schema.Number),
-      tablesCreated: Schema.optional(Schema.Number),
-      filesetsCreated: Schema.optional(Schema.Number),
-      filesExcluded: Schema.optional(Schema.Number),
-      filesetsDeleted: Schema.optional(Schema.Number),
-      dataProcessedBytes: Schema.optional(Schema.String),
-      tablesUpdated: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataDiscoveryResultScanStatistics =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scannedFileCount: Schema.optional(Schema.Number),
+    filesetsUpdated: Schema.optional(Schema.Number),
+    tablesDeleted: Schema.optional(Schema.Number),
+    tablesCreated: Schema.optional(Schema.Number),
+    filesetsCreated: Schema.optional(Schema.Number),
+    filesExcluded: Schema.optional(Schema.Number),
+    filesetsDeleted: Schema.optional(Schema.Number),
+    dataProcessedBytes: Schema.optional(Schema.String),
+    tablesUpdated: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1DataDiscoveryResultScanStatistics",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataDiscoveryResultScanStatistics>;
+  });
 
 export interface GoogleCloudDataplexV1DataDiscoveryResult {
   /** Output only. Configuration for metadata publishing. */
@@ -1307,19 +1157,15 @@ export interface GoogleCloudDataplexV1DataDiscoveryResult {
   scanStatistics?: GoogleCloudDataplexV1DataDiscoveryResultScanStatistics;
 }
 
-export const GoogleCloudDataplexV1DataDiscoveryResult: Schema.Schema<GoogleCloudDataplexV1DataDiscoveryResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bigqueryPublishing: Schema.optional(
-        GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing,
-      ),
-      scanStatistics: Schema.optional(
-        GoogleCloudDataplexV1DataDiscoveryResultScanStatistics,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1DataDiscoveryResult",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataDiscoveryResult>;
+export const GoogleCloudDataplexV1DataDiscoveryResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bigqueryPublishing: Schema.optional(
+      GoogleCloudDataplexV1DataDiscoveryResultBigQueryPublishing,
+    ),
+    scanStatistics: Schema.optional(
+      GoogleCloudDataplexV1DataDiscoveryResultScanStatistics,
+    ),
+  }).annotate({ identifier: "GoogleCloudDataplexV1DataDiscoveryResult" });
 
 export interface GoogleCloudDataplexV1DataScanExecutionStatus {
   /** Optional. The time when the latest DataScanJob started. */
@@ -1330,16 +1176,12 @@ export interface GoogleCloudDataplexV1DataScanExecutionStatus {
   latestJobCreateTime?: string;
 }
 
-export const GoogleCloudDataplexV1DataScanExecutionStatus: Schema.Schema<GoogleCloudDataplexV1DataScanExecutionStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      latestJobStartTime: Schema.optional(Schema.String),
-      latestJobEndTime: Schema.optional(Schema.String),
-      latestJobCreateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1DataScanExecutionStatus",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataScanExecutionStatus>;
+export const GoogleCloudDataplexV1DataScanExecutionStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    latestJobStartTime: Schema.optional(Schema.String),
+    latestJobEndTime: Schema.optional(Schema.String),
+    latestJobCreateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1DataScanExecutionStatus" });
 
 export interface GoogleCloudDataplexV1DataDiscoverySpecStorageConfigUnstructuredDataOptions {
   /** Optional. Deprecated: Use semantic_inference_enabled instead. Specifies whether deeper entity inference over the objects' contents using GenAI is enabled. */
@@ -1348,16 +1190,14 @@ export interface GoogleCloudDataplexV1DataDiscoverySpecStorageConfigUnstructured
   semanticInferenceEnabled?: boolean;
 }
 
-export const GoogleCloudDataplexV1DataDiscoverySpecStorageConfigUnstructuredDataOptions: Schema.Schema<GoogleCloudDataplexV1DataDiscoverySpecStorageConfigUnstructuredDataOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entityInferenceEnabled: Schema.optional(Schema.Boolean),
-      semanticInferenceEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataDiscoverySpecStorageConfigUnstructuredDataOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entityInferenceEnabled: Schema.optional(Schema.Boolean),
+    semanticInferenceEnabled: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier:
       "GoogleCloudDataplexV1DataDiscoverySpecStorageConfigUnstructuredDataOptions",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataDiscoverySpecStorageConfigUnstructuredDataOptions>;
+  });
 
 export interface GoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions {
   /** Optional. The character encoding of the data. The default is UTF-8. */
@@ -1366,16 +1206,14 @@ export interface GoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions 
   typeInferenceDisabled?: boolean;
 }
 
-export const GoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions: Schema.Schema<GoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      encoding: Schema.optional(Schema.String),
-      typeInferenceDisabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    encoding: Schema.optional(Schema.String),
+    typeInferenceDisabled: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier:
       "GoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions>;
+  });
 
 export interface GoogleCloudDataplexV1DataDiscoverySpecStorageConfigCsvOptions {
   /** Optional. The character encoding of the data. The default is UTF-8. */
@@ -1390,18 +1228,16 @@ export interface GoogleCloudDataplexV1DataDiscoverySpecStorageConfigCsvOptions {
   headerRows?: number;
 }
 
-export const GoogleCloudDataplexV1DataDiscoverySpecStorageConfigCsvOptions: Schema.Schema<GoogleCloudDataplexV1DataDiscoverySpecStorageConfigCsvOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      encoding: Schema.optional(Schema.String),
-      quote: Schema.optional(Schema.String),
-      typeInferenceDisabled: Schema.optional(Schema.Boolean),
-      delimiter: Schema.optional(Schema.String),
-      headerRows: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataDiscoverySpecStorageConfigCsvOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    encoding: Schema.optional(Schema.String),
+    quote: Schema.optional(Schema.String),
+    typeInferenceDisabled: Schema.optional(Schema.Boolean),
+    delimiter: Schema.optional(Schema.String),
+    headerRows: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1DataDiscoverySpecStorageConfigCsvOptions",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataDiscoverySpecStorageConfigCsvOptions>;
+  });
 
 export interface GoogleCloudDataplexV1DataDiscoverySpecStorageConfig {
   /** Optional. Specifies configuration for unstructured data discovery. */
@@ -1416,24 +1252,22 @@ export interface GoogleCloudDataplexV1DataDiscoverySpecStorageConfig {
   csvOptions?: GoogleCloudDataplexV1DataDiscoverySpecStorageConfigCsvOptions;
 }
 
-export const GoogleCloudDataplexV1DataDiscoverySpecStorageConfig: Schema.Schema<GoogleCloudDataplexV1DataDiscoverySpecStorageConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unstructuredDataOptions: Schema.optional(
-        GoogleCloudDataplexV1DataDiscoverySpecStorageConfigUnstructuredDataOptions,
-      ),
-      includePatterns: Schema.optional(Schema.Array(Schema.String)),
-      jsonOptions: Schema.optional(
-        GoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions,
-      ),
-      excludePatterns: Schema.optional(Schema.Array(Schema.String)),
-      csvOptions: Schema.optional(
-        GoogleCloudDataplexV1DataDiscoverySpecStorageConfigCsvOptions,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataDiscoverySpecStorageConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unstructuredDataOptions: Schema.optional(
+      GoogleCloudDataplexV1DataDiscoverySpecStorageConfigUnstructuredDataOptions,
+    ),
+    includePatterns: Schema.optional(Schema.Array(Schema.String)),
+    jsonOptions: Schema.optional(
+      GoogleCloudDataplexV1DataDiscoverySpecStorageConfigJsonOptions,
+    ),
+    excludePatterns: Schema.optional(Schema.Array(Schema.String)),
+    csvOptions: Schema.optional(
+      GoogleCloudDataplexV1DataDiscoverySpecStorageConfigCsvOptions,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1DataDiscoverySpecStorageConfig",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataDiscoverySpecStorageConfig>;
+  });
 
 export interface GoogleCloudDataplexV1DataDiscoverySpec {
   /** Optional. Configuration for metadata publishing. */
@@ -1442,54 +1276,42 @@ export interface GoogleCloudDataplexV1DataDiscoverySpec {
   storageConfig?: GoogleCloudDataplexV1DataDiscoverySpecStorageConfig;
 }
 
-export const GoogleCloudDataplexV1DataDiscoverySpec: Schema.Schema<GoogleCloudDataplexV1DataDiscoverySpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bigqueryPublishingConfig: Schema.optional(
-        GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig,
-      ),
-      storageConfig: Schema.optional(
-        GoogleCloudDataplexV1DataDiscoverySpecStorageConfig,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1DataDiscoverySpec",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataDiscoverySpec>;
+export const GoogleCloudDataplexV1DataDiscoverySpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bigqueryPublishingConfig: Schema.optional(
+      GoogleCloudDataplexV1DataDiscoverySpecBigQueryPublishingConfig,
+    ),
+    storageConfig: Schema.optional(
+      GoogleCloudDataplexV1DataDiscoverySpecStorageConfig,
+    ),
+  }).annotate({ identifier: "GoogleCloudDataplexV1DataDiscoverySpec" });
 
 export interface GoogleCloudDataplexV1TriggerSchedule {
   /** Required. Cron (https://en.wikipedia.org/wiki/Cron) schedule for running scans periodically.To explicitly set a timezone in the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}". The ${IANA_TIME_ZONE} may only be a valid string from IANA time zone database (wikipedia (https://en.wikipedia.org/wiki/List_of_tz_database_time_zones#List)). For example, CRON_TZ=America/New_York 1 * * * *, or TZ=America/New_York 1 * * * *.This field is required for Schedule scans. */
   cron?: string;
 }
 
-export const GoogleCloudDataplexV1TriggerSchedule: Schema.Schema<GoogleCloudDataplexV1TriggerSchedule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cron: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1TriggerSchedule",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1TriggerSchedule>;
+export const GoogleCloudDataplexV1TriggerSchedule =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cron: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1TriggerSchedule" });
 
 export interface GoogleCloudDataplexV1TriggerOneTime {
   /** Optional. Time to live for OneTime scans. default value is 24 hours, minimum value is 0 seconds, and maximum value is 365 days. The time is calculated from the data scan job completion time. If value is set as 0 seconds, the scan will be immediately deleted upon job completion, regardless of whether the job succeeded or failed. */
   ttlAfterScanCompletion?: string;
 }
 
-export const GoogleCloudDataplexV1TriggerOneTime: Schema.Schema<GoogleCloudDataplexV1TriggerOneTime> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ttlAfterScanCompletion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1TriggerOneTime",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1TriggerOneTime>;
+export const GoogleCloudDataplexV1TriggerOneTime =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ttlAfterScanCompletion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1TriggerOneTime" });
 
 export interface GoogleCloudDataplexV1TriggerOnDemand {}
 
-export const GoogleCloudDataplexV1TriggerOnDemand: Schema.Schema<GoogleCloudDataplexV1TriggerOnDemand> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDataplexV1TriggerOnDemand =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDataplexV1TriggerOnDemand",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1TriggerOnDemand>;
+  });
 
 export interface GoogleCloudDataplexV1Trigger {
   /** The scan is scheduled to run periodically. */
@@ -1500,16 +1322,12 @@ export interface GoogleCloudDataplexV1Trigger {
   onDemand?: GoogleCloudDataplexV1TriggerOnDemand;
 }
 
-export const GoogleCloudDataplexV1Trigger: Schema.Schema<GoogleCloudDataplexV1Trigger> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      schedule: Schema.optional(GoogleCloudDataplexV1TriggerSchedule),
-      oneTime: Schema.optional(GoogleCloudDataplexV1TriggerOneTime),
-      onDemand: Schema.optional(GoogleCloudDataplexV1TriggerOnDemand),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1Trigger",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1Trigger>;
+export const GoogleCloudDataplexV1Trigger =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    schedule: Schema.optional(GoogleCloudDataplexV1TriggerSchedule),
+    oneTime: Schema.optional(GoogleCloudDataplexV1TriggerOneTime),
+    onDemand: Schema.optional(GoogleCloudDataplexV1TriggerOnDemand),
+  }).annotate({ identifier: "GoogleCloudDataplexV1Trigger" });
 
 export interface GoogleCloudDataplexV1DataScanExecutionSpec {
   /** Optional. Spec related to how often and when a scan should be triggered.If not specified, the default is OnDemand, which means the scan will not run until the user calls RunDataScan API. */
@@ -1518,15 +1336,11 @@ export interface GoogleCloudDataplexV1DataScanExecutionSpec {
   field?: string;
 }
 
-export const GoogleCloudDataplexV1DataScanExecutionSpec: Schema.Schema<GoogleCloudDataplexV1DataScanExecutionSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      trigger: Schema.optional(GoogleCloudDataplexV1Trigger),
-      field: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1DataScanExecutionSpec",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataScanExecutionSpec>;
+export const GoogleCloudDataplexV1DataScanExecutionSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    trigger: Schema.optional(GoogleCloudDataplexV1Trigger),
+    field: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1DataScanExecutionSpec" });
 
 export interface GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult {
   /** Output only. Execution state for the BigQuery exporting. */
@@ -1540,32 +1354,28 @@ export interface GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQ
   message?: string;
 }
 
-export const GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult: Schema.Schema<GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult>;
+  });
 
 export interface GoogleCloudDataplexV1DataQualityResultPostScanActionsResult {
   /** Output only. The result of BigQuery export post scan action. */
   bigqueryExportResult?: GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult;
 }
 
-export const GoogleCloudDataplexV1DataQualityResultPostScanActionsResult: Schema.Schema<GoogleCloudDataplexV1DataQualityResultPostScanActionsResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bigqueryExportResult: Schema.optional(
-        GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataQualityResultPostScanActionsResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bigqueryExportResult: Schema.optional(
+      GoogleCloudDataplexV1DataQualityResultPostScanActionsResultBigQueryExportResult,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1DataQualityResultPostScanActionsResult",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataQualityResultPostScanActionsResult>;
+  });
 
 export interface GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResult {
   /** Indicates the data type of the result. For more information, see BigQuery data types (https://cloud.google.com/bigquery/docs/reference/standard-sql/data-types). */
@@ -1576,34 +1386,28 @@ export interface GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResult {
   value?: string;
 }
 
-export const GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResult: Schema.Schema<GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResult",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResult>;
+  });
 
 export interface GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultSet {
   /** Output only. Contains all results. Up to 10 results can be returned. */
   results?: Array<GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResult>;
 }
 
-export const GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultSet: Schema.Schema<GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      results: Schema.optional(
-        Schema.Array(
-          GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResult,
-        ),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultSet =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    results: Schema.optional(
+      Schema.Array(GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResult),
+    ),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultSet",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultSet>;
+  });
 
 export interface GoogleCloudDataplexV1DataQualityRuleResult {
   /** Output only. The number of rows which passed a rule evaluation.This field is only valid for row-level type rules.This field is not set for rule SqlAssertion. */
@@ -1626,40 +1430,32 @@ export interface GoogleCloudDataplexV1DataQualityRuleResult {
   failingRowsQuery?: string;
 }
 
-export const GoogleCloudDataplexV1DataQualityRuleResult: Schema.Schema<GoogleCloudDataplexV1DataQualityRuleResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      passedCount: Schema.optional(Schema.String),
-      debugQueriesResultSets: Schema.optional(
-        Schema.Array(
-          GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultSet,
-        ),
+export const GoogleCloudDataplexV1DataQualityRuleResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    passedCount: Schema.optional(Schema.String),
+    debugQueriesResultSets: Schema.optional(
+      Schema.Array(
+        GoogleCloudDataplexV1DataQualityRuleResultDebugQueryResultSet,
       ),
-      rule: Schema.optional(GoogleCloudDataplexV1DataQualityRule),
-      nullCount: Schema.optional(Schema.String),
-      evaluatedCount: Schema.optional(Schema.String),
-      passed: Schema.optional(Schema.Boolean),
-      assertionRowCount: Schema.optional(Schema.String),
-      passRatio: Schema.optional(Schema.Number),
-      failingRowsQuery: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1DataQualityRuleResult",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataQualityRuleResult>;
+    ),
+    rule: Schema.optional(GoogleCloudDataplexV1DataQualityRule),
+    nullCount: Schema.optional(Schema.String),
+    evaluatedCount: Schema.optional(Schema.String),
+    passed: Schema.optional(Schema.Boolean),
+    assertionRowCount: Schema.optional(Schema.String),
+    passRatio: Schema.optional(Schema.Number),
+    failingRowsQuery: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1DataQualityRuleResult" });
 
 export interface GoogleCloudDataplexV1DataQualityDimension {
   /** Output only. The dimension name a rule belongs to. Custom dimension name is supported with all uppercase letters and maximum length of 30 characters. */
   name?: string;
 }
 
-export const GoogleCloudDataplexV1DataQualityDimension: Schema.Schema<GoogleCloudDataplexV1DataQualityDimension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1DataQualityDimension",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataQualityDimension>;
+export const GoogleCloudDataplexV1DataQualityDimension =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1DataQualityDimension" });
 
 export interface GoogleCloudDataplexV1DataQualityDimensionResult {
   /** Output only. Whether the dimension passed or failed. */
@@ -1670,16 +1466,14 @@ export interface GoogleCloudDataplexV1DataQualityDimensionResult {
   dimension?: GoogleCloudDataplexV1DataQualityDimension;
 }
 
-export const GoogleCloudDataplexV1DataQualityDimensionResult: Schema.Schema<GoogleCloudDataplexV1DataQualityDimensionResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      passed: Schema.optional(Schema.Boolean),
-      score: Schema.optional(Schema.Number),
-      dimension: Schema.optional(GoogleCloudDataplexV1DataQualityDimension),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataQualityDimensionResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    passed: Schema.optional(Schema.Boolean),
+    score: Schema.optional(Schema.Number),
+    dimension: Schema.optional(GoogleCloudDataplexV1DataQualityDimension),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1DataQualityDimensionResult",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataQualityDimensionResult>;
+  });
 
 export interface GoogleCloudDataplexV1ScannedDataIncrementalField {
   /** Output only. The field that contains values which monotonically increases over time (e.g. a timestamp column). */
@@ -1690,32 +1484,26 @@ export interface GoogleCloudDataplexV1ScannedDataIncrementalField {
   end?: string;
 }
 
-export const GoogleCloudDataplexV1ScannedDataIncrementalField: Schema.Schema<GoogleCloudDataplexV1ScannedDataIncrementalField> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      field: Schema.optional(Schema.String),
-      start: Schema.optional(Schema.String),
-      end: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1ScannedDataIncrementalField =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    field: Schema.optional(Schema.String),
+    start: Schema.optional(Schema.String),
+    end: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1ScannedDataIncrementalField",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1ScannedDataIncrementalField>;
+  });
 
 export interface GoogleCloudDataplexV1ScannedData {
   /** The range denoted by values of an incremental field */
   incrementalField?: GoogleCloudDataplexV1ScannedDataIncrementalField;
 }
 
-export const GoogleCloudDataplexV1ScannedData: Schema.Schema<GoogleCloudDataplexV1ScannedData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      incrementalField: Schema.optional(
-        GoogleCloudDataplexV1ScannedDataIncrementalField,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1ScannedData",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1ScannedData>;
+export const GoogleCloudDataplexV1ScannedData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    incrementalField: Schema.optional(
+      GoogleCloudDataplexV1ScannedDataIncrementalField,
+    ),
+  }).annotate({ identifier: "GoogleCloudDataplexV1ScannedData" });
 
 export interface GoogleCloudDataplexV1DataQualityResultAnomalyDetectionGeneratedAssets {
   /** Output only. The intermediate table for data anomaly detection. Format: PROJECT_ID.DATASET_ID.TABLE_ID */
@@ -1728,18 +1516,16 @@ export interface GoogleCloudDataplexV1DataQualityResultAnomalyDetectionGenerated
   freshnessIntermediateTable?: string;
 }
 
-export const GoogleCloudDataplexV1DataQualityResultAnomalyDetectionGeneratedAssets: Schema.Schema<GoogleCloudDataplexV1DataQualityResultAnomalyDetectionGeneratedAssets> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataIntermediateTable: Schema.optional(Schema.String),
-      volumeIntermediateTable: Schema.optional(Schema.String),
-      resultTable: Schema.optional(Schema.String),
-      freshnessIntermediateTable: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataQualityResultAnomalyDetectionGeneratedAssets =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataIntermediateTable: Schema.optional(Schema.String),
+    volumeIntermediateTable: Schema.optional(Schema.String),
+    resultTable: Schema.optional(Schema.String),
+    freshnessIntermediateTable: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDataplexV1DataQualityResultAnomalyDetectionGeneratedAssets",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataQualityResultAnomalyDetectionGeneratedAssets>;
+  });
 
 export interface GoogleCloudDataplexV1DataQualityColumnResult {
   /** Output only. The dimension-level results for this column. */
@@ -1752,19 +1538,15 @@ export interface GoogleCloudDataplexV1DataQualityColumnResult {
   passed?: boolean;
 }
 
-export const GoogleCloudDataplexV1DataQualityColumnResult: Schema.Schema<GoogleCloudDataplexV1DataQualityColumnResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dimensions: Schema.optional(
-        Schema.Array(GoogleCloudDataplexV1DataQualityDimensionResult),
-      ),
-      score: Schema.optional(Schema.Number),
-      column: Schema.optional(Schema.String),
-      passed: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1DataQualityColumnResult",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataQualityColumnResult>;
+export const GoogleCloudDataplexV1DataQualityColumnResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dimensions: Schema.optional(
+      Schema.Array(GoogleCloudDataplexV1DataQualityDimensionResult),
+    ),
+    score: Schema.optional(Schema.Number),
+    column: Schema.optional(Schema.String),
+    passed: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudDataplexV1DataQualityColumnResult" });
 
 export interface GoogleCloudDataplexV1DataScanCatalogPublishingStatus {
   /** Output only. Execution state for publishing. */
@@ -1776,14 +1558,12 @@ export interface GoogleCloudDataplexV1DataScanCatalogPublishingStatus {
     | (string & {});
 }
 
-export const GoogleCloudDataplexV1DataScanCatalogPublishingStatus: Schema.Schema<GoogleCloudDataplexV1DataScanCatalogPublishingStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataScanCatalogPublishingStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1DataScanCatalogPublishingStatus",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataScanCatalogPublishingStatus>;
+  });
 
 export interface GoogleCloudDataplexV1DataQualityResult {
   /** Output only. The result of post scan actions. */
@@ -1808,63 +1588,57 @@ export interface GoogleCloudDataplexV1DataQualityResult {
   catalogPublishingStatus?: GoogleCloudDataplexV1DataScanCatalogPublishingStatus;
 }
 
-export const GoogleCloudDataplexV1DataQualityResult: Schema.Schema<GoogleCloudDataplexV1DataQualityResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      postScanActionsResult: Schema.optional(
-        GoogleCloudDataplexV1DataQualityResultPostScanActionsResult,
-      ),
-      rules: Schema.optional(
-        Schema.Array(GoogleCloudDataplexV1DataQualityRuleResult),
-      ),
-      dimensions: Schema.optional(
-        Schema.Array(GoogleCloudDataplexV1DataQualityDimensionResult),
-      ),
-      scannedData: Schema.optional(GoogleCloudDataplexV1ScannedData),
-      anomalyDetectionGeneratedAssets: Schema.optional(
-        GoogleCloudDataplexV1DataQualityResultAnomalyDetectionGeneratedAssets,
-      ),
-      score: Schema.optional(Schema.Number),
-      passed: Schema.optional(Schema.Boolean),
-      columns: Schema.optional(
-        Schema.Array(GoogleCloudDataplexV1DataQualityColumnResult),
-      ),
-      rowCount: Schema.optional(Schema.String),
-      catalogPublishingStatus: Schema.optional(
-        GoogleCloudDataplexV1DataScanCatalogPublishingStatus,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1DataQualityResult",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataQualityResult>;
+export const GoogleCloudDataplexV1DataQualityResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    postScanActionsResult: Schema.optional(
+      GoogleCloudDataplexV1DataQualityResultPostScanActionsResult,
+    ),
+    rules: Schema.optional(
+      Schema.Array(GoogleCloudDataplexV1DataQualityRuleResult),
+    ),
+    dimensions: Schema.optional(
+      Schema.Array(GoogleCloudDataplexV1DataQualityDimensionResult),
+    ),
+    scannedData: Schema.optional(GoogleCloudDataplexV1ScannedData),
+    anomalyDetectionGeneratedAssets: Schema.optional(
+      GoogleCloudDataplexV1DataQualityResultAnomalyDetectionGeneratedAssets,
+    ),
+    score: Schema.optional(Schema.Number),
+    passed: Schema.optional(Schema.Boolean),
+    columns: Schema.optional(
+      Schema.Array(GoogleCloudDataplexV1DataQualityColumnResult),
+    ),
+    rowCount: Schema.optional(Schema.String),
+    catalogPublishingStatus: Schema.optional(
+      GoogleCloudDataplexV1DataScanCatalogPublishingStatus,
+    ),
+  }).annotate({ identifier: "GoogleCloudDataplexV1DataQualityResult" });
 
 export interface GoogleCloudDataplexV1ExecutionIdentityDataplexServiceAgent {}
 
-export const GoogleCloudDataplexV1ExecutionIdentityDataplexServiceAgent: Schema.Schema<GoogleCloudDataplexV1ExecutionIdentityDataplexServiceAgent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDataplexV1ExecutionIdentityDataplexServiceAgent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDataplexV1ExecutionIdentityDataplexServiceAgent",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1ExecutionIdentityDataplexServiceAgent>;
+  });
 
 export interface GoogleCloudDataplexV1ExecutionIdentityUserCredential {}
 
-export const GoogleCloudDataplexV1ExecutionIdentityUserCredential: Schema.Schema<GoogleCloudDataplexV1ExecutionIdentityUserCredential> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDataplexV1ExecutionIdentityUserCredential =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDataplexV1ExecutionIdentityUserCredential",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1ExecutionIdentityUserCredential>;
+  });
 
 export interface GoogleCloudDataplexV1ExecutionIdentityServiceAccount {
   /** Required. Service account email. The datascan will execute with this service account's credentials. The user calling this API must have permissions to act as this service account. Dataplex service agent must be granted iam.serviceAccounts.getAccessToken permission on this service account, for example, through the iam.serviceAccountTokenCreator role . */
   email?: string;
 }
 
-export const GoogleCloudDataplexV1ExecutionIdentityServiceAccount: Schema.Schema<GoogleCloudDataplexV1ExecutionIdentityServiceAccount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      email: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1ExecutionIdentityServiceAccount =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    email: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1ExecutionIdentityServiceAccount",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1ExecutionIdentityServiceAccount>;
+  });
 
 export interface GoogleCloudDataplexV1ExecutionIdentity {
   /** Optional. The Dataplex service agent associated with the user's project. */
@@ -1875,22 +1649,18 @@ export interface GoogleCloudDataplexV1ExecutionIdentity {
   serviceAccount?: GoogleCloudDataplexV1ExecutionIdentityServiceAccount;
 }
 
-export const GoogleCloudDataplexV1ExecutionIdentity: Schema.Schema<GoogleCloudDataplexV1ExecutionIdentity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataplexServiceAgent: Schema.optional(
-        GoogleCloudDataplexV1ExecutionIdentityDataplexServiceAgent,
-      ),
-      userCredential: Schema.optional(
-        GoogleCloudDataplexV1ExecutionIdentityUserCredential,
-      ),
-      serviceAccount: Schema.optional(
-        GoogleCloudDataplexV1ExecutionIdentityServiceAccount,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1ExecutionIdentity",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1ExecutionIdentity>;
+export const GoogleCloudDataplexV1ExecutionIdentity =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataplexServiceAgent: Schema.optional(
+      GoogleCloudDataplexV1ExecutionIdentityDataplexServiceAgent,
+    ),
+    userCredential: Schema.optional(
+      GoogleCloudDataplexV1ExecutionIdentityUserCredential,
+    ),
+    serviceAccount: Schema.optional(
+      GoogleCloudDataplexV1ExecutionIdentityServiceAccount,
+    ),
+  }).annotate({ identifier: "GoogleCloudDataplexV1ExecutionIdentity" });
 
 export interface GoogleCloudDataplexV1DataSource {
   /** Immutable. The Dataplex Universal Catalog entity that represents the data source (e.g. BigQuery table) for DataScan, of the form: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/entities/{entity_id}. */
@@ -1899,15 +1669,11 @@ export interface GoogleCloudDataplexV1DataSource {
   resource?: string;
 }
 
-export const GoogleCloudDataplexV1DataSource: Schema.Schema<GoogleCloudDataplexV1DataSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entity: Schema.optional(Schema.String),
-      resource: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1DataSource",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataSource>;
+export const GoogleCloudDataplexV1DataSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entity: Schema.optional(Schema.String),
+    resource: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1DataSource" });
 
 export interface GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult {
   /** Output only. Execution state for the BigQuery exporting. */
@@ -1921,32 +1687,28 @@ export interface GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQ
   message?: string;
 }
 
-export const GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult: Schema.Schema<GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult>;
+  });
 
 export interface GoogleCloudDataplexV1DataProfileResultPostScanActionsResult {
   /** Output only. The result of BigQuery export post scan action. */
   bigqueryExportResult?: GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult;
 }
 
-export const GoogleCloudDataplexV1DataProfileResultPostScanActionsResult: Schema.Schema<GoogleCloudDataplexV1DataProfileResultPostScanActionsResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bigqueryExportResult: Schema.optional(
-        GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataProfileResultPostScanActionsResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bigqueryExportResult: Schema.optional(
+      GoogleCloudDataplexV1DataProfileResultPostScanActionsResultBigQueryExportResult,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1DataProfileResultPostScanActionsResult",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataProfileResultPostScanActionsResult>;
+  });
 
 export interface GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo {
   /** Output only. Minimum length of non-null values in the scanned data. */
@@ -1957,17 +1719,15 @@ export interface GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoSt
   averageLength?: number;
 }
 
-export const GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo: Schema.Schema<GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      minLength: Schema.optional(Schema.String),
-      maxLength: Schema.optional(Schema.String),
-      averageLength: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    minLength: Schema.optional(Schema.String),
+    maxLength: Schema.optional(Schema.String),
+    averageLength: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo>;
+  });
 
 export interface GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue {
   /** Output only. Count of the corresponding value in the scanned data. */
@@ -1978,17 +1738,15 @@ export interface GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTo
   ratio?: number;
 }
 
-export const GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue: Schema.Schema<GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      count: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-      ratio: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    count: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
+    ratio: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue>;
+  });
 
 export interface GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfo {
   /** Output only. Standard deviation of non-null values in the scanned data. NaN, if the field has a NaN. */
@@ -2003,19 +1761,17 @@ export interface GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIn
   average?: number;
 }
 
-export const GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfo: Schema.Schema<GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      standardDeviation: Schema.optional(Schema.Number),
-      quartiles: Schema.optional(Schema.Array(Schema.String)),
-      min: Schema.optional(Schema.String),
-      max: Schema.optional(Schema.String),
-      average: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    standardDeviation: Schema.optional(Schema.Number),
+    quartiles: Schema.optional(Schema.Array(Schema.String)),
+    min: Schema.optional(Schema.String),
+    max: Schema.optional(Schema.String),
+    average: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfo",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfo>;
+  });
 
 export interface GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfo {
   /** Output only. Average of non-null values in the scanned data. NaN, if the field has a NaN. */
@@ -2030,19 +1786,17 @@ export interface GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDo
   max?: number;
 }
 
-export const GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfo: Schema.Schema<GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      average: Schema.optional(Schema.Number),
-      standardDeviation: Schema.optional(Schema.Number),
-      quartiles: Schema.optional(Schema.Array(Schema.Number)),
-      min: Schema.optional(Schema.Number),
-      max: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    average: Schema.optional(Schema.Number),
+    standardDeviation: Schema.optional(Schema.Number),
+    quartiles: Schema.optional(Schema.Array(Schema.Number)),
+    min: Schema.optional(Schema.Number),
+    max: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfo",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfo>;
+  });
 
 export interface GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo {
   /** Output only. Ratio of rows with null value against total scanned rows. */
@@ -2059,29 +1813,27 @@ export interface GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo {
   doubleProfile?: GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfo;
 }
 
-export const GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo: Schema.Schema<GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nullRatio: Schema.optional(Schema.Number),
-      stringProfile: Schema.optional(
-        GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo,
+export const GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nullRatio: Schema.optional(Schema.Number),
+    stringProfile: Schema.optional(
+      GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoStringFieldInfo,
+    ),
+    distinctRatio: Schema.optional(Schema.Number),
+    topNValues: Schema.optional(
+      Schema.Array(
+        GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue,
       ),
-      distinctRatio: Schema.optional(Schema.Number),
-      topNValues: Schema.optional(
-        Schema.Array(
-          GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoTopNValue,
-        ),
-      ),
-      integerProfile: Schema.optional(
-        GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfo,
-      ),
-      doubleProfile: Schema.optional(
-        GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfo,
-      ),
-    }),
-  ).annotate({
+    ),
+    integerProfile: Schema.optional(
+      GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoIntegerFieldInfo,
+    ),
+    doubleProfile: Schema.optional(
+      GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfoDoubleFieldInfo,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo>;
+  });
 
 export interface GoogleCloudDataplexV1DataProfileResultProfileField {
   /** Output only. The mode of the field. Possible values include: REQUIRED, if it is a required field. NULLABLE, if it is an optional field. REPEATED, if it is a repeated field. */
@@ -2094,35 +1846,29 @@ export interface GoogleCloudDataplexV1DataProfileResultProfileField {
   profile?: GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo;
 }
 
-export const GoogleCloudDataplexV1DataProfileResultProfileField: Schema.Schema<GoogleCloudDataplexV1DataProfileResultProfileField> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mode: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      profile: Schema.optional(
-        GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataProfileResultProfileField =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    mode: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    profile: Schema.optional(
+      GoogleCloudDataplexV1DataProfileResultProfileFieldProfileInfo,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1DataProfileResultProfileField",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataProfileResultProfileField>;
+  });
 
 export interface GoogleCloudDataplexV1DataProfileResultProfile {
   /** Output only. List of fields with structural and profile information for each field. */
   fields?: Array<GoogleCloudDataplexV1DataProfileResultProfileField>;
 }
 
-export const GoogleCloudDataplexV1DataProfileResultProfile: Schema.Schema<GoogleCloudDataplexV1DataProfileResultProfile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fields: Schema.optional(
-        Schema.Array(GoogleCloudDataplexV1DataProfileResultProfileField),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1DataProfileResultProfile",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataProfileResultProfile>;
+export const GoogleCloudDataplexV1DataProfileResultProfile =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fields: Schema.optional(
+      Schema.Array(GoogleCloudDataplexV1DataProfileResultProfileField),
+    ),
+  }).annotate({ identifier: "GoogleCloudDataplexV1DataProfileResultProfile" });
 
 export interface GoogleCloudDataplexV1DataProfileResult {
   /** Output only. The status of publishing the data scan as Dataplex Universal Catalog metadata. */
@@ -2137,22 +1883,18 @@ export interface GoogleCloudDataplexV1DataProfileResult {
   scannedData?: GoogleCloudDataplexV1ScannedData;
 }
 
-export const GoogleCloudDataplexV1DataProfileResult: Schema.Schema<GoogleCloudDataplexV1DataProfileResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      catalogPublishingStatus: Schema.optional(
-        GoogleCloudDataplexV1DataScanCatalogPublishingStatus,
-      ),
-      rowCount: Schema.optional(Schema.String),
-      postScanActionsResult: Schema.optional(
-        GoogleCloudDataplexV1DataProfileResultPostScanActionsResult,
-      ),
-      profile: Schema.optional(GoogleCloudDataplexV1DataProfileResultProfile),
-      scannedData: Schema.optional(GoogleCloudDataplexV1ScannedData),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1DataProfileResult",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataProfileResult>;
+export const GoogleCloudDataplexV1DataProfileResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    catalogPublishingStatus: Schema.optional(
+      GoogleCloudDataplexV1DataScanCatalogPublishingStatus,
+    ),
+    rowCount: Schema.optional(Schema.String),
+    postScanActionsResult: Schema.optional(
+      GoogleCloudDataplexV1DataProfileResultPostScanActionsResult,
+    ),
+    profile: Schema.optional(GoogleCloudDataplexV1DataProfileResultProfile),
+    scannedData: Schema.optional(GoogleCloudDataplexV1ScannedData),
+  }).annotate({ identifier: "GoogleCloudDataplexV1DataProfileResult" });
 
 export interface GoogleCloudDataplexV1DataScan {
   /** Settings for a data profile scan. */
@@ -2211,66 +1953,48 @@ export interface GoogleCloudDataplexV1DataScan {
   dataProfileResult?: GoogleCloudDataplexV1DataProfileResult;
 }
 
-export const GoogleCloudDataplexV1DataScan: Schema.Schema<GoogleCloudDataplexV1DataScan> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataProfileSpec: Schema.optional(GoogleCloudDataplexV1DataProfileSpec),
-      updateTime: Schema.optional(Schema.String),
-      dataDocumentationResult: Schema.optional(
-        GoogleCloudDataplexV1DataDocumentationResult,
-      ),
-      dataQualitySpec: Schema.optional(GoogleCloudDataplexV1DataQualitySpec),
-      dataDocumentationSpec: Schema.optional(
-        GoogleCloudDataplexV1DataDocumentationSpec,
-      ),
-      createTime: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      dataDiscoveryResult: Schema.optional(
-        GoogleCloudDataplexV1DataDiscoveryResult,
-      ),
-      executionStatus: Schema.optional(
-        GoogleCloudDataplexV1DataScanExecutionStatus,
-      ),
-      description: Schema.optional(Schema.String),
-      dataDiscoverySpec: Schema.optional(
-        GoogleCloudDataplexV1DataDiscoverySpec,
-      ),
-      uid: Schema.optional(Schema.String),
-      executionSpec: Schema.optional(
-        GoogleCloudDataplexV1DataScanExecutionSpec,
-      ),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      dataQualityResult: Schema.optional(
-        GoogleCloudDataplexV1DataQualityResult,
-      ),
-      name: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      executionIdentity: Schema.optional(
-        GoogleCloudDataplexV1ExecutionIdentity,
-      ),
-      data: Schema.optional(GoogleCloudDataplexV1DataSource),
-      type: Schema.optional(Schema.String),
-      dataProfileResult: Schema.optional(
-        GoogleCloudDataplexV1DataProfileResult,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1DataScan",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataScan>;
+export const GoogleCloudDataplexV1DataScan =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataProfileSpec: Schema.optional(GoogleCloudDataplexV1DataProfileSpec),
+    updateTime: Schema.optional(Schema.String),
+    dataDocumentationResult: Schema.optional(
+      GoogleCloudDataplexV1DataDocumentationResult,
+    ),
+    dataQualitySpec: Schema.optional(GoogleCloudDataplexV1DataQualitySpec),
+    dataDocumentationSpec: Schema.optional(
+      GoogleCloudDataplexV1DataDocumentationSpec,
+    ),
+    createTime: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    dataDiscoveryResult: Schema.optional(
+      GoogleCloudDataplexV1DataDiscoveryResult,
+    ),
+    executionStatus: Schema.optional(
+      GoogleCloudDataplexV1DataScanExecutionStatus,
+    ),
+    description: Schema.optional(Schema.String),
+    dataDiscoverySpec: Schema.optional(GoogleCloudDataplexV1DataDiscoverySpec),
+    uid: Schema.optional(Schema.String),
+    executionSpec: Schema.optional(GoogleCloudDataplexV1DataScanExecutionSpec),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    dataQualityResult: Schema.optional(GoogleCloudDataplexV1DataQualityResult),
+    name: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    executionIdentity: Schema.optional(GoogleCloudDataplexV1ExecutionIdentity),
+    data: Schema.optional(GoogleCloudDataplexV1DataSource),
+    type: Schema.optional(Schema.String),
+    dataProfileResult: Schema.optional(GoogleCloudDataplexV1DataProfileResult),
+  }).annotate({ identifier: "GoogleCloudDataplexV1DataScan" });
 
 export interface GoogleCloudDataplexV1LakeMetastore {
   /** Optional. A relative reference to the Dataproc Metastore (https://cloud.google.com/dataproc-metastore/docs) service associated with the lake: projects/{project_id}/locations/{location_id}/services/{service_id} */
   service?: string;
 }
 
-export const GoogleCloudDataplexV1LakeMetastore: Schema.Schema<GoogleCloudDataplexV1LakeMetastore> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      service: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1LakeMetastore",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1LakeMetastore>;
+export const GoogleCloudDataplexV1LakeMetastore =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    service: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1LakeMetastore" });
 
 export interface GoogleCloudDataplexV1DataScanEventPostScanActionsResultBigQueryExportResult {
   /** Execution state for the BigQuery exporting. */
@@ -2284,16 +2008,14 @@ export interface GoogleCloudDataplexV1DataScanEventPostScanActionsResultBigQuery
   message?: string;
 }
 
-export const GoogleCloudDataplexV1DataScanEventPostScanActionsResultBigQueryExportResult: Schema.Schema<GoogleCloudDataplexV1DataScanEventPostScanActionsResultBigQueryExportResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataScanEventPostScanActionsResultBigQueryExportResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDataplexV1DataScanEventPostScanActionsResultBigQueryExportResult",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataScanEventPostScanActionsResultBigQueryExportResult>;
+  });
 
 export interface GoogleCloudDataplexV1EntryGroup {
   /** Output only. Denotes the transfer status of the Entry Group. It is unspecified for Entry Group created from Dataplex API. */
@@ -2320,22 +2042,18 @@ export interface GoogleCloudDataplexV1EntryGroup {
   displayName?: string;
 }
 
-export const GoogleCloudDataplexV1EntryGroup: Schema.Schema<GoogleCloudDataplexV1EntryGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      transferStatus: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      uid: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1EntryGroup",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1EntryGroup>;
+export const GoogleCloudDataplexV1EntryGroup =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    transferStatus: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    uid: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1EntryGroup" });
 
 export interface GoogleCloudDataplexV1GlossaryCategory {
   /** Output only. The time at which the GlossaryCategory was last updated. */
@@ -2356,42 +2074,33 @@ export interface GoogleCloudDataplexV1GlossaryCategory {
   createTime?: string;
 }
 
-export const GoogleCloudDataplexV1GlossaryCategory: Schema.Schema<GoogleCloudDataplexV1GlossaryCategory> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateTime: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      parent: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      uid: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1GlossaryCategory",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1GlossaryCategory>;
+export const GoogleCloudDataplexV1GlossaryCategory =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateTime: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    parent: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    uid: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1GlossaryCategory" });
 
 export interface GoogleCloudDataplexV1EntryTypeAuthorization {
   /** Immutable. The IAM permission grantable on the Entry Group to allow access to instantiate Entries of Dataplex Universal Catalog owned Entry Types, only settable for Dataplex Universal Catalog owned Types. */
   alternateUsePermission?: string;
 }
 
-export const GoogleCloudDataplexV1EntryTypeAuthorization: Schema.Schema<GoogleCloudDataplexV1EntryTypeAuthorization> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      alternateUsePermission: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1EntryTypeAuthorization",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1EntryTypeAuthorization>;
+export const GoogleCloudDataplexV1EntryTypeAuthorization =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    alternateUsePermission: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1EntryTypeAuthorization" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptions {
   /** Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean). */
@@ -2400,15 +2109,13 @@ export interface GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptions {
   encoding?: string;
 }
 
-export const GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptions: Schema.Schema<GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      disableTypeInference: Schema.optional(Schema.Boolean),
-      encoding: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    disableTypeInference: Schema.optional(Schema.Boolean),
+    encoding: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptions",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptions>;
+  });
 
 export interface GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptions {
   /** Optional. The delimiter being used to separate values. This defaults to ','. */
@@ -2421,17 +2128,15 @@ export interface GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptions {
   encoding?: string;
 }
 
-export const GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptions: Schema.Schema<GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      delimiter: Schema.optional(Schema.String),
-      disableTypeInference: Schema.optional(Schema.Boolean),
-      headerRows: Schema.optional(Schema.Number),
-      encoding: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    delimiter: Schema.optional(Schema.String),
+    disableTypeInference: Schema.optional(Schema.Boolean),
+    headerRows: Schema.optional(Schema.Number),
+    encoding: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptions",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptions>;
+  });
 
 export interface GoogleCloudDataplexV1ZoneDiscoverySpec {
   /** Optional. Configuration for Json data. */
@@ -2448,23 +2153,19 @@ export interface GoogleCloudDataplexV1ZoneDiscoverySpec {
   csvOptions?: GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptions;
 }
 
-export const GoogleCloudDataplexV1ZoneDiscoverySpec: Schema.Schema<GoogleCloudDataplexV1ZoneDiscoverySpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      jsonOptions: Schema.optional(
-        GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptions,
-      ),
-      schedule: Schema.optional(Schema.String),
-      includePatterns: Schema.optional(Schema.Array(Schema.String)),
-      enabled: Schema.optional(Schema.Boolean),
-      excludePatterns: Schema.optional(Schema.Array(Schema.String)),
-      csvOptions: Schema.optional(
-        GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptions,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1ZoneDiscoverySpec",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1ZoneDiscoverySpec>;
+export const GoogleCloudDataplexV1ZoneDiscoverySpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    jsonOptions: Schema.optional(
+      GoogleCloudDataplexV1ZoneDiscoverySpecJsonOptions,
+    ),
+    schedule: Schema.optional(Schema.String),
+    includePatterns: Schema.optional(Schema.Array(Schema.String)),
+    enabled: Schema.optional(Schema.Boolean),
+    excludePatterns: Schema.optional(Schema.Array(Schema.String)),
+    csvOptions: Schema.optional(
+      GoogleCloudDataplexV1ZoneDiscoverySpecCsvOptions,
+    ),
+  }).annotate({ identifier: "GoogleCloudDataplexV1ZoneDiscoverySpec" });
 
 export interface GoogleCloudDataplexV1AssetSecurityStatus {
   /** The current state of the security policy applied to the attached resource. */
@@ -2475,16 +2176,12 @@ export interface GoogleCloudDataplexV1AssetSecurityStatus {
   updateTime?: string;
 }
 
-export const GoogleCloudDataplexV1AssetSecurityStatus: Schema.Schema<GoogleCloudDataplexV1AssetSecurityStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1AssetSecurityStatus",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1AssetSecurityStatus>;
+export const GoogleCloudDataplexV1AssetSecurityStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1AssetSecurityStatus" });
 
 export interface GoogleCloudDataplexV1DataAttributeBindingPath {
   /** Required. The name identifier of the path. Nested columns should be of the form: 'address.city'. */
@@ -2493,15 +2190,11 @@ export interface GoogleCloudDataplexV1DataAttributeBindingPath {
   attributes?: Array<string>;
 }
 
-export const GoogleCloudDataplexV1DataAttributeBindingPath: Schema.Schema<GoogleCloudDataplexV1DataAttributeBindingPath> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      attributes: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1DataAttributeBindingPath",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataAttributeBindingPath>;
+export const GoogleCloudDataplexV1DataAttributeBindingPath =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    attributes: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudDataplexV1DataAttributeBindingPath" });
 
 export interface GoogleCloudDataplexV1DataAttributeBinding {
   /** Optional. Description of the DataAttributeBinding. */
@@ -2528,26 +2221,22 @@ export interface GoogleCloudDataplexV1DataAttributeBinding {
   displayName?: string;
 }
 
-export const GoogleCloudDataplexV1DataAttributeBinding: Schema.Schema<GoogleCloudDataplexV1DataAttributeBinding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      attributes: Schema.optional(Schema.Array(Schema.String)),
-      resource: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      paths: Schema.optional(
-        Schema.Array(GoogleCloudDataplexV1DataAttributeBindingPath),
-      ),
-      uid: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1DataAttributeBinding",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataAttributeBinding>;
+export const GoogleCloudDataplexV1DataAttributeBinding =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    attributes: Schema.optional(Schema.Array(Schema.String)),
+    resource: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    paths: Schema.optional(
+      Schema.Array(GoogleCloudDataplexV1DataAttributeBindingPath),
+    ),
+    uid: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1DataAttributeBinding" });
 
 export interface GoogleCloudDataplexV1EntityCompatibilityStatusCompatibility {
   /** Output only. Whether the entity is compatible and can be represented in the metadata store. */
@@ -2556,15 +2245,13 @@ export interface GoogleCloudDataplexV1EntityCompatibilityStatusCompatibility {
   reason?: string;
 }
 
-export const GoogleCloudDataplexV1EntityCompatibilityStatusCompatibility: Schema.Schema<GoogleCloudDataplexV1EntityCompatibilityStatusCompatibility> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      compatible: Schema.optional(Schema.Boolean),
-      reason: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1EntityCompatibilityStatusCompatibility =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    compatible: Schema.optional(Schema.Boolean),
+    reason: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1EntityCompatibilityStatusCompatibility",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1EntityCompatibilityStatusCompatibility>;
+  });
 
 export interface GoogleCloudDataplexV1EntityCompatibilityStatus {
   /** Output only. Whether this entity is compatible with Hive Metastore. */
@@ -2573,19 +2260,15 @@ export interface GoogleCloudDataplexV1EntityCompatibilityStatus {
   bigquery?: GoogleCloudDataplexV1EntityCompatibilityStatusCompatibility;
 }
 
-export const GoogleCloudDataplexV1EntityCompatibilityStatus: Schema.Schema<GoogleCloudDataplexV1EntityCompatibilityStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hiveMetastore: Schema.optional(
-        GoogleCloudDataplexV1EntityCompatibilityStatusCompatibility,
-      ),
-      bigquery: Schema.optional(
-        GoogleCloudDataplexV1EntityCompatibilityStatusCompatibility,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1EntityCompatibilityStatus",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1EntityCompatibilityStatus>;
+export const GoogleCloudDataplexV1EntityCompatibilityStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    hiveMetastore: Schema.optional(
+      GoogleCloudDataplexV1EntityCompatibilityStatusCompatibility,
+    ),
+    bigquery: Schema.optional(
+      GoogleCloudDataplexV1EntityCompatibilityStatusCompatibility,
+    ),
+  }).annotate({ identifier: "GoogleCloudDataplexV1EntityCompatibilityStatus" });
 
 export interface GoogleCloudDataplexV1EntrySourceAncestor {
   /** Optional. The name of the ancestor resource. */
@@ -2594,15 +2277,11 @@ export interface GoogleCloudDataplexV1EntrySourceAncestor {
   type?: string;
 }
 
-export const GoogleCloudDataplexV1EntrySourceAncestor: Schema.Schema<GoogleCloudDataplexV1EntrySourceAncestor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1EntrySourceAncestor",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1EntrySourceAncestor>;
+export const GoogleCloudDataplexV1EntrySourceAncestor =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1EntrySourceAncestor" });
 
 export interface GoogleCloudDataplexV1EntrySource {
   /** The time when the resource was created in the source system. */
@@ -2627,25 +2306,21 @@ export interface GoogleCloudDataplexV1EntrySource {
   ancestors?: Array<GoogleCloudDataplexV1EntrySourceAncestor>;
 }
 
-export const GoogleCloudDataplexV1EntrySource: Schema.Schema<GoogleCloudDataplexV1EntrySource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      system: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      resource: Schema.optional(Schema.String),
-      platform: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      ancestors: Schema.optional(
-        Schema.Array(GoogleCloudDataplexV1EntrySourceAncestor),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1EntrySource",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1EntrySource>;
+export const GoogleCloudDataplexV1EntrySource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    system: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    resource: Schema.optional(Schema.String),
+    platform: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    ancestors: Schema.optional(
+      Schema.Array(GoogleCloudDataplexV1EntrySourceAncestor),
+    ),
+  }).annotate({ identifier: "GoogleCloudDataplexV1EntrySource" });
 
 export interface GoogleCloudDataplexV1Entry {
   /** Optional. Immutable. The resource name of the parent entry, in the format projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}/entries/{entry_id}. */
@@ -2666,37 +2341,31 @@ export interface GoogleCloudDataplexV1Entry {
   fullyQualifiedName?: string;
 }
 
-export const GoogleCloudDataplexV1Entry: Schema.Schema<GoogleCloudDataplexV1Entry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parentEntry: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      entrySource: Schema.optional(GoogleCloudDataplexV1EntrySource),
-      entryType: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      aspects: Schema.optional(
-        Schema.Record(Schema.String, GoogleCloudDataplexV1Aspect),
-      ),
-      fullyQualifiedName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1Entry",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1Entry>;
+export const GoogleCloudDataplexV1Entry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parentEntry: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    entrySource: Schema.optional(GoogleCloudDataplexV1EntrySource),
+    entryType: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    aspects: Schema.optional(
+      Schema.Record(Schema.String, GoogleCloudDataplexV1Aspect),
+    ),
+    fullyQualifiedName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1Entry" });
 
 export interface GoogleCloudDataplexV1SearchEntriesResultSnippets {
   /** Entry */
   dataplexEntry?: GoogleCloudDataplexV1Entry;
 }
 
-export const GoogleCloudDataplexV1SearchEntriesResultSnippets: Schema.Schema<GoogleCloudDataplexV1SearchEntriesResultSnippets> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataplexEntry: Schema.optional(GoogleCloudDataplexV1Entry),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1SearchEntriesResultSnippets =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataplexEntry: Schema.optional(GoogleCloudDataplexV1Entry),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1SearchEntriesResultSnippets",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1SearchEntriesResultSnippets>;
+  });
 
 export interface GoogleCloudDataplexV1SearchEntriesResult {
   /** Snippets. */
@@ -2706,32 +2375,22 @@ export interface GoogleCloudDataplexV1SearchEntriesResult {
   dataplexEntry?: GoogleCloudDataplexV1Entry;
 }
 
-export const GoogleCloudDataplexV1SearchEntriesResult: Schema.Schema<GoogleCloudDataplexV1SearchEntriesResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      snippets: Schema.optional(
-        GoogleCloudDataplexV1SearchEntriesResultSnippets,
-      ),
-      linkedResource: Schema.optional(Schema.String),
-      dataplexEntry: Schema.optional(GoogleCloudDataplexV1Entry),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1SearchEntriesResult",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1SearchEntriesResult>;
+export const GoogleCloudDataplexV1SearchEntriesResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    snippets: Schema.optional(GoogleCloudDataplexV1SearchEntriesResultSnippets),
+    linkedResource: Schema.optional(Schema.String),
+    dataplexEntry: Schema.optional(GoogleCloudDataplexV1Entry),
+  }).annotate({ identifier: "GoogleCloudDataplexV1SearchEntriesResult" });
 
 export interface GoogleCloudDataplexV1StorageAccess {
   /** Output only. Describes the read access mechanism of the data. Not user settable. */
   read?: "ACCESS_MODE_UNSPECIFIED" | "DIRECT" | "MANAGED" | (string & {});
 }
 
-export const GoogleCloudDataplexV1StorageAccess: Schema.Schema<GoogleCloudDataplexV1StorageAccess> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      read: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1StorageAccess",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1StorageAccess>;
+export const GoogleCloudDataplexV1StorageAccess =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    read: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1StorageAccess" });
 
 export interface GoogleCloudDataplexV1SchemaSchemaField {
   /** Required. The name of the field. Must contain only letters, numbers and underscores, with a maximum length of 767 characters, and must begin with a letter or underscore. */
@@ -2807,15 +2466,11 @@ export interface GoogleCloudDataplexV1SchemaPartitionField {
     | (string & {});
 }
 
-export const GoogleCloudDataplexV1SchemaPartitionField: Schema.Schema<GoogleCloudDataplexV1SchemaPartitionField> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1SchemaPartitionField",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1SchemaPartitionField>;
+export const GoogleCloudDataplexV1SchemaPartitionField =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1SchemaPartitionField" });
 
 export interface GoogleCloudDataplexV1Schema {
   /** Required. Set to true if user-managed or false if managed by Dataplex Universal Catalog. The default is false (managed by Dataplex Universal Catalog). Set to falseto enable Dataplex Universal Catalog discovery to update the schema. including new data discovery, schema inference, and schema evolution. Users retain the ability to input and edit the schema. Dataplex Universal Catalog treats schema input by the user as though produced by a previous Dataplex Universal Catalog discovery operation, and it will evolve the schema and take action based on that treatment. Set to true to fully manage the entity schema. This setting guarantees that Dataplex Universal Catalog will not change schema fields. */
@@ -2831,21 +2486,17 @@ export interface GoogleCloudDataplexV1Schema {
   partitionFields?: Array<GoogleCloudDataplexV1SchemaPartitionField>;
 }
 
-export const GoogleCloudDataplexV1Schema: Schema.Schema<GoogleCloudDataplexV1Schema> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userManaged: Schema.optional(Schema.Boolean),
-      fields: Schema.optional(
-        Schema.Array(GoogleCloudDataplexV1SchemaSchemaField),
-      ),
-      partitionStyle: Schema.optional(Schema.String),
-      partitionFields: Schema.optional(
-        Schema.Array(GoogleCloudDataplexV1SchemaPartitionField),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1Schema",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1Schema>;
+export const GoogleCloudDataplexV1Schema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userManaged: Schema.optional(Schema.Boolean),
+    fields: Schema.optional(
+      Schema.Array(GoogleCloudDataplexV1SchemaSchemaField),
+    ),
+    partitionStyle: Schema.optional(Schema.String),
+    partitionFields: Schema.optional(
+      Schema.Array(GoogleCloudDataplexV1SchemaPartitionField),
+    ),
+  }).annotate({ identifier: "GoogleCloudDataplexV1Schema" });
 
 export interface GoogleCloudDataplexV1StorageFormatCsvOptions {
   /** Optional. The character encoding of the data. Accepts "US-ASCII", "UTF-8", and "ISO-8859-1". Defaults to UTF-8 if unspecified. */
@@ -2858,45 +2509,35 @@ export interface GoogleCloudDataplexV1StorageFormatCsvOptions {
   delimiter?: string;
 }
 
-export const GoogleCloudDataplexV1StorageFormatCsvOptions: Schema.Schema<GoogleCloudDataplexV1StorageFormatCsvOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      encoding: Schema.optional(Schema.String),
-      headerRows: Schema.optional(Schema.Number),
-      quote: Schema.optional(Schema.String),
-      delimiter: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1StorageFormatCsvOptions",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1StorageFormatCsvOptions>;
+export const GoogleCloudDataplexV1StorageFormatCsvOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    encoding: Schema.optional(Schema.String),
+    headerRows: Schema.optional(Schema.Number),
+    quote: Schema.optional(Schema.String),
+    delimiter: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1StorageFormatCsvOptions" });
 
 export interface GoogleCloudDataplexV1StorageFormatJsonOptions {
   /** Optional. The character encoding of the data. Accepts "US-ASCII", "UTF-8" and "ISO-8859-1". Defaults to UTF-8 if not specified. */
   encoding?: string;
 }
 
-export const GoogleCloudDataplexV1StorageFormatJsonOptions: Schema.Schema<GoogleCloudDataplexV1StorageFormatJsonOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      encoding: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1StorageFormatJsonOptions",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1StorageFormatJsonOptions>;
+export const GoogleCloudDataplexV1StorageFormatJsonOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    encoding: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1StorageFormatJsonOptions" });
 
 export interface GoogleCloudDataplexV1StorageFormatIcebergOptions {
   /** Optional. The location of where the iceberg metadata is present, must be within the table path */
   metadataLocation?: string;
 }
 
-export const GoogleCloudDataplexV1StorageFormatIcebergOptions: Schema.Schema<GoogleCloudDataplexV1StorageFormatIcebergOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadataLocation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1StorageFormatIcebergOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    metadataLocation: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1StorageFormatIcebergOptions",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1StorageFormatIcebergOptions>;
+  });
 
 export interface GoogleCloudDataplexV1StorageFormat {
   /** Optional. The compression type associated with the stored data. If unspecified, the data is uncompressed. */
@@ -2931,21 +2572,15 @@ export interface GoogleCloudDataplexV1StorageFormat {
   iceberg?: GoogleCloudDataplexV1StorageFormatIcebergOptions;
 }
 
-export const GoogleCloudDataplexV1StorageFormat: Schema.Schema<GoogleCloudDataplexV1StorageFormat> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      compressionFormat: Schema.optional(Schema.String),
-      csv: Schema.optional(GoogleCloudDataplexV1StorageFormatCsvOptions),
-      json: Schema.optional(GoogleCloudDataplexV1StorageFormatJsonOptions),
-      format: Schema.optional(Schema.String),
-      mimeType: Schema.optional(Schema.String),
-      iceberg: Schema.optional(
-        GoogleCloudDataplexV1StorageFormatIcebergOptions,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1StorageFormat",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1StorageFormat>;
+export const GoogleCloudDataplexV1StorageFormat =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    compressionFormat: Schema.optional(Schema.String),
+    csv: Schema.optional(GoogleCloudDataplexV1StorageFormatCsvOptions),
+    json: Schema.optional(GoogleCloudDataplexV1StorageFormatJsonOptions),
+    format: Schema.optional(Schema.String),
+    mimeType: Schema.optional(Schema.String),
+    iceberg: Schema.optional(GoogleCloudDataplexV1StorageFormatIcebergOptions),
+  }).annotate({ identifier: "GoogleCloudDataplexV1StorageFormat" });
 
 export interface GoogleCloudDataplexV1Entity {
   /** Output only. The time when the entity was last updated. */
@@ -2990,33 +2625,29 @@ export interface GoogleCloudDataplexV1Entity {
     | (string & {});
 }
 
-export const GoogleCloudDataplexV1Entity: Schema.Schema<GoogleCloudDataplexV1Entity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateTime: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      catalogEntry: Schema.optional(Schema.String),
-      dataPath: Schema.optional(Schema.String),
-      access: Schema.optional(GoogleCloudDataplexV1StorageAccess),
-      displayName: Schema.optional(Schema.String),
-      compatibility: Schema.optional(
-        GoogleCloudDataplexV1EntityCompatibilityStatus,
-      ),
-      createTime: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      asset: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      schema: Schema.optional(GoogleCloudDataplexV1Schema),
-      uid: Schema.optional(Schema.String),
-      format: Schema.optional(GoogleCloudDataplexV1StorageFormat),
-      type: Schema.optional(Schema.String),
-      dataPathPattern: Schema.optional(Schema.String),
-      system: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1Entity",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1Entity>;
+export const GoogleCloudDataplexV1Entity =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateTime: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    catalogEntry: Schema.optional(Schema.String),
+    dataPath: Schema.optional(Schema.String),
+    access: Schema.optional(GoogleCloudDataplexV1StorageAccess),
+    displayName: Schema.optional(Schema.String),
+    compatibility: Schema.optional(
+      GoogleCloudDataplexV1EntityCompatibilityStatus,
+    ),
+    createTime: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    asset: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    schema: Schema.optional(GoogleCloudDataplexV1Schema),
+    uid: Schema.optional(Schema.String),
+    format: Schema.optional(GoogleCloudDataplexV1StorageFormat),
+    type: Schema.optional(Schema.String),
+    dataPathPattern: Schema.optional(Schema.String),
+    system: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1Entity" });
 
 export interface GoogleCloudDataplexV1ListEntitiesResponse {
   /** Entities in the specified parent zone. */
@@ -3025,15 +2656,11 @@ export interface GoogleCloudDataplexV1ListEntitiesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDataplexV1ListEntitiesResponse: Schema.Schema<GoogleCloudDataplexV1ListEntitiesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entities: Schema.optional(Schema.Array(GoogleCloudDataplexV1Entity)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1ListEntitiesResponse",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1ListEntitiesResponse>;
+export const GoogleCloudDataplexV1ListEntitiesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entities: Schema.optional(Schema.Array(GoogleCloudDataplexV1Entity)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1ListEntitiesResponse" });
 
 export interface GoogleCloudDataplexV1AssetResourceStatus {
   /** Output only. Service account associated with the BigQuery Connection. */
@@ -3046,17 +2673,13 @@ export interface GoogleCloudDataplexV1AssetResourceStatus {
   message?: string;
 }
 
-export const GoogleCloudDataplexV1AssetResourceStatus: Schema.Schema<GoogleCloudDataplexV1AssetResourceStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      managedAccessIdentity: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1AssetResourceStatus",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1AssetResourceStatus>;
+export const GoogleCloudDataplexV1AssetResourceStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    managedAccessIdentity: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1AssetResourceStatus" });
 
 export interface GoogleCloudDataplexV1AssetResourceSpec {
   /** Required. Immutable. Type of resource. */
@@ -3075,16 +2698,12 @@ export interface GoogleCloudDataplexV1AssetResourceSpec {
     | (string & {});
 }
 
-export const GoogleCloudDataplexV1AssetResourceSpec: Schema.Schema<GoogleCloudDataplexV1AssetResourceSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      readAccessMode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1AssetResourceSpec",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1AssetResourceSpec>;
+export const GoogleCloudDataplexV1AssetResourceSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    readAccessMode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1AssetResourceSpec" });
 
 export interface GoogleCloudDataplexV1AssetDiscoverySpecJsonOptions {
   /** Optional. Whether to disable the inference of data type for Json data. If true, all columns will be registered as their primitive types (strings, number or boolean). */
@@ -3093,15 +2712,13 @@ export interface GoogleCloudDataplexV1AssetDiscoverySpecJsonOptions {
   encoding?: string;
 }
 
-export const GoogleCloudDataplexV1AssetDiscoverySpecJsonOptions: Schema.Schema<GoogleCloudDataplexV1AssetDiscoverySpecJsonOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      disableTypeInference: Schema.optional(Schema.Boolean),
-      encoding: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1AssetDiscoverySpecJsonOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    disableTypeInference: Schema.optional(Schema.Boolean),
+    encoding: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1AssetDiscoverySpecJsonOptions",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1AssetDiscoverySpecJsonOptions>;
+  });
 
 export interface GoogleCloudDataplexV1AssetDiscoverySpecCsvOptions {
   /** Optional. The number of rows to interpret as header rows that should be skipped when reading data rows. */
@@ -3114,17 +2731,15 @@ export interface GoogleCloudDataplexV1AssetDiscoverySpecCsvOptions {
   delimiter?: string;
 }
 
-export const GoogleCloudDataplexV1AssetDiscoverySpecCsvOptions: Schema.Schema<GoogleCloudDataplexV1AssetDiscoverySpecCsvOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      headerRows: Schema.optional(Schema.Number),
-      encoding: Schema.optional(Schema.String),
-      disableTypeInference: Schema.optional(Schema.Boolean),
-      delimiter: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1AssetDiscoverySpecCsvOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    headerRows: Schema.optional(Schema.Number),
+    encoding: Schema.optional(Schema.String),
+    disableTypeInference: Schema.optional(Schema.Boolean),
+    delimiter: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1AssetDiscoverySpecCsvOptions",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1AssetDiscoverySpecCsvOptions>;
+  });
 
 export interface GoogleCloudDataplexV1AssetDiscoverySpec {
   /** Optional. Configuration for Json data. */
@@ -3141,23 +2756,19 @@ export interface GoogleCloudDataplexV1AssetDiscoverySpec {
   csvOptions?: GoogleCloudDataplexV1AssetDiscoverySpecCsvOptions;
 }
 
-export const GoogleCloudDataplexV1AssetDiscoverySpec: Schema.Schema<GoogleCloudDataplexV1AssetDiscoverySpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      jsonOptions: Schema.optional(
-        GoogleCloudDataplexV1AssetDiscoverySpecJsonOptions,
-      ),
-      schedule: Schema.optional(Schema.String),
-      includePatterns: Schema.optional(Schema.Array(Schema.String)),
-      enabled: Schema.optional(Schema.Boolean),
-      excludePatterns: Schema.optional(Schema.Array(Schema.String)),
-      csvOptions: Schema.optional(
-        GoogleCloudDataplexV1AssetDiscoverySpecCsvOptions,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1AssetDiscoverySpec",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1AssetDiscoverySpec>;
+export const GoogleCloudDataplexV1AssetDiscoverySpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    jsonOptions: Schema.optional(
+      GoogleCloudDataplexV1AssetDiscoverySpecJsonOptions,
+    ),
+    schedule: Schema.optional(Schema.String),
+    includePatterns: Schema.optional(Schema.Array(Schema.String)),
+    enabled: Schema.optional(Schema.Boolean),
+    excludePatterns: Schema.optional(Schema.Array(Schema.String)),
+    csvOptions: Schema.optional(
+      GoogleCloudDataplexV1AssetDiscoverySpecCsvOptions,
+    ),
+  }).annotate({ identifier: "GoogleCloudDataplexV1AssetDiscoverySpec" });
 
 export interface GoogleCloudDataplexV1AssetDiscoveryStatus {
   /** Data Stats of the asset reported by discovery. */
@@ -3180,19 +2791,15 @@ export interface GoogleCloudDataplexV1AssetDiscoveryStatus {
   lastRunDuration?: string;
 }
 
-export const GoogleCloudDataplexV1AssetDiscoveryStatus: Schema.Schema<GoogleCloudDataplexV1AssetDiscoveryStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stats: Schema.optional(GoogleCloudDataplexV1AssetDiscoveryStatusStats),
-      updateTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-      lastRunTime: Schema.optional(Schema.String),
-      lastRunDuration: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1AssetDiscoveryStatus",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1AssetDiscoveryStatus>;
+export const GoogleCloudDataplexV1AssetDiscoveryStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    stats: Schema.optional(GoogleCloudDataplexV1AssetDiscoveryStatusStats),
+    updateTime: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+    lastRunTime: Schema.optional(Schema.String),
+    lastRunDuration: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1AssetDiscoveryStatus" });
 
 export interface GoogleCloudDataplexV1Asset {
   /** Output only. The time when the asset was last updated. */
@@ -3229,28 +2836,22 @@ export interface GoogleCloudDataplexV1Asset {
     | (string & {});
 }
 
-export const GoogleCloudDataplexV1Asset: Schema.Schema<GoogleCloudDataplexV1Asset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateTime: Schema.optional(Schema.String),
-      resourceStatus: Schema.optional(GoogleCloudDataplexV1AssetResourceStatus),
-      createTime: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      resourceSpec: Schema.optional(GoogleCloudDataplexV1AssetResourceSpec),
-      securityStatus: Schema.optional(GoogleCloudDataplexV1AssetSecurityStatus),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      uid: Schema.optional(Schema.String),
-      discoverySpec: Schema.optional(GoogleCloudDataplexV1AssetDiscoverySpec),
-      discoveryStatus: Schema.optional(
-        GoogleCloudDataplexV1AssetDiscoveryStatus,
-      ),
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1Asset",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1Asset>;
+export const GoogleCloudDataplexV1Asset =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateTime: Schema.optional(Schema.String),
+    resourceStatus: Schema.optional(GoogleCloudDataplexV1AssetResourceStatus),
+    createTime: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    resourceSpec: Schema.optional(GoogleCloudDataplexV1AssetResourceSpec),
+    securityStatus: Schema.optional(GoogleCloudDataplexV1AssetSecurityStatus),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    uid: Schema.optional(Schema.String),
+    discoverySpec: Schema.optional(GoogleCloudDataplexV1AssetDiscoverySpec),
+    discoveryStatus: Schema.optional(GoogleCloudDataplexV1AssetDiscoveryStatus),
+    name: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1Asset" });
 
 export interface GoogleCloudDataplexV1ListAssetsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
@@ -3259,15 +2860,11 @@ export interface GoogleCloudDataplexV1ListAssetsResponse {
   assets?: Array<GoogleCloudDataplexV1Asset>;
 }
 
-export const GoogleCloudDataplexV1ListAssetsResponse: Schema.Schema<GoogleCloudDataplexV1ListAssetsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      assets: Schema.optional(Schema.Array(GoogleCloudDataplexV1Asset)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1ListAssetsResponse",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1ListAssetsResponse>;
+export const GoogleCloudDataplexV1ListAssetsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    assets: Schema.optional(Schema.Array(GoogleCloudDataplexV1Asset)),
+  }).annotate({ identifier: "GoogleCloudDataplexV1ListAssetsResponse" });
 
 export interface GoogleCloudDataplexV1EncryptionConfigFailureDetails {
   /** Output only. The error message will be shown to the user. Set only if the error code is REQUIRE_USER_ACTION. */
@@ -3280,15 +2877,13 @@ export interface GoogleCloudDataplexV1EncryptionConfigFailureDetails {
     | (string & {});
 }
 
-export const GoogleCloudDataplexV1EncryptionConfigFailureDetails: Schema.Schema<GoogleCloudDataplexV1EncryptionConfigFailureDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errorMessage: Schema.optional(Schema.String),
-      errorCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1EncryptionConfigFailureDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    errorMessage: Schema.optional(Schema.String),
+    errorCode: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1EncryptionConfigFailureDetails",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1EncryptionConfigFailureDetails>;
+  });
 
 export interface GoogleCloudDataplexV1EncryptionConfig {
   /** Output only. The time when the Encryption configuration was created. */
@@ -3314,39 +2909,33 @@ export interface GoogleCloudDataplexV1EncryptionConfig {
   failureDetails?: GoogleCloudDataplexV1EncryptionConfigFailureDetails;
 }
 
-export const GoogleCloudDataplexV1EncryptionConfig: Schema.Schema<GoogleCloudDataplexV1EncryptionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      key: Schema.optional(Schema.String),
-      encryptionState: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      enableMetastoreEncryption: Schema.optional(Schema.Boolean),
-      updateTime: Schema.optional(Schema.String),
-      failureDetails: Schema.optional(
-        GoogleCloudDataplexV1EncryptionConfigFailureDetails,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1EncryptionConfig",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1EncryptionConfig>;
+export const GoogleCloudDataplexV1EncryptionConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    key: Schema.optional(Schema.String),
+    encryptionState: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    enableMetastoreEncryption: Schema.optional(Schema.Boolean),
+    updateTime: Schema.optional(Schema.String),
+    failureDetails: Schema.optional(
+      GoogleCloudDataplexV1EncryptionConfigFailureDetails,
+    ),
+  }).annotate({ identifier: "GoogleCloudDataplexV1EncryptionConfig" });
 
 export interface GoogleCloudDataplexV1DataScanEventPostScanActionsResult {
   /** The result of BigQuery export post scan action. */
   bigqueryExportResult?: GoogleCloudDataplexV1DataScanEventPostScanActionsResultBigQueryExportResult;
 }
 
-export const GoogleCloudDataplexV1DataScanEventPostScanActionsResult: Schema.Schema<GoogleCloudDataplexV1DataScanEventPostScanActionsResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bigqueryExportResult: Schema.optional(
-        GoogleCloudDataplexV1DataScanEventPostScanActionsResultBigQueryExportResult,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataScanEventPostScanActionsResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bigqueryExportResult: Schema.optional(
+      GoogleCloudDataplexV1DataScanEventPostScanActionsResultBigQueryExportResult,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1DataScanEventPostScanActionsResult",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataScanEventPostScanActionsResult>;
+  });
 
 export interface GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork {
   /** Optional. The Cloud VPC network in which the job is run. By default, the Cloud VPC network named Default within the project is used. */
@@ -3357,16 +2946,14 @@ export interface GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork {
   networkTags?: Array<string>;
 }
 
-export const GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork: Schema.Schema<GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      network: Schema.optional(Schema.String),
-      subNetwork: Schema.optional(Schema.String),
-      networkTags: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    network: Schema.optional(Schema.String),
+    subNetwork: Schema.optional(Schema.String),
+    networkTags: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork>;
+  });
 
 export interface GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime {
   /** Optional. Container image to use. */
@@ -3379,18 +2966,16 @@ export interface GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntim
   properties?: Record<string, string>;
 }
 
-export const GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime: Schema.Schema<GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      image: Schema.optional(Schema.String),
-      javaJars: Schema.optional(Schema.Array(Schema.String)),
-      pythonPackages: Schema.optional(Schema.Array(Schema.String)),
-      properties: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    image: Schema.optional(Schema.String),
+    javaJars: Schema.optional(Schema.Array(Schema.String)),
+    pythonPackages: Schema.optional(Schema.Array(Schema.String)),
+    properties: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({
     identifier:
       "GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime>;
+  });
 
 export interface GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources {
   /** Optional. Total number of job executors. Executor Count should be between 2 and 100. Default=2 */
@@ -3399,16 +2984,14 @@ export interface GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResource
   maxExecutorsCount?: number;
 }
 
-export const GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources: Schema.Schema<GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      executorsCount: Schema.optional(Schema.Number),
-      maxExecutorsCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    executorsCount: Schema.optional(Schema.Number),
+    maxExecutorsCount: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources>;
+  });
 
 export interface GoogleCloudDataplexV1TaskInfrastructureSpec {
   /** Vpc network. */
@@ -3419,22 +3002,18 @@ export interface GoogleCloudDataplexV1TaskInfrastructureSpec {
   batch?: GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources;
 }
 
-export const GoogleCloudDataplexV1TaskInfrastructureSpec: Schema.Schema<GoogleCloudDataplexV1TaskInfrastructureSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      vpcNetwork: Schema.optional(
-        GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork,
-      ),
-      containerImage: Schema.optional(
-        GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime,
-      ),
-      batch: Schema.optional(
-        GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1TaskInfrastructureSpec",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1TaskInfrastructureSpec>;
+export const GoogleCloudDataplexV1TaskInfrastructureSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    vpcNetwork: Schema.optional(
+      GoogleCloudDataplexV1TaskInfrastructureSpecVpcNetwork,
+    ),
+    containerImage: Schema.optional(
+      GoogleCloudDataplexV1TaskInfrastructureSpecContainerImageRuntime,
+    ),
+    batch: Schema.optional(
+      GoogleCloudDataplexV1TaskInfrastructureSpecBatchComputeResources,
+    ),
+  }).annotate({ identifier: "GoogleCloudDataplexV1TaskInfrastructureSpec" });
 
 export interface GoogleCloudDataplexV1TaskNotebookTaskConfig {
   /** Optional. Infrastructure specification for the execution. */
@@ -3447,19 +3026,15 @@ export interface GoogleCloudDataplexV1TaskNotebookTaskConfig {
   fileUris?: Array<string>;
 }
 
-export const GoogleCloudDataplexV1TaskNotebookTaskConfig: Schema.Schema<GoogleCloudDataplexV1TaskNotebookTaskConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      infrastructureSpec: Schema.optional(
-        GoogleCloudDataplexV1TaskInfrastructureSpec,
-      ),
-      archiveUris: Schema.optional(Schema.Array(Schema.String)),
-      notebook: Schema.optional(Schema.String),
-      fileUris: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1TaskNotebookTaskConfig",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1TaskNotebookTaskConfig>;
+export const GoogleCloudDataplexV1TaskNotebookTaskConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    infrastructureSpec: Schema.optional(
+      GoogleCloudDataplexV1TaskInfrastructureSpec,
+    ),
+    archiveUris: Schema.optional(Schema.Array(Schema.String)),
+    notebook: Schema.optional(Schema.String),
+    fileUris: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudDataplexV1TaskNotebookTaskConfig" });
 
 export interface GoogleCloudDataplexV1TaskSparkTaskConfig {
   /** The Cloud Storage URI of the jar file that contains the main class. The execution args are passed in as a sequence of named process arguments (--key=value). */
@@ -3480,23 +3055,19 @@ export interface GoogleCloudDataplexV1TaskSparkTaskConfig {
   infrastructureSpec?: GoogleCloudDataplexV1TaskInfrastructureSpec;
 }
 
-export const GoogleCloudDataplexV1TaskSparkTaskConfig: Schema.Schema<GoogleCloudDataplexV1TaskSparkTaskConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mainJarFileUri: Schema.optional(Schema.String),
-      sqlScriptFile: Schema.optional(Schema.String),
-      mainClass: Schema.optional(Schema.String),
-      sqlScript: Schema.optional(Schema.String),
-      fileUris: Schema.optional(Schema.Array(Schema.String)),
-      pythonScriptFile: Schema.optional(Schema.String),
-      archiveUris: Schema.optional(Schema.Array(Schema.String)),
-      infrastructureSpec: Schema.optional(
-        GoogleCloudDataplexV1TaskInfrastructureSpec,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1TaskSparkTaskConfig",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1TaskSparkTaskConfig>;
+export const GoogleCloudDataplexV1TaskSparkTaskConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    mainJarFileUri: Schema.optional(Schema.String),
+    sqlScriptFile: Schema.optional(Schema.String),
+    mainClass: Schema.optional(Schema.String),
+    sqlScript: Schema.optional(Schema.String),
+    fileUris: Schema.optional(Schema.Array(Schema.String)),
+    pythonScriptFile: Schema.optional(Schema.String),
+    archiveUris: Schema.optional(Schema.Array(Schema.String)),
+    infrastructureSpec: Schema.optional(
+      GoogleCloudDataplexV1TaskInfrastructureSpec,
+    ),
+  }).annotate({ identifier: "GoogleCloudDataplexV1TaskSparkTaskConfig" });
 
 export interface GoogleCloudDataplexV1TaskExecutionSpec {
   /** Optional. The arguments to pass to the task. The args can use placeholders of the format ${placeholder} as part of key/value string. These will be interpolated before passing the args to the driver. Currently supported placeholders: - ${task_id} - ${job_time} To pass positional args, set the key as TASK_ARGS. The value should be a comma-separated string of all the positional arguments. To use a delimiter other than comma, refer to https://cloud.google.com/sdk/gcloud/reference/topic/escaping. In case of other keys being present in the args, then TASK_ARGS will be passed as the last argument. */
@@ -3511,18 +3082,14 @@ export interface GoogleCloudDataplexV1TaskExecutionSpec {
   kmsKey?: string;
 }
 
-export const GoogleCloudDataplexV1TaskExecutionSpec: Schema.Schema<GoogleCloudDataplexV1TaskExecutionSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      args: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      project: Schema.optional(Schema.String),
-      maxJobExecutionLifetime: Schema.optional(Schema.String),
-      serviceAccount: Schema.optional(Schema.String),
-      kmsKey: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1TaskExecutionSpec",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1TaskExecutionSpec>;
+export const GoogleCloudDataplexV1TaskExecutionSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    args: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    project: Schema.optional(Schema.String),
+    maxJobExecutionLifetime: Schema.optional(Schema.String),
+    serviceAccount: Schema.optional(Schema.String),
+    kmsKey: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1TaskExecutionSpec" });
 
 export interface GoogleCloudDataplexV1Job {
   /** Output only. Execution state for the job. */
@@ -3563,25 +3130,21 @@ export interface GoogleCloudDataplexV1Job {
   labels?: Record<string, string>;
 }
 
-export const GoogleCloudDataplexV1Job: Schema.Schema<GoogleCloudDataplexV1Job> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      retryCount: Schema.optional(Schema.Number),
-      service: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      trigger: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      uid: Schema.optional(Schema.String),
-      executionSpec: Schema.optional(GoogleCloudDataplexV1TaskExecutionSpec),
-      serviceJob: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1Job",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1Job>;
+export const GoogleCloudDataplexV1Job =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+    retryCount: Schema.optional(Schema.Number),
+    service: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    trigger: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    uid: Schema.optional(Schema.String),
+    executionSpec: Schema.optional(GoogleCloudDataplexV1TaskExecutionSpec),
+    serviceJob: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({ identifier: "GoogleCloudDataplexV1Job" });
 
 export interface GoogleCloudDataplexV1TaskExecutionStatus {
   /** Output only. Last update time of the status. */
@@ -3590,15 +3153,11 @@ export interface GoogleCloudDataplexV1TaskExecutionStatus {
   latestJob?: GoogleCloudDataplexV1Job;
 }
 
-export const GoogleCloudDataplexV1TaskExecutionStatus: Schema.Schema<GoogleCloudDataplexV1TaskExecutionStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateTime: Schema.optional(Schema.String),
-      latestJob: Schema.optional(GoogleCloudDataplexV1Job),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1TaskExecutionStatus",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1TaskExecutionStatus>;
+export const GoogleCloudDataplexV1TaskExecutionStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateTime: Schema.optional(Schema.String),
+    latestJob: Schema.optional(GoogleCloudDataplexV1Job),
+  }).annotate({ identifier: "GoogleCloudDataplexV1TaskExecutionStatus" });
 
 export interface GoogleCloudDataplexV1TaskTriggerSpec {
   /** Optional. The first run of the task will be after this time. If not specified, the task will run shortly after being submitted if ON_DEMAND and based on the schedule if RECURRING. */
@@ -3613,18 +3172,14 @@ export interface GoogleCloudDataplexV1TaskTriggerSpec {
   schedule?: string;
 }
 
-export const GoogleCloudDataplexV1TaskTriggerSpec: Schema.Schema<GoogleCloudDataplexV1TaskTriggerSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Schema.String),
-      maxRetries: Schema.optional(Schema.Number),
-      type: Schema.optional(Schema.String),
-      disabled: Schema.optional(Schema.Boolean),
-      schedule: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1TaskTriggerSpec",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1TaskTriggerSpec>;
+export const GoogleCloudDataplexV1TaskTriggerSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startTime: Schema.optional(Schema.String),
+    maxRetries: Schema.optional(Schema.Number),
+    type: Schema.optional(Schema.String),
+    disabled: Schema.optional(Schema.Boolean),
+    schedule: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1TaskTriggerSpec" });
 
 export interface GoogleCloudDataplexV1Task {
   /** Output only. The time when the task was last updated. */
@@ -3661,28 +3216,22 @@ export interface GoogleCloudDataplexV1Task {
   triggerSpec?: GoogleCloudDataplexV1TaskTriggerSpec;
 }
 
-export const GoogleCloudDataplexV1Task: Schema.Schema<GoogleCloudDataplexV1Task> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      notebook: Schema.optional(GoogleCloudDataplexV1TaskNotebookTaskConfig),
-      description: Schema.optional(Schema.String),
-      spark: Schema.optional(GoogleCloudDataplexV1TaskSparkTaskConfig),
-      executionStatus: Schema.optional(
-        GoogleCloudDataplexV1TaskExecutionStatus,
-      ),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      uid: Schema.optional(Schema.String),
-      executionSpec: Schema.optional(GoogleCloudDataplexV1TaskExecutionSpec),
-      name: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      triggerSpec: Schema.optional(GoogleCloudDataplexV1TaskTriggerSpec),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1Task",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1Task>;
+export const GoogleCloudDataplexV1Task =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateTime: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    notebook: Schema.optional(GoogleCloudDataplexV1TaskNotebookTaskConfig),
+    description: Schema.optional(Schema.String),
+    spark: Schema.optional(GoogleCloudDataplexV1TaskSparkTaskConfig),
+    executionStatus: Schema.optional(GoogleCloudDataplexV1TaskExecutionStatus),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    uid: Schema.optional(Schema.String),
+    executionSpec: Schema.optional(GoogleCloudDataplexV1TaskExecutionSpec),
+    name: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    triggerSpec: Schema.optional(GoogleCloudDataplexV1TaskTriggerSpec),
+  }).annotate({ identifier: "GoogleCloudDataplexV1Task" });
 
 export interface GoogleCloudDataplexV1ListTasksResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
@@ -3693,16 +3242,12 @@ export interface GoogleCloudDataplexV1ListTasksResponse {
   tasks?: Array<GoogleCloudDataplexV1Task>;
 }
 
-export const GoogleCloudDataplexV1ListTasksResponse: Schema.Schema<GoogleCloudDataplexV1ListTasksResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      unreachableLocations: Schema.optional(Schema.Array(Schema.String)),
-      tasks: Schema.optional(Schema.Array(GoogleCloudDataplexV1Task)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1ListTasksResponse",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1ListTasksResponse>;
+export const GoogleCloudDataplexV1ListTasksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    unreachableLocations: Schema.optional(Schema.Array(Schema.String)),
+    tasks: Schema.optional(Schema.Array(GoogleCloudDataplexV1Task)),
+  }).annotate({ identifier: "GoogleCloudDataplexV1ListTasksResponse" });
 
 export interface GoogleCloudDataplexV1SearchEntriesResponse {
   /** The results matching the search query. */
@@ -3715,19 +3260,15 @@ export interface GoogleCloudDataplexV1SearchEntriesResponse {
   unreachable?: Array<string>;
 }
 
-export const GoogleCloudDataplexV1SearchEntriesResponse: Schema.Schema<GoogleCloudDataplexV1SearchEntriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      results: Schema.optional(
-        Schema.Array(GoogleCloudDataplexV1SearchEntriesResult),
-      ),
-      totalSize: Schema.optional(Schema.Number),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1SearchEntriesResponse",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1SearchEntriesResponse>;
+export const GoogleCloudDataplexV1SearchEntriesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    results: Schema.optional(
+      Schema.Array(GoogleCloudDataplexV1SearchEntriesResult),
+    ),
+    totalSize: Schema.optional(Schema.Number),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudDataplexV1SearchEntriesResponse" });
 
 export interface GoogleCloudDataplexV1SessionEventQueryDetail {
   /** The query text executed. */
@@ -3744,19 +3285,15 @@ export interface GoogleCloudDataplexV1SessionEventQueryDetail {
   engine?: "ENGINE_UNSPECIFIED" | "SPARK_SQL" | "BIGQUERY" | (string & {});
 }
 
-export const GoogleCloudDataplexV1SessionEventQueryDetail: Schema.Schema<GoogleCloudDataplexV1SessionEventQueryDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      queryText: Schema.optional(Schema.String),
-      resultSizeBytes: Schema.optional(Schema.String),
-      dataProcessedBytes: Schema.optional(Schema.String),
-      duration: Schema.optional(Schema.String),
-      queryId: Schema.optional(Schema.String),
-      engine: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1SessionEventQueryDetail",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1SessionEventQueryDetail>;
+export const GoogleCloudDataplexV1SessionEventQueryDetail =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    queryText: Schema.optional(Schema.String),
+    resultSizeBytes: Schema.optional(Schema.String),
+    dataProcessedBytes: Schema.optional(Schema.String),
+    duration: Schema.optional(Schema.String),
+    queryId: Schema.optional(Schema.String),
+    engine: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1SessionEventQueryDetail" });
 
 export interface GoogleCloudDataplexV1SessionEvent {
   /** The idle duration of a warm pooled session before it is assigned to user. */
@@ -3783,28 +3320,24 @@ export interface GoogleCloudDataplexV1SessionEvent {
     | (string & {});
 }
 
-export const GoogleCloudDataplexV1SessionEvent: Schema.Schema<GoogleCloudDataplexV1SessionEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unassignedDuration: Schema.optional(Schema.String),
-      sessionId: Schema.optional(Schema.String),
-      fastStartupEnabled: Schema.optional(Schema.Boolean),
-      message: Schema.optional(Schema.String),
-      userId: Schema.optional(Schema.String),
-      query: Schema.optional(GoogleCloudDataplexV1SessionEventQueryDetail),
-      eventSucceeded: Schema.optional(Schema.Boolean),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1SessionEvent",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1SessionEvent>;
+export const GoogleCloudDataplexV1SessionEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unassignedDuration: Schema.optional(Schema.String),
+    sessionId: Schema.optional(Schema.String),
+    fastStartupEnabled: Schema.optional(Schema.Boolean),
+    message: Schema.optional(Schema.String),
+    userId: Schema.optional(Schema.String),
+    query: Schema.optional(GoogleCloudDataplexV1SessionEventQueryDetail),
+    eventSucceeded: Schema.optional(Schema.Boolean),
+    type: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1SessionEvent" });
 
 export interface GoogleCloudDataplexV1ActionMissingData {}
 
-export const GoogleCloudDataplexV1ActionMissingData: Schema.Schema<GoogleCloudDataplexV1ActionMissingData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDataplexV1ActionMissingData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDataplexV1ActionMissingData",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1ActionMissingData>;
+  });
 
 export interface GoogleCloudDataplexV1DataQualityScanRuleResult {
   /** The number of rows evaluated against the data quality rule. This field is only valid for rules of PER_ROW evaluation type. */
@@ -3851,40 +3384,36 @@ export interface GoogleCloudDataplexV1DataQualityScanRuleResult {
   dataSource?: string;
 }
 
-export const GoogleCloudDataplexV1DataQualityScanRuleResult: Schema.Schema<GoogleCloudDataplexV1DataQualityScanRuleResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      evaluatedRowCount: Schema.optional(Schema.String),
-      nullRowCount: Schema.optional(Schema.String),
-      jobId: Schema.optional(Schema.String),
-      ruleName: Schema.optional(Schema.String),
-      ruleType: Schema.optional(Schema.String),
-      passedRowCount: Schema.optional(Schema.String),
-      result: Schema.optional(Schema.String),
-      column: Schema.optional(Schema.String),
-      ruleDimension: Schema.optional(Schema.String),
-      assertionRowCount: Schema.optional(Schema.String),
-      evalutionType: Schema.optional(Schema.String),
-      thresholdPercent: Schema.optional(Schema.Number),
-      dataSource: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1DataQualityScanRuleResult",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataQualityScanRuleResult>;
+export const GoogleCloudDataplexV1DataQualityScanRuleResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    evaluatedRowCount: Schema.optional(Schema.String),
+    nullRowCount: Schema.optional(Schema.String),
+    jobId: Schema.optional(Schema.String),
+    ruleName: Schema.optional(Schema.String),
+    ruleType: Schema.optional(Schema.String),
+    passedRowCount: Schema.optional(Schema.String),
+    result: Schema.optional(Schema.String),
+    column: Schema.optional(Schema.String),
+    ruleDimension: Schema.optional(Schema.String),
+    assertionRowCount: Schema.optional(Schema.String),
+    evalutionType: Schema.optional(Schema.String),
+    thresholdPercent: Schema.optional(Schema.Number),
+    dataSource: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1DataQualityScanRuleResult" });
 
 export interface GoogleCloudDataplexV1ActionUnauthorizedResource {}
 
-export const GoogleCloudDataplexV1ActionUnauthorizedResource: Schema.Schema<GoogleCloudDataplexV1ActionUnauthorizedResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDataplexV1ActionUnauthorizedResource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDataplexV1ActionUnauthorizedResource",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1ActionUnauthorizedResource>;
+  });
 
 export interface GoogleCloudDataplexV1CancelDataScanJobRequest {}
 
-export const GoogleCloudDataplexV1CancelDataScanJobRequest: Schema.Schema<GoogleCloudDataplexV1CancelDataScanJobRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDataplexV1CancelDataScanJobRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDataplexV1CancelDataScanJobRequest",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1CancelDataScanJobRequest>;
+  });
 
 export interface GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations {
   /** Optional. Marks a field as deprecated. You can include a deprecation message. */
@@ -3901,19 +3430,17 @@ export interface GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations {
   description?: string;
 }
 
-export const GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations: Schema.Schema<GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deprecated: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      stringType: Schema.optional(Schema.String),
-      displayOrder: Schema.optional(Schema.Number),
-      stringValues: Schema.optional(Schema.Array(Schema.String)),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deprecated: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    stringType: Schema.optional(Schema.String),
+    displayOrder: Schema.optional(Schema.Number),
+    stringValues: Schema.optional(Schema.Array(Schema.String)),
+    description: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1AspectTypeMetadataTemplateAnnotations>;
+  });
 
 export interface GoogleCloudDataplexV1AspectTypeMetadataTemplate {
   /** Required. The name of the field. */
@@ -3976,14 +3503,10 @@ export interface GoogleCloudDataplexV1AspectTypeAuthorization {
   alternateUsePermission?: string;
 }
 
-export const GoogleCloudDataplexV1AspectTypeAuthorization: Schema.Schema<GoogleCloudDataplexV1AspectTypeAuthorization> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      alternateUsePermission: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1AspectTypeAuthorization",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1AspectTypeAuthorization>;
+export const GoogleCloudDataplexV1AspectTypeAuthorization =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    alternateUsePermission: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1AspectTypeAuthorization" });
 
 export interface GoogleCloudDataplexV1AspectType {
   /** Output only. The time when the AspectType was created. */
@@ -4019,29 +3542,25 @@ export interface GoogleCloudDataplexV1AspectType {
   name?: string;
 }
 
-export const GoogleCloudDataplexV1AspectType: Schema.Schema<GoogleCloudDataplexV1AspectType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      metadataTemplate: Schema.optional(
-        GoogleCloudDataplexV1AspectTypeMetadataTemplate,
-      ),
-      displayName: Schema.optional(Schema.String),
-      dataClassification: Schema.optional(Schema.String),
-      transferStatus: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      uid: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      authorization: Schema.optional(
-        GoogleCloudDataplexV1AspectTypeAuthorization,
-      ),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1AspectType",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1AspectType>;
+export const GoogleCloudDataplexV1AspectType =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    metadataTemplate: Schema.optional(
+      GoogleCloudDataplexV1AspectTypeMetadataTemplate,
+    ),
+    displayName: Schema.optional(Schema.String),
+    dataClassification: Schema.optional(Schema.String),
+    transferStatus: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    uid: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    authorization: Schema.optional(
+      GoogleCloudDataplexV1AspectTypeAuthorization,
+    ),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1AspectType" });
 
 export interface GoogleRpcStatus {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
@@ -4052,18 +3571,13 @@ export interface GoogleRpcStatus {
   message?: string;
 }
 
-export const GoogleRpcStatus: Schema.Schema<GoogleRpcStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleRpcStatus",
-  }) as any as Schema.Schema<GoogleRpcStatus>;
+export const GoogleRpcStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+}).annotate({ identifier: "GoogleRpcStatus" });
 
 export interface GoogleLongrunningOperation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as Delete, the response is google.protobuf.Empty. If the original method is standard Get/Create/Update, the response should be the resource. For other methods, the response should have the type XxxResponse, where Xxx is the original method name. For example, if the original method name is TakeSnapshot(), the inferred response type is TakeSnapshotResponse. */
@@ -4078,18 +3592,14 @@ export interface GoogleLongrunningOperation {
   metadata?: Record<string, unknown>;
 }
 
-export const GoogleLongrunningOperation: Schema.Schema<GoogleLongrunningOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      name: Schema.optional(Schema.String),
-      done: Schema.optional(Schema.Boolean),
-      error: Schema.optional(GoogleRpcStatus),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
-    identifier: "GoogleLongrunningOperation",
-  }) as any as Schema.Schema<GoogleLongrunningOperation>;
+export const GoogleLongrunningOperation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    name: Schema.optional(Schema.String),
+    done: Schema.optional(Schema.Boolean),
+    error: Schema.optional(GoogleRpcStatus),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "GoogleLongrunningOperation" });
 
 export interface GoogleIamV1AuditLogConfig {
   /** The log type that this config enables. */
@@ -4103,15 +3613,11 @@ export interface GoogleIamV1AuditLogConfig {
   exemptedMembers?: Array<string>;
 }
 
-export const GoogleIamV1AuditLogConfig: Schema.Schema<GoogleIamV1AuditLogConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      logType: Schema.optional(Schema.String),
-      exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1AuditLogConfig",
-  }) as any as Schema.Schema<GoogleIamV1AuditLogConfig>;
+export const GoogleIamV1AuditLogConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    logType: Schema.optional(Schema.String),
+    exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleIamV1AuditLogConfig" });
 
 export interface GoogleIamV1AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, storage.googleapis.com, cloudsql.googleapis.com. allServices is a special value that covers all services. */
@@ -4120,15 +3626,12 @@ export interface GoogleIamV1AuditConfig {
   auditLogConfigs?: Array<GoogleIamV1AuditLogConfig>;
 }
 
-export const GoogleIamV1AuditConfig: Schema.Schema<GoogleIamV1AuditConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      service: Schema.optional(Schema.String),
-      auditLogConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditLogConfig)),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1AuditConfig",
-  }) as any as Schema.Schema<GoogleIamV1AuditConfig>;
+export const GoogleIamV1AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    service: Schema.optional(Schema.String),
+    auditLogConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditLogConfig)),
+  },
+).annotate({ identifier: "GoogleIamV1AuditConfig" });
 
 export interface GoogleTypeExpr {
   /** Textual representation of an expression in Common Expression Language syntax. */
@@ -4141,17 +3644,12 @@ export interface GoogleTypeExpr {
   location?: string;
 }
 
-export const GoogleTypeExpr: Schema.Schema<GoogleTypeExpr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expression: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleTypeExpr",
-  }) as any as Schema.Schema<GoogleTypeExpr>;
+export const GoogleTypeExpr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  expression: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+}).annotate({ identifier: "GoogleTypeExpr" });
 
 export interface GoogleIamV1Binding {
   /** The condition that is associated with this binding.If the condition evaluates to true, then this binding applies to the current request.If the condition evaluates to false, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding.To learn which resources support conditions in their IAM policies, see the IAM documentation (https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -4162,16 +3660,11 @@ export interface GoogleIamV1Binding {
   members?: Array<string>;
 }
 
-export const GoogleIamV1Binding: Schema.Schema<GoogleIamV1Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      condition: Schema.optional(GoogleTypeExpr),
-      role: Schema.optional(Schema.String),
-      members: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1Binding",
-  }) as any as Schema.Schema<GoogleIamV1Binding>;
+export const GoogleIamV1Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  condition: Schema.optional(GoogleTypeExpr),
+  role: Schema.optional(Schema.String),
+  members: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "GoogleIamV1Binding" });
 
 export interface GoogleIamV1Policy {
   /** Specifies cloud audit logging configuration for this policy. */
@@ -4184,31 +3677,24 @@ export interface GoogleIamV1Policy {
   etag?: string;
 }
 
-export const GoogleIamV1Policy: Schema.Schema<GoogleIamV1Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      auditConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditConfig)),
-      version: Schema.optional(Schema.Number),
-      bindings: Schema.optional(Schema.Array(GoogleIamV1Binding)),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1Policy",
-  }) as any as Schema.Schema<GoogleIamV1Policy>;
+export const GoogleIamV1Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  auditConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditConfig)),
+  version: Schema.optional(Schema.Number),
+  bindings: Schema.optional(Schema.Array(GoogleIamV1Binding)),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "GoogleIamV1Policy" });
 
 export interface GoogleCloudDataplexV1GenerateDataQualityRulesResponse {
   /** The data quality rules that Dataplex Universal Catalog generates based on the results of a data profiling scan. */
   rule?: Array<GoogleCloudDataplexV1DataQualityRule>;
 }
 
-export const GoogleCloudDataplexV1GenerateDataQualityRulesResponse: Schema.Schema<GoogleCloudDataplexV1GenerateDataQualityRulesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rule: Schema.optional(Schema.Array(GoogleCloudDataplexV1DataQualityRule)),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1GenerateDataQualityRulesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rule: Schema.optional(Schema.Array(GoogleCloudDataplexV1DataQualityRule)),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1GenerateDataQualityRulesResponse",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1GenerateDataQualityRulesResponse>;
+  });
 
 export interface GoogleCloudDataplexV1ListEncryptionConfigsResponse {
   /** The list of EncryptionConfigs under the given parent location. */
@@ -4219,32 +3705,26 @@ export interface GoogleCloudDataplexV1ListEncryptionConfigsResponse {
   unreachableLocations?: Array<string>;
 }
 
-export const GoogleCloudDataplexV1ListEncryptionConfigsResponse: Schema.Schema<GoogleCloudDataplexV1ListEncryptionConfigsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      encryptionConfigs: Schema.optional(
-        Schema.Array(GoogleCloudDataplexV1EncryptionConfig),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachableLocations: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1ListEncryptionConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    encryptionConfigs: Schema.optional(
+      Schema.Array(GoogleCloudDataplexV1EncryptionConfig),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachableLocations: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1ListEncryptionConfigsResponse",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1ListEncryptionConfigsResponse>;
+  });
 
 export interface GoogleCloudDataplexV1EntryTypeAspectInfo {
   /** Required aspect type for the entry type. */
   type?: string;
 }
 
-export const GoogleCloudDataplexV1EntryTypeAspectInfo: Schema.Schema<GoogleCloudDataplexV1EntryTypeAspectInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1EntryTypeAspectInfo",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1EntryTypeAspectInfo>;
+export const GoogleCloudDataplexV1EntryTypeAspectInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1EntryTypeAspectInfo" });
 
 export interface GoogleCloudDataplexV1DiscoveryEventPartitionDetails {
   /** The name to the containing entity resource. The name is the fully-qualified resource name. */
@@ -4257,17 +3737,15 @@ export interface GoogleCloudDataplexV1DiscoveryEventPartitionDetails {
   sampledDataLocations?: Array<string>;
 }
 
-export const GoogleCloudDataplexV1DiscoveryEventPartitionDetails: Schema.Schema<GoogleCloudDataplexV1DiscoveryEventPartitionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entity: Schema.optional(Schema.String),
-      partition: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      sampledDataLocations: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DiscoveryEventPartitionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entity: Schema.optional(Schema.String),
+    partition: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    sampledDataLocations: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1DiscoveryEventPartitionDetails",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DiscoveryEventPartitionDetails>;
+  });
 
 export interface GoogleCloudDataplexV1DiscoveryEventTableDetails {
   /** The fully-qualified resource name of the table resource. */
@@ -4281,29 +3759,25 @@ export interface GoogleCloudDataplexV1DiscoveryEventTableDetails {
     | (string & {});
 }
 
-export const GoogleCloudDataplexV1DiscoveryEventTableDetails: Schema.Schema<GoogleCloudDataplexV1DiscoveryEventTableDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      table: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DiscoveryEventTableDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    table: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1DiscoveryEventTableDetails",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DiscoveryEventTableDetails>;
+  });
 
 export interface GoogleCloudDataplexV1DiscoveryEventConfigDetails {
   /** A list of discovery configuration parameters in effect. The keys are the field paths within DiscoverySpec. Eg. includePatterns, excludePatterns, csvOptions.disableTypeInference, etc. */
   parameters?: Record<string, string>;
 }
 
-export const GoogleCloudDataplexV1DiscoveryEventConfigDetails: Schema.Schema<GoogleCloudDataplexV1DiscoveryEventConfigDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DiscoveryEventConfigDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parameters: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1DiscoveryEventConfigDetails",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DiscoveryEventConfigDetails>;
+  });
 
 export interface GoogleCloudDataplexV1DiscoveryEventActionDetails {
   /** The human readable issue associated with the action. */
@@ -4312,15 +3786,13 @@ export interface GoogleCloudDataplexV1DiscoveryEventActionDetails {
   type?: string;
 }
 
-export const GoogleCloudDataplexV1DiscoveryEventActionDetails: Schema.Schema<GoogleCloudDataplexV1DiscoveryEventActionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      issue: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DiscoveryEventActionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    issue: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1DiscoveryEventActionDetails",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DiscoveryEventActionDetails>;
+  });
 
 export interface GoogleCloudDataplexV1DiscoveryEventEntityDetails {
   /** The name of the entity resource. The name is the fully-qualified resource name. */
@@ -4329,15 +3801,13 @@ export interface GoogleCloudDataplexV1DiscoveryEventEntityDetails {
   type?: "ENTITY_TYPE_UNSPECIFIED" | "TABLE" | "FILESET" | (string & {});
 }
 
-export const GoogleCloudDataplexV1DiscoveryEventEntityDetails: Schema.Schema<GoogleCloudDataplexV1DiscoveryEventEntityDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entity: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DiscoveryEventEntityDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entity: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1DiscoveryEventEntityDetails",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DiscoveryEventEntityDetails>;
+  });
 
 export interface GoogleCloudDataplexV1DiscoveryEvent {
   /** The id of the associated asset. */
@@ -4379,27 +3849,23 @@ export interface GoogleCloudDataplexV1DiscoveryEvent {
   entity?: GoogleCloudDataplexV1DiscoveryEventEntityDetails;
 }
 
-export const GoogleCloudDataplexV1DiscoveryEvent: Schema.Schema<GoogleCloudDataplexV1DiscoveryEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      assetId: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-      zoneId: Schema.optional(Schema.String),
-      table: Schema.optional(GoogleCloudDataplexV1DiscoveryEventTableDetails),
-      config: Schema.optional(GoogleCloudDataplexV1DiscoveryEventConfigDetails),
-      action: Schema.optional(GoogleCloudDataplexV1DiscoveryEventActionDetails),
-      lakeId: Schema.optional(Schema.String),
-      dataLocation: Schema.optional(Schema.String),
-      datascanId: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      partition: Schema.optional(
-        GoogleCloudDataplexV1DiscoveryEventPartitionDetails,
-      ),
-      entity: Schema.optional(GoogleCloudDataplexV1DiscoveryEventEntityDetails),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1DiscoveryEvent",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DiscoveryEvent>;
+export const GoogleCloudDataplexV1DiscoveryEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    assetId: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+    zoneId: Schema.optional(Schema.String),
+    table: Schema.optional(GoogleCloudDataplexV1DiscoveryEventTableDetails),
+    config: Schema.optional(GoogleCloudDataplexV1DiscoveryEventConfigDetails),
+    action: Schema.optional(GoogleCloudDataplexV1DiscoveryEventActionDetails),
+    lakeId: Schema.optional(Schema.String),
+    dataLocation: Schema.optional(Schema.String),
+    datascanId: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    partition: Schema.optional(
+      GoogleCloudDataplexV1DiscoveryEventPartitionDetails,
+    ),
+    entity: Schema.optional(GoogleCloudDataplexV1DiscoveryEventEntityDetails),
+  }).annotate({ identifier: "GoogleCloudDataplexV1DiscoveryEvent" });
 
 export interface GoogleCloudDataplexV1GovernanceEventEntity {
   /** The Entity resource the log event is associated with. Format: projects/{project_number}/locations/{location_id}/lakes/{lake_id}/zones/{zone_id}/entities/{entity_id} */
@@ -4408,15 +3874,11 @@ export interface GoogleCloudDataplexV1GovernanceEventEntity {
   entityType?: "ENTITY_TYPE_UNSPECIFIED" | "TABLE" | "FILESET" | (string & {});
 }
 
-export const GoogleCloudDataplexV1GovernanceEventEntity: Schema.Schema<GoogleCloudDataplexV1GovernanceEventEntity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entity: Schema.optional(Schema.String),
-      entityType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1GovernanceEventEntity",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1GovernanceEventEntity>;
+export const GoogleCloudDataplexV1GovernanceEventEntity =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entity: Schema.optional(Schema.String),
+    entityType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1GovernanceEventEntity" });
 
 export interface GoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope {
   /** Optional. The glossaries that are in scope for the import job, specified as relative resource names in the format projects/{project_number_or_id}/locations/{location_id}/glossaries/{glossary_id}.While importing Business Glossary entries, the user must provide glossaries. While importing entries, the user does not have to provide glossaries. If the metadata import file attempts to modify Business Glossary entries whose glossary isn't included in this list, the import job will skip those entries.The location of a glossary must either match the location of the job, or the glossary must be global. */
@@ -4433,19 +3895,17 @@ export interface GoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope {
   aspectTypes?: Array<string>;
 }
 
-export const GoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope: Schema.Schema<GoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      glossaries: Schema.optional(Schema.Array(Schema.String)),
-      entryGroups: Schema.optional(Schema.Array(Schema.String)),
-      entryLinkTypes: Schema.optional(Schema.Array(Schema.String)),
-      referencedEntryScopes: Schema.optional(Schema.Array(Schema.String)),
-      entryTypes: Schema.optional(Schema.Array(Schema.String)),
-      aspectTypes: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    glossaries: Schema.optional(Schema.Array(Schema.String)),
+    entryGroups: Schema.optional(Schema.Array(Schema.String)),
+    entryLinkTypes: Schema.optional(Schema.Array(Schema.String)),
+    referencedEntryScopes: Schema.optional(Schema.Array(Schema.String)),
+    entryTypes: Schema.optional(Schema.Array(Schema.String)),
+    aspectTypes: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope>;
+  });
 
 export interface GoogleCloudDataplexV1MetadataJobImportJobSpec {
   /** Required. The sync mode for aspects. */
@@ -4472,21 +3932,17 @@ export interface GoogleCloudDataplexV1MetadataJobImportJobSpec {
   sourceCreateTime?: string;
 }
 
-export const GoogleCloudDataplexV1MetadataJobImportJobSpec: Schema.Schema<GoogleCloudDataplexV1MetadataJobImportJobSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      aspectSyncMode: Schema.optional(Schema.String),
-      sourceStorageUri: Schema.optional(Schema.String),
-      logLevel: Schema.optional(Schema.String),
-      entrySyncMode: Schema.optional(Schema.String),
-      scope: Schema.optional(
-        GoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope,
-      ),
-      sourceCreateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1MetadataJobImportJobSpec",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1MetadataJobImportJobSpec>;
+export const GoogleCloudDataplexV1MetadataJobImportJobSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    aspectSyncMode: Schema.optional(Schema.String),
+    sourceStorageUri: Schema.optional(Schema.String),
+    logLevel: Schema.optional(Schema.String),
+    entrySyncMode: Schema.optional(Schema.String),
+    scope: Schema.optional(
+      GoogleCloudDataplexV1MetadataJobImportJobSpecImportJobScope,
+    ),
+    sourceCreateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1MetadataJobImportJobSpec" });
 
 export interface GoogleCloudDataplexV1ListGlossaryTermsResponse {
   /** A token, which can be sent as page_token to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -4497,16 +3953,12 @@ export interface GoogleCloudDataplexV1ListGlossaryTermsResponse {
   terms?: Array<GoogleCloudDataplexV1GlossaryTerm>;
 }
 
-export const GoogleCloudDataplexV1ListGlossaryTermsResponse: Schema.Schema<GoogleCloudDataplexV1ListGlossaryTermsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      unreachableLocations: Schema.optional(Schema.Array(Schema.String)),
-      terms: Schema.optional(Schema.Array(GoogleCloudDataplexV1GlossaryTerm)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1ListGlossaryTermsResponse",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1ListGlossaryTermsResponse>;
+export const GoogleCloudDataplexV1ListGlossaryTermsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    unreachableLocations: Schema.optional(Schema.Array(Schema.String)),
+    terms: Schema.optional(Schema.Array(GoogleCloudDataplexV1GlossaryTerm)),
+  }).annotate({ identifier: "GoogleCloudDataplexV1ListGlossaryTermsResponse" });
 
 export interface GoogleIamV1SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the resource. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
@@ -4515,15 +3967,11 @@ export interface GoogleIamV1SetIamPolicyRequest {
   updateMask?: string;
 }
 
-export const GoogleIamV1SetIamPolicyRequest: Schema.Schema<GoogleIamV1SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policy: Schema.optional(GoogleIamV1Policy),
-      updateMask: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1SetIamPolicyRequest",
-  }) as any as Schema.Schema<GoogleIamV1SetIamPolicyRequest>;
+export const GoogleIamV1SetIamPolicyRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policy: Schema.optional(GoogleIamV1Policy),
+    updateMask: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleIamV1SetIamPolicyRequest" });
 
 export interface GoogleCloudDataplexV1ActionInvalidDataPartition {
   /** The issue type of InvalidDataPartition. */
@@ -4534,14 +3982,12 @@ export interface GoogleCloudDataplexV1ActionInvalidDataPartition {
     | (string & {});
 }
 
-export const GoogleCloudDataplexV1ActionInvalidDataPartition: Schema.Schema<GoogleCloudDataplexV1ActionInvalidDataPartition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expectedStructure: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1ActionInvalidDataPartition =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    expectedStructure: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1ActionInvalidDataPartition",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1ActionInvalidDataPartition>;
+  });
 
 export interface GoogleCloudDataplexV1ActionIncompatibleDataSchema {
   /** The new and incompatible schema within the table. The schema is provided as a JSON formatted structured listing columns and data types. */
@@ -4560,25 +4006,23 @@ export interface GoogleCloudDataplexV1ActionIncompatibleDataSchema {
   sampledDataLocations?: Array<string>;
 }
 
-export const GoogleCloudDataplexV1ActionIncompatibleDataSchema: Schema.Schema<GoogleCloudDataplexV1ActionIncompatibleDataSchema> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      newSchema: Schema.optional(Schema.String),
-      table: Schema.optional(Schema.String),
-      schemaChange: Schema.optional(Schema.String),
-      existingSchema: Schema.optional(Schema.String),
-      sampledDataLocations: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1ActionIncompatibleDataSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    newSchema: Schema.optional(Schema.String),
+    table: Schema.optional(Schema.String),
+    schemaChange: Schema.optional(Schema.String),
+    existingSchema: Schema.optional(Schema.String),
+    sampledDataLocations: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1ActionIncompatibleDataSchema",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1ActionIncompatibleDataSchema>;
+  });
 
 export interface GoogleCloudDataplexV1ActionMissingResource {}
 
-export const GoogleCloudDataplexV1ActionMissingResource: Schema.Schema<GoogleCloudDataplexV1ActionMissingResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDataplexV1ActionMissingResource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDataplexV1ActionMissingResource",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1ActionMissingResource>;
+  });
 
 export interface GoogleCloudDataplexV1ActionInvalidDataFormat {
   /** The list of data locations sampled and used for format/schema inference. */
@@ -4589,37 +4033,31 @@ export interface GoogleCloudDataplexV1ActionInvalidDataFormat {
   newFormat?: string;
 }
 
-export const GoogleCloudDataplexV1ActionInvalidDataFormat: Schema.Schema<GoogleCloudDataplexV1ActionInvalidDataFormat> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sampledDataLocations: Schema.optional(Schema.Array(Schema.String)),
-      expectedFormat: Schema.optional(Schema.String),
-      newFormat: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1ActionInvalidDataFormat",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1ActionInvalidDataFormat>;
+export const GoogleCloudDataplexV1ActionInvalidDataFormat =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sampledDataLocations: Schema.optional(Schema.Array(Schema.String)),
+    expectedFormat: Schema.optional(Schema.String),
+    newFormat: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1ActionInvalidDataFormat" });
 
 export interface GoogleCloudDataplexV1ActionFailedSecurityPolicyApply {
   /** Resource name of one of the assets with failing security policy application. Populated for a lake or zone resource only. */
   asset?: string;
 }
 
-export const GoogleCloudDataplexV1ActionFailedSecurityPolicyApply: Schema.Schema<GoogleCloudDataplexV1ActionFailedSecurityPolicyApply> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      asset: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1ActionFailedSecurityPolicyApply =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    asset: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1ActionFailedSecurityPolicyApply",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1ActionFailedSecurityPolicyApply>;
+  });
 
 export interface GoogleCloudDataplexV1ActionInvalidDataOrganization {}
 
-export const GoogleCloudDataplexV1ActionInvalidDataOrganization: Schema.Schema<GoogleCloudDataplexV1ActionInvalidDataOrganization> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDataplexV1ActionInvalidDataOrganization =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDataplexV1ActionInvalidDataOrganization",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1ActionInvalidDataOrganization>;
+  });
 
 export interface GoogleCloudDataplexV1Action {
   /** Details for issues related to invalid or unsupported data partition structure. */
@@ -4661,43 +4099,39 @@ export interface GoogleCloudDataplexV1Action {
   invalidDataOrganization?: GoogleCloudDataplexV1ActionInvalidDataOrganization;
 }
 
-export const GoogleCloudDataplexV1Action: Schema.Schema<GoogleCloudDataplexV1Action> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      invalidDataPartition: Schema.optional(
-        GoogleCloudDataplexV1ActionInvalidDataPartition,
-      ),
-      zone: Schema.optional(Schema.String),
-      category: Schema.optional(Schema.String),
-      issue: Schema.optional(Schema.String),
-      incompatibleDataSchema: Schema.optional(
-        GoogleCloudDataplexV1ActionIncompatibleDataSchema,
-      ),
-      unauthorizedResource: Schema.optional(
-        GoogleCloudDataplexV1ActionUnauthorizedResource,
-      ),
-      detectTime: Schema.optional(Schema.String),
-      asset: Schema.optional(Schema.String),
-      missingResource: Schema.optional(
-        GoogleCloudDataplexV1ActionMissingResource,
-      ),
-      dataLocations: Schema.optional(Schema.Array(Schema.String)),
-      lake: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      invalidDataFormat: Schema.optional(
-        GoogleCloudDataplexV1ActionInvalidDataFormat,
-      ),
-      missingData: Schema.optional(GoogleCloudDataplexV1ActionMissingData),
-      failedSecurityPolicyApply: Schema.optional(
-        GoogleCloudDataplexV1ActionFailedSecurityPolicyApply,
-      ),
-      invalidDataOrganization: Schema.optional(
-        GoogleCloudDataplexV1ActionInvalidDataOrganization,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1Action",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1Action>;
+export const GoogleCloudDataplexV1Action =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    invalidDataPartition: Schema.optional(
+      GoogleCloudDataplexV1ActionInvalidDataPartition,
+    ),
+    zone: Schema.optional(Schema.String),
+    category: Schema.optional(Schema.String),
+    issue: Schema.optional(Schema.String),
+    incompatibleDataSchema: Schema.optional(
+      GoogleCloudDataplexV1ActionIncompatibleDataSchema,
+    ),
+    unauthorizedResource: Schema.optional(
+      GoogleCloudDataplexV1ActionUnauthorizedResource,
+    ),
+    detectTime: Schema.optional(Schema.String),
+    asset: Schema.optional(Schema.String),
+    missingResource: Schema.optional(
+      GoogleCloudDataplexV1ActionMissingResource,
+    ),
+    dataLocations: Schema.optional(Schema.Array(Schema.String)),
+    lake: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    invalidDataFormat: Schema.optional(
+      GoogleCloudDataplexV1ActionInvalidDataFormat,
+    ),
+    missingData: Schema.optional(GoogleCloudDataplexV1ActionMissingData),
+    failedSecurityPolicyApply: Schema.optional(
+      GoogleCloudDataplexV1ActionFailedSecurityPolicyApply,
+    ),
+    invalidDataOrganization: Schema.optional(
+      GoogleCloudDataplexV1ActionInvalidDataOrganization,
+    ),
+  }).annotate({ identifier: "GoogleCloudDataplexV1Action" });
 
 export interface GoogleCloudDataplexV1MetadataJobExportJobSpecExportJobScope {
   /** The aspect types that are in scope for the export job, specified as relative resource names in the format projects/{project_id_or_number}/locations/{location}/aspectTypes/{aspect_type_id}. Only aspects that belong to the specified aspect types are affected by the job. */
@@ -4712,18 +4146,16 @@ export interface GoogleCloudDataplexV1MetadataJobExportJobSpecExportJobScope {
   projects?: Array<string>;
 }
 
-export const GoogleCloudDataplexV1MetadataJobExportJobSpecExportJobScope: Schema.Schema<GoogleCloudDataplexV1MetadataJobExportJobSpecExportJobScope> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      aspectTypes: Schema.optional(Schema.Array(Schema.String)),
-      entryTypes: Schema.optional(Schema.Array(Schema.String)),
-      organizationLevel: Schema.optional(Schema.Boolean),
-      entryGroups: Schema.optional(Schema.Array(Schema.String)),
-      projects: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1MetadataJobExportJobSpecExportJobScope =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    aspectTypes: Schema.optional(Schema.Array(Schema.String)),
+    entryTypes: Schema.optional(Schema.Array(Schema.String)),
+    organizationLevel: Schema.optional(Schema.Boolean),
+    entryGroups: Schema.optional(Schema.Array(Schema.String)),
+    projects: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1MetadataJobExportJobSpecExportJobScope",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1MetadataJobExportJobSpecExportJobScope>;
+  });
 
 export interface GoogleCloudDataplexV1MetadataJobExportJobResult {
   /** Output only. The number of entries that were exported. */
@@ -4732,15 +4164,13 @@ export interface GoogleCloudDataplexV1MetadataJobExportJobResult {
   errorMessage?: string;
 }
 
-export const GoogleCloudDataplexV1MetadataJobExportJobResult: Schema.Schema<GoogleCloudDataplexV1MetadataJobExportJobResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      exportedEntries: Schema.optional(Schema.String),
-      errorMessage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1MetadataJobExportJobResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    exportedEntries: Schema.optional(Schema.String),
+    errorMessage: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1MetadataJobExportJobResult",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1MetadataJobExportJobResult>;
+  });
 
 export interface GoogleCloudDataplexV1DataScanEventDataQualityAppliedConfigs {
   /** The percentage of the records selected from the dataset for DataScan. Value ranges between 0.0 and 100.0. Value 0.0 or 100.0 imply that sampling was not applied. */
@@ -4749,15 +4179,13 @@ export interface GoogleCloudDataplexV1DataScanEventDataQualityAppliedConfigs {
   rowFilterApplied?: boolean;
 }
 
-export const GoogleCloudDataplexV1DataScanEventDataQualityAppliedConfigs: Schema.Schema<GoogleCloudDataplexV1DataScanEventDataQualityAppliedConfigs> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      samplingPercent: Schema.optional(Schema.Number),
-      rowFilterApplied: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataScanEventDataQualityAppliedConfigs =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    samplingPercent: Schema.optional(Schema.Number),
+    rowFilterApplied: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1DataScanEventDataQualityAppliedConfigs",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataScanEventDataQualityAppliedConfigs>;
+  });
 
 export interface GoogleCloudDataplexV1DataScanJob {
   /** Output only. The time when the DataScanJob ended. */
@@ -4811,42 +4239,32 @@ export interface GoogleCloudDataplexV1DataScanJob {
   partialFailureMessage?: string;
 }
 
-export const GoogleCloudDataplexV1DataScanJob: Schema.Schema<GoogleCloudDataplexV1DataScanJob> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endTime: Schema.optional(Schema.String),
-      dataProfileResult: Schema.optional(
-        GoogleCloudDataplexV1DataProfileResult,
-      ),
-      type: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      dataQualityResult: Schema.optional(
-        GoogleCloudDataplexV1DataQualityResult,
-      ),
-      uid: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-      dataDiscoverySpec: Schema.optional(
-        GoogleCloudDataplexV1DataDiscoverySpec,
-      ),
-      dataDiscoveryResult: Schema.optional(
-        GoogleCloudDataplexV1DataDiscoveryResult,
-      ),
-      createTime: Schema.optional(Schema.String),
-      dataQualitySpec: Schema.optional(GoogleCloudDataplexV1DataQualitySpec),
-      dataDocumentationSpec: Schema.optional(
-        GoogleCloudDataplexV1DataDocumentationSpec,
-      ),
-      startTime: Schema.optional(Schema.String),
-      dataDocumentationResult: Schema.optional(
-        GoogleCloudDataplexV1DataDocumentationResult,
-      ),
-      dataProfileSpec: Schema.optional(GoogleCloudDataplexV1DataProfileSpec),
-      partialFailureMessage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1DataScanJob",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataScanJob>;
+export const GoogleCloudDataplexV1DataScanJob =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endTime: Schema.optional(Schema.String),
+    dataProfileResult: Schema.optional(GoogleCloudDataplexV1DataProfileResult),
+    type: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    dataQualityResult: Schema.optional(GoogleCloudDataplexV1DataQualityResult),
+    uid: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+    dataDiscoverySpec: Schema.optional(GoogleCloudDataplexV1DataDiscoverySpec),
+    dataDiscoveryResult: Schema.optional(
+      GoogleCloudDataplexV1DataDiscoveryResult,
+    ),
+    createTime: Schema.optional(Schema.String),
+    dataQualitySpec: Schema.optional(GoogleCloudDataplexV1DataQualitySpec),
+    dataDocumentationSpec: Schema.optional(
+      GoogleCloudDataplexV1DataDocumentationSpec,
+    ),
+    startTime: Schema.optional(Schema.String),
+    dataDocumentationResult: Schema.optional(
+      GoogleCloudDataplexV1DataDocumentationResult,
+    ),
+    dataProfileSpec: Schema.optional(GoogleCloudDataplexV1DataProfileSpec),
+    partialFailureMessage: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1DataScanJob" });
 
 export interface GoogleCloudDataplexV1ListJobsResponse {
   /** Jobs under a given task. */
@@ -4855,15 +4273,11 @@ export interface GoogleCloudDataplexV1ListJobsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDataplexV1ListJobsResponse: Schema.Schema<GoogleCloudDataplexV1ListJobsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      jobs: Schema.optional(Schema.Array(GoogleCloudDataplexV1Job)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1ListJobsResponse",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1ListJobsResponse>;
+export const GoogleCloudDataplexV1ListJobsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    jobs: Schema.optional(Schema.Array(GoogleCloudDataplexV1Job)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1ListJobsResponse" });
 
 export interface GoogleCloudDataplexV1MetadataFeedFilters {
   /** Optional. The aspect types that you want to listen to. Depending on how the aspect is attached to the entry, in the format: projects/{project_id_or_number}/locations/{location}/aspectTypes/{aspect_type_id}. */
@@ -4876,16 +4290,12 @@ export interface GoogleCloudDataplexV1MetadataFeedFilters {
   >;
 }
 
-export const GoogleCloudDataplexV1MetadataFeedFilters: Schema.Schema<GoogleCloudDataplexV1MetadataFeedFilters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      aspectTypes: Schema.optional(Schema.Array(Schema.String)),
-      entryTypes: Schema.optional(Schema.Array(Schema.String)),
-      changeTypes: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1MetadataFeedFilters",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1MetadataFeedFilters>;
+export const GoogleCloudDataplexV1MetadataFeedFilters =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    aspectTypes: Schema.optional(Schema.Array(Schema.String)),
+    entryTypes: Schema.optional(Schema.Array(Schema.String)),
+    changeTypes: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudDataplexV1MetadataFeedFilters" });
 
 export interface GoogleCloudDataplexV1ListAspectTypesResponse {
   /** AspectTypes under the given parent location. */
@@ -4896,18 +4306,12 @@ export interface GoogleCloudDataplexV1ListAspectTypesResponse {
   unreachableLocations?: Array<string>;
 }
 
-export const GoogleCloudDataplexV1ListAspectTypesResponse: Schema.Schema<GoogleCloudDataplexV1ListAspectTypesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      aspectTypes: Schema.optional(
-        Schema.Array(GoogleCloudDataplexV1AspectType),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachableLocations: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1ListAspectTypesResponse",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1ListAspectTypesResponse>;
+export const GoogleCloudDataplexV1ListAspectTypesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    aspectTypes: Schema.optional(Schema.Array(GoogleCloudDataplexV1AspectType)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachableLocations: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudDataplexV1ListAspectTypesResponse" });
 
 export interface GoogleLongrunningListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -4918,30 +4322,24 @@ export interface GoogleLongrunningListOperationsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleLongrunningListOperationsResponse: Schema.Schema<GoogleLongrunningListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleLongrunningListOperationsResponse",
-  }) as any as Schema.Schema<GoogleLongrunningListOperationsResponse>;
+export const GoogleLongrunningListOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleLongrunningListOperationsResponse" });
 
 export interface GoogleCloudDataplexV1DataAssetAccessGroupConfig {
   /** Optional. IAM roles granted on the resource to this access group. Role name follows https://cloud.google.com/iam/docs/reference/rest/v1/roles.Example: [ "roles/bigquery.dataViewer" ] */
   iamRoles?: Array<string>;
 }
 
-export const GoogleCloudDataplexV1DataAssetAccessGroupConfig: Schema.Schema<GoogleCloudDataplexV1DataAssetAccessGroupConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      iamRoles: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataAssetAccessGroupConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    iamRoles: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1DataAssetAccessGroupConfig",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataAssetAccessGroupConfig>;
+  });
 
 export interface GoogleCloudLocationLocation {
   /** The canonical id for this location. For example: "us-east1". */
@@ -4956,18 +4354,14 @@ export interface GoogleCloudLocationLocation {
   metadata?: Record<string, unknown>;
 }
 
-export const GoogleCloudLocationLocation: Schema.Schema<GoogleCloudLocationLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locationId: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudLocationLocation",
-  }) as any as Schema.Schema<GoogleCloudLocationLocation>;
+export const GoogleCloudLocationLocation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locationId: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "GoogleCloudLocationLocation" });
 
 export interface GoogleCloudLocationListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -4976,15 +4370,11 @@ export interface GoogleCloudLocationListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudLocationListLocationsResponse: Schema.Schema<GoogleCloudLocationListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(GoogleCloudLocationLocation)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudLocationListLocationsResponse",
-  }) as any as Schema.Schema<GoogleCloudLocationListLocationsResponse>;
+export const GoogleCloudLocationListLocationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locations: Schema.optional(Schema.Array(GoogleCloudLocationLocation)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudLocationListLocationsResponse" });
 
 export interface GoogleCloudDataplexV1ListDataScansResponse {
   /** DataScans (BASIC view only) under the given parent location. */
@@ -4995,16 +4385,12 @@ export interface GoogleCloudDataplexV1ListDataScansResponse {
   unreachable?: Array<string>;
 }
 
-export const GoogleCloudDataplexV1ListDataScansResponse: Schema.Schema<GoogleCloudDataplexV1ListDataScansResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataScans: Schema.optional(Schema.Array(GoogleCloudDataplexV1DataScan)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1ListDataScansResponse",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1ListDataScansResponse>;
+export const GoogleCloudDataplexV1ListDataScansResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataScans: Schema.optional(Schema.Array(GoogleCloudDataplexV1DataScan)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudDataplexV1ListDataScansResponse" });
 
 export interface GoogleCloudDataplexV1ModifyEntryRequest {
   /** Optional. The aspect keys which the service should modify. It supports the following syntaxes: - matches an aspect of the given type and empty path. @path - matches an aspect of the given type and specified path. For example, to attach an aspect to a field that is specified by the schema aspect, the path should have the format Schema.. @* - matches aspects of the given type for all paths. *@path - matches aspects of all types on the given path.The service will not remove existing aspects matching the syntax unless delete_missing_aspects is set to true.If this field is left empty, the service treats it as specifying exactly those Aspects present in the request. */
@@ -5017,17 +4403,13 @@ export interface GoogleCloudDataplexV1ModifyEntryRequest {
   deleteMissingAspects?: boolean;
 }
 
-export const GoogleCloudDataplexV1ModifyEntryRequest: Schema.Schema<GoogleCloudDataplexV1ModifyEntryRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      aspectKeys: Schema.optional(Schema.Array(Schema.String)),
-      updateMask: Schema.optional(Schema.String),
-      entry: Schema.optional(GoogleCloudDataplexV1Entry),
-      deleteMissingAspects: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1ModifyEntryRequest",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1ModifyEntryRequest>;
+export const GoogleCloudDataplexV1ModifyEntryRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    aspectKeys: Schema.optional(Schema.Array(Schema.String)),
+    updateMask: Schema.optional(Schema.String),
+    entry: Schema.optional(GoogleCloudDataplexV1Entry),
+    deleteMissingAspects: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudDataplexV1ModifyEntryRequest" });
 
 export interface GoogleCloudDataplexV1RunTaskRequest {
   /** Optional. User-defined labels for the task. If the map is left empty, the task will run with existing labels from task definition. If the map contains an entry with a new key, the same will be added to existing set of labels. If the map contains an entry with an existing label key in task definition, the task will run with new label value for that entry. Clearing an existing label will require label value to be explicitly set to a hyphen "-". The label value cannot be empty. */
@@ -5036,29 +4418,23 @@ export interface GoogleCloudDataplexV1RunTaskRequest {
   args?: Record<string, string>;
 }
 
-export const GoogleCloudDataplexV1RunTaskRequest: Schema.Schema<GoogleCloudDataplexV1RunTaskRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      args: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1RunTaskRequest",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1RunTaskRequest>;
+export const GoogleCloudDataplexV1RunTaskRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    args: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({ identifier: "GoogleCloudDataplexV1RunTaskRequest" });
 
 export interface GoogleCloudDataplexV1DataScanEventDataProfileResult {
   /** The count of rows processed in the data scan job. */
   rowCount?: string;
 }
 
-export const GoogleCloudDataplexV1DataScanEventDataProfileResult: Schema.Schema<GoogleCloudDataplexV1DataScanEventDataProfileResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rowCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataScanEventDataProfileResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rowCount: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1DataScanEventDataProfileResult",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataScanEventDataProfileResult>;
+  });
 
 export interface GoogleCloudDataplexV1DataAsset {
   /** Identifier. Resource name of the data asset. Format: projects/{project_id_or_number}/locations/{location_id}/dataProducts/{data_product_id}/dataAssets/{data_asset_id} */
@@ -5082,26 +4458,22 @@ export interface GoogleCloudDataplexV1DataAsset {
   resource?: string;
 }
 
-export const GoogleCloudDataplexV1DataAsset: Schema.Schema<GoogleCloudDataplexV1DataAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      accessGroupConfigs: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          GoogleCloudDataplexV1DataAssetAccessGroupConfig,
-        ),
+export const GoogleCloudDataplexV1DataAsset =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    accessGroupConfigs: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        GoogleCloudDataplexV1DataAssetAccessGroupConfig,
       ),
-      uid: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      resource: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1DataAsset",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataAsset>;
+    ),
+    uid: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    resource: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1DataAsset" });
 
 export interface GoogleCloudDataplexV1ListDataAssetsResponse {
   /** A token, which can be sent as page_token to retrieve the next page. If this field is empty, then there are no subsequent pages. */
@@ -5110,22 +4482,18 @@ export interface GoogleCloudDataplexV1ListDataAssetsResponse {
   dataAssets?: Array<GoogleCloudDataplexV1DataAsset>;
 }
 
-export const GoogleCloudDataplexV1ListDataAssetsResponse: Schema.Schema<GoogleCloudDataplexV1ListDataAssetsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      dataAssets: Schema.optional(Schema.Array(GoogleCloudDataplexV1DataAsset)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1ListDataAssetsResponse",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1ListDataAssetsResponse>;
+export const GoogleCloudDataplexV1ListDataAssetsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    dataAssets: Schema.optional(Schema.Array(GoogleCloudDataplexV1DataAsset)),
+  }).annotate({ identifier: "GoogleCloudDataplexV1ListDataAssetsResponse" });
 
 export interface GoogleCloudDataplexV1RunDataScanRequest {}
 
-export const GoogleCloudDataplexV1RunDataScanRequest: Schema.Schema<GoogleCloudDataplexV1RunDataScanRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDataplexV1RunDataScanRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDataplexV1RunDataScanRequest",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1RunDataScanRequest>;
+  });
 
 export interface GoogleCloudDataplexV1ListDataAttributesResponse {
   /** DataAttributes under the given parent DataTaxonomy. */
@@ -5136,32 +4504,26 @@ export interface GoogleCloudDataplexV1ListDataAttributesResponse {
   unreachableLocations?: Array<string>;
 }
 
-export const GoogleCloudDataplexV1ListDataAttributesResponse: Schema.Schema<GoogleCloudDataplexV1ListDataAttributesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataAttributes: Schema.optional(
-        Schema.Array(GoogleCloudDataplexV1DataAttribute),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachableLocations: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1ListDataAttributesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataAttributes: Schema.optional(
+      Schema.Array(GoogleCloudDataplexV1DataAttribute),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachableLocations: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1ListDataAttributesResponse",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1ListDataAttributesResponse>;
+  });
 
 export interface GoogleCloudDataplexV1RunDataScanResponse {
   /** DataScanJob created by RunDataScan request. */
   job?: GoogleCloudDataplexV1DataScanJob;
 }
 
-export const GoogleCloudDataplexV1RunDataScanResponse: Schema.Schema<GoogleCloudDataplexV1RunDataScanResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      job: Schema.optional(GoogleCloudDataplexV1DataScanJob),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1RunDataScanResponse",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1RunDataScanResponse>;
+export const GoogleCloudDataplexV1RunDataScanResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    job: Schema.optional(GoogleCloudDataplexV1DataScanJob),
+  }).annotate({ identifier: "GoogleCloudDataplexV1RunDataScanResponse" });
 
 export interface GoogleCloudDataplexV1ZoneResourceSpec {
   /** Required. Immutable. The location type of the resources that are allowed to be attached to the assets within this zone. */
@@ -5172,14 +4534,10 @@ export interface GoogleCloudDataplexV1ZoneResourceSpec {
     | (string & {});
 }
 
-export const GoogleCloudDataplexV1ZoneResourceSpec: Schema.Schema<GoogleCloudDataplexV1ZoneResourceSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locationType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1ZoneResourceSpec",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1ZoneResourceSpec>;
+export const GoogleCloudDataplexV1ZoneResourceSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locationType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1ZoneResourceSpec" });
 
 export interface GoogleCloudDataplexV1DataTaxonomy {
   /** Output only. The number of attributes in the DataTaxonomy. */
@@ -5204,23 +4562,19 @@ export interface GoogleCloudDataplexV1DataTaxonomy {
   uid?: string;
 }
 
-export const GoogleCloudDataplexV1DataTaxonomy: Schema.Schema<GoogleCloudDataplexV1DataTaxonomy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      attributeCount: Schema.optional(Schema.Number),
-      displayName: Schema.optional(Schema.String),
-      classCount: Schema.optional(Schema.Number),
-      createTime: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      uid: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1DataTaxonomy",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataTaxonomy>;
+export const GoogleCloudDataplexV1DataTaxonomy =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    attributeCount: Schema.optional(Schema.Number),
+    displayName: Schema.optional(Schema.String),
+    classCount: Schema.optional(Schema.Number),
+    createTime: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    uid: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1DataTaxonomy" });
 
 export interface GoogleCloudDataplexV1ListDataTaxonomiesResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
@@ -5231,18 +4585,16 @@ export interface GoogleCloudDataplexV1ListDataTaxonomiesResponse {
   dataTaxonomies?: Array<GoogleCloudDataplexV1DataTaxonomy>;
 }
 
-export const GoogleCloudDataplexV1ListDataTaxonomiesResponse: Schema.Schema<GoogleCloudDataplexV1ListDataTaxonomiesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      unreachableLocations: Schema.optional(Schema.Array(Schema.String)),
-      dataTaxonomies: Schema.optional(
-        Schema.Array(GoogleCloudDataplexV1DataTaxonomy),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1ListDataTaxonomiesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    unreachableLocations: Schema.optional(Schema.Array(Schema.String)),
+    dataTaxonomies: Schema.optional(
+      Schema.Array(GoogleCloudDataplexV1DataTaxonomy),
+    ),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1ListDataTaxonomiesResponse",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1ListDataTaxonomiesResponse>;
+  });
 
 export interface GoogleCloudDataplexV1AssetStatus {
   /** Number of assets that are in process of updating the security policy on attached resources. */
@@ -5253,16 +4605,12 @@ export interface GoogleCloudDataplexV1AssetStatus {
   activeAssets?: number;
 }
 
-export const GoogleCloudDataplexV1AssetStatus: Schema.Schema<GoogleCloudDataplexV1AssetStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      securityPolicyApplyingAssets: Schema.optional(Schema.Number),
-      updateTime: Schema.optional(Schema.String),
-      activeAssets: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1AssetStatus",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1AssetStatus>;
+export const GoogleCloudDataplexV1AssetStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    securityPolicyApplyingAssets: Schema.optional(Schema.Number),
+    updateTime: Schema.optional(Schema.String),
+    activeAssets: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudDataplexV1AssetStatus" });
 
 export interface GoogleCloudDataplexV1Zone {
   /** Output only. The time when the zone was last updated. */
@@ -5297,25 +4645,21 @@ export interface GoogleCloudDataplexV1Zone {
   createTime?: string;
 }
 
-export const GoogleCloudDataplexV1Zone: Schema.Schema<GoogleCloudDataplexV1Zone> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateTime: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      uid: Schema.optional(Schema.String),
-      discoverySpec: Schema.optional(GoogleCloudDataplexV1ZoneDiscoverySpec),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      state: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      resourceSpec: Schema.optional(GoogleCloudDataplexV1ZoneResourceSpec),
-      displayName: Schema.optional(Schema.String),
-      assetStatus: Schema.optional(GoogleCloudDataplexV1AssetStatus),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1Zone",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1Zone>;
+export const GoogleCloudDataplexV1Zone =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateTime: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    uid: Schema.optional(Schema.String),
+    discoverySpec: Schema.optional(GoogleCloudDataplexV1ZoneDiscoverySpec),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    state: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    resourceSpec: Schema.optional(GoogleCloudDataplexV1ZoneResourceSpec),
+    displayName: Schema.optional(Schema.String),
+    assetStatus: Schema.optional(GoogleCloudDataplexV1AssetStatus),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1Zone" });
 
 export interface GoogleCloudDataplexV1BusinessGlossaryEvent {
   /** The type of the event. */
@@ -5337,30 +4681,22 @@ export interface GoogleCloudDataplexV1BusinessGlossaryEvent {
   resource?: string;
 }
 
-export const GoogleCloudDataplexV1BusinessGlossaryEvent: Schema.Schema<GoogleCloudDataplexV1BusinessGlossaryEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      eventType: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-      resource: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1BusinessGlossaryEvent",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1BusinessGlossaryEvent>;
+export const GoogleCloudDataplexV1BusinessGlossaryEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    eventType: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+    resource: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1BusinessGlossaryEvent" });
 
 export interface GoogleIamV1TestIamPermissionsRequest {
   /** The set of permissions to check for the resource. Permissions with wildcards (such as * or storage.*) are not allowed. For more information see IAM Overview (https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: Array<string>;
 }
 
-export const GoogleIamV1TestIamPermissionsRequest: Schema.Schema<GoogleIamV1TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1TestIamPermissionsRequest",
-  }) as any as Schema.Schema<GoogleIamV1TestIamPermissionsRequest>;
+export const GoogleIamV1TestIamPermissionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleIamV1TestIamPermissionsRequest" });
 
 export interface GoogleCloudDataplexV1LakeMetastoreStatus {
   /** The URI of the endpoint used to access the Metastore service. */
@@ -5379,17 +4715,13 @@ export interface GoogleCloudDataplexV1LakeMetastoreStatus {
   updateTime?: string;
 }
 
-export const GoogleCloudDataplexV1LakeMetastoreStatus: Schema.Schema<GoogleCloudDataplexV1LakeMetastoreStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endpoint: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1LakeMetastoreStatus",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1LakeMetastoreStatus>;
+export const GoogleCloudDataplexV1LakeMetastoreStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endpoint: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1LakeMetastoreStatus" });
 
 export interface GoogleCloudDataplexV1Lake {
   /** Output only. The time when the lake was last updated. */
@@ -5424,27 +4756,21 @@ export interface GoogleCloudDataplexV1Lake {
   createTime?: string;
 }
 
-export const GoogleCloudDataplexV1Lake: Schema.Schema<GoogleCloudDataplexV1Lake> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateTime: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      serviceAccount: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      uid: Schema.optional(Schema.String),
-      metastore: Schema.optional(GoogleCloudDataplexV1LakeMetastore),
-      state: Schema.optional(Schema.String),
-      metastoreStatus: Schema.optional(
-        GoogleCloudDataplexV1LakeMetastoreStatus,
-      ),
-      assetStatus: Schema.optional(GoogleCloudDataplexV1AssetStatus),
-      displayName: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1Lake",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1Lake>;
+export const GoogleCloudDataplexV1Lake =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateTime: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    serviceAccount: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    uid: Schema.optional(Schema.String),
+    metastore: Schema.optional(GoogleCloudDataplexV1LakeMetastore),
+    state: Schema.optional(Schema.String),
+    metastoreStatus: Schema.optional(GoogleCloudDataplexV1LakeMetastoreStatus),
+    assetStatus: Schema.optional(GoogleCloudDataplexV1AssetStatus),
+    displayName: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1Lake" });
 
 export interface GoogleCloudDataplexV1ListLakesResponse {
   /** Lakes under the given parent location. */
@@ -5455,16 +4781,12 @@ export interface GoogleCloudDataplexV1ListLakesResponse {
   unreachableLocations?: Array<string>;
 }
 
-export const GoogleCloudDataplexV1ListLakesResponse: Schema.Schema<GoogleCloudDataplexV1ListLakesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lakes: Schema.optional(Schema.Array(GoogleCloudDataplexV1Lake)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachableLocations: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1ListLakesResponse",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1ListLakesResponse>;
+export const GoogleCloudDataplexV1ListLakesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    lakes: Schema.optional(Schema.Array(GoogleCloudDataplexV1Lake)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachableLocations: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudDataplexV1ListLakesResponse" });
 
 export interface GoogleCloudDataplexV1GovernanceEvent {
   /** The type of the event. */
@@ -5493,16 +4815,12 @@ export interface GoogleCloudDataplexV1GovernanceEvent {
   message?: string;
 }
 
-export const GoogleCloudDataplexV1GovernanceEvent: Schema.Schema<GoogleCloudDataplexV1GovernanceEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      eventType: Schema.optional(Schema.String),
-      entity: Schema.optional(GoogleCloudDataplexV1GovernanceEventEntity),
-      message: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1GovernanceEvent",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1GovernanceEvent>;
+export const GoogleCloudDataplexV1GovernanceEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    eventType: Schema.optional(Schema.String),
+    entity: Schema.optional(GoogleCloudDataplexV1GovernanceEventEntity),
+    message: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1GovernanceEvent" });
 
 export interface GoogleCloudDataplexV1ListDataScanJobsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
@@ -5511,17 +4829,13 @@ export interface GoogleCloudDataplexV1ListDataScanJobsResponse {
   dataScanJobs?: Array<GoogleCloudDataplexV1DataScanJob>;
 }
 
-export const GoogleCloudDataplexV1ListDataScanJobsResponse: Schema.Schema<GoogleCloudDataplexV1ListDataScanJobsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      dataScanJobs: Schema.optional(
-        Schema.Array(GoogleCloudDataplexV1DataScanJob),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1ListDataScanJobsResponse",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1ListDataScanJobsResponse>;
+export const GoogleCloudDataplexV1ListDataScanJobsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    dataScanJobs: Schema.optional(
+      Schema.Array(GoogleCloudDataplexV1DataScanJob),
+    ),
+  }).annotate({ identifier: "GoogleCloudDataplexV1ListDataScanJobsResponse" });
 
 export interface GoogleCloudDataplexV1MetadataFeedScope {
   /** Optional. The entry groups whose entries you want to listen to. Must be in the format: projects/{project_id_or_number}/locations/{location_id}/entryGroups/{entry_group_id}. */
@@ -5532,16 +4846,12 @@ export interface GoogleCloudDataplexV1MetadataFeedScope {
   projects?: Array<string>;
 }
 
-export const GoogleCloudDataplexV1MetadataFeedScope: Schema.Schema<GoogleCloudDataplexV1MetadataFeedScope> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entryGroups: Schema.optional(Schema.Array(Schema.String)),
-      organizationLevel: Schema.optional(Schema.Boolean),
-      projects: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1MetadataFeedScope",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1MetadataFeedScope>;
+export const GoogleCloudDataplexV1MetadataFeedScope =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entryGroups: Schema.optional(Schema.Array(Schema.String)),
+    organizationLevel: Schema.optional(Schema.Boolean),
+    projects: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudDataplexV1MetadataFeedScope" });
 
 export interface GoogleCloudDataplexV1MetadataFeed {
   /** Identifier. The resource name of the metadata feed, in the format projects/{project_id_or_number}/locations/{location_id}/metadataFeeds/{metadata_feed_id}. */
@@ -5562,21 +4872,17 @@ export interface GoogleCloudDataplexV1MetadataFeed {
   pubsubTopic?: string;
 }
 
-export const GoogleCloudDataplexV1MetadataFeed: Schema.Schema<GoogleCloudDataplexV1MetadataFeed> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      uid: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      filters: Schema.optional(GoogleCloudDataplexV1MetadataFeedFilters),
-      updateTime: Schema.optional(Schema.String),
-      scope: Schema.optional(GoogleCloudDataplexV1MetadataFeedScope),
-      pubsubTopic: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1MetadataFeed",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1MetadataFeed>;
+export const GoogleCloudDataplexV1MetadataFeed =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    uid: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    filters: Schema.optional(GoogleCloudDataplexV1MetadataFeedFilters),
+    updateTime: Schema.optional(Schema.String),
+    scope: Schema.optional(GoogleCloudDataplexV1MetadataFeedScope),
+    pubsubTopic: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1MetadataFeed" });
 
 export interface GoogleCloudDataplexV1MetadataJobImportJobResult {
   /** Output only. The total number of entry links that were successfully created. */
@@ -5599,22 +4905,20 @@ export interface GoogleCloudDataplexV1MetadataJobImportJobResult {
   deletedEntryLinks?: string;
 }
 
-export const GoogleCloudDataplexV1MetadataJobImportJobResult: Schema.Schema<GoogleCloudDataplexV1MetadataJobImportJobResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createdEntryLinks: Schema.optional(Schema.String),
-      createdEntries: Schema.optional(Schema.String),
-      recreatedEntries: Schema.optional(Schema.String),
-      updatedEntries: Schema.optional(Schema.String),
-      deletedEntries: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      unchangedEntryLinks: Schema.optional(Schema.String),
-      unchangedEntries: Schema.optional(Schema.String),
-      deletedEntryLinks: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1MetadataJobImportJobResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createdEntryLinks: Schema.optional(Schema.String),
+    createdEntries: Schema.optional(Schema.String),
+    recreatedEntries: Schema.optional(Schema.String),
+    updatedEntries: Schema.optional(Schema.String),
+    deletedEntries: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    unchangedEntryLinks: Schema.optional(Schema.String),
+    unchangedEntries: Schema.optional(Schema.String),
+    deletedEntryLinks: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1MetadataJobImportJobResult",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1MetadataJobImportJobResult>;
+  });
 
 export interface GoogleCloudDataplexV1ListMetadataFeedsResponse {
   /** Unordered list. Locations that the service couldn't reach. */
@@ -5625,18 +4929,14 @@ export interface GoogleCloudDataplexV1ListMetadataFeedsResponse {
   metadataFeeds?: Array<GoogleCloudDataplexV1MetadataFeed>;
 }
 
-export const GoogleCloudDataplexV1ListMetadataFeedsResponse: Schema.Schema<GoogleCloudDataplexV1ListMetadataFeedsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-      metadataFeeds: Schema.optional(
-        Schema.Array(GoogleCloudDataplexV1MetadataFeed),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1ListMetadataFeedsResponse",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1ListMetadataFeedsResponse>;
+export const GoogleCloudDataplexV1ListMetadataFeedsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+    metadataFeeds: Schema.optional(
+      Schema.Array(GoogleCloudDataplexV1MetadataFeed),
+    ),
+  }).annotate({ identifier: "GoogleCloudDataplexV1ListMetadataFeedsResponse" });
 
 export interface GoogleCloudDataplexV1MetadataJobStatus {
   /** Output only. Progress tracking. */
@@ -5658,38 +4958,30 @@ export interface GoogleCloudDataplexV1MetadataJobStatus {
   updateTime?: string;
 }
 
-export const GoogleCloudDataplexV1MetadataJobStatus: Schema.Schema<GoogleCloudDataplexV1MetadataJobStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      completionPercent: Schema.optional(Schema.Number),
-      state: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1MetadataJobStatus",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1MetadataJobStatus>;
+export const GoogleCloudDataplexV1MetadataJobStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    completionPercent: Schema.optional(Schema.Number),
+    state: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1MetadataJobStatus" });
 
 export interface GoogleCloudDataplexV1CancelJobRequest {}
 
-export const GoogleCloudDataplexV1CancelJobRequest: Schema.Schema<GoogleCloudDataplexV1CancelJobRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDataplexV1CancelJobRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDataplexV1CancelJobRequest",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1CancelJobRequest>;
+  });
 
 export interface GoogleCloudDataplexV1DataProductPrincipal {
   /** Optional. Email of the Google Group, as per https://cloud.google.com/iam/docs/principals-overview#google-group. */
   googleGroup?: string;
 }
 
-export const GoogleCloudDataplexV1DataProductPrincipal: Schema.Schema<GoogleCloudDataplexV1DataProductPrincipal> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      googleGroup: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1DataProductPrincipal",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataProductPrincipal>;
+export const GoogleCloudDataplexV1DataProductPrincipal =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    googleGroup: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1DataProductPrincipal" });
 
 export interface GoogleCloudDataplexV1DataProductAccessGroup {
   /** Required. Unique identifier of the access group within the data product. User defined. Eg. "analyst", "developer", etc. */
@@ -5702,17 +4994,13 @@ export interface GoogleCloudDataplexV1DataProductAccessGroup {
   principal?: GoogleCloudDataplexV1DataProductPrincipal;
 }
 
-export const GoogleCloudDataplexV1DataProductAccessGroup: Schema.Schema<GoogleCloudDataplexV1DataProductAccessGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      principal: Schema.optional(GoogleCloudDataplexV1DataProductPrincipal),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1DataProductAccessGroup",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataProductAccessGroup>;
+export const GoogleCloudDataplexV1DataProductAccessGroup =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    principal: Schema.optional(GoogleCloudDataplexV1DataProductPrincipal),
+  }).annotate({ identifier: "GoogleCloudDataplexV1DataProductAccessGroup" });
 
 export interface GoogleCloudDataplexV1OperationMetadata {
   /** Output only. API version used to start the operation. */
@@ -5731,20 +5019,16 @@ export interface GoogleCloudDataplexV1OperationMetadata {
   verb?: string;
 }
 
-export const GoogleCloudDataplexV1OperationMetadata: Schema.Schema<GoogleCloudDataplexV1OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      apiVersion: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      statusMessage: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1OperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1OperationMetadata>;
+export const GoogleCloudDataplexV1OperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apiVersion: Schema.optional(Schema.String),
+    requestedCancellation: Schema.optional(Schema.Boolean),
+    statusMessage: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1OperationMetadata" });
 
 export interface GoogleCloudDataplexV1ImportItem {
   /** Information about the entry link. User should provide either one of the entry or entry_link. While providing entry_link, user should not provide update_mask and aspect_keys. */
@@ -5757,17 +5041,13 @@ export interface GoogleCloudDataplexV1ImportItem {
   entry?: GoogleCloudDataplexV1Entry;
 }
 
-export const GoogleCloudDataplexV1ImportItem: Schema.Schema<GoogleCloudDataplexV1ImportItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entryLink: Schema.optional(GoogleCloudDataplexV1EntryLink),
-      aspectKeys: Schema.optional(Schema.Array(Schema.String)),
-      updateMask: Schema.optional(Schema.String),
-      entry: Schema.optional(GoogleCloudDataplexV1Entry),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1ImportItem",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1ImportItem>;
+export const GoogleCloudDataplexV1ImportItem =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entryLink: Schema.optional(GoogleCloudDataplexV1EntryLink),
+    aspectKeys: Schema.optional(Schema.Array(Schema.String)),
+    updateMask: Schema.optional(Schema.String),
+    entry: Schema.optional(GoogleCloudDataplexV1Entry),
+  }).annotate({ identifier: "GoogleCloudDataplexV1ImportItem" });
 
 export interface GoogleCloudDataplexV1EntryType {
   /** Output only. The time when the EntryType was created. */
@@ -5798,30 +5078,24 @@ export interface GoogleCloudDataplexV1EntryType {
   platform?: string;
 }
 
-export const GoogleCloudDataplexV1EntryType: Schema.Schema<GoogleCloudDataplexV1EntryType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      requiredAspects: Schema.optional(
-        Schema.Array(GoogleCloudDataplexV1EntryTypeAspectInfo),
-      ),
-      system: Schema.optional(Schema.String),
-      uid: Schema.optional(Schema.String),
-      typeAliases: Schema.optional(Schema.Array(Schema.String)),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      authorization: Schema.optional(
-        GoogleCloudDataplexV1EntryTypeAuthorization,
-      ),
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      platform: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1EntryType",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1EntryType>;
+export const GoogleCloudDataplexV1EntryType =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    requiredAspects: Schema.optional(
+      Schema.Array(GoogleCloudDataplexV1EntryTypeAspectInfo),
+    ),
+    system: Schema.optional(Schema.String),
+    uid: Schema.optional(Schema.String),
+    typeAliases: Schema.optional(Schema.Array(Schema.String)),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    authorization: Schema.optional(GoogleCloudDataplexV1EntryTypeAuthorization),
+    name: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    platform: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1EntryType" });
 
 export interface GoogleCloudDataplexV1DataProduct {
   /** Optional. Description of the data product. */
@@ -5850,30 +5124,23 @@ export interface GoogleCloudDataplexV1DataProduct {
   displayName?: string;
 }
 
-export const GoogleCloudDataplexV1DataProduct: Schema.Schema<GoogleCloudDataplexV1DataProduct> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      icon: Schema.optional(Schema.String),
-      accessGroups: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          GoogleCloudDataplexV1DataProductAccessGroup,
-        ),
-      ),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      uid: Schema.optional(Schema.String),
-      assetCount: Schema.optional(Schema.Number),
-      name: Schema.optional(Schema.String),
-      ownerEmails: Schema.optional(Schema.Array(Schema.String)),
-      createTime: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1DataProduct",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataProduct>;
+export const GoogleCloudDataplexV1DataProduct =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    icon: Schema.optional(Schema.String),
+    accessGroups: Schema.optional(
+      Schema.Record(Schema.String, GoogleCloudDataplexV1DataProductAccessGroup),
+    ),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    uid: Schema.optional(Schema.String),
+    assetCount: Schema.optional(Schema.Number),
+    name: Schema.optional(Schema.String),
+    ownerEmails: Schema.optional(Schema.Array(Schema.String)),
+    createTime: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1DataProduct" });
 
 export interface GoogleCloudDataplexV1DataScanEventDataQualityResult {
   /** The table-level data quality score for the data scan job.The data quality score ranges between 0, 100 (up to two decimal points). */
@@ -5890,23 +5157,21 @@ export interface GoogleCloudDataplexV1DataScanEventDataQualityResult {
   dimensionScore?: Record<string, number>;
 }
 
-export const GoogleCloudDataplexV1DataScanEventDataQualityResult: Schema.Schema<GoogleCloudDataplexV1DataScanEventDataQualityResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      score: Schema.optional(Schema.Number),
-      dimensionPassed: Schema.optional(
-        Schema.Record(Schema.String, Schema.Boolean),
-      ),
-      passed: Schema.optional(Schema.Boolean),
-      rowCount: Schema.optional(Schema.String),
-      columnScore: Schema.optional(Schema.Record(Schema.String, Schema.Number)),
-      dimensionScore: Schema.optional(
-        Schema.Record(Schema.String, Schema.Number),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataScanEventDataQualityResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    score: Schema.optional(Schema.Number),
+    dimensionPassed: Schema.optional(
+      Schema.Record(Schema.String, Schema.Boolean),
+    ),
+    passed: Schema.optional(Schema.Boolean),
+    rowCount: Schema.optional(Schema.String),
+    columnScore: Schema.optional(Schema.Record(Schema.String, Schema.Number)),
+    dimensionScore: Schema.optional(
+      Schema.Record(Schema.String, Schema.Number),
+    ),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1DataScanEventDataQualityResult",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataScanEventDataQualityResult>;
+  });
 
 export interface GoogleCloudDataplexV1LookupContextRequest {
   /** Required. The entry names to look up the context for. The maximum number of resources for a request is limited to 10.Examples:projects/{project}/locations/{location}/entryGroups/{entry_group}/entries/{entry} */
@@ -5915,15 +5180,11 @@ export interface GoogleCloudDataplexV1LookupContextRequest {
   options?: Record<string, string>;
 }
 
-export const GoogleCloudDataplexV1LookupContextRequest: Schema.Schema<GoogleCloudDataplexV1LookupContextRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resources: Schema.optional(Schema.Array(Schema.String)),
-      options: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1LookupContextRequest",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1LookupContextRequest>;
+export const GoogleCloudDataplexV1LookupContextRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resources: Schema.optional(Schema.Array(Schema.String)),
+    options: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({ identifier: "GoogleCloudDataplexV1LookupContextRequest" });
 
 export interface GoogleCloudDataplexV1ListEntriesResponse {
   /** The list of entries under the given parent location. */
@@ -5932,29 +5193,21 @@ export interface GoogleCloudDataplexV1ListEntriesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDataplexV1ListEntriesResponse: Schema.Schema<GoogleCloudDataplexV1ListEntriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entries: Schema.optional(Schema.Array(GoogleCloudDataplexV1Entry)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1ListEntriesResponse",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1ListEntriesResponse>;
+export const GoogleCloudDataplexV1ListEntriesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entries: Schema.optional(Schema.Array(GoogleCloudDataplexV1Entry)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1ListEntriesResponse" });
 
 export interface GoogleIamV1TestIamPermissionsResponse {
   /** A subset of TestPermissionsRequest.permissions that the caller is allowed. */
   permissions?: Array<string>;
 }
 
-export const GoogleIamV1TestIamPermissionsResponse: Schema.Schema<GoogleIamV1TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1TestIamPermissionsResponse",
-  }) as any as Schema.Schema<GoogleIamV1TestIamPermissionsResponse>;
+export const GoogleIamV1TestIamPermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleIamV1TestIamPermissionsResponse" });
 
 export interface GoogleCloudDataplexV1ListDataProductsResponse {
   /** The data products for the requested filter criteria. */
@@ -5965,18 +5218,14 @@ export interface GoogleCloudDataplexV1ListDataProductsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDataplexV1ListDataProductsResponse: Schema.Schema<GoogleCloudDataplexV1ListDataProductsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataProducts: Schema.optional(
-        Schema.Array(GoogleCloudDataplexV1DataProduct),
-      ),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1ListDataProductsResponse",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1ListDataProductsResponse>;
+export const GoogleCloudDataplexV1ListDataProductsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataProducts: Schema.optional(
+      Schema.Array(GoogleCloudDataplexV1DataProduct),
+    ),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1ListDataProductsResponse" });
 
 export interface GoogleCloudDataplexV1MetadataJobExportJobSpec {
   /** Required. The scope of the export job. */
@@ -5985,17 +5234,13 @@ export interface GoogleCloudDataplexV1MetadataJobExportJobSpec {
   outputPath?: string;
 }
 
-export const GoogleCloudDataplexV1MetadataJobExportJobSpec: Schema.Schema<GoogleCloudDataplexV1MetadataJobExportJobSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scope: Schema.optional(
-        GoogleCloudDataplexV1MetadataJobExportJobSpecExportJobScope,
-      ),
-      outputPath: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1MetadataJobExportJobSpec",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1MetadataJobExportJobSpec>;
+export const GoogleCloudDataplexV1MetadataJobExportJobSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scope: Schema.optional(
+      GoogleCloudDataplexV1MetadataJobExportJobSpecExportJobScope,
+    ),
+    outputPath: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1MetadataJobExportJobSpec" });
 
 export interface GoogleCloudDataplexV1MetadataJob {
   /** Optional. User-defined labels. */
@@ -6022,32 +5267,24 @@ export interface GoogleCloudDataplexV1MetadataJob {
   exportResult?: GoogleCloudDataplexV1MetadataJobExportJobResult;
 }
 
-export const GoogleCloudDataplexV1MetadataJob: Schema.Schema<GoogleCloudDataplexV1MetadataJob> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      uid: Schema.optional(Schema.String),
-      importSpec: Schema.optional(
-        GoogleCloudDataplexV1MetadataJobImportJobSpec,
-      ),
-      name: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      exportSpec: Schema.optional(
-        GoogleCloudDataplexV1MetadataJobExportJobSpec,
-      ),
-      createTime: Schema.optional(Schema.String),
-      status: Schema.optional(GoogleCloudDataplexV1MetadataJobStatus),
-      importResult: Schema.optional(
-        GoogleCloudDataplexV1MetadataJobImportJobResult,
-      ),
-      type: Schema.optional(Schema.String),
-      exportResult: Schema.optional(
-        GoogleCloudDataplexV1MetadataJobExportJobResult,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1MetadataJob",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1MetadataJob>;
+export const GoogleCloudDataplexV1MetadataJob =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    uid: Schema.optional(Schema.String),
+    importSpec: Schema.optional(GoogleCloudDataplexV1MetadataJobImportJobSpec),
+    name: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    exportSpec: Schema.optional(GoogleCloudDataplexV1MetadataJobExportJobSpec),
+    createTime: Schema.optional(Schema.String),
+    status: Schema.optional(GoogleCloudDataplexV1MetadataJobStatus),
+    importResult: Schema.optional(
+      GoogleCloudDataplexV1MetadataJobImportJobResult,
+    ),
+    type: Schema.optional(Schema.String),
+    exportResult: Schema.optional(
+      GoogleCloudDataplexV1MetadataJobExportJobResult,
+    ),
+  }).annotate({ identifier: "GoogleCloudDataplexV1MetadataJob" });
 
 export interface GoogleCloudDataplexV1ListMetadataJobsResponse {
   /** Metadata jobs under the specified parent location. */
@@ -6058,18 +5295,14 @@ export interface GoogleCloudDataplexV1ListMetadataJobsResponse {
   unreachableLocations?: Array<string>;
 }
 
-export const GoogleCloudDataplexV1ListMetadataJobsResponse: Schema.Schema<GoogleCloudDataplexV1ListMetadataJobsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadataJobs: Schema.optional(
-        Schema.Array(GoogleCloudDataplexV1MetadataJob),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachableLocations: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1ListMetadataJobsResponse",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1ListMetadataJobsResponse>;
+export const GoogleCloudDataplexV1ListMetadataJobsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    metadataJobs: Schema.optional(
+      Schema.Array(GoogleCloudDataplexV1MetadataJob),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachableLocations: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudDataplexV1ListMetadataJobsResponse" });
 
 export interface GoogleCloudDataplexV1Glossary {
   /** Optional. The user-mutable description of the Glossary. */
@@ -6094,23 +5327,19 @@ export interface GoogleCloudDataplexV1Glossary {
   displayName?: string;
 }
 
-export const GoogleCloudDataplexV1Glossary: Schema.Schema<GoogleCloudDataplexV1Glossary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      uid: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      name: Schema.optional(Schema.String),
-      categoryCount: Schema.optional(Schema.Number),
-      termCount: Schema.optional(Schema.Number),
-      createTime: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1Glossary",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1Glossary>;
+export const GoogleCloudDataplexV1Glossary =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    uid: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    name: Schema.optional(Schema.String),
+    categoryCount: Schema.optional(Schema.Number),
+    termCount: Schema.optional(Schema.Number),
+    createTime: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1Glossary" });
 
 export interface GoogleCloudDataplexV1ListGlossariesResponse {
   /** A token, which can be sent as page_token to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -6121,30 +5350,26 @@ export interface GoogleCloudDataplexV1ListGlossariesResponse {
   glossaries?: Array<GoogleCloudDataplexV1Glossary>;
 }
 
-export const GoogleCloudDataplexV1ListGlossariesResponse: Schema.Schema<GoogleCloudDataplexV1ListGlossariesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      unreachableLocations: Schema.optional(Schema.Array(Schema.String)),
-      glossaries: Schema.optional(Schema.Array(GoogleCloudDataplexV1Glossary)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1ListGlossariesResponse",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1ListGlossariesResponse>;
+export const GoogleCloudDataplexV1ListGlossariesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    unreachableLocations: Schema.optional(Schema.Array(Schema.String)),
+    glossaries: Schema.optional(Schema.Array(GoogleCloudDataplexV1Glossary)),
+  }).annotate({ identifier: "GoogleCloudDataplexV1ListGlossariesResponse" });
 
 export interface GoogleCloudDataplexV1CancelMetadataJobRequest {}
 
-export const GoogleCloudDataplexV1CancelMetadataJobRequest: Schema.Schema<GoogleCloudDataplexV1CancelMetadataJobRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDataplexV1CancelMetadataJobRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDataplexV1CancelMetadataJobRequest",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1CancelMetadataJobRequest>;
+  });
 
 export interface GoogleLongrunningCancelOperationRequest {}
 
-export const GoogleLongrunningCancelOperationRequest: Schema.Schema<GoogleLongrunningCancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleLongrunningCancelOperationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleLongrunningCancelOperationRequest",
-  }) as any as Schema.Schema<GoogleLongrunningCancelOperationRequest>;
+  });
 
 export interface GoogleCloudDataplexV1ListDataAttributeBindingsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
@@ -6155,18 +5380,16 @@ export interface GoogleCloudDataplexV1ListDataAttributeBindingsResponse {
   dataAttributeBindings?: Array<GoogleCloudDataplexV1DataAttributeBinding>;
 }
 
-export const GoogleCloudDataplexV1ListDataAttributeBindingsResponse: Schema.Schema<GoogleCloudDataplexV1ListDataAttributeBindingsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      unreachableLocations: Schema.optional(Schema.Array(Schema.String)),
-      dataAttributeBindings: Schema.optional(
-        Schema.Array(GoogleCloudDataplexV1DataAttributeBinding),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1ListDataAttributeBindingsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    unreachableLocations: Schema.optional(Schema.Array(Schema.String)),
+    dataAttributeBindings: Schema.optional(
+      Schema.Array(GoogleCloudDataplexV1DataAttributeBinding),
+    ),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1ListDataAttributeBindingsResponse",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1ListDataAttributeBindingsResponse>;
+  });
 
 export interface GoogleCloudDataplexV1ListPartitionsResponse {
   /** Partitions under the specified parent entity. */
@@ -6175,15 +5398,11 @@ export interface GoogleCloudDataplexV1ListPartitionsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDataplexV1ListPartitionsResponse: Schema.Schema<GoogleCloudDataplexV1ListPartitionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      partitions: Schema.optional(Schema.Array(GoogleCloudDataplexV1Partition)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1ListPartitionsResponse",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1ListPartitionsResponse>;
+export const GoogleCloudDataplexV1ListPartitionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    partitions: Schema.optional(Schema.Array(GoogleCloudDataplexV1Partition)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1ListPartitionsResponse" });
 
 export interface GoogleCloudDataplexV1EntryLinkEvent {
   /** The type of the event. */
@@ -6198,30 +5417,22 @@ export interface GoogleCloudDataplexV1EntryLinkEvent {
   resource?: string;
 }
 
-export const GoogleCloudDataplexV1EntryLinkEvent: Schema.Schema<GoogleCloudDataplexV1EntryLinkEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      eventType: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-      resource: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1EntryLinkEvent",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1EntryLinkEvent>;
+export const GoogleCloudDataplexV1EntryLinkEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    eventType: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+    resource: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1EntryLinkEvent" });
 
 export interface GoogleCloudDataplexV1RunTaskResponse {
   /** Jobs created by RunTask API. */
   job?: GoogleCloudDataplexV1Job;
 }
 
-export const GoogleCloudDataplexV1RunTaskResponse: Schema.Schema<GoogleCloudDataplexV1RunTaskResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      job: Schema.optional(GoogleCloudDataplexV1Job),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1RunTaskResponse",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1RunTaskResponse>;
+export const GoogleCloudDataplexV1RunTaskResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    job: Schema.optional(GoogleCloudDataplexV1Job),
+  }).annotate({ identifier: "GoogleCloudDataplexV1RunTaskResponse" });
 
 export interface GoogleCloudDataplexV1ListActionsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
@@ -6230,15 +5441,11 @@ export interface GoogleCloudDataplexV1ListActionsResponse {
   actions?: Array<GoogleCloudDataplexV1Action>;
 }
 
-export const GoogleCloudDataplexV1ListActionsResponse: Schema.Schema<GoogleCloudDataplexV1ListActionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      actions: Schema.optional(Schema.Array(GoogleCloudDataplexV1Action)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1ListActionsResponse",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1ListActionsResponse>;
+export const GoogleCloudDataplexV1ListActionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    actions: Schema.optional(Schema.Array(GoogleCloudDataplexV1Action)),
+  }).annotate({ identifier: "GoogleCloudDataplexV1ListActionsResponse" });
 
 export interface GoogleCloudDataplexV1DataScanEventDataProfileAppliedConfigs {
   /** The percentage of the records selected from the dataset for DataScan. Value ranges between 0.0 and 100.0. Value 0.0 or 100.0 imply that sampling was not applied. */
@@ -6249,16 +5456,14 @@ export interface GoogleCloudDataplexV1DataScanEventDataProfileAppliedConfigs {
   rowFilterApplied?: boolean;
 }
 
-export const GoogleCloudDataplexV1DataScanEventDataProfileAppliedConfigs: Schema.Schema<GoogleCloudDataplexV1DataScanEventDataProfileAppliedConfigs> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      samplingPercent: Schema.optional(Schema.Number),
-      columnFilterApplied: Schema.optional(Schema.Boolean),
-      rowFilterApplied: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1DataScanEventDataProfileAppliedConfigs =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    samplingPercent: Schema.optional(Schema.Number),
+    columnFilterApplied: Schema.optional(Schema.Boolean),
+    rowFilterApplied: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1DataScanEventDataProfileAppliedConfigs",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataScanEventDataProfileAppliedConfigs>;
+  });
 
 export interface GoogleCloudDataplexV1DataScanEvent {
   /** The result of post scan actions. */
@@ -6314,42 +5519,38 @@ export interface GoogleCloudDataplexV1DataScanEvent {
     | (string & {});
 }
 
-export const GoogleCloudDataplexV1DataScanEvent: Schema.Schema<GoogleCloudDataplexV1DataScanEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      postScanActionsResult: Schema.optional(
-        GoogleCloudDataplexV1DataScanEventPostScanActionsResult,
-      ),
-      startTime: Schema.optional(Schema.String),
-      dataProfile: Schema.optional(
-        GoogleCloudDataplexV1DataScanEventDataProfileResult,
-      ),
-      dataQuality: Schema.optional(
-        GoogleCloudDataplexV1DataScanEventDataQualityResult,
-      ),
-      createTime: Schema.optional(Schema.String),
-      dataSource: Schema.optional(Schema.String),
-      specVersion: Schema.optional(Schema.String),
-      dataProfileConfigs: Schema.optional(
-        GoogleCloudDataplexV1DataScanEventDataProfileAppliedConfigs,
-      ),
-      scope: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-      trigger: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      dataQualityConfigs: Schema.optional(
-        GoogleCloudDataplexV1DataScanEventDataQualityAppliedConfigs,
-      ),
-      jobId: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      catalogPublishingStatus: Schema.optional(
-        GoogleCloudDataplexV1DataScanCatalogPublishingStatus,
-      ),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1DataScanEvent",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1DataScanEvent>;
+export const GoogleCloudDataplexV1DataScanEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    postScanActionsResult: Schema.optional(
+      GoogleCloudDataplexV1DataScanEventPostScanActionsResult,
+    ),
+    startTime: Schema.optional(Schema.String),
+    dataProfile: Schema.optional(
+      GoogleCloudDataplexV1DataScanEventDataProfileResult,
+    ),
+    dataQuality: Schema.optional(
+      GoogleCloudDataplexV1DataScanEventDataQualityResult,
+    ),
+    createTime: Schema.optional(Schema.String),
+    dataSource: Schema.optional(Schema.String),
+    specVersion: Schema.optional(Schema.String),
+    dataProfileConfigs: Schema.optional(
+      GoogleCloudDataplexV1DataScanEventDataProfileAppliedConfigs,
+    ),
+    scope: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+    trigger: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    dataQualityConfigs: Schema.optional(
+      GoogleCloudDataplexV1DataScanEventDataQualityAppliedConfigs,
+    ),
+    jobId: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    catalogPublishingStatus: Schema.optional(
+      GoogleCloudDataplexV1DataScanCatalogPublishingStatus,
+    ),
+    type: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1DataScanEvent" });
 
 export interface GoogleCloudDataplexV1ListEntryTypesResponse {
   /** EntryTypes under the given parent location. */
@@ -6360,16 +5561,12 @@ export interface GoogleCloudDataplexV1ListEntryTypesResponse {
   unreachableLocations?: Array<string>;
 }
 
-export const GoogleCloudDataplexV1ListEntryTypesResponse: Schema.Schema<GoogleCloudDataplexV1ListEntryTypesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entryTypes: Schema.optional(Schema.Array(GoogleCloudDataplexV1EntryType)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachableLocations: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1ListEntryTypesResponse",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1ListEntryTypesResponse>;
+export const GoogleCloudDataplexV1ListEntryTypesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entryTypes: Schema.optional(Schema.Array(GoogleCloudDataplexV1EntryType)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachableLocations: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudDataplexV1ListEntryTypesResponse" });
 
 export interface GoogleCloudDataplexV1ListGlossaryCategoriesResponse {
   /** Lists the GlossaryCategories in the specified parent. */
@@ -6380,18 +5577,16 @@ export interface GoogleCloudDataplexV1ListGlossaryCategoriesResponse {
   unreachableLocations?: Array<string>;
 }
 
-export const GoogleCloudDataplexV1ListGlossaryCategoriesResponse: Schema.Schema<GoogleCloudDataplexV1ListGlossaryCategoriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      categories: Schema.optional(
-        Schema.Array(GoogleCloudDataplexV1GlossaryCategory),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachableLocations: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudDataplexV1ListGlossaryCategoriesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    categories: Schema.optional(
+      Schema.Array(GoogleCloudDataplexV1GlossaryCategory),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachableLocations: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudDataplexV1ListGlossaryCategoriesResponse",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1ListGlossaryCategoriesResponse>;
+  });
 
 export interface GoogleCloudDataplexV1JobEvent {
   /** The time when the job started running. */
@@ -6426,23 +5621,19 @@ export interface GoogleCloudDataplexV1JobEvent {
   service?: "SERVICE_UNSPECIFIED" | "DATAPROC" | (string & {});
 }
 
-export const GoogleCloudDataplexV1JobEvent: Schema.Schema<GoogleCloudDataplexV1JobEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Schema.String),
-      serviceJob: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-      retries: Schema.optional(Schema.Number),
-      executionTrigger: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      jobId: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      service: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1JobEvent",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1JobEvent>;
+export const GoogleCloudDataplexV1JobEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startTime: Schema.optional(Schema.String),
+    serviceJob: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+    retries: Schema.optional(Schema.Number),
+    executionTrigger: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    jobId: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    service: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1JobEvent" });
 
 export interface GoogleCloudDataplexV1ListEntryGroupsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
@@ -6453,18 +5644,12 @@ export interface GoogleCloudDataplexV1ListEntryGroupsResponse {
   entryGroups?: Array<GoogleCloudDataplexV1EntryGroup>;
 }
 
-export const GoogleCloudDataplexV1ListEntryGroupsResponse: Schema.Schema<GoogleCloudDataplexV1ListEntryGroupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      unreachableLocations: Schema.optional(Schema.Array(Schema.String)),
-      entryGroups: Schema.optional(
-        Schema.Array(GoogleCloudDataplexV1EntryGroup),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1ListEntryGroupsResponse",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1ListEntryGroupsResponse>;
+export const GoogleCloudDataplexV1ListEntryGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    unreachableLocations: Schema.optional(Schema.Array(Schema.String)),
+    entryGroups: Schema.optional(Schema.Array(GoogleCloudDataplexV1EntryGroup)),
+  }).annotate({ identifier: "GoogleCloudDataplexV1ListEntryGroupsResponse" });
 
 export interface GoogleCloudDataplexV1ListZonesResponse {
   /** Zones under the given parent lake. */
@@ -6473,36 +5658,28 @@ export interface GoogleCloudDataplexV1ListZonesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDataplexV1ListZonesResponse: Schema.Schema<GoogleCloudDataplexV1ListZonesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      zones: Schema.optional(Schema.Array(GoogleCloudDataplexV1Zone)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1ListZonesResponse",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1ListZonesResponse>;
+export const GoogleCloudDataplexV1ListZonesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zones: Schema.optional(Schema.Array(GoogleCloudDataplexV1Zone)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1ListZonesResponse" });
 
 export interface GoogleCloudDataplexV1LookupContextResponse {
   /** Pre-formatted block of text containing the context for the requested resources. */
   context?: string;
 }
 
-export const GoogleCloudDataplexV1LookupContextResponse: Schema.Schema<GoogleCloudDataplexV1LookupContextResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      context: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDataplexV1LookupContextResponse",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1LookupContextResponse>;
+export const GoogleCloudDataplexV1LookupContextResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    context: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDataplexV1LookupContextResponse" });
 
 export interface GoogleCloudDataplexV1GenerateDataQualityRulesRequest {}
 
-export const GoogleCloudDataplexV1GenerateDataQualityRulesRequest: Schema.Schema<GoogleCloudDataplexV1GenerateDataQualityRulesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDataplexV1GenerateDataQualityRulesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDataplexV1GenerateDataQualityRulesRequest",
-  }) as any as Schema.Schema<GoogleCloudDataplexV1GenerateDataQualityRulesRequest>;
+  });
 
 // ==========================================================================
 // Operations

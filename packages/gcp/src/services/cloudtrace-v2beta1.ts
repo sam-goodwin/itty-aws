@@ -27,14 +27,9 @@ export interface OutputConfig {
   destination?: string;
 }
 
-export const OutputConfig: Schema.Schema<OutputConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      destination: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OutputConfig",
-  }) as any as Schema.Schema<OutputConfig>;
+export const OutputConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  destination: Schema.optional(Schema.String),
+}).annotate({ identifier: "OutputConfig" });
 
 export interface TraceSink {
   /** Identifier. The canonical sink resource name, unique within the project. Must be of the form: projects/[PROJECT_NUMBER]/traceSinks/[SINK_ID]. E.g.: `"projects/12345/traceSinks/my-project-trace-sink"`. Sink identifiers are limited to 256 characters and can include only the following characters: upper and lower-case alphanumeric characters, underscores, hyphens, and periods. */
@@ -45,14 +40,11 @@ export interface TraceSink {
   writerIdentity?: string;
 }
 
-export const TraceSink: Schema.Schema<TraceSink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      outputConfig: Schema.optional(OutputConfig),
-      writerIdentity: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "TraceSink" }) as any as Schema.Schema<TraceSink>;
+export const TraceSink = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  outputConfig: Schema.optional(OutputConfig),
+  writerIdentity: Schema.optional(Schema.String),
+}).annotate({ identifier: "TraceSink" });
 
 export interface ListTraceSinksResponse {
   /** A list of sinks. */
@@ -61,22 +53,18 @@ export interface ListTraceSinksResponse {
   nextPageToken?: string;
 }
 
-export const ListTraceSinksResponse: Schema.Schema<ListTraceSinksResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sinks: Schema.optional(Schema.Array(TraceSink)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListTraceSinksResponse",
-  }) as any as Schema.Schema<ListTraceSinksResponse>;
+export const ListTraceSinksResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    sinks: Schema.optional(Schema.Array(TraceSink)),
+    nextPageToken: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ListTraceSinksResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 // ==========================================================================
 // Operations

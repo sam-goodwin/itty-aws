@@ -39,18 +39,15 @@ export interface Tokeninfo {
   verified_email?: boolean;
 }
 
-export const Tokeninfo: Schema.Schema<Tokeninfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      audience: Schema.optional(Schema.String),
-      email: Schema.optional(Schema.String),
-      expires_in: Schema.optional(Schema.Number),
-      issued_to: Schema.optional(Schema.String),
-      scope: Schema.optional(Schema.String),
-      user_id: Schema.optional(Schema.String),
-      verified_email: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "Tokeninfo" }) as any as Schema.Schema<Tokeninfo>;
+export const Tokeninfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  audience: Schema.optional(Schema.String),
+  email: Schema.optional(Schema.String),
+  expires_in: Schema.optional(Schema.Number),
+  issued_to: Schema.optional(Schema.String),
+  scope: Schema.optional(Schema.String),
+  user_id: Schema.optional(Schema.String),
+  verified_email: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Tokeninfo" });
 
 export interface Userinfo {
   /** The user's email address. */
@@ -77,22 +74,19 @@ export interface Userinfo {
   verified_email?: boolean;
 }
 
-export const Userinfo: Schema.Schema<Userinfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      email: Schema.optional(Schema.String),
-      family_name: Schema.optional(Schema.String),
-      gender: Schema.optional(Schema.String),
-      given_name: Schema.optional(Schema.String),
-      hd: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      link: Schema.optional(Schema.String),
-      locale: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      picture: Schema.optional(Schema.String),
-      verified_email: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "Userinfo" }) as any as Schema.Schema<Userinfo>;
+export const Userinfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  email: Schema.optional(Schema.String),
+  family_name: Schema.optional(Schema.String),
+  gender: Schema.optional(Schema.String),
+  given_name: Schema.optional(Schema.String),
+  hd: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  link: Schema.optional(Schema.String),
+  locale: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  picture: Schema.optional(Schema.String),
+  verified_email: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Userinfo" });
 
 // ==========================================================================
 // Operations

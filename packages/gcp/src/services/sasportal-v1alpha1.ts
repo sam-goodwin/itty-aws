@@ -31,18 +31,13 @@ export interface SasPortalStatus {
   code?: number;
 }
 
-export const SasPortalStatus: Schema.Schema<SasPortalStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      code: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "SasPortalStatus",
-  }) as any as Schema.Schema<SasPortalStatus>;
+export const SasPortalStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  code: Schema.optional(Schema.Number),
+}).annotate({ identifier: "SasPortalStatus" });
 
 export interface SasPortalDeployment {
   /** Output only. Resource name. */
@@ -55,17 +50,12 @@ export interface SasPortalDeployment {
   sasUserIds?: Array<string>;
 }
 
-export const SasPortalDeployment: Schema.Schema<SasPortalDeployment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      frns: Schema.optional(Schema.Array(Schema.String)),
-      displayName: Schema.optional(Schema.String),
-      sasUserIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "SasPortalDeployment",
-  }) as any as Schema.Schema<SasPortalDeployment>;
+export const SasPortalDeployment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  frns: Schema.optional(Schema.Array(Schema.String)),
+  displayName: Schema.optional(Schema.String),
+  sasUserIds: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "SasPortalDeployment" });
 
 export interface SasPortalListDeploymentsResponse {
   /** The deployments that match the request. */
@@ -74,15 +64,11 @@ export interface SasPortalListDeploymentsResponse {
   nextPageToken?: string;
 }
 
-export const SasPortalListDeploymentsResponse: Schema.Schema<SasPortalListDeploymentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deployments: Schema.optional(Schema.Array(SasPortalDeployment)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SasPortalListDeploymentsResponse",
-  }) as any as Schema.Schema<SasPortalListDeploymentsResponse>;
+export const SasPortalListDeploymentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deployments: Schema.optional(Schema.Array(SasPortalDeployment)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SasPortalListDeploymentsResponse" });
 
 export interface SasPortalFrequencyRange {
   /** The lowest frequency of the frequency range in MHz. */
@@ -91,15 +77,11 @@ export interface SasPortalFrequencyRange {
   highFrequencyMhz?: number;
 }
 
-export const SasPortalFrequencyRange: Schema.Schema<SasPortalFrequencyRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lowFrequencyMhz: Schema.optional(Schema.Number),
-      highFrequencyMhz: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "SasPortalFrequencyRange",
-  }) as any as Schema.Schema<SasPortalFrequencyRange>;
+export const SasPortalFrequencyRange =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    lowFrequencyMhz: Schema.optional(Schema.Number),
+    highFrequencyMhz: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "SasPortalFrequencyRange" });
 
 export interface SasPortalDpaMoveList {
   /** The ID of the DPA. */
@@ -108,29 +90,23 @@ export interface SasPortalDpaMoveList {
   frequencyRange?: SasPortalFrequencyRange;
 }
 
-export const SasPortalDpaMoveList: Schema.Schema<SasPortalDpaMoveList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dpaId: Schema.optional(Schema.String),
-      frequencyRange: Schema.optional(SasPortalFrequencyRange),
-    }),
-  ).annotate({
-    identifier: "SasPortalDpaMoveList",
-  }) as any as Schema.Schema<SasPortalDpaMoveList>;
+export const SasPortalDpaMoveList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dpaId: Schema.optional(Schema.String),
+  frequencyRange: Schema.optional(SasPortalFrequencyRange),
+}).annotate({ identifier: "SasPortalDpaMoveList" });
 
 export interface SasPortalEmpty {}
 
-export const SasPortalEmpty: Schema.Schema<SasPortalEmpty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "SasPortalEmpty",
-  }) as any as Schema.Schema<SasPortalEmpty>;
+export const SasPortalEmpty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "SasPortalEmpty" });
 
 export interface SasPortalSetupSasAnalyticsResponse {}
 
-export const SasPortalSetupSasAnalyticsResponse: Schema.Schema<SasPortalSetupSasAnalyticsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const SasPortalSetupSasAnalyticsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "SasPortalSetupSasAnalyticsResponse",
-  }) as any as Schema.Schema<SasPortalSetupSasAnalyticsResponse>;
+  });
 
 export interface SasPortalProvisionDeploymentRequest {
   /** Optional. If this field is set, and a new SAS Portal Organization needs to be created, its display name will be set to the value of this field. */
@@ -141,16 +117,12 @@ export interface SasPortalProvisionDeploymentRequest {
   organizationId?: string;
 }
 
-export const SasPortalProvisionDeploymentRequest: Schema.Schema<SasPortalProvisionDeploymentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      newOrganizationDisplayName: Schema.optional(Schema.String),
-      newDeploymentDisplayName: Schema.optional(Schema.String),
-      organizationId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SasPortalProvisionDeploymentRequest",
-  }) as any as Schema.Schema<SasPortalProvisionDeploymentRequest>;
+export const SasPortalProvisionDeploymentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    newOrganizationDisplayName: Schema.optional(Schema.String),
+    newDeploymentDisplayName: Schema.optional(Schema.String),
+    organizationId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SasPortalProvisionDeploymentRequest" });
 
 export interface SasPortalDeviceModel {
   /** The software version of the device. */
@@ -165,18 +137,13 @@ export interface SasPortalDeviceModel {
   firmwareVersion?: string;
 }
 
-export const SasPortalDeviceModel: Schema.Schema<SasPortalDeviceModel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      softwareVersion: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      vendor: Schema.optional(Schema.String),
-      hardwareVersion: Schema.optional(Schema.String),
-      firmwareVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SasPortalDeviceModel",
-  }) as any as Schema.Schema<SasPortalDeviceModel>;
+export const SasPortalDeviceModel = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  softwareVersion: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  vendor: Schema.optional(Schema.String),
+  hardwareVersion: Schema.optional(Schema.String),
+  firmwareVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "SasPortalDeviceModel" });
 
 export interface SasPortalCustomer {
   /** Required. Name of the organization that the customer entity represents. */
@@ -187,16 +154,11 @@ export interface SasPortalCustomer {
   name?: string;
 }
 
-export const SasPortalCustomer: Schema.Schema<SasPortalCustomer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      sasUserIds: Schema.optional(Schema.Array(Schema.String)),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SasPortalCustomer",
-  }) as any as Schema.Schema<SasPortalCustomer>;
+export const SasPortalCustomer = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+  sasUserIds: Schema.optional(Schema.Array(Schema.String)),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "SasPortalCustomer" });
 
 export interface SasPortalListCustomersResponse {
   /** The list of customers that match the request. */
@@ -205,15 +167,11 @@ export interface SasPortalListCustomersResponse {
   nextPageToken?: string;
 }
 
-export const SasPortalListCustomersResponse: Schema.Schema<SasPortalListCustomersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customers: Schema.optional(Schema.Array(SasPortalCustomer)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SasPortalListCustomersResponse",
-  }) as any as Schema.Schema<SasPortalListCustomersResponse>;
+export const SasPortalListCustomersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customers: Schema.optional(Schema.Array(SasPortalCustomer)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SasPortalListCustomersResponse" });
 
 export interface SasPortalNrqzValidation {
   /** State of the NRQZ validation info. */
@@ -228,18 +186,14 @@ export interface SasPortalNrqzValidation {
   cpiId?: string;
 }
 
-export const SasPortalNrqzValidation: Schema.Schema<SasPortalNrqzValidation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      caseId: Schema.optional(Schema.String),
-      latitude: Schema.optional(Schema.Number),
-      longitude: Schema.optional(Schema.Number),
-      cpiId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SasPortalNrqzValidation",
-  }) as any as Schema.Schema<SasPortalNrqzValidation>;
+export const SasPortalNrqzValidation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+    caseId: Schema.optional(Schema.String),
+    latitude: Schema.optional(Schema.Number),
+    longitude: Schema.optional(Schema.Number),
+    cpiId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SasPortalNrqzValidation" });
 
 export interface SasPortalDeploymentAssociation {
   /** GCP project id of the associated project. */
@@ -248,45 +202,33 @@ export interface SasPortalDeploymentAssociation {
   userId?: string;
 }
 
-export const SasPortalDeploymentAssociation: Schema.Schema<SasPortalDeploymentAssociation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcpProjectId: Schema.optional(Schema.String),
-      userId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SasPortalDeploymentAssociation",
-  }) as any as Schema.Schema<SasPortalDeploymentAssociation>;
+export const SasPortalDeploymentAssociation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gcpProjectId: Schema.optional(Schema.String),
+    userId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SasPortalDeploymentAssociation" });
 
 export interface SasPortalMigrateOrganizationResponse {
   /** Optional. A list of deployment association that were created for the migration, or current associations if they already exist. */
   deploymentAssociation?: Array<SasPortalDeploymentAssociation>;
 }
 
-export const SasPortalMigrateOrganizationResponse: Schema.Schema<SasPortalMigrateOrganizationResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deploymentAssociation: Schema.optional(
-        Schema.Array(SasPortalDeploymentAssociation),
-      ),
-    }),
-  ).annotate({
-    identifier: "SasPortalMigrateOrganizationResponse",
-  }) as any as Schema.Schema<SasPortalMigrateOrganizationResponse>;
+export const SasPortalMigrateOrganizationResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deploymentAssociation: Schema.optional(
+      Schema.Array(SasPortalDeploymentAssociation),
+    ),
+  }).annotate({ identifier: "SasPortalMigrateOrganizationResponse" });
 
 export interface SasPortalMoveDeviceRequest {
   /** Required. The name of the new parent resource node or customer to reparent the device under. */
   destination?: string;
 }
 
-export const SasPortalMoveDeviceRequest: Schema.Schema<SasPortalMoveDeviceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      destination: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SasPortalMoveDeviceRequest",
-  }) as any as Schema.Schema<SasPortalMoveDeviceRequest>;
+export const SasPortalMoveDeviceRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    destination: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SasPortalMoveDeviceRequest" });
 
 export interface SasPortalInstallationParams {
   /** A positive number in meters to indicate accuracy of the device antenna horizontal location. This optional parameter should only be present if its value is less than the FCC requirement of 50 meters. */
@@ -323,27 +265,23 @@ export interface SasPortalInstallationParams {
   height?: number;
 }
 
-export const SasPortalInstallationParams: Schema.Schema<SasPortalInstallationParams> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      horizontalAccuracy: Schema.optional(Schema.Number),
-      heightType: Schema.optional(Schema.String),
-      verticalAccuracy: Schema.optional(Schema.Number),
-      eirpCapability: Schema.optional(Schema.Number),
-      antennaModel: Schema.optional(Schema.String),
-      latitude: Schema.optional(Schema.Number),
-      longitude: Schema.optional(Schema.Number),
-      antennaDowntilt: Schema.optional(Schema.Number),
-      cpeCbsdIndication: Schema.optional(Schema.Boolean),
-      antennaBeamwidth: Schema.optional(Schema.Number),
-      indoorDeployment: Schema.optional(Schema.Boolean),
-      antennaGain: Schema.optional(Schema.Number),
-      antennaAzimuth: Schema.optional(Schema.Number),
-      height: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "SasPortalInstallationParams",
-  }) as any as Schema.Schema<SasPortalInstallationParams>;
+export const SasPortalInstallationParams =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    horizontalAccuracy: Schema.optional(Schema.Number),
+    heightType: Schema.optional(Schema.String),
+    verticalAccuracy: Schema.optional(Schema.Number),
+    eirpCapability: Schema.optional(Schema.Number),
+    antennaModel: Schema.optional(Schema.String),
+    latitude: Schema.optional(Schema.Number),
+    longitude: Schema.optional(Schema.Number),
+    antennaDowntilt: Schema.optional(Schema.Number),
+    cpeCbsdIndication: Schema.optional(Schema.Boolean),
+    antennaBeamwidth: Schema.optional(Schema.Number),
+    indoorDeployment: Schema.optional(Schema.Boolean),
+    antennaGain: Schema.optional(Schema.Number),
+    antennaAzimuth: Schema.optional(Schema.Number),
+    height: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "SasPortalInstallationParams" });
 
 export interface SasPortalDeviceAirInterface {
   /** Conditional. This field specifies the radio access technology that is used for the CBSD. */
@@ -363,15 +301,11 @@ export interface SasPortalDeviceAirInterface {
   supportedSpec?: string;
 }
 
-export const SasPortalDeviceAirInterface: Schema.Schema<SasPortalDeviceAirInterface> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      radioTechnology: Schema.optional(Schema.String),
-      supportedSpec: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SasPortalDeviceAirInterface",
-  }) as any as Schema.Schema<SasPortalDeviceAirInterface>;
+export const SasPortalDeviceAirInterface =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    radioTechnology: Schema.optional(Schema.String),
+    supportedSpec: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SasPortalDeviceAirInterface" });
 
 export interface SasPortalDeviceConfig {
   /** The identifier of a device user. */
@@ -405,23 +339,18 @@ export interface SasPortalDeviceConfig {
   >;
 }
 
-export const SasPortalDeviceConfig: Schema.Schema<SasPortalDeviceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userId: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      category: Schema.optional(Schema.String),
-      isSigned: Schema.optional(Schema.Boolean),
-      state: Schema.optional(Schema.String),
-      model: Schema.optional(SasPortalDeviceModel),
-      installationParams: Schema.optional(SasPortalInstallationParams),
-      callSign: Schema.optional(Schema.String),
-      airInterface: Schema.optional(SasPortalDeviceAirInterface),
-      measurementCapabilities: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "SasPortalDeviceConfig",
-  }) as any as Schema.Schema<SasPortalDeviceConfig>;
+export const SasPortalDeviceConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  userId: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  category: Schema.optional(Schema.String),
+  isSigned: Schema.optional(Schema.Boolean),
+  state: Schema.optional(Schema.String),
+  model: Schema.optional(SasPortalDeviceModel),
+  installationParams: Schema.optional(SasPortalInstallationParams),
+  callSign: Schema.optional(Schema.String),
+  airInterface: Schema.optional(SasPortalDeviceAirInterface),
+  measurementCapabilities: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "SasPortalDeviceConfig" });
 
 export interface SasPortalDeviceGrant {
   /** Maximum Equivalent Isotropically Radiated Power (EIRP) permitted by the grant. The maximum EIRP is in units of dBm/MHz. The value of `maxEirp` represents the average (RMS) EIRP that would be measured by the procedure defined in FCC part 96.41(e)(3). */
@@ -455,22 +384,17 @@ export interface SasPortalDeviceGrant {
   lastHeartbeatTransmitExpireTime?: string;
 }
 
-export const SasPortalDeviceGrant: Schema.Schema<SasPortalDeviceGrant> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      maxEirp: Schema.optional(Schema.Number),
-      state: Schema.optional(Schema.String),
-      expireTime: Schema.optional(Schema.String),
-      channelType: Schema.optional(Schema.String),
-      suspensionReason: Schema.optional(Schema.Array(Schema.String)),
-      moveList: Schema.optional(Schema.Array(SasPortalDpaMoveList)),
-      grantId: Schema.optional(Schema.String),
-      frequencyRange: Schema.optional(SasPortalFrequencyRange),
-      lastHeartbeatTransmitExpireTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SasPortalDeviceGrant",
-  }) as any as Schema.Schema<SasPortalDeviceGrant>;
+export const SasPortalDeviceGrant = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  maxEirp: Schema.optional(Schema.Number),
+  state: Schema.optional(Schema.String),
+  expireTime: Schema.optional(Schema.String),
+  channelType: Schema.optional(Schema.String),
+  suspensionReason: Schema.optional(Schema.Array(Schema.String)),
+  moveList: Schema.optional(Schema.Array(SasPortalDpaMoveList)),
+  grantId: Schema.optional(Schema.String),
+  frequencyRange: Schema.optional(SasPortalFrequencyRange),
+  lastHeartbeatTransmitExpireTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "SasPortalDeviceGrant" });
 
 export interface SasPortalDeviceMetadata {
   /** Common Channel Group (CCG). A group of CBSDs in the same ICG requesting a common primary channel assignment. For more details, see [CBRSA-TS-2001 V3.0.0](https://ongoalliance.org/wp-content/uploads/2020/02/CBRSA-TS-2001-V3.0.0_Approved-for-publication.pdf). */
@@ -485,18 +409,14 @@ export interface SasPortalDeviceMetadata {
   interferenceCoordinationGroup?: string;
 }
 
-export const SasPortalDeviceMetadata: Schema.Schema<SasPortalDeviceMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonChannelGroup: Schema.optional(Schema.String),
-      antennaModel: Schema.optional(Schema.String),
-      nrqzValidated: Schema.optional(Schema.Boolean),
-      nrqzValidation: Schema.optional(SasPortalNrqzValidation),
-      interferenceCoordinationGroup: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SasPortalDeviceMetadata",
-  }) as any as Schema.Schema<SasPortalDeviceMetadata>;
+export const SasPortalDeviceMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commonChannelGroup: Schema.optional(Schema.String),
+    antennaModel: Schema.optional(Schema.String),
+    nrqzValidated: Schema.optional(Schema.Boolean),
+    nrqzValidation: Schema.optional(SasPortalNrqzValidation),
+    interferenceCoordinationGroup: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SasPortalDeviceMetadata" });
 
 export interface SasPortalChannelWithScore {
   /** The frequency range of the channel. */
@@ -505,15 +425,11 @@ export interface SasPortalChannelWithScore {
   score?: number;
 }
 
-export const SasPortalChannelWithScore: Schema.Schema<SasPortalChannelWithScore> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      frequencyRange: Schema.optional(SasPortalFrequencyRange),
-      score: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "SasPortalChannelWithScore",
-  }) as any as Schema.Schema<SasPortalChannelWithScore>;
+export const SasPortalChannelWithScore =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    frequencyRange: Schema.optional(SasPortalFrequencyRange),
+    score: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "SasPortalChannelWithScore" });
 
 export interface SasPortalDevice {
   /** Output only. Device state. */
@@ -545,61 +461,46 @@ export interface SasPortalDevice {
   preloadedConfig?: SasPortalDeviceConfig;
 }
 
-export const SasPortalDevice: Schema.Schema<SasPortalDevice> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      serialNumber: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      fccId: Schema.optional(Schema.String),
-      activeConfig: Schema.optional(SasPortalDeviceConfig),
-      grants: Schema.optional(Schema.Array(SasPortalDeviceGrant)),
-      deviceMetadata: Schema.optional(SasPortalDeviceMetadata),
-      currentChannels: Schema.optional(Schema.Array(SasPortalChannelWithScore)),
-      grantRangeAllowlists: Schema.optional(
-        Schema.Array(SasPortalFrequencyRange),
-      ),
-      preloadedConfig: Schema.optional(SasPortalDeviceConfig),
-    }),
-  ).annotate({
-    identifier: "SasPortalDevice",
-  }) as any as Schema.Schema<SasPortalDevice>;
+export const SasPortalDevice = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  serialNumber: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  fccId: Schema.optional(Schema.String),
+  activeConfig: Schema.optional(SasPortalDeviceConfig),
+  grants: Schema.optional(Schema.Array(SasPortalDeviceGrant)),
+  deviceMetadata: Schema.optional(SasPortalDeviceMetadata),
+  currentChannels: Schema.optional(Schema.Array(SasPortalChannelWithScore)),
+  grantRangeAllowlists: Schema.optional(Schema.Array(SasPortalFrequencyRange)),
+  preloadedConfig: Schema.optional(SasPortalDeviceConfig),
+}).annotate({ identifier: "SasPortalDevice" });
 
 export interface SasPortalSignDeviceRequest {
   /** Required. The device to sign. The device fields name, fcc_id and serial_number must be set. The user_id field must be set. */
   device?: SasPortalDevice;
 }
 
-export const SasPortalSignDeviceRequest: Schema.Schema<SasPortalSignDeviceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      device: Schema.optional(SasPortalDevice),
-    }),
-  ).annotate({
-    identifier: "SasPortalSignDeviceRequest",
-  }) as any as Schema.Schema<SasPortalSignDeviceRequest>;
+export const SasPortalSignDeviceRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    device: Schema.optional(SasPortalDevice),
+  }).annotate({ identifier: "SasPortalSignDeviceRequest" });
 
 export interface SasPortalValidateInstallerResponse {}
 
-export const SasPortalValidateInstallerResponse: Schema.Schema<SasPortalValidateInstallerResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const SasPortalValidateInstallerResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "SasPortalValidateInstallerResponse",
-  }) as any as Schema.Schema<SasPortalValidateInstallerResponse>;
+  });
 
 export interface SasPortalProvisionDeploymentResponse {
   /** Optional. Optional error message if the provisioning request is not successful. */
   errorMessage?: string;
 }
 
-export const SasPortalProvisionDeploymentResponse: Schema.Schema<SasPortalProvisionDeploymentResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errorMessage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SasPortalProvisionDeploymentResponse",
-  }) as any as Schema.Schema<SasPortalProvisionDeploymentResponse>;
+export const SasPortalProvisionDeploymentResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    errorMessage: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SasPortalProvisionDeploymentResponse" });
 
 export interface SasPortalListDevicesResponse {
   /** The devices that match the request. */
@@ -608,15 +509,11 @@ export interface SasPortalListDevicesResponse {
   nextPageToken?: string;
 }
 
-export const SasPortalListDevicesResponse: Schema.Schema<SasPortalListDevicesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      devices: Schema.optional(Schema.Array(SasPortalDevice)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SasPortalListDevicesResponse",
-  }) as any as Schema.Schema<SasPortalListDevicesResponse>;
+export const SasPortalListDevicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    devices: Schema.optional(Schema.Array(SasPortalDevice)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SasPortalListDevicesResponse" });
 
 export interface SasPortalUpdateSignedDeviceRequest {
   /** Required. The JSON Web Token signed using a CPI private key. Payload must be the JSON encoding of the device. The user_id field must be set. */
@@ -625,57 +522,41 @@ export interface SasPortalUpdateSignedDeviceRequest {
   installerId?: string;
 }
 
-export const SasPortalUpdateSignedDeviceRequest: Schema.Schema<SasPortalUpdateSignedDeviceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      encodedDevice: Schema.optional(Schema.String),
-      installerId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SasPortalUpdateSignedDeviceRequest",
-  }) as any as Schema.Schema<SasPortalUpdateSignedDeviceRequest>;
+export const SasPortalUpdateSignedDeviceRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    encodedDevice: Schema.optional(Schema.String),
+    installerId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SasPortalUpdateSignedDeviceRequest" });
 
 export interface SasPortalMigrateOrganizationRequest {
   /** Required. Id of the SAS organization to be migrated. */
   organizationId?: string;
 }
 
-export const SasPortalMigrateOrganizationRequest: Schema.Schema<SasPortalMigrateOrganizationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      organizationId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SasPortalMigrateOrganizationRequest",
-  }) as any as Schema.Schema<SasPortalMigrateOrganizationRequest>;
+export const SasPortalMigrateOrganizationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    organizationId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SasPortalMigrateOrganizationRequest" });
 
 export interface SasPortalSetupSasAnalyticsRequest {
   /** Optional. User id to setup analytics for, if not provided the user id associated with the project is used. optional */
   userId?: string;
 }
 
-export const SasPortalSetupSasAnalyticsRequest: Schema.Schema<SasPortalSetupSasAnalyticsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SasPortalSetupSasAnalyticsRequest",
-  }) as any as Schema.Schema<SasPortalSetupSasAnalyticsRequest>;
+export const SasPortalSetupSasAnalyticsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SasPortalSetupSasAnalyticsRequest" });
 
 export interface SasPortalGetPolicyRequest {
   /** Required. The resource for which the policy is being requested. */
   resource?: string;
 }
 
-export const SasPortalGetPolicyRequest: Schema.Schema<SasPortalGetPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resource: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SasPortalGetPolicyRequest",
-  }) as any as Schema.Schema<SasPortalGetPolicyRequest>;
+export const SasPortalGetPolicyRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SasPortalGetPolicyRequest" });
 
 export interface SasPortalMigrateOrganizationMetadata {
   /** Output only. Current operation state */
@@ -688,14 +569,10 @@ export interface SasPortalMigrateOrganizationMetadata {
     | (string & {});
 }
 
-export const SasPortalMigrateOrganizationMetadata: Schema.Schema<SasPortalMigrateOrganizationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operationState: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SasPortalMigrateOrganizationMetadata",
-  }) as any as Schema.Schema<SasPortalMigrateOrganizationMetadata>;
+export const SasPortalMigrateOrganizationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operationState: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SasPortalMigrateOrganizationMetadata" });
 
 export interface SasPortalAssignment {
   /** Required. Role that is assigned to `members`. */
@@ -704,15 +581,10 @@ export interface SasPortalAssignment {
   members?: Array<string>;
 }
 
-export const SasPortalAssignment: Schema.Schema<SasPortalAssignment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      role: Schema.optional(Schema.String),
-      members: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "SasPortalAssignment",
-  }) as any as Schema.Schema<SasPortalAssignment>;
+export const SasPortalAssignment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  role: Schema.optional(Schema.String),
+  members: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "SasPortalAssignment" });
 
 export interface SasPortalPolicy {
   /** List of assignments */
@@ -721,15 +593,10 @@ export interface SasPortalPolicy {
   etag?: string;
 }
 
-export const SasPortalPolicy: Schema.Schema<SasPortalPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      assignments: Schema.optional(Schema.Array(SasPortalAssignment)),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SasPortalPolicy",
-  }) as any as Schema.Schema<SasPortalPolicy>;
+export const SasPortalPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  assignments: Schema.optional(Schema.Array(SasPortalAssignment)),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "SasPortalPolicy" });
 
 export interface SasPortalOrganization {
   /** Id of organization */
@@ -738,15 +605,10 @@ export interface SasPortalOrganization {
   displayName?: string;
 }
 
-export const SasPortalOrganization: Schema.Schema<SasPortalOrganization> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SasPortalOrganization",
-  }) as any as Schema.Schema<SasPortalOrganization>;
+export const SasPortalOrganization = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+}).annotate({ identifier: "SasPortalOrganization" });
 
 export interface SasPortalValidateInstallerRequest {
   /** Required. Secret returned by the GenerateSecret. */
@@ -757,16 +619,12 @@ export interface SasPortalValidateInstallerRequest {
   installerId?: string;
 }
 
-export const SasPortalValidateInstallerRequest: Schema.Schema<SasPortalValidateInstallerRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      secret: Schema.optional(Schema.String),
-      encodedSecret: Schema.optional(Schema.String),
-      installerId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SasPortalValidateInstallerRequest",
-  }) as any as Schema.Schema<SasPortalValidateInstallerRequest>;
+export const SasPortalValidateInstallerRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    secret: Schema.optional(Schema.String),
+    encodedSecret: Schema.optional(Schema.String),
+    installerId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SasPortalValidateInstallerRequest" });
 
 export interface SasPortalCreateSignedDeviceRequest {
   /** Required. JSON Web Token signed using a CPI private key. Payload must be the JSON encoding of the device. The user_id field must be set. */
@@ -775,29 +633,21 @@ export interface SasPortalCreateSignedDeviceRequest {
   installerId?: string;
 }
 
-export const SasPortalCreateSignedDeviceRequest: Schema.Schema<SasPortalCreateSignedDeviceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      encodedDevice: Schema.optional(Schema.String),
-      installerId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SasPortalCreateSignedDeviceRequest",
-  }) as any as Schema.Schema<SasPortalCreateSignedDeviceRequest>;
+export const SasPortalCreateSignedDeviceRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    encodedDevice: Schema.optional(Schema.String),
+    installerId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SasPortalCreateSignedDeviceRequest" });
 
 export interface SasPortalGenerateSecretResponse {
   /** The secret generated by the string and used by ValidateInstaller. */
   secret?: string;
 }
 
-export const SasPortalGenerateSecretResponse: Schema.Schema<SasPortalGenerateSecretResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      secret: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SasPortalGenerateSecretResponse",
-  }) as any as Schema.Schema<SasPortalGenerateSecretResponse>;
+export const SasPortalGenerateSecretResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    secret: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SasPortalGenerateSecretResponse" });
 
 export interface SasPortalGcpProjectDeployment {
   /** Whether SAS analytics has been enabled. */
@@ -806,64 +656,48 @@ export interface SasPortalGcpProjectDeployment {
   deployment?: SasPortalDeployment;
 }
 
-export const SasPortalGcpProjectDeployment: Schema.Schema<SasPortalGcpProjectDeployment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hasEnabledAnalytics: Schema.optional(Schema.Boolean),
-      deployment: Schema.optional(SasPortalDeployment),
-    }),
-  ).annotate({
-    identifier: "SasPortalGcpProjectDeployment",
-  }) as any as Schema.Schema<SasPortalGcpProjectDeployment>;
+export const SasPortalGcpProjectDeployment =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    hasEnabledAnalytics: Schema.optional(Schema.Boolean),
+    deployment: Schema.optional(SasPortalDeployment),
+  }).annotate({ identifier: "SasPortalGcpProjectDeployment" });
 
 export interface SasPortalListGcpProjectDeploymentsResponse {
   /** Optional. Deployments associated with the GCP project */
   deployments?: Array<SasPortalGcpProjectDeployment>;
 }
 
-export const SasPortalListGcpProjectDeploymentsResponse: Schema.Schema<SasPortalListGcpProjectDeploymentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deployments: Schema.optional(Schema.Array(SasPortalGcpProjectDeployment)),
-    }),
-  ).annotate({
-    identifier: "SasPortalListGcpProjectDeploymentsResponse",
-  }) as any as Schema.Schema<SasPortalListGcpProjectDeploymentsResponse>;
+export const SasPortalListGcpProjectDeploymentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deployments: Schema.optional(Schema.Array(SasPortalGcpProjectDeployment)),
+  }).annotate({ identifier: "SasPortalListGcpProjectDeploymentsResponse" });
 
 export interface SasPortalListLegacyOrganizationsResponse {
   /** Optional. Legacy SAS organizations. */
   organizations?: Array<SasPortalOrganization>;
 }
 
-export const SasPortalListLegacyOrganizationsResponse: Schema.Schema<SasPortalListLegacyOrganizationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      organizations: Schema.optional(Schema.Array(SasPortalOrganization)),
-    }),
-  ).annotate({
-    identifier: "SasPortalListLegacyOrganizationsResponse",
-  }) as any as Schema.Schema<SasPortalListLegacyOrganizationsResponse>;
+export const SasPortalListLegacyOrganizationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    organizations: Schema.optional(Schema.Array(SasPortalOrganization)),
+  }).annotate({ identifier: "SasPortalListLegacyOrganizationsResponse" });
 
 export interface SasPortalMoveNodeRequest {
   /** Required. The name of the new parent resource node or customer to reparent the node under. */
   destination?: string;
 }
 
-export const SasPortalMoveNodeRequest: Schema.Schema<SasPortalMoveNodeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      destination: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SasPortalMoveNodeRequest",
-  }) as any as Schema.Schema<SasPortalMoveNodeRequest>;
+export const SasPortalMoveNodeRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    destination: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SasPortalMoveNodeRequest" });
 
 export interface SasPortalSetupSasAnalyticsMetadata {}
 
-export const SasPortalSetupSasAnalyticsMetadata: Schema.Schema<SasPortalSetupSasAnalyticsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const SasPortalSetupSasAnalyticsMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "SasPortalSetupSasAnalyticsMetadata",
-  }) as any as Schema.Schema<SasPortalSetupSasAnalyticsMetadata>;
+  });
 
 export interface SasPortalTestPermissionsRequest {
   /** Required. The resource for which the permissions are being requested. */
@@ -872,15 +706,11 @@ export interface SasPortalTestPermissionsRequest {
   permissions?: Array<string>;
 }
 
-export const SasPortalTestPermissionsRequest: Schema.Schema<SasPortalTestPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resource: Schema.optional(Schema.String),
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "SasPortalTestPermissionsRequest",
-  }) as any as Schema.Schema<SasPortalTestPermissionsRequest>;
+export const SasPortalTestPermissionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.optional(Schema.String),
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "SasPortalTestPermissionsRequest" });
 
 export interface SasPortalNode {
   /** Output only. Resource name. */
@@ -891,16 +721,11 @@ export interface SasPortalNode {
   sasUserIds?: Array<string>;
 }
 
-export const SasPortalNode: Schema.Schema<SasPortalNode> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      sasUserIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "SasPortalNode",
-  }) as any as Schema.Schema<SasPortalNode>;
+export const SasPortalNode = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  sasUserIds: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "SasPortalNode" });
 
 export interface SasPortalListNodesResponse {
   /** The nodes that match the request. */
@@ -909,15 +734,11 @@ export interface SasPortalListNodesResponse {
   nextPageToken?: string;
 }
 
-export const SasPortalListNodesResponse: Schema.Schema<SasPortalListNodesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nodes: Schema.optional(Schema.Array(SasPortalNode)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SasPortalListNodesResponse",
-  }) as any as Schema.Schema<SasPortalListNodesResponse>;
+export const SasPortalListNodesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nodes: Schema.optional(Schema.Array(SasPortalNode)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SasPortalListNodesResponse" });
 
 export interface SasPortalOperation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -932,32 +753,23 @@ export interface SasPortalOperation {
   response?: Record<string, unknown>;
 }
 
-export const SasPortalOperation: Schema.Schema<SasPortalOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      error: Schema.optional(SasPortalStatus),
-      done: Schema.optional(Schema.Boolean),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
-    identifier: "SasPortalOperation",
-  }) as any as Schema.Schema<SasPortalOperation>;
+export const SasPortalOperation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  error: Schema.optional(SasPortalStatus),
+  done: Schema.optional(Schema.Boolean),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "SasPortalOperation" });
 
 export interface SasPortalTestPermissionsResponse {
   /** A set of permissions that the caller is allowed. */
   permissions?: Array<string>;
 }
 
-export const SasPortalTestPermissionsResponse: Schema.Schema<SasPortalTestPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "SasPortalTestPermissionsResponse",
-  }) as any as Schema.Schema<SasPortalTestPermissionsResponse>;
+export const SasPortalTestPermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "SasPortalTestPermissionsResponse" });
 
 export interface SasPortalSetPolicyRequest {
   /** Required. The resource for which the policy is being specified. This policy replaces any existing policy. */
@@ -968,37 +780,29 @@ export interface SasPortalSetPolicyRequest {
   disableNotification?: boolean;
 }
 
-export const SasPortalSetPolicyRequest: Schema.Schema<SasPortalSetPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resource: Schema.optional(Schema.String),
-      policy: Schema.optional(SasPortalPolicy),
-      disableNotification: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "SasPortalSetPolicyRequest",
-  }) as any as Schema.Schema<SasPortalSetPolicyRequest>;
+export const SasPortalSetPolicyRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.optional(Schema.String),
+    policy: Schema.optional(SasPortalPolicy),
+    disableNotification: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "SasPortalSetPolicyRequest" });
 
 export interface SasPortalMoveDeploymentRequest {
   /** Required. The name of the new parent resource node or customer to reparent the deployment under. */
   destination?: string;
 }
 
-export const SasPortalMoveDeploymentRequest: Schema.Schema<SasPortalMoveDeploymentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      destination: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SasPortalMoveDeploymentRequest",
-  }) as any as Schema.Schema<SasPortalMoveDeploymentRequest>;
+export const SasPortalMoveDeploymentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    destination: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SasPortalMoveDeploymentRequest" });
 
 export interface SasPortalGenerateSecretRequest {}
 
-export const SasPortalGenerateSecretRequest: Schema.Schema<SasPortalGenerateSecretRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const SasPortalGenerateSecretRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "SasPortalGenerateSecretRequest",
-  }) as any as Schema.Schema<SasPortalGenerateSecretRequest>;
+  });
 
 // ==========================================================================
 // Operations

@@ -29,15 +29,10 @@ export interface TruncatableString {
   value?: string;
 }
 
-export const TruncatableString: Schema.Schema<TruncatableString> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      truncatedByteCount: Schema.optional(Schema.Number),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TruncatableString",
-  }) as any as Schema.Schema<TruncatableString>;
+export const TruncatableString = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  truncatedByteCount: Schema.optional(Schema.Number),
+  value: Schema.optional(Schema.String),
+}).annotate({ identifier: "TruncatableString" });
 
 export interface AttributeValue {
   /** A string up to 256 bytes long. */
@@ -48,16 +43,11 @@ export interface AttributeValue {
   boolValue?: boolean;
 }
 
-export const AttributeValue: Schema.Schema<AttributeValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stringValue: Schema.optional(TruncatableString),
-      intValue: Schema.optional(Schema.String),
-      boolValue: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "AttributeValue",
-  }) as any as Schema.Schema<AttributeValue>;
+export const AttributeValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  stringValue: Schema.optional(TruncatableString),
+  intValue: Schema.optional(Schema.String),
+  boolValue: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "AttributeValue" });
 
 export interface Attributes {
   /** A set of attributes. Each attribute's key can be up to 128 bytes long. The value can be a string up to 256 bytes, a signed 64-bit integer, or the boolean values `true` or `false`. For example: "/instance_id": { "string_value": { "value": "my-instance" } } "/http/request_bytes": { "int_value": 300 } "example.com/myattribute": { "bool_value": false } */
@@ -66,15 +56,10 @@ export interface Attributes {
   droppedAttributesCount?: number;
 }
 
-export const Attributes: Schema.Schema<Attributes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      attributeMap: Schema.optional(
-        Schema.Record(Schema.String, AttributeValue),
-      ),
-      droppedAttributesCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Attributes" }) as any as Schema.Schema<Attributes>;
+export const Attributes = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  attributeMap: Schema.optional(Schema.Record(Schema.String, AttributeValue)),
+  droppedAttributesCount: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Attributes" });
 
 export interface Annotation {
   /** A user-supplied message describing the event. The maximum length for the description is 256 bytes. */
@@ -83,13 +68,10 @@ export interface Annotation {
   attributes?: Attributes;
 }
 
-export const Annotation: Schema.Schema<Annotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(TruncatableString),
-      attributes: Schema.optional(Attributes),
-    }),
-  ).annotate({ identifier: "Annotation" }) as any as Schema.Schema<Annotation>;
+export const Annotation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(TruncatableString),
+  attributes: Schema.optional(Attributes),
+}).annotate({ identifier: "Annotation" });
 
 export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -100,16 +82,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      message: Schema.optional(Schema.String),
-      code: Schema.optional(Schema.Number),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  message: Schema.optional(Schema.String),
+  code: Schema.optional(Schema.Number),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface MessageEvent {
   /** An identifier for the MessageEvent's message that can be used to match `SENT` and `RECEIVED` MessageEvents. */
@@ -122,17 +101,12 @@ export interface MessageEvent {
   uncompressedSizeBytes?: string;
 }
 
-export const MessageEvent: Schema.Schema<MessageEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      compressedSizeBytes: Schema.optional(Schema.String),
-      uncompressedSizeBytes: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MessageEvent",
-  }) as any as Schema.Schema<MessageEvent>;
+export const MessageEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  compressedSizeBytes: Schema.optional(Schema.String),
+  uncompressedSizeBytes: Schema.optional(Schema.String),
+}).annotate({ identifier: "MessageEvent" });
 
 export interface TimeEvent {
   /** Text annotation with a set of attributes. */
@@ -143,14 +117,11 @@ export interface TimeEvent {
   messageEvent?: MessageEvent;
 }
 
-export const TimeEvent: Schema.Schema<TimeEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      annotation: Schema.optional(Annotation),
-      time: Schema.optional(Schema.String),
-      messageEvent: Schema.optional(MessageEvent),
-    }),
-  ).annotate({ identifier: "TimeEvent" }) as any as Schema.Schema<TimeEvent>;
+export const TimeEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  annotation: Schema.optional(Annotation),
+  time: Schema.optional(Schema.String),
+  messageEvent: Schema.optional(MessageEvent),
+}).annotate({ identifier: "TimeEvent" });
 
 export interface TimeEvents {
   /** The number of dropped annotations in all the included time events. If the value is 0, then no annotations were dropped. */
@@ -161,14 +132,11 @@ export interface TimeEvents {
   droppedMessageEventsCount?: number;
 }
 
-export const TimeEvents: Schema.Schema<TimeEvents> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      droppedAnnotationsCount: Schema.optional(Schema.Number),
-      timeEvent: Schema.optional(Schema.Array(TimeEvent)),
-      droppedMessageEventsCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "TimeEvents" }) as any as Schema.Schema<TimeEvents>;
+export const TimeEvents = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  droppedAnnotationsCount: Schema.optional(Schema.Number),
+  timeEvent: Schema.optional(Schema.Array(TimeEvent)),
+  droppedMessageEventsCount: Schema.optional(Schema.Number),
+}).annotate({ identifier: "TimeEvents" });
 
 export interface Module {
   /** For example: main binary, kernel modules, and dynamic libraries such as libc.so, sharedlib.so (up to 256 bytes). */
@@ -177,13 +145,10 @@ export interface Module {
   buildId?: TruncatableString;
 }
 
-export const Module: Schema.Schema<Module> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      module: Schema.optional(TruncatableString),
-      buildId: Schema.optional(TruncatableString),
-    }),
-  ).annotate({ identifier: "Module" }) as any as Schema.Schema<Module>;
+export const Module = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  module: Schema.optional(TruncatableString),
+  buildId: Schema.optional(TruncatableString),
+}).annotate({ identifier: "Module" });
 
 export interface StackFrame {
   /** The fully-qualified name that uniquely identifies the function or method that is active in this frame (up to 1024 bytes). */
@@ -202,18 +167,15 @@ export interface StackFrame {
   sourceVersion?: TruncatableString;
 }
 
-export const StackFrame: Schema.Schema<StackFrame> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      functionName: Schema.optional(TruncatableString),
-      columnNumber: Schema.optional(Schema.String),
-      originalFunctionName: Schema.optional(TruncatableString),
-      fileName: Schema.optional(TruncatableString),
-      lineNumber: Schema.optional(Schema.String),
-      loadModule: Schema.optional(Module),
-      sourceVersion: Schema.optional(TruncatableString),
-    }),
-  ).annotate({ identifier: "StackFrame" }) as any as Schema.Schema<StackFrame>;
+export const StackFrame = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  functionName: Schema.optional(TruncatableString),
+  columnNumber: Schema.optional(Schema.String),
+  originalFunctionName: Schema.optional(TruncatableString),
+  fileName: Schema.optional(TruncatableString),
+  lineNumber: Schema.optional(Schema.String),
+  loadModule: Schema.optional(Module),
+  sourceVersion: Schema.optional(TruncatableString),
+}).annotate({ identifier: "StackFrame" });
 
 export interface StackFrames {
   /** Stack frames in this call stack. */
@@ -222,15 +184,10 @@ export interface StackFrames {
   droppedFramesCount?: number;
 }
 
-export const StackFrames: Schema.Schema<StackFrames> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      frame: Schema.optional(Schema.Array(StackFrame)),
-      droppedFramesCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "StackFrames",
-  }) as any as Schema.Schema<StackFrames>;
+export const StackFrames = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  frame: Schema.optional(Schema.Array(StackFrame)),
+  droppedFramesCount: Schema.optional(Schema.Number),
+}).annotate({ identifier: "StackFrames" });
 
 export interface StackTrace {
   /** The hash ID is used to conserve network bandwidth for duplicate stack traces within a single trace. Often multiple spans will have identical stack traces. The first occurrence of a stack trace should contain both the `stackFrame` content and a value in `stackTraceHashId`. Subsequent spans within the same request can refer to that stack trace by only setting `stackTraceHashId`. */
@@ -239,13 +196,10 @@ export interface StackTrace {
   stackFrames?: StackFrames;
 }
 
-export const StackTrace: Schema.Schema<StackTrace> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stackTraceHashId: Schema.optional(Schema.String),
-      stackFrames: Schema.optional(StackFrames),
-    }),
-  ).annotate({ identifier: "StackTrace" }) as any as Schema.Schema<StackTrace>;
+export const StackTrace = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  stackTraceHashId: Schema.optional(Schema.String),
+  stackFrames: Schema.optional(StackFrames),
+}).annotate({ identifier: "StackTrace" });
 
 export interface Link {
   /** The `[SPAN_ID]` for a span within a trace. */
@@ -262,15 +216,12 @@ export interface Link {
   attributes?: Attributes;
 }
 
-export const Link: Schema.Schema<Link> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      spanId: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      traceId: Schema.optional(Schema.String),
-      attributes: Schema.optional(Attributes),
-    }),
-  ).annotate({ identifier: "Link" }) as any as Schema.Schema<Link>;
+export const Link = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  spanId: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  traceId: Schema.optional(Schema.String),
+  attributes: Schema.optional(Attributes),
+}).annotate({ identifier: "Link" });
 
 export interface Links {
   /** A collection of links. */
@@ -279,13 +230,10 @@ export interface Links {
   droppedLinksCount?: number;
 }
 
-export const Links: Schema.Schema<Links> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      link: Schema.optional(Schema.Array(Link)),
-      droppedLinksCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Links" }) as any as Schema.Schema<Links>;
+export const Links = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  link: Schema.optional(Schema.Array(Link)),
+  droppedLinksCount: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Links" });
 
 export interface Span {
   /** Optional. The final status for this span. */
@@ -325,46 +273,39 @@ export interface Span {
   endTime?: string;
 }
 
-export const Span: Schema.Schema<Span> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      status: Schema.optional(Status),
-      spanId: Schema.optional(Schema.String),
-      parentSpanId: Schema.optional(Schema.String),
-      sameProcessAsParentSpan: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-      attributes: Schema.optional(Attributes),
-      timeEvents: Schema.optional(TimeEvents),
-      childSpanCount: Schema.optional(Schema.Number),
-      stackTrace: Schema.optional(StackTrace),
-      spanKind: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      displayName: Schema.optional(TruncatableString),
-      links: Schema.optional(Links),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Span" }) as any as Schema.Schema<Span>;
+export const Span = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  status: Schema.optional(Status),
+  spanId: Schema.optional(Schema.String),
+  parentSpanId: Schema.optional(Schema.String),
+  sameProcessAsParentSpan: Schema.optional(Schema.Boolean),
+  name: Schema.optional(Schema.String),
+  attributes: Schema.optional(Attributes),
+  timeEvents: Schema.optional(TimeEvents),
+  childSpanCount: Schema.optional(Schema.Number),
+  stackTrace: Schema.optional(StackTrace),
+  spanKind: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+  displayName: Schema.optional(TruncatableString),
+  links: Schema.optional(Links),
+  endTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Span" });
 
 export interface BatchWriteSpansRequest {
   /** Required. A list of new spans. The span names must not match existing spans, otherwise the results are undefined. */
   spans?: Array<Span>;
 }
 
-export const BatchWriteSpansRequest: Schema.Schema<BatchWriteSpansRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      spans: Schema.optional(Schema.Array(Span)),
-    }),
-  ).annotate({
-    identifier: "BatchWriteSpansRequest",
-  }) as any as Schema.Schema<BatchWriteSpansRequest>;
+export const BatchWriteSpansRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    spans: Schema.optional(Schema.Array(Span)),
+  },
+).annotate({ identifier: "BatchWriteSpansRequest" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 // ==========================================================================
 // Operations

@@ -33,17 +33,12 @@ export interface GoogleTypeExpr {
   location?: string;
 }
 
-export const GoogleTypeExpr: Schema.Schema<GoogleTypeExpr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      expression: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleTypeExpr",
-  }) as any as Schema.Schema<GoogleTypeExpr>;
+export const GoogleTypeExpr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  expression: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+}).annotate({ identifier: "GoogleTypeExpr" });
 
 export interface GoogleIdentityStsV1AccessBoundaryRule {
   /** The availability condition further constrains the access allowed by the access boundary rule. If the condition evaluates to `true`, then this access boundary rule will provide access to the specified resource, assuming the principal has the required permissions for the resource. If the condition does not evaluate to `true`, then access to the specified resource will not be available. Note that all access boundary rules in an access boundary are evaluated together as a union. As such, another access boundary rule may allow access to the resource, even if this access boundary rule does not allow access. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). The maximum length of the `expression` field is 2048 characters. */
@@ -54,16 +49,12 @@ export interface GoogleIdentityStsV1AccessBoundaryRule {
   availablePermissions?: Array<string>;
 }
 
-export const GoogleIdentityStsV1AccessBoundaryRule: Schema.Schema<GoogleIdentityStsV1AccessBoundaryRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      availabilityCondition: Schema.optional(GoogleTypeExpr),
-      availableResource: Schema.optional(Schema.String),
-      availablePermissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleIdentityStsV1AccessBoundaryRule",
-  }) as any as Schema.Schema<GoogleIdentityStsV1AccessBoundaryRule>;
+export const GoogleIdentityStsV1AccessBoundaryRule =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    availabilityCondition: Schema.optional(GoogleTypeExpr),
+    availableResource: Schema.optional(Schema.String),
+    availablePermissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleIdentityStsV1AccessBoundaryRule" });
 
 export interface GoogleIdentityStsV1ExchangeTokenResponse {
   /** The type of access token. Always has the value `Bearer`. */
@@ -78,18 +69,14 @@ export interface GoogleIdentityStsV1ExchangeTokenResponse {
   access_boundary_session_key?: string;
 }
 
-export const GoogleIdentityStsV1ExchangeTokenResponse: Schema.Schema<GoogleIdentityStsV1ExchangeTokenResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      token_type: Schema.optional(Schema.String),
-      issued_token_type: Schema.optional(Schema.String),
-      access_token: Schema.optional(Schema.String),
-      expires_in: Schema.optional(Schema.Number),
-      access_boundary_session_key: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleIdentityStsV1ExchangeTokenResponse",
-  }) as any as Schema.Schema<GoogleIdentityStsV1ExchangeTokenResponse>;
+export const GoogleIdentityStsV1ExchangeTokenResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    token_type: Schema.optional(Schema.String),
+    issued_token_type: Schema.optional(Schema.String),
+    access_token: Schema.optional(Schema.String),
+    expires_in: Schema.optional(Schema.Number),
+    access_boundary_session_key: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleIdentityStsV1ExchangeTokenResponse" });
 
 export interface GoogleIdentityStsV1betaAccessBoundaryRule {
   /** The full resource name of a Google Cloud resource entity. The format definition is at https://cloud.google.com/apis/design/resource_names. Example value: `//cloudresourcemanager.googleapis.com/projects/my-project`. */
@@ -100,32 +87,24 @@ export interface GoogleIdentityStsV1betaAccessBoundaryRule {
   availabilityCondition?: GoogleTypeExpr;
 }
 
-export const GoogleIdentityStsV1betaAccessBoundaryRule: Schema.Schema<GoogleIdentityStsV1betaAccessBoundaryRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      availableResource: Schema.optional(Schema.String),
-      availablePermissions: Schema.optional(Schema.Array(Schema.String)),
-      availabilityCondition: Schema.optional(GoogleTypeExpr),
-    }),
-  ).annotate({
-    identifier: "GoogleIdentityStsV1betaAccessBoundaryRule",
-  }) as any as Schema.Schema<GoogleIdentityStsV1betaAccessBoundaryRule>;
+export const GoogleIdentityStsV1betaAccessBoundaryRule =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    availableResource: Schema.optional(Schema.String),
+    availablePermissions: Schema.optional(Schema.Array(Schema.String)),
+    availabilityCondition: Schema.optional(GoogleTypeExpr),
+  }).annotate({ identifier: "GoogleIdentityStsV1betaAccessBoundaryRule" });
 
 export interface GoogleIdentityStsV1betaAccessBoundary {
   /** A list of access boundary rules which defines the upper bound of the permission a principal may carry. If multiple rules are specified, the effective access boundary is the union of all the access boundary rules attached. One access boundary can contain at most 10 rules. */
   accessBoundaryRules?: Array<GoogleIdentityStsV1betaAccessBoundaryRule>;
 }
 
-export const GoogleIdentityStsV1betaAccessBoundary: Schema.Schema<GoogleIdentityStsV1betaAccessBoundary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accessBoundaryRules: Schema.optional(
-        Schema.Array(GoogleIdentityStsV1betaAccessBoundaryRule),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleIdentityStsV1betaAccessBoundary",
-  }) as any as Schema.Schema<GoogleIdentityStsV1betaAccessBoundary>;
+export const GoogleIdentityStsV1betaAccessBoundary =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accessBoundaryRules: Schema.optional(
+      Schema.Array(GoogleIdentityStsV1betaAccessBoundaryRule),
+    ),
+  }).annotate({ identifier: "GoogleIdentityStsV1betaAccessBoundary" });
 
 export interface GoogleIdentityStsV1betaOptions {
   /** A Google project used for quota and billing purposes when the credential is used to access Google APIs. The provided project overrides the project bound to the credential. The value must be a project number or a project ID. Example: `my-sample-project-191923`. The maximum length is 32 characters. */
@@ -134,31 +113,23 @@ export interface GoogleIdentityStsV1betaOptions {
   accessBoundary?: GoogleIdentityStsV1betaAccessBoundary;
 }
 
-export const GoogleIdentityStsV1betaOptions: Schema.Schema<GoogleIdentityStsV1betaOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userProject: Schema.optional(Schema.String),
-      accessBoundary: Schema.optional(GoogleIdentityStsV1betaAccessBoundary),
-    }),
-  ).annotate({
-    identifier: "GoogleIdentityStsV1betaOptions",
-  }) as any as Schema.Schema<GoogleIdentityStsV1betaOptions>;
+export const GoogleIdentityStsV1betaOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userProject: Schema.optional(Schema.String),
+    accessBoundary: Schema.optional(GoogleIdentityStsV1betaAccessBoundary),
+  }).annotate({ identifier: "GoogleIdentityStsV1betaOptions" });
 
 export interface GoogleIdentityStsV1AccessBoundary {
   /** A list of access boundary rules which defines the upper bound of the permission a principal may carry. If multiple rules are specified, the effective access boundary is the union of all the access boundary rules attached. One access boundary can contain at most 10 rules. */
   accessBoundaryRules?: Array<GoogleIdentityStsV1AccessBoundaryRule>;
 }
 
-export const GoogleIdentityStsV1AccessBoundary: Schema.Schema<GoogleIdentityStsV1AccessBoundary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accessBoundaryRules: Schema.optional(
-        Schema.Array(GoogleIdentityStsV1AccessBoundaryRule),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleIdentityStsV1AccessBoundary",
-  }) as any as Schema.Schema<GoogleIdentityStsV1AccessBoundary>;
+export const GoogleIdentityStsV1AccessBoundary =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accessBoundaryRules: Schema.optional(
+      Schema.Array(GoogleIdentityStsV1AccessBoundaryRule),
+    ),
+  }).annotate({ identifier: "GoogleIdentityStsV1AccessBoundary" });
 
 export interface GoogleIdentityStsV1Options {
   /** A Google project used for quota and billing purposes when the credential is used to access Google APIs. The provided project overrides the project bound to the credential. The value must be a project number or a project ID. Example: `my-sample-project-191923`. The maximum length is 32 characters. */
@@ -169,16 +140,12 @@ export interface GoogleIdentityStsV1Options {
   bindCertFingerprint?: string;
 }
 
-export const GoogleIdentityStsV1Options: Schema.Schema<GoogleIdentityStsV1Options> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userProject: Schema.optional(Schema.String),
-      accessBoundary: Schema.optional(GoogleIdentityStsV1AccessBoundary),
-      bindCertFingerprint: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleIdentityStsV1Options",
-  }) as any as Schema.Schema<GoogleIdentityStsV1Options>;
+export const GoogleIdentityStsV1Options =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userProject: Schema.optional(Schema.String),
+    accessBoundary: Schema.optional(GoogleIdentityStsV1AccessBoundary),
+    bindCertFingerprint: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleIdentityStsV1Options" });
 
 export interface GoogleIdentityStsV1ExchangeTokenRequest {
   /** Required. An identifier that indicates the type of the security token in the `subject_token` parameter. Supported values are `urn:ietf:params:oauth:token-type:jwt`, `urn:ietf:params:oauth:token-type:id_token`, `urn:ietf:params:aws:token-type:aws4_request`, `urn:ietf:params:oauth:token-type:access_token`, `urn:ietf:params:oauth:token-type:mtls`, and `urn:ietf:params:oauth:token-type:saml2`. */
@@ -197,20 +164,16 @@ export interface GoogleIdentityStsV1ExchangeTokenRequest {
   grantType?: string;
 }
 
-export const GoogleIdentityStsV1ExchangeTokenRequest: Schema.Schema<GoogleIdentityStsV1ExchangeTokenRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subjectTokenType: Schema.optional(Schema.String),
-      options: Schema.optional(Schema.String),
-      requestedTokenType: Schema.optional(Schema.String),
-      audience: Schema.optional(Schema.String),
-      scope: Schema.optional(Schema.String),
-      subjectToken: Schema.optional(Schema.String),
-      grantType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleIdentityStsV1ExchangeTokenRequest",
-  }) as any as Schema.Schema<GoogleIdentityStsV1ExchangeTokenRequest>;
+export const GoogleIdentityStsV1ExchangeTokenRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subjectTokenType: Schema.optional(Schema.String),
+    options: Schema.optional(Schema.String),
+    requestedTokenType: Schema.optional(Schema.String),
+    audience: Schema.optional(Schema.String),
+    scope: Schema.optional(Schema.String),
+    subjectToken: Schema.optional(Schema.String),
+    grantType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleIdentityStsV1ExchangeTokenRequest" });
 
 export interface GoogleIamV1Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
@@ -221,16 +184,11 @@ export interface GoogleIamV1Binding {
   members?: Array<string>;
 }
 
-export const GoogleIamV1Binding: Schema.Schema<GoogleIamV1Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      role: Schema.optional(Schema.String),
-      condition: Schema.optional(GoogleTypeExpr),
-      members: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1Binding",
-  }) as any as Schema.Schema<GoogleIamV1Binding>;
+export const GoogleIamV1Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  role: Schema.optional(Schema.String),
+  condition: Schema.optional(GoogleTypeExpr),
+  members: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "GoogleIamV1Binding" });
 
 // ==========================================================================
 // Operations

@@ -29,13 +29,10 @@ export interface Price {
   amountMicros?: string;
 }
 
-export const Price: Schema.Schema<Price> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      currencyCode: Schema.optional(Schema.String),
-      amountMicros: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Price" }) as any as Schema.Schema<Price>;
+export const Price = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  currencyCode: Schema.optional(Schema.String),
+  amountMicros: Schema.optional(Schema.String),
+}).annotate({ identifier: "Price" });
 
 export interface Interval {
   /** Optional. Exclusive end of the interval. If specified, a Timestamp matching this interval will have to be before the end. */
@@ -44,13 +41,10 @@ export interface Interval {
   startTime?: string;
 }
 
-export const Interval: Schema.Schema<Interval> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endTime: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Interval" }) as any as Schema.Schema<Interval>;
+export const Interval = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  endTime: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Interval" });
 
 export interface CustomAttribute {
   /** Subattributes within this attribute group. If `group_values` is not empty, `value` must be empty. */
@@ -101,26 +95,21 @@ export interface LocalInventory {
   pickupSla?: string;
 }
 
-export const LocalInventory: Schema.Schema<LocalInventory> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      account: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      availability: Schema.optional(Schema.String),
-      price: Schema.optional(Price),
-      base64EncodedName: Schema.optional(Schema.String),
-      quantity: Schema.optional(Schema.String),
-      salePriceEffectiveDate: Schema.optional(Interval),
-      salePrice: Schema.optional(Price),
-      storeCode: Schema.optional(Schema.String),
-      instoreProductLocation: Schema.optional(Schema.String),
-      pickupMethod: Schema.optional(Schema.String),
-      customAttributes: Schema.optional(Schema.Array(CustomAttribute)),
-      pickupSla: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LocalInventory",
-  }) as any as Schema.Schema<LocalInventory>;
+export const LocalInventory = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  account: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  availability: Schema.optional(Schema.String),
+  price: Schema.optional(Price),
+  base64EncodedName: Schema.optional(Schema.String),
+  quantity: Schema.optional(Schema.String),
+  salePriceEffectiveDate: Schema.optional(Interval),
+  salePrice: Schema.optional(Price),
+  storeCode: Schema.optional(Schema.String),
+  instoreProductLocation: Schema.optional(Schema.String),
+  pickupMethod: Schema.optional(Schema.String),
+  customAttributes: Schema.optional(Schema.Array(CustomAttribute)),
+  pickupSla: Schema.optional(Schema.String),
+}).annotate({ identifier: "LocalInventory" });
 
 export interface ListLocalInventoriesResponse {
   /** The `LocalInventory` resources for the given product from the specified account. */
@@ -129,15 +118,11 @@ export interface ListLocalInventoriesResponse {
   nextPageToken?: string;
 }
 
-export const ListLocalInventoriesResponse: Schema.Schema<ListLocalInventoriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      localInventories: Schema.optional(Schema.Array(LocalInventory)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocalInventoriesResponse",
-  }) as any as Schema.Schema<ListLocalInventoriesResponse>;
+export const ListLocalInventoriesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    localInventories: Schema.optional(Schema.Array(LocalInventory)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListLocalInventoriesResponse" });
 
 export interface ProductChange {
   /** Reporting contexts that have the change (if applicable). Currently this field supports only (`SHOPPING_ADS`, `LOCAL_INVENTORY_ADS`, `YOUTUBE_SHOPPING`, `YOUTUBE_CHECKOUT`, `YOUTUBE_AFFILIATE`) from the enum value [ReportingContextEnum](/merchant/api/reference/rest/Shared.Types/ReportingContextEnum) */
@@ -171,17 +156,12 @@ export interface ProductChange {
   oldValue?: string;
 }
 
-export const ProductChange: Schema.Schema<ProductChange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reportingContext: Schema.optional(Schema.String),
-      newValue: Schema.optional(Schema.String),
-      regionCode: Schema.optional(Schema.String),
-      oldValue: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProductChange",
-  }) as any as Schema.Schema<ProductChange>;
+export const ProductChange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  reportingContext: Schema.optional(Schema.String),
+  newValue: Schema.optional(Schema.String),
+  regionCode: Schema.optional(Schema.String),
+  oldValue: Schema.optional(Schema.String),
+}).annotate({ identifier: "ProductChange" });
 
 export interface RegionalInventory {
   /** Output only. The account that owns the product. This field will be ignored if set by the client. */
@@ -204,22 +184,17 @@ export interface RegionalInventory {
   salePrice?: Price;
 }
 
-export const RegionalInventory: Schema.Schema<RegionalInventory> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      account: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      region: Schema.optional(Schema.String),
-      availability: Schema.optional(Schema.String),
-      price: Schema.optional(Price),
-      customAttributes: Schema.optional(Schema.Array(CustomAttribute)),
-      base64EncodedName: Schema.optional(Schema.String),
-      salePriceEffectiveDate: Schema.optional(Interval),
-      salePrice: Schema.optional(Price),
-    }),
-  ).annotate({
-    identifier: "RegionalInventory",
-  }) as any as Schema.Schema<RegionalInventory>;
+export const RegionalInventory = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  account: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  region: Schema.optional(Schema.String),
+  availability: Schema.optional(Schema.String),
+  price: Schema.optional(Price),
+  customAttributes: Schema.optional(Schema.Array(CustomAttribute)),
+  base64EncodedName: Schema.optional(Schema.String),
+  salePriceEffectiveDate: Schema.optional(Interval),
+  salePrice: Schema.optional(Price),
+}).annotate({ identifier: "RegionalInventory" });
 
 export interface ProductStatusChangeMessage {
   /** The resource that changed, in this case it will always be `Product`. */
@@ -242,29 +217,24 @@ export interface ProductStatusChangeMessage {
   changes?: Array<ProductChange>;
 }
 
-export const ProductStatusChangeMessage: Schema.Schema<ProductStatusChangeMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceType: Schema.optional(Schema.String),
-      eventTime: Schema.optional(Schema.String),
-      resourceId: Schema.optional(Schema.String),
-      managingAccount: Schema.optional(Schema.String),
-      attribute: Schema.optional(Schema.String),
-      resource: Schema.optional(Schema.String),
-      expirationTime: Schema.optional(Schema.String),
-      account: Schema.optional(Schema.String),
-      changes: Schema.optional(Schema.Array(ProductChange)),
-    }),
-  ).annotate({
-    identifier: "ProductStatusChangeMessage",
-  }) as any as Schema.Schema<ProductStatusChangeMessage>;
+export const ProductStatusChangeMessage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceType: Schema.optional(Schema.String),
+    eventTime: Schema.optional(Schema.String),
+    resourceId: Schema.optional(Schema.String),
+    managingAccount: Schema.optional(Schema.String),
+    attribute: Schema.optional(Schema.String),
+    resource: Schema.optional(Schema.String),
+    expirationTime: Schema.optional(Schema.String),
+    account: Schema.optional(Schema.String),
+    changes: Schema.optional(Schema.Array(ProductChange)),
+  }).annotate({ identifier: "ProductStatusChangeMessage" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface ListRegionalInventoriesResponse {
   /** The `RegionalInventory` resources for the given product from the specified account. */
@@ -273,15 +243,11 @@ export interface ListRegionalInventoriesResponse {
   nextPageToken?: string;
 }
 
-export const ListRegionalInventoriesResponse: Schema.Schema<ListRegionalInventoriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      regionalInventories: Schema.optional(Schema.Array(RegionalInventory)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListRegionalInventoriesResponse",
-  }) as any as Schema.Schema<ListRegionalInventoriesResponse>;
+export const ListRegionalInventoriesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    regionalInventories: Schema.optional(Schema.Array(RegionalInventory)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListRegionalInventoriesResponse" });
 
 // ==========================================================================
 // Operations

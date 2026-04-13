@@ -27,15 +27,13 @@ export interface GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParam
   description?: string;
 }
 
-export const GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata: Schema.Schema<GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata",
-  }) as any as Schema.Schema<GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata>;
+  });
 
 export interface GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter {
   /** Sets the value of the parameter in an assignment if no value is given. */
@@ -50,21 +48,19 @@ export interface GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParam
   metadata?: GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata;
 }
 
-export const GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter: Schema.Schema<GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      defaultValue: Schema.optional(Schema.Unknown),
-      type: Schema.optional(Schema.String),
-      item: Schema.optional(Schema.String),
-      validValuesExpr: Schema.optional(Schema.String),
-      metadata: Schema.optional(
-        GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    defaultValue: Schema.optional(Schema.Unknown),
+    type: Schema.optional(Schema.String),
+    item: Schema.optional(Schema.String),
+    validValuesExpr: Schema.optional(Schema.String),
+    metadata: Schema.optional(
+      GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameterMetadata,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter",
-  }) as any as Schema.Schema<GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter>;
+  });
 
 export interface GoogleCloudOrgpolicyV2CustomConstraint {
   /** Immutable. The resource instance type on which this policy applies. Format will be of the form : `/` Example: * `compute.googleapis.com/Instance`. */
@@ -93,21 +89,17 @@ export interface GoogleCloudOrgpolicyV2CustomConstraint {
   actionType?: "ACTION_TYPE_UNSPECIFIED" | "ALLOW" | "DENY" | (string & {});
 }
 
-export const GoogleCloudOrgpolicyV2CustomConstraint: Schema.Schema<GoogleCloudOrgpolicyV2CustomConstraint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceTypes: Schema.optional(Schema.Array(Schema.String)),
-      methodTypes: Schema.optional(Schema.Array(Schema.String)),
-      updateTime: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      condition: Schema.optional(Schema.String),
-      actionType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudOrgpolicyV2CustomConstraint",
-  }) as any as Schema.Schema<GoogleCloudOrgpolicyV2CustomConstraint>;
+export const GoogleCloudOrgpolicyV2CustomConstraint =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceTypes: Schema.optional(Schema.Array(Schema.String)),
+    methodTypes: Schema.optional(Schema.Array(Schema.String)),
+    updateTime: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    condition: Schema.optional(Schema.String),
+    actionType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudOrgpolicyV2CustomConstraint" });
 
 export interface GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition {
   /** Stores the structure of `Parameters` used by the constraint condition. The key of `map` represents the name of the parameter. */
@@ -133,23 +125,21 @@ export interface GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition {
   actionType?: "ACTION_TYPE_UNSPECIFIED" | "ALLOW" | "DENY" | (string & {});
 }
 
-export const GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition: Schema.Schema<GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parameters: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter,
-        ),
+export const GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parameters: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinitionParameter,
       ),
-      resourceTypes: Schema.optional(Schema.Array(Schema.String)),
-      methodTypes: Schema.optional(Schema.Array(Schema.String)),
-      condition: Schema.optional(Schema.String),
-      actionType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+    ),
+    resourceTypes: Schema.optional(Schema.Array(Schema.String)),
+    methodTypes: Schema.optional(Schema.Array(Schema.String)),
+    condition: Schema.optional(Schema.String),
+    actionType: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition",
-  }) as any as Schema.Schema<GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition>;
+  });
 
 export interface GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues {
   /** List of values allowed at this resource. */
@@ -158,15 +148,13 @@ export interface GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues {
   deniedValues?: Array<string>;
 }
 
-export const GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues: Schema.Schema<GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      allowedValues: Schema.optional(Schema.Array(Schema.String)),
-      deniedValues: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allowedValues: Schema.optional(Schema.Array(Schema.String)),
+    deniedValues: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues",
-  }) as any as Schema.Schema<GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues>;
+  });
 
 export interface GoogleTypeExpr {
   /** Textual representation of an expression in Common Expression Language syntax. */
@@ -179,17 +167,12 @@ export interface GoogleTypeExpr {
   description?: string;
 }
 
-export const GoogleTypeExpr: Schema.Schema<GoogleTypeExpr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expression: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleTypeExpr",
-  }) as any as Schema.Schema<GoogleTypeExpr>;
+export const GoogleTypeExpr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  expression: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "GoogleTypeExpr" });
 
 export interface GoogleCloudOrgpolicyV2PolicySpecPolicyRule {
   /** List of values to be used for this policy rule. This field can be set only in policies for list constraints. */
@@ -206,21 +189,17 @@ export interface GoogleCloudOrgpolicyV2PolicySpecPolicyRule {
   parameters?: Record<string, unknown>;
 }
 
-export const GoogleCloudOrgpolicyV2PolicySpecPolicyRule: Schema.Schema<GoogleCloudOrgpolicyV2PolicySpecPolicyRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      values: Schema.optional(
-        GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues,
-      ),
-      allowAll: Schema.optional(Schema.Boolean),
-      condition: Schema.optional(GoogleTypeExpr),
-      denyAll: Schema.optional(Schema.Boolean),
-      enforce: Schema.optional(Schema.Boolean),
-      parameters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudOrgpolicyV2PolicySpecPolicyRule",
-  }) as any as Schema.Schema<GoogleCloudOrgpolicyV2PolicySpecPolicyRule>;
+export const GoogleCloudOrgpolicyV2PolicySpecPolicyRule =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    values: Schema.optional(
+      GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues,
+    ),
+    allowAll: Schema.optional(Schema.Boolean),
+    condition: Schema.optional(GoogleTypeExpr),
+    denyAll: Schema.optional(Schema.Boolean),
+    enforce: Schema.optional(Schema.Boolean),
+    parameters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "GoogleCloudOrgpolicyV2PolicySpecPolicyRule" });
 
 export interface GoogleCloudOrgpolicyV2PolicySpec {
   /** Determines the inheritance behavior for this policy. If `inherit_from_parent` is true, policy rules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this policy becomes the new root for evaluation. This field can be set only for policies that configure list constraints. */
@@ -235,20 +214,16 @@ export interface GoogleCloudOrgpolicyV2PolicySpec {
   reset?: boolean;
 }
 
-export const GoogleCloudOrgpolicyV2PolicySpec: Schema.Schema<GoogleCloudOrgpolicyV2PolicySpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inheritFromParent: Schema.optional(Schema.Boolean),
-      etag: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      rules: Schema.optional(
-        Schema.Array(GoogleCloudOrgpolicyV2PolicySpecPolicyRule),
-      ),
-      reset: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudOrgpolicyV2PolicySpec",
-  }) as any as Schema.Schema<GoogleCloudOrgpolicyV2PolicySpec>;
+export const GoogleCloudOrgpolicyV2PolicySpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    inheritFromParent: Schema.optional(Schema.Boolean),
+    etag: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    rules: Schema.optional(
+      Schema.Array(GoogleCloudOrgpolicyV2PolicySpecPolicyRule),
+    ),
+    reset: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudOrgpolicyV2PolicySpec" });
 
 export interface GoogleCloudOrgpolicyV2AlternatePolicySpec {
   /** Reference to the launch that will be used while audit logging and to control the launch. Should be set only in the alternate policy. */
@@ -257,15 +232,11 @@ export interface GoogleCloudOrgpolicyV2AlternatePolicySpec {
   spec?: GoogleCloudOrgpolicyV2PolicySpec;
 }
 
-export const GoogleCloudOrgpolicyV2AlternatePolicySpec: Schema.Schema<GoogleCloudOrgpolicyV2AlternatePolicySpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      launch: Schema.optional(Schema.String),
-      spec: Schema.optional(GoogleCloudOrgpolicyV2PolicySpec),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudOrgpolicyV2AlternatePolicySpec",
-  }) as any as Schema.Schema<GoogleCloudOrgpolicyV2AlternatePolicySpec>;
+export const GoogleCloudOrgpolicyV2AlternatePolicySpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    launch: Schema.optional(Schema.String),
+    spec: Schema.optional(GoogleCloudOrgpolicyV2PolicySpec),
+  }).annotate({ identifier: "GoogleCloudOrgpolicyV2AlternatePolicySpec" });
 
 export interface GoogleCloudOrgpolicyV2Policy {
   /** Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced. */
@@ -280,18 +251,14 @@ export interface GoogleCloudOrgpolicyV2Policy {
   alternate?: GoogleCloudOrgpolicyV2AlternatePolicySpec;
 }
 
-export const GoogleCloudOrgpolicyV2Policy: Schema.Schema<GoogleCloudOrgpolicyV2Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dryRunSpec: Schema.optional(GoogleCloudOrgpolicyV2PolicySpec),
-      etag: Schema.optional(Schema.String),
-      spec: Schema.optional(GoogleCloudOrgpolicyV2PolicySpec),
-      name: Schema.optional(Schema.String),
-      alternate: Schema.optional(GoogleCloudOrgpolicyV2AlternatePolicySpec),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudOrgpolicyV2Policy",
-  }) as any as Schema.Schema<GoogleCloudOrgpolicyV2Policy>;
+export const GoogleCloudOrgpolicyV2Policy =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dryRunSpec: Schema.optional(GoogleCloudOrgpolicyV2PolicySpec),
+    etag: Schema.optional(Schema.String),
+    spec: Schema.optional(GoogleCloudOrgpolicyV2PolicySpec),
+    name: Schema.optional(Schema.String),
+    alternate: Schema.optional(GoogleCloudOrgpolicyV2AlternatePolicySpec),
+  }).annotate({ identifier: "GoogleCloudOrgpolicyV2Policy" });
 
 export interface GoogleCloudOrgpolicyV2ListPoliciesResponse {
   /** All policies that exist on the resource. It will be empty if no policies are set. */
@@ -300,38 +267,31 @@ export interface GoogleCloudOrgpolicyV2ListPoliciesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudOrgpolicyV2ListPoliciesResponse: Schema.Schema<GoogleCloudOrgpolicyV2ListPoliciesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policies: Schema.optional(Schema.Array(GoogleCloudOrgpolicyV2Policy)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudOrgpolicyV2ListPoliciesResponse",
-  }) as any as Schema.Schema<GoogleCloudOrgpolicyV2ListPoliciesResponse>;
+export const GoogleCloudOrgpolicyV2ListPoliciesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policies: Schema.optional(Schema.Array(GoogleCloudOrgpolicyV2Policy)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudOrgpolicyV2ListPoliciesResponse" });
 
 export interface GoogleCloudOrgpolicyV2ConstraintBooleanConstraint {
   /** Custom constraint definition. Defines this as a managed constraint. */
   customConstraintDefinition?: GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition;
 }
 
-export const GoogleCloudOrgpolicyV2ConstraintBooleanConstraint: Schema.Schema<GoogleCloudOrgpolicyV2ConstraintBooleanConstraint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customConstraintDefinition: Schema.optional(
-        GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudOrgpolicyV2ConstraintBooleanConstraint =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customConstraintDefinition: Schema.optional(
+      GoogleCloudOrgpolicyV2ConstraintCustomConstraintDefinition,
+    ),
+  }).annotate({
     identifier: "GoogleCloudOrgpolicyV2ConstraintBooleanConstraint",
-  }) as any as Schema.Schema<GoogleCloudOrgpolicyV2ConstraintBooleanConstraint>;
+  });
 
 export interface GoogleProtobufEmpty {}
 
-export const GoogleProtobufEmpty: Schema.Schema<GoogleProtobufEmpty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "GoogleProtobufEmpty",
-  }) as any as Schema.Schema<GoogleProtobufEmpty>;
+export const GoogleProtobufEmpty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "GoogleProtobufEmpty" });
 
 export interface GoogleCloudOrgpolicyV2ConstraintListConstraint {
   /** Indicates whether values grouped into categories can be used in `Policy.allowed_values` and `Policy.denied_values`. For example, `"in:Python"` would match any value in the 'Python' group. */
@@ -340,15 +300,11 @@ export interface GoogleCloudOrgpolicyV2ConstraintListConstraint {
   supportsUnder?: boolean;
 }
 
-export const GoogleCloudOrgpolicyV2ConstraintListConstraint: Schema.Schema<GoogleCloudOrgpolicyV2ConstraintListConstraint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      supportsIn: Schema.optional(Schema.Boolean),
-      supportsUnder: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudOrgpolicyV2ConstraintListConstraint",
-  }) as any as Schema.Schema<GoogleCloudOrgpolicyV2ConstraintListConstraint>;
+export const GoogleCloudOrgpolicyV2ConstraintListConstraint =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    supportsIn: Schema.optional(Schema.Boolean),
+    supportsUnder: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudOrgpolicyV2ConstraintListConstraint" });
 
 export interface GoogleCloudOrgpolicyV2Constraint {
   /** Immutable. The resource name of the constraint. Must be in one of the following forms: * `projects/{project_number}/constraints/{constraint_name}` * `folders/{folder_id}/constraints/{constraint_name}` * `organizations/{organization_id}/constraints/{constraint_name}` For example, "/projects/123/constraints/compute.disableSerialPortAccess". */
@@ -375,26 +331,22 @@ export interface GoogleCloudOrgpolicyV2Constraint {
   equivalentConstraint?: string;
 }
 
-export const GoogleCloudOrgpolicyV2Constraint: Schema.Schema<GoogleCloudOrgpolicyV2Constraint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      supportsDryRun: Schema.optional(Schema.Boolean),
-      listConstraint: Schema.optional(
-        GoogleCloudOrgpolicyV2ConstraintListConstraint,
-      ),
-      supportsSimulation: Schema.optional(Schema.Boolean),
-      constraintDefault: Schema.optional(Schema.String),
-      booleanConstraint: Schema.optional(
-        GoogleCloudOrgpolicyV2ConstraintBooleanConstraint,
-      ),
-      equivalentConstraint: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudOrgpolicyV2Constraint",
-  }) as any as Schema.Schema<GoogleCloudOrgpolicyV2Constraint>;
+export const GoogleCloudOrgpolicyV2Constraint =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    supportsDryRun: Schema.optional(Schema.Boolean),
+    listConstraint: Schema.optional(
+      GoogleCloudOrgpolicyV2ConstraintListConstraint,
+    ),
+    supportsSimulation: Schema.optional(Schema.Boolean),
+    constraintDefault: Schema.optional(Schema.String),
+    booleanConstraint: Schema.optional(
+      GoogleCloudOrgpolicyV2ConstraintBooleanConstraint,
+    ),
+    equivalentConstraint: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudOrgpolicyV2Constraint" });
 
 export interface GoogleCloudOrgpolicyV2ListConstraintsResponse {
   /** The collection of constraints that are available on the targeted resource. */
@@ -403,17 +355,13 @@ export interface GoogleCloudOrgpolicyV2ListConstraintsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudOrgpolicyV2ListConstraintsResponse: Schema.Schema<GoogleCloudOrgpolicyV2ListConstraintsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      constraints: Schema.optional(
-        Schema.Array(GoogleCloudOrgpolicyV2Constraint),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudOrgpolicyV2ListConstraintsResponse",
-  }) as any as Schema.Schema<GoogleCloudOrgpolicyV2ListConstraintsResponse>;
+export const GoogleCloudOrgpolicyV2ListConstraintsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    constraints: Schema.optional(
+      Schema.Array(GoogleCloudOrgpolicyV2Constraint),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudOrgpolicyV2ListConstraintsResponse" });
 
 export interface GoogleCloudOrgpolicyV2ListCustomConstraintsResponse {
   /** Page token used to retrieve the next page. This is currently not used, but the server may at any point start supplying a valid token. */
@@ -422,17 +370,15 @@ export interface GoogleCloudOrgpolicyV2ListCustomConstraintsResponse {
   customConstraints?: Array<GoogleCloudOrgpolicyV2CustomConstraint>;
 }
 
-export const GoogleCloudOrgpolicyV2ListCustomConstraintsResponse: Schema.Schema<GoogleCloudOrgpolicyV2ListCustomConstraintsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      customConstraints: Schema.optional(
-        Schema.Array(GoogleCloudOrgpolicyV2CustomConstraint),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudOrgpolicyV2ListCustomConstraintsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    customConstraints: Schema.optional(
+      Schema.Array(GoogleCloudOrgpolicyV2CustomConstraint),
+    ),
+  }).annotate({
     identifier: "GoogleCloudOrgpolicyV2ListCustomConstraintsResponse",
-  }) as any as Schema.Schema<GoogleCloudOrgpolicyV2ListCustomConstraintsResponse>;
+  });
 
 // ==========================================================================
 // Operations

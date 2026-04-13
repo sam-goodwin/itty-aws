@@ -83,18 +83,13 @@ export interface SignatureInfo {
   serializedApprovalRequest?: string;
 }
 
-export const SignatureInfo: Schema.Schema<SignatureInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      googlePublicKeyPem: Schema.optional(Schema.String),
-      signature: Schema.optional(Schema.String),
-      googleKeyAlgorithm: Schema.optional(Schema.String),
-      customerKmsKeyVersion: Schema.optional(Schema.String),
-      serializedApprovalRequest: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SignatureInfo",
-  }) as any as Schema.Schema<SignatureInfo>;
+export const SignatureInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  googlePublicKeyPem: Schema.optional(Schema.String),
+  signature: Schema.optional(Schema.String),
+  googleKeyAlgorithm: Schema.optional(Schema.String),
+  customerKmsKeyVersion: Schema.optional(Schema.String),
+  serializedApprovalRequest: Schema.optional(Schema.String),
+}).annotate({ identifier: "SignatureInfo" });
 
 export interface ApproveDecision {
   /** If set, denotes the timestamp at which the approval is invalidated. */
@@ -111,19 +106,14 @@ export interface ApproveDecision {
   signatureInfo?: SignatureInfo;
 }
 
-export const ApproveDecision: Schema.Schema<ApproveDecision> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      invalidateTime: Schema.optional(Schema.String),
-      approveTime: Schema.optional(Schema.String),
-      autoApproved: Schema.optional(Schema.Boolean),
-      policyApproved: Schema.optional(Schema.Boolean),
-      expireTime: Schema.optional(Schema.String),
-      signatureInfo: Schema.optional(SignatureInfo),
-    }),
-  ).annotate({
-    identifier: "ApproveDecision",
-  }) as any as Schema.Schema<ApproveDecision>;
+export const ApproveDecision = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  invalidateTime: Schema.optional(Schema.String),
+  approveTime: Schema.optional(Schema.String),
+  autoApproved: Schema.optional(Schema.Boolean),
+  policyApproved: Schema.optional(Schema.Boolean),
+  expireTime: Schema.optional(Schema.String),
+  signatureInfo: Schema.optional(SignatureInfo),
+}).annotate({ identifier: "ApproveDecision" });
 
 export interface CustomerApprovalApprovalPolicy {
   /** Optional. Policy for approval based on the justification given. */
@@ -136,14 +126,10 @@ export interface CustomerApprovalApprovalPolicy {
     | (string & {});
 }
 
-export const CustomerApprovalApprovalPolicy: Schema.Schema<CustomerApprovalApprovalPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      justificationBasedApprovalPolicy: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomerApprovalApprovalPolicy",
-  }) as any as Schema.Schema<CustomerApprovalApprovalPolicy>;
+export const CustomerApprovalApprovalPolicy =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    justificationBasedApprovalPolicy: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CustomerApprovalApprovalPolicy" });
 
 export interface EnrolledService {
   /** The enrollment level of the service. */
@@ -155,15 +141,10 @@ export interface EnrolledService {
   cloudProduct?: string;
 }
 
-export const EnrolledService: Schema.Schema<EnrolledService> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enrollmentLevel: Schema.optional(Schema.String),
-      cloudProduct: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnrolledService",
-  }) as any as Schema.Schema<EnrolledService>;
+export const EnrolledService = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enrollmentLevel: Schema.optional(Schema.String),
+  cloudProduct: Schema.optional(Schema.String),
+}).annotate({ identifier: "EnrolledService" });
 
 export interface AccessApprovalSettings {
   /** Optional. When enabled, Google will only be able to send approval requests for access reasons with a customer accessible case ID in the reason detail. Also known as "Require customer initiated support case justification" */
@@ -203,42 +184,34 @@ export interface AccessApprovalSettings {
   invalidKeyVersion?: boolean;
 }
 
-export const AccessApprovalSettings: Schema.Schema<AccessApprovalSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requireCustomerVisibleJustification: Schema.optional(Schema.Boolean),
-      preferredRequestExpirationDays: Schema.optional(Schema.Number),
-      activeKeyVersion: Schema.optional(Schema.String),
-      notificationEmails: Schema.optional(Schema.Array(Schema.String)),
-      notificationPubsubTopic: Schema.optional(Schema.String),
-      effectiveApprovalPolicy: Schema.optional(CustomerApprovalApprovalPolicy),
-      preferNoBroadApprovalRequests: Schema.optional(Schema.Boolean),
-      requestScopeMaxWidthPreference: Schema.optional(Schema.String),
-      approvalPolicy: Schema.optional(CustomerApprovalApprovalPolicy),
-      enrolledServices: Schema.optional(Schema.Array(EnrolledService)),
-      enrolledAncestor: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-      ancestorsEnrolledServices: Schema.optional(Schema.Array(EnrolledService)),
-      ancestorHasActiveKeyVersion: Schema.optional(Schema.Boolean),
-      invalidKeyVersion: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "AccessApprovalSettings",
-  }) as any as Schema.Schema<AccessApprovalSettings>;
+export const AccessApprovalSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    requireCustomerVisibleJustification: Schema.optional(Schema.Boolean),
+    preferredRequestExpirationDays: Schema.optional(Schema.Number),
+    activeKeyVersion: Schema.optional(Schema.String),
+    notificationEmails: Schema.optional(Schema.Array(Schema.String)),
+    notificationPubsubTopic: Schema.optional(Schema.String),
+    effectiveApprovalPolicy: Schema.optional(CustomerApprovalApprovalPolicy),
+    preferNoBroadApprovalRequests: Schema.optional(Schema.Boolean),
+    requestScopeMaxWidthPreference: Schema.optional(Schema.String),
+    approvalPolicy: Schema.optional(CustomerApprovalApprovalPolicy),
+    enrolledServices: Schema.optional(Schema.Array(EnrolledService)),
+    enrolledAncestor: Schema.optional(Schema.Boolean),
+    name: Schema.optional(Schema.String),
+    ancestorsEnrolledServices: Schema.optional(Schema.Array(EnrolledService)),
+    ancestorHasActiveKeyVersion: Schema.optional(Schema.Boolean),
+    invalidKeyVersion: Schema.optional(Schema.Boolean),
+  },
+).annotate({ identifier: "AccessApprovalSettings" });
 
 export interface ResourceProperties {
   /** Whether an approval will exclude the descendants of the resource being requested. */
   excludesDescendants?: boolean;
 }
 
-export const ResourceProperties: Schema.Schema<ResourceProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      excludesDescendants: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ResourceProperties",
-  }) as any as Schema.Schema<ResourceProperties>;
+export const ResourceProperties = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  excludesDescendants: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "ResourceProperties" });
 
 export interface AccessLocations {
   /** The "home office" location of the Google administrator. A two-letter country code (ISO 3166-1 alpha-2), such as "US", "DE" or "GB" or a region code. In some limited situations Google systems may refer refer to a region code instead of a country code. Possible Region Codes: * ASI: Asia * EUR: Europe * OCE: Oceania * AFR: Africa * NAM: North America * SAM: South America * ANT: Antarctica * ANY: Any location */
@@ -247,22 +220,17 @@ export interface AccessLocations {
   principalPhysicalLocationCountry?: string;
 }
 
-export const AccessLocations: Schema.Schema<AccessLocations> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      principalOfficeCountry: Schema.optional(Schema.String),
-      principalPhysicalLocationCountry: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccessLocations",
-  }) as any as Schema.Schema<AccessLocations>;
+export const AccessLocations = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  principalOfficeCountry: Schema.optional(Schema.String),
+  principalPhysicalLocationCountry: Schema.optional(Schema.String),
+}).annotate({ identifier: "AccessLocations" });
 
 export interface DismissApprovalRequestMessage {}
 
-export const DismissApprovalRequestMessage: Schema.Schema<DismissApprovalRequestMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const DismissApprovalRequestMessage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DismissApprovalRequestMessage",
-  }) as any as Schema.Schema<DismissApprovalRequestMessage>;
+  });
 
 export interface AccessApprovalServiceAccount {
   /** The resource name of the Access Approval service account. Format is one of: * "projects/{project}/serviceAccount" * "folders/{folder}/serviceAccount" * "organizations/{organization}/serviceAccount" */
@@ -271,15 +239,11 @@ export interface AccessApprovalServiceAccount {
   accountEmail?: string;
 }
 
-export const AccessApprovalServiceAccount: Schema.Schema<AccessApprovalServiceAccount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      accountEmail: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccessApprovalServiceAccount",
-  }) as any as Schema.Schema<AccessApprovalServiceAccount>;
+export const AccessApprovalServiceAccount =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    accountEmail: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AccessApprovalServiceAccount" });
 
 export interface DismissDecision {
   /** The time at which the approval request was dismissed. */
@@ -288,29 +252,19 @@ export interface DismissDecision {
   implicit?: boolean;
 }
 
-export const DismissDecision: Schema.Schema<DismissDecision> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dismissTime: Schema.optional(Schema.String),
-      implicit: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "DismissDecision",
-  }) as any as Schema.Schema<DismissDecision>;
+export const DismissDecision = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dismissTime: Schema.optional(Schema.String),
+  implicit: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "DismissDecision" });
 
 export interface AugmentedInfo {
   /** For command-line tools, the full command-line exactly as entered by the actor without adding any additional characters (such as quotation marks). */
   command?: string;
 }
 
-export const AugmentedInfo: Schema.Schema<AugmentedInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      command: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AugmentedInfo",
-  }) as any as Schema.Schema<AugmentedInfo>;
+export const AugmentedInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  command: Schema.optional(Schema.String),
+}).annotate({ identifier: "AugmentedInfo" });
 
 export interface AccessReason {
   /** Type of access reason. */
@@ -327,15 +281,10 @@ export interface AccessReason {
   detail?: string;
 }
 
-export const AccessReason: Schema.Schema<AccessReason> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      detail: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccessReason",
-  }) as any as Schema.Schema<AccessReason>;
+export const AccessReason = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  detail: Schema.optional(Schema.String),
+}).annotate({ identifier: "AccessReason" });
 
 export interface ApprovalRequest {
   /** The requested access duration. */
@@ -362,24 +311,19 @@ export interface ApprovalRequest {
   requestedReason?: AccessReason;
 }
 
-export const ApprovalRequest: Schema.Schema<ApprovalRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestedDuration: Schema.optional(Schema.String),
-      approve: Schema.optional(ApproveDecision),
-      requestedExpiration: Schema.optional(Schema.String),
-      requestedAugmentedInfo: Schema.optional(AugmentedInfo),
-      name: Schema.optional(Schema.String),
-      dismiss: Schema.optional(DismissDecision),
-      requestedResourceName: Schema.optional(Schema.String),
-      requestTime: Schema.optional(Schema.String),
-      requestedResourceProperties: Schema.optional(ResourceProperties),
-      requestedLocations: Schema.optional(AccessLocations),
-      requestedReason: Schema.optional(AccessReason),
-    }),
-  ).annotate({
-    identifier: "ApprovalRequest",
-  }) as any as Schema.Schema<ApprovalRequest>;
+export const ApprovalRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  requestedDuration: Schema.optional(Schema.String),
+  approve: Schema.optional(ApproveDecision),
+  requestedExpiration: Schema.optional(Schema.String),
+  requestedAugmentedInfo: Schema.optional(AugmentedInfo),
+  name: Schema.optional(Schema.String),
+  dismiss: Schema.optional(DismissDecision),
+  requestedResourceName: Schema.optional(Schema.String),
+  requestTime: Schema.optional(Schema.String),
+  requestedResourceProperties: Schema.optional(ResourceProperties),
+  requestedLocations: Schema.optional(AccessLocations),
+  requestedReason: Schema.optional(AccessReason),
+}).annotate({ identifier: "ApprovalRequest" });
 
 export interface ListApprovalRequestsResponse {
   /** Approval request details. */
@@ -388,43 +332,34 @@ export interface ListApprovalRequestsResponse {
   nextPageToken?: string;
 }
 
-export const ListApprovalRequestsResponse: Schema.Schema<ListApprovalRequestsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      approvalRequests: Schema.optional(Schema.Array(ApprovalRequest)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListApprovalRequestsResponse",
-  }) as any as Schema.Schema<ListApprovalRequestsResponse>;
+export const ListApprovalRequestsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    approvalRequests: Schema.optional(Schema.Array(ApprovalRequest)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListApprovalRequestsResponse" });
 
 export interface InvalidateApprovalRequestMessage {}
 
-export const InvalidateApprovalRequestMessage: Schema.Schema<InvalidateApprovalRequestMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const InvalidateApprovalRequestMessage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "InvalidateApprovalRequestMessage",
-  }) as any as Schema.Schema<InvalidateApprovalRequestMessage>;
+  });
 
 export interface ApproveApprovalRequestMessage {
   /** The expiration time of this approval. */
   expireTime?: string;
 }
 
-export const ApproveApprovalRequestMessage: Schema.Schema<ApproveApprovalRequestMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expireTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ApproveApprovalRequestMessage",
-  }) as any as Schema.Schema<ApproveApprovalRequestMessage>;
+export const ApproveApprovalRequestMessage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    expireTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ApproveApprovalRequestMessage" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 // ==========================================================================
 // Operations

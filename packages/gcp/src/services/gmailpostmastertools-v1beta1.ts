@@ -39,17 +39,12 @@ export interface IpReputation {
   sampleIps?: Array<string>;
 }
 
-export const IpReputation: Schema.Schema<IpReputation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      numIps: Schema.optional(Schema.String),
-      ipCount: Schema.optional(Schema.String),
-      reputation: Schema.optional(Schema.String),
-      sampleIps: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "IpReputation",
-  }) as any as Schema.Schema<IpReputation>;
+export const IpReputation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  numIps: Schema.optional(Schema.String),
+  ipCount: Schema.optional(Schema.String),
+  reputation: Schema.optional(Schema.String),
+  sampleIps: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "IpReputation" });
 
 export interface FeedbackLoop {
   /** Feedback loop identifier that uniquely identifies individual campaigns. */
@@ -58,15 +53,10 @@ export interface FeedbackLoop {
   spamRatio?: number;
 }
 
-export const FeedbackLoop: Schema.Schema<FeedbackLoop> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      spamRatio: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "FeedbackLoop",
-  }) as any as Schema.Schema<FeedbackLoop>;
+export const FeedbackLoop = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  spamRatio: Schema.optional(Schema.Number),
+}).annotate({ identifier: "FeedbackLoop" });
 
 export interface DeliveryError {
   /** The class of delivery error. */
@@ -93,16 +83,11 @@ export interface DeliveryError {
   errorRatio?: number;
 }
 
-export const DeliveryError: Schema.Schema<DeliveryError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errorClass: Schema.optional(Schema.String),
-      errorType: Schema.optional(Schema.String),
-      errorRatio: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "DeliveryError",
-  }) as any as Schema.Schema<DeliveryError>;
+export const DeliveryError = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  errorClass: Schema.optional(Schema.String),
+  errorType: Schema.optional(Schema.String),
+  errorRatio: Schema.optional(Schema.Number),
+}).annotate({ identifier: "DeliveryError" });
 
 export interface Domain {
   /** Timestamp when the user registered this domain. Assigned by the server. */
@@ -118,14 +103,11 @@ export interface Domain {
   name?: string;
 }
 
-export const Domain: Schema.Schema<Domain> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      permission: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Domain" }) as any as Schema.Schema<Domain>;
+export const Domain = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createTime: Schema.optional(Schema.String),
+  permission: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Domain" });
 
 export interface TrafficStats {
   /** The ratio of mail that passed [DMARC](https://dmarc.org/) alignment checks vs all mail received from the domain that successfully authenticated with either of [SPF](http://www.openspf.org/) or [DKIM](http://www.dkim.org/). */
@@ -162,26 +144,21 @@ export interface TrafficStats {
   ipReputations?: Array<IpReputation>;
 }
 
-export const TrafficStats: Schema.Schema<TrafficStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dmarcSuccessRatio: Schema.optional(Schema.Number),
-      name: Schema.optional(Schema.String),
-      spammyFeedbackLoops: Schema.optional(Schema.Array(FeedbackLoop)),
-      outboundEncryptionRatio: Schema.optional(Schema.Number),
-      spfSuccessRatio: Schema.optional(Schema.Number),
-      userReportedSpamRatio: Schema.optional(Schema.Number),
-      userReportedSpamRatioUpperBound: Schema.optional(Schema.Number),
-      dkimSuccessRatio: Schema.optional(Schema.Number),
-      inboundEncryptionRatio: Schema.optional(Schema.Number),
-      domainReputation: Schema.optional(Schema.String),
-      deliveryErrors: Schema.optional(Schema.Array(DeliveryError)),
-      userReportedSpamRatioLowerBound: Schema.optional(Schema.Number),
-      ipReputations: Schema.optional(Schema.Array(IpReputation)),
-    }),
-  ).annotate({
-    identifier: "TrafficStats",
-  }) as any as Schema.Schema<TrafficStats>;
+export const TrafficStats = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dmarcSuccessRatio: Schema.optional(Schema.Number),
+  name: Schema.optional(Schema.String),
+  spammyFeedbackLoops: Schema.optional(Schema.Array(FeedbackLoop)),
+  outboundEncryptionRatio: Schema.optional(Schema.Number),
+  spfSuccessRatio: Schema.optional(Schema.Number),
+  userReportedSpamRatio: Schema.optional(Schema.Number),
+  userReportedSpamRatioUpperBound: Schema.optional(Schema.Number),
+  dkimSuccessRatio: Schema.optional(Schema.Number),
+  inboundEncryptionRatio: Schema.optional(Schema.Number),
+  domainReputation: Schema.optional(Schema.String),
+  deliveryErrors: Schema.optional(Schema.Array(DeliveryError)),
+  userReportedSpamRatioLowerBound: Schema.optional(Schema.Number),
+  ipReputations: Schema.optional(Schema.Array(IpReputation)),
+}).annotate({ identifier: "TrafficStats" });
 
 export interface ListTrafficStatsResponse {
   /** The list of TrafficStats. */
@@ -190,15 +167,11 @@ export interface ListTrafficStatsResponse {
   nextPageToken?: string;
 }
 
-export const ListTrafficStatsResponse: Schema.Schema<ListTrafficStatsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      trafficStats: Schema.optional(Schema.Array(TrafficStats)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListTrafficStatsResponse",
-  }) as any as Schema.Schema<ListTrafficStatsResponse>;
+export const ListTrafficStatsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    trafficStats: Schema.optional(Schema.Array(TrafficStats)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListTrafficStatsResponse" });
 
 export interface ListDomainsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
@@ -207,15 +180,10 @@ export interface ListDomainsResponse {
   domains?: Array<Domain>;
 }
 
-export const ListDomainsResponse: Schema.Schema<ListDomainsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      domains: Schema.optional(Schema.Array(Domain)),
-    }),
-  ).annotate({
-    identifier: "ListDomainsResponse",
-  }) as any as Schema.Schema<ListDomainsResponse>;
+export const ListDomainsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  domains: Schema.optional(Schema.Array(Domain)),
+}).annotate({ identifier: "ListDomainsResponse" });
 
 // ==========================================================================
 // Operations

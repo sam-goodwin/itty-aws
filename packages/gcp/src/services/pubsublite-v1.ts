@@ -31,16 +31,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      message: Schema.optional(Schema.String),
-      code: Schema.optional(Schema.Number),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  message: Schema.optional(Schema.String),
+  code: Schema.optional(Schema.Number),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** The error result of the operation in case of failure or cancellation. */
@@ -55,35 +52,28 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      error: Schema.optional(Status),
-      done: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  error: Schema.optional(Status),
+  done: Schema.optional(Schema.Boolean),
+  name: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Operation" });
 
 export interface CommitCursorResponse {}
 
-export const CommitCursorResponse: Schema.Schema<CommitCursorResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CommitCursorResponse",
-  }) as any as Schema.Schema<CommitCursorResponse>;
+export const CommitCursorResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CommitCursorResponse" });
 
 export interface Cursor {
   /** The offset of a message within a topic partition. Must be greater than or equal 0. */
   offset?: string;
 }
 
-export const Cursor: Schema.Schema<Cursor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      offset: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Cursor" }) as any as Schema.Schema<Cursor>;
+export const Cursor = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  offset: Schema.optional(Schema.String),
+}).annotate({ identifier: "Cursor" });
 
 export interface PartitionCursor {
   /** The partition this is for. */
@@ -92,15 +82,10 @@ export interface PartitionCursor {
   cursor?: Cursor;
 }
 
-export const PartitionCursor: Schema.Schema<PartitionCursor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      partition: Schema.optional(Schema.String),
-      cursor: Schema.optional(Cursor),
-    }),
-  ).annotate({
-    identifier: "PartitionCursor",
-  }) as any as Schema.Schema<PartitionCursor>;
+export const PartitionCursor = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  partition: Schema.optional(Schema.String),
+  cursor: Schema.optional(Cursor),
+}).annotate({ identifier: "PartitionCursor" });
 
 export interface ComputeMessageStatsRequest {
   /** The exclusive end of the range. The range is empty if end_cursor <= start_cursor. Specifying a start_cursor before the first message and an end_cursor after the last message will retrieve all messages. */
@@ -111,30 +96,21 @@ export interface ComputeMessageStatsRequest {
   startCursor?: Cursor;
 }
 
-export const ComputeMessageStatsRequest: Schema.Schema<ComputeMessageStatsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endCursor: Schema.optional(Cursor),
-      partition: Schema.optional(Schema.String),
-      startCursor: Schema.optional(Cursor),
-    }),
-  ).annotate({
-    identifier: "ComputeMessageStatsRequest",
-  }) as any as Schema.Schema<ComputeMessageStatsRequest>;
+export const ComputeMessageStatsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endCursor: Schema.optional(Cursor),
+    partition: Schema.optional(Schema.String),
+    startCursor: Schema.optional(Cursor),
+  }).annotate({ identifier: "ComputeMessageStatsRequest" });
 
 export interface PubSubConfig {
   /** The name of the Pub/Sub topic. Structured like: projects/{project_number}/topics/{topic_id}. The topic may be changed. */
   topic?: string;
 }
 
-export const PubSubConfig: Schema.Schema<PubSubConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      topic: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PubSubConfig",
-  }) as any as Schema.Schema<PubSubConfig>;
+export const PubSubConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  topic: Schema.optional(Schema.String),
+}).annotate({ identifier: "PubSubConfig" });
 
 export interface ExportConfig {
   /** The desired state of this export. Setting this to values other than `ACTIVE` and `PAUSED` will result in an error. */
@@ -159,38 +135,29 @@ export interface ExportConfig {
     | (string & {});
 }
 
-export const ExportConfig: Schema.Schema<ExportConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      desiredState: Schema.optional(Schema.String),
-      deadLetterTopic: Schema.optional(Schema.String),
-      pubsubConfig: Schema.optional(PubSubConfig),
-      currentState: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ExportConfig",
-  }) as any as Schema.Schema<ExportConfig>;
+export const ExportConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  desiredState: Schema.optional(Schema.String),
+  deadLetterTopic: Schema.optional(Schema.String),
+  pubsubConfig: Schema.optional(PubSubConfig),
+  currentState: Schema.optional(Schema.String),
+}).annotate({ identifier: "ExportConfig" });
 
 export interface SeekSubscriptionResponse {}
 
-export const SeekSubscriptionResponse: Schema.Schema<SeekSubscriptionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const SeekSubscriptionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "SeekSubscriptionResponse",
-  }) as any as Schema.Schema<SeekSubscriptionResponse>;
+  });
 
 export interface ComputeTimeCursorResponse {
   /** If present, the cursor references the first message with time greater than or equal to the specified target time. If such a message cannot be found, the cursor will be unset (i.e. `cursor` is not present). */
   cursor?: Cursor;
 }
 
-export const ComputeTimeCursorResponse: Schema.Schema<ComputeTimeCursorResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cursor: Schema.optional(Cursor),
-    }),
-  ).annotate({
-    identifier: "ComputeTimeCursorResponse",
-  }) as any as Schema.Schema<ComputeTimeCursorResponse>;
+export const ComputeTimeCursorResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cursor: Schema.optional(Cursor),
+  }).annotate({ identifier: "ComputeTimeCursorResponse" });
 
 export interface RetentionConfig {
   /** The provisioned storage, in bytes, per partition. If the number of bytes stored in any of the topic's partitions grows beyond this value, older messages will be dropped to make room for newer ones, regardless of the value of `period`. */
@@ -199,15 +166,10 @@ export interface RetentionConfig {
   period?: string;
 }
 
-export const RetentionConfig: Schema.Schema<RetentionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      perPartitionBytes: Schema.optional(Schema.String),
-      period: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RetentionConfig",
-  }) as any as Schema.Schema<RetentionConfig>;
+export const RetentionConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  perPartitionBytes: Schema.optional(Schema.String),
+  period: Schema.optional(Schema.String),
+}).annotate({ identifier: "RetentionConfig" });
 
 export interface Capacity {
   /** Subscribe throughput capacity per partition in MiB/s. Must be >= 4 and <= 32. */
@@ -216,13 +178,10 @@ export interface Capacity {
   publishMibPerSec?: number;
 }
 
-export const Capacity: Schema.Schema<Capacity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subscribeMibPerSec: Schema.optional(Schema.Number),
-      publishMibPerSec: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Capacity" }) as any as Schema.Schema<Capacity>;
+export const Capacity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscribeMibPerSec: Schema.optional(Schema.Number),
+  publishMibPerSec: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Capacity" });
 
 export interface PartitionConfig {
   /** The capacity configuration. */
@@ -233,30 +192,20 @@ export interface PartitionConfig {
   scale?: number;
 }
 
-export const PartitionConfig: Schema.Schema<PartitionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      capacity: Schema.optional(Capacity),
-      count: Schema.optional(Schema.String),
-      scale: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "PartitionConfig",
-  }) as any as Schema.Schema<PartitionConfig>;
+export const PartitionConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  capacity: Schema.optional(Capacity),
+  count: Schema.optional(Schema.String),
+  scale: Schema.optional(Schema.Number),
+}).annotate({ identifier: "PartitionConfig" });
 
 export interface ReservationConfig {
   /** The Reservation to use for this topic's throughput capacity. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id} */
   throughputReservation?: string;
 }
 
-export const ReservationConfig: Schema.Schema<ReservationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      throughputReservation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ReservationConfig",
-  }) as any as Schema.Schema<ReservationConfig>;
+export const ReservationConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  throughputReservation: Schema.optional(Schema.String),
+}).annotate({ identifier: "ReservationConfig" });
 
 export interface Topic {
   /** The name of the topic. Structured like: projects/{project_number}/locations/{location}/topics/{topic_id} */
@@ -269,15 +218,12 @@ export interface Topic {
   retentionConfig?: RetentionConfig;
 }
 
-export const Topic: Schema.Schema<Topic> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      partitionConfig: Schema.optional(PartitionConfig),
-      reservationConfig: Schema.optional(ReservationConfig),
-      retentionConfig: Schema.optional(RetentionConfig),
-    }),
-  ).annotate({ identifier: "Topic" }) as any as Schema.Schema<Topic>;
+export const Topic = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  partitionConfig: Schema.optional(PartitionConfig),
+  reservationConfig: Schema.optional(ReservationConfig),
+  retentionConfig: Schema.optional(RetentionConfig),
+}).annotate({ identifier: "Topic" });
 
 export interface Reservation {
   /** The name of the reservation. Structured like: projects/{project_number}/locations/{location}/reservations/{reservation_id} */
@@ -286,15 +232,10 @@ export interface Reservation {
   throughputCapacity?: string;
 }
 
-export const Reservation: Schema.Schema<Reservation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      throughputCapacity: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Reservation",
-  }) as any as Schema.Schema<Reservation>;
+export const Reservation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  throughputCapacity: Schema.optional(Schema.String),
+}).annotate({ identifier: "Reservation" });
 
 export interface OperationMetadata {
   /** The time the operation was created. */
@@ -307,17 +248,12 @@ export interface OperationMetadata {
   endTime?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createTime: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  verb: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationMetadata" });
 
 export interface ListReservationsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted, there are no more results. */
@@ -326,36 +262,27 @@ export interface ListReservationsResponse {
   reservations?: Array<Reservation>;
 }
 
-export const ListReservationsResponse: Schema.Schema<ListReservationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      reservations: Schema.optional(Schema.Array(Reservation)),
-    }),
-  ).annotate({
-    identifier: "ListReservationsResponse",
-  }) as any as Schema.Schema<ListReservationsResponse>;
+export const ListReservationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    reservations: Schema.optional(Schema.Array(Reservation)),
+  }).annotate({ identifier: "ListReservationsResponse" });
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelOperationRequest",
-  }) as any as Schema.Schema<CancelOperationRequest>;
+export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelOperationRequest" });
 
 export interface ComputeHeadCursorResponse {
   /** The head cursor. */
   headCursor?: Cursor;
 }
 
-export const ComputeHeadCursorResponse: Schema.Schema<ComputeHeadCursorResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      headCursor: Schema.optional(Cursor),
-    }),
-  ).annotate({
-    identifier: "ComputeHeadCursorResponse",
-  }) as any as Schema.Schema<ComputeHeadCursorResponse>;
+export const ComputeHeadCursorResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    headCursor: Schema.optional(Cursor),
+  }).annotate({ identifier: "ComputeHeadCursorResponse" });
 
 export interface ListPartitionCursorsResponse {
   /** The partition cursors from this request. */
@@ -364,15 +291,11 @@ export interface ListPartitionCursorsResponse {
   nextPageToken?: string;
 }
 
-export const ListPartitionCursorsResponse: Schema.Schema<ListPartitionCursorsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      partitionCursors: Schema.optional(Schema.Array(PartitionCursor)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListPartitionCursorsResponse",
-  }) as any as Schema.Schema<ListPartitionCursorsResponse>;
+export const ListPartitionCursorsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    partitionCursors: Schema.optional(Schema.Array(PartitionCursor)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListPartitionCursorsResponse" });
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -383,16 +306,13 @@ export interface ListOperationsResponse {
   nextPageToken?: string;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(Schema.Array(Operation)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    operations: Schema.optional(Schema.Array(Operation)),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 export interface ListReservationTopicsResponse {
   /** The names of topics attached to the reservation. The order of the topics is unspecified. */
@@ -401,15 +321,11 @@ export interface ListReservationTopicsResponse {
   nextPageToken?: string;
 }
 
-export const ListReservationTopicsResponse: Schema.Schema<ListReservationTopicsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      topics: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListReservationTopicsResponse",
-  }) as any as Schema.Schema<ListReservationTopicsResponse>;
+export const ListReservationTopicsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    topics: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListReservationTopicsResponse" });
 
 export interface TimeTarget {
   /** Request the cursor of the first message with publish time greater than or equal to `publish_time`. All messages thereafter are guaranteed to have publish times >= `publish_time`. */
@@ -418,13 +334,10 @@ export interface TimeTarget {
   eventTime?: string;
 }
 
-export const TimeTarget: Schema.Schema<TimeTarget> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      publishTime: Schema.optional(Schema.String),
-      eventTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "TimeTarget" }) as any as Schema.Schema<TimeTarget>;
+export const TimeTarget = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  publishTime: Schema.optional(Schema.String),
+  eventTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "TimeTarget" });
 
 export interface ComputeTimeCursorRequest {
   /** Required. The partition for which we should compute the cursor. */
@@ -433,22 +346,17 @@ export interface ComputeTimeCursorRequest {
   target?: TimeTarget;
 }
 
-export const ComputeTimeCursorRequest: Schema.Schema<ComputeTimeCursorRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      partition: Schema.optional(Schema.String),
-      target: Schema.optional(TimeTarget),
-    }),
-  ).annotate({
-    identifier: "ComputeTimeCursorRequest",
-  }) as any as Schema.Schema<ComputeTimeCursorRequest>;
+export const ComputeTimeCursorRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    partition: Schema.optional(Schema.String),
+    target: Schema.optional(TimeTarget),
+  }).annotate({ identifier: "ComputeTimeCursorRequest" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface SeekSubscriptionRequest {
   /** Seek to a named position with respect to the message backlog. */
@@ -457,15 +365,11 @@ export interface SeekSubscriptionRequest {
   timeTarget?: TimeTarget;
 }
 
-export const SeekSubscriptionRequest: Schema.Schema<SeekSubscriptionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      namedTarget: Schema.optional(Schema.String),
-      timeTarget: Schema.optional(TimeTarget),
-    }),
-  ).annotate({
-    identifier: "SeekSubscriptionRequest",
-  }) as any as Schema.Schema<SeekSubscriptionRequest>;
+export const SeekSubscriptionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    namedTarget: Schema.optional(Schema.String),
+    timeTarget: Schema.optional(TimeTarget),
+  }).annotate({ identifier: "SeekSubscriptionRequest" });
 
 export interface DeliveryConfig {
   /** The DeliveryRequirement for this subscription. */
@@ -476,14 +380,9 @@ export interface DeliveryConfig {
     | (string & {});
 }
 
-export const DeliveryConfig: Schema.Schema<DeliveryConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deliveryRequirement: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DeliveryConfig",
-  }) as any as Schema.Schema<DeliveryConfig>;
+export const DeliveryConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  deliveryRequirement: Schema.optional(Schema.String),
+}).annotate({ identifier: "DeliveryConfig" });
 
 export interface Subscription {
   /** The name of the subscription. Structured like: projects/{project_number}/locations/{location}/subscriptions/{subscription_id} */
@@ -496,31 +395,21 @@ export interface Subscription {
   topic?: string;
 }
 
-export const Subscription: Schema.Schema<Subscription> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      deliveryConfig: Schema.optional(DeliveryConfig),
-      exportConfig: Schema.optional(ExportConfig),
-      topic: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Subscription",
-  }) as any as Schema.Schema<Subscription>;
+export const Subscription = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  deliveryConfig: Schema.optional(DeliveryConfig),
+  exportConfig: Schema.optional(ExportConfig),
+  topic: Schema.optional(Schema.String),
+}).annotate({ identifier: "Subscription" });
 
 export interface TopicPartitions {
   /** The number of partitions in the topic. */
   partitionCount?: string;
 }
 
-export const TopicPartitions: Schema.Schema<TopicPartitions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      partitionCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TopicPartitions",
-  }) as any as Schema.Schema<TopicPartitions>;
+export const TopicPartitions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  partitionCount: Schema.optional(Schema.String),
+}).annotate({ identifier: "TopicPartitions" });
 
 export interface ComputeMessageStatsResponse {
   /** The minimum publish timestamp across these messages. Note that publish timestamps within a partition are not guaranteed to be non-decreasing. The timestamp will be unset if there are no messages. */
@@ -533,17 +422,13 @@ export interface ComputeMessageStatsResponse {
   minimumEventTime?: string;
 }
 
-export const ComputeMessageStatsResponse: Schema.Schema<ComputeMessageStatsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      minimumPublishTime: Schema.optional(Schema.String),
-      messageBytes: Schema.optional(Schema.String),
-      messageCount: Schema.optional(Schema.String),
-      minimumEventTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ComputeMessageStatsResponse",
-  }) as any as Schema.Schema<ComputeMessageStatsResponse>;
+export const ComputeMessageStatsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    minimumPublishTime: Schema.optional(Schema.String),
+    messageBytes: Schema.optional(Schema.String),
+    messageCount: Schema.optional(Schema.String),
+    minimumEventTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ComputeMessageStatsResponse" });
 
 export interface CommitCursorRequest {
   /** The partition for which to update the cursor. Partitions are zero indexed, so `partition` must be in the range [0, topic.num_partitions). */
@@ -552,29 +437,20 @@ export interface CommitCursorRequest {
   cursor?: Cursor;
 }
 
-export const CommitCursorRequest: Schema.Schema<CommitCursorRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      partition: Schema.optional(Schema.String),
-      cursor: Schema.optional(Cursor),
-    }),
-  ).annotate({
-    identifier: "CommitCursorRequest",
-  }) as any as Schema.Schema<CommitCursorRequest>;
+export const CommitCursorRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  partition: Schema.optional(Schema.String),
+  cursor: Schema.optional(Cursor),
+}).annotate({ identifier: "CommitCursorRequest" });
 
 export interface ComputeHeadCursorRequest {
   /** Required. The partition for which we should compute the head cursor. */
   partition?: string;
 }
 
-export const ComputeHeadCursorRequest: Schema.Schema<ComputeHeadCursorRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      partition: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ComputeHeadCursorRequest",
-  }) as any as Schema.Schema<ComputeHeadCursorRequest>;
+export const ComputeHeadCursorRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    partition: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ComputeHeadCursorRequest" });
 
 export interface ListSubscriptionsResponse {
   /** The list of subscriptions in the requested parent. The order of the subscriptions is unspecified. */
@@ -583,15 +459,11 @@ export interface ListSubscriptionsResponse {
   nextPageToken?: string;
 }
 
-export const ListSubscriptionsResponse: Schema.Schema<ListSubscriptionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subscriptions: Schema.optional(Schema.Array(Subscription)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListSubscriptionsResponse",
-  }) as any as Schema.Schema<ListSubscriptionsResponse>;
+export const ListSubscriptionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptions: Schema.optional(Schema.Array(Subscription)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListSubscriptionsResponse" });
 
 export interface ListTopicsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page of results. If this field is omitted, there are no more results. */
@@ -600,15 +472,10 @@ export interface ListTopicsResponse {
   topics?: Array<Topic>;
 }
 
-export const ListTopicsResponse: Schema.Schema<ListTopicsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      topics: Schema.optional(Schema.Array(Topic)),
-    }),
-  ).annotate({
-    identifier: "ListTopicsResponse",
-  }) as any as Schema.Schema<ListTopicsResponse>;
+export const ListTopicsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  topics: Schema.optional(Schema.Array(Topic)),
+}).annotate({ identifier: "ListTopicsResponse" });
 
 export interface ListTopicSubscriptionsResponse {
   /** The names of subscriptions attached to the topic. The order of the subscriptions is unspecified. */
@@ -617,15 +484,11 @@ export interface ListTopicSubscriptionsResponse {
   nextPageToken?: string;
 }
 
-export const ListTopicSubscriptionsResponse: Schema.Schema<ListTopicSubscriptionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subscriptions: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListTopicSubscriptionsResponse",
-  }) as any as Schema.Schema<ListTopicSubscriptionsResponse>;
+export const ListTopicSubscriptionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriptions: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListTopicSubscriptionsResponse" });
 
 // ==========================================================================
 // Operations

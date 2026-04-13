@@ -36,15 +36,10 @@ export interface ContentAdsSettings {
   size?: string;
 }
 
-export const ContentAdsSettings: Schema.Schema<ContentAdsSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      size: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ContentAdsSettings",
-  }) as any as Schema.Schema<ContentAdsSettings>;
+export const ContentAdsSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  size: Schema.optional(Schema.String),
+}).annotate({ identifier: "ContentAdsSettings" });
 
 export interface CustomChannel {
   /** Output only. Unique ID of the custom channel as used in the `CUSTOM_CHANNEL_ID` reporting dimension. */
@@ -57,17 +52,12 @@ export interface CustomChannel {
   name?: string;
 }
 
-export const CustomChannel: Schema.Schema<CustomChannel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reportingDimensionId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      active: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomChannel",
-  }) as any as Schema.Schema<CustomChannel>;
+export const CustomChannel = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  reportingDimensionId: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  active: Schema.optional(Schema.Boolean),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "CustomChannel" });
 
 export interface ListCustomChannelsResponse {
   /** The custom channels returned in this list response. */
@@ -76,15 +66,11 @@ export interface ListCustomChannelsResponse {
   nextPageToken?: string;
 }
 
-export const ListCustomChannelsResponse: Schema.Schema<ListCustomChannelsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customChannels: Schema.optional(Schema.Array(CustomChannel)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListCustomChannelsResponse",
-  }) as any as Schema.Schema<ListCustomChannelsResponse>;
+export const ListCustomChannelsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customChannels: Schema.optional(Schema.Array(CustomChannel)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListCustomChannelsResponse" });
 
 export interface AdClient {
   /** Output only. Reporting product code of the ad client. For example, "AFC" for AdSense for Content. Corresponds to the `PRODUCT_CODE` dimension, and present only if the ad client supports reporting. */
@@ -102,15 +88,12 @@ export interface AdClient {
   name?: string;
 }
 
-export const AdClient: Schema.Schema<AdClient> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      productCode: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      reportingDimensionId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "AdClient" }) as any as Schema.Schema<AdClient>;
+export const AdClient = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  productCode: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  reportingDimensionId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "AdClient" });
 
 export interface ListAdClientsResponse {
   /** Continuation token used to page through ad clients. To retrieve the next page of the results, set the next request's "page_token" value to this. */
@@ -119,29 +102,19 @@ export interface ListAdClientsResponse {
   adClients?: Array<AdClient>;
 }
 
-export const ListAdClientsResponse: Schema.Schema<ListAdClientsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      adClients: Schema.optional(Schema.Array(AdClient)),
-    }),
-  ).annotate({
-    identifier: "ListAdClientsResponse",
-  }) as any as Schema.Schema<ListAdClientsResponse>;
+export const ListAdClientsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  adClients: Schema.optional(Schema.Array(AdClient)),
+}).annotate({ identifier: "ListAdClientsResponse" });
 
 export interface AdUnitAdCode {
   /** Output only. The code snippet to add to the body of an HTML page. */
   adCode?: string;
 }
 
-export const AdUnitAdCode: Schema.Schema<AdUnitAdCode> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      adCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AdUnitAdCode",
-  }) as any as Schema.Schema<AdUnitAdCode>;
+export const AdUnitAdCode = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  adCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "AdUnitAdCode" });
 
 export interface Adsense_Date {
   /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
@@ -152,16 +125,11 @@ export interface Adsense_Date {
   year?: number;
 }
 
-export const Adsense_Date: Schema.Schema<Adsense_Date> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      month: Schema.optional(Schema.Number),
-      day: Schema.optional(Schema.Number),
-      year: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "Adsense_Date",
-  }) as any as Schema.Schema<Adsense_Date>;
+export const Adsense_Date = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  month: Schema.optional(Schema.Number),
+  day: Schema.optional(Schema.Number),
+  year: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Adsense_Date" });
 
 export interface PolicyTopic {
   /** Optional. The type of policy topic. For example, "POLICY" represents all the policy topics that are related to the Google Publisher Policy (GPP). See https://support.google.com/adsense/answer/15689616. */
@@ -177,16 +145,11 @@ export interface PolicyTopic {
   topic?: string;
 }
 
-export const PolicyTopic: Schema.Schema<PolicyTopic> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      mustFix: Schema.optional(Schema.Boolean),
-      topic: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PolicyTopic",
-  }) as any as Schema.Schema<PolicyTopic>;
+export const PolicyTopic = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  mustFix: Schema.optional(Schema.Boolean),
+  topic: Schema.optional(Schema.String),
+}).annotate({ identifier: "PolicyTopic" });
 
 export interface PolicyIssue {
   /** Required. The date (in the America/Los_Angeles timezone) when policy violations were last detected on the entity. */
@@ -227,32 +190,26 @@ export interface PolicyIssue {
   uri?: string;
 }
 
-export const PolicyIssue: Schema.Schema<PolicyIssue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lastDetectedDate: Schema.optional(Adsense_Date),
-      action: Schema.optional(Schema.String),
-      firstDetectedDate: Schema.optional(Adsense_Date),
-      name: Schema.optional(Schema.String),
-      warningEscalationDate: Schema.optional(Adsense_Date),
-      policyTopics: Schema.optional(Schema.Array(PolicyTopic)),
-      entityType: Schema.optional(Schema.String),
-      siteSection: Schema.optional(Schema.String),
-      adRequestCount: Schema.optional(Schema.String),
-      site: Schema.optional(Schema.String),
-      adClients: Schema.optional(Schema.Array(Schema.String)),
-      uri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PolicyIssue",
-  }) as any as Schema.Schema<PolicyIssue>;
+export const PolicyIssue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  lastDetectedDate: Schema.optional(Adsense_Date),
+  action: Schema.optional(Schema.String),
+  firstDetectedDate: Schema.optional(Adsense_Date),
+  name: Schema.optional(Schema.String),
+  warningEscalationDate: Schema.optional(Adsense_Date),
+  policyTopics: Schema.optional(Schema.Array(PolicyTopic)),
+  entityType: Schema.optional(Schema.String),
+  siteSection: Schema.optional(Schema.String),
+  adRequestCount: Schema.optional(Schema.String),
+  site: Schema.optional(Schema.String),
+  adClients: Schema.optional(Schema.Array(Schema.String)),
+  uri: Schema.optional(Schema.String),
+}).annotate({ identifier: "PolicyIssue" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface HttpBody {
   /** The HTTP Content-Type header value specifying the content type of the body. */
@@ -263,16 +220,13 @@ export interface HttpBody {
   extensions?: Array<Record<string, unknown>>;
 }
 
-export const HttpBody: Schema.Schema<HttpBody> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contentType: Schema.optional(Schema.String),
-      data: Schema.optional(Schema.String),
-      extensions: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "HttpBody" }) as any as Schema.Schema<HttpBody>;
+export const HttpBody = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  contentType: Schema.optional(Schema.String),
+  data: Schema.optional(Schema.String),
+  extensions: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "HttpBody" });
 
 export interface TimeZone {
   /** IANA Time Zone Database time zone. For example "America/New_York". */
@@ -281,13 +235,10 @@ export interface TimeZone {
   version?: string;
 }
 
-export const TimeZone: Schema.Schema<TimeZone> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "TimeZone" }) as any as Schema.Schema<TimeZone>;
+export const TimeZone = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+}).annotate({ identifier: "TimeZone" });
 
 export interface Account {
   /** Output only. Creation time of the account. */
@@ -311,18 +262,15 @@ export interface Account {
   name?: string;
 }
 
-export const Account: Schema.Schema<Account> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      pendingTasks: Schema.optional(Schema.Array(Schema.String)),
-      premium: Schema.optional(Schema.Boolean),
-      state: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      timeZone: Schema.optional(TimeZone),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Account" }) as any as Schema.Schema<Account>;
+export const Account = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createTime: Schema.optional(Schema.String),
+  pendingTasks: Schema.optional(Schema.Array(Schema.String)),
+  premium: Schema.optional(Schema.Boolean),
+  state: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  timeZone: Schema.optional(TimeZone),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Account" });
 
 export interface ListAccountsResponse {
   /** The accounts returned in this list response. */
@@ -331,15 +279,10 @@ export interface ListAccountsResponse {
   nextPageToken?: string;
 }
 
-export const ListAccountsResponse: Schema.Schema<ListAccountsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accounts: Schema.optional(Schema.Array(Account)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAccountsResponse",
-  }) as any as Schema.Schema<ListAccountsResponse>;
+export const ListAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  accounts: Schema.optional(Schema.Array(Account)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListAccountsResponse" });
 
 export interface AdUnit {
   /** Output only. Unique ID of the ad unit as used in the `AD_UNIT_ID` reporting dimension. */
@@ -354,16 +297,13 @@ export interface AdUnit {
   contentAdsSettings?: ContentAdsSettings;
 }
 
-export const AdUnit: Schema.Schema<AdUnit> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reportingDimensionId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      contentAdsSettings: Schema.optional(ContentAdsSettings),
-    }),
-  ).annotate({ identifier: "AdUnit" }) as any as Schema.Schema<AdUnit>;
+export const AdUnit = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  reportingDimensionId: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  contentAdsSettings: Schema.optional(ContentAdsSettings),
+}).annotate({ identifier: "AdUnit" });
 
 export interface ListAdUnitsResponse {
   /** The ad units returned in the list response. */
@@ -372,15 +312,10 @@ export interface ListAdUnitsResponse {
   nextPageToken?: string;
 }
 
-export const ListAdUnitsResponse: Schema.Schema<ListAdUnitsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      adUnits: Schema.optional(Schema.Array(AdUnit)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAdUnitsResponse",
-  }) as any as Schema.Schema<ListAdUnitsResponse>;
+export const ListAdUnitsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  adUnits: Schema.optional(Schema.Array(AdUnit)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListAdUnitsResponse" });
 
 export interface UrlChannel {
   /** Output only. Unique ID of the custom channel as used in the `URL_CHANNEL_ID` reporting dimension. */
@@ -391,14 +326,11 @@ export interface UrlChannel {
   uriPattern?: string;
 }
 
-export const UrlChannel: Schema.Schema<UrlChannel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reportingDimensionId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      uriPattern: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "UrlChannel" }) as any as Schema.Schema<UrlChannel>;
+export const UrlChannel = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  reportingDimensionId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  uriPattern: Schema.optional(Schema.String),
+}).annotate({ identifier: "UrlChannel" });
 
 export interface ListUrlChannelsResponse {
   /** Continuation token used to page through url channels. To retrieve the next page of the results, set the next request's "page_token" value to this. */
@@ -407,39 +339,29 @@ export interface ListUrlChannelsResponse {
   urlChannels?: Array<UrlChannel>;
 }
 
-export const ListUrlChannelsResponse: Schema.Schema<ListUrlChannelsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      urlChannels: Schema.optional(Schema.Array(UrlChannel)),
-    }),
-  ).annotate({
-    identifier: "ListUrlChannelsResponse",
-  }) as any as Schema.Schema<ListUrlChannelsResponse>;
+export const ListUrlChannelsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    urlChannels: Schema.optional(Schema.Array(UrlChannel)),
+  }).annotate({ identifier: "ListUrlChannelsResponse" });
 
 export interface Cell {
   /** Value in the cell. The dimension cells contain strings, and the metric cells contain numbers. */
   value?: string;
 }
 
-export const Cell: Schema.Schema<Cell> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Cell" }) as any as Schema.Schema<Cell>;
+export const Cell = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.String),
+}).annotate({ identifier: "Cell" });
 
 export interface Row {
   /** Cells in the row. */
   cells?: Array<Cell>;
 }
 
-export const Row: Schema.Schema<Row> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cells: Schema.optional(Schema.Array(Cell)),
-    }),
-  ).annotate({ identifier: "Row" }) as any as Schema.Schema<Row>;
+export const Row = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cells: Schema.optional(Schema.Array(Cell)),
+}).annotate({ identifier: "Row" });
 
 export interface Alert {
   /** Output only. The localized alert message. This may contain HTML markup, such as phrase elements or links. */
@@ -457,29 +379,21 @@ export interface Alert {
     | (string & {});
 }
 
-export const Alert: Schema.Schema<Alert> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      message: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      severity: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Alert" }) as any as Schema.Schema<Alert>;
+export const Alert = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  message: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  severity: Schema.optional(Schema.String),
+}).annotate({ identifier: "Alert" });
 
 export interface ListAlertsResponse {
   /** The alerts returned in this list response. */
   alerts?: Array<Alert>;
 }
 
-export const ListAlertsResponse: Schema.Schema<ListAlertsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      alerts: Schema.optional(Schema.Array(Alert)),
-    }),
-  ).annotate({
-    identifier: "ListAlertsResponse",
-  }) as any as Schema.Schema<ListAlertsResponse>;
+export const ListAlertsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  alerts: Schema.optional(Schema.Array(Alert)),
+}).annotate({ identifier: "ListAlertsResponse" });
 
 export interface Header {
   /** Required. Name of the header. */
@@ -498,14 +412,11 @@ export interface Header {
   currencyCode?: string;
 }
 
-export const Header: Schema.Schema<Header> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      currencyCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Header" }) as any as Schema.Schema<Header>;
+export const Header = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  currencyCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "Header" });
 
 export interface Site {
   /** Domain (or subdomain) of the site, e.g. "example.com" or "www.example.com". This is used in the `OWNED_SITE_DOMAIN_NAME` reporting dimension. */
@@ -526,16 +437,13 @@ export interface Site {
   autoAdsEnabled?: boolean;
 }
 
-export const Site: Schema.Schema<Site> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      domain: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      reportingDimensionId: Schema.optional(Schema.String),
-      autoAdsEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "Site" }) as any as Schema.Schema<Site>;
+export const Site = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  domain: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  reportingDimensionId: Schema.optional(Schema.String),
+  autoAdsEnabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Site" });
 
 export interface ListLinkedCustomChannelsResponse {
   /** Continuation token used to page through alerts. To retrieve the next page of the results, set the next request's "page_token" value to this. */
@@ -544,15 +452,11 @@ export interface ListLinkedCustomChannelsResponse {
   customChannels?: Array<CustomChannel>;
 }
 
-export const ListLinkedCustomChannelsResponse: Schema.Schema<ListLinkedCustomChannelsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      customChannels: Schema.optional(Schema.Array(CustomChannel)),
-    }),
-  ).annotate({
-    identifier: "ListLinkedCustomChannelsResponse",
-  }) as any as Schema.Schema<ListLinkedCustomChannelsResponse>;
+export const ListLinkedCustomChannelsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    customChannels: Schema.optional(Schema.Array(CustomChannel)),
+  }).annotate({ identifier: "ListLinkedCustomChannelsResponse" });
 
 export interface SavedReport {
   /** Output only. Resource name of the report. Format: accounts/{account}/reports/{report} */
@@ -561,15 +465,10 @@ export interface SavedReport {
   title?: string;
 }
 
-export const SavedReport: Schema.Schema<SavedReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SavedReport",
-  }) as any as Schema.Schema<SavedReport>;
+export const SavedReport = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+}).annotate({ identifier: "SavedReport" });
 
 export interface ListSavedReportsResponse {
   /** The reports returned in this list response. */
@@ -578,15 +477,11 @@ export interface ListSavedReportsResponse {
   nextPageToken?: string;
 }
 
-export const ListSavedReportsResponse: Schema.Schema<ListSavedReportsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      savedReports: Schema.optional(Schema.Array(SavedReport)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListSavedReportsResponse",
-  }) as any as Schema.Schema<ListSavedReportsResponse>;
+export const ListSavedReportsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    savedReports: Schema.optional(Schema.Array(SavedReport)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListSavedReportsResponse" });
 
 export interface Payment {
   /** Output only. Resource name of the payment. Format: - accounts/{account}/payments/unpaid for unpaid (current) AdSense earnings. - accounts/{account}/payments/youtube-unpaid for unpaid (current) YouTube earnings. - accounts/{account}/payments/yyyy-MM-dd for paid AdSense earnings. - accounts/{account}/payments/youtube-yyyy-MM-dd for paid YouTube earnings. */
@@ -597,14 +492,11 @@ export interface Payment {
   amount?: string;
 }
 
-export const Payment: Schema.Schema<Payment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      date: Schema.optional(Adsense_Date),
-      amount: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Payment" }) as any as Schema.Schema<Payment>;
+export const Payment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  date: Schema.optional(Adsense_Date),
+  amount: Schema.optional(Schema.String),
+}).annotate({ identifier: "Payment" });
 
 export interface ReportResult {
   /** The averages of the report. This is the same length as any other row in the report; cells corresponding to dimension columns are empty. */
@@ -625,21 +517,16 @@ export interface ReportResult {
   rows?: Array<Row>;
 }
 
-export const ReportResult: Schema.Schema<ReportResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      averages: Schema.optional(Row),
-      warnings: Schema.optional(Schema.Array(Schema.String)),
-      headers: Schema.optional(Schema.Array(Header)),
-      totalMatchedRows: Schema.optional(Schema.String),
-      startDate: Schema.optional(Adsense_Date),
-      endDate: Schema.optional(Adsense_Date),
-      totals: Schema.optional(Row),
-      rows: Schema.optional(Schema.Array(Row)),
-    }),
-  ).annotate({
-    identifier: "ReportResult",
-  }) as any as Schema.Schema<ReportResult>;
+export const ReportResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  averages: Schema.optional(Row),
+  warnings: Schema.optional(Schema.Array(Schema.String)),
+  headers: Schema.optional(Schema.Array(Header)),
+  totalMatchedRows: Schema.optional(Schema.String),
+  startDate: Schema.optional(Adsense_Date),
+  endDate: Schema.optional(Adsense_Date),
+  totals: Schema.optional(Row),
+  rows: Schema.optional(Schema.Array(Row)),
+}).annotate({ identifier: "ReportResult" });
 
 export interface ListPolicyIssuesResponse {
   /** The policy issues returned in the list response. */
@@ -648,15 +535,11 @@ export interface ListPolicyIssuesResponse {
   nextPageToken?: string;
 }
 
-export const ListPolicyIssuesResponse: Schema.Schema<ListPolicyIssuesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policyIssues: Schema.optional(Schema.Array(PolicyIssue)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListPolicyIssuesResponse",
-  }) as any as Schema.Schema<ListPolicyIssuesResponse>;
+export const ListPolicyIssuesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policyIssues: Schema.optional(Schema.Array(PolicyIssue)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListPolicyIssuesResponse" });
 
 export interface ListChildAccountsResponse {
   /** Continuation token used to page through accounts. To retrieve the next page of the results, set the next request's "page_token" value to this. */
@@ -665,29 +548,20 @@ export interface ListChildAccountsResponse {
   accounts?: Array<Account>;
 }
 
-export const ListChildAccountsResponse: Schema.Schema<ListChildAccountsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      accounts: Schema.optional(Schema.Array(Account)),
-    }),
-  ).annotate({
-    identifier: "ListChildAccountsResponse",
-  }) as any as Schema.Schema<ListChildAccountsResponse>;
+export const ListChildAccountsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    accounts: Schema.optional(Schema.Array(Account)),
+  }).annotate({ identifier: "ListChildAccountsResponse" });
 
 export interface ListPaymentsResponse {
   /** The payments returned in this list response. */
   payments?: Array<Payment>;
 }
 
-export const ListPaymentsResponse: Schema.Schema<ListPaymentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      payments: Schema.optional(Schema.Array(Payment)),
-    }),
-  ).annotate({
-    identifier: "ListPaymentsResponse",
-  }) as any as Schema.Schema<ListPaymentsResponse>;
+export const ListPaymentsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  payments: Schema.optional(Schema.Array(Payment)),
+}).annotate({ identifier: "ListPaymentsResponse" });
 
 export interface ListLinkedAdUnitsResponse {
   /** The ad units returned in the list response. */
@@ -696,15 +570,11 @@ export interface ListLinkedAdUnitsResponse {
   nextPageToken?: string;
 }
 
-export const ListLinkedAdUnitsResponse: Schema.Schema<ListLinkedAdUnitsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      adUnits: Schema.optional(Schema.Array(AdUnit)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLinkedAdUnitsResponse",
-  }) as any as Schema.Schema<ListLinkedAdUnitsResponse>;
+export const ListLinkedAdUnitsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    adUnits: Schema.optional(Schema.Array(AdUnit)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListLinkedAdUnitsResponse" });
 
 export interface ListSitesResponse {
   /** The sites returned in this list response. */
@@ -713,15 +583,10 @@ export interface ListSitesResponse {
   nextPageToken?: string;
 }
 
-export const ListSitesResponse: Schema.Schema<ListSitesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sites: Schema.optional(Schema.Array(Site)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListSitesResponse",
-  }) as any as Schema.Schema<ListSitesResponse>;
+export const ListSitesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sites: Schema.optional(Schema.Array(Site)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListSitesResponse" });
 
 export interface AdBlockingRecoveryTag {
   /** The ad blocking recovery tag. Note that the message generated by the tag can be blocked by an ad blocking extension. If this is not your desired outcome, then you'll need to use it in conjunction with the error protection code. */
@@ -730,15 +595,10 @@ export interface AdBlockingRecoveryTag {
   errorProtectionCode?: string;
 }
 
-export const AdBlockingRecoveryTag: Schema.Schema<AdBlockingRecoveryTag> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tag: Schema.optional(Schema.String),
-      errorProtectionCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AdBlockingRecoveryTag",
-  }) as any as Schema.Schema<AdBlockingRecoveryTag>;
+export const AdBlockingRecoveryTag = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tag: Schema.optional(Schema.String),
+  errorProtectionCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "AdBlockingRecoveryTag" });
 
 export interface AdClientAdCode {
   /** Output only. The AdSense code snippet to add to the head of an HTML page. */
@@ -749,16 +609,11 @@ export interface AdClientAdCode {
   ampHead?: string;
 }
 
-export const AdClientAdCode: Schema.Schema<AdClientAdCode> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      adCode: Schema.optional(Schema.String),
-      ampBody: Schema.optional(Schema.String),
-      ampHead: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AdClientAdCode",
-  }) as any as Schema.Schema<AdClientAdCode>;
+export const AdClientAdCode = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  adCode: Schema.optional(Schema.String),
+  ampBody: Schema.optional(Schema.String),
+  ampHead: Schema.optional(Schema.String),
+}).annotate({ identifier: "AdClientAdCode" });
 
 // ==========================================================================
 // Operations

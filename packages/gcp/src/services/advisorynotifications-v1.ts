@@ -36,58 +36,42 @@ export interface GoogleCloudAdvisorynotificationsV1Text {
   localizedText?: string;
 }
 
-export const GoogleCloudAdvisorynotificationsV1Text: Schema.Schema<GoogleCloudAdvisorynotificationsV1Text> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enText: Schema.optional(Schema.String),
-      localizationState: Schema.optional(Schema.String),
-      localizedText: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudAdvisorynotificationsV1Text",
-  }) as any as Schema.Schema<GoogleCloudAdvisorynotificationsV1Text>;
+export const GoogleCloudAdvisorynotificationsV1Text =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enText: Schema.optional(Schema.String),
+    localizationState: Schema.optional(Schema.String),
+    localizedText: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudAdvisorynotificationsV1Text" });
 
 export interface GoogleCloudAdvisorynotificationsV1Subject {
   /** The text content. */
   text?: GoogleCloudAdvisorynotificationsV1Text;
 }
 
-export const GoogleCloudAdvisorynotificationsV1Subject: Schema.Schema<GoogleCloudAdvisorynotificationsV1Subject> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(GoogleCloudAdvisorynotificationsV1Text),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudAdvisorynotificationsV1Subject",
-  }) as any as Schema.Schema<GoogleCloudAdvisorynotificationsV1Subject>;
+export const GoogleCloudAdvisorynotificationsV1Subject =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(GoogleCloudAdvisorynotificationsV1Text),
+  }).annotate({ identifier: "GoogleCloudAdvisorynotificationsV1Subject" });
 
 export interface GoogleCloudAdvisorynotificationsV1MessageBody {
   /** The text content of the message body. */
   text?: GoogleCloudAdvisorynotificationsV1Text;
 }
 
-export const GoogleCloudAdvisorynotificationsV1MessageBody: Schema.Schema<GoogleCloudAdvisorynotificationsV1MessageBody> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(GoogleCloudAdvisorynotificationsV1Text),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudAdvisorynotificationsV1MessageBody",
-  }) as any as Schema.Schema<GoogleCloudAdvisorynotificationsV1MessageBody>;
+export const GoogleCloudAdvisorynotificationsV1MessageBody =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(GoogleCloudAdvisorynotificationsV1Text),
+  }).annotate({ identifier: "GoogleCloudAdvisorynotificationsV1MessageBody" });
 
 export interface GoogleCloudAdvisorynotificationsV1CsvCsvRow {
   /** The data entries in a CSV file row, as a string array rather than a single comma-separated string. */
   entries?: Array<string>;
 }
 
-export const GoogleCloudAdvisorynotificationsV1CsvCsvRow: Schema.Schema<GoogleCloudAdvisorynotificationsV1CsvCsvRow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entries: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudAdvisorynotificationsV1CsvCsvRow",
-  }) as any as Schema.Schema<GoogleCloudAdvisorynotificationsV1CsvCsvRow>;
+export const GoogleCloudAdvisorynotificationsV1CsvCsvRow =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entries: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudAdvisorynotificationsV1CsvCsvRow" });
 
 export interface GoogleCloudAdvisorynotificationsV1Csv {
   /** The list of headers for data columns in a CSV file. */
@@ -96,17 +80,13 @@ export interface GoogleCloudAdvisorynotificationsV1Csv {
   dataRows?: Array<GoogleCloudAdvisorynotificationsV1CsvCsvRow>;
 }
 
-export const GoogleCloudAdvisorynotificationsV1Csv: Schema.Schema<GoogleCloudAdvisorynotificationsV1Csv> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      headers: Schema.optional(Schema.Array(Schema.String)),
-      dataRows: Schema.optional(
-        Schema.Array(GoogleCloudAdvisorynotificationsV1CsvCsvRow),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudAdvisorynotificationsV1Csv",
-  }) as any as Schema.Schema<GoogleCloudAdvisorynotificationsV1Csv>;
+export const GoogleCloudAdvisorynotificationsV1Csv =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    headers: Schema.optional(Schema.Array(Schema.String)),
+    dataRows: Schema.optional(
+      Schema.Array(GoogleCloudAdvisorynotificationsV1CsvCsvRow),
+    ),
+  }).annotate({ identifier: "GoogleCloudAdvisorynotificationsV1Csv" });
 
 export interface GoogleCloudAdvisorynotificationsV1Attachment {
   /** The title of the attachment. */
@@ -115,15 +95,11 @@ export interface GoogleCloudAdvisorynotificationsV1Attachment {
   csv?: GoogleCloudAdvisorynotificationsV1Csv;
 }
 
-export const GoogleCloudAdvisorynotificationsV1Attachment: Schema.Schema<GoogleCloudAdvisorynotificationsV1Attachment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      csv: Schema.optional(GoogleCloudAdvisorynotificationsV1Csv),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudAdvisorynotificationsV1Attachment",
-  }) as any as Schema.Schema<GoogleCloudAdvisorynotificationsV1Attachment>;
+export const GoogleCloudAdvisorynotificationsV1Attachment =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    csv: Schema.optional(GoogleCloudAdvisorynotificationsV1Csv),
+  }).annotate({ identifier: "GoogleCloudAdvisorynotificationsV1Attachment" });
 
 export interface GoogleCloudAdvisorynotificationsV1Message {
   /** The message content. */
@@ -136,19 +112,15 @@ export interface GoogleCloudAdvisorynotificationsV1Message {
   createTime?: string;
 }
 
-export const GoogleCloudAdvisorynotificationsV1Message: Schema.Schema<GoogleCloudAdvisorynotificationsV1Message> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      body: Schema.optional(GoogleCloudAdvisorynotificationsV1MessageBody),
-      attachments: Schema.optional(
-        Schema.Array(GoogleCloudAdvisorynotificationsV1Attachment),
-      ),
-      localizationTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudAdvisorynotificationsV1Message",
-  }) as any as Schema.Schema<GoogleCloudAdvisorynotificationsV1Message>;
+export const GoogleCloudAdvisorynotificationsV1Message =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    body: Schema.optional(GoogleCloudAdvisorynotificationsV1MessageBody),
+    attachments: Schema.optional(
+      Schema.Array(GoogleCloudAdvisorynotificationsV1Attachment),
+    ),
+    localizationTime: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudAdvisorynotificationsV1Message" });
 
 export interface GoogleCloudAdvisorynotificationsV1Notification {
   /** Output only. Time the notification was created. */
@@ -169,20 +141,16 @@ export interface GoogleCloudAdvisorynotificationsV1Notification {
   messages?: Array<GoogleCloudAdvisorynotificationsV1Message>;
 }
 
-export const GoogleCloudAdvisorynotificationsV1Notification: Schema.Schema<GoogleCloudAdvisorynotificationsV1Notification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      notificationType: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      subject: Schema.optional(GoogleCloudAdvisorynotificationsV1Subject),
-      messages: Schema.optional(
-        Schema.Array(GoogleCloudAdvisorynotificationsV1Message),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudAdvisorynotificationsV1Notification",
-  }) as any as Schema.Schema<GoogleCloudAdvisorynotificationsV1Notification>;
+export const GoogleCloudAdvisorynotificationsV1Notification =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    notificationType: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    subject: Schema.optional(GoogleCloudAdvisorynotificationsV1Subject),
+    messages: Schema.optional(
+      Schema.Array(GoogleCloudAdvisorynotificationsV1Message),
+    ),
+  }).annotate({ identifier: "GoogleCloudAdvisorynotificationsV1Notification" });
 
 export interface GoogleCloudAdvisorynotificationsV1ListNotificationsResponse {
   /** List of notifications under a given parent. */
@@ -193,32 +161,28 @@ export interface GoogleCloudAdvisorynotificationsV1ListNotificationsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudAdvisorynotificationsV1ListNotificationsResponse: Schema.Schema<GoogleCloudAdvisorynotificationsV1ListNotificationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      notifications: Schema.optional(
-        Schema.Array(GoogleCloudAdvisorynotificationsV1Notification),
-      ),
-      totalSize: Schema.optional(Schema.Number),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudAdvisorynotificationsV1ListNotificationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    notifications: Schema.optional(
+      Schema.Array(GoogleCloudAdvisorynotificationsV1Notification),
+    ),
+    totalSize: Schema.optional(Schema.Number),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudAdvisorynotificationsV1ListNotificationsResponse",
-  }) as any as Schema.Schema<GoogleCloudAdvisorynotificationsV1ListNotificationsResponse>;
+  });
 
 export interface GoogleCloudAdvisorynotificationsV1NotificationSettings {
   /** Whether the associated NotificationType is enabled. */
   enabled?: boolean;
 }
 
-export const GoogleCloudAdvisorynotificationsV1NotificationSettings: Schema.Schema<GoogleCloudAdvisorynotificationsV1NotificationSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudAdvisorynotificationsV1NotificationSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudAdvisorynotificationsV1NotificationSettings",
-  }) as any as Schema.Schema<GoogleCloudAdvisorynotificationsV1NotificationSettings>;
+  });
 
 export interface GoogleCloudAdvisorynotificationsV1Settings {
   /** Required. Map of each notification type and its settings to get/set all settings at once. The server will validate the value for each notification type. */
@@ -232,21 +196,17 @@ export interface GoogleCloudAdvisorynotificationsV1Settings {
   name?: string;
 }
 
-export const GoogleCloudAdvisorynotificationsV1Settings: Schema.Schema<GoogleCloudAdvisorynotificationsV1Settings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      notificationSettings: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          GoogleCloudAdvisorynotificationsV1NotificationSettings,
-        ),
+export const GoogleCloudAdvisorynotificationsV1Settings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    notificationSettings: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        GoogleCloudAdvisorynotificationsV1NotificationSettings,
       ),
-      etag: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudAdvisorynotificationsV1Settings",
-  }) as any as Schema.Schema<GoogleCloudAdvisorynotificationsV1Settings>;
+    ),
+    etag: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudAdvisorynotificationsV1Settings" });
 
 // ==========================================================================
 // Operations

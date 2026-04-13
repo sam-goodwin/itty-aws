@@ -27,14 +27,9 @@ export interface DeviceMetadata {
   entries?: Record<string, string>;
 }
 
-export const DeviceMetadata: Schema.Schema<DeviceMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entries: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "DeviceMetadata",
-  }) as any as Schema.Schema<DeviceMetadata>;
+export const DeviceMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  entries: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "DeviceMetadata" });
 
 export interface DeviceIdentifier {
   /** The device’s IMEI number. Validated on input. */
@@ -61,22 +56,17 @@ export interface DeviceIdentifier {
     | (string & {});
 }
 
-export const DeviceIdentifier: Schema.Schema<DeviceIdentifier> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      imei: Schema.optional(Schema.String),
-      manufacturer: Schema.optional(Schema.String),
-      meid2: Schema.optional(Schema.String),
-      chromeOsAttestedDeviceId: Schema.optional(Schema.String),
-      meid: Schema.optional(Schema.String),
-      imei2: Schema.optional(Schema.String),
-      model: Schema.optional(Schema.String),
-      serialNumber: Schema.optional(Schema.String),
-      deviceType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DeviceIdentifier",
-  }) as any as Schema.Schema<DeviceIdentifier>;
+export const DeviceIdentifier = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  imei: Schema.optional(Schema.String),
+  manufacturer: Schema.optional(Schema.String),
+  meid2: Schema.optional(Schema.String),
+  chromeOsAttestedDeviceId: Schema.optional(Schema.String),
+  meid: Schema.optional(Schema.String),
+  imei2: Schema.optional(Schema.String),
+  model: Schema.optional(Schema.String),
+  serialNumber: Schema.optional(Schema.String),
+  deviceType: Schema.optional(Schema.String),
+}).annotate({ identifier: "DeviceIdentifier" });
 
 export interface PartnerClaim {
   /** Optional. Must and can only be set for Chrome OS devices. */
@@ -101,21 +91,16 @@ export interface PartnerClaim {
   googleWorkspaceCustomerId?: string;
 }
 
-export const PartnerClaim: Schema.Schema<PartnerClaim> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      preProvisioningToken: Schema.optional(Schema.String),
-      sectionType: Schema.optional(Schema.String),
-      deviceMetadata: Schema.optional(DeviceMetadata),
-      simlockProfileId: Schema.optional(Schema.String),
-      configurationId: Schema.optional(Schema.String),
-      deviceIdentifier: Schema.optional(DeviceIdentifier),
-      customerId: Schema.optional(Schema.String),
-      googleWorkspaceCustomerId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PartnerClaim",
-  }) as any as Schema.Schema<PartnerClaim>;
+export const PartnerClaim = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  preProvisioningToken: Schema.optional(Schema.String),
+  sectionType: Schema.optional(Schema.String),
+  deviceMetadata: Schema.optional(DeviceMetadata),
+  simlockProfileId: Schema.optional(Schema.String),
+  configurationId: Schema.optional(Schema.String),
+  deviceIdentifier: Schema.optional(DeviceIdentifier),
+  customerId: Schema.optional(Schema.String),
+  googleWorkspaceCustomerId: Schema.optional(Schema.String),
+}).annotate({ identifier: "PartnerClaim" });
 
 export interface UpdateMetadataArguments {
   /** Required. Device ID of the device. */
@@ -126,16 +111,12 @@ export interface UpdateMetadataArguments {
   deviceIdentifier?: DeviceIdentifier;
 }
 
-export const UpdateMetadataArguments: Schema.Schema<UpdateMetadataArguments> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deviceId: Schema.optional(Schema.String),
-      deviceMetadata: Schema.optional(DeviceMetadata),
-      deviceIdentifier: Schema.optional(DeviceIdentifier),
-    }),
-  ).annotate({
-    identifier: "UpdateMetadataArguments",
-  }) as any as Schema.Schema<UpdateMetadataArguments>;
+export const UpdateMetadataArguments =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deviceId: Schema.optional(Schema.String),
+    deviceMetadata: Schema.optional(DeviceMetadata),
+    deviceIdentifier: Schema.optional(DeviceIdentifier),
+  }).annotate({ identifier: "UpdateMetadataArguments" });
 
 export interface PartnerUnclaim {
   /** Optional. The expiration time of the vacation unlock. */
@@ -154,18 +135,13 @@ export interface PartnerUnclaim {
     | (string & {});
 }
 
-export const PartnerUnclaim: Schema.Schema<PartnerUnclaim> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      vacationModeExpireTime: Schema.optional(Schema.String),
-      deviceIdentifier: Schema.optional(DeviceIdentifier),
-      vacationModeDays: Schema.optional(Schema.Number),
-      deviceId: Schema.optional(Schema.String),
-      sectionType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PartnerUnclaim",
-  }) as any as Schema.Schema<PartnerUnclaim>;
+export const PartnerUnclaim = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  vacationModeExpireTime: Schema.optional(Schema.String),
+  deviceIdentifier: Schema.optional(DeviceIdentifier),
+  vacationModeDays: Schema.optional(Schema.Number),
+  deviceId: Schema.optional(Schema.String),
+  sectionType: Schema.optional(Schema.String),
+}).annotate({ identifier: "PartnerUnclaim" });
 
 export interface PerDeviceStatusInBatch {
   /** If processing fails, the error type. */
@@ -190,17 +166,14 @@ export interface PerDeviceStatusInBatch {
   errorMessage?: string;
 }
 
-export const PerDeviceStatusInBatch: Schema.Schema<PerDeviceStatusInBatch> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errorIdentifier: Schema.optional(Schema.String),
-      deviceId: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-      errorMessage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PerDeviceStatusInBatch",
-  }) as any as Schema.Schema<PerDeviceStatusInBatch>;
+export const PerDeviceStatusInBatch = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    errorIdentifier: Schema.optional(Schema.String),
+    deviceId: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+    errorMessage: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "PerDeviceStatusInBatch" });
 
 export interface OperationPerDevice {
   /** A copy of the original device-claim request received by the server. */
@@ -213,17 +186,12 @@ export interface OperationPerDevice {
   result?: PerDeviceStatusInBatch;
 }
 
-export const OperationPerDevice: Schema.Schema<OperationPerDevice> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      claim: Schema.optional(PartnerClaim),
-      updateMetadata: Schema.optional(UpdateMetadataArguments),
-      unclaim: Schema.optional(PartnerUnclaim),
-      result: Schema.optional(PerDeviceStatusInBatch),
-    }),
-  ).annotate({
-    identifier: "OperationPerDevice",
-  }) as any as Schema.Schema<OperationPerDevice>;
+export const OperationPerDevice = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  claim: Schema.optional(PartnerClaim),
+  updateMetadata: Schema.optional(UpdateMetadataArguments),
+  unclaim: Schema.optional(PartnerUnclaim),
+  result: Schema.optional(PerDeviceStatusInBatch),
+}).annotate({ identifier: "OperationPerDevice" });
 
 export interface DevicesLongRunningOperationResponse {
   /** A summary of how many items in the operation the server processed successfully. Updated as the operation progresses. */
@@ -232,15 +200,11 @@ export interface DevicesLongRunningOperationResponse {
   perDeviceStatus?: Array<OperationPerDevice>;
 }
 
-export const DevicesLongRunningOperationResponse: Schema.Schema<DevicesLongRunningOperationResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      successCount: Schema.optional(Schema.Number),
-      perDeviceStatus: Schema.optional(Schema.Array(OperationPerDevice)),
-    }),
-  ).annotate({
-    identifier: "DevicesLongRunningOperationResponse",
-  }) as any as Schema.Schema<DevicesLongRunningOperationResponse>;
+export const DevicesLongRunningOperationResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    successCount: Schema.optional(Schema.Number),
+    perDeviceStatus: Schema.optional(Schema.Array(OperationPerDevice)),
+  }).annotate({ identifier: "DevicesLongRunningOperationResponse" });
 
 export interface GetDeviceSimLockStateResponse {
   simLockState?:
@@ -251,14 +215,10 @@ export interface GetDeviceSimLockStateResponse {
     | (string & {});
 }
 
-export const GetDeviceSimLockStateResponse: Schema.Schema<GetDeviceSimLockStateResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      simLockState: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GetDeviceSimLockStateResponse",
-  }) as any as Schema.Schema<GetDeviceSimLockStateResponse>;
+export const GetDeviceSimLockStateResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    simLockState: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GetDeviceSimLockStateResponse" });
 
 export interface GoogleWorkspaceAccount {
   /** Required. The customer ID. */
@@ -267,15 +227,12 @@ export interface GoogleWorkspaceAccount {
   preProvisioningTokens?: Array<string>;
 }
 
-export const GoogleWorkspaceAccount: Schema.Schema<GoogleWorkspaceAccount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customerId: Schema.optional(Schema.String),
-      preProvisioningTokens: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleWorkspaceAccount",
-  }) as any as Schema.Schema<GoogleWorkspaceAccount>;
+export const GoogleWorkspaceAccount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    customerId: Schema.optional(Schema.String),
+    preProvisioningTokens: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "GoogleWorkspaceAccount" });
 
 export interface Company {
   /** Required. The name of the company. For example _XYZ Corp_. Displayed to the company's employees in the zero-touch enrollment portal. */
@@ -303,20 +260,17 @@ export interface Company {
   languageCode?: string;
 }
 
-export const Company: Schema.Schema<Company> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      companyName: Schema.optional(Schema.String),
-      ownerEmails: Schema.optional(Schema.Array(Schema.String)),
-      skipWelcomeEmail: Schema.optional(Schema.Boolean),
-      googleWorkspaceAccount: Schema.optional(GoogleWorkspaceAccount),
-      name: Schema.optional(Schema.String),
-      adminEmails: Schema.optional(Schema.Array(Schema.String)),
-      termsStatus: Schema.optional(Schema.String),
-      companyId: Schema.optional(Schema.String),
-      languageCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Company" }) as any as Schema.Schema<Company>;
+export const Company = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  companyName: Schema.optional(Schema.String),
+  ownerEmails: Schema.optional(Schema.Array(Schema.String)),
+  skipWelcomeEmail: Schema.optional(Schema.Boolean),
+  googleWorkspaceAccount: Schema.optional(GoogleWorkspaceAccount),
+  name: Schema.optional(Schema.String),
+  adminEmails: Schema.optional(Schema.Array(Schema.String)),
+  termsStatus: Schema.optional(Schema.String),
+  companyId: Schema.optional(Schema.String),
+  languageCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "Company" });
 
 export interface CustomerListCustomersResponse {
   /** The customer accounts the calling user is a member of. */
@@ -325,15 +279,11 @@ export interface CustomerListCustomersResponse {
   nextPageToken?: string;
 }
 
-export const CustomerListCustomersResponse: Schema.Schema<CustomerListCustomersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customers: Schema.optional(Schema.Array(Company)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomerListCustomersResponse",
-  }) as any as Schema.Schema<CustomerListCustomersResponse>;
+export const CustomerListCustomersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customers: Schema.optional(Schema.Array(Company)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CustomerListCustomersResponse" });
 
 export interface ClaimDeviceRequest {
   /** Optional. Must and can only be set when DeviceProvisioningSectionType is SECTION_TYPE_SIM_LOCK. The unique identifier of the SimLock profile. */
@@ -358,21 +308,16 @@ export interface ClaimDeviceRequest {
   deviceMetadata?: DeviceMetadata;
 }
 
-export const ClaimDeviceRequest: Schema.Schema<ClaimDeviceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      simlockProfileId: Schema.optional(Schema.String),
-      configurationId: Schema.optional(Schema.String),
-      deviceIdentifier: Schema.optional(DeviceIdentifier),
-      customerId: Schema.optional(Schema.String),
-      googleWorkspaceCustomerId: Schema.optional(Schema.String),
-      preProvisioningToken: Schema.optional(Schema.String),
-      sectionType: Schema.optional(Schema.String),
-      deviceMetadata: Schema.optional(DeviceMetadata),
-    }),
-  ).annotate({
-    identifier: "ClaimDeviceRequest",
-  }) as any as Schema.Schema<ClaimDeviceRequest>;
+export const ClaimDeviceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  simlockProfileId: Schema.optional(Schema.String),
+  configurationId: Schema.optional(Schema.String),
+  deviceIdentifier: Schema.optional(DeviceIdentifier),
+  customerId: Schema.optional(Schema.String),
+  googleWorkspaceCustomerId: Schema.optional(Schema.String),
+  preProvisioningToken: Schema.optional(Schema.String),
+  sectionType: Schema.optional(Schema.String),
+  deviceMetadata: Schema.optional(DeviceMetadata),
+}).annotate({ identifier: "ClaimDeviceRequest" });
 
 export interface DeviceReference {
   /** The ID of the device. */
@@ -381,29 +326,20 @@ export interface DeviceReference {
   deviceIdentifier?: DeviceIdentifier;
 }
 
-export const DeviceReference: Schema.Schema<DeviceReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deviceId: Schema.optional(Schema.String),
-      deviceIdentifier: Schema.optional(DeviceIdentifier),
-    }),
-  ).annotate({
-    identifier: "DeviceReference",
-  }) as any as Schema.Schema<DeviceReference>;
+export const DeviceReference = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  deviceId: Schema.optional(Schema.String),
+  deviceIdentifier: Schema.optional(DeviceIdentifier),
+}).annotate({ identifier: "DeviceReference" });
 
 export interface CustomerRemoveConfigurationRequest {
   /** Required. The device to remove the configuration from. There are custom validations in RemoveConfigurationRequestValidator */
   device?: DeviceReference;
 }
 
-export const CustomerRemoveConfigurationRequest: Schema.Schema<CustomerRemoveConfigurationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      device: Schema.optional(DeviceReference),
-    }),
-  ).annotate({
-    identifier: "CustomerRemoveConfigurationRequest",
-  }) as any as Schema.Schema<CustomerRemoveConfigurationRequest>;
+export const CustomerRemoveConfigurationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    device: Schema.optional(DeviceReference),
+  }).annotate({ identifier: "CustomerRemoveConfigurationRequest" });
 
 export interface DeviceClaim {
   /** Output only. The type of claim made on the device. */
@@ -429,20 +365,15 @@ export interface DeviceClaim {
   googleWorkspaceCustomerId?: string;
 }
 
-export const DeviceClaim: Schema.Schema<DeviceClaim> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sectionType: Schema.optional(Schema.String),
-      resellerId: Schema.optional(Schema.String),
-      additionalService: Schema.optional(Schema.String),
-      vacationModeStartTime: Schema.optional(Schema.String),
-      vacationModeExpireTime: Schema.optional(Schema.String),
-      ownerCompanyId: Schema.optional(Schema.String),
-      googleWorkspaceCustomerId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DeviceClaim",
-  }) as any as Schema.Schema<DeviceClaim>;
+export const DeviceClaim = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sectionType: Schema.optional(Schema.String),
+  resellerId: Schema.optional(Schema.String),
+  additionalService: Schema.optional(Schema.String),
+  vacationModeStartTime: Schema.optional(Schema.String),
+  vacationModeExpireTime: Schema.optional(Schema.String),
+  ownerCompanyId: Schema.optional(Schema.String),
+  googleWorkspaceCustomerId: Schema.optional(Schema.String),
+}).annotate({ identifier: "DeviceClaim" });
 
 export interface Device {
   /** The hardware IDs that identify a manufactured device. To learn more, read [Identifiers](https://developers.google.com/zero-touch/guides/identifiers). */
@@ -459,17 +390,14 @@ export interface Device {
   name?: string;
 }
 
-export const Device: Schema.Schema<Device> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deviceIdentifier: Schema.optional(DeviceIdentifier),
-      configuration: Schema.optional(Schema.String),
-      claims: Schema.optional(Schema.Array(DeviceClaim)),
-      deviceId: Schema.optional(Schema.String),
-      deviceMetadata: Schema.optional(DeviceMetadata),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Device" }) as any as Schema.Schema<Device>;
+export const Device = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  deviceIdentifier: Schema.optional(DeviceIdentifier),
+  configuration: Schema.optional(Schema.String),
+  claims: Schema.optional(Schema.Array(DeviceClaim)),
+  deviceId: Schema.optional(Schema.String),
+  deviceMetadata: Schema.optional(DeviceMetadata),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Device" });
 
 export interface FindDevicesByDeviceIdentifierResponse {
   /** The total count of items in the list irrespective of pagination. */
@@ -480,16 +408,12 @@ export interface FindDevicesByDeviceIdentifierResponse {
   nextPageToken?: string;
 }
 
-export const FindDevicesByDeviceIdentifierResponse: Schema.Schema<FindDevicesByDeviceIdentifierResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      totalSize: Schema.optional(Schema.Number),
-      devices: Schema.optional(Schema.Array(Device)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FindDevicesByDeviceIdentifierResponse",
-  }) as any as Schema.Schema<FindDevicesByDeviceIdentifierResponse>;
+export const FindDevicesByDeviceIdentifierResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    totalSize: Schema.optional(Schema.Number),
+    devices: Schema.optional(Schema.Array(Device)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "FindDevicesByDeviceIdentifierResponse" });
 
 export interface Configuration {
   /** Required. The name of the organization. Zero-touch enrollment shows this organization name to device users during device provisioning. */
@@ -516,24 +440,19 @@ export interface Configuration {
   dpcResourcePath?: string;
 }
 
-export const Configuration: Schema.Schema<Configuration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      companyName: Schema.optional(Schema.String),
-      forcedResetTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      contactEmail: Schema.optional(Schema.String),
-      customMessage: Schema.optional(Schema.String),
-      dpcExtras: Schema.optional(Schema.String),
-      contactPhone: Schema.optional(Schema.String),
-      isDefault: Schema.optional(Schema.Boolean),
-      configurationId: Schema.optional(Schema.String),
-      configurationName: Schema.optional(Schema.String),
-      dpcResourcePath: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Configuration",
-  }) as any as Schema.Schema<Configuration>;
+export const Configuration = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  companyName: Schema.optional(Schema.String),
+  forcedResetTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  contactEmail: Schema.optional(Schema.String),
+  customMessage: Schema.optional(Schema.String),
+  dpcExtras: Schema.optional(Schema.String),
+  contactPhone: Schema.optional(Schema.String),
+  isDefault: Schema.optional(Schema.Boolean),
+  configurationId: Schema.optional(Schema.String),
+  configurationName: Schema.optional(Schema.String),
+  dpcResourcePath: Schema.optional(Schema.String),
+}).annotate({ identifier: "Configuration" });
 
 export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
@@ -544,16 +463,13 @@ export interface Status {
   code?: number;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      message: Schema.optional(Schema.String),
-      code: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  message: Schema.optional(Schema.String),
+  code: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -568,100 +484,71 @@ export interface Operation {
   done?: boolean;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      error: Schema.optional(Status),
-      done: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  error: Schema.optional(Status),
+  done: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Operation" });
 
 export interface UpdateDeviceMetadataRequest {
   /** Required. The metadata to attach to the device. */
   deviceMetadata?: DeviceMetadata;
 }
 
-export const UpdateDeviceMetadataRequest: Schema.Schema<UpdateDeviceMetadataRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deviceMetadata: Schema.optional(DeviceMetadata),
-    }),
-  ).annotate({
-    identifier: "UpdateDeviceMetadataRequest",
-  }) as any as Schema.Schema<UpdateDeviceMetadataRequest>;
+export const UpdateDeviceMetadataRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deviceMetadata: Schema.optional(DeviceMetadata),
+  }).annotate({ identifier: "UpdateDeviceMetadataRequest" });
 
 export interface ClaimDevicesRequest {
   /** Required. A list of device claims. */
   claims?: Array<PartnerClaim>;
 }
 
-export const ClaimDevicesRequest: Schema.Schema<ClaimDevicesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      claims: Schema.optional(Schema.Array(PartnerClaim)),
-    }),
-  ).annotate({
-    identifier: "ClaimDevicesRequest",
-  }) as any as Schema.Schema<ClaimDevicesRequest>;
+export const ClaimDevicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  claims: Schema.optional(Schema.Array(PartnerClaim)),
+}).annotate({ identifier: "ClaimDevicesRequest" });
 
 export interface UnclaimDevicesRequest {
   /** Required. The list of devices to unclaim. */
   unclaims?: Array<PartnerUnclaim>;
 }
 
-export const UnclaimDevicesRequest: Schema.Schema<UnclaimDevicesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unclaims: Schema.optional(Schema.Array(PartnerUnclaim)),
-    }),
-  ).annotate({
-    identifier: "UnclaimDevicesRequest",
-  }) as any as Schema.Schema<UnclaimDevicesRequest>;
+export const UnclaimDevicesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  unclaims: Schema.optional(Schema.Array(PartnerUnclaim)),
+}).annotate({ identifier: "UnclaimDevicesRequest" });
 
 export interface UpdateDeviceMetadataInBatchRequest {
   /** Required. The list of metadata updates. */
   updates?: Array<UpdateMetadataArguments>;
 }
 
-export const UpdateDeviceMetadataInBatchRequest: Schema.Schema<UpdateDeviceMetadataInBatchRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updates: Schema.optional(Schema.Array(UpdateMetadataArguments)),
-    }),
-  ).annotate({
-    identifier: "UpdateDeviceMetadataInBatchRequest",
-  }) as any as Schema.Schema<UpdateDeviceMetadataInBatchRequest>;
+export const UpdateDeviceMetadataInBatchRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updates: Schema.optional(Schema.Array(UpdateMetadataArguments)),
+  }).annotate({ identifier: "UpdateDeviceMetadataInBatchRequest" });
 
 export interface CustomerListConfigurationsResponse {
   /** The configurations. */
   configurations?: Array<Configuration>;
 }
 
-export const CustomerListConfigurationsResponse: Schema.Schema<CustomerListConfigurationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      configurations: Schema.optional(Schema.Array(Configuration)),
-    }),
-  ).annotate({
-    identifier: "CustomerListConfigurationsResponse",
-  }) as any as Schema.Schema<CustomerListConfigurationsResponse>;
+export const CustomerListConfigurationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    configurations: Schema.optional(Schema.Array(Configuration)),
+  }).annotate({ identifier: "CustomerListConfigurationsResponse" });
 
 export interface GetDeviceSimLockStateRequest {
   /** Required. Required. The device identifier to search for. */
   deviceIdentifier?: DeviceIdentifier;
 }
 
-export const GetDeviceSimLockStateRequest: Schema.Schema<GetDeviceSimLockStateRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deviceIdentifier: Schema.optional(DeviceIdentifier),
-    }),
-  ).annotate({
-    identifier: "GetDeviceSimLockStateRequest",
-  }) as any as Schema.Schema<GetDeviceSimLockStateRequest>;
+export const GetDeviceSimLockStateRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deviceIdentifier: Schema.optional(DeviceIdentifier),
+  }).annotate({ identifier: "GetDeviceSimLockStateRequest" });
 
 export interface CustomerApplyConfigurationRequest {
   /** Required. The configuration applied to the device in the format `customers/[CUSTOMER_ID]/configurations/[CONFIGURATION_ID]`. */
@@ -670,29 +557,20 @@ export interface CustomerApplyConfigurationRequest {
   device?: DeviceReference;
 }
 
-export const CustomerApplyConfigurationRequest: Schema.Schema<CustomerApplyConfigurationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      configuration: Schema.optional(Schema.String),
-      device: Schema.optional(DeviceReference),
-    }),
-  ).annotate({
-    identifier: "CustomerApplyConfigurationRequest",
-  }) as any as Schema.Schema<CustomerApplyConfigurationRequest>;
+export const CustomerApplyConfigurationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    configuration: Schema.optional(Schema.String),
+    device: Schema.optional(DeviceReference),
+  }).annotate({ identifier: "CustomerApplyConfigurationRequest" });
 
 export interface CreateCustomerRequest {
   /** Required. The company data to populate the new customer. Must contain a value for `companyName` and at least one `owner_email` that's associated with a Google Account. The values for `companyId` and `name` must be empty. */
   customer?: Company;
 }
 
-export const CreateCustomerRequest: Schema.Schema<CreateCustomerRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customer: Schema.optional(Company),
-    }),
-  ).annotate({
-    identifier: "CreateCustomerRequest",
-  }) as any as Schema.Schema<CreateCustomerRequest>;
+export const CreateCustomerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  customer: Schema.optional(Company),
+}).annotate({ identifier: "CreateCustomerRequest" });
 
 export interface DevicesLongRunningOperationMetadata {
   /** The processing progress of the operation. Measured as a number from 0 to 100. A value of 10O doesn't always mean the operation completed—check for the inclusion of a `done` field. */
@@ -708,16 +586,12 @@ export interface DevicesLongRunningOperationMetadata {
     | (string & {});
 }
 
-export const DevicesLongRunningOperationMetadata: Schema.Schema<DevicesLongRunningOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      progress: Schema.optional(Schema.Number),
-      devicesCount: Schema.optional(Schema.Number),
-      processingStatus: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DevicesLongRunningOperationMetadata",
-  }) as any as Schema.Schema<DevicesLongRunningOperationMetadata>;
+export const DevicesLongRunningOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    progress: Schema.optional(Schema.Number),
+    devicesCount: Schema.optional(Schema.Number),
+    processingStatus: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DevicesLongRunningOperationMetadata" });
 
 export interface ListCustomersResponse {
   /** List of customers related to this reseller partner. */
@@ -728,16 +602,11 @@ export interface ListCustomersResponse {
   totalSize?: number;
 }
 
-export const ListCustomersResponse: Schema.Schema<ListCustomersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customers: Schema.optional(Schema.Array(Company)),
-      nextPageToken: Schema.optional(Schema.String),
-      totalSize: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "ListCustomersResponse",
-  }) as any as Schema.Schema<ListCustomersResponse>;
+export const ListCustomersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  customers: Schema.optional(Schema.Array(Company)),
+  nextPageToken: Schema.optional(Schema.String),
+  totalSize: Schema.optional(Schema.Number),
+}).annotate({ identifier: "ListCustomersResponse" });
 
 export interface UnclaimDeviceRequest {
   /** The duration of the vacation unlock starting from when the request is processed. (1 day is treated as 24 hours) */
@@ -756,18 +625,13 @@ export interface UnclaimDeviceRequest {
     | (string & {});
 }
 
-export const UnclaimDeviceRequest: Schema.Schema<UnclaimDeviceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      vacationModeDays: Schema.optional(Schema.Number),
-      vacationModeExpireTime: Schema.optional(Schema.String),
-      deviceIdentifier: Schema.optional(DeviceIdentifier),
-      deviceId: Schema.optional(Schema.String),
-      sectionType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UnclaimDeviceRequest",
-  }) as any as Schema.Schema<UnclaimDeviceRequest>;
+export const UnclaimDeviceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  vacationModeDays: Schema.optional(Schema.Number),
+  vacationModeExpireTime: Schema.optional(Schema.String),
+  deviceIdentifier: Schema.optional(DeviceIdentifier),
+  deviceId: Schema.optional(Schema.String),
+  sectionType: Schema.optional(Schema.String),
+}).annotate({ identifier: "UnclaimDeviceRequest" });
 
 export interface ListVendorsResponse {
   /** The total count of items in the list irrespective of pagination. */
@@ -778,23 +642,17 @@ export interface ListVendorsResponse {
   nextPageToken?: string;
 }
 
-export const ListVendorsResponse: Schema.Schema<ListVendorsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      totalSize: Schema.optional(Schema.Number),
-      vendors: Schema.optional(Schema.Array(Company)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListVendorsResponse",
-  }) as any as Schema.Schema<ListVendorsResponse>;
+export const ListVendorsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  totalSize: Schema.optional(Schema.Number),
+  vendors: Schema.optional(Schema.Array(Company)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListVendorsResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface FindDevicesByDeviceIdentifierRequest {
   /** Required. Required. The device identifier to search for. If serial number is provided then case insensitive serial number matches are allowed. */
@@ -805,16 +663,12 @@ export interface FindDevicesByDeviceIdentifierRequest {
   limit?: string;
 }
 
-export const FindDevicesByDeviceIdentifierRequest: Schema.Schema<FindDevicesByDeviceIdentifierRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deviceIdentifier: Schema.optional(DeviceIdentifier),
-      pageToken: Schema.optional(Schema.String),
-      limit: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FindDevicesByDeviceIdentifierRequest",
-  }) as any as Schema.Schema<FindDevicesByDeviceIdentifierRequest>;
+export const FindDevicesByDeviceIdentifierRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deviceIdentifier: Schema.optional(DeviceIdentifier),
+    pageToken: Schema.optional(Schema.String),
+    limit: Schema.optional(Schema.String),
+  }).annotate({ identifier: "FindDevicesByDeviceIdentifierRequest" });
 
 export interface ClaimDeviceResponse {
   /** The device ID of the claimed device. */
@@ -823,15 +677,10 @@ export interface ClaimDeviceResponse {
   deviceName?: string;
 }
 
-export const ClaimDeviceResponse: Schema.Schema<ClaimDeviceResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deviceId: Schema.optional(Schema.String),
-      deviceName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ClaimDeviceResponse",
-  }) as any as Schema.Schema<ClaimDeviceResponse>;
+export const ClaimDeviceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  deviceId: Schema.optional(Schema.String),
+  deviceName: Schema.optional(Schema.String),
+}).annotate({ identifier: "ClaimDeviceResponse" });
 
 export interface CustomerListDevicesResponse {
   /** The customer's devices. */
@@ -840,15 +689,11 @@ export interface CustomerListDevicesResponse {
   nextPageToken?: string;
 }
 
-export const CustomerListDevicesResponse: Schema.Schema<CustomerListDevicesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      devices: Schema.optional(Schema.Array(Device)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomerListDevicesResponse",
-  }) as any as Schema.Schema<CustomerListDevicesResponse>;
+export const CustomerListDevicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    devices: Schema.optional(Schema.Array(Device)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CustomerListDevicesResponse" });
 
 export interface FindDevicesByOwnerResponse {
   /** The total count of items in the list irrespective of pagination. */
@@ -859,30 +704,22 @@ export interface FindDevicesByOwnerResponse {
   nextPageToken?: string;
 }
 
-export const FindDevicesByOwnerResponse: Schema.Schema<FindDevicesByOwnerResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      totalSize: Schema.optional(Schema.Number),
-      devices: Schema.optional(Schema.Array(Device)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FindDevicesByOwnerResponse",
-  }) as any as Schema.Schema<FindDevicesByOwnerResponse>;
+export const FindDevicesByOwnerResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    totalSize: Schema.optional(Schema.Number),
+    devices: Schema.optional(Schema.Array(Device)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "FindDevicesByOwnerResponse" });
 
 export interface CustomerUnclaimDeviceRequest {
   /** Required. The device to unclaim. There are custom validations in UnclaimDeviceRequestValidator. */
   device?: DeviceReference;
 }
 
-export const CustomerUnclaimDeviceRequest: Schema.Schema<CustomerUnclaimDeviceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      device: Schema.optional(DeviceReference),
-    }),
-  ).annotate({
-    identifier: "CustomerUnclaimDeviceRequest",
-  }) as any as Schema.Schema<CustomerUnclaimDeviceRequest>;
+export const CustomerUnclaimDeviceRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    device: Schema.optional(DeviceReference),
+  }).annotate({ identifier: "CustomerUnclaimDeviceRequest" });
 
 export interface ListVendorCustomersResponse {
   /** The total count of items in the list irrespective of pagination. */
@@ -893,16 +730,12 @@ export interface ListVendorCustomersResponse {
   nextPageToken?: string;
 }
 
-export const ListVendorCustomersResponse: Schema.Schema<ListVendorCustomersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      totalSize: Schema.optional(Schema.Number),
-      customers: Schema.optional(Schema.Array(Company)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListVendorCustomersResponse",
-  }) as any as Schema.Schema<ListVendorCustomersResponse>;
+export const ListVendorCustomersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    totalSize: Schema.optional(Schema.Number),
+    customers: Schema.optional(Schema.Array(Company)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListVendorCustomersResponse" });
 
 export interface Dpc {
   /** Output only. The DPC's Android application ID that looks like a Java package name. Zero-touch enrollment installs the DPC app onto a device using this identifier. */
@@ -913,28 +746,21 @@ export interface Dpc {
   dpcName?: string;
 }
 
-export const Dpc: Schema.Schema<Dpc> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      packageName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      dpcName: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Dpc" }) as any as Schema.Schema<Dpc>;
+export const Dpc = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  packageName: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  dpcName: Schema.optional(Schema.String),
+}).annotate({ identifier: "Dpc" });
 
 export interface CustomerListDpcsResponse {
   /** The list of DPCs available to the customer that support zero-touch enrollment. */
   dpcs?: Array<Dpc>;
 }
 
-export const CustomerListDpcsResponse: Schema.Schema<CustomerListDpcsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dpcs: Schema.optional(Schema.Array(Dpc)),
-    }),
-  ).annotate({
-    identifier: "CustomerListDpcsResponse",
-  }) as any as Schema.Schema<CustomerListDpcsResponse>;
+export const CustomerListDpcsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dpcs: Schema.optional(Schema.Array(Dpc)),
+  }).annotate({ identifier: "CustomerListDpcsResponse" });
 
 export interface FindDevicesByOwnerRequest {
   /** A token specifying which result page to return. */
@@ -953,18 +779,14 @@ export interface FindDevicesByOwnerRequest {
   googleWorkspaceCustomerId?: Array<string>;
 }
 
-export const FindDevicesByOwnerRequest: Schema.Schema<FindDevicesByOwnerRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pageToken: Schema.optional(Schema.String),
-      limit: Schema.optional(Schema.String),
-      sectionType: Schema.optional(Schema.String),
-      customerId: Schema.optional(Schema.Array(Schema.String)),
-      googleWorkspaceCustomerId: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "FindDevicesByOwnerRequest",
-  }) as any as Schema.Schema<FindDevicesByOwnerRequest>;
+export const FindDevicesByOwnerRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageToken: Schema.optional(Schema.String),
+    limit: Schema.optional(Schema.String),
+    sectionType: Schema.optional(Schema.String),
+    customerId: Schema.optional(Schema.Array(Schema.String)),
+    googleWorkspaceCustomerId: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "FindDevicesByOwnerRequest" });
 
 // ==========================================================================
 // Operations

@@ -37,19 +37,14 @@ export interface GooglePlayAnalytics {
   utmCampaign?: string;
 }
 
-export const GooglePlayAnalytics: Schema.Schema<GooglePlayAnalytics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      utmSource: Schema.optional(Schema.String),
-      utmMedium: Schema.optional(Schema.String),
-      gclid: Schema.optional(Schema.String),
-      utmTerm: Schema.optional(Schema.String),
-      utmContent: Schema.optional(Schema.String),
-      utmCampaign: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePlayAnalytics",
-  }) as any as Schema.Schema<GooglePlayAnalytics>;
+export const GooglePlayAnalytics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  utmSource: Schema.optional(Schema.String),
+  utmMedium: Schema.optional(Schema.String),
+  gclid: Schema.optional(Schema.String),
+  utmTerm: Schema.optional(Schema.String),
+  utmContent: Schema.optional(Schema.String),
+  utmCampaign: Schema.optional(Schema.String),
+}).annotate({ identifier: "GooglePlayAnalytics" });
 
 export interface ITunesConnectAnalytics {
   /** iTune media types, including music, podcasts, audiobooks and so on. */
@@ -62,17 +57,14 @@ export interface ITunesConnectAnalytics {
   at?: string;
 }
 
-export const ITunesConnectAnalytics: Schema.Schema<ITunesConnectAnalytics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mt: Schema.optional(Schema.String),
-      ct: Schema.optional(Schema.String),
-      pt: Schema.optional(Schema.String),
-      at: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ITunesConnectAnalytics",
-  }) as any as Schema.Schema<ITunesConnectAnalytics>;
+export const ITunesConnectAnalytics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    mt: Schema.optional(Schema.String),
+    ct: Schema.optional(Schema.String),
+    pt: Schema.optional(Schema.String),
+    at: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ITunesConnectAnalytics" });
 
 export interface AnalyticsInfo {
   /** Google Play Campaign Measurements. */
@@ -81,29 +73,19 @@ export interface AnalyticsInfo {
   itunesConnectAnalytics?: ITunesConnectAnalytics;
 }
 
-export const AnalyticsInfo: Schema.Schema<AnalyticsInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      googlePlayAnalytics: Schema.optional(GooglePlayAnalytics),
-      itunesConnectAnalytics: Schema.optional(ITunesConnectAnalytics),
-    }),
-  ).annotate({
-    identifier: "AnalyticsInfo",
-  }) as any as Schema.Schema<AnalyticsInfo>;
+export const AnalyticsInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  googlePlayAnalytics: Schema.optional(GooglePlayAnalytics),
+  itunesConnectAnalytics: Schema.optional(ITunesConnectAnalytics),
+}).annotate({ identifier: "AnalyticsInfo" });
 
 export interface DesktopInfo {
   /** Link to open on desktop. */
   desktopFallbackLink?: string;
 }
 
-export const DesktopInfo: Schema.Schema<DesktopInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      desktopFallbackLink: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DesktopInfo",
-  }) as any as Schema.Schema<DesktopInfo>;
+export const DesktopInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  desktopFallbackLink: Schema.optional(Schema.String),
+}).annotate({ identifier: "DesktopInfo" });
 
 export interface DynamicLinkWarning {
   /** The warning message to help developers improve their requests. */
@@ -145,16 +127,11 @@ export interface DynamicLinkWarning {
     | (string & {});
 }
 
-export const DynamicLinkWarning: Schema.Schema<DynamicLinkWarning> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      warningMessage: Schema.optional(Schema.String),
-      warningDocumentLink: Schema.optional(Schema.String),
-      warningCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DynamicLinkWarning",
-  }) as any as Schema.Schema<DynamicLinkWarning>;
+export const DynamicLinkWarning = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  warningMessage: Schema.optional(Schema.String),
+  warningDocumentLink: Schema.optional(Schema.String),
+  warningCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "DynamicLinkWarning" });
 
 export interface DynamicLinkEventStat {
   /** The number of times this event occurred. */
@@ -178,16 +155,11 @@ export interface DynamicLinkEventStat {
     | (string & {});
 }
 
-export const DynamicLinkEventStat: Schema.Schema<DynamicLinkEventStat> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      count: Schema.optional(Schema.String),
-      event: Schema.optional(Schema.String),
-      platform: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DynamicLinkEventStat",
-  }) as any as Schema.Schema<DynamicLinkEventStat>;
+export const DynamicLinkEventStat = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  count: Schema.optional(Schema.String),
+  event: Schema.optional(Schema.String),
+  platform: Schema.optional(Schema.String),
+}).annotate({ identifier: "DynamicLinkEventStat" });
 
 export interface DynamicLinkStats {
   /** Optional warnings associated this API request. */
@@ -196,15 +168,10 @@ export interface DynamicLinkStats {
   linkEventStats?: Array<DynamicLinkEventStat>;
 }
 
-export const DynamicLinkStats: Schema.Schema<DynamicLinkStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      warnings: Schema.optional(Schema.Array(DynamicLinkWarning)),
-      linkEventStats: Schema.optional(Schema.Array(DynamicLinkEventStat)),
-    }),
-  ).annotate({
-    identifier: "DynamicLinkStats",
-  }) as any as Schema.Schema<DynamicLinkStats>;
+export const DynamicLinkStats = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  warnings: Schema.optional(Schema.Array(DynamicLinkWarning)),
+  linkEventStats: Schema.optional(Schema.Array(DynamicLinkEventStat)),
+}).annotate({ identifier: "DynamicLinkStats" });
 
 export interface GetIosReopenAttributionResponse {
   /** The entire FDL, expanded from a short link. It is the same as the requested_link, if it is long. */
@@ -229,23 +196,19 @@ export interface GetIosReopenAttributionResponse {
   utmSource?: string;
 }
 
-export const GetIosReopenAttributionResponse: Schema.Schema<GetIosReopenAttributionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resolvedLink: Schema.optional(Schema.String),
-      utmContent: Schema.optional(Schema.String),
-      deepLink: Schema.optional(Schema.String),
-      warning: Schema.optional(Schema.Array(DynamicLinkWarning)),
-      utmTerm: Schema.optional(Schema.String),
-      utmCampaign: Schema.optional(Schema.String),
-      invitationId: Schema.optional(Schema.String),
-      utmMedium: Schema.optional(Schema.String),
-      iosMinAppVersion: Schema.optional(Schema.String),
-      utmSource: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GetIosReopenAttributionResponse",
-  }) as any as Schema.Schema<GetIosReopenAttributionResponse>;
+export const GetIosReopenAttributionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resolvedLink: Schema.optional(Schema.String),
+    utmContent: Schema.optional(Schema.String),
+    deepLink: Schema.optional(Schema.String),
+    warning: Schema.optional(Schema.Array(DynamicLinkWarning)),
+    utmTerm: Schema.optional(Schema.String),
+    utmCampaign: Schema.optional(Schema.String),
+    invitationId: Schema.optional(Schema.String),
+    utmMedium: Schema.optional(Schema.String),
+    iosMinAppVersion: Schema.optional(Schema.String),
+    utmSource: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GetIosReopenAttributionResponse" });
 
 export interface IosInfo {
   /** iOS bundle ID of the app. */
@@ -264,18 +227,15 @@ export interface IosInfo {
   iosCustomScheme?: string;
 }
 
-export const IosInfo: Schema.Schema<IosInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      iosBundleId: Schema.optional(Schema.String),
-      iosIpadFallbackLink: Schema.optional(Schema.String),
-      iosMinimumVersion: Schema.optional(Schema.String),
-      iosAppStoreId: Schema.optional(Schema.String),
-      iosIpadBundleId: Schema.optional(Schema.String),
-      iosFallbackLink: Schema.optional(Schema.String),
-      iosCustomScheme: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "IosInfo" }) as any as Schema.Schema<IosInfo>;
+export const IosInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  iosBundleId: Schema.optional(Schema.String),
+  iosIpadFallbackLink: Schema.optional(Schema.String),
+  iosMinimumVersion: Schema.optional(Schema.String),
+  iosAppStoreId: Schema.optional(Schema.String),
+  iosIpadBundleId: Schema.optional(Schema.String),
+  iosFallbackLink: Schema.optional(Schema.String),
+  iosCustomScheme: Schema.optional(Schema.String),
+}).annotate({ identifier: "IosInfo" });
 
 export interface Suffix {
   /** Suffix option. */
@@ -289,13 +249,10 @@ export interface Suffix {
   customSuffix?: string;
 }
 
-export const Suffix: Schema.Schema<Suffix> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      option: Schema.optional(Schema.String),
-      customSuffix: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Suffix" }) as any as Schema.Schema<Suffix>;
+export const Suffix = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  option: Schema.optional(Schema.String),
+  customSuffix: Schema.optional(Schema.String),
+}).annotate({ identifier: "Suffix" });
 
 export interface AndroidInfo {
   /** Android package name of the app. */
@@ -308,17 +265,12 @@ export interface AndroidInfo {
   androidFallbackLink?: string;
 }
 
-export const AndroidInfo: Schema.Schema<AndroidInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      androidPackageName: Schema.optional(Schema.String),
-      androidMinPackageVersionCode: Schema.optional(Schema.String),
-      androidLink: Schema.optional(Schema.String),
-      androidFallbackLink: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AndroidInfo",
-  }) as any as Schema.Schema<AndroidInfo>;
+export const AndroidInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  androidPackageName: Schema.optional(Schema.String),
+  androidMinPackageVersionCode: Schema.optional(Schema.String),
+  androidLink: Schema.optional(Schema.String),
+  androidFallbackLink: Schema.optional(Schema.String),
+}).annotate({ identifier: "AndroidInfo" });
 
 export interface SocialMetaTagInfo {
   /** Title to be displayed. Optional. */
@@ -329,16 +281,11 @@ export interface SocialMetaTagInfo {
   socialDescription?: string;
 }
 
-export const SocialMetaTagInfo: Schema.Schema<SocialMetaTagInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      socialTitle: Schema.optional(Schema.String),
-      socialImageLink: Schema.optional(Schema.String),
-      socialDescription: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SocialMetaTagInfo",
-  }) as any as Schema.Schema<SocialMetaTagInfo>;
+export const SocialMetaTagInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  socialTitle: Schema.optional(Schema.String),
+  socialImageLink: Schema.optional(Schema.String),
+  socialDescription: Schema.optional(Schema.String),
+}).annotate({ identifier: "SocialMetaTagInfo" });
 
 export interface GetIosPostInstallAttributionResponse {
   /** The link to navigate to update the app if min version is not met. This is either (in order): 1) fallback link (from ?ifl= parameter, if specified by developer) or 2) AppStore URL (from ?isi= parameter, if specified), or 3) the payload link (from required link= parameter). */
@@ -380,29 +327,25 @@ export interface GetIosPostInstallAttributionResponse {
   deepLink?: string;
 }
 
-export const GetIosPostInstallAttributionResponse: Schema.Schema<GetIosPostInstallAttributionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fallbackLink: Schema.optional(Schema.String),
-      invitationId: Schema.optional(Schema.String),
-      utmMedium: Schema.optional(Schema.String),
-      resolvedLink: Schema.optional(Schema.String),
-      requestedLink: Schema.optional(Schema.String),
-      attributionConfidence: Schema.optional(Schema.String),
-      requestIpVersion: Schema.optional(Schema.String),
-      appMinimumVersion: Schema.optional(Schema.String),
-      utmTerm: Schema.optional(Schema.String),
-      isStrongMatchExecutable: Schema.optional(Schema.Boolean),
-      utmCampaign: Schema.optional(Schema.String),
-      externalBrowserDestinationLink: Schema.optional(Schema.String),
-      utmSource: Schema.optional(Schema.String),
-      utmContent: Schema.optional(Schema.String),
-      matchMessage: Schema.optional(Schema.String),
-      deepLink: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GetIosPostInstallAttributionResponse",
-  }) as any as Schema.Schema<GetIosPostInstallAttributionResponse>;
+export const GetIosPostInstallAttributionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fallbackLink: Schema.optional(Schema.String),
+    invitationId: Schema.optional(Schema.String),
+    utmMedium: Schema.optional(Schema.String),
+    resolvedLink: Schema.optional(Schema.String),
+    requestedLink: Schema.optional(Schema.String),
+    attributionConfidence: Schema.optional(Schema.String),
+    requestIpVersion: Schema.optional(Schema.String),
+    appMinimumVersion: Schema.optional(Schema.String),
+    utmTerm: Schema.optional(Schema.String),
+    isStrongMatchExecutable: Schema.optional(Schema.Boolean),
+    utmCampaign: Schema.optional(Schema.String),
+    externalBrowserDestinationLink: Schema.optional(Schema.String),
+    utmSource: Schema.optional(Schema.String),
+    utmContent: Schema.optional(Schema.String),
+    matchMessage: Schema.optional(Schema.String),
+    deepLink: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GetIosPostInstallAttributionResponse" });
 
 export interface GetIosReopenAttributionRequest {
   /** APP bundle ID. */
@@ -413,30 +356,21 @@ export interface GetIosReopenAttributionRequest {
   requestedLink?: string;
 }
 
-export const GetIosReopenAttributionRequest: Schema.Schema<GetIosReopenAttributionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bundleId: Schema.optional(Schema.String),
-      sdkVersion: Schema.optional(Schema.String),
-      requestedLink: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GetIosReopenAttributionRequest",
-  }) as any as Schema.Schema<GetIosReopenAttributionRequest>;
+export const GetIosReopenAttributionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bundleId: Schema.optional(Schema.String),
+    sdkVersion: Schema.optional(Schema.String),
+    requestedLink: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GetIosReopenAttributionRequest" });
 
 export interface NavigationInfo {
   /** If this option is on, FDL click will be forced to redirect rather than show an interstitial page. */
   enableForcedRedirect?: boolean;
 }
 
-export const NavigationInfo: Schema.Schema<NavigationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableForcedRedirect: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "NavigationInfo",
-  }) as any as Schema.Schema<NavigationInfo>;
+export const NavigationInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enableForcedRedirect: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "NavigationInfo" });
 
 export interface DynamicLinkInfo {
   /** Dynamic Links domain that the project owns, e.g. abcd.app.goo.gl [Learn more](https://firebase.google.com/docs/dynamic-links/android/receive) on how to set up Dynamic Link domain associated with your Firebase project. Required if missing domain_uri_prefix. */
@@ -459,22 +393,17 @@ export interface DynamicLinkInfo {
   analyticsInfo?: AnalyticsInfo;
 }
 
-export const DynamicLinkInfo: Schema.Schema<DynamicLinkInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dynamicLinkDomain: Schema.optional(Schema.String),
-      link: Schema.optional(Schema.String),
-      androidInfo: Schema.optional(AndroidInfo),
-      socialMetaTagInfo: Schema.optional(SocialMetaTagInfo),
-      navigationInfo: Schema.optional(NavigationInfo),
-      domainUriPrefix: Schema.optional(Schema.String),
-      iosInfo: Schema.optional(IosInfo),
-      desktopInfo: Schema.optional(DesktopInfo),
-      analyticsInfo: Schema.optional(AnalyticsInfo),
-    }),
-  ).annotate({
-    identifier: "DynamicLinkInfo",
-  }) as any as Schema.Schema<DynamicLinkInfo>;
+export const DynamicLinkInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dynamicLinkDomain: Schema.optional(Schema.String),
+  link: Schema.optional(Schema.String),
+  androidInfo: Schema.optional(AndroidInfo),
+  socialMetaTagInfo: Schema.optional(SocialMetaTagInfo),
+  navigationInfo: Schema.optional(NavigationInfo),
+  domainUriPrefix: Schema.optional(Schema.String),
+  iosInfo: Schema.optional(IosInfo),
+  desktopInfo: Schema.optional(DesktopInfo),
+  analyticsInfo: Schema.optional(AnalyticsInfo),
+}).annotate({ identifier: "DynamicLinkInfo" });
 
 export interface ManagedShortLink {
   /** Creation timestamp of the short link. */
@@ -496,19 +425,14 @@ export interface ManagedShortLink {
   linkName?: string;
 }
 
-export const ManagedShortLink: Schema.Schema<ManagedShortLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      creationTime: Schema.optional(Schema.String),
-      flaggedAttribute: Schema.optional(Schema.Array(Schema.String)),
-      info: Schema.optional(DynamicLinkInfo),
-      link: Schema.optional(Schema.String),
-      visibility: Schema.optional(Schema.String),
-      linkName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ManagedShortLink",
-  }) as any as Schema.Schema<ManagedShortLink>;
+export const ManagedShortLink = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  creationTime: Schema.optional(Schema.String),
+  flaggedAttribute: Schema.optional(Schema.Array(Schema.String)),
+  info: Schema.optional(DynamicLinkInfo),
+  link: Schema.optional(Schema.String),
+  visibility: Schema.optional(Schema.String),
+  linkName: Schema.optional(Schema.String),
+}).annotate({ identifier: "ManagedShortLink" });
 
 export interface CreateManagedShortLinkResponse {
   /** Short Dynamic Link value. e.g. https://abcd.app.goo.gl/wxyz */
@@ -519,16 +443,12 @@ export interface CreateManagedShortLinkResponse {
   previewLink?: string;
 }
 
-export const CreateManagedShortLinkResponse: Schema.Schema<CreateManagedShortLinkResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      managedShortLink: Schema.optional(ManagedShortLink),
-      warning: Schema.optional(Schema.Array(DynamicLinkWarning)),
-      previewLink: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreateManagedShortLinkResponse",
-  }) as any as Schema.Schema<CreateManagedShortLinkResponse>;
+export const CreateManagedShortLinkResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    managedShortLink: Schema.optional(ManagedShortLink),
+    warning: Schema.optional(Schema.Array(DynamicLinkWarning)),
+    previewLink: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CreateManagedShortLinkResponse" });
 
 export interface DeviceInfo {
   /** Device model name. */
@@ -547,18 +467,15 @@ export interface DeviceInfo {
   timezone?: string;
 }
 
-export const DeviceInfo: Schema.Schema<DeviceInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deviceModelName: Schema.optional(Schema.String),
-      languageCodeRaw: Schema.optional(Schema.String),
-      screenResolutionHeight: Schema.optional(Schema.String),
-      languageCodeFromWebview: Schema.optional(Schema.String),
-      languageCode: Schema.optional(Schema.String),
-      screenResolutionWidth: Schema.optional(Schema.String),
-      timezone: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "DeviceInfo" }) as any as Schema.Schema<DeviceInfo>;
+export const DeviceInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  deviceModelName: Schema.optional(Schema.String),
+  languageCodeRaw: Schema.optional(Schema.String),
+  screenResolutionHeight: Schema.optional(Schema.String),
+  languageCodeFromWebview: Schema.optional(Schema.String),
+  languageCode: Schema.optional(Schema.String),
+  screenResolutionWidth: Schema.optional(Schema.String),
+  timezone: Schema.optional(Schema.String),
+}).annotate({ identifier: "DeviceInfo" });
 
 export interface CreateManagedShortLinkRequest {
   /** Short Dynamic Link suffix. Optional. */
@@ -573,18 +490,14 @@ export interface CreateManagedShortLinkRequest {
   sdkVersion?: string;
 }
 
-export const CreateManagedShortLinkRequest: Schema.Schema<CreateManagedShortLinkRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      suffix: Schema.optional(Suffix),
-      name: Schema.optional(Schema.String),
-      longDynamicLink: Schema.optional(Schema.String),
-      dynamicLinkInfo: Schema.optional(DynamicLinkInfo),
-      sdkVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreateManagedShortLinkRequest",
-  }) as any as Schema.Schema<CreateManagedShortLinkRequest>;
+export const CreateManagedShortLinkRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    suffix: Schema.optional(Suffix),
+    name: Schema.optional(Schema.String),
+    longDynamicLink: Schema.optional(Schema.String),
+    dynamicLinkInfo: Schema.optional(DynamicLinkInfo),
+    sdkVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CreateManagedShortLinkRequest" });
 
 export interface GetIosPostInstallAttributionRequest {
   /** Google SDK version. Version takes the form "$major.$minor.$patch" */
@@ -614,21 +527,17 @@ export interface GetIosPostInstallAttributionRequest {
   appInstallationTime?: string;
 }
 
-export const GetIosPostInstallAttributionRequest: Schema.Schema<GetIosPostInstallAttributionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sdkVersion: Schema.optional(Schema.String),
-      retrievalMethod: Schema.optional(Schema.String),
-      uniqueMatchLinkToCheck: Schema.optional(Schema.String),
-      device: Schema.optional(DeviceInfo),
-      visualStyle: Schema.optional(Schema.String),
-      bundleId: Schema.optional(Schema.String),
-      iosVersion: Schema.optional(Schema.String),
-      appInstallationTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GetIosPostInstallAttributionRequest",
-  }) as any as Schema.Schema<GetIosPostInstallAttributionRequest>;
+export const GetIosPostInstallAttributionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sdkVersion: Schema.optional(Schema.String),
+    retrievalMethod: Schema.optional(Schema.String),
+    uniqueMatchLinkToCheck: Schema.optional(Schema.String),
+    device: Schema.optional(DeviceInfo),
+    visualStyle: Schema.optional(Schema.String),
+    bundleId: Schema.optional(Schema.String),
+    iosVersion: Schema.optional(Schema.String),
+    appInstallationTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GetIosPostInstallAttributionRequest" });
 
 export interface CreateShortDynamicLinkRequest {
   /** Google SDK version. Version takes the form "$major.$minor.$patch" */
@@ -641,17 +550,13 @@ export interface CreateShortDynamicLinkRequest {
   suffix?: Suffix;
 }
 
-export const CreateShortDynamicLinkRequest: Schema.Schema<CreateShortDynamicLinkRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sdkVersion: Schema.optional(Schema.String),
-      longDynamicLink: Schema.optional(Schema.String),
-      dynamicLinkInfo: Schema.optional(DynamicLinkInfo),
-      suffix: Schema.optional(Suffix),
-    }),
-  ).annotate({
-    identifier: "CreateShortDynamicLinkRequest",
-  }) as any as Schema.Schema<CreateShortDynamicLinkRequest>;
+export const CreateShortDynamicLinkRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sdkVersion: Schema.optional(Schema.String),
+    longDynamicLink: Schema.optional(Schema.String),
+    dynamicLinkInfo: Schema.optional(DynamicLinkInfo),
+    suffix: Schema.optional(Suffix),
+  }).annotate({ identifier: "CreateShortDynamicLinkRequest" });
 
 export interface CreateShortDynamicLinkResponse {
   /** Short Dynamic Link value. e.g. https://abcd.app.goo.gl/wxyz */
@@ -662,16 +567,12 @@ export interface CreateShortDynamicLinkResponse {
   previewLink?: string;
 }
 
-export const CreateShortDynamicLinkResponse: Schema.Schema<CreateShortDynamicLinkResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      shortLink: Schema.optional(Schema.String),
-      warning: Schema.optional(Schema.Array(DynamicLinkWarning)),
-      previewLink: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreateShortDynamicLinkResponse",
-  }) as any as Schema.Schema<CreateShortDynamicLinkResponse>;
+export const CreateShortDynamicLinkResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    shortLink: Schema.optional(Schema.String),
+    warning: Schema.optional(Schema.Array(DynamicLinkWarning)),
+    previewLink: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CreateShortDynamicLinkResponse" });
 
 // ==========================================================================
 // Operations

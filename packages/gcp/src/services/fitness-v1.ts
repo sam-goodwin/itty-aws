@@ -38,16 +38,11 @@ export interface DataTypeField {
   optional?: boolean;
 }
 
-export const DataTypeField: Schema.Schema<DataTypeField> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      format: Schema.optional(Schema.String),
-      optional: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "DataTypeField",
-  }) as any as Schema.Schema<DataTypeField>;
+export const DataTypeField = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  format: Schema.optional(Schema.String),
+  optional: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "DataTypeField" });
 
 export interface DataType {
   /** Each data type has a unique, namespaced, name. All data types in the com.google namespace are shared as part of the platform. */
@@ -56,13 +51,10 @@ export interface DataType {
   field?: Array<DataTypeField>;
 }
 
-export const DataType: Schema.Schema<DataType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      field: Schema.optional(Schema.Array(DataTypeField)),
-    }),
-  ).annotate({ identifier: "DataType" }) as any as Schema.Schema<DataType>;
+export const DataType = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  field: Schema.optional(Schema.Array(DataTypeField)),
+}).annotate({ identifier: "DataType" });
 
 export interface Device {
   /** The serial number or other unique ID for the hardware. This field is obfuscated when read by any REST or Android client that did not create the data source. Only the data source creator will see the uid field in clear and normal form. The obfuscation preserves equality; that is, given two IDs, if id1 == id2, obfuscated(id1) == obfuscated(id2). */
@@ -86,16 +78,13 @@ export interface Device {
     | (string & {});
 }
 
-export const Device: Schema.Schema<Device> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uid: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-      model: Schema.optional(Schema.String),
-      manufacturer: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Device" }) as any as Schema.Schema<Device>;
+export const Device = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  uid: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+  model: Schema.optional(Schema.String),
+  manufacturer: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "Device" });
 
 export interface Application {
   /** The name of this application. This is required for REST clients, but we do not enforce uniqueness of this name. It is provided as a matter of convenience for other developers who would like to identify which REST created an Application or Data Source. */
@@ -108,17 +97,12 @@ export interface Application {
   version?: string;
 }
 
-export const Application: Schema.Schema<Application> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      packageName: Schema.optional(Schema.String),
-      detailsUrl: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Application",
-  }) as any as Schema.Schema<Application>;
+export const Application = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  packageName: Schema.optional(Schema.String),
+  detailsUrl: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+}).annotate({ identifier: "Application" });
 
 export interface DataSource {
   /** A unique identifier for the data stream produced by this data source. The identifier includes: - The physical device's manufacturer, model, and serial number (UID). - The application's package name or name. Package name is used when the data source was created by an Android application. The developer project number is used when the data source was created by a REST client. - The data source's type. - The data source's stream name. Note that not all attributes of the data source are used as part of the stream identifier. In particular, the version of the hardware/the application isn't used. This allows us to preserve the same stream through version updates. This also means that two DataSource objects may represent the same data stream even if they're not equal. The exact format of the data stream ID created by an Android application is: type:dataType.name:application.packageName:device.manufacturer:device.model:device.uid:dataStreamName The exact format of the data stream ID created by a REST client is: type:dataType.name:developer project number:device.manufacturer:device.model:device.uid:dataStreamName When any of the optional fields that make up the data stream ID are absent, they will be omitted from the data stream ID. The minimum viable data stream ID would be: type:dataType.name:developer project number Finally, the developer project number and device UID are obfuscated when read by any REST or Android client that did not create the data source. Only the data source creator will see the developer project number in clear and normal form. This means a client will see a different set of data_stream_ids than another client with different credentials. */
@@ -151,46 +135,35 @@ export interface DataSource {
   name?: string;
 }
 
-export const DataSource: Schema.Schema<DataSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataStreamId: Schema.optional(Schema.String),
-      dataQualityStandard: Schema.optional(Schema.Array(Schema.String)),
-      dataStreamName: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      dataType: Schema.optional(DataType),
-      device: Schema.optional(Device),
-      application: Schema.optional(Application),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "DataSource" }) as any as Schema.Schema<DataSource>;
+export const DataSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dataStreamId: Schema.optional(Schema.String),
+  dataQualityStandard: Schema.optional(Schema.Array(Schema.String)),
+  dataStreamName: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  dataType: Schema.optional(DataType),
+  device: Schema.optional(Device),
+  application: Schema.optional(Application),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "DataSource" });
 
 export interface MapValue {
   /** Floating point value. */
   fpVal?: number;
 }
 
-export const MapValue: Schema.Schema<MapValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fpVal: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "MapValue" }) as any as Schema.Schema<MapValue>;
+export const MapValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fpVal: Schema.optional(Schema.Number),
+}).annotate({ identifier: "MapValue" });
 
 export interface ValueMapValEntry {
   key?: string;
   value?: MapValue;
 }
 
-export const ValueMapValEntry: Schema.Schema<ValueMapValEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      key: Schema.optional(Schema.String),
-      value: Schema.optional(MapValue),
-    }),
-  ).annotate({
-    identifier: "ValueMapValEntry",
-  }) as any as Schema.Schema<ValueMapValEntry>;
+export const ValueMapValEntry = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  key: Schema.optional(Schema.String),
+  value: Schema.optional(MapValue),
+}).annotate({ identifier: "ValueMapValEntry" });
 
 export interface Value {
   /** Integer value. When this is set, other values must not be set. */
@@ -203,15 +176,12 @@ export interface Value {
   stringVal?: string;
 }
 
-export const Value: Schema.Schema<Value> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      intVal: Schema.optional(Schema.Number),
-      mapVal: Schema.optional(Schema.Array(ValueMapValEntry)),
-      fpVal: Schema.optional(Schema.Number),
-      stringVal: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Value" }) as any as Schema.Schema<Value>;
+export const Value = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  intVal: Schema.optional(Schema.Number),
+  mapVal: Schema.optional(Schema.Array(ValueMapValEntry)),
+  fpVal: Schema.optional(Schema.Number),
+  stringVal: Schema.optional(Schema.String),
+}).annotate({ identifier: "Value" });
 
 export interface DataPoint {
   /** If the data point is contained in a dataset for a derived data source, this field will be populated with the data source stream ID that created the data point originally. WARNING: do not rely on this field for anything other than debugging. The value of this field, if it is set at all, is an implementation detail and is not guaranteed to remain consistent. */
@@ -232,19 +202,16 @@ export interface DataPoint {
   value?: Array<Value>;
 }
 
-export const DataPoint: Schema.Schema<DataPoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      originDataSourceId: Schema.optional(Schema.String),
-      rawTimestampNanos: Schema.optional(Schema.String),
-      startTimeNanos: Schema.optional(Schema.String),
-      modifiedTimeMillis: Schema.optional(Schema.String),
-      endTimeNanos: Schema.optional(Schema.String),
-      computationTimeMillis: Schema.optional(Schema.String),
-      dataTypeName: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.Array(Value)),
-    }),
-  ).annotate({ identifier: "DataPoint" }) as any as Schema.Schema<DataPoint>;
+export const DataPoint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  originDataSourceId: Schema.optional(Schema.String),
+  rawTimestampNanos: Schema.optional(Schema.String),
+  startTimeNanos: Schema.optional(Schema.String),
+  modifiedTimeMillis: Schema.optional(Schema.String),
+  endTimeNanos: Schema.optional(Schema.String),
+  computationTimeMillis: Schema.optional(Schema.String),
+  dataTypeName: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.Array(Value)),
+}).annotate({ identifier: "DataPoint" });
 
 export interface Dataset {
   /** This token will be set when a dataset is received in response to a GET request and the dataset is too large to be included in a single response. Provide this value in a subsequent GET request to return the next page of data points within this dataset. */
@@ -259,30 +226,23 @@ export interface Dataset {
   dataSourceId?: string;
 }
 
-export const Dataset: Schema.Schema<Dataset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      point: Schema.optional(Schema.Array(DataPoint)),
-      minStartTimeNs: Schema.optional(Schema.String),
-      maxEndTimeNs: Schema.optional(Schema.String),
-      dataSourceId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Dataset" }) as any as Schema.Schema<Dataset>;
+export const Dataset = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  point: Schema.optional(Schema.Array(DataPoint)),
+  minStartTimeNs: Schema.optional(Schema.String),
+  maxEndTimeNs: Schema.optional(Schema.String),
+  dataSourceId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Dataset" });
 
 export interface ListDataSourcesResponse {
   /** A previously created data source. */
   dataSource?: Array<DataSource>;
 }
 
-export const ListDataSourcesResponse: Schema.Schema<ListDataSourcesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataSource: Schema.optional(Schema.Array(DataSource)),
-    }),
-  ).annotate({
-    identifier: "ListDataSourcesResponse",
-  }) as any as Schema.Schema<ListDataSourcesResponse>;
+export const ListDataSourcesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataSource: Schema.optional(Schema.Array(DataSource)),
+  }).annotate({ identifier: "ListDataSourcesResponse" });
 
 export interface BucketByTimePeriod {
   type?: "day" | "week" | "month" | (string & {});
@@ -291,16 +251,11 @@ export interface BucketByTimePeriod {
   value?: number;
 }
 
-export const BucketByTimePeriod: Schema.Schema<BucketByTimePeriod> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      timeZoneId: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "BucketByTimePeriod",
-  }) as any as Schema.Schema<BucketByTimePeriod>;
+export const BucketByTimePeriod = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  timeZoneId: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.Number),
+}).annotate({ identifier: "BucketByTimePeriod" });
 
 export interface ListDataPointChangesResponse {
   /** The continuation token, which is used to page through large result sets. Provide this value in a subsequent request to return the next page of results. */
@@ -313,17 +268,13 @@ export interface ListDataPointChangesResponse {
   deletedDataPoint?: Array<DataPoint>;
 }
 
-export const ListDataPointChangesResponse: Schema.Schema<ListDataPointChangesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      dataSourceId: Schema.optional(Schema.String),
-      insertedDataPoint: Schema.optional(Schema.Array(DataPoint)),
-      deletedDataPoint: Schema.optional(Schema.Array(DataPoint)),
-    }),
-  ).annotate({
-    identifier: "ListDataPointChangesResponse",
-  }) as any as Schema.Schema<ListDataPointChangesResponse>;
+export const ListDataPointChangesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    dataSourceId: Schema.optional(Schema.String),
+    insertedDataPoint: Schema.optional(Schema.Array(DataPoint)),
+    deletedDataPoint: Schema.optional(Schema.Array(DataPoint)),
+  }).annotate({ identifier: "ListDataPointChangesResponse" });
 
 export interface BucketByTime {
   period?: BucketByTimePeriod;
@@ -331,15 +282,10 @@ export interface BucketByTime {
   durationMillis?: string;
 }
 
-export const BucketByTime: Schema.Schema<BucketByTime> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      period: Schema.optional(BucketByTimePeriod),
-      durationMillis: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BucketByTime",
-  }) as any as Schema.Schema<BucketByTime>;
+export const BucketByTime = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  period: Schema.optional(BucketByTimePeriod),
+  durationMillis: Schema.optional(Schema.String),
+}).annotate({ identifier: "BucketByTime" });
 
 export interface Session {
   /** The type of activity this session represents. */
@@ -362,20 +308,17 @@ export interface Session {
   endTimeMillis?: string;
 }
 
-export const Session: Schema.Schema<Session> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      activityType: Schema.optional(Schema.Number),
-      name: Schema.optional(Schema.String),
-      activeTimeMillis: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      modifiedTimeMillis: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      startTimeMillis: Schema.optional(Schema.String),
-      application: Schema.optional(Application),
-      endTimeMillis: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Session" }) as any as Schema.Schema<Session>;
+export const Session = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  activityType: Schema.optional(Schema.Number),
+  name: Schema.optional(Schema.String),
+  activeTimeMillis: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  modifiedTimeMillis: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  startTimeMillis: Schema.optional(Schema.String),
+  application: Schema.optional(Application),
+  endTimeMillis: Schema.optional(Schema.String),
+}).annotate({ identifier: "Session" });
 
 export interface AggregateBy {
   /** A data source ID to aggregate. Only data from the specified data source ID will be included in the aggregation. If specified, this data source must exist; the OAuth scopes in the supplied credentials must grant read access to this data type. The dataset in the response will have the same data source ID. Note: Data can be aggregated by either the dataTypeName or the dataSourceId, not both. */
@@ -384,29 +327,19 @@ export interface AggregateBy {
   dataTypeName?: string;
 }
 
-export const AggregateBy: Schema.Schema<AggregateBy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataSourceId: Schema.optional(Schema.String),
-      dataTypeName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AggregateBy",
-  }) as any as Schema.Schema<AggregateBy>;
+export const AggregateBy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dataSourceId: Schema.optional(Schema.String),
+  dataTypeName: Schema.optional(Schema.String),
+}).annotate({ identifier: "AggregateBy" });
 
 export interface BucketBySession {
   /** Specifies that only sessions of duration longer than minDurationMillis are considered and used as a container for aggregated data. */
   minDurationMillis?: string;
 }
 
-export const BucketBySession: Schema.Schema<BucketBySession> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      minDurationMillis: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BucketBySession",
-  }) as any as Schema.Schema<BucketBySession>;
+export const BucketBySession = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  minDurationMillis: Schema.optional(Schema.String),
+}).annotate({ identifier: "BucketBySession" });
 
 export interface ListSessionsResponse {
   /** Sessions starting before endTime of the request and ending after startTime of the request up to (endTime of the request + 1 day). */
@@ -419,17 +352,12 @@ export interface ListSessionsResponse {
   deletedSession?: Array<Session>;
 }
 
-export const ListSessionsResponse: Schema.Schema<ListSessionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      session: Schema.optional(Schema.Array(Session)),
-      hasMoreData: Schema.optional(Schema.Boolean),
-      nextPageToken: Schema.optional(Schema.String),
-      deletedSession: Schema.optional(Schema.Array(Session)),
-    }),
-  ).annotate({
-    identifier: "ListSessionsResponse",
-  }) as any as Schema.Schema<ListSessionsResponse>;
+export const ListSessionsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  session: Schema.optional(Schema.Array(Session)),
+  hasMoreData: Schema.optional(Schema.Boolean),
+  nextPageToken: Schema.optional(Schema.String),
+  deletedSession: Schema.optional(Schema.Array(Session)),
+}).annotate({ identifier: "ListSessionsResponse" });
 
 export interface BucketByActivity {
   /** Specifies that only activity segments of duration longer than minDurationMillis are considered and used as a container for aggregated data. */
@@ -438,15 +366,10 @@ export interface BucketByActivity {
   activityDataSourceId?: string;
 }
 
-export const BucketByActivity: Schema.Schema<BucketByActivity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      minDurationMillis: Schema.optional(Schema.String),
-      activityDataSourceId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BucketByActivity",
-  }) as any as Schema.Schema<BucketByActivity>;
+export const BucketByActivity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  minDurationMillis: Schema.optional(Schema.String),
+  activityDataSourceId: Schema.optional(Schema.String),
+}).annotate({ identifier: "BucketByActivity" });
 
 export interface AggregateRequest {
   /** DO NOT POPULATE THIS FIELD. It is ignored. */
@@ -479,21 +402,16 @@ export interface AggregateRequest {
   aggregateBy?: Array<AggregateBy>;
 }
 
-export const AggregateRequest: Schema.Schema<AggregateRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filteredDataQualityStandard: Schema.optional(Schema.Array(Schema.String)),
-      startTimeMillis: Schema.optional(Schema.String),
-      endTimeMillis: Schema.optional(Schema.String),
-      bucketByTime: Schema.optional(BucketByTime),
-      bucketBySession: Schema.optional(BucketBySession),
-      bucketByActivityType: Schema.optional(BucketByActivity),
-      bucketByActivitySegment: Schema.optional(BucketByActivity),
-      aggregateBy: Schema.optional(Schema.Array(AggregateBy)),
-    }),
-  ).annotate({
-    identifier: "AggregateRequest",
-  }) as any as Schema.Schema<AggregateRequest>;
+export const AggregateRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  filteredDataQualityStandard: Schema.optional(Schema.Array(Schema.String)),
+  startTimeMillis: Schema.optional(Schema.String),
+  endTimeMillis: Schema.optional(Schema.String),
+  bucketByTime: Schema.optional(BucketByTime),
+  bucketBySession: Schema.optional(BucketBySession),
+  bucketByActivityType: Schema.optional(BucketByActivity),
+  bucketByActivitySegment: Schema.optional(BucketByActivity),
+  aggregateBy: Schema.optional(Schema.Array(AggregateBy)),
+}).annotate({ identifier: "AggregateRequest" });
 
 export interface AggregateBucket {
   /** The end time for the aggregated data, in milliseconds since epoch, inclusive. */
@@ -516,33 +434,23 @@ export interface AggregateBucket {
   activity?: number;
 }
 
-export const AggregateBucket: Schema.Schema<AggregateBucket> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endTimeMillis: Schema.optional(Schema.String),
-      dataset: Schema.optional(Schema.Array(Dataset)),
-      session: Schema.optional(Session),
-      type: Schema.optional(Schema.String),
-      startTimeMillis: Schema.optional(Schema.String),
-      activity: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "AggregateBucket",
-  }) as any as Schema.Schema<AggregateBucket>;
+export const AggregateBucket = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  endTimeMillis: Schema.optional(Schema.String),
+  dataset: Schema.optional(Schema.Array(Dataset)),
+  session: Schema.optional(Session),
+  type: Schema.optional(Schema.String),
+  startTimeMillis: Schema.optional(Schema.String),
+  activity: Schema.optional(Schema.Number),
+}).annotate({ identifier: "AggregateBucket" });
 
 export interface AggregateResponse {
   /** A list of buckets containing the aggregated data. */
   bucket?: Array<AggregateBucket>;
 }
 
-export const AggregateResponse: Schema.Schema<AggregateResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bucket: Schema.optional(Schema.Array(AggregateBucket)),
-    }),
-  ).annotate({
-    identifier: "AggregateResponse",
-  }) as any as Schema.Schema<AggregateResponse>;
+export const AggregateResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bucket: Schema.optional(Schema.Array(AggregateBucket)),
+}).annotate({ identifier: "AggregateResponse" });
 
 // ==========================================================================
 // Operations

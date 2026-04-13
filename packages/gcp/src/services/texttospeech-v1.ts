@@ -29,15 +29,11 @@ export interface MultispeakerPrebuiltVoice {
   speakerId?: string;
 }
 
-export const MultispeakerPrebuiltVoice: Schema.Schema<MultispeakerPrebuiltVoice> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      speakerAlias: Schema.optional(Schema.String),
-      speakerId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MultispeakerPrebuiltVoice",
-  }) as any as Schema.Schema<MultispeakerPrebuiltVoice>;
+export const MultispeakerPrebuiltVoice =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    speakerAlias: Schema.optional(Schema.String),
+    speakerId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "MultispeakerPrebuiltVoice" });
 
 export interface CustomPronunciationParams {
   /** The pronunciation of the phrase. This must be in the phonetic encoding specified above. */
@@ -54,30 +50,21 @@ export interface CustomPronunciationParams {
     | (string & {});
 }
 
-export const CustomPronunciationParams: Schema.Schema<CustomPronunciationParams> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pronunciation: Schema.optional(Schema.String),
-      phrase: Schema.optional(Schema.String),
-      phoneticEncoding: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomPronunciationParams",
-  }) as any as Schema.Schema<CustomPronunciationParams>;
+export const CustomPronunciationParams =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pronunciation: Schema.optional(Schema.String),
+    phrase: Schema.optional(Schema.String),
+    phoneticEncoding: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CustomPronunciationParams" });
 
 export interface CustomPronunciations {
   /** The pronunciation customizations are applied. */
   pronunciations?: Array<CustomPronunciationParams>;
 }
 
-export const CustomPronunciations: Schema.Schema<CustomPronunciations> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pronunciations: Schema.optional(Schema.Array(CustomPronunciationParams)),
-    }),
-  ).annotate({
-    identifier: "CustomPronunciations",
-  }) as any as Schema.Schema<CustomPronunciations>;
+export const CustomPronunciations = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pronunciations: Schema.optional(Schema.Array(CustomPronunciationParams)),
+}).annotate({ identifier: "CustomPronunciations" });
 
 export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -88,16 +75,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      message: Schema.optional(Schema.String),
-      code: Schema.optional(Schema.Number),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  message: Schema.optional(Schema.String),
+  code: Schema.optional(Schema.Number),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -112,23 +96,19 @@ export interface Operation {
   metadata?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      error: Schema.optional(Status),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  done: Schema.optional(Schema.Boolean),
+  error: Schema.optional(Status),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Operation" });
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelOperationRequest",
-  }) as any as Schema.Schema<CancelOperationRequest>;
+export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelOperationRequest" });
 
 export interface SafetySetting {
   /** The harm block threshold for the safety setting. */
@@ -150,29 +130,20 @@ export interface SafetySetting {
     | (string & {});
 }
 
-export const SafetySetting: Schema.Schema<SafetySetting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      threshold: Schema.optional(Schema.String),
-      category: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SafetySetting",
-  }) as any as Schema.Schema<SafetySetting>;
+export const SafetySetting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  threshold: Schema.optional(Schema.String),
+  category: Schema.optional(Schema.String),
+}).annotate({ identifier: "SafetySetting" });
 
 export interface SynthesizeSpeechResponse {
   /** The audio data bytes encoded as specified in the request, including the header for encodings that are wrapped in containers (e.g. MP3, OGG_OPUS). For LINEAR16 audio, we include the WAV header. Note: as with all bytes fields, protobuffers use a pure binary representation, whereas JSON representations use base64. */
   audioContent?: string;
 }
 
-export const SynthesizeSpeechResponse: Schema.Schema<SynthesizeSpeechResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      audioContent: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SynthesizeSpeechResponse",
-  }) as any as Schema.Schema<SynthesizeSpeechResponse>;
+export const SynthesizeSpeechResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    audioContent: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SynthesizeSpeechResponse" });
 
 export interface GoogleCloudTexttospeechV1SynthesizeLongAudioMetadata {
   /** The progress of the most recent processing update in percentage, ie. 70.0%. */
@@ -183,16 +154,14 @@ export interface GoogleCloudTexttospeechV1SynthesizeLongAudioMetadata {
   lastUpdateTime?: string;
 }
 
-export const GoogleCloudTexttospeechV1SynthesizeLongAudioMetadata: Schema.Schema<GoogleCloudTexttospeechV1SynthesizeLongAudioMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      progressPercentage: Schema.optional(Schema.Number),
-      startTime: Schema.optional(Schema.String),
-      lastUpdateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudTexttospeechV1SynthesizeLongAudioMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    progressPercentage: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    lastUpdateTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudTexttospeechV1SynthesizeLongAudioMetadata",
-  }) as any as Schema.Schema<GoogleCloudTexttospeechV1SynthesizeLongAudioMetadata>;
+  });
 
 export interface Turn {
   /** Required. The text to speak. */
@@ -201,27 +170,19 @@ export interface Turn {
   speaker?: string;
 }
 
-export const Turn: Schema.Schema<Turn> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-      speaker: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Turn" }) as any as Schema.Schema<Turn>;
+export const Turn = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  text: Schema.optional(Schema.String),
+  speaker: Schema.optional(Schema.String),
+}).annotate({ identifier: "Turn" });
 
 export interface MultiSpeakerMarkup {
   /** Required. Speaker turns. */
   turns?: Array<Turn>;
 }
 
-export const MultiSpeakerMarkup: Schema.Schema<MultiSpeakerMarkup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      turns: Schema.optional(Schema.Array(Turn)),
-    }),
-  ).annotate({
-    identifier: "MultiSpeakerMarkup",
-  }) as any as Schema.Schema<MultiSpeakerMarkup>;
+export const MultiSpeakerMarkup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  turns: Schema.optional(Schema.Array(Turn)),
+}).annotate({ identifier: "MultiSpeakerMarkup" });
 
 export interface SynthesisInput {
   /** Markup for Chirp 3: HD voices specifically. This field may not be used with any other voices. */
@@ -238,33 +199,23 @@ export interface SynthesisInput {
   multiSpeakerMarkup?: MultiSpeakerMarkup;
 }
 
-export const SynthesisInput: Schema.Schema<SynthesisInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      markup: Schema.optional(Schema.String),
-      prompt: Schema.optional(Schema.String),
-      customPronunciations: Schema.optional(CustomPronunciations),
-      text: Schema.optional(Schema.String),
-      ssml: Schema.optional(Schema.String),
-      multiSpeakerMarkup: Schema.optional(MultiSpeakerMarkup),
-    }),
-  ).annotate({
-    identifier: "SynthesisInput",
-  }) as any as Schema.Schema<SynthesisInput>;
+export const SynthesisInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  markup: Schema.optional(Schema.String),
+  prompt: Schema.optional(Schema.String),
+  customPronunciations: Schema.optional(CustomPronunciations),
+  text: Schema.optional(Schema.String),
+  ssml: Schema.optional(Schema.String),
+  multiSpeakerMarkup: Schema.optional(MultiSpeakerMarkup),
+}).annotate({ identifier: "SynthesisInput" });
 
 export interface VoiceCloneParams {
   /** Required. Created by GenerateVoiceCloningKey. */
   voiceCloningKey?: string;
 }
 
-export const VoiceCloneParams: Schema.Schema<VoiceCloneParams> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      voiceCloningKey: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VoiceCloneParams",
-  }) as any as Schema.Schema<VoiceCloneParams>;
+export const VoiceCloneParams = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  voiceCloningKey: Schema.optional(Schema.String),
+}).annotate({ identifier: "VoiceCloneParams" });
 
 export interface CustomVoiceParams {
   /** Required. The name of the AutoML model that synthesizes the custom voice. */
@@ -277,31 +228,22 @@ export interface CustomVoiceParams {
     | (string & {});
 }
 
-export const CustomVoiceParams: Schema.Schema<CustomVoiceParams> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      model: Schema.optional(Schema.String),
-      reportedUsage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomVoiceParams",
-  }) as any as Schema.Schema<CustomVoiceParams>;
+export const CustomVoiceParams = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  model: Schema.optional(Schema.String),
+  reportedUsage: Schema.optional(Schema.String),
+}).annotate({ identifier: "CustomVoiceParams" });
 
 export interface MultiSpeakerVoiceConfig {
   /** Required. A list of configurations for the voices of the speakers. Exactly two speaker voice configurations must be provided. */
   speakerVoiceConfigs?: Array<MultispeakerPrebuiltVoice>;
 }
 
-export const MultiSpeakerVoiceConfig: Schema.Schema<MultiSpeakerVoiceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      speakerVoiceConfigs: Schema.optional(
-        Schema.Array(MultispeakerPrebuiltVoice),
-      ),
-    }),
-  ).annotate({
-    identifier: "MultiSpeakerVoiceConfig",
-  }) as any as Schema.Schema<MultiSpeakerVoiceConfig>;
+export const MultiSpeakerVoiceConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    speakerVoiceConfigs: Schema.optional(
+      Schema.Array(MultispeakerPrebuiltVoice),
+    ),
+  }).annotate({ identifier: "MultiSpeakerVoiceConfig" });
 
 export interface VoiceSelectionParams {
   /** Optional. The configuration for a voice clone. If [VoiceCloneParams.voice_clone_key] is set, the service chooses the voice clone matching the specified configuration. */
@@ -325,20 +267,15 @@ export interface VoiceSelectionParams {
   multiSpeakerVoiceConfig?: MultiSpeakerVoiceConfig;
 }
 
-export const VoiceSelectionParams: Schema.Schema<VoiceSelectionParams> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      voiceClone: Schema.optional(VoiceCloneParams),
-      ssmlGender: Schema.optional(Schema.String),
-      languageCode: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      customVoice: Schema.optional(CustomVoiceParams),
-      modelName: Schema.optional(Schema.String),
-      multiSpeakerVoiceConfig: Schema.optional(MultiSpeakerVoiceConfig),
-    }),
-  ).annotate({
-    identifier: "VoiceSelectionParams",
-  }) as any as Schema.Schema<VoiceSelectionParams>;
+export const VoiceSelectionParams = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  voiceClone: Schema.optional(VoiceCloneParams),
+  ssmlGender: Schema.optional(Schema.String),
+  languageCode: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  customVoice: Schema.optional(CustomVoiceParams),
+  modelName: Schema.optional(Schema.String),
+  multiSpeakerVoiceConfig: Schema.optional(MultiSpeakerVoiceConfig),
+}).annotate({ identifier: "VoiceSelectionParams" });
 
 export interface SynthesizeLongAudioMetadata {
   /** The progress of the most recent processing update in percentage, ie. 70.0%. */
@@ -349,30 +286,21 @@ export interface SynthesizeLongAudioMetadata {
   lastUpdateTime?: string;
 }
 
-export const SynthesizeLongAudioMetadata: Schema.Schema<SynthesizeLongAudioMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      progressPercentage: Schema.optional(Schema.Number),
-      startTime: Schema.optional(Schema.String),
-      lastUpdateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SynthesizeLongAudioMetadata",
-  }) as any as Schema.Schema<SynthesizeLongAudioMetadata>;
+export const SynthesizeLongAudioMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    progressPercentage: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    lastUpdateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SynthesizeLongAudioMetadata" });
 
 export interface SafetySettings {
   /** The safety settings for the request. */
   settings?: Array<SafetySetting>;
 }
 
-export const SafetySettings: Schema.Schema<SafetySettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      settings: Schema.optional(Schema.Array(SafetySetting)),
-    }),
-  ).annotate({
-    identifier: "SafetySettings",
-  }) as any as Schema.Schema<SafetySettings>;
+export const SafetySettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  settings: Schema.optional(Schema.Array(SafetySetting)),
+}).annotate({ identifier: "SafetySettings" });
 
 export interface AdvancedVoiceOptions {
   /** Optional. If true, textnorm will be applied to text input. This feature is enabled by default. Only applies for Gemini TTS. */
@@ -385,17 +313,12 @@ export interface AdvancedVoiceOptions {
   safetySettings?: SafetySettings;
 }
 
-export const AdvancedVoiceOptions: Schema.Schema<AdvancedVoiceOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableTextnorm: Schema.optional(Schema.Boolean),
-      lowLatencyJourneySynthesis: Schema.optional(Schema.Boolean),
-      relaxSafetyFilters: Schema.optional(Schema.Boolean),
-      safetySettings: Schema.optional(SafetySettings),
-    }),
-  ).annotate({
-    identifier: "AdvancedVoiceOptions",
-  }) as any as Schema.Schema<AdvancedVoiceOptions>;
+export const AdvancedVoiceOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enableTextnorm: Schema.optional(Schema.Boolean),
+  lowLatencyJourneySynthesis: Schema.optional(Schema.Boolean),
+  relaxSafetyFilters: Schema.optional(Schema.Boolean),
+  safetySettings: Schema.optional(SafetySettings),
+}).annotate({ identifier: "AdvancedVoiceOptions" });
 
 export interface AudioConfig {
   /** Optional. Input only. Volume gain (in dB) of the normal native volume supported by the specific voice, in the range [-96.0, 16.0]. If unset, or set to a value of 0.0 (dB), will play at normal native signal amplitude. A value of -6.0 (dB) will play at approximately half the amplitude of the normal native signal amplitude. A value of +6.0 (dB) will play at approximately twice the amplitude of the normal native signal amplitude. Strongly recommend not to exceed +10 (dB) as there's usually no effective increase in loudness for any value greater than that. */
@@ -421,19 +344,14 @@ export interface AudioConfig {
   pitch?: number;
 }
 
-export const AudioConfig: Schema.Schema<AudioConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      volumeGainDb: Schema.optional(Schema.Number),
-      effectsProfileId: Schema.optional(Schema.Array(Schema.String)),
-      sampleRateHertz: Schema.optional(Schema.Number),
-      audioEncoding: Schema.optional(Schema.String),
-      speakingRate: Schema.optional(Schema.Number),
-      pitch: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "AudioConfig",
-  }) as any as Schema.Schema<AudioConfig>;
+export const AudioConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  volumeGainDb: Schema.optional(Schema.Number),
+  effectsProfileId: Schema.optional(Schema.Array(Schema.String)),
+  sampleRateHertz: Schema.optional(Schema.Number),
+  audioEncoding: Schema.optional(Schema.String),
+  speakingRate: Schema.optional(Schema.Number),
+  pitch: Schema.optional(Schema.Number),
+}).annotate({ identifier: "AudioConfig" });
 
 export interface Voice {
   /** The languages that this voice supports, expressed as [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tags (e.g. "en-US", "es-419", "cmn-tw"). */
@@ -451,29 +369,21 @@ export interface Voice {
     | (string & {});
 }
 
-export const Voice: Schema.Schema<Voice> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      languageCodes: Schema.optional(Schema.Array(Schema.String)),
-      name: Schema.optional(Schema.String),
-      naturalSampleRateHertz: Schema.optional(Schema.Number),
-      ssmlGender: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Voice" }) as any as Schema.Schema<Voice>;
+export const Voice = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  languageCodes: Schema.optional(Schema.Array(Schema.String)),
+  name: Schema.optional(Schema.String),
+  naturalSampleRateHertz: Schema.optional(Schema.Number),
+  ssmlGender: Schema.optional(Schema.String),
+}).annotate({ identifier: "Voice" });
 
 export interface ListVoicesResponse {
   /** The list of voices. */
   voices?: Array<Voice>;
 }
 
-export const ListVoicesResponse: Schema.Schema<ListVoicesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      voices: Schema.optional(Schema.Array(Voice)),
-    }),
-  ).annotate({
-    identifier: "ListVoicesResponse",
-  }) as any as Schema.Schema<ListVoicesResponse>;
+export const ListVoicesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  voices: Schema.optional(Schema.Array(Voice)),
+}).annotate({ identifier: "ListVoicesResponse" });
 
 export interface SynthesizeSpeechRequest {
   /** Optional. Advanced voice options. */
@@ -486,24 +396,19 @@ export interface SynthesizeSpeechRequest {
   audioConfig?: AudioConfig;
 }
 
-export const SynthesizeSpeechRequest: Schema.Schema<SynthesizeSpeechRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      advancedVoiceOptions: Schema.optional(AdvancedVoiceOptions),
-      voice: Schema.optional(VoiceSelectionParams),
-      input: Schema.optional(SynthesisInput),
-      audioConfig: Schema.optional(AudioConfig),
-    }),
-  ).annotate({
-    identifier: "SynthesizeSpeechRequest",
-  }) as any as Schema.Schema<SynthesizeSpeechRequest>;
+export const SynthesizeSpeechRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    advancedVoiceOptions: Schema.optional(AdvancedVoiceOptions),
+    voice: Schema.optional(VoiceSelectionParams),
+    input: Schema.optional(SynthesisInput),
+    audioConfig: Schema.optional(AudioConfig),
+  }).annotate({ identifier: "SynthesizeSpeechRequest" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface SynthesizeLongAudioRequest {
   /** Required. Specifies a Cloud Storage URI for the synthesis results. Must be specified in the format: `gs://bucket_name/object_name`, and the bucket must already exist. */
@@ -516,17 +421,13 @@ export interface SynthesizeLongAudioRequest {
   audioConfig?: AudioConfig;
 }
 
-export const SynthesizeLongAudioRequest: Schema.Schema<SynthesizeLongAudioRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      outputGcsUri: Schema.optional(Schema.String),
-      voice: Schema.optional(VoiceSelectionParams),
-      input: Schema.optional(SynthesisInput),
-      audioConfig: Schema.optional(AudioConfig),
-    }),
-  ).annotate({
-    identifier: "SynthesizeLongAudioRequest",
-  }) as any as Schema.Schema<SynthesizeLongAudioRequest>;
+export const SynthesizeLongAudioRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    outputGcsUri: Schema.optional(Schema.String),
+    voice: Schema.optional(VoiceSelectionParams),
+    input: Schema.optional(SynthesisInput),
+    audioConfig: Schema.optional(AudioConfig),
+  }).annotate({ identifier: "SynthesizeLongAudioRequest" });
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -537,16 +438,13 @@ export interface ListOperationsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(Schema.Array(Operation)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    operations: Schema.optional(Schema.Array(Operation)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 // ==========================================================================
 // Operations

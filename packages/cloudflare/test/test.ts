@@ -1,4 +1,4 @@
-import { NodeServices } from "@effect/platform-node";
+import { BunServices } from "@effect/platform-bun";
 import {
   afterAll as _afterAll,
   beforeAll as _beforeAll,
@@ -21,7 +21,7 @@ type Provided =
   | Retry.Retry;
 
 const platform = Layer.mergeAll(
-  NodeServices.layer,
+  BunServices.layer,
   FetchHttpClient.layer,
   Logger.layer([Logger.consolePretty()]),
 );

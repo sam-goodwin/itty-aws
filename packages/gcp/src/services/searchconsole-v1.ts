@@ -29,13 +29,10 @@ export interface AmpIssue {
   severity?: "SEVERITY_UNSPECIFIED" | "WARNING" | "ERROR" | (string & {});
 }
 
-export const AmpIssue: Schema.Schema<AmpIssue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      issueMessage: Schema.optional(Schema.String),
-      severity: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "AmpIssue" }) as any as Schema.Schema<AmpIssue>;
+export const AmpIssue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  issueMessage: Schema.optional(Schema.String),
+  severity: Schema.optional(Schema.String),
+}).annotate({ identifier: "AmpIssue" });
 
 export interface WmxSitemapContent {
   /** The specific type of content in this sitemap. For example: `web`. */
@@ -56,16 +53,11 @@ export interface WmxSitemapContent {
   submitted?: string;
 }
 
-export const WmxSitemapContent: Schema.Schema<WmxSitemapContent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      indexed: Schema.optional(Schema.String),
-      submitted: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WmxSitemapContent",
-  }) as any as Schema.Schema<WmxSitemapContent>;
+export const WmxSitemapContent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  indexed: Schema.optional(Schema.String),
+  submitted: Schema.optional(Schema.String),
+}).annotate({ identifier: "WmxSitemapContent" });
 
 export interface MobileUsabilityIssue {
   /** Additional information regarding the issue. */
@@ -84,16 +76,11 @@ export interface MobileUsabilityIssue {
   severity?: "SEVERITY_UNSPECIFIED" | "WARNING" | "ERROR" | (string & {});
 }
 
-export const MobileUsabilityIssue: Schema.Schema<MobileUsabilityIssue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      message: Schema.optional(Schema.String),
-      issueType: Schema.optional(Schema.String),
-      severity: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MobileUsabilityIssue",
-  }) as any as Schema.Schema<MobileUsabilityIssue>;
+export const MobileUsabilityIssue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  message: Schema.optional(Schema.String),
+  issueType: Schema.optional(Schema.String),
+  severity: Schema.optional(Schema.String),
+}).annotate({ identifier: "MobileUsabilityIssue" });
 
 export interface ApiDimensionFilter {
   dimension?:
@@ -114,16 +101,11 @@ export interface ApiDimensionFilter {
     | (string & {});
 }
 
-export const ApiDimensionFilter: Schema.Schema<ApiDimensionFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dimension: Schema.optional(Schema.String),
-      expression: Schema.optional(Schema.String),
-      operator: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ApiDimensionFilter",
-  }) as any as Schema.Schema<ApiDimensionFilter>;
+export const ApiDimensionFilter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dimension: Schema.optional(Schema.String),
+  expression: Schema.optional(Schema.String),
+  operator: Schema.optional(Schema.String),
+}).annotate({ identifier: "ApiDimensionFilter" });
 
 export interface WmxSite {
   /** The URL of the site. */
@@ -138,42 +120,30 @@ export interface WmxSite {
     | (string & {});
 }
 
-export const WmxSite: Schema.Schema<WmxSite> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      siteUrl: Schema.optional(Schema.String),
-      permissionLevel: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "WmxSite" }) as any as Schema.Schema<WmxSite>;
+export const WmxSite = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  siteUrl: Schema.optional(Schema.String),
+  permissionLevel: Schema.optional(Schema.String),
+}).annotate({ identifier: "WmxSite" });
 
 export interface SitesListResponse {
   /** Contains permission level information about a Search Console site. For more information, see [Permissions in Search Console](https://support.google.com/webmasters/answer/2451999). */
   siteEntry?: Array<WmxSite>;
 }
 
-export const SitesListResponse: Schema.Schema<SitesListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      siteEntry: Schema.optional(Schema.Array(WmxSite)),
-    }),
-  ).annotate({
-    identifier: "SitesListResponse",
-  }) as any as Schema.Schema<SitesListResponse>;
+export const SitesListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  siteEntry: Schema.optional(Schema.Array(WmxSite)),
+}).annotate({ identifier: "SitesListResponse" });
 
 export interface ApiDimensionFilterGroup {
   groupType?: "AND" | (string & {});
   filters?: Array<ApiDimensionFilter>;
 }
 
-export const ApiDimensionFilterGroup: Schema.Schema<ApiDimensionFilterGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      groupType: Schema.optional(Schema.String),
-      filters: Schema.optional(Schema.Array(ApiDimensionFilter)),
-    }),
-  ).annotate({
-    identifier: "ApiDimensionFilterGroup",
-  }) as any as Schema.Schema<ApiDimensionFilterGroup>;
+export const ApiDimensionFilterGroup =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupType: Schema.optional(Schema.String),
+    filters: Schema.optional(Schema.Array(ApiDimensionFilter)),
+  }).annotate({ identifier: "ApiDimensionFilterGroup" });
 
 export interface MobileUsabilityInspectionResult {
   /** High-level mobile-usability inspection result for this URL. */
@@ -188,15 +158,11 @@ export interface MobileUsabilityInspectionResult {
   issues?: Array<MobileUsabilityIssue>;
 }
 
-export const MobileUsabilityInspectionResult: Schema.Schema<MobileUsabilityInspectionResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      verdict: Schema.optional(Schema.String),
-      issues: Schema.optional(Schema.Array(MobileUsabilityIssue)),
-    }),
-  ).annotate({
-    identifier: "MobileUsabilityInspectionResult",
-  }) as any as Schema.Schema<MobileUsabilityInspectionResult>;
+export const MobileUsabilityInspectionResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    verdict: Schema.optional(Schema.String),
+    issues: Schema.optional(Schema.Array(MobileUsabilityIssue)),
+  }).annotate({ identifier: "MobileUsabilityInspectionResult" });
 
 export interface IndexStatusInspectionResult {
   /** Whether or not the page is blocked to Google by a robots.txt rule. */
@@ -256,24 +222,20 @@ export interface IndexStatusInspectionResult {
   userCanonical?: string;
 }
 
-export const IndexStatusInspectionResult: Schema.Schema<IndexStatusInspectionResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      robotsTxtState: Schema.optional(Schema.String),
-      coverageState: Schema.optional(Schema.String),
-      verdict: Schema.optional(Schema.String),
-      crawledAs: Schema.optional(Schema.String),
-      referringUrls: Schema.optional(Schema.Array(Schema.String)),
-      indexingState: Schema.optional(Schema.String),
-      sitemap: Schema.optional(Schema.Array(Schema.String)),
-      googleCanonical: Schema.optional(Schema.String),
-      pageFetchState: Schema.optional(Schema.String),
-      lastCrawlTime: Schema.optional(Schema.String),
-      userCanonical: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "IndexStatusInspectionResult",
-  }) as any as Schema.Schema<IndexStatusInspectionResult>;
+export const IndexStatusInspectionResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    robotsTxtState: Schema.optional(Schema.String),
+    coverageState: Schema.optional(Schema.String),
+    verdict: Schema.optional(Schema.String),
+    crawledAs: Schema.optional(Schema.String),
+    referringUrls: Schema.optional(Schema.Array(Schema.String)),
+    indexingState: Schema.optional(Schema.String),
+    sitemap: Schema.optional(Schema.Array(Schema.String)),
+    googleCanonical: Schema.optional(Schema.String),
+    pageFetchState: Schema.optional(Schema.String),
+    lastCrawlTime: Schema.optional(Schema.String),
+    userCanonical: Schema.optional(Schema.String),
+  }).annotate({ identifier: "IndexStatusInspectionResult" });
 
 export interface RichResultsIssue {
   /** Rich Results issue type. */
@@ -282,15 +244,10 @@ export interface RichResultsIssue {
   severity?: "SEVERITY_UNSPECIFIED" | "WARNING" | "ERROR" | (string & {});
 }
 
-export const RichResultsIssue: Schema.Schema<RichResultsIssue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      issueMessage: Schema.optional(Schema.String),
-      severity: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RichResultsIssue",
-  }) as any as Schema.Schema<RichResultsIssue>;
+export const RichResultsIssue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  issueMessage: Schema.optional(Schema.String),
+  severity: Schema.optional(Schema.String),
+}).annotate({ identifier: "RichResultsIssue" });
 
 export interface Item {
   /** The user-provided name of this item. */
@@ -299,13 +256,10 @@ export interface Item {
   issues?: Array<RichResultsIssue>;
 }
 
-export const Item: Schema.Schema<Item> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      issues: Schema.optional(Schema.Array(RichResultsIssue)),
-    }),
-  ).annotate({ identifier: "Item" }) as any as Schema.Schema<Item>;
+export const Item = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  issues: Schema.optional(Schema.Array(RichResultsIssue)),
+}).annotate({ identifier: "Item" });
 
 export interface DetectedItems {
   /** Rich Results type */
@@ -314,15 +268,10 @@ export interface DetectedItems {
   items?: Array<Item>;
 }
 
-export const DetectedItems: Schema.Schema<DetectedItems> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      richResultType: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(Item)),
-    }),
-  ).annotate({
-    identifier: "DetectedItems",
-  }) as any as Schema.Schema<DetectedItems>;
+export const DetectedItems = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  richResultType: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(Item)),
+}).annotate({ identifier: "DetectedItems" });
 
 export interface RichResultsInspectionResult {
   /** A list of zero or more rich results detected on this page. Rich results that cannot even be parsed due to syntactic issues will not be listed here. */
@@ -337,43 +286,29 @@ export interface RichResultsInspectionResult {
     | (string & {});
 }
 
-export const RichResultsInspectionResult: Schema.Schema<RichResultsInspectionResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      detectedItems: Schema.optional(Schema.Array(DetectedItems)),
-      verdict: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RichResultsInspectionResult",
-  }) as any as Schema.Schema<RichResultsInspectionResult>;
+export const RichResultsInspectionResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    detectedItems: Schema.optional(Schema.Array(DetectedItems)),
+    verdict: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RichResultsInspectionResult" });
 
 export interface BlockedResource {
   /** URL of the blocked resource. */
   url?: string;
 }
 
-export const BlockedResource: Schema.Schema<BlockedResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      url: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BlockedResource",
-  }) as any as Schema.Schema<BlockedResource>;
+export const BlockedResource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  url: Schema.optional(Schema.String),
+}).annotate({ identifier: "BlockedResource" });
 
 export interface ResourceIssue {
   /** Describes a blocked resource issue. */
   blockedResource?: BlockedResource;
 }
 
-export const ResourceIssue: Schema.Schema<ResourceIssue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      blockedResource: Schema.optional(BlockedResource),
-    }),
-  ).annotate({
-    identifier: "ResourceIssue",
-  }) as any as Schema.Schema<ResourceIssue>;
+export const ResourceIssue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  blockedResource: Schema.optional(BlockedResource),
+}).annotate({ identifier: "ResourceIssue" });
 
 export interface MobileFriendlyIssue {
   /** Rule violated. */
@@ -388,14 +323,9 @@ export interface MobileFriendlyIssue {
     | (string & {});
 }
 
-export const MobileFriendlyIssue: Schema.Schema<MobileFriendlyIssue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rule: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MobileFriendlyIssue",
-  }) as any as Schema.Schema<MobileFriendlyIssue>;
+export const MobileFriendlyIssue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  rule: Schema.optional(Schema.String),
+}).annotate({ identifier: "MobileFriendlyIssue" });
 
 export interface Image {
   /** The mime-type of the image data. */
@@ -404,13 +334,10 @@ export interface Image {
   data?: string;
 }
 
-export const Image: Schema.Schema<Image> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mimeType: Schema.optional(Schema.String),
-      data: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Image" }) as any as Schema.Schema<Image>;
+export const Image = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  mimeType: Schema.optional(Schema.String),
+  data: Schema.optional(Schema.String),
+}).annotate({ identifier: "Image" });
 
 export interface TestStatus {
   /** Status of the test. */
@@ -424,13 +351,10 @@ export interface TestStatus {
   details?: string;
 }
 
-export const TestStatus: Schema.Schema<TestStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      status: Schema.optional(Schema.String),
-      details: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "TestStatus" }) as any as Schema.Schema<TestStatus>;
+export const TestStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  status: Schema.optional(Schema.String),
+  details: Schema.optional(Schema.String),
+}).annotate({ identifier: "TestStatus" });
 
 export interface RunMobileFriendlyTestResponse {
   /** Information about embedded resources issues. */
@@ -449,18 +373,14 @@ export interface RunMobileFriendlyTestResponse {
     | (string & {});
 }
 
-export const RunMobileFriendlyTestResponse: Schema.Schema<RunMobileFriendlyTestResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceIssues: Schema.optional(Schema.Array(ResourceIssue)),
-      mobileFriendlyIssues: Schema.optional(Schema.Array(MobileFriendlyIssue)),
-      screenshot: Schema.optional(Image),
-      testStatus: Schema.optional(TestStatus),
-      mobileFriendliness: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RunMobileFriendlyTestResponse",
-  }) as any as Schema.Schema<RunMobileFriendlyTestResponse>;
+export const RunMobileFriendlyTestResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceIssues: Schema.optional(Schema.Array(ResourceIssue)),
+    mobileFriendlyIssues: Schema.optional(Schema.Array(MobileFriendlyIssue)),
+    screenshot: Schema.optional(Image),
+    testStatus: Schema.optional(TestStatus),
+    mobileFriendliness: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RunMobileFriendlyTestResponse" });
 
 export interface InspectUrlIndexRequest {
   /** Required. URL to inspect. Must be under the property specified in "site_url". */
@@ -471,16 +391,13 @@ export interface InspectUrlIndexRequest {
   languageCode?: string;
 }
 
-export const InspectUrlIndexRequest: Schema.Schema<InspectUrlIndexRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inspectionUrl: Schema.optional(Schema.String),
-      siteUrl: Schema.optional(Schema.String),
-      languageCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InspectUrlIndexRequest",
-  }) as any as Schema.Schema<InspectUrlIndexRequest>;
+export const InspectUrlIndexRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    inspectionUrl: Schema.optional(Schema.String),
+    siteUrl: Schema.optional(Schema.String),
+    languageCode: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "InspectUrlIndexRequest" });
 
 export interface WmxSitemap {
   /** The various content types in the sitemap. */
@@ -511,34 +428,26 @@ export interface WmxSitemap {
   lastDownloaded?: string;
 }
 
-export const WmxSitemap: Schema.Schema<WmxSitemap> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contents: Schema.optional(Schema.Array(WmxSitemapContent)),
-      path: Schema.optional(Schema.String),
-      isPending: Schema.optional(Schema.Boolean),
-      lastSubmitted: Schema.optional(Schema.String),
-      errors: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      warnings: Schema.optional(Schema.String),
-      isSitemapsIndex: Schema.optional(Schema.Boolean),
-      lastDownloaded: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "WmxSitemap" }) as any as Schema.Schema<WmxSitemap>;
+export const WmxSitemap = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  contents: Schema.optional(Schema.Array(WmxSitemapContent)),
+  path: Schema.optional(Schema.String),
+  isPending: Schema.optional(Schema.Boolean),
+  lastSubmitted: Schema.optional(Schema.String),
+  errors: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  warnings: Schema.optional(Schema.String),
+  isSitemapsIndex: Schema.optional(Schema.Boolean),
+  lastDownloaded: Schema.optional(Schema.String),
+}).annotate({ identifier: "WmxSitemap" });
 
 export interface SitemapsListResponse {
   /** Contains detailed information about a specific URL submitted as a [sitemap](https://support.google.com/webmasters/answer/156184). */
   sitemap?: Array<WmxSitemap>;
 }
 
-export const SitemapsListResponse: Schema.Schema<SitemapsListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sitemap: Schema.optional(Schema.Array(WmxSitemap)),
-    }),
-  ).annotate({
-    identifier: "SitemapsListResponse",
-  }) as any as Schema.Schema<SitemapsListResponse>;
+export const SitemapsListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sitemap: Schema.optional(Schema.Array(WmxSitemap)),
+}).annotate({ identifier: "SitemapsListResponse" });
 
 export interface AmpInspectionResult {
   /** URL of the AMP that was inspected. If the submitted URL is a desktop page that refers to an AMP version, the AMP version will be inspected. */
@@ -593,21 +502,16 @@ export interface AmpInspectionResult {
   issues?: Array<AmpIssue>;
 }
 
-export const AmpInspectionResult: Schema.Schema<AmpInspectionResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ampUrl: Schema.optional(Schema.String),
-      verdict: Schema.optional(Schema.String),
-      ampIndexStatusVerdict: Schema.optional(Schema.String),
-      pageFetchState: Schema.optional(Schema.String),
-      lastCrawlTime: Schema.optional(Schema.String),
-      indexingState: Schema.optional(Schema.String),
-      robotsTxtState: Schema.optional(Schema.String),
-      issues: Schema.optional(Schema.Array(AmpIssue)),
-    }),
-  ).annotate({
-    identifier: "AmpInspectionResult",
-  }) as any as Schema.Schema<AmpInspectionResult>;
+export const AmpInspectionResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ampUrl: Schema.optional(Schema.String),
+  verdict: Schema.optional(Schema.String),
+  ampIndexStatusVerdict: Schema.optional(Schema.String),
+  pageFetchState: Schema.optional(Schema.String),
+  lastCrawlTime: Schema.optional(Schema.String),
+  indexingState: Schema.optional(Schema.String),
+  robotsTxtState: Schema.optional(Schema.String),
+  issues: Schema.optional(Schema.Array(AmpIssue)),
+}).annotate({ identifier: "AmpInspectionResult" });
 
 export interface UrlInspectionResult {
   /** Link to Search Console URL inspection. */
@@ -622,18 +526,13 @@ export interface UrlInspectionResult {
   ampResult?: AmpInspectionResult;
 }
 
-export const UrlInspectionResult: Schema.Schema<UrlInspectionResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inspectionResultLink: Schema.optional(Schema.String),
-      richResultsResult: Schema.optional(RichResultsInspectionResult),
-      indexStatusResult: Schema.optional(IndexStatusInspectionResult),
-      mobileUsabilityResult: Schema.optional(MobileUsabilityInspectionResult),
-      ampResult: Schema.optional(AmpInspectionResult),
-    }),
-  ).annotate({
-    identifier: "UrlInspectionResult",
-  }) as any as Schema.Schema<UrlInspectionResult>;
+export const UrlInspectionResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  inspectionResultLink: Schema.optional(Schema.String),
+  richResultsResult: Schema.optional(RichResultsInspectionResult),
+  indexStatusResult: Schema.optional(IndexStatusInspectionResult),
+  mobileUsabilityResult: Schema.optional(MobileUsabilityInspectionResult),
+  ampResult: Schema.optional(AmpInspectionResult),
+}).annotate({ identifier: "UrlInspectionResult" });
 
 export interface SearchAnalyticsQueryRequest {
   /** The data state to be fetched, can be full or all, the latter including full and partial data. */
@@ -691,25 +590,21 @@ export interface SearchAnalyticsQueryRequest {
     | (string & {});
 }
 
-export const SearchAnalyticsQueryRequest: Schema.Schema<SearchAnalyticsQueryRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataState: Schema.optional(Schema.String),
-      startDate: Schema.optional(Schema.String),
-      dimensions: Schema.optional(Schema.Array(Schema.String)),
-      aggregationType: Schema.optional(Schema.String),
-      startRow: Schema.optional(Schema.Number),
-      type: Schema.optional(Schema.String),
-      rowLimit: Schema.optional(Schema.Number),
-      dimensionFilterGroups: Schema.optional(
-        Schema.Array(ApiDimensionFilterGroup),
-      ),
-      endDate: Schema.optional(Schema.String),
-      searchType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SearchAnalyticsQueryRequest",
-  }) as any as Schema.Schema<SearchAnalyticsQueryRequest>;
+export const SearchAnalyticsQueryRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataState: Schema.optional(Schema.String),
+    startDate: Schema.optional(Schema.String),
+    dimensions: Schema.optional(Schema.Array(Schema.String)),
+    aggregationType: Schema.optional(Schema.String),
+    startRow: Schema.optional(Schema.Number),
+    type: Schema.optional(Schema.String),
+    rowLimit: Schema.optional(Schema.Number),
+    dimensionFilterGroups: Schema.optional(
+      Schema.Array(ApiDimensionFilterGroup),
+    ),
+    endDate: Schema.optional(Schema.String),
+    searchType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SearchAnalyticsQueryRequest" });
 
 export interface ApiDataRow {
   keys?: Array<string>;
@@ -719,30 +614,23 @@ export interface ApiDataRow {
   position?: number;
 }
 
-export const ApiDataRow: Schema.Schema<ApiDataRow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      keys: Schema.optional(Schema.Array(Schema.String)),
-      ctr: Schema.optional(Schema.Number),
-      clicks: Schema.optional(Schema.Number),
-      impressions: Schema.optional(Schema.Number),
-      position: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "ApiDataRow" }) as any as Schema.Schema<ApiDataRow>;
+export const ApiDataRow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  keys: Schema.optional(Schema.Array(Schema.String)),
+  ctr: Schema.optional(Schema.Number),
+  clicks: Schema.optional(Schema.Number),
+  impressions: Schema.optional(Schema.Number),
+  position: Schema.optional(Schema.Number),
+}).annotate({ identifier: "ApiDataRow" });
 
 export interface InspectUrlIndexResponse {
   /** URL inspection results. */
   inspectionResult?: UrlInspectionResult;
 }
 
-export const InspectUrlIndexResponse: Schema.Schema<InspectUrlIndexResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inspectionResult: Schema.optional(UrlInspectionResult),
-    }),
-  ).annotate({
-    identifier: "InspectUrlIndexResponse",
-  }) as any as Schema.Schema<InspectUrlIndexResponse>;
+export const InspectUrlIndexResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    inspectionResult: Schema.optional(UrlInspectionResult),
+  }).annotate({ identifier: "InspectUrlIndexResponse" });
 
 export interface RunMobileFriendlyTestRequest {
   /** Whether or not screenshot is requested. Default is false. */
@@ -751,15 +639,11 @@ export interface RunMobileFriendlyTestRequest {
   url?: string;
 }
 
-export const RunMobileFriendlyTestRequest: Schema.Schema<RunMobileFriendlyTestRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestScreenshot: Schema.optional(Schema.Boolean),
-      url: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RunMobileFriendlyTestRequest",
-  }) as any as Schema.Schema<RunMobileFriendlyTestRequest>;
+export const RunMobileFriendlyTestRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestScreenshot: Schema.optional(Schema.Boolean),
+    url: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RunMobileFriendlyTestRequest" });
 
 export interface Metadata {
   /** The first hour for which the data is still being collected and processed, presented in `YYYY-MM-DDThh:mm:ss[+|-]hh:mm` format (ISO-8601 extended offset date-time format). This field is populated only when the request's `dataState` is "`hourly_all`", data is grouped by "`HOUR`" and the requested date range contains incomplete data points. All values after the `first_incomplete_hour` may still change noticeably. */
@@ -768,13 +652,10 @@ export interface Metadata {
   firstIncompleteDate?: string;
 }
 
-export const Metadata: Schema.Schema<Metadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      firstIncompleteHour: Schema.optional(Schema.String),
-      firstIncompleteDate: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Metadata" }) as any as Schema.Schema<Metadata>;
+export const Metadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  firstIncompleteHour: Schema.optional(Schema.String),
+  firstIncompleteDate: Schema.optional(Schema.String),
+}).annotate({ identifier: "Metadata" });
 
 export interface SearchAnalyticsQueryResponse {
   /** How the results were aggregated. */
@@ -790,16 +671,12 @@ export interface SearchAnalyticsQueryResponse {
   rows?: Array<ApiDataRow>;
 }
 
-export const SearchAnalyticsQueryResponse: Schema.Schema<SearchAnalyticsQueryResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      responseAggregationType: Schema.optional(Schema.String),
-      metadata: Schema.optional(Metadata),
-      rows: Schema.optional(Schema.Array(ApiDataRow)),
-    }),
-  ).annotate({
-    identifier: "SearchAnalyticsQueryResponse",
-  }) as any as Schema.Schema<SearchAnalyticsQueryResponse>;
+export const SearchAnalyticsQueryResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    responseAggregationType: Schema.optional(Schema.String),
+    metadata: Schema.optional(Metadata),
+    rows: Schema.optional(Schema.Array(ApiDataRow)),
+  }).annotate({ identifier: "SearchAnalyticsQueryResponse" });
 
 // ==========================================================================
 // Operations

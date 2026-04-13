@@ -41,21 +41,16 @@ export interface UserLicense {
   applicationId?: string;
 }
 
-export const UserLicense: Schema.Schema<UserLicense> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      userId: Schema.optional(Schema.String),
-      editionId: Schema.optional(Schema.String),
-      customerId: Schema.optional(Schema.String),
-      enabled: Schema.optional(Schema.Boolean),
-      state: Schema.optional(Schema.String),
-      applicationId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UserLicense",
-  }) as any as Schema.Schema<UserLicense>;
+export const UserLicense = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  userId: Schema.optional(Schema.String),
+  editionId: Schema.optional(Schema.String),
+  customerId: Schema.optional(Schema.String),
+  enabled: Schema.optional(Schema.Boolean),
+  state: Schema.optional(Schema.String),
+  applicationId: Schema.optional(Schema.String),
+}).annotate({ identifier: "UserLicense" });
 
 export interface Editions {
   /** (Deprecated) */
@@ -66,14 +61,11 @@ export interface Editions {
   editionId?: string;
 }
 
-export const Editions: Schema.Schema<Editions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      seatCount: Schema.optional(Schema.Number),
-      assignedSeats: Schema.optional(Schema.Number),
-      editionId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Editions" }) as any as Schema.Schema<Editions>;
+export const Editions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  seatCount: Schema.optional(Schema.Number),
+  assignedSeats: Schema.optional(Schema.Number),
+  editionId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Editions" });
 
 export interface CustomerLicense {
   /** The type of API resource. This is always `appsmarket#customerLicense`. */
@@ -90,19 +82,14 @@ export interface CustomerLicense {
   customerId?: string;
 }
 
-export const CustomerLicense: Schema.Schema<CustomerLicense> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      applicationId: Schema.optional(Schema.String),
-      editions: Schema.optional(Schema.Array(Editions)),
-      customerId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomerLicense",
-  }) as any as Schema.Schema<CustomerLicense>;
+export const CustomerLicense = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  applicationId: Schema.optional(Schema.String),
+  editions: Schema.optional(Schema.Array(Editions)),
+  customerId: Schema.optional(Schema.String),
+}).annotate({ identifier: "CustomerLicense" });
 
 // ==========================================================================
 // Operations

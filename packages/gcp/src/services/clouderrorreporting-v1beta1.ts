@@ -27,14 +27,9 @@ export interface TrackingIssue {
   url?: string;
 }
 
-export const TrackingIssue: Schema.Schema<TrackingIssue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      url: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TrackingIssue",
-  }) as any as Schema.Schema<TrackingIssue>;
+export const TrackingIssue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  url: Schema.optional(Schema.String),
+}).annotate({ identifier: "TrackingIssue" });
 
 export interface ErrorGroup {
   /** The group resource name. Written as `projects/{projectID}/groups/{group_id}` or `projects/{projectID}/locations/{location}/groups/{group_id}` Examples: `projects/my-project-123/groups/my-group`, `projects/my-project-123/locations/us-central1/groups/my-group` In the group resource name, the `group_id` is a unique identifier for a particular error group. The identifier is derived from key parts of the error-log content and is treated as Service Data. For information about how Service Data is handled, see [Google Cloud Privacy Notice](https://cloud.google.com/terms/cloud-privacy-notice). For a list of supported locations, see [Supported Regions](https://cloud.google.com/logging/docs/region-support). `global` is the default when unspecified. */
@@ -53,15 +48,12 @@ export interface ErrorGroup {
     | (string & {});
 }
 
-export const ErrorGroup: Schema.Schema<ErrorGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      groupId: Schema.optional(Schema.String),
-      trackingIssues: Schema.optional(Schema.Array(TrackingIssue)),
-      resolutionStatus: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "ErrorGroup" }) as any as Schema.Schema<ErrorGroup>;
+export const ErrorGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  groupId: Schema.optional(Schema.String),
+  trackingIssues: Schema.optional(Schema.Array(TrackingIssue)),
+  resolutionStatus: Schema.optional(Schema.String),
+}).annotate({ identifier: "ErrorGroup" });
 
 export interface TimedCount {
   /** Approximate number of occurrences in the given time period. */
@@ -72,14 +64,11 @@ export interface TimedCount {
   endTime?: string;
 }
 
-export const TimedCount: Schema.Schema<TimedCount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      count: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "TimedCount" }) as any as Schema.Schema<TimedCount>;
+export const TimedCount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  count: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "TimedCount" });
 
 export interface ServiceContext {
   /** An identifier of the service, such as the name of the executable, job, or Google App Engine service name. This field is expected to have a low number of values that are relatively stable over time, as opposed to `version`, which can be changed whenever new code is deployed. Contains the service name for error reports extracted from Google App Engine logs or `default` if the App Engine default service is used. */
@@ -90,16 +79,11 @@ export interface ServiceContext {
   resourceType?: string;
 }
 
-export const ServiceContext: Schema.Schema<ServiceContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      service: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-      resourceType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ServiceContext",
-  }) as any as Schema.Schema<ServiceContext>;
+export const ServiceContext = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  service: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+  resourceType: Schema.optional(Schema.String),
+}).annotate({ identifier: "ServiceContext" });
 
 export interface HttpRequestContext {
   /** The type of HTTP request, such as `GET`, `POST`, etc. */
@@ -116,19 +100,14 @@ export interface HttpRequestContext {
   remoteIp?: string;
 }
 
-export const HttpRequestContext: Schema.Schema<HttpRequestContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      method: Schema.optional(Schema.String),
-      url: Schema.optional(Schema.String),
-      userAgent: Schema.optional(Schema.String),
-      referrer: Schema.optional(Schema.String),
-      responseStatusCode: Schema.optional(Schema.Number),
-      remoteIp: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "HttpRequestContext",
-  }) as any as Schema.Schema<HttpRequestContext>;
+export const HttpRequestContext = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  method: Schema.optional(Schema.String),
+  url: Schema.optional(Schema.String),
+  userAgent: Schema.optional(Schema.String),
+  referrer: Schema.optional(Schema.String),
+  responseStatusCode: Schema.optional(Schema.Number),
+  remoteIp: Schema.optional(Schema.String),
+}).annotate({ identifier: "HttpRequestContext" });
 
 export interface SourceLocation {
   /** The source code filename, which can include a truncated relative path, or a full path from a production machine. */
@@ -139,16 +118,11 @@ export interface SourceLocation {
   functionName?: string;
 }
 
-export const SourceLocation: Schema.Schema<SourceLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filePath: Schema.optional(Schema.String),
-      lineNumber: Schema.optional(Schema.Number),
-      functionName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SourceLocation",
-  }) as any as Schema.Schema<SourceLocation>;
+export const SourceLocation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  filePath: Schema.optional(Schema.String),
+  lineNumber: Schema.optional(Schema.Number),
+  functionName: Schema.optional(Schema.String),
+}).annotate({ identifier: "SourceLocation" });
 
 export interface SourceReference {
   /** Optional. A URI string identifying the repository. Example: "https://github.com/GoogleCloudPlatform/kubernetes.git" */
@@ -157,15 +131,10 @@ export interface SourceReference {
   revisionId?: string;
 }
 
-export const SourceReference: Schema.Schema<SourceReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      repository: Schema.optional(Schema.String),
-      revisionId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SourceReference",
-  }) as any as Schema.Schema<SourceReference>;
+export const SourceReference = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  repository: Schema.optional(Schema.String),
+  revisionId: Schema.optional(Schema.String),
+}).annotate({ identifier: "SourceReference" });
 
 export interface ErrorContext {
   /** The HTTP request which was processed when the error was triggered. */
@@ -178,17 +147,12 @@ export interface ErrorContext {
   sourceReferences?: Array<SourceReference>;
 }
 
-export const ErrorContext: Schema.Schema<ErrorContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      httpRequest: Schema.optional(HttpRequestContext),
-      user: Schema.optional(Schema.String),
-      reportLocation: Schema.optional(SourceLocation),
-      sourceReferences: Schema.optional(Schema.Array(SourceReference)),
-    }),
-  ).annotate({
-    identifier: "ErrorContext",
-  }) as any as Schema.Schema<ErrorContext>;
+export const ErrorContext = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  httpRequest: Schema.optional(HttpRequestContext),
+  user: Schema.optional(Schema.String),
+  reportLocation: Schema.optional(SourceLocation),
+  sourceReferences: Schema.optional(Schema.Array(SourceReference)),
+}).annotate({ identifier: "ErrorContext" });
 
 export interface ErrorEvent {
   /** Time when the event occurred as provided in the error report. If the report did not contain a timestamp, the time the error was received by the Error Reporting system is used. */
@@ -201,15 +165,12 @@ export interface ErrorEvent {
   context?: ErrorContext;
 }
 
-export const ErrorEvent: Schema.Schema<ErrorEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      eventTime: Schema.optional(Schema.String),
-      serviceContext: Schema.optional(ServiceContext),
-      message: Schema.optional(Schema.String),
-      context: Schema.optional(ErrorContext),
-    }),
-  ).annotate({ identifier: "ErrorEvent" }) as any as Schema.Schema<ErrorEvent>;
+export const ErrorEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  eventTime: Schema.optional(Schema.String),
+  serviceContext: Schema.optional(ServiceContext),
+  message: Schema.optional(Schema.String),
+  context: Schema.optional(ErrorContext),
+}).annotate({ identifier: "ErrorEvent" });
 
 export interface ErrorGroupStats {
   /** Group data that is independent of the filter criteria. */
@@ -232,22 +193,17 @@ export interface ErrorGroupStats {
   representative?: ErrorEvent;
 }
 
-export const ErrorGroupStats: Schema.Schema<ErrorGroupStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      group: Schema.optional(ErrorGroup),
-      count: Schema.optional(Schema.String),
-      affectedUsersCount: Schema.optional(Schema.String),
-      timedCounts: Schema.optional(Schema.Array(TimedCount)),
-      firstSeenTime: Schema.optional(Schema.String),
-      lastSeenTime: Schema.optional(Schema.String),
-      affectedServices: Schema.optional(Schema.Array(ServiceContext)),
-      numAffectedServices: Schema.optional(Schema.Number),
-      representative: Schema.optional(ErrorEvent),
-    }),
-  ).annotate({
-    identifier: "ErrorGroupStats",
-  }) as any as Schema.Schema<ErrorGroupStats>;
+export const ErrorGroupStats = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  group: Schema.optional(ErrorGroup),
+  count: Schema.optional(Schema.String),
+  affectedUsersCount: Schema.optional(Schema.String),
+  timedCounts: Schema.optional(Schema.Array(TimedCount)),
+  firstSeenTime: Schema.optional(Schema.String),
+  lastSeenTime: Schema.optional(Schema.String),
+  affectedServices: Schema.optional(Schema.Array(ServiceContext)),
+  numAffectedServices: Schema.optional(Schema.Number),
+  representative: Schema.optional(ErrorEvent),
+}).annotate({ identifier: "ErrorGroupStats" });
 
 export interface ListGroupStatsResponse {
   /** The error group stats which match the given request. */
@@ -258,16 +214,13 @@ export interface ListGroupStatsResponse {
   timeRangeBegin?: string;
 }
 
-export const ListGroupStatsResponse: Schema.Schema<ListGroupStatsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errorGroupStats: Schema.optional(Schema.Array(ErrorGroupStats)),
-      nextPageToken: Schema.optional(Schema.String),
-      timeRangeBegin: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListGroupStatsResponse",
-  }) as any as Schema.Schema<ListGroupStatsResponse>;
+export const ListGroupStatsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    errorGroupStats: Schema.optional(Schema.Array(ErrorGroupStats)),
+    nextPageToken: Schema.optional(Schema.String),
+    timeRangeBegin: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ListGroupStatsResponse" });
 
 export interface ListEventsResponse {
   /** The error events which match the given request. */
@@ -278,23 +231,17 @@ export interface ListEventsResponse {
   timeRangeBegin?: string;
 }
 
-export const ListEventsResponse: Schema.Schema<ListEventsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errorEvents: Schema.optional(Schema.Array(ErrorEvent)),
-      nextPageToken: Schema.optional(Schema.String),
-      timeRangeBegin: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListEventsResponse",
-  }) as any as Schema.Schema<ListEventsResponse>;
+export const ListEventsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  errorEvents: Schema.optional(Schema.Array(ErrorEvent)),
+  nextPageToken: Schema.optional(Schema.String),
+  timeRangeBegin: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListEventsResponse" });
 
 export interface DeleteEventsResponse {}
 
-export const DeleteEventsResponse: Schema.Schema<DeleteEventsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "DeleteEventsResponse",
-  }) as any as Schema.Schema<DeleteEventsResponse>;
+export const DeleteEventsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "DeleteEventsResponse" });
 
 export interface ReportedErrorEvent {
   /** Optional. Time when the event occurred. If not provided, the time when the event was received by the Error Reporting system is used. If provided, the time must not exceed the [logs retention period](https://cloud.google.com/logging/quotas#logs_retention_periods) in the past, or be more than 24 hours in the future. If an invalid time is provided, then an error is returned. */
@@ -307,24 +254,19 @@ export interface ReportedErrorEvent {
   context?: ErrorContext;
 }
 
-export const ReportedErrorEvent: Schema.Schema<ReportedErrorEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      eventTime: Schema.optional(Schema.String),
-      serviceContext: Schema.optional(ServiceContext),
-      message: Schema.optional(Schema.String),
-      context: Schema.optional(ErrorContext),
-    }),
-  ).annotate({
-    identifier: "ReportedErrorEvent",
-  }) as any as Schema.Schema<ReportedErrorEvent>;
+export const ReportedErrorEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  eventTime: Schema.optional(Schema.String),
+  serviceContext: Schema.optional(ServiceContext),
+  message: Schema.optional(Schema.String),
+  context: Schema.optional(ErrorContext),
+}).annotate({ identifier: "ReportedErrorEvent" });
 
 export interface ReportErrorEventResponse {}
 
-export const ReportErrorEventResponse: Schema.Schema<ReportErrorEventResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const ReportErrorEventResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ReportErrorEventResponse",
-  }) as any as Schema.Schema<ReportErrorEventResponse>;
+  });
 
 // ==========================================================================
 // Operations

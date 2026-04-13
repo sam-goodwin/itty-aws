@@ -66,21 +66,17 @@ export interface ProductReviewItemLevelIssue {
     | (string & {});
 }
 
-export const ProductReviewItemLevelIssue: Schema.Schema<ProductReviewItemLevelIssue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reportingContext: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      documentation: Schema.optional(Schema.String),
-      detail: Schema.optional(Schema.String),
-      attribute: Schema.optional(Schema.String),
-      resolution: Schema.optional(Schema.String),
-      code: Schema.optional(Schema.String),
-      severity: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProductReviewItemLevelIssue",
-  }) as any as Schema.Schema<ProductReviewItemLevelIssue>;
+export const ProductReviewItemLevelIssue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reportingContext: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    documentation: Schema.optional(Schema.String),
+    detail: Schema.optional(Schema.String),
+    attribute: Schema.optional(Schema.String),
+    resolution: Schema.optional(Schema.String),
+    code: Schema.optional(Schema.String),
+    severity: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ProductReviewItemLevelIssue" });
 
 export interface MerchantReviewItemLevelIssue {
   /** Output only. The attribute's name, if the issue is caused by a single attribute. */
@@ -126,21 +122,17 @@ export interface MerchantReviewItemLevelIssue {
   detail?: string;
 }
 
-export const MerchantReviewItemLevelIssue: Schema.Schema<MerchantReviewItemLevelIssue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      attribute: Schema.optional(Schema.String),
-      resolution: Schema.optional(Schema.String),
-      code: Schema.optional(Schema.String),
-      severity: Schema.optional(Schema.String),
-      reportingContext: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      documentation: Schema.optional(Schema.String),
-      detail: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MerchantReviewItemLevelIssue",
-  }) as any as Schema.Schema<MerchantReviewItemLevelIssue>;
+export const MerchantReviewItemLevelIssue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    attribute: Schema.optional(Schema.String),
+    resolution: Schema.optional(Schema.String),
+    code: Schema.optional(Schema.String),
+    severity: Schema.optional(Schema.String),
+    reportingContext: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    documentation: Schema.optional(Schema.String),
+    detail: Schema.optional(Schema.String),
+  }).annotate({ identifier: "MerchantReviewItemLevelIssue" });
 
 export interface ProductReviewDestinationStatus {
   /** Output only. The name of the reporting context. */
@@ -168,14 +160,10 @@ export interface ProductReviewDestinationStatus {
     | (string & {});
 }
 
-export const ProductReviewDestinationStatus: Schema.Schema<ProductReviewDestinationStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reportingContext: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProductReviewDestinationStatus",
-  }) as any as Schema.Schema<ProductReviewDestinationStatus>;
+export const ProductReviewDestinationStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reportingContext: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ProductReviewDestinationStatus" });
 
 export interface ProductReviewStatus {
   /** Output only. Date on which the item has been last updated, in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format. */
@@ -188,21 +176,14 @@ export interface ProductReviewStatus {
   createTime?: string;
 }
 
-export const ProductReviewStatus: Schema.Schema<ProductReviewStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lastUpdateTime: Schema.optional(Schema.String),
-      destinationStatuses: Schema.optional(
-        Schema.Array(ProductReviewDestinationStatus),
-      ),
-      itemLevelIssues: Schema.optional(
-        Schema.Array(ProductReviewItemLevelIssue),
-      ),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProductReviewStatus",
-  }) as any as Schema.Schema<ProductReviewStatus>;
+export const ProductReviewStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  lastUpdateTime: Schema.optional(Schema.String),
+  destinationStatuses: Schema.optional(
+    Schema.Array(ProductReviewDestinationStatus),
+  ),
+  itemLevelIssues: Schema.optional(Schema.Array(ProductReviewItemLevelIssue)),
+  createTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "ProductReviewStatus" });
 
 export interface ReviewLink {
   /** Optional. Type of the review URI. */
@@ -211,13 +192,10 @@ export interface ReviewLink {
   link?: string;
 }
 
-export const ReviewLink: Schema.Schema<ReviewLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      link: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "ReviewLink" }) as any as Schema.Schema<ReviewLink>;
+export const ReviewLink = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  link: Schema.optional(Schema.String),
+}).annotate({ identifier: "ReviewLink" });
 
 export interface ProductReviewAttributes {
   /** Optional. Contains ASINs (Amazon Standard Identification Numbers) associated with a product. */
@@ -288,44 +266,40 @@ export interface ProductReviewAttributes {
   title?: string;
 }
 
-export const ProductReviewAttributes: Schema.Schema<ProductReviewAttributes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      asins: Schema.optional(Schema.Array(Schema.String)),
-      isIncentivizedReview: Schema.optional(Schema.Boolean),
-      pros: Schema.optional(Schema.Array(Schema.String)),
-      mpns: Schema.optional(Schema.Array(Schema.String)),
-      publisherFavicon: Schema.optional(Schema.String),
-      minRating: Schema.optional(Schema.String),
-      isVerifiedPurchase: Schema.optional(Schema.Boolean),
-      productLinks: Schema.optional(Schema.Array(Schema.String)),
-      reviewLanguage: Schema.optional(Schema.String),
-      reviewerUsername: Schema.optional(Schema.String),
-      reviewCountry: Schema.optional(Schema.String),
-      brands: Schema.optional(Schema.Array(Schema.String)),
-      reviewerId: Schema.optional(Schema.String),
-      publisherName: Schema.optional(Schema.String),
-      content: Schema.optional(Schema.String),
-      reviewTime: Schema.optional(Schema.String),
-      isSpam: Schema.optional(Schema.Boolean),
-      reviewerImageLinks: Schema.optional(Schema.Array(Schema.String)),
-      reviewerIsAnonymous: Schema.optional(Schema.Boolean),
-      collectionMethod: Schema.optional(Schema.String),
-      gtins: Schema.optional(Schema.Array(Schema.String)),
-      aggregatorName: Schema.optional(Schema.String),
-      skus: Schema.optional(Schema.Array(Schema.String)),
-      cons: Schema.optional(Schema.Array(Schema.String)),
-      subclientName: Schema.optional(Schema.String),
-      transactionId: Schema.optional(Schema.String),
-      productNames: Schema.optional(Schema.Array(Schema.String)),
-      maxRating: Schema.optional(Schema.String),
-      rating: Schema.optional(Schema.Number),
-      reviewLink: Schema.optional(ReviewLink),
-      title: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProductReviewAttributes",
-  }) as any as Schema.Schema<ProductReviewAttributes>;
+export const ProductReviewAttributes =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    asins: Schema.optional(Schema.Array(Schema.String)),
+    isIncentivizedReview: Schema.optional(Schema.Boolean),
+    pros: Schema.optional(Schema.Array(Schema.String)),
+    mpns: Schema.optional(Schema.Array(Schema.String)),
+    publisherFavicon: Schema.optional(Schema.String),
+    minRating: Schema.optional(Schema.String),
+    isVerifiedPurchase: Schema.optional(Schema.Boolean),
+    productLinks: Schema.optional(Schema.Array(Schema.String)),
+    reviewLanguage: Schema.optional(Schema.String),
+    reviewerUsername: Schema.optional(Schema.String),
+    reviewCountry: Schema.optional(Schema.String),
+    brands: Schema.optional(Schema.Array(Schema.String)),
+    reviewerId: Schema.optional(Schema.String),
+    publisherName: Schema.optional(Schema.String),
+    content: Schema.optional(Schema.String),
+    reviewTime: Schema.optional(Schema.String),
+    isSpam: Schema.optional(Schema.Boolean),
+    reviewerImageLinks: Schema.optional(Schema.Array(Schema.String)),
+    reviewerIsAnonymous: Schema.optional(Schema.Boolean),
+    collectionMethod: Schema.optional(Schema.String),
+    gtins: Schema.optional(Schema.Array(Schema.String)),
+    aggregatorName: Schema.optional(Schema.String),
+    skus: Schema.optional(Schema.Array(Schema.String)),
+    cons: Schema.optional(Schema.Array(Schema.String)),
+    subclientName: Schema.optional(Schema.String),
+    transactionId: Schema.optional(Schema.String),
+    productNames: Schema.optional(Schema.Array(Schema.String)),
+    maxRating: Schema.optional(Schema.String),
+    rating: Schema.optional(Schema.Number),
+    reviewLink: Schema.optional(ReviewLink),
+    title: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ProductReviewAttributes" });
 
 export interface CustomAttribute {
   /** Subattributes within this attribute group. If `group_values` is not empty, `value` must be empty. */
@@ -362,19 +336,14 @@ export interface ProductReview {
   dataSource?: string;
 }
 
-export const ProductReview: Schema.Schema<ProductReview> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      productReviewStatus: Schema.optional(ProductReviewStatus),
-      productReviewAttributes: Schema.optional(ProductReviewAttributes),
-      name: Schema.optional(Schema.String),
-      productReviewId: Schema.optional(Schema.String),
-      customAttributes: Schema.optional(Schema.Array(CustomAttribute)),
-      dataSource: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProductReview",
-  }) as any as Schema.Schema<ProductReview>;
+export const ProductReview = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  productReviewStatus: Schema.optional(ProductReviewStatus),
+  productReviewAttributes: Schema.optional(ProductReviewAttributes),
+  name: Schema.optional(Schema.String),
+  productReviewId: Schema.optional(Schema.String),
+  customAttributes: Schema.optional(Schema.Array(CustomAttribute)),
+  dataSource: Schema.optional(Schema.String),
+}).annotate({ identifier: "ProductReview" });
 
 export interface ListProductReviewsResponse {
   /** The product review. */
@@ -383,15 +352,11 @@ export interface ListProductReviewsResponse {
   nextPageToken?: string;
 }
 
-export const ListProductReviewsResponse: Schema.Schema<ListProductReviewsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      productReviews: Schema.optional(Schema.Array(ProductReview)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListProductReviewsResponse",
-  }) as any as Schema.Schema<ListProductReviewsResponse>;
+export const ListProductReviewsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    productReviews: Schema.optional(Schema.Array(ProductReview)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListProductReviewsResponse" });
 
 export interface MerchantReviewAttributes {
   /** Optional. The language of the review defined by BCP-47 language code. */
@@ -433,29 +398,25 @@ export interface MerchantReviewAttributes {
   minRating?: string;
 }
 
-export const MerchantReviewAttributes: Schema.Schema<MerchantReviewAttributes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reviewLanguage: Schema.optional(Schema.String),
-      maxRating: Schema.optional(Schema.String),
-      rating: Schema.optional(Schema.Number),
-      merchantDisplayName: Schema.optional(Schema.String),
-      reviewerUsername: Schema.optional(Schema.String),
-      reviewCountry: Schema.optional(Schema.String),
-      reviewerId: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      content: Schema.optional(Schema.String),
-      isAnonymous: Schema.optional(Schema.Boolean),
-      reviewTime: Schema.optional(Schema.String),
-      collectionMethod: Schema.optional(Schema.String),
-      merchantLink: Schema.optional(Schema.String),
-      merchantRatingLink: Schema.optional(Schema.String),
-      merchantId: Schema.optional(Schema.String),
-      minRating: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MerchantReviewAttributes",
-  }) as any as Schema.Schema<MerchantReviewAttributes>;
+export const MerchantReviewAttributes =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reviewLanguage: Schema.optional(Schema.String),
+    maxRating: Schema.optional(Schema.String),
+    rating: Schema.optional(Schema.Number),
+    merchantDisplayName: Schema.optional(Schema.String),
+    reviewerUsername: Schema.optional(Schema.String),
+    reviewCountry: Schema.optional(Schema.String),
+    reviewerId: Schema.optional(Schema.String),
+    title: Schema.optional(Schema.String),
+    content: Schema.optional(Schema.String),
+    isAnonymous: Schema.optional(Schema.Boolean),
+    reviewTime: Schema.optional(Schema.String),
+    collectionMethod: Schema.optional(Schema.String),
+    merchantLink: Schema.optional(Schema.String),
+    merchantRatingLink: Schema.optional(Schema.String),
+    merchantId: Schema.optional(Schema.String),
+    minRating: Schema.optional(Schema.String),
+  }).annotate({ identifier: "MerchantReviewAttributes" });
 
 export interface MerchantReviewDestinationStatus {
   /** Output only. The name of the reporting context. */
@@ -483,14 +444,10 @@ export interface MerchantReviewDestinationStatus {
     | (string & {});
 }
 
-export const MerchantReviewDestinationStatus: Schema.Schema<MerchantReviewDestinationStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reportingContext: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MerchantReviewDestinationStatus",
-  }) as any as Schema.Schema<MerchantReviewDestinationStatus>;
+export const MerchantReviewDestinationStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reportingContext: Schema.optional(Schema.String),
+  }).annotate({ identifier: "MerchantReviewDestinationStatus" });
 
 export interface MerchantReviewStatus {
   /** Output only. Date on which the item has been last updated, in [ISO 8601](http://en.wikipedia.org/wiki/ISO_8601) format. */
@@ -503,21 +460,14 @@ export interface MerchantReviewStatus {
   createTime?: string;
 }
 
-export const MerchantReviewStatus: Schema.Schema<MerchantReviewStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lastUpdateTime: Schema.optional(Schema.String),
-      destinationStatuses: Schema.optional(
-        Schema.Array(MerchantReviewDestinationStatus),
-      ),
-      itemLevelIssues: Schema.optional(
-        Schema.Array(MerchantReviewItemLevelIssue),
-      ),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MerchantReviewStatus",
-  }) as any as Schema.Schema<MerchantReviewStatus>;
+export const MerchantReviewStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  lastUpdateTime: Schema.optional(Schema.String),
+  destinationStatuses: Schema.optional(
+    Schema.Array(MerchantReviewDestinationStatus),
+  ),
+  itemLevelIssues: Schema.optional(Schema.Array(MerchantReviewItemLevelIssue)),
+  createTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "MerchantReviewStatus" });
 
 export interface MerchantReview {
   /** Required. The user provided merchant review ID to uniquely identify the merchant review. */
@@ -534,19 +484,14 @@ export interface MerchantReview {
   dataSource?: string;
 }
 
-export const MerchantReview: Schema.Schema<MerchantReview> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      merchantReviewId: Schema.optional(Schema.String),
-      merchantReviewAttributes: Schema.optional(MerchantReviewAttributes),
-      merchantReviewStatus: Schema.optional(MerchantReviewStatus),
-      name: Schema.optional(Schema.String),
-      customAttributes: Schema.optional(Schema.Array(CustomAttribute)),
-      dataSource: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MerchantReview",
-  }) as any as Schema.Schema<MerchantReview>;
+export const MerchantReview = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  merchantReviewId: Schema.optional(Schema.String),
+  merchantReviewAttributes: Schema.optional(MerchantReviewAttributes),
+  merchantReviewStatus: Schema.optional(MerchantReviewStatus),
+  name: Schema.optional(Schema.String),
+  customAttributes: Schema.optional(Schema.Array(CustomAttribute)),
+  dataSource: Schema.optional(Schema.String),
+}).annotate({ identifier: "MerchantReview" });
 
 export interface ListMerchantReviewsResponse {
   /** The token to retrieve the next page of results. */
@@ -555,15 +500,11 @@ export interface ListMerchantReviewsResponse {
   merchantReviews?: Array<MerchantReview>;
 }
 
-export const ListMerchantReviewsResponse: Schema.Schema<ListMerchantReviewsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      merchantReviews: Schema.optional(Schema.Array(MerchantReview)),
-    }),
-  ).annotate({
-    identifier: "ListMerchantReviewsResponse",
-  }) as any as Schema.Schema<ListMerchantReviewsResponse>;
+export const ListMerchantReviewsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    merchantReviews: Schema.optional(Schema.Array(MerchantReview)),
+  }).annotate({ identifier: "ListMerchantReviewsResponse" });
 
 export interface ProductChange {
   /** The old value of the changed resource or attribute. If empty, it means that the product was created. Will have one of these values : (`approved`, `pending`, `disapproved`, ``) */
@@ -597,24 +538,18 @@ export interface ProductChange {
   regionCode?: string;
 }
 
-export const ProductChange: Schema.Schema<ProductChange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      oldValue: Schema.optional(Schema.String),
-      newValue: Schema.optional(Schema.String),
-      reportingContext: Schema.optional(Schema.String),
-      regionCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProductChange",
-  }) as any as Schema.Schema<ProductChange>;
+export const ProductChange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  oldValue: Schema.optional(Schema.String),
+  newValue: Schema.optional(Schema.String),
+  reportingContext: Schema.optional(Schema.String),
+  regionCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "ProductChange" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface ProductStatusChangeMessage {
   /** The target account that owns the entity that changed. Format : `accounts/{merchant_id}` */
@@ -637,22 +572,18 @@ export interface ProductStatusChangeMessage {
   resourceId?: string;
 }
 
-export const ProductStatusChangeMessage: Schema.Schema<ProductStatusChangeMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      account: Schema.optional(Schema.String),
-      eventTime: Schema.optional(Schema.String),
-      resource: Schema.optional(Schema.String),
-      attribute: Schema.optional(Schema.String),
-      changes: Schema.optional(Schema.Array(ProductChange)),
-      expirationTime: Schema.optional(Schema.String),
-      resourceType: Schema.optional(Schema.String),
-      managingAccount: Schema.optional(Schema.String),
-      resourceId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProductStatusChangeMessage",
-  }) as any as Schema.Schema<ProductStatusChangeMessage>;
+export const ProductStatusChangeMessage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    account: Schema.optional(Schema.String),
+    eventTime: Schema.optional(Schema.String),
+    resource: Schema.optional(Schema.String),
+    attribute: Schema.optional(Schema.String),
+    changes: Schema.optional(Schema.Array(ProductChange)),
+    expirationTime: Schema.optional(Schema.String),
+    resourceType: Schema.optional(Schema.String),
+    managingAccount: Schema.optional(Schema.String),
+    resourceId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ProductStatusChangeMessage" });
 
 // ==========================================================================
 // Operations

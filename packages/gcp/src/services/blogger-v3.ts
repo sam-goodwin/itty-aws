@@ -35,18 +35,13 @@ export interface PostPerUserInfo {
   blogId?: string;
 }
 
-export const PostPerUserInfo: Schema.Schema<PostPerUserInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hasEditAccess: Schema.optional(Schema.Boolean),
-      userId: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      postId: Schema.optional(Schema.String),
-      blogId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PostPerUserInfo",
-  }) as any as Schema.Schema<PostPerUserInfo>;
+export const PostPerUserInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  hasEditAccess: Schema.optional(Schema.Boolean),
+  userId: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  postId: Schema.optional(Schema.String),
+  blogId: Schema.optional(Schema.String),
+}).annotate({ identifier: "PostPerUserInfo" });
 
 export interface Comment {
   /** The status of the comment (only populated for admin users). */
@@ -78,37 +73,30 @@ export interface Comment {
   };
 }
 
-export const Comment: Schema.Schema<Comment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const Comment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  status: Schema.optional(Schema.String),
+  inReplyTo: Schema.optional(
+    Schema.Struct({ id: Schema.optional(Schema.String) }),
+  ),
+  content: Schema.optional(Schema.String),
+  post: Schema.optional(Schema.Struct({ id: Schema.optional(Schema.String) })),
+  updated: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  blog: Schema.optional(Schema.Struct({ id: Schema.optional(Schema.String) })),
+  selfLink: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  published: Schema.optional(Schema.String),
+  author: Schema.optional(
     Schema.Struct({
-      status: Schema.optional(Schema.String),
-      inReplyTo: Schema.optional(
-        Schema.Struct({ id: Schema.optional(Schema.String) }),
-      ),
-      content: Schema.optional(Schema.String),
-      post: Schema.optional(
-        Schema.Struct({ id: Schema.optional(Schema.String) }),
-      ),
-      updated: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      blog: Schema.optional(
-        Schema.Struct({ id: Schema.optional(Schema.String) }),
-      ),
-      selfLink: Schema.optional(Schema.String),
       id: Schema.optional(Schema.String),
-      published: Schema.optional(Schema.String),
-      author: Schema.optional(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          url: Schema.optional(Schema.String),
-          displayName: Schema.optional(Schema.String),
-          image: Schema.optional(
-            Schema.Struct({ url: Schema.optional(Schema.String) }),
-          ),
-        }),
+      url: Schema.optional(Schema.String),
+      displayName: Schema.optional(Schema.String),
+      image: Schema.optional(
+        Schema.Struct({ url: Schema.optional(Schema.String) }),
       ),
     }),
-  ).annotate({ identifier: "Comment" }) as any as Schema.Schema<Comment>;
+  ),
+}).annotate({ identifier: "Comment" });
 
 export interface Post {
   /** The identifier of this Post. */
@@ -162,57 +150,52 @@ export interface Post {
   location?: { name?: string; span?: string; lat?: number; lng?: number };
 }
 
-export const Post: Schema.Schema<Post> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const Post = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  replies: Schema.optional(
+    Schema.Struct({
+      selfLink: Schema.optional(Schema.String),
+      totalItems: Schema.optional(Schema.String),
+      items: Schema.optional(Schema.Array(Comment)),
+    }),
+  ),
+  titleLink: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.String),
+  content: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  blog: Schema.optional(Schema.Struct({ id: Schema.optional(Schema.String) })),
+  selfLink: Schema.optional(Schema.String),
+  customMetaData: Schema.optional(Schema.String),
+  readerComments: Schema.optional(Schema.String),
+  published: Schema.optional(Schema.String),
+  images: Schema.optional(
+    Schema.Array(Schema.Struct({ url: Schema.optional(Schema.String) })),
+  ),
+  author: Schema.optional(
     Schema.Struct({
       id: Schema.optional(Schema.String),
-      replies: Schema.optional(
-        Schema.Struct({
-          selfLink: Schema.optional(Schema.String),
-          totalItems: Schema.optional(Schema.String),
-          items: Schema.optional(Schema.Array(Comment)),
-        }),
-      ),
-      titleLink: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-      content: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      blog: Schema.optional(
-        Schema.Struct({ id: Schema.optional(Schema.String) }),
-      ),
-      selfLink: Schema.optional(Schema.String),
-      customMetaData: Schema.optional(Schema.String),
-      readerComments: Schema.optional(Schema.String),
-      published: Schema.optional(Schema.String),
-      images: Schema.optional(
-        Schema.Array(Schema.Struct({ url: Schema.optional(Schema.String) })),
-      ),
-      author: Schema.optional(
-        Schema.Struct({
-          id: Schema.optional(Schema.String),
-          url: Schema.optional(Schema.String),
-          displayName: Schema.optional(Schema.String),
-          image: Schema.optional(
-            Schema.Struct({ url: Schema.optional(Schema.String) }),
-          ),
-        }),
-      ),
       url: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Array(Schema.String)),
-      trashed: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      updated: Schema.optional(Schema.String),
-      location: Schema.optional(
-        Schema.Struct({
-          name: Schema.optional(Schema.String),
-          span: Schema.optional(Schema.String),
-          lat: Schema.optional(Schema.Number),
-          lng: Schema.optional(Schema.Number),
-        }),
+      displayName: Schema.optional(Schema.String),
+      image: Schema.optional(
+        Schema.Struct({ url: Schema.optional(Schema.String) }),
       ),
     }),
-  ).annotate({ identifier: "Post" }) as any as Schema.Schema<Post>;
+  ),
+  url: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Array(Schema.String)),
+  trashed: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  updated: Schema.optional(Schema.String),
+  location: Schema.optional(
+    Schema.Struct({
+      name: Schema.optional(Schema.String),
+      span: Schema.optional(Schema.String),
+      lat: Schema.optional(Schema.Number),
+      lng: Schema.optional(Schema.Number),
+    }),
+  ),
+}).annotate({ identifier: "Post" });
 
 export interface PostUserInfo {
   /** The kind of this entity. Always blogger#postUserInfo. */
@@ -223,16 +206,11 @@ export interface PostUserInfo {
   post?: Post;
 }
 
-export const PostUserInfo: Schema.Schema<PostUserInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      post_user_info: Schema.optional(PostPerUserInfo),
-      post: Schema.optional(Post),
-    }),
-  ).annotate({
-    identifier: "PostUserInfo",
-  }) as any as Schema.Schema<PostUserInfo>;
+export const PostUserInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  post_user_info: Schema.optional(PostPerUserInfo),
+  post: Schema.optional(Post),
+}).annotate({ identifier: "PostUserInfo" });
 
 export interface User {
   /** The identifier for this User. */
@@ -255,28 +233,25 @@ export interface User {
   kind?: string;
 }
 
-export const User: Schema.Schema<User> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const User = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  selfLink: Schema.optional(Schema.String),
+  url: Schema.optional(Schema.String),
+  about: Schema.optional(Schema.String),
+  locale: Schema.optional(
     Schema.Struct({
-      id: Schema.optional(Schema.String),
-      selfLink: Schema.optional(Schema.String),
-      url: Schema.optional(Schema.String),
-      about: Schema.optional(Schema.String),
-      locale: Schema.optional(
-        Schema.Struct({
-          language: Schema.optional(Schema.String),
-          country: Schema.optional(Schema.String),
-          variant: Schema.optional(Schema.String),
-        }),
-      ),
-      created: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      blogs: Schema.optional(
-        Schema.Struct({ selfLink: Schema.optional(Schema.String) }),
-      ),
-      kind: Schema.optional(Schema.String),
+      language: Schema.optional(Schema.String),
+      country: Schema.optional(Schema.String),
+      variant: Schema.optional(Schema.String),
     }),
-  ).annotate({ identifier: "User" }) as any as Schema.Schema<User>;
+  ),
+  created: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  blogs: Schema.optional(
+    Schema.Struct({ selfLink: Schema.optional(Schema.String) }),
+  ),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "User" });
 
 export interface Page {
   /** The title of this entity. This is the name displayed in the Admin user interface. */
@@ -312,35 +287,30 @@ export interface Page {
   id?: string;
 }
 
-export const Page: Schema.Schema<Page> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const Page = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  title: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  updated: Schema.optional(Schema.String),
+  trashed: Schema.optional(Schema.String),
+  author: Schema.optional(
     Schema.Struct({
-      title: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      updated: Schema.optional(Schema.String),
-      trashed: Schema.optional(Schema.String),
-      author: Schema.optional(
-        Schema.Struct({
-          displayName: Schema.optional(Schema.String),
-          image: Schema.optional(
-            Schema.Struct({ url: Schema.optional(Schema.String) }),
-          ),
-          id: Schema.optional(Schema.String),
-          url: Schema.optional(Schema.String),
-        }),
+      displayName: Schema.optional(Schema.String),
+      image: Schema.optional(
+        Schema.Struct({ url: Schema.optional(Schema.String) }),
       ),
-      url: Schema.optional(Schema.String),
-      selfLink: Schema.optional(Schema.String),
-      published: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      blog: Schema.optional(
-        Schema.Struct({ id: Schema.optional(Schema.String) }),
-      ),
-      status: Schema.optional(Schema.String),
-      content: Schema.optional(Schema.String),
       id: Schema.optional(Schema.String),
+      url: Schema.optional(Schema.String),
     }),
-  ).annotate({ identifier: "Page" }) as any as Schema.Schema<Page>;
+  ),
+  url: Schema.optional(Schema.String),
+  selfLink: Schema.optional(Schema.String),
+  published: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  blog: Schema.optional(Schema.Struct({ id: Schema.optional(Schema.String) })),
+  status: Schema.optional(Schema.String),
+  content: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+}).annotate({ identifier: "Page" });
 
 export interface PageList {
   /** The list of Pages for a Blog. */
@@ -353,15 +323,12 @@ export interface PageList {
   kind?: string;
 }
 
-export const PageList: Schema.Schema<PageList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      items: Schema.optional(Schema.Array(Page)),
-      nextPageToken: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "PageList" }) as any as Schema.Schema<PageList>;
+export const PageList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  items: Schema.optional(Schema.Array(Page)),
+  nextPageToken: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "PageList" });
 
 export interface Blog {
   /** The status of the blog. */
@@ -392,41 +359,38 @@ export interface Blog {
   url?: string;
 }
 
-export const Blog: Schema.Schema<Blog> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const Blog = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  status: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  locale: Schema.optional(
     Schema.Struct({
-      status: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      locale: Schema.optional(
-        Schema.Struct({
-          language: Schema.optional(Schema.String),
-          country: Schema.optional(Schema.String),
-          variant: Schema.optional(Schema.String),
-        }),
-      ),
-      posts: Schema.optional(
-        Schema.Struct({
-          selfLink: Schema.optional(Schema.String),
-          totalItems: Schema.optional(Schema.Number),
-          items: Schema.optional(Schema.Array(Post)),
-        }),
-      ),
-      updated: Schema.optional(Schema.String),
-      published: Schema.optional(Schema.String),
-      selfLink: Schema.optional(Schema.String),
-      customMetaData: Schema.optional(Schema.String),
-      pages: Schema.optional(
-        Schema.Struct({
-          totalItems: Schema.optional(Schema.Number),
-          selfLink: Schema.optional(Schema.String),
-        }),
-      ),
-      url: Schema.optional(Schema.String),
+      language: Schema.optional(Schema.String),
+      country: Schema.optional(Schema.String),
+      variant: Schema.optional(Schema.String),
     }),
-  ).annotate({ identifier: "Blog" }) as any as Schema.Schema<Blog>;
+  ),
+  posts: Schema.optional(
+    Schema.Struct({
+      selfLink: Schema.optional(Schema.String),
+      totalItems: Schema.optional(Schema.Number),
+      items: Schema.optional(Schema.Array(Post)),
+    }),
+  ),
+  updated: Schema.optional(Schema.String),
+  published: Schema.optional(Schema.String),
+  selfLink: Schema.optional(Schema.String),
+  customMetaData: Schema.optional(Schema.String),
+  pages: Schema.optional(
+    Schema.Struct({
+      totalItems: Schema.optional(Schema.Number),
+      selfLink: Schema.optional(Schema.String),
+    }),
+  ),
+  url: Schema.optional(Schema.String),
+}).annotate({ identifier: "Blog" });
 
 export interface PostUserInfosList {
   /** Pagination token to fetch the next page, if one exists. */
@@ -437,16 +401,11 @@ export interface PostUserInfosList {
   kind?: string;
 }
 
-export const PostUserInfosList: Schema.Schema<PostUserInfosList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(PostUserInfo)),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PostUserInfosList",
-  }) as any as Schema.Schema<PostUserInfosList>;
+export const PostUserInfosList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(PostUserInfo)),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "PostUserInfosList" });
 
 export interface Pageviews {
   /** The kind of this entry. Always blogger#page_views. */
@@ -460,21 +419,18 @@ export interface Pageviews {
   }>;
 }
 
-export const Pageviews: Schema.Schema<Pageviews> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      blogId: Schema.optional(Schema.String),
-      counts: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            timeRange: Schema.optional(Schema.String),
-            count: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-    }),
-  ).annotate({ identifier: "Pageviews" }) as any as Schema.Schema<Pageviews>;
+export const Pageviews = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  blogId: Schema.optional(Schema.String),
+  counts: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        timeRange: Schema.optional(Schema.String),
+        count: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
+}).annotate({ identifier: "Pageviews" });
 
 export interface BlogPerUserInfo {
   /** ID of the User. */
@@ -496,19 +452,14 @@ export interface BlogPerUserInfo {
   blogId?: string;
 }
 
-export const BlogPerUserInfo: Schema.Schema<BlogPerUserInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userId: Schema.optional(Schema.String),
-      hasAdminAccess: Schema.optional(Schema.Boolean),
-      kind: Schema.optional(Schema.String),
-      role: Schema.optional(Schema.String),
-      photosAlbumKey: Schema.optional(Schema.String),
-      blogId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BlogPerUserInfo",
-  }) as any as Schema.Schema<BlogPerUserInfo>;
+export const BlogPerUserInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  userId: Schema.optional(Schema.String),
+  hasAdminAccess: Schema.optional(Schema.Boolean),
+  kind: Schema.optional(Schema.String),
+  role: Schema.optional(Schema.String),
+  photosAlbumKey: Schema.optional(Schema.String),
+  blogId: Schema.optional(Schema.String),
+}).annotate({ identifier: "BlogPerUserInfo" });
 
 export interface BlogUserInfo {
   /** Information about a User for the Blog. */
@@ -519,16 +470,11 @@ export interface BlogUserInfo {
   kind?: string;
 }
 
-export const BlogUserInfo: Schema.Schema<BlogUserInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      blog_user_info: Schema.optional(BlogPerUserInfo),
-      blog: Schema.optional(Blog),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BlogUserInfo",
-  }) as any as Schema.Schema<BlogUserInfo>;
+export const BlogUserInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  blog_user_info: Schema.optional(BlogPerUserInfo),
+  blog: Schema.optional(Blog),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "BlogUserInfo" });
 
 export interface BlogList {
   /** The list of Blogs this user has Authorship or Admin rights over. */
@@ -539,14 +485,11 @@ export interface BlogList {
   kind?: string;
 }
 
-export const BlogList: Schema.Schema<BlogList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      items: Schema.optional(Schema.Array(Blog)),
-      blogUserInfos: Schema.optional(Schema.Array(BlogUserInfo)),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "BlogList" }) as any as Schema.Schema<BlogList>;
+export const BlogList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  items: Schema.optional(Schema.Array(Blog)),
+  blogUserInfos: Schema.optional(Schema.Array(BlogUserInfo)),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "BlogList" });
 
 export interface CommentList {
   /** The List of Comments for a Post. */
@@ -561,18 +504,13 @@ export interface CommentList {
   prevPageToken?: string;
 }
 
-export const CommentList: Schema.Schema<CommentList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      items: Schema.optional(Schema.Array(Comment)),
-      kind: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      nextPageToken: Schema.optional(Schema.String),
-      prevPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CommentList",
-  }) as any as Schema.Schema<CommentList>;
+export const CommentList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  items: Schema.optional(Schema.Array(Comment)),
+  kind: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  nextPageToken: Schema.optional(Schema.String),
+  prevPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "CommentList" });
 
 export interface PostList {
   /** Etag of the response. */
@@ -587,16 +525,13 @@ export interface PostList {
   items?: Array<Post>;
 }
 
-export const PostList: Schema.Schema<PostList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      etag: Schema.optional(Schema.String),
-      nextPageToken: Schema.optional(Schema.String),
-      prevPageToken: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(Post)),
-    }),
-  ).annotate({ identifier: "PostList" }) as any as Schema.Schema<PostList>;
+export const PostList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  etag: Schema.optional(Schema.String),
+  nextPageToken: Schema.optional(Schema.String),
+  prevPageToken: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(Post)),
+}).annotate({ identifier: "PostList" });
 
 // ==========================================================================
 // Operations

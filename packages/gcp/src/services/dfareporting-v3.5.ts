@@ -31,16 +31,12 @@ export interface CreativeClickThroughUrl {
   landingPageId?: string;
 }
 
-export const CreativeClickThroughUrl: Schema.Schema<CreativeClickThroughUrl> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customClickThroughUrl: Schema.optional(Schema.String),
-      computedClickThroughUrl: Schema.optional(Schema.String),
-      landingPageId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreativeClickThroughUrl",
-  }) as any as Schema.Schema<CreativeClickThroughUrl>;
+export const CreativeClickThroughUrl =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customClickThroughUrl: Schema.optional(Schema.String),
+    computedClickThroughUrl: Schema.optional(Schema.String),
+    landingPageId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CreativeClickThroughUrl" });
 
 export interface OffsetPosition {
   /** Offset distance from left side of an asset or a window. */
@@ -49,15 +45,10 @@ export interface OffsetPosition {
   top?: number;
 }
 
-export const OffsetPosition: Schema.Schema<OffsetPosition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      left: Schema.optional(Schema.Number),
-      top: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "OffsetPosition",
-  }) as any as Schema.Schema<OffsetPosition>;
+export const OffsetPosition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  left: Schema.optional(Schema.Number),
+  top: Schema.optional(Schema.Number),
+}).annotate({ identifier: "OffsetPosition" });
 
 export interface Size {
   /** Width of this size. Acceptable values are 0 to 32767, inclusive. */
@@ -72,16 +63,13 @@ export interface Size {
   height?: number;
 }
 
-export const Size: Schema.Schema<Size> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      width: Schema.optional(Schema.Number),
-      iab: Schema.optional(Schema.Boolean),
-      kind: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      height: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Size" }) as any as Schema.Schema<Size>;
+export const Size = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  width: Schema.optional(Schema.Number),
+  iab: Schema.optional(Schema.Boolean),
+  kind: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  height: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Size" });
 
 export interface PopupWindowProperties {
   /** Whether to display the browser menu bar. */
@@ -104,22 +92,17 @@ export interface PopupWindowProperties {
   showStatusBar?: boolean;
 }
 
-export const PopupWindowProperties: Schema.Schema<PopupWindowProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      showMenuBar: Schema.optional(Schema.Boolean),
-      offset: Schema.optional(OffsetPosition),
-      title: Schema.optional(Schema.String),
-      positionType: Schema.optional(Schema.String),
-      dimension: Schema.optional(Size),
-      showToolBar: Schema.optional(Schema.Boolean),
-      showAddressBar: Schema.optional(Schema.Boolean),
-      showScrollBar: Schema.optional(Schema.Boolean),
-      showStatusBar: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "PopupWindowProperties",
-  }) as any as Schema.Schema<PopupWindowProperties>;
+export const PopupWindowProperties = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  showMenuBar: Schema.optional(Schema.Boolean),
+  offset: Schema.optional(OffsetPosition),
+  title: Schema.optional(Schema.String),
+  positionType: Schema.optional(Schema.String),
+  dimension: Schema.optional(Size),
+  showToolBar: Schema.optional(Schema.Boolean),
+  showAddressBar: Schema.optional(Schema.Boolean),
+  showScrollBar: Schema.optional(Schema.Boolean),
+  showStatusBar: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "PopupWindowProperties" });
 
 export interface CreativeCustomEvent {
   /** Exit click-through URL for the event. This field is used only for exit events. */
@@ -159,23 +142,18 @@ export interface CreativeCustomEvent {
   artworkLabel?: string;
 }
 
-export const CreativeCustomEvent: Schema.Schema<CreativeCustomEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      exitClickThroughUrl: Schema.optional(CreativeClickThroughUrl),
-      artworkType: Schema.optional(Schema.String),
-      advertiserCustomEventName: Schema.optional(Schema.String),
-      advertiserCustomEventId: Schema.optional(Schema.String),
-      videoReportingId: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      advertiserCustomEventType: Schema.optional(Schema.String),
-      targetType: Schema.optional(Schema.String),
-      popupWindowProperties: Schema.optional(PopupWindowProperties),
-      artworkLabel: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreativeCustomEvent",
-  }) as any as Schema.Schema<CreativeCustomEvent>;
+export const CreativeCustomEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  exitClickThroughUrl: Schema.optional(CreativeClickThroughUrl),
+  artworkType: Schema.optional(Schema.String),
+  advertiserCustomEventName: Schema.optional(Schema.String),
+  advertiserCustomEventId: Schema.optional(Schema.String),
+  videoReportingId: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  advertiserCustomEventType: Schema.optional(Schema.String),
+  targetType: Schema.optional(Schema.String),
+  popupWindowProperties: Schema.optional(PopupWindowProperties),
+  artworkLabel: Schema.optional(Schema.String),
+}).annotate({ identifier: "CreativeCustomEvent" });
 
 export interface ClickTag {
   /** Advertiser event name associated with the click tag. This field is used by DISPLAY_IMAGE_GALLERY and HTML5_BANNER creatives. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE. */
@@ -186,14 +164,11 @@ export interface ClickTag {
   name?: string;
 }
 
-export const ClickTag: Schema.Schema<ClickTag> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      eventName: Schema.optional(Schema.String),
-      clickThroughUrl: Schema.optional(CreativeClickThroughUrl),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "ClickTag" }) as any as Schema.Schema<ClickTag>;
+export const ClickTag = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  eventName: Schema.optional(Schema.String),
+  clickThroughUrl: Schema.optional(CreativeClickThroughUrl),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "ClickTag" });
 
 export interface CreativeAssetId {
   /** Type of asset to upload. This is a required field. FLASH and IMAGE are no longer supported for new uploads. All image assets should use HTML_IMAGE. */
@@ -209,15 +184,10 @@ export interface CreativeAssetId {
   name?: string;
 }
 
-export const CreativeAssetId: Schema.Schema<CreativeAssetId> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreativeAssetId",
-  }) as any as Schema.Schema<CreativeAssetId>;
+export const CreativeAssetId = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "CreativeAssetId" });
 
 export interface DimensionValue {
   /** The ID associated with the value if available. */
@@ -239,19 +209,14 @@ export interface DimensionValue {
   kind?: string;
 }
 
-export const DimensionValue: Schema.Schema<DimensionValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      dimensionName: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      matchType: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DimensionValue",
-  }) as any as Schema.Schema<DimensionValue>;
+export const DimensionValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  dimensionName: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  matchType: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "DimensionValue" });
 
 export interface CreativeAssetMetadata {
   /** List of counter events configured for the asset. This is a read-only, auto-generated field and only applicable to a rich media asset. */
@@ -374,24 +339,19 @@ export interface CreativeAssetMetadata {
   exitCustomEvents?: Array<CreativeCustomEvent>;
 }
 
-export const CreativeAssetMetadata: Schema.Schema<CreativeAssetMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      counterCustomEvents: Schema.optional(Schema.Array(CreativeCustomEvent)),
-      clickTags: Schema.optional(Schema.Array(ClickTag)),
-      richMedia: Schema.optional(Schema.Boolean),
-      kind: Schema.optional(Schema.String),
-      timerCustomEvents: Schema.optional(Schema.Array(CreativeCustomEvent)),
-      warnedValidationRules: Schema.optional(Schema.Array(Schema.String)),
-      detectedFeatures: Schema.optional(Schema.Array(Schema.String)),
-      assetIdentifier: Schema.optional(CreativeAssetId),
-      id: Schema.optional(Schema.String),
-      idDimensionValue: Schema.optional(DimensionValue),
-      exitCustomEvents: Schema.optional(Schema.Array(CreativeCustomEvent)),
-    }),
-  ).annotate({
-    identifier: "CreativeAssetMetadata",
-  }) as any as Schema.Schema<CreativeAssetMetadata>;
+export const CreativeAssetMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  counterCustomEvents: Schema.optional(Schema.Array(CreativeCustomEvent)),
+  clickTags: Schema.optional(Schema.Array(ClickTag)),
+  richMedia: Schema.optional(Schema.Boolean),
+  kind: Schema.optional(Schema.String),
+  timerCustomEvents: Schema.optional(Schema.Array(CreativeCustomEvent)),
+  warnedValidationRules: Schema.optional(Schema.Array(Schema.String)),
+  detectedFeatures: Schema.optional(Schema.Array(Schema.String)),
+  assetIdentifier: Schema.optional(CreativeAssetId),
+  id: Schema.optional(Schema.String),
+  idDimensionValue: Schema.optional(DimensionValue),
+  exitCustomEvents: Schema.optional(Schema.Array(CreativeCustomEvent)),
+}).annotate({ identifier: "CreativeAssetMetadata" });
 
 // ==========================================================================
 // Operations

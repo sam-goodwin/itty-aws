@@ -29,13 +29,10 @@ export interface TimeWindow {
   startTime?: string;
 }
 
-export const TimeWindow: Schema.Schema<TimeWindow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endTime: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "TimeWindow" }) as any as Schema.Schema<TimeWindow>;
+export const TimeWindow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  endTime: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "TimeWindow" });
 
 export interface RecurringTimeWindow {
   /** Required. The window representing the start and end time of recurrences. This field ignores the date components of the provided timestamps. Only the time of day and duration between start and end time are relevant. */
@@ -44,29 +41,19 @@ export interface RecurringTimeWindow {
   recurrence?: string;
 }
 
-export const RecurringTimeWindow: Schema.Schema<RecurringTimeWindow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      window: Schema.optional(TimeWindow),
-      recurrence: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RecurringTimeWindow",
-  }) as any as Schema.Schema<RecurringTimeWindow>;
+export const RecurringTimeWindow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  window: Schema.optional(TimeWindow),
+  recurrence: Schema.optional(Schema.String),
+}).annotate({ identifier: "RecurringTimeWindow" });
 
 export interface MonitoringConfig {
   /** Optional. Option to enable the instance v2 metrics for this instance. This field is supported only in CDF versions 6.11.1.1 and above. */
   enableInstanceV2Metrics?: boolean;
 }
 
-export const MonitoringConfig: Schema.Schema<MonitoringConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableInstanceV2Metrics: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "MonitoringConfig",
-  }) as any as Schema.Schema<MonitoringConfig>;
+export const MonitoringConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enableInstanceV2Metrics: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "MonitoringConfig" });
 
 export interface Expr {
   /** Textual representation of an expression in Common Expression Language syntax. */
@@ -79,15 +66,12 @@ export interface Expr {
   description?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expression: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Expr" }) as any as Schema.Schema<Expr>;
+export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  expression: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "Expr" });
 
 export interface Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
@@ -98,14 +82,11 @@ export interface Binding {
   condition?: Expr;
 }
 
-export const Binding: Schema.Schema<Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      members: Schema.optional(Schema.Array(Schema.String)),
-      role: Schema.optional(Schema.String),
-      condition: Schema.optional(Expr),
-    }),
-  ).annotate({ identifier: "Binding" }) as any as Schema.Schema<Binding>;
+export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  members: Schema.optional(Schema.Array(Schema.String)),
+  role: Schema.optional(Schema.String),
+  condition: Schema.optional(Expr),
+}).annotate({ identifier: "Binding" });
 
 export interface Version {
   /** Whether this is currently the default version for Cloud Data Fusion */
@@ -123,15 +104,12 @@ export interface Version {
     | (string & {});
 }
 
-export const Version: Schema.Schema<Version> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      defaultVersion: Schema.optional(Schema.Boolean),
-      versionNumber: Schema.optional(Schema.String),
-      availableFeatures: Schema.optional(Schema.Array(Schema.String)),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Version" }) as any as Schema.Schema<Version>;
+export const Version = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  defaultVersion: Schema.optional(Schema.Boolean),
+  versionNumber: Schema.optional(Schema.String),
+  availableFeatures: Schema.optional(Schema.Array(Schema.String)),
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "Version" });
 
 export interface ListAvailableVersionsResponse {
   /** Represents a list of all versions. */
@@ -142,30 +120,22 @@ export interface ListAvailableVersionsResponse {
   nextPageToken?: string;
 }
 
-export const ListAvailableVersionsResponse: Schema.Schema<ListAvailableVersionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      versions: Schema.optional(Schema.Array(Version)),
-      availableVersions: Schema.optional(Schema.Array(Version)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAvailableVersionsResponse",
-  }) as any as Schema.Schema<ListAvailableVersionsResponse>;
+export const ListAvailableVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    versions: Schema.optional(Schema.Array(Version)),
+    availableVersions: Schema.optional(Schema.Array(Version)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListAvailableVersionsResponse" });
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsResponse",
-  }) as any as Schema.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsResponse" });
 
 export interface AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
@@ -179,15 +149,10 @@ export interface AuditLogConfig {
     | (string & {});
 }
 
-export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
-      logType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AuditLogConfig",
-  }) as any as Schema.Schema<AuditLogConfig>;
+export const AuditLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
+  logType: Schema.optional(Schema.String),
+}).annotate({ identifier: "AuditLogConfig" });
 
 export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
@@ -196,15 +161,10 @@ export interface AuditConfig {
   auditLogConfigs?: Array<AuditLogConfig>;
 }
 
-export const AuditConfig: Schema.Schema<AuditConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      service: Schema.optional(Schema.String),
-      auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
-    }),
-  ).annotate({
-    identifier: "AuditConfig",
-  }) as any as Schema.Schema<AuditConfig>;
+export const AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  service: Schema.optional(Schema.String),
+  auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
+}).annotate({ identifier: "AuditConfig" });
 
 export interface Policy {
   /** Specifies cloud audit logging configuration for this policy. */
@@ -217,15 +177,12 @@ export interface Policy {
   version?: number;
 }
 
-export const Policy: Schema.Schema<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
-      etag: Schema.optional(Schema.String),
-      bindings: Schema.optional(Schema.Array(Binding)),
-      version: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Policy" }) as any as Schema.Schema<Policy>;
+export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
+  etag: Schema.optional(Schema.String),
+  bindings: Schema.optional(Schema.Array(Binding)),
+  version: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Policy" });
 
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -236,16 +193,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface IAMPolicy {
   /** Policy definition if IAM policy fetching is successful, otherwise empty. */
@@ -254,13 +208,10 @@ export interface IAMPolicy {
   status?: Status;
 }
 
-export const IAMPolicy: Schema.Schema<IAMPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policy: Schema.optional(Policy),
-      status: Schema.optional(Status),
-    }),
-  ).annotate({ identifier: "IAMPolicy" }) as any as Schema.Schema<IAMPolicy>;
+export const IAMPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policy: Schema.optional(Policy),
+  status: Schema.optional(Status),
+}).annotate({ identifier: "IAMPolicy" });
 
 export interface Namespace {
   /** Name of the given namespace. */
@@ -269,13 +220,10 @@ export interface Namespace {
   iamPolicy?: IAMPolicy;
 }
 
-export const Namespace: Schema.Schema<Namespace> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      iamPolicy: Schema.optional(IAMPolicy),
-    }),
-  ).annotate({ identifier: "Namespace" }) as any as Schema.Schema<Namespace>;
+export const Namespace = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  iamPolicy: Schema.optional(IAMPolicy),
+}).annotate({ identifier: "Namespace" });
 
 export interface EventPublishConfig {
   /** Required. The resource name of the Pub/Sub topic. Format: projects/{project_id}/topics/{topic_id} */
@@ -284,29 +232,19 @@ export interface EventPublishConfig {
   enabled?: boolean;
 }
 
-export const EventPublishConfig: Schema.Schema<EventPublishConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      topic: Schema.optional(Schema.String),
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "EventPublishConfig",
-  }) as any as Schema.Schema<EventPublishConfig>;
+export const EventPublishConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  topic: Schema.optional(Schema.String),
+  enabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "EventPublishConfig" });
 
 export interface CryptoKeyConfig {
   /** Optional. The name of the key which is used to encrypt/decrypt customer data. For key in Cloud KMS, the key should be in the format of `projects/* /locations/* /keyRings/* /cryptoKeys/*`. */
   keyReference?: string;
 }
 
-export const CryptoKeyConfig: Schema.Schema<CryptoKeyConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      keyReference: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CryptoKeyConfig",
-  }) as any as Schema.Schema<CryptoKeyConfig>;
+export const CryptoKeyConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  keyReference: Schema.optional(Schema.String),
+}).annotate({ identifier: "CryptoKeyConfig" });
 
 export interface LoggingConfig {
   /** Optional. Option to determine whether instance logs should be written to Cloud Logging. By default, instance logs are written to Cloud Logging. */
@@ -315,15 +253,10 @@ export interface LoggingConfig {
   enableInstanceV2Logs?: boolean;
 }
 
-export const LoggingConfig: Schema.Schema<LoggingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      instanceCloudLoggingDisabled: Schema.optional(Schema.Boolean),
-      enableInstanceV2Logs: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "LoggingConfig",
-  }) as any as Schema.Schema<LoggingConfig>;
+export const LoggingConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  instanceCloudLoggingDisabled: Schema.optional(Schema.Boolean),
+  enableInstanceV2Logs: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "LoggingConfig" });
 
 export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
@@ -338,16 +271,13 @@ export interface Operation {
   name?: string;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      error: Schema.optional(Status),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  error: Schema.optional(Status),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  done: Schema.optional(Schema.Boolean),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Operation" });
 
 export interface PrivateServiceConnectConfig {
   /** Required. The reference to the network attachment used to establish private connectivity. It will be of the form projects/{project-id}/regions/{region}/networkAttachments/{network-attachment-id}. */
@@ -358,16 +288,12 @@ export interface PrivateServiceConnectConfig {
   unreachableCidrBlock?: string;
 }
 
-export const PrivateServiceConnectConfig: Schema.Schema<PrivateServiceConnectConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      networkAttachment: Schema.optional(Schema.String),
-      effectiveUnreachableCidrBlock: Schema.optional(Schema.String),
-      unreachableCidrBlock: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PrivateServiceConnectConfig",
-  }) as any as Schema.Schema<PrivateServiceConnectConfig>;
+export const PrivateServiceConnectConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    networkAttachment: Schema.optional(Schema.String),
+    effectiveUnreachableCidrBlock: Schema.optional(Schema.String),
+    unreachableCidrBlock: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PrivateServiceConnectConfig" });
 
 export interface NetworkConfig {
   /** Optional. Name of the network in the customer project with which the Tenant Project will be peered for executing pipelines. In case of shared VPC where the network resides in another host project the network should specified in the form of projects/{host-project-id}/global/networks/{network}. This is only required for connectivity type VPC_PEERING. */
@@ -384,31 +310,21 @@ export interface NetworkConfig {
   ipAllocation?: string;
 }
 
-export const NetworkConfig: Schema.Schema<NetworkConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      network: Schema.optional(Schema.String),
-      privateServiceConnectConfig: Schema.optional(PrivateServiceConnectConfig),
-      connectionType: Schema.optional(Schema.String),
-      ipAllocation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NetworkConfig",
-  }) as any as Schema.Schema<NetworkConfig>;
+export const NetworkConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  network: Schema.optional(Schema.String),
+  privateServiceConnectConfig: Schema.optional(PrivateServiceConnectConfig),
+  connectionType: Schema.optional(Schema.String),
+  ipAllocation: Schema.optional(Schema.String),
+}).annotate({ identifier: "NetworkConfig" });
 
 export interface MaintenanceWindow {
   /** Required. The recurring time window of the maintenance window. */
   recurringTimeWindow?: RecurringTimeWindow;
 }
 
-export const MaintenanceWindow: Schema.Schema<MaintenanceWindow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      recurringTimeWindow: Schema.optional(RecurringTimeWindow),
-    }),
-  ).annotate({
-    identifier: "MaintenanceWindow",
-  }) as any as Schema.Schema<MaintenanceWindow>;
+export const MaintenanceWindow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  recurringTimeWindow: Schema.optional(RecurringTimeWindow),
+}).annotate({ identifier: "MaintenanceWindow" });
 
 export interface MaintenancePolicy {
   /** Optional. The maintenance window of the instance. */
@@ -417,15 +333,10 @@ export interface MaintenancePolicy {
   maintenanceExclusionWindow?: TimeWindow;
 }
 
-export const MaintenancePolicy: Schema.Schema<MaintenancePolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      maintenanceWindow: Schema.optional(MaintenanceWindow),
-      maintenanceExclusionWindow: Schema.optional(TimeWindow),
-    }),
-  ).annotate({
-    identifier: "MaintenancePolicy",
-  }) as any as Schema.Schema<MaintenancePolicy>;
+export const MaintenancePolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  maintenanceWindow: Schema.optional(MaintenanceWindow),
+  maintenanceExclusionWindow: Schema.optional(TimeWindow),
+}).annotate({ identifier: "MaintenancePolicy" });
 
 export interface MaintenanceEvent {
   /** Output only. The end time of the maintenance event provided in [RFC 3339](https://www.ietf.org/rfc/rfc3339.txt) format. Example: "2024-01-02T12:04:06-06:00" This field will be empty if the maintenance event is not yet complete. */
@@ -441,16 +352,11 @@ export interface MaintenanceEvent {
     | (string & {});
 }
 
-export const MaintenanceEvent: Schema.Schema<MaintenanceEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endTime: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MaintenanceEvent",
-  }) as any as Schema.Schema<MaintenanceEvent>;
+export const MaintenanceEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  endTime: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+}).annotate({ identifier: "MaintenanceEvent" });
 
 export interface Accelerator {
   /** Output only. The state of the accelerator. */
@@ -470,15 +376,10 @@ export interface Accelerator {
     | (string & {});
 }
 
-export const Accelerator: Schema.Schema<Accelerator> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      acceleratorType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Accelerator",
-  }) as any as Schema.Schema<Accelerator>;
+export const Accelerator = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.String),
+  acceleratorType: Schema.optional(Schema.String),
+}).annotate({ identifier: "Accelerator" });
 
 export interface Instance {
   /** The resource labels for instance to use to annotate any related underlying resources such as Compute Engine VMs. The character '=' is not allowed to be used within the labels. */
@@ -586,51 +487,48 @@ export interface Instance {
   apiEndpoint?: string;
 }
 
-export const Instance: Schema.Schema<Instance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      options: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      disabledReason: Schema.optional(Schema.Array(Schema.String)),
-      networkConfig: Schema.optional(NetworkConfig),
-      cryptoKeyConfig: Schema.optional(CryptoKeyConfig),
-      tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      patchRevision: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      enableStackdriverMonitoring: Schema.optional(Schema.Boolean),
-      loggingConfig: Schema.optional(LoggingConfig),
-      eventPublishConfig: Schema.optional(EventPublishConfig),
-      dataplexDataLineageIntegrationEnabled: Schema.optional(Schema.Boolean),
-      maintenancePolicy: Schema.optional(MaintenancePolicy),
-      serviceEndpoint: Schema.optional(Schema.String),
-      satisfiesPzs: Schema.optional(Schema.Boolean),
-      workforceIdentityServiceEndpoint: Schema.optional(Schema.String),
-      maintenanceEvents: Schema.optional(Schema.Array(MaintenanceEvent)),
-      enableRbac: Schema.optional(Schema.Boolean),
-      privateInstance: Schema.optional(Schema.Boolean),
-      monitoringConfig: Schema.optional(MonitoringConfig),
-      createTime: Schema.optional(Schema.String),
-      gcsBucket: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-      serviceAccount: Schema.optional(Schema.String),
-      enableZoneSeparation: Schema.optional(Schema.Boolean),
-      stateMessage: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      tenantProjectId: Schema.optional(Schema.String),
-      satisfiesPzi: Schema.optional(Schema.Boolean),
-      p4ServiceAccount: Schema.optional(Schema.String),
-      enableStackdriverLogging: Schema.optional(Schema.Boolean),
-      dataprocServiceAccount: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      availableVersion: Schema.optional(Schema.Array(Version)),
-      description: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      accelerators: Schema.optional(Schema.Array(Accelerator)),
-      zone: Schema.optional(Schema.String),
-      apiEndpoint: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Instance" }) as any as Schema.Schema<Instance>;
+export const Instance = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  options: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  disabledReason: Schema.optional(Schema.Array(Schema.String)),
+  networkConfig: Schema.optional(NetworkConfig),
+  cryptoKeyConfig: Schema.optional(CryptoKeyConfig),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  patchRevision: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  enableStackdriverMonitoring: Schema.optional(Schema.Boolean),
+  loggingConfig: Schema.optional(LoggingConfig),
+  eventPublishConfig: Schema.optional(EventPublishConfig),
+  dataplexDataLineageIntegrationEnabled: Schema.optional(Schema.Boolean),
+  maintenancePolicy: Schema.optional(MaintenancePolicy),
+  serviceEndpoint: Schema.optional(Schema.String),
+  satisfiesPzs: Schema.optional(Schema.Boolean),
+  workforceIdentityServiceEndpoint: Schema.optional(Schema.String),
+  maintenanceEvents: Schema.optional(Schema.Array(MaintenanceEvent)),
+  enableRbac: Schema.optional(Schema.Boolean),
+  privateInstance: Schema.optional(Schema.Boolean),
+  monitoringConfig: Schema.optional(MonitoringConfig),
+  createTime: Schema.optional(Schema.String),
+  gcsBucket: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+  serviceAccount: Schema.optional(Schema.String),
+  enableZoneSeparation: Schema.optional(Schema.Boolean),
+  stateMessage: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  tenantProjectId: Schema.optional(Schema.String),
+  satisfiesPzi: Schema.optional(Schema.Boolean),
+  p4ServiceAccount: Schema.optional(Schema.String),
+  enableStackdriverLogging: Schema.optional(Schema.Boolean),
+  dataprocServiceAccount: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  availableVersion: Schema.optional(Schema.Array(Version)),
+  description: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  accelerators: Schema.optional(Schema.Array(Accelerator)),
+  zone: Schema.optional(Schema.String),
+  apiEndpoint: Schema.optional(Schema.String),
+}).annotate({ identifier: "Instance" });
 
 export interface ListInstancesResponse {
   /** Represents a list of Data Fusion instances. */
@@ -641,30 +539,23 @@ export interface ListInstancesResponse {
   unreachable?: Array<string>;
 }
 
-export const ListInstancesResponse: Schema.Schema<ListInstancesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      instances: Schema.optional(Schema.Array(Instance)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListInstancesResponse",
-  }) as any as Schema.Schema<ListInstancesResponse>;
+export const ListInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  instances: Schema.optional(Schema.Array(Instance)),
+  nextPageToken: Schema.optional(Schema.String),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ListInstancesResponse" });
 
 export interface UpgradeInstanceRequest {}
 
-export const UpgradeInstanceRequest: Schema.Schema<UpgradeInstanceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "UpgradeInstanceRequest",
-  }) as any as Schema.Schema<UpgradeInstanceRequest>;
+export const UpgradeInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "UpgradeInstanceRequest" });
 
 export interface RemoveIamPolicyRequest {}
 
-export const RemoveIamPolicyRequest: Schema.Schema<RemoveIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "RemoveIamPolicyRequest",
-  }) as any as Schema.Schema<RemoveIamPolicyRequest>;
+export const RemoveIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "RemoveIamPolicyRequest" });
 
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
@@ -673,22 +564,16 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policy: Schema.optional(Policy),
-      updateMask: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SetIamPolicyRequest",
-  }) as any as Schema.Schema<SetIamPolicyRequest>;
+export const SetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policy: Schema.optional(Policy),
+  updateMask: Schema.optional(Schema.String),
+}).annotate({ identifier: "SetIamPolicyRequest" });
 
 export interface RestartInstanceRequest {}
 
-export const RestartInstanceRequest: Schema.Schema<RestartInstanceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "RestartInstanceRequest",
-  }) as any as Schema.Schema<RestartInstanceRequest>;
+export const RestartInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "RestartInstanceRequest" });
 
 export interface Location {
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
@@ -703,16 +588,13 @@ export interface Location {
   metadata?: Record<string, unknown>;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      locationId: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  locationId: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Location" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -721,15 +603,10 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(Location)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface OperationMetadata {
   /** Map to hold any additional status info for the operation If there is an accelerator being enabled/disabled/deleted, this will be populated with accelerator name as key and status as ENABLING, DISABLING or DELETING */
@@ -750,23 +627,18 @@ export interface OperationMetadata {
   verb?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      additionalStatus: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      endTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      statusDetail: Schema.optional(Schema.String),
-      apiVersion: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      createTime: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  additionalStatus: Schema.optional(
+    Schema.Record(Schema.String, Schema.String),
+  ),
+  endTime: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  statusDetail: Schema.optional(Schema.String),
+  apiVersion: Schema.optional(Schema.String),
+  requestedCancellation: Schema.optional(Schema.Boolean),
+  createTime: Schema.optional(Schema.String),
+  verb: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationMetadata" });
 
 export interface DnsPeering {
   /** Required. The dns name suffix of the zone. */
@@ -781,16 +653,13 @@ export interface DnsPeering {
   name?: string;
 }
 
-export const DnsPeering: Schema.Schema<DnsPeering> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      domain: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      targetProject: Schema.optional(Schema.String),
-      targetNetwork: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "DnsPeering" }) as any as Schema.Schema<DnsPeering>;
+export const DnsPeering = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  domain: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  targetProject: Schema.optional(Schema.String),
+  targetNetwork: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "DnsPeering" });
 
 export interface ListOperationsResponse {
   /** The standard List next-page token. */
@@ -801,23 +670,19 @@ export interface ListOperationsResponse {
   operations?: Array<Operation>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      operations: Schema.optional(Schema.Array(Operation)),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    operations: Schema.optional(Schema.Array(Operation)),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface ListNamespacesResponse {
   /** Token to retrieve the next page of results or empty if there are no more results in the list. */
@@ -826,15 +691,12 @@ export interface ListNamespacesResponse {
   namespaces?: Array<Namespace>;
 }
 
-export const ListNamespacesResponse: Schema.Schema<ListNamespacesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      namespaces: Schema.optional(Schema.Array(Namespace)),
-    }),
-  ).annotate({
-    identifier: "ListNamespacesResponse",
-  }) as any as Schema.Schema<ListNamespacesResponse>;
+export const ListNamespacesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    nextPageToken: Schema.optional(Schema.String),
+    namespaces: Schema.optional(Schema.Array(Namespace)),
+  },
+).annotate({ identifier: "ListNamespacesResponse" });
 
 export interface ListDnsPeeringsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -843,43 +705,34 @@ export interface ListDnsPeeringsResponse {
   dnsPeerings?: Array<DnsPeering>;
 }
 
-export const ListDnsPeeringsResponse: Schema.Schema<ListDnsPeeringsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      dnsPeerings: Schema.optional(Schema.Array(DnsPeering)),
-    }),
-  ).annotate({
-    identifier: "ListDnsPeeringsResponse",
-  }) as any as Schema.Schema<ListDnsPeeringsResponse>;
+export const ListDnsPeeringsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    dnsPeerings: Schema.optional(Schema.Array(DnsPeering)),
+  }).annotate({ identifier: "ListDnsPeeringsResponse" });
 
 export interface RemoveIamPolicyResponse {}
 
-export const RemoveIamPolicyResponse: Schema.Schema<RemoveIamPolicyResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const RemoveIamPolicyResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RemoveIamPolicyResponse",
-  }) as any as Schema.Schema<RemoveIamPolicyResponse>;
+  });
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelOperationRequest",
-  }) as any as Schema.Schema<CancelOperationRequest>;
+export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelOperationRequest" });
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsRequest",
-  }) as any as Schema.Schema<TestIamPermissionsRequest>;
+export const TestIamPermissionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsRequest" });
 
 // ==========================================================================
 // Operations

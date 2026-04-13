@@ -27,28 +27,21 @@ export interface V2ServerKeyRestrictions {
   allowedIps?: Array<string>;
 }
 
-export const V2ServerKeyRestrictions: Schema.Schema<V2ServerKeyRestrictions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      allowedIps: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "V2ServerKeyRestrictions",
-  }) as any as Schema.Schema<V2ServerKeyRestrictions>;
+export const V2ServerKeyRestrictions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allowedIps: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "V2ServerKeyRestrictions" });
 
 export interface V2GetKeyStringResponse {
   /** An encrypted and signed value of the key. */
   keyString?: string;
 }
 
-export const V2GetKeyStringResponse: Schema.Schema<V2GetKeyStringResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      keyString: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "V2GetKeyStringResponse",
-  }) as any as Schema.Schema<V2GetKeyStringResponse>;
+export const V2GetKeyStringResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    keyString: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "V2GetKeyStringResponse" });
 
 export interface V2ApiTarget {
   /** The service for this restriction. It should be the canonical service name, for example: `translate.googleapis.com`. You can use [`gcloud services list`](https://cloud.google.com/sdk/gcloud/reference/services/list) to get a list of services that are enabled in the project. */
@@ -57,29 +50,20 @@ export interface V2ApiTarget {
   methods?: Array<string>;
 }
 
-export const V2ApiTarget: Schema.Schema<V2ApiTarget> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      service: Schema.optional(Schema.String),
-      methods: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "V2ApiTarget",
-  }) as any as Schema.Schema<V2ApiTarget>;
+export const V2ApiTarget = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  service: Schema.optional(Schema.String),
+  methods: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "V2ApiTarget" });
 
 export interface V2BrowserKeyRestrictions {
   /** A list of regular expressions for the referrer URLs that are allowed to make API calls with this key. */
   allowedReferrers?: Array<string>;
 }
 
-export const V2BrowserKeyRestrictions: Schema.Schema<V2BrowserKeyRestrictions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      allowedReferrers: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "V2BrowserKeyRestrictions",
-  }) as any as Schema.Schema<V2BrowserKeyRestrictions>;
+export const V2BrowserKeyRestrictions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allowedReferrers: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "V2BrowserKeyRestrictions" });
 
 export interface V2AndroidApplication {
   /** The SHA1 fingerprint of the application. For example, both sha1 formats are acceptable : DA:39:A3:EE:5E:6B:4B:0D:32:55:BF:EF:95:60:18:90:AF:D8:07:09 or DA39A3EE5E6B4B0D3255BFEF95601890AFD80709. Output format is the latter. */
@@ -88,43 +72,29 @@ export interface V2AndroidApplication {
   packageName?: string;
 }
 
-export const V2AndroidApplication: Schema.Schema<V2AndroidApplication> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sha1Fingerprint: Schema.optional(Schema.String),
-      packageName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "V2AndroidApplication",
-  }) as any as Schema.Schema<V2AndroidApplication>;
+export const V2AndroidApplication = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sha1Fingerprint: Schema.optional(Schema.String),
+  packageName: Schema.optional(Schema.String),
+}).annotate({ identifier: "V2AndroidApplication" });
 
 export interface V2AndroidKeyRestrictions {
   /** A list of Android applications that are allowed to make API calls with this key. */
   allowedApplications?: Array<V2AndroidApplication>;
 }
 
-export const V2AndroidKeyRestrictions: Schema.Schema<V2AndroidKeyRestrictions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      allowedApplications: Schema.optional(Schema.Array(V2AndroidApplication)),
-    }),
-  ).annotate({
-    identifier: "V2AndroidKeyRestrictions",
-  }) as any as Schema.Schema<V2AndroidKeyRestrictions>;
+export const V2AndroidKeyRestrictions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allowedApplications: Schema.optional(Schema.Array(V2AndroidApplication)),
+  }).annotate({ identifier: "V2AndroidKeyRestrictions" });
 
 export interface V2IosKeyRestrictions {
   /** A list of bundle IDs that are allowed when making API calls with this key. */
   allowedBundleIds?: Array<string>;
 }
 
-export const V2IosKeyRestrictions: Schema.Schema<V2IosKeyRestrictions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      allowedBundleIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "V2IosKeyRestrictions",
-  }) as any as Schema.Schema<V2IosKeyRestrictions>;
+export const V2IosKeyRestrictions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  allowedBundleIds: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "V2IosKeyRestrictions" });
 
 export interface V2Restrictions {
   /** The IP addresses of callers that are allowed to use the key. */
@@ -139,18 +109,13 @@ export interface V2Restrictions {
   iosKeyRestrictions?: V2IosKeyRestrictions;
 }
 
-export const V2Restrictions: Schema.Schema<V2Restrictions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serverKeyRestrictions: Schema.optional(V2ServerKeyRestrictions),
-      apiTargets: Schema.optional(Schema.Array(V2ApiTarget)),
-      browserKeyRestrictions: Schema.optional(V2BrowserKeyRestrictions),
-      androidKeyRestrictions: Schema.optional(V2AndroidKeyRestrictions),
-      iosKeyRestrictions: Schema.optional(V2IosKeyRestrictions),
-    }),
-  ).annotate({
-    identifier: "V2Restrictions",
-  }) as any as Schema.Schema<V2Restrictions>;
+export const V2Restrictions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  serverKeyRestrictions: Schema.optional(V2ServerKeyRestrictions),
+  apiTargets: Schema.optional(Schema.Array(V2ApiTarget)),
+  browserKeyRestrictions: Schema.optional(V2BrowserKeyRestrictions),
+  androidKeyRestrictions: Schema.optional(V2AndroidKeyRestrictions),
+  iosKeyRestrictions: Schema.optional(V2IosKeyRestrictions),
+}).annotate({ identifier: "V2Restrictions" });
 
 export interface V2Key {
   /** Output only. Unique id in UUID4 format. */
@@ -177,22 +142,19 @@ export interface V2Key {
   createTime?: string;
 }
 
-export const V2Key: Schema.Schema<V2Key> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uid: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      name: Schema.optional(Schema.String),
-      keyString: Schema.optional(Schema.String),
-      restrictions: Schema.optional(V2Restrictions),
-      serviceAccountEmail: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      deleteTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "V2Key" }) as any as Schema.Schema<V2Key>;
+export const V2Key = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  uid: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  name: Schema.optional(Schema.String),
+  keyString: Schema.optional(Schema.String),
+  restrictions: Schema.optional(V2Restrictions),
+  serviceAccountEmail: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  deleteTime: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "V2Key" });
 
 export interface V2ListKeysResponse {
   /** A list of API keys. */
@@ -201,15 +163,10 @@ export interface V2ListKeysResponse {
   nextPageToken?: string;
 }
 
-export const V2ListKeysResponse: Schema.Schema<V2ListKeysResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      keys: Schema.optional(Schema.Array(V2Key)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "V2ListKeysResponse",
-  }) as any as Schema.Schema<V2ListKeysResponse>;
+export const V2ListKeysResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  keys: Schema.optional(Schema.Array(V2Key)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "V2ListKeysResponse" });
 
 export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -220,16 +177,13 @@ export interface Status {
   code?: number;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      code: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  code: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Status" });
 
 export interface V2LookupKeyResponse {
   /** The project that owns the key with the value specified in the request. */
@@ -238,15 +192,10 @@ export interface V2LookupKeyResponse {
   name?: string;
 }
 
-export const V2LookupKeyResponse: Schema.Schema<V2LookupKeyResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parent: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "V2LookupKeyResponse",
-  }) as any as Schema.Schema<V2LookupKeyResponse>;
+export const V2LookupKeyResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  parent: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "V2LookupKeyResponse" });
 
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -261,23 +210,19 @@ export interface Operation {
   error?: Status;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      error: Schema.optional(Status),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  done: Schema.optional(Schema.Boolean),
+  error: Schema.optional(Status),
+}).annotate({ identifier: "Operation" });
 
 export interface V2UndeleteKeyRequest {}
 
-export const V2UndeleteKeyRequest: Schema.Schema<V2UndeleteKeyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "V2UndeleteKeyRequest",
-  }) as any as Schema.Schema<V2UndeleteKeyRequest>;
+export const V2UndeleteKeyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "V2UndeleteKeyRequest" });
 
 // ==========================================================================
 // Operations

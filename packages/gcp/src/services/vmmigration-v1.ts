@@ -31,16 +31,13 @@ export interface Status {
   code?: number;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      message: Schema.optional(Schema.String),
-      code: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  message: Schema.optional(Schema.String),
+  code: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Status" });
 
 export interface UpgradeStatus {
   /** Output only. Provides details on the state of the upgrade operation in case of an error. */
@@ -60,18 +57,13 @@ export interface UpgradeStatus {
   version?: string;
 }
 
-export const UpgradeStatus: Schema.Schema<UpgradeStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      error: Schema.optional(Status),
-      startTime: Schema.optional(Schema.String),
-      previousVersion: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpgradeStatus",
-  }) as any as Schema.Schema<UpgradeStatus>;
+export const UpgradeStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  error: Schema.optional(Status),
+  startTime: Schema.optional(Schema.String),
+  previousVersion: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+}).annotate({ identifier: "UpgradeStatus" });
 
 export interface ApplianceVersion {
   /** The appliance version. */
@@ -84,17 +76,12 @@ export interface ApplianceVersion {
   uri?: string;
 }
 
-export const ApplianceVersion: Schema.Schema<ApplianceVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.String),
-      releaseNotesUri: Schema.optional(Schema.String),
-      critical: Schema.optional(Schema.Boolean),
-      uri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ApplianceVersion",
-  }) as any as Schema.Schema<ApplianceVersion>;
+export const ApplianceVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.String),
+  releaseNotesUri: Schema.optional(Schema.String),
+  critical: Schema.optional(Schema.Boolean),
+  uri: Schema.optional(Schema.String),
+}).annotate({ identifier: "ApplianceVersion" });
 
 export interface AvailableUpdates {
   /** The latest version for in place update. The current appliance can be updated to this version using the API or m4c CLI. */
@@ -103,15 +90,10 @@ export interface AvailableUpdates {
   newDeployableAppliance?: ApplianceVersion;
 }
 
-export const AvailableUpdates: Schema.Schema<AvailableUpdates> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inPlaceUpdate: Schema.optional(ApplianceVersion),
-      newDeployableAppliance: Schema.optional(ApplianceVersion),
-    }),
-  ).annotate({
-    identifier: "AvailableUpdates",
-  }) as any as Schema.Schema<AvailableUpdates>;
+export const AvailableUpdates = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  inPlaceUpdate: Schema.optional(ApplianceVersion),
+  newDeployableAppliance: Schema.optional(ApplianceVersion),
+}).annotate({ identifier: "AvailableUpdates" });
 
 export interface DatacenterConnector {
   /** Output only. State of the DatacenterConnector, as determined by the health checks. */
@@ -150,46 +132,38 @@ export interface DatacenterConnector {
   bucket?: string;
 }
 
-export const DatacenterConnector: Schema.Schema<DatacenterConnector> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      upgradeStatus: Schema.optional(UpgradeStatus),
-      error: Schema.optional(Status),
-      createTime: Schema.optional(Schema.String),
-      applianceSoftwareVersion: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      stateTime: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-      serviceAccount: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      applianceInfrastructureVersion: Schema.optional(Schema.String),
-      availableVersions: Schema.optional(AvailableUpdates),
-      registrationId: Schema.optional(Schema.String),
-      bucket: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DatacenterConnector",
-  }) as any as Schema.Schema<DatacenterConnector>;
+export const DatacenterConnector = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.String),
+  upgradeStatus: Schema.optional(UpgradeStatus),
+  error: Schema.optional(Status),
+  createTime: Schema.optional(Schema.String),
+  applianceSoftwareVersion: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  stateTime: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+  serviceAccount: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  applianceInfrastructureVersion: Schema.optional(Schema.String),
+  availableVersions: Schema.optional(AvailableUpdates),
+  registrationId: Schema.optional(Schema.String),
+  bucket: Schema.optional(Schema.String),
+}).annotate({ identifier: "DatacenterConnector" });
 
 export interface CancelImageImportJobRequest {}
 
-export const CancelImageImportJobRequest: Schema.Schema<CancelImageImportJobRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const CancelImageImportJobRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelImageImportJobRequest",
-  }) as any as Schema.Schema<CancelImageImportJobRequest>;
+  });
 
 export interface Encryption {
   /** Required. The name of the encryption key that is stored in Google Cloud KMS. */
   kmsKey?: string;
 }
 
-export const Encryption: Schema.Schema<Encryption> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kmsKey: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Encryption" }) as any as Schema.Schema<Encryption>;
+export const Encryption = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kmsKey: Schema.optional(Schema.String),
+}).annotate({ identifier: "Encryption" });
 
 export interface ComputeEngineDisk {
   /** Required. The Compute Engine zone in which to create the disk. Should be of the form: projects/{target-project}/locations/{zone} */
@@ -209,17 +183,12 @@ export interface ComputeEngineDisk {
   replicaZones?: Array<string>;
 }
 
-export const ComputeEngineDisk: Schema.Schema<ComputeEngineDisk> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      zone: Schema.optional(Schema.String),
-      diskId: Schema.optional(Schema.String),
-      diskType: Schema.optional(Schema.String),
-      replicaZones: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ComputeEngineDisk",
-  }) as any as Schema.Schema<ComputeEngineDisk>;
+export const ComputeEngineDisk = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  zone: Schema.optional(Schema.String),
+  diskId: Schema.optional(Schema.String),
+  diskType: Schema.optional(Schema.String),
+  replicaZones: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ComputeEngineDisk" });
 
 export interface DiskMigrationJobTargetDetails {
   /** Optional. The encryption to apply to the disk. If the DiskMigrationJob parent Source resource has an encryption, this field must be set to the same encryption key. */
@@ -232,17 +201,13 @@ export interface DiskMigrationJobTargetDetails {
   targetProject?: string;
 }
 
-export const DiskMigrationJobTargetDetails: Schema.Schema<DiskMigrationJobTargetDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      encryption: Schema.optional(Encryption),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      targetDisk: Schema.optional(ComputeEngineDisk),
-      targetProject: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DiskMigrationJobTargetDetails",
-  }) as any as Schema.Schema<DiskMigrationJobTargetDetails>;
+export const DiskMigrationJobTargetDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    encryption: Schema.optional(Encryption),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    targetDisk: Schema.optional(ComputeEngineDisk),
+    targetProject: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DiskMigrationJobTargetDetails" });
 
 export interface AwsSourceDiskDetails {
   /** Output only. Size in GiB. */
@@ -264,38 +229,33 @@ export interface AwsSourceDiskDetails {
   volumeId?: string;
 }
 
-export const AwsSourceDiskDetails: Schema.Schema<AwsSourceDiskDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sizeGib: Schema.optional(Schema.String),
-      diskType: Schema.optional(Schema.String),
-      tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      volumeId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AwsSourceDiskDetails",
-  }) as any as Schema.Schema<AwsSourceDiskDetails>;
+export const AwsSourceDiskDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sizeGib: Schema.optional(Schema.String),
+  diskType: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  volumeId: Schema.optional(Schema.String),
+}).annotate({ identifier: "AwsSourceDiskDetails" });
 
 export interface CopyingSourceDiskSnapshotStep {}
 
-export const CopyingSourceDiskSnapshotStep: Schema.Schema<CopyingSourceDiskSnapshotStep> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const CopyingSourceDiskSnapshotStep =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CopyingSourceDiskSnapshotStep",
-  }) as any as Schema.Schema<CopyingSourceDiskSnapshotStep>;
+  });
 
 export interface ProvisioningTargetDiskStep {}
 
-export const ProvisioningTargetDiskStep: Schema.Schema<ProvisioningTargetDiskStep> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const ProvisioningTargetDiskStep =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ProvisioningTargetDiskStep",
-  }) as any as Schema.Schema<ProvisioningTargetDiskStep>;
+  });
 
 export interface CreatingSourceDiskSnapshotStep {}
 
-export const CreatingSourceDiskSnapshotStep: Schema.Schema<CreatingSourceDiskSnapshotStep> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const CreatingSourceDiskSnapshotStep =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CreatingSourceDiskSnapshotStep",
-  }) as any as Schema.Schema<CreatingSourceDiskSnapshotStep>;
+  });
 
 export interface DiskMigrationStep {
   /** Copying source disk snapshot step. */
@@ -310,20 +270,13 @@ export interface DiskMigrationStep {
   startTime?: string;
 }
 
-export const DiskMigrationStep: Schema.Schema<DiskMigrationStep> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      copyingSourceDiskSnapshot: Schema.optional(CopyingSourceDiskSnapshotStep),
-      provisioningTargetDisk: Schema.optional(ProvisioningTargetDiskStep),
-      endTime: Schema.optional(Schema.String),
-      creatingSourceDiskSnapshot: Schema.optional(
-        CreatingSourceDiskSnapshotStep,
-      ),
-      startTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DiskMigrationStep",
-  }) as any as Schema.Schema<DiskMigrationStep>;
+export const DiskMigrationStep = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  copyingSourceDiskSnapshot: Schema.optional(CopyingSourceDiskSnapshotStep),
+  provisioningTargetDisk: Schema.optional(ProvisioningTargetDiskStep),
+  endTime: Schema.optional(Schema.String),
+  creatingSourceDiskSnapshot: Schema.optional(CreatingSourceDiskSnapshotStep),
+  startTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "DiskMigrationStep" });
 
 export interface DiskMigrationJob {
   /** Required. Details of the target Disk in Compute Engine. */
@@ -352,28 +305,22 @@ export interface DiskMigrationJob {
   steps?: Array<DiskMigrationStep>;
 }
 
-export const DiskMigrationJob: Schema.Schema<DiskMigrationJob> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetDetails: Schema.optional(DiskMigrationJobTargetDetails),
-      errors: Schema.optional(Schema.Array(Status)),
-      name: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      awsSourceDiskDetails: Schema.optional(AwsSourceDiskDetails),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      steps: Schema.optional(Schema.Array(DiskMigrationStep)),
-    }),
-  ).annotate({
-    identifier: "DiskMigrationJob",
-  }) as any as Schema.Schema<DiskMigrationJob>;
+export const DiskMigrationJob = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  targetDetails: Schema.optional(DiskMigrationJobTargetDetails),
+  errors: Schema.optional(Schema.Array(Status)),
+  name: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  awsSourceDiskDetails: Schema.optional(AwsSourceDiskDetails),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  steps: Schema.optional(Schema.Array(DiskMigrationStep)),
+}).annotate({ identifier: "DiskMigrationJob" });
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelOperationRequest",
-  }) as any as Schema.Schema<CancelOperationRequest>;
+export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelOperationRequest" });
 
 export interface AwsSecurityGroup {
   /** The AWS security group name. */
@@ -382,15 +329,10 @@ export interface AwsSecurityGroup {
   id?: string;
 }
 
-export const AwsSecurityGroup: Schema.Schema<AwsSecurityGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AwsSecurityGroup",
-  }) as any as Schema.Schema<AwsSecurityGroup>;
+export const AwsSecurityGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+}).annotate({ identifier: "AwsSecurityGroup" });
 
 export interface AwsVmDetails {
   /** The AWS zone of the VM. */
@@ -449,46 +391,36 @@ export interface AwsVmDetails {
   tags?: Record<string, string>;
 }
 
-export const AwsVmDetails: Schema.Schema<AwsVmDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      zone: Schema.optional(Schema.String),
-      diskCount: Schema.optional(Schema.Number),
-      vcpuCount: Schema.optional(Schema.Number),
-      sourceId: Schema.optional(Schema.String),
-      vpcId: Schema.optional(Schema.String),
-      bootOption: Schema.optional(Schema.String),
-      memoryMb: Schema.optional(Schema.Number),
-      displayName: Schema.optional(Schema.String),
-      sourceDescription: Schema.optional(Schema.String),
-      powerState: Schema.optional(Schema.String),
-      cpuCount: Schema.optional(Schema.Number),
-      virtualizationType: Schema.optional(Schema.String),
-      architecture: Schema.optional(Schema.String),
-      instanceType: Schema.optional(Schema.String),
-      osDescription: Schema.optional(Schema.String),
-      vmId: Schema.optional(Schema.String),
-      committedStorageMb: Schema.optional(Schema.String),
-      securityGroups: Schema.optional(Schema.Array(AwsSecurityGroup)),
-      tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AwsVmDetails",
-  }) as any as Schema.Schema<AwsVmDetails>;
+export const AwsVmDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  zone: Schema.optional(Schema.String),
+  diskCount: Schema.optional(Schema.Number),
+  vcpuCount: Schema.optional(Schema.Number),
+  sourceId: Schema.optional(Schema.String),
+  vpcId: Schema.optional(Schema.String),
+  bootOption: Schema.optional(Schema.String),
+  memoryMb: Schema.optional(Schema.Number),
+  displayName: Schema.optional(Schema.String),
+  sourceDescription: Schema.optional(Schema.String),
+  powerState: Schema.optional(Schema.String),
+  cpuCount: Schema.optional(Schema.Number),
+  virtualizationType: Schema.optional(Schema.String),
+  architecture: Schema.optional(Schema.String),
+  instanceType: Schema.optional(Schema.String),
+  osDescription: Schema.optional(Schema.String),
+  vmId: Schema.optional(Schema.String),
+  committedStorageMb: Schema.optional(Schema.String),
+  securityGroups: Schema.optional(Schema.Array(AwsSecurityGroup)),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "AwsVmDetails" });
 
 export interface AwsVmsDetails {
   /** The details of the AWS VMs. */
   details?: Array<AwsVmDetails>;
 }
 
-export const AwsVmsDetails: Schema.Schema<AwsVmsDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      details: Schema.optional(Schema.Array(AwsVmDetails)),
-    }),
-  ).annotate({
-    identifier: "AwsVmsDetails",
-  }) as any as Schema.Schema<AwsVmsDetails>;
+export const AwsVmsDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  details: Schema.optional(Schema.Array(AwsVmDetails)),
+}).annotate({ identifier: "AwsVmsDetails" });
 
 export interface LocalizedMessage {
   /** The locale used following the specification defined at https://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: "en-US", "fr-CH", "es-MX" */
@@ -497,15 +429,10 @@ export interface LocalizedMessage {
   message?: string;
 }
 
-export const LocalizedMessage: Schema.Schema<LocalizedMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locale: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LocalizedMessage",
-  }) as any as Schema.Schema<LocalizedMessage>;
+export const LocalizedMessage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locale: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+}).annotate({ identifier: "LocalizedMessage" });
 
 export interface Link {
   /** The URL of the link. */
@@ -514,13 +441,10 @@ export interface Link {
   description?: string;
 }
 
-export const Link: Schema.Schema<Link> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      url: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Link" }) as any as Schema.Schema<Link>;
+export const Link = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  url: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "Link" });
 
 export interface MigrationWarning {
   /** The time the warning occurred. */
@@ -535,32 +459,26 @@ export interface MigrationWarning {
   warningMessage?: LocalizedMessage;
 }
 
-export const MigrationWarning: Schema.Schema<MigrationWarning> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      warningTime: Schema.optional(Schema.String),
-      code: Schema.optional(Schema.String),
-      actionItem: Schema.optional(LocalizedMessage),
-      helpLinks: Schema.optional(Schema.Array(Link)),
-      warningMessage: Schema.optional(LocalizedMessage),
-    }),
-  ).annotate({
-    identifier: "MigrationWarning",
-  }) as any as Schema.Schema<MigrationWarning>;
+export const MigrationWarning = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  warningTime: Schema.optional(Schema.String),
+  code: Schema.optional(Schema.String),
+  actionItem: Schema.optional(LocalizedMessage),
+  helpLinks: Schema.optional(Schema.Array(Link)),
+  warningMessage: Schema.optional(LocalizedMessage),
+}).annotate({ identifier: "MigrationWarning" });
 
 export interface PostProcessingStep {}
 
-export const PostProcessingStep: Schema.Schema<PostProcessingStep> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "PostProcessingStep",
-  }) as any as Schema.Schema<PostProcessingStep>;
+export const PostProcessingStep = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "PostProcessingStep" });
 
 export interface InitializingReplicationStep {}
 
-export const InitializingReplicationStep: Schema.Schema<InitializingReplicationStep> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const InitializingReplicationStep =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "InitializingReplicationStep",
-  }) as any as Schema.Schema<InitializingReplicationStep>;
+  });
 
 export interface ReplicatingStep {
   /** The source disks replication rate for the last 30 minutes in bytes per second. */
@@ -573,17 +491,12 @@ export interface ReplicatingStep {
   lastTwoMinutesAverageBytesPerSecond?: string;
 }
 
-export const ReplicatingStep: Schema.Schema<ReplicatingStep> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lastThirtyMinutesAverageBytesPerSecond: Schema.optional(Schema.String),
-      totalBytes: Schema.optional(Schema.String),
-      replicatedBytes: Schema.optional(Schema.String),
-      lastTwoMinutesAverageBytesPerSecond: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ReplicatingStep",
-  }) as any as Schema.Schema<ReplicatingStep>;
+export const ReplicatingStep = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  lastThirtyMinutesAverageBytesPerSecond: Schema.optional(Schema.String),
+  totalBytes: Schema.optional(Schema.String),
+  replicatedBytes: Schema.optional(Schema.String),
+  lastTwoMinutesAverageBytesPerSecond: Schema.optional(Schema.String),
+}).annotate({ identifier: "ReplicatingStep" });
 
 export interface CycleStep {
   /** Post processing step. */
@@ -598,16 +511,13 @@ export interface CycleStep {
   startTime?: string;
 }
 
-export const CycleStep: Schema.Schema<CycleStep> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      postProcessing: Schema.optional(PostProcessingStep),
-      endTime: Schema.optional(Schema.String),
-      initializingReplication: Schema.optional(InitializingReplicationStep),
-      replicating: Schema.optional(ReplicatingStep),
-      startTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "CycleStep" }) as any as Schema.Schema<CycleStep>;
+export const CycleStep = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  postProcessing: Schema.optional(PostProcessingStep),
+  endTime: Schema.optional(Schema.String),
+  initializingReplication: Schema.optional(InitializingReplicationStep),
+  replicating: Schema.optional(ReplicatingStep),
+  startTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "CycleStep" });
 
 export interface ReplicationCycle {
   /** Output only. Provides details on the state of the cycle in case of an error. */
@@ -638,51 +548,44 @@ export interface ReplicationCycle {
   steps?: Array<CycleStep>;
 }
 
-export const ReplicationCycle: Schema.Schema<ReplicationCycle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      error: Schema.optional(Status),
-      progressPercent: Schema.optional(Schema.Number),
-      name: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      totalPauseDuration: Schema.optional(Schema.String),
-      warnings: Schema.optional(Schema.Array(MigrationWarning)),
-      cycleNumber: Schema.optional(Schema.Number),
-      state: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      steps: Schema.optional(Schema.Array(CycleStep)),
-    }),
-  ).annotate({
-    identifier: "ReplicationCycle",
-  }) as any as Schema.Schema<ReplicationCycle>;
+export const ReplicationCycle = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  error: Schema.optional(Status),
+  progressPercent: Schema.optional(Schema.Number),
+  name: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  totalPauseDuration: Schema.optional(Schema.String),
+  warnings: Schema.optional(Schema.Array(MigrationWarning)),
+  cycleNumber: Schema.optional(Schema.Number),
+  state: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+  steps: Schema.optional(Schema.Array(CycleStep)),
+}).annotate({ identifier: "ReplicationCycle" });
 
 export interface AdaptingOSStep {}
 
-export const AdaptingOSStep: Schema.Schema<AdaptingOSStep> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "AdaptingOSStep",
-  }) as any as Schema.Schema<AdaptingOSStep>;
+export const AdaptingOSStep = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "AdaptingOSStep" });
 
 export interface CreatingImageStep {}
 
-export const CreatingImageStep: Schema.Schema<CreatingImageStep> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CreatingImageStep",
-  }) as any as Schema.Schema<CreatingImageStep>;
+export const CreatingImageStep = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CreatingImageStep" });
 
 export interface InitializingImageImportStep {}
 
-export const InitializingImageImportStep: Schema.Schema<InitializingImageImportStep> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const InitializingImageImportStep =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "InitializingImageImportStep",
-  }) as any as Schema.Schema<InitializingImageImportStep>;
+  });
 
 export interface LoadingImageSourceFilesStep {}
 
-export const LoadingImageSourceFilesStep: Schema.Schema<LoadingImageSourceFilesStep> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const LoadingImageSourceFilesStep =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "LoadingImageSourceFilesStep",
-  }) as any as Schema.Schema<LoadingImageSourceFilesStep>;
+  });
 
 export interface ImageImportStep {
   /** Adapting OS step. */
@@ -699,19 +602,14 @@ export interface ImageImportStep {
   loadingSourceFiles?: LoadingImageSourceFilesStep;
 }
 
-export const ImageImportStep: Schema.Schema<ImageImportStep> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      adaptingOs: Schema.optional(AdaptingOSStep),
-      creatingImage: Schema.optional(CreatingImageStep),
-      initializing: Schema.optional(InitializingImageImportStep),
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      loadingSourceFiles: Schema.optional(LoadingImageSourceFilesStep),
-    }),
-  ).annotate({
-    identifier: "ImageImportStep",
-  }) as any as Schema.Schema<ImageImportStep>;
+export const ImageImportStep = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  adaptingOs: Schema.optional(AdaptingOSStep),
+  creatingImage: Schema.optional(CreatingImageStep),
+  initializing: Schema.optional(InitializingImageImportStep),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  loadingSourceFiles: Schema.optional(LoadingImageSourceFilesStep),
+}).annotate({ identifier: "ImageImportStep" });
 
 export interface ShieldedInstanceConfig {
   /** Optional. Defines whether the instance created by the machine image has vTPM enabled. This can be set to true only if the image boot option is EFI. */
@@ -722,37 +620,29 @@ export interface ShieldedInstanceConfig {
   enableIntegrityMonitoring?: boolean;
 }
 
-export const ShieldedInstanceConfig: Schema.Schema<ShieldedInstanceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableVtpm: Schema.optional(Schema.Boolean),
-      secureBoot: Schema.optional(Schema.String),
-      enableIntegrityMonitoring: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ShieldedInstanceConfig",
-  }) as any as Schema.Schema<ShieldedInstanceConfig>;
+export const ShieldedInstanceConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    enableVtpm: Schema.optional(Schema.Boolean),
+    secureBoot: Schema.optional(Schema.String),
+    enableIntegrityMonitoring: Schema.optional(Schema.Boolean),
+  },
+).annotate({ identifier: "ShieldedInstanceConfig" });
 
 export interface SkipOsAdaptation {}
 
-export const SkipOsAdaptation: Schema.Schema<SkipOsAdaptation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "SkipOsAdaptation",
-  }) as any as Schema.Schema<SkipOsAdaptation>;
+export const SkipOsAdaptation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "SkipOsAdaptation" });
 
 export interface MachineImageParametersOverrides {
   /** Optional. The machine type to create the MachineImage with. If empty, the service will choose a relevant machine type based on the information from the source image. For more information about machine types, please refer to https://cloud.google.com/compute/docs/machine-resource. */
   machineType?: string;
 }
 
-export const MachineImageParametersOverrides: Schema.Schema<MachineImageParametersOverrides> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      machineType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MachineImageParametersOverrides",
-  }) as any as Schema.Schema<MachineImageParametersOverrides>;
+export const MachineImageParametersOverrides =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    machineType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "MachineImageParametersOverrides" });
 
 export interface ServiceAccount {
   /** Required. The email address of the service account. */
@@ -761,15 +651,10 @@ export interface ServiceAccount {
   scopes?: Array<string>;
 }
 
-export const ServiceAccount: Schema.Schema<ServiceAccount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      email: Schema.optional(Schema.String),
-      scopes: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ServiceAccount",
-  }) as any as Schema.Schema<ServiceAccount>;
+export const ServiceAccount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  email: Schema.optional(Schema.String),
+  scopes: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ServiceAccount" });
 
 export interface NetworkInterface {
   /** Optional. The network to connect the NIC to. */
@@ -788,18 +673,13 @@ export interface NetworkInterface {
     | (string & {});
 }
 
-export const NetworkInterface: Schema.Schema<NetworkInterface> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      network: Schema.optional(Schema.String),
-      subnetwork: Schema.optional(Schema.String),
-      internalIp: Schema.optional(Schema.String),
-      externalIp: Schema.optional(Schema.String),
-      networkTier: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NetworkInterface",
-  }) as any as Schema.Schema<NetworkInterface>;
+export const NetworkInterface = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  network: Schema.optional(Schema.String),
+  subnetwork: Schema.optional(Schema.String),
+  internalIp: Schema.optional(Schema.String),
+  externalIp: Schema.optional(Schema.String),
+  networkTier: Schema.optional(Schema.String),
+}).annotate({ identifier: "NetworkInterface" });
 
 export interface AdaptationModifier {
   /** Optional. The value of the modifier. The actual value depends on the modifier and can also be empty. */
@@ -808,15 +688,10 @@ export interface AdaptationModifier {
   modifier?: string;
 }
 
-export const AdaptationModifier: Schema.Schema<AdaptationModifier> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-      modifier: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AdaptationModifier",
-  }) as any as Schema.Schema<AdaptationModifier>;
+export const AdaptationModifier = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.String),
+  modifier: Schema.optional(Schema.String),
+}).annotate({ identifier: "AdaptationModifier" });
 
 export interface ImageImportOsAdaptationParameters {
   /** Optional. By default the image will keep its existing boot option. Setting this property will trigger an internal process which will convert the image from using the existing boot option to another. The size of the boot disk might be increased to allow the conversion */
@@ -837,17 +712,13 @@ export interface ImageImportOsAdaptationParameters {
   adaptationModifiers?: Array<AdaptationModifier>;
 }
 
-export const ImageImportOsAdaptationParameters: Schema.Schema<ImageImportOsAdaptationParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bootConversion: Schema.optional(Schema.String),
-      licenseType: Schema.optional(Schema.String),
-      generalize: Schema.optional(Schema.Boolean),
-      adaptationModifiers: Schema.optional(Schema.Array(AdaptationModifier)),
-    }),
-  ).annotate({
-    identifier: "ImageImportOsAdaptationParameters",
-  }) as any as Schema.Schema<ImageImportOsAdaptationParameters>;
+export const ImageImportOsAdaptationParameters =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bootConversion: Schema.optional(Schema.String),
+    licenseType: Schema.optional(Schema.String),
+    generalize: Schema.optional(Schema.Boolean),
+    adaptationModifiers: Schema.optional(Schema.Array(AdaptationModifier)),
+  }).annotate({ identifier: "ImageImportOsAdaptationParameters" });
 
 export interface MachineImageTargetDetails {
   /** Optional. Shielded instance configuration. */
@@ -880,45 +751,34 @@ export interface MachineImageTargetDetails {
   additionalLicenses?: Array<string>;
 }
 
-export const MachineImageTargetDetails: Schema.Schema<MachineImageTargetDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      shieldedInstanceConfig: Schema.optional(ShieldedInstanceConfig),
-      description: Schema.optional(Schema.String),
-      skipOsAdaptation: Schema.optional(SkipOsAdaptation),
-      targetProject: Schema.optional(Schema.String),
-      machineImageParametersOverrides: Schema.optional(
-        MachineImageParametersOverrides,
-      ),
-      serviceAccount: Schema.optional(ServiceAccount),
-      encryption: Schema.optional(Encryption),
-      singleRegionStorage: Schema.optional(Schema.Boolean),
-      tags: Schema.optional(Schema.Array(Schema.String)),
-      networkInterfaces: Schema.optional(Schema.Array(NetworkInterface)),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      osAdaptationParameters: Schema.optional(
-        ImageImportOsAdaptationParameters,
-      ),
-      machineImageName: Schema.optional(Schema.String),
-      additionalLicenses: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "MachineImageTargetDetails",
-  }) as any as Schema.Schema<MachineImageTargetDetails>;
+export const MachineImageTargetDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    shieldedInstanceConfig: Schema.optional(ShieldedInstanceConfig),
+    description: Schema.optional(Schema.String),
+    skipOsAdaptation: Schema.optional(SkipOsAdaptation),
+    targetProject: Schema.optional(Schema.String),
+    machineImageParametersOverrides: Schema.optional(
+      MachineImageParametersOverrides,
+    ),
+    serviceAccount: Schema.optional(ServiceAccount),
+    encryption: Schema.optional(Encryption),
+    singleRegionStorage: Schema.optional(Schema.Boolean),
+    tags: Schema.optional(Schema.Array(Schema.String)),
+    networkInterfaces: Schema.optional(Schema.Array(NetworkInterface)),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    osAdaptationParameters: Schema.optional(ImageImportOsAdaptationParameters),
+    machineImageName: Schema.optional(Schema.String),
+    additionalLicenses: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "MachineImageTargetDetails" });
 
 export interface DataDiskImageImport {
   /** Optional. A list of guest OS features to apply to the imported image. These features are flags that are used by Compute Engine to enable certain capabilities for virtual machine instances that are created from the image. This field does not change the OS of the image; it only marks the image with the specified features. The user must ensure that the OS is compatible with the features. For a list of available features, see https://cloud.google.com/compute/docs/images/create-custom#guest-os-features. */
   guestOsFeatures?: Array<string>;
 }
 
-export const DataDiskImageImport: Schema.Schema<DataDiskImageImport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      guestOsFeatures: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "DataDiskImageImport",
-  }) as any as Schema.Schema<DataDiskImageImport>;
+export const DataDiskImageImport = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  guestOsFeatures: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "DataDiskImageImport" });
 
 export interface DiskImageTargetDetails {
   /** Optional. Set to true to set the image storageLocations to the single region of the import job. When false, the closest multi-region is selected. */
@@ -943,25 +803,20 @@ export interface DiskImageTargetDetails {
   description?: string;
 }
 
-export const DiskImageTargetDetails: Schema.Schema<DiskImageTargetDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      singleRegionStorage: Schema.optional(Schema.Boolean),
-      dataDiskImageImport: Schema.optional(DataDiskImageImport),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      imageName: Schema.optional(Schema.String),
-      encryption: Schema.optional(Encryption),
-      osAdaptationParameters: Schema.optional(
-        ImageImportOsAdaptationParameters,
-      ),
-      targetProject: Schema.optional(Schema.String),
-      additionalLicenses: Schema.optional(Schema.Array(Schema.String)),
-      familyName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DiskImageTargetDetails",
-  }) as any as Schema.Schema<DiskImageTargetDetails>;
+export const DiskImageTargetDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    singleRegionStorage: Schema.optional(Schema.Boolean),
+    dataDiskImageImport: Schema.optional(DataDiskImageImport),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    imageName: Schema.optional(Schema.String),
+    encryption: Schema.optional(Encryption),
+    osAdaptationParameters: Schema.optional(ImageImportOsAdaptationParameters),
+    targetProject: Schema.optional(Schema.String),
+    additionalLicenses: Schema.optional(Schema.Array(Schema.String)),
+    familyName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "DiskImageTargetDetails" });
 
 export interface ImageImportJob {
   /** Output only. Warnings that occurred during the image import. */
@@ -996,24 +851,19 @@ export interface ImageImportJob {
   name?: string;
 }
 
-export const ImageImportJob: Schema.Schema<ImageImportJob> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      warnings: Schema.optional(Schema.Array(MigrationWarning)),
-      steps: Schema.optional(Schema.Array(ImageImportStep)),
-      cloudStorageUri: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      machineImageTargetDetails: Schema.optional(MachineImageTargetDetails),
-      errors: Schema.optional(Schema.Array(Status)),
-      createTime: Schema.optional(Schema.String),
-      diskImageTargetDetails: Schema.optional(DiskImageTargetDetails),
-      createdResources: Schema.optional(Schema.Array(Schema.String)),
-      endTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ImageImportJob",
-  }) as any as Schema.Schema<ImageImportJob>;
+export const ImageImportJob = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  warnings: Schema.optional(Schema.Array(MigrationWarning)),
+  steps: Schema.optional(Schema.Array(ImageImportStep)),
+  cloudStorageUri: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  machineImageTargetDetails: Schema.optional(MachineImageTargetDetails),
+  errors: Schema.optional(Schema.Array(Status)),
+  createTime: Schema.optional(Schema.String),
+  diskImageTargetDetails: Schema.optional(DiskImageTargetDetails),
+  createdResources: Schema.optional(Schema.Array(Schema.String)),
+  endTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "ImageImportJob" });
 
 export interface ImageImport {
   /** Immutable. The path to the Cloud Storage file from which the image should be imported. */
@@ -1032,20 +882,15 @@ export interface ImageImport {
   diskImageTargetDefaults?: DiskImageTargetDetails;
 }
 
-export const ImageImport: Schema.Schema<ImageImport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cloudStorageUri: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      recentImageImportJobs: Schema.optional(Schema.Array(ImageImportJob)),
-      encryption: Schema.optional(Encryption),
-      machineImageTargetDefaults: Schema.optional(MachineImageTargetDetails),
-      name: Schema.optional(Schema.String),
-      diskImageTargetDefaults: Schema.optional(DiskImageTargetDetails),
-    }),
-  ).annotate({
-    identifier: "ImageImport",
-  }) as any as Schema.Schema<ImageImport>;
+export const ImageImport = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cloudStorageUri: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  recentImageImportJobs: Schema.optional(Schema.Array(ImageImportJob)),
+  encryption: Schema.optional(Encryption),
+  machineImageTargetDefaults: Schema.optional(MachineImageTargetDetails),
+  name: Schema.optional(Schema.String),
+  diskImageTargetDefaults: Schema.optional(DiskImageTargetDetails),
+}).annotate({ identifier: "ImageImport" });
 
 export interface ListReplicationCyclesResponse {
   /** Output only. The list of replication cycles response. */
@@ -1056,30 +901,21 @@ export interface ListReplicationCyclesResponse {
   nextPageToken?: string;
 }
 
-export const ListReplicationCyclesResponse: Schema.Schema<ListReplicationCyclesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      replicationCycles: Schema.optional(Schema.Array(ReplicationCycle)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListReplicationCyclesResponse",
-  }) as any as Schema.Schema<ListReplicationCyclesResponse>;
+export const ListReplicationCyclesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    replicationCycles: Schema.optional(Schema.Array(ReplicationCycle)),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListReplicationCyclesResponse" });
 
 export interface ReplicationSync {
   /** The most updated snapshot created time in the source that finished replication. */
   lastSyncTime?: string;
 }
 
-export const ReplicationSync: Schema.Schema<ReplicationSync> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lastSyncTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ReplicationSync",
-  }) as any as Schema.Schema<ReplicationSync>;
+export const ReplicationSync = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  lastSyncTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "ReplicationSync" });
 
 export interface VmCapabilities {
   /** Output only. Unordered list. List of certain VM OS capabilities needed for some Compute Engine features. */
@@ -1094,15 +930,10 @@ export interface VmCapabilities {
   lastOsCapabilitiesUpdateTime?: string;
 }
 
-export const VmCapabilities: Schema.Schema<VmCapabilities> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      osCapabilities: Schema.optional(Schema.Array(Schema.String)),
-      lastOsCapabilitiesUpdateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VmCapabilities",
-  }) as any as Schema.Schema<VmCapabilities>;
+export const VmCapabilities = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  osCapabilities: Schema.optional(Schema.Array(Schema.String)),
+  lastOsCapabilitiesUpdateTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "VmCapabilities" });
 
 export interface SchedulingNodeAffinity {
   /** The operator to use for the node resources specified in the `values` parameter. */
@@ -1113,16 +944,13 @@ export interface SchedulingNodeAffinity {
   values?: Array<string>;
 }
 
-export const SchedulingNodeAffinity: Schema.Schema<SchedulingNodeAffinity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operator: Schema.optional(Schema.String),
-      key: Schema.optional(Schema.String),
-      values: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "SchedulingNodeAffinity",
-  }) as any as Schema.Schema<SchedulingNodeAffinity>;
+export const SchedulingNodeAffinity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    operator: Schema.optional(Schema.String),
+    key: Schema.optional(Schema.String),
+    values: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "SchedulingNodeAffinity" });
 
 export interface ComputeScheduling {
   /** How the instance should behave when the host machine undergoes maintenance that may temporarily impact instance performance. */
@@ -1143,17 +971,12 @@ export interface ComputeScheduling {
     | (string & {});
 }
 
-export const ComputeScheduling: Schema.Schema<ComputeScheduling> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      onHostMaintenance: Schema.optional(Schema.String),
-      minNodeCpus: Schema.optional(Schema.Number),
-      nodeAffinities: Schema.optional(Schema.Array(SchedulingNodeAffinity)),
-      restartType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ComputeScheduling",
-  }) as any as Schema.Schema<ComputeScheduling>;
+export const ComputeScheduling = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  onHostMaintenance: Schema.optional(Schema.String),
+  minNodeCpus: Schema.optional(Schema.Number),
+  nodeAffinities: Schema.optional(Schema.Array(SchedulingNodeAffinity)),
+  restartType: Schema.optional(Schema.String),
+}).annotate({ identifier: "ComputeScheduling" });
 
 export interface AppliedLicense {
   /** The license type that was used in OS adaptation. */
@@ -1162,15 +985,10 @@ export interface AppliedLicense {
   osLicense?: string;
 }
 
-export const AppliedLicense: Schema.Schema<AppliedLicense> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      osLicense: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AppliedLicense",
-  }) as any as Schema.Schema<AppliedLicense>;
+export const AppliedLicense = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  osLicense: Schema.optional(Schema.String),
+}).annotate({ identifier: "AppliedLicense" });
 
 export interface ComputeEngineTargetDetails {
   /** Optional. Defines whether the instance has integrity monitoring enabled. */
@@ -1244,38 +1062,34 @@ export interface ComputeEngineTargetDetails {
   serviceAccount?: string;
 }
 
-export const ComputeEngineTargetDetails: Schema.Schema<ComputeEngineTargetDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableIntegrityMonitoring: Schema.optional(Schema.Boolean),
-      diskType: Schema.optional(Schema.String),
-      enableVtpm: Schema.optional(Schema.Boolean),
-      networkTags: Schema.optional(Schema.Array(Schema.String)),
-      hostname: Schema.optional(Schema.String),
-      zone: Schema.optional(Schema.String),
-      machineTypeSeries: Schema.optional(Schema.String),
-      encryption: Schema.optional(Encryption),
-      bootConversion: Schema.optional(Schema.String),
-      additionalLicenses: Schema.optional(Schema.Array(Schema.String)),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      diskReplicaZones: Schema.optional(Schema.Array(Schema.String)),
-      networkInterfaces: Schema.optional(Schema.Array(NetworkInterface)),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      bootOption: Schema.optional(Schema.String),
-      machineType: Schema.optional(Schema.String),
-      project: Schema.optional(Schema.String),
-      computeScheduling: Schema.optional(ComputeScheduling),
-      vmName: Schema.optional(Schema.String),
-      storagePool: Schema.optional(Schema.String),
-      secureBoot: Schema.optional(Schema.Boolean),
-      adaptationModifiers: Schema.optional(Schema.Array(AdaptationModifier)),
-      appliedLicense: Schema.optional(AppliedLicense),
-      licenseType: Schema.optional(Schema.String),
-      serviceAccount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ComputeEngineTargetDetails",
-  }) as any as Schema.Schema<ComputeEngineTargetDetails>;
+export const ComputeEngineTargetDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enableIntegrityMonitoring: Schema.optional(Schema.Boolean),
+    diskType: Schema.optional(Schema.String),
+    enableVtpm: Schema.optional(Schema.Boolean),
+    networkTags: Schema.optional(Schema.Array(Schema.String)),
+    hostname: Schema.optional(Schema.String),
+    zone: Schema.optional(Schema.String),
+    machineTypeSeries: Schema.optional(Schema.String),
+    encryption: Schema.optional(Encryption),
+    bootConversion: Schema.optional(Schema.String),
+    additionalLicenses: Schema.optional(Schema.Array(Schema.String)),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    diskReplicaZones: Schema.optional(Schema.Array(Schema.String)),
+    networkInterfaces: Schema.optional(Schema.Array(NetworkInterface)),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    bootOption: Schema.optional(Schema.String),
+    machineType: Schema.optional(Schema.String),
+    project: Schema.optional(Schema.String),
+    computeScheduling: Schema.optional(ComputeScheduling),
+    vmName: Schema.optional(Schema.String),
+    storagePool: Schema.optional(Schema.String),
+    secureBoot: Schema.optional(Schema.Boolean),
+    adaptationModifiers: Schema.optional(Schema.Array(AdaptationModifier)),
+    appliedLicense: Schema.optional(AppliedLicense),
+    licenseType: Schema.optional(Schema.String),
+    serviceAccount: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ComputeEngineTargetDetails" });
 
 export interface TargetProject {
   /** Output only. The name of the target project. */
@@ -1290,18 +1104,13 @@ export interface TargetProject {
   updateTime?: string;
 }
 
-export const TargetProject: Schema.Schema<TargetProject> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      project: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TargetProject",
-  }) as any as Schema.Schema<TargetProject>;
+export const TargetProject = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  project: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "TargetProject" });
 
 export interface ListTargetProjectsResponse {
   /** Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -1312,16 +1121,12 @@ export interface ListTargetProjectsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListTargetProjectsResponse: Schema.Schema<ListTargetProjectsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      targetProjects: Schema.optional(Schema.Array(TargetProject)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListTargetProjectsResponse",
-  }) as any as Schema.Schema<ListTargetProjectsResponse>;
+export const ListTargetProjectsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    targetProjects: Schema.optional(Schema.Array(TargetProject)),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListTargetProjectsResponse" });
 
 export interface ClientSecretCredentials {
   /** Azure client ID. */
@@ -1332,16 +1137,12 @@ export interface ClientSecretCredentials {
   tenantId?: string;
 }
 
-export const ClientSecretCredentials: Schema.Schema<ClientSecretCredentials> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clientId: Schema.optional(Schema.String),
-      clientSecret: Schema.optional(Schema.String),
-      tenantId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ClientSecretCredentials",
-  }) as any as Schema.Schema<ClientSecretCredentials>;
+export const ClientSecretCredentials =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    clientId: Schema.optional(Schema.String),
+    clientSecret: Schema.optional(Schema.String),
+    tenantId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ClientSecretCredentials" });
 
 export interface AzureSourceDetails {
   /** Immutable. The Azure location (region) that the source VMs will be migrated from. */
@@ -1360,22 +1161,17 @@ export interface AzureSourceDetails {
   clientSecretCreds?: ClientSecretCredentials;
 }
 
-export const AzureSourceDetails: Schema.Schema<AzureSourceDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      azureLocation: Schema.optional(Schema.String),
-      error: Schema.optional(Status),
-      resourceGroupId: Schema.optional(Schema.String),
-      migrationResourcesUserTags: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      subscriptionId: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      clientSecretCreds: Schema.optional(ClientSecretCredentials),
-    }),
-  ).annotate({
-    identifier: "AzureSourceDetails",
-  }) as any as Schema.Schema<AzureSourceDetails>;
+export const AzureSourceDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  azureLocation: Schema.optional(Schema.String),
+  error: Schema.optional(Status),
+  resourceGroupId: Schema.optional(Schema.String),
+  migrationResourcesUserTags: Schema.optional(
+    Schema.Record(Schema.String, Schema.String),
+  ),
+  subscriptionId: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  clientSecretCreds: Schema.optional(ClientSecretCredentials),
+}).annotate({ identifier: "AzureSourceDetails" });
 
 export interface Tag {
   /** Required. Value of tag. */
@@ -1384,13 +1180,10 @@ export interface Tag {
   key?: string;
 }
 
-export const Tag: Schema.Schema<Tag> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-      key: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Tag" }) as any as Schema.Schema<Tag>;
+export const Tag = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.String),
+  key: Schema.optional(Schema.String),
+}).annotate({ identifier: "Tag" });
 
 export interface AccessKeyCredentials {
   /** AWS access key ID. */
@@ -1401,16 +1194,11 @@ export interface AccessKeyCredentials {
   sessionToken?: string;
 }
 
-export const AccessKeyCredentials: Schema.Schema<AccessKeyCredentials> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accessKeyId: Schema.optional(Schema.String),
-      secretAccessKey: Schema.optional(Schema.String),
-      sessionToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccessKeyCredentials",
-  }) as any as Schema.Schema<AccessKeyCredentials>;
+export const AccessKeyCredentials = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  accessKeyId: Schema.optional(Schema.String),
+  secretAccessKey: Schema.optional(Schema.String),
+  sessionToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "AccessKeyCredentials" });
 
 export interface AwsSourceDetails {
   /** Output only. State of the source as determined by the health check. */
@@ -1431,23 +1219,18 @@ export interface AwsSourceDetails {
   migrationResourcesUserTags?: Record<string, string>;
 }
 
-export const AwsSourceDetails: Schema.Schema<AwsSourceDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      inventoryTagList: Schema.optional(Schema.Array(Tag)),
-      inventorySecurityGroupNames: Schema.optional(Schema.Array(Schema.String)),
-      publicIp: Schema.optional(Schema.String),
-      awsRegion: Schema.optional(Schema.String),
-      error: Schema.optional(Status),
-      accessKeyCreds: Schema.optional(AccessKeyCredentials),
-      migrationResourcesUserTags: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-    }),
-  ).annotate({
-    identifier: "AwsSourceDetails",
-  }) as any as Schema.Schema<AwsSourceDetails>;
+export const AwsSourceDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.String),
+  inventoryTagList: Schema.optional(Schema.Array(Tag)),
+  inventorySecurityGroupNames: Schema.optional(Schema.Array(Schema.String)),
+  publicIp: Schema.optional(Schema.String),
+  awsRegion: Schema.optional(Schema.String),
+  error: Schema.optional(Status),
+  accessKeyCreds: Schema.optional(AccessKeyCredentials),
+  migrationResourcesUserTags: Schema.optional(
+    Schema.Record(Schema.String, Schema.String),
+  ),
+}).annotate({ identifier: "AwsSourceDetails" });
 
 export interface VmwareSourceDetails {
   /** The credentials username. */
@@ -1462,18 +1245,13 @@ export interface VmwareSourceDetails {
   resolvedVcenterHost?: string;
 }
 
-export const VmwareSourceDetails: Schema.Schema<VmwareSourceDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      username: Schema.optional(Schema.String),
-      vcenterIp: Schema.optional(Schema.String),
-      thumbprint: Schema.optional(Schema.String),
-      password: Schema.optional(Schema.String),
-      resolvedVcenterHost: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VmwareSourceDetails",
-  }) as any as Schema.Schema<VmwareSourceDetails>;
+export const VmwareSourceDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  username: Schema.optional(Schema.String),
+  vcenterIp: Schema.optional(Schema.String),
+  thumbprint: Schema.optional(Schema.String),
+  password: Schema.optional(Schema.String),
+  resolvedVcenterHost: Schema.optional(Schema.String),
+}).annotate({ identifier: "VmwareSourceDetails" });
 
 export interface Source {
   /** Azure type source details. */
@@ -1496,41 +1274,37 @@ export interface Source {
   createTime?: string;
 }
 
-export const Source: Schema.Schema<Source> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      azure: Schema.optional(AzureSourceDetails),
-      encryption: Schema.optional(Encryption),
-      aws: Schema.optional(AwsSourceDetails),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      name: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      vmware: Schema.optional(VmwareSourceDetails),
-      description: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Source" }) as any as Schema.Schema<Source>;
+export const Source = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  azure: Schema.optional(AzureSourceDetails),
+  encryption: Schema.optional(Encryption),
+  aws: Schema.optional(AwsSourceDetails),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  name: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  vmware: Schema.optional(VmwareSourceDetails),
+  description: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Source" });
 
 export interface FinalizeMigrationRequest {}
 
-export const FinalizeMigrationRequest: Schema.Schema<FinalizeMigrationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const FinalizeMigrationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "FinalizeMigrationRequest",
-  }) as any as Schema.Schema<FinalizeMigrationRequest>;
+  });
 
 export interface PreparingVMDisksStep {}
 
-export const PreparingVMDisksStep: Schema.Schema<PreparingVMDisksStep> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "PreparingVMDisksStep",
-  }) as any as Schema.Schema<PreparingVMDisksStep>;
+export const PreparingVMDisksStep = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "PreparingVMDisksStep" });
 
 export interface InstantiatingMigratedVMStep {}
 
-export const InstantiatingMigratedVMStep: Schema.Schema<InstantiatingMigratedVMStep> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const InstantiatingMigratedVMStep =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "InstantiatingMigratedVMStep",
-  }) as any as Schema.Schema<InstantiatingMigratedVMStep>;
+  });
 
 export interface CloneStep {
   /** Preparing VM disks step. */
@@ -1545,23 +1319,19 @@ export interface CloneStep {
   endTime?: string;
 }
 
-export const CloneStep: Schema.Schema<CloneStep> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      preparingVmDisks: Schema.optional(PreparingVMDisksStep),
-      instantiatingMigratedVm: Schema.optional(InstantiatingMigratedVMStep),
-      adaptingOs: Schema.optional(AdaptingOSStep),
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "CloneStep" }) as any as Schema.Schema<CloneStep>;
+export const CloneStep = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  preparingVmDisks: Schema.optional(PreparingVMDisksStep),
+  instantiatingMigratedVm: Schema.optional(InstantiatingMigratedVMStep),
+  adaptingOs: Schema.optional(AdaptingOSStep),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "CloneStep" });
 
 export interface ExtendMigrationRequest {}
 
-export const ExtendMigrationRequest: Schema.Schema<ExtendMigrationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "ExtendMigrationRequest",
-  }) as any as Schema.Schema<ExtendMigrationRequest>;
+export const ExtendMigrationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "ExtendMigrationRequest" });
 
 export interface VmUtilizationMetrics {
   /** Max network throughput (combined transmit-rates and receive-rates), in kilobytes per second. */
@@ -1582,21 +1352,16 @@ export interface VmUtilizationMetrics {
   diskIoRateMaxKbps?: string;
 }
 
-export const VmUtilizationMetrics: Schema.Schema<VmUtilizationMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      networkThroughputMaxKbps: Schema.optional(Schema.String),
-      diskIoRateAverageKbps: Schema.optional(Schema.String),
-      networkThroughputAverageKbps: Schema.optional(Schema.String),
-      cpuMaxPercent: Schema.optional(Schema.Number),
-      cpuAveragePercent: Schema.optional(Schema.Number),
-      memoryAveragePercent: Schema.optional(Schema.Number),
-      memoryMaxPercent: Schema.optional(Schema.Number),
-      diskIoRateMaxKbps: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VmUtilizationMetrics",
-  }) as any as Schema.Schema<VmUtilizationMetrics>;
+export const VmUtilizationMetrics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  networkThroughputMaxKbps: Schema.optional(Schema.String),
+  diskIoRateAverageKbps: Schema.optional(Schema.String),
+  networkThroughputAverageKbps: Schema.optional(Schema.String),
+  cpuMaxPercent: Schema.optional(Schema.Number),
+  cpuAveragePercent: Schema.optional(Schema.Number),
+  memoryAveragePercent: Schema.optional(Schema.Number),
+  memoryMaxPercent: Schema.optional(Schema.Number),
+  diskIoRateMaxKbps: Schema.optional(Schema.String),
+}).annotate({ identifier: "VmUtilizationMetrics" });
 
 export interface PersistentDisk {
   /** The ordinal number of the source VM disk. */
@@ -1605,15 +1370,10 @@ export interface PersistentDisk {
   diskUri?: string;
 }
 
-export const PersistentDisk: Schema.Schema<PersistentDisk> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sourceDiskNumber: Schema.optional(Schema.Number),
-      diskUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PersistentDisk",
-  }) as any as Schema.Schema<PersistentDisk>;
+export const PersistentDisk = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sourceDiskNumber: Schema.optional(Schema.Number),
+  diskUri: Schema.optional(Schema.String),
+}).annotate({ identifier: "PersistentDisk" });
 
 export interface OSDescription {
   /** OS publisher. */
@@ -1626,17 +1386,12 @@ export interface OSDescription {
   type?: string;
 }
 
-export const OSDescription: Schema.Schema<OSDescription> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      publisher: Schema.optional(Schema.String),
-      offer: Schema.optional(Schema.String),
-      plan: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OSDescription",
-  }) as any as Schema.Schema<OSDescription>;
+export const OSDescription = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  publisher: Schema.optional(Schema.String),
+  offer: Schema.optional(Schema.String),
+  plan: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "OSDescription" });
 
 export interface Disk {
   /** The disk size in GB. */
@@ -1647,14 +1402,11 @@ export interface Disk {
   lun?: number;
 }
 
-export const Disk: Schema.Schema<Disk> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sizeGb: Schema.optional(Schema.Number),
-      name: Schema.optional(Schema.String),
-      lun: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Disk" }) as any as Schema.Schema<Disk>;
+export const Disk = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sizeGb: Schema.optional(Schema.Number),
+  name: Schema.optional(Schema.String),
+  lun: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Disk" });
 
 export interface OSDisk {
   /** The disk's type. */
@@ -1665,14 +1417,11 @@ export interface OSDisk {
   sizeGb?: number;
 }
 
-export const OSDisk: Schema.Schema<OSDisk> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      sizeGb: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "OSDisk" }) as any as Schema.Schema<OSDisk>;
+export const OSDisk = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  sizeGb: Schema.optional(Schema.Number),
+}).annotate({ identifier: "OSDisk" });
 
 export interface AzureVmDetails {
   /** VM size as configured in Azure. Determines the VM's hardware spec. */
@@ -1718,62 +1467,48 @@ export interface AzureVmDetails {
     | (string & {});
 }
 
-export const AzureVmDetails: Schema.Schema<AzureVmDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      vmSize: Schema.optional(Schema.String),
-      diskCount: Schema.optional(Schema.Number),
-      tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      osDescription: Schema.optional(OSDescription),
-      memoryMb: Schema.optional(Schema.Number),
-      disks: Schema.optional(Schema.Array(Disk)),
-      computerName: Schema.optional(Schema.String),
-      osDisk: Schema.optional(OSDisk),
-      vmId: Schema.optional(Schema.String),
-      bootOption: Schema.optional(Schema.String),
-      powerState: Schema.optional(Schema.String),
-      cpuCount: Schema.optional(Schema.Number),
-      committedStorageMb: Schema.optional(Schema.String),
-      architecture: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AzureVmDetails",
-  }) as any as Schema.Schema<AzureVmDetails>;
+export const AzureVmDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  vmSize: Schema.optional(Schema.String),
+  diskCount: Schema.optional(Schema.Number),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  osDescription: Schema.optional(OSDescription),
+  memoryMb: Schema.optional(Schema.Number),
+  disks: Schema.optional(Schema.Array(Disk)),
+  computerName: Schema.optional(Schema.String),
+  osDisk: Schema.optional(OSDisk),
+  vmId: Schema.optional(Schema.String),
+  bootOption: Schema.optional(Schema.String),
+  powerState: Schema.optional(Schema.String),
+  cpuCount: Schema.optional(Schema.Number),
+  committedStorageMb: Schema.optional(Schema.String),
+  architecture: Schema.optional(Schema.String),
+}).annotate({ identifier: "AzureVmDetails" });
 
 export interface AzureVmsDetails {
   /** The details of the Azure VMs. */
   details?: Array<AzureVmDetails>;
 }
 
-export const AzureVmsDetails: Schema.Schema<AzureVmsDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      details: Schema.optional(Schema.Array(AzureVmDetails)),
-    }),
-  ).annotate({
-    identifier: "AzureVmsDetails",
-  }) as any as Schema.Schema<AzureVmsDetails>;
+export const AzureVmsDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  details: Schema.optional(Schema.Array(AzureVmDetails)),
+}).annotate({ identifier: "AzureVmsDetails" });
 
 export interface DisksMigrationVmTargetDetails {
   /** Output only. The URI of the Compute Engine VM. */
   vmUri?: string;
 }
 
-export const DisksMigrationVmTargetDetails: Schema.Schema<DisksMigrationVmTargetDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      vmUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DisksMigrationVmTargetDetails",
-  }) as any as Schema.Schema<DisksMigrationVmTargetDetails>;
+export const DisksMigrationVmTargetDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    vmUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DisksMigrationVmTargetDetails" });
 
 export interface DisksMigrationDisksTargetDetails {}
 
-export const DisksMigrationDisksTargetDetails: Schema.Schema<DisksMigrationDisksTargetDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const DisksMigrationDisksTargetDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DisksMigrationDisksTargetDetails",
-  }) as any as Schema.Schema<DisksMigrationDisksTargetDetails>;
+  });
 
 export interface ComputeEngineDisksTargetDetails {
   /** Details for the VM the migrated data disks are attached to. */
@@ -1784,16 +1519,12 @@ export interface ComputeEngineDisksTargetDetails {
   disksTargetDetails?: DisksMigrationDisksTargetDetails;
 }
 
-export const ComputeEngineDisksTargetDetails: Schema.Schema<ComputeEngineDisksTargetDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      vmTargetDetails: Schema.optional(DisksMigrationVmTargetDetails),
-      disks: Schema.optional(Schema.Array(PersistentDisk)),
-      disksTargetDetails: Schema.optional(DisksMigrationDisksTargetDetails),
-    }),
-  ).annotate({
-    identifier: "ComputeEngineDisksTargetDetails",
-  }) as any as Schema.Schema<ComputeEngineDisksTargetDetails>;
+export const ComputeEngineDisksTargetDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    vmTargetDetails: Schema.optional(DisksMigrationVmTargetDetails),
+    disks: Schema.optional(Schema.Array(PersistentDisk)),
+    disksTargetDetails: Schema.optional(DisksMigrationDisksTargetDetails),
+  }).annotate({ identifier: "ComputeEngineDisksTargetDetails" });
 
 export interface CloneJob {
   /** Output only. The name of the clone. */
@@ -1825,22 +1556,19 @@ export interface CloneJob {
   steps?: Array<CloneStep>;
 }
 
-export const CloneJob: Schema.Schema<CloneJob> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      error: Schema.optional(Status),
-      computeEngineDisksTargetDetails: Schema.optional(
-        ComputeEngineDisksTargetDetails,
-      ),
-      computeEngineTargetDetails: Schema.optional(ComputeEngineTargetDetails),
-      stateTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      steps: Schema.optional(Schema.Array(CloneStep)),
-    }),
-  ).annotate({ identifier: "CloneJob" }) as any as Schema.Schema<CloneJob>;
+export const CloneJob = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  error: Schema.optional(Status),
+  computeEngineDisksTargetDetails: Schema.optional(
+    ComputeEngineDisksTargetDetails,
+  ),
+  computeEngineTargetDetails: Schema.optional(ComputeEngineTargetDetails),
+  stateTime: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  steps: Schema.optional(Schema.Array(CloneStep)),
+}).annotate({ identifier: "CloneJob" });
 
 export interface SchedulePolicy {
   /** The idle duration between replication stages. */
@@ -1849,15 +1577,10 @@ export interface SchedulePolicy {
   skipOsAdaptation?: boolean;
 }
 
-export const SchedulePolicy: Schema.Schema<SchedulePolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      idleDuration: Schema.optional(Schema.String),
-      skipOsAdaptation: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "SchedulePolicy",
-  }) as any as Schema.Schema<SchedulePolicy>;
+export const SchedulePolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  idleDuration: Schema.optional(Schema.String),
+  skipOsAdaptation: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "SchedulePolicy" });
 
 export interface Expiration {
   /** Output only. Timestamp of when this resource is considered expired. */
@@ -1868,28 +1591,20 @@ export interface Expiration {
   extensionCount?: number;
 }
 
-export const Expiration: Schema.Schema<Expiration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expireTime: Schema.optional(Schema.String),
-      extendable: Schema.optional(Schema.Boolean),
-      extensionCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Expiration" }) as any as Schema.Schema<Expiration>;
+export const Expiration = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  expireTime: Schema.optional(Schema.String),
+  extendable: Schema.optional(Schema.Boolean),
+  extensionCount: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Expiration" });
 
 export interface VmAttachmentDetails {
   /** Optional. Specifies a unique device name of your choice that is reflected into the /dev/disk/by-id/google-* tree of a Linux operating system running within the instance. If not specified, the server chooses a default device name to apply to this disk, in the form persistent-disk-x, where x is a number assigned by Google Compute Engine. This field is only applicable for persistent disks. */
   deviceName?: string;
 }
 
-export const VmAttachmentDetails: Schema.Schema<VmAttachmentDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deviceName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VmAttachmentDetails",
-  }) as any as Schema.Schema<VmAttachmentDetails>;
+export const VmAttachmentDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  deviceName: Schema.optional(Schema.String),
+}).annotate({ identifier: "VmAttachmentDetails" });
 
 export interface PersistentDiskDefaults {
   /** Required. The ordinal number of the source VM disk. */
@@ -1913,35 +1628,27 @@ export interface PersistentDiskDefaults {
   vmAttachmentDetails?: VmAttachmentDetails;
 }
 
-export const PersistentDiskDefaults: Schema.Schema<PersistentDiskDefaults> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sourceDiskNumber: Schema.optional(Schema.Number),
-      additionalLabels: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      encryption: Schema.optional(Encryption),
-      diskName: Schema.optional(Schema.String),
-      diskType: Schema.optional(Schema.String),
-      vmAttachmentDetails: Schema.optional(VmAttachmentDetails),
-    }),
-  ).annotate({
-    identifier: "PersistentDiskDefaults",
-  }) as any as Schema.Schema<PersistentDiskDefaults>;
+export const PersistentDiskDefaults = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    sourceDiskNumber: Schema.optional(Schema.Number),
+    additionalLabels: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    encryption: Schema.optional(Encryption),
+    diskName: Schema.optional(Schema.String),
+    diskType: Schema.optional(Schema.String),
+    vmAttachmentDetails: Schema.optional(VmAttachmentDetails),
+  },
+).annotate({ identifier: "PersistentDiskDefaults" });
 
 export interface DiskImageDefaults {
   /** Required. The Image resource used when creating the disk. */
   sourceImage?: string;
 }
 
-export const DiskImageDefaults: Schema.Schema<DiskImageDefaults> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sourceImage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DiskImageDefaults",
-  }) as any as Schema.Schema<DiskImageDefaults>;
+export const DiskImageDefaults = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sourceImage: Schema.optional(Schema.String),
+}).annotate({ identifier: "DiskImageDefaults" });
 
 export interface BootDiskDefaults {
   /** Optional. The type of disk provisioning to use for the VM. */
@@ -1963,18 +1670,13 @@ export interface BootDiskDefaults {
   encryption?: Encryption;
 }
 
-export const BootDiskDefaults: Schema.Schema<BootDiskDefaults> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      diskType: Schema.optional(Schema.String),
-      deviceName: Schema.optional(Schema.String),
-      image: Schema.optional(DiskImageDefaults),
-      diskName: Schema.optional(Schema.String),
-      encryption: Schema.optional(Encryption),
-    }),
-  ).annotate({
-    identifier: "BootDiskDefaults",
-  }) as any as Schema.Schema<BootDiskDefaults>;
+export const BootDiskDefaults = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  diskType: Schema.optional(Schema.String),
+  deviceName: Schema.optional(Schema.String),
+  image: Schema.optional(DiskImageDefaults),
+  diskName: Schema.optional(Schema.String),
+  encryption: Schema.optional(Encryption),
+}).annotate({ identifier: "BootDiskDefaults" });
 
 export interface DisksMigrationVmTargetDefaults {
   /** Optional. A map of labels to associate with the VM. */
@@ -2011,36 +1713,32 @@ export interface DisksMigrationVmTargetDefaults {
   networkTags?: Array<string>;
 }
 
-export const DisksMigrationVmTargetDefaults: Schema.Schema<DisksMigrationVmTargetDefaults> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      enableIntegrityMonitoring: Schema.optional(Schema.Boolean),
-      computeScheduling: Schema.optional(ComputeScheduling),
-      bootDiskDefaults: Schema.optional(BootDiskDefaults),
-      serviceAccount: Schema.optional(Schema.String),
-      machineTypeSeries: Schema.optional(Schema.String),
-      encryption: Schema.optional(Encryption),
-      machineType: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      hostname: Schema.optional(Schema.String),
-      additionalLicenses: Schema.optional(Schema.Array(Schema.String)),
-      networkInterfaces: Schema.optional(Schema.Array(NetworkInterface)),
-      secureBoot: Schema.optional(Schema.Boolean),
-      vmName: Schema.optional(Schema.String),
-      enableVtpm: Schema.optional(Schema.Boolean),
-      networkTags: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "DisksMigrationVmTargetDefaults",
-  }) as any as Schema.Schema<DisksMigrationVmTargetDefaults>;
+export const DisksMigrationVmTargetDefaults =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    enableIntegrityMonitoring: Schema.optional(Schema.Boolean),
+    computeScheduling: Schema.optional(ComputeScheduling),
+    bootDiskDefaults: Schema.optional(BootDiskDefaults),
+    serviceAccount: Schema.optional(Schema.String),
+    machineTypeSeries: Schema.optional(Schema.String),
+    encryption: Schema.optional(Encryption),
+    machineType: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    hostname: Schema.optional(Schema.String),
+    additionalLicenses: Schema.optional(Schema.Array(Schema.String)),
+    networkInterfaces: Schema.optional(Schema.Array(NetworkInterface)),
+    secureBoot: Schema.optional(Schema.Boolean),
+    vmName: Schema.optional(Schema.String),
+    enableVtpm: Schema.optional(Schema.Boolean),
+    networkTags: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "DisksMigrationVmTargetDefaults" });
 
 export interface DisksMigrationDisksTargetDefaults {}
 
-export const DisksMigrationDisksTargetDefaults: Schema.Schema<DisksMigrationDisksTargetDefaults> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const DisksMigrationDisksTargetDefaults =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DisksMigrationDisksTargetDefaults",
-  }) as any as Schema.Schema<DisksMigrationDisksTargetDefaults>;
+  });
 
 export interface ComputeEngineDisksTargetDefaults {
   /** The details of each Persistent Disk to create. */
@@ -2055,18 +1753,14 @@ export interface ComputeEngineDisksTargetDefaults {
   targetProject?: string;
 }
 
-export const ComputeEngineDisksTargetDefaults: Schema.Schema<ComputeEngineDisksTargetDefaults> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      disks: Schema.optional(Schema.Array(PersistentDiskDefaults)),
-      vmTargetDefaults: Schema.optional(DisksMigrationVmTargetDefaults),
-      disksTargetDefaults: Schema.optional(DisksMigrationDisksTargetDefaults),
-      zone: Schema.optional(Schema.String),
-      targetProject: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ComputeEngineDisksTargetDefaults",
-  }) as any as Schema.Schema<ComputeEngineDisksTargetDefaults>;
+export const ComputeEngineDisksTargetDefaults =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    disks: Schema.optional(Schema.Array(PersistentDiskDefaults)),
+    vmTargetDefaults: Schema.optional(DisksMigrationVmTargetDefaults),
+    disksTargetDefaults: Schema.optional(DisksMigrationDisksTargetDefaults),
+    zone: Schema.optional(Schema.String),
+    targetProject: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ComputeEngineDisksTargetDefaults" });
 
 export interface ComputeEngineTargetDefaults {
   /** The license type to use in OS adaptation. */
@@ -2140,38 +1834,34 @@ export interface ComputeEngineTargetDefaults {
     | (string & {});
 }
 
-export const ComputeEngineTargetDefaults: Schema.Schema<ComputeEngineTargetDefaults> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      licenseType: Schema.optional(Schema.String),
-      machineType: Schema.optional(Schema.String),
-      appliedLicense: Schema.optional(AppliedLicense),
-      computeScheduling: Schema.optional(ComputeScheduling),
-      enableVtpm: Schema.optional(Schema.Boolean),
-      vmName: Schema.optional(Schema.String),
-      storagePool: Schema.optional(Schema.String),
-      zone: Schema.optional(Schema.String),
-      serviceAccount: Schema.optional(Schema.String),
-      bootConversion: Schema.optional(Schema.String),
-      bootOption: Schema.optional(Schema.String),
-      hostname: Schema.optional(Schema.String),
-      machineTypeSeries: Schema.optional(Schema.String),
-      adaptationModifiers: Schema.optional(Schema.Array(AdaptationModifier)),
-      additionalLicenses: Schema.optional(Schema.Array(Schema.String)),
-      enableIntegrityMonitoring: Schema.optional(Schema.Boolean),
-      diskReplicaZones: Schema.optional(Schema.Array(Schema.String)),
-      secureBoot: Schema.optional(Schema.Boolean),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      encryption: Schema.optional(Encryption),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      networkTags: Schema.optional(Schema.Array(Schema.String)),
-      networkInterfaces: Schema.optional(Schema.Array(NetworkInterface)),
-      targetProject: Schema.optional(Schema.String),
-      diskType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ComputeEngineTargetDefaults",
-  }) as any as Schema.Schema<ComputeEngineTargetDefaults>;
+export const ComputeEngineTargetDefaults =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    licenseType: Schema.optional(Schema.String),
+    machineType: Schema.optional(Schema.String),
+    appliedLicense: Schema.optional(AppliedLicense),
+    computeScheduling: Schema.optional(ComputeScheduling),
+    enableVtpm: Schema.optional(Schema.Boolean),
+    vmName: Schema.optional(Schema.String),
+    storagePool: Schema.optional(Schema.String),
+    zone: Schema.optional(Schema.String),
+    serviceAccount: Schema.optional(Schema.String),
+    bootConversion: Schema.optional(Schema.String),
+    bootOption: Schema.optional(Schema.String),
+    hostname: Schema.optional(Schema.String),
+    machineTypeSeries: Schema.optional(Schema.String),
+    adaptationModifiers: Schema.optional(Schema.Array(AdaptationModifier)),
+    additionalLicenses: Schema.optional(Schema.Array(Schema.String)),
+    enableIntegrityMonitoring: Schema.optional(Schema.Boolean),
+    diskReplicaZones: Schema.optional(Schema.Array(Schema.String)),
+    secureBoot: Schema.optional(Schema.Boolean),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    encryption: Schema.optional(Encryption),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    networkTags: Schema.optional(Schema.Array(Schema.String)),
+    networkInterfaces: Schema.optional(Schema.Array(NetworkInterface)),
+    targetProject: Schema.optional(Schema.String),
+    diskType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ComputeEngineTargetDefaults" });
 
 export interface VmwareDiskDetails {
   /** Output only. The disk label. */
@@ -2182,16 +1872,11 @@ export interface VmwareDiskDetails {
   diskNumber?: number;
 }
 
-export const VmwareDiskDetails: Schema.Schema<VmwareDiskDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      label: Schema.optional(Schema.String),
-      sizeGb: Schema.optional(Schema.String),
-      diskNumber: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "VmwareDiskDetails",
-  }) as any as Schema.Schema<VmwareDiskDetails>;
+export const VmwareDiskDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  label: Schema.optional(Schema.String),
+  sizeGb: Schema.optional(Schema.String),
+  diskNumber: Schema.optional(Schema.Number),
+}).annotate({ identifier: "VmwareDiskDetails" });
 
 export interface VmwareSourceVmDetails {
   /** Output only. The firmware type of the source VM. */
@@ -2210,25 +1895,20 @@ export interface VmwareSourceVmDetails {
   disks?: Array<VmwareDiskDetails>;
 }
 
-export const VmwareSourceVmDetails: Schema.Schema<VmwareSourceVmDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      firmware: Schema.optional(Schema.String),
-      vmCapabilitiesInfo: Schema.optional(VmCapabilities),
-      architecture: Schema.optional(Schema.String),
-      committedStorageBytes: Schema.optional(Schema.String),
-      disks: Schema.optional(Schema.Array(VmwareDiskDetails)),
-    }),
-  ).annotate({
-    identifier: "VmwareSourceVmDetails",
-  }) as any as Schema.Schema<VmwareSourceVmDetails>;
+export const VmwareSourceVmDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  firmware: Schema.optional(Schema.String),
+  vmCapabilitiesInfo: Schema.optional(VmCapabilities),
+  architecture: Schema.optional(Schema.String),
+  committedStorageBytes: Schema.optional(Schema.String),
+  disks: Schema.optional(Schema.Array(VmwareDiskDetails)),
+}).annotate({ identifier: "VmwareSourceVmDetails" });
 
 export interface ShuttingDownSourceVMStep {}
 
-export const ShuttingDownSourceVMStep: Schema.Schema<ShuttingDownSourceVMStep> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const ShuttingDownSourceVMStep =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ShuttingDownSourceVMStep",
-  }) as any as Schema.Schema<ShuttingDownSourceVMStep>;
+  });
 
 export interface CutoverStep {
   /** Preparing VM disks step. */
@@ -2247,20 +1927,15 @@ export interface CutoverStep {
   instantiatingMigratedVm?: InstantiatingMigratedVMStep;
 }
 
-export const CutoverStep: Schema.Schema<CutoverStep> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      preparingVmDisks: Schema.optional(PreparingVMDisksStep),
-      finalSync: Schema.optional(ReplicationCycle),
-      shuttingDownSourceVm: Schema.optional(ShuttingDownSourceVMStep),
-      startTime: Schema.optional(Schema.String),
-      previousReplicationCycle: Schema.optional(ReplicationCycle),
-      endTime: Schema.optional(Schema.String),
-      instantiatingMigratedVm: Schema.optional(InstantiatingMigratedVMStep),
-    }),
-  ).annotate({
-    identifier: "CutoverStep",
-  }) as any as Schema.Schema<CutoverStep>;
+export const CutoverStep = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  preparingVmDisks: Schema.optional(PreparingVMDisksStep),
+  finalSync: Schema.optional(ReplicationCycle),
+  shuttingDownSourceVm: Schema.optional(ShuttingDownSourceVMStep),
+  startTime: Schema.optional(Schema.String),
+  previousReplicationCycle: Schema.optional(ReplicationCycle),
+  endTime: Schema.optional(Schema.String),
+  instantiatingMigratedVm: Schema.optional(InstantiatingMigratedVMStep),
+}).annotate({ identifier: "CutoverStep" });
 
 export interface CutoverJob {
   /** Output only. The current progress in percentage of the cutover job. */
@@ -2296,38 +1971,30 @@ export interface CutoverJob {
   steps?: Array<CutoverStep>;
 }
 
-export const CutoverJob: Schema.Schema<CutoverJob> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      progressPercent: Schema.optional(Schema.Number),
-      error: Schema.optional(Status),
-      stateTime: Schema.optional(Schema.String),
-      computeEngineTargetDetails: Schema.optional(ComputeEngineTargetDetails),
-      stateMessage: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      computeEngineDisksTargetDetails: Schema.optional(
-        ComputeEngineDisksTargetDetails,
-      ),
-      state: Schema.optional(Schema.String),
-      steps: Schema.optional(Schema.Array(CutoverStep)),
-    }),
-  ).annotate({ identifier: "CutoverJob" }) as any as Schema.Schema<CutoverJob>;
+export const CutoverJob = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  progressPercent: Schema.optional(Schema.Number),
+  error: Schema.optional(Status),
+  stateTime: Schema.optional(Schema.String),
+  computeEngineTargetDetails: Schema.optional(ComputeEngineTargetDetails),
+  stateMessage: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  computeEngineDisksTargetDetails: Schema.optional(
+    ComputeEngineDisksTargetDetails,
+  ),
+  state: Schema.optional(Schema.String),
+  steps: Schema.optional(Schema.Array(CutoverStep)),
+}).annotate({ identifier: "CutoverJob" });
 
 export interface CutoverForecast {
   /** Output only. Estimation of the CutoverJob duration. */
   estimatedCutoverJobDuration?: string;
 }
 
-export const CutoverForecast: Schema.Schema<CutoverForecast> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      estimatedCutoverJobDuration: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CutoverForecast",
-  }) as any as Schema.Schema<CutoverForecast>;
+export const CutoverForecast = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  estimatedCutoverJobDuration: Schema.optional(Schema.String),
+}).annotate({ identifier: "CutoverForecast" });
 
 export interface AwsDiskDetails {
   /** Output only. Size in GB. */
@@ -2338,16 +2005,11 @@ export interface AwsDiskDetails {
   volumeId?: string;
 }
 
-export const AwsDiskDetails: Schema.Schema<AwsDiskDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sizeGb: Schema.optional(Schema.String),
-      diskNumber: Schema.optional(Schema.Number),
-      volumeId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AwsDiskDetails",
-  }) as any as Schema.Schema<AwsDiskDetails>;
+export const AwsDiskDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sizeGb: Schema.optional(Schema.String),
+  diskNumber: Schema.optional(Schema.Number),
+  volumeId: Schema.optional(Schema.String),
+}).annotate({ identifier: "AwsDiskDetails" });
 
 export interface AwsSourceVmDetails {
   /** Output only. Information about VM capabilities needed for some Compute Engine features. */
@@ -2366,18 +2028,13 @@ export interface AwsSourceVmDetails {
   firmware?: "FIRMWARE_UNSPECIFIED" | "EFI" | "BIOS" | (string & {});
 }
 
-export const AwsSourceVmDetails: Schema.Schema<AwsSourceVmDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      vmCapabilitiesInfo: Schema.optional(VmCapabilities),
-      committedStorageBytes: Schema.optional(Schema.String),
-      disks: Schema.optional(Schema.Array(AwsDiskDetails)),
-      architecture: Schema.optional(Schema.String),
-      firmware: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AwsSourceVmDetails",
-  }) as any as Schema.Schema<AwsSourceVmDetails>;
+export const AwsSourceVmDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  vmCapabilitiesInfo: Schema.optional(VmCapabilities),
+  committedStorageBytes: Schema.optional(Schema.String),
+  disks: Schema.optional(Schema.Array(AwsDiskDetails)),
+  architecture: Schema.optional(Schema.String),
+  firmware: Schema.optional(Schema.String),
+}).annotate({ identifier: "AwsSourceVmDetails" });
 
 export interface AzureDiskDetails {
   /** Output only. The ordinal number of the disk. */
@@ -2388,16 +2045,11 @@ export interface AzureDiskDetails {
   sizeGb?: string;
 }
 
-export const AzureDiskDetails: Schema.Schema<AzureDiskDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      diskNumber: Schema.optional(Schema.Number),
-      diskId: Schema.optional(Schema.String),
-      sizeGb: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AzureDiskDetails",
-  }) as any as Schema.Schema<AzureDiskDetails>;
+export const AzureDiskDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  diskNumber: Schema.optional(Schema.Number),
+  diskId: Schema.optional(Schema.String),
+  sizeGb: Schema.optional(Schema.String),
+}).annotate({ identifier: "AzureDiskDetails" });
 
 export interface AzureSourceVmDetails {
   /** Output only. The firmware type of the source VM. */
@@ -2416,18 +2068,13 @@ export interface AzureSourceVmDetails {
     | (string & {});
 }
 
-export const AzureSourceVmDetails: Schema.Schema<AzureSourceVmDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      firmware: Schema.optional(Schema.String),
-      vmCapabilitiesInfo: Schema.optional(VmCapabilities),
-      committedStorageBytes: Schema.optional(Schema.String),
-      disks: Schema.optional(Schema.Array(AzureDiskDetails)),
-      architecture: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AzureSourceVmDetails",
-  }) as any as Schema.Schema<AzureSourceVmDetails>;
+export const AzureSourceVmDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  firmware: Schema.optional(Schema.String),
+  vmCapabilitiesInfo: Schema.optional(VmCapabilities),
+  committedStorageBytes: Schema.optional(Schema.String),
+  disks: Schema.optional(Schema.Array(AzureDiskDetails)),
+  architecture: Schema.optional(Schema.String),
+}).annotate({ identifier: "AzureSourceVmDetails" });
 
 export interface MigratingVm {
   /** Output only. The recent clone jobs performed on the migrating VM. This field holds the vm's last completed clone job and the vm's running clone job, if one exists. Note: To have this field populated you need to explicitly request it via the "view" parameter of the Get/List request. */
@@ -2495,39 +2142,34 @@ export interface MigratingVm {
   azureSourceVmDetails?: AzureSourceVmDetails;
 }
 
-export const MigratingVm: Schema.Schema<MigratingVm> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      recentCloneJobs: Schema.optional(Schema.Array(CloneJob)),
-      updateTime: Schema.optional(Schema.String),
-      lastReplicationCycle: Schema.optional(ReplicationCycle),
-      policy: Schema.optional(SchedulePolicy),
-      error: Schema.optional(Status),
-      sourceVmId: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      lastSync: Schema.optional(ReplicationSync),
-      expiration: Schema.optional(Expiration),
-      group: Schema.optional(Schema.String),
-      computeEngineDisksTargetDefaults: Schema.optional(
-        ComputeEngineDisksTargetDefaults,
-      ),
-      description: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      computeEngineTargetDefaults: Schema.optional(ComputeEngineTargetDefaults),
-      vmwareSourceVmDetails: Schema.optional(VmwareSourceVmDetails),
-      recentCutoverJobs: Schema.optional(Schema.Array(CutoverJob)),
-      cutoverForecast: Schema.optional(CutoverForecast),
-      currentSyncInfo: Schema.optional(ReplicationCycle),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      awsSourceVmDetails: Schema.optional(AwsSourceVmDetails),
-      stateTime: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      azureSourceVmDetails: Schema.optional(AzureSourceVmDetails),
-    }),
-  ).annotate({
-    identifier: "MigratingVm",
-  }) as any as Schema.Schema<MigratingVm>;
+export const MigratingVm = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  recentCloneJobs: Schema.optional(Schema.Array(CloneJob)),
+  updateTime: Schema.optional(Schema.String),
+  lastReplicationCycle: Schema.optional(ReplicationCycle),
+  policy: Schema.optional(SchedulePolicy),
+  error: Schema.optional(Status),
+  sourceVmId: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  lastSync: Schema.optional(ReplicationSync),
+  expiration: Schema.optional(Expiration),
+  group: Schema.optional(Schema.String),
+  computeEngineDisksTargetDefaults: Schema.optional(
+    ComputeEngineDisksTargetDefaults,
+  ),
+  description: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  computeEngineTargetDefaults: Schema.optional(ComputeEngineTargetDefaults),
+  vmwareSourceVmDetails: Schema.optional(VmwareSourceVmDetails),
+  recentCutoverJobs: Schema.optional(Schema.Array(CutoverJob)),
+  cutoverForecast: Schema.optional(CutoverForecast),
+  currentSyncInfo: Schema.optional(ReplicationCycle),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  awsSourceVmDetails: Schema.optional(AwsSourceVmDetails),
+  stateTime: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  azureSourceVmDetails: Schema.optional(AzureSourceVmDetails),
+}).annotate({ identifier: "MigratingVm" });
 
 export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
@@ -2542,16 +2184,13 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      name: Schema.optional(Schema.String),
-      done: Schema.optional(Schema.Boolean),
-      error: Schema.optional(Status),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  name: Schema.optional(Schema.String),
+  done: Schema.optional(Schema.Boolean),
+  error: Schema.optional(Status),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Operation" });
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -2562,16 +2201,13 @@ export interface ListOperationsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(Schema.Array(Operation)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    operations: Schema.optional(Schema.Array(Operation)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 export interface VmwareVmDetails {
   /** The id of the vCenter's datacenter this VM is contained in. */
@@ -2611,40 +2247,30 @@ export interface VmwareVmDetails {
   bootOption?: "BOOT_OPTION_UNSPECIFIED" | "EFI" | "BIOS" | (string & {});
 }
 
-export const VmwareVmDetails: Schema.Schema<VmwareVmDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      datacenterId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      cpuCount: Schema.optional(Schema.Number),
-      vmId: Schema.optional(Schema.String),
-      diskCount: Schema.optional(Schema.Number),
-      powerState: Schema.optional(Schema.String),
-      architecture: Schema.optional(Schema.String),
-      memoryMb: Schema.optional(Schema.Number),
-      datacenterDescription: Schema.optional(Schema.String),
-      uuid: Schema.optional(Schema.String),
-      committedStorageMb: Schema.optional(Schema.String),
-      guestDescription: Schema.optional(Schema.String),
-      bootOption: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VmwareVmDetails",
-  }) as any as Schema.Schema<VmwareVmDetails>;
+export const VmwareVmDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  datacenterId: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  cpuCount: Schema.optional(Schema.Number),
+  vmId: Schema.optional(Schema.String),
+  diskCount: Schema.optional(Schema.Number),
+  powerState: Schema.optional(Schema.String),
+  architecture: Schema.optional(Schema.String),
+  memoryMb: Schema.optional(Schema.Number),
+  datacenterDescription: Schema.optional(Schema.String),
+  uuid: Schema.optional(Schema.String),
+  committedStorageMb: Schema.optional(Schema.String),
+  guestDescription: Schema.optional(Schema.String),
+  bootOption: Schema.optional(Schema.String),
+}).annotate({ identifier: "VmwareVmDetails" });
 
 export interface VmwareVmsDetails {
   /** The details of the vmware VMs. */
   details?: Array<VmwareVmDetails>;
 }
 
-export const VmwareVmsDetails: Schema.Schema<VmwareVmsDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      details: Schema.optional(Schema.Array(VmwareVmDetails)),
-    }),
-  ).annotate({
-    identifier: "VmwareVmsDetails",
-  }) as any as Schema.Schema<VmwareVmsDetails>;
+export const VmwareVmsDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  details: Schema.optional(Schema.Array(VmwareVmDetails)),
+}).annotate({ identifier: "VmwareVmsDetails" });
 
 export interface FetchInventoryResponse {
   /** Output only. The timestamp when the source was last queried (if the result is from the cache). */
@@ -2659,32 +2285,24 @@ export interface FetchInventoryResponse {
   vmwareVms?: VmwareVmsDetails;
 }
 
-export const FetchInventoryResponse: Schema.Schema<FetchInventoryResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateTime: Schema.optional(Schema.String),
-      awsVms: Schema.optional(AwsVmsDetails),
-      azureVms: Schema.optional(AzureVmsDetails),
-      nextPageToken: Schema.optional(Schema.String),
-      vmwareVms: Schema.optional(VmwareVmsDetails),
-    }),
-  ).annotate({
-    identifier: "FetchInventoryResponse",
-  }) as any as Schema.Schema<FetchInventoryResponse>;
+export const FetchInventoryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    updateTime: Schema.optional(Schema.String),
+    awsVms: Schema.optional(AwsVmsDetails),
+    azureVms: Schema.optional(AzureVmsDetails),
+    nextPageToken: Schema.optional(Schema.String),
+    vmwareVms: Schema.optional(VmwareVmsDetails),
+  },
+).annotate({ identifier: "FetchInventoryResponse" });
 
 export interface SourceStorageResource {
   /** Source AWS volume details. */
   awsDiskDetails?: AwsSourceDiskDetails;
 }
 
-export const SourceStorageResource: Schema.Schema<SourceStorageResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      awsDiskDetails: Schema.optional(AwsSourceDiskDetails),
-    }),
-  ).annotate({
-    identifier: "SourceStorageResource",
-  }) as any as Schema.Schema<SourceStorageResource>;
+export const SourceStorageResource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  awsDiskDetails: Schema.optional(AwsSourceDiskDetails),
+}).annotate({ identifier: "SourceStorageResource" });
 
 export interface FetchStorageInventoryResponse {
   /** Output only. The timestamp when the source was last queried (if the result is from the cache). */
@@ -2695,23 +2313,18 @@ export interface FetchStorageInventoryResponse {
   nextPageToken?: string;
 }
 
-export const FetchStorageInventoryResponse: Schema.Schema<FetchStorageInventoryResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateTime: Schema.optional(Schema.String),
-      resources: Schema.optional(Schema.Array(SourceStorageResource)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FetchStorageInventoryResponse",
-  }) as any as Schema.Schema<FetchStorageInventoryResponse>;
+export const FetchStorageInventoryResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateTime: Schema.optional(Schema.String),
+    resources: Schema.optional(Schema.Array(SourceStorageResource)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "FetchStorageInventoryResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface ListSourcesResponse {
   /** Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -2722,23 +2335,18 @@ export interface ListSourcesResponse {
   unreachable?: Array<string>;
 }
 
-export const ListSourcesResponse: Schema.Schema<ListSourcesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      sources: Schema.optional(Schema.Array(Source)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListSourcesResponse",
-  }) as any as Schema.Schema<ListSourcesResponse>;
+export const ListSourcesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  sources: Schema.optional(Schema.Array(Source)),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ListSourcesResponse" });
 
 export interface RunDiskMigrationJobRequest {}
 
-export const RunDiskMigrationJobRequest: Schema.Schema<RunDiskMigrationJobRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const RunDiskMigrationJobRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RunDiskMigrationJobRequest",
-  }) as any as Schema.Schema<RunDiskMigrationJobRequest>;
+  });
 
 export interface VmUtilizationInfo {
   /** The description of the VM in a Source of type Vmware. */
@@ -2749,16 +2357,11 @@ export interface VmUtilizationInfo {
   vmId?: string;
 }
 
-export const VmUtilizationInfo: Schema.Schema<VmUtilizationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      vmwareVmDetails: Schema.optional(VmwareVmDetails),
-      utilization: Schema.optional(VmUtilizationMetrics),
-      vmId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VmUtilizationInfo",
-  }) as any as Schema.Schema<VmUtilizationInfo>;
+export const VmUtilizationInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  vmwareVmDetails: Schema.optional(VmwareVmDetails),
+  utilization: Schema.optional(VmUtilizationMetrics),
+  vmId: Schema.optional(Schema.String),
+}).annotate({ identifier: "VmUtilizationInfo" });
 
 export interface UtilizationReport {
   /** Output only. Current state of the report. */
@@ -2793,23 +2396,18 @@ export interface UtilizationReport {
   name?: string;
 }
 
-export const UtilizationReport: Schema.Schema<UtilizationReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      vms: Schema.optional(Schema.Array(VmUtilizationInfo)),
-      vmCount: Schema.optional(Schema.Number),
-      createTime: Schema.optional(Schema.String),
-      frameEndTime: Schema.optional(Schema.String),
-      timeFrame: Schema.optional(Schema.String),
-      error: Schema.optional(Status),
-      stateTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UtilizationReport",
-  }) as any as Schema.Schema<UtilizationReport>;
+export const UtilizationReport = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  vms: Schema.optional(Schema.Array(VmUtilizationInfo)),
+  vmCount: Schema.optional(Schema.Number),
+  createTime: Schema.optional(Schema.String),
+  frameEndTime: Schema.optional(Schema.String),
+  timeFrame: Schema.optional(Schema.String),
+  error: Schema.optional(Status),
+  stateTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "UtilizationReport" });
 
 export interface ListUtilizationReportsResponse {
   /** Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -2820,23 +2418,18 @@ export interface ListUtilizationReportsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListUtilizationReportsResponse: Schema.Schema<ListUtilizationReportsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      utilizationReports: Schema.optional(Schema.Array(UtilizationReport)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListUtilizationReportsResponse",
-  }) as any as Schema.Schema<ListUtilizationReportsResponse>;
+export const ListUtilizationReportsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    utilizationReports: Schema.optional(Schema.Array(UtilizationReport)),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListUtilizationReportsResponse" });
 
 export interface StartMigrationRequest {}
 
-export const StartMigrationRequest: Schema.Schema<StartMigrationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "StartMigrationRequest",
-  }) as any as Schema.Schema<StartMigrationRequest>;
+export const StartMigrationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "StartMigrationRequest" });
 
 export interface Group {
   /** Output only. The Group name. */
@@ -2857,17 +2450,14 @@ export interface Group {
   createTime?: string;
 }
 
-export const Group: Schema.Schema<Group> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      migrationTargetType: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Group" }) as any as Schema.Schema<Group>;
+export const Group = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  migrationTargetType: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Group" });
 
 export interface ListGroupsResponse {
   /** Output only. The list of groups response. */
@@ -2878,16 +2468,11 @@ export interface ListGroupsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListGroupsResponse: Schema.Schema<ListGroupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      groups: Schema.optional(Schema.Array(Group)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListGroupsResponse",
-  }) as any as Schema.Schema<ListGroupsResponse>;
+export const ListGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groups: Schema.optional(Schema.Array(Group)),
+  nextPageToken: Schema.optional(Schema.String),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ListGroupsResponse" });
 
 export interface ListMigratingVmsResponse {
   /** Output only. The list of Migrating VMs response. */
@@ -2898,16 +2483,12 @@ export interface ListMigratingVmsResponse {
   nextPageToken?: string;
 }
 
-export const ListMigratingVmsResponse: Schema.Schema<ListMigratingVmsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      migratingVms: Schema.optional(Schema.Array(MigratingVm)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListMigratingVmsResponse",
-  }) as any as Schema.Schema<ListMigratingVmsResponse>;
+export const ListMigratingVmsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    migratingVms: Schema.optional(Schema.Array(MigratingVm)),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListMigratingVmsResponse" });
 
 export interface ListCutoverJobsResponse {
   /** Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -2918,16 +2499,12 @@ export interface ListCutoverJobsResponse {
   cutoverJobs?: Array<CutoverJob>;
 }
 
-export const ListCutoverJobsResponse: Schema.Schema<ListCutoverJobsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      cutoverJobs: Schema.optional(Schema.Array(CutoverJob)),
-    }),
-  ).annotate({
-    identifier: "ListCutoverJobsResponse",
-  }) as any as Schema.Schema<ListCutoverJobsResponse>;
+export const ListCutoverJobsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    cutoverJobs: Schema.optional(Schema.Array(CutoverJob)),
+  }).annotate({ identifier: "ListCutoverJobsResponse" });
 
 export interface Location {
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
@@ -2942,16 +2519,13 @@ export interface Location {
   displayName?: string;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      locationId: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  locationId: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  displayName: Schema.optional(Schema.String),
+}).annotate({ identifier: "Location" });
 
 export interface ListLocationsResponse {
   /** The standard List next-page token. */
@@ -2960,29 +2534,20 @@ export interface ListLocationsResponse {
   locations?: Array<Location>;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      locations: Schema.optional(Schema.Array(Location)),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  locations: Schema.optional(Schema.Array(Location)),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface UpgradeApplianceRequest {
   /** A request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes after the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
 
-export const UpgradeApplianceRequest: Schema.Schema<UpgradeApplianceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpgradeApplianceRequest",
-  }) as any as Schema.Schema<UpgradeApplianceRequest>;
+export const UpgradeApplianceRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UpgradeApplianceRequest" });
 
 export interface ListDatacenterConnectorsResponse {
   /** Output only. Locations that could not be reached. */
@@ -2993,30 +2558,22 @@ export interface ListDatacenterConnectorsResponse {
   nextPageToken?: string;
 }
 
-export const ListDatacenterConnectorsResponse: Schema.Schema<ListDatacenterConnectorsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      datacenterConnectors: Schema.optional(Schema.Array(DatacenterConnector)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListDatacenterConnectorsResponse",
-  }) as any as Schema.Schema<ListDatacenterConnectorsResponse>;
+export const ListDatacenterConnectorsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    datacenterConnectors: Schema.optional(Schema.Array(DatacenterConnector)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListDatacenterConnectorsResponse" });
 
 export interface AddGroupMigrationRequest {
   /** The full path name of the MigratingVm to add. */
   migratingVm?: string;
 }
 
-export const AddGroupMigrationRequest: Schema.Schema<AddGroupMigrationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      migratingVm: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AddGroupMigrationRequest",
-  }) as any as Schema.Schema<AddGroupMigrationRequest>;
+export const AddGroupMigrationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    migratingVm: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AddGroupMigrationRequest" });
 
 export interface ListImageImportsResponse {
   /** Output only. The list of target response. */
@@ -3027,44 +2584,35 @@ export interface ListImageImportsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListImageImportsResponse: Schema.Schema<ListImageImportsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      imageImports: Schema.optional(Schema.Array(ImageImport)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListImageImportsResponse",
-  }) as any as Schema.Schema<ListImageImportsResponse>;
+export const ListImageImportsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    imageImports: Schema.optional(Schema.Array(ImageImport)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListImageImportsResponse" });
 
 export interface CancelDiskMigrationJobRequest {}
 
-export const CancelDiskMigrationJobRequest: Schema.Schema<CancelDiskMigrationJobRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const CancelDiskMigrationJobRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelDiskMigrationJobRequest",
-  }) as any as Schema.Schema<CancelDiskMigrationJobRequest>;
+  });
 
 export interface RemoveGroupMigrationRequest {
   /** The MigratingVm to remove. */
   migratingVm?: string;
 }
 
-export const RemoveGroupMigrationRequest: Schema.Schema<RemoveGroupMigrationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      migratingVm: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RemoveGroupMigrationRequest",
-  }) as any as Schema.Schema<RemoveGroupMigrationRequest>;
+export const RemoveGroupMigrationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    migratingVm: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RemoveGroupMigrationRequest" });
 
 export interface PauseMigrationRequest {}
 
-export const PauseMigrationRequest: Schema.Schema<PauseMigrationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "PauseMigrationRequest",
-  }) as any as Schema.Schema<PauseMigrationRequest>;
+export const PauseMigrationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "PauseMigrationRequest" });
 
 export interface ListImageImportJobsResponse {
   /** Output only. The list of target response. */
@@ -3075,16 +2623,12 @@ export interface ListImageImportJobsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListImageImportJobsResponse: Schema.Schema<ListImageImportJobsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      imageImportJobs: Schema.optional(Schema.Array(ImageImportJob)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListImageImportJobsResponse",
-  }) as any as Schema.Schema<ListImageImportJobsResponse>;
+export const ListImageImportJobsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    imageImportJobs: Schema.optional(Schema.Array(ImageImportJob)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListImageImportJobsResponse" });
 
 export interface MigrationError {
   /** Output only. The localized error message. */
@@ -3112,25 +2656,19 @@ export interface MigrationError {
   errorTime?: string;
 }
 
-export const MigrationError: Schema.Schema<MigrationError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errorMessage: Schema.optional(LocalizedMessage),
-      code: Schema.optional(Schema.String),
-      actionItem: Schema.optional(LocalizedMessage),
-      helpLinks: Schema.optional(Schema.Array(Link)),
-      errorTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MigrationError",
-  }) as any as Schema.Schema<MigrationError>;
+export const MigrationError = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  errorMessage: Schema.optional(LocalizedMessage),
+  code: Schema.optional(Schema.String),
+  actionItem: Schema.optional(LocalizedMessage),
+  helpLinks: Schema.optional(Schema.Array(Link)),
+  errorTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "MigrationError" });
 
 export interface ResumeMigrationRequest {}
 
-export const ResumeMigrationRequest: Schema.Schema<ResumeMigrationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "ResumeMigrationRequest",
-  }) as any as Schema.Schema<ResumeMigrationRequest>;
+export const ResumeMigrationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "ResumeMigrationRequest" });
 
 export interface ListDiskMigrationJobsResponse {
   /** Optional. Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -3141,16 +2679,12 @@ export interface ListDiskMigrationJobsResponse {
   diskMigrationJobs?: Array<DiskMigrationJob>;
 }
 
-export const ListDiskMigrationJobsResponse: Schema.Schema<ListDiskMigrationJobsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      diskMigrationJobs: Schema.optional(Schema.Array(DiskMigrationJob)),
-    }),
-  ).annotate({
-    identifier: "ListDiskMigrationJobsResponse",
-  }) as any as Schema.Schema<ListDiskMigrationJobsResponse>;
+export const ListDiskMigrationJobsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    diskMigrationJobs: Schema.optional(Schema.Array(DiskMigrationJob)),
+  }).annotate({ identifier: "ListDiskMigrationJobsResponse" });
 
 export interface OperationMetadata {
   /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
@@ -3169,20 +2703,15 @@ export interface OperationMetadata {
   verb?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      apiVersion: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  requestedCancellation: Schema.optional(Schema.Boolean),
+  apiVersion: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  statusMessage: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  verb: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationMetadata" });
 
 export interface ListCloneJobsResponse {
   /** Output only. A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -3193,30 +2722,24 @@ export interface ListCloneJobsResponse {
   cloneJobs?: Array<CloneJob>;
 }
 
-export const ListCloneJobsResponse: Schema.Schema<ListCloneJobsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      cloneJobs: Schema.optional(Schema.Array(CloneJob)),
-    }),
-  ).annotate({
-    identifier: "ListCloneJobsResponse",
-  }) as any as Schema.Schema<ListCloneJobsResponse>;
+export const ListCloneJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+  cloneJobs: Schema.optional(Schema.Array(CloneJob)),
+}).annotate({ identifier: "ListCloneJobsResponse" });
 
 export interface CancelCutoverJobRequest {}
 
-export const CancelCutoverJobRequest: Schema.Schema<CancelCutoverJobRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const CancelCutoverJobRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelCutoverJobRequest",
-  }) as any as Schema.Schema<CancelCutoverJobRequest>;
+  });
 
 export interface CancelCloneJobRequest {}
 
-export const CancelCloneJobRequest: Schema.Schema<CancelCloneJobRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelCloneJobRequest",
-  }) as any as Schema.Schema<CancelCloneJobRequest>;
+export const CancelCloneJobRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelCloneJobRequest" });
 
 // ==========================================================================
 // Operations

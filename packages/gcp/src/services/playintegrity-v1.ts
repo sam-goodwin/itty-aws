@@ -31,16 +31,11 @@ export interface PcRequestDetails {
   requestTime?: string;
 }
 
-export const PcRequestDetails: Schema.Schema<PcRequestDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestPackageName: Schema.optional(Schema.String),
-      requestHash: Schema.optional(Schema.String),
-      requestTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PcRequestDetails",
-  }) as any as Schema.Schema<PcRequestDetails>;
+export const PcRequestDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  requestPackageName: Schema.optional(Schema.String),
+  requestHash: Schema.optional(Schema.String),
+  requestTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "PcRequestDetails" });
 
 export interface PcDeviceIntegrity {
   /** Details about the integrity of the device the app is running on. */
@@ -51,14 +46,9 @@ export interface PcDeviceIntegrity {
   >;
 }
 
-export const PcDeviceIntegrity: Schema.Schema<PcDeviceIntegrity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deviceRecognitionVerdict: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "PcDeviceIntegrity",
-  }) as any as Schema.Schema<PcDeviceIntegrity>;
+export const PcDeviceIntegrity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  deviceRecognitionVerdict: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "PcDeviceIntegrity" });
 
 export interface PcAccountDetails {
   /** Required. Details about the licensing status of the user for the app in the scope. */
@@ -70,28 +60,18 @@ export interface PcAccountDetails {
     | (string & {});
 }
 
-export const PcAccountDetails: Schema.Schema<PcAccountDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      appLicensingVerdict: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PcAccountDetails",
-  }) as any as Schema.Schema<PcAccountDetails>;
+export const PcAccountDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  appLicensingVerdict: Schema.optional(Schema.String),
+}).annotate({ identifier: "PcAccountDetails" });
 
 export interface PcTestingDetails {
   /** Indicates that the information contained in this payload is a testing response that is statically overridden for a tester. */
   isTestingResponse?: boolean;
 }
 
-export const PcTestingDetails: Schema.Schema<PcTestingDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      isTestingResponse: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "PcTestingDetails",
-  }) as any as Schema.Schema<PcTestingDetails>;
+export const PcTestingDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  isTestingResponse: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "PcTestingDetails" });
 
 export interface PcTokenPayloadExternal {
   /** Required. Details about the integrity request. */
@@ -104,31 +84,24 @@ export interface PcTokenPayloadExternal {
   testingDetails?: PcTestingDetails;
 }
 
-export const PcTokenPayloadExternal: Schema.Schema<PcTokenPayloadExternal> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestDetails: Schema.optional(PcRequestDetails),
-      deviceIntegrity: Schema.optional(PcDeviceIntegrity),
-      accountDetails: Schema.optional(PcAccountDetails),
-      testingDetails: Schema.optional(PcTestingDetails),
-    }),
-  ).annotate({
-    identifier: "PcTokenPayloadExternal",
-  }) as any as Schema.Schema<PcTokenPayloadExternal>;
+export const PcTokenPayloadExternal = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    requestDetails: Schema.optional(PcRequestDetails),
+    deviceIntegrity: Schema.optional(PcDeviceIntegrity),
+    accountDetails: Schema.optional(PcAccountDetails),
+    testingDetails: Schema.optional(PcTestingDetails),
+  },
+).annotate({ identifier: "PcTokenPayloadExternal" });
 
 export interface DecodePcIntegrityTokenResponse {
   /** Plain token payload generated from the decoded integrity token. */
   tokenPayloadExternal?: PcTokenPayloadExternal;
 }
 
-export const DecodePcIntegrityTokenResponse: Schema.Schema<DecodePcIntegrityTokenResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tokenPayloadExternal: Schema.optional(PcTokenPayloadExternal),
-    }),
-  ).annotate({
-    identifier: "DecodePcIntegrityTokenResponse",
-  }) as any as Schema.Schema<DecodePcIntegrityTokenResponse>;
+export const DecodePcIntegrityTokenResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tokenPayloadExternal: Schema.optional(PcTokenPayloadExternal),
+  }).annotate({ identifier: "DecodePcIntegrityTokenResponse" });
 
 export interface AppAccessRiskVerdict {
   /** List of detected app types signalled for App Access Risk. */
@@ -146,14 +119,9 @@ export interface AppAccessRiskVerdict {
   >;
 }
 
-export const AppAccessRiskVerdict: Schema.Schema<AppAccessRiskVerdict> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      appsDetected: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AppAccessRiskVerdict",
-  }) as any as Schema.Schema<AppAccessRiskVerdict>;
+export const AppAccessRiskVerdict = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  appsDetected: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "AppAccessRiskVerdict" });
 
 export interface EnvironmentDetails {
   /** The evaluation of Play Protect verdict. */
@@ -170,29 +138,19 @@ export interface EnvironmentDetails {
   appAccessRiskVerdict?: AppAccessRiskVerdict;
 }
 
-export const EnvironmentDetails: Schema.Schema<EnvironmentDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      playProtectVerdict: Schema.optional(Schema.String),
-      appAccessRiskVerdict: Schema.optional(AppAccessRiskVerdict),
-    }),
-  ).annotate({
-    identifier: "EnvironmentDetails",
-  }) as any as Schema.Schema<EnvironmentDetails>;
+export const EnvironmentDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  playProtectVerdict: Schema.optional(Schema.String),
+  appAccessRiskVerdict: Schema.optional(AppAccessRiskVerdict),
+}).annotate({ identifier: "EnvironmentDetails" });
 
 export interface DeviceAttributes {
   /** Android SDK version of the device, as defined in the public Android documentation: https://developer.android.com/reference/android/os/Build.VERSION_CODES. It won't be set if a necessary requirement was missed. For example DeviceIntegrity did not meet the minimum bar. */
   sdkVersion?: number;
 }
 
-export const DeviceAttributes: Schema.Schema<DeviceAttributes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sdkVersion: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "DeviceAttributes",
-  }) as any as Schema.Schema<DeviceAttributes>;
+export const DeviceAttributes = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sdkVersion: Schema.optional(Schema.Number),
+}).annotate({ identifier: "DeviceAttributes" });
 
 export interface RecentDeviceActivity {
   /** Required. Indicates the activity level of the device. */
@@ -206,14 +164,9 @@ export interface RecentDeviceActivity {
     | (string & {});
 }
 
-export const RecentDeviceActivity: Schema.Schema<RecentDeviceActivity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deviceActivityLevel: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RecentDeviceActivity",
-  }) as any as Schema.Schema<RecentDeviceActivity>;
+export const RecentDeviceActivity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  deviceActivityLevel: Schema.optional(Schema.String),
+}).annotate({ identifier: "RecentDeviceActivity" });
 
 export interface WriteDates {
   /** Optional. Write time in YYYYMM format (in UTC, e.g. 202402) for the first bit. Note that this value won't be set if the first bit is false. */
@@ -224,14 +177,11 @@ export interface WriteDates {
   yyyymmThird?: number;
 }
 
-export const WriteDates: Schema.Schema<WriteDates> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      yyyymmFirst: Schema.optional(Schema.Number),
-      yyyymmSecond: Schema.optional(Schema.Number),
-      yyyymmThird: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "WriteDates" }) as any as Schema.Schema<WriteDates>;
+export const WriteDates = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  yyyymmFirst: Schema.optional(Schema.Number),
+  yyyymmSecond: Schema.optional(Schema.Number),
+  yyyymmThird: Schema.optional(Schema.Number),
+}).annotate({ identifier: "WriteDates" });
 
 export interface Values {
   /** Required. First recall bit value. */
@@ -242,14 +192,11 @@ export interface Values {
   bitThird?: boolean;
 }
 
-export const Values: Schema.Schema<Values> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bitFirst: Schema.optional(Schema.Boolean),
-      bitSecond: Schema.optional(Schema.Boolean),
-      bitThird: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "Values" }) as any as Schema.Schema<Values>;
+export const Values = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bitFirst: Schema.optional(Schema.Boolean),
+  bitSecond: Schema.optional(Schema.Boolean),
+  bitThird: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Values" });
 
 export interface DeviceRecall {
   /** Required. Contains the recall bits write dates. */
@@ -258,15 +205,10 @@ export interface DeviceRecall {
   values?: Values;
 }
 
-export const DeviceRecall: Schema.Schema<DeviceRecall> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      writeDates: Schema.optional(WriteDates),
-      values: Schema.optional(Values),
-    }),
-  ).annotate({
-    identifier: "DeviceRecall",
-  }) as any as Schema.Schema<DeviceRecall>;
+export const DeviceRecall = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  writeDates: Schema.optional(WriteDates),
+  values: Schema.optional(Values),
+}).annotate({ identifier: "DeviceRecall" });
 
 export interface DeviceIntegrity {
   /** Attributes of the device where the integrity token was generated. */
@@ -295,20 +237,13 @@ export interface DeviceIntegrity {
   >;
 }
 
-export const DeviceIntegrity: Schema.Schema<DeviceIntegrity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deviceAttributes: Schema.optional(DeviceAttributes),
-      legacyDeviceRecognitionVerdict: Schema.optional(
-        Schema.Array(Schema.String),
-      ),
-      recentDeviceActivity: Schema.optional(RecentDeviceActivity),
-      deviceRecall: Schema.optional(DeviceRecall),
-      deviceRecognitionVerdict: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "DeviceIntegrity",
-  }) as any as Schema.Schema<DeviceIntegrity>;
+export const DeviceIntegrity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  deviceAttributes: Schema.optional(DeviceAttributes),
+  legacyDeviceRecognitionVerdict: Schema.optional(Schema.Array(Schema.String)),
+  recentDeviceActivity: Schema.optional(RecentDeviceActivity),
+  deviceRecall: Schema.optional(DeviceRecall),
+  deviceRecognitionVerdict: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "DeviceIntegrity" });
 
 export interface AccountActivity {
   /** Required. Indicates the activity level of the account. */
@@ -322,14 +257,9 @@ export interface AccountActivity {
     | (string & {});
 }
 
-export const AccountActivity: Schema.Schema<AccountActivity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      activityLevel: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccountActivity",
-  }) as any as Schema.Schema<AccountActivity>;
+export const AccountActivity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  activityLevel: Schema.optional(Schema.String),
+}).annotate({ identifier: "AccountActivity" });
 
 export interface AccountDetails {
   /** Required. Details about the licensing status of the user for the app in the scope. */
@@ -343,15 +273,10 @@ export interface AccountDetails {
   accountActivity?: AccountActivity;
 }
 
-export const AccountDetails: Schema.Schema<AccountDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      appLicensingVerdict: Schema.optional(Schema.String),
-      accountActivity: Schema.optional(AccountActivity),
-    }),
-  ).annotate({
-    identifier: "AccountDetails",
-  }) as any as Schema.Schema<AccountDetails>;
+export const AccountDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  appLicensingVerdict: Schema.optional(Schema.String),
+  accountActivity: Schema.optional(AccountActivity),
+}).annotate({ identifier: "AccountDetails" });
 
 export interface AppIntegrity {
   /** Package name of the application under attestation. Set iff app_recognition_verdict != UNEVALUATED. */
@@ -369,31 +294,21 @@ export interface AppIntegrity {
   versionCode?: string;
 }
 
-export const AppIntegrity: Schema.Schema<AppIntegrity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      packageName: Schema.optional(Schema.String),
-      certificateSha256Digest: Schema.optional(Schema.Array(Schema.String)),
-      appRecognitionVerdict: Schema.optional(Schema.String),
-      versionCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AppIntegrity",
-  }) as any as Schema.Schema<AppIntegrity>;
+export const AppIntegrity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  packageName: Schema.optional(Schema.String),
+  certificateSha256Digest: Schema.optional(Schema.Array(Schema.String)),
+  appRecognitionVerdict: Schema.optional(Schema.String),
+  versionCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "AppIntegrity" });
 
 export interface TestingDetails {
   /** Required. Indicates that the information contained in this payload is a testing response that is statically overridden for a tester. */
   isTestingResponse?: boolean;
 }
 
-export const TestingDetails: Schema.Schema<TestingDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      isTestingResponse: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "TestingDetails",
-  }) as any as Schema.Schema<TestingDetails>;
+export const TestingDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  isTestingResponse: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "TestingDetails" });
 
 export interface RequestDetails {
   /** Required. Application package name this attestation was requested for. Note: This field makes no guarantees or promises on the caller integrity. For details on application integrity, check application_integrity. */
@@ -406,17 +321,12 @@ export interface RequestDetails {
   timestampMillis?: string;
 }
 
-export const RequestDetails: Schema.Schema<RequestDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestPackageName: Schema.optional(Schema.String),
-      nonce: Schema.optional(Schema.String),
-      requestHash: Schema.optional(Schema.String),
-      timestampMillis: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RequestDetails",
-  }) as any as Schema.Schema<RequestDetails>;
+export const RequestDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  requestPackageName: Schema.optional(Schema.String),
+  nonce: Schema.optional(Schema.String),
+  requestHash: Schema.optional(Schema.String),
+  timestampMillis: Schema.optional(Schema.String),
+}).annotate({ identifier: "RequestDetails" });
 
 export interface TokenPayloadExternal {
   /** Details of the environment Play Integrity API runs in. */
@@ -433,61 +343,44 @@ export interface TokenPayloadExternal {
   requestDetails?: RequestDetails;
 }
 
-export const TokenPayloadExternal: Schema.Schema<TokenPayloadExternal> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      environmentDetails: Schema.optional(EnvironmentDetails),
-      deviceIntegrity: Schema.optional(DeviceIntegrity),
-      accountDetails: Schema.optional(AccountDetails),
-      appIntegrity: Schema.optional(AppIntegrity),
-      testingDetails: Schema.optional(TestingDetails),
-      requestDetails: Schema.optional(RequestDetails),
-    }),
-  ).annotate({
-    identifier: "TokenPayloadExternal",
-  }) as any as Schema.Schema<TokenPayloadExternal>;
+export const TokenPayloadExternal = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  environmentDetails: Schema.optional(EnvironmentDetails),
+  deviceIntegrity: Schema.optional(DeviceIntegrity),
+  accountDetails: Schema.optional(AccountDetails),
+  appIntegrity: Schema.optional(AppIntegrity),
+  testingDetails: Schema.optional(TestingDetails),
+  requestDetails: Schema.optional(RequestDetails),
+}).annotate({ identifier: "TokenPayloadExternal" });
 
 export interface DecodeIntegrityTokenResponse {
   /** Plain token payload generated from the decoded integrity token. */
   tokenPayloadExternal?: TokenPayloadExternal;
 }
 
-export const DecodeIntegrityTokenResponse: Schema.Schema<DecodeIntegrityTokenResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tokenPayloadExternal: Schema.optional(TokenPayloadExternal),
-    }),
-  ).annotate({
-    identifier: "DecodeIntegrityTokenResponse",
-  }) as any as Schema.Schema<DecodeIntegrityTokenResponse>;
+export const DecodeIntegrityTokenResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tokenPayloadExternal: Schema.optional(TokenPayloadExternal),
+  }).annotate({ identifier: "DecodeIntegrityTokenResponse" });
 
 export interface DecodeIntegrityTokenRequest {
   /** Encoded integrity token. */
   integrityToken?: string;
 }
 
-export const DecodeIntegrityTokenRequest: Schema.Schema<DecodeIntegrityTokenRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      integrityToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DecodeIntegrityTokenRequest",
-  }) as any as Schema.Schema<DecodeIntegrityTokenRequest>;
+export const DecodeIntegrityTokenRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    integrityToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DecodeIntegrityTokenRequest" });
 
 export interface DecodePcIntegrityTokenRequest {
   /** Encoded integrity token. */
   integrityToken?: string;
 }
 
-export const DecodePcIntegrityTokenRequest: Schema.Schema<DecodePcIntegrityTokenRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      integrityToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DecodePcIntegrityTokenRequest",
-  }) as any as Schema.Schema<DecodePcIntegrityTokenRequest>;
+export const DecodePcIntegrityTokenRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    integrityToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DecodePcIntegrityTokenRequest" });
 
 export interface WriteDeviceRecallRequest {
   /** Required. Integrity token obtained from calling Play Integrity API. */
@@ -496,22 +389,18 @@ export interface WriteDeviceRecallRequest {
   newValues?: Values;
 }
 
-export const WriteDeviceRecallRequest: Schema.Schema<WriteDeviceRecallRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      integrityToken: Schema.optional(Schema.String),
-      newValues: Schema.optional(Values),
-    }),
-  ).annotate({
-    identifier: "WriteDeviceRecallRequest",
-  }) as any as Schema.Schema<WriteDeviceRecallRequest>;
+export const WriteDeviceRecallRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    integrityToken: Schema.optional(Schema.String),
+    newValues: Schema.optional(Values),
+  }).annotate({ identifier: "WriteDeviceRecallRequest" });
 
 export interface WriteDeviceRecallResponse {}
 
-export const WriteDeviceRecallResponse: Schema.Schema<WriteDeviceRecallResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const WriteDeviceRecallResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "WriteDeviceRecallResponse",
-  }) as any as Schema.Schema<WriteDeviceRecallResponse>;
+  });
 
 // ==========================================================================
 // Operations

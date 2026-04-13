@@ -33,17 +33,12 @@ export interface DimensionRange {
   dimension?: "DIMENSION_UNSPECIFIED" | "ROWS" | "COLUMNS" | (string & {});
 }
 
-export const DimensionRange: Schema.Schema<DimensionRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startIndex: Schema.optional(Schema.Number),
-      endIndex: Schema.optional(Schema.Number),
-      sheetId: Schema.optional(Schema.Number),
-      dimension: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DimensionRange",
-  }) as any as Schema.Schema<DimensionRange>;
+export const DimensionRange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startIndex: Schema.optional(Schema.Number),
+  endIndex: Schema.optional(Schema.Number),
+  sheetId: Schema.optional(Schema.Number),
+  dimension: Schema.optional(Schema.String),
+}).annotate({ identifier: "DimensionRange" });
 
 export interface DeveloperMetadataLocation {
   /** Represents the row or column when metadata is associated with a dimension. The specified DimensionRange must represent a single row or column. It cannot be unbounded or span multiple rows or columns. */
@@ -62,17 +57,13 @@ export interface DeveloperMetadataLocation {
   sheetId?: number;
 }
 
-export const DeveloperMetadataLocation: Schema.Schema<DeveloperMetadataLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dimensionRange: Schema.optional(DimensionRange),
-      locationType: Schema.optional(Schema.String),
-      spreadsheet: Schema.optional(Schema.Boolean),
-      sheetId: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "DeveloperMetadataLocation",
-  }) as any as Schema.Schema<DeveloperMetadataLocation>;
+export const DeveloperMetadataLocation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dimensionRange: Schema.optional(DimensionRange),
+    locationType: Schema.optional(Schema.String),
+    spreadsheet: Schema.optional(Schema.Boolean),
+    sheetId: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "DeveloperMetadataLocation" });
 
 export interface DeveloperMetadata {
   /** The spreadsheet-scoped unique ID that identifies the metadata. IDs may be specified when metadata is created, otherwise one will be randomly generated and assigned. Must be positive. */
@@ -91,46 +82,33 @@ export interface DeveloperMetadata {
     | (string & {});
 }
 
-export const DeveloperMetadata: Schema.Schema<DeveloperMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadataId: Schema.optional(Schema.Number),
-      metadataValue: Schema.optional(Schema.String),
-      location: Schema.optional(DeveloperMetadataLocation),
-      metadataKey: Schema.optional(Schema.String),
-      visibility: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DeveloperMetadata",
-  }) as any as Schema.Schema<DeveloperMetadata>;
+export const DeveloperMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metadataId: Schema.optional(Schema.Number),
+  metadataValue: Schema.optional(Schema.String),
+  location: Schema.optional(DeveloperMetadataLocation),
+  metadataKey: Schema.optional(Schema.String),
+  visibility: Schema.optional(Schema.String),
+}).annotate({ identifier: "DeveloperMetadata" });
 
 export interface CreateDeveloperMetadataRequest {
   /** The developer metadata to create. */
   developerMetadata?: DeveloperMetadata;
 }
 
-export const CreateDeveloperMetadataRequest: Schema.Schema<CreateDeveloperMetadataRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      developerMetadata: Schema.optional(DeveloperMetadata),
-    }),
-  ).annotate({
-    identifier: "CreateDeveloperMetadataRequest",
-  }) as any as Schema.Schema<CreateDeveloperMetadataRequest>;
+export const CreateDeveloperMetadataRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    developerMetadata: Schema.optional(DeveloperMetadata),
+  }).annotate({ identifier: "CreateDeveloperMetadataRequest" });
 
 export interface DataSourceColumnReference {
   /** The display name of the column. It should be unique within a data source. */
   name?: string;
 }
 
-export const DataSourceColumnReference: Schema.Schema<DataSourceColumnReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DataSourceColumnReference",
-  }) as any as Schema.Schema<DataSourceColumnReference>;
+export const DataSourceColumnReference =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DataSourceColumnReference" });
 
 export interface ChartDateTimeRule {
   /** The type of date-time grouping to apply. */
@@ -154,14 +132,9 @@ export interface ChartDateTimeRule {
     | (string & {});
 }
 
-export const ChartDateTimeRule: Schema.Schema<ChartDateTimeRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ChartDateTimeRule",
-  }) as any as Schema.Schema<ChartDateTimeRule>;
+export const ChartDateTimeRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "ChartDateTimeRule" });
 
 export interface ChartHistogramRule {
   /** The maximum value at which items are placed into buckets. Values greater than the maximum are grouped into a single bucket. If omitted, it is determined by the maximum item value. */
@@ -172,16 +145,11 @@ export interface ChartHistogramRule {
   minValue?: number;
 }
 
-export const ChartHistogramRule: Schema.Schema<ChartHistogramRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      maxValue: Schema.optional(Schema.Number),
-      intervalSize: Schema.optional(Schema.Number),
-      minValue: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "ChartHistogramRule",
-  }) as any as Schema.Schema<ChartHistogramRule>;
+export const ChartHistogramRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  maxValue: Schema.optional(Schema.Number),
+  intervalSize: Schema.optional(Schema.Number),
+  minValue: Schema.optional(Schema.Number),
+}).annotate({ identifier: "ChartHistogramRule" });
 
 export interface ChartGroupRule {
   /** A ChartDateTimeRule. */
@@ -190,15 +158,10 @@ export interface ChartGroupRule {
   histogramRule?: ChartHistogramRule;
 }
 
-export const ChartGroupRule: Schema.Schema<ChartGroupRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dateTimeRule: Schema.optional(ChartDateTimeRule),
-      histogramRule: Schema.optional(ChartHistogramRule),
-    }),
-  ).annotate({
-    identifier: "ChartGroupRule",
-  }) as any as Schema.Schema<ChartGroupRule>;
+export const ChartGroupRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dateTimeRule: Schema.optional(ChartDateTimeRule),
+  histogramRule: Schema.optional(ChartHistogramRule),
+}).annotate({ identifier: "ChartGroupRule" });
 
 export interface GridRange {
   /** The end column (exclusive) of the range, or not set if unbounded. */
@@ -213,30 +176,22 @@ export interface GridRange {
   startColumnIndex?: number;
 }
 
-export const GridRange: Schema.Schema<GridRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endColumnIndex: Schema.optional(Schema.Number),
-      sheetId: Schema.optional(Schema.Number),
-      startRowIndex: Schema.optional(Schema.Number),
-      endRowIndex: Schema.optional(Schema.Number),
-      startColumnIndex: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "GridRange" }) as any as Schema.Schema<GridRange>;
+export const GridRange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  endColumnIndex: Schema.optional(Schema.Number),
+  sheetId: Schema.optional(Schema.Number),
+  startRowIndex: Schema.optional(Schema.Number),
+  endRowIndex: Schema.optional(Schema.Number),
+  startColumnIndex: Schema.optional(Schema.Number),
+}).annotate({ identifier: "GridRange" });
 
 export interface ChartSourceRange {
   /** The ranges of data for a series or domain. Exactly one dimension must have a length of 1, and all sources in the list must have the same dimension with length 1. The domain (if it exists) & all series must have the same number of source ranges. If using more than one source range, then the source range at a given offset must be in order and contiguous across the domain and series. For example, these are valid configurations: domain sources: A1:A5 series1 sources: B1:B5 series2 sources: D6:D10 domain sources: A1:A5, C10:C12 series1 sources: B1:B5, D10:D12 series2 sources: C1:C5, E10:E12 */
   sources?: Array<GridRange>;
 }
 
-export const ChartSourceRange: Schema.Schema<ChartSourceRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sources: Schema.optional(Schema.Array(GridRange)),
-    }),
-  ).annotate({
-    identifier: "ChartSourceRange",
-  }) as any as Schema.Schema<ChartSourceRange>;
+export const ChartSourceRange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sources: Schema.optional(Schema.Array(GridRange)),
+}).annotate({ identifier: "ChartSourceRange" });
 
 export interface ChartData {
   /** The aggregation type for the series of a data source chart. Only supported for data source charts. */
@@ -257,15 +212,12 @@ export interface ChartData {
   sourceRange?: ChartSourceRange;
 }
 
-export const ChartData: Schema.Schema<ChartData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      aggregateType: Schema.optional(Schema.String),
-      columnReference: Schema.optional(DataSourceColumnReference),
-      groupRule: Schema.optional(ChartGroupRule),
-      sourceRange: Schema.optional(ChartSourceRange),
-    }),
-  ).annotate({ identifier: "ChartData" }) as any as Schema.Schema<ChartData>;
+export const ChartData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  aggregateType: Schema.optional(Schema.String),
+  columnReference: Schema.optional(DataSourceColumnReference),
+  groupRule: Schema.optional(ChartGroupRule),
+  sourceRange: Schema.optional(ChartSourceRange),
+}).annotate({ identifier: "ChartData" });
 
 export interface Color {
   /** The amount of blue in the color as a value in the interval [0, 1]. */
@@ -278,15 +230,12 @@ export interface Color {
   alpha?: number;
 }
 
-export const Color: Schema.Schema<Color> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      blue: Schema.optional(Schema.Number),
-      red: Schema.optional(Schema.Number),
-      green: Schema.optional(Schema.Number),
-      alpha: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Color" }) as any as Schema.Schema<Color>;
+export const Color = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  blue: Schema.optional(Schema.Number),
+  red: Schema.optional(Schema.Number),
+  green: Schema.optional(Schema.Number),
+  alpha: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Color" });
 
 export interface ColorStyle {
   /** RGB color. The [`alpha`](https://developers.google.com/workspace/sheets/api/reference/rest/v4/spreadsheets/other#Color.FIELDS.alpha) value in the [`Color`](https://developers.google.com/workspace/sheets/api/reference/rest/v4/spreadsheets/other#color) object isn't generally supported. */
@@ -306,25 +255,19 @@ export interface ColorStyle {
     | (string & {});
 }
 
-export const ColorStyle: Schema.Schema<ColorStyle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rgbColor: Schema.optional(Color),
-      themeColor: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "ColorStyle" }) as any as Schema.Schema<ColorStyle>;
+export const ColorStyle = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  rgbColor: Schema.optional(Color),
+  themeColor: Schema.optional(Schema.String),
+}).annotate({ identifier: "ColorStyle" });
 
 export interface Link {
   /** The link identifier. */
   uri?: string;
 }
 
-export const Link: Schema.Schema<Link> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Link" }) as any as Schema.Schema<Link>;
+export const Link = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  uri: Schema.optional(Schema.String),
+}).annotate({ identifier: "Link" });
 
 export interface TextFormat {
   /** True if the text is bold. */
@@ -347,20 +290,17 @@ export interface TextFormat {
   underline?: boolean;
 }
 
-export const TextFormat: Schema.Schema<TextFormat> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bold: Schema.optional(Schema.Boolean),
-      fontSize: Schema.optional(Schema.Number),
-      italic: Schema.optional(Schema.Boolean),
-      foregroundColorStyle: Schema.optional(ColorStyle),
-      foregroundColor: Schema.optional(Color),
-      fontFamily: Schema.optional(Schema.String),
-      link: Schema.optional(Link),
-      strikethrough: Schema.optional(Schema.Boolean),
-      underline: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "TextFormat" }) as any as Schema.Schema<TextFormat>;
+export const TextFormat = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bold: Schema.optional(Schema.Boolean),
+  fontSize: Schema.optional(Schema.Number),
+  italic: Schema.optional(Schema.Boolean),
+  foregroundColorStyle: Schema.optional(ColorStyle),
+  foregroundColor: Schema.optional(Color),
+  fontFamily: Schema.optional(Schema.String),
+  link: Schema.optional(Link),
+  strikethrough: Schema.optional(Schema.Boolean),
+  underline: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "TextFormat" });
 
 export interface DataLabel {
   /** The type of the data label. */
@@ -388,29 +328,22 @@ export interface DataLabel {
     | (string & {});
 }
 
-export const DataLabel: Schema.Schema<DataLabel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      customLabelData: Schema.optional(ChartData),
-      textFormat: Schema.optional(TextFormat),
-      placement: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "DataLabel" }) as any as Schema.Schema<DataLabel>;
+export const DataLabel = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  customLabelData: Schema.optional(ChartData),
+  textFormat: Schema.optional(TextFormat),
+  placement: Schema.optional(Schema.String),
+}).annotate({ identifier: "DataLabel" });
 
 export interface DeleteNamedRangeRequest {
   /** The ID of the named range to delete. */
   namedRangeId?: string;
 }
 
-export const DeleteNamedRangeRequest: Schema.Schema<DeleteNamedRangeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      namedRangeId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DeleteNamedRangeRequest",
-  }) as any as Schema.Schema<DeleteNamedRangeRequest>;
+export const DeleteNamedRangeRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    namedRangeId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DeleteNamedRangeRequest" });
 
 export interface ChartCustomNumberFormatOptions {
   /** Custom prefix to be prepended to the chart attribute. This field is optional. */
@@ -419,15 +352,11 @@ export interface ChartCustomNumberFormatOptions {
   suffix?: string;
 }
 
-export const ChartCustomNumberFormatOptions: Schema.Schema<ChartCustomNumberFormatOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      prefix: Schema.optional(Schema.String),
-      suffix: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ChartCustomNumberFormatOptions",
-  }) as any as Schema.Schema<ChartCustomNumberFormatOptions>;
+export const ChartCustomNumberFormatOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    prefix: Schema.optional(Schema.String),
+    suffix: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ChartCustomNumberFormatOptions" });
 
 export interface TextPosition {
   /** Horizontal alignment setting for the piece of text. */
@@ -439,14 +368,9 @@ export interface TextPosition {
     | (string & {});
 }
 
-export const TextPosition: Schema.Schema<TextPosition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      horizontalAlignment: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TextPosition",
-  }) as any as Schema.Schema<TextPosition>;
+export const TextPosition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  horizontalAlignment: Schema.optional(Schema.String),
+}).annotate({ identifier: "TextPosition" });
 
 export interface KeyValueFormat {
   /** Text formatting options for key value. The link field is not supported. */
@@ -455,15 +379,10 @@ export interface KeyValueFormat {
   position?: TextPosition;
 }
 
-export const KeyValueFormat: Schema.Schema<KeyValueFormat> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      textFormat: Schema.optional(TextFormat),
-      position: Schema.optional(TextPosition),
-    }),
-  ).annotate({
-    identifier: "KeyValueFormat",
-  }) as any as Schema.Schema<KeyValueFormat>;
+export const KeyValueFormat = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  textFormat: Schema.optional(TextFormat),
+  position: Schema.optional(TextPosition),
+}).annotate({ identifier: "KeyValueFormat" });
 
 export interface BaselineValueFormat {
   /** Specifies the horizontal text positioning of baseline value. This field is optional. If not specified, default positioning is used. */
@@ -488,21 +407,16 @@ export interface BaselineValueFormat {
     | (string & {});
 }
 
-export const BaselineValueFormat: Schema.Schema<BaselineValueFormat> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      position: Schema.optional(TextPosition),
-      positiveColor: Schema.optional(Color),
-      positiveColorStyle: Schema.optional(ColorStyle),
-      textFormat: Schema.optional(TextFormat),
-      negativeColor: Schema.optional(Color),
-      description: Schema.optional(Schema.String),
-      negativeColorStyle: Schema.optional(ColorStyle),
-      comparisonType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BaselineValueFormat",
-  }) as any as Schema.Schema<BaselineValueFormat>;
+export const BaselineValueFormat = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  position: Schema.optional(TextPosition),
+  positiveColor: Schema.optional(Color),
+  positiveColorStyle: Schema.optional(ColorStyle),
+  textFormat: Schema.optional(TextFormat),
+  negativeColor: Schema.optional(Color),
+  description: Schema.optional(Schema.String),
+  negativeColorStyle: Schema.optional(ColorStyle),
+  comparisonType: Schema.optional(Schema.String),
+}).annotate({ identifier: "BaselineValueFormat" });
 
 export interface ScorecardChartSpec {
   /** The data for scorecard key value. */
@@ -535,21 +449,16 @@ export interface ScorecardChartSpec {
     | (string & {});
 }
 
-export const ScorecardChartSpec: Schema.Schema<ScorecardChartSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      keyValueData: Schema.optional(ChartData),
-      numberFormatSource: Schema.optional(Schema.String),
-      baselineValueData: Schema.optional(ChartData),
-      customFormatOptions: Schema.optional(ChartCustomNumberFormatOptions),
-      keyValueFormat: Schema.optional(KeyValueFormat),
-      baselineValueFormat: Schema.optional(BaselineValueFormat),
-      scaleFactor: Schema.optional(Schema.Number),
-      aggregateType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ScorecardChartSpec",
-  }) as any as Schema.Schema<ScorecardChartSpec>;
+export const ScorecardChartSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  keyValueData: Schema.optional(ChartData),
+  numberFormatSource: Schema.optional(Schema.String),
+  baselineValueData: Schema.optional(ChartData),
+  customFormatOptions: Schema.optional(ChartCustomNumberFormatOptions),
+  keyValueFormat: Schema.optional(KeyValueFormat),
+  baselineValueFormat: Schema.optional(BaselineValueFormat),
+  scaleFactor: Schema.optional(Schema.Number),
+  aggregateType: Schema.optional(Schema.String),
+}).annotate({ identifier: "ScorecardChartSpec" });
 
 export interface GridProperties {
   /** The number of rows in the grid. */
@@ -568,20 +477,15 @@ export interface GridProperties {
   frozenColumnCount?: number;
 }
 
-export const GridProperties: Schema.Schema<GridProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rowCount: Schema.optional(Schema.Number),
-      hideGridlines: Schema.optional(Schema.Boolean),
-      columnCount: Schema.optional(Schema.Number),
-      rowGroupControlAfter: Schema.optional(Schema.Boolean),
-      columnGroupControlAfter: Schema.optional(Schema.Boolean),
-      frozenRowCount: Schema.optional(Schema.Number),
-      frozenColumnCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GridProperties",
-  }) as any as Schema.Schema<GridProperties>;
+export const GridProperties = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  rowCount: Schema.optional(Schema.Number),
+  hideGridlines: Schema.optional(Schema.Boolean),
+  columnCount: Schema.optional(Schema.Number),
+  rowGroupControlAfter: Schema.optional(Schema.Boolean),
+  columnGroupControlAfter: Schema.optional(Schema.Boolean),
+  frozenRowCount: Schema.optional(Schema.Number),
+  frozenColumnCount: Schema.optional(Schema.Number),
+}).annotate({ identifier: "GridProperties" });
 
 export interface DataExecutionStatus {
   /** The state of the data execution. */
@@ -622,17 +526,12 @@ export interface DataExecutionStatus {
     | (string & {});
 }
 
-export const DataExecutionStatus: Schema.Schema<DataExecutionStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      errorMessage: Schema.optional(Schema.String),
-      lastRefreshTime: Schema.optional(Schema.String),
-      errorCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DataExecutionStatus",
-  }) as any as Schema.Schema<DataExecutionStatus>;
+export const DataExecutionStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.String),
+  errorMessage: Schema.optional(Schema.String),
+  lastRefreshTime: Schema.optional(Schema.String),
+  errorCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "DataExecutionStatus" });
 
 export interface DataSourceColumn {
   /** The column reference. */
@@ -641,15 +540,10 @@ export interface DataSourceColumn {
   formula?: string;
 }
 
-export const DataSourceColumn: Schema.Schema<DataSourceColumn> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reference: Schema.optional(DataSourceColumnReference),
-      formula: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DataSourceColumn",
-  }) as any as Schema.Schema<DataSourceColumn>;
+export const DataSourceColumn = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  reference: Schema.optional(DataSourceColumnReference),
+  formula: Schema.optional(Schema.String),
+}).annotate({ identifier: "DataSourceColumn" });
 
 export interface DataSourceSheetProperties {
   /** The data execution status. */
@@ -660,16 +554,12 @@ export interface DataSourceSheetProperties {
   columns?: Array<DataSourceColumn>;
 }
 
-export const DataSourceSheetProperties: Schema.Schema<DataSourceSheetProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataExecutionStatus: Schema.optional(DataExecutionStatus),
-      dataSourceId: Schema.optional(Schema.String),
-      columns: Schema.optional(Schema.Array(DataSourceColumn)),
-    }),
-  ).annotate({
-    identifier: "DataSourceSheetProperties",
-  }) as any as Schema.Schema<DataSourceSheetProperties>;
+export const DataSourceSheetProperties =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataExecutionStatus: Schema.optional(DataExecutionStatus),
+    dataSourceId: Schema.optional(Schema.String),
+    columns: Schema.optional(Schema.Array(DataSourceColumn)),
+  }).annotate({ identifier: "DataSourceSheetProperties" });
 
 export interface SheetProperties {
   /** The ID of the sheet. Must be non-negative. This field cannot be changed once set. */
@@ -699,37 +589,29 @@ export interface SheetProperties {
   dataSourceSheetProperties?: DataSourceSheetProperties;
 }
 
-export const SheetProperties: Schema.Schema<SheetProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sheetId: Schema.optional(Schema.Number),
-      title: Schema.optional(Schema.String),
-      sheetType: Schema.optional(Schema.String),
-      hidden: Schema.optional(Schema.Boolean),
-      tabColor: Schema.optional(Color),
-      gridProperties: Schema.optional(GridProperties),
-      tabColorStyle: Schema.optional(ColorStyle),
-      index: Schema.optional(Schema.Number),
-      rightToLeft: Schema.optional(Schema.Boolean),
-      dataSourceSheetProperties: Schema.optional(DataSourceSheetProperties),
-    }),
-  ).annotate({
-    identifier: "SheetProperties",
-  }) as any as Schema.Schema<SheetProperties>;
+export const SheetProperties = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sheetId: Schema.optional(Schema.Number),
+  title: Schema.optional(Schema.String),
+  sheetType: Schema.optional(Schema.String),
+  hidden: Schema.optional(Schema.Boolean),
+  tabColor: Schema.optional(Color),
+  gridProperties: Schema.optional(GridProperties),
+  tabColorStyle: Schema.optional(ColorStyle),
+  index: Schema.optional(Schema.Number),
+  rightToLeft: Schema.optional(Schema.Boolean),
+  dataSourceSheetProperties: Schema.optional(DataSourceSheetProperties),
+}).annotate({ identifier: "SheetProperties" });
 
 export interface DuplicateSheetResponse {
   /** The properties of the duplicate sheet. */
   properties?: SheetProperties;
 }
 
-export const DuplicateSheetResponse: Schema.Schema<DuplicateSheetResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      properties: Schema.optional(SheetProperties),
-    }),
-  ).annotate({
-    identifier: "DuplicateSheetResponse",
-  }) as any as Schema.Schema<DuplicateSheetResponse>;
+export const DuplicateSheetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    properties: Schema.optional(SheetProperties),
+  },
+).annotate({ identifier: "DuplicateSheetResponse" });
 
 export interface PersonProperties {
   /** Required. The email address linked to this person. This field is always present. */
@@ -743,15 +625,10 @@ export interface PersonProperties {
     | (string & {});
 }
 
-export const PersonProperties: Schema.Schema<PersonProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      email: Schema.optional(Schema.String),
-      displayFormat: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PersonProperties",
-  }) as any as Schema.Schema<PersonProperties>;
+export const PersonProperties = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  email: Schema.optional(Schema.String),
+  displayFormat: Schema.optional(Schema.String),
+}).annotate({ identifier: "PersonProperties" });
 
 export interface RichLinkProperties {
   /** Required. The URI to the link. This is always present. */
@@ -760,15 +637,10 @@ export interface RichLinkProperties {
   mimeType?: string;
 }
 
-export const RichLinkProperties: Schema.Schema<RichLinkProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-      mimeType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RichLinkProperties",
-  }) as any as Schema.Schema<RichLinkProperties>;
+export const RichLinkProperties = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  uri: Schema.optional(Schema.String),
+  mimeType: Schema.optional(Schema.String),
+}).annotate({ identifier: "RichLinkProperties" });
 
 export interface Chip {
   /** Properties of a linked person. */
@@ -777,13 +649,10 @@ export interface Chip {
   richLinkProperties?: RichLinkProperties;
 }
 
-export const Chip: Schema.Schema<Chip> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      personProperties: Schema.optional(PersonProperties),
-      richLinkProperties: Schema.optional(RichLinkProperties),
-    }),
-  ).annotate({ identifier: "Chip" }) as any as Schema.Schema<Chip>;
+export const Chip = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  personProperties: Schema.optional(PersonProperties),
+  richLinkProperties: Schema.optional(RichLinkProperties),
+}).annotate({ identifier: "Chip" });
 
 export interface BatchClearValuesResponse {
   /** The spreadsheet the updates were applied to. */
@@ -792,15 +661,11 @@ export interface BatchClearValuesResponse {
   clearedRanges?: Array<string>;
 }
 
-export const BatchClearValuesResponse: Schema.Schema<BatchClearValuesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      spreadsheetId: Schema.optional(Schema.String),
-      clearedRanges: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "BatchClearValuesResponse",
-  }) as any as Schema.Schema<BatchClearValuesResponse>;
+export const BatchClearValuesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    spreadsheetId: Schema.optional(Schema.String),
+    clearedRanges: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "BatchClearValuesResponse" });
 
 export interface TimeOfDay {
   /** Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time. */
@@ -813,15 +678,12 @@ export interface TimeOfDay {
   nanos?: number;
 }
 
-export const TimeOfDay: Schema.Schema<TimeOfDay> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hours: Schema.optional(Schema.Number),
-      seconds: Schema.optional(Schema.Number),
-      minutes: Schema.optional(Schema.Number),
-      nanos: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "TimeOfDay" }) as any as Schema.Schema<TimeOfDay>;
+export const TimeOfDay = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  hours: Schema.optional(Schema.Number),
+  seconds: Schema.optional(Schema.Number),
+  minutes: Schema.optional(Schema.Number),
+  nanos: Schema.optional(Schema.Number),
+}).annotate({ identifier: "TimeOfDay" });
 
 export interface DataSourceRefreshWeeklySchedule {
   /** The start time of a time interval in which a data source refresh is scheduled. Only `hours` part is used. The time interval size defaults to that in the Sheets editor. */
@@ -840,15 +702,11 @@ export interface DataSourceRefreshWeeklySchedule {
   >;
 }
 
-export const DataSourceRefreshWeeklySchedule: Schema.Schema<DataSourceRefreshWeeklySchedule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(TimeOfDay),
-      daysOfWeek: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "DataSourceRefreshWeeklySchedule",
-  }) as any as Schema.Schema<DataSourceRefreshWeeklySchedule>;
+export const DataSourceRefreshWeeklySchedule =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startTime: Schema.optional(TimeOfDay),
+    daysOfWeek: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "DataSourceRefreshWeeklySchedule" });
 
 export interface ConditionValue {
   /** A relative date (based on the current date). Valid only if the type is DATE_BEFORE, DATE_AFTER, DATE_ON_OR_BEFORE or DATE_ON_OR_AFTER. Relative dates are not supported in data validation. They are supported only in conditional formatting and conditional filters. */
@@ -865,15 +723,10 @@ export interface ConditionValue {
   userEnteredValue?: string;
 }
 
-export const ConditionValue: Schema.Schema<ConditionValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      relativeDate: Schema.optional(Schema.String),
-      userEnteredValue: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConditionValue",
-  }) as any as Schema.Schema<ConditionValue>;
+export const ConditionValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  relativeDate: Schema.optional(Schema.String),
+  userEnteredValue: Schema.optional(Schema.String),
+}).annotate({ identifier: "ConditionValue" });
 
 export interface BooleanCondition {
   /** The type of condition. */
@@ -916,15 +769,10 @@ export interface BooleanCondition {
   values?: Array<ConditionValue>;
 }
 
-export const BooleanCondition: Schema.Schema<BooleanCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      values: Schema.optional(Schema.Array(ConditionValue)),
-    }),
-  ).annotate({
-    identifier: "BooleanCondition",
-  }) as any as Schema.Schema<BooleanCondition>;
+export const BooleanCondition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  values: Schema.optional(Schema.Array(ConditionValue)),
+}).annotate({ identifier: "BooleanCondition" });
 
 export interface PivotFilterCriteria {
   /** Values that should be included. Values not listed here are excluded. */
@@ -935,16 +783,11 @@ export interface PivotFilterCriteria {
   visibleByDefault?: boolean;
 }
 
-export const PivotFilterCriteria: Schema.Schema<PivotFilterCriteria> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      visibleValues: Schema.optional(Schema.Array(Schema.String)),
-      condition: Schema.optional(BooleanCondition),
-      visibleByDefault: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "PivotFilterCriteria",
-  }) as any as Schema.Schema<PivotFilterCriteria>;
+export const PivotFilterCriteria = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  visibleValues: Schema.optional(Schema.Array(Schema.String)),
+  condition: Schema.optional(BooleanCondition),
+  visibleByDefault: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "PivotFilterCriteria" });
 
 export interface PivotFilterSpec {
   /** The criteria for the column. */
@@ -955,16 +798,11 @@ export interface PivotFilterSpec {
   dataSourceColumnReference?: DataSourceColumnReference;
 }
 
-export const PivotFilterSpec: Schema.Schema<PivotFilterSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filterCriteria: Schema.optional(PivotFilterCriteria),
-      columnOffsetIndex: Schema.optional(Schema.Number),
-      dataSourceColumnReference: Schema.optional(DataSourceColumnReference),
-    }),
-  ).annotate({
-    identifier: "PivotFilterSpec",
-  }) as any as Schema.Schema<PivotFilterSpec>;
+export const PivotFilterSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  filterCriteria: Schema.optional(PivotFilterCriteria),
+  columnOffsetIndex: Schema.optional(Schema.Number),
+  dataSourceColumnReference: Schema.optional(DataSourceColumnReference),
+}).annotate({ identifier: "PivotFilterSpec" });
 
 export interface DataSourceChartProperties {
   /** ID of the data source that the chart is associated with. */
@@ -973,15 +811,11 @@ export interface DataSourceChartProperties {
   dataExecutionStatus?: DataExecutionStatus;
 }
 
-export const DataSourceChartProperties: Schema.Schema<DataSourceChartProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataSourceId: Schema.optional(Schema.String),
-      dataExecutionStatus: Schema.optional(DataExecutionStatus),
-    }),
-  ).annotate({
-    identifier: "DataSourceChartProperties",
-  }) as any as Schema.Schema<DataSourceChartProperties>;
+export const DataSourceChartProperties =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataSourceId: Schema.optional(Schema.String),
+    dataExecutionStatus: Schema.optional(DataExecutionStatus),
+  }).annotate({ identifier: "DataSourceChartProperties" });
 
 export interface FilterCriteria {
   /** The foreground color to filter by; only cells with this foreground color are shown. This field is mutually exclusive with visible_background_color, and must be set to an RGB-type color. If visible_foreground_color is also set, this field takes precedence. */
@@ -998,19 +832,14 @@ export interface FilterCriteria {
   visibleForegroundColor?: Color;
 }
 
-export const FilterCriteria: Schema.Schema<FilterCriteria> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      visibleForegroundColorStyle: Schema.optional(ColorStyle),
-      visibleBackgroundColorStyle: Schema.optional(ColorStyle),
-      hiddenValues: Schema.optional(Schema.Array(Schema.String)),
-      condition: Schema.optional(BooleanCondition),
-      visibleBackgroundColor: Schema.optional(Color),
-      visibleForegroundColor: Schema.optional(Color),
-    }),
-  ).annotate({
-    identifier: "FilterCriteria",
-  }) as any as Schema.Schema<FilterCriteria>;
+export const FilterCriteria = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  visibleForegroundColorStyle: Schema.optional(ColorStyle),
+  visibleBackgroundColorStyle: Schema.optional(ColorStyle),
+  hiddenValues: Schema.optional(Schema.Array(Schema.String)),
+  condition: Schema.optional(BooleanCondition),
+  visibleBackgroundColor: Schema.optional(Color),
+  visibleForegroundColor: Schema.optional(Color),
+}).annotate({ identifier: "FilterCriteria" });
 
 export interface SlicerSpec {
   /** The title of the slicer. */
@@ -1038,20 +867,17 @@ export interface SlicerSpec {
   columnIndex?: number;
 }
 
-export const SlicerSpec: Schema.Schema<SlicerSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-      backgroundColorStyle: Schema.optional(ColorStyle),
-      dataRange: Schema.optional(GridRange),
-      horizontalAlignment: Schema.optional(Schema.String),
-      filterCriteria: Schema.optional(FilterCriteria),
-      applyToPivotTables: Schema.optional(Schema.Boolean),
-      textFormat: Schema.optional(TextFormat),
-      backgroundColor: Schema.optional(Color),
-      columnIndex: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "SlicerSpec" }) as any as Schema.Schema<SlicerSpec>;
+export const SlicerSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  title: Schema.optional(Schema.String),
+  backgroundColorStyle: Schema.optional(ColorStyle),
+  dataRange: Schema.optional(GridRange),
+  horizontalAlignment: Schema.optional(Schema.String),
+  filterCriteria: Schema.optional(FilterCriteria),
+  applyToPivotTables: Schema.optional(Schema.Boolean),
+  textFormat: Schema.optional(TextFormat),
+  backgroundColor: Schema.optional(Color),
+  columnIndex: Schema.optional(Schema.Number),
+}).annotate({ identifier: "SlicerSpec" });
 
 export interface UpdateSlicerSpecRequest {
   /** The specification to apply to the slicer. */
@@ -1062,16 +888,12 @@ export interface UpdateSlicerSpecRequest {
   slicerId?: number;
 }
 
-export const UpdateSlicerSpecRequest: Schema.Schema<UpdateSlicerSpecRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      spec: Schema.optional(SlicerSpec),
-      fields: Schema.optional(Schema.String),
-      slicerId: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "UpdateSlicerSpecRequest",
-  }) as any as Schema.Schema<UpdateSlicerSpecRequest>;
+export const UpdateSlicerSpecRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    spec: Schema.optional(SlicerSpec),
+    fields: Schema.optional(Schema.String),
+    slicerId: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "UpdateSlicerSpecRequest" });
 
 export interface ErrorValue {
   /** The type of error. */
@@ -1091,13 +913,10 @@ export interface ErrorValue {
   message?: string;
 }
 
-export const ErrorValue: Schema.Schema<ErrorValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "ErrorValue" }) as any as Schema.Schema<ErrorValue>;
+export const ErrorValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+}).annotate({ identifier: "ErrorValue" });
 
 export interface ExtendedValue {
   /** Represents an error. This field is read-only. */
@@ -1112,18 +931,13 @@ export interface ExtendedValue {
   formulaValue?: string;
 }
 
-export const ExtendedValue: Schema.Schema<ExtendedValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errorValue: Schema.optional(ErrorValue),
-      numberValue: Schema.optional(Schema.Number),
-      stringValue: Schema.optional(Schema.String),
-      boolValue: Schema.optional(Schema.Boolean),
-      formulaValue: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ExtendedValue",
-  }) as any as Schema.Schema<ExtendedValue>;
+export const ExtendedValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  errorValue: Schema.optional(ErrorValue),
+  numberValue: Schema.optional(Schema.Number),
+  stringValue: Schema.optional(Schema.String),
+  boolValue: Schema.optional(Schema.Boolean),
+  formulaValue: Schema.optional(Schema.String),
+}).annotate({ identifier: "ExtendedValue" });
 
 export interface FilterSpec {
   /** The zero-based column index. */
@@ -1134,14 +948,11 @@ export interface FilterSpec {
   filterCriteria?: FilterCriteria;
 }
 
-export const FilterSpec: Schema.Schema<FilterSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      columnIndex: Schema.optional(Schema.Number),
-      dataSourceColumnReference: Schema.optional(DataSourceColumnReference),
-      filterCriteria: Schema.optional(FilterCriteria),
-    }),
-  ).annotate({ identifier: "FilterSpec" }) as any as Schema.Schema<FilterSpec>;
+export const FilterSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  columnIndex: Schema.optional(Schema.Number),
+  dataSourceColumnReference: Schema.optional(DataSourceColumnReference),
+  filterCriteria: Schema.optional(FilterCriteria),
+}).annotate({ identifier: "FilterSpec" });
 
 export interface SortSpec {
   /** Reference to a data source column. */
@@ -1164,18 +975,15 @@ export interface SortSpec {
   backgroundColor?: Color;
 }
 
-export const SortSpec: Schema.Schema<SortSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataSourceColumnReference: Schema.optional(DataSourceColumnReference),
-      sortOrder: Schema.optional(Schema.String),
-      foregroundColor: Schema.optional(Color),
-      backgroundColorStyle: Schema.optional(ColorStyle),
-      dimensionIndex: Schema.optional(Schema.Number),
-      foregroundColorStyle: Schema.optional(ColorStyle),
-      backgroundColor: Schema.optional(Color),
-    }),
-  ).annotate({ identifier: "SortSpec" }) as any as Schema.Schema<SortSpec>;
+export const SortSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dataSourceColumnReference: Schema.optional(DataSourceColumnReference),
+  sortOrder: Schema.optional(Schema.String),
+  foregroundColor: Schema.optional(Color),
+  backgroundColorStyle: Schema.optional(ColorStyle),
+  dimensionIndex: Schema.optional(Schema.Number),
+  foregroundColorStyle: Schema.optional(ColorStyle),
+  backgroundColor: Schema.optional(Color),
+}).annotate({ identifier: "SortSpec" });
 
 export interface DataSourceTable {
   /** Columns selected for the data source table. The column_selection_type must be SELECTED. */
@@ -1198,20 +1006,15 @@ export interface DataSourceTable {
   dataExecutionStatus?: DataExecutionStatus;
 }
 
-export const DataSourceTable: Schema.Schema<DataSourceTable> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      columns: Schema.optional(Schema.Array(DataSourceColumnReference)),
-      filterSpecs: Schema.optional(Schema.Array(FilterSpec)),
-      rowLimit: Schema.optional(Schema.Number),
-      dataSourceId: Schema.optional(Schema.String),
-      sortSpecs: Schema.optional(Schema.Array(SortSpec)),
-      columnSelectionType: Schema.optional(Schema.String),
-      dataExecutionStatus: Schema.optional(DataExecutionStatus),
-    }),
-  ).annotate({
-    identifier: "DataSourceTable",
-  }) as any as Schema.Schema<DataSourceTable>;
+export const DataSourceTable = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  columns: Schema.optional(Schema.Array(DataSourceColumnReference)),
+  filterSpecs: Schema.optional(Schema.Array(FilterSpec)),
+  rowLimit: Schema.optional(Schema.Number),
+  dataSourceId: Schema.optional(Schema.String),
+  sortSpecs: Schema.optional(Schema.Array(SortSpec)),
+  columnSelectionType: Schema.optional(Schema.String),
+  dataExecutionStatus: Schema.optional(DataExecutionStatus),
+}).annotate({ identifier: "DataSourceTable" });
 
 export interface NumberFormat {
   /** Pattern string used for formatting. If not set, a default pattern based on the spreadsheet's locale will be used if necessary for the given type. See the [Date and Number Formats guide](https://developers.google.com/workspace/sheets/api/guides/formats) for more information about the supported patterns. */
@@ -1230,15 +1033,10 @@ export interface NumberFormat {
     | (string & {});
 }
 
-export const NumberFormat: Schema.Schema<NumberFormat> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pattern: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NumberFormat",
-  }) as any as Schema.Schema<NumberFormat>;
+export const NumberFormat = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pattern: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "NumberFormat" });
 
 export interface Border {
   /** The color of the border. If color is also set, this field takes precedence. */
@@ -1260,15 +1058,12 @@ export interface Border {
   width?: number;
 }
 
-export const Border: Schema.Schema<Border> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      colorStyle: Schema.optional(ColorStyle),
-      style: Schema.optional(Schema.String),
-      color: Schema.optional(Color),
-      width: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Border" }) as any as Schema.Schema<Border>;
+export const Border = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  colorStyle: Schema.optional(ColorStyle),
+  style: Schema.optional(Schema.String),
+  color: Schema.optional(Color),
+  width: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Border" });
 
 export interface Borders {
   /** The top border of the cell. */
@@ -1281,15 +1076,12 @@ export interface Borders {
   right?: Border;
 }
 
-export const Borders: Schema.Schema<Borders> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      top: Schema.optional(Border),
-      bottom: Schema.optional(Border),
-      left: Schema.optional(Border),
-      right: Schema.optional(Border),
-    }),
-  ).annotate({ identifier: "Borders" }) as any as Schema.Schema<Borders>;
+export const Borders = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  top: Schema.optional(Border),
+  bottom: Schema.optional(Border),
+  left: Schema.optional(Border),
+  right: Schema.optional(Border),
+}).annotate({ identifier: "Borders" });
 
 export interface TextRotation {
   /** The angle between the standard orientation and the desired orientation. Measured in degrees. Valid values are between -90 and 90. Positive angles are angled upwards, negative are angled downwards. Note: For LTR text direction positive angles are in the counterclockwise direction, whereas for RTL they are in the clockwise direction */
@@ -1298,15 +1090,10 @@ export interface TextRotation {
   vertical?: boolean;
 }
 
-export const TextRotation: Schema.Schema<TextRotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      angle: Schema.optional(Schema.Number),
-      vertical: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "TextRotation",
-  }) as any as Schema.Schema<TextRotation>;
+export const TextRotation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  angle: Schema.optional(Schema.Number),
+  vertical: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "TextRotation" });
 
 export interface Padding {
   /** The right padding of the cell. */
@@ -1319,15 +1106,12 @@ export interface Padding {
   left?: number;
 }
 
-export const Padding: Schema.Schema<Padding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      right: Schema.optional(Schema.Number),
-      top: Schema.optional(Schema.Number),
-      bottom: Schema.optional(Schema.Number),
-      left: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Padding" }) as any as Schema.Schema<Padding>;
+export const Padding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  right: Schema.optional(Schema.Number),
+  top: Schema.optional(Schema.Number),
+  bottom: Schema.optional(Schema.Number),
+  left: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Padding" });
 
 export interface CellFormat {
   /** A format describing how number values should be represented to the user. */
@@ -1380,23 +1164,20 @@ export interface CellFormat {
     | (string & {});
 }
 
-export const CellFormat: Schema.Schema<CellFormat> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      numberFormat: Schema.optional(NumberFormat),
-      borders: Schema.optional(Borders),
-      horizontalAlignment: Schema.optional(Schema.String),
-      textRotation: Schema.optional(TextRotation),
-      backgroundColorStyle: Schema.optional(ColorStyle),
-      verticalAlignment: Schema.optional(Schema.String),
-      hyperlinkDisplayType: Schema.optional(Schema.String),
-      backgroundColor: Schema.optional(Color),
-      padding: Schema.optional(Padding),
-      wrapStrategy: Schema.optional(Schema.String),
-      textFormat: Schema.optional(TextFormat),
-      textDirection: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "CellFormat" }) as any as Schema.Schema<CellFormat>;
+export const CellFormat = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  numberFormat: Schema.optional(NumberFormat),
+  borders: Schema.optional(Borders),
+  horizontalAlignment: Schema.optional(Schema.String),
+  textRotation: Schema.optional(TextRotation),
+  backgroundColorStyle: Schema.optional(ColorStyle),
+  verticalAlignment: Schema.optional(Schema.String),
+  hyperlinkDisplayType: Schema.optional(Schema.String),
+  backgroundColor: Schema.optional(Color),
+  padding: Schema.optional(Padding),
+  wrapStrategy: Schema.optional(Schema.String),
+  textFormat: Schema.optional(TextFormat),
+  textDirection: Schema.optional(Schema.String),
+}).annotate({ identifier: "CellFormat" });
 
 export interface TextFormatRun {
   /** The format of this run. Absent values inherit the cell's format. */
@@ -1405,15 +1186,10 @@ export interface TextFormatRun {
   startIndex?: number;
 }
 
-export const TextFormatRun: Schema.Schema<TextFormatRun> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      format: Schema.optional(TextFormat),
-      startIndex: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "TextFormatRun",
-  }) as any as Schema.Schema<TextFormatRun>;
+export const TextFormatRun = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  format: Schema.optional(TextFormat),
+  startIndex: Schema.optional(Schema.Number),
+}).annotate({ identifier: "TextFormatRun" });
 
 export interface DataValidationRule {
   /** A message to show the user when adding data to the cell. */
@@ -1426,17 +1202,12 @@ export interface DataValidationRule {
   strict?: boolean;
 }
 
-export const DataValidationRule: Schema.Schema<DataValidationRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inputMessage: Schema.optional(Schema.String),
-      showCustomUi: Schema.optional(Schema.Boolean),
-      condition: Schema.optional(BooleanCondition),
-      strict: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "DataValidationRule",
-  }) as any as Schema.Schema<DataValidationRule>;
+export const DataValidationRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  inputMessage: Schema.optional(Schema.String),
+  showCustomUi: Schema.optional(Schema.Boolean),
+  condition: Schema.optional(BooleanCondition),
+  strict: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "DataValidationRule" });
 
 export interface PivotGroupValueMetadata {
   /** True if the data corresponding to the value is collapsed. */
@@ -1445,15 +1216,11 @@ export interface PivotGroupValueMetadata {
   value?: ExtendedValue;
 }
 
-export const PivotGroupValueMetadata: Schema.Schema<PivotGroupValueMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      collapsed: Schema.optional(Schema.Boolean),
-      value: Schema.optional(ExtendedValue),
-    }),
-  ).annotate({
-    identifier: "PivotGroupValueMetadata",
-  }) as any as Schema.Schema<PivotGroupValueMetadata>;
+export const PivotGroupValueMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    collapsed: Schema.optional(Schema.Boolean),
+    value: Schema.optional(ExtendedValue),
+  }).annotate({ identifier: "PivotGroupValueMetadata" });
 
 export interface ManualRuleGroup {
   /** The group name, which must be a string. Each group in a given ManualRule must have a unique group name. */
@@ -1462,27 +1229,19 @@ export interface ManualRuleGroup {
   items?: Array<ExtendedValue>;
 }
 
-export const ManualRuleGroup: Schema.Schema<ManualRuleGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      groupName: Schema.optional(ExtendedValue),
-      items: Schema.optional(Schema.Array(ExtendedValue)),
-    }),
-  ).annotate({
-    identifier: "ManualRuleGroup",
-  }) as any as Schema.Schema<ManualRuleGroup>;
+export const ManualRuleGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupName: Schema.optional(ExtendedValue),
+  items: Schema.optional(Schema.Array(ExtendedValue)),
+}).annotate({ identifier: "ManualRuleGroup" });
 
 export interface ManualRule {
   /** The list of group names and the corresponding items from the source data that map to each group name. */
   groups?: Array<ManualRuleGroup>;
 }
 
-export const ManualRule: Schema.Schema<ManualRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      groups: Schema.optional(Schema.Array(ManualRuleGroup)),
-    }),
-  ).annotate({ identifier: "ManualRule" }) as any as Schema.Schema<ManualRule>;
+export const ManualRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groups: Schema.optional(Schema.Array(ManualRuleGroup)),
+}).annotate({ identifier: "ManualRule" });
 
 export interface HistogramRule {
   /** The size of the buckets that are created. Must be positive. */
@@ -1493,16 +1252,11 @@ export interface HistogramRule {
   start?: number;
 }
 
-export const HistogramRule: Schema.Schema<HistogramRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      interval: Schema.optional(Schema.Number),
-      end: Schema.optional(Schema.Number),
-      start: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "HistogramRule",
-  }) as any as Schema.Schema<HistogramRule>;
+export const HistogramRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  interval: Schema.optional(Schema.Number),
+  end: Schema.optional(Schema.Number),
+  start: Schema.optional(Schema.Number),
+}).annotate({ identifier: "HistogramRule" });
 
 export interface DateTimeRule {
   /** The type of date-time grouping to apply. */
@@ -1526,14 +1280,9 @@ export interface DateTimeRule {
     | (string & {});
 }
 
-export const DateTimeRule: Schema.Schema<DateTimeRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DateTimeRule",
-  }) as any as Schema.Schema<DateTimeRule>;
+export const DateTimeRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "DateTimeRule" });
 
 export interface PivotGroupRule {
   /** A ManualRule. */
@@ -1544,16 +1293,11 @@ export interface PivotGroupRule {
   dateTimeRule?: DateTimeRule;
 }
 
-export const PivotGroupRule: Schema.Schema<PivotGroupRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      manualRule: Schema.optional(ManualRule),
-      histogramRule: Schema.optional(HistogramRule),
-      dateTimeRule: Schema.optional(DateTimeRule),
-    }),
-  ).annotate({
-    identifier: "PivotGroupRule",
-  }) as any as Schema.Schema<PivotGroupRule>;
+export const PivotGroupRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  manualRule: Schema.optional(ManualRule),
+  histogramRule: Schema.optional(HistogramRule),
+  dateTimeRule: Schema.optional(DateTimeRule),
+}).annotate({ identifier: "PivotGroupRule" });
 
 export interface PivotGroupSortValueBucket {
   /** Determines the bucket from which values are chosen to sort. For example, in a pivot table with one row group & two column groups, the row group can list up to two values. The first value corresponds to a value within the first column group, and the second value corresponds to a value in the second column group. If no values are listed, this would indicate that the row should be sorted according to the "Grand Total" over the column groups. If a single value is listed, this would correspond to using the "Total" of that bucket. */
@@ -1562,15 +1306,11 @@ export interface PivotGroupSortValueBucket {
   valuesIndex?: number;
 }
 
-export const PivotGroupSortValueBucket: Schema.Schema<PivotGroupSortValueBucket> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      buckets: Schema.optional(Schema.Array(ExtendedValue)),
-      valuesIndex: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "PivotGroupSortValueBucket",
-  }) as any as Schema.Schema<PivotGroupSortValueBucket>;
+export const PivotGroupSortValueBucket =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    buckets: Schema.optional(Schema.Array(ExtendedValue)),
+    valuesIndex: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "PivotGroupSortValueBucket" });
 
 export interface PivotGroupLimit {
   /** The count limit. */
@@ -1579,15 +1319,10 @@ export interface PivotGroupLimit {
   applyOrder?: number;
 }
 
-export const PivotGroupLimit: Schema.Schema<PivotGroupLimit> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      countLimit: Schema.optional(Schema.Number),
-      applyOrder: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "PivotGroupLimit",
-  }) as any as Schema.Schema<PivotGroupLimit>;
+export const PivotGroupLimit = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  countLimit: Schema.optional(Schema.Number),
+  applyOrder: Schema.optional(Schema.Number),
+}).annotate({ identifier: "PivotGroupLimit" });
 
 export interface PivotGroup {
   /** Metadata about values in the grouping. */
@@ -1616,21 +1351,18 @@ export interface PivotGroup {
   repeatHeadings?: boolean;
 }
 
-export const PivotGroup: Schema.Schema<PivotGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      valueMetadata: Schema.optional(Schema.Array(PivotGroupValueMetadata)),
-      sourceColumnOffset: Schema.optional(Schema.Number),
-      label: Schema.optional(Schema.String),
-      showTotals: Schema.optional(Schema.Boolean),
-      groupRule: Schema.optional(PivotGroupRule),
-      valueBucket: Schema.optional(PivotGroupSortValueBucket),
-      groupLimit: Schema.optional(PivotGroupLimit),
-      dataSourceColumnReference: Schema.optional(DataSourceColumnReference),
-      sortOrder: Schema.optional(Schema.String),
-      repeatHeadings: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "PivotGroup" }) as any as Schema.Schema<PivotGroup>;
+export const PivotGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  valueMetadata: Schema.optional(Schema.Array(PivotGroupValueMetadata)),
+  sourceColumnOffset: Schema.optional(Schema.Number),
+  label: Schema.optional(Schema.String),
+  showTotals: Schema.optional(Schema.Boolean),
+  groupRule: Schema.optional(PivotGroupRule),
+  valueBucket: Schema.optional(PivotGroupSortValueBucket),
+  groupLimit: Schema.optional(PivotGroupLimit),
+  dataSourceColumnReference: Schema.optional(DataSourceColumnReference),
+  sortOrder: Schema.optional(Schema.String),
+  repeatHeadings: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "PivotGroup" });
 
 export interface PivotValue {
   /** A custom formula to calculate the value. The formula must start with an `=` character. */
@@ -1669,17 +1401,14 @@ export interface PivotValue {
     | (string & {});
 }
 
-export const PivotValue: Schema.Schema<PivotValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      formula: Schema.optional(Schema.String),
-      dataSourceColumnReference: Schema.optional(DataSourceColumnReference),
-      name: Schema.optional(Schema.String),
-      summarizeFunction: Schema.optional(Schema.String),
-      sourceColumnOffset: Schema.optional(Schema.Number),
-      calculatedDisplayType: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "PivotValue" }) as any as Schema.Schema<PivotValue>;
+export const PivotValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  formula: Schema.optional(Schema.String),
+  dataSourceColumnReference: Schema.optional(DataSourceColumnReference),
+  name: Schema.optional(Schema.String),
+  summarizeFunction: Schema.optional(Schema.String),
+  sourceColumnOffset: Schema.optional(Schema.Number),
+  calculatedDisplayType: Schema.optional(Schema.String),
+}).annotate({ identifier: "PivotValue" });
 
 export interface PivotTable {
   /** The ID of the data source the pivot table is reading data from. */
@@ -1702,22 +1431,17 @@ export interface PivotTable {
   columns?: Array<PivotGroup>;
 }
 
-export const PivotTable: Schema.Schema<PivotTable> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataSourceId: Schema.optional(Schema.String),
-      criteria: Schema.optional(
-        Schema.Record(Schema.String, PivotFilterCriteria),
-      ),
-      valueLayout: Schema.optional(Schema.String),
-      filterSpecs: Schema.optional(Schema.Array(PivotFilterSpec)),
-      rows: Schema.optional(Schema.Array(PivotGroup)),
-      values: Schema.optional(Schema.Array(PivotValue)),
-      source: Schema.optional(GridRange),
-      dataExecutionStatus: Schema.optional(DataExecutionStatus),
-      columns: Schema.optional(Schema.Array(PivotGroup)),
-    }),
-  ).annotate({ identifier: "PivotTable" }) as any as Schema.Schema<PivotTable>;
+export const PivotTable = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dataSourceId: Schema.optional(Schema.String),
+  criteria: Schema.optional(Schema.Record(Schema.String, PivotFilterCriteria)),
+  valueLayout: Schema.optional(Schema.String),
+  filterSpecs: Schema.optional(Schema.Array(PivotFilterSpec)),
+  rows: Schema.optional(Schema.Array(PivotGroup)),
+  values: Schema.optional(Schema.Array(PivotValue)),
+  source: Schema.optional(GridRange),
+  dataExecutionStatus: Schema.optional(DataExecutionStatus),
+  columns: Schema.optional(Schema.Array(PivotGroup)),
+}).annotate({ identifier: "PivotTable" });
 
 export interface DataSourceFormula {
   /** The ID of the data source the formula is associated with. */
@@ -1726,15 +1450,10 @@ export interface DataSourceFormula {
   dataExecutionStatus?: DataExecutionStatus;
 }
 
-export const DataSourceFormula: Schema.Schema<DataSourceFormula> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataSourceId: Schema.optional(Schema.String),
-      dataExecutionStatus: Schema.optional(DataExecutionStatus),
-    }),
-  ).annotate({
-    identifier: "DataSourceFormula",
-  }) as any as Schema.Schema<DataSourceFormula>;
+export const DataSourceFormula = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dataSourceId: Schema.optional(Schema.String),
+  dataExecutionStatus: Schema.optional(DataExecutionStatus),
+}).annotate({ identifier: "DataSourceFormula" });
 
 export interface ChipRun {
   /** Required. The zero-based character index where this run starts, in UTF-16 code units. */
@@ -1743,13 +1462,10 @@ export interface ChipRun {
   chip?: Chip;
 }
 
-export const ChipRun: Schema.Schema<ChipRun> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startIndex: Schema.optional(Schema.Number),
-      chip: Schema.optional(Chip),
-    }),
-  ).annotate({ identifier: "ChipRun" }) as any as Schema.Schema<ChipRun>;
+export const ChipRun = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startIndex: Schema.optional(Schema.Number),
+  chip: Schema.optional(Chip),
+}).annotate({ identifier: "ChipRun" });
 
 export interface CellData {
   /** The effective value of the cell. For cells with formulas, this is the calculated value. For cells with literals, this is the same as the user_entered_value. This field is read-only. */
@@ -1780,36 +1496,30 @@ export interface CellData {
   userEnteredFormat?: CellFormat;
 }
 
-export const CellData: Schema.Schema<CellData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      effectiveValue: Schema.optional(ExtendedValue),
-      formattedValue: Schema.optional(Schema.String),
-      dataSourceTable: Schema.optional(DataSourceTable),
-      note: Schema.optional(Schema.String),
-      effectiveFormat: Schema.optional(CellFormat),
-      textFormatRuns: Schema.optional(Schema.Array(TextFormatRun)),
-      dataValidation: Schema.optional(DataValidationRule),
-      pivotTable: Schema.optional(PivotTable),
-      hyperlink: Schema.optional(Schema.String),
-      dataSourceFormula: Schema.optional(DataSourceFormula),
-      chipRuns: Schema.optional(Schema.Array(ChipRun)),
-      userEnteredValue: Schema.optional(ExtendedValue),
-      userEnteredFormat: Schema.optional(CellFormat),
-    }),
-  ).annotate({ identifier: "CellData" }) as any as Schema.Schema<CellData>;
+export const CellData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  effectiveValue: Schema.optional(ExtendedValue),
+  formattedValue: Schema.optional(Schema.String),
+  dataSourceTable: Schema.optional(DataSourceTable),
+  note: Schema.optional(Schema.String),
+  effectiveFormat: Schema.optional(CellFormat),
+  textFormatRuns: Schema.optional(Schema.Array(TextFormatRun)),
+  dataValidation: Schema.optional(DataValidationRule),
+  pivotTable: Schema.optional(PivotTable),
+  hyperlink: Schema.optional(Schema.String),
+  dataSourceFormula: Schema.optional(DataSourceFormula),
+  chipRuns: Schema.optional(Schema.Array(ChipRun)),
+  userEnteredValue: Schema.optional(ExtendedValue),
+  userEnteredFormat: Schema.optional(CellFormat),
+}).annotate({ identifier: "CellData" });
 
 export interface RowData {
   /** The values in the row, one per column. */
   values?: Array<CellData>;
 }
 
-export const RowData: Schema.Schema<RowData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      values: Schema.optional(Schema.Array(CellData)),
-    }),
-  ).annotate({ identifier: "RowData" }) as any as Schema.Schema<RowData>;
+export const RowData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  values: Schema.optional(Schema.Array(CellData)),
+}).annotate({ identifier: "RowData" });
 
 export interface DataSourceParameter {
   /** Named parameter. Must be a legitimate identifier for the DataSource that supports it. For example, [BigQuery identifier](https://cloud.google.com/bigquery/docs/reference/standard-sql/lexical#identifiers). */
@@ -1820,30 +1530,20 @@ export interface DataSourceParameter {
   range?: GridRange;
 }
 
-export const DataSourceParameter: Schema.Schema<DataSourceParameter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      namedRangeId: Schema.optional(Schema.String),
-      range: Schema.optional(GridRange),
-    }),
-  ).annotate({
-    identifier: "DataSourceParameter",
-  }) as any as Schema.Schema<DataSourceParameter>;
+export const DataSourceParameter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  namedRangeId: Schema.optional(Schema.String),
+  range: Schema.optional(GridRange),
+}).annotate({ identifier: "DataSourceParameter" });
 
 export interface BigQueryQuerySpec {
   /** The raw query string. */
   rawQuery?: string;
 }
 
-export const BigQueryQuerySpec: Schema.Schema<BigQueryQuerySpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rawQuery: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BigQueryQuerySpec",
-  }) as any as Schema.Schema<BigQueryQuerySpec>;
+export const BigQueryQuerySpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  rawQuery: Schema.optional(Schema.String),
+}).annotate({ identifier: "BigQueryQuerySpec" });
 
 export interface BigQueryTableSpec {
   /** The BigQuery dataset id. */
@@ -1854,16 +1554,11 @@ export interface BigQueryTableSpec {
   tableId?: string;
 }
 
-export const BigQueryTableSpec: Schema.Schema<BigQueryTableSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      datasetId: Schema.optional(Schema.String),
-      tableProjectId: Schema.optional(Schema.String),
-      tableId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BigQueryTableSpec",
-  }) as any as Schema.Schema<BigQueryTableSpec>;
+export const BigQueryTableSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  datasetId: Schema.optional(Schema.String),
+  tableProjectId: Schema.optional(Schema.String),
+  tableId: Schema.optional(Schema.String),
+}).annotate({ identifier: "BigQueryTableSpec" });
 
 export interface BigQueryDataSourceSpec {
   /** The ID of a BigQuery enabled Google Cloud project with a billing account attached. For any queries executed against the data source, the project is charged. */
@@ -1874,16 +1569,13 @@ export interface BigQueryDataSourceSpec {
   tableSpec?: BigQueryTableSpec;
 }
 
-export const BigQueryDataSourceSpec: Schema.Schema<BigQueryDataSourceSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      projectId: Schema.optional(Schema.String),
-      querySpec: Schema.optional(BigQueryQuerySpec),
-      tableSpec: Schema.optional(BigQueryTableSpec),
-    }),
-  ).annotate({
-    identifier: "BigQueryDataSourceSpec",
-  }) as any as Schema.Schema<BigQueryDataSourceSpec>;
+export const BigQueryDataSourceSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    projectId: Schema.optional(Schema.String),
+    querySpec: Schema.optional(BigQueryQuerySpec),
+    tableSpec: Schema.optional(BigQueryTableSpec),
+  },
+).annotate({ identifier: "BigQueryDataSourceSpec" });
 
 export interface LookerDataSourceSpec {
   /** A Looker instance URL. */
@@ -1894,16 +1586,11 @@ export interface LookerDataSourceSpec {
   explore?: string;
 }
 
-export const LookerDataSourceSpec: Schema.Schema<LookerDataSourceSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      instanceUri: Schema.optional(Schema.String),
-      model: Schema.optional(Schema.String),
-      explore: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LookerDataSourceSpec",
-  }) as any as Schema.Schema<LookerDataSourceSpec>;
+export const LookerDataSourceSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  instanceUri: Schema.optional(Schema.String),
+  model: Schema.optional(Schema.String),
+  explore: Schema.optional(Schema.String),
+}).annotate({ identifier: "LookerDataSourceSpec" });
 
 export interface DataSourceSpec {
   /** The parameters of the data source, used when querying the data source. */
@@ -1914,16 +1601,11 @@ export interface DataSourceSpec {
   looker?: LookerDataSourceSpec;
 }
 
-export const DataSourceSpec: Schema.Schema<DataSourceSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parameters: Schema.optional(Schema.Array(DataSourceParameter)),
-      bigQuery: Schema.optional(BigQueryDataSourceSpec),
-      looker: Schema.optional(LookerDataSourceSpec),
-    }),
-  ).annotate({
-    identifier: "DataSourceSpec",
-  }) as any as Schema.Schema<DataSourceSpec>;
+export const DataSourceSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  parameters: Schema.optional(Schema.Array(DataSourceParameter)),
+  bigQuery: Schema.optional(BigQueryDataSourceSpec),
+  looker: Schema.optional(LookerDataSourceSpec),
+}).annotate({ identifier: "DataSourceSpec" });
 
 export interface DataSource {
   /** The DataSourceSpec for the data source connected with this spreadsheet. */
@@ -1936,15 +1618,12 @@ export interface DataSource {
   calculatedColumns?: Array<DataSourceColumn>;
 }
 
-export const DataSource: Schema.Schema<DataSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      spec: Schema.optional(DataSourceSpec),
-      sheetId: Schema.optional(Schema.Number),
-      dataSourceId: Schema.optional(Schema.String),
-      calculatedColumns: Schema.optional(Schema.Array(DataSourceColumn)),
-    }),
-  ).annotate({ identifier: "DataSource" }) as any as Schema.Schema<DataSource>;
+export const DataSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  spec: Schema.optional(DataSourceSpec),
+  sheetId: Schema.optional(Schema.Number),
+  dataSourceId: Schema.optional(Schema.String),
+  calculatedColumns: Schema.optional(Schema.Array(DataSourceColumn)),
+}).annotate({ identifier: "DataSource" });
 
 export interface DimensionGroup {
   /** The depth of the group, representing how many groups have a range that wholly contains the range of this group. */
@@ -1955,30 +1634,21 @@ export interface DimensionGroup {
   range?: DimensionRange;
 }
 
-export const DimensionGroup: Schema.Schema<DimensionGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      depth: Schema.optional(Schema.Number),
-      collapsed: Schema.optional(Schema.Boolean),
-      range: Schema.optional(DimensionRange),
-    }),
-  ).annotate({
-    identifier: "DimensionGroup",
-  }) as any as Schema.Schema<DimensionGroup>;
+export const DimensionGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  depth: Schema.optional(Schema.Number),
+  collapsed: Schema.optional(Schema.Boolean),
+  range: Schema.optional(DimensionRange),
+}).annotate({ identifier: "DimensionGroup" });
 
 export interface AddDimensionGroupResponse {
   /** All groups of a dimension after adding a group to that dimension. */
   dimensionGroups?: Array<DimensionGroup>;
 }
 
-export const AddDimensionGroupResponse: Schema.Schema<AddDimensionGroupResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dimensionGroups: Schema.optional(Schema.Array(DimensionGroup)),
-    }),
-  ).annotate({
-    identifier: "AddDimensionGroupResponse",
-  }) as any as Schema.Schema<AddDimensionGroupResponse>;
+export const AddDimensionGroupResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dimensionGroups: Schema.optional(Schema.Array(DimensionGroup)),
+  }).annotate({ identifier: "AddDimensionGroupResponse" });
 
 export interface DeveloperMetadataLookup {
   /** Limits the selected developer metadata to that which has a matching DeveloperMetadata.metadata_value. */
@@ -2011,20 +1681,16 @@ export interface DeveloperMetadataLookup {
   metadataLocation?: DeveloperMetadataLocation;
 }
 
-export const DeveloperMetadataLookup: Schema.Schema<DeveloperMetadataLookup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadataValue: Schema.optional(Schema.String),
-      locationType: Schema.optional(Schema.String),
-      locationMatchingStrategy: Schema.optional(Schema.String),
-      metadataKey: Schema.optional(Schema.String),
-      visibility: Schema.optional(Schema.String),
-      metadataId: Schema.optional(Schema.Number),
-      metadataLocation: Schema.optional(DeveloperMetadataLocation),
-    }),
-  ).annotate({
-    identifier: "DeveloperMetadataLookup",
-  }) as any as Schema.Schema<DeveloperMetadataLookup>;
+export const DeveloperMetadataLookup =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    metadataValue: Schema.optional(Schema.String),
+    locationType: Schema.optional(Schema.String),
+    locationMatchingStrategy: Schema.optional(Schema.String),
+    metadataKey: Schema.optional(Schema.String),
+    visibility: Schema.optional(Schema.String),
+    metadataId: Schema.optional(Schema.Number),
+    metadataLocation: Schema.optional(DeveloperMetadataLocation),
+  }).annotate({ identifier: "DeveloperMetadataLookup" });
 
 export interface DataFilter {
   /** Selects data that matches the specified A1 range. */
@@ -2035,28 +1701,21 @@ export interface DataFilter {
   developerMetadataLookup?: DeveloperMetadataLookup;
 }
 
-export const DataFilter: Schema.Schema<DataFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      a1Range: Schema.optional(Schema.String),
-      gridRange: Schema.optional(GridRange),
-      developerMetadataLookup: Schema.optional(DeveloperMetadataLookup),
-    }),
-  ).annotate({ identifier: "DataFilter" }) as any as Schema.Schema<DataFilter>;
+export const DataFilter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  a1Range: Schema.optional(Schema.String),
+  gridRange: Schema.optional(GridRange),
+  developerMetadataLookup: Schema.optional(DeveloperMetadataLookup),
+}).annotate({ identifier: "DataFilter" });
 
 export interface SearchDeveloperMetadataRequest {
   /** The data filters describing the criteria used to determine which DeveloperMetadata entries to return. DeveloperMetadata matching any of the specified filters are included in the response. */
   dataFilters?: Array<DataFilter>;
 }
 
-export const SearchDeveloperMetadataRequest: Schema.Schema<SearchDeveloperMetadataRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataFilters: Schema.optional(Schema.Array(DataFilter)),
-    }),
-  ).annotate({
-    identifier: "SearchDeveloperMetadataRequest",
-  }) as any as Schema.Schema<SearchDeveloperMetadataRequest>;
+export const SearchDeveloperMetadataRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataFilters: Schema.optional(Schema.Array(DataFilter)),
+  }).annotate({ identifier: "SearchDeveloperMetadataRequest" });
 
 export interface GridCoordinate {
   /** The column index of the coordinate. */
@@ -2067,16 +1726,11 @@ export interface GridCoordinate {
   sheetId?: number;
 }
 
-export const GridCoordinate: Schema.Schema<GridCoordinate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      columnIndex: Schema.optional(Schema.Number),
-      rowIndex: Schema.optional(Schema.Number),
-      sheetId: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GridCoordinate",
-  }) as any as Schema.Schema<GridCoordinate>;
+export const GridCoordinate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  columnIndex: Schema.optional(Schema.Number),
+  rowIndex: Schema.optional(Schema.Number),
+  sheetId: Schema.optional(Schema.Number),
+}).annotate({ identifier: "GridCoordinate" });
 
 export interface OverlayPosition {
   /** The horizontal offset, in pixels, that the object is offset from the anchor cell. */
@@ -2091,18 +1745,13 @@ export interface OverlayPosition {
   offsetYPixels?: number;
 }
 
-export const OverlayPosition: Schema.Schema<OverlayPosition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      offsetXPixels: Schema.optional(Schema.Number),
-      widthPixels: Schema.optional(Schema.Number),
-      heightPixels: Schema.optional(Schema.Number),
-      anchorCell: Schema.optional(GridCoordinate),
-      offsetYPixels: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "OverlayPosition",
-  }) as any as Schema.Schema<OverlayPosition>;
+export const OverlayPosition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  offsetXPixels: Schema.optional(Schema.Number),
+  widthPixels: Schema.optional(Schema.Number),
+  heightPixels: Schema.optional(Schema.Number),
+  anchorCell: Schema.optional(GridCoordinate),
+  offsetYPixels: Schema.optional(Schema.Number),
+}).annotate({ identifier: "OverlayPosition" });
 
 export interface EmbeddedObjectPosition {
   /** The sheet this is on. Set only if the embedded object is on its own sheet. Must be non-negative. */
@@ -2113,16 +1762,13 @@ export interface EmbeddedObjectPosition {
   overlayPosition?: OverlayPosition;
 }
 
-export const EmbeddedObjectPosition: Schema.Schema<EmbeddedObjectPosition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sheetId: Schema.optional(Schema.Number),
-      newSheet: Schema.optional(Schema.Boolean),
-      overlayPosition: Schema.optional(OverlayPosition),
-    }),
-  ).annotate({
-    identifier: "EmbeddedObjectPosition",
-  }) as any as Schema.Schema<EmbeddedObjectPosition>;
+export const EmbeddedObjectPosition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    sheetId: Schema.optional(Schema.Number),
+    newSheet: Schema.optional(Schema.Boolean),
+    overlayPosition: Schema.optional(OverlayPosition),
+  },
+).annotate({ identifier: "EmbeddedObjectPosition" });
 
 export interface UpdateEmbeddedObjectPositionRequest {
   /** The fields of OverlayPosition that should be updated when setting a new position. Used only if newPosition.overlayPosition is set, in which case at least one field must be specified. The root `newPosition.overlayPosition` is implied and should not be specified. A single `"*"` can be used as short-hand for listing every field. */
@@ -2133,16 +1779,12 @@ export interface UpdateEmbeddedObjectPositionRequest {
   newPosition?: EmbeddedObjectPosition;
 }
 
-export const UpdateEmbeddedObjectPositionRequest: Schema.Schema<UpdateEmbeddedObjectPositionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fields: Schema.optional(Schema.String),
-      objectId: Schema.optional(Schema.Number),
-      newPosition: Schema.optional(EmbeddedObjectPosition),
-    }),
-  ).annotate({
-    identifier: "UpdateEmbeddedObjectPositionRequest",
-  }) as any as Schema.Schema<UpdateEmbeddedObjectPositionRequest>;
+export const UpdateEmbeddedObjectPositionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fields: Schema.optional(Schema.String),
+    objectId: Schema.optional(Schema.Number),
+    newPosition: Schema.optional(EmbeddedObjectPosition),
+  }).annotate({ identifier: "UpdateEmbeddedObjectPositionRequest" });
 
 export interface DeleteDuplicatesRequest {
   /** The range to remove duplicates rows from. */
@@ -2151,29 +1793,20 @@ export interface DeleteDuplicatesRequest {
   comparisonColumns?: Array<DimensionRange>;
 }
 
-export const DeleteDuplicatesRequest: Schema.Schema<DeleteDuplicatesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      range: Schema.optional(GridRange),
-      comparisonColumns: Schema.optional(Schema.Array(DimensionRange)),
-    }),
-  ).annotate({
-    identifier: "DeleteDuplicatesRequest",
-  }) as any as Schema.Schema<DeleteDuplicatesRequest>;
+export const DeleteDuplicatesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    range: Schema.optional(GridRange),
+    comparisonColumns: Schema.optional(Schema.Array(DimensionRange)),
+  }).annotate({ identifier: "DeleteDuplicatesRequest" });
 
 export interface TrimWhitespaceRequest {
   /** The range whose cells to trim. */
   range?: GridRange;
 }
 
-export const TrimWhitespaceRequest: Schema.Schema<TrimWhitespaceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      range: Schema.optional(GridRange),
-    }),
-  ).annotate({
-    identifier: "TrimWhitespaceRequest",
-  }) as any as Schema.Schema<TrimWhitespaceRequest>;
+export const TrimWhitespaceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  range: Schema.optional(GridRange),
+}).annotate({ identifier: "TrimWhitespaceRequest" });
 
 export interface UpdateSheetPropertiesRequest {
   /** The fields that should be updated. At least one field must be specified. The root `properties` is implied and should not be specified. A single `"*"` can be used as short-hand for listing every field. */
@@ -2182,15 +1815,11 @@ export interface UpdateSheetPropertiesRequest {
   properties?: SheetProperties;
 }
 
-export const UpdateSheetPropertiesRequest: Schema.Schema<UpdateSheetPropertiesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fields: Schema.optional(Schema.String),
-      properties: Schema.optional(SheetProperties),
-    }),
-  ).annotate({
-    identifier: "UpdateSheetPropertiesRequest",
-  }) as any as Schema.Schema<UpdateSheetPropertiesRequest>;
+export const UpdateSheetPropertiesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fields: Schema.optional(Schema.String),
+    properties: Schema.optional(SheetProperties),
+  }).annotate({ identifier: "UpdateSheetPropertiesRequest" });
 
 export interface DataSourceSheetDimensionRange {
   /** The ID of the data source sheet the range is on. */
@@ -2199,17 +1828,11 @@ export interface DataSourceSheetDimensionRange {
   columnReferences?: Array<DataSourceColumnReference>;
 }
 
-export const DataSourceSheetDimensionRange: Schema.Schema<DataSourceSheetDimensionRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sheetId: Schema.optional(Schema.Number),
-      columnReferences: Schema.optional(
-        Schema.Array(DataSourceColumnReference),
-      ),
-    }),
-  ).annotate({
-    identifier: "DataSourceSheetDimensionRange",
-  }) as any as Schema.Schema<DataSourceSheetDimensionRange>;
+export const DataSourceSheetDimensionRange =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sheetId: Schema.optional(Schema.Number),
+    columnReferences: Schema.optional(Schema.Array(DataSourceColumnReference)),
+  }).annotate({ identifier: "DataSourceSheetDimensionRange" });
 
 export interface DimensionProperties {
   /** The height (if a row) or width (if a column) of the dimension in pixels. */
@@ -2224,18 +1847,13 @@ export interface DimensionProperties {
   developerMetadata?: Array<DeveloperMetadata>;
 }
 
-export const DimensionProperties: Schema.Schema<DimensionProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pixelSize: Schema.optional(Schema.Number),
-      dataSourceColumnReference: Schema.optional(DataSourceColumnReference),
-      hiddenByFilter: Schema.optional(Schema.Boolean),
-      hiddenByUser: Schema.optional(Schema.Boolean),
-      developerMetadata: Schema.optional(Schema.Array(DeveloperMetadata)),
-    }),
-  ).annotate({
-    identifier: "DimensionProperties",
-  }) as any as Schema.Schema<DimensionProperties>;
+export const DimensionProperties = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pixelSize: Schema.optional(Schema.Number),
+  dataSourceColumnReference: Schema.optional(DataSourceColumnReference),
+  hiddenByFilter: Schema.optional(Schema.Boolean),
+  hiddenByUser: Schema.optional(Schema.Boolean),
+  developerMetadata: Schema.optional(Schema.Array(DeveloperMetadata)),
+}).annotate({ identifier: "DimensionProperties" });
 
 export interface UpdateDimensionPropertiesRequest {
   /** The columns on a data source sheet to update. */
@@ -2248,17 +1866,13 @@ export interface UpdateDimensionPropertiesRequest {
   fields?: string;
 }
 
-export const UpdateDimensionPropertiesRequest: Schema.Schema<UpdateDimensionPropertiesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataSourceSheetRange: Schema.optional(DataSourceSheetDimensionRange),
-      properties: Schema.optional(DimensionProperties),
-      range: Schema.optional(DimensionRange),
-      fields: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpdateDimensionPropertiesRequest",
-  }) as any as Schema.Schema<UpdateDimensionPropertiesRequest>;
+export const UpdateDimensionPropertiesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataSourceSheetRange: Schema.optional(DataSourceSheetDimensionRange),
+    properties: Schema.optional(DimensionProperties),
+    range: Schema.optional(DimensionRange),
+    fields: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UpdateDimensionPropertiesRequest" });
 
 export interface PasteDataRequest {
   /** The coordinate at which the data should start being inserted. */
@@ -2281,18 +1895,13 @@ export interface PasteDataRequest {
   html?: boolean;
 }
 
-export const PasteDataRequest: Schema.Schema<PasteDataRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      coordinate: Schema.optional(GridCoordinate),
-      type: Schema.optional(Schema.String),
-      data: Schema.optional(Schema.String),
-      delimiter: Schema.optional(Schema.String),
-      html: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "PasteDataRequest",
-  }) as any as Schema.Schema<PasteDataRequest>;
+export const PasteDataRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  coordinate: Schema.optional(GridCoordinate),
+  type: Schema.optional(Schema.String),
+  data: Schema.optional(Schema.String),
+  delimiter: Schema.optional(Schema.String),
+  html: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "PasteDataRequest" });
 
 export interface BandingProperties {
   /** The first color that is alternating. (Required) Deprecated: Use first_band_color_style. */
@@ -2313,21 +1922,16 @@ export interface BandingProperties {
   footerColor?: Color;
 }
 
-export const BandingProperties: Schema.Schema<BandingProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      firstBandColor: Schema.optional(Color),
-      secondBandColor: Schema.optional(Color),
-      headerColor: Schema.optional(Color),
-      secondBandColorStyle: Schema.optional(ColorStyle),
-      footerColorStyle: Schema.optional(ColorStyle),
-      headerColorStyle: Schema.optional(ColorStyle),
-      firstBandColorStyle: Schema.optional(ColorStyle),
-      footerColor: Schema.optional(Color),
-    }),
-  ).annotate({
-    identifier: "BandingProperties",
-  }) as any as Schema.Schema<BandingProperties>;
+export const BandingProperties = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  firstBandColor: Schema.optional(Color),
+  secondBandColor: Schema.optional(Color),
+  headerColor: Schema.optional(Color),
+  secondBandColorStyle: Schema.optional(ColorStyle),
+  footerColorStyle: Schema.optional(ColorStyle),
+  headerColorStyle: Schema.optional(ColorStyle),
+  firstBandColorStyle: Schema.optional(ColorStyle),
+  footerColor: Schema.optional(Color),
+}).annotate({ identifier: "BandingProperties" });
 
 export interface BandedRange {
   /** The range over which these properties are applied. */
@@ -2342,18 +1946,13 @@ export interface BandedRange {
   columnProperties?: BandingProperties;
 }
 
-export const BandedRange: Schema.Schema<BandedRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      range: Schema.optional(GridRange),
-      bandedRangeReference: Schema.optional(Schema.String),
-      rowProperties: Schema.optional(BandingProperties),
-      bandedRangeId: Schema.optional(Schema.Number),
-      columnProperties: Schema.optional(BandingProperties),
-    }),
-  ).annotate({
-    identifier: "BandedRange",
-  }) as any as Schema.Schema<BandedRange>;
+export const BandedRange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  range: Schema.optional(GridRange),
+  bandedRangeReference: Schema.optional(Schema.String),
+  rowProperties: Schema.optional(BandingProperties),
+  bandedRangeId: Schema.optional(Schema.Number),
+  columnProperties: Schema.optional(BandingProperties),
+}).annotate({ identifier: "BandedRange" });
 
 export interface UpdateBandingRequest {
   /** The banded range to update with the new properties. */
@@ -2362,15 +1961,10 @@ export interface UpdateBandingRequest {
   fields?: string;
 }
 
-export const UpdateBandingRequest: Schema.Schema<UpdateBandingRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bandedRange: Schema.optional(BandedRange),
-      fields: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpdateBandingRequest",
-  }) as any as Schema.Schema<UpdateBandingRequest>;
+export const UpdateBandingRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bandedRange: Schema.optional(BandedRange),
+  fields: Schema.optional(Schema.String),
+}).annotate({ identifier: "UpdateBandingRequest" });
 
 export interface TableRowsProperties {
   /** The second color that is alternating. If this field is set, the second banded row is filled with the specified color. Otherwise, the second banded row is filled with a default color. */
@@ -2383,31 +1977,22 @@ export interface TableRowsProperties {
   firstBandColorStyle?: ColorStyle;
 }
 
-export const TableRowsProperties: Schema.Schema<TableRowsProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      secondBandColorStyle: Schema.optional(ColorStyle),
-      footerColorStyle: Schema.optional(ColorStyle),
-      headerColorStyle: Schema.optional(ColorStyle),
-      firstBandColorStyle: Schema.optional(ColorStyle),
-    }),
-  ).annotate({
-    identifier: "TableRowsProperties",
-  }) as any as Schema.Schema<TableRowsProperties>;
+export const TableRowsProperties = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  secondBandColorStyle: Schema.optional(ColorStyle),
+  footerColorStyle: Schema.optional(ColorStyle),
+  headerColorStyle: Schema.optional(ColorStyle),
+  firstBandColorStyle: Schema.optional(ColorStyle),
+}).annotate({ identifier: "TableRowsProperties" });
 
 export interface TableColumnDataValidationRule {
   /** The condition that data in the cell must match. Valid only if the [BooleanCondition.type] is ONE_OF_LIST. */
   condition?: BooleanCondition;
 }
 
-export const TableColumnDataValidationRule: Schema.Schema<TableColumnDataValidationRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      condition: Schema.optional(BooleanCondition),
-    }),
-  ).annotate({
-    identifier: "TableColumnDataValidationRule",
-  }) as any as Schema.Schema<TableColumnDataValidationRule>;
+export const TableColumnDataValidationRule =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    condition: Schema.optional(BooleanCondition),
+  }).annotate({ identifier: "TableColumnDataValidationRule" });
 
 export interface TableColumnProperties {
   /** The column type. */
@@ -2436,17 +2021,12 @@ export interface TableColumnProperties {
   columnName?: string;
 }
 
-export const TableColumnProperties: Schema.Schema<TableColumnProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      columnType: Schema.optional(Schema.String),
-      dataValidationRule: Schema.optional(TableColumnDataValidationRule),
-      columnIndex: Schema.optional(Schema.Number),
-      columnName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TableColumnProperties",
-  }) as any as Schema.Schema<TableColumnProperties>;
+export const TableColumnProperties = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  columnType: Schema.optional(Schema.String),
+  dataValidationRule: Schema.optional(TableColumnDataValidationRule),
+  columnIndex: Schema.optional(Schema.Number),
+  columnName: Schema.optional(Schema.String),
+}).annotate({ identifier: "TableColumnProperties" });
 
 export interface Table {
   /** The table rows properties. */
@@ -2461,16 +2041,13 @@ export interface Table {
   tableId?: string;
 }
 
-export const Table: Schema.Schema<Table> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rowsProperties: Schema.optional(TableRowsProperties),
-      name: Schema.optional(Schema.String),
-      range: Schema.optional(GridRange),
-      columnProperties: Schema.optional(Schema.Array(TableColumnProperties)),
-      tableId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Table" }) as any as Schema.Schema<Table>;
+export const Table = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  rowsProperties: Schema.optional(TableRowsProperties),
+  name: Schema.optional(Schema.String),
+  range: Schema.optional(GridRange),
+  columnProperties: Schema.optional(Schema.Array(TableColumnProperties)),
+  tableId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Table" });
 
 export interface UpdateTableRequest {
   /** Required. The table to update. */
@@ -2479,15 +2056,10 @@ export interface UpdateTableRequest {
   fields?: string;
 }
 
-export const UpdateTableRequest: Schema.Schema<UpdateTableRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      table: Schema.optional(Table),
-      fields: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpdateTableRequest",
-  }) as any as Schema.Schema<UpdateTableRequest>;
+export const UpdateTableRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  table: Schema.optional(Table),
+  fields: Schema.optional(Schema.String),
+}).annotate({ identifier: "UpdateTableRequest" });
 
 export interface InsertRangeRequest {
   /** The range to insert new cells into. The range is constrained to the current sheet boundaries. */
@@ -2496,29 +2068,19 @@ export interface InsertRangeRequest {
   shiftDimension?: "DIMENSION_UNSPECIFIED" | "ROWS" | "COLUMNS" | (string & {});
 }
 
-export const InsertRangeRequest: Schema.Schema<InsertRangeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      range: Schema.optional(GridRange),
-      shiftDimension: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InsertRangeRequest",
-  }) as any as Schema.Schema<InsertRangeRequest>;
+export const InsertRangeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  range: Schema.optional(GridRange),
+  shiftDimension: Schema.optional(Schema.String),
+}).annotate({ identifier: "InsertRangeRequest" });
 
 export interface DeleteSheetRequest {
   /** The ID of the sheet to delete. If the sheet is of DATA_SOURCE type, the associated DataSource is also deleted. */
   sheetId?: number;
 }
 
-export const DeleteSheetRequest: Schema.Schema<DeleteSheetRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sheetId: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "DeleteSheetRequest",
-  }) as any as Schema.Schema<DeleteSheetRequest>;
+export const DeleteSheetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sheetId: Schema.optional(Schema.Number),
+}).annotate({ identifier: "DeleteSheetRequest" });
 
 export interface InterpolationPoint {
   /** The value this interpolation point uses. May be a formula. Unused if type is MIN or MAX. */
@@ -2538,17 +2100,12 @@ export interface InterpolationPoint {
   colorStyle?: ColorStyle;
 }
 
-export const InterpolationPoint: Schema.Schema<InterpolationPoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      color: Schema.optional(Color),
-      colorStyle: Schema.optional(ColorStyle),
-    }),
-  ).annotate({
-    identifier: "InterpolationPoint",
-  }) as any as Schema.Schema<InterpolationPoint>;
+export const InterpolationPoint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  color: Schema.optional(Color),
+  colorStyle: Schema.optional(ColorStyle),
+}).annotate({ identifier: "InterpolationPoint" });
 
 export interface GradientRule {
   /** The starting interpolation point. */
@@ -2559,16 +2116,11 @@ export interface GradientRule {
   maxpoint?: InterpolationPoint;
 }
 
-export const GradientRule: Schema.Schema<GradientRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      minpoint: Schema.optional(InterpolationPoint),
-      midpoint: Schema.optional(InterpolationPoint),
-      maxpoint: Schema.optional(InterpolationPoint),
-    }),
-  ).annotate({
-    identifier: "GradientRule",
-  }) as any as Schema.Schema<GradientRule>;
+export const GradientRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  minpoint: Schema.optional(InterpolationPoint),
+  midpoint: Schema.optional(InterpolationPoint),
+  maxpoint: Schema.optional(InterpolationPoint),
+}).annotate({ identifier: "GradientRule" });
 
 export interface BooleanRule {
   /** The condition of the rule. If the condition evaluates to true, the format is applied. */
@@ -2577,15 +2129,10 @@ export interface BooleanRule {
   format?: CellFormat;
 }
 
-export const BooleanRule: Schema.Schema<BooleanRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      condition: Schema.optional(BooleanCondition),
-      format: Schema.optional(CellFormat),
-    }),
-  ).annotate({
-    identifier: "BooleanRule",
-  }) as any as Schema.Schema<BooleanRule>;
+export const BooleanRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  condition: Schema.optional(BooleanCondition),
+  format: Schema.optional(CellFormat),
+}).annotate({ identifier: "BooleanRule" });
 
 export interface ConditionalFormatRule {
   /** The formatting will vary based on the gradients in the rule. */
@@ -2596,16 +2143,11 @@ export interface ConditionalFormatRule {
   booleanRule?: BooleanRule;
 }
 
-export const ConditionalFormatRule: Schema.Schema<ConditionalFormatRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gradientRule: Schema.optional(GradientRule),
-      ranges: Schema.optional(Schema.Array(GridRange)),
-      booleanRule: Schema.optional(BooleanRule),
-    }),
-  ).annotate({
-    identifier: "ConditionalFormatRule",
-  }) as any as Schema.Schema<ConditionalFormatRule>;
+export const ConditionalFormatRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gradientRule: Schema.optional(GradientRule),
+  ranges: Schema.optional(Schema.Array(GridRange)),
+  booleanRule: Schema.optional(BooleanRule),
+}).annotate({ identifier: "ConditionalFormatRule" });
 
 export interface AddConditionalFormatRuleRequest {
   /** The rule to add. */
@@ -2614,15 +2156,11 @@ export interface AddConditionalFormatRuleRequest {
   index?: number;
 }
 
-export const AddConditionalFormatRuleRequest: Schema.Schema<AddConditionalFormatRuleRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rule: Schema.optional(ConditionalFormatRule),
-      index: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "AddConditionalFormatRuleRequest",
-  }) as any as Schema.Schema<AddConditionalFormatRuleRequest>;
+export const AddConditionalFormatRuleRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rule: Schema.optional(ConditionalFormatRule),
+    index: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "AddConditionalFormatRuleRequest" });
 
 export interface AppendCellsRequest {
   /** The data to append. */
@@ -2635,31 +2173,22 @@ export interface AppendCellsRequest {
   tableId?: string;
 }
 
-export const AppendCellsRequest: Schema.Schema<AppendCellsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rows: Schema.optional(Schema.Array(RowData)),
-      sheetId: Schema.optional(Schema.Number),
-      fields: Schema.optional(Schema.String),
-      tableId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AppendCellsRequest",
-  }) as any as Schema.Schema<AppendCellsRequest>;
+export const AppendCellsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  rows: Schema.optional(Schema.Array(RowData)),
+  sheetId: Schema.optional(Schema.Number),
+  fields: Schema.optional(Schema.String),
+  tableId: Schema.optional(Schema.String),
+}).annotate({ identifier: "AppendCellsRequest" });
 
 export interface DeleteProtectedRangeRequest {
   /** The ID of the protected range to delete. */
   protectedRangeId?: number;
 }
 
-export const DeleteProtectedRangeRequest: Schema.Schema<DeleteProtectedRangeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      protectedRangeId: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "DeleteProtectedRangeRequest",
-  }) as any as Schema.Schema<DeleteProtectedRangeRequest>;
+export const DeleteProtectedRangeRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    protectedRangeId: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "DeleteProtectedRangeRequest" });
 
 export interface AutoResizeDimensionsRequest {
   /** The dimensions on a data source sheet to automatically resize. */
@@ -2668,29 +2197,20 @@ export interface AutoResizeDimensionsRequest {
   dimensions?: DimensionRange;
 }
 
-export const AutoResizeDimensionsRequest: Schema.Schema<AutoResizeDimensionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataSourceSheetDimensions: Schema.optional(DataSourceSheetDimensionRange),
-      dimensions: Schema.optional(DimensionRange),
-    }),
-  ).annotate({
-    identifier: "AutoResizeDimensionsRequest",
-  }) as any as Schema.Schema<AutoResizeDimensionsRequest>;
+export const AutoResizeDimensionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataSourceSheetDimensions: Schema.optional(DataSourceSheetDimensionRange),
+    dimensions: Schema.optional(DimensionRange),
+  }).annotate({ identifier: "AutoResizeDimensionsRequest" });
 
 export interface AddDataSourceRequest {
   /** The data source to add. */
   dataSource?: DataSource;
 }
 
-export const AddDataSourceRequest: Schema.Schema<AddDataSourceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataSource: Schema.optional(DataSource),
-    }),
-  ).annotate({
-    identifier: "AddDataSourceRequest",
-  }) as any as Schema.Schema<AddDataSourceRequest>;
+export const AddDataSourceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dataSource: Schema.optional(DataSource),
+}).annotate({ identifier: "AddDataSourceRequest" });
 
 export interface SortRangeRequest {
   /** The sort order per column. Later specifications are used when values are equal in the earlier specifications. */
@@ -2699,29 +2219,19 @@ export interface SortRangeRequest {
   range?: GridRange;
 }
 
-export const SortRangeRequest: Schema.Schema<SortRangeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sortSpecs: Schema.optional(Schema.Array(SortSpec)),
-      range: Schema.optional(GridRange),
-    }),
-  ).annotate({
-    identifier: "SortRangeRequest",
-  }) as any as Schema.Schema<SortRangeRequest>;
+export const SortRangeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sortSpecs: Schema.optional(Schema.Array(SortSpec)),
+  range: Schema.optional(GridRange),
+}).annotate({ identifier: "SortRangeRequest" });
 
 export interface RandomizeRangeRequest {
   /** The range to randomize. */
   range?: GridRange;
 }
 
-export const RandomizeRangeRequest: Schema.Schema<RandomizeRangeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      range: Schema.optional(GridRange),
-    }),
-  ).annotate({
-    identifier: "RandomizeRangeRequest",
-  }) as any as Schema.Schema<RandomizeRangeRequest>;
+export const RandomizeRangeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  range: Schema.optional(GridRange),
+}).annotate({ identifier: "RandomizeRangeRequest" });
 
 export interface BasicFilter {
   /** The table this filter is backed by, if any. When writing, only one of range or table_id may be set. */
@@ -2736,60 +2246,42 @@ export interface BasicFilter {
   filterSpecs?: Array<FilterSpec>;
 }
 
-export const BasicFilter: Schema.Schema<BasicFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tableId: Schema.optional(Schema.String),
-      sortSpecs: Schema.optional(Schema.Array(SortSpec)),
-      criteria: Schema.optional(Schema.Record(Schema.String, FilterCriteria)),
-      range: Schema.optional(GridRange),
-      filterSpecs: Schema.optional(Schema.Array(FilterSpec)),
-    }),
-  ).annotate({
-    identifier: "BasicFilter",
-  }) as any as Schema.Schema<BasicFilter>;
+export const BasicFilter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tableId: Schema.optional(Schema.String),
+  sortSpecs: Schema.optional(Schema.Array(SortSpec)),
+  criteria: Schema.optional(Schema.Record(Schema.String, FilterCriteria)),
+  range: Schema.optional(GridRange),
+  filterSpecs: Schema.optional(Schema.Array(FilterSpec)),
+}).annotate({ identifier: "BasicFilter" });
 
 export interface SetBasicFilterRequest {
   /** The filter to set. */
   filter?: BasicFilter;
 }
 
-export const SetBasicFilterRequest: Schema.Schema<SetBasicFilterRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filter: Schema.optional(BasicFilter),
-    }),
-  ).annotate({
-    identifier: "SetBasicFilterRequest",
-  }) as any as Schema.Schema<SetBasicFilterRequest>;
+export const SetBasicFilterRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  filter: Schema.optional(BasicFilter),
+}).annotate({ identifier: "SetBasicFilterRequest" });
 
 export interface ClearBasicFilterRequest {
   /** The sheet ID on which the basic filter should be cleared. */
   sheetId?: number;
 }
 
-export const ClearBasicFilterRequest: Schema.Schema<ClearBasicFilterRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sheetId: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "ClearBasicFilterRequest",
-  }) as any as Schema.Schema<ClearBasicFilterRequest>;
+export const ClearBasicFilterRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sheetId: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "ClearBasicFilterRequest" });
 
 export interface DeleteDeveloperMetadataRequest {
   /** The data filter describing the criteria used to select which developer metadata entry to delete. */
   dataFilter?: DataFilter;
 }
 
-export const DeleteDeveloperMetadataRequest: Schema.Schema<DeleteDeveloperMetadataRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataFilter: Schema.optional(DataFilter),
-    }),
-  ).annotate({
-    identifier: "DeleteDeveloperMetadataRequest",
-  }) as any as Schema.Schema<DeleteDeveloperMetadataRequest>;
+export const DeleteDeveloperMetadataRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataFilter: Schema.optional(DataFilter),
+  }).annotate({ identifier: "DeleteDeveloperMetadataRequest" });
 
 export interface UpdateDeveloperMetadataRequest {
   /** The fields that should be updated. At least one field must be specified. The root `developerMetadata` is implied and should not be specified. A single `"*"` can be used as short-hand for listing every field. */
@@ -2800,16 +2292,12 @@ export interface UpdateDeveloperMetadataRequest {
   developerMetadata?: DeveloperMetadata;
 }
 
-export const UpdateDeveloperMetadataRequest: Schema.Schema<UpdateDeveloperMetadataRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fields: Schema.optional(Schema.String),
-      dataFilters: Schema.optional(Schema.Array(DataFilter)),
-      developerMetadata: Schema.optional(DeveloperMetadata),
-    }),
-  ).annotate({
-    identifier: "UpdateDeveloperMetadataRequest",
-  }) as any as Schema.Schema<UpdateDeveloperMetadataRequest>;
+export const UpdateDeveloperMetadataRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fields: Schema.optional(Schema.String),
+    dataFilters: Schema.optional(Schema.Array(DataFilter)),
+    developerMetadata: Schema.optional(DeveloperMetadata),
+  }).annotate({ identifier: "UpdateDeveloperMetadataRequest" });
 
 export interface EmbeddedObjectBorder {
   /** The color of the border. If color is also set, this field takes precedence. */
@@ -2818,15 +2306,10 @@ export interface EmbeddedObjectBorder {
   color?: Color;
 }
 
-export const EmbeddedObjectBorder: Schema.Schema<EmbeddedObjectBorder> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      colorStyle: Schema.optional(ColorStyle),
-      color: Schema.optional(Color),
-    }),
-  ).annotate({
-    identifier: "EmbeddedObjectBorder",
-  }) as any as Schema.Schema<EmbeddedObjectBorder>;
+export const EmbeddedObjectBorder = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  colorStyle: Schema.optional(ColorStyle),
+  color: Schema.optional(Color),
+}).annotate({ identifier: "EmbeddedObjectBorder" });
 
 export interface WaterfallChartCustomSubtotal {
   /** The zero-based index of a data point within the series. If data_is_subtotal is true, the data point at this index is the subtotal. Otherwise, the subtotal appears after the data point with this index. A series can have multiple subtotals at arbitrary indices, but subtotals do not affect the indices of the data points. For example, if a series has three data points, their indices will always be 0, 1, and 2, regardless of how many subtotals exist on the series or what data points they are associated with. */
@@ -2837,16 +2320,12 @@ export interface WaterfallChartCustomSubtotal {
   dataIsSubtotal?: boolean;
 }
 
-export const WaterfallChartCustomSubtotal: Schema.Schema<WaterfallChartCustomSubtotal> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subtotalIndex: Schema.optional(Schema.Number),
-      label: Schema.optional(Schema.String),
-      dataIsSubtotal: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "WaterfallChartCustomSubtotal",
-  }) as any as Schema.Schema<WaterfallChartCustomSubtotal>;
+export const WaterfallChartCustomSubtotal =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subtotalIndex: Schema.optional(Schema.Number),
+    label: Schema.optional(Schema.String),
+    dataIsSubtotal: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "WaterfallChartCustomSubtotal" });
 
 export interface WaterfallChartColumnStyle {
   /** The color of the column. Deprecated: Use color_style. */
@@ -2857,16 +2336,12 @@ export interface WaterfallChartColumnStyle {
   label?: string;
 }
 
-export const WaterfallChartColumnStyle: Schema.Schema<WaterfallChartColumnStyle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      color: Schema.optional(Color),
-      colorStyle: Schema.optional(ColorStyle),
-      label: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WaterfallChartColumnStyle",
-  }) as any as Schema.Schema<WaterfallChartColumnStyle>;
+export const WaterfallChartColumnStyle =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    color: Schema.optional(Color),
+    colorStyle: Schema.optional(ColorStyle),
+    label: Schema.optional(Schema.String),
+  }).annotate({ identifier: "WaterfallChartColumnStyle" });
 
 export interface WaterfallChartSeries {
   /** Custom subtotal columns appearing in this series. The order in which subtotals are defined is not significant. Only one subtotal may be defined for each data point. */
@@ -2885,22 +2360,15 @@ export interface WaterfallChartSeries {
   positiveColumnsStyle?: WaterfallChartColumnStyle;
 }
 
-export const WaterfallChartSeries: Schema.Schema<WaterfallChartSeries> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customSubtotals: Schema.optional(
-        Schema.Array(WaterfallChartCustomSubtotal),
-      ),
-      data: Schema.optional(ChartData),
-      negativeColumnsStyle: Schema.optional(WaterfallChartColumnStyle),
-      subtotalColumnsStyle: Schema.optional(WaterfallChartColumnStyle),
-      dataLabel: Schema.optional(DataLabel),
-      hideTrailingSubtotal: Schema.optional(Schema.Boolean),
-      positiveColumnsStyle: Schema.optional(WaterfallChartColumnStyle),
-    }),
-  ).annotate({
-    identifier: "WaterfallChartSeries",
-  }) as any as Schema.Schema<WaterfallChartSeries>;
+export const WaterfallChartSeries = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  customSubtotals: Schema.optional(Schema.Array(WaterfallChartCustomSubtotal)),
+  data: Schema.optional(ChartData),
+  negativeColumnsStyle: Schema.optional(WaterfallChartColumnStyle),
+  subtotalColumnsStyle: Schema.optional(WaterfallChartColumnStyle),
+  dataLabel: Schema.optional(DataLabel),
+  hideTrailingSubtotal: Schema.optional(Schema.Boolean),
+  positiveColumnsStyle: Schema.optional(WaterfallChartColumnStyle),
+}).annotate({ identifier: "WaterfallChartSeries" });
 
 export interface WaterfallChartDomain {
   /** True to reverse the order of the domain values (horizontal axis). */
@@ -2909,15 +2377,10 @@ export interface WaterfallChartDomain {
   data?: ChartData;
 }
 
-export const WaterfallChartDomain: Schema.Schema<WaterfallChartDomain> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reversed: Schema.optional(Schema.Boolean),
-      data: Schema.optional(ChartData),
-    }),
-  ).annotate({
-    identifier: "WaterfallChartDomain",
-  }) as any as Schema.Schema<WaterfallChartDomain>;
+export const WaterfallChartDomain = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  reversed: Schema.optional(Schema.Boolean),
+  data: Schema.optional(ChartData),
+}).annotate({ identifier: "WaterfallChartDomain" });
 
 export interface LineStyle {
   /** The thickness of the line, in px. */
@@ -2936,13 +2399,10 @@ export interface LineStyle {
     | (string & {});
 }
 
-export const LineStyle: Schema.Schema<LineStyle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      width: Schema.optional(Schema.Number),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "LineStyle" }) as any as Schema.Schema<LineStyle>;
+export const LineStyle = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  width: Schema.optional(Schema.Number),
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "LineStyle" });
 
 export interface WaterfallChartSpec {
   /** The stacked type. */
@@ -2965,20 +2425,15 @@ export interface WaterfallChartSpec {
   connectorLineStyle?: LineStyle;
 }
 
-export const WaterfallChartSpec: Schema.Schema<WaterfallChartSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stackedType: Schema.optional(Schema.String),
-      series: Schema.optional(Schema.Array(WaterfallChartSeries)),
-      totalDataLabel: Schema.optional(DataLabel),
-      domain: Schema.optional(WaterfallChartDomain),
-      hideConnectorLines: Schema.optional(Schema.Boolean),
-      firstValueIsTotal: Schema.optional(Schema.Boolean),
-      connectorLineStyle: Schema.optional(LineStyle),
-    }),
-  ).annotate({
-    identifier: "WaterfallChartSpec",
-  }) as any as Schema.Schema<WaterfallChartSpec>;
+export const WaterfallChartSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  stackedType: Schema.optional(Schema.String),
+  series: Schema.optional(Schema.Array(WaterfallChartSeries)),
+  totalDataLabel: Schema.optional(DataLabel),
+  domain: Schema.optional(WaterfallChartDomain),
+  hideConnectorLines: Schema.optional(Schema.Boolean),
+  firstValueIsTotal: Schema.optional(Schema.Boolean),
+  connectorLineStyle: Schema.optional(LineStyle),
+}).annotate({ identifier: "WaterfallChartSpec" });
 
 export interface ChartAxisViewWindowOptions {
   /** The view window's mode. */
@@ -2994,16 +2449,12 @@ export interface ChartAxisViewWindowOptions {
   viewWindowMax?: number;
 }
 
-export const ChartAxisViewWindowOptions: Schema.Schema<ChartAxisViewWindowOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      viewWindowMode: Schema.optional(Schema.String),
-      viewWindowMin: Schema.optional(Schema.Number),
-      viewWindowMax: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "ChartAxisViewWindowOptions",
-  }) as any as Schema.Schema<ChartAxisViewWindowOptions>;
+export const ChartAxisViewWindowOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    viewWindowMode: Schema.optional(Schema.String),
+    viewWindowMin: Schema.optional(Schema.Number),
+    viewWindowMax: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "ChartAxisViewWindowOptions" });
 
 export interface BasicChartAxis {
   /** The axis title text position. */
@@ -3023,18 +2474,13 @@ export interface BasicChartAxis {
   format?: TextFormat;
 }
 
-export const BasicChartAxis: Schema.Schema<BasicChartAxis> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      titleTextPosition: Schema.optional(TextPosition),
-      viewWindowOptions: Schema.optional(ChartAxisViewWindowOptions),
-      title: Schema.optional(Schema.String),
-      position: Schema.optional(Schema.String),
-      format: Schema.optional(TextFormat),
-    }),
-  ).annotate({
-    identifier: "BasicChartAxis",
-  }) as any as Schema.Schema<BasicChartAxis>;
+export const BasicChartAxis = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  titleTextPosition: Schema.optional(TextPosition),
+  viewWindowOptions: Schema.optional(ChartAxisViewWindowOptions),
+  title: Schema.optional(Schema.String),
+  position: Schema.optional(Schema.String),
+  format: Schema.optional(TextFormat),
+}).annotate({ identifier: "BasicChartAxis" });
 
 export interface PointStyle {
   /** The point size. If empty, a default size is used. */
@@ -3053,13 +2499,10 @@ export interface PointStyle {
     | (string & {});
 }
 
-export const PointStyle: Schema.Schema<PointStyle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      size: Schema.optional(Schema.Number),
-      shape: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "PointStyle" }) as any as Schema.Schema<PointStyle>;
+export const PointStyle = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  size: Schema.optional(Schema.Number),
+  shape: Schema.optional(Schema.String),
+}).annotate({ identifier: "PointStyle" });
 
 export interface BasicSeriesDataPointStyleOverride {
   /** The zero-based index of the series data point. */
@@ -3072,17 +2515,13 @@ export interface BasicSeriesDataPointStyleOverride {
   pointStyle?: PointStyle;
 }
 
-export const BasicSeriesDataPointStyleOverride: Schema.Schema<BasicSeriesDataPointStyleOverride> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      index: Schema.optional(Schema.Number),
-      colorStyle: Schema.optional(ColorStyle),
-      color: Schema.optional(Color),
-      pointStyle: Schema.optional(PointStyle),
-    }),
-  ).annotate({
-    identifier: "BasicSeriesDataPointStyleOverride",
-  }) as any as Schema.Schema<BasicSeriesDataPointStyleOverride>;
+export const BasicSeriesDataPointStyleOverride =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    index: Schema.optional(Schema.Number),
+    colorStyle: Schema.optional(ColorStyle),
+    color: Schema.optional(Color),
+    pointStyle: Schema.optional(PointStyle),
+  }).annotate({ identifier: "BasicSeriesDataPointStyleOverride" });
 
 export interface BasicChartSeries {
   /** The data being visualized in this chart series. */
@@ -3119,24 +2558,19 @@ export interface BasicChartSeries {
   styleOverrides?: Array<BasicSeriesDataPointStyleOverride>;
 }
 
-export const BasicChartSeries: Schema.Schema<BasicChartSeries> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      series: Schema.optional(ChartData),
-      dataLabel: Schema.optional(DataLabel),
-      pointStyle: Schema.optional(PointStyle),
-      lineStyle: Schema.optional(LineStyle),
-      targetAxis: Schema.optional(Schema.String),
-      colorStyle: Schema.optional(ColorStyle),
-      color: Schema.optional(Color),
-      type: Schema.optional(Schema.String),
-      styleOverrides: Schema.optional(
-        Schema.Array(BasicSeriesDataPointStyleOverride),
-      ),
-    }),
-  ).annotate({
-    identifier: "BasicChartSeries",
-  }) as any as Schema.Schema<BasicChartSeries>;
+export const BasicChartSeries = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  series: Schema.optional(ChartData),
+  dataLabel: Schema.optional(DataLabel),
+  pointStyle: Schema.optional(PointStyle),
+  lineStyle: Schema.optional(LineStyle),
+  targetAxis: Schema.optional(Schema.String),
+  colorStyle: Schema.optional(ColorStyle),
+  color: Schema.optional(Color),
+  type: Schema.optional(Schema.String),
+  styleOverrides: Schema.optional(
+    Schema.Array(BasicSeriesDataPointStyleOverride),
+  ),
+}).annotate({ identifier: "BasicChartSeries" });
 
 export interface BasicChartDomain {
   /** The data of the domain. For example, if charting stock prices over time, this is the data representing the dates. */
@@ -3145,15 +2579,10 @@ export interface BasicChartDomain {
   reversed?: boolean;
 }
 
-export const BasicChartDomain: Schema.Schema<BasicChartDomain> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      domain: Schema.optional(ChartData),
-      reversed: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "BasicChartDomain",
-  }) as any as Schema.Schema<BasicChartDomain>;
+export const BasicChartDomain = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  domain: Schema.optional(ChartData),
+  reversed: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "BasicChartDomain" });
 
 export interface BasicChartSpec {
   /** The type of the chart. */
@@ -3207,25 +2636,20 @@ export interface BasicChartSpec {
     | (string & {});
 }
 
-export const BasicChartSpec: Schema.Schema<BasicChartSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      chartType: Schema.optional(Schema.String),
-      axis: Schema.optional(Schema.Array(BasicChartAxis)),
-      headerCount: Schema.optional(Schema.Number),
-      threeDimensional: Schema.optional(Schema.Boolean),
-      series: Schema.optional(Schema.Array(BasicChartSeries)),
-      totalDataLabel: Schema.optional(DataLabel),
-      legendPosition: Schema.optional(Schema.String),
-      domains: Schema.optional(Schema.Array(BasicChartDomain)),
-      interpolateNulls: Schema.optional(Schema.Boolean),
-      stackedType: Schema.optional(Schema.String),
-      lineSmoothing: Schema.optional(Schema.Boolean),
-      compareMode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BasicChartSpec",
-  }) as any as Schema.Schema<BasicChartSpec>;
+export const BasicChartSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  chartType: Schema.optional(Schema.String),
+  axis: Schema.optional(Schema.Array(BasicChartAxis)),
+  headerCount: Schema.optional(Schema.Number),
+  threeDimensional: Schema.optional(Schema.Boolean),
+  series: Schema.optional(Schema.Array(BasicChartSeries)),
+  totalDataLabel: Schema.optional(DataLabel),
+  legendPosition: Schema.optional(Schema.String),
+  domains: Schema.optional(Schema.Array(BasicChartDomain)),
+  interpolateNulls: Schema.optional(Schema.Boolean),
+  stackedType: Schema.optional(Schema.String),
+  lineSmoothing: Schema.optional(Schema.Boolean),
+  compareMode: Schema.optional(Schema.String),
+}).annotate({ identifier: "BasicChartSpec" });
 
 export interface HistogramSeries {
   /** The color of the column representing this series in each bucket. This field is optional. Deprecated: Use bar_color_style. */
@@ -3236,16 +2660,11 @@ export interface HistogramSeries {
   data?: ChartData;
 }
 
-export const HistogramSeries: Schema.Schema<HistogramSeries> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      barColor: Schema.optional(Color),
-      barColorStyle: Schema.optional(ColorStyle),
-      data: Schema.optional(ChartData),
-    }),
-  ).annotate({
-    identifier: "HistogramSeries",
-  }) as any as Schema.Schema<HistogramSeries>;
+export const HistogramSeries = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  barColor: Schema.optional(Color),
+  barColorStyle: Schema.optional(ColorStyle),
+  data: Schema.optional(ChartData),
+}).annotate({ identifier: "HistogramSeries" });
 
 export interface HistogramChartSpec {
   /** The outlier percentile is used to ensure that outliers do not adversely affect the calculation of bucket sizes. For example, setting an outlier percentile of 0.05 indicates that the top and bottom 5% of values when calculating buckets. The values are still included in the chart, they will be added to the first or last buckets instead of their own buckets. Must be between 0.0 and 0.5. */
@@ -3268,18 +2687,13 @@ export interface HistogramChartSpec {
   bucketSize?: number;
 }
 
-export const HistogramChartSpec: Schema.Schema<HistogramChartSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      outlierPercentile: Schema.optional(Schema.Number),
-      legendPosition: Schema.optional(Schema.String),
-      series: Schema.optional(Schema.Array(HistogramSeries)),
-      showItemDividers: Schema.optional(Schema.Boolean),
-      bucketSize: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "HistogramChartSpec",
-  }) as any as Schema.Schema<HistogramChartSpec>;
+export const HistogramChartSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  outlierPercentile: Schema.optional(Schema.Number),
+  legendPosition: Schema.optional(Schema.String),
+  series: Schema.optional(Schema.Array(HistogramSeries)),
+  showItemDividers: Schema.optional(Schema.Boolean),
+  bucketSize: Schema.optional(Schema.Number),
+}).annotate({ identifier: "HistogramChartSpec" });
 
 export interface OrgChartSpec {
   /** The size of the org chart nodes. */
@@ -3305,21 +2719,16 @@ export interface OrgChartSpec {
   selectedNodeColorStyle?: ColorStyle;
 }
 
-export const OrgChartSpec: Schema.Schema<OrgChartSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nodeSize: Schema.optional(Schema.String),
-      nodeColor: Schema.optional(Color),
-      selectedNodeColor: Schema.optional(Color),
-      nodeColorStyle: Schema.optional(ColorStyle),
-      parentLabels: Schema.optional(ChartData),
-      tooltips: Schema.optional(ChartData),
-      labels: Schema.optional(ChartData),
-      selectedNodeColorStyle: Schema.optional(ColorStyle),
-    }),
-  ).annotate({
-    identifier: "OrgChartSpec",
-  }) as any as Schema.Schema<OrgChartSpec>;
+export const OrgChartSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nodeSize: Schema.optional(Schema.String),
+  nodeColor: Schema.optional(Color),
+  selectedNodeColor: Schema.optional(Color),
+  nodeColorStyle: Schema.optional(ColorStyle),
+  parentLabels: Schema.optional(ChartData),
+  tooltips: Schema.optional(ChartData),
+  labels: Schema.optional(ChartData),
+  selectedNodeColorStyle: Schema.optional(ColorStyle),
+}).annotate({ identifier: "OrgChartSpec" });
 
 export interface BubbleChartSpec {
   /** The data containing the bubble sizes. Bubble sizes are used to draw the bubbles at different sizes relative to each other. If specified, group_ids must also be specified. This field is optional. */
@@ -3356,25 +2765,20 @@ export interface BubbleChartSpec {
     | (string & {});
 }
 
-export const BubbleChartSpec: Schema.Schema<BubbleChartSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bubbleSizes: Schema.optional(ChartData),
-      bubbleMaxRadiusSize: Schema.optional(Schema.Number),
-      bubbleTextStyle: Schema.optional(TextFormat),
-      bubbleLabels: Schema.optional(ChartData),
-      bubbleOpacity: Schema.optional(Schema.Number),
-      bubbleBorderColor: Schema.optional(Color),
-      bubbleMinRadiusSize: Schema.optional(Schema.Number),
-      groupIds: Schema.optional(ChartData),
-      series: Schema.optional(ChartData),
-      domain: Schema.optional(ChartData),
-      bubbleBorderColorStyle: Schema.optional(ColorStyle),
-      legendPosition: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BubbleChartSpec",
-  }) as any as Schema.Schema<BubbleChartSpec>;
+export const BubbleChartSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bubbleSizes: Schema.optional(ChartData),
+  bubbleMaxRadiusSize: Schema.optional(Schema.Number),
+  bubbleTextStyle: Schema.optional(TextFormat),
+  bubbleLabels: Schema.optional(ChartData),
+  bubbleOpacity: Schema.optional(Schema.Number),
+  bubbleBorderColor: Schema.optional(Color),
+  bubbleMinRadiusSize: Schema.optional(Schema.Number),
+  groupIds: Schema.optional(ChartData),
+  series: Schema.optional(ChartData),
+  domain: Schema.optional(ChartData),
+  bubbleBorderColorStyle: Schema.optional(ColorStyle),
+  legendPosition: Schema.optional(Schema.String),
+}).annotate({ identifier: "BubbleChartSpec" });
 
 export interface CandlestickDomain {
   /** True to reverse the order of the domain values (horizontal axis). */
@@ -3383,29 +2787,19 @@ export interface CandlestickDomain {
   data?: ChartData;
 }
 
-export const CandlestickDomain: Schema.Schema<CandlestickDomain> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reversed: Schema.optional(Schema.Boolean),
-      data: Schema.optional(ChartData),
-    }),
-  ).annotate({
-    identifier: "CandlestickDomain",
-  }) as any as Schema.Schema<CandlestickDomain>;
+export const CandlestickDomain = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  reversed: Schema.optional(Schema.Boolean),
+  data: Schema.optional(ChartData),
+}).annotate({ identifier: "CandlestickDomain" });
 
 export interface CandlestickSeries {
   /** The data of the CandlestickSeries. */
   data?: ChartData;
 }
 
-export const CandlestickSeries: Schema.Schema<CandlestickSeries> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      data: Schema.optional(ChartData),
-    }),
-  ).annotate({
-    identifier: "CandlestickSeries",
-  }) as any as Schema.Schema<CandlestickSeries>;
+export const CandlestickSeries = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  data: Schema.optional(ChartData),
+}).annotate({ identifier: "CandlestickSeries" });
 
 export interface CandlestickData {
   /** The range data (vertical axis) for the open/initial value for each candle. This is the bottom of the candle body. If less than the close value the candle will be filled. Otherwise the candle will be hollow. */
@@ -3418,17 +2812,12 @@ export interface CandlestickData {
   highSeries?: CandlestickSeries;
 }
 
-export const CandlestickData: Schema.Schema<CandlestickData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      openSeries: Schema.optional(CandlestickSeries),
-      closeSeries: Schema.optional(CandlestickSeries),
-      lowSeries: Schema.optional(CandlestickSeries),
-      highSeries: Schema.optional(CandlestickSeries),
-    }),
-  ).annotate({
-    identifier: "CandlestickData",
-  }) as any as Schema.Schema<CandlestickData>;
+export const CandlestickData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  openSeries: Schema.optional(CandlestickSeries),
+  closeSeries: Schema.optional(CandlestickSeries),
+  lowSeries: Schema.optional(CandlestickSeries),
+  highSeries: Schema.optional(CandlestickSeries),
+}).annotate({ identifier: "CandlestickData" });
 
 export interface CandlestickChartSpec {
   /** The domain data (horizontal axis) for the candlestick chart. String data will be treated as discrete labels, other data will be treated as continuous values. */
@@ -3437,15 +2826,10 @@ export interface CandlestickChartSpec {
   data?: Array<CandlestickData>;
 }
 
-export const CandlestickChartSpec: Schema.Schema<CandlestickChartSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      domain: Schema.optional(CandlestickDomain),
-      data: Schema.optional(Schema.Array(CandlestickData)),
-    }),
-  ).annotate({
-    identifier: "CandlestickChartSpec",
-  }) as any as Schema.Schema<CandlestickChartSpec>;
+export const CandlestickChartSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  domain: Schema.optional(CandlestickDomain),
+  data: Schema.optional(Schema.Array(CandlestickData)),
+}).annotate({ identifier: "CandlestickChartSpec" });
 
 export interface PieChartSpec {
   /** True if the pie is three dimensional. */
@@ -3468,18 +2852,13 @@ export interface PieChartSpec {
   domain?: ChartData;
 }
 
-export const PieChartSpec: Schema.Schema<PieChartSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      threeDimensional: Schema.optional(Schema.Boolean),
-      legendPosition: Schema.optional(Schema.String),
-      series: Schema.optional(ChartData),
-      pieHole: Schema.optional(Schema.Number),
-      domain: Schema.optional(ChartData),
-    }),
-  ).annotate({
-    identifier: "PieChartSpec",
-  }) as any as Schema.Schema<PieChartSpec>;
+export const PieChartSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  threeDimensional: Schema.optional(Schema.Boolean),
+  legendPosition: Schema.optional(Schema.String),
+  series: Schema.optional(ChartData),
+  pieHole: Schema.optional(Schema.Number),
+  domain: Schema.optional(ChartData),
+}).annotate({ identifier: "PieChartSpec" });
 
 export interface TreemapChartColorScale {
   /** The background color for cells with a color value less than or equal to minValue. Defaults to #dc3912 if not specified. Deprecated: Use min_value_color_style. */
@@ -3500,21 +2879,18 @@ export interface TreemapChartColorScale {
   minValueColorStyle?: ColorStyle;
 }
 
-export const TreemapChartColorScale: Schema.Schema<TreemapChartColorScale> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      minValueColor: Schema.optional(Color),
-      noDataColorStyle: Schema.optional(ColorStyle),
-      noDataColor: Schema.optional(Color),
-      midValueColor: Schema.optional(Color),
-      midValueColorStyle: Schema.optional(ColorStyle),
-      maxValueColor: Schema.optional(Color),
-      maxValueColorStyle: Schema.optional(ColorStyle),
-      minValueColorStyle: Schema.optional(ColorStyle),
-    }),
-  ).annotate({
-    identifier: "TreemapChartColorScale",
-  }) as any as Schema.Schema<TreemapChartColorScale>;
+export const TreemapChartColorScale = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    minValueColor: Schema.optional(Color),
+    noDataColorStyle: Schema.optional(ColorStyle),
+    noDataColor: Schema.optional(Color),
+    midValueColor: Schema.optional(Color),
+    midValueColorStyle: Schema.optional(ColorStyle),
+    maxValueColor: Schema.optional(Color),
+    maxValueColorStyle: Schema.optional(ColorStyle),
+    minValueColorStyle: Schema.optional(ColorStyle),
+  },
+).annotate({ identifier: "TreemapChartColorScale" });
 
 export interface TreemapChartSpec {
   /** The maximum possible data value. Cells with values greater than this will have the same color as cells with this value. If not specified, defaults to the actual maximum value from color_data, or the maximum value from size_data if color_data is not specified. */
@@ -3545,26 +2921,21 @@ export interface TreemapChartSpec {
   hintedLevels?: number;
 }
 
-export const TreemapChartSpec: Schema.Schema<TreemapChartSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      maxValue: Schema.optional(Schema.Number),
-      colorData: Schema.optional(ChartData),
-      labels: Schema.optional(ChartData),
-      headerColor: Schema.optional(Color),
-      parentLabels: Schema.optional(ChartData),
-      sizeData: Schema.optional(ChartData),
-      minValue: Schema.optional(Schema.Number),
-      hideTooltips: Schema.optional(Schema.Boolean),
-      colorScale: Schema.optional(TreemapChartColorScale),
-      levels: Schema.optional(Schema.Number),
-      textFormat: Schema.optional(TextFormat),
-      headerColorStyle: Schema.optional(ColorStyle),
-      hintedLevels: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "TreemapChartSpec",
-  }) as any as Schema.Schema<TreemapChartSpec>;
+export const TreemapChartSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  maxValue: Schema.optional(Schema.Number),
+  colorData: Schema.optional(ChartData),
+  labels: Schema.optional(ChartData),
+  headerColor: Schema.optional(Color),
+  parentLabels: Schema.optional(ChartData),
+  sizeData: Schema.optional(ChartData),
+  minValue: Schema.optional(Schema.Number),
+  hideTooltips: Schema.optional(Schema.Boolean),
+  colorScale: Schema.optional(TreemapChartColorScale),
+  levels: Schema.optional(Schema.Number),
+  textFormat: Schema.optional(TextFormat),
+  headerColorStyle: Schema.optional(ColorStyle),
+  hintedLevels: Schema.optional(Schema.Number),
+}).annotate({ identifier: "TreemapChartSpec" });
 
 export interface ChartSpec {
   /** The name of the font to use by default for all chart text (e.g. title, axis labels, legend). If a font is specified for a specific part of the chart it will override this font name. */
@@ -3623,35 +2994,32 @@ export interface ChartSpec {
     | (string & {});
 }
 
-export const ChartSpec: Schema.Schema<ChartSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fontName: Schema.optional(Schema.String),
-      waterfallChart: Schema.optional(WaterfallChartSpec),
-      basicChart: Schema.optional(BasicChartSpec),
-      subtitleTextFormat: Schema.optional(TextFormat),
-      backgroundColorStyle: Schema.optional(ColorStyle),
-      histogramChart: Schema.optional(HistogramChartSpec),
-      altText: Schema.optional(Schema.String),
-      backgroundColor: Schema.optional(Color),
-      titleTextFormat: Schema.optional(TextFormat),
-      titleTextPosition: Schema.optional(TextPosition),
-      orgChart: Schema.optional(OrgChartSpec),
-      bubbleChart: Schema.optional(BubbleChartSpec),
-      candlestickChart: Schema.optional(CandlestickChartSpec),
-      filterSpecs: Schema.optional(Schema.Array(FilterSpec)),
-      title: Schema.optional(Schema.String),
-      dataSourceChartProperties: Schema.optional(DataSourceChartProperties),
-      maximized: Schema.optional(Schema.Boolean),
-      sortSpecs: Schema.optional(Schema.Array(SortSpec)),
-      pieChart: Schema.optional(PieChartSpec),
-      scorecardChart: Schema.optional(ScorecardChartSpec),
-      treemapChart: Schema.optional(TreemapChartSpec),
-      subtitle: Schema.optional(Schema.String),
-      subtitleTextPosition: Schema.optional(TextPosition),
-      hiddenDimensionStrategy: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "ChartSpec" }) as any as Schema.Schema<ChartSpec>;
+export const ChartSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fontName: Schema.optional(Schema.String),
+  waterfallChart: Schema.optional(WaterfallChartSpec),
+  basicChart: Schema.optional(BasicChartSpec),
+  subtitleTextFormat: Schema.optional(TextFormat),
+  backgroundColorStyle: Schema.optional(ColorStyle),
+  histogramChart: Schema.optional(HistogramChartSpec),
+  altText: Schema.optional(Schema.String),
+  backgroundColor: Schema.optional(Color),
+  titleTextFormat: Schema.optional(TextFormat),
+  titleTextPosition: Schema.optional(TextPosition),
+  orgChart: Schema.optional(OrgChartSpec),
+  bubbleChart: Schema.optional(BubbleChartSpec),
+  candlestickChart: Schema.optional(CandlestickChartSpec),
+  filterSpecs: Schema.optional(Schema.Array(FilterSpec)),
+  title: Schema.optional(Schema.String),
+  dataSourceChartProperties: Schema.optional(DataSourceChartProperties),
+  maximized: Schema.optional(Schema.Boolean),
+  sortSpecs: Schema.optional(Schema.Array(SortSpec)),
+  pieChart: Schema.optional(PieChartSpec),
+  scorecardChart: Schema.optional(ScorecardChartSpec),
+  treemapChart: Schema.optional(TreemapChartSpec),
+  subtitle: Schema.optional(Schema.String),
+  subtitleTextPosition: Schema.optional(TextPosition),
+  hiddenDimensionStrategy: Schema.optional(Schema.String),
+}).annotate({ identifier: "ChartSpec" });
 
 export interface EmbeddedChart {
   /** The position of the chart. */
@@ -3664,31 +3032,21 @@ export interface EmbeddedChart {
   spec?: ChartSpec;
 }
 
-export const EmbeddedChart: Schema.Schema<EmbeddedChart> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      position: Schema.optional(EmbeddedObjectPosition),
-      border: Schema.optional(EmbeddedObjectBorder),
-      chartId: Schema.optional(Schema.Number),
-      spec: Schema.optional(ChartSpec),
-    }),
-  ).annotate({
-    identifier: "EmbeddedChart",
-  }) as any as Schema.Schema<EmbeddedChart>;
+export const EmbeddedChart = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  position: Schema.optional(EmbeddedObjectPosition),
+  border: Schema.optional(EmbeddedObjectBorder),
+  chartId: Schema.optional(Schema.Number),
+  spec: Schema.optional(ChartSpec),
+}).annotate({ identifier: "EmbeddedChart" });
 
 export interface AddChartRequest {
   /** The chart that should be added to the spreadsheet, including the position where it should be placed. The chartId field is optional; if one is not set, an id will be randomly generated. (It is an error to specify the ID of an embedded object that already exists.) */
   chart?: EmbeddedChart;
 }
 
-export const AddChartRequest: Schema.Schema<AddChartRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      chart: Schema.optional(EmbeddedChart),
-    }),
-  ).annotate({
-    identifier: "AddChartRequest",
-  }) as any as Schema.Schema<AddChartRequest>;
+export const AddChartRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  chart: Schema.optional(EmbeddedChart),
+}).annotate({ identifier: "AddChartRequest" });
 
 export interface TextToColumnsRequest {
   /** The source data range. This must span exactly one column. */
@@ -3707,16 +3065,11 @@ export interface TextToColumnsRequest {
     | (string & {});
 }
 
-export const TextToColumnsRequest: Schema.Schema<TextToColumnsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      source: Schema.optional(GridRange),
-      delimiter: Schema.optional(Schema.String),
-      delimiterType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TextToColumnsRequest",
-  }) as any as Schema.Schema<TextToColumnsRequest>;
+export const TextToColumnsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  source: Schema.optional(GridRange),
+  delimiter: Schema.optional(Schema.String),
+  delimiterType: Schema.optional(Schema.String),
+}).annotate({ identifier: "TextToColumnsRequest" });
 
 export interface Editors {
   /** The email addresses of users with edit access to the protected range. */
@@ -3727,14 +3080,11 @@ export interface Editors {
   domainUsersCanEdit?: boolean;
 }
 
-export const Editors: Schema.Schema<Editors> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      users: Schema.optional(Schema.Array(Schema.String)),
-      groups: Schema.optional(Schema.Array(Schema.String)),
-      domainUsersCanEdit: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "Editors" }) as any as Schema.Schema<Editors>;
+export const Editors = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  users: Schema.optional(Schema.Array(Schema.String)),
+  groups: Schema.optional(Schema.Array(Schema.String)),
+  domainUsersCanEdit: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Editors" });
 
 export interface ProtectedRange {
   /** True if the user who requested this protected range can edit the protected area. This field is read-only. */
@@ -3757,22 +3107,17 @@ export interface ProtectedRange {
   editors?: Editors;
 }
 
-export const ProtectedRange: Schema.Schema<ProtectedRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestingUserCanEdit: Schema.optional(Schema.Boolean),
-      description: Schema.optional(Schema.String),
-      namedRangeId: Schema.optional(Schema.String),
-      warningOnly: Schema.optional(Schema.Boolean),
-      unprotectedRanges: Schema.optional(Schema.Array(GridRange)),
-      protectedRangeId: Schema.optional(Schema.Number),
-      range: Schema.optional(GridRange),
-      tableId: Schema.optional(Schema.String),
-      editors: Schema.optional(Editors),
-    }),
-  ).annotate({
-    identifier: "ProtectedRange",
-  }) as any as Schema.Schema<ProtectedRange>;
+export const ProtectedRange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  requestingUserCanEdit: Schema.optional(Schema.Boolean),
+  description: Schema.optional(Schema.String),
+  namedRangeId: Schema.optional(Schema.String),
+  warningOnly: Schema.optional(Schema.Boolean),
+  unprotectedRanges: Schema.optional(Schema.Array(GridRange)),
+  protectedRangeId: Schema.optional(Schema.Number),
+  range: Schema.optional(GridRange),
+  tableId: Schema.optional(Schema.String),
+  editors: Schema.optional(Editors),
+}).annotate({ identifier: "ProtectedRange" });
 
 export interface UpdateProtectedRangeRequest {
   /** The protected range to update with the new properties. */
@@ -3781,15 +3126,11 @@ export interface UpdateProtectedRangeRequest {
   fields?: string;
 }
 
-export const UpdateProtectedRangeRequest: Schema.Schema<UpdateProtectedRangeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      protectedRange: Schema.optional(ProtectedRange),
-      fields: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpdateProtectedRangeRequest",
-  }) as any as Schema.Schema<UpdateProtectedRangeRequest>;
+export const UpdateProtectedRangeRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    protectedRange: Schema.optional(ProtectedRange),
+    fields: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UpdateProtectedRangeRequest" });
 
 export interface UpdateDimensionGroupRequest {
   /** The group whose state should be updated. The range and depth of the group should specify a valid group on the sheet, and all other fields updated. */
@@ -3798,15 +3139,11 @@ export interface UpdateDimensionGroupRequest {
   fields?: string;
 }
 
-export const UpdateDimensionGroupRequest: Schema.Schema<UpdateDimensionGroupRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dimensionGroup: Schema.optional(DimensionGroup),
-      fields: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpdateDimensionGroupRequest",
-  }) as any as Schema.Schema<UpdateDimensionGroupRequest>;
+export const UpdateDimensionGroupRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dimensionGroup: Schema.optional(DimensionGroup),
+    fields: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UpdateDimensionGroupRequest" });
 
 export interface UpdateEmbeddedObjectBorderRequest {
   /** The fields that should be updated. At least one field must be specified. The root `border` is implied and should not be specified. A single `"*"` can be used as short-hand for listing every field. */
@@ -3817,16 +3154,12 @@ export interface UpdateEmbeddedObjectBorderRequest {
   border?: EmbeddedObjectBorder;
 }
 
-export const UpdateEmbeddedObjectBorderRequest: Schema.Schema<UpdateEmbeddedObjectBorderRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fields: Schema.optional(Schema.String),
-      objectId: Schema.optional(Schema.Number),
-      border: Schema.optional(EmbeddedObjectBorder),
-    }),
-  ).annotate({
-    identifier: "UpdateEmbeddedObjectBorderRequest",
-  }) as any as Schema.Schema<UpdateEmbeddedObjectBorderRequest>;
+export const UpdateEmbeddedObjectBorderRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fields: Schema.optional(Schema.String),
+    objectId: Schema.optional(Schema.Number),
+    border: Schema.optional(EmbeddedObjectBorder),
+  }).annotate({ identifier: "UpdateEmbeddedObjectBorderRequest" });
 
 export interface CutPasteRequest {
   /** The source data to cut. */
@@ -3845,16 +3178,11 @@ export interface CutPasteRequest {
     | (string & {});
 }
 
-export const CutPasteRequest: Schema.Schema<CutPasteRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      source: Schema.optional(GridRange),
-      destination: Schema.optional(GridCoordinate),
-      pasteType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CutPasteRequest",
-  }) as any as Schema.Schema<CutPasteRequest>;
+export const CutPasteRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  source: Schema.optional(GridRange),
+  destination: Schema.optional(GridCoordinate),
+  pasteType: Schema.optional(Schema.String),
+}).annotate({ identifier: "CutPasteRequest" });
 
 export interface DuplicateSheetRequest {
   /** The sheet to duplicate. If the source sheet is of DATA_SOURCE type, its backing DataSource is also duplicated and associated with the new copy of the sheet. No data execution is triggered, the grid data of this sheet is also copied over but only available after the batch request completes. */
@@ -3867,17 +3195,12 @@ export interface DuplicateSheetRequest {
   newSheetId?: number;
 }
 
-export const DuplicateSheetRequest: Schema.Schema<DuplicateSheetRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sourceSheetId: Schema.optional(Schema.Number),
-      newSheetName: Schema.optional(Schema.String),
-      insertSheetIndex: Schema.optional(Schema.Number),
-      newSheetId: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "DuplicateSheetRequest",
-  }) as any as Schema.Schema<DuplicateSheetRequest>;
+export const DuplicateSheetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sourceSheetId: Schema.optional(Schema.Number),
+  newSheetName: Schema.optional(Schema.String),
+  insertSheetIndex: Schema.optional(Schema.Number),
+  newSheetId: Schema.optional(Schema.Number),
+}).annotate({ identifier: "DuplicateSheetRequest" });
 
 export interface SourceAndDestination {
   /** The dimension that data should be filled into. */
@@ -3888,16 +3211,11 @@ export interface SourceAndDestination {
   fillLength?: number;
 }
 
-export const SourceAndDestination: Schema.Schema<SourceAndDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dimension: Schema.optional(Schema.String),
-      source: Schema.optional(GridRange),
-      fillLength: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "SourceAndDestination",
-  }) as any as Schema.Schema<SourceAndDestination>;
+export const SourceAndDestination = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dimension: Schema.optional(Schema.String),
+  source: Schema.optional(GridRange),
+  fillLength: Schema.optional(Schema.Number),
+}).annotate({ identifier: "SourceAndDestination" });
 
 export interface AutoFillRequest {
   /** The range to autofill. This will examine the range and detect the location that has data and automatically fill that data in to the rest of the range. */
@@ -3908,30 +3226,21 @@ export interface AutoFillRequest {
   useAlternateSeries?: boolean;
 }
 
-export const AutoFillRequest: Schema.Schema<AutoFillRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      range: Schema.optional(GridRange),
-      sourceAndDestination: Schema.optional(SourceAndDestination),
-      useAlternateSeries: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "AutoFillRequest",
-  }) as any as Schema.Schema<AutoFillRequest>;
+export const AutoFillRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  range: Schema.optional(GridRange),
+  sourceAndDestination: Schema.optional(SourceAndDestination),
+  useAlternateSeries: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "AutoFillRequest" });
 
 export interface DeleteDimensionGroupRequest {
   /** The range of the group to be deleted. */
   range?: DimensionRange;
 }
 
-export const DeleteDimensionGroupRequest: Schema.Schema<DeleteDimensionGroupRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      range: Schema.optional(DimensionRange),
-    }),
-  ).annotate({
-    identifier: "DeleteDimensionGroupRequest",
-  }) as any as Schema.Schema<DeleteDimensionGroupRequest>;
+export const DeleteDimensionGroupRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    range: Schema.optional(DimensionRange),
+  }).annotate({ identifier: "DeleteDimensionGroupRequest" });
 
 export interface FilterView {
   /** The named range this filter view is backed by, if any. When writing, only one of range, named_range_id, or table_id may be set. */
@@ -3952,19 +3261,16 @@ export interface FilterView {
   filterViewId?: number;
 }
 
-export const FilterView: Schema.Schema<FilterView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      namedRangeId: Schema.optional(Schema.String),
-      tableId: Schema.optional(Schema.String),
-      sortSpecs: Schema.optional(Schema.Array(SortSpec)),
-      criteria: Schema.optional(Schema.Record(Schema.String, FilterCriteria)),
-      title: Schema.optional(Schema.String),
-      range: Schema.optional(GridRange),
-      filterSpecs: Schema.optional(Schema.Array(FilterSpec)),
-      filterViewId: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "FilterView" }) as any as Schema.Schema<FilterView>;
+export const FilterView = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  namedRangeId: Schema.optional(Schema.String),
+  tableId: Schema.optional(Schema.String),
+  sortSpecs: Schema.optional(Schema.Array(SortSpec)),
+  criteria: Schema.optional(Schema.Record(Schema.String, FilterCriteria)),
+  title: Schema.optional(Schema.String),
+  range: Schema.optional(GridRange),
+  filterSpecs: Schema.optional(Schema.Array(FilterSpec)),
+  filterViewId: Schema.optional(Schema.Number),
+}).annotate({ identifier: "FilterView" });
 
 export interface UpdateFilterViewRequest {
   /** The new properties of the filter view. */
@@ -3973,15 +3279,11 @@ export interface UpdateFilterViewRequest {
   fields?: string;
 }
 
-export const UpdateFilterViewRequest: Schema.Schema<UpdateFilterViewRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filter: Schema.optional(FilterView),
-      fields: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpdateFilterViewRequest",
-  }) as any as Schema.Schema<UpdateFilterViewRequest>;
+export const UpdateFilterViewRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filter: Schema.optional(FilterView),
+    fields: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UpdateFilterViewRequest" });
 
 export interface CopyPasteRequest {
   /** The location to paste to. If the range covers a span that's a multiple of the source's height or width, then the data will be repeated to fill in the destination range. If the range is smaller than the source range, the entire source data will still be copied (beyond the end of the destination range). */
@@ -4002,17 +3304,12 @@ export interface CopyPasteRequest {
   source?: GridRange;
 }
 
-export const CopyPasteRequest: Schema.Schema<CopyPasteRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      destination: Schema.optional(GridRange),
-      pasteType: Schema.optional(Schema.String),
-      pasteOrientation: Schema.optional(Schema.String),
-      source: Schema.optional(GridRange),
-    }),
-  ).annotate({
-    identifier: "CopyPasteRequest",
-  }) as any as Schema.Schema<CopyPasteRequest>;
+export const CopyPasteRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  destination: Schema.optional(GridRange),
+  pasteType: Schema.optional(Schema.String),
+  pasteOrientation: Schema.optional(Schema.String),
+  source: Schema.optional(GridRange),
+}).annotate({ identifier: "CopyPasteRequest" });
 
 export interface UpdateConditionalFormatRuleRequest {
   /** The zero-based new index the rule should end up at. */
@@ -4025,17 +3322,13 @@ export interface UpdateConditionalFormatRuleRequest {
   sheetId?: number;
 }
 
-export const UpdateConditionalFormatRuleRequest: Schema.Schema<UpdateConditionalFormatRuleRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      newIndex: Schema.optional(Schema.Number),
-      rule: Schema.optional(ConditionalFormatRule),
-      index: Schema.optional(Schema.Number),
-      sheetId: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "UpdateConditionalFormatRuleRequest",
-  }) as any as Schema.Schema<UpdateConditionalFormatRuleRequest>;
+export const UpdateConditionalFormatRuleRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    newIndex: Schema.optional(Schema.Number),
+    rule: Schema.optional(ConditionalFormatRule),
+    index: Schema.optional(Schema.Number),
+    sheetId: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "UpdateConditionalFormatRuleRequest" });
 
 export interface ThemeColorPair {
   /** The type of the spreadsheet theme color. */
@@ -4055,15 +3348,10 @@ export interface ThemeColorPair {
   color?: ColorStyle;
 }
 
-export const ThemeColorPair: Schema.Schema<ThemeColorPair> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      colorType: Schema.optional(Schema.String),
-      color: Schema.optional(ColorStyle),
-    }),
-  ).annotate({
-    identifier: "ThemeColorPair",
-  }) as any as Schema.Schema<ThemeColorPair>;
+export const ThemeColorPair = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  colorType: Schema.optional(Schema.String),
+  color: Schema.optional(ColorStyle),
+}).annotate({ identifier: "ThemeColorPair" });
 
 export interface SpreadsheetTheme {
   /** Name of the primary font family. */
@@ -4072,15 +3360,10 @@ export interface SpreadsheetTheme {
   themeColors?: Array<ThemeColorPair>;
 }
 
-export const SpreadsheetTheme: Schema.Schema<SpreadsheetTheme> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      primaryFontFamily: Schema.optional(Schema.String),
-      themeColors: Schema.optional(Schema.Array(ThemeColorPair)),
-    }),
-  ).annotate({
-    identifier: "SpreadsheetTheme",
-  }) as any as Schema.Schema<SpreadsheetTheme>;
+export const SpreadsheetTheme = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  primaryFontFamily: Schema.optional(Schema.String),
+  themeColors: Schema.optional(Schema.Array(ThemeColorPair)),
+}).annotate({ identifier: "SpreadsheetTheme" });
 
 export interface IterativeCalculationSettings {
   /** When iterative calculation is enabled and successive results differ by less than this threshold value, the calculation rounds stop. */
@@ -4089,15 +3372,11 @@ export interface IterativeCalculationSettings {
   maxIterations?: number;
 }
 
-export const IterativeCalculationSettings: Schema.Schema<IterativeCalculationSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      convergenceThreshold: Schema.optional(Schema.Number),
-      maxIterations: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "IterativeCalculationSettings",
-  }) as any as Schema.Schema<IterativeCalculationSettings>;
+export const IterativeCalculationSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    convergenceThreshold: Schema.optional(Schema.Number),
+    maxIterations: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "IterativeCalculationSettings" });
 
 export interface SpreadsheetProperties {
   /** Theme applied to the spreadsheet. */
@@ -4123,23 +3402,16 @@ export interface SpreadsheetProperties {
   title?: string;
 }
 
-export const SpreadsheetProperties: Schema.Schema<SpreadsheetProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      spreadsheetTheme: Schema.optional(SpreadsheetTheme),
-      timeZone: Schema.optional(Schema.String),
-      iterativeCalculationSettings: Schema.optional(
-        IterativeCalculationSettings,
-      ),
-      locale: Schema.optional(Schema.String),
-      defaultFormat: Schema.optional(CellFormat),
-      autoRecalc: Schema.optional(Schema.String),
-      importFunctionsExternalUrlAccessAllowed: Schema.optional(Schema.Boolean),
-      title: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SpreadsheetProperties",
-  }) as any as Schema.Schema<SpreadsheetProperties>;
+export const SpreadsheetProperties = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  spreadsheetTheme: Schema.optional(SpreadsheetTheme),
+  timeZone: Schema.optional(Schema.String),
+  iterativeCalculationSettings: Schema.optional(IterativeCalculationSettings),
+  locale: Schema.optional(Schema.String),
+  defaultFormat: Schema.optional(CellFormat),
+  autoRecalc: Schema.optional(Schema.String),
+  importFunctionsExternalUrlAccessAllowed: Schema.optional(Schema.Boolean),
+  title: Schema.optional(Schema.String),
+}).annotate({ identifier: "SpreadsheetProperties" });
 
 export interface UpdateSpreadsheetPropertiesRequest {
   /** The fields that should be updated. At least one field must be specified. The root 'properties' is implied and should not be specified. A single `"*"` can be used as short-hand for listing every field. */
@@ -4148,29 +3420,20 @@ export interface UpdateSpreadsheetPropertiesRequest {
   properties?: SpreadsheetProperties;
 }
 
-export const UpdateSpreadsheetPropertiesRequest: Schema.Schema<UpdateSpreadsheetPropertiesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fields: Schema.optional(Schema.String),
-      properties: Schema.optional(SpreadsheetProperties),
-    }),
-  ).annotate({
-    identifier: "UpdateSpreadsheetPropertiesRequest",
-  }) as any as Schema.Schema<UpdateSpreadsheetPropertiesRequest>;
+export const UpdateSpreadsheetPropertiesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fields: Schema.optional(Schema.String),
+    properties: Schema.optional(SpreadsheetProperties),
+  }).annotate({ identifier: "UpdateSpreadsheetPropertiesRequest" });
 
 export interface DeleteTableRequest {
   /** The ID of the table to delete. */
   tableId?: string;
 }
 
-export const DeleteTableRequest: Schema.Schema<DeleteTableRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tableId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DeleteTableRequest",
-  }) as any as Schema.Schema<DeleteTableRequest>;
+export const DeleteTableRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tableId: Schema.optional(Schema.String),
+}).annotate({ identifier: "DeleteTableRequest" });
 
 export interface DeleteRangeRequest {
   /** The dimension from which deleted cells will be replaced with. If ROWS, existing cells will be shifted upward to replace the deleted cells. If COLUMNS, existing cells will be shifted left to replace the deleted cells. */
@@ -4179,15 +3442,10 @@ export interface DeleteRangeRequest {
   range?: GridRange;
 }
 
-export const DeleteRangeRequest: Schema.Schema<DeleteRangeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      shiftDimension: Schema.optional(Schema.String),
-      range: Schema.optional(GridRange),
-    }),
-  ).annotate({
-    identifier: "DeleteRangeRequest",
-  }) as any as Schema.Schema<DeleteRangeRequest>;
+export const DeleteRangeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  shiftDimension: Schema.optional(Schema.String),
+  range: Schema.optional(GridRange),
+}).annotate({ identifier: "DeleteRangeRequest" });
 
 export interface DataSourceObjectReference {
   /** References to a cell containing DataSourceFormula. */
@@ -4202,32 +3460,24 @@ export interface DataSourceObjectReference {
   dataSourceTableAnchorCell?: GridCoordinate;
 }
 
-export const DataSourceObjectReference: Schema.Schema<DataSourceObjectReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataSourceFormulaCell: Schema.optional(GridCoordinate),
-      chartId: Schema.optional(Schema.Number),
-      dataSourcePivotTableAnchorCell: Schema.optional(GridCoordinate),
-      sheetId: Schema.optional(Schema.String),
-      dataSourceTableAnchorCell: Schema.optional(GridCoordinate),
-    }),
-  ).annotate({
-    identifier: "DataSourceObjectReference",
-  }) as any as Schema.Schema<DataSourceObjectReference>;
+export const DataSourceObjectReference =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataSourceFormulaCell: Schema.optional(GridCoordinate),
+    chartId: Schema.optional(Schema.Number),
+    dataSourcePivotTableAnchorCell: Schema.optional(GridCoordinate),
+    sheetId: Schema.optional(Schema.String),
+    dataSourceTableAnchorCell: Schema.optional(GridCoordinate),
+  }).annotate({ identifier: "DataSourceObjectReference" });
 
 export interface DataSourceObjectReferences {
   /** The references. */
   references?: Array<DataSourceObjectReference>;
 }
 
-export const DataSourceObjectReferences: Schema.Schema<DataSourceObjectReferences> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      references: Schema.optional(Schema.Array(DataSourceObjectReference)),
-    }),
-  ).annotate({
-    identifier: "DataSourceObjectReferences",
-  }) as any as Schema.Schema<DataSourceObjectReferences>;
+export const DataSourceObjectReferences =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    references: Schema.optional(Schema.Array(DataSourceObjectReference)),
+  }).annotate({ identifier: "DataSourceObjectReferences" });
 
 export interface RefreshDataSourceRequest {
   /** Refreshes all existing data source objects in the spreadsheet. */
@@ -4240,31 +3490,23 @@ export interface RefreshDataSourceRequest {
   force?: boolean;
 }
 
-export const RefreshDataSourceRequest: Schema.Schema<RefreshDataSourceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      isAll: Schema.optional(Schema.Boolean),
-      references: Schema.optional(DataSourceObjectReferences),
-      dataSourceId: Schema.optional(Schema.String),
-      force: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "RefreshDataSourceRequest",
-  }) as any as Schema.Schema<RefreshDataSourceRequest>;
+export const RefreshDataSourceRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    isAll: Schema.optional(Schema.Boolean),
+    references: Schema.optional(DataSourceObjectReferences),
+    dataSourceId: Schema.optional(Schema.String),
+    force: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "RefreshDataSourceRequest" });
 
 export interface AddProtectedRangeRequest {
   /** The protected range to be added. The protectedRangeId field is optional; if one is not set, an id will be randomly generated. (It is an error to specify the ID of a range that already exists.) */
   protectedRange?: ProtectedRange;
 }
 
-export const AddProtectedRangeRequest: Schema.Schema<AddProtectedRangeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      protectedRange: Schema.optional(ProtectedRange),
-    }),
-  ).annotate({
-    identifier: "AddProtectedRangeRequest",
-  }) as any as Schema.Schema<AddProtectedRangeRequest>;
+export const AddProtectedRangeRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    protectedRange: Schema.optional(ProtectedRange),
+  }).annotate({ identifier: "AddProtectedRangeRequest" });
 
 export interface NamedRange {
   /** The ID of the named range. */
@@ -4275,42 +3517,29 @@ export interface NamedRange {
   range?: GridRange;
 }
 
-export const NamedRange: Schema.Schema<NamedRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      namedRangeId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      range: Schema.optional(GridRange),
-    }),
-  ).annotate({ identifier: "NamedRange" }) as any as Schema.Schema<NamedRange>;
+export const NamedRange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  namedRangeId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  range: Schema.optional(GridRange),
+}).annotate({ identifier: "NamedRange" });
 
 export interface AddNamedRangeRequest {
   /** The named range to add. The namedRangeId field is optional; if one is not set, an id will be randomly generated. (It is an error to specify the ID of a range that already exists.) */
   namedRange?: NamedRange;
 }
 
-export const AddNamedRangeRequest: Schema.Schema<AddNamedRangeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      namedRange: Schema.optional(NamedRange),
-    }),
-  ).annotate({
-    identifier: "AddNamedRangeRequest",
-  }) as any as Schema.Schema<AddNamedRangeRequest>;
+export const AddNamedRangeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  namedRange: Schema.optional(NamedRange),
+}).annotate({ identifier: "AddNamedRangeRequest" });
 
 export interface UnmergeCellsRequest {
   /** The range within which all cells should be unmerged. If the range spans multiple merges, all will be unmerged. The range must not partially span any merge. */
   range?: GridRange;
 }
 
-export const UnmergeCellsRequest: Schema.Schema<UnmergeCellsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      range: Schema.optional(GridRange),
-    }),
-  ).annotate({
-    identifier: "UnmergeCellsRequest",
-  }) as any as Schema.Schema<UnmergeCellsRequest>;
+export const UnmergeCellsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  range: Schema.optional(GridRange),
+}).annotate({ identifier: "UnmergeCellsRequest" });
 
 export interface FindReplaceRequest {
   /** True if the search is case sensitive. */
@@ -4333,22 +3562,17 @@ export interface FindReplaceRequest {
   range?: GridRange;
 }
 
-export const FindReplaceRequest: Schema.Schema<FindReplaceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      matchCase: Schema.optional(Schema.Boolean),
-      find: Schema.optional(Schema.String),
-      sheetId: Schema.optional(Schema.Number),
-      matchEntireCell: Schema.optional(Schema.Boolean),
-      includeFormulas: Schema.optional(Schema.Boolean),
-      searchByRegex: Schema.optional(Schema.Boolean),
-      replacement: Schema.optional(Schema.String),
-      allSheets: Schema.optional(Schema.Boolean),
-      range: Schema.optional(GridRange),
-    }),
-  ).annotate({
-    identifier: "FindReplaceRequest",
-  }) as any as Schema.Schema<FindReplaceRequest>;
+export const FindReplaceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  matchCase: Schema.optional(Schema.Boolean),
+  find: Schema.optional(Schema.String),
+  sheetId: Schema.optional(Schema.Number),
+  matchEntireCell: Schema.optional(Schema.Boolean),
+  includeFormulas: Schema.optional(Schema.Boolean),
+  searchByRegex: Schema.optional(Schema.Boolean),
+  replacement: Schema.optional(Schema.String),
+  allSheets: Schema.optional(Schema.Boolean),
+  range: Schema.optional(GridRange),
+}).annotate({ identifier: "FindReplaceRequest" });
 
 export interface SetDataValidationRequest {
   /** The range the data validation rule should apply to. */
@@ -4359,30 +3583,22 @@ export interface SetDataValidationRequest {
   filteredRowsIncluded?: boolean;
 }
 
-export const SetDataValidationRequest: Schema.Schema<SetDataValidationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      range: Schema.optional(GridRange),
-      rule: Schema.optional(DataValidationRule),
-      filteredRowsIncluded: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "SetDataValidationRequest",
-  }) as any as Schema.Schema<SetDataValidationRequest>;
+export const SetDataValidationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    range: Schema.optional(GridRange),
+    rule: Schema.optional(DataValidationRule),
+    filteredRowsIncluded: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "SetDataValidationRequest" });
 
 export interface DeleteDataSourceRequest {
   /** The ID of the data source to delete. */
   dataSourceId?: string;
 }
 
-export const DeleteDataSourceRequest: Schema.Schema<DeleteDataSourceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataSourceId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DeleteDataSourceRequest",
-  }) as any as Schema.Schema<DeleteDataSourceRequest>;
+export const DeleteDataSourceRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataSourceId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DeleteDataSourceRequest" });
 
 export interface UpdateBordersRequest {
   /** The border to put at the bottom of the range. */
@@ -4401,48 +3617,33 @@ export interface UpdateBordersRequest {
   innerVertical?: Border;
 }
 
-export const UpdateBordersRequest: Schema.Schema<UpdateBordersRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bottom: Schema.optional(Border),
-      innerHorizontal: Schema.optional(Border),
-      right: Schema.optional(Border),
-      top: Schema.optional(Border),
-      left: Schema.optional(Border),
-      range: Schema.optional(GridRange),
-      innerVertical: Schema.optional(Border),
-    }),
-  ).annotate({
-    identifier: "UpdateBordersRequest",
-  }) as any as Schema.Schema<UpdateBordersRequest>;
+export const UpdateBordersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bottom: Schema.optional(Border),
+  innerHorizontal: Schema.optional(Border),
+  right: Schema.optional(Border),
+  top: Schema.optional(Border),
+  left: Schema.optional(Border),
+  range: Schema.optional(GridRange),
+  innerVertical: Schema.optional(Border),
+}).annotate({ identifier: "UpdateBordersRequest" });
 
 export interface DeleteBandingRequest {
   /** The ID of the banded range to delete. */
   bandedRangeId?: number;
 }
 
-export const DeleteBandingRequest: Schema.Schema<DeleteBandingRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bandedRangeId: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "DeleteBandingRequest",
-  }) as any as Schema.Schema<DeleteBandingRequest>;
+export const DeleteBandingRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bandedRangeId: Schema.optional(Schema.Number),
+}).annotate({ identifier: "DeleteBandingRequest" });
 
 export interface AddFilterViewRequest {
   /** The filter to add. The filterViewId field is optional. If one is not set, an ID will be randomly generated. (It is an error to specify the ID of a filter that already exists.) */
   filter?: FilterView;
 }
 
-export const AddFilterViewRequest: Schema.Schema<AddFilterViewRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filter: Schema.optional(FilterView),
-    }),
-  ).annotate({
-    identifier: "AddFilterViewRequest",
-  }) as any as Schema.Schema<AddFilterViewRequest>;
+export const AddFilterViewRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  filter: Schema.optional(FilterView),
+}).annotate({ identifier: "AddFilterViewRequest" });
 
 export interface MergeCellsRequest {
   /** The range of cells to merge. */
@@ -4451,15 +3652,10 @@ export interface MergeCellsRequest {
   mergeType?: "MERGE_ALL" | "MERGE_COLUMNS" | "MERGE_ROWS" | (string & {});
 }
 
-export const MergeCellsRequest: Schema.Schema<MergeCellsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      range: Schema.optional(GridRange),
-      mergeType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MergeCellsRequest",
-  }) as any as Schema.Schema<MergeCellsRequest>;
+export const MergeCellsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  range: Schema.optional(GridRange),
+  mergeType: Schema.optional(Schema.String),
+}).annotate({ identifier: "MergeCellsRequest" });
 
 export interface UpdateCellsRequest {
   /** The coordinate to start writing data at. Any number of rows and columns (including a different number of columns per row) may be written. */
@@ -4472,45 +3668,31 @@ export interface UpdateCellsRequest {
   fields?: string;
 }
 
-export const UpdateCellsRequest: Schema.Schema<UpdateCellsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      start: Schema.optional(GridCoordinate),
-      rows: Schema.optional(Schema.Array(RowData)),
-      range: Schema.optional(GridRange),
-      fields: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpdateCellsRequest",
-  }) as any as Schema.Schema<UpdateCellsRequest>;
+export const UpdateCellsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  start: Schema.optional(GridCoordinate),
+  rows: Schema.optional(Schema.Array(RowData)),
+  range: Schema.optional(GridRange),
+  fields: Schema.optional(Schema.String),
+}).annotate({ identifier: "UpdateCellsRequest" });
 
 export interface DuplicateFilterViewRequest {
   /** The ID of the filter being duplicated. */
   filterId?: number;
 }
 
-export const DuplicateFilterViewRequest: Schema.Schema<DuplicateFilterViewRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filterId: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "DuplicateFilterViewRequest",
-  }) as any as Schema.Schema<DuplicateFilterViewRequest>;
+export const DuplicateFilterViewRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filterId: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "DuplicateFilterViewRequest" });
 
 export interface AddBandingRequest {
   /** The banded range to add. The bandedRangeId field is optional; if one is not set, an id will be randomly generated. (It is an error to specify the ID of a range that already exists.) */
   bandedRange?: BandedRange;
 }
 
-export const AddBandingRequest: Schema.Schema<AddBandingRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bandedRange: Schema.optional(BandedRange),
-    }),
-  ).annotate({
-    identifier: "AddBandingRequest",
-  }) as any as Schema.Schema<AddBandingRequest>;
+export const AddBandingRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bandedRange: Schema.optional(BandedRange),
+}).annotate({ identifier: "AddBandingRequest" });
 
 export interface RepeatCellRequest {
   /** The range to repeat the cell in. */
@@ -4521,16 +3703,11 @@ export interface RepeatCellRequest {
   cell?: CellData;
 }
 
-export const RepeatCellRequest: Schema.Schema<RepeatCellRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      range: Schema.optional(GridRange),
-      fields: Schema.optional(Schema.String),
-      cell: Schema.optional(CellData),
-    }),
-  ).annotate({
-    identifier: "RepeatCellRequest",
-  }) as any as Schema.Schema<RepeatCellRequest>;
+export const RepeatCellRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  range: Schema.optional(GridRange),
+  fields: Schema.optional(Schema.String),
+  cell: Schema.optional(CellData),
+}).annotate({ identifier: "RepeatCellRequest" });
 
 export interface MoveDimensionRequest {
   /** The source dimensions to move. */
@@ -4539,29 +3716,21 @@ export interface MoveDimensionRequest {
   destinationIndex?: number;
 }
 
-export const MoveDimensionRequest: Schema.Schema<MoveDimensionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      source: Schema.optional(DimensionRange),
-      destinationIndex: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "MoveDimensionRequest",
-  }) as any as Schema.Schema<MoveDimensionRequest>;
+export const MoveDimensionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  source: Schema.optional(DimensionRange),
+  destinationIndex: Schema.optional(Schema.Number),
+}).annotate({ identifier: "MoveDimensionRequest" });
 
 export interface DeleteDimensionRequest {
   /** The dimensions to delete from the sheet. */
   range?: DimensionRange;
 }
 
-export const DeleteDimensionRequest: Schema.Schema<DeleteDimensionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      range: Schema.optional(DimensionRange),
-    }),
-  ).annotate({
-    identifier: "DeleteDimensionRequest",
-  }) as any as Schema.Schema<DeleteDimensionRequest>;
+export const DeleteDimensionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    range: Schema.optional(DimensionRange),
+  },
+).annotate({ identifier: "DeleteDimensionRequest" });
 
 export interface CancelDataSourceRefreshRequest {
   /** References to data source objects whose refreshes are to be cancelled. */
@@ -4572,30 +3741,21 @@ export interface CancelDataSourceRefreshRequest {
   isAll?: boolean;
 }
 
-export const CancelDataSourceRefreshRequest: Schema.Schema<CancelDataSourceRefreshRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      references: Schema.optional(DataSourceObjectReferences),
-      dataSourceId: Schema.optional(Schema.String),
-      isAll: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "CancelDataSourceRefreshRequest",
-  }) as any as Schema.Schema<CancelDataSourceRefreshRequest>;
+export const CancelDataSourceRefreshRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    references: Schema.optional(DataSourceObjectReferences),
+    dataSourceId: Schema.optional(Schema.String),
+    isAll: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "CancelDataSourceRefreshRequest" });
 
 export interface AddSheetRequest {
   /** The properties the new sheet should have. All properties are optional. The sheetId field is optional; if one is not set, an id will be randomly generated. (It is an error to specify the ID of a sheet that already exists.) */
   properties?: SheetProperties;
 }
 
-export const AddSheetRequest: Schema.Schema<AddSheetRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      properties: Schema.optional(SheetProperties),
-    }),
-  ).annotate({
-    identifier: "AddSheetRequest",
-  }) as any as Schema.Schema<AddSheetRequest>;
+export const AddSheetRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(SheetProperties),
+}).annotate({ identifier: "AddSheetRequest" });
 
 export interface UpdateDataSourceRequest {
   /** The fields that should be updated. At least one field must be specified. The root `dataSource` is implied and should not be specified. A single `"*"` can be used as short-hand for listing every field. */
@@ -4604,57 +3764,41 @@ export interface UpdateDataSourceRequest {
   dataSource?: DataSource;
 }
 
-export const UpdateDataSourceRequest: Schema.Schema<UpdateDataSourceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fields: Schema.optional(Schema.String),
-      dataSource: Schema.optional(DataSource),
-    }),
-  ).annotate({
-    identifier: "UpdateDataSourceRequest",
-  }) as any as Schema.Schema<UpdateDataSourceRequest>;
+export const UpdateDataSourceRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fields: Schema.optional(Schema.String),
+    dataSource: Schema.optional(DataSource),
+  }).annotate({ identifier: "UpdateDataSourceRequest" });
 
 export interface DeleteEmbeddedObjectRequest {
   /** The ID of the embedded object to delete. */
   objectId?: number;
 }
 
-export const DeleteEmbeddedObjectRequest: Schema.Schema<DeleteEmbeddedObjectRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      objectId: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "DeleteEmbeddedObjectRequest",
-  }) as any as Schema.Schema<DeleteEmbeddedObjectRequest>;
+export const DeleteEmbeddedObjectRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    objectId: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "DeleteEmbeddedObjectRequest" });
 
 export interface DeleteFilterViewRequest {
   /** The ID of the filter to delete. */
   filterId?: number;
 }
 
-export const DeleteFilterViewRequest: Schema.Schema<DeleteFilterViewRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filterId: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "DeleteFilterViewRequest",
-  }) as any as Schema.Schema<DeleteFilterViewRequest>;
+export const DeleteFilterViewRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filterId: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "DeleteFilterViewRequest" });
 
 export interface AddDimensionGroupRequest {
   /** The range over which to create a group. */
   range?: DimensionRange;
 }
 
-export const AddDimensionGroupRequest: Schema.Schema<AddDimensionGroupRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      range: Schema.optional(DimensionRange),
-    }),
-  ).annotate({
-    identifier: "AddDimensionGroupRequest",
-  }) as any as Schema.Schema<AddDimensionGroupRequest>;
+export const AddDimensionGroupRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    range: Schema.optional(DimensionRange),
+  }).annotate({ identifier: "AddDimensionGroupRequest" });
 
 export interface InsertDimensionRequest {
   /** The dimensions to insert. Both the start and end indexes must be bounded. */
@@ -4663,15 +3807,12 @@ export interface InsertDimensionRequest {
   inheritFromBefore?: boolean;
 }
 
-export const InsertDimensionRequest: Schema.Schema<InsertDimensionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      range: Schema.optional(DimensionRange),
-      inheritFromBefore: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "InsertDimensionRequest",
-  }) as any as Schema.Schema<InsertDimensionRequest>;
+export const InsertDimensionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    range: Schema.optional(DimensionRange),
+    inheritFromBefore: Schema.optional(Schema.Boolean),
+  },
+).annotate({ identifier: "InsertDimensionRequest" });
 
 export interface Slicer {
   /** The specification of the slicer. */
@@ -4682,28 +3823,20 @@ export interface Slicer {
   slicerId?: number;
 }
 
-export const Slicer: Schema.Schema<Slicer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      spec: Schema.optional(SlicerSpec),
-      position: Schema.optional(EmbeddedObjectPosition),
-      slicerId: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Slicer" }) as any as Schema.Schema<Slicer>;
+export const Slicer = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  spec: Schema.optional(SlicerSpec),
+  position: Schema.optional(EmbeddedObjectPosition),
+  slicerId: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Slicer" });
 
 export interface AddSlicerRequest {
   /** The slicer that should be added to the spreadsheet, including the position where it should be placed. The slicerId field is optional; if one is not set, an id will be randomly generated. (It is an error to specify the ID of a slicer that already exists.) */
   slicer?: Slicer;
 }
 
-export const AddSlicerRequest: Schema.Schema<AddSlicerRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      slicer: Schema.optional(Slicer),
-    }),
-  ).annotate({
-    identifier: "AddSlicerRequest",
-  }) as any as Schema.Schema<AddSlicerRequest>;
+export const AddSlicerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  slicer: Schema.optional(Slicer),
+}).annotate({ identifier: "AddSlicerRequest" });
 
 export interface DeleteConditionalFormatRuleRequest {
   /** The zero-based index of the rule to be deleted. */
@@ -4712,15 +3845,11 @@ export interface DeleteConditionalFormatRuleRequest {
   sheetId?: number;
 }
 
-export const DeleteConditionalFormatRuleRequest: Schema.Schema<DeleteConditionalFormatRuleRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      index: Schema.optional(Schema.Number),
-      sheetId: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "DeleteConditionalFormatRuleRequest",
-  }) as any as Schema.Schema<DeleteConditionalFormatRuleRequest>;
+export const DeleteConditionalFormatRuleRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    index: Schema.optional(Schema.Number),
+    sheetId: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "DeleteConditionalFormatRuleRequest" });
 
 export interface UpdateNamedRangeRequest {
   /** The named range to update with the new properties. */
@@ -4729,15 +3858,11 @@ export interface UpdateNamedRangeRequest {
   fields?: string;
 }
 
-export const UpdateNamedRangeRequest: Schema.Schema<UpdateNamedRangeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      namedRange: Schema.optional(NamedRange),
-      fields: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpdateNamedRangeRequest",
-  }) as any as Schema.Schema<UpdateNamedRangeRequest>;
+export const UpdateNamedRangeRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    namedRange: Schema.optional(NamedRange),
+    fields: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UpdateNamedRangeRequest" });
 
 export interface UpdateChartSpecRequest {
   /** The ID of the chart to update. */
@@ -4746,15 +3871,12 @@ export interface UpdateChartSpecRequest {
   spec?: ChartSpec;
 }
 
-export const UpdateChartSpecRequest: Schema.Schema<UpdateChartSpecRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      chartId: Schema.optional(Schema.Number),
-      spec: Schema.optional(ChartSpec),
-    }),
-  ).annotate({
-    identifier: "UpdateChartSpecRequest",
-  }) as any as Schema.Schema<UpdateChartSpecRequest>;
+export const UpdateChartSpecRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    chartId: Schema.optional(Schema.Number),
+    spec: Schema.optional(ChartSpec),
+  },
+).annotate({ identifier: "UpdateChartSpecRequest" });
 
 export interface AppendDimensionRequest {
   /** The sheet to append rows or columns to. */
@@ -4765,30 +3887,22 @@ export interface AppendDimensionRequest {
   length?: number;
 }
 
-export const AppendDimensionRequest: Schema.Schema<AppendDimensionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sheetId: Schema.optional(Schema.Number),
-      dimension: Schema.optional(Schema.String),
-      length: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "AppendDimensionRequest",
-  }) as any as Schema.Schema<AppendDimensionRequest>;
+export const AppendDimensionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    sheetId: Schema.optional(Schema.Number),
+    dimension: Schema.optional(Schema.String),
+    length: Schema.optional(Schema.Number),
+  },
+).annotate({ identifier: "AppendDimensionRequest" });
 
 export interface AddTableRequest {
   /** Required. The table to add. */
   table?: Table;
 }
 
-export const AddTableRequest: Schema.Schema<AddTableRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      table: Schema.optional(Table),
-    }),
-  ).annotate({
-    identifier: "AddTableRequest",
-  }) as any as Schema.Schema<AddTableRequest>;
+export const AddTableRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  table: Schema.optional(Table),
+}).annotate({ identifier: "AddTableRequest" });
 
 export interface Request {
   /** Updates an embedded object's (e.g. chart, image) position. */
@@ -4931,94 +4045,87 @@ export interface Request {
   addTable?: AddTableRequest;
 }
 
-export const Request: Schema.Schema<Request> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateEmbeddedObjectPosition: Schema.optional(
-        UpdateEmbeddedObjectPositionRequest,
-      ),
-      deleteDuplicates: Schema.optional(DeleteDuplicatesRequest),
-      trimWhitespace: Schema.optional(TrimWhitespaceRequest),
-      updateSheetProperties: Schema.optional(UpdateSheetPropertiesRequest),
-      updateDimensionProperties: Schema.optional(
-        UpdateDimensionPropertiesRequest,
-      ),
-      pasteData: Schema.optional(PasteDataRequest),
-      updateBanding: Schema.optional(UpdateBandingRequest),
-      updateTable: Schema.optional(UpdateTableRequest),
-      insertRange: Schema.optional(InsertRangeRequest),
-      deleteSheet: Schema.optional(DeleteSheetRequest),
-      addConditionalFormatRule: Schema.optional(
-        AddConditionalFormatRuleRequest,
-      ),
-      appendCells: Schema.optional(AppendCellsRequest),
-      deleteProtectedRange: Schema.optional(DeleteProtectedRangeRequest),
-      autoResizeDimensions: Schema.optional(AutoResizeDimensionsRequest),
-      deleteNamedRange: Schema.optional(DeleteNamedRangeRequest),
-      addDataSource: Schema.optional(AddDataSourceRequest),
-      updateSlicerSpec: Schema.optional(UpdateSlicerSpecRequest),
-      sortRange: Schema.optional(SortRangeRequest),
-      randomizeRange: Schema.optional(RandomizeRangeRequest),
-      setBasicFilter: Schema.optional(SetBasicFilterRequest),
-      clearBasicFilter: Schema.optional(ClearBasicFilterRequest),
-      deleteDeveloperMetadata: Schema.optional(DeleteDeveloperMetadataRequest),
-      updateDeveloperMetadata: Schema.optional(UpdateDeveloperMetadataRequest),
-      addChart: Schema.optional(AddChartRequest),
-      textToColumns: Schema.optional(TextToColumnsRequest),
-      updateProtectedRange: Schema.optional(UpdateProtectedRangeRequest),
-      updateDimensionGroup: Schema.optional(UpdateDimensionGroupRequest),
-      updateEmbeddedObjectBorder: Schema.optional(
-        UpdateEmbeddedObjectBorderRequest,
-      ),
-      cutPaste: Schema.optional(CutPasteRequest),
-      duplicateSheet: Schema.optional(DuplicateSheetRequest),
-      autoFill: Schema.optional(AutoFillRequest),
-      deleteDimensionGroup: Schema.optional(DeleteDimensionGroupRequest),
-      updateFilterView: Schema.optional(UpdateFilterViewRequest),
-      copyPaste: Schema.optional(CopyPasteRequest),
-      updateConditionalFormatRule: Schema.optional(
-        UpdateConditionalFormatRuleRequest,
-      ),
-      updateSpreadsheetProperties: Schema.optional(
-        UpdateSpreadsheetPropertiesRequest,
-      ),
-      deleteTable: Schema.optional(DeleteTableRequest),
-      deleteRange: Schema.optional(DeleteRangeRequest),
-      refreshDataSource: Schema.optional(RefreshDataSourceRequest),
-      addProtectedRange: Schema.optional(AddProtectedRangeRequest),
-      addNamedRange: Schema.optional(AddNamedRangeRequest),
-      unmergeCells: Schema.optional(UnmergeCellsRequest),
-      findReplace: Schema.optional(FindReplaceRequest),
-      setDataValidation: Schema.optional(SetDataValidationRequest),
-      deleteDataSource: Schema.optional(DeleteDataSourceRequest),
-      updateBorders: Schema.optional(UpdateBordersRequest),
-      deleteBanding: Schema.optional(DeleteBandingRequest),
-      addFilterView: Schema.optional(AddFilterViewRequest),
-      mergeCells: Schema.optional(MergeCellsRequest),
-      updateCells: Schema.optional(UpdateCellsRequest),
-      duplicateFilterView: Schema.optional(DuplicateFilterViewRequest),
-      addBanding: Schema.optional(AddBandingRequest),
-      repeatCell: Schema.optional(RepeatCellRequest),
-      moveDimension: Schema.optional(MoveDimensionRequest),
-      deleteDimension: Schema.optional(DeleteDimensionRequest),
-      cancelDataSourceRefresh: Schema.optional(CancelDataSourceRefreshRequest),
-      createDeveloperMetadata: Schema.optional(CreateDeveloperMetadataRequest),
-      addSheet: Schema.optional(AddSheetRequest),
-      updateDataSource: Schema.optional(UpdateDataSourceRequest),
-      deleteEmbeddedObject: Schema.optional(DeleteEmbeddedObjectRequest),
-      deleteFilterView: Schema.optional(DeleteFilterViewRequest),
-      addDimensionGroup: Schema.optional(AddDimensionGroupRequest),
-      insertDimension: Schema.optional(InsertDimensionRequest),
-      addSlicer: Schema.optional(AddSlicerRequest),
-      deleteConditionalFormatRule: Schema.optional(
-        DeleteConditionalFormatRuleRequest,
-      ),
-      updateNamedRange: Schema.optional(UpdateNamedRangeRequest),
-      updateChartSpec: Schema.optional(UpdateChartSpecRequest),
-      appendDimension: Schema.optional(AppendDimensionRequest),
-      addTable: Schema.optional(AddTableRequest),
-    }),
-  ).annotate({ identifier: "Request" }) as any as Schema.Schema<Request>;
+export const Request = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  updateEmbeddedObjectPosition: Schema.optional(
+    UpdateEmbeddedObjectPositionRequest,
+  ),
+  deleteDuplicates: Schema.optional(DeleteDuplicatesRequest),
+  trimWhitespace: Schema.optional(TrimWhitespaceRequest),
+  updateSheetProperties: Schema.optional(UpdateSheetPropertiesRequest),
+  updateDimensionProperties: Schema.optional(UpdateDimensionPropertiesRequest),
+  pasteData: Schema.optional(PasteDataRequest),
+  updateBanding: Schema.optional(UpdateBandingRequest),
+  updateTable: Schema.optional(UpdateTableRequest),
+  insertRange: Schema.optional(InsertRangeRequest),
+  deleteSheet: Schema.optional(DeleteSheetRequest),
+  addConditionalFormatRule: Schema.optional(AddConditionalFormatRuleRequest),
+  appendCells: Schema.optional(AppendCellsRequest),
+  deleteProtectedRange: Schema.optional(DeleteProtectedRangeRequest),
+  autoResizeDimensions: Schema.optional(AutoResizeDimensionsRequest),
+  deleteNamedRange: Schema.optional(DeleteNamedRangeRequest),
+  addDataSource: Schema.optional(AddDataSourceRequest),
+  updateSlicerSpec: Schema.optional(UpdateSlicerSpecRequest),
+  sortRange: Schema.optional(SortRangeRequest),
+  randomizeRange: Schema.optional(RandomizeRangeRequest),
+  setBasicFilter: Schema.optional(SetBasicFilterRequest),
+  clearBasicFilter: Schema.optional(ClearBasicFilterRequest),
+  deleteDeveloperMetadata: Schema.optional(DeleteDeveloperMetadataRequest),
+  updateDeveloperMetadata: Schema.optional(UpdateDeveloperMetadataRequest),
+  addChart: Schema.optional(AddChartRequest),
+  textToColumns: Schema.optional(TextToColumnsRequest),
+  updateProtectedRange: Schema.optional(UpdateProtectedRangeRequest),
+  updateDimensionGroup: Schema.optional(UpdateDimensionGroupRequest),
+  updateEmbeddedObjectBorder: Schema.optional(
+    UpdateEmbeddedObjectBorderRequest,
+  ),
+  cutPaste: Schema.optional(CutPasteRequest),
+  duplicateSheet: Schema.optional(DuplicateSheetRequest),
+  autoFill: Schema.optional(AutoFillRequest),
+  deleteDimensionGroup: Schema.optional(DeleteDimensionGroupRequest),
+  updateFilterView: Schema.optional(UpdateFilterViewRequest),
+  copyPaste: Schema.optional(CopyPasteRequest),
+  updateConditionalFormatRule: Schema.optional(
+    UpdateConditionalFormatRuleRequest,
+  ),
+  updateSpreadsheetProperties: Schema.optional(
+    UpdateSpreadsheetPropertiesRequest,
+  ),
+  deleteTable: Schema.optional(DeleteTableRequest),
+  deleteRange: Schema.optional(DeleteRangeRequest),
+  refreshDataSource: Schema.optional(RefreshDataSourceRequest),
+  addProtectedRange: Schema.optional(AddProtectedRangeRequest),
+  addNamedRange: Schema.optional(AddNamedRangeRequest),
+  unmergeCells: Schema.optional(UnmergeCellsRequest),
+  findReplace: Schema.optional(FindReplaceRequest),
+  setDataValidation: Schema.optional(SetDataValidationRequest),
+  deleteDataSource: Schema.optional(DeleteDataSourceRequest),
+  updateBorders: Schema.optional(UpdateBordersRequest),
+  deleteBanding: Schema.optional(DeleteBandingRequest),
+  addFilterView: Schema.optional(AddFilterViewRequest),
+  mergeCells: Schema.optional(MergeCellsRequest),
+  updateCells: Schema.optional(UpdateCellsRequest),
+  duplicateFilterView: Schema.optional(DuplicateFilterViewRequest),
+  addBanding: Schema.optional(AddBandingRequest),
+  repeatCell: Schema.optional(RepeatCellRequest),
+  moveDimension: Schema.optional(MoveDimensionRequest),
+  deleteDimension: Schema.optional(DeleteDimensionRequest),
+  cancelDataSourceRefresh: Schema.optional(CancelDataSourceRefreshRequest),
+  createDeveloperMetadata: Schema.optional(CreateDeveloperMetadataRequest),
+  addSheet: Schema.optional(AddSheetRequest),
+  updateDataSource: Schema.optional(UpdateDataSourceRequest),
+  deleteEmbeddedObject: Schema.optional(DeleteEmbeddedObjectRequest),
+  deleteFilterView: Schema.optional(DeleteFilterViewRequest),
+  addDimensionGroup: Schema.optional(AddDimensionGroupRequest),
+  insertDimension: Schema.optional(InsertDimensionRequest),
+  addSlicer: Schema.optional(AddSlicerRequest),
+  deleteConditionalFormatRule: Schema.optional(
+    DeleteConditionalFormatRuleRequest,
+  ),
+  updateNamedRange: Schema.optional(UpdateNamedRangeRequest),
+  updateChartSpec: Schema.optional(UpdateChartSpecRequest),
+  appendDimension: Schema.optional(AppendDimensionRequest),
+  addTable: Schema.optional(AddTableRequest),
+}).annotate({ identifier: "Request" });
 
 export interface BatchUpdateSpreadsheetRequest {
   /** Determines if the update response should include the spreadsheet resource. */
@@ -5031,31 +4138,23 @@ export interface BatchUpdateSpreadsheetRequest {
   responseIncludeGridData?: boolean;
 }
 
-export const BatchUpdateSpreadsheetRequest: Schema.Schema<BatchUpdateSpreadsheetRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      includeSpreadsheetInResponse: Schema.optional(Schema.Boolean),
-      requests: Schema.optional(Schema.Array(Request)),
-      responseRanges: Schema.optional(Schema.Array(Schema.String)),
-      responseIncludeGridData: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "BatchUpdateSpreadsheetRequest",
-  }) as any as Schema.Schema<BatchUpdateSpreadsheetRequest>;
+export const BatchUpdateSpreadsheetRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    includeSpreadsheetInResponse: Schema.optional(Schema.Boolean),
+    requests: Schema.optional(Schema.Array(Request)),
+    responseRanges: Schema.optional(Schema.Array(Schema.String)),
+    responseIncludeGridData: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "BatchUpdateSpreadsheetRequest" });
 
 export interface AddProtectedRangeResponse {
   /** The newly added protected range. */
   protectedRange?: ProtectedRange;
 }
 
-export const AddProtectedRangeResponse: Schema.Schema<AddProtectedRangeResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      protectedRange: Schema.optional(ProtectedRange),
-    }),
-  ).annotate({
-    identifier: "AddProtectedRangeResponse",
-  }) as any as Schema.Schema<AddProtectedRangeResponse>;
+export const AddProtectedRangeResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    protectedRange: Schema.optional(ProtectedRange),
+  }).annotate({ identifier: "AddProtectedRangeResponse" });
 
 export interface ValueRange {
   /** The range the values cover, in [A1 notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell). For output, this range indicates the entire requested range, even though the values will exclude trailing rows and columns. When appending values, this field represents the range to search for a table, after which values will be appended. */
@@ -5066,14 +4165,11 @@ export interface ValueRange {
   values?: Array<Array<unknown>>;
 }
 
-export const ValueRange: Schema.Schema<ValueRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      range: Schema.optional(Schema.String),
-      majorDimension: Schema.optional(Schema.String),
-      values: Schema.optional(Schema.Array(Schema.Array(Schema.Unknown))),
-    }),
-  ).annotate({ identifier: "ValueRange" }) as any as Schema.Schema<ValueRange>;
+export const ValueRange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  range: Schema.optional(Schema.String),
+  majorDimension: Schema.optional(Schema.String),
+  values: Schema.optional(Schema.Array(Schema.Array(Schema.Unknown))),
+}).annotate({ identifier: "ValueRange" });
 
 export interface BatchUpdateValuesRequest {
   /** Determines if the update response should include the values of the cells that were updated. By default, responses do not include the updated values. The `updatedData` field within each of the BatchUpdateValuesResponse.responses contains the updated values. If the range to write was larger than the range actually written, the response includes all values in the requested range (excluding trailing empty rows and columns). */
@@ -5099,46 +4195,33 @@ export interface BatchUpdateValuesRequest {
     | (string & {});
 }
 
-export const BatchUpdateValuesRequest: Schema.Schema<BatchUpdateValuesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      includeValuesInResponse: Schema.optional(Schema.Boolean),
-      data: Schema.optional(Schema.Array(ValueRange)),
-      responseDateTimeRenderOption: Schema.optional(Schema.String),
-      responseValueRenderOption: Schema.optional(Schema.String),
-      valueInputOption: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BatchUpdateValuesRequest",
-  }) as any as Schema.Schema<BatchUpdateValuesRequest>;
+export const BatchUpdateValuesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    includeValuesInResponse: Schema.optional(Schema.Boolean),
+    data: Schema.optional(Schema.Array(ValueRange)),
+    responseDateTimeRenderOption: Schema.optional(Schema.String),
+    responseValueRenderOption: Schema.optional(Schema.String),
+    valueInputOption: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BatchUpdateValuesRequest" });
 
 export interface BatchClearValuesRequest {
   /** The ranges to clear, in [A1 notation or R1C1 notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell). */
   ranges?: Array<string>;
 }
 
-export const BatchClearValuesRequest: Schema.Schema<BatchClearValuesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ranges: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "BatchClearValuesRequest",
-  }) as any as Schema.Schema<BatchClearValuesRequest>;
+export const BatchClearValuesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ranges: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "BatchClearValuesRequest" });
 
 export interface AddSlicerResponse {
   /** The newly added slicer. */
   slicer?: Slicer;
 }
 
-export const AddSlicerResponse: Schema.Schema<AddSlicerResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      slicer: Schema.optional(Slicer),
-    }),
-  ).annotate({
-    identifier: "AddSlicerResponse",
-  }) as any as Schema.Schema<AddSlicerResponse>;
+export const AddSlicerResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  slicer: Schema.optional(Slicer),
+}).annotate({ identifier: "AddSlicerResponse" });
 
 export interface UpdateConditionalFormatRuleResponse {
   /** The old index of the rule. Not set if a rule was replaced (because it is the same as new_index). */
@@ -5151,45 +4234,33 @@ export interface UpdateConditionalFormatRuleResponse {
   oldRule?: ConditionalFormatRule;
 }
 
-export const UpdateConditionalFormatRuleResponse: Schema.Schema<UpdateConditionalFormatRuleResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      oldIndex: Schema.optional(Schema.Number),
-      newRule: Schema.optional(ConditionalFormatRule),
-      newIndex: Schema.optional(Schema.Number),
-      oldRule: Schema.optional(ConditionalFormatRule),
-    }),
-  ).annotate({
-    identifier: "UpdateConditionalFormatRuleResponse",
-  }) as any as Schema.Schema<UpdateConditionalFormatRuleResponse>;
+export const UpdateConditionalFormatRuleResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    oldIndex: Schema.optional(Schema.Number),
+    newRule: Schema.optional(ConditionalFormatRule),
+    newIndex: Schema.optional(Schema.Number),
+    oldRule: Schema.optional(ConditionalFormatRule),
+  }).annotate({ identifier: "UpdateConditionalFormatRuleResponse" });
 
 export interface DeleteConditionalFormatRuleResponse {
   /** The rule that was deleted. */
   rule?: ConditionalFormatRule;
 }
 
-export const DeleteConditionalFormatRuleResponse: Schema.Schema<DeleteConditionalFormatRuleResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rule: Schema.optional(ConditionalFormatRule),
-    }),
-  ).annotate({
-    identifier: "DeleteConditionalFormatRuleResponse",
-  }) as any as Schema.Schema<DeleteConditionalFormatRuleResponse>;
+export const DeleteConditionalFormatRuleResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rule: Schema.optional(ConditionalFormatRule),
+  }).annotate({ identifier: "DeleteConditionalFormatRuleResponse" });
 
 export interface DataSourceRefreshDailySchedule {
   /** The start time of a time interval in which a data source refresh is scheduled. Only `hours` part is used. The time interval size defaults to that in the Sheets editor. */
   startTime?: TimeOfDay;
 }
 
-export const DataSourceRefreshDailySchedule: Schema.Schema<DataSourceRefreshDailySchedule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(TimeOfDay),
-    }),
-  ).annotate({
-    identifier: "DataSourceRefreshDailySchedule",
-  }) as any as Schema.Schema<DataSourceRefreshDailySchedule>;
+export const DataSourceRefreshDailySchedule =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startTime: Schema.optional(TimeOfDay),
+  }).annotate({ identifier: "DataSourceRefreshDailySchedule" });
 
 export interface DataSourceRefreshMonthlySchedule {
   /** The start time of a time interval in which a data source refresh is scheduled. Only `hours` part is used. The time interval size defaults to that in the Sheets editor. */
@@ -5198,15 +4269,11 @@ export interface DataSourceRefreshMonthlySchedule {
   daysOfMonth?: Array<number>;
 }
 
-export const DataSourceRefreshMonthlySchedule: Schema.Schema<DataSourceRefreshMonthlySchedule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(TimeOfDay),
-      daysOfMonth: Schema.optional(Schema.Array(Schema.Number)),
-    }),
-  ).annotate({
-    identifier: "DataSourceRefreshMonthlySchedule",
-  }) as any as Schema.Schema<DataSourceRefreshMonthlySchedule>;
+export const DataSourceRefreshMonthlySchedule =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startTime: Schema.optional(TimeOfDay),
+    daysOfMonth: Schema.optional(Schema.Array(Schema.Number)),
+  }).annotate({ identifier: "DataSourceRefreshMonthlySchedule" });
 
 export interface Interval {
   /** Optional. Inclusive start of the interval. If specified, a Timestamp matching this interval will have to be the same or after the start. */
@@ -5215,13 +4282,10 @@ export interface Interval {
   endTime?: string;
 }
 
-export const Interval: Schema.Schema<Interval> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Interval" }) as any as Schema.Schema<Interval>;
+export const Interval = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Interval" });
 
 export interface DataSourceRefreshSchedule {
   /** Daily refresh schedule. */
@@ -5241,19 +4305,15 @@ export interface DataSourceRefreshSchedule {
   weeklySchedule?: DataSourceRefreshWeeklySchedule;
 }
 
-export const DataSourceRefreshSchedule: Schema.Schema<DataSourceRefreshSchedule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dailySchedule: Schema.optional(DataSourceRefreshDailySchedule),
-      monthlySchedule: Schema.optional(DataSourceRefreshMonthlySchedule),
-      nextRun: Schema.optional(Interval),
-      enabled: Schema.optional(Schema.Boolean),
-      refreshScope: Schema.optional(Schema.String),
-      weeklySchedule: Schema.optional(DataSourceRefreshWeeklySchedule),
-    }),
-  ).annotate({
-    identifier: "DataSourceRefreshSchedule",
-  }) as any as Schema.Schema<DataSourceRefreshSchedule>;
+export const DataSourceRefreshSchedule =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dailySchedule: Schema.optional(DataSourceRefreshDailySchedule),
+    monthlySchedule: Schema.optional(DataSourceRefreshMonthlySchedule),
+    nextRun: Schema.optional(Interval),
+    enabled: Schema.optional(Schema.Boolean),
+    refreshScope: Schema.optional(Schema.String),
+    weeklySchedule: Schema.optional(DataSourceRefreshWeeklySchedule),
+  }).annotate({ identifier: "DataSourceRefreshSchedule" });
 
 export interface MatchedDeveloperMetadata {
   /** The developer metadata matching the specified filters. */
@@ -5262,22 +4322,17 @@ export interface MatchedDeveloperMetadata {
   dataFilters?: Array<DataFilter>;
 }
 
-export const MatchedDeveloperMetadata: Schema.Schema<MatchedDeveloperMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      developerMetadata: Schema.optional(DeveloperMetadata),
-      dataFilters: Schema.optional(Schema.Array(DataFilter)),
-    }),
-  ).annotate({
-    identifier: "MatchedDeveloperMetadata",
-  }) as any as Schema.Schema<MatchedDeveloperMetadata>;
+export const MatchedDeveloperMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    developerMetadata: Schema.optional(DeveloperMetadata),
+    dataFilters: Schema.optional(Schema.Array(DataFilter)),
+  }).annotate({ identifier: "MatchedDeveloperMetadata" });
 
 export interface ClearValuesRequest {}
 
-export const ClearValuesRequest: Schema.Schema<ClearValuesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "ClearValuesRequest",
-  }) as any as Schema.Schema<ClearValuesRequest>;
+export const ClearValuesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "ClearValuesRequest" });
 
 export interface FindReplaceResponse {
   /** The number of sheets changed. */
@@ -5292,18 +4347,13 @@ export interface FindReplaceResponse {
   occurrencesChanged?: number;
 }
 
-export const FindReplaceResponse: Schema.Schema<FindReplaceResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sheetsChanged: Schema.optional(Schema.Number),
-      formulasChanged: Schema.optional(Schema.Number),
-      rowsChanged: Schema.optional(Schema.Number),
-      valuesChanged: Schema.optional(Schema.Number),
-      occurrencesChanged: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "FindReplaceResponse",
-  }) as any as Schema.Schema<FindReplaceResponse>;
+export const FindReplaceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sheetsChanged: Schema.optional(Schema.Number),
+  formulasChanged: Schema.optional(Schema.Number),
+  rowsChanged: Schema.optional(Schema.Number),
+  valuesChanged: Schema.optional(Schema.Number),
+  occurrencesChanged: Schema.optional(Schema.Number),
+}).annotate({ identifier: "FindReplaceResponse" });
 
 export interface MatchedValueRange {
   /** The DataFilters from the request that matched the range of values. */
@@ -5312,15 +4362,10 @@ export interface MatchedValueRange {
   valueRange?: ValueRange;
 }
 
-export const MatchedValueRange: Schema.Schema<MatchedValueRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataFilters: Schema.optional(Schema.Array(DataFilter)),
-      valueRange: Schema.optional(ValueRange),
-    }),
-  ).annotate({
-    identifier: "MatchedValueRange",
-  }) as any as Schema.Schema<MatchedValueRange>;
+export const MatchedValueRange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dataFilters: Schema.optional(Schema.Array(DataFilter)),
+  valueRange: Schema.optional(ValueRange),
+}).annotate({ identifier: "MatchedValueRange" });
 
 export interface BatchGetValuesByDataFilterResponse {
   /** The ID of the spreadsheet the data was retrieved from. */
@@ -5329,29 +4374,21 @@ export interface BatchGetValuesByDataFilterResponse {
   valueRanges?: Array<MatchedValueRange>;
 }
 
-export const BatchGetValuesByDataFilterResponse: Schema.Schema<BatchGetValuesByDataFilterResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      spreadsheetId: Schema.optional(Schema.String),
-      valueRanges: Schema.optional(Schema.Array(MatchedValueRange)),
-    }),
-  ).annotate({
-    identifier: "BatchGetValuesByDataFilterResponse",
-  }) as any as Schema.Schema<BatchGetValuesByDataFilterResponse>;
+export const BatchGetValuesByDataFilterResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    spreadsheetId: Schema.optional(Schema.String),
+    valueRanges: Schema.optional(Schema.Array(MatchedValueRange)),
+  }).annotate({ identifier: "BatchGetValuesByDataFilterResponse" });
 
 export interface BatchClearValuesByDataFilterRequest {
   /** The DataFilters used to determine which ranges to clear. */
   dataFilters?: Array<DataFilter>;
 }
 
-export const BatchClearValuesByDataFilterRequest: Schema.Schema<BatchClearValuesByDataFilterRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataFilters: Schema.optional(Schema.Array(DataFilter)),
-    }),
-  ).annotate({
-    identifier: "BatchClearValuesByDataFilterRequest",
-  }) as any as Schema.Schema<BatchClearValuesByDataFilterRequest>;
+export const BatchClearValuesByDataFilterRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataFilters: Schema.optional(Schema.Array(DataFilter)),
+  }).annotate({ identifier: "BatchClearValuesByDataFilterRequest" });
 
 export interface UpdateValuesResponse {
   /** The number of rows where at least one cell in the row was updated. */
@@ -5368,33 +4405,23 @@ export interface UpdateValuesResponse {
   updatedRange?: string;
 }
 
-export const UpdateValuesResponse: Schema.Schema<UpdateValuesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updatedRows: Schema.optional(Schema.Number),
-      updatedColumns: Schema.optional(Schema.Number),
-      updatedData: Schema.optional(ValueRange),
-      updatedCells: Schema.optional(Schema.Number),
-      spreadsheetId: Schema.optional(Schema.String),
-      updatedRange: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpdateValuesResponse",
-  }) as any as Schema.Schema<UpdateValuesResponse>;
+export const UpdateValuesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  updatedRows: Schema.optional(Schema.Number),
+  updatedColumns: Schema.optional(Schema.Number),
+  updatedData: Schema.optional(ValueRange),
+  updatedCells: Schema.optional(Schema.Number),
+  spreadsheetId: Schema.optional(Schema.String),
+  updatedRange: Schema.optional(Schema.String),
+}).annotate({ identifier: "UpdateValuesResponse" });
 
 export interface AddChartResponse {
   /** The newly added chart. */
   chart?: EmbeddedChart;
 }
 
-export const AddChartResponse: Schema.Schema<AddChartResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      chart: Schema.optional(EmbeddedChart),
-    }),
-  ).annotate({
-    identifier: "AddChartResponse",
-  }) as any as Schema.Schema<AddChartResponse>;
+export const AddChartResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  chart: Schema.optional(EmbeddedChart),
+}).annotate({ identifier: "AddChartResponse" });
 
 export interface GridData {
   /** The first row this GridData refers to, zero-based. */
@@ -5409,16 +4436,13 @@ export interface GridData {
   rowData?: Array<RowData>;
 }
 
-export const GridData: Schema.Schema<GridData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startRow: Schema.optional(Schema.Number),
-      startColumn: Schema.optional(Schema.Number),
-      rowMetadata: Schema.optional(Schema.Array(DimensionProperties)),
-      columnMetadata: Schema.optional(Schema.Array(DimensionProperties)),
-      rowData: Schema.optional(Schema.Array(RowData)),
-    }),
-  ).annotate({ identifier: "GridData" }) as any as Schema.Schema<GridData>;
+export const GridData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startRow: Schema.optional(Schema.Number),
+  startColumn: Schema.optional(Schema.Number),
+  rowMetadata: Schema.optional(Schema.Array(DimensionProperties)),
+  columnMetadata: Schema.optional(Schema.Array(DimensionProperties)),
+  rowData: Schema.optional(Schema.Array(RowData)),
+}).annotate({ identifier: "GridData" });
 
 export interface Sheet {
   /** The ranges that are merged together. */
@@ -5451,39 +4475,32 @@ export interface Sheet {
   properties?: SheetProperties;
 }
 
-export const Sheet: Schema.Schema<Sheet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      merges: Schema.optional(Schema.Array(GridRange)),
-      bandedRanges: Schema.optional(Schema.Array(BandedRange)),
-      charts: Schema.optional(Schema.Array(EmbeddedChart)),
-      developerMetadata: Schema.optional(Schema.Array(DeveloperMetadata)),
-      columnGroups: Schema.optional(Schema.Array(DimensionGroup)),
-      rowGroups: Schema.optional(Schema.Array(DimensionGroup)),
-      conditionalFormats: Schema.optional(Schema.Array(ConditionalFormatRule)),
-      protectedRanges: Schema.optional(Schema.Array(ProtectedRange)),
-      data: Schema.optional(Schema.Array(GridData)),
-      filterViews: Schema.optional(Schema.Array(FilterView)),
-      slicers: Schema.optional(Schema.Array(Slicer)),
-      basicFilter: Schema.optional(BasicFilter),
-      tables: Schema.optional(Schema.Array(Table)),
-      properties: Schema.optional(SheetProperties),
-    }),
-  ).annotate({ identifier: "Sheet" }) as any as Schema.Schema<Sheet>;
+export const Sheet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  merges: Schema.optional(Schema.Array(GridRange)),
+  bandedRanges: Schema.optional(Schema.Array(BandedRange)),
+  charts: Schema.optional(Schema.Array(EmbeddedChart)),
+  developerMetadata: Schema.optional(Schema.Array(DeveloperMetadata)),
+  columnGroups: Schema.optional(Schema.Array(DimensionGroup)),
+  rowGroups: Schema.optional(Schema.Array(DimensionGroup)),
+  conditionalFormats: Schema.optional(Schema.Array(ConditionalFormatRule)),
+  protectedRanges: Schema.optional(Schema.Array(ProtectedRange)),
+  data: Schema.optional(Schema.Array(GridData)),
+  filterViews: Schema.optional(Schema.Array(FilterView)),
+  slicers: Schema.optional(Schema.Array(Slicer)),
+  basicFilter: Schema.optional(BasicFilter),
+  tables: Schema.optional(Schema.Array(Table)),
+  properties: Schema.optional(SheetProperties),
+}).annotate({ identifier: "Sheet" });
 
 export interface UpdateDeveloperMetadataResponse {
   /** The updated developer metadata. */
   developerMetadata?: Array<DeveloperMetadata>;
 }
 
-export const UpdateDeveloperMetadataResponse: Schema.Schema<UpdateDeveloperMetadataResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      developerMetadata: Schema.optional(Schema.Array(DeveloperMetadata)),
-    }),
-  ).annotate({
-    identifier: "UpdateDeveloperMetadataResponse",
-  }) as any as Schema.Schema<UpdateDeveloperMetadataResponse>;
+export const UpdateDeveloperMetadataResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    developerMetadata: Schema.optional(Schema.Array(DeveloperMetadata)),
+  }).annotate({ identifier: "UpdateDeveloperMetadataResponse" });
 
 export interface RefreshCancellationStatus {
   /** The state of a call to cancel a refresh in Sheets. */
@@ -5503,15 +4520,11 @@ export interface RefreshCancellationStatus {
     | (string & {});
 }
 
-export const RefreshCancellationStatus: Schema.Schema<RefreshCancellationStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      errorCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RefreshCancellationStatus",
-  }) as any as Schema.Schema<RefreshCancellationStatus>;
+export const RefreshCancellationStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+    errorCode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RefreshCancellationStatus" });
 
 export interface CancelDataSourceRefreshStatus {
   /** Reference to the data source object whose refresh is being cancelled. */
@@ -5520,59 +4533,40 @@ export interface CancelDataSourceRefreshStatus {
   refreshCancellationStatus?: RefreshCancellationStatus;
 }
 
-export const CancelDataSourceRefreshStatus: Schema.Schema<CancelDataSourceRefreshStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reference: Schema.optional(DataSourceObjectReference),
-      refreshCancellationStatus: Schema.optional(RefreshCancellationStatus),
-    }),
-  ).annotate({
-    identifier: "CancelDataSourceRefreshStatus",
-  }) as any as Schema.Schema<CancelDataSourceRefreshStatus>;
+export const CancelDataSourceRefreshStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reference: Schema.optional(DataSourceObjectReference),
+    refreshCancellationStatus: Schema.optional(RefreshCancellationStatus),
+  }).annotate({ identifier: "CancelDataSourceRefreshStatus" });
 
 export interface CancelDataSourceRefreshResponse {
   /** The cancellation statuses of refreshes of all data source objects specified in the request. If is_all is specified, the field contains only those in failure status. Refreshing and canceling refresh the same data source object is also not allowed in the same `batchUpdate`. */
   statuses?: Array<CancelDataSourceRefreshStatus>;
 }
 
-export const CancelDataSourceRefreshResponse: Schema.Schema<CancelDataSourceRefreshResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      statuses: Schema.optional(Schema.Array(CancelDataSourceRefreshStatus)),
-    }),
-  ).annotate({
-    identifier: "CancelDataSourceRefreshResponse",
-  }) as any as Schema.Schema<CancelDataSourceRefreshResponse>;
+export const CancelDataSourceRefreshResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    statuses: Schema.optional(Schema.Array(CancelDataSourceRefreshStatus)),
+  }).annotate({ identifier: "CancelDataSourceRefreshResponse" });
 
 export interface DeleteDeveloperMetadataResponse {
   /** The metadata that was deleted. */
   deletedDeveloperMetadata?: Array<DeveloperMetadata>;
 }
 
-export const DeleteDeveloperMetadataResponse: Schema.Schema<DeleteDeveloperMetadataResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deletedDeveloperMetadata: Schema.optional(
-        Schema.Array(DeveloperMetadata),
-      ),
-    }),
-  ).annotate({
-    identifier: "DeleteDeveloperMetadataResponse",
-  }) as any as Schema.Schema<DeleteDeveloperMetadataResponse>;
+export const DeleteDeveloperMetadataResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deletedDeveloperMetadata: Schema.optional(Schema.Array(DeveloperMetadata)),
+  }).annotate({ identifier: "DeleteDeveloperMetadataResponse" });
 
 export interface AddSheetResponse {
   /** The properties of the newly added sheet. */
   properties?: SheetProperties;
 }
 
-export const AddSheetResponse: Schema.Schema<AddSheetResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      properties: Schema.optional(SheetProperties),
-    }),
-  ).annotate({
-    identifier: "AddSheetResponse",
-  }) as any as Schema.Schema<AddSheetResponse>;
+export const AddSheetResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(SheetProperties),
+}).annotate({ identifier: "AddSheetResponse" });
 
 export interface UpdateDataSourceResponse {
   /** The data execution status. */
@@ -5581,99 +4575,71 @@ export interface UpdateDataSourceResponse {
   dataSource?: DataSource;
 }
 
-export const UpdateDataSourceResponse: Schema.Schema<UpdateDataSourceResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataExecutionStatus: Schema.optional(DataExecutionStatus),
-      dataSource: Schema.optional(DataSource),
-    }),
-  ).annotate({
-    identifier: "UpdateDataSourceResponse",
-  }) as any as Schema.Schema<UpdateDataSourceResponse>;
+export const UpdateDataSourceResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataExecutionStatus: Schema.optional(DataExecutionStatus),
+    dataSource: Schema.optional(DataSource),
+  }).annotate({ identifier: "UpdateDataSourceResponse" });
 
 export interface CreateDeveloperMetadataResponse {
   /** The developer metadata that was created. */
   developerMetadata?: DeveloperMetadata;
 }
 
-export const CreateDeveloperMetadataResponse: Schema.Schema<CreateDeveloperMetadataResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      developerMetadata: Schema.optional(DeveloperMetadata),
-    }),
-  ).annotate({
-    identifier: "CreateDeveloperMetadataResponse",
-  }) as any as Schema.Schema<CreateDeveloperMetadataResponse>;
+export const CreateDeveloperMetadataResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    developerMetadata: Schema.optional(DeveloperMetadata),
+  }).annotate({ identifier: "CreateDeveloperMetadataResponse" });
 
 export interface AddTableResponse {
   /** Output only. The table that was added. */
   table?: Table;
 }
 
-export const AddTableResponse: Schema.Schema<AddTableResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      table: Schema.optional(Table),
-    }),
-  ).annotate({
-    identifier: "AddTableResponse",
-  }) as any as Schema.Schema<AddTableResponse>;
+export const AddTableResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  table: Schema.optional(Table),
+}).annotate({ identifier: "AddTableResponse" });
 
 export interface DeleteDimensionGroupResponse {
   /** All groups of a dimension after deleting a group from that dimension. */
   dimensionGroups?: Array<DimensionGroup>;
 }
 
-export const DeleteDimensionGroupResponse: Schema.Schema<DeleteDimensionGroupResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dimensionGroups: Schema.optional(Schema.Array(DimensionGroup)),
-    }),
-  ).annotate({
-    identifier: "DeleteDimensionGroupResponse",
-  }) as any as Schema.Schema<DeleteDimensionGroupResponse>;
+export const DeleteDimensionGroupResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dimensionGroups: Schema.optional(Schema.Array(DimensionGroup)),
+  }).annotate({ identifier: "DeleteDimensionGroupResponse" });
 
 export interface UpdateEmbeddedObjectPositionResponse {
   /** The new position of the embedded object. */
   position?: EmbeddedObjectPosition;
 }
 
-export const UpdateEmbeddedObjectPositionResponse: Schema.Schema<UpdateEmbeddedObjectPositionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      position: Schema.optional(EmbeddedObjectPosition),
-    }),
-  ).annotate({
-    identifier: "UpdateEmbeddedObjectPositionResponse",
-  }) as any as Schema.Schema<UpdateEmbeddedObjectPositionResponse>;
+export const UpdateEmbeddedObjectPositionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    position: Schema.optional(EmbeddedObjectPosition),
+  }).annotate({ identifier: "UpdateEmbeddedObjectPositionResponse" });
 
 export interface DeleteDuplicatesResponse {
   /** The number of duplicate rows removed. */
   duplicatesRemovedCount?: number;
 }
 
-export const DeleteDuplicatesResponse: Schema.Schema<DeleteDuplicatesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      duplicatesRemovedCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "DeleteDuplicatesResponse",
-  }) as any as Schema.Schema<DeleteDuplicatesResponse>;
+export const DeleteDuplicatesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    duplicatesRemovedCount: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "DeleteDuplicatesResponse" });
 
 export interface TrimWhitespaceResponse {
   /** The number of cells that were trimmed of whitespace. */
   cellsChangedCount?: number;
 }
 
-export const TrimWhitespaceResponse: Schema.Schema<TrimWhitespaceResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cellsChangedCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "TrimWhitespaceResponse",
-  }) as any as Schema.Schema<TrimWhitespaceResponse>;
+export const TrimWhitespaceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    cellsChangedCount: Schema.optional(Schema.Number),
+  },
+).annotate({ identifier: "TrimWhitespaceResponse" });
 
 export interface RefreshDataSourceObjectExecutionStatus {
   /** The data execution status. */
@@ -5682,59 +4648,41 @@ export interface RefreshDataSourceObjectExecutionStatus {
   reference?: DataSourceObjectReference;
 }
 
-export const RefreshDataSourceObjectExecutionStatus: Schema.Schema<RefreshDataSourceObjectExecutionStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataExecutionStatus: Schema.optional(DataExecutionStatus),
-      reference: Schema.optional(DataSourceObjectReference),
-    }),
-  ).annotate({
-    identifier: "RefreshDataSourceObjectExecutionStatus",
-  }) as any as Schema.Schema<RefreshDataSourceObjectExecutionStatus>;
+export const RefreshDataSourceObjectExecutionStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataExecutionStatus: Schema.optional(DataExecutionStatus),
+    reference: Schema.optional(DataSourceObjectReference),
+  }).annotate({ identifier: "RefreshDataSourceObjectExecutionStatus" });
 
 export interface RefreshDataSourceResponse {
   /** All the refresh status for the data source object references specified in the request. If is_all is specified, the field contains only those in failure status. */
   statuses?: Array<RefreshDataSourceObjectExecutionStatus>;
 }
 
-export const RefreshDataSourceResponse: Schema.Schema<RefreshDataSourceResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      statuses: Schema.optional(
-        Schema.Array(RefreshDataSourceObjectExecutionStatus),
-      ),
-    }),
-  ).annotate({
-    identifier: "RefreshDataSourceResponse",
-  }) as any as Schema.Schema<RefreshDataSourceResponse>;
+export const RefreshDataSourceResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    statuses: Schema.optional(
+      Schema.Array(RefreshDataSourceObjectExecutionStatus),
+    ),
+  }).annotate({ identifier: "RefreshDataSourceResponse" });
 
 export interface AddNamedRangeResponse {
   /** The named range to add. */
   namedRange?: NamedRange;
 }
 
-export const AddNamedRangeResponse: Schema.Schema<AddNamedRangeResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      namedRange: Schema.optional(NamedRange),
-    }),
-  ).annotate({
-    identifier: "AddNamedRangeResponse",
-  }) as any as Schema.Schema<AddNamedRangeResponse>;
+export const AddNamedRangeResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  namedRange: Schema.optional(NamedRange),
+}).annotate({ identifier: "AddNamedRangeResponse" });
 
 export interface AddFilterViewResponse {
   /** The newly added filter view. */
   filter?: FilterView;
 }
 
-export const AddFilterViewResponse: Schema.Schema<AddFilterViewResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filter: Schema.optional(FilterView),
-    }),
-  ).annotate({
-    identifier: "AddFilterViewResponse",
-  }) as any as Schema.Schema<AddFilterViewResponse>;
+export const AddFilterViewResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  filter: Schema.optional(FilterView),
+}).annotate({ identifier: "AddFilterViewResponse" });
 
 export interface AddDataSourceResponse {
   /** The data source that was created. */
@@ -5743,43 +4691,29 @@ export interface AddDataSourceResponse {
   dataExecutionStatus?: DataExecutionStatus;
 }
 
-export const AddDataSourceResponse: Schema.Schema<AddDataSourceResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataSource: Schema.optional(DataSource),
-      dataExecutionStatus: Schema.optional(DataExecutionStatus),
-    }),
-  ).annotate({
-    identifier: "AddDataSourceResponse",
-  }) as any as Schema.Schema<AddDataSourceResponse>;
+export const AddDataSourceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dataSource: Schema.optional(DataSource),
+  dataExecutionStatus: Schema.optional(DataExecutionStatus),
+}).annotate({ identifier: "AddDataSourceResponse" });
 
 export interface AddBandingResponse {
   /** The banded range that was added. */
   bandedRange?: BandedRange;
 }
 
-export const AddBandingResponse: Schema.Schema<AddBandingResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bandedRange: Schema.optional(BandedRange),
-    }),
-  ).annotate({
-    identifier: "AddBandingResponse",
-  }) as any as Schema.Schema<AddBandingResponse>;
+export const AddBandingResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bandedRange: Schema.optional(BandedRange),
+}).annotate({ identifier: "AddBandingResponse" });
 
 export interface DuplicateFilterViewResponse {
   /** The newly created filter. */
   filter?: FilterView;
 }
 
-export const DuplicateFilterViewResponse: Schema.Schema<DuplicateFilterViewResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filter: Schema.optional(FilterView),
-    }),
-  ).annotate({
-    identifier: "DuplicateFilterViewResponse",
-  }) as any as Schema.Schema<DuplicateFilterViewResponse>;
+export const DuplicateFilterViewResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filter: Schema.optional(FilterView),
+  }).annotate({ identifier: "DuplicateFilterViewResponse" });
 
 export interface Response {
   /** A reply from updating a developer metadata entry. */
@@ -5834,42 +4768,39 @@ export interface Response {
   duplicateFilterView?: DuplicateFilterViewResponse;
 }
 
-export const Response: Schema.Schema<Response> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateDeveloperMetadata: Schema.optional(UpdateDeveloperMetadataResponse),
-      cancelDataSourceRefresh: Schema.optional(CancelDataSourceRefreshResponse),
-      deleteDeveloperMetadata: Schema.optional(DeleteDeveloperMetadataResponse),
-      addChart: Schema.optional(AddChartResponse),
-      addSheet: Schema.optional(AddSheetResponse),
-      updateDataSource: Schema.optional(UpdateDataSourceResponse),
-      createDeveloperMetadata: Schema.optional(CreateDeveloperMetadataResponse),
-      duplicateSheet: Schema.optional(DuplicateSheetResponse),
-      addDimensionGroup: Schema.optional(AddDimensionGroupResponse),
-      addSlicer: Schema.optional(AddSlicerResponse),
-      addTable: Schema.optional(AddTableResponse),
-      updateConditionalFormatRule: Schema.optional(
-        UpdateConditionalFormatRuleResponse,
-      ),
-      deleteConditionalFormatRule: Schema.optional(
-        DeleteConditionalFormatRuleResponse,
-      ),
-      deleteDimensionGroup: Schema.optional(DeleteDimensionGroupResponse),
-      updateEmbeddedObjectPosition: Schema.optional(
-        UpdateEmbeddedObjectPositionResponse,
-      ),
-      deleteDuplicates: Schema.optional(DeleteDuplicatesResponse),
-      trimWhitespace: Schema.optional(TrimWhitespaceResponse),
-      refreshDataSource: Schema.optional(RefreshDataSourceResponse),
-      addNamedRange: Schema.optional(AddNamedRangeResponse),
-      addProtectedRange: Schema.optional(AddProtectedRangeResponse),
-      findReplace: Schema.optional(FindReplaceResponse),
-      addFilterView: Schema.optional(AddFilterViewResponse),
-      addDataSource: Schema.optional(AddDataSourceResponse),
-      addBanding: Schema.optional(AddBandingResponse),
-      duplicateFilterView: Schema.optional(DuplicateFilterViewResponse),
-    }),
-  ).annotate({ identifier: "Response" }) as any as Schema.Schema<Response>;
+export const Response = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  updateDeveloperMetadata: Schema.optional(UpdateDeveloperMetadataResponse),
+  cancelDataSourceRefresh: Schema.optional(CancelDataSourceRefreshResponse),
+  deleteDeveloperMetadata: Schema.optional(DeleteDeveloperMetadataResponse),
+  addChart: Schema.optional(AddChartResponse),
+  addSheet: Schema.optional(AddSheetResponse),
+  updateDataSource: Schema.optional(UpdateDataSourceResponse),
+  createDeveloperMetadata: Schema.optional(CreateDeveloperMetadataResponse),
+  duplicateSheet: Schema.optional(DuplicateSheetResponse),
+  addDimensionGroup: Schema.optional(AddDimensionGroupResponse),
+  addSlicer: Schema.optional(AddSlicerResponse),
+  addTable: Schema.optional(AddTableResponse),
+  updateConditionalFormatRule: Schema.optional(
+    UpdateConditionalFormatRuleResponse,
+  ),
+  deleteConditionalFormatRule: Schema.optional(
+    DeleteConditionalFormatRuleResponse,
+  ),
+  deleteDimensionGroup: Schema.optional(DeleteDimensionGroupResponse),
+  updateEmbeddedObjectPosition: Schema.optional(
+    UpdateEmbeddedObjectPositionResponse,
+  ),
+  deleteDuplicates: Schema.optional(DeleteDuplicatesResponse),
+  trimWhitespace: Schema.optional(TrimWhitespaceResponse),
+  refreshDataSource: Schema.optional(RefreshDataSourceResponse),
+  addNamedRange: Schema.optional(AddNamedRangeResponse),
+  addProtectedRange: Schema.optional(AddProtectedRangeResponse),
+  findReplace: Schema.optional(FindReplaceResponse),
+  addFilterView: Schema.optional(AddFilterViewResponse),
+  addDataSource: Schema.optional(AddDataSourceResponse),
+  addBanding: Schema.optional(AddBandingResponse),
+  duplicateFilterView: Schema.optional(DuplicateFilterViewResponse),
+}).annotate({ identifier: "Response" });
 
 export interface Spreadsheet {
   /** Overall properties of a spreadsheet. */
@@ -5890,23 +4821,16 @@ export interface Spreadsheet {
   dataSources?: Array<DataSource>;
 }
 
-export const Spreadsheet: Schema.Schema<Spreadsheet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      properties: Schema.optional(SpreadsheetProperties),
-      dataSourceSchedules: Schema.optional(
-        Schema.Array(DataSourceRefreshSchedule),
-      ),
-      sheets: Schema.optional(Schema.Array(Sheet)),
-      spreadsheetId: Schema.optional(Schema.String),
-      spreadsheetUrl: Schema.optional(Schema.String),
-      namedRanges: Schema.optional(Schema.Array(NamedRange)),
-      developerMetadata: Schema.optional(Schema.Array(DeveloperMetadata)),
-      dataSources: Schema.optional(Schema.Array(DataSource)),
-    }),
-  ).annotate({
-    identifier: "Spreadsheet",
-  }) as any as Schema.Schema<Spreadsheet>;
+export const Spreadsheet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(SpreadsheetProperties),
+  dataSourceSchedules: Schema.optional(Schema.Array(DataSourceRefreshSchedule)),
+  sheets: Schema.optional(Schema.Array(Sheet)),
+  spreadsheetId: Schema.optional(Schema.String),
+  spreadsheetUrl: Schema.optional(Schema.String),
+  namedRanges: Schema.optional(Schema.Array(NamedRange)),
+  developerMetadata: Schema.optional(Schema.Array(DeveloperMetadata)),
+  dataSources: Schema.optional(Schema.Array(DataSource)),
+}).annotate({ identifier: "Spreadsheet" });
 
 export interface BatchUpdateSpreadsheetResponse {
   /** The reply of the updates. This maps 1:1 with the updates, although replies to some requests may be empty. */
@@ -5917,16 +4841,12 @@ export interface BatchUpdateSpreadsheetResponse {
   updatedSpreadsheet?: Spreadsheet;
 }
 
-export const BatchUpdateSpreadsheetResponse: Schema.Schema<BatchUpdateSpreadsheetResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      replies: Schema.optional(Schema.Array(Response)),
-      spreadsheetId: Schema.optional(Schema.String),
-      updatedSpreadsheet: Schema.optional(Spreadsheet),
-    }),
-  ).annotate({
-    identifier: "BatchUpdateSpreadsheetResponse",
-  }) as any as Schema.Schema<BatchUpdateSpreadsheetResponse>;
+export const BatchUpdateSpreadsheetResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    replies: Schema.optional(Schema.Array(Response)),
+    spreadsheetId: Schema.optional(Schema.String),
+    updatedSpreadsheet: Schema.optional(Spreadsheet),
+  }).annotate({ identifier: "BatchUpdateSpreadsheetResponse" });
 
 export interface DataFilterValueRange {
   /** The major dimension of the values. */
@@ -5937,16 +4857,11 @@ export interface DataFilterValueRange {
   values?: Array<Array<unknown>>;
 }
 
-export const DataFilterValueRange: Schema.Schema<DataFilterValueRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      majorDimension: Schema.optional(Schema.String),
-      dataFilter: Schema.optional(DataFilter),
-      values: Schema.optional(Schema.Array(Schema.Array(Schema.Unknown))),
-    }),
-  ).annotate({
-    identifier: "DataFilterValueRange",
-  }) as any as Schema.Schema<DataFilterValueRange>;
+export const DataFilterValueRange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  majorDimension: Schema.optional(Schema.String),
+  dataFilter: Schema.optional(DataFilter),
+  values: Schema.optional(Schema.Array(Schema.Array(Schema.Unknown))),
+}).annotate({ identifier: "DataFilterValueRange" });
 
 export interface BatchUpdateValuesByDataFilterRequest {
   /** The new values to apply to the spreadsheet. If more than one range is matched by the specified DataFilter the specified values are applied to all of those ranges. */
@@ -5972,32 +4887,24 @@ export interface BatchUpdateValuesByDataFilterRequest {
   includeValuesInResponse?: boolean;
 }
 
-export const BatchUpdateValuesByDataFilterRequest: Schema.Schema<BatchUpdateValuesByDataFilterRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      data: Schema.optional(Schema.Array(DataFilterValueRange)),
-      responseDateTimeRenderOption: Schema.optional(Schema.String),
-      valueInputOption: Schema.optional(Schema.String),
-      responseValueRenderOption: Schema.optional(Schema.String),
-      includeValuesInResponse: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "BatchUpdateValuesByDataFilterRequest",
-  }) as any as Schema.Schema<BatchUpdateValuesByDataFilterRequest>;
+export const BatchUpdateValuesByDataFilterRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    data: Schema.optional(Schema.Array(DataFilterValueRange)),
+    responseDateTimeRenderOption: Schema.optional(Schema.String),
+    valueInputOption: Schema.optional(Schema.String),
+    responseValueRenderOption: Schema.optional(Schema.String),
+    includeValuesInResponse: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "BatchUpdateValuesByDataFilterRequest" });
 
 export interface CopySheetToAnotherSpreadsheetRequest {
   /** The ID of the spreadsheet to copy the sheet to. */
   destinationSpreadsheetId?: string;
 }
 
-export const CopySheetToAnotherSpreadsheetRequest: Schema.Schema<CopySheetToAnotherSpreadsheetRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      destinationSpreadsheetId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CopySheetToAnotherSpreadsheetRequest",
-  }) as any as Schema.Schema<CopySheetToAnotherSpreadsheetRequest>;
+export const CopySheetToAnotherSpreadsheetRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    destinationSpreadsheetId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CopySheetToAnotherSpreadsheetRequest" });
 
 export interface BatchGetValuesResponse {
   /** The requested values. The order of the ValueRanges is the same as the order of the requested ranges. */
@@ -6006,15 +4913,12 @@ export interface BatchGetValuesResponse {
   spreadsheetId?: string;
 }
 
-export const BatchGetValuesResponse: Schema.Schema<BatchGetValuesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      valueRanges: Schema.optional(Schema.Array(ValueRange)),
-      spreadsheetId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BatchGetValuesResponse",
-  }) as any as Schema.Schema<BatchGetValuesResponse>;
+export const BatchGetValuesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    valueRanges: Schema.optional(Schema.Array(ValueRange)),
+    spreadsheetId: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "BatchGetValuesResponse" });
 
 export interface UpdateValuesByDataFilterResponse {
   /** The range (in [A1 notation](https://developers.google.com/workspace/sheets/api/guides/concepts#cell)) that updates were applied to. */
@@ -6031,19 +4935,15 @@ export interface UpdateValuesByDataFilterResponse {
   updatedCells?: number;
 }
 
-export const UpdateValuesByDataFilterResponse: Schema.Schema<UpdateValuesByDataFilterResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updatedRange: Schema.optional(Schema.String),
-      dataFilter: Schema.optional(DataFilter),
-      updatedRows: Schema.optional(Schema.Number),
-      updatedColumns: Schema.optional(Schema.Number),
-      updatedData: Schema.optional(ValueRange),
-      updatedCells: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "UpdateValuesByDataFilterResponse",
-  }) as any as Schema.Schema<UpdateValuesByDataFilterResponse>;
+export const UpdateValuesByDataFilterResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updatedRange: Schema.optional(Schema.String),
+    dataFilter: Schema.optional(DataFilter),
+    updatedRows: Schema.optional(Schema.Number),
+    updatedColumns: Schema.optional(Schema.Number),
+    updatedData: Schema.optional(ValueRange),
+    updatedCells: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "UpdateValuesByDataFilterResponse" });
 
 export interface BatchUpdateValuesByDataFilterResponse {
   /** The spreadsheet the updates were applied to. */
@@ -6060,21 +4960,15 @@ export interface BatchUpdateValuesByDataFilterResponse {
   totalUpdatedColumns?: number;
 }
 
-export const BatchUpdateValuesByDataFilterResponse: Schema.Schema<BatchUpdateValuesByDataFilterResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      spreadsheetId: Schema.optional(Schema.String),
-      totalUpdatedRows: Schema.optional(Schema.Number),
-      totalUpdatedCells: Schema.optional(Schema.Number),
-      responses: Schema.optional(
-        Schema.Array(UpdateValuesByDataFilterResponse),
-      ),
-      totalUpdatedSheets: Schema.optional(Schema.Number),
-      totalUpdatedColumns: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "BatchUpdateValuesByDataFilterResponse",
-  }) as any as Schema.Schema<BatchUpdateValuesByDataFilterResponse>;
+export const BatchUpdateValuesByDataFilterResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    spreadsheetId: Schema.optional(Schema.String),
+    totalUpdatedRows: Schema.optional(Schema.Number),
+    totalUpdatedCells: Schema.optional(Schema.Number),
+    responses: Schema.optional(Schema.Array(UpdateValuesByDataFilterResponse)),
+    totalUpdatedSheets: Schema.optional(Schema.Number),
+    totalUpdatedColumns: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "BatchUpdateValuesByDataFilterResponse" });
 
 export interface GetSpreadsheetByDataFilterRequest {
   /** The DataFilters used to select which ranges to retrieve from the spreadsheet. */
@@ -6085,16 +4979,12 @@ export interface GetSpreadsheetByDataFilterRequest {
   excludeTablesInBandedRanges?: boolean;
 }
 
-export const GetSpreadsheetByDataFilterRequest: Schema.Schema<GetSpreadsheetByDataFilterRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataFilters: Schema.optional(Schema.Array(DataFilter)),
-      includeGridData: Schema.optional(Schema.Boolean),
-      excludeTablesInBandedRanges: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GetSpreadsheetByDataFilterRequest",
-  }) as any as Schema.Schema<GetSpreadsheetByDataFilterRequest>;
+export const GetSpreadsheetByDataFilterRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataFilters: Schema.optional(Schema.Array(DataFilter)),
+    includeGridData: Schema.optional(Schema.Boolean),
+    excludeTablesInBandedRanges: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GetSpreadsheetByDataFilterRequest" });
 
 export interface BatchGetValuesByDataFilterRequest {
   /** The major dimension that results should use. For example, if the spreadsheet data is: `A1=1,B1=2,A2=3,B2=4`, then a request that selects that range and sets `majorDimension=ROWS` returns `[[1,2],[3,4]]`, whereas a request that sets `majorDimension=COLUMNS` returns `[[1,3],[2,4]]`. */
@@ -6111,33 +5001,25 @@ export interface BatchGetValuesByDataFilterRequest {
   dataFilters?: Array<DataFilter>;
 }
 
-export const BatchGetValuesByDataFilterRequest: Schema.Schema<BatchGetValuesByDataFilterRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      majorDimension: Schema.optional(Schema.String),
-      valueRenderOption: Schema.optional(Schema.String),
-      dateTimeRenderOption: Schema.optional(Schema.String),
-      dataFilters: Schema.optional(Schema.Array(DataFilter)),
-    }),
-  ).annotate({
-    identifier: "BatchGetValuesByDataFilterRequest",
-  }) as any as Schema.Schema<BatchGetValuesByDataFilterRequest>;
+export const BatchGetValuesByDataFilterRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    majorDimension: Schema.optional(Schema.String),
+    valueRenderOption: Schema.optional(Schema.String),
+    dateTimeRenderOption: Schema.optional(Schema.String),
+    dataFilters: Schema.optional(Schema.Array(DataFilter)),
+  }).annotate({ identifier: "BatchGetValuesByDataFilterRequest" });
 
 export interface SearchDeveloperMetadataResponse {
   /** The metadata matching the criteria of the search request. */
   matchedDeveloperMetadata?: Array<MatchedDeveloperMetadata>;
 }
 
-export const SearchDeveloperMetadataResponse: Schema.Schema<SearchDeveloperMetadataResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      matchedDeveloperMetadata: Schema.optional(
-        Schema.Array(MatchedDeveloperMetadata),
-      ),
-    }),
-  ).annotate({
-    identifier: "SearchDeveloperMetadataResponse",
-  }) as any as Schema.Schema<SearchDeveloperMetadataResponse>;
+export const SearchDeveloperMetadataResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    matchedDeveloperMetadata: Schema.optional(
+      Schema.Array(MatchedDeveloperMetadata),
+    ),
+  }).annotate({ identifier: "SearchDeveloperMetadataResponse" });
 
 export interface BatchClearValuesByDataFilterResponse {
   /** The spreadsheet the updates were applied to. */
@@ -6146,15 +5028,11 @@ export interface BatchClearValuesByDataFilterResponse {
   clearedRanges?: Array<string>;
 }
 
-export const BatchClearValuesByDataFilterResponse: Schema.Schema<BatchClearValuesByDataFilterResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      spreadsheetId: Schema.optional(Schema.String),
-      clearedRanges: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "BatchClearValuesByDataFilterResponse",
-  }) as any as Schema.Schema<BatchClearValuesByDataFilterResponse>;
+export const BatchClearValuesByDataFilterResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    spreadsheetId: Schema.optional(Schema.String),
+    clearedRanges: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "BatchClearValuesByDataFilterResponse" });
 
 export interface AppendValuesResponse {
   /** The range (in A1 notation) of the table that values are being appended to (before the values were appended). Empty if no table was found. */
@@ -6165,16 +5043,11 @@ export interface AppendValuesResponse {
   spreadsheetId?: string;
 }
 
-export const AppendValuesResponse: Schema.Schema<AppendValuesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tableRange: Schema.optional(Schema.String),
-      updates: Schema.optional(UpdateValuesResponse),
-      spreadsheetId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AppendValuesResponse",
-  }) as any as Schema.Schema<AppendValuesResponse>;
+export const AppendValuesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tableRange: Schema.optional(Schema.String),
+  updates: Schema.optional(UpdateValuesResponse),
+  spreadsheetId: Schema.optional(Schema.String),
+}).annotate({ identifier: "AppendValuesResponse" });
 
 export interface BatchUpdateValuesResponse {
   /** The total number of sheets where at least one cell in the sheet was updated. */
@@ -6191,19 +5064,15 @@ export interface BatchUpdateValuesResponse {
   totalUpdatedColumns?: number;
 }
 
-export const BatchUpdateValuesResponse: Schema.Schema<BatchUpdateValuesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      totalUpdatedSheets: Schema.optional(Schema.Number),
-      responses: Schema.optional(Schema.Array(UpdateValuesResponse)),
-      totalUpdatedRows: Schema.optional(Schema.Number),
-      totalUpdatedCells: Schema.optional(Schema.Number),
-      spreadsheetId: Schema.optional(Schema.String),
-      totalUpdatedColumns: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "BatchUpdateValuesResponse",
-  }) as any as Schema.Schema<BatchUpdateValuesResponse>;
+export const BatchUpdateValuesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    totalUpdatedSheets: Schema.optional(Schema.Number),
+    responses: Schema.optional(Schema.Array(UpdateValuesResponse)),
+    totalUpdatedRows: Schema.optional(Schema.Number),
+    totalUpdatedCells: Schema.optional(Schema.Number),
+    spreadsheetId: Schema.optional(Schema.String),
+    totalUpdatedColumns: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "BatchUpdateValuesResponse" });
 
 export interface ClearValuesResponse {
   /** The range (in A1 notation) that was cleared. (If the request was for an unbounded range or a range larger than the bounds of the sheet, this will be the actual range that was cleared, bounded to the sheet's limits.) */
@@ -6212,15 +5081,10 @@ export interface ClearValuesResponse {
   spreadsheetId?: string;
 }
 
-export const ClearValuesResponse: Schema.Schema<ClearValuesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clearedRange: Schema.optional(Schema.String),
-      spreadsheetId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ClearValuesResponse",
-  }) as any as Schema.Schema<ClearValuesResponse>;
+export const ClearValuesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  clearedRange: Schema.optional(Schema.String),
+  spreadsheetId: Schema.optional(Schema.String),
+}).annotate({ identifier: "ClearValuesResponse" });
 
 // ==========================================================================
 // Operations

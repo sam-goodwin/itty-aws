@@ -29,22 +29,17 @@ export interface OidcIdpConfig {
   issuerUri?: string;
 }
 
-export const OidcIdpConfig: Schema.Schema<OidcIdpConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      changePasswordUri: Schema.optional(Schema.String),
-      issuerUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OidcIdpConfig",
-  }) as any as Schema.Schema<OidcIdpConfig>;
+export const OidcIdpConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  changePasswordUri: Schema.optional(Schema.String),
+  issuerUri: Schema.optional(Schema.String),
+}).annotate({ identifier: "OidcIdpConfig" });
 
 export interface DeleteInboundSsoAssignmentOperationMetadata {}
 
-export const DeleteInboundSsoAssignmentOperationMetadata: Schema.Schema<DeleteInboundSsoAssignmentOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const DeleteInboundSsoAssignmentOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeleteInboundSsoAssignmentOperationMetadata",
-  }) as any as Schema.Schema<DeleteInboundSsoAssignmentOperationMetadata>;
+  });
 
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -55,30 +50,22 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface ExpiryDetail {
   /** The time at which the `MembershipRole` will expire. */
   expireTime?: string;
 }
 
-export const ExpiryDetail: Schema.Schema<ExpiryDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expireTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ExpiryDetail",
-  }) as any as Schema.Schema<ExpiryDetail>;
+export const ExpiryDetail = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  expireTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "ExpiryDetail" });
 
 export interface MembershipRoleRestrictionEvaluation {
   /** Output only. The current state of the restriction */
@@ -91,30 +78,23 @@ export interface MembershipRoleRestrictionEvaluation {
     | (string & {});
 }
 
-export const MembershipRoleRestrictionEvaluation: Schema.Schema<MembershipRoleRestrictionEvaluation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MembershipRoleRestrictionEvaluation",
-  }) as any as Schema.Schema<MembershipRoleRestrictionEvaluation>;
+export const MembershipRoleRestrictionEvaluation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+  }).annotate({ identifier: "MembershipRoleRestrictionEvaluation" });
 
 export interface RestrictionEvaluations {
   /** Evaluation of the member restriction applied to this membership. Empty if the user lacks permission to view the restriction evaluation. */
   memberRestrictionEvaluation?: MembershipRoleRestrictionEvaluation;
 }
 
-export const RestrictionEvaluations: Schema.Schema<RestrictionEvaluations> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      memberRestrictionEvaluation: Schema.optional(
-        MembershipRoleRestrictionEvaluation,
-      ),
-    }),
-  ).annotate({
-    identifier: "RestrictionEvaluations",
-  }) as any as Schema.Schema<RestrictionEvaluations>;
+export const RestrictionEvaluations = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    memberRestrictionEvaluation: Schema.optional(
+      MembershipRoleRestrictionEvaluation,
+    ),
+  },
+).annotate({ identifier: "RestrictionEvaluations" });
 
 export interface MembershipRole {
   /** The expiry details of the `MembershipRole`. Expiry details are only supported for `MEMBER` `MembershipRoles`. May be set if `name` is `MEMBER`. Must not be set if `name` is any other value. */
@@ -125,16 +105,11 @@ export interface MembershipRole {
   name?: string;
 }
 
-export const MembershipRole: Schema.Schema<MembershipRole> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expiryDetail: Schema.optional(ExpiryDetail),
-      restrictionEvaluations: Schema.optional(RestrictionEvaluations),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MembershipRole",
-  }) as any as Schema.Schema<MembershipRole>;
+export const MembershipRole = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  expiryDetail: Schema.optional(ExpiryDetail),
+  restrictionEvaluations: Schema.optional(RestrictionEvaluations),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "MembershipRole" });
 
 export interface UpdateMembershipRolesParams {
   /** The fully-qualified names of fields to update. May only contain the field `expiry_detail.expire_time`. */
@@ -143,15 +118,11 @@ export interface UpdateMembershipRolesParams {
   membershipRole?: MembershipRole;
 }
 
-export const UpdateMembershipRolesParams: Schema.Schema<UpdateMembershipRolesParams> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fieldMask: Schema.optional(Schema.String),
-      membershipRole: Schema.optional(MembershipRole),
-    }),
-  ).annotate({
-    identifier: "UpdateMembershipRolesParams",
-  }) as any as Schema.Schema<UpdateMembershipRolesParams>;
+export const UpdateMembershipRolesParams =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fieldMask: Schema.optional(Schema.String),
+    membershipRole: Schema.optional(MembershipRole),
+  }).annotate({ identifier: "UpdateMembershipRolesParams" });
 
 export interface ModifyMembershipRolesRequest {
   /** The `MembershipRole`s to be added. Adding or removing roles in the same request as updating roles is not supported. Must not be set if `update_roles_params` is set. */
@@ -162,18 +133,14 @@ export interface ModifyMembershipRolesRequest {
   updateRolesParams?: Array<UpdateMembershipRolesParams>;
 }
 
-export const ModifyMembershipRolesRequest: Schema.Schema<ModifyMembershipRolesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      addRoles: Schema.optional(Schema.Array(MembershipRole)),
-      removeRoles: Schema.optional(Schema.Array(Schema.String)),
-      updateRolesParams: Schema.optional(
-        Schema.Array(UpdateMembershipRolesParams),
-      ),
-    }),
-  ).annotate({
-    identifier: "ModifyMembershipRolesRequest",
-  }) as any as Schema.Schema<ModifyMembershipRolesRequest>;
+export const ModifyMembershipRolesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    addRoles: Schema.optional(Schema.Array(MembershipRole)),
+    removeRoles: Schema.optional(Schema.Array(Schema.String)),
+    updateRolesParams: Schema.optional(
+      Schema.Array(UpdateMembershipRolesParams),
+    ),
+  }).annotate({ identifier: "ModifyMembershipRolesRequest" });
 
 export interface EntityKey {
   /** The ID of the entity. For Google-managed entities, the `id` must be the email address of an existing group or user. For external-identity-mapped entities, the `id` must be a string conforming to the Identity Source's requirements. Must be unique within a `namespace`. */
@@ -182,13 +149,10 @@ export interface EntityKey {
   namespace?: string;
 }
 
-export const EntityKey: Schema.Schema<EntityKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      namespace: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "EntityKey" }) as any as Schema.Schema<EntityKey>;
+export const EntityKey = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  namespace: Schema.optional(Schema.String),
+}).annotate({ identifier: "EntityKey" });
 
 export interface DynamicGroupQuery {
   resourceType?: "RESOURCE_TYPE_UNSPECIFIED" | "USER" | (string & {});
@@ -196,15 +160,10 @@ export interface DynamicGroupQuery {
   query?: string;
 }
 
-export const DynamicGroupQuery: Schema.Schema<DynamicGroupQuery> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceType: Schema.optional(Schema.String),
-      query: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DynamicGroupQuery",
-  }) as any as Schema.Schema<DynamicGroupQuery>;
+export const DynamicGroupQuery = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceType: Schema.optional(Schema.String),
+  query: Schema.optional(Schema.String),
+}).annotate({ identifier: "DynamicGroupQuery" });
 
 export interface DynamicGroupStatus {
   /** Status of the dynamic group. */
@@ -218,15 +177,10 @@ export interface DynamicGroupStatus {
   statusTime?: string;
 }
 
-export const DynamicGroupStatus: Schema.Schema<DynamicGroupStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      status: Schema.optional(Schema.String),
-      statusTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DynamicGroupStatus",
-  }) as any as Schema.Schema<DynamicGroupStatus>;
+export const DynamicGroupStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  status: Schema.optional(Schema.String),
+  statusTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "DynamicGroupStatus" });
 
 export interface DynamicGroupMetadata {
   /** Memberships will be the union of all queries. Only one entry with USER resource is currently supported. Customers can create up to 500 dynamic groups. */
@@ -235,15 +189,10 @@ export interface DynamicGroupMetadata {
   status?: DynamicGroupStatus;
 }
 
-export const DynamicGroupMetadata: Schema.Schema<DynamicGroupMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      queries: Schema.optional(Schema.Array(DynamicGroupQuery)),
-      status: Schema.optional(DynamicGroupStatus),
-    }),
-  ).annotate({
-    identifier: "DynamicGroupMetadata",
-  }) as any as Schema.Schema<DynamicGroupMetadata>;
+export const DynamicGroupMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  queries: Schema.optional(Schema.Array(DynamicGroupQuery)),
+  status: Schema.optional(DynamicGroupStatus),
+}).annotate({ identifier: "DynamicGroupMetadata" });
 
 export interface PosixGroup {
   /** System identifier for which group name and gid apply to. If not specified it will default to empty value. */
@@ -254,14 +203,11 @@ export interface PosixGroup {
   name?: string;
 }
 
-export const PosixGroup: Schema.Schema<PosixGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      systemId: Schema.optional(Schema.String),
-      gid: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "PosixGroup" }) as any as Schema.Schema<PosixGroup>;
+export const PosixGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  systemId: Schema.optional(Schema.String),
+  gid: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "PosixGroup" });
 
 export interface Group {
   /** Output only. Additional group keys associated with the Group. */
@@ -288,22 +234,19 @@ export interface Group {
   labels?: Record<string, string>;
 }
 
-export const Group: Schema.Schema<Group> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      additionalGroupKeys: Schema.optional(Schema.Array(EntityKey)),
-      name: Schema.optional(Schema.String),
-      parent: Schema.optional(Schema.String),
-      dynamicGroupMetadata: Schema.optional(DynamicGroupMetadata),
-      displayName: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      posixGroups: Schema.optional(Schema.Array(PosixGroup)),
-      updateTime: Schema.optional(Schema.String),
-      groupKey: Schema.optional(EntityKey),
-      description: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({ identifier: "Group" }) as any as Schema.Schema<Group>;
+export const Group = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  additionalGroupKeys: Schema.optional(Schema.Array(EntityKey)),
+  name: Schema.optional(Schema.String),
+  parent: Schema.optional(Schema.String),
+  dynamicGroupMetadata: Schema.optional(DynamicGroupMetadata),
+  displayName: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  posixGroups: Schema.optional(Schema.Array(PosixGroup)),
+  updateTime: Schema.optional(Schema.String),
+  groupKey: Schema.optional(EntityKey),
+  description: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "Group" });
 
 export interface ListGroupsResponse {
   /** A continuation token to retrieve the next page of results, or empty if there are no more results available. */
@@ -312,15 +255,10 @@ export interface ListGroupsResponse {
   groups?: Array<Group>;
 }
 
-export const ListGroupsResponse: Schema.Schema<ListGroupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      groups: Schema.optional(Schema.Array(Group)),
-    }),
-  ).annotate({
-    identifier: "ListGroupsResponse",
-  }) as any as Schema.Schema<ListGroupsResponse>;
+export const ListGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  groups: Schema.optional(Schema.Array(Group)),
+}).annotate({ identifier: "ListGroupsResponse" });
 
 export interface SamlIdpConfig {
   /** The **Logout Redirect URL** (sign-out page URL) of the identity provider. When a user clicks the sign-out link on a Google page, they will be redirected to this URL. This is a pure redirect with no attached SAML `LogoutRequest` i.e. SAML single logout is not supported. Must use `HTTPS`. */
@@ -333,17 +271,12 @@ export interface SamlIdpConfig {
   entityId?: string;
 }
 
-export const SamlIdpConfig: Schema.Schema<SamlIdpConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      logoutRedirectUri: Schema.optional(Schema.String),
-      singleSignOnServiceUri: Schema.optional(Schema.String),
-      changePasswordUri: Schema.optional(Schema.String),
-      entityId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SamlIdpConfig",
-  }) as any as Schema.Schema<SamlIdpConfig>;
+export const SamlIdpConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  logoutRedirectUri: Schema.optional(Schema.String),
+  singleSignOnServiceUri: Schema.optional(Schema.String),
+  changePasswordUri: Schema.optional(Schema.String),
+  entityId: Schema.optional(Schema.String),
+}).annotate({ identifier: "SamlIdpConfig" });
 
 export interface Membership {
   /** The `MembershipRole`s that apply to the `Membership`. If unspecified, defaults to a single `MembershipRole` with `name` `MEMBER`. Must not contain duplicate `MembershipRole`s with the same `name`. */
@@ -379,19 +312,16 @@ export interface Membership {
     | (string & {});
 }
 
-export const Membership: Schema.Schema<Membership> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      roles: Schema.optional(Schema.Array(MembershipRole)),
-      name: Schema.optional(Schema.String),
-      memberKey: Schema.optional(EntityKey),
-      updateTime: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      preferredMemberKey: Schema.optional(EntityKey),
-      deliverySetting: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Membership" }) as any as Schema.Schema<Membership>;
+export const Membership = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  roles: Schema.optional(Schema.Array(MembershipRole)),
+  name: Schema.optional(Schema.String),
+  memberKey: Schema.optional(EntityKey),
+  updateTime: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  preferredMemberKey: Schema.optional(EntityKey),
+  deliverySetting: Schema.optional(Schema.String),
+}).annotate({ identifier: "Membership" });
 
 export interface MembershipAdjacencyList {
   /** Resource name of the group that the members belong to. */
@@ -400,29 +330,21 @@ export interface MembershipAdjacencyList {
   edges?: Array<Membership>;
 }
 
-export const MembershipAdjacencyList: Schema.Schema<MembershipAdjacencyList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      group: Schema.optional(Schema.String),
-      edges: Schema.optional(Schema.Array(Membership)),
-    }),
-  ).annotate({
-    identifier: "MembershipAdjacencyList",
-  }) as any as Schema.Schema<MembershipAdjacencyList>;
+export const MembershipAdjacencyList =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    group: Schema.optional(Schema.String),
+    edges: Schema.optional(Schema.Array(Membership)),
+  }).annotate({ identifier: "MembershipAdjacencyList" });
 
 export interface TransitiveMembershipRole {
   /** TransitiveMembershipRole in string format. Currently supported TransitiveMembershipRoles: `"MEMBER"`, `"OWNER"`, and `"MANAGER"`. */
   role?: string;
 }
 
-export const TransitiveMembershipRole: Schema.Schema<TransitiveMembershipRole> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      role: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TransitiveMembershipRole",
-  }) as any as Schema.Schema<TransitiveMembershipRole>;
+export const TransitiveMembershipRole =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    role: Schema.optional(Schema.String),
+  }).annotate({ identifier: "TransitiveMembershipRole" });
 
 export interface MemberRelation {
   /** The membership role details (i.e name of role and expiry time). */
@@ -440,17 +362,12 @@ export interface MemberRelation {
   member?: string;
 }
 
-export const MemberRelation: Schema.Schema<MemberRelation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      roles: Schema.optional(Schema.Array(TransitiveMembershipRole)),
-      relationType: Schema.optional(Schema.String),
-      preferredMemberKey: Schema.optional(Schema.Array(EntityKey)),
-      member: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MemberRelation",
-  }) as any as Schema.Schema<MemberRelation>;
+export const MemberRelation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  roles: Schema.optional(Schema.Array(TransitiveMembershipRole)),
+  relationType: Schema.optional(Schema.String),
+  preferredMemberKey: Schema.optional(Schema.Array(EntityKey)),
+  member: Schema.optional(Schema.String),
+}).annotate({ identifier: "MemberRelation" });
 
 export interface SearchTransitiveMembershipsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results. */
@@ -459,29 +376,21 @@ export interface SearchTransitiveMembershipsResponse {
   memberships?: Array<MemberRelation>;
 }
 
-export const SearchTransitiveMembershipsResponse: Schema.Schema<SearchTransitiveMembershipsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      memberships: Schema.optional(Schema.Array(MemberRelation)),
-    }),
-  ).annotate({
-    identifier: "SearchTransitiveMembershipsResponse",
-  }) as any as Schema.Schema<SearchTransitiveMembershipsResponse>;
+export const SearchTransitiveMembershipsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    memberships: Schema.optional(Schema.Array(MemberRelation)),
+  }).annotate({ identifier: "SearchTransitiveMembershipsResponse" });
 
 export interface CancelWipeDeviceRequest {
   /** Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're using this API for your own organization, use `customers/my_customer` If you're using this API to manage another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the device belongs. */
   customer?: string;
 }
 
-export const CancelWipeDeviceRequest: Schema.Schema<CancelWipeDeviceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customer: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CancelWipeDeviceRequest",
-  }) as any as Schema.Schema<CancelWipeDeviceRequest>;
+export const CancelWipeDeviceRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customer: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CancelWipeDeviceRequest" });
 
 export interface PolicyConflict {
   /** Output only. The scope at which this lower-priority policy is set (USER or MACHINE). */
@@ -504,16 +413,11 @@ export interface PolicyConflict {
   value?: string;
 }
 
-export const PolicyConflict: Schema.Schema<PolicyConflict> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scope: Schema.optional(Schema.String),
-      source: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PolicyConflict",
-  }) as any as Schema.Schema<PolicyConflict>;
+export const PolicyConflict = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  scope: Schema.optional(Schema.String),
+  source: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+}).annotate({ identifier: "PolicyConflict" });
 
 export interface ChromePolicy {
   /** Output only. The currently applied value of the policy. The format depends on the policy type (e.g., boolean, string, JSON array/object). */
@@ -540,18 +444,13 @@ export interface ChromePolicy {
   name?: string;
 }
 
-export const ChromePolicy: Schema.Schema<ChromePolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-      scope: Schema.optional(Schema.String),
-      source: Schema.optional(Schema.String),
-      conflicts: Schema.optional(Schema.Array(PolicyConflict)),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ChromePolicy",
-  }) as any as Schema.Schema<ChromePolicy>;
+export const ChromePolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.String),
+  scope: Schema.optional(Schema.String),
+  source: Schema.optional(Schema.String),
+  conflicts: Schema.optional(Schema.Array(PolicyConflict)),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "ChromePolicy" });
 
 export interface BrowserInfo {
   /** Output only. Browser's management state. */
@@ -602,28 +501,23 @@ export interface BrowserInfo {
   browserVersion?: string;
 }
 
-export const BrowserInfo: Schema.Schema<BrowserInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      browserManagementState: Schema.optional(Schema.String),
-      isChromeRemoteDesktopAppBlocked: Schema.optional(Schema.Boolean),
-      isSecurityEventAnalysisEnabled: Schema.optional(Schema.Boolean),
-      isSiteIsolationEnabled: Schema.optional(Schema.Boolean),
-      policies: Schema.optional(Schema.Array(ChromePolicy)),
-      isThirdPartyBlockingEnabled: Schema.optional(Schema.Boolean),
-      isFileDownloadAnalysisEnabled: Schema.optional(Schema.Boolean),
-      isRealtimeUrlCheckEnabled: Schema.optional(Schema.Boolean),
-      safeBrowsingProtectionLevel: Schema.optional(Schema.String),
-      isChromeCleanupEnabled: Schema.optional(Schema.Boolean),
-      passwordProtectionWarningTrigger: Schema.optional(Schema.String),
-      isBulkDataEntryAnalysisEnabled: Schema.optional(Schema.Boolean),
-      isFileUploadAnalysisEnabled: Schema.optional(Schema.Boolean),
-      isBuiltInDnsClientEnabled: Schema.optional(Schema.Boolean),
-      browserVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BrowserInfo",
-  }) as any as Schema.Schema<BrowserInfo>;
+export const BrowserInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  browserManagementState: Schema.optional(Schema.String),
+  isChromeRemoteDesktopAppBlocked: Schema.optional(Schema.Boolean),
+  isSecurityEventAnalysisEnabled: Schema.optional(Schema.Boolean),
+  isSiteIsolationEnabled: Schema.optional(Schema.Boolean),
+  policies: Schema.optional(Schema.Array(ChromePolicy)),
+  isThirdPartyBlockingEnabled: Schema.optional(Schema.Boolean),
+  isFileDownloadAnalysisEnabled: Schema.optional(Schema.Boolean),
+  isRealtimeUrlCheckEnabled: Schema.optional(Schema.Boolean),
+  safeBrowsingProtectionLevel: Schema.optional(Schema.String),
+  isChromeCleanupEnabled: Schema.optional(Schema.Boolean),
+  passwordProtectionWarningTrigger: Schema.optional(Schema.String),
+  isBulkDataEntryAnalysisEnabled: Schema.optional(Schema.Boolean),
+  isFileUploadAnalysisEnabled: Schema.optional(Schema.Boolean),
+  isBuiltInDnsClientEnabled: Schema.optional(Schema.Boolean),
+  browserVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "BrowserInfo" });
 
 export interface BrowserAttributes {
   /** Timestamp in milliseconds since the Unix epoch when the profile/gcm id was last synced. */
@@ -634,16 +528,11 @@ export interface BrowserAttributes {
   chromeProfileId?: string;
 }
 
-export const BrowserAttributes: Schema.Schema<BrowserAttributes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lastProfileSyncTime: Schema.optional(Schema.String),
-      chromeBrowserInfo: Schema.optional(BrowserInfo),
-      chromeProfileId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BrowserAttributes",
-  }) as any as Schema.Schema<BrowserAttributes>;
+export const BrowserAttributes = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  lastProfileSyncTime: Schema.optional(Schema.String),
+  chromeBrowserInfo: Schema.optional(BrowserInfo),
+  chromeProfileId: Schema.optional(Schema.String),
+}).annotate({ identifier: "BrowserAttributes" });
 
 export interface CertificateTemplate {
   /** The template id of the template. Example: "1.3.6.1.4.1.311.21.8.15608621.11768144.5720724.16068415.6889630.81.2472537.7784047". */
@@ -654,16 +543,11 @@ export interface CertificateTemplate {
   majorVersion?: number;
 }
 
-export const CertificateTemplate: Schema.Schema<CertificateTemplate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      minorVersion: Schema.optional(Schema.Number),
-      majorVersion: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "CertificateTemplate",
-  }) as any as Schema.Schema<CertificateTemplate>;
+export const CertificateTemplate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  minorVersion: Schema.optional(Schema.Number),
+  majorVersion: Schema.optional(Schema.Number),
+}).annotate({ identifier: "CertificateTemplate" });
 
 export interface CertificateAttributes {
   /** Certificate not valid at or after this timestamp. */
@@ -690,22 +574,17 @@ export interface CertificateAttributes {
   certificateTemplate?: CertificateTemplate;
 }
 
-export const CertificateAttributes: Schema.Schema<CertificateAttributes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      validityExpirationTime: Schema.optional(Schema.String),
-      issuer: Schema.optional(Schema.String),
-      subject: Schema.optional(Schema.String),
-      serialNumber: Schema.optional(Schema.String),
-      validationState: Schema.optional(Schema.String),
-      fingerprint: Schema.optional(Schema.String),
-      thumbprint: Schema.optional(Schema.String),
-      validityStartTime: Schema.optional(Schema.String),
-      certificateTemplate: Schema.optional(CertificateTemplate),
-    }),
-  ).annotate({
-    identifier: "CertificateAttributes",
-  }) as any as Schema.Schema<CertificateAttributes>;
+export const CertificateAttributes = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  validityExpirationTime: Schema.optional(Schema.String),
+  issuer: Schema.optional(Schema.String),
+  subject: Schema.optional(Schema.String),
+  serialNumber: Schema.optional(Schema.String),
+  validationState: Schema.optional(Schema.String),
+  fingerprint: Schema.optional(Schema.String),
+  thumbprint: Schema.optional(Schema.String),
+  validityStartTime: Schema.optional(Schema.String),
+  certificateTemplate: Schema.optional(CertificateTemplate),
+}).annotate({ identifier: "CertificateAttributes" });
 
 export interface EndpointVerificationSpecificAttributes {
   /** [Additional signals](https://cloud.google.com/endpoint-verification/docs/device-information) reported by Endpoint Verification. It includes the following attributes: * Non-configurable attributes: hotfixes, av_installed, av_enabled, windows_domain_name, is_os_native_firewall_enabled, and is_secure_boot_enabled. * [Configurable attributes](https://cloud.google.com/endpoint-verification/docs/collect-config-attributes): file, folder, and binary attributes; registry entries; and properties in a plist. */
@@ -716,20 +595,14 @@ export interface EndpointVerificationSpecificAttributes {
   browserAttributes?: Array<BrowserAttributes>;
 }
 
-export const EndpointVerificationSpecificAttributes: Schema.Schema<EndpointVerificationSpecificAttributes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      additionalSignals: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-      certificateAttributes: Schema.optional(
-        Schema.Array(CertificateAttributes),
-      ),
-      browserAttributes: Schema.optional(Schema.Array(BrowserAttributes)),
-    }),
-  ).annotate({
-    identifier: "EndpointVerificationSpecificAttributes",
-  }) as any as Schema.Schema<EndpointVerificationSpecificAttributes>;
+export const EndpointVerificationSpecificAttributes =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    additionalSignals: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
+    certificateAttributes: Schema.optional(Schema.Array(CertificateAttributes)),
+    browserAttributes: Schema.optional(Schema.Array(BrowserAttributes)),
+  }).annotate({ identifier: "EndpointVerificationSpecificAttributes" });
 
 export interface AndroidAttributes {
   /** Whether the device passes Android CTS compliance. */
@@ -755,21 +628,16 @@ export interface AndroidAttributes {
   hasPotentiallyHarmfulApps?: boolean;
 }
 
-export const AndroidAttributes: Schema.Schema<AndroidAttributes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ctsProfileMatch: Schema.optional(Schema.Boolean),
-      enabledUnknownSources: Schema.optional(Schema.Boolean),
-      supportsWorkProfile: Schema.optional(Schema.Boolean),
-      ownershipPrivilege: Schema.optional(Schema.String),
-      verifiedBoot: Schema.optional(Schema.Boolean),
-      ownerProfileAccount: Schema.optional(Schema.Boolean),
-      verifyAppsEnabled: Schema.optional(Schema.Boolean),
-      hasPotentiallyHarmfulApps: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "AndroidAttributes",
-  }) as any as Schema.Schema<AndroidAttributes>;
+export const AndroidAttributes = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ctsProfileMatch: Schema.optional(Schema.Boolean),
+  enabledUnknownSources: Schema.optional(Schema.Boolean),
+  supportsWorkProfile: Schema.optional(Schema.Boolean),
+  ownershipPrivilege: Schema.optional(Schema.String),
+  verifiedBoot: Schema.optional(Schema.Boolean),
+  ownerProfileAccount: Schema.optional(Schema.Boolean),
+  verifyAppsEnabled: Schema.optional(Schema.Boolean),
+  hasPotentiallyHarmfulApps: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "AndroidAttributes" });
 
 export interface Device {
   /** Output only. Baseband version of the device. */
@@ -880,75 +748,63 @@ export interface Device {
   androidSpecificAttributes?: AndroidAttributes;
 }
 
-export const Device: Schema.Schema<Device> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      basebandVersion: Schema.optional(Schema.String),
-      buildNumber: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      lastSyncTime: Schema.optional(Schema.String),
-      deviceId: Schema.optional(Schema.String),
-      manufacturer: Schema.optional(Schema.String),
-      wifiMacAddresses: Schema.optional(Schema.Array(Schema.String)),
-      imei: Schema.optional(Schema.String),
-      hostname: Schema.optional(Schema.String),
-      otherAccounts: Schema.optional(Schema.Array(Schema.String)),
-      model: Schema.optional(Schema.String),
-      browserProfiles: Schema.optional(Schema.Array(BrowserAttributes)),
-      unifiedDeviceId: Schema.optional(Schema.String),
-      kernelVersion: Schema.optional(Schema.String),
-      clientTypes: Schema.optional(Schema.Array(Schema.String)),
-      osVersion: Schema.optional(Schema.String),
-      releaseVersion: Schema.optional(Schema.String),
-      deviceType: Schema.optional(Schema.String),
-      assetTag: Schema.optional(Schema.String),
-      managementState: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      ownerType: Schema.optional(Schema.String),
-      securityPatchTime: Schema.optional(Schema.String),
-      bootloaderVersion: Schema.optional(Schema.String),
-      networkOperator: Schema.optional(Schema.String),
-      serialNumber: Schema.optional(Schema.String),
-      encryptionState: Schema.optional(Schema.String),
-      enabledDeveloperOptions: Schema.optional(Schema.Boolean),
-      compromisedState: Schema.optional(Schema.String),
-      endpointVerificationSpecificAttributes: Schema.optional(
-        EndpointVerificationSpecificAttributes,
-      ),
-      meid: Schema.optional(Schema.String),
-      enabledUsbDebugging: Schema.optional(Schema.Boolean),
-      brand: Schema.optional(Schema.String),
-      androidSpecificAttributes: Schema.optional(AndroidAttributes),
-    }),
-  ).annotate({ identifier: "Device" }) as any as Schema.Schema<Device>;
+export const Device = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  basebandVersion: Schema.optional(Schema.String),
+  buildNumber: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  lastSyncTime: Schema.optional(Schema.String),
+  deviceId: Schema.optional(Schema.String),
+  manufacturer: Schema.optional(Schema.String),
+  wifiMacAddresses: Schema.optional(Schema.Array(Schema.String)),
+  imei: Schema.optional(Schema.String),
+  hostname: Schema.optional(Schema.String),
+  otherAccounts: Schema.optional(Schema.Array(Schema.String)),
+  model: Schema.optional(Schema.String),
+  browserProfiles: Schema.optional(Schema.Array(BrowserAttributes)),
+  unifiedDeviceId: Schema.optional(Schema.String),
+  kernelVersion: Schema.optional(Schema.String),
+  clientTypes: Schema.optional(Schema.Array(Schema.String)),
+  osVersion: Schema.optional(Schema.String),
+  releaseVersion: Schema.optional(Schema.String),
+  deviceType: Schema.optional(Schema.String),
+  assetTag: Schema.optional(Schema.String),
+  managementState: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  ownerType: Schema.optional(Schema.String),
+  securityPatchTime: Schema.optional(Schema.String),
+  bootloaderVersion: Schema.optional(Schema.String),
+  networkOperator: Schema.optional(Schema.String),
+  serialNumber: Schema.optional(Schema.String),
+  encryptionState: Schema.optional(Schema.String),
+  enabledDeveloperOptions: Schema.optional(Schema.Boolean),
+  compromisedState: Schema.optional(Schema.String),
+  endpointVerificationSpecificAttributes: Schema.optional(
+    EndpointVerificationSpecificAttributes,
+  ),
+  meid: Schema.optional(Schema.String),
+  enabledUsbDebugging: Schema.optional(Schema.Boolean),
+  brand: Schema.optional(Schema.String),
+  androidSpecificAttributes: Schema.optional(AndroidAttributes),
+}).annotate({ identifier: "Device" });
 
 export interface WipeDeviceResponse {
   /** Resultant Device object for the action. Note that asset tags will not be returned in the device object. */
   device?: Device;
 }
 
-export const WipeDeviceResponse: Schema.Schema<WipeDeviceResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      device: Schema.optional(Device),
-    }),
-  ).annotate({
-    identifier: "WipeDeviceResponse",
-  }) as any as Schema.Schema<WipeDeviceResponse>;
+export const WipeDeviceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  device: Schema.optional(Device),
+}).annotate({ identifier: "WipeDeviceResponse" });
 
 export interface AddIdpCredentialRequest {
   /** PEM encoded x509 certificate containing the public key for verifying IdP signatures. */
   pemData?: string;
 }
 
-export const AddIdpCredentialRequest: Schema.Schema<AddIdpCredentialRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pemData: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AddIdpCredentialRequest",
-  }) as any as Schema.Schema<AddIdpCredentialRequest>;
+export const AddIdpCredentialRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pemData: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AddIdpCredentialRequest" });
 
 export interface CustomAttributeValue {
   /** Represents a string value. */
@@ -959,16 +815,11 @@ export interface CustomAttributeValue {
   boolValue?: boolean;
 }
 
-export const CustomAttributeValue: Schema.Schema<CustomAttributeValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stringValue: Schema.optional(Schema.String),
-      numberValue: Schema.optional(Schema.Number),
-      boolValue: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "CustomAttributeValue",
-  }) as any as Schema.Schema<CustomAttributeValue>;
+export const CustomAttributeValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  stringValue: Schema.optional(Schema.String),
+  numberValue: Schema.optional(Schema.Number),
+  boolValue: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "CustomAttributeValue" });
 
 export interface SamlSpConfig {
   /** Output only. The SAML **Entity ID** for this service provider. */
@@ -977,15 +828,10 @@ export interface SamlSpConfig {
   assertionConsumerServiceUri?: string;
 }
 
-export const SamlSpConfig: Schema.Schema<SamlSpConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entityId: Schema.optional(Schema.String),
-      assertionConsumerServiceUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SamlSpConfig",
-  }) as any as Schema.Schema<SamlSpConfig>;
+export const SamlSpConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  entityId: Schema.optional(Schema.String),
+  assertionConsumerServiceUri: Schema.optional(Schema.String),
+}).annotate({ identifier: "SamlSpConfig" });
 
 export interface InboundSamlSsoProfile {
   /** SAML identity provider configuration. */
@@ -1000,32 +846,23 @@ export interface InboundSamlSsoProfile {
   spConfig?: SamlSpConfig;
 }
 
-export const InboundSamlSsoProfile: Schema.Schema<InboundSamlSsoProfile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      idpConfig: Schema.optional(SamlIdpConfig),
-      customer: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      spConfig: Schema.optional(SamlSpConfig),
-    }),
-  ).annotate({
-    identifier: "InboundSamlSsoProfile",
-  }) as any as Schema.Schema<InboundSamlSsoProfile>;
+export const InboundSamlSsoProfile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  idpConfig: Schema.optional(SamlIdpConfig),
+  customer: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  spConfig: Schema.optional(SamlSpConfig),
+}).annotate({ identifier: "InboundSamlSsoProfile" });
 
 export interface ModifyMembershipRolesResponse {
   /** The `Membership` resource after modifying its `MembershipRole`s. */
   membership?: Membership;
 }
 
-export const ModifyMembershipRolesResponse: Schema.Schema<ModifyMembershipRolesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      membership: Schema.optional(Membership),
-    }),
-  ).annotate({
-    identifier: "ModifyMembershipRolesResponse",
-  }) as any as Schema.Schema<ModifyMembershipRolesResponse>;
+export const ModifyMembershipRolesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    membership: Schema.optional(Membership),
+  }).annotate({ identifier: "ModifyMembershipRolesResponse" });
 
 export interface MembershipRelation {
   /** The `EntityKey` of the `Group`. */
@@ -1044,20 +881,15 @@ export interface MembershipRelation {
   displayName?: string;
 }
 
-export const MembershipRelation: Schema.Schema<MembershipRelation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      groupKey: Schema.optional(EntityKey),
-      description: Schema.optional(Schema.String),
-      membership: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      group: Schema.optional(Schema.String),
-      roles: Schema.optional(Schema.Array(MembershipRole)),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MembershipRelation",
-  }) as any as Schema.Schema<MembershipRelation>;
+export const MembershipRelation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupKey: Schema.optional(EntityKey),
+  description: Schema.optional(Schema.String),
+  membership: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  group: Schema.optional(Schema.String),
+  roles: Schema.optional(Schema.Array(MembershipRole)),
+  displayName: Schema.optional(Schema.String),
+}).annotate({ identifier: "MembershipRelation" });
 
 export interface SearchDirectGroupsResponse {
   /** List of direct groups satisfying the query. */
@@ -1066,29 +898,20 @@ export interface SearchDirectGroupsResponse {
   nextPageToken?: string;
 }
 
-export const SearchDirectGroupsResponse: Schema.Schema<SearchDirectGroupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      memberships: Schema.optional(Schema.Array(MembershipRelation)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SearchDirectGroupsResponse",
-  }) as any as Schema.Schema<SearchDirectGroupsResponse>;
+export const SearchDirectGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    memberships: Schema.optional(Schema.Array(MembershipRelation)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SearchDirectGroupsResponse" });
 
 export interface WipeDeviceUserRequest {
   /** Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're using this API for your own organization, use `customers/my_customer` If you're using this API to manage another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the device belongs. */
   customer?: string;
 }
 
-export const WipeDeviceUserRequest: Schema.Schema<WipeDeviceUserRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customer: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WipeDeviceUserRequest",
-  }) as any as Schema.Schema<WipeDeviceUserRequest>;
+export const WipeDeviceUserRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  customer: Schema.optional(Schema.String),
+}).annotate({ identifier: "WipeDeviceUserRequest" });
 
 export interface GoogleAppsCloudidentityDevicesV1DeviceUser {
   /** Password state of the DeviceUser object */
@@ -1129,37 +952,31 @@ export interface GoogleAppsCloudidentityDevicesV1DeviceUser {
   languageCode?: string;
 }
 
-export const GoogleAppsCloudidentityDevicesV1DeviceUser: Schema.Schema<GoogleAppsCloudidentityDevicesV1DeviceUser> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      passwordState: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      firstSyncTime: Schema.optional(Schema.String),
-      userEmail: Schema.optional(Schema.String),
-      compromisedState: Schema.optional(Schema.String),
-      managementState: Schema.optional(Schema.String),
-      userAgent: Schema.optional(Schema.String),
-      lastSyncTime: Schema.optional(Schema.String),
-      languageCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAppsCloudidentityDevicesV1DeviceUser",
-  }) as any as Schema.Schema<GoogleAppsCloudidentityDevicesV1DeviceUser>;
+export const GoogleAppsCloudidentityDevicesV1DeviceUser =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    passwordState: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    firstSyncTime: Schema.optional(Schema.String),
+    userEmail: Schema.optional(Schema.String),
+    compromisedState: Schema.optional(Schema.String),
+    managementState: Schema.optional(Schema.String),
+    userAgent: Schema.optional(Schema.String),
+    lastSyncTime: Schema.optional(Schema.String),
+    languageCode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleAppsCloudidentityDevicesV1DeviceUser" });
 
 export interface GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse {
   /** Resultant DeviceUser object for the action. */
   deviceUser?: GoogleAppsCloudidentityDevicesV1DeviceUser;
 }
 
-export const GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse: Schema.Schema<GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deviceUser: Schema.optional(GoogleAppsCloudidentityDevicesV1DeviceUser),
-    }),
-  ).annotate({
+export const GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deviceUser: Schema.optional(GoogleAppsCloudidentityDevicesV1DeviceUser),
+  }).annotate({
     identifier: "GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse",
-  }) as any as Schema.Schema<GoogleAppsCloudidentityDevicesV1WipeDeviceUserResponse>;
+  });
 
 export interface RestrictionEvaluation {
   /** Output only. The current state of the restriction */
@@ -1172,14 +989,9 @@ export interface RestrictionEvaluation {
     | (string & {});
 }
 
-export const RestrictionEvaluation: Schema.Schema<RestrictionEvaluation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RestrictionEvaluation",
-  }) as any as Schema.Schema<RestrictionEvaluation>;
+export const RestrictionEvaluation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.String),
+}).annotate({ identifier: "RestrictionEvaluation" });
 
 export interface MemberRestriction {
   /** Member Restriction as defined by CEL expression. Supported restrictions are: `member.customer_id` and `member.type`. Valid values for `member.type` are `1`, `2` and `3`. They correspond to USER, SERVICE_ACCOUNT, and GROUP respectively. The value for `member.customer_id` only supports `groupCustomerId()` currently which means the customer id of the group will be used for restriction. Supported operators are `&&`, `||` and `==`, corresponding to AND, OR, and EQUAL. Examples: Allow only service accounts of given customer to be members. `member.type == 2 && member.customer_id == groupCustomerId()` Allow only users or groups to be members. `member.type == 1 || member.type == 3` */
@@ -1188,29 +1000,19 @@ export interface MemberRestriction {
   evaluation?: RestrictionEvaluation;
 }
 
-export const MemberRestriction: Schema.Schema<MemberRestriction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      query: Schema.optional(Schema.String),
-      evaluation: Schema.optional(RestrictionEvaluation),
-    }),
-  ).annotate({
-    identifier: "MemberRestriction",
-  }) as any as Schema.Schema<MemberRestriction>;
+export const MemberRestriction = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  query: Schema.optional(Schema.String),
+  evaluation: Schema.optional(RestrictionEvaluation),
+}).annotate({ identifier: "MemberRestriction" });
 
 export interface OidcSsoInfo {
   /** Required. Name of the `InboundOidcSsoProfile` to use. Must be of the form `inboundOidcSsoProfiles/{inbound_oidc_sso_profile}`. */
   inboundOidcSsoProfile?: string;
 }
 
-export const OidcSsoInfo: Schema.Schema<OidcSsoInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inboundOidcSsoProfile: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OidcSsoInfo",
-  }) as any as Schema.Schema<OidcSsoInfo>;
+export const OidcSsoInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  inboundOidcSsoProfile: Schema.optional(Schema.String),
+}).annotate({ identifier: "OidcSsoInfo" });
 
 export interface SignInBehavior {
   /** When to redirect sign-ins to the IdP. */
@@ -1220,28 +1022,18 @@ export interface SignInBehavior {
     | (string & {});
 }
 
-export const SignInBehavior: Schema.Schema<SignInBehavior> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      redirectCondition: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SignInBehavior",
-  }) as any as Schema.Schema<SignInBehavior>;
+export const SignInBehavior = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  redirectCondition: Schema.optional(Schema.String),
+}).annotate({ identifier: "SignInBehavior" });
 
 export interface SamlSsoInfo {
   /** Required. Name of the `InboundSamlSsoProfile` to use. Must be of the form `inboundSamlSsoProfiles/{inbound_saml_sso_profile}`. */
   inboundSamlSsoProfile?: string;
 }
 
-export const SamlSsoInfo: Schema.Schema<SamlSsoInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inboundSamlSsoProfile: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SamlSsoInfo",
-  }) as any as Schema.Schema<SamlSsoInfo>;
+export const SamlSsoInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  inboundSamlSsoProfile: Schema.optional(Schema.String),
+}).annotate({ identifier: "SamlSsoInfo" });
 
 export interface InboundSsoAssignment {
   /** Immutable. The customer. For example: `customers/C0123abc`. */
@@ -1270,29 +1062,24 @@ export interface InboundSsoAssignment {
   targetOrgUnit?: string;
 }
 
-export const InboundSsoAssignment: Schema.Schema<InboundSsoAssignment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customer: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      rank: Schema.optional(Schema.Number),
-      oidcSsoInfo: Schema.optional(OidcSsoInfo),
-      signInBehavior: Schema.optional(SignInBehavior),
-      targetGroup: Schema.optional(Schema.String),
-      ssoMode: Schema.optional(Schema.String),
-      samlSsoInfo: Schema.optional(SamlSsoInfo),
-      targetOrgUnit: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InboundSsoAssignment",
-  }) as any as Schema.Schema<InboundSsoAssignment>;
+export const InboundSsoAssignment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  customer: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  rank: Schema.optional(Schema.Number),
+  oidcSsoInfo: Schema.optional(OidcSsoInfo),
+  signInBehavior: Schema.optional(SignInBehavior),
+  targetGroup: Schema.optional(Schema.String),
+  ssoMode: Schema.optional(Schema.String),
+  samlSsoInfo: Schema.optional(SamlSsoInfo),
+  targetOrgUnit: Schema.optional(Schema.String),
+}).annotate({ identifier: "InboundSsoAssignment" });
 
 export interface GoogleAppsCloudidentityDevicesV1DeleteDeviceUserMetadata {}
 
-export const GoogleAppsCloudidentityDevicesV1DeleteDeviceUserMetadata: Schema.Schema<GoogleAppsCloudidentityDevicesV1DeleteDeviceUserMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleAppsCloudidentityDevicesV1DeleteDeviceUserMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAppsCloudidentityDevicesV1DeleteDeviceUserMetadata",
-  }) as any as Schema.Schema<GoogleAppsCloudidentityDevicesV1DeleteDeviceUserMetadata>;
+  });
 
 export interface GroupRelation {
   /** Display name for this group. */
@@ -1314,19 +1101,14 @@ export interface GroupRelation {
   groupKey?: EntityKey;
 }
 
-export const GroupRelation: Schema.Schema<GroupRelation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      roles: Schema.optional(Schema.Array(TransitiveMembershipRole)),
-      relationType: Schema.optional(Schema.String),
-      group: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      groupKey: Schema.optional(EntityKey),
-    }),
-  ).annotate({
-    identifier: "GroupRelation",
-  }) as any as Schema.Schema<GroupRelation>;
+export const GroupRelation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+  roles: Schema.optional(Schema.Array(TransitiveMembershipRole)),
+  relationType: Schema.optional(Schema.String),
+  group: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  groupKey: Schema.optional(EntityKey),
+}).annotate({ identifier: "GroupRelation" });
 
 export interface SearchTransitiveGroupsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results available for listing. */
@@ -1335,29 +1117,25 @@ export interface SearchTransitiveGroupsResponse {
   memberships?: Array<GroupRelation>;
 }
 
-export const SearchTransitiveGroupsResponse: Schema.Schema<SearchTransitiveGroupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      memberships: Schema.optional(Schema.Array(GroupRelation)),
-    }),
-  ).annotate({
-    identifier: "SearchTransitiveGroupsResponse",
-  }) as any as Schema.Schema<SearchTransitiveGroupsResponse>;
+export const SearchTransitiveGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    memberships: Schema.optional(Schema.Array(GroupRelation)),
+  }).annotate({ identifier: "SearchTransitiveGroupsResponse" });
 
 export interface GoogleAppsCloudidentityDevicesV1UpdateDeviceMetadata {}
 
-export const GoogleAppsCloudidentityDevicesV1UpdateDeviceMetadata: Schema.Schema<GoogleAppsCloudidentityDevicesV1UpdateDeviceMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleAppsCloudidentityDevicesV1UpdateDeviceMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAppsCloudidentityDevicesV1UpdateDeviceMetadata",
-  }) as any as Schema.Schema<GoogleAppsCloudidentityDevicesV1UpdateDeviceMetadata>;
+  });
 
 export interface GoogleAppsCloudidentityDevicesV1CreateDeviceMetadata {}
 
-export const GoogleAppsCloudidentityDevicesV1CreateDeviceMetadata: Schema.Schema<GoogleAppsCloudidentityDevicesV1CreateDeviceMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleAppsCloudidentityDevicesV1CreateDeviceMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAppsCloudidentityDevicesV1CreateDeviceMetadata",
-  }) as any as Schema.Schema<GoogleAppsCloudidentityDevicesV1CreateDeviceMetadata>;
+  });
 
 export interface DeviceUser {
   /** Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the DeviceUser in format: `devices/{device_id}/deviceUsers/{device_user_id}`, where `device_user_id` uniquely identifies a user's use of a device. */
@@ -1398,35 +1176,28 @@ export interface DeviceUser {
   languageCode?: string;
 }
 
-export const DeviceUser: Schema.Schema<DeviceUser> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      passwordState: Schema.optional(Schema.String),
-      userEmail: Schema.optional(Schema.String),
-      firstSyncTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      managementState: Schema.optional(Schema.String),
-      userAgent: Schema.optional(Schema.String),
-      compromisedState: Schema.optional(Schema.String),
-      lastSyncTime: Schema.optional(Schema.String),
-      languageCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "DeviceUser" }) as any as Schema.Schema<DeviceUser>;
+export const DeviceUser = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  passwordState: Schema.optional(Schema.String),
+  userEmail: Schema.optional(Schema.String),
+  firstSyncTime: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  managementState: Schema.optional(Schema.String),
+  userAgent: Schema.optional(Schema.String),
+  compromisedState: Schema.optional(Schema.String),
+  lastSyncTime: Schema.optional(Schema.String),
+  languageCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "DeviceUser" });
 
 export interface CancelWipeDeviceUserResponse {
   /** Resultant DeviceUser object for the action. */
   deviceUser?: DeviceUser;
 }
 
-export const CancelWipeDeviceUserResponse: Schema.Schema<CancelWipeDeviceUserResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deviceUser: Schema.optional(DeviceUser),
-    }),
-  ).annotate({
-    identifier: "CancelWipeDeviceUserResponse",
-  }) as any as Schema.Schema<CancelWipeDeviceUserResponse>;
+export const CancelWipeDeviceUserResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deviceUser: Schema.optional(DeviceUser),
+  }).annotate({ identifier: "CancelWipeDeviceUserResponse" });
 
 export interface OidcRpConfig {
   /** OAuth2 client ID for OIDC. */
@@ -1437,16 +1208,11 @@ export interface OidcRpConfig {
   clientSecret?: string;
 }
 
-export const OidcRpConfig: Schema.Schema<OidcRpConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clientId: Schema.optional(Schema.String),
-      redirectUris: Schema.optional(Schema.Array(Schema.String)),
-      clientSecret: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OidcRpConfig",
-  }) as any as Schema.Schema<OidcRpConfig>;
+export const OidcRpConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  clientId: Schema.optional(Schema.String),
+  redirectUris: Schema.optional(Schema.Array(Schema.String)),
+  clientSecret: Schema.optional(Schema.String),
+}).annotate({ identifier: "OidcRpConfig" });
 
 export interface InboundOidcSsoProfile {
   /** OIDC relying party (RP) configuration for this OIDC SSO profile. These are the RP details provided by Google that should be configured on the corresponding identity provider. */
@@ -1461,18 +1227,13 @@ export interface InboundOidcSsoProfile {
   name?: string;
 }
 
-export const InboundOidcSsoProfile: Schema.Schema<InboundOidcSsoProfile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rpConfig: Schema.optional(OidcRpConfig),
-      idpConfig: Schema.optional(OidcIdpConfig),
-      customer: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InboundOidcSsoProfile",
-  }) as any as Schema.Schema<InboundOidcSsoProfile>;
+export const InboundOidcSsoProfile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  rpConfig: Schema.optional(OidcRpConfig),
+  idpConfig: Schema.optional(OidcIdpConfig),
+  customer: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "InboundOidcSsoProfile" });
 
 export interface ListInboundOidcSsoProfilesResponse {
   /** List of InboundOidcSsoProfiles. */
@@ -1481,80 +1242,61 @@ export interface ListInboundOidcSsoProfilesResponse {
   nextPageToken?: string;
 }
 
-export const ListInboundOidcSsoProfilesResponse: Schema.Schema<ListInboundOidcSsoProfilesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inboundOidcSsoProfiles: Schema.optional(
-        Schema.Array(InboundOidcSsoProfile),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListInboundOidcSsoProfilesResponse",
-  }) as any as Schema.Schema<ListInboundOidcSsoProfilesResponse>;
+export const ListInboundOidcSsoProfilesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    inboundOidcSsoProfiles: Schema.optional(
+      Schema.Array(InboundOidcSsoProfile),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListInboundOidcSsoProfilesResponse" });
 
 export interface GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse {
   /** Resultant DeviceUser object for the action. */
   deviceUser?: GoogleAppsCloudidentityDevicesV1DeviceUser;
 }
 
-export const GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse: Schema.Schema<GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deviceUser: Schema.optional(GoogleAppsCloudidentityDevicesV1DeviceUser),
-    }),
-  ).annotate({
+export const GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deviceUser: Schema.optional(GoogleAppsCloudidentityDevicesV1DeviceUser),
+  }).annotate({
     identifier: "GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse",
-  }) as any as Schema.Schema<GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserResponse>;
+  });
 
 export interface IsInvitableUserResponse {
   /** Returns true if the email address is invitable. */
   isInvitableUser?: boolean;
 }
 
-export const IsInvitableUserResponse: Schema.Schema<IsInvitableUserResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      isInvitableUser: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "IsInvitableUserResponse",
-  }) as any as Schema.Schema<IsInvitableUserResponse>;
+export const IsInvitableUserResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    isInvitableUser: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "IsInvitableUserResponse" });
 
 export interface CancelWipeDeviceResponse {
   /** Resultant Device object for the action. Note that asset tags will not be returned in the device object. */
   device?: Device;
 }
 
-export const CancelWipeDeviceResponse: Schema.Schema<CancelWipeDeviceResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      device: Schema.optional(Device),
-    }),
-  ).annotate({
-    identifier: "CancelWipeDeviceResponse",
-  }) as any as Schema.Schema<CancelWipeDeviceResponse>;
+export const CancelWipeDeviceResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    device: Schema.optional(Device),
+  }).annotate({ identifier: "CancelWipeDeviceResponse" });
 
 export interface RsaPublicKeyInfo {
   /** Key size in bits (size of the modulus). */
   keySize?: number;
 }
 
-export const RsaPublicKeyInfo: Schema.Schema<RsaPublicKeyInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      keySize: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "RsaPublicKeyInfo",
-  }) as any as Schema.Schema<RsaPublicKeyInfo>;
+export const RsaPublicKeyInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  keySize: Schema.optional(Schema.Number),
+}).annotate({ identifier: "RsaPublicKeyInfo" });
 
 export interface UpdateInboundSsoAssignmentOperationMetadata {}
 
-export const UpdateInboundSsoAssignmentOperationMetadata: Schema.Schema<UpdateInboundSsoAssignmentOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const UpdateInboundSsoAssignmentOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UpdateInboundSsoAssignmentOperationMetadata",
-  }) as any as Schema.Schema<UpdateInboundSsoAssignmentOperationMetadata>;
+  });
 
 export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
@@ -1569,16 +1311,13 @@ export interface Operation {
   name?: string;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      error: Schema.optional(Status),
-      done: Schema.optional(Schema.Boolean),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  error: Schema.optional(Status),
+  done: Schema.optional(Schema.Boolean),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Operation" });
 
 export interface GoogleAppsCloudidentityDevicesV1BrowserInfo {
   /** Current state of [file download analysis](https://chromeenterprise.google/policies/#OnFileDownloadedEnterpriseConnector). Set to true if provider list from Chrome is non-empty. */
@@ -1627,27 +1366,23 @@ export interface GoogleAppsCloudidentityDevicesV1BrowserInfo {
   isChromeCleanupEnabled?: boolean;
 }
 
-export const GoogleAppsCloudidentityDevicesV1BrowserInfo: Schema.Schema<GoogleAppsCloudidentityDevicesV1BrowserInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      isFileDownloadAnalysisEnabled: Schema.optional(Schema.Boolean),
-      isRealtimeUrlCheckEnabled: Schema.optional(Schema.Boolean),
-      isSiteIsolationEnabled: Schema.optional(Schema.Boolean),
-      isThirdPartyBlockingEnabled: Schema.optional(Schema.Boolean),
-      browserManagementState: Schema.optional(Schema.String),
-      isChromeRemoteDesktopAppBlocked: Schema.optional(Schema.Boolean),
-      isSecurityEventAnalysisEnabled: Schema.optional(Schema.Boolean),
-      browserVersion: Schema.optional(Schema.String),
-      passwordProtectionWarningTrigger: Schema.optional(Schema.String),
-      isFileUploadAnalysisEnabled: Schema.optional(Schema.Boolean),
-      isBuiltInDnsClientEnabled: Schema.optional(Schema.Boolean),
-      isBulkDataEntryAnalysisEnabled: Schema.optional(Schema.Boolean),
-      safeBrowsingProtectionLevel: Schema.optional(Schema.String),
-      isChromeCleanupEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleAppsCloudidentityDevicesV1BrowserInfo",
-  }) as any as Schema.Schema<GoogleAppsCloudidentityDevicesV1BrowserInfo>;
+export const GoogleAppsCloudidentityDevicesV1BrowserInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    isFileDownloadAnalysisEnabled: Schema.optional(Schema.Boolean),
+    isRealtimeUrlCheckEnabled: Schema.optional(Schema.Boolean),
+    isSiteIsolationEnabled: Schema.optional(Schema.Boolean),
+    isThirdPartyBlockingEnabled: Schema.optional(Schema.Boolean),
+    browserManagementState: Schema.optional(Schema.String),
+    isChromeRemoteDesktopAppBlocked: Schema.optional(Schema.Boolean),
+    isSecurityEventAnalysisEnabled: Schema.optional(Schema.Boolean),
+    browserVersion: Schema.optional(Schema.String),
+    passwordProtectionWarningTrigger: Schema.optional(Schema.String),
+    isFileUploadAnalysisEnabled: Schema.optional(Schema.Boolean),
+    isBuiltInDnsClientEnabled: Schema.optional(Schema.Boolean),
+    isBulkDataEntryAnalysisEnabled: Schema.optional(Schema.Boolean),
+    safeBrowsingProtectionLevel: Schema.optional(Schema.String),
+    isChromeCleanupEnabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleAppsCloudidentityDevicesV1BrowserInfo" });
 
 export interface GoogleAppsCloudidentityDevicesV1BrowserAttributes {
   /** Timestamp in milliseconds since the Unix epoch when the profile/gcm id was last synced. */
@@ -1658,25 +1393,23 @@ export interface GoogleAppsCloudidentityDevicesV1BrowserAttributes {
   chromeProfileId?: string;
 }
 
-export const GoogleAppsCloudidentityDevicesV1BrowserAttributes: Schema.Schema<GoogleAppsCloudidentityDevicesV1BrowserAttributes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lastProfileSyncTime: Schema.optional(Schema.String),
-      chromeBrowserInfo: Schema.optional(
-        GoogleAppsCloudidentityDevicesV1BrowserInfo,
-      ),
-      chromeProfileId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAppsCloudidentityDevicesV1BrowserAttributes =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    lastProfileSyncTime: Schema.optional(Schema.String),
+    chromeBrowserInfo: Schema.optional(
+      GoogleAppsCloudidentityDevicesV1BrowserInfo,
+    ),
+    chromeProfileId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleAppsCloudidentityDevicesV1BrowserAttributes",
-  }) as any as Schema.Schema<GoogleAppsCloudidentityDevicesV1BrowserAttributes>;
+  });
 
 export interface GoogleAppsCloudidentityDevicesV1SignoutDeviceUserMetadata {}
 
-export const GoogleAppsCloudidentityDevicesV1SignoutDeviceUserMetadata: Schema.Schema<GoogleAppsCloudidentityDevicesV1SignoutDeviceUserMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleAppsCloudidentityDevicesV1SignoutDeviceUserMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAppsCloudidentityDevicesV1SignoutDeviceUserMetadata",
-  }) as any as Schema.Schema<GoogleAppsCloudidentityDevicesV1SignoutDeviceUserMetadata>;
+  });
 
 export interface PolicyQuery {
   /** Immutable. The group that the query applies to. This field is only set if there is a single value for group that satisfies all clauses of the query. If no group applies, this will be the empty string. */
@@ -1689,17 +1422,12 @@ export interface PolicyQuery {
   sortOrder?: number;
 }
 
-export const PolicyQuery: Schema.Schema<PolicyQuery> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      group: Schema.optional(Schema.String),
-      query: Schema.optional(Schema.String),
-      orgUnit: Schema.optional(Schema.String),
-      sortOrder: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "PolicyQuery",
-  }) as any as Schema.Schema<PolicyQuery>;
+export const PolicyQuery = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  group: Schema.optional(Schema.String),
+  query: Schema.optional(Schema.String),
+  orgUnit: Schema.optional(Schema.String),
+  sortOrder: Schema.optional(Schema.Number),
+}).annotate({ identifier: "PolicyQuery" });
 
 export interface Setting {
   /** Required. Immutable. The type of the Setting. . */
@@ -1708,13 +1436,10 @@ export interface Setting {
   value?: Record<string, unknown>;
 }
 
-export const Setting: Schema.Schema<Setting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Setting" }) as any as Schema.Schema<Setting>;
+export const Setting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Setting" });
 
 export interface Policy {
   /** Output only. Identifier. The [resource name](https://cloud.google.com/apis/design/resource_names) of the Policy. Format: policies/{policy}. */
@@ -1729,37 +1454,30 @@ export interface Policy {
   type?: "POLICY_TYPE_UNSPECIFIED" | "SYSTEM" | "ADMIN" | (string & {});
 }
 
-export const Policy: Schema.Schema<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      policyQuery: Schema.optional(PolicyQuery),
-      customer: Schema.optional(Schema.String),
-      setting: Schema.optional(Setting),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Policy" }) as any as Schema.Schema<Policy>;
+export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  policyQuery: Schema.optional(PolicyQuery),
+  customer: Schema.optional(Schema.String),
+  setting: Schema.optional(Setting),
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "Policy" });
 
 export interface SendUserInvitationRequest {}
 
-export const SendUserInvitationRequest: Schema.Schema<SendUserInvitationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const SendUserInvitationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "SendUserInvitationRequest",
-  }) as any as Schema.Schema<SendUserInvitationRequest>;
+  });
 
 export interface CheckTransitiveMembershipResponse {
   /** Response does not include the possible roles of a member since the behavior of this rpc is not all-or-nothing unlike the other rpcs. So, it may not be possible to list all the roles definitively, due to possible lack of authorization in some of the paths. */
   hasMembership?: boolean;
 }
 
-export const CheckTransitiveMembershipResponse: Schema.Schema<CheckTransitiveMembershipResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hasMembership: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "CheckTransitiveMembershipResponse",
-  }) as any as Schema.Schema<CheckTransitiveMembershipResponse>;
+export const CheckTransitiveMembershipResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    hasMembership: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "CheckTransitiveMembershipResponse" });
 
 export interface GetMembershipGraphResponse {
   /** The membership graph's path information represented as an adjacency list. */
@@ -1768,15 +1486,11 @@ export interface GetMembershipGraphResponse {
   groups?: Array<Group>;
 }
 
-export const GetMembershipGraphResponse: Schema.Schema<GetMembershipGraphResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      adjacencyList: Schema.optional(Schema.Array(MembershipAdjacencyList)),
-      groups: Schema.optional(Schema.Array(Group)),
-    }),
-  ).annotate({
-    identifier: "GetMembershipGraphResponse",
-  }) as any as Schema.Schema<GetMembershipGraphResponse>;
+export const GetMembershipGraphResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    adjacencyList: Schema.optional(Schema.Array(MembershipAdjacencyList)),
+    groups: Schema.optional(Schema.Array(Group)),
+  }).annotate({ identifier: "GetMembershipGraphResponse" });
 
 export interface GoogleAppsCloudidentityDevicesV1AndroidAttributes {
   /** Whether any potentially harmful apps were detected on the device. */
@@ -1802,21 +1516,19 @@ export interface GoogleAppsCloudidentityDevicesV1AndroidAttributes {
   supportsWorkProfile?: boolean;
 }
 
-export const GoogleAppsCloudidentityDevicesV1AndroidAttributes: Schema.Schema<GoogleAppsCloudidentityDevicesV1AndroidAttributes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hasPotentiallyHarmfulApps: Schema.optional(Schema.Boolean),
-      verifiedBoot: Schema.optional(Schema.Boolean),
-      ownerProfileAccount: Schema.optional(Schema.Boolean),
-      verifyAppsEnabled: Schema.optional(Schema.Boolean),
-      ownershipPrivilege: Schema.optional(Schema.String),
-      ctsProfileMatch: Schema.optional(Schema.Boolean),
-      enabledUnknownSources: Schema.optional(Schema.Boolean),
-      supportsWorkProfile: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleAppsCloudidentityDevicesV1AndroidAttributes =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    hasPotentiallyHarmfulApps: Schema.optional(Schema.Boolean),
+    verifiedBoot: Schema.optional(Schema.Boolean),
+    ownerProfileAccount: Schema.optional(Schema.Boolean),
+    verifyAppsEnabled: Schema.optional(Schema.Boolean),
+    ownershipPrivilege: Schema.optional(Schema.String),
+    ctsProfileMatch: Schema.optional(Schema.Boolean),
+    enabledUnknownSources: Schema.optional(Schema.Boolean),
+    supportsWorkProfile: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleAppsCloudidentityDevicesV1AndroidAttributes",
-  }) as any as Schema.Schema<GoogleAppsCloudidentityDevicesV1AndroidAttributes>;
+  });
 
 export interface GoogleAppsCloudidentityDevicesV1CertificateTemplate {
   /** The Major version of the template. Example: 100. */
@@ -1827,16 +1539,14 @@ export interface GoogleAppsCloudidentityDevicesV1CertificateTemplate {
   minorVersion?: number;
 }
 
-export const GoogleAppsCloudidentityDevicesV1CertificateTemplate: Schema.Schema<GoogleAppsCloudidentityDevicesV1CertificateTemplate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      majorVersion: Schema.optional(Schema.Number),
-      id: Schema.optional(Schema.String),
-      minorVersion: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleAppsCloudidentityDevicesV1CertificateTemplate =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    majorVersion: Schema.optional(Schema.Number),
+    id: Schema.optional(Schema.String),
+    minorVersion: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleAppsCloudidentityDevicesV1CertificateTemplate",
-  }) as any as Schema.Schema<GoogleAppsCloudidentityDevicesV1CertificateTemplate>;
+  });
 
 export interface GoogleAppsCloudidentityDevicesV1CertificateAttributes {
   /** The X.509 extension for CertificateTemplate. */
@@ -1863,24 +1573,22 @@ export interface GoogleAppsCloudidentityDevicesV1CertificateAttributes {
   validityExpirationTime?: string;
 }
 
-export const GoogleAppsCloudidentityDevicesV1CertificateAttributes: Schema.Schema<GoogleAppsCloudidentityDevicesV1CertificateAttributes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      certificateTemplate: Schema.optional(
-        GoogleAppsCloudidentityDevicesV1CertificateTemplate,
-      ),
-      validationState: Schema.optional(Schema.String),
-      serialNumber: Schema.optional(Schema.String),
-      validityStartTime: Schema.optional(Schema.String),
-      fingerprint: Schema.optional(Schema.String),
-      thumbprint: Schema.optional(Schema.String),
-      issuer: Schema.optional(Schema.String),
-      subject: Schema.optional(Schema.String),
-      validityExpirationTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAppsCloudidentityDevicesV1CertificateAttributes =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    certificateTemplate: Schema.optional(
+      GoogleAppsCloudidentityDevicesV1CertificateTemplate,
+    ),
+    validationState: Schema.optional(Schema.String),
+    serialNumber: Schema.optional(Schema.String),
+    validityStartTime: Schema.optional(Schema.String),
+    fingerprint: Schema.optional(Schema.String),
+    thumbprint: Schema.optional(Schema.String),
+    issuer: Schema.optional(Schema.String),
+    subject: Schema.optional(Schema.String),
+    validityExpirationTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleAppsCloudidentityDevicesV1CertificateAttributes",
-  }) as any as Schema.Schema<GoogleAppsCloudidentityDevicesV1CertificateAttributes>;
+  });
 
 export interface GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes {
   /** Details of certificates. */
@@ -1891,23 +1599,21 @@ export interface GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAtt
   additionalSignals?: Record<string, unknown>;
 }
 
-export const GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes: Schema.Schema<GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      certificateAttributes: Schema.optional(
-        Schema.Array(GoogleAppsCloudidentityDevicesV1CertificateAttributes),
-      ),
-      browserAttributes: Schema.optional(
-        Schema.Array(GoogleAppsCloudidentityDevicesV1BrowserAttributes),
-      ),
-      additionalSignals: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-    }),
-  ).annotate({
+export const GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    certificateAttributes: Schema.optional(
+      Schema.Array(GoogleAppsCloudidentityDevicesV1CertificateAttributes),
+    ),
+    browserAttributes: Schema.optional(
+      Schema.Array(GoogleAppsCloudidentityDevicesV1BrowserAttributes),
+    ),
+    additionalSignals: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
+  }).annotate({
     identifier:
       "GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes",
-  }) as any as Schema.Schema<GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes>;
+  });
 
 export interface GoogleAppsCloudidentityDevicesV1Device {
   /** Asset tag of the device. */
@@ -2006,70 +1712,64 @@ export interface GoogleAppsCloudidentityDevicesV1Device {
   networkOperator?: string;
 }
 
-export const GoogleAppsCloudidentityDevicesV1Device: Schema.Schema<GoogleAppsCloudidentityDevicesV1Device> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      assetTag: Schema.optional(Schema.String),
-      managementState: Schema.optional(Schema.String),
-      kernelVersion: Schema.optional(Schema.String),
-      osVersion: Schema.optional(Schema.String),
-      unifiedDeviceId: Schema.optional(Schema.String),
-      releaseVersion: Schema.optional(Schema.String),
-      deviceType: Schema.optional(Schema.String),
-      wifiMacAddresses: Schema.optional(Schema.Array(Schema.String)),
-      lastSyncTime: Schema.optional(Schema.String),
-      deviceId: Schema.optional(Schema.String),
-      manufacturer: Schema.optional(Schema.String),
-      model: Schema.optional(Schema.String),
-      imei: Schema.optional(Schema.String),
-      hostname: Schema.optional(Schema.String),
-      otherAccounts: Schema.optional(Schema.Array(Schema.String)),
-      basebandVersion: Schema.optional(Schema.String),
-      buildNumber: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      meid: Schema.optional(Schema.String),
-      enabledUsbDebugging: Schema.optional(Schema.Boolean),
-      brand: Schema.optional(Schema.String),
-      androidSpecificAttributes: Schema.optional(
-        GoogleAppsCloudidentityDevicesV1AndroidAttributes,
-      ),
-      endpointVerificationSpecificAttributes: Schema.optional(
-        GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes,
-      ),
-      encryptionState: Schema.optional(Schema.String),
-      serialNumber: Schema.optional(Schema.String),
-      enabledDeveloperOptions: Schema.optional(Schema.Boolean),
-      compromisedState: Schema.optional(Schema.String),
-      securityPatchTime: Schema.optional(Schema.String),
-      bootloaderVersion: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      ownerType: Schema.optional(Schema.String),
-      networkOperator: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAppsCloudidentityDevicesV1Device",
-  }) as any as Schema.Schema<GoogleAppsCloudidentityDevicesV1Device>;
+export const GoogleAppsCloudidentityDevicesV1Device =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    assetTag: Schema.optional(Schema.String),
+    managementState: Schema.optional(Schema.String),
+    kernelVersion: Schema.optional(Schema.String),
+    osVersion: Schema.optional(Schema.String),
+    unifiedDeviceId: Schema.optional(Schema.String),
+    releaseVersion: Schema.optional(Schema.String),
+    deviceType: Schema.optional(Schema.String),
+    wifiMacAddresses: Schema.optional(Schema.Array(Schema.String)),
+    lastSyncTime: Schema.optional(Schema.String),
+    deviceId: Schema.optional(Schema.String),
+    manufacturer: Schema.optional(Schema.String),
+    model: Schema.optional(Schema.String),
+    imei: Schema.optional(Schema.String),
+    hostname: Schema.optional(Schema.String),
+    otherAccounts: Schema.optional(Schema.Array(Schema.String)),
+    basebandVersion: Schema.optional(Schema.String),
+    buildNumber: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    meid: Schema.optional(Schema.String),
+    enabledUsbDebugging: Schema.optional(Schema.Boolean),
+    brand: Schema.optional(Schema.String),
+    androidSpecificAttributes: Schema.optional(
+      GoogleAppsCloudidentityDevicesV1AndroidAttributes,
+    ),
+    endpointVerificationSpecificAttributes: Schema.optional(
+      GoogleAppsCloudidentityDevicesV1EndpointVerificationSpecificAttributes,
+    ),
+    encryptionState: Schema.optional(Schema.String),
+    serialNumber: Schema.optional(Schema.String),
+    enabledDeveloperOptions: Schema.optional(Schema.Boolean),
+    compromisedState: Schema.optional(Schema.String),
+    securityPatchTime: Schema.optional(Schema.String),
+    bootloaderVersion: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    ownerType: Schema.optional(Schema.String),
+    networkOperator: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleAppsCloudidentityDevicesV1Device" });
 
 export interface GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse {
   /** Resultant Device object for the action. Note that asset tags will not be returned in the device object. */
   device?: GoogleAppsCloudidentityDevicesV1Device;
 }
 
-export const GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse: Schema.Schema<GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      device: Schema.optional(GoogleAppsCloudidentityDevicesV1Device),
-    }),
-  ).annotate({
+export const GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    device: Schema.optional(GoogleAppsCloudidentityDevicesV1Device),
+  }).annotate({
     identifier: "GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse",
-  }) as any as Schema.Schema<GoogleAppsCloudidentityDevicesV1CancelWipeDeviceResponse>;
+  });
 
 export interface GoogleAppsCloudidentityDevicesV1WipeDeviceMetadata {}
 
-export const GoogleAppsCloudidentityDevicesV1WipeDeviceMetadata: Schema.Schema<GoogleAppsCloudidentityDevicesV1WipeDeviceMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleAppsCloudidentityDevicesV1WipeDeviceMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAppsCloudidentityDevicesV1WipeDeviceMetadata",
-  }) as any as Schema.Schema<GoogleAppsCloudidentityDevicesV1WipeDeviceMetadata>;
+  });
 
 export interface SecuritySettings {
   /** Output only. The resource name of the security settings. Shall be of the form `groups/{group_id}/securitySettings`. */
@@ -2078,15 +1778,10 @@ export interface SecuritySettings {
   memberRestriction?: MemberRestriction;
 }
 
-export const SecuritySettings: Schema.Schema<SecuritySettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      memberRestriction: Schema.optional(MemberRestriction),
-    }),
-  ).annotate({
-    identifier: "SecuritySettings",
-  }) as any as Schema.Schema<SecuritySettings>;
+export const SecuritySettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  memberRestriction: Schema.optional(MemberRestriction),
+}).annotate({ identifier: "SecuritySettings" });
 
 export interface ListInboundSamlSsoProfilesResponse {
   /** List of InboundSamlSsoProfiles. */
@@ -2095,24 +1790,20 @@ export interface ListInboundSamlSsoProfilesResponse {
   nextPageToken?: string;
 }
 
-export const ListInboundSamlSsoProfilesResponse: Schema.Schema<ListInboundSamlSsoProfilesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inboundSamlSsoProfiles: Schema.optional(
-        Schema.Array(InboundSamlSsoProfile),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListInboundSamlSsoProfilesResponse",
-  }) as any as Schema.Schema<ListInboundSamlSsoProfilesResponse>;
+export const ListInboundSamlSsoProfilesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    inboundSamlSsoProfiles: Schema.optional(
+      Schema.Array(InboundSamlSsoProfile),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListInboundSamlSsoProfilesResponse" });
 
 export interface CancelUserInvitationRequest {}
 
-export const CancelUserInvitationRequest: Schema.Schema<CancelUserInvitationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const CancelUserInvitationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelUserInvitationRequest",
-  }) as any as Schema.Schema<CancelUserInvitationRequest>;
+  });
 
 export interface MoveOrgMembershipRequest {
   /** Required. Immutable. Customer on whose membership change is made. All authorization will happen on the role assignments of this customer. Format: customers/{$customerId} where `$customerId` is the `id` from the [Admin SDK `Customer` resource](https://developers.google.com/admin-sdk/directory/reference/rest/v1/customers). You may also use `customers/my_customer` to specify your own organization. */
@@ -2121,29 +1812,21 @@ export interface MoveOrgMembershipRequest {
   destinationOrgUnit?: string;
 }
 
-export const MoveOrgMembershipRequest: Schema.Schema<MoveOrgMembershipRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customer: Schema.optional(Schema.String),
-      destinationOrgUnit: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MoveOrgMembershipRequest",
-  }) as any as Schema.Schema<MoveOrgMembershipRequest>;
+export const MoveOrgMembershipRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customer: Schema.optional(Schema.String),
+    destinationOrgUnit: Schema.optional(Schema.String),
+  }).annotate({ identifier: "MoveOrgMembershipRequest" });
 
 export interface LookupMembershipNameResponse {
   /** The [resource name](https://cloud.google.com/apis/design/resource_names) of the looked-up `Membership`. Must be of the form `groups/{group_id}/memberships/{membership_id}`. */
   name?: string;
 }
 
-export const LookupMembershipNameResponse: Schema.Schema<LookupMembershipNameResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LookupMembershipNameResponse",
-  }) as any as Schema.Schema<LookupMembershipNameResponse>;
+export const LookupMembershipNameResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "LookupMembershipNameResponse" });
 
 export interface LookupSelfDeviceUsersResponse {
   /** Token to retrieve the next page of results. Empty if there are no more results. */
@@ -2154,23 +1837,19 @@ export interface LookupSelfDeviceUsersResponse {
   customer?: string;
 }
 
-export const LookupSelfDeviceUsersResponse: Schema.Schema<LookupSelfDeviceUsersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      names: Schema.optional(Schema.Array(Schema.String)),
-      customer: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LookupSelfDeviceUsersResponse",
-  }) as any as Schema.Schema<LookupSelfDeviceUsersResponse>;
+export const LookupSelfDeviceUsersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    names: Schema.optional(Schema.Array(Schema.String)),
+    customer: Schema.optional(Schema.String),
+  }).annotate({ identifier: "LookupSelfDeviceUsersResponse" });
 
 export interface GoogleAppsCloudidentityDevicesV1DeleteDeviceMetadata {}
 
-export const GoogleAppsCloudidentityDevicesV1DeleteDeviceMetadata: Schema.Schema<GoogleAppsCloudidentityDevicesV1DeleteDeviceMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleAppsCloudidentityDevicesV1DeleteDeviceMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAppsCloudidentityDevicesV1DeleteDeviceMetadata",
-  }) as any as Schema.Schema<GoogleAppsCloudidentityDevicesV1DeleteDeviceMetadata>;
+  });
 
 export interface SearchGroupsResponse {
   /** A continuation token to retrieve the next page of results, or empty if there are no more results available. */
@@ -2179,36 +1858,27 @@ export interface SearchGroupsResponse {
   groups?: Array<Group>;
 }
 
-export const SearchGroupsResponse: Schema.Schema<SearchGroupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      groups: Schema.optional(Schema.Array(Group)),
-    }),
-  ).annotate({
-    identifier: "SearchGroupsResponse",
-  }) as any as Schema.Schema<SearchGroupsResponse>;
+export const SearchGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  groups: Schema.optional(Schema.Array(Group)),
+}).annotate({ identifier: "SearchGroupsResponse" });
 
 export interface UpdateInboundSamlSsoProfileOperationMetadata {
   /** State of this Operation Will be "awaiting-multi-party-approval" when the operation is deferred due to the target customer having enabled [Multi-party approval for sensitive actions](https://support.google.com/a/answer/13790448). */
   state?: string;
 }
 
-export const UpdateInboundSamlSsoProfileOperationMetadata: Schema.Schema<UpdateInboundSamlSsoProfileOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpdateInboundSamlSsoProfileOperationMetadata",
-  }) as any as Schema.Schema<UpdateInboundSamlSsoProfileOperationMetadata>;
+export const UpdateInboundSamlSsoProfileOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UpdateInboundSamlSsoProfileOperationMetadata" });
 
 export interface GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserMetadata {}
 
-export const GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserMetadata: Schema.Schema<GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserMetadata",
-  }) as any as Schema.Schema<GoogleAppsCloudidentityDevicesV1CancelWipeDeviceUserMetadata>;
+  });
 
 export interface OrgMembership {
   /** Immutable. Org member id as full resource name. Format for shared drive resource: //drive.googleapis.com/drives/{$memberId} where `$memberId` is the `id` from [Drive API (V3) `Drive` resource](https://developers.google.com/drive/api/v3/reference/drives#resource). */
@@ -2221,17 +1891,12 @@ export interface OrgMembership {
   type?: "ENTITY_TYPE_UNSPECIFIED" | "SHARED_DRIVE" | (string & {});
 }
 
-export const OrgMembership: Schema.Schema<OrgMembership> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      member: Schema.optional(Schema.String),
-      memberUri: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OrgMembership",
-  }) as any as Schema.Schema<OrgMembership>;
+export const OrgMembership = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  member: Schema.optional(Schema.String),
+  memberUri: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "OrgMembership" });
 
 export interface ListOrgMembershipsResponse {
   /** The non-vacuous membership in an orgUnit. */
@@ -2240,15 +1905,11 @@ export interface ListOrgMembershipsResponse {
   nextPageToken?: string;
 }
 
-export const ListOrgMembershipsResponse: Schema.Schema<ListOrgMembershipsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      orgMemberships: Schema.optional(Schema.Array(OrgMembership)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListOrgMembershipsResponse",
-  }) as any as Schema.Schema<ListOrgMembershipsResponse>;
+export const ListOrgMembershipsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    orgMemberships: Schema.optional(Schema.Array(OrgMembership)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListOrgMembershipsResponse" });
 
 export interface ListPoliciesResponse {
   /** The results */
@@ -2257,29 +1918,20 @@ export interface ListPoliciesResponse {
   nextPageToken?: string;
 }
 
-export const ListPoliciesResponse: Schema.Schema<ListPoliciesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policies: Schema.optional(Schema.Array(Policy)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListPoliciesResponse",
-  }) as any as Schema.Schema<ListPoliciesResponse>;
+export const ListPoliciesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policies: Schema.optional(Schema.Array(Policy)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListPoliciesResponse" });
 
 export interface AddIdpCredentialOperationMetadata {
   /** State of this Operation Will be "awaiting-multi-party-approval" when the operation is deferred due to the target customer having enabled [Multi-party approval for sensitive actions](https://support.google.com/a/answer/13790448). */
   state?: string;
 }
 
-export const AddIdpCredentialOperationMetadata: Schema.Schema<AddIdpCredentialOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AddIdpCredentialOperationMetadata",
-  }) as any as Schema.Schema<AddIdpCredentialOperationMetadata>;
+export const AddIdpCredentialOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AddIdpCredentialOperationMetadata" });
 
 export interface GoogleAppsCloudidentityDevicesV1CustomAttributeValue {
   /** Represents a boolean value. */
@@ -2290,16 +1942,14 @@ export interface GoogleAppsCloudidentityDevicesV1CustomAttributeValue {
   stringValue?: string;
 }
 
-export const GoogleAppsCloudidentityDevicesV1CustomAttributeValue: Schema.Schema<GoogleAppsCloudidentityDevicesV1CustomAttributeValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      boolValue: Schema.optional(Schema.Boolean),
-      numberValue: Schema.optional(Schema.Number),
-      stringValue: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAppsCloudidentityDevicesV1CustomAttributeValue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    boolValue: Schema.optional(Schema.Boolean),
+    numberValue: Schema.optional(Schema.Number),
+    stringValue: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleAppsCloudidentityDevicesV1CustomAttributeValue",
-  }) as any as Schema.Schema<GoogleAppsCloudidentityDevicesV1CustomAttributeValue>;
+  });
 
 export interface GoogleAppsCloudidentityDevicesV1ClientState {
   /** Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the ClientState in format: `devices/{device}/deviceUsers/{device_user}/clientState/{partner}`, where partner corresponds to the partner storing the data. For partners belonging to the "BeyondCorp Alliance", this is the partner ID specified to you by Google. For all other callers, this is a string of the form: `{customer}-suffix`, where `customer` is your customer ID. The *suffix* is any string the caller specifies. This string will be displayed verbatim in the administration console. This suffix is used in setting up Custom Access Levels in Context-Aware Access. Your organization's customer ID can be obtained from the URL: `GET https://www.googleapis.com/admin/directory/v1/customers/my_customer` The `id` field in the response contains the customer ID starting with the letter 'C'. The customer ID to be used in this API is the string after the letter 'C' (not including 'C') */
@@ -2350,37 +2000,33 @@ export interface GoogleAppsCloudidentityDevicesV1ClientState {
   etag?: string;
 }
 
-export const GoogleAppsCloudidentityDevicesV1ClientState: Schema.Schema<GoogleAppsCloudidentityDevicesV1ClientState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      customId: Schema.optional(Schema.String),
-      complianceState: Schema.optional(Schema.String),
-      lastUpdateTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      ownerType: Schema.optional(Schema.String),
-      keyValuePairs: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          GoogleAppsCloudidentityDevicesV1CustomAttributeValue,
-        ),
+export const GoogleAppsCloudidentityDevicesV1ClientState =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    customId: Schema.optional(Schema.String),
+    complianceState: Schema.optional(Schema.String),
+    lastUpdateTime: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    ownerType: Schema.optional(Schema.String),
+    keyValuePairs: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        GoogleAppsCloudidentityDevicesV1CustomAttributeValue,
       ),
-      scoreReason: Schema.optional(Schema.String),
-      managed: Schema.optional(Schema.String),
-      assetTags: Schema.optional(Schema.Array(Schema.String)),
-      healthScore: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAppsCloudidentityDevicesV1ClientState",
-  }) as any as Schema.Schema<GoogleAppsCloudidentityDevicesV1ClientState>;
+    ),
+    scoreReason: Schema.optional(Schema.String),
+    managed: Schema.optional(Schema.String),
+    assetTags: Schema.optional(Schema.Array(Schema.String)),
+    healthScore: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleAppsCloudidentityDevicesV1ClientState" });
 
 export interface DeleteInboundOidcSsoProfileOperationMetadata {}
 
-export const DeleteInboundOidcSsoProfileOperationMetadata: Schema.Schema<DeleteInboundOidcSsoProfileOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const DeleteInboundOidcSsoProfileOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeleteInboundOidcSsoProfileOperationMetadata",
-  }) as any as Schema.Schema<DeleteInboundOidcSsoProfileOperationMetadata>;
+  });
 
 export interface WipeDeviceRequest {
   /** Optional. Specifies if a user is able to factory reset a device after a Device Wipe. On iOS, this is called "Activation Lock", while on Android, this is known as "Factory Reset Protection". If true, this protection will be removed from the device, so that a user can successfully factory reset. If false, the setting is untouched on the device. */
@@ -2389,36 +2035,27 @@ export interface WipeDeviceRequest {
   customer?: string;
 }
 
-export const WipeDeviceRequest: Schema.Schema<WipeDeviceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      removeResetLock: Schema.optional(Schema.Boolean),
-      customer: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WipeDeviceRequest",
-  }) as any as Schema.Schema<WipeDeviceRequest>;
+export const WipeDeviceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  removeResetLock: Schema.optional(Schema.Boolean),
+  customer: Schema.optional(Schema.String),
+}).annotate({ identifier: "WipeDeviceRequest" });
 
 export interface ApproveDeviceUserResponse {
   /** Resultant DeviceUser object for the action. */
   deviceUser?: DeviceUser;
 }
 
-export const ApproveDeviceUserResponse: Schema.Schema<ApproveDeviceUserResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deviceUser: Schema.optional(DeviceUser),
-    }),
-  ).annotate({
-    identifier: "ApproveDeviceUserResponse",
-  }) as any as Schema.Schema<ApproveDeviceUserResponse>;
+export const ApproveDeviceUserResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deviceUser: Schema.optional(DeviceUser),
+  }).annotate({ identifier: "ApproveDeviceUserResponse" });
 
 export interface GoogleAppsCloudidentityDevicesV1BlockDeviceUserMetadata {}
 
-export const GoogleAppsCloudidentityDevicesV1BlockDeviceUserMetadata: Schema.Schema<GoogleAppsCloudidentityDevicesV1BlockDeviceUserMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleAppsCloudidentityDevicesV1BlockDeviceUserMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAppsCloudidentityDevicesV1BlockDeviceUserMetadata",
-  }) as any as Schema.Schema<GoogleAppsCloudidentityDevicesV1BlockDeviceUserMetadata>;
+  });
 
 export interface UserInvitation {
   /** State of the `UserInvitation`. */
@@ -2437,17 +2074,12 @@ export interface UserInvitation {
   mailsSentCount?: string;
 }
 
-export const UserInvitation: Schema.Schema<UserInvitation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      mailsSentCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UserInvitation",
-  }) as any as Schema.Schema<UserInvitation>;
+export const UserInvitation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  mailsSentCount: Schema.optional(Schema.String),
+}).annotate({ identifier: "UserInvitation" });
 
 export interface ClientState {
   /** Output only. [Resource name](https://cloud.google.com/apis/design/resource_names) of the ClientState in format: `devices/{device_id}/deviceUsers/{device_user_id}/clientState/{partner_id}`, where partner_id corresponds to the partner storing the data. */
@@ -2495,27 +2127,22 @@ export interface ClientState {
     | (string & {});
 }
 
-export const ClientState: Schema.Schema<ClientState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      lastUpdateTime: Schema.optional(Schema.String),
-      customId: Schema.optional(Schema.String),
-      complianceState: Schema.optional(Schema.String),
-      keyValuePairs: Schema.optional(
-        Schema.Record(Schema.String, CustomAttributeValue),
-      ),
-      createTime: Schema.optional(Schema.String),
-      ownerType: Schema.optional(Schema.String),
-      managed: Schema.optional(Schema.String),
-      scoreReason: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      assetTags: Schema.optional(Schema.Array(Schema.String)),
-      healthScore: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ClientState",
-  }) as any as Schema.Schema<ClientState>;
+export const ClientState = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  lastUpdateTime: Schema.optional(Schema.String),
+  customId: Schema.optional(Schema.String),
+  complianceState: Schema.optional(Schema.String),
+  keyValuePairs: Schema.optional(
+    Schema.Record(Schema.String, CustomAttributeValue),
+  ),
+  createTime: Schema.optional(Schema.String),
+  ownerType: Schema.optional(Schema.String),
+  managed: Schema.optional(Schema.String),
+  scoreReason: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  assetTags: Schema.optional(Schema.Array(Schema.String)),
+  healthScore: Schema.optional(Schema.String),
+}).annotate({ identifier: "ClientState" });
 
 export interface ListClientStatesResponse {
   /** Client states meeting the list restrictions. */
@@ -2524,71 +2151,55 @@ export interface ListClientStatesResponse {
   nextPageToken?: string;
 }
 
-export const ListClientStatesResponse: Schema.Schema<ListClientStatesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clientStates: Schema.optional(Schema.Array(ClientState)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListClientStatesResponse",
-  }) as any as Schema.Schema<ListClientStatesResponse>;
+export const ListClientStatesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    clientStates: Schema.optional(Schema.Array(ClientState)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListClientStatesResponse" });
 
 export interface GoogleAppsCloudidentityDevicesV1WipeDeviceUserMetadata {}
 
-export const GoogleAppsCloudidentityDevicesV1WipeDeviceUserMetadata: Schema.Schema<GoogleAppsCloudidentityDevicesV1WipeDeviceUserMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleAppsCloudidentityDevicesV1WipeDeviceUserMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAppsCloudidentityDevicesV1WipeDeviceUserMetadata",
-  }) as any as Schema.Schema<GoogleAppsCloudidentityDevicesV1WipeDeviceUserMetadata>;
+  });
 
 export interface DsaPublicKeyInfo {
   /** Key size in bits (size of parameter P). */
   keySize?: number;
 }
 
-export const DsaPublicKeyInfo: Schema.Schema<DsaPublicKeyInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      keySize: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "DsaPublicKeyInfo",
-  }) as any as Schema.Schema<DsaPublicKeyInfo>;
+export const DsaPublicKeyInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  keySize: Schema.optional(Schema.Number),
+}).annotate({ identifier: "DsaPublicKeyInfo" });
 
 export interface CreateInboundSsoAssignmentOperationMetadata {}
 
-export const CreateInboundSsoAssignmentOperationMetadata: Schema.Schema<CreateInboundSsoAssignmentOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const CreateInboundSsoAssignmentOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CreateInboundSsoAssignmentOperationMetadata",
-  }) as any as Schema.Schema<CreateInboundSsoAssignmentOperationMetadata>;
+  });
 
 export interface CancelWipeDeviceUserRequest {
   /** Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're using this API for your own organization, use `customers/my_customer` If you're using this API to manage another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the device belongs. */
   customer?: string;
 }
 
-export const CancelWipeDeviceUserRequest: Schema.Schema<CancelWipeDeviceUserRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customer: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CancelWipeDeviceUserRequest",
-  }) as any as Schema.Schema<CancelWipeDeviceUserRequest>;
+export const CancelWipeDeviceUserRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customer: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CancelWipeDeviceUserRequest" });
 
 export interface WipeDeviceUserResponse {
   /** Resultant DeviceUser object for the action. */
   deviceUser?: DeviceUser;
 }
 
-export const WipeDeviceUserResponse: Schema.Schema<WipeDeviceUserResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deviceUser: Schema.optional(DeviceUser),
-    }),
-  ).annotate({
-    identifier: "WipeDeviceUserResponse",
-  }) as any as Schema.Schema<WipeDeviceUserResponse>;
+export const WipeDeviceUserResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    deviceUser: Schema.optional(DeviceUser),
+  },
+).annotate({ identifier: "WipeDeviceUserResponse" });
 
 export interface ListDeviceUsersResponse {
   /** Token to retrieve the next page of results. Empty if there are no more results. */
@@ -2597,50 +2208,40 @@ export interface ListDeviceUsersResponse {
   deviceUsers?: Array<DeviceUser>;
 }
 
-export const ListDeviceUsersResponse: Schema.Schema<ListDeviceUsersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      deviceUsers: Schema.optional(Schema.Array(DeviceUser)),
-    }),
-  ).annotate({
-    identifier: "ListDeviceUsersResponse",
-  }) as any as Schema.Schema<ListDeviceUsersResponse>;
+export const ListDeviceUsersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    deviceUsers: Schema.optional(Schema.Array(DeviceUser)),
+  }).annotate({ identifier: "ListDeviceUsersResponse" });
 
 export interface GoogleAppsCloudidentityDevicesV1ListEndpointAppsMetadata {}
 
-export const GoogleAppsCloudidentityDevicesV1ListEndpointAppsMetadata: Schema.Schema<GoogleAppsCloudidentityDevicesV1ListEndpointAppsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleAppsCloudidentityDevicesV1ListEndpointAppsMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAppsCloudidentityDevicesV1ListEndpointAppsMetadata",
-  }) as any as Schema.Schema<GoogleAppsCloudidentityDevicesV1ListEndpointAppsMetadata>;
+  });
 
 export interface CreateInboundOidcSsoProfileOperationMetadata {
   /** State of this Operation Will be "awaiting-multi-party-approval" when the operation is deferred due to the target customer having enabled [Multi-party approval for sensitive actions](https://support.google.com/a/answer/13790448). */
   state?: string;
 }
 
-export const CreateInboundOidcSsoProfileOperationMetadata: Schema.Schema<CreateInboundOidcSsoProfileOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreateInboundOidcSsoProfileOperationMetadata",
-  }) as any as Schema.Schema<CreateInboundOidcSsoProfileOperationMetadata>;
+export const CreateInboundOidcSsoProfileOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CreateInboundOidcSsoProfileOperationMetadata" });
 
 export interface GoogleAppsCloudidentityDevicesV1WipeDeviceResponse {
   /** Resultant Device object for the action. Note that asset tags will not be returned in the device object. */
   device?: GoogleAppsCloudidentityDevicesV1Device;
 }
 
-export const GoogleAppsCloudidentityDevicesV1WipeDeviceResponse: Schema.Schema<GoogleAppsCloudidentityDevicesV1WipeDeviceResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      device: Schema.optional(GoogleAppsCloudidentityDevicesV1Device),
-    }),
-  ).annotate({
+export const GoogleAppsCloudidentityDevicesV1WipeDeviceResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    device: Schema.optional(GoogleAppsCloudidentityDevicesV1Device),
+  }).annotate({
     identifier: "GoogleAppsCloudidentityDevicesV1WipeDeviceResponse",
-  }) as any as Schema.Schema<GoogleAppsCloudidentityDevicesV1WipeDeviceResponse>;
+  });
 
 export interface IdpCredential {
   /** Output only. Information of a DSA public key. */
@@ -2653,115 +2254,88 @@ export interface IdpCredential {
   rsaKeyInfo?: RsaPublicKeyInfo;
 }
 
-export const IdpCredential: Schema.Schema<IdpCredential> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dsaKeyInfo: Schema.optional(DsaPublicKeyInfo),
-      name: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      rsaKeyInfo: Schema.optional(RsaPublicKeyInfo),
-    }),
-  ).annotate({
-    identifier: "IdpCredential",
-  }) as any as Schema.Schema<IdpCredential>;
+export const IdpCredential = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dsaKeyInfo: Schema.optional(DsaPublicKeyInfo),
+  name: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  rsaKeyInfo: Schema.optional(RsaPublicKeyInfo),
+}).annotate({ identifier: "IdpCredential" });
 
 export interface GoogleAppsCloudidentityDevicesV1UpdateClientStateMetadata {}
 
-export const GoogleAppsCloudidentityDevicesV1UpdateClientStateMetadata: Schema.Schema<GoogleAppsCloudidentityDevicesV1UpdateClientStateMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleAppsCloudidentityDevicesV1UpdateClientStateMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAppsCloudidentityDevicesV1UpdateClientStateMetadata",
-  }) as any as Schema.Schema<GoogleAppsCloudidentityDevicesV1UpdateClientStateMetadata>;
+  });
 
 export interface UpdateInboundOidcSsoProfileOperationMetadata {
   /** State of this Operation Will be "awaiting-multi-party-approval" when the operation is deferred due to the target customer having enabled [Multi-party approval for sensitive actions](https://support.google.com/a/answer/13790448). */
   state?: string;
 }
 
-export const UpdateInboundOidcSsoProfileOperationMetadata: Schema.Schema<UpdateInboundOidcSsoProfileOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpdateInboundOidcSsoProfileOperationMetadata",
-  }) as any as Schema.Schema<UpdateInboundOidcSsoProfileOperationMetadata>;
+export const UpdateInboundOidcSsoProfileOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UpdateInboundOidcSsoProfileOperationMetadata" });
 
 export interface CreateInboundSamlSsoProfileOperationMetadata {
   /** State of this Operation Will be "awaiting-multi-party-approval" when the operation is deferred due to the target customer having enabled [Multi-party approval for sensitive actions](https://support.google.com/a/answer/13790448). */
   state?: string;
 }
 
-export const CreateInboundSamlSsoProfileOperationMetadata: Schema.Schema<CreateInboundSamlSsoProfileOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreateInboundSamlSsoProfileOperationMetadata",
-  }) as any as Schema.Schema<CreateInboundSamlSsoProfileOperationMetadata>;
+export const CreateInboundSamlSsoProfileOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CreateInboundSamlSsoProfileOperationMetadata" });
 
 export interface ApproveDeviceUserRequest {
   /** Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're using this API for your own organization, use `customers/my_customer` If you're using this API to manage another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the device belongs. */
   customer?: string;
 }
 
-export const ApproveDeviceUserRequest: Schema.Schema<ApproveDeviceUserRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customer: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ApproveDeviceUserRequest",
-  }) as any as Schema.Schema<ApproveDeviceUserRequest>;
+export const ApproveDeviceUserRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customer: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ApproveDeviceUserRequest" });
 
 export interface BlockDeviceUserResponse {
   /** Resultant DeviceUser object for the action. */
   deviceUser?: DeviceUser;
 }
 
-export const BlockDeviceUserResponse: Schema.Schema<BlockDeviceUserResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deviceUser: Schema.optional(DeviceUser),
-    }),
-  ).annotate({
-    identifier: "BlockDeviceUserResponse",
-  }) as any as Schema.Schema<BlockDeviceUserResponse>;
+export const BlockDeviceUserResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deviceUser: Schema.optional(DeviceUser),
+  }).annotate({ identifier: "BlockDeviceUserResponse" });
 
 export interface GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse {
   /** Resultant DeviceUser object for the action. */
   deviceUser?: GoogleAppsCloudidentityDevicesV1DeviceUser;
 }
 
-export const GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse: Schema.Schema<GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deviceUser: Schema.optional(GoogleAppsCloudidentityDevicesV1DeviceUser),
-    }),
-  ).annotate({
+export const GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deviceUser: Schema.optional(GoogleAppsCloudidentityDevicesV1DeviceUser),
+  }).annotate({
     identifier: "GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse",
-  }) as any as Schema.Schema<GoogleAppsCloudidentityDevicesV1ApproveDeviceUserResponse>;
+  });
 
 export interface GoogleAppsCloudidentityDevicesV1ApproveDeviceUserMetadata {}
 
-export const GoogleAppsCloudidentityDevicesV1ApproveDeviceUserMetadata: Schema.Schema<GoogleAppsCloudidentityDevicesV1ApproveDeviceUserMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleAppsCloudidentityDevicesV1ApproveDeviceUserMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAppsCloudidentityDevicesV1ApproveDeviceUserMetadata",
-  }) as any as Schema.Schema<GoogleAppsCloudidentityDevicesV1ApproveDeviceUserMetadata>;
+  });
 
 export interface LookupGroupNameResponse {
   /** Output only. The [resource name](https://cloud.google.com/apis/design/resource_names) of the looked-up `Group`. */
   name?: string;
 }
 
-export const LookupGroupNameResponse: Schema.Schema<LookupGroupNameResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LookupGroupNameResponse",
-  }) as any as Schema.Schema<LookupGroupNameResponse>;
+export const LookupGroupNameResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "LookupGroupNameResponse" });
 
 export interface CreateDeviceRequest {
   /** Required. The device to be created. The name field within this device is ignored in the create method. A new name is created by the method, and returned within the response. Only the fields `device_type`, `serial_number` and `asset_tag` (if present) are used to create the device. All other fields are ignored. The `device_type` and `serial_number` fields are required. */
@@ -2770,22 +2344,17 @@ export interface CreateDeviceRequest {
   customer?: string;
 }
 
-export const CreateDeviceRequest: Schema.Schema<CreateDeviceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      device: Schema.optional(Device),
-      customer: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreateDeviceRequest",
-  }) as any as Schema.Schema<CreateDeviceRequest>;
+export const CreateDeviceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  device: Schema.optional(Device),
+  customer: Schema.optional(Schema.String),
+}).annotate({ identifier: "CreateDeviceRequest" });
 
 export interface GoogleAppsCloudidentityDevicesV1CancelWipeDeviceMetadata {}
 
-export const GoogleAppsCloudidentityDevicesV1CancelWipeDeviceMetadata: Schema.Schema<GoogleAppsCloudidentityDevicesV1CancelWipeDeviceMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleAppsCloudidentityDevicesV1CancelWipeDeviceMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAppsCloudidentityDevicesV1CancelWipeDeviceMetadata",
-  }) as any as Schema.Schema<GoogleAppsCloudidentityDevicesV1CancelWipeDeviceMetadata>;
+  });
 
 export interface ListMembershipsResponse {
   /** A continuation token to retrieve the next page of results, or empty if there are no more results available. */
@@ -2794,36 +2363,29 @@ export interface ListMembershipsResponse {
   memberships?: Array<Membership>;
 }
 
-export const ListMembershipsResponse: Schema.Schema<ListMembershipsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      memberships: Schema.optional(Schema.Array(Membership)),
-    }),
-  ).annotate({
-    identifier: "ListMembershipsResponse",
-  }) as any as Schema.Schema<ListMembershipsResponse>;
+export const ListMembershipsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    memberships: Schema.optional(Schema.Array(Membership)),
+  }).annotate({ identifier: "ListMembershipsResponse" });
 
 export interface DeleteIdpCredentialOperationMetadata {}
 
-export const DeleteIdpCredentialOperationMetadata: Schema.Schema<DeleteIdpCredentialOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const DeleteIdpCredentialOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeleteIdpCredentialOperationMetadata",
-  }) as any as Schema.Schema<DeleteIdpCredentialOperationMetadata>;
+  });
 
 export interface BlockDeviceUserRequest {
   /** Optional. [Resource name](https://cloud.google.com/apis/design/resource_names) of the customer. If you're using this API for your own organization, use `customers/my_customer` If you're using this API to manage another organization, use `customers/{customer_id}`, where customer_id is the customer to whom the device belongs. */
   customer?: string;
 }
 
-export const BlockDeviceUserRequest: Schema.Schema<BlockDeviceUserRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customer: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BlockDeviceUserRequest",
-  }) as any as Schema.Schema<BlockDeviceUserRequest>;
+export const BlockDeviceUserRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    customer: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "BlockDeviceUserRequest" });
 
 export interface ListUserInvitationsResponse {
   /** The list of UserInvitation resources. */
@@ -2832,15 +2394,11 @@ export interface ListUserInvitationsResponse {
   nextPageToken?: string;
 }
 
-export const ListUserInvitationsResponse: Schema.Schema<ListUserInvitationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userInvitations: Schema.optional(Schema.Array(UserInvitation)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListUserInvitationsResponse",
-  }) as any as Schema.Schema<ListUserInvitationsResponse>;
+export const ListUserInvitationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userInvitations: Schema.optional(Schema.Array(UserInvitation)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListUserInvitationsResponse" });
 
 export interface ListIdpCredentialsResponse {
   /** The IdpCredentials from the specified InboundSamlSsoProfile. */
@@ -2849,15 +2407,11 @@ export interface ListIdpCredentialsResponse {
   nextPageToken?: string;
 }
 
-export const ListIdpCredentialsResponse: Schema.Schema<ListIdpCredentialsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      idpCredentials: Schema.optional(Schema.Array(IdpCredential)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListIdpCredentialsResponse",
-  }) as any as Schema.Schema<ListIdpCredentialsResponse>;
+export const ListIdpCredentialsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    idpCredentials: Schema.optional(Schema.Array(IdpCredential)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListIdpCredentialsResponse" });
 
 export interface ListDevicesResponse {
   /** Devices meeting the list restrictions. */
@@ -2866,36 +2420,29 @@ export interface ListDevicesResponse {
   nextPageToken?: string;
 }
 
-export const ListDevicesResponse: Schema.Schema<ListDevicesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      devices: Schema.optional(Schema.Array(Device)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListDevicesResponse",
-  }) as any as Schema.Schema<ListDevicesResponse>;
+export const ListDevicesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  devices: Schema.optional(Schema.Array(Device)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListDevicesResponse" });
 
 export interface GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse {
   /** Resultant DeviceUser object for the action. */
   deviceUser?: GoogleAppsCloudidentityDevicesV1DeviceUser;
 }
 
-export const GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse: Schema.Schema<GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deviceUser: Schema.optional(GoogleAppsCloudidentityDevicesV1DeviceUser),
-    }),
-  ).annotate({
+export const GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deviceUser: Schema.optional(GoogleAppsCloudidentityDevicesV1DeviceUser),
+  }).annotate({
     identifier: "GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse",
-  }) as any as Schema.Schema<GoogleAppsCloudidentityDevicesV1BlockDeviceUserResponse>;
+  });
 
 export interface DeleteInboundSamlSsoProfileOperationMetadata {}
 
-export const DeleteInboundSamlSsoProfileOperationMetadata: Schema.Schema<DeleteInboundSamlSsoProfileOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const DeleteInboundSamlSsoProfileOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeleteInboundSamlSsoProfileOperationMetadata",
-  }) as any as Schema.Schema<DeleteInboundSamlSsoProfileOperationMetadata>;
+  });
 
 export interface ListInboundSsoAssignmentsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -2904,17 +2451,11 @@ export interface ListInboundSsoAssignmentsResponse {
   inboundSsoAssignments?: Array<InboundSsoAssignment>;
 }
 
-export const ListInboundSsoAssignmentsResponse: Schema.Schema<ListInboundSsoAssignmentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      inboundSsoAssignments: Schema.optional(
-        Schema.Array(InboundSsoAssignment),
-      ),
-    }),
-  ).annotate({
-    identifier: "ListInboundSsoAssignmentsResponse",
-  }) as any as Schema.Schema<ListInboundSsoAssignmentsResponse>;
+export const ListInboundSsoAssignmentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    inboundSsoAssignments: Schema.optional(Schema.Array(InboundSsoAssignment)),
+  }).annotate({ identifier: "ListInboundSsoAssignmentsResponse" });
 
 // ==========================================================================
 // Operations

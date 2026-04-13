@@ -34,29 +34,20 @@ export interface ScreenBrightnessSettings {
     | (string & {});
 }
 
-export const ScreenBrightnessSettings: Schema.Schema<ScreenBrightnessSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      screenBrightness: Schema.optional(Schema.Number),
-      screenBrightnessMode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ScreenBrightnessSettings",
-  }) as any as Schema.Schema<ScreenBrightnessSettings>;
+export const ScreenBrightnessSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    screenBrightness: Schema.optional(Schema.Number),
+    screenBrightnessMode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ScreenBrightnessSettings" });
 
 export interface EuiccChipInfo {
   /** Output only. The Embedded Identity Document (EID) that identifies the eUICC chip for each eUICC chip on the device. This is available on company owned devices running Android 13 and above. */
   eid?: string;
 }
 
-export const EuiccChipInfo: Schema.Schema<EuiccChipInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      eid: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EuiccChipInfo",
-  }) as any as Schema.Schema<EuiccChipInfo>;
+export const EuiccChipInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  eid: Schema.optional(Schema.String),
+}).annotate({ identifier: "EuiccChipInfo" });
 
 export interface HardwareInfo {
   /** Name of the hardware. For example, Angler. */
@@ -93,45 +84,36 @@ export interface HardwareInfo {
   deviceBasebandVersion?: string;
 }
 
-export const HardwareInfo: Schema.Schema<HardwareInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hardware: Schema.optional(Schema.String),
-      model: Schema.optional(Schema.String),
-      enterpriseSpecificId: Schema.optional(Schema.String),
-      cpuThrottlingTemperatures: Schema.optional(Schema.Array(Schema.Number)),
-      brand: Schema.optional(Schema.String),
-      batteryThrottlingTemperatures: Schema.optional(
-        Schema.Array(Schema.Number),
-      ),
-      serialNumber: Schema.optional(Schema.String),
-      skinThrottlingTemperatures: Schema.optional(Schema.Array(Schema.Number)),
-      gpuThrottlingTemperatures: Schema.optional(Schema.Array(Schema.Number)),
-      gpuShutdownTemperatures: Schema.optional(Schema.Array(Schema.Number)),
-      batteryShutdownTemperatures: Schema.optional(Schema.Array(Schema.Number)),
-      cpuShutdownTemperatures: Schema.optional(Schema.Array(Schema.Number)),
-      manufacturer: Schema.optional(Schema.String),
-      skinShutdownTemperatures: Schema.optional(Schema.Array(Schema.Number)),
-      euiccChipInfo: Schema.optional(Schema.Array(EuiccChipInfo)),
-      deviceBasebandVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "HardwareInfo",
-  }) as any as Schema.Schema<HardwareInfo>;
+export const HardwareInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  hardware: Schema.optional(Schema.String),
+  model: Schema.optional(Schema.String),
+  enterpriseSpecificId: Schema.optional(Schema.String),
+  cpuThrottlingTemperatures: Schema.optional(Schema.Array(Schema.Number)),
+  brand: Schema.optional(Schema.String),
+  batteryThrottlingTemperatures: Schema.optional(Schema.Array(Schema.Number)),
+  serialNumber: Schema.optional(Schema.String),
+  skinThrottlingTemperatures: Schema.optional(Schema.Array(Schema.Number)),
+  gpuThrottlingTemperatures: Schema.optional(Schema.Array(Schema.Number)),
+  gpuShutdownTemperatures: Schema.optional(Schema.Array(Schema.Number)),
+  batteryShutdownTemperatures: Schema.optional(Schema.Array(Schema.Number)),
+  cpuShutdownTemperatures: Schema.optional(Schema.Array(Schema.Number)),
+  manufacturer: Schema.optional(Schema.String),
+  skinShutdownTemperatures: Schema.optional(Schema.Array(Schema.Number)),
+  euiccChipInfo: Schema.optional(Schema.Array(EuiccChipInfo)),
+  deviceBasebandVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "HardwareInfo" });
 
 export interface KeyguardDismissedEvent {}
 
-export const KeyguardDismissedEvent: Schema.Schema<KeyguardDismissedEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "KeyguardDismissedEvent",
-  }) as any as Schema.Schema<KeyguardDismissedEvent>;
+export const KeyguardDismissedEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "KeyguardDismissedEvent" });
 
 export interface StopLostModeParams {}
 
-export const StopLostModeParams: Schema.Schema<StopLostModeParams> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "StopLostModeParams",
-  }) as any as Schema.Schema<StopLostModeParams>;
+export const StopLostModeParams = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "StopLostModeParams" });
 
 export interface PasswordPoliciesContext {
   /** The scope of non-compliant password. */
@@ -142,14 +124,10 @@ export interface PasswordPoliciesContext {
     | (string & {});
 }
 
-export const PasswordPoliciesContext: Schema.Schema<PasswordPoliciesContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      passwordPolicyScope: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PasswordPoliciesContext",
-  }) as any as Schema.Schema<PasswordPoliciesContext>;
+export const PasswordPoliciesContext =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    passwordPolicyScope: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PasswordPoliciesContext" });
 
 export interface DefaultApplicationContext {
   /** Output only. The scope of non-compliant default application setting. */
@@ -161,28 +139,19 @@ export interface DefaultApplicationContext {
     | (string & {});
 }
 
-export const DefaultApplicationContext: Schema.Schema<DefaultApplicationContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      defaultApplicationScope: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DefaultApplicationContext",
-  }) as any as Schema.Schema<DefaultApplicationContext>;
+export const DefaultApplicationContext =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    defaultApplicationScope: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DefaultApplicationContext" });
 
 export interface OncWifiContext {
   /** The GUID of non-compliant Wi-Fi configuration. */
   wifiGuid?: string;
 }
 
-export const OncWifiContext: Schema.Schema<OncWifiContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      wifiGuid: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OncWifiContext",
-  }) as any as Schema.Schema<OncWifiContext>;
+export const OncWifiContext = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  wifiGuid: Schema.optional(Schema.String),
+}).annotate({ identifier: "OncWifiContext" });
 
 export interface SpecificNonComplianceContext {
   /** Additional context for non-compliance related to password policies. See PASSWORD_POLICIES_PASSWORD_EXPIRED and PASSWORD_POLICIES_PASSWORD_NOT_SUFFICIENT. */
@@ -193,16 +162,12 @@ export interface SpecificNonComplianceContext {
   oncWifiContext?: OncWifiContext;
 }
 
-export const SpecificNonComplianceContext: Schema.Schema<SpecificNonComplianceContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      passwordPoliciesContext: Schema.optional(PasswordPoliciesContext),
-      defaultApplicationContext: Schema.optional(DefaultApplicationContext),
-      oncWifiContext: Schema.optional(OncWifiContext),
-    }),
-  ).annotate({
-    identifier: "SpecificNonComplianceContext",
-  }) as any as Schema.Schema<SpecificNonComplianceContext>;
+export const SpecificNonComplianceContext =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    passwordPoliciesContext: Schema.optional(PasswordPoliciesContext),
+    defaultApplicationContext: Schema.optional(DefaultApplicationContext),
+    oncWifiContext: Schema.optional(OncWifiContext),
+  }).annotate({ identifier: "SpecificNonComplianceContext" });
 
 export interface NonComplianceDetail {
   /** The name of the policy setting. This is the JSON field name of a top-level Policy field. */
@@ -268,23 +233,16 @@ export interface NonComplianceDetail {
   currentValue?: unknown;
 }
 
-export const NonComplianceDetail: Schema.Schema<NonComplianceDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      settingName: Schema.optional(Schema.String),
-      specificNonComplianceReason: Schema.optional(Schema.String),
-      nonComplianceReason: Schema.optional(Schema.String),
-      specificNonComplianceContext: Schema.optional(
-        SpecificNonComplianceContext,
-      ),
-      packageName: Schema.optional(Schema.String),
-      fieldPath: Schema.optional(Schema.String),
-      installationFailureReason: Schema.optional(Schema.String),
-      currentValue: Schema.optional(Schema.Unknown),
-    }),
-  ).annotate({
-    identifier: "NonComplianceDetail",
-  }) as any as Schema.Schema<NonComplianceDetail>;
+export const NonComplianceDetail = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  settingName: Schema.optional(Schema.String),
+  specificNonComplianceReason: Schema.optional(Schema.String),
+  nonComplianceReason: Schema.optional(Schema.String),
+  specificNonComplianceContext: Schema.optional(SpecificNonComplianceContext),
+  packageName: Schema.optional(Schema.String),
+  fieldPath: Schema.optional(Schema.String),
+  installationFailureReason: Schema.optional(Schema.String),
+  currentValue: Schema.optional(Schema.Unknown),
+}).annotate({ identifier: "NonComplianceDetail" });
 
 export interface AlwaysOnVpnPackage {
   /** The package name of the VPN app. */
@@ -293,15 +251,10 @@ export interface AlwaysOnVpnPackage {
   lockdownEnabled?: boolean;
 }
 
-export const AlwaysOnVpnPackage: Schema.Schema<AlwaysOnVpnPackage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      packageName: Schema.optional(Schema.String),
-      lockdownEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "AlwaysOnVpnPackage",
-  }) as any as Schema.Schema<AlwaysOnVpnPackage>;
+export const AlwaysOnVpnPackage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  packageName: Schema.optional(Schema.String),
+  lockdownEnabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "AlwaysOnVpnPackage" });
 
 export interface PowerManagementEvent {
   /** The creation time of the event. */
@@ -321,23 +274,17 @@ export interface PowerManagementEvent {
     | (string & {});
 }
 
-export const PowerManagementEvent: Schema.Schema<PowerManagementEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      batteryLevel: Schema.optional(Schema.Number),
-      eventType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PowerManagementEvent",
-  }) as any as Schema.Schema<PowerManagementEvent>;
+export const PowerManagementEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createTime: Schema.optional(Schema.String),
+  batteryLevel: Schema.optional(Schema.Number),
+  eventType: Schema.optional(Schema.String),
+}).annotate({ identifier: "PowerManagementEvent" });
 
 export interface LoggingStoppedEvent {}
 
-export const LoggingStoppedEvent: Schema.Schema<LoggingStoppedEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "LoggingStoppedEvent",
-  }) as any as Schema.Schema<LoggingStoppedEvent>;
+export const LoggingStoppedEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "LoggingStoppedEvent" });
 
 export interface GenerateEnterpriseUpgradeUrlRequest {
   /** Optional. A list of domains that are permitted for the admin email. The IT admin cannot enter an email address with a domain name that is not in this list. Subdomains of domains in this list are not allowed but can be allowed by adding a second entry which has *. prefixed to the domain name (e.g. *.example.com). If the field is not present or is an empty list then the IT admin is free to use any valid domain name. Personal email domains are not allowed. */
@@ -346,15 +293,11 @@ export interface GenerateEnterpriseUpgradeUrlRequest {
   adminEmail?: string;
 }
 
-export const GenerateEnterpriseUpgradeUrlRequest: Schema.Schema<GenerateEnterpriseUpgradeUrlRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      allowedDomains: Schema.optional(Schema.Array(Schema.String)),
-      adminEmail: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GenerateEnterpriseUpgradeUrlRequest",
-  }) as any as Schema.Schema<GenerateEnterpriseUpgradeUrlRequest>;
+export const GenerateEnterpriseUpgradeUrlRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allowedDomains: Schema.optional(Schema.Array(Schema.String)),
+    adminEmail: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GenerateEnterpriseUpgradeUrlRequest" });
 
 export interface DeviceRadioState {
   /** Controls whether cellular 2G setting can be toggled by the user or not. */
@@ -398,33 +341,23 @@ export interface DeviceRadioState {
     | (string & {});
 }
 
-export const DeviceRadioState: Schema.Schema<DeviceRadioState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cellularTwoGState: Schema.optional(Schema.String),
-      userInitiatedAddEsimSettings: Schema.optional(Schema.String),
-      airplaneModeState: Schema.optional(Schema.String),
-      wifiState: Schema.optional(Schema.String),
-      ultraWidebandState: Schema.optional(Schema.String),
-      minimumWifiSecurityLevel: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DeviceRadioState",
-  }) as any as Schema.Schema<DeviceRadioState>;
+export const DeviceRadioState = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cellularTwoGState: Schema.optional(Schema.String),
+  userInitiatedAddEsimSettings: Schema.optional(Schema.String),
+  airplaneModeState: Schema.optional(Schema.String),
+  wifiState: Schema.optional(Schema.String),
+  ultraWidebandState: Schema.optional(Schema.String),
+  minimumWifiSecurityLevel: Schema.optional(Schema.String),
+}).annotate({ identifier: "DeviceRadioState" });
 
 export interface ClearAppsDataParams {
   /** The package names of the apps whose data will be cleared when the command is executed. */
   packageNames?: Array<string>;
 }
 
-export const ClearAppsDataParams: Schema.Schema<ClearAppsDataParams> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      packageNames: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ClearAppsDataParams",
-  }) as any as Schema.Schema<ClearAppsDataParams>;
+export const ClearAppsDataParams = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  packageNames: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ClearAppsDataParams" });
 
 export interface BlockAction {
   /** Specifies the scope of this BlockAction. Only applicable to devices that are company-owned. */
@@ -437,15 +370,10 @@ export interface BlockAction {
   blockAfterDays?: number;
 }
 
-export const BlockAction: Schema.Schema<BlockAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      blockScope: Schema.optional(Schema.String),
-      blockAfterDays: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "BlockAction",
-  }) as any as Schema.Schema<BlockAction>;
+export const BlockAction = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  blockScope: Schema.optional(Schema.String),
+  blockAfterDays: Schema.optional(Schema.Number),
+}).annotate({ identifier: "BlockAction" });
 
 export interface WipeAction {
   /** Number of days the policy is non-compliant before the device or work profile is wiped. wipeAfterDays must be greater than blockAfterDays. */
@@ -454,13 +382,10 @@ export interface WipeAction {
   preserveFrp?: boolean;
 }
 
-export const WipeAction: Schema.Schema<WipeAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      wipeAfterDays: Schema.optional(Schema.Number),
-      preserveFrp: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "WipeAction" }) as any as Schema.Schema<WipeAction>;
+export const WipeAction = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  wipeAfterDays: Schema.optional(Schema.Number),
+  preserveFrp: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "WipeAction" });
 
 export interface PolicyEnforcementRule {
   /** The top-level policy to enforce. For example, applications or passwordPolicies. */
@@ -471,16 +396,11 @@ export interface PolicyEnforcementRule {
   wipeAction?: WipeAction;
 }
 
-export const PolicyEnforcementRule: Schema.Schema<PolicyEnforcementRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      settingName: Schema.optional(Schema.String),
-      blockAction: Schema.optional(BlockAction),
-      wipeAction: Schema.optional(WipeAction),
-    }),
-  ).annotate({
-    identifier: "PolicyEnforcementRule",
-  }) as any as Schema.Schema<PolicyEnforcementRule>;
+export const PolicyEnforcementRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  settingName: Schema.optional(Schema.String),
+  blockAction: Schema.optional(BlockAction),
+  wipeAction: Schema.optional(WipeAction),
+}).annotate({ identifier: "PolicyEnforcementRule" });
 
 export interface PasswordRequirements {
   /** Minimum number of numerical digits required in the password. Only enforced when password_quality is COMPLEX. */
@@ -537,27 +457,22 @@ export interface PasswordRequirements {
     | (string & {});
 }
 
-export const PasswordRequirements: Schema.Schema<PasswordRequirements> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      passwordMinimumNumeric: Schema.optional(Schema.Number),
-      unifiedLockSettings: Schema.optional(Schema.String),
-      passwordExpirationTimeout: Schema.optional(Schema.String),
-      passwordMinimumLength: Schema.optional(Schema.Number),
-      passwordMinimumLetters: Schema.optional(Schema.Number),
-      passwordQuality: Schema.optional(Schema.String),
-      passwordMinimumLowerCase: Schema.optional(Schema.Number),
-      passwordMinimumNonLetter: Schema.optional(Schema.Number),
-      passwordMinimumSymbols: Schema.optional(Schema.Number),
-      maximumFailedPasswordsForWipe: Schema.optional(Schema.Number),
-      passwordScope: Schema.optional(Schema.String),
-      passwordMinimumUpperCase: Schema.optional(Schema.Number),
-      passwordHistoryLength: Schema.optional(Schema.Number),
-      requirePasswordUnlock: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PasswordRequirements",
-  }) as any as Schema.Schema<PasswordRequirements>;
+export const PasswordRequirements = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  passwordMinimumNumeric: Schema.optional(Schema.Number),
+  unifiedLockSettings: Schema.optional(Schema.String),
+  passwordExpirationTimeout: Schema.optional(Schema.String),
+  passwordMinimumLength: Schema.optional(Schema.Number),
+  passwordMinimumLetters: Schema.optional(Schema.Number),
+  passwordQuality: Schema.optional(Schema.String),
+  passwordMinimumLowerCase: Schema.optional(Schema.Number),
+  passwordMinimumNonLetter: Schema.optional(Schema.Number),
+  passwordMinimumSymbols: Schema.optional(Schema.Number),
+  maximumFailedPasswordsForWipe: Schema.optional(Schema.Number),
+  passwordScope: Schema.optional(Schema.String),
+  passwordMinimumUpperCase: Schema.optional(Schema.Number),
+  passwordHistoryLength: Schema.optional(Schema.Number),
+  requirePasswordUnlock: Schema.optional(Schema.String),
+}).annotate({ identifier: "PasswordRequirements" });
 
 export interface UsageLog {
   /** Specifies which log types are enabled. Note that users will receive on-device messaging when usage logging is enabled. */
@@ -576,27 +491,20 @@ export interface UsageLog {
   >;
 }
 
-export const UsageLog: Schema.Schema<UsageLog> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabledLogTypes: Schema.optional(Schema.Array(Schema.String)),
-      uploadOnCellularAllowed: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "UsageLog" }) as any as Schema.Schema<UsageLog>;
+export const UsageLog = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabledLogTypes: Schema.optional(Schema.Array(Schema.String)),
+  uploadOnCellularAllowed: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "UsageLog" });
 
 export interface ApplicationReportingSettings {
   /** Whether removed apps are included in application reports. */
   includeRemovedApps?: boolean;
 }
 
-export const ApplicationReportingSettings: Schema.Schema<ApplicationReportingSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      includeRemovedApps: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ApplicationReportingSettings",
-  }) as any as Schema.Schema<ApplicationReportingSettings>;
+export const ApplicationReportingSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    includeRemovedApps: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "ApplicationReportingSettings" });
 
 export interface StatusReportingSettings {
   /** Whether network info reporting is enabled. */
@@ -625,27 +533,21 @@ export interface StatusReportingSettings {
   applicationReportsEnabled?: boolean;
 }
 
-export const StatusReportingSettings: Schema.Schema<StatusReportingSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      networkInfoEnabled: Schema.optional(Schema.Boolean),
-      systemPropertiesEnabled: Schema.optional(Schema.Boolean),
-      applicationReportingSettings: Schema.optional(
-        ApplicationReportingSettings,
-      ),
-      memoryInfoEnabled: Schema.optional(Schema.Boolean),
-      displayInfoEnabled: Schema.optional(Schema.Boolean),
-      powerManagementEventsEnabled: Schema.optional(Schema.Boolean),
-      hardwareStatusEnabled: Schema.optional(Schema.Boolean),
-      deviceSettingsEnabled: Schema.optional(Schema.Boolean),
-      commonCriteriaModeEnabled: Schema.optional(Schema.Boolean),
-      softwareInfoEnabled: Schema.optional(Schema.Boolean),
-      defaultApplicationInfoReportingEnabled: Schema.optional(Schema.Boolean),
-      applicationReportsEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "StatusReportingSettings",
-  }) as any as Schema.Schema<StatusReportingSettings>;
+export const StatusReportingSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    networkInfoEnabled: Schema.optional(Schema.Boolean),
+    systemPropertiesEnabled: Schema.optional(Schema.Boolean),
+    applicationReportingSettings: Schema.optional(ApplicationReportingSettings),
+    memoryInfoEnabled: Schema.optional(Schema.Boolean),
+    displayInfoEnabled: Schema.optional(Schema.Boolean),
+    powerManagementEventsEnabled: Schema.optional(Schema.Boolean),
+    hardwareStatusEnabled: Schema.optional(Schema.Boolean),
+    deviceSettingsEnabled: Schema.optional(Schema.Boolean),
+    commonCriteriaModeEnabled: Schema.optional(Schema.Boolean),
+    softwareInfoEnabled: Schema.optional(Schema.Boolean),
+    defaultApplicationInfoReportingEnabled: Schema.optional(Schema.Boolean),
+    applicationReportsEnabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "StatusReportingSettings" });
 
 export interface ContentProviderEndpoint {
   /** This feature is not generally available. */
@@ -656,16 +558,12 @@ export interface ContentProviderEndpoint {
   signingCertsSha256?: Array<string>;
 }
 
-export const ContentProviderEndpoint: Schema.Schema<ContentProviderEndpoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-      packageName: Schema.optional(Schema.String),
-      signingCertsSha256: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ContentProviderEndpoint",
-  }) as any as Schema.Schema<ContentProviderEndpoint>;
+export const ContentProviderEndpoint =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uri: Schema.optional(Schema.String),
+    packageName: Schema.optional(Schema.String),
+    signingCertsSha256: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ContentProviderEndpoint" });
 
 export interface OncCertificateProvider {
   /** This feature is not generally available. */
@@ -674,15 +572,12 @@ export interface OncCertificateProvider {
   contentProviderEndpoint?: ContentProviderEndpoint;
 }
 
-export const OncCertificateProvider: Schema.Schema<OncCertificateProvider> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      certificateReferences: Schema.optional(Schema.Array(Schema.String)),
-      contentProviderEndpoint: Schema.optional(ContentProviderEndpoint),
-    }),
-  ).annotate({
-    identifier: "OncCertificateProvider",
-  }) as any as Schema.Schema<OncCertificateProvider>;
+export const OncCertificateProvider = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    certificateReferences: Schema.optional(Schema.Array(Schema.String)),
+    contentProviderEndpoint: Schema.optional(ContentProviderEndpoint),
+  },
+).annotate({ identifier: "OncCertificateProvider" });
 
 export interface UserFacingMessage {
   /** A map containing pairs, where locale is a well-formed BCP 47 language (https://www.w3.org/International/articles/language-tags/) code, such as en-US, es-ES, or fr. */
@@ -691,17 +586,12 @@ export interface UserFacingMessage {
   defaultMessage?: string;
 }
 
-export const UserFacingMessage: Schema.Schema<UserFacingMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      localizedMessages: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      defaultMessage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UserFacingMessage",
-  }) as any as Schema.Schema<UserFacingMessage>;
+export const UserFacingMessage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  localizedMessages: Schema.optional(
+    Schema.Record(Schema.String, Schema.String),
+  ),
+  defaultMessage: Schema.optional(Schema.String),
+}).annotate({ identifier: "UserFacingMessage" });
 
 export interface NonComplianceDetailCondition {
   /** The name of the policy setting. This is the JSON field name of a top-level Policy field. If not set, then this condition matches any setting name. */
@@ -727,30 +617,21 @@ export interface NonComplianceDetailCondition {
     | (string & {});
 }
 
-export const NonComplianceDetailCondition: Schema.Schema<NonComplianceDetailCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      settingName: Schema.optional(Schema.String),
-      packageName: Schema.optional(Schema.String),
-      nonComplianceReason: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NonComplianceDetailCondition",
-  }) as any as Schema.Schema<NonComplianceDetailCondition>;
+export const NonComplianceDetailCondition =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    settingName: Schema.optional(Schema.String),
+    packageName: Schema.optional(Schema.String),
+    nonComplianceReason: Schema.optional(Schema.String),
+  }).annotate({ identifier: "NonComplianceDetailCondition" });
 
 export interface ApiLevelCondition {
   /** The minimum desired Android Framework API level. If the device doesn't meet the minimum requirement, this condition is satisfied. Must be greater than zero. */
   minApiLevel?: number;
 }
 
-export const ApiLevelCondition: Schema.Schema<ApiLevelCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      minApiLevel: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "ApiLevelCondition",
-  }) as any as Schema.Schema<ApiLevelCondition>;
+export const ApiLevelCondition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  minApiLevel: Schema.optional(Schema.Number),
+}).annotate({ identifier: "ApiLevelCondition" });
 
 export interface ComplianceRule {
   /** A condition which is satisfied if there exists any matching NonComplianceDetail for the device. */
@@ -763,33 +644,21 @@ export interface ComplianceRule {
   apiLevelCondition?: ApiLevelCondition;
 }
 
-export const ComplianceRule: Schema.Schema<ComplianceRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nonComplianceDetailCondition: Schema.optional(
-        NonComplianceDetailCondition,
-      ),
-      disableApps: Schema.optional(Schema.Boolean),
-      packageNamesToDisable: Schema.optional(Schema.Array(Schema.String)),
-      apiLevelCondition: Schema.optional(ApiLevelCondition),
-    }),
-  ).annotate({
-    identifier: "ComplianceRule",
-  }) as any as Schema.Schema<ComplianceRule>;
+export const ComplianceRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nonComplianceDetailCondition: Schema.optional(NonComplianceDetailCondition),
+  disableApps: Schema.optional(Schema.Boolean),
+  packageNamesToDisable: Schema.optional(Schema.Array(Schema.String)),
+  apiLevelCondition: Schema.optional(ApiLevelCondition),
+}).annotate({ identifier: "ComplianceRule" });
 
 export interface DefaultApplication {
   /** Required. The package name that should be set as the default application. The policy is rejected if the package name is invalid. */
   packageName?: string;
 }
 
-export const DefaultApplication: Schema.Schema<DefaultApplication> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      packageName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DefaultApplication",
-  }) as any as Schema.Schema<DefaultApplication>;
+export const DefaultApplication = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  packageName: Schema.optional(Schema.String),
+}).annotate({ identifier: "DefaultApplication" });
 
 export interface DefaultApplicationSetting {
   /** Required. The app type to set the default application. */
@@ -816,16 +685,12 @@ export interface DefaultApplicationSetting {
   defaultApplications?: Array<DefaultApplication>;
 }
 
-export const DefaultApplicationSetting: Schema.Schema<DefaultApplicationSetting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      defaultApplicationType: Schema.optional(Schema.String),
-      defaultApplicationScopes: Schema.optional(Schema.Array(Schema.String)),
-      defaultApplications: Schema.optional(Schema.Array(DefaultApplication)),
-    }),
-  ).annotate({
-    identifier: "DefaultApplicationSetting",
-  }) as any as Schema.Schema<DefaultApplicationSetting>;
+export const DefaultApplicationSetting =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    defaultApplicationType: Schema.optional(Schema.String),
+    defaultApplicationScopes: Schema.optional(Schema.Array(Schema.String)),
+    defaultApplications: Schema.optional(Schema.Array(DefaultApplication)),
+  }).annotate({ identifier: "DefaultApplicationSetting" });
 
 export interface ExtensionConfig {
   /** Hex-encoded SHA-256 hashes of the signing key certificates of the extension app. Only hexadecimal string representations of 64 characters are valid.The signing key certificate fingerprints are always obtained from the Play Store and this field is used to provide additional signing key certificate fingerprints. However, if the application is not available on the Play Store, this field needs to be set. A NonComplianceDetail with INVALID_VALUE is reported if this field is not set when the application is not available on the Play Store.The signing key certificate fingerprint of the extension app on the device must match one of the signing key certificate fingerprints obtained from the Play Store or the ones provided in this field for the app to be able to communicate with Android Device Policy.In production use cases, it is recommended to leave this empty. */
@@ -834,17 +699,10 @@ export interface ExtensionConfig {
   notificationReceiver?: string;
 }
 
-export const ExtensionConfig: Schema.Schema<ExtensionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      signingKeyFingerprintsSha256: Schema.optional(
-        Schema.Array(Schema.String),
-      ),
-      notificationReceiver: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ExtensionConfig",
-  }) as any as Schema.Schema<ExtensionConfig>;
+export const ExtensionConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  signingKeyFingerprintsSha256: Schema.optional(Schema.Array(Schema.String)),
+  notificationReceiver: Schema.optional(Schema.String),
+}).annotate({ identifier: "ExtensionConfig" });
 
 export interface Role {
   /** Required. The type of the role an app can have. */
@@ -857,12 +715,9 @@ export interface Role {
     | (string & {});
 }
 
-export const Role: Schema.Schema<Role> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      roleType: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Role" }) as any as Schema.Schema<Role>;
+export const Role = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  roleType: Schema.optional(Schema.String),
+}).annotate({ identifier: "Role" });
 
 export interface ManagedConfigurationTemplate {
   /** The ID of the managed configurations template. */
@@ -871,17 +726,13 @@ export interface ManagedConfigurationTemplate {
   configurationVariables?: Record<string, string>;
 }
 
-export const ManagedConfigurationTemplate: Schema.Schema<ManagedConfigurationTemplate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      templateId: Schema.optional(Schema.String),
-      configurationVariables: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-    }),
-  ).annotate({
-    identifier: "ManagedConfigurationTemplate",
-  }) as any as Schema.Schema<ManagedConfigurationTemplate>;
+export const ManagedConfigurationTemplate =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    templateId: Schema.optional(Schema.String),
+    configurationVariables: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+  }).annotate({ identifier: "ManagedConfigurationTemplate" });
 
 export interface InstallConstraint {
   /** Optional. Network type constraint. */
@@ -904,16 +755,11 @@ export interface InstallConstraint {
     | (string & {});
 }
 
-export const InstallConstraint: Schema.Schema<InstallConstraint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      networkTypeConstraint: Schema.optional(Schema.String),
-      deviceIdleConstraint: Schema.optional(Schema.String),
-      chargingConstraint: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InstallConstraint",
-  }) as any as Schema.Schema<InstallConstraint>;
+export const InstallConstraint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  networkTypeConstraint: Schema.optional(Schema.String),
+  deviceIdleConstraint: Schema.optional(Schema.String),
+  chargingConstraint: Schema.optional(Schema.String),
+}).annotate({ identifier: "InstallConstraint" });
 
 export interface CustomAppConfig {
   /** Optional. User uninstall settings of the custom app. */
@@ -924,14 +770,9 @@ export interface CustomAppConfig {
     | (string & {});
 }
 
-export const CustomAppConfig: Schema.Schema<CustomAppConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userUninstallSettings: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomAppConfig",
-  }) as any as Schema.Schema<CustomAppConfig>;
+export const CustomAppConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  userUninstallSettings: Schema.optional(Schema.String),
+}).annotate({ identifier: "CustomAppConfig" });
 
 export interface PermissionGrant {
   /** The Android permission or group, e.g. android.permission.READ_CALENDAR or android.permission_group.CALENDAR. */
@@ -945,29 +786,20 @@ export interface PermissionGrant {
     | (string & {});
 }
 
-export const PermissionGrant: Schema.Schema<PermissionGrant> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permission: Schema.optional(Schema.String),
-      policy: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PermissionGrant",
-  }) as any as Schema.Schema<PermissionGrant>;
+export const PermissionGrant = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  permission: Schema.optional(Schema.String),
+  policy: Schema.optional(Schema.String),
+}).annotate({ identifier: "PermissionGrant" });
 
 export interface ApplicationSigningKeyCert {
   /** Required. The SHA-256 hash value of the signing key certificate of the app. This must be a valid SHA-256 hash value, i.e. 32 bytes. */
   signingKeyCertFingerprintSha256?: string;
 }
 
-export const ApplicationSigningKeyCert: Schema.Schema<ApplicationSigningKeyCert> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      signingKeyCertFingerprintSha256: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ApplicationSigningKeyCert",
-  }) as any as Schema.Schema<ApplicationSigningKeyCert>;
+export const ApplicationSigningKeyCert =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    signingKeyCertFingerprintSha256: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ApplicationSigningKeyCert" });
 
 export interface ApplicationPolicy {
   /** Managed configuration applied to the app. The format for the configuration is dictated by the ManagedProperty values supported by the app. Each field name in the managed configuration must match the key field of the ManagedProperty. The field value must be compatible with the type of the ManagedProperty: *type* *JSON value* BOOL true or false STRING string INTEGER number CHOICE string MULTISELECT array of strings HIDDEN string BUNDLE_ARRAY array of objects Note: string values cannot be longer than 65535 characters. */
@@ -1078,41 +910,34 @@ export interface ApplicationPolicy {
     | (string & {});
 }
 
-export const ApplicationPolicy: Schema.Schema<ApplicationPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      managedConfiguration: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-      delegatedScopes: Schema.optional(Schema.Array(Schema.String)),
-      accessibleTrackIds: Schema.optional(Schema.Array(Schema.String)),
-      connectedWorkAndPersonalApp: Schema.optional(Schema.String),
-      installPriority: Schema.optional(Schema.Number),
-      userControlSettings: Schema.optional(Schema.String),
-      extensionConfig: Schema.optional(ExtensionConfig),
-      roles: Schema.optional(Schema.Array(Role)),
-      autoUpdateMode: Schema.optional(Schema.String),
-      managedConfigurationTemplate: Schema.optional(
-        ManagedConfigurationTemplate,
-      ),
-      installConstraint: Schema.optional(Schema.Array(InstallConstraint)),
-      minimumVersionCode: Schema.optional(Schema.Number),
-      credentialProviderPolicy: Schema.optional(Schema.String),
-      alwaysOnVpnLockdownExemption: Schema.optional(Schema.String),
-      disabled: Schema.optional(Schema.Boolean),
-      customAppConfig: Schema.optional(CustomAppConfig),
-      installType: Schema.optional(Schema.String),
-      lockTaskAllowed: Schema.optional(Schema.Boolean),
-      workProfileWidgets: Schema.optional(Schema.String),
-      permissionGrants: Schema.optional(Schema.Array(PermissionGrant)),
-      preferentialNetworkId: Schema.optional(Schema.String),
-      signingKeyCerts: Schema.optional(Schema.Array(ApplicationSigningKeyCert)),
-      packageName: Schema.optional(Schema.String),
-      defaultPermissionPolicy: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ApplicationPolicy",
-  }) as any as Schema.Schema<ApplicationPolicy>;
+export const ApplicationPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  managedConfiguration: Schema.optional(
+    Schema.Record(Schema.String, Schema.Unknown),
+  ),
+  delegatedScopes: Schema.optional(Schema.Array(Schema.String)),
+  accessibleTrackIds: Schema.optional(Schema.Array(Schema.String)),
+  connectedWorkAndPersonalApp: Schema.optional(Schema.String),
+  installPriority: Schema.optional(Schema.Number),
+  userControlSettings: Schema.optional(Schema.String),
+  extensionConfig: Schema.optional(ExtensionConfig),
+  roles: Schema.optional(Schema.Array(Role)),
+  autoUpdateMode: Schema.optional(Schema.String),
+  managedConfigurationTemplate: Schema.optional(ManagedConfigurationTemplate),
+  installConstraint: Schema.optional(Schema.Array(InstallConstraint)),
+  minimumVersionCode: Schema.optional(Schema.Number),
+  credentialProviderPolicy: Schema.optional(Schema.String),
+  alwaysOnVpnLockdownExemption: Schema.optional(Schema.String),
+  disabled: Schema.optional(Schema.Boolean),
+  customAppConfig: Schema.optional(CustomAppConfig),
+  installType: Schema.optional(Schema.String),
+  lockTaskAllowed: Schema.optional(Schema.Boolean),
+  workProfileWidgets: Schema.optional(Schema.String),
+  permissionGrants: Schema.optional(Schema.Array(PermissionGrant)),
+  preferentialNetworkId: Schema.optional(Schema.String),
+  signingKeyCerts: Schema.optional(Schema.Array(ApplicationSigningKeyCert)),
+  packageName: Schema.optional(Schema.String),
+  defaultPermissionPolicy: Schema.optional(Schema.String),
+}).annotate({ identifier: "ApplicationPolicy" });
 
 export interface Androidmanagement_Date {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
@@ -1123,16 +948,13 @@ export interface Androidmanagement_Date {
   month?: number;
 }
 
-export const Androidmanagement_Date: Schema.Schema<Androidmanagement_Date> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      year: Schema.optional(Schema.Number),
-      day: Schema.optional(Schema.Number),
-      month: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "Androidmanagement_Date",
-  }) as any as Schema.Schema<Androidmanagement_Date>;
+export const Androidmanagement_Date = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    year: Schema.optional(Schema.Number),
+    day: Schema.optional(Schema.Number),
+    month: Schema.optional(Schema.Number),
+  },
+).annotate({ identifier: "Androidmanagement_Date" });
 
 export interface FreezePeriod {
   /** The start date (inclusive) of the freeze period. Note: day and month must be set. year should not be set as it is not used. For example, {"month": 1,"date": 30}. */
@@ -1141,15 +963,10 @@ export interface FreezePeriod {
   endDate?: Androidmanagement_Date;
 }
 
-export const FreezePeriod: Schema.Schema<FreezePeriod> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startDate: Schema.optional(Androidmanagement_Date),
-      endDate: Schema.optional(Androidmanagement_Date),
-    }),
-  ).annotate({
-    identifier: "FreezePeriod",
-  }) as any as Schema.Schema<FreezePeriod>;
+export const FreezePeriod = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startDate: Schema.optional(Androidmanagement_Date),
+  endDate: Schema.optional(Androidmanagement_Date),
+}).annotate({ identifier: "FreezePeriod" });
 
 export interface SystemUpdate {
   /** If the type is WINDOWED, the start of the maintenance window, measured as the number of minutes after midnight in the device's local time. This value must be between 0 and 1439, inclusive. */
@@ -1167,17 +984,12 @@ export interface SystemUpdate {
     | (string & {});
 }
 
-export const SystemUpdate: Schema.Schema<SystemUpdate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startMinutes: Schema.optional(Schema.Number),
-      endMinutes: Schema.optional(Schema.Number),
-      freezePeriods: Schema.optional(Schema.Array(FreezePeriod)),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SystemUpdate",
-  }) as any as Schema.Schema<SystemUpdate>;
+export const SystemUpdate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startMinutes: Schema.optional(Schema.Number),
+  endMinutes: Schema.optional(Schema.Number),
+  freezePeriods: Schema.optional(Schema.Array(FreezePeriod)),
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "SystemUpdate" });
 
 export interface PersonalApplicationPolicy {
   /** The package name of the application. */
@@ -1190,15 +1002,11 @@ export interface PersonalApplicationPolicy {
     | (string & {});
 }
 
-export const PersonalApplicationPolicy: Schema.Schema<PersonalApplicationPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      packageName: Schema.optional(Schema.String),
-      installType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PersonalApplicationPolicy",
-  }) as any as Schema.Schema<PersonalApplicationPolicy>;
+export const PersonalApplicationPolicy =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageName: Schema.optional(Schema.String),
+    installType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PersonalApplicationPolicy" });
 
 export interface PersonalUsagePolicies {
   /** Account types that can't be managed by the user. */
@@ -1232,39 +1040,29 @@ export interface PersonalUsagePolicies {
     | (string & {});
 }
 
-export const PersonalUsagePolicies: Schema.Schema<PersonalUsagePolicies> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accountTypesWithManagementDisabled: Schema.optional(
-        Schema.Array(Schema.String),
-      ),
-      cameraDisabled: Schema.optional(Schema.Boolean),
-      maxDaysWithWorkOff: Schema.optional(Schema.Number),
-      personalApplications: Schema.optional(
-        Schema.Array(PersonalApplicationPolicy),
-      ),
-      screenCaptureDisabled: Schema.optional(Schema.Boolean),
-      personalPlayStoreMode: Schema.optional(Schema.String),
-      bluetoothSharing: Schema.optional(Schema.String),
-      privateSpacePolicy: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PersonalUsagePolicies",
-  }) as any as Schema.Schema<PersonalUsagePolicies>;
+export const PersonalUsagePolicies = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  accountTypesWithManagementDisabled: Schema.optional(
+    Schema.Array(Schema.String),
+  ),
+  cameraDisabled: Schema.optional(Schema.Boolean),
+  maxDaysWithWorkOff: Schema.optional(Schema.Number),
+  personalApplications: Schema.optional(
+    Schema.Array(PersonalApplicationPolicy),
+  ),
+  screenCaptureDisabled: Schema.optional(Schema.Boolean),
+  personalPlayStoreMode: Schema.optional(Schema.String),
+  bluetoothSharing: Schema.optional(Schema.String),
+  privateSpacePolicy: Schema.optional(Schema.String),
+}).annotate({ identifier: "PersonalUsagePolicies" });
 
 export interface PackageNameList {
   /** A list of package names. */
   packageNames?: Array<string>;
 }
 
-export const PackageNameList: Schema.Schema<PackageNameList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      packageNames: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "PackageNameList",
-  }) as any as Schema.Schema<PackageNameList>;
+export const PackageNameList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  packageNames: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "PackageNameList" });
 
 export interface CrossProfilePolicies {
   /** Specifies the default behaviour for work profile widgets. If the policy does not specify work_profile_widgets for a specific application, it will behave according to the value specified here. */
@@ -1303,20 +1101,15 @@ export interface CrossProfilePolicies {
   exemptionsToShowWorkContactsInPersonalProfile?: PackageNameList;
 }
 
-export const CrossProfilePolicies: Schema.Schema<CrossProfilePolicies> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      workProfileWidgetsDefault: Schema.optional(Schema.String),
-      crossProfileCopyPaste: Schema.optional(Schema.String),
-      showWorkContactsInPersonalProfile: Schema.optional(Schema.String),
-      crossProfileDataSharing: Schema.optional(Schema.String),
-      crossProfileAppFunctions: Schema.optional(Schema.String),
-      exemptionsToShowWorkContactsInPersonalProfile:
-        Schema.optional(PackageNameList),
-    }),
-  ).annotate({
-    identifier: "CrossProfilePolicies",
-  }) as any as Schema.Schema<CrossProfilePolicies>;
+export const CrossProfilePolicies = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  workProfileWidgetsDefault: Schema.optional(Schema.String),
+  crossProfileCopyPaste: Schema.optional(Schema.String),
+  showWorkContactsInPersonalProfile: Schema.optional(Schema.String),
+  crossProfileDataSharing: Schema.optional(Schema.String),
+  crossProfileAppFunctions: Schema.optional(Schema.String),
+  exemptionsToShowWorkContactsInPersonalProfile:
+    Schema.optional(PackageNameList),
+}).annotate({ identifier: "CrossProfilePolicies" });
 
 export interface ChoosePrivateKeyRule {
   /** The URL pattern to match against the URL of the request. If not set or empty, it matches all URLs. This uses the regular expression syntax of java.util.regex.Pattern. */
@@ -1327,16 +1120,11 @@ export interface ChoosePrivateKeyRule {
   packageNames?: Array<string>;
 }
 
-export const ChoosePrivateKeyRule: Schema.Schema<ChoosePrivateKeyRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      urlPattern: Schema.optional(Schema.String),
-      privateKeyAlias: Schema.optional(Schema.String),
-      packageNames: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ChoosePrivateKeyRule",
-  }) as any as Schema.Schema<ChoosePrivateKeyRule>;
+export const ChoosePrivateKeyRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  urlPattern: Schema.optional(Schema.String),
+  privateKeyAlias: Schema.optional(Schema.String),
+  packageNames: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ChoosePrivateKeyRule" });
 
 export interface AdvancedSecurityOverrides {
   /** Controls access to developer settings: developer options and safe boot. Replaces safeBootDisabled (deprecated) and debuggingFeaturesAllowed (deprecated). On personally-owned devices with a work profile, setting this policy will not disable safe boot. In this case, a NonComplianceDetail with MANAGEMENT_MODE is reported. */
@@ -1382,22 +1170,18 @@ export interface AdvancedSecurityOverrides {
     | (string & {});
 }
 
-export const AdvancedSecurityOverrides: Schema.Schema<AdvancedSecurityOverrides> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      developerSettings: Schema.optional(Schema.String),
-      personalAppsThatCanReadWorkNotifications: Schema.optional(
-        Schema.Array(Schema.String),
-      ),
-      googlePlayProtectVerifyApps: Schema.optional(Schema.String),
-      commonCriteriaMode: Schema.optional(Schema.String),
-      untrustedAppsPolicy: Schema.optional(Schema.String),
-      mtePolicy: Schema.optional(Schema.String),
-      contentProtectionPolicy: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AdvancedSecurityOverrides",
-  }) as any as Schema.Schema<AdvancedSecurityOverrides>;
+export const AdvancedSecurityOverrides =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    developerSettings: Schema.optional(Schema.String),
+    personalAppsThatCanReadWorkNotifications: Schema.optional(
+      Schema.Array(Schema.String),
+    ),
+    googlePlayProtectVerifyApps: Schema.optional(Schema.String),
+    commonCriteriaMode: Schema.optional(Schema.String),
+    untrustedAppsPolicy: Schema.optional(Schema.String),
+    mtePolicy: Schema.optional(Schema.String),
+    contentProtectionPolicy: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AdvancedSecurityOverrides" });
 
 export interface KioskCustomization {
   /** Sets the behavior of a device in kiosk mode when a user presses and holds (long-presses) the Power button. */
@@ -1434,30 +1218,22 @@ export interface KioskCustomization {
     | (string & {});
 }
 
-export const KioskCustomization: Schema.Schema<KioskCustomization> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      powerButtonActions: Schema.optional(Schema.String),
-      systemErrorWarnings: Schema.optional(Schema.String),
-      statusBar: Schema.optional(Schema.String),
-      deviceSettings: Schema.optional(Schema.String),
-      systemNavigation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "KioskCustomization",
-  }) as any as Schema.Schema<KioskCustomization>;
+export const KioskCustomization = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  powerButtonActions: Schema.optional(Schema.String),
+  systemErrorWarnings: Schema.optional(Schema.String),
+  statusBar: Schema.optional(Schema.String),
+  deviceSettings: Schema.optional(Schema.String),
+  systemNavigation: Schema.optional(Schema.String),
+}).annotate({ identifier: "KioskCustomization" });
 
 export interface WifiSsid {
   /** Required. Wi-Fi SSID represented as a string. */
   wifiSsid?: string;
 }
 
-export const WifiSsid: Schema.Schema<WifiSsid> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      wifiSsid: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "WifiSsid" }) as any as Schema.Schema<WifiSsid>;
+export const WifiSsid = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  wifiSsid: Schema.optional(Schema.String),
+}).annotate({ identifier: "WifiSsid" });
 
 export interface WifiSsidPolicy {
   /** Type of the Wi-Fi SSID policy to be applied. */
@@ -1470,15 +1246,10 @@ export interface WifiSsidPolicy {
   wifiSsids?: Array<WifiSsid>;
 }
 
-export const WifiSsidPolicy: Schema.Schema<WifiSsidPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      wifiSsidPolicyType: Schema.optional(Schema.String),
-      wifiSsids: Schema.optional(Schema.Array(WifiSsid)),
-    }),
-  ).annotate({
-    identifier: "WifiSsidPolicy",
-  }) as any as Schema.Schema<WifiSsidPolicy>;
+export const WifiSsidPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  wifiSsidPolicyType: Schema.optional(Schema.String),
+  wifiSsids: Schema.optional(Schema.Array(WifiSsid)),
+}).annotate({ identifier: "WifiSsidPolicy" });
 
 export interface PrivateDnsSettings {
   /** Optional. The configuration mode for device's global private DNS settings. If this is set to PRIVATE_DNS_SPECIFIED_HOST, then private_dns_host must be set. */
@@ -1492,15 +1263,10 @@ export interface PrivateDnsSettings {
   privateDnsHost?: string;
 }
 
-export const PrivateDnsSettings: Schema.Schema<PrivateDnsSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      privateDnsMode: Schema.optional(Schema.String),
-      privateDnsHost: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PrivateDnsSettings",
-  }) as any as Schema.Schema<PrivateDnsSettings>;
+export const PrivateDnsSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  privateDnsMode: Schema.optional(Schema.String),
+  privateDnsHost: Schema.optional(Schema.String),
+}).annotate({ identifier: "PrivateDnsSettings" });
 
 export interface WifiRoamingSetting {
   /** Required. SSID of the Wi-Fi network. */
@@ -1514,29 +1280,19 @@ export interface WifiRoamingSetting {
     | (string & {});
 }
 
-export const WifiRoamingSetting: Schema.Schema<WifiRoamingSetting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      wifiSsid: Schema.optional(Schema.String),
-      wifiRoamingMode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WifiRoamingSetting",
-  }) as any as Schema.Schema<WifiRoamingSetting>;
+export const WifiRoamingSetting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  wifiSsid: Schema.optional(Schema.String),
+  wifiRoamingMode: Schema.optional(Schema.String),
+}).annotate({ identifier: "WifiRoamingSetting" });
 
 export interface WifiRoamingPolicy {
   /** Optional. Wi-Fi roaming settings. SSIDs provided in this list must be unique, the policy will be rejected otherwise. */
   wifiRoamingSettings?: Array<WifiRoamingSetting>;
 }
 
-export const WifiRoamingPolicy: Schema.Schema<WifiRoamingPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      wifiRoamingSettings: Schema.optional(Schema.Array(WifiRoamingSetting)),
-    }),
-  ).annotate({
-    identifier: "WifiRoamingPolicy",
-  }) as any as Schema.Schema<WifiRoamingPolicy>;
+export const WifiRoamingPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  wifiRoamingSettings: Schema.optional(Schema.Array(WifiRoamingSetting)),
+}).annotate({ identifier: "WifiRoamingPolicy" });
 
 export interface ApnSetting {
   /** Optional. MMS (Multimedia Messaging Service) proxy port of the APN. A value of 0 (default) means not set and negative values are rejected. */
@@ -1647,31 +1403,28 @@ export interface ApnSetting {
   >;
 }
 
-export const ApnSetting: Schema.Schema<ApnSetting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mmsProxyPort: Schema.optional(Schema.Number),
-      password: Schema.optional(Schema.String),
-      mmsc: Schema.optional(Schema.String),
-      proxyPort: Schema.optional(Schema.Number),
-      carrierId: Schema.optional(Schema.Number),
-      mtuV4: Schema.optional(Schema.Number),
-      protocol: Schema.optional(Schema.String),
-      apn: Schema.optional(Schema.String),
-      alwaysOnSetting: Schema.optional(Schema.String),
-      proxyAddress: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      mtuV6: Schema.optional(Schema.Number),
-      apnTypes: Schema.optional(Schema.Array(Schema.String)),
-      mvnoType: Schema.optional(Schema.String),
-      roamingProtocol: Schema.optional(Schema.String),
-      authType: Schema.optional(Schema.String),
-      mmsProxyAddress: Schema.optional(Schema.String),
-      username: Schema.optional(Schema.String),
-      numericOperatorId: Schema.optional(Schema.String),
-      networkTypes: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "ApnSetting" }) as any as Schema.Schema<ApnSetting>;
+export const ApnSetting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  mmsProxyPort: Schema.optional(Schema.Number),
+  password: Schema.optional(Schema.String),
+  mmsc: Schema.optional(Schema.String),
+  proxyPort: Schema.optional(Schema.Number),
+  carrierId: Schema.optional(Schema.Number),
+  mtuV4: Schema.optional(Schema.Number),
+  protocol: Schema.optional(Schema.String),
+  apn: Schema.optional(Schema.String),
+  alwaysOnSetting: Schema.optional(Schema.String),
+  proxyAddress: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  mtuV6: Schema.optional(Schema.Number),
+  apnTypes: Schema.optional(Schema.Array(Schema.String)),
+  mvnoType: Schema.optional(Schema.String),
+  roamingProtocol: Schema.optional(Schema.String),
+  authType: Schema.optional(Schema.String),
+  mmsProxyAddress: Schema.optional(Schema.String),
+  username: Schema.optional(Schema.String),
+  numericOperatorId: Schema.optional(Schema.String),
+  networkTypes: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ApnSetting" });
 
 export interface ApnPolicy {
   /** Optional. APN settings for override APNs. There must not be any conflict between any of APN settings provided, otherwise the policy will be rejected. Two ApnSettings are considered to conflict when all of the following fields match on both: numericOperatorId, apn, proxyAddress, proxyPort, mmsProxyAddress, mmsProxyPort, mmsc, mvnoType, protocol, roamingProtocol. If some of the APN settings result in non-compliance of INVALID_VALUE , they will be ignored. This can be set on fully managed devices on Android 10 and above. This can also be set on work profiles on Android 13 and above and only with ApnSetting's with ENTERPRISE APN type. A NonComplianceDetail with API_LEVEL is reported if the Android version is less than 10. A NonComplianceDetail with MANAGEMENT_MODE is reported for work profiles on Android versions less than 13. */
@@ -1684,13 +1437,10 @@ export interface ApnPolicy {
     | (string & {});
 }
 
-export const ApnPolicy: Schema.Schema<ApnPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      apnSettings: Schema.optional(Schema.Array(ApnSetting)),
-      overrideApns: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "ApnPolicy" }) as any as Schema.Schema<ApnPolicy>;
+export const ApnPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  apnSettings: Schema.optional(Schema.Array(ApnSetting)),
+  overrideApns: Schema.optional(Schema.String),
+}).annotate({ identifier: "ApnPolicy" });
 
 export interface PreferentialNetworkServiceConfig {
   /** Required. Preferential network identifier. This must not be set to NO_PREFERENTIAL_NETWORK or PREFERENTIAL_NETWORK_ID_UNSPECIFIED, the policy will be rejected otherwise. */
@@ -1717,16 +1467,12 @@ export interface PreferentialNetworkServiceConfig {
     | (string & {});
 }
 
-export const PreferentialNetworkServiceConfig: Schema.Schema<PreferentialNetworkServiceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      preferentialNetworkId: Schema.optional(Schema.String),
-      fallbackToDefaultConnection: Schema.optional(Schema.String),
-      nonMatchingNetworks: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PreferentialNetworkServiceConfig",
-  }) as any as Schema.Schema<PreferentialNetworkServiceConfig>;
+export const PreferentialNetworkServiceConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    preferentialNetworkId: Schema.optional(Schema.String),
+    fallbackToDefaultConnection: Schema.optional(Schema.String),
+    nonMatchingNetworks: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PreferentialNetworkServiceConfig" });
 
 export interface PreferentialNetworkServiceSettings {
   /** Required. Default preferential network ID for the applications that are not in applications or if ApplicationPolicy.preferentialNetworkId is set to PREFERENTIAL_NETWORK_ID_UNSPECIFIED. There must be a configuration for the specified network ID in preferentialNetworkServiceConfigs, unless this is set to NO_PREFERENTIAL_NETWORK. If set to PREFERENTIAL_NETWORK_ID_UNSPECIFIED or unset, this defaults to NO_PREFERENTIAL_NETWORK. Note: If the default preferential network is misconfigured, applications with no ApplicationPolicy.preferentialNetworkId set are not able to access the internet. This setting does not apply to the following critical apps: com.google.android.apps.work.clouddpc com.google.android.gmsApplicationPolicy.preferentialNetworkId can still be used to configure the preferential network for them. */
@@ -1743,17 +1489,13 @@ export interface PreferentialNetworkServiceSettings {
   preferentialNetworkServiceConfigs?: Array<PreferentialNetworkServiceConfig>;
 }
 
-export const PreferentialNetworkServiceSettings: Schema.Schema<PreferentialNetworkServiceSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      defaultPreferentialNetworkId: Schema.optional(Schema.String),
-      preferentialNetworkServiceConfigs: Schema.optional(
-        Schema.Array(PreferentialNetworkServiceConfig),
-      ),
-    }),
-  ).annotate({
-    identifier: "PreferentialNetworkServiceSettings",
-  }) as any as Schema.Schema<PreferentialNetworkServiceSettings>;
+export const PreferentialNetworkServiceSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    defaultPreferentialNetworkId: Schema.optional(Schema.String),
+    preferentialNetworkServiceConfigs: Schema.optional(
+      Schema.Array(PreferentialNetworkServiceConfig),
+    ),
+  }).annotate({ identifier: "PreferentialNetworkServiceSettings" });
 
 export interface DeviceConnectivityManagement {
   /** Restrictions on which Wi-Fi SSIDs the device can connect to. Note that this does not affect which networks can be configured on the device. Supported on company-owned devices running Android 13 and above. */
@@ -1801,25 +1543,21 @@ export interface DeviceConnectivityManagement {
   preferentialNetworkServiceSettings?: PreferentialNetworkServiceSettings;
 }
 
-export const DeviceConnectivityManagement: Schema.Schema<DeviceConnectivityManagement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      wifiSsidPolicy: Schema.optional(WifiSsidPolicy),
-      configureWifi: Schema.optional(Schema.String),
-      wifiDirectSettings: Schema.optional(Schema.String),
-      bluetoothSharing: Schema.optional(Schema.String),
-      privateDnsSettings: Schema.optional(PrivateDnsSettings),
-      usbDataAccess: Schema.optional(Schema.String),
-      wifiRoamingPolicy: Schema.optional(WifiRoamingPolicy),
-      apnPolicy: Schema.optional(ApnPolicy),
-      tetheringSettings: Schema.optional(Schema.String),
-      preferentialNetworkServiceSettings: Schema.optional(
-        PreferentialNetworkServiceSettings,
-      ),
-    }),
-  ).annotate({
-    identifier: "DeviceConnectivityManagement",
-  }) as any as Schema.Schema<DeviceConnectivityManagement>;
+export const DeviceConnectivityManagement =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    wifiSsidPolicy: Schema.optional(WifiSsidPolicy),
+    configureWifi: Schema.optional(Schema.String),
+    wifiDirectSettings: Schema.optional(Schema.String),
+    bluetoothSharing: Schema.optional(Schema.String),
+    privateDnsSettings: Schema.optional(PrivateDnsSettings),
+    usbDataAccess: Schema.optional(Schema.String),
+    wifiRoamingPolicy: Schema.optional(WifiRoamingPolicy),
+    apnPolicy: Schema.optional(ApnPolicy),
+    tetheringSettings: Schema.optional(Schema.String),
+    preferentialNetworkServiceSettings: Schema.optional(
+      PreferentialNetworkServiceSettings,
+    ),
+  }).annotate({ identifier: "DeviceConnectivityManagement" });
 
 export interface PersistentPreferredActivity {
   /** The intent actions to match in the filter. If any actions are included in the filter, then an intent's action must be one of those values for it to match. If no actions are included, the intent action is ignored. */
@@ -1830,16 +1568,12 @@ export interface PersistentPreferredActivity {
   categories?: Array<string>;
 }
 
-export const PersistentPreferredActivity: Schema.Schema<PersistentPreferredActivity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      actions: Schema.optional(Schema.Array(Schema.String)),
-      receiverActivity: Schema.optional(Schema.String),
-      categories: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "PersistentPreferredActivity",
-  }) as any as Schema.Schema<PersistentPreferredActivity>;
+export const PersistentPreferredActivity =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    actions: Schema.optional(Schema.Array(Schema.String)),
+    receiverActivity: Schema.optional(Schema.String),
+    categories: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "PersistentPreferredActivity" });
 
 export interface ProxyInfo {
   /** The port of the direct proxy. */
@@ -1852,15 +1586,12 @@ export interface ProxyInfo {
   host?: string;
 }
 
-export const ProxyInfo: Schema.Schema<ProxyInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      port: Schema.optional(Schema.Number),
-      excludedHosts: Schema.optional(Schema.Array(Schema.String)),
-      pacUri: Schema.optional(Schema.String),
-      host: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "ProxyInfo" }) as any as Schema.Schema<ProxyInfo>;
+export const ProxyInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  port: Schema.optional(Schema.Number),
+  excludedHosts: Schema.optional(Schema.Array(Schema.String)),
+  pacUri: Schema.optional(Schema.String),
+  host: Schema.optional(Schema.String),
+}).annotate({ identifier: "ProxyInfo" });
 
 export interface ScreenTimeoutSettings {
   /** Optional. Controls whether the user is allowed to configure the screen timeout. */
@@ -1873,15 +1604,10 @@ export interface ScreenTimeoutSettings {
   screenTimeout?: string;
 }
 
-export const ScreenTimeoutSettings: Schema.Schema<ScreenTimeoutSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      screenTimeoutMode: Schema.optional(Schema.String),
-      screenTimeout: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ScreenTimeoutSettings",
-  }) as any as Schema.Schema<ScreenTimeoutSettings>;
+export const ScreenTimeoutSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  screenTimeoutMode: Schema.optional(Schema.String),
+  screenTimeout: Schema.optional(Schema.String),
+}).annotate({ identifier: "ScreenTimeoutSettings" });
 
 export interface DisplaySettings {
   /** Optional. Controls the screen brightness settings. */
@@ -1890,15 +1616,10 @@ export interface DisplaySettings {
   screenTimeoutSettings?: ScreenTimeoutSettings;
 }
 
-export const DisplaySettings: Schema.Schema<DisplaySettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      screenBrightnessSettings: Schema.optional(ScreenBrightnessSettings),
-      screenTimeoutSettings: Schema.optional(ScreenTimeoutSettings),
-    }),
-  ).annotate({
-    identifier: "DisplaySettings",
-  }) as any as Schema.Schema<DisplaySettings>;
+export const DisplaySettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  screenBrightnessSettings: Schema.optional(ScreenBrightnessSettings),
+  screenTimeoutSettings: Schema.optional(ScreenTimeoutSettings),
+}).annotate({ identifier: "DisplaySettings" });
 
 export interface WorkAccountSetupConfig {
   /** Optional. The authentication type of the user on the device. */
@@ -1911,29 +1632,21 @@ export interface WorkAccountSetupConfig {
   requiredAccountEmail?: string;
 }
 
-export const WorkAccountSetupConfig: Schema.Schema<WorkAccountSetupConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      authenticationType: Schema.optional(Schema.String),
-      requiredAccountEmail: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WorkAccountSetupConfig",
-  }) as any as Schema.Schema<WorkAccountSetupConfig>;
+export const WorkAccountSetupConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    authenticationType: Schema.optional(Schema.String),
+    requiredAccountEmail: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "WorkAccountSetupConfig" });
 
 export interface LaunchAppAction {
   /** Package name of app to be launched */
   packageName?: string;
 }
 
-export const LaunchAppAction: Schema.Schema<LaunchAppAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      packageName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LaunchAppAction",
-  }) as any as Schema.Schema<LaunchAppAction>;
+export const LaunchAppAction = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  packageName: Schema.optional(Schema.String),
+}).annotate({ identifier: "LaunchAppAction" });
 
 export interface SetupAction {
   /** Title of this action. */
@@ -1944,16 +1657,11 @@ export interface SetupAction {
   launchApp?: LaunchAppAction;
 }
 
-export const SetupAction: Schema.Schema<SetupAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(UserFacingMessage),
-      description: Schema.optional(UserFacingMessage),
-      launchApp: Schema.optional(LaunchAppAction),
-    }),
-  ).annotate({
-    identifier: "SetupAction",
-  }) as any as Schema.Schema<SetupAction>;
+export const SetupAction = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  title: Schema.optional(UserFacingMessage),
+  description: Schema.optional(UserFacingMessage),
+  launchApp: Schema.optional(LaunchAppAction),
+}).annotate({ identifier: "SetupAction" });
 
 export interface Policy {
   /** Whether configuring VPN is disabled. */
@@ -2246,152 +1954,136 @@ export interface Policy {
   frpAdminEmails?: Array<string>;
 }
 
-export const Policy: Schema.Schema<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      vpnConfigDisabled: Schema.optional(Schema.Boolean),
-      minimumApiLevel: Schema.optional(Schema.Number),
-      policyEnforcementRules: Schema.optional(
-        Schema.Array(PolicyEnforcementRule),
-      ),
-      debuggingFeaturesAllowed: Schema.optional(Schema.Boolean),
-      safeBootDisabled: Schema.optional(Schema.Boolean),
-      alwaysOnVpnPackage: Schema.optional(AlwaysOnVpnPackage),
-      factoryResetDisabled: Schema.optional(Schema.Boolean),
-      passwordPolicies: Schema.optional(Schema.Array(PasswordRequirements)),
-      version: Schema.optional(Schema.String),
-      mobileNetworksConfigDisabled: Schema.optional(Schema.Boolean),
-      wifiConfigDisabled: Schema.optional(Schema.Boolean),
-      appAutoUpdatePolicy: Schema.optional(Schema.String),
-      usageLog: Schema.optional(UsageLog),
-      addUserDisabled: Schema.optional(Schema.Boolean),
-      statusReportingSettings: Schema.optional(StatusReportingSettings),
-      passwordRequirements: Schema.optional(PasswordRequirements),
-      autoTimeRequired: Schema.optional(Schema.Boolean),
-      mountPhysicalMediaDisabled: Schema.optional(Schema.Boolean),
-      funDisabled: Schema.optional(Schema.Boolean),
-      oncCertificateProviders: Schema.optional(
-        Schema.Array(OncCertificateProvider),
-      ),
-      screenCaptureDisabled: Schema.optional(Schema.Boolean),
-      shareLocationDisabled: Schema.optional(Schema.Boolean),
-      openNetworkConfiguration: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-      longSupportMessage: Schema.optional(UserFacingMessage),
-      wipeDataFlags: Schema.optional(Schema.Array(Schema.String)),
-      deviceRadioState: Schema.optional(DeviceRadioState),
-      complianceRules: Schema.optional(Schema.Array(ComplianceRule)),
-      appFunctions: Schema.optional(Schema.String),
-      adjustVolumeDisabled: Schema.optional(Schema.Boolean),
-      usbFileTransferDisabled: Schema.optional(Schema.Boolean),
-      defaultApplicationSettings: Schema.optional(
-        Schema.Array(DefaultApplicationSetting),
-      ),
-      modifyAccountsDisabled: Schema.optional(Schema.Boolean),
-      ensureVerifyAppsEnabled: Schema.optional(Schema.Boolean),
-      deviceOwnerLockScreenInfo: Schema.optional(UserFacingMessage),
-      cellBroadcastsConfigDisabled: Schema.optional(Schema.Boolean),
-      wifiConfigsLockdownEnabled: Schema.optional(Schema.Boolean),
-      shortSupportMessage: Schema.optional(UserFacingMessage),
-      autoDateAndTimeZone: Schema.optional(Schema.String),
-      bluetoothConfigDisabled: Schema.optional(Schema.Boolean),
-      applications: Schema.optional(Schema.Array(ApplicationPolicy)),
-      keyguardDisabled: Schema.optional(Schema.Boolean),
-      playStoreMode: Schema.optional(Schema.String),
-      systemUpdate: Schema.optional(SystemUpdate),
-      setUserIconDisabled: Schema.optional(Schema.Boolean),
-      personalUsagePolicies: Schema.optional(PersonalUsagePolicies),
-      outgoingCallsDisabled: Schema.optional(Schema.Boolean),
-      createWindowsDisabled: Schema.optional(Schema.Boolean),
-      crossProfilePolicies: Schema.optional(CrossProfilePolicies),
-      permittedInputMethods: Schema.optional(PackageNameList),
-      encryptionPolicy: Schema.optional(Schema.String),
-      maximumTimeToLock: Schema.optional(Schema.String),
-      permissionGrants: Schema.optional(Schema.Array(PermissionGrant)),
-      credentialProviderPolicyDefault: Schema.optional(Schema.String),
-      tetheringConfigDisabled: Schema.optional(Schema.Boolean),
-      locationMode: Schema.optional(Schema.String),
-      skipFirstUseHintsEnabled: Schema.optional(Schema.Boolean),
-      permittedAccessibilityServices: Schema.optional(PackageNameList),
-      networkEscapeHatchEnabled: Schema.optional(Schema.Boolean),
-      usbMassStorageEnabled: Schema.optional(Schema.Boolean),
-      bluetoothContactSharingDisabled: Schema.optional(Schema.Boolean),
-      choosePrivateKeyRules: Schema.optional(
-        Schema.Array(ChoosePrivateKeyRule),
-      ),
-      accountTypesWithManagementDisabled: Schema.optional(
-        Schema.Array(Schema.String),
-      ),
-      defaultPermissionPolicy: Schema.optional(Schema.String),
-      microphoneAccess: Schema.optional(Schema.String),
-      advancedSecurityOverrides: Schema.optional(AdvancedSecurityOverrides),
-      installUnknownSourcesAllowed: Schema.optional(Schema.Boolean),
-      uninstallAppsDisabled: Schema.optional(Schema.Boolean),
-      kioskCustomization: Schema.optional(KioskCustomization),
-      deviceConnectivityManagement: Schema.optional(
-        DeviceConnectivityManagement,
-      ),
-      credentialsConfigDisabled: Schema.optional(Schema.Boolean),
-      unmuteMicrophoneDisabled: Schema.optional(Schema.Boolean),
-      stayOnPluggedModes: Schema.optional(Schema.Array(Schema.String)),
-      privateKeySelectionEnabled: Schema.optional(Schema.Boolean),
-      persistentPreferredActivities: Schema.optional(
-        Schema.Array(PersistentPreferredActivity),
-      ),
-      blockApplicationsEnabled: Schema.optional(Schema.Boolean),
-      smsDisabled: Schema.optional(Schema.Boolean),
-      recommendedGlobalProxy: Schema.optional(ProxyInfo),
-      cameraAccess: Schema.optional(Schema.String),
-      kioskCustomLauncherEnabled: Schema.optional(Schema.Boolean),
-      statusBarDisabled: Schema.optional(Schema.Boolean),
-      displaySettings: Schema.optional(DisplaySettings),
-      cameraDisabled: Schema.optional(Schema.Boolean),
-      dataRoamingDisabled: Schema.optional(Schema.Boolean),
-      keyguardDisabledFeatures: Schema.optional(Schema.Array(Schema.String)),
-      assistContentPolicy: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      setWallpaperDisabled: Schema.optional(Schema.Boolean),
-      outgoingBeamDisabled: Schema.optional(Schema.Boolean),
-      preferentialNetworkService: Schema.optional(Schema.String),
-      printingPolicy: Schema.optional(Schema.String),
-      installAppsDisabled: Schema.optional(Schema.Boolean),
-      workAccountSetupConfig: Schema.optional(WorkAccountSetupConfig),
-      androidDevicePolicyTracks: Schema.optional(Schema.Array(Schema.String)),
-      removeUserDisabled: Schema.optional(Schema.Boolean),
-      enterpriseDisplayNameVisibility: Schema.optional(Schema.String),
-      bluetoothDisabled: Schema.optional(Schema.Boolean),
-      setupActions: Schema.optional(Schema.Array(SetupAction)),
-      networkResetDisabled: Schema.optional(Schema.Boolean),
-      frpAdminEmails: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "Policy" }) as any as Schema.Schema<Policy>;
+export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  vpnConfigDisabled: Schema.optional(Schema.Boolean),
+  minimumApiLevel: Schema.optional(Schema.Number),
+  policyEnforcementRules: Schema.optional(Schema.Array(PolicyEnforcementRule)),
+  debuggingFeaturesAllowed: Schema.optional(Schema.Boolean),
+  safeBootDisabled: Schema.optional(Schema.Boolean),
+  alwaysOnVpnPackage: Schema.optional(AlwaysOnVpnPackage),
+  factoryResetDisabled: Schema.optional(Schema.Boolean),
+  passwordPolicies: Schema.optional(Schema.Array(PasswordRequirements)),
+  version: Schema.optional(Schema.String),
+  mobileNetworksConfigDisabled: Schema.optional(Schema.Boolean),
+  wifiConfigDisabled: Schema.optional(Schema.Boolean),
+  appAutoUpdatePolicy: Schema.optional(Schema.String),
+  usageLog: Schema.optional(UsageLog),
+  addUserDisabled: Schema.optional(Schema.Boolean),
+  statusReportingSettings: Schema.optional(StatusReportingSettings),
+  passwordRequirements: Schema.optional(PasswordRequirements),
+  autoTimeRequired: Schema.optional(Schema.Boolean),
+  mountPhysicalMediaDisabled: Schema.optional(Schema.Boolean),
+  funDisabled: Schema.optional(Schema.Boolean),
+  oncCertificateProviders: Schema.optional(
+    Schema.Array(OncCertificateProvider),
+  ),
+  screenCaptureDisabled: Schema.optional(Schema.Boolean),
+  shareLocationDisabled: Schema.optional(Schema.Boolean),
+  openNetworkConfiguration: Schema.optional(
+    Schema.Record(Schema.String, Schema.Unknown),
+  ),
+  longSupportMessage: Schema.optional(UserFacingMessage),
+  wipeDataFlags: Schema.optional(Schema.Array(Schema.String)),
+  deviceRadioState: Schema.optional(DeviceRadioState),
+  complianceRules: Schema.optional(Schema.Array(ComplianceRule)),
+  appFunctions: Schema.optional(Schema.String),
+  adjustVolumeDisabled: Schema.optional(Schema.Boolean),
+  usbFileTransferDisabled: Schema.optional(Schema.Boolean),
+  defaultApplicationSettings: Schema.optional(
+    Schema.Array(DefaultApplicationSetting),
+  ),
+  modifyAccountsDisabled: Schema.optional(Schema.Boolean),
+  ensureVerifyAppsEnabled: Schema.optional(Schema.Boolean),
+  deviceOwnerLockScreenInfo: Schema.optional(UserFacingMessage),
+  cellBroadcastsConfigDisabled: Schema.optional(Schema.Boolean),
+  wifiConfigsLockdownEnabled: Schema.optional(Schema.Boolean),
+  shortSupportMessage: Schema.optional(UserFacingMessage),
+  autoDateAndTimeZone: Schema.optional(Schema.String),
+  bluetoothConfigDisabled: Schema.optional(Schema.Boolean),
+  applications: Schema.optional(Schema.Array(ApplicationPolicy)),
+  keyguardDisabled: Schema.optional(Schema.Boolean),
+  playStoreMode: Schema.optional(Schema.String),
+  systemUpdate: Schema.optional(SystemUpdate),
+  setUserIconDisabled: Schema.optional(Schema.Boolean),
+  personalUsagePolicies: Schema.optional(PersonalUsagePolicies),
+  outgoingCallsDisabled: Schema.optional(Schema.Boolean),
+  createWindowsDisabled: Schema.optional(Schema.Boolean),
+  crossProfilePolicies: Schema.optional(CrossProfilePolicies),
+  permittedInputMethods: Schema.optional(PackageNameList),
+  encryptionPolicy: Schema.optional(Schema.String),
+  maximumTimeToLock: Schema.optional(Schema.String),
+  permissionGrants: Schema.optional(Schema.Array(PermissionGrant)),
+  credentialProviderPolicyDefault: Schema.optional(Schema.String),
+  tetheringConfigDisabled: Schema.optional(Schema.Boolean),
+  locationMode: Schema.optional(Schema.String),
+  skipFirstUseHintsEnabled: Schema.optional(Schema.Boolean),
+  permittedAccessibilityServices: Schema.optional(PackageNameList),
+  networkEscapeHatchEnabled: Schema.optional(Schema.Boolean),
+  usbMassStorageEnabled: Schema.optional(Schema.Boolean),
+  bluetoothContactSharingDisabled: Schema.optional(Schema.Boolean),
+  choosePrivateKeyRules: Schema.optional(Schema.Array(ChoosePrivateKeyRule)),
+  accountTypesWithManagementDisabled: Schema.optional(
+    Schema.Array(Schema.String),
+  ),
+  defaultPermissionPolicy: Schema.optional(Schema.String),
+  microphoneAccess: Schema.optional(Schema.String),
+  advancedSecurityOverrides: Schema.optional(AdvancedSecurityOverrides),
+  installUnknownSourcesAllowed: Schema.optional(Schema.Boolean),
+  uninstallAppsDisabled: Schema.optional(Schema.Boolean),
+  kioskCustomization: Schema.optional(KioskCustomization),
+  deviceConnectivityManagement: Schema.optional(DeviceConnectivityManagement),
+  credentialsConfigDisabled: Schema.optional(Schema.Boolean),
+  unmuteMicrophoneDisabled: Schema.optional(Schema.Boolean),
+  stayOnPluggedModes: Schema.optional(Schema.Array(Schema.String)),
+  privateKeySelectionEnabled: Schema.optional(Schema.Boolean),
+  persistentPreferredActivities: Schema.optional(
+    Schema.Array(PersistentPreferredActivity),
+  ),
+  blockApplicationsEnabled: Schema.optional(Schema.Boolean),
+  smsDisabled: Schema.optional(Schema.Boolean),
+  recommendedGlobalProxy: Schema.optional(ProxyInfo),
+  cameraAccess: Schema.optional(Schema.String),
+  kioskCustomLauncherEnabled: Schema.optional(Schema.Boolean),
+  statusBarDisabled: Schema.optional(Schema.Boolean),
+  displaySettings: Schema.optional(DisplaySettings),
+  cameraDisabled: Schema.optional(Schema.Boolean),
+  dataRoamingDisabled: Schema.optional(Schema.Boolean),
+  keyguardDisabledFeatures: Schema.optional(Schema.Array(Schema.String)),
+  assistContentPolicy: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  setWallpaperDisabled: Schema.optional(Schema.Boolean),
+  outgoingBeamDisabled: Schema.optional(Schema.Boolean),
+  preferentialNetworkService: Schema.optional(Schema.String),
+  printingPolicy: Schema.optional(Schema.String),
+  installAppsDisabled: Schema.optional(Schema.Boolean),
+  workAccountSetupConfig: Schema.optional(WorkAccountSetupConfig),
+  androidDevicePolicyTracks: Schema.optional(Schema.Array(Schema.String)),
+  removeUserDisabled: Schema.optional(Schema.Boolean),
+  enterpriseDisplayNameVisibility: Schema.optional(Schema.String),
+  bluetoothDisabled: Schema.optional(Schema.Boolean),
+  setupActions: Schema.optional(Schema.Array(SetupAction)),
+  networkResetDisabled: Schema.optional(Schema.Boolean),
+  frpAdminEmails: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Policy" });
 
 export interface WebAppIcon {
   /** The actual bytes of the image in a base64url encoded string (c.f. RFC4648, section 5 "Base 64 Encoding with URL and Filename Safe Alphabet"). - The image type can be png or jpg. - The image should ideally be square. - The image should ideally have a size of 512x512. */
   imageData?: string;
 }
 
-export const WebAppIcon: Schema.Schema<WebAppIcon> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      imageData: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "WebAppIcon" }) as any as Schema.Schema<WebAppIcon>;
+export const WebAppIcon = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  imageData: Schema.optional(Schema.String),
+}).annotate({ identifier: "WebAppIcon" });
 
 export interface CryptoSelfTestCompletedEvent {
   /** Whether the test succeeded. */
   success?: boolean;
 }
 
-export const CryptoSelfTestCompletedEvent: Schema.Schema<CryptoSelfTestCompletedEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      success: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "CryptoSelfTestCompletedEvent",
-  }) as any as Schema.Schema<CryptoSelfTestCompletedEvent>;
+export const CryptoSelfTestCompletedEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    success: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "CryptoSelfTestCompletedEvent" });
 
 export interface KeyDestructionEvent {
   /** Alias of the key. */
@@ -2402,16 +2094,11 @@ export interface KeyDestructionEvent {
   applicationUid?: number;
 }
 
-export const KeyDestructionEvent: Schema.Schema<KeyDestructionEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      keyAlias: Schema.optional(Schema.String),
-      success: Schema.optional(Schema.Boolean),
-      applicationUid: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "KeyDestructionEvent",
-  }) as any as Schema.Schema<KeyDestructionEvent>;
+export const KeyDestructionEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  keyAlias: Schema.optional(Schema.String),
+  success: Schema.optional(Schema.Boolean),
+  applicationUid: Schema.optional(Schema.Number),
+}).annotate({ identifier: "KeyDestructionEvent" });
 
 export interface AppProcessInfo {
   /** Process ID. */
@@ -2430,34 +2117,24 @@ export interface AppProcessInfo {
   packageNames?: Array<string>;
 }
 
-export const AppProcessInfo: Schema.Schema<AppProcessInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pid: Schema.optional(Schema.Number),
-      processName: Schema.optional(Schema.String),
-      uid: Schema.optional(Schema.Number),
-      seinfo: Schema.optional(Schema.String),
-      apkSha256Hash: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      packageNames: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AppProcessInfo",
-  }) as any as Schema.Schema<AppProcessInfo>;
+export const AppProcessInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pid: Schema.optional(Schema.Number),
+  processName: Schema.optional(Schema.String),
+  uid: Schema.optional(Schema.Number),
+  seinfo: Schema.optional(Schema.String),
+  apkSha256Hash: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+  packageNames: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "AppProcessInfo" });
 
 export interface AppProcessStartEvent {
   /** Information about a process. */
   processInfo?: AppProcessInfo;
 }
 
-export const AppProcessStartEvent: Schema.Schema<AppProcessStartEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      processInfo: Schema.optional(AppProcessInfo),
-    }),
-  ).annotate({
-    identifier: "AppProcessStartEvent",
-  }) as any as Schema.Schema<AppProcessStartEvent>;
+export const AppProcessStartEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  processInfo: Schema.optional(AppProcessInfo),
+}).annotate({ identifier: "AppProcessStartEvent" });
 
 export interface Location {
   /** The latitude position of the location */
@@ -2466,13 +2143,10 @@ export interface Location {
   longitude?: number;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      latitude: Schema.optional(Schema.Number),
-      longitude: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  latitude: Schema.optional(Schema.Number),
+  longitude: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Location" });
 
 export interface LostModeLocationEvent {
   /** The device location */
@@ -2481,15 +2155,10 @@ export interface LostModeLocationEvent {
   batteryLevel?: number;
 }
 
-export const LostModeLocationEvent: Schema.Schema<LostModeLocationEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      location: Schema.optional(Location),
-      batteryLevel: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "LostModeLocationEvent",
-  }) as any as Schema.Schema<LostModeLocationEvent>;
+export const LostModeLocationEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  location: Schema.optional(Location),
+  batteryLevel: Schema.optional(Schema.Number),
+}).annotate({ identifier: "LostModeLocationEvent" });
 
 export interface CertAuthorityInstalledEvent {
   /** Subject of the certificate. */
@@ -2500,44 +2169,35 @@ export interface CertAuthorityInstalledEvent {
   success?: boolean;
 }
 
-export const CertAuthorityInstalledEvent: Schema.Schema<CertAuthorityInstalledEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      certificate: Schema.optional(Schema.String),
-      userId: Schema.optional(Schema.Number),
-      success: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "CertAuthorityInstalledEvent",
-  }) as any as Schema.Schema<CertAuthorityInstalledEvent>;
+export const CertAuthorityInstalledEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    certificate: Schema.optional(Schema.String),
+    userId: Schema.optional(Schema.Number),
+    success: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "CertAuthorityInstalledEvent" });
 
 export interface EnrollmentCompleteEvent {}
 
-export const EnrollmentCompleteEvent: Schema.Schema<EnrollmentCompleteEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const EnrollmentCompleteEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "EnrollmentCompleteEvent",
-  }) as any as Schema.Schema<EnrollmentCompleteEvent>;
+  });
 
 export interface LostModeOutgoingPhoneCallEvent {}
 
-export const LostModeOutgoingPhoneCallEvent: Schema.Schema<LostModeOutgoingPhoneCallEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const LostModeOutgoingPhoneCallEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "LostModeOutgoingPhoneCallEvent",
-  }) as any as Schema.Schema<LostModeOutgoingPhoneCallEvent>;
+  });
 
 export interface AdbShellCommandEvent {
   /** Shell command that was issued over ADB via "adb shell command". Redacted to empty string on organization-owned managed profile devices. */
   shellCmd?: string;
 }
 
-export const AdbShellCommandEvent: Schema.Schema<AdbShellCommandEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      shellCmd: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AdbShellCommandEvent",
-  }) as any as Schema.Schema<AdbShellCommandEvent>;
+export const AdbShellCommandEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  shellCmd: Schema.optional(Schema.String),
+}).annotate({ identifier: "AdbShellCommandEvent" });
 
 export interface KeyGeneratedEvent {
   /** Alias of the key. */
@@ -2548,16 +2208,11 @@ export interface KeyGeneratedEvent {
   applicationUid?: number;
 }
 
-export const KeyGeneratedEvent: Schema.Schema<KeyGeneratedEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      keyAlias: Schema.optional(Schema.String),
-      success: Schema.optional(Schema.Boolean),
-      applicationUid: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "KeyGeneratedEvent",
-  }) as any as Schema.Schema<KeyGeneratedEvent>;
+export const KeyGeneratedEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  keyAlias: Schema.optional(Schema.String),
+  success: Schema.optional(Schema.Boolean),
+  applicationUid: Schema.optional(Schema.Number),
+}).annotate({ identifier: "KeyGeneratedEvent" });
 
 export interface StopLostModeUserAttemptEvent {
   /** The status of the attempt to stop lost mode. */
@@ -2568,14 +2223,10 @@ export interface StopLostModeUserAttemptEvent {
     | (string & {});
 }
 
-export const StopLostModeUserAttemptEvent: Schema.Schema<StopLostModeUserAttemptEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      status: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StopLostModeUserAttemptEvent",
-  }) as any as Schema.Schema<StopLostModeUserAttemptEvent>;
+export const StopLostModeUserAttemptEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    status: Schema.optional(Schema.String),
+  }).annotate({ identifier: "StopLostModeUserAttemptEvent" });
 
 export interface KeyImportEvent {
   /** UID of the application which imported the key */
@@ -2586,16 +2237,11 @@ export interface KeyImportEvent {
   success?: boolean;
 }
 
-export const KeyImportEvent: Schema.Schema<KeyImportEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      applicationUid: Schema.optional(Schema.Number),
-      keyAlias: Schema.optional(Schema.String),
-      success: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "KeyImportEvent",
-  }) as any as Schema.Schema<KeyImportEvent>;
+export const KeyImportEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  applicationUid: Schema.optional(Schema.Number),
+  keyAlias: Schema.optional(Schema.String),
+  success: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "KeyImportEvent" });
 
 export interface KeyIntegrityViolationEvent {
   /** Alias of the key. */
@@ -2604,15 +2250,11 @@ export interface KeyIntegrityViolationEvent {
   applicationUid?: number;
 }
 
-export const KeyIntegrityViolationEvent: Schema.Schema<KeyIntegrityViolationEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      keyAlias: Schema.optional(Schema.String),
-      applicationUid: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "KeyIntegrityViolationEvent",
-  }) as any as Schema.Schema<KeyIntegrityViolationEvent>;
+export const KeyIntegrityViolationEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    keyAlias: Schema.optional(Schema.String),
+    applicationUid: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "KeyIntegrityViolationEvent" });
 
 export interface CertAuthorityRemovedEvent {
   /** Whether the removal succeeded. */
@@ -2623,44 +2265,33 @@ export interface CertAuthorityRemovedEvent {
   userId?: number;
 }
 
-export const CertAuthorityRemovedEvent: Schema.Schema<CertAuthorityRemovedEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      success: Schema.optional(Schema.Boolean),
-      certificate: Schema.optional(Schema.String),
-      userId: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "CertAuthorityRemovedEvent",
-  }) as any as Schema.Schema<CertAuthorityRemovedEvent>;
+export const CertAuthorityRemovedEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    success: Schema.optional(Schema.Boolean),
+    certificate: Schema.optional(Schema.String),
+    userId: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "CertAuthorityRemovedEvent" });
 
 export interface WipeFailureEvent {}
 
-export const WipeFailureEvent: Schema.Schema<WipeFailureEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "WipeFailureEvent",
-  }) as any as Schema.Schema<WipeFailureEvent>;
+export const WipeFailureEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "WipeFailureEvent" });
 
 export interface FilePushedEvent {
   /** The path of the file being pushed. */
   filePath?: string;
 }
 
-export const FilePushedEvent: Schema.Schema<FilePushedEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filePath: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FilePushedEvent",
-  }) as any as Schema.Schema<FilePushedEvent>;
+export const FilePushedEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  filePath: Schema.optional(Schema.String),
+}).annotate({ identifier: "FilePushedEvent" });
 
 export interface KeyguardSecuredEvent {}
 
-export const KeyguardSecuredEvent: Schema.Schema<KeyguardSecuredEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "KeyguardSecuredEvent",
-  }) as any as Schema.Schema<KeyguardSecuredEvent>;
+export const KeyguardSecuredEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "KeyguardSecuredEvent" });
 
 export interface MediaMountEvent {
   /** Mount point. */
@@ -2669,15 +2300,10 @@ export interface MediaMountEvent {
   volumeLabel?: string;
 }
 
-export const MediaMountEvent: Schema.Schema<MediaMountEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mountPoint: Schema.optional(Schema.String),
-      volumeLabel: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MediaMountEvent",
-  }) as any as Schema.Schema<MediaMountEvent>;
+export const MediaMountEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  mountPoint: Schema.optional(Schema.String),
+  volumeLabel: Schema.optional(Schema.String),
+}).annotate({ identifier: "MediaMountEvent" });
 
 export interface MediaUnmountEvent {
   /** Mount point. */
@@ -2686,29 +2312,22 @@ export interface MediaUnmountEvent {
   volumeLabel?: string;
 }
 
-export const MediaUnmountEvent: Schema.Schema<MediaUnmountEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mountPoint: Schema.optional(Schema.String),
-      volumeLabel: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MediaUnmountEvent",
-  }) as any as Schema.Schema<MediaUnmountEvent>;
+export const MediaUnmountEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  mountPoint: Schema.optional(Schema.String),
+  volumeLabel: Schema.optional(Schema.String),
+}).annotate({ identifier: "MediaUnmountEvent" });
 
 export interface LoggingStartedEvent {}
 
-export const LoggingStartedEvent: Schema.Schema<LoggingStartedEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "LoggingStartedEvent",
-  }) as any as Schema.Schema<LoggingStartedEvent>;
+export const LoggingStartedEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "LoggingStartedEvent" });
 
 export interface OsShutdownEvent {}
 
-export const OsShutdownEvent: Schema.Schema<OsShutdownEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "OsShutdownEvent",
-  }) as any as Schema.Schema<OsShutdownEvent>;
+export const OsShutdownEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "OsShutdownEvent" });
 
 export interface KeyguardDismissAuthAttemptEvent {
   /** Whether the unlock attempt was successful. */
@@ -2717,29 +2336,20 @@ export interface KeyguardDismissAuthAttemptEvent {
   strongAuthMethodUsed?: boolean;
 }
 
-export const KeyguardDismissAuthAttemptEvent: Schema.Schema<KeyguardDismissAuthAttemptEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      success: Schema.optional(Schema.Boolean),
-      strongAuthMethodUsed: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "KeyguardDismissAuthAttemptEvent",
-  }) as any as Schema.Schema<KeyguardDismissAuthAttemptEvent>;
+export const KeyguardDismissAuthAttemptEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    success: Schema.optional(Schema.Boolean),
+    strongAuthMethodUsed: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "KeyguardDismissAuthAttemptEvent" });
 
 export interface FilePulledEvent {
   /** The path of the file being pulled. */
   filePath?: string;
 }
 
-export const FilePulledEvent: Schema.Schema<FilePulledEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filePath: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FilePulledEvent",
-  }) as any as Schema.Schema<FilePulledEvent>;
+export const FilePulledEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  filePath: Schema.optional(Schema.String),
+}).annotate({ identifier: "FilePulledEvent" });
 
 export interface RemoteLockEvent {
   /** Package name of the admin app requesting the change. */
@@ -2750,16 +2360,11 @@ export interface RemoteLockEvent {
   adminUserId?: number;
 }
 
-export const RemoteLockEvent: Schema.Schema<RemoteLockEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      adminPackageName: Schema.optional(Schema.String),
-      targetUserId: Schema.optional(Schema.Number),
-      adminUserId: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "RemoteLockEvent",
-  }) as any as Schema.Schema<RemoteLockEvent>;
+export const RemoteLockEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  adminPackageName: Schema.optional(Schema.String),
+  targetUserId: Schema.optional(Schema.Number),
+  adminUserId: Schema.optional(Schema.Number),
+}).annotate({ identifier: "RemoteLockEvent" });
 
 export interface DnsEvent {
   /** The (possibly truncated) list of the IP addresses returned for DNS lookup (max 10 IPv4 or IPv6 addresses). */
@@ -2772,15 +2377,12 @@ export interface DnsEvent {
   totalIpAddressesReturned?: string;
 }
 
-export const DnsEvent: Schema.Schema<DnsEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ipAddresses: Schema.optional(Schema.Array(Schema.String)),
-      packageName: Schema.optional(Schema.String),
-      hostname: Schema.optional(Schema.String),
-      totalIpAddressesReturned: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "DnsEvent" }) as any as Schema.Schema<DnsEvent>;
+export const DnsEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ipAddresses: Schema.optional(Schema.Array(Schema.String)),
+  packageName: Schema.optional(Schema.String),
+  hostname: Schema.optional(Schema.String),
+  totalIpAddressesReturned: Schema.optional(Schema.String),
+}).annotate({ identifier: "DnsEvent" });
 
 export interface BackupServiceToggledEvent {
   /** User ID of the admin app from the which the change was requested. */
@@ -2795,16 +2397,12 @@ export interface BackupServiceToggledEvent {
     | (string & {});
 }
 
-export const BackupServiceToggledEvent: Schema.Schema<BackupServiceToggledEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      adminUserId: Schema.optional(Schema.Number),
-      adminPackageName: Schema.optional(Schema.String),
-      backupServiceState: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BackupServiceToggledEvent",
-  }) as any as Schema.Schema<BackupServiceToggledEvent>;
+export const BackupServiceToggledEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    adminUserId: Schema.optional(Schema.Number),
+    adminPackageName: Schema.optional(Schema.String),
+    backupServiceState: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BackupServiceToggledEvent" });
 
 export interface OsStartupEvent {
   /** dm-verity mode. */
@@ -2823,29 +2421,24 @@ export interface OsStartupEvent {
     | (string & {});
 }
 
-export const OsStartupEvent: Schema.Schema<OsStartupEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      verityMode: Schema.optional(Schema.String),
-      verifiedBootState: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OsStartupEvent",
-  }) as any as Schema.Schema<OsStartupEvent>;
+export const OsStartupEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  verityMode: Schema.optional(Schema.String),
+  verifiedBootState: Schema.optional(Schema.String),
+}).annotate({ identifier: "OsStartupEvent" });
 
 export interface AdbShellInteractiveEvent {}
 
-export const AdbShellInteractiveEvent: Schema.Schema<AdbShellInteractiveEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const AdbShellInteractiveEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "AdbShellInteractiveEvent",
-  }) as any as Schema.Schema<AdbShellInteractiveEvent>;
+  });
 
 export interface LogBufferSizeCriticalEvent {}
 
-export const LogBufferSizeCriticalEvent: Schema.Schema<LogBufferSizeCriticalEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const LogBufferSizeCriticalEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "LogBufferSizeCriticalEvent",
-  }) as any as Schema.Schema<LogBufferSizeCriticalEvent>;
+  });
 
 export interface ConnectEvent {
   /** The destination port of the connect call. */
@@ -2856,30 +2449,21 @@ export interface ConnectEvent {
   packageName?: string;
 }
 
-export const ConnectEvent: Schema.Schema<ConnectEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      destinationPort: Schema.optional(Schema.Number),
-      destinationIpAddress: Schema.optional(Schema.String),
-      packageName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConnectEvent",
-  }) as any as Schema.Schema<ConnectEvent>;
+export const ConnectEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  destinationPort: Schema.optional(Schema.Number),
+  destinationIpAddress: Schema.optional(Schema.String),
+  packageName: Schema.optional(Schema.String),
+}).annotate({ identifier: "ConnectEvent" });
 
 export interface CertValidationFailureEvent {
   /** The reason why certification validation failed. */
   failureReason?: string;
 }
 
-export const CertValidationFailureEvent: Schema.Schema<CertValidationFailureEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      failureReason: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CertValidationFailureEvent",
-  }) as any as Schema.Schema<CertValidationFailureEvent>;
+export const CertValidationFailureEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    failureReason: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CertValidationFailureEvent" });
 
 export interface UsageLogEvent {
   /** Validates whether Android’s built-in cryptographic library (BoringSSL) is valid. Should always succeed on device boot, if it fails, the device should be considered untrusted. Part of SECURITY_LOGS. */
@@ -2988,56 +2572,47 @@ export interface UsageLogEvent {
   certValidationFailureEvent?: CertValidationFailureEvent;
 }
 
-export const UsageLogEvent: Schema.Schema<UsageLogEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cryptoSelfTestCompletedEvent: Schema.optional(
-        CryptoSelfTestCompletedEvent,
-      ),
-      keyDestructionEvent: Schema.optional(KeyDestructionEvent),
-      loggingStoppedEvent: Schema.optional(LoggingStoppedEvent),
-      appProcessStartEvent: Schema.optional(AppProcessStartEvent),
-      lostModeLocationEvent: Schema.optional(LostModeLocationEvent),
-      eventId: Schema.optional(Schema.String),
-      certAuthorityInstalledEvent: Schema.optional(CertAuthorityInstalledEvent),
-      enrollmentCompleteEvent: Schema.optional(EnrollmentCompleteEvent),
-      lostModeOutgoingPhoneCallEvent: Schema.optional(
-        LostModeOutgoingPhoneCallEvent,
-      ),
-      adbShellCommandEvent: Schema.optional(AdbShellCommandEvent),
-      eventType: Schema.optional(Schema.String),
-      keyGeneratedEvent: Schema.optional(KeyGeneratedEvent),
-      stopLostModeUserAttemptEvent: Schema.optional(
-        StopLostModeUserAttemptEvent,
-      ),
-      keyImportEvent: Schema.optional(KeyImportEvent),
-      keyIntegrityViolationEvent: Schema.optional(KeyIntegrityViolationEvent),
-      certAuthorityRemovedEvent: Schema.optional(CertAuthorityRemovedEvent),
-      wipeFailureEvent: Schema.optional(WipeFailureEvent),
-      filePushedEvent: Schema.optional(FilePushedEvent),
-      keyguardSecuredEvent: Schema.optional(KeyguardSecuredEvent),
-      mediaMountEvent: Schema.optional(MediaMountEvent),
-      mediaUnmountEvent: Schema.optional(MediaUnmountEvent),
-      loggingStartedEvent: Schema.optional(LoggingStartedEvent),
-      osShutdownEvent: Schema.optional(OsShutdownEvent),
-      keyguardDismissedEvent: Schema.optional(KeyguardDismissedEvent),
-      keyguardDismissAuthAttemptEvent: Schema.optional(
-        KeyguardDismissAuthAttemptEvent,
-      ),
-      eventTime: Schema.optional(Schema.String),
-      filePulledEvent: Schema.optional(FilePulledEvent),
-      remoteLockEvent: Schema.optional(RemoteLockEvent),
-      dnsEvent: Schema.optional(DnsEvent),
-      backupServiceToggledEvent: Schema.optional(BackupServiceToggledEvent),
-      osStartupEvent: Schema.optional(OsStartupEvent),
-      adbShellInteractiveEvent: Schema.optional(AdbShellInteractiveEvent),
-      logBufferSizeCriticalEvent: Schema.optional(LogBufferSizeCriticalEvent),
-      connectEvent: Schema.optional(ConnectEvent),
-      certValidationFailureEvent: Schema.optional(CertValidationFailureEvent),
-    }),
-  ).annotate({
-    identifier: "UsageLogEvent",
-  }) as any as Schema.Schema<UsageLogEvent>;
+export const UsageLogEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cryptoSelfTestCompletedEvent: Schema.optional(CryptoSelfTestCompletedEvent),
+  keyDestructionEvent: Schema.optional(KeyDestructionEvent),
+  loggingStoppedEvent: Schema.optional(LoggingStoppedEvent),
+  appProcessStartEvent: Schema.optional(AppProcessStartEvent),
+  lostModeLocationEvent: Schema.optional(LostModeLocationEvent),
+  eventId: Schema.optional(Schema.String),
+  certAuthorityInstalledEvent: Schema.optional(CertAuthorityInstalledEvent),
+  enrollmentCompleteEvent: Schema.optional(EnrollmentCompleteEvent),
+  lostModeOutgoingPhoneCallEvent: Schema.optional(
+    LostModeOutgoingPhoneCallEvent,
+  ),
+  adbShellCommandEvent: Schema.optional(AdbShellCommandEvent),
+  eventType: Schema.optional(Schema.String),
+  keyGeneratedEvent: Schema.optional(KeyGeneratedEvent),
+  stopLostModeUserAttemptEvent: Schema.optional(StopLostModeUserAttemptEvent),
+  keyImportEvent: Schema.optional(KeyImportEvent),
+  keyIntegrityViolationEvent: Schema.optional(KeyIntegrityViolationEvent),
+  certAuthorityRemovedEvent: Schema.optional(CertAuthorityRemovedEvent),
+  wipeFailureEvent: Schema.optional(WipeFailureEvent),
+  filePushedEvent: Schema.optional(FilePushedEvent),
+  keyguardSecuredEvent: Schema.optional(KeyguardSecuredEvent),
+  mediaMountEvent: Schema.optional(MediaMountEvent),
+  mediaUnmountEvent: Schema.optional(MediaUnmountEvent),
+  loggingStartedEvent: Schema.optional(LoggingStartedEvent),
+  osShutdownEvent: Schema.optional(OsShutdownEvent),
+  keyguardDismissedEvent: Schema.optional(KeyguardDismissedEvent),
+  keyguardDismissAuthAttemptEvent: Schema.optional(
+    KeyguardDismissAuthAttemptEvent,
+  ),
+  eventTime: Schema.optional(Schema.String),
+  filePulledEvent: Schema.optional(FilePulledEvent),
+  remoteLockEvent: Schema.optional(RemoteLockEvent),
+  dnsEvent: Schema.optional(DnsEvent),
+  backupServiceToggledEvent: Schema.optional(BackupServiceToggledEvent),
+  osStartupEvent: Schema.optional(OsStartupEvent),
+  adbShellInteractiveEvent: Schema.optional(AdbShellInteractiveEvent),
+  logBufferSizeCriticalEvent: Schema.optional(LogBufferSizeCriticalEvent),
+  connectEvent: Schema.optional(ConnectEvent),
+  certValidationFailureEvent: Schema.optional(CertValidationFailureEvent),
+}).annotate({ identifier: "UsageLogEvent" });
 
 export interface BatchUsageLogEvents {
   /** The device timestamp when the batch of events were collected from the device. */
@@ -3050,17 +2625,12 @@ export interface BatchUsageLogEvents {
   usageLogEvents?: Array<UsageLogEvent>;
 }
 
-export const BatchUsageLogEvents: Schema.Schema<BatchUsageLogEvents> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      retrievalTime: Schema.optional(Schema.String),
-      device: Schema.optional(Schema.String),
-      user: Schema.optional(Schema.String),
-      usageLogEvents: Schema.optional(Schema.Array(UsageLogEvent)),
-    }),
-  ).annotate({
-    identifier: "BatchUsageLogEvents",
-  }) as any as Schema.Schema<BatchUsageLogEvents>;
+export const BatchUsageLogEvents = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  retrievalTime: Schema.optional(Schema.String),
+  device: Schema.optional(Schema.String),
+  user: Schema.optional(Schema.String),
+  usageLogEvents: Schema.optional(Schema.Array(UsageLogEvent)),
+}).annotate({ identifier: "BatchUsageLogEvents" });
 
 export interface DefaultApplicationSettingAttempt {
   /** Output only. The package name of the attempted application. */
@@ -3075,22 +2645,17 @@ export interface DefaultApplicationSettingAttempt {
     | (string & {});
 }
 
-export const DefaultApplicationSettingAttempt: Schema.Schema<DefaultApplicationSettingAttempt> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      packageName: Schema.optional(Schema.String),
-      attemptOutcome: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DefaultApplicationSettingAttempt",
-  }) as any as Schema.Schema<DefaultApplicationSettingAttempt>;
+export const DefaultApplicationSettingAttempt =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageName: Schema.optional(Schema.String),
+    attemptOutcome: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DefaultApplicationSettingAttempt" });
 
 export interface IssueCommandResponse {}
 
-export const IssueCommandResponse: Schema.Schema<IssueCommandResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "IssueCommandResponse",
-  }) as any as Schema.Schema<IssueCommandResponse>;
+export const IssueCommandResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "IssueCommandResponse" });
 
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -3101,16 +2666,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
@@ -3125,16 +2687,13 @@ export interface Operation {
   name?: string;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      error: Schema.optional(Status),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  done: Schema.optional(Schema.Boolean),
+  error: Schema.optional(Status),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Operation" });
 
 export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets ListOperationsRequest.return_partial_success and reads across collections. For example, when attempting to list all resources across all supported locations. */
@@ -3145,16 +2704,13 @@ export interface ListOperationsResponse {
   nextPageToken?: string;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      operations: Schema.optional(Schema.Array(Operation)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    operations: Schema.optional(Schema.Array(Operation)),
+    nextPageToken: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 export interface GoogleAuthenticationSettings {
   /** Output only. Whether users need to be authenticated by Google during the enrollment process. IT admin can specify if Google authentication is enabled for the enterprise for knowledge worker devices. This value can be set only via the Google Admin Console. Google authentication can be used with signin_url In the case where Google authentication is required and a signin_url is specified, Google authentication will be launched before signin_url. This value is overridden by EnrollmentToken.googleAuthenticationOptions and SigninDetail.googleAuthenticationOptions, if they are set. */
@@ -3165,14 +2721,10 @@ export interface GoogleAuthenticationSettings {
     | (string & {});
 }
 
-export const GoogleAuthenticationSettings: Schema.Schema<GoogleAuthenticationSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      googleAuthenticationRequired: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAuthenticationSettings",
-  }) as any as Schema.Schema<GoogleAuthenticationSettings>;
+export const GoogleAuthenticationSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    googleAuthenticationRequired: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleAuthenticationSettings" });
 
 export interface TermsAndConditions {
   /** A short header which appears above the HTML content. */
@@ -3181,15 +2733,10 @@ export interface TermsAndConditions {
   content?: UserFacingMessage;
 }
 
-export const TermsAndConditions: Schema.Schema<TermsAndConditions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      header: Schema.optional(UserFacingMessage),
-      content: Schema.optional(UserFacingMessage),
-    }),
-  ).annotate({
-    identifier: "TermsAndConditions",
-  }) as any as Schema.Schema<TermsAndConditions>;
+export const TermsAndConditions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  header: Schema.optional(UserFacingMessage),
+  content: Schema.optional(UserFacingMessage),
+}).annotate({ identifier: "TermsAndConditions" });
 
 export interface ContactInfo {
   /** The email of the data protection officer. The email is validated but not verified. */
@@ -3208,20 +2755,15 @@ export interface ContactInfo {
   euRepresentativeEmail?: string;
 }
 
-export const ContactInfo: Schema.Schema<ContactInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataProtectionOfficerEmail: Schema.optional(Schema.String),
-      dataProtectionOfficerName: Schema.optional(Schema.String),
-      dataProtectionOfficerPhone: Schema.optional(Schema.String),
-      contactEmail: Schema.optional(Schema.String),
-      euRepresentativeName: Schema.optional(Schema.String),
-      euRepresentativePhone: Schema.optional(Schema.String),
-      euRepresentativeEmail: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ContactInfo",
-  }) as any as Schema.Schema<ContactInfo>;
+export const ContactInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dataProtectionOfficerEmail: Schema.optional(Schema.String),
+  dataProtectionOfficerName: Schema.optional(Schema.String),
+  dataProtectionOfficerPhone: Schema.optional(Schema.String),
+  contactEmail: Schema.optional(Schema.String),
+  euRepresentativeName: Schema.optional(Schema.String),
+  euRepresentativePhone: Schema.optional(Schema.String),
+  euRepresentativeEmail: Schema.optional(Schema.String),
+}).annotate({ identifier: "ContactInfo" });
 
 export interface SigninDetail {
   /** A JSON string whose UTF-8 representation can be used to generate a QR code to enroll a device with this enrollment token. To enroll a device using NFC, the NFC record must contain a serialized java.util.Properties representation of the properties in the JSON. This is a read-only field generated by the server. */
@@ -3247,19 +2789,14 @@ export interface SigninDetail {
   signinEnrollmentToken?: string;
 }
 
-export const SigninDetail: Schema.Schema<SigninDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      qrCode: Schema.optional(Schema.String),
-      signinUrl: Schema.optional(Schema.String),
-      allowPersonalUsage: Schema.optional(Schema.String),
-      defaultStatus: Schema.optional(Schema.String),
-      tokenTag: Schema.optional(Schema.String),
-      signinEnrollmentToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SigninDetail",
-  }) as any as Schema.Schema<SigninDetail>;
+export const SigninDetail = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  qrCode: Schema.optional(Schema.String),
+  signinUrl: Schema.optional(Schema.String),
+  allowPersonalUsage: Schema.optional(Schema.String),
+  defaultStatus: Schema.optional(Schema.String),
+  tokenTag: Schema.optional(Schema.String),
+  signinEnrollmentToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "SigninDetail" });
 
 export interface ExternalData {
   /** The absolute URL to the data, which must use either the http or https scheme. Android Device Policy doesn't provide any credentials in the GET request, so the URL must be publicly accessible. Including a long, random component in the URL may be used to prevent attackers from discovering the URL. */
@@ -3268,15 +2805,10 @@ export interface ExternalData {
   sha256Hash?: string;
 }
 
-export const ExternalData: Schema.Schema<ExternalData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      url: Schema.optional(Schema.String),
-      sha256Hash: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ExternalData",
-  }) as any as Schema.Schema<ExternalData>;
+export const ExternalData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  url: Schema.optional(Schema.String),
+  sha256Hash: Schema.optional(Schema.String),
+}).annotate({ identifier: "ExternalData" });
 
 export interface Enterprise {
   /** Settings for Google-provided user authentication. */
@@ -3330,27 +2862,22 @@ export interface Enterprise {
     | (string & {});
 }
 
-export const Enterprise: Schema.Schema<Enterprise> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      googleAuthenticationSettings: Schema.optional(
-        GoogleAuthenticationSettings,
-      ),
-      pubsubTopic: Schema.optional(Schema.String),
-      termsAndConditions: Schema.optional(Schema.Array(TermsAndConditions)),
-      appAutoApprovalEnabled: Schema.optional(Schema.Boolean),
-      contactInfo: Schema.optional(ContactInfo),
-      primaryColor: Schema.optional(Schema.Number),
-      name: Schema.optional(Schema.String),
-      signinDetails: Schema.optional(Schema.Array(SigninDetail)),
-      enterpriseDisplayName: Schema.optional(Schema.String),
-      logo: Schema.optional(ExternalData),
-      managedGooglePlayAccountsEnterpriseType: Schema.optional(Schema.String),
-      managedGoogleDomainType: Schema.optional(Schema.String),
-      enabledNotificationTypes: Schema.optional(Schema.Array(Schema.String)),
-      enterpriseType: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Enterprise" }) as any as Schema.Schema<Enterprise>;
+export const Enterprise = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  googleAuthenticationSettings: Schema.optional(GoogleAuthenticationSettings),
+  pubsubTopic: Schema.optional(Schema.String),
+  termsAndConditions: Schema.optional(Schema.Array(TermsAndConditions)),
+  appAutoApprovalEnabled: Schema.optional(Schema.Boolean),
+  contactInfo: Schema.optional(ContactInfo),
+  primaryColor: Schema.optional(Schema.Number),
+  name: Schema.optional(Schema.String),
+  signinDetails: Schema.optional(Schema.Array(SigninDetail)),
+  enterpriseDisplayName: Schema.optional(Schema.String),
+  logo: Schema.optional(ExternalData),
+  managedGooglePlayAccountsEnterpriseType: Schema.optional(Schema.String),
+  managedGoogleDomainType: Schema.optional(Schema.String),
+  enabledNotificationTypes: Schema.optional(Schema.Array(Schema.String)),
+  enterpriseType: Schema.optional(Schema.String),
+}).annotate({ identifier: "Enterprise" });
 
 export interface DpcMigrationInfo {
   /** Output only. If this device was migrated from another DPC, the additionalData field of the migration token is populated here. */
@@ -3359,15 +2886,10 @@ export interface DpcMigrationInfo {
   previousDpc?: string;
 }
 
-export const DpcMigrationInfo: Schema.Schema<DpcMigrationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      additionalData: Schema.optional(Schema.String),
-      previousDpc: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DpcMigrationInfo",
-  }) as any as Schema.Schema<DpcMigrationInfo>;
+export const DpcMigrationInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  additionalData: Schema.optional(Schema.String),
+  previousDpc: Schema.optional(Schema.String),
+}).annotate({ identifier: "DpcMigrationInfo" });
 
 export interface ManagedPropertyEntry {
   /** The machine-readable value of the entry, which should be used in the configuration. Not localized. */
@@ -3376,15 +2898,10 @@ export interface ManagedPropertyEntry {
   name?: string;
 }
 
-export const ManagedPropertyEntry: Schema.Schema<ManagedPropertyEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ManagedPropertyEntry",
-  }) as any as Schema.Schema<ManagedPropertyEntry>;
+export const ManagedPropertyEntry = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "ManagedPropertyEntry" });
 
 export interface ApplicationEvent {
   /** App event type. */
@@ -3403,15 +2920,10 @@ export interface ApplicationEvent {
   createTime?: string;
 }
 
-export const ApplicationEvent: Schema.Schema<ApplicationEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      eventType: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ApplicationEvent",
-  }) as any as Schema.Schema<ApplicationEvent>;
+export const ApplicationEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  eventType: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "ApplicationEvent" });
 
 export interface StartLostModeParams {
   /** The message displayed to the user when the device is in lost mode. */
@@ -3426,18 +2938,13 @@ export interface StartLostModeParams {
   lostStreetAddress?: UserFacingMessage;
 }
 
-export const StartLostModeParams: Schema.Schema<StartLostModeParams> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lostMessage: Schema.optional(UserFacingMessage),
-      lostPhoneNumber: Schema.optional(UserFacingMessage),
-      lostEmailAddress: Schema.optional(Schema.String),
-      lostOrganization: Schema.optional(UserFacingMessage),
-      lostStreetAddress: Schema.optional(UserFacingMessage),
-    }),
-  ).annotate({
-    identifier: "StartLostModeParams",
-  }) as any as Schema.Schema<StartLostModeParams>;
+export const StartLostModeParams = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  lostMessage: Schema.optional(UserFacingMessage),
+  lostPhoneNumber: Schema.optional(UserFacingMessage),
+  lostEmailAddress: Schema.optional(Schema.String),
+  lostOrganization: Schema.optional(UserFacingMessage),
+  lostStreetAddress: Schema.optional(UserFacingMessage),
+}).annotate({ identifier: "StartLostModeParams" });
 
 export interface MigrationToken {
   /** Output only. Time when this migration token was created. */
@@ -3469,24 +2976,19 @@ export interface MigrationToken {
   additionalData?: string;
 }
 
-export const MigrationToken: Schema.Schema<MigrationToken> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      deviceId: Schema.optional(Schema.String),
-      managementMode: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-      policy: Schema.optional(Schema.String),
-      ttl: Schema.optional(Schema.String),
-      device: Schema.optional(Schema.String),
-      userId: Schema.optional(Schema.String),
-      expireTime: Schema.optional(Schema.String),
-      additionalData: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MigrationToken",
-  }) as any as Schema.Schema<MigrationToken>;
+export const MigrationToken = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createTime: Schema.optional(Schema.String),
+  deviceId: Schema.optional(Schema.String),
+  managementMode: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+  policy: Schema.optional(Schema.String),
+  ttl: Schema.optional(Schema.String),
+  device: Schema.optional(Schema.String),
+  userId: Schema.optional(Schema.String),
+  expireTime: Schema.optional(Schema.String),
+  additionalData: Schema.optional(Schema.String),
+}).annotate({ identifier: "MigrationToken" });
 
 export interface ListMigrationTokensResponse {
   /** The migration tokens from the specified enterprise. */
@@ -3495,15 +2997,11 @@ export interface ListMigrationTokensResponse {
   nextPageToken?: string;
 }
 
-export const ListMigrationTokensResponse: Schema.Schema<ListMigrationTokensResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      migrationTokens: Schema.optional(Schema.Array(MigrationToken)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListMigrationTokensResponse",
-  }) as any as Schema.Schema<ListMigrationTokensResponse>;
+export const ListMigrationTokensResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    migrationTokens: Schema.optional(Schema.Array(MigrationToken)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListMigrationTokensResponse" });
 
 export interface InternalErrorDetails {
   /** Output only. Integer representation of the error code as specified here (https://developer.android.com/reference/android/telephony/euicc/EuiccManager#EXTRA_EMBEDDED_SUBSCRIPTION_DETAILED_CODE). See also, OPERATION_SMDX_SUBJECT_REASON_CODE. See error_code_detail for more details. */
@@ -3549,29 +3047,21 @@ export interface InternalErrorDetails {
     | (string & {});
 }
 
-export const InternalErrorDetails: Schema.Schema<InternalErrorDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errorCode: Schema.optional(Schema.String),
-      errorCodeDetail: Schema.optional(Schema.String),
-      operationCode: Schema.optional(Schema.String),
-      operationCodeDetail: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InternalErrorDetails",
-  }) as any as Schema.Schema<InternalErrorDetails>;
+export const InternalErrorDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  errorCode: Schema.optional(Schema.String),
+  errorCodeDetail: Schema.optional(Schema.String),
+  operationCode: Schema.optional(Schema.String),
+  operationCodeDetail: Schema.optional(Schema.String),
+}).annotate({ identifier: "InternalErrorDetails" });
 
 export interface User {
   /** A unique identifier you create for this user, such as user342 or asset#44418. This field must be set when the user is created and can't be updated. This field must not contain personally identifiable information (PII). This identifier must be 1024 characters or less; otherwise, the update policy request will fail. */
   accountIdentifier?: string;
 }
 
-export const User: Schema.Schema<User> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accountIdentifier: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "User" }) as any as Schema.Schema<User>;
+export const User = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  accountIdentifier: Schema.optional(Schema.String),
+}).annotate({ identifier: "User" });
 
 export interface EnrollmentToken {
   /** The length of time the enrollment token is valid, ranging from 1 minute to Durations.MAX_VALUE (https://developers.google.com/protocol-buffers/docs/reference/java/com/google/protobuf/util/Durations.html#MAX_VALUE), approximately 10,000 years. If not specified, the default duration is 1 hour. Please note that if requested duration causes the resulting expiration_timestamp to exceed Timestamps.MAX_VALUE (https://developers.google.com/protocol-buffers/docs/reference/java/com/google/protobuf/util/Timestamps.html#MAX_VALUE), then expiration_timestamp is coerced to Timestamps.MAX_VALUE. */
@@ -3601,23 +3091,18 @@ export interface EnrollmentToken {
   policyName?: string;
 }
 
-export const EnrollmentToken: Schema.Schema<EnrollmentToken> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      duration: Schema.optional(Schema.String),
-      additionalData: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-      oneTimeOnly: Schema.optional(Schema.Boolean),
-      allowPersonalUsage: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      expirationTimestamp: Schema.optional(Schema.String),
-      qrCode: Schema.optional(Schema.String),
-      user: Schema.optional(User),
-      policyName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnrollmentToken",
-  }) as any as Schema.Schema<EnrollmentToken>;
+export const EnrollmentToken = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  duration: Schema.optional(Schema.String),
+  additionalData: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+  oneTimeOnly: Schema.optional(Schema.Boolean),
+  allowPersonalUsage: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  expirationTimestamp: Schema.optional(Schema.String),
+  qrCode: Schema.optional(Schema.String),
+  user: Schema.optional(User),
+  policyName: Schema.optional(Schema.String),
+}).annotate({ identifier: "EnrollmentToken" });
 
 export interface HardwareStatus {
   /** The time the measurements were taken. */
@@ -3636,20 +3121,15 @@ export interface HardwareStatus {
   skinTemperatures?: Array<number>;
 }
 
-export const HardwareStatus: Schema.Schema<HardwareStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      batteryTemperatures: Schema.optional(Schema.Array(Schema.Number)),
-      fanSpeeds: Schema.optional(Schema.Array(Schema.Number)),
-      cpuUsages: Schema.optional(Schema.Array(Schema.Number)),
-      cpuTemperatures: Schema.optional(Schema.Array(Schema.Number)),
-      gpuTemperatures: Schema.optional(Schema.Array(Schema.Number)),
-      skinTemperatures: Schema.optional(Schema.Array(Schema.Number)),
-    }),
-  ).annotate({
-    identifier: "HardwareStatus",
-  }) as any as Schema.Schema<HardwareStatus>;
+export const HardwareStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createTime: Schema.optional(Schema.String),
+  batteryTemperatures: Schema.optional(Schema.Array(Schema.Number)),
+  fanSpeeds: Schema.optional(Schema.Array(Schema.Number)),
+  cpuUsages: Schema.optional(Schema.Array(Schema.Number)),
+  cpuTemperatures: Schema.optional(Schema.Array(Schema.Number)),
+  gpuTemperatures: Schema.optional(Schema.Array(Schema.Number)),
+  skinTemperatures: Schema.optional(Schema.Array(Schema.Number)),
+}).annotate({ identifier: "HardwareStatus" });
 
 export interface ManagedProperty {
   /** For CHOICE or MULTISELECT properties, the list of possible entries. */
@@ -3702,16 +3182,11 @@ export interface ApplicationPermission {
   name?: string;
 }
 
-export const ApplicationPermission: Schema.Schema<ApplicationPermission> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissionId: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ApplicationPermission",
-  }) as any as Schema.Schema<ApplicationPermission>;
+export const ApplicationPermission = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  permissionId: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "ApplicationPermission" });
 
 export interface AppTrackInfo {
   /** The unmodifiable unique track identifier, taken from the releaseTrackId in the URL of the Play Console page that displays the app’s track information. */
@@ -3720,15 +3195,10 @@ export interface AppTrackInfo {
   trackAlias?: string;
 }
 
-export const AppTrackInfo: Schema.Schema<AppTrackInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      trackId: Schema.optional(Schema.String),
-      trackAlias: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AppTrackInfo",
-  }) as any as Schema.Schema<AppTrackInfo>;
+export const AppTrackInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  trackId: Schema.optional(Schema.String),
+  trackAlias: Schema.optional(Schema.String),
+}).annotate({ identifier: "AppTrackInfo" });
 
 export interface AppVersion {
   /** The string used in the Play store by the app developer to identify the version. The string is not necessarily unique or localized (for example, the string could be "1.4"). */
@@ -3741,15 +3211,12 @@ export interface AppVersion {
   production?: boolean;
 }
 
-export const AppVersion: Schema.Schema<AppVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      versionString: Schema.optional(Schema.String),
-      versionCode: Schema.optional(Schema.Number),
-      trackIds: Schema.optional(Schema.Array(Schema.String)),
-      production: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "AppVersion" }) as any as Schema.Schema<AppVersion>;
+export const AppVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  versionString: Schema.optional(Schema.String),
+  versionCode: Schema.optional(Schema.Number),
+  trackIds: Schema.optional(Schema.Array(Schema.String)),
+  production: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "AppVersion" });
 
 export interface Application {
   /** A link to the (consumer) Google Play details page for the app. */
@@ -3815,35 +3282,30 @@ export interface Application {
   fullDescription?: string;
 }
 
-export const Application: Schema.Schema<Application> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      playStoreUrl: Schema.optional(Schema.String),
-      category: Schema.optional(Schema.String),
-      managedProperties: Schema.optional(Schema.Array(ManagedProperty)),
-      features: Schema.optional(Schema.Array(Schema.String)),
-      contentRating: Schema.optional(Schema.String),
-      author: Schema.optional(Schema.String),
-      appPricing: Schema.optional(Schema.String),
-      minAndroidSdkVersion: Schema.optional(Schema.Number),
-      name: Schema.optional(Schema.String),
-      permissions: Schema.optional(Schema.Array(ApplicationPermission)),
-      iconUrl: Schema.optional(Schema.String),
-      appTracks: Schema.optional(Schema.Array(AppTrackInfo)),
-      smallIconUrl: Schema.optional(Schema.String),
-      distributionChannel: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      recentChanges: Schema.optional(Schema.String),
-      screenshotUrls: Schema.optional(Schema.Array(Schema.String)),
-      updateTime: Schema.optional(Schema.String),
-      availableCountries: Schema.optional(Schema.Array(Schema.String)),
-      title: Schema.optional(Schema.String),
-      appVersions: Schema.optional(Schema.Array(AppVersion)),
-      fullDescription: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Application",
-  }) as any as Schema.Schema<Application>;
+export const Application = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  playStoreUrl: Schema.optional(Schema.String),
+  category: Schema.optional(Schema.String),
+  managedProperties: Schema.optional(Schema.Array(ManagedProperty)),
+  features: Schema.optional(Schema.Array(Schema.String)),
+  contentRating: Schema.optional(Schema.String),
+  author: Schema.optional(Schema.String),
+  appPricing: Schema.optional(Schema.String),
+  minAndroidSdkVersion: Schema.optional(Schema.Number),
+  name: Schema.optional(Schema.String),
+  permissions: Schema.optional(Schema.Array(ApplicationPermission)),
+  iconUrl: Schema.optional(Schema.String),
+  appTracks: Schema.optional(Schema.Array(AppTrackInfo)),
+  smallIconUrl: Schema.optional(Schema.String),
+  distributionChannel: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  recentChanges: Schema.optional(Schema.String),
+  screenshotUrls: Schema.optional(Schema.Array(Schema.String)),
+  updateTime: Schema.optional(Schema.String),
+  availableCountries: Schema.optional(Schema.Array(Schema.String)),
+  title: Schema.optional(Schema.String),
+  appVersions: Schema.optional(Schema.Array(AppVersion)),
+  fullDescription: Schema.optional(Schema.String),
+}).annotate({ identifier: "Application" });
 
 export interface ProvisioningInfo {
   /** For corporate-owned devices, MEID number of the CDMA device. For example, A00000292788E1. */
@@ -3878,38 +3340,29 @@ export interface ProvisioningInfo {
   serialNumber?: string;
 }
 
-export const ProvisioningInfo: Schema.Schema<ProvisioningInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      meid: Schema.optional(Schema.String),
-      model: Schema.optional(Schema.String),
-      managementMode: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      apiLevel: Schema.optional(Schema.Number),
-      enterprise: Schema.optional(Schema.String),
-      brand: Schema.optional(Schema.String),
-      authenticatedUserEmail: Schema.optional(Schema.String),
-      imei: Schema.optional(Schema.String),
-      ownership: Schema.optional(Schema.String),
-      serialNumber: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProvisioningInfo",
-  }) as any as Schema.Schema<ProvisioningInfo>;
+export const ProvisioningInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  meid: Schema.optional(Schema.String),
+  model: Schema.optional(Schema.String),
+  managementMode: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  apiLevel: Schema.optional(Schema.Number),
+  enterprise: Schema.optional(Schema.String),
+  brand: Schema.optional(Schema.String),
+  authenticatedUserEmail: Schema.optional(Schema.String),
+  imei: Schema.optional(Schema.String),
+  ownership: Schema.optional(Schema.String),
+  serialNumber: Schema.optional(Schema.String),
+}).annotate({ identifier: "ProvisioningInfo" });
 
 export interface ModifyPolicyApplicationsResponse {
   /** The updated policy. */
   policy?: Policy;
 }
 
-export const ModifyPolicyApplicationsResponse: Schema.Schema<ModifyPolicyApplicationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policy: Schema.optional(Policy),
-    }),
-  ).annotate({
-    identifier: "ModifyPolicyApplicationsResponse",
-  }) as any as Schema.Schema<ModifyPolicyApplicationsResponse>;
+export const ModifyPolicyApplicationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policy: Schema.optional(Policy),
+  }).annotate({ identifier: "ModifyPolicyApplicationsResponse" });
 
 export interface WebApp {
   /** The title of the web app as displayed to the user (e.g., amongst a list of other applications, or as a label for an icon). */
@@ -3931,17 +3384,14 @@ export interface WebApp {
   name?: string;
 }
 
-export const WebApp: Schema.Schema<WebApp> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-      startUrl: Schema.optional(Schema.String),
-      versionCode: Schema.optional(Schema.String),
-      icons: Schema.optional(Schema.Array(WebAppIcon)),
-      displayMode: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "WebApp" }) as any as Schema.Schema<WebApp>;
+export const WebApp = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  title: Schema.optional(Schema.String),
+  startUrl: Schema.optional(Schema.String),
+  versionCode: Schema.optional(Schema.String),
+  icons: Schema.optional(Schema.Array(WebAppIcon)),
+  displayMode: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "WebApp" });
 
 export interface TelephonyInfo {
   /** The phone number associated with this SIM card. */
@@ -3964,18 +3414,13 @@ export interface TelephonyInfo {
   carrierName?: string;
 }
 
-export const TelephonyInfo: Schema.Schema<TelephonyInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      phoneNumber: Schema.optional(Schema.String),
-      iccId: Schema.optional(Schema.String),
-      configMode: Schema.optional(Schema.String),
-      activationState: Schema.optional(Schema.String),
-      carrierName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TelephonyInfo",
-  }) as any as Schema.Schema<TelephonyInfo>;
+export const TelephonyInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  phoneNumber: Schema.optional(Schema.String),
+  iccId: Schema.optional(Schema.String),
+  configMode: Schema.optional(Schema.String),
+  activationState: Schema.optional(Schema.String),
+  carrierName: Schema.optional(Schema.String),
+}).annotate({ identifier: "TelephonyInfo" });
 
 export interface MemoryEvent {
   /** The creation time of the event. */
@@ -3993,16 +3438,11 @@ export interface MemoryEvent {
   byteCount?: string;
 }
 
-export const MemoryEvent: Schema.Schema<MemoryEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      eventType: Schema.optional(Schema.String),
-      byteCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MemoryEvent",
-  }) as any as Schema.Schema<MemoryEvent>;
+export const MemoryEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createTime: Schema.optional(Schema.String),
+  eventType: Schema.optional(Schema.String),
+  byteCount: Schema.optional(Schema.String),
+}).annotate({ identifier: "MemoryEvent" });
 
 export interface ListEnrollmentTokensResponse {
   /** The list of enrollment tokens. */
@@ -4011,39 +3451,29 @@ export interface ListEnrollmentTokensResponse {
   nextPageToken?: string;
 }
 
-export const ListEnrollmentTokensResponse: Schema.Schema<ListEnrollmentTokensResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enrollmentTokens: Schema.optional(Schema.Array(EnrollmentToken)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListEnrollmentTokensResponse",
-  }) as any as Schema.Schema<ListEnrollmentTokensResponse>;
+export const ListEnrollmentTokensResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enrollmentTokens: Schema.optional(Schema.Array(EnrollmentToken)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListEnrollmentTokensResponse" });
 
 export interface Eid {
   /** Output only. The EID */
   eid?: string;
 }
 
-export const Eid: Schema.Schema<Eid> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      eid: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Eid" }) as any as Schema.Schema<Eid>;
+export const Eid = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  eid: Schema.optional(Schema.String),
+}).annotate({ identifier: "Eid" });
 
 export interface EidInfo {
   /** Output only. EID information for each eUICC chip. */
   eids?: Array<Eid>;
 }
 
-export const EidInfo: Schema.Schema<EidInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      eids: Schema.optional(Schema.Array(Eid)),
-    }),
-  ).annotate({ identifier: "EidInfo" }) as any as Schema.Schema<EidInfo>;
+export const EidInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  eids: Schema.optional(Schema.Array(Eid)),
+}).annotate({ identifier: "EidInfo" });
 
 export interface NetworkInfo {
   /** MEID number of the CDMA device. For example, A00000292788E1. */
@@ -4058,18 +3488,13 @@ export interface NetworkInfo {
   networkOperatorName?: string;
 }
 
-export const NetworkInfo: Schema.Schema<NetworkInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      meid: Schema.optional(Schema.String),
-      wifiMacAddress: Schema.optional(Schema.String),
-      imei: Schema.optional(Schema.String),
-      telephonyInfos: Schema.optional(Schema.Array(TelephonyInfo)),
-      networkOperatorName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NetworkInfo",
-  }) as any as Schema.Schema<NetworkInfo>;
+export const NetworkInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  meid: Schema.optional(Schema.String),
+  wifiMacAddress: Schema.optional(Schema.String),
+  imei: Schema.optional(Schema.String),
+  telephonyInfos: Schema.optional(Schema.Array(TelephonyInfo)),
+  networkOperatorName: Schema.optional(Schema.String),
+}).annotate({ identifier: "NetworkInfo" });
 
 export interface StartLostModeStatus {
   /** The status. See StartLostModeStatus. */
@@ -4082,14 +3507,9 @@ export interface StartLostModeStatus {
     | (string & {});
 }
 
-export const StartLostModeStatus: Schema.Schema<StartLostModeStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      status: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StartLostModeStatus",
-  }) as any as Schema.Schema<StartLostModeStatus>;
+export const StartLostModeStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  status: Schema.optional(Schema.String),
+}).annotate({ identifier: "StartLostModeStatus" });
 
 export interface SystemUpdateInfo {
   /** The status of an update: whether an update exists and what type it is. */
@@ -4104,15 +3524,10 @@ export interface SystemUpdateInfo {
   updateReceivedTime?: string;
 }
 
-export const SystemUpdateInfo: Schema.Schema<SystemUpdateInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateStatus: Schema.optional(Schema.String),
-      updateReceivedTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SystemUpdateInfo",
-  }) as any as Schema.Schema<SystemUpdateInfo>;
+export const SystemUpdateInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  updateStatus: Schema.optional(Schema.String),
+  updateReceivedTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "SystemUpdateInfo" });
 
 export interface SoftwareInfo {
   /** The Android Device Policy app version as displayed to the user. */
@@ -4139,24 +3554,19 @@ export interface SoftwareInfo {
   primaryLanguageCode?: string;
 }
 
-export const SoftwareInfo: Schema.Schema<SoftwareInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      androidDevicePolicyVersionName: Schema.optional(Schema.String),
-      androidVersion: Schema.optional(Schema.String),
-      androidBuildNumber: Schema.optional(Schema.String),
-      bootloaderVersion: Schema.optional(Schema.String),
-      deviceBuildSignature: Schema.optional(Schema.String),
-      deviceKernelVersion: Schema.optional(Schema.String),
-      androidBuildTime: Schema.optional(Schema.String),
-      securityPatchLevel: Schema.optional(Schema.String),
-      systemUpdateInfo: Schema.optional(SystemUpdateInfo),
-      androidDevicePolicyVersionCode: Schema.optional(Schema.Number),
-      primaryLanguageCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SoftwareInfo",
-  }) as any as Schema.Schema<SoftwareInfo>;
+export const SoftwareInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  androidDevicePolicyVersionName: Schema.optional(Schema.String),
+  androidVersion: Schema.optional(Schema.String),
+  androidBuildNumber: Schema.optional(Schema.String),
+  bootloaderVersion: Schema.optional(Schema.String),
+  deviceBuildSignature: Schema.optional(Schema.String),
+  deviceKernelVersion: Schema.optional(Schema.String),
+  androidBuildTime: Schema.optional(Schema.String),
+  securityPatchLevel: Schema.optional(Schema.String),
+  systemUpdateInfo: Schema.optional(SystemUpdateInfo),
+  androidDevicePolicyVersionCode: Schema.optional(Schema.Number),
+  primaryLanguageCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "SoftwareInfo" });
 
 export interface DeviceSettings {
   /** Whether installing apps from unknown sources is enabled. */
@@ -4183,20 +3593,15 @@ export interface DeviceSettings {
   isEncrypted?: boolean;
 }
 
-export const DeviceSettings: Schema.Schema<DeviceSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unknownSourcesEnabled: Schema.optional(Schema.Boolean),
-      developmentSettingsEnabled: Schema.optional(Schema.Boolean),
-      verifyAppsEnabled: Schema.optional(Schema.Boolean),
-      isDeviceSecure: Schema.optional(Schema.Boolean),
-      adbEnabled: Schema.optional(Schema.Boolean),
-      encryptionStatus: Schema.optional(Schema.String),
-      isEncrypted: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "DeviceSettings",
-  }) as any as Schema.Schema<DeviceSettings>;
+export const DeviceSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  unknownSourcesEnabled: Schema.optional(Schema.Boolean),
+  developmentSettingsEnabled: Schema.optional(Schema.Boolean),
+  verifyAppsEnabled: Schema.optional(Schema.Boolean),
+  isDeviceSecure: Schema.optional(Schema.Boolean),
+  adbEnabled: Schema.optional(Schema.Boolean),
+  encryptionStatus: Schema.optional(Schema.String),
+  isEncrypted: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "DeviceSettings" });
 
 export interface CommonCriteriaModeInfo {
   /** Whether Common Criteria Mode is enabled. */
@@ -4215,15 +3620,12 @@ export interface CommonCriteriaModeInfo {
     | (string & {});
 }
 
-export const CommonCriteriaModeInfo: Schema.Schema<CommonCriteriaModeInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonCriteriaModeStatus: Schema.optional(Schema.String),
-      policySignatureVerificationStatus: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CommonCriteriaModeInfo",
-  }) as any as Schema.Schema<CommonCriteriaModeInfo>;
+export const CommonCriteriaModeInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    commonCriteriaModeStatus: Schema.optional(Schema.String),
+    policySignatureVerificationStatus: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "CommonCriteriaModeInfo" });
 
 export interface Display {
   /** Name of the display. */
@@ -4248,18 +3650,15 @@ export interface Display {
   density?: number;
 }
 
-export const Display: Schema.Schema<Display> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      height: Schema.optional(Schema.Number),
-      displayId: Schema.optional(Schema.Number),
-      refreshRate: Schema.optional(Schema.Number),
-      width: Schema.optional(Schema.Number),
-      density: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Display" }) as any as Schema.Schema<Display>;
+export const Display = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  height: Schema.optional(Schema.Number),
+  displayId: Schema.optional(Schema.Number),
+  refreshRate: Schema.optional(Schema.Number),
+  width: Schema.optional(Schema.Number),
+  density: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Display" });
 
 export interface KeyedAppState {
   /** Optionally, a free-form message string to explain the app state. If the state was triggered by a particular value (e.g. a managed configuration value), it should be included in the message. */
@@ -4276,19 +3675,14 @@ export interface KeyedAppState {
   data?: string;
 }
 
-export const KeyedAppState: Schema.Schema<KeyedAppState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      message: Schema.optional(Schema.String),
-      lastUpdateTime: Schema.optional(Schema.String),
-      key: Schema.optional(Schema.String),
-      severity: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      data: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "KeyedAppState",
-  }) as any as Schema.Schema<KeyedAppState>;
+export const KeyedAppState = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  message: Schema.optional(Schema.String),
+  lastUpdateTime: Schema.optional(Schema.String),
+  key: Schema.optional(Schema.String),
+  severity: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  data: Schema.optional(Schema.String),
+}).annotate({ identifier: "KeyedAppState" });
 
 export interface ApplicationReport {
   /** The package name of the app that installed this app. */
@@ -4331,25 +3725,20 @@ export interface ApplicationReport {
   keyedAppStates?: Array<KeyedAppState>;
 }
 
-export const ApplicationReport: Schema.Schema<ApplicationReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      installerPackageName: Schema.optional(Schema.String),
-      userFacingType: Schema.optional(Schema.String),
-      versionCode: Schema.optional(Schema.Number),
-      packageSha256Hash: Schema.optional(Schema.String),
-      events: Schema.optional(Schema.Array(ApplicationEvent)),
-      displayName: Schema.optional(Schema.String),
-      versionName: Schema.optional(Schema.String),
-      packageName: Schema.optional(Schema.String),
-      applicationSource: Schema.optional(Schema.String),
-      signingKeyCertFingerprints: Schema.optional(Schema.Array(Schema.String)),
-      state: Schema.optional(Schema.String),
-      keyedAppStates: Schema.optional(Schema.Array(KeyedAppState)),
-    }),
-  ).annotate({
-    identifier: "ApplicationReport",
-  }) as any as Schema.Schema<ApplicationReport>;
+export const ApplicationReport = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  installerPackageName: Schema.optional(Schema.String),
+  userFacingType: Schema.optional(Schema.String),
+  versionCode: Schema.optional(Schema.Number),
+  packageSha256Hash: Schema.optional(Schema.String),
+  events: Schema.optional(Schema.Array(ApplicationEvent)),
+  displayName: Schema.optional(Schema.String),
+  versionName: Schema.optional(Schema.String),
+  packageName: Schema.optional(Schema.String),
+  applicationSource: Schema.optional(Schema.String),
+  signingKeyCertFingerprints: Schema.optional(Schema.Array(Schema.String)),
+  state: Schema.optional(Schema.String),
+  keyedAppStates: Schema.optional(Schema.Array(KeyedAppState)),
+}).annotate({ identifier: "ApplicationReport" });
 
 export interface PostureDetail {
   /** Corresponding admin-facing advice to mitigate this security risk and improve the security posture of the device. */
@@ -4363,15 +3752,10 @@ export interface PostureDetail {
     | (string & {});
 }
 
-export const PostureDetail: Schema.Schema<PostureDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      advice: Schema.optional(Schema.Array(UserFacingMessage)),
-      securityRisk: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PostureDetail",
-  }) as any as Schema.Schema<PostureDetail>;
+export const PostureDetail = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  advice: Schema.optional(Schema.Array(UserFacingMessage)),
+  securityRisk: Schema.optional(Schema.String),
+}).annotate({ identifier: "PostureDetail" });
 
 export interface SecurityPosture {
   /** Device's security posture value. */
@@ -4385,15 +3769,10 @@ export interface SecurityPosture {
   postureDetails?: Array<PostureDetail>;
 }
 
-export const SecurityPosture: Schema.Schema<SecurityPosture> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      devicePosture: Schema.optional(Schema.String),
-      postureDetails: Schema.optional(Schema.Array(PostureDetail)),
-    }),
-  ).annotate({
-    identifier: "SecurityPosture",
-  }) as any as Schema.Schema<SecurityPosture>;
+export const SecurityPosture = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  devicePosture: Schema.optional(Schema.String),
+  postureDetails: Schema.optional(Schema.Array(PostureDetail)),
+}).annotate({ identifier: "SecurityPosture" });
 
 export interface DefaultApplicationInfo {
   /** Output only. The default application type. */
@@ -4414,18 +3793,15 @@ export interface DefaultApplicationInfo {
   defaultApplicationSettingAttempts?: Array<DefaultApplicationSettingAttempt>;
 }
 
-export const DefaultApplicationInfo: Schema.Schema<DefaultApplicationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      defaultApplicationType: Schema.optional(Schema.String),
-      packageName: Schema.optional(Schema.String),
-      defaultApplicationSettingAttempts: Schema.optional(
-        Schema.Array(DefaultApplicationSettingAttempt),
-      ),
-    }),
-  ).annotate({
-    identifier: "DefaultApplicationInfo",
-  }) as any as Schema.Schema<DefaultApplicationInfo>;
+export const DefaultApplicationInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    defaultApplicationType: Schema.optional(Schema.String),
+    packageName: Schema.optional(Schema.String),
+    defaultApplicationSettingAttempts: Schema.optional(
+      Schema.Array(DefaultApplicationSettingAttempt),
+    ),
+  },
+).annotate({ identifier: "DefaultApplicationInfo" });
 
 export interface MemoryInfo {
   /** Total internal storage on device in bytes. */
@@ -4434,13 +3810,10 @@ export interface MemoryInfo {
   totalRam?: string;
 }
 
-export const MemoryInfo: Schema.Schema<MemoryInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      totalInternalStorage: Schema.optional(Schema.String),
-      totalRam: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "MemoryInfo" }) as any as Schema.Schema<MemoryInfo>;
+export const MemoryInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  totalInternalStorage: Schema.optional(Schema.String),
+  totalRam: Schema.optional(Schema.String),
+}).annotate({ identifier: "MemoryInfo" });
 
 export interface Device {
   /** The name of the policy currently applied to the device. */
@@ -4545,56 +3918,47 @@ export interface Device {
   userName?: string;
 }
 
-export const Device: Schema.Schema<Device> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      appliedPolicyName: Schema.optional(Schema.String),
-      memoryEvents: Schema.optional(Schema.Array(MemoryEvent)),
-      appliedState: Schema.optional(Schema.String),
-      lastPolicySyncTime: Schema.optional(Schema.String),
-      enrollmentTokenData: Schema.optional(Schema.String),
-      softwareInfo: Schema.optional(SoftwareInfo),
-      user: Schema.optional(User),
-      lastStatusReportTime: Schema.optional(Schema.String),
-      hardwareStatusSamples: Schema.optional(Schema.Array(HardwareStatus)),
-      policyCompliant: Schema.optional(Schema.Boolean),
-      powerManagementEvents: Schema.optional(
-        Schema.Array(PowerManagementEvent),
-      ),
-      deviceSettings: Schema.optional(DeviceSettings),
-      nonComplianceDetails: Schema.optional(Schema.Array(NonComplianceDetail)),
-      appliedPolicyVersion: Schema.optional(Schema.String),
-      commonCriteriaModeInfo: Schema.optional(CommonCriteriaModeInfo),
-      state: Schema.optional(Schema.String),
-      managementMode: Schema.optional(Schema.String),
-      displays: Schema.optional(Schema.Array(Display)),
-      applicationReports: Schema.optional(Schema.Array(ApplicationReport)),
-      ownership: Schema.optional(Schema.String),
-      hardwareInfo: Schema.optional(HardwareInfo),
-      systemProperties: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      securityPosture: Schema.optional(SecurityPosture),
-      enrollmentTime: Schema.optional(Schema.String),
-      defaultApplicationInfo: Schema.optional(
-        Schema.Array(DefaultApplicationInfo),
-      ),
-      name: Schema.optional(Schema.String),
-      enrollmentTokenName: Schema.optional(Schema.String),
-      disabledReason: Schema.optional(UserFacingMessage),
-      dpcMigrationInfo: Schema.optional(DpcMigrationInfo),
-      lastPolicyComplianceReportTime: Schema.optional(Schema.String),
-      memoryInfo: Schema.optional(MemoryInfo),
-      apiLevel: Schema.optional(Schema.Number),
-      appliedPasswordPolicies: Schema.optional(
-        Schema.Array(PasswordRequirements),
-      ),
-      policyName: Schema.optional(Schema.String),
-      previousDeviceNames: Schema.optional(Schema.Array(Schema.String)),
-      networkInfo: Schema.optional(NetworkInfo),
-      userName: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Device" }) as any as Schema.Schema<Device>;
+export const Device = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  appliedPolicyName: Schema.optional(Schema.String),
+  memoryEvents: Schema.optional(Schema.Array(MemoryEvent)),
+  appliedState: Schema.optional(Schema.String),
+  lastPolicySyncTime: Schema.optional(Schema.String),
+  enrollmentTokenData: Schema.optional(Schema.String),
+  softwareInfo: Schema.optional(SoftwareInfo),
+  user: Schema.optional(User),
+  lastStatusReportTime: Schema.optional(Schema.String),
+  hardwareStatusSamples: Schema.optional(Schema.Array(HardwareStatus)),
+  policyCompliant: Schema.optional(Schema.Boolean),
+  powerManagementEvents: Schema.optional(Schema.Array(PowerManagementEvent)),
+  deviceSettings: Schema.optional(DeviceSettings),
+  nonComplianceDetails: Schema.optional(Schema.Array(NonComplianceDetail)),
+  appliedPolicyVersion: Schema.optional(Schema.String),
+  commonCriteriaModeInfo: Schema.optional(CommonCriteriaModeInfo),
+  state: Schema.optional(Schema.String),
+  managementMode: Schema.optional(Schema.String),
+  displays: Schema.optional(Schema.Array(Display)),
+  applicationReports: Schema.optional(Schema.Array(ApplicationReport)),
+  ownership: Schema.optional(Schema.String),
+  hardwareInfo: Schema.optional(HardwareInfo),
+  systemProperties: Schema.optional(
+    Schema.Record(Schema.String, Schema.String),
+  ),
+  securityPosture: Schema.optional(SecurityPosture),
+  enrollmentTime: Schema.optional(Schema.String),
+  defaultApplicationInfo: Schema.optional(Schema.Array(DefaultApplicationInfo)),
+  name: Schema.optional(Schema.String),
+  enrollmentTokenName: Schema.optional(Schema.String),
+  disabledReason: Schema.optional(UserFacingMessage),
+  dpcMigrationInfo: Schema.optional(DpcMigrationInfo),
+  lastPolicyComplianceReportTime: Schema.optional(Schema.String),
+  memoryInfo: Schema.optional(MemoryInfo),
+  apiLevel: Schema.optional(Schema.Number),
+  appliedPasswordPolicies: Schema.optional(Schema.Array(PasswordRequirements)),
+  policyName: Schema.optional(Schema.String),
+  previousDeviceNames: Schema.optional(Schema.Array(Schema.String)),
+  networkInfo: Schema.optional(NetworkInfo),
+  userName: Schema.optional(Schema.String),
+}).annotate({ identifier: "Device" });
 
 export interface ListDevicesResponse {
   /** The list of devices. */
@@ -4603,15 +3967,10 @@ export interface ListDevicesResponse {
   nextPageToken?: string;
 }
 
-export const ListDevicesResponse: Schema.Schema<ListDevicesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      devices: Schema.optional(Schema.Array(Device)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListDevicesResponse",
-  }) as any as Schema.Schema<ListDevicesResponse>;
+export const ListDevicesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  devices: Schema.optional(Schema.Array(Device)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListDevicesResponse" });
 
 export interface AddEsimParams {
   /** Required. The activation code for the eSIM profile. */
@@ -4624,15 +3983,10 @@ export interface AddEsimParams {
     | (string & {});
 }
 
-export const AddEsimParams: Schema.Schema<AddEsimParams> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      activationCode: Schema.optional(Schema.String),
-      activationState: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AddEsimParams",
-  }) as any as Schema.Schema<AddEsimParams>;
+export const AddEsimParams = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  activationCode: Schema.optional(Schema.String),
+  activationState: Schema.optional(Schema.String),
+}).annotate({ identifier: "AddEsimParams" });
 
 export interface StopLostModeStatus {
   /** The status. See StopLostModeStatus. */
@@ -4643,28 +3997,19 @@ export interface StopLostModeStatus {
     | (string & {});
 }
 
-export const StopLostModeStatus: Schema.Schema<StopLostModeStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      status: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StopLostModeStatus",
-  }) as any as Schema.Schema<StopLostModeStatus>;
+export const StopLostModeStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  status: Schema.optional(Schema.String),
+}).annotate({ identifier: "StopLostModeStatus" });
 
 export interface RequestDeviceInfoParams {
   /** Required. Type of device information to be requested. */
   deviceInfo?: "DEVICE_INFO_UNSPECIFIED" | "EID" | (string & {});
 }
 
-export const RequestDeviceInfoParams: Schema.Schema<RequestDeviceInfoParams> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deviceInfo: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RequestDeviceInfoParams",
-  }) as any as Schema.Schema<RequestDeviceInfoParams>;
+export const RequestDeviceInfoParams =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deviceInfo: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RequestDeviceInfoParams" });
 
 export interface RequestDeviceInfoStatus {
   /** Output only. Status of a REQUEST_DEVICE_INFO command. */
@@ -4679,27 +4024,20 @@ export interface RequestDeviceInfoStatus {
   eidInfo?: EidInfo;
 }
 
-export const RequestDeviceInfoStatus: Schema.Schema<RequestDeviceInfoStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      status: Schema.optional(Schema.String),
-      eidInfo: Schema.optional(EidInfo),
-    }),
-  ).annotate({
-    identifier: "RequestDeviceInfoStatus",
-  }) as any as Schema.Schema<RequestDeviceInfoStatus>;
+export const RequestDeviceInfoStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    status: Schema.optional(Schema.String),
+    eidInfo: Schema.optional(EidInfo),
+  }).annotate({ identifier: "RequestDeviceInfoStatus" });
 
 export interface EsimInfo {
   /** Output only. ICC ID of the eSIM. */
   iccId?: string;
 }
 
-export const EsimInfo: Schema.Schema<EsimInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      iccId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "EsimInfo" }) as any as Schema.Schema<EsimInfo>;
+export const EsimInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  iccId: Schema.optional(Schema.String),
+}).annotate({ identifier: "EsimInfo" });
 
 export interface EsimCommandStatus {
   /** Output only. Status of an ADD_ESIM or REMOVE_ESIM command. */
@@ -4720,16 +4058,11 @@ export interface EsimCommandStatus {
   esimInfo?: EsimInfo;
 }
 
-export const EsimCommandStatus: Schema.Schema<EsimCommandStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      status: Schema.optional(Schema.String),
-      internalErrorDetails: Schema.optional(InternalErrorDetails),
-      esimInfo: Schema.optional(EsimInfo),
-    }),
-  ).annotate({
-    identifier: "EsimCommandStatus",
-  }) as any as Schema.Schema<EsimCommandStatus>;
+export const EsimCommandStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  status: Schema.optional(Schema.String),
+  internalErrorDetails: Schema.optional(InternalErrorDetails),
+  esimInfo: Schema.optional(EsimInfo),
+}).annotate({ identifier: "EsimCommandStatus" });
 
 export interface EnterpriseUpgradeEvent {
   /** The name of upgraded enterprise in the format "enterprises/{enterprise}" */
@@ -4741,15 +4074,12 @@ export interface EnterpriseUpgradeEvent {
     | (string & {});
 }
 
-export const EnterpriseUpgradeEvent: Schema.Schema<EnterpriseUpgradeEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enterprise: Schema.optional(Schema.String),
-      upgradeState: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseUpgradeEvent",
-  }) as any as Schema.Schema<EnterpriseUpgradeEvent>;
+export const EnterpriseUpgradeEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    enterprise: Schema.optional(Schema.String),
+    upgradeState: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "EnterpriseUpgradeEvent" });
 
 export interface SignupUrl {
   /** The name of the resource. Use this value in the signupUrl field when calling enterprises.create to complete the enterprise signup flow. */
@@ -4758,13 +4088,10 @@ export interface SignupUrl {
   url?: string;
 }
 
-export const SignupUrl: Schema.Schema<SignupUrl> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      url: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "SignupUrl" }) as any as Schema.Schema<SignupUrl>;
+export const SignupUrl = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  url: Schema.optional(Schema.String),
+}).annotate({ identifier: "SignupUrl" });
 
 export interface ApplicationPolicyChange {
   /** If ApplicationPolicy.packageName matches an existing ApplicationPolicy object within the Policy being modified, then that object will be updated. Otherwise, it will be added to the end of the Policy.applications. */
@@ -4773,15 +4100,11 @@ export interface ApplicationPolicyChange {
   updateMask?: string;
 }
 
-export const ApplicationPolicyChange: Schema.Schema<ApplicationPolicyChange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      application: Schema.optional(ApplicationPolicy),
-      updateMask: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ApplicationPolicyChange",
-  }) as any as Schema.Schema<ApplicationPolicyChange>;
+export const ApplicationPolicyChange =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    application: Schema.optional(ApplicationPolicy),
+    updateMask: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ApplicationPolicyChange" });
 
 export interface WipeParams {
   /** Optional. Flags to determine what data to wipe. */
@@ -4796,48 +4119,36 @@ export interface WipeParams {
   wipeReason?: UserFacingMessage;
 }
 
-export const WipeParams: Schema.Schema<WipeParams> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      wipeDataFlags: Schema.optional(Schema.Array(Schema.String)),
-      wipeReason: Schema.optional(UserFacingMessage),
-    }),
-  ).annotate({ identifier: "WipeParams" }) as any as Schema.Schema<WipeParams>;
+export const WipeParams = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  wipeDataFlags: Schema.optional(Schema.Array(Schema.String)),
+  wipeReason: Schema.optional(UserFacingMessage),
+}).annotate({ identifier: "WipeParams" });
 
 export interface RemovePolicyApplicationsRequest {
   /** Required. Package names to be removed. Entries that are not found are ignored. There must be at least one entry in package_names. */
   packageNames?: Array<string>;
 }
 
-export const RemovePolicyApplicationsRequest: Schema.Schema<RemovePolicyApplicationsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      packageNames: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "RemovePolicyApplicationsRequest",
-  }) as any as Schema.Schema<RemovePolicyApplicationsRequest>;
+export const RemovePolicyApplicationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageNames: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "RemovePolicyApplicationsRequest" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface GenerateEnterpriseUpgradeUrlResponse {
   /** A URL for an enterprise admin to upgrade their enterprise. The page can't be rendered in an iframe. */
   url?: string;
 }
 
-export const GenerateEnterpriseUpgradeUrlResponse: Schema.Schema<GenerateEnterpriseUpgradeUrlResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      url: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GenerateEnterpriseUpgradeUrlResponse",
-  }) as any as Schema.Schema<GenerateEnterpriseUpgradeUrlResponse>;
+export const GenerateEnterpriseUpgradeUrlResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    url: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GenerateEnterpriseUpgradeUrlResponse" });
 
 export interface PerAppResult {
   /** The result of an attempt to clear the data of a single app. */
@@ -4850,28 +4161,18 @@ export interface PerAppResult {
     | (string & {});
 }
 
-export const PerAppResult: Schema.Schema<PerAppResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clearingResult: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PerAppResult",
-  }) as any as Schema.Schema<PerAppResult>;
+export const PerAppResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  clearingResult: Schema.optional(Schema.String),
+}).annotate({ identifier: "PerAppResult" });
 
 export interface ClearAppsDataStatus {
   /** The per-app results, a mapping from package names to the respective clearing result. */
   results?: Record<string, PerAppResult>;
 }
 
-export const ClearAppsDataStatus: Schema.Schema<ClearAppsDataStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      results: Schema.optional(Schema.Record(Schema.String, PerAppResult)),
-    }),
-  ).annotate({
-    identifier: "ClearAppsDataStatus",
-  }) as any as Schema.Schema<ClearAppsDataStatus>;
+export const ClearAppsDataStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  results: Schema.optional(Schema.Record(Schema.String, PerAppResult)),
+}).annotate({ identifier: "ClearAppsDataStatus" });
 
 export interface ListPoliciesResponse {
   /** The list of policies. */
@@ -4880,29 +4181,19 @@ export interface ListPoliciesResponse {
   nextPageToken?: string;
 }
 
-export const ListPoliciesResponse: Schema.Schema<ListPoliciesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policies: Schema.optional(Schema.Array(Policy)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListPoliciesResponse",
-  }) as any as Schema.Schema<ListPoliciesResponse>;
+export const ListPoliciesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policies: Schema.optional(Schema.Array(Policy)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListPoliciesResponse" });
 
 export interface RemoveEsimParams {
   /** Required. ICC ID of the eSIM profile to be deleted. */
   iccId?: string;
 }
 
-export const RemoveEsimParams: Schema.Schema<RemoveEsimParams> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      iccId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RemoveEsimParams",
-  }) as any as Schema.Schema<RemoveEsimParams>;
+export const RemoveEsimParams = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  iccId: Schema.optional(Schema.String),
+}).annotate({ identifier: "RemoveEsimParams" });
 
 export interface ListWebAppsResponse {
   /** The list of web apps. */
@@ -4911,29 +4202,20 @@ export interface ListWebAppsResponse {
   nextPageToken?: string;
 }
 
-export const ListWebAppsResponse: Schema.Schema<ListWebAppsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      webApps: Schema.optional(Schema.Array(WebApp)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListWebAppsResponse",
-  }) as any as Schema.Schema<ListWebAppsResponse>;
+export const ListWebAppsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  webApps: Schema.optional(Schema.Array(WebApp)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListWebAppsResponse" });
 
 export interface ModifyPolicyApplicationsRequest {
   /** Required. The changes to be made to the ApplicationPolicy objects. There must be at least one ApplicationPolicyChange. */
   changes?: Array<ApplicationPolicyChange>;
 }
 
-export const ModifyPolicyApplicationsRequest: Schema.Schema<ModifyPolicyApplicationsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      changes: Schema.optional(Schema.Array(ApplicationPolicyChange)),
-    }),
-  ).annotate({
-    identifier: "ModifyPolicyApplicationsRequest",
-  }) as any as Schema.Schema<ModifyPolicyApplicationsRequest>;
+export const ModifyPolicyApplicationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    changes: Schema.optional(Schema.Array(ApplicationPolicyChange)),
+  }).annotate({ identifier: "ModifyPolicyApplicationsRequest" });
 
 export interface ListEnterprisesResponse {
   /** The list of enterprises. */
@@ -4942,15 +4224,11 @@ export interface ListEnterprisesResponse {
   nextPageToken?: string;
 }
 
-export const ListEnterprisesResponse: Schema.Schema<ListEnterprisesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enterprises: Schema.optional(Schema.Array(Enterprise)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListEnterprisesResponse",
-  }) as any as Schema.Schema<ListEnterprisesResponse>;
+export const ListEnterprisesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enterprises: Schema.optional(Schema.Array(Enterprise)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListEnterprisesResponse" });
 
 export interface WebToken {
   /** The token value which is used in the hosting page to generate the iframe with the embedded UI. This is a read-only field generated by the server. */
@@ -4976,30 +4254,23 @@ export interface WebToken {
   >;
 }
 
-export const WebToken: Schema.Schema<WebToken> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-      parentFrameUrl: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-      enabledFeatures: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "WebToken" }) as any as Schema.Schema<WebToken>;
+export const WebToken = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.String),
+  parentFrameUrl: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  permissions: Schema.optional(Schema.Array(Schema.String)),
+  enabledFeatures: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "WebToken" });
 
 export interface RemovePolicyApplicationsResponse {
   /** The updated policy after ApplicationPolicy objects have been removed. */
   policy?: Policy;
 }
 
-export const RemovePolicyApplicationsResponse: Schema.Schema<RemovePolicyApplicationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policy: Schema.optional(Policy),
-    }),
-  ).annotate({
-    identifier: "RemovePolicyApplicationsResponse",
-  }) as any as Schema.Schema<RemovePolicyApplicationsResponse>;
+export const RemovePolicyApplicationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policy: Schema.optional(Policy),
+  }).annotate({ identifier: "RemovePolicyApplicationsResponse" });
 
 export interface Command {
   /** The resource name of the user that owns the device in the form enterprises/{enterpriseId}/users/{userId}. This is automatically generated by the server based on the device the command is sent to. */
@@ -5068,30 +4339,27 @@ export interface Command {
   addEsimParams?: AddEsimParams;
 }
 
-export const Command: Schema.Schema<Command> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userName: Schema.optional(Schema.String),
-      requestDeviceInfoStatus: Schema.optional(RequestDeviceInfoStatus),
-      errorCode: Schema.optional(Schema.String),
-      startLostModeStatus: Schema.optional(StartLostModeStatus),
-      duration: Schema.optional(Schema.String),
-      removeEsimParams: Schema.optional(RemoveEsimParams),
-      type: Schema.optional(Schema.String),
-      startLostModeParams: Schema.optional(StartLostModeParams),
-      stopLostModeParams: Schema.optional(StopLostModeParams),
-      createTime: Schema.optional(Schema.String),
-      newPassword: Schema.optional(Schema.String),
-      clearAppsDataStatus: Schema.optional(ClearAppsDataStatus),
-      esimStatus: Schema.optional(EsimCommandStatus),
-      resetPasswordFlags: Schema.optional(Schema.Array(Schema.String)),
-      requestDeviceInfoParams: Schema.optional(RequestDeviceInfoParams),
-      wipeParams: Schema.optional(WipeParams),
-      stopLostModeStatus: Schema.optional(StopLostModeStatus),
-      clearAppsDataParams: Schema.optional(ClearAppsDataParams),
-      addEsimParams: Schema.optional(AddEsimParams),
-    }),
-  ).annotate({ identifier: "Command" }) as any as Schema.Schema<Command>;
+export const Command = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  userName: Schema.optional(Schema.String),
+  requestDeviceInfoStatus: Schema.optional(RequestDeviceInfoStatus),
+  errorCode: Schema.optional(Schema.String),
+  startLostModeStatus: Schema.optional(StartLostModeStatus),
+  duration: Schema.optional(Schema.String),
+  removeEsimParams: Schema.optional(RemoveEsimParams),
+  type: Schema.optional(Schema.String),
+  startLostModeParams: Schema.optional(StartLostModeParams),
+  stopLostModeParams: Schema.optional(StopLostModeParams),
+  createTime: Schema.optional(Schema.String),
+  newPassword: Schema.optional(Schema.String),
+  clearAppsDataStatus: Schema.optional(ClearAppsDataStatus),
+  esimStatus: Schema.optional(EsimCommandStatus),
+  resetPasswordFlags: Schema.optional(Schema.Array(Schema.String)),
+  requestDeviceInfoParams: Schema.optional(RequestDeviceInfoParams),
+  wipeParams: Schema.optional(WipeParams),
+  stopLostModeStatus: Schema.optional(StopLostModeStatus),
+  clearAppsDataParams: Schema.optional(ClearAppsDataParams),
+  addEsimParams: Schema.optional(AddEsimParams),
+}).annotate({ identifier: "Command" });
 
 // ==========================================================================
 // Operations

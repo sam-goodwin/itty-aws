@@ -33,15 +33,12 @@ export interface Level {
   title?: string;
 }
 
-export const Level: Schema.Schema<Level> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      points: Schema.optional(Schema.Number),
-      id: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Level" }) as any as Schema.Schema<Level>;
+export const Level = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  points: Schema.optional(Schema.Number),
+  id: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+}).annotate({ identifier: "Level" });
 
 export interface Criterion {
   /** The criterion ID. On creation, an ID is assigned. */
@@ -54,15 +51,12 @@ export interface Criterion {
   levels?: Array<Level>;
 }
 
-export const Criterion: Schema.Schema<Criterion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      levels: Schema.optional(Schema.Array(Level)),
-    }),
-  ).annotate({ identifier: "Criterion" }) as any as Schema.Schema<Criterion>;
+export const Criterion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  levels: Schema.optional(Schema.Array(Level)),
+}).annotate({ identifier: "Criterion" });
 
 export interface Rubric {
   /** Output only. Timestamp when this rubric was created. Read-only. */
@@ -81,18 +75,15 @@ export interface Rubric {
   updateTime?: string;
 }
 
-export const Rubric: Schema.Schema<Rubric> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      creationTime: Schema.optional(Schema.String),
-      criteria: Schema.optional(Schema.Array(Criterion)),
-      courseId: Schema.optional(Schema.String),
-      sourceSpreadsheetId: Schema.optional(Schema.String),
-      courseWorkId: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Rubric" }) as any as Schema.Schema<Rubric>;
+export const Rubric = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  creationTime: Schema.optional(Schema.String),
+  criteria: Schema.optional(Schema.Array(Criterion)),
+  courseId: Schema.optional(Schema.String),
+  sourceSpreadsheetId: Schema.optional(Schema.String),
+  courseWorkId: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Rubric" });
 
 export interface DriveFolder {
   /** Drive API resource ID. */
@@ -103,16 +94,11 @@ export interface DriveFolder {
   title?: string;
 }
 
-export const DriveFolder: Schema.Schema<DriveFolder> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      alternateLink: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DriveFolder",
-  }) as any as Schema.Schema<DriveFolder>;
+export const DriveFolder = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  alternateLink: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+}).annotate({ identifier: "DriveFolder" });
 
 export interface Name {
   /** The user's first name. Read-only. */
@@ -123,28 +109,20 @@ export interface Name {
   familyName?: string;
 }
 
-export const Name: Schema.Schema<Name> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      givenName: Schema.optional(Schema.String),
-      fullName: Schema.optional(Schema.String),
-      familyName: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Name" }) as any as Schema.Schema<Name>;
+export const Name = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  givenName: Schema.optional(Schema.String),
+  fullName: Schema.optional(Schema.String),
+  familyName: Schema.optional(Schema.String),
+}).annotate({ identifier: "Name" });
 
 export interface GlobalPermission {
   /** Permission value. */
   permission?: "PERMISSION_UNSPECIFIED" | "CREATE_COURSE" | (string & {});
 }
 
-export const GlobalPermission: Schema.Schema<GlobalPermission> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permission: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GlobalPermission",
-  }) as any as Schema.Schema<GlobalPermission>;
+export const GlobalPermission = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  permission: Schema.optional(Schema.String),
+}).annotate({ identifier: "GlobalPermission" });
 
 export interface UserProfile {
   /** Email address of the user. Must request `https://www.googleapis.com/auth/classroom.profile.emails` scope for this field to be populated in a response body. Read-only. */
@@ -161,19 +139,14 @@ export interface UserProfile {
   verifiedTeacher?: boolean;
 }
 
-export const UserProfile: Schema.Schema<UserProfile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      emailAddress: Schema.optional(Schema.String),
-      photoUrl: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Name),
-      permissions: Schema.optional(Schema.Array(GlobalPermission)),
-      verifiedTeacher: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "UserProfile",
-  }) as any as Schema.Schema<UserProfile>;
+export const UserProfile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  emailAddress: Schema.optional(Schema.String),
+  photoUrl: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Name),
+  permissions: Schema.optional(Schema.Array(GlobalPermission)),
+  verifiedTeacher: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "UserProfile" });
 
 export interface Student {
   /** Identifier of the user. When specified as a parameter of a request, this identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user */
@@ -186,15 +159,12 @@ export interface Student {
   profile?: UserProfile;
 }
 
-export const Student: Schema.Schema<Student> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userId: Schema.optional(Schema.String),
-      studentWorkFolder: Schema.optional(DriveFolder),
-      courseId: Schema.optional(Schema.String),
-      profile: Schema.optional(UserProfile),
-    }),
-  ).annotate({ identifier: "Student" }) as any as Schema.Schema<Student>;
+export const Student = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  userId: Schema.optional(Schema.String),
+  studentWorkFolder: Schema.optional(DriveFolder),
+  courseId: Schema.optional(Schema.String),
+  profile: Schema.optional(UserProfile),
+}).annotate({ identifier: "Student" });
 
 export interface ListStudentsResponse {
   /** Students who match the list request. */
@@ -203,15 +173,10 @@ export interface ListStudentsResponse {
   nextPageToken?: string;
 }
 
-export const ListStudentsResponse: Schema.Schema<ListStudentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      students: Schema.optional(Schema.Array(Student)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListStudentsResponse",
-  }) as any as Schema.Schema<ListStudentsResponse>;
+export const ListStudentsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  students: Schema.optional(Schema.Array(Student)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListStudentsResponse" });
 
 export interface RubricGrade {
   /** Optional. Criterion ID. */
@@ -222,16 +187,11 @@ export interface RubricGrade {
   points?: number;
 }
 
-export const RubricGrade: Schema.Schema<RubricGrade> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      criterionId: Schema.optional(Schema.String),
-      levelId: Schema.optional(Schema.String),
-      points: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "RubricGrade",
-  }) as any as Schema.Schema<RubricGrade>;
+export const RubricGrade = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  criterionId: Schema.optional(Schema.String),
+  levelId: Schema.optional(Schema.String),
+  points: Schema.optional(Schema.Number),
+}).annotate({ identifier: "RubricGrade" });
 
 export interface Topic {
   /** Identifier of the course. Read-only. */
@@ -244,15 +204,12 @@ export interface Topic {
   name?: string;
 }
 
-export const Topic: Schema.Schema<Topic> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      courseId: Schema.optional(Schema.String),
-      topicId: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Topic" }) as any as Schema.Schema<Topic>;
+export const Topic = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  courseId: Schema.optional(Schema.String),
+  topicId: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Topic" });
 
 export interface GradeCategory {
   /** ID of the grade category. */
@@ -265,43 +222,30 @@ export interface GradeCategory {
   defaultGradeDenominator?: number;
 }
 
-export const GradeCategory: Schema.Schema<GradeCategory> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      weight: Schema.optional(Schema.Number),
-      defaultGradeDenominator: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GradeCategory",
-  }) as any as Schema.Schema<GradeCategory>;
+export const GradeCategory = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  weight: Schema.optional(Schema.Number),
+  defaultGradeDenominator: Schema.optional(Schema.Number),
+}).annotate({ identifier: "GradeCategory" });
 
 export interface CloudPubsubTopic {
   /** The `name` field of a Cloud Pub/Sub [Topic](https://cloud.google.com/pubsub/docs/reference/rest/v1/projects.topics#Topic). */
   topicName?: string;
 }
 
-export const CloudPubsubTopic: Schema.Schema<CloudPubsubTopic> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      topicName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CloudPubsubTopic",
-  }) as any as Schema.Schema<CloudPubsubTopic>;
+export const CloudPubsubTopic = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  topicName: Schema.optional(Schema.String),
+}).annotate({ identifier: "CloudPubsubTopic" });
 
 export interface Assignment {
   /** Drive folder where attachments from student submissions are placed. This is only populated for course teachers and administrators. */
   studentWorkFolder?: DriveFolder;
 }
 
-export const Assignment: Schema.Schema<Assignment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      studentWorkFolder: Schema.optional(DriveFolder),
-    }),
-  ).annotate({ identifier: "Assignment" }) as any as Schema.Schema<Assignment>;
+export const Assignment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  studentWorkFolder: Schema.optional(DriveFolder),
+}).annotate({ identifier: "Assignment" });
 
 export interface Classroom_Date {
   /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
@@ -312,30 +256,21 @@ export interface Classroom_Date {
   year?: number;
 }
 
-export const Classroom_Date: Schema.Schema<Classroom_Date> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      month: Schema.optional(Schema.Number),
-      day: Schema.optional(Schema.Number),
-      year: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "Classroom_Date",
-  }) as any as Schema.Schema<Classroom_Date>;
+export const Classroom_Date = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  month: Schema.optional(Schema.Number),
+  day: Schema.optional(Schema.Number),
+  year: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Classroom_Date" });
 
 export interface IndividualStudentsOptions {
   /** Identifiers for the students that have access to the coursework/announcement. */
   studentIds?: Array<string>;
 }
 
-export const IndividualStudentsOptions: Schema.Schema<IndividualStudentsOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      studentIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "IndividualStudentsOptions",
-  }) as any as Schema.Schema<IndividualStudentsOptions>;
+export const IndividualStudentsOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    studentIds: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "IndividualStudentsOptions" });
 
 export interface TimeOfDay {
   /** Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time. */
@@ -348,15 +283,12 @@ export interface TimeOfDay {
   nanos?: number;
 }
 
-export const TimeOfDay: Schema.Schema<TimeOfDay> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hours: Schema.optional(Schema.Number),
-      minutes: Schema.optional(Schema.Number),
-      seconds: Schema.optional(Schema.Number),
-      nanos: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "TimeOfDay" }) as any as Schema.Schema<TimeOfDay>;
+export const TimeOfDay = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  hours: Schema.optional(Schema.Number),
+  minutes: Schema.optional(Schema.Number),
+  seconds: Schema.optional(Schema.Number),
+  nanos: Schema.optional(Schema.Number),
+}).annotate({ identifier: "TimeOfDay" });
 
 export interface NotebookLmNotebook {
   /** Title of the Notebook. */
@@ -367,16 +299,11 @@ export interface NotebookLmNotebook {
   id?: string;
 }
 
-export const NotebookLmNotebook: Schema.Schema<NotebookLmNotebook> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-      url: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NotebookLmNotebook",
-  }) as any as Schema.Schema<NotebookLmNotebook>;
+export const NotebookLmNotebook = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  title: Schema.optional(Schema.String),
+  url: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+}).annotate({ identifier: "NotebookLmNotebook" });
 
 export interface GeminiGem {
   /** Title of the Gem. */
@@ -387,14 +314,11 @@ export interface GeminiGem {
   id?: string;
 }
 
-export const GeminiGem: Schema.Schema<GeminiGem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-      url: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "GeminiGem" }) as any as Schema.Schema<GeminiGem>;
+export const GeminiGem = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  title: Schema.optional(Schema.String),
+  url: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+}).annotate({ identifier: "GeminiGem" });
 
 export interface DriveFile {
   /** Drive API resource ID. */
@@ -407,15 +331,12 @@ export interface DriveFile {
   title?: string;
 }
 
-export const DriveFile: Schema.Schema<DriveFile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      thumbnailUrl: Schema.optional(Schema.String),
-      alternateLink: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "DriveFile" }) as any as Schema.Schema<DriveFile>;
+export const DriveFile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  thumbnailUrl: Schema.optional(Schema.String),
+  alternateLink: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+}).annotate({ identifier: "DriveFile" });
 
 export interface SharedDriveFile {
   /** Drive file details. */
@@ -429,15 +350,10 @@ export interface SharedDriveFile {
     | (string & {});
 }
 
-export const SharedDriveFile: Schema.Schema<SharedDriveFile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      driveFile: Schema.optional(DriveFile),
-      shareMode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SharedDriveFile",
-  }) as any as Schema.Schema<SharedDriveFile>;
+export const SharedDriveFile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  driveFile: Schema.optional(DriveFile),
+  shareMode: Schema.optional(Schema.String),
+}).annotate({ identifier: "SharedDriveFile" });
 
 export interface YouTubeVideo {
   /** YouTube API resource ID. */
@@ -450,17 +366,12 @@ export interface YouTubeVideo {
   alternateLink?: string;
 }
 
-export const YouTubeVideo: Schema.Schema<YouTubeVideo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      thumbnailUrl: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      alternateLink: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "YouTubeVideo",
-  }) as any as Schema.Schema<YouTubeVideo>;
+export const YouTubeVideo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  thumbnailUrl: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  alternateLink: Schema.optional(Schema.String),
+}).annotate({ identifier: "YouTubeVideo" });
 
 export interface Form {
   /** URL of a thumbnail image of the Form. Read-only. */
@@ -473,15 +384,12 @@ export interface Form {
   title?: string;
 }
 
-export const Form: Schema.Schema<Form> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      thumbnailUrl: Schema.optional(Schema.String),
-      responseUrl: Schema.optional(Schema.String),
-      formUrl: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Form" }) as any as Schema.Schema<Form>;
+export const Form = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  thumbnailUrl: Schema.optional(Schema.String),
+  responseUrl: Schema.optional(Schema.String),
+  formUrl: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+}).annotate({ identifier: "Form" });
 
 export interface Link {
   /** URL of a thumbnail image of the target URL. Read-only. */
@@ -492,14 +400,11 @@ export interface Link {
   url?: string;
 }
 
-export const Link: Schema.Schema<Link> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      thumbnailUrl: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      url: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Link" }) as any as Schema.Schema<Link>;
+export const Link = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  thumbnailUrl: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  url: Schema.optional(Schema.String),
+}).annotate({ identifier: "Link" });
 
 export interface Material {
   /** NotebookLM Notebook material. Read-only. */
@@ -516,31 +421,25 @@ export interface Material {
   link?: Link;
 }
 
-export const Material: Schema.Schema<Material> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      notebook: Schema.optional(NotebookLmNotebook),
-      gem: Schema.optional(GeminiGem),
-      driveFile: Schema.optional(SharedDriveFile),
-      youtubeVideo: Schema.optional(YouTubeVideo),
-      form: Schema.optional(Form),
-      link: Schema.optional(Link),
-    }),
-  ).annotate({ identifier: "Material" }) as any as Schema.Schema<Material>;
+export const Material = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  notebook: Schema.optional(NotebookLmNotebook),
+  gem: Schema.optional(GeminiGem),
+  driveFile: Schema.optional(SharedDriveFile),
+  youtubeVideo: Schema.optional(YouTubeVideo),
+  form: Schema.optional(Form),
+  link: Schema.optional(Link),
+}).annotate({ identifier: "Material" });
 
 export interface MultipleChoiceQuestion {
   /** Possible choices. */
   choices?: Array<string>;
 }
 
-export const MultipleChoiceQuestion: Schema.Schema<MultipleChoiceQuestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      choices: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "MultipleChoiceQuestion",
-  }) as any as Schema.Schema<MultipleChoiceQuestion>;
+export const MultipleChoiceQuestion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    choices: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "MultipleChoiceQuestion" });
 
 export interface CourseWork {
   /** Assignee mode of the coursework. If unspecified, the default value is `ALL_STUDENTS`. */
@@ -611,35 +510,32 @@ export interface CourseWork {
   multipleChoiceQuestion?: MultipleChoiceQuestion;
 }
 
-export const CourseWork: Schema.Schema<CourseWork> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      assigneeMode: Schema.optional(Schema.String),
-      topicId: Schema.optional(Schema.String),
-      scheduledTime: Schema.optional(Schema.String),
-      assignment: Schema.optional(Assignment),
-      courseId: Schema.optional(Schema.String),
-      dueDate: Schema.optional(Classroom_Date),
-      id: Schema.optional(Schema.String),
-      maxPoints: Schema.optional(Schema.Number),
-      creatorUserId: Schema.optional(Schema.String),
-      individualStudentsOptions: Schema.optional(IndividualStudentsOptions),
-      dueTime: Schema.optional(TimeOfDay),
-      submissionModificationMode: Schema.optional(Schema.String),
-      gradeCategory: Schema.optional(GradeCategory),
-      description: Schema.optional(Schema.String),
-      gradingPeriodId: Schema.optional(Schema.String),
-      creationTime: Schema.optional(Schema.String),
-      workType: Schema.optional(Schema.String),
-      associatedWithDeveloper: Schema.optional(Schema.Boolean),
-      state: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      materials: Schema.optional(Schema.Array(Material)),
-      alternateLink: Schema.optional(Schema.String),
-      multipleChoiceQuestion: Schema.optional(MultipleChoiceQuestion),
-    }),
-  ).annotate({ identifier: "CourseWork" }) as any as Schema.Schema<CourseWork>;
+export const CourseWork = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  assigneeMode: Schema.optional(Schema.String),
+  topicId: Schema.optional(Schema.String),
+  scheduledTime: Schema.optional(Schema.String),
+  assignment: Schema.optional(Assignment),
+  courseId: Schema.optional(Schema.String),
+  dueDate: Schema.optional(Classroom_Date),
+  id: Schema.optional(Schema.String),
+  maxPoints: Schema.optional(Schema.Number),
+  creatorUserId: Schema.optional(Schema.String),
+  individualStudentsOptions: Schema.optional(IndividualStudentsOptions),
+  dueTime: Schema.optional(TimeOfDay),
+  submissionModificationMode: Schema.optional(Schema.String),
+  gradeCategory: Schema.optional(GradeCategory),
+  description: Schema.optional(Schema.String),
+  gradingPeriodId: Schema.optional(Schema.String),
+  creationTime: Schema.optional(Schema.String),
+  workType: Schema.optional(Schema.String),
+  associatedWithDeveloper: Schema.optional(Schema.Boolean),
+  state: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  materials: Schema.optional(Schema.Array(Material)),
+  alternateLink: Schema.optional(Schema.String),
+  multipleChoiceQuestion: Schema.optional(MultipleChoiceQuestion),
+}).annotate({ identifier: "CourseWork" });
 
 export interface ListCourseWorkResponse {
   /** Token identifying the next page of results to return. If empty, no further results are available. */
@@ -648,15 +544,12 @@ export interface ListCourseWorkResponse {
   courseWork?: Array<CourseWork>;
 }
 
-export const ListCourseWorkResponse: Schema.Schema<ListCourseWorkResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      courseWork: Schema.optional(Schema.Array(CourseWork)),
-    }),
-  ).annotate({
-    identifier: "ListCourseWorkResponse",
-  }) as any as Schema.Schema<ListCourseWorkResponse>;
+export const ListCourseWorkResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    nextPageToken: Schema.optional(Schema.String),
+    courseWork: Schema.optional(Schema.Array(CourseWork)),
+  },
+).annotate({ identifier: "ListCourseWorkResponse" });
 
 export interface CourseMaterial {
   /** Google Drive file attachment. */
@@ -669,17 +562,12 @@ export interface CourseMaterial {
   link?: Link;
 }
 
-export const CourseMaterial: Schema.Schema<CourseMaterial> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      driveFile: Schema.optional(DriveFile),
-      youTubeVideo: Schema.optional(YouTubeVideo),
-      form: Schema.optional(Form),
-      link: Schema.optional(Link),
-    }),
-  ).annotate({
-    identifier: "CourseMaterial",
-  }) as any as Schema.Schema<CourseMaterial>;
+export const CourseMaterial = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  driveFile: Schema.optional(DriveFile),
+  youTubeVideo: Schema.optional(YouTubeVideo),
+  form: Schema.optional(Form),
+  link: Schema.optional(Link),
+}).annotate({ identifier: "CourseMaterial" });
 
 export interface Teacher {
   /** Identifier of the course. Read-only. */
@@ -690,14 +578,11 @@ export interface Teacher {
   userId?: string;
 }
 
-export const Teacher: Schema.Schema<Teacher> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      courseId: Schema.optional(Schema.String),
-      profile: Schema.optional(UserProfile),
-      userId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Teacher" }) as any as Schema.Schema<Teacher>;
+export const Teacher = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  courseId: Schema.optional(Schema.String),
+  profile: Schema.optional(UserProfile),
+  userId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Teacher" });
 
 export interface ListTeachersResponse {
   /** Teachers who match the list request. */
@@ -706,15 +591,10 @@ export interface ListTeachersResponse {
   nextPageToken?: string;
 }
 
-export const ListTeachersResponse: Schema.Schema<ListTeachersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      teachers: Schema.optional(Schema.Array(Teacher)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListTeachersResponse",
-  }) as any as Schema.Schema<ListTeachersResponse>;
+export const ListTeachersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  teachers: Schema.optional(Schema.Array(Teacher)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListTeachersResponse" });
 
 export interface Attachment {
   /** Link attachment. */
@@ -727,50 +607,37 @@ export interface Attachment {
   youTubeVideo?: YouTubeVideo;
 }
 
-export const Attachment: Schema.Schema<Attachment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      link: Schema.optional(Link),
-      form: Schema.optional(Form),
-      driveFile: Schema.optional(DriveFile),
-      youTubeVideo: Schema.optional(YouTubeVideo),
-    }),
-  ).annotate({ identifier: "Attachment" }) as any as Schema.Schema<Attachment>;
+export const Attachment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  link: Schema.optional(Link),
+  form: Schema.optional(Form),
+  driveFile: Schema.optional(DriveFile),
+  youTubeVideo: Schema.optional(YouTubeVideo),
+}).annotate({ identifier: "Attachment" });
 
 export interface ModifyAttachmentsRequest {
   /** Attachments to add. A student submission may not have more than 20 attachments. Form attachments are not supported. */
   addAttachments?: Array<Attachment>;
 }
 
-export const ModifyAttachmentsRequest: Schema.Schema<ModifyAttachmentsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      addAttachments: Schema.optional(Schema.Array(Attachment)),
-    }),
-  ).annotate({
-    identifier: "ModifyAttachmentsRequest",
-  }) as any as Schema.Schema<ModifyAttachmentsRequest>;
+export const ModifyAttachmentsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    addAttachments: Schema.optional(Schema.Array(Attachment)),
+  }).annotate({ identifier: "ModifyAttachmentsRequest" });
 
 export interface StudentContext {
   /** Requesting user's submission id to be used for grade passback and to identify the student when showing student work to the teacher. This is set exactly when `supportsStudentWork` is `true`. */
   submissionId?: string;
 }
 
-export const StudentContext: Schema.Schema<StudentContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      submissionId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StudentContext",
-  }) as any as Schema.Schema<StudentContext>;
+export const StudentContext = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  submissionId: Schema.optional(Schema.String),
+}).annotate({ identifier: "StudentContext" });
 
 export interface TeacherContext {}
 
-export const TeacherContext: Schema.Schema<TeacherContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "TeacherContext",
-  }) as any as Schema.Schema<TeacherContext>;
+export const TeacherContext = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "TeacherContext" });
 
 export interface AddOnContext {
   /** Immutable. Identifier of the `Announcement`, `CourseWork`, or `CourseWorkMaterial` under which the attachment is attached. */
@@ -787,19 +654,14 @@ export interface AddOnContext {
   postId?: string;
 }
 
-export const AddOnContext: Schema.Schema<AddOnContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      itemId: Schema.optional(Schema.String),
-      courseId: Schema.optional(Schema.String),
-      supportsStudentWork: Schema.optional(Schema.Boolean),
-      studentContext: Schema.optional(StudentContext),
-      teacherContext: Schema.optional(TeacherContext),
-      postId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AddOnContext",
-  }) as any as Schema.Schema<AddOnContext>;
+export const AddOnContext = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  itemId: Schema.optional(Schema.String),
+  courseId: Schema.optional(Schema.String),
+  supportsStudentWork: Schema.optional(Schema.Boolean),
+  studentContext: Schema.optional(StudentContext),
+  teacherContext: Schema.optional(TeacherContext),
+  postId: Schema.optional(Schema.String),
+}).annotate({ identifier: "AddOnContext" });
 
 export interface StudentGroupMember {
   /** The identifier of the course. */
@@ -810,16 +672,11 @@ export interface StudentGroupMember {
   studentGroupId?: string;
 }
 
-export const StudentGroupMember: Schema.Schema<StudentGroupMember> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      courseId: Schema.optional(Schema.String),
-      userId: Schema.optional(Schema.String),
-      studentGroupId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StudentGroupMember",
-  }) as any as Schema.Schema<StudentGroupMember>;
+export const StudentGroupMember = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  courseId: Schema.optional(Schema.String),
+  userId: Schema.optional(Schema.String),
+  studentGroupId: Schema.optional(Schema.String),
+}).annotate({ identifier: "StudentGroupMember" });
 
 export interface Announcement {
   /** Description of this announcement. The text must be a valid UTF-8 string containing no more than 30,000 characters. */
@@ -857,25 +714,20 @@ export interface Announcement {
   scheduledTime?: string;
 }
 
-export const Announcement: Schema.Schema<Announcement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-      creationTime: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      assigneeMode: Schema.optional(Schema.String),
-      individualStudentsOptions: Schema.optional(IndividualStudentsOptions),
-      creatorUserId: Schema.optional(Schema.String),
-      courseId: Schema.optional(Schema.String),
-      materials: Schema.optional(Schema.Array(Material)),
-      alternateLink: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      scheduledTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Announcement",
-  }) as any as Schema.Schema<Announcement>;
+export const Announcement = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  text: Schema.optional(Schema.String),
+  creationTime: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  assigneeMode: Schema.optional(Schema.String),
+  individualStudentsOptions: Schema.optional(IndividualStudentsOptions),
+  creatorUserId: Schema.optional(Schema.String),
+  courseId: Schema.optional(Schema.String),
+  materials: Schema.optional(Schema.Array(Material)),
+  alternateLink: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  scheduledTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Announcement" });
 
 export interface ListStudentGroupMembersResponse {
   /** The student group members. */
@@ -884,29 +736,20 @@ export interface ListStudentGroupMembersResponse {
   nextPageToken?: string;
 }
 
-export const ListStudentGroupMembersResponse: Schema.Schema<ListStudentGroupMembersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      studentGroupMembers: Schema.optional(Schema.Array(StudentGroupMember)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListStudentGroupMembersResponse",
-  }) as any as Schema.Schema<ListStudentGroupMembersResponse>;
+export const ListStudentGroupMembersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    studentGroupMembers: Schema.optional(Schema.Array(StudentGroupMember)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListStudentGroupMembersResponse" });
 
 export interface AssignmentSubmission {
   /** Attachments added by the student. Drive files that correspond to materials with a share mode of STUDENT_COPY may not exist yet if the student has not accessed the assignment in Classroom. Some attachment metadata is only populated if the requesting user has permission to access it. Identifier and alternate_link fields are always available, but others (for example, title) may not be. */
   attachments?: Array<Attachment>;
 }
 
-export const AssignmentSubmission: Schema.Schema<AssignmentSubmission> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      attachments: Schema.optional(Schema.Array(Attachment)),
-    }),
-  ).annotate({
-    identifier: "AssignmentSubmission",
-  }) as any as Schema.Schema<AssignmentSubmission>;
+export const AssignmentSubmission = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  attachments: Schema.optional(Schema.Array(Attachment)),
+}).annotate({ identifier: "AssignmentSubmission" });
 
 export interface Guardian {
   /** User profile for the guardian. */
@@ -919,15 +762,12 @@ export interface Guardian {
   invitedEmailAddress?: string;
 }
 
-export const Guardian: Schema.Schema<Guardian> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      guardianProfile: Schema.optional(UserProfile),
-      guardianId: Schema.optional(Schema.String),
-      studentId: Schema.optional(Schema.String),
-      invitedEmailAddress: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Guardian" }) as any as Schema.Schema<Guardian>;
+export const Guardian = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  guardianProfile: Schema.optional(UserProfile),
+  guardianId: Schema.optional(Schema.String),
+  studentId: Schema.optional(Schema.String),
+  invitedEmailAddress: Schema.optional(Schema.String),
+}).annotate({ identifier: "Guardian" });
 
 export interface ModifyIndividualStudentsOptions {
   /** IDs of students to be added as having access to this coursework/announcement. */
@@ -936,27 +776,20 @@ export interface ModifyIndividualStudentsOptions {
   removeStudentIds?: Array<string>;
 }
 
-export const ModifyIndividualStudentsOptions: Schema.Schema<ModifyIndividualStudentsOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      addStudentIds: Schema.optional(Schema.Array(Schema.String)),
-      removeStudentIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ModifyIndividualStudentsOptions",
-  }) as any as Schema.Schema<ModifyIndividualStudentsOptions>;
+export const ModifyIndividualStudentsOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    addStudentIds: Schema.optional(Schema.Array(Schema.String)),
+    removeStudentIds: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ModifyIndividualStudentsOptions" });
 
 export interface EmbedUri {
   /** Required. URI to be iframed after being populated with query parameters. This must be a valid UTF-8 string containing between 1 and 1800 characters. */
   uri?: string;
 }
 
-export const EmbedUri: Schema.Schema<EmbedUri> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "EmbedUri" }) as any as Schema.Schema<EmbedUri>;
+export const EmbedUri = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  uri: Schema.optional(Schema.String),
+}).annotate({ identifier: "EmbedUri" });
 
 export interface CopyHistory {
   /** Immutable. Deprecated, use `item_id` instead. */
@@ -969,17 +802,12 @@ export interface CopyHistory {
   courseId?: string;
 }
 
-export const CopyHistory: Schema.Schema<CopyHistory> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      postId: Schema.optional(Schema.String),
-      attachmentId: Schema.optional(Schema.String),
-      itemId: Schema.optional(Schema.String),
-      courseId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CopyHistory",
-  }) as any as Schema.Schema<CopyHistory>;
+export const CopyHistory = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  postId: Schema.optional(Schema.String),
+  attachmentId: Schema.optional(Schema.String),
+  itemId: Schema.optional(Schema.String),
+  courseId: Schema.optional(Schema.String),
+}).annotate({ identifier: "CopyHistory" });
 
 export interface AddOnAttachment {
   /** Immutable. Identifier of the course. */
@@ -1008,25 +836,20 @@ export interface AddOnAttachment {
   maxPoints?: number;
 }
 
-export const AddOnAttachment: Schema.Schema<AddOnAttachment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      courseId: Schema.optional(Schema.String),
-      dueDate: Schema.optional(Classroom_Date),
-      teacherViewUri: Schema.optional(EmbedUri),
-      studentViewUri: Schema.optional(EmbedUri),
-      title: Schema.optional(Schema.String),
-      postId: Schema.optional(Schema.String),
-      copyHistory: Schema.optional(Schema.Array(CopyHistory)),
-      itemId: Schema.optional(Schema.String),
-      dueTime: Schema.optional(TimeOfDay),
-      id: Schema.optional(Schema.String),
-      studentWorkReviewUri: Schema.optional(EmbedUri),
-      maxPoints: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "AddOnAttachment",
-  }) as any as Schema.Schema<AddOnAttachment>;
+export const AddOnAttachment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  courseId: Schema.optional(Schema.String),
+  dueDate: Schema.optional(Classroom_Date),
+  teacherViewUri: Schema.optional(EmbedUri),
+  studentViewUri: Schema.optional(EmbedUri),
+  title: Schema.optional(Schema.String),
+  postId: Schema.optional(Schema.String),
+  copyHistory: Schema.optional(Schema.Array(CopyHistory)),
+  itemId: Schema.optional(Schema.String),
+  dueTime: Schema.optional(TimeOfDay),
+  id: Schema.optional(Schema.String),
+  studentWorkReviewUri: Schema.optional(EmbedUri),
+  maxPoints: Schema.optional(Schema.Number),
+}).annotate({ identifier: "AddOnAttachment" });
 
 export interface ListAddOnAttachmentsResponse {
   /** Attachments under the given post. */
@@ -1035,15 +858,11 @@ export interface ListAddOnAttachmentsResponse {
   nextPageToken?: string;
 }
 
-export const ListAddOnAttachmentsResponse: Schema.Schema<ListAddOnAttachmentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      addOnAttachments: Schema.optional(Schema.Array(AddOnAttachment)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAddOnAttachmentsResponse",
-  }) as any as Schema.Schema<ListAddOnAttachmentsResponse>;
+export const ListAddOnAttachmentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    addOnAttachments: Schema.optional(Schema.Array(AddOnAttachment)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListAddOnAttachmentsResponse" });
 
 export interface GradebookSettings {
   /** Indicates how the overall grade is calculated. */
@@ -1063,16 +882,11 @@ export interface GradebookSettings {
   gradeCategories?: Array<GradeCategory>;
 }
 
-export const GradebookSettings: Schema.Schema<GradebookSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      calculationType: Schema.optional(Schema.String),
-      displaySetting: Schema.optional(Schema.String),
-      gradeCategories: Schema.optional(Schema.Array(GradeCategory)),
-    }),
-  ).annotate({
-    identifier: "GradebookSettings",
-  }) as any as Schema.Schema<GradebookSettings>;
+export const GradebookSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  calculationType: Schema.optional(Schema.String),
+  displaySetting: Schema.optional(Schema.String),
+  gradeCategories: Schema.optional(Schema.Array(GradeCategory)),
+}).annotate({ identifier: "GradebookSettings" });
 
 export interface CourseMaterialSet {
   /** Title for this set. */
@@ -1081,15 +895,10 @@ export interface CourseMaterialSet {
   materials?: Array<CourseMaterial>;
 }
 
-export const CourseMaterialSet: Schema.Schema<CourseMaterialSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-      materials: Schema.optional(Schema.Array(CourseMaterial)),
-    }),
-  ).annotate({
-    identifier: "CourseMaterialSet",
-  }) as any as Schema.Schema<CourseMaterialSet>;
+export const CourseMaterialSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  title: Schema.optional(Schema.String),
+  materials: Schema.optional(Schema.Array(CourseMaterial)),
+}).annotate({ identifier: "CourseMaterialSet" });
 
 export interface Course {
   /** The identifier of the owner of a course. When specified as a parameter of a create course request, this field is required. The identifier can be one of the following: * the numeric identifier for the user * the email address of the user * the string literal `"me"`, indicating the requesting user This must be set in a create request. Admins can also specify this field in a patch course request to transfer ownership. In other contexts, it is read-only. */
@@ -1141,31 +950,28 @@ export interface Course {
   courseMaterialSets?: Array<CourseMaterialSet>;
 }
 
-export const Course: Schema.Schema<Course> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ownerId: Schema.optional(Schema.String),
-      courseGroupEmail: Schema.optional(Schema.String),
-      subject: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      section: Schema.optional(Schema.String),
-      descriptionHeading: Schema.optional(Schema.String),
-      teacherGroupEmail: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      enrollmentCode: Schema.optional(Schema.String),
-      creationTime: Schema.optional(Schema.String),
-      courseState: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      room: Schema.optional(Schema.String),
-      teacherFolder: Schema.optional(DriveFolder),
-      alternateLink: Schema.optional(Schema.String),
-      calendarId: Schema.optional(Schema.String),
-      guardiansEnabled: Schema.optional(Schema.Boolean),
-      gradebookSettings: Schema.optional(GradebookSettings),
-      courseMaterialSets: Schema.optional(Schema.Array(CourseMaterialSet)),
-    }),
-  ).annotate({ identifier: "Course" }) as any as Schema.Schema<Course>;
+export const Course = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ownerId: Schema.optional(Schema.String),
+  courseGroupEmail: Schema.optional(Schema.String),
+  subject: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  section: Schema.optional(Schema.String),
+  descriptionHeading: Schema.optional(Schema.String),
+  teacherGroupEmail: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  enrollmentCode: Schema.optional(Schema.String),
+  creationTime: Schema.optional(Schema.String),
+  courseState: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  room: Schema.optional(Schema.String),
+  teacherFolder: Schema.optional(DriveFolder),
+  alternateLink: Schema.optional(Schema.String),
+  calendarId: Schema.optional(Schema.String),
+  guardiansEnabled: Schema.optional(Schema.Boolean),
+  gradebookSettings: Schema.optional(GradebookSettings),
+  courseMaterialSets: Schema.optional(Schema.Array(CourseMaterialSet)),
+}).annotate({ identifier: "Course" });
 
 export interface ListCoursesResponse {
   /** Courses that match the list request. */
@@ -1174,15 +980,10 @@ export interface ListCoursesResponse {
   nextPageToken?: string;
 }
 
-export const ListCoursesResponse: Schema.Schema<ListCoursesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      courses: Schema.optional(Schema.Array(Course)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListCoursesResponse",
-  }) as any as Schema.Schema<ListCoursesResponse>;
+export const ListCoursesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  courses: Schema.optional(Schema.Array(Course)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListCoursesResponse" });
 
 export interface StateHistory {
   /** The workflow pipeline stage. */
@@ -1200,16 +1001,11 @@ export interface StateHistory {
   actorUserId?: string;
 }
 
-export const StateHistory: Schema.Schema<StateHistory> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      stateTimestamp: Schema.optional(Schema.String),
-      actorUserId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StateHistory",
-  }) as any as Schema.Schema<StateHistory>;
+export const StateHistory = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.String),
+  stateTimestamp: Schema.optional(Schema.String),
+  actorUserId: Schema.optional(Schema.String),
+}).annotate({ identifier: "StateHistory" });
 
 export interface GradeHistory {
   /** The numerator of the grade at this time in the submission grade history. */
@@ -1229,18 +1025,13 @@ export interface GradeHistory {
     | (string & {});
 }
 
-export const GradeHistory: Schema.Schema<GradeHistory> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pointsEarned: Schema.optional(Schema.Number),
-      gradeTimestamp: Schema.optional(Schema.String),
-      maxPoints: Schema.optional(Schema.Number),
-      actorUserId: Schema.optional(Schema.String),
-      gradeChangeType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GradeHistory",
-  }) as any as Schema.Schema<GradeHistory>;
+export const GradeHistory = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pointsEarned: Schema.optional(Schema.Number),
+  gradeTimestamp: Schema.optional(Schema.String),
+  maxPoints: Schema.optional(Schema.Number),
+  actorUserId: Schema.optional(Schema.String),
+  gradeChangeType: Schema.optional(Schema.String),
+}).annotate({ identifier: "GradeHistory" });
 
 export interface SubmissionHistory {
   /** The state history information of the submission, if present. */
@@ -1249,43 +1040,29 @@ export interface SubmissionHistory {
   gradeHistory?: GradeHistory;
 }
 
-export const SubmissionHistory: Schema.Schema<SubmissionHistory> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stateHistory: Schema.optional(StateHistory),
-      gradeHistory: Schema.optional(GradeHistory),
-    }),
-  ).annotate({
-    identifier: "SubmissionHistory",
-  }) as any as Schema.Schema<SubmissionHistory>;
+export const SubmissionHistory = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  stateHistory: Schema.optional(StateHistory),
+  gradeHistory: Schema.optional(GradeHistory),
+}).annotate({ identifier: "SubmissionHistory" });
 
 export interface ShortAnswerSubmission {
   /** Student response to a short-answer question. */
   answer?: string;
 }
 
-export const ShortAnswerSubmission: Schema.Schema<ShortAnswerSubmission> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      answer: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ShortAnswerSubmission",
-  }) as any as Schema.Schema<ShortAnswerSubmission>;
+export const ShortAnswerSubmission = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  answer: Schema.optional(Schema.String),
+}).annotate({ identifier: "ShortAnswerSubmission" });
 
 export interface MultipleChoiceSubmission {
   /** Student's select choice. */
   answer?: string;
 }
 
-export const MultipleChoiceSubmission: Schema.Schema<MultipleChoiceSubmission> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      answer: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MultipleChoiceSubmission",
-  }) as any as Schema.Schema<MultipleChoiceSubmission>;
+export const MultipleChoiceSubmission =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    answer: Schema.optional(Schema.String),
+  }).annotate({ identifier: "MultipleChoiceSubmission" });
 
 export interface StudentSubmission {
   /** Identifier of the course. Read-only. */
@@ -1340,36 +1117,29 @@ export interface StudentSubmission {
   id?: string;
 }
 
-export const StudentSubmission: Schema.Schema<StudentSubmission> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      courseId: Schema.optional(Schema.String),
-      submissionHistory: Schema.optional(Schema.Array(SubmissionHistory)),
-      draftRubricGrades: Schema.optional(
-        Schema.Record(Schema.String, RubricGrade),
-      ),
-      assignmentSubmission: Schema.optional(AssignmentSubmission),
-      shortAnswerSubmission: Schema.optional(ShortAnswerSubmission),
-      draftGrade: Schema.optional(Schema.Number),
-      userId: Schema.optional(Schema.String),
-      late: Schema.optional(Schema.Boolean),
-      multipleChoiceSubmission: Schema.optional(MultipleChoiceSubmission),
-      courseWorkId: Schema.optional(Schema.String),
-      alternateLink: Schema.optional(Schema.String),
-      courseWorkType: Schema.optional(Schema.String),
-      assignedGrade: Schema.optional(Schema.Number),
-      updateTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      assignedRubricGrades: Schema.optional(
-        Schema.Record(Schema.String, RubricGrade),
-      ),
-      creationTime: Schema.optional(Schema.String),
-      associatedWithDeveloper: Schema.optional(Schema.Boolean),
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StudentSubmission",
-  }) as any as Schema.Schema<StudentSubmission>;
+export const StudentSubmission = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  courseId: Schema.optional(Schema.String),
+  submissionHistory: Schema.optional(Schema.Array(SubmissionHistory)),
+  draftRubricGrades: Schema.optional(Schema.Record(Schema.String, RubricGrade)),
+  assignmentSubmission: Schema.optional(AssignmentSubmission),
+  shortAnswerSubmission: Schema.optional(ShortAnswerSubmission),
+  draftGrade: Schema.optional(Schema.Number),
+  userId: Schema.optional(Schema.String),
+  late: Schema.optional(Schema.Boolean),
+  multipleChoiceSubmission: Schema.optional(MultipleChoiceSubmission),
+  courseWorkId: Schema.optional(Schema.String),
+  alternateLink: Schema.optional(Schema.String),
+  courseWorkType: Schema.optional(Schema.String),
+  assignedGrade: Schema.optional(Schema.Number),
+  updateTime: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  assignedRubricGrades: Schema.optional(
+    Schema.Record(Schema.String, RubricGrade),
+  ),
+  creationTime: Schema.optional(Schema.String),
+  associatedWithDeveloper: Schema.optional(Schema.Boolean),
+  id: Schema.optional(Schema.String),
+}).annotate({ identifier: "StudentSubmission" });
 
 export interface ModifyCourseWorkAssigneesRequest {
   /** Mode of the coursework describing whether it will be assigned to all students or specified individual students. */
@@ -1382,17 +1152,13 @@ export interface ModifyCourseWorkAssigneesRequest {
   modifyIndividualStudentsOptions?: ModifyIndividualStudentsOptions;
 }
 
-export const ModifyCourseWorkAssigneesRequest: Schema.Schema<ModifyCourseWorkAssigneesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      assigneeMode: Schema.optional(Schema.String),
-      modifyIndividualStudentsOptions: Schema.optional(
-        ModifyIndividualStudentsOptions,
-      ),
-    }),
-  ).annotate({
-    identifier: "ModifyCourseWorkAssigneesRequest",
-  }) as any as Schema.Schema<ModifyCourseWorkAssigneesRequest>;
+export const ModifyCourseWorkAssigneesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    assigneeMode: Schema.optional(Schema.String),
+    modifyIndividualStudentsOptions: Schema.optional(
+      ModifyIndividualStudentsOptions,
+    ),
+  }).annotate({ identifier: "ModifyCourseWorkAssigneesRequest" });
 
 export interface ListStudentSubmissionsResponse {
   /** Student work that matches the request. */
@@ -1401,57 +1167,39 @@ export interface ListStudentSubmissionsResponse {
   nextPageToken?: string;
 }
 
-export const ListStudentSubmissionsResponse: Schema.Schema<ListStudentSubmissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      studentSubmissions: Schema.optional(Schema.Array(StudentSubmission)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListStudentSubmissionsResponse",
-  }) as any as Schema.Schema<ListStudentSubmissionsResponse>;
+export const ListStudentSubmissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    studentSubmissions: Schema.optional(Schema.Array(StudentSubmission)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListStudentSubmissionsResponse" });
 
 export interface CourseAlias {
   /** Alias string. The format of the string indicates the desired alias scoping. * `d:` indicates a domain-scoped alias. Example: `d:math_101` * `p:` indicates a project-scoped alias. Example: `p:abc123` This field has a maximum length of 256 characters. */
   alias?: string;
 }
 
-export const CourseAlias: Schema.Schema<CourseAlias> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      alias: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CourseAlias",
-  }) as any as Schema.Schema<CourseAlias>;
+export const CourseAlias = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  alias: Schema.optional(Schema.String),
+}).annotate({ identifier: "CourseAlias" });
 
 export interface CourseRosterChangesInfo {
   /** The `course_id` of the course to subscribe to roster changes for. */
   courseId?: string;
 }
 
-export const CourseRosterChangesInfo: Schema.Schema<CourseRosterChangesInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      courseId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CourseRosterChangesInfo",
-  }) as any as Schema.Schema<CourseRosterChangesInfo>;
+export const CourseRosterChangesInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    courseId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CourseRosterChangesInfo" });
 
 export interface CourseWorkChangesInfo {
   /** The `course_id` of the course to subscribe to work changes for. */
   courseId?: string;
 }
 
-export const CourseWorkChangesInfo: Schema.Schema<CourseWorkChangesInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      courseId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CourseWorkChangesInfo",
-  }) as any as Schema.Schema<CourseWorkChangesInfo>;
+export const CourseWorkChangesInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  courseId: Schema.optional(Schema.String),
+}).annotate({ identifier: "CourseWorkChangesInfo" });
 
 export interface Feed {
   /** Information about a `Feed` with a `feed_type` of `COURSE_ROSTER_CHANGES`. This field must be specified if `feed_type` is `COURSE_ROSTER_CHANGES`. */
@@ -1467,14 +1215,11 @@ export interface Feed {
   courseWorkChangesInfo?: CourseWorkChangesInfo;
 }
 
-export const Feed: Schema.Schema<Feed> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      courseRosterChangesInfo: Schema.optional(CourseRosterChangesInfo),
-      feedType: Schema.optional(Schema.String),
-      courseWorkChangesInfo: Schema.optional(CourseWorkChangesInfo),
-    }),
-  ).annotate({ identifier: "Feed" }) as any as Schema.Schema<Feed>;
+export const Feed = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  courseRosterChangesInfo: Schema.optional(CourseRosterChangesInfo),
+  feedType: Schema.optional(Schema.String),
+  courseWorkChangesInfo: Schema.optional(CourseWorkChangesInfo),
+}).annotate({ identifier: "Feed" });
 
 export interface Registration {
   /** A server-generated unique identifier for this `Registration`. Read-only. */
@@ -1487,17 +1232,12 @@ export interface Registration {
   cloudPubsubTopic?: CloudPubsubTopic;
 }
 
-export const Registration: Schema.Schema<Registration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      registrationId: Schema.optional(Schema.String),
-      expiryTime: Schema.optional(Schema.String),
-      feed: Schema.optional(Feed),
-      cloudPubsubTopic: Schema.optional(CloudPubsubTopic),
-    }),
-  ).annotate({
-    identifier: "Registration",
-  }) as any as Schema.Schema<Registration>;
+export const Registration = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  registrationId: Schema.optional(Schema.String),
+  expiryTime: Schema.optional(Schema.String),
+  feed: Schema.optional(Feed),
+  cloudPubsubTopic: Schema.optional(CloudPubsubTopic),
+}).annotate({ identifier: "Registration" });
 
 export interface GuardianInvitation {
   /** The time that this invitation was created. Read-only. */
@@ -1516,18 +1256,13 @@ export interface GuardianInvitation {
   invitationId?: string;
 }
 
-export const GuardianInvitation: Schema.Schema<GuardianInvitation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      creationTime: Schema.optional(Schema.String),
-      studentId: Schema.optional(Schema.String),
-      invitedEmailAddress: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      invitationId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GuardianInvitation",
-  }) as any as Schema.Schema<GuardianInvitation>;
+export const GuardianInvitation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  creationTime: Schema.optional(Schema.String),
+  studentId: Schema.optional(Schema.String),
+  invitedEmailAddress: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  invitationId: Schema.optional(Schema.String),
+}).annotate({ identifier: "GuardianInvitation" });
 
 export interface ModifyAnnouncementAssigneesRequest {
   /** Mode of the announcement describing whether it is accessible by all students or specified individual students. */
@@ -1540,17 +1275,13 @@ export interface ModifyAnnouncementAssigneesRequest {
   modifyIndividualStudentsOptions?: ModifyIndividualStudentsOptions;
 }
 
-export const ModifyAnnouncementAssigneesRequest: Schema.Schema<ModifyAnnouncementAssigneesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      assigneeMode: Schema.optional(Schema.String),
-      modifyIndividualStudentsOptions: Schema.optional(
-        ModifyIndividualStudentsOptions,
-      ),
-    }),
-  ).annotate({
-    identifier: "ModifyAnnouncementAssigneesRequest",
-  }) as any as Schema.Schema<ModifyAnnouncementAssigneesRequest>;
+export const ModifyAnnouncementAssigneesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    assigneeMode: Schema.optional(Schema.String),
+    modifyIndividualStudentsOptions: Schema.optional(
+      ModifyIndividualStudentsOptions,
+    ),
+  }).annotate({ identifier: "ModifyAnnouncementAssigneesRequest" });
 
 export interface ListGuardianInvitationsResponse {
   /** Guardian invitations that matched the list request. */
@@ -1559,15 +1290,11 @@ export interface ListGuardianInvitationsResponse {
   nextPageToken?: string;
 }
 
-export const ListGuardianInvitationsResponse: Schema.Schema<ListGuardianInvitationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      guardianInvitations: Schema.optional(Schema.Array(GuardianInvitation)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListGuardianInvitationsResponse",
-  }) as any as Schema.Schema<ListGuardianInvitationsResponse>;
+export const ListGuardianInvitationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    guardianInvitations: Schema.optional(Schema.Array(GuardianInvitation)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListGuardianInvitationsResponse" });
 
 export interface Invitation {
   /** Role to invite the user to have. Must not be `COURSE_ROLE_UNSPECIFIED`. */
@@ -1585,15 +1312,12 @@ export interface Invitation {
   courseId?: string;
 }
 
-export const Invitation: Schema.Schema<Invitation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      role: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      userId: Schema.optional(Schema.String),
-      courseId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Invitation" }) as any as Schema.Schema<Invitation>;
+export const Invitation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  role: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  userId: Schema.optional(Schema.String),
+  courseId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Invitation" });
 
 export interface ListInvitationsResponse {
   /** Token identifying the next page of results to return. If empty, no further results are available. */
@@ -1602,22 +1326,18 @@ export interface ListInvitationsResponse {
   invitations?: Array<Invitation>;
 }
 
-export const ListInvitationsResponse: Schema.Schema<ListInvitationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      invitations: Schema.optional(Schema.Array(Invitation)),
-    }),
-  ).annotate({
-    identifier: "ListInvitationsResponse",
-  }) as any as Schema.Schema<ListInvitationsResponse>;
+export const ListInvitationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    invitations: Schema.optional(Schema.Array(Invitation)),
+  }).annotate({ identifier: "ListInvitationsResponse" });
 
 export interface TurnInStudentSubmissionRequest {}
 
-export const TurnInStudentSubmissionRequest: Schema.Schema<TurnInStudentSubmissionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const TurnInStudentSubmissionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "TurnInStudentSubmissionRequest",
-  }) as any as Schema.Schema<TurnInStudentSubmissionRequest>;
+  });
 
 export interface GradingPeriod {
   /** Output only. System generated grading period ID. Read-only. */
@@ -1630,17 +1350,12 @@ export interface GradingPeriod {
   startDate?: Classroom_Date;
 }
 
-export const GradingPeriod: Schema.Schema<GradingPeriod> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      endDate: Schema.optional(Classroom_Date),
-      title: Schema.optional(Schema.String),
-      startDate: Schema.optional(Classroom_Date),
-    }),
-  ).annotate({
-    identifier: "GradingPeriod",
-  }) as any as Schema.Schema<GradingPeriod>;
+export const GradingPeriod = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  endDate: Schema.optional(Classroom_Date),
+  title: Schema.optional(Schema.String),
+  startDate: Schema.optional(Classroom_Date),
+}).annotate({ identifier: "GradingPeriod" });
 
 export interface GradingPeriodSettings {
   /** The list of grading periods in a specific course. Grading periods must not have overlapping date ranges and must be listed in chronological order. Each grading period must have a unique title within a course. */
@@ -1649,15 +1364,10 @@ export interface GradingPeriodSettings {
   applyToExistingCoursework?: boolean;
 }
 
-export const GradingPeriodSettings: Schema.Schema<GradingPeriodSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gradingPeriods: Schema.optional(Schema.Array(GradingPeriod)),
-      applyToExistingCoursework: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GradingPeriodSettings",
-  }) as any as Schema.Schema<GradingPeriodSettings>;
+export const GradingPeriodSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gradingPeriods: Schema.optional(Schema.Array(GradingPeriod)),
+  applyToExistingCoursework: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "GradingPeriodSettings" });
 
 export interface CourseWorkMaterial {
   /** Assignee mode of the course work material. If unspecified, the default value is `ALL_STUDENTS`. */
@@ -1699,27 +1409,22 @@ export interface CourseWorkMaterial {
   alternateLink?: string;
 }
 
-export const CourseWorkMaterial: Schema.Schema<CourseWorkMaterial> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      assigneeMode: Schema.optional(Schema.String),
-      topicId: Schema.optional(Schema.String),
-      scheduledTime: Schema.optional(Schema.String),
-      courseId: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      creatorUserId: Schema.optional(Schema.String),
-      individualStudentsOptions: Schema.optional(IndividualStudentsOptions),
-      description: Schema.optional(Schema.String),
-      creationTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      materials: Schema.optional(Schema.Array(Material)),
-      alternateLink: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CourseWorkMaterial",
-  }) as any as Schema.Schema<CourseWorkMaterial>;
+export const CourseWorkMaterial = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  assigneeMode: Schema.optional(Schema.String),
+  topicId: Schema.optional(Schema.String),
+  scheduledTime: Schema.optional(Schema.String),
+  courseId: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  creatorUserId: Schema.optional(Schema.String),
+  individualStudentsOptions: Schema.optional(IndividualStudentsOptions),
+  description: Schema.optional(Schema.String),
+  creationTime: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  materials: Schema.optional(Schema.Array(Material)),
+  alternateLink: Schema.optional(Schema.String),
+}).annotate({ identifier: "CourseWorkMaterial" });
 
 export interface ListRubricsResponse {
   /** Rubrics that match the request. */
@@ -1728,15 +1433,10 @@ export interface ListRubricsResponse {
   nextPageToken?: string;
 }
 
-export const ListRubricsResponse: Schema.Schema<ListRubricsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rubrics: Schema.optional(Schema.Array(Rubric)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListRubricsResponse",
-  }) as any as Schema.Schema<ListRubricsResponse>;
+export const ListRubricsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  rubrics: Schema.optional(Schema.Array(Rubric)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListRubricsResponse" });
 
 export interface ListCourseWorkMaterialResponse {
   /** Course work material items that match the request. */
@@ -1745,22 +1445,18 @@ export interface ListCourseWorkMaterialResponse {
   nextPageToken?: string;
 }
 
-export const ListCourseWorkMaterialResponse: Schema.Schema<ListCourseWorkMaterialResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      courseWorkMaterial: Schema.optional(Schema.Array(CourseWorkMaterial)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListCourseWorkMaterialResponse",
-  }) as any as Schema.Schema<ListCourseWorkMaterialResponse>;
+export const ListCourseWorkMaterialResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    courseWorkMaterial: Schema.optional(Schema.Array(CourseWorkMaterial)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListCourseWorkMaterialResponse" });
 
 export interface ReturnStudentSubmissionRequest {}
 
-export const ReturnStudentSubmissionRequest: Schema.Schema<ReturnStudentSubmissionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const ReturnStudentSubmissionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ReturnStudentSubmissionRequest",
-  }) as any as Schema.Schema<ReturnStudentSubmissionRequest>;
+  });
 
 export interface AddOnAttachmentStudentSubmission {
   /** Student grade on this attachment. If unset, no grade was set. */
@@ -1778,23 +1474,19 @@ export interface AddOnAttachmentStudentSubmission {
   userId?: string;
 }
 
-export const AddOnAttachmentStudentSubmission: Schema.Schema<AddOnAttachmentStudentSubmission> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pointsEarned: Schema.optional(Schema.Number),
-      postSubmissionState: Schema.optional(Schema.String),
-      userId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AddOnAttachmentStudentSubmission",
-  }) as any as Schema.Schema<AddOnAttachmentStudentSubmission>;
+export const AddOnAttachmentStudentSubmission =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pointsEarned: Schema.optional(Schema.Number),
+    postSubmissionState: Schema.optional(Schema.String),
+    userId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AddOnAttachmentStudentSubmission" });
 
 export interface ReclaimStudentSubmissionRequest {}
 
-export const ReclaimStudentSubmissionRequest: Schema.Schema<ReclaimStudentSubmissionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const ReclaimStudentSubmissionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ReclaimStudentSubmissionRequest",
-  }) as any as Schema.Schema<ReclaimStudentSubmissionRequest>;
+  });
 
 export interface ListTopicResponse {
   /** Topic items that match the request. */
@@ -1803,15 +1495,10 @@ export interface ListTopicResponse {
   nextPageToken?: string;
 }
 
-export const ListTopicResponse: Schema.Schema<ListTopicResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      topic: Schema.optional(Schema.Array(Topic)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListTopicResponse",
-  }) as any as Schema.Schema<ListTopicResponse>;
+export const ListTopicResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  topic: Schema.optional(Schema.Array(Topic)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListTopicResponse" });
 
 export interface ListGuardiansResponse {
   /** Guardians on this page of results that met the criteria specified in the request. */
@@ -1820,15 +1507,10 @@ export interface ListGuardiansResponse {
   nextPageToken?: string;
 }
 
-export const ListGuardiansResponse: Schema.Schema<ListGuardiansResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      guardians: Schema.optional(Schema.Array(Guardian)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListGuardiansResponse",
-  }) as any as Schema.Schema<ListGuardiansResponse>;
+export const ListGuardiansResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  guardians: Schema.optional(Schema.Array(Guardian)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListGuardiansResponse" });
 
 export interface StudentGroup {
   /** The title of the student group. */
@@ -1839,16 +1521,11 @@ export interface StudentGroup {
   id?: string;
 }
 
-export const StudentGroup: Schema.Schema<StudentGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-      courseId: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StudentGroup",
-  }) as any as Schema.Schema<StudentGroup>;
+export const StudentGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  title: Schema.optional(Schema.String),
+  courseId: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+}).annotate({ identifier: "StudentGroup" });
 
 export interface ListCourseAliasesResponse {
   /** The course aliases. */
@@ -1857,22 +1534,17 @@ export interface ListCourseAliasesResponse {
   nextPageToken?: string;
 }
 
-export const ListCourseAliasesResponse: Schema.Schema<ListCourseAliasesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      aliases: Schema.optional(Schema.Array(CourseAlias)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListCourseAliasesResponse",
-  }) as any as Schema.Schema<ListCourseAliasesResponse>;
+export const ListCourseAliasesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    aliases: Schema.optional(Schema.Array(CourseAlias)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListCourseAliasesResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface ListStudentGroupsResponse {
   /** The student groups. */
@@ -1881,15 +1553,11 @@ export interface ListStudentGroupsResponse {
   nextPageToken?: string;
 }
 
-export const ListStudentGroupsResponse: Schema.Schema<ListStudentGroupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      studentGroups: Schema.optional(Schema.Array(StudentGroup)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListStudentGroupsResponse",
-  }) as any as Schema.Schema<ListStudentGroupsResponse>;
+export const ListStudentGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    studentGroups: Schema.optional(Schema.Array(StudentGroup)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListStudentGroupsResponse" });
 
 export interface ListAnnouncementsResponse {
   /** Announcement items that match the request. */
@@ -1898,15 +1566,11 @@ export interface ListAnnouncementsResponse {
   nextPageToken?: string;
 }
 
-export const ListAnnouncementsResponse: Schema.Schema<ListAnnouncementsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      announcements: Schema.optional(Schema.Array(Announcement)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAnnouncementsResponse",
-  }) as any as Schema.Schema<ListAnnouncementsResponse>;
+export const ListAnnouncementsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    announcements: Schema.optional(Schema.Array(Announcement)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListAnnouncementsResponse" });
 
 // ==========================================================================
 // Operations

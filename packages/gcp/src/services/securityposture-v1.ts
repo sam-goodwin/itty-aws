@@ -33,15 +33,12 @@ export interface Expr {
   location?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      expression: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Expr" }) as any as Schema.Schema<Expr>;
+export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  expression: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+}).annotate({ identifier: "Expr" });
 
 export interface Property {
   /** Required. The name of the custom source property. */
@@ -50,41 +47,28 @@ export interface Property {
   valueExpression?: Expr;
 }
 
-export const Property: Schema.Schema<Property> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      valueExpression: Schema.optional(Expr),
-    }),
-  ).annotate({ identifier: "Property" }) as any as Schema.Schema<Property>;
+export const Property = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  valueExpression: Schema.optional(Expr),
+}).annotate({ identifier: "Property" });
 
 export interface CustomOutputSpec {
   /** Optional. The custom source properties that can appear in findings. */
   properties?: Array<Property>;
 }
 
-export const CustomOutputSpec: Schema.Schema<CustomOutputSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      properties: Schema.optional(Schema.Array(Property)),
-    }),
-  ).annotate({
-    identifier: "CustomOutputSpec",
-  }) as any as Schema.Schema<CustomOutputSpec>;
+export const CustomOutputSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  properties: Schema.optional(Schema.Array(Property)),
+}).annotate({ identifier: "CustomOutputSpec" });
 
 export interface ResourceSelector {
   /** Required. The resource types to run the detector on. Each custom module can specify up to 5 resource types. */
   resourceTypes?: Array<string>;
 }
 
-export const ResourceSelector: Schema.Schema<ResourceSelector> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceTypes: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ResourceSelector",
-  }) as any as Schema.Schema<ResourceSelector>;
+export const ResourceSelector = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceTypes: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ResourceSelector" });
 
 export interface CustomConfig {
   /** Optional. Definitions of custom source properties to include in findings. */
@@ -107,33 +91,26 @@ export interface CustomConfig {
   description?: string;
 }
 
-export const CustomConfig: Schema.Schema<CustomConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customOutput: Schema.optional(CustomOutputSpec),
-      resourceSelector: Schema.optional(ResourceSelector),
-      predicate: Schema.optional(Expr),
-      severity: Schema.optional(Schema.String),
-      recommendation: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomConfig",
-  }) as any as Schema.Schema<CustomConfig>;
+export const CustomConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  customOutput: Schema.optional(CustomOutputSpec),
+  resourceSelector: Schema.optional(ResourceSelector),
+  predicate: Schema.optional(Expr),
+  severity: Schema.optional(Schema.String),
+  recommendation: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "CustomConfig" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelOperationRequest",
-  }) as any as Schema.Schema<CancelOperationRequest>;
+export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelOperationRequest" });
 
 export interface PolicyDetails {
   /** A description of the policy. */
@@ -153,17 +130,12 @@ export interface PolicyDetails {
     | (string & {});
 }
 
-export const PolicyDetails: Schema.Schema<PolicyDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      constraint: Schema.optional(Schema.String),
-      complianceStandards: Schema.optional(Schema.Array(Schema.String)),
-      constraintType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PolicyDetails",
-  }) as any as Schema.Schema<PolicyDetails>;
+export const PolicyDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  constraint: Schema.optional(Schema.String),
+  complianceStandards: Schema.optional(Schema.Array(Schema.String)),
+  constraintType: Schema.optional(Schema.String),
+}).annotate({ identifier: "PolicyDetails" });
 
 export interface AssetDetails {
   /** Information about the Cloud Asset Inventory asset that violated a policy. The format of this information can change at any time without prior notice. Your application must not depend on this information in any way. */
@@ -172,15 +144,10 @@ export interface AssetDetails {
   assetType?: string;
 }
 
-export const AssetDetails: Schema.Schema<AssetDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      asset: Schema.optional(Schema.String),
-      assetType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AssetDetails",
-  }) as any as Schema.Schema<AssetDetails>;
+export const AssetDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  asset: Schema.optional(Schema.String),
+  assetType: Schema.optional(Schema.String),
+}).annotate({ identifier: "AssetDetails" });
 
 export interface PostureDetails {
   /** The identifier for the PolicySet that the relevant policy belongs to. */
@@ -195,18 +162,13 @@ export interface PostureDetails {
   posture?: string;
 }
 
-export const PostureDetails: Schema.Schema<PostureDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policySet: Schema.optional(Schema.String),
-      postureDeployment: Schema.optional(Schema.String),
-      postureDeploymentTargetResource: Schema.optional(Schema.String),
-      postureRevisionId: Schema.optional(Schema.String),
-      posture: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PostureDetails",
-  }) as any as Schema.Schema<PostureDetails>;
+export const PostureDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policySet: Schema.optional(Schema.String),
+  postureDeployment: Schema.optional(Schema.String),
+  postureDeploymentTargetResource: Schema.optional(Schema.String),
+  postureRevisionId: Schema.optional(Schema.String),
+  posture: Schema.optional(Schema.String),
+}).annotate({ identifier: "PostureDetails" });
 
 export interface Violation {
   /** The severity of the violation. */
@@ -231,18 +193,15 @@ export interface Violation {
   violatedPosture?: PostureDetails;
 }
 
-export const Violation: Schema.Schema<Violation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      severity: Schema.optional(Schema.String),
-      violatedPolicy: Schema.optional(PolicyDetails),
-      assetId: Schema.optional(Schema.String),
-      policyId: Schema.optional(Schema.String),
-      violatedAsset: Schema.optional(AssetDetails),
-      nextSteps: Schema.optional(Schema.String),
-      violatedPosture: Schema.optional(PostureDetails),
-    }),
-  ).annotate({ identifier: "Violation" }) as any as Schema.Schema<Violation>;
+export const Violation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  severity: Schema.optional(Schema.String),
+  violatedPolicy: Schema.optional(PolicyDetails),
+  assetId: Schema.optional(Schema.String),
+  policyId: Schema.optional(Schema.String),
+  violatedAsset: Schema.optional(AssetDetails),
+  nextSteps: Schema.optional(Schema.String),
+  violatedPosture: Schema.optional(PostureDetails),
+}).annotate({ identifier: "Violation" });
 
 export interface IaCValidationReport {
   /** A list of every Violation found in the IaC configuration. */
@@ -251,15 +210,10 @@ export interface IaCValidationReport {
   note?: string;
 }
 
-export const IaCValidationReport: Schema.Schema<IaCValidationReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      violations: Schema.optional(Schema.Array(Violation)),
-      note: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "IaCValidationReport",
-  }) as any as Schema.Schema<IaCValidationReport>;
+export const IaCValidationReport = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  violations: Schema.optional(Schema.Array(Violation)),
+  note: Schema.optional(Schema.String),
+}).annotate({ identifier: "IaCValidationReport" });
 
 export interface Report {
   /** Required. The name of the report, in the format `organizations/{organization}/locations/global/reports/{report_id}`. */
@@ -272,15 +226,12 @@ export interface Report {
   updateTime?: string;
 }
 
-export const Report: Schema.Schema<Report> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      iacValidationReport: Schema.optional(IaCValidationReport),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Report" }) as any as Schema.Schema<Report>;
+export const Report = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  iacValidationReport: Schema.optional(IaCValidationReport),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Report" });
 
 export interface ListReportsResponse {
   /** A pagination token. To retrieve the next page of results, call the method again with this token. */
@@ -291,30 +242,20 @@ export interface ListReportsResponse {
   reports?: Array<Report>;
 }
 
-export const ListReportsResponse: Schema.Schema<ListReportsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      reports: Schema.optional(Schema.Array(Report)),
-    }),
-  ).annotate({
-    identifier: "ListReportsResponse",
-  }) as any as Schema.Schema<ListReportsResponse>;
+export const ListReportsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+  reports: Schema.optional(Schema.Array(Report)),
+}).annotate({ identifier: "ListReportsResponse" });
 
 export interface ResourceTypes {
   /** Optional. The resource types we currently support. */
   included?: Array<string>;
 }
 
-export const ResourceTypes: Schema.Schema<ResourceTypes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      included: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ResourceTypes",
-  }) as any as Schema.Schema<ResourceTypes>;
+export const ResourceTypes = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  included: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ResourceTypes" });
 
 export interface OperationMetadata {
   /** Output only. An error message. Returned when a PostureDeployment enters a failure state like UPDATE_FAILED. */
@@ -335,21 +276,16 @@ export interface OperationMetadata {
   requestedCancellation?: boolean;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errorMessage: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-      apiVersion: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  errorMessage: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  statusMessage: Schema.optional(Schema.String),
+  apiVersion: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  verb: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  requestedCancellation: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "OperationMetadata" });
 
 export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -360,16 +296,13 @@ export interface Status {
   code?: number;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      code: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  code: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -384,16 +317,13 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      done: Schema.optional(Schema.Boolean),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      error: Schema.optional(Status),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  done: Schema.optional(Schema.Boolean),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  error: Schema.optional(Status),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Operation" });
 
 export interface PostureDeployment {
   /** Output only. A description of why the posture deployment failed. Present only if the deployment is in a failed state. */
@@ -439,28 +369,23 @@ export interface PostureDeployment {
   etag?: string;
 }
 
-export const PostureDeployment: Schema.Schema<PostureDeployment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      failureMessage: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      postureRevisionId: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      targetResource: Schema.optional(Schema.String),
-      desiredPostureRevisionId: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      description: Schema.optional(Schema.String),
-      desiredPostureId: Schema.optional(Schema.String),
-      postureId: Schema.optional(Schema.String),
-      categories: Schema.optional(Schema.Array(Schema.String)),
-      reconciling: Schema.optional(Schema.Boolean),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PostureDeployment",
-  }) as any as Schema.Schema<PostureDeployment>;
+export const PostureDeployment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  failureMessage: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  postureRevisionId: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  targetResource: Schema.optional(Schema.String),
+  desiredPostureRevisionId: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  description: Schema.optional(Schema.String),
+  desiredPostureId: Schema.optional(Schema.String),
+  postureId: Schema.optional(Schema.String),
+  categories: Schema.optional(Schema.Array(Schema.String)),
+  reconciling: Schema.optional(Schema.Boolean),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "PostureDeployment" });
 
 export interface ListPostureDeploymentsResponse {
   /** The list of PostureDeployment resources. */
@@ -471,16 +396,12 @@ export interface ListPostureDeploymentsResponse {
   nextPageToken?: string;
 }
 
-export const ListPostureDeploymentsResponse: Schema.Schema<ListPostureDeploymentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      postureDeployments: Schema.optional(Schema.Array(PostureDeployment)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListPostureDeploymentsResponse",
-  }) as any as Schema.Schema<ListPostureDeploymentsResponse>;
+export const ListPostureDeploymentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    postureDeployments: Schema.optional(Schema.Array(PostureDeployment)),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListPostureDeploymentsResponse" });
 
 export interface ComplianceStandard {
   /** Optional. The compliance standard that the policy helps enforce. For example, `NIST SP 800-53`. */
@@ -489,15 +410,10 @@ export interface ComplianceStandard {
   control?: string;
 }
 
-export const ComplianceStandard: Schema.Schema<ComplianceStandard> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      standard: Schema.optional(Schema.String),
-      control: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ComplianceStandard",
-  }) as any as Schema.Schema<ComplianceStandard>;
+export const ComplianceStandard = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  standard: Schema.optional(Schema.String),
+  control: Schema.optional(Schema.String),
+}).annotate({ identifier: "ComplianceStandard" });
 
 export interface SecurityHealthAnalyticsModule {
   /** Whether the detector is enabled at a specified level of the resource hierarchy. */
@@ -510,15 +426,11 @@ export interface SecurityHealthAnalyticsModule {
   moduleName?: string;
 }
 
-export const SecurityHealthAnalyticsModule: Schema.Schema<SecurityHealthAnalyticsModule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      moduleEnablementState: Schema.optional(Schema.String),
-      moduleName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SecurityHealthAnalyticsModule",
-  }) as any as Schema.Schema<SecurityHealthAnalyticsModule>;
+export const SecurityHealthAnalyticsModule =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    moduleEnablementState: Schema.optional(Schema.String),
+    moduleName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SecurityHealthAnalyticsModule" });
 
 export interface SecurityHealthAnalyticsCustomModule {
   /** Required. Configuration settings for the custom module. */
@@ -535,17 +447,13 @@ export interface SecurityHealthAnalyticsCustomModule {
   displayName?: string;
 }
 
-export const SecurityHealthAnalyticsCustomModule: Schema.Schema<SecurityHealthAnalyticsCustomModule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      config: Schema.optional(CustomConfig),
-      id: Schema.optional(Schema.String),
-      moduleEnablementState: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SecurityHealthAnalyticsCustomModule",
-  }) as any as Schema.Schema<SecurityHealthAnalyticsCustomModule>;
+export const SecurityHealthAnalyticsCustomModule =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    config: Schema.optional(CustomConfig),
+    id: Schema.optional(Schema.String),
+    moduleEnablementState: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SecurityHealthAnalyticsCustomModule" });
 
 export interface GoogleCloudSecuritypostureV1CustomConstraint {
   /** Immutable. The resource type that the constraint applies to, in the format `{canonical_service_name}/{resource_type_name}`. For example, `compute.googleapis.com/Instance`. */
@@ -568,21 +476,17 @@ export interface GoogleCloudSecuritypostureV1CustomConstraint {
   description?: string;
 }
 
-export const GoogleCloudSecuritypostureV1CustomConstraint: Schema.Schema<GoogleCloudSecuritypostureV1CustomConstraint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceTypes: Schema.optional(Schema.Array(Schema.String)),
-      actionType: Schema.optional(Schema.String),
-      methodTypes: Schema.optional(Schema.Array(Schema.String)),
-      condition: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudSecuritypostureV1CustomConstraint",
-  }) as any as Schema.Schema<GoogleCloudSecuritypostureV1CustomConstraint>;
+export const GoogleCloudSecuritypostureV1CustomConstraint =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceTypes: Schema.optional(Schema.Array(Schema.String)),
+    actionType: Schema.optional(Schema.String),
+    methodTypes: Schema.optional(Schema.Array(Schema.String)),
+    condition: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudSecuritypostureV1CustomConstraint" });
 
 export interface GoogleCloudSecuritypostureV1PolicyRuleStringValues {
   /** The allowed values for the constraint. */
@@ -591,15 +495,13 @@ export interface GoogleCloudSecuritypostureV1PolicyRuleStringValues {
   deniedValues?: Array<string>;
 }
 
-export const GoogleCloudSecuritypostureV1PolicyRuleStringValues: Schema.Schema<GoogleCloudSecuritypostureV1PolicyRuleStringValues> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      allowedValues: Schema.optional(Schema.Array(Schema.String)),
-      deniedValues: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudSecuritypostureV1PolicyRuleStringValues =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allowedValues: Schema.optional(Schema.Array(Schema.String)),
+    deniedValues: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudSecuritypostureV1PolicyRuleStringValues",
-  }) as any as Schema.Schema<GoogleCloudSecuritypostureV1PolicyRuleStringValues>;
+  });
 
 export interface GoogleCloudSecuritypostureV1PolicyRule {
   /** The allowed and denied values for a list constraint. Valid only for list constraints. */
@@ -618,22 +520,16 @@ export interface GoogleCloudSecuritypostureV1PolicyRule {
   resourceTypes?: ResourceTypes;
 }
 
-export const GoogleCloudSecuritypostureV1PolicyRule: Schema.Schema<GoogleCloudSecuritypostureV1PolicyRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      values: Schema.optional(
-        GoogleCloudSecuritypostureV1PolicyRuleStringValues,
-      ),
-      allowAll: Schema.optional(Schema.Boolean),
-      denyAll: Schema.optional(Schema.Boolean),
-      condition: Schema.optional(Expr),
-      parameters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      enforce: Schema.optional(Schema.Boolean),
-      resourceTypes: Schema.optional(ResourceTypes),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudSecuritypostureV1PolicyRule",
-  }) as any as Schema.Schema<GoogleCloudSecuritypostureV1PolicyRule>;
+export const GoogleCloudSecuritypostureV1PolicyRule =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    values: Schema.optional(GoogleCloudSecuritypostureV1PolicyRuleStringValues),
+    allowAll: Schema.optional(Schema.Boolean),
+    denyAll: Schema.optional(Schema.Boolean),
+    condition: Schema.optional(Expr),
+    parameters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    enforce: Schema.optional(Schema.Boolean),
+    resourceTypes: Schema.optional(ResourceTypes),
+  }).annotate({ identifier: "GoogleCloudSecuritypostureV1PolicyRule" });
 
 export interface OrgPolicyConstraintCustom {
   /** Required. Metadata for the constraint. */
@@ -642,19 +538,15 @@ export interface OrgPolicyConstraintCustom {
   policyRules?: Array<GoogleCloudSecuritypostureV1PolicyRule>;
 }
 
-export const OrgPolicyConstraintCustom: Schema.Schema<OrgPolicyConstraintCustom> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customConstraint: Schema.optional(
-        GoogleCloudSecuritypostureV1CustomConstraint,
-      ),
-      policyRules: Schema.optional(
-        Schema.Array(GoogleCloudSecuritypostureV1PolicyRule),
-      ),
-    }),
-  ).annotate({
-    identifier: "OrgPolicyConstraintCustom",
-  }) as any as Schema.Schema<OrgPolicyConstraintCustom>;
+export const OrgPolicyConstraintCustom =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customConstraint: Schema.optional(
+      GoogleCloudSecuritypostureV1CustomConstraint,
+    ),
+    policyRules: Schema.optional(
+      Schema.Array(GoogleCloudSecuritypostureV1PolicyRule),
+    ),
+  }).annotate({ identifier: "OrgPolicyConstraintCustom" });
 
 export interface OrgPolicyConstraint {
   /** Required. A unique identifier for the constraint. */
@@ -663,17 +555,12 @@ export interface OrgPolicyConstraint {
   policyRules?: Array<GoogleCloudSecuritypostureV1PolicyRule>;
 }
 
-export const OrgPolicyConstraint: Schema.Schema<OrgPolicyConstraint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cannedConstraintId: Schema.optional(Schema.String),
-      policyRules: Schema.optional(
-        Schema.Array(GoogleCloudSecuritypostureV1PolicyRule),
-      ),
-    }),
-  ).annotate({
-    identifier: "OrgPolicyConstraint",
-  }) as any as Schema.Schema<OrgPolicyConstraint>;
+export const OrgPolicyConstraint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cannedConstraintId: Schema.optional(Schema.String),
+  policyRules: Schema.optional(
+    Schema.Array(GoogleCloudSecuritypostureV1PolicyRule),
+  ),
+}).annotate({ identifier: "OrgPolicyConstraint" });
 
 export interface Constraint {
   /** Optional. A built-in detector for Security Health Analytics. */
@@ -686,19 +573,14 @@ export interface Constraint {
   orgPolicyConstraint?: OrgPolicyConstraint;
 }
 
-export const Constraint: Schema.Schema<Constraint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      securityHealthAnalyticsModule: Schema.optional(
-        SecurityHealthAnalyticsModule,
-      ),
-      securityHealthAnalyticsCustomModule: Schema.optional(
-        SecurityHealthAnalyticsCustomModule,
-      ),
-      orgPolicyConstraintCustom: Schema.optional(OrgPolicyConstraintCustom),
-      orgPolicyConstraint: Schema.optional(OrgPolicyConstraint),
-    }),
-  ).annotate({ identifier: "Constraint" }) as any as Schema.Schema<Constraint>;
+export const Constraint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  securityHealthAnalyticsModule: Schema.optional(SecurityHealthAnalyticsModule),
+  securityHealthAnalyticsCustomModule: Schema.optional(
+    SecurityHealthAnalyticsCustomModule,
+  ),
+  orgPolicyConstraintCustom: Schema.optional(OrgPolicyConstraintCustom),
+  orgPolicyConstraint: Schema.optional(OrgPolicyConstraint),
+}).annotate({ identifier: "Constraint" });
 
 export interface Policy {
   /** Optional. A description of the policy. */
@@ -711,15 +593,12 @@ export interface Policy {
   constraint?: Constraint;
 }
 
-export const Policy: Schema.Schema<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      policyId: Schema.optional(Schema.String),
-      complianceStandards: Schema.optional(Schema.Array(ComplianceStandard)),
-      constraint: Schema.optional(Constraint),
-    }),
-  ).annotate({ identifier: "Policy" }) as any as Schema.Schema<Policy>;
+export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  policyId: Schema.optional(Schema.String),
+  complianceStandards: Schema.optional(Schema.Array(ComplianceStandard)),
+  constraint: Schema.optional(Constraint),
+}).annotate({ identifier: "Policy" });
 
 export interface PolicySet {
   /** Optional. A description of the policy set. */
@@ -730,14 +609,11 @@ export interface PolicySet {
   policies?: Array<Policy>;
 }
 
-export const PolicySet: Schema.Schema<PolicySet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      policySetId: Schema.optional(Schema.String),
-      policies: Schema.optional(Schema.Array(Policy)),
-    }),
-  ).annotate({ identifier: "PolicySet" }) as any as Schema.Schema<PolicySet>;
+export const PolicySet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  policySetId: Schema.optional(Schema.String),
+  policies: Schema.optional(Schema.Array(Policy)),
+}).annotate({ identifier: "PolicySet" });
 
 export interface Posture {
   /** Optional. A description of the posture. */
@@ -771,22 +647,19 @@ export interface Posture {
   annotations?: Record<string, string>;
 }
 
-export const Posture: Schema.Schema<Posture> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      policySets: Schema.optional(Schema.Array(PolicySet)),
-      state: Schema.optional(Schema.String),
-      categories: Schema.optional(Schema.Array(Schema.String)),
-      createTime: Schema.optional(Schema.String),
-      reconciling: Schema.optional(Schema.Boolean),
-      revisionId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({ identifier: "Posture" }) as any as Schema.Schema<Posture>;
+export const Posture = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  policySets: Schema.optional(Schema.Array(PolicySet)),
+  state: Schema.optional(Schema.String),
+  categories: Schema.optional(Schema.Array(Schema.String)),
+  createTime: Schema.optional(Schema.String),
+  reconciling: Schema.optional(Schema.Boolean),
+  revisionId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "Posture" });
 
 export interface ListPostureRevisionsResponse {
   /** The list of revisions for the Posture. */
@@ -795,15 +668,11 @@ export interface ListPostureRevisionsResponse {
   nextPageToken?: string;
 }
 
-export const ListPostureRevisionsResponse: Schema.Schema<ListPostureRevisionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      revisions: Schema.optional(Schema.Array(Posture)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListPostureRevisionsResponse",
-  }) as any as Schema.Schema<ListPostureRevisionsResponse>;
+export const ListPostureRevisionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    revisions: Schema.optional(Schema.Array(Posture)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListPostureRevisionsResponse" });
 
 export interface PostureTemplate {
   /** Output only. The state of the posture template at the specified `revision_id`. */
@@ -822,19 +691,14 @@ export interface PostureTemplate {
   description?: string;
 }
 
-export const PostureTemplate: Schema.Schema<PostureTemplate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      categories: Schema.optional(Schema.Array(Schema.String)),
-      revisionId: Schema.optional(Schema.String),
-      policySets: Schema.optional(Schema.Array(PolicySet)),
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PostureTemplate",
-  }) as any as Schema.Schema<PostureTemplate>;
+export const PostureTemplate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.String),
+  categories: Schema.optional(Schema.Array(Schema.String)),
+  revisionId: Schema.optional(Schema.String),
+  policySets: Schema.optional(Schema.Array(PolicySet)),
+  name: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "PostureTemplate" });
 
 export interface ListPostureTemplatesResponse {
   /** The list of PostureTemplate resources. */
@@ -843,15 +707,11 @@ export interface ListPostureTemplatesResponse {
   nextPageToken?: string;
 }
 
-export const ListPostureTemplatesResponse: Schema.Schema<ListPostureTemplatesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      postureTemplates: Schema.optional(Schema.Array(PostureTemplate)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListPostureTemplatesResponse",
-  }) as any as Schema.Schema<ListPostureTemplatesResponse>;
+export const ListPostureTemplatesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    postureTemplates: Schema.optional(Schema.Array(PostureTemplate)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListPostureTemplatesResponse" });
 
 export interface ListPosturesResponse {
   /** The list of Posture resources. */
@@ -862,16 +722,11 @@ export interface ListPosturesResponse {
   unreachable?: Array<string>;
 }
 
-export const ListPosturesResponse: Schema.Schema<ListPosturesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      postures: Schema.optional(Schema.Array(Posture)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListPosturesResponse",
-  }) as any as Schema.Schema<ListPosturesResponse>;
+export const ListPosturesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  postures: Schema.optional(Schema.Array(Posture)),
+  nextPageToken: Schema.optional(Schema.String),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ListPosturesResponse" });
 
 export interface ListOperationsResponse {
   /** The standard List next-page token. */
@@ -882,28 +737,22 @@ export interface ListOperationsResponse {
   operations?: Array<Operation>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      operations: Schema.optional(Schema.Array(Operation)),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    operations: Schema.optional(Schema.Array(Operation)),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 export interface IaC {
   /** Optional. A Terraform plan file, formatted as a stringified JSON object. To learn how to generate a Terraform plan file in JSON format, see [JSON output format](https://developer.hashicorp.com/terraform/internals/json-format) in the Terraform documentation. */
   tfPlan?: string;
 }
 
-export const IaC: Schema.Schema<IaC> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tfPlan: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "IaC" }) as any as Schema.Schema<IaC>;
+export const IaC = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tfPlan: Schema.optional(Schema.String),
+}).annotate({ identifier: "IaC" });
 
 export interface Location {
   /** The canonical id for this location. For example: `"us-east1"`. */
@@ -918,30 +767,23 @@ export interface Location {
   displayName?: string;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locationId: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      name: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locationId: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  name: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  displayName: Schema.optional(Schema.String),
+}).annotate({ identifier: "Location" });
 
 export interface CreateIaCValidationReportRequest {
   /** Required. The infrastructure-as-code (IaC) configuration to validate. */
   iac?: IaC;
 }
 
-export const CreateIaCValidationReportRequest: Schema.Schema<CreateIaCValidationReportRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      iac: Schema.optional(IaC),
-    }),
-  ).annotate({
-    identifier: "CreateIaCValidationReportRequest",
-  }) as any as Schema.Schema<CreateIaCValidationReportRequest>;
+export const CreateIaCValidationReportRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    iac: Schema.optional(IaC),
+  }).annotate({ identifier: "CreateIaCValidationReportRequest" });
 
 export interface ExtractPostureRequest {
   /** Required. An identifier for the posture. */
@@ -950,15 +792,10 @@ export interface ExtractPostureRequest {
   workload?: string;
 }
 
-export const ExtractPostureRequest: Schema.Schema<ExtractPostureRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      postureId: Schema.optional(Schema.String),
-      workload: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ExtractPostureRequest",
-  }) as any as Schema.Schema<ExtractPostureRequest>;
+export const ExtractPostureRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  postureId: Schema.optional(Schema.String),
+  workload: Schema.optional(Schema.String),
+}).annotate({ identifier: "ExtractPostureRequest" });
 
 export interface ListLocationsResponse {
   /** The standard List next-page token. */
@@ -967,15 +804,10 @@ export interface ListLocationsResponse {
   locations?: Array<Location>;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      locations: Schema.optional(Schema.Array(Location)),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  locations: Schema.optional(Schema.Array(Location)),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 // ==========================================================================
 // Operations

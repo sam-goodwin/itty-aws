@@ -29,13 +29,10 @@ export interface ItemError {
   error_detail?: string;
 }
 
-export const ItemError: Schema.Schema<ItemError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      error_code: Schema.optional(Schema.String),
-      error_detail: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "ItemError" }) as any as Schema.Schema<ItemError>;
+export const ItemError = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  error_code: Schema.optional(Schema.String),
+  error_detail: Schema.optional(Schema.String),
+}).annotate({ identifier: "ItemError" });
 
 export interface Item2 {
   /** Static string value is always "chromewebstore#item". */
@@ -48,15 +45,12 @@ export interface Item2 {
   item_id?: string;
 }
 
-export const Item2: Schema.Schema<Item2> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.Array(Schema.String)),
-      statusDetail: Schema.optional(Schema.Array(Schema.String)),
-      item_id: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Item2" }) as any as Schema.Schema<Item2>;
+export const Item2 = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.Array(Schema.String)),
+  statusDetail: Schema.optional(Schema.Array(Schema.String)),
+  item_id: Schema.optional(Schema.String),
+}).annotate({ identifier: "Item2" });
 
 export interface PublishRequest {
   /** Optional. The caller request to exempt the review and directly publish because the update is within the list that we can automatically validate. The API will check if the exemption can be granted using real time data. */
@@ -67,16 +61,11 @@ export interface PublishRequest {
   target?: string;
 }
 
-export const PublishRequest: Schema.Schema<PublishRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reviewExemption: Schema.optional(Schema.Boolean),
-      deployPercentage: Schema.optional(Schema.Number),
-      target: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PublishRequest",
-  }) as any as Schema.Schema<PublishRequest>;
+export const PublishRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  reviewExemption: Schema.optional(Schema.Boolean),
+  deployPercentage: Schema.optional(Schema.Number),
+  target: Schema.optional(Schema.String),
+}).annotate({ identifier: "PublishRequest" });
 
 export interface Item {
   /** Unique ID of the item. */
@@ -93,17 +82,14 @@ export interface Item {
   crxVersion?: string;
 }
 
-export const Item: Schema.Schema<Item> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      itemError: Schema.optional(Schema.Array(ItemError)),
-      publicKey: Schema.optional(Schema.String),
-      uploadState: Schema.optional(Schema.String),
-      crxVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Item" }) as any as Schema.Schema<Item>;
+export const Item = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  itemError: Schema.optional(Schema.Array(ItemError)),
+  publicKey: Schema.optional(Schema.String),
+  uploadState: Schema.optional(Schema.String),
+  crxVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "Item" });
 
 // ==========================================================================
 // Operations

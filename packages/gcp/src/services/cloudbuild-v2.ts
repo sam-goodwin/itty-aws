@@ -29,15 +29,10 @@ export interface FetchGitRefsResponse {
   nextPageToken?: string;
 }
 
-export const FetchGitRefsResponse: Schema.Schema<FetchGitRefsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      refNames: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FetchGitRefsResponse",
-  }) as any as Schema.Schema<FetchGitRefsResponse>;
+export const FetchGitRefsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  refNames: Schema.optional(Schema.Array(Schema.String)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "FetchGitRefsResponse" });
 
 export interface Expr {
   /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
@@ -50,15 +45,12 @@ export interface Expr {
   location?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      expression: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Expr" }) as any as Schema.Schema<Expr>;
+export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  expression: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+}).annotate({ identifier: "Expr" });
 
 export interface Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
@@ -69,14 +61,11 @@ export interface Binding {
   role?: string;
 }
 
-export const Binding: Schema.Schema<Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      members: Schema.optional(Schema.Array(Schema.String)),
-      condition: Schema.optional(Expr),
-      role: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Binding" }) as any as Schema.Schema<Binding>;
+export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  members: Schema.optional(Schema.Array(Schema.String)),
+  condition: Schema.optional(Expr),
+  role: Schema.optional(Schema.String),
+}).annotate({ identifier: "Binding" });
 
 export interface AuditLogConfig {
   /** The log type that this config enables. */
@@ -90,15 +79,10 @@ export interface AuditLogConfig {
   exemptedMembers?: Array<string>;
 }
 
-export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      logType: Schema.optional(Schema.String),
-      exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AuditLogConfig",
-  }) as any as Schema.Schema<AuditLogConfig>;
+export const AuditLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  logType: Schema.optional(Schema.String),
+  exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "AuditLogConfig" });
 
 export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
@@ -107,15 +91,10 @@ export interface AuditConfig {
   auditLogConfigs?: Array<AuditLogConfig>;
 }
 
-export const AuditConfig: Schema.Schema<AuditConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      service: Schema.optional(Schema.String),
-      auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
-    }),
-  ).annotate({
-    identifier: "AuditConfig",
-  }) as any as Schema.Schema<AuditConfig>;
+export const AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  service: Schema.optional(Schema.String),
+  auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
+}).annotate({ identifier: "AuditConfig" });
 
 export interface Policy {
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
@@ -128,15 +107,12 @@ export interface Policy {
   auditConfigs?: Array<AuditConfig>;
 }
 
-export const Policy: Schema.Schema<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      etag: Schema.optional(Schema.String),
-      bindings: Schema.optional(Schema.Array(Binding)),
-      version: Schema.optional(Schema.Number),
-      auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
-    }),
-  ).annotate({ identifier: "Policy" }) as any as Schema.Schema<Policy>;
+export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  etag: Schema.optional(Schema.String),
+  bindings: Schema.optional(Schema.Array(Binding)),
+  version: Schema.optional(Schema.Number),
+  auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
+}).annotate({ identifier: "Policy" });
 
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
@@ -145,15 +121,10 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policy: Schema.optional(Policy),
-      updateMask: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SetIamPolicyRequest",
-  }) as any as Schema.Schema<SetIamPolicyRequest>;
+export const SetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policy: Schema.optional(Policy),
+  updateMask: Schema.optional(Schema.String),
+}).annotate({ identifier: "SetIamPolicyRequest" });
 
 export interface Repository {
   /** This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. */
@@ -172,18 +143,15 @@ export interface Repository {
   annotations?: Record<string, string>;
 }
 
-export const Repository: Schema.Schema<Repository> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      etag: Schema.optional(Schema.String),
-      webhookId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      remoteUri: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({ identifier: "Repository" }) as any as Schema.Schema<Repository>;
+export const Repository = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  etag: Schema.optional(Schema.String),
+  webhookId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  remoteUri: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "Repository" });
 
 export interface PipelineWorkspaceDeclaration {
   /** Optional marks a Workspace as not being required in PipelineRuns. By default this field is false and so declared workspaces are required. */
@@ -194,16 +162,12 @@ export interface PipelineWorkspaceDeclaration {
   description?: string;
 }
 
-export const PipelineWorkspaceDeclaration: Schema.Schema<PipelineWorkspaceDeclaration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      optional: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PipelineWorkspaceDeclaration",
-  }) as any as Schema.Schema<PipelineWorkspaceDeclaration>;
+export const PipelineWorkspaceDeclaration =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    optional: Schema.optional(Schema.Boolean),
+    name: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PipelineWorkspaceDeclaration" });
 
 export interface CreateRepositoryRequest {
   /** Required. The connection to contain the repository. If the request is part of a BatchCreateRepositoriesRequest, this field should be empty or match the parent specified there. */
@@ -214,16 +178,12 @@ export interface CreateRepositoryRequest {
   repositoryId?: string;
 }
 
-export const CreateRepositoryRequest: Schema.Schema<CreateRepositoryRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parent: Schema.optional(Schema.String),
-      repository: Schema.optional(Repository),
-      repositoryId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreateRepositoryRequest",
-  }) as any as Schema.Schema<CreateRepositoryRequest>;
+export const CreateRepositoryRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.optional(Schema.String),
+    repository: Schema.optional(Repository),
+    repositoryId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CreateRepositoryRequest" });
 
 export interface WorkspaceDeclaration {
   /** Description is a human readable description of this volume. */
@@ -238,30 +198,22 @@ export interface WorkspaceDeclaration {
   optional?: boolean;
 }
 
-export const WorkspaceDeclaration: Schema.Schema<WorkspaceDeclaration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      mountPath: Schema.optional(Schema.String),
-      readOnly: Schema.optional(Schema.Boolean),
-      optional: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "WorkspaceDeclaration",
-  }) as any as Schema.Schema<WorkspaceDeclaration>;
+export const WorkspaceDeclaration = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  mountPath: Schema.optional(Schema.String),
+  readOnly: Schema.optional(Schema.Boolean),
+  optional: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "WorkspaceDeclaration" });
 
 export interface ExecAction {
   /** Optional. Command is the command line to execute inside the container, the working directory for the command is root ('/') in the container's filesystem. The command is simply exec'd, it is not run inside a shell, so traditional shell instructions ('|', etc) won't work. To use a shell, you need to explicitly call out to that shell. Exit status of 0 is treated as live/healthy and non-zero is unhealthy. +optional */
   command?: Array<string>;
 }
 
-export const ExecAction: Schema.Schema<ExecAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      command: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "ExecAction" }) as any as Schema.Schema<ExecAction>;
+export const ExecAction = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  command: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ExecAction" });
 
 export interface Probe {
   /** Optional. Exec specifies the action to take. +optional */
@@ -270,13 +222,10 @@ export interface Probe {
   periodSeconds?: number;
 }
 
-export const Probe: Schema.Schema<Probe> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      exec: Schema.optional(ExecAction),
-      periodSeconds: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Probe" }) as any as Schema.Schema<Probe>;
+export const Probe = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  exec: Schema.optional(ExecAction),
+  periodSeconds: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Probe" });
 
 export interface EnvVar {
   /** Name of the environment variable. */
@@ -285,13 +234,10 @@ export interface EnvVar {
   value?: string;
 }
 
-export const EnvVar: Schema.Schema<EnvVar> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "EnvVar" }) as any as Schema.Schema<EnvVar>;
+export const EnvVar = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+}).annotate({ identifier: "EnvVar" });
 
 export interface SecurityContext {
   /** Optional. The GID to run the entrypoint of the container process. Uses runtime default if unset. May also be set in PodSecurityContext. If set in both SecurityContext and PodSecurityContext, the value specified in SecurityContext takes precedence. Note that this field cannot be set when spec.os.name is windows. +optional */
@@ -306,18 +252,13 @@ export interface SecurityContext {
   runAsNonRoot?: boolean;
 }
 
-export const SecurityContext: Schema.Schema<SecurityContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      runAsGroup: Schema.optional(Schema.String),
-      allowPrivilegeEscalation: Schema.optional(Schema.Boolean),
-      privileged: Schema.optional(Schema.Boolean),
-      runAsUser: Schema.optional(Schema.String),
-      runAsNonRoot: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "SecurityContext",
-  }) as any as Schema.Schema<SecurityContext>;
+export const SecurityContext = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  runAsGroup: Schema.optional(Schema.String),
+  allowPrivilegeEscalation: Schema.optional(Schema.Boolean),
+  privileged: Schema.optional(Schema.Boolean),
+  runAsUser: Schema.optional(Schema.String),
+  runAsNonRoot: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "SecurityContext" });
 
 export interface VolumeMount {
   /** Expanded path within the volume from which the container's volume should be mounted. Behaves similarly to SubPath but environment variable references $(VAR_NAME) are expanded using the container's environment. Defaults to "" (volume's root). */
@@ -332,18 +273,13 @@ export interface VolumeMount {
   subPath?: string;
 }
 
-export const VolumeMount: Schema.Schema<VolumeMount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subPathExpr: Schema.optional(Schema.String),
-      readOnly: Schema.optional(Schema.Boolean),
-      mountPath: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      subPath: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VolumeMount",
-  }) as any as Schema.Schema<VolumeMount>;
+export const VolumeMount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subPathExpr: Schema.optional(Schema.String),
+  readOnly: Schema.optional(Schema.Boolean),
+  mountPath: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  subPath: Schema.optional(Schema.String),
+}).annotate({ identifier: "VolumeMount" });
 
 export interface Sidecar {
   /** The contents of an executable file to execute. */
@@ -368,21 +304,18 @@ export interface Sidecar {
   volumeMounts?: Array<VolumeMount>;
 }
 
-export const Sidecar: Schema.Schema<Sidecar> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      script: Schema.optional(Schema.String),
-      readinessProbe: Schema.optional(Probe),
-      name: Schema.optional(Schema.String),
-      image: Schema.optional(Schema.String),
-      workingDir: Schema.optional(Schema.String),
-      args: Schema.optional(Schema.Array(Schema.String)),
-      command: Schema.optional(Schema.Array(Schema.String)),
-      env: Schema.optional(Schema.Array(EnvVar)),
-      securityContext: Schema.optional(SecurityContext),
-      volumeMounts: Schema.optional(Schema.Array(VolumeMount)),
-    }),
-  ).annotate({ identifier: "Sidecar" }) as any as Schema.Schema<Sidecar>;
+export const Sidecar = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  script: Schema.optional(Schema.String),
+  readinessProbe: Schema.optional(Probe),
+  name: Schema.optional(Schema.String),
+  image: Schema.optional(Schema.String),
+  workingDir: Schema.optional(Schema.String),
+  args: Schema.optional(Schema.Array(Schema.String)),
+  command: Schema.optional(Schema.Array(Schema.String)),
+  env: Schema.optional(Schema.Array(EnvVar)),
+  securityContext: Schema.optional(SecurityContext),
+  volumeMounts: Schema.optional(Schema.Array(VolumeMount)),
+}).annotate({ identifier: "Sidecar" });
 
 export interface ParamValue {
   /** Type of parameter. */
@@ -395,15 +328,12 @@ export interface ParamValue {
   objectVal?: Record<string, string>;
 }
 
-export const ParamValue: Schema.Schema<ParamValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      stringVal: Schema.optional(Schema.String),
-      arrayVal: Schema.optional(Schema.Array(Schema.String)),
-      objectVal: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({ identifier: "ParamValue" }) as any as Schema.Schema<ParamValue>;
+export const ParamValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  stringVal: Schema.optional(Schema.String),
+  arrayVal: Schema.optional(Schema.Array(Schema.String)),
+  objectVal: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "ParamValue" });
 
 export interface Param {
   /** Name of the parameter. */
@@ -412,13 +342,10 @@ export interface Param {
   value?: ParamValue;
 }
 
-export const Param: Schema.Schema<Param> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      value: Schema.optional(ParamValue),
-    }),
-  ).annotate({ identifier: "Param" }) as any as Schema.Schema<Param>;
+export const Param = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  value: Schema.optional(ParamValue),
+}).annotate({ identifier: "Param" });
 
 export interface StepRef {
   /** Optional. Name of the step. */
@@ -436,14 +363,11 @@ export interface StepRef {
     | (string & {});
 }
 
-export const StepRef: Schema.Schema<StepRef> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      params: Schema.optional(Schema.Array(Param)),
-      resolver: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "StepRef" }) as any as Schema.Schema<StepRef>;
+export const StepRef = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  params: Schema.optional(Schema.Array(Param)),
+  resolver: Schema.optional(Schema.String),
+}).annotate({ identifier: "StepRef" });
 
 export interface Step {
   /** Time after which the Step times out. Defaults to never. */
@@ -478,38 +402,30 @@ export interface Step {
   volumeMounts?: Array<VolumeMount>;
 }
 
-export const Step: Schema.Schema<Step> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      timeout: Schema.optional(Schema.String),
-      image: Schema.optional(Schema.String),
-      workingDir: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      onError: Schema.optional(Schema.String),
-      env: Schema.optional(Schema.Array(EnvVar)),
-      command: Schema.optional(Schema.Array(Schema.String)),
-      args: Schema.optional(Schema.Array(Schema.String)),
-      script: Schema.optional(Schema.String),
-      securityContext: Schema.optional(SecurityContext),
-      params: Schema.optional(Schema.Array(Param)),
-      ref: Schema.optional(StepRef),
-      volumeMounts: Schema.optional(Schema.Array(VolumeMount)),
-    }),
-  ).annotate({ identifier: "Step" }) as any as Schema.Schema<Step>;
+export const Step = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  timeout: Schema.optional(Schema.String),
+  image: Schema.optional(Schema.String),
+  workingDir: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  onError: Schema.optional(Schema.String),
+  env: Schema.optional(Schema.Array(EnvVar)),
+  command: Schema.optional(Schema.Array(Schema.String)),
+  args: Schema.optional(Schema.Array(Schema.String)),
+  script: Schema.optional(Schema.String),
+  securityContext: Schema.optional(SecurityContext),
+  params: Schema.optional(Schema.Array(Param)),
+  ref: Schema.optional(StepRef),
+  volumeMounts: Schema.optional(Schema.Array(VolumeMount)),
+}).annotate({ identifier: "Step" });
 
 export interface PropertySpec {
   /** A type for the object. */
   type?: "TYPE_UNSPECIFIED" | "STRING" | (string & {});
 }
 
-export const PropertySpec: Schema.Schema<PropertySpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PropertySpec",
-  }) as any as Schema.Schema<PropertySpec>;
+export const PropertySpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "PropertySpec" });
 
 export interface TaskResult {
   /** Name of the result. */
@@ -524,16 +440,13 @@ export interface TaskResult {
   properties?: Record<string, PropertySpec>;
 }
 
-export const TaskResult: Schema.Schema<TaskResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      value: Schema.optional(ParamValue),
-      type: Schema.optional(Schema.String),
-      properties: Schema.optional(Schema.Record(Schema.String, PropertySpec)),
-    }),
-  ).annotate({ identifier: "TaskResult" }) as any as Schema.Schema<TaskResult>;
+export const TaskResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  value: Schema.optional(ParamValue),
+  type: Schema.optional(Schema.String),
+  properties: Schema.optional(Schema.Record(Schema.String, PropertySpec)),
+}).annotate({ identifier: "TaskResult" });
 
 export interface ParamSpec {
   /** The default value a parameter takes if no input value is supplied */
@@ -546,22 +459,18 @@ export interface ParamSpec {
   description?: string;
 }
 
-export const ParamSpec: Schema.Schema<ParamSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      default: Schema.optional(ParamValue),
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "ParamSpec" }) as any as Schema.Schema<ParamSpec>;
+export const ParamSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  default: Schema.optional(ParamValue),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "ParamSpec" });
 
 export interface EmptyDirVolumeSource {}
 
-export const EmptyDirVolumeSource: Schema.Schema<EmptyDirVolumeSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "EmptyDirVolumeSource",
-  }) as any as Schema.Schema<EmptyDirVolumeSource>;
+export const EmptyDirVolumeSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "EmptyDirVolumeSource" });
 
 export interface VolumeSource {
   /** A temporary directory that shares a pod's lifetime. */
@@ -570,15 +479,10 @@ export interface VolumeSource {
   name?: string;
 }
 
-export const VolumeSource: Schema.Schema<VolumeSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      emptyDir: Schema.optional(EmptyDirVolumeSource),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VolumeSource",
-  }) as any as Schema.Schema<VolumeSource>;
+export const VolumeSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  emptyDir: Schema.optional(EmptyDirVolumeSource),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "VolumeSource" });
 
 export interface StepTemplate {
   /** Optional. Pod volumes to mount into the container's filesystem. */
@@ -587,15 +491,10 @@ export interface StepTemplate {
   env?: Array<EnvVar>;
 }
 
-export const StepTemplate: Schema.Schema<StepTemplate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      volumeMounts: Schema.optional(Schema.Array(VolumeMount)),
-      env: Schema.optional(Schema.Array(EnvVar)),
-    }),
-  ).annotate({
-    identifier: "StepTemplate",
-  }) as any as Schema.Schema<StepTemplate>;
+export const StepTemplate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  volumeMounts: Schema.optional(Schema.Array(VolumeMount)),
+  env: Schema.optional(Schema.Array(EnvVar)),
+}).annotate({ identifier: "StepTemplate" });
 
 export interface TaskSpec {
   /** The volumes that this Task requires. */
@@ -620,20 +519,17 @@ export interface TaskSpec {
   stepTemplate?: StepTemplate;
 }
 
-export const TaskSpec: Schema.Schema<TaskSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      workspaces: Schema.optional(Schema.Array(WorkspaceDeclaration)),
-      sidecars: Schema.optional(Schema.Array(Sidecar)),
-      steps: Schema.optional(Schema.Array(Step)),
-      results: Schema.optional(Schema.Array(TaskResult)),
-      managedSidecars: Schema.optional(Schema.Array(Schema.String)),
-      description: Schema.optional(Schema.String),
-      params: Schema.optional(Schema.Array(ParamSpec)),
-      volumes: Schema.optional(Schema.Array(VolumeSource)),
-      stepTemplate: Schema.optional(StepTemplate),
-    }),
-  ).annotate({ identifier: "TaskSpec" }) as any as Schema.Schema<TaskSpec>;
+export const TaskSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  workspaces: Schema.optional(Schema.Array(WorkspaceDeclaration)),
+  sidecars: Schema.optional(Schema.Array(Sidecar)),
+  steps: Schema.optional(Schema.Array(Step)),
+  results: Schema.optional(Schema.Array(TaskResult)),
+  managedSidecars: Schema.optional(Schema.Array(Schema.String)),
+  description: Schema.optional(Schema.String),
+  params: Schema.optional(Schema.Array(ParamSpec)),
+  volumes: Schema.optional(Schema.Array(VolumeSource)),
+  stepTemplate: Schema.optional(StepTemplate),
+}).annotate({ identifier: "TaskSpec" });
 
 export interface EmbeddedTask {
   /** User annotations. See https://google.aip.dev/128#annotations */
@@ -642,15 +538,10 @@ export interface EmbeddedTask {
   taskSpec?: TaskSpec;
 }
 
-export const EmbeddedTask: Schema.Schema<EmbeddedTask> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      taskSpec: Schema.optional(TaskSpec),
-    }),
-  ).annotate({
-    identifier: "EmbeddedTask",
-  }) as any as Schema.Schema<EmbeddedTask>;
+export const EmbeddedTask = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  taskSpec: Schema.optional(TaskSpec),
+}).annotate({ identifier: "EmbeddedTask" });
 
 export interface GoogleDevtoolsCloudbuildV2OperationMetadata {
   /** Output only. The time the operation was created. */
@@ -669,20 +560,16 @@ export interface GoogleDevtoolsCloudbuildV2OperationMetadata {
   target?: string;
 }
 
-export const GoogleDevtoolsCloudbuildV2OperationMetadata: Schema.Schema<GoogleDevtoolsCloudbuildV2OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      statusMessage: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      apiVersion: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleDevtoolsCloudbuildV2OperationMetadata",
-  }) as any as Schema.Schema<GoogleDevtoolsCloudbuildV2OperationMetadata>;
+export const GoogleDevtoolsCloudbuildV2OperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    requestedCancellation: Schema.optional(Schema.Boolean),
+    statusMessage: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleDevtoolsCloudbuildV2OperationMetadata" });
 
 export interface SecretVolumeSource {
   /** Name of the secret referenced by the WorkspaceBinding. */
@@ -691,15 +578,10 @@ export interface SecretVolumeSource {
   secretVersion?: string;
 }
 
-export const SecretVolumeSource: Schema.Schema<SecretVolumeSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      secretName: Schema.optional(Schema.String),
-      secretVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SecretVolumeSource",
-  }) as any as Schema.Schema<SecretVolumeSource>;
+export const SecretVolumeSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  secretName: Schema.optional(Schema.String),
+  secretVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "SecretVolumeSource" });
 
 export interface WorkspaceBinding {
   /** Optional. SubPath is optionally a directory on the volume which should be used for this binding (i.e. the volume will be mounted at this sub directory). +optional */
@@ -710,16 +592,11 @@ export interface WorkspaceBinding {
   secret?: SecretVolumeSource;
 }
 
-export const WorkspaceBinding: Schema.Schema<WorkspaceBinding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subPath: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      secret: Schema.optional(SecretVolumeSource),
-    }),
-  ).annotate({
-    identifier: "WorkspaceBinding",
-  }) as any as Schema.Schema<WorkspaceBinding>;
+export const WorkspaceBinding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subPath: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  secret: Schema.optional(SecretVolumeSource),
+}).annotate({ identifier: "WorkspaceBinding" });
 
 export interface WhenExpression {
   /** Input is the string for guard checking which can be a static input or an output from a parent Task. */
@@ -734,16 +611,11 @@ export interface WhenExpression {
   values?: Array<string>;
 }
 
-export const WhenExpression: Schema.Schema<WhenExpression> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      input: Schema.optional(Schema.String),
-      expressionOperator: Schema.optional(Schema.String),
-      values: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "WhenExpression",
-  }) as any as Schema.Schema<WhenExpression>;
+export const WhenExpression = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  input: Schema.optional(Schema.String),
+  expressionOperator: Schema.optional(Schema.String),
+  values: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "WhenExpression" });
 
 export interface TaskRef {
   /** Params contains the parameters used to identify the referenced Tekton resource. Example entries might include "repo" or "path" but the set of params ultimately depends on the chosen resolver. */
@@ -761,14 +633,11 @@ export interface TaskRef {
   name?: string;
 }
 
-export const TaskRef: Schema.Schema<TaskRef> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      params: Schema.optional(Schema.Array(Param)),
-      resolver: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "TaskRef" }) as any as Schema.Schema<TaskRef>;
+export const TaskRef = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  params: Schema.optional(Schema.Array(Param)),
+  resolver: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "TaskRef" });
 
 export interface WorkspacePipelineTaskBinding {
   /** Optional. SubPath is optionally a directory on the volume which should be used for this binding (i.e. the volume will be mounted at this sub directory). +optional */
@@ -779,16 +648,12 @@ export interface WorkspacePipelineTaskBinding {
   name?: string;
 }
 
-export const WorkspacePipelineTaskBinding: Schema.Schema<WorkspacePipelineTaskBinding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subPath: Schema.optional(Schema.String),
-      workspace: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WorkspacePipelineTaskBinding",
-  }) as any as Schema.Schema<WorkspacePipelineTaskBinding>;
+export const WorkspacePipelineTaskBinding =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subPath: Schema.optional(Schema.String),
+    workspace: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "WorkspacePipelineTaskBinding" });
 
 export interface PipelineTask {
   /** Conditions that need to be true for the task to run. */
@@ -811,22 +676,17 @@ export interface PipelineTask {
   workspaces?: Array<WorkspacePipelineTaskBinding>;
 }
 
-export const PipelineTask: Schema.Schema<PipelineTask> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      whenExpressions: Schema.optional(Schema.Array(WhenExpression)),
-      params: Schema.optional(Schema.Array(Param)),
-      taskSpec: Schema.optional(EmbeddedTask),
-      taskRef: Schema.optional(TaskRef),
-      retries: Schema.optional(Schema.Number),
-      timeout: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      runAfter: Schema.optional(Schema.Array(Schema.String)),
-      workspaces: Schema.optional(Schema.Array(WorkspacePipelineTaskBinding)),
-    }),
-  ).annotate({
-    identifier: "PipelineTask",
-  }) as any as Schema.Schema<PipelineTask>;
+export const PipelineTask = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  whenExpressions: Schema.optional(Schema.Array(WhenExpression)),
+  params: Schema.optional(Schema.Array(Param)),
+  taskSpec: Schema.optional(EmbeddedTask),
+  taskRef: Schema.optional(TaskRef),
+  retries: Schema.optional(Schema.Number),
+  timeout: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  runAfter: Schema.optional(Schema.Array(Schema.String)),
+  workspaces: Schema.optional(Schema.Array(WorkspacePipelineTaskBinding)),
+}).annotate({ identifier: "PipelineTask" });
 
 export interface OAuthCredential {
   /** Optional. A SecretManager resource containing the OAuth token that authorizes the Cloud Build connection. Format: `projects/* /secrets/* /versions/*`. */
@@ -835,15 +695,10 @@ export interface OAuthCredential {
   username?: string;
 }
 
-export const OAuthCredential: Schema.Schema<OAuthCredential> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      oauthTokenSecretVersion: Schema.optional(Schema.String),
-      username: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OAuthCredential",
-  }) as any as Schema.Schema<OAuthCredential>;
+export const OAuthCredential = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  oauthTokenSecretVersion: Schema.optional(Schema.String),
+  username: Schema.optional(Schema.String),
+}).annotate({ identifier: "OAuthCredential" });
 
 export interface GitHubConfig {
   /** Optional. OAuth credential of the account that authorized the Cloud Build GitHub App. It is recommended to use a robot account instead of a human user account. The OAuth token must be tied to the Cloud Build GitHub App. */
@@ -852,15 +707,10 @@ export interface GitHubConfig {
   appInstallationId?: string;
 }
 
-export const GitHubConfig: Schema.Schema<GitHubConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      authorizerCredential: Schema.optional(OAuthCredential),
-      appInstallationId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GitHubConfig",
-  }) as any as Schema.Schema<GitHubConfig>;
+export const GitHubConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  authorizerCredential: Schema.optional(OAuthCredential),
+  appInstallationId: Schema.optional(Schema.String),
+}).annotate({ identifier: "GitHubConfig" });
 
 export interface ResultValue {
   /** Output only. The type of data that the result holds. */
@@ -873,17 +723,12 @@ export interface ResultValue {
   objectVal?: Record<string, string>;
 }
 
-export const ResultValue: Schema.Schema<ResultValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      stringVal: Schema.optional(Schema.String),
-      arrayVal: Schema.optional(Schema.Array(Schema.String)),
-      objectVal: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ResultValue",
-  }) as any as Schema.Schema<ResultValue>;
+export const ResultValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  stringVal: Schema.optional(Schema.String),
+  arrayVal: Schema.optional(Schema.Array(Schema.String)),
+  objectVal: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "ResultValue" });
 
 export interface UserCredential {
   /** Required. A SecretManager resource containing the user token that authorizes the Cloud Build connection. Format: `projects/* /secrets/* /versions/*`. */
@@ -892,29 +737,22 @@ export interface UserCredential {
   username?: string;
 }
 
-export const UserCredential: Schema.Schema<UserCredential> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userTokenSecretVersion: Schema.optional(Schema.String),
-      username: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UserCredential",
-  }) as any as Schema.Schema<UserCredential>;
+export const UserCredential = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  userTokenSecretVersion: Schema.optional(Schema.String),
+  username: Schema.optional(Schema.String),
+}).annotate({ identifier: "UserCredential" });
 
 export interface GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig {
   /** Required. The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}. */
   service?: string;
 }
 
-export const GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig: Schema.Schema<GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      service: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    service: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig",
-  }) as any as Schema.Schema<GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig>;
+  });
 
 export interface GoogleDevtoolsCloudbuildV2GitLabConfig {
   /** Required. A GitLab personal access token with the `api` scope access. */
@@ -933,22 +771,18 @@ export interface GoogleDevtoolsCloudbuildV2GitLabConfig {
   sslCa?: string;
 }
 
-export const GoogleDevtoolsCloudbuildV2GitLabConfig: Schema.Schema<GoogleDevtoolsCloudbuildV2GitLabConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      authorizerCredential: Schema.optional(UserCredential),
-      serverVersion: Schema.optional(Schema.String),
-      hostUri: Schema.optional(Schema.String),
-      webhookSecretSecretVersion: Schema.optional(Schema.String),
-      readAuthorizerCredential: Schema.optional(UserCredential),
-      serviceDirectoryConfig: Schema.optional(
-        GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig,
-      ),
-      sslCa: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleDevtoolsCloudbuildV2GitLabConfig",
-  }) as any as Schema.Schema<GoogleDevtoolsCloudbuildV2GitLabConfig>;
+export const GoogleDevtoolsCloudbuildV2GitLabConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    authorizerCredential: Schema.optional(UserCredential),
+    serverVersion: Schema.optional(Schema.String),
+    hostUri: Schema.optional(Schema.String),
+    webhookSecretSecretVersion: Schema.optional(Schema.String),
+    readAuthorizerCredential: Schema.optional(UserCredential),
+    serviceDirectoryConfig: Schema.optional(
+      GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig,
+    ),
+    sslCa: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleDevtoolsCloudbuildV2GitLabConfig" });
 
 export interface BitbucketDataCenterConfig {
   /** Optional. Configuration for using Service Directory to privately connect to a Bitbucket Data Center. This should only be set if the Bitbucket Data Center is hosted on-premises and not reachable by public internet. If this field is left empty, calls to the Bitbucket Data Center will be made over the public internet. */
@@ -967,22 +801,18 @@ export interface BitbucketDataCenterConfig {
   readAuthorizerCredential?: UserCredential;
 }
 
-export const BitbucketDataCenterConfig: Schema.Schema<BitbucketDataCenterConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serviceDirectoryConfig: Schema.optional(
-        GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig,
-      ),
-      sslCa: Schema.optional(Schema.String),
-      authorizerCredential: Schema.optional(UserCredential),
-      serverVersion: Schema.optional(Schema.String),
-      hostUri: Schema.optional(Schema.String),
-      webhookSecretSecretVersion: Schema.optional(Schema.String),
-      readAuthorizerCredential: Schema.optional(UserCredential),
-    }),
-  ).annotate({
-    identifier: "BitbucketDataCenterConfig",
-  }) as any as Schema.Schema<BitbucketDataCenterConfig>;
+export const BitbucketDataCenterConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    serviceDirectoryConfig: Schema.optional(
+      GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig,
+    ),
+    sslCa: Schema.optional(Schema.String),
+    authorizerCredential: Schema.optional(UserCredential),
+    serverVersion: Schema.optional(Schema.String),
+    hostUri: Schema.optional(Schema.String),
+    webhookSecretSecretVersion: Schema.optional(Schema.String),
+    readAuthorizerCredential: Schema.optional(UserCredential),
+  }).annotate({ identifier: "BitbucketDataCenterConfig" });
 
 export interface BitbucketCloudConfig {
   /** Required. An access token with the `webhook`, `repository`, `repository:admin` and `pullrequest` scope access. It can be either a workspace, project or repository access token. It's recommended to use a system account to generate these credentials. */
@@ -995,17 +825,12 @@ export interface BitbucketCloudConfig {
   webhookSecretSecretVersion?: string;
 }
 
-export const BitbucketCloudConfig: Schema.Schema<BitbucketCloudConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      authorizerCredential: Schema.optional(UserCredential),
-      readAuthorizerCredential: Schema.optional(UserCredential),
-      workspace: Schema.optional(Schema.String),
-      webhookSecretSecretVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BitbucketCloudConfig",
-  }) as any as Schema.Schema<BitbucketCloudConfig>;
+export const BitbucketCloudConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  authorizerCredential: Schema.optional(UserCredential),
+  readAuthorizerCredential: Schema.optional(UserCredential),
+  workspace: Schema.optional(Schema.String),
+  webhookSecretSecretVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "BitbucketCloudConfig" });
 
 export interface GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfig {
   /** Optional. The URL-friendly name of the GitHub App. */
@@ -1030,25 +855,23 @@ export interface GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfig {
   sslCa?: string;
 }
 
-export const GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfig: Schema.Schema<GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      appSlug: Schema.optional(Schema.String),
-      hostUri: Schema.optional(Schema.String),
-      apiKey: Schema.optional(Schema.String),
-      webhookSecretSecretVersion: Schema.optional(Schema.String),
-      privateKeySecretVersion: Schema.optional(Schema.String),
-      appInstallationId: Schema.optional(Schema.String),
-      serverVersion: Schema.optional(Schema.String),
-      appId: Schema.optional(Schema.String),
-      serviceDirectoryConfig: Schema.optional(
-        GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig,
-      ),
-      sslCa: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    appSlug: Schema.optional(Schema.String),
+    hostUri: Schema.optional(Schema.String),
+    apiKey: Schema.optional(Schema.String),
+    webhookSecretSecretVersion: Schema.optional(Schema.String),
+    privateKeySecretVersion: Schema.optional(Schema.String),
+    appInstallationId: Schema.optional(Schema.String),
+    serverVersion: Schema.optional(Schema.String),
+    appId: Schema.optional(Schema.String),
+    serviceDirectoryConfig: Schema.optional(
+      GoogleDevtoolsCloudbuildV2ServiceDirectoryConfig,
+    ),
+    sslCa: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfig",
-  }) as any as Schema.Schema<GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfig>;
+  });
 
 export interface InstallationState {
   /** Output only. Current step of the installation process. */
@@ -1065,16 +888,11 @@ export interface InstallationState {
   actionUri?: string;
 }
 
-export const InstallationState: Schema.Schema<InstallationState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stage: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-      actionUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InstallationState",
-  }) as any as Schema.Schema<InstallationState>;
+export const InstallationState = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  stage: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+  actionUri: Schema.optional(Schema.String),
+}).annotate({ identifier: "InstallationState" });
 
 export interface Connection {
   /** Configuration for connections to gitlab.com or an instance of GitLab Enterprise. */
@@ -1105,26 +923,23 @@ export interface Connection {
   installationState?: InstallationState;
 }
 
-export const Connection: Schema.Schema<Connection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gitlabConfig: Schema.optional(GoogleDevtoolsCloudbuildV2GitLabConfig),
-      bitbucketDataCenterConfig: Schema.optional(BitbucketDataCenterConfig),
-      createTime: Schema.optional(Schema.String),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      updateTime: Schema.optional(Schema.String),
-      bitbucketCloudConfig: Schema.optional(BitbucketCloudConfig),
-      githubEnterpriseConfig: Schema.optional(
-        GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfig,
-      ),
-      reconciling: Schema.optional(Schema.Boolean),
-      githubConfig: Schema.optional(GitHubConfig),
-      name: Schema.optional(Schema.String),
-      disabled: Schema.optional(Schema.Boolean),
-      etag: Schema.optional(Schema.String),
-      installationState: Schema.optional(InstallationState),
-    }),
-  ).annotate({ identifier: "Connection" }) as any as Schema.Schema<Connection>;
+export const Connection = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gitlabConfig: Schema.optional(GoogleDevtoolsCloudbuildV2GitLabConfig),
+  bitbucketDataCenterConfig: Schema.optional(BitbucketDataCenterConfig),
+  createTime: Schema.optional(Schema.String),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  updateTime: Schema.optional(Schema.String),
+  bitbucketCloudConfig: Schema.optional(BitbucketCloudConfig),
+  githubEnterpriseConfig: Schema.optional(
+    GoogleDevtoolsCloudbuildV2GitHubEnterpriseConfig,
+  ),
+  reconciling: Schema.optional(Schema.Boolean),
+  githubConfig: Schema.optional(GitHubConfig),
+  name: Schema.optional(Schema.String),
+  disabled: Schema.optional(Schema.Boolean),
+  etag: Schema.optional(Schema.String),
+  installationState: Schema.optional(InstallationState),
+}).annotate({ identifier: "Connection" });
 
 export interface TimeoutFields {
   /** Finally sets the maximum allowed duration of this pipeline's finally */
@@ -1135,23 +950,17 @@ export interface TimeoutFields {
   tasks?: string;
 }
 
-export const TimeoutFields: Schema.Schema<TimeoutFields> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      finally: Schema.optional(Schema.String),
-      pipeline: Schema.optional(Schema.String),
-      tasks: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TimeoutFields",
-  }) as any as Schema.Schema<TimeoutFields>;
+export const TimeoutFields = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  finally: Schema.optional(Schema.String),
+  pipeline: Schema.optional(Schema.String),
+  tasks: Schema.optional(Schema.String),
+}).annotate({ identifier: "TimeoutFields" });
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelOperationRequest",
-  }) as any as Schema.Schema<CancelOperationRequest>;
+export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelOperationRequest" });
 
 export interface PipelineResult {
   /** Output only. Description of the result. */
@@ -1164,17 +973,12 @@ export interface PipelineResult {
   name?: string;
 }
 
-export const PipelineResult: Schema.Schema<PipelineResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      value: Schema.optional(ResultValue),
-      type: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PipelineResult",
-  }) as any as Schema.Schema<PipelineResult>;
+export const PipelineResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  value: Schema.optional(ResultValue),
+  type: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "PipelineResult" });
 
 export interface ListRepositoriesResponse {
   /** The list of Repositories. */
@@ -1185,16 +989,12 @@ export interface ListRepositoriesResponse {
   nextPageToken?: string;
 }
 
-export const ListRepositoriesResponse: Schema.Schema<ListRepositoriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      repositories: Schema.optional(Schema.Array(Repository)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListRepositoriesResponse",
-  }) as any as Schema.Schema<ListRepositoriesResponse>;
+export const ListRepositoriesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    repositories: Schema.optional(Schema.Array(Repository)),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListRepositoriesResponse" });
 
 export interface ListConnectionsResponse {
   /** Locations that could not be reached. */
@@ -1205,16 +1005,12 @@ export interface ListConnectionsResponse {
   connections?: Array<Connection>;
 }
 
-export const ListConnectionsResponse: Schema.Schema<ListConnectionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-      connections: Schema.optional(Schema.Array(Connection)),
-    }),
-  ).annotate({
-    identifier: "ListConnectionsResponse",
-  }) as any as Schema.Schema<ListConnectionsResponse>;
+export const ListConnectionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+    connections: Schema.optional(Schema.Array(Connection)),
+  }).annotate({ identifier: "ListConnectionsResponse" });
 
 export interface PipelineRef {
   /** Resolver is the name of the resolver that should perform resolution of the referenced Tekton resource. */
@@ -1232,30 +1028,21 @@ export interface PipelineRef {
   name?: string;
 }
 
-export const PipelineRef: Schema.Schema<PipelineRef> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resolver: Schema.optional(Schema.String),
-      params: Schema.optional(Schema.Array(Param)),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PipelineRef",
-  }) as any as Schema.Schema<PipelineRef>;
+export const PipelineRef = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resolver: Schema.optional(Schema.String),
+  params: Schema.optional(Schema.Array(Param)),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "PipelineRef" });
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsResponse",
-  }) as any as Schema.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsResponse" });
 
 export interface OperationMetadata {
   /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have been cancelled successfully have google.longrunning.Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
@@ -1274,27 +1061,22 @@ export interface OperationMetadata {
   verb?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cancelRequested: Schema.optional(Schema.Boolean),
-      apiVersion: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      statusDetail: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cancelRequested: Schema.optional(Schema.Boolean),
+  apiVersion: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  statusDetail: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  verb: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationMetadata" });
 
 export interface FetchReadWriteTokenRequest {}
 
-export const FetchReadWriteTokenRequest: Schema.Schema<FetchReadWriteTokenRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const FetchReadWriteTokenRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "FetchReadWriteTokenRequest",
-  }) as any as Schema.Schema<FetchReadWriteTokenRequest>;
+  });
 
 export interface FetchLinkableRepositoriesResponse {
   /** repositories ready to be created. */
@@ -1303,22 +1085,17 @@ export interface FetchLinkableRepositoriesResponse {
   nextPageToken?: string;
 }
 
-export const FetchLinkableRepositoriesResponse: Schema.Schema<FetchLinkableRepositoriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      repositories: Schema.optional(Schema.Array(Repository)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FetchLinkableRepositoriesResponse",
-  }) as any as Schema.Schema<FetchLinkableRepositoriesResponse>;
+export const FetchLinkableRepositoriesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    repositories: Schema.optional(Schema.Array(Repository)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "FetchLinkableRepositoriesResponse" });
 
 export interface FetchReadTokenRequest {}
 
-export const FetchReadTokenRequest: Schema.Schema<FetchReadTokenRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "FetchReadTokenRequest",
-  }) as any as Schema.Schema<FetchReadTokenRequest>;
+export const FetchReadTokenRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "FetchReadTokenRequest" });
 
 export interface HttpBody {
   /** Application specific response metadata. Must be set in the first response for streaming APIs. */
@@ -1329,16 +1106,13 @@ export interface HttpBody {
   data?: string;
 }
 
-export const HttpBody: Schema.Schema<HttpBody> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      extensions: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      contentType: Schema.optional(Schema.String),
-      data: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "HttpBody" }) as any as Schema.Schema<HttpBody>;
+export const HttpBody = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  extensions: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  contentType: Schema.optional(Schema.String),
+  data: Schema.optional(Schema.String),
+}).annotate({ identifier: "HttpBody" });
 
 export interface FetchReadWriteTokenResponse {
   /** Expiration timestamp. Can be empty if unknown or non-expiring. */
@@ -1347,15 +1121,11 @@ export interface FetchReadWriteTokenResponse {
   token?: string;
 }
 
-export const FetchReadWriteTokenResponse: Schema.Schema<FetchReadWriteTokenResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expirationTime: Schema.optional(Schema.String),
-      token: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FetchReadWriteTokenResponse",
-  }) as any as Schema.Schema<FetchReadWriteTokenResponse>;
+export const FetchReadWriteTokenResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    expirationTime: Schema.optional(Schema.String),
+    token: Schema.optional(Schema.String),
+  }).annotate({ identifier: "FetchReadWriteTokenResponse" });
 
 export interface PipelineSpec {
   /** Workspaces declares a set of named workspaces that are expected to be provided by a PipelineRun. */
@@ -1372,31 +1142,23 @@ export interface PipelineSpec {
   results?: Array<PipelineResult>;
 }
 
-export const PipelineSpec: Schema.Schema<PipelineSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      workspaces: Schema.optional(Schema.Array(PipelineWorkspaceDeclaration)),
-      finallyTasks: Schema.optional(Schema.Array(PipelineTask)),
-      generatedYaml: Schema.optional(Schema.String),
-      tasks: Schema.optional(Schema.Array(PipelineTask)),
-      params: Schema.optional(Schema.Array(ParamSpec)),
-      results: Schema.optional(Schema.Array(PipelineResult)),
-    }),
-  ).annotate({
-    identifier: "PipelineSpec",
-  }) as any as Schema.Schema<PipelineSpec>;
+export const PipelineSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  workspaces: Schema.optional(Schema.Array(PipelineWorkspaceDeclaration)),
+  finallyTasks: Schema.optional(Schema.Array(PipelineTask)),
+  generatedYaml: Schema.optional(Schema.String),
+  tasks: Schema.optional(Schema.Array(PipelineTask)),
+  params: Schema.optional(Schema.Array(ParamSpec)),
+  results: Schema.optional(Schema.Array(PipelineResult)),
+}).annotate({ identifier: "PipelineSpec" });
 
 export interface Worker {
   /** Optional. Machine type of a worker, default is "e2-standard-2". */
   machineType?: string;
 }
 
-export const Worker: Schema.Schema<Worker> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      machineType: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Worker" }) as any as Schema.Schema<Worker>;
+export const Worker = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  machineType: Schema.optional(Schema.String),
+}).annotate({ identifier: "Worker" });
 
 export interface Security {
   /** IAM service account whose credentials will be used at runtime. */
@@ -1409,13 +1171,10 @@ export interface Security {
     | (string & {});
 }
 
-export const Security: Schema.Schema<Security> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serviceAccount: Schema.optional(Schema.String),
-      privilegeMode: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Security" }) as any as Schema.Schema<Security>;
+export const Security = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  serviceAccount: Schema.optional(Schema.String),
+  privilegeMode: Schema.optional(Schema.String),
+}).annotate({ identifier: "Security" });
 
 export interface SkippedTask {
   /** WhenExpressions is the list of checks guarding the execution of the PipelineTask */
@@ -1426,16 +1185,11 @@ export interface SkippedTask {
   reason?: string;
 }
 
-export const SkippedTask: Schema.Schema<SkippedTask> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      whenExpressions: Schema.optional(Schema.Array(WhenExpression)),
-      name: Schema.optional(Schema.String),
-      reason: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SkippedTask",
-  }) as any as Schema.Schema<SkippedTask>;
+export const SkippedTask = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  whenExpressions: Schema.optional(Schema.Array(WhenExpression)),
+  name: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+}).annotate({ identifier: "SkippedTask" });
 
 export interface GoogleDevtoolsCloudbuildV2Condition {
   /** Status of the condition. */
@@ -1452,19 +1206,15 @@ export interface GoogleDevtoolsCloudbuildV2Condition {
   type?: string;
 }
 
-export const GoogleDevtoolsCloudbuildV2Condition: Schema.Schema<GoogleDevtoolsCloudbuildV2Condition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      status: Schema.optional(Schema.String),
-      lastTransitionTime: Schema.optional(Schema.String),
-      severity: Schema.optional(Schema.String),
-      reason: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleDevtoolsCloudbuildV2Condition",
-  }) as any as Schema.Schema<GoogleDevtoolsCloudbuildV2Condition>;
+export const GoogleDevtoolsCloudbuildV2Condition =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    status: Schema.optional(Schema.String),
+    lastTransitionTime: Schema.optional(Schema.String),
+    severity: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleDevtoolsCloudbuildV2Condition" });
 
 export interface PipelineRunResult {
   /** Output only. Name of the TaskRun */
@@ -1473,15 +1223,10 @@ export interface PipelineRunResult {
   value?: ResultValue;
 }
 
-export const PipelineRunResult: Schema.Schema<PipelineRunResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      value: Schema.optional(ResultValue),
-    }),
-  ).annotate({
-    identifier: "PipelineRunResult",
-  }) as any as Schema.Schema<PipelineRunResult>;
+export const PipelineRunResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  value: Schema.optional(ResultValue),
+}).annotate({ identifier: "PipelineRunResult" });
 
 export interface Provenance {
   /** Optional. Provenance region. */
@@ -1502,14 +1247,11 @@ export interface Provenance {
     | (string & {});
 }
 
-export const Provenance: Schema.Schema<Provenance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      region: Schema.optional(Schema.String),
-      storage: Schema.optional(Schema.String),
-      enabled: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Provenance" }) as any as Schema.Schema<Provenance>;
+export const Provenance = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  region: Schema.optional(Schema.String),
+  storage: Schema.optional(Schema.String),
+  enabled: Schema.optional(Schema.String),
+}).annotate({ identifier: "Provenance" });
 
 export interface ChildStatusReference {
   /** PipelineTaskName is the name of the PipelineTask this is referencing. */
@@ -1522,17 +1264,12 @@ export interface ChildStatusReference {
   type?: "TYPE_UNSPECIFIED" | "TASK_RUN" | (string & {});
 }
 
-export const ChildStatusReference: Schema.Schema<ChildStatusReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pipelineTaskName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      whenExpressions: Schema.optional(Schema.Array(WhenExpression)),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ChildStatusReference",
-  }) as any as Schema.Schema<ChildStatusReference>;
+export const ChildStatusReference = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pipelineTaskName: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  whenExpressions: Schema.optional(Schema.Array(WhenExpression)),
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "ChildStatusReference" });
 
 export interface PipelineRun {
   /** PipelineSpec defines the desired state of Pipeline. */
@@ -1598,58 +1335,49 @@ export interface PipelineRun {
   childReferences?: Array<ChildStatusReference>;
 }
 
-export const PipelineRun: Schema.Schema<PipelineRun> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pipelineSpec: Schema.optional(PipelineSpec),
-      worker: Schema.optional(Worker),
-      serviceAccount: Schema.optional(Schema.String),
-      gcbParams: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      startTime: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      finallyStartTime: Schema.optional(Schema.String),
-      security: Schema.optional(Security),
-      createTime: Schema.optional(Schema.String),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      record: Schema.optional(Schema.String),
-      skippedTasks: Schema.optional(Schema.Array(SkippedTask)),
-      conditions: Schema.optional(
-        Schema.Array(GoogleDevtoolsCloudbuildV2Condition),
-      ),
-      resolvedPipelineSpec: Schema.optional(PipelineSpec),
-      name: Schema.optional(Schema.String),
-      workspaces: Schema.optional(Schema.Array(WorkspaceBinding)),
-      pipelineRef: Schema.optional(PipelineRef),
-      workflow: Schema.optional(Schema.String),
-      pipelineSpecYaml: Schema.optional(Schema.String),
-      pipelineRunStatus: Schema.optional(Schema.String),
-      completionTime: Schema.optional(Schema.String),
-      results: Schema.optional(Schema.Array(PipelineRunResult)),
-      uid: Schema.optional(Schema.String),
-      timeouts: Schema.optional(TimeoutFields),
-      provenance: Schema.optional(Provenance),
-      workerPool: Schema.optional(Schema.String),
-      params: Schema.optional(Schema.Array(Param)),
-      childReferences: Schema.optional(Schema.Array(ChildStatusReference)),
-    }),
-  ).annotate({
-    identifier: "PipelineRun",
-  }) as any as Schema.Schema<PipelineRun>;
+export const PipelineRun = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pipelineSpec: Schema.optional(PipelineSpec),
+  worker: Schema.optional(Worker),
+  serviceAccount: Schema.optional(Schema.String),
+  gcbParams: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  startTime: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  finallyStartTime: Schema.optional(Schema.String),
+  security: Schema.optional(Security),
+  createTime: Schema.optional(Schema.String),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  record: Schema.optional(Schema.String),
+  skippedTasks: Schema.optional(Schema.Array(SkippedTask)),
+  conditions: Schema.optional(
+    Schema.Array(GoogleDevtoolsCloudbuildV2Condition),
+  ),
+  resolvedPipelineSpec: Schema.optional(PipelineSpec),
+  name: Schema.optional(Schema.String),
+  workspaces: Schema.optional(Schema.Array(WorkspaceBinding)),
+  pipelineRef: Schema.optional(PipelineRef),
+  workflow: Schema.optional(Schema.String),
+  pipelineSpecYaml: Schema.optional(Schema.String),
+  pipelineRunStatus: Schema.optional(Schema.String),
+  completionTime: Schema.optional(Schema.String),
+  results: Schema.optional(Schema.Array(PipelineRunResult)),
+  uid: Schema.optional(Schema.String),
+  timeouts: Schema.optional(TimeoutFields),
+  provenance: Schema.optional(Provenance),
+  workerPool: Schema.optional(Schema.String),
+  params: Schema.optional(Schema.Array(Param)),
+  childReferences: Schema.optional(Schema.Array(ChildStatusReference)),
+}).annotate({ identifier: "PipelineRun" });
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsRequest",
-  }) as any as Schema.Schema<TestIamPermissionsRequest>;
+export const TestIamPermissionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsRequest" });
 
 export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
@@ -1660,16 +1388,13 @@ export interface Status {
   message?: string;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -1684,16 +1409,13 @@ export interface Operation {
   error?: Status;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      done: Schema.optional(Schema.Boolean),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      error: Schema.optional(Status),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  done: Schema.optional(Schema.Boolean),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  error: Schema.optional(Status),
+}).annotate({ identifier: "Operation" });
 
 export interface FetchReadTokenResponse {
   /** Expiration timestamp. Can be empty if unknown or non-expiring. */
@@ -1702,36 +1424,28 @@ export interface FetchReadTokenResponse {
   token?: string;
 }
 
-export const FetchReadTokenResponse: Schema.Schema<FetchReadTokenResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expirationTime: Schema.optional(Schema.String),
-      token: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FetchReadTokenResponse",
-  }) as any as Schema.Schema<FetchReadTokenResponse>;
+export const FetchReadTokenResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    expirationTime: Schema.optional(Schema.String),
+    token: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "FetchReadTokenResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface BatchCreateRepositoriesRequest {
   /** Required. The request messages specifying the repositories to create. */
   requests?: Array<CreateRepositoryRequest>;
 }
 
-export const BatchCreateRepositoriesRequest: Schema.Schema<BatchCreateRepositoriesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requests: Schema.optional(Schema.Array(CreateRepositoryRequest)),
-    }),
-  ).annotate({
-    identifier: "BatchCreateRepositoriesRequest",
-  }) as any as Schema.Schema<BatchCreateRepositoriesRequest>;
+export const BatchCreateRepositoriesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requests: Schema.optional(Schema.Array(CreateRepositoryRequest)),
+  }).annotate({ identifier: "BatchCreateRepositoriesRequest" });
 
 export interface RunWorkflowCustomOperationMetadata {
   /** Output only. The time the operation finished running. */
@@ -1750,34 +1464,26 @@ export interface RunWorkflowCustomOperationMetadata {
   apiVersion?: string;
 }
 
-export const RunWorkflowCustomOperationMetadata: Schema.Schema<RunWorkflowCustomOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endTime: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      pipelineRunId: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      apiVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RunWorkflowCustomOperationMetadata",
-  }) as any as Schema.Schema<RunWorkflowCustomOperationMetadata>;
+export const RunWorkflowCustomOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endTime: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    requestedCancellation: Schema.optional(Schema.Boolean),
+    pipelineRunId: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RunWorkflowCustomOperationMetadata" });
 
 export interface BatchCreateRepositoriesResponse {
   /** Repository resources created. */
   repositories?: Array<Repository>;
 }
 
-export const BatchCreateRepositoriesResponse: Schema.Schema<BatchCreateRepositoriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      repositories: Schema.optional(Schema.Array(Repository)),
-    }),
-  ).annotate({
-    identifier: "BatchCreateRepositoriesResponse",
-  }) as any as Schema.Schema<BatchCreateRepositoriesResponse>;
+export const BatchCreateRepositoriesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    repositories: Schema.optional(Schema.Array(Repository)),
+  }).annotate({ identifier: "BatchCreateRepositoriesResponse" });
 
 export interface Location {
   /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
@@ -1792,16 +1498,13 @@ export interface Location {
   locationId?: string;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      locationId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  locationId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Location" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -1810,15 +1513,10 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(Location)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 // ==========================================================================
 // Operations

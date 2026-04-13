@@ -24,24 +24,18 @@ const svc = T.Service({
 
 export interface AvailabilityCriteria {}
 
-export const AvailabilityCriteria: Schema.Schema<AvailabilityCriteria> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "AvailabilityCriteria",
-  }) as any as Schema.Schema<AvailabilityCriteria>;
+export const AvailabilityCriteria = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "AvailabilityCriteria" });
 
 export interface LatencyCriteria {
   /** Good service is defined to be the count of requests made to this service that return in no more than threshold. */
   threshold?: string;
 }
 
-export const LatencyCriteria: Schema.Schema<LatencyCriteria> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      threshold: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LatencyCriteria",
-  }) as any as Schema.Schema<LatencyCriteria>;
+export const LatencyCriteria = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  threshold: Schema.optional(Schema.String),
+}).annotate({ identifier: "LatencyCriteria" });
 
 export interface BasicSli {
   /** Good service is defined to be the count of requests made to this service that return successfully. */
@@ -56,16 +50,13 @@ export interface BasicSli {
   version?: Array<string>;
 }
 
-export const BasicSli: Schema.Schema<BasicSli> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      availability: Schema.optional(AvailabilityCriteria),
-      location: Schema.optional(Schema.Array(Schema.String)),
-      method: Schema.optional(Schema.Array(Schema.String)),
-      latency: Schema.optional(LatencyCriteria),
-      version: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "BasicSli" }) as any as Schema.Schema<BasicSli>;
+export const BasicSli = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  availability: Schema.optional(AvailabilityCriteria),
+  location: Schema.optional(Schema.Array(Schema.String)),
+  method: Schema.optional(Schema.Array(Schema.String)),
+  latency: Schema.optional(LatencyCriteria),
+  version: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "BasicSli" });
 
 export interface GoogleMonitoringV3Range {
   /** Range minimum. */
@@ -74,15 +65,11 @@ export interface GoogleMonitoringV3Range {
   max?: number;
 }
 
-export const GoogleMonitoringV3Range: Schema.Schema<GoogleMonitoringV3Range> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      min: Schema.optional(Schema.Number),
-      max: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleMonitoringV3Range",
-  }) as any as Schema.Schema<GoogleMonitoringV3Range>;
+export const GoogleMonitoringV3Range =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    min: Schema.optional(Schema.Number),
+    max: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleMonitoringV3Range" });
 
 export interface MetricRange {
   /** Range of values considered "good." For a one-sided range, set one bound to an infinite value. */
@@ -91,15 +78,10 @@ export interface MetricRange {
   timeSeries?: string;
 }
 
-export const MetricRange: Schema.Schema<MetricRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      range: Schema.optional(GoogleMonitoringV3Range),
-      timeSeries: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MetricRange",
-  }) as any as Schema.Schema<MetricRange>;
+export const MetricRange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  range: Schema.optional(GoogleMonitoringV3Range),
+  timeSeries: Schema.optional(Schema.String),
+}).annotate({ identifier: "MetricRange" });
 
 export interface TimeSeriesRatio {
   /** A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries quantifying total demanded service. Must have ValueType = DOUBLE or ValueType = INT64 and must have MetricKind = DELTA or MetricKind = CUMULATIVE. */
@@ -110,16 +92,11 @@ export interface TimeSeriesRatio {
   badServiceFilter?: string;
 }
 
-export const TimeSeriesRatio: Schema.Schema<TimeSeriesRatio> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      totalServiceFilter: Schema.optional(Schema.String),
-      goodServiceFilter: Schema.optional(Schema.String),
-      badServiceFilter: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TimeSeriesRatio",
-  }) as any as Schema.Schema<TimeSeriesRatio>;
+export const TimeSeriesRatio = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  totalServiceFilter: Schema.optional(Schema.String),
+  goodServiceFilter: Schema.optional(Schema.String),
+  badServiceFilter: Schema.optional(Schema.String),
+}).annotate({ identifier: "TimeSeriesRatio" });
 
 export interface DistributionCut {
   /** A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries aggregating values. Must have ValueType = DISTRIBUTION and MetricKind = DELTA or MetricKind = CUMULATIVE. */
@@ -128,15 +105,10 @@ export interface DistributionCut {
   range?: GoogleMonitoringV3Range;
 }
 
-export const DistributionCut: Schema.Schema<DistributionCut> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      distributionFilter: Schema.optional(Schema.String),
-      range: Schema.optional(GoogleMonitoringV3Range),
-    }),
-  ).annotate({
-    identifier: "DistributionCut",
-  }) as any as Schema.Schema<DistributionCut>;
+export const DistributionCut = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  distributionFilter: Schema.optional(Schema.String),
+  range: Schema.optional(GoogleMonitoringV3Range),
+}).annotate({ identifier: "DistributionCut" });
 
 export interface RequestBasedSli {
   /** good_total_ratio is used when the ratio of good_service to total_service is computed from two TimeSeries. */
@@ -145,15 +117,10 @@ export interface RequestBasedSli {
   distributionCut?: DistributionCut;
 }
 
-export const RequestBasedSli: Schema.Schema<RequestBasedSli> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      goodTotalRatio: Schema.optional(TimeSeriesRatio),
-      distributionCut: Schema.optional(DistributionCut),
-    }),
-  ).annotate({
-    identifier: "RequestBasedSli",
-  }) as any as Schema.Schema<RequestBasedSli>;
+export const RequestBasedSli = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  goodTotalRatio: Schema.optional(TimeSeriesRatio),
+  distributionCut: Schema.optional(DistributionCut),
+}).annotate({ identifier: "RequestBasedSli" });
 
 export interface PerformanceThreshold {
   /** RequestBasedSli to evaluate to judge window quality. */
@@ -164,16 +131,11 @@ export interface PerformanceThreshold {
   basicSliPerformance?: BasicSli;
 }
 
-export const PerformanceThreshold: Schema.Schema<PerformanceThreshold> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      performance: Schema.optional(RequestBasedSli),
-      threshold: Schema.optional(Schema.Number),
-      basicSliPerformance: Schema.optional(BasicSli),
-    }),
-  ).annotate({
-    identifier: "PerformanceThreshold",
-  }) as any as Schema.Schema<PerformanceThreshold>;
+export const PerformanceThreshold = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  performance: Schema.optional(RequestBasedSli),
+  threshold: Schema.optional(Schema.Number),
+  basicSliPerformance: Schema.optional(BasicSli),
+}).annotate({ identifier: "PerformanceThreshold" });
 
 export interface WindowsBasedSli {
   /** A monitoring filter (https://cloud.google.com/monitoring/api/v3/filters) specifying a TimeSeries with ValueType = BOOL. The window is good if any true values appear in the window. */
@@ -188,18 +150,13 @@ export interface WindowsBasedSli {
   windowPeriod?: string;
 }
 
-export const WindowsBasedSli: Schema.Schema<WindowsBasedSli> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      goodBadMetricFilter: Schema.optional(Schema.String),
-      metricMeanInRange: Schema.optional(MetricRange),
-      metricSumInRange: Schema.optional(MetricRange),
-      goodTotalRatioThreshold: Schema.optional(PerformanceThreshold),
-      windowPeriod: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WindowsBasedSli",
-  }) as any as Schema.Schema<WindowsBasedSli>;
+export const WindowsBasedSli = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  goodBadMetricFilter: Schema.optional(Schema.String),
+  metricMeanInRange: Schema.optional(MetricRange),
+  metricSumInRange: Schema.optional(MetricRange),
+  goodTotalRatioThreshold: Schema.optional(PerformanceThreshold),
+  windowPeriod: Schema.optional(Schema.String),
+}).annotate({ identifier: "WindowsBasedSli" });
 
 export interface ServiceLevelIndicator {
   /** Basic SLI on a well-known service type. */
@@ -210,16 +167,11 @@ export interface ServiceLevelIndicator {
   requestBased?: RequestBasedSli;
 }
 
-export const ServiceLevelIndicator: Schema.Schema<ServiceLevelIndicator> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      basicSli: Schema.optional(BasicSli),
-      windowsBased: Schema.optional(WindowsBasedSli),
-      requestBased: Schema.optional(RequestBasedSli),
-    }),
-  ).annotate({
-    identifier: "ServiceLevelIndicator",
-  }) as any as Schema.Schema<ServiceLevelIndicator>;
+export const ServiceLevelIndicator = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  basicSli: Schema.optional(BasicSli),
+  windowsBased: Schema.optional(WindowsBasedSli),
+  requestBased: Schema.optional(RequestBasedSli),
+}).annotate({ identifier: "ServiceLevelIndicator" });
 
 export interface ServiceLevelObjective {
   /** The fraction of service that must be good in order for this objective to be met. 0 < goal <= 0.9999. */
@@ -247,20 +199,15 @@ export interface ServiceLevelObjective {
     | (string & {});
 }
 
-export const ServiceLevelObjective: Schema.Schema<ServiceLevelObjective> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      goal: Schema.optional(Schema.Number),
-      userLabels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      rollingPeriod: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      serviceLevelIndicator: Schema.optional(ServiceLevelIndicator),
-      calendarPeriod: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ServiceLevelObjective",
-  }) as any as Schema.Schema<ServiceLevelObjective>;
+export const ServiceLevelObjective = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  goal: Schema.optional(Schema.Number),
+  userLabels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  rollingPeriod: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  serviceLevelIndicator: Schema.optional(ServiceLevelIndicator),
+  calendarPeriod: Schema.optional(Schema.String),
+}).annotate({ identifier: "ServiceLevelObjective" });
 
 export interface ListServiceLevelObjectivesResponse {
   /** The ServiceLevelObjectives matching the specified filter. */
@@ -269,45 +216,31 @@ export interface ListServiceLevelObjectivesResponse {
   nextPageToken?: string;
 }
 
-export const ListServiceLevelObjectivesResponse: Schema.Schema<ListServiceLevelObjectivesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serviceLevelObjectives: Schema.optional(
-        Schema.Array(ServiceLevelObjective),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListServiceLevelObjectivesResponse",
-  }) as any as Schema.Schema<ListServiceLevelObjectivesResponse>;
+export const ListServiceLevelObjectivesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    serviceLevelObjectives: Schema.optional(
+      Schema.Array(ServiceLevelObjective),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListServiceLevelObjectivesResponse" });
 
 export interface SpanContext {
   /** The resource name of the span. The format is: projects/[PROJECT_ID_OR_NUMBER]/traces/[TRACE_ID]/spans/[SPAN_ID] [TRACE_ID] is a unique identifier for a trace within a project; it is a 32-character hexadecimal encoding of a 16-byte array.[SPAN_ID] is a unique identifier for a span within a trace; it is a 16-character hexadecimal encoding of an 8-byte array. */
   spanName?: string;
 }
 
-export const SpanContext: Schema.Schema<SpanContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      spanName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SpanContext",
-  }) as any as Schema.Schema<SpanContext>;
+export const SpanContext = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  spanName: Schema.optional(Schema.String),
+}).annotate({ identifier: "SpanContext" });
 
 export interface SourceContext {
   /** The path-qualified name of the .proto file that contained the associated protobuf element. For example: "google/protobuf/source_context.proto". */
   fileName?: string;
 }
 
-export const SourceContext: Schema.Schema<SourceContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fileName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SourceContext",
-  }) as any as Schema.Schema<SourceContext>;
+export const SourceContext = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fileName: Schema.optional(Schema.String),
+}).annotate({ identifier: "SourceContext" });
 
 export interface MetricDescriptorMetadata {
   /** Deprecated. Must use the MetricDescriptor.launch_stage instead. */
@@ -335,19 +268,15 @@ export interface MetricDescriptorMetadata {
   samplePeriod?: string;
 }
 
-export const MetricDescriptorMetadata: Schema.Schema<MetricDescriptorMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      launchStage: Schema.optional(Schema.String),
-      timeSeriesResourceHierarchyLevel: Schema.optional(
-        Schema.Array(Schema.String),
-      ),
-      ingestDelay: Schema.optional(Schema.String),
-      samplePeriod: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MetricDescriptorMetadata",
-  }) as any as Schema.Schema<MetricDescriptorMetadata>;
+export const MetricDescriptorMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    launchStage: Schema.optional(Schema.String),
+    timeSeriesResourceHierarchyLevel: Schema.optional(
+      Schema.Array(Schema.String),
+    ),
+    ingestDelay: Schema.optional(Schema.String),
+    samplePeriod: Schema.optional(Schema.String),
+  }).annotate({ identifier: "MetricDescriptorMetadata" });
 
 export interface LabelDescriptor {
   /** A human-readable description for the label. */
@@ -358,16 +287,11 @@ export interface LabelDescriptor {
   valueType?: "STRING" | "BOOL" | "INT64" | (string & {});
 }
 
-export const LabelDescriptor: Schema.Schema<LabelDescriptor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      key: Schema.optional(Schema.String),
-      valueType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LabelDescriptor",
-  }) as any as Schema.Schema<LabelDescriptor>;
+export const LabelDescriptor = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  key: Schema.optional(Schema.String),
+  valueType: Schema.optional(Schema.String),
+}).annotate({ identifier: "LabelDescriptor" });
 
 export interface MetricDescriptor {
   /** Optional. Metadata which can be used to guide usage of the metric. */
@@ -416,24 +340,19 @@ export interface MetricDescriptor {
     | (string & {});
 }
 
-export const MetricDescriptor: Schema.Schema<MetricDescriptor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadata: Schema.optional(MetricDescriptorMetadata),
-      unit: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      metricKind: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      monitoredResourceTypes: Schema.optional(Schema.Array(Schema.String)),
-      labels: Schema.optional(Schema.Array(LabelDescriptor)),
-      valueType: Schema.optional(Schema.String),
-      launchStage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MetricDescriptor",
-  }) as any as Schema.Schema<MetricDescriptor>;
+export const MetricDescriptor = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metadata: Schema.optional(MetricDescriptorMetadata),
+  unit: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  metricKind: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  monitoredResourceTypes: Schema.optional(Schema.Array(Schema.String)),
+  labels: Schema.optional(Schema.Array(LabelDescriptor)),
+  valueType: Schema.optional(Schema.String),
+  launchStage: Schema.optional(Schema.String),
+}).annotate({ identifier: "MetricDescriptor" });
 
 export interface ListMetricDescriptorsResponse {
   /** If there are more results than have been returned, then this field is set to a non-empty value. To see the additional results, use that value as page_token in the next call to this method. */
@@ -442,31 +361,20 @@ export interface ListMetricDescriptorsResponse {
   metricDescriptors?: Array<MetricDescriptor>;
 }
 
-export const ListMetricDescriptorsResponse: Schema.Schema<ListMetricDescriptorsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      metricDescriptors: Schema.optional(Schema.Array(MetricDescriptor)),
-    }),
-  ).annotate({
-    identifier: "ListMetricDescriptorsResponse",
-  }) as any as Schema.Schema<ListMetricDescriptorsResponse>;
+export const ListMetricDescriptorsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    metricDescriptors: Schema.optional(Schema.Array(MetricDescriptor)),
+  }).annotate({ identifier: "ListMetricDescriptorsResponse" });
 
 export interface LogMetadata {
   /** The labels extracted from the log. */
   extractedLabels?: Record<string, string>;
 }
 
-export const LogMetadata: Schema.Schema<LogMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      extractedLabels: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-    }),
-  ).annotate({
-    identifier: "LogMetadata",
-  }) as any as Schema.Schema<LogMetadata>;
+export const LogMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  extractedLabels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "LogMetadata" });
 
 export interface JsonPathMatcher {
   /** JSONPath within the response output pointing to the expected ContentMatcher::content to match against. */
@@ -479,27 +387,19 @@ export interface JsonPathMatcher {
     | (string & {});
 }
 
-export const JsonPathMatcher: Schema.Schema<JsonPathMatcher> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      jsonPath: Schema.optional(Schema.String),
-      jsonMatcher: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "JsonPathMatcher",
-  }) as any as Schema.Schema<JsonPathMatcher>;
+export const JsonPathMatcher = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  jsonPath: Schema.optional(Schema.String),
+  jsonMatcher: Schema.optional(Schema.String),
+}).annotate({ identifier: "JsonPathMatcher" });
 
 export interface Explicit {
   /** The values must be monotonically increasing. */
   bounds?: Array<number>;
 }
 
-export const Explicit: Schema.Schema<Explicit> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bounds: Schema.optional(Schema.Array(Schema.Number)),
-    }),
-  ).annotate({ identifier: "Explicit" }) as any as Schema.Schema<Explicit>;
+export const Explicit = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bounds: Schema.optional(Schema.Array(Schema.Number)),
+}).annotate({ identifier: "Explicit" });
 
 export interface Linear {
   /** Must be greater than 0. */
@@ -510,14 +410,11 @@ export interface Linear {
   offset?: number;
 }
 
-export const Linear: Schema.Schema<Linear> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      numFiniteBuckets: Schema.optional(Schema.Number),
-      width: Schema.optional(Schema.Number),
-      offset: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Linear" }) as any as Schema.Schema<Linear>;
+export const Linear = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  numFiniteBuckets: Schema.optional(Schema.Number),
+  width: Schema.optional(Schema.Number),
+  offset: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Linear" });
 
 export interface Exponential {
   /** Must be greater than 0. */
@@ -528,16 +425,11 @@ export interface Exponential {
   growthFactor?: number;
 }
 
-export const Exponential: Schema.Schema<Exponential> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scale: Schema.optional(Schema.Number),
-      numFiniteBuckets: Schema.optional(Schema.Number),
-      growthFactor: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "Exponential",
-  }) as any as Schema.Schema<Exponential>;
+export const Exponential = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  scale: Schema.optional(Schema.Number),
+  numFiniteBuckets: Schema.optional(Schema.Number),
+  growthFactor: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Exponential" });
 
 export interface BucketOptions {
   /** The explicit buckets. */
@@ -548,16 +440,11 @@ export interface BucketOptions {
   exponentialBuckets?: Exponential;
 }
 
-export const BucketOptions: Schema.Schema<BucketOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      explicitBuckets: Schema.optional(Explicit),
-      linearBuckets: Schema.optional(Linear),
-      exponentialBuckets: Schema.optional(Exponential),
-    }),
-  ).annotate({
-    identifier: "BucketOptions",
-  }) as any as Schema.Schema<BucketOptions>;
+export const BucketOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  explicitBuckets: Schema.optional(Explicit),
+  linearBuckets: Schema.optional(Linear),
+  exponentialBuckets: Schema.optional(Exponential),
+}).annotate({ identifier: "BucketOptions" });
 
 export interface Range {
   /** The minimum of the population values. */
@@ -566,13 +453,10 @@ export interface Range {
   max?: number;
 }
 
-export const Range: Schema.Schema<Range> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      min: Schema.optional(Schema.Number),
-      max: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Range" }) as any as Schema.Schema<Range>;
+export const Range = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  min: Schema.optional(Schema.Number),
+  max: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Range" });
 
 export interface Exemplar {
   /** The observation (sampling) time of the above value. */
@@ -583,16 +467,13 @@ export interface Exemplar {
   value?: number;
 }
 
-export const Exemplar: Schema.Schema<Exemplar> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      timestamp: Schema.optional(Schema.String),
-      attachments: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      value: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Exemplar" }) as any as Schema.Schema<Exemplar>;
+export const Exemplar = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  timestamp: Schema.optional(Schema.String),
+  attachments: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  value: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Exemplar" });
 
 export interface Distribution {
   /** Required in the Cloud Monitoring API v3. Defines the histogram bucket boundaries. */
@@ -611,20 +492,15 @@ export interface Distribution {
   bucketCounts?: Array<string>;
 }
 
-export const Distribution: Schema.Schema<Distribution> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bucketOptions: Schema.optional(BucketOptions),
-      mean: Schema.optional(Schema.Number),
-      range: Schema.optional(Range),
-      exemplars: Schema.optional(Schema.Array(Exemplar)),
-      sumOfSquaredDeviation: Schema.optional(Schema.Number),
-      count: Schema.optional(Schema.String),
-      bucketCounts: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "Distribution",
-  }) as any as Schema.Schema<Distribution>;
+export const Distribution = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bucketOptions: Schema.optional(BucketOptions),
+  mean: Schema.optional(Schema.Number),
+  range: Schema.optional(Range),
+  exemplars: Schema.optional(Schema.Array(Exemplar)),
+  sumOfSquaredDeviation: Schema.optional(Schema.Number),
+  count: Schema.optional(Schema.String),
+  bucketCounts: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Distribution" });
 
 export interface TypedValue {
   /** A 64-bit double-precision floating-point number. Its magnitude is approximately ±10±300 and it has 16 significant digits of precision. */
@@ -639,16 +515,13 @@ export interface TypedValue {
   int64Value?: string;
 }
 
-export const TypedValue: Schema.Schema<TypedValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      doubleValue: Schema.optional(Schema.Number),
-      boolValue: Schema.optional(Schema.Boolean),
-      stringValue: Schema.optional(Schema.String),
-      distributionValue: Schema.optional(Distribution),
-      int64Value: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "TypedValue" }) as any as Schema.Schema<TypedValue>;
+export const TypedValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  doubleValue: Schema.optional(Schema.Number),
+  boolValue: Schema.optional(Schema.Boolean),
+  stringValue: Schema.optional(Schema.String),
+  distributionValue: Schema.optional(Distribution),
+  int64Value: Schema.optional(Schema.String),
+}).annotate({ identifier: "TypedValue" });
 
 export interface RowCountTest {
   /** Required. The comparison to apply between the number of rows returned by the query and the threshold. */
@@ -665,15 +538,10 @@ export interface RowCountTest {
   threshold?: string;
 }
 
-export const RowCountTest: Schema.Schema<RowCountTest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      comparison: Schema.optional(Schema.String),
-      threshold: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RowCountTest",
-  }) as any as Schema.Schema<RowCountTest>;
+export const RowCountTest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  comparison: Schema.optional(Schema.String),
+  threshold: Schema.optional(Schema.String),
+}).annotate({ identifier: "RowCountTest" });
 
 export interface MonitoredResourceDescriptor {
   /** Required. The monitored resource type. For example, the type "cloudsql_database" represents databases in Google Cloud SQL. For a list of types, see Monitored resource types (https://cloud.google.com/monitoring/api/resources) and Logging resource types (https://cloud.google.com/logging/docs/api/v2/resource-list). */
@@ -699,19 +567,15 @@ export interface MonitoredResourceDescriptor {
     | (string & {});
 }
 
-export const MonitoredResourceDescriptor: Schema.Schema<MonitoredResourceDescriptor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Array(LabelDescriptor)),
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      launchStage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MonitoredResourceDescriptor",
-  }) as any as Schema.Schema<MonitoredResourceDescriptor>;
+export const MonitoredResourceDescriptor =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Array(LabelDescriptor)),
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    launchStage: Schema.optional(Schema.String),
+  }).annotate({ identifier: "MonitoredResourceDescriptor" });
 
 export interface ListMonitoredResourceDescriptorsResponse {
   /** The monitored resource descriptors that are available to this project and that match filter, if present. */
@@ -720,17 +584,13 @@ export interface ListMonitoredResourceDescriptorsResponse {
   nextPageToken?: string;
 }
 
-export const ListMonitoredResourceDescriptorsResponse: Schema.Schema<ListMonitoredResourceDescriptorsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceDescriptors: Schema.optional(
-        Schema.Array(MonitoredResourceDescriptor),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListMonitoredResourceDescriptorsResponse",
-  }) as any as Schema.Schema<ListMonitoredResourceDescriptorsResponse>;
+export const ListMonitoredResourceDescriptorsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceDescriptors: Schema.optional(
+      Schema.Array(MonitoredResourceDescriptor),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListMonitoredResourceDescriptorsResponse" });
 
 export interface UptimeCheckIp {
   /** A broad region category in which the IP address is located. */
@@ -750,16 +610,11 @@ export interface UptimeCheckIp {
   ipAddress?: string;
 }
 
-export const UptimeCheckIp: Schema.Schema<UptimeCheckIp> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      region: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-      ipAddress: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UptimeCheckIp",
-  }) as any as Schema.Schema<UptimeCheckIp>;
+export const UptimeCheckIp = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  region: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  ipAddress: Schema.optional(Schema.String),
+}).annotate({ identifier: "UptimeCheckIp" });
 
 export interface MutationRecord {
   /** When the change occurred. */
@@ -768,15 +623,10 @@ export interface MutationRecord {
   mutatedBy?: string;
 }
 
-export const MutationRecord: Schema.Schema<MutationRecord> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mutateTime: Schema.optional(Schema.String),
-      mutatedBy: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MutationRecord",
-  }) as any as Schema.Schema<MutationRecord>;
+export const MutationRecord = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  mutateTime: Schema.optional(Schema.String),
+  mutatedBy: Schema.optional(Schema.String),
+}).annotate({ identifier: "MutationRecord" });
 
 export interface NotificationChannel {
   /** Whether notifications are forwarded to the described channel. This makes it possible to disable delivery of notifications to a particular channel without removing the channel from all alerting policies that reference the channel. This is a more convenient approach when the change is temporary and you want to receive notifications from the same set of alerting policies on the channel at some point in the future. */
@@ -805,23 +655,18 @@ export interface NotificationChannel {
   creationRecord?: MutationRecord;
 }
 
-export const NotificationChannel: Schema.Schema<NotificationChannel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      userLabels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      verificationStatus: Schema.optional(Schema.String),
-      mutationRecords: Schema.optional(Schema.Array(MutationRecord)),
-      type: Schema.optional(Schema.String),
-      creationRecord: Schema.optional(MutationRecord),
-    }),
-  ).annotate({
-    identifier: "NotificationChannel",
-  }) as any as Schema.Schema<NotificationChannel>;
+export const NotificationChannel = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabled: Schema.optional(Schema.Boolean),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  userLabels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  verificationStatus: Schema.optional(Schema.String),
+  mutationRecords: Schema.optional(Schema.Array(MutationRecord)),
+  type: Schema.optional(Schema.String),
+  creationRecord: Schema.optional(MutationRecord),
+}).annotate({ identifier: "NotificationChannel" });
 
 export interface ListNotificationChannelsResponse {
   /** The total number of notification channels in all pages. This number is only an estimate, and may change in subsequent pages. https://aip.dev/158 */
@@ -832,16 +677,12 @@ export interface ListNotificationChannelsResponse {
   nextPageToken?: string;
 }
 
-export const ListNotificationChannelsResponse: Schema.Schema<ListNotificationChannelsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      totalSize: Schema.optional(Schema.Number),
-      notificationChannels: Schema.optional(Schema.Array(NotificationChannel)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListNotificationChannelsResponse",
-  }) as any as Schema.Schema<ListNotificationChannelsResponse>;
+export const ListNotificationChannelsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    totalSize: Schema.optional(Schema.Number),
+    notificationChannels: Schema.optional(Schema.Array(NotificationChannel)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListNotificationChannelsResponse" });
 
 export interface TimeInterval {
   /** Required. The end of the time interval. */
@@ -850,15 +691,10 @@ export interface TimeInterval {
   startTime?: string;
 }
 
-export const TimeInterval: Schema.Schema<TimeInterval> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endTime: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TimeInterval",
-  }) as any as Schema.Schema<TimeInterval>;
+export const TimeInterval = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  endTime: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "TimeInterval" });
 
 export interface Aggregation {
   /** An Aligner describes how to bring the data points in a single time series into temporal alignment. Except for ALIGN_NONE, all alignments cause all the data points in an alignment_period to be mathematically grouped together, resulting in a single data point for each alignment_period with end timestamp at the end of the period.Not all alignment operations may be applied to all time series. The valid choices depend on the metric_kind and value_type of the original time series. Alignment can change the metric_kind or the value_type of the time series.Time series data must be aligned in order to perform cross-time series reduction. If cross_series_reducer is specified, then per_series_aligner must be specified and not equal to ALIGN_NONE and alignment_period must be specified; otherwise, an error is returned. */
@@ -906,17 +742,12 @@ export interface Aggregation {
   groupByFields?: Array<string>;
 }
 
-export const Aggregation: Schema.Schema<Aggregation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      perSeriesAligner: Schema.optional(Schema.String),
-      crossSeriesReducer: Schema.optional(Schema.String),
-      alignmentPeriod: Schema.optional(Schema.String),
-      groupByFields: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "Aggregation",
-  }) as any as Schema.Schema<Aggregation>;
+export const Aggregation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  perSeriesAligner: Schema.optional(Schema.String),
+  crossSeriesReducer: Schema.optional(Schema.String),
+  alignmentPeriod: Schema.optional(Schema.String),
+  groupByFields: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Aggregation" });
 
 export interface Trigger {
   /** The absolute number of time series that must fail the predicate for the condition to be triggered. */
@@ -925,27 +756,19 @@ export interface Trigger {
   percent?: number;
 }
 
-export const Trigger: Schema.Schema<Trigger> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      count: Schema.optional(Schema.Number),
-      percent: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Trigger" }) as any as Schema.Schema<Trigger>;
+export const Trigger = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  count: Schema.optional(Schema.Number),
+  percent: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Trigger" });
 
 export interface ForecastOptions {
   /** Required. The length of time into the future to forecast whether a time series will violate the threshold. If the predicted value is found to violate the threshold, and the violation is observed in all forecasts made for the configured duration, then the time series is considered to be failing. The forecast horizon can range from 1 hour to 60 hours. */
   forecastHorizon?: string;
 }
 
-export const ForecastOptions: Schema.Schema<ForecastOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      forecastHorizon: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ForecastOptions",
-  }) as any as Schema.Schema<ForecastOptions>;
+export const ForecastOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  forecastHorizon: Schema.optional(Schema.String),
+}).annotate({ identifier: "ForecastOptions" });
 
 export interface MetricThreshold {
   /** Specifies the alignment of data points in individual time series as well as how to combine the retrieved time series together (such as when aggregating multiple streams on each resource to a single stream for each resource or when aggregating streams across all members of a group of resources). Multiple aggregations are applied in the order specified.This field is similar to the one in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list). It is advisable to use the ListTimeSeries method when debugging this field. */
@@ -983,23 +806,18 @@ export interface MetricThreshold {
   forecastOptions?: ForecastOptions;
 }
 
-export const MetricThreshold: Schema.Schema<MetricThreshold> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      aggregations: Schema.optional(Schema.Array(Aggregation)),
-      denominatorFilter: Schema.optional(Schema.String),
-      duration: Schema.optional(Schema.String),
-      filter: Schema.optional(Schema.String),
-      trigger: Schema.optional(Trigger),
-      thresholdValue: Schema.optional(Schema.Number),
-      evaluationMissingData: Schema.optional(Schema.String),
-      denominatorAggregations: Schema.optional(Schema.Array(Aggregation)),
-      comparison: Schema.optional(Schema.String),
-      forecastOptions: Schema.optional(ForecastOptions),
-    }),
-  ).annotate({
-    identifier: "MetricThreshold",
-  }) as any as Schema.Schema<MetricThreshold>;
+export const MetricThreshold = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  aggregations: Schema.optional(Schema.Array(Aggregation)),
+  denominatorFilter: Schema.optional(Schema.String),
+  duration: Schema.optional(Schema.String),
+  filter: Schema.optional(Schema.String),
+  trigger: Schema.optional(Trigger),
+  thresholdValue: Schema.optional(Schema.Number),
+  evaluationMissingData: Schema.optional(Schema.String),
+  denominatorAggregations: Schema.optional(Schema.Array(Aggregation)),
+  comparison: Schema.optional(Schema.String),
+  forecastOptions: Schema.optional(ForecastOptions),
+}).annotate({ identifier: "MetricThreshold" });
 
 export interface MetricAbsence {
   /** Required. A filter (https://cloud.google.com/monitoring/api/v3/filters) that identifies which time series should be compared with the threshold.The filter is similar to the one that is specified in the ListTimeSeries request (https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.timeSeries/list) (that call is useful to verify the time series that will be retrieved / processed). The filter must specify the metric type and the resource type. Optionally, it can specify resource labels and metric labels. This field must not exceed 2048 Unicode characters in length. */
@@ -1012,17 +830,12 @@ export interface MetricAbsence {
   duration?: string;
 }
 
-export const MetricAbsence: Schema.Schema<MetricAbsence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filter: Schema.optional(Schema.String),
-      trigger: Schema.optional(Trigger),
-      aggregations: Schema.optional(Schema.Array(Aggregation)),
-      duration: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MetricAbsence",
-  }) as any as Schema.Schema<MetricAbsence>;
+export const MetricAbsence = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  filter: Schema.optional(Schema.String),
+  trigger: Schema.optional(Trigger),
+  aggregations: Schema.optional(Schema.Array(Aggregation)),
+  duration: Schema.optional(Schema.String),
+}).annotate({ identifier: "MetricAbsence" });
 
 export interface MonitoringQueryLanguageCondition {
   /** Optional. The amount of time that a time series must violate the threshold to be considered failing. Currently, only values that are a multiple of a minute--e.g., 0, 60, 120, or 300 seconds--are supported. If an invalid value is given, an error will be returned. When choosing a duration, it is useful to keep in mind the frequency of the underlying time series data (which may also be affected by any alignments specified in the aggregations field); a good duration is long enough so that a single outlier does not generate spurious alerts, but short enough that unhealthy states are detected and alerted on quickly. The default value is zero. */
@@ -1040,17 +853,13 @@ export interface MonitoringQueryLanguageCondition {
   trigger?: Trigger;
 }
 
-export const MonitoringQueryLanguageCondition: Schema.Schema<MonitoringQueryLanguageCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      duration: Schema.optional(Schema.String),
-      evaluationMissingData: Schema.optional(Schema.String),
-      query: Schema.optional(Schema.String),
-      trigger: Schema.optional(Trigger),
-    }),
-  ).annotate({
-    identifier: "MonitoringQueryLanguageCondition",
-  }) as any as Schema.Schema<MonitoringQueryLanguageCondition>;
+export const MonitoringQueryLanguageCondition =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    duration: Schema.optional(Schema.String),
+    evaluationMissingData: Schema.optional(Schema.String),
+    query: Schema.optional(Schema.String),
+    trigger: Schema.optional(Trigger),
+  }).annotate({ identifier: "MonitoringQueryLanguageCondition" });
 
 export interface TimeOfDay {
   /** Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds. */
@@ -1063,15 +872,12 @@ export interface TimeOfDay {
   nanos?: number;
 }
 
-export const TimeOfDay: Schema.Schema<TimeOfDay> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      seconds: Schema.optional(Schema.Number),
-      hours: Schema.optional(Schema.Number),
-      minutes: Schema.optional(Schema.Number),
-      nanos: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "TimeOfDay" }) as any as Schema.Schema<TimeOfDay>;
+export const TimeOfDay = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  seconds: Schema.optional(Schema.Number),
+  hours: Schema.optional(Schema.Number),
+  minutes: Schema.optional(Schema.Number),
+  nanos: Schema.optional(Schema.Number),
+}).annotate({ identifier: "TimeOfDay" });
 
 export interface Daily {
   /** Required. The number of days between runs. Must be greater than or equal to 1 day and less than or equal to 31 days. */
@@ -1080,39 +886,28 @@ export interface Daily {
   executionTime?: TimeOfDay;
 }
 
-export const Daily: Schema.Schema<Daily> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      periodicity: Schema.optional(Schema.Number),
-      executionTime: Schema.optional(TimeOfDay),
-    }),
-  ).annotate({ identifier: "Daily" }) as any as Schema.Schema<Daily>;
+export const Daily = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  periodicity: Schema.optional(Schema.Number),
+  executionTime: Schema.optional(TimeOfDay),
+}).annotate({ identifier: "Daily" });
 
 export interface BooleanTest {
   /** Required. The name of the column containing the boolean value. If the value in a row is NULL, that row is ignored. */
   column?: string;
 }
 
-export const BooleanTest: Schema.Schema<BooleanTest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      column: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BooleanTest",
-  }) as any as Schema.Schema<BooleanTest>;
+export const BooleanTest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  column: Schema.optional(Schema.String),
+}).annotate({ identifier: "BooleanTest" });
 
 export interface Minutes {
   /** Required. Number of minutes between runs. The interval must be greater than or equal to 5 minutes and less than or equal to 1440 minutes. */
   periodicity?: number;
 }
 
-export const Minutes: Schema.Schema<Minutes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      periodicity: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Minutes" }) as any as Schema.Schema<Minutes>;
+export const Minutes = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  periodicity: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Minutes" });
 
 export interface Hourly {
   /** Required. The number of hours between runs. Must be greater than or equal to 1 hour and less than or equal to 48 hours. */
@@ -1121,13 +916,10 @@ export interface Hourly {
   minuteOffset?: number;
 }
 
-export const Hourly: Schema.Schema<Hourly> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      periodicity: Schema.optional(Schema.Number),
-      minuteOffset: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Hourly" }) as any as Schema.Schema<Hourly>;
+export const Hourly = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  periodicity: Schema.optional(Schema.Number),
+  minuteOffset: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Hourly" });
 
 export interface SqlCondition {
   /** Test the row count against a threshold. */
@@ -1144,19 +936,14 @@ export interface SqlCondition {
   hourly?: Hourly;
 }
 
-export const SqlCondition: Schema.Schema<SqlCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rowCountTest: Schema.optional(RowCountTest),
-      query: Schema.optional(Schema.String),
-      daily: Schema.optional(Daily),
-      booleanTest: Schema.optional(BooleanTest),
-      minutes: Schema.optional(Minutes),
-      hourly: Schema.optional(Hourly),
-    }),
-  ).annotate({
-    identifier: "SqlCondition",
-  }) as any as Schema.Schema<SqlCondition>;
+export const SqlCondition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  rowCountTest: Schema.optional(RowCountTest),
+  query: Schema.optional(Schema.String),
+  daily: Schema.optional(Daily),
+  booleanTest: Schema.optional(BooleanTest),
+  minutes: Schema.optional(Minutes),
+  hourly: Schema.optional(Hourly),
+}).annotate({ identifier: "SqlCondition" });
 
 export interface LogMatch {
   /** Optional. A map from a label key to an extractor expression, which is used to extract the value for this label key. Each entry in this map is a specification for how data should be extracted from log entries that match filter. Each combination of extracted values is treated as a separate rule for the purposes of triggering notifications. Label keys and corresponding values can be used in notifications generated by this condition.Please see the documentation on logs-based metric valueExtractors (https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects.metrics#LogMetric.FIELDS.value_extractor) for syntax and examples. */
@@ -1165,15 +952,10 @@ export interface LogMatch {
   filter?: string;
 }
 
-export const LogMatch: Schema.Schema<LogMatch> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labelExtractors: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      filter: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "LogMatch" }) as any as Schema.Schema<LogMatch>;
+export const LogMatch = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  labelExtractors: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  filter: Schema.optional(Schema.String),
+}).annotate({ identifier: "LogMatch" });
 
 export interface PrometheusQueryLanguageCondition {
   /** Optional. Labels to add to or overwrite in the PromQL query result. Label names must be valid (https://prometheus.io/docs/concepts/data_model/#metric-names-and-labels). Label values can be templatized by using variables (https://cloud.google.com/monitoring/alerts/doc-variables#doc-vars). The only available variable names are the names of the labels in the PromQL result, including "__name__" and "value". "labels" may be empty. */
@@ -1192,20 +974,16 @@ export interface PrometheusQueryLanguageCondition {
   evaluationInterval?: string;
 }
 
-export const PrometheusQueryLanguageCondition: Schema.Schema<PrometheusQueryLanguageCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      disableMetricValidation: Schema.optional(Schema.Boolean),
-      duration: Schema.optional(Schema.String),
-      ruleGroup: Schema.optional(Schema.String),
-      alertRule: Schema.optional(Schema.String),
-      query: Schema.optional(Schema.String),
-      evaluationInterval: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PrometheusQueryLanguageCondition",
-  }) as any as Schema.Schema<PrometheusQueryLanguageCondition>;
+export const PrometheusQueryLanguageCondition =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    disableMetricValidation: Schema.optional(Schema.Boolean),
+    duration: Schema.optional(Schema.String),
+    ruleGroup: Schema.optional(Schema.String),
+    alertRule: Schema.optional(Schema.String),
+    query: Schema.optional(Schema.String),
+    evaluationInterval: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PrometheusQueryLanguageCondition" });
 
 export interface Condition {
   /** Required if the condition exists. The unique resource name for this condition. Its format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID]/conditions/[CONDITION_ID] [CONDITION_ID] is assigned by Cloud Monitoring when the condition is created as part of a new or updated alerting policy.When calling the alertPolicies.create method, do not include the name field in the conditions of the requested alerting policy. Cloud Monitoring creates the condition identifiers and includes them in the new policy.When calling the alertPolicies.update method to update a policy, including a condition name causes the existing condition to be updated. Conditions without names are added to the updated policy. Existing conditions are deleted if they are not updated.Best practice is to preserve [CONDITION_ID] if you make only small changes, such as those to condition thresholds, durations, or trigger values. Otherwise, treat the change as a new condition and let the existing condition be deleted. */
@@ -1226,23 +1004,20 @@ export interface Condition {
   conditionPrometheusQueryLanguage?: PrometheusQueryLanguageCondition;
 }
 
-export const Condition: Schema.Schema<Condition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      conditionThreshold: Schema.optional(MetricThreshold),
-      conditionAbsent: Schema.optional(MetricAbsence),
-      conditionMonitoringQueryLanguage: Schema.optional(
-        MonitoringQueryLanguageCondition,
-      ),
-      conditionSql: Schema.optional(SqlCondition),
-      conditionMatchedLog: Schema.optional(LogMatch),
-      conditionPrometheusQueryLanguage: Schema.optional(
-        PrometheusQueryLanguageCondition,
-      ),
-    }),
-  ).annotate({ identifier: "Condition" }) as any as Schema.Schema<Condition>;
+export const Condition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  conditionThreshold: Schema.optional(MetricThreshold),
+  conditionAbsent: Schema.optional(MetricAbsence),
+  conditionMonitoringQueryLanguage: Schema.optional(
+    MonitoringQueryLanguageCondition,
+  ),
+  conditionSql: Schema.optional(SqlCondition),
+  conditionMatchedLog: Schema.optional(LogMatch),
+  conditionPrometheusQueryLanguage: Schema.optional(
+    PrometheusQueryLanguageCondition,
+  ),
+}).annotate({ identifier: "Condition" });
 
 export interface ResourceGroup {
   /** The group of resources being monitored. Should be only the [GROUP_ID], and not the full-path projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID]. */
@@ -1255,15 +1030,10 @@ export interface ResourceGroup {
     | (string & {});
 }
 
-export const ResourceGroup: Schema.Schema<ResourceGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      groupId: Schema.optional(Schema.String),
-      resourceType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ResourceGroup",
-  }) as any as Schema.Schema<ResourceGroup>;
+export const ResourceGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  groupId: Schema.optional(Schema.String),
+  resourceType: Schema.optional(Schema.String),
+}).annotate({ identifier: "ResourceGroup" });
 
 export interface ServiceAgentAuthentication {
   /** Type of authentication. */
@@ -1273,14 +1043,10 @@ export interface ServiceAgentAuthentication {
     | (string & {});
 }
 
-export const ServiceAgentAuthentication: Schema.Schema<ServiceAgentAuthentication> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ServiceAgentAuthentication",
-  }) as any as Schema.Schema<ServiceAgentAuthentication>;
+export const ServiceAgentAuthentication =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ServiceAgentAuthentication" });
 
 export interface ResponseStatusCode {
   /** A status code to accept. */
@@ -1297,27 +1063,19 @@ export interface ResponseStatusCode {
     | (string & {});
 }
 
-export const ResponseStatusCode: Schema.Schema<ResponseStatusCode> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      statusValue: Schema.optional(Schema.Number),
-      statusClass: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ResponseStatusCode",
-  }) as any as Schema.Schema<ResponseStatusCode>;
+export const ResponseStatusCode = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  statusValue: Schema.optional(Schema.Number),
+  statusClass: Schema.optional(Schema.String),
+}).annotate({ identifier: "ResponseStatusCode" });
 
 export interface PingConfig {
   /** Number of ICMP pings. A maximum of 3 ICMP pings is currently supported. */
   pingsCount?: number;
 }
 
-export const PingConfig: Schema.Schema<PingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pingsCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "PingConfig" }) as any as Schema.Schema<PingConfig>;
+export const PingConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pingsCount: Schema.optional(Schema.Number),
+}).annotate({ identifier: "PingConfig" });
 
 export interface BasicAuthentication {
   /** The username to use when authenticating with the HTTP server. */
@@ -1326,15 +1084,10 @@ export interface BasicAuthentication {
   password?: string;
 }
 
-export const BasicAuthentication: Schema.Schema<BasicAuthentication> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      username: Schema.optional(Schema.String),
-      password: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BasicAuthentication",
-  }) as any as Schema.Schema<BasicAuthentication>;
+export const BasicAuthentication = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  username: Schema.optional(Schema.String),
+  password: Schema.optional(Schema.String),
+}).annotate({ identifier: "BasicAuthentication" });
 
 export interface HttpCheck {
   /** If specified, Uptime will generate and attach an OIDC JWT token for the Monitoring service agent service account as an Authorization header in the HTTP request when probing. */
@@ -1371,27 +1124,24 @@ export interface HttpCheck {
   requestMethod?: "METHOD_UNSPECIFIED" | "GET" | "POST" | (string & {});
 }
 
-export const HttpCheck: Schema.Schema<HttpCheck> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serviceAgentAuthentication: Schema.optional(ServiceAgentAuthentication),
-      acceptedResponseStatusCodes: Schema.optional(
-        Schema.Array(ResponseStatusCode),
-      ),
-      port: Schema.optional(Schema.Number),
-      customContentType: Schema.optional(Schema.String),
-      validateSsl: Schema.optional(Schema.Boolean),
-      maskHeaders: Schema.optional(Schema.Boolean),
-      pingConfig: Schema.optional(PingConfig),
-      headers: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      contentType: Schema.optional(Schema.String),
-      authInfo: Schema.optional(BasicAuthentication),
-      body: Schema.optional(Schema.String),
-      useSsl: Schema.optional(Schema.Boolean),
-      path: Schema.optional(Schema.String),
-      requestMethod: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "HttpCheck" }) as any as Schema.Schema<HttpCheck>;
+export const HttpCheck = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  serviceAgentAuthentication: Schema.optional(ServiceAgentAuthentication),
+  acceptedResponseStatusCodes: Schema.optional(
+    Schema.Array(ResponseStatusCode),
+  ),
+  port: Schema.optional(Schema.Number),
+  customContentType: Schema.optional(Schema.String),
+  validateSsl: Schema.optional(Schema.Boolean),
+  maskHeaders: Schema.optional(Schema.Boolean),
+  pingConfig: Schema.optional(PingConfig),
+  headers: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  contentType: Schema.optional(Schema.String),
+  authInfo: Schema.optional(BasicAuthentication),
+  body: Schema.optional(Schema.String),
+  useSsl: Schema.optional(Schema.Boolean),
+  path: Schema.optional(Schema.String),
+  requestMethod: Schema.optional(Schema.String),
+}).annotate({ identifier: "HttpCheck" });
 
 export interface MonitoredResource {
   /** Required. The monitored resource type. This field must match the type field of a MonitoredResourceDescriptor object. For example, the type of a Compute Engine VM instance is gce_instance. For a list of types, see Monitoring resource types (https://cloud.google.com/monitoring/api/resources) and Logging resource types (https://cloud.google.com/logging/docs/api/v2/resource-list). */
@@ -1400,15 +1150,10 @@ export interface MonitoredResource {
   labels?: Record<string, string>;
 }
 
-export const MonitoredResource: Schema.Schema<MonitoredResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "MonitoredResource",
-  }) as any as Schema.Schema<MonitoredResource>;
+export const MonitoredResource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "MonitoredResource" });
 
 export interface CloudFunctionV2Target {
   /** Required. Fully qualified GCFv2 resource name i.e. projects/{project}/locations/{location}/functions/{function} Required. */
@@ -1417,29 +1162,21 @@ export interface CloudFunctionV2Target {
   cloudRunRevision?: MonitoredResource;
 }
 
-export const CloudFunctionV2Target: Schema.Schema<CloudFunctionV2Target> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      cloudRunRevision: Schema.optional(MonitoredResource),
-    }),
-  ).annotate({
-    identifier: "CloudFunctionV2Target",
-  }) as any as Schema.Schema<CloudFunctionV2Target>;
+export const CloudFunctionV2Target = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  cloudRunRevision: Schema.optional(MonitoredResource),
+}).annotate({ identifier: "CloudFunctionV2Target" });
 
 export interface SyntheticMonitorTarget {
   /** Target a Synthetic Monitor GCFv2 instance. */
   cloudFunctionV2?: CloudFunctionV2Target;
 }
 
-export const SyntheticMonitorTarget: Schema.Schema<SyntheticMonitorTarget> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cloudFunctionV2: Schema.optional(CloudFunctionV2Target),
-    }),
-  ).annotate({
-    identifier: "SyntheticMonitorTarget",
-  }) as any as Schema.Schema<SyntheticMonitorTarget>;
+export const SyntheticMonitorTarget = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    cloudFunctionV2: Schema.optional(CloudFunctionV2Target),
+  },
+).annotate({ identifier: "SyntheticMonitorTarget" });
 
 export interface ContentMatcher {
   /** String, regex or JSON content to match. Maximum 1024 bytes. An empty content string indicates no content matching is to be performed. */
@@ -1458,16 +1195,11 @@ export interface ContentMatcher {
   jsonPathMatcher?: JsonPathMatcher;
 }
 
-export const ContentMatcher: Schema.Schema<ContentMatcher> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      content: Schema.optional(Schema.String),
-      matcher: Schema.optional(Schema.String),
-      jsonPathMatcher: Schema.optional(JsonPathMatcher),
-    }),
-  ).annotate({
-    identifier: "ContentMatcher",
-  }) as any as Schema.Schema<ContentMatcher>;
+export const ContentMatcher = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  content: Schema.optional(Schema.String),
+  matcher: Schema.optional(Schema.String),
+  jsonPathMatcher: Schema.optional(JsonPathMatcher),
+}).annotate({ identifier: "ContentMatcher" });
 
 export interface TcpCheck {
   /** The TCP port on the server against which to run the check. Will be combined with host (specified within the monitored_resource) to construct the full URL. Required. */
@@ -1476,13 +1208,10 @@ export interface TcpCheck {
   pingConfig?: PingConfig;
 }
 
-export const TcpCheck: Schema.Schema<TcpCheck> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      port: Schema.optional(Schema.Number),
-      pingConfig: Schema.optional(PingConfig),
-    }),
-  ).annotate({ identifier: "TcpCheck" }) as any as Schema.Schema<TcpCheck>;
+export const TcpCheck = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  port: Schema.optional(Schema.Number),
+  pingConfig: Schema.optional(PingConfig),
+}).annotate({ identifier: "TcpCheck" });
 
 export interface InternalChecker {
   /** A unique resource name for this InternalChecker. The format is: projects/[PROJECT_ID_OR_NUMBER]/internalCheckers/[INTERNAL_CHECKER_ID] [PROJECT_ID_OR_NUMBER] is the Cloud Monitoring Metrics Scope project for the Uptime check config associated with the internal checker. */
@@ -1499,19 +1228,14 @@ export interface InternalChecker {
   network?: string;
 }
 
-export const InternalChecker: Schema.Schema<InternalChecker> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      peerProjectId: Schema.optional(Schema.String),
-      gcpZone: Schema.optional(Schema.String),
-      network: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InternalChecker",
-  }) as any as Schema.Schema<InternalChecker>;
+export const InternalChecker = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  peerProjectId: Schema.optional(Schema.String),
+  gcpZone: Schema.optional(Schema.String),
+  network: Schema.optional(Schema.String),
+}).annotate({ identifier: "InternalChecker" });
 
 export interface UptimeCheckConfig {
   /** Contains information needed to make an HTTP or HTTPS check. */
@@ -1564,30 +1288,25 @@ export interface UptimeCheckConfig {
   internalCheckers?: Array<InternalChecker>;
 }
 
-export const UptimeCheckConfig: Schema.Schema<UptimeCheckConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      httpCheck: Schema.optional(HttpCheck),
-      logCheckFailures: Schema.optional(Schema.Boolean),
-      selectedRegions: Schema.optional(Schema.Array(Schema.String)),
-      timeout: Schema.optional(Schema.String),
-      syntheticMonitor: Schema.optional(SyntheticMonitorTarget),
-      userLabels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      monitoredResource: Schema.optional(MonitoredResource),
-      checkerType: Schema.optional(Schema.String),
-      period: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      resourceGroup: Schema.optional(ResourceGroup),
-      disabled: Schema.optional(Schema.Boolean),
-      contentMatchers: Schema.optional(Schema.Array(ContentMatcher)),
-      isInternal: Schema.optional(Schema.Boolean),
-      tcpCheck: Schema.optional(TcpCheck),
-      internalCheckers: Schema.optional(Schema.Array(InternalChecker)),
-    }),
-  ).annotate({
-    identifier: "UptimeCheckConfig",
-  }) as any as Schema.Schema<UptimeCheckConfig>;
+export const UptimeCheckConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  httpCheck: Schema.optional(HttpCheck),
+  logCheckFailures: Schema.optional(Schema.Boolean),
+  selectedRegions: Schema.optional(Schema.Array(Schema.String)),
+  timeout: Schema.optional(Schema.String),
+  syntheticMonitor: Schema.optional(SyntheticMonitorTarget),
+  userLabels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  monitoredResource: Schema.optional(MonitoredResource),
+  checkerType: Schema.optional(Schema.String),
+  period: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  resourceGroup: Schema.optional(ResourceGroup),
+  disabled: Schema.optional(Schema.Boolean),
+  contentMatchers: Schema.optional(Schema.Array(ContentMatcher)),
+  isInternal: Schema.optional(Schema.Boolean),
+  tcpCheck: Schema.optional(TcpCheck),
+  internalCheckers: Schema.optional(Schema.Array(InternalChecker)),
+}).annotate({ identifier: "UptimeCheckConfig" });
 
 export interface ListUptimeCheckConfigsResponse {
   /** The returned Uptime check configurations. */
@@ -1598,16 +1317,12 @@ export interface ListUptimeCheckConfigsResponse {
   nextPageToken?: string;
 }
 
-export const ListUptimeCheckConfigsResponse: Schema.Schema<ListUptimeCheckConfigsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uptimeCheckConfigs: Schema.optional(Schema.Array(UptimeCheckConfig)),
-      totalSize: Schema.optional(Schema.Number),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListUptimeCheckConfigsResponse",
-  }) as any as Schema.Schema<ListUptimeCheckConfigsResponse>;
+export const ListUptimeCheckConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uptimeCheckConfigs: Schema.optional(Schema.Array(UptimeCheckConfig)),
+    totalSize: Schema.optional(Schema.Number),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListUptimeCheckConfigsResponse" });
 
 export interface PolicySnapshot {
   /** The name of the alert policy resource. In the form of "projects/PROJECT_ID_OR_NUMBER/alertPolicies/ALERT_POLICY_ID". */
@@ -1625,17 +1340,12 @@ export interface PolicySnapshot {
   userLabels?: Record<string, string>;
 }
 
-export const PolicySnapshot: Schema.Schema<PolicySnapshot> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      severity: Schema.optional(Schema.String),
-      userLabels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "PolicySnapshot",
-  }) as any as Schema.Schema<PolicySnapshot>;
+export const PolicySnapshot = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  severity: Schema.optional(Schema.String),
+  userLabels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "PolicySnapshot" });
 
 export interface LabelValue {
   /** An int64 label value. */
@@ -1646,14 +1356,11 @@ export interface LabelValue {
   stringValue?: string;
 }
 
-export const LabelValue: Schema.Schema<LabelValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      int64Value: Schema.optional(Schema.String),
-      boolValue: Schema.optional(Schema.Boolean),
-      stringValue: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "LabelValue" }) as any as Schema.Schema<LabelValue>;
+export const LabelValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  int64Value: Schema.optional(Schema.String),
+  boolValue: Schema.optional(Schema.Boolean),
+  stringValue: Schema.optional(Schema.String),
+}).annotate({ identifier: "LabelValue" });
 
 export interface Metric {
   /** An existing metric type, see google.api.MetricDescriptor. For example, custom.googleapis.com/invoice/paid/amount. */
@@ -1662,13 +1369,10 @@ export interface Metric {
   labels?: Record<string, string>;
 }
 
-export const Metric: Schema.Schema<Metric> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({ identifier: "Metric" }) as any as Schema.Schema<Metric>;
+export const Metric = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "Metric" });
 
 export interface Point {
   /** The value of the data point. */
@@ -1677,13 +1381,10 @@ export interface Point {
   interval?: TimeInterval;
 }
 
-export const Point: Schema.Schema<Point> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(TypedValue),
-      interval: Schema.optional(TimeInterval),
-    }),
-  ).annotate({ identifier: "Point" }) as any as Schema.Schema<Point>;
+export const Point = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(TypedValue),
+  interval: Schema.optional(TimeInterval),
+}).annotate({ identifier: "Point" });
 
 export interface MonitoredResourceMetadata {
   /** Output only. Values for predefined system metadata labels. System labels are a kind of metadata extracted by Google, including "machine_image", "vpc", "subnet_id", "security_group", "name", etc. System label values can be only strings, Boolean values, or a list of strings. For example: { "name": "my-test-instance", "security_group": ["a", "b", "c"], "spot_instance": false } */
@@ -1692,17 +1393,11 @@ export interface MonitoredResourceMetadata {
   userLabels?: Record<string, string>;
 }
 
-export const MonitoredResourceMetadata: Schema.Schema<MonitoredResourceMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      systemLabels: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-      userLabels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "MonitoredResourceMetadata",
-  }) as any as Schema.Schema<MonitoredResourceMetadata>;
+export const MonitoredResourceMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    systemLabels: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    userLabels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({ identifier: "MonitoredResourceMetadata" });
 
 export interface TimeSeries {
   /** The associated metric. A fully-specified metric used to identify the time series. */
@@ -1736,19 +1431,16 @@ export interface TimeSeries {
   description?: string;
 }
 
-export const TimeSeries: Schema.Schema<TimeSeries> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metric: Schema.optional(Metric),
-      metricKind: Schema.optional(Schema.String),
-      valueType: Schema.optional(Schema.String),
-      points: Schema.optional(Schema.Array(Point)),
-      unit: Schema.optional(Schema.String),
-      metadata: Schema.optional(MonitoredResourceMetadata),
-      resource: Schema.optional(MonitoredResource),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "TimeSeries" }) as any as Schema.Schema<TimeSeries>;
+export const TimeSeries = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metric: Schema.optional(Metric),
+  metricKind: Schema.optional(Schema.String),
+  valueType: Schema.optional(Schema.String),
+  points: Schema.optional(Schema.Array(Point)),
+  unit: Schema.optional(Schema.String),
+  metadata: Schema.optional(MonitoredResourceMetadata),
+  resource: Schema.optional(MonitoredResource),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "TimeSeries" });
 
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -1759,16 +1451,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface ListTimeSeriesResponse {
   /** One or more time series that match the filter included in the request. */
@@ -1783,32 +1472,25 @@ export interface ListTimeSeriesResponse {
   nextPageToken?: string;
 }
 
-export const ListTimeSeriesResponse: Schema.Schema<ListTimeSeriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      timeSeries: Schema.optional(Schema.Array(TimeSeries)),
-      executionErrors: Schema.optional(Schema.Array(Status)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      unit: Schema.optional(Schema.String),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListTimeSeriesResponse",
-  }) as any as Schema.Schema<ListTimeSeriesResponse>;
+export const ListTimeSeriesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    timeSeries: Schema.optional(Schema.Array(TimeSeries)),
+    executionErrors: Schema.optional(Schema.Array(Status)),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    unit: Schema.optional(Schema.String),
+    nextPageToken: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ListTimeSeriesResponse" });
 
 export interface VerifyNotificationChannelRequest {
   /** Required. The verification code that was delivered to the channel as a result of invoking the SendNotificationChannelVerificationCode API method or that was retrieved from a verified channel via GetNotificationChannelVerificationCode. For example, one might have "G-123456" or "TKNZGhhd2EyN3I1MnRnMjRv" (in general, one is only guaranteed that the code is valid UTF-8; one should not make any assumptions regarding the structure or format of the code). */
   code?: string;
 }
 
-export const VerifyNotificationChannelRequest: Schema.Schema<VerifyNotificationChannelRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VerifyNotificationChannelRequest",
-  }) as any as Schema.Schema<VerifyNotificationChannelRequest>;
+export const VerifyNotificationChannelRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    code: Schema.optional(Schema.String),
+  }).annotate({ identifier: "VerifyNotificationChannelRequest" });
 
 export interface CollectdValue {
   /** The measurement value. */
@@ -1825,16 +1507,11 @@ export interface CollectdValue {
   dataSourceName?: string;
 }
 
-export const CollectdValue: Schema.Schema<CollectdValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(TypedValue),
-      dataSourceType: Schema.optional(Schema.String),
-      dataSourceName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CollectdValue",
-  }) as any as Schema.Schema<CollectdValue>;
+export const CollectdValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(TypedValue),
+  dataSourceType: Schema.optional(Schema.String),
+  dataSourceName: Schema.optional(Schema.String),
+}).annotate({ identifier: "CollectdValue" });
 
 export interface CollectdPayload {
   /** The measurement type instance. Example: "used". */
@@ -1855,21 +1532,16 @@ export interface CollectdPayload {
   pluginInstance?: string;
 }
 
-export const CollectdPayload: Schema.Schema<CollectdPayload> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      typeInstance: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      values: Schema.optional(Schema.Array(CollectdValue)),
-      endTime: Schema.optional(Schema.String),
-      plugin: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, TypedValue)),
-      type: Schema.optional(Schema.String),
-      pluginInstance: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CollectdPayload",
-  }) as any as Schema.Schema<CollectdPayload>;
+export const CollectdPayload = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  typeInstance: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+  values: Schema.optional(Schema.Array(CollectdValue)),
+  endTime: Schema.optional(Schema.String),
+  plugin: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, TypedValue)),
+  type: Schema.optional(Schema.String),
+  pluginInstance: Schema.optional(Schema.String),
+}).annotate({ identifier: "CollectdPayload" });
 
 export interface PointData {
   /** The values that make up the point. */
@@ -1878,13 +1550,10 @@ export interface PointData {
   timeInterval?: TimeInterval;
 }
 
-export const PointData: Schema.Schema<PointData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      values: Schema.optional(Schema.Array(TypedValue)),
-      timeInterval: Schema.optional(TimeInterval),
-    }),
-  ).annotate({ identifier: "PointData" }) as any as Schema.Schema<PointData>;
+export const PointData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  values: Schema.optional(Schema.Array(TypedValue)),
+  timeInterval: Schema.optional(TimeInterval),
+}).annotate({ identifier: "PointData" });
 
 export interface TimeSeriesData {
   /** The values of the labels in the time series identifier, given in the same order as the label_descriptors field of the TimeSeriesDescriptor associated with this object. Each value must have a value of the type given in the corresponding entry of label_descriptors. */
@@ -1893,15 +1562,10 @@ export interface TimeSeriesData {
   pointData?: Array<PointData>;
 }
 
-export const TimeSeriesData: Schema.Schema<TimeSeriesData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labelValues: Schema.optional(Schema.Array(LabelValue)),
-      pointData: Schema.optional(Schema.Array(PointData)),
-    }),
-  ).annotate({
-    identifier: "TimeSeriesData",
-  }) as any as Schema.Schema<TimeSeriesData>;
+export const TimeSeriesData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  labelValues: Schema.optional(Schema.Array(LabelValue)),
+  pointData: Schema.optional(Schema.Array(PointData)),
+}).annotate({ identifier: "TimeSeriesData" });
 
 export interface ValueDescriptor {
   /** The value key. */
@@ -1927,17 +1591,12 @@ export interface ValueDescriptor {
     | (string & {});
 }
 
-export const ValueDescriptor: Schema.Schema<ValueDescriptor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      key: Schema.optional(Schema.String),
-      valueType: Schema.optional(Schema.String),
-      unit: Schema.optional(Schema.String),
-      metricKind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ValueDescriptor",
-  }) as any as Schema.Schema<ValueDescriptor>;
+export const ValueDescriptor = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  key: Schema.optional(Schema.String),
+  valueType: Schema.optional(Schema.String),
+  unit: Schema.optional(Schema.String),
+  metricKind: Schema.optional(Schema.String),
+}).annotate({ identifier: "ValueDescriptor" });
 
 export interface TimeSeriesDescriptor {
   /** Descriptors for the labels. */
@@ -1946,15 +1605,10 @@ export interface TimeSeriesDescriptor {
   pointDescriptors?: Array<ValueDescriptor>;
 }
 
-export const TimeSeriesDescriptor: Schema.Schema<TimeSeriesDescriptor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labelDescriptors: Schema.optional(Schema.Array(LabelDescriptor)),
-      pointDescriptors: Schema.optional(Schema.Array(ValueDescriptor)),
-    }),
-  ).annotate({
-    identifier: "TimeSeriesDescriptor",
-  }) as any as Schema.Schema<TimeSeriesDescriptor>;
+export const TimeSeriesDescriptor = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  labelDescriptors: Schema.optional(Schema.Array(LabelDescriptor)),
+  pointDescriptors: Schema.optional(Schema.Array(ValueDescriptor)),
+}).annotate({ identifier: "TimeSeriesDescriptor" });
 
 export interface QueryTimeSeriesResponse {
   /** The time series data. */
@@ -1967,17 +1621,13 @@ export interface QueryTimeSeriesResponse {
   nextPageToken?: string;
 }
 
-export const QueryTimeSeriesResponse: Schema.Schema<QueryTimeSeriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      timeSeriesData: Schema.optional(Schema.Array(TimeSeriesData)),
-      partialErrors: Schema.optional(Schema.Array(Status)),
-      timeSeriesDescriptor: Schema.optional(TimeSeriesDescriptor),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "QueryTimeSeriesResponse",
-  }) as any as Schema.Schema<QueryTimeSeriesResponse>;
+export const QueryTimeSeriesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    timeSeriesData: Schema.optional(Schema.Array(TimeSeriesData)),
+    partialErrors: Schema.optional(Schema.Array(Status)),
+    timeSeriesDescriptor: Schema.optional(TimeSeriesDescriptor),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "QueryTimeSeriesResponse" });
 
 export interface CollectdValueError {
   /** The zero-based index in CollectdPayload.values within the parent CreateCollectdTimeSeriesRequest.collectd_payloads. */
@@ -1986,15 +1636,10 @@ export interface CollectdValueError {
   error?: Status;
 }
 
-export const CollectdValueError: Schema.Schema<CollectdValueError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      index: Schema.optional(Schema.Number),
-      error: Schema.optional(Status),
-    }),
-  ).annotate({
-    identifier: "CollectdValueError",
-  }) as any as Schema.Schema<CollectdValueError>;
+export const CollectdValueError = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  index: Schema.optional(Schema.Number),
+  error: Schema.optional(Status),
+}).annotate({ identifier: "CollectdValueError" });
 
 export interface CollectdPayloadError {
   /** Records the error status for the payload. If this field is present, the partial errors for nested values won't be populated. */
@@ -2005,16 +1650,11 @@ export interface CollectdPayloadError {
   index?: number;
 }
 
-export const CollectdPayloadError: Schema.Schema<CollectdPayloadError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      error: Schema.optional(Status),
-      valueErrors: Schema.optional(Schema.Array(CollectdValueError)),
-      index: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "CollectdPayloadError",
-  }) as any as Schema.Schema<CollectdPayloadError>;
+export const CollectdPayloadError = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  error: Schema.optional(Status),
+  valueErrors: Schema.optional(Schema.Array(CollectdValueError)),
+  index: Schema.optional(Schema.Number),
+}).annotate({ identifier: "CollectdPayloadError" });
 
 export interface Option {
   /** The option's name. For protobuf built-in options (options defined in descriptor.proto), this is the short name. For example, "map_entry". For custom options, it should be the fully-qualified name. For example, "google.api.http". */
@@ -2023,13 +1663,10 @@ export interface Option {
   value?: Record<string, unknown>;
 }
 
-export const Option: Schema.Schema<Option> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Option" }) as any as Schema.Schema<Option>;
+export const Option = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Option" });
 
 export interface Field {
   /** The field name. */
@@ -2079,21 +1716,18 @@ export interface Field {
   oneofIndex?: number;
 }
 
-export const Field: Schema.Schema<Field> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      jsonName: Schema.optional(Schema.String),
-      number: Schema.optional(Schema.Number),
-      packed: Schema.optional(Schema.Boolean),
-      defaultValue: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      cardinality: Schema.optional(Schema.String),
-      options: Schema.optional(Schema.Array(Option)),
-      typeUrl: Schema.optional(Schema.String),
-      oneofIndex: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Field" }) as any as Schema.Schema<Field>;
+export const Field = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  jsonName: Schema.optional(Schema.String),
+  number: Schema.optional(Schema.Number),
+  packed: Schema.optional(Schema.Boolean),
+  defaultValue: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  cardinality: Schema.optional(Schema.String),
+  options: Schema.optional(Schema.Array(Option)),
+  typeUrl: Schema.optional(Schema.String),
+  oneofIndex: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Field" });
 
 export interface Type {
   /** The list of fields. */
@@ -2116,18 +1750,15 @@ export interface Type {
     | (string & {});
 }
 
-export const Type: Schema.Schema<Type> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fields: Schema.optional(Schema.Array(Field)),
-      sourceContext: Schema.optional(SourceContext),
-      name: Schema.optional(Schema.String),
-      oneofs: Schema.optional(Schema.Array(Schema.String)),
-      options: Schema.optional(Schema.Array(Option)),
-      edition: Schema.optional(Schema.String),
-      syntax: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Type" }) as any as Schema.Schema<Type>;
+export const Type = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fields: Schema.optional(Schema.Array(Field)),
+  sourceContext: Schema.optional(SourceContext),
+  name: Schema.optional(Schema.String),
+  oneofs: Schema.optional(Schema.Array(Schema.String)),
+  options: Schema.optional(Schema.Array(Option)),
+  edition: Schema.optional(Schema.String),
+  syntax: Schema.optional(Schema.String),
+}).annotate({ identifier: "Type" });
 
 export interface NotificationChannelStrategy {
   /** The full REST resource name for the notification channels that these settings apply to. Each of these correspond to the name field in one of the NotificationChannel objects referenced in the notification_channels field of this AlertPolicy. The format is: projects/[PROJECT_ID_OR_NUMBER]/notificationChannels/[CHANNEL_ID] */
@@ -2136,15 +1767,11 @@ export interface NotificationChannelStrategy {
   renotifyInterval?: string;
 }
 
-export const NotificationChannelStrategy: Schema.Schema<NotificationChannelStrategy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      notificationChannelNames: Schema.optional(Schema.Array(Schema.String)),
-      renotifyInterval: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NotificationChannelStrategy",
-  }) as any as Schema.Schema<NotificationChannelStrategy>;
+export const NotificationChannelStrategy =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    notificationChannelNames: Schema.optional(Schema.Array(Schema.String)),
+    renotifyInterval: Schema.optional(Schema.String),
+  }).annotate({ identifier: "NotificationChannelStrategy" });
 
 export interface GkeNamespace {
   /** Output only. The project this resource lives in. For legacy services migrated from the Custom type, this may be a distinct project from the one parenting the service itself. */
@@ -2157,43 +1784,33 @@ export interface GkeNamespace {
   namespaceName?: string;
 }
 
-export const GkeNamespace: Schema.Schema<GkeNamespace> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      projectId: Schema.optional(Schema.String),
-      clusterName: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-      namespaceName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GkeNamespace",
-  }) as any as Schema.Schema<GkeNamespace>;
+export const GkeNamespace = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  projectId: Schema.optional(Schema.String),
+  clusterName: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  namespaceName: Schema.optional(Schema.String),
+}).annotate({ identifier: "GkeNamespace" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface Custom {}
 
-export const Custom: Schema.Schema<Custom> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Custom",
-  }) as any as Schema.Schema<Custom>;
+export const Custom = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Custom",
+});
 
 export interface AppEngine {
   /** The ID of the App Engine module underlying this service. Corresponds to the module_id resource label in the gae_app monitored resource (https://cloud.google.com/monitoring/api/resources#tag_gae_app). */
   moduleId?: string;
 }
 
-export const AppEngine: Schema.Schema<AppEngine> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      moduleId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "AppEngine" }) as any as Schema.Schema<AppEngine>;
+export const AppEngine = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  moduleId: Schema.optional(Schema.String),
+}).annotate({ identifier: "AppEngine" });
 
 export interface CloudRun {
   /** The location the service is run. Corresponds to the location resource label in the cloud_run_revision monitored resource (https://cloud.google.com/monitoring/api/resources#tag_cloud_run_revision). */
@@ -2202,13 +1819,10 @@ export interface CloudRun {
   serviceName?: string;
 }
 
-export const CloudRun: Schema.Schema<CloudRun> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      location: Schema.optional(Schema.String),
-      serviceName: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "CloudRun" }) as any as Schema.Schema<CloudRun>;
+export const CloudRun = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  location: Schema.optional(Schema.String),
+  serviceName: Schema.optional(Schema.String),
+}).annotate({ identifier: "CloudRun" });
 
 export interface GkeWorkload {
   /** The name of the parent namespace. */
@@ -2225,19 +1839,14 @@ export interface GkeWorkload {
   topLevelControllerType?: string;
 }
 
-export const GkeWorkload: Schema.Schema<GkeWorkload> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      namespaceName: Schema.optional(Schema.String),
-      projectId: Schema.optional(Schema.String),
-      clusterName: Schema.optional(Schema.String),
-      topLevelControllerName: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-      topLevelControllerType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GkeWorkload",
-  }) as any as Schema.Schema<GkeWorkload>;
+export const GkeWorkload = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  namespaceName: Schema.optional(Schema.String),
+  projectId: Schema.optional(Schema.String),
+  clusterName: Schema.optional(Schema.String),
+  topLevelControllerName: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  topLevelControllerType: Schema.optional(Schema.String),
+}).annotate({ identifier: "GkeWorkload" });
 
 export interface BasicService {
   /** Labels that specify the resource that emits the monitoring data which is used for SLO reporting of this Service. Documentation and valid values for given service types here (https://cloud.google.com/stackdriver/docs/solutions/slo-monitoring/api/api-structures#basic-svc-w-basic-sli). */
@@ -2246,31 +1855,19 @@ export interface BasicService {
   serviceType?: string;
 }
 
-export const BasicService: Schema.Schema<BasicService> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serviceLabels: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      serviceType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BasicService",
-  }) as any as Schema.Schema<BasicService>;
+export const BasicService = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  serviceLabels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  serviceType: Schema.optional(Schema.String),
+}).annotate({ identifier: "BasicService" });
 
 export interface CloudEndpoints {
   /** The name of the Cloud Endpoints service underlying this service. Corresponds to the service resource label in the api monitored resource (https://cloud.google.com/monitoring/api/resources#tag_api). */
   service?: string;
 }
 
-export const CloudEndpoints: Schema.Schema<CloudEndpoints> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      service: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CloudEndpoints",
-  }) as any as Schema.Schema<CloudEndpoints>;
+export const CloudEndpoints = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  service: Schema.optional(Schema.String),
+}).annotate({ identifier: "CloudEndpoints" });
 
 export interface GkeService {
   /** Output only. The project this resource lives in. For legacy services migrated from the Custom type, this may be a distinct project from the one parenting the service itself. */
@@ -2285,16 +1882,13 @@ export interface GkeService {
   location?: string;
 }
 
-export const GkeService: Schema.Schema<GkeService> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      projectId: Schema.optional(Schema.String),
-      clusterName: Schema.optional(Schema.String),
-      namespaceName: Schema.optional(Schema.String),
-      serviceName: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "GkeService" }) as any as Schema.Schema<GkeService>;
+export const GkeService = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  projectId: Schema.optional(Schema.String),
+  clusterName: Schema.optional(Schema.String),
+  namespaceName: Schema.optional(Schema.String),
+  serviceName: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+}).annotate({ identifier: "GkeService" });
 
 export interface IstioCanonicalService {
   /** The namespace of the canonical service underlying this service. Corresponds to the destination_canonical_service_namespace metric label in Istio metrics (https://cloud.google.com/monitoring/api/metrics_istio). */
@@ -2305,28 +1899,20 @@ export interface IstioCanonicalService {
   meshUid?: string;
 }
 
-export const IstioCanonicalService: Schema.Schema<IstioCanonicalService> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      canonicalServiceNamespace: Schema.optional(Schema.String),
-      canonicalService: Schema.optional(Schema.String),
-      meshUid: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "IstioCanonicalService",
-  }) as any as Schema.Schema<IstioCanonicalService>;
+export const IstioCanonicalService = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  canonicalServiceNamespace: Schema.optional(Schema.String),
+  canonicalService: Schema.optional(Schema.String),
+  meshUid: Schema.optional(Schema.String),
+}).annotate({ identifier: "IstioCanonicalService" });
 
 export interface Telemetry {
   /** The full name of the resource that defines this service. Formatted as described in https://cloud.google.com/apis/design/resource_names. */
   resourceName?: string;
 }
 
-export const Telemetry: Schema.Schema<Telemetry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceName: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Telemetry" }) as any as Schema.Schema<Telemetry>;
+export const Telemetry = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceName: Schema.optional(Schema.String),
+}).annotate({ identifier: "Telemetry" });
 
 export interface ClusterIstio {
   /** The location of the Kubernetes cluster in which this Istio service is defined. Corresponds to the location resource label in k8s_cluster resources. */
@@ -2339,17 +1925,12 @@ export interface ClusterIstio {
   serviceNamespace?: string;
 }
 
-export const ClusterIstio: Schema.Schema<ClusterIstio> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      location: Schema.optional(Schema.String),
-      clusterName: Schema.optional(Schema.String),
-      serviceName: Schema.optional(Schema.String),
-      serviceNamespace: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ClusterIstio",
-  }) as any as Schema.Schema<ClusterIstio>;
+export const ClusterIstio = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  location: Schema.optional(Schema.String),
+  clusterName: Schema.optional(Schema.String),
+  serviceName: Schema.optional(Schema.String),
+  serviceNamespace: Schema.optional(Schema.String),
+}).annotate({ identifier: "ClusterIstio" });
 
 export interface MeshIstio {
   /** The name of the Istio service underlying this service. Corresponds to the destination_service_name metric label in Istio metrics. */
@@ -2360,14 +1941,11 @@ export interface MeshIstio {
   serviceNamespace?: string;
 }
 
-export const MeshIstio: Schema.Schema<MeshIstio> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serviceName: Schema.optional(Schema.String),
-      meshUid: Schema.optional(Schema.String),
-      serviceNamespace: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "MeshIstio" }) as any as Schema.Schema<MeshIstio>;
+export const MeshIstio = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  serviceName: Schema.optional(Schema.String),
+  meshUid: Schema.optional(Schema.String),
+  serviceNamespace: Schema.optional(Schema.String),
+}).annotate({ identifier: "MeshIstio" });
 
 export interface Service {
   /** Identifier. Resource name for this Service. The format is: projects/[PROJECT_ID_OR_NUMBER]/services/[SERVICE_ID] */
@@ -2402,26 +1980,23 @@ export interface Service {
   userLabels?: Record<string, string>;
 }
 
-export const Service: Schema.Schema<Service> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      custom: Schema.optional(Custom),
-      appEngine: Schema.optional(AppEngine),
-      cloudRun: Schema.optional(CloudRun),
-      gkeWorkload: Schema.optional(GkeWorkload),
-      basicService: Schema.optional(BasicService),
-      cloudEndpoints: Schema.optional(CloudEndpoints),
-      gkeNamespace: Schema.optional(GkeNamespace),
-      gkeService: Schema.optional(GkeService),
-      istioCanonicalService: Schema.optional(IstioCanonicalService),
-      telemetry: Schema.optional(Telemetry),
-      clusterIstio: Schema.optional(ClusterIstio),
-      meshIstio: Schema.optional(MeshIstio),
-      userLabels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({ identifier: "Service" }) as any as Schema.Schema<Service>;
+export const Service = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  custom: Schema.optional(Custom),
+  appEngine: Schema.optional(AppEngine),
+  cloudRun: Schema.optional(CloudRun),
+  gkeWorkload: Schema.optional(GkeWorkload),
+  basicService: Schema.optional(BasicService),
+  cloudEndpoints: Schema.optional(CloudEndpoints),
+  gkeNamespace: Schema.optional(GkeNamespace),
+  gkeService: Schema.optional(GkeService),
+  istioCanonicalService: Schema.optional(IstioCanonicalService),
+  telemetry: Schema.optional(Telemetry),
+  clusterIstio: Schema.optional(ClusterIstio),
+  meshIstio: Schema.optional(MeshIstio),
+  userLabels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "Service" });
 
 export interface OperationMetadata {
   /** Current state of the batch operation. */
@@ -2438,16 +2013,11 @@ export interface OperationMetadata {
   updateTime?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationMetadata" });
 
 export interface Link {
   /** A short display name for the link. The display name must not be empty or exceed 63 characters. Example: "playbook". */
@@ -2456,13 +2026,10 @@ export interface Link {
   url?: string;
 }
 
-export const Link: Schema.Schema<Link> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      url: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Link" }) as any as Schema.Schema<Link>;
+export const Link = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+  url: Schema.optional(Schema.String),
+}).annotate({ identifier: "Link" });
 
 export interface ListServicesResponse {
   /** The Services matching the specified filter. */
@@ -2471,15 +2038,10 @@ export interface ListServicesResponse {
   nextPageToken?: string;
 }
 
-export const ListServicesResponse: Schema.Schema<ListServicesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      services: Schema.optional(Schema.Array(Service)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListServicesResponse",
-  }) as any as Schema.Schema<ListServicesResponse>;
+export const ListServicesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  services: Schema.optional(Schema.Array(Service)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListServicesResponse" });
 
 export interface Group {
   /** The name of the group's parent, if it has one. The format is: projects/[PROJECT_ID_OR_NUMBER]/groups/[GROUP_ID] For groups with no parent, parent_name is the empty string, "". */
@@ -2494,16 +2056,13 @@ export interface Group {
   displayName?: string;
 }
 
-export const Group: Schema.Schema<Group> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parentName: Schema.optional(Schema.String),
-      filter: Schema.optional(Schema.String),
-      isCluster: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Group" }) as any as Schema.Schema<Group>;
+export const Group = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  parentName: Schema.optional(Schema.String),
+  filter: Schema.optional(Schema.String),
+  isCluster: Schema.optional(Schema.Boolean),
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+}).annotate({ identifier: "Group" });
 
 export interface ListGroupsResponse {
   /** The groups that match the specified filters. */
@@ -2512,15 +2071,10 @@ export interface ListGroupsResponse {
   nextPageToken?: string;
 }
 
-export const ListGroupsResponse: Schema.Schema<ListGroupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      group: Schema.optional(Schema.Array(Group)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListGroupsResponse",
-  }) as any as Schema.Schema<ListGroupsResponse>;
+export const ListGroupsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  group: Schema.optional(Schema.Array(Group)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListGroupsResponse" });
 
 export interface Documentation {
   /** Optional. Links to content such as playbooks, repositories, and other resources. This field can contain up to 3 entries. */
@@ -2533,17 +2087,12 @@ export interface Documentation {
   mimeType?: string;
 }
 
-export const Documentation: Schema.Schema<Documentation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      links: Schema.optional(Schema.Array(Link)),
-      subject: Schema.optional(Schema.String),
-      content: Schema.optional(Schema.String),
-      mimeType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Documentation",
-  }) as any as Schema.Schema<Documentation>;
+export const Documentation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  links: Schema.optional(Schema.Array(Link)),
+  subject: Schema.optional(Schema.String),
+  content: Schema.optional(Schema.String),
+  mimeType: Schema.optional(Schema.String),
+}).annotate({ identifier: "Documentation" });
 
 export interface NotificationChannelDescriptor {
   /** The full REST resource name for this descriptor. The format is: projects/[PROJECT_ID_OR_NUMBER]/notificationChannelDescriptors/[TYPE] In the above, [TYPE] is the value of the type field. */
@@ -2576,20 +2125,16 @@ export interface NotificationChannelDescriptor {
   type?: string;
 }
 
-export const NotificationChannelDescriptor: Schema.Schema<NotificationChannelDescriptor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      supportedTiers: Schema.optional(Schema.Array(Schema.String)),
-      launchStage: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Array(LabelDescriptor)),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NotificationChannelDescriptor",
-  }) as any as Schema.Schema<NotificationChannelDescriptor>;
+export const NotificationChannelDescriptor =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    supportedTiers: Schema.optional(Schema.Array(Schema.String)),
+    launchStage: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Array(LabelDescriptor)),
+    type: Schema.optional(Schema.String),
+  }).annotate({ identifier: "NotificationChannelDescriptor" });
 
 export interface Criteria {
   /** The specific AlertPolicy names for the alert that should be snoozed. The format is: projects/[PROJECT_ID_OR_NUMBER]/alertPolicies/[POLICY_ID] There is a limit of 16 policies per snooze. This limit is checked during snooze creation. Exactly 1 alert policy is required if filter is specified at the same time. */
@@ -2598,13 +2143,10 @@ export interface Criteria {
   filter?: string;
 }
 
-export const Criteria: Schema.Schema<Criteria> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policies: Schema.optional(Schema.Array(Schema.String)),
-      filter: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Criteria" }) as any as Schema.Schema<Criteria>;
+export const Criteria = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policies: Schema.optional(Schema.Array(Schema.String)),
+  filter: Schema.optional(Schema.String),
+}).annotate({ identifier: "Criteria" });
 
 export interface Snooze {
   /** Required. The Snooze will be active from interval.start_time through interval.end_time. interval.start_time cannot be in the past. There is a 15 second clock skew to account for the time it takes for a request to reach the API from the UI. */
@@ -2617,15 +2159,12 @@ export interface Snooze {
   criteria?: Criteria;
 }
 
-export const Snooze: Schema.Schema<Snooze> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      interval: Schema.optional(TimeInterval),
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      criteria: Schema.optional(Criteria),
-    }),
-  ).annotate({ identifier: "Snooze" }) as any as Schema.Schema<Snooze>;
+export const Snooze = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  interval: Schema.optional(TimeInterval),
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  criteria: Schema.optional(Criteria),
+}).annotate({ identifier: "Snooze" });
 
 export interface ListSnoozesResponse {
   /** Snoozes matching this list call. */
@@ -2634,43 +2173,28 @@ export interface ListSnoozesResponse {
   nextPageToken?: string;
 }
 
-export const ListSnoozesResponse: Schema.Schema<ListSnoozesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      snoozes: Schema.optional(Schema.Array(Snooze)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListSnoozesResponse",
-  }) as any as Schema.Schema<ListSnoozesResponse>;
+export const ListSnoozesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  snoozes: Schema.optional(Schema.Array(Snooze)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListSnoozesResponse" });
 
 export interface DroppedLabels {
   /** Map from label to its value, for all labels dropped in any aggregation. */
   label?: Record<string, string>;
 }
 
-export const DroppedLabels: Schema.Schema<DroppedLabels> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      label: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "DroppedLabels",
-  }) as any as Schema.Schema<DroppedLabels>;
+export const DroppedLabels = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  label: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "DroppedLabels" });
 
 export interface NotificationRateLimit {
   /** Not more than one notification per period. */
   period?: string;
 }
 
-export const NotificationRateLimit: Schema.Schema<NotificationRateLimit> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      period: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NotificationRateLimit",
-  }) as any as Schema.Schema<NotificationRateLimit>;
+export const NotificationRateLimit = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  period: Schema.optional(Schema.String),
+}).annotate({ identifier: "NotificationRateLimit" });
 
 export interface AlertStrategy {
   /** Required for log-based alerting policies, i.e. policies with a LogMatch condition.This limit is not implemented for alerting policies that do not have a LogMatch condition. */
@@ -2685,19 +2209,14 @@ export interface AlertStrategy {
   notificationChannelStrategy?: Array<NotificationChannelStrategy>;
 }
 
-export const AlertStrategy: Schema.Schema<AlertStrategy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      notificationRateLimit: Schema.optional(NotificationRateLimit),
-      autoClose: Schema.optional(Schema.String),
-      notificationPrompts: Schema.optional(Schema.Array(Schema.String)),
-      notificationChannelStrategy: Schema.optional(
-        Schema.Array(NotificationChannelStrategy),
-      ),
-    }),
-  ).annotate({
-    identifier: "AlertStrategy",
-  }) as any as Schema.Schema<AlertStrategy>;
+export const AlertStrategy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  notificationRateLimit: Schema.optional(NotificationRateLimit),
+  autoClose: Schema.optional(Schema.String),
+  notificationPrompts: Schema.optional(Schema.Array(Schema.String)),
+  notificationChannelStrategy: Schema.optional(
+    Schema.Array(NotificationChannelStrategy),
+  ),
+}).annotate({ identifier: "AlertStrategy" });
 
 export interface Alert {
   /** The time when the alert was closed. */
@@ -2720,20 +2239,17 @@ export interface Alert {
   state?: "STATE_UNSPECIFIED" | "OPEN" | "CLOSED" | (string & {});
 }
 
-export const Alert: Schema.Schema<Alert> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      closeTime: Schema.optional(Schema.String),
-      resource: Schema.optional(MonitoredResource),
-      metadata: Schema.optional(MonitoredResourceMetadata),
-      log: Schema.optional(LogMetadata),
-      policy: Schema.optional(PolicySnapshot),
-      metric: Schema.optional(Metric),
-      openTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Alert" }) as any as Schema.Schema<Alert>;
+export const Alert = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  closeTime: Schema.optional(Schema.String),
+  resource: Schema.optional(MonitoredResource),
+  metadata: Schema.optional(MonitoredResourceMetadata),
+  log: Schema.optional(LogMetadata),
+  policy: Schema.optional(PolicySnapshot),
+  metric: Schema.optional(Metric),
+  openTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+}).annotate({ identifier: "Alert" });
 
 export interface ListAlertsResponse {
   /** The list of alerts. */
@@ -2744,16 +2260,11 @@ export interface ListAlertsResponse {
   nextPageToken?: string;
 }
 
-export const ListAlertsResponse: Schema.Schema<ListAlertsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      alerts: Schema.optional(Schema.Array(Alert)),
-      totalSize: Schema.optional(Schema.Number),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAlertsResponse",
-  }) as any as Schema.Schema<ListAlertsResponse>;
+export const ListAlertsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  alerts: Schema.optional(Schema.Array(Alert)),
+  totalSize: Schema.optional(Schema.Number),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListAlertsResponse" });
 
 export interface AlertPolicy {
   /** A list of conditions for the policy. The conditions are combined by AND or OR according to the combiner field. If the combined conditions evaluate to true, then an incident is created. A policy can have from one to six conditions. If condition_time_series_query_language is present, it must be the only condition. If condition_monitoring_query_language is present, it must be the only condition. */
@@ -2794,26 +2305,21 @@ export interface AlertPolicy {
   enabled?: boolean;
 }
 
-export const AlertPolicy: Schema.Schema<AlertPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conditions: Schema.optional(Schema.Array(Condition)),
-      alertStrategy: Schema.optional(AlertStrategy),
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      documentation: Schema.optional(Documentation),
-      combiner: Schema.optional(Schema.String),
-      notificationChannels: Schema.optional(Schema.Array(Schema.String)),
-      mutationRecord: Schema.optional(MutationRecord),
-      validity: Schema.optional(Status),
-      creationRecord: Schema.optional(MutationRecord),
-      userLabels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      severity: Schema.optional(Schema.String),
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "AlertPolicy",
-  }) as any as Schema.Schema<AlertPolicy>;
+export const AlertPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  conditions: Schema.optional(Schema.Array(Condition)),
+  alertStrategy: Schema.optional(AlertStrategy),
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  documentation: Schema.optional(Documentation),
+  combiner: Schema.optional(Schema.String),
+  notificationChannels: Schema.optional(Schema.Array(Schema.String)),
+  mutationRecord: Schema.optional(MutationRecord),
+  validity: Schema.optional(Status),
+  creationRecord: Schema.optional(MutationRecord),
+  userLabels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  severity: Schema.optional(Schema.String),
+  enabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "AlertPolicy" });
 
 export interface ListAlertPoliciesResponse {
   /** If there might be more results than were returned, then this field is set to a non-empty value. To see the additional results, use that value as page_token in the next call to this method. */
@@ -2824,16 +2330,12 @@ export interface ListAlertPoliciesResponse {
   alertPolicies?: Array<AlertPolicy>;
 }
 
-export const ListAlertPoliciesResponse: Schema.Schema<ListAlertPoliciesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      totalSize: Schema.optional(Schema.Number),
-      alertPolicies: Schema.optional(Schema.Array(AlertPolicy)),
-    }),
-  ).annotate({
-    identifier: "ListAlertPoliciesResponse",
-  }) as any as Schema.Schema<ListAlertPoliciesResponse>;
+export const ListAlertPoliciesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    totalSize: Schema.optional(Schema.Number),
+    alertPolicies: Schema.optional(Schema.Array(AlertPolicy)),
+  }).annotate({ identifier: "ListAlertPoliciesResponse" });
 
 export interface CreateCollectdTimeSeriesRequest {
   /** The collectd payloads representing the time series data. You must not include more than a single point for each time series, so no two payloads can have the same values for all of the fields plugin, plugin_instance, type, and type_instance. */
@@ -2844,16 +2346,12 @@ export interface CreateCollectdTimeSeriesRequest {
   collectdVersion?: string;
 }
 
-export const CreateCollectdTimeSeriesRequest: Schema.Schema<CreateCollectdTimeSeriesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      collectdPayloads: Schema.optional(Schema.Array(CollectdPayload)),
-      resource: Schema.optional(MonitoredResource),
-      collectdVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreateCollectdTimeSeriesRequest",
-  }) as any as Schema.Schema<CreateCollectdTimeSeriesRequest>;
+export const CreateCollectdTimeSeriesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    collectdPayloads: Schema.optional(Schema.Array(CollectdPayload)),
+    resource: Schema.optional(MonitoredResource),
+    collectdVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CreateCollectdTimeSeriesRequest" });
 
 export interface Monitoring_Error {
   /** The status of the requested write operation. */
@@ -2862,15 +2360,10 @@ export interface Monitoring_Error {
   pointCount?: number;
 }
 
-export const Monitoring_Error: Schema.Schema<Monitoring_Error> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      status: Schema.optional(Status),
-      pointCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "Monitoring_Error",
-  }) as any as Schema.Schema<Monitoring_Error>;
+export const Monitoring_Error = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  status: Schema.optional(Status),
+  pointCount: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Monitoring_Error" });
 
 export interface CreateTimeSeriesSummary {
   /** The number of points that failed to be written. Order is not guaranteed. */
@@ -2881,16 +2374,12 @@ export interface CreateTimeSeriesSummary {
   successPointCount?: number;
 }
 
-export const CreateTimeSeriesSummary: Schema.Schema<CreateTimeSeriesSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errors: Schema.optional(Schema.Array(Monitoring_Error)),
-      totalPointCount: Schema.optional(Schema.Number),
-      successPointCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "CreateTimeSeriesSummary",
-  }) as any as Schema.Schema<CreateTimeSeriesSummary>;
+export const CreateTimeSeriesSummary =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    errors: Schema.optional(Schema.Array(Monitoring_Error)),
+    totalPointCount: Schema.optional(Schema.Number),
+    successPointCount: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "CreateTimeSeriesSummary" });
 
 export interface CreateCollectdTimeSeriesResponse {
   /** Records the error status for points that were not written due to an error in the request.Failed requests for which nothing is written will return an error response instead. Requests where data points were rejected by the backend will set summary instead. */
@@ -2899,15 +2388,11 @@ export interface CreateCollectdTimeSeriesResponse {
   summary?: CreateTimeSeriesSummary;
 }
 
-export const CreateCollectdTimeSeriesResponse: Schema.Schema<CreateCollectdTimeSeriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      payloadErrors: Schema.optional(Schema.Array(CollectdPayloadError)),
-      summary: Schema.optional(CreateTimeSeriesSummary),
-    }),
-  ).annotate({
-    identifier: "CreateCollectdTimeSeriesResponse",
-  }) as any as Schema.Schema<CreateCollectdTimeSeriesResponse>;
+export const CreateCollectdTimeSeriesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    payloadErrors: Schema.optional(Schema.Array(CollectdPayloadError)),
+    summary: Schema.optional(CreateTimeSeriesSummary),
+  }).annotate({ identifier: "CreateCollectdTimeSeriesResponse" });
 
 export interface ListGroupMembersResponse {
   /** A set of monitored resources in the group. */
@@ -2918,16 +2403,12 @@ export interface ListGroupMembersResponse {
   nextPageToken?: string;
 }
 
-export const ListGroupMembersResponse: Schema.Schema<ListGroupMembersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      members: Schema.optional(Schema.Array(MonitoredResource)),
-      totalSize: Schema.optional(Schema.Number),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListGroupMembersResponse",
-  }) as any as Schema.Schema<ListGroupMembersResponse>;
+export const ListGroupMembersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    members: Schema.optional(Schema.Array(MonitoredResource)),
+    totalSize: Schema.optional(Schema.Number),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListGroupMembersResponse" });
 
 export interface QueryTimeSeriesRequest {
   /** Required. The query in the Monitoring Query Language (https://cloud.google.com/monitoring/mql/reference) format. The default time zone is in UTC. */
@@ -2938,16 +2419,13 @@ export interface QueryTimeSeriesRequest {
   pageToken?: string;
 }
 
-export const QueryTimeSeriesRequest: Schema.Schema<QueryTimeSeriesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      query: Schema.optional(Schema.String),
-      pageSize: Schema.optional(Schema.Number),
-      pageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "QueryTimeSeriesRequest",
-  }) as any as Schema.Schema<QueryTimeSeriesRequest>;
+export const QueryTimeSeriesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    query: Schema.optional(Schema.String),
+    pageSize: Schema.optional(Schema.Number),
+    pageToken: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "QueryTimeSeriesRequest" });
 
 export interface GetNotificationChannelVerificationCodeResponse {
   /** The expiration time associated with the code that was returned. If an expiration was provided in the request, this is the minimum of the requested expiration in the request and the max permitted expiration. */
@@ -2956,15 +2434,11 @@ export interface GetNotificationChannelVerificationCodeResponse {
   code?: string;
 }
 
-export const GetNotificationChannelVerificationCodeResponse: Schema.Schema<GetNotificationChannelVerificationCodeResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expireTime: Schema.optional(Schema.String),
-      code: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GetNotificationChannelVerificationCodeResponse",
-  }) as any as Schema.Schema<GetNotificationChannelVerificationCodeResponse>;
+export const GetNotificationChannelVerificationCodeResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    expireTime: Schema.optional(Schema.String),
+    code: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GetNotificationChannelVerificationCodeResponse" });
 
 export interface ListUptimeCheckIpsResponse {
   /** The returned list of IP addresses (including region and location) that the checkers run from. */
@@ -2973,29 +2447,21 @@ export interface ListUptimeCheckIpsResponse {
   nextPageToken?: string;
 }
 
-export const ListUptimeCheckIpsResponse: Schema.Schema<ListUptimeCheckIpsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uptimeCheckIps: Schema.optional(Schema.Array(UptimeCheckIp)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListUptimeCheckIpsResponse",
-  }) as any as Schema.Schema<ListUptimeCheckIpsResponse>;
+export const ListUptimeCheckIpsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uptimeCheckIps: Schema.optional(Schema.Array(UptimeCheckIp)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListUptimeCheckIpsResponse" });
 
 export interface GetNotificationChannelVerificationCodeRequest {
   /** The desired expiration time. If specified, the API will guarantee that the returned code will not be valid after the specified timestamp; however, the API cannot guarantee that the returned code will be valid for at least as long as the requested time (the API puts an upper bound on the amount of time for which a code may be valid). If omitted, a default expiration will be used, which may be less than the max permissible expiration (so specifying an expiration may extend the code's lifetime over omitting an expiration, even though the API does impose an upper limit on the maximum expiration that is permitted). */
   expireTime?: string;
 }
 
-export const GetNotificationChannelVerificationCodeRequest: Schema.Schema<GetNotificationChannelVerificationCodeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expireTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GetNotificationChannelVerificationCodeRequest",
-  }) as any as Schema.Schema<GetNotificationChannelVerificationCodeRequest>;
+export const GetNotificationChannelVerificationCodeRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    expireTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GetNotificationChannelVerificationCodeRequest" });
 
 export interface ListNotificationChannelDescriptorsResponse {
   /** If not empty, indicates that there may be more results that match the request. Use the value in the page_token field in a subsequent request to fetch the next set of results. If empty, all results have been returned. */
@@ -3004,38 +2470,30 @@ export interface ListNotificationChannelDescriptorsResponse {
   channelDescriptors?: Array<NotificationChannelDescriptor>;
 }
 
-export const ListNotificationChannelDescriptorsResponse: Schema.Schema<ListNotificationChannelDescriptorsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      channelDescriptors: Schema.optional(
-        Schema.Array(NotificationChannelDescriptor),
-      ),
-    }),
-  ).annotate({
-    identifier: "ListNotificationChannelDescriptorsResponse",
-  }) as any as Schema.Schema<ListNotificationChannelDescriptorsResponse>;
+export const ListNotificationChannelDescriptorsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    channelDescriptors: Schema.optional(
+      Schema.Array(NotificationChannelDescriptor),
+    ),
+  }).annotate({ identifier: "ListNotificationChannelDescriptorsResponse" });
 
 export interface CreateTimeSeriesRequest {
   /** Required. The new data to be added to a list of time series. Adds at most one data point to each of several time series. The new data point must be more recent than any other point in its time series. Each TimeSeries value must fully specify a unique time series by supplying all label values for the metric and the monitored resource.The maximum number of TimeSeries objects per Create request is 200. */
   timeSeries?: Array<TimeSeries>;
 }
 
-export const CreateTimeSeriesRequest: Schema.Schema<CreateTimeSeriesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      timeSeries: Schema.optional(Schema.Array(TimeSeries)),
-    }),
-  ).annotate({
-    identifier: "CreateTimeSeriesRequest",
-  }) as any as Schema.Schema<CreateTimeSeriesRequest>;
+export const CreateTimeSeriesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    timeSeries: Schema.optional(Schema.Array(TimeSeries)),
+  }).annotate({ identifier: "CreateTimeSeriesRequest" });
 
 export interface SendNotificationChannelVerificationCodeRequest {}
 
-export const SendNotificationChannelVerificationCodeRequest: Schema.Schema<SendNotificationChannelVerificationCodeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const SendNotificationChannelVerificationCodeRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "SendNotificationChannelVerificationCodeRequest",
-  }) as any as Schema.Schema<SendNotificationChannelVerificationCodeRequest>;
+  });
 
 // ==========================================================================
 // Operations

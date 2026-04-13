@@ -27,12 +27,9 @@ export interface Bucket {
   name?: string;
 }
 
-export const Bucket: Schema.Schema<Bucket> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Bucket" }) as any as Schema.Schema<Bucket>;
+export const Bucket = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Bucket" });
 
 export interface ListBucketsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -41,36 +38,28 @@ export interface ListBucketsResponse {
   buckets?: Array<Bucket>;
 }
 
-export const ListBucketsResponse: Schema.Schema<ListBucketsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      buckets: Schema.optional(Schema.Array(Bucket)),
-    }),
-  ).annotate({
-    identifier: "ListBucketsResponse",
-  }) as any as Schema.Schema<ListBucketsResponse>;
+export const ListBucketsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  buckets: Schema.optional(Schema.Array(Bucket)),
+}).annotate({ identifier: "ListBucketsResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface AddFirebaseRequest {}
 
-export const AddFirebaseRequest: Schema.Schema<AddFirebaseRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "AddFirebaseRequest",
-  }) as any as Schema.Schema<AddFirebaseRequest>;
+export const AddFirebaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "AddFirebaseRequest" });
 
 export interface RemoveFirebaseRequest {}
 
-export const RemoveFirebaseRequest: Schema.Schema<RemoveFirebaseRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "RemoveFirebaseRequest",
-  }) as any as Schema.Schema<RemoveFirebaseRequest>;
+export const RemoveFirebaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "RemoveFirebaseRequest" });
 
 export interface DefaultBucket {
   /** Identifier. Resource name of the default bucket. */
@@ -83,17 +72,12 @@ export interface DefaultBucket {
   bucket?: Bucket;
 }
 
-export const DefaultBucket: Schema.Schema<DefaultBucket> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-      storageClass: Schema.optional(Schema.String),
-      bucket: Schema.optional(Bucket),
-    }),
-  ).annotate({
-    identifier: "DefaultBucket",
-  }) as any as Schema.Schema<DefaultBucket>;
+export const DefaultBucket = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  storageClass: Schema.optional(Schema.String),
+  bucket: Schema.optional(Bucket),
+}).annotate({ identifier: "DefaultBucket" });
 
 // ==========================================================================
 // Operations

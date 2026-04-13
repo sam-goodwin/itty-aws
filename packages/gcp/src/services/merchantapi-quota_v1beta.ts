@@ -33,17 +33,12 @@ export interface MethodDetails {
   path?: string;
 }
 
-export const MethodDetails: Schema.Schema<MethodDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.String),
-      subapi: Schema.optional(Schema.String),
-      method: Schema.optional(Schema.String),
-      path: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MethodDetails",
-  }) as any as Schema.Schema<MethodDetails>;
+export const MethodDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.String),
+  subapi: Schema.optional(Schema.String),
+  method: Schema.optional(Schema.String),
+  path: Schema.optional(Schema.String),
+}).annotate({ identifier: "MethodDetails" });
 
 export interface QuotaGroup {
   /** Output only. The maximum number of calls allowed per minute for the group. */
@@ -58,16 +53,13 @@ export interface QuotaGroup {
   quotaLimit?: string;
 }
 
-export const QuotaGroup: Schema.Schema<QuotaGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      quotaMinuteLimit: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      quotaUsage: Schema.optional(Schema.String),
-      methodDetails: Schema.optional(Schema.Array(MethodDetails)),
-      quotaLimit: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "QuotaGroup" }) as any as Schema.Schema<QuotaGroup>;
+export const QuotaGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  quotaMinuteLimit: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  quotaUsage: Schema.optional(Schema.String),
+  methodDetails: Schema.optional(Schema.Array(MethodDetails)),
+  quotaLimit: Schema.optional(Schema.String),
+}).annotate({ identifier: "QuotaGroup" });
 
 export interface ListQuotaGroupsResponse {
   /** The methods, current quota usage and limits per each group. The quota is shared between all methods in the group. The groups are sorted in descending order based on quota_usage. */
@@ -76,15 +68,11 @@ export interface ListQuotaGroupsResponse {
   nextPageToken?: string;
 }
 
-export const ListQuotaGroupsResponse: Schema.Schema<ListQuotaGroupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      quotaGroups: Schema.optional(Schema.Array(QuotaGroup)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListQuotaGroupsResponse",
-  }) as any as Schema.Schema<ListQuotaGroupsResponse>;
+export const ListQuotaGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    quotaGroups: Schema.optional(Schema.Array(QuotaGroup)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListQuotaGroupsResponse" });
 
 export interface ProductChange {
   /** The old value of the changed resource or attribute. If empty, it means that the product was created. Will have one of these values : (`approved`, `pending`, `disapproved`, ``) */
@@ -118,17 +106,12 @@ export interface ProductChange {
     | (string & {});
 }
 
-export const ProductChange: Schema.Schema<ProductChange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      oldValue: Schema.optional(Schema.String),
-      regionCode: Schema.optional(Schema.String),
-      newValue: Schema.optional(Schema.String),
-      reportingContext: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProductChange",
-  }) as any as Schema.Schema<ProductChange>;
+export const ProductChange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  oldValue: Schema.optional(Schema.String),
+  regionCode: Schema.optional(Schema.String),
+  newValue: Schema.optional(Schema.String),
+  reportingContext: Schema.optional(Schema.String),
+}).annotate({ identifier: "ProductChange" });
 
 export interface ProductStatusChangeMessage {
   /** The resource that changed, in this case it will always be `Product`. */
@@ -151,22 +134,18 @@ export interface ProductStatusChangeMessage {
   attribute?: "ATTRIBUTE_UNSPECIFIED" | "STATUS" | (string & {});
 }
 
-export const ProductStatusChangeMessage: Schema.Schema<ProductStatusChangeMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceType: Schema.optional(Schema.String),
-      resourceId: Schema.optional(Schema.String),
-      account: Schema.optional(Schema.String),
-      expirationTime: Schema.optional(Schema.String),
-      eventTime: Schema.optional(Schema.String),
-      managingAccount: Schema.optional(Schema.String),
-      changes: Schema.optional(Schema.Array(ProductChange)),
-      resource: Schema.optional(Schema.String),
-      attribute: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProductStatusChangeMessage",
-  }) as any as Schema.Schema<ProductStatusChangeMessage>;
+export const ProductStatusChangeMessage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceType: Schema.optional(Schema.String),
+    resourceId: Schema.optional(Schema.String),
+    account: Schema.optional(Schema.String),
+    expirationTime: Schema.optional(Schema.String),
+    eventTime: Schema.optional(Schema.String),
+    managingAccount: Schema.optional(Schema.String),
+    changes: Schema.optional(Schema.Array(ProductChange)),
+    resource: Schema.optional(Schema.String),
+    attribute: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ProductStatusChangeMessage" });
 
 // ==========================================================================
 // Operations

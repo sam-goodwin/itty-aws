@@ -33,17 +33,12 @@ export interface Measurement3d {
   y?: number;
 }
 
-export const Measurement3d: Schema.Schema<Measurement3d> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      x: Schema.optional(Schema.Number),
-      z: Schema.optional(Schema.Number),
-      captureTime: Schema.optional(Schema.String),
-      y: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "Measurement3d",
-  }) as any as Schema.Schema<Measurement3d>;
+export const Measurement3d = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  x: Schema.optional(Schema.Number),
+  z: Schema.optional(Schema.Number),
+  captureTime: Schema.optional(Schema.String),
+  y: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Measurement3d" });
 
 export interface Imu {
   /** The magnetometer measurements of the magnetic field in microtesla (uT) with increasing timestamps from devices. */
@@ -54,50 +49,38 @@ export interface Imu {
   gyroRps?: Array<Measurement3d>;
 }
 
-export const Imu: Schema.Schema<Imu> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      magUt: Schema.optional(Schema.Array(Measurement3d)),
-      accelMpsps: Schema.optional(Schema.Array(Measurement3d)),
-      gyroRps: Schema.optional(Schema.Array(Measurement3d)),
-    }),
-  ).annotate({ identifier: "Imu" }) as any as Schema.Schema<Imu>;
+export const Imu = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  magUt: Schema.optional(Schema.Array(Measurement3d)),
+  accelMpsps: Schema.optional(Schema.Array(Measurement3d)),
+  gyroRps: Schema.optional(Schema.Array(Measurement3d)),
+}).annotate({ identifier: "Imu" });
 
 export interface UploadRef {
   /** An upload reference should be unique for each user. It follows the form: "https://streetviewpublish.googleapis.com/media/user/{account_id}/photo/{upload_reference}" */
   uploadUrl?: string;
 }
 
-export const UploadRef: Schema.Schema<UploadRef> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uploadUrl: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "UploadRef" }) as any as Schema.Schema<UploadRef>;
+export const UploadRef = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  uploadUrl: Schema.optional(Schema.String),
+}).annotate({ identifier: "UploadRef" });
 
 export interface PhotoId {
   /** A unique identifier for a photo. */
   id?: string;
 }
 
-export const PhotoId: Schema.Schema<PhotoId> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "PhotoId" }) as any as Schema.Schema<PhotoId>;
+export const PhotoId = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+}).annotate({ identifier: "PhotoId" });
 
 export interface Connection {
   /** Required. The destination of the connection from the containing photo to another photo. */
   target?: PhotoId;
 }
 
-export const Connection: Schema.Schema<Connection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      target: Schema.optional(PhotoId),
-    }),
-  ).annotate({ identifier: "Connection" }) as any as Schema.Schema<Connection>;
+export const Connection = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  target: Schema.optional(PhotoId),
+}).annotate({ identifier: "Connection" });
 
 export interface Place {
   /** Place identifier, as described in https://developers.google.com/places/place-id. */
@@ -108,14 +91,11 @@ export interface Place {
   languageCode?: string;
 }
 
-export const Place: Schema.Schema<Place> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      placeId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      languageCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Place" }) as any as Schema.Schema<Place>;
+export const Place = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  placeId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  languageCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "Place" });
 
 export interface LatLng {
   /** The latitude in degrees. It must be in the range [-90.0, +90.0]. */
@@ -124,13 +104,10 @@ export interface LatLng {
   longitude?: number;
 }
 
-export const LatLng: Schema.Schema<LatLng> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      latitude: Schema.optional(Schema.Number),
-      longitude: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "LatLng" }) as any as Schema.Schema<LatLng>;
+export const LatLng = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  latitude: Schema.optional(Schema.Number),
+  longitude: Schema.optional(Schema.Number),
+}).annotate({ identifier: "LatLng" });
 
 export interface Level {
   /** Required. A name assigned to this Level, restricted to 3 characters. Consider how the elevator buttons would be labeled for this level if there was an elevator. */
@@ -139,13 +116,10 @@ export interface Level {
   number?: number;
 }
 
-export const Level: Schema.Schema<Level> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      number: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Level" }) as any as Schema.Schema<Level>;
+export const Level = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  number: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Level" });
 
 export interface Pose {
   /** Latitude and longitude pair of the pose, as explained here: https://cloud.google.com/datastore/docs/reference/rest/Shared.Types/LatLng When creating a Photo, if the latitude and longitude pair are not provided, the geolocation from the exif header is used. A latitude and longitude pair not provided in the photo or exif header causes the photo process to fail. */
@@ -166,19 +140,16 @@ export interface Pose {
   accuracyMeters?: number;
 }
 
-export const Pose: Schema.Schema<Pose> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      latLngPair: Schema.optional(LatLng),
-      pitch: Schema.optional(Schema.Number),
-      roll: Schema.optional(Schema.Number),
-      gpsRecordTimestampUnixEpoch: Schema.optional(Schema.String),
-      altitude: Schema.optional(Schema.Number),
-      level: Schema.optional(Level),
-      heading: Schema.optional(Schema.Number),
-      accuracyMeters: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Pose" }) as any as Schema.Schema<Pose>;
+export const Pose = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  latLngPair: Schema.optional(LatLng),
+  pitch: Schema.optional(Schema.Number),
+  roll: Schema.optional(Schema.Number),
+  gpsRecordTimestampUnixEpoch: Schema.optional(Schema.String),
+  altitude: Schema.optional(Schema.Number),
+  level: Schema.optional(Level),
+  heading: Schema.optional(Schema.Number),
+  accuracyMeters: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Pose" });
 
 export interface Photo {
   /** Input only. Required when creating a photo. Input only. The resource URL where the photo bytes are uploaded to. */
@@ -222,38 +193,31 @@ export interface Photo {
     | (string & {});
 }
 
-export const Photo: Schema.Schema<Photo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uploadReference: Schema.optional(UploadRef),
-      downloadUrl: Schema.optional(Schema.String),
-      connections: Schema.optional(Schema.Array(Connection)),
-      mapsPublishStatus: Schema.optional(Schema.String),
-      photoId: Schema.optional(PhotoId),
-      places: Schema.optional(Schema.Array(Place)),
-      captureTime: Schema.optional(Schema.String),
-      pose: Schema.optional(Pose),
-      viewCount: Schema.optional(Schema.String),
-      shareLink: Schema.optional(Schema.String),
-      thumbnailUrl: Schema.optional(Schema.String),
-      uploadTime: Schema.optional(Schema.String),
-      transferStatus: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Photo" }) as any as Schema.Schema<Photo>;
+export const Photo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  uploadReference: Schema.optional(UploadRef),
+  downloadUrl: Schema.optional(Schema.String),
+  connections: Schema.optional(Schema.Array(Connection)),
+  mapsPublishStatus: Schema.optional(Schema.String),
+  photoId: Schema.optional(PhotoId),
+  places: Schema.optional(Schema.Array(Place)),
+  captureTime: Schema.optional(Schema.String),
+  pose: Schema.optional(Pose),
+  viewCount: Schema.optional(Schema.String),
+  shareLink: Schema.optional(Schema.String),
+  thumbnailUrl: Schema.optional(Schema.String),
+  uploadTime: Schema.optional(Schema.String),
+  transferStatus: Schema.optional(Schema.String),
+}).annotate({ identifier: "Photo" });
 
 export interface NotOutdoorsFailureDetails {
   /** Relative time (from the start of the video stream) when an indoor frame was found. */
   startTime?: string;
 }
 
-export const NotOutdoorsFailureDetails: Schema.Schema<NotOutdoorsFailureDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NotOutdoorsFailureDetails",
-  }) as any as Schema.Schema<NotOutdoorsFailureDetails>;
+export const NotOutdoorsFailureDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "NotOutdoorsFailureDetails" });
 
 export interface GpsDataGapFailureDetails {
   /** The duration of the gap in GPS data that was found. */
@@ -262,15 +226,11 @@ export interface GpsDataGapFailureDetails {
   gapStartTime?: string;
 }
 
-export const GpsDataGapFailureDetails: Schema.Schema<GpsDataGapFailureDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gapDuration: Schema.optional(Schema.String),
-      gapStartTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GpsDataGapFailureDetails",
-  }) as any as Schema.Schema<GpsDataGapFailureDetails>;
+export const GpsDataGapFailureDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gapDuration: Schema.optional(Schema.String),
+    gapStartTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GpsDataGapFailureDetails" });
 
 export interface ImuDataGapFailureDetails {
   /** The duration of the gap in IMU data that was found. */
@@ -279,15 +239,11 @@ export interface ImuDataGapFailureDetails {
   gapStartTime?: string;
 }
 
-export const ImuDataGapFailureDetails: Schema.Schema<ImuDataGapFailureDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gapDuration: Schema.optional(Schema.String),
-      gapStartTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ImuDataGapFailureDetails",
-  }) as any as Schema.Schema<ImuDataGapFailureDetails>;
+export const ImuDataGapFailureDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gapDuration: Schema.optional(Schema.String),
+    gapStartTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ImuDataGapFailureDetails" });
 
 export interface NoOverlapGpsFailureDetails {
   /** Time of last recorded GPS point. */
@@ -300,31 +256,23 @@ export interface NoOverlapGpsFailureDetails {
   videoStartTime?: string;
 }
 
-export const NoOverlapGpsFailureDetails: Schema.Schema<NoOverlapGpsFailureDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gpsEndTime: Schema.optional(Schema.String),
-      gpsStartTime: Schema.optional(Schema.String),
-      videoEndTime: Schema.optional(Schema.String),
-      videoStartTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NoOverlapGpsFailureDetails",
-  }) as any as Schema.Schema<NoOverlapGpsFailureDetails>;
+export const NoOverlapGpsFailureDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gpsEndTime: Schema.optional(Schema.String),
+    gpsStartTime: Schema.optional(Schema.String),
+    videoEndTime: Schema.optional(Schema.String),
+    videoStartTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "NoOverlapGpsFailureDetails" });
 
 export interface InsufficientGpsFailureDetails {
   /** The number of GPS points that were found in the video. */
   gpsPointsFound?: number;
 }
 
-export const InsufficientGpsFailureDetails: Schema.Schema<InsufficientGpsFailureDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gpsPointsFound: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "InsufficientGpsFailureDetails",
-  }) as any as Schema.Schema<InsufficientGpsFailureDetails>;
+export const InsufficientGpsFailureDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gpsPointsFound: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "InsufficientGpsFailureDetails" });
 
 export interface ProcessingFailureDetails {
   /** See NotOutdoorsFailureDetails. */
@@ -339,18 +287,14 @@ export interface ProcessingFailureDetails {
   insufficientGpsDetails?: InsufficientGpsFailureDetails;
 }
 
-export const ProcessingFailureDetails: Schema.Schema<ProcessingFailureDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      notOutdoorsDetails: Schema.optional(NotOutdoorsFailureDetails),
-      gpsDataGapDetails: Schema.optional(GpsDataGapFailureDetails),
-      imuDataGapDetails: Schema.optional(ImuDataGapFailureDetails),
-      noOverlapGpsDetails: Schema.optional(NoOverlapGpsFailureDetails),
-      insufficientGpsDetails: Schema.optional(InsufficientGpsFailureDetails),
-    }),
-  ).annotate({
-    identifier: "ProcessingFailureDetails",
-  }) as any as Schema.Schema<ProcessingFailureDetails>;
+export const ProcessingFailureDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    notOutdoorsDetails: Schema.optional(NotOutdoorsFailureDetails),
+    gpsDataGapDetails: Schema.optional(GpsDataGapFailureDetails),
+    imuDataGapDetails: Schema.optional(ImuDataGapFailureDetails),
+    noOverlapGpsDetails: Schema.optional(NoOverlapGpsFailureDetails),
+    insufficientGpsDetails: Schema.optional(InsufficientGpsFailureDetails),
+  }).annotate({ identifier: "ProcessingFailureDetails" });
 
 export interface LatLngBounds {
   /** The southwest corner of these bounds. */
@@ -359,15 +303,10 @@ export interface LatLngBounds {
   northeast?: LatLng;
 }
 
-export const LatLngBounds: Schema.Schema<LatLngBounds> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      southwest: Schema.optional(LatLng),
-      northeast: Schema.optional(LatLng),
-    }),
-  ).annotate({
-    identifier: "LatLngBounds",
-  }) as any as Schema.Schema<LatLngBounds>;
+export const LatLngBounds = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  southwest: Schema.optional(LatLng),
+  northeast: Schema.optional(LatLng),
+}).annotate({ identifier: "LatLngBounds" });
 
 export interface PhotoSequence {
   /** Optional. Absolute time when the photo sequence starts to be captured. If the photo sequence is a video, this is the start time of the video. If this field is populated in input, it overrides the capture time in the video or XDM file. */
@@ -434,28 +373,23 @@ export interface PhotoSequence {
   filename?: string;
 }
 
-export const PhotoSequence: Schema.Schema<PhotoSequence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      captureTimeOverride: Schema.optional(Schema.String),
-      imu: Schema.optional(Imu),
-      photos: Schema.optional(Schema.Array(Photo)),
-      uploadReference: Schema.optional(UploadRef),
-      gpsSource: Schema.optional(Schema.String),
-      failureReason: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      uploadTime: Schema.optional(Schema.String),
-      distanceMeters: Schema.optional(Schema.Number),
-      processingState: Schema.optional(Schema.String),
-      rawGpsTimeline: Schema.optional(Schema.Array(Pose)),
-      failureDetails: Schema.optional(ProcessingFailureDetails),
-      viewCount: Schema.optional(Schema.String),
-      sequenceBounds: Schema.optional(LatLngBounds),
-      filename: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PhotoSequence",
-  }) as any as Schema.Schema<PhotoSequence>;
+export const PhotoSequence = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  captureTimeOverride: Schema.optional(Schema.String),
+  imu: Schema.optional(Imu),
+  photos: Schema.optional(Schema.Array(Photo)),
+  uploadReference: Schema.optional(UploadRef),
+  gpsSource: Schema.optional(Schema.String),
+  failureReason: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  uploadTime: Schema.optional(Schema.String),
+  distanceMeters: Schema.optional(Schema.Number),
+  processingState: Schema.optional(Schema.String),
+  rawGpsTimeline: Schema.optional(Schema.Array(Pose)),
+  failureDetails: Schema.optional(ProcessingFailureDetails),
+  viewCount: Schema.optional(Schema.String),
+  sequenceBounds: Schema.optional(LatLngBounds),
+  filename: Schema.optional(Schema.String),
+}).annotate({ identifier: "PhotoSequence" });
 
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -466,16 +400,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface UpdatePhotoRequest {
   /** Required. Mask that identifies fields on the photo metadata to update. If not present, the old Photo metadata is entirely replaced with the new Photo metadata in this request. The update fails if invalid fields are specified. Multiple fields can be specified in a comma-delimited list. The following fields are valid: * `pose.heading` * `pose.lat_lng_pair` * `pose.pitch` * `pose.roll` * `pose.level` * `pose.altitude` * `connections` * `places` > Note: When updateMask contains repeated fields, the entire set of repeated values get replaced with the new contents. For example, if updateMask contains `connections` and `UpdatePhotoRequest.photo.connections` is empty, all connections are removed. */
@@ -484,43 +415,30 @@ export interface UpdatePhotoRequest {
   photo?: Photo;
 }
 
-export const UpdatePhotoRequest: Schema.Schema<UpdatePhotoRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateMask: Schema.optional(Schema.String),
-      photo: Schema.optional(Photo),
-    }),
-  ).annotate({
-    identifier: "UpdatePhotoRequest",
-  }) as any as Schema.Schema<UpdatePhotoRequest>;
+export const UpdatePhotoRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  updateMask: Schema.optional(Schema.String),
+  photo: Schema.optional(Photo),
+}).annotate({ identifier: "UpdatePhotoRequest" });
 
 export interface BatchUpdatePhotosRequest {
   /** Required. List of UpdatePhotoRequests. */
   updatePhotoRequests?: Array<UpdatePhotoRequest>;
 }
 
-export const BatchUpdatePhotosRequest: Schema.Schema<BatchUpdatePhotosRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updatePhotoRequests: Schema.optional(Schema.Array(UpdatePhotoRequest)),
-    }),
-  ).annotate({
-    identifier: "BatchUpdatePhotosRequest",
-  }) as any as Schema.Schema<BatchUpdatePhotosRequest>;
+export const BatchUpdatePhotosRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updatePhotoRequests: Schema.optional(Schema.Array(UpdatePhotoRequest)),
+  }).annotate({ identifier: "BatchUpdatePhotosRequest" });
 
 export interface BatchDeletePhotosRequest {
   /** Required. IDs of the Photos. HTTP GET requests require the following syntax for the URL query parameter: `photoIds=&photoIds=&...`. */
   photoIds?: Array<string>;
 }
 
-export const BatchDeletePhotosRequest: Schema.Schema<BatchDeletePhotosRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      photoIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "BatchDeletePhotosRequest",
-  }) as any as Schema.Schema<BatchDeletePhotosRequest>;
+export const BatchDeletePhotosRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    photoIds: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "BatchDeletePhotosRequest" });
 
 export interface ListPhotosResponse {
   /** List of photos. The pageSize field in the request determines the number of items returned. */
@@ -529,15 +447,10 @@ export interface ListPhotosResponse {
   nextPageToken?: string;
 }
 
-export const ListPhotosResponse: Schema.Schema<ListPhotosResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      photos: Schema.optional(Schema.Array(Photo)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListPhotosResponse",
-  }) as any as Schema.Schema<ListPhotosResponse>;
+export const ListPhotosResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  photos: Schema.optional(Schema.Array(Photo)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListPhotosResponse" });
 
 export interface Operation {
   /** The error result of the operation in case of failure or cancellation. */
@@ -552,16 +465,13 @@ export interface Operation {
   metadata?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      error: Schema.optional(Status),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  error: Schema.optional(Status),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  done: Schema.optional(Schema.Boolean),
+  name: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Operation" });
 
 export interface ListPhotoSequencesResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
@@ -570,22 +480,17 @@ export interface ListPhotoSequencesResponse {
   photoSequences?: Array<Operation>;
 }
 
-export const ListPhotoSequencesResponse: Schema.Schema<ListPhotoSequencesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      photoSequences: Schema.optional(Schema.Array(Operation)),
-    }),
-  ).annotate({
-    identifier: "ListPhotoSequencesResponse",
-  }) as any as Schema.Schema<ListPhotoSequencesResponse>;
+export const ListPhotoSequencesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    photoSequences: Schema.optional(Schema.Array(Operation)),
+  }).annotate({ identifier: "ListPhotoSequencesResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface PhotoResponse {
   /** The status for the operation to get or update a single photo in the batch request. */
@@ -594,57 +499,41 @@ export interface PhotoResponse {
   photo?: Photo;
 }
 
-export const PhotoResponse: Schema.Schema<PhotoResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      status: Schema.optional(Status),
-      photo: Schema.optional(Photo),
-    }),
-  ).annotate({
-    identifier: "PhotoResponse",
-  }) as any as Schema.Schema<PhotoResponse>;
+export const PhotoResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  status: Schema.optional(Status),
+  photo: Schema.optional(Photo),
+}).annotate({ identifier: "PhotoResponse" });
 
 export interface BatchUpdatePhotosResponse {
   /** List of results for each individual Photo updated, in the same order as the request. */
   results?: Array<PhotoResponse>;
 }
 
-export const BatchUpdatePhotosResponse: Schema.Schema<BatchUpdatePhotosResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      results: Schema.optional(Schema.Array(PhotoResponse)),
-    }),
-  ).annotate({
-    identifier: "BatchUpdatePhotosResponse",
-  }) as any as Schema.Schema<BatchUpdatePhotosResponse>;
+export const BatchUpdatePhotosResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    results: Schema.optional(Schema.Array(PhotoResponse)),
+  }).annotate({ identifier: "BatchUpdatePhotosResponse" });
 
 export interface BatchGetPhotosResponse {
   /** List of results for each individual Photo requested, in the same order as the requests in BatchGetPhotos. */
   results?: Array<PhotoResponse>;
 }
 
-export const BatchGetPhotosResponse: Schema.Schema<BatchGetPhotosResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      results: Schema.optional(Schema.Array(PhotoResponse)),
-    }),
-  ).annotate({
-    identifier: "BatchGetPhotosResponse",
-  }) as any as Schema.Schema<BatchGetPhotosResponse>;
+export const BatchGetPhotosResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    results: Schema.optional(Schema.Array(PhotoResponse)),
+  },
+).annotate({ identifier: "BatchGetPhotosResponse" });
 
 export interface BatchDeletePhotosResponse {
   /** The status for the operation to delete a single Photo in the batch request. */
   status?: Array<Status>;
 }
 
-export const BatchDeletePhotosResponse: Schema.Schema<BatchDeletePhotosResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      status: Schema.optional(Schema.Array(Status)),
-    }),
-  ).annotate({
-    identifier: "BatchDeletePhotosResponse",
-  }) as any as Schema.Schema<BatchDeletePhotosResponse>;
+export const BatchDeletePhotosResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    status: Schema.optional(Schema.Array(Status)),
+  }).annotate({ identifier: "BatchDeletePhotosResponse" });
 
 // ==========================================================================
 // Operations

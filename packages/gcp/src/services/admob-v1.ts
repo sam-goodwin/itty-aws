@@ -58,16 +58,12 @@ export interface MediationReportSpecSortCondition {
     | (string & {});
 }
 
-export const MediationReportSpecSortCondition: Schema.Schema<MediationReportSpecSortCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metric: Schema.optional(Schema.String),
-      order: Schema.optional(Schema.String),
-      dimension: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MediationReportSpecSortCondition",
-  }) as any as Schema.Schema<MediationReportSpecSortCondition>;
+export const MediationReportSpecSortCondition =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    metric: Schema.optional(Schema.String),
+    order: Schema.optional(Schema.String),
+    dimension: Schema.optional(Schema.String),
+  }).annotate({ identifier: "MediationReportSpecSortCondition" });
 
 export interface Admob_Date {
   /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
@@ -78,14 +74,11 @@ export interface Admob_Date {
   day?: number;
 }
 
-export const Admob_Date: Schema.Schema<Admob_Date> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      month: Schema.optional(Schema.Number),
-      year: Schema.optional(Schema.Number),
-      day: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Admob_Date" }) as any as Schema.Schema<Admob_Date>;
+export const Admob_Date = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  month: Schema.optional(Schema.Number),
+  year: Schema.optional(Schema.Number),
+  day: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Admob_Date" });
 
 export interface DateRange {
   /** Start date of the date range, inclusive. Must be less than or equal to the end date. */
@@ -94,13 +87,10 @@ export interface DateRange {
   endDate?: Admob_Date;
 }
 
-export const DateRange: Schema.Schema<DateRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startDate: Schema.optional(Admob_Date),
-      endDate: Schema.optional(Admob_Date),
-    }),
-  ).annotate({ identifier: "DateRange" }) as any as Schema.Schema<DateRange>;
+export const DateRange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startDate: Schema.optional(Admob_Date),
+  endDate: Schema.optional(Admob_Date),
+}).annotate({ identifier: "DateRange" });
 
 export interface LocalizationSettings {
   /** Currency code of the earning related metrics, which is the 3-letter code defined in ISO 4217. The daily average rate is used for the currency conversion. Defaults to the account currency code if unspecified. */
@@ -109,27 +99,19 @@ export interface LocalizationSettings {
   languageCode?: string;
 }
 
-export const LocalizationSettings: Schema.Schema<LocalizationSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      currencyCode: Schema.optional(Schema.String),
-      languageCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LocalizationSettings",
-  }) as any as Schema.Schema<LocalizationSettings>;
+export const LocalizationSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  currencyCode: Schema.optional(Schema.String),
+  languageCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "LocalizationSettings" });
 
 export interface StringList {
   /** The string values. */
   values?: Array<string>;
 }
 
-export const StringList: Schema.Schema<StringList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      values: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "StringList" }) as any as Schema.Schema<StringList>;
+export const StringList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  values: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "StringList" });
 
 export interface MediationReportSpecDimensionFilter {
   /** Matches a row if its value for the specified dimension is in one of the values specified in this condition. */
@@ -155,15 +137,11 @@ export interface MediationReportSpecDimensionFilter {
     | (string & {});
 }
 
-export const MediationReportSpecDimensionFilter: Schema.Schema<MediationReportSpecDimensionFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      matchesAny: Schema.optional(StringList),
-      dimension: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MediationReportSpecDimensionFilter",
-  }) as any as Schema.Schema<MediationReportSpecDimensionFilter>;
+export const MediationReportSpecDimensionFilter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    matchesAny: Schema.optional(StringList),
+    dimension: Schema.optional(Schema.String),
+  }).annotate({ identifier: "MediationReportSpecDimensionFilter" });
 
 export interface MediationReportSpec {
   /** List of dimensions of the report. The value combination of these dimensions determines the row of the report. If no dimensions are specified, the report returns a single row of requested metrics for the entire account. */
@@ -213,25 +191,20 @@ export interface MediationReportSpec {
   >;
 }
 
-export const MediationReportSpec: Schema.Schema<MediationReportSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dimensions: Schema.optional(Schema.Array(Schema.String)),
-      dimensionFilters: Schema.optional(
-        Schema.Array(MediationReportSpecDimensionFilter),
-      ),
-      localizationSettings: Schema.optional(LocalizationSettings),
-      sortConditions: Schema.optional(
-        Schema.Array(MediationReportSpecSortCondition),
-      ),
-      timeZone: Schema.optional(Schema.String),
-      maxReportRows: Schema.optional(Schema.Number),
-      dateRange: Schema.optional(DateRange),
-      metrics: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "MediationReportSpec",
-  }) as any as Schema.Schema<MediationReportSpec>;
+export const MediationReportSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dimensions: Schema.optional(Schema.Array(Schema.String)),
+  dimensionFilters: Schema.optional(
+    Schema.Array(MediationReportSpecDimensionFilter),
+  ),
+  localizationSettings: Schema.optional(LocalizationSettings),
+  sortConditions: Schema.optional(
+    Schema.Array(MediationReportSpecSortCondition),
+  ),
+  timeZone: Schema.optional(Schema.String),
+  maxReportRows: Schema.optional(Schema.Number),
+  dateRange: Schema.optional(DateRange),
+  metrics: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "MediationReportSpec" });
 
 export interface ReportRowDimensionValue {
   /** Dimension value in the format specified in the report's spec Dimension enum. */
@@ -240,15 +213,11 @@ export interface ReportRowDimensionValue {
   displayLabel?: string;
 }
 
-export const ReportRowDimensionValue: Schema.Schema<ReportRowDimensionValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-      displayLabel: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ReportRowDimensionValue",
-  }) as any as Schema.Schema<ReportRowDimensionValue>;
+export const ReportRowDimensionValue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(Schema.String),
+    displayLabel: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ReportRowDimensionValue" });
 
 export interface ReportRowMetricValue {
   /** Metric integer value. */
@@ -259,16 +228,11 @@ export interface ReportRowMetricValue {
   microsValue?: string;
 }
 
-export const ReportRowMetricValue: Schema.Schema<ReportRowMetricValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      integerValue: Schema.optional(Schema.String),
-      doubleValue: Schema.optional(Schema.Number),
-      microsValue: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ReportRowMetricValue",
-  }) as any as Schema.Schema<ReportRowMetricValue>;
+export const ReportRowMetricValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  integerValue: Schema.optional(Schema.String),
+  doubleValue: Schema.optional(Schema.Number),
+  microsValue: Schema.optional(Schema.String),
+}).annotate({ identifier: "ReportRowMetricValue" });
 
 export interface ReportRow {
   /** Map of dimension values in a row, with keys as enum name of the dimensions. */
@@ -277,17 +241,14 @@ export interface ReportRow {
   metricValues?: Record<string, ReportRowMetricValue>;
 }
 
-export const ReportRow: Schema.Schema<ReportRow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dimensionValues: Schema.optional(
-        Schema.Record(Schema.String, ReportRowDimensionValue),
-      ),
-      metricValues: Schema.optional(
-        Schema.Record(Schema.String, ReportRowMetricValue),
-      ),
-    }),
-  ).annotate({ identifier: "ReportRow" }) as any as Schema.Schema<ReportRow>;
+export const ReportRow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dimensionValues: Schema.optional(
+    Schema.Record(Schema.String, ReportRowDimensionValue),
+  ),
+  metricValues: Schema.optional(
+    Schema.Record(Schema.String, ReportRowMetricValue),
+  ),
+}).annotate({ identifier: "ReportRow" });
 
 export interface ReportWarning {
   /** Type of the warning. */
@@ -302,15 +263,10 @@ export interface ReportWarning {
   description?: string;
 }
 
-export const ReportWarning: Schema.Schema<ReportWarning> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ReportWarning",
-  }) as any as Schema.Schema<ReportWarning>;
+export const ReportWarning = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "ReportWarning" });
 
 export interface ReportFooter {
   /** Warnings associated with generation of the report. */
@@ -319,15 +275,10 @@ export interface ReportFooter {
   matchingRowCount?: string;
 }
 
-export const ReportFooter: Schema.Schema<ReportFooter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      warnings: Schema.optional(Schema.Array(ReportWarning)),
-      matchingRowCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ReportFooter",
-  }) as any as Schema.Schema<ReportFooter>;
+export const ReportFooter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  warnings: Schema.optional(Schema.Array(ReportWarning)),
+  matchingRowCount: Schema.optional(Schema.String),
+}).annotate({ identifier: "ReportFooter" });
 
 export interface ReportHeader {
   /** The report time zone. The value is a time-zone ID as specified by the CLDR project, for example, "America/Los_Angeles". */
@@ -338,16 +289,11 @@ export interface ReportHeader {
   localizationSettings?: LocalizationSettings;
 }
 
-export const ReportHeader: Schema.Schema<ReportHeader> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reportingTimeZone: Schema.optional(Schema.String),
-      dateRange: Schema.optional(DateRange),
-      localizationSettings: Schema.optional(LocalizationSettings),
-    }),
-  ).annotate({
-    identifier: "ReportHeader",
-  }) as any as Schema.Schema<ReportHeader>;
+export const ReportHeader = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  reportingTimeZone: Schema.optional(Schema.String),
+  dateRange: Schema.optional(DateRange),
+  localizationSettings: Schema.optional(LocalizationSettings),
+}).annotate({ identifier: "ReportHeader" });
 
 export interface GenerateMediationReportResponse {
   /** Actual report data. */
@@ -358,16 +304,12 @@ export interface GenerateMediationReportResponse {
   header?: ReportHeader;
 }
 
-export const GenerateMediationReportResponse: Schema.Schema<GenerateMediationReportResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      row: Schema.optional(ReportRow),
-      footer: Schema.optional(ReportFooter),
-      header: Schema.optional(ReportHeader),
-    }),
-  ).annotate({
-    identifier: "GenerateMediationReportResponse",
-  }) as any as Schema.Schema<GenerateMediationReportResponse>;
+export const GenerateMediationReportResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    row: Schema.optional(ReportRow),
+    footer: Schema.optional(ReportFooter),
+    header: Schema.optional(ReportHeader),
+  }).annotate({ identifier: "GenerateMediationReportResponse" });
 
 export interface NetworkReportSpecSortCondition {
   /** Sort by the specified dimension. */
@@ -404,16 +346,12 @@ export interface NetworkReportSpecSortCondition {
     | (string & {});
 }
 
-export const NetworkReportSpecSortCondition: Schema.Schema<NetworkReportSpecSortCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dimension: Schema.optional(Schema.String),
-      order: Schema.optional(Schema.String),
-      metric: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NetworkReportSpecSortCondition",
-  }) as any as Schema.Schema<NetworkReportSpecSortCondition>;
+export const NetworkReportSpecSortCondition =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dimension: Schema.optional(Schema.String),
+    order: Schema.optional(Schema.String),
+    metric: Schema.optional(Schema.String),
+  }).annotate({ identifier: "NetworkReportSpecSortCondition" });
 
 export interface NetworkReportSpecDimensionFilter {
   /** Matches a row if its value for the specified dimension is in one of the values specified in this condition. */
@@ -437,15 +375,11 @@ export interface NetworkReportSpecDimensionFilter {
     | (string & {});
 }
 
-export const NetworkReportSpecDimensionFilter: Schema.Schema<NetworkReportSpecDimensionFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      matchesAny: Schema.optional(StringList),
-      dimension: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NetworkReportSpecDimensionFilter",
-  }) as any as Schema.Schema<NetworkReportSpecDimensionFilter>;
+export const NetworkReportSpecDimensionFilter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    matchesAny: Schema.optional(StringList),
+    dimension: Schema.optional(Schema.String),
+  }).annotate({ identifier: "NetworkReportSpecDimensionFilter" });
 
 export interface NetworkReportSpec {
   /** The date range for which the report is generated. */
@@ -494,25 +428,18 @@ export interface NetworkReportSpec {
   localizationSettings?: LocalizationSettings;
 }
 
-export const NetworkReportSpec: Schema.Schema<NetworkReportSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dateRange: Schema.optional(DateRange),
-      metrics: Schema.optional(Schema.Array(Schema.String)),
-      maxReportRows: Schema.optional(Schema.Number),
-      sortConditions: Schema.optional(
-        Schema.Array(NetworkReportSpecSortCondition),
-      ),
-      timeZone: Schema.optional(Schema.String),
-      dimensions: Schema.optional(Schema.Array(Schema.String)),
-      dimensionFilters: Schema.optional(
-        Schema.Array(NetworkReportSpecDimensionFilter),
-      ),
-      localizationSettings: Schema.optional(LocalizationSettings),
-    }),
-  ).annotate({
-    identifier: "NetworkReportSpec",
-  }) as any as Schema.Schema<NetworkReportSpec>;
+export const NetworkReportSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dateRange: Schema.optional(DateRange),
+  metrics: Schema.optional(Schema.Array(Schema.String)),
+  maxReportRows: Schema.optional(Schema.Number),
+  sortConditions: Schema.optional(Schema.Array(NetworkReportSpecSortCondition)),
+  timeZone: Schema.optional(Schema.String),
+  dimensions: Schema.optional(Schema.Array(Schema.String)),
+  dimensionFilters: Schema.optional(
+    Schema.Array(NetworkReportSpecDimensionFilter),
+  ),
+  localizationSettings: Schema.optional(LocalizationSettings),
+}).annotate({ identifier: "NetworkReportSpec" });
 
 export interface PublisherAccount {
   /** Currency code of the earning-related metrics, which is the 3-letter code defined in ISO 4217. The daily average rate is used for the currency conversion. */
@@ -525,31 +452,21 @@ export interface PublisherAccount {
   name?: string;
 }
 
-export const PublisherAccount: Schema.Schema<PublisherAccount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      currencyCode: Schema.optional(Schema.String),
-      publisherId: Schema.optional(Schema.String),
-      reportingTimeZone: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PublisherAccount",
-  }) as any as Schema.Schema<PublisherAccount>;
+export const PublisherAccount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  currencyCode: Schema.optional(Schema.String),
+  publisherId: Schema.optional(Schema.String),
+  reportingTimeZone: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "PublisherAccount" });
 
 export interface AppManualAppInfo {
   /** The display name of the app as shown in the AdMob UI, which is provided by the user. The maximum length allowed is 80 characters. */
   displayName?: string;
 }
 
-export const AppManualAppInfo: Schema.Schema<AppManualAppInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AppManualAppInfo",
-  }) as any as Schema.Schema<AppManualAppInfo>;
+export const AppManualAppInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+}).annotate({ identifier: "AppManualAppInfo" });
 
 export interface AppLinkedAppInfo {
   /** The app store ID of the app; present if and only if the app is linked to an app store. If the app is added to the Google Play store, it will be the application ID of the app. For example: "com.example.myapp". See https://developer.android.com/studio/build/application-id. If the app is added to the Apple App Store, it will be app store ID. For example "105169111". Note that setting the app store id is considered an irreversible action. Once an app is linked, it cannot be unlinked. */
@@ -558,15 +475,10 @@ export interface AppLinkedAppInfo {
   displayName?: string;
 }
 
-export const AppLinkedAppInfo: Schema.Schema<AppLinkedAppInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      appStoreId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AppLinkedAppInfo",
-  }) as any as Schema.Schema<AppLinkedAppInfo>;
+export const AppLinkedAppInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  appStoreId: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+}).annotate({ identifier: "AppLinkedAppInfo" });
 
 export interface App {
   /** Resource name for this app. Format is accounts/{publisher_id}/apps/{app_id_fragment} Example: accounts/pub-9876543210987654/apps/0123456789 */
@@ -588,17 +500,14 @@ export interface App {
     | (string & {});
 }
 
-export const App: Schema.Schema<App> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      platform: Schema.optional(Schema.String),
-      manualAppInfo: Schema.optional(AppManualAppInfo),
-      appId: Schema.optional(Schema.String),
-      linkedAppInfo: Schema.optional(AppLinkedAppInfo),
-      appApprovalState: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "App" }) as any as Schema.Schema<App>;
+export const App = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  platform: Schema.optional(Schema.String),
+  manualAppInfo: Schema.optional(AppManualAppInfo),
+  appId: Schema.optional(Schema.String),
+  linkedAppInfo: Schema.optional(AppLinkedAppInfo),
+  appApprovalState: Schema.optional(Schema.String),
+}).annotate({ identifier: "App" });
 
 export interface ListAppsResponse {
   /** The resulting apps for the requested account. */
@@ -607,15 +516,10 @@ export interface ListAppsResponse {
   nextPageToken?: string;
 }
 
-export const ListAppsResponse: Schema.Schema<ListAppsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      apps: Schema.optional(Schema.Array(App)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAppsResponse",
-  }) as any as Schema.Schema<ListAppsResponse>;
+export const ListAppsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  apps: Schema.optional(Schema.Array(App)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListAppsResponse" });
 
 export interface GenerateNetworkReportResponse {
   /** Actual report data. */
@@ -626,16 +530,12 @@ export interface GenerateNetworkReportResponse {
   header?: ReportHeader;
 }
 
-export const GenerateNetworkReportResponse: Schema.Schema<GenerateNetworkReportResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      row: Schema.optional(ReportRow),
-      footer: Schema.optional(ReportFooter),
-      header: Schema.optional(ReportHeader),
-    }),
-  ).annotate({
-    identifier: "GenerateNetworkReportResponse",
-  }) as any as Schema.Schema<GenerateNetworkReportResponse>;
+export const GenerateNetworkReportResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    row: Schema.optional(ReportRow),
+    footer: Schema.optional(ReportFooter),
+    header: Schema.optional(ReportHeader),
+  }).annotate({ identifier: "GenerateNetworkReportResponse" });
 
 export interface AdUnit {
   /** The externally visible ID of the ad unit which can be used to integrate with the AdMob SDK. This is a read only property. Example: ca-app-pub-9876543210987654/0123456789 */
@@ -652,17 +552,14 @@ export interface AdUnit {
   displayName?: string;
 }
 
-export const AdUnit: Schema.Schema<AdUnit> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      adUnitId: Schema.optional(Schema.String),
-      adTypes: Schema.optional(Schema.Array(Schema.String)),
-      name: Schema.optional(Schema.String),
-      adFormat: Schema.optional(Schema.String),
-      appId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "AdUnit" }) as any as Schema.Schema<AdUnit>;
+export const AdUnit = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  adUnitId: Schema.optional(Schema.String),
+  adTypes: Schema.optional(Schema.Array(Schema.String)),
+  name: Schema.optional(Schema.String),
+  adFormat: Schema.optional(Schema.String),
+  appId: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+}).annotate({ identifier: "AdUnit" });
 
 export interface ListAdUnitsResponse {
   /** If not empty, indicates that there may be more ad units for the request; this value should be passed in a new `ListAdUnitsRequest`. */
@@ -671,29 +568,20 @@ export interface ListAdUnitsResponse {
   adUnits?: Array<AdUnit>;
 }
 
-export const ListAdUnitsResponse: Schema.Schema<ListAdUnitsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      adUnits: Schema.optional(Schema.Array(AdUnit)),
-    }),
-  ).annotate({
-    identifier: "ListAdUnitsResponse",
-  }) as any as Schema.Schema<ListAdUnitsResponse>;
+export const ListAdUnitsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  adUnits: Schema.optional(Schema.Array(AdUnit)),
+}).annotate({ identifier: "ListAdUnitsResponse" });
 
 export interface GenerateMediationReportRequest {
   /** Network report specification. */
   reportSpec?: MediationReportSpec;
 }
 
-export const GenerateMediationReportRequest: Schema.Schema<GenerateMediationReportRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reportSpec: Schema.optional(MediationReportSpec),
-    }),
-  ).annotate({
-    identifier: "GenerateMediationReportRequest",
-  }) as any as Schema.Schema<GenerateMediationReportRequest>;
+export const GenerateMediationReportRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reportSpec: Schema.optional(MediationReportSpec),
+  }).annotate({ identifier: "GenerateMediationReportRequest" });
 
 export interface ListPublisherAccountsResponse {
   /** If not empty, indicates that there might be more accounts for the request; you must pass this value in a new `ListPublisherAccountsRequest`. */
@@ -702,29 +590,21 @@ export interface ListPublisherAccountsResponse {
   account?: Array<PublisherAccount>;
 }
 
-export const ListPublisherAccountsResponse: Schema.Schema<ListPublisherAccountsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      account: Schema.optional(Schema.Array(PublisherAccount)),
-    }),
-  ).annotate({
-    identifier: "ListPublisherAccountsResponse",
-  }) as any as Schema.Schema<ListPublisherAccountsResponse>;
+export const ListPublisherAccountsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    account: Schema.optional(Schema.Array(PublisherAccount)),
+  }).annotate({ identifier: "ListPublisherAccountsResponse" });
 
 export interface GenerateNetworkReportRequest {
   /** Network report specification. */
   reportSpec?: NetworkReportSpec;
 }
 
-export const GenerateNetworkReportRequest: Schema.Schema<GenerateNetworkReportRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reportSpec: Schema.optional(NetworkReportSpec),
-    }),
-  ).annotate({
-    identifier: "GenerateNetworkReportRequest",
-  }) as any as Schema.Schema<GenerateNetworkReportRequest>;
+export const GenerateNetworkReportRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reportSpec: Schema.optional(NetworkReportSpec),
+  }).annotate({ identifier: "GenerateNetworkReportRequest" });
 
 // ==========================================================================
 // Operations

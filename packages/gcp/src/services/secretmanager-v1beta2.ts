@@ -27,14 +27,10 @@ export interface CustomerManagedEncryptionStatus {
   kmsKeyVersionName?: string;
 }
 
-export const CustomerManagedEncryptionStatus: Schema.Schema<CustomerManagedEncryptionStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kmsKeyVersionName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomerManagedEncryptionStatus",
-  }) as any as Schema.Schema<CustomerManagedEncryptionStatus>;
+export const CustomerManagedEncryptionStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kmsKeyVersionName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CustomerManagedEncryptionStatus" });
 
 export interface ReplicaStatus {
   /** Output only. The customer-managed encryption status of the SecretVersion. Only populated if customer-managed encryption is used. */
@@ -43,47 +39,28 @@ export interface ReplicaStatus {
   location?: string;
 }
 
-export const ReplicaStatus: Schema.Schema<ReplicaStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customerManagedEncryption: Schema.optional(
-        CustomerManagedEncryptionStatus,
-      ),
-      location: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ReplicaStatus",
-  }) as any as Schema.Schema<ReplicaStatus>;
+export const ReplicaStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  customerManagedEncryption: Schema.optional(CustomerManagedEncryptionStatus),
+  location: Schema.optional(Schema.String),
+}).annotate({ identifier: "ReplicaStatus" });
 
 export interface UserManagedStatus {
   /** Output only. The list of replica statuses for the SecretVersion. */
   replicas?: Array<ReplicaStatus>;
 }
 
-export const UserManagedStatus: Schema.Schema<UserManagedStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      replicas: Schema.optional(Schema.Array(ReplicaStatus)),
-    }),
-  ).annotate({
-    identifier: "UserManagedStatus",
-  }) as any as Schema.Schema<UserManagedStatus>;
+export const UserManagedStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  replicas: Schema.optional(Schema.Array(ReplicaStatus)),
+}).annotate({ identifier: "UserManagedStatus" });
 
 export interface AutomaticStatus {
   /** Output only. The customer-managed encryption status of the SecretVersion. Only populated if customer-managed encryption is used. */
   customerManagedEncryption?: CustomerManagedEncryptionStatus;
 }
 
-export const AutomaticStatus: Schema.Schema<AutomaticStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customerManagedEncryption: Schema.optional(
-        CustomerManagedEncryptionStatus,
-      ),
-    }),
-  ).annotate({
-    identifier: "AutomaticStatus",
-  }) as any as Schema.Schema<AutomaticStatus>;
+export const AutomaticStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  customerManagedEncryption: Schema.optional(CustomerManagedEncryptionStatus),
+}).annotate({ identifier: "AutomaticStatus" });
 
 export interface ReplicationStatus {
   /** Describes the replication status of a SecretVersion with user-managed replication. Only populated if the parent Secret has a user-managed replication policy. */
@@ -92,15 +69,10 @@ export interface ReplicationStatus {
   automatic?: AutomaticStatus;
 }
 
-export const ReplicationStatus: Schema.Schema<ReplicationStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userManaged: Schema.optional(UserManagedStatus),
-      automatic: Schema.optional(AutomaticStatus),
-    }),
-  ).annotate({
-    identifier: "ReplicationStatus",
-  }) as any as Schema.Schema<ReplicationStatus>;
+export const ReplicationStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  userManaged: Schema.optional(UserManagedStatus),
+  automatic: Schema.optional(AutomaticStatus),
+}).annotate({ identifier: "ReplicationStatus" });
 
 export interface SecretVersion {
   /** Output only. The time this SecretVersion was destroyed. Only present if state is DESTROYED. */
@@ -128,24 +100,17 @@ export interface SecretVersion {
   clientSpecifiedPayloadChecksum?: boolean;
 }
 
-export const SecretVersion: Schema.Schema<SecretVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      destroyTime: Schema.optional(Schema.String),
-      replicationStatus: Schema.optional(ReplicationStatus),
-      name: Schema.optional(Schema.String),
-      customerManagedEncryption: Schema.optional(
-        CustomerManagedEncryptionStatus,
-      ),
-      scheduledDestroyTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      clientSpecifiedPayloadChecksum: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "SecretVersion",
-  }) as any as Schema.Schema<SecretVersion>;
+export const SecretVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  destroyTime: Schema.optional(Schema.String),
+  replicationStatus: Schema.optional(ReplicationStatus),
+  name: Schema.optional(Schema.String),
+  customerManagedEncryption: Schema.optional(CustomerManagedEncryptionStatus),
+  scheduledDestroyTime: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  clientSpecifiedPayloadChecksum: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "SecretVersion" });
 
 export interface ListSecretVersionsResponse {
   /** The total number of SecretVersions but 0 when the ListSecretsRequest.filter field is set. */
@@ -156,16 +121,12 @@ export interface ListSecretVersionsResponse {
   versions?: Array<SecretVersion>;
 }
 
-export const ListSecretVersionsResponse: Schema.Schema<ListSecretVersionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      totalSize: Schema.optional(Schema.Number),
-      nextPageToken: Schema.optional(Schema.String),
-      versions: Schema.optional(Schema.Array(SecretVersion)),
-    }),
-  ).annotate({
-    identifier: "ListSecretVersionsResponse",
-  }) as any as Schema.Schema<ListSecretVersionsResponse>;
+export const ListSecretVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    totalSize: Schema.optional(Schema.Number),
+    nextPageToken: Schema.optional(Schema.String),
+    versions: Schema.optional(Schema.Array(SecretVersion)),
+  }).annotate({ identifier: "ListSecretVersionsResponse" });
 
 export interface Expr {
   /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
@@ -178,15 +139,12 @@ export interface Expr {
   title?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-      expression: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Expr" }) as any as Schema.Schema<Expr>;
+export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  expression: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+}).annotate({ identifier: "Expr" });
 
 export interface Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -197,28 +155,21 @@ export interface Binding {
   members?: Array<string>;
 }
 
-export const Binding: Schema.Schema<Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      condition: Schema.optional(Expr),
-      role: Schema.optional(Schema.String),
-      members: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "Binding" }) as any as Schema.Schema<Binding>;
+export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  condition: Schema.optional(Expr),
+  role: Schema.optional(Schema.String),
+  members: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Binding" });
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsResponse",
-  }) as any as Schema.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsResponse" });
 
 export interface AuditLogConfig {
   /** The log type that this config enables. */
@@ -232,15 +183,10 @@ export interface AuditLogConfig {
   exemptedMembers?: Array<string>;
 }
 
-export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      logType: Schema.optional(Schema.String),
-      exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AuditLogConfig",
-  }) as any as Schema.Schema<AuditLogConfig>;
+export const AuditLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  logType: Schema.optional(Schema.String),
+  exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "AuditLogConfig" });
 
 export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
@@ -249,15 +195,10 @@ export interface AuditConfig {
   auditLogConfigs?: Array<AuditLogConfig>;
 }
 
-export const AuditConfig: Schema.Schema<AuditConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      service: Schema.optional(Schema.String),
-      auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
-    }),
-  ).annotate({
-    identifier: "AuditConfig",
-  }) as any as Schema.Schema<AuditConfig>;
+export const AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  service: Schema.optional(Schema.String),
+  auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
+}).annotate({ identifier: "AuditConfig" });
 
 export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -270,15 +211,12 @@ export interface Policy {
   etag?: string;
 }
 
-export const Policy: Schema.Schema<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.Number),
-      bindings: Schema.optional(Schema.Array(Binding)),
-      auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Policy" }) as any as Schema.Schema<Policy>;
+export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.Number),
+  bindings: Schema.optional(Schema.Array(Binding)),
+  auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "Policy" });
 
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
@@ -287,15 +225,10 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policy: Schema.optional(Policy),
-      updateMask: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SetIamPolicyRequest",
-  }) as any as Schema.Schema<SetIamPolicyRequest>;
+export const SetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policy: Schema.optional(Policy),
+  updateMask: Schema.optional(Schema.String),
+}).annotate({ identifier: "SetIamPolicyRequest" });
 
 export interface Location {
   /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
@@ -310,16 +243,13 @@ export interface Location {
   name?: string;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      locationId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  locationId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Location" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -328,29 +258,20 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(Location)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface CustomerManagedEncryption {
   /** Required. The resource name of the Cloud KMS CryptoKey used to encrypt secret payloads. For secrets using the UserManaged replication policy type, Cloud KMS CryptoKeys must reside in the same location as the replica location. For secrets using the Automatic replication policy type, Cloud KMS CryptoKeys must reside in `global`. The expected format is `projects/* /locations/* /keyRings/* /cryptoKeys/*`. */
   kmsKeyName?: string;
 }
 
-export const CustomerManagedEncryption: Schema.Schema<CustomerManagedEncryption> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kmsKeyName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomerManagedEncryption",
-  }) as any as Schema.Schema<CustomerManagedEncryption>;
+export const CustomerManagedEncryption =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kmsKeyName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CustomerManagedEncryption" });
 
 export interface Replica {
   /** The canonical IDs of the location to replicate data. For example: `"us-east1"`. */
@@ -359,27 +280,20 @@ export interface Replica {
   customerManagedEncryption?: CustomerManagedEncryption;
 }
 
-export const Replica: Schema.Schema<Replica> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      location: Schema.optional(Schema.String),
-      customerManagedEncryption: Schema.optional(CustomerManagedEncryption),
-    }),
-  ).annotate({ identifier: "Replica" }) as any as Schema.Schema<Replica>;
+export const Replica = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  location: Schema.optional(Schema.String),
+  customerManagedEncryption: Schema.optional(CustomerManagedEncryption),
+}).annotate({ identifier: "Replica" });
 
 export interface EnableSecretVersionRequest {
   /** Optional. Etag of the SecretVersion. The request succeeds if it matches the etag of the currently stored secret version object. If the etag is omitted, the request succeeds. */
   etag?: string;
 }
 
-export const EnableSecretVersionRequest: Schema.Schema<EnableSecretVersionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnableSecretVersionRequest",
-  }) as any as Schema.Schema<EnableSecretVersionRequest>;
+export const EnableSecretVersionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    etag: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnableSecretVersionRequest" });
 
 export interface SecretPayload {
   /** The secret data. Must be no larger than 64KiB. */
@@ -388,15 +302,10 @@ export interface SecretPayload {
   dataCrc32c?: string;
 }
 
-export const SecretPayload: Schema.Schema<SecretPayload> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      data: Schema.optional(Schema.String),
-      dataCrc32c: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SecretPayload",
-  }) as any as Schema.Schema<SecretPayload>;
+export const SecretPayload = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  data: Schema.optional(Schema.String),
+  dataCrc32c: Schema.optional(Schema.String),
+}).annotate({ identifier: "SecretPayload" });
 
 export interface AccessSecretVersionResponse {
   /** The resource name of the SecretVersion in the format `projects/* /secrets/* /versions/*` or `projects/* /locations/* /secrets/* /versions/*`. */
@@ -405,29 +314,21 @@ export interface AccessSecretVersionResponse {
   payload?: SecretPayload;
 }
 
-export const AccessSecretVersionResponse: Schema.Schema<AccessSecretVersionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      payload: Schema.optional(SecretPayload),
-    }),
-  ).annotate({
-    identifier: "AccessSecretVersionResponse",
-  }) as any as Schema.Schema<AccessSecretVersionResponse>;
+export const AccessSecretVersionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    payload: Schema.optional(SecretPayload),
+  }).annotate({ identifier: "AccessSecretVersionResponse" });
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsRequest",
-  }) as any as Schema.Schema<TestIamPermissionsRequest>;
+export const TestIamPermissionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsRequest" });
 
 export interface OperationMetadata {
   /** Output only. Name of the verb executed by the operation. */
@@ -446,20 +347,15 @@ export interface OperationMetadata {
   statusMessage?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      verb: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      apiVersion: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  verb: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  requestedCancellation: Schema.optional(Schema.Boolean),
+  apiVersion: Schema.optional(Schema.String),
+  statusMessage: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationMetadata" });
 
 export interface Rotation {
   /** Input only. The Duration between rotation notifications. Must be in seconds and at least 3600s (1h) and at most 3153600000s (100 years). If rotation_period is set, next_rotation_time must be set. next_rotation_time will be advanced by this period when the service automatically sends rotation notifications. */
@@ -468,13 +364,10 @@ export interface Rotation {
   nextRotationTime?: string;
 }
 
-export const Rotation: Schema.Schema<Rotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rotationPeriod: Schema.optional(Schema.String),
-      nextRotationTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Rotation" }) as any as Schema.Schema<Rotation>;
+export const Rotation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  rotationPeriod: Schema.optional(Schema.String),
+  nextRotationTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Rotation" });
 
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -485,44 +378,33 @@ export interface Status {
   message?: string;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      message: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  message: Schema.optional(Schema.String),
+}).annotate({ identifier: "Status" });
 
 export interface DisableSecretVersionRequest {
   /** Optional. Etag of the SecretVersion. The request succeeds if it matches the etag of the currently stored secret version object. If the etag is omitted, the request succeeds. */
   etag?: string;
 }
 
-export const DisableSecretVersionRequest: Schema.Schema<DisableSecretVersionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DisableSecretVersionRequest",
-  }) as any as Schema.Schema<DisableSecretVersionRequest>;
+export const DisableSecretVersionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    etag: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DisableSecretVersionRequest" });
 
 export interface AddSecretVersionRequest {
   /** Required. The secret payload of the SecretVersion. */
   payload?: SecretPayload;
 }
 
-export const AddSecretVersionRequest: Schema.Schema<AddSecretVersionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      payload: Schema.optional(SecretPayload),
-    }),
-  ).annotate({
-    identifier: "AddSecretVersionRequest",
-  }) as any as Schema.Schema<AddSecretVersionRequest>;
+export const AddSecretVersionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    payload: Schema.optional(SecretPayload),
+  }).annotate({ identifier: "AddSecretVersionRequest" });
 
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -537,42 +419,31 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      error: Schema.optional(Status),
-      done: Schema.optional(Schema.Boolean),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  error: Schema.optional(Status),
+  done: Schema.optional(Schema.Boolean),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Operation" });
 
 export interface UserManaged {
   /** Required. The list of Replicas for this Secret. Cannot be empty. */
   replicas?: Array<Replica>;
 }
 
-export const UserManaged: Schema.Schema<UserManaged> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      replicas: Schema.optional(Schema.Array(Replica)),
-    }),
-  ).annotate({
-    identifier: "UserManaged",
-  }) as any as Schema.Schema<UserManaged>;
+export const UserManaged = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  replicas: Schema.optional(Schema.Array(Replica)),
+}).annotate({ identifier: "UserManaged" });
 
 export interface Automatic {
   /** Optional. The customer-managed encryption configuration of the Secret. If no configuration is provided, Google-managed default encryption is used. Updates to the Secret encryption configuration only apply to SecretVersions added afterwards. They do not apply retroactively to existing SecretVersions. */
   customerManagedEncryption?: CustomerManagedEncryption;
 }
 
-export const Automatic: Schema.Schema<Automatic> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customerManagedEncryption: Schema.optional(CustomerManagedEncryption),
-    }),
-  ).annotate({ identifier: "Automatic" }) as any as Schema.Schema<Automatic>;
+export const Automatic = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  customerManagedEncryption: Schema.optional(CustomerManagedEncryption),
+}).annotate({ identifier: "Automatic" });
 
 export interface Replication {
   /** The Secret will only be replicated into the locations specified. */
@@ -581,27 +452,19 @@ export interface Replication {
   automatic?: Automatic;
 }
 
-export const Replication: Schema.Schema<Replication> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userManaged: Schema.optional(UserManaged),
-      automatic: Schema.optional(Automatic),
-    }),
-  ).annotate({
-    identifier: "Replication",
-  }) as any as Schema.Schema<Replication>;
+export const Replication = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  userManaged: Schema.optional(UserManaged),
+  automatic: Schema.optional(Automatic),
+}).annotate({ identifier: "Replication" });
 
 export interface Topic {
   /** Required. The resource name of the Pub/Sub topic that will be published to, in the following format: `projects/* /topics/*`. For publication to succeed, the Secret Manager service agent must have the `pubsub.topic.publish` permission on the topic. The Pub/Sub Publisher role (`roles/pubsub.publisher`) includes this permission. */
   name?: string;
 }
 
-export const Topic: Schema.Schema<Topic> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Topic" }) as any as Schema.Schema<Topic>;
+export const Topic = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Topic" });
 
 export interface Secret {
   /** Optional. Mapping from version alias to version name. A version alias is a string with a maximum length of 63 characters and can contain uppercase and lowercase letters, numerals, and the hyphen (`-`) and underscore ('_') characters. An alias string must start with a letter and cannot be the string 'latest' or 'NEW'. No more than 50 aliases can be assigned to a given secret. Version-Alias pairs will be viewable via GetSecret and modifiable via UpdateSecret. Access by alias is only supported for GetSecretVersion and AccessSecretVersion. */
@@ -634,27 +497,22 @@ export interface Secret {
   customerManagedEncryption?: CustomerManagedEncryption;
 }
 
-export const Secret: Schema.Schema<Secret> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      versionAliases: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      createTime: Schema.optional(Schema.String),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      rotation: Schema.optional(Rotation),
-      name: Schema.optional(Schema.String),
-      replication: Schema.optional(Replication),
-      topics: Schema.optional(Schema.Array(Topic)),
-      ttl: Schema.optional(Schema.String),
-      tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      etag: Schema.optional(Schema.String),
-      versionDestroyTtl: Schema.optional(Schema.String),
-      expireTime: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      customerManagedEncryption: Schema.optional(CustomerManagedEncryption),
-    }),
-  ).annotate({ identifier: "Secret" }) as any as Schema.Schema<Secret>;
+export const Secret = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  versionAliases: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  createTime: Schema.optional(Schema.String),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  rotation: Schema.optional(Rotation),
+  name: Schema.optional(Schema.String),
+  replication: Schema.optional(Replication),
+  topics: Schema.optional(Schema.Array(Topic)),
+  ttl: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  etag: Schema.optional(Schema.String),
+  versionDestroyTtl: Schema.optional(Schema.String),
+  expireTime: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  customerManagedEncryption: Schema.optional(CustomerManagedEncryption),
+}).annotate({ identifier: "Secret" });
 
 export interface ListSecretsResponse {
   /** The list of Secrets sorted in reverse by create_time (newest first). */
@@ -665,37 +523,27 @@ export interface ListSecretsResponse {
   nextPageToken?: string;
 }
 
-export const ListSecretsResponse: Schema.Schema<ListSecretsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      secrets: Schema.optional(Schema.Array(Secret)),
-      totalSize: Schema.optional(Schema.Number),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListSecretsResponse",
-  }) as any as Schema.Schema<ListSecretsResponse>;
+export const ListSecretsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  secrets: Schema.optional(Schema.Array(Secret)),
+  totalSize: Schema.optional(Schema.Number),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListSecretsResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface DestroySecretVersionRequest {
   /** Optional. Etag of the SecretVersion. The request succeeds if it matches the etag of the currently stored secret version object. If the etag is omitted, the request succeeds. */
   etag?: string;
 }
 
-export const DestroySecretVersionRequest: Schema.Schema<DestroySecretVersionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DestroySecretVersionRequest",
-  }) as any as Schema.Schema<DestroySecretVersionRequest>;
+export const DestroySecretVersionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    etag: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DestroySecretVersionRequest" });
 
 // ==========================================================================
 // Operations

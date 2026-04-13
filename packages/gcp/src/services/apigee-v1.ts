@@ -24,45 +24,45 @@ const svc = T.Service({
 
 export interface GoogleCloudApigeeV1ProfileConfigAbuse {}
 
-export const GoogleCloudApigeeV1ProfileConfigAbuse: Schema.Schema<GoogleCloudApigeeV1ProfileConfigAbuse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudApigeeV1ProfileConfigAbuse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApigeeV1ProfileConfigAbuse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ProfileConfigAbuse>;
+  });
 
 export interface GoogleCloudApigeeV1ProfileConfigCORS {}
 
-export const GoogleCloudApigeeV1ProfileConfigCORS: Schema.Schema<GoogleCloudApigeeV1ProfileConfigCORS> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudApigeeV1ProfileConfigCORS =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApigeeV1ProfileConfigCORS",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ProfileConfigCORS>;
+  });
 
 export interface GoogleCloudApigeeV1ProfileConfigMediation {}
 
-export const GoogleCloudApigeeV1ProfileConfigMediation: Schema.Schema<GoogleCloudApigeeV1ProfileConfigMediation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudApigeeV1ProfileConfigMediation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApigeeV1ProfileConfigMediation",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ProfileConfigMediation>;
+  });
 
 export interface GoogleCloudApigeeV1ProfileConfigAuthorization {}
 
-export const GoogleCloudApigeeV1ProfileConfigAuthorization: Schema.Schema<GoogleCloudApigeeV1ProfileConfigAuthorization> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudApigeeV1ProfileConfigAuthorization =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApigeeV1ProfileConfigAuthorization",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ProfileConfigAuthorization>;
+  });
 
 export interface GoogleCloudApigeeV1ProfileConfigMTLS {}
 
-export const GoogleCloudApigeeV1ProfileConfigMTLS: Schema.Schema<GoogleCloudApigeeV1ProfileConfigMTLS> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudApigeeV1ProfileConfigMTLS =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApigeeV1ProfileConfigMTLS",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ProfileConfigMTLS>;
+  });
 
 export interface GoogleCloudApigeeV1ProfileConfigThreat {}
 
-export const GoogleCloudApigeeV1ProfileConfigThreat: Schema.Schema<GoogleCloudApigeeV1ProfileConfigThreat> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudApigeeV1ProfileConfigThreat =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApigeeV1ProfileConfigThreat",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ProfileConfigThreat>;
+  });
 
 export interface GoogleCloudApigeeV1ProfileConfigCategory {
   /** Checks for abuse, which includes any requests sent to the API for purposes other than what it is intended for, such as high volumes of requests, data scraping, and abuse related to authorization. */
@@ -79,37 +79,29 @@ export interface GoogleCloudApigeeV1ProfileConfigCategory {
   threat?: GoogleCloudApigeeV1ProfileConfigThreat;
 }
 
-export const GoogleCloudApigeeV1ProfileConfigCategory: Schema.Schema<GoogleCloudApigeeV1ProfileConfigCategory> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      abuse: Schema.optional(GoogleCloudApigeeV1ProfileConfigAbuse),
-      cors: Schema.optional(GoogleCloudApigeeV1ProfileConfigCORS),
-      mediation: Schema.optional(GoogleCloudApigeeV1ProfileConfigMediation),
-      authorization: Schema.optional(
-        GoogleCloudApigeeV1ProfileConfigAuthorization,
-      ),
-      mtls: Schema.optional(GoogleCloudApigeeV1ProfileConfigMTLS),
-      threat: Schema.optional(GoogleCloudApigeeV1ProfileConfigThreat),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ProfileConfigCategory",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ProfileConfigCategory>;
+export const GoogleCloudApigeeV1ProfileConfigCategory =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    abuse: Schema.optional(GoogleCloudApigeeV1ProfileConfigAbuse),
+    cors: Schema.optional(GoogleCloudApigeeV1ProfileConfigCORS),
+    mediation: Schema.optional(GoogleCloudApigeeV1ProfileConfigMediation),
+    authorization: Schema.optional(
+      GoogleCloudApigeeV1ProfileConfigAuthorization,
+    ),
+    mtls: Schema.optional(GoogleCloudApigeeV1ProfileConfigMTLS),
+    threat: Schema.optional(GoogleCloudApigeeV1ProfileConfigThreat),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ProfileConfigCategory" });
 
 export interface GoogleCloudApigeeV1ProfileConfig {
   /** List of categories of profile config. */
   categories?: Array<GoogleCloudApigeeV1ProfileConfigCategory>;
 }
 
-export const GoogleCloudApigeeV1ProfileConfig: Schema.Schema<GoogleCloudApigeeV1ProfileConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      categories: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1ProfileConfigCategory),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ProfileConfig",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ProfileConfig>;
+export const GoogleCloudApigeeV1ProfileConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    categories: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1ProfileConfigCategory),
+    ),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ProfileConfig" });
 
 export interface GoogleCloudApigeeV1SecurityProfileEnvironment {
   /** Output only. Name of the environment. */
@@ -118,15 +110,11 @@ export interface GoogleCloudApigeeV1SecurityProfileEnvironment {
   attachTime?: string;
 }
 
-export const GoogleCloudApigeeV1SecurityProfileEnvironment: Schema.Schema<GoogleCloudApigeeV1SecurityProfileEnvironment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      environment: Schema.optional(Schema.String),
-      attachTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1SecurityProfileEnvironment",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1SecurityProfileEnvironment>;
+export const GoogleCloudApigeeV1SecurityProfileEnvironment =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    environment: Schema.optional(Schema.String),
+    attachTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1SecurityProfileEnvironment" });
 
 export interface GoogleCloudApigeeV1SecurityProfileScoringConfig {
   /** Path of the component config used for scoring. */
@@ -137,16 +125,14 @@ export interface GoogleCloudApigeeV1SecurityProfileScoringConfig {
   title?: string;
 }
 
-export const GoogleCloudApigeeV1SecurityProfileScoringConfig: Schema.Schema<GoogleCloudApigeeV1SecurityProfileScoringConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scorePath: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1SecurityProfileScoringConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scorePath: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    title: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudApigeeV1SecurityProfileScoringConfig",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1SecurityProfileScoringConfig>;
+  });
 
 export interface GoogleCloudApigeeV1SecurityProfile {
   /** Required. Customized profile configuration that computes the security score. */
@@ -175,29 +161,25 @@ export interface GoogleCloudApigeeV1SecurityProfile {
   description?: string;
 }
 
-export const GoogleCloudApigeeV1SecurityProfile: Schema.Schema<GoogleCloudApigeeV1SecurityProfile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      profileConfig: Schema.optional(GoogleCloudApigeeV1ProfileConfig),
-      displayName: Schema.optional(Schema.String),
-      environments: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1SecurityProfileEnvironment),
-      ),
-      revisionId: Schema.optional(Schema.String),
-      maxScore: Schema.optional(Schema.Number),
-      revisionUpdateTime: Schema.optional(Schema.String),
-      revisionPublishTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      revisionCreateTime: Schema.optional(Schema.String),
-      minScore: Schema.optional(Schema.Number),
-      scoringConfigs: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1SecurityProfileScoringConfig),
-      ),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1SecurityProfile",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1SecurityProfile>;
+export const GoogleCloudApigeeV1SecurityProfile =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    profileConfig: Schema.optional(GoogleCloudApigeeV1ProfileConfig),
+    displayName: Schema.optional(Schema.String),
+    environments: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1SecurityProfileEnvironment),
+    ),
+    revisionId: Schema.optional(Schema.String),
+    maxScore: Schema.optional(Schema.Number),
+    revisionUpdateTime: Schema.optional(Schema.String),
+    revisionPublishTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    revisionCreateTime: Schema.optional(Schema.String),
+    minScore: Schema.optional(Schema.Number),
+    scoringConfigs: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1SecurityProfileScoringConfig),
+    ),
+    description: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1SecurityProfile" });
 
 export interface GoogleCloudApigeeV1ListSecurityProfileRevisionsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -206,17 +188,15 @@ export interface GoogleCloudApigeeV1ListSecurityProfileRevisionsResponse {
   securityProfiles?: Array<GoogleCloudApigeeV1SecurityProfile>;
 }
 
-export const GoogleCloudApigeeV1ListSecurityProfileRevisionsResponse: Schema.Schema<GoogleCloudApigeeV1ListSecurityProfileRevisionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      securityProfiles: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1SecurityProfile),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1ListSecurityProfileRevisionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    securityProfiles: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1SecurityProfile),
+    ),
+  }).annotate({
     identifier: "GoogleCloudApigeeV1ListSecurityProfileRevisionsResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ListSecurityProfileRevisionsResponse>;
+  });
 
 export interface GoogleCloudApigeeV1ReferenceConfig {
   /** Name of the reference in the following format: `organizations/{org}/environments/{env}/references/{reference}` */
@@ -225,15 +205,11 @@ export interface GoogleCloudApigeeV1ReferenceConfig {
   resourceName?: string;
 }
 
-export const GoogleCloudApigeeV1ReferenceConfig: Schema.Schema<GoogleCloudApigeeV1ReferenceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      resourceName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ReferenceConfig",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ReferenceConfig>;
+export const GoogleCloudApigeeV1ReferenceConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    resourceName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ReferenceConfig" });
 
 export interface GoogleTypeMoney {
   /** Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000. */
@@ -244,16 +220,11 @@ export interface GoogleTypeMoney {
   units?: string;
 }
 
-export const GoogleTypeMoney: Schema.Schema<GoogleTypeMoney> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nanos: Schema.optional(Schema.Number),
-      currencyCode: Schema.optional(Schema.String),
-      units: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleTypeMoney",
-  }) as any as Schema.Schema<GoogleTypeMoney>;
+export const GoogleTypeMoney = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nanos: Schema.optional(Schema.Number),
+  currencyCode: Schema.optional(Schema.String),
+  units: Schema.optional(Schema.String),
+}).annotate({ identifier: "GoogleTypeMoney" });
 
 export interface GoogleCloudApigeeV1RateRange {
   /** Fee to charge when total number of API calls falls within this range. */
@@ -264,16 +235,12 @@ export interface GoogleCloudApigeeV1RateRange {
   end?: string;
 }
 
-export const GoogleCloudApigeeV1RateRange: Schema.Schema<GoogleCloudApigeeV1RateRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fee: Schema.optional(GoogleTypeMoney),
-      start: Schema.optional(Schema.String),
-      end: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1RateRange",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1RateRange>;
+export const GoogleCloudApigeeV1RateRange =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fee: Schema.optional(GoogleTypeMoney),
+    start: Schema.optional(Schema.String),
+    end: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1RateRange" });
 
 export interface GoogleCloudApigeeV1EnvironmentClientIPResolutionConfigHeaderIndexAlgorithm {
   /** Required. The name of the header to extract the client ip from. */
@@ -282,39 +249,35 @@ export interface GoogleCloudApigeeV1EnvironmentClientIPResolutionConfigHeaderInd
   ipHeaderIndex?: number;
 }
 
-export const GoogleCloudApigeeV1EnvironmentClientIPResolutionConfigHeaderIndexAlgorithm: Schema.Schema<GoogleCloudApigeeV1EnvironmentClientIPResolutionConfigHeaderIndexAlgorithm> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ipHeaderName: Schema.optional(Schema.String),
-      ipHeaderIndex: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1EnvironmentClientIPResolutionConfigHeaderIndexAlgorithm =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ipHeaderName: Schema.optional(Schema.String),
+    ipHeaderIndex: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudApigeeV1EnvironmentClientIPResolutionConfigHeaderIndexAlgorithm",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1EnvironmentClientIPResolutionConfigHeaderIndexAlgorithm>;
+  });
 
 export interface GoogleCloudApigeeV1EnvironmentClientIPResolutionConfig {
   /** Resolves the client ip based on a custom header. */
   headerIndexAlgorithm?: GoogleCloudApigeeV1EnvironmentClientIPResolutionConfigHeaderIndexAlgorithm;
 }
 
-export const GoogleCloudApigeeV1EnvironmentClientIPResolutionConfig: Schema.Schema<GoogleCloudApigeeV1EnvironmentClientIPResolutionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      headerIndexAlgorithm: Schema.optional(
-        GoogleCloudApigeeV1EnvironmentClientIPResolutionConfigHeaderIndexAlgorithm,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1EnvironmentClientIPResolutionConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    headerIndexAlgorithm: Schema.optional(
+      GoogleCloudApigeeV1EnvironmentClientIPResolutionConfigHeaderIndexAlgorithm,
+    ),
+  }).annotate({
     identifier: "GoogleCloudApigeeV1EnvironmentClientIPResolutionConfig",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1EnvironmentClientIPResolutionConfig>;
+  });
 
 export interface GoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest {}
 
-export const GoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest: Schema.Schema<GoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ExpireDeveloperSubscriptionRequest>;
+  });
 
 export interface GoogleCloudApigeeV1TraceSamplingConfig {
   /** Field sampling rate. This value is only applicable when using the PROBABILITY sampler. The supported values are > 0 and <= 0.5. */
@@ -323,15 +286,11 @@ export interface GoogleCloudApigeeV1TraceSamplingConfig {
   sampler?: "SAMPLER_UNSPECIFIED" | "OFF" | "PROBABILITY" | (string & {});
 }
 
-export const GoogleCloudApigeeV1TraceSamplingConfig: Schema.Schema<GoogleCloudApigeeV1TraceSamplingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      samplingRate: Schema.optional(Schema.Number),
-      sampler: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1TraceSamplingConfig",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1TraceSamplingConfig>;
+export const GoogleCloudApigeeV1TraceSamplingConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    samplingRate: Schema.optional(Schema.Number),
+    sampler: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1TraceSamplingConfig" });
 
 export interface GoogleCloudApigeeV1TraceConfig {
   /** Required. Endpoint of the exporter. */
@@ -348,16 +307,12 @@ export interface GoogleCloudApigeeV1TraceConfig {
     | (string & {});
 }
 
-export const GoogleCloudApigeeV1TraceConfig: Schema.Schema<GoogleCloudApigeeV1TraceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endpoint: Schema.optional(Schema.String),
-      samplingConfig: Schema.optional(GoogleCloudApigeeV1TraceSamplingConfig),
-      exporter: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1TraceConfig",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1TraceConfig>;
+export const GoogleCloudApigeeV1TraceConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endpoint: Schema.optional(Schema.String),
+    samplingConfig: Schema.optional(GoogleCloudApigeeV1TraceSamplingConfig),
+    exporter: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1TraceConfig" });
 
 export interface GoogleCloudApigeeV1EntityMetadata {
   /** Time at which the API proxy was created, in milliseconds since epoch. */
@@ -368,16 +323,12 @@ export interface GoogleCloudApigeeV1EntityMetadata {
   subType?: string;
 }
 
-export const GoogleCloudApigeeV1EntityMetadata: Schema.Schema<GoogleCloudApigeeV1EntityMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createdAt: Schema.optional(Schema.String),
-      lastModifiedAt: Schema.optional(Schema.String),
-      subType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1EntityMetadata",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1EntityMetadata>;
+export const GoogleCloudApigeeV1EntityMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createdAt: Schema.optional(Schema.String),
+    lastModifiedAt: Schema.optional(Schema.String),
+    subType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1EntityMetadata" });
 
 export interface GoogleCloudApigeeV1SharedFlow {
   /** The id of the most recently created revision for this shared flow. */
@@ -392,31 +343,23 @@ export interface GoogleCloudApigeeV1SharedFlow {
   name?: string;
 }
 
-export const GoogleCloudApigeeV1SharedFlow: Schema.Schema<GoogleCloudApigeeV1SharedFlow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      latestRevisionId: Schema.optional(Schema.String),
-      space: Schema.optional(Schema.String),
-      revision: Schema.optional(Schema.Array(Schema.String)),
-      metaData: Schema.optional(GoogleCloudApigeeV1EntityMetadata),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1SharedFlow",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1SharedFlow>;
+export const GoogleCloudApigeeV1SharedFlow =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    latestRevisionId: Schema.optional(Schema.String),
+    space: Schema.optional(Schema.String),
+    revision: Schema.optional(Schema.Array(Schema.String)),
+    metaData: Schema.optional(GoogleCloudApigeeV1EntityMetadata),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1SharedFlow" });
 
 export interface GoogleCloudApigeeV1ListSharedFlowsResponse {
   sharedFlows?: Array<GoogleCloudApigeeV1SharedFlow>;
 }
 
-export const GoogleCloudApigeeV1ListSharedFlowsResponse: Schema.Schema<GoogleCloudApigeeV1ListSharedFlowsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sharedFlows: Schema.optional(Schema.Array(GoogleCloudApigeeV1SharedFlow)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ListSharedFlowsResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ListSharedFlowsResponse>;
+export const GoogleCloudApigeeV1ListSharedFlowsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sharedFlows: Schema.optional(Schema.Array(GoogleCloudApigeeV1SharedFlow)),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ListSharedFlowsResponse" });
 
 export interface GoogleCloudApigeeV1SecurityIncident {
   /** Output only. The time when events associated with the incident were first detected. */
@@ -448,22 +391,18 @@ export interface GoogleCloudApigeeV1SecurityIncident {
     | (string & {});
 }
 
-export const GoogleCloudApigeeV1SecurityIncident: Schema.Schema<GoogleCloudApigeeV1SecurityIncident> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      firstDetectedTime: Schema.optional(Schema.String),
-      trafficCount: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      detectionTypes: Schema.optional(Schema.Array(Schema.String)),
-      lastObservabilityChangeTime: Schema.optional(Schema.String),
-      lastDetectedTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      riskLevel: Schema.optional(Schema.String),
-      observability: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1SecurityIncident",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1SecurityIncident>;
+export const GoogleCloudApigeeV1SecurityIncident =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    firstDetectedTime: Schema.optional(Schema.String),
+    trafficCount: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    detectionTypes: Schema.optional(Schema.Array(Schema.String)),
+    lastObservabilityChangeTime: Schema.optional(Schema.String),
+    lastDetectedTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    riskLevel: Schema.optional(Schema.String),
+    observability: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1SecurityIncident" });
 
 export interface GoogleCloudApigeeV1UpdateSecurityIncidentRequest {
   /** Required. The security incident to update. Must contain all existing populated fields of the current incident. */
@@ -472,15 +411,13 @@ export interface GoogleCloudApigeeV1UpdateSecurityIncidentRequest {
   updateMask?: string;
 }
 
-export const GoogleCloudApigeeV1UpdateSecurityIncidentRequest: Schema.Schema<GoogleCloudApigeeV1UpdateSecurityIncidentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      securityIncident: Schema.optional(GoogleCloudApigeeV1SecurityIncident),
-      updateMask: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1UpdateSecurityIncidentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    securityIncident: Schema.optional(GoogleCloudApigeeV1SecurityIncident),
+    updateMask: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudApigeeV1UpdateSecurityIncidentRequest",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1UpdateSecurityIncidentRequest>;
+  });
 
 export interface GoogleCloudApigeeV1Property {
   /** The property key */
@@ -489,59 +426,43 @@ export interface GoogleCloudApigeeV1Property {
   value?: string;
 }
 
-export const GoogleCloudApigeeV1Property: Schema.Schema<GoogleCloudApigeeV1Property> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1Property",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1Property>;
+export const GoogleCloudApigeeV1Property =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1Property" });
 
 export interface GoogleCloudApigeeV1Properties {
   /** List of all properties in the object */
   property?: Array<GoogleCloudApigeeV1Property>;
 }
 
-export const GoogleCloudApigeeV1Properties: Schema.Schema<GoogleCloudApigeeV1Properties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      property: Schema.optional(Schema.Array(GoogleCloudApigeeV1Property)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1Properties",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1Properties>;
+export const GoogleCloudApigeeV1Properties =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    property: Schema.optional(Schema.Array(GoogleCloudApigeeV1Property)),
+  }).annotate({ identifier: "GoogleCloudApigeeV1Properties" });
 
 export interface GoogleCloudApigeeV1AccessRemove {
   name?: string;
   success?: boolean;
 }
 
-export const GoogleCloudApigeeV1AccessRemove: Schema.Schema<GoogleCloudApigeeV1AccessRemove> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      success: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1AccessRemove",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1AccessRemove>;
+export const GoogleCloudApigeeV1AccessRemove =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    success: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudApigeeV1AccessRemove" });
 
 export interface GoogleCloudApigeeV1AccessGet {
   name?: string;
   value?: string;
 }
 
-export const GoogleCloudApigeeV1AccessGet: Schema.Schema<GoogleCloudApigeeV1AccessGet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1AccessGet",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1AccessGet>;
+export const GoogleCloudApigeeV1AccessGet =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1AccessGet" });
 
 export interface GoogleCloudApigeeV1AccessSet {
   name?: string;
@@ -549,16 +470,12 @@ export interface GoogleCloudApigeeV1AccessSet {
   value?: string;
 }
 
-export const GoogleCloudApigeeV1AccessSet: Schema.Schema<GoogleCloudApigeeV1AccessSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      success: Schema.optional(Schema.Boolean),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1AccessSet",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1AccessSet>;
+export const GoogleCloudApigeeV1AccessSet =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    success: Schema.optional(Schema.Boolean),
+    value: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1AccessSet" });
 
 export interface GoogleCloudApigeeV1Access {
   Remove?: GoogleCloudApigeeV1AccessRemove;
@@ -566,16 +483,12 @@ export interface GoogleCloudApigeeV1Access {
   Set?: GoogleCloudApigeeV1AccessSet;
 }
 
-export const GoogleCloudApigeeV1Access: Schema.Schema<GoogleCloudApigeeV1Access> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      Remove: Schema.optional(GoogleCloudApigeeV1AccessRemove),
-      Get: Schema.optional(GoogleCloudApigeeV1AccessGet),
-      Set: Schema.optional(GoogleCloudApigeeV1AccessSet),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1Access",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1Access>;
+export const GoogleCloudApigeeV1Access =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    Remove: Schema.optional(GoogleCloudApigeeV1AccessRemove),
+    Get: Schema.optional(GoogleCloudApigeeV1AccessGet),
+    Set: Schema.optional(GoogleCloudApigeeV1AccessSet),
+  }).annotate({ identifier: "GoogleCloudApigeeV1Access" });
 
 export interface GoogleCloudApigeeV1Result {
   /** Name value pairs used for DebugInfo ActionResult. */
@@ -600,23 +513,19 @@ export interface GoogleCloudApigeeV1Result {
   content?: string;
 }
 
-export const GoogleCloudApigeeV1Result: Schema.Schema<GoogleCloudApigeeV1Result> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      properties: Schema.optional(GoogleCloudApigeeV1Properties),
-      verb: Schema.optional(Schema.String),
-      ActionResult: Schema.optional(Schema.String),
-      statusCode: Schema.optional(Schema.String),
-      timestamp: Schema.optional(Schema.String),
-      reasonPhrase: Schema.optional(Schema.String),
-      accessList: Schema.optional(Schema.Array(GoogleCloudApigeeV1Access)),
-      headers: Schema.optional(Schema.Array(GoogleCloudApigeeV1Property)),
-      uRI: Schema.optional(Schema.String),
-      content: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1Result",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1Result>;
+export const GoogleCloudApigeeV1Result =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(GoogleCloudApigeeV1Properties),
+    verb: Schema.optional(Schema.String),
+    ActionResult: Schema.optional(Schema.String),
+    statusCode: Schema.optional(Schema.String),
+    timestamp: Schema.optional(Schema.String),
+    reasonPhrase: Schema.optional(Schema.String),
+    accessList: Schema.optional(Schema.Array(GoogleCloudApigeeV1Access)),
+    headers: Schema.optional(Schema.Array(GoogleCloudApigeeV1Property)),
+    uRI: Schema.optional(Schema.String),
+    content: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1Result" });
 
 export interface GoogleCloudApigeeV1Point {
   /** Name of a step in the transaction. */
@@ -625,15 +534,11 @@ export interface GoogleCloudApigeeV1Point {
   results?: Array<GoogleCloudApigeeV1Result>;
 }
 
-export const GoogleCloudApigeeV1Point: Schema.Schema<GoogleCloudApigeeV1Point> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      results: Schema.optional(Schema.Array(GoogleCloudApigeeV1Result)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1Point",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1Point>;
+export const GoogleCloudApigeeV1Point =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    results: Schema.optional(Schema.Array(GoogleCloudApigeeV1Result)),
+  }).annotate({ identifier: "GoogleCloudApigeeV1Point" });
 
 export interface GoogleCloudApigeeV1SecurityActionHttpHeader {
   /** The header name to be sent to the target. */
@@ -642,31 +547,25 @@ export interface GoogleCloudApigeeV1SecurityActionHttpHeader {
   value?: string;
 }
 
-export const GoogleCloudApigeeV1SecurityActionHttpHeader: Schema.Schema<GoogleCloudApigeeV1SecurityActionHttpHeader> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1SecurityActionHttpHeader",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1SecurityActionHttpHeader>;
+export const GoogleCloudApigeeV1SecurityActionHttpHeader =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1SecurityActionHttpHeader" });
 
 export interface GoogleCloudApigeeV1BatchUpdateSecurityIncidentsRequest {
   /** Optional. Required. The request message specifying the resources to update. A maximum of 1000 can be modified in a batch. */
   requests?: Array<GoogleCloudApigeeV1UpdateSecurityIncidentRequest>;
 }
 
-export const GoogleCloudApigeeV1BatchUpdateSecurityIncidentsRequest: Schema.Schema<GoogleCloudApigeeV1BatchUpdateSecurityIncidentsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requests: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1UpdateSecurityIncidentRequest),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1BatchUpdateSecurityIncidentsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requests: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1UpdateSecurityIncidentRequest),
+    ),
+  }).annotate({
     identifier: "GoogleCloudApigeeV1BatchUpdateSecurityIncidentsRequest",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1BatchUpdateSecurityIncidentsRequest>;
+  });
 
 export interface GoogleCloudApigeeV1DocumentationFile {
   /** Required. The file contents. The max size is 4 MB. */
@@ -675,15 +574,11 @@ export interface GoogleCloudApigeeV1DocumentationFile {
   displayName?: string;
 }
 
-export const GoogleCloudApigeeV1DocumentationFile: Schema.Schema<GoogleCloudApigeeV1DocumentationFile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contents: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1DocumentationFile",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1DocumentationFile>;
+export const GoogleCloudApigeeV1DocumentationFile =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    contents: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1DocumentationFile" });
 
 export interface GoogleCloudApigeeV1OASDocumentation {
   /** Required. The documentation file contents for the OpenAPI Specification. JSON and YAML file formats are supported. */
@@ -692,43 +587,31 @@ export interface GoogleCloudApigeeV1OASDocumentation {
   format?: "FORMAT_UNSPECIFIED" | "YAML" | "JSON" | (string & {});
 }
 
-export const GoogleCloudApigeeV1OASDocumentation: Schema.Schema<GoogleCloudApigeeV1OASDocumentation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      spec: Schema.optional(GoogleCloudApigeeV1DocumentationFile),
-      format: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1OASDocumentation",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1OASDocumentation>;
+export const GoogleCloudApigeeV1OASDocumentation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    spec: Schema.optional(GoogleCloudApigeeV1DocumentationFile),
+    format: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1OASDocumentation" });
 
 export interface GoogleCloudApigeeV1MonetizationConfig {
   /** Flag that specifies whether the Monetization add-on is enabled. */
   enabled?: boolean;
 }
 
-export const GoogleCloudApigeeV1MonetizationConfig: Schema.Schema<GoogleCloudApigeeV1MonetizationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1MonetizationConfig",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1MonetizationConfig>;
+export const GoogleCloudApigeeV1MonetizationConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudApigeeV1MonetizationConfig" });
 
 export interface GoogleCloudApigeeV1IntegrationConfig {
   /** Flag that specifies whether the Integration add-on is enabled. */
   enabled?: boolean;
 }
 
-export const GoogleCloudApigeeV1IntegrationConfig: Schema.Schema<GoogleCloudApigeeV1IntegrationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1IntegrationConfig",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1IntegrationConfig>;
+export const GoogleCloudApigeeV1IntegrationConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudApigeeV1IntegrationConfig" });
 
 export interface GoogleCloudApigeeV1ConnectorsPlatformConfig {
   /** Flag that specifies whether the Connectors Platform add-on is enabled. */
@@ -737,15 +620,11 @@ export interface GoogleCloudApigeeV1ConnectorsPlatformConfig {
   expiresAt?: string;
 }
 
-export const GoogleCloudApigeeV1ConnectorsPlatformConfig: Schema.Schema<GoogleCloudApigeeV1ConnectorsPlatformConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-      expiresAt: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ConnectorsPlatformConfig",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ConnectorsPlatformConfig>;
+export const GoogleCloudApigeeV1ConnectorsPlatformConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+    expiresAt: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ConnectorsPlatformConfig" });
 
 export interface GoogleCloudApigeeV1AnalyticsConfig {
   /** Output only. The state of the Analytics add-on. */
@@ -764,31 +643,23 @@ export interface GoogleCloudApigeeV1AnalyticsConfig {
   updateTime?: string;
 }
 
-export const GoogleCloudApigeeV1AnalyticsConfig: Schema.Schema<GoogleCloudApigeeV1AnalyticsConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      enabled: Schema.optional(Schema.Boolean),
-      expireTimeMillis: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1AnalyticsConfig",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1AnalyticsConfig>;
+export const GoogleCloudApigeeV1AnalyticsConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+    enabled: Schema.optional(Schema.Boolean),
+    expireTimeMillis: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1AnalyticsConfig" });
 
 export interface GoogleCloudApigeeV1AdvancedApiOpsConfig {
   /** Flag that specifies whether the Advanced API Ops add-on is enabled. */
   enabled?: boolean;
 }
 
-export const GoogleCloudApigeeV1AdvancedApiOpsConfig: Schema.Schema<GoogleCloudApigeeV1AdvancedApiOpsConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1AdvancedApiOpsConfig",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1AdvancedApiOpsConfig>;
+export const GoogleCloudApigeeV1AdvancedApiOpsConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudApigeeV1AdvancedApiOpsConfig" });
 
 export interface GoogleCloudApigeeV1ApiSecurityConfig {
   /** Flag that specifies whether the API security add-on is enabled. */
@@ -797,15 +668,11 @@ export interface GoogleCloudApigeeV1ApiSecurityConfig {
   expiresAt?: string;
 }
 
-export const GoogleCloudApigeeV1ApiSecurityConfig: Schema.Schema<GoogleCloudApigeeV1ApiSecurityConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-      expiresAt: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ApiSecurityConfig",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ApiSecurityConfig>;
+export const GoogleCloudApigeeV1ApiSecurityConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+    expiresAt: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ApiSecurityConfig" });
 
 export interface GoogleCloudApigeeV1AddonsConfig {
   /** Configuration for the Monetization add-on. */
@@ -822,39 +689,29 @@ export interface GoogleCloudApigeeV1AddonsConfig {
   apiSecurityConfig?: GoogleCloudApigeeV1ApiSecurityConfig;
 }
 
-export const GoogleCloudApigeeV1AddonsConfig: Schema.Schema<GoogleCloudApigeeV1AddonsConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      monetizationConfig: Schema.optional(
-        GoogleCloudApigeeV1MonetizationConfig,
-      ),
-      integrationConfig: Schema.optional(GoogleCloudApigeeV1IntegrationConfig),
-      connectorsPlatformConfig: Schema.optional(
-        GoogleCloudApigeeV1ConnectorsPlatformConfig,
-      ),
-      analyticsConfig: Schema.optional(GoogleCloudApigeeV1AnalyticsConfig),
-      advancedApiOpsConfig: Schema.optional(
-        GoogleCloudApigeeV1AdvancedApiOpsConfig,
-      ),
-      apiSecurityConfig: Schema.optional(GoogleCloudApigeeV1ApiSecurityConfig),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1AddonsConfig",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1AddonsConfig>;
+export const GoogleCloudApigeeV1AddonsConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    monetizationConfig: Schema.optional(GoogleCloudApigeeV1MonetizationConfig),
+    integrationConfig: Schema.optional(GoogleCloudApigeeV1IntegrationConfig),
+    connectorsPlatformConfig: Schema.optional(
+      GoogleCloudApigeeV1ConnectorsPlatformConfig,
+    ),
+    analyticsConfig: Schema.optional(GoogleCloudApigeeV1AnalyticsConfig),
+    advancedApiOpsConfig: Schema.optional(
+      GoogleCloudApigeeV1AdvancedApiOpsConfig,
+    ),
+    apiSecurityConfig: Schema.optional(GoogleCloudApigeeV1ApiSecurityConfig),
+  }).annotate({ identifier: "GoogleCloudApigeeV1AddonsConfig" });
 
 export interface GoogleCloudApigeeV1SetAddonsRequest {
   /** Required. Add-on configurations. */
   addonsConfig?: GoogleCloudApigeeV1AddonsConfig;
 }
 
-export const GoogleCloudApigeeV1SetAddonsRequest: Schema.Schema<GoogleCloudApigeeV1SetAddonsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      addonsConfig: Schema.optional(GoogleCloudApigeeV1AddonsConfig),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1SetAddonsRequest",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1SetAddonsRequest>;
+export const GoogleCloudApigeeV1SetAddonsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    addonsConfig: Schema.optional(GoogleCloudApigeeV1AddonsConfig),
+  }).annotate({ identifier: "GoogleCloudApigeeV1SetAddonsRequest" });
 
 export interface GoogleCloudApigeeV1ConfigVersion {
   /** Major version of the API proxy configuration schema. */
@@ -863,15 +720,11 @@ export interface GoogleCloudApigeeV1ConfigVersion {
   minorVersion?: number;
 }
 
-export const GoogleCloudApigeeV1ConfigVersion: Schema.Schema<GoogleCloudApigeeV1ConfigVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      majorVersion: Schema.optional(Schema.Number),
-      minorVersion: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ConfigVersion",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ConfigVersion>;
+export const GoogleCloudApigeeV1ConfigVersion =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    majorVersion: Schema.optional(Schema.Number),
+    minorVersion: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ConfigVersion" });
 
 export interface GoogleCloudApigeeV1ResourceFile {
   /** ID of the resource file. */
@@ -880,31 +733,23 @@ export interface GoogleCloudApigeeV1ResourceFile {
   type?: string;
 }
 
-export const GoogleCloudApigeeV1ResourceFile: Schema.Schema<GoogleCloudApigeeV1ResourceFile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ResourceFile",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ResourceFile>;
+export const GoogleCloudApigeeV1ResourceFile =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ResourceFile" });
 
 export interface GoogleCloudApigeeV1ResourceFiles {
   /** List of resource files. */
   resourceFile?: Array<GoogleCloudApigeeV1ResourceFile>;
 }
 
-export const GoogleCloudApigeeV1ResourceFiles: Schema.Schema<GoogleCloudApigeeV1ResourceFiles> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceFile: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1ResourceFile),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ResourceFiles",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ResourceFiles>;
+export const GoogleCloudApigeeV1ResourceFiles =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceFile: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1ResourceFile),
+    ),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ResourceFiles" });
 
 export interface GoogleCloudApigeeV1SharedFlowRevision {
   /** The version of the configuration schema to which this shared flow conforms. The only supported value currently is majorVersion 4 and minorVersion 0. This setting may be used in the future to enable evolution of the shared flow format. */
@@ -937,44 +782,38 @@ export interface GoogleCloudApigeeV1SharedFlowRevision {
   policies?: Array<string>;
 }
 
-export const GoogleCloudApigeeV1SharedFlowRevision: Schema.Schema<GoogleCloudApigeeV1SharedFlowRevision> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      configurationVersion: Schema.optional(GoogleCloudApigeeV1ConfigVersion),
-      entityMetaDataAsProperties: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      name: Schema.optional(Schema.String),
-      revision: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      resourceFiles: Schema.optional(GoogleCloudApigeeV1ResourceFiles),
-      contextInfo: Schema.optional(Schema.String),
-      lastModifiedAt: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      resources: Schema.optional(Schema.Array(Schema.String)),
-      sharedFlows: Schema.optional(Schema.Array(Schema.String)),
-      createdAt: Schema.optional(Schema.String),
-      policies: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1SharedFlowRevision",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1SharedFlowRevision>;
+export const GoogleCloudApigeeV1SharedFlowRevision =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    configurationVersion: Schema.optional(GoogleCloudApigeeV1ConfigVersion),
+    entityMetaDataAsProperties: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    name: Schema.optional(Schema.String),
+    revision: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    resourceFiles: Schema.optional(GoogleCloudApigeeV1ResourceFiles),
+    contextInfo: Schema.optional(Schema.String),
+    lastModifiedAt: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    resources: Schema.optional(Schema.Array(Schema.String)),
+    sharedFlows: Schema.optional(Schema.Array(Schema.String)),
+    createdAt: Schema.optional(Schema.String),
+    policies: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudApigeeV1SharedFlowRevision" });
 
 export interface GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubGatewayArray {
   /** Required. The array of API Hub Gateway IDs. Format: `projects/{project}/locations/{location}/plugins/{plugin}/instances/{instance}` */
   gateways?: Array<string>;
 }
 
-export const GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubGatewayArray: Schema.Schema<GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubGatewayArray> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gateways: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubGatewayArray =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gateways: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier:
       "GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubGatewayArray",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubGatewayArray>;
+  });
 
 export interface GoogleCloudApigeeV1Attribute {
   /** API key of the attribute. */
@@ -983,15 +822,11 @@ export interface GoogleCloudApigeeV1Attribute {
   value?: string;
 }
 
-export const GoogleCloudApigeeV1Attribute: Schema.Schema<GoogleCloudApigeeV1Attribute> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1Attribute",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1Attribute>;
+export const GoogleCloudApigeeV1Attribute =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1Attribute" });
 
 export interface GoogleCloudApigeeV1ApiProductRef {
   /** Name of the API product. */
@@ -1000,15 +835,11 @@ export interface GoogleCloudApigeeV1ApiProductRef {
   status?: string;
 }
 
-export const GoogleCloudApigeeV1ApiProductRef: Schema.Schema<GoogleCloudApigeeV1ApiProductRef> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      apiproduct: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ApiProductRef",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ApiProductRef>;
+export const GoogleCloudApigeeV1ApiProductRef =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apiproduct: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ApiProductRef" });
 
 export interface GoogleCloudApigeeV1Credential {
   /** List of API products this credential can be used for. */
@@ -1029,23 +860,19 @@ export interface GoogleCloudApigeeV1Credential {
   expiresAt?: string;
 }
 
-export const GoogleCloudApigeeV1Credential: Schema.Schema<GoogleCloudApigeeV1Credential> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      apiProducts: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1ApiProductRef),
-      ),
-      attributes: Schema.optional(Schema.Array(GoogleCloudApigeeV1Attribute)),
-      consumerKey: Schema.optional(Schema.String),
-      issuedAt: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-      consumerSecret: Schema.optional(Schema.String),
-      scopes: Schema.optional(Schema.Array(Schema.String)),
-      expiresAt: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1Credential",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1Credential>;
+export const GoogleCloudApigeeV1Credential =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apiProducts: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1ApiProductRef),
+    ),
+    attributes: Schema.optional(Schema.Array(GoogleCloudApigeeV1Attribute)),
+    consumerKey: Schema.optional(Schema.String),
+    issuedAt: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+    consumerSecret: Schema.optional(Schema.String),
+    scopes: Schema.optional(Schema.Array(Schema.String)),
+    expiresAt: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1Credential" });
 
 export interface GoogleCloudApigeeV1DeveloperApp {
   /** ID of the developer. */
@@ -1076,26 +903,22 @@ export interface GoogleCloudApigeeV1DeveloperApp {
   lastModifiedAt?: string;
 }
 
-export const GoogleCloudApigeeV1DeveloperApp: Schema.Schema<GoogleCloudApigeeV1DeveloperApp> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      developerId: Schema.optional(Schema.String),
-      scopes: Schema.optional(Schema.Array(Schema.String)),
-      createdAt: Schema.optional(Schema.String),
-      appFamily: Schema.optional(Schema.String),
-      attributes: Schema.optional(Schema.Array(GoogleCloudApigeeV1Attribute)),
-      callbackUrl: Schema.optional(Schema.String),
-      credentials: Schema.optional(Schema.Array(GoogleCloudApigeeV1Credential)),
-      keyExpiresIn: Schema.optional(Schema.String),
-      apiProducts: Schema.optional(Schema.Array(Schema.String)),
-      appId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-      lastModifiedAt: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1DeveloperApp",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1DeveloperApp>;
+export const GoogleCloudApigeeV1DeveloperApp =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    developerId: Schema.optional(Schema.String),
+    scopes: Schema.optional(Schema.Array(Schema.String)),
+    createdAt: Schema.optional(Schema.String),
+    appFamily: Schema.optional(Schema.String),
+    attributes: Schema.optional(Schema.Array(GoogleCloudApigeeV1Attribute)),
+    callbackUrl: Schema.optional(Schema.String),
+    credentials: Schema.optional(Schema.Array(GoogleCloudApigeeV1Credential)),
+    keyExpiresIn: Schema.optional(Schema.String),
+    apiProducts: Schema.optional(Schema.Array(Schema.String)),
+    appId: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+    lastModifiedAt: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1DeveloperApp" });
 
 export interface GoogleCloudApigeeV1ApiCategory {
   /** Name of the portal. */
@@ -1108,17 +931,13 @@ export interface GoogleCloudApigeeV1ApiCategory {
   id?: string;
 }
 
-export const GoogleCloudApigeeV1ApiCategory: Schema.Schema<GoogleCloudApigeeV1ApiCategory> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      siteId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ApiCategory",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ApiCategory>;
+export const GoogleCloudApigeeV1ApiCategory =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    siteId: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ApiCategory" });
 
 export interface GoogleCloudApigeeV1ListApiCategoriesResponse {
   /** Status of the operation. */
@@ -1133,18 +952,14 @@ export interface GoogleCloudApigeeV1ListApiCategoriesResponse {
   data?: Array<GoogleCloudApigeeV1ApiCategory>;
 }
 
-export const GoogleCloudApigeeV1ListApiCategoriesResponse: Schema.Schema<GoogleCloudApigeeV1ListApiCategoriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      status: Schema.optional(Schema.String),
-      requestId: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-      errorCode: Schema.optional(Schema.String),
-      data: Schema.optional(Schema.Array(GoogleCloudApigeeV1ApiCategory)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ListApiCategoriesResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ListApiCategoriesResponse>;
+export const GoogleCloudApigeeV1ListApiCategoriesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    status: Schema.optional(Schema.String),
+    requestId: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+    errorCode: Schema.optional(Schema.String),
+    data: Schema.optional(Schema.Array(GoogleCloudApigeeV1ApiCategory)),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ListApiCategoriesResponse" });
 
 export interface GoogleCloudApigeeV1SecurityReportResultMetadata {
   /** Self link of the query results. Example: `/organizations/myorg/environments/myenv/securityReports/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd/result` or following format if query is running at host level: `/organizations/myorg/hostSecurityReports/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd/result` */
@@ -1153,15 +968,13 @@ export interface GoogleCloudApigeeV1SecurityReportResultMetadata {
   expires?: string;
 }
 
-export const GoogleCloudApigeeV1SecurityReportResultMetadata: Schema.Schema<GoogleCloudApigeeV1SecurityReportResultMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      self: Schema.optional(Schema.String),
-      expires: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1SecurityReportResultMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    self: Schema.optional(Schema.String),
+    expires: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudApigeeV1SecurityReportResultMetadata",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1SecurityReportResultMetadata>;
+  });
 
 export interface GoogleCloudApigeeV1SecurityFeedbackFeedbackContext {
   /** Required. The attribute the user is providing feedback about. */
@@ -1174,15 +987,13 @@ export interface GoogleCloudApigeeV1SecurityFeedbackFeedbackContext {
   values?: Array<string>;
 }
 
-export const GoogleCloudApigeeV1SecurityFeedbackFeedbackContext: Schema.Schema<GoogleCloudApigeeV1SecurityFeedbackFeedbackContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      attribute: Schema.optional(Schema.String),
-      values: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1SecurityFeedbackFeedbackContext =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    attribute: Schema.optional(Schema.String),
+    values: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudApigeeV1SecurityFeedbackFeedbackContext",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1SecurityFeedbackFeedbackContext>;
+  });
 
 export interface GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment {
   /** Name of the deployed API proxy revision containing the base path. */
@@ -1195,17 +1006,15 @@ export interface GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment {
   environment?: string;
 }
 
-export const GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment: Schema.Schema<GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      revision: Schema.optional(Schema.String),
-      basepath: Schema.optional(Schema.String),
-      apiProxy: Schema.optional(Schema.String),
-      environment: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    revision: Schema.optional(Schema.String),
+    basepath: Schema.optional(Schema.String),
+    apiProxy: Schema.optional(Schema.String),
+    environment: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment>;
+  });
 
 export interface GoogleCloudApigeeV1DeploymentChangeReportRoutingChange {
   /** Name of the environment group affected by this routing change. */
@@ -1220,22 +1029,20 @@ export interface GoogleCloudApigeeV1DeploymentChangeReportRoutingChange {
   toDeployment?: GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment;
 }
 
-export const GoogleCloudApigeeV1DeploymentChangeReportRoutingChange: Schema.Schema<GoogleCloudApigeeV1DeploymentChangeReportRoutingChange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      environmentGroup: Schema.optional(Schema.String),
-      shouldSequenceRollout: Schema.optional(Schema.Boolean),
-      fromDeployment: Schema.optional(
-        GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment,
-      ),
-      description: Schema.optional(Schema.String),
-      toDeployment: Schema.optional(
-        GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1DeploymentChangeReportRoutingChange =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    environmentGroup: Schema.optional(Schema.String),
+    shouldSequenceRollout: Schema.optional(Schema.Boolean),
+    fromDeployment: Schema.optional(
+      GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment,
+    ),
+    description: Schema.optional(Schema.String),
+    toDeployment: Schema.optional(
+      GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment,
+    ),
+  }).annotate({
     identifier: "GoogleCloudApigeeV1DeploymentChangeReportRoutingChange",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1DeploymentChangeReportRoutingChange>;
+  });
 
 export interface GoogleRpcPreconditionFailureViolation {
   /** The subject, relative to the type, that failed. For example, "google.com/cloud" relative to the "TOS" type would indicate which terms of service is being referenced. */
@@ -1246,32 +1053,24 @@ export interface GoogleRpcPreconditionFailureViolation {
   description?: string;
 }
 
-export const GoogleRpcPreconditionFailureViolation: Schema.Schema<GoogleRpcPreconditionFailureViolation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subject: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleRpcPreconditionFailureViolation",
-  }) as any as Schema.Schema<GoogleRpcPreconditionFailureViolation>;
+export const GoogleRpcPreconditionFailureViolation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subject: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleRpcPreconditionFailureViolation" });
 
 export interface GoogleRpcPreconditionFailure {
   /** Describes all precondition violations. */
   violations?: Array<GoogleRpcPreconditionFailureViolation>;
 }
 
-export const GoogleRpcPreconditionFailure: Schema.Schema<GoogleRpcPreconditionFailure> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      violations: Schema.optional(
-        Schema.Array(GoogleRpcPreconditionFailureViolation),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleRpcPreconditionFailure",
-  }) as any as Schema.Schema<GoogleRpcPreconditionFailure>;
+export const GoogleRpcPreconditionFailure =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    violations: Schema.optional(
+      Schema.Array(GoogleRpcPreconditionFailureViolation),
+    ),
+  }).annotate({ identifier: "GoogleRpcPreconditionFailure" });
 
 export interface GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict {
   /** Existing base path/deployment causing the conflict. */
@@ -1282,18 +1081,16 @@ export interface GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict {
   description?: string;
 }
 
-export const GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict: Schema.Schema<GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conflictingDeployment: Schema.optional(
-        GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment,
-      ),
-      environmentGroup: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conflictingDeployment: Schema.optional(
+      GoogleCloudApigeeV1DeploymentChangeReportRoutingDeployment,
+    ),
+    environmentGroup: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict>;
+  });
 
 export interface GoogleCloudApigeeV1DeploymentChangeReport {
   /** All routing changes that may result from a deployment request. */
@@ -1304,20 +1101,16 @@ export interface GoogleCloudApigeeV1DeploymentChangeReport {
   routingConflicts?: Array<GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict>;
 }
 
-export const GoogleCloudApigeeV1DeploymentChangeReport: Schema.Schema<GoogleCloudApigeeV1DeploymentChangeReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      routingChanges: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1DeploymentChangeReportRoutingChange),
-      ),
-      validationErrors: Schema.optional(GoogleRpcPreconditionFailure),
-      routingConflicts: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1DeploymentChangeReport",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1DeploymentChangeReport>;
+export const GoogleCloudApigeeV1DeploymentChangeReport =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    routingChanges: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1DeploymentChangeReportRoutingChange),
+    ),
+    validationErrors: Schema.optional(GoogleRpcPreconditionFailure),
+    routingConflicts: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict),
+    ),
+  }).annotate({ identifier: "GoogleCloudApigeeV1DeploymentChangeReport" });
 
 export interface EdgeConfigstoreBundleBadBundleViolation {
   /** The filename (including relative path from the bundle root) in which the error occurred. */
@@ -1326,29 +1119,21 @@ export interface EdgeConfigstoreBundleBadBundleViolation {
   description?: string;
 }
 
-export const EdgeConfigstoreBundleBadBundleViolation: Schema.Schema<EdgeConfigstoreBundleBadBundleViolation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filename: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EdgeConfigstoreBundleBadBundleViolation",
-  }) as any as Schema.Schema<EdgeConfigstoreBundleBadBundleViolation>;
+export const EdgeConfigstoreBundleBadBundleViolation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filename: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EdgeConfigstoreBundleBadBundleViolation" });
 
 export interface GoogleCloudApigeeV1RuntimeApiSecurityConfig {
   /** If the API Security is enabled or not. */
   enabled?: boolean;
 }
 
-export const GoogleCloudApigeeV1RuntimeApiSecurityConfig: Schema.Schema<GoogleCloudApigeeV1RuntimeApiSecurityConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1RuntimeApiSecurityConfig",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1RuntimeApiSecurityConfig>;
+export const GoogleCloudApigeeV1RuntimeApiSecurityConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudApigeeV1RuntimeApiSecurityConfig" });
 
 export interface GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGatewayTypeArray {
   /** Required. The array of API Hub Gateway Types. */
@@ -1362,15 +1147,13 @@ export interface GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiH
   >;
 }
 
-export const GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGatewayTypeArray: Schema.Schema<GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGatewayTypeArray> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gatewayTypes: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGatewayTypeArray =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gatewayTypes: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier:
       "GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGatewayTypeArray",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGatewayTypeArray>;
+  });
 
 export interface GoogleCloudApigeeV1NatAddress {
   /** Output only. State of the nat address. */
@@ -1387,16 +1170,12 @@ export interface GoogleCloudApigeeV1NatAddress {
   ipAddress?: string;
 }
 
-export const GoogleCloudApigeeV1NatAddress: Schema.Schema<GoogleCloudApigeeV1NatAddress> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      ipAddress: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1NatAddress",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1NatAddress>;
+export const GoogleCloudApigeeV1NatAddress =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    ipAddress: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1NatAddress" });
 
 export interface GoogleCloudApigeeV1LlmTokenQuota {
   /** Required. Upper limit of LLM tokens allowed for the time interval and time unit specified. Requests exceeding this limit will be rejected. */
@@ -1407,16 +1186,12 @@ export interface GoogleCloudApigeeV1LlmTokenQuota {
   interval?: string;
 }
 
-export const GoogleCloudApigeeV1LlmTokenQuota: Schema.Schema<GoogleCloudApigeeV1LlmTokenQuota> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      limit: Schema.optional(Schema.String),
-      timeUnit: Schema.optional(Schema.String),
-      interval: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1LlmTokenQuota",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1LlmTokenQuota>;
+export const GoogleCloudApigeeV1LlmTokenQuota =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    limit: Schema.optional(Schema.String),
+    timeUnit: Schema.optional(Schema.String),
+    interval: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1LlmTokenQuota" });
 
 export interface GoogleCloudApigeeV1LlmOperation {
   /** Optional. methods refers to the REST verbs as in https://httpwg.org/specs/rfc9110.html For example: GET, POST, PUT, DELETE, etc. They need to be in uppercase. When none specified, all verb types are allowed. */
@@ -1427,16 +1202,12 @@ export interface GoogleCloudApigeeV1LlmOperation {
   resource?: string;
 }
 
-export const GoogleCloudApigeeV1LlmOperation: Schema.Schema<GoogleCloudApigeeV1LlmOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      methods: Schema.optional(Schema.Array(Schema.String)),
-      model: Schema.optional(Schema.String),
-      resource: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1LlmOperation",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1LlmOperation>;
+export const GoogleCloudApigeeV1LlmOperation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    methods: Schema.optional(Schema.Array(Schema.String)),
+    model: Schema.optional(Schema.String),
+    resource: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1LlmOperation" });
 
 export interface GoogleCloudApigeeV1LlmOperationConfig {
   /** Required. Name of the API proxy or remote service with which the resources, methods, and quota are associated. */
@@ -1449,35 +1220,27 @@ export interface GoogleCloudApigeeV1LlmOperationConfig {
   llmOperations?: Array<GoogleCloudApigeeV1LlmOperation>;
 }
 
-export const GoogleCloudApigeeV1LlmOperationConfig: Schema.Schema<GoogleCloudApigeeV1LlmOperationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      apiSource: Schema.optional(Schema.String),
-      llmTokenQuota: Schema.optional(GoogleCloudApigeeV1LlmTokenQuota),
-      attributes: Schema.optional(Schema.Array(GoogleCloudApigeeV1Attribute)),
-      llmOperations: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1LlmOperation),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1LlmOperationConfig",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1LlmOperationConfig>;
+export const GoogleCloudApigeeV1LlmOperationConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apiSource: Schema.optional(Schema.String),
+    llmTokenQuota: Schema.optional(GoogleCloudApigeeV1LlmTokenQuota),
+    attributes: Schema.optional(Schema.Array(GoogleCloudApigeeV1Attribute)),
+    llmOperations: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1LlmOperation),
+    ),
+  }).annotate({ identifier: "GoogleCloudApigeeV1LlmOperationConfig" });
 
 export interface GoogleCloudApigeeV1LlmOperationGroup {
   /** Required. List of LLM operation configurations for either Apigee API proxies that are associated with this API product. */
   operationConfigs?: Array<GoogleCloudApigeeV1LlmOperationConfig>;
 }
 
-export const GoogleCloudApigeeV1LlmOperationGroup: Schema.Schema<GoogleCloudApigeeV1LlmOperationGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operationConfigs: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1LlmOperationConfig),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1LlmOperationGroup",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1LlmOperationGroup>;
+export const GoogleCloudApigeeV1LlmOperationGroup =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operationConfigs: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1LlmOperationConfig),
+    ),
+  }).annotate({ identifier: "GoogleCloudApigeeV1LlmOperationGroup" });
 
 export interface GoogleCloudApigeeV1Quota {
   /** Required. Upper limit allowed for the time interval and time unit specified. Requests exceeding this limit will be rejected. */
@@ -1488,16 +1251,12 @@ export interface GoogleCloudApigeeV1Quota {
   interval?: string;
 }
 
-export const GoogleCloudApigeeV1Quota: Schema.Schema<GoogleCloudApigeeV1Quota> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      limit: Schema.optional(Schema.String),
-      timeUnit: Schema.optional(Schema.String),
-      interval: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1Quota",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1Quota>;
+export const GoogleCloudApigeeV1Quota =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    limit: Schema.optional(Schema.String),
+    timeUnit: Schema.optional(Schema.String),
+    interval: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1Quota" });
 
 export interface GoogleCloudApigeeV1GrpcOperationConfig {
   /** Quota parameters to be enforced for the methods and API source combination. If none are specified, quota enforcement will not be done. */
@@ -1512,34 +1271,26 @@ export interface GoogleCloudApigeeV1GrpcOperationConfig {
   attributes?: Array<GoogleCloudApigeeV1Attribute>;
 }
 
-export const GoogleCloudApigeeV1GrpcOperationConfig: Schema.Schema<GoogleCloudApigeeV1GrpcOperationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      quota: Schema.optional(GoogleCloudApigeeV1Quota),
-      service: Schema.optional(Schema.String),
-      methods: Schema.optional(Schema.Array(Schema.String)),
-      apiSource: Schema.optional(Schema.String),
-      attributes: Schema.optional(Schema.Array(GoogleCloudApigeeV1Attribute)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1GrpcOperationConfig",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1GrpcOperationConfig>;
+export const GoogleCloudApigeeV1GrpcOperationConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    quota: Schema.optional(GoogleCloudApigeeV1Quota),
+    service: Schema.optional(Schema.String),
+    methods: Schema.optional(Schema.Array(Schema.String)),
+    apiSource: Schema.optional(Schema.String),
+    attributes: Schema.optional(Schema.Array(GoogleCloudApigeeV1Attribute)),
+  }).annotate({ identifier: "GoogleCloudApigeeV1GrpcOperationConfig" });
 
 export interface GoogleCloudApigeeV1GrpcOperationGroup {
   /** Required. List of operation configurations for either Apigee API proxies that are associated with this API product. */
   operationConfigs?: Array<GoogleCloudApigeeV1GrpcOperationConfig>;
 }
 
-export const GoogleCloudApigeeV1GrpcOperationGroup: Schema.Schema<GoogleCloudApigeeV1GrpcOperationGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operationConfigs: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1GrpcOperationConfig),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1GrpcOperationGroup",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1GrpcOperationGroup>;
+export const GoogleCloudApigeeV1GrpcOperationGroup =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operationConfigs: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1GrpcOperationConfig),
+    ),
+  }).annotate({ identifier: "GoogleCloudApigeeV1GrpcOperationGroup" });
 
 export interface GoogleCloudApigeeV1GraphQLOperation {
   /** Required. GraphQL operation types. Valid values include `query` or `mutation`. **Note**: Apigee does not currently support `subscription` types. */
@@ -1548,15 +1299,11 @@ export interface GoogleCloudApigeeV1GraphQLOperation {
   operation?: string;
 }
 
-export const GoogleCloudApigeeV1GraphQLOperation: Schema.Schema<GoogleCloudApigeeV1GraphQLOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operationTypes: Schema.optional(Schema.Array(Schema.String)),
-      operation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1GraphQLOperation",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1GraphQLOperation>;
+export const GoogleCloudApigeeV1GraphQLOperation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operationTypes: Schema.optional(Schema.Array(Schema.String)),
+    operation: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1GraphQLOperation" });
 
 export interface GoogleCloudApigeeV1GraphQLOperationConfig {
   /** Quota parameters to be enforced for the resources, methods, and API source combination. If none are specified, quota enforcement will not be done. */
@@ -1569,19 +1316,15 @@ export interface GoogleCloudApigeeV1GraphQLOperationConfig {
   operations?: Array<GoogleCloudApigeeV1GraphQLOperation>;
 }
 
-export const GoogleCloudApigeeV1GraphQLOperationConfig: Schema.Schema<GoogleCloudApigeeV1GraphQLOperationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      quota: Schema.optional(GoogleCloudApigeeV1Quota),
-      apiSource: Schema.optional(Schema.String),
-      attributes: Schema.optional(Schema.Array(GoogleCloudApigeeV1Attribute)),
-      operations: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1GraphQLOperation),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1GraphQLOperationConfig",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1GraphQLOperationConfig>;
+export const GoogleCloudApigeeV1GraphQLOperationConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    quota: Schema.optional(GoogleCloudApigeeV1Quota),
+    apiSource: Schema.optional(Schema.String),
+    attributes: Schema.optional(Schema.Array(GoogleCloudApigeeV1Attribute)),
+    operations: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1GraphQLOperation),
+    ),
+  }).annotate({ identifier: "GoogleCloudApigeeV1GraphQLOperationConfig" });
 
 export interface GoogleCloudApigeeV1GraphQLOperationGroup {
   /** Required. List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product. */
@@ -1590,17 +1333,13 @@ export interface GoogleCloudApigeeV1GraphQLOperationGroup {
   operationConfigType?: string;
 }
 
-export const GoogleCloudApigeeV1GraphQLOperationGroup: Schema.Schema<GoogleCloudApigeeV1GraphQLOperationGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operationConfigs: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1GraphQLOperationConfig),
-      ),
-      operationConfigType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1GraphQLOperationGroup",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1GraphQLOperationGroup>;
+export const GoogleCloudApigeeV1GraphQLOperationGroup =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operationConfigs: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1GraphQLOperationConfig),
+    ),
+    operationConfigType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1GraphQLOperationGroup" });
 
 export interface GoogleCloudApigeeV1Operation {
   /** Required. REST resource path associated with the API proxy or remote service. */
@@ -1609,15 +1348,11 @@ export interface GoogleCloudApigeeV1Operation {
   methods?: Array<string>;
 }
 
-export const GoogleCloudApigeeV1Operation: Schema.Schema<GoogleCloudApigeeV1Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resource: Schema.optional(Schema.String),
-      methods: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1Operation",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1Operation>;
+export const GoogleCloudApigeeV1Operation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.optional(Schema.String),
+    methods: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudApigeeV1Operation" });
 
 export interface GoogleCloudApigeeV1OperationConfig {
   /** Custom attributes associated with the operation. */
@@ -1630,17 +1365,13 @@ export interface GoogleCloudApigeeV1OperationConfig {
   apiSource?: string;
 }
 
-export const GoogleCloudApigeeV1OperationConfig: Schema.Schema<GoogleCloudApigeeV1OperationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      attributes: Schema.optional(Schema.Array(GoogleCloudApigeeV1Attribute)),
-      operations: Schema.optional(Schema.Array(GoogleCloudApigeeV1Operation)),
-      quota: Schema.optional(GoogleCloudApigeeV1Quota),
-      apiSource: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1OperationConfig",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1OperationConfig>;
+export const GoogleCloudApigeeV1OperationConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    attributes: Schema.optional(Schema.Array(GoogleCloudApigeeV1Attribute)),
+    operations: Schema.optional(Schema.Array(GoogleCloudApigeeV1Operation)),
+    quota: Schema.optional(GoogleCloudApigeeV1Quota),
+    apiSource: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1OperationConfig" });
 
 export interface GoogleCloudApigeeV1OperationGroup {
   /** Required. List of operation configurations for either Apigee API proxies or other remote services that are associated with this API product. */
@@ -1649,17 +1380,13 @@ export interface GoogleCloudApigeeV1OperationGroup {
   operationConfigType?: string;
 }
 
-export const GoogleCloudApigeeV1OperationGroup: Schema.Schema<GoogleCloudApigeeV1OperationGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operationConfigs: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1OperationConfig),
-      ),
-      operationConfigType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1OperationGroup",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1OperationGroup>;
+export const GoogleCloudApigeeV1OperationGroup =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operationConfigs: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1OperationConfig),
+    ),
+    operationConfigType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1OperationGroup" });
 
 export interface GoogleCloudApigeeV1ApiProduct {
   /** Comma-separated list of OAuth scopes that are validated at runtime. Apigee validates that the scopes in any access token presented match the scopes defined in the OAuth policy associated with the API product. */
@@ -1715,40 +1442,34 @@ export interface GoogleCloudApigeeV1ApiProduct {
   llmQuota?: string;
 }
 
-export const GoogleCloudApigeeV1ApiProduct: Schema.Schema<GoogleCloudApigeeV1ApiProduct> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scopes: Schema.optional(Schema.Array(Schema.String)),
-      quotaInterval: Schema.optional(Schema.String),
-      quotaTimeUnit: Schema.optional(Schema.String),
-      createdAt: Schema.optional(Schema.String),
-      quota: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      apiResources: Schema.optional(Schema.Array(Schema.String)),
-      quotaCounterScope: Schema.optional(Schema.String),
-      environments: Schema.optional(Schema.Array(Schema.String)),
-      llmOperationGroup: Schema.optional(GoogleCloudApigeeV1LlmOperationGroup),
-      proxies: Schema.optional(Schema.Array(Schema.String)),
-      attributes: Schema.optional(Schema.Array(GoogleCloudApigeeV1Attribute)),
-      llmQuotaInterval: Schema.optional(Schema.String),
-      grpcOperationGroup: Schema.optional(
-        GoogleCloudApigeeV1GrpcOperationGroup,
-      ),
-      llmQuotaTimeUnit: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      graphqlOperationGroup: Schema.optional(
-        GoogleCloudApigeeV1GraphQLOperationGroup,
-      ),
-      displayName: Schema.optional(Schema.String),
-      approvalType: Schema.optional(Schema.String),
-      operationGroup: Schema.optional(GoogleCloudApigeeV1OperationGroup),
-      space: Schema.optional(Schema.String),
-      lastModifiedAt: Schema.optional(Schema.String),
-      llmQuota: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ApiProduct",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ApiProduct>;
+export const GoogleCloudApigeeV1ApiProduct =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scopes: Schema.optional(Schema.Array(Schema.String)),
+    quotaInterval: Schema.optional(Schema.String),
+    quotaTimeUnit: Schema.optional(Schema.String),
+    createdAt: Schema.optional(Schema.String),
+    quota: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    apiResources: Schema.optional(Schema.Array(Schema.String)),
+    quotaCounterScope: Schema.optional(Schema.String),
+    environments: Schema.optional(Schema.Array(Schema.String)),
+    llmOperationGroup: Schema.optional(GoogleCloudApigeeV1LlmOperationGroup),
+    proxies: Schema.optional(Schema.Array(Schema.String)),
+    attributes: Schema.optional(Schema.Array(GoogleCloudApigeeV1Attribute)),
+    llmQuotaInterval: Schema.optional(Schema.String),
+    grpcOperationGroup: Schema.optional(GoogleCloudApigeeV1GrpcOperationGroup),
+    llmQuotaTimeUnit: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    graphqlOperationGroup: Schema.optional(
+      GoogleCloudApigeeV1GraphQLOperationGroup,
+    ),
+    displayName: Schema.optional(Schema.String),
+    approvalType: Schema.optional(Schema.String),
+    operationGroup: Schema.optional(GoogleCloudApigeeV1OperationGroup),
+    space: Schema.optional(Schema.String),
+    lastModifiedAt: Schema.optional(Schema.String),
+    llmQuota: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ApiProduct" });
 
 export interface GoogleCloudApigeeV1CertInfo {
   /** X.509 subject. */
@@ -1775,38 +1496,30 @@ export interface GoogleCloudApigeeV1CertInfo {
   sigAlgName?: string;
 }
 
-export const GoogleCloudApigeeV1CertInfo: Schema.Schema<GoogleCloudApigeeV1CertInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subject: Schema.optional(Schema.String),
-      isValid: Schema.optional(Schema.String),
-      expiryDate: Schema.optional(Schema.String),
-      basicConstraints: Schema.optional(Schema.String),
-      validFrom: Schema.optional(Schema.String),
-      publicKey: Schema.optional(Schema.String),
-      subjectAlternativeNames: Schema.optional(Schema.Array(Schema.String)),
-      version: Schema.optional(Schema.Number),
-      issuer: Schema.optional(Schema.String),
-      serialNumber: Schema.optional(Schema.String),
-      sigAlgName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1CertInfo",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1CertInfo>;
+export const GoogleCloudApigeeV1CertInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subject: Schema.optional(Schema.String),
+    isValid: Schema.optional(Schema.String),
+    expiryDate: Schema.optional(Schema.String),
+    basicConstraints: Schema.optional(Schema.String),
+    validFrom: Schema.optional(Schema.String),
+    publicKey: Schema.optional(Schema.String),
+    subjectAlternativeNames: Schema.optional(Schema.Array(Schema.String)),
+    version: Schema.optional(Schema.Number),
+    issuer: Schema.optional(Schema.String),
+    serialNumber: Schema.optional(Schema.String),
+    sigAlgName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1CertInfo" });
 
 export interface GoogleCloudApigeeV1Certificate {
   /** Chain of certificates under this name. */
   certInfo?: Array<GoogleCloudApigeeV1CertInfo>;
 }
 
-export const GoogleCloudApigeeV1Certificate: Schema.Schema<GoogleCloudApigeeV1Certificate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      certInfo: Schema.optional(Schema.Array(GoogleCloudApigeeV1CertInfo)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1Certificate",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1Certificate>;
+export const GoogleCloudApigeeV1Certificate =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    certInfo: Schema.optional(Schema.Array(GoogleCloudApigeeV1CertInfo)),
+  }).annotate({ identifier: "GoogleCloudApigeeV1Certificate" });
 
 export interface GoogleCloudApigeeV1Alias {
   /** Resource ID for this alias. Values must match the regular expression `[^/]{1,255}`. */
@@ -1817,16 +1530,12 @@ export interface GoogleCloudApigeeV1Alias {
   type?: "ALIAS_TYPE_UNSPECIFIED" | "CERT" | "KEY_CERT" | (string & {});
 }
 
-export const GoogleCloudApigeeV1Alias: Schema.Schema<GoogleCloudApigeeV1Alias> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      alias: Schema.optional(Schema.String),
-      certsInfo: Schema.optional(GoogleCloudApigeeV1Certificate),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1Alias",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1Alias>;
+export const GoogleCloudApigeeV1Alias =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    alias: Schema.optional(Schema.String),
+    certsInfo: Schema.optional(GoogleCloudApigeeV1Certificate),
+    type: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1Alias" });
 
 export interface GoogleCloudApigeeV1Keystore {
   /** Required. Resource ID for this keystore. Values must match the regular expression `[\w[:space:].-]{1,255}`. */
@@ -1835,29 +1544,21 @@ export interface GoogleCloudApigeeV1Keystore {
   aliases?: Array<string>;
 }
 
-export const GoogleCloudApigeeV1Keystore: Schema.Schema<GoogleCloudApigeeV1Keystore> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      aliases: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1Keystore",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1Keystore>;
+export const GoogleCloudApigeeV1Keystore =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    aliases: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudApigeeV1Keystore" });
 
 export interface GoogleIamV1TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: Array<string>;
 }
 
-export const GoogleIamV1TestIamPermissionsRequest: Schema.Schema<GoogleIamV1TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1TestIamPermissionsRequest",
-  }) as any as Schema.Schema<GoogleIamV1TestIamPermissionsRequest>;
+export const GoogleIamV1TestIamPermissionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleIamV1TestIamPermissionsRequest" });
 
 export interface GoogleCloudApigeeV1QueryMetric {
   /** One of `+`, `-`, `/`, `%`, `*`. */
@@ -1872,18 +1573,14 @@ export interface GoogleCloudApigeeV1QueryMetric {
   alias?: string;
 }
 
-export const GoogleCloudApigeeV1QueryMetric: Schema.Schema<GoogleCloudApigeeV1QueryMetric> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operator: Schema.optional(Schema.String),
-      function: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-      alias: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1QueryMetric",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1QueryMetric>;
+export const GoogleCloudApigeeV1QueryMetric =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operator: Schema.optional(Schema.String),
+    function: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
+    alias: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1QueryMetric" });
 
 export interface GoogleCloudApigeeV1Query {
   /** Boolean expression that can be used to filter data. Filter expressions can be combined using AND/OR terms and should be fully parenthesized to avoid ambiguity. See Analytics metrics, dimensions, and filters reference https://docs.apigee.com/api-platform/analytics/analytics-reference for more information on the fields available to filter on. For more information on the tokens that you use to build filter expressions, see Filter expression syntax. https://docs.apigee.com/api-platform/analytics/asynch-reports-api#filter-expression-syntax */
@@ -1910,24 +1607,20 @@ export interface GoogleCloudApigeeV1Query {
   envgroupHostname?: string;
 }
 
-export const GoogleCloudApigeeV1Query: Schema.Schema<GoogleCloudApigeeV1Query> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filter: Schema.optional(Schema.String),
-      reportDefinitionId: Schema.optional(Schema.String),
-      metrics: Schema.optional(Schema.Array(GoogleCloudApigeeV1QueryMetric)),
-      limit: Schema.optional(Schema.Number),
-      outputFormat: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      timeRange: Schema.optional(Schema.Unknown),
-      csvDelimiter: Schema.optional(Schema.String),
-      dimensions: Schema.optional(Schema.Array(Schema.String)),
-      groupByTimeUnit: Schema.optional(Schema.String),
-      envgroupHostname: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1Query",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1Query>;
+export const GoogleCloudApigeeV1Query =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filter: Schema.optional(Schema.String),
+    reportDefinitionId: Schema.optional(Schema.String),
+    metrics: Schema.optional(Schema.Array(GoogleCloudApigeeV1QueryMetric)),
+    limit: Schema.optional(Schema.Number),
+    outputFormat: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    timeRange: Schema.optional(Schema.Unknown),
+    csvDelimiter: Schema.optional(Schema.String),
+    dimensions: Schema.optional(Schema.Array(Schema.String)),
+    groupByTimeUnit: Schema.optional(Schema.String),
+    envgroupHostname: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1Query" });
 
 export interface GoogleCloudApigeeV1SecurityFeedback {
   /** Optional. The display name of the feedback. */
@@ -1958,23 +1651,19 @@ export interface GoogleCloudApigeeV1SecurityFeedback {
   updateTime?: string;
 }
 
-export const GoogleCloudApigeeV1SecurityFeedback: Schema.Schema<GoogleCloudApigeeV1SecurityFeedback> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      feedbackContexts: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1SecurityFeedbackFeedbackContext),
-      ),
-      createTime: Schema.optional(Schema.String),
-      feedbackType: Schema.optional(Schema.String),
-      reason: Schema.optional(Schema.String),
-      comment: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1SecurityFeedback",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1SecurityFeedback>;
+export const GoogleCloudApigeeV1SecurityFeedback =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    feedbackContexts: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1SecurityFeedbackFeedbackContext),
+    ),
+    createTime: Schema.optional(Schema.String),
+    feedbackType: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+    comment: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1SecurityFeedback" });
 
 export interface GoogleCloudApigeeV1TraceConfigOverride {
   /** ID of the trace configuration override specified as a system-generated UUID. */
@@ -1985,16 +1674,12 @@ export interface GoogleCloudApigeeV1TraceConfigOverride {
   samplingConfig?: GoogleCloudApigeeV1TraceSamplingConfig;
 }
 
-export const GoogleCloudApigeeV1TraceConfigOverride: Schema.Schema<GoogleCloudApigeeV1TraceConfigOverride> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      apiProxy: Schema.optional(Schema.String),
-      samplingConfig: Schema.optional(GoogleCloudApigeeV1TraceSamplingConfig),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1TraceConfigOverride",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1TraceConfigOverride>;
+export const GoogleCloudApigeeV1TraceConfigOverride =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    apiProxy: Schema.optional(Schema.String),
+    samplingConfig: Schema.optional(GoogleCloudApigeeV1TraceSamplingConfig),
+  }).annotate({ identifier: "GoogleCloudApigeeV1TraceConfigOverride" });
 
 export interface GoogleCloudApigeeV1MetricAggregation {
   /** Name of the metric */
@@ -2012,16 +1697,12 @@ export interface GoogleCloudApigeeV1MetricAggregation {
     | (string & {});
 }
 
-export const GoogleCloudApigeeV1MetricAggregation: Schema.Schema<GoogleCloudApigeeV1MetricAggregation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      order: Schema.optional(Schema.String),
-      aggregation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1MetricAggregation",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1MetricAggregation>;
+export const GoogleCloudApigeeV1MetricAggregation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    order: Schema.optional(Schema.String),
+    aggregation: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1MetricAggregation" });
 
 export interface GoogleCloudApigeeV1InstanceAttachment {
   /** Output only. ID of the attachment. */
@@ -2032,16 +1713,12 @@ export interface GoogleCloudApigeeV1InstanceAttachment {
   environment?: string;
 }
 
-export const GoogleCloudApigeeV1InstanceAttachment: Schema.Schema<GoogleCloudApigeeV1InstanceAttachment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      createdAt: Schema.optional(Schema.String),
-      environment: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1InstanceAttachment",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1InstanceAttachment>;
+export const GoogleCloudApigeeV1InstanceAttachment =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    createdAt: Schema.optional(Schema.String),
+    environment: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1InstanceAttachment" });
 
 export interface GoogleCloudApigeeV1ListInstanceAttachmentsResponse {
   /** Page token that you can include in a ListInstanceAttachments request to retrieve the next page of content. If omitted, no subsequent pages exist. */
@@ -2050,17 +1727,15 @@ export interface GoogleCloudApigeeV1ListInstanceAttachmentsResponse {
   attachments?: Array<GoogleCloudApigeeV1InstanceAttachment>;
 }
 
-export const GoogleCloudApigeeV1ListInstanceAttachmentsResponse: Schema.Schema<GoogleCloudApigeeV1ListInstanceAttachmentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      attachments: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1InstanceAttachment),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1ListInstanceAttachmentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    attachments: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1InstanceAttachment),
+    ),
+  }).annotate({
     identifier: "GoogleCloudApigeeV1ListInstanceAttachmentsResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ListInstanceAttachmentsResponse>;
+  });
 
 export interface GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision {
   /** API proxy revision reported as deployed. */
@@ -2069,29 +1744,23 @@ export interface GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision {
   percentage?: number;
 }
 
-export const GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision: Schema.Schema<GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      revision: Schema.optional(Schema.String),
-      percentage: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    revision: Schema.optional(Schema.String),
+    percentage: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision>;
+  });
 
 export interface GoogleCloudApigeeV1GenerateDownloadUrlResponse {
   /** The Google Cloud Storage signed URL that can be used to download the Archive zip file. */
   downloadUri?: string;
 }
 
-export const GoogleCloudApigeeV1GenerateDownloadUrlResponse: Schema.Schema<GoogleCloudApigeeV1GenerateDownloadUrlResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      downloadUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1GenerateDownloadUrlResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1GenerateDownloadUrlResponse>;
+export const GoogleCloudApigeeV1GenerateDownloadUrlResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    downloadUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1GenerateDownloadUrlResponse" });
 
 export interface GoogleCloudApigeeV1Session {
   /** The debug session ID. */
@@ -2100,15 +1769,11 @@ export interface GoogleCloudApigeeV1Session {
   timestampMs?: string;
 }
 
-export const GoogleCloudApigeeV1Session: Schema.Schema<GoogleCloudApigeeV1Session> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      timestampMs: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1Session",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1Session>;
+export const GoogleCloudApigeeV1Session =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    timestampMs: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1Session" });
 
 export interface GoogleCloudApigeeV1ListDebugSessionsResponse {
   /** Session info that includes debug session ID and the first transaction creation timestamp. */
@@ -2117,15 +1782,11 @@ export interface GoogleCloudApigeeV1ListDebugSessionsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApigeeV1ListDebugSessionsResponse: Schema.Schema<GoogleCloudApigeeV1ListDebugSessionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sessions: Schema.optional(Schema.Array(GoogleCloudApigeeV1Session)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ListDebugSessionsResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ListDebugSessionsResponse>;
+export const GoogleCloudApigeeV1ListDebugSessionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sessions: Schema.optional(Schema.Array(GoogleCloudApigeeV1Session)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ListDebugSessionsResponse" });
 
 export interface GoogleCloudApigeeV1ApiProxy {
   /** Output only. List of revisions defined for the API proxy. */
@@ -2150,21 +1811,17 @@ export interface GoogleCloudApigeeV1ApiProxy {
   readOnly?: boolean;
 }
 
-export const GoogleCloudApigeeV1ApiProxy: Schema.Schema<GoogleCloudApigeeV1ApiProxy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      revision: Schema.optional(Schema.Array(Schema.String)),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      apiProxyType: Schema.optional(Schema.String),
-      space: Schema.optional(Schema.String),
-      latestRevisionId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      metaData: Schema.optional(GoogleCloudApigeeV1EntityMetadata),
-      readOnly: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ApiProxy",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ApiProxy>;
+export const GoogleCloudApigeeV1ApiProxy =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    revision: Schema.optional(Schema.Array(Schema.String)),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    apiProxyType: Schema.optional(Schema.String),
+    space: Schema.optional(Schema.String),
+    latestRevisionId: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    metaData: Schema.optional(GoogleCloudApigeeV1EntityMetadata),
+    readOnly: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ApiProxy" });
 
 export interface GoogleCloudApigeeV1RoutingRule {
   /** Name of an environment bound to the environment group in the following format: `organizations/{org}/environments/{env}`. Only one of environment or deployment_group will be set. */
@@ -2183,20 +1840,16 @@ export interface GoogleCloudApigeeV1RoutingRule {
   envGroupRevision?: string;
 }
 
-export const GoogleCloudApigeeV1RoutingRule: Schema.Schema<GoogleCloudApigeeV1RoutingRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      environment: Schema.optional(Schema.String),
-      receiver: Schema.optional(Schema.String),
-      deploymentGroup: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      otherTargets: Schema.optional(Schema.Array(Schema.String)),
-      basepath: Schema.optional(Schema.String),
-      envGroupRevision: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1RoutingRule",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1RoutingRule>;
+export const GoogleCloudApigeeV1RoutingRule =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    environment: Schema.optional(Schema.String),
+    receiver: Schema.optional(Schema.String),
+    deploymentGroup: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    otherTargets: Schema.optional(Schema.Array(Schema.String)),
+    basepath: Schema.optional(Schema.String),
+    envGroupRevision: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1RoutingRule" });
 
 export interface GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute {
   /** Environment group where this route is installed. */
@@ -2209,17 +1862,15 @@ export interface GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute {
   percentage?: number;
 }
 
-export const GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute: Schema.Schema<GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      envgroup: Schema.optional(Schema.String),
-      environment: Schema.optional(Schema.String),
-      basepath: Schema.optional(Schema.String),
-      percentage: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    envgroup: Schema.optional(Schema.String),
+    environment: Schema.optional(Schema.String),
+    basepath: Schema.optional(Schema.String),
+    percentage: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute>;
+  });
 
 export interface GoogleCloudApigeeV1ServiceIssuersMapping {
   /** String indicating the Apigee service name. */
@@ -2228,31 +1879,23 @@ export interface GoogleCloudApigeeV1ServiceIssuersMapping {
   emailIds?: Array<string>;
 }
 
-export const GoogleCloudApigeeV1ServiceIssuersMapping: Schema.Schema<GoogleCloudApigeeV1ServiceIssuersMapping> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      service: Schema.optional(Schema.String),
-      emailIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ServiceIssuersMapping",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ServiceIssuersMapping>;
+export const GoogleCloudApigeeV1ServiceIssuersMapping =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    service: Schema.optional(Schema.String),
+    emailIds: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ServiceIssuersMapping" });
 
 export interface GoogleCloudApigeeV1ListHybridIssuersResponse {
   /** Lists of hybrid services and its trusted issuer email ids. */
   issuers?: Array<GoogleCloudApigeeV1ServiceIssuersMapping>;
 }
 
-export const GoogleCloudApigeeV1ListHybridIssuersResponse: Schema.Schema<GoogleCloudApigeeV1ListHybridIssuersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      issuers: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1ServiceIssuersMapping),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ListHybridIssuersResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ListHybridIssuersResponse>;
+export const GoogleCloudApigeeV1ListHybridIssuersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    issuers: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1ServiceIssuersMapping),
+    ),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ListHybridIssuersResponse" });
 
 export interface GoogleCloudApigeeV1TlsInfoCommonName {
   /** Indicates whether the cert should be matched against as a wildcard cert. */
@@ -2261,15 +1904,11 @@ export interface GoogleCloudApigeeV1TlsInfoCommonName {
   value?: string;
 }
 
-export const GoogleCloudApigeeV1TlsInfoCommonName: Schema.Schema<GoogleCloudApigeeV1TlsInfoCommonName> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      wildcardMatch: Schema.optional(Schema.Boolean),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1TlsInfoCommonName",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1TlsInfoCommonName>;
+export const GoogleCloudApigeeV1TlsInfoCommonName =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    wildcardMatch: Schema.optional(Schema.Boolean),
+    value: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1TlsInfoCommonName" });
 
 export interface GoogleCloudApigeeV1TlsInfo {
   /** Required if `client_auth_enabled` is true. The resource ID for the alias containing the private key and cert. */
@@ -2294,23 +1933,19 @@ export interface GoogleCloudApigeeV1TlsInfo {
   ignoreValidationErrors?: boolean;
 }
 
-export const GoogleCloudApigeeV1TlsInfo: Schema.Schema<GoogleCloudApigeeV1TlsInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      keyAlias: Schema.optional(Schema.String),
-      protocols: Schema.optional(Schema.Array(Schema.String)),
-      commonName: Schema.optional(GoogleCloudApigeeV1TlsInfoCommonName),
-      ciphers: Schema.optional(Schema.Array(Schema.String)),
-      enabled: Schema.optional(Schema.Boolean),
-      clientAuthEnabled: Schema.optional(Schema.Boolean),
-      keyStore: Schema.optional(Schema.String),
-      enforce: Schema.optional(Schema.Boolean),
-      trustStore: Schema.optional(Schema.String),
-      ignoreValidationErrors: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1TlsInfo",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1TlsInfo>;
+export const GoogleCloudApigeeV1TlsInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    keyAlias: Schema.optional(Schema.String),
+    protocols: Schema.optional(Schema.Array(Schema.String)),
+    commonName: Schema.optional(GoogleCloudApigeeV1TlsInfoCommonName),
+    ciphers: Schema.optional(Schema.Array(Schema.String)),
+    enabled: Schema.optional(Schema.Boolean),
+    clientAuthEnabled: Schema.optional(Schema.Boolean),
+    keyStore: Schema.optional(Schema.String),
+    enforce: Schema.optional(Schema.Boolean),
+    trustStore: Schema.optional(Schema.String),
+    ignoreValidationErrors: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudApigeeV1TlsInfo" });
 
 export interface GoogleCloudApigeeV1DateRange {
   /** Required. Start date of the data to export in the format `yyyy-mm-dd`. The date range begins at 00:00:00 UTC on the start date. */
@@ -2319,15 +1954,11 @@ export interface GoogleCloudApigeeV1DateRange {
   end?: string;
 }
 
-export const GoogleCloudApigeeV1DateRange: Schema.Schema<GoogleCloudApigeeV1DateRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      start: Schema.optional(Schema.String),
-      end: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1DateRange",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1DateRange>;
+export const GoogleCloudApigeeV1DateRange =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    start: Schema.optional(Schema.String),
+    end: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1DateRange" });
 
 export interface GoogleCloudApigeeV1OrganizationProjectMapping {
   /** Output only. The Google Cloud region where control plane data is located. For more information, see https://cloud.google.com/about/locations/. */
@@ -2340,24 +1971,20 @@ export interface GoogleCloudApigeeV1OrganizationProjectMapping {
   projectId?: string;
 }
 
-export const GoogleCloudApigeeV1OrganizationProjectMapping: Schema.Schema<GoogleCloudApigeeV1OrganizationProjectMapping> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      location: Schema.optional(Schema.String),
-      organization: Schema.optional(Schema.String),
-      projectIds: Schema.optional(Schema.Array(Schema.String)),
-      projectId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1OrganizationProjectMapping",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1OrganizationProjectMapping>;
+export const GoogleCloudApigeeV1OrganizationProjectMapping =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.optional(Schema.String),
+    organization: Schema.optional(Schema.String),
+    projectIds: Schema.optional(Schema.Array(Schema.String)),
+    projectId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1OrganizationProjectMapping" });
 
 export interface GoogleCloudApigeeV1DisableSecurityActionRequest {}
 
-export const GoogleCloudApigeeV1DisableSecurityActionRequest: Schema.Schema<GoogleCloudApigeeV1DisableSecurityActionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudApigeeV1DisableSecurityActionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApigeeV1DisableSecurityActionRequest",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1DisableSecurityActionRequest>;
+  });
 
 export interface GoogleCloudApigeeV1ApiDoc {
   /** Optional. Description of the catalog item. Max length is 10,000 characters. */
@@ -2396,30 +2023,26 @@ export interface GoogleCloudApigeeV1ApiDoc {
   categoryIds?: Array<string>;
 }
 
-export const GoogleCloudApigeeV1ApiDoc: Schema.Schema<GoogleCloudApigeeV1ApiDoc> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      modified: Schema.optional(Schema.String),
-      siteId: Schema.optional(Schema.String),
-      imageUrl: Schema.optional(Schema.String),
-      specId: Schema.optional(Schema.String),
-      graphqlSchema: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      visibility: Schema.optional(Schema.Boolean),
-      apiProductName: Schema.optional(Schema.String),
-      graphqlSchemaDisplayName: Schema.optional(Schema.String),
-      published: Schema.optional(Schema.Boolean),
-      anonAllowed: Schema.optional(Schema.Boolean),
-      requireCallbackUrl: Schema.optional(Schema.Boolean),
-      graphqlEndpointUrl: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      edgeAPIProductName: Schema.optional(Schema.String),
-      categoryIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ApiDoc",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ApiDoc>;
+export const GoogleCloudApigeeV1ApiDoc =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    modified: Schema.optional(Schema.String),
+    siteId: Schema.optional(Schema.String),
+    imageUrl: Schema.optional(Schema.String),
+    specId: Schema.optional(Schema.String),
+    graphqlSchema: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    visibility: Schema.optional(Schema.Boolean),
+    apiProductName: Schema.optional(Schema.String),
+    graphqlSchemaDisplayName: Schema.optional(Schema.String),
+    published: Schema.optional(Schema.Boolean),
+    anonAllowed: Schema.optional(Schema.Boolean),
+    requireCallbackUrl: Schema.optional(Schema.Boolean),
+    graphqlEndpointUrl: Schema.optional(Schema.String),
+    title: Schema.optional(Schema.String),
+    edgeAPIProductName: Schema.optional(Schema.String),
+    categoryIds: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ApiDoc" });
 
 export interface GoogleCloudApigeeV1ListApiDocsResponse {
   /** Description of the operation. */
@@ -2436,19 +2059,15 @@ export interface GoogleCloudApigeeV1ListApiDocsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApigeeV1ListApiDocsResponse: Schema.Schema<GoogleCloudApigeeV1ListApiDocsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      message: Schema.optional(Schema.String),
-      errorCode: Schema.optional(Schema.String),
-      data: Schema.optional(Schema.Array(GoogleCloudApigeeV1ApiDoc)),
-      requestId: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ListApiDocsResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ListApiDocsResponse>;
+export const GoogleCloudApigeeV1ListApiDocsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    message: Schema.optional(Schema.String),
+    errorCode: Schema.optional(Schema.String),
+    data: Schema.optional(Schema.Array(GoogleCloudApigeeV1ApiDoc)),
+    requestId: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ListApiDocsResponse" });
 
 export interface GoogleCloudApigeeV1EndpointChainingRule {
   /** List of proxy ids which may be found in the given deployment group. */
@@ -2457,15 +2076,11 @@ export interface GoogleCloudApigeeV1EndpointChainingRule {
   deploymentGroup?: string;
 }
 
-export const GoogleCloudApigeeV1EndpointChainingRule: Schema.Schema<GoogleCloudApigeeV1EndpointChainingRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      proxyIds: Schema.optional(Schema.Array(Schema.String)),
-      deploymentGroup: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1EndpointChainingRule",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1EndpointChainingRule>;
+export const GoogleCloudApigeeV1EndpointChainingRule =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    proxyIds: Schema.optional(Schema.Array(Schema.String)),
+    deploymentGroup: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1EndpointChainingRule" });
 
 export interface GoogleCloudApigeeV1EnvironmentGroupConfig {
   /** Name of the environment group in the following format: `organizations/{org}/envgroups/{envgroup}`. */
@@ -2484,24 +2099,18 @@ export interface GoogleCloudApigeeV1EnvironmentGroupConfig {
   location?: string;
 }
 
-export const GoogleCloudApigeeV1EnvironmentGroupConfig: Schema.Schema<GoogleCloudApigeeV1EnvironmentGroupConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      revisionId: Schema.optional(Schema.String),
-      routingRules: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1RoutingRule),
-      ),
-      uid: Schema.optional(Schema.String),
-      endpointChainingRules: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1EndpointChainingRule),
-      ),
-      hostnames: Schema.optional(Schema.Array(Schema.String)),
-      location: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1EnvironmentGroupConfig",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1EnvironmentGroupConfig>;
+export const GoogleCloudApigeeV1EnvironmentGroupConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    revisionId: Schema.optional(Schema.String),
+    routingRules: Schema.optional(Schema.Array(GoogleCloudApigeeV1RoutingRule)),
+    uid: Schema.optional(Schema.String),
+    endpointChainingRules: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1EndpointChainingRule),
+    ),
+    hostnames: Schema.optional(Schema.Array(Schema.String)),
+    location: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1EnvironmentGroupConfig" });
 
 export interface GoogleCloudApigeeV1IngressConfig {
   /** List of environment groups in the organization. */
@@ -2516,20 +2125,16 @@ export interface GoogleCloudApigeeV1IngressConfig {
   revisionId?: string;
 }
 
-export const GoogleCloudApigeeV1IngressConfig: Schema.Schema<GoogleCloudApigeeV1IngressConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      environmentGroups: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1EnvironmentGroupConfig),
-      ),
-      uid: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      revisionCreateTime: Schema.optional(Schema.String),
-      revisionId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1IngressConfig",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1IngressConfig>;
+export const GoogleCloudApigeeV1IngressConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    environmentGroups: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1EnvironmentGroupConfig),
+    ),
+    uid: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    revisionCreateTime: Schema.optional(Schema.String),
+    revisionId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1IngressConfig" });
 
 export interface GoogleRpcStatus {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -2540,18 +2145,13 @@ export interface GoogleRpcStatus {
   details?: Array<Record<string, unknown>>;
 }
 
-export const GoogleRpcStatus: Schema.Schema<GoogleRpcStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      message: Schema.optional(Schema.String),
-      code: Schema.optional(Schema.Number),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleRpcStatus",
-  }) as any as Schema.Schema<GoogleRpcStatus>;
+export const GoogleRpcStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  message: Schema.optional(Schema.String),
+  code: Schema.optional(Schema.Number),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "GoogleRpcStatus" });
 
 export interface GoogleCloudApigeeV1KeyAliasReference {
   /** Reference name in the following format: `organizations/{org}/environments/{env}/references/{reference}` */
@@ -2560,15 +2160,11 @@ export interface GoogleCloudApigeeV1KeyAliasReference {
   aliasId?: string;
 }
 
-export const GoogleCloudApigeeV1KeyAliasReference: Schema.Schema<GoogleCloudApigeeV1KeyAliasReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reference: Schema.optional(Schema.String),
-      aliasId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1KeyAliasReference",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1KeyAliasReference>;
+export const GoogleCloudApigeeV1KeyAliasReference =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reference: Schema.optional(Schema.String),
+    aliasId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1KeyAliasReference" });
 
 export interface GoogleCloudApigeeV1Metric {
   /** List of metric values. Possible value formats include: `"values":["39.0"]` or `"values":[ { "value": "39.0", "timestamp": 1232434354} ]` */
@@ -2577,15 +2173,11 @@ export interface GoogleCloudApigeeV1Metric {
   name?: string;
 }
 
-export const GoogleCloudApigeeV1Metric: Schema.Schema<GoogleCloudApigeeV1Metric> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      values: Schema.optional(Schema.Array(Schema.Unknown)),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1Metric",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1Metric>;
+export const GoogleCloudApigeeV1Metric =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    values: Schema.optional(Schema.Array(Schema.Unknown)),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1Metric" });
 
 export interface GoogleCloudApigeeV1DimensionMetric {
   /** Comma joined dimension names. E.g. "dim1_name,dim2_name". Deprecated. If name already has comma before join, we may get wrong splits. Please use individual_names. */
@@ -2596,16 +2188,12 @@ export interface GoogleCloudApigeeV1DimensionMetric {
   individualNames?: Array<string>;
 }
 
-export const GoogleCloudApigeeV1DimensionMetric: Schema.Schema<GoogleCloudApigeeV1DimensionMetric> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      metrics: Schema.optional(Schema.Array(GoogleCloudApigeeV1Metric)),
-      individualNames: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1DimensionMetric",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1DimensionMetric>;
+export const GoogleCloudApigeeV1DimensionMetric =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    metrics: Schema.optional(Schema.Array(GoogleCloudApigeeV1Metric)),
+    individualNames: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudApigeeV1DimensionMetric" });
 
 export interface GoogleCloudApigeeV1StatsEnvironmentStats {
   /** List of metrics grouped under dimensions. */
@@ -2616,32 +2204,24 @@ export interface GoogleCloudApigeeV1StatsEnvironmentStats {
   metrics?: Array<GoogleCloudApigeeV1Metric>;
 }
 
-export const GoogleCloudApigeeV1StatsEnvironmentStats: Schema.Schema<GoogleCloudApigeeV1StatsEnvironmentStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dimensions: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1DimensionMetric),
-      ),
-      name: Schema.optional(Schema.String),
-      metrics: Schema.optional(Schema.Array(GoogleCloudApigeeV1Metric)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1StatsEnvironmentStats",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1StatsEnvironmentStats>;
+export const GoogleCloudApigeeV1StatsEnvironmentStats =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dimensions: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1DimensionMetric),
+    ),
+    name: Schema.optional(Schema.String),
+    metrics: Schema.optional(Schema.Array(GoogleCloudApigeeV1Metric)),
+  }).annotate({ identifier: "GoogleCloudApigeeV1StatsEnvironmentStats" });
 
 export interface GoogleCloudApigeeV1GenerateUploadUrlResponse {
   /** The Google Cloud Storage signed URL that can be used to upload a new Archive zip file. */
   uploadUri?: string;
 }
 
-export const GoogleCloudApigeeV1GenerateUploadUrlResponse: Schema.Schema<GoogleCloudApigeeV1GenerateUploadUrlResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uploadUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1GenerateUploadUrlResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1GenerateUploadUrlResponse>;
+export const GoogleCloudApigeeV1GenerateUploadUrlResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uploadUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1GenerateUploadUrlResponse" });
 
 export interface GoogleCloudApigeeV1ApimServiceExtensionExtension {
   /** Required. One of the hostnames of Apigee EnvGroup where the proxy is deployed. This hostname (i.e FDQN) will be used to route traffic from the specified forwarding rule to the environment in Apigee X instance where the proxy is deployed for handling extension traffic. Format: ^([a-zA-Z0-9. _-])+$ */
@@ -2665,18 +2245,16 @@ export interface GoogleCloudApigeeV1ApimServiceExtensionExtension {
   failOpen?: boolean;
 }
 
-export const GoogleCloudApigeeV1ApimServiceExtensionExtension: Schema.Schema<GoogleCloudApigeeV1ApimServiceExtensionExtension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hostname: Schema.optional(Schema.String),
-      supportedEvents: Schema.optional(Schema.Array(Schema.String)),
-      matchCondition: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      failOpen: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1ApimServiceExtensionExtension =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    hostname: Schema.optional(Schema.String),
+    supportedEvents: Schema.optional(Schema.Array(Schema.String)),
+    matchCondition: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    failOpen: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudApigeeV1ApimServiceExtensionExtension",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ApimServiceExtensionExtension>;
+  });
 
 export interface GoogleCloudApigeeV1ApimServiceExtensionNetworkConfig {
   /** Required. The subnet for the PSC NEG. Format: projects/{project}/regions/{region}/subnetworks/{subnet} */
@@ -2685,15 +2263,13 @@ export interface GoogleCloudApigeeV1ApimServiceExtensionNetworkConfig {
   region?: string;
 }
 
-export const GoogleCloudApigeeV1ApimServiceExtensionNetworkConfig: Schema.Schema<GoogleCloudApigeeV1ApimServiceExtensionNetworkConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subnet: Schema.optional(Schema.String),
-      region: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1ApimServiceExtensionNetworkConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subnet: Schema.optional(Schema.String),
+    region: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudApigeeV1ApimServiceExtensionNetworkConfig",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ApimServiceExtensionNetworkConfig>;
+  });
 
 export interface GoogleCloudApigeeV1ApimServiceExtension {
   /** Optional. List of extensions that are part of the service extension. Refer to https://cloud.google.com/service-extensions/docs/quotas#limits for any limits. */
@@ -2722,33 +2298,29 @@ export interface GoogleCloudApigeeV1ApimServiceExtension {
   networkConfigs?: Array<GoogleCloudApigeeV1ApimServiceExtensionNetworkConfig>;
 }
 
-export const GoogleCloudApigeeV1ApimServiceExtension: Schema.Schema<GoogleCloudApigeeV1ApimServiceExtension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      extensions: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1ApimServiceExtensionExtension),
-      ),
-      lbForwardingRule: Schema.optional(Schema.String),
-      network: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      extensionProcessor: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      networkConfigs: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1ApimServiceExtensionNetworkConfig),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ApimServiceExtension",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ApimServiceExtension>;
+export const GoogleCloudApigeeV1ApimServiceExtension =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    extensions: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1ApimServiceExtensionExtension),
+    ),
+    lbForwardingRule: Schema.optional(Schema.String),
+    network: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    extensionProcessor: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    networkConfigs: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1ApimServiceExtensionNetworkConfig),
+    ),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ApimServiceExtension" });
 
 export interface GoogleCloudApigeeV1GenerateUploadUrlRequest {}
 
-export const GoogleCloudApigeeV1GenerateUploadUrlRequest: Schema.Schema<GoogleCloudApigeeV1GenerateUploadUrlRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudApigeeV1GenerateUploadUrlRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApigeeV1GenerateUploadUrlRequest",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1GenerateUploadUrlRequest>;
+  });
 
 export interface GoogleCloudApigeeV1DatastoreConfig {
   /** Prefix of BigQuery table Required for `bigquery` target_type. */
@@ -2763,18 +2335,14 @@ export interface GoogleCloudApigeeV1DatastoreConfig {
   projectId?: string;
 }
 
-export const GoogleCloudApigeeV1DatastoreConfig: Schema.Schema<GoogleCloudApigeeV1DatastoreConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tablePrefix: Schema.optional(Schema.String),
-      path: Schema.optional(Schema.String),
-      datasetName: Schema.optional(Schema.String),
-      bucketName: Schema.optional(Schema.String),
-      projectId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1DatastoreConfig",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1DatastoreConfig>;
+export const GoogleCloudApigeeV1DatastoreConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tablePrefix: Schema.optional(Schema.String),
+    path: Schema.optional(Schema.String),
+    datasetName: Schema.optional(Schema.String),
+    bucketName: Schema.optional(Schema.String),
+    projectId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1DatastoreConfig" });
 
 export interface GoogleCloudApigeeV1Datastore {
   /** Destination storage type. Supported types `gcs` or `bigquery`. */
@@ -2793,34 +2361,26 @@ export interface GoogleCloudApigeeV1Datastore {
   displayName?: string;
 }
 
-export const GoogleCloudApigeeV1Datastore: Schema.Schema<GoogleCloudApigeeV1Datastore> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetType: Schema.optional(Schema.String),
-      lastUpdateTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      datastoreConfig: Schema.optional(GoogleCloudApigeeV1DatastoreConfig),
-      self: Schema.optional(Schema.String),
-      org: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1Datastore",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1Datastore>;
+export const GoogleCloudApigeeV1Datastore =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetType: Schema.optional(Schema.String),
+    lastUpdateTime: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    datastoreConfig: Schema.optional(GoogleCloudApigeeV1DatastoreConfig),
+    self: Schema.optional(Schema.String),
+    org: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1Datastore" });
 
 export interface GoogleCloudApigeeV1ListDatastoresResponse {
   /** A list of datastores */
   datastores?: Array<GoogleCloudApigeeV1Datastore>;
 }
 
-export const GoogleCloudApigeeV1ListDatastoresResponse: Schema.Schema<GoogleCloudApigeeV1ListDatastoresResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      datastores: Schema.optional(Schema.Array(GoogleCloudApigeeV1Datastore)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ListDatastoresResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ListDatastoresResponse>;
+export const GoogleCloudApigeeV1ListDatastoresResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    datastores: Schema.optional(Schema.Array(GoogleCloudApigeeV1Datastore)),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ListDatastoresResponse" });
 
 export interface GoogleCloudApigeeV1GetAsyncQueryResultUrlResponseURLInfo {
   /** The signed URL of the JSON data. Will be of the form `https://storage.googleapis.com/example-bucket/cat.jpeg?X-Goog-Algorithm= GOOG4-RSA-SHA256&X-Goog-Credential=example%40example-project.iam.gserviceaccount .com%2F20181026%2Fus-central1%2Fstorage%2Fgoog4_request&X-Goog-Date=20181026T18 1309Z&X-Goog-Expires=900&X-Goog-SignedHeaders=host&X-Goog-Signature=247a2aa45f16 9edf4d187d54e7cc46e4731b1e6273242c4f4c39a1d2507a0e58706e25e3a85a7dbb891d62afa849 6def8e260c1db863d9ace85ff0a184b894b117fe46d1225c82f2aa19efd52cf21d3e2022b3b868dc c1aca2741951ed5bf3bb25a34f5e9316a2841e8ff4c530b22ceaa1c5ce09c7cbb5732631510c2058 0e61723f5594de3aea497f195456a2ff2bdd0d13bad47289d8611b6f9cfeef0c46c91a455b94e90a 66924f722292d21e24d31dcfb38ce0c0f353ffa5a9756fc2a9f2b40bc2113206a81e324fc4fd6823 a29163fa845c8ae7eca1fcf6e5bb48b3200983c56c5ca81fffb151cca7402beddfc4a76b13344703 2ea7abedc098d2eb14a7` */
@@ -2831,16 +2391,14 @@ export interface GoogleCloudApigeeV1GetAsyncQueryResultUrlResponseURLInfo {
   sizeBytes?: string;
 }
 
-export const GoogleCloudApigeeV1GetAsyncQueryResultUrlResponseURLInfo: Schema.Schema<GoogleCloudApigeeV1GetAsyncQueryResultUrlResponseURLInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-      md5: Schema.optional(Schema.String),
-      sizeBytes: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1GetAsyncQueryResultUrlResponseURLInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uri: Schema.optional(Schema.String),
+    md5: Schema.optional(Schema.String),
+    sizeBytes: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudApigeeV1GetAsyncQueryResultUrlResponseURLInfo",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1GetAsyncQueryResultUrlResponseURLInfo>;
+  });
 
 export interface GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfigHeaderIndexAlgorithm {
   /** The index of the ip in the header. (By default, value is 0 if missing) */
@@ -2849,16 +2407,14 @@ export interface GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfigHea
   ipHeaderName?: string;
 }
 
-export const GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfigHeaderIndexAlgorithm: Schema.Schema<GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfigHeaderIndexAlgorithm> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ipHeaderIndex: Schema.optional(Schema.Number),
-      ipHeaderName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfigHeaderIndexAlgorithm =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ipHeaderIndex: Schema.optional(Schema.Number),
+    ipHeaderName: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfigHeaderIndexAlgorithm",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfigHeaderIndexAlgorithm>;
+  });
 
 export interface GoogleTypeInterval {
   /** Optional. Inclusive start of the interval. If specified, a Timestamp matching this interval will have to be the same or after the start. */
@@ -2867,15 +2423,10 @@ export interface GoogleTypeInterval {
   endTime?: string;
 }
 
-export const GoogleTypeInterval: Schema.Schema<GoogleTypeInterval> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleTypeInterval",
-  }) as any as Schema.Schema<GoogleTypeInterval>;
+export const GoogleTypeInterval = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "GoogleTypeInterval" });
 
 export interface GoogleCloudApigeeV1EndpointAttachment {
   /** Output only. State of the endpoint attachment connection to the service attachment. */
@@ -2908,19 +2459,15 @@ export interface GoogleCloudApigeeV1EndpointAttachment {
   name?: string;
 }
 
-export const GoogleCloudApigeeV1EndpointAttachment: Schema.Schema<GoogleCloudApigeeV1EndpointAttachment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      connectionState: Schema.optional(Schema.String),
-      host: Schema.optional(Schema.String),
-      serviceAttachment: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1EndpointAttachment",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1EndpointAttachment>;
+export const GoogleCloudApigeeV1EndpointAttachment =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    connectionState: Schema.optional(Schema.String),
+    host: Schema.optional(Schema.String),
+    serviceAttachment: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1EndpointAttachment" });
 
 export interface GoogleCloudApigeeV1ListEndpointAttachmentsResponse {
   /** Page token that you can include in an `ListEndpointAttachments` request to retrieve the next page. If omitted, no subsequent pages exist. */
@@ -2929,31 +2476,27 @@ export interface GoogleCloudApigeeV1ListEndpointAttachmentsResponse {
   endpointAttachments?: Array<GoogleCloudApigeeV1EndpointAttachment>;
 }
 
-export const GoogleCloudApigeeV1ListEndpointAttachmentsResponse: Schema.Schema<GoogleCloudApigeeV1ListEndpointAttachmentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      endpointAttachments: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1EndpointAttachment),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1ListEndpointAttachmentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    endpointAttachments: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1EndpointAttachment),
+    ),
+  }).annotate({
     identifier: "GoogleCloudApigeeV1ListEndpointAttachmentsResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ListEndpointAttachmentsResponse>;
+  });
 
 export interface GoogleCloudApigeeV1ComputeEnvironmentScoresRequestFilter {
   /** Optional. Return scores for this component. Example: "/org@myorg/envgroup@myenvgroup/env@myenv/proxies/proxy@myproxy/source" */
   scorePath?: string;
 }
 
-export const GoogleCloudApigeeV1ComputeEnvironmentScoresRequestFilter: Schema.Schema<GoogleCloudApigeeV1ComputeEnvironmentScoresRequestFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scorePath: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1ComputeEnvironmentScoresRequestFilter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scorePath: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudApigeeV1ComputeEnvironmentScoresRequestFilter",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ComputeEnvironmentScoresRequestFilter>;
+  });
 
 export interface GoogleCloudApigeeV1ApiCategoryResponse {
   /** Description of the operation. */
@@ -2968,18 +2511,14 @@ export interface GoogleCloudApigeeV1ApiCategoryResponse {
   status?: string;
 }
 
-export const GoogleCloudApigeeV1ApiCategoryResponse: Schema.Schema<GoogleCloudApigeeV1ApiCategoryResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      message: Schema.optional(Schema.String),
-      errorCode: Schema.optional(Schema.String),
-      data: Schema.optional(GoogleCloudApigeeV1ApiCategory),
-      requestId: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ApiCategoryResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ApiCategoryResponse>;
+export const GoogleCloudApigeeV1ApiCategoryResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    message: Schema.optional(Schema.String),
+    errorCode: Schema.optional(Schema.String),
+    data: Schema.optional(GoogleCloudApigeeV1ApiCategory),
+    requestId: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ApiCategoryResponse" });
 
 export interface GoogleCloudApigeeV1APIProductAssociation {
   /** API product to be associated with the credential. */
@@ -2988,15 +2527,11 @@ export interface GoogleCloudApigeeV1APIProductAssociation {
   status?: string;
 }
 
-export const GoogleCloudApigeeV1APIProductAssociation: Schema.Schema<GoogleCloudApigeeV1APIProductAssociation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      apiproduct: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1APIProductAssociation",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1APIProductAssociation>;
+export const GoogleCloudApigeeV1APIProductAssociation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apiproduct: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1APIProductAssociation" });
 
 export interface GoogleCloudApigeeV1AppGroupAppKey {
   /** Immutable. Consumer key. */
@@ -3019,24 +2554,20 @@ export interface GoogleCloudApigeeV1AppGroupAppKey {
   status?: string;
 }
 
-export const GoogleCloudApigeeV1AppGroupAppKey: Schema.Schema<GoogleCloudApigeeV1AppGroupAppKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      consumerKey: Schema.optional(Schema.String),
-      apiProducts: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1APIProductAssociation),
-      ),
-      scopes: Schema.optional(Schema.Array(Schema.String)),
-      attributes: Schema.optional(Schema.Array(GoogleCloudApigeeV1Attribute)),
-      expiresInSeconds: Schema.optional(Schema.String),
-      expiresAt: Schema.optional(Schema.String),
-      consumerSecret: Schema.optional(Schema.String),
-      issuedAt: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1AppGroupAppKey",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1AppGroupAppKey>;
+export const GoogleCloudApigeeV1AppGroupAppKey =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    consumerKey: Schema.optional(Schema.String),
+    apiProducts: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1APIProductAssociation),
+    ),
+    scopes: Schema.optional(Schema.Array(Schema.String)),
+    attributes: Schema.optional(Schema.Array(GoogleCloudApigeeV1Attribute)),
+    expiresInSeconds: Schema.optional(Schema.String),
+    expiresAt: Schema.optional(Schema.String),
+    consumerSecret: Schema.optional(Schema.String),
+    issuedAt: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1AppGroupAppKey" });
 
 export interface GoogleCloudApigeeV1UpdateAppGroupAppKeyRequest {
   /** Approve or revoke the consumer key by setting this value to `approve` or `revoke` respectively. The `Content-Type` header, if set, must be set to `application/octet-stream`, with empty body. */
@@ -3047,24 +2578,20 @@ export interface GoogleCloudApigeeV1UpdateAppGroupAppKeyRequest {
   apiProducts?: Array<string>;
 }
 
-export const GoogleCloudApigeeV1UpdateAppGroupAppKeyRequest: Schema.Schema<GoogleCloudApigeeV1UpdateAppGroupAppKeyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      action: Schema.optional(Schema.String),
-      appGroupAppKey: Schema.optional(GoogleCloudApigeeV1AppGroupAppKey),
-      apiProducts: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1UpdateAppGroupAppKeyRequest",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1UpdateAppGroupAppKeyRequest>;
+export const GoogleCloudApigeeV1UpdateAppGroupAppKeyRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    action: Schema.optional(Schema.String),
+    appGroupAppKey: Schema.optional(GoogleCloudApigeeV1AppGroupAppKey),
+    apiProducts: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudApigeeV1UpdateAppGroupAppKeyRequest" });
 
 export interface GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestIncludeAll {}
 
-export const GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestIncludeAll: Schema.Schema<GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestIncludeAll> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestIncludeAll =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestIncludeAll",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestIncludeAll>;
+  });
 
 export interface GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArrayResource {
   /** Required. Type of this resource. */
@@ -3077,35 +2604,31 @@ export interface GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest
   name?: string;
 }
 
-export const GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArrayResource: Schema.Schema<GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArrayResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArrayResource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArrayResource",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArrayResource>;
+  });
 
 export interface GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray {
   /** Required. The array of resources. For Apigee, the proxies are resources. */
   resources?: Array<GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArrayResource>;
 }
 
-export const GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray: Schema.Schema<GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resources: Schema.optional(
-        Schema.Array(
-          GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArrayResource,
-        ),
+export const GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resources: Schema.optional(
+      Schema.Array(
+        GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArrayResource,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray>;
+  });
 
 export interface GoogleCloudApigeeV1SecurityMonitoringCondition {
   /** Include all resources under the scope. */
@@ -3136,28 +2659,24 @@ export interface GoogleCloudApigeeV1SecurityMonitoringCondition {
   scope?: string;
 }
 
-export const GoogleCloudApigeeV1SecurityMonitoringCondition: Schema.Schema<GoogleCloudApigeeV1SecurityMonitoringCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      includeAllResources: Schema.optional(
-        GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestIncludeAll,
-      ),
-      totalDeployedResources: Schema.optional(Schema.Number),
-      profile: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      totalMonitoredResources: Schema.optional(Schema.Number),
-      createTime: Schema.optional(Schema.String),
-      include: Schema.optional(
-        GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray,
-      ),
-      riskAssessmentType: Schema.optional(Schema.String),
-      apiHubGateway: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      scope: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1SecurityMonitoringCondition",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1SecurityMonitoringCondition>;
+export const GoogleCloudApigeeV1SecurityMonitoringCondition =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    includeAllResources: Schema.optional(
+      GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestIncludeAll,
+    ),
+    totalDeployedResources: Schema.optional(Schema.Number),
+    profile: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    totalMonitoredResources: Schema.optional(Schema.Number),
+    createTime: Schema.optional(Schema.String),
+    include: Schema.optional(
+      GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray,
+    ),
+    riskAssessmentType: Schema.optional(Schema.String),
+    apiHubGateway: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    scope: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1SecurityMonitoringCondition" });
 
 export interface GoogleApiHttpBody {
   /** The HTTP Content-Type header value specifying the content type of the body. */
@@ -3168,18 +2687,13 @@ export interface GoogleApiHttpBody {
   extensions?: Array<Record<string, unknown>>;
 }
 
-export const GoogleApiHttpBody: Schema.Schema<GoogleApiHttpBody> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contentType: Schema.optional(Schema.String),
-      data: Schema.optional(Schema.String),
-      extensions: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleApiHttpBody",
-  }) as any as Schema.Schema<GoogleApiHttpBody>;
+export const GoogleApiHttpBody = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  contentType: Schema.optional(Schema.String),
+  data: Schema.optional(Schema.String),
+  extensions: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "GoogleApiHttpBody" });
 
 export interface GoogleCloudApigeeV1ListTraceConfigOverridesResponse {
   /** Token value that can be passed as `page_token` to retrieve the next page of content. */
@@ -3188,17 +2702,15 @@ export interface GoogleCloudApigeeV1ListTraceConfigOverridesResponse {
   traceConfigOverrides?: Array<GoogleCloudApigeeV1TraceConfigOverride>;
 }
 
-export const GoogleCloudApigeeV1ListTraceConfigOverridesResponse: Schema.Schema<GoogleCloudApigeeV1ListTraceConfigOverridesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      traceConfigOverrides: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1TraceConfigOverride),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1ListTraceConfigOverridesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    traceConfigOverrides: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1TraceConfigOverride),
+    ),
+  }).annotate({
     identifier: "GoogleCloudApigeeV1ListTraceConfigOverridesResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ListTraceConfigOverridesResponse>;
+  });
 
 export interface GoogleCloudApigeeV1QueryMetadata {
   /** End timestamp of the query range. */
@@ -3215,19 +2727,15 @@ export interface GoogleCloudApigeeV1QueryMetadata {
   timeUnit?: string;
 }
 
-export const GoogleCloudApigeeV1QueryMetadata: Schema.Schema<GoogleCloudApigeeV1QueryMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endTimestamp: Schema.optional(Schema.String),
-      metrics: Schema.optional(Schema.Array(Schema.String)),
-      startTimestamp: Schema.optional(Schema.String),
-      dimensions: Schema.optional(Schema.Array(Schema.String)),
-      outputFormat: Schema.optional(Schema.String),
-      timeUnit: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1QueryMetadata",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1QueryMetadata>;
+export const GoogleCloudApigeeV1QueryMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endTimestamp: Schema.optional(Schema.String),
+    metrics: Schema.optional(Schema.Array(Schema.String)),
+    startTimestamp: Schema.optional(Schema.String),
+    dimensions: Schema.optional(Schema.Array(Schema.String)),
+    outputFormat: Schema.optional(Schema.String),
+    timeUnit: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1QueryMetadata" });
 
 export interface GoogleCloudApigeeV1AsyncQueryResultView {
   /** Rows of query result. Each row is a JSON object. Example: {sum(message_count): 1, developer_app: "(not set)",…} */
@@ -3242,18 +2750,14 @@ export interface GoogleCloudApigeeV1AsyncQueryResultView {
   state?: string;
 }
 
-export const GoogleCloudApigeeV1AsyncQueryResultView: Schema.Schema<GoogleCloudApigeeV1AsyncQueryResultView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rows: Schema.optional(Schema.Array(Schema.Unknown)),
-      metadata: Schema.optional(GoogleCloudApigeeV1QueryMetadata),
-      code: Schema.optional(Schema.Number),
-      error: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1AsyncQueryResultView",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1AsyncQueryResultView>;
+export const GoogleCloudApigeeV1AsyncQueryResultView =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rows: Schema.optional(Schema.Array(Schema.Unknown)),
+    metadata: Schema.optional(GoogleCloudApigeeV1QueryMetadata),
+    code: Schema.optional(Schema.Number),
+    error: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1AsyncQueryResultView" });
 
 export interface GoogleTypeExpr {
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
@@ -3266,17 +2770,12 @@ export interface GoogleTypeExpr {
   description?: string;
 }
 
-export const GoogleTypeExpr: Schema.Schema<GoogleTypeExpr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-      expression: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleTypeExpr",
-  }) as any as Schema.Schema<GoogleTypeExpr>;
+export const GoogleTypeExpr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  title: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  expression: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "GoogleTypeExpr" });
 
 export interface GoogleIamV1Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
@@ -3287,16 +2786,11 @@ export interface GoogleIamV1Binding {
   condition?: GoogleTypeExpr;
 }
 
-export const GoogleIamV1Binding: Schema.Schema<GoogleIamV1Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      role: Schema.optional(Schema.String),
-      members: Schema.optional(Schema.Array(Schema.String)),
-      condition: Schema.optional(GoogleTypeExpr),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1Binding",
-  }) as any as Schema.Schema<GoogleIamV1Binding>;
+export const GoogleIamV1Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  role: Schema.optional(Schema.String),
+  members: Schema.optional(Schema.Array(Schema.String)),
+  condition: Schema.optional(GoogleTypeExpr),
+}).annotate({ identifier: "GoogleIamV1Binding" });
 
 export interface GoogleIamV1AuditLogConfig {
   /** The log type that this config enables. */
@@ -3310,15 +2804,11 @@ export interface GoogleIamV1AuditLogConfig {
   exemptedMembers?: Array<string>;
 }
 
-export const GoogleIamV1AuditLogConfig: Schema.Schema<GoogleIamV1AuditLogConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      logType: Schema.optional(Schema.String),
-      exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1AuditLogConfig",
-  }) as any as Schema.Schema<GoogleIamV1AuditLogConfig>;
+export const GoogleIamV1AuditLogConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    logType: Schema.optional(Schema.String),
+    exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleIamV1AuditLogConfig" });
 
 export interface GoogleIamV1AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
@@ -3327,15 +2817,12 @@ export interface GoogleIamV1AuditConfig {
   auditLogConfigs?: Array<GoogleIamV1AuditLogConfig>;
 }
 
-export const GoogleIamV1AuditConfig: Schema.Schema<GoogleIamV1AuditConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      service: Schema.optional(Schema.String),
-      auditLogConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditLogConfig)),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1AuditConfig",
-  }) as any as Schema.Schema<GoogleIamV1AuditConfig>;
+export const GoogleIamV1AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    service: Schema.optional(Schema.String),
+    auditLogConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditLogConfig)),
+  },
+).annotate({ identifier: "GoogleIamV1AuditConfig" });
 
 export interface GoogleIamV1Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -3348,17 +2835,12 @@ export interface GoogleIamV1Policy {
   auditConfigs?: Array<GoogleIamV1AuditConfig>;
 }
 
-export const GoogleIamV1Policy: Schema.Schema<GoogleIamV1Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.Number),
-      bindings: Schema.optional(Schema.Array(GoogleIamV1Binding)),
-      etag: Schema.optional(Schema.String),
-      auditConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditConfig)),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1Policy",
-  }) as any as Schema.Schema<GoogleIamV1Policy>;
+export const GoogleIamV1Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.Number),
+  bindings: Schema.optional(Schema.Array(GoogleIamV1Binding)),
+  etag: Schema.optional(Schema.String),
+  auditConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditConfig)),
+}).annotate({ identifier: "GoogleIamV1Policy" });
 
 export interface GoogleCloudApigeeV1AccessLoggingConfig {
   /** Optional. Boolean flag that specifies whether the customer access log feature is enabled. */
@@ -3367,15 +2849,11 @@ export interface GoogleCloudApigeeV1AccessLoggingConfig {
   filter?: string;
 }
 
-export const GoogleCloudApigeeV1AccessLoggingConfig: Schema.Schema<GoogleCloudApigeeV1AccessLoggingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-      filter: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1AccessLoggingConfig",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1AccessLoggingConfig>;
+export const GoogleCloudApigeeV1AccessLoggingConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+    filter: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1AccessLoggingConfig" });
 
 export interface GoogleTypeTimeOfDay {
   /** Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds. */
@@ -3388,17 +2866,12 @@ export interface GoogleTypeTimeOfDay {
   nanos?: number;
 }
 
-export const GoogleTypeTimeOfDay: Schema.Schema<GoogleTypeTimeOfDay> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      seconds: Schema.optional(Schema.Number),
-      hours: Schema.optional(Schema.Number),
-      minutes: Schema.optional(Schema.Number),
-      nanos: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleTypeTimeOfDay",
-  }) as any as Schema.Schema<GoogleTypeTimeOfDay>;
+export const GoogleTypeTimeOfDay = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  seconds: Schema.optional(Schema.Number),
+  hours: Schema.optional(Schema.Number),
+  minutes: Schema.optional(Schema.Number),
+  nanos: Schema.optional(Schema.Number),
+}).annotate({ identifier: "GoogleTypeTimeOfDay" });
 
 export interface GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindow {
   /** Required. Preferred day of the week for maintenance, e.g. MONDAY, TUESDAY, etc. */
@@ -3416,15 +2889,13 @@ export interface GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindow {
   startTime?: GoogleTypeTimeOfDay;
 }
 
-export const GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindow: Schema.Schema<GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      day: Schema.optional(Schema.String),
-      startTime: Schema.optional(GoogleTypeTimeOfDay),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindow =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    day: Schema.optional(Schema.String),
+    startTime: Schema.optional(GoogleTypeTimeOfDay),
+  }).annotate({
     identifier: "GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindow",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindow>;
+  });
 
 export interface GoogleCloudApigeeV1MaintenanceUpdatePolicy {
   /** Optional. Maintenance channel to specify relative scheduling for maintenance. */
@@ -3437,33 +2908,23 @@ export interface GoogleCloudApigeeV1MaintenanceUpdatePolicy {
   maintenanceWindows?: Array<GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindow>;
 }
 
-export const GoogleCloudApigeeV1MaintenanceUpdatePolicy: Schema.Schema<GoogleCloudApigeeV1MaintenanceUpdatePolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      maintenanceChannel: Schema.optional(Schema.String),
-      maintenanceWindows: Schema.optional(
-        Schema.Array(
-          GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindow,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1MaintenanceUpdatePolicy",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1MaintenanceUpdatePolicy>;
+export const GoogleCloudApigeeV1MaintenanceUpdatePolicy =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    maintenanceChannel: Schema.optional(Schema.String),
+    maintenanceWindows: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1MaintenanceUpdatePolicyMaintenanceWindow),
+    ),
+  }).annotate({ identifier: "GoogleCloudApigeeV1MaintenanceUpdatePolicy" });
 
 export interface GoogleCloudApigeeV1ScheduledMaintenance {
   /** Output only. The start time (UTC) of the scheduled maintenance. */
   startTime?: string;
 }
 
-export const GoogleCloudApigeeV1ScheduledMaintenance: Schema.Schema<GoogleCloudApigeeV1ScheduledMaintenance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ScheduledMaintenance",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ScheduledMaintenance>;
+export const GoogleCloudApigeeV1ScheduledMaintenance =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ScheduledMaintenance" });
 
 export interface GoogleCloudApigeeV1Instance {
   /** Required. Compute Engine location where the instance resides. */
@@ -3521,38 +2982,34 @@ export interface GoogleCloudApigeeV1Instance {
   description?: string;
 }
 
-export const GoogleCloudApigeeV1Instance: Schema.Schema<GoogleCloudApigeeV1Instance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      location: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      accessLoggingConfig: Schema.optional(
-        GoogleCloudApigeeV1AccessLoggingConfig,
-      ),
-      maintenanceUpdatePolicy: Schema.optional(
-        GoogleCloudApigeeV1MaintenanceUpdatePolicy,
-      ),
-      lastModifiedAt: Schema.optional(Schema.String),
-      diskEncryptionKeyName: Schema.optional(Schema.String),
-      ipRange: Schema.optional(Schema.String),
-      host: Schema.optional(Schema.String),
-      scheduledMaintenance: Schema.optional(
-        GoogleCloudApigeeV1ScheduledMaintenance,
-      ),
-      state: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      isVersionLocked: Schema.optional(Schema.Boolean),
-      consumerAcceptList: Schema.optional(Schema.Array(Schema.String)),
-      port: Schema.optional(Schema.String),
-      serviceAttachment: Schema.optional(Schema.String),
-      createdAt: Schema.optional(Schema.String),
-      runtimeVersion: Schema.optional(Schema.String),
-      peeringCidrRange: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1Instance",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1Instance>;
+export const GoogleCloudApigeeV1Instance =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    accessLoggingConfig: Schema.optional(
+      GoogleCloudApigeeV1AccessLoggingConfig,
+    ),
+    maintenanceUpdatePolicy: Schema.optional(
+      GoogleCloudApigeeV1MaintenanceUpdatePolicy,
+    ),
+    lastModifiedAt: Schema.optional(Schema.String),
+    diskEncryptionKeyName: Schema.optional(Schema.String),
+    ipRange: Schema.optional(Schema.String),
+    host: Schema.optional(Schema.String),
+    scheduledMaintenance: Schema.optional(
+      GoogleCloudApigeeV1ScheduledMaintenance,
+    ),
+    state: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    isVersionLocked: Schema.optional(Schema.Boolean),
+    consumerAcceptList: Schema.optional(Schema.Array(Schema.String)),
+    port: Schema.optional(Schema.String),
+    serviceAttachment: Schema.optional(Schema.String),
+    createdAt: Schema.optional(Schema.String),
+    runtimeVersion: Schema.optional(Schema.String),
+    peeringCidrRange: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1Instance" });
 
 export interface GoogleCloudApigeeV1InstanceDeploymentStatus {
   /** Revisions currently deployed in MPs. */
@@ -3563,43 +3020,35 @@ export interface GoogleCloudApigeeV1InstanceDeploymentStatus {
   instance?: string;
 }
 
-export const GoogleCloudApigeeV1InstanceDeploymentStatus: Schema.Schema<GoogleCloudApigeeV1InstanceDeploymentStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deployedRevisions: Schema.optional(
-        Schema.Array(
-          GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision,
-        ),
-      ),
-      deployedRoutes: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute),
-      ),
-      instance: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1InstanceDeploymentStatus",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1InstanceDeploymentStatus>;
+export const GoogleCloudApigeeV1InstanceDeploymentStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deployedRevisions: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRevision),
+    ),
+    deployedRoutes: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1InstanceDeploymentStatusDeployedRoute),
+    ),
+    instance: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1InstanceDeploymentStatus" });
 
 export interface GoogleCloudApigeeV1AdjustDeveloperBalanceRequest {
   /** * A positive value of `adjustment` means that that the API provider wants to adjust the balance for an under-charged developer i.e. the balance of the developer will decrease. * A negative value of `adjustment` means that that the API provider wants to adjust the balance for an over-charged developer i.e. the balance of the developer will increase. NOTE: An adjustment cannot increase the balance of the developer beyond the balance as of the most recent credit. For example, if a developer's balance is updated to be $100, and they spend $10, a negative adjustment can only increase the balance of the developer to $100. */
   adjustment?: GoogleTypeMoney;
 }
 
-export const GoogleCloudApigeeV1AdjustDeveloperBalanceRequest: Schema.Schema<GoogleCloudApigeeV1AdjustDeveloperBalanceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      adjustment: Schema.optional(GoogleTypeMoney),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1AdjustDeveloperBalanceRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    adjustment: Schema.optional(GoogleTypeMoney),
+  }).annotate({
     identifier: "GoogleCloudApigeeV1AdjustDeveloperBalanceRequest",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1AdjustDeveloperBalanceRequest>;
+  });
 
 export interface GoogleCloudApigeeV1ReportInstanceStatusResponse {}
 
-export const GoogleCloudApigeeV1ReportInstanceStatusResponse: Schema.Schema<GoogleCloudApigeeV1ReportInstanceStatusResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudApigeeV1ReportInstanceStatusResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApigeeV1ReportInstanceStatusResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ReportInstanceStatusResponse>;
+  });
 
 export interface GoogleCloudApigeeV1SecurityAssessmentResultResourceApiHubDeploymentDetails {
   /** The source project for the API Hub deployment. */
@@ -3620,19 +3069,17 @@ export interface GoogleCloudApigeeV1SecurityAssessmentResultResourceApiHubDeploy
   gateway?: string;
 }
 
-export const GoogleCloudApigeeV1SecurityAssessmentResultResourceApiHubDeploymentDetails: Schema.Schema<GoogleCloudApigeeV1SecurityAssessmentResultResourceApiHubDeploymentDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sourceProject: Schema.optional(Schema.String),
-      resourceUri: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      gatewayType: Schema.optional(Schema.String),
-      gateway: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1SecurityAssessmentResultResourceApiHubDeploymentDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sourceProject: Schema.optional(Schema.String),
+    resourceUri: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    gatewayType: Schema.optional(Schema.String),
+    gateway: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudApigeeV1SecurityAssessmentResultResourceApiHubDeploymentDetails",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1SecurityAssessmentResultResourceApiHubDeploymentDetails>;
+  });
 
 export interface GoogleCloudApigeeV1SecurityAssessmentResultResource {
   /** The revision id for the resource. In case of Apigee, this is proxy revision id. */
@@ -3657,20 +3104,18 @@ export interface GoogleCloudApigeeV1SecurityAssessmentResultResource {
     | (string & {});
 }
 
-export const GoogleCloudApigeeV1SecurityAssessmentResultResource: Schema.Schema<GoogleCloudApigeeV1SecurityAssessmentResultResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceRevisionId: Schema.optional(Schema.String),
-      apiHubDeploymentDetails: Schema.optional(
-        GoogleCloudApigeeV1SecurityAssessmentResultResourceApiHubDeploymentDetails,
-      ),
-      apiHubGatewayType: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1SecurityAssessmentResultResource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceRevisionId: Schema.optional(Schema.String),
+    apiHubDeploymentDetails: Schema.optional(
+      GoogleCloudApigeeV1SecurityAssessmentResultResourceApiHubDeploymentDetails,
+    ),
+    apiHubGatewayType: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudApigeeV1SecurityAssessmentResultResource",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1SecurityAssessmentResultResource>;
+  });
 
 export interface GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendationLink {
   /** The text of the url. (ie: "Learn more") */
@@ -3679,16 +3124,14 @@ export interface GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessm
   uri?: string;
 }
 
-export const GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendationLink: Schema.Schema<GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendationLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-      uri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendationLink =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.String),
+    uri: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendationLink",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendationLink>;
+  });
 
 export interface GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendation {
   /** The description of the recommendation. */
@@ -3697,18 +3140,16 @@ export interface GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessm
   link?: GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendationLink;
 }
 
-export const GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendation: Schema.Schema<GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      link: Schema.optional(
-        GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendationLink,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    link: Schema.optional(
+      GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendationLink,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendation",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendation>;
+  });
 
 export interface GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendation {
   /** Score impact indicates the impact on the overall score if the assessment were to pass. */
@@ -3733,23 +3174,21 @@ export interface GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessm
     | (string & {});
 }
 
-export const GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendation: Schema.Schema<GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scoreImpact: Schema.optional(Schema.Number),
-      displayName: Schema.optional(Schema.String),
-      weight: Schema.optional(Schema.String),
-      recommendations: Schema.optional(
-        Schema.Array(
-          GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendation,
-        ),
+export const GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scoreImpact: Schema.optional(Schema.Number),
+    displayName: Schema.optional(Schema.String),
+    weight: Schema.optional(Schema.String),
+    recommendations: Schema.optional(
+      Schema.Array(
+        GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendationRecommendation,
       ),
-      verdict: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+    ),
+    verdict: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendation",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendation>;
+  });
 
 export interface GoogleCloudApigeeV1SecurityAssessmentResultScoringResult {
   severity?:
@@ -3772,25 +3211,23 @@ export interface GoogleCloudApigeeV1SecurityAssessmentResultScoringResult {
   dataUpdateTime?: string;
 }
 
-export const GoogleCloudApigeeV1SecurityAssessmentResultScoringResult: Schema.Schema<GoogleCloudApigeeV1SecurityAssessmentResultScoringResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      severity: Schema.optional(Schema.String),
-      failedAssessmentPerWeight: Schema.optional(
-        Schema.Record(Schema.String, Schema.Number),
+export const GoogleCloudApigeeV1SecurityAssessmentResultScoringResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    severity: Schema.optional(Schema.String),
+    failedAssessmentPerWeight: Schema.optional(
+      Schema.Record(Schema.String, Schema.Number),
+    ),
+    assessmentRecommendations: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendation,
       ),
-      assessmentRecommendations: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          GoogleCloudApigeeV1SecurityAssessmentResultScoringResultAssessmentRecommendation,
-        ),
-      ),
-      score: Schema.optional(Schema.Number),
-      dataUpdateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+    ),
+    score: Schema.optional(Schema.Number),
+    dataUpdateTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudApigeeV1SecurityAssessmentResultScoringResult",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1SecurityAssessmentResultScoringResult>;
+  });
 
 export interface GoogleCloudApigeeV1SecurityAssessmentResult {
   /** The error status if scoring fails. */
@@ -3803,21 +3240,17 @@ export interface GoogleCloudApigeeV1SecurityAssessmentResult {
   scoringResult?: GoogleCloudApigeeV1SecurityAssessmentResultScoringResult;
 }
 
-export const GoogleCloudApigeeV1SecurityAssessmentResult: Schema.Schema<GoogleCloudApigeeV1SecurityAssessmentResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      error: Schema.optional(GoogleRpcStatus),
-      resource: Schema.optional(
-        GoogleCloudApigeeV1SecurityAssessmentResultResource,
-      ),
-      createTime: Schema.optional(Schema.String),
-      scoringResult: Schema.optional(
-        GoogleCloudApigeeV1SecurityAssessmentResultScoringResult,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1SecurityAssessmentResult",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1SecurityAssessmentResult>;
+export const GoogleCloudApigeeV1SecurityAssessmentResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(GoogleRpcStatus),
+    resource: Schema.optional(
+      GoogleCloudApigeeV1SecurityAssessmentResultResource,
+    ),
+    createTime: Schema.optional(Schema.String),
+    scoringResult: Schema.optional(
+      GoogleCloudApigeeV1SecurityAssessmentResultScoringResult,
+    ),
+  }).annotate({ identifier: "GoogleCloudApigeeV1SecurityAssessmentResult" });
 
 export interface GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsResponse {
   /** Default sort order is by resource name in alphabetic order. */
@@ -3828,19 +3261,17 @@ export interface GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRespons
   nextPageToken?: string;
 }
 
-export const GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsResponse: Schema.Schema<GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      securityAssessmentResults: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1SecurityAssessmentResult),
-      ),
-      assessmentTime: Schema.optional(Schema.String),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    securityAssessmentResults: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1SecurityAssessmentResult),
+    ),
+    assessmentTime: Schema.optional(Schema.String),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsResponse>;
+  });
 
 export interface GoogleCloudApigeeV1DebugSession {
   /** Optional. The time in seconds after which this DebugSession should end. This value will override the value in query param, if both are provided. */
@@ -3859,20 +3290,16 @@ export interface GoogleCloudApigeeV1DebugSession {
   filter?: string;
 }
 
-export const GoogleCloudApigeeV1DebugSession: Schema.Schema<GoogleCloudApigeeV1DebugSession> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      timeout: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      count: Schema.optional(Schema.Number),
-      name: Schema.optional(Schema.String),
-      validity: Schema.optional(Schema.Number),
-      tracesize: Schema.optional(Schema.Number),
-      filter: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1DebugSession",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1DebugSession>;
+export const GoogleCloudApigeeV1DebugSession =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    timeout: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    count: Schema.optional(Schema.Number),
+    name: Schema.optional(Schema.String),
+    validity: Schema.optional(Schema.Number),
+    tracesize: Schema.optional(Schema.Number),
+    filter: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1DebugSession" });
 
 export interface GoogleCloudApigeeV1SyncAuthorization {
   /** Required. Array of service accounts to grant access to control plane resources, each specified using the following format: `serviceAccount:` service-account-name. The service-account-name is formatted like an email address. For example: `my-synchronizer-manager-service_account@my_project_id.iam.gserviceaccount.com` You might specify multiple service accounts, for example, if you have multiple environments and wish to assign a unique service account to each one. The service accounts must have **Apigee Synchronizer Manager** role. See also [Create service accounts](https://cloud.google.com/apigee/docs/hybrid/latest/sa-about#create-the-service-accounts). */
@@ -3881,15 +3308,11 @@ export interface GoogleCloudApigeeV1SyncAuthorization {
   etag?: string;
 }
 
-export const GoogleCloudApigeeV1SyncAuthorization: Schema.Schema<GoogleCloudApigeeV1SyncAuthorization> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      identities: Schema.optional(Schema.Array(Schema.String)),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1SyncAuthorization",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1SyncAuthorization>;
+export const GoogleCloudApigeeV1SyncAuthorization =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    identities: Schema.optional(Schema.Array(Schema.String)),
+    etag: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1SyncAuthorization" });
 
 export interface GoogleCloudApigeeV1ProvisionOrganizationRequest {
   /** Compute Engine network used for Service Networking to be peered with Apigee runtime instances. See [Getting started with the Service Networking API](https://cloud.google.com/service-infrastructure/docs/service-networking/getting-started). Apigee also supports shared VPC (that is, the host network project is not the same as the one that is peering with Apigee). See [Shared VPC overview](https://cloud.google.com/vpc/docs/shared-vpc). To use a shared VPC network, use the following format: `projects/{host-project-id}/{region}/networks/{network-name}`. For example: `projects/my-sharedvpc-host/global/networks/mynetwork` */
@@ -3902,17 +3325,15 @@ export interface GoogleCloudApigeeV1ProvisionOrganizationRequest {
   disableVpcPeering?: boolean;
 }
 
-export const GoogleCloudApigeeV1ProvisionOrganizationRequest: Schema.Schema<GoogleCloudApigeeV1ProvisionOrganizationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      authorizedNetwork: Schema.optional(Schema.String),
-      analyticsRegion: Schema.optional(Schema.String),
-      runtimeLocation: Schema.optional(Schema.String),
-      disableVpcPeering: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1ProvisionOrganizationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    authorizedNetwork: Schema.optional(Schema.String),
+    analyticsRegion: Schema.optional(Schema.String),
+    runtimeLocation: Schema.optional(Schema.String),
+    disableVpcPeering: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudApigeeV1ProvisionOrganizationRequest",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ProvisionOrganizationRequest>;
+  });
 
 export interface GoogleCloudApigeeV1TargetServer {
   /** Optional. A human-readable description of this TargetServer. */
@@ -3938,57 +3359,45 @@ export interface GoogleCloudApigeeV1TargetServer {
   isEnabled?: boolean;
 }
 
-export const GoogleCloudApigeeV1TargetServer: Schema.Schema<GoogleCloudApigeeV1TargetServer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      port: Schema.optional(Schema.Number),
-      protocol: Schema.optional(Schema.String),
-      sSLInfo: Schema.optional(GoogleCloudApigeeV1TlsInfo),
-      host: Schema.optional(Schema.String),
-      isEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1TargetServer",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1TargetServer>;
+export const GoogleCloudApigeeV1TargetServer =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    port: Schema.optional(Schema.Number),
+    protocol: Schema.optional(Schema.String),
+    sSLInfo: Schema.optional(GoogleCloudApigeeV1TlsInfo),
+    host: Schema.optional(Schema.String),
+    isEnabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudApigeeV1TargetServer" });
 
 export interface GoogleCloudApigeeV1SecurityActionDeny {
   /** Optional. The HTTP response code if the Action = DENY. */
   responseCode?: number;
 }
 
-export const GoogleCloudApigeeV1SecurityActionDeny: Schema.Schema<GoogleCloudApigeeV1SecurityActionDeny> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      responseCode: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1SecurityActionDeny",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1SecurityActionDeny>;
+export const GoogleCloudApigeeV1SecurityActionDeny =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    responseCode: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudApigeeV1SecurityActionDeny" });
 
 export interface GoogleCloudApigeeV1SecurityActionAllow {}
 
-export const GoogleCloudApigeeV1SecurityActionAllow: Schema.Schema<GoogleCloudApigeeV1SecurityActionAllow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudApigeeV1SecurityActionAllow =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApigeeV1SecurityActionAllow",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1SecurityActionAllow>;
+  });
 
 export interface GoogleCloudApigeeV1SecurityActionFlag {
   /** Optional. A list of HTTP headers to be sent to the target in case of a FLAG SecurityAction. Limit 5 headers per SecurityAction. At least one is mandatory. */
   headers?: Array<GoogleCloudApigeeV1SecurityActionHttpHeader>;
 }
 
-export const GoogleCloudApigeeV1SecurityActionFlag: Schema.Schema<GoogleCloudApigeeV1SecurityActionFlag> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      headers: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1SecurityActionHttpHeader),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1SecurityActionFlag",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1SecurityActionFlag>;
+export const GoogleCloudApigeeV1SecurityActionFlag =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    headers: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1SecurityActionHttpHeader),
+    ),
+  }).annotate({ identifier: "GoogleCloudApigeeV1SecurityActionFlag" });
 
 export interface GoogleCloudApigeeV1SecurityActionConditionConfig {
   /** Optional. A list of access_tokens. Limit 1000 per action. */
@@ -4015,24 +3424,22 @@ export interface GoogleCloudApigeeV1SecurityActionConditionConfig {
   apiKeys?: Array<string>;
 }
 
-export const GoogleCloudApigeeV1SecurityActionConditionConfig: Schema.Schema<GoogleCloudApigeeV1SecurityActionConditionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accessTokens: Schema.optional(Schema.Array(Schema.String)),
-      userAgents: Schema.optional(Schema.Array(Schema.String)),
-      developerApps: Schema.optional(Schema.Array(Schema.String)),
-      regionCodes: Schema.optional(Schema.Array(Schema.String)),
-      botReasons: Schema.optional(Schema.Array(Schema.String)),
-      developers: Schema.optional(Schema.Array(Schema.String)),
-      httpMethods: Schema.optional(Schema.Array(Schema.String)),
-      apiProducts: Schema.optional(Schema.Array(Schema.String)),
-      asns: Schema.optional(Schema.Array(Schema.String)),
-      ipAddressRanges: Schema.optional(Schema.Array(Schema.String)),
-      apiKeys: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1SecurityActionConditionConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accessTokens: Schema.optional(Schema.Array(Schema.String)),
+    userAgents: Schema.optional(Schema.Array(Schema.String)),
+    developerApps: Schema.optional(Schema.Array(Schema.String)),
+    regionCodes: Schema.optional(Schema.Array(Schema.String)),
+    botReasons: Schema.optional(Schema.Array(Schema.String)),
+    developers: Schema.optional(Schema.Array(Schema.String)),
+    httpMethods: Schema.optional(Schema.Array(Schema.String)),
+    apiProducts: Schema.optional(Schema.Array(Schema.String)),
+    asns: Schema.optional(Schema.Array(Schema.String)),
+    ipAddressRanges: Schema.optional(Schema.Array(Schema.String)),
+    apiKeys: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudApigeeV1SecurityActionConditionConfig",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1SecurityActionConditionConfig>;
+  });
 
 export interface GoogleCloudApigeeV1SecurityAction {
   /** Input only. The TTL for this SecurityAction. */
@@ -4061,27 +3468,23 @@ export interface GoogleCloudApigeeV1SecurityAction {
   apiProxies?: Array<string>;
 }
 
-export const GoogleCloudApigeeV1SecurityAction: Schema.Schema<GoogleCloudApigeeV1SecurityAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ttl: Schema.optional(Schema.String),
-      deny: Schema.optional(GoogleCloudApigeeV1SecurityActionDeny),
-      updateTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      allow: Schema.optional(GoogleCloudApigeeV1SecurityActionAllow),
-      expireTime: Schema.optional(Schema.String),
-      flag: Schema.optional(GoogleCloudApigeeV1SecurityActionFlag),
-      conditionConfig: Schema.optional(
-        GoogleCloudApigeeV1SecurityActionConditionConfig,
-      ),
-      apiProxies: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1SecurityAction",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1SecurityAction>;
+export const GoogleCloudApigeeV1SecurityAction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ttl: Schema.optional(Schema.String),
+    deny: Schema.optional(GoogleCloudApigeeV1SecurityActionDeny),
+    updateTime: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    allow: Schema.optional(GoogleCloudApigeeV1SecurityActionAllow),
+    expireTime: Schema.optional(Schema.String),
+    flag: Schema.optional(GoogleCloudApigeeV1SecurityActionFlag),
+    conditionConfig: Schema.optional(
+      GoogleCloudApigeeV1SecurityActionConditionConfig,
+    ),
+    apiProxies: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudApigeeV1SecurityAction" });
 
 export interface GoogleCloudApigeeV1ListSecurityActionsResponse {
   /** The SecurityActions for the specified environment. */
@@ -4090,33 +3493,25 @@ export interface GoogleCloudApigeeV1ListSecurityActionsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApigeeV1ListSecurityActionsResponse: Schema.Schema<GoogleCloudApigeeV1ListSecurityActionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      securityActions: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1SecurityAction),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ListSecurityActionsResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ListSecurityActionsResponse>;
+export const GoogleCloudApigeeV1ListSecurityActionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    securityActions: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1SecurityAction),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ListSecurityActionsResponse" });
 
 export interface EdgeConfigstoreBundleBadBundle {
   /** Describes all precondition violations. */
   violations?: Array<EdgeConfigstoreBundleBadBundleViolation>;
 }
 
-export const EdgeConfigstoreBundleBadBundle: Schema.Schema<EdgeConfigstoreBundleBadBundle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      violations: Schema.optional(
-        Schema.Array(EdgeConfigstoreBundleBadBundleViolation),
-      ),
-    }),
-  ).annotate({
-    identifier: "EdgeConfigstoreBundleBadBundle",
-  }) as any as Schema.Schema<EdgeConfigstoreBundleBadBundle>;
+export const EdgeConfigstoreBundleBadBundle =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    violations: Schema.optional(
+      Schema.Array(EdgeConfigstoreBundleBadBundleViolation),
+    ),
+  }).annotate({ identifier: "EdgeConfigstoreBundleBadBundle" });
 
 export interface GoogleCloudApigeeV1DeploymentGroupConfig {
   /** Name of the deployment group in the following format: `organizations/{org}/environments/{env}/deploymentGroups/{group}`. */
@@ -4133,17 +3528,13 @@ export interface GoogleCloudApigeeV1DeploymentGroupConfig {
   uid?: string;
 }
 
-export const GoogleCloudApigeeV1DeploymentGroupConfig: Schema.Schema<GoogleCloudApigeeV1DeploymentGroupConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      deploymentGroupType: Schema.optional(Schema.String),
-      revisionId: Schema.optional(Schema.String),
-      uid: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1DeploymentGroupConfig",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1DeploymentGroupConfig>;
+export const GoogleCloudApigeeV1DeploymentGroupConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    deploymentGroupType: Schema.optional(Schema.String),
+    revisionId: Schema.optional(Schema.String),
+    uid: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1DeploymentGroupConfig" });
 
 export interface GoogleCloudApigeeV1Developer {
   /** Required. Last name of the developer. */
@@ -4176,27 +3567,23 @@ export interface GoogleCloudApigeeV1Developer {
   organizationName?: string;
 }
 
-export const GoogleCloudApigeeV1Developer: Schema.Schema<GoogleCloudApigeeV1Developer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lastName: Schema.optional(Schema.String),
-      developerId: Schema.optional(Schema.String),
-      createdAt: Schema.optional(Schema.String),
-      attributes: Schema.optional(Schema.Array(GoogleCloudApigeeV1Attribute)),
-      email: Schema.optional(Schema.String),
-      appFamily: Schema.optional(Schema.String),
-      userName: Schema.optional(Schema.String),
-      apps: Schema.optional(Schema.Array(Schema.String)),
-      companies: Schema.optional(Schema.Array(Schema.String)),
-      firstName: Schema.optional(Schema.String),
-      accessType: Schema.optional(Schema.String),
-      lastModifiedAt: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-      organizationName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1Developer",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1Developer>;
+export const GoogleCloudApigeeV1Developer =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    lastName: Schema.optional(Schema.String),
+    developerId: Schema.optional(Schema.String),
+    createdAt: Schema.optional(Schema.String),
+    attributes: Schema.optional(Schema.Array(GoogleCloudApigeeV1Attribute)),
+    email: Schema.optional(Schema.String),
+    appFamily: Schema.optional(Schema.String),
+    userName: Schema.optional(Schema.String),
+    apps: Schema.optional(Schema.Array(Schema.String)),
+    companies: Schema.optional(Schema.Array(Schema.String)),
+    firstName: Schema.optional(Schema.String),
+    accessType: Schema.optional(Schema.String),
+    lastModifiedAt: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+    organizationName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1Developer" });
 
 export interface GoogleCloudApigeeV1ApiDebugSession {
   /** The debug session ID. */
@@ -4209,17 +3596,13 @@ export interface GoogleCloudApigeeV1ApiDebugSession {
   environmentId?: string;
 }
 
-export const GoogleCloudApigeeV1ApiDebugSession: Schema.Schema<GoogleCloudApigeeV1ApiDebugSession> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      apiProxyRevisionId: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      environmentId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ApiDebugSession",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ApiDebugSession>;
+export const GoogleCloudApigeeV1ApiDebugSession =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    apiProxyRevisionId: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    environmentId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ApiDebugSession" });
 
 export interface GoogleCloudApigeeV1ApiProxyRevision {
   /** API proxy revision. */
@@ -4274,40 +3657,36 @@ export interface GoogleCloudApigeeV1ApiProxyRevision {
   policies?: Array<string>;
 }
 
-export const GoogleCloudApigeeV1ApiProxyRevision: Schema.Schema<GoogleCloudApigeeV1ApiProxyRevision> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      revision: Schema.optional(Schema.String),
-      basepaths: Schema.optional(Schema.Array(Schema.String)),
-      name: Schema.optional(Schema.String),
-      targets: Schema.optional(Schema.Array(Schema.String)),
-      archive: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      sharedFlows: Schema.optional(Schema.Array(Schema.String)),
-      teams: Schema.optional(Schema.Array(Schema.String)),
-      proxies: Schema.optional(Schema.Array(Schema.String)),
-      configurationVersion: Schema.optional(GoogleCloudApigeeV1ConfigVersion),
-      entityMetaDataAsProperties: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      targetEndpoints: Schema.optional(Schema.Array(Schema.String)),
-      resourceFiles: Schema.optional(GoogleCloudApigeeV1ResourceFiles),
-      spec: Schema.optional(Schema.String),
-      targetServers: Schema.optional(Schema.Array(Schema.String)),
-      contextInfo: Schema.optional(Schema.String),
-      lastModifiedAt: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      hasExtensiblePolicy: Schema.optional(Schema.Boolean),
-      createdAt: Schema.optional(Schema.String),
-      proxyEndpoints: Schema.optional(Schema.Array(Schema.String)),
-      resources: Schema.optional(Schema.Array(Schema.String)),
-      integrationEndpoints: Schema.optional(Schema.Array(Schema.String)),
-      policies: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ApiProxyRevision",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ApiProxyRevision>;
+export const GoogleCloudApigeeV1ApiProxyRevision =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    revision: Schema.optional(Schema.String),
+    basepaths: Schema.optional(Schema.Array(Schema.String)),
+    name: Schema.optional(Schema.String),
+    targets: Schema.optional(Schema.Array(Schema.String)),
+    archive: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    sharedFlows: Schema.optional(Schema.Array(Schema.String)),
+    teams: Schema.optional(Schema.Array(Schema.String)),
+    proxies: Schema.optional(Schema.Array(Schema.String)),
+    configurationVersion: Schema.optional(GoogleCloudApigeeV1ConfigVersion),
+    entityMetaDataAsProperties: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    targetEndpoints: Schema.optional(Schema.Array(Schema.String)),
+    resourceFiles: Schema.optional(GoogleCloudApigeeV1ResourceFiles),
+    spec: Schema.optional(Schema.String),
+    targetServers: Schema.optional(Schema.Array(Schema.String)),
+    contextInfo: Schema.optional(Schema.String),
+    lastModifiedAt: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    hasExtensiblePolicy: Schema.optional(Schema.Boolean),
+    createdAt: Schema.optional(Schema.String),
+    proxyEndpoints: Schema.optional(Schema.Array(Schema.String)),
+    resources: Schema.optional(Schema.Array(Schema.String)),
+    integrationEndpoints: Schema.optional(Schema.Array(Schema.String)),
+    policies: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ApiProxyRevision" });
 
 export interface GoogleCloudApigeeV1DeveloperSubscription {
   /** Time when the API product subscription starts in milliseconds since epoch. */
@@ -4324,19 +3703,15 @@ export interface GoogleCloudApigeeV1DeveloperSubscription {
   createdAt?: string;
 }
 
-export const GoogleCloudApigeeV1DeveloperSubscription: Schema.Schema<GoogleCloudApigeeV1DeveloperSubscription> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      apiproduct: Schema.optional(Schema.String),
-      lastModifiedAt: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      createdAt: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1DeveloperSubscription",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1DeveloperSubscription>;
+export const GoogleCloudApigeeV1DeveloperSubscription =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    apiproduct: Schema.optional(Schema.String),
+    lastModifiedAt: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    createdAt: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1DeveloperSubscription" });
 
 export interface GoogleCloudApigeeV1DeveloperBalanceWallet {
   /** Current remaining balance of the developer for a particular currency. */
@@ -4345,15 +3720,11 @@ export interface GoogleCloudApigeeV1DeveloperBalanceWallet {
   lastCreditTime?: string;
 }
 
-export const GoogleCloudApigeeV1DeveloperBalanceWallet: Schema.Schema<GoogleCloudApigeeV1DeveloperBalanceWallet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      balance: Schema.optional(GoogleTypeMoney),
-      lastCreditTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1DeveloperBalanceWallet",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1DeveloperBalanceWallet>;
+export const GoogleCloudApigeeV1DeveloperBalanceWallet =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    balance: Schema.optional(GoogleTypeMoney),
+    lastCreditTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1DeveloperBalanceWallet" });
 
 export interface GoogleCloudApigeeV1NodeConfig {
   /** Output only. The current total number of gateway nodes that each environment currently has across all instances. */
@@ -4364,16 +3735,12 @@ export interface GoogleCloudApigeeV1NodeConfig {
   minNodeCount?: string;
 }
 
-export const GoogleCloudApigeeV1NodeConfig: Schema.Schema<GoogleCloudApigeeV1NodeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      currentAggregateNodeCount: Schema.optional(Schema.String),
-      maxNodeCount: Schema.optional(Schema.String),
-      minNodeCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1NodeConfig",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1NodeConfig>;
+export const GoogleCloudApigeeV1NodeConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    currentAggregateNodeCount: Schema.optional(Schema.String),
+    maxNodeCount: Schema.optional(Schema.String),
+    minNodeCount: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1NodeConfig" });
 
 export interface GoogleCloudApigeeV1Environment {
   /** Output only. Creation time of this environment as milliseconds since epoch. */
@@ -4424,29 +3791,25 @@ export interface GoogleCloudApigeeV1Environment {
     | (string & {});
 }
 
-export const GoogleCloudApigeeV1Environment: Schema.Schema<GoogleCloudApigeeV1Environment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createdAt: Schema.optional(Schema.String),
-      deploymentType: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      hasAttachedFlowHooks: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      apiProxyType: Schema.optional(Schema.String),
-      clientIpResolutionConfig: Schema.optional(
-        GoogleCloudApigeeV1EnvironmentClientIPResolutionConfig,
-      ),
-      displayName: Schema.optional(Schema.String),
-      nodeConfig: Schema.optional(GoogleCloudApigeeV1NodeConfig),
-      forwardProxyUri: Schema.optional(Schema.String),
-      properties: Schema.optional(GoogleCloudApigeeV1Properties),
-      lastModifiedAt: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1Environment",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1Environment>;
+export const GoogleCloudApigeeV1Environment =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createdAt: Schema.optional(Schema.String),
+    deploymentType: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    hasAttachedFlowHooks: Schema.optional(Schema.Boolean),
+    name: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    apiProxyType: Schema.optional(Schema.String),
+    clientIpResolutionConfig: Schema.optional(
+      GoogleCloudApigeeV1EnvironmentClientIPResolutionConfig,
+    ),
+    displayName: Schema.optional(Schema.String),
+    nodeConfig: Schema.optional(GoogleCloudApigeeV1NodeConfig),
+    forwardProxyUri: Schema.optional(Schema.String),
+    properties: Schema.optional(GoogleCloudApigeeV1Properties),
+    lastModifiedAt: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1Environment" });
 
 export interface GoogleCloudApigeeV1AppGroupSubscription {
   /** Output only. Time when the API product subscription was created in milliseconds since epoch. */
@@ -4463,19 +3826,15 @@ export interface GoogleCloudApigeeV1AppGroupSubscription {
   startTime?: string;
 }
 
-export const GoogleCloudApigeeV1AppGroupSubscription: Schema.Schema<GoogleCloudApigeeV1AppGroupSubscription> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createdAt: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      apiproduct: Schema.optional(Schema.String),
-      lastModifiedAt: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1AppGroupSubscription",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1AppGroupSubscription>;
+export const GoogleCloudApigeeV1AppGroupSubscription =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createdAt: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    apiproduct: Schema.optional(Schema.String),
+    lastModifiedAt: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1AppGroupSubscription" });
 
 export interface GoogleCloudApigeeV1QueryTimeSeriesStatsRequest {
   /** Required. List of metrics and their aggregations. */
@@ -4506,38 +3865,32 @@ export interface GoogleCloudApigeeV1QueryTimeSeriesStatsRequest {
     | (string & {});
 }
 
-export const GoogleCloudApigeeV1QueryTimeSeriesStatsRequest: Schema.Schema<GoogleCloudApigeeV1QueryTimeSeriesStatsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metrics: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1MetricAggregation),
-      ),
-      timeRange: Schema.optional(GoogleTypeInterval),
-      dimensions: Schema.optional(Schema.Array(Schema.String)),
-      pageSize: Schema.optional(Schema.Number),
-      timestampOrder: Schema.optional(Schema.String),
-      pageToken: Schema.optional(Schema.String),
-      filter: Schema.optional(Schema.String),
-      windowSize: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1QueryTimeSeriesStatsRequest",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1QueryTimeSeriesStatsRequest>;
+export const GoogleCloudApigeeV1QueryTimeSeriesStatsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    metrics: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1MetricAggregation),
+    ),
+    timeRange: Schema.optional(GoogleTypeInterval),
+    dimensions: Schema.optional(Schema.Array(Schema.String)),
+    pageSize: Schema.optional(Schema.Number),
+    timestampOrder: Schema.optional(Schema.String),
+    pageToken: Schema.optional(Schema.String),
+    filter: Schema.optional(Schema.String),
+    windowSize: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1QueryTimeSeriesStatsRequest" });
 
 export interface GoogleCloudApigeeV1ScoreComponentRecommendationActionActionContext {
   /** Documentation link for the action. */
   documentationLink?: string;
 }
 
-export const GoogleCloudApigeeV1ScoreComponentRecommendationActionActionContext: Schema.Schema<GoogleCloudApigeeV1ScoreComponentRecommendationActionActionContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      documentationLink: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1ScoreComponentRecommendationActionActionContext =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    documentationLink: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudApigeeV1ScoreComponentRecommendationActionActionContext",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ScoreComponentRecommendationActionActionContext>;
+  });
 
 export interface GoogleCloudApigeeV1ScoreComponentRecommendationAction {
   /** Action context for the action. */
@@ -4546,17 +3899,15 @@ export interface GoogleCloudApigeeV1ScoreComponentRecommendationAction {
   description?: string;
 }
 
-export const GoogleCloudApigeeV1ScoreComponentRecommendationAction: Schema.Schema<GoogleCloudApigeeV1ScoreComponentRecommendationAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      actionContext: Schema.optional(
-        GoogleCloudApigeeV1ScoreComponentRecommendationActionActionContext,
-      ),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1ScoreComponentRecommendationAction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    actionContext: Schema.optional(
+      GoogleCloudApigeeV1ScoreComponentRecommendationActionActionContext,
+    ),
+    description: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudApigeeV1ScoreComponentRecommendationAction",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ScoreComponentRecommendationAction>;
+  });
 
 export interface GoogleCloudApigeeV1ScoreComponentRecommendation {
   /** Title represents recommendation title. */
@@ -4569,19 +3920,17 @@ export interface GoogleCloudApigeeV1ScoreComponentRecommendation {
   impact?: number;
 }
 
-export const GoogleCloudApigeeV1ScoreComponentRecommendation: Schema.Schema<GoogleCloudApigeeV1ScoreComponentRecommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      actions: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1ScoreComponentRecommendationAction),
-      ),
-      impact: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1ScoreComponentRecommendation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    title: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    actions: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1ScoreComponentRecommendationAction),
+    ),
+    impact: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudApigeeV1ScoreComponentRecommendation",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ScoreComponentRecommendation>;
+  });
 
 export interface GoogleCloudApigeeV1ScoreComponent {
   /** Score for the component. */
@@ -4598,35 +3947,27 @@ export interface GoogleCloudApigeeV1ScoreComponent {
   recommendations?: Array<GoogleCloudApigeeV1ScoreComponentRecommendation>;
 }
 
-export const GoogleCloudApigeeV1ScoreComponent: Schema.Schema<GoogleCloudApigeeV1ScoreComponent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      score: Schema.optional(Schema.Number),
-      calculateTime: Schema.optional(Schema.String),
-      scorePath: Schema.optional(Schema.String),
-      dataCaptureTime: Schema.optional(Schema.String),
-      drilldownPaths: Schema.optional(Schema.Array(Schema.String)),
-      recommendations: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1ScoreComponentRecommendation),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ScoreComponent",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ScoreComponent>;
+export const GoogleCloudApigeeV1ScoreComponent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    score: Schema.optional(Schema.Number),
+    calculateTime: Schema.optional(Schema.String),
+    scorePath: Schema.optional(Schema.String),
+    dataCaptureTime: Schema.optional(Schema.String),
+    drilldownPaths: Schema.optional(Schema.Array(Schema.String)),
+    recommendations: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1ScoreComponentRecommendation),
+    ),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ScoreComponent" });
 
 export interface GoogleCloudApigeeV1AsyncApiDocumentation {
   /** Required. The documentation file contents for the AsyncAPI Specification. JSON and YAML file formats are supported. */
   spec?: GoogleCloudApigeeV1DocumentationFile;
 }
 
-export const GoogleCloudApigeeV1AsyncApiDocumentation: Schema.Schema<GoogleCloudApigeeV1AsyncApiDocumentation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      spec: Schema.optional(GoogleCloudApigeeV1DocumentationFile),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1AsyncApiDocumentation",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1AsyncApiDocumentation>;
+export const GoogleCloudApigeeV1AsyncApiDocumentation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    spec: Schema.optional(GoogleCloudApigeeV1DocumentationFile),
+  }).annotate({ identifier: "GoogleCloudApigeeV1AsyncApiDocumentation" });
 
 export interface GoogleCloudApigeeV1GraphqlDocumentation {
   /** Required. The documentation file contents for the GraphQL schema. */
@@ -4635,15 +3976,11 @@ export interface GoogleCloudApigeeV1GraphqlDocumentation {
   endpointUri?: string;
 }
 
-export const GoogleCloudApigeeV1GraphqlDocumentation: Schema.Schema<GoogleCloudApigeeV1GraphqlDocumentation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      schema: Schema.optional(GoogleCloudApigeeV1DocumentationFile),
-      endpointUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1GraphqlDocumentation",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1GraphqlDocumentation>;
+export const GoogleCloudApigeeV1GraphqlDocumentation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    schema: Schema.optional(GoogleCloudApigeeV1DocumentationFile),
+    endpointUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1GraphqlDocumentation" });
 
 export interface GoogleCloudApigeeV1ApiDocDocumentation {
   /** Optional. OpenAPI Specification documentation. */
@@ -4654,20 +3991,16 @@ export interface GoogleCloudApigeeV1ApiDocDocumentation {
   graphqlDocumentation?: GoogleCloudApigeeV1GraphqlDocumentation;
 }
 
-export const GoogleCloudApigeeV1ApiDocDocumentation: Schema.Schema<GoogleCloudApigeeV1ApiDocDocumentation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      oasDocumentation: Schema.optional(GoogleCloudApigeeV1OASDocumentation),
-      asyncApiDocumentation: Schema.optional(
-        GoogleCloudApigeeV1AsyncApiDocumentation,
-      ),
-      graphqlDocumentation: Schema.optional(
-        GoogleCloudApigeeV1GraphqlDocumentation,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ApiDocDocumentation",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ApiDocDocumentation>;
+export const GoogleCloudApigeeV1ApiDocDocumentation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    oasDocumentation: Schema.optional(GoogleCloudApigeeV1OASDocumentation),
+    asyncApiDocumentation: Schema.optional(
+      GoogleCloudApigeeV1AsyncApiDocumentation,
+    ),
+    graphqlDocumentation: Schema.optional(
+      GoogleCloudApigeeV1GraphqlDocumentation,
+    ),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ApiDocDocumentation" });
 
 export interface GoogleCloudApigeeV1AliasRevisionConfig {
   type?: "ALIAS_TYPE_UNSPECIFIED" | "CERT" | "KEY_CERT" | (string & {});
@@ -4677,16 +4010,12 @@ export interface GoogleCloudApigeeV1AliasRevisionConfig {
   name?: string;
 }
 
-export const GoogleCloudApigeeV1AliasRevisionConfig: Schema.Schema<GoogleCloudApigeeV1AliasRevisionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1AliasRevisionConfig",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1AliasRevisionConfig>;
+export const GoogleCloudApigeeV1AliasRevisionConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1AliasRevisionConfig" });
 
 export interface GoogleCloudApigeeV1ListInstancesResponse {
   /** Instances in the specified organization. */
@@ -4695,15 +4024,11 @@ export interface GoogleCloudApigeeV1ListInstancesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApigeeV1ListInstancesResponse: Schema.Schema<GoogleCloudApigeeV1ListInstancesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      instances: Schema.optional(Schema.Array(GoogleCloudApigeeV1Instance)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ListInstancesResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ListInstancesResponse>;
+export const GoogleCloudApigeeV1ListInstancesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    instances: Schema.optional(Schema.Array(GoogleCloudApigeeV1Instance)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ListInstancesResponse" });
 
 export interface GoogleLongrunningOperation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -4718,18 +4043,14 @@ export interface GoogleLongrunningOperation {
   metadata?: Record<string, unknown>;
 }
 
-export const GoogleLongrunningOperation: Schema.Schema<GoogleLongrunningOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      done: Schema.optional(Schema.Boolean),
-      error: Schema.optional(GoogleRpcStatus),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
-    identifier: "GoogleLongrunningOperation",
-  }) as any as Schema.Schema<GoogleLongrunningOperation>;
+export const GoogleLongrunningOperation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    done: Schema.optional(Schema.Boolean),
+    error: Schema.optional(GoogleRpcStatus),
+    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "GoogleLongrunningOperation" });
 
 export interface GoogleCloudApigeeV1CreditAppGroupBalanceRequest {
   /** Required. The amount of money to be credited. The wallet corresponding to the currency specified within `transaction_amount` will be updated. For example, if you specified `currency_code` within `transaction_amount` as "USD", then the amount would be added to the wallet which has the "USD" currency or if no such wallet exists, a new wallet will be created with the "USD" currency. */
@@ -4738,15 +4059,13 @@ export interface GoogleCloudApigeeV1CreditAppGroupBalanceRequest {
   transactionId?: string;
 }
 
-export const GoogleCloudApigeeV1CreditAppGroupBalanceRequest: Schema.Schema<GoogleCloudApigeeV1CreditAppGroupBalanceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      transactionAmount: Schema.optional(GoogleTypeMoney),
-      transactionId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1CreditAppGroupBalanceRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    transactionAmount: Schema.optional(GoogleTypeMoney),
+    transactionId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudApigeeV1CreditAppGroupBalanceRequest",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1CreditAppGroupBalanceRequest>;
+  });
 
 export interface GoogleCloudApigeeV1RevenueShareRange {
   /** Starting value of the range. Set to 0 or `null` for the initial range of values. */
@@ -4757,16 +4076,12 @@ export interface GoogleCloudApigeeV1RevenueShareRange {
   sharePercentage?: number;
 }
 
-export const GoogleCloudApigeeV1RevenueShareRange: Schema.Schema<GoogleCloudApigeeV1RevenueShareRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      start: Schema.optional(Schema.String),
-      end: Schema.optional(Schema.String),
-      sharePercentage: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1RevenueShareRange",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1RevenueShareRange>;
+export const GoogleCloudApigeeV1RevenueShareRange =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    start: Schema.optional(Schema.String),
+    end: Schema.optional(Schema.String),
+    sharePercentage: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudApigeeV1RevenueShareRange" });
 
 export interface GoogleCloudApigeeV1RatePlan {
   /** Currency to be used for billing. Consists of a three-letter code as defined by the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) standard. */
@@ -4827,36 +4142,32 @@ export interface GoogleCloudApigeeV1RatePlan {
   createdAt?: string;
 }
 
-export const GoogleCloudApigeeV1RatePlan: Schema.Schema<GoogleCloudApigeeV1RatePlan> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      currencyCode: Schema.optional(Schema.String),
-      lastModifiedAt: Schema.optional(Schema.String),
-      consumptionPricingType: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      paymentFundingModel: Schema.optional(Schema.String),
-      consumptionPricingRates: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1RateRange),
-      ),
-      apiproduct: Schema.optional(Schema.String),
-      revenueShareRates: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1RevenueShareRange),
-      ),
-      billingPeriod: Schema.optional(Schema.String),
-      setupFee: Schema.optional(GoogleTypeMoney),
-      fixedFeeFrequency: Schema.optional(Schema.Number),
-      startTime: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      revenueShareType: Schema.optional(Schema.String),
-      fixedRecurringFee: Schema.optional(GoogleTypeMoney),
-      createdAt: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1RatePlan",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1RatePlan>;
+export const GoogleCloudApigeeV1RatePlan =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    currencyCode: Schema.optional(Schema.String),
+    lastModifiedAt: Schema.optional(Schema.String),
+    consumptionPricingType: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    paymentFundingModel: Schema.optional(Schema.String),
+    consumptionPricingRates: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1RateRange),
+    ),
+    apiproduct: Schema.optional(Schema.String),
+    revenueShareRates: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1RevenueShareRange),
+    ),
+    billingPeriod: Schema.optional(Schema.String),
+    setupFee: Schema.optional(GoogleTypeMoney),
+    fixedFeeFrequency: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    revenueShareType: Schema.optional(Schema.String),
+    fixedRecurringFee: Schema.optional(GoogleTypeMoney),
+    createdAt: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1RatePlan" });
 
 export interface GoogleCloudApigeeV1ListRatePlansResponse {
   /** List of rate plans in an organization. */
@@ -4865,15 +4176,11 @@ export interface GoogleCloudApigeeV1ListRatePlansResponse {
   nextStartKey?: string;
 }
 
-export const GoogleCloudApigeeV1ListRatePlansResponse: Schema.Schema<GoogleCloudApigeeV1ListRatePlansResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ratePlans: Schema.optional(Schema.Array(GoogleCloudApigeeV1RatePlan)),
-      nextStartKey: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ListRatePlansResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ListRatePlansResponse>;
+export const GoogleCloudApigeeV1ListRatePlansResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ratePlans: Schema.optional(Schema.Array(GoogleCloudApigeeV1RatePlan)),
+    nextStartKey: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ListRatePlansResponse" });
 
 export interface GoogleCloudApigeeV1StatsHostStats {
   /** List of metrics grouped under dimensions. */
@@ -4884,18 +4191,14 @@ export interface GoogleCloudApigeeV1StatsHostStats {
   metrics?: Array<GoogleCloudApigeeV1Metric>;
 }
 
-export const GoogleCloudApigeeV1StatsHostStats: Schema.Schema<GoogleCloudApigeeV1StatsHostStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dimensions: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1DimensionMetric),
-      ),
-      name: Schema.optional(Schema.String),
-      metrics: Schema.optional(Schema.Array(GoogleCloudApigeeV1Metric)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1StatsHostStats",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1StatsHostStats>;
+export const GoogleCloudApigeeV1StatsHostStats =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dimensions: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1DimensionMetric),
+    ),
+    name: Schema.optional(Schema.String),
+    metrics: Schema.optional(Schema.Array(GoogleCloudApigeeV1Metric)),
+  }).annotate({ identifier: "GoogleCloudApigeeV1StatsHostStats" });
 
 export interface GoogleCloudApigeeV1PodStatus {
   /** Version of the application running in the pod. */
@@ -4918,22 +4221,18 @@ export interface GoogleCloudApigeeV1PodStatus {
   deploymentTime?: string;
 }
 
-export const GoogleCloudApigeeV1PodStatus: Schema.Schema<GoogleCloudApigeeV1PodStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      appVersion: Schema.optional(Schema.String),
-      podStatusTime: Schema.optional(Schema.String),
-      podName: Schema.optional(Schema.String),
-      deploymentStatusTime: Schema.optional(Schema.String),
-      statusCode: Schema.optional(Schema.String),
-      deploymentStatus: Schema.optional(Schema.String),
-      statusCodeDetails: Schema.optional(Schema.String),
-      podStatus: Schema.optional(Schema.String),
-      deploymentTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1PodStatus",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1PodStatus>;
+export const GoogleCloudApigeeV1PodStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    appVersion: Schema.optional(Schema.String),
+    podStatusTime: Schema.optional(Schema.String),
+    podName: Schema.optional(Schema.String),
+    deploymentStatusTime: Schema.optional(Schema.String),
+    statusCode: Schema.optional(Schema.String),
+    deploymentStatus: Schema.optional(Schema.String),
+    statusCodeDetails: Schema.optional(Schema.String),
+    podStatus: Schema.optional(Schema.String),
+    deploymentTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1PodStatus" });
 
 export interface GoogleCloudApigeeV1Deployment {
   /** Current state of the deployment. **Note**: This field is displayed only when viewing deployment status. */
@@ -4969,28 +4268,24 @@ export interface GoogleCloudApigeeV1Deployment {
   instances?: Array<GoogleCloudApigeeV1InstanceDeploymentStatus>;
 }
 
-export const GoogleCloudApigeeV1Deployment: Schema.Schema<GoogleCloudApigeeV1Deployment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      revision: Schema.optional(Schema.String),
-      pods: Schema.optional(Schema.Array(GoogleCloudApigeeV1PodStatus)),
-      routeConflicts: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict),
-      ),
-      proxyDeploymentType: Schema.optional(Schema.String),
-      errors: Schema.optional(Schema.Array(GoogleRpcStatus)),
-      environment: Schema.optional(Schema.String),
-      apiProxy: Schema.optional(Schema.String),
-      serviceAccount: Schema.optional(Schema.String),
-      deployStartTime: Schema.optional(Schema.String),
-      instances: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1InstanceDeploymentStatus),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1Deployment",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1Deployment>;
+export const GoogleCloudApigeeV1Deployment =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+    revision: Schema.optional(Schema.String),
+    pods: Schema.optional(Schema.Array(GoogleCloudApigeeV1PodStatus)),
+    routeConflicts: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1DeploymentChangeReportRoutingConflict),
+    ),
+    proxyDeploymentType: Schema.optional(Schema.String),
+    errors: Schema.optional(Schema.Array(GoogleRpcStatus)),
+    environment: Schema.optional(Schema.String),
+    apiProxy: Schema.optional(Schema.String),
+    serviceAccount: Schema.optional(Schema.String),
+    deployStartTime: Schema.optional(Schema.String),
+    instances: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1InstanceDeploymentStatus),
+    ),
+  }).annotate({ identifier: "GoogleCloudApigeeV1Deployment" });
 
 export interface GoogleCloudApigeeV1Metadata {
   /** List of error messages as strings. */
@@ -4999,29 +4294,21 @@ export interface GoogleCloudApigeeV1Metadata {
   notices?: Array<string>;
 }
 
-export const GoogleCloudApigeeV1Metadata: Schema.Schema<GoogleCloudApigeeV1Metadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errors: Schema.optional(Schema.Array(Schema.String)),
-      notices: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1Metadata",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1Metadata>;
+export const GoogleCloudApigeeV1Metadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    errors: Schema.optional(Schema.Array(Schema.String)),
+    notices: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudApigeeV1Metadata" });
 
 export interface GoogleCloudApigeeV1OptimizedStatsNode {
   /** List of data values. */
   data?: Array<unknown>;
 }
 
-export const GoogleCloudApigeeV1OptimizedStatsNode: Schema.Schema<GoogleCloudApigeeV1OptimizedStatsNode> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      data: Schema.optional(Schema.Array(Schema.Unknown)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1OptimizedStatsNode",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1OptimizedStatsNode>;
+export const GoogleCloudApigeeV1OptimizedStatsNode =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    data: Schema.optional(Schema.Array(Schema.Unknown)),
+  }).annotate({ identifier: "GoogleCloudApigeeV1OptimizedStatsNode" });
 
 export interface GoogleCloudApigeeV1OptimizedStatsResponse {
   /** List of time unit values. Time unit refers to an epoch timestamp value. */
@@ -5034,31 +4321,23 @@ export interface GoogleCloudApigeeV1OptimizedStatsResponse {
   stats?: GoogleCloudApigeeV1OptimizedStatsNode;
 }
 
-export const GoogleCloudApigeeV1OptimizedStatsResponse: Schema.Schema<GoogleCloudApigeeV1OptimizedStatsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      TimeUnit: Schema.optional(Schema.Array(Schema.String)),
-      metaData: Schema.optional(GoogleCloudApigeeV1Metadata),
-      resultTruncated: Schema.optional(Schema.Boolean),
-      stats: Schema.optional(GoogleCloudApigeeV1OptimizedStatsNode),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1OptimizedStatsResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1OptimizedStatsResponse>;
+export const GoogleCloudApigeeV1OptimizedStatsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    TimeUnit: Schema.optional(Schema.Array(Schema.String)),
+    metaData: Schema.optional(GoogleCloudApigeeV1Metadata),
+    resultTruncated: Schema.optional(Schema.Boolean),
+    stats: Schema.optional(GoogleCloudApigeeV1OptimizedStatsNode),
+  }).annotate({ identifier: "GoogleCloudApigeeV1OptimizedStatsResponse" });
 
 export interface GoogleCloudApigeeV1OptimizedStats {
   /** Wraps the `stats` response for JavaScript Optimized Scenario with a response key. For example: ```{ "Response": { "TimeUnit": [], "metaData": { "errors": [], "notices": [ "Source:Postgres", "Table used: edge.api.aaxgroup001.agg_api", "PG Host:ruappg08-ro.production.apigeeks.net", "query served by:80c4ebca-6a10-4a2e-8faf-c60c1ee306ca" ] }, "resultTruncated": false, "stats": { "data": [ { "identifier": { "names": [ "apiproxy" ], "values": [ "sirjee" ] }, "metric": [ { "env": "prod", "name": "sum(message_count)", "values": [ 36.0 ] }, { "env": "prod", "name": "sum(is_error)", "values": [ 36.0 ] } ] } ] } } }``` */
   Response?: GoogleCloudApigeeV1OptimizedStatsResponse;
 }
 
-export const GoogleCloudApigeeV1OptimizedStats: Schema.Schema<GoogleCloudApigeeV1OptimizedStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      Response: Schema.optional(GoogleCloudApigeeV1OptimizedStatsResponse),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1OptimizedStats",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1OptimizedStats>;
+export const GoogleCloudApigeeV1OptimizedStats =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    Response: Schema.optional(GoogleCloudApigeeV1OptimizedStatsResponse),
+  }).annotate({ identifier: "GoogleCloudApigeeV1OptimizedStats" });
 
 export interface GoogleCloudApigeeV1TestDatastoreResponse {
   /** Output only. It could be `completed` or `failed` */
@@ -5067,15 +4346,11 @@ export interface GoogleCloudApigeeV1TestDatastoreResponse {
   error?: string;
 }
 
-export const GoogleCloudApigeeV1TestDatastoreResponse: Schema.Schema<GoogleCloudApigeeV1TestDatastoreResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      error: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1TestDatastoreResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1TestDatastoreResponse>;
+export const GoogleCloudApigeeV1TestDatastoreResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+    error: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1TestDatastoreResponse" });
 
 export interface GoogleCloudApigeeV1SchemaSchemaProperty {
   /** Flag that specifies whether the field is standard in the dataset or a custom field created by the customer. `true` indicates that it is a custom field. */
@@ -5086,16 +4361,12 @@ export interface GoogleCloudApigeeV1SchemaSchemaProperty {
   type?: string;
 }
 
-export const GoogleCloudApigeeV1SchemaSchemaProperty: Schema.Schema<GoogleCloudApigeeV1SchemaSchemaProperty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      custom: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1SchemaSchemaProperty",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1SchemaSchemaProperty>;
+export const GoogleCloudApigeeV1SchemaSchemaProperty =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    custom: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1SchemaSchemaProperty" });
 
 export interface GoogleCloudApigeeV1SchemaSchemaElement {
   /** Name of the field. */
@@ -5104,15 +4375,11 @@ export interface GoogleCloudApigeeV1SchemaSchemaElement {
   properties?: GoogleCloudApigeeV1SchemaSchemaProperty;
 }
 
-export const GoogleCloudApigeeV1SchemaSchemaElement: Schema.Schema<GoogleCloudApigeeV1SchemaSchemaElement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      properties: Schema.optional(GoogleCloudApigeeV1SchemaSchemaProperty),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1SchemaSchemaElement",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1SchemaSchemaElement>;
+export const GoogleCloudApigeeV1SchemaSchemaElement =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    properties: Schema.optional(GoogleCloudApigeeV1SchemaSchemaProperty),
+  }).annotate({ identifier: "GoogleCloudApigeeV1SchemaSchemaElement" });
 
 export interface GoogleCloudApigeeV1Schema {
   /** Additional metadata associated with schema. This is a legacy field and usually consists of an empty array of strings. */
@@ -5123,59 +4390,50 @@ export interface GoogleCloudApigeeV1Schema {
   metrics?: Array<GoogleCloudApigeeV1SchemaSchemaElement>;
 }
 
-export const GoogleCloudApigeeV1Schema: Schema.Schema<GoogleCloudApigeeV1Schema> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      meta: Schema.optional(Schema.Array(Schema.String)),
-      dimensions: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1SchemaSchemaElement),
-      ),
-      metrics: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1SchemaSchemaElement),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1Schema",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1Schema>;
+export const GoogleCloudApigeeV1Schema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    meta: Schema.optional(Schema.Array(Schema.String)),
+    dimensions: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1SchemaSchemaElement),
+    ),
+    metrics: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1SchemaSchemaElement),
+    ),
+  }).annotate({ identifier: "GoogleCloudApigeeV1Schema" });
 
 export interface GoogleCloudApigeeV1BatchUpdateSecurityIncidentsResponse {
   /** Output only. Updated security incidents */
   securityIncidents?: Array<GoogleCloudApigeeV1SecurityIncident>;
 }
 
-export const GoogleCloudApigeeV1BatchUpdateSecurityIncidentsResponse: Schema.Schema<GoogleCloudApigeeV1BatchUpdateSecurityIncidentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      securityIncidents: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1SecurityIncident),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1BatchUpdateSecurityIncidentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    securityIncidents: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1SecurityIncident),
+    ),
+  }).annotate({
     identifier: "GoogleCloudApigeeV1BatchUpdateSecurityIncidentsResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1BatchUpdateSecurityIncidentsResponse>;
+  });
 
 export interface GoogleProtobufEmpty {}
 
-export const GoogleProtobufEmpty: Schema.Schema<GoogleProtobufEmpty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "GoogleProtobufEmpty",
-  }) as any as Schema.Schema<GoogleProtobufEmpty>;
+export const GoogleProtobufEmpty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "GoogleProtobufEmpty" });
 
 export interface GoogleCloudApigeeV1ListEnvironmentResourcesResponse {
   /** List of resources files. */
   resourceFile?: Array<GoogleCloudApigeeV1ResourceFile>;
 }
 
-export const GoogleCloudApigeeV1ListEnvironmentResourcesResponse: Schema.Schema<GoogleCloudApigeeV1ListEnvironmentResourcesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceFile: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1ResourceFile),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1ListEnvironmentResourcesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceFile: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1ResourceFile),
+    ),
+  }).annotate({
     identifier: "GoogleCloudApigeeV1ListEnvironmentResourcesResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ListEnvironmentResourcesResponse>;
+  });
 
 export interface GoogleCloudApigeeV1DnsZonePeeringConfig {
   /** Required. The ID of the project that contains the producer VPC network. */
@@ -5184,15 +4442,11 @@ export interface GoogleCloudApigeeV1DnsZonePeeringConfig {
   targetNetworkId?: string;
 }
 
-export const GoogleCloudApigeeV1DnsZonePeeringConfig: Schema.Schema<GoogleCloudApigeeV1DnsZonePeeringConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetProjectId: Schema.optional(Schema.String),
-      targetNetworkId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1DnsZonePeeringConfig",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1DnsZonePeeringConfig>;
+export const GoogleCloudApigeeV1DnsZonePeeringConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetProjectId: Schema.optional(Schema.String),
+    targetNetworkId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1DnsZonePeeringConfig" });
 
 export interface GoogleCloudApigeeV1DnsZone {
   /** Output only. The time that this resource was created on the server. */
@@ -5217,20 +4471,16 @@ export interface GoogleCloudApigeeV1DnsZone {
   description?: string;
 }
 
-export const GoogleCloudApigeeV1DnsZone: Schema.Schema<GoogleCloudApigeeV1DnsZone> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      domain: Schema.optional(Schema.String),
-      peeringConfig: Schema.optional(GoogleCloudApigeeV1DnsZonePeeringConfig),
-      state: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1DnsZone",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1DnsZone>;
+export const GoogleCloudApigeeV1DnsZone =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+    peeringConfig: Schema.optional(GoogleCloudApigeeV1DnsZonePeeringConfig),
+    state: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1DnsZone" });
 
 export interface GoogleCloudApigeeV1ListDnsZonesResponse {
   /** DNS zones in a given organization. */
@@ -5239,15 +4489,11 @@ export interface GoogleCloudApigeeV1ListDnsZonesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApigeeV1ListDnsZonesResponse: Schema.Schema<GoogleCloudApigeeV1ListDnsZonesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dnsZones: Schema.optional(Schema.Array(GoogleCloudApigeeV1DnsZone)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ListDnsZonesResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ListDnsZonesResponse>;
+export const GoogleCloudApigeeV1ListDnsZonesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dnsZones: Schema.optional(Schema.Array(GoogleCloudApigeeV1DnsZone)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ListDnsZonesResponse" });
 
 export interface GoogleCloudApigeeV1RuntimeConfig {
   /** Cloud Storage bucket used for uploading Analytics records. */
@@ -5260,31 +4506,23 @@ export interface GoogleCloudApigeeV1RuntimeConfig {
   traceBucket?: string;
 }
 
-export const GoogleCloudApigeeV1RuntimeConfig: Schema.Schema<GoogleCloudApigeeV1RuntimeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      analyticsBucket: Schema.optional(Schema.String),
-      tenantProjectId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      traceBucket: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1RuntimeConfig",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1RuntimeConfig>;
+export const GoogleCloudApigeeV1RuntimeConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    analyticsBucket: Schema.optional(Schema.String),
+    tenantProjectId: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    traceBucket: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1RuntimeConfig" });
 
 export interface GoogleCloudApigeeV1MoveApiProxyRequest {
   /** Optional. Resource ID of the space to move the proxy to. If unspecified, the proxy will be moved to the organization level. */
   space?: string;
 }
 
-export const GoogleCloudApigeeV1MoveApiProxyRequest: Schema.Schema<GoogleCloudApigeeV1MoveApiProxyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      space: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1MoveApiProxyRequest",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1MoveApiProxyRequest>;
+export const GoogleCloudApigeeV1MoveApiProxyRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    space: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1MoveApiProxyRequest" });
 
 export interface GoogleCloudApigeeV1KeyValueEntry {
   /** Resource URI that can be used to identify the scope of the key value map entries. */
@@ -5293,43 +4531,31 @@ export interface GoogleCloudApigeeV1KeyValueEntry {
   value?: string;
 }
 
-export const GoogleCloudApigeeV1KeyValueEntry: Schema.Schema<GoogleCloudApigeeV1KeyValueEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1KeyValueEntry",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1KeyValueEntry>;
+export const GoogleCloudApigeeV1KeyValueEntry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1KeyValueEntry" });
 
 export interface GoogleCloudApigeeV1MoveSharedFlowRequest {
   /** Optional. Resource ID of the space to move the shared flow to. If unspecified, the shared flow will be moved to the organization level. */
   space?: string;
 }
 
-export const GoogleCloudApigeeV1MoveSharedFlowRequest: Schema.Schema<GoogleCloudApigeeV1MoveSharedFlowRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      space: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1MoveSharedFlowRequest",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1MoveSharedFlowRequest>;
+export const GoogleCloudApigeeV1MoveSharedFlowRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    space: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1MoveSharedFlowRequest" });
 
 export interface GoogleCloudApigeeV1ListDeploymentsResponse {
   /** List of deployments. */
   deployments?: Array<GoogleCloudApigeeV1Deployment>;
 }
 
-export const GoogleCloudApigeeV1ListDeploymentsResponse: Schema.Schema<GoogleCloudApigeeV1ListDeploymentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deployments: Schema.optional(Schema.Array(GoogleCloudApigeeV1Deployment)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ListDeploymentsResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ListDeploymentsResponse>;
+export const GoogleCloudApigeeV1ListDeploymentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deployments: Schema.optional(Schema.Array(GoogleCloudApigeeV1Deployment)),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ListDeploymentsResponse" });
 
 export interface GoogleCloudApigeeV1SecurityReportMetadata {
   /** Dimensions of the SecurityReport. */
@@ -5346,19 +4572,15 @@ export interface GoogleCloudApigeeV1SecurityReportMetadata {
   timeUnit?: string;
 }
 
-export const GoogleCloudApigeeV1SecurityReportMetadata: Schema.Schema<GoogleCloudApigeeV1SecurityReportMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dimensions: Schema.optional(Schema.Array(Schema.String)),
-      metrics: Schema.optional(Schema.Array(Schema.String)),
-      startTimestamp: Schema.optional(Schema.String),
-      mimeType: Schema.optional(Schema.String),
-      endTimestamp: Schema.optional(Schema.String),
-      timeUnit: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1SecurityReportMetadata",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1SecurityReportMetadata>;
+export const GoogleCloudApigeeV1SecurityReportMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dimensions: Schema.optional(Schema.Array(Schema.String)),
+    metrics: Schema.optional(Schema.Array(Schema.String)),
+    startTimestamp: Schema.optional(Schema.String),
+    mimeType: Schema.optional(Schema.String),
+    endTimestamp: Schema.optional(Schema.String),
+    timeUnit: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1SecurityReportMetadata" });
 
 export interface GoogleCloudApigeeV1SecurityReportResultView {
   /** Metadata contains information like metrics, dimenstions etc of the security report. */
@@ -5373,18 +4595,14 @@ export interface GoogleCloudApigeeV1SecurityReportResultView {
   code?: number;
 }
 
-export const GoogleCloudApigeeV1SecurityReportResultView: Schema.Schema<GoogleCloudApigeeV1SecurityReportResultView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadata: Schema.optional(GoogleCloudApigeeV1SecurityReportMetadata),
-      rows: Schema.optional(Schema.Array(Schema.Unknown)),
-      error: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      code: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1SecurityReportResultView",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1SecurityReportResultView>;
+export const GoogleCloudApigeeV1SecurityReportResultView =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    metadata: Schema.optional(GoogleCloudApigeeV1SecurityReportMetadata),
+    rows: Schema.optional(Schema.Array(Schema.Unknown)),
+    error: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    code: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudApigeeV1SecurityReportResultView" });
 
 export interface GoogleCloudApigeeV1SecurityReport {
   /** ResultRows is available only after the query is completed. */
@@ -5415,26 +4633,22 @@ export interface GoogleCloudApigeeV1SecurityReport {
   updated?: string;
 }
 
-export const GoogleCloudApigeeV1SecurityReport: Schema.Schema<GoogleCloudApigeeV1SecurityReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resultRows: Schema.optional(Schema.String),
-      result: Schema.optional(GoogleCloudApigeeV1SecurityReportResultMetadata),
-      reportDefinitionId: Schema.optional(Schema.String),
-      executionTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      queryParams: Schema.optional(GoogleCloudApigeeV1SecurityReportMetadata),
-      envgroupHostname: Schema.optional(Schema.String),
-      resultFileSize: Schema.optional(Schema.String),
-      created: Schema.optional(Schema.String),
-      error: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      self: Schema.optional(Schema.String),
-      updated: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1SecurityReport",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1SecurityReport>;
+export const GoogleCloudApigeeV1SecurityReport =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resultRows: Schema.optional(Schema.String),
+    result: Schema.optional(GoogleCloudApigeeV1SecurityReportResultMetadata),
+    reportDefinitionId: Schema.optional(Schema.String),
+    executionTime: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    queryParams: Schema.optional(GoogleCloudApigeeV1SecurityReportMetadata),
+    envgroupHostname: Schema.optional(Schema.String),
+    resultFileSize: Schema.optional(Schema.String),
+    created: Schema.optional(Schema.String),
+    error: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    self: Schema.optional(Schema.String),
+    updated: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1SecurityReport" });
 
 export interface GoogleCloudApigeeV1ListSecurityReportsResponse {
   /** The security reports belong to requested resource name. */
@@ -5443,32 +4657,24 @@ export interface GoogleCloudApigeeV1ListSecurityReportsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApigeeV1ListSecurityReportsResponse: Schema.Schema<GoogleCloudApigeeV1ListSecurityReportsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      securityReports: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1SecurityReport),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ListSecurityReportsResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ListSecurityReportsResponse>;
+export const GoogleCloudApigeeV1ListSecurityReportsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    securityReports: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1SecurityReport),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ListSecurityReportsResponse" });
 
 export interface GoogleCloudApigeeV1CommonNameConfig {
   name?: string;
   matchWildCards?: boolean;
 }
 
-export const GoogleCloudApigeeV1CommonNameConfig: Schema.Schema<GoogleCloudApigeeV1CommonNameConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      matchWildCards: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1CommonNameConfig",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1CommonNameConfig>;
+export const GoogleCloudApigeeV1CommonNameConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    matchWildCards: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudApigeeV1CommonNameConfig" });
 
 export interface GoogleCloudApigeeV1TlsInfoConfig {
   /** Name of the keystore or keystore reference containing trusted certificates for the server in the following format: `organizations/{org}/environments/{env}/keystores/{keystore}` or `organizations/{org}/environments/{env}/references/{reference}` */
@@ -5493,23 +4699,19 @@ export interface GoogleCloudApigeeV1TlsInfoConfig {
   commonName?: GoogleCloudApigeeV1CommonNameConfig;
 }
 
-export const GoogleCloudApigeeV1TlsInfoConfig: Schema.Schema<GoogleCloudApigeeV1TlsInfoConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      trustStore: Schema.optional(Schema.String),
-      ignoreValidationErrors: Schema.optional(Schema.Boolean),
-      enabled: Schema.optional(Schema.Boolean),
-      clientAuthEnabled: Schema.optional(Schema.Boolean),
-      enforce: Schema.optional(Schema.Boolean),
-      ciphers: Schema.optional(Schema.Array(Schema.String)),
-      keyAlias: Schema.optional(Schema.String),
-      keyAliasReference: Schema.optional(GoogleCloudApigeeV1KeyAliasReference),
-      protocols: Schema.optional(Schema.Array(Schema.String)),
-      commonName: Schema.optional(GoogleCloudApigeeV1CommonNameConfig),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1TlsInfoConfig",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1TlsInfoConfig>;
+export const GoogleCloudApigeeV1TlsInfoConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    trustStore: Schema.optional(Schema.String),
+    ignoreValidationErrors: Schema.optional(Schema.Boolean),
+    enabled: Schema.optional(Schema.Boolean),
+    clientAuthEnabled: Schema.optional(Schema.Boolean),
+    enforce: Schema.optional(Schema.Boolean),
+    ciphers: Schema.optional(Schema.Array(Schema.String)),
+    keyAlias: Schema.optional(Schema.String),
+    keyAliasReference: Schema.optional(GoogleCloudApigeeV1KeyAliasReference),
+    protocols: Schema.optional(Schema.Array(Schema.String)),
+    commonName: Schema.optional(GoogleCloudApigeeV1CommonNameConfig),
+  }).annotate({ identifier: "GoogleCloudApigeeV1TlsInfoConfig" });
 
 export interface GoogleCloudApigeeV1TargetServerConfig {
   /** Host name of the target server. */
@@ -5533,19 +4735,15 @@ export interface GoogleCloudApigeeV1TargetServerConfig {
   tlsInfo?: GoogleCloudApigeeV1TlsInfoConfig;
 }
 
-export const GoogleCloudApigeeV1TargetServerConfig: Schema.Schema<GoogleCloudApigeeV1TargetServerConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      host: Schema.optional(Schema.String),
-      enabled: Schema.optional(Schema.Boolean),
-      protocol: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      port: Schema.optional(Schema.Number),
-      tlsInfo: Schema.optional(GoogleCloudApigeeV1TlsInfoConfig),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1TargetServerConfig",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1TargetServerConfig>;
+export const GoogleCloudApigeeV1TargetServerConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    host: Schema.optional(Schema.String),
+    enabled: Schema.optional(Schema.Boolean),
+    protocol: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    port: Schema.optional(Schema.Number),
+    tlsInfo: Schema.optional(GoogleCloudApigeeV1TlsInfoConfig),
+  }).annotate({ identifier: "GoogleCloudApigeeV1TargetServerConfig" });
 
 export interface GoogleCloudApigeeV1KeystoreConfig {
   /** Resource name in the following format: `organizations/{org}/environments/{env}/keystores/{keystore}` */
@@ -5554,17 +4752,13 @@ export interface GoogleCloudApigeeV1KeystoreConfig {
   aliases?: Array<GoogleCloudApigeeV1AliasRevisionConfig>;
 }
 
-export const GoogleCloudApigeeV1KeystoreConfig: Schema.Schema<GoogleCloudApigeeV1KeystoreConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      aliases: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1AliasRevisionConfig),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1KeystoreConfig",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1KeystoreConfig>;
+export const GoogleCloudApigeeV1KeystoreConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    aliases: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1AliasRevisionConfig),
+    ),
+  }).annotate({ identifier: "GoogleCloudApigeeV1KeystoreConfig" });
 
 export interface GoogleCloudApigeeV1FlowHookConfig {
   /** Name of the flow hook in the following format: `organizations/{org}/environments/{env}/flowhooks/{point}`. Valid `point` values include: `PreProxyFlowHook`, `PostProxyFlowHook`, `PreTargetFlowHook`, and `PostTargetFlowHook` */
@@ -5575,16 +4769,12 @@ export interface GoogleCloudApigeeV1FlowHookConfig {
   continueOnError?: boolean;
 }
 
-export const GoogleCloudApigeeV1FlowHookConfig: Schema.Schema<GoogleCloudApigeeV1FlowHookConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      sharedFlowName: Schema.optional(Schema.String),
-      continueOnError: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1FlowHookConfig",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1FlowHookConfig>;
+export const GoogleCloudApigeeV1FlowHookConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    sharedFlowName: Schema.optional(Schema.String),
+    continueOnError: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudApigeeV1FlowHookConfig" });
 
 export interface GoogleCloudApigeeV1RuntimeAnalyticsConfig {
   /** If the Analytics is enabled or not. */
@@ -5593,15 +4783,11 @@ export interface GoogleCloudApigeeV1RuntimeAnalyticsConfig {
   billingPipelineEnabled?: boolean;
 }
 
-export const GoogleCloudApigeeV1RuntimeAnalyticsConfig: Schema.Schema<GoogleCloudApigeeV1RuntimeAnalyticsConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-      billingPipelineEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1RuntimeAnalyticsConfig",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1RuntimeAnalyticsConfig>;
+export const GoogleCloudApigeeV1RuntimeAnalyticsConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+    billingPipelineEnabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudApigeeV1RuntimeAnalyticsConfig" });
 
 export interface GoogleCloudApigeeV1RuntimeAddonsConfig {
   /** Revision number used by the runtime to detect config changes. */
@@ -5616,38 +4802,30 @@ export interface GoogleCloudApigeeV1RuntimeAddonsConfig {
   uid?: string;
 }
 
-export const GoogleCloudApigeeV1RuntimeAddonsConfig: Schema.Schema<GoogleCloudApigeeV1RuntimeAddonsConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      revisionId: Schema.optional(Schema.String),
-      apiSecurityConfig: Schema.optional(
-        GoogleCloudApigeeV1RuntimeApiSecurityConfig,
-      ),
-      name: Schema.optional(Schema.String),
-      analyticsConfig: Schema.optional(
-        GoogleCloudApigeeV1RuntimeAnalyticsConfig,
-      ),
-      uid: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1RuntimeAddonsConfig",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1RuntimeAddonsConfig>;
+export const GoogleCloudApigeeV1RuntimeAddonsConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    revisionId: Schema.optional(Schema.String),
+    apiSecurityConfig: Schema.optional(
+      GoogleCloudApigeeV1RuntimeApiSecurityConfig,
+    ),
+    name: Schema.optional(Schema.String),
+    analyticsConfig: Schema.optional(GoogleCloudApigeeV1RuntimeAnalyticsConfig),
+    uid: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1RuntimeAddonsConfig" });
 
 export interface GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfig {
   /** Resolves the client ip based on a custom header. */
   headerIndexAlgorithm?: GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfigHeaderIndexAlgorithm;
 }
 
-export const GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfig: Schema.Schema<GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      headerIndexAlgorithm: Schema.optional(
-        GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfigHeaderIndexAlgorithm,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    headerIndexAlgorithm: Schema.optional(
+      GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfigHeaderIndexAlgorithm,
+    ),
+  }).annotate({
     identifier: "GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfig",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfig>;
+  });
 
 export interface GoogleCloudApigeeV1DebugMask {
   /** List of variables that should be masked from the debug output. */
@@ -5670,22 +4848,18 @@ export interface GoogleCloudApigeeV1DebugMask {
   faultJSONPaths?: Array<string>;
 }
 
-export const GoogleCloudApigeeV1DebugMask: Schema.Schema<GoogleCloudApigeeV1DebugMask> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      variables: Schema.optional(Schema.Array(Schema.String)),
-      responseJSONPaths: Schema.optional(Schema.Array(Schema.String)),
-      requestXPaths: Schema.optional(Schema.Array(Schema.String)),
-      requestJSONPaths: Schema.optional(Schema.Array(Schema.String)),
-      namespaces: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      responseXPaths: Schema.optional(Schema.Array(Schema.String)),
-      faultXPaths: Schema.optional(Schema.Array(Schema.String)),
-      name: Schema.optional(Schema.String),
-      faultJSONPaths: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1DebugMask",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1DebugMask>;
+export const GoogleCloudApigeeV1DebugMask =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    variables: Schema.optional(Schema.Array(Schema.String)),
+    responseJSONPaths: Schema.optional(Schema.Array(Schema.String)),
+    requestXPaths: Schema.optional(Schema.Array(Schema.String)),
+    requestJSONPaths: Schema.optional(Schema.Array(Schema.String)),
+    namespaces: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    responseXPaths: Schema.optional(Schema.Array(Schema.String)),
+    faultXPaths: Schema.optional(Schema.Array(Schema.String)),
+    name: Schema.optional(Schema.String),
+    faultJSONPaths: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudApigeeV1DebugMask" });
 
 export interface GoogleCloudApigeeV1ResourceConfig {
   /** Resource name in the following format: `organizations/{org}/environments/{env}/resourcefiles/{type}/{file}/revisions/{rev}` Only environment-scoped resource files are supported. */
@@ -5694,15 +4868,11 @@ export interface GoogleCloudApigeeV1ResourceConfig {
   location?: string;
 }
 
-export const GoogleCloudApigeeV1ResourceConfig: Schema.Schema<GoogleCloudApigeeV1ResourceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ResourceConfig",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ResourceConfig>;
+export const GoogleCloudApigeeV1ResourceConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ResourceConfig" });
 
 export interface GoogleCloudApigeeV1DeploymentConfig {
   /** A mapping from basepaths to proxy endpoint names in this proxy. Not populated for shared flows. */
@@ -5725,22 +4895,18 @@ export interface GoogleCloudApigeeV1DeploymentConfig {
   uid?: string;
 }
 
-export const GoogleCloudApigeeV1DeploymentConfig: Schema.Schema<GoogleCloudApigeeV1DeploymentConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endpoints: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      proxyUid: Schema.optional(Schema.String),
-      attributes: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      basePath: Schema.optional(Schema.String),
-      serviceAccount: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      deploymentGroups: Schema.optional(Schema.Array(Schema.String)),
-      uid: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1DeploymentConfig",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1DeploymentConfig>;
+export const GoogleCloudApigeeV1DeploymentConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endpoints: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    proxyUid: Schema.optional(Schema.String),
+    attributes: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    basePath: Schema.optional(Schema.String),
+    serviceAccount: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    deploymentGroups: Schema.optional(Schema.Array(Schema.String)),
+    uid: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1DeploymentConfig" });
 
 export interface GoogleCloudApigeeV1RuntimeTraceSamplingConfig {
   /** Field sampling rate. This value is only applicable when using the PROBABILITY sampler. The supported values are > 0 and <= 0.5. */
@@ -5749,15 +4915,11 @@ export interface GoogleCloudApigeeV1RuntimeTraceSamplingConfig {
   sampler?: "SAMPLER_UNSPECIFIED" | "OFF" | "PROBABILITY" | (string & {});
 }
 
-export const GoogleCloudApigeeV1RuntimeTraceSamplingConfig: Schema.Schema<GoogleCloudApigeeV1RuntimeTraceSamplingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      samplingRate: Schema.optional(Schema.Number),
-      sampler: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1RuntimeTraceSamplingConfig",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1RuntimeTraceSamplingConfig>;
+export const GoogleCloudApigeeV1RuntimeTraceSamplingConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    samplingRate: Schema.optional(Schema.Number),
+    sampler: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1RuntimeTraceSamplingConfig" });
 
 export interface GoogleCloudApigeeV1RuntimeTraceConfigOverride {
   /** Optional. If `true`, the runtime uses OpenTelemetry Protocol (OTLP) to send trace data. Configuration Requirements (if `open_telemetry_protocol_enabled` is `true`): - Allowed `Exporter`s: `CLOUD_TRACE` or `OPEN_TELEMETRY_COLLECTOR`. - If `Exporter` is `OPEN_TELEMETRY_COLLECTOR`: - `endpoint` refers to a valid OTLP collector URL. - If `Exporter` is `CLOUD_TRACE`: - `endpoint` refers to a valid project ID Deprecated: Use trace_protocol instead. */
@@ -5782,23 +4944,19 @@ export interface GoogleCloudApigeeV1RuntimeTraceConfigOverride {
     | (string & {});
 }
 
-export const GoogleCloudApigeeV1RuntimeTraceConfigOverride: Schema.Schema<GoogleCloudApigeeV1RuntimeTraceConfigOverride> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      openTelemetryProtocolEnabled: Schema.optional(Schema.Boolean),
-      apiProxy: Schema.optional(Schema.String),
-      uid: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      revisionCreateTime: Schema.optional(Schema.String),
-      samplingConfig: Schema.optional(
-        GoogleCloudApigeeV1RuntimeTraceSamplingConfig,
-      ),
-      revisionId: Schema.optional(Schema.String),
-      traceProtocol: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1RuntimeTraceConfigOverride",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1RuntimeTraceConfigOverride>;
+export const GoogleCloudApigeeV1RuntimeTraceConfigOverride =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    openTelemetryProtocolEnabled: Schema.optional(Schema.Boolean),
+    apiProxy: Schema.optional(Schema.String),
+    uid: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    revisionCreateTime: Schema.optional(Schema.String),
+    samplingConfig: Schema.optional(
+      GoogleCloudApigeeV1RuntimeTraceSamplingConfig,
+    ),
+    revisionId: Schema.optional(Schema.String),
+    traceProtocol: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1RuntimeTraceConfigOverride" });
 
 export interface GoogleCloudApigeeV1RuntimeTraceConfig {
   /** List of trace configuration overrides for spicific API proxies. */
@@ -5831,26 +4989,22 @@ export interface GoogleCloudApigeeV1RuntimeTraceConfig {
     | (string & {});
 }
 
-export const GoogleCloudApigeeV1RuntimeTraceConfig: Schema.Schema<GoogleCloudApigeeV1RuntimeTraceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      overrides: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1RuntimeTraceConfigOverride),
-      ),
-      samplingConfig: Schema.optional(
-        GoogleCloudApigeeV1RuntimeTraceSamplingConfig,
-      ),
-      revisionId: Schema.optional(Schema.String),
-      traceProtocol: Schema.optional(Schema.String),
-      openTelemetryProtocolEnabled: Schema.optional(Schema.Boolean),
-      endpoint: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      revisionCreateTime: Schema.optional(Schema.String),
-      exporter: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1RuntimeTraceConfig",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1RuntimeTraceConfig>;
+export const GoogleCloudApigeeV1RuntimeTraceConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    overrides: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1RuntimeTraceConfigOverride),
+    ),
+    samplingConfig: Schema.optional(
+      GoogleCloudApigeeV1RuntimeTraceSamplingConfig,
+    ),
+    revisionId: Schema.optional(Schema.String),
+    traceProtocol: Schema.optional(Schema.String),
+    openTelemetryProtocolEnabled: Schema.optional(Schema.Boolean),
+    endpoint: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    revisionCreateTime: Schema.optional(Schema.String),
+    exporter: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1RuntimeTraceConfig" });
 
 export interface GoogleCloudApigeeV1DataCollectorConfig {
   /** Name of the data collector in the following format: `organizations/{org}/datacollectors/{datacollector}` */
@@ -5866,15 +5020,11 @@ export interface GoogleCloudApigeeV1DataCollectorConfig {
     | (string & {});
 }
 
-export const GoogleCloudApigeeV1DataCollectorConfig: Schema.Schema<GoogleCloudApigeeV1DataCollectorConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1DataCollectorConfig",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1DataCollectorConfig>;
+export const GoogleCloudApigeeV1DataCollectorConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1DataCollectorConfig" });
 
 export interface GoogleCloudApigeeV1EnvironmentConfig {
   /** List of target servers in the environment. Disabled target servers are not displayed. */
@@ -5927,57 +5077,45 @@ export interface GoogleCloudApigeeV1EnvironmentConfig {
   dataCollectors?: Array<GoogleCloudApigeeV1DataCollectorConfig>;
 }
 
-export const GoogleCloudApigeeV1EnvironmentConfig: Schema.Schema<GoogleCloudApigeeV1EnvironmentConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targets: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1TargetServerConfig),
-      ),
-      name: Schema.optional(Schema.String),
-      sequenceNumber: Schema.optional(Schema.String),
-      arcConfigLocation: Schema.optional(Schema.String),
-      resourceReferences: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1ReferenceConfig),
-      ),
-      keystores: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1KeystoreConfig),
-      ),
-      revisionId: Schema.optional(Schema.String),
-      envScopedRevisionId: Schema.optional(Schema.String),
-      flowhooks: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1FlowHookConfig),
-      ),
-      gatewayConfigLocation: Schema.optional(Schema.String),
-      addonsConfig: Schema.optional(GoogleCloudApigeeV1RuntimeAddonsConfig),
-      forwardProxyUri: Schema.optional(Schema.String),
-      clientIpResolutionConfig: Schema.optional(
-        GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfig,
-      ),
-      createTime: Schema.optional(Schema.String),
-      provider: Schema.optional(Schema.String),
-      debugMask: Schema.optional(GoogleCloudApigeeV1DebugMask),
-      resources: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1ResourceConfig),
-      ),
-      deploymentGroups: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1DeploymentGroupConfig),
-      ),
-      deployments: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1DeploymentConfig),
-      ),
-      uid: Schema.optional(Schema.String),
-      pubsubTopic: Schema.optional(Schema.String),
-      traceConfig: Schema.optional(GoogleCloudApigeeV1RuntimeTraceConfig),
-      featureFlags: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      dataCollectors: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1DataCollectorConfig),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1EnvironmentConfig",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1EnvironmentConfig>;
+export const GoogleCloudApigeeV1EnvironmentConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targets: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1TargetServerConfig),
+    ),
+    name: Schema.optional(Schema.String),
+    sequenceNumber: Schema.optional(Schema.String),
+    arcConfigLocation: Schema.optional(Schema.String),
+    resourceReferences: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1ReferenceConfig),
+    ),
+    keystores: Schema.optional(Schema.Array(GoogleCloudApigeeV1KeystoreConfig)),
+    revisionId: Schema.optional(Schema.String),
+    envScopedRevisionId: Schema.optional(Schema.String),
+    flowhooks: Schema.optional(Schema.Array(GoogleCloudApigeeV1FlowHookConfig)),
+    gatewayConfigLocation: Schema.optional(Schema.String),
+    addonsConfig: Schema.optional(GoogleCloudApigeeV1RuntimeAddonsConfig),
+    forwardProxyUri: Schema.optional(Schema.String),
+    clientIpResolutionConfig: Schema.optional(
+      GoogleCloudApigeeV1EnvironmentConfigClientIPResolutionConfig,
+    ),
+    createTime: Schema.optional(Schema.String),
+    provider: Schema.optional(Schema.String),
+    debugMask: Schema.optional(GoogleCloudApigeeV1DebugMask),
+    resources: Schema.optional(Schema.Array(GoogleCloudApigeeV1ResourceConfig)),
+    deploymentGroups: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1DeploymentGroupConfig),
+    ),
+    deployments: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1DeploymentConfig),
+    ),
+    uid: Schema.optional(Schema.String),
+    pubsubTopic: Schema.optional(Schema.String),
+    traceConfig: Schema.optional(GoogleCloudApigeeV1RuntimeTraceConfig),
+    featureFlags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    dataCollectors: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1DataCollectorConfig),
+    ),
+  }).annotate({ identifier: "GoogleCloudApigeeV1EnvironmentConfig" });
 
 export interface GoogleCloudApigeeV1Reference {
   /** Required. The resource id of this reference. Values must match the regular expression [\w\s\-.]+. */
@@ -5990,17 +5128,13 @@ export interface GoogleCloudApigeeV1Reference {
   refers?: string;
 }
 
-export const GoogleCloudApigeeV1Reference: Schema.Schema<GoogleCloudApigeeV1Reference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      resourceType: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      refers: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1Reference",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1Reference>;
+export const GoogleCloudApigeeV1Reference =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    resourceType: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    refers: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1Reference" });
 
 export interface GoogleCloudApigeeV1CanaryEvaluationMetricLabels {
   /** The environment ID associated with the metrics. */
@@ -6011,16 +5145,14 @@ export interface GoogleCloudApigeeV1CanaryEvaluationMetricLabels {
   instance_id?: string;
 }
 
-export const GoogleCloudApigeeV1CanaryEvaluationMetricLabels: Schema.Schema<GoogleCloudApigeeV1CanaryEvaluationMetricLabels> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      env: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-      instance_id: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1CanaryEvaluationMetricLabels =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    env: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    instance_id: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudApigeeV1CanaryEvaluationMetricLabels",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1CanaryEvaluationMetricLabels>;
+  });
 
 export interface GoogleCloudApigeeV1CanaryEvaluation {
   /** Required. Labels used to filter the metrics used for a canary evaluation. */
@@ -6043,38 +5175,30 @@ export interface GoogleCloudApigeeV1CanaryEvaluation {
   verdict?: "VERDICT_UNSPECIFIED" | "NONE" | "FAIL" | "PASS" | (string & {});
 }
 
-export const GoogleCloudApigeeV1CanaryEvaluation: Schema.Schema<GoogleCloudApigeeV1CanaryEvaluation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metricLabels: Schema.optional(
-        GoogleCloudApigeeV1CanaryEvaluationMetricLabels,
-      ),
-      treatment: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      control: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      verdict: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1CanaryEvaluation",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1CanaryEvaluation>;
+export const GoogleCloudApigeeV1CanaryEvaluation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    metricLabels: Schema.optional(
+      GoogleCloudApigeeV1CanaryEvaluationMetricLabels,
+    ),
+    treatment: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    control: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    verdict: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1CanaryEvaluation" });
 
 export interface GoogleCloudApigeeV1Subscription {
   /** Full name of the Pub/Sub subcription. Use the following structure in your request: `subscription "projects/foo/subscription/bar"` */
   name?: string;
 }
 
-export const GoogleCloudApigeeV1Subscription: Schema.Schema<GoogleCloudApigeeV1Subscription> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1Subscription",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1Subscription>;
+export const GoogleCloudApigeeV1Subscription =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1Subscription" });
 
 export interface GoogleCloudApigeeV1SetAddonEnablementRequest {
   /** If the API Security should be enabled in the environment. */
@@ -6083,15 +5207,11 @@ export interface GoogleCloudApigeeV1SetAddonEnablementRequest {
   analyticsEnabled?: boolean;
 }
 
-export const GoogleCloudApigeeV1SetAddonEnablementRequest: Schema.Schema<GoogleCloudApigeeV1SetAddonEnablementRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      apiSecurityEnabled: Schema.optional(Schema.Boolean),
-      analyticsEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1SetAddonEnablementRequest",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1SetAddonEnablementRequest>;
+export const GoogleCloudApigeeV1SetAddonEnablementRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apiSecurityEnabled: Schema.optional(Schema.Boolean),
+    analyticsEnabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudApigeeV1SetAddonEnablementRequest" });
 
 export interface GoogleCloudApigeeV1AppGroup {
   /** Output only. Internal identifier that cannot be edited */
@@ -6118,24 +5238,20 @@ export interface GoogleCloudApigeeV1AppGroup {
   email?: string;
 }
 
-export const GoogleCloudApigeeV1AppGroup: Schema.Schema<GoogleCloudApigeeV1AppGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      appGroupId: Schema.optional(Schema.String),
-      channelId: Schema.optional(Schema.String),
-      createdAt: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      organization: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      channelUri: Schema.optional(Schema.String),
-      attributes: Schema.optional(Schema.Array(GoogleCloudApigeeV1Attribute)),
-      lastModifiedAt: Schema.optional(Schema.String),
-      email: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1AppGroup",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1AppGroup>;
+export const GoogleCloudApigeeV1AppGroup =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    appGroupId: Schema.optional(Schema.String),
+    channelId: Schema.optional(Schema.String),
+    createdAt: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    organization: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    channelUri: Schema.optional(Schema.String),
+    attributes: Schema.optional(Schema.Array(GoogleCloudApigeeV1Attribute)),
+    lastModifiedAt: Schema.optional(Schema.String),
+    email: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1AppGroup" });
 
 export interface GoogleCloudApigeeV1EnvironmentGroup {
   /** ID of the environment group. */
@@ -6156,18 +5272,14 @@ export interface GoogleCloudApigeeV1EnvironmentGroup {
   hostnames?: Array<string>;
 }
 
-export const GoogleCloudApigeeV1EnvironmentGroup: Schema.Schema<GoogleCloudApigeeV1EnvironmentGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      lastModifiedAt: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      createdAt: Schema.optional(Schema.String),
-      hostnames: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1EnvironmentGroup",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1EnvironmentGroup>;
+export const GoogleCloudApigeeV1EnvironmentGroup =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    lastModifiedAt: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    createdAt: Schema.optional(Schema.String),
+    hostnames: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudApigeeV1EnvironmentGroup" });
 
 export interface GoogleCloudApigeeV1SecurityReportQueryMetric {
   /** Alias for the metric. Alias will be used to replace metric name in query results. */
@@ -6182,18 +5294,14 @@ export interface GoogleCloudApigeeV1SecurityReportQueryMetric {
   operator?: string;
 }
 
-export const GoogleCloudApigeeV1SecurityReportQueryMetric: Schema.Schema<GoogleCloudApigeeV1SecurityReportQueryMetric> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      alias: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-      aggregationFunction: Schema.optional(Schema.String),
-      operator: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1SecurityReportQueryMetric",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1SecurityReportQueryMetric>;
+export const GoogleCloudApigeeV1SecurityReportQueryMetric =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    alias: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
+    aggregationFunction: Schema.optional(Schema.String),
+    operator: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1SecurityReportQueryMetric" });
 
 export interface GoogleCloudApigeeV1SecurityReportQuery {
   /** A list of dimensions. https://docs.apigee.com/api-platform/analytics/analytics-reference#dimensions */
@@ -6220,26 +5328,22 @@ export interface GoogleCloudApigeeV1SecurityReportQuery {
   filter?: string;
 }
 
-export const GoogleCloudApigeeV1SecurityReportQuery: Schema.Schema<GoogleCloudApigeeV1SecurityReportQuery> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dimensions: Schema.optional(Schema.Array(Schema.String)),
-      groupByTimeUnit: Schema.optional(Schema.String),
-      envgroupHostname: Schema.optional(Schema.String),
-      timeRange: Schema.optional(Schema.Unknown),
-      csvDelimiter: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      reportDefinitionId: Schema.optional(Schema.String),
-      metrics: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1SecurityReportQueryMetric),
-      ),
-      limit: Schema.optional(Schema.Number),
-      mimeType: Schema.optional(Schema.String),
-      filter: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1SecurityReportQuery",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1SecurityReportQuery>;
+export const GoogleCloudApigeeV1SecurityReportQuery =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dimensions: Schema.optional(Schema.Array(Schema.String)),
+    groupByTimeUnit: Schema.optional(Schema.String),
+    envgroupHostname: Schema.optional(Schema.String),
+    timeRange: Schema.optional(Schema.Unknown),
+    csvDelimiter: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    reportDefinitionId: Schema.optional(Schema.String),
+    metrics: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1SecurityReportQueryMetric),
+    ),
+    limit: Schema.optional(Schema.Number),
+    mimeType: Schema.optional(Schema.String),
+    filter: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1SecurityReportQuery" });
 
 export interface GoogleCloudApigeeV1UpdateError {
   /** User-friendly error message. */
@@ -6270,17 +5374,13 @@ export interface GoogleCloudApigeeV1UpdateError {
     | (string & {});
 }
 
-export const GoogleCloudApigeeV1UpdateError: Schema.Schema<GoogleCloudApigeeV1UpdateError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      message: Schema.optional(Schema.String),
-      resource: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      code: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1UpdateError",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1UpdateError>;
+export const GoogleCloudApigeeV1UpdateError =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    message: Schema.optional(Schema.String),
+    resource: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    code: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1UpdateError" });
 
 export interface GoogleCloudApigeeV1RevisionStatus {
   /** The revision of the resource. */
@@ -6293,17 +5393,13 @@ export interface GoogleCloudApigeeV1RevisionStatus {
   jsonSpec?: string;
 }
 
-export const GoogleCloudApigeeV1RevisionStatus: Schema.Schema<GoogleCloudApigeeV1RevisionStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      revisionId: Schema.optional(Schema.String),
-      errors: Schema.optional(Schema.Array(GoogleCloudApigeeV1UpdateError)),
-      replicas: Schema.optional(Schema.Number),
-      jsonSpec: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1RevisionStatus",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1RevisionStatus>;
+export const GoogleCloudApigeeV1RevisionStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    revisionId: Schema.optional(Schema.String),
+    errors: Schema.optional(Schema.Array(GoogleCloudApigeeV1UpdateError)),
+    replicas: Schema.optional(Schema.Number),
+    jsonSpec: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1RevisionStatus" });
 
 export interface GoogleCloudApigeeV1ResourceStatus {
   /** The resource name. Currently only two resources are supported: EnvironmentGroup - organizations/{org}/envgroups/{envgroup} EnvironmentConfig - organizations/{org}/environments/{environment}/deployedConfig */
@@ -6316,19 +5412,13 @@ export interface GoogleCloudApigeeV1ResourceStatus {
   totalReplicas?: number;
 }
 
-export const GoogleCloudApigeeV1ResourceStatus: Schema.Schema<GoogleCloudApigeeV1ResourceStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resource: Schema.optional(Schema.String),
-      revisions: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1RevisionStatus),
-      ),
-      uid: Schema.optional(Schema.String),
-      totalReplicas: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ResourceStatus",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ResourceStatus>;
+export const GoogleCloudApigeeV1ResourceStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.optional(Schema.String),
+    revisions: Schema.optional(Schema.Array(GoogleCloudApigeeV1RevisionStatus)),
+    uid: Schema.optional(Schema.String),
+    totalReplicas: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ResourceStatus" });
 
 export interface GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfig {
   /** Include only these Gateway Types. */
@@ -6342,17 +5432,15 @@ export interface GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfig {
     | (string & {});
 }
 
-export const GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfig: Schema.Schema<GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      include: Schema.optional(
-        GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGatewayTypeArray,
-      ),
-      weight: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    include: Schema.optional(
+      GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfigApiHubGatewayTypeArray,
+    ),
+    weight: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfig",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfig>;
+  });
 
 export interface GoogleCloudApigeeV1SecurityProfileV2 {
   /** Optional. The description of the security profile. */
@@ -6378,25 +5466,21 @@ export interface GoogleCloudApigeeV1SecurityProfileV2 {
   >;
 }
 
-export const GoogleCloudApigeeV1SecurityProfileV2: Schema.Schema<GoogleCloudApigeeV1SecurityProfileV2> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      riskAssessmentType: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      googleDefined: Schema.optional(Schema.Boolean),
-      createTime: Schema.optional(Schema.String),
-      profileAssessmentConfigs: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfig,
-        ),
+export const GoogleCloudApigeeV1SecurityProfileV2 =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    riskAssessmentType: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    googleDefined: Schema.optional(Schema.Boolean),
+    createTime: Schema.optional(Schema.String),
+    profileAssessmentConfigs: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        GoogleCloudApigeeV1SecurityProfileV2ProfileAssessmentConfig,
       ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1SecurityProfileV2",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1SecurityProfileV2>;
+    ),
+  }).annotate({ identifier: "GoogleCloudApigeeV1SecurityProfileV2" });
 
 export interface GoogleCloudApigeeV1ApiSecurityRuntimeConfig {
   /** A list of up to 5 Cloud Storage Blobs that contain SecurityActions. */
@@ -6411,18 +5495,14 @@ export interface GoogleCloudApigeeV1ApiSecurityRuntimeConfig {
   updateTime?: string;
 }
 
-export const GoogleCloudApigeeV1ApiSecurityRuntimeConfig: Schema.Schema<GoogleCloudApigeeV1ApiSecurityRuntimeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      location: Schema.optional(Schema.Array(Schema.String)),
-      uid: Schema.optional(Schema.String),
-      revisionId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ApiSecurityRuntimeConfig",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ApiSecurityRuntimeConfig>;
+export const GoogleCloudApigeeV1ApiSecurityRuntimeConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.optional(Schema.Array(Schema.String)),
+    uid: Schema.optional(Schema.String),
+    revisionId: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ApiSecurityRuntimeConfig" });
 
 export interface GoogleCloudApigeeV1ApiDocResponse {
   /** Status of the operation. */
@@ -6437,33 +5517,27 @@ export interface GoogleCloudApigeeV1ApiDocResponse {
   requestId?: string;
 }
 
-export const GoogleCloudApigeeV1ApiDocResponse: Schema.Schema<GoogleCloudApigeeV1ApiDocResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      status: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-      errorCode: Schema.optional(Schema.String),
-      data: Schema.optional(GoogleCloudApigeeV1ApiDoc),
-      requestId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ApiDocResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ApiDocResponse>;
+export const GoogleCloudApigeeV1ApiDocResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    status: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+    errorCode: Schema.optional(Schema.String),
+    data: Schema.optional(GoogleCloudApigeeV1ApiDoc),
+    requestId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ApiDocResponse" });
 
 export interface GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubApiArray {
   /** Required. The array of API Hub API IDs. Format: `projects/{project}/locations/{location}/apis/{api}` */
   apis?: Array<string>;
 }
 
-export const GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubApiArray: Schema.Schema<GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubApiArray> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      apis: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubApiArray =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apis: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier:
       "GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubApiArray",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubApiArray>;
+  });
 
 export interface GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest {
   /** Optional. The maximum number of results to return. The service may return fewer than this value. If unspecified, at most 50 results will be returned. */
@@ -6484,30 +5558,28 @@ export interface GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest
   pageToken?: string;
 }
 
-export const GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest: Schema.Schema<GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pageSize: Schema.optional(Schema.Number),
-      includeAllResources: Schema.optional(
-        GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestIncludeAll,
-      ),
-      apiHubGateways: Schema.optional(
-        GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubGatewayArray,
-      ),
-      apiHubApis: Schema.optional(
-        GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubApiArray,
-      ),
-      scope: Schema.optional(Schema.String),
-      profile: Schema.optional(Schema.String),
-      include: Schema.optional(
-        GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray,
-      ),
-      pageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageSize: Schema.optional(Schema.Number),
+    includeAllResources: Schema.optional(
+      GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestIncludeAll,
+    ),
+    apiHubGateways: Schema.optional(
+      GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubGatewayArray,
+    ),
+    apiHubApis: Schema.optional(
+      GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestApiHubApiArray,
+    ),
+    scope: Schema.optional(Schema.String),
+    profile: Schema.optional(Schema.String),
+    include: Schema.optional(
+      GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequestResourceArray,
+    ),
+    pageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1BatchComputeSecurityAssessmentResultsRequest>;
+  });
 
 export interface GoogleCloudApigeeV1ControlPlaneAccess {
   /** Identifier. The resource name of the ControlPlaneAccess. Format: "organizations/{org}/controlPlaneAccess" */
@@ -6518,18 +5590,12 @@ export interface GoogleCloudApigeeV1ControlPlaneAccess {
   analyticsPublisherIdentities?: Array<string>;
 }
 
-export const GoogleCloudApigeeV1ControlPlaneAccess: Schema.Schema<GoogleCloudApigeeV1ControlPlaneAccess> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      synchronizerIdentities: Schema.optional(Schema.Array(Schema.String)),
-      analyticsPublisherIdentities: Schema.optional(
-        Schema.Array(Schema.String),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ControlPlaneAccess",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ControlPlaneAccess>;
+export const GoogleCloudApigeeV1ControlPlaneAccess =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    synchronizerIdentities: Schema.optional(Schema.Array(Schema.String)),
+    analyticsPublisherIdentities: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ControlPlaneAccess" });
 
 export interface GoogleCloudApigeeV1AsyncQueryResult {
   /** Self link of the query results. Example: `/organizations/myorg/environments/myenv/queries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd/result` or following format if query is running at host level: `/organizations/myorg/hostQueries/9cfc0d85-0f30-46d6-ae6f-318d0cb961bd/result` */
@@ -6538,29 +5604,21 @@ export interface GoogleCloudApigeeV1AsyncQueryResult {
   expires?: string;
 }
 
-export const GoogleCloudApigeeV1AsyncQueryResult: Schema.Schema<GoogleCloudApigeeV1AsyncQueryResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      self: Schema.optional(Schema.String),
-      expires: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1AsyncQueryResult",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1AsyncQueryResult>;
+export const GoogleCloudApigeeV1AsyncQueryResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    self: Schema.optional(Schema.String),
+    expires: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1AsyncQueryResult" });
 
 export interface GoogleCloudApigeeV1ListApiProductsResponse {
   /** Lists all API product names defined for an organization. */
   apiProduct?: Array<GoogleCloudApigeeV1ApiProduct>;
 }
 
-export const GoogleCloudApigeeV1ListApiProductsResponse: Schema.Schema<GoogleCloudApigeeV1ListApiProductsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      apiProduct: Schema.optional(Schema.Array(GoogleCloudApigeeV1ApiProduct)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ListApiProductsResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ListApiProductsResponse>;
+export const GoogleCloudApigeeV1ListApiProductsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apiProduct: Schema.optional(Schema.Array(GoogleCloudApigeeV1ApiProduct)),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ListApiProductsResponse" });
 
 export interface GoogleCloudApigeeV1AsyncQuery {
   /** Creation time of the query. */
@@ -6591,40 +5649,32 @@ export interface GoogleCloudApigeeV1AsyncQuery {
   reportDefinitionId?: string;
 }
 
-export const GoogleCloudApigeeV1AsyncQuery: Schema.Schema<GoogleCloudApigeeV1AsyncQuery> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      created: Schema.optional(Schema.String),
-      resultFileSize: Schema.optional(Schema.String),
-      envgroupHostname: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      queryParams: Schema.optional(GoogleCloudApigeeV1QueryMetadata),
-      executionTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      updated: Schema.optional(Schema.String),
-      self: Schema.optional(Schema.String),
-      error: Schema.optional(Schema.String),
-      resultRows: Schema.optional(Schema.String),
-      result: Schema.optional(GoogleCloudApigeeV1AsyncQueryResult),
-      reportDefinitionId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1AsyncQuery",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1AsyncQuery>;
+export const GoogleCloudApigeeV1AsyncQuery =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    created: Schema.optional(Schema.String),
+    resultFileSize: Schema.optional(Schema.String),
+    envgroupHostname: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    queryParams: Schema.optional(GoogleCloudApigeeV1QueryMetadata),
+    executionTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    updated: Schema.optional(Schema.String),
+    self: Schema.optional(Schema.String),
+    error: Schema.optional(Schema.String),
+    resultRows: Schema.optional(Schema.String),
+    result: Schema.optional(GoogleCloudApigeeV1AsyncQueryResult),
+    reportDefinitionId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1AsyncQuery" });
 
 export interface GoogleCloudApigeeV1ListAsyncQueriesResponse {
   /** The asynchronous queries belong to requested resource name. */
   queries?: Array<GoogleCloudApigeeV1AsyncQuery>;
 }
 
-export const GoogleCloudApigeeV1ListAsyncQueriesResponse: Schema.Schema<GoogleCloudApigeeV1ListAsyncQueriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      queries: Schema.optional(Schema.Array(GoogleCloudApigeeV1AsyncQuery)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ListAsyncQueriesResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ListAsyncQueriesResponse>;
+export const GoogleCloudApigeeV1ListAsyncQueriesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    queries: Schema.optional(Schema.Array(GoogleCloudApigeeV1AsyncQuery)),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ListAsyncQueriesResponse" });
 
 export interface GoogleCloudApigeeV1CustomReportMetric {
   /** name of the metric */
@@ -6633,15 +5683,11 @@ export interface GoogleCloudApigeeV1CustomReportMetric {
   function?: string;
 }
 
-export const GoogleCloudApigeeV1CustomReportMetric: Schema.Schema<GoogleCloudApigeeV1CustomReportMetric> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      function: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1CustomReportMetric",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1CustomReportMetric>;
+export const GoogleCloudApigeeV1CustomReportMetric =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    function: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1CustomReportMetric" });
 
 export interface GoogleCloudApigeeV1ComputeEnvironmentScoresRequest {
   /** Optional. Filters are used to filter scored components. Return all the components if no filter is mentioned. Example: [{ "scorePath": "/org@myorg/envgroup@myenvgroup/env@myenv/proxies/proxy@myproxy/source" }, { "scorePath": "/org@myorg/envgroup@myenvgroup/env@myenv/proxies/proxy@myproxy/target", }] This will return components with path: "/org@myorg/envgroup@myenvgroup/env@myenv/proxies/proxy@myproxy/source" OR "/org@myorg/envgroup@myenvgroup/env@myenv/proxies/proxy@myproxy/target" */
@@ -6654,19 +5700,17 @@ export interface GoogleCloudApigeeV1ComputeEnvironmentScoresRequest {
   pageToken?: string;
 }
 
-export const GoogleCloudApigeeV1ComputeEnvironmentScoresRequest: Schema.Schema<GoogleCloudApigeeV1ComputeEnvironmentScoresRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filters: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1ComputeEnvironmentScoresRequestFilter),
-      ),
-      pageSize: Schema.optional(Schema.Number),
-      timeRange: Schema.optional(GoogleTypeInterval),
-      pageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1ComputeEnvironmentScoresRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filters: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1ComputeEnvironmentScoresRequestFilter),
+    ),
+    pageSize: Schema.optional(Schema.Number),
+    timeRange: Schema.optional(GoogleTypeInterval),
+    pageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudApigeeV1ComputeEnvironmentScoresRequest",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ComputeEnvironmentScoresRequest>;
+  });
 
 export interface GoogleCloudApigeeV1Export {
   /** Output only. Time the export job was created. */
@@ -6689,22 +5733,18 @@ export interface GoogleCloudApigeeV1Export {
   error?: string;
 }
 
-export const GoogleCloudApigeeV1Export: Schema.Schema<GoogleCloudApigeeV1Export> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      created: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      executionTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      datastoreName: Schema.optional(Schema.String),
-      updated: Schema.optional(Schema.String),
-      self: Schema.optional(Schema.String),
-      error: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1Export",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1Export>;
+export const GoogleCloudApigeeV1Export =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    created: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    executionTime: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    datastoreName: Schema.optional(Schema.String),
+    updated: Schema.optional(Schema.String),
+    self: Schema.optional(Schema.String),
+    error: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1Export" });
 
 export interface GoogleIamV1SetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
@@ -6713,15 +5753,11 @@ export interface GoogleIamV1SetIamPolicyRequest {
   policy?: GoogleIamV1Policy;
 }
 
-export const GoogleIamV1SetIamPolicyRequest: Schema.Schema<GoogleIamV1SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateMask: Schema.optional(Schema.String),
-      policy: Schema.optional(GoogleIamV1Policy),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1SetIamPolicyRequest",
-  }) as any as Schema.Schema<GoogleIamV1SetIamPolicyRequest>;
+export const GoogleIamV1SetIamPolicyRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateMask: Schema.optional(Schema.String),
+    policy: Schema.optional(GoogleIamV1Policy),
+  }).annotate({ identifier: "GoogleIamV1SetIamPolicyRequest" });
 
 export interface GoogleCloudApigeeV1DeleteResponse {
   /** Status of the operation. */
@@ -6736,18 +5772,14 @@ export interface GoogleCloudApigeeV1DeleteResponse {
   requestId?: string;
 }
 
-export const GoogleCloudApigeeV1DeleteResponse: Schema.Schema<GoogleCloudApigeeV1DeleteResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      status: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-      errorCode: Schema.optional(Schema.String),
-      gcpResource: Schema.optional(Schema.String),
-      requestId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1DeleteResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1DeleteResponse>;
+export const GoogleCloudApigeeV1DeleteResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    status: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+    errorCode: Schema.optional(Schema.String),
+    gcpResource: Schema.optional(Schema.String),
+    requestId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1DeleteResponse" });
 
 export interface GoogleCloudApigeeV1AppGroupApp {
   /** Status of the App. Valid values include `approved` or `revoked`. */
@@ -6776,25 +5808,21 @@ export interface GoogleCloudApigeeV1AppGroupApp {
   name?: string;
 }
 
-export const GoogleCloudApigeeV1AppGroupApp: Schema.Schema<GoogleCloudApigeeV1AppGroupApp> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      status: Schema.optional(Schema.String),
-      attributes: Schema.optional(Schema.Array(GoogleCloudApigeeV1Attribute)),
-      callbackUrl: Schema.optional(Schema.String),
-      lastModifiedAt: Schema.optional(Schema.String),
-      credentials: Schema.optional(Schema.Array(GoogleCloudApigeeV1Credential)),
-      scopes: Schema.optional(Schema.Array(Schema.String)),
-      appGroup: Schema.optional(Schema.String),
-      createdAt: Schema.optional(Schema.String),
-      apiProducts: Schema.optional(Schema.Array(Schema.String)),
-      keyExpiresIn: Schema.optional(Schema.String),
-      appId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1AppGroupApp",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1AppGroupApp>;
+export const GoogleCloudApigeeV1AppGroupApp =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    status: Schema.optional(Schema.String),
+    attributes: Schema.optional(Schema.Array(GoogleCloudApigeeV1Attribute)),
+    callbackUrl: Schema.optional(Schema.String),
+    lastModifiedAt: Schema.optional(Schema.String),
+    credentials: Schema.optional(Schema.Array(GoogleCloudApigeeV1Credential)),
+    scopes: Schema.optional(Schema.Array(Schema.String)),
+    appGroup: Schema.optional(Schema.String),
+    createdAt: Schema.optional(Schema.String),
+    apiProducts: Schema.optional(Schema.Array(Schema.String)),
+    keyExpiresIn: Schema.optional(Schema.String),
+    appId: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1AppGroupApp" });
 
 export interface GoogleCloudApigeeV1ListApiDebugSessionsResponse {
   /** Session info that includes debug session ID, environment ID, api proxy revision ID and the first transaction creation timestamp. */
@@ -6803,17 +5831,13 @@ export interface GoogleCloudApigeeV1ListApiDebugSessionsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApigeeV1ListApiDebugSessionsResponse: Schema.Schema<GoogleCloudApigeeV1ListApiDebugSessionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sessions: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1ApiDebugSession),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1ListApiDebugSessionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sessions: Schema.optional(Schema.Array(GoogleCloudApigeeV1ApiDebugSession)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudApigeeV1ListApiDebugSessionsResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ListApiDebugSessionsResponse>;
+  });
 
 export interface GoogleCloudApigeeV1ListKeyValueEntriesResponse {
   /** One or more key value map keys and values. */
@@ -6822,17 +5846,13 @@ export interface GoogleCloudApigeeV1ListKeyValueEntriesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApigeeV1ListKeyValueEntriesResponse: Schema.Schema<GoogleCloudApigeeV1ListKeyValueEntriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      keyValueEntries: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1KeyValueEntry),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ListKeyValueEntriesResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ListKeyValueEntriesResponse>;
+export const GoogleCloudApigeeV1ListKeyValueEntriesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    keyValueEntries: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1KeyValueEntry),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ListKeyValueEntriesResponse" });
 
 export interface GoogleCloudApigeeV1ListApimServiceExtensionsResponse {
   /** Page token that you can include in an `ListApimServiceExtensions` request to retrieve the next page. If omitted, no subsequent pages exist. */
@@ -6841,17 +5861,15 @@ export interface GoogleCloudApigeeV1ListApimServiceExtensionsResponse {
   apimServiceExtensions?: Array<GoogleCloudApigeeV1ApimServiceExtension>;
 }
 
-export const GoogleCloudApigeeV1ListApimServiceExtensionsResponse: Schema.Schema<GoogleCloudApigeeV1ListApimServiceExtensionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      apimServiceExtensions: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1ApimServiceExtension),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1ListApimServiceExtensionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    apimServiceExtensions: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1ApimServiceExtension),
+    ),
+  }).annotate({
     identifier: "GoogleCloudApigeeV1ListApimServiceExtensionsResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ListApimServiceExtensionsResponse>;
+  });
 
 export interface GoogleCloudApigeeV1ExportRequest {
   /** Required. Date range of the data to export. */
@@ -6868,19 +5886,15 @@ export interface GoogleCloudApigeeV1ExportRequest {
   description?: string;
 }
 
-export const GoogleCloudApigeeV1ExportRequest: Schema.Schema<GoogleCloudApigeeV1ExportRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dateRange: Schema.optional(GoogleCloudApigeeV1DateRange),
-      csvDelimiter: Schema.optional(Schema.String),
-      datastoreName: Schema.optional(Schema.String),
-      outputFormat: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ExportRequest",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ExportRequest>;
+export const GoogleCloudApigeeV1ExportRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dateRange: Schema.optional(GoogleCloudApigeeV1DateRange),
+    csvDelimiter: Schema.optional(Schema.String),
+    datastoreName: Schema.optional(Schema.String),
+    outputFormat: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ExportRequest" });
 
 export interface GoogleCloudApigeeV1Score {
   /** Start and end time for the score. */
@@ -6891,18 +5905,14 @@ export interface GoogleCloudApigeeV1Score {
   component?: GoogleCloudApigeeV1ScoreComponent;
 }
 
-export const GoogleCloudApigeeV1Score: Schema.Schema<GoogleCloudApigeeV1Score> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      timeRange: Schema.optional(GoogleTypeInterval),
-      subcomponents: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1ScoreComponent),
-      ),
-      component: Schema.optional(GoogleCloudApigeeV1ScoreComponent),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1Score",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1Score>;
+export const GoogleCloudApigeeV1Score =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    timeRange: Schema.optional(GoogleTypeInterval),
+    subcomponents: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1ScoreComponent),
+    ),
+    component: Schema.optional(GoogleCloudApigeeV1ScoreComponent),
+  }).annotate({ identifier: "GoogleCloudApigeeV1Score" });
 
 export interface GoogleCloudApigeeV1ComputeEnvironmentScoresResponse {
   /** List of scores. One score per day. */
@@ -6911,15 +5921,13 @@ export interface GoogleCloudApigeeV1ComputeEnvironmentScoresResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApigeeV1ComputeEnvironmentScoresResponse: Schema.Schema<GoogleCloudApigeeV1ComputeEnvironmentScoresResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scores: Schema.optional(Schema.Array(GoogleCloudApigeeV1Score)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1ComputeEnvironmentScoresResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scores: Schema.optional(Schema.Array(GoogleCloudApigeeV1Score)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudApigeeV1ComputeEnvironmentScoresResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ComputeEnvironmentScoresResponse>;
+  });
 
 export interface GoogleCloudApigeeV1Organization {
   /** Output only. Project ID associated with the Apigee organization. */
@@ -7008,43 +6016,39 @@ export interface GoogleCloudApigeeV1Organization {
   runtimeDatabaseEncryptionKeyName?: string;
 }
 
-export const GoogleCloudApigeeV1Organization: Schema.Schema<GoogleCloudApigeeV1Organization> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      projectId: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      lastModifiedAt: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      createdAt: Schema.optional(Schema.String),
-      analyticsRegion: Schema.optional(Schema.String),
-      apiConsumerDataLocation: Schema.optional(Schema.String),
-      environments: Schema.optional(Schema.Array(Schema.String)),
-      subscriptionPlan: Schema.optional(Schema.String),
-      caCertificates: Schema.optional(Schema.Array(Schema.String)),
-      apigeeProjectId: Schema.optional(Schema.String),
-      controlPlaneEncryptionKeyName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      expiresAt: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      addonsConfig: Schema.optional(GoogleCloudApigeeV1AddonsConfig),
-      apiConsumerDataEncryptionKeyName: Schema.optional(Schema.String),
-      properties: Schema.optional(GoogleCloudApigeeV1Properties),
-      portalDisabled: Schema.optional(Schema.Boolean),
-      subscriptionType: Schema.optional(Schema.String),
-      authorizedNetwork: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      disableVpcPeering: Schema.optional(Schema.Boolean),
-      customerName: Schema.optional(Schema.String),
-      networkEgressRestricted: Schema.optional(Schema.Boolean),
-      runtimeType: Schema.optional(Schema.String),
-      billingType: Schema.optional(Schema.String),
-      attributes: Schema.optional(Schema.Array(Schema.String)),
-      caCertificate: Schema.optional(Schema.String),
-      runtimeDatabaseEncryptionKeyName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1Organization",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1Organization>;
+export const GoogleCloudApigeeV1Organization =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    projectId: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    lastModifiedAt: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    createdAt: Schema.optional(Schema.String),
+    analyticsRegion: Schema.optional(Schema.String),
+    apiConsumerDataLocation: Schema.optional(Schema.String),
+    environments: Schema.optional(Schema.Array(Schema.String)),
+    subscriptionPlan: Schema.optional(Schema.String),
+    caCertificates: Schema.optional(Schema.Array(Schema.String)),
+    apigeeProjectId: Schema.optional(Schema.String),
+    controlPlaneEncryptionKeyName: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    expiresAt: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    addonsConfig: Schema.optional(GoogleCloudApigeeV1AddonsConfig),
+    apiConsumerDataEncryptionKeyName: Schema.optional(Schema.String),
+    properties: Schema.optional(GoogleCloudApigeeV1Properties),
+    portalDisabled: Schema.optional(Schema.Boolean),
+    subscriptionType: Schema.optional(Schema.String),
+    authorizedNetwork: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    disableVpcPeering: Schema.optional(Schema.Boolean),
+    customerName: Schema.optional(Schema.String),
+    networkEgressRestricted: Schema.optional(Schema.Boolean),
+    runtimeType: Schema.optional(Schema.String),
+    billingType: Schema.optional(Schema.String),
+    attributes: Schema.optional(Schema.Array(Schema.String)),
+    caCertificate: Schema.optional(Schema.String),
+    runtimeDatabaseEncryptionKeyName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1Organization" });
 
 export interface GoogleCloudApigeeV1ArchiveDeployment {
   /** User-supplied key-value pairs used to organize ArchiveDeployments. Label keys must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: \p{Ll}\p{Lo}{0,62} Label values must be between 1 and 63 characters long, have a UTF-8 encoding of maximum 128 bytes, and must conform to the following PCRE regular expression: [\p{Ll}\p{Lo}\p{N}_-]{0,63} No more than 64 labels can be associated with a given store. */
@@ -7061,19 +6065,15 @@ export interface GoogleCloudApigeeV1ArchiveDeployment {
   updatedAt?: string;
 }
 
-export const GoogleCloudApigeeV1ArchiveDeployment: Schema.Schema<GoogleCloudApigeeV1ArchiveDeployment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      operation: Schema.optional(Schema.String),
-      createdAt: Schema.optional(Schema.String),
-      gcsUri: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      updatedAt: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ArchiveDeployment",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ArchiveDeployment>;
+export const GoogleCloudApigeeV1ArchiveDeployment =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    operation: Schema.optional(Schema.String),
+    createdAt: Schema.optional(Schema.String),
+    gcsUri: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    updatedAt: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ArchiveDeployment" });
 
 export interface GoogleCloudApigeeV1ListArchiveDeploymentsResponse {
   /** Page token that you can include in a ListArchiveDeployments request to retrieve the next page. If omitted, no subsequent pages exist. */
@@ -7082,17 +6082,15 @@ export interface GoogleCloudApigeeV1ListArchiveDeploymentsResponse {
   archiveDeployments?: Array<GoogleCloudApigeeV1ArchiveDeployment>;
 }
 
-export const GoogleCloudApigeeV1ListArchiveDeploymentsResponse: Schema.Schema<GoogleCloudApigeeV1ListArchiveDeploymentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      archiveDeployments: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1ArchiveDeployment),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1ListArchiveDeploymentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    archiveDeployments: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1ArchiveDeployment),
+    ),
+  }).annotate({
     identifier: "GoogleCloudApigeeV1ListArchiveDeploymentsResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ListArchiveDeploymentsResponse>;
+  });
 
 export interface GoogleCloudApigeeV1ReportProperty {
   /** name of the property */
@@ -7101,52 +6099,40 @@ export interface GoogleCloudApigeeV1ReportProperty {
   value?: Array<GoogleCloudApigeeV1Attribute>;
 }
 
-export const GoogleCloudApigeeV1ReportProperty: Schema.Schema<GoogleCloudApigeeV1ReportProperty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      property: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.Array(GoogleCloudApigeeV1Attribute)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ReportProperty",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ReportProperty>;
+export const GoogleCloudApigeeV1ReportProperty =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    property: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.Array(GoogleCloudApigeeV1Attribute)),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ReportProperty" });
 
 export interface GoogleIamV1TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: Array<string>;
 }
 
-export const GoogleIamV1TestIamPermissionsResponse: Schema.Schema<GoogleIamV1TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1TestIamPermissionsResponse",
-  }) as any as Schema.Schema<GoogleIamV1TestIamPermissionsResponse>;
+export const GoogleIamV1TestIamPermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleIamV1TestIamPermissionsResponse" });
 
 export interface GoogleCloudApigeeV1GenerateDownloadUrlRequest {}
 
-export const GoogleCloudApigeeV1GenerateDownloadUrlRequest: Schema.Schema<GoogleCloudApigeeV1GenerateDownloadUrlRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudApigeeV1GenerateDownloadUrlRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApigeeV1GenerateDownloadUrlRequest",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1GenerateDownloadUrlRequest>;
+  });
 
 export interface GoogleCloudApigeeV1ListOrganizationsResponse {
   /** List of Apigee organizations and associated Google Cloud projects. */
   organizations?: Array<GoogleCloudApigeeV1OrganizationProjectMapping>;
 }
 
-export const GoogleCloudApigeeV1ListOrganizationsResponse: Schema.Schema<GoogleCloudApigeeV1ListOrganizationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      organizations: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1OrganizationProjectMapping),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ListOrganizationsResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ListOrganizationsResponse>;
+export const GoogleCloudApigeeV1ListOrganizationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    organizations: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1OrganizationProjectMapping),
+    ),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ListOrganizationsResponse" });
 
 export interface GoogleCloudApigeeV1ListSecurityIncidentsResponse {
   /** List of security incidents in the organization */
@@ -7155,17 +6141,15 @@ export interface GoogleCloudApigeeV1ListSecurityIncidentsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApigeeV1ListSecurityIncidentsResponse: Schema.Schema<GoogleCloudApigeeV1ListSecurityIncidentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      securityIncidents: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1SecurityIncident),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1ListSecurityIncidentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    securityIncidents: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1SecurityIncident),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudApigeeV1ListSecurityIncidentsResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ListSecurityIncidentsResponse>;
+  });
 
 export interface GoogleCloudApigeeV1AppGroupBalanceWallet {
   /** Current remaining balance of the AppGroup for a particular currency. */
@@ -7174,31 +6158,25 @@ export interface GoogleCloudApigeeV1AppGroupBalanceWallet {
   lastCreditTime?: string;
 }
 
-export const GoogleCloudApigeeV1AppGroupBalanceWallet: Schema.Schema<GoogleCloudApigeeV1AppGroupBalanceWallet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      balance: Schema.optional(GoogleTypeMoney),
-      lastCreditTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1AppGroupBalanceWallet",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1AppGroupBalanceWallet>;
+export const GoogleCloudApigeeV1AppGroupBalanceWallet =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    balance: Schema.optional(GoogleTypeMoney),
+    lastCreditTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1AppGroupBalanceWallet" });
 
 export interface GoogleCloudApigeeV1GetAsyncQueryResultUrlResponse {
   /** The list of Signed URLs generated by the CreateAsyncQuery request */
   urls?: Array<GoogleCloudApigeeV1GetAsyncQueryResultUrlResponseURLInfo>;
 }
 
-export const GoogleCloudApigeeV1GetAsyncQueryResultUrlResponse: Schema.Schema<GoogleCloudApigeeV1GetAsyncQueryResultUrlResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      urls: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1GetAsyncQueryResultUrlResponseURLInfo),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1GetAsyncQueryResultUrlResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    urls: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1GetAsyncQueryResultUrlResponseURLInfo),
+    ),
+  }).annotate({
     identifier: "GoogleCloudApigeeV1GetAsyncQueryResultUrlResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1GetAsyncQueryResultUrlResponse>;
+  });
 
 export interface GoogleCloudApigeeV1EnvironmentGroupAttachment {
   /** Output only. The time at which the environment group attachment was created as milliseconds since epoch. */
@@ -7211,17 +6189,13 @@ export interface GoogleCloudApigeeV1EnvironmentGroupAttachment {
   environment?: string;
 }
 
-export const GoogleCloudApigeeV1EnvironmentGroupAttachment: Schema.Schema<GoogleCloudApigeeV1EnvironmentGroupAttachment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createdAt: Schema.optional(Schema.String),
-      environmentGroupId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      environment: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1EnvironmentGroupAttachment",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1EnvironmentGroupAttachment>;
+export const GoogleCloudApigeeV1EnvironmentGroupAttachment =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createdAt: Schema.optional(Schema.String),
+    environmentGroupId: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    environment: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1EnvironmentGroupAttachment" });
 
 export interface GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse {
   /** EnvironmentGroupAttachments for the specified environment group. */
@@ -7230,31 +6204,25 @@ export interface GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse: Schema.Schema<GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      environmentGroupAttachments: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1EnvironmentGroupAttachment),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    environmentGroupAttachments: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1EnvironmentGroupAttachment),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ListEnvironmentGroupAttachmentsResponse>;
+  });
 
 export interface GoogleCloudApigeeV1Attributes {
   /** List of attributes. */
   attribute?: Array<GoogleCloudApigeeV1Attribute>;
 }
 
-export const GoogleCloudApigeeV1Attributes: Schema.Schema<GoogleCloudApigeeV1Attributes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      attribute: Schema.optional(Schema.Array(GoogleCloudApigeeV1Attribute)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1Attributes",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1Attributes>;
+export const GoogleCloudApigeeV1Attributes =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    attribute: Schema.optional(Schema.Array(GoogleCloudApigeeV1Attribute)),
+  }).annotate({ identifier: "GoogleCloudApigeeV1Attributes" });
 
 export interface GoogleCloudApigeeV1AppGroupMonetizationConfig {
   /** Required. Billing type. */
@@ -7265,28 +6233,20 @@ export interface GoogleCloudApigeeV1AppGroupMonetizationConfig {
     | (string & {});
 }
 
-export const GoogleCloudApigeeV1AppGroupMonetizationConfig: Schema.Schema<GoogleCloudApigeeV1AppGroupMonetizationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      billingType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1AppGroupMonetizationConfig",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1AppGroupMonetizationConfig>;
+export const GoogleCloudApigeeV1AppGroupMonetizationConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    billingType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1AppGroupMonetizationConfig" });
 
 export interface GoogleCloudApigeeV1ListOfDevelopersResponse {
   /** List of developers. */
   developer?: Array<GoogleCloudApigeeV1Developer>;
 }
 
-export const GoogleCloudApigeeV1ListOfDevelopersResponse: Schema.Schema<GoogleCloudApigeeV1ListOfDevelopersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      developer: Schema.optional(Schema.Array(GoogleCloudApigeeV1Developer)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ListOfDevelopersResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ListOfDevelopersResponse>;
+export const GoogleCloudApigeeV1ListOfDevelopersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    developer: Schema.optional(Schema.Array(GoogleCloudApigeeV1Developer)),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ListOfDevelopersResponse" });
 
 export interface GoogleCloudApigeeV1OperationMetadataProgress {
   /** State of the operation. */
@@ -7304,17 +6264,13 @@ export interface GoogleCloudApigeeV1OperationMetadataProgress {
   percentDone?: number;
 }
 
-export const GoogleCloudApigeeV1OperationMetadataProgress: Schema.Schema<GoogleCloudApigeeV1OperationMetadataProgress> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      details: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      description: Schema.optional(Schema.String),
-      percentDone: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1OperationMetadataProgress",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1OperationMetadataProgress>;
+export const GoogleCloudApigeeV1OperationMetadataProgress =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+    details: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    description: Schema.optional(Schema.String),
+    percentDone: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudApigeeV1OperationMetadataProgress" });
 
 export interface GoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence {
   /** Map of dimensions and their values that uniquely identifies a time series sequence. */
@@ -7323,15 +6279,13 @@ export interface GoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence {
   points?: Array<Array<unknown>>;
 }
 
-export const GoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence: Schema.Schema<GoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dimensions: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      points: Schema.optional(Schema.Array(Schema.Array(Schema.Unknown))),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dimensions: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    points: Schema.optional(Schema.Array(Schema.Array(Schema.Unknown))),
+  }).annotate({
     identifier: "GoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence>;
+  });
 
 export interface GoogleCloudApigeeV1QueryTimeSeriesStatsResponse {
   /** Column names corresponding to the same order as the inner values in the stats field. */
@@ -7342,34 +6296,28 @@ export interface GoogleCloudApigeeV1QueryTimeSeriesStatsResponse {
   values?: Array<GoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence>;
 }
 
-export const GoogleCloudApigeeV1QueryTimeSeriesStatsResponse: Schema.Schema<GoogleCloudApigeeV1QueryTimeSeriesStatsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      columns: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-      values: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1QueryTimeSeriesStatsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    columns: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+    values: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1QueryTimeSeriesStatsResponseSequence),
+    ),
+  }).annotate({
     identifier: "GoogleCloudApigeeV1QueryTimeSeriesStatsResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1QueryTimeSeriesStatsResponse>;
+  });
 
 export interface GoogleCloudApigeeV1DeveloperBalance {
   /** Output only. List of all wallets. Each individual wallet stores the account balance for a particular currency. */
   wallets?: Array<GoogleCloudApigeeV1DeveloperBalanceWallet>;
 }
 
-export const GoogleCloudApigeeV1DeveloperBalance: Schema.Schema<GoogleCloudApigeeV1DeveloperBalance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      wallets: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1DeveloperBalanceWallet),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1DeveloperBalance",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1DeveloperBalance>;
+export const GoogleCloudApigeeV1DeveloperBalance =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    wallets: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1DeveloperBalanceWallet),
+    ),
+  }).annotate({ identifier: "GoogleCloudApigeeV1DeveloperBalance" });
 
 export interface GoogleCloudApigeeV1KeyValueMap {
   /** Required. Flag that specifies whether entry values will be encrypted. This field is retained for backward compatibility and the value of encrypted will always be `true`. Apigee X and hybrid do not support unencrypted key value maps. */
@@ -7380,43 +6328,31 @@ export interface GoogleCloudApigeeV1KeyValueMap {
   maskedValues?: boolean;
 }
 
-export const GoogleCloudApigeeV1KeyValueMap: Schema.Schema<GoogleCloudApigeeV1KeyValueMap> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      encrypted: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-      maskedValues: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1KeyValueMap",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1KeyValueMap>;
+export const GoogleCloudApigeeV1KeyValueMap =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    encrypted: Schema.optional(Schema.Boolean),
+    name: Schema.optional(Schema.String),
+    maskedValues: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudApigeeV1KeyValueMap" });
 
 export interface GoogleCloudApigeeV1ListApiProxiesResponse {
   proxies?: Array<GoogleCloudApigeeV1ApiProxy>;
 }
 
-export const GoogleCloudApigeeV1ListApiProxiesResponse: Schema.Schema<GoogleCloudApigeeV1ListApiProxiesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      proxies: Schema.optional(Schema.Array(GoogleCloudApigeeV1ApiProxy)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ListApiProxiesResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ListApiProxiesResponse>;
+export const GoogleCloudApigeeV1ListApiProxiesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    proxies: Schema.optional(Schema.Array(GoogleCloudApigeeV1ApiProxy)),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ListApiProxiesResponse" });
 
 export interface GoogleCloudApigeeV1DeleteCustomReportResponse {
   /** The response contains only a message field. */
   message?: string;
 }
 
-export const GoogleCloudApigeeV1DeleteCustomReportResponse: Schema.Schema<GoogleCloudApigeeV1DeleteCustomReportResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      message: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1DeleteCustomReportResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1DeleteCustomReportResponse>;
+export const GoogleCloudApigeeV1DeleteCustomReportResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    message: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1DeleteCustomReportResponse" });
 
 export interface GoogleCloudApigeeV1QueryTabularStatsRequest {
   /** Required. List of metrics and their aggregations. */
@@ -7433,21 +6369,17 @@ export interface GoogleCloudApigeeV1QueryTabularStatsRequest {
   filter?: string;
 }
 
-export const GoogleCloudApigeeV1QueryTabularStatsRequest: Schema.Schema<GoogleCloudApigeeV1QueryTabularStatsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metrics: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1MetricAggregation),
-      ),
-      timeRange: Schema.optional(GoogleTypeInterval),
-      dimensions: Schema.optional(Schema.Array(Schema.String)),
-      pageSize: Schema.optional(Schema.Number),
-      pageToken: Schema.optional(Schema.String),
-      filter: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1QueryTabularStatsRequest",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1QueryTabularStatsRequest>;
+export const GoogleCloudApigeeV1QueryTabularStatsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    metrics: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1MetricAggregation),
+    ),
+    timeRange: Schema.optional(GoogleTypeInterval),
+    dimensions: Schema.optional(Schema.Array(Schema.String)),
+    pageSize: Schema.optional(Schema.Number),
+    pageToken: Schema.optional(Schema.String),
+    filter: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1QueryTabularStatsRequest" });
 
 export interface GoogleCloudApigeeV1DebugSessionTransaction {
   /** Flag indicating whether a transaction is completed or not */
@@ -7456,15 +6388,11 @@ export interface GoogleCloudApigeeV1DebugSessionTransaction {
   point?: Array<GoogleCloudApigeeV1Point>;
 }
 
-export const GoogleCloudApigeeV1DebugSessionTransaction: Schema.Schema<GoogleCloudApigeeV1DebugSessionTransaction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      completed: Schema.optional(Schema.Boolean),
-      point: Schema.optional(Schema.Array(GoogleCloudApigeeV1Point)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1DebugSessionTransaction",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1DebugSessionTransaction>;
+export const GoogleCloudApigeeV1DebugSessionTransaction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    completed: Schema.optional(Schema.Boolean),
+    point: Schema.optional(Schema.Array(GoogleCloudApigeeV1Point)),
+  }).annotate({ identifier: "GoogleCloudApigeeV1DebugSessionTransaction" });
 
 export interface GoogleCloudApigeeV1ListSecurityMonitoringConditionsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -7473,17 +6401,15 @@ export interface GoogleCloudApigeeV1ListSecurityMonitoringConditionsResponse {
   securityMonitoringConditions?: Array<GoogleCloudApigeeV1SecurityMonitoringCondition>;
 }
 
-export const GoogleCloudApigeeV1ListSecurityMonitoringConditionsResponse: Schema.Schema<GoogleCloudApigeeV1ListSecurityMonitoringConditionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      securityMonitoringConditions: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1SecurityMonitoringCondition),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1ListSecurityMonitoringConditionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    securityMonitoringConditions: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1SecurityMonitoringCondition),
+    ),
+  }).annotate({
     identifier: "GoogleCloudApigeeV1ListSecurityMonitoringConditionsResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ListSecurityMonitoringConditionsResponse>;
+  });
 
 export interface GoogleCloudApigeeV1DataCollector {
   /** A description of the data collector. */
@@ -7505,18 +6431,14 @@ export interface GoogleCloudApigeeV1DataCollector {
   createdAt?: string;
 }
 
-export const GoogleCloudApigeeV1DataCollector: Schema.Schema<GoogleCloudApigeeV1DataCollector> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      lastModifiedAt: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      createdAt: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1DataCollector",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1DataCollector>;
+export const GoogleCloudApigeeV1DataCollector =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    lastModifiedAt: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    createdAt: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1DataCollector" });
 
 export interface GoogleCloudApigeeV1ListDataCollectorsResponse {
   /** Data collectors in the specified organization. */
@@ -7525,17 +6447,13 @@ export interface GoogleCloudApigeeV1ListDataCollectorsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApigeeV1ListDataCollectorsResponse: Schema.Schema<GoogleCloudApigeeV1ListDataCollectorsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataCollectors: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1DataCollector),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ListDataCollectorsResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ListDataCollectorsResponse>;
+export const GoogleCloudApigeeV1ListDataCollectorsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataCollectors: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1DataCollector),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ListDataCollectorsResponse" });
 
 export interface GoogleCloudApigeeV1ListAppGroupsResponse {
   /** List of AppGroups. */
@@ -7546,16 +6464,12 @@ export interface GoogleCloudApigeeV1ListAppGroupsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApigeeV1ListAppGroupsResponse: Schema.Schema<GoogleCloudApigeeV1ListAppGroupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      appGroups: Schema.optional(Schema.Array(GoogleCloudApigeeV1AppGroup)),
-      totalSize: Schema.optional(Schema.Number),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ListAppGroupsResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ListAppGroupsResponse>;
+export const GoogleCloudApigeeV1ListAppGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    appGroups: Schema.optional(Schema.Array(GoogleCloudApigeeV1AppGroup)),
+    totalSize: Schema.optional(Schema.Number),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ListAppGroupsResponse" });
 
 export interface GoogleCloudApigeeV1SecurityProfileEnvironmentAssociation {
   /** Immutable. Name of the environment that the profile is attached to. */
@@ -7566,16 +6480,14 @@ export interface GoogleCloudApigeeV1SecurityProfileEnvironmentAssociation {
   attachTime?: string;
 }
 
-export const GoogleCloudApigeeV1SecurityProfileEnvironmentAssociation: Schema.Schema<GoogleCloudApigeeV1SecurityProfileEnvironmentAssociation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      securityProfileRevisionId: Schema.optional(Schema.String),
-      attachTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1SecurityProfileEnvironmentAssociation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    securityProfileRevisionId: Schema.optional(Schema.String),
+    attachTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudApigeeV1SecurityProfileEnvironmentAssociation",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1SecurityProfileEnvironmentAssociation>;
+  });
 
 export interface GoogleCloudApigeeV1SecurityActionsConfig {
   /** This is a singleton resource, the name will always be set by SecurityActions and any user input will be ignored. The name is always: `organizations/{org}/environments/{env}/security_actions_config` */
@@ -7586,16 +6498,12 @@ export interface GoogleCloudApigeeV1SecurityActionsConfig {
   updateTime?: string;
 }
 
-export const GoogleCloudApigeeV1SecurityActionsConfig: Schema.Schema<GoogleCloudApigeeV1SecurityActionsConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      enabled: Schema.optional(Schema.Boolean),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1SecurityActionsConfig",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1SecurityActionsConfig>;
+export const GoogleCloudApigeeV1SecurityActionsConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    enabled: Schema.optional(Schema.Boolean),
+    updateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1SecurityActionsConfig" });
 
 export interface GoogleCloudApigeeV1ApiDocDocumentationResponse {
   /** Output only. Unique ID of the request. */
@@ -7610,32 +6518,24 @@ export interface GoogleCloudApigeeV1ApiDocDocumentationResponse {
   status?: string;
 }
 
-export const GoogleCloudApigeeV1ApiDocDocumentationResponse: Schema.Schema<GoogleCloudApigeeV1ApiDocDocumentationResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestId: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-      errorCode: Schema.optional(Schema.String),
-      data: Schema.optional(GoogleCloudApigeeV1ApiDocDocumentation),
-      status: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ApiDocDocumentationResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ApiDocDocumentationResponse>;
+export const GoogleCloudApigeeV1ApiDocDocumentationResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestId: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+    errorCode: Schema.optional(Schema.String),
+    data: Schema.optional(GoogleCloudApigeeV1ApiDocDocumentation),
+    status: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ApiDocDocumentationResponse" });
 
 export interface GoogleCloudApigeeV1ListDeveloperAppsResponse {
   /** List of developer apps and their credentials. */
   app?: Array<GoogleCloudApigeeV1DeveloperApp>;
 }
 
-export const GoogleCloudApigeeV1ListDeveloperAppsResponse: Schema.Schema<GoogleCloudApigeeV1ListDeveloperAppsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      app: Schema.optional(Schema.Array(GoogleCloudApigeeV1DeveloperApp)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ListDeveloperAppsResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ListDeveloperAppsResponse>;
+export const GoogleCloudApigeeV1ListDeveloperAppsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    app: Schema.optional(Schema.Array(GoogleCloudApigeeV1DeveloperApp)),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ListDeveloperAppsResponse" });
 
 export interface GoogleCloudApigeeV1QueryTabularStatsResponse {
   /** Column names corresponding to the same order as the inner values in the stats field. */
@@ -7646,16 +6546,12 @@ export interface GoogleCloudApigeeV1QueryTabularStatsResponse {
   values?: Array<Array<unknown>>;
 }
 
-export const GoogleCloudApigeeV1QueryTabularStatsResponse: Schema.Schema<GoogleCloudApigeeV1QueryTabularStatsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      columns: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-      values: Schema.optional(Schema.Array(Schema.Array(Schema.Unknown))),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1QueryTabularStatsResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1QueryTabularStatsResponse>;
+export const GoogleCloudApigeeV1QueryTabularStatsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    columns: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+    values: Schema.optional(Schema.Array(Schema.Array(Schema.Unknown))),
+  }).annotate({ identifier: "GoogleCloudApigeeV1QueryTabularStatsResponse" });
 
 export interface GoogleCloudApigeeV1App {
   /** Status of the credential. */
@@ -7690,30 +6586,27 @@ export interface GoogleCloudApigeeV1App {
   companyName?: string;
 }
 
-export const GoogleCloudApigeeV1App: Schema.Schema<GoogleCloudApigeeV1App> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      status: Schema.optional(Schema.String),
-      developerEmail: Schema.optional(Schema.String),
-      lastModifiedAt: Schema.optional(Schema.String),
-      credentials: Schema.optional(Schema.Array(GoogleCloudApigeeV1Credential)),
-      appGroup: Schema.optional(Schema.String),
-      apiProducts: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1ApiProductRef),
-      ),
-      keyExpiresIn: Schema.optional(Schema.String),
-      appId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      attributes: Schema.optional(Schema.Array(GoogleCloudApigeeV1Attribute)),
-      callbackUrl: Schema.optional(Schema.String),
-      scopes: Schema.optional(Schema.Array(Schema.String)),
-      developerId: Schema.optional(Schema.String),
-      createdAt: Schema.optional(Schema.String),
-      companyName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1App",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1App>;
+export const GoogleCloudApigeeV1App = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    status: Schema.optional(Schema.String),
+    developerEmail: Schema.optional(Schema.String),
+    lastModifiedAt: Schema.optional(Schema.String),
+    credentials: Schema.optional(Schema.Array(GoogleCloudApigeeV1Credential)),
+    appGroup: Schema.optional(Schema.String),
+    apiProducts: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1ApiProductRef),
+    ),
+    keyExpiresIn: Schema.optional(Schema.String),
+    appId: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    attributes: Schema.optional(Schema.Array(GoogleCloudApigeeV1Attribute)),
+    callbackUrl: Schema.optional(Schema.String),
+    scopes: Schema.optional(Schema.Array(Schema.String)),
+    developerId: Schema.optional(Schema.String),
+    createdAt: Schema.optional(Schema.String),
+    companyName: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "GoogleCloudApigeeV1App" });
 
 export interface GoogleCloudApigeeV1ListAppsResponse {
   /** Total count of Apps. */
@@ -7723,16 +6616,12 @@ export interface GoogleCloudApigeeV1ListAppsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApigeeV1ListAppsResponse: Schema.Schema<GoogleCloudApigeeV1ListAppsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      totalSize: Schema.optional(Schema.Number),
-      app: Schema.optional(Schema.Array(GoogleCloudApigeeV1App)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ListAppsResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ListAppsResponse>;
+export const GoogleCloudApigeeV1ListAppsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    totalSize: Schema.optional(Schema.Number),
+    app: Schema.optional(Schema.Array(GoogleCloudApigeeV1App)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ListAppsResponse" });
 
 export interface GoogleCloudApigeeV1DeveloperMonetizationConfig {
   /** Billing type. */
@@ -7743,35 +6632,27 @@ export interface GoogleCloudApigeeV1DeveloperMonetizationConfig {
     | (string & {});
 }
 
-export const GoogleCloudApigeeV1DeveloperMonetizationConfig: Schema.Schema<GoogleCloudApigeeV1DeveloperMonetizationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      billingType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1DeveloperMonetizationConfig",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1DeveloperMonetizationConfig>;
+export const GoogleCloudApigeeV1DeveloperMonetizationConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    billingType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1DeveloperMonetizationConfig" });
 
 export interface GoogleCloudApigeeV1ListExportsResponse {
   /** Details of the export jobs. */
   exports?: Array<GoogleCloudApigeeV1Export>;
 }
 
-export const GoogleCloudApigeeV1ListExportsResponse: Schema.Schema<GoogleCloudApigeeV1ListExportsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      exports: Schema.optional(Schema.Array(GoogleCloudApigeeV1Export)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ListExportsResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ListExportsResponse>;
+export const GoogleCloudApigeeV1ListExportsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    exports: Schema.optional(Schema.Array(GoogleCloudApigeeV1Export)),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ListExportsResponse" });
 
 export interface GoogleCloudApigeeV1GetSyncAuthorizationRequest {}
 
-export const GoogleCloudApigeeV1GetSyncAuthorizationRequest: Schema.Schema<GoogleCloudApigeeV1GetSyncAuthorizationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudApigeeV1GetSyncAuthorizationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApigeeV1GetSyncAuthorizationRequest",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1GetSyncAuthorizationRequest>;
+  });
 
 export interface GoogleCloudApigeeV1ListSecurityFeedbackResponse {
   /** List of SecurityFeedback reports. */
@@ -7780,17 +6661,15 @@ export interface GoogleCloudApigeeV1ListSecurityFeedbackResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApigeeV1ListSecurityFeedbackResponse: Schema.Schema<GoogleCloudApigeeV1ListSecurityFeedbackResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      securityFeedback: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1SecurityFeedback),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1ListSecurityFeedbackResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    securityFeedback: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1SecurityFeedback),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudApigeeV1ListSecurityFeedbackResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ListSecurityFeedbackResponse>;
+  });
 
 export interface GoogleCloudApigeeV1OperationMetadata {
   /** Progress of the operation. */
@@ -7813,18 +6692,14 @@ export interface GoogleCloudApigeeV1OperationMetadata {
     | (string & {});
 }
 
-export const GoogleCloudApigeeV1OperationMetadata: Schema.Schema<GoogleCloudApigeeV1OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      progress: Schema.optional(GoogleCloudApigeeV1OperationMetadataProgress),
-      targetResourceName: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      warnings: Schema.optional(Schema.Array(Schema.String)),
-      operationType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1OperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1OperationMetadata>;
+export const GoogleCloudApigeeV1OperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    progress: Schema.optional(GoogleCloudApigeeV1OperationMetadataProgress),
+    targetResourceName: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    warnings: Schema.optional(Schema.Array(Schema.String)),
+    operationType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1OperationMetadata" });
 
 export interface GoogleCloudApigeeV1SecuritySettings {
   /** Identifier. Full resource name is always `organizations/{org}/securitySettings`. */
@@ -7833,22 +6708,18 @@ export interface GoogleCloudApigeeV1SecuritySettings {
   mlRetrainingFeedbackEnabled?: boolean;
 }
 
-export const GoogleCloudApigeeV1SecuritySettings: Schema.Schema<GoogleCloudApigeeV1SecuritySettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      mlRetrainingFeedbackEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1SecuritySettings",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1SecuritySettings>;
+export const GoogleCloudApigeeV1SecuritySettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    mlRetrainingFeedbackEnabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudApigeeV1SecuritySettings" });
 
 export interface GoogleCloudApigeeV1EnableSecurityActionRequest {}
 
-export const GoogleCloudApigeeV1EnableSecurityActionRequest: Schema.Schema<GoogleCloudApigeeV1EnableSecurityActionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudApigeeV1EnableSecurityActionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApigeeV1EnableSecurityActionRequest",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1EnableSecurityActionRequest>;
+  });
 
 export interface GoogleCloudApigeeV1Stats {
   /** List of query results on the environment level. */
@@ -7859,18 +6730,14 @@ export interface GoogleCloudApigeeV1Stats {
   metaData?: GoogleCloudApigeeV1Metadata;
 }
 
-export const GoogleCloudApigeeV1Stats: Schema.Schema<GoogleCloudApigeeV1Stats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      environments: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1StatsEnvironmentStats),
-      ),
-      hosts: Schema.optional(Schema.Array(GoogleCloudApigeeV1StatsHostStats)),
-      metaData: Schema.optional(GoogleCloudApigeeV1Metadata),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1Stats",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1Stats>;
+export const GoogleCloudApigeeV1Stats =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    environments: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1StatsEnvironmentStats),
+    ),
+    hosts: Schema.optional(Schema.Array(GoogleCloudApigeeV1StatsHostStats)),
+    metaData: Schema.optional(GoogleCloudApigeeV1Metadata),
+  }).annotate({ identifier: "GoogleCloudApigeeV1Stats" });
 
 export interface GoogleCloudApigeeV1CustomReport {
   /** Legacy field: not used. This field contains a list of comments associated with custom report */
@@ -7919,60 +6786,52 @@ export interface GoogleCloudApigeeV1CustomReport {
   topk?: string;
 }
 
-export const GoogleCloudApigeeV1CustomReport: Schema.Schema<GoogleCloudApigeeV1CustomReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      comments: Schema.optional(Schema.Array(Schema.String)),
-      name: Schema.optional(Schema.String),
-      tags: Schema.optional(Schema.Array(Schema.String)),
-      chartType: Schema.optional(Schema.String),
-      sortByCols: Schema.optional(Schema.Array(Schema.String)),
-      environment: Schema.optional(Schema.String),
-      lastModifiedAt: Schema.optional(Schema.String),
-      offset: Schema.optional(Schema.String),
-      properties: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1ReportProperty),
-      ),
-      timeUnit: Schema.optional(Schema.String),
-      lastViewedAt: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      metrics: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1CustomReportMetric),
-      ),
-      sortOrder: Schema.optional(Schema.String),
-      limit: Schema.optional(Schema.String),
-      organization: Schema.optional(Schema.String),
-      dimensions: Schema.optional(Schema.Array(Schema.String)),
-      toTime: Schema.optional(Schema.String),
-      fromTime: Schema.optional(Schema.String),
-      createdAt: Schema.optional(Schema.String),
-      filter: Schema.optional(Schema.String),
-      topk: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1CustomReport",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1CustomReport>;
+export const GoogleCloudApigeeV1CustomReport =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    comments: Schema.optional(Schema.Array(Schema.String)),
+    name: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Array(Schema.String)),
+    chartType: Schema.optional(Schema.String),
+    sortByCols: Schema.optional(Schema.Array(Schema.String)),
+    environment: Schema.optional(Schema.String),
+    lastModifiedAt: Schema.optional(Schema.String),
+    offset: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1ReportProperty),
+    ),
+    timeUnit: Schema.optional(Schema.String),
+    lastViewedAt: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    metrics: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1CustomReportMetric),
+    ),
+    sortOrder: Schema.optional(Schema.String),
+    limit: Schema.optional(Schema.String),
+    organization: Schema.optional(Schema.String),
+    dimensions: Schema.optional(Schema.Array(Schema.String)),
+    toTime: Schema.optional(Schema.String),
+    fromTime: Schema.optional(Schema.String),
+    createdAt: Schema.optional(Schema.String),
+    filter: Schema.optional(Schema.String),
+    topk: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1CustomReport" });
 
 export interface GoogleCloudApigeeV1ActivateNatAddressRequest {}
 
-export const GoogleCloudApigeeV1ActivateNatAddressRequest: Schema.Schema<GoogleCloudApigeeV1ActivateNatAddressRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudApigeeV1ActivateNatAddressRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApigeeV1ActivateNatAddressRequest",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ActivateNatAddressRequest>;
+  });
 
 export interface GoogleCloudApigeeV1MoveApiProductRequest {
   /** Optional. Resource ID of the space to move the API product to. If unspecified, the API product will be moved to the organization level. */
   space?: string;
 }
 
-export const GoogleCloudApigeeV1MoveApiProductRequest: Schema.Schema<GoogleCloudApigeeV1MoveApiProductRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      space: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1MoveApiProductRequest",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1MoveApiProductRequest>;
+export const GoogleCloudApigeeV1MoveApiProductRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    space: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1MoveApiProductRequest" });
 
 export interface GoogleCloudApigeeV1ListDeveloperSubscriptionsResponse {
   /** Value that can be sent as `startKey` to retrieve the next page of content. If this field is omitted, there are no subsequent pages. */
@@ -7981,17 +6840,15 @@ export interface GoogleCloudApigeeV1ListDeveloperSubscriptionsResponse {
   developerSubscriptions?: Array<GoogleCloudApigeeV1DeveloperSubscription>;
 }
 
-export const GoogleCloudApigeeV1ListDeveloperSubscriptionsResponse: Schema.Schema<GoogleCloudApigeeV1ListDeveloperSubscriptionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextStartKey: Schema.optional(Schema.String),
-      developerSubscriptions: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1DeveloperSubscription),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1ListDeveloperSubscriptionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextStartKey: Schema.optional(Schema.String),
+    developerSubscriptions: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1DeveloperSubscription),
+    ),
+  }).annotate({
     identifier: "GoogleCloudApigeeV1ListDeveloperSubscriptionsResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ListDeveloperSubscriptionsResponse>;
+  });
 
 export interface GoogleCloudApigeeV1ListNatAddressesResponse {
   /** List of NAT Addresses for the instance. */
@@ -8000,33 +6857,23 @@ export interface GoogleCloudApigeeV1ListNatAddressesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApigeeV1ListNatAddressesResponse: Schema.Schema<GoogleCloudApigeeV1ListNatAddressesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      natAddresses: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1NatAddress),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ListNatAddressesResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ListNatAddressesResponse>;
+export const GoogleCloudApigeeV1ListNatAddressesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    natAddresses: Schema.optional(Schema.Array(GoogleCloudApigeeV1NatAddress)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ListNatAddressesResponse" });
 
 export interface GoogleCloudApigeeV1AppGroupBalance {
   /** Output only. List of all wallets. Each individual wallet stores the account balance for a particular currency. */
   wallets?: Array<GoogleCloudApigeeV1AppGroupBalanceWallet>;
 }
 
-export const GoogleCloudApigeeV1AppGroupBalance: Schema.Schema<GoogleCloudApigeeV1AppGroupBalance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      wallets: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1AppGroupBalanceWallet),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1AppGroupBalance",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1AppGroupBalance>;
+export const GoogleCloudApigeeV1AppGroupBalance =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    wallets: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1AppGroupBalanceWallet),
+    ),
+  }).annotate({ identifier: "GoogleCloudApigeeV1AppGroupBalance" });
 
 export interface GoogleCloudApigeeV1DeveloperAppKey {
   /** List of attributes associated with the credential. */
@@ -8049,22 +6896,18 @@ export interface GoogleCloudApigeeV1DeveloperAppKey {
   scopes?: Array<string>;
 }
 
-export const GoogleCloudApigeeV1DeveloperAppKey: Schema.Schema<GoogleCloudApigeeV1DeveloperAppKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      attributes: Schema.optional(Schema.Array(GoogleCloudApigeeV1Attribute)),
-      expiresAt: Schema.optional(Schema.String),
-      expiresInSeconds: Schema.optional(Schema.String),
-      issuedAt: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-      consumerSecret: Schema.optional(Schema.String),
-      consumerKey: Schema.optional(Schema.String),
-      apiProducts: Schema.optional(Schema.Array(Schema.Unknown)),
-      scopes: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1DeveloperAppKey",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1DeveloperAppKey>;
+export const GoogleCloudApigeeV1DeveloperAppKey =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    attributes: Schema.optional(Schema.Array(GoogleCloudApigeeV1Attribute)),
+    expiresAt: Schema.optional(Schema.String),
+    expiresInSeconds: Schema.optional(Schema.String),
+    issuedAt: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+    consumerSecret: Schema.optional(Schema.String),
+    consumerKey: Schema.optional(Schema.String),
+    apiProducts: Schema.optional(Schema.Array(Schema.Unknown)),
+    scopes: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudApigeeV1DeveloperAppKey" });
 
 export interface GoogleCloudApigeeV1ReportInstanceStatusRequest {
   /** A unique ID for the instance which is guaranteed to be unique in case the user installs multiple hybrid runtimes with the same instance ID. */
@@ -8075,18 +6918,12 @@ export interface GoogleCloudApigeeV1ReportInstanceStatusRequest {
   resources?: Array<GoogleCloudApigeeV1ResourceStatus>;
 }
 
-export const GoogleCloudApigeeV1ReportInstanceStatusRequest: Schema.Schema<GoogleCloudApigeeV1ReportInstanceStatusRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      instanceUid: Schema.optional(Schema.String),
-      reportTime: Schema.optional(Schema.String),
-      resources: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1ResourceStatus),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ReportInstanceStatusRequest",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ReportInstanceStatusRequest>;
+export const GoogleCloudApigeeV1ReportInstanceStatusRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    instanceUid: Schema.optional(Schema.String),
+    reportTime: Schema.optional(Schema.String),
+    resources: Schema.optional(Schema.Array(GoogleCloudApigeeV1ResourceStatus)),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ReportInstanceStatusRequest" });
 
 export interface GoogleCloudApigeeV1Space {
   /** Output only. Create timestamp of the space. */
@@ -8099,17 +6936,13 @@ export interface GoogleCloudApigeeV1Space {
   displayName?: string;
 }
 
-export const GoogleCloudApigeeV1Space: Schema.Schema<GoogleCloudApigeeV1Space> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1Space",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1Space>;
+export const GoogleCloudApigeeV1Space =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1Space" });
 
 export interface GoogleCloudApigeeV1CreditDeveloperBalanceRequest {
   /** The amount of money to be credited. The wallet corresponding to the currency specified within `transaction_amount` will be updated. For example, if you specified `currency_code` within `transaction_amount` as "USD", then the amount would be added to the wallet which has the "USD" currency or if no such wallet exists, a new wallet will be created with the "USD" currency. */
@@ -8118,29 +6951,25 @@ export interface GoogleCloudApigeeV1CreditDeveloperBalanceRequest {
   transactionId?: string;
 }
 
-export const GoogleCloudApigeeV1CreditDeveloperBalanceRequest: Schema.Schema<GoogleCloudApigeeV1CreditDeveloperBalanceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      transactionAmount: Schema.optional(GoogleTypeMoney),
-      transactionId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1CreditDeveloperBalanceRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    transactionAmount: Schema.optional(GoogleTypeMoney),
+    transactionId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudApigeeV1CreditDeveloperBalanceRequest",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1CreditDeveloperBalanceRequest>;
+  });
 
 export interface GoogleCloudApigeeV1AdjustAppGroupBalanceRequest {
   /** Required. * A positive value of `adjustment` means that that the API provider wants to adjust the balance for an under-charged AppGroup i.e. the balance of the AppGroup will decrease. * A negative value of `adjustment` is not supported. Use credit balance API instead. */
   adjustment?: GoogleTypeMoney;
 }
 
-export const GoogleCloudApigeeV1AdjustAppGroupBalanceRequest: Schema.Schema<GoogleCloudApigeeV1AdjustAppGroupBalanceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      adjustment: Schema.optional(GoogleTypeMoney),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1AdjustAppGroupBalanceRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    adjustment: Schema.optional(GoogleTypeMoney),
+  }).annotate({
     identifier: "GoogleCloudApigeeV1AdjustAppGroupBalanceRequest",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1AdjustAppGroupBalanceRequest>;
+  });
 
 export interface GoogleLongrunningListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
@@ -8151,16 +6980,12 @@ export interface GoogleLongrunningListOperationsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleLongrunningListOperationsResponse: Schema.Schema<GoogleLongrunningListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleLongrunningListOperationsResponse",
-  }) as any as Schema.Schema<GoogleLongrunningListOperationsResponse>;
+export const GoogleLongrunningListOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleLongrunningListOperationsResponse" });
 
 export interface GoogleCloudApigeeV1ListSecurityProfilesResponse {
   /** List of security profiles in the organization. The profiles may be attached or unattached to any environment. This will return latest revision of each profile. */
@@ -8169,17 +6994,15 @@ export interface GoogleCloudApigeeV1ListSecurityProfilesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApigeeV1ListSecurityProfilesResponse: Schema.Schema<GoogleCloudApigeeV1ListSecurityProfilesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      securityProfiles: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1SecurityProfile),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1ListSecurityProfilesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    securityProfiles: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1SecurityProfile),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudApigeeV1ListSecurityProfilesResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ListSecurityProfilesResponse>;
+  });
 
 export interface GoogleCloudApigeeV1FlowHook {
   /** Output only. Where in the API call flow the flow hook is invoked. Must be one of `PreProxyFlowHook`, `PostProxyFlowHook`, `PreTargetFlowHook`, or `PostTargetFlowHook`. */
@@ -8192,17 +7015,13 @@ export interface GoogleCloudApigeeV1FlowHook {
   continueOnError?: boolean;
 }
 
-export const GoogleCloudApigeeV1FlowHook: Schema.Schema<GoogleCloudApigeeV1FlowHook> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      flowHookPoint: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      sharedFlow: Schema.optional(Schema.String),
-      continueOnError: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1FlowHook",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1FlowHook>;
+export const GoogleCloudApigeeV1FlowHook =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    flowHookPoint: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    sharedFlow: Schema.optional(Schema.String),
+    continueOnError: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudApigeeV1FlowHook" });
 
 export interface GoogleCloudApigeeV1ListSpacesResponse {
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -8211,15 +7030,11 @@ export interface GoogleCloudApigeeV1ListSpacesResponse {
   spaces?: Array<GoogleCloudApigeeV1Space>;
 }
 
-export const GoogleCloudApigeeV1ListSpacesResponse: Schema.Schema<GoogleCloudApigeeV1ListSpacesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      spaces: Schema.optional(Schema.Array(GoogleCloudApigeeV1Space)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ListSpacesResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ListSpacesResponse>;
+export const GoogleCloudApigeeV1ListSpacesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    spaces: Schema.optional(Schema.Array(GoogleCloudApigeeV1Space)),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ListSpacesResponse" });
 
 export interface GoogleCloudApigeeV1ListAppGroupAppsResponse {
   /** List of AppGroup apps and their credentials. */
@@ -8228,24 +7043,18 @@ export interface GoogleCloudApigeeV1ListAppGroupAppsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApigeeV1ListAppGroupAppsResponse: Schema.Schema<GoogleCloudApigeeV1ListAppGroupAppsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      appGroupApps: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1AppGroupApp),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ListAppGroupAppsResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ListAppGroupAppsResponse>;
+export const GoogleCloudApigeeV1ListAppGroupAppsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    appGroupApps: Schema.optional(Schema.Array(GoogleCloudApigeeV1AppGroupApp)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ListAppGroupAppsResponse" });
 
 export interface GoogleCloudApigeeV1ExpireAppGroupSubscriptionRequest {}
 
-export const GoogleCloudApigeeV1ExpireAppGroupSubscriptionRequest: Schema.Schema<GoogleCloudApigeeV1ExpireAppGroupSubscriptionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudApigeeV1ExpireAppGroupSubscriptionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudApigeeV1ExpireAppGroupSubscriptionRequest",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ExpireAppGroupSubscriptionRequest>;
+  });
 
 export interface GoogleCloudApigeeV1ListAppGroupSubscriptionsResponse {
   /** The list of subscriptions for an AppGroup. */
@@ -8254,17 +7063,15 @@ export interface GoogleCloudApigeeV1ListAppGroupSubscriptionsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudApigeeV1ListAppGroupSubscriptionsResponse: Schema.Schema<GoogleCloudApigeeV1ListAppGroupSubscriptionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      appGroupSubscriptions: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1AppGroupSubscription),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1ListAppGroupSubscriptionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    appGroupSubscriptions: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1AppGroupSubscription),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudApigeeV1ListAppGroupSubscriptionsResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ListAppGroupSubscriptionsResponse>;
+  });
 
 export interface GoogleCloudApigeeV1ListSecurityProfilesV2Response {
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -8273,30 +7080,24 @@ export interface GoogleCloudApigeeV1ListSecurityProfilesV2Response {
   securityProfilesV2?: Array<GoogleCloudApigeeV1SecurityProfileV2>;
 }
 
-export const GoogleCloudApigeeV1ListSecurityProfilesV2Response: Schema.Schema<GoogleCloudApigeeV1ListSecurityProfilesV2Response> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      securityProfilesV2: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1SecurityProfileV2),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1ListSecurityProfilesV2Response =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    securityProfilesV2: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1SecurityProfileV2),
+    ),
+  }).annotate({
     identifier: "GoogleCloudApigeeV1ListSecurityProfilesV2Response",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ListSecurityProfilesV2Response>;
+  });
 
 export interface GoogleCloudApigeeV1ListCustomReportsResponse {
   qualifier?: Array<GoogleCloudApigeeV1CustomReport>;
 }
 
-export const GoogleCloudApigeeV1ListCustomReportsResponse: Schema.Schema<GoogleCloudApigeeV1ListCustomReportsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      qualifier: Schema.optional(Schema.Array(GoogleCloudApigeeV1CustomReport)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudApigeeV1ListCustomReportsResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ListCustomReportsResponse>;
+export const GoogleCloudApigeeV1ListCustomReportsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    qualifier: Schema.optional(Schema.Array(GoogleCloudApigeeV1CustomReport)),
+  }).annotate({ identifier: "GoogleCloudApigeeV1ListCustomReportsResponse" });
 
 export interface GoogleCloudApigeeV1ListEnvironmentGroupsResponse {
   /** Page token that you can include in a ListEnvironmentGroups request to retrieve the next page. If omitted, no subsequent pages exist. */
@@ -8305,17 +7106,15 @@ export interface GoogleCloudApigeeV1ListEnvironmentGroupsResponse {
   environmentGroups?: Array<GoogleCloudApigeeV1EnvironmentGroup>;
 }
 
-export const GoogleCloudApigeeV1ListEnvironmentGroupsResponse: Schema.Schema<GoogleCloudApigeeV1ListEnvironmentGroupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      environmentGroups: Schema.optional(
-        Schema.Array(GoogleCloudApigeeV1EnvironmentGroup),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudApigeeV1ListEnvironmentGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    environmentGroups: Schema.optional(
+      Schema.Array(GoogleCloudApigeeV1EnvironmentGroup),
+    ),
+  }).annotate({
     identifier: "GoogleCloudApigeeV1ListEnvironmentGroupsResponse",
-  }) as any as Schema.Schema<GoogleCloudApigeeV1ListEnvironmentGroupsResponse>;
+  });
 
 // ==========================================================================
 // Operations

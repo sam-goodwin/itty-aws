@@ -37,15 +37,13 @@ export interface GoogleSecuritySafebrowsingV5FullHashFullHashDetail {
   >;
 }
 
-export const GoogleSecuritySafebrowsingV5FullHashFullHashDetail: Schema.Schema<GoogleSecuritySafebrowsingV5FullHashFullHashDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      threatType: Schema.optional(Schema.String),
-      attributes: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleSecuritySafebrowsingV5FullHashFullHashDetail =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    threatType: Schema.optional(Schema.String),
+    attributes: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleSecuritySafebrowsingV5FullHashFullHashDetail",
-  }) as any as Schema.Schema<GoogleSecuritySafebrowsingV5FullHashFullHashDetail>;
+  });
 
 export interface GoogleSecuritySafebrowsingV5FullHash {
   /** The matching full hash. This is the SHA256 hash. The length will be exactly 32 bytes. */
@@ -54,17 +52,13 @@ export interface GoogleSecuritySafebrowsingV5FullHash {
   fullHashDetails?: Array<GoogleSecuritySafebrowsingV5FullHashFullHashDetail>;
 }
 
-export const GoogleSecuritySafebrowsingV5FullHash: Schema.Schema<GoogleSecuritySafebrowsingV5FullHash> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fullHash: Schema.optional(Schema.String),
-      fullHashDetails: Schema.optional(
-        Schema.Array(GoogleSecuritySafebrowsingV5FullHashFullHashDetail),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleSecuritySafebrowsingV5FullHash",
-  }) as any as Schema.Schema<GoogleSecuritySafebrowsingV5FullHash>;
+export const GoogleSecuritySafebrowsingV5FullHash =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fullHash: Schema.optional(Schema.String),
+    fullHashDetails: Schema.optional(
+      Schema.Array(GoogleSecuritySafebrowsingV5FullHashFullHashDetail),
+    ),
+  }).annotate({ identifier: "GoogleSecuritySafebrowsingV5FullHash" });
 
 export interface GoogleSecuritySafebrowsingV5SearchHashesResponse {
   /** Unordered list. The unordered list of full hashes found. */
@@ -73,17 +67,15 @@ export interface GoogleSecuritySafebrowsingV5SearchHashesResponse {
   cacheDuration?: string;
 }
 
-export const GoogleSecuritySafebrowsingV5SearchHashesResponse: Schema.Schema<GoogleSecuritySafebrowsingV5SearchHashesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fullHashes: Schema.optional(
-        Schema.Array(GoogleSecuritySafebrowsingV5FullHash),
-      ),
-      cacheDuration: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleSecuritySafebrowsingV5SearchHashesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fullHashes: Schema.optional(
+      Schema.Array(GoogleSecuritySafebrowsingV5FullHash),
+    ),
+    cacheDuration: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleSecuritySafebrowsingV5SearchHashesResponse",
-  }) as any as Schema.Schema<GoogleSecuritySafebrowsingV5SearchHashesResponse>;
+  });
 
 export interface GoogleSecuritySafebrowsingV5ThreatUrl {
   /** The requested URL that was matched by one or more threats. */
@@ -99,15 +91,11 @@ export interface GoogleSecuritySafebrowsingV5ThreatUrl {
   >;
 }
 
-export const GoogleSecuritySafebrowsingV5ThreatUrl: Schema.Schema<GoogleSecuritySafebrowsingV5ThreatUrl> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      url: Schema.optional(Schema.String),
-      threatTypes: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleSecuritySafebrowsingV5ThreatUrl",
-  }) as any as Schema.Schema<GoogleSecuritySafebrowsingV5ThreatUrl>;
+export const GoogleSecuritySafebrowsingV5ThreatUrl =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    url: Schema.optional(Schema.String),
+    threatTypes: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleSecuritySafebrowsingV5ThreatUrl" });
 
 export interface GoogleSecuritySafebrowsingV5SearchUrlsResponse {
   /** Unordered list. The unordered list of threat matches found. Each entry contains a URL and the threat types that were found matching that URL. The list size can be greater than the number of URLs in the request as the all expressions of the URL would've been considered. */
@@ -116,17 +104,13 @@ export interface GoogleSecuritySafebrowsingV5SearchUrlsResponse {
   cacheDuration?: string;
 }
 
-export const GoogleSecuritySafebrowsingV5SearchUrlsResponse: Schema.Schema<GoogleSecuritySafebrowsingV5SearchUrlsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      threats: Schema.optional(
-        Schema.Array(GoogleSecuritySafebrowsingV5ThreatUrl),
-      ),
-      cacheDuration: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleSecuritySafebrowsingV5SearchUrlsResponse",
-  }) as any as Schema.Schema<GoogleSecuritySafebrowsingV5SearchUrlsResponse>;
+export const GoogleSecuritySafebrowsingV5SearchUrlsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    threats: Schema.optional(
+      Schema.Array(GoogleSecuritySafebrowsingV5ThreatUrl),
+    ),
+    cacheDuration: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleSecuritySafebrowsingV5SearchUrlsResponse" });
 
 export interface GoogleSecuritySafebrowsingV5RiceDeltaEncoded32Bit {
   /** The first entry in the encoded data (hashes or indices), or, if only a single hash prefix or index was encoded, that entry's value. If the field is empty, the entry is zero. */
@@ -139,17 +123,15 @@ export interface GoogleSecuritySafebrowsingV5RiceDeltaEncoded32Bit {
   encodedData?: string;
 }
 
-export const GoogleSecuritySafebrowsingV5RiceDeltaEncoded32Bit: Schema.Schema<GoogleSecuritySafebrowsingV5RiceDeltaEncoded32Bit> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      firstValue: Schema.optional(Schema.Number),
-      riceParameter: Schema.optional(Schema.Number),
-      entriesCount: Schema.optional(Schema.Number),
-      encodedData: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleSecuritySafebrowsingV5RiceDeltaEncoded32Bit =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    firstValue: Schema.optional(Schema.Number),
+    riceParameter: Schema.optional(Schema.Number),
+    entriesCount: Schema.optional(Schema.Number),
+    encodedData: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleSecuritySafebrowsingV5RiceDeltaEncoded32Bit",
-  }) as any as Schema.Schema<GoogleSecuritySafebrowsingV5RiceDeltaEncoded32Bit>;
+  });
 
 export interface GoogleSecuritySafebrowsingV5RiceDeltaEncoded64Bit {
   /** The first entry in the encoded data (hashes), or, if only a single hash prefix was encoded, that entry's value. If the field is empty, the entry is zero. */
@@ -162,17 +144,15 @@ export interface GoogleSecuritySafebrowsingV5RiceDeltaEncoded64Bit {
   encodedData?: string;
 }
 
-export const GoogleSecuritySafebrowsingV5RiceDeltaEncoded64Bit: Schema.Schema<GoogleSecuritySafebrowsingV5RiceDeltaEncoded64Bit> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      firstValue: Schema.optional(Schema.String),
-      riceParameter: Schema.optional(Schema.Number),
-      entriesCount: Schema.optional(Schema.Number),
-      encodedData: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleSecuritySafebrowsingV5RiceDeltaEncoded64Bit =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    firstValue: Schema.optional(Schema.String),
+    riceParameter: Schema.optional(Schema.Number),
+    entriesCount: Schema.optional(Schema.Number),
+    encodedData: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleSecuritySafebrowsingV5RiceDeltaEncoded64Bit",
-  }) as any as Schema.Schema<GoogleSecuritySafebrowsingV5RiceDeltaEncoded64Bit>;
+  });
 
 export interface GoogleSecuritySafebrowsingV5RiceDeltaEncoded128Bit {
   /** The upper 64 bits of the first entry in the encoded data (hashes). If the field is empty, the upper 64 bits are all zero. */
@@ -187,18 +167,16 @@ export interface GoogleSecuritySafebrowsingV5RiceDeltaEncoded128Bit {
   encodedData?: string;
 }
 
-export const GoogleSecuritySafebrowsingV5RiceDeltaEncoded128Bit: Schema.Schema<GoogleSecuritySafebrowsingV5RiceDeltaEncoded128Bit> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      firstValueHi: Schema.optional(Schema.String),
-      firstValueLo: Schema.optional(Schema.String),
-      riceParameter: Schema.optional(Schema.Number),
-      entriesCount: Schema.optional(Schema.Number),
-      encodedData: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleSecuritySafebrowsingV5RiceDeltaEncoded128Bit =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    firstValueHi: Schema.optional(Schema.String),
+    firstValueLo: Schema.optional(Schema.String),
+    riceParameter: Schema.optional(Schema.Number),
+    entriesCount: Schema.optional(Schema.Number),
+    encodedData: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleSecuritySafebrowsingV5RiceDeltaEncoded128Bit",
-  }) as any as Schema.Schema<GoogleSecuritySafebrowsingV5RiceDeltaEncoded128Bit>;
+  });
 
 export interface GoogleSecuritySafebrowsingV5RiceDeltaEncoded256Bit {
   /** The first 64 bits of the first entry in the encoded data (hashes). If the field is empty, the first 64 bits are all zero. */
@@ -217,20 +195,18 @@ export interface GoogleSecuritySafebrowsingV5RiceDeltaEncoded256Bit {
   encodedData?: string;
 }
 
-export const GoogleSecuritySafebrowsingV5RiceDeltaEncoded256Bit: Schema.Schema<GoogleSecuritySafebrowsingV5RiceDeltaEncoded256Bit> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      firstValueFirstPart: Schema.optional(Schema.String),
-      firstValueSecondPart: Schema.optional(Schema.String),
-      firstValueThirdPart: Schema.optional(Schema.String),
-      firstValueFourthPart: Schema.optional(Schema.String),
-      riceParameter: Schema.optional(Schema.Number),
-      entriesCount: Schema.optional(Schema.Number),
-      encodedData: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleSecuritySafebrowsingV5RiceDeltaEncoded256Bit =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    firstValueFirstPart: Schema.optional(Schema.String),
+    firstValueSecondPart: Schema.optional(Schema.String),
+    firstValueThirdPart: Schema.optional(Schema.String),
+    firstValueFourthPart: Schema.optional(Schema.String),
+    riceParameter: Schema.optional(Schema.Number),
+    entriesCount: Schema.optional(Schema.Number),
+    encodedData: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleSecuritySafebrowsingV5RiceDeltaEncoded256Bit",
-  }) as any as Schema.Schema<GoogleSecuritySafebrowsingV5RiceDeltaEncoded256Bit>;
+  });
 
 export interface GoogleSecuritySafebrowsingV5HashListMetadata {
   /** Unordered list. If not empty, this specifies that the hash list is a kind of threat list, and this enumerates the kind of threats associated with hashes or hash prefixes in this hash list. May be empty if the entry does not represent a threat, i.e. in the case that it represents a likely safe type. */
@@ -262,17 +238,13 @@ export interface GoogleSecuritySafebrowsingV5HashListMetadata {
     | (string & {});
 }
 
-export const GoogleSecuritySafebrowsingV5HashListMetadata: Schema.Schema<GoogleSecuritySafebrowsingV5HashListMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      threatTypes: Schema.optional(Schema.Array(Schema.String)),
-      likelySafeTypes: Schema.optional(Schema.Array(Schema.String)),
-      description: Schema.optional(Schema.String),
-      hashLength: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleSecuritySafebrowsingV5HashListMetadata",
-  }) as any as Schema.Schema<GoogleSecuritySafebrowsingV5HashListMetadata>;
+export const GoogleSecuritySafebrowsingV5HashListMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    threatTypes: Schema.optional(Schema.Array(Schema.String)),
+    likelySafeTypes: Schema.optional(Schema.Array(Schema.String)),
+    description: Schema.optional(Schema.String),
+    hashLength: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleSecuritySafebrowsingV5HashListMetadata" });
 
 export interface GoogleSecuritySafebrowsingV5HashList {
   /** The 4-byte additions. */
@@ -299,34 +271,30 @@ export interface GoogleSecuritySafebrowsingV5HashList {
   metadata?: GoogleSecuritySafebrowsingV5HashListMetadata;
 }
 
-export const GoogleSecuritySafebrowsingV5HashList: Schema.Schema<GoogleSecuritySafebrowsingV5HashList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      additionsFourBytes: Schema.optional(
-        GoogleSecuritySafebrowsingV5RiceDeltaEncoded32Bit,
-      ),
-      additionsEightBytes: Schema.optional(
-        GoogleSecuritySafebrowsingV5RiceDeltaEncoded64Bit,
-      ),
-      additionsSixteenBytes: Schema.optional(
-        GoogleSecuritySafebrowsingV5RiceDeltaEncoded128Bit,
-      ),
-      additionsThirtyTwoBytes: Schema.optional(
-        GoogleSecuritySafebrowsingV5RiceDeltaEncoded256Bit,
-      ),
-      name: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-      partialUpdate: Schema.optional(Schema.Boolean),
-      compressedRemovals: Schema.optional(
-        GoogleSecuritySafebrowsingV5RiceDeltaEncoded32Bit,
-      ),
-      minimumWaitDuration: Schema.optional(Schema.String),
-      sha256Checksum: Schema.optional(Schema.String),
-      metadata: Schema.optional(GoogleSecuritySafebrowsingV5HashListMetadata),
-    }),
-  ).annotate({
-    identifier: "GoogleSecuritySafebrowsingV5HashList",
-  }) as any as Schema.Schema<GoogleSecuritySafebrowsingV5HashList>;
+export const GoogleSecuritySafebrowsingV5HashList =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    additionsFourBytes: Schema.optional(
+      GoogleSecuritySafebrowsingV5RiceDeltaEncoded32Bit,
+    ),
+    additionsEightBytes: Schema.optional(
+      GoogleSecuritySafebrowsingV5RiceDeltaEncoded64Bit,
+    ),
+    additionsSixteenBytes: Schema.optional(
+      GoogleSecuritySafebrowsingV5RiceDeltaEncoded128Bit,
+    ),
+    additionsThirtyTwoBytes: Schema.optional(
+      GoogleSecuritySafebrowsingV5RiceDeltaEncoded256Bit,
+    ),
+    name: Schema.optional(Schema.String),
+    version: Schema.optional(Schema.String),
+    partialUpdate: Schema.optional(Schema.Boolean),
+    compressedRemovals: Schema.optional(
+      GoogleSecuritySafebrowsingV5RiceDeltaEncoded32Bit,
+    ),
+    minimumWaitDuration: Schema.optional(Schema.String),
+    sha256Checksum: Schema.optional(Schema.String),
+    metadata: Schema.optional(GoogleSecuritySafebrowsingV5HashListMetadata),
+  }).annotate({ identifier: "GoogleSecuritySafebrowsingV5HashList" });
 
 export interface GoogleSecuritySafebrowsingV5ListHashListsResponse {
   /** The hash lists in an arbitrary order. Only metadata about the hash lists will be included, not the contents. */
@@ -335,33 +303,29 @@ export interface GoogleSecuritySafebrowsingV5ListHashListsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleSecuritySafebrowsingV5ListHashListsResponse: Schema.Schema<GoogleSecuritySafebrowsingV5ListHashListsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hashLists: Schema.optional(
-        Schema.Array(GoogleSecuritySafebrowsingV5HashList),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleSecuritySafebrowsingV5ListHashListsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    hashLists: Schema.optional(
+      Schema.Array(GoogleSecuritySafebrowsingV5HashList),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleSecuritySafebrowsingV5ListHashListsResponse",
-  }) as any as Schema.Schema<GoogleSecuritySafebrowsingV5ListHashListsResponse>;
+  });
 
 export interface GoogleSecuritySafebrowsingV5BatchGetHashListsResponse {
   /** The hash lists in the same order given in the request. */
   hashLists?: Array<GoogleSecuritySafebrowsingV5HashList>;
 }
 
-export const GoogleSecuritySafebrowsingV5BatchGetHashListsResponse: Schema.Schema<GoogleSecuritySafebrowsingV5BatchGetHashListsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hashLists: Schema.optional(
-        Schema.Array(GoogleSecuritySafebrowsingV5HashList),
-      ),
-    }),
-  ).annotate({
+export const GoogleSecuritySafebrowsingV5BatchGetHashListsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    hashLists: Schema.optional(
+      Schema.Array(GoogleSecuritySafebrowsingV5HashList),
+    ),
+  }).annotate({
     identifier: "GoogleSecuritySafebrowsingV5BatchGetHashListsResponse",
-  }) as any as Schema.Schema<GoogleSecuritySafebrowsingV5BatchGetHashListsResponse>;
+  });
 
 // ==========================================================================
 // Operations

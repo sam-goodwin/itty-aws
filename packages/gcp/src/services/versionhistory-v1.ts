@@ -40,13 +40,10 @@ export interface Channel {
     | (string & {});
 }
 
-export const Channel: Schema.Schema<Channel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      channelType: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Channel" }) as any as Schema.Schema<Channel>;
+export const Channel = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  channelType: Schema.optional(Schema.String),
+}).annotate({ identifier: "Channel" });
 
 export interface ListChannelsResponse {
   /** The list of channels. */
@@ -55,15 +52,10 @@ export interface ListChannelsResponse {
   nextPageToken?: string;
 }
 
-export const ListChannelsResponse: Schema.Schema<ListChannelsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      channels: Schema.optional(Schema.Array(Channel)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListChannelsResponse",
-  }) as any as Schema.Schema<ListChannelsResponse>;
+export const ListChannelsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  channels: Schema.optional(Schema.Array(Channel)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListChannelsResponse" });
 
 export interface RolloutData {
   /** The name of the rollout. */
@@ -72,15 +64,10 @@ export interface RolloutData {
   tag?: Array<string>;
 }
 
-export const RolloutData: Schema.Schema<RolloutData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rolloutName: Schema.optional(Schema.String),
-      tag: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "RolloutData",
-  }) as any as Schema.Schema<RolloutData>;
+export const RolloutData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  rolloutName: Schema.optional(Schema.String),
+  tag: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "RolloutData" });
 
 export interface Interval {
   /** Optional. Inclusive start of the interval. If specified, a Timestamp matching this interval will have to be the same or after the start. */
@@ -89,13 +76,10 @@ export interface Interval {
   endTime?: string;
 }
 
-export const Interval: Schema.Schema<Interval> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Interval" }) as any as Schema.Schema<Interval>;
+export const Interval = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Interval" });
 
 export interface Release {
   /** Rollout fraction. This fraction indicates the fraction of people that should receive this version in this release. If the fraction is not specified in ReleaseManager, the API will assume fraction is 1. */
@@ -114,18 +98,15 @@ export interface Release {
   fractionGroup?: string;
 }
 
-export const Release: Schema.Schema<Release> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fraction: Schema.optional(Schema.Number),
-      rolloutData: Schema.optional(Schema.Array(RolloutData)),
-      serving: Schema.optional(Interval),
-      pinnable: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-      fractionGroup: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Release" }) as any as Schema.Schema<Release>;
+export const Release = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fraction: Schema.optional(Schema.Number),
+  rolloutData: Schema.optional(Schema.Array(RolloutData)),
+  serving: Schema.optional(Interval),
+  pinnable: Schema.optional(Schema.Boolean),
+  name: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+  fractionGroup: Schema.optional(Schema.String),
+}).annotate({ identifier: "Release" });
 
 export interface ListReleasesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -134,15 +115,10 @@ export interface ListReleasesResponse {
   releases?: Array<Release>;
 }
 
-export const ListReleasesResponse: Schema.Schema<ListReleasesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      releases: Schema.optional(Schema.Array(Release)),
-    }),
-  ).annotate({
-    identifier: "ListReleasesResponse",
-  }) as any as Schema.Schema<ListReleasesResponse>;
+export const ListReleasesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  releases: Schema.optional(Schema.Array(Release)),
+}).annotate({ identifier: "ListReleasesResponse" });
 
 export interface Platform {
   /** Platform name. Format is "{product}/platforms/{platform}" */
@@ -168,13 +144,10 @@ export interface Platform {
     | (string & {});
 }
 
-export const Platform: Schema.Schema<Platform> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      platformType: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Platform" }) as any as Schema.Schema<Platform>;
+export const Platform = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  platformType: Schema.optional(Schema.String),
+}).annotate({ identifier: "Platform" });
 
 export interface Version {
   /** Version name. Format is "{product}/platforms/{platform}/channels/{channel}/versions/{version}" e.g. "chrome/platforms/win/channels/beta/versions/84.0.4147.38" */
@@ -183,13 +156,10 @@ export interface Version {
   version?: string;
 }
 
-export const Version: Schema.Schema<Version> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Version" }) as any as Schema.Schema<Version>;
+export const Version = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+}).annotate({ identifier: "Version" });
 
 export interface ListPlatformsResponse {
   /** The list of platforms. */
@@ -198,15 +168,10 @@ export interface ListPlatformsResponse {
   nextPageToken?: string;
 }
 
-export const ListPlatformsResponse: Schema.Schema<ListPlatformsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      platforms: Schema.optional(Schema.Array(Platform)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListPlatformsResponse",
-  }) as any as Schema.Schema<ListPlatformsResponse>;
+export const ListPlatformsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  platforms: Schema.optional(Schema.Array(Platform)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListPlatformsResponse" });
 
 export interface ListVersionsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -215,15 +180,10 @@ export interface ListVersionsResponse {
   versions?: Array<Version>;
 }
 
-export const ListVersionsResponse: Schema.Schema<ListVersionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      versions: Schema.optional(Schema.Array(Version)),
-    }),
-  ).annotate({
-    identifier: "ListVersionsResponse",
-  }) as any as Schema.Schema<ListVersionsResponse>;
+export const ListVersionsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  versions: Schema.optional(Schema.Array(Version)),
+}).annotate({ identifier: "ListVersionsResponse" });
 
 // ==========================================================================
 // Operations

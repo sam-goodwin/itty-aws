@@ -33,31 +33,23 @@ export interface SignSshPublicKeyRequest {
   serviceAccount?: string;
 }
 
-export const SignSshPublicKeyRequest: Schema.Schema<SignSshPublicKeyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      computeInstance: Schema.optional(Schema.String),
-      appEngineInstance: Schema.optional(Schema.String),
-      sshPublicKey: Schema.optional(Schema.String),
-      serviceAccount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SignSshPublicKeyRequest",
-  }) as any as Schema.Schema<SignSshPublicKeyRequest>;
+export const SignSshPublicKeyRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    computeInstance: Schema.optional(Schema.String),
+    appEngineInstance: Schema.optional(Schema.String),
+    sshPublicKey: Schema.optional(Schema.String),
+    serviceAccount: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SignSshPublicKeyRequest" });
 
 export interface SignSshPublicKeyResponse {
   /** The signed SSH public key to use in the SSH handshake. */
   signedSshPublicKey?: string;
 }
 
-export const SignSshPublicKeyResponse: Schema.Schema<SignSshPublicKeyResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      signedSshPublicKey: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SignSshPublicKeyResponse",
-  }) as any as Schema.Schema<SignSshPublicKeyResponse>;
+export const SignSshPublicKeyResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    signedSshPublicKey: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SignSshPublicKeyResponse" });
 
 export interface SshPublicKey {
   /** Required. Public key text in SSH format, defined by [RFC4253](https://www.ietf.org/rfc/rfc4253.txt) section 6.6. */
@@ -70,24 +62,18 @@ export interface SshPublicKey {
   name?: string;
 }
 
-export const SshPublicKey: Schema.Schema<SshPublicKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      key: Schema.optional(Schema.String),
-      expirationTimeUsec: Schema.optional(Schema.String),
-      fingerprint: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SshPublicKey",
-  }) as any as Schema.Schema<SshPublicKey>;
+export const SshPublicKey = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  key: Schema.optional(Schema.String),
+  expirationTimeUsec: Schema.optional(Schema.String),
+  fingerprint: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "SshPublicKey" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface PosixAccount {
   /** Only one POSIX account can be marked as primary. */
@@ -118,24 +104,19 @@ export interface PosixAccount {
   name?: string;
 }
 
-export const PosixAccount: Schema.Schema<PosixAccount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      primary: Schema.optional(Schema.Boolean),
-      username: Schema.optional(Schema.String),
-      uid: Schema.optional(Schema.String),
-      gid: Schema.optional(Schema.String),
-      homeDirectory: Schema.optional(Schema.String),
-      shell: Schema.optional(Schema.String),
-      gecos: Schema.optional(Schema.String),
-      systemId: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-      operatingSystemType: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PosixAccount",
-  }) as any as Schema.Schema<PosixAccount>;
+export const PosixAccount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  primary: Schema.optional(Schema.Boolean),
+  username: Schema.optional(Schema.String),
+  uid: Schema.optional(Schema.String),
+  gid: Schema.optional(Schema.String),
+  homeDirectory: Schema.optional(Schema.String),
+  shell: Schema.optional(Schema.String),
+  gecos: Schema.optional(Schema.String),
+  systemId: Schema.optional(Schema.String),
+  accountId: Schema.optional(Schema.String),
+  operatingSystemType: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "PosixAccount" });
 
 export interface LoginProfile {
   /** Required. A unique user ID. */
@@ -146,18 +127,11 @@ export interface LoginProfile {
   sshPublicKeys?: Record<string, SshPublicKey>;
 }
 
-export const LoginProfile: Schema.Schema<LoginProfile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      posixAccounts: Schema.optional(Schema.Array(PosixAccount)),
-      sshPublicKeys: Schema.optional(
-        Schema.Record(Schema.String, SshPublicKey),
-      ),
-    }),
-  ).annotate({
-    identifier: "LoginProfile",
-  }) as any as Schema.Schema<LoginProfile>;
+export const LoginProfile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  posixAccounts: Schema.optional(Schema.Array(PosixAccount)),
+  sshPublicKeys: Schema.optional(Schema.Record(Schema.String, SshPublicKey)),
+}).annotate({ identifier: "LoginProfile" });
 
 export interface ImportSshPublicKeyResponse {
   /** The login profile information for the user. */
@@ -166,29 +140,21 @@ export interface ImportSshPublicKeyResponse {
   details?: string;
 }
 
-export const ImportSshPublicKeyResponse: Schema.Schema<ImportSshPublicKeyResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      loginProfile: Schema.optional(LoginProfile),
-      details: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ImportSshPublicKeyResponse",
-  }) as any as Schema.Schema<ImportSshPublicKeyResponse>;
+export const ImportSshPublicKeyResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    loginProfile: Schema.optional(LoginProfile),
+    details: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ImportSshPublicKeyResponse" });
 
 export interface ProvisionPosixAccountRequest {
   /** Optional. The regions to wait for a POSIX account to be written to before returning a response. If unspecified, defaults to all regions. Regions are listed at https://cloud.google.com/about/locations#region. */
   regions?: Array<string>;
 }
 
-export const ProvisionPosixAccountRequest: Schema.Schema<ProvisionPosixAccountRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      regions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ProvisionPosixAccountRequest",
-  }) as any as Schema.Schema<ProvisionPosixAccountRequest>;
+export const ProvisionPosixAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    regions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ProvisionPosixAccountRequest" });
 
 // ==========================================================================
 // Operations

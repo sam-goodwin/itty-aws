@@ -45,19 +45,16 @@ export interface Folder {
     | (string & {});
 }
 
-export const Folder: Schema.Schema<Folder> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      managementProject: Schema.optional(Schema.String),
-      configuredCapabilities: Schema.optional(Schema.Array(Schema.String)),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      parent: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      lifecycleState: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Folder" }) as any as Schema.Schema<Folder>;
+export const Folder = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  managementProject: Schema.optional(Schema.String),
+  configuredCapabilities: Schema.optional(Schema.Array(Schema.String)),
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  parent: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  lifecycleState: Schema.optional(Schema.String),
+}).annotate({ identifier: "Folder" });
 
 export interface SearchFoldersResponse {
   /** A possibly paginated folder search results. the specified parent resource. */
@@ -66,29 +63,23 @@ export interface SearchFoldersResponse {
   nextPageToken?: string;
 }
 
-export const SearchFoldersResponse: Schema.Schema<SearchFoldersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      folders: Schema.optional(Schema.Array(Folder)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SearchFoldersResponse",
-  }) as any as Schema.Schema<SearchFoldersResponse>;
+export const SearchFoldersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  folders: Schema.optional(Schema.Array(Folder)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "SearchFoldersResponse" });
 
 export interface UndeleteFolderMetadata {}
 
-export const UndeleteFolderMetadata: Schema.Schema<UndeleteFolderMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "UndeleteFolderMetadata",
-  }) as any as Schema.Schema<UndeleteFolderMetadata>;
+export const UndeleteFolderMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "UndeleteFolderMetadata" });
 
 export interface DeleteOrganizationMetadata {}
 
-export const DeleteOrganizationMetadata: Schema.Schema<DeleteOrganizationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const DeleteOrganizationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeleteOrganizationMetadata",
-  }) as any as Schema.Schema<DeleteOrganizationMetadata>;
+  });
 
 export interface FolderOperationError {
   /** The type of operation error experienced. */
@@ -107,70 +98,51 @@ export interface FolderOperationError {
     | (string & {});
 }
 
-export const FolderOperationError: Schema.Schema<FolderOperationError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errorMessageId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FolderOperationError",
-  }) as any as Schema.Schema<FolderOperationError>;
+export const FolderOperationError = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  errorMessageId: Schema.optional(Schema.String),
+}).annotate({ identifier: "FolderOperationError" });
 
 export interface GetPolicyOptions {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   requestedPolicyVersion?: number;
 }
 
-export const GetPolicyOptions: Schema.Schema<GetPolicyOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestedPolicyVersion: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GetPolicyOptions",
-  }) as any as Schema.Schema<GetPolicyOptions>;
+export const GetPolicyOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  requestedPolicyVersion: Schema.optional(Schema.Number),
+}).annotate({ identifier: "GetPolicyOptions" });
 
 export interface GetIamPolicyRequest {
   /** OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`. */
   options?: GetPolicyOptions;
 }
 
-export const GetIamPolicyRequest: Schema.Schema<GetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      options: Schema.optional(GetPolicyOptions),
-    }),
-  ).annotate({
-    identifier: "GetIamPolicyRequest",
-  }) as any as Schema.Schema<GetIamPolicyRequest>;
+export const GetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  options: Schema.optional(GetPolicyOptions),
+}).annotate({ identifier: "GetIamPolicyRequest" });
 
 export interface UpdateProjectMetadata {}
 
-export const UpdateProjectMetadata: Schema.Schema<UpdateProjectMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "UpdateProjectMetadata",
-  }) as any as Schema.Schema<UpdateProjectMetadata>;
+export const UpdateProjectMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "UpdateProjectMetadata" });
 
 export interface UpdateTagKeyMetadata {}
 
-export const UpdateTagKeyMetadata: Schema.Schema<UpdateTagKeyMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "UpdateTagKeyMetadata",
-  }) as any as Schema.Schema<UpdateTagKeyMetadata>;
+export const UpdateTagKeyMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "UpdateTagKeyMetadata" });
 
 export interface CreateTagKeyMetadata {}
 
-export const CreateTagKeyMetadata: Schema.Schema<CreateTagKeyMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CreateTagKeyMetadata",
-  }) as any as Schema.Schema<CreateTagKeyMetadata>;
+export const CreateTagKeyMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CreateTagKeyMetadata" });
 
 export interface CreateTagValueMetadata {}
 
-export const CreateTagValueMetadata: Schema.Schema<CreateTagValueMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CreateTagValueMetadata",
-  }) as any as Schema.Schema<CreateTagValueMetadata>;
+export const CreateTagValueMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CreateTagValueMetadata" });
 
 export interface CreateFolderMetadata {
   /** The display name of the folder. */
@@ -179,22 +151,17 @@ export interface CreateFolderMetadata {
   parent?: string;
 }
 
-export const CreateFolderMetadata: Schema.Schema<CreateFolderMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      parent: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreateFolderMetadata",
-  }) as any as Schema.Schema<CreateFolderMetadata>;
+export const CreateFolderMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+  parent: Schema.optional(Schema.String),
+}).annotate({ identifier: "CreateFolderMetadata" });
 
 export interface DeleteTagBindingMetadata {}
 
-export const DeleteTagBindingMetadata: Schema.Schema<DeleteTagBindingMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const DeleteTagBindingMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeleteTagBindingMetadata",
-  }) as any as Schema.Schema<DeleteTagBindingMetadata>;
+  });
 
 export interface Expr {
   /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
@@ -207,15 +174,12 @@ export interface Expr {
   description?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      location: Schema.optional(Schema.String),
-      expression: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Expr" }) as any as Schema.Schema<Expr>;
+export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  location: Schema.optional(Schema.String),
+  expression: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "Expr" });
 
 export interface Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -226,21 +190,17 @@ export interface Binding {
   members?: Array<string>;
 }
 
-export const Binding: Schema.Schema<Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      condition: Schema.optional(Expr),
-      role: Schema.optional(Schema.String),
-      members: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "Binding" }) as any as Schema.Schema<Binding>;
+export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  condition: Schema.optional(Expr),
+  role: Schema.optional(Schema.String),
+  members: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Binding" });
 
 export interface DeleteProjectMetadata {}
 
-export const DeleteProjectMetadata: Schema.Schema<DeleteProjectMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "DeleteProjectMetadata",
-  }) as any as Schema.Schema<DeleteProjectMetadata>;
+export const DeleteProjectMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "DeleteProjectMetadata" });
 
 export interface FolderOperation {
   /** The resource name of the folder or organization we are either creating the folder under or moving the folder to. */
@@ -257,24 +217,19 @@ export interface FolderOperation {
     | (string & {});
 }
 
-export const FolderOperation: Schema.Schema<FolderOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      destinationParent: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      sourceParent: Schema.optional(Schema.String),
-      operationType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FolderOperation",
-  }) as any as Schema.Schema<FolderOperation>;
+export const FolderOperation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  destinationParent: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  sourceParent: Schema.optional(Schema.String),
+  operationType: Schema.optional(Schema.String),
+}).annotate({ identifier: "FolderOperation" });
 
 export interface UndeleteProjectMetadata {}
 
-export const UndeleteProjectMetadata: Schema.Schema<UndeleteProjectMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const UndeleteProjectMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UndeleteProjectMetadata",
-  }) as any as Schema.Schema<UndeleteProjectMetadata>;
+  });
 
 export interface ProjectCreationStatus {
   /** True if the project can be retrieved using GetProject. No other operations on the project are guaranteed to work until the project creation is complete. */
@@ -285,16 +240,11 @@ export interface ProjectCreationStatus {
   createTime?: string;
 }
 
-export const ProjectCreationStatus: Schema.Schema<ProjectCreationStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gettable: Schema.optional(Schema.Boolean),
-      ready: Schema.optional(Schema.Boolean),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProjectCreationStatus",
-  }) as any as Schema.Schema<ProjectCreationStatus>;
+export const ProjectCreationStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gettable: Schema.optional(Schema.Boolean),
+  ready: Schema.optional(Schema.Boolean),
+  createTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "ProjectCreationStatus" });
 
 export interface CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation {
   /** The resource name of the folder or organization we are either creating the folder under or moving the folder to. */
@@ -311,25 +261,22 @@ export interface CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOper
     | (string & {});
 }
 
-export const CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation: Schema.Schema<CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      destinationParent: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      sourceParent: Schema.optional(Schema.String),
-      operationType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    destinationParent: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    sourceParent: Schema.optional(Schema.String),
+    operationType: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation",
-  }) as any as Schema.Schema<CloudresourcemanagerGoogleCloudResourcemanagerV2beta1FolderOperation>;
+  });
 
 export interface DeleteTagValueMetadata {}
 
-export const DeleteTagValueMetadata: Schema.Schema<DeleteTagValueMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "DeleteTagValueMetadata",
-  }) as any as Schema.Schema<DeleteTagValueMetadata>;
+export const DeleteTagValueMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "DeleteTagValueMetadata" });
 
 export interface ListFoldersResponse {
   /** A possibly paginated list of Folders that are direct descendants of the specified parent resource. */
@@ -338,36 +285,26 @@ export interface ListFoldersResponse {
   nextPageToken?: string;
 }
 
-export const ListFoldersResponse: Schema.Schema<ListFoldersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      folders: Schema.optional(Schema.Array(Folder)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListFoldersResponse",
-  }) as any as Schema.Schema<ListFoldersResponse>;
+export const ListFoldersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  folders: Schema.optional(Schema.Array(Folder)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListFoldersResponse" });
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsRequest",
-  }) as any as Schema.Schema<TestIamPermissionsRequest>;
+export const TestIamPermissionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsRequest" });
 
 export interface MoveProjectMetadata {}
 
-export const MoveProjectMetadata: Schema.Schema<MoveProjectMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "MoveProjectMetadata",
-  }) as any as Schema.Schema<MoveProjectMetadata>;
+export const MoveProjectMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "MoveProjectMetadata" });
 
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -378,37 +315,28 @@ export interface Status {
   message?: string;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      message: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  message: Schema.optional(Schema.String),
+}).annotate({ identifier: "Status" });
 
 export interface DeleteTagKeyMetadata {}
 
-export const DeleteTagKeyMetadata: Schema.Schema<DeleteTagKeyMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "DeleteTagKeyMetadata",
-  }) as any as Schema.Schema<DeleteTagKeyMetadata>;
+export const DeleteTagKeyMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "DeleteTagKeyMetadata" });
 
 export interface MoveFolderRequest {
   /** Required. The resource name of the Folder or Organization to reparent the folder under. Must be of the form `folders/{folder_id}` or `organizations/{org_id}`. */
   destinationParent?: string;
 }
 
-export const MoveFolderRequest: Schema.Schema<MoveFolderRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      destinationParent: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MoveFolderRequest",
-  }) as any as Schema.Schema<MoveFolderRequest>;
+export const MoveFolderRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  destinationParent: Schema.optional(Schema.String),
+}).annotate({ identifier: "MoveFolderRequest" });
 
 export interface CreateProjectMetadata {
   /** True if the project can be retrieved using `GetProject`. No other operations on the project are guaranteed to work until the project creation is complete. */
@@ -419,16 +347,11 @@ export interface CreateProjectMetadata {
   createTime?: string;
 }
 
-export const CreateProjectMetadata: Schema.Schema<CreateProjectMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gettable: Schema.optional(Schema.Boolean),
-      ready: Schema.optional(Schema.Boolean),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreateProjectMetadata",
-  }) as any as Schema.Schema<CreateProjectMetadata>;
+export const CreateProjectMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gettable: Schema.optional(Schema.Boolean),
+  ready: Schema.optional(Schema.Boolean),
+  createTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "CreateProjectMetadata" });
 
 export interface SearchFoldersRequest {
   /** Optional. A pagination token returned from a previous call to `SearchFolders` that indicates from where search should continue. */
@@ -439,37 +362,27 @@ export interface SearchFoldersRequest {
   pageSize?: number;
 }
 
-export const SearchFoldersRequest: Schema.Schema<SearchFoldersRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pageToken: Schema.optional(Schema.String),
-      query: Schema.optional(Schema.String),
-      pageSize: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "SearchFoldersRequest",
-  }) as any as Schema.Schema<SearchFoldersRequest>;
+export const SearchFoldersRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pageToken: Schema.optional(Schema.String),
+  query: Schema.optional(Schema.String),
+  pageSize: Schema.optional(Schema.Number),
+}).annotate({ identifier: "SearchFoldersRequest" });
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsResponse",
-  }) as any as Schema.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsResponse" });
 
 export interface UndeleteFolderRequest {}
 
-export const UndeleteFolderRequest: Schema.Schema<UndeleteFolderRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "UndeleteFolderRequest",
-  }) as any as Schema.Schema<UndeleteFolderRequest>;
+export const UndeleteFolderRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "UndeleteFolderRequest" });
 
 export interface AuditLogConfig {
   /** The log type that this config enables. */
@@ -483,22 +396,17 @@ export interface AuditLogConfig {
   exemptedMembers?: Array<string>;
 }
 
-export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      logType: Schema.optional(Schema.String),
-      exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AuditLogConfig",
-  }) as any as Schema.Schema<AuditLogConfig>;
+export const AuditLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  logType: Schema.optional(Schema.String),
+  exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "AuditLogConfig" });
 
 export interface UndeleteOrganizationMetadata {}
 
-export const UndeleteOrganizationMetadata: Schema.Schema<UndeleteOrganizationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const UndeleteOrganizationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UndeleteOrganizationMetadata",
-  }) as any as Schema.Schema<UndeleteOrganizationMetadata>;
+  });
 
 export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
@@ -507,15 +415,10 @@ export interface AuditConfig {
   auditLogConfigs?: Array<AuditLogConfig>;
 }
 
-export const AuditConfig: Schema.Schema<AuditConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      service: Schema.optional(Schema.String),
-      auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
-    }),
-  ).annotate({
-    identifier: "AuditConfig",
-  }) as any as Schema.Schema<AuditConfig>;
+export const AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  service: Schema.optional(Schema.String),
+  auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
+}).annotate({ identifier: "AuditConfig" });
 
 export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -528,15 +431,12 @@ export interface Policy {
   bindings?: Array<Binding>;
 }
 
-export const Policy: Schema.Schema<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.Number),
-      auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
-      etag: Schema.optional(Schema.String),
-      bindings: Schema.optional(Schema.Array(Binding)),
-    }),
-  ).annotate({ identifier: "Policy" }) as any as Schema.Schema<Policy>;
+export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.Number),
+  auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
+  etag: Schema.optional(Schema.String),
+  bindings: Schema.optional(Schema.Array(Binding)),
+}).annotate({ identifier: "Policy" });
 
 export interface SetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
@@ -545,15 +445,10 @@ export interface SetIamPolicyRequest {
   policy?: Policy;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateMask: Schema.optional(Schema.String),
-      policy: Schema.optional(Policy),
-    }),
-  ).annotate({
-    identifier: "SetIamPolicyRequest",
-  }) as any as Schema.Schema<SetIamPolicyRequest>;
+export const SetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  updateMask: Schema.optional(Schema.String),
+  policy: Schema.optional(Policy),
+}).annotate({ identifier: "SetIamPolicyRequest" });
 
 export interface CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation {
   /** The display name of the folder. */
@@ -570,39 +465,35 @@ export interface CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOpe
     | (string & {});
 }
 
-export const CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation: Schema.Schema<CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      sourceParent: Schema.optional(Schema.String),
-      destinationParent: Schema.optional(Schema.String),
-      operationType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    sourceParent: Schema.optional(Schema.String),
+    destinationParent: Schema.optional(Schema.String),
+    operationType: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation",
-  }) as any as Schema.Schema<CloudresourcemanagerGoogleCloudResourcemanagerV2alpha1FolderOperation>;
+  });
 
 export interface UpdateFolderMetadata {}
 
-export const UpdateFolderMetadata: Schema.Schema<UpdateFolderMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "UpdateFolderMetadata",
-  }) as any as Schema.Schema<UpdateFolderMetadata>;
+export const UpdateFolderMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "UpdateFolderMetadata" });
 
 export interface CreateTagBindingMetadata {}
 
-export const CreateTagBindingMetadata: Schema.Schema<CreateTagBindingMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const CreateTagBindingMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CreateTagBindingMetadata",
-  }) as any as Schema.Schema<CreateTagBindingMetadata>;
+  });
 
 export interface UpdateTagValueMetadata {}
 
-export const UpdateTagValueMetadata: Schema.Schema<UpdateTagValueMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "UpdateTagValueMetadata",
-  }) as any as Schema.Schema<UpdateTagValueMetadata>;
+export const UpdateTagValueMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "UpdateTagValueMetadata" });
 
 export interface Operation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
@@ -617,16 +508,13 @@ export interface Operation {
   name?: string;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      done: Schema.optional(Schema.Boolean),
-      error: Schema.optional(Status),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  done: Schema.optional(Schema.Boolean),
+  error: Schema.optional(Status),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Operation" });
 
 export interface MoveFolderMetadata {
   /** The resource name of the folder or organization to move the folder to. */
@@ -637,23 +525,17 @@ export interface MoveFolderMetadata {
   sourceParent?: string;
 }
 
-export const MoveFolderMetadata: Schema.Schema<MoveFolderMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      destinationParent: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      sourceParent: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MoveFolderMetadata",
-  }) as any as Schema.Schema<MoveFolderMetadata>;
+export const MoveFolderMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  destinationParent: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  sourceParent: Schema.optional(Schema.String),
+}).annotate({ identifier: "MoveFolderMetadata" });
 
 export interface DeleteFolderMetadata {}
 
-export const DeleteFolderMetadata: Schema.Schema<DeleteFolderMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "DeleteFolderMetadata",
-  }) as any as Schema.Schema<DeleteFolderMetadata>;
+export const DeleteFolderMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "DeleteFolderMetadata" });
 
 // ==========================================================================
 // Operations

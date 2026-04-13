@@ -29,29 +29,21 @@ export interface MultisliceParams {
   nodeCount?: number;
 }
 
-export const MultisliceParams: Schema.Schema<MultisliceParams> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nodeIdPrefix: Schema.optional(Schema.String),
-      nodeCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "MultisliceParams",
-  }) as any as Schema.Schema<MultisliceParams>;
+export const MultisliceParams = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nodeIdPrefix: Schema.optional(Schema.String),
+  nodeCount: Schema.optional(Schema.Number),
+}).annotate({ identifier: "MultisliceParams" });
 
 export interface ShieldedInstanceConfig {
   /** Defines whether the instance has Secure Boot enabled. */
   enableSecureBoot?: boolean;
 }
 
-export const ShieldedInstanceConfig: Schema.Schema<ShieldedInstanceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableSecureBoot: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ShieldedInstanceConfig",
-  }) as any as Schema.Schema<ShieldedInstanceConfig>;
+export const ShieldedInstanceConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    enableSecureBoot: Schema.optional(Schema.Boolean),
+  },
+).annotate({ identifier: "ShieldedInstanceConfig" });
 
 export interface AttachedDisk {
   /** Specifies the full path to an existing disk. For example: "projects/my-project/zones/us-central1-c/disks/my-disk". */
@@ -60,15 +52,10 @@ export interface AttachedDisk {
   mode?: "DISK_MODE_UNSPECIFIED" | "READ_WRITE" | "READ_ONLY" | (string & {});
 }
 
-export const AttachedDisk: Schema.Schema<AttachedDisk> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sourceDisk: Schema.optional(Schema.String),
-      mode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AttachedDisk",
-  }) as any as Schema.Schema<AttachedDisk>;
+export const AttachedDisk = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sourceDisk: Schema.optional(Schema.String),
+  mode: Schema.optional(Schema.String),
+}).annotate({ identifier: "AttachedDisk" });
 
 export interface AcceleratorConfig {
   /** Required. Type of TPU. */
@@ -85,29 +72,19 @@ export interface AcceleratorConfig {
   topology?: string;
 }
 
-export const AcceleratorConfig: Schema.Schema<AcceleratorConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      topology: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AcceleratorConfig",
-  }) as any as Schema.Schema<AcceleratorConfig>;
+export const AcceleratorConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  topology: Schema.optional(Schema.String),
+}).annotate({ identifier: "AcceleratorConfig" });
 
 export interface AccessConfig {
   /** Output only. An external IP address associated with the TPU worker. */
   externalIp?: string;
 }
 
-export const AccessConfig: Schema.Schema<AccessConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      externalIp: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccessConfig",
-  }) as any as Schema.Schema<AccessConfig>;
+export const AccessConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  externalIp: Schema.optional(Schema.String),
+}).annotate({ identifier: "AccessConfig" });
 
 export interface NetworkEndpoint {
   /** The internal IP address of this network endpoint. */
@@ -118,16 +95,11 @@ export interface NetworkEndpoint {
   accessConfig?: AccessConfig;
 }
 
-export const NetworkEndpoint: Schema.Schema<NetworkEndpoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ipAddress: Schema.optional(Schema.String),
-      port: Schema.optional(Schema.Number),
-      accessConfig: Schema.optional(AccessConfig),
-    }),
-  ).annotate({
-    identifier: "NetworkEndpoint",
-  }) as any as Schema.Schema<NetworkEndpoint>;
+export const NetworkEndpoint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ipAddress: Schema.optional(Schema.String),
+  port: Schema.optional(Schema.Number),
+  accessConfig: Schema.optional(AccessConfig),
+}).annotate({ identifier: "NetworkEndpoint" });
 
 export interface UpcomingMaintenance {
   /** The latest time for the planned maintenance window to start. This timestamp value is in RFC3339 text format. */
@@ -144,47 +116,32 @@ export interface UpcomingMaintenance {
   canReschedule?: boolean;
 }
 
-export const UpcomingMaintenance: Schema.Schema<UpcomingMaintenance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      latestWindowStartTime: Schema.optional(Schema.String),
-      windowEndTime: Schema.optional(Schema.String),
-      maintenanceStatus: Schema.optional(Schema.String),
-      windowStartTime: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      canReschedule: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "UpcomingMaintenance",
-  }) as any as Schema.Schema<UpcomingMaintenance>;
+export const UpcomingMaintenance = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  latestWindowStartTime: Schema.optional(Schema.String),
+  windowEndTime: Schema.optional(Schema.String),
+  maintenanceStatus: Schema.optional(Schema.String),
+  windowStartTime: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  canReschedule: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "UpcomingMaintenance" });
 
 export interface CustomerEncryptionKey {
   /** The name of the encryption key that is stored in Google Cloud KMS. For example: "kmsKeyName": "projects/KMS_PROJECT_ID/locations/REGION/keyRings/KEY_REGION/cryptoKeys/KEY The fully-qualifed key name may be returned for resource GET requests. For example: "kmsKeyName": "projects/KMS_PROJECT_ID/locations/REGION/keyRings/KEY_REGION/cryptoKeys/KEY/cryptoKeyVersions/1 */
   kmsKeyName?: string;
 }
 
-export const CustomerEncryptionKey: Schema.Schema<CustomerEncryptionKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kmsKeyName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomerEncryptionKey",
-  }) as any as Schema.Schema<CustomerEncryptionKey>;
+export const CustomerEncryptionKey = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kmsKeyName: Schema.optional(Schema.String),
+}).annotate({ identifier: "CustomerEncryptionKey" });
 
 export interface BootDiskConfig {
   /** Optional. Customer encryption key for boot disk. */
   customerEncryptionKey?: CustomerEncryptionKey;
 }
 
-export const BootDiskConfig: Schema.Schema<BootDiskConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customerEncryptionKey: Schema.optional(CustomerEncryptionKey),
-    }),
-  ).annotate({
-    identifier: "BootDiskConfig",
-  }) as any as Schema.Schema<BootDiskConfig>;
+export const BootDiskConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  customerEncryptionKey: Schema.optional(CustomerEncryptionKey),
+}).annotate({ identifier: "BootDiskConfig" });
 
 export interface NetworkConfig {
   /** Allows the TPU node to send and receive packets with non-matching destination or source IPs. This is required if you plan to use the TPU workers to forward routes. */
@@ -199,18 +156,13 @@ export interface NetworkConfig {
   enableExternalIps?: boolean;
 }
 
-export const NetworkConfig: Schema.Schema<NetworkConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      canIpForward: Schema.optional(Schema.Boolean),
-      subnetwork: Schema.optional(Schema.String),
-      queueCount: Schema.optional(Schema.Number),
-      network: Schema.optional(Schema.String),
-      enableExternalIps: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "NetworkConfig",
-  }) as any as Schema.Schema<NetworkConfig>;
+export const NetworkConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  canIpForward: Schema.optional(Schema.Boolean),
+  subnetwork: Schema.optional(Schema.String),
+  queueCount: Schema.optional(Schema.Number),
+  network: Schema.optional(Schema.String),
+  enableExternalIps: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "NetworkConfig" });
 
 export interface ServiceAccount {
   /** Email address of the service account. If empty, default Compute service account will be used. */
@@ -219,15 +171,10 @@ export interface ServiceAccount {
   scope?: Array<string>;
 }
 
-export const ServiceAccount: Schema.Schema<ServiceAccount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      email: Schema.optional(Schema.String),
-      scope: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ServiceAccount",
-  }) as any as Schema.Schema<ServiceAccount>;
+export const ServiceAccount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  email: Schema.optional(Schema.String),
+  scope: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ServiceAccount" });
 
 export interface SchedulingConfig {
   /** Optional. Defines whether the node is Spot VM. */
@@ -238,16 +185,11 @@ export interface SchedulingConfig {
   reserved?: boolean;
 }
 
-export const SchedulingConfig: Schema.Schema<SchedulingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      spot: Schema.optional(Schema.Boolean),
-      preemptible: Schema.optional(Schema.Boolean),
-      reserved: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "SchedulingConfig",
-  }) as any as Schema.Schema<SchedulingConfig>;
+export const SchedulingConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  spot: Schema.optional(Schema.Boolean),
+  preemptible: Schema.optional(Schema.Boolean),
+  reserved: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "SchedulingConfig" });
 
 export interface Symptom {
   /** A string used to uniquely distinguish a worker within a TPU node. */
@@ -268,15 +210,12 @@ export interface Symptom {
   details?: string;
 }
 
-export const Symptom: Schema.Schema<Symptom> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      workerId: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      symptomType: Schema.optional(Schema.String),
-      details: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Symptom" }) as any as Schema.Schema<Symptom>;
+export const Symptom = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  workerId: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  symptomType: Schema.optional(Schema.String),
+  details: Schema.optional(Schema.String),
+}).annotate({ identifier: "Symptom" });
 
 export interface Node {
   /** Shielded Instance options. */
@@ -364,38 +303,35 @@ export interface Node {
   symptoms?: Array<Symptom>;
 }
 
-export const Node: Schema.Schema<Node> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      shieldedInstanceConfig: Schema.optional(ShieldedInstanceConfig),
-      healthDescription: Schema.optional(Schema.String),
-      acceleratorType: Schema.optional(Schema.String),
-      dataDisks: Schema.optional(Schema.Array(AttachedDisk)),
-      acceleratorConfig: Schema.optional(AcceleratorConfig),
-      description: Schema.optional(Schema.String),
-      networkEndpoints: Schema.optional(Schema.Array(NetworkEndpoint)),
-      queuedResource: Schema.optional(Schema.String),
-      health: Schema.optional(Schema.String),
-      tags: Schema.optional(Schema.Array(Schema.String)),
-      upcomingMaintenance: Schema.optional(UpcomingMaintenance),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      multisliceNode: Schema.optional(Schema.Boolean),
-      bootDiskConfig: Schema.optional(BootDiskConfig),
-      createTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      apiVersion: Schema.optional(Schema.String),
-      networkConfigs: Schema.optional(Schema.Array(NetworkConfig)),
-      cidrBlock: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      serviceAccount: Schema.optional(ServiceAccount),
-      id: Schema.optional(Schema.String),
-      runtimeVersion: Schema.optional(Schema.String),
-      schedulingConfig: Schema.optional(SchedulingConfig),
-      networkConfig: Schema.optional(NetworkConfig),
-      symptoms: Schema.optional(Schema.Array(Symptom)),
-    }),
-  ).annotate({ identifier: "Node" }) as any as Schema.Schema<Node>;
+export const Node = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  shieldedInstanceConfig: Schema.optional(ShieldedInstanceConfig),
+  healthDescription: Schema.optional(Schema.String),
+  acceleratorType: Schema.optional(Schema.String),
+  dataDisks: Schema.optional(Schema.Array(AttachedDisk)),
+  acceleratorConfig: Schema.optional(AcceleratorConfig),
+  description: Schema.optional(Schema.String),
+  networkEndpoints: Schema.optional(Schema.Array(NetworkEndpoint)),
+  queuedResource: Schema.optional(Schema.String),
+  health: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Array(Schema.String)),
+  upcomingMaintenance: Schema.optional(UpcomingMaintenance),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  multisliceNode: Schema.optional(Schema.Boolean),
+  bootDiskConfig: Schema.optional(BootDiskConfig),
+  createTime: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  apiVersion: Schema.optional(Schema.String),
+  networkConfigs: Schema.optional(Schema.Array(NetworkConfig)),
+  cidrBlock: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  serviceAccount: Schema.optional(ServiceAccount),
+  id: Schema.optional(Schema.String),
+  runtimeVersion: Schema.optional(Schema.String),
+  schedulingConfig: Schema.optional(SchedulingConfig),
+  networkConfig: Schema.optional(NetworkConfig),
+  symptoms: Schema.optional(Schema.Array(Symptom)),
+}).annotate({ identifier: "Node" });
 
 export interface NodeSpec {
   /** Required. The parent resource name. */
@@ -408,55 +344,45 @@ export interface NodeSpec {
   node?: Node;
 }
 
-export const NodeSpec: Schema.Schema<NodeSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parent: Schema.optional(Schema.String),
-      multisliceParams: Schema.optional(MultisliceParams),
-      nodeId: Schema.optional(Schema.String),
-      node: Schema.optional(Node),
-    }),
-  ).annotate({ identifier: "NodeSpec" }) as any as Schema.Schema<NodeSpec>;
+export const NodeSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  parent: Schema.optional(Schema.String),
+  multisliceParams: Schema.optional(MultisliceParams),
+  nodeId: Schema.optional(Schema.String),
+  node: Schema.optional(Node),
+}).annotate({ identifier: "NodeSpec" });
 
 export interface Tpu {
   /** Optional. The TPU node(s) being requested. */
   nodeSpec?: Array<NodeSpec>;
 }
 
-export const Tpu: Schema.Schema<Tpu> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nodeSpec: Schema.optional(Schema.Array(NodeSpec)),
-    }),
-  ).annotate({ identifier: "Tpu" }) as any as Schema.Schema<Tpu>;
+export const Tpu = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nodeSpec: Schema.optional(Schema.Array(NodeSpec)),
+}).annotate({ identifier: "Tpu" });
 
 export interface ActiveData {}
 
-export const ActiveData: Schema.Schema<ActiveData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "ActiveData",
-  }) as any as Schema.Schema<ActiveData>;
+export const ActiveData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "ActiveData" });
 
 export interface SuspendedData {}
 
-export const SuspendedData: Schema.Schema<SuspendedData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "SuspendedData",
-  }) as any as Schema.Schema<SuspendedData>;
+export const SuspendedData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "SuspendedData" });
 
 export interface CreatingData {}
 
-export const CreatingData: Schema.Schema<CreatingData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CreatingData",
-  }) as any as Schema.Schema<CreatingData>;
+export const CreatingData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CreatingData" });
 
 export interface SuspendingData {}
 
-export const SuspendingData: Schema.Schema<SuspendingData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "SuspendingData",
-  }) as any as Schema.Schema<SuspendingData>;
+export const SuspendingData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "SuspendingData" });
 
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -467,49 +393,40 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface FailedData {
   /** Output only. The error that caused the queued resource to enter the FAILED state. */
   error?: Status;
 }
 
-export const FailedData: Schema.Schema<FailedData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      error: Schema.optional(Status),
-    }),
-  ).annotate({ identifier: "FailedData" }) as any as Schema.Schema<FailedData>;
+export const FailedData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  error: Schema.optional(Status),
+}).annotate({ identifier: "FailedData" });
 
 export interface AcceptedData {}
 
-export const AcceptedData: Schema.Schema<AcceptedData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "AcceptedData",
-  }) as any as Schema.Schema<AcceptedData>;
+export const AcceptedData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "AcceptedData" });
 
 export interface DeletingData {}
 
-export const DeletingData: Schema.Schema<DeletingData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "DeletingData",
-  }) as any as Schema.Schema<DeletingData>;
+export const DeletingData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "DeletingData" });
 
 export interface ProvisioningData {}
 
-export const ProvisioningData: Schema.Schema<ProvisioningData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "ProvisioningData",
-  }) as any as Schema.Schema<ProvisioningData>;
+export const ProvisioningData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "ProvisioningData" });
 
 export interface QueuedResourceState {
   /** Output only. State of the QueuedResource request. */
@@ -549,30 +466,24 @@ export interface QueuedResourceState {
   provisioningData?: ProvisioningData;
 }
 
-export const QueuedResourceState: Schema.Schema<QueuedResourceState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      activeData: Schema.optional(ActiveData),
-      suspendedData: Schema.optional(SuspendedData),
-      creatingData: Schema.optional(CreatingData),
-      stateInitiator: Schema.optional(Schema.String),
-      suspendingData: Schema.optional(SuspendingData),
-      failedData: Schema.optional(FailedData),
-      acceptedData: Schema.optional(AcceptedData),
-      deletingData: Schema.optional(DeletingData),
-      provisioningData: Schema.optional(ProvisioningData),
-    }),
-  ).annotate({
-    identifier: "QueuedResourceState",
-  }) as any as Schema.Schema<QueuedResourceState>;
+export const QueuedResourceState = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.String),
+  activeData: Schema.optional(ActiveData),
+  suspendedData: Schema.optional(SuspendedData),
+  creatingData: Schema.optional(CreatingData),
+  stateInitiator: Schema.optional(Schema.String),
+  suspendingData: Schema.optional(SuspendingData),
+  failedData: Schema.optional(FailedData),
+  acceptedData: Schema.optional(AcceptedData),
+  deletingData: Schema.optional(DeletingData),
+  provisioningData: Schema.optional(ProvisioningData),
+}).annotate({ identifier: "QueuedResourceState" });
 
 export interface Spot {}
 
-export const Spot: Schema.Schema<Spot> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Spot",
-  }) as any as Schema.Schema<Spot>;
+export const Spot = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Spot",
+});
 
 export interface Interval {
   /** Optional. Inclusive start of the interval. If specified, a Timestamp matching this interval will have to be the same or after the start. */
@@ -581,13 +492,10 @@ export interface Interval {
   endTime?: string;
 }
 
-export const Interval: Schema.Schema<Interval> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Interval" }) as any as Schema.Schema<Interval>;
+export const Interval = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Interval" });
 
 export interface QueueingPolicy {
   /** Optional. An absolute time after which resources should not be created. If the request cannot be fulfilled by this time the request will be failed. */
@@ -602,30 +510,22 @@ export interface QueueingPolicy {
   validInterval?: Interval;
 }
 
-export const QueueingPolicy: Schema.Schema<QueueingPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      validUntilTime: Schema.optional(Schema.String),
-      validAfterTime: Schema.optional(Schema.String),
-      validUntilDuration: Schema.optional(Schema.String),
-      validAfterDuration: Schema.optional(Schema.String),
-      validInterval: Schema.optional(Interval),
-    }),
-  ).annotate({
-    identifier: "QueueingPolicy",
-  }) as any as Schema.Schema<QueueingPolicy>;
+export const QueueingPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  validUntilTime: Schema.optional(Schema.String),
+  validAfterTime: Schema.optional(Schema.String),
+  validUntilDuration: Schema.optional(Schema.String),
+  validAfterDuration: Schema.optional(Schema.String),
+  validInterval: Schema.optional(Interval),
+}).annotate({ identifier: "QueueingPolicy" });
 
 export interface Guaranteed {
   /** Optional. Defines the minimum duration of the guarantee. If specified, the requested resources will only be provisioned if they can be allocated for at least the given duration. */
   minDuration?: string;
 }
 
-export const Guaranteed: Schema.Schema<Guaranteed> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      minDuration: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Guaranteed" }) as any as Schema.Schema<Guaranteed>;
+export const Guaranteed = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  minDuration: Schema.optional(Schema.String),
+}).annotate({ identifier: "Guaranteed" });
 
 export interface QueuedResource {
   /** Optional. Defines a TPU resource. */
@@ -646,21 +546,16 @@ export interface QueuedResource {
   guaranteed?: Guaranteed;
 }
 
-export const QueuedResource: Schema.Schema<QueuedResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tpu: Schema.optional(Tpu),
-      createTime: Schema.optional(Schema.String),
-      state: Schema.optional(QueuedResourceState),
-      reservationName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      spot: Schema.optional(Spot),
-      queueingPolicy: Schema.optional(QueueingPolicy),
-      guaranteed: Schema.optional(Guaranteed),
-    }),
-  ).annotate({
-    identifier: "QueuedResource",
-  }) as any as Schema.Schema<QueuedResource>;
+export const QueuedResource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tpu: Schema.optional(Tpu),
+  createTime: Schema.optional(Schema.String),
+  state: Schema.optional(QueuedResourceState),
+  reservationName: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  spot: Schema.optional(Spot),
+  queueingPolicy: Schema.optional(QueueingPolicy),
+  guaranteed: Schema.optional(Guaranteed),
+}).annotate({ identifier: "QueuedResource" });
 
 export interface ListQueuedResourcesResponse {
   /** Locations that could not be reached. */
@@ -671,30 +566,21 @@ export interface ListQueuedResourcesResponse {
   queuedResources?: Array<QueuedResource>;
 }
 
-export const ListQueuedResourcesResponse: Schema.Schema<ListQueuedResourcesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-      queuedResources: Schema.optional(Schema.Array(QueuedResource)),
-    }),
-  ).annotate({
-    identifier: "ListQueuedResourcesResponse",
-  }) as any as Schema.Schema<ListQueuedResourcesResponse>;
+export const ListQueuedResourcesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+    queuedResources: Schema.optional(Schema.Array(QueuedResource)),
+  }).annotate({ identifier: "ListQueuedResourcesResponse" });
 
 export interface ServiceIdentity {
   /** The email address of the service identity. */
   email?: string;
 }
 
-export const ServiceIdentity: Schema.Schema<ServiceIdentity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      email: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ServiceIdentity",
-  }) as any as Schema.Schema<ServiceIdentity>;
+export const ServiceIdentity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  email: Schema.optional(Schema.String),
+}).annotate({ identifier: "ServiceIdentity" });
 
 export interface RuntimeVersion {
   /** The resource name. */
@@ -703,15 +589,10 @@ export interface RuntimeVersion {
   version?: string;
 }
 
-export const RuntimeVersion: Schema.Schema<RuntimeVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RuntimeVersion",
-  }) as any as Schema.Schema<RuntimeVersion>;
+export const RuntimeVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+}).annotate({ identifier: "RuntimeVersion" });
 
 export interface GuestAttributesEntry {
   /** Value for the guest attribute entry. */
@@ -722,30 +603,20 @@ export interface GuestAttributesEntry {
   key?: string;
 }
 
-export const GuestAttributesEntry: Schema.Schema<GuestAttributesEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-      namespace: Schema.optional(Schema.String),
-      key: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GuestAttributesEntry",
-  }) as any as Schema.Schema<GuestAttributesEntry>;
+export const GuestAttributesEntry = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.String),
+  namespace: Schema.optional(Schema.String),
+  key: Schema.optional(Schema.String),
+}).annotate({ identifier: "GuestAttributesEntry" });
 
 export interface GuestAttributesValue {
   /** The list of guest attributes entries. */
   items?: Array<GuestAttributesEntry>;
 }
 
-export const GuestAttributesValue: Schema.Schema<GuestAttributesValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      items: Schema.optional(Schema.Array(GuestAttributesEntry)),
-    }),
-  ).annotate({
-    identifier: "GuestAttributesValue",
-  }) as any as Schema.Schema<GuestAttributesValue>;
+export const GuestAttributesValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  items: Schema.optional(Schema.Array(GuestAttributesEntry)),
+}).annotate({ identifier: "GuestAttributesValue" });
 
 export interface GuestAttributes {
   /** The path to be queried. This can be the default namespace ('/') or a nested namespace ('/\/') or a specified key ('/\/\') */
@@ -754,29 +625,20 @@ export interface GuestAttributes {
   queryValue?: GuestAttributesValue;
 }
 
-export const GuestAttributes: Schema.Schema<GuestAttributes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      queryPath: Schema.optional(Schema.String),
-      queryValue: Schema.optional(GuestAttributesValue),
-    }),
-  ).annotate({
-    identifier: "GuestAttributes",
-  }) as any as Schema.Schema<GuestAttributes>;
+export const GuestAttributes = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  queryPath: Schema.optional(Schema.String),
+  queryValue: Schema.optional(GuestAttributesValue),
+}).annotate({ identifier: "GuestAttributes" });
 
 export interface GetGuestAttributesResponse {
   /** The guest attributes for the TPU workers. */
   guestAttributes?: Array<GuestAttributes>;
 }
 
-export const GetGuestAttributesResponse: Schema.Schema<GetGuestAttributesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      guestAttributes: Schema.optional(Schema.Array(GuestAttributes)),
-    }),
-  ).annotate({
-    identifier: "GetGuestAttributesResponse",
-  }) as any as Schema.Schema<GetGuestAttributesResponse>;
+export const GetGuestAttributesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    guestAttributes: Schema.optional(Schema.Array(GuestAttributes)),
+  }).annotate({ identifier: "GetGuestAttributesResponse" });
 
 export interface Location {
   /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
@@ -791,16 +653,13 @@ export interface Location {
   name?: string;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      locationId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  locationId: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Location" });
 
 export interface OperationMetadata {
   /** The time the operation was created. */
@@ -819,41 +678,31 @@ export interface OperationMetadata {
   cancelRequested?: boolean;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      statusDetail: Schema.optional(Schema.String),
-      apiVersion: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      cancelRequested: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createTime: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  statusDetail: Schema.optional(Schema.String),
+  apiVersion: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  verb: Schema.optional(Schema.String),
+  cancelRequested: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "OperationMetadata" });
 
 export interface GenerateServiceIdentityResponse {
   /** ServiceIdentity that was created or retrieved. */
   identity?: ServiceIdentity;
 }
 
-export const GenerateServiceIdentityResponse: Schema.Schema<GenerateServiceIdentityResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      identity: Schema.optional(ServiceIdentity),
-    }),
-  ).annotate({
-    identifier: "GenerateServiceIdentityResponse",
-  }) as any as Schema.Schema<GenerateServiceIdentityResponse>;
+export const GenerateServiceIdentityResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    identity: Schema.optional(ServiceIdentity),
+  }).annotate({ identifier: "GenerateServiceIdentityResponse" });
 
 export interface StopNodeRequest {}
 
-export const StopNodeRequest: Schema.Schema<StopNodeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "StopNodeRequest",
-  }) as any as Schema.Schema<StopNodeRequest>;
+export const StopNodeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "StopNodeRequest" });
 
 export interface GetGuestAttributesRequest {
   /** The guest attributes path to be queried. */
@@ -862,15 +711,11 @@ export interface GetGuestAttributesRequest {
   workerIds?: Array<string>;
 }
 
-export const GetGuestAttributesRequest: Schema.Schema<GetGuestAttributesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      queryPath: Schema.optional(Schema.String),
-      workerIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GetGuestAttributesRequest",
-  }) as any as Schema.Schema<GetGuestAttributesRequest>;
+export const GetGuestAttributesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    queryPath: Schema.optional(Schema.String),
+    workerIds: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GetGuestAttributesRequest" });
 
 export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
@@ -885,16 +730,13 @@ export interface Operation {
   name?: string;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      error: Schema.optional(Status),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  done: Schema.optional(Schema.Boolean),
+  error: Schema.optional(Status),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Operation" });
 
 export interface AcceleratorType {
   /** The resource name. */
@@ -905,16 +747,11 @@ export interface AcceleratorType {
   type?: string;
 }
 
-export const AcceleratorType: Schema.Schema<AcceleratorType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      acceleratorConfigs: Schema.optional(Schema.Array(AcceleratorConfig)),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AcceleratorType",
-  }) as any as Schema.Schema<AcceleratorType>;
+export const AcceleratorType = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  acceleratorConfigs: Schema.optional(Schema.Array(AcceleratorConfig)),
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "AcceleratorType" });
 
 export interface ListAcceleratorTypesResponse {
   /** The listed nodes. */
@@ -925,16 +762,12 @@ export interface ListAcceleratorTypesResponse {
   unreachable?: Array<string>;
 }
 
-export const ListAcceleratorTypesResponse: Schema.Schema<ListAcceleratorTypesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      acceleratorTypes: Schema.optional(Schema.Array(AcceleratorType)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListAcceleratorTypesResponse",
-  }) as any as Schema.Schema<ListAcceleratorTypesResponse>;
+export const ListAcceleratorTypesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    acceleratorTypes: Schema.optional(Schema.Array(AcceleratorType)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListAcceleratorTypesResponse" });
 
 export interface ListNodesResponse {
   /** Locations that could not be reached. */
@@ -945,16 +778,11 @@ export interface ListNodesResponse {
   nextPageToken?: string;
 }
 
-export const ListNodesResponse: Schema.Schema<ListNodesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      nodes: Schema.optional(Schema.Array(Node)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListNodesResponse",
-  }) as any as Schema.Schema<ListNodesResponse>;
+export const ListNodesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+  nodes: Schema.optional(Schema.Array(Node)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListNodesResponse" });
 
 export interface ListRuntimeVersionsResponse {
   /** The next page token or empty if none. */
@@ -965,44 +793,38 @@ export interface ListRuntimeVersionsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListRuntimeVersionsResponse: Schema.Schema<ListRuntimeVersionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      runtimeVersions: Schema.optional(Schema.Array(RuntimeVersion)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListRuntimeVersionsResponse",
-  }) as any as Schema.Schema<ListRuntimeVersionsResponse>;
+export const ListRuntimeVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    runtimeVersions: Schema.optional(Schema.Array(RuntimeVersion)),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListRuntimeVersionsResponse" });
 
 export interface ResetQueuedResourceRequest {}
 
-export const ResetQueuedResourceRequest: Schema.Schema<ResetQueuedResourceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const ResetQueuedResourceRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ResetQueuedResourceRequest",
-  }) as any as Schema.Schema<ResetQueuedResourceRequest>;
+  });
 
 export interface GenerateServiceIdentityRequest {}
 
-export const GenerateServiceIdentityRequest: Schema.Schema<GenerateServiceIdentityRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GenerateServiceIdentityRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GenerateServiceIdentityRequest",
-  }) as any as Schema.Schema<GenerateServiceIdentityRequest>;
+  });
 
 export interface StartNodeRequest {}
 
-export const StartNodeRequest: Schema.Schema<StartNodeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "StartNodeRequest",
-  }) as any as Schema.Schema<StartNodeRequest>;
+export const StartNodeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "StartNodeRequest" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -1011,15 +833,10 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(Location)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
@@ -1030,16 +847,13 @@ export interface ListOperationsResponse {
   nextPageToken?: string;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      operations: Schema.optional(Schema.Array(Operation)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    operations: Schema.optional(Schema.Array(Operation)),
+    nextPageToken: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 // ==========================================================================
 // Operations

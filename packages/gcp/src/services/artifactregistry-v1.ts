@@ -27,15 +27,13 @@ export interface GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmReposi
   uri?: string;
 }
 
-export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository: Schema.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uri: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository",
-  }) as any as Schema.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository>;
+  });
 
 export interface NpmRepository {
   /** Customer-specified remote repository. */
@@ -44,17 +42,12 @@ export interface NpmRepository {
   publicRepository?: "PUBLIC_REPOSITORY_UNSPECIFIED" | "NPMJS" | (string & {});
 }
 
-export const NpmRepository: Schema.Schema<NpmRepository> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customRepository: Schema.optional(
-        GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository,
-      ),
-      publicRepository: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NpmRepository",
-  }) as any as Schema.Schema<NpmRepository>;
+export const NpmRepository = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  customRepository: Schema.optional(
+    GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigNpmRepositoryCustomRepository,
+  ),
+  publicRepository: Schema.optional(Schema.String),
+}).annotate({ identifier: "NpmRepository" });
 
 export interface GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository {
   /** A common public repository base for Apt. */
@@ -68,31 +61,27 @@ export interface GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptReposi
   repositoryPath?: string;
 }
 
-export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository: Schema.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      repositoryBase: Schema.optional(Schema.String),
-      repositoryPath: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    repositoryBase: Schema.optional(Schema.String),
+    repositoryPath: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository",
-  }) as any as Schema.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository>;
+  });
 
 export interface GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository {
   /** An http/https uri reference to the upstream remote repository, for ex: "https://my.apt.registry/". */
   uri?: string;
 }
 
-export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository: Schema.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uri: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository",
-  }) as any as Schema.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository>;
+  });
 
 export interface AptRepository {
   /** One of the publicly available Apt repositories supported by Artifact Registry. */
@@ -101,19 +90,14 @@ export interface AptRepository {
   customRepository?: GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository;
 }
 
-export const AptRepository: Schema.Schema<AptRepository> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      publicRepository: Schema.optional(
-        GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository,
-      ),
-      customRepository: Schema.optional(
-        GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository,
-      ),
-    }),
-  ).annotate({
-    identifier: "AptRepository",
-  }) as any as Schema.Schema<AptRepository>;
+export const AptRepository = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  publicRepository: Schema.optional(
+    GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryPublicRepository,
+  ),
+  customRepository: Schema.optional(
+    GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigAptRepositoryCustomRepository,
+  ),
+}).annotate({ identifier: "AptRepository" });
 
 export interface UsernamePasswordCredentials {
   /** The username to access the remote repository. */
@@ -122,44 +106,33 @@ export interface UsernamePasswordCredentials {
   passwordSecretVersion?: string;
 }
 
-export const UsernamePasswordCredentials: Schema.Schema<UsernamePasswordCredentials> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      username: Schema.optional(Schema.String),
-      passwordSecretVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UsernamePasswordCredentials",
-  }) as any as Schema.Schema<UsernamePasswordCredentials>;
+export const UsernamePasswordCredentials =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    username: Schema.optional(Schema.String),
+    passwordSecretVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UsernamePasswordCredentials" });
 
 export interface UpstreamCredentials {
   /** Use username and password to access the remote repository. */
   usernamePasswordCredentials?: UsernamePasswordCredentials;
 }
 
-export const UpstreamCredentials: Schema.Schema<UpstreamCredentials> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      usernamePasswordCredentials: Schema.optional(UsernamePasswordCredentials),
-    }),
-  ).annotate({
-    identifier: "UpstreamCredentials",
-  }) as any as Schema.Schema<UpstreamCredentials>;
+export const UpstreamCredentials = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  usernamePasswordCredentials: Schema.optional(UsernamePasswordCredentials),
+}).annotate({ identifier: "UpstreamCredentials" });
 
 export interface GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository {
   /** An http/https uri reference to the upstream remote repository, for ex: "https://my.python.registry/". */
   uri?: string;
 }
 
-export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository: Schema.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uri: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository",
-  }) as any as Schema.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository>;
+  });
 
 export interface PythonRepository {
   /** One of the publicly available Python repositories supported by Artifact Registry. */
@@ -168,17 +141,12 @@ export interface PythonRepository {
   customRepository?: GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository;
 }
 
-export const PythonRepository: Schema.Schema<PythonRepository> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      publicRepository: Schema.optional(Schema.String),
-      customRepository: Schema.optional(
-        GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository,
-      ),
-    }),
-  ).annotate({
-    identifier: "PythonRepository",
-  }) as any as Schema.Schema<PythonRepository>;
+export const PythonRepository = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  publicRepository: Schema.optional(Schema.String),
+  customRepository: Schema.optional(
+    GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigPythonRepositoryCustomRepository,
+  ),
+}).annotate({ identifier: "PythonRepository" });
 
 export interface GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository {
   /** A common public repository base for Yum. */
@@ -195,31 +163,27 @@ export interface GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumReposi
   repositoryPath?: string;
 }
 
-export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository: Schema.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      repositoryBase: Schema.optional(Schema.String),
-      repositoryPath: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    repositoryBase: Schema.optional(Schema.String),
+    repositoryPath: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository",
-  }) as any as Schema.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository>;
+  });
 
 export interface GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository {
   /** An http/https uri reference to the upstream remote repository, for ex: "https://my.yum.registry/". */
   uri?: string;
 }
 
-export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository: Schema.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uri: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository",
-  }) as any as Schema.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository>;
+  });
 
 export interface YumRepository {
   /** One of the publicly available Yum repositories supported by Artifact Registry. */
@@ -228,48 +192,38 @@ export interface YumRepository {
   customRepository?: GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository;
 }
 
-export const YumRepository: Schema.Schema<YumRepository> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      publicRepository: Schema.optional(
-        GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository,
-      ),
-      customRepository: Schema.optional(
-        GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository,
-      ),
-    }),
-  ).annotate({
-    identifier: "YumRepository",
-  }) as any as Schema.Schema<YumRepository>;
+export const YumRepository = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  publicRepository: Schema.optional(
+    GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryPublicRepository,
+  ),
+  customRepository: Schema.optional(
+    GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigYumRepositoryCustomRepository,
+  ),
+}).annotate({ identifier: "YumRepository" });
 
 export interface CommonRemoteRepository {
   /** Required. A common public repository base for remote repository. */
   uri?: string;
 }
 
-export const CommonRemoteRepository: Schema.Schema<CommonRemoteRepository> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CommonRemoteRepository",
-  }) as any as Schema.Schema<CommonRemoteRepository>;
+export const CommonRemoteRepository = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    uri: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "CommonRemoteRepository" });
 
 export interface GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository {
   /** An http/https uri reference to the custom remote repository, for ex: "https://registry-1.docker.io". */
   uri?: string;
 }
 
-export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository: Schema.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uri: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository",
-  }) as any as Schema.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository>;
+  });
 
 export interface DockerRepository {
   /** Customer-specified remote repository. */
@@ -281,32 +235,25 @@ export interface DockerRepository {
     | (string & {});
 }
 
-export const DockerRepository: Schema.Schema<DockerRepository> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customRepository: Schema.optional(
-        GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository,
-      ),
-      publicRepository: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DockerRepository",
-  }) as any as Schema.Schema<DockerRepository>;
+export const DockerRepository = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  customRepository: Schema.optional(
+    GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigDockerRepositoryCustomRepository,
+  ),
+  publicRepository: Schema.optional(Schema.String),
+}).annotate({ identifier: "DockerRepository" });
 
 export interface GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository {
   /** An http/https uri reference to the upstream remote repository, for ex: "https://my.maven.registry/". */
   uri?: string;
 }
 
-export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository: Schema.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uri: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository",
-  }) as any as Schema.Schema<GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository>;
+  });
 
 export interface MavenRepository {
   /** One of the publicly available Maven repositories supported by Artifact Registry. */
@@ -318,17 +265,12 @@ export interface MavenRepository {
   customRepository?: GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository;
 }
 
-export const MavenRepository: Schema.Schema<MavenRepository> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      publicRepository: Schema.optional(Schema.String),
-      customRepository: Schema.optional(
-        GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository,
-      ),
-    }),
-  ).annotate({
-    identifier: "MavenRepository",
-  }) as any as Schema.Schema<MavenRepository>;
+export const MavenRepository = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  publicRepository: Schema.optional(Schema.String),
+  customRepository: Schema.optional(
+    GoogleDevtoolsArtifactregistryV1RemoteRepositoryConfigMavenRepositoryCustomRepository,
+  ),
+}).annotate({ identifier: "MavenRepository" });
 
 export interface RemoteRepositoryConfig {
   /** Specific settings for an Npm remote repository. */
@@ -353,23 +295,20 @@ export interface RemoteRepositoryConfig {
   mavenRepository?: MavenRepository;
 }
 
-export const RemoteRepositoryConfig: Schema.Schema<RemoteRepositoryConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      npmRepository: Schema.optional(NpmRepository),
-      aptRepository: Schema.optional(AptRepository),
-      upstreamCredentials: Schema.optional(UpstreamCredentials),
-      pythonRepository: Schema.optional(PythonRepository),
-      disableUpstreamValidation: Schema.optional(Schema.Boolean),
-      yumRepository: Schema.optional(YumRepository),
-      commonRepository: Schema.optional(CommonRemoteRepository),
-      description: Schema.optional(Schema.String),
-      dockerRepository: Schema.optional(DockerRepository),
-      mavenRepository: Schema.optional(MavenRepository),
-    }),
-  ).annotate({
-    identifier: "RemoteRepositoryConfig",
-  }) as any as Schema.Schema<RemoteRepositoryConfig>;
+export const RemoteRepositoryConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    npmRepository: Schema.optional(NpmRepository),
+    aptRepository: Schema.optional(AptRepository),
+    upstreamCredentials: Schema.optional(UpstreamCredentials),
+    pythonRepository: Schema.optional(PythonRepository),
+    disableUpstreamValidation: Schema.optional(Schema.Boolean),
+    yumRepository: Schema.optional(YumRepository),
+    commonRepository: Schema.optional(CommonRemoteRepository),
+    description: Schema.optional(Schema.String),
+    dockerRepository: Schema.optional(DockerRepository),
+    mavenRepository: Schema.optional(MavenRepository),
+  },
+).annotate({ identifier: "RemoteRepositoryConfig" });
 
 export interface Expr {
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
@@ -382,15 +321,12 @@ export interface Expr {
   description?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-      expression: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Expr" }) as any as Schema.Schema<Expr>;
+export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  title: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  expression: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "Expr" });
 
 export interface Tag {
   /** The name of the tag, for example: "projects/p1/locations/us-central1/repositories/repo1/packages/pkg1/tags/tag1". If the package part contains slashes, the slashes are escaped. The tag part can only have characters in [a-zA-Z0-9\-._~:@], anything else must be URL encoded. */
@@ -399,13 +335,10 @@ export interface Tag {
   version?: string;
 }
 
-export const Tag: Schema.Schema<Tag> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Tag" }) as any as Schema.Schema<Tag>;
+export const Tag = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+}).annotate({ identifier: "Tag" });
 
 export interface ListTagsResponse {
   /** The tags returned. */
@@ -414,15 +347,10 @@ export interface ListTagsResponse {
   nextPageToken?: string;
 }
 
-export const ListTagsResponse: Schema.Schema<ListTagsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tags: Schema.optional(Schema.Array(Tag)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListTagsResponse",
-  }) as any as Schema.Schema<ListTagsResponse>;
+export const ListTagsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tags: Schema.optional(Schema.Array(Tag)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListTagsResponse" });
 
 export interface YumArtifact {
   /** Output only. The yum package name of the artifact. */
@@ -439,31 +367,22 @@ export interface YumArtifact {
   architecture?: string;
 }
 
-export const YumArtifact: Schema.Schema<YumArtifact> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      packageName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      packageType: Schema.optional(Schema.String),
-      architecture: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "YumArtifact",
-  }) as any as Schema.Schema<YumArtifact>;
+export const YumArtifact = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  packageName: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  packageType: Schema.optional(Schema.String),
+  architecture: Schema.optional(Schema.String),
+}).annotate({ identifier: "YumArtifact" });
 
 export interface UploadYumArtifactResponse {
   /** The Yum artifacts updated. */
   yumArtifacts?: Array<YumArtifact>;
 }
 
-export const UploadYumArtifactResponse: Schema.Schema<UploadYumArtifactResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      yumArtifacts: Schema.optional(Schema.Array(YumArtifact)),
-    }),
-  ).annotate({
-    identifier: "UploadYumArtifactResponse",
-  }) as any as Schema.Schema<UploadYumArtifactResponse>;
+export const UploadYumArtifactResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    yumArtifacts: Schema.optional(Schema.Array(YumArtifact)),
+  }).annotate({ identifier: "UploadYumArtifactResponse" });
 
 export interface Location {
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
@@ -478,16 +397,13 @@ export interface Location {
   displayName?: string;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      locationId: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  locationId: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  displayName: Schema.optional(Schema.String),
+}).annotate({ identifier: "Location" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -496,15 +412,10 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(Location)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface AptArtifact {
   /** Output only. Contents of the artifact's control metadata file. */
@@ -525,19 +436,14 @@ export interface AptArtifact {
   component?: string;
 }
 
-export const AptArtifact: Schema.Schema<AptArtifact> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      controlFile: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      packageName: Schema.optional(Schema.String),
-      packageType: Schema.optional(Schema.String),
-      architecture: Schema.optional(Schema.String),
-      component: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AptArtifact",
-  }) as any as Schema.Schema<AptArtifact>;
+export const AptArtifact = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  controlFile: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  packageName: Schema.optional(Schema.String),
+  packageType: Schema.optional(Schema.String),
+  architecture: Schema.optional(Schema.String),
+  component: Schema.optional(Schema.String),
+}).annotate({ identifier: "AptArtifact" });
 
 export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
@@ -548,16 +454,13 @@ export interface Status {
   message?: string;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+}).annotate({ identifier: "Status" });
 
 export interface ImportAptArtifactsGcsSource {
   /** Cloud Storage paths URI (e.g., gs://my_bucket//my_object). */
@@ -566,15 +469,11 @@ export interface ImportAptArtifactsGcsSource {
   useWildcards?: boolean;
 }
 
-export const ImportAptArtifactsGcsSource: Schema.Schema<ImportAptArtifactsGcsSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uris: Schema.optional(Schema.Array(Schema.String)),
-      useWildcards: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ImportAptArtifactsGcsSource",
-  }) as any as Schema.Schema<ImportAptArtifactsGcsSource>;
+export const ImportAptArtifactsGcsSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uris: Schema.optional(Schema.Array(Schema.String)),
+    useWildcards: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "ImportAptArtifactsGcsSource" });
 
 export interface ImportAptArtifactsErrorInfo {
   /** The detailed error status. */
@@ -583,15 +482,11 @@ export interface ImportAptArtifactsErrorInfo {
   gcsSource?: ImportAptArtifactsGcsSource;
 }
 
-export const ImportAptArtifactsErrorInfo: Schema.Schema<ImportAptArtifactsErrorInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      error: Schema.optional(Status),
-      gcsSource: Schema.optional(ImportAptArtifactsGcsSource),
-    }),
-  ).annotate({
-    identifier: "ImportAptArtifactsErrorInfo",
-  }) as any as Schema.Schema<ImportAptArtifactsErrorInfo>;
+export const ImportAptArtifactsErrorInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(Status),
+    gcsSource: Schema.optional(ImportAptArtifactsGcsSource),
+  }).annotate({ identifier: "ImportAptArtifactsErrorInfo" });
 
 export interface ImportAptArtifactsResponse {
   /** The Apt artifacts imported. */
@@ -600,15 +495,11 @@ export interface ImportAptArtifactsResponse {
   errors?: Array<ImportAptArtifactsErrorInfo>;
 }
 
-export const ImportAptArtifactsResponse: Schema.Schema<ImportAptArtifactsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      aptArtifacts: Schema.optional(Schema.Array(AptArtifact)),
-      errors: Schema.optional(Schema.Array(ImportAptArtifactsErrorInfo)),
-    }),
-  ).annotate({
-    identifier: "ImportAptArtifactsResponse",
-  }) as any as Schema.Schema<ImportAptArtifactsResponse>;
+export const ImportAptArtifactsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    aptArtifacts: Schema.optional(Schema.Array(AptArtifact)),
+    errors: Schema.optional(Schema.Array(ImportAptArtifactsErrorInfo)),
+  }).annotate({ identifier: "ImportAptArtifactsResponse" });
 
 export interface ImportYumArtifactsGcsSource {
   /** Cloud Storage paths URI (e.g., gs://my_bucket//my_object). */
@@ -617,15 +508,11 @@ export interface ImportYumArtifactsGcsSource {
   useWildcards?: boolean;
 }
 
-export const ImportYumArtifactsGcsSource: Schema.Schema<ImportYumArtifactsGcsSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uris: Schema.optional(Schema.Array(Schema.String)),
-      useWildcards: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ImportYumArtifactsGcsSource",
-  }) as any as Schema.Schema<ImportYumArtifactsGcsSource>;
+export const ImportYumArtifactsGcsSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uris: Schema.optional(Schema.Array(Schema.String)),
+    useWildcards: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "ImportYumArtifactsGcsSource" });
 
 export interface ImportYumArtifactsErrorInfo {
   /** Google Cloud Storage location requested. */
@@ -634,15 +521,11 @@ export interface ImportYumArtifactsErrorInfo {
   error?: Status;
 }
 
-export const ImportYumArtifactsErrorInfo: Schema.Schema<ImportYumArtifactsErrorInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsSource: Schema.optional(ImportYumArtifactsGcsSource),
-      error: Schema.optional(Status),
-    }),
-  ).annotate({
-    identifier: "ImportYumArtifactsErrorInfo",
-  }) as any as Schema.Schema<ImportYumArtifactsErrorInfo>;
+export const ImportYumArtifactsErrorInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gcsSource: Schema.optional(ImportYumArtifactsGcsSource),
+    error: Schema.optional(Status),
+  }).annotate({ identifier: "ImportYumArtifactsErrorInfo" });
 
 export interface CleanupPolicyMostRecentVersions {
   /** List of package name prefixes that will apply this rule. */
@@ -651,15 +534,11 @@ export interface CleanupPolicyMostRecentVersions {
   keepCount?: number;
 }
 
-export const CleanupPolicyMostRecentVersions: Schema.Schema<CleanupPolicyMostRecentVersions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      packageNamePrefixes: Schema.optional(Schema.Array(Schema.String)),
-      keepCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "CleanupPolicyMostRecentVersions",
-  }) as any as Schema.Schema<CleanupPolicyMostRecentVersions>;
+export const CleanupPolicyMostRecentVersions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageNamePrefixes: Schema.optional(Schema.Array(Schema.String)),
+    keepCount: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "CleanupPolicyMostRecentVersions" });
 
 export interface Operation {
   /** The error result of the operation in case of failure or cancellation. */
@@ -674,51 +553,39 @@ export interface Operation {
   metadata?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      error: Schema.optional(Status),
-      done: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  error: Schema.optional(Status),
+  done: Schema.optional(Schema.Boolean),
+  name: Schema.optional(Schema.String),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Operation" });
 
 export interface UploadGoogetArtifactMediaResponse {
   /** Operation to be returned to the user. */
   operation?: Operation;
 }
 
-export const UploadGoogetArtifactMediaResponse: Schema.Schema<UploadGoogetArtifactMediaResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operation: Schema.optional(Operation),
-    }),
-  ).annotate({
-    identifier: "UploadGoogetArtifactMediaResponse",
-  }) as any as Schema.Schema<UploadGoogetArtifactMediaResponse>;
+export const UploadGoogetArtifactMediaResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operation: Schema.optional(Operation),
+  }).annotate({ identifier: "UploadGoogetArtifactMediaResponse" });
 
 export interface UploadGoModuleRequest {}
 
-export const UploadGoModuleRequest: Schema.Schema<UploadGoModuleRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "UploadGoModuleRequest",
-  }) as any as Schema.Schema<UploadGoModuleRequest>;
+export const UploadGoModuleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "UploadGoModuleRequest" });
 
 export interface UploadFileMediaResponse {
   /** Operation that will be returned to the user. */
   operation?: Operation;
 }
 
-export const UploadFileMediaResponse: Schema.Schema<UploadFileMediaResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operation: Schema.optional(Operation),
-    }),
-  ).annotate({
-    identifier: "UploadFileMediaResponse",
-  }) as any as Schema.Schema<UploadFileMediaResponse>;
+export const UploadFileMediaResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operation: Schema.optional(Operation),
+  }).annotate({ identifier: "UploadFileMediaResponse" });
 
 export interface Attachment {
   /** Required. The files that belong to this attachment. If the file ID part contains slashes, they are escaped. E.g. `projects/p1/locations/us-central1/repositories/repo1/files/sha:`. */
@@ -741,20 +608,17 @@ export interface Attachment {
   ociVersionName?: string;
 }
 
-export const Attachment: Schema.Schema<Attachment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      files: Schema.optional(Schema.Array(Schema.String)),
-      type: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      attachmentNamespace: Schema.optional(Schema.String),
-      ociVersionName: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Attachment" }) as any as Schema.Schema<Attachment>;
+export const Attachment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  files: Schema.optional(Schema.Array(Schema.String)),
+  type: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  attachmentNamespace: Schema.optional(Schema.String),
+  ociVersionName: Schema.optional(Schema.String),
+}).annotate({ identifier: "Attachment" });
 
 export interface ListAttachmentsResponse {
   /** The token to retrieve the next page of attachments, or empty if there are no more attachments to return. */
@@ -763,15 +627,11 @@ export interface ListAttachmentsResponse {
   attachments?: Array<Attachment>;
 }
 
-export const ListAttachmentsResponse: Schema.Schema<ListAttachmentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      attachments: Schema.optional(Schema.Array(Attachment)),
-    }),
-  ).annotate({
-    identifier: "ListAttachmentsResponse",
-  }) as any as Schema.Schema<ListAttachmentsResponse>;
+export const ListAttachmentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    attachments: Schema.optional(Schema.Array(Attachment)),
+  }).annotate({ identifier: "ListAttachmentsResponse" });
 
 export interface CleanupPolicyCondition {
   /** Match versions older than a duration. */
@@ -793,19 +653,16 @@ export interface CleanupPolicyCondition {
   packageNamePrefixes?: Array<string>;
 }
 
-export const CleanupPolicyCondition: Schema.Schema<CleanupPolicyCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      olderThan: Schema.optional(Schema.String),
-      tagState: Schema.optional(Schema.String),
-      tagPrefixes: Schema.optional(Schema.Array(Schema.String)),
-      versionNamePrefixes: Schema.optional(Schema.Array(Schema.String)),
-      newerThan: Schema.optional(Schema.String),
-      packageNamePrefixes: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "CleanupPolicyCondition",
-  }) as any as Schema.Schema<CleanupPolicyCondition>;
+export const CleanupPolicyCondition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    olderThan: Schema.optional(Schema.String),
+    tagState: Schema.optional(Schema.String),
+    tagPrefixes: Schema.optional(Schema.Array(Schema.String)),
+    versionNamePrefixes: Schema.optional(Schema.Array(Schema.String)),
+    newerThan: Schema.optional(Schema.String),
+    packageNamePrefixes: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "CleanupPolicyCondition" });
 
 export interface CleanupPolicy {
   /** Policy condition for matching versions. */
@@ -818,17 +675,12 @@ export interface CleanupPolicy {
   mostRecentVersions?: CleanupPolicyMostRecentVersions;
 }
 
-export const CleanupPolicy: Schema.Schema<CleanupPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      condition: Schema.optional(CleanupPolicyCondition),
-      id: Schema.optional(Schema.String),
-      action: Schema.optional(Schema.String),
-      mostRecentVersions: Schema.optional(CleanupPolicyMostRecentVersions),
-    }),
-  ).annotate({
-    identifier: "CleanupPolicy",
-  }) as any as Schema.Schema<CleanupPolicy>;
+export const CleanupPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  condition: Schema.optional(CleanupPolicyCondition),
+  id: Schema.optional(Schema.String),
+  action: Schema.optional(Schema.String),
+  mostRecentVersions: Schema.optional(CleanupPolicyMostRecentVersions),
+}).annotate({ identifier: "CleanupPolicy" });
 
 export interface GenericArtifact {
   /** Resource name of the generic artifact. project, location, repository, package_id and version_id create a unique generic artifact. i.e. "projects/test-project/locations/us-west4/repositories/test-repo/ genericArtifacts/package_id:version_id" */
@@ -841,17 +693,12 @@ export interface GenericArtifact {
   version?: string;
 }
 
-export const GenericArtifact: Schema.Schema<GenericArtifact> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GenericArtifact",
-  }) as any as Schema.Schema<GenericArtifact>;
+export const GenericArtifact = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+}).annotate({ identifier: "GenericArtifact" });
 
 export interface Hash {
   /** The hash value. */
@@ -865,13 +712,10 @@ export interface Hash {
     | (string & {});
 }
 
-export const Hash: Schema.Schema<Hash> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Hash" }) as any as Schema.Schema<Hash>;
+export const Hash = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "Hash" });
 
 export interface GoogleDevtoolsArtifactregistryV1File {
   /** Output only. The time when the last attempt to refresh the file's data was made. Only set when the repository is remote. */
@@ -892,21 +736,17 @@ export interface GoogleDevtoolsArtifactregistryV1File {
   annotations?: Record<string, string>;
 }
 
-export const GoogleDevtoolsArtifactregistryV1File: Schema.Schema<GoogleDevtoolsArtifactregistryV1File> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fetchTime: Schema.optional(Schema.String),
-      sizeBytes: Schema.optional(Schema.String),
-      owner: Schema.optional(Schema.String),
-      hashes: Schema.optional(Schema.Array(Hash)),
-      updateTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleDevtoolsArtifactregistryV1File",
-  }) as any as Schema.Schema<GoogleDevtoolsArtifactregistryV1File>;
+export const GoogleDevtoolsArtifactregistryV1File =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fetchTime: Schema.optional(Schema.String),
+    sizeBytes: Schema.optional(Schema.String),
+    owner: Schema.optional(Schema.String),
+    hashes: Schema.optional(Schema.Array(Hash)),
+    updateTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({ identifier: "GoogleDevtoolsArtifactregistryV1File" });
 
 export interface ListFilesResponse {
   /** The token to retrieve the next page of files, or empty if there are no more files to return. */
@@ -915,17 +755,10 @@ export interface ListFilesResponse {
   files?: Array<GoogleDevtoolsArtifactregistryV1File>;
 }
 
-export const ListFilesResponse: Schema.Schema<ListFilesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      files: Schema.optional(
-        Schema.Array(GoogleDevtoolsArtifactregistryV1File),
-      ),
-    }),
-  ).annotate({
-    identifier: "ListFilesResponse",
-  }) as any as Schema.Schema<ListFilesResponse>;
+export const ListFilesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  files: Schema.optional(Schema.Array(GoogleDevtoolsArtifactregistryV1File)),
+}).annotate({ identifier: "ListFilesResponse" });
 
 export interface ImportGoogetArtifactsGcsSource {
   /** Cloud Storage paths URI (e.g., `gs://my_bucket/my_object`). */
@@ -934,15 +767,11 @@ export interface ImportGoogetArtifactsGcsSource {
   useWildcards?: boolean;
 }
 
-export const ImportGoogetArtifactsGcsSource: Schema.Schema<ImportGoogetArtifactsGcsSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uris: Schema.optional(Schema.Array(Schema.String)),
-      useWildcards: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ImportGoogetArtifactsGcsSource",
-  }) as any as Schema.Schema<ImportGoogetArtifactsGcsSource>;
+export const ImportGoogetArtifactsGcsSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uris: Schema.optional(Schema.Array(Schema.String)),
+    useWildcards: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "ImportGoogetArtifactsGcsSource" });
 
 export interface PlatformLogsConfig {
   /** Optional. The severity level for the logs. Logs will be generated if their severity level is >= than the value of the severity level mentioned here. */
@@ -965,15 +794,10 @@ export interface PlatformLogsConfig {
     | (string & {});
 }
 
-export const PlatformLogsConfig: Schema.Schema<PlatformLogsConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      severityLevel: Schema.optional(Schema.String),
-      loggingState: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PlatformLogsConfig",
-  }) as any as Schema.Schema<PlatformLogsConfig>;
+export const PlatformLogsConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  severityLevel: Schema.optional(Schema.String),
+  loggingState: Schema.optional(Schema.String),
+}).annotate({ identifier: "PlatformLogsConfig" });
 
 export interface MavenArtifact {
   /** Version of this artifact. */
@@ -992,34 +816,25 @@ export interface MavenArtifact {
   updateTime?: string;
 }
 
-export const MavenArtifact: Schema.Schema<MavenArtifact> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.String),
-      artifactId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      pomUri: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      groupId: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MavenArtifact",
-  }) as any as Schema.Schema<MavenArtifact>;
+export const MavenArtifact = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.String),
+  artifactId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  pomUri: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  groupId: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "MavenArtifact" });
 
 export interface UploadGoModuleMediaResponse {
   /** Operation to be returned to the user. */
   operation?: Operation;
 }
 
-export const UploadGoModuleMediaResponse: Schema.Schema<UploadGoModuleMediaResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operation: Schema.optional(Operation),
-    }),
-  ).annotate({
-    identifier: "UploadGoModuleMediaResponse",
-  }) as any as Schema.Schema<UploadGoModuleMediaResponse>;
+export const UploadGoModuleMediaResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operation: Schema.optional(Operation),
+  }).annotate({ identifier: "UploadGoModuleMediaResponse" });
 
 export interface ExportedFile {
   /** Name of the exported artifact file. Format: `projects/p1/locations/us/repositories/repo1/files/file1` */
@@ -1030,30 +845,22 @@ export interface ExportedFile {
   hashes?: Array<Hash>;
 }
 
-export const ExportedFile: Schema.Schema<ExportedFile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      gcsObjectPath: Schema.optional(Schema.String),
-      hashes: Schema.optional(Schema.Array(Hash)),
-    }),
-  ).annotate({
-    identifier: "ExportedFile",
-  }) as any as Schema.Schema<ExportedFile>;
+export const ExportedFile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  gcsObjectPath: Schema.optional(Schema.String),
+  hashes: Schema.optional(Schema.Array(Hash)),
+}).annotate({ identifier: "ExportedFile" });
 
 export interface ExportArtifactMetadata {
   /** The exported artifact files. */
   exportedFiles?: Array<ExportedFile>;
 }
 
-export const ExportArtifactMetadata: Schema.Schema<ExportArtifactMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      exportedFiles: Schema.optional(Schema.Array(ExportedFile)),
-    }),
-  ).annotate({
-    identifier: "ExportArtifactMetadata",
-  }) as any as Schema.Schema<ExportArtifactMetadata>;
+export const ExportArtifactMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    exportedFiles: Schema.optional(Schema.Array(ExportedFile)),
+  },
+).annotate({ identifier: "ExportArtifactMetadata" });
 
 export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
@@ -1064,14 +871,11 @@ export interface Binding {
   condition?: Expr;
 }
 
-export const Binding: Schema.Schema<Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      role: Schema.optional(Schema.String),
-      members: Schema.optional(Schema.Array(Schema.String)),
-      condition: Schema.optional(Expr),
-    }),
-  ).annotate({ identifier: "Binding" }) as any as Schema.Schema<Binding>;
+export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  role: Schema.optional(Schema.String),
+  members: Schema.optional(Schema.Array(Schema.String)),
+  condition: Schema.optional(Expr),
+}).annotate({ identifier: "Binding" });
 
 export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -1082,49 +886,37 @@ export interface Policy {
   etag?: string;
 }
 
-export const Policy: Schema.Schema<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.Number),
-      bindings: Schema.optional(Schema.Array(Binding)),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Policy" }) as any as Schema.Schema<Policy>;
+export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.Number),
+  bindings: Schema.optional(Schema.Array(Binding)),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "Policy" });
 
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: Policy;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policy: Schema.optional(Policy),
-    }),
-  ).annotate({
-    identifier: "SetIamPolicyRequest",
-  }) as any as Schema.Schema<SetIamPolicyRequest>;
+export const SetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policy: Schema.optional(Policy),
+}).annotate({ identifier: "SetIamPolicyRequest" });
 
 export interface UploadAptArtifactResponse {
   /** The Apt artifacts updated. */
   aptArtifacts?: Array<AptArtifact>;
 }
 
-export const UploadAptArtifactResponse: Schema.Schema<UploadAptArtifactResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      aptArtifacts: Schema.optional(Schema.Array(AptArtifact)),
-    }),
-  ).annotate({
-    identifier: "UploadAptArtifactResponse",
-  }) as any as Schema.Schema<UploadAptArtifactResponse>;
+export const UploadAptArtifactResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    aptArtifacts: Schema.optional(Schema.Array(AptArtifact)),
+  }).annotate({ identifier: "UploadAptArtifactResponse" });
 
 export interface ImportYumArtifactsMetadata {}
 
-export const ImportYumArtifactsMetadata: Schema.Schema<ImportYumArtifactsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const ImportYumArtifactsMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ImportYumArtifactsMetadata",
-  }) as any as Schema.Schema<ImportYumArtifactsMetadata>;
+  });
 
 export interface ImageManifest {
   /** Optional. The variant of the CPU in the image, for example `v7` to specify ARMv7 when architecture is `arm`. */
@@ -1143,20 +935,15 @@ export interface ImageManifest {
   osFeatures?: Array<string>;
 }
 
-export const ImageManifest: Schema.Schema<ImageManifest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      variant: Schema.optional(Schema.String),
-      architecture: Schema.optional(Schema.String),
-      digest: Schema.optional(Schema.String),
-      mediaType: Schema.optional(Schema.String),
-      os: Schema.optional(Schema.String),
-      osVersion: Schema.optional(Schema.String),
-      osFeatures: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ImageManifest",
-  }) as any as Schema.Schema<ImageManifest>;
+export const ImageManifest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  variant: Schema.optional(Schema.String),
+  architecture: Schema.optional(Schema.String),
+  digest: Schema.optional(Schema.String),
+  mediaType: Schema.optional(Schema.String),
+  os: Schema.optional(Schema.String),
+  osVersion: Schema.optional(Schema.String),
+  osFeatures: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ImageManifest" });
 
 export interface DockerImage {
   /** Required. URL to access the image. Example: us-west4-docker.pkg.dev/test-project/test-repo/nginx@sha256:e9954c1fc875017be1c3e36eca16be2d9e9bccc4bf072163515467d6a823c7cf */
@@ -1181,23 +968,18 @@ export interface DockerImage {
   imageManifests?: Array<ImageManifest>;
 }
 
-export const DockerImage: Schema.Schema<DockerImage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-      artifactType: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      imageSizeBytes: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      uploadTime: Schema.optional(Schema.String),
-      buildTime: Schema.optional(Schema.String),
-      mediaType: Schema.optional(Schema.String),
-      tags: Schema.optional(Schema.Array(Schema.String)),
-      imageManifests: Schema.optional(Schema.Array(ImageManifest)),
-    }),
-  ).annotate({
-    identifier: "DockerImage",
-  }) as any as Schema.Schema<DockerImage>;
+export const DockerImage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  uri: Schema.optional(Schema.String),
+  artifactType: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  imageSizeBytes: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  uploadTime: Schema.optional(Schema.String),
+  buildTime: Schema.optional(Schema.String),
+  mediaType: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Array(Schema.String)),
+  imageManifests: Schema.optional(Schema.Array(ImageManifest)),
+}).annotate({ identifier: "DockerImage" });
 
 export interface VPCSCConfig {
   /** The name of the project's VPC SC Config. Always of the form: projects/{projectID}/locations/{location}/vpcscConfig In update request: never set In response: always set */
@@ -1206,15 +988,10 @@ export interface VPCSCConfig {
   vpcscPolicy?: "VPCSC_POLICY_UNSPECIFIED" | "DENY" | "ALLOW" | (string & {});
 }
 
-export const VPCSCConfig: Schema.Schema<VPCSCConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      vpcscPolicy: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VPCSCConfig",
-  }) as any as Schema.Schema<VPCSCConfig>;
+export const VPCSCConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  vpcscPolicy: Schema.optional(Schema.String),
+}).annotate({ identifier: "VPCSCConfig" });
 
 export interface ImportGoogetArtifactsErrorInfo {
   /** The detailed error status. */
@@ -1223,15 +1000,11 @@ export interface ImportGoogetArtifactsErrorInfo {
   gcsSource?: ImportGoogetArtifactsGcsSource;
 }
 
-export const ImportGoogetArtifactsErrorInfo: Schema.Schema<ImportGoogetArtifactsErrorInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      error: Schema.optional(Status),
-      gcsSource: Schema.optional(ImportGoogetArtifactsGcsSource),
-    }),
-  ).annotate({
-    identifier: "ImportGoogetArtifactsErrorInfo",
-  }) as any as Schema.Schema<ImportGoogetArtifactsErrorInfo>;
+export const ImportGoogetArtifactsErrorInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(Status),
+    gcsSource: Schema.optional(ImportGoogetArtifactsGcsSource),
+  }).annotate({ identifier: "ImportGoogetArtifactsErrorInfo" });
 
 export interface Package {
   /** The time when the package was last updated. This includes publishing a new version of the package. */
@@ -1246,16 +1019,13 @@ export interface Package {
   displayName?: string;
 }
 
-export const Package: Schema.Schema<Package> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Package" }) as any as Schema.Schema<Package>;
+export const Package = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  updateTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  displayName: Schema.optional(Schema.String),
+}).annotate({ identifier: "Package" });
 
 export interface ListPackagesResponse {
   /** The packages returned. */
@@ -1264,29 +1034,24 @@ export interface ListPackagesResponse {
   nextPageToken?: string;
 }
 
-export const ListPackagesResponse: Schema.Schema<ListPackagesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      packages: Schema.optional(Schema.Array(Package)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListPackagesResponse",
-  }) as any as Schema.Schema<ListPackagesResponse>;
+export const ListPackagesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  packages: Schema.optional(Schema.Array(Package)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListPackagesResponse" });
 
 export interface UploadYumArtifactRequest {}
 
-export const UploadYumArtifactRequest: Schema.Schema<UploadYumArtifactRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const UploadYumArtifactRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UploadYumArtifactRequest",
-  }) as any as Schema.Schema<UploadYumArtifactRequest>;
+  });
 
 export interface UploadAptArtifactMetadata {}
 
-export const UploadAptArtifactMetadata: Schema.Schema<UploadAptArtifactMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const UploadAptArtifactMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UploadAptArtifactMetadata",
-  }) as any as Schema.Schema<UploadAptArtifactMetadata>;
+  });
 
 export interface GoModule {
   /** The version of the Go module. Must be a valid canonical version as defined in https://go.dev/ref/mod#glos-canonical-version. */
@@ -1299,43 +1064,34 @@ export interface GoModule {
   updateTime?: string;
 }
 
-export const GoModule: Schema.Schema<GoModule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "GoModule" }) as any as Schema.Schema<GoModule>;
+export const GoModule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "GoModule" });
 
 export interface UploadGoModuleMetadata {}
 
-export const UploadGoModuleMetadata: Schema.Schema<UploadGoModuleMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "UploadGoModuleMetadata",
-  }) as any as Schema.Schema<UploadGoModuleMetadata>;
+export const UploadGoModuleMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "UploadGoModuleMetadata" });
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelOperationRequest",
-  }) as any as Schema.Schema<CancelOperationRequest>;
+export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelOperationRequest" });
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsRequest",
-  }) as any as Schema.Schema<TestIamPermissionsRequest>;
+export const TestIamPermissionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsRequest" });
 
 export interface UploadGenericArtifactRequest {
   /** The ID of the package of the generic artifact. If the package does not exist, a new package will be created. The `package_id` should start and end with a letter or number, only contain letters, numbers, hyphens, underscores, and periods, and not exceed 256 characters. */
@@ -1346,16 +1102,12 @@ export interface UploadGenericArtifactRequest {
   versionId?: string;
 }
 
-export const UploadGenericArtifactRequest: Schema.Schema<UploadGenericArtifactRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      packageId: Schema.optional(Schema.String),
-      filename: Schema.optional(Schema.String),
-      versionId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UploadGenericArtifactRequest",
-  }) as any as Schema.Schema<UploadGenericArtifactRequest>;
+export const UploadGenericArtifactRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageId: Schema.optional(Schema.String),
+    filename: Schema.optional(Schema.String),
+    versionId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UploadGenericArtifactRequest" });
 
 export interface UpstreamPolicy {
   /** The user-provided ID of the upstream policy. */
@@ -1366,30 +1118,21 @@ export interface UpstreamPolicy {
   priority?: number;
 }
 
-export const UpstreamPolicy: Schema.Schema<UpstreamPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      repository: Schema.optional(Schema.String),
-      priority: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "UpstreamPolicy",
-  }) as any as Schema.Schema<UpstreamPolicy>;
+export const UpstreamPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  repository: Schema.optional(Schema.String),
+  priority: Schema.optional(Schema.Number),
+}).annotate({ identifier: "UpstreamPolicy" });
 
 export interface VirtualRepositoryConfig {
   /** Policies that configure the upstream artifacts distributed by the Virtual Repository. Upstream policies cannot be set on a standard repository. */
   upstreamPolicies?: Array<UpstreamPolicy>;
 }
 
-export const VirtualRepositoryConfig: Schema.Schema<VirtualRepositoryConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      upstreamPolicies: Schema.optional(Schema.Array(UpstreamPolicy)),
-    }),
-  ).annotate({
-    identifier: "VirtualRepositoryConfig",
-  }) as any as Schema.Schema<VirtualRepositoryConfig>;
+export const VirtualRepositoryConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    upstreamPolicies: Schema.optional(Schema.Array(UpstreamPolicy)),
+  }).annotate({ identifier: "VirtualRepositoryConfig" });
 
 export interface MavenRepositoryConfig {
   /** The repository with this flag will allow publishing the same snapshot versions. */
@@ -1402,29 +1145,21 @@ export interface MavenRepositoryConfig {
     | (string & {});
 }
 
-export const MavenRepositoryConfig: Schema.Schema<MavenRepositoryConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      allowSnapshotOverwrites: Schema.optional(Schema.Boolean),
-      versionPolicy: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MavenRepositoryConfig",
-  }) as any as Schema.Schema<MavenRepositoryConfig>;
+export const MavenRepositoryConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  allowSnapshotOverwrites: Schema.optional(Schema.Boolean),
+  versionPolicy: Schema.optional(Schema.String),
+}).annotate({ identifier: "MavenRepositoryConfig" });
 
 export interface DockerRepositoryConfig {
   /** The repository which enabled this flag prevents all tags from being modified, moved or deleted. This does not prevent tags from being created. */
   immutableTags?: boolean;
 }
 
-export const DockerRepositoryConfig: Schema.Schema<DockerRepositoryConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      immutableTags: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "DockerRepositoryConfig",
-  }) as any as Schema.Schema<DockerRepositoryConfig>;
+export const DockerRepositoryConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    immutableTags: Schema.optional(Schema.Boolean),
+  },
+).annotate({ identifier: "DockerRepositoryConfig" });
 
 export interface VulnerabilityScanningConfig {
   /** Output only. Reason for the repository state. */
@@ -1446,17 +1181,13 @@ export interface VulnerabilityScanningConfig {
     | (string & {});
 }
 
-export const VulnerabilityScanningConfig: Schema.Schema<VulnerabilityScanningConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enablementStateReason: Schema.optional(Schema.String),
-      lastEnableTime: Schema.optional(Schema.String),
-      enablementConfig: Schema.optional(Schema.String),
-      enablementState: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VulnerabilityScanningConfig",
-  }) as any as Schema.Schema<VulnerabilityScanningConfig>;
+export const VulnerabilityScanningConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enablementStateReason: Schema.optional(Schema.String),
+    lastEnableTime: Schema.optional(Schema.String),
+    enablementConfig: Schema.optional(Schema.String),
+    enablementState: Schema.optional(Schema.String),
+  }).annotate({ identifier: "VulnerabilityScanningConfig" });
 
 export interface Repository {
   /** Configuration specific for a Virtual Repository. */
@@ -1523,34 +1254,29 @@ export interface Repository {
   platformLogsConfig?: PlatformLogsConfig;
 }
 
-export const Repository: Schema.Schema<Repository> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      virtualRepositoryConfig: Schema.optional(VirtualRepositoryConfig),
-      cleanupPolicies: Schema.optional(
-        Schema.Record(Schema.String, CleanupPolicy),
-      ),
-      remoteRepositoryConfig: Schema.optional(RemoteRepositoryConfig),
-      updateTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      mavenConfig: Schema.optional(MavenRepositoryConfig),
-      dockerConfig: Schema.optional(DockerRepositoryConfig),
-      disallowUnspecifiedMode: Schema.optional(Schema.Boolean),
-      format: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      description: Schema.optional(Schema.String),
-      registryUri: Schema.optional(Schema.String),
-      kmsKeyName: Schema.optional(Schema.String),
-      sizeBytes: Schema.optional(Schema.String),
-      mode: Schema.optional(Schema.String),
-      vulnerabilityScanningConfig: Schema.optional(VulnerabilityScanningConfig),
-      satisfiesPzi: Schema.optional(Schema.Boolean),
-      satisfiesPzs: Schema.optional(Schema.Boolean),
-      createTime: Schema.optional(Schema.String),
-      cleanupPolicyDryRun: Schema.optional(Schema.Boolean),
-      platformLogsConfig: Schema.optional(PlatformLogsConfig),
-    }),
-  ).annotate({ identifier: "Repository" }) as any as Schema.Schema<Repository>;
+export const Repository = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  virtualRepositoryConfig: Schema.optional(VirtualRepositoryConfig),
+  cleanupPolicies: Schema.optional(Schema.Record(Schema.String, CleanupPolicy)),
+  remoteRepositoryConfig: Schema.optional(RemoteRepositoryConfig),
+  updateTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  mavenConfig: Schema.optional(MavenRepositoryConfig),
+  dockerConfig: Schema.optional(DockerRepositoryConfig),
+  disallowUnspecifiedMode: Schema.optional(Schema.Boolean),
+  format: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  description: Schema.optional(Schema.String),
+  registryUri: Schema.optional(Schema.String),
+  kmsKeyName: Schema.optional(Schema.String),
+  sizeBytes: Schema.optional(Schema.String),
+  mode: Schema.optional(Schema.String),
+  vulnerabilityScanningConfig: Schema.optional(VulnerabilityScanningConfig),
+  satisfiesPzi: Schema.optional(Schema.Boolean),
+  satisfiesPzs: Schema.optional(Schema.Boolean),
+  createTime: Schema.optional(Schema.String),
+  cleanupPolicyDryRun: Schema.optional(Schema.Boolean),
+  platformLogsConfig: Schema.optional(PlatformLogsConfig),
+}).annotate({ identifier: "Repository" });
 
 export interface ProjectSettings {
   /** The redirection state of the legacy repositories in this project. */
@@ -1568,16 +1294,11 @@ export interface ProjectSettings {
   pullPercent?: number;
 }
 
-export const ProjectSettings: Schema.Schema<ProjectSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      legacyRedirectionState: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      pullPercent: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "ProjectSettings",
-  }) as any as Schema.Schema<ProjectSettings>;
+export const ProjectSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  legacyRedirectionState: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  pullPercent: Schema.optional(Schema.Number),
+}).annotate({ identifier: "ProjectSettings" });
 
 export interface UploadKfpArtifactRequest {
   /** Tags to be created with the version. */
@@ -1586,15 +1307,11 @@ export interface UploadKfpArtifactRequest {
   description?: string;
 }
 
-export const UploadKfpArtifactRequest: Schema.Schema<UploadKfpArtifactRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tags: Schema.optional(Schema.Array(Schema.String)),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UploadKfpArtifactRequest",
-  }) as any as Schema.Schema<UploadKfpArtifactRequest>;
+export const UploadKfpArtifactRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tags: Schema.optional(Schema.Array(Schema.String)),
+    description: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UploadKfpArtifactRequest" });
 
 export interface ImportYumArtifactsResponse {
   /** Detailed error info for packages that were not imported. */
@@ -1603,15 +1320,11 @@ export interface ImportYumArtifactsResponse {
   yumArtifacts?: Array<YumArtifact>;
 }
 
-export const ImportYumArtifactsResponse: Schema.Schema<ImportYumArtifactsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errors: Schema.optional(Schema.Array(ImportYumArtifactsErrorInfo)),
-      yumArtifacts: Schema.optional(Schema.Array(YumArtifact)),
-    }),
-  ).annotate({
-    identifier: "ImportYumArtifactsResponse",
-  }) as any as Schema.Schema<ImportYumArtifactsResponse>;
+export const ImportYumArtifactsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    errors: Schema.optional(Schema.Array(ImportYumArtifactsErrorInfo)),
+    yumArtifacts: Schema.optional(Schema.Array(YumArtifact)),
+  }).annotate({ identifier: "ImportYumArtifactsResponse" });
 
 export interface Version {
   /** Output only. Immutable reference for the version, calculated based on the version's content. Currently we only support dirsum_sha256 hash algorithm. Additional hash algorithms may be added in the future. */
@@ -1632,47 +1345,37 @@ export interface Version {
   metadata?: Record<string, unknown>;
 }
 
-export const Version: Schema.Schema<Version> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fingerprints: Schema.optional(Schema.Array(Hash)),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      relatedTags: Schema.optional(Schema.Array(Tag)),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Version" }) as any as Schema.Schema<Version>;
+export const Version = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fingerprints: Schema.optional(Schema.Array(Hash)),
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  relatedTags: Schema.optional(Schema.Array(Tag)),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Version" });
 
 export interface ExportArtifactResponse {
   /** The exported version. Should be the same as the request version with fingerprint resource name. */
   exportedVersion?: Version;
 }
 
-export const ExportArtifactResponse: Schema.Schema<ExportArtifactResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      exportedVersion: Schema.optional(Version),
-    }),
-  ).annotate({
-    identifier: "ExportArtifactResponse",
-  }) as any as Schema.Schema<ExportArtifactResponse>;
+export const ExportArtifactResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    exportedVersion: Schema.optional(Version),
+  },
+).annotate({ identifier: "ExportArtifactResponse" });
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsResponse",
-  }) as any as Schema.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsResponse" });
 
 export interface ListRepositoriesResponse {
   /** The repositories returned. */
@@ -1681,15 +1384,11 @@ export interface ListRepositoriesResponse {
   nextPageToken?: string;
 }
 
-export const ListRepositoriesResponse: Schema.Schema<ListRepositoriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      repositories: Schema.optional(Schema.Array(Repository)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListRepositoriesResponse",
-  }) as any as Schema.Schema<ListRepositoriesResponse>;
+export const ListRepositoriesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    repositories: Schema.optional(Schema.Array(Repository)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListRepositoriesResponse" });
 
 export interface KfpArtifact {
   /** Output only. Resource name of the KFP artifact. Since users don't directly interact with this resource, the name will be derived from the associated version. For example, when version = ".../versions/sha256:abcdef...", the name will be ".../kfpArtifacts/sha256:abcdef...". */
@@ -1698,29 +1397,24 @@ export interface KfpArtifact {
   version?: string;
 }
 
-export const KfpArtifact: Schema.Schema<KfpArtifact> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "KfpArtifact",
-  }) as any as Schema.Schema<KfpArtifact>;
+export const KfpArtifact = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+}).annotate({ identifier: "KfpArtifact" });
 
 export interface UploadAptArtifactRequest {}
 
-export const UploadAptArtifactRequest: Schema.Schema<UploadAptArtifactRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const UploadAptArtifactRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UploadAptArtifactRequest",
-  }) as any as Schema.Schema<UploadAptArtifactRequest>;
+  });
 
 export interface ImportGoogetArtifactsMetadata {}
 
-export const ImportGoogetArtifactsMetadata: Schema.Schema<ImportGoogetArtifactsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const ImportGoogetArtifactsMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ImportGoogetArtifactsMetadata",
-  }) as any as Schema.Schema<ImportGoogetArtifactsMetadata>;
+  });
 
 export interface PythonPackage {
   /** Required. registry_location, project_id, repository_name and python_package forms a unique package name:`projects//locations//repository//pythonPackages/`. For example, "projects/test-project/locations/us-west4/repositories/test-repo/pythonPackages/ python_package:1.0.0", where "us-west4" is the registry_location, "test-project" is the project_id, "test-repo" is the repository_name and python_package:1.0.0" is the python package. */
@@ -1737,33 +1431,24 @@ export interface PythonPackage {
   version?: string;
 }
 
-export const PythonPackage: Schema.Schema<PythonPackage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      uri: Schema.optional(Schema.String),
-      packageName: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PythonPackage",
-  }) as any as Schema.Schema<PythonPackage>;
+export const PythonPackage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  uri: Schema.optional(Schema.String),
+  packageName: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+}).annotate({ identifier: "PythonPackage" });
 
 export interface UploadKfpArtifactMediaResponse {
   /** Operation that will be returned to the user. */
   operation?: Operation;
 }
 
-export const UploadKfpArtifactMediaResponse: Schema.Schema<UploadKfpArtifactMediaResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operation: Schema.optional(Operation),
-    }),
-  ).annotate({
-    identifier: "UploadKfpArtifactMediaResponse",
-  }) as any as Schema.Schema<UploadKfpArtifactMediaResponse>;
+export const UploadKfpArtifactMediaResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operation: Schema.optional(Operation),
+  }).annotate({ identifier: "UploadKfpArtifactMediaResponse" });
 
 export interface BatchDeleteVersionsRequest {
   /** Required. The names of the versions to delete. The maximum number of versions deleted per batch is determined by the service and is dependent on the available resources in the region. */
@@ -1772,50 +1457,37 @@ export interface BatchDeleteVersionsRequest {
   validateOnly?: boolean;
 }
 
-export const BatchDeleteVersionsRequest: Schema.Schema<BatchDeleteVersionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      names: Schema.optional(Schema.Array(Schema.String)),
-      validateOnly: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "BatchDeleteVersionsRequest",
-  }) as any as Schema.Schema<BatchDeleteVersionsRequest>;
+export const BatchDeleteVersionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    names: Schema.optional(Schema.Array(Schema.String)),
+    validateOnly: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "BatchDeleteVersionsRequest" });
 
 export interface UploadGenericArtifactMetadata {}
 
-export const UploadGenericArtifactMetadata: Schema.Schema<UploadGenericArtifactMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const UploadGenericArtifactMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UploadGenericArtifactMetadata",
-  }) as any as Schema.Schema<UploadGenericArtifactMetadata>;
+  });
 
 export interface ImportGoogetArtifactsRequest {
   /** Google Cloud Storage location where input content is located. */
   gcsSource?: ImportGoogetArtifactsGcsSource;
 }
 
-export const ImportGoogetArtifactsRequest: Schema.Schema<ImportGoogetArtifactsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsSource: Schema.optional(ImportGoogetArtifactsGcsSource),
-    }),
-  ).annotate({
-    identifier: "ImportGoogetArtifactsRequest",
-  }) as any as Schema.Schema<ImportGoogetArtifactsRequest>;
+export const ImportGoogetArtifactsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gcsSource: Schema.optional(ImportGoogetArtifactsGcsSource),
+  }).annotate({ identifier: "ImportGoogetArtifactsRequest" });
 
 export interface UploadFileRequest {
   /** Optional. The ID of the file. If left empty will default to sha256 digest of the content uploaded. */
   fileId?: string;
 }
 
-export const UploadFileRequest: Schema.Schema<UploadFileRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fileId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UploadFileRequest",
-  }) as any as Schema.Schema<UploadFileRequest>;
+export const UploadFileRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fileId: Schema.optional(Schema.String),
+}).annotate({ identifier: "UploadFileRequest" });
 
 export interface NpmPackage {
   /** Version of this package. */
@@ -1832,17 +1504,14 @@ export interface NpmPackage {
   updateTime?: string;
 }
 
-export const NpmPackage: Schema.Schema<NpmPackage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.String),
-      packageName: Schema.optional(Schema.String),
-      tags: Schema.optional(Schema.Array(Schema.String)),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "NpmPackage" }) as any as Schema.Schema<NpmPackage>;
+export const NpmPackage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.String),
+  packageName: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Array(Schema.String)),
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "NpmPackage" });
 
 export interface ListNpmPackagesResponse {
   /** The npm packages returned. */
@@ -1851,29 +1520,21 @@ export interface ListNpmPackagesResponse {
   nextPageToken?: string;
 }
 
-export const ListNpmPackagesResponse: Schema.Schema<ListNpmPackagesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      npmPackages: Schema.optional(Schema.Array(NpmPackage)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListNpmPackagesResponse",
-  }) as any as Schema.Schema<ListNpmPackagesResponse>;
+export const ListNpmPackagesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    npmPackages: Schema.optional(Schema.Array(NpmPackage)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListNpmPackagesResponse" });
 
 export interface UploadYumArtifactMediaResponse {
   /** Operation to be returned to the user. */
   operation?: Operation;
 }
 
-export const UploadYumArtifactMediaResponse: Schema.Schema<UploadYumArtifactMediaResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operation: Schema.optional(Operation),
-    }),
-  ).annotate({
-    identifier: "UploadYumArtifactMediaResponse",
-  }) as any as Schema.Schema<UploadYumArtifactMediaResponse>;
+export const UploadYumArtifactMediaResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operation: Schema.optional(Operation),
+  }).annotate({ identifier: "UploadYumArtifactMediaResponse" });
 
 export interface GoogetArtifact {
   /** Output only. The GooGet package name of the artifact. */
@@ -1884,16 +1545,11 @@ export interface GoogetArtifact {
   architecture?: string;
 }
 
-export const GoogetArtifact: Schema.Schema<GoogetArtifact> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      packageName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      architecture: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogetArtifact",
-  }) as any as Schema.Schema<GoogetArtifact>;
+export const GoogetArtifact = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  packageName: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  architecture: Schema.optional(Schema.String),
+}).annotate({ identifier: "GoogetArtifact" });
 
 export interface ImportGoogetArtifactsResponse {
   /** The GooGet artifacts updated. */
@@ -1902,36 +1558,28 @@ export interface ImportGoogetArtifactsResponse {
   errors?: Array<ImportGoogetArtifactsErrorInfo>;
 }
 
-export const ImportGoogetArtifactsResponse: Schema.Schema<ImportGoogetArtifactsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      googetArtifacts: Schema.optional(Schema.Array(GoogetArtifact)),
-      errors: Schema.optional(Schema.Array(ImportGoogetArtifactsErrorInfo)),
-    }),
-  ).annotate({
-    identifier: "ImportGoogetArtifactsResponse",
-  }) as any as Schema.Schema<ImportGoogetArtifactsResponse>;
+export const ImportGoogetArtifactsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    googetArtifacts: Schema.optional(Schema.Array(GoogetArtifact)),
+    errors: Schema.optional(Schema.Array(ImportGoogetArtifactsErrorInfo)),
+  }).annotate({ identifier: "ImportGoogetArtifactsResponse" });
 
 export interface UploadGenericArtifactMediaResponse {
   /** Operation that will be returned to the user. */
   operation?: Operation;
 }
 
-export const UploadGenericArtifactMediaResponse: Schema.Schema<UploadGenericArtifactMediaResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operation: Schema.optional(Operation),
-    }),
-  ).annotate({
-    identifier: "UploadGenericArtifactMediaResponse",
-  }) as any as Schema.Schema<UploadGenericArtifactMediaResponse>;
+export const UploadGenericArtifactMediaResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operation: Schema.optional(Operation),
+  }).annotate({ identifier: "UploadGenericArtifactMediaResponse" });
 
 export interface UploadKfpArtifactMetadata {}
 
-export const UploadKfpArtifactMetadata: Schema.Schema<UploadKfpArtifactMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const UploadKfpArtifactMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UploadKfpArtifactMetadata",
-  }) as any as Schema.Schema<UploadKfpArtifactMetadata>;
+  });
 
 export interface GoogleDevtoolsArtifactregistryV1Rule {
   /** The package ID the rule applies to. If empty, this rule applies to all packages inside the repository. */
@@ -1945,67 +1593,53 @@ export interface GoogleDevtoolsArtifactregistryV1Rule {
   condition?: Expr;
 }
 
-export const GoogleDevtoolsArtifactregistryV1Rule: Schema.Schema<GoogleDevtoolsArtifactregistryV1Rule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      packageId: Schema.optional(Schema.String),
-      operation: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      action: Schema.optional(Schema.String),
-      condition: Schema.optional(Expr),
-    }),
-  ).annotate({
-    identifier: "GoogleDevtoolsArtifactregistryV1Rule",
-  }) as any as Schema.Schema<GoogleDevtoolsArtifactregistryV1Rule>;
+export const GoogleDevtoolsArtifactregistryV1Rule =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageId: Schema.optional(Schema.String),
+    operation: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    action: Schema.optional(Schema.String),
+    condition: Schema.optional(Expr),
+  }).annotate({ identifier: "GoogleDevtoolsArtifactregistryV1Rule" });
 
 export interface ImportYumArtifactsRequest {
   /** Google Cloud Storage location where input content is located. */
   gcsSource?: ImportYumArtifactsGcsSource;
 }
 
-export const ImportYumArtifactsRequest: Schema.Schema<ImportYumArtifactsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsSource: Schema.optional(ImportYumArtifactsGcsSource),
-    }),
-  ).annotate({
-    identifier: "ImportYumArtifactsRequest",
-  }) as any as Schema.Schema<ImportYumArtifactsRequest>;
+export const ImportYumArtifactsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gcsSource: Schema.optional(ImportYumArtifactsGcsSource),
+  }).annotate({ identifier: "ImportYumArtifactsRequest" });
 
 export interface UploadGoogetArtifactResponse {
   /** The GooGet artifacts updated. */
   googetArtifacts?: Array<GoogetArtifact>;
 }
 
-export const UploadGoogetArtifactResponse: Schema.Schema<UploadGoogetArtifactResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      googetArtifacts: Schema.optional(Schema.Array(GoogetArtifact)),
-    }),
-  ).annotate({
-    identifier: "UploadGoogetArtifactResponse",
-  }) as any as Schema.Schema<UploadGoogetArtifactResponse>;
+export const UploadGoogetArtifactResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    googetArtifacts: Schema.optional(Schema.Array(GoogetArtifact)),
+  }).annotate({ identifier: "UploadGoogetArtifactResponse" });
 
 export interface OperationMetadata {}
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "OperationMetadata" });
 
 export interface UploadGoogetArtifactMetadata {}
 
-export const UploadGoogetArtifactMetadata: Schema.Schema<UploadGoogetArtifactMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const UploadGoogetArtifactMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UploadGoogetArtifactMetadata",
-  }) as any as Schema.Schema<UploadGoogetArtifactMetadata>;
+  });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface ListRulesResponse {
   /** The rules returned. */
@@ -2014,17 +1648,10 @@ export interface ListRulesResponse {
   nextPageToken?: string;
 }
 
-export const ListRulesResponse: Schema.Schema<ListRulesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rules: Schema.optional(
-        Schema.Array(GoogleDevtoolsArtifactregistryV1Rule),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListRulesResponse",
-  }) as any as Schema.Schema<ListRulesResponse>;
+export const ListRulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  rules: Schema.optional(Schema.Array(GoogleDevtoolsArtifactregistryV1Rule)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListRulesResponse" });
 
 export interface ListMavenArtifactsResponse {
   /** The token to retrieve the next page of artifacts, or empty if there are no more artifacts to return. */
@@ -2033,15 +1660,11 @@ export interface ListMavenArtifactsResponse {
   mavenArtifacts?: Array<MavenArtifact>;
 }
 
-export const ListMavenArtifactsResponse: Schema.Schema<ListMavenArtifactsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      mavenArtifacts: Schema.optional(Schema.Array(MavenArtifact)),
-    }),
-  ).annotate({
-    identifier: "ListMavenArtifactsResponse",
-  }) as any as Schema.Schema<ListMavenArtifactsResponse>;
+export const ListMavenArtifactsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    mavenArtifacts: Schema.optional(Schema.Array(MavenArtifact)),
+  }).annotate({ identifier: "ListMavenArtifactsResponse" });
 
 export interface ListVersionsResponse {
   /** The versions returned. */
@@ -2050,29 +1673,20 @@ export interface ListVersionsResponse {
   nextPageToken?: string;
 }
 
-export const ListVersionsResponse: Schema.Schema<ListVersionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      versions: Schema.optional(Schema.Array(Version)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListVersionsResponse",
-  }) as any as Schema.Schema<ListVersionsResponse>;
+export const ListVersionsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  versions: Schema.optional(Schema.Array(Version)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListVersionsResponse" });
 
 export interface BatchDeleteVersionsMetadata {
   /** The versions the operation failed to delete. */
   failedVersions?: Array<string>;
 }
 
-export const BatchDeleteVersionsMetadata: Schema.Schema<BatchDeleteVersionsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      failedVersions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "BatchDeleteVersionsMetadata",
-  }) as any as Schema.Schema<BatchDeleteVersionsMetadata>;
+export const BatchDeleteVersionsMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    failedVersions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "BatchDeleteVersionsMetadata" });
 
 export interface ExportArtifactRequest {
   /** The artifact tag to export. Format:projects/{project}/locations/{location}/repositories/{repository}/packages/{package}/tags/{tag} */
@@ -2083,16 +1697,11 @@ export interface ExportArtifactRequest {
   sourceVersion?: string;
 }
 
-export const ExportArtifactRequest: Schema.Schema<ExportArtifactRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sourceTag: Schema.optional(Schema.String),
-      gcsPath: Schema.optional(Schema.String),
-      sourceVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ExportArtifactRequest",
-  }) as any as Schema.Schema<ExportArtifactRequest>;
+export const ExportArtifactRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sourceTag: Schema.optional(Schema.String),
+  gcsPath: Schema.optional(Schema.String),
+  sourceVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "ExportArtifactRequest" });
 
 export interface ListDockerImagesResponse {
   /** The token to retrieve the next page of artifacts, or empty if there are no more artifacts to return. */
@@ -2101,36 +1710,32 @@ export interface ListDockerImagesResponse {
   dockerImages?: Array<DockerImage>;
 }
 
-export const ListDockerImagesResponse: Schema.Schema<ListDockerImagesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      dockerImages: Schema.optional(Schema.Array(DockerImage)),
-    }),
-  ).annotate({
-    identifier: "ListDockerImagesResponse",
-  }) as any as Schema.Schema<ListDockerImagesResponse>;
+export const ListDockerImagesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    dockerImages: Schema.optional(Schema.Array(DockerImage)),
+  }).annotate({ identifier: "ListDockerImagesResponse" });
 
 export interface UploadGoogetArtifactRequest {}
 
-export const UploadGoogetArtifactRequest: Schema.Schema<UploadGoogetArtifactRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const UploadGoogetArtifactRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UploadGoogetArtifactRequest",
-  }) as any as Schema.Schema<UploadGoogetArtifactRequest>;
+  });
 
 export interface ImportAptArtifactsMetadata {}
 
-export const ImportAptArtifactsMetadata: Schema.Schema<ImportAptArtifactsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const ImportAptArtifactsMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ImportAptArtifactsMetadata",
-  }) as any as Schema.Schema<ImportAptArtifactsMetadata>;
+  });
 
 export interface UploadYumArtifactMetadata {}
 
-export const UploadYumArtifactMetadata: Schema.Schema<UploadYumArtifactMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const UploadYumArtifactMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UploadYumArtifactMetadata",
-  }) as any as Schema.Schema<UploadYumArtifactMetadata>;
+  });
 
 export interface ListPythonPackagesResponse {
   /** The token to retrieve the next page of artifacts, or empty if there are no more artifacts to return. */
@@ -2139,29 +1744,21 @@ export interface ListPythonPackagesResponse {
   pythonPackages?: Array<PythonPackage>;
 }
 
-export const ListPythonPackagesResponse: Schema.Schema<ListPythonPackagesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      pythonPackages: Schema.optional(Schema.Array(PythonPackage)),
-    }),
-  ).annotate({
-    identifier: "ListPythonPackagesResponse",
-  }) as any as Schema.Schema<ListPythonPackagesResponse>;
+export const ListPythonPackagesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    pythonPackages: Schema.optional(Schema.Array(PythonPackage)),
+  }).annotate({ identifier: "ListPythonPackagesResponse" });
 
 export interface UploadAptArtifactMediaResponse {
   /** Operation to be returned to the user. */
   operation?: Operation;
 }
 
-export const UploadAptArtifactMediaResponse: Schema.Schema<UploadAptArtifactMediaResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operation: Schema.optional(Operation),
-    }),
-  ).annotate({
-    identifier: "UploadAptArtifactMediaResponse",
-  }) as any as Schema.Schema<UploadAptArtifactMediaResponse>;
+export const UploadAptArtifactMediaResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operation: Schema.optional(Operation),
+  }).annotate({ identifier: "UploadAptArtifactMediaResponse" });
 
 export interface ProjectConfig {
   /** Identifier. The name of the project's configuration. Always of the form: projects/{project}/locations/{location}/projectConfig */
@@ -2170,36 +1767,26 @@ export interface ProjectConfig {
   platformLogsConfig?: PlatformLogsConfig;
 }
 
-export const ProjectConfig: Schema.Schema<ProjectConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      platformLogsConfig: Schema.optional(PlatformLogsConfig),
-    }),
-  ).annotate({
-    identifier: "ProjectConfig",
-  }) as any as Schema.Schema<ProjectConfig>;
+export const ProjectConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  platformLogsConfig: Schema.optional(PlatformLogsConfig),
+}).annotate({ identifier: "ProjectConfig" });
 
 export interface DownloadFileResponse {}
 
-export const DownloadFileResponse: Schema.Schema<DownloadFileResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "DownloadFileResponse",
-  }) as any as Schema.Schema<DownloadFileResponse>;
+export const DownloadFileResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "DownloadFileResponse" });
 
 export interface ImportAptArtifactsRequest {
   /** Google Cloud Storage location where input content is located. */
   gcsSource?: ImportAptArtifactsGcsSource;
 }
 
-export const ImportAptArtifactsRequest: Schema.Schema<ImportAptArtifactsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsSource: Schema.optional(ImportAptArtifactsGcsSource),
-    }),
-  ).annotate({
-    identifier: "ImportAptArtifactsRequest",
-  }) as any as Schema.Schema<ImportAptArtifactsRequest>;
+export const ImportAptArtifactsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gcsSource: Schema.optional(ImportAptArtifactsGcsSource),
+  }).annotate({ identifier: "ImportAptArtifactsRequest" });
 
 // ==========================================================================
 // Operations

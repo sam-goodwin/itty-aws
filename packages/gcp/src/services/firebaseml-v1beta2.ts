@@ -33,17 +33,12 @@ export interface DownloadModelResponse {
   expireTime?: string;
 }
 
-export const DownloadModelResponse: Schema.Schema<DownloadModelResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      modelFormat: Schema.optional(Schema.String),
-      sizeBytes: Schema.optional(Schema.String),
-      downloadUri: Schema.optional(Schema.String),
-      expireTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DownloadModelResponse",
-  }) as any as Schema.Schema<DownloadModelResponse>;
+export const DownloadModelResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  modelFormat: Schema.optional(Schema.String),
+  sizeBytes: Schema.optional(Schema.String),
+  downloadUri: Schema.optional(Schema.String),
+  expireTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "DownloadModelResponse" });
 
 export interface TfLiteModel {
   /** The AutoML model id referencing a model you created with the AutoML API. The name should have format 'projects//locations//models/' (This is the model resource name returned from the AutoML API) */
@@ -54,16 +49,11 @@ export interface TfLiteModel {
   gcsTfliteUri?: string;
 }
 
-export const TfLiteModel: Schema.Schema<TfLiteModel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      automlModel: Schema.optional(Schema.String),
-      sizeBytes: Schema.optional(Schema.String),
-      gcsTfliteUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TfLiteModel",
-  }) as any as Schema.Schema<TfLiteModel>;
+export const TfLiteModel = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  automlModel: Schema.optional(Schema.String),
+  sizeBytes: Schema.optional(Schema.String),
+  gcsTfliteUri: Schema.optional(Schema.String),
+}).annotate({ identifier: "TfLiteModel" });
 
 export interface ModelOperationMetadata {
   basicOperationStatus?:
@@ -75,15 +65,12 @@ export interface ModelOperationMetadata {
   name?: string;
 }
 
-export const ModelOperationMetadata: Schema.Schema<ModelOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      basicOperationStatus: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ModelOperationMetadata",
-  }) as any as Schema.Schema<ModelOperationMetadata>;
+export const ModelOperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    basicOperationStatus: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ModelOperationMetadata" });
 
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -94,16 +81,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -118,16 +102,13 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      error: Schema.optional(Status),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  done: Schema.optional(Schema.Boolean),
+  error: Schema.optional(Status),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Operation" });
 
 export interface ModelState {
   /** Output only. Indicates the latest validation error on the model if any. A model may have validation errors if there were problems during the model creation/update. e.g. in the case of a TfLiteModel, if a tflite model file was missing or in the wrong format. This field will be empty for valid models. */
@@ -136,13 +117,10 @@ export interface ModelState {
   published?: boolean;
 }
 
-export const ModelState: Schema.Schema<ModelState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      validationError: Schema.optional(Status),
-      published: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "ModelState" }) as any as Schema.Schema<ModelState>;
+export const ModelState = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  validationError: Schema.optional(Status),
+  published: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "ModelState" });
 
 export interface Model {
   /** Output only. Timestamp when this model was updated in Firebase ML. */
@@ -167,21 +145,18 @@ export interface Model {
   state?: ModelState;
 }
 
-export const Model: Schema.Schema<Model> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateTime: Schema.optional(Schema.String),
-      activeOperations: Schema.optional(Schema.Array(Operation)),
-      tags: Schema.optional(Schema.Array(Schema.String)),
-      name: Schema.optional(Schema.String),
-      modelHash: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      tfliteModel: Schema.optional(TfLiteModel),
-      displayName: Schema.optional(Schema.String),
-      state: Schema.optional(ModelState),
-    }),
-  ).annotate({ identifier: "Model" }) as any as Schema.Schema<Model>;
+export const Model = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  updateTime: Schema.optional(Schema.String),
+  activeOperations: Schema.optional(Schema.Array(Operation)),
+  tags: Schema.optional(Schema.Array(Schema.String)),
+  name: Schema.optional(Schema.String),
+  modelHash: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  tfliteModel: Schema.optional(TfLiteModel),
+  displayName: Schema.optional(Schema.String),
+  state: Schema.optional(ModelState),
+}).annotate({ identifier: "Model" });
 
 export interface ListModelsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
@@ -190,22 +165,16 @@ export interface ListModelsResponse {
   models?: Array<Model>;
 }
 
-export const ListModelsResponse: Schema.Schema<ListModelsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      models: Schema.optional(Schema.Array(Model)),
-    }),
-  ).annotate({
-    identifier: "ListModelsResponse",
-  }) as any as Schema.Schema<ListModelsResponse>;
+export const ListModelsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  models: Schema.optional(Schema.Array(Model)),
+}).annotate({ identifier: "ListModelsResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 // ==========================================================================
 // Operations

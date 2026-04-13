@@ -31,16 +31,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      message: Schema.optional(Schema.String),
-      code: Schema.optional(Schema.Number),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  message: Schema.optional(Schema.String),
+  code: Schema.optional(Schema.Number),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface CNAME {
   /** Output only. The expected value of the CNAME record for the domain, equals to `dns_resource_record.data` in the corresponding `DnsAuthorization`. */
@@ -51,14 +48,11 @@ export interface CNAME {
   name?: string;
 }
 
-export const CNAME: Schema.Schema<CNAME> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expectedData: Schema.optional(Schema.String),
-      resolvedData: Schema.optional(Schema.Array(Schema.String)),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "CNAME" }) as any as Schema.Schema<CNAME>;
+export const CNAME = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  expectedData: Schema.optional(Schema.String),
+  resolvedData: Schema.optional(Schema.Array(Schema.String)),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "CNAME" });
 
 export interface IPs {
   /** Output only. The list of IP addresses, where the certificate is attached, but port 443 is not open. */
@@ -69,14 +63,11 @@ export interface IPs {
   resolved?: Array<string>;
 }
 
-export const IPs: Schema.Schema<IPs> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      servingOnAltPorts: Schema.optional(Schema.Array(Schema.String)),
-      serving: Schema.optional(Schema.Array(Schema.String)),
-      resolved: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "IPs" }) as any as Schema.Schema<IPs>;
+export const IPs = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  servingOnAltPorts: Schema.optional(Schema.Array(Schema.String)),
+  serving: Schema.optional(Schema.Array(Schema.String)),
+  resolved: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "IPs" });
 
 export interface Troubleshooting {
   /** Output only. CNAME troubleshooting information. */
@@ -95,16 +86,11 @@ export interface Troubleshooting {
   ips?: IPs;
 }
 
-export const Troubleshooting: Schema.Schema<Troubleshooting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cname: Schema.optional(CNAME),
-      issues: Schema.optional(Schema.Array(Schema.String)),
-      ips: Schema.optional(IPs),
-    }),
-  ).annotate({
-    identifier: "Troubleshooting",
-  }) as any as Schema.Schema<Troubleshooting>;
+export const Troubleshooting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cname: Schema.optional(CNAME),
+  issues: Schema.optional(Schema.Array(Schema.String)),
+  ips: Schema.optional(IPs),
+}).annotate({ identifier: "Troubleshooting" });
 
 export interface AuthorizationAttemptInfo {
   /** Output only. Reason for failure of the authorization attempt for the domain. */
@@ -131,19 +117,15 @@ export interface AuthorizationAttemptInfo {
   attemptTime?: string;
 }
 
-export const AuthorizationAttemptInfo: Schema.Schema<AuthorizationAttemptInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      failureReason: Schema.optional(Schema.String),
-      troubleshooting: Schema.optional(Troubleshooting),
-      domain: Schema.optional(Schema.String),
-      details: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      attemptTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AuthorizationAttemptInfo",
-  }) as any as Schema.Schema<AuthorizationAttemptInfo>;
+export const AuthorizationAttemptInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    failureReason: Schema.optional(Schema.String),
+    troubleshooting: Schema.optional(Troubleshooting),
+    domain: Schema.optional(Schema.String),
+    details: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    attemptTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AuthorizationAttemptInfo" });
 
 export interface ProvisioningIssue {
   /** Output only. Reason for provisioning failures. */
@@ -156,15 +138,10 @@ export interface ProvisioningIssue {
   details?: string;
 }
 
-export const ProvisioningIssue: Schema.Schema<ProvisioningIssue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reason: Schema.optional(Schema.String),
-      details: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProvisioningIssue",
-  }) as any as Schema.Schema<ProvisioningIssue>;
+export const ProvisioningIssue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  reason: Schema.optional(Schema.String),
+  details: Schema.optional(Schema.String),
+}).annotate({ identifier: "ProvisioningIssue" });
 
 export interface ManagedCertificate {
   /** Optional. Immutable. The resource name for a CertificateIssuanceConfig used to configure private PKI certificates in the format `projects/* /locations/* /certificateIssuanceConfigs/*`. If this field is not set, the certificates will instead be publicly signed as documented at https://cloud.google.com/load-balancing/docs/ssl-certificates/google-managed-certs#caa. */
@@ -186,35 +163,26 @@ export interface ManagedCertificate {
   dnsAuthorizations?: Array<string>;
 }
 
-export const ManagedCertificate: Schema.Schema<ManagedCertificate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      issuanceConfig: Schema.optional(Schema.String),
-      authorizationAttemptInfo: Schema.optional(
-        Schema.Array(AuthorizationAttemptInfo),
-      ),
-      state: Schema.optional(Schema.String),
-      provisioningIssue: Schema.optional(ProvisioningIssue),
-      domains: Schema.optional(Schema.Array(Schema.String)),
-      dnsAuthorizations: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ManagedCertificate",
-  }) as any as Schema.Schema<ManagedCertificate>;
+export const ManagedCertificate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  issuanceConfig: Schema.optional(Schema.String),
+  authorizationAttemptInfo: Schema.optional(
+    Schema.Array(AuthorizationAttemptInfo),
+  ),
+  state: Schema.optional(Schema.String),
+  provisioningIssue: Schema.optional(ProvisioningIssue),
+  domains: Schema.optional(Schema.Array(Schema.String)),
+  dnsAuthorizations: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ManagedCertificate" });
 
 export interface CertificateAuthorityServiceConfig {
   /** Required. A CA pool resource used to issue a certificate. The CA pool string has a relative resource path following the form "projects/{project}/locations/{location}/caPools/{ca_pool}". */
   caPool?: string;
 }
 
-export const CertificateAuthorityServiceConfig: Schema.Schema<CertificateAuthorityServiceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      caPool: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CertificateAuthorityServiceConfig",
-  }) as any as Schema.Schema<CertificateAuthorityServiceConfig>;
+export const CertificateAuthorityServiceConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    caPool: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CertificateAuthorityServiceConfig" });
 
 export interface Operation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
@@ -229,16 +197,13 @@ export interface Operation {
   error?: Status;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      done: Schema.optional(Schema.Boolean),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      error: Schema.optional(Status),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  done: Schema.optional(Schema.Boolean),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  name: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  error: Schema.optional(Status),
+}).annotate({ identifier: "Operation" });
 
 export interface ManagedIdentityCertificate {
   /** Required. Immutable. SPIFFE ID of the Managed Identity used for this certificate. */
@@ -254,16 +219,12 @@ export interface ManagedIdentityCertificate {
   provisioningIssue?: ProvisioningIssue;
 }
 
-export const ManagedIdentityCertificate: Schema.Schema<ManagedIdentityCertificate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      identity: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      provisioningIssue: Schema.optional(ProvisioningIssue),
-    }),
-  ).annotate({
-    identifier: "ManagedIdentityCertificate",
-  }) as any as Schema.Schema<ManagedIdentityCertificate>;
+export const ManagedIdentityCertificate =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    identity: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    provisioningIssue: Schema.optional(ProvisioningIssue),
+  }).annotate({ identifier: "ManagedIdentityCertificate" });
 
 export interface SelfManagedCertificate {
   /** Optional. Input only. The PEM-encoded certificate chain. Leaf certificate comes first, followed by intermediate ones if any. */
@@ -272,27 +233,21 @@ export interface SelfManagedCertificate {
   pemPrivateKey?: string;
 }
 
-export const SelfManagedCertificate: Schema.Schema<SelfManagedCertificate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pemCertificate: Schema.optional(Schema.String),
-      pemPrivateKey: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SelfManagedCertificate",
-  }) as any as Schema.Schema<SelfManagedCertificate>;
+export const SelfManagedCertificate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    pemCertificate: Schema.optional(Schema.String),
+    pemPrivateKey: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "SelfManagedCertificate" });
 
 export interface UsedBy {
   /** Output only. Full name of the resource https://google.aip.dev/122#full-resource-names, e.g. `//certificatemanager.googleapis.com/projects/* /locations/* /certificateMaps/* /certificateMapEntries/*` or `//compute.googleapis.com/projects/* /locations/* /targetHttpsProxies/*`. */
   name?: string;
 }
 
-export const UsedBy: Schema.Schema<UsedBy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "UsedBy" }) as any as Schema.Schema<UsedBy>;
+export const UsedBy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "UsedBy" });
 
 export interface Certificate {
   /** Identifier. A user-defined name of the certificate. Certificate names must be unique globally and match pattern `projects/* /locations/* /certificates/*`. */
@@ -328,26 +283,21 @@ export interface Certificate {
   managed?: ManagedCertificate;
 }
 
-export const Certificate: Schema.Schema<Certificate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      pemCertificate: Schema.optional(Schema.String),
-      managedIdentity: Schema.optional(ManagedIdentityCertificate),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      selfManaged: Schema.optional(SelfManagedCertificate),
-      scope: Schema.optional(Schema.String),
-      usedBy: Schema.optional(Schema.Array(UsedBy)),
-      expireTime: Schema.optional(Schema.String),
-      sanDnsnames: Schema.optional(Schema.Array(Schema.String)),
-      updateTime: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      managed: Schema.optional(ManagedCertificate),
-    }),
-  ).annotate({
-    identifier: "Certificate",
-  }) as any as Schema.Schema<Certificate>;
+export const Certificate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  pemCertificate: Schema.optional(Schema.String),
+  managedIdentity: Schema.optional(ManagedIdentityCertificate),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  selfManaged: Schema.optional(SelfManagedCertificate),
+  scope: Schema.optional(Schema.String),
+  usedBy: Schema.optional(Schema.Array(UsedBy)),
+  expireTime: Schema.optional(Schema.String),
+  sanDnsnames: Schema.optional(Schema.Array(Schema.String)),
+  updateTime: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  managed: Schema.optional(ManagedCertificate),
+}).annotate({ identifier: "Certificate" });
 
 export interface ListCertificatesResponse {
   /** If there might be more results than those appearing in this response, then `next_page_token` is included. To get the next set of results, call this method again using the value of `next_page_token` as `page_token`. */
@@ -358,16 +308,12 @@ export interface ListCertificatesResponse {
   unreachable?: Array<string>;
 }
 
-export const ListCertificatesResponse: Schema.Schema<ListCertificatesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      certificates: Schema.optional(Schema.Array(Certificate)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListCertificatesResponse",
-  }) as any as Schema.Schema<ListCertificatesResponse>;
+export const ListCertificatesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    certificates: Schema.optional(Schema.Array(Certificate)),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListCertificatesResponse" });
 
 export interface CertificateMapEntry {
   /** A Hostname (FQDN, e.g. `example.com`) or a wildcard hostname expression (`*.example.com`) for a set of hostnames with common suffix. Used as Server Name Indication (SNI) for selecting a proper certificate. */
@@ -390,22 +336,17 @@ export interface CertificateMapEntry {
   description?: string;
 }
 
-export const CertificateMapEntry: Schema.Schema<CertificateMapEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hostname: Schema.optional(Schema.String),
-      matcher: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      updateTime: Schema.optional(Schema.String),
-      certificates: Schema.optional(Schema.Array(Schema.String)),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CertificateMapEntry",
-  }) as any as Schema.Schema<CertificateMapEntry>;
+export const CertificateMapEntry = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  hostname: Schema.optional(Schema.String),
+  matcher: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  updateTime: Schema.optional(Schema.String),
+  certificates: Schema.optional(Schema.Array(Schema.String)),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "CertificateMapEntry" });
 
 export interface DnsResourceRecord {
   /** Output only. Fully qualified name of the DNS Resource Record. e.g. `_acme-challenge.example.com` */
@@ -416,16 +357,11 @@ export interface DnsResourceRecord {
   type?: string;
 }
 
-export const DnsResourceRecord: Schema.Schema<DnsResourceRecord> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      data: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DnsResourceRecord",
-  }) as any as Schema.Schema<DnsResourceRecord>;
+export const DnsResourceRecord = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  data: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "DnsResourceRecord" });
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -436,16 +372,13 @@ export interface ListOperationsResponse {
   nextPageToken?: string;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(Schema.Array(Operation)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    operations: Schema.optional(Schema.Array(Operation)),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 export interface ListCertificateMapEntriesResponse {
   /** If there might be more results than those appearing in this response, then `next_page_token` is included. To get the next set of results, call this method again using the value of `next_page_token` as `page_token`. */
@@ -456,16 +389,12 @@ export interface ListCertificateMapEntriesResponse {
   certificateMapEntries?: Array<CertificateMapEntry>;
 }
 
-export const ListCertificateMapEntriesResponse: Schema.Schema<ListCertificateMapEntriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      certificateMapEntries: Schema.optional(Schema.Array(CertificateMapEntry)),
-    }),
-  ).annotate({
-    identifier: "ListCertificateMapEntriesResponse",
-  }) as any as Schema.Schema<ListCertificateMapEntriesResponse>;
+export const ListCertificateMapEntriesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    certificateMapEntries: Schema.optional(Schema.Array(CertificateMapEntry)),
+  }).annotate({ identifier: "ListCertificateMapEntriesResponse" });
 
 export interface DnsAuthorization {
   /** Optional. One or more paragraphs of text description of a DnsAuthorization. */
@@ -490,21 +419,16 @@ export interface DnsAuthorization {
     | (string & {});
 }
 
-export const DnsAuthorization: Schema.Schema<DnsAuthorization> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      domain: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      dnsResourceRecord: Schema.optional(DnsResourceRecord),
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DnsAuthorization",
-  }) as any as Schema.Schema<DnsAuthorization>;
+export const DnsAuthorization = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  dnsResourceRecord: Schema.optional(DnsResourceRecord),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "DnsAuthorization" });
 
 export interface ListDnsAuthorizationsResponse {
   /** Locations that could not be reached. */
@@ -515,58 +439,41 @@ export interface ListDnsAuthorizationsResponse {
   nextPageToken?: string;
 }
 
-export const ListDnsAuthorizationsResponse: Schema.Schema<ListDnsAuthorizationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      dnsAuthorizations: Schema.optional(Schema.Array(DnsAuthorization)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListDnsAuthorizationsResponse",
-  }) as any as Schema.Schema<ListDnsAuthorizationsResponse>;
+export const ListDnsAuthorizationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    dnsAuthorizations: Schema.optional(Schema.Array(DnsAuthorization)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListDnsAuthorizationsResponse" });
 
 export interface AllowlistedCertificate {
   /** Required. PEM certificate that is allowlisted. The certificate can be up to 5k bytes, and must be a parseable X.509 certificate. */
   pemCertificate?: string;
 }
 
-export const AllowlistedCertificate: Schema.Schema<AllowlistedCertificate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pemCertificate: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AllowlistedCertificate",
-  }) as any as Schema.Schema<AllowlistedCertificate>;
+export const AllowlistedCertificate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    pemCertificate: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "AllowlistedCertificate" });
 
 export interface IntermediateCA {
   /** PEM intermediate certificate used for building up paths for validation. Each certificate provided in PEM format may occupy up to 5kB. */
   pemCertificate?: string;
 }
 
-export const IntermediateCA: Schema.Schema<IntermediateCA> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pemCertificate: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "IntermediateCA",
-  }) as any as Schema.Schema<IntermediateCA>;
+export const IntermediateCA = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pemCertificate: Schema.optional(Schema.String),
+}).annotate({ identifier: "IntermediateCA" });
 
 export interface TrustAnchor {
   /** PEM root certificate of the PKI used for validation. Each certificate provided in PEM format may occupy up to 5kB. */
   pemCertificate?: string;
 }
 
-export const TrustAnchor: Schema.Schema<TrustAnchor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pemCertificate: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TrustAnchor",
-  }) as any as Schema.Schema<TrustAnchor>;
+export const TrustAnchor = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pemCertificate: Schema.optional(Schema.String),
+}).annotate({ identifier: "TrustAnchor" });
 
 export interface TrustStore {
   /** Optional. Set of intermediate CA certificates used for the path building phase of chain validation. The field is currently not supported if TrustConfig is used for the workload certificate feature. */
@@ -575,13 +482,10 @@ export interface TrustStore {
   trustAnchors?: Array<TrustAnchor>;
 }
 
-export const TrustStore: Schema.Schema<TrustStore> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      intermediateCas: Schema.optional(Schema.Array(IntermediateCA)),
-      trustAnchors: Schema.optional(Schema.Array(TrustAnchor)),
-    }),
-  ).annotate({ identifier: "TrustStore" }) as any as Schema.Schema<TrustStore>;
+export const TrustStore = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  intermediateCas: Schema.optional(Schema.Array(IntermediateCA)),
+  trustAnchors: Schema.optional(Schema.Array(TrustAnchor)),
+}).annotate({ identifier: "TrustStore" });
 
 export interface TrustConfig {
   /** Output only. The creation timestamp of a TrustConfig. */
@@ -604,42 +508,31 @@ export interface TrustConfig {
   etag?: string;
 }
 
-export const TrustConfig: Schema.Schema<TrustConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      allowlistedCertificates: Schema.optional(
-        Schema.Array(AllowlistedCertificate),
-      ),
-      description: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      spiffeTrustStores: Schema.optional(
-        Schema.Record(Schema.String, TrustStore),
-      ),
-      trustStores: Schema.optional(Schema.Array(TrustStore)),
-      name: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TrustConfig",
-  }) as any as Schema.Schema<TrustConfig>;
+export const TrustConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createTime: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  allowlistedCertificates: Schema.optional(
+    Schema.Array(AllowlistedCertificate),
+  ),
+  description: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  spiffeTrustStores: Schema.optional(Schema.Record(Schema.String, TrustStore)),
+  trustStores: Schema.optional(Schema.Array(TrustStore)),
+  name: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "TrustConfig" });
 
 export interface CertificateAuthorityConfig {
   /** Defines a CertificateAuthorityServiceConfig. */
   certificateAuthorityServiceConfig?: CertificateAuthorityServiceConfig;
 }
 
-export const CertificateAuthorityConfig: Schema.Schema<CertificateAuthorityConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      certificateAuthorityServiceConfig: Schema.optional(
-        CertificateAuthorityServiceConfig,
-      ),
-    }),
-  ).annotate({
-    identifier: "CertificateAuthorityConfig",
-  }) as any as Schema.Schema<CertificateAuthorityConfig>;
+export const CertificateAuthorityConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    certificateAuthorityServiceConfig: Schema.optional(
+      CertificateAuthorityServiceConfig,
+    ),
+  }).annotate({ identifier: "CertificateAuthorityConfig" });
 
 export interface CertificateIssuanceConfig {
   /** Required. Specifies the percentage of elapsed time of the certificate lifetime to wait before renewing the certificate. Must be a number between 1-99, inclusive. */
@@ -666,22 +559,18 @@ export interface CertificateIssuanceConfig {
   lifetime?: string;
 }
 
-export const CertificateIssuanceConfig: Schema.Schema<CertificateIssuanceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rotationWindowPercentage: Schema.optional(Schema.Number),
-      name: Schema.optional(Schema.String),
-      certificateAuthorityConfig: Schema.optional(CertificateAuthorityConfig),
-      keyAlgorithm: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      lifetime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CertificateIssuanceConfig",
-  }) as any as Schema.Schema<CertificateIssuanceConfig>;
+export const CertificateIssuanceConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rotationWindowPercentage: Schema.optional(Schema.Number),
+    name: Schema.optional(Schema.String),
+    certificateAuthorityConfig: Schema.optional(CertificateAuthorityConfig),
+    keyAlgorithm: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    lifetime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CertificateIssuanceConfig" });
 
 export interface IpConfig {
   /** Output only. Ports. */
@@ -690,13 +579,10 @@ export interface IpConfig {
   ipAddress?: string;
 }
 
-export const IpConfig: Schema.Schema<IpConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ports: Schema.optional(Schema.Array(Schema.Number)),
-      ipAddress: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "IpConfig" }) as any as Schema.Schema<IpConfig>;
+export const IpConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ports: Schema.optional(Schema.Array(Schema.Number)),
+  ipAddress: Schema.optional(Schema.String),
+}).annotate({ identifier: "IpConfig" });
 
 export interface GclbTarget {
   /** Output only. This field returns the resource name in the following format: `//compute.googleapis.com/projects/* /global/targetHttpsProxies/*`. */
@@ -707,21 +593,17 @@ export interface GclbTarget {
   ipConfigs?: Array<IpConfig>;
 }
 
-export const GclbTarget: Schema.Schema<GclbTarget> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetHttpsProxy: Schema.optional(Schema.String),
-      targetSslProxy: Schema.optional(Schema.String),
-      ipConfigs: Schema.optional(Schema.Array(IpConfig)),
-    }),
-  ).annotate({ identifier: "GclbTarget" }) as any as Schema.Schema<GclbTarget>;
+export const GclbTarget = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  targetHttpsProxy: Schema.optional(Schema.String),
+  targetSslProxy: Schema.optional(Schema.String),
+  ipConfigs: Schema.optional(Schema.Array(IpConfig)),
+}).annotate({ identifier: "GclbTarget" });
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelOperationRequest",
-  }) as any as Schema.Schema<CancelOperationRequest>;
+export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelOperationRequest" });
 
 export interface ListTrustConfigsResponse {
   /** A list of TrustConfigs for the parent resource. */
@@ -732,16 +614,12 @@ export interface ListTrustConfigsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListTrustConfigsResponse: Schema.Schema<ListTrustConfigsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      trustConfigs: Schema.optional(Schema.Array(TrustConfig)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListTrustConfigsResponse",
-  }) as any as Schema.Schema<ListTrustConfigsResponse>;
+export const ListTrustConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    trustConfigs: Schema.optional(Schema.Array(TrustConfig)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListTrustConfigsResponse" });
 
 export interface ListCertificateIssuanceConfigsResponse {
   /** If there might be more results than those appearing in this response, then `next_page_token` is included. To get the next set of results, call this method again using the value of `next_page_token` as `page_token`. */
@@ -752,18 +630,14 @@ export interface ListCertificateIssuanceConfigsResponse {
   certificateIssuanceConfigs?: Array<CertificateIssuanceConfig>;
 }
 
-export const ListCertificateIssuanceConfigsResponse: Schema.Schema<ListCertificateIssuanceConfigsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      certificateIssuanceConfigs: Schema.optional(
-        Schema.Array(CertificateIssuanceConfig),
-      ),
-    }),
-  ).annotate({
-    identifier: "ListCertificateIssuanceConfigsResponse",
-  }) as any as Schema.Schema<ListCertificateIssuanceConfigsResponse>;
+export const ListCertificateIssuanceConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    certificateIssuanceConfigs: Schema.optional(
+      Schema.Array(CertificateIssuanceConfig),
+    ),
+  }).annotate({ identifier: "ListCertificateIssuanceConfigsResponse" });
 
 export interface OperationMetadata {
   /** The time the operation was created. */
@@ -782,27 +656,21 @@ export interface OperationMetadata {
   apiVersion?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      apiVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createTime: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  verb: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  statusMessage: Schema.optional(Schema.String),
+  requestedCancellation: Schema.optional(Schema.Boolean),
+  apiVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationMetadata" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface CertificateMap {
   /** Output only. The creation timestamp of a Certificate Map. */
@@ -819,19 +687,14 @@ export interface CertificateMap {
   gclbTargets?: Array<GclbTarget>;
 }
 
-export const CertificateMap: Schema.Schema<CertificateMap> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      description: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      gclbTargets: Schema.optional(Schema.Array(GclbTarget)),
-    }),
-  ).annotate({
-    identifier: "CertificateMap",
-  }) as any as Schema.Schema<CertificateMap>;
+export const CertificateMap = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createTime: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  description: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  gclbTargets: Schema.optional(Schema.Array(GclbTarget)),
+}).annotate({ identifier: "CertificateMap" });
 
 export interface Location {
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
@@ -846,16 +709,13 @@ export interface Location {
   metadata?: Record<string, unknown>;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      locationId: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  locationId: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Location" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -864,15 +724,10 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(Location)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface ListCertificateMapsResponse {
   /** If there might be more results than those appearing in this response, then `next_page_token` is included. To get the next set of results, call this method again using the value of `next_page_token` as `page_token`. */
@@ -883,16 +738,12 @@ export interface ListCertificateMapsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListCertificateMapsResponse: Schema.Schema<ListCertificateMapsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      certificateMaps: Schema.optional(Schema.Array(CertificateMap)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListCertificateMapsResponse",
-  }) as any as Schema.Schema<ListCertificateMapsResponse>;
+export const ListCertificateMapsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    certificateMaps: Schema.optional(Schema.Array(CertificateMap)),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListCertificateMapsResponse" });
 
 // ==========================================================================
 // Operations

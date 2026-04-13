@@ -29,15 +29,10 @@ export interface ItemParameter {
   value?: string;
 }
 
-export const ItemParameter: Schema.Schema<ItemParameter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parameterName: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ItemParameter",
-  }) as any as Schema.Schema<ItemParameter>;
+export const ItemParameter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  parameterName: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+}).annotate({ identifier: "ItemParameter" });
 
 export interface Item {
   /** Optional. The unit price excluding tax, shipping, and any transaction level discounts. */
@@ -52,16 +47,13 @@ export interface Item {
   merchantProductId?: string;
 }
 
-export const Item: Schema.Schema<Item> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unitPrice: Schema.optional(Schema.Number),
-      itemId: Schema.optional(Schema.String),
-      additionalItemParameters: Schema.optional(Schema.Array(ItemParameter)),
-      quantity: Schema.optional(Schema.String),
-      merchantProductId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Item" }) as any as Schema.Schema<Item>;
+export const Item = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  unitPrice: Schema.optional(Schema.Number),
+  itemId: Schema.optional(Schema.String),
+  additionalItemParameters: Schema.optional(Schema.Array(ItemParameter)),
+  quantity: Schema.optional(Schema.String),
+  merchantProductId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Item" });
 
 export interface CartData {
   /** Optional. The Merchant Center ID associated with the items. */
@@ -76,28 +68,22 @@ export interface CartData {
   merchantFeedLanguageCode?: string;
 }
 
-export const CartData: Schema.Schema<CartData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      merchantId: Schema.optional(Schema.String),
-      merchantFeedLabel: Schema.optional(Schema.String),
-      transactionDiscount: Schema.optional(Schema.Number),
-      items: Schema.optional(Schema.Array(Item)),
-      merchantFeedLanguageCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "CartData" }) as any as Schema.Schema<CartData>;
+export const CartData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  merchantId: Schema.optional(Schema.String),
+  merchantFeedLabel: Schema.optional(Schema.String),
+  transactionDiscount: Schema.optional(Schema.Number),
+  items: Schema.optional(Schema.Array(Item)),
+  merchantFeedLanguageCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "CartData" });
 
 export interface UserIdData {
   /** Required. A unique identifier for a user, as defined by the advertiser. */
   userId?: string;
 }
 
-export const UserIdData: Schema.Schema<UserIdData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "UserIdData" }) as any as Schema.Schema<UserIdData>;
+export const UserIdData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  userId: Schema.optional(Schema.String),
+}).annotate({ identifier: "UserIdData" });
 
 export interface UserListLicensePricing {
   /** Output only. The buyer approval state of this pricing. This field is read-only. */
@@ -130,22 +116,19 @@ export interface UserListLicensePricing {
   startTime?: string;
 }
 
-export const UserListLicensePricing: Schema.Schema<UserListLicensePricing> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      buyerApprovalState: Schema.optional(Schema.String),
-      maxCostMicros: Schema.optional(Schema.String),
-      pricingActive: Schema.optional(Schema.Boolean),
-      costType: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      pricingId: Schema.optional(Schema.String),
-      costMicros: Schema.optional(Schema.String),
-      currencyCode: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UserListLicensePricing",
-  }) as any as Schema.Schema<UserListLicensePricing>;
+export const UserListLicensePricing = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    buyerApprovalState: Schema.optional(Schema.String),
+    maxCostMicros: Schema.optional(Schema.String),
+    pricingActive: Schema.optional(Schema.Boolean),
+    costType: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    pricingId: Schema.optional(Schema.String),
+    costMicros: Schema.optional(Schema.String),
+    currencyCode: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "UserListLicensePricing" });
 
 export interface UserListLicenseMetrics {
   /** Output only. The revenue for the user list license in USD micros. */
@@ -160,18 +143,15 @@ export interface UserListLicenseMetrics {
   startDate?: string;
 }
 
-export const UserListLicenseMetrics: Schema.Schema<UserListLicenseMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      revenueUsdMicros: Schema.optional(Schema.String),
-      clickCount: Schema.optional(Schema.String),
-      endDate: Schema.optional(Schema.String),
-      impressionCount: Schema.optional(Schema.String),
-      startDate: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UserListLicenseMetrics",
-  }) as any as Schema.Schema<UserListLicenseMetrics>;
+export const UserListLicenseMetrics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    revenueUsdMicros: Schema.optional(Schema.String),
+    clickCount: Schema.optional(Schema.String),
+    endDate: Schema.optional(Schema.String),
+    impressionCount: Schema.optional(Schema.String),
+    startDate: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "UserListLicenseMetrics" });
 
 export interface UserListDirectLicense {
   /** Immutable. ID of client customer which the user list is being licensed to. */
@@ -206,35 +186,27 @@ export interface UserListDirectLicense {
   metrics?: UserListLicenseMetrics;
 }
 
-export const UserListDirectLicense: Schema.Schema<UserListDirectLicense> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clientAccountId: Schema.optional(Schema.String),
-      historicalPricings: Schema.optional(Schema.Array(UserListLicensePricing)),
-      pricing: Schema.optional(UserListLicensePricing),
-      name: Schema.optional(Schema.String),
-      userListId: Schema.optional(Schema.String),
-      clientAccountDisplayName: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-      userListDisplayName: Schema.optional(Schema.String),
-      clientAccountType: Schema.optional(Schema.String),
-      metrics: Schema.optional(UserListLicenseMetrics),
-    }),
-  ).annotate({
-    identifier: "UserListDirectLicense",
-  }) as any as Schema.Schema<UserListDirectLicense>;
+export const UserListDirectLicense = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  clientAccountId: Schema.optional(Schema.String),
+  historicalPricings: Schema.optional(Schema.Array(UserListLicensePricing)),
+  pricing: Schema.optional(UserListLicensePricing),
+  name: Schema.optional(Schema.String),
+  userListId: Schema.optional(Schema.String),
+  clientAccountDisplayName: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.String),
+  userListDisplayName: Schema.optional(Schema.String),
+  clientAccountType: Schema.optional(Schema.String),
+  metrics: Schema.optional(UserListLicenseMetrics),
+}).annotate({ identifier: "UserListDirectLicense" });
 
 export interface Location {
   /** List of ISO 3166-1 alpha-2 region codes. */
   regionCodes?: Array<string>;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      regionCodes: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  regionCodes: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Location" });
 
 export interface Baseline {
   /** The baseline location of the request. Baseline location is an OR-list of the requested regions. */
@@ -243,13 +215,10 @@ export interface Baseline {
   locationAutoDetectionEnabled?: boolean;
 }
 
-export const Baseline: Schema.Schema<Baseline> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      baselineLocation: Schema.optional(Location),
-      locationAutoDetectionEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "Baseline" }) as any as Schema.Schema<Baseline>;
+export const Baseline = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  baselineLocation: Schema.optional(Location),
+  locationAutoDetectionEnabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Baseline" });
 
 export interface ProductAccount {
   /** Required. The ID of the account. For example, your Google Ads account ID. */
@@ -274,16 +243,11 @@ export interface ProductAccount {
     | (string & {});
 }
 
-export const ProductAccount: Schema.Schema<ProductAccount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accountId: Schema.optional(Schema.String),
-      accountType: Schema.optional(Schema.String),
-      product: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProductAccount",
-  }) as any as Schema.Schema<ProductAccount>;
+export const ProductAccount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  accountId: Schema.optional(Schema.String),
+  accountType: Schema.optional(Schema.String),
+  product: Schema.optional(Schema.String),
+}).annotate({ identifier: "ProductAccount" });
 
 export interface Destination {
   /** Optional. An account that the calling user's `login_account` has access to, through an established account link. For example, a data partner's `login_account` might have access to a client's `linked_account`. The partner might use this field to send data from the `linked_account` to another `operating_account`. */
@@ -298,18 +262,13 @@ export interface Destination {
   productDestinationId?: string;
 }
 
-export const Destination: Schema.Schema<Destination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      linkedAccount: Schema.optional(ProductAccount),
-      reference: Schema.optional(Schema.String),
-      operatingAccount: Schema.optional(ProductAccount),
-      loginAccount: Schema.optional(ProductAccount),
-      productDestinationId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Destination",
-  }) as any as Schema.Schema<Destination>;
+export const Destination = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  linkedAccount: Schema.optional(ProductAccount),
+  reference: Schema.optional(Schema.String),
+  operatingAccount: Schema.optional(ProductAccount),
+  loginAccount: Schema.optional(ProductAccount),
+  productDestinationId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Destination" });
 
 export interface ExperimentalField {
   /** Optional. The name of the field to use. */
@@ -318,15 +277,10 @@ export interface ExperimentalField {
   value?: string;
 }
 
-export const ExperimentalField: Schema.Schema<ExperimentalField> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      field: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ExperimentalField",
-  }) as any as Schema.Schema<ExperimentalField>;
+export const ExperimentalField = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  field: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+}).annotate({ identifier: "ExperimentalField" });
 
 export interface EventParameter {
   /** Required. The string representation of the value of the parameter to set. */
@@ -335,15 +289,10 @@ export interface EventParameter {
   parameterName?: string;
 }
 
-export const EventParameter: Schema.Schema<EventParameter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-      parameterName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EventParameter",
-  }) as any as Schema.Schema<EventParameter>;
+export const EventParameter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.String),
+  parameterName: Schema.optional(Schema.String),
+}).annotate({ identifier: "EventParameter" });
 
 export interface AddressInfo {
   /** Required. Family (last) name of the user, all lowercase, with no punctuation, no leading or trailing whitespace, and hashed as SHA-256. */
@@ -356,17 +305,12 @@ export interface AddressInfo {
   postalCode?: string;
 }
 
-export const AddressInfo: Schema.Schema<AddressInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      familyName: Schema.optional(Schema.String),
-      givenName: Schema.optional(Schema.String),
-      regionCode: Schema.optional(Schema.String),
-      postalCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AddressInfo",
-  }) as any as Schema.Schema<AddressInfo>;
+export const AddressInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  familyName: Schema.optional(Schema.String),
+  givenName: Schema.optional(Schema.String),
+  regionCode: Schema.optional(Schema.String),
+  postalCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "AddressInfo" });
 
 export interface UserIdentifier {
   /** Hashed email address using SHA-256 hash function after normalization. */
@@ -377,28 +321,20 @@ export interface UserIdentifier {
   address?: AddressInfo;
 }
 
-export const UserIdentifier: Schema.Schema<UserIdentifier> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      emailAddress: Schema.optional(Schema.String),
-      phoneNumber: Schema.optional(Schema.String),
-      address: Schema.optional(AddressInfo),
-    }),
-  ).annotate({
-    identifier: "UserIdentifier",
-  }) as any as Schema.Schema<UserIdentifier>;
+export const UserIdentifier = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  emailAddress: Schema.optional(Schema.String),
+  phoneNumber: Schema.optional(Schema.String),
+  address: Schema.optional(AddressInfo),
+}).annotate({ identifier: "UserIdentifier" });
 
 export interface UserData {
   /** Required. The identifiers for the user. It's possible to provide multiple instances of the same type of data (for example, multiple email addresses). To increase the likelihood of a match, provide as many identifiers as possible. At most 10 `userIdentifiers` can be provided in a single AudienceMember or Event. */
   userIdentifiers?: Array<UserIdentifier>;
 }
 
-export const UserData: Schema.Schema<UserData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userIdentifiers: Schema.optional(Schema.Array(UserIdentifier)),
-    }),
-  ).annotate({ identifier: "UserData" }) as any as Schema.Schema<UserData>;
+export const UserData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  userIdentifiers: Schema.optional(Schema.Array(UserIdentifier)),
+}).annotate({ identifier: "UserData" });
 
 export interface DeviceInfo {
   /** Optional. The IP address of the device for the given context. **Note:** Google Ads does not support IP address matching for end users in the European Economic Area (EEA), United Kingdom (UK), or Switzerland (CH). Add logic to conditionally exclude sharing IP addresses from users from these regions and ensure that you provide users with clear and comprehensive information about the data you collect on your sites, apps, and other properties and get consent where required by law or any applicable Google policies. See the [About offline conversion imports](https://support.google.com/google-ads/answer/2998031) page for more details. */
@@ -407,13 +343,10 @@ export interface DeviceInfo {
   userAgent?: string;
 }
 
-export const DeviceInfo: Schema.Schema<DeviceInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ipAddress: Schema.optional(Schema.String),
-      userAgent: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "DeviceInfo" }) as any as Schema.Schema<DeviceInfo>;
+export const DeviceInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ipAddress: Schema.optional(Schema.String),
+  userAgent: Schema.optional(Schema.String),
+}).annotate({ identifier: "DeviceInfo" });
 
 export interface Consent {
   /** Optional. Represents if the user consents to ad personalization. */
@@ -430,13 +363,10 @@ export interface Consent {
     | (string & {});
 }
 
-export const Consent: Schema.Schema<Consent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      adPersonalization: Schema.optional(Schema.String),
-      adUserData: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Consent" }) as any as Schema.Schema<Consent>;
+export const Consent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  adPersonalization: Schema.optional(Schema.String),
+  adUserData: Schema.optional(Schema.String),
+}).annotate({ identifier: "Consent" });
 
 export interface AdIdentifiers {
   /** Optional. The click identifier for clicks associated with app events and originating from iOS devices starting with iOS14. */
@@ -451,18 +381,13 @@ export interface AdIdentifiers {
   landingPageDeviceInfo?: DeviceInfo;
 }
 
-export const AdIdentifiers: Schema.Schema<AdIdentifiers> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gbraid: Schema.optional(Schema.String),
-      wbraid: Schema.optional(Schema.String),
-      gclid: Schema.optional(Schema.String),
-      sessionAttributes: Schema.optional(Schema.String),
-      landingPageDeviceInfo: Schema.optional(DeviceInfo),
-    }),
-  ).annotate({
-    identifier: "AdIdentifiers",
-  }) as any as Schema.Schema<AdIdentifiers>;
+export const AdIdentifiers = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gbraid: Schema.optional(Schema.String),
+  wbraid: Schema.optional(Schema.String),
+  gclid: Schema.optional(Schema.String),
+  sessionAttributes: Schema.optional(Schema.String),
+  landingPageDeviceInfo: Schema.optional(DeviceInfo),
+}).annotate({ identifier: "AdIdentifiers" });
 
 export interface CustomVariable {
   /** Optional. The value to store for the custom variable. */
@@ -473,16 +398,11 @@ export interface CustomVariable {
   variable?: string;
 }
 
-export const CustomVariable: Schema.Schema<CustomVariable> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-      destinationReferences: Schema.optional(Schema.Array(Schema.String)),
-      variable: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomVariable",
-  }) as any as Schema.Schema<CustomVariable>;
+export const CustomVariable = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.String),
+  destinationReferences: Schema.optional(Schema.Array(Schema.String)),
+  variable: Schema.optional(Schema.String),
+}).annotate({ identifier: "CustomVariable" });
 
 export interface UserProperty {
   /** Required. The string representation of the value of the user property to use. */
@@ -491,15 +411,10 @@ export interface UserProperty {
   propertyName?: string;
 }
 
-export const UserProperty: Schema.Schema<UserProperty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-      propertyName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UserProperty",
-  }) as any as Schema.Schema<UserProperty>;
+export const UserProperty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.String),
+  propertyName: Schema.optional(Schema.String),
+}).annotate({ identifier: "UserProperty" });
 
 export interface UserProperties {
   /** Optional. Type of the customer associated with the event. */
@@ -520,16 +435,11 @@ export interface UserProperties {
   additionalUserProperties?: Array<UserProperty>;
 }
 
-export const UserProperties: Schema.Schema<UserProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customerType: Schema.optional(Schema.String),
-      customerValueBucket: Schema.optional(Schema.String),
-      additionalUserProperties: Schema.optional(Schema.Array(UserProperty)),
-    }),
-  ).annotate({
-    identifier: "UserProperties",
-  }) as any as Schema.Schema<UserProperties>;
+export const UserProperties = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  customerType: Schema.optional(Schema.String),
+  customerValueBucket: Schema.optional(Schema.String),
+  additionalUserProperties: Schema.optional(Schema.Array(UserProperty)),
+}).annotate({ identifier: "UserProperties" });
 
 export interface Event {
   /** Optional. A list of key/value pairs for experimental fields that may eventually be promoted to be part of the API. */
@@ -579,30 +489,27 @@ export interface Event {
   userProperties?: UserProperties;
 }
 
-export const Event: Schema.Schema<Event> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      experimentalFields: Schema.optional(Schema.Array(ExperimentalField)),
-      additionalEventParameters: Schema.optional(Schema.Array(EventParameter)),
-      eventTimestamp: Schema.optional(Schema.String),
-      userData: Schema.optional(UserData),
-      eventSource: Schema.optional(Schema.String),
-      lastUpdatedTimestamp: Schema.optional(Schema.String),
-      eventDeviceInfo: Schema.optional(DeviceInfo),
-      transactionId: Schema.optional(Schema.String),
-      consent: Schema.optional(Consent),
-      cartData: Schema.optional(CartData),
-      destinationReferences: Schema.optional(Schema.Array(Schema.String)),
-      userId: Schema.optional(Schema.String),
-      adIdentifiers: Schema.optional(AdIdentifiers),
-      customVariables: Schema.optional(Schema.Array(CustomVariable)),
-      currency: Schema.optional(Schema.String),
-      eventName: Schema.optional(Schema.String),
-      conversionValue: Schema.optional(Schema.Number),
-      clientId: Schema.optional(Schema.String),
-      userProperties: Schema.optional(UserProperties),
-    }),
-  ).annotate({ identifier: "Event" }) as any as Schema.Schema<Event>;
+export const Event = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  experimentalFields: Schema.optional(Schema.Array(ExperimentalField)),
+  additionalEventParameters: Schema.optional(Schema.Array(EventParameter)),
+  eventTimestamp: Schema.optional(Schema.String),
+  userData: Schema.optional(UserData),
+  eventSource: Schema.optional(Schema.String),
+  lastUpdatedTimestamp: Schema.optional(Schema.String),
+  eventDeviceInfo: Schema.optional(DeviceInfo),
+  transactionId: Schema.optional(Schema.String),
+  consent: Schema.optional(Consent),
+  cartData: Schema.optional(CartData),
+  destinationReferences: Schema.optional(Schema.Array(Schema.String)),
+  userId: Schema.optional(Schema.String),
+  adIdentifiers: Schema.optional(AdIdentifiers),
+  customVariables: Schema.optional(Schema.Array(CustomVariable)),
+  currency: Schema.optional(Schema.String),
+  eventName: Schema.optional(Schema.String),
+  conversionValue: Schema.optional(Schema.Number),
+  clientId: Schema.optional(Schema.String),
+  userProperties: Schema.optional(UserProperties),
+}).annotate({ identifier: "Event" });
 
 export interface AwsWrappedKeyInfo {
   /** Required. The type of algorithm used to encrypt the data. */
@@ -615,17 +522,12 @@ export interface AwsWrappedKeyInfo {
   roleArn?: string;
 }
 
-export const AwsWrappedKeyInfo: Schema.Schema<AwsWrappedKeyInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      keyType: Schema.optional(Schema.String),
-      encryptedDek: Schema.optional(Schema.String),
-      kekUri: Schema.optional(Schema.String),
-      roleArn: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AwsWrappedKeyInfo",
-  }) as any as Schema.Schema<AwsWrappedKeyInfo>;
+export const AwsWrappedKeyInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  keyType: Schema.optional(Schema.String),
+  encryptedDek: Schema.optional(Schema.String),
+  kekUri: Schema.optional(Schema.String),
+  roleArn: Schema.optional(Schema.String),
+}).annotate({ identifier: "AwsWrappedKeyInfo" });
 
 export interface GcpWrappedKeyInfo {
   /** Required. The base64 encoded encrypted data encryption key. */
@@ -638,17 +540,12 @@ export interface GcpWrappedKeyInfo {
   kekUri?: string;
 }
 
-export const GcpWrappedKeyInfo: Schema.Schema<GcpWrappedKeyInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      encryptedDek: Schema.optional(Schema.String),
-      keyType: Schema.optional(Schema.String),
-      wipProvider: Schema.optional(Schema.String),
-      kekUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GcpWrappedKeyInfo",
-  }) as any as Schema.Schema<GcpWrappedKeyInfo>;
+export const GcpWrappedKeyInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  encryptedDek: Schema.optional(Schema.String),
+  keyType: Schema.optional(Schema.String),
+  wipProvider: Schema.optional(Schema.String),
+  kekUri: Schema.optional(Schema.String),
+}).annotate({ identifier: "GcpWrappedKeyInfo" });
 
 export interface EncryptionInfo {
   /** Amazon Web Services wrapped key information. */
@@ -657,15 +554,10 @@ export interface EncryptionInfo {
   gcpWrappedKeyInfo?: GcpWrappedKeyInfo;
 }
 
-export const EncryptionInfo: Schema.Schema<EncryptionInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      awsWrappedKeyInfo: Schema.optional(AwsWrappedKeyInfo),
-      gcpWrappedKeyInfo: Schema.optional(GcpWrappedKeyInfo),
-    }),
-  ).annotate({
-    identifier: "EncryptionInfo",
-  }) as any as Schema.Schema<EncryptionInfo>;
+export const EncryptionInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  awsWrappedKeyInfo: Schema.optional(AwsWrappedKeyInfo),
+  gcpWrappedKeyInfo: Schema.optional(GcpWrappedKeyInfo),
+}).annotate({ identifier: "EncryptionInfo" });
 
 export interface IngestEventsRequest {
   /** Required. The list of destinations to send the events to. */
@@ -682,19 +574,14 @@ export interface IngestEventsRequest {
   encryptionInfo?: EncryptionInfo;
 }
 
-export const IngestEventsRequest: Schema.Schema<IngestEventsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      destinations: Schema.optional(Schema.Array(Destination)),
-      events: Schema.optional(Schema.Array(Event)),
-      encoding: Schema.optional(Schema.String),
-      consent: Schema.optional(Consent),
-      validateOnly: Schema.optional(Schema.Boolean),
-      encryptionInfo: Schema.optional(EncryptionInfo),
-    }),
-  ).annotate({
-    identifier: "IngestEventsRequest",
-  }) as any as Schema.Schema<IngestEventsRequest>;
+export const IngestEventsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  destinations: Schema.optional(Schema.Array(Destination)),
+  events: Schema.optional(Schema.Array(Event)),
+  encoding: Schema.optional(Schema.String),
+  consent: Schema.optional(Consent),
+  validateOnly: Schema.optional(Schema.Boolean),
+  encryptionInfo: Schema.optional(EncryptionInfo),
+}).annotate({ identifier: "IngestEventsRequest" });
 
 export interface RemovePpidDataStatus {
   /** The total count of audience members sent in the removal request. Includes all audience members in the request, regardless of whether they were successfully removed or not. */
@@ -703,15 +590,10 @@ export interface RemovePpidDataStatus {
   ppidCount?: string;
 }
 
-export const RemovePpidDataStatus: Schema.Schema<RemovePpidDataStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      recordCount: Schema.optional(Schema.String),
-      ppidCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RemovePpidDataStatus",
-  }) as any as Schema.Schema<RemovePpidDataStatus>;
+export const RemovePpidDataStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  recordCount: Schema.optional(Schema.String),
+  ppidCount: Schema.optional(Schema.String),
+}).annotate({ identifier: "RemovePpidDataStatus" });
 
 export interface RemoveMobileDataStatus {
   /** The total count of mobile Ids sent in the removal request. Includes all mobile ids in the request, regardless of whether they were successfully removed or not. */
@@ -720,15 +602,12 @@ export interface RemoveMobileDataStatus {
   recordCount?: string;
 }
 
-export const RemoveMobileDataStatus: Schema.Schema<RemoveMobileDataStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mobileIdCount: Schema.optional(Schema.String),
-      recordCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RemoveMobileDataStatus",
-  }) as any as Schema.Schema<RemoveMobileDataStatus>;
+export const RemoveMobileDataStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    mobileIdCount: Schema.optional(Schema.String),
+    recordCount: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "RemoveMobileDataStatus" });
 
 export interface RemoveUserIdDataStatus {
   /** The total count of audience members sent in the removal request. Includes all audience members in the request, regardless of whether they were successfully removed or not. */
@@ -737,15 +616,12 @@ export interface RemoveUserIdDataStatus {
   userIdCount?: string;
 }
 
-export const RemoveUserIdDataStatus: Schema.Schema<RemoveUserIdDataStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      recordCount: Schema.optional(Schema.String),
-      userIdCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RemoveUserIdDataStatus",
-  }) as any as Schema.Schema<RemoveUserIdDataStatus>;
+export const RemoveUserIdDataStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    recordCount: Schema.optional(Schema.String),
+    userIdCount: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "RemoveUserIdDataStatus" });
 
 export interface RemoveUserDataStatus {
   /** The total count of audience members sent in the removal request. Includes all audience members in the request, regardless of whether they were successfully removed or not. */
@@ -754,15 +630,10 @@ export interface RemoveUserDataStatus {
   userIdentifierCount?: string;
 }
 
-export const RemoveUserDataStatus: Schema.Schema<RemoveUserDataStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      recordCount: Schema.optional(Schema.String),
-      userIdentifierCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RemoveUserDataStatus",
-  }) as any as Schema.Schema<RemoveUserDataStatus>;
+export const RemoveUserDataStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  recordCount: Schema.optional(Schema.String),
+  userIdentifierCount: Schema.optional(Schema.String),
+}).annotate({ identifier: "RemoveUserDataStatus" });
 
 export interface RemovePairDataStatus {
   /** The total count of audience members sent in the removal request. Includes all audience members in the request, regardless of whether they were successfully removed or not. */
@@ -771,15 +642,10 @@ export interface RemovePairDataStatus {
   pairIdCount?: string;
 }
 
-export const RemovePairDataStatus: Schema.Schema<RemovePairDataStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      recordCount: Schema.optional(Schema.String),
-      pairIdCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RemovePairDataStatus",
-  }) as any as Schema.Schema<RemovePairDataStatus>;
+export const RemovePairDataStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  recordCount: Schema.optional(Schema.String),
+  pairIdCount: Schema.optional(Schema.String),
+}).annotate({ identifier: "RemovePairDataStatus" });
 
 export interface RemoveAudienceMembersStatus {
   /** The status of the ppid data removal from the destination. */
@@ -794,18 +660,14 @@ export interface RemoveAudienceMembersStatus {
   pairDataRemovalStatus?: RemovePairDataStatus;
 }
 
-export const RemoveAudienceMembersStatus: Schema.Schema<RemoveAudienceMembersStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ppidDataRemovalStatus: Schema.optional(RemovePpidDataStatus),
-      mobileDataRemovalStatus: Schema.optional(RemoveMobileDataStatus),
-      userIdDataRemovalStatus: Schema.optional(RemoveUserIdDataStatus),
-      userDataRemovalStatus: Schema.optional(RemoveUserDataStatus),
-      pairDataRemovalStatus: Schema.optional(RemovePairDataStatus),
-    }),
-  ).annotate({
-    identifier: "RemoveAudienceMembersStatus",
-  }) as any as Schema.Schema<RemoveAudienceMembersStatus>;
+export const RemoveAudienceMembersStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ppidDataRemovalStatus: Schema.optional(RemovePpidDataStatus),
+    mobileDataRemovalStatus: Schema.optional(RemoveMobileDataStatus),
+    userIdDataRemovalStatus: Schema.optional(RemoveUserIdDataStatus),
+    userDataRemovalStatus: Schema.optional(RemoveUserDataStatus),
+    pairDataRemovalStatus: Schema.optional(RemovePairDataStatus),
+  }).annotate({ identifier: "RemoveAudienceMembersStatus" });
 
 export interface UserListGlobalLicenseCustomerInfo {
   /** Output only. ID of client customer which the user list is being licensed to. */
@@ -847,24 +709,20 @@ export interface UserListGlobalLicenseCustomerInfo {
   metrics?: UserListLicenseMetrics;
 }
 
-export const UserListGlobalLicenseCustomerInfo: Schema.Schema<UserListGlobalLicenseCustomerInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clientAccountId: Schema.optional(Schema.String),
-      pricing: Schema.optional(UserListLicensePricing),
-      historicalPricings: Schema.optional(Schema.Array(UserListLicensePricing)),
-      name: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-      clientAccountDisplayName: Schema.optional(Schema.String),
-      userListId: Schema.optional(Schema.String),
-      userListDisplayName: Schema.optional(Schema.String),
-      licenseType: Schema.optional(Schema.String),
-      clientAccountType: Schema.optional(Schema.String),
-      metrics: Schema.optional(UserListLicenseMetrics),
-    }),
-  ).annotate({
-    identifier: "UserListGlobalLicenseCustomerInfo",
-  }) as any as Schema.Schema<UserListGlobalLicenseCustomerInfo>;
+export const UserListGlobalLicenseCustomerInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    clientAccountId: Schema.optional(Schema.String),
+    pricing: Schema.optional(UserListLicensePricing),
+    historicalPricings: Schema.optional(Schema.Array(UserListLicensePricing)),
+    name: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+    clientAccountDisplayName: Schema.optional(Schema.String),
+    userListId: Schema.optional(Schema.String),
+    userListDisplayName: Schema.optional(Schema.String),
+    licenseType: Schema.optional(Schema.String),
+    clientAccountType: Schema.optional(Schema.String),
+    metrics: Schema.optional(UserListLicenseMetrics),
+  }).annotate({ identifier: "UserListGlobalLicenseCustomerInfo" });
 
 export interface TargetNetworkInfo {
   /** Optional. Indicates if this user list is eligible for Google Search Network. */
@@ -873,15 +731,10 @@ export interface TargetNetworkInfo {
   eligibleForDisplay?: boolean;
 }
 
-export const TargetNetworkInfo: Schema.Schema<TargetNetworkInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      eligibleForSearch: Schema.optional(Schema.Boolean),
-      eligibleForDisplay: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "TargetNetworkInfo",
-  }) as any as Schema.Schema<TargetNetworkInfo>;
+export const TargetNetworkInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  eligibleForSearch: Schema.optional(Schema.Boolean),
+  eligibleForDisplay: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "TargetNetworkInfo" });
 
 export interface PartnerAudienceInfo {
   /** Required. Immutable. The source of the partner audience. */
@@ -895,15 +748,10 @@ export interface PartnerAudienceInfo {
   commercePartner?: string;
 }
 
-export const PartnerAudienceInfo: Schema.Schema<PartnerAudienceInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      partnerAudienceSource: Schema.optional(Schema.String),
-      commercePartner: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PartnerAudienceInfo",
-  }) as any as Schema.Schema<PartnerAudienceInfo>;
+export const PartnerAudienceInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  partnerAudienceSource: Schema.optional(Schema.String),
+  commercePartner: Schema.optional(Schema.String),
+}).annotate({ identifier: "PartnerAudienceInfo" });
 
 export interface SizeInfo {
   /** Output only. Estimated number of members in this user list, on the Google Display Network. */
@@ -912,13 +760,10 @@ export interface SizeInfo {
   searchNetworkMembersCount?: string;
 }
 
-export const SizeInfo: Schema.Schema<SizeInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayNetworkMembersCount: Schema.optional(Schema.String),
-      searchNetworkMembersCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "SizeInfo" }) as any as Schema.Schema<SizeInfo>;
+export const SizeInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayNetworkMembersCount: Schema.optional(Schema.String),
+  searchNetworkMembersCount: Schema.optional(Schema.String),
+}).annotate({ identifier: "SizeInfo" });
 
 export interface PairIdInfo {
   /** Required. Descriptive name of the publisher to be displayed in the UI for a better targeting experience. */
@@ -933,16 +778,13 @@ export interface PairIdInfo {
   cleanRoomIdentifier?: string;
 }
 
-export const PairIdInfo: Schema.Schema<PairIdInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      publisherName: Schema.optional(Schema.String),
-      matchRatePercentage: Schema.optional(Schema.Number),
-      advertiserIdentifierCount: Schema.optional(Schema.String),
-      publisherId: Schema.optional(Schema.String),
-      cleanRoomIdentifier: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "PairIdInfo" }) as any as Schema.Schema<PairIdInfo>;
+export const PairIdInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  publisherName: Schema.optional(Schema.String),
+  matchRatePercentage: Schema.optional(Schema.Number),
+  advertiserIdentifierCount: Schema.optional(Schema.String),
+  publisherId: Schema.optional(Schema.String),
+  cleanRoomIdentifier: Schema.optional(Schema.String),
+}).annotate({ identifier: "PairIdInfo" });
 
 export interface ContactIdInfo {
   /** Optional. Immutable. Source of the upload data */
@@ -957,15 +799,10 @@ export interface ContactIdInfo {
   matchRatePercentage?: number;
 }
 
-export const ContactIdInfo: Schema.Schema<ContactIdInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataSourceType: Schema.optional(Schema.String),
-      matchRatePercentage: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "ContactIdInfo",
-  }) as any as Schema.Schema<ContactIdInfo>;
+export const ContactIdInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dataSourceType: Schema.optional(Schema.String),
+  matchRatePercentage: Schema.optional(Schema.Number),
+}).annotate({ identifier: "ContactIdInfo" });
 
 export interface PseudonymousIdInfo {
   /** Output only. Sync status of the user list. */
@@ -979,15 +816,10 @@ export interface PseudonymousIdInfo {
   billableRecordCount?: string;
 }
 
-export const PseudonymousIdInfo: Schema.Schema<PseudonymousIdInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      syncStatus: Schema.optional(Schema.String),
-      billableRecordCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PseudonymousIdInfo",
-  }) as any as Schema.Schema<PseudonymousIdInfo>;
+export const PseudonymousIdInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  syncStatus: Schema.optional(Schema.String),
+  billableRecordCount: Schema.optional(Schema.String),
+}).annotate({ identifier: "PseudonymousIdInfo" });
 
 export interface UserIdInfo {
   /** Optional. Immutable. Source of the upload data. */
@@ -1000,12 +832,9 @@ export interface UserIdInfo {
     | (string & {});
 }
 
-export const UserIdInfo: Schema.Schema<UserIdInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataSourceType: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "UserIdInfo" }) as any as Schema.Schema<UserIdInfo>;
+export const UserIdInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dataSourceType: Schema.optional(Schema.String),
+}).annotate({ identifier: "UserIdInfo" });
 
 export interface MobileIdInfo {
   /** Optional. Immutable. Source of the upload data. */
@@ -1022,16 +851,11 @@ export interface MobileIdInfo {
   appId?: string;
 }
 
-export const MobileIdInfo: Schema.Schema<MobileIdInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataSourceType: Schema.optional(Schema.String),
-      keySpace: Schema.optional(Schema.String),
-      appId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MobileIdInfo",
-  }) as any as Schema.Schema<MobileIdInfo>;
+export const MobileIdInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dataSourceType: Schema.optional(Schema.String),
+  keySpace: Schema.optional(Schema.String),
+  appId: Schema.optional(Schema.String),
+}).annotate({ identifier: "MobileIdInfo" });
 
 export interface IngestedUserListInfo {
   /** Optional. Additional information when `PAIR_ID` is one of the `upload_key_types`. This feature is only available to data partners. */
@@ -1058,20 +882,15 @@ export interface IngestedUserListInfo {
   mobileIdInfo?: MobileIdInfo;
 }
 
-export const IngestedUserListInfo: Schema.Schema<IngestedUserListInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pairIdInfo: Schema.optional(PairIdInfo),
-      partnerAudienceInfo: Schema.optional(PartnerAudienceInfo),
-      uploadKeyTypes: Schema.optional(Schema.Array(Schema.String)),
-      contactIdInfo: Schema.optional(ContactIdInfo),
-      pseudonymousIdInfo: Schema.optional(PseudonymousIdInfo),
-      userIdInfo: Schema.optional(UserIdInfo),
-      mobileIdInfo: Schema.optional(MobileIdInfo),
-    }),
-  ).annotate({
-    identifier: "IngestedUserListInfo",
-  }) as any as Schema.Schema<IngestedUserListInfo>;
+export const IngestedUserListInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pairIdInfo: Schema.optional(PairIdInfo),
+  partnerAudienceInfo: Schema.optional(PartnerAudienceInfo),
+  uploadKeyTypes: Schema.optional(Schema.Array(Schema.String)),
+  contactIdInfo: Schema.optional(ContactIdInfo),
+  pseudonymousIdInfo: Schema.optional(PseudonymousIdInfo),
+  userIdInfo: Schema.optional(UserIdInfo),
+  mobileIdInfo: Schema.optional(MobileIdInfo),
+}).annotate({ identifier: "IngestedUserListInfo" });
 
 export interface UserList {
   /** Identifier. The resource name of the user list. Format: accountTypes/{account_type}/accounts/{account}/userLists/{user_list} */
@@ -1119,37 +938,31 @@ export interface UserList {
   ingestedUserListInfo?: IngestedUserListInfo;
 }
 
-export const UserList: Schema.Schema<UserList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      accessReason: Schema.optional(Schema.String),
-      targetNetworkInfo: Schema.optional(TargetNetworkInfo),
-      integrationCode: Schema.optional(Schema.String),
-      closingReason: Schema.optional(Schema.String),
-      sizeInfo: Schema.optional(SizeInfo),
-      id: Schema.optional(Schema.String),
-      accountAccessStatus: Schema.optional(Schema.String),
-      membershipDuration: Schema.optional(Schema.String),
-      membershipStatus: Schema.optional(Schema.String),
-      readOnly: Schema.optional(Schema.Boolean),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      ingestedUserListInfo: Schema.optional(IngestedUserListInfo),
-    }),
-  ).annotate({ identifier: "UserList" }) as any as Schema.Schema<UserList>;
+export const UserList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  accessReason: Schema.optional(Schema.String),
+  targetNetworkInfo: Schema.optional(TargetNetworkInfo),
+  integrationCode: Schema.optional(Schema.String),
+  closingReason: Schema.optional(Schema.String),
+  sizeInfo: Schema.optional(SizeInfo),
+  id: Schema.optional(Schema.String),
+  accountAccessStatus: Schema.optional(Schema.String),
+  membershipDuration: Schema.optional(Schema.String),
+  membershipStatus: Schema.optional(Schema.String),
+  readOnly: Schema.optional(Schema.Boolean),
+  displayName: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  ingestedUserListInfo: Schema.optional(IngestedUserListInfo),
+}).annotate({ identifier: "UserList" });
 
 export interface PairData {
   /** Required. Cleanroom-provided PII data, hashed with SHA256, and encrypted with an EC commutative cipher using publisher key for the [PAIR]((//support.google.com/admanager/answer/15067908)) user list. At most 10 `pairIds` can be provided in a single AudienceMember. */
   pairIds?: Array<string>;
 }
 
-export const PairData: Schema.Schema<PairData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pairIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "PairData" }) as any as Schema.Schema<PairData>;
+export const PairData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pairIds: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "PairData" });
 
 export interface WarningCount {
   /** The warning reason. */
@@ -1169,43 +982,28 @@ export interface WarningCount {
   recordCount?: string;
 }
 
-export const WarningCount: Schema.Schema<WarningCount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reason: Schema.optional(Schema.String),
-      recordCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WarningCount",
-  }) as any as Schema.Schema<WarningCount>;
+export const WarningCount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  reason: Schema.optional(Schema.String),
+  recordCount: Schema.optional(Schema.String),
+}).annotate({ identifier: "WarningCount" });
 
 export interface WarningInfo {
   /** A list of warnings and counts per warning reason. */
   warningCounts?: Array<WarningCount>;
 }
 
-export const WarningInfo: Schema.Schema<WarningInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      warningCounts: Schema.optional(Schema.Array(WarningCount)),
-    }),
-  ).annotate({
-    identifier: "WarningInfo",
-  }) as any as Schema.Schema<WarningInfo>;
+export const WarningInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  warningCounts: Schema.optional(Schema.Array(WarningCount)),
+}).annotate({ identifier: "WarningInfo" });
 
 export interface IngestEventsStatus {
   /** The total count of events sent in the upload request. Includes all events in the request, regardless of whether they were successfully ingested or not. */
   recordCount?: string;
 }
 
-export const IngestEventsStatus: Schema.Schema<IngestEventsStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      recordCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "IngestEventsStatus",
-  }) as any as Schema.Schema<IngestEventsStatus>;
+export const IngestEventsStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  recordCount: Schema.optional(Schema.String),
+}).annotate({ identifier: "IngestEventsStatus" });
 
 export interface ErrorCount {
   /** The count of records that failed to upload for a given reason. */
@@ -1243,25 +1041,19 @@ export interface ErrorCount {
     | (string & {});
 }
 
-export const ErrorCount: Schema.Schema<ErrorCount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      recordCount: Schema.optional(Schema.String),
-      reason: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "ErrorCount" }) as any as Schema.Schema<ErrorCount>;
+export const ErrorCount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  recordCount: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+}).annotate({ identifier: "ErrorCount" });
 
 export interface ErrorInfo {
   /** A list of errors and counts per error reason. May not be populated in all cases. */
   errorCounts?: Array<ErrorCount>;
 }
 
-export const ErrorInfo: Schema.Schema<ErrorInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errorCounts: Schema.optional(Schema.Array(ErrorCount)),
-    }),
-  ).annotate({ identifier: "ErrorInfo" }) as any as Schema.Schema<ErrorInfo>;
+export const ErrorInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  errorCounts: Schema.optional(Schema.Array(ErrorCount)),
+}).annotate({ identifier: "ErrorInfo" });
 
 export interface IngestPairDataStatus {
   /** The total count of audience members sent in the upload request for the destination. Includes all audience members in the request, regardless of whether they were successfully ingested or not. */
@@ -1270,15 +1062,10 @@ export interface IngestPairDataStatus {
   pairIdCount?: string;
 }
 
-export const IngestPairDataStatus: Schema.Schema<IngestPairDataStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      recordCount: Schema.optional(Schema.String),
-      pairIdCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "IngestPairDataStatus",
-  }) as any as Schema.Schema<IngestPairDataStatus>;
+export const IngestPairDataStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  recordCount: Schema.optional(Schema.String),
+  pairIdCount: Schema.optional(Schema.String),
+}).annotate({ identifier: "IngestPairDataStatus" });
 
 export interface IngestUserDataStatus {
   /** The total count of audience members sent in the upload request for the destination. Includes all audience members in the request, regardless of whether they were successfully ingested or not. */
@@ -1301,16 +1088,11 @@ export interface IngestUserDataStatus {
   userIdentifierCount?: string;
 }
 
-export const IngestUserDataStatus: Schema.Schema<IngestUserDataStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      recordCount: Schema.optional(Schema.String),
-      uploadMatchRateRange: Schema.optional(Schema.String),
-      userIdentifierCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "IngestUserDataStatus",
-  }) as any as Schema.Schema<IngestUserDataStatus>;
+export const IngestUserDataStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  recordCount: Schema.optional(Schema.String),
+  uploadMatchRateRange: Schema.optional(Schema.String),
+  userIdentifierCount: Schema.optional(Schema.String),
+}).annotate({ identifier: "IngestUserDataStatus" });
 
 export interface IngestUserIdDataStatus {
   /** The total count of user ids sent in the upload request for the destination. Includes all user ids in the request, regardless of whether they were successfully ingested or not. */
@@ -1319,15 +1101,12 @@ export interface IngestUserIdDataStatus {
   recordCount?: string;
 }
 
-export const IngestUserIdDataStatus: Schema.Schema<IngestUserIdDataStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userIdCount: Schema.optional(Schema.String),
-      recordCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "IngestUserIdDataStatus",
-  }) as any as Schema.Schema<IngestUserIdDataStatus>;
+export const IngestUserIdDataStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    userIdCount: Schema.optional(Schema.String),
+    recordCount: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "IngestUserIdDataStatus" });
 
 export interface IngestMobileDataStatus {
   /** The total count of mobile ids sent in the upload request for the destination. Includes all mobile ids in the request, regardless of whether they were successfully ingested or not. */
@@ -1336,15 +1115,12 @@ export interface IngestMobileDataStatus {
   recordCount?: string;
 }
 
-export const IngestMobileDataStatus: Schema.Schema<IngestMobileDataStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mobileIdCount: Schema.optional(Schema.String),
-      recordCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "IngestMobileDataStatus",
-  }) as any as Schema.Schema<IngestMobileDataStatus>;
+export const IngestMobileDataStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    mobileIdCount: Schema.optional(Schema.String),
+    recordCount: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "IngestMobileDataStatus" });
 
 export interface IngestPpidDataStatus {
   /** The total count of audience members sent in the upload request for the destination. Includes all audience members in the request, regardless of whether they were successfully ingested or not. */
@@ -1353,15 +1129,10 @@ export interface IngestPpidDataStatus {
   ppidCount?: string;
 }
 
-export const IngestPpidDataStatus: Schema.Schema<IngestPpidDataStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      recordCount: Schema.optional(Schema.String),
-      ppidCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "IngestPpidDataStatus",
-  }) as any as Schema.Schema<IngestPpidDataStatus>;
+export const IngestPpidDataStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  recordCount: Schema.optional(Schema.String),
+  ppidCount: Schema.optional(Schema.String),
+}).annotate({ identifier: "IngestPpidDataStatus" });
 
 export interface IngestAudienceMembersStatus {
   /** The status of the pair data ingestion to the destination. */
@@ -1376,18 +1147,14 @@ export interface IngestAudienceMembersStatus {
   ppidDataIngestionStatus?: IngestPpidDataStatus;
 }
 
-export const IngestAudienceMembersStatus: Schema.Schema<IngestAudienceMembersStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pairDataIngestionStatus: Schema.optional(IngestPairDataStatus),
-      userDataIngestionStatus: Schema.optional(IngestUserDataStatus),
-      userIdDataIngestionStatus: Schema.optional(IngestUserIdDataStatus),
-      mobileDataIngestionStatus: Schema.optional(IngestMobileDataStatus),
-      ppidDataIngestionStatus: Schema.optional(IngestPpidDataStatus),
-    }),
-  ).annotate({
-    identifier: "IngestAudienceMembersStatus",
-  }) as any as Schema.Schema<IngestAudienceMembersStatus>;
+export const IngestAudienceMembersStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pairDataIngestionStatus: Schema.optional(IngestPairDataStatus),
+    userDataIngestionStatus: Schema.optional(IngestUserDataStatus),
+    userIdDataIngestionStatus: Schema.optional(IngestUserIdDataStatus),
+    mobileDataIngestionStatus: Schema.optional(IngestMobileDataStatus),
+    ppidDataIngestionStatus: Schema.optional(IngestPpidDataStatus),
+  }).annotate({ identifier: "IngestAudienceMembersStatus" });
 
 export interface RequestStatusPerDestination {
   /** A warning info containing the warning reason and warning counts related to the upload. */
@@ -1412,40 +1179,30 @@ export interface RequestStatusPerDestination {
     | (string & {});
 }
 
-export const RequestStatusPerDestination: Schema.Schema<RequestStatusPerDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      warningInfo: Schema.optional(WarningInfo),
-      eventsIngestionStatus: Schema.optional(IngestEventsStatus),
-      destination: Schema.optional(Destination),
-      errorInfo: Schema.optional(ErrorInfo),
-      audienceMembersIngestionStatus: Schema.optional(
-        IngestAudienceMembersStatus,
-      ),
-      audienceMembersRemovalStatus: Schema.optional(
-        RemoveAudienceMembersStatus,
-      ),
-      requestStatus: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RequestStatusPerDestination",
-  }) as any as Schema.Schema<RequestStatusPerDestination>;
+export const RequestStatusPerDestination =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    warningInfo: Schema.optional(WarningInfo),
+    eventsIngestionStatus: Schema.optional(IngestEventsStatus),
+    destination: Schema.optional(Destination),
+    errorInfo: Schema.optional(ErrorInfo),
+    audienceMembersIngestionStatus: Schema.optional(
+      IngestAudienceMembersStatus,
+    ),
+    audienceMembersRemovalStatus: Schema.optional(RemoveAudienceMembersStatus),
+    requestStatus: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RequestStatusPerDestination" });
 
 export interface RetrieveRequestStatusResponse {
   /** A list of request statuses per destination. The order of the statuses matches the order of the destinations in the original request. */
   requestStatusPerDestination?: Array<RequestStatusPerDestination>;
 }
 
-export const RetrieveRequestStatusResponse: Schema.Schema<RetrieveRequestStatusResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestStatusPerDestination: Schema.optional(
-        Schema.Array(RequestStatusPerDestination),
-      ),
-    }),
-  ).annotate({
-    identifier: "RetrieveRequestStatusResponse",
-  }) as any as Schema.Schema<RetrieveRequestStatusResponse>;
+export const RetrieveRequestStatusResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestStatusPerDestination: Schema.optional(
+      Schema.Array(RequestStatusPerDestination),
+    ),
+  }).annotate({ identifier: "RetrieveRequestStatusResponse" });
 
 export interface MarketingDataInsightsAttribute {
   /** Age range of the audience for which the lift is provided. */
@@ -1472,17 +1229,13 @@ export interface MarketingDataInsightsAttribute {
   lift?: number;
 }
 
-export const MarketingDataInsightsAttribute: Schema.Schema<MarketingDataInsightsAttribute> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ageRange: Schema.optional(Schema.String),
-      gender: Schema.optional(Schema.String),
-      userInterestId: Schema.optional(Schema.String),
-      lift: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "MarketingDataInsightsAttribute",
-  }) as any as Schema.Schema<MarketingDataInsightsAttribute>;
+export const MarketingDataInsightsAttribute =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ageRange: Schema.optional(Schema.String),
+    gender: Schema.optional(Schema.String),
+    userInterestId: Schema.optional(Schema.String),
+    lift: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "MarketingDataInsightsAttribute" });
 
 export interface MarketingDataInsight {
   /** The dimension to which the insight belongs. */
@@ -1498,15 +1251,10 @@ export interface MarketingDataInsight {
   attributes?: Array<MarketingDataInsightsAttribute>;
 }
 
-export const MarketingDataInsight: Schema.Schema<MarketingDataInsight> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dimension: Schema.optional(Schema.String),
-      attributes: Schema.optional(Schema.Array(MarketingDataInsightsAttribute)),
-    }),
-  ).annotate({
-    identifier: "MarketingDataInsight",
-  }) as any as Schema.Schema<MarketingDataInsight>;
+export const MarketingDataInsight = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dimension: Schema.optional(Schema.String),
+  attributes: Schema.optional(Schema.Array(MarketingDataInsightsAttribute)),
+}).annotate({ identifier: "MarketingDataInsight" });
 
 export interface UserListGlobalLicense {
   /** Output only. Name of the user list being licensed. This field is read-only. */
@@ -1536,21 +1284,16 @@ export interface UserListGlobalLicense {
   name?: string;
 }
 
-export const UserListGlobalLicense: Schema.Schema<UserListGlobalLicense> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userListDisplayName: Schema.optional(Schema.String),
-      licenseType: Schema.optional(Schema.String),
-      historicalPricings: Schema.optional(Schema.Array(UserListLicensePricing)),
-      metrics: Schema.optional(UserListLicenseMetrics),
-      pricing: Schema.optional(UserListLicensePricing),
-      userListId: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UserListGlobalLicense",
-  }) as any as Schema.Schema<UserListGlobalLicense>;
+export const UserListGlobalLicense = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  userListDisplayName: Schema.optional(Schema.String),
+  licenseType: Schema.optional(Schema.String),
+  historicalPricings: Schema.optional(Schema.Array(UserListLicensePricing)),
+  metrics: Schema.optional(UserListLicenseMetrics),
+  pricing: Schema.optional(UserListLicensePricing),
+  userListId: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "UserListGlobalLicense" });
 
 export interface ListUserListGlobalLicensesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -1559,17 +1302,13 @@ export interface ListUserListGlobalLicensesResponse {
   userListGlobalLicenses?: Array<UserListGlobalLicense>;
 }
 
-export const ListUserListGlobalLicensesResponse: Schema.Schema<ListUserListGlobalLicensesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      userListGlobalLicenses: Schema.optional(
-        Schema.Array(UserListGlobalLicense),
-      ),
-    }),
-  ).annotate({
-    identifier: "ListUserListGlobalLicensesResponse",
-  }) as any as Schema.Schema<ListUserListGlobalLicensesResponse>;
+export const ListUserListGlobalLicensesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    userListGlobalLicenses: Schema.optional(
+      Schema.Array(UserListGlobalLicense),
+    ),
+  }).annotate({ identifier: "ListUserListGlobalLicensesResponse" });
 
 export interface RetrieveInsightsRequest {
   /** Required. Baseline for the insights requested. */
@@ -1578,29 +1317,21 @@ export interface RetrieveInsightsRequest {
   userListId?: string;
 }
 
-export const RetrieveInsightsRequest: Schema.Schema<RetrieveInsightsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      baseline: Schema.optional(Baseline),
-      userListId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RetrieveInsightsRequest",
-  }) as any as Schema.Schema<RetrieveInsightsRequest>;
+export const RetrieveInsightsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    baseline: Schema.optional(Baseline),
+    userListId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RetrieveInsightsRequest" });
 
 export interface RemoveAudienceMembersResponse {
   /** The auto-generated ID of the request. */
   requestId?: string;
 }
 
-export const RemoveAudienceMembersResponse: Schema.Schema<RemoveAudienceMembersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RemoveAudienceMembersResponse",
-  }) as any as Schema.Schema<RemoveAudienceMembersResponse>;
+export const RemoveAudienceMembersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RemoveAudienceMembersResponse" });
 
 export interface ListUserListsResponse {
   /** The user lists from the specified account. */
@@ -1609,41 +1340,29 @@ export interface ListUserListsResponse {
   nextPageToken?: string;
 }
 
-export const ListUserListsResponse: Schema.Schema<ListUserListsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userLists: Schema.optional(Schema.Array(UserList)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListUserListsResponse",
-  }) as any as Schema.Schema<ListUserListsResponse>;
+export const ListUserListsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  userLists: Schema.optional(Schema.Array(UserList)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListUserListsResponse" });
 
 export interface PpidData {
   /** Required. The list of publisher provided identifiers for a user. */
   ppids?: Array<string>;
 }
 
-export const PpidData: Schema.Schema<PpidData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ppids: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "PpidData" }) as any as Schema.Schema<PpidData>;
+export const PpidData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ppids: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "PpidData" });
 
 export interface IngestAudienceMembersResponse {
   /** The auto-generated ID of the request. */
   requestId?: string;
 }
 
-export const IngestAudienceMembersResponse: Schema.Schema<IngestAudienceMembersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "IngestAudienceMembersResponse",
-  }) as any as Schema.Schema<IngestAudienceMembersResponse>;
+export const IngestAudienceMembersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "IngestAudienceMembersResponse" });
 
 export interface TermsOfService {
   /** Optional. The Customer Match terms of service: https://support.google.com/adspolicy/answer/6299717. This must be accepted when ingesting UserData or MobileData. This field is not required for Partner Match User list. */
@@ -1654,40 +1373,27 @@ export interface TermsOfService {
     | (string & {});
 }
 
-export const TermsOfService: Schema.Schema<TermsOfService> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customerMatchTermsOfServiceStatus: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TermsOfService",
-  }) as any as Schema.Schema<TermsOfService>;
+export const TermsOfService = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  customerMatchTermsOfServiceStatus: Schema.optional(Schema.String),
+}).annotate({ identifier: "TermsOfService" });
 
 export interface IngestEventsResponse {
   /** The auto-generated ID of the request. */
   requestId?: string;
 }
 
-export const IngestEventsResponse: Schema.Schema<IngestEventsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "IngestEventsResponse",
-  }) as any as Schema.Schema<IngestEventsResponse>;
+export const IngestEventsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  requestId: Schema.optional(Schema.String),
+}).annotate({ identifier: "IngestEventsResponse" });
 
 export interface MobileData {
   /** Required. The list of mobile device IDs (advertising ID/IDFA). At most 10 `mobileIds` can be provided in a single AudienceMember. */
   mobileIds?: Array<string>;
 }
 
-export const MobileData: Schema.Schema<MobileData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mobileIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "MobileData" }) as any as Schema.Schema<MobileData>;
+export const MobileData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  mobileIds: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "MobileData" });
 
 export interface AudienceMember {
   /** [Publisher Advertiser Identity Reconciliation (PAIR) IDs](//support.google.com/admanager/answer/15067908). This feature is only available to data partners. */
@@ -1706,20 +1412,15 @@ export interface AudienceMember {
   userIdData?: UserIdData;
 }
 
-export const AudienceMember: Schema.Schema<AudienceMember> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pairData: Schema.optional(PairData),
-      ppidData: Schema.optional(PpidData),
-      consent: Schema.optional(Consent),
-      destinationReferences: Schema.optional(Schema.Array(Schema.String)),
-      userData: Schema.optional(UserData),
-      mobileData: Schema.optional(MobileData),
-      userIdData: Schema.optional(UserIdData),
-    }),
-  ).annotate({
-    identifier: "AudienceMember",
-  }) as any as Schema.Schema<AudienceMember>;
+export const AudienceMember = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pairData: Schema.optional(PairData),
+  ppidData: Schema.optional(PpidData),
+  consent: Schema.optional(Consent),
+  destinationReferences: Schema.optional(Schema.Array(Schema.String)),
+  userData: Schema.optional(UserData),
+  mobileData: Schema.optional(MobileData),
+  userIdData: Schema.optional(UserIdData),
+}).annotate({ identifier: "AudienceMember" });
 
 export interface IngestAudienceMembersRequest {
   /** Required. The list of destinations to send the audience members to. */
@@ -1738,20 +1439,16 @@ export interface IngestAudienceMembersRequest {
   termsOfService?: TermsOfService;
 }
 
-export const IngestAudienceMembersRequest: Schema.Schema<IngestAudienceMembersRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      destinations: Schema.optional(Schema.Array(Destination)),
-      encoding: Schema.optional(Schema.String),
-      consent: Schema.optional(Consent),
-      validateOnly: Schema.optional(Schema.Boolean),
-      encryptionInfo: Schema.optional(EncryptionInfo),
-      audienceMembers: Schema.optional(Schema.Array(AudienceMember)),
-      termsOfService: Schema.optional(TermsOfService),
-    }),
-  ).annotate({
-    identifier: "IngestAudienceMembersRequest",
-  }) as any as Schema.Schema<IngestAudienceMembersRequest>;
+export const IngestAudienceMembersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    destinations: Schema.optional(Schema.Array(Destination)),
+    encoding: Schema.optional(Schema.String),
+    consent: Schema.optional(Consent),
+    validateOnly: Schema.optional(Schema.Boolean),
+    encryptionInfo: Schema.optional(EncryptionInfo),
+    audienceMembers: Schema.optional(Schema.Array(AudienceMember)),
+    termsOfService: Schema.optional(TermsOfService),
+  }).annotate({ identifier: "IngestAudienceMembersRequest" });
 
 export interface ListUserListDirectLicensesResponse {
   /** The licenses for the given user list in the request. */
@@ -1760,17 +1457,13 @@ export interface ListUserListDirectLicensesResponse {
   nextPageToken?: string;
 }
 
-export const ListUserListDirectLicensesResponse: Schema.Schema<ListUserListDirectLicensesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userListDirectLicenses: Schema.optional(
-        Schema.Array(UserListDirectLicense),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListUserListDirectLicensesResponse",
-  }) as any as Schema.Schema<ListUserListDirectLicensesResponse>;
+export const ListUserListDirectLicensesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userListDirectLicenses: Schema.optional(
+      Schema.Array(UserListDirectLicense),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListUserListDirectLicensesResponse" });
 
 export interface PartnerLink {
   /** Required. The owning account granting access to the partner account. */
@@ -1783,17 +1476,12 @@ export interface PartnerLink {
   partnerLinkId?: string;
 }
 
-export const PartnerLink: Schema.Schema<PartnerLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      owningAccount: Schema.optional(ProductAccount),
-      partnerAccount: Schema.optional(ProductAccount),
-      name: Schema.optional(Schema.String),
-      partnerLinkId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PartnerLink",
-  }) as any as Schema.Schema<PartnerLink>;
+export const PartnerLink = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  owningAccount: Schema.optional(ProductAccount),
+  partnerAccount: Schema.optional(ProductAccount),
+  name: Schema.optional(Schema.String),
+  partnerLinkId: Schema.optional(Schema.String),
+}).annotate({ identifier: "PartnerLink" });
 
 export interface ListUserListGlobalLicenseCustomerInfosResponse {
   /** The customer information for the given license in the request. */
@@ -1802,24 +1490,19 @@ export interface ListUserListGlobalLicenseCustomerInfosResponse {
   nextPageToken?: string;
 }
 
-export const ListUserListGlobalLicenseCustomerInfosResponse: Schema.Schema<ListUserListGlobalLicenseCustomerInfosResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userListGlobalLicenseCustomerInfos: Schema.optional(
-        Schema.Array(UserListGlobalLicenseCustomerInfo),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListUserListGlobalLicenseCustomerInfosResponse",
-  }) as any as Schema.Schema<ListUserListGlobalLicenseCustomerInfosResponse>;
+export const ListUserListGlobalLicenseCustomerInfosResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userListGlobalLicenseCustomerInfos: Schema.optional(
+      Schema.Array(UserListGlobalLicenseCustomerInfo),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListUserListGlobalLicenseCustomerInfosResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface SearchPartnerLinksResponse {
   /** The partner links for the given account. */
@@ -1828,31 +1511,21 @@ export interface SearchPartnerLinksResponse {
   nextPageToken?: string;
 }
 
-export const SearchPartnerLinksResponse: Schema.Schema<SearchPartnerLinksResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      partnerLinks: Schema.optional(Schema.Array(PartnerLink)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SearchPartnerLinksResponse",
-  }) as any as Schema.Schema<SearchPartnerLinksResponse>;
+export const SearchPartnerLinksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    partnerLinks: Schema.optional(Schema.Array(PartnerLink)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SearchPartnerLinksResponse" });
 
 export interface RetrieveInsightsResponse {
   /** Contains the insights for the marketing data. */
   marketingDataInsights?: Array<MarketingDataInsight>;
 }
 
-export const RetrieveInsightsResponse: Schema.Schema<RetrieveInsightsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      marketingDataInsights: Schema.optional(
-        Schema.Array(MarketingDataInsight),
-      ),
-    }),
-  ).annotate({
-    identifier: "RetrieveInsightsResponse",
-  }) as any as Schema.Schema<RetrieveInsightsResponse>;
+export const RetrieveInsightsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    marketingDataInsights: Schema.optional(Schema.Array(MarketingDataInsight)),
+  }).annotate({ identifier: "RetrieveInsightsResponse" });
 
 export interface RemoveAudienceMembersRequest {
   /** Required. The list of users to remove. */
@@ -1867,18 +1540,14 @@ export interface RemoveAudienceMembersRequest {
   encryptionInfo?: EncryptionInfo;
 }
 
-export const RemoveAudienceMembersRequest: Schema.Schema<RemoveAudienceMembersRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      audienceMembers: Schema.optional(Schema.Array(AudienceMember)),
-      destinations: Schema.optional(Schema.Array(Destination)),
-      encoding: Schema.optional(Schema.String),
-      validateOnly: Schema.optional(Schema.Boolean),
-      encryptionInfo: Schema.optional(EncryptionInfo),
-    }),
-  ).annotate({
-    identifier: "RemoveAudienceMembersRequest",
-  }) as any as Schema.Schema<RemoveAudienceMembersRequest>;
+export const RemoveAudienceMembersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    audienceMembers: Schema.optional(Schema.Array(AudienceMember)),
+    destinations: Schema.optional(Schema.Array(Destination)),
+    encoding: Schema.optional(Schema.String),
+    validateOnly: Schema.optional(Schema.Boolean),
+    encryptionInfo: Schema.optional(EncryptionInfo),
+  }).annotate({ identifier: "RemoveAudienceMembersRequest" });
 
 export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -1889,16 +1558,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      message: Schema.optional(Schema.String),
-      code: Schema.optional(Schema.Number),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  message: Schema.optional(Schema.String),
+  code: Schema.optional(Schema.Number),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 // ==========================================================================
 // Operations

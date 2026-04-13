@@ -31,16 +31,11 @@ export interface LocalizedString {
   value?: string;
 }
 
-export const LocalizedString: Schema.Schema<LocalizedString> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      locale: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LocalizedString",
-  }) as any as Schema.Schema<LocalizedString>;
+export const LocalizedString = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  locale: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+}).annotate({ identifier: "LocalizedString" });
 
 export interface LocalizedStringBundle {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `gamesConfiguration#localizedStringBundle`. */
@@ -49,15 +44,10 @@ export interface LocalizedStringBundle {
   translations?: Array<LocalizedString>;
 }
 
-export const LocalizedStringBundle: Schema.Schema<LocalizedStringBundle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      translations: Schema.optional(Schema.Array(LocalizedString)),
-    }),
-  ).annotate({
-    identifier: "LocalizedStringBundle",
-  }) as any as Schema.Schema<LocalizedStringBundle>;
+export const LocalizedStringBundle = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  translations: Schema.optional(Schema.Array(LocalizedString)),
+}).annotate({ identifier: "LocalizedStringBundle" });
 
 export interface AchievementConfigurationDetail {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `gamesConfiguration#achievementConfigurationDetail`. */
@@ -74,19 +64,15 @@ export interface AchievementConfigurationDetail {
   sortRank?: number;
 }
 
-export const AchievementConfigurationDetail: Schema.Schema<AchievementConfigurationDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      name: Schema.optional(LocalizedStringBundle),
-      description: Schema.optional(LocalizedStringBundle),
-      pointValue: Schema.optional(Schema.Number),
-      iconUrl: Schema.optional(Schema.String),
-      sortRank: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "AchievementConfigurationDetail",
-  }) as any as Schema.Schema<AchievementConfigurationDetail>;
+export const AchievementConfigurationDetail =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    name: Schema.optional(LocalizedStringBundle),
+    description: Schema.optional(LocalizedStringBundle),
+    pointValue: Schema.optional(Schema.Number),
+    iconUrl: Schema.optional(Schema.String),
+    sortRank: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "AchievementConfigurationDetail" });
 
 export interface AchievementConfiguration {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `gamesConfiguration#achievementConfiguration`. */
@@ -115,21 +101,17 @@ export interface AchievementConfiguration {
   published?: AchievementConfigurationDetail;
 }
 
-export const AchievementConfiguration: Schema.Schema<AchievementConfiguration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      token: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      achievementType: Schema.optional(Schema.String),
-      initialState: Schema.optional(Schema.String),
-      stepsToUnlock: Schema.optional(Schema.Number),
-      draft: Schema.optional(AchievementConfigurationDetail),
-      published: Schema.optional(AchievementConfigurationDetail),
-    }),
-  ).annotate({
-    identifier: "AchievementConfiguration",
-  }) as any as Schema.Schema<AchievementConfiguration>;
+export const AchievementConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    token: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    achievementType: Schema.optional(Schema.String),
+    initialState: Schema.optional(Schema.String),
+    stepsToUnlock: Schema.optional(Schema.Number),
+    draft: Schema.optional(AchievementConfigurationDetail),
+    published: Schema.optional(AchievementConfigurationDetail),
+  }).annotate({ identifier: "AchievementConfiguration" });
 
 export interface AchievementConfigurationListResponse {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `gamesConfiguration#achievementConfigurationListResponse`. */
@@ -140,16 +122,12 @@ export interface AchievementConfigurationListResponse {
   nextPageToken?: string;
 }
 
-export const AchievementConfigurationListResponse: Schema.Schema<AchievementConfigurationListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(AchievementConfiguration)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AchievementConfigurationListResponse",
-  }) as any as Schema.Schema<AchievementConfigurationListResponse>;
+export const AchievementConfigurationListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    items: Schema.optional(Schema.Array(AchievementConfiguration)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AchievementConfigurationListResponse" });
 
 export interface GamesNumberAffixConfiguration {
   /** When the language requires special treatment of the number 0 (as in Arabic). */
@@ -166,19 +144,15 @@ export interface GamesNumberAffixConfiguration {
   other?: LocalizedStringBundle;
 }
 
-export const GamesNumberAffixConfiguration: Schema.Schema<GamesNumberAffixConfiguration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      zero: Schema.optional(LocalizedStringBundle),
-      one: Schema.optional(LocalizedStringBundle),
-      two: Schema.optional(LocalizedStringBundle),
-      few: Schema.optional(LocalizedStringBundle),
-      many: Schema.optional(LocalizedStringBundle),
-      other: Schema.optional(LocalizedStringBundle),
-    }),
-  ).annotate({
-    identifier: "GamesNumberAffixConfiguration",
-  }) as any as Schema.Schema<GamesNumberAffixConfiguration>;
+export const GamesNumberAffixConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zero: Schema.optional(LocalizedStringBundle),
+    one: Schema.optional(LocalizedStringBundle),
+    two: Schema.optional(LocalizedStringBundle),
+    few: Schema.optional(LocalizedStringBundle),
+    many: Schema.optional(LocalizedStringBundle),
+    other: Schema.optional(LocalizedStringBundle),
+  }).annotate({ identifier: "GamesNumberAffixConfiguration" });
 
 export interface GamesNumberFormatConfiguration {
   /** The formatting for the number. */
@@ -196,17 +170,13 @@ export interface GamesNumberFormatConfiguration {
   currencyCode?: string;
 }
 
-export const GamesNumberFormatConfiguration: Schema.Schema<GamesNumberFormatConfiguration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      numberFormatType: Schema.optional(Schema.String),
-      suffix: Schema.optional(GamesNumberAffixConfiguration),
-      numDecimalPlaces: Schema.optional(Schema.Number),
-      currencyCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GamesNumberFormatConfiguration",
-  }) as any as Schema.Schema<GamesNumberFormatConfiguration>;
+export const GamesNumberFormatConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    numberFormatType: Schema.optional(Schema.String),
+    suffix: Schema.optional(GamesNumberAffixConfiguration),
+    numDecimalPlaces: Schema.optional(Schema.Number),
+    currencyCode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GamesNumberFormatConfiguration" });
 
 export interface LeaderboardConfigurationDetail {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `gamesConfiguration#leaderboardConfigurationDetail`. */
@@ -221,18 +191,14 @@ export interface LeaderboardConfigurationDetail {
   scoreFormat?: GamesNumberFormatConfiguration;
 }
 
-export const LeaderboardConfigurationDetail: Schema.Schema<LeaderboardConfigurationDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      name: Schema.optional(LocalizedStringBundle),
-      iconUrl: Schema.optional(Schema.String),
-      sortRank: Schema.optional(Schema.Number),
-      scoreFormat: Schema.optional(GamesNumberFormatConfiguration),
-    }),
-  ).annotate({
-    identifier: "LeaderboardConfigurationDetail",
-  }) as any as Schema.Schema<LeaderboardConfigurationDetail>;
+export const LeaderboardConfigurationDetail =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    name: Schema.optional(LocalizedStringBundle),
+    iconUrl: Schema.optional(Schema.String),
+    sortRank: Schema.optional(Schema.Number),
+    scoreFormat: Schema.optional(GamesNumberFormatConfiguration),
+  }).annotate({ identifier: "LeaderboardConfigurationDetail" });
 
 export interface LeaderboardConfiguration {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `gamesConfiguration#leaderboardConfiguration`. */
@@ -256,21 +222,17 @@ export interface LeaderboardConfiguration {
   published?: LeaderboardConfigurationDetail;
 }
 
-export const LeaderboardConfiguration: Schema.Schema<LeaderboardConfiguration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      token: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      scoreOrder: Schema.optional(Schema.String),
-      scoreMin: Schema.optional(Schema.String),
-      scoreMax: Schema.optional(Schema.String),
-      draft: Schema.optional(LeaderboardConfigurationDetail),
-      published: Schema.optional(LeaderboardConfigurationDetail),
-    }),
-  ).annotate({
-    identifier: "LeaderboardConfiguration",
-  }) as any as Schema.Schema<LeaderboardConfiguration>;
+export const LeaderboardConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    token: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    scoreOrder: Schema.optional(Schema.String),
+    scoreMin: Schema.optional(Schema.String),
+    scoreMax: Schema.optional(Schema.String),
+    draft: Schema.optional(LeaderboardConfigurationDetail),
+    published: Schema.optional(LeaderboardConfigurationDetail),
+  }).annotate({ identifier: "LeaderboardConfiguration" });
 
 export interface LeaderboardConfigurationListResponse {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `gamesConfiguration#leaderboardConfigurationListResponse`. */
@@ -281,16 +243,12 @@ export interface LeaderboardConfigurationListResponse {
   nextPageToken?: string;
 }
 
-export const LeaderboardConfigurationListResponse: Schema.Schema<LeaderboardConfigurationListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(LeaderboardConfiguration)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LeaderboardConfigurationListResponse",
-  }) as any as Schema.Schema<LeaderboardConfigurationListResponse>;
+export const LeaderboardConfigurationListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    items: Schema.optional(Schema.Array(LeaderboardConfiguration)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "LeaderboardConfigurationListResponse" });
 
 // ==========================================================================
 // Operations

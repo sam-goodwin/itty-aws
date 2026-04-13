@@ -27,12 +27,9 @@ export interface SpaceInfo {
   space?: string;
 }
 
-export const SpaceInfo: Schema.Schema<SpaceInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      space: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "SpaceInfo" }) as any as Schema.Schema<SpaceInfo>;
+export const SpaceInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  space: Schema.optional(Schema.String),
+}).annotate({ identifier: "SpaceInfo" });
 
 export interface DriveResourceInfo {
   /** Output only. Identifier of the file in the Drive API. */
@@ -41,15 +38,10 @@ export interface DriveResourceInfo {
   resourceKey?: string;
 }
 
-export const DriveResourceInfo: Schema.Schema<DriveResourceInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      driveFileId: Schema.optional(Schema.String),
-      resourceKey: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DriveResourceInfo",
-  }) as any as Schema.Schema<DriveResourceInfo>;
+export const DriveResourceInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  driveFileId: Schema.optional(Schema.String),
+  resourceKey: Schema.optional(Schema.String),
+}).annotate({ identifier: "DriveResourceInfo" });
 
 export interface AssignmentInfo {
   /** Output only. Information about the Chat Space where this task originates from. This field is read-only. */
@@ -67,17 +59,12 @@ export interface AssignmentInfo {
     | (string & {});
 }
 
-export const AssignmentInfo: Schema.Schema<AssignmentInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      spaceInfo: Schema.optional(SpaceInfo),
-      driveResourceInfo: Schema.optional(DriveResourceInfo),
-      linkToTask: Schema.optional(Schema.String),
-      surfaceType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AssignmentInfo",
-  }) as any as Schema.Schema<AssignmentInfo>;
+export const AssignmentInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  spaceInfo: Schema.optional(SpaceInfo),
+  driveResourceInfo: Schema.optional(DriveResourceInfo),
+  linkToTask: Schema.optional(Schema.String),
+  surfaceType: Schema.optional(Schema.String),
+}).annotate({ identifier: "AssignmentInfo" });
 
 export interface Task {
   /** Notes describing the task. Tasks assigned from Google Docs cannot have notes. Optional. Maximum length allowed: 8192 characters. */
@@ -116,36 +103,33 @@ export interface Task {
   links?: Array<{ type?: string; description?: string; link?: string }>;
 }
 
-export const Task: Schema.Schema<Task> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      notes: Schema.optional(Schema.String),
-      position: Schema.optional(Schema.String),
-      hidden: Schema.optional(Schema.Boolean),
-      status: Schema.optional(Schema.String),
-      assignmentInfo: Schema.optional(AssignmentInfo),
-      completed: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      parent: Schema.optional(Schema.String),
-      deleted: Schema.optional(Schema.Boolean),
-      kind: Schema.optional(Schema.String),
-      due: Schema.optional(Schema.String),
-      selfLink: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      updated: Schema.optional(Schema.String),
-      webViewLink: Schema.optional(Schema.String),
-      links: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            type: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-            link: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-    }),
-  ).annotate({ identifier: "Task" }) as any as Schema.Schema<Task>;
+export const Task = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  notes: Schema.optional(Schema.String),
+  position: Schema.optional(Schema.String),
+  hidden: Schema.optional(Schema.Boolean),
+  status: Schema.optional(Schema.String),
+  assignmentInfo: Schema.optional(AssignmentInfo),
+  completed: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  parent: Schema.optional(Schema.String),
+  deleted: Schema.optional(Schema.Boolean),
+  kind: Schema.optional(Schema.String),
+  due: Schema.optional(Schema.String),
+  selfLink: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  updated: Schema.optional(Schema.String),
+  webViewLink: Schema.optional(Schema.String),
+  links: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        type: Schema.optional(Schema.String),
+        description: Schema.optional(Schema.String),
+        link: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
+}).annotate({ identifier: "Task" });
 
 export interface Tasks {
   /** Token used to access the next page of this result. */
@@ -158,15 +142,12 @@ export interface Tasks {
   kind?: string;
 }
 
-export const Tasks: Schema.Schema<Tasks> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(Task)),
-      etag: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Tasks" }) as any as Schema.Schema<Tasks>;
+export const Tasks = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(Task)),
+  etag: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "Tasks" });
 
 export interface TaskList {
   /** Output only. Type of the resource. This is always "tasks#taskList". */
@@ -183,17 +164,14 @@ export interface TaskList {
   id?: string;
 }
 
-export const TaskList: Schema.Schema<TaskList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      selfLink: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      updated: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "TaskList" }) as any as Schema.Schema<TaskList>;
+export const TaskList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  selfLink: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  updated: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+}).annotate({ identifier: "TaskList" });
 
 export interface TaskLists {
   /** Token that can be used to request the next page of this result. */
@@ -206,15 +184,12 @@ export interface TaskLists {
   etag?: string;
 }
 
-export const TaskLists: Schema.Schema<TaskLists> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(TaskList)),
-      kind: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "TaskLists" }) as any as Schema.Schema<TaskLists>;
+export const TaskLists = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(TaskList)),
+  kind: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "TaskLists" });
 
 // ==========================================================================
 // Operations

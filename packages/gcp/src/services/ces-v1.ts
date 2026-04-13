@@ -36,16 +36,11 @@ export interface InputAudioConfig {
   noiseSuppressionLevel?: string;
 }
 
-export const InputAudioConfig: Schema.Schema<InputAudioConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      audioEncoding: Schema.optional(Schema.String),
-      sampleRateHertz: Schema.optional(Schema.Number),
-      noiseSuppressionLevel: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InputAudioConfig",
-  }) as any as Schema.Schema<InputAudioConfig>;
+export const InputAudioConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  audioEncoding: Schema.optional(Schema.String),
+  sampleRateHertz: Schema.optional(Schema.Number),
+  noiseSuppressionLevel: Schema.optional(Schema.String),
+}).annotate({ identifier: "InputAudioConfig" });
 
 export interface OutputAudioConfig {
   /** Required. The encoding of the output audio data. */
@@ -59,15 +54,10 @@ export interface OutputAudioConfig {
   sampleRateHertz?: number;
 }
 
-export const OutputAudioConfig: Schema.Schema<OutputAudioConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      audioEncoding: Schema.optional(Schema.String),
-      sampleRateHertz: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "OutputAudioConfig",
-  }) as any as Schema.Schema<OutputAudioConfig>;
+export const OutputAudioConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  audioEncoding: Schema.optional(Schema.String),
+  sampleRateHertz: Schema.optional(Schema.Number),
+}).annotate({ identifier: "OutputAudioConfig" });
 
 export interface Blob {
   /** Required. The IANA standard MIME type of the source data. */
@@ -76,13 +66,10 @@ export interface Blob {
   data?: string;
 }
 
-export const Blob: Schema.Schema<Blob> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mimeType: Schema.optional(Schema.String),
-      data: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Blob" }) as any as Schema.Schema<Blob>;
+export const Blob = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  mimeType: Schema.optional(Schema.String),
+  data: Schema.optional(Schema.String),
+}).annotate({ identifier: "Blob" });
 
 export interface Image {
   /** Required. The IANA standard MIME type of the source data. Supported image types includes: * image/png * image/jpeg * image/webp */
@@ -91,13 +78,10 @@ export interface Image {
   data?: string;
 }
 
-export const Image: Schema.Schema<Image> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mimeType: Schema.optional(Schema.String),
-      data: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Image" }) as any as Schema.Schema<Image>;
+export const Image = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  mimeType: Schema.optional(Schema.String),
+  data: Schema.optional(Schema.String),
+}).annotate({ identifier: "Image" });
 
 export interface ToolsetTool {
   /** Required. The resource name of the Toolset from which this tool is derived. Format: `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}` */
@@ -106,15 +90,10 @@ export interface ToolsetTool {
   toolId?: string;
 }
 
-export const ToolsetTool: Schema.Schema<ToolsetTool> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      toolset: Schema.optional(Schema.String),
-      toolId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ToolsetTool",
-  }) as any as Schema.Schema<ToolsetTool>;
+export const ToolsetTool = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  toolset: Schema.optional(Schema.String),
+  toolId: Schema.optional(Schema.String),
+}).annotate({ identifier: "ToolsetTool" });
 
 export interface ToolCall {
   /** Optional. The name of the tool to execute. Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}` */
@@ -129,16 +108,13 @@ export interface ToolCall {
   args?: Record<string, unknown>;
 }
 
-export const ToolCall: Schema.Schema<ToolCall> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tool: Schema.optional(Schema.String),
-      toolsetTool: Schema.optional(ToolsetTool),
-      id: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      args: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "ToolCall" }) as any as Schema.Schema<ToolCall>;
+export const ToolCall = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tool: Schema.optional(Schema.String),
+  toolsetTool: Schema.optional(ToolsetTool),
+  id: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  args: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "ToolCall" });
 
 export interface ToolResponse {
   /** Optional. The name of the tool to execute. Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}` */
@@ -153,18 +129,13 @@ export interface ToolResponse {
   response?: Record<string, unknown>;
 }
 
-export const ToolResponse: Schema.Schema<ToolResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tool: Schema.optional(Schema.String),
-      toolsetTool: Schema.optional(ToolsetTool),
-      id: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
-    identifier: "ToolResponse",
-  }) as any as Schema.Schema<ToolResponse>;
+export const ToolResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tool: Schema.optional(Schema.String),
+  toolsetTool: Schema.optional(ToolsetTool),
+  id: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "ToolResponse" });
 
 export interface AgentTransfer {
   /** Required. The agent to which the conversation is being transferred. The agent will handle the conversation from this point forward. Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}` */
@@ -173,15 +144,10 @@ export interface AgentTransfer {
   displayName?: string;
 }
 
-export const AgentTransfer: Schema.Schema<AgentTransfer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetAgent: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AgentTransfer",
-  }) as any as Schema.Schema<AgentTransfer>;
+export const AgentTransfer = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  targetAgent: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+}).annotate({ identifier: "AgentTransfer" });
 
 export interface Chunk {
   /** Optional. Text data. */
@@ -206,25 +172,22 @@ export interface Chunk {
   defaultVariables?: Record<string, unknown>;
 }
 
-export const Chunk: Schema.Schema<Chunk> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-      transcript: Schema.optional(Schema.String),
-      blob: Schema.optional(Blob),
-      payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      image: Schema.optional(Image),
-      toolCall: Schema.optional(ToolCall),
-      toolResponse: Schema.optional(ToolResponse),
-      agentTransfer: Schema.optional(AgentTransfer),
-      updatedVariables: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-      defaultVariables: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-    }),
-  ).annotate({ identifier: "Chunk" }) as any as Schema.Schema<Chunk>;
+export const Chunk = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  text: Schema.optional(Schema.String),
+  transcript: Schema.optional(Schema.String),
+  blob: Schema.optional(Blob),
+  payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  image: Schema.optional(Image),
+  toolCall: Schema.optional(ToolCall),
+  toolResponse: Schema.optional(ToolResponse),
+  agentTransfer: Schema.optional(AgentTransfer),
+  updatedVariables: Schema.optional(
+    Schema.Record(Schema.String, Schema.Unknown),
+  ),
+  defaultVariables: Schema.optional(
+    Schema.Record(Schema.String, Schema.Unknown),
+  ),
+}).annotate({ identifier: "Chunk" });
 
 export interface Message {
   /** Optional. The role within the conversation, e.g., user, agent. */
@@ -235,14 +198,11 @@ export interface Message {
   eventTime?: string;
 }
 
-export const Message: Schema.Schema<Message> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      role: Schema.optional(Schema.String),
-      chunks: Schema.optional(Schema.Array(Chunk)),
-      eventTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Message" }) as any as Schema.Schema<Message>;
+export const Message = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  role: Schema.optional(Schema.String),
+  chunks: Schema.optional(Schema.Array(Chunk)),
+  eventTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Message" });
 
 export interface SessionConfigRemoteDialogflowQueryParameters {
   /** Optional. The HTTP headers to be sent as webhook_headers in [QueryParameters](https://cloud.google.com/dialogflow/cx/docs/reference/rpc/google.cloud.dialogflow.cx.v3#queryparameters). */
@@ -253,20 +213,16 @@ export interface SessionConfigRemoteDialogflowQueryParameters {
   endUserMetadata?: Record<string, unknown>;
 }
 
-export const SessionConfigRemoteDialogflowQueryParameters: Schema.Schema<SessionConfigRemoteDialogflowQueryParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      webhookHeaders: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      endUserMetadata: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-    }),
-  ).annotate({
-    identifier: "SessionConfigRemoteDialogflowQueryParameters",
-  }) as any as Schema.Schema<SessionConfigRemoteDialogflowQueryParameters>;
+export const SessionConfigRemoteDialogflowQueryParameters =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    webhookHeaders: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    endUserMetadata: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
+  }).annotate({ identifier: "SessionConfigRemoteDialogflowQueryParameters" });
 
 export interface SessionConfig {
   /** Optional. Configuration for processing the input audio. */
@@ -289,50 +245,37 @@ export interface SessionConfig {
   enableTextStreaming?: boolean;
 }
 
-export const SessionConfig: Schema.Schema<SessionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inputAudioConfig: Schema.optional(InputAudioConfig),
-      outputAudioConfig: Schema.optional(OutputAudioConfig),
-      historicalContexts: Schema.optional(Schema.Array(Message)),
-      entryAgent: Schema.optional(Schema.String),
-      deployment: Schema.optional(Schema.String),
-      timeZone: Schema.optional(Schema.String),
-      useToolFakes: Schema.optional(Schema.Boolean),
-      remoteDialogflowQueryParameters: Schema.optional(
-        SessionConfigRemoteDialogflowQueryParameters,
-      ),
-      enableTextStreaming: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "SessionConfig",
-  }) as any as Schema.Schema<SessionConfig>;
+export const SessionConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  inputAudioConfig: Schema.optional(InputAudioConfig),
+  outputAudioConfig: Schema.optional(OutputAudioConfig),
+  historicalContexts: Schema.optional(Schema.Array(Message)),
+  entryAgent: Schema.optional(Schema.String),
+  deployment: Schema.optional(Schema.String),
+  timeZone: Schema.optional(Schema.String),
+  useToolFakes: Schema.optional(Schema.Boolean),
+  remoteDialogflowQueryParameters: Schema.optional(
+    SessionConfigRemoteDialogflowQueryParameters,
+  ),
+  enableTextStreaming: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "SessionConfig" });
 
 export interface ToolResponses {
   /** Optional. The list of tool execution results. */
   toolResponses?: Array<ToolResponse>;
 }
 
-export const ToolResponses: Schema.Schema<ToolResponses> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      toolResponses: Schema.optional(Schema.Array(ToolResponse)),
-    }),
-  ).annotate({
-    identifier: "ToolResponses",
-  }) as any as Schema.Schema<ToolResponses>;
+export const ToolResponses = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  toolResponses: Schema.optional(Schema.Array(ToolResponse)),
+}).annotate({ identifier: "ToolResponses" });
 
 export interface Event {
   /** Required. The name of the event. */
   event?: string;
 }
 
-export const Event: Schema.Schema<Event> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      event: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Event" }) as any as Schema.Schema<Event>;
+export const Event = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  event: Schema.optional(Schema.String),
+}).annotate({ identifier: "Event" });
 
 export interface SessionInput {
   /** Optional. Text data from the end user. */
@@ -355,22 +298,17 @@ export interface SessionInput {
   willContinue?: boolean;
 }
 
-export const SessionInput: Schema.Schema<SessionInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-      dtmf: Schema.optional(Schema.String),
-      audio: Schema.optional(Schema.String),
-      toolResponses: Schema.optional(ToolResponses),
-      image: Schema.optional(Image),
-      blob: Schema.optional(Blob),
-      variables: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      event: Schema.optional(Event),
-      willContinue: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "SessionInput",
-  }) as any as Schema.Schema<SessionInput>;
+export const SessionInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  text: Schema.optional(Schema.String),
+  dtmf: Schema.optional(Schema.String),
+  audio: Schema.optional(Schema.String),
+  toolResponses: Schema.optional(ToolResponses),
+  image: Schema.optional(Image),
+  blob: Schema.optional(Blob),
+  variables: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  event: Schema.optional(Event),
+  willContinue: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "SessionInput" });
 
 export interface RunSessionRequest {
   /** Required. The configuration for the session. */
@@ -379,27 +317,19 @@ export interface RunSessionRequest {
   inputs?: Array<SessionInput>;
 }
 
-export const RunSessionRequest: Schema.Schema<RunSessionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      config: Schema.optional(SessionConfig),
-      inputs: Schema.optional(Schema.Array(SessionInput)),
-    }),
-  ).annotate({
-    identifier: "RunSessionRequest",
-  }) as any as Schema.Schema<RunSessionRequest>;
+export const RunSessionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  config: Schema.optional(SessionConfig),
+  inputs: Schema.optional(Schema.Array(SessionInput)),
+}).annotate({ identifier: "RunSessionRequest" });
 
 export interface ToolCalls {
   /** Optional. The list of tool calls to execute. */
   toolCalls?: Array<ToolCall>;
 }
 
-export const ToolCalls: Schema.Schema<ToolCalls> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      toolCalls: Schema.optional(Schema.Array(ToolCall)),
-    }),
-  ).annotate({ identifier: "ToolCalls" }) as any as Schema.Schema<ToolCalls>;
+export const ToolCalls = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  toolCalls: Schema.optional(Schema.Array(ToolCall)),
+}).annotate({ identifier: "ToolCalls" });
 
 export interface CitationsCitedChunk {
   /** URI used for citation. */
@@ -410,28 +340,20 @@ export interface CitationsCitedChunk {
   text?: string;
 }
 
-export const CitationsCitedChunk: Schema.Schema<CitationsCitedChunk> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      text: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CitationsCitedChunk",
-  }) as any as Schema.Schema<CitationsCitedChunk>;
+export const CitationsCitedChunk = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  uri: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  text: Schema.optional(Schema.String),
+}).annotate({ identifier: "CitationsCitedChunk" });
 
 export interface Citations {
   /** List of cited pieces of information. */
   citedChunks?: Array<CitationsCitedChunk>;
 }
 
-export const Citations: Schema.Schema<Citations> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      citedChunks: Schema.optional(Schema.Array(CitationsCitedChunk)),
-    }),
-  ).annotate({ identifier: "Citations" }) as any as Schema.Schema<Citations>;
+export const Citations = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  citedChunks: Schema.optional(Schema.Array(CitationsCitedChunk)),
+}).annotate({ identifier: "Citations" });
 
 export interface WebSearchQuery {
   /** The search query text. */
@@ -440,15 +362,10 @@ export interface WebSearchQuery {
   uri?: string;
 }
 
-export const WebSearchQuery: Schema.Schema<WebSearchQuery> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      query: Schema.optional(Schema.String),
-      uri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WebSearchQuery",
-  }) as any as Schema.Schema<WebSearchQuery>;
+export const WebSearchQuery = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  query: Schema.optional(Schema.String),
+  uri: Schema.optional(Schema.String),
+}).annotate({ identifier: "WebSearchQuery" });
 
 export interface GoogleSearchSuggestions {
   /** Compliant HTML and CSS styling for search suggestions. The provided HTML and CSS automatically adapts to your device settings, displaying in either light or dark mode indicated by `@media(prefers-color-scheme)`. */
@@ -457,27 +374,20 @@ export interface GoogleSearchSuggestions {
   webSearchQueries?: Array<WebSearchQuery>;
 }
 
-export const GoogleSearchSuggestions: Schema.Schema<GoogleSearchSuggestions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      htmls: Schema.optional(Schema.Array(Schema.String)),
-      webSearchQueries: Schema.optional(Schema.Array(WebSearchQuery)),
-    }),
-  ).annotate({
-    identifier: "GoogleSearchSuggestions",
-  }) as any as Schema.Schema<GoogleSearchSuggestions>;
+export const GoogleSearchSuggestions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    htmls: Schema.optional(Schema.Array(Schema.String)),
+    webSearchQueries: Schema.optional(Schema.Array(WebSearchQuery)),
+  }).annotate({ identifier: "GoogleSearchSuggestions" });
 
 export interface EndSession {
   /** Optional. Provides additional information about the end session signal, such as the reason for ending the session. */
   metadata?: Record<string, unknown>;
 }
 
-export const EndSession: Schema.Schema<EndSession> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "EndSession" }) as any as Schema.Schema<EndSession>;
+export const EndSession = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "EndSession" });
 
 export interface Span {
   /** Output only. The name of the span. */
@@ -513,15 +423,11 @@ export interface SessionOutputDiagnosticInfo {
   rootSpan?: Span;
 }
 
-export const SessionOutputDiagnosticInfo: Schema.Schema<SessionOutputDiagnosticInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      messages: Schema.optional(Schema.Array(Message)),
-      rootSpan: Schema.optional(Span),
-    }),
-  ).annotate({
-    identifier: "SessionOutputDiagnosticInfo",
-  }) as any as Schema.Schema<SessionOutputDiagnosticInfo>;
+export const SessionOutputDiagnosticInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    messages: Schema.optional(Schema.Array(Message)),
+    rootSpan: Schema.optional(Span),
+  }).annotate({ identifier: "SessionOutputDiagnosticInfo" });
 
 export interface SessionOutput {
   /** Output text from the CES agent. */
@@ -546,37 +452,27 @@ export interface SessionOutput {
   diagnosticInfo?: SessionOutputDiagnosticInfo;
 }
 
-export const SessionOutput: Schema.Schema<SessionOutput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-      audio: Schema.optional(Schema.String),
-      toolCalls: Schema.optional(ToolCalls),
-      citations: Schema.optional(Citations),
-      googleSearchSuggestions: Schema.optional(GoogleSearchSuggestions),
-      endSession: Schema.optional(EndSession),
-      payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      turnIndex: Schema.optional(Schema.Number),
-      turnCompleted: Schema.optional(Schema.Boolean),
-      diagnosticInfo: Schema.optional(SessionOutputDiagnosticInfo),
-    }),
-  ).annotate({
-    identifier: "SessionOutput",
-  }) as any as Schema.Schema<SessionOutput>;
+export const SessionOutput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  text: Schema.optional(Schema.String),
+  audio: Schema.optional(Schema.String),
+  toolCalls: Schema.optional(ToolCalls),
+  citations: Schema.optional(Citations),
+  googleSearchSuggestions: Schema.optional(GoogleSearchSuggestions),
+  endSession: Schema.optional(EndSession),
+  payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  turnIndex: Schema.optional(Schema.Number),
+  turnCompleted: Schema.optional(Schema.Boolean),
+  diagnosticInfo: Schema.optional(SessionOutputDiagnosticInfo),
+}).annotate({ identifier: "SessionOutput" });
 
 export interface RunSessionResponse {
   /** Outputs for the session. */
   outputs?: Array<SessionOutput>;
 }
 
-export const RunSessionResponse: Schema.Schema<RunSessionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      outputs: Schema.optional(Schema.Array(SessionOutput)),
-    }),
-  ).annotate({
-    identifier: "RunSessionResponse",
-  }) as any as Schema.Schema<RunSessionResponse>;
+export const RunSessionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  outputs: Schema.optional(Schema.Array(SessionOutput)),
+}).annotate({ identifier: "RunSessionResponse" });
 
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -587,16 +483,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -611,16 +504,13 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      error: Schema.optional(Status),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  done: Schema.optional(Schema.Boolean),
+  error: Schema.optional(Status),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Operation" });
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -631,30 +521,25 @@ export interface ListOperationsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(Schema.Array(Operation)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    operations: Schema.optional(Schema.Array(Operation)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelOperationRequest",
-  }) as any as Schema.Schema<CancelOperationRequest>;
+export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelOperationRequest" });
 
 export interface LanguageSettings {
   /** Optional. The default language code of the app. */
@@ -667,31 +552,21 @@ export interface LanguageSettings {
   fallbackAction?: string;
 }
 
-export const LanguageSettings: Schema.Schema<LanguageSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      defaultLanguageCode: Schema.optional(Schema.String),
-      supportedLanguageCodes: Schema.optional(Schema.Array(Schema.String)),
-      enableMultilingualSupport: Schema.optional(Schema.Boolean),
-      fallbackAction: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LanguageSettings",
-  }) as any as Schema.Schema<LanguageSettings>;
+export const LanguageSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  defaultLanguageCode: Schema.optional(Schema.String),
+  supportedLanguageCodes: Schema.optional(Schema.Array(Schema.String)),
+  enableMultilingualSupport: Schema.optional(Schema.Boolean),
+  fallbackAction: Schema.optional(Schema.String),
+}).annotate({ identifier: "LanguageSettings" });
 
 export interface TimeZoneSettings {
   /** Optional. The time zone of the app from the [time zone database](https://www.iana.org/time-zones), e.g., America/Los_Angeles, Europe/Paris. */
   timeZone?: string;
 }
 
-export const TimeZoneSettings: Schema.Schema<TimeZoneSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      timeZone: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TimeZoneSettings",
-  }) as any as Schema.Schema<TimeZoneSettings>;
+export const TimeZoneSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  timeZone: Schema.optional(Schema.String),
+}).annotate({ identifier: "TimeZoneSettings" });
 
 export interface SynthesizeSpeechConfig {
   /** Optional. The name of the voice. If not set, the service will choose a voice based on the other parameters such as language_code. For the list of available voices, please refer to [Supported voices and languages](https://cloud.google.com/text-to-speech/docs/voices) from Cloud Text-to-Speech. */
@@ -700,15 +575,12 @@ export interface SynthesizeSpeechConfig {
   speakingRate?: number;
 }
 
-export const SynthesizeSpeechConfig: Schema.Schema<SynthesizeSpeechConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      voice: Schema.optional(Schema.String),
-      speakingRate: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "SynthesizeSpeechConfig",
-  }) as any as Schema.Schema<SynthesizeSpeechConfig>;
+export const SynthesizeSpeechConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    voice: Schema.optional(Schema.String),
+    speakingRate: Schema.optional(Schema.Number),
+  },
+).annotate({ identifier: "SynthesizeSpeechConfig" });
 
 export interface BargeInConfig {
   /** Optional. Disables user barge-in while the agent is speaking. If true, user input during agent response playback will be ignored. Deprecated: `disable_barge_in` is deprecated in favor of `disable_barge_in_control` in ChannelProfile. */
@@ -717,15 +589,10 @@ export interface BargeInConfig {
   bargeInAwareness?: boolean;
 }
 
-export const BargeInConfig: Schema.Schema<BargeInConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      disableBargeIn: Schema.optional(Schema.Boolean),
-      bargeInAwareness: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "BargeInConfig",
-  }) as any as Schema.Schema<BargeInConfig>;
+export const BargeInConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  disableBargeIn: Schema.optional(Schema.Boolean),
+  bargeInAwareness: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "BargeInConfig" });
 
 export interface AmbientSoundConfig {
   /** Optional. Deprecated: `prebuilt_ambient_noise` is deprecated in favor of `prebuilt_ambient_sound`. */
@@ -743,17 +610,12 @@ export interface AmbientSoundConfig {
   volumeGainDb?: number;
 }
 
-export const AmbientSoundConfig: Schema.Schema<AmbientSoundConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      prebuiltAmbientNoise: Schema.optional(Schema.String),
-      gcsUri: Schema.optional(Schema.String),
-      prebuiltAmbientSound: Schema.optional(Schema.String),
-      volumeGainDb: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "AmbientSoundConfig",
-  }) as any as Schema.Schema<AmbientSoundConfig>;
+export const AmbientSoundConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  prebuiltAmbientNoise: Schema.optional(Schema.String),
+  gcsUri: Schema.optional(Schema.String),
+  prebuiltAmbientSound: Schema.optional(Schema.String),
+  volumeGainDb: Schema.optional(Schema.Number),
+}).annotate({ identifier: "AmbientSoundConfig" });
 
 export interface AudioProcessingConfig {
   /** Optional. Configuration of how the agent response should be synthesized, mapping from the language code to SynthesizeSpeechConfig. If the configuration for the specified language code is not found, the configuration for the root language code will be used. For example, if the map contains "en-us" and "en", and the specified language code is "en-gb", then "en" configuration will be used. Note: Language code is case-insensitive. */
@@ -766,19 +628,14 @@ export interface AudioProcessingConfig {
   ambientSoundConfig?: AmbientSoundConfig;
 }
 
-export const AudioProcessingConfig: Schema.Schema<AudioProcessingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      synthesizeSpeechConfigs: Schema.optional(
-        Schema.Record(Schema.String, SynthesizeSpeechConfig),
-      ),
-      bargeInConfig: Schema.optional(BargeInConfig),
-      inactivityTimeout: Schema.optional(Schema.String),
-      ambientSoundConfig: Schema.optional(AmbientSoundConfig),
-    }),
-  ).annotate({
-    identifier: "AudioProcessingConfig",
-  }) as any as Schema.Schema<AudioProcessingConfig>;
+export const AudioProcessingConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  synthesizeSpeechConfigs: Schema.optional(
+    Schema.Record(Schema.String, SynthesizeSpeechConfig),
+  ),
+  bargeInConfig: Schema.optional(BargeInConfig),
+  inactivityTimeout: Schema.optional(Schema.String),
+  ambientSoundConfig: Schema.optional(AmbientSoundConfig),
+}).annotate({ identifier: "AudioProcessingConfig" });
 
 export interface RedactionConfig {
   /** Optional. If true, redaction will be applied in various logging scenarios, including conversation history, Cloud Logging and audio recording. */
@@ -789,16 +646,11 @@ export interface RedactionConfig {
   deidentifyTemplate?: string;
 }
 
-export const RedactionConfig: Schema.Schema<RedactionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableRedaction: Schema.optional(Schema.Boolean),
-      inspectTemplate: Schema.optional(Schema.String),
-      deidentifyTemplate: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RedactionConfig",
-  }) as any as Schema.Schema<RedactionConfig>;
+export const RedactionConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enableRedaction: Schema.optional(Schema.Boolean),
+  inspectTemplate: Schema.optional(Schema.String),
+  deidentifyTemplate: Schema.optional(Schema.String),
+}).annotate({ identifier: "RedactionConfig" });
 
 export interface AudioRecordingConfig {
   /** Optional. The [Cloud Storage](https://cloud.google.com/storage) bucket to store the session audio recordings. The URI must start with "gs://". Please choose a bucket location that meets your data residency requirements. Note: If the Cloud Storage bucket is in a different project from the app, you should grant `storage.objects.create` permission to the CES service agent `service-@gcp-sa-ces.iam.gserviceaccount.com`. */
@@ -807,15 +659,10 @@ export interface AudioRecordingConfig {
   gcsPathPrefix?: string;
 }
 
-export const AudioRecordingConfig: Schema.Schema<AudioRecordingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsBucket: Schema.optional(Schema.String),
-      gcsPathPrefix: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AudioRecordingConfig",
-  }) as any as Schema.Schema<AudioRecordingConfig>;
+export const AudioRecordingConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gcsBucket: Schema.optional(Schema.String),
+  gcsPathPrefix: Schema.optional(Schema.String),
+}).annotate({ identifier: "AudioRecordingConfig" });
 
 export interface BigQueryExportSettings {
   /** Optional. Indicates whether the BigQuery export is enabled. */
@@ -826,30 +673,22 @@ export interface BigQueryExportSettings {
   dataset?: string;
 }
 
-export const BigQueryExportSettings: Schema.Schema<BigQueryExportSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-      project: Schema.optional(Schema.String),
-      dataset: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BigQueryExportSettings",
-  }) as any as Schema.Schema<BigQueryExportSettings>;
+export const BigQueryExportSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    enabled: Schema.optional(Schema.Boolean),
+    project: Schema.optional(Schema.String),
+    dataset: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "BigQueryExportSettings" });
 
 export interface CloudLoggingSettings {
   /** Optional. Whether to enable Cloud Logging for the sessions. */
   enableCloudLogging?: boolean;
 }
 
-export const CloudLoggingSettings: Schema.Schema<CloudLoggingSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableCloudLogging: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "CloudLoggingSettings",
-  }) as any as Schema.Schema<CloudLoggingSettings>;
+export const CloudLoggingSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enableCloudLogging: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "CloudLoggingSettings" });
 
 export interface ConversationLoggingSettings {
   /** Optional. Whether to disable conversation logging for the sessions. */
@@ -858,29 +697,22 @@ export interface ConversationLoggingSettings {
   retentionWindow?: string;
 }
 
-export const ConversationLoggingSettings: Schema.Schema<ConversationLoggingSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      disableConversationLogging: Schema.optional(Schema.Boolean),
-      retentionWindow: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConversationLoggingSettings",
-  }) as any as Schema.Schema<ConversationLoggingSettings>;
+export const ConversationLoggingSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    disableConversationLogging: Schema.optional(Schema.Boolean),
+    retentionWindow: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ConversationLoggingSettings" });
 
 export interface MetricAnalysisSettings {
   /** Optional. Whether to collect conversation data for llm analysis metrics. If true, conversation data will not be collected for llm analysis metrics; otherwise, conversation data will be collected. */
   llmMetricsOptedOut?: boolean;
 }
 
-export const MetricAnalysisSettings: Schema.Schema<MetricAnalysisSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      llmMetricsOptedOut: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "MetricAnalysisSettings",
-  }) as any as Schema.Schema<MetricAnalysisSettings>;
+export const MetricAnalysisSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    llmMetricsOptedOut: Schema.optional(Schema.Boolean),
+  },
+).annotate({ identifier: "MetricAnalysisSettings" });
 
 export interface LoggingSettings {
   /** Optional. Configuration for how sensitive data should be redacted. */
@@ -899,20 +731,15 @@ export interface LoggingSettings {
   metricAnalysisSettings?: MetricAnalysisSettings;
 }
 
-export const LoggingSettings: Schema.Schema<LoggingSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      redactionConfig: Schema.optional(RedactionConfig),
-      audioRecordingConfig: Schema.optional(AudioRecordingConfig),
-      bigqueryExportSettings: Schema.optional(BigQueryExportSettings),
-      cloudLoggingSettings: Schema.optional(CloudLoggingSettings),
-      conversationLoggingSettings: Schema.optional(ConversationLoggingSettings),
-      evaluationAudioRecordingConfig: Schema.optional(AudioRecordingConfig),
-      metricAnalysisSettings: Schema.optional(MetricAnalysisSettings),
-    }),
-  ).annotate({
-    identifier: "LoggingSettings",
-  }) as any as Schema.Schema<LoggingSettings>;
+export const LoggingSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  redactionConfig: Schema.optional(RedactionConfig),
+  audioRecordingConfig: Schema.optional(AudioRecordingConfig),
+  bigqueryExportSettings: Schema.optional(BigQueryExportSettings),
+  cloudLoggingSettings: Schema.optional(CloudLoggingSettings),
+  conversationLoggingSettings: Schema.optional(ConversationLoggingSettings),
+  evaluationAudioRecordingConfig: Schema.optional(AudioRecordingConfig),
+  metricAnalysisSettings: Schema.optional(MetricAnalysisSettings),
+}).annotate({ identifier: "LoggingSettings" });
 
 export interface ErrorHandlingSettingsFallbackResponseConfig {
   /** Optional. The fallback messages in case of system errors (e.g. LLM errors), mapped by [supported language code](https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/reference/language). */
@@ -921,31 +748,23 @@ export interface ErrorHandlingSettingsFallbackResponseConfig {
   maxFallbackAttempts?: number;
 }
 
-export const ErrorHandlingSettingsFallbackResponseConfig: Schema.Schema<ErrorHandlingSettingsFallbackResponseConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customFallbackMessages: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      maxFallbackAttempts: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "ErrorHandlingSettingsFallbackResponseConfig",
-  }) as any as Schema.Schema<ErrorHandlingSettingsFallbackResponseConfig>;
+export const ErrorHandlingSettingsFallbackResponseConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customFallbackMessages: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    maxFallbackAttempts: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "ErrorHandlingSettingsFallbackResponseConfig" });
 
 export interface ErrorHandlingSettingsEndSessionConfig {
   /** Optional. Whether to escalate the session in EndSession. If session is escalated, metadata in EndSession will contain `session_escalated = true`. See https://docs.cloud.google.com/customer-engagement-ai/conversational-agents/ps/deploy/google-telephony-platform#transfer_a_call_to_a_human_agent for details. */
   escalateSession?: boolean;
 }
 
-export const ErrorHandlingSettingsEndSessionConfig: Schema.Schema<ErrorHandlingSettingsEndSessionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      escalateSession: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ErrorHandlingSettingsEndSessionConfig",
-  }) as any as Schema.Schema<ErrorHandlingSettingsEndSessionConfig>;
+export const ErrorHandlingSettingsEndSessionConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    escalateSession: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "ErrorHandlingSettingsEndSessionConfig" });
 
 export interface ErrorHandlingSettings {
   /** Optional. The strategy to use for error handling. */
@@ -961,18 +780,13 @@ export interface ErrorHandlingSettings {
   endSessionConfig?: ErrorHandlingSettingsEndSessionConfig;
 }
 
-export const ErrorHandlingSettings: Schema.Schema<ErrorHandlingSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errorHandlingStrategy: Schema.optional(Schema.String),
-      fallbackResponseConfig: Schema.optional(
-        ErrorHandlingSettingsFallbackResponseConfig,
-      ),
-      endSessionConfig: Schema.optional(ErrorHandlingSettingsEndSessionConfig),
-    }),
-  ).annotate({
-    identifier: "ErrorHandlingSettings",
-  }) as any as Schema.Schema<ErrorHandlingSettings>;
+export const ErrorHandlingSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  errorHandlingStrategy: Schema.optional(Schema.String),
+  fallbackResponseConfig: Schema.optional(
+    ErrorHandlingSettingsFallbackResponseConfig,
+  ),
+  endSessionConfig: Schema.optional(ErrorHandlingSettingsEndSessionConfig),
+}).annotate({ identifier: "ErrorHandlingSettings" });
 
 export interface ModelSettings {
   /** Optional. The LLM model that the agent should use. If not set, the agent will inherit the model from its parent agent. */
@@ -981,15 +795,10 @@ export interface ModelSettings {
   temperature?: number;
 }
 
-export const ModelSettings: Schema.Schema<ModelSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      model: Schema.optional(Schema.String),
-      temperature: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "ModelSettings",
-  }) as any as Schema.Schema<ModelSettings>;
+export const ModelSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  model: Schema.optional(Schema.String),
+  temperature: Schema.optional(Schema.Number),
+}).annotate({ identifier: "ModelSettings" });
 
 export interface EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds {
   /** Optional. The success threshold for semantic similarity. Must be an integer between 0 and 4. Default is >= 3. */
@@ -1004,34 +813,28 @@ export interface EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTur
     | (string & {});
 }
 
-export const EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds: Schema.Schema<EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      semanticSimilaritySuccessThreshold: Schema.optional(Schema.Number),
-      overallToolInvocationCorrectnessThreshold: Schema.optional(Schema.Number),
-      semanticSimilarityChannel: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    semanticSimilaritySuccessThreshold: Schema.optional(Schema.Number),
+    overallToolInvocationCorrectnessThreshold: Schema.optional(Schema.Number),
+    semanticSimilarityChannel: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds",
-  }) as any as Schema.Schema<EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds>;
+  });
 
 export interface EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds {
   /** Optional. The success threshold for individual tool invocation parameter correctness. Must be a float between 0 and 1. Default is 1.0. */
   toolInvocationParameterCorrectnessThreshold?: number;
 }
 
-export const EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds: Schema.Schema<EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      toolInvocationParameterCorrectnessThreshold: Schema.optional(
-        Schema.Number,
-      ),
-    }),
-  ).annotate({
+export const EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    toolInvocationParameterCorrectnessThreshold: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds",
-  }) as any as Schema.Schema<EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds>;
+  });
 
 export interface EvaluationMetricsThresholdsToolMatchingSettings {
   /** Optional. Behavior for extra tool calls. Defaults to FAIL. */
@@ -1042,14 +845,12 @@ export interface EvaluationMetricsThresholdsToolMatchingSettings {
     | (string & {});
 }
 
-export const EvaluationMetricsThresholdsToolMatchingSettings: Schema.Schema<EvaluationMetricsThresholdsToolMatchingSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      extraToolCallBehavior: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const EvaluationMetricsThresholdsToolMatchingSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    extraToolCallBehavior: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "EvaluationMetricsThresholdsToolMatchingSettings",
-  }) as any as Schema.Schema<EvaluationMetricsThresholdsToolMatchingSettings>;
+  });
 
 export interface EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds {
   /** Optional. The turn level metrics thresholds. */
@@ -1060,22 +861,20 @@ export interface EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds {
   toolMatchingSettings?: EvaluationMetricsThresholdsToolMatchingSettings;
 }
 
-export const EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds: Schema.Schema<EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      turnLevelMetricsThresholds: Schema.optional(
-        EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds,
-      ),
-      expectationLevelMetricsThresholds: Schema.optional(
-        EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds,
-      ),
-      toolMatchingSettings: Schema.optional(
-        EvaluationMetricsThresholdsToolMatchingSettings,
-      ),
-    }),
-  ).annotate({
+export const EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    turnLevelMetricsThresholds: Schema.optional(
+      EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsTurnLevelMetricsThresholds,
+    ),
+    expectationLevelMetricsThresholds: Schema.optional(
+      EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholdsExpectationLevelMetricsThresholds,
+    ),
+    toolMatchingSettings: Schema.optional(
+      EvaluationMetricsThresholdsToolMatchingSettings,
+    ),
+  }).annotate({
     identifier: "EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds",
-  }) as any as Schema.Schema<EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds>;
+  });
 
 export interface EvaluationMetricsThresholds {
   /** Optional. The golden evaluation metrics thresholds. */
@@ -1100,19 +899,15 @@ export interface EvaluationMetricsThresholds {
     | (string & {});
 }
 
-export const EvaluationMetricsThresholds: Schema.Schema<EvaluationMetricsThresholds> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      goldenEvaluationMetricsThresholds: Schema.optional(
-        EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds,
-      ),
-      hallucinationMetricBehavior: Schema.optional(Schema.String),
-      goldenHallucinationMetricBehavior: Schema.optional(Schema.String),
-      scenarioHallucinationMetricBehavior: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EvaluationMetricsThresholds",
-  }) as any as Schema.Schema<EvaluationMetricsThresholds>;
+export const EvaluationMetricsThresholds =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    goldenEvaluationMetricsThresholds: Schema.optional(
+      EvaluationMetricsThresholdsGoldenEvaluationMetricsThresholds,
+    ),
+    hallucinationMetricBehavior: Schema.optional(Schema.String),
+    goldenHallucinationMetricBehavior: Schema.optional(Schema.String),
+    scenarioHallucinationMetricBehavior: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EvaluationMetricsThresholds" });
 
 export interface Ces_Schema {
   /** Required. The type of the data. */
@@ -1197,16 +992,13 @@ export interface AppVariableDeclaration {
   schema?: Ces_Schema;
 }
 
-export const AppVariableDeclaration: Schema.Schema<AppVariableDeclaration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      schema: Schema.optional(Ces_Schema),
-    }),
-  ).annotate({
-    identifier: "AppVariableDeclaration",
-  }) as any as Schema.Schema<AppVariableDeclaration>;
+export const AppVariableDeclaration = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    name: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    schema: Schema.optional(Ces_Schema),
+  },
+).annotate({ identifier: "AppVariableDeclaration" });
 
 export interface DataStoreSettingsEngine {
   /** Output only. The resource name of the engine. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}` */
@@ -1219,43 +1011,30 @@ export interface DataStoreSettingsEngine {
     | (string & {});
 }
 
-export const DataStoreSettingsEngine: Schema.Schema<DataStoreSettingsEngine> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DataStoreSettingsEngine",
-  }) as any as Schema.Schema<DataStoreSettingsEngine>;
+export const DataStoreSettingsEngine =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DataStoreSettingsEngine" });
 
 export interface DataStoreSettings {
   /** Output only. The engines for the app. */
   engines?: Array<DataStoreSettingsEngine>;
 }
 
-export const DataStoreSettings: Schema.Schema<DataStoreSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      engines: Schema.optional(Schema.Array(DataStoreSettingsEngine)),
-    }),
-  ).annotate({
-    identifier: "DataStoreSettings",
-  }) as any as Schema.Schema<DataStoreSettings>;
+export const DataStoreSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  engines: Schema.optional(Schema.Array(DataStoreSettingsEngine)),
+}).annotate({ identifier: "DataStoreSettings" });
 
 export interface ChannelProfilePersonaProperty {
   /** Optional. The persona of the channel. */
   persona?: "UNKNOWN" | "CONCISE" | "CHATTY" | (string & {});
 }
 
-export const ChannelProfilePersonaProperty: Schema.Schema<ChannelProfilePersonaProperty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      persona: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ChannelProfilePersonaProperty",
-  }) as any as Schema.Schema<ChannelProfilePersonaProperty>;
+export const ChannelProfilePersonaProperty =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    persona: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ChannelProfilePersonaProperty" });
 
 export interface ChannelProfileWebWidgetConfigSecuritySettings {
   /** Optional. Indicates whether public access to the web widget is enabled. If `true`, the web widget will be publicly accessible. If `false`, the web widget must be integrated with your own authentication and authorization system to return valid credentials for accessing the CES agent. */
@@ -1268,17 +1047,13 @@ export interface ChannelProfileWebWidgetConfigSecuritySettings {
   enableRecaptcha?: boolean;
 }
 
-export const ChannelProfileWebWidgetConfigSecuritySettings: Schema.Schema<ChannelProfileWebWidgetConfigSecuritySettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enablePublicAccess: Schema.optional(Schema.Boolean),
-      enableOriginCheck: Schema.optional(Schema.Boolean),
-      allowedOrigins: Schema.optional(Schema.Array(Schema.String)),
-      enableRecaptcha: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ChannelProfileWebWidgetConfigSecuritySettings",
-  }) as any as Schema.Schema<ChannelProfileWebWidgetConfigSecuritySettings>;
+export const ChannelProfileWebWidgetConfigSecuritySettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enablePublicAccess: Schema.optional(Schema.Boolean),
+    enableOriginCheck: Schema.optional(Schema.Boolean),
+    allowedOrigins: Schema.optional(Schema.Array(Schema.String)),
+    enableRecaptcha: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "ChannelProfileWebWidgetConfigSecuritySettings" });
 
 export interface ChannelProfileWebWidgetConfig {
   /** Optional. The modality of the web widget. */
@@ -1297,19 +1072,15 @@ export interface ChannelProfileWebWidgetConfig {
   securitySettings?: ChannelProfileWebWidgetConfigSecuritySettings;
 }
 
-export const ChannelProfileWebWidgetConfig: Schema.Schema<ChannelProfileWebWidgetConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      modality: Schema.optional(Schema.String),
-      theme: Schema.optional(Schema.String),
-      webWidgetTitle: Schema.optional(Schema.String),
-      securitySettings: Schema.optional(
-        ChannelProfileWebWidgetConfigSecuritySettings,
-      ),
-    }),
-  ).annotate({
-    identifier: "ChannelProfileWebWidgetConfig",
-  }) as any as Schema.Schema<ChannelProfileWebWidgetConfig>;
+export const ChannelProfileWebWidgetConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    modality: Schema.optional(Schema.String),
+    theme: Schema.optional(Schema.String),
+    webWidgetTitle: Schema.optional(Schema.String),
+    securitySettings: Schema.optional(
+      ChannelProfileWebWidgetConfigSecuritySettings,
+    ),
+  }).annotate({ identifier: "ChannelProfileWebWidgetConfig" });
 
 export interface ChannelProfile {
   /** Optional. The unique identifier of the channel profile. */
@@ -1337,20 +1108,15 @@ export interface ChannelProfile {
   noiseSuppressionLevel?: string;
 }
 
-export const ChannelProfile: Schema.Schema<ChannelProfile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      profileId: Schema.optional(Schema.String),
-      channelType: Schema.optional(Schema.String),
-      personaProperty: Schema.optional(ChannelProfilePersonaProperty),
-      disableDtmf: Schema.optional(Schema.Boolean),
-      disableBargeInControl: Schema.optional(Schema.Boolean),
-      webWidgetConfig: Schema.optional(ChannelProfileWebWidgetConfig),
-      noiseSuppressionLevel: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ChannelProfile",
-  }) as any as Schema.Schema<ChannelProfile>;
+export const ChannelProfile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  profileId: Schema.optional(Schema.String),
+  channelType: Schema.optional(Schema.String),
+  personaProperty: Schema.optional(ChannelProfilePersonaProperty),
+  disableDtmf: Schema.optional(Schema.Boolean),
+  disableBargeInControl: Schema.optional(Schema.Boolean),
+  webWidgetConfig: Schema.optional(ChannelProfileWebWidgetConfig),
+  noiseSuppressionLevel: Schema.optional(Schema.String),
+}).annotate({ identifier: "ChannelProfile" });
 
 export interface ClientCertificateSettings {
   /** Required. The TLS certificate encoded in PEM format. This string must include the begin header and end footer lines. */
@@ -1361,16 +1127,12 @@ export interface ClientCertificateSettings {
   passphrase?: string;
 }
 
-export const ClientCertificateSettings: Schema.Schema<ClientCertificateSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tlsCertificate: Schema.optional(Schema.String),
-      privateKey: Schema.optional(Schema.String),
-      passphrase: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ClientCertificateSettings",
-  }) as any as Schema.Schema<ClientCertificateSettings>;
+export const ClientCertificateSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tlsCertificate: Schema.optional(Schema.String),
+    privateKey: Schema.optional(Schema.String),
+    passphrase: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ClientCertificateSettings" });
 
 export interface App {
   /** Identifier. The unique identifier of the app. Format: `projects/{project}/locations/{location}/apps/{app}` */
@@ -1431,41 +1193,36 @@ export interface App {
   locked?: boolean;
 }
 
-export const App: Schema.Schema<App> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      pinned: Schema.optional(Schema.Boolean),
-      rootAgent: Schema.optional(Schema.String),
-      languageSettings: Schema.optional(LanguageSettings),
-      timeZoneSettings: Schema.optional(TimeZoneSettings),
-      audioProcessingConfig: Schema.optional(AudioProcessingConfig),
-      loggingSettings: Schema.optional(LoggingSettings),
-      errorHandlingSettings: Schema.optional(ErrorHandlingSettings),
-      modelSettings: Schema.optional(ModelSettings),
-      toolExecutionMode: Schema.optional(Schema.String),
-      evaluationMetricsThresholds: Schema.optional(EvaluationMetricsThresholds),
-      variableDeclarations: Schema.optional(
-        Schema.Array(AppVariableDeclaration),
-      ),
-      predefinedVariableDeclarations: Schema.optional(
-        Schema.Array(AppVariableDeclaration),
-      ),
-      globalInstruction: Schema.optional(Schema.String),
-      guardrails: Schema.optional(Schema.Array(Schema.String)),
-      dataStoreSettings: Schema.optional(DataStoreSettings),
-      defaultChannelProfile: Schema.optional(ChannelProfile),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      deploymentCount: Schema.optional(Schema.Number),
-      clientCertificateSettings: Schema.optional(ClientCertificateSettings),
-      locked: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "App" }) as any as Schema.Schema<App>;
+export const App = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  pinned: Schema.optional(Schema.Boolean),
+  rootAgent: Schema.optional(Schema.String),
+  languageSettings: Schema.optional(LanguageSettings),
+  timeZoneSettings: Schema.optional(TimeZoneSettings),
+  audioProcessingConfig: Schema.optional(AudioProcessingConfig),
+  loggingSettings: Schema.optional(LoggingSettings),
+  errorHandlingSettings: Schema.optional(ErrorHandlingSettings),
+  modelSettings: Schema.optional(ModelSettings),
+  toolExecutionMode: Schema.optional(Schema.String),
+  evaluationMetricsThresholds: Schema.optional(EvaluationMetricsThresholds),
+  variableDeclarations: Schema.optional(Schema.Array(AppVariableDeclaration)),
+  predefinedVariableDeclarations: Schema.optional(
+    Schema.Array(AppVariableDeclaration),
+  ),
+  globalInstruction: Schema.optional(Schema.String),
+  guardrails: Schema.optional(Schema.Array(Schema.String)),
+  dataStoreSettings: Schema.optional(DataStoreSettings),
+  defaultChannelProfile: Schema.optional(ChannelProfile),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  deploymentCount: Schema.optional(Schema.Number),
+  clientCertificateSettings: Schema.optional(ClientCertificateSettings),
+  locked: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "App" });
 
 export interface ListAppsResponse {
   /** The list of apps. */
@@ -1476,16 +1233,11 @@ export interface ListAppsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListAppsResponse: Schema.Schema<ListAppsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      apps: Schema.optional(Schema.Array(App)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListAppsResponse",
-  }) as any as Schema.Schema<ListAppsResponse>;
+export const ListAppsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  apps: Schema.optional(Schema.Array(App)),
+  nextPageToken: Schema.optional(Schema.String),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ListAppsResponse" });
 
 export interface ExportAppRequest {
   /** Required. The format to export the app in. */
@@ -1496,16 +1248,11 @@ export interface ExportAppRequest {
   appVersion?: string;
 }
 
-export const ExportAppRequest: Schema.Schema<ExportAppRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      exportFormat: Schema.optional(Schema.String),
-      gcsUri: Schema.optional(Schema.String),
-      appVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ExportAppRequest",
-  }) as any as Schema.Schema<ExportAppRequest>;
+export const ExportAppRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  exportFormat: Schema.optional(Schema.String),
+  gcsUri: Schema.optional(Schema.String),
+  appVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "ExportAppRequest" });
 
 export interface ImportAppRequestImportOptions {
   /** Optional. The strategy to use when resolving conflicts during import. */
@@ -1516,14 +1263,10 @@ export interface ImportAppRequestImportOptions {
     | (string & {});
 }
 
-export const ImportAppRequestImportOptions: Schema.Schema<ImportAppRequestImportOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conflictResolutionStrategy: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ImportAppRequestImportOptions",
-  }) as any as Schema.Schema<ImportAppRequestImportOptions>;
+export const ImportAppRequestImportOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conflictResolutionStrategy: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ImportAppRequestImportOptions" });
 
 export interface ImportAppRequest {
   /** The [Google Cloud Storage](https://cloud.google.com/storage/docs/) URI from which to import app. The format of this URI must be `gs:///`. */
@@ -1540,26 +1283,20 @@ export interface ImportAppRequest {
   ignoreAppLock?: boolean;
 }
 
-export const ImportAppRequest: Schema.Schema<ImportAppRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsUri: Schema.optional(Schema.String),
-      appContent: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      appId: Schema.optional(Schema.String),
-      importOptions: Schema.optional(ImportAppRequestImportOptions),
-      ignoreAppLock: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ImportAppRequest",
-  }) as any as Schema.Schema<ImportAppRequest>;
+export const ImportAppRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gcsUri: Schema.optional(Schema.String),
+  appContent: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  appId: Schema.optional(Schema.String),
+  importOptions: Schema.optional(ImportAppRequestImportOptions),
+  ignoreAppLock: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "ImportAppRequest" });
 
 export interface AgentLlmAgent {}
 
-export const AgentLlmAgent: Schema.Schema<AgentLlmAgent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "AgentLlmAgent",
-  }) as any as Schema.Schema<AgentLlmAgent>;
+export const AgentLlmAgent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "AgentLlmAgent" });
 
 export interface AgentRemoteDialogflowAgent {
   /** Required. The [Dialogflow](https://docs.cloud.google.com/dialogflow/cx/docs/concept/agent) agent resource name. Format: `projects/{project}/locations/{location}/agents/{agent}` */
@@ -1576,23 +1313,19 @@ export interface AgentRemoteDialogflowAgent {
   respectResponseInterruptionSettings?: boolean;
 }
 
-export const AgentRemoteDialogflowAgent: Schema.Schema<AgentRemoteDialogflowAgent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      agent: Schema.optional(Schema.String),
-      flowId: Schema.optional(Schema.String),
-      environmentId: Schema.optional(Schema.String),
-      inputVariableMapping: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      outputVariableMapping: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      respectResponseInterruptionSettings: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "AgentRemoteDialogflowAgent",
-  }) as any as Schema.Schema<AgentRemoteDialogflowAgent>;
+export const AgentRemoteDialogflowAgent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    agent: Schema.optional(Schema.String),
+    flowId: Schema.optional(Schema.String),
+    environmentId: Schema.optional(Schema.String),
+    inputVariableMapping: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    outputVariableMapping: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    respectResponseInterruptionSettings: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "AgentRemoteDialogflowAgent" });
 
 export interface Callback {
   /** Required. The python code to execute for the callback. */
@@ -1605,15 +1338,12 @@ export interface Callback {
   proactiveExecutionEnabled?: boolean;
 }
 
-export const Callback: Schema.Schema<Callback> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pythonCode: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      disabled: Schema.optional(Schema.Boolean),
-      proactiveExecutionEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "Callback" }) as any as Schema.Schema<Callback>;
+export const Callback = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pythonCode: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  disabled: Schema.optional(Schema.Boolean),
+  proactiveExecutionEnabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Callback" });
 
 export interface AgentAgentToolset {
   /** Required. The resource name of the toolset. Format: `projects/{project}/locations/{location}/apps/{app}/toolsets/{toolset}` */
@@ -1622,43 +1352,28 @@ export interface AgentAgentToolset {
   toolIds?: Array<string>;
 }
 
-export const AgentAgentToolset: Schema.Schema<AgentAgentToolset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      toolset: Schema.optional(Schema.String),
-      toolIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AgentAgentToolset",
-  }) as any as Schema.Schema<AgentAgentToolset>;
+export const AgentAgentToolset = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  toolset: Schema.optional(Schema.String),
+  toolIds: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "AgentAgentToolset" });
 
 export interface ExpressionCondition {
   /** Required. The string representation of cloud.api.Expression condition. */
   expression?: string;
 }
 
-export const ExpressionCondition: Schema.Schema<ExpressionCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expression: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ExpressionCondition",
-  }) as any as Schema.Schema<ExpressionCondition>;
+export const ExpressionCondition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  expression: Schema.optional(Schema.String),
+}).annotate({ identifier: "ExpressionCondition" });
 
 export interface PythonCodeCondition {
   /** Required. The python code to execute. */
   pythonCode?: string;
 }
 
-export const PythonCodeCondition: Schema.Schema<PythonCodeCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pythonCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PythonCodeCondition",
-  }) as any as Schema.Schema<PythonCodeCondition>;
+export const PythonCodeCondition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pythonCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "PythonCodeCondition" });
 
 export interface TransferRuleDeterministicTransfer {
   /** Optional. A rule that evaluates a session state condition. If the condition evaluates to true, the transfer occurs. */
@@ -1667,29 +1382,21 @@ export interface TransferRuleDeterministicTransfer {
   pythonCodeCondition?: PythonCodeCondition;
 }
 
-export const TransferRuleDeterministicTransfer: Schema.Schema<TransferRuleDeterministicTransfer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expressionCondition: Schema.optional(ExpressionCondition),
-      pythonCodeCondition: Schema.optional(PythonCodeCondition),
-    }),
-  ).annotate({
-    identifier: "TransferRuleDeterministicTransfer",
-  }) as any as Schema.Schema<TransferRuleDeterministicTransfer>;
+export const TransferRuleDeterministicTransfer =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    expressionCondition: Schema.optional(ExpressionCondition),
+    pythonCodeCondition: Schema.optional(PythonCodeCondition),
+  }).annotate({ identifier: "TransferRuleDeterministicTransfer" });
 
 export interface TransferRuleDisablePlannerTransfer {
   /** Required. If the condition evaluates to true, planner will not be allowed to transfer to the target agent. */
   expressionCondition?: ExpressionCondition;
 }
 
-export const TransferRuleDisablePlannerTransfer: Schema.Schema<TransferRuleDisablePlannerTransfer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expressionCondition: Schema.optional(ExpressionCondition),
-    }),
-  ).annotate({
-    identifier: "TransferRuleDisablePlannerTransfer",
-  }) as any as Schema.Schema<TransferRuleDisablePlannerTransfer>;
+export const TransferRuleDisablePlannerTransfer =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    expressionCondition: Schema.optional(ExpressionCondition),
+  }).annotate({ identifier: "TransferRuleDisablePlannerTransfer" });
 
 export interface TransferRule {
   /** Optional. A rule that immediately transfers to the target agent when the condition is met. */
@@ -1706,19 +1413,12 @@ export interface TransferRule {
     | (string & {});
 }
 
-export const TransferRule: Schema.Schema<TransferRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deterministicTransfer: Schema.optional(TransferRuleDeterministicTransfer),
-      disablePlannerTransfer: Schema.optional(
-        TransferRuleDisablePlannerTransfer,
-      ),
-      childAgent: Schema.optional(Schema.String),
-      direction: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TransferRule",
-  }) as any as Schema.Schema<TransferRule>;
+export const TransferRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  deterministicTransfer: Schema.optional(TransferRuleDeterministicTransfer),
+  disablePlannerTransfer: Schema.optional(TransferRuleDisablePlannerTransfer),
+  childAgent: Schema.optional(Schema.String),
+  direction: Schema.optional(Schema.String),
+}).annotate({ identifier: "TransferRule" });
 
 export interface Agent {
   /** Optional. The default agent type. */
@@ -1767,33 +1467,30 @@ export interface Agent {
   transferRules?: Array<TransferRule>;
 }
 
-export const Agent: Schema.Schema<Agent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      llmAgent: Schema.optional(AgentLlmAgent),
-      remoteDialogflowAgent: Schema.optional(AgentRemoteDialogflowAgent),
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      modelSettings: Schema.optional(ModelSettings),
-      instruction: Schema.optional(Schema.String),
-      tools: Schema.optional(Schema.Array(Schema.String)),
-      childAgents: Schema.optional(Schema.Array(Schema.String)),
-      beforeAgentCallbacks: Schema.optional(Schema.Array(Callback)),
-      afterAgentCallbacks: Schema.optional(Schema.Array(Callback)),
-      beforeModelCallbacks: Schema.optional(Schema.Array(Callback)),
-      afterModelCallbacks: Schema.optional(Schema.Array(Callback)),
-      beforeToolCallbacks: Schema.optional(Schema.Array(Callback)),
-      afterToolCallbacks: Schema.optional(Schema.Array(Callback)),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      guardrails: Schema.optional(Schema.Array(Schema.String)),
-      etag: Schema.optional(Schema.String),
-      toolsets: Schema.optional(Schema.Array(AgentAgentToolset)),
-      generatedSummary: Schema.optional(Schema.String),
-      transferRules: Schema.optional(Schema.Array(TransferRule)),
-    }),
-  ).annotate({ identifier: "Agent" }) as any as Schema.Schema<Agent>;
+export const Agent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  llmAgent: Schema.optional(AgentLlmAgent),
+  remoteDialogflowAgent: Schema.optional(AgentRemoteDialogflowAgent),
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  modelSettings: Schema.optional(ModelSettings),
+  instruction: Schema.optional(Schema.String),
+  tools: Schema.optional(Schema.Array(Schema.String)),
+  childAgents: Schema.optional(Schema.Array(Schema.String)),
+  beforeAgentCallbacks: Schema.optional(Schema.Array(Callback)),
+  afterAgentCallbacks: Schema.optional(Schema.Array(Callback)),
+  beforeModelCallbacks: Schema.optional(Schema.Array(Callback)),
+  afterModelCallbacks: Schema.optional(Schema.Array(Callback)),
+  beforeToolCallbacks: Schema.optional(Schema.Array(Callback)),
+  afterToolCallbacks: Schema.optional(Schema.Array(Callback)),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  guardrails: Schema.optional(Schema.Array(Schema.String)),
+  etag: Schema.optional(Schema.String),
+  toolsets: Schema.optional(Schema.Array(AgentAgentToolset)),
+  generatedSummary: Schema.optional(Schema.String),
+  transferRules: Schema.optional(Schema.Array(TransferRule)),
+}).annotate({ identifier: "Agent" });
 
 export interface ListAgentsResponse {
   /** The list of agents. */
@@ -1802,15 +1499,10 @@ export interface ListAgentsResponse {
   nextPageToken?: string;
 }
 
-export const ListAgentsResponse: Schema.Schema<ListAgentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      agents: Schema.optional(Schema.Array(Agent)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAgentsResponse",
-  }) as any as Schema.Schema<ListAgentsResponse>;
+export const ListAgentsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  agents: Schema.optional(Schema.Array(Agent)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListAgentsResponse" });
 
 export interface Example {
   /** Identifier. The unique identifier of the example. Format: `projects/{project}/locations/{location}/apps/{app}/examples/{example}` */
@@ -1833,20 +1525,17 @@ export interface Example {
   etag?: string;
 }
 
-export const Example: Schema.Schema<Example> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      entryAgent: Schema.optional(Schema.String),
-      messages: Schema.optional(Schema.Array(Message)),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      invalid: Schema.optional(Schema.Boolean),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Example" }) as any as Schema.Schema<Example>;
+export const Example = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  entryAgent: Schema.optional(Schema.String),
+  messages: Schema.optional(Schema.Array(Message)),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  invalid: Schema.optional(Schema.Boolean),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "Example" });
 
 export interface ListExamplesResponse {
   /** The list of examples. */
@@ -1855,15 +1544,10 @@ export interface ListExamplesResponse {
   nextPageToken?: string;
 }
 
-export const ListExamplesResponse: Schema.Schema<ListExamplesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      examples: Schema.optional(Schema.Array(Example)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListExamplesResponse",
-  }) as any as Schema.Schema<ListExamplesResponse>;
+export const ListExamplesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  examples: Schema.optional(Schema.Array(Example)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListExamplesResponse" });
 
 export interface ClientFunction {
   /** Required. The function name. */
@@ -1876,17 +1560,12 @@ export interface ClientFunction {
   response?: Ces_Schema;
 }
 
-export const ClientFunction: Schema.Schema<ClientFunction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      parameters: Schema.optional(Ces_Schema),
-      response: Schema.optional(Ces_Schema),
-    }),
-  ).annotate({
-    identifier: "ClientFunction",
-  }) as any as Schema.Schema<ClientFunction>;
+export const ClientFunction = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  parameters: Schema.optional(Ces_Schema),
+  response: Schema.optional(Ces_Schema),
+}).annotate({ identifier: "ClientFunction" });
 
 export interface ApiKeyConfig {
   /** Required. The parameter name or the header name of the API key. E.g., If the API request is "https://example.com/act?X-Api-Key=", "X-Api-Key" would be the parameter name. */
@@ -1901,16 +1580,11 @@ export interface ApiKeyConfig {
     | (string & {});
 }
 
-export const ApiKeyConfig: Schema.Schema<ApiKeyConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      keyName: Schema.optional(Schema.String),
-      apiKeySecretVersion: Schema.optional(Schema.String),
-      requestLocation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ApiKeyConfig",
-  }) as any as Schema.Schema<ApiKeyConfig>;
+export const ApiKeyConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  keyName: Schema.optional(Schema.String),
+  apiKeySecretVersion: Schema.optional(Schema.String),
+  requestLocation: Schema.optional(Schema.String),
+}).annotate({ identifier: "ApiKeyConfig" });
 
 export interface OAuthConfig {
   /** Required. OAuth grant types. */
@@ -1928,25 +1602,20 @@ export interface OAuthConfig {
   scopes?: Array<string>;
 }
 
-export const OAuthConfig: Schema.Schema<OAuthConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      oauthGrantType: Schema.optional(Schema.String),
-      clientId: Schema.optional(Schema.String),
-      clientSecretVersion: Schema.optional(Schema.String),
-      tokenEndpoint: Schema.optional(Schema.String),
-      scopes: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "OAuthConfig",
-  }) as any as Schema.Schema<OAuthConfig>;
+export const OAuthConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  oauthGrantType: Schema.optional(Schema.String),
+  clientId: Schema.optional(Schema.String),
+  clientSecretVersion: Schema.optional(Schema.String),
+  tokenEndpoint: Schema.optional(Schema.String),
+  scopes: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "OAuthConfig" });
 
 export interface ServiceAgentIdTokenAuthConfig {}
 
-export const ServiceAgentIdTokenAuthConfig: Schema.Schema<ServiceAgentIdTokenAuthConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const ServiceAgentIdTokenAuthConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ServiceAgentIdTokenAuthConfig",
-  }) as any as Schema.Schema<ServiceAgentIdTokenAuthConfig>;
+  });
 
 export interface ServiceAccountAuthConfig {
   /** Required. The email address of the service account used for authentication. CES uses this service account to exchange an access token and the access token is then sent in the `Authorization` header of the request. The service account must have the `roles/iam.serviceAccountTokenCreator` role granted to the CES service agent `service-@gcp-sa-ces.iam.gserviceaccount.com`. */
@@ -1955,29 +1624,20 @@ export interface ServiceAccountAuthConfig {
   scopes?: Array<string>;
 }
 
-export const ServiceAccountAuthConfig: Schema.Schema<ServiceAccountAuthConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serviceAccount: Schema.optional(Schema.String),
-      scopes: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ServiceAccountAuthConfig",
-  }) as any as Schema.Schema<ServiceAccountAuthConfig>;
+export const ServiceAccountAuthConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    serviceAccount: Schema.optional(Schema.String),
+    scopes: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ServiceAccountAuthConfig" });
 
 export interface BearerTokenConfig {
   /** Required. The bearer token. Must be in the format `$context.variables.`. */
   token?: string;
 }
 
-export const BearerTokenConfig: Schema.Schema<BearerTokenConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      token: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BearerTokenConfig",
-  }) as any as Schema.Schema<BearerTokenConfig>;
+export const BearerTokenConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  token: Schema.optional(Schema.String),
+}).annotate({ identifier: "BearerTokenConfig" });
 
 export interface ApiAuthentication {
   /** Optional. Config for API key auth. */
@@ -1992,20 +1652,13 @@ export interface ApiAuthentication {
   bearerTokenConfig?: BearerTokenConfig;
 }
 
-export const ApiAuthentication: Schema.Schema<ApiAuthentication> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      apiKeyConfig: Schema.optional(ApiKeyConfig),
-      oauthConfig: Schema.optional(OAuthConfig),
-      serviceAgentIdTokenAuthConfig: Schema.optional(
-        ServiceAgentIdTokenAuthConfig,
-      ),
-      serviceAccountAuthConfig: Schema.optional(ServiceAccountAuthConfig),
-      bearerTokenConfig: Schema.optional(BearerTokenConfig),
-    }),
-  ).annotate({
-    identifier: "ApiAuthentication",
-  }) as any as Schema.Schema<ApiAuthentication>;
+export const ApiAuthentication = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  apiKeyConfig: Schema.optional(ApiKeyConfig),
+  oauthConfig: Schema.optional(OAuthConfig),
+  serviceAgentIdTokenAuthConfig: Schema.optional(ServiceAgentIdTokenAuthConfig),
+  serviceAccountAuthConfig: Schema.optional(ServiceAccountAuthConfig),
+  bearerTokenConfig: Schema.optional(BearerTokenConfig),
+}).annotate({ identifier: "ApiAuthentication" });
 
 export interface TlsConfigCaCert {
   /** Required. The name of the allowed custom CA certificates. This can be used to disambiguate the custom CA certificates. */
@@ -2014,41 +1667,30 @@ export interface TlsConfigCaCert {
   cert?: string;
 }
 
-export const TlsConfigCaCert: Schema.Schema<TlsConfigCaCert> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      cert: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TlsConfigCaCert",
-  }) as any as Schema.Schema<TlsConfigCaCert>;
+export const TlsConfigCaCert = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+  cert: Schema.optional(Schema.String),
+}).annotate({ identifier: "TlsConfigCaCert" });
 
 export interface TlsConfig {
   /** Required. Specifies a list of allowed custom CA certificates for HTTPS verification. */
   caCerts?: Array<TlsConfigCaCert>;
 }
 
-export const TlsConfig: Schema.Schema<TlsConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      caCerts: Schema.optional(Schema.Array(TlsConfigCaCert)),
-    }),
-  ).annotate({ identifier: "TlsConfig" }) as any as Schema.Schema<TlsConfig>;
+export const TlsConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  caCerts: Schema.optional(Schema.Array(TlsConfigCaCert)),
+}).annotate({ identifier: "TlsConfig" });
 
 export interface ServiceDirectoryConfig {
   /** Required. The name of [Service Directory](https://cloud.google.com/service-directory) service. Format: `projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}`. Location of the service directory must be the same as the location of the app. */
   service?: string;
 }
 
-export const ServiceDirectoryConfig: Schema.Schema<ServiceDirectoryConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      service: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ServiceDirectoryConfig",
-  }) as any as Schema.Schema<ServiceDirectoryConfig>;
+export const ServiceDirectoryConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    service: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ServiceDirectoryConfig" });
 
 export interface OpenApiTool {
   /** Required. The OpenAPI schema in JSON or YAML format. */
@@ -2069,21 +1711,16 @@ export interface OpenApiTool {
   url?: string;
 }
 
-export const OpenApiTool: Schema.Schema<OpenApiTool> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      openApiSchema: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      apiAuthentication: Schema.optional(ApiAuthentication),
-      tlsConfig: Schema.optional(TlsConfig),
-      serviceDirectoryConfig: Schema.optional(ServiceDirectoryConfig),
-      ignoreUnknownFields: Schema.optional(Schema.Boolean),
-      url: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OpenApiTool",
-  }) as any as Schema.Schema<OpenApiTool>;
+export const OpenApiTool = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  openApiSchema: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  apiAuthentication: Schema.optional(ApiAuthentication),
+  tlsConfig: Schema.optional(TlsConfig),
+  serviceDirectoryConfig: Schema.optional(ServiceDirectoryConfig),
+  ignoreUnknownFields: Schema.optional(Schema.Boolean),
+  url: Schema.optional(Schema.String),
+}).annotate({ identifier: "OpenApiTool" });
 
 export interface GoogleSearchToolPromptConfig {
   /** Optional. Defines the prompt used for the system instructions when interacting with the agent in chat conversations. If not set, default prompt will be used. */
@@ -2092,15 +1729,11 @@ export interface GoogleSearchToolPromptConfig {
   voicePrompt?: string;
 }
 
-export const GoogleSearchToolPromptConfig: Schema.Schema<GoogleSearchToolPromptConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      textPrompt: Schema.optional(Schema.String),
-      voicePrompt: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleSearchToolPromptConfig",
-  }) as any as Schema.Schema<GoogleSearchToolPromptConfig>;
+export const GoogleSearchToolPromptConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    textPrompt: Schema.optional(Schema.String),
+    voicePrompt: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleSearchToolPromptConfig" });
 
 export interface GoogleSearchTool {
   /** Required. The name of the tool. */
@@ -2117,19 +1750,14 @@ export interface GoogleSearchTool {
   promptConfig?: GoogleSearchToolPromptConfig;
 }
 
-export const GoogleSearchTool: Schema.Schema<GoogleSearchTool> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      contextUrls: Schema.optional(Schema.Array(Schema.String)),
-      preferredDomains: Schema.optional(Schema.Array(Schema.String)),
-      excludeDomains: Schema.optional(Schema.Array(Schema.String)),
-      promptConfig: Schema.optional(GoogleSearchToolPromptConfig),
-    }),
-  ).annotate({
-    identifier: "GoogleSearchTool",
-  }) as any as Schema.Schema<GoogleSearchTool>;
+export const GoogleSearchTool = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  contextUrls: Schema.optional(Schema.Array(Schema.String)),
+  preferredDomains: Schema.optional(Schema.Array(Schema.String)),
+  excludeDomains: Schema.optional(Schema.Array(Schema.String)),
+  promptConfig: Schema.optional(GoogleSearchToolPromptConfig),
+}).annotate({ identifier: "GoogleSearchTool" });
 
 export interface ActionEntityOperation {
   /** Required. ID of the entity. */
@@ -2145,15 +1773,10 @@ export interface ActionEntityOperation {
     | (string & {});
 }
 
-export const ActionEntityOperation: Schema.Schema<ActionEntityOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entityId: Schema.optional(Schema.String),
-      operation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ActionEntityOperation",
-  }) as any as Schema.Schema<ActionEntityOperation>;
+export const ActionEntityOperation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  entityId: Schema.optional(Schema.String),
+  operation: Schema.optional(Schema.String),
+}).annotate({ identifier: "ActionEntityOperation" });
 
 export interface Action {
   /** ID of a Connection action for the tool to use. */
@@ -2166,29 +1789,22 @@ export interface Action {
   outputFields?: Array<string>;
 }
 
-export const Action: Schema.Schema<Action> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      connectionActionId: Schema.optional(Schema.String),
-      entityOperation: Schema.optional(ActionEntityOperation),
-      inputFields: Schema.optional(Schema.Array(Schema.String)),
-      outputFields: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "Action" }) as any as Schema.Schema<Action>;
+export const Action = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  connectionActionId: Schema.optional(Schema.String),
+  entityOperation: Schema.optional(ActionEntityOperation),
+  inputFields: Schema.optional(Schema.Array(Schema.String)),
+  outputFields: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Action" });
 
 export interface EndUserAuthConfigOauth2AuthCodeConfig {
   /** Required. Oauth token parameter name to pass through. Must be in the format `$context.variables.`. */
   oauthToken?: string;
 }
 
-export const EndUserAuthConfigOauth2AuthCodeConfig: Schema.Schema<EndUserAuthConfigOauth2AuthCodeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      oauthToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EndUserAuthConfigOauth2AuthCodeConfig",
-  }) as any as Schema.Schema<EndUserAuthConfigOauth2AuthCodeConfig>;
+export const EndUserAuthConfigOauth2AuthCodeConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    oauthToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EndUserAuthConfigOauth2AuthCodeConfig" });
 
 export interface EndUserAuthConfigOauth2JwtBearerConfig {
   /** Required. Issuer parameter name to pass through. Must be in the format `$context.variables.`. */
@@ -2199,16 +1815,12 @@ export interface EndUserAuthConfigOauth2JwtBearerConfig {
   clientKey?: string;
 }
 
-export const EndUserAuthConfigOauth2JwtBearerConfig: Schema.Schema<EndUserAuthConfigOauth2JwtBearerConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      issuer: Schema.optional(Schema.String),
-      subject: Schema.optional(Schema.String),
-      clientKey: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EndUserAuthConfigOauth2JwtBearerConfig",
-  }) as any as Schema.Schema<EndUserAuthConfigOauth2JwtBearerConfig>;
+export const EndUserAuthConfigOauth2JwtBearerConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    issuer: Schema.optional(Schema.String),
+    subject: Schema.optional(Schema.String),
+    clientKey: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EndUserAuthConfigOauth2JwtBearerConfig" });
 
 export interface EndUserAuthConfig {
   /** Oauth 2.0 Authorization Code authentication. */
@@ -2217,19 +1829,12 @@ export interface EndUserAuthConfig {
   oauth2JwtBearerConfig?: EndUserAuthConfigOauth2JwtBearerConfig;
 }
 
-export const EndUserAuthConfig: Schema.Schema<EndUserAuthConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      oauth2AuthCodeConfig: Schema.optional(
-        EndUserAuthConfigOauth2AuthCodeConfig,
-      ),
-      oauth2JwtBearerConfig: Schema.optional(
-        EndUserAuthConfigOauth2JwtBearerConfig,
-      ),
-    }),
-  ).annotate({
-    identifier: "EndUserAuthConfig",
-  }) as any as Schema.Schema<EndUserAuthConfig>;
+export const EndUserAuthConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  oauth2AuthCodeConfig: Schema.optional(EndUserAuthConfigOauth2AuthCodeConfig),
+  oauth2JwtBearerConfig: Schema.optional(
+    EndUserAuthConfigOauth2JwtBearerConfig,
+  ),
+}).annotate({ identifier: "EndUserAuthConfig" });
 
 export interface ConnectorTool {
   /** Required. The full resource name of the referenced Integration Connectors Connection. Format: `projects/{project}/locations/{location}/connections/{connection}` */
@@ -2244,18 +1849,13 @@ export interface ConnectorTool {
   description?: string;
 }
 
-export const ConnectorTool: Schema.Schema<ConnectorTool> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      connection: Schema.optional(Schema.String),
-      action: Schema.optional(Action),
-      authConfig: Schema.optional(EndUserAuthConfig),
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConnectorTool",
-  }) as any as Schema.Schema<ConnectorTool>;
+export const ConnectorTool = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  connection: Schema.optional(Schema.String),
+  action: Schema.optional(Action),
+  authConfig: Schema.optional(EndUserAuthConfig),
+  name: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "ConnectorTool" });
 
 export interface DataStoreConnectorConfig {
   /** Resource name of the collection the data store belongs to. */
@@ -2266,16 +1866,12 @@ export interface DataStoreConnectorConfig {
   dataSource?: string;
 }
 
-export const DataStoreConnectorConfig: Schema.Schema<DataStoreConnectorConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      collection: Schema.optional(Schema.String),
-      collectionDisplayName: Schema.optional(Schema.String),
-      dataSource: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DataStoreConnectorConfig",
-  }) as any as Schema.Schema<DataStoreConnectorConfig>;
+export const DataStoreConnectorConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    collection: Schema.optional(Schema.String),
+    collectionDisplayName: Schema.optional(Schema.String),
+    dataSource: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DataStoreConnectorConfig" });
 
 export interface DataStore {
   /** Required. Full resource name of the DataStore. Format: `projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore}` */
@@ -2302,17 +1898,14 @@ export interface DataStore {
   connectorConfig?: DataStoreConnectorConfig;
 }
 
-export const DataStore: Schema.Schema<DataStore> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      documentProcessingMode: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      connectorConfig: Schema.optional(DataStoreConnectorConfig),
-    }),
-  ).annotate({ identifier: "DataStore" }) as any as Schema.Schema<DataStore>;
+export const DataStore = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  documentProcessingMode: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  connectorConfig: Schema.optional(DataStoreConnectorConfig),
+}).annotate({ identifier: "DataStore" });
 
 export interface DataStoreToolDataStoreSource {
   /** Optional. Filter specification for the DataStore. See: https://cloud.google.com/generative-ai-app-builder/docs/filter-search-metadata */
@@ -2321,15 +1914,11 @@ export interface DataStoreToolDataStoreSource {
   dataStore?: DataStore;
 }
 
-export const DataStoreToolDataStoreSource: Schema.Schema<DataStoreToolDataStoreSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filter: Schema.optional(Schema.String),
-      dataStore: Schema.optional(DataStore),
-    }),
-  ).annotate({
-    identifier: "DataStoreToolDataStoreSource",
-  }) as any as Schema.Schema<DataStoreToolDataStoreSource>;
+export const DataStoreToolDataStoreSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filter: Schema.optional(Schema.String),
+    dataStore: Schema.optional(DataStore),
+  }).annotate({ identifier: "DataStoreToolDataStoreSource" });
 
 export interface DataStoreToolEngineSource {
   /** Required. Full resource name of the Engine. Format: `projects/{project}/locations/{location}/collections/{collection}/engines/{engine}` */
@@ -2340,18 +1929,14 @@ export interface DataStoreToolEngineSource {
   filter?: string;
 }
 
-export const DataStoreToolEngineSource: Schema.Schema<DataStoreToolEngineSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      engine: Schema.optional(Schema.String),
-      dataStoreSources: Schema.optional(
-        Schema.Array(DataStoreToolDataStoreSource),
-      ),
-      filter: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DataStoreToolEngineSource",
-  }) as any as Schema.Schema<DataStoreToolEngineSource>;
+export const DataStoreToolEngineSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    engine: Schema.optional(Schema.String),
+    dataStoreSources: Schema.optional(
+      Schema.Array(DataStoreToolDataStoreSource),
+    ),
+    filter: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DataStoreToolEngineSource" });
 
 export interface DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPoint {
   /** Optional. Can be one of: 1. The numerical field value. 2. The duration spec for freshness: The value must be formatted as an XSD `dayTimeDuration` value (a restricted subset of an ISO 8601 duration value). The pattern for this is: `nDnM]`. */
@@ -2360,16 +1945,14 @@ export interface DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControl
   boostAmount?: number;
 }
 
-export const DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPoint: Schema.Schema<DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      attributeValue: Schema.optional(Schema.String),
-      boostAmount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPoint =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    attributeValue: Schema.optional(Schema.String),
+    boostAmount: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPoint",
-  }) as any as Schema.Schema<DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPoint>;
+  });
 
 export interface DataStoreToolBoostSpecConditionBoostSpecBoostControlSpec {
   /** Optional. The name of the field whose value will be used to determine the boost amount. */
@@ -2389,21 +1972,19 @@ export interface DataStoreToolBoostSpecConditionBoostSpecBoostControlSpec {
   controlPoints?: Array<DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPoint>;
 }
 
-export const DataStoreToolBoostSpecConditionBoostSpecBoostControlSpec: Schema.Schema<DataStoreToolBoostSpecConditionBoostSpecBoostControlSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fieldName: Schema.optional(Schema.String),
-      attributeType: Schema.optional(Schema.String),
-      interpolationType: Schema.optional(Schema.String),
-      controlPoints: Schema.optional(
-        Schema.Array(
-          DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPoint,
-        ),
+export const DataStoreToolBoostSpecConditionBoostSpecBoostControlSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fieldName: Schema.optional(Schema.String),
+    attributeType: Schema.optional(Schema.String),
+    interpolationType: Schema.optional(Schema.String),
+    controlPoints: Schema.optional(
+      Schema.Array(
+        DataStoreToolBoostSpecConditionBoostSpecBoostControlSpecControlPoint,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier: "DataStoreToolBoostSpecConditionBoostSpecBoostControlSpec",
-  }) as any as Schema.Schema<DataStoreToolBoostSpecConditionBoostSpecBoostControlSpec>;
+  });
 
 export interface DataStoreToolBoostSpecConditionBoostSpec {
   /** Required. An expression which specifies a boost condition. The syntax is the same as filter expression syntax. Currently, the only supported condition is a list of BCP-47 lang codes. Example: To boost suggestions in languages en or fr: (lang_code: ANY("en", "fr")) */
@@ -2414,34 +1995,27 @@ export interface DataStoreToolBoostSpecConditionBoostSpec {
   boostControlSpec?: DataStoreToolBoostSpecConditionBoostSpecBoostControlSpec;
 }
 
-export const DataStoreToolBoostSpecConditionBoostSpec: Schema.Schema<DataStoreToolBoostSpecConditionBoostSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      condition: Schema.optional(Schema.String),
-      boost: Schema.optional(Schema.Number),
-      boostControlSpec: Schema.optional(
-        DataStoreToolBoostSpecConditionBoostSpecBoostControlSpec,
-      ),
-    }),
-  ).annotate({
-    identifier: "DataStoreToolBoostSpecConditionBoostSpec",
-  }) as any as Schema.Schema<DataStoreToolBoostSpecConditionBoostSpec>;
+export const DataStoreToolBoostSpecConditionBoostSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    condition: Schema.optional(Schema.String),
+    boost: Schema.optional(Schema.Number),
+    boostControlSpec: Schema.optional(
+      DataStoreToolBoostSpecConditionBoostSpecBoostControlSpec,
+    ),
+  }).annotate({ identifier: "DataStoreToolBoostSpecConditionBoostSpec" });
 
 export interface DataStoreToolBoostSpec {
   /** Required. A list of boosting specifications. */
   conditionBoostSpecs?: Array<DataStoreToolBoostSpecConditionBoostSpec>;
 }
 
-export const DataStoreToolBoostSpec: Schema.Schema<DataStoreToolBoostSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conditionBoostSpecs: Schema.optional(
-        Schema.Array(DataStoreToolBoostSpecConditionBoostSpec),
-      ),
-    }),
-  ).annotate({
-    identifier: "DataStoreToolBoostSpec",
-  }) as any as Schema.Schema<DataStoreToolBoostSpec>;
+export const DataStoreToolBoostSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    conditionBoostSpecs: Schema.optional(
+      Schema.Array(DataStoreToolBoostSpecConditionBoostSpec),
+    ),
+  },
+).annotate({ identifier: "DataStoreToolBoostSpec" });
 
 export interface DataStoreToolBoostSpecs {
   /** Required. The Data Store where the boosting configuration is applied. Full resource name of DataStore, such as projects/{project}/locations/{location}/collections/{collection}/dataStores/{dataStore}. */
@@ -2450,15 +2024,11 @@ export interface DataStoreToolBoostSpecs {
   spec?: Array<DataStoreToolBoostSpec>;
 }
 
-export const DataStoreToolBoostSpecs: Schema.Schema<DataStoreToolBoostSpecs> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataStores: Schema.optional(Schema.Array(Schema.String)),
-      spec: Schema.optional(Schema.Array(DataStoreToolBoostSpec)),
-    }),
-  ).annotate({
-    identifier: "DataStoreToolBoostSpecs",
-  }) as any as Schema.Schema<DataStoreToolBoostSpecs>;
+export const DataStoreToolBoostSpecs =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataStores: Schema.optional(Schema.Array(Schema.String)),
+    spec: Schema.optional(Schema.Array(DataStoreToolBoostSpec)),
+  }).annotate({ identifier: "DataStoreToolBoostSpecs" });
 
 export interface DataStoreToolRewriterConfig {
   /** Required. Configurations for the LLM model. */
@@ -2469,16 +2039,12 @@ export interface DataStoreToolRewriterConfig {
   disabled?: boolean;
 }
 
-export const DataStoreToolRewriterConfig: Schema.Schema<DataStoreToolRewriterConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      modelSettings: Schema.optional(ModelSettings),
-      prompt: Schema.optional(Schema.String),
-      disabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "DataStoreToolRewriterConfig",
-  }) as any as Schema.Schema<DataStoreToolRewriterConfig>;
+export const DataStoreToolRewriterConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    modelSettings: Schema.optional(ModelSettings),
+    prompt: Schema.optional(Schema.String),
+    disabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "DataStoreToolRewriterConfig" });
 
 export interface DataStoreToolSummarizationConfig {
   /** Optional. Configurations for the LLM model. */
@@ -2489,16 +2055,12 @@ export interface DataStoreToolSummarizationConfig {
   disabled?: boolean;
 }
 
-export const DataStoreToolSummarizationConfig: Schema.Schema<DataStoreToolSummarizationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      modelSettings: Schema.optional(ModelSettings),
-      prompt: Schema.optional(Schema.String),
-      disabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "DataStoreToolSummarizationConfig",
-  }) as any as Schema.Schema<DataStoreToolSummarizationConfig>;
+export const DataStoreToolSummarizationConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    modelSettings: Schema.optional(ModelSettings),
+    prompt: Schema.optional(Schema.String),
+    disabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "DataStoreToolSummarizationConfig" });
 
 export interface DataStoreToolGroundingConfig {
   /** Optional. The groundedness threshold of the answer based on the retrieved sources. The value has a configurable range of [1, 5]. The level is used to threshold the groundedness of the answer, meaning that all responses with a groundedness score below the threshold will fall back to returning relevant snippets only. For example, a level of 3 means that the groundedness score must be 3 or higher for the response to be returned. */
@@ -2507,15 +2069,11 @@ export interface DataStoreToolGroundingConfig {
   disabled?: boolean;
 }
 
-export const DataStoreToolGroundingConfig: Schema.Schema<DataStoreToolGroundingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      groundingLevel: Schema.optional(Schema.Number),
-      disabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "DataStoreToolGroundingConfig",
-  }) as any as Schema.Schema<DataStoreToolGroundingConfig>;
+export const DataStoreToolGroundingConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groundingLevel: Schema.optional(Schema.Number),
+    disabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "DataStoreToolGroundingConfig" });
 
 export interface DataStoreToolModalityConfig {
   /** Required. The modality type. */
@@ -2528,17 +2086,13 @@ export interface DataStoreToolModalityConfig {
   groundingConfig?: DataStoreToolGroundingConfig;
 }
 
-export const DataStoreToolModalityConfig: Schema.Schema<DataStoreToolModalityConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      modalityType: Schema.optional(Schema.String),
-      rewriterConfig: Schema.optional(DataStoreToolRewriterConfig),
-      summarizationConfig: Schema.optional(DataStoreToolSummarizationConfig),
-      groundingConfig: Schema.optional(DataStoreToolGroundingConfig),
-    }),
-  ).annotate({
-    identifier: "DataStoreToolModalityConfig",
-  }) as any as Schema.Schema<DataStoreToolModalityConfig>;
+export const DataStoreToolModalityConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    modalityType: Schema.optional(Schema.String),
+    rewriterConfig: Schema.optional(DataStoreToolRewriterConfig),
+    summarizationConfig: Schema.optional(DataStoreToolSummarizationConfig),
+    groundingConfig: Schema.optional(DataStoreToolGroundingConfig),
+  }).annotate({ identifier: "DataStoreToolModalityConfig" });
 
 export interface DataStoreTool {
   /** Optional. Search within a single specific DataStore. */
@@ -2561,22 +2115,15 @@ export interface DataStoreTool {
     | (string & {});
 }
 
-export const DataStoreTool: Schema.Schema<DataStoreTool> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataStoreSource: Schema.optional(DataStoreToolDataStoreSource),
-      engineSource: Schema.optional(DataStoreToolEngineSource),
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      boostSpecs: Schema.optional(Schema.Array(DataStoreToolBoostSpecs)),
-      modalityConfigs: Schema.optional(
-        Schema.Array(DataStoreToolModalityConfig),
-      ),
-      filterParameterBehavior: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DataStoreTool",
-  }) as any as Schema.Schema<DataStoreTool>;
+export const DataStoreTool = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dataStoreSource: Schema.optional(DataStoreToolDataStoreSource),
+  engineSource: Schema.optional(DataStoreToolEngineSource),
+  name: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  boostSpecs: Schema.optional(Schema.Array(DataStoreToolBoostSpecs)),
+  modalityConfigs: Schema.optional(Schema.Array(DataStoreToolModalityConfig)),
+  filterParameterBehavior: Schema.optional(Schema.String),
+}).annotate({ identifier: "DataStoreTool" });
 
 export interface PythonFunction {
   /** Optional. The name of the Python function to execute. Must match a Python function name defined in the python code. Case sensitive. If the name is not provided, the first function defined in the python code will be used. */
@@ -2587,16 +2134,11 @@ export interface PythonFunction {
   description?: string;
 }
 
-export const PythonFunction: Schema.Schema<PythonFunction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      pythonCode: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PythonFunction",
-  }) as any as Schema.Schema<PythonFunction>;
+export const PythonFunction = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  pythonCode: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "PythonFunction" });
 
 export interface McpTool {
   /** Required. The name of the MCP tool. */
@@ -2619,22 +2161,17 @@ export interface McpTool {
   customHeaders?: Record<string, string>;
 }
 
-export const McpTool: Schema.Schema<McpTool> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      inputSchema: Schema.optional(Ces_Schema),
-      outputSchema: Schema.optional(Ces_Schema),
-      serverAddress: Schema.optional(Schema.String),
-      apiAuthentication: Schema.optional(ApiAuthentication),
-      tlsConfig: Schema.optional(TlsConfig),
-      serviceDirectoryConfig: Schema.optional(ServiceDirectoryConfig),
-      customHeaders: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-    }),
-  ).annotate({ identifier: "McpTool" }) as any as Schema.Schema<McpTool>;
+export const McpTool = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  inputSchema: Schema.optional(Ces_Schema),
+  outputSchema: Schema.optional(Ces_Schema),
+  serverAddress: Schema.optional(Schema.String),
+  apiAuthentication: Schema.optional(ApiAuthentication),
+  tlsConfig: Schema.optional(TlsConfig),
+  serviceDirectoryConfig: Schema.optional(ServiceDirectoryConfig),
+  customHeaders: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "McpTool" });
 
 export interface FileSearchTool {
   /** Optional. The type of the corpus. Default is FULLY_MANAGED. */
@@ -2651,17 +2188,12 @@ export interface FileSearchTool {
   fileCorpus?: string;
 }
 
-export const FileSearchTool: Schema.Schema<FileSearchTool> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      corpusType: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      fileCorpus: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FileSearchTool",
-  }) as any as Schema.Schema<FileSearchTool>;
+export const FileSearchTool = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  corpusType: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  fileCorpus: Schema.optional(Schema.String),
+}).annotate({ identifier: "FileSearchTool" });
 
 export interface SystemTool {
   /** Required. The name of the system tool. */
@@ -2670,13 +2202,10 @@ export interface SystemTool {
   description?: string;
 }
 
-export const SystemTool: Schema.Schema<SystemTool> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "SystemTool" }) as any as Schema.Schema<SystemTool>;
+export const SystemTool = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "SystemTool" });
 
 export interface AgentTool {
   /** Required. The name of the agent tool. */
@@ -2689,15 +2218,12 @@ export interface AgentTool {
   agent?: string;
 }
 
-export const AgentTool: Schema.Schema<AgentTool> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      rootAgent: Schema.optional(Schema.String),
-      agent: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "AgentTool" }) as any as Schema.Schema<AgentTool>;
+export const AgentTool = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  rootAgent: Schema.optional(Schema.String),
+  agent: Schema.optional(Schema.String),
+}).annotate({ identifier: "AgentTool" });
 
 export interface WidgetToolDataMapping {
   /** Optional. The resource name of the tool that provides the data for the widget (e.g., a search tool or a custom function). Format: `projects/{project}/locations/{location}/agents/{agent}/tools/{tool}` */
@@ -2712,20 +2238,13 @@ export interface WidgetToolDataMapping {
   pythonScript?: string;
 }
 
-export const WidgetToolDataMapping: Schema.Schema<WidgetToolDataMapping> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sourceToolName: Schema.optional(Schema.String),
-      fieldMappings: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      pythonFunction: Schema.optional(PythonFunction),
-      mode: Schema.optional(Schema.String),
-      pythonScript: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WidgetToolDataMapping",
-  }) as any as Schema.Schema<WidgetToolDataMapping>;
+export const WidgetToolDataMapping = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sourceToolName: Schema.optional(Schema.String),
+  fieldMappings: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  pythonFunction: Schema.optional(PythonFunction),
+  mode: Schema.optional(Schema.String),
+  pythonScript: Schema.optional(Schema.String),
+}).annotate({ identifier: "WidgetToolDataMapping" });
 
 export interface WidgetTool {
   /** Optional. The input parameters of the widget tool. */
@@ -2756,29 +2275,23 @@ export interface WidgetTool {
   dataMapping?: WidgetToolDataMapping;
 }
 
-export const WidgetTool: Schema.Schema<WidgetTool> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parameters: Schema.optional(Ces_Schema),
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      widgetType: Schema.optional(Schema.String),
-      uiConfig: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      dataMapping: Schema.optional(WidgetToolDataMapping),
-    }),
-  ).annotate({ identifier: "WidgetTool" }) as any as Schema.Schema<WidgetTool>;
+export const WidgetTool = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  parameters: Schema.optional(Ces_Schema),
+  name: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  widgetType: Schema.optional(Schema.String),
+  uiConfig: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  dataMapping: Schema.optional(WidgetToolDataMapping),
+}).annotate({ identifier: "WidgetTool" });
 
 export interface CodeBlock {
   /** Required. Python code which will be invoked in tool fake mode. Expected Python function signature - To catch all tool calls: def fake_tool_call(tool: Tool, input: dict[str, Any], callback_context: CallbackContext) -> Optional[dict[str, Any]]: To catch a specific tool call: def fake_{tool_id}(tool: Tool, input: dict[str, Any], callback_context: CallbackContext) -> Optional[dict[str, Any]]: If the function returns None, the real tool will be invoked instead. */
   pythonCode?: string;
 }
 
-export const CodeBlock: Schema.Schema<CodeBlock> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pythonCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "CodeBlock" }) as any as Schema.Schema<CodeBlock>;
+export const CodeBlock = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pythonCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "CodeBlock" });
 
 export interface ToolFakeConfig {
   /** Optional. Code block which will be executed instead of a real tool call. */
@@ -2787,15 +2300,10 @@ export interface ToolFakeConfig {
   enableFakeMode?: boolean;
 }
 
-export const ToolFakeConfig: Schema.Schema<ToolFakeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      codeBlock: Schema.optional(CodeBlock),
-      enableFakeMode: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ToolFakeConfig",
-  }) as any as Schema.Schema<ToolFakeConfig>;
+export const ToolFakeConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  codeBlock: Schema.optional(CodeBlock),
+  enableFakeMode: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "ToolFakeConfig" });
 
 export interface Tool {
   /** Optional. The client function. */
@@ -2842,30 +2350,27 @@ export interface Tool {
   toolFakeConfig?: ToolFakeConfig;
 }
 
-export const Tool: Schema.Schema<Tool> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clientFunction: Schema.optional(ClientFunction),
-      openApiTool: Schema.optional(OpenApiTool),
-      googleSearchTool: Schema.optional(GoogleSearchTool),
-      connectorTool: Schema.optional(ConnectorTool),
-      dataStoreTool: Schema.optional(DataStoreTool),
-      pythonFunction: Schema.optional(PythonFunction),
-      mcpTool: Schema.optional(McpTool),
-      fileSearchTool: Schema.optional(FileSearchTool),
-      systemTool: Schema.optional(SystemTool),
-      agentTool: Schema.optional(AgentTool),
-      widgetTool: Schema.optional(WidgetTool),
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      executionType: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      generatedSummary: Schema.optional(Schema.String),
-      toolFakeConfig: Schema.optional(ToolFakeConfig),
-    }),
-  ).annotate({ identifier: "Tool" }) as any as Schema.Schema<Tool>;
+export const Tool = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  clientFunction: Schema.optional(ClientFunction),
+  openApiTool: Schema.optional(OpenApiTool),
+  googleSearchTool: Schema.optional(GoogleSearchTool),
+  connectorTool: Schema.optional(ConnectorTool),
+  dataStoreTool: Schema.optional(DataStoreTool),
+  pythonFunction: Schema.optional(PythonFunction),
+  mcpTool: Schema.optional(McpTool),
+  fileSearchTool: Schema.optional(FileSearchTool),
+  systemTool: Schema.optional(SystemTool),
+  agentTool: Schema.optional(AgentTool),
+  widgetTool: Schema.optional(WidgetTool),
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  executionType: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  generatedSummary: Schema.optional(Schema.String),
+  toolFakeConfig: Schema.optional(ToolFakeConfig),
+}).annotate({ identifier: "Tool" });
 
 export interface ListToolsResponse {
   /** The list of tools. */
@@ -2874,15 +2379,10 @@ export interface ListToolsResponse {
   nextPageToken?: string;
 }
 
-export const ListToolsResponse: Schema.Schema<ListToolsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tools: Schema.optional(Schema.Array(Tool)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListToolsResponse",
-  }) as any as Schema.Schema<ListToolsResponse>;
+export const ListToolsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tools: Schema.optional(Schema.Array(Tool)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListToolsResponse" });
 
 export interface ConversationTurn {
   /** Optional. List of messages in the conversation turn, including user input, agent responses and intermediate events during the processing. */
@@ -2891,15 +2391,10 @@ export interface ConversationTurn {
   rootSpan?: Span;
 }
 
-export const ConversationTurn: Schema.Schema<ConversationTurn> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      messages: Schema.optional(Schema.Array(Message)),
-      rootSpan: Schema.optional(Span),
-    }),
-  ).annotate({
-    identifier: "ConversationTurn",
-  }) as any as Schema.Schema<ConversationTurn>;
+export const ConversationTurn = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  messages: Schema.optional(Schema.Array(Message)),
+  rootSpan: Schema.optional(Span),
+}).annotate({ identifier: "ConversationTurn" });
 
 export interface Conversation {
   /** Identifier. The unique identifier of the conversation. Format: `projects/{project}/locations/{location}/apps/{app}/conversations/{conversation}` */
@@ -2950,26 +2445,21 @@ export interface Conversation {
   messages?: Array<Message>;
 }
 
-export const Conversation: Schema.Schema<Conversation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      turns: Schema.optional(Schema.Array(ConversationTurn)),
-      turnCount: Schema.optional(Schema.Number),
-      channelType: Schema.optional(Schema.String),
-      source: Schema.optional(Schema.String),
-      inputTypes: Schema.optional(Schema.Array(Schema.String)),
-      entryAgent: Schema.optional(Schema.String),
-      deployment: Schema.optional(Schema.String),
-      appVersion: Schema.optional(Schema.String),
-      languageCode: Schema.optional(Schema.String),
-      messages: Schema.optional(Schema.Array(Message)),
-    }),
-  ).annotate({
-    identifier: "Conversation",
-  }) as any as Schema.Schema<Conversation>;
+export const Conversation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  turns: Schema.optional(Schema.Array(ConversationTurn)),
+  turnCount: Schema.optional(Schema.Number),
+  channelType: Schema.optional(Schema.String),
+  source: Schema.optional(Schema.String),
+  inputTypes: Schema.optional(Schema.Array(Schema.String)),
+  entryAgent: Schema.optional(Schema.String),
+  deployment: Schema.optional(Schema.String),
+  appVersion: Schema.optional(Schema.String),
+  languageCode: Schema.optional(Schema.String),
+  messages: Schema.optional(Schema.Array(Message)),
+}).annotate({ identifier: "Conversation" });
 
 export interface ListConversationsResponse {
   /** The list of conversations. */
@@ -2978,29 +2468,21 @@ export interface ListConversationsResponse {
   nextPageToken?: string;
 }
 
-export const ListConversationsResponse: Schema.Schema<ListConversationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conversations: Schema.optional(Schema.Array(Conversation)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListConversationsResponse",
-  }) as any as Schema.Schema<ListConversationsResponse>;
+export const ListConversationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conversations: Schema.optional(Schema.Array(Conversation)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListConversationsResponse" });
 
 export interface BatchDeleteConversationsRequest {
   /** Required. The resource names of the conversations to delete. */
   conversations?: Array<string>;
 }
 
-export const BatchDeleteConversationsRequest: Schema.Schema<BatchDeleteConversationsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conversations: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "BatchDeleteConversationsRequest",
-  }) as any as Schema.Schema<BatchDeleteConversationsRequest>;
+export const BatchDeleteConversationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conversations: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "BatchDeleteConversationsRequest" });
 
 export interface GuardrailContentFilter {
   /** Optional. List of banned phrases. Applies to both user inputs and agent responses. */
@@ -3020,34 +2502,27 @@ export interface GuardrailContentFilter {
   disregardDiacritics?: boolean;
 }
 
-export const GuardrailContentFilter: Schema.Schema<GuardrailContentFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bannedContents: Schema.optional(Schema.Array(Schema.String)),
-      bannedContentsInUserInput: Schema.optional(Schema.Array(Schema.String)),
-      bannedContentsInAgentResponse: Schema.optional(
-        Schema.Array(Schema.String),
-      ),
-      matchType: Schema.optional(Schema.String),
-      disregardDiacritics: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GuardrailContentFilter",
-  }) as any as Schema.Schema<GuardrailContentFilter>;
+export const GuardrailContentFilter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    bannedContents: Schema.optional(Schema.Array(Schema.String)),
+    bannedContentsInUserInput: Schema.optional(Schema.Array(Schema.String)),
+    bannedContentsInAgentResponse: Schema.optional(Schema.Array(Schema.String)),
+    matchType: Schema.optional(Schema.String),
+    disregardDiacritics: Schema.optional(Schema.Boolean),
+  },
+).annotate({ identifier: "GuardrailContentFilter" });
 
 export interface GuardrailLlmPromptSecurityDefaultSecuritySettings {
   /** Output only. The default prompt template used by the system. This field is for display purposes to show the user what prompt the system uses by default. It is OUTPUT_ONLY. */
   defaultPromptTemplate?: string;
 }
 
-export const GuardrailLlmPromptSecurityDefaultSecuritySettings: Schema.Schema<GuardrailLlmPromptSecurityDefaultSecuritySettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      defaultPromptTemplate: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GuardrailLlmPromptSecurityDefaultSecuritySettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    defaultPromptTemplate: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GuardrailLlmPromptSecurityDefaultSecuritySettings",
-  }) as any as Schema.Schema<GuardrailLlmPromptSecurityDefaultSecuritySettings>;
+  });
 
 export interface GuardrailLlmPolicy {
   /** Optional. When checking this policy, consider the last 'n' messages in the conversation. When not set a default value of 10 will be used. */
@@ -3069,19 +2544,14 @@ export interface GuardrailLlmPolicy {
   allowShortUtterance?: boolean;
 }
 
-export const GuardrailLlmPolicy: Schema.Schema<GuardrailLlmPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      maxConversationMessages: Schema.optional(Schema.Number),
-      modelSettings: Schema.optional(ModelSettings),
-      prompt: Schema.optional(Schema.String),
-      policyScope: Schema.optional(Schema.String),
-      failOpen: Schema.optional(Schema.Boolean),
-      allowShortUtterance: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GuardrailLlmPolicy",
-  }) as any as Schema.Schema<GuardrailLlmPolicy>;
+export const GuardrailLlmPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  maxConversationMessages: Schema.optional(Schema.Number),
+  modelSettings: Schema.optional(ModelSettings),
+  prompt: Schema.optional(Schema.String),
+  policyScope: Schema.optional(Schema.String),
+  failOpen: Schema.optional(Schema.Boolean),
+  allowShortUtterance: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "GuardrailLlmPolicy" });
 
 export interface GuardrailLlmPromptSecurity {
   /** Optional. Use the system's predefined default security settings. To select this mode, include an empty 'default_settings' message in the request. The 'default_prompt_template' field within will be populated by the server in the response. */
@@ -3092,18 +2562,14 @@ export interface GuardrailLlmPromptSecurity {
   failOpen?: boolean;
 }
 
-export const GuardrailLlmPromptSecurity: Schema.Schema<GuardrailLlmPromptSecurity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      defaultSettings: Schema.optional(
-        GuardrailLlmPromptSecurityDefaultSecuritySettings,
-      ),
-      customPolicy: Schema.optional(GuardrailLlmPolicy),
-      failOpen: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GuardrailLlmPromptSecurity",
-  }) as any as Schema.Schema<GuardrailLlmPromptSecurity>;
+export const GuardrailLlmPromptSecurity =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    defaultSettings: Schema.optional(
+      GuardrailLlmPromptSecurityDefaultSecuritySettings,
+    ),
+    customPolicy: Schema.optional(GuardrailLlmPolicy),
+    failOpen: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GuardrailLlmPromptSecurity" });
 
 export interface GuardrailModelSafetySafetySetting {
   /** Required. The harm category. */
@@ -3125,31 +2591,22 @@ export interface GuardrailModelSafetySafetySetting {
     | (string & {});
 }
 
-export const GuardrailModelSafetySafetySetting: Schema.Schema<GuardrailModelSafetySafetySetting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      category: Schema.optional(Schema.String),
-      threshold: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GuardrailModelSafetySafetySetting",
-  }) as any as Schema.Schema<GuardrailModelSafetySafetySetting>;
+export const GuardrailModelSafetySafetySetting =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    category: Schema.optional(Schema.String),
+    threshold: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GuardrailModelSafetySafetySetting" });
 
 export interface GuardrailModelSafety {
   /** Required. List of safety settings. */
   safetySettings?: Array<GuardrailModelSafetySafetySetting>;
 }
 
-export const GuardrailModelSafety: Schema.Schema<GuardrailModelSafety> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      safetySettings: Schema.optional(
-        Schema.Array(GuardrailModelSafetySafetySetting),
-      ),
-    }),
-  ).annotate({
-    identifier: "GuardrailModelSafety",
-  }) as any as Schema.Schema<GuardrailModelSafety>;
+export const GuardrailModelSafety = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  safetySettings: Schema.optional(
+    Schema.Array(GuardrailModelSafetySafetySetting),
+  ),
+}).annotate({ identifier: "GuardrailModelSafety" });
 
 export interface GuardrailCodeCallback {
   /** Optional. The callback to execute before the agent is called. Each callback function is expected to return a structure (e.g., a dict or object) containing at least: - 'decision': Either 'OK' or 'TRIGGER'. - 'reason': A string explaining the decision. A 'TRIGGER' decision may halt further processing. */
@@ -3162,17 +2619,12 @@ export interface GuardrailCodeCallback {
   afterModelCallback?: Callback;
 }
 
-export const GuardrailCodeCallback: Schema.Schema<GuardrailCodeCallback> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      beforeAgentCallback: Schema.optional(Callback),
-      afterAgentCallback: Schema.optional(Callback),
-      beforeModelCallback: Schema.optional(Callback),
-      afterModelCallback: Schema.optional(Callback),
-    }),
-  ).annotate({
-    identifier: "GuardrailCodeCallback",
-  }) as any as Schema.Schema<GuardrailCodeCallback>;
+export const GuardrailCodeCallback = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  beforeAgentCallback: Schema.optional(Callback),
+  afterAgentCallback: Schema.optional(Callback),
+  beforeModelCallback: Schema.optional(Callback),
+  afterModelCallback: Schema.optional(Callback),
+}).annotate({ identifier: "GuardrailCodeCallback" });
 
 export interface TriggerActionResponse {
   /** Required. Text for the agent to respond with. */
@@ -3181,57 +2633,40 @@ export interface TriggerActionResponse {
   disabled?: boolean;
 }
 
-export const TriggerActionResponse: Schema.Schema<TriggerActionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-      disabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "TriggerActionResponse",
-  }) as any as Schema.Schema<TriggerActionResponse>;
+export const TriggerActionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  text: Schema.optional(Schema.String),
+  disabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "TriggerActionResponse" });
 
 export interface TriggerActionRespondImmediately {
   /** Required. The canned responses for the agent to choose from. The response is chosen randomly. */
   responses?: Array<TriggerActionResponse>;
 }
 
-export const TriggerActionRespondImmediately: Schema.Schema<TriggerActionRespondImmediately> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      responses: Schema.optional(Schema.Array(TriggerActionResponse)),
-    }),
-  ).annotate({
-    identifier: "TriggerActionRespondImmediately",
-  }) as any as Schema.Schema<TriggerActionRespondImmediately>;
+export const TriggerActionRespondImmediately =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    responses: Schema.optional(Schema.Array(TriggerActionResponse)),
+  }).annotate({ identifier: "TriggerActionRespondImmediately" });
 
 export interface TriggerActionTransferAgent {
   /** Required. The name of the agent to transfer the conversation to. The agent must be in the same app as the current agent. Format: `projects/{project}/locations/{location}/apps/{app}/agents/{agent}` */
   agent?: string;
 }
 
-export const TriggerActionTransferAgent: Schema.Schema<TriggerActionTransferAgent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      agent: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TriggerActionTransferAgent",
-  }) as any as Schema.Schema<TriggerActionTransferAgent>;
+export const TriggerActionTransferAgent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    agent: Schema.optional(Schema.String),
+  }).annotate({ identifier: "TriggerActionTransferAgent" });
 
 export interface TriggerActionGenerativeAnswer {
   /** Required. The prompt to use for the generative answer. */
   prompt?: string;
 }
 
-export const TriggerActionGenerativeAnswer: Schema.Schema<TriggerActionGenerativeAnswer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      prompt: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TriggerActionGenerativeAnswer",
-  }) as any as Schema.Schema<TriggerActionGenerativeAnswer>;
+export const TriggerActionGenerativeAnswer =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    prompt: Schema.optional(Schema.String),
+  }).annotate({ identifier: "TriggerActionGenerativeAnswer" });
 
 export interface TriggerAction {
   /** Optional. Immediately respond with a preconfigured response. */
@@ -3242,16 +2677,11 @@ export interface TriggerAction {
   generativeAnswer?: TriggerActionGenerativeAnswer;
 }
 
-export const TriggerAction: Schema.Schema<TriggerAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      respondImmediately: Schema.optional(TriggerActionRespondImmediately),
-      transferAgent: Schema.optional(TriggerActionTransferAgent),
-      generativeAnswer: Schema.optional(TriggerActionGenerativeAnswer),
-    }),
-  ).annotate({
-    identifier: "TriggerAction",
-  }) as any as Schema.Schema<TriggerAction>;
+export const TriggerAction = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  respondImmediately: Schema.optional(TriggerActionRespondImmediately),
+  transferAgent: Schema.optional(TriggerActionTransferAgent),
+  generativeAnswer: Schema.optional(TriggerActionGenerativeAnswer),
+}).annotate({ identifier: "TriggerAction" });
 
 export interface Guardrail {
   /** Optional. Guardrail that bans certain content from being used in the conversation. */
@@ -3282,24 +2712,21 @@ export interface Guardrail {
   etag?: string;
 }
 
-export const Guardrail: Schema.Schema<Guardrail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contentFilter: Schema.optional(GuardrailContentFilter),
-      llmPromptSecurity: Schema.optional(GuardrailLlmPromptSecurity),
-      llmPolicy: Schema.optional(GuardrailLlmPolicy),
-      modelSafety: Schema.optional(GuardrailModelSafety),
-      codeCallback: Schema.optional(GuardrailCodeCallback),
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      enabled: Schema.optional(Schema.Boolean),
-      action: Schema.optional(TriggerAction),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Guardrail" }) as any as Schema.Schema<Guardrail>;
+export const Guardrail = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  contentFilter: Schema.optional(GuardrailContentFilter),
+  llmPromptSecurity: Schema.optional(GuardrailLlmPromptSecurity),
+  llmPolicy: Schema.optional(GuardrailLlmPolicy),
+  modelSafety: Schema.optional(GuardrailModelSafety),
+  codeCallback: Schema.optional(GuardrailCodeCallback),
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  enabled: Schema.optional(Schema.Boolean),
+  action: Schema.optional(TriggerAction),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "Guardrail" });
 
 export interface ListGuardrailsResponse {
   /** The list of guardrails. */
@@ -3308,15 +2735,12 @@ export interface ListGuardrailsResponse {
   nextPageToken?: string;
 }
 
-export const ListGuardrailsResponse: Schema.Schema<ListGuardrailsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      guardrails: Schema.optional(Schema.Array(Guardrail)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListGuardrailsResponse",
-  }) as any as Schema.Schema<ListGuardrailsResponse>;
+export const ListGuardrailsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    guardrails: Schema.optional(Schema.Array(Guardrail)),
+    nextPageToken: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ListGuardrailsResponse" });
 
 export interface Deployment {
   /** Identifier. The resource name of the deployment. Format: `projects/{project}/locations/{location}/apps/{app}/deployments/{deployment}` */
@@ -3335,18 +2759,15 @@ export interface Deployment {
   etag?: string;
 }
 
-export const Deployment: Schema.Schema<Deployment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      appVersion: Schema.optional(Schema.String),
-      channelProfile: Schema.optional(ChannelProfile),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Deployment" }) as any as Schema.Schema<Deployment>;
+export const Deployment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  appVersion: Schema.optional(Schema.String),
+  channelProfile: Schema.optional(ChannelProfile),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "Deployment" });
 
 export interface ListDeploymentsResponse {
   /** The list of deployments. */
@@ -3355,15 +2776,11 @@ export interface ListDeploymentsResponse {
   nextPageToken?: string;
 }
 
-export const ListDeploymentsResponse: Schema.Schema<ListDeploymentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deployments: Schema.optional(Schema.Array(Deployment)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListDeploymentsResponse",
-  }) as any as Schema.Schema<ListDeploymentsResponse>;
+export const ListDeploymentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deployments: Schema.optional(Schema.Array(Deployment)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListDeploymentsResponse" });
 
 export interface McpToolset {
   /** Required. The address of the MCP server, for example, "https://example.com/mcp/". If the server is built with the MCP SDK, the url should be suffixed with "/mcp/". Only Streamable HTTP transport based servers are supported. See https://modelcontextprotocol.io/specification/2025-03-26/basic/transports#streamable-http for more details. */
@@ -3378,18 +2795,13 @@ export interface McpToolset {
   customHeaders?: Record<string, string>;
 }
 
-export const McpToolset: Schema.Schema<McpToolset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serverAddress: Schema.optional(Schema.String),
-      apiAuthentication: Schema.optional(ApiAuthentication),
-      serviceDirectoryConfig: Schema.optional(ServiceDirectoryConfig),
-      tlsConfig: Schema.optional(TlsConfig),
-      customHeaders: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-    }),
-  ).annotate({ identifier: "McpToolset" }) as any as Schema.Schema<McpToolset>;
+export const McpToolset = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  serverAddress: Schema.optional(Schema.String),
+  apiAuthentication: Schema.optional(ApiAuthentication),
+  serviceDirectoryConfig: Schema.optional(ServiceDirectoryConfig),
+  tlsConfig: Schema.optional(TlsConfig),
+  customHeaders: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "McpToolset" });
 
 export interface OpenApiToolset {
   /** Required. The OpenAPI schema of the toolset. */
@@ -3406,19 +2818,14 @@ export interface OpenApiToolset {
   url?: string;
 }
 
-export const OpenApiToolset: Schema.Schema<OpenApiToolset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      openApiSchema: Schema.optional(Schema.String),
-      apiAuthentication: Schema.optional(ApiAuthentication),
-      tlsConfig: Schema.optional(TlsConfig),
-      serviceDirectoryConfig: Schema.optional(ServiceDirectoryConfig),
-      ignoreUnknownFields: Schema.optional(Schema.Boolean),
-      url: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OpenApiToolset",
-  }) as any as Schema.Schema<OpenApiToolset>;
+export const OpenApiToolset = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  openApiSchema: Schema.optional(Schema.String),
+  apiAuthentication: Schema.optional(ApiAuthentication),
+  tlsConfig: Schema.optional(TlsConfig),
+  serviceDirectoryConfig: Schema.optional(ServiceDirectoryConfig),
+  ignoreUnknownFields: Schema.optional(Schema.Boolean),
+  url: Schema.optional(Schema.String),
+}).annotate({ identifier: "OpenApiToolset" });
 
 export interface ConnectorToolset {
   /** Required. The full resource name of the referenced Integration Connectors Connection. Format: `projects/{project}/locations/{location}/connections/{connection}` */
@@ -3429,16 +2836,11 @@ export interface ConnectorToolset {
   connectorActions?: Array<Action>;
 }
 
-export const ConnectorToolset: Schema.Schema<ConnectorToolset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      connection: Schema.optional(Schema.String),
-      authConfig: Schema.optional(EndUserAuthConfig),
-      connectorActions: Schema.optional(Schema.Array(Action)),
-    }),
-  ).annotate({
-    identifier: "ConnectorToolset",
-  }) as any as Schema.Schema<ConnectorToolset>;
+export const ConnectorToolset = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  connection: Schema.optional(Schema.String),
+  authConfig: Schema.optional(EndUserAuthConfig),
+  connectorActions: Schema.optional(Schema.Array(Action)),
+}).annotate({ identifier: "ConnectorToolset" });
 
 export interface Toolset {
   /** Optional. A toolset that contains a list of tools that are offered by the MCP server. */
@@ -3469,22 +2871,19 @@ export interface Toolset {
   toolFakeConfig?: ToolFakeConfig;
 }
 
-export const Toolset: Schema.Schema<Toolset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mcpToolset: Schema.optional(McpToolset),
-      openApiToolset: Schema.optional(OpenApiToolset),
-      connectorToolset: Schema.optional(ConnectorToolset),
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      executionType: Schema.optional(Schema.String),
-      toolFakeConfig: Schema.optional(ToolFakeConfig),
-    }),
-  ).annotate({ identifier: "Toolset" }) as any as Schema.Schema<Toolset>;
+export const Toolset = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  mcpToolset: Schema.optional(McpToolset),
+  openApiToolset: Schema.optional(OpenApiToolset),
+  connectorToolset: Schema.optional(ConnectorToolset),
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  executionType: Schema.optional(Schema.String),
+  toolFakeConfig: Schema.optional(ToolFakeConfig),
+}).annotate({ identifier: "Toolset" });
 
 export interface ListToolsetsResponse {
   /** The list of toolsets. */
@@ -3493,15 +2892,10 @@ export interface ListToolsetsResponse {
   nextPageToken?: string;
 }
 
-export const ListToolsetsResponse: Schema.Schema<ListToolsetsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      toolsets: Schema.optional(Schema.Array(Toolset)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListToolsetsResponse",
-  }) as any as Schema.Schema<ListToolsetsResponse>;
+export const ListToolsetsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  toolsets: Schema.optional(Schema.Array(Toolset)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListToolsetsResponse" });
 
 export interface AppSnapshot {
   /** Optional. The basic settings for the app. */
@@ -3518,19 +2912,14 @@ export interface AppSnapshot {
   toolsets?: Array<Toolset>;
 }
 
-export const AppSnapshot: Schema.Schema<AppSnapshot> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      app: Schema.optional(App),
-      agents: Schema.optional(Schema.Array(Agent)),
-      tools: Schema.optional(Schema.Array(Tool)),
-      examples: Schema.optional(Schema.Array(Example)),
-      guardrails: Schema.optional(Schema.Array(Guardrail)),
-      toolsets: Schema.optional(Schema.Array(Toolset)),
-    }),
-  ).annotate({
-    identifier: "AppSnapshot",
-  }) as any as Schema.Schema<AppSnapshot>;
+export const AppSnapshot = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  app: Schema.optional(App),
+  agents: Schema.optional(Schema.Array(Agent)),
+  tools: Schema.optional(Schema.Array(Tool)),
+  examples: Schema.optional(Schema.Array(Example)),
+  guardrails: Schema.optional(Schema.Array(Guardrail)),
+  toolsets: Schema.optional(Schema.Array(Toolset)),
+}).annotate({ identifier: "AppSnapshot" });
 
 export interface AppVersion {
   /** Identifier. The unique identifier of the app version. Format: `projects/{project}/locations/{location}/apps/{app}/versions/{version}` */
@@ -3549,18 +2938,15 @@ export interface AppVersion {
   etag?: string;
 }
 
-export const AppVersion: Schema.Schema<AppVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      creator: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      snapshot: Schema.optional(AppSnapshot),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "AppVersion" }) as any as Schema.Schema<AppVersion>;
+export const AppVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  creator: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  snapshot: Schema.optional(AppSnapshot),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "AppVersion" });
 
 export interface ListAppVersionsResponse {
   /** The list of app versions. */
@@ -3569,22 +2955,18 @@ export interface ListAppVersionsResponse {
   nextPageToken?: string;
 }
 
-export const ListAppVersionsResponse: Schema.Schema<ListAppVersionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      appVersions: Schema.optional(Schema.Array(AppVersion)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAppVersionsResponse",
-  }) as any as Schema.Schema<ListAppVersionsResponse>;
+export const ListAppVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    appVersions: Schema.optional(Schema.Array(AppVersion)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListAppVersionsResponse" });
 
 export interface RestoreAppVersionRequest {}
 
-export const RestoreAppVersionRequest: Schema.Schema<RestoreAppVersionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const RestoreAppVersionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RestoreAppVersionRequest",
-  }) as any as Schema.Schema<RestoreAppVersionRequest>;
+  });
 
 export interface Changelog {
   /** Identifier. The unique identifier of the changelog. Format: `projects/{project}/locations/{location}/apps/{app}/changelogs/{changelog}` */
@@ -3613,29 +2995,24 @@ export interface Changelog {
   sequenceNumber?: string;
 }
 
-export const Changelog: Schema.Schema<Changelog> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      author: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      resource: Schema.optional(Schema.String),
-      resourceType: Schema.optional(Schema.String),
-      action: Schema.optional(Schema.String),
-      originalResource: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-      newResource: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-      dependentResources: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      createTime: Schema.optional(Schema.String),
-      sequenceNumber: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Changelog" }) as any as Schema.Schema<Changelog>;
+export const Changelog = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  author: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  resource: Schema.optional(Schema.String),
+  resourceType: Schema.optional(Schema.String),
+  action: Schema.optional(Schema.String),
+  originalResource: Schema.optional(
+    Schema.Record(Schema.String, Schema.Unknown),
+  ),
+  newResource: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  dependentResources: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  createTime: Schema.optional(Schema.String),
+  sequenceNumber: Schema.optional(Schema.String),
+}).annotate({ identifier: "Changelog" });
 
 export interface ListChangelogsResponse {
   /** The list of changelogs. */
@@ -3644,15 +3021,12 @@ export interface ListChangelogsResponse {
   nextPageToken?: string;
 }
 
-export const ListChangelogsResponse: Schema.Schema<ListChangelogsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      changelogs: Schema.optional(Schema.Array(Changelog)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListChangelogsResponse",
-  }) as any as Schema.Schema<ListChangelogsResponse>;
+export const ListChangelogsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    changelogs: Schema.optional(Schema.Array(Changelog)),
+    nextPageToken: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ListChangelogsResponse" });
 
 export interface MockedToolCall {
   /** Optional. The name of the tool to mock. Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}` */
@@ -3667,22 +3041,15 @@ export interface MockedToolCall {
   mockResponse?: Record<string, unknown>;
 }
 
-export const MockedToolCall: Schema.Schema<MockedToolCall> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      toolId: Schema.optional(Schema.String),
-      toolset: Schema.optional(ToolsetTool),
-      tool: Schema.optional(Schema.String),
-      expectedArgsPattern: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-      mockResponse: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-    }),
-  ).annotate({
-    identifier: "MockedToolCall",
-  }) as any as Schema.Schema<MockedToolCall>;
+export const MockedToolCall = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  toolId: Schema.optional(Schema.String),
+  toolset: Schema.optional(ToolsetTool),
+  tool: Schema.optional(Schema.String),
+  expectedArgsPattern: Schema.optional(
+    Schema.Record(Schema.String, Schema.Unknown),
+  ),
+  mockResponse: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "MockedToolCall" });
 
 export interface MockConfig {
   /** Optional. All tool calls to mock for the duration of the session. */
@@ -3695,13 +3062,10 @@ export interface MockConfig {
     | (string & {});
 }
 
-export const MockConfig: Schema.Schema<MockConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mockedToolCalls: Schema.optional(Schema.Array(MockedToolCall)),
-      unmatchedToolCallBehavior: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "MockConfig" }) as any as Schema.Schema<MockConfig>;
+export const MockConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  mockedToolCalls: Schema.optional(Schema.Array(MockedToolCall)),
+  unmatchedToolCallBehavior: Schema.optional(Schema.String),
+}).annotate({ identifier: "MockConfig" });
 
 export interface ExecuteToolRequest {
   /** Optional. The name of the tool to execute. Format: projects/{project}/locations/{location}/apps/{app}/tools/{tool} */
@@ -3718,19 +3082,14 @@ export interface ExecuteToolRequest {
   mockConfig?: MockConfig;
 }
 
-export const ExecuteToolRequest: Schema.Schema<ExecuteToolRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tool: Schema.optional(Schema.String),
-      toolsetTool: Schema.optional(ToolsetTool),
-      variables: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      context: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      args: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      mockConfig: Schema.optional(MockConfig),
-    }),
-  ).annotate({
-    identifier: "ExecuteToolRequest",
-  }) as any as Schema.Schema<ExecuteToolRequest>;
+export const ExecuteToolRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tool: Schema.optional(Schema.String),
+  toolsetTool: Schema.optional(ToolsetTool),
+  variables: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  context: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  args: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  mockConfig: Schema.optional(MockConfig),
+}).annotate({ identifier: "ExecuteToolRequest" });
 
 export interface ExecuteToolResponse {
   /** The name of the tool that got executed. Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}` */
@@ -3743,17 +3102,12 @@ export interface ExecuteToolResponse {
   variables?: Record<string, unknown>;
 }
 
-export const ExecuteToolResponse: Schema.Schema<ExecuteToolResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tool: Schema.optional(Schema.String),
-      toolsetTool: Schema.optional(ToolsetTool),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      variables: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
-    identifier: "ExecuteToolResponse",
-  }) as any as Schema.Schema<ExecuteToolResponse>;
+export const ExecuteToolResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tool: Schema.optional(Schema.String),
+  toolsetTool: Schema.optional(ToolsetTool),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  variables: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "ExecuteToolResponse" });
 
 export interface RetrieveToolSchemaRequest {
   /** Optional. The name of the tool to retrieve the schema for. Format: projects/{project}/locations/{location}/apps/{app}/tools/{tool} */
@@ -3762,15 +3116,11 @@ export interface RetrieveToolSchemaRequest {
   toolsetTool?: ToolsetTool;
 }
 
-export const RetrieveToolSchemaRequest: Schema.Schema<RetrieveToolSchemaRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tool: Schema.optional(Schema.String),
-      toolsetTool: Schema.optional(ToolsetTool),
-    }),
-  ).annotate({
-    identifier: "RetrieveToolSchemaRequest",
-  }) as any as Schema.Schema<RetrieveToolSchemaRequest>;
+export const RetrieveToolSchemaRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tool: Schema.optional(Schema.String),
+    toolsetTool: Schema.optional(ToolsetTool),
+  }).annotate({ identifier: "RetrieveToolSchemaRequest" });
 
 export interface RetrieveToolSchemaResponse {
   /** The name of the tool that the schema is for. Format: `projects/{project}/locations/{location}/apps/{app}/tools/{tool}` */
@@ -3783,45 +3133,31 @@ export interface RetrieveToolSchemaResponse {
   outputSchema?: Ces_Schema;
 }
 
-export const RetrieveToolSchemaResponse: Schema.Schema<RetrieveToolSchemaResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tool: Schema.optional(Schema.String),
-      toolsetTool: Schema.optional(ToolsetTool),
-      inputSchema: Schema.optional(Ces_Schema),
-      outputSchema: Schema.optional(Ces_Schema),
-    }),
-  ).annotate({
-    identifier: "RetrieveToolSchemaResponse",
-  }) as any as Schema.Schema<RetrieveToolSchemaResponse>;
+export const RetrieveToolSchemaResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tool: Schema.optional(Schema.String),
+    toolsetTool: Schema.optional(ToolsetTool),
+    inputSchema: Schema.optional(Ces_Schema),
+    outputSchema: Schema.optional(Ces_Schema),
+  }).annotate({ identifier: "RetrieveToolSchemaResponse" });
 
 export interface RetrieveToolsRequest {
   /** Optional. The identifiers of the tools to retrieve from the toolset. If empty, all tools in the toolset will be returned. */
   toolIds?: Array<string>;
 }
 
-export const RetrieveToolsRequest: Schema.Schema<RetrieveToolsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      toolIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "RetrieveToolsRequest",
-  }) as any as Schema.Schema<RetrieveToolsRequest>;
+export const RetrieveToolsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  toolIds: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "RetrieveToolsRequest" });
 
 export interface RetrieveToolsResponse {
   /** The list of tools that are included in the specified toolset. */
   tools?: Array<Tool>;
 }
 
-export const RetrieveToolsResponse: Schema.Schema<RetrieveToolsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tools: Schema.optional(Schema.Array(Tool)),
-    }),
-  ).annotate({
-    identifier: "RetrieveToolsResponse",
-  }) as any as Schema.Schema<RetrieveToolsResponse>;
+export const RetrieveToolsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tools: Schema.optional(Schema.Array(Tool)),
+}).annotate({ identifier: "RetrieveToolsResponse" });
 
 export interface GenerateChatTokenRequest {
   /** Required. The deployment of the app to use for the session. Format: projects/{project}/locations/{location}/apps/{app}/deployments/{deployment} */
@@ -3832,16 +3168,12 @@ export interface GenerateChatTokenRequest {
   liveHandoffEnabled?: boolean;
 }
 
-export const GenerateChatTokenRequest: Schema.Schema<GenerateChatTokenRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deployment: Schema.optional(Schema.String),
-      recaptchaToken: Schema.optional(Schema.String),
-      liveHandoffEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GenerateChatTokenRequest",
-  }) as any as Schema.Schema<GenerateChatTokenRequest>;
+export const GenerateChatTokenRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deployment: Schema.optional(Schema.String),
+    recaptchaToken: Schema.optional(Schema.String),
+    liveHandoffEnabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GenerateChatTokenRequest" });
 
 export interface GenerateChatTokenResponse {
   /** The session scoped token for chat widget to authenticate with Session APIs. */
@@ -3850,15 +3182,11 @@ export interface GenerateChatTokenResponse {
   expireTime?: string;
 }
 
-export const GenerateChatTokenResponse: Schema.Schema<GenerateChatTokenResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      chatToken: Schema.optional(Schema.String),
-      expireTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GenerateChatTokenResponse",
-  }) as any as Schema.Schema<GenerateChatTokenResponse>;
+export const GenerateChatTokenResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    chatToken: Schema.optional(Schema.String),
+    expireTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GenerateChatTokenResponse" });
 
 export interface Location {
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
@@ -3873,16 +3201,13 @@ export interface Location {
   metadata?: Record<string, unknown>;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      locationId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  locationId: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Location" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -3891,15 +3216,10 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(Location)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface EndpointControlPolicy {
   /** Optional. The scope in which this policy's allowed_origins list is enforced. */
@@ -3912,15 +3232,10 @@ export interface EndpointControlPolicy {
   allowedOrigins?: Array<string>;
 }
 
-export const EndpointControlPolicy: Schema.Schema<EndpointControlPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enforcementScope: Schema.optional(Schema.String),
-      allowedOrigins: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "EndpointControlPolicy",
-  }) as any as Schema.Schema<EndpointControlPolicy>;
+export const EndpointControlPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enforcementScope: Schema.optional(Schema.String),
+  allowedOrigins: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "EndpointControlPolicy" });
 
 export interface SecuritySettings {
   /** Identifier. The unique identifier of the security settings. Format: `projects/{project}/locations/{location}/securitySettings` */
@@ -3935,18 +3250,13 @@ export interface SecuritySettings {
   etag?: string;
 }
 
-export const SecuritySettings: Schema.Schema<SecuritySettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      endpointControlPolicy: Schema.optional(EndpointControlPolicy),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SecuritySettings",
-  }) as any as Schema.Schema<SecuritySettings>;
+export const SecuritySettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  endpointControlPolicy: Schema.optional(EndpointControlPolicy),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "SecuritySettings" });
 
 export interface OmnichannelIntegrationConfigWhatsappConfig {
   /** The Phone Number ID associated with the WhatsApp Business Account. */
@@ -3963,77 +3273,55 @@ export interface OmnichannelIntegrationConfigWhatsappConfig {
   metaBusinessPortfolioId?: string;
 }
 
-export const OmnichannelIntegrationConfigWhatsappConfig: Schema.Schema<OmnichannelIntegrationConfigWhatsappConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      phoneNumberId: Schema.optional(Schema.String),
-      phoneNumber: Schema.optional(Schema.String),
-      whatsappBusinessAccountId: Schema.optional(Schema.String),
-      webhookVerifyToken: Schema.optional(Schema.String),
-      whatsappBusinessToken: Schema.optional(Schema.String),
-      metaBusinessPortfolioId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OmnichannelIntegrationConfigWhatsappConfig",
-  }) as any as Schema.Schema<OmnichannelIntegrationConfigWhatsappConfig>;
+export const OmnichannelIntegrationConfigWhatsappConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    phoneNumberId: Schema.optional(Schema.String),
+    phoneNumber: Schema.optional(Schema.String),
+    whatsappBusinessAccountId: Schema.optional(Schema.String),
+    webhookVerifyToken: Schema.optional(Schema.String),
+    whatsappBusinessToken: Schema.optional(Schema.String),
+    metaBusinessPortfolioId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OmnichannelIntegrationConfigWhatsappConfig" });
 
 export interface OmnichannelIntegrationConfigChannelConfig {
   /** WhatsApp config. */
   whatsappConfig?: OmnichannelIntegrationConfigWhatsappConfig;
 }
 
-export const OmnichannelIntegrationConfigChannelConfig: Schema.Schema<OmnichannelIntegrationConfigChannelConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      whatsappConfig: Schema.optional(
-        OmnichannelIntegrationConfigWhatsappConfig,
-      ),
-    }),
-  ).annotate({
-    identifier: "OmnichannelIntegrationConfigChannelConfig",
-  }) as any as Schema.Schema<OmnichannelIntegrationConfigChannelConfig>;
+export const OmnichannelIntegrationConfigChannelConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    whatsappConfig: Schema.optional(OmnichannelIntegrationConfigWhatsappConfig),
+  }).annotate({ identifier: "OmnichannelIntegrationConfigChannelConfig" });
 
 export interface OmnichannelIntegrationConfigCesAppConfig {
   /** The unique identifier of the CES app. Format: `projects/{project}/locations/{location}/apps/{app}` */
   app?: string;
 }
 
-export const OmnichannelIntegrationConfigCesAppConfig: Schema.Schema<OmnichannelIntegrationConfigCesAppConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      app: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OmnichannelIntegrationConfigCesAppConfig",
-  }) as any as Schema.Schema<OmnichannelIntegrationConfigCesAppConfig>;
+export const OmnichannelIntegrationConfigCesAppConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    app: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OmnichannelIntegrationConfigCesAppConfig" });
 
 export interface OmnichannelIntegrationConfigSubscriberConfig {
   /** Ces app config. */
   cesAppConfig?: OmnichannelIntegrationConfigCesAppConfig;
 }
 
-export const OmnichannelIntegrationConfigSubscriberConfig: Schema.Schema<OmnichannelIntegrationConfigSubscriberConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cesAppConfig: Schema.optional(OmnichannelIntegrationConfigCesAppConfig),
-    }),
-  ).annotate({
-    identifier: "OmnichannelIntegrationConfigSubscriberConfig",
-  }) as any as Schema.Schema<OmnichannelIntegrationConfigSubscriberConfig>;
+export const OmnichannelIntegrationConfigSubscriberConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cesAppConfig: Schema.optional(OmnichannelIntegrationConfigCesAppConfig),
+  }).annotate({ identifier: "OmnichannelIntegrationConfigSubscriberConfig" });
 
 export interface OmnichannelIntegrationConfigRoutingConfig {
   /** The key of the subscriber. */
   subscriberKey?: string;
 }
 
-export const OmnichannelIntegrationConfigRoutingConfig: Schema.Schema<OmnichannelIntegrationConfigRoutingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subscriberKey: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OmnichannelIntegrationConfigRoutingConfig",
-  }) as any as Schema.Schema<OmnichannelIntegrationConfigRoutingConfig>;
+export const OmnichannelIntegrationConfigRoutingConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscriberKey: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OmnichannelIntegrationConfigRoutingConfig" });
 
 export interface OmnichannelIntegrationConfig {
   /** Optional. Various of configuration for handling App events. */
@@ -4047,25 +3335,21 @@ export interface OmnichannelIntegrationConfig {
   routingConfigs?: Record<string, OmnichannelIntegrationConfigRoutingConfig>;
 }
 
-export const OmnichannelIntegrationConfig: Schema.Schema<OmnichannelIntegrationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      channelConfigs: Schema.optional(
-        Schema.Record(Schema.String, OmnichannelIntegrationConfigChannelConfig),
+export const OmnichannelIntegrationConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    channelConfigs: Schema.optional(
+      Schema.Record(Schema.String, OmnichannelIntegrationConfigChannelConfig),
+    ),
+    subscriberConfigs: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        OmnichannelIntegrationConfigSubscriberConfig,
       ),
-      subscriberConfigs: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          OmnichannelIntegrationConfigSubscriberConfig,
-        ),
-      ),
-      routingConfigs: Schema.optional(
-        Schema.Record(Schema.String, OmnichannelIntegrationConfigRoutingConfig),
-      ),
-    }),
-  ).annotate({
-    identifier: "OmnichannelIntegrationConfig",
-  }) as any as Schema.Schema<OmnichannelIntegrationConfig>;
+    ),
+    routingConfigs: Schema.optional(
+      Schema.Record(Schema.String, OmnichannelIntegrationConfigRoutingConfig),
+    ),
+  }).annotate({ identifier: "OmnichannelIntegrationConfig" });
 
 export interface Omnichannel {
   /** Identifier. The unique identifier of the omnichannel resource. Format: `projects/{project}/locations/{location}/omnichannels/{omnichannel}` */
@@ -4084,20 +3368,15 @@ export interface Omnichannel {
   integrationConfig?: OmnichannelIntegrationConfig;
 }
 
-export const Omnichannel: Schema.Schema<Omnichannel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      integrationConfig: Schema.optional(OmnichannelIntegrationConfig),
-    }),
-  ).annotate({
-    identifier: "Omnichannel",
-  }) as any as Schema.Schema<Omnichannel>;
+export const Omnichannel = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  integrationConfig: Schema.optional(OmnichannelIntegrationConfig),
+}).annotate({ identifier: "Omnichannel" });
 
 export interface OmnichannelOperationMetadata {
   /** Output only. The time the operation was created. */
@@ -4110,17 +3389,13 @@ export interface OmnichannelOperationMetadata {
   requestedCancellation?: boolean;
 }
 
-export const OmnichannelOperationMetadata: Schema.Schema<OmnichannelOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "OmnichannelOperationMetadata",
-  }) as any as Schema.Schema<OmnichannelOperationMetadata>;
+export const OmnichannelOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    statusMessage: Schema.optional(Schema.String),
+    requestedCancellation: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "OmnichannelOperationMetadata" });
 
 export interface OperationMetadata {
   /** Output only. The time the operation was created. */
@@ -4133,17 +3408,12 @@ export interface OperationMetadata {
   requestedCancellation?: boolean;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  statusMessage: Schema.optional(Schema.String),
+  requestedCancellation: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "OperationMetadata" });
 
 export interface ImportAppResponse {
   /** The resource name of the app that was imported. */
@@ -4152,15 +3422,10 @@ export interface ImportAppResponse {
   warnings?: Array<string>;
 }
 
-export const ImportAppResponse: Schema.Schema<ImportAppResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      warnings: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ImportAppResponse",
-  }) as any as Schema.Schema<ImportAppResponse>;
+export const ImportAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  warnings: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ImportAppResponse" });
 
 export interface ExportAppResponse {
   /** App folder compressed as a zip file. */
@@ -4169,15 +3434,10 @@ export interface ExportAppResponse {
   appUri?: string;
 }
 
-export const ExportAppResponse: Schema.Schema<ExportAppResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      appContent: Schema.optional(Schema.String),
-      appUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ExportAppResponse",
-  }) as any as Schema.Schema<ExportAppResponse>;
+export const ExportAppResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  appContent: Schema.optional(Schema.String),
+  appUri: Schema.optional(Schema.String),
+}).annotate({ identifier: "ExportAppResponse" });
 
 // ==========================================================================
 // Operations

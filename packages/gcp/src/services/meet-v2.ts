@@ -27,12 +27,9 @@ export interface PhoneUser {
   displayName?: string;
 }
 
-export const PhoneUser: Schema.Schema<PhoneUser> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "PhoneUser" }) as any as Schema.Schema<PhoneUser>;
+export const PhoneUser = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+}).annotate({ identifier: "PhoneUser" });
 
 export interface SignedinUser {
   /** Output only. Unique ID for the user. Interoperable with Admin SDK API and People API. Format: `users/{user}` */
@@ -41,29 +38,19 @@ export interface SignedinUser {
   displayName?: string;
 }
 
-export const SignedinUser: Schema.Schema<SignedinUser> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      user: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SignedinUser",
-  }) as any as Schema.Schema<SignedinUser>;
+export const SignedinUser = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  user: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+}).annotate({ identifier: "SignedinUser" });
 
 export interface AnonymousUser {
   /** Output only. User provided name when they join a conference anonymously. */
   displayName?: string;
 }
 
-export const AnonymousUser: Schema.Schema<AnonymousUser> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AnonymousUser",
-  }) as any as Schema.Schema<AnonymousUser>;
+export const AnonymousUser = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+}).annotate({ identifier: "AnonymousUser" });
 
 export interface Participant {
   /** User calling from their phone. */
@@ -80,19 +67,14 @@ export interface Participant {
   anonymousUser?: AnonymousUser;
 }
 
-export const Participant: Schema.Schema<Participant> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      phoneUser: Schema.optional(PhoneUser),
-      signedinUser: Schema.optional(SignedinUser),
-      name: Schema.optional(Schema.String),
-      earliestStartTime: Schema.optional(Schema.String),
-      latestEndTime: Schema.optional(Schema.String),
-      anonymousUser: Schema.optional(AnonymousUser),
-    }),
-  ).annotate({
-    identifier: "Participant",
-  }) as any as Schema.Schema<Participant>;
+export const Participant = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  phoneUser: Schema.optional(PhoneUser),
+  signedinUser: Schema.optional(SignedinUser),
+  name: Schema.optional(Schema.String),
+  earliestStartTime: Schema.optional(Schema.String),
+  latestEndTime: Schema.optional(Schema.String),
+  anonymousUser: Schema.optional(AnonymousUser),
+}).annotate({ identifier: "Participant" });
 
 export interface ListParticipantsResponse {
   /** List of participants in one page. */
@@ -103,16 +85,12 @@ export interface ListParticipantsResponse {
   totalSize?: number;
 }
 
-export const ListParticipantsResponse: Schema.Schema<ListParticipantsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      participants: Schema.optional(Schema.Array(Participant)),
-      nextPageToken: Schema.optional(Schema.String),
-      totalSize: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "ListParticipantsResponse",
-  }) as any as Schema.Schema<ListParticipantsResponse>;
+export const ListParticipantsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    participants: Schema.optional(Schema.Array(Participant)),
+    nextPageToken: Schema.optional(Schema.String),
+    totalSize: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "ListParticipantsResponse" });
 
 export interface SmartNotesConfig {
   /** Defines whether to automatically generate a summary and recap of the meeting for all invitees in the organization when someone with the privilege to enable smart notes joins the meeting. */
@@ -123,14 +101,9 @@ export interface SmartNotesConfig {
     | (string & {});
 }
 
-export const SmartNotesConfig: Schema.Schema<SmartNotesConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      autoSmartNotesGeneration: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SmartNotesConfig",
-  }) as any as Schema.Schema<SmartNotesConfig>;
+export const SmartNotesConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  autoSmartNotesGeneration: Schema.optional(Schema.String),
+}).annotate({ identifier: "SmartNotesConfig" });
 
 export interface DriveDestination {
   /** Output only. The `fileId` for the underlying MP4 file. For example, "1kuceFZohVoCh6FulBHxwy6I15Ogpc4hP". Use `$ GET https://www.googleapis.com/drive/v3/files/{$fileId}?alt=media` to download the blob. For more information, see https://developers.google.com/drive/api/v3/reference/files/get. */
@@ -139,15 +112,10 @@ export interface DriveDestination {
   exportUri?: string;
 }
 
-export const DriveDestination: Schema.Schema<DriveDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      file: Schema.optional(Schema.String),
-      exportUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DriveDestination",
-  }) as any as Schema.Schema<DriveDestination>;
+export const DriveDestination = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  file: Schema.optional(Schema.String),
+  exportUri: Schema.optional(Schema.String),
+}).annotate({ identifier: "DriveDestination" });
 
 export interface Recording {
   /** Output only. Current state. */
@@ -167,16 +135,13 @@ export interface Recording {
   startTime?: string;
 }
 
-export const Recording: Schema.Schema<Recording> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      driveDestination: Schema.optional(DriveDestination),
-      startTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Recording" }) as any as Schema.Schema<Recording>;
+export const Recording = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  driveDestination: Schema.optional(DriveDestination),
+  startTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Recording" });
 
 export interface DocsDestination {
   /** Output only. The document ID for the underlying Google Docs transcript file. For example, "1kuceFZohVoCh6FulBHxwy6I15Ogpc4hP". Use the `documents.get` method of the Google Docs API (https://developers.google.com/docs/api/reference/rest/v1/documents/get) to fetch the content. */
@@ -185,15 +150,10 @@ export interface DocsDestination {
   exportUri?: string;
 }
 
-export const DocsDestination: Schema.Schema<DocsDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      document: Schema.optional(Schema.String),
-      exportUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DocsDestination",
-  }) as any as Schema.Schema<DocsDestination>;
+export const DocsDestination = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  document: Schema.optional(Schema.String),
+  exportUri: Schema.optional(Schema.String),
+}).annotate({ identifier: "DocsDestination" });
 
 export interface Transcript {
   /** Output only. Timestamp when the transcript started. */
@@ -213,16 +173,13 @@ export interface Transcript {
     | (string & {});
 }
 
-export const Transcript: Schema.Schema<Transcript> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      docsDestination: Schema.optional(DocsDestination),
-      endTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Transcript" }) as any as Schema.Schema<Transcript>;
+export const Transcript = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  docsDestination: Schema.optional(DocsDestination),
+  endTime: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+}).annotate({ identifier: "Transcript" });
 
 export interface ListTranscriptsResponse {
   /** List of transcripts in one page. */
@@ -231,15 +188,11 @@ export interface ListTranscriptsResponse {
   nextPageToken?: string;
 }
 
-export const ListTranscriptsResponse: Schema.Schema<ListTranscriptsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      transcripts: Schema.optional(Schema.Array(Transcript)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListTranscriptsResponse",
-  }) as any as Schema.Schema<ListTranscriptsResponse>;
+export const ListTranscriptsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    transcripts: Schema.optional(Schema.Array(Transcript)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListTranscriptsResponse" });
 
 export interface ModerationRestrictions {
   /** Defines who has permission to send reactions in the meeting space. */
@@ -268,17 +221,14 @@ export interface ModerationRestrictions {
     | (string & {});
 }
 
-export const ModerationRestrictions: Schema.Schema<ModerationRestrictions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reactionRestriction: Schema.optional(Schema.String),
-      presentRestriction: Schema.optional(Schema.String),
-      chatRestriction: Schema.optional(Schema.String),
-      defaultJoinAsViewerType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ModerationRestrictions",
-  }) as any as Schema.Schema<ModerationRestrictions>;
+export const ModerationRestrictions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    reactionRestriction: Schema.optional(Schema.String),
+    presentRestriction: Schema.optional(Schema.String),
+    chatRestriction: Schema.optional(Schema.String),
+    defaultJoinAsViewerType: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ModerationRestrictions" });
 
 export interface RecordingConfig {
   /** Defines whether a meeting space is automatically recorded when someone with the privilege to record joins the meeting. */
@@ -289,14 +239,9 @@ export interface RecordingConfig {
     | (string & {});
 }
 
-export const RecordingConfig: Schema.Schema<RecordingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      autoRecordingGeneration: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RecordingConfig",
-  }) as any as Schema.Schema<RecordingConfig>;
+export const RecordingConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  autoRecordingGeneration: Schema.optional(Schema.String),
+}).annotate({ identifier: "RecordingConfig" });
 
 export interface TranscriptionConfig {
   /** Defines whether the content of a meeting is automatically transcribed when someone with the privilege to transcribe joins the meeting. */
@@ -307,14 +252,9 @@ export interface TranscriptionConfig {
     | (string & {});
 }
 
-export const TranscriptionConfig: Schema.Schema<TranscriptionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      autoTranscriptionGeneration: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TranscriptionConfig",
-  }) as any as Schema.Schema<TranscriptionConfig>;
+export const TranscriptionConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  autoTranscriptionGeneration: Schema.optional(Schema.String),
+}).annotate({ identifier: "TranscriptionConfig" });
 
 export interface ArtifactConfig {
   /** Configuration for recording. */
@@ -325,16 +265,11 @@ export interface ArtifactConfig {
   transcriptionConfig?: TranscriptionConfig;
 }
 
-export const ArtifactConfig: Schema.Schema<ArtifactConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      recordingConfig: Schema.optional(RecordingConfig),
-      smartNotesConfig: Schema.optional(SmartNotesConfig),
-      transcriptionConfig: Schema.optional(TranscriptionConfig),
-    }),
-  ).annotate({
-    identifier: "ArtifactConfig",
-  }) as any as Schema.Schema<ArtifactConfig>;
+export const ArtifactConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  recordingConfig: Schema.optional(RecordingConfig),
+  smartNotesConfig: Schema.optional(SmartNotesConfig),
+  transcriptionConfig: Schema.optional(TranscriptionConfig),
+}).annotate({ identifier: "ArtifactConfig" });
 
 export interface SpaceConfig {
   /** The pre-configured moderation mode for the Meeting. Default: Controlled by the user's policies. */
@@ -364,19 +299,14 @@ export interface SpaceConfig {
   artifactConfig?: ArtifactConfig;
 }
 
-export const SpaceConfig: Schema.Schema<SpaceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      moderation: Schema.optional(Schema.String),
-      accessType: Schema.optional(Schema.String),
-      entryPointAccess: Schema.optional(Schema.String),
-      attendanceReportGenerationType: Schema.optional(Schema.String),
-      moderationRestrictions: Schema.optional(ModerationRestrictions),
-      artifactConfig: Schema.optional(ArtifactConfig),
-    }),
-  ).annotate({
-    identifier: "SpaceConfig",
-  }) as any as Schema.Schema<SpaceConfig>;
+export const SpaceConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  moderation: Schema.optional(Schema.String),
+  accessType: Schema.optional(Schema.String),
+  entryPointAccess: Schema.optional(Schema.String),
+  attendanceReportGenerationType: Schema.optional(Schema.String),
+  moderationRestrictions: Schema.optional(ModerationRestrictions),
+  artifactConfig: Schema.optional(ArtifactConfig),
+}).annotate({ identifier: "SpaceConfig" });
 
 export interface TranscriptEntry {
   /** Output only. Refers to the participant who speaks. */
@@ -393,26 +323,21 @@ export interface TranscriptEntry {
   languageCode?: string;
 }
 
-export const TranscriptEntry: Schema.Schema<TranscriptEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      participant: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      text: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      languageCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TranscriptEntry",
-  }) as any as Schema.Schema<TranscriptEntry>;
+export const TranscriptEntry = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  participant: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  text: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  languageCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "TranscriptEntry" });
 
 export interface EndActiveConferenceRequest {}
 
-export const EndActiveConferenceRequest: Schema.Schema<EndActiveConferenceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const EndActiveConferenceRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "EndActiveConferenceRequest",
-  }) as any as Schema.Schema<EndActiveConferenceRequest>;
+  });
 
 export interface SmartNote {
   /** Output only. Timestamp when the smart notes started. */
@@ -432,16 +357,13 @@ export interface SmartNote {
     | (string & {});
 }
 
-export const SmartNote: Schema.Schema<SmartNote> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      docsDestination: Schema.optional(DocsDestination),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "SmartNote" }) as any as Schema.Schema<SmartNote>;
+export const SmartNote = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  docsDestination: Schema.optional(DocsDestination),
+  state: Schema.optional(Schema.String),
+}).annotate({ identifier: "SmartNote" });
 
 export interface PhoneAccess {
   /** The phone number to dial for this meeting space in E.164 format. Full phone number with a leading '+' character. */
@@ -454,17 +376,12 @@ export interface PhoneAccess {
   languageCode?: string;
 }
 
-export const PhoneAccess: Schema.Schema<PhoneAccess> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      phoneNumber: Schema.optional(Schema.String),
-      regionCode: Schema.optional(Schema.String),
-      pin: Schema.optional(Schema.String),
-      languageCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PhoneAccess",
-  }) as any as Schema.Schema<PhoneAccess>;
+export const PhoneAccess = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  phoneNumber: Schema.optional(Schema.String),
+  regionCode: Schema.optional(Schema.String),
+  pin: Schema.optional(Schema.String),
+  languageCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "PhoneAccess" });
 
 export interface ListRecordingsResponse {
   /** List of recordings in one page. */
@@ -473,36 +390,27 @@ export interface ListRecordingsResponse {
   nextPageToken?: string;
 }
 
-export const ListRecordingsResponse: Schema.Schema<ListRecordingsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      recordings: Schema.optional(Schema.Array(Recording)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListRecordingsResponse",
-  }) as any as Schema.Schema<ListRecordingsResponse>;
+export const ListRecordingsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    recordings: Schema.optional(Schema.Array(Recording)),
+    nextPageToken: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ListRecordingsResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface ActiveConference {
   /** Output only. Reference to 'ConferenceRecord' resource. Format: `conferenceRecords/{conference_record}` where `{conference_record}` is a unique ID for each instance of a call within a space. */
   conferenceRecord?: string;
 }
 
-export const ActiveConference: Schema.Schema<ActiveConference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conferenceRecord: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ActiveConference",
-  }) as any as Schema.Schema<ActiveConference>;
+export const ActiveConference = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  conferenceRecord: Schema.optional(Schema.String),
+}).annotate({ identifier: "ActiveConference" });
 
 export interface GatewaySipAccess {
   /** The SIP URI the conference can be reached through. The string is on one of the formats: "sip:@" "sips:@" where currently is the 13-digit universal pin, and is a valid address to be resolved using a DNS SRV lookup, or a dotted quad. */
@@ -511,15 +419,10 @@ export interface GatewaySipAccess {
   sipAccessCode?: string;
 }
 
-export const GatewaySipAccess: Schema.Schema<GatewaySipAccess> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-      sipAccessCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GatewaySipAccess",
-  }) as any as Schema.Schema<GatewaySipAccess>;
+export const GatewaySipAccess = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  uri: Schema.optional(Schema.String),
+  sipAccessCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "GatewaySipAccess" });
 
 export interface Space {
   /** Immutable. Resource name of the space. Format: `spaces/{space}`. `{space}` is the resource identifier for the space. It's a unique, server-generated ID and is case sensitive. For example, `jQCFfuBOdN5z`. For more information, see [How Meet identifies a meeting space](https://developers.google.com/workspace/meet/api/guides/meeting-spaces#identify-meeting-space). */
@@ -538,18 +441,15 @@ export interface Space {
   gatewaySipAccess?: Array<GatewaySipAccess>;
 }
 
-export const Space: Schema.Schema<Space> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      meetingUri: Schema.optional(Schema.String),
-      phoneAccess: Schema.optional(Schema.Array(PhoneAccess)),
-      config: Schema.optional(SpaceConfig),
-      meetingCode: Schema.optional(Schema.String),
-      activeConference: Schema.optional(ActiveConference),
-      gatewaySipAccess: Schema.optional(Schema.Array(GatewaySipAccess)),
-    }),
-  ).annotate({ identifier: "Space" }) as any as Schema.Schema<Space>;
+export const Space = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  meetingUri: Schema.optional(Schema.String),
+  phoneAccess: Schema.optional(Schema.Array(PhoneAccess)),
+  config: Schema.optional(SpaceConfig),
+  meetingCode: Schema.optional(Schema.String),
+  activeConference: Schema.optional(ActiveConference),
+  gatewaySipAccess: Schema.optional(Schema.Array(GatewaySipAccess)),
+}).annotate({ identifier: "Space" });
 
 export interface ConferenceRecord {
   /** Output only. Timestamp when the conference started. Always set. */
@@ -564,18 +464,13 @@ export interface ConferenceRecord {
   expireTime?: string;
 }
 
-export const ConferenceRecord: Schema.Schema<ConferenceRecord> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Schema.String),
-      space: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      expireTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConferenceRecord",
-  }) as any as Schema.Schema<ConferenceRecord>;
+export const ConferenceRecord = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startTime: Schema.optional(Schema.String),
+  space: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  expireTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "ConferenceRecord" });
 
 export interface ParticipantSession {
   /** Output only. Timestamp when the user session ends. Unset if the user session hasn’t ended. */
@@ -586,16 +481,11 @@ export interface ParticipantSession {
   name?: string;
 }
 
-export const ParticipantSession: Schema.Schema<ParticipantSession> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endTime: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ParticipantSession",
-  }) as any as Schema.Schema<ParticipantSession>;
+export const ParticipantSession = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  endTime: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "ParticipantSession" });
 
 export interface ListParticipantSessionsResponse {
   /** Token to be circulated back for further List call if current List doesn't include all the participants. Unset if all participants are returned. */
@@ -604,15 +494,11 @@ export interface ListParticipantSessionsResponse {
   participantSessions?: Array<ParticipantSession>;
 }
 
-export const ListParticipantSessionsResponse: Schema.Schema<ListParticipantSessionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      participantSessions: Schema.optional(Schema.Array(ParticipantSession)),
-    }),
-  ).annotate({
-    identifier: "ListParticipantSessionsResponse",
-  }) as any as Schema.Schema<ListParticipantSessionsResponse>;
+export const ListParticipantSessionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    participantSessions: Schema.optional(Schema.Array(ParticipantSession)),
+  }).annotate({ identifier: "ListParticipantSessionsResponse" });
 
 export interface ListTranscriptEntriesResponse {
   /** Token to be circulated back for further List call if current List doesn't include all the transcript entries. Unset if all entries are returned. */
@@ -621,15 +507,11 @@ export interface ListTranscriptEntriesResponse {
   transcriptEntries?: Array<TranscriptEntry>;
 }
 
-export const ListTranscriptEntriesResponse: Schema.Schema<ListTranscriptEntriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      transcriptEntries: Schema.optional(Schema.Array(TranscriptEntry)),
-    }),
-  ).annotate({
-    identifier: "ListTranscriptEntriesResponse",
-  }) as any as Schema.Schema<ListTranscriptEntriesResponse>;
+export const ListTranscriptEntriesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    transcriptEntries: Schema.optional(Schema.Array(TranscriptEntry)),
+  }).annotate({ identifier: "ListTranscriptEntriesResponse" });
 
 export interface ListConferenceRecordsResponse {
   /** Token to be circulated back for further List call if current List does NOT include all the Conferences. Unset if all conferences have been returned. */
@@ -638,15 +520,11 @@ export interface ListConferenceRecordsResponse {
   conferenceRecords?: Array<ConferenceRecord>;
 }
 
-export const ListConferenceRecordsResponse: Schema.Schema<ListConferenceRecordsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      conferenceRecords: Schema.optional(Schema.Array(ConferenceRecord)),
-    }),
-  ).annotate({
-    identifier: "ListConferenceRecordsResponse",
-  }) as any as Schema.Schema<ListConferenceRecordsResponse>;
+export const ListConferenceRecordsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    conferenceRecords: Schema.optional(Schema.Array(ConferenceRecord)),
+  }).annotate({ identifier: "ListConferenceRecordsResponse" });
 
 export interface ListSmartNotesResponse {
   /** Token to be circulated back for further List call if current List doesn't include all the smart notes. Unset if all smart notes are returned. */
@@ -655,15 +533,12 @@ export interface ListSmartNotesResponse {
   smartNotes?: Array<SmartNote>;
 }
 
-export const ListSmartNotesResponse: Schema.Schema<ListSmartNotesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      smartNotes: Schema.optional(Schema.Array(SmartNote)),
-    }),
-  ).annotate({
-    identifier: "ListSmartNotesResponse",
-  }) as any as Schema.Schema<ListSmartNotesResponse>;
+export const ListSmartNotesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    nextPageToken: Schema.optional(Schema.String),
+    smartNotes: Schema.optional(Schema.Array(SmartNote)),
+  },
+).annotate({ identifier: "ListSmartNotesResponse" });
 
 // ==========================================================================
 // Operations

@@ -31,16 +31,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -55,16 +52,13 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      error: Schema.optional(Status),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  done: Schema.optional(Schema.Boolean),
+  error: Schema.optional(Status),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Operation" });
 
 export interface DnsRecord {
   /** Output only. The domain name the record pertains to, e.g. `foo.bar.com.`. */
@@ -84,15 +78,12 @@ export interface DnsRecord {
   requiredAction?: "NONE" | "ADD" | "REMOVE" | (string & {});
 }
 
-export const DnsRecord: Schema.Schema<DnsRecord> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      domainName: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      rdata: Schema.optional(Schema.String),
-      requiredAction: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "DnsRecord" }) as any as Schema.Schema<DnsRecord>;
+export const DnsRecord = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  domainName: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  rdata: Schema.optional(Schema.String),
+  requiredAction: Schema.optional(Schema.String),
+}).annotate({ identifier: "DnsRecord" });
 
 export interface DnsRecordSet {
   /** Output only. The domain name the record set pertains to. */
@@ -103,16 +94,11 @@ export interface DnsRecordSet {
   records?: Array<DnsRecord>;
 }
 
-export const DnsRecordSet: Schema.Schema<DnsRecordSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      domainName: Schema.optional(Schema.String),
-      checkError: Schema.optional(Status),
-      records: Schema.optional(Schema.Array(DnsRecord)),
-    }),
-  ).annotate({
-    identifier: "DnsRecordSet",
-  }) as any as Schema.Schema<DnsRecordSet>;
+export const DnsRecordSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  domainName: Schema.optional(Schema.String),
+  checkError: Schema.optional(Status),
+  records: Schema.optional(Schema.Array(DnsRecord)),
+}).annotate({ identifier: "DnsRecordSet" });
 
 export interface DnsUpdates {
   /** The set of DNS records Hosting discovered when inspecting a domain. */
@@ -123,14 +109,11 @@ export interface DnsUpdates {
   checkTime?: string;
 }
 
-export const DnsUpdates: Schema.Schema<DnsUpdates> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      discovered: Schema.optional(Schema.Array(DnsRecordSet)),
-      desired: Schema.optional(Schema.Array(DnsRecordSet)),
-      checkTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "DnsUpdates" }) as any as Schema.Schema<DnsUpdates>;
+export const DnsUpdates = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  discovered: Schema.optional(Schema.Array(DnsRecordSet)),
+  desired: Schema.optional(Schema.Array(DnsRecordSet)),
+  checkTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "DnsUpdates" });
 
 export interface HttpUpdate {
   /** Output only. The path to the file. */
@@ -145,16 +128,13 @@ export interface HttpUpdate {
   checkError?: Status;
 }
 
-export const HttpUpdate: Schema.Schema<HttpUpdate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      path: Schema.optional(Schema.String),
-      desired: Schema.optional(Schema.String),
-      discovered: Schema.optional(Schema.String),
-      lastCheckTime: Schema.optional(Schema.String),
-      checkError: Schema.optional(Status),
-    }),
-  ).annotate({ identifier: "HttpUpdate" }) as any as Schema.Schema<HttpUpdate>;
+export const HttpUpdate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  path: Schema.optional(Schema.String),
+  desired: Schema.optional(Schema.String),
+  discovered: Schema.optional(Schema.String),
+  lastCheckTime: Schema.optional(Schema.String),
+  checkError: Schema.optional(Status),
+}).annotate({ identifier: "HttpUpdate" });
 
 export interface CertVerification {
   /** Output only. A `TXT` record to add to your DNS records that confirms your intent to let Hosting create an SSL cert for your domain name. */
@@ -163,15 +143,10 @@ export interface CertVerification {
   http?: HttpUpdate;
 }
 
-export const CertVerification: Schema.Schema<CertVerification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dns: Schema.optional(DnsUpdates),
-      http: Schema.optional(HttpUpdate),
-    }),
-  ).annotate({
-    identifier: "CertVerification",
-  }) as any as Schema.Schema<CertVerification>;
+export const CertVerification = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dns: Schema.optional(DnsUpdates),
+  http: Schema.optional(HttpUpdate),
+}).annotate({ identifier: "CertVerification" });
 
 export interface Certificate {
   /** Output only. The certificate's type. */
@@ -202,19 +177,14 @@ export interface Certificate {
   expireTime?: string;
 }
 
-export const Certificate: Schema.Schema<Certificate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      verification: Schema.optional(CertVerification),
-      issues: Schema.optional(Schema.Array(Status)),
-      createTime: Schema.optional(Schema.String),
-      expireTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Certificate",
-  }) as any as Schema.Schema<Certificate>;
+export const Certificate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  verification: Schema.optional(CertVerification),
+  issues: Schema.optional(Schema.Array(Status)),
+  createTime: Schema.optional(Schema.String),
+  expireTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Certificate" });
 
 export interface CustomDomain {
   /** Output only. The fully-qualified name of the `CustomDomain`. */
@@ -272,29 +242,24 @@ export interface CustomDomain {
   labels?: Record<string, string>;
 }
 
-export const CustomDomain: Schema.Schema<CustomDomain> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      deleteTime: Schema.optional(Schema.String),
-      expireTime: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      hostState: Schema.optional(Schema.String),
-      ownershipState: Schema.optional(Schema.String),
-      requiredDnsUpdates: Schema.optional(DnsUpdates),
-      issues: Schema.optional(Schema.Array(Status)),
-      certPreference: Schema.optional(Schema.String),
-      cert: Schema.optional(Certificate),
-      redirectTarget: Schema.optional(Schema.String),
-      reconciling: Schema.optional(Schema.Boolean),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "CustomDomain",
-  }) as any as Schema.Schema<CustomDomain>;
+export const CustomDomain = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  deleteTime: Schema.optional(Schema.String),
+  expireTime: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  hostState: Schema.optional(Schema.String),
+  ownershipState: Schema.optional(Schema.String),
+  requiredDnsUpdates: Schema.optional(DnsUpdates),
+  issues: Schema.optional(Schema.Array(Status)),
+  certPreference: Schema.optional(Schema.String),
+  cert: Schema.optional(Certificate),
+  redirectTarget: Schema.optional(Schema.String),
+  reconciling: Schema.optional(Schema.Boolean),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "CustomDomain" });
 
 export interface ListCustomDomainsResponse {
   /** A list of `CustomDomain` entities associated with the specified Firebase `Site`. */
@@ -303,15 +268,11 @@ export interface ListCustomDomainsResponse {
   nextPageToken?: string;
 }
 
-export const ListCustomDomainsResponse: Schema.Schema<ListCustomDomainsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customDomains: Schema.optional(Schema.Array(CustomDomain)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListCustomDomainsResponse",
-  }) as any as Schema.Schema<ListCustomDomainsResponse>;
+export const ListCustomDomainsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customDomains: Schema.optional(Schema.Array(CustomDomain)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListCustomDomainsResponse" });
 
 export interface UndeleteCustomDomainRequest {
   /** If true, Hosting validates that it's possible to complete your request but doesn't actually delete the `CustomDomain`. */
@@ -320,15 +281,11 @@ export interface UndeleteCustomDomainRequest {
   etag?: string;
 }
 
-export const UndeleteCustomDomainRequest: Schema.Schema<UndeleteCustomDomainRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      validateOnly: Schema.optional(Schema.Boolean),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UndeleteCustomDomainRequest",
-  }) as any as Schema.Schema<UndeleteCustomDomainRequest>;
+export const UndeleteCustomDomainRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    validateOnly: Schema.optional(Schema.Boolean),
+    etag: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UndeleteCustomDomainRequest" });
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -339,16 +296,13 @@ export interface ListOperationsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(Schema.Array(Operation)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    operations: Schema.optional(Schema.Array(Operation)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 export interface SiteConfig {
   /** The number of FINALIZED versions that will be held for a site before automatic deletion. When a new version is deployed, content for versions in storage in excess of this number will be deleted, and will no longer be billed for storage usage. Oldest versions will be deleted first; sites are created with an unlimited number of max_versions by default. */
@@ -357,13 +311,10 @@ export interface SiteConfig {
   cloudLoggingEnabled?: boolean;
 }
 
-export const SiteConfig: Schema.Schema<SiteConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      maxVersions: Schema.optional(Schema.String),
-      cloudLoggingEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "SiteConfig" }) as any as Schema.Schema<SiteConfig>;
+export const SiteConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  maxVersions: Schema.optional(Schema.String),
+  cloudLoggingEnabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "SiteConfig" });
 
 export interface DomainRedirect {
   /** Required. The domain name to redirect to. */
@@ -372,15 +323,10 @@ export interface DomainRedirect {
   type?: "REDIRECT_TYPE_UNSPECIFIED" | "MOVED_PERMANENTLY" | (string & {});
 }
 
-export const DomainRedirect: Schema.Schema<DomainRedirect> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      domainName: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DomainRedirect",
-  }) as any as Schema.Schema<DomainRedirect>;
+export const DomainRedirect = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  domainName: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "DomainRedirect" });
 
 export interface CertDnsChallenge {
   /** The domain name upon which the DNS challenge must be satisfied. */
@@ -389,15 +335,10 @@ export interface CertDnsChallenge {
   token?: string;
 }
 
-export const CertDnsChallenge: Schema.Schema<CertDnsChallenge> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      domainName: Schema.optional(Schema.String),
-      token: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CertDnsChallenge",
-  }) as any as Schema.Schema<CertDnsChallenge>;
+export const CertDnsChallenge = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  domainName: Schema.optional(Schema.String),
+  token: Schema.optional(Schema.String),
+}).annotate({ identifier: "CertDnsChallenge" });
 
 export interface CertHttpChallenge {
   /** The URL path on which to serve the specified token to satisfy the certificate challenge. */
@@ -406,15 +347,10 @@ export interface CertHttpChallenge {
   token?: string;
 }
 
-export const CertHttpChallenge: Schema.Schema<CertHttpChallenge> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      path: Schema.optional(Schema.String),
-      token: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CertHttpChallenge",
-  }) as any as Schema.Schema<CertHttpChallenge>;
+export const CertHttpChallenge = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  path: Schema.optional(Schema.String),
+  token: Schema.optional(Schema.String),
+}).annotate({ identifier: "CertHttpChallenge" });
 
 export interface DomainProvisioning {
   /** The certificate provisioning status; updated when Firebase Hosting provisions an SSL certificate for the domain. */
@@ -450,21 +386,16 @@ export interface DomainProvisioning {
   dnsFetchTime?: string;
 }
 
-export const DomainProvisioning: Schema.Schema<DomainProvisioning> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      certStatus: Schema.optional(Schema.String),
-      certChallengeDns: Schema.optional(CertDnsChallenge),
-      certChallengeHttp: Schema.optional(CertHttpChallenge),
-      certChallengeDiscoveredTxt: Schema.optional(Schema.Array(Schema.String)),
-      dnsStatus: Schema.optional(Schema.String),
-      expectedIps: Schema.optional(Schema.Array(Schema.String)),
-      discoveredIps: Schema.optional(Schema.Array(Schema.String)),
-      dnsFetchTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DomainProvisioning",
-  }) as any as Schema.Schema<DomainProvisioning>;
+export const DomainProvisioning = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  certStatus: Schema.optional(Schema.String),
+  certChallengeDns: Schema.optional(CertDnsChallenge),
+  certChallengeHttp: Schema.optional(CertHttpChallenge),
+  certChallengeDiscoveredTxt: Schema.optional(Schema.Array(Schema.String)),
+  dnsStatus: Schema.optional(Schema.String),
+  expectedIps: Schema.optional(Schema.Array(Schema.String)),
+  discoveredIps: Schema.optional(Schema.Array(Schema.String)),
+  dnsFetchTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "DomainProvisioning" });
 
 export interface Domain {
   /** Required. The site name of the association. */
@@ -487,17 +418,14 @@ export interface Domain {
     | (string & {});
 }
 
-export const Domain: Schema.Schema<Domain> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      site: Schema.optional(Schema.String),
-      domainName: Schema.optional(Schema.String),
-      domainRedirect: Schema.optional(DomainRedirect),
-      updateTime: Schema.optional(Schema.String),
-      provisioning: Schema.optional(DomainProvisioning),
-      status: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Domain" }) as any as Schema.Schema<Domain>;
+export const Domain = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  site: Schema.optional(Schema.String),
+  domainName: Schema.optional(Schema.String),
+  domainRedirect: Schema.optional(DomainRedirect),
+  updateTime: Schema.optional(Schema.String),
+  provisioning: Schema.optional(DomainProvisioning),
+  status: Schema.optional(Schema.String),
+}).annotate({ identifier: "Domain" });
 
 export interface ListDomainsResponse {
   /** The list of domains, if any exist. */
@@ -506,22 +434,16 @@ export interface ListDomainsResponse {
   nextPageToken?: string;
 }
 
-export const ListDomainsResponse: Schema.Schema<ListDomainsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      domains: Schema.optional(Schema.Array(Domain)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListDomainsResponse",
-  }) as any as Schema.Schema<ListDomainsResponse>;
+export const ListDomainsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  domains: Schema.optional(Schema.Array(Domain)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListDomainsResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface Header {
   /** The user-supplied [glob](https://firebase.google.com/docs/hosting/full-config#glob_pattern_matching) to match against the request URL path. */
@@ -532,14 +454,11 @@ export interface Header {
   headers?: Record<string, string>;
 }
 
-export const Header: Schema.Schema<Header> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      glob: Schema.optional(Schema.String),
-      regex: Schema.optional(Schema.String),
-      headers: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({ identifier: "Header" }) as any as Schema.Schema<Header>;
+export const Header = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  glob: Schema.optional(Schema.String),
+  regex: Schema.optional(Schema.String),
+  headers: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "Header" });
 
 export interface Redirect {
   /** The user-supplied [glob](https://firebase.google.com/docs/hosting/full-config#glob_pattern_matching) to match against the request URL path. */
@@ -552,15 +471,12 @@ export interface Redirect {
   location?: string;
 }
 
-export const Redirect: Schema.Schema<Redirect> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      glob: Schema.optional(Schema.String),
-      regex: Schema.optional(Schema.String),
-      statusCode: Schema.optional(Schema.Number),
-      location: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Redirect" }) as any as Schema.Schema<Redirect>;
+export const Redirect = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  glob: Schema.optional(Schema.String),
+  regex: Schema.optional(Schema.String),
+  statusCode: Schema.optional(Schema.Number),
+  location: Schema.optional(Schema.String),
+}).annotate({ identifier: "Redirect" });
 
 export interface CloudRunRewrite {
   /** Required. User-defined ID of the Cloud Run service. */
@@ -571,16 +487,11 @@ export interface CloudRunRewrite {
   tag?: string;
 }
 
-export const CloudRunRewrite: Schema.Schema<CloudRunRewrite> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serviceId: Schema.optional(Schema.String),
-      region: Schema.optional(Schema.String),
-      tag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CloudRunRewrite",
-  }) as any as Schema.Schema<CloudRunRewrite>;
+export const CloudRunRewrite = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  serviceId: Schema.optional(Schema.String),
+  region: Schema.optional(Schema.String),
+  tag: Schema.optional(Schema.String),
+}).annotate({ identifier: "CloudRunRewrite" });
 
 export interface Rewrite {
   /** The user-supplied [glob](https://firebase.google.com/docs/hosting/full-config#glob_pattern_matching) to match against the request URL path. */
@@ -599,30 +510,24 @@ export interface Rewrite {
   functionRegion?: string;
 }
 
-export const Rewrite: Schema.Schema<Rewrite> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      glob: Schema.optional(Schema.String),
-      regex: Schema.optional(Schema.String),
-      path: Schema.optional(Schema.String),
-      function: Schema.optional(Schema.String),
-      dynamicLinks: Schema.optional(Schema.Boolean),
-      run: Schema.optional(CloudRunRewrite),
-      functionRegion: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Rewrite" }) as any as Schema.Schema<Rewrite>;
+export const Rewrite = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  glob: Schema.optional(Schema.String),
+  regex: Schema.optional(Schema.String),
+  path: Schema.optional(Schema.String),
+  function: Schema.optional(Schema.String),
+  dynamicLinks: Schema.optional(Schema.Boolean),
+  run: Schema.optional(CloudRunRewrite),
+  functionRegion: Schema.optional(Schema.String),
+}).annotate({ identifier: "Rewrite" });
 
 export interface I18nConfig {
   /** Required. The user-supplied path where country and language specific content will be looked for within the public directory. */
   root?: string;
 }
 
-export const I18nConfig: Schema.Schema<I18nConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      root: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "I18nConfig" }) as any as Schema.Schema<I18nConfig>;
+export const I18nConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  root: Schema.optional(Schema.String),
+}).annotate({ identifier: "I18nConfig" });
 
 export interface ServingConfig {
   /** An array of objects, where each object specifies a URL pattern that, if matched to the request URL path, triggers Hosting to apply the specified custom response headers. */
@@ -645,20 +550,15 @@ export interface ServingConfig {
   i18n?: I18nConfig;
 }
 
-export const ServingConfig: Schema.Schema<ServingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      headers: Schema.optional(Schema.Array(Header)),
-      redirects: Schema.optional(Schema.Array(Redirect)),
-      rewrites: Schema.optional(Schema.Array(Rewrite)),
-      cleanUrls: Schema.optional(Schema.Boolean),
-      trailingSlashBehavior: Schema.optional(Schema.String),
-      appAssociation: Schema.optional(Schema.String),
-      i18n: Schema.optional(I18nConfig),
-    }),
-  ).annotate({
-    identifier: "ServingConfig",
-  }) as any as Schema.Schema<ServingConfig>;
+export const ServingConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  headers: Schema.optional(Schema.Array(Header)),
+  redirects: Schema.optional(Schema.Array(Redirect)),
+  rewrites: Schema.optional(Schema.Array(Rewrite)),
+  cleanUrls: Schema.optional(Schema.Boolean),
+  trailingSlashBehavior: Schema.optional(Schema.String),
+  appAssociation: Schema.optional(Schema.String),
+  i18n: Schema.optional(I18nConfig),
+}).annotate({ identifier: "ServingConfig" });
 
 export interface ActingUser {
   /** The email address of the user when the user performed the action. */
@@ -667,13 +567,10 @@ export interface ActingUser {
   imageUrl?: string;
 }
 
-export const ActingUser: Schema.Schema<ActingUser> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      email: Schema.optional(Schema.String),
-      imageUrl: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "ActingUser" }) as any as Schema.Schema<ActingUser>;
+export const ActingUser = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  email: Schema.optional(Schema.String),
+  imageUrl: Schema.optional(Schema.String),
+}).annotate({ identifier: "ActingUser" });
 
 export interface Version {
   /** The fully-qualified resource name for the version, in the format: sites/ SITE_ID/versions/VERSION_ID This name is provided in the response body when you call [`CreateVersion`](sites.versions/create). */
@@ -710,23 +607,20 @@ export interface Version {
   versionBytes?: string;
 }
 
-export const Version: Schema.Schema<Version> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-      config: Schema.optional(ServingConfig),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      createTime: Schema.optional(Schema.String),
-      createUser: Schema.optional(ActingUser),
-      finalizeTime: Schema.optional(Schema.String),
-      finalizeUser: Schema.optional(ActingUser),
-      deleteTime: Schema.optional(Schema.String),
-      deleteUser: Schema.optional(ActingUser),
-      fileCount: Schema.optional(Schema.String),
-      versionBytes: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Version" }) as any as Schema.Schema<Version>;
+export const Version = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.String),
+  config: Schema.optional(ServingConfig),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  createTime: Schema.optional(Schema.String),
+  createUser: Schema.optional(ActingUser),
+  finalizeTime: Schema.optional(Schema.String),
+  finalizeUser: Schema.optional(ActingUser),
+  deleteTime: Schema.optional(Schema.String),
+  deleteUser: Schema.optional(ActingUser),
+  fileCount: Schema.optional(Schema.String),
+  versionBytes: Schema.optional(Schema.String),
+}).annotate({ identifier: "Version" });
 
 export interface VersionFile {
   /** The URI at which the file's content should display. */
@@ -737,16 +631,11 @@ export interface VersionFile {
   status?: "STATUS_UNSPECIFIED" | "EXPECTED" | "ACTIVE" | (string & {});
 }
 
-export const VersionFile: Schema.Schema<VersionFile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      path: Schema.optional(Schema.String),
-      hash: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VersionFile",
-  }) as any as Schema.Schema<VersionFile>;
+export const VersionFile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  path: Schema.optional(Schema.String),
+  hash: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.String),
+}).annotate({ identifier: "VersionFile" });
 
 export interface ListVersionFilesResponse {
   /** The list of paths to the hashes of the files in the specified version. */
@@ -755,29 +644,21 @@ export interface ListVersionFilesResponse {
   nextPageToken?: string;
 }
 
-export const ListVersionFilesResponse: Schema.Schema<ListVersionFilesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      files: Schema.optional(Schema.Array(VersionFile)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListVersionFilesResponse",
-  }) as any as Schema.Schema<ListVersionFilesResponse>;
+export const ListVersionFilesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    files: Schema.optional(Schema.Array(VersionFile)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListVersionFilesResponse" });
 
 export interface PopulateVersionFilesRequest {
   /** A set of file paths to the hashes corresponding to assets that should be added to the version. A file path to an empty hash will remove the path from the version. Calculate a hash by Gzipping the file then taking the SHA256 hash of the newly compressed file. */
   files?: Record<string, string>;
 }
 
-export const PopulateVersionFilesRequest: Schema.Schema<PopulateVersionFilesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      files: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "PopulateVersionFilesRequest",
-  }) as any as Schema.Schema<PopulateVersionFilesRequest>;
+export const PopulateVersionFilesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    files: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({ identifier: "PopulateVersionFilesRequest" });
 
 export interface PopulateVersionFilesResponse {
   /** The content hashes of the specified files that need to be uploaded to the specified URL. */
@@ -786,15 +667,11 @@ export interface PopulateVersionFilesResponse {
   uploadUrl?: string;
 }
 
-export const PopulateVersionFilesResponse: Schema.Schema<PopulateVersionFilesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uploadRequiredHashes: Schema.optional(Schema.Array(Schema.String)),
-      uploadUrl: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PopulateVersionFilesResponse",
-  }) as any as Schema.Schema<PopulateVersionFilesResponse>;
+export const PopulateVersionFilesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uploadRequiredHashes: Schema.optional(Schema.Array(Schema.String)),
+    uploadUrl: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PopulateVersionFilesResponse" });
 
 export interface Release {
   /** Output only. The unique identifier for the release, in either of the following formats: - sites/SITE_ID/releases/RELEASE_ID - sites/SITE_ID/channels/CHANNEL_ID/releases/RELEASE_ID This name is provided in the response body when you call [`releases.create`](sites.releases/create) or [`channels.releases.create`](sites.channels.releases/create). */
@@ -816,17 +693,14 @@ export interface Release {
   message?: string;
 }
 
-export const Release: Schema.Schema<Release> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      version: Schema.optional(Version),
-      type: Schema.optional(Schema.String),
-      releaseTime: Schema.optional(Schema.String),
-      releaseUser: Schema.optional(ActingUser),
-      message: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Release" }) as any as Schema.Schema<Release>;
+export const Release = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  version: Schema.optional(Version),
+  type: Schema.optional(Schema.String),
+  releaseTime: Schema.optional(Schema.String),
+  releaseUser: Schema.optional(ActingUser),
+  message: Schema.optional(Schema.String),
+}).annotate({ identifier: "Release" });
 
 export interface ListReleasesResponse {
   /** The list of hashes of files that still need to be uploaded, if any exist. */
@@ -835,15 +709,10 @@ export interface ListReleasesResponse {
   nextPageToken?: string;
 }
 
-export const ListReleasesResponse: Schema.Schema<ListReleasesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      releases: Schema.optional(Schema.Array(Release)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListReleasesResponse",
-  }) as any as Schema.Schema<ListReleasesResponse>;
+export const ListReleasesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  releases: Schema.optional(Schema.Array(Release)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListReleasesResponse" });
 
 export interface ListVersionsResponse {
   /** The list of versions, if any exist. */
@@ -852,27 +721,19 @@ export interface ListVersionsResponse {
   nextPageToken?: string;
 }
 
-export const ListVersionsResponse: Schema.Schema<ListVersionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      versions: Schema.optional(Schema.Array(Version)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListVersionsResponse",
-  }) as any as Schema.Schema<ListVersionsResponse>;
+export const ListVersionsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  versions: Schema.optional(Schema.Array(Version)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListVersionsResponse" });
 
 export interface PathFilter {
   /** An array of RegEx values by which to filter. */
   regexes?: Array<string>;
 }
 
-export const PathFilter: Schema.Schema<PathFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      regexes: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "PathFilter" }) as any as Schema.Schema<PathFilter>;
+export const PathFilter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  regexes: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "PathFilter" });
 
 export interface CloneVersionRequest {
   /** Required. The unique identifier for the version to be cloned, in the format: sites/SITE_ID/versions/VERSION_ID */
@@ -885,17 +746,12 @@ export interface CloneVersionRequest {
   exclude?: PathFilter;
 }
 
-export const CloneVersionRequest: Schema.Schema<CloneVersionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sourceVersion: Schema.optional(Schema.String),
-      finalize: Schema.optional(Schema.Boolean),
-      include: Schema.optional(PathFilter),
-      exclude: Schema.optional(PathFilter),
-    }),
-  ).annotate({
-    identifier: "CloneVersionRequest",
-  }) as any as Schema.Schema<CloneVersionRequest>;
+export const CloneVersionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sourceVersion: Schema.optional(Schema.String),
+  finalize: Schema.optional(Schema.Boolean),
+  include: Schema.optional(PathFilter),
+  exclude: Schema.optional(PathFilter),
+}).annotate({ identifier: "CloneVersionRequest" });
 
 export interface Channel {
   /** The fully-qualified resource name for the channel, in the format: sites/ SITE_ID/channels/CHANNEL_ID */
@@ -918,20 +774,17 @@ export interface Channel {
   labels?: Record<string, string>;
 }
 
-export const Channel: Schema.Schema<Channel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      url: Schema.optional(Schema.String),
-      release: Schema.optional(Release),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      expireTime: Schema.optional(Schema.String),
-      ttl: Schema.optional(Schema.String),
-      retainedReleaseCount: Schema.optional(Schema.Number),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({ identifier: "Channel" }) as any as Schema.Schema<Channel>;
+export const Channel = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  url: Schema.optional(Schema.String),
+  release: Schema.optional(Release),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  expireTime: Schema.optional(Schema.String),
+  ttl: Schema.optional(Schema.String),
+  retainedReleaseCount: Schema.optional(Schema.Number),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "Channel" });
 
 export interface ListChannelsResponse {
   /** The list of channels. */
@@ -940,15 +793,10 @@ export interface ListChannelsResponse {
   nextPageToken?: string;
 }
 
-export const ListChannelsResponse: Schema.Schema<ListChannelsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      channels: Schema.optional(Schema.Array(Channel)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListChannelsResponse",
-  }) as any as Schema.Schema<ListChannelsResponse>;
+export const ListChannelsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  channels: Schema.optional(Schema.Array(Channel)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListChannelsResponse" });
 
 export interface Site {
   /** Output only. The fully-qualified resource name of the Hosting site, in the format: projects/PROJECT_IDENTIFIER/sites/SITE_ID PROJECT_IDENTIFIER: the Firebase project's [`ProjectNumber`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). */
@@ -963,16 +811,13 @@ export interface Site {
   type?: "TYPE_UNSPECIFIED" | "DEFAULT_SITE" | "USER_SITE" | (string & {});
 }
 
-export const Site: Schema.Schema<Site> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      defaultUrl: Schema.optional(Schema.String),
-      appId: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Site" }) as any as Schema.Schema<Site>;
+export const Site = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  defaultUrl: Schema.optional(Schema.String),
+  appId: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "Site" });
 
 export interface ListSitesResponse {
   /** A list of Site objects associated with the specified Firebase project. */
@@ -981,15 +826,10 @@ export interface ListSitesResponse {
   nextPageToken?: string;
 }
 
-export const ListSitesResponse: Schema.Schema<ListSitesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sites: Schema.optional(Schema.Array(Site)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListSitesResponse",
-  }) as any as Schema.Schema<ListSitesResponse>;
+export const ListSitesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sites: Schema.optional(Schema.Array(Site)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListSitesResponse" });
 
 export interface LiveMigrationStep {
   /** Output only. The state of the live migration step, indicates whether you should work to complete the step now, in the future, or have already completed it. */
@@ -1009,17 +849,12 @@ export interface LiveMigrationStep {
   issues?: Array<Status>;
 }
 
-export const LiveMigrationStep: Schema.Schema<LiveMigrationStep> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      certVerification: Schema.optional(CertVerification),
-      dnsUpdates: Schema.optional(DnsUpdates),
-      issues: Schema.optional(Schema.Array(Status)),
-    }),
-  ).annotate({
-    identifier: "LiveMigrationStep",
-  }) as any as Schema.Schema<LiveMigrationStep>;
+export const LiveMigrationStep = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.String),
+  certVerification: Schema.optional(CertVerification),
+  dnsUpdates: Schema.optional(DnsUpdates),
+  issues: Schema.optional(Schema.Array(Status)),
+}).annotate({ identifier: "LiveMigrationStep" });
 
 export interface CustomDomainMetadata {
   /** The `HostState` of the domain name this `CustomDomain` refers to. */
@@ -1059,19 +894,14 @@ export interface CustomDomainMetadata {
   issues?: Array<Status>;
 }
 
-export const CustomDomainMetadata: Schema.Schema<CustomDomainMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hostState: Schema.optional(Schema.String),
-      ownershipState: Schema.optional(Schema.String),
-      certState: Schema.optional(Schema.String),
-      liveMigrationSteps: Schema.optional(Schema.Array(LiveMigrationStep)),
-      quickSetupUpdates: Schema.optional(DnsUpdates),
-      issues: Schema.optional(Schema.Array(Status)),
-    }),
-  ).annotate({
-    identifier: "CustomDomainMetadata",
-  }) as any as Schema.Schema<CustomDomainMetadata>;
+export const CustomDomainMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  hostState: Schema.optional(Schema.String),
+  ownershipState: Schema.optional(Schema.String),
+  certState: Schema.optional(Schema.String),
+  liveMigrationSteps: Schema.optional(Schema.Array(LiveMigrationStep)),
+  quickSetupUpdates: Schema.optional(DnsUpdates),
+  issues: Schema.optional(Schema.Array(Status)),
+}).annotate({ identifier: "CustomDomainMetadata" });
 
 // ==========================================================================
 // Operations

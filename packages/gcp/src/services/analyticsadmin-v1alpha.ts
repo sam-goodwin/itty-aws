@@ -39,20 +39,16 @@ export interface GoogleAnalyticsAdminV1alphaGoogleAdsLink {
   customerId?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaGoogleAdsLink: Schema.Schema<GoogleAnalyticsAdminV1alphaGoogleAdsLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      canManageClients: Schema.optional(Schema.Boolean),
-      updateTime: Schema.optional(Schema.String),
-      adsPersonalizationEnabled: Schema.optional(Schema.Boolean),
-      createTime: Schema.optional(Schema.String),
-      creatorEmailAddress: Schema.optional(Schema.String),
-      customerId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaGoogleAdsLink",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaGoogleAdsLink>;
+export const GoogleAnalyticsAdminV1alphaGoogleAdsLink =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    canManageClients: Schema.optional(Schema.Boolean),
+    updateTime: Schema.optional(Schema.String),
+    adsPersonalizationEnabled: Schema.optional(Schema.Boolean),
+    createTime: Schema.optional(Schema.String),
+    creatorEmailAddress: Schema.optional(Schema.String),
+    customerId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleAnalyticsAdminV1alphaGoogleAdsLink" });
 
 export interface GoogleAnalyticsAdminV1alphaConversionEventDefaultConversionValue {
   /** This value will be used to populate the value for all conversions of the specified event_name where the event "value" parameter is unset. */
@@ -61,16 +57,14 @@ export interface GoogleAnalyticsAdminV1alphaConversionEventDefaultConversionValu
   currencyCode?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaConversionEventDefaultConversionValue: Schema.Schema<GoogleAnalyticsAdminV1alphaConversionEventDefaultConversionValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.Number),
-      currencyCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaConversionEventDefaultConversionValue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(Schema.Number),
+    currencyCode: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleAnalyticsAdminV1alphaConversionEventDefaultConversionValue",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaConversionEventDefaultConversionValue>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaConversionEvent {
   /** Output only. Time when this conversion event was created in the property. */
@@ -93,22 +87,18 @@ export interface GoogleAnalyticsAdminV1alphaConversionEvent {
   custom?: boolean;
 }
 
-export const GoogleAnalyticsAdminV1alphaConversionEvent: Schema.Schema<GoogleAnalyticsAdminV1alphaConversionEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      deletable: Schema.optional(Schema.Boolean),
-      defaultConversionValue: Schema.optional(
-        GoogleAnalyticsAdminV1alphaConversionEventDefaultConversionValue,
-      ),
-      countingMethod: Schema.optional(Schema.String),
-      eventName: Schema.optional(Schema.String),
-      custom: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaConversionEvent",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaConversionEvent>;
+export const GoogleAnalyticsAdminV1alphaConversionEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    deletable: Schema.optional(Schema.Boolean),
+    defaultConversionValue: Schema.optional(
+      GoogleAnalyticsAdminV1alphaConversionEventDefaultConversionValue,
+    ),
+    countingMethod: Schema.optional(Schema.String),
+    eventName: Schema.optional(Schema.String),
+    custom: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleAnalyticsAdminV1alphaConversionEvent" });
 
 export interface GoogleAnalyticsAdminV1alphaListConversionEventsResponse {
   /** The requested conversion events */
@@ -117,17 +107,15 @@ export interface GoogleAnalyticsAdminV1alphaListConversionEventsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaListConversionEventsResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListConversionEventsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conversionEvents: Schema.optional(
-        Schema.Array(GoogleAnalyticsAdminV1alphaConversionEvent),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaListConversionEventsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conversionEvents: Schema.optional(
+      Schema.Array(GoogleAnalyticsAdminV1alphaConversionEvent),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaListConversionEventsResponse",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaListConversionEventsResponse>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaAccessBinding {
   /** If set, the email address of the user to set roles for. Format: "someuser@gmail.com" */
@@ -138,30 +126,24 @@ export interface GoogleAnalyticsAdminV1alphaAccessBinding {
   roles?: Array<string>;
 }
 
-export const GoogleAnalyticsAdminV1alphaAccessBinding: Schema.Schema<GoogleAnalyticsAdminV1alphaAccessBinding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      user: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      roles: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaAccessBinding",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaAccessBinding>;
+export const GoogleAnalyticsAdminV1alphaAccessBinding =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    user: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    roles: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleAnalyticsAdminV1alphaAccessBinding" });
 
 export interface GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequest {
   /** Required. The access binding to update. */
   accessBinding?: GoogleAnalyticsAdminV1alphaAccessBinding;
 }
 
-export const GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequest: Schema.Schema<GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accessBinding: Schema.optional(GoogleAnalyticsAdminV1alphaAccessBinding),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accessBinding: Schema.optional(GoogleAnalyticsAdminV1alphaAccessBinding),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequest",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequest>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaAccessInListFilter {
   /** If true, the string value is case sensitive. */
@@ -170,15 +152,11 @@ export interface GoogleAnalyticsAdminV1alphaAccessInListFilter {
   values?: Array<string>;
 }
 
-export const GoogleAnalyticsAdminV1alphaAccessInListFilter: Schema.Schema<GoogleAnalyticsAdminV1alphaAccessInListFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      caseSensitive: Schema.optional(Schema.Boolean),
-      values: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaAccessInListFilter",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaAccessInListFilter>;
+export const GoogleAnalyticsAdminV1alphaAccessInListFilter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    caseSensitive: Schema.optional(Schema.Boolean),
+    values: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleAnalyticsAdminV1alphaAccessInListFilter" });
 
 export interface GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpressionList {
   /** A list of ExpandedDataSet filter expressions. */
@@ -208,16 +186,14 @@ export interface GoogleAnalyticsAdminV1alphaExpandedDataSetFilterStringFilter {
   caseSensitive?: boolean;
 }
 
-export const GoogleAnalyticsAdminV1alphaExpandedDataSetFilterStringFilter: Schema.Schema<GoogleAnalyticsAdminV1alphaExpandedDataSetFilterStringFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      matchType: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-      caseSensitive: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaExpandedDataSetFilterStringFilter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    matchType: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
+    caseSensitive: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaExpandedDataSetFilterStringFilter",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaExpandedDataSetFilterStringFilter>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaExpandedDataSetFilterInListFilter {
   /** Optional. If true, the match is case-sensitive. If false, the match is case-insensitive. Must be true. */
@@ -226,15 +202,13 @@ export interface GoogleAnalyticsAdminV1alphaExpandedDataSetFilterInListFilter {
   values?: Array<string>;
 }
 
-export const GoogleAnalyticsAdminV1alphaExpandedDataSetFilterInListFilter: Schema.Schema<GoogleAnalyticsAdminV1alphaExpandedDataSetFilterInListFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      caseSensitive: Schema.optional(Schema.Boolean),
-      values: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaExpandedDataSetFilterInListFilter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    caseSensitive: Schema.optional(Schema.Boolean),
+    values: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaExpandedDataSetFilterInListFilter",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaExpandedDataSetFilterInListFilter>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaExpandedDataSetFilter {
   /** A filter for a string-type dimension that matches a particular pattern. */
@@ -245,20 +219,18 @@ export interface GoogleAnalyticsAdminV1alphaExpandedDataSetFilter {
   fieldName?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaExpandedDataSetFilter: Schema.Schema<GoogleAnalyticsAdminV1alphaExpandedDataSetFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stringFilter: Schema.optional(
-        GoogleAnalyticsAdminV1alphaExpandedDataSetFilterStringFilter,
-      ),
-      inListFilter: Schema.optional(
-        GoogleAnalyticsAdminV1alphaExpandedDataSetFilterInListFilter,
-      ),
-      fieldName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaExpandedDataSetFilter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    stringFilter: Schema.optional(
+      GoogleAnalyticsAdminV1alphaExpandedDataSetFilterStringFilter,
+    ),
+    inListFilter: Schema.optional(
+      GoogleAnalyticsAdminV1alphaExpandedDataSetFilterInListFilter,
+    ),
+    fieldName: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaExpandedDataSetFilter",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaExpandedDataSetFilter>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression {
   /** A list of expressions to be AND’ed together. It must contain a ExpandedDataSetFilterExpression with either not_expression or dimension_filter. This must be set for the top level ExpandedDataSetFilterExpression. */
@@ -309,17 +281,15 @@ export interface GoogleAnalyticsAdminV1alphaDataRetentionSettings {
   name?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaDataRetentionSettings: Schema.Schema<GoogleAnalyticsAdminV1alphaDataRetentionSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userDataRetention: Schema.optional(Schema.String),
-      resetUserDataOnNewActivity: Schema.optional(Schema.Boolean),
-      eventDataRetention: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaDataRetentionSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userDataRetention: Schema.optional(Schema.String),
+    resetUserDataOnNewActivity: Schema.optional(Schema.Boolean),
+    eventDataRetention: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaDataRetentionSettings",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaDataRetentionSettings>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaBigQueryLink {
   /** If set true, enables daily data export to the linked Google Cloud project. */
@@ -344,23 +314,19 @@ export interface GoogleAnalyticsAdminV1alphaBigQueryLink {
   excludedEvents?: Array<string>;
 }
 
-export const GoogleAnalyticsAdminV1alphaBigQueryLink: Schema.Schema<GoogleAnalyticsAdminV1alphaBigQueryLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dailyExportEnabled: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-      freshDailyExportEnabled: Schema.optional(Schema.Boolean),
-      datasetLocation: Schema.optional(Schema.String),
-      project: Schema.optional(Schema.String),
-      streamingExportEnabled: Schema.optional(Schema.Boolean),
-      exportStreams: Schema.optional(Schema.Array(Schema.String)),
-      createTime: Schema.optional(Schema.String),
-      includeAdvertisingId: Schema.optional(Schema.Boolean),
-      excludedEvents: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaBigQueryLink",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaBigQueryLink>;
+export const GoogleAnalyticsAdminV1alphaBigQueryLink =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dailyExportEnabled: Schema.optional(Schema.Boolean),
+    name: Schema.optional(Schema.String),
+    freshDailyExportEnabled: Schema.optional(Schema.Boolean),
+    datasetLocation: Schema.optional(Schema.String),
+    project: Schema.optional(Schema.String),
+    streamingExportEnabled: Schema.optional(Schema.Boolean),
+    exportStreams: Schema.optional(Schema.Array(Schema.String)),
+    createTime: Schema.optional(Schema.String),
+    includeAdvertisingId: Schema.optional(Schema.Boolean),
+    excludedEvents: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleAnalyticsAdminV1alphaBigQueryLink" });
 
 export interface GoogleAnalyticsAdminV1alphaEventMapping {
   /** The maximum number of times the event occurred. If not set, maximum event count won't be checked. */
@@ -375,18 +341,14 @@ export interface GoogleAnalyticsAdminV1alphaEventMapping {
   minEventValue?: number;
 }
 
-export const GoogleAnalyticsAdminV1alphaEventMapping: Schema.Schema<GoogleAnalyticsAdminV1alphaEventMapping> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      maxEventCount: Schema.optional(Schema.String),
-      minEventCount: Schema.optional(Schema.String),
-      maxEventValue: Schema.optional(Schema.Number),
-      eventName: Schema.optional(Schema.String),
-      minEventValue: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaEventMapping",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaEventMapping>;
+export const GoogleAnalyticsAdminV1alphaEventMapping =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    maxEventCount: Schema.optional(Schema.String),
+    minEventCount: Schema.optional(Schema.String),
+    maxEventValue: Schema.optional(Schema.Number),
+    eventName: Schema.optional(Schema.String),
+    minEventValue: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleAnalyticsAdminV1alphaEventMapping" });
 
 export interface GoogleAnalyticsAdminV1alphaConversionValues {
   /** Display name of the SKAdNetwork conversion value. The max allowed display name length is 50 UTF-16 code units. */
@@ -406,20 +368,16 @@ export interface GoogleAnalyticsAdminV1alphaConversionValues {
   fineValue?: number;
 }
 
-export const GoogleAnalyticsAdminV1alphaConversionValues: Schema.Schema<GoogleAnalyticsAdminV1alphaConversionValues> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      eventMappings: Schema.optional(
-        Schema.Array(GoogleAnalyticsAdminV1alphaEventMapping),
-      ),
-      lockEnabled: Schema.optional(Schema.Boolean),
-      coarseValue: Schema.optional(Schema.String),
-      fineValue: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaConversionValues",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaConversionValues>;
+export const GoogleAnalyticsAdminV1alphaConversionValues =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    eventMappings: Schema.optional(
+      Schema.Array(GoogleAnalyticsAdminV1alphaEventMapping),
+    ),
+    lockEnabled: Schema.optional(Schema.Boolean),
+    coarseValue: Schema.optional(Schema.String),
+    fineValue: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleAnalyticsAdminV1alphaConversionValues" });
 
 export interface GoogleAnalyticsAdminV1alphaPostbackWindow {
   /** If enable_postback_window_settings is true, conversion_values must be populated and will be used for determining when and how to set the Conversion Value on a client device and exporting schema to linked Ads accounts. If false, the settings are not used, but are retained in case they may be used in the future. This must always be true for postback_window_one. */
@@ -428,17 +386,13 @@ export interface GoogleAnalyticsAdminV1alphaPostbackWindow {
   conversionValues?: Array<GoogleAnalyticsAdminV1alphaConversionValues>;
 }
 
-export const GoogleAnalyticsAdminV1alphaPostbackWindow: Schema.Schema<GoogleAnalyticsAdminV1alphaPostbackWindow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      postbackWindowSettingsEnabled: Schema.optional(Schema.Boolean),
-      conversionValues: Schema.optional(
-        Schema.Array(GoogleAnalyticsAdminV1alphaConversionValues),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaPostbackWindow",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaPostbackWindow>;
+export const GoogleAnalyticsAdminV1alphaPostbackWindow =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    postbackWindowSettingsEnabled: Schema.optional(Schema.Boolean),
+    conversionValues: Schema.optional(
+      Schema.Array(GoogleAnalyticsAdminV1alphaConversionValues),
+    ),
+  }).annotate({ identifier: "GoogleAnalyticsAdminV1alphaPostbackWindow" });
 
 export interface GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema {
   /** The conversion value settings for the third postback window. This field should only be set if the user chose to define different conversion values for this postback window. It is allowed to configure window 3 without setting window 2. In case window 1 & 2 settings are set and enable_postback_window_settings for this postback window is set to false, the schema will inherit settings from postback_window_two. */
@@ -453,24 +407,22 @@ export interface GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema {
   applyConversionValues?: boolean;
 }
 
-export const GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema: Schema.Schema<GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      postbackWindowThree: Schema.optional(
-        GoogleAnalyticsAdminV1alphaPostbackWindow,
-      ),
-      postbackWindowTwo: Schema.optional(
-        GoogleAnalyticsAdminV1alphaPostbackWindow,
-      ),
-      name: Schema.optional(Schema.String),
-      postbackWindowOne: Schema.optional(
-        GoogleAnalyticsAdminV1alphaPostbackWindow,
-      ),
-      applyConversionValues: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    postbackWindowThree: Schema.optional(
+      GoogleAnalyticsAdminV1alphaPostbackWindow,
+    ),
+    postbackWindowTwo: Schema.optional(
+      GoogleAnalyticsAdminV1alphaPostbackWindow,
+    ),
+    name: Schema.optional(Schema.String),
+    postbackWindowOne: Schema.optional(
+      GoogleAnalyticsAdminV1alphaPostbackWindow,
+    ),
+    applyConversionValues: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaDataStreamWebStreamData {
   /** Output only. ID of the corresponding web app in Firebase, if any. This ID can change if the web app is deleted and recreated. */
@@ -481,16 +433,14 @@ export interface GoogleAnalyticsAdminV1alphaDataStreamWebStreamData {
   defaultUri?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaDataStreamWebStreamData: Schema.Schema<GoogleAnalyticsAdminV1alphaDataStreamWebStreamData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      firebaseAppId: Schema.optional(Schema.String),
-      measurementId: Schema.optional(Schema.String),
-      defaultUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaDataStreamWebStreamData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    firebaseAppId: Schema.optional(Schema.String),
+    measurementId: Schema.optional(Schema.String),
+    defaultUri: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaDataStreamWebStreamData",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaDataStreamWebStreamData>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaAccount {
   /** Country of business. Must be a Unicode CLDR region code. */
@@ -509,20 +459,16 @@ export interface GoogleAnalyticsAdminV1alphaAccount {
   updateTime?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaAccount: Schema.Schema<GoogleAnalyticsAdminV1alphaAccount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      regionCode: Schema.optional(Schema.String),
-      deleted: Schema.optional(Schema.Boolean),
-      displayName: Schema.optional(Schema.String),
-      gmpOrganization: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaAccount",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaAccount>;
+export const GoogleAnalyticsAdminV1alphaAccount =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    regionCode: Schema.optional(Schema.String),
+    deleted: Schema.optional(Schema.Boolean),
+    displayName: Schema.optional(Schema.String),
+    gmpOrganization: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleAnalyticsAdminV1alphaAccount" });
 
 export interface GoogleAnalyticsAdminV1alphaAccessFilterExpressionList {
   /** A list of filter expressions. */
@@ -547,15 +493,11 @@ export interface GoogleAnalyticsAdminV1alphaNumericValue {
   int64Value?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaNumericValue: Schema.Schema<GoogleAnalyticsAdminV1alphaNumericValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      doubleValue: Schema.optional(Schema.Number),
-      int64Value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaNumericValue",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaNumericValue>;
+export const GoogleAnalyticsAdminV1alphaNumericValue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    doubleValue: Schema.optional(Schema.Number),
+    int64Value: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleAnalyticsAdminV1alphaNumericValue" });
 
 export interface GoogleAnalyticsAdminV1alphaAccessBetweenFilter {
   /** Begins with this number. */
@@ -564,15 +506,11 @@ export interface GoogleAnalyticsAdminV1alphaAccessBetweenFilter {
   toValue?: GoogleAnalyticsAdminV1alphaNumericValue;
 }
 
-export const GoogleAnalyticsAdminV1alphaAccessBetweenFilter: Schema.Schema<GoogleAnalyticsAdminV1alphaAccessBetweenFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fromValue: Schema.optional(GoogleAnalyticsAdminV1alphaNumericValue),
-      toValue: Schema.optional(GoogleAnalyticsAdminV1alphaNumericValue),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaAccessBetweenFilter",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaAccessBetweenFilter>;
+export const GoogleAnalyticsAdminV1alphaAccessBetweenFilter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fromValue: Schema.optional(GoogleAnalyticsAdminV1alphaNumericValue),
+    toValue: Schema.optional(GoogleAnalyticsAdminV1alphaNumericValue),
+  }).annotate({ identifier: "GoogleAnalyticsAdminV1alphaAccessBetweenFilter" });
 
 export interface GoogleAnalyticsAdminV1alphaAccessNumericFilter {
   /** The operation type for this filter. */
@@ -588,15 +526,11 @@ export interface GoogleAnalyticsAdminV1alphaAccessNumericFilter {
   value?: GoogleAnalyticsAdminV1alphaNumericValue;
 }
 
-export const GoogleAnalyticsAdminV1alphaAccessNumericFilter: Schema.Schema<GoogleAnalyticsAdminV1alphaAccessNumericFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operation: Schema.optional(Schema.String),
-      value: Schema.optional(GoogleAnalyticsAdminV1alphaNumericValue),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaAccessNumericFilter",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaAccessNumericFilter>;
+export const GoogleAnalyticsAdminV1alphaAccessNumericFilter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operation: Schema.optional(Schema.String),
+    value: Schema.optional(GoogleAnalyticsAdminV1alphaNumericValue),
+  }).annotate({ identifier: "GoogleAnalyticsAdminV1alphaAccessNumericFilter" });
 
 export interface GoogleAnalyticsAdminV1alphaAccessStringFilter {
   /** The match type for this filter. */
@@ -615,16 +549,12 @@ export interface GoogleAnalyticsAdminV1alphaAccessStringFilter {
   caseSensitive?: boolean;
 }
 
-export const GoogleAnalyticsAdminV1alphaAccessStringFilter: Schema.Schema<GoogleAnalyticsAdminV1alphaAccessStringFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      matchType: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-      caseSensitive: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaAccessStringFilter",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaAccessStringFilter>;
+export const GoogleAnalyticsAdminV1alphaAccessStringFilter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    matchType: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
+    caseSensitive: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleAnalyticsAdminV1alphaAccessStringFilter" });
 
 export interface GoogleAnalyticsAdminV1alphaAccessFilter {
   /** A filter for in list values. */
@@ -639,26 +569,22 @@ export interface GoogleAnalyticsAdminV1alphaAccessFilter {
   stringFilter?: GoogleAnalyticsAdminV1alphaAccessStringFilter;
 }
 
-export const GoogleAnalyticsAdminV1alphaAccessFilter: Schema.Schema<GoogleAnalyticsAdminV1alphaAccessFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inListFilter: Schema.optional(
-        GoogleAnalyticsAdminV1alphaAccessInListFilter,
-      ),
-      fieldName: Schema.optional(Schema.String),
-      betweenFilter: Schema.optional(
-        GoogleAnalyticsAdminV1alphaAccessBetweenFilter,
-      ),
-      numericFilter: Schema.optional(
-        GoogleAnalyticsAdminV1alphaAccessNumericFilter,
-      ),
-      stringFilter: Schema.optional(
-        GoogleAnalyticsAdminV1alphaAccessStringFilter,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaAccessFilter",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaAccessFilter>;
+export const GoogleAnalyticsAdminV1alphaAccessFilter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    inListFilter: Schema.optional(
+      GoogleAnalyticsAdminV1alphaAccessInListFilter,
+    ),
+    fieldName: Schema.optional(Schema.String),
+    betweenFilter: Schema.optional(
+      GoogleAnalyticsAdminV1alphaAccessBetweenFilter,
+    ),
+    numericFilter: Schema.optional(
+      GoogleAnalyticsAdminV1alphaAccessNumericFilter,
+    ),
+    stringFilter: Schema.optional(
+      GoogleAnalyticsAdminV1alphaAccessStringFilter,
+    ),
+  }).annotate({ identifier: "GoogleAnalyticsAdminV1alphaAccessFilter" });
 
 export interface GoogleAnalyticsAdminV1alphaAccessFilterExpression {
   /** Each of the FilterExpressions in the or_group has an OR relationship. */
@@ -698,16 +624,12 @@ export interface GoogleAnalyticsAdminV1alphaFirebaseLink {
   name?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaFirebaseLink: Schema.Schema<GoogleAnalyticsAdminV1alphaFirebaseLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      project: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaFirebaseLink",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaFirebaseLink>;
+export const GoogleAnalyticsAdminV1alphaFirebaseLink =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    project: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleAnalyticsAdminV1alphaFirebaseLink" });
 
 export interface GoogleAnalyticsAdminV1alphaProperty {
   /** Identifier. Resource name of this property. Format: properties/{property_id} Example: "properties/1000" */
@@ -775,26 +697,22 @@ export interface GoogleAnalyticsAdminV1alphaProperty {
     | (string & {});
 }
 
-export const GoogleAnalyticsAdminV1alphaProperty: Schema.Schema<GoogleAnalyticsAdminV1alphaProperty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      parent: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      serviceLevel: Schema.optional(Schema.String),
-      currencyCode: Schema.optional(Schema.String),
-      expireTime: Schema.optional(Schema.String),
-      timeZone: Schema.optional(Schema.String),
-      account: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      deleteTime: Schema.optional(Schema.String),
-      propertyType: Schema.optional(Schema.String),
-      industryCategory: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaProperty",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaProperty>;
+export const GoogleAnalyticsAdminV1alphaProperty =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    parent: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    serviceLevel: Schema.optional(Schema.String),
+    currencyCode: Schema.optional(Schema.String),
+    expireTime: Schema.optional(Schema.String),
+    timeZone: Schema.optional(Schema.String),
+    account: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    deleteTime: Schema.optional(Schema.String),
+    propertyType: Schema.optional(Schema.String),
+    industryCategory: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleAnalyticsAdminV1alphaProperty" });
 
 export interface GoogleAnalyticsAdminV1alphaListPropertiesResponse {
   /** Results that matched the filter criteria and were accessible to the caller. */
@@ -803,17 +721,15 @@ export interface GoogleAnalyticsAdminV1alphaListPropertiesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaListPropertiesResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListPropertiesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      properties: Schema.optional(
-        Schema.Array(GoogleAnalyticsAdminV1alphaProperty),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaListPropertiesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Array(GoogleAnalyticsAdminV1alphaProperty),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaListPropertiesResponse",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaListPropertiesResponse>;
+  });
 
 export interface GoogleTypeDate {
   /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
@@ -824,16 +740,11 @@ export interface GoogleTypeDate {
   month?: number;
 }
 
-export const GoogleTypeDate: Schema.Schema<GoogleTypeDate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      day: Schema.optional(Schema.Number),
-      year: Schema.optional(Schema.Number),
-      month: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleTypeDate",
-  }) as any as Schema.Schema<GoogleTypeDate>;
+export const GoogleTypeDate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  day: Schema.optional(Schema.Number),
+  year: Schema.optional(Schema.Number),
+  month: Schema.optional(Schema.Number),
+}).annotate({ identifier: "GoogleTypeDate" });
 
 export interface GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest {
   /** Optional. If set, only return changes made after this time (inclusive). */
@@ -892,21 +803,19 @@ export interface GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest {
   pageSize?: number;
 }
 
-export const GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest: Schema.Schema<GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      earliestChangeTime: Schema.optional(Schema.String),
-      pageToken: Schema.optional(Schema.String),
-      property: Schema.optional(Schema.String),
-      resourceType: Schema.optional(Schema.Array(Schema.String)),
-      latestChangeTime: Schema.optional(Schema.String),
-      action: Schema.optional(Schema.Array(Schema.String)),
-      actorEmail: Schema.optional(Schema.Array(Schema.String)),
-      pageSize: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    earliestChangeTime: Schema.optional(Schema.String),
+    pageToken: Schema.optional(Schema.String),
+    property: Schema.optional(Schema.String),
+    resourceType: Schema.optional(Schema.Array(Schema.String)),
+    latestChangeTime: Schema.optional(Schema.String),
+    action: Schema.optional(Schema.Array(Schema.String)),
+    actorEmail: Schema.optional(Schema.Array(Schema.String)),
+    pageSize: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsRequest>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse {
   /** List of FirebaseLinks. This will have at most one value. */
@@ -915,17 +824,15 @@ export interface GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse {
   nextPageToken?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      firebaseLinks: Schema.optional(
-        Schema.Array(GoogleAnalyticsAdminV1alphaFirebaseLink),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    firebaseLinks: Schema.optional(
+      Schema.Array(GoogleAnalyticsAdminV1alphaFirebaseLink),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaListFirebaseLinksResponse>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaExpandedDataSet {
   /** Required. The display name of the ExpandedDataSet. Max 200 chars. */
@@ -944,22 +851,18 @@ export interface GoogleAnalyticsAdminV1alphaExpandedDataSet {
   description?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaExpandedDataSet: Schema.Schema<GoogleAnalyticsAdminV1alphaExpandedDataSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      dimensionFilterExpression: Schema.optional(
-        GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression,
-      ),
-      name: Schema.optional(Schema.String),
-      dimensionNames: Schema.optional(Schema.Array(Schema.String)),
-      metricNames: Schema.optional(Schema.Array(Schema.String)),
-      dataCollectionStartTime: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaExpandedDataSet",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaExpandedDataSet>;
+export const GoogleAnalyticsAdminV1alphaExpandedDataSet =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    dimensionFilterExpression: Schema.optional(
+      GoogleAnalyticsAdminV1alphaExpandedDataSetFilterExpression,
+    ),
+    name: Schema.optional(Schema.String),
+    dimensionNames: Schema.optional(Schema.Array(Schema.String)),
+    metricNames: Schema.optional(Schema.Array(Schema.String)),
+    dataCollectionStartTime: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleAnalyticsAdminV1alphaExpandedDataSet" });
 
 export interface GoogleAnalyticsAdminV1alphaCustomDimension {
   /** Identifier. Resource name for this CustomDimension resource. Format: properties/{property}/customDimensions/{customDimension} */
@@ -981,19 +884,15 @@ export interface GoogleAnalyticsAdminV1alphaCustomDimension {
   disallowAdsPersonalization?: boolean;
 }
 
-export const GoogleAnalyticsAdminV1alphaCustomDimension: Schema.Schema<GoogleAnalyticsAdminV1alphaCustomDimension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      scope: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      parameterName: Schema.optional(Schema.String),
-      disallowAdsPersonalization: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaCustomDimension",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaCustomDimension>;
+export const GoogleAnalyticsAdminV1alphaCustomDimension =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    scope: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    parameterName: Schema.optional(Schema.String),
+    disallowAdsPersonalization: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleAnalyticsAdminV1alphaCustomDimension" });
 
 export interface GoogleAnalyticsAdminV1alphaListCustomDimensionsResponse {
   /** List of CustomDimensions. */
@@ -1002,17 +901,15 @@ export interface GoogleAnalyticsAdminV1alphaListCustomDimensionsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaListCustomDimensionsResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListCustomDimensionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customDimensions: Schema.optional(
-        Schema.Array(GoogleAnalyticsAdminV1alphaCustomDimension),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaListCustomDimensionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customDimensions: Schema.optional(
+      Schema.Array(GoogleAnalyticsAdminV1alphaCustomDimension),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaListCustomDimensionsResponse",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaListCustomDimensionsResponse>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaGoogleSignalsSettings {
   /** Output only. Resource name of this setting. Format: properties/{property_id}/googleSignalsSettings Example: "properties/1000/googleSignalsSettings" */
@@ -1031,16 +928,14 @@ export interface GoogleAnalyticsAdminV1alphaGoogleSignalsSettings {
     | (string & {});
 }
 
-export const GoogleAnalyticsAdminV1alphaGoogleSignalsSettings: Schema.Schema<GoogleAnalyticsAdminV1alphaGoogleSignalsSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      consent: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaGoogleSignalsSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    consent: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaGoogleSignalsSettings",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaGoogleSignalsSettings>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaAudienceFilterExpressionList {
   /** A list of Audience filter expressions. */
@@ -1074,17 +969,15 @@ export interface GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterStrin
   value?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterStringFilter: Schema.Schema<GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterStringFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      caseSensitive: Schema.optional(Schema.Boolean),
-      matchType: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterStringFilter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    caseSensitive: Schema.optional(Schema.Boolean),
+    matchType: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterStringFilter",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterStringFilter>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericValue {
   /** Integer value. */
@@ -1093,16 +986,14 @@ export interface GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumer
   doubleValue?: number;
 }
 
-export const GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericValue: Schema.Schema<GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      int64Value: Schema.optional(Schema.String),
-      doubleValue: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericValue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    int64Value: Schema.optional(Schema.String),
+    doubleValue: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericValue",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericValue>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericFilter {
   /** Required. The numeric or date value to match against. */
@@ -1116,18 +1007,16 @@ export interface GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumer
     | (string & {});
 }
 
-export const GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericFilter: Schema.Schema<GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(
-        GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericValue,
-      ),
-      operation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericFilter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(
+      GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericValue,
+    ),
+    operation: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericFilter",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericFilter>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterBetweenFilter {
   /** Required. Begins with this number, inclusive. */
@@ -1136,20 +1025,18 @@ export interface GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterBetwe
   toValue?: GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericValue;
 }
 
-export const GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterBetweenFilter: Schema.Schema<GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterBetweenFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fromValue: Schema.optional(
-        GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericValue,
-      ),
-      toValue: Schema.optional(
-        GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericValue,
-      ),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterBetweenFilter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fromValue: Schema.optional(
+      GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericValue,
+    ),
+    toValue: Schema.optional(
+      GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericValue,
+    ),
+  }).annotate({
     identifier:
       "GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterBetweenFilter",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterBetweenFilter>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterInListFilter {
   /** Optional. If true, the match is case-sensitive. If false, the match is case-insensitive. */
@@ -1158,16 +1045,14 @@ export interface GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterInLis
   values?: Array<string>;
 }
 
-export const GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterInListFilter: Schema.Schema<GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterInListFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      caseSensitive: Schema.optional(Schema.Boolean),
-      values: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterInListFilter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    caseSensitive: Schema.optional(Schema.Boolean),
+    values: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier:
       "GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterInListFilter",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterInListFilter>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilter {
   /** A filter for a string-type dimension that matches a particular pattern. */
@@ -1186,28 +1071,26 @@ export interface GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilter {
   inAnyNDayPeriod?: number;
 }
 
-export const GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilter: Schema.Schema<GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stringFilter: Schema.optional(
-        GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterStringFilter,
-      ),
-      numericFilter: Schema.optional(
-        GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericFilter,
-      ),
-      atAnyPointInTime: Schema.optional(Schema.Boolean),
-      betweenFilter: Schema.optional(
-        GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterBetweenFilter,
-      ),
-      inListFilter: Schema.optional(
-        GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterInListFilter,
-      ),
-      fieldName: Schema.optional(Schema.String),
-      inAnyNDayPeriod: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    stringFilter: Schema.optional(
+      GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterStringFilter,
+    ),
+    numericFilter: Schema.optional(
+      GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterNumericFilter,
+    ),
+    atAnyPointInTime: Schema.optional(Schema.Boolean),
+    betweenFilter: Schema.optional(
+      GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterBetweenFilter,
+    ),
+    inListFilter: Schema.optional(
+      GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilterInListFilter,
+    ),
+    fieldName: Schema.optional(Schema.String),
+    inAnyNDayPeriod: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilter",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaAudienceDimensionOrMetricFilter>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaAudienceFilterExpression {
   /** A list of expressions to be AND’ed together. It can only contain AudienceFilterExpressions with or_group. This must be set for the top level AudienceFilterExpression. */
@@ -1285,14 +1168,12 @@ export interface GoogleAnalyticsAdminV1alphaChannelGroupFilterInListFilter {
   values?: Array<string>;
 }
 
-export const GoogleAnalyticsAdminV1alphaChannelGroupFilterInListFilter: Schema.Schema<GoogleAnalyticsAdminV1alphaChannelGroupFilterInListFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      values: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaChannelGroupFilterInListFilter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    values: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaChannelGroupFilterInListFilter",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaChannelGroupFilterInListFilter>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaChannelGroupFilterStringFilter {
   /** Required. The match type for the string filter. */
@@ -1309,15 +1190,13 @@ export interface GoogleAnalyticsAdminV1alphaChannelGroupFilterStringFilter {
   value?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaChannelGroupFilterStringFilter: Schema.Schema<GoogleAnalyticsAdminV1alphaChannelGroupFilterStringFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      matchType: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaChannelGroupFilterStringFilter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    matchType: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaChannelGroupFilterStringFilter",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaChannelGroupFilterStringFilter>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaChannelGroupFilter {
   /** A filter for a string dimension that matches a particular list of options. */
@@ -1328,20 +1207,16 @@ export interface GoogleAnalyticsAdminV1alphaChannelGroupFilter {
   stringFilter?: GoogleAnalyticsAdminV1alphaChannelGroupFilterStringFilter;
 }
 
-export const GoogleAnalyticsAdminV1alphaChannelGroupFilter: Schema.Schema<GoogleAnalyticsAdminV1alphaChannelGroupFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inListFilter: Schema.optional(
-        GoogleAnalyticsAdminV1alphaChannelGroupFilterInListFilter,
-      ),
-      fieldName: Schema.optional(Schema.String),
-      stringFilter: Schema.optional(
-        GoogleAnalyticsAdminV1alphaChannelGroupFilterStringFilter,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaChannelGroupFilter",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaChannelGroupFilter>;
+export const GoogleAnalyticsAdminV1alphaChannelGroupFilter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    inListFilter: Schema.optional(
+      GoogleAnalyticsAdminV1alphaChannelGroupFilterInListFilter,
+    ),
+    fieldName: Schema.optional(Schema.String),
+    stringFilter: Schema.optional(
+      GoogleAnalyticsAdminV1alphaChannelGroupFilterStringFilter,
+    ),
+  }).annotate({ identifier: "GoogleAnalyticsAdminV1alphaChannelGroupFilter" });
 
 export interface GoogleAnalyticsAdminV1alphaChannelGroupFilterExpression {
   /** A list of expressions to be AND’ed together. It can only contain ChannelGroupFilterExpressions with or_group. This must be set for the top level ChannelGroupFilterExpression. */
@@ -1379,17 +1254,13 @@ export interface GoogleAnalyticsAdminV1alphaGroupingRule {
   displayName?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaGroupingRule: Schema.Schema<GoogleAnalyticsAdminV1alphaGroupingRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expression: Schema.optional(
-        GoogleAnalyticsAdminV1alphaChannelGroupFilterExpression,
-      ),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaGroupingRule",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaGroupingRule>;
+export const GoogleAnalyticsAdminV1alphaGroupingRule =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    expression: Schema.optional(
+      GoogleAnalyticsAdminV1alphaChannelGroupFilterExpression,
+    ),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleAnalyticsAdminV1alphaGroupingRule" });
 
 export interface GoogleAnalyticsAdminV1alphaMatchingCondition {
   /** Required. The value being compared against for this condition. The runtime implementation may perform type coercion of this value to evaluate this condition based on the type of the parameter value. */
@@ -1418,17 +1289,13 @@ export interface GoogleAnalyticsAdminV1alphaMatchingCondition {
   negated?: boolean;
 }
 
-export const GoogleAnalyticsAdminV1alphaMatchingCondition: Schema.Schema<GoogleAnalyticsAdminV1alphaMatchingCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-      field: Schema.optional(Schema.String),
-      comparisonType: Schema.optional(Schema.String),
-      negated: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaMatchingCondition",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaMatchingCondition>;
+export const GoogleAnalyticsAdminV1alphaMatchingCondition =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(Schema.String),
+    field: Schema.optional(Schema.String),
+    comparisonType: Schema.optional(Schema.String),
+    negated: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleAnalyticsAdminV1alphaMatchingCondition" });
 
 export interface GoogleAnalyticsAdminV1alphaParameterMutation {
   /** Required. The name of the parameter to mutate. This value must: * be less than 40 characters. * be unique across across all mutations within the rule * consist only of letters, digits or _ (underscores) For event edit rules, the name may also be set to 'event_name' to modify the event_name in place. */
@@ -1437,15 +1304,11 @@ export interface GoogleAnalyticsAdminV1alphaParameterMutation {
   parameterValue?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaParameterMutation: Schema.Schema<GoogleAnalyticsAdminV1alphaParameterMutation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parameter: Schema.optional(Schema.String),
-      parameterValue: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaParameterMutation",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaParameterMutation>;
+export const GoogleAnalyticsAdminV1alphaParameterMutation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parameter: Schema.optional(Schema.String),
+    parameterValue: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleAnalyticsAdminV1alphaParameterMutation" });
 
 export interface GoogleAnalyticsAdminV1alphaEventCreateRule {
   /** Required. Must have at least one condition, and can have up to 10 max. Conditions on the source event must match for this rule to be applied. */
@@ -1460,22 +1323,18 @@ export interface GoogleAnalyticsAdminV1alphaEventCreateRule {
   parameterMutations?: Array<GoogleAnalyticsAdminV1alphaParameterMutation>;
 }
 
-export const GoogleAnalyticsAdminV1alphaEventCreateRule: Schema.Schema<GoogleAnalyticsAdminV1alphaEventCreateRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      eventConditions: Schema.optional(
-        Schema.Array(GoogleAnalyticsAdminV1alphaMatchingCondition),
-      ),
-      sourceCopyParameters: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-      destinationEvent: Schema.optional(Schema.String),
-      parameterMutations: Schema.optional(
-        Schema.Array(GoogleAnalyticsAdminV1alphaParameterMutation),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaEventCreateRule",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaEventCreateRule>;
+export const GoogleAnalyticsAdminV1alphaEventCreateRule =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    eventConditions: Schema.optional(
+      Schema.Array(GoogleAnalyticsAdminV1alphaMatchingCondition),
+    ),
+    sourceCopyParameters: Schema.optional(Schema.Boolean),
+    name: Schema.optional(Schema.String),
+    destinationEvent: Schema.optional(Schema.String),
+    parameterMutations: Schema.optional(
+      Schema.Array(GoogleAnalyticsAdminV1alphaParameterMutation),
+    ),
+  }).annotate({ identifier: "GoogleAnalyticsAdminV1alphaEventCreateRule" });
 
 export interface GoogleAnalyticsAdminV1alphaListBigQueryLinksResponse {
   /** List of BigQueryLinks. */
@@ -1484,17 +1343,15 @@ export interface GoogleAnalyticsAdminV1alphaListBigQueryLinksResponse {
   nextPageToken?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaListBigQueryLinksResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListBigQueryLinksResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bigqueryLinks: Schema.optional(
-        Schema.Array(GoogleAnalyticsAdminV1alphaBigQueryLink),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaListBigQueryLinksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bigqueryLinks: Schema.optional(
+      Schema.Array(GoogleAnalyticsAdminV1alphaBigQueryLink),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaListBigQueryLinksResponse",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaListBigQueryLinksResponse>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaRollupPropertySourceLink {
   /** Immutable. Resource name of the source property. Format: properties/{property_id} Example: "properties/789" */
@@ -1503,15 +1360,13 @@ export interface GoogleAnalyticsAdminV1alphaRollupPropertySourceLink {
   name?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaRollupPropertySourceLink: Schema.Schema<GoogleAnalyticsAdminV1alphaRollupPropertySourceLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sourceProperty: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaRollupPropertySourceLink =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sourceProperty: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaRollupPropertySourceLink",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaRollupPropertySourceLink>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaKeyEventDefaultValue {
   /** Required. This will be used to populate the "value" parameter for all occurrences of this Key Event (specified by event_name) where that parameter is unset. */
@@ -1520,15 +1375,13 @@ export interface GoogleAnalyticsAdminV1alphaKeyEventDefaultValue {
   currencyCode?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaKeyEventDefaultValue: Schema.Schema<GoogleAnalyticsAdminV1alphaKeyEventDefaultValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      numericValue: Schema.optional(Schema.Number),
-      currencyCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaKeyEventDefaultValue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    numericValue: Schema.optional(Schema.Number),
+    currencyCode: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaKeyEventDefaultValue",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaKeyEventDefaultValue>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaKeyEvent {
   /** Immutable. The event name for this key event. Examples: 'click', 'purchase' */
@@ -1551,22 +1404,18 @@ export interface GoogleAnalyticsAdminV1alphaKeyEvent {
   createTime?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaKeyEvent: Schema.Schema<GoogleAnalyticsAdminV1alphaKeyEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      eventName: Schema.optional(Schema.String),
-      custom: Schema.optional(Schema.Boolean),
-      countingMethod: Schema.optional(Schema.String),
-      defaultValue: Schema.optional(
-        GoogleAnalyticsAdminV1alphaKeyEventDefaultValue,
-      ),
-      name: Schema.optional(Schema.String),
-      deletable: Schema.optional(Schema.Boolean),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaKeyEvent",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaKeyEvent>;
+export const GoogleAnalyticsAdminV1alphaKeyEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    eventName: Schema.optional(Schema.String),
+    custom: Schema.optional(Schema.Boolean),
+    countingMethod: Schema.optional(Schema.String),
+    defaultValue: Schema.optional(
+      GoogleAnalyticsAdminV1alphaKeyEventDefaultValue,
+    ),
+    name: Schema.optional(Schema.String),
+    deletable: Schema.optional(Schema.Boolean),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleAnalyticsAdminV1alphaKeyEvent" });
 
 export interface GoogleAnalyticsAdminV1alphaSubpropertySyncConfig {
   /** Required. Specifies the Custom Dimension / Metric synchronization mode for the subproperty. If set to ALL, Custom Dimension / Metric synchronization will be immediately enabled. Local configuration of Custom Dimensions / Metrics will not be allowed on the subproperty so long as the synchronization mode is set to ALL. If set to NONE, Custom Dimensions / Metric synchronization is disabled. Custom Dimensions / Metrics must be configured explicitly on the Subproperty. */
@@ -1581,16 +1430,14 @@ export interface GoogleAnalyticsAdminV1alphaSubpropertySyncConfig {
   name?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaSubpropertySyncConfig: Schema.Schema<GoogleAnalyticsAdminV1alphaSubpropertySyncConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customDimensionAndMetricSyncMode: Schema.optional(Schema.String),
-      applyToProperty: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaSubpropertySyncConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customDimensionAndMetricSyncMode: Schema.optional(Schema.String),
+    applyToProperty: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaSubpropertySyncConfig",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaSubpropertySyncConfig>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaCalculatedMetric {
   /** Identifier. Resource name for this CalculatedMetric. Format: 'properties/{property_id}/calculatedMetrics/{calculated_metric_id}' */
@@ -1628,21 +1475,17 @@ export interface GoogleAnalyticsAdminV1alphaCalculatedMetric {
   formula?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaCalculatedMetric: Schema.Schema<GoogleAnalyticsAdminV1alphaCalculatedMetric> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      restrictedMetricType: Schema.optional(Schema.Array(Schema.String)),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      calculatedMetricId: Schema.optional(Schema.String),
-      metricUnit: Schema.optional(Schema.String),
-      invalidMetricReference: Schema.optional(Schema.Boolean),
-      formula: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaCalculatedMetric",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaCalculatedMetric>;
+export const GoogleAnalyticsAdminV1alphaCalculatedMetric =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    restrictedMetricType: Schema.optional(Schema.Array(Schema.String)),
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    calculatedMetricId: Schema.optional(Schema.String),
+    metricUnit: Schema.optional(Schema.String),
+    invalidMetricReference: Schema.optional(Schema.Boolean),
+    formula: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleAnalyticsAdminV1alphaCalculatedMetric" });
 
 export interface GoogleAnalyticsAdminV1alphaLinkProposalStatusDetails {
   /** Output only. The email address of the user that proposed this linkage. */
@@ -1665,16 +1508,14 @@ export interface GoogleAnalyticsAdminV1alphaLinkProposalStatusDetails {
     | (string & {});
 }
 
-export const GoogleAnalyticsAdminV1alphaLinkProposalStatusDetails: Schema.Schema<GoogleAnalyticsAdminV1alphaLinkProposalStatusDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestorEmail: Schema.optional(Schema.String),
-      linkProposalInitiatingProduct: Schema.optional(Schema.String),
-      linkProposalState: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaLinkProposalStatusDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestorEmail: Schema.optional(Schema.String),
+    linkProposalInitiatingProduct: Schema.optional(Schema.String),
+    linkProposalState: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaLinkProposalStatusDetails",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaLinkProposalStatusDetails>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal {
   /** Output only. The display name of the Display & Video Advertiser. Only populated for proposals that originated from Display & Video 360. */
@@ -1695,24 +1536,22 @@ export interface GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposa
   campaignDataSharingEnabled?: boolean;
 }
 
-export const GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal: Schema.Schema<GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      advertiserDisplayName: Schema.optional(Schema.String),
-      validationEmail: Schema.optional(Schema.String),
-      advertiserId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      adsPersonalizationEnabled: Schema.optional(Schema.Boolean),
-      costDataSharingEnabled: Schema.optional(Schema.Boolean),
-      linkProposalStatusDetails: Schema.optional(
-        GoogleAnalyticsAdminV1alphaLinkProposalStatusDetails,
-      ),
-      campaignDataSharingEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    advertiserDisplayName: Schema.optional(Schema.String),
+    validationEmail: Schema.optional(Schema.String),
+    advertiserId: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    adsPersonalizationEnabled: Schema.optional(Schema.Boolean),
+    costDataSharingEnabled: Schema.optional(Schema.Boolean),
+    linkProposalStatusDetails: Schema.optional(
+      GoogleAnalyticsAdminV1alphaLinkProposalStatusDetails,
+    ),
+    campaignDataSharingEnabled: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier:
       "GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaReportingIdentitySettings {
   /** Output only. Identifier. Resource name for this reporting identity settings singleton resource. Format: properties/{property_id}/reportingIdentitySettings Example: "properties/1234/reportingIdentitySettings" */
@@ -1726,15 +1565,13 @@ export interface GoogleAnalyticsAdminV1alphaReportingIdentitySettings {
     | (string & {});
 }
 
-export const GoogleAnalyticsAdminV1alphaReportingIdentitySettings: Schema.Schema<GoogleAnalyticsAdminV1alphaReportingIdentitySettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      reportingIdentity: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaReportingIdentitySettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    reportingIdentity: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaReportingIdentitySettings",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaReportingIdentitySettings>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData {
   /** Output only. ID of the corresponding Android app in Firebase, if any. This ID can change if the Android app is deleted and recreated. */
@@ -1743,15 +1580,13 @@ export interface GoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData {
   packageName?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData: Schema.Schema<GoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      firebaseAppId: Schema.optional(Schema.String),
-      packageName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    firebaseAppId: Schema.optional(Schema.String),
+    packageName: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData {
   /** Output only. ID of the corresponding iOS app in Firebase, if any. This ID can change if the iOS app is deleted and recreated. */
@@ -1760,15 +1595,13 @@ export interface GoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData {
   bundleId?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData: Schema.Schema<GoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      firebaseAppId: Schema.optional(Schema.String),
-      bundleId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    firebaseAppId: Schema.optional(Schema.String),
+    bundleId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaDataStream {
   /** Required. Immutable. The type of this DataStream resource. */
@@ -1794,27 +1627,23 @@ export interface GoogleAnalyticsAdminV1alphaDataStream {
   displayName?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaDataStream: Schema.Schema<GoogleAnalyticsAdminV1alphaDataStream> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      webStreamData: Schema.optional(
-        GoogleAnalyticsAdminV1alphaDataStreamWebStreamData,
-      ),
-      androidAppStreamData: Schema.optional(
-        GoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData,
-      ),
-      iosAppStreamData: Schema.optional(
-        GoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData,
-      ),
-      name: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaDataStream",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaDataStream>;
+export const GoogleAnalyticsAdminV1alphaDataStream =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    webStreamData: Schema.optional(
+      GoogleAnalyticsAdminV1alphaDataStreamWebStreamData,
+    ),
+    androidAppStreamData: Schema.optional(
+      GoogleAnalyticsAdminV1alphaDataStreamAndroidAppStreamData,
+    ),
+    iosAppStreamData: Schema.optional(
+      GoogleAnalyticsAdminV1alphaDataStreamIosAppStreamData,
+    ),
+    name: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleAnalyticsAdminV1alphaDataStream" });
 
 export interface GoogleAnalyticsAdminV1alphaReportingDataAnnotationDateRange {
   /** Required. The end date for this range. Must be a valid date with year, month, and day set. This date must be greater than or equal to the start date. */
@@ -1823,15 +1652,13 @@ export interface GoogleAnalyticsAdminV1alphaReportingDataAnnotationDateRange {
   startDate?: GoogleTypeDate;
 }
 
-export const GoogleAnalyticsAdminV1alphaReportingDataAnnotationDateRange: Schema.Schema<GoogleAnalyticsAdminV1alphaReportingDataAnnotationDateRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endDate: Schema.optional(GoogleTypeDate),
-      startDate: Schema.optional(GoogleTypeDate),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaReportingDataAnnotationDateRange =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endDate: Schema.optional(GoogleTypeDate),
+    startDate: Schema.optional(GoogleTypeDate),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaReportingDataAnnotationDateRange",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaReportingDataAnnotationDateRange>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaReportingDataAnnotation {
   /** Optional. Description for this Reporting Data Annotation. */
@@ -1859,22 +1686,20 @@ export interface GoogleAnalyticsAdminV1alphaReportingDataAnnotation {
   annotationDateRange?: GoogleAnalyticsAdminV1alphaReportingDataAnnotationDateRange;
 }
 
-export const GoogleAnalyticsAdminV1alphaReportingDataAnnotation: Schema.Schema<GoogleAnalyticsAdminV1alphaReportingDataAnnotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      systemGenerated: Schema.optional(Schema.Boolean),
-      color: Schema.optional(Schema.String),
-      annotationDate: Schema.optional(GoogleTypeDate),
-      title: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      annotationDateRange: Schema.optional(
-        GoogleAnalyticsAdminV1alphaReportingDataAnnotationDateRange,
-      ),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaReportingDataAnnotation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    systemGenerated: Schema.optional(Schema.Boolean),
+    color: Schema.optional(Schema.String),
+    annotationDate: Schema.optional(GoogleTypeDate),
+    title: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    annotationDateRange: Schema.optional(
+      GoogleAnalyticsAdminV1alphaReportingDataAnnotationDateRange,
+    ),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaReportingDataAnnotation",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaReportingDataAnnotation>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings {
   /** Indicates whether Enhanced Measurement Settings will be used to automatically measure interactions and content on this web stream. Changing this value does not affect the settings themselves, but determines whether they are respected. */
@@ -1901,24 +1726,22 @@ export interface GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings {
   siteSearchEnabled?: boolean;
 }
 
-export const GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings: Schema.Schema<GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      streamEnabled: Schema.optional(Schema.Boolean),
-      pageChangesEnabled: Schema.optional(Schema.Boolean),
-      searchQueryParameter: Schema.optional(Schema.String),
-      formInteractionsEnabled: Schema.optional(Schema.Boolean),
-      uriQueryParameter: Schema.optional(Schema.String),
-      scrollsEnabled: Schema.optional(Schema.Boolean),
-      fileDownloadsEnabled: Schema.optional(Schema.Boolean),
-      outboundClicksEnabled: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-      videoEngagementEnabled: Schema.optional(Schema.Boolean),
-      siteSearchEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    streamEnabled: Schema.optional(Schema.Boolean),
+    pageChangesEnabled: Schema.optional(Schema.Boolean),
+    searchQueryParameter: Schema.optional(Schema.String),
+    formInteractionsEnabled: Schema.optional(Schema.Boolean),
+    uriQueryParameter: Schema.optional(Schema.String),
+    scrollsEnabled: Schema.optional(Schema.Boolean),
+    fileDownloadsEnabled: Schema.optional(Schema.Boolean),
+    outboundClicksEnabled: Schema.optional(Schema.Boolean),
+    name: Schema.optional(Schema.String),
+    videoEngagementEnabled: Schema.optional(Schema.Boolean),
+    siteSearchEnabled: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaAttributionSettings {
   /** Required. The lookback window for all other, non-acquisition conversion events. The default window size is 90 days. */
@@ -1952,18 +1775,14 @@ export interface GoogleAnalyticsAdminV1alphaAttributionSettings {
     | (string & {});
 }
 
-export const GoogleAnalyticsAdminV1alphaAttributionSettings: Schema.Schema<GoogleAnalyticsAdminV1alphaAttributionSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      otherConversionEventLookbackWindow: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      reportingAttributionModel: Schema.optional(Schema.String),
-      adsWebConversionDataExportScope: Schema.optional(Schema.String),
-      acquisitionConversionEventLookbackWindow: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaAttributionSettings",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaAttributionSettings>;
+export const GoogleAnalyticsAdminV1alphaAttributionSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    otherConversionEventLookbackWindow: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    reportingAttributionModel: Schema.optional(Schema.String),
+    adsWebConversionDataExportScope: Schema.optional(Schema.String),
+    acquisitionConversionEventLookbackWindow: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleAnalyticsAdminV1alphaAttributionSettings" });
 
 export interface GoogleAnalyticsAdminV1alphaAudienceSimpleFilter {
   /** Required. Immutable. Specifies the scope for this filter. */
@@ -1977,17 +1796,15 @@ export interface GoogleAnalyticsAdminV1alphaAudienceSimpleFilter {
   filterExpression?: GoogleAnalyticsAdminV1alphaAudienceFilterExpression;
 }
 
-export const GoogleAnalyticsAdminV1alphaAudienceSimpleFilter: Schema.Schema<GoogleAnalyticsAdminV1alphaAudienceSimpleFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scope: Schema.optional(Schema.String),
-      filterExpression: Schema.optional(
-        GoogleAnalyticsAdminV1alphaAudienceFilterExpression,
-      ),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaAudienceSimpleFilter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scope: Schema.optional(Schema.String),
+    filterExpression: Schema.optional(
+      GoogleAnalyticsAdminV1alphaAudienceFilterExpression,
+    ),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaAudienceSimpleFilter",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaAudienceSimpleFilter>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStep {
   /** Optional. When set, this step must be satisfied within the constraint_duration of the previous step (For example, t[i] - t[i-1] <= constraint_duration). If not set, there is no duration requirement (the duration is effectively unlimited). It is ignored for the first step. */
@@ -2005,20 +1822,18 @@ export interface GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequen
   immediatelyFollows?: boolean;
 }
 
-export const GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStep: Schema.Schema<GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStep> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      constraintDuration: Schema.optional(Schema.String),
-      filterExpression: Schema.optional(
-        GoogleAnalyticsAdminV1alphaAudienceFilterExpression,
-      ),
-      scope: Schema.optional(Schema.String),
-      immediatelyFollows: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStep =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    constraintDuration: Schema.optional(Schema.String),
+    filterExpression: Schema.optional(
+      GoogleAnalyticsAdminV1alphaAudienceFilterExpression,
+    ),
+    scope: Schema.optional(Schema.String),
+    immediatelyFollows: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier:
       "GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStep",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStep>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaAudienceSequenceFilter {
   /** Optional. Defines the time period in which the whole sequence must occur. */
@@ -2034,20 +1849,18 @@ export interface GoogleAnalyticsAdminV1alphaAudienceSequenceFilter {
     | (string & {});
 }
 
-export const GoogleAnalyticsAdminV1alphaAudienceSequenceFilter: Schema.Schema<GoogleAnalyticsAdminV1alphaAudienceSequenceFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sequenceMaximumDuration: Schema.optional(Schema.String),
-      sequenceSteps: Schema.optional(
-        Schema.Array(
-          GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStep,
-        ),
+export const GoogleAnalyticsAdminV1alphaAudienceSequenceFilter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sequenceMaximumDuration: Schema.optional(Schema.String),
+    sequenceSteps: Schema.optional(
+      Schema.Array(
+        GoogleAnalyticsAdminV1alphaAudienceSequenceFilterAudienceSequenceStep,
       ),
-      scope: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+    ),
+    scope: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaAudienceSequenceFilter",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaAudienceSequenceFilter>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaAudienceFilterClause {
   /** Required. Specifies whether this is an include or exclude filter clause. */
@@ -2062,20 +1875,18 @@ export interface GoogleAnalyticsAdminV1alphaAudienceFilterClause {
   sequenceFilter?: GoogleAnalyticsAdminV1alphaAudienceSequenceFilter;
 }
 
-export const GoogleAnalyticsAdminV1alphaAudienceFilterClause: Schema.Schema<GoogleAnalyticsAdminV1alphaAudienceFilterClause> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clauseType: Schema.optional(Schema.String),
-      simpleFilter: Schema.optional(
-        GoogleAnalyticsAdminV1alphaAudienceSimpleFilter,
-      ),
-      sequenceFilter: Schema.optional(
-        GoogleAnalyticsAdminV1alphaAudienceSequenceFilter,
-      ),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaAudienceFilterClause =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    clauseType: Schema.optional(Schema.String),
+    simpleFilter: Schema.optional(
+      GoogleAnalyticsAdminV1alphaAudienceSimpleFilter,
+    ),
+    sequenceFilter: Schema.optional(
+      GoogleAnalyticsAdminV1alphaAudienceSequenceFilter,
+    ),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaAudienceFilterClause",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaAudienceFilterClause>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaAudienceEventTrigger {
   /** Required. The event name that will be logged. */
@@ -2088,15 +1899,13 @@ export interface GoogleAnalyticsAdminV1alphaAudienceEventTrigger {
     | (string & {});
 }
 
-export const GoogleAnalyticsAdminV1alphaAudienceEventTrigger: Schema.Schema<GoogleAnalyticsAdminV1alphaAudienceEventTrigger> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      eventName: Schema.optional(Schema.String),
-      logCondition: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaAudienceEventTrigger =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    eventName: Schema.optional(Schema.String),
+    logCondition: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaAudienceEventTrigger",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaAudienceEventTrigger>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaAudience {
   /** Output only. Time when the Audience was created. */
@@ -2123,26 +1932,22 @@ export interface GoogleAnalyticsAdminV1alphaAudience {
   name?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaAudience: Schema.Schema<GoogleAnalyticsAdminV1alphaAudience> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      adsPersonalizationEnabled: Schema.optional(Schema.Boolean),
-      filterClauses: Schema.optional(
-        Schema.Array(GoogleAnalyticsAdminV1alphaAudienceFilterClause),
-      ),
-      exclusionDurationMode: Schema.optional(Schema.String),
-      eventTrigger: Schema.optional(
-        GoogleAnalyticsAdminV1alphaAudienceEventTrigger,
-      ),
-      description: Schema.optional(Schema.String),
-      membershipDurationDays: Schema.optional(Schema.Number),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaAudience",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaAudience>;
+export const GoogleAnalyticsAdminV1alphaAudience =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    adsPersonalizationEnabled: Schema.optional(Schema.Boolean),
+    filterClauses: Schema.optional(
+      Schema.Array(GoogleAnalyticsAdminV1alphaAudienceFilterClause),
+    ),
+    exclusionDurationMode: Schema.optional(Schema.String),
+    eventTrigger: Schema.optional(
+      GoogleAnalyticsAdminV1alphaAudienceEventTrigger,
+    ),
+    description: Schema.optional(Schema.String),
+    membershipDurationDays: Schema.optional(Schema.Number),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleAnalyticsAdminV1alphaAudience" });
 
 export interface GoogleAnalyticsAdminV1alphaAdSenseLink {
   /** Output only. The resource name for this AdSense Link resource. Format: properties/{propertyId}/adSenseLinks/{linkId} Example: properties/1234/adSenseLinks/6789 */
@@ -2151,15 +1956,11 @@ export interface GoogleAnalyticsAdminV1alphaAdSenseLink {
   adClientCode?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaAdSenseLink: Schema.Schema<GoogleAnalyticsAdminV1alphaAdSenseLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      adClientCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaAdSenseLink",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaAdSenseLink>;
+export const GoogleAnalyticsAdminV1alphaAdSenseLink =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    adClientCode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleAnalyticsAdminV1alphaAdSenseLink" });
 
 export interface GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink {
   /** Immutable. The Display & Video 360 Advertiser's advertiser ID. */
@@ -2176,19 +1977,17 @@ export interface GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink {
   name?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink: Schema.Schema<GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      advertiserId: Schema.optional(Schema.String),
-      advertiserDisplayName: Schema.optional(Schema.String),
-      campaignDataSharingEnabled: Schema.optional(Schema.Boolean),
-      adsPersonalizationEnabled: Schema.optional(Schema.Boolean),
-      costDataSharingEnabled: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    advertiserId: Schema.optional(Schema.String),
+    advertiserDisplayName: Schema.optional(Schema.String),
+    campaignDataSharingEnabled: Schema.optional(Schema.Boolean),
+    adsPersonalizationEnabled: Schema.optional(Schema.Boolean),
+    costDataSharingEnabled: Schema.optional(Schema.Boolean),
+    name: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaSearchAds360Link {
   /** Immutable. Enables the import of cost data from Search Ads 360 to the Google Analytics property. This can only be enabled if campaign_data_sharing_enabled is enabled. After link creation, this can only be updated from the Search Ads 360 product. If this field is not set on create, it will be defaulted to true. */
@@ -2207,20 +2006,16 @@ export interface GoogleAnalyticsAdminV1alphaSearchAds360Link {
   advertiserDisplayName?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaSearchAds360Link: Schema.Schema<GoogleAnalyticsAdminV1alphaSearchAds360Link> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      costDataSharingEnabled: Schema.optional(Schema.Boolean),
-      adsPersonalizationEnabled: Schema.optional(Schema.Boolean),
-      campaignDataSharingEnabled: Schema.optional(Schema.Boolean),
-      siteStatsSharingEnabled: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-      advertiserId: Schema.optional(Schema.String),
-      advertiserDisplayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaSearchAds360Link",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaSearchAds360Link>;
+export const GoogleAnalyticsAdminV1alphaSearchAds360Link =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    costDataSharingEnabled: Schema.optional(Schema.Boolean),
+    adsPersonalizationEnabled: Schema.optional(Schema.Boolean),
+    campaignDataSharingEnabled: Schema.optional(Schema.Boolean),
+    siteStatsSharingEnabled: Schema.optional(Schema.Boolean),
+    name: Schema.optional(Schema.String),
+    advertiserId: Schema.optional(Schema.String),
+    advertiserDisplayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleAnalyticsAdminV1alphaSearchAds360Link" });
 
 export interface GoogleAnalyticsAdminV1alphaDataRedactionSettings {
   /** If enabled, any event parameter or user property values that look like an email will be redacted. */
@@ -2233,17 +2028,15 @@ export interface GoogleAnalyticsAdminV1alphaDataRedactionSettings {
   queryParameterKeys?: Array<string>;
 }
 
-export const GoogleAnalyticsAdminV1alphaDataRedactionSettings: Schema.Schema<GoogleAnalyticsAdminV1alphaDataRedactionSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      emailRedactionEnabled: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-      queryParameterRedactionEnabled: Schema.optional(Schema.Boolean),
-      queryParameterKeys: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaDataRedactionSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    emailRedactionEnabled: Schema.optional(Schema.Boolean),
+    name: Schema.optional(Schema.String),
+    queryParameterRedactionEnabled: Schema.optional(Schema.Boolean),
+    queryParameterKeys: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaDataRedactionSettings",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaDataRedactionSettings>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret {
   /** Required. Human-readable display name for this secret. */
@@ -2254,16 +2047,14 @@ export interface GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret {
   name?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret: Schema.Schema<GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      secretValue: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    secretValue: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaCustomMetric {
   /** Required. The type for the custom metric's value. */
@@ -2299,20 +2090,16 @@ export interface GoogleAnalyticsAdminV1alphaCustomMetric {
   parameterName?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaCustomMetric: Schema.Schema<GoogleAnalyticsAdminV1alphaCustomMetric> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      measurementUnit: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      restrictedMetricType: Schema.optional(Schema.Array(Schema.String)),
-      displayName: Schema.optional(Schema.String),
-      scope: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      parameterName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaCustomMetric",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaCustomMetric>;
+export const GoogleAnalyticsAdminV1alphaCustomMetric =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    measurementUnit: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    restrictedMetricType: Schema.optional(Schema.Array(Schema.String)),
+    displayName: Schema.optional(Schema.String),
+    scope: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    parameterName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleAnalyticsAdminV1alphaCustomMetric" });
 
 export interface GoogleAnalyticsAdminV1alphaChannelGroup {
   /** Output only. The resource name for this Channel Group resource. Format: properties/{property}/channelGroups/{channel_group} */
@@ -2329,21 +2116,17 @@ export interface GoogleAnalyticsAdminV1alphaChannelGroup {
   primary?: boolean;
 }
 
-export const GoogleAnalyticsAdminV1alphaChannelGroup: Schema.Schema<GoogleAnalyticsAdminV1alphaChannelGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      groupingRule: Schema.optional(
-        Schema.Array(GoogleAnalyticsAdminV1alphaGroupingRule),
-      ),
-      displayName: Schema.optional(Schema.String),
-      systemDefined: Schema.optional(Schema.Boolean),
-      description: Schema.optional(Schema.String),
-      primary: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaChannelGroup",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaChannelGroup>;
+export const GoogleAnalyticsAdminV1alphaChannelGroup =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    groupingRule: Schema.optional(
+      Schema.Array(GoogleAnalyticsAdminV1alphaGroupingRule),
+    ),
+    displayName: Schema.optional(Schema.String),
+    systemDefined: Schema.optional(Schema.Boolean),
+    description: Schema.optional(Schema.String),
+    primary: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleAnalyticsAdminV1alphaChannelGroup" });
 
 export interface GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource {
   /** A snapshot of a KeyEvent resource in change history. */
@@ -2406,87 +2189,85 @@ export interface GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryReso
   googleAdsLink?: GoogleAnalyticsAdminV1alphaGoogleAdsLink;
 }
 
-export const GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource: Schema.Schema<GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      keyEvent: Schema.optional(GoogleAnalyticsAdminV1alphaKeyEvent),
-      subpropertySyncConfig: Schema.optional(
-        GoogleAnalyticsAdminV1alphaSubpropertySyncConfig,
-      ),
-      calculatedMetric: Schema.optional(
-        GoogleAnalyticsAdminV1alphaCalculatedMetric,
-      ),
-      eventCreateRule: Schema.optional(
-        GoogleAnalyticsAdminV1alphaEventCreateRule,
-      ),
-      displayVideo360AdvertiserLinkProposal: Schema.optional(
-        GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal,
-      ),
-      customDimension: Schema.optional(
-        GoogleAnalyticsAdminV1alphaCustomDimension,
-      ),
-      dataRetentionSettings: Schema.optional(
-        GoogleAnalyticsAdminV1alphaDataRetentionSettings,
-      ),
-      reportingIdentitySettings: Schema.optional(
-        GoogleAnalyticsAdminV1alphaReportingIdentitySettings,
-      ),
-      dataStream: Schema.optional(GoogleAnalyticsAdminV1alphaDataStream),
-      reportingDataAnnotation: Schema.optional(
-        GoogleAnalyticsAdminV1alphaReportingDataAnnotation,
-      ),
-      enhancedMeasurementSettings: Schema.optional(
-        GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings,
-      ),
-      skadnetworkConversionValueSchema: Schema.optional(
-        GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema,
-      ),
-      attributionSettings: Schema.optional(
-        GoogleAnalyticsAdminV1alphaAttributionSettings,
-      ),
-      firebaseLink: Schema.optional(GoogleAnalyticsAdminV1alphaFirebaseLink),
-      audience: Schema.optional(GoogleAnalyticsAdminV1alphaAudience),
-      googleSignalsSettings: Schema.optional(
-        GoogleAnalyticsAdminV1alphaGoogleSignalsSettings,
-      ),
-      bigqueryLink: Schema.optional(GoogleAnalyticsAdminV1alphaBigQueryLink),
-      property: Schema.optional(GoogleAnalyticsAdminV1alphaProperty),
-      adsenseLink: Schema.optional(GoogleAnalyticsAdminV1alphaAdSenseLink),
-      expandedDataSet: Schema.optional(
-        GoogleAnalyticsAdminV1alphaExpandedDataSet,
-      ),
-      displayVideo360AdvertiserLink: Schema.optional(
-        GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink,
-      ),
-      searchAds360Link: Schema.optional(
-        GoogleAnalyticsAdminV1alphaSearchAds360Link,
-      ),
-      dataRedactionSettings: Schema.optional(
-        GoogleAnalyticsAdminV1alphaDataRedactionSettings,
-      ),
-      conversionEvent: Schema.optional(
-        GoogleAnalyticsAdminV1alphaConversionEvent,
-      ),
-      measurementProtocolSecret: Schema.optional(
-        GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret,
-      ),
-      customMetric: Schema.optional(GoogleAnalyticsAdminV1alphaCustomMetric),
-      account: Schema.optional(GoogleAnalyticsAdminV1alphaAccount),
-      channelGroup: Schema.optional(GoogleAnalyticsAdminV1alphaChannelGroup),
-      googleAdsLink: Schema.optional(GoogleAnalyticsAdminV1alphaGoogleAdsLink),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    keyEvent: Schema.optional(GoogleAnalyticsAdminV1alphaKeyEvent),
+    subpropertySyncConfig: Schema.optional(
+      GoogleAnalyticsAdminV1alphaSubpropertySyncConfig,
+    ),
+    calculatedMetric: Schema.optional(
+      GoogleAnalyticsAdminV1alphaCalculatedMetric,
+    ),
+    eventCreateRule: Schema.optional(
+      GoogleAnalyticsAdminV1alphaEventCreateRule,
+    ),
+    displayVideo360AdvertiserLinkProposal: Schema.optional(
+      GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal,
+    ),
+    customDimension: Schema.optional(
+      GoogleAnalyticsAdminV1alphaCustomDimension,
+    ),
+    dataRetentionSettings: Schema.optional(
+      GoogleAnalyticsAdminV1alphaDataRetentionSettings,
+    ),
+    reportingIdentitySettings: Schema.optional(
+      GoogleAnalyticsAdminV1alphaReportingIdentitySettings,
+    ),
+    dataStream: Schema.optional(GoogleAnalyticsAdminV1alphaDataStream),
+    reportingDataAnnotation: Schema.optional(
+      GoogleAnalyticsAdminV1alphaReportingDataAnnotation,
+    ),
+    enhancedMeasurementSettings: Schema.optional(
+      GoogleAnalyticsAdminV1alphaEnhancedMeasurementSettings,
+    ),
+    skadnetworkConversionValueSchema: Schema.optional(
+      GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema,
+    ),
+    attributionSettings: Schema.optional(
+      GoogleAnalyticsAdminV1alphaAttributionSettings,
+    ),
+    firebaseLink: Schema.optional(GoogleAnalyticsAdminV1alphaFirebaseLink),
+    audience: Schema.optional(GoogleAnalyticsAdminV1alphaAudience),
+    googleSignalsSettings: Schema.optional(
+      GoogleAnalyticsAdminV1alphaGoogleSignalsSettings,
+    ),
+    bigqueryLink: Schema.optional(GoogleAnalyticsAdminV1alphaBigQueryLink),
+    property: Schema.optional(GoogleAnalyticsAdminV1alphaProperty),
+    adsenseLink: Schema.optional(GoogleAnalyticsAdminV1alphaAdSenseLink),
+    expandedDataSet: Schema.optional(
+      GoogleAnalyticsAdminV1alphaExpandedDataSet,
+    ),
+    displayVideo360AdvertiserLink: Schema.optional(
+      GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink,
+    ),
+    searchAds360Link: Schema.optional(
+      GoogleAnalyticsAdminV1alphaSearchAds360Link,
+    ),
+    dataRedactionSettings: Schema.optional(
+      GoogleAnalyticsAdminV1alphaDataRedactionSettings,
+    ),
+    conversionEvent: Schema.optional(
+      GoogleAnalyticsAdminV1alphaConversionEvent,
+    ),
+    measurementProtocolSecret: Schema.optional(
+      GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret,
+    ),
+    customMetric: Schema.optional(GoogleAnalyticsAdminV1alphaCustomMetric),
+    account: Schema.optional(GoogleAnalyticsAdminV1alphaAccount),
+    channelGroup: Schema.optional(GoogleAnalyticsAdminV1alphaChannelGroup),
+    googleAdsLink: Schema.optional(GoogleAnalyticsAdminV1alphaGoogleAdsLink),
+  }).annotate({
     identifier:
       "GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse {}
 
-export const GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionResponse>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaCreateRollupPropertyRequest {
   /** Required. The roll-up property to create. */
@@ -2495,15 +2276,13 @@ export interface GoogleAnalyticsAdminV1alphaCreateRollupPropertyRequest {
   sourceProperties?: Array<string>;
 }
 
-export const GoogleAnalyticsAdminV1alphaCreateRollupPropertyRequest: Schema.Schema<GoogleAnalyticsAdminV1alphaCreateRollupPropertyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rollupProperty: Schema.optional(GoogleAnalyticsAdminV1alphaProperty),
-      sourceProperties: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaCreateRollupPropertyRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rollupProperty: Schema.optional(GoogleAnalyticsAdminV1alphaProperty),
+    sourceProperties: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaCreateRollupPropertyRequest",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaCreateRollupPropertyRequest>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaListSKAdNetworkConversionValueSchemasResponse {
   /** List of SKAdNetworkConversionValueSchemas. This will have at most one value. */
@@ -2512,20 +2291,16 @@ export interface GoogleAnalyticsAdminV1alphaListSKAdNetworkConversionValueSchema
   nextPageToken?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaListSKAdNetworkConversionValueSchemasResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListSKAdNetworkConversionValueSchemasResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      skadnetworkConversionValueSchemas: Schema.optional(
-        Schema.Array(
-          GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema,
-        ),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaListSKAdNetworkConversionValueSchemasResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    skadnetworkConversionValueSchemas: Schema.optional(
+      Schema.Array(GoogleAnalyticsAdminV1alphaSKAdNetworkConversionValueSchema),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleAnalyticsAdminV1alphaListSKAdNetworkConversionValueSchemasResponse",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaListSKAdNetworkConversionValueSchemasResponse>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaChangeHistoryChange {
   /** Resource contents from before the change was made. If this resource was created in this change, this field will be missing. */
@@ -2543,21 +2318,17 @@ export interface GoogleAnalyticsAdminV1alphaChangeHistoryChange {
   resourceAfterChange?: GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource;
 }
 
-export const GoogleAnalyticsAdminV1alphaChangeHistoryChange: Schema.Schema<GoogleAnalyticsAdminV1alphaChangeHistoryChange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceBeforeChange: Schema.optional(
-        GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource,
-      ),
-      action: Schema.optional(Schema.String),
-      resource: Schema.optional(Schema.String),
-      resourceAfterChange: Schema.optional(
-        GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaChangeHistoryChange",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaChangeHistoryChange>;
+export const GoogleAnalyticsAdminV1alphaChangeHistoryChange =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceBeforeChange: Schema.optional(
+      GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource,
+    ),
+    action: Schema.optional(Schema.String),
+    resource: Schema.optional(Schema.String),
+    resourceAfterChange: Schema.optional(
+      GoogleAnalyticsAdminV1alphaChangeHistoryChangeChangeHistoryResource,
+    ),
+  }).annotate({ identifier: "GoogleAnalyticsAdminV1alphaChangeHistoryChange" });
 
 export interface GoogleAnalyticsAdminV1alphaChangeHistoryEvent {
   /** Time when change was made. */
@@ -2579,21 +2350,17 @@ export interface GoogleAnalyticsAdminV1alphaChangeHistoryEvent {
   userActorEmail?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaChangeHistoryEvent: Schema.Schema<GoogleAnalyticsAdminV1alphaChangeHistoryEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      changeTime: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      actorType: Schema.optional(Schema.String),
-      changesFiltered: Schema.optional(Schema.Boolean),
-      changes: Schema.optional(
-        Schema.Array(GoogleAnalyticsAdminV1alphaChangeHistoryChange),
-      ),
-      userActorEmail: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaChangeHistoryEvent",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaChangeHistoryEvent>;
+export const GoogleAnalyticsAdminV1alphaChangeHistoryEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    changeTime: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    actorType: Schema.optional(Schema.String),
+    changesFiltered: Schema.optional(Schema.Boolean),
+    changes: Schema.optional(
+      Schema.Array(GoogleAnalyticsAdminV1alphaChangeHistoryChange),
+    ),
+    userActorEmail: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleAnalyticsAdminV1alphaChangeHistoryEvent" });
 
 export interface GoogleAnalyticsAdminV1alphaEventEditRule {
   /** Identifier. Resource name for this EventEditRule resource. Format: properties/{property}/dataStreams/{data_stream}/eventEditRules/{event_edit_rule} */
@@ -2608,22 +2375,18 @@ export interface GoogleAnalyticsAdminV1alphaEventEditRule {
   processingOrder?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaEventEditRule: Schema.Schema<GoogleAnalyticsAdminV1alphaEventEditRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      parameterMutations: Schema.optional(
-        Schema.Array(GoogleAnalyticsAdminV1alphaParameterMutation),
-      ),
-      eventConditions: Schema.optional(
-        Schema.Array(GoogleAnalyticsAdminV1alphaMatchingCondition),
-      ),
-      processingOrder: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaEventEditRule",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaEventEditRule>;
+export const GoogleAnalyticsAdminV1alphaEventEditRule =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    parameterMutations: Schema.optional(
+      Schema.Array(GoogleAnalyticsAdminV1alphaParameterMutation),
+    ),
+    eventConditions: Schema.optional(
+      Schema.Array(GoogleAnalyticsAdminV1alphaMatchingCondition),
+    ),
+    processingOrder: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleAnalyticsAdminV1alphaEventEditRule" });
 
 export interface GoogleAnalyticsAdminV1alphaListEventEditRulesResponse {
   /** List of EventEditRules. These will be ordered stably, but in an arbitrary order. */
@@ -2632,17 +2395,15 @@ export interface GoogleAnalyticsAdminV1alphaListEventEditRulesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaListEventEditRulesResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListEventEditRulesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      eventEditRules: Schema.optional(
-        Schema.Array(GoogleAnalyticsAdminV1alphaEventEditRule),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaListEventEditRulesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    eventEditRules: Schema.optional(
+      Schema.Array(GoogleAnalyticsAdminV1alphaEventEditRule),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaListEventEditRulesResponse",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaListEventEditRulesResponse>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaListAccountsResponse {
   /** Results that were accessible to the caller. */
@@ -2651,47 +2412,39 @@ export interface GoogleAnalyticsAdminV1alphaListAccountsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaListAccountsResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListAccountsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accounts: Schema.optional(
-        Schema.Array(GoogleAnalyticsAdminV1alphaAccount),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaListAccountsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accounts: Schema.optional(Schema.Array(GoogleAnalyticsAdminV1alphaAccount)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaListAccountsResponse",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaListAccountsResponse>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsRequest {
   /** Required. The requests specifying the access bindings to update. A maximum of 1000 access bindings can be updated in a batch. */
   requests?: Array<GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequest>;
 }
 
-export const GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsRequest: Schema.Schema<GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requests: Schema.optional(
-        Schema.Array(GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequest),
-      ),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requests: Schema.optional(
+      Schema.Array(GoogleAnalyticsAdminV1alphaUpdateAccessBindingRequest),
+    ),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsRequest",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsRequest>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaReorderEventEditRulesRequest {
   /** Required. EventEditRule resource names for the specified data stream, in the needed processing order. All EventEditRules for the stream must be present in the list. */
   eventEditRules?: Array<string>;
 }
 
-export const GoogleAnalyticsAdminV1alphaReorderEventEditRulesRequest: Schema.Schema<GoogleAnalyticsAdminV1alphaReorderEventEditRulesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      eventEditRules: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaReorderEventEditRulesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    eventEditRules: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaReorderEventEditRulesRequest",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaReorderEventEditRulesRequest>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaListEventCreateRulesResponse {
   /** List of EventCreateRules. These will be ordered stably, but in an arbitrary order. */
@@ -2700,17 +2453,15 @@ export interface GoogleAnalyticsAdminV1alphaListEventCreateRulesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaListEventCreateRulesResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListEventCreateRulesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      eventCreateRules: Schema.optional(
-        Schema.Array(GoogleAnalyticsAdminV1alphaEventCreateRule),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaListEventCreateRulesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    eventCreateRules: Schema.optional(
+      Schema.Array(GoogleAnalyticsAdminV1alphaEventCreateRule),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaListEventCreateRulesResponse",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaListEventCreateRulesResponse>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaDataSharingSettings {
   /** Allows Google technical support representatives access to your Google Analytics data and account when necessary to provide service and find solutions to technical issues. This field maps to the "Technical support" field in the Google Analytics Admin UI. */
@@ -2727,19 +2478,15 @@ export interface GoogleAnalyticsAdminV1alphaDataSharingSettings {
   name?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaDataSharingSettings: Schema.Schema<GoogleAnalyticsAdminV1alphaDataSharingSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sharingWithGoogleSupportEnabled: Schema.optional(Schema.Boolean),
-      sharingWithGoogleAssignedSalesEnabled: Schema.optional(Schema.Boolean),
-      sharingWithGoogleAnySalesEnabled: Schema.optional(Schema.Boolean),
-      sharingWithGoogleProductsEnabled: Schema.optional(Schema.Boolean),
-      sharingWithOthersEnabled: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaDataSharingSettings",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaDataSharingSettings>;
+export const GoogleAnalyticsAdminV1alphaDataSharingSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sharingWithGoogleSupportEnabled: Schema.optional(Schema.Boolean),
+    sharingWithGoogleAssignedSalesEnabled: Schema.optional(Schema.Boolean),
+    sharingWithGoogleAnySalesEnabled: Schema.optional(Schema.Boolean),
+    sharingWithGoogleProductsEnabled: Schema.optional(Schema.Boolean),
+    sharingWithOthersEnabled: Schema.optional(Schema.Boolean),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleAnalyticsAdminV1alphaDataSharingSettings" });
 
 export interface GoogleAnalyticsAdminV1alphaSubpropertyEventFilterConditionStringFilter {
   /** Required. The match type for the string filter. */
@@ -2758,17 +2505,15 @@ export interface GoogleAnalyticsAdminV1alphaSubpropertyEventFilterConditionStrin
   caseSensitive?: boolean;
 }
 
-export const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterConditionStringFilter: Schema.Schema<GoogleAnalyticsAdminV1alphaSubpropertyEventFilterConditionStringFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      matchType: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-      caseSensitive: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterConditionStringFilter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    matchType: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
+    caseSensitive: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier:
       "GoogleAnalyticsAdminV1alphaSubpropertyEventFilterConditionStringFilter",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaSubpropertyEventFilterConditionStringFilter>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaSubpropertyEventFilterCondition {
   /** Required. The field that is being filtered. */
@@ -2779,18 +2524,16 @@ export interface GoogleAnalyticsAdminV1alphaSubpropertyEventFilterCondition {
   nullFilter?: boolean;
 }
 
-export const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterCondition: Schema.Schema<GoogleAnalyticsAdminV1alphaSubpropertyEventFilterCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fieldName: Schema.optional(Schema.String),
-      stringFilter: Schema.optional(
-        GoogleAnalyticsAdminV1alphaSubpropertyEventFilterConditionStringFilter,
-      ),
-      nullFilter: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterCondition =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fieldName: Schema.optional(Schema.String),
+    stringFilter: Schema.optional(
+      GoogleAnalyticsAdminV1alphaSubpropertyEventFilterConditionStringFilter,
+    ),
+    nullFilter: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaSubpropertyEventFilterCondition",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaSubpropertyEventFilterCondition>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression {
   /** A list of expressions to OR’ed together. Must only contain not_expression or filter_condition expressions. */
@@ -2844,17 +2587,15 @@ export interface GoogleAnalyticsAdminV1alphaListExpandedDataSetsResponse {
   expandedDataSets?: Array<GoogleAnalyticsAdminV1alphaExpandedDataSet>;
 }
 
-export const GoogleAnalyticsAdminV1alphaListExpandedDataSetsResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListExpandedDataSetsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      expandedDataSets: Schema.optional(
-        Schema.Array(GoogleAnalyticsAdminV1alphaExpandedDataSet),
-      ),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaListExpandedDataSetsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    expandedDataSets: Schema.optional(
+      Schema.Array(GoogleAnalyticsAdminV1alphaExpandedDataSet),
+    ),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaListExpandedDataSetsResponse",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaListExpandedDataSetsResponse>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaCreateAccessBindingRequest {
   /** Required. Formats: - accounts/{account} - properties/{property} */
@@ -2863,22 +2604,20 @@ export interface GoogleAnalyticsAdminV1alphaCreateAccessBindingRequest {
   accessBinding?: GoogleAnalyticsAdminV1alphaAccessBinding;
 }
 
-export const GoogleAnalyticsAdminV1alphaCreateAccessBindingRequest: Schema.Schema<GoogleAnalyticsAdminV1alphaCreateAccessBindingRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parent: Schema.optional(Schema.String),
-      accessBinding: Schema.optional(GoogleAnalyticsAdminV1alphaAccessBinding),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaCreateAccessBindingRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.optional(Schema.String),
+    accessBinding: Schema.optional(GoogleAnalyticsAdminV1alphaAccessBinding),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaCreateAccessBindingRequest",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaCreateAccessBindingRequest>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaArchiveCustomMetricRequest {}
 
-export const GoogleAnalyticsAdminV1alphaArchiveCustomMetricRequest: Schema.Schema<GoogleAnalyticsAdminV1alphaArchiveCustomMetricRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleAnalyticsAdminV1alphaArchiveCustomMetricRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaArchiveCustomMetricRequest",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaArchiveCustomMetricRequest>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaCreateRollupPropertyResponse {
   /** The created roll-up property. */
@@ -2887,17 +2626,15 @@ export interface GoogleAnalyticsAdminV1alphaCreateRollupPropertyResponse {
   rollupPropertySourceLinks?: Array<GoogleAnalyticsAdminV1alphaRollupPropertySourceLink>;
 }
 
-export const GoogleAnalyticsAdminV1alphaCreateRollupPropertyResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaCreateRollupPropertyResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rollupProperty: Schema.optional(GoogleAnalyticsAdminV1alphaProperty),
-      rollupPropertySourceLinks: Schema.optional(
-        Schema.Array(GoogleAnalyticsAdminV1alphaRollupPropertySourceLink),
-      ),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaCreateRollupPropertyResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rollupProperty: Schema.optional(GoogleAnalyticsAdminV1alphaProperty),
+    rollupPropertySourceLinks: Schema.optional(
+      Schema.Array(GoogleAnalyticsAdminV1alphaRollupPropertySourceLink),
+    ),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaCreateRollupPropertyResponse",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaCreateRollupPropertyResponse>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaPropertySummary {
   /** Resource name of property referred to by this property summary Format: properties/{property_id} Example: "properties/1000" */
@@ -2915,17 +2652,13 @@ export interface GoogleAnalyticsAdminV1alphaPropertySummary {
     | (string & {});
 }
 
-export const GoogleAnalyticsAdminV1alphaPropertySummary: Schema.Schema<GoogleAnalyticsAdminV1alphaPropertySummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      property: Schema.optional(Schema.String),
-      parent: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      propertyType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaPropertySummary",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaPropertySummary>;
+export const GoogleAnalyticsAdminV1alphaPropertySummary =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    property: Schema.optional(Schema.String),
+    parent: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    propertyType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleAnalyticsAdminV1alphaPropertySummary" });
 
 export interface GoogleAnalyticsAdminV1alphaAccountSummary {
   /** List of summaries for child accounts of this account. */
@@ -2938,19 +2671,15 @@ export interface GoogleAnalyticsAdminV1alphaAccountSummary {
   account?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaAccountSummary: Schema.Schema<GoogleAnalyticsAdminV1alphaAccountSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      propertySummaries: Schema.optional(
-        Schema.Array(GoogleAnalyticsAdminV1alphaPropertySummary),
-      ),
-      displayName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      account: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaAccountSummary",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaAccountSummary>;
+export const GoogleAnalyticsAdminV1alphaAccountSummary =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    propertySummaries: Schema.optional(
+      Schema.Array(GoogleAnalyticsAdminV1alphaPropertySummary),
+    ),
+    displayName: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    account: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleAnalyticsAdminV1alphaAccountSummary" });
 
 export interface GoogleAnalyticsAdminV1alphaListAccountSummariesResponse {
   /** Account summaries of all accounts the caller has access to. */
@@ -2959,38 +2688,34 @@ export interface GoogleAnalyticsAdminV1alphaListAccountSummariesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaListAccountSummariesResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListAccountSummariesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accountSummaries: Schema.optional(
-        Schema.Array(GoogleAnalyticsAdminV1alphaAccountSummary),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaListAccountSummariesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountSummaries: Schema.optional(
+      Schema.Array(GoogleAnalyticsAdminV1alphaAccountSummary),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaListAccountSummariesResponse",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaListAccountSummariesResponse>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaAccessOrderByMetricOrderBy {
   /** A metric name in the request to order by. */
   metricName?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaAccessOrderByMetricOrderBy: Schema.Schema<GoogleAnalyticsAdminV1alphaAccessOrderByMetricOrderBy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metricName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaAccessOrderByMetricOrderBy =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    metricName: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaAccessOrderByMetricOrderBy",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaAccessOrderByMetricOrderBy>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaArchiveAudienceRequest {}
 
-export const GoogleAnalyticsAdminV1alphaArchiveAudienceRequest: Schema.Schema<GoogleAnalyticsAdminV1alphaArchiveAudienceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleAnalyticsAdminV1alphaArchiveAudienceRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaArchiveAudienceRequest",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaArchiveAudienceRequest>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaListReportingDataAnnotationsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -2999,46 +2724,38 @@ export interface GoogleAnalyticsAdminV1alphaListReportingDataAnnotationsResponse
   reportingDataAnnotations?: Array<GoogleAnalyticsAdminV1alphaReportingDataAnnotation>;
 }
 
-export const GoogleAnalyticsAdminV1alphaListReportingDataAnnotationsResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListReportingDataAnnotationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      reportingDataAnnotations: Schema.optional(
-        Schema.Array(GoogleAnalyticsAdminV1alphaReportingDataAnnotation),
-      ),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaListReportingDataAnnotationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    reportingDataAnnotations: Schema.optional(
+      Schema.Array(GoogleAnalyticsAdminV1alphaReportingDataAnnotation),
+    ),
+  }).annotate({
     identifier:
       "GoogleAnalyticsAdminV1alphaListReportingDataAnnotationsResponse",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaListReportingDataAnnotationsResponse>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaAccessDimensionValue {
   /** The dimension value. For example, this value may be 'France' for the 'country' dimension. */
   value?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaAccessDimensionValue: Schema.Schema<GoogleAnalyticsAdminV1alphaAccessDimensionValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaAccessDimensionValue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaAccessDimensionValue",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaAccessDimensionValue>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaAccessMetricValue {
   /** The measurement value. For example, this value may be '13'. */
   value?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaAccessMetricValue: Schema.Schema<GoogleAnalyticsAdminV1alphaAccessMetricValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaAccessMetricValue",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaAccessMetricValue>;
+export const GoogleAnalyticsAdminV1alphaAccessMetricValue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleAnalyticsAdminV1alphaAccessMetricValue" });
 
 export interface GoogleAnalyticsAdminV1alphaAccessRow {
   /** List of dimension values. These values are in the same order as specified in the request. */
@@ -3047,19 +2764,15 @@ export interface GoogleAnalyticsAdminV1alphaAccessRow {
   metricValues?: Array<GoogleAnalyticsAdminV1alphaAccessMetricValue>;
 }
 
-export const GoogleAnalyticsAdminV1alphaAccessRow: Schema.Schema<GoogleAnalyticsAdminV1alphaAccessRow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dimensionValues: Schema.optional(
-        Schema.Array(GoogleAnalyticsAdminV1alphaAccessDimensionValue),
-      ),
-      metricValues: Schema.optional(
-        Schema.Array(GoogleAnalyticsAdminV1alphaAccessMetricValue),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaAccessRow",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaAccessRow>;
+export const GoogleAnalyticsAdminV1alphaAccessRow =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dimensionValues: Schema.optional(
+      Schema.Array(GoogleAnalyticsAdminV1alphaAccessDimensionValue),
+    ),
+    metricValues: Schema.optional(
+      Schema.Array(GoogleAnalyticsAdminV1alphaAccessMetricValue),
+    ),
+  }).annotate({ identifier: "GoogleAnalyticsAdminV1alphaAccessRow" });
 
 export interface GoogleAnalyticsAdminV1alphaListCalculatedMetricsResponse {
   /** List of CalculatedMetrics. */
@@ -3068,17 +2781,15 @@ export interface GoogleAnalyticsAdminV1alphaListCalculatedMetricsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaListCalculatedMetricsResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListCalculatedMetricsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      calculatedMetrics: Schema.optional(
-        Schema.Array(GoogleAnalyticsAdminV1alphaCalculatedMetric),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaListCalculatedMetricsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    calculatedMetrics: Schema.optional(
+      Schema.Array(GoogleAnalyticsAdminV1alphaCalculatedMetric),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaListCalculatedMetricsResponse",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaListCalculatedMetricsResponse>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaListAccessBindingsResponse {
   /** List of AccessBindings. These will be ordered stably, but in an arbitrary order. */
@@ -3087,17 +2798,15 @@ export interface GoogleAnalyticsAdminV1alphaListAccessBindingsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaListAccessBindingsResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListAccessBindingsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accessBindings: Schema.optional(
-        Schema.Array(GoogleAnalyticsAdminV1alphaAccessBinding),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaListAccessBindingsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accessBindings: Schema.optional(
+      Schema.Array(GoogleAnalyticsAdminV1alphaAccessBinding),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaListAccessBindingsResponse",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaListAccessBindingsResponse>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClause {
   /** Required. The type for the filter clause. */
@@ -3110,17 +2819,15 @@ export interface GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClause {
   filterExpression?: GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression;
 }
 
-export const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClause: Schema.Schema<GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClause> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filterClauseType: Schema.optional(Schema.String),
-      filterExpression: Schema.optional(
-        GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression,
-      ),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClause =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filterClauseType: Schema.optional(Schema.String),
+    filterExpression: Schema.optional(
+      GoogleAnalyticsAdminV1alphaSubpropertyEventFilterExpression,
+    ),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClause",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClause>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaListRollupPropertySourceLinksResponse {
   /** List of RollupPropertySourceLinks. */
@@ -3129,25 +2836,22 @@ export interface GoogleAnalyticsAdminV1alphaListRollupPropertySourceLinksRespons
   nextPageToken?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaListRollupPropertySourceLinksResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListRollupPropertySourceLinksResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rollupPropertySourceLinks: Schema.optional(
-        Schema.Array(GoogleAnalyticsAdminV1alphaRollupPropertySourceLink),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaListRollupPropertySourceLinksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rollupPropertySourceLinks: Schema.optional(
+      Schema.Array(GoogleAnalyticsAdminV1alphaRollupPropertySourceLink),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleAnalyticsAdminV1alphaListRollupPropertySourceLinksResponse",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaListRollupPropertySourceLinksResponse>;
+  });
 
 export interface GoogleProtobufEmpty {}
 
-export const GoogleProtobufEmpty: Schema.Schema<GoogleProtobufEmpty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "GoogleProtobufEmpty",
-  }) as any as Schema.Schema<GoogleProtobufEmpty>;
+export const GoogleProtobufEmpty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "GoogleProtobufEmpty" });
 
 export interface GoogleAnalyticsAdminV1alphaAccessQuotaStatus {
   /** Quota consumed by this request. */
@@ -3156,15 +2860,11 @@ export interface GoogleAnalyticsAdminV1alphaAccessQuotaStatus {
   remaining?: number;
 }
 
-export const GoogleAnalyticsAdminV1alphaAccessQuotaStatus: Schema.Schema<GoogleAnalyticsAdminV1alphaAccessQuotaStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      consumed: Schema.optional(Schema.Number),
-      remaining: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaAccessQuotaStatus",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaAccessQuotaStatus>;
+export const GoogleAnalyticsAdminV1alphaAccessQuotaStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    consumed: Schema.optional(Schema.Number),
+    remaining: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleAnalyticsAdminV1alphaAccessQuotaStatus" });
 
 export interface GoogleAnalyticsAdminV1alphaListSubpropertySyncConfigsResponse {
   /** List of `SubpropertySyncConfig` resources. */
@@ -3173,17 +2873,15 @@ export interface GoogleAnalyticsAdminV1alphaListSubpropertySyncConfigsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaListSubpropertySyncConfigsResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListSubpropertySyncConfigsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subpropertySyncConfigs: Schema.optional(
-        Schema.Array(GoogleAnalyticsAdminV1alphaSubpropertySyncConfig),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaListSubpropertySyncConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subpropertySyncConfigs: Schema.optional(
+      Schema.Array(GoogleAnalyticsAdminV1alphaSubpropertySyncConfig),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaListSubpropertySyncConfigsResponse",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaListSubpropertySyncConfigsResponse>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaAccessQuota {
   /** Properties can use up to 50 concurrent requests. */
@@ -3198,28 +2896,22 @@ export interface GoogleAnalyticsAdminV1alphaAccessQuota {
   tokensPerProjectPerHour?: GoogleAnalyticsAdminV1alphaAccessQuotaStatus;
 }
 
-export const GoogleAnalyticsAdminV1alphaAccessQuota: Schema.Schema<GoogleAnalyticsAdminV1alphaAccessQuota> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      concurrentRequests: Schema.optional(
-        GoogleAnalyticsAdminV1alphaAccessQuotaStatus,
-      ),
-      serverErrorsPerProjectPerHour: Schema.optional(
-        GoogleAnalyticsAdminV1alphaAccessQuotaStatus,
-      ),
-      tokensPerDay: Schema.optional(
-        GoogleAnalyticsAdminV1alphaAccessQuotaStatus,
-      ),
-      tokensPerHour: Schema.optional(
-        GoogleAnalyticsAdminV1alphaAccessQuotaStatus,
-      ),
-      tokensPerProjectPerHour: Schema.optional(
-        GoogleAnalyticsAdminV1alphaAccessQuotaStatus,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaAccessQuota",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaAccessQuota>;
+export const GoogleAnalyticsAdminV1alphaAccessQuota =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    concurrentRequests: Schema.optional(
+      GoogleAnalyticsAdminV1alphaAccessQuotaStatus,
+    ),
+    serverErrorsPerProjectPerHour: Schema.optional(
+      GoogleAnalyticsAdminV1alphaAccessQuotaStatus,
+    ),
+    tokensPerDay: Schema.optional(GoogleAnalyticsAdminV1alphaAccessQuotaStatus),
+    tokensPerHour: Schema.optional(
+      GoogleAnalyticsAdminV1alphaAccessQuotaStatus,
+    ),
+    tokensPerProjectPerHour: Schema.optional(
+      GoogleAnalyticsAdminV1alphaAccessQuotaStatus,
+    ),
+  }).annotate({ identifier: "GoogleAnalyticsAdminV1alphaAccessQuota" });
 
 export interface GoogleAnalyticsAdminV1alphaListKeyEventsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -3228,17 +2920,15 @@ export interface GoogleAnalyticsAdminV1alphaListKeyEventsResponse {
   keyEvents?: Array<GoogleAnalyticsAdminV1alphaKeyEvent>;
 }
 
-export const GoogleAnalyticsAdminV1alphaListKeyEventsResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListKeyEventsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      keyEvents: Schema.optional(
-        Schema.Array(GoogleAnalyticsAdminV1alphaKeyEvent),
-      ),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaListKeyEventsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    keyEvents: Schema.optional(
+      Schema.Array(GoogleAnalyticsAdminV1alphaKeyEvent),
+    ),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaListKeyEventsResponse",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaListKeyEventsResponse>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaGlobalSiteTag {
   /** Immutable. JavaScript code snippet to be pasted as the first item into the head tag of every webpage to measure. */
@@ -3247,32 +2937,26 @@ export interface GoogleAnalyticsAdminV1alphaGlobalSiteTag {
   name?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaGlobalSiteTag: Schema.Schema<GoogleAnalyticsAdminV1alphaGlobalSiteTag> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      snippet: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaGlobalSiteTag",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaGlobalSiteTag>;
+export const GoogleAnalyticsAdminV1alphaGlobalSiteTag =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    snippet: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleAnalyticsAdminV1alphaGlobalSiteTag" });
 
 export interface GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalResponse {
   /** The DisplayVideo360AdvertiserLink created as a result of approving the proposal. */
   displayVideo360AdvertiserLink?: GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink;
 }
 
-export const GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayVideo360AdvertiserLink: Schema.optional(
-        GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink,
-      ),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayVideo360AdvertiserLink: Schema.optional(
+      GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink,
+    ),
+  }).annotate({
     identifier:
       "GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalResponse",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalResponse>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaSubpropertyEventFilter {
   /** Output only. Format: properties/{ordinary_property_id}/subpropertyEventFilters/{sub_property_event_filter} Example: properties/1234/subpropertyEventFilters/5678 */
@@ -3283,32 +2967,28 @@ export interface GoogleAnalyticsAdminV1alphaSubpropertyEventFilter {
   filterClauses?: Array<GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClause>;
 }
 
-export const GoogleAnalyticsAdminV1alphaSubpropertyEventFilter: Schema.Schema<GoogleAnalyticsAdminV1alphaSubpropertyEventFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      applyToProperty: Schema.optional(Schema.String),
-      filterClauses: Schema.optional(
-        Schema.Array(GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClause),
-      ),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaSubpropertyEventFilter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    applyToProperty: Schema.optional(Schema.String),
+    filterClauses: Schema.optional(
+      Schema.Array(GoogleAnalyticsAdminV1alphaSubpropertyEventFilterClause),
+    ),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaSubpropertyEventFilter",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaSubpropertyEventFilter>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaAccessDimensionHeader {
   /** The dimension's name; for example 'userEmail'. */
   dimensionName?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaAccessDimensionHeader: Schema.Schema<GoogleAnalyticsAdminV1alphaAccessDimensionHeader> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dimensionName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaAccessDimensionHeader =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dimensionName: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaAccessDimensionHeader",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaAccessDimensionHeader>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -3317,18 +2997,16 @@ export interface GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksRe
   displayVideo360AdvertiserLinks?: Array<GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink>;
 }
 
-export const GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      displayVideo360AdvertiserLinks: Schema.optional(
-        Schema.Array(GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink),
-      ),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    displayVideo360AdvertiserLinks: Schema.optional(
+      Schema.Array(GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLink),
+    ),
+  }).annotate({
     identifier:
       "GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksResponse",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinksResponse>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse {
   /** A list of secrets for the parent stream specified in the request. */
@@ -3337,46 +3015,40 @@ export interface GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsRespon
   nextPageToken?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      measurementProtocolSecrets: Schema.optional(
-        Schema.Array(GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    measurementProtocolSecrets: Schema.optional(
+      Schema.Array(GoogleAnalyticsAdminV1alphaMeasurementProtocolSecret),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaListMeasurementProtocolSecretsResponse>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaSubmitUserDeletionResponse {
   /** Marks the moment for which all visitor data before this point should be deleted. This is set to the time at which the deletion request was received. */
   deletionRequestTime?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaSubmitUserDeletionResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaSubmitUserDeletionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deletionRequestTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaSubmitUserDeletionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deletionRequestTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaSubmitUserDeletionResponse",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaSubmitUserDeletionResponse>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse {
   /** The param to be passed in the ToS link. */
   accountTicketId?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accountTicketId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountTicketId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaProvisionAccountTicketResponse>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaAccessOrderByDimensionOrderBy {
   /** A dimension name in the request to order by. */
@@ -3390,15 +3062,13 @@ export interface GoogleAnalyticsAdminV1alphaAccessOrderByDimensionOrderBy {
     | (string & {});
 }
 
-export const GoogleAnalyticsAdminV1alphaAccessOrderByDimensionOrderBy: Schema.Schema<GoogleAnalyticsAdminV1alphaAccessOrderByDimensionOrderBy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dimensionName: Schema.optional(Schema.String),
-      orderType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaAccessOrderByDimensionOrderBy =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dimensionName: Schema.optional(Schema.String),
+    orderType: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaAccessOrderByDimensionOrderBy",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaAccessOrderByDimensionOrderBy>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaAccessOrderBy {
   /** Sorts results by a dimension's values. */
@@ -3409,34 +3079,28 @@ export interface GoogleAnalyticsAdminV1alphaAccessOrderBy {
   metric?: GoogleAnalyticsAdminV1alphaAccessOrderByMetricOrderBy;
 }
 
-export const GoogleAnalyticsAdminV1alphaAccessOrderBy: Schema.Schema<GoogleAnalyticsAdminV1alphaAccessOrderBy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dimension: Schema.optional(
-        GoogleAnalyticsAdminV1alphaAccessOrderByDimensionOrderBy,
-      ),
-      desc: Schema.optional(Schema.Boolean),
-      metric: Schema.optional(
-        GoogleAnalyticsAdminV1alphaAccessOrderByMetricOrderBy,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaAccessOrderBy",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaAccessOrderBy>;
+export const GoogleAnalyticsAdminV1alphaAccessOrderBy =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dimension: Schema.optional(
+      GoogleAnalyticsAdminV1alphaAccessOrderByDimensionOrderBy,
+    ),
+    desc: Schema.optional(Schema.Boolean),
+    metric: Schema.optional(
+      GoogleAnalyticsAdminV1alphaAccessOrderByMetricOrderBy,
+    ),
+  }).annotate({ identifier: "GoogleAnalyticsAdminV1alphaAccessOrderBy" });
 
 export interface GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequest {
   /** Required. Formats: - accounts/{account}/accessBindings/{accessBinding} - properties/{property}/accessBindings/{accessBinding} */
   name?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequest: Schema.Schema<GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequest",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequest>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest {
   /** The account to create. */
@@ -3445,31 +3109,27 @@ export interface GoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest {
   redirectUri?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest: Schema.Schema<GoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      account: Schema.optional(GoogleAnalyticsAdminV1alphaAccount),
-      redirectUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    account: Schema.optional(GoogleAnalyticsAdminV1alphaAccount),
+    redirectUri: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaProvisionAccountTicketRequest>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsResponse {
   /** The access bindings updated. */
   accessBindings?: Array<GoogleAnalyticsAdminV1alphaAccessBinding>;
 }
 
-export const GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accessBindings: Schema.optional(
-        Schema.Array(GoogleAnalyticsAdminV1alphaAccessBinding),
-      ),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accessBindings: Schema.optional(
+      Schema.Array(GoogleAnalyticsAdminV1alphaAccessBinding),
+    ),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsResponse",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaBatchUpdateAccessBindingsResponse>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaListAdSenseLinksResponse {
   /** List of AdSenseLinks. */
@@ -3478,25 +3138,23 @@ export interface GoogleAnalyticsAdminV1alphaListAdSenseLinksResponse {
   nextPageToken?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaListAdSenseLinksResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListAdSenseLinksResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      adsenseLinks: Schema.optional(
-        Schema.Array(GoogleAnalyticsAdminV1alphaAdSenseLink),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaListAdSenseLinksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    adsenseLinks: Schema.optional(
+      Schema.Array(GoogleAnalyticsAdminV1alphaAdSenseLink),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaListAdSenseLinksResponse",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaListAdSenseLinksResponse>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaCancelDisplayVideo360AdvertiserLinkProposalRequest {}
 
-export const GoogleAnalyticsAdminV1alphaCancelDisplayVideo360AdvertiserLinkProposalRequest: Schema.Schema<GoogleAnalyticsAdminV1alphaCancelDisplayVideo360AdvertiserLinkProposalRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleAnalyticsAdminV1alphaCancelDisplayVideo360AdvertiserLinkProposalRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleAnalyticsAdminV1alphaCancelDisplayVideo360AdvertiserLinkProposalRequest",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaCancelDisplayVideo360AdvertiserLinkProposalRequest>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaListChannelGroupsResponse {
   /** List of ChannelGroup. These will be ordered stably, but in an arbitrary order. */
@@ -3505,17 +3163,15 @@ export interface GoogleAnalyticsAdminV1alphaListChannelGroupsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaListChannelGroupsResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListChannelGroupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      channelGroups: Schema.optional(
-        Schema.Array(GoogleAnalyticsAdminV1alphaChannelGroup),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaListChannelGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    channelGroups: Schema.optional(
+      Schema.Array(GoogleAnalyticsAdminV1alphaChannelGroup),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaListChannelGroupsResponse",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaListChannelGroupsResponse>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaProvisionSubpropertyResponse {
   /** The created subproperty. */
@@ -3524,31 +3180,25 @@ export interface GoogleAnalyticsAdminV1alphaProvisionSubpropertyResponse {
   subpropertyEventFilter?: GoogleAnalyticsAdminV1alphaSubpropertyEventFilter;
 }
 
-export const GoogleAnalyticsAdminV1alphaProvisionSubpropertyResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaProvisionSubpropertyResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subproperty: Schema.optional(GoogleAnalyticsAdminV1alphaProperty),
-      subpropertyEventFilter: Schema.optional(
-        GoogleAnalyticsAdminV1alphaSubpropertyEventFilter,
-      ),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaProvisionSubpropertyResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subproperty: Schema.optional(GoogleAnalyticsAdminV1alphaProperty),
+    subpropertyEventFilter: Schema.optional(
+      GoogleAnalyticsAdminV1alphaSubpropertyEventFilter,
+    ),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaProvisionSubpropertyResponse",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaProvisionSubpropertyResponse>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaAccessMetricHeader {
   /** The metric's name; for example 'accessCount'. */
   metricName?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaAccessMetricHeader: Schema.Schema<GoogleAnalyticsAdminV1alphaAccessMetricHeader> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metricName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaAccessMetricHeader",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaAccessMetricHeader>;
+export const GoogleAnalyticsAdminV1alphaAccessMetricHeader =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    metricName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleAnalyticsAdminV1alphaAccessMetricHeader" });
 
 export interface GoogleAnalyticsAdminV1alphaAccessDateRange {
   /** The inclusive start date for the query in the format `YYYY-MM-DD`. Cannot be after `endDate`. The format `NdaysAgo`, `yesterday`, or `today` is also accepted, and in that case, the date is inferred based on the current time in the request's time zone. */
@@ -3557,31 +3207,25 @@ export interface GoogleAnalyticsAdminV1alphaAccessDateRange {
   endDate?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaAccessDateRange: Schema.Schema<GoogleAnalyticsAdminV1alphaAccessDateRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startDate: Schema.optional(Schema.String),
-      endDate: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaAccessDateRange",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaAccessDateRange>;
+export const GoogleAnalyticsAdminV1alphaAccessDateRange =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startDate: Schema.optional(Schema.String),
+    endDate: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleAnalyticsAdminV1alphaAccessDateRange" });
 
 export interface GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsResponse {
   /** The access bindings created. */
   accessBindings?: Array<GoogleAnalyticsAdminV1alphaAccessBinding>;
 }
 
-export const GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accessBindings: Schema.optional(
-        Schema.Array(GoogleAnalyticsAdminV1alphaAccessBinding),
-      ),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accessBindings: Schema.optional(
+      Schema.Array(GoogleAnalyticsAdminV1alphaAccessBinding),
+    ),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsResponse",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsResponse>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaListCustomMetricsResponse {
   /** List of CustomMetrics. */
@@ -3590,33 +3234,29 @@ export interface GoogleAnalyticsAdminV1alphaListCustomMetricsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaListCustomMetricsResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListCustomMetricsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customMetrics: Schema.optional(
-        Schema.Array(GoogleAnalyticsAdminV1alphaCustomMetric),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaListCustomMetricsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customMetrics: Schema.optional(
+      Schema.Array(GoogleAnalyticsAdminV1alphaCustomMetric),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaListCustomMetricsResponse",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaListCustomMetricsResponse>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaBatchDeleteAccessBindingsRequest {
   /** Required. The requests specifying the access bindings to delete. A maximum of 1000 access bindings can be deleted in a batch. */
   requests?: Array<GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequest>;
 }
 
-export const GoogleAnalyticsAdminV1alphaBatchDeleteAccessBindingsRequest: Schema.Schema<GoogleAnalyticsAdminV1alphaBatchDeleteAccessBindingsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requests: Schema.optional(
-        Schema.Array(GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequest),
-      ),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaBatchDeleteAccessBindingsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requests: Schema.optional(
+      Schema.Array(GoogleAnalyticsAdminV1alphaDeleteAccessBindingRequest),
+    ),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaBatchDeleteAccessBindingsRequest",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaBatchDeleteAccessBindingsRequest>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse {
   /** Results that were accessible to the caller. */
@@ -3625,17 +3265,15 @@ export interface GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      changeHistoryEvents: Schema.optional(
-        Schema.Array(GoogleAnalyticsAdminV1alphaChangeHistoryEvent),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    changeHistoryEvents: Schema.optional(
+      Schema.Array(GoogleAnalyticsAdminV1alphaChangeHistoryEvent),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaSearchChangeHistoryEventsResponse>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse {
   /** List of GoogleAdsLinks. */
@@ -3644,17 +3282,15 @@ export interface GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse {
   nextPageToken?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      googleAdsLinks: Schema.optional(
-        Schema.Array(GoogleAnalyticsAdminV1alphaGoogleAdsLink),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    googleAdsLinks: Schema.optional(
+      Schema.Array(GoogleAnalyticsAdminV1alphaGoogleAdsLink),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaListGoogleAdsLinksResponse>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaListSearchAds360LinksResponse {
   /** List of SearchAds360Links. */
@@ -3663,17 +3299,15 @@ export interface GoogleAnalyticsAdminV1alphaListSearchAds360LinksResponse {
   nextPageToken?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaListSearchAds360LinksResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListSearchAds360LinksResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      searchAds360Links: Schema.optional(
-        Schema.Array(GoogleAnalyticsAdminV1alphaSearchAds360Link),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaListSearchAds360LinksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    searchAds360Links: Schema.optional(
+      Schema.Array(GoogleAnalyticsAdminV1alphaSearchAds360Link),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaListSearchAds360LinksResponse",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaListSearchAds360LinksResponse>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaListAudiencesResponse {
   /** List of Audiences. */
@@ -3682,17 +3316,15 @@ export interface GoogleAnalyticsAdminV1alphaListAudiencesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaListAudiencesResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListAudiencesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      audiences: Schema.optional(
-        Schema.Array(GoogleAnalyticsAdminV1alphaAudience),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaListAudiencesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    audiences: Schema.optional(
+      Schema.Array(GoogleAnalyticsAdminV1alphaAudience),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaListAudiencesResponse",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaListAudiencesResponse>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkProposalsResponse {
   /** List of DisplayVideo360AdvertiserLinkProposals. */
@@ -3701,48 +3333,38 @@ export interface GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkPro
   nextPageToken?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkProposalsResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkProposalsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayVideo360AdvertiserLinkProposals: Schema.optional(
-        Schema.Array(
-          GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal,
-        ),
+export const GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkProposalsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayVideo360AdvertiserLinkProposals: Schema.optional(
+      Schema.Array(
+        GoogleAnalyticsAdminV1alphaDisplayVideo360AdvertiserLinkProposal,
       ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkProposalsResponse",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaListDisplayVideo360AdvertiserLinkProposalsResponse>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaAccessDimension {
   /** The API name of the dimension. See [Data Access Schema](https://developers.google.com/analytics/devguides/config/admin/v1/access-api-schema) for the list of dimensions supported in this API. Dimensions are referenced by name in `dimensionFilter` and `orderBys`. */
   dimensionName?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaAccessDimension: Schema.Schema<GoogleAnalyticsAdminV1alphaAccessDimension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dimensionName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaAccessDimension",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaAccessDimension>;
+export const GoogleAnalyticsAdminV1alphaAccessDimension =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dimensionName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleAnalyticsAdminV1alphaAccessDimension" });
 
 export interface GoogleAnalyticsAdminV1alphaAccessMetric {
   /** The API name of the metric. See [Data Access Schema](https://developers.google.com/analytics/devguides/config/admin/v1/access-api-schema) for the list of metrics supported in this API. Metrics are referenced by name in `metricFilter` & `orderBys`. */
   metricName?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaAccessMetric: Schema.Schema<GoogleAnalyticsAdminV1alphaAccessMetric> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metricName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsAdminV1alphaAccessMetric",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaAccessMetric>;
+export const GoogleAnalyticsAdminV1alphaAccessMetric =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    metricName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleAnalyticsAdminV1alphaAccessMetric" });
 
 export interface GoogleAnalyticsAdminV1alphaRunAccessReportRequest {
   /** Dimension filters let you restrict report response to specific dimension values which match the filter. For example, filtering on access records of a single user. To learn more, see [Fundamentals of Dimension Filters](https://developers.google.com/analytics/devguides/reporting/data/v1/basics#dimension_filters) for examples. Metrics cannot be used in this filter. */
@@ -3771,59 +3393,55 @@ export interface GoogleAnalyticsAdminV1alphaRunAccessReportRequest {
   returnEntityQuota?: boolean;
 }
 
-export const GoogleAnalyticsAdminV1alphaRunAccessReportRequest: Schema.Schema<GoogleAnalyticsAdminV1alphaRunAccessReportRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dimensionFilter: Schema.optional(
-        GoogleAnalyticsAdminV1alphaAccessFilterExpression,
-      ),
-      offset: Schema.optional(Schema.String),
-      limit: Schema.optional(Schema.String),
-      timeZone: Schema.optional(Schema.String),
-      metricFilter: Schema.optional(
-        GoogleAnalyticsAdminV1alphaAccessFilterExpression,
-      ),
-      expandGroups: Schema.optional(Schema.Boolean),
-      includeAllUsers: Schema.optional(Schema.Boolean),
-      dimensions: Schema.optional(
-        Schema.Array(GoogleAnalyticsAdminV1alphaAccessDimension),
-      ),
-      metrics: Schema.optional(
-        Schema.Array(GoogleAnalyticsAdminV1alphaAccessMetric),
-      ),
-      dateRanges: Schema.optional(
-        Schema.Array(GoogleAnalyticsAdminV1alphaAccessDateRange),
-      ),
-      orderBys: Schema.optional(
-        Schema.Array(GoogleAnalyticsAdminV1alphaAccessOrderBy),
-      ),
-      returnEntityQuota: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaRunAccessReportRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dimensionFilter: Schema.optional(
+      GoogleAnalyticsAdminV1alphaAccessFilterExpression,
+    ),
+    offset: Schema.optional(Schema.String),
+    limit: Schema.optional(Schema.String),
+    timeZone: Schema.optional(Schema.String),
+    metricFilter: Schema.optional(
+      GoogleAnalyticsAdminV1alphaAccessFilterExpression,
+    ),
+    expandGroups: Schema.optional(Schema.Boolean),
+    includeAllUsers: Schema.optional(Schema.Boolean),
+    dimensions: Schema.optional(
+      Schema.Array(GoogleAnalyticsAdminV1alphaAccessDimension),
+    ),
+    metrics: Schema.optional(
+      Schema.Array(GoogleAnalyticsAdminV1alphaAccessMetric),
+    ),
+    dateRanges: Schema.optional(
+      Schema.Array(GoogleAnalyticsAdminV1alphaAccessDateRange),
+    ),
+    orderBys: Schema.optional(
+      Schema.Array(GoogleAnalyticsAdminV1alphaAccessOrderBy),
+    ),
+    returnEntityQuota: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaRunAccessReportRequest",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaRunAccessReportRequest>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaArchiveCustomDimensionRequest {}
 
-export const GoogleAnalyticsAdminV1alphaArchiveCustomDimensionRequest: Schema.Schema<GoogleAnalyticsAdminV1alphaArchiveCustomDimensionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleAnalyticsAdminV1alphaArchiveCustomDimensionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaArchiveCustomDimensionRequest",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaArchiveCustomDimensionRequest>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest {
   /** Required. An acknowledgement that the caller of this method understands the terms of user data collection. This field must contain the exact value: "I acknowledge that I have the necessary privacy disclosures and rights from my end users for the collection and processing of their data, including the association of such data with the visitation information Google Analytics collects from my site and/or app property." */
   acknowledgement?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest: Schema.Schema<GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      acknowledgement: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    acknowledgement: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaAcknowledgeUserDataCollectionRequest>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaSubmitUserDeletionRequest {
   /** Google Analytics [client ID](https://support.google.com/analytics/answer/11593727). */
@@ -3836,17 +3454,15 @@ export interface GoogleAnalyticsAdminV1alphaSubmitUserDeletionRequest {
   appInstanceId?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaSubmitUserDeletionRequest: Schema.Schema<GoogleAnalyticsAdminV1alphaSubmitUserDeletionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clientId: Schema.optional(Schema.String),
-      userProvidedData: Schema.optional(Schema.String),
-      userId: Schema.optional(Schema.String),
-      appInstanceId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaSubmitUserDeletionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    clientId: Schema.optional(Schema.String),
+    userProvidedData: Schema.optional(Schema.String),
+    userId: Schema.optional(Schema.String),
+    appInstanceId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaSubmitUserDeletionRequest",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaSubmitUserDeletionRequest>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaListDataStreamsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -3855,57 +3471,51 @@ export interface GoogleAnalyticsAdminV1alphaListDataStreamsResponse {
   dataStreams?: Array<GoogleAnalyticsAdminV1alphaDataStream>;
 }
 
-export const GoogleAnalyticsAdminV1alphaListDataStreamsResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListDataStreamsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      dataStreams: Schema.optional(
-        Schema.Array(GoogleAnalyticsAdminV1alphaDataStream),
-      ),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaListDataStreamsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    dataStreams: Schema.optional(
+      Schema.Array(GoogleAnalyticsAdminV1alphaDataStream),
+    ),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaListDataStreamsResponse",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaListDataStreamsResponse>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest {}
 
-export const GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest: Schema.Schema<GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaApproveDisplayVideo360AdvertiserLinkProposalRequest>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsRequest {
   /** Required. The requests specifying the access bindings to create. A maximum of 1000 access bindings can be created in a batch. */
   requests?: Array<GoogleAnalyticsAdminV1alphaCreateAccessBindingRequest>;
 }
 
-export const GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsRequest: Schema.Schema<GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requests: Schema.optional(
-        Schema.Array(GoogleAnalyticsAdminV1alphaCreateAccessBindingRequest),
-      ),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requests: Schema.optional(
+      Schema.Array(GoogleAnalyticsAdminV1alphaCreateAccessBindingRequest),
+    ),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsRequest",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaBatchCreateAccessBindingsRequest>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaBatchGetAccessBindingsResponse {
   /** The requested access bindings. */
   accessBindings?: Array<GoogleAnalyticsAdminV1alphaAccessBinding>;
 }
 
-export const GoogleAnalyticsAdminV1alphaBatchGetAccessBindingsResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaBatchGetAccessBindingsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accessBindings: Schema.optional(
-        Schema.Array(GoogleAnalyticsAdminV1alphaAccessBinding),
-      ),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaBatchGetAccessBindingsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accessBindings: Schema.optional(
+      Schema.Array(GoogleAnalyticsAdminV1alphaAccessBinding),
+    ),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaBatchGetAccessBindingsResponse",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaBatchGetAccessBindingsResponse>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequest {
   /** Required. The subproperty to create. */
@@ -3920,20 +3530,16 @@ export interface GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequest {
     | (string & {});
 }
 
-export const GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequest: Schema.Schema<GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subproperty: Schema.optional(GoogleAnalyticsAdminV1alphaProperty),
-      subpropertyEventFilter: Schema.optional(
-        GoogleAnalyticsAdminV1alphaSubpropertyEventFilter,
-      ),
-      customDimensionAndMetricSynchronizationMode: Schema.optional(
-        Schema.String,
-      ),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subproperty: Schema.optional(GoogleAnalyticsAdminV1alphaProperty),
+    subpropertyEventFilter: Schema.optional(
+      GoogleAnalyticsAdminV1alphaSubpropertyEventFilter,
+    ),
+    customDimensionAndMetricSynchronizationMode: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequest",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaProvisionSubpropertyRequest>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaListSubpropertyEventFiltersResponse {
   /** List of subproperty event filters. */
@@ -3942,18 +3548,16 @@ export interface GoogleAnalyticsAdminV1alphaListSubpropertyEventFiltersResponse 
   nextPageToken?: string;
 }
 
-export const GoogleAnalyticsAdminV1alphaListSubpropertyEventFiltersResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaListSubpropertyEventFiltersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subpropertyEventFilters: Schema.optional(
-        Schema.Array(GoogleAnalyticsAdminV1alphaSubpropertyEventFilter),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaListSubpropertyEventFiltersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subpropertyEventFilters: Schema.optional(
+      Schema.Array(GoogleAnalyticsAdminV1alphaSubpropertyEventFilter),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleAnalyticsAdminV1alphaListSubpropertyEventFiltersResponse",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaListSubpropertyEventFiltersResponse>;
+  });
 
 export interface GoogleAnalyticsAdminV1alphaRunAccessReportResponse {
   /** The header for a column in the report that corresponds to a specific metric. The number of MetricHeaders and ordering of MetricHeaders matches the metrics present in rows. */
@@ -3968,22 +3572,20 @@ export interface GoogleAnalyticsAdminV1alphaRunAccessReportResponse {
   dimensionHeaders?: Array<GoogleAnalyticsAdminV1alphaAccessDimensionHeader>;
 }
 
-export const GoogleAnalyticsAdminV1alphaRunAccessReportResponse: Schema.Schema<GoogleAnalyticsAdminV1alphaRunAccessReportResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metricHeaders: Schema.optional(
-        Schema.Array(GoogleAnalyticsAdminV1alphaAccessMetricHeader),
-      ),
-      rows: Schema.optional(Schema.Array(GoogleAnalyticsAdminV1alphaAccessRow)),
-      rowCount: Schema.optional(Schema.Number),
-      quota: Schema.optional(GoogleAnalyticsAdminV1alphaAccessQuota),
-      dimensionHeaders: Schema.optional(
-        Schema.Array(GoogleAnalyticsAdminV1alphaAccessDimensionHeader),
-      ),
-    }),
-  ).annotate({
+export const GoogleAnalyticsAdminV1alphaRunAccessReportResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    metricHeaders: Schema.optional(
+      Schema.Array(GoogleAnalyticsAdminV1alphaAccessMetricHeader),
+    ),
+    rows: Schema.optional(Schema.Array(GoogleAnalyticsAdminV1alphaAccessRow)),
+    rowCount: Schema.optional(Schema.Number),
+    quota: Schema.optional(GoogleAnalyticsAdminV1alphaAccessQuota),
+    dimensionHeaders: Schema.optional(
+      Schema.Array(GoogleAnalyticsAdminV1alphaAccessDimensionHeader),
+    ),
+  }).annotate({
     identifier: "GoogleAnalyticsAdminV1alphaRunAccessReportResponse",
-  }) as any as Schema.Schema<GoogleAnalyticsAdminV1alphaRunAccessReportResponse>;
+  });
 
 // ==========================================================================
 // Operations

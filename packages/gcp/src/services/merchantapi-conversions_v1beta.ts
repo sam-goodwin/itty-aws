@@ -29,15 +29,10 @@ export interface ConversionType {
   report?: boolean;
 }
 
-export const ConversionType: Schema.Schema<ConversionType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      report: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ConversionType",
-  }) as any as Schema.Schema<ConversionType>;
+export const ConversionType = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  report: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "ConversionType" });
 
 export interface AttributionSettings {
   /** Immutable. Unordered list. List of different conversion types a conversion event can be classified as. A standard "purchase" type will be automatically created if this list is empty at creation time. */
@@ -57,16 +52,11 @@ export interface AttributionSettings {
     | (string & {});
 }
 
-export const AttributionSettings: Schema.Schema<AttributionSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conversionType: Schema.optional(Schema.Array(ConversionType)),
-      attributionLookbackWindowDays: Schema.optional(Schema.Number),
-      attributionModel: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AttributionSettings",
-  }) as any as Schema.Schema<AttributionSettings>;
+export const AttributionSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  conversionType: Schema.optional(Schema.Array(ConversionType)),
+  attributionLookbackWindowDays: Schema.optional(Schema.Number),
+  attributionModel: Schema.optional(Schema.String),
+}).annotate({ identifier: "AttributionSettings" });
 
 export interface MerchantCenterDestination {
   /** Output only. Merchant Center Destination ID. */
@@ -79,17 +69,13 @@ export interface MerchantCenterDestination {
   displayName?: string;
 }
 
-export const MerchantCenterDestination: Schema.Schema<MerchantCenterDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      destination: Schema.optional(Schema.String),
-      currencyCode: Schema.optional(Schema.String),
-      attributionSettings: Schema.optional(AttributionSettings),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MerchantCenterDestination",
-  }) as any as Schema.Schema<MerchantCenterDestination>;
+export const MerchantCenterDestination =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    destination: Schema.optional(Schema.String),
+    currencyCode: Schema.optional(Schema.String),
+    attributionSettings: Schema.optional(AttributionSettings),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "MerchantCenterDestination" });
 
 export interface GoogleAnalyticsLink {
   /** Required. Immutable. ID of the Google Analytics property the merchant is linked to. */
@@ -100,16 +86,11 @@ export interface GoogleAnalyticsLink {
   property?: string;
 }
 
-export const GoogleAnalyticsLink: Schema.Schema<GoogleAnalyticsLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      propertyId: Schema.optional(Schema.String),
-      attributionSettings: Schema.optional(AttributionSettings),
-      property: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsLink",
-  }) as any as Schema.Schema<GoogleAnalyticsLink>;
+export const GoogleAnalyticsLink = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  propertyId: Schema.optional(Schema.String),
+  attributionSettings: Schema.optional(AttributionSettings),
+  property: Schema.optional(Schema.String),
+}).annotate({ identifier: "GoogleAnalyticsLink" });
 
 export interface ConversionSource {
   /** Output only. Controller of the conversion source. */
@@ -135,19 +116,14 @@ export interface ConversionSource {
     | (string & {});
 }
 
-export const ConversionSource: Schema.Schema<ConversionSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      controller: Schema.optional(Schema.String),
-      googleAnalyticsLink: Schema.optional(GoogleAnalyticsLink),
-      expireTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      merchantCenterDestination: Schema.optional(MerchantCenterDestination),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConversionSource",
-  }) as any as Schema.Schema<ConversionSource>;
+export const ConversionSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  controller: Schema.optional(Schema.String),
+  googleAnalyticsLink: Schema.optional(GoogleAnalyticsLink),
+  expireTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  merchantCenterDestination: Schema.optional(MerchantCenterDestination),
+  state: Schema.optional(Schema.String),
+}).annotate({ identifier: "ConversionSource" });
 
 export interface ProductChange {
   /** Countries that have the change (if applicable). Represented in the ISO 3166 format. */
@@ -181,17 +157,12 @@ export interface ProductChange {
   newValue?: string;
 }
 
-export const ProductChange: Schema.Schema<ProductChange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      regionCode: Schema.optional(Schema.String),
-      oldValue: Schema.optional(Schema.String),
-      reportingContext: Schema.optional(Schema.String),
-      newValue: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProductChange",
-  }) as any as Schema.Schema<ProductChange>;
+export const ProductChange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  regionCode: Schema.optional(Schema.String),
+  oldValue: Schema.optional(Schema.String),
+  reportingContext: Schema.optional(Schema.String),
+  newValue: Schema.optional(Schema.String),
+}).annotate({ identifier: "ProductChange" });
 
 export interface ListConversionSourcesResponse {
   /** List of conversion sources. */
@@ -200,29 +171,24 @@ export interface ListConversionSourcesResponse {
   nextPageToken?: string;
 }
 
-export const ListConversionSourcesResponse: Schema.Schema<ListConversionSourcesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conversionSources: Schema.optional(Schema.Array(ConversionSource)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListConversionSourcesResponse",
-  }) as any as Schema.Schema<ListConversionSourcesResponse>;
+export const ListConversionSourcesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conversionSources: Schema.optional(Schema.Array(ConversionSource)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListConversionSourcesResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface UndeleteConversionSourceRequest {}
 
-export const UndeleteConversionSourceRequest: Schema.Schema<UndeleteConversionSourceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const UndeleteConversionSourceRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UndeleteConversionSourceRequest",
-  }) as any as Schema.Schema<UndeleteConversionSourceRequest>;
+  });
 
 export interface ProductStatusChangeMessage {
   /** The target account that owns the entity that changed. Format : `accounts/{merchant_id}` */
@@ -245,22 +211,18 @@ export interface ProductStatusChangeMessage {
   resourceId?: string;
 }
 
-export const ProductStatusChangeMessage: Schema.Schema<ProductStatusChangeMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      account: Schema.optional(Schema.String),
-      resourceType: Schema.optional(Schema.String),
-      changes: Schema.optional(Schema.Array(ProductChange)),
-      managingAccount: Schema.optional(Schema.String),
-      resource: Schema.optional(Schema.String),
-      expirationTime: Schema.optional(Schema.String),
-      attribute: Schema.optional(Schema.String),
-      eventTime: Schema.optional(Schema.String),
-      resourceId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProductStatusChangeMessage",
-  }) as any as Schema.Schema<ProductStatusChangeMessage>;
+export const ProductStatusChangeMessage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    account: Schema.optional(Schema.String),
+    resourceType: Schema.optional(Schema.String),
+    changes: Schema.optional(Schema.Array(ProductChange)),
+    managingAccount: Schema.optional(Schema.String),
+    resource: Schema.optional(Schema.String),
+    expirationTime: Schema.optional(Schema.String),
+    attribute: Schema.optional(Schema.String),
+    eventTime: Schema.optional(Schema.String),
+    resourceId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ProductStatusChangeMessage" });
 
 // ==========================================================================
 // Operations

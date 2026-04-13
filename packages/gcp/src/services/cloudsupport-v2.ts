@@ -29,15 +29,10 @@ export interface DownloadParameters {
   ignoreRange?: boolean;
 }
 
-export const DownloadParameters: Schema.Schema<DownloadParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      allowGzipCompression: Schema.optional(Schema.Boolean),
-      ignoreRange: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "DownloadParameters",
-  }) as any as Schema.Schema<DownloadParameters>;
+export const DownloadParameters = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  allowGzipCompression: Schema.optional(Schema.Boolean),
+  ignoreRange: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "DownloadParameters" });
 
 export interface Actor {
   /** The name to display for the actor. If not provided, it is inferred from credentials supplied during case creation. When an email is provided, a display name must also be provided. This will be obfuscated if the user is a Google Support agent. */
@@ -50,15 +45,12 @@ export interface Actor {
   username?: string;
 }
 
-export const Actor: Schema.Schema<Actor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      googleSupport: Schema.optional(Schema.Boolean),
-      email: Schema.optional(Schema.String),
-      username: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Actor" }) as any as Schema.Schema<Actor>;
+export const Actor = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+  googleSupport: Schema.optional(Schema.Boolean),
+  email: Schema.optional(Schema.String),
+  username: Schema.optional(Schema.String),
+}).annotate({ identifier: "Actor" });
 
 export interface Attachment {
   /** Output only. The time at which the attachment was created. */
@@ -75,17 +67,14 @@ export interface Attachment {
   filename?: string;
 }
 
-export const Attachment: Schema.Schema<Attachment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      creator: Schema.optional(Actor),
-      mimeType: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      sizeBytes: Schema.optional(Schema.String),
-      filename: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Attachment" }) as any as Schema.Schema<Attachment>;
+export const Attachment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createTime: Schema.optional(Schema.String),
+  creator: Schema.optional(Actor),
+  mimeType: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  sizeBytes: Schema.optional(Schema.String),
+  filename: Schema.optional(Schema.String),
+}).annotate({ identifier: "Attachment" });
 
 export interface Comment {
   /** Output only. Identifier. The resource name of the comment. */
@@ -100,16 +89,13 @@ export interface Comment {
   creator?: Actor;
 }
 
-export const Comment: Schema.Schema<Comment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      plainTextBody: Schema.optional(Schema.String),
-      body: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      creator: Schema.optional(Actor),
-    }),
-  ).annotate({ identifier: "Comment" }) as any as Schema.Schema<Comment>;
+export const Comment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  plainTextBody: Schema.optional(Schema.String),
+  body: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  creator: Schema.optional(Actor),
+}).annotate({ identifier: "Comment" });
 
 export interface ObjectId {
   /** # gdata.* are outside protos with mising documentation */
@@ -120,14 +106,11 @@ export interface ObjectId {
   generation?: string;
 }
 
-export const ObjectId: Schema.Schema<ObjectId> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bucketName: Schema.optional(Schema.String),
-      objectName: Schema.optional(Schema.String),
-      generation: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "ObjectId" }) as any as Schema.Schema<ObjectId>;
+export const ObjectId = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bucketName: Schema.optional(Schema.String),
+  objectName: Schema.optional(Schema.String),
+  generation: Schema.optional(Schema.String),
+}).annotate({ identifier: "ObjectId" });
 
 export interface Blobstore2Info {
   /** # gdata.* are outside protos with mising documentation */
@@ -146,20 +129,15 @@ export interface Blobstore2Info {
   blobId?: string;
 }
 
-export const Blobstore2Info: Schema.Schema<Blobstore2Info> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      downloadExternalReadToken: Schema.optional(Schema.String),
-      readToken: Schema.optional(Schema.String),
-      uploadMetadataContainer: Schema.optional(Schema.String),
-      downloadReadHandle: Schema.optional(Schema.String),
-      uploadFragmentListCreationInfo: Schema.optional(Schema.String),
-      blobGeneration: Schema.optional(Schema.String),
-      blobId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Blobstore2Info",
-  }) as any as Schema.Schema<Blobstore2Info>;
+export const Blobstore2Info = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  downloadExternalReadToken: Schema.optional(Schema.String),
+  readToken: Schema.optional(Schema.String),
+  uploadMetadataContainer: Schema.optional(Schema.String),
+  downloadReadHandle: Schema.optional(Schema.String),
+  uploadFragmentListCreationInfo: Schema.optional(Schema.String),
+  blobGeneration: Schema.optional(Schema.String),
+  blobId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Blobstore2Info" });
 
 export interface CompositeMedia {
   /** # gdata.* are outside protos with mising documentation */
@@ -192,24 +170,19 @@ export interface CompositeMedia {
   sha1Hash?: string;
 }
 
-export const CompositeMedia: Schema.Schema<CompositeMedia> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      path: Schema.optional(Schema.String),
-      crc32cHash: Schema.optional(Schema.Number),
-      length: Schema.optional(Schema.String),
-      referenceType: Schema.optional(Schema.String),
-      inline: Schema.optional(Schema.String),
-      md5Hash: Schema.optional(Schema.String),
-      objectId: Schema.optional(ObjectId),
-      blobRef: Schema.optional(Schema.String),
-      blobstore2Info: Schema.optional(Blobstore2Info),
-      cosmoBinaryReference: Schema.optional(Schema.String),
-      sha1Hash: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CompositeMedia",
-  }) as any as Schema.Schema<CompositeMedia>;
+export const CompositeMedia = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  path: Schema.optional(Schema.String),
+  crc32cHash: Schema.optional(Schema.Number),
+  length: Schema.optional(Schema.String),
+  referenceType: Schema.optional(Schema.String),
+  inline: Schema.optional(Schema.String),
+  md5Hash: Schema.optional(Schema.String),
+  objectId: Schema.optional(ObjectId),
+  blobRef: Schema.optional(Schema.String),
+  blobstore2Info: Schema.optional(Blobstore2Info),
+  cosmoBinaryReference: Schema.optional(Schema.String),
+  sha1Hash: Schema.optional(Schema.String),
+}).annotate({ identifier: "CompositeMedia" });
 
 export interface ContentTypeInfo {
   /** # gdata.* are outside protos with mising documentation */
@@ -228,20 +201,15 @@ export interface ContentTypeInfo {
   fromFusionId?: string;
 }
 
-export const ContentTypeInfo: Schema.Schema<ContentTypeInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fromBytes: Schema.optional(Schema.String),
-      fusionIdDetectionMetadata: Schema.optional(Schema.String),
-      fromHeader: Schema.optional(Schema.String),
-      fromFileName: Schema.optional(Schema.String),
-      bestGuess: Schema.optional(Schema.String),
-      fromUrlPath: Schema.optional(Schema.String),
-      fromFusionId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ContentTypeInfo",
-  }) as any as Schema.Schema<ContentTypeInfo>;
+export const ContentTypeInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fromBytes: Schema.optional(Schema.String),
+  fusionIdDetectionMetadata: Schema.optional(Schema.String),
+  fromHeader: Schema.optional(Schema.String),
+  fromFileName: Schema.optional(Schema.String),
+  bestGuess: Schema.optional(Schema.String),
+  fromUrlPath: Schema.optional(Schema.String),
+  fromFusionId: Schema.optional(Schema.String),
+}).annotate({ identifier: "ContentTypeInfo" });
 
 export interface DiffVersionResponse {
   /** # gdata.* are outside protos with mising documentation */
@@ -250,29 +218,20 @@ export interface DiffVersionResponse {
   objectSizeBytes?: string;
 }
 
-export const DiffVersionResponse: Schema.Schema<DiffVersionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      objectVersion: Schema.optional(Schema.String),
-      objectSizeBytes: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DiffVersionResponse",
-  }) as any as Schema.Schema<DiffVersionResponse>;
+export const DiffVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  objectVersion: Schema.optional(Schema.String),
+  objectSizeBytes: Schema.optional(Schema.String),
+}).annotate({ identifier: "DiffVersionResponse" });
 
 export interface CreateAttachmentRequest {
   /** Required. The attachment to be created. */
   attachment?: Attachment;
 }
 
-export const CreateAttachmentRequest: Schema.Schema<CreateAttachmentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      attachment: Schema.optional(Attachment),
-    }),
-  ).annotate({
-    identifier: "CreateAttachmentRequest",
-  }) as any as Schema.Schema<CreateAttachmentRequest>;
+export const CreateAttachmentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    attachment: Schema.optional(Attachment),
+  }).annotate({ identifier: "CreateAttachmentRequest" });
 
 export interface ListCommentsResponse {
   /** List of the comments associated with the case. */
@@ -281,15 +240,10 @@ export interface ListCommentsResponse {
   nextPageToken?: string;
 }
 
-export const ListCommentsResponse: Schema.Schema<ListCommentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      comments: Schema.optional(Schema.Array(Comment)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListCommentsResponse",
-  }) as any as Schema.Schema<ListCommentsResponse>;
+export const ListCommentsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  comments: Schema.optional(Schema.Array(Comment)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListCommentsResponse" });
 
 export interface CaseClassification {
   /** A display name for the classification. The display name is not static and can change. To uniquely and consistently identify classifications, use the `CaseClassification.id` field. */
@@ -298,15 +252,10 @@ export interface CaseClassification {
   id?: string;
 }
 
-export const CaseClassification: Schema.Schema<CaseClassification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CaseClassification",
-  }) as any as Schema.Schema<CaseClassification>;
+export const CaseClassification = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+}).annotate({ identifier: "CaseClassification" });
 
 export interface Escalation {
   /** Required. A free text description to accompany the `reason` field above. Provides additional context on why the case is being escalated. */
@@ -320,27 +269,19 @@ export interface Escalation {
     | (string & {});
 }
 
-export const Escalation: Schema.Schema<Escalation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      justification: Schema.optional(Schema.String),
-      reason: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Escalation" }) as any as Schema.Schema<Escalation>;
+export const Escalation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  justification: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+}).annotate({ identifier: "Escalation" });
 
 export interface EscalateCaseRequest {
   /** The escalation information to be sent with the escalation request. */
   escalation?: Escalation;
 }
 
-export const EscalateCaseRequest: Schema.Schema<EscalateCaseRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      escalation: Schema.optional(Escalation),
-    }),
-  ).annotate({
-    identifier: "EscalateCaseRequest",
-  }) as any as Schema.Schema<EscalateCaseRequest>;
+export const EscalateCaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  escalation: Schema.optional(Escalation),
+}).annotate({ identifier: "EscalateCaseRequest" });
 
 export interface ListAttachmentsResponse {
   /** A token to retrieve the next page of results. Set this in the `page_token` field of subsequent `cases.attachments.list` requests. If unspecified, there are no more results to retrieve. */
@@ -349,15 +290,11 @@ export interface ListAttachmentsResponse {
   attachments?: Array<Attachment>;
 }
 
-export const ListAttachmentsResponse: Schema.Schema<ListAttachmentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      attachments: Schema.optional(Schema.Array(Attachment)),
-    }),
-  ).annotate({
-    identifier: "ListAttachmentsResponse",
-  }) as any as Schema.Schema<ListAttachmentsResponse>;
+export const ListAttachmentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    attachments: Schema.optional(Schema.Array(Attachment)),
+  }).annotate({ identifier: "ListAttachmentsResponse" });
 
 export interface Case {
   /** Output only. The time this case was last updated. */
@@ -406,26 +343,23 @@ export interface Case {
   contactEmail?: string;
 }
 
-export const Case: Schema.Schema<Case> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateTime: Schema.optional(Schema.String),
-      classification: Schema.optional(CaseClassification),
-      state: Schema.optional(Schema.String),
-      testCase: Schema.optional(Schema.Boolean),
-      createTime: Schema.optional(Schema.String),
-      subscriberEmailAddresses: Schema.optional(Schema.Array(Schema.String)),
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      escalated: Schema.optional(Schema.Boolean),
-      priority: Schema.optional(Schema.String),
-      timeZone: Schema.optional(Schema.String),
-      creator: Schema.optional(Actor),
-      languageCode: Schema.optional(Schema.String),
-      contactEmail: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Case" }) as any as Schema.Schema<Case>;
+export const Case = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  updateTime: Schema.optional(Schema.String),
+  classification: Schema.optional(CaseClassification),
+  state: Schema.optional(Schema.String),
+  testCase: Schema.optional(Schema.Boolean),
+  createTime: Schema.optional(Schema.String),
+  subscriberEmailAddresses: Schema.optional(Schema.Array(Schema.String)),
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  escalated: Schema.optional(Schema.Boolean),
+  priority: Schema.optional(Schema.String),
+  timeZone: Schema.optional(Schema.String),
+  creator: Schema.optional(Actor),
+  languageCode: Schema.optional(Schema.String),
+  contactEmail: Schema.optional(Schema.String),
+}).annotate({ identifier: "Case" });
 
 export interface SearchCasesResponse {
   /** The list of cases associated with the parent after any filters have been applied. */
@@ -434,15 +368,10 @@ export interface SearchCasesResponse {
   nextPageToken?: string;
 }
 
-export const SearchCasesResponse: Schema.Schema<SearchCasesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cases: Schema.optional(Schema.Array(Case)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SearchCasesResponse",
-  }) as any as Schema.Schema<SearchCasesResponse>;
+export const SearchCasesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cases: Schema.optional(Schema.Array(Case)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "SearchCasesResponse" });
 
 export interface DiffChecksumsResponse {
   /** # gdata.* are outside protos with mising documentation */
@@ -457,32 +386,22 @@ export interface DiffChecksumsResponse {
   objectLocation?: CompositeMedia;
 }
 
-export const DiffChecksumsResponse: Schema.Schema<DiffChecksumsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      checksumsLocation: Schema.optional(CompositeMedia),
-      chunkSizeBytes: Schema.optional(Schema.String),
-      objectVersion: Schema.optional(Schema.String),
-      objectSizeBytes: Schema.optional(Schema.String),
-      objectLocation: Schema.optional(CompositeMedia),
-    }),
-  ).annotate({
-    identifier: "DiffChecksumsResponse",
-  }) as any as Schema.Schema<DiffChecksumsResponse>;
+export const DiffChecksumsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  checksumsLocation: Schema.optional(CompositeMedia),
+  chunkSizeBytes: Schema.optional(Schema.String),
+  objectVersion: Schema.optional(Schema.String),
+  objectSizeBytes: Schema.optional(Schema.String),
+  objectLocation: Schema.optional(CompositeMedia),
+}).annotate({ identifier: "DiffChecksumsResponse" });
 
 export interface DiffDownloadResponse {
   /** # gdata.* are outside protos with mising documentation */
   objectLocation?: CompositeMedia;
 }
 
-export const DiffDownloadResponse: Schema.Schema<DiffDownloadResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      objectLocation: Schema.optional(CompositeMedia),
-    }),
-  ).annotate({
-    identifier: "DiffDownloadResponse",
-  }) as any as Schema.Schema<DiffDownloadResponse>;
+export const DiffDownloadResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  objectLocation: Schema.optional(CompositeMedia),
+}).annotate({ identifier: "DiffDownloadResponse" });
 
 export interface SearchCaseClassificationsResponse {
   /** The classifications retrieved. */
@@ -491,15 +410,11 @@ export interface SearchCaseClassificationsResponse {
   nextPageToken?: string;
 }
 
-export const SearchCaseClassificationsResponse: Schema.Schema<SearchCaseClassificationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      caseClassifications: Schema.optional(Schema.Array(CaseClassification)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SearchCaseClassificationsResponse",
-  }) as any as Schema.Schema<SearchCaseClassificationsResponse>;
+export const SearchCaseClassificationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    caseClassifications: Schema.optional(Schema.Array(CaseClassification)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SearchCaseClassificationsResponse" });
 
 export interface ListCasesResponse {
   /** The list of cases associated with the parent after any filters have been applied. */
@@ -508,22 +423,16 @@ export interface ListCasesResponse {
   nextPageToken?: string;
 }
 
-export const ListCasesResponse: Schema.Schema<ListCasesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cases: Schema.optional(Schema.Array(Case)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListCasesResponse",
-  }) as any as Schema.Schema<ListCasesResponse>;
+export const ListCasesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cases: Schema.optional(Schema.Array(Case)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListCasesResponse" });
 
 export interface CloseCaseRequest {}
 
-export const CloseCaseRequest: Schema.Schema<CloseCaseRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CloseCaseRequest",
-  }) as any as Schema.Schema<CloseCaseRequest>;
+export const CloseCaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CloseCaseRequest" });
 
 export interface DiffUploadRequest {
   /** # gdata.* are outside protos with mising documentation */
@@ -534,16 +443,11 @@ export interface DiffUploadRequest {
   objectInfo?: CompositeMedia;
 }
 
-export const DiffUploadRequest: Schema.Schema<DiffUploadRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      objectVersion: Schema.optional(Schema.String),
-      checksumsInfo: Schema.optional(CompositeMedia),
-      objectInfo: Schema.optional(CompositeMedia),
-    }),
-  ).annotate({
-    identifier: "DiffUploadRequest",
-  }) as any as Schema.Schema<DiffUploadRequest>;
+export const DiffUploadRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  objectVersion: Schema.optional(Schema.String),
+  checksumsInfo: Schema.optional(CompositeMedia),
+  objectInfo: Schema.optional(CompositeMedia),
+}).annotate({ identifier: "DiffUploadRequest" });
 
 export interface DiffUploadResponse {
   /** # gdata.* are outside protos with mising documentation */
@@ -552,15 +456,10 @@ export interface DiffUploadResponse {
   originalObject?: CompositeMedia;
 }
 
-export const DiffUploadResponse: Schema.Schema<DiffUploadResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      objectVersion: Schema.optional(Schema.String),
-      originalObject: Schema.optional(CompositeMedia),
-    }),
-  ).annotate({
-    identifier: "DiffUploadResponse",
-  }) as any as Schema.Schema<DiffUploadResponse>;
+export const DiffUploadResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  objectVersion: Schema.optional(Schema.String),
+  originalObject: Schema.optional(CompositeMedia),
+}).annotate({ identifier: "DiffUploadResponse" });
 
 export interface Media {
   /** # gdata.* are outside protos with mising documentation */
@@ -639,41 +538,38 @@ export interface Media {
   diffUploadRequest?: DiffUploadRequest;
 }
 
-export const Media: Schema.Schema<Media> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bigstoreObjectRef: Schema.optional(Schema.String),
-      sha1Hash: Schema.optional(Schema.String),
-      diffDownloadResponse: Schema.optional(DiffDownloadResponse),
-      cosmoBinaryReference: Schema.optional(Schema.String),
-      contentTypeInfo: Schema.optional(ContentTypeInfo),
-      crc32cHash: Schema.optional(Schema.Number),
-      sha256Hash: Schema.optional(Schema.String),
-      algorithm: Schema.optional(Schema.String),
-      objectId: Schema.optional(ObjectId),
-      mediaId: Schema.optional(Schema.String),
-      path: Schema.optional(Schema.String),
-      referenceType: Schema.optional(Schema.String),
-      inline: Schema.optional(Schema.String),
-      contentType: Schema.optional(Schema.String),
-      length: Schema.optional(Schema.String),
-      filename: Schema.optional(Schema.String),
-      compositeMedia: Schema.optional(Schema.Array(CompositeMedia)),
-      blobstore2Info: Schema.optional(Blobstore2Info),
-      diffUploadResponse: Schema.optional(DiffUploadResponse),
-      diffVersionResponse: Schema.optional(DiffVersionResponse),
-      blobRef: Schema.optional(Schema.String),
-      isPotentialRetry: Schema.optional(Schema.Boolean),
-      hashVerified: Schema.optional(Schema.Boolean),
-      hash: Schema.optional(Schema.String),
-      token: Schema.optional(Schema.String),
-      downloadParameters: Schema.optional(DownloadParameters),
-      md5Hash: Schema.optional(Schema.String),
-      timestamp: Schema.optional(Schema.String),
-      diffChecksumsResponse: Schema.optional(DiffChecksumsResponse),
-      diffUploadRequest: Schema.optional(DiffUploadRequest),
-    }),
-  ).annotate({ identifier: "Media" }) as any as Schema.Schema<Media>;
+export const Media = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bigstoreObjectRef: Schema.optional(Schema.String),
+  sha1Hash: Schema.optional(Schema.String),
+  diffDownloadResponse: Schema.optional(DiffDownloadResponse),
+  cosmoBinaryReference: Schema.optional(Schema.String),
+  contentTypeInfo: Schema.optional(ContentTypeInfo),
+  crc32cHash: Schema.optional(Schema.Number),
+  sha256Hash: Schema.optional(Schema.String),
+  algorithm: Schema.optional(Schema.String),
+  objectId: Schema.optional(ObjectId),
+  mediaId: Schema.optional(Schema.String),
+  path: Schema.optional(Schema.String),
+  referenceType: Schema.optional(Schema.String),
+  inline: Schema.optional(Schema.String),
+  contentType: Schema.optional(Schema.String),
+  length: Schema.optional(Schema.String),
+  filename: Schema.optional(Schema.String),
+  compositeMedia: Schema.optional(Schema.Array(CompositeMedia)),
+  blobstore2Info: Schema.optional(Blobstore2Info),
+  diffUploadResponse: Schema.optional(DiffUploadResponse),
+  diffVersionResponse: Schema.optional(DiffVersionResponse),
+  blobRef: Schema.optional(Schema.String),
+  isPotentialRetry: Schema.optional(Schema.Boolean),
+  hashVerified: Schema.optional(Schema.Boolean),
+  hash: Schema.optional(Schema.String),
+  token: Schema.optional(Schema.String),
+  downloadParameters: Schema.optional(DownloadParameters),
+  md5Hash: Schema.optional(Schema.String),
+  timestamp: Schema.optional(Schema.String),
+  diffChecksumsResponse: Schema.optional(DiffChecksumsResponse),
+  diffUploadRequest: Schema.optional(DiffUploadRequest),
+}).annotate({ identifier: "Media" });
 
 // ==========================================================================
 // Operations

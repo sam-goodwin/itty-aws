@@ -31,16 +31,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -55,16 +52,13 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      error: Schema.optional(Status),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  done: Schema.optional(Schema.Boolean),
+  error: Schema.optional(Status),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Operation" });
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -75,37 +69,29 @@ export interface ListOperationsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(Schema.Array(Operation)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    operations: Schema.optional(Schema.Array(Operation)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface CloudDataLineageIntegration {
   /** Optional. Whether or not Cloud Data Lineage integration is enabled. */
   enabled?: boolean;
 }
 
-export const CloudDataLineageIntegration: Schema.Schema<CloudDataLineageIntegration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "CloudDataLineageIntegration",
-  }) as any as Schema.Schema<CloudDataLineageIntegration>;
+export const CloudDataLineageIntegration =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "CloudDataLineageIntegration" });
 
 export interface SoftwareConfig {
   /** Optional. The version of the software running in the environment. This encapsulates both the version of Cloud Composer functionality and the version of Apache Airflow. It must match the regular expression `composer-([0-9]+(\.[0-9]+\.[0-9]+(-preview\.[0-9]+)?)?|latest)-airflow-([0-9]+(\.[0-9]+(\.[0-9]+)?)?)`. When used as input, the server also checks if the provided version is supported and denies the request for an unsupported version. The Cloud Composer portion of the image version is a full [semantic version](https://semver.org), or an alias in the form of major version number or `latest`. When an alias is provided, the server replaces it with the current Cloud Composer version that satisfies the alias. The Apache Airflow portion of the image version is a full semantic version that points to one of the supported Apache Airflow versions, or an alias in the form of only major or major.minor versions specified. When an alias is provided, the server replaces it with the latest Apache Airflow version that satisfies the alias and is supported in the given Cloud Composer version. In all cases, the resolved image version is stored in the same field. See also [version list](/composer/docs/concepts/versioning/composer-versions) and [versioning overview](/composer/docs/concepts/versioning/composer-versioning-overview). */
@@ -130,27 +116,18 @@ export interface SoftwareConfig {
     | (string & {});
 }
 
-export const SoftwareConfig: Schema.Schema<SoftwareConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      imageVersion: Schema.optional(Schema.String),
-      airflowConfigOverrides: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      pypiPackages: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      envVariables: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      pythonVersion: Schema.optional(Schema.String),
-      schedulerCount: Schema.optional(Schema.Number),
-      cloudDataLineageIntegration: Schema.optional(CloudDataLineageIntegration),
-      webServerPluginsMode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SoftwareConfig",
-  }) as any as Schema.Schema<SoftwareConfig>;
+export const SoftwareConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  imageVersion: Schema.optional(Schema.String),
+  airflowConfigOverrides: Schema.optional(
+    Schema.Record(Schema.String, Schema.String),
+  ),
+  pypiPackages: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  envVariables: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  pythonVersion: Schema.optional(Schema.String),
+  schedulerCount: Schema.optional(Schema.Number),
+  cloudDataLineageIntegration: Schema.optional(CloudDataLineageIntegration),
+  webServerPluginsMode: Schema.optional(Schema.String),
+}).annotate({ identifier: "SoftwareConfig" });
 
 export interface IPAllocationPolicy {
   /** Optional. Whether or not to enable Alias IPs in the GKE cluster. If `true`, a VPC-native cluster is created. This field is only supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. Environments in newer versions always use VPC-native GKE clusters. */
@@ -165,18 +142,13 @@ export interface IPAllocationPolicy {
   servicesIpv4CidrBlock?: string;
 }
 
-export const IPAllocationPolicy: Schema.Schema<IPAllocationPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      useIpAliases: Schema.optional(Schema.Boolean),
-      clusterSecondaryRangeName: Schema.optional(Schema.String),
-      servicesSecondaryRangeName: Schema.optional(Schema.String),
-      clusterIpv4CidrBlock: Schema.optional(Schema.String),
-      servicesIpv4CidrBlock: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "IPAllocationPolicy",
-  }) as any as Schema.Schema<IPAllocationPolicy>;
+export const IPAllocationPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  useIpAliases: Schema.optional(Schema.Boolean),
+  clusterSecondaryRangeName: Schema.optional(Schema.String),
+  servicesSecondaryRangeName: Schema.optional(Schema.String),
+  clusterIpv4CidrBlock: Schema.optional(Schema.String),
+  servicesIpv4CidrBlock: Schema.optional(Schema.String),
+}).annotate({ identifier: "IPAllocationPolicy" });
 
 export interface NodeConfig {
   /** Optional. The Compute Engine [zone](/compute/docs/regions-zones) in which to deploy the VMs used to run the Apache Airflow software, specified as a [relative resource name](/apis/design/resource_names#relative_resource_name). For example: "projects/{projectId}/zones/{zoneId}". This `location` must belong to the enclosing environment's project and location. If both this field and `nodeConfig.machineType` are specified, `nodeConfig.machineType` must belong to this `location`; if both are unspecified, the service will pick a zone in the Compute Engine region corresponding to the Cloud Composer location, and propagate that choice to both fields. If only one field (`location` or `nodeConfig.machineType`) is specified, the location information from the specified field will be propagated to the unspecified field. This field is supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. */
@@ -207,24 +179,21 @@ export interface NodeConfig {
   composerInternalIpv4CidrBlock?: string;
 }
 
-export const NodeConfig: Schema.Schema<NodeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      location: Schema.optional(Schema.String),
-      machineType: Schema.optional(Schema.String),
-      network: Schema.optional(Schema.String),
-      subnetwork: Schema.optional(Schema.String),
-      diskSizeGb: Schema.optional(Schema.Number),
-      oauthScopes: Schema.optional(Schema.Array(Schema.String)),
-      serviceAccount: Schema.optional(Schema.String),
-      tags: Schema.optional(Schema.Array(Schema.String)),
-      ipAllocationPolicy: Schema.optional(IPAllocationPolicy),
-      maxPodsPerNode: Schema.optional(Schema.Number),
-      enableIpMasqAgent: Schema.optional(Schema.Boolean),
-      composerNetworkAttachment: Schema.optional(Schema.String),
-      composerInternalIpv4CidrBlock: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "NodeConfig" }) as any as Schema.Schema<NodeConfig>;
+export const NodeConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  location: Schema.optional(Schema.String),
+  machineType: Schema.optional(Schema.String),
+  network: Schema.optional(Schema.String),
+  subnetwork: Schema.optional(Schema.String),
+  diskSizeGb: Schema.optional(Schema.Number),
+  oauthScopes: Schema.optional(Schema.Array(Schema.String)),
+  serviceAccount: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Array(Schema.String)),
+  ipAllocationPolicy: Schema.optional(IPAllocationPolicy),
+  maxPodsPerNode: Schema.optional(Schema.Number),
+  enableIpMasqAgent: Schema.optional(Schema.Boolean),
+  composerNetworkAttachment: Schema.optional(Schema.String),
+  composerInternalIpv4CidrBlock: Schema.optional(Schema.String),
+}).annotate({ identifier: "NodeConfig" });
 
 export interface PrivateClusterConfig {
   /** Optional. If `true`, access to the public endpoint of the GKE cluster is denied. */
@@ -235,16 +204,11 @@ export interface PrivateClusterConfig {
   masterIpv4ReservedRange?: string;
 }
 
-export const PrivateClusterConfig: Schema.Schema<PrivateClusterConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enablePrivateEndpoint: Schema.optional(Schema.Boolean),
-      masterIpv4CidrBlock: Schema.optional(Schema.String),
-      masterIpv4ReservedRange: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PrivateClusterConfig",
-  }) as any as Schema.Schema<PrivateClusterConfig>;
+export const PrivateClusterConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enablePrivateEndpoint: Schema.optional(Schema.Boolean),
+  masterIpv4CidrBlock: Schema.optional(Schema.String),
+  masterIpv4ReservedRange: Schema.optional(Schema.String),
+}).annotate({ identifier: "PrivateClusterConfig" });
 
 export interface NetworkingConfig {
   /** Optional. Indicates the user requested specific connection type between Tenant and Customer projects. You cannot set networking connection type in public IP environment. */
@@ -255,14 +219,9 @@ export interface NetworkingConfig {
     | (string & {});
 }
 
-export const NetworkingConfig: Schema.Schema<NetworkingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      connectionType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NetworkingConfig",
-  }) as any as Schema.Schema<NetworkingConfig>;
+export const NetworkingConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  connectionType: Schema.optional(Schema.String),
+}).annotate({ identifier: "NetworkingConfig" });
 
 export interface PrivateEnvironmentConfig {
   /** Optional. Networking type for the environment, either private or public. */
@@ -295,25 +254,21 @@ export interface PrivateEnvironmentConfig {
   networkingConfig?: NetworkingConfig;
 }
 
-export const PrivateEnvironmentConfig: Schema.Schema<PrivateEnvironmentConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      networkingType: Schema.optional(Schema.String),
-      enablePrivateEnvironment: Schema.optional(Schema.Boolean),
-      enablePrivateBuildsOnly: Schema.optional(Schema.Boolean),
-      privateClusterConfig: Schema.optional(PrivateClusterConfig),
-      webServerIpv4CidrBlock: Schema.optional(Schema.String),
-      cloudSqlIpv4CidrBlock: Schema.optional(Schema.String),
-      webServerIpv4ReservedRange: Schema.optional(Schema.String),
-      cloudComposerNetworkIpv4CidrBlock: Schema.optional(Schema.String),
-      cloudComposerNetworkIpv4ReservedRange: Schema.optional(Schema.String),
-      enablePrivatelyUsedPublicIps: Schema.optional(Schema.Boolean),
-      cloudComposerConnectionSubnetwork: Schema.optional(Schema.String),
-      networkingConfig: Schema.optional(NetworkingConfig),
-    }),
-  ).annotate({
-    identifier: "PrivateEnvironmentConfig",
-  }) as any as Schema.Schema<PrivateEnvironmentConfig>;
+export const PrivateEnvironmentConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    networkingType: Schema.optional(Schema.String),
+    enablePrivateEnvironment: Schema.optional(Schema.Boolean),
+    enablePrivateBuildsOnly: Schema.optional(Schema.Boolean),
+    privateClusterConfig: Schema.optional(PrivateClusterConfig),
+    webServerIpv4CidrBlock: Schema.optional(Schema.String),
+    cloudSqlIpv4CidrBlock: Schema.optional(Schema.String),
+    webServerIpv4ReservedRange: Schema.optional(Schema.String),
+    cloudComposerNetworkIpv4CidrBlock: Schema.optional(Schema.String),
+    cloudComposerNetworkIpv4ReservedRange: Schema.optional(Schema.String),
+    enablePrivatelyUsedPublicIps: Schema.optional(Schema.Boolean),
+    cloudComposerConnectionSubnetwork: Schema.optional(Schema.String),
+    networkingConfig: Schema.optional(NetworkingConfig),
+  }).annotate({ identifier: "PrivateEnvironmentConfig" });
 
 export interface AllowedIpRange {
   /** IP address or range, defined using CIDR notation, of requests that this rule applies to. Examples: `192.168.1.1` or `192.168.0.0/16` or `2001:db8::/32` or `2001:0db8:0000:0042:0000:8a2e:0370:7334`. IP range prefixes should be properly truncated. For example, `1.2.3.4/24` should be truncated to `1.2.3.0/24`. Similarly, for IPv6, `2001:db8::1/32` should be truncated to `2001:db8::/32`. */
@@ -322,29 +277,20 @@ export interface AllowedIpRange {
   description?: string;
 }
 
-export const AllowedIpRange: Schema.Schema<AllowedIpRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AllowedIpRange",
-  }) as any as Schema.Schema<AllowedIpRange>;
+export const AllowedIpRange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "AllowedIpRange" });
 
 export interface WebServerNetworkAccessControl {
   /** A collection of allowed IP ranges with descriptions. */
   allowedIpRanges?: Array<AllowedIpRange>;
 }
 
-export const WebServerNetworkAccessControl: Schema.Schema<WebServerNetworkAccessControl> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      allowedIpRanges: Schema.optional(Schema.Array(AllowedIpRange)),
-    }),
-  ).annotate({
-    identifier: "WebServerNetworkAccessControl",
-  }) as any as Schema.Schema<WebServerNetworkAccessControl>;
+export const WebServerNetworkAccessControl =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allowedIpRanges: Schema.optional(Schema.Array(AllowedIpRange)),
+  }).annotate({ identifier: "WebServerNetworkAccessControl" });
 
 export interface DatabaseConfig {
   /** Optional. Cloud SQL machine type used by Airflow database. It has to be one of: db-n1-standard-2, db-n1-standard-4, db-n1-standard-8 or db-n1-standard-16. If not specified, db-n1-standard-2 will be used. Supported for Cloud Composer environments in versions composer-1.*.*-airflow-*.*.*. */
@@ -353,43 +299,28 @@ export interface DatabaseConfig {
   zone?: string;
 }
 
-export const DatabaseConfig: Schema.Schema<DatabaseConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      machineType: Schema.optional(Schema.String),
-      zone: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DatabaseConfig",
-  }) as any as Schema.Schema<DatabaseConfig>;
+export const DatabaseConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  machineType: Schema.optional(Schema.String),
+  zone: Schema.optional(Schema.String),
+}).annotate({ identifier: "DatabaseConfig" });
 
 export interface WebServerConfig {
   /** Optional. Machine type on which Airflow web server is running. It has to be one of: composer-n1-webserver-2, composer-n1-webserver-4 or composer-n1-webserver-8. If not specified, composer-n1-webserver-2 will be used. Value custom is returned only in response, if Airflow web server parameters were manually changed to a non-standard values. */
   machineType?: string;
 }
 
-export const WebServerConfig: Schema.Schema<WebServerConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      machineType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WebServerConfig",
-  }) as any as Schema.Schema<WebServerConfig>;
+export const WebServerConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  machineType: Schema.optional(Schema.String),
+}).annotate({ identifier: "WebServerConfig" });
 
 export interface EncryptionConfig {
   /** Optional. Customer-managed Encryption Key available through Google's Key Management Service. Cannot be updated. If not specified, Google-managed key will be used. */
   kmsKeyName?: string;
 }
 
-export const EncryptionConfig: Schema.Schema<EncryptionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kmsKeyName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EncryptionConfig",
-  }) as any as Schema.Schema<EncryptionConfig>;
+export const EncryptionConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kmsKeyName: Schema.optional(Schema.String),
+}).annotate({ identifier: "EncryptionConfig" });
 
 export interface MaintenanceWindow {
   /** Required. Start time of the first recurrence of the maintenance window. */
@@ -400,16 +331,11 @@ export interface MaintenanceWindow {
   recurrence?: string;
 }
 
-export const MaintenanceWindow: Schema.Schema<MaintenanceWindow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      recurrence: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MaintenanceWindow",
-  }) as any as Schema.Schema<MaintenanceWindow>;
+export const MaintenanceWindow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  recurrence: Schema.optional(Schema.String),
+}).annotate({ identifier: "MaintenanceWindow" });
 
 export interface SchedulerResource {
   /** Optional. CPU request and limit for a single Airflow scheduler replica. */
@@ -422,17 +348,12 @@ export interface SchedulerResource {
   count?: number;
 }
 
-export const SchedulerResource: Schema.Schema<SchedulerResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cpu: Schema.optional(Schema.Number),
-      memoryGb: Schema.optional(Schema.Number),
-      storageGb: Schema.optional(Schema.Number),
-      count: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "SchedulerResource",
-  }) as any as Schema.Schema<SchedulerResource>;
+export const SchedulerResource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cpu: Schema.optional(Schema.Number),
+  memoryGb: Schema.optional(Schema.Number),
+  storageGb: Schema.optional(Schema.Number),
+  count: Schema.optional(Schema.Number),
+}).annotate({ identifier: "SchedulerResource" });
 
 export interface WebServerResource {
   /** Optional. CPU request and limit for Airflow web server. */
@@ -443,16 +364,11 @@ export interface WebServerResource {
   storageGb?: number;
 }
 
-export const WebServerResource: Schema.Schema<WebServerResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cpu: Schema.optional(Schema.Number),
-      memoryGb: Schema.optional(Schema.Number),
-      storageGb: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "WebServerResource",
-  }) as any as Schema.Schema<WebServerResource>;
+export const WebServerResource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cpu: Schema.optional(Schema.Number),
+  memoryGb: Schema.optional(Schema.Number),
+  storageGb: Schema.optional(Schema.Number),
+}).annotate({ identifier: "WebServerResource" });
 
 export interface WorkerResource {
   /** Optional. CPU request and limit for a single Airflow worker replica. */
@@ -467,18 +383,13 @@ export interface WorkerResource {
   maxCount?: number;
 }
 
-export const WorkerResource: Schema.Schema<WorkerResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cpu: Schema.optional(Schema.Number),
-      memoryGb: Schema.optional(Schema.Number),
-      storageGb: Schema.optional(Schema.Number),
-      minCount: Schema.optional(Schema.Number),
-      maxCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "WorkerResource",
-  }) as any as Schema.Schema<WorkerResource>;
+export const WorkerResource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cpu: Schema.optional(Schema.Number),
+  memoryGb: Schema.optional(Schema.Number),
+  storageGb: Schema.optional(Schema.Number),
+  minCount: Schema.optional(Schema.Number),
+  maxCount: Schema.optional(Schema.Number),
+}).annotate({ identifier: "WorkerResource" });
 
 export interface TriggererResource {
   /** Optional. The number of triggerers. */
@@ -489,16 +400,11 @@ export interface TriggererResource {
   memoryGb?: number;
 }
 
-export const TriggererResource: Schema.Schema<TriggererResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      count: Schema.optional(Schema.Number),
-      cpu: Schema.optional(Schema.Number),
-      memoryGb: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "TriggererResource",
-  }) as any as Schema.Schema<TriggererResource>;
+export const TriggererResource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  count: Schema.optional(Schema.Number),
+  cpu: Schema.optional(Schema.Number),
+  memoryGb: Schema.optional(Schema.Number),
+}).annotate({ identifier: "TriggererResource" });
 
 export interface DagProcessorResource {
   /** Optional. CPU request and limit for a single Airflow DAG processor replica. */
@@ -511,17 +417,12 @@ export interface DagProcessorResource {
   count?: number;
 }
 
-export const DagProcessorResource: Schema.Schema<DagProcessorResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cpu: Schema.optional(Schema.Number),
-      memoryGb: Schema.optional(Schema.Number),
-      storageGb: Schema.optional(Schema.Number),
-      count: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "DagProcessorResource",
-  }) as any as Schema.Schema<DagProcessorResource>;
+export const DagProcessorResource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cpu: Schema.optional(Schema.Number),
+  memoryGb: Schema.optional(Schema.Number),
+  storageGb: Schema.optional(Schema.Number),
+  count: Schema.optional(Schema.Number),
+}).annotate({ identifier: "DagProcessorResource" });
 
 export interface WorkloadsConfig {
   /** Optional. Resources used by Airflow schedulers. */
@@ -536,18 +437,13 @@ export interface WorkloadsConfig {
   dagProcessor?: DagProcessorResource;
 }
 
-export const WorkloadsConfig: Schema.Schema<WorkloadsConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scheduler: Schema.optional(SchedulerResource),
-      webServer: Schema.optional(WebServerResource),
-      worker: Schema.optional(WorkerResource),
-      triggerer: Schema.optional(TriggererResource),
-      dagProcessor: Schema.optional(DagProcessorResource),
-    }),
-  ).annotate({
-    identifier: "WorkloadsConfig",
-  }) as any as Schema.Schema<WorkloadsConfig>;
+export const WorkloadsConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  scheduler: Schema.optional(SchedulerResource),
+  webServer: Schema.optional(WebServerResource),
+  worker: Schema.optional(WorkerResource),
+  triggerer: Schema.optional(TriggererResource),
+  dagProcessor: Schema.optional(DagProcessorResource),
+}).annotate({ identifier: "WorkloadsConfig" });
 
 export interface CidrBlock {
   /** User-defined name that identifies the CIDR block. */
@@ -556,13 +452,10 @@ export interface CidrBlock {
   cidrBlock?: string;
 }
 
-export const CidrBlock: Schema.Schema<CidrBlock> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      cidrBlock: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "CidrBlock" }) as any as Schema.Schema<CidrBlock>;
+export const CidrBlock = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+  cidrBlock: Schema.optional(Schema.String),
+}).annotate({ identifier: "CidrBlock" });
 
 export interface MasterAuthorizedNetworksConfig {
   /** Optional. Whether or not master authorized networks feature is enabled. */
@@ -571,15 +464,11 @@ export interface MasterAuthorizedNetworksConfig {
   cidrBlocks?: Array<CidrBlock>;
 }
 
-export const MasterAuthorizedNetworksConfig: Schema.Schema<MasterAuthorizedNetworksConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-      cidrBlocks: Schema.optional(Schema.Array(CidrBlock)),
-    }),
-  ).annotate({
-    identifier: "MasterAuthorizedNetworksConfig",
-  }) as any as Schema.Schema<MasterAuthorizedNetworksConfig>;
+export const MasterAuthorizedNetworksConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+    cidrBlocks: Schema.optional(Schema.Array(CidrBlock)),
+  }).annotate({ identifier: "MasterAuthorizedNetworksConfig" });
 
 export interface ScheduledSnapshotsConfig {
   /** Optional. Whether scheduled snapshots creation is enabled. */
@@ -592,31 +481,22 @@ export interface ScheduledSnapshotsConfig {
   timeZone?: string;
 }
 
-export const ScheduledSnapshotsConfig: Schema.Schema<ScheduledSnapshotsConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-      snapshotLocation: Schema.optional(Schema.String),
-      snapshotCreationSchedule: Schema.optional(Schema.String),
-      timeZone: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ScheduledSnapshotsConfig",
-  }) as any as Schema.Schema<ScheduledSnapshotsConfig>;
+export const ScheduledSnapshotsConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+    snapshotLocation: Schema.optional(Schema.String),
+    snapshotCreationSchedule: Schema.optional(Schema.String),
+    timeZone: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ScheduledSnapshotsConfig" });
 
 export interface RecoveryConfig {
   /** Optional. The configuration for scheduled snapshot creation mechanism. */
   scheduledSnapshotsConfig?: ScheduledSnapshotsConfig;
 }
 
-export const RecoveryConfig: Schema.Schema<RecoveryConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scheduledSnapshotsConfig: Schema.optional(ScheduledSnapshotsConfig),
-    }),
-  ).annotate({
-    identifier: "RecoveryConfig",
-  }) as any as Schema.Schema<RecoveryConfig>;
+export const RecoveryConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  scheduledSnapshotsConfig: Schema.optional(ScheduledSnapshotsConfig),
+}).annotate({ identifier: "RecoveryConfig" });
 
 export interface TaskLogsRetentionConfig {
   /** Optional. The mode of storage for Airflow workers task logs. */
@@ -627,14 +507,10 @@ export interface TaskLogsRetentionConfig {
     | (string & {});
 }
 
-export const TaskLogsRetentionConfig: Schema.Schema<TaskLogsRetentionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      storageMode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TaskLogsRetentionConfig",
-  }) as any as Schema.Schema<TaskLogsRetentionConfig>;
+export const TaskLogsRetentionConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    storageMode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "TaskLogsRetentionConfig" });
 
 export interface AirflowMetadataRetentionPolicyConfig {
   /** Optional. Retention can be either enabled or disabled. */
@@ -647,15 +523,11 @@ export interface AirflowMetadataRetentionPolicyConfig {
   retentionDays?: number;
 }
 
-export const AirflowMetadataRetentionPolicyConfig: Schema.Schema<AirflowMetadataRetentionPolicyConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      retentionMode: Schema.optional(Schema.String),
-      retentionDays: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "AirflowMetadataRetentionPolicyConfig",
-  }) as any as Schema.Schema<AirflowMetadataRetentionPolicyConfig>;
+export const AirflowMetadataRetentionPolicyConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    retentionMode: Schema.optional(Schema.String),
+    retentionDays: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "AirflowMetadataRetentionPolicyConfig" });
 
 export interface DataRetentionConfig {
   /** Optional. The number of days describing for how long to store event-based records in airflow database. If the retention mechanism is enabled this value must be a positive integer otherwise, value should be set to 0. */
@@ -666,18 +538,13 @@ export interface DataRetentionConfig {
   airflowMetadataRetentionConfig?: AirflowMetadataRetentionPolicyConfig;
 }
 
-export const DataRetentionConfig: Schema.Schema<DataRetentionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      airflowDatabaseRetentionDays: Schema.optional(Schema.Number),
-      taskLogsRetentionConfig: Schema.optional(TaskLogsRetentionConfig),
-      airflowMetadataRetentionConfig: Schema.optional(
-        AirflowMetadataRetentionPolicyConfig,
-      ),
-    }),
-  ).annotate({
-    identifier: "DataRetentionConfig",
-  }) as any as Schema.Schema<DataRetentionConfig>;
+export const DataRetentionConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  airflowDatabaseRetentionDays: Schema.optional(Schema.Number),
+  taskLogsRetentionConfig: Schema.optional(TaskLogsRetentionConfig),
+  airflowMetadataRetentionConfig: Schema.optional(
+    AirflowMetadataRetentionPolicyConfig,
+  ),
+}).annotate({ identifier: "DataRetentionConfig" });
 
 export interface EnvironmentConfig {
   /** Output only. The Kubernetes Engine cluster used to run this environment. */
@@ -729,50 +596,38 @@ export interface EnvironmentConfig {
     | (string & {});
 }
 
-export const EnvironmentConfig: Schema.Schema<EnvironmentConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gkeCluster: Schema.optional(Schema.String),
-      dagGcsPrefix: Schema.optional(Schema.String),
-      nodeCount: Schema.optional(Schema.Number),
-      softwareConfig: Schema.optional(SoftwareConfig),
-      nodeConfig: Schema.optional(NodeConfig),
-      privateEnvironmentConfig: Schema.optional(PrivateEnvironmentConfig),
-      webServerNetworkAccessControl: Schema.optional(
-        WebServerNetworkAccessControl,
-      ),
-      databaseConfig: Schema.optional(DatabaseConfig),
-      webServerConfig: Schema.optional(WebServerConfig),
-      airflowUri: Schema.optional(Schema.String),
-      airflowByoidUri: Schema.optional(Schema.String),
-      encryptionConfig: Schema.optional(EncryptionConfig),
-      maintenanceWindow: Schema.optional(MaintenanceWindow),
-      workloadsConfig: Schema.optional(WorkloadsConfig),
-      environmentSize: Schema.optional(Schema.String),
-      masterAuthorizedNetworksConfig: Schema.optional(
-        MasterAuthorizedNetworksConfig,
-      ),
-      recoveryConfig: Schema.optional(RecoveryConfig),
-      dataRetentionConfig: Schema.optional(DataRetentionConfig),
-      resilienceMode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnvironmentConfig",
-  }) as any as Schema.Schema<EnvironmentConfig>;
+export const EnvironmentConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gkeCluster: Schema.optional(Schema.String),
+  dagGcsPrefix: Schema.optional(Schema.String),
+  nodeCount: Schema.optional(Schema.Number),
+  softwareConfig: Schema.optional(SoftwareConfig),
+  nodeConfig: Schema.optional(NodeConfig),
+  privateEnvironmentConfig: Schema.optional(PrivateEnvironmentConfig),
+  webServerNetworkAccessControl: Schema.optional(WebServerNetworkAccessControl),
+  databaseConfig: Schema.optional(DatabaseConfig),
+  webServerConfig: Schema.optional(WebServerConfig),
+  airflowUri: Schema.optional(Schema.String),
+  airflowByoidUri: Schema.optional(Schema.String),
+  encryptionConfig: Schema.optional(EncryptionConfig),
+  maintenanceWindow: Schema.optional(MaintenanceWindow),
+  workloadsConfig: Schema.optional(WorkloadsConfig),
+  environmentSize: Schema.optional(Schema.String),
+  masterAuthorizedNetworksConfig: Schema.optional(
+    MasterAuthorizedNetworksConfig,
+  ),
+  recoveryConfig: Schema.optional(RecoveryConfig),
+  dataRetentionConfig: Schema.optional(DataRetentionConfig),
+  resilienceMode: Schema.optional(Schema.String),
+}).annotate({ identifier: "EnvironmentConfig" });
 
 export interface StorageConfig {
   /** Optional. The name of the Cloud Storage bucket used by the environment. No `gs://` prefix. */
   bucket?: string;
 }
 
-export const StorageConfig: Schema.Schema<StorageConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bucket: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StorageConfig",
-  }) as any as Schema.Schema<StorageConfig>;
+export const StorageConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bucket: Schema.optional(Schema.String),
+}).annotate({ identifier: "StorageConfig" });
 
 export interface Environment {
   /** Identifier. The resource name of the environment, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}" EnvironmentId must start with a lowercase letter followed by up to 63 lowercase letters, numbers, or hyphens, and cannot end with a hyphen. */
@@ -804,23 +659,18 @@ export interface Environment {
   storageConfig?: StorageConfig;
 }
 
-export const Environment: Schema.Schema<Environment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      config: Schema.optional(EnvironmentConfig),
-      uuid: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      satisfiesPzs: Schema.optional(Schema.Boolean),
-      satisfiesPzi: Schema.optional(Schema.Boolean),
-      storageConfig: Schema.optional(StorageConfig),
-    }),
-  ).annotate({
-    identifier: "Environment",
-  }) as any as Schema.Schema<Environment>;
+export const Environment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  config: Schema.optional(EnvironmentConfig),
+  uuid: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  satisfiesPzs: Schema.optional(Schema.Boolean),
+  satisfiesPzi: Schema.optional(Schema.Boolean),
+  storageConfig: Schema.optional(StorageConfig),
+}).annotate({ identifier: "Environment" });
 
 export interface ListEnvironmentsResponse {
   /** The list of environments returned by a ListEnvironmentsRequest. */
@@ -829,36 +679,27 @@ export interface ListEnvironmentsResponse {
   nextPageToken?: string;
 }
 
-export const ListEnvironmentsResponse: Schema.Schema<ListEnvironmentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      environments: Schema.optional(Schema.Array(Environment)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListEnvironmentsResponse",
-  }) as any as Schema.Schema<ListEnvironmentsResponse>;
+export const ListEnvironmentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    environments: Schema.optional(Schema.Array(Environment)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListEnvironmentsResponse" });
 
 export interface RestartWebServerRequest {}
 
-export const RestartWebServerRequest: Schema.Schema<RestartWebServerRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const RestartWebServerRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RestartWebServerRequest",
-  }) as any as Schema.Schema<RestartWebServerRequest>;
+  });
 
 export interface CheckUpgradeRequest {
   /** The version of the software running in the environment. This encapsulates both the version of Cloud Composer functionality and the version of Apache Airflow. It must match the regular expression `composer-([0-9]+(\.[0-9]+\.[0-9]+(-preview\.[0-9]+)?)?|latest)-airflow-([0-9]+(\.[0-9]+(\.[0-9]+)?)?)`. When used as input, the server also checks if the provided version is supported and denies the request for an unsupported version. The Cloud Composer portion of the image version is a full [semantic version](https://semver.org), or an alias in the form of major version number or `latest`. When an alias is provided, the server replaces it with the current Cloud Composer version that satisfies the alias. The Apache Airflow portion of the image version is a full semantic version that points to one of the supported Apache Airflow versions, or an alias in the form of only major or major.minor versions specified. When an alias is provided, the server replaces it with the latest Apache Airflow version that satisfies the alias and is supported in the given Cloud Composer version. In all cases, the resolved image version is stored in the same field. See also [version list](/composer/docs/concepts/versioning/composer-versions) and [versioning overview](/composer/docs/concepts/versioning/composer-versioning-overview). */
   imageVersion?: string;
 }
 
-export const CheckUpgradeRequest: Schema.Schema<CheckUpgradeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      imageVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CheckUpgradeRequest",
-  }) as any as Schema.Schema<CheckUpgradeRequest>;
+export const CheckUpgradeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  imageVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "CheckUpgradeRequest" });
 
 export interface ExecuteAirflowCommandRequest {
   /** Airflow command. */
@@ -869,16 +710,12 @@ export interface ExecuteAirflowCommandRequest {
   parameters?: Array<string>;
 }
 
-export const ExecuteAirflowCommandRequest: Schema.Schema<ExecuteAirflowCommandRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      command: Schema.optional(Schema.String),
-      subcommand: Schema.optional(Schema.String),
-      parameters: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ExecuteAirflowCommandRequest",
-  }) as any as Schema.Schema<ExecuteAirflowCommandRequest>;
+export const ExecuteAirflowCommandRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    command: Schema.optional(Schema.String),
+    subcommand: Schema.optional(Schema.String),
+    parameters: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ExecuteAirflowCommandRequest" });
 
 export interface ExecuteAirflowCommandResponse {
   /** The unique ID of the command execution for polling. */
@@ -891,17 +728,13 @@ export interface ExecuteAirflowCommandResponse {
   error?: string;
 }
 
-export const ExecuteAirflowCommandResponse: Schema.Schema<ExecuteAirflowCommandResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      executionId: Schema.optional(Schema.String),
-      pod: Schema.optional(Schema.String),
-      podNamespace: Schema.optional(Schema.String),
-      error: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ExecuteAirflowCommandResponse",
-  }) as any as Schema.Schema<ExecuteAirflowCommandResponse>;
+export const ExecuteAirflowCommandResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    executionId: Schema.optional(Schema.String),
+    pod: Schema.optional(Schema.String),
+    podNamespace: Schema.optional(Schema.String),
+    error: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ExecuteAirflowCommandResponse" });
 
 export interface StopAirflowCommandRequest {
   /** The unique ID of the command execution. */
@@ -914,17 +747,13 @@ export interface StopAirflowCommandRequest {
   force?: boolean;
 }
 
-export const StopAirflowCommandRequest: Schema.Schema<StopAirflowCommandRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      executionId: Schema.optional(Schema.String),
-      pod: Schema.optional(Schema.String),
-      podNamespace: Schema.optional(Schema.String),
-      force: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "StopAirflowCommandRequest",
-  }) as any as Schema.Schema<StopAirflowCommandRequest>;
+export const StopAirflowCommandRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    executionId: Schema.optional(Schema.String),
+    pod: Schema.optional(Schema.String),
+    podNamespace: Schema.optional(Schema.String),
+    force: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "StopAirflowCommandRequest" });
 
 export interface StopAirflowCommandResponse {
   /** Whether the execution is still running. */
@@ -933,15 +762,11 @@ export interface StopAirflowCommandResponse {
   output?: Array<string>;
 }
 
-export const StopAirflowCommandResponse: Schema.Schema<StopAirflowCommandResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      isDone: Schema.optional(Schema.Boolean),
-      output: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "StopAirflowCommandResponse",
-  }) as any as Schema.Schema<StopAirflowCommandResponse>;
+export const StopAirflowCommandResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    isDone: Schema.optional(Schema.Boolean),
+    output: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "StopAirflowCommandResponse" });
 
 export interface PollAirflowCommandRequest {
   /** The unique ID of the command execution. */
@@ -954,17 +779,13 @@ export interface PollAirflowCommandRequest {
   nextLineNumber?: number;
 }
 
-export const PollAirflowCommandRequest: Schema.Schema<PollAirflowCommandRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      executionId: Schema.optional(Schema.String),
-      pod: Schema.optional(Schema.String),
-      podNamespace: Schema.optional(Schema.String),
-      nextLineNumber: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "PollAirflowCommandRequest",
-  }) as any as Schema.Schema<PollAirflowCommandRequest>;
+export const PollAirflowCommandRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    executionId: Schema.optional(Schema.String),
+    pod: Schema.optional(Schema.String),
+    podNamespace: Schema.optional(Schema.String),
+    nextLineNumber: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "PollAirflowCommandRequest" });
 
 export interface Line {
   /** Number of the line. */
@@ -973,13 +794,10 @@ export interface Line {
   content?: string;
 }
 
-export const Line: Schema.Schema<Line> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lineNumber: Schema.optional(Schema.Number),
-      content: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Line" }) as any as Schema.Schema<Line>;
+export const Line = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  lineNumber: Schema.optional(Schema.Number),
+  content: Schema.optional(Schema.String),
+}).annotate({ identifier: "Line" });
 
 export interface ExitInfo {
   /** The exit code from the command execution. */
@@ -988,13 +806,10 @@ export interface ExitInfo {
   error?: string;
 }
 
-export const ExitInfo: Schema.Schema<ExitInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      exitCode: Schema.optional(Schema.Number),
-      error: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "ExitInfo" }) as any as Schema.Schema<ExitInfo>;
+export const ExitInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  exitCode: Schema.optional(Schema.Number),
+  error: Schema.optional(Schema.String),
+}).annotate({ identifier: "ExitInfo" });
 
 export interface PollAirflowCommandResponse {
   /** Output from the command execution. It may not contain the full output and the caller may need to poll for more lines. */
@@ -1005,16 +820,12 @@ export interface PollAirflowCommandResponse {
   exitInfo?: ExitInfo;
 }
 
-export const PollAirflowCommandResponse: Schema.Schema<PollAirflowCommandResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      output: Schema.optional(Schema.Array(Line)),
-      outputEnd: Schema.optional(Schema.Boolean),
-      exitInfo: Schema.optional(ExitInfo),
-    }),
-  ).annotate({
-    identifier: "PollAirflowCommandResponse",
-  }) as any as Schema.Schema<PollAirflowCommandResponse>;
+export const PollAirflowCommandResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    output: Schema.optional(Schema.Array(Line)),
+    outputEnd: Schema.optional(Schema.Boolean),
+    exitInfo: Schema.optional(ExitInfo),
+  }).annotate({ identifier: "PollAirflowCommandResponse" });
 
 export interface ComposerWorkloadStatus {
   /** Output only. Workload state. */
@@ -1033,16 +844,13 @@ export interface ComposerWorkloadStatus {
   detailedStatusMessage?: string;
 }
 
-export const ComposerWorkloadStatus: Schema.Schema<ComposerWorkloadStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-      detailedStatusMessage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ComposerWorkloadStatus",
-  }) as any as Schema.Schema<ComposerWorkloadStatus>;
+export const ComposerWorkloadStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    state: Schema.optional(Schema.String),
+    statusMessage: Schema.optional(Schema.String),
+    detailedStatusMessage: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ComposerWorkloadStatus" });
 
 export interface ComposerWorkload {
   /** Name of a workload. */
@@ -1063,16 +871,11 @@ export interface ComposerWorkload {
   status?: ComposerWorkloadStatus;
 }
 
-export const ComposerWorkload: Schema.Schema<ComposerWorkload> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      status: Schema.optional(ComposerWorkloadStatus),
-    }),
-  ).annotate({
-    identifier: "ComposerWorkload",
-  }) as any as Schema.Schema<ComposerWorkload>;
+export const ComposerWorkload = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  status: Schema.optional(ComposerWorkloadStatus),
+}).annotate({ identifier: "ComposerWorkload" });
 
 export interface ListWorkloadsResponse {
   /** The list of environment workloads. */
@@ -1081,15 +884,10 @@ export interface ListWorkloadsResponse {
   nextPageToken?: string;
 }
 
-export const ListWorkloadsResponse: Schema.Schema<ListWorkloadsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      workloads: Schema.optional(Schema.Array(ComposerWorkload)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListWorkloadsResponse",
-  }) as any as Schema.Schema<ListWorkloadsResponse>;
+export const ListWorkloadsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  workloads: Schema.optional(Schema.Array(ComposerWorkload)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListWorkloadsResponse" });
 
 export interface UserWorkloadsSecret {
   /** Identifier. The resource name of the Secret, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsSecrets/{userWorkloadsSecretId}" */
@@ -1098,15 +896,10 @@ export interface UserWorkloadsSecret {
   data?: Record<string, string>;
 }
 
-export const UserWorkloadsSecret: Schema.Schema<UserWorkloadsSecret> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      data: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "UserWorkloadsSecret",
-  }) as any as Schema.Schema<UserWorkloadsSecret>;
+export const UserWorkloadsSecret = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  data: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "UserWorkloadsSecret" });
 
 export interface ListUserWorkloadsSecretsResponse {
   /** The list of Secrets returned by a ListUserWorkloadsSecretsRequest. */
@@ -1115,15 +908,11 @@ export interface ListUserWorkloadsSecretsResponse {
   nextPageToken?: string;
 }
 
-export const ListUserWorkloadsSecretsResponse: Schema.Schema<ListUserWorkloadsSecretsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userWorkloadsSecrets: Schema.optional(Schema.Array(UserWorkloadsSecret)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListUserWorkloadsSecretsResponse",
-  }) as any as Schema.Schema<ListUserWorkloadsSecretsResponse>;
+export const ListUserWorkloadsSecretsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userWorkloadsSecrets: Schema.optional(Schema.Array(UserWorkloadsSecret)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListUserWorkloadsSecretsResponse" });
 
 export interface UserWorkloadsConfigMap {
   /** Identifier. The resource name of the ConfigMap, in the form: "projects/{projectId}/locations/{locationId}/environments/{environmentId}/userWorkloadsConfigMaps/{userWorkloadsConfigMapId}" */
@@ -1132,15 +921,12 @@ export interface UserWorkloadsConfigMap {
   data?: Record<string, string>;
 }
 
-export const UserWorkloadsConfigMap: Schema.Schema<UserWorkloadsConfigMap> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      data: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "UserWorkloadsConfigMap",
-  }) as any as Schema.Schema<UserWorkloadsConfigMap>;
+export const UserWorkloadsConfigMap = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    name: Schema.optional(Schema.String),
+    data: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  },
+).annotate({ identifier: "UserWorkloadsConfigMap" });
 
 export interface ListUserWorkloadsConfigMapsResponse {
   /** The list of ConfigMaps returned by a ListUserWorkloadsConfigMapsRequest. */
@@ -1149,31 +935,22 @@ export interface ListUserWorkloadsConfigMapsResponse {
   nextPageToken?: string;
 }
 
-export const ListUserWorkloadsConfigMapsResponse: Schema.Schema<ListUserWorkloadsConfigMapsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userWorkloadsConfigMaps: Schema.optional(
-        Schema.Array(UserWorkloadsConfigMap),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListUserWorkloadsConfigMapsResponse",
-  }) as any as Schema.Schema<ListUserWorkloadsConfigMapsResponse>;
+export const ListUserWorkloadsConfigMapsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userWorkloadsConfigMaps: Schema.optional(
+      Schema.Array(UserWorkloadsConfigMap),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListUserWorkloadsConfigMapsResponse" });
 
 export interface SaveSnapshotRequest {
   /** Location in a Cloud Storage where the snapshot is going to be stored, e.g.: "gs://my-bucket/snapshots". */
   snapshotLocation?: string;
 }
 
-export const SaveSnapshotRequest: Schema.Schema<SaveSnapshotRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      snapshotLocation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SaveSnapshotRequest",
-  }) as any as Schema.Schema<SaveSnapshotRequest>;
+export const SaveSnapshotRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  snapshotLocation: Schema.optional(Schema.String),
+}).annotate({ identifier: "SaveSnapshotRequest" });
 
 export interface LoadSnapshotRequest {
   /** A Cloud Storage path to a snapshot to load, e.g.: "gs://my-bucket/snapshots/project_location_environment_timestamp". */
@@ -1188,25 +965,20 @@ export interface LoadSnapshotRequest {
   skipGcsDataCopying?: boolean;
 }
 
-export const LoadSnapshotRequest: Schema.Schema<LoadSnapshotRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      snapshotPath: Schema.optional(Schema.String),
-      skipPypiPackagesInstallation: Schema.optional(Schema.Boolean),
-      skipEnvironmentVariablesSetting: Schema.optional(Schema.Boolean),
-      skipAirflowOverridesSetting: Schema.optional(Schema.Boolean),
-      skipGcsDataCopying: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "LoadSnapshotRequest",
-  }) as any as Schema.Schema<LoadSnapshotRequest>;
+export const LoadSnapshotRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  snapshotPath: Schema.optional(Schema.String),
+  skipPypiPackagesInstallation: Schema.optional(Schema.Boolean),
+  skipEnvironmentVariablesSetting: Schema.optional(Schema.Boolean),
+  skipAirflowOverridesSetting: Schema.optional(Schema.Boolean),
+  skipGcsDataCopying: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "LoadSnapshotRequest" });
 
 export interface DatabaseFailoverRequest {}
 
-export const DatabaseFailoverRequest: Schema.Schema<DatabaseFailoverRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const DatabaseFailoverRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DatabaseFailoverRequest",
-  }) as any as Schema.Schema<DatabaseFailoverRequest>;
+  });
 
 export interface FetchDatabasePropertiesResponse {
   /** The Compute Engine zone that the instance is currently serving from. */
@@ -1217,16 +989,12 @@ export interface FetchDatabasePropertiesResponse {
   isFailoverReplicaAvailable?: boolean;
 }
 
-export const FetchDatabasePropertiesResponse: Schema.Schema<FetchDatabasePropertiesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      primaryGceZone: Schema.optional(Schema.String),
-      secondaryGceZone: Schema.optional(Schema.String),
-      isFailoverReplicaAvailable: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "FetchDatabasePropertiesResponse",
-  }) as any as Schema.Schema<FetchDatabasePropertiesResponse>;
+export const FetchDatabasePropertiesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    primaryGceZone: Schema.optional(Schema.String),
+    secondaryGceZone: Schema.optional(Schema.String),
+    isFailoverReplicaAvailable: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "FetchDatabasePropertiesResponse" });
 
 export interface Composer_Date {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
@@ -1237,16 +1005,11 @@ export interface Composer_Date {
   day?: number;
 }
 
-export const Composer_Date: Schema.Schema<Composer_Date> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      year: Schema.optional(Schema.Number),
-      month: Schema.optional(Schema.Number),
-      day: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "Composer_Date",
-  }) as any as Schema.Schema<Composer_Date>;
+export const Composer_Date = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  year: Schema.optional(Schema.Number),
+  month: Schema.optional(Schema.Number),
+  day: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Composer_Date" });
 
 export interface ImageVersion {
   /** The string identifier of the ImageVersion, in the form: "composer-x.y.z-airflow-a.b.c" */
@@ -1263,19 +1026,14 @@ export interface ImageVersion {
   upgradeDisabled?: boolean;
 }
 
-export const ImageVersion: Schema.Schema<ImageVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      imageVersionId: Schema.optional(Schema.String),
-      isDefault: Schema.optional(Schema.Boolean),
-      supportedPythonVersions: Schema.optional(Schema.Array(Schema.String)),
-      releaseDate: Schema.optional(Composer_Date),
-      creationDisabled: Schema.optional(Schema.Boolean),
-      upgradeDisabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ImageVersion",
-  }) as any as Schema.Schema<ImageVersion>;
+export const ImageVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  imageVersionId: Schema.optional(Schema.String),
+  isDefault: Schema.optional(Schema.Boolean),
+  supportedPythonVersions: Schema.optional(Schema.Array(Schema.String)),
+  releaseDate: Schema.optional(Composer_Date),
+  creationDisabled: Schema.optional(Schema.Boolean),
+  upgradeDisabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "ImageVersion" });
 
 export interface ListImageVersionsResponse {
   /** The list of supported ImageVersions in a location. */
@@ -1284,15 +1042,11 @@ export interface ListImageVersionsResponse {
   nextPageToken?: string;
 }
 
-export const ListImageVersionsResponse: Schema.Schema<ListImageVersionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      imageVersions: Schema.optional(Schema.Array(ImageVersion)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListImageVersionsResponse",
-  }) as any as Schema.Schema<ListImageVersionsResponse>;
+export const ListImageVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    imageVersions: Schema.optional(Schema.Array(ImageVersion)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListImageVersionsResponse" });
 
 export interface OperationMetadata {
   /** Output only. The current operation state. */
@@ -1325,19 +1079,14 @@ export interface OperationMetadata {
   endTime?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      operationType: Schema.optional(Schema.String),
-      resource: Schema.optional(Schema.String),
-      resourceUuid: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.String),
+  operationType: Schema.optional(Schema.String),
+  resource: Schema.optional(Schema.String),
+  resourceUuid: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationMetadata" });
 
 export interface ConfigConflict {
   /** Conflict message. */
@@ -1350,15 +1099,10 @@ export interface ConfigConflict {
     | (string & {});
 }
 
-export const ConfigConflict: Schema.Schema<ConfigConflict> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      message: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConfigConflict",
-  }) as any as Schema.Schema<ConfigConflict>;
+export const ConfigConflict = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  message: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "ConfigConflict" });
 
 export interface CheckUpgradeResponse {
   /** Output only. Url for a docker build log of an upgraded image. */
@@ -1379,49 +1123,38 @@ export interface CheckUpgradeResponse {
   configConflicts?: Array<ConfigConflict>;
 }
 
-export const CheckUpgradeResponse: Schema.Schema<CheckUpgradeResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      buildLogUri: Schema.optional(Schema.String),
-      containsPypiModulesConflict: Schema.optional(Schema.String),
-      pypiConflictBuildLogExtract: Schema.optional(Schema.String),
-      imageVersion: Schema.optional(Schema.String),
-      pypiDependencies: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      configConflicts: Schema.optional(Schema.Array(ConfigConflict)),
-    }),
-  ).annotate({
-    identifier: "CheckUpgradeResponse",
-  }) as any as Schema.Schema<CheckUpgradeResponse>;
+export const CheckUpgradeResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  buildLogUri: Schema.optional(Schema.String),
+  containsPypiModulesConflict: Schema.optional(Schema.String),
+  pypiConflictBuildLogExtract: Schema.optional(Schema.String),
+  imageVersion: Schema.optional(Schema.String),
+  pypiDependencies: Schema.optional(
+    Schema.Record(Schema.String, Schema.String),
+  ),
+  configConflicts: Schema.optional(Schema.Array(ConfigConflict)),
+}).annotate({ identifier: "CheckUpgradeResponse" });
 
 export interface SaveSnapshotResponse {
   /** The fully-resolved Cloud Storage path of the created snapshot, e.g.: "gs://my-bucket/snapshots/project_location_environment_timestamp". This field is populated only if the snapshot creation was successful. */
   snapshotPath?: string;
 }
 
-export const SaveSnapshotResponse: Schema.Schema<SaveSnapshotResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      snapshotPath: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SaveSnapshotResponse",
-  }) as any as Schema.Schema<SaveSnapshotResponse>;
+export const SaveSnapshotResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  snapshotPath: Schema.optional(Schema.String),
+}).annotate({ identifier: "SaveSnapshotResponse" });
 
 export interface LoadSnapshotResponse {}
 
-export const LoadSnapshotResponse: Schema.Schema<LoadSnapshotResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "LoadSnapshotResponse",
-  }) as any as Schema.Schema<LoadSnapshotResponse>;
+export const LoadSnapshotResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "LoadSnapshotResponse" });
 
 export interface DatabaseFailoverResponse {}
 
-export const DatabaseFailoverResponse: Schema.Schema<DatabaseFailoverResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const DatabaseFailoverResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DatabaseFailoverResponse",
-  }) as any as Schema.Schema<DatabaseFailoverResponse>;
+  });
 
 // ==========================================================================
 // Operations

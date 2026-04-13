@@ -33,15 +33,12 @@ export interface Document {
   description?: string;
 }
 
-export const Document: Schema.Schema<Document> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      content: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Document" }) as any as Schema.Schema<Document>;
+export const Document = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  uri: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  content: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "Document" });
 
 export interface DocumentChunk {
   /** Output only. The content of the document chunk. */
@@ -52,16 +49,11 @@ export interface DocumentChunk {
   id?: string;
 }
 
-export const DocumentChunk: Schema.Schema<DocumentChunk> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      content: Schema.optional(Schema.String),
-      parent: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DocumentChunk",
-  }) as any as Schema.Schema<DocumentChunk>;
+export const DocumentChunk = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  content: Schema.optional(Schema.String),
+  parent: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+}).annotate({ identifier: "DocumentChunk" });
 
 export interface SearchDocumentChunksResponse {
   /** Optional. A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -70,29 +62,21 @@ export interface SearchDocumentChunksResponse {
   results?: Array<DocumentChunk>;
 }
 
-export const SearchDocumentChunksResponse: Schema.Schema<SearchDocumentChunksResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      results: Schema.optional(Schema.Array(DocumentChunk)),
-    }),
-  ).annotate({
-    identifier: "SearchDocumentChunksResponse",
-  }) as any as Schema.Schema<SearchDocumentChunksResponse>;
+export const SearchDocumentChunksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    results: Schema.optional(Schema.Array(DocumentChunk)),
+  }).annotate({ identifier: "SearchDocumentChunksResponse" });
 
 export interface BatchGetDocumentsResponse {
   /** Documents requested. */
   documents?: Array<Document>;
 }
 
-export const BatchGetDocumentsResponse: Schema.Schema<BatchGetDocumentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      documents: Schema.optional(Schema.Array(Document)),
-    }),
-  ).annotate({
-    identifier: "BatchGetDocumentsResponse",
-  }) as any as Schema.Schema<BatchGetDocumentsResponse>;
+export const BatchGetDocumentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    documents: Schema.optional(Schema.Array(Document)),
+  }).annotate({ identifier: "BatchGetDocumentsResponse" });
 
 // ==========================================================================
 // Operations

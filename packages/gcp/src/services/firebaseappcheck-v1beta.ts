@@ -29,16 +29,14 @@ export interface GoogleFirebaseAppcheckV1betaExchangeRecaptchaEnterpriseTokenReq
   limitedUse?: boolean;
 }
 
-export const GoogleFirebaseAppcheckV1betaExchangeRecaptchaEnterpriseTokenRequest: Schema.Schema<GoogleFirebaseAppcheckV1betaExchangeRecaptchaEnterpriseTokenRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      recaptchaEnterpriseToken: Schema.optional(Schema.String),
-      limitedUse: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppcheckV1betaExchangeRecaptchaEnterpriseTokenRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    recaptchaEnterpriseToken: Schema.optional(Schema.String),
+    limitedUse: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier:
       "GoogleFirebaseAppcheckV1betaExchangeRecaptchaEnterpriseTokenRequest",
-  }) as any as Schema.Schema<GoogleFirebaseAppcheckV1betaExchangeRecaptchaEnterpriseTokenRequest>;
+  });
 
 export interface GoogleFirebaseAppcheckV1betaPlayIntegrityConfigDeviceIntegrity {
   /** Specifies the minimum device integrity level in order for the device to be considered valid. Any device with a device recognition verdict lower than this level will be rejected. If this is unspecified, the default level is `NO_INTEGRITY`. */
@@ -51,15 +49,13 @@ export interface GoogleFirebaseAppcheckV1betaPlayIntegrityConfigDeviceIntegrity 
     | (string & {});
 }
 
-export const GoogleFirebaseAppcheckV1betaPlayIntegrityConfigDeviceIntegrity: Schema.Schema<GoogleFirebaseAppcheckV1betaPlayIntegrityConfigDeviceIntegrity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      minDeviceRecognitionLevel: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppcheckV1betaPlayIntegrityConfigDeviceIntegrity =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    minDeviceRecognitionLevel: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleFirebaseAppcheckV1betaPlayIntegrityConfigDeviceIntegrity",
-  }) as any as Schema.Schema<GoogleFirebaseAppcheckV1betaPlayIntegrityConfigDeviceIntegrity>;
+  });
 
 export interface GoogleFirebaseAppcheckV1betaAppAttestConfig {
   /** Required. The relative resource name of the App Attest configuration object, in the format: ``` projects/{project_number}/apps/{app_id}/appAttestConfig ``` */
@@ -68,30 +64,24 @@ export interface GoogleFirebaseAppcheckV1betaAppAttestConfig {
   tokenTtl?: string;
 }
 
-export const GoogleFirebaseAppcheckV1betaAppAttestConfig: Schema.Schema<GoogleFirebaseAppcheckV1betaAppAttestConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      tokenTtl: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppcheckV1betaAppAttestConfig",
-  }) as any as Schema.Schema<GoogleFirebaseAppcheckV1betaAppAttestConfig>;
+export const GoogleFirebaseAppcheckV1betaAppAttestConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    tokenTtl: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirebaseAppcheckV1betaAppAttestConfig" });
 
 export interface GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfigRiskAnalysis {
   /** Specifies a minimum score required for a reCAPTCHA token to be considered valid. If its score is greater than or equal to this value, it will be accepted; otherwise, it will be rejected. The value must be between 0.0 and 1.0. The default value is 0.5. */
   minValidScore?: number;
 }
 
-export const GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfigRiskAnalysis: Schema.Schema<GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfigRiskAnalysis> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      minValidScore: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfigRiskAnalysis =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    minValidScore: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfigRiskAnalysis",
-  }) as any as Schema.Schema<GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfigRiskAnalysis>;
+  });
 
 export interface GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig {
   /** Required. The relative resource name of the reCAPTCHA Enterprise configuration object, in the format: ``` projects/{project_number}/apps/{app_id}/recaptchaEnterpriseConfig ``` */
@@ -104,36 +94,32 @@ export interface GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig {
   siteKey?: string;
 }
 
-export const GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig: Schema.Schema<GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      riskAnalysis: Schema.optional(
-        GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfigRiskAnalysis,
-      ),
-      tokenTtl: Schema.optional(Schema.String),
-      siteKey: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    riskAnalysis: Schema.optional(
+      GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfigRiskAnalysis,
+    ),
+    tokenTtl: Schema.optional(Schema.String),
+    siteKey: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig",
-  }) as any as Schema.Schema<GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig>;
+  });
 
 export interface GoogleFirebaseAppcheckV1betaBatchGetRecaptchaEnterpriseConfigsResponse {
   /** RecaptchaEnterpriseConfigs retrieved. */
   configs?: Array<GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig>;
 }
 
-export const GoogleFirebaseAppcheckV1betaBatchGetRecaptchaEnterpriseConfigsResponse: Schema.Schema<GoogleFirebaseAppcheckV1betaBatchGetRecaptchaEnterpriseConfigsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      configs: Schema.optional(
-        Schema.Array(GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig),
-      ),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppcheckV1betaBatchGetRecaptchaEnterpriseConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    configs: Schema.optional(
+      Schema.Array(GoogleFirebaseAppcheckV1betaRecaptchaEnterpriseConfig),
+    ),
+  }).annotate({
     identifier:
       "GoogleFirebaseAppcheckV1betaBatchGetRecaptchaEnterpriseConfigsResponse",
-  }) as any as Schema.Schema<GoogleFirebaseAppcheckV1betaBatchGetRecaptchaEnterpriseConfigsResponse>;
+  });
 
 export interface GoogleFirebaseAppcheckV1betaRecaptchaConfig {
   /** Required. The relative resource name of the reCAPTCHA v3 configuration object, in the format: ``` projects/{project_number}/apps/{app_id}/recaptchaConfig ``` */
@@ -148,18 +134,14 @@ export interface GoogleFirebaseAppcheckV1betaRecaptchaConfig {
   minValidScore?: number;
 }
 
-export const GoogleFirebaseAppcheckV1betaRecaptchaConfig: Schema.Schema<GoogleFirebaseAppcheckV1betaRecaptchaConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      siteSecretSet: Schema.optional(Schema.Boolean),
-      tokenTtl: Schema.optional(Schema.String),
-      siteSecret: Schema.optional(Schema.String),
-      minValidScore: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppcheckV1betaRecaptchaConfig",
-  }) as any as Schema.Schema<GoogleFirebaseAppcheckV1betaRecaptchaConfig>;
+export const GoogleFirebaseAppcheckV1betaRecaptchaConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    siteSecretSet: Schema.optional(Schema.Boolean),
+    tokenTtl: Schema.optional(Schema.String),
+    siteSecret: Schema.optional(Schema.String),
+    minValidScore: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleFirebaseAppcheckV1betaRecaptchaConfig" });
 
 export interface GoogleFirebaseAppcheckV1betaSafetyNetConfig {
   /** Required. The relative resource name of the SafetyNet configuration object, in the format: ``` projects/{project_number}/apps/{app_id}/safetyNetConfig ``` */
@@ -168,31 +150,25 @@ export interface GoogleFirebaseAppcheckV1betaSafetyNetConfig {
   tokenTtl?: string;
 }
 
-export const GoogleFirebaseAppcheckV1betaSafetyNetConfig: Schema.Schema<GoogleFirebaseAppcheckV1betaSafetyNetConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      tokenTtl: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppcheckV1betaSafetyNetConfig",
-  }) as any as Schema.Schema<GoogleFirebaseAppcheckV1betaSafetyNetConfig>;
+export const GoogleFirebaseAppcheckV1betaSafetyNetConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    tokenTtl: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirebaseAppcheckV1betaSafetyNetConfig" });
 
 export interface GoogleFirebaseAppcheckV1betaBatchGetSafetyNetConfigsResponse {
   /** SafetyNetConfigs retrieved. */
   configs?: Array<GoogleFirebaseAppcheckV1betaSafetyNetConfig>;
 }
 
-export const GoogleFirebaseAppcheckV1betaBatchGetSafetyNetConfigsResponse: Schema.Schema<GoogleFirebaseAppcheckV1betaBatchGetSafetyNetConfigsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      configs: Schema.optional(
-        Schema.Array(GoogleFirebaseAppcheckV1betaSafetyNetConfig),
-      ),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppcheckV1betaBatchGetSafetyNetConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    configs: Schema.optional(
+      Schema.Array(GoogleFirebaseAppcheckV1betaSafetyNetConfig),
+    ),
+  }).annotate({
     identifier: "GoogleFirebaseAppcheckV1betaBatchGetSafetyNetConfigsResponse",
-  }) as any as Schema.Schema<GoogleFirebaseAppcheckV1betaBatchGetSafetyNetConfigsResponse>;
+  });
 
 export interface GoogleFirebaseAppcheckV1betaPublicJwk {
   /** See [section 4.1 of RFC 7517](https://tools.ietf.org/html/rfc7517#section-4.1). */
@@ -209,77 +185,61 @@ export interface GoogleFirebaseAppcheckV1betaPublicJwk {
   alg?: string;
 }
 
-export const GoogleFirebaseAppcheckV1betaPublicJwk: Schema.Schema<GoogleFirebaseAppcheckV1betaPublicJwk> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kty: Schema.optional(Schema.String),
-      n: Schema.optional(Schema.String),
-      use: Schema.optional(Schema.String),
-      kid: Schema.optional(Schema.String),
-      e: Schema.optional(Schema.String),
-      alg: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppcheckV1betaPublicJwk",
-  }) as any as Schema.Schema<GoogleFirebaseAppcheckV1betaPublicJwk>;
+export const GoogleFirebaseAppcheckV1betaPublicJwk =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kty: Schema.optional(Schema.String),
+    n: Schema.optional(Schema.String),
+    use: Schema.optional(Schema.String),
+    kid: Schema.optional(Schema.String),
+    e: Schema.optional(Schema.String),
+    alg: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirebaseAppcheckV1betaPublicJwk" });
 
 export interface GoogleFirebaseAppcheckV1betaPublicJwkSet {
   /** The set of public keys. See [section 5.1 of RFC 7517](https://tools.ietf.org/html/rfc7517#section-5). */
   keys?: Array<GoogleFirebaseAppcheckV1betaPublicJwk>;
 }
 
-export const GoogleFirebaseAppcheckV1betaPublicJwkSet: Schema.Schema<GoogleFirebaseAppcheckV1betaPublicJwkSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      keys: Schema.optional(
-        Schema.Array(GoogleFirebaseAppcheckV1betaPublicJwk),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppcheckV1betaPublicJwkSet",
-  }) as any as Schema.Schema<GoogleFirebaseAppcheckV1betaPublicJwkSet>;
+export const GoogleFirebaseAppcheckV1betaPublicJwkSet =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    keys: Schema.optional(Schema.Array(GoogleFirebaseAppcheckV1betaPublicJwk)),
+  }).annotate({ identifier: "GoogleFirebaseAppcheckV1betaPublicJwkSet" });
 
 export interface GoogleFirebaseAppcheckV1betaExchangeRecaptchaTokenRequest {
   /** Required. The reCAPTCHA token as returned by the [reCAPTCHA v3 JavaScript API](https://developers.google.com/recaptcha/docs/v3). */
   recaptchaToken?: string;
 }
 
-export const GoogleFirebaseAppcheckV1betaExchangeRecaptchaTokenRequest: Schema.Schema<GoogleFirebaseAppcheckV1betaExchangeRecaptchaTokenRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      recaptchaToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppcheckV1betaExchangeRecaptchaTokenRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    recaptchaToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleFirebaseAppcheckV1betaExchangeRecaptchaTokenRequest",
-  }) as any as Schema.Schema<GoogleFirebaseAppcheckV1betaExchangeRecaptchaTokenRequest>;
+  });
 
 export interface GoogleFirebaseAppcheckV1betaPlayIntegrityConfigAppIntegrity {
   /** Specifies whether your running app is allowed to have the `UNRECOGNIZED_VERSION` [app recognition verdict](https://developer.android.com/google/play/integrity/verdicts#application-integrity-field). Note that the app recognition verdict `PLAY_RECOGNIZED` is a strong, comprehensive integrity signal that takes into account various other signals, including conditional and optional device integrity responses that you have opted into. If your app is published off-Play, this field should be set to `true` to allow instances of your app installed from off-Play sources to function. If set to `false`, only `PLAY_RECOGNIZED` verdicts are allowed, and both `UNRECOGNIZED_VERSION` and `UNEVALUATED` will be rejected. If set to `true`, any app recognition verdict is allowed. The default value is `false`. */
   allowUnrecognizedVersion?: boolean;
 }
 
-export const GoogleFirebaseAppcheckV1betaPlayIntegrityConfigAppIntegrity: Schema.Schema<GoogleFirebaseAppcheckV1betaPlayIntegrityConfigAppIntegrity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      allowUnrecognizedVersion: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppcheckV1betaPlayIntegrityConfigAppIntegrity =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allowUnrecognizedVersion: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleFirebaseAppcheckV1betaPlayIntegrityConfigAppIntegrity",
-  }) as any as Schema.Schema<GoogleFirebaseAppcheckV1betaPlayIntegrityConfigAppIntegrity>;
+  });
 
 export interface GoogleFirebaseAppcheckV1betaPlayIntegrityConfigAccountDetails {
   /** Specifies whether the caller must have received the [`LICENSED` verdict](https://developer.android.com/google/play/integrity/verdicts#account-details-field). For additional details about scenarios where your users will receive this `LICENSED` label, see [the default responses table](https://developer.android.com/google/play/integrity/setup#default). If set to `true`, apps without the `LICENSED` app licensing verdict will be rejected. If set to `false`, any app licensing verdict is allowed. The default value is `false`. */
   requireLicensed?: boolean;
 }
 
-export const GoogleFirebaseAppcheckV1betaPlayIntegrityConfigAccountDetails: Schema.Schema<GoogleFirebaseAppcheckV1betaPlayIntegrityConfigAccountDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requireLicensed: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppcheckV1betaPlayIntegrityConfigAccountDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requireLicensed: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleFirebaseAppcheckV1betaPlayIntegrityConfigAccountDetails",
-  }) as any as Schema.Schema<GoogleFirebaseAppcheckV1betaPlayIntegrityConfigAccountDetails>;
+  });
 
 export interface GoogleFirebaseAppcheckV1betaPlayIntegrityConfig {
   /** Specifies the duration for which App Check tokens exchanged from Play Integrity tokens will be valid. If unset, a default value of 1 hour is assumed. Must be between 30 minutes and 7 days, inclusive. */
@@ -294,24 +254,22 @@ export interface GoogleFirebaseAppcheckV1betaPlayIntegrityConfig {
   accountDetails?: GoogleFirebaseAppcheckV1betaPlayIntegrityConfigAccountDetails;
 }
 
-export const GoogleFirebaseAppcheckV1betaPlayIntegrityConfig: Schema.Schema<GoogleFirebaseAppcheckV1betaPlayIntegrityConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tokenTtl: Schema.optional(Schema.String),
-      appIntegrity: Schema.optional(
-        GoogleFirebaseAppcheckV1betaPlayIntegrityConfigAppIntegrity,
-      ),
-      deviceIntegrity: Schema.optional(
-        GoogleFirebaseAppcheckV1betaPlayIntegrityConfigDeviceIntegrity,
-      ),
-      name: Schema.optional(Schema.String),
-      accountDetails: Schema.optional(
-        GoogleFirebaseAppcheckV1betaPlayIntegrityConfigAccountDetails,
-      ),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppcheckV1betaPlayIntegrityConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tokenTtl: Schema.optional(Schema.String),
+    appIntegrity: Schema.optional(
+      GoogleFirebaseAppcheckV1betaPlayIntegrityConfigAppIntegrity,
+    ),
+    deviceIntegrity: Schema.optional(
+      GoogleFirebaseAppcheckV1betaPlayIntegrityConfigDeviceIntegrity,
+    ),
+    name: Schema.optional(Schema.String),
+    accountDetails: Schema.optional(
+      GoogleFirebaseAppcheckV1betaPlayIntegrityConfigAccountDetails,
+    ),
+  }).annotate({
     identifier: "GoogleFirebaseAppcheckV1betaPlayIntegrityConfig",
-  }) as any as Schema.Schema<GoogleFirebaseAppcheckV1betaPlayIntegrityConfig>;
+  });
 
 export interface GoogleFirebaseAppcheckV1betaDeviceCheckConfig {
   /** Required. The relative resource name of the DeviceCheck configuration object, in the format: ``` projects/{project_number}/apps/{app_id}/deviceCheckConfig ``` */
@@ -326,52 +284,44 @@ export interface GoogleFirebaseAppcheckV1betaDeviceCheckConfig {
   keyId?: string;
 }
 
-export const GoogleFirebaseAppcheckV1betaDeviceCheckConfig: Schema.Schema<GoogleFirebaseAppcheckV1betaDeviceCheckConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      privateKey: Schema.optional(Schema.String),
-      privateKeySet: Schema.optional(Schema.Boolean),
-      tokenTtl: Schema.optional(Schema.String),
-      keyId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppcheckV1betaDeviceCheckConfig",
-  }) as any as Schema.Schema<GoogleFirebaseAppcheckV1betaDeviceCheckConfig>;
+export const GoogleFirebaseAppcheckV1betaDeviceCheckConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    privateKey: Schema.optional(Schema.String),
+    privateKeySet: Schema.optional(Schema.Boolean),
+    tokenTtl: Schema.optional(Schema.String),
+    keyId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirebaseAppcheckV1betaDeviceCheckConfig" });
 
 export interface GoogleFirebaseAppcheckV1betaBatchGetDeviceCheckConfigsResponse {
   /** DeviceCheckConfigs retrieved. */
   configs?: Array<GoogleFirebaseAppcheckV1betaDeviceCheckConfig>;
 }
 
-export const GoogleFirebaseAppcheckV1betaBatchGetDeviceCheckConfigsResponse: Schema.Schema<GoogleFirebaseAppcheckV1betaBatchGetDeviceCheckConfigsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      configs: Schema.optional(
-        Schema.Array(GoogleFirebaseAppcheckV1betaDeviceCheckConfig),
-      ),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppcheckV1betaBatchGetDeviceCheckConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    configs: Schema.optional(
+      Schema.Array(GoogleFirebaseAppcheckV1betaDeviceCheckConfig),
+    ),
+  }).annotate({
     identifier:
       "GoogleFirebaseAppcheckV1betaBatchGetDeviceCheckConfigsResponse",
-  }) as any as Schema.Schema<GoogleFirebaseAppcheckV1betaBatchGetDeviceCheckConfigsResponse>;
+  });
 
 export interface GoogleFirebaseAppcheckV1betaBatchGetPlayIntegrityConfigsResponse {
   /** PlayIntegrityConfigs retrieved. */
   configs?: Array<GoogleFirebaseAppcheckV1betaPlayIntegrityConfig>;
 }
 
-export const GoogleFirebaseAppcheckV1betaBatchGetPlayIntegrityConfigsResponse: Schema.Schema<GoogleFirebaseAppcheckV1betaBatchGetPlayIntegrityConfigsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      configs: Schema.optional(
-        Schema.Array(GoogleFirebaseAppcheckV1betaPlayIntegrityConfig),
-      ),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppcheckV1betaBatchGetPlayIntegrityConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    configs: Schema.optional(
+      Schema.Array(GoogleFirebaseAppcheckV1betaPlayIntegrityConfig),
+    ),
+  }).annotate({
     identifier:
       "GoogleFirebaseAppcheckV1betaBatchGetPlayIntegrityConfigsResponse",
-  }) as any as Schema.Schema<GoogleFirebaseAppcheckV1betaBatchGetPlayIntegrityConfigsResponse>;
+  });
 
 export interface GoogleFirebaseAppcheckV1betaDebugToken {
   /** Required. A human readable display name used to identify this debug token. */
@@ -386,18 +336,14 @@ export interface GoogleFirebaseAppcheckV1betaDebugToken {
   updateTime?: string;
 }
 
-export const GoogleFirebaseAppcheckV1betaDebugToken: Schema.Schema<GoogleFirebaseAppcheckV1betaDebugToken> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      token: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppcheckV1betaDebugToken",
-  }) as any as Schema.Schema<GoogleFirebaseAppcheckV1betaDebugToken>;
+export const GoogleFirebaseAppcheckV1betaDebugToken =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    token: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirebaseAppcheckV1betaDebugToken" });
 
 export interface GoogleFirebaseAppcheckV1betaExchangePlayIntegrityTokenRequest {
   /** Required. The [integrity verdict response token from Play Integrity](https://developer.android.com/google/play/integrity/verdict#decrypt-verify) issued to your app. */
@@ -406,15 +352,13 @@ export interface GoogleFirebaseAppcheckV1betaExchangePlayIntegrityTokenRequest {
   limitedUse?: boolean;
 }
 
-export const GoogleFirebaseAppcheckV1betaExchangePlayIntegrityTokenRequest: Schema.Schema<GoogleFirebaseAppcheckV1betaExchangePlayIntegrityTokenRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      playIntegrityToken: Schema.optional(Schema.String),
-      limitedUse: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppcheckV1betaExchangePlayIntegrityTokenRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    playIntegrityToken: Schema.optional(Schema.String),
+    limitedUse: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleFirebaseAppcheckV1betaExchangePlayIntegrityTokenRequest",
-  }) as any as Schema.Schema<GoogleFirebaseAppcheckV1betaExchangePlayIntegrityTokenRequest>;
+  });
 
 export interface GoogleFirebaseAppcheckV1betaListDebugTokensResponse {
   /** The DebugTokens retrieved. */
@@ -423,31 +367,27 @@ export interface GoogleFirebaseAppcheckV1betaListDebugTokensResponse {
   nextPageToken?: string;
 }
 
-export const GoogleFirebaseAppcheckV1betaListDebugTokensResponse: Schema.Schema<GoogleFirebaseAppcheckV1betaListDebugTokensResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      debugTokens: Schema.optional(
-        Schema.Array(GoogleFirebaseAppcheckV1betaDebugToken),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppcheckV1betaListDebugTokensResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    debugTokens: Schema.optional(
+      Schema.Array(GoogleFirebaseAppcheckV1betaDebugToken),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleFirebaseAppcheckV1betaListDebugTokensResponse",
-  }) as any as Schema.Schema<GoogleFirebaseAppcheckV1betaListDebugTokensResponse>;
+  });
 
 export interface GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenResponse {
   /** Whether this token was already consumed. If this is the first time this method has seen the given App Check token, this field will be omitted from the response. The given token will then be marked as `already_consumed` (set to `true`) for all future invocations of this method for that token. Note that if the given App Check token is invalid, an HTTP 403 error is returned instead of a response containing this field, regardless whether the token was already consumed. */
   alreadyConsumed?: boolean;
 }
 
-export const GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenResponse: Schema.Schema<GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      alreadyConsumed: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    alreadyConsumed: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenResponse",
-  }) as any as Schema.Schema<GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenResponse>;
+  });
 
 export interface GoogleFirebaseAppcheckV1betaRecaptchaV3Config {
   /** Specifies the duration for which App Check tokens exchanged from reCAPTCHA tokens will be valid. If unset, a default value of 1 day is assumed. Must be between 30 minutes and 7 days, inclusive. */
@@ -462,18 +402,14 @@ export interface GoogleFirebaseAppcheckV1betaRecaptchaV3Config {
   name?: string;
 }
 
-export const GoogleFirebaseAppcheckV1betaRecaptchaV3Config: Schema.Schema<GoogleFirebaseAppcheckV1betaRecaptchaV3Config> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tokenTtl: Schema.optional(Schema.String),
-      siteSecretSet: Schema.optional(Schema.Boolean),
-      siteSecret: Schema.optional(Schema.String),
-      minValidScore: Schema.optional(Schema.Number),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppcheckV1betaRecaptchaV3Config",
-  }) as any as Schema.Schema<GoogleFirebaseAppcheckV1betaRecaptchaV3Config>;
+export const GoogleFirebaseAppcheckV1betaRecaptchaV3Config =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tokenTtl: Schema.optional(Schema.String),
+    siteSecretSet: Schema.optional(Schema.Boolean),
+    siteSecret: Schema.optional(Schema.String),
+    minValidScore: Schema.optional(Schema.Number),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirebaseAppcheckV1betaRecaptchaV3Config" });
 
 export interface GoogleFirebaseAppcheckV1betaService {
   /** Output only. Timestamp when this service configuration object was most recently updated. */
@@ -488,18 +424,14 @@ export interface GoogleFirebaseAppcheckV1betaService {
   name?: string;
 }
 
-export const GoogleFirebaseAppcheckV1betaService: Schema.Schema<GoogleFirebaseAppcheckV1betaService> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateTime: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      replayProtection: Schema.optional(Schema.String),
-      enforcementMode: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppcheckV1betaService",
-  }) as any as Schema.Schema<GoogleFirebaseAppcheckV1betaService>;
+export const GoogleFirebaseAppcheckV1betaService =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateTime: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    replayProtection: Schema.optional(Schema.String),
+    enforcementMode: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirebaseAppcheckV1betaService" });
 
 export interface GoogleFirebaseAppcheckV1betaUpdateServiceRequest {
   /** Required. The Service to update. The Service's `name` field is used to identify the Service to be updated, in the format: ``` projects/{project_number}/services/{service_id} ``` Note that the `service_id` element must be a supported service ID. Currently, the following service IDs are supported: * `firebasestorage.googleapis.com` (Cloud Storage for Firebase) * `firebasedatabase.googleapis.com` (Firebase Realtime Database) * `firestore.googleapis.com` (Cloud Firestore) * `identitytoolkit.googleapis.com` (Firebase Authentication with Identity Platform) * `oauth2.googleapis.com` (Google Identity for iOS) For Firebase Authentication to work with App Check, you must first upgrade to [Firebase Authentication with Identity Platform](https://firebase.google.com/docs/auth#identity-platform). */
@@ -508,15 +440,13 @@ export interface GoogleFirebaseAppcheckV1betaUpdateServiceRequest {
   updateMask?: string;
 }
 
-export const GoogleFirebaseAppcheckV1betaUpdateServiceRequest: Schema.Schema<GoogleFirebaseAppcheckV1betaUpdateServiceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      service: Schema.optional(GoogleFirebaseAppcheckV1betaService),
-      updateMask: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppcheckV1betaUpdateServiceRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    service: Schema.optional(GoogleFirebaseAppcheckV1betaService),
+    updateMask: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleFirebaseAppcheckV1betaUpdateServiceRequest",
-  }) as any as Schema.Schema<GoogleFirebaseAppcheckV1betaUpdateServiceRequest>;
+  });
 
 export interface GoogleFirebaseAppcheckV1betaListServicesResponse {
   /** The Services retrieved. */
@@ -525,33 +455,29 @@ export interface GoogleFirebaseAppcheckV1betaListServicesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleFirebaseAppcheckV1betaListServicesResponse: Schema.Schema<GoogleFirebaseAppcheckV1betaListServicesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      services: Schema.optional(
-        Schema.Array(GoogleFirebaseAppcheckV1betaService),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppcheckV1betaListServicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    services: Schema.optional(
+      Schema.Array(GoogleFirebaseAppcheckV1betaService),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleFirebaseAppcheckV1betaListServicesResponse",
-  }) as any as Schema.Schema<GoogleFirebaseAppcheckV1betaListServicesResponse>;
+  });
 
 export interface GoogleFirebaseAppcheckV1betaBatchGetRecaptchaConfigsResponse {
   /** RecaptchaConfigs retrieved. */
   configs?: Array<GoogleFirebaseAppcheckV1betaRecaptchaConfig>;
 }
 
-export const GoogleFirebaseAppcheckV1betaBatchGetRecaptchaConfigsResponse: Schema.Schema<GoogleFirebaseAppcheckV1betaBatchGetRecaptchaConfigsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      configs: Schema.optional(
-        Schema.Array(GoogleFirebaseAppcheckV1betaRecaptchaConfig),
-      ),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppcheckV1betaBatchGetRecaptchaConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    configs: Schema.optional(
+      Schema.Array(GoogleFirebaseAppcheckV1betaRecaptchaConfig),
+    ),
+  }).annotate({
     identifier: "GoogleFirebaseAppcheckV1betaBatchGetRecaptchaConfigsResponse",
-  }) as any as Schema.Schema<GoogleFirebaseAppcheckV1betaBatchGetRecaptchaConfigsResponse>;
+  });
 
 export interface GoogleFirebaseAppcheckV1betaExchangeRecaptchaV3TokenRequest {
   /** Required. The reCAPTCHA token as returned by the [reCAPTCHA v3 JavaScript API](https://developers.google.com/recaptcha/docs/v3). */
@@ -560,15 +486,13 @@ export interface GoogleFirebaseAppcheckV1betaExchangeRecaptchaV3TokenRequest {
   limitedUse?: boolean;
 }
 
-export const GoogleFirebaseAppcheckV1betaExchangeRecaptchaV3TokenRequest: Schema.Schema<GoogleFirebaseAppcheckV1betaExchangeRecaptchaV3TokenRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      recaptchaV3Token: Schema.optional(Schema.String),
-      limitedUse: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppcheckV1betaExchangeRecaptchaV3TokenRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    recaptchaV3Token: Schema.optional(Schema.String),
+    limitedUse: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleFirebaseAppcheckV1betaExchangeRecaptchaV3TokenRequest",
-  }) as any as Schema.Schema<GoogleFirebaseAppcheckV1betaExchangeRecaptchaV3TokenRequest>;
+  });
 
 export interface GoogleFirebaseAppcheckV1betaExchangeDebugTokenRequest {
   /** Required. A debug token secret. This string must match a debug token secret previously created using CreateDebugToken. */
@@ -577,32 +501,28 @@ export interface GoogleFirebaseAppcheckV1betaExchangeDebugTokenRequest {
   limitedUse?: boolean;
 }
 
-export const GoogleFirebaseAppcheckV1betaExchangeDebugTokenRequest: Schema.Schema<GoogleFirebaseAppcheckV1betaExchangeDebugTokenRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      debugToken: Schema.optional(Schema.String),
-      limitedUse: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppcheckV1betaExchangeDebugTokenRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    debugToken: Schema.optional(Schema.String),
+    limitedUse: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleFirebaseAppcheckV1betaExchangeDebugTokenRequest",
-  }) as any as Schema.Schema<GoogleFirebaseAppcheckV1betaExchangeDebugTokenRequest>;
+  });
 
 export interface GoogleFirebaseAppcheckV1betaBatchGetRecaptchaV3ConfigsResponse {
   /** RecaptchaV3Configs retrieved. */
   configs?: Array<GoogleFirebaseAppcheckV1betaRecaptchaV3Config>;
 }
 
-export const GoogleFirebaseAppcheckV1betaBatchGetRecaptchaV3ConfigsResponse: Schema.Schema<GoogleFirebaseAppcheckV1betaBatchGetRecaptchaV3ConfigsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      configs: Schema.optional(
-        Schema.Array(GoogleFirebaseAppcheckV1betaRecaptchaV3Config),
-      ),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppcheckV1betaBatchGetRecaptchaV3ConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    configs: Schema.optional(
+      Schema.Array(GoogleFirebaseAppcheckV1betaRecaptchaV3Config),
+    ),
+  }).annotate({
     identifier:
       "GoogleFirebaseAppcheckV1betaBatchGetRecaptchaV3ConfigsResponse",
-  }) as any as Schema.Schema<GoogleFirebaseAppcheckV1betaBatchGetRecaptchaV3ConfigsResponse>;
+  });
 
 export interface GoogleFirebaseAppcheckV1betaResourcePolicy {
   /** Output only. Timestamp when this resource policy configuration object was most recently updated. */
@@ -617,18 +537,14 @@ export interface GoogleFirebaseAppcheckV1betaResourcePolicy {
   name?: string;
 }
 
-export const GoogleFirebaseAppcheckV1betaResourcePolicy: Schema.Schema<GoogleFirebaseAppcheckV1betaResourcePolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateTime: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      targetResource: Schema.optional(Schema.String),
-      enforcementMode: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppcheckV1betaResourcePolicy",
-  }) as any as Schema.Schema<GoogleFirebaseAppcheckV1betaResourcePolicy>;
+export const GoogleFirebaseAppcheckV1betaResourcePolicy =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateTime: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    targetResource: Schema.optional(Schema.String),
+    enforcementMode: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirebaseAppcheckV1betaResourcePolicy" });
 
 export interface GoogleFirebaseAppcheckV1betaListResourcePoliciesResponse {
   /** The ResourcePolicy objects retrieved. */
@@ -637,24 +553,22 @@ export interface GoogleFirebaseAppcheckV1betaListResourcePoliciesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleFirebaseAppcheckV1betaListResourcePoliciesResponse: Schema.Schema<GoogleFirebaseAppcheckV1betaListResourcePoliciesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourcePolicies: Schema.optional(
-        Schema.Array(GoogleFirebaseAppcheckV1betaResourcePolicy),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppcheckV1betaListResourcePoliciesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourcePolicies: Schema.optional(
+      Schema.Array(GoogleFirebaseAppcheckV1betaResourcePolicy),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleFirebaseAppcheckV1betaListResourcePoliciesResponse",
-  }) as any as Schema.Schema<GoogleFirebaseAppcheckV1betaListResourcePoliciesResponse>;
+  });
 
 export interface GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeRequest {}
 
-export const GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeRequest: Schema.Schema<GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeRequest",
-  }) as any as Schema.Schema<GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeRequest>;
+  });
 
 export interface GoogleFirebaseAppcheckV1betaUpdateResourcePolicyRequest {
   /** Required. The ResourcePolicy to update. The ResourcePolicy's `name` field is used to identify the ResourcePolicy to be updated, in the format: ``` projects/{project_number}/services/{service_id}/resourcePolicies/{resource_policy_id} ``` Note that the `service_id` element must be a supported service ID. Currently, the following service IDs are supported: * `oauth2.googleapis.com` (Google Identity for iOS) */
@@ -663,33 +577,27 @@ export interface GoogleFirebaseAppcheckV1betaUpdateResourcePolicyRequest {
   updateMask?: string;
 }
 
-export const GoogleFirebaseAppcheckV1betaUpdateResourcePolicyRequest: Schema.Schema<GoogleFirebaseAppcheckV1betaUpdateResourcePolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourcePolicy: Schema.optional(
-        GoogleFirebaseAppcheckV1betaResourcePolicy,
-      ),
-      updateMask: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppcheckV1betaUpdateResourcePolicyRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourcePolicy: Schema.optional(GoogleFirebaseAppcheckV1betaResourcePolicy),
+    updateMask: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleFirebaseAppcheckV1betaUpdateResourcePolicyRequest",
-  }) as any as Schema.Schema<GoogleFirebaseAppcheckV1betaUpdateResourcePolicyRequest>;
+  });
 
 export interface GoogleFirebaseAppcheckV1betaBatchUpdateServicesResponse {
   /** Service objects after the updates have been applied. */
   services?: Array<GoogleFirebaseAppcheckV1betaService>;
 }
 
-export const GoogleFirebaseAppcheckV1betaBatchUpdateServicesResponse: Schema.Schema<GoogleFirebaseAppcheckV1betaBatchUpdateServicesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      services: Schema.optional(
-        Schema.Array(GoogleFirebaseAppcheckV1betaService),
-      ),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppcheckV1betaBatchUpdateServicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    services: Schema.optional(
+      Schema.Array(GoogleFirebaseAppcheckV1betaService),
+    ),
+  }).annotate({
     identifier: "GoogleFirebaseAppcheckV1betaBatchUpdateServicesResponse",
-  }) as any as Schema.Schema<GoogleFirebaseAppcheckV1betaBatchUpdateServicesResponse>;
+  });
 
 export interface GoogleFirebaseAppcheckV1betaExchangeDeviceCheckTokenRequest {
   /** Required. The `device_token` as returned by Apple's client-side [DeviceCheck API](https://developer.apple.com/documentation/devicecheck/dcdevice). This is the base64 encoded `Data` (Swift) or `NSData` (ObjC) object. */
@@ -698,15 +606,13 @@ export interface GoogleFirebaseAppcheckV1betaExchangeDeviceCheckTokenRequest {
   limitedUse?: boolean;
 }
 
-export const GoogleFirebaseAppcheckV1betaExchangeDeviceCheckTokenRequest: Schema.Schema<GoogleFirebaseAppcheckV1betaExchangeDeviceCheckTokenRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deviceToken: Schema.optional(Schema.String),
-      limitedUse: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppcheckV1betaExchangeDeviceCheckTokenRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deviceToken: Schema.optional(Schema.String),
+    limitedUse: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleFirebaseAppcheckV1betaExchangeDeviceCheckTokenRequest",
-  }) as any as Schema.Schema<GoogleFirebaseAppcheckV1betaExchangeDeviceCheckTokenRequest>;
+  });
 
 export interface GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationRequest {
   /** Required. The App Attest statement returned by the client-side App Attest API. This is a base64url encoded CBOR object in the JSON response. */
@@ -719,18 +625,16 @@ export interface GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationRequest
   limitedUse?: boolean;
 }
 
-export const GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationRequest: Schema.Schema<GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      attestationStatement: Schema.optional(Schema.String),
-      challenge: Schema.optional(Schema.String),
-      keyId: Schema.optional(Schema.String),
-      limitedUse: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    attestationStatement: Schema.optional(Schema.String),
+    challenge: Schema.optional(Schema.String),
+    keyId: Schema.optional(Schema.String),
+    limitedUse: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier:
       "GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationRequest",
-  }) as any as Schema.Schema<GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationRequest>;
+  });
 
 export interface GoogleFirebaseAppcheckV1betaAttestationTokenResponse {
   /** An App Check token. App Check tokens are signed [JWTs](https://tools.ietf.org/html/rfc7519) containing claims that identify the attested app and Firebase project. This token is used to access Firebase services protected by App Check. */
@@ -739,56 +643,50 @@ export interface GoogleFirebaseAppcheckV1betaAttestationTokenResponse {
   ttl?: string;
 }
 
-export const GoogleFirebaseAppcheckV1betaAttestationTokenResponse: Schema.Schema<GoogleFirebaseAppcheckV1betaAttestationTokenResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      attestationToken: Schema.optional(Schema.String),
-      ttl: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppcheckV1betaAttestationTokenResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    attestationToken: Schema.optional(Schema.String),
+    ttl: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleFirebaseAppcheckV1betaAttestationTokenResponse",
-  }) as any as Schema.Schema<GoogleFirebaseAppcheckV1betaAttestationTokenResponse>;
+  });
 
 export interface GoogleFirebaseAppcheckV1betaBatchUpdateResourcePoliciesResponse {
   /** ResourcePolicy objects after the updates have been applied. */
   resourcePolicies?: Array<GoogleFirebaseAppcheckV1betaResourcePolicy>;
 }
 
-export const GoogleFirebaseAppcheckV1betaBatchUpdateResourcePoliciesResponse: Schema.Schema<GoogleFirebaseAppcheckV1betaBatchUpdateResourcePoliciesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourcePolicies: Schema.optional(
-        Schema.Array(GoogleFirebaseAppcheckV1betaResourcePolicy),
-      ),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppcheckV1betaBatchUpdateResourcePoliciesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourcePolicies: Schema.optional(
+      Schema.Array(GoogleFirebaseAppcheckV1betaResourcePolicy),
+    ),
+  }).annotate({
     identifier:
       "GoogleFirebaseAppcheckV1betaBatchUpdateResourcePoliciesResponse",
-  }) as any as Schema.Schema<GoogleFirebaseAppcheckV1betaBatchUpdateResourcePoliciesResponse>;
+  });
 
 export interface GoogleFirebaseAppcheckV1betaBatchGetAppAttestConfigsResponse {
   /** AppAttestConfigs retrieved. */
   configs?: Array<GoogleFirebaseAppcheckV1betaAppAttestConfig>;
 }
 
-export const GoogleFirebaseAppcheckV1betaBatchGetAppAttestConfigsResponse: Schema.Schema<GoogleFirebaseAppcheckV1betaBatchGetAppAttestConfigsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      configs: Schema.optional(
-        Schema.Array(GoogleFirebaseAppcheckV1betaAppAttestConfig),
-      ),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppcheckV1betaBatchGetAppAttestConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    configs: Schema.optional(
+      Schema.Array(GoogleFirebaseAppcheckV1betaAppAttestConfig),
+    ),
+  }).annotate({
     identifier: "GoogleFirebaseAppcheckV1betaBatchGetAppAttestConfigsResponse",
-  }) as any as Schema.Schema<GoogleFirebaseAppcheckV1betaBatchGetAppAttestConfigsResponse>;
+  });
 
 export interface GoogleFirebaseAppcheckV1betaGeneratePlayIntegrityChallengeRequest {}
 
-export const GoogleFirebaseAppcheckV1betaGeneratePlayIntegrityChallengeRequest: Schema.Schema<GoogleFirebaseAppcheckV1betaGeneratePlayIntegrityChallengeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleFirebaseAppcheckV1betaGeneratePlayIntegrityChallengeRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleFirebaseAppcheckV1betaGeneratePlayIntegrityChallengeRequest",
-  }) as any as Schema.Schema<GoogleFirebaseAppcheckV1betaGeneratePlayIntegrityChallengeRequest>;
+  });
 
 export interface GoogleFirebaseAppcheckV1betaAppCheckToken {
   /** The duration from the time this token is minted until its expiration. This field is intended to ease client-side token management, since the client may have clock skew, but is still able to accurately measure a duration. */
@@ -799,30 +697,24 @@ export interface GoogleFirebaseAppcheckV1betaAppCheckToken {
   attestationToken?: string;
 }
 
-export const GoogleFirebaseAppcheckV1betaAppCheckToken: Schema.Schema<GoogleFirebaseAppcheckV1betaAppCheckToken> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ttl: Schema.optional(Schema.String),
-      token: Schema.optional(Schema.String),
-      attestationToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppcheckV1betaAppCheckToken",
-  }) as any as Schema.Schema<GoogleFirebaseAppcheckV1betaAppCheckToken>;
+export const GoogleFirebaseAppcheckV1betaAppCheckToken =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ttl: Schema.optional(Schema.String),
+    token: Schema.optional(Schema.String),
+    attestationToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirebaseAppcheckV1betaAppCheckToken" });
 
 export interface GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenRequest {
   /** Required. The App Check token to verify. App Check tokens exchanged from the SafetyNet provider are not supported; an HTTP 400 error will be returned. */
   appCheckToken?: string;
 }
 
-export const GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenRequest: Schema.Schema<GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      appCheckToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    appCheckToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenRequest",
-  }) as any as Schema.Schema<GoogleFirebaseAppcheckV1betaVerifyAppCheckTokenRequest>;
+  });
 
 export interface GoogleFirebaseAppcheckV1betaExchangeCustomTokenRequest {
   /** Required. A custom token signed using your project's Admin SDK service account credentials. */
@@ -833,16 +725,14 @@ export interface GoogleFirebaseAppcheckV1betaExchangeCustomTokenRequest {
   limitedUse?: boolean;
 }
 
-export const GoogleFirebaseAppcheckV1betaExchangeCustomTokenRequest: Schema.Schema<GoogleFirebaseAppcheckV1betaExchangeCustomTokenRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customToken: Schema.optional(Schema.String),
-      jti: Schema.optional(Schema.String),
-      limitedUse: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppcheckV1betaExchangeCustomTokenRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customToken: Schema.optional(Schema.String),
+    jti: Schema.optional(Schema.String),
+    limitedUse: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleFirebaseAppcheckV1betaExchangeCustomTokenRequest",
-  }) as any as Schema.Schema<GoogleFirebaseAppcheckV1betaExchangeCustomTokenRequest>;
+  });
 
 export interface GoogleFirebaseAppcheckV1betaExchangeAppAttestAssertionRequest {
   /** Required. A one-time challenge returned by an immediately prior call to GenerateAppAttestChallenge. */
@@ -855,17 +745,15 @@ export interface GoogleFirebaseAppcheckV1betaExchangeAppAttestAssertionRequest {
   assertion?: string;
 }
 
-export const GoogleFirebaseAppcheckV1betaExchangeAppAttestAssertionRequest: Schema.Schema<GoogleFirebaseAppcheckV1betaExchangeAppAttestAssertionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      challenge: Schema.optional(Schema.String),
-      limitedUse: Schema.optional(Schema.Boolean),
-      artifact: Schema.optional(Schema.String),
-      assertion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppcheckV1betaExchangeAppAttestAssertionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    challenge: Schema.optional(Schema.String),
+    limitedUse: Schema.optional(Schema.Boolean),
+    artifact: Schema.optional(Schema.String),
+    assertion: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleFirebaseAppcheckV1betaExchangeAppAttestAssertionRequest",
-  }) as any as Schema.Schema<GoogleFirebaseAppcheckV1betaExchangeAppAttestAssertionRequest>;
+  });
 
 export interface GoogleFirebaseAppcheckV1betaBatchUpdateResourcePoliciesRequest {
   /** Required. The request messages specifying the ResourcePolicy objects to update. A maximum of 100 objects can be updated in a batch. */
@@ -874,25 +762,22 @@ export interface GoogleFirebaseAppcheckV1betaBatchUpdateResourcePoliciesRequest 
   updateMask?: string;
 }
 
-export const GoogleFirebaseAppcheckV1betaBatchUpdateResourcePoliciesRequest: Schema.Schema<GoogleFirebaseAppcheckV1betaBatchUpdateResourcePoliciesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requests: Schema.optional(
-        Schema.Array(GoogleFirebaseAppcheckV1betaUpdateResourcePolicyRequest),
-      ),
-      updateMask: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppcheckV1betaBatchUpdateResourcePoliciesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requests: Schema.optional(
+      Schema.Array(GoogleFirebaseAppcheckV1betaUpdateResourcePolicyRequest),
+    ),
+    updateMask: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleFirebaseAppcheckV1betaBatchUpdateResourcePoliciesRequest",
-  }) as any as Schema.Schema<GoogleFirebaseAppcheckV1betaBatchUpdateResourcePoliciesRequest>;
+  });
 
 export interface GoogleProtobufEmpty {}
 
-export const GoogleProtobufEmpty: Schema.Schema<GoogleProtobufEmpty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "GoogleProtobufEmpty",
-  }) as any as Schema.Schema<GoogleProtobufEmpty>;
+export const GoogleProtobufEmpty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "GoogleProtobufEmpty" });
 
 export interface GoogleFirebaseAppcheckV1betaBatchUpdateServicesRequest {
   /** Required. The request messages specifying the Services to update. A maximum of 100 objects can be updated in a batch. */
@@ -901,17 +786,15 @@ export interface GoogleFirebaseAppcheckV1betaBatchUpdateServicesRequest {
   updateMask?: string;
 }
 
-export const GoogleFirebaseAppcheckV1betaBatchUpdateServicesRequest: Schema.Schema<GoogleFirebaseAppcheckV1betaBatchUpdateServicesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requests: Schema.optional(
-        Schema.Array(GoogleFirebaseAppcheckV1betaUpdateServiceRequest),
-      ),
-      updateMask: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppcheckV1betaBatchUpdateServicesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requests: Schema.optional(
+      Schema.Array(GoogleFirebaseAppcheckV1betaUpdateServiceRequest),
+    ),
+    updateMask: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleFirebaseAppcheckV1betaBatchUpdateServicesRequest",
-  }) as any as Schema.Schema<GoogleFirebaseAppcheckV1betaBatchUpdateServicesRequest>;
+  });
 
 export interface GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationResponse {
   /** An artifact that can be used in future calls to ExchangeAppAttestAssertion. */
@@ -922,19 +805,17 @@ export interface GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationRespons
   attestationToken?: GoogleFirebaseAppcheckV1betaAttestationTokenResponse;
 }
 
-export const GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationResponse: Schema.Schema<GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      artifact: Schema.optional(Schema.String),
-      appCheckToken: Schema.optional(GoogleFirebaseAppcheckV1betaAppCheckToken),
-      attestationToken: Schema.optional(
-        GoogleFirebaseAppcheckV1betaAttestationTokenResponse,
-      ),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    artifact: Schema.optional(Schema.String),
+    appCheckToken: Schema.optional(GoogleFirebaseAppcheckV1betaAppCheckToken),
+    attestationToken: Schema.optional(
+      GoogleFirebaseAppcheckV1betaAttestationTokenResponse,
+    ),
+  }).annotate({
     identifier:
       "GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationResponse",
-  }) as any as Schema.Schema<GoogleFirebaseAppcheckV1betaExchangeAppAttestAttestationResponse>;
+  });
 
 export interface GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeResponse {
   /** A one-time use challenge for the client to pass to the App Attest API. */
@@ -943,30 +824,26 @@ export interface GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeResponse 
   ttl?: string;
 }
 
-export const GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeResponse: Schema.Schema<GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      challenge: Schema.optional(Schema.String),
-      ttl: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    challenge: Schema.optional(Schema.String),
+    ttl: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeResponse",
-  }) as any as Schema.Schema<GoogleFirebaseAppcheckV1betaGenerateAppAttestChallengeResponse>;
+  });
 
 export interface GoogleFirebaseAppcheckV1betaExchangeSafetyNetTokenRequest {
   /** Required. The [SafetyNet attestation response](https://developer.android.com/training/safetynet/attestation#request-attestation-step) issued to your app. */
   safetyNetToken?: string;
 }
 
-export const GoogleFirebaseAppcheckV1betaExchangeSafetyNetTokenRequest: Schema.Schema<GoogleFirebaseAppcheckV1betaExchangeSafetyNetTokenRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      safetyNetToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppcheckV1betaExchangeSafetyNetTokenRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    safetyNetToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleFirebaseAppcheckV1betaExchangeSafetyNetTokenRequest",
-  }) as any as Schema.Schema<GoogleFirebaseAppcheckV1betaExchangeSafetyNetTokenRequest>;
+  });
 
 export interface GoogleFirebaseAppcheckV1betaGeneratePlayIntegrityChallengeResponse {
   /** A one-time use [challenge](https://developer.android.com/google/play/integrity/verdict#protect-against-replay-attacks) for the client to pass to the Play Integrity API. */
@@ -975,16 +852,14 @@ export interface GoogleFirebaseAppcheckV1betaGeneratePlayIntegrityChallengeRespo
   ttl?: string;
 }
 
-export const GoogleFirebaseAppcheckV1betaGeneratePlayIntegrityChallengeResponse: Schema.Schema<GoogleFirebaseAppcheckV1betaGeneratePlayIntegrityChallengeResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      challenge: Schema.optional(Schema.String),
-      ttl: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppcheckV1betaGeneratePlayIntegrityChallengeResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    challenge: Schema.optional(Schema.String),
+    ttl: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleFirebaseAppcheckV1betaGeneratePlayIntegrityChallengeResponse",
-  }) as any as Schema.Schema<GoogleFirebaseAppcheckV1betaGeneratePlayIntegrityChallengeResponse>;
+  });
 
 // ==========================================================================
 // Operations

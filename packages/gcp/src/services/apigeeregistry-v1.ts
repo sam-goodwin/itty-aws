@@ -33,15 +33,12 @@ export interface Expr {
   location?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-      expression: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Expr" }) as any as Schema.Schema<Expr>;
+export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  title: Schema.optional(Schema.String),
+  expression: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+}).annotate({ identifier: "Expr" });
 
 export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. */
@@ -52,14 +49,11 @@ export interface Binding {
   condition?: Expr;
 }
 
-export const Binding: Schema.Schema<Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      role: Schema.optional(Schema.String),
-      members: Schema.optional(Schema.Array(Schema.String)),
-      condition: Schema.optional(Expr),
-    }),
-  ).annotate({ identifier: "Binding" }) as any as Schema.Schema<Binding>;
+export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  role: Schema.optional(Schema.String),
+  members: Schema.optional(Schema.Array(Schema.String)),
+  condition: Schema.optional(Expr),
+}).annotate({ identifier: "Binding" });
 
 export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -70,42 +64,30 @@ export interface Policy {
   bindings?: Array<Binding>;
 }
 
-export const Policy: Schema.Schema<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.Number),
-      etag: Schema.optional(Schema.String),
-      bindings: Schema.optional(Schema.Array(Binding)),
-    }),
-  ).annotate({ identifier: "Policy" }) as any as Schema.Schema<Policy>;
+export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.Number),
+  etag: Schema.optional(Schema.String),
+  bindings: Schema.optional(Schema.Array(Binding)),
+}).annotate({ identifier: "Policy" });
 
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: Policy;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policy: Schema.optional(Policy),
-    }),
-  ).annotate({
-    identifier: "SetIamPolicyRequest",
-  }) as any as Schema.Schema<SetIamPolicyRequest>;
+export const SetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policy: Schema.optional(Policy),
+}).annotate({ identifier: "SetIamPolicyRequest" });
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsResponse",
-  }) as any as Schema.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsResponse" });
 
 export interface ApiSpec {
   /** Resource name. */
@@ -138,25 +120,22 @@ export interface ApiSpec {
   mimeType?: string;
 }
 
-export const ApiSpec: Schema.Schema<ApiSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      sizeBytes: Schema.optional(Schema.Number),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      revisionUpdateTime: Schema.optional(Schema.String),
-      revisionId: Schema.optional(Schema.String),
-      filename: Schema.optional(Schema.String),
-      revisionCreateTime: Schema.optional(Schema.String),
-      hash: Schema.optional(Schema.String),
-      contents: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      sourceUri: Schema.optional(Schema.String),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      description: Schema.optional(Schema.String),
-      mimeType: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "ApiSpec" }) as any as Schema.Schema<ApiSpec>;
+export const ApiSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  sizeBytes: Schema.optional(Schema.Number),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  revisionUpdateTime: Schema.optional(Schema.String),
+  revisionId: Schema.optional(Schema.String),
+  filename: Schema.optional(Schema.String),
+  revisionCreateTime: Schema.optional(Schema.String),
+  hash: Schema.optional(Schema.String),
+  contents: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  sourceUri: Schema.optional(Schema.String),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  description: Schema.optional(Schema.String),
+  mimeType: Schema.optional(Schema.String),
+}).annotate({ identifier: "ApiSpec" });
 
 export interface ListApiSpecsResponse {
   /** The specs from the specified publisher. */
@@ -165,15 +144,10 @@ export interface ListApiSpecsResponse {
   nextPageToken?: string;
 }
 
-export const ListApiSpecsResponse: Schema.Schema<ListApiSpecsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      apiSpecs: Schema.optional(Schema.Array(ApiSpec)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListApiSpecsResponse",
-  }) as any as Schema.Schema<ListApiSpecsResponse>;
+export const ListApiSpecsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  apiSpecs: Schema.optional(Schema.Array(ApiSpec)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListApiSpecsResponse" });
 
 export interface Build {
   /** Output only. Path of the open source repository: github.com/apigee/registry. */
@@ -184,14 +158,11 @@ export interface Build {
   commitTime?: string;
 }
 
-export const Build: Schema.Schema<Build> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      repo: Schema.optional(Schema.String),
-      commitId: Schema.optional(Schema.String),
-      commitTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Build" }) as any as Schema.Schema<Build>;
+export const Build = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  repo: Schema.optional(Schema.String),
+  commitId: Schema.optional(Schema.String),
+  commitTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Build" });
 
 export interface Location {
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
@@ -206,37 +177,29 @@ export interface Location {
   labels?: Record<string, string>;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      locationId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  locationId: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "Location" });
 
 export interface RollbackApiDeploymentRequest {
   /** Required. The revision ID to roll back to. It must be a revision of the same deployment. Example: `c7cfa2a8` */
   revisionId?: string;
 }
 
-export const RollbackApiDeploymentRequest: Schema.Schema<RollbackApiDeploymentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      revisionId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RollbackApiDeploymentRequest",
-  }) as any as Schema.Schema<RollbackApiDeploymentRequest>;
+export const RollbackApiDeploymentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    revisionId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RollbackApiDeploymentRequest" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface ApiDeployment {
   /** Resource name. */
@@ -269,27 +232,22 @@ export interface ApiDeployment {
   endpointUri?: string;
 }
 
-export const ApiDeployment: Schema.Schema<ApiDeployment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      revisionUpdateTime: Schema.optional(Schema.String),
-      intendedAudience: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      revisionId: Schema.optional(Schema.String),
-      revisionCreateTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      accessGuidance: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      externalChannelUri: Schema.optional(Schema.String),
-      apiSpecRevision: Schema.optional(Schema.String),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      displayName: Schema.optional(Schema.String),
-      endpointUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ApiDeployment",
-  }) as any as Schema.Schema<ApiDeployment>;
+export const ApiDeployment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  revisionUpdateTime: Schema.optional(Schema.String),
+  intendedAudience: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  revisionId: Schema.optional(Schema.String),
+  revisionCreateTime: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  accessGuidance: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  externalChannelUri: Schema.optional(Schema.String),
+  apiSpecRevision: Schema.optional(Schema.String),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  displayName: Schema.optional(Schema.String),
+  endpointUri: Schema.optional(Schema.String),
+}).annotate({ identifier: "ApiDeployment" });
 
 export interface ListApiDeploymentsResponse {
   /** The deployments from the specified publisher. */
@@ -298,15 +256,11 @@ export interface ListApiDeploymentsResponse {
   nextPageToken?: string;
 }
 
-export const ListApiDeploymentsResponse: Schema.Schema<ListApiDeploymentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      apiDeployments: Schema.optional(Schema.Array(ApiDeployment)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListApiDeploymentsResponse",
-  }) as any as Schema.Schema<ListApiDeploymentsResponse>;
+export const ListApiDeploymentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apiDeployments: Schema.optional(Schema.Array(ApiDeployment)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListApiDeploymentsResponse" });
 
 export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
@@ -317,16 +271,13 @@ export interface Status {
   message?: string;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -341,16 +292,13 @@ export interface Operation {
   error?: Status;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      error: Schema.optional(Status),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  done: Schema.optional(Schema.Boolean),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  error: Schema.optional(Status),
+}).annotate({ identifier: "Operation" });
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -359,29 +307,22 @@ export interface ListOperationsResponse {
   nextPageToken?: string;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(Schema.Array(Operation)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    operations: Schema.optional(Schema.Array(Operation)),
+    nextPageToken: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 export interface TagApiSpecRevisionRequest {
   /** Required. The tag to apply. The tag should be at most 40 characters, and match `a-z{3,39}`. */
   tag?: string;
 }
 
-export const TagApiSpecRevisionRequest: Schema.Schema<TagApiSpecRevisionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TagApiSpecRevisionRequest",
-  }) as any as Schema.Schema<TagApiSpecRevisionRequest>;
+export const TagApiSpecRevisionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tag: Schema.optional(Schema.String),
+  }).annotate({ identifier: "TagApiSpecRevisionRequest" });
 
 export interface ApiVersion {
   /** Resource name. */
@@ -404,20 +345,17 @@ export interface ApiVersion {
   displayName?: string;
 }
 
-export const ApiVersion: Schema.Schema<ApiVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      updateTime: Schema.optional(Schema.String),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      description: Schema.optional(Schema.String),
-      primarySpec: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "ApiVersion" }) as any as Schema.Schema<ApiVersion>;
+export const ApiVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  updateTime: Schema.optional(Schema.String),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  description: Schema.optional(Schema.String),
+  primarySpec: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+}).annotate({ identifier: "ApiVersion" });
 
 export interface Config {
   /** Output only. The GCP location where the Instance resides. */
@@ -426,13 +364,10 @@ export interface Config {
   cmekKeyName?: string;
 }
 
-export const Config: Schema.Schema<Config> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      location: Schema.optional(Schema.String),
-      cmekKeyName: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Config" }) as any as Schema.Schema<Config>;
+export const Config = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  location: Schema.optional(Schema.String),
+  cmekKeyName: Schema.optional(Schema.String),
+}).annotate({ identifier: "Config" });
 
 export interface Instance {
   /** Output only. Extra information of Instance.State if the state is `FAILED`. */
@@ -459,32 +394,26 @@ export interface Instance {
   updateTime?: string;
 }
 
-export const Instance: Schema.Schema<Instance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stateMessage: Schema.optional(Schema.String),
-      config: Schema.optional(Config),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      build: Schema.optional(Build),
-      state: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Instance" }) as any as Schema.Schema<Instance>;
+export const Instance = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  stateMessage: Schema.optional(Schema.String),
+  config: Schema.optional(Config),
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  build: Schema.optional(Build),
+  state: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Instance" });
 
 export interface RollbackApiSpecRequest {
   /** Required. The revision ID to roll back to. It must be a revision of the same spec. Example: `c7cfa2a8` */
   revisionId?: string;
 }
 
-export const RollbackApiSpecRequest: Schema.Schema<RollbackApiSpecRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      revisionId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RollbackApiSpecRequest",
-  }) as any as Schema.Schema<RollbackApiSpecRequest>;
+export const RollbackApiSpecRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    revisionId: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "RollbackApiSpecRequest" });
 
 export interface Artifact {
   /** Resource name. */
@@ -507,34 +436,27 @@ export interface Artifact {
   annotations?: Record<string, string>;
 }
 
-export const Artifact: Schema.Schema<Artifact> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      hash: Schema.optional(Schema.String),
-      contents: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      sizeBytes: Schema.optional(Schema.Number),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      mimeType: Schema.optional(Schema.String),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({ identifier: "Artifact" }) as any as Schema.Schema<Artifact>;
+export const Artifact = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  hash: Schema.optional(Schema.String),
+  contents: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  sizeBytes: Schema.optional(Schema.Number),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  mimeType: Schema.optional(Schema.String),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "Artifact" });
 
 export interface TagApiDeploymentRevisionRequest {
   /** Required. The tag to apply. The tag should be at most 40 characters, and match `a-z{3,39}`. */
   tag?: string;
 }
 
-export const TagApiDeploymentRevisionRequest: Schema.Schema<TagApiDeploymentRevisionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TagApiDeploymentRevisionRequest",
-  }) as any as Schema.Schema<TagApiDeploymentRevisionRequest>;
+export const TagApiDeploymentRevisionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tag: Schema.optional(Schema.String),
+  }).annotate({ identifier: "TagApiDeploymentRevisionRequest" });
 
 export interface ListApiVersionsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -543,15 +465,11 @@ export interface ListApiVersionsResponse {
   apiVersions?: Array<ApiVersion>;
 }
 
-export const ListApiVersionsResponse: Schema.Schema<ListApiVersionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      apiVersions: Schema.optional(Schema.Array(ApiVersion)),
-    }),
-  ).annotate({
-    identifier: "ListApiVersionsResponse",
-  }) as any as Schema.Schema<ListApiVersionsResponse>;
+export const ListApiVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    apiVersions: Schema.optional(Schema.Array(ApiVersion)),
+  }).annotate({ identifier: "ListApiVersionsResponse" });
 
 export interface ListApiSpecRevisionsResponse {
   /** The revisions of the spec. */
@@ -560,15 +478,11 @@ export interface ListApiSpecRevisionsResponse {
   nextPageToken?: string;
 }
 
-export const ListApiSpecRevisionsResponse: Schema.Schema<ListApiSpecRevisionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      apiSpecs: Schema.optional(Schema.Array(ApiSpec)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListApiSpecRevisionsResponse",
-  }) as any as Schema.Schema<ListApiSpecRevisionsResponse>;
+export const ListApiSpecRevisionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apiSpecs: Schema.optional(Schema.Array(ApiSpec)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListApiSpecRevisionsResponse" });
 
 export interface HttpBody {
   /** The HTTP Content-Type header value specifying the content type of the body. */
@@ -579,16 +493,13 @@ export interface HttpBody {
   data?: string;
 }
 
-export const HttpBody: Schema.Schema<HttpBody> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contentType: Schema.optional(Schema.String),
-      extensions: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      data: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "HttpBody" }) as any as Schema.Schema<HttpBody>;
+export const HttpBody = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  contentType: Schema.optional(Schema.String),
+  extensions: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  data: Schema.optional(Schema.String),
+}).annotate({ identifier: "HttpBody" });
 
 export interface Api {
   /** Resource name. */
@@ -613,21 +524,18 @@ export interface Api {
   displayName?: string;
 }
 
-export const Api: Schema.Schema<Api> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      availability: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      updateTime: Schema.optional(Schema.String),
-      recommendedDeployment: Schema.optional(Schema.String),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      description: Schema.optional(Schema.String),
-      recommendedVersion: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Api" }) as any as Schema.Schema<Api>;
+export const Api = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  availability: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  updateTime: Schema.optional(Schema.String),
+  recommendedDeployment: Schema.optional(Schema.String),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  description: Schema.optional(Schema.String),
+  recommendedVersion: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+}).annotate({ identifier: "Api" });
 
 export interface ListApisResponse {
   /** The APIs from the specified publisher. */
@@ -636,15 +544,10 @@ export interface ListApisResponse {
   nextPageToken?: string;
 }
 
-export const ListApisResponse: Schema.Schema<ListApisResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      apis: Schema.optional(Schema.Array(Api)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListApisResponse",
-  }) as any as Schema.Schema<ListApisResponse>;
+export const ListApisResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  apis: Schema.optional(Schema.Array(Api)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListApisResponse" });
 
 export interface ListArtifactsResponse {
   /** The artifacts from the specified publisher. */
@@ -653,15 +556,10 @@ export interface ListArtifactsResponse {
   nextPageToken?: string;
 }
 
-export const ListArtifactsResponse: Schema.Schema<ListArtifactsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      artifacts: Schema.optional(Schema.Array(Artifact)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListArtifactsResponse",
-  }) as any as Schema.Schema<ListArtifactsResponse>;
+export const ListArtifactsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  artifacts: Schema.optional(Schema.Array(Artifact)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListArtifactsResponse" });
 
 export interface ListApiDeploymentRevisionsResponse {
   /** The revisions of the deployment. */
@@ -670,36 +568,27 @@ export interface ListApiDeploymentRevisionsResponse {
   nextPageToken?: string;
 }
 
-export const ListApiDeploymentRevisionsResponse: Schema.Schema<ListApiDeploymentRevisionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      apiDeployments: Schema.optional(Schema.Array(ApiDeployment)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListApiDeploymentRevisionsResponse",
-  }) as any as Schema.Schema<ListApiDeploymentRevisionsResponse>;
+export const ListApiDeploymentRevisionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apiDeployments: Schema.optional(Schema.Array(ApiDeployment)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListApiDeploymentRevisionsResponse" });
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelOperationRequest",
-  }) as any as Schema.Schema<CancelOperationRequest>;
+export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelOperationRequest" });
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsRequest",
-  }) as any as Schema.Schema<TestIamPermissionsRequest>;
+export const TestIamPermissionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsRequest" });
 
 export interface OperationMetadata {
   /** The time the operation finished running. */
@@ -718,20 +607,15 @@ export interface OperationMetadata {
   statusMessage?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      apiVersion: Schema.optional(Schema.String),
-      cancellationRequested: Schema.optional(Schema.Boolean),
-      verb: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  endTime: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  apiVersion: Schema.optional(Schema.String),
+  cancellationRequested: Schema.optional(Schema.Boolean),
+  verb: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  statusMessage: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationMetadata" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -740,15 +624,10 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(Location)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 // ==========================================================================
 // Operations

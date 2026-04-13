@@ -39,18 +39,13 @@ export interface KeyedAppState {
   data?: string;
 }
 
-export const KeyedAppState: Schema.Schema<KeyedAppState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stateTimestampMillis: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-      severity: Schema.optional(Schema.String),
-      key: Schema.optional(Schema.String),
-      data: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "KeyedAppState",
-  }) as any as Schema.Schema<KeyedAppState>;
+export const KeyedAppState = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  stateTimestampMillis: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+  severity: Schema.optional(Schema.String),
+  key: Schema.optional(Schema.String),
+  data: Schema.optional(Schema.String),
+}).annotate({ identifier: "KeyedAppState" });
 
 export interface AppState {
   /** The package name of the app. This field will always be present. */
@@ -59,13 +54,10 @@ export interface AppState {
   keyedAppState?: Array<KeyedAppState>;
 }
 
-export const AppState: Schema.Schema<AppState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      packageName: Schema.optional(Schema.String),
-      keyedAppState: Schema.optional(Schema.Array(KeyedAppState)),
-    }),
-  ).annotate({ identifier: "AppState" }) as any as Schema.Schema<AppState>;
+export const AppState = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  packageName: Schema.optional(Schema.String),
+  keyedAppState: Schema.optional(Schema.Array(KeyedAppState)),
+}).annotate({ identifier: "AppState" });
 
 export interface DeviceReport {
   /** The timestamp of the last report update in milliseconds since epoch. This field will always be present. */
@@ -74,15 +66,10 @@ export interface DeviceReport {
   appState?: Array<AppState>;
 }
 
-export const DeviceReport: Schema.Schema<DeviceReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lastUpdatedTimestampMillis: Schema.optional(Schema.String),
-      appState: Schema.optional(Schema.Array(AppState)),
-    }),
-  ).annotate({
-    identifier: "DeviceReport",
-  }) as any as Schema.Schema<DeviceReport>;
+export const DeviceReport = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  lastUpdatedTimestampMillis: Schema.optional(Schema.String),
+  appState: Schema.optional(Schema.Array(AppState)),
+}).annotate({ identifier: "DeviceReport" });
 
 export interface MaintenanceWindow {
   /** Duration of the maintenance window, in milliseconds. The duration must be between 30 minutes and 24 hours (inclusive). */
@@ -91,15 +78,10 @@ export interface MaintenanceWindow {
   startTimeAfterMidnightMs?: string;
 }
 
-export const MaintenanceWindow: Schema.Schema<MaintenanceWindow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      durationMs: Schema.optional(Schema.String),
-      startTimeAfterMidnightMs: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MaintenanceWindow",
-  }) as any as Schema.Schema<MaintenanceWindow>;
+export const MaintenanceWindow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  durationMs: Schema.optional(Schema.String),
+  startTimeAfterMidnightMs: Schema.optional(Schema.String),
+}).annotate({ identifier: "MaintenanceWindow" });
 
 export interface AutoInstallConstraint {
   /** Device idle state constraint. */
@@ -122,16 +104,11 @@ export interface AutoInstallConstraint {
     | (string & {});
 }
 
-export const AutoInstallConstraint: Schema.Schema<AutoInstallConstraint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deviceIdleStateConstraint: Schema.optional(Schema.String),
-      networkTypeConstraint: Schema.optional(Schema.String),
-      chargingStateConstraint: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AutoInstallConstraint",
-  }) as any as Schema.Schema<AutoInstallConstraint>;
+export const AutoInstallConstraint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  deviceIdleStateConstraint: Schema.optional(Schema.String),
+  networkTypeConstraint: Schema.optional(Schema.String),
+  chargingStateConstraint: Schema.optional(Schema.String),
+}).annotate({ identifier: "AutoInstallConstraint" });
 
 export interface AutoInstallPolicy {
   /** The auto-install mode. If unset, defaults to "doNotAutoInstall". An app is automatically installed regardless of a set maintenance window. */
@@ -149,19 +126,12 @@ export interface AutoInstallPolicy {
   minimumVersionCode?: number;
 }
 
-export const AutoInstallPolicy: Schema.Schema<AutoInstallPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      autoInstallMode: Schema.optional(Schema.String),
-      autoInstallConstraint: Schema.optional(
-        Schema.Array(AutoInstallConstraint),
-      ),
-      autoInstallPriority: Schema.optional(Schema.Number),
-      minimumVersionCode: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "AutoInstallPolicy",
-  }) as any as Schema.Schema<AutoInstallPolicy>;
+export const AutoInstallPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  autoInstallMode: Schema.optional(Schema.String),
+  autoInstallConstraint: Schema.optional(Schema.Array(AutoInstallConstraint)),
+  autoInstallPriority: Schema.optional(Schema.Number),
+  minimumVersionCode: Schema.optional(Schema.Number),
+}).annotate({ identifier: "AutoInstallPolicy" });
 
 export interface VariableSet {
   /** The placeholder string; defined by EMM. */
@@ -170,15 +140,10 @@ export interface VariableSet {
   userValue?: string;
 }
 
-export const VariableSet: Schema.Schema<VariableSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      placeholder: Schema.optional(Schema.String),
-      userValue: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VariableSet",
-  }) as any as Schema.Schema<VariableSet>;
+export const VariableSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  placeholder: Schema.optional(Schema.String),
+  userValue: Schema.optional(Schema.String),
+}).annotate({ identifier: "VariableSet" });
 
 export interface ConfigurationVariables {
   /** The ID of the managed configurations settings. */
@@ -187,15 +152,12 @@ export interface ConfigurationVariables {
   variableSet?: Array<VariableSet>;
 }
 
-export const ConfigurationVariables: Schema.Schema<ConfigurationVariables> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mcmId: Schema.optional(Schema.String),
-      variableSet: Schema.optional(Schema.Array(VariableSet)),
-    }),
-  ).annotate({
-    identifier: "ConfigurationVariables",
-  }) as any as Schema.Schema<ConfigurationVariables>;
+export const ConfigurationVariables = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    mcmId: Schema.optional(Schema.String),
+    variableSet: Schema.optional(Schema.Array(VariableSet)),
+  },
+).annotate({ identifier: "ConfigurationVariables" });
 
 export interface ManagedPropertyBundle {
   /** The list of managed properties. */
@@ -254,31 +216,22 @@ export interface ManagedConfiguration {
   managedProperty?: Array<ManagedProperty>;
 }
 
-export const ManagedConfiguration: Schema.Schema<ManagedConfiguration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      productId: Schema.optional(Schema.String),
-      configurationVariables: Schema.optional(ConfigurationVariables),
-      kind: Schema.optional(Schema.String),
-      managedProperty: Schema.optional(Schema.Array(ManagedProperty)),
-    }),
-  ).annotate({
-    identifier: "ManagedConfiguration",
-  }) as any as Schema.Schema<ManagedConfiguration>;
+export const ManagedConfiguration = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  productId: Schema.optional(Schema.String),
+  configurationVariables: Schema.optional(ConfigurationVariables),
+  kind: Schema.optional(Schema.String),
+  managedProperty: Schema.optional(Schema.Array(ManagedProperty)),
+}).annotate({ identifier: "ManagedConfiguration" });
 
 export interface EnterpriseAuthenticationAppLinkConfig {
   /** An authentication url. */
   uri?: string;
 }
 
-export const EnterpriseAuthenticationAppLinkConfig: Schema.Schema<EnterpriseAuthenticationAppLinkConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseAuthenticationAppLinkConfig",
-  }) as any as Schema.Schema<EnterpriseAuthenticationAppLinkConfig>;
+export const EnterpriseAuthenticationAppLinkConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnterpriseAuthenticationAppLinkConfig" });
 
 export interface ProductPolicy {
   /** The ID of the product. For example, "app:com.google.android.gm". */
@@ -304,22 +257,17 @@ export interface ProductPolicy {
   >;
 }
 
-export const ProductPolicy: Schema.Schema<ProductPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      productId: Schema.optional(Schema.String),
-      trackIds: Schema.optional(Schema.Array(Schema.String)),
-      autoUpdateMode: Schema.optional(Schema.String),
-      autoInstallPolicy: Schema.optional(AutoInstallPolicy),
-      managedConfiguration: Schema.optional(ManagedConfiguration),
-      enterpriseAuthenticationAppLinkConfigs: Schema.optional(
-        Schema.Array(EnterpriseAuthenticationAppLinkConfig),
-      ),
-      tracks: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ProductPolicy",
-  }) as any as Schema.Schema<ProductPolicy>;
+export const ProductPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  productId: Schema.optional(Schema.String),
+  trackIds: Schema.optional(Schema.Array(Schema.String)),
+  autoUpdateMode: Schema.optional(Schema.String),
+  autoInstallPolicy: Schema.optional(AutoInstallPolicy),
+  managedConfiguration: Schema.optional(ManagedConfiguration),
+  enterpriseAuthenticationAppLinkConfigs: Schema.optional(
+    Schema.Array(EnterpriseAuthenticationAppLinkConfig),
+  ),
+  tracks: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ProductPolicy" });
 
 export interface Policy {
   /** The availability granted to the device for the specified products. "all" gives the device access to all products, regardless of approval status. "all" does not enable automatic visibility of "alpha" or "beta" tracks. "whitelist" grants the device access the products specified in productPolicy[]. Only products that are approved or products that were previously approved (products with revoked approval) by the enterprise can be whitelisted. If no value is provided, the availability set at the user level is applied by default. */
@@ -350,17 +298,14 @@ export interface Policy {
   productPolicy?: Array<ProductPolicy>;
 }
 
-export const Policy: Schema.Schema<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      productAvailabilityPolicy: Schema.optional(Schema.String),
-      autoUpdatePolicy: Schema.optional(Schema.String),
-      maintenanceWindow: Schema.optional(MaintenanceWindow),
-      deviceReportPolicy: Schema.optional(Schema.String),
-      policyId: Schema.optional(Schema.String),
-      productPolicy: Schema.optional(Schema.Array(ProductPolicy)),
-    }),
-  ).annotate({ identifier: "Policy" }) as any as Schema.Schema<Policy>;
+export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  productAvailabilityPolicy: Schema.optional(Schema.String),
+  autoUpdatePolicy: Schema.optional(Schema.String),
+  maintenanceWindow: Schema.optional(MaintenanceWindow),
+  deviceReportPolicy: Schema.optional(Schema.String),
+  policyId: Schema.optional(Schema.String),
+  productPolicy: Schema.optional(Schema.Array(ProductPolicy)),
+}).annotate({ identifier: "Policy" });
 
 export interface Device {
   /** Identifies the extent to which the device is controlled by a managed Google Play EMM in various deployment configurations. Possible values include: - "managedDevice", a device that has the EMM's device policy controller (DPC) as the device owner. - "managedProfile", a device that has a profile managed by the DPC (DPC is profile owner) in addition to a separate, personal profile that is unavailable to the DPC. - "containerApp", no longer used (deprecated). - "unmanagedProfile", a device that has been allowed (by the domain's admin, using the Admin Console to enable the privilege) to use managed Google Play, but the profile is itself not owned by a DPC. */
@@ -392,36 +337,28 @@ export interface Device {
   policy?: Policy;
 }
 
-export const Device: Schema.Schema<Device> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      managementType: Schema.optional(Schema.String),
-      report: Schema.optional(DeviceReport),
-      androidId: Schema.optional(Schema.String),
-      maker: Schema.optional(Schema.String),
-      sdkVersion: Schema.optional(Schema.Number),
-      retailBrand: Schema.optional(Schema.String),
-      latestBuildFingerprint: Schema.optional(Schema.String),
-      model: Schema.optional(Schema.String),
-      device: Schema.optional(Schema.String),
-      product: Schema.optional(Schema.String),
-      policy: Schema.optional(Policy),
-    }),
-  ).annotate({ identifier: "Device" }) as any as Schema.Schema<Device>;
+export const Device = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  managementType: Schema.optional(Schema.String),
+  report: Schema.optional(DeviceReport),
+  androidId: Schema.optional(Schema.String),
+  maker: Schema.optional(Schema.String),
+  sdkVersion: Schema.optional(Schema.Number),
+  retailBrand: Schema.optional(Schema.String),
+  latestBuildFingerprint: Schema.optional(Schema.String),
+  model: Schema.optional(Schema.String),
+  device: Schema.optional(Schema.String),
+  product: Schema.optional(Schema.String),
+  policy: Schema.optional(Policy),
+}).annotate({ identifier: "Device" });
 
 export interface DevicesListResponse {
   /** A managed device. */
   device?: Array<Device>;
 }
 
-export const DevicesListResponse: Schema.Schema<DevicesListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      device: Schema.optional(Schema.Array(Device)),
-    }),
-  ).annotate({
-    identifier: "DevicesListResponse",
-  }) as any as Schema.Schema<DevicesListResponse>;
+export const DevicesListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  device: Schema.optional(Schema.Array(Device)),
+}).annotate({ identifier: "DevicesListResponse" });
 
 export interface ServiceAccountKey {
   /** An opaque, unique identifier for this ServiceAccountKey. Assigned by the server. */
@@ -434,17 +371,12 @@ export interface ServiceAccountKey {
   data?: string;
 }
 
-export const ServiceAccountKey: Schema.Schema<ServiceAccountKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      publicData: Schema.optional(Schema.String),
-      data: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ServiceAccountKey",
-  }) as any as Schema.Schema<ServiceAccountKey>;
+export const ServiceAccountKey = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  publicData: Schema.optional(Schema.String),
+  data: Schema.optional(Schema.String),
+}).annotate({ identifier: "ServiceAccountKey" });
 
 export interface GroupLicense {
   /** The permission approval status of the product. This field is only set if the product is approved. Possible states are: - "currentApproved", the current set of permissions is approved, but additional permissions will require the administrator to reapprove the product (If the product was approved without specifying the approved permissions setting, then this is the default behavior.), - "needsReapproval", the product has unapproved permissions. No additional product licenses can be assigned until the product is reapproved, - "allCurrentAndFutureApproved", the current permissions are approved and any future permission updates will be automatically approved without administrator review. */
@@ -465,33 +397,24 @@ export interface GroupLicense {
   approval?: "approved" | "unapproved" | (string & {});
 }
 
-export const GroupLicense: Schema.Schema<GroupLicense> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.String),
-      numPurchased: Schema.optional(Schema.Number),
-      acquisitionKind: Schema.optional(Schema.String),
-      productId: Schema.optional(Schema.String),
-      numProvisioned: Schema.optional(Schema.Number),
-      approval: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GroupLicense",
-  }) as any as Schema.Schema<GroupLicense>;
+export const GroupLicense = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  permissions: Schema.optional(Schema.String),
+  numPurchased: Schema.optional(Schema.Number),
+  acquisitionKind: Schema.optional(Schema.String),
+  productId: Schema.optional(Schema.String),
+  numProvisioned: Schema.optional(Schema.Number),
+  approval: Schema.optional(Schema.String),
+}).annotate({ identifier: "GroupLicense" });
 
 export interface GroupLicensesListResponse {
   /** A group license for a product approved for use in the enterprise. */
   groupLicense?: Array<GroupLicense>;
 }
 
-export const GroupLicensesListResponse: Schema.Schema<GroupLicensesListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      groupLicense: Schema.optional(Schema.Array(GroupLicense)),
-    }),
-  ).annotate({
-    identifier: "GroupLicensesListResponse",
-  }) as any as Schema.Schema<GroupLicensesListResponse>;
+export const GroupLicensesListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupLicense: Schema.optional(Schema.Array(GroupLicense)),
+  }).annotate({ identifier: "GroupLicensesListResponse" });
 
 export interface User {
   /** The entity that manages the user. With googleManaged users, the source of truth is Google so EMMs have to make sure a Google Account exists for the user. With emmManaged users, the EMM is in charge. */
@@ -508,17 +431,14 @@ export interface User {
   accountIdentifier?: string;
 }
 
-export const User: Schema.Schema<User> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      managementType: Schema.optional(Schema.String),
-      primaryEmail: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      accountType: Schema.optional(Schema.String),
-      accountIdentifier: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "User" }) as any as Schema.Schema<User>;
+export const User = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  managementType: Schema.optional(Schema.String),
+  primaryEmail: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  accountType: Schema.optional(Schema.String),
+  accountIdentifier: Schema.optional(Schema.String),
+}).annotate({ identifier: "User" });
 
 export interface ManagedConfigurationsSettings {
   /** The ID of the managed configurations settings. */
@@ -529,46 +449,34 @@ export interface ManagedConfigurationsSettings {
   lastUpdatedTimestampMillis?: string;
 }
 
-export const ManagedConfigurationsSettings: Schema.Schema<ManagedConfigurationsSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mcmId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      lastUpdatedTimestampMillis: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ManagedConfigurationsSettings",
-  }) as any as Schema.Schema<ManagedConfigurationsSettings>;
+export const ManagedConfigurationsSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    mcmId: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    lastUpdatedTimestampMillis: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ManagedConfigurationsSettings" });
 
 export interface ManagedConfigurationsSettingsListResponse {
   /** A managed configurations settings for an app that may be assigned to a group of users in an enterprise. */
   managedConfigurationsSettings?: Array<ManagedConfigurationsSettings>;
 }
 
-export const ManagedConfigurationsSettingsListResponse: Schema.Schema<ManagedConfigurationsSettingsListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      managedConfigurationsSettings: Schema.optional(
-        Schema.Array(ManagedConfigurationsSettings),
-      ),
-    }),
-  ).annotate({
-    identifier: "ManagedConfigurationsSettingsListResponse",
-  }) as any as Schema.Schema<ManagedConfigurationsSettingsListResponse>;
+export const ManagedConfigurationsSettingsListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    managedConfigurationsSettings: Schema.optional(
+      Schema.Array(ManagedConfigurationsSettings),
+    ),
+  }).annotate({ identifier: "ManagedConfigurationsSettingsListResponse" });
 
 export interface AppRestrictionsSchemaChangeEvent {
   /** The id of the product (e.g. "app:com.google.android.gm") for which the app restriction schema changed. This field will always be present. */
   productId?: string;
 }
 
-export const AppRestrictionsSchemaChangeEvent: Schema.Schema<AppRestrictionsSchemaChangeEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      productId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AppRestrictionsSchemaChangeEvent",
-  }) as any as Schema.Schema<AppRestrictionsSchemaChangeEvent>;
+export const AppRestrictionsSchemaChangeEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    productId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AppRestrictionsSchemaChangeEvent" });
 
 export interface EnterpriseUpgradeEvent {
   /** The upgrade state. */
@@ -578,14 +486,11 @@ export interface EnterpriseUpgradeEvent {
     | (string & {});
 }
 
-export const EnterpriseUpgradeEvent: Schema.Schema<EnterpriseUpgradeEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      upgradeState: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseUpgradeEvent",
-  }) as any as Schema.Schema<EnterpriseUpgradeEvent>;
+export const EnterpriseUpgradeEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    upgradeState: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "EnterpriseUpgradeEvent" });
 
 export interface ProductPermission {
   /** Whether the permission has been accepted or not. */
@@ -594,29 +499,20 @@ export interface ProductPermission {
   permissionId?: string;
 }
 
-export const ProductPermission: Schema.Schema<ProductPermission> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      permissionId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProductPermission",
-  }) as any as Schema.Schema<ProductPermission>;
+export const ProductPermission = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.String),
+  permissionId: Schema.optional(Schema.String),
+}).annotate({ identifier: "ProductPermission" });
 
 export interface ProductsGenerateApprovalUrlResponse {
   /** A URL that can be rendered in an iframe to display the permissions (if any) of a product. This URL can be used to approve the product only once and only within 24 hours of being generated, using the Products.approve call. If the product is currently unapproved and has no permissions, this URL will point to an empty page. If the product is currently approved, a URL will only be generated if that product has added permissions since it was last approved, and the URL will only display those new permissions that have not yet been accepted. */
   url?: string;
 }
 
-export const ProductsGenerateApprovalUrlResponse: Schema.Schema<ProductsGenerateApprovalUrlResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      url: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProductsGenerateApprovalUrlResponse",
-  }) as any as Schema.Schema<ProductsGenerateApprovalUrlResponse>;
+export const ProductsGenerateApprovalUrlResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    url: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ProductsGenerateApprovalUrlResponse" });
 
 export interface LocalizedText {
   /** The BCP47 tag for a locale. (e.g. "en-US", "de"). */
@@ -625,73 +521,51 @@ export interface LocalizedText {
   text?: string;
 }
 
-export const LocalizedText: Schema.Schema<LocalizedText> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locale: Schema.optional(Schema.String),
-      text: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LocalizedText",
-  }) as any as Schema.Schema<LocalizedText>;
+export const LocalizedText = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locale: Schema.optional(Schema.String),
+  text: Schema.optional(Schema.String),
+}).annotate({ identifier: "LocalizedText" });
 
 export interface AdministratorWebTokenSpecPrivateApps {
   /** Whether the Private Apps page is displayed. Default is true. */
   enabled?: boolean;
 }
 
-export const AdministratorWebTokenSpecPrivateApps: Schema.Schema<AdministratorWebTokenSpecPrivateApps> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "AdministratorWebTokenSpecPrivateApps",
-  }) as any as Schema.Schema<AdministratorWebTokenSpecPrivateApps>;
+export const AdministratorWebTokenSpecPrivateApps =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "AdministratorWebTokenSpecPrivateApps" });
 
 export interface ManagedConfigurationsForUserListResponse {
   /** A managed configuration for an app for a specific user. */
   managedConfigurationForUser?: Array<ManagedConfiguration>;
 }
 
-export const ManagedConfigurationsForUserListResponse: Schema.Schema<ManagedConfigurationsForUserListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      managedConfigurationForUser: Schema.optional(
-        Schema.Array(ManagedConfiguration),
-      ),
-    }),
-  ).annotate({
-    identifier: "ManagedConfigurationsForUserListResponse",
-  }) as any as Schema.Schema<ManagedConfigurationsForUserListResponse>;
+export const ManagedConfigurationsForUserListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    managedConfigurationForUser: Schema.optional(
+      Schema.Array(ManagedConfiguration),
+    ),
+  }).annotate({ identifier: "ManagedConfigurationsForUserListResponse" });
 
 export interface ServiceAccountKeysListResponse {
   /** The service account credentials. */
   serviceAccountKey?: Array<ServiceAccountKey>;
 }
 
-export const ServiceAccountKeysListResponse: Schema.Schema<ServiceAccountKeysListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serviceAccountKey: Schema.optional(Schema.Array(ServiceAccountKey)),
-    }),
-  ).annotate({
-    identifier: "ServiceAccountKeysListResponse",
-  }) as any as Schema.Schema<ServiceAccountKeysListResponse>;
+export const ServiceAccountKeysListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    serviceAccountKey: Schema.optional(Schema.Array(ServiceAccountKey)),
+  }).annotate({ identifier: "ServiceAccountKeysListResponse" });
 
 export interface AdministratorWebToken {
   /** An opaque token to be passed to the Play front-end to generate an iframe. */
   token?: string;
 }
 
-export const AdministratorWebToken: Schema.Schema<AdministratorWebToken> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      token: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AdministratorWebToken",
-  }) as any as Schema.Schema<AdministratorWebToken>;
+export const AdministratorWebToken = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  token: Schema.optional(Schema.String),
+}).annotate({ identifier: "AdministratorWebToken" });
 
 export interface StoreCluster {
   /** Unique ID of this cluster. Assigned by the server. Immutable once assigned. */
@@ -704,31 +578,22 @@ export interface StoreCluster {
   orderInPage?: string;
 }
 
-export const StoreCluster: Schema.Schema<StoreCluster> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.Array(LocalizedText)),
-      productId: Schema.optional(Schema.Array(Schema.String)),
-      orderInPage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StoreCluster",
-  }) as any as Schema.Schema<StoreCluster>;
+export const StoreCluster = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.Array(LocalizedText)),
+  productId: Schema.optional(Schema.Array(Schema.String)),
+  orderInPage: Schema.optional(Schema.String),
+}).annotate({ identifier: "StoreCluster" });
 
 export interface StoreLayoutClustersListResponse {
   /** A store cluster of an enterprise. */
   cluster?: Array<StoreCluster>;
 }
 
-export const StoreLayoutClustersListResponse: Schema.Schema<StoreLayoutClustersListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cluster: Schema.optional(Schema.Array(StoreCluster)),
-    }),
-  ).annotate({
-    identifier: "StoreLayoutClustersListResponse",
-  }) as any as Schema.Schema<StoreLayoutClustersListResponse>;
+export const StoreLayoutClustersListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cluster: Schema.optional(Schema.Array(StoreCluster)),
+  }).annotate({ identifier: "StoreLayoutClustersListResponse" });
 
 export interface SignupInfo {
   /** A URL under which the Admin can sign up for an enterprise. The page pointed to cannot be rendered in an iframe. */
@@ -739,26 +604,20 @@ export interface SignupInfo {
   kind?: string;
 }
 
-export const SignupInfo: Schema.Schema<SignupInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      url: Schema.optional(Schema.String),
-      completionToken: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "SignupInfo" }) as any as Schema.Schema<SignupInfo>;
+export const SignupInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  url: Schema.optional(Schema.String),
+  completionToken: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "SignupInfo" });
 
 export interface WebAppIcon {
   /** The actual bytes of the image in a base64url encoded string (c.f. RFC4648, section 5 "Base 64 Encoding with URL and Filename Safe Alphabet"). - The image type can be png or jpg. - The image should ideally be square. - The image should ideally have a size of 512x512. */
   imageData?: string;
 }
 
-export const WebAppIcon: Schema.Schema<WebAppIcon> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      imageData: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "WebAppIcon" }) as any as Schema.Schema<WebAppIcon>;
+export const WebAppIcon = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  imageData: Schema.optional(Schema.String),
+}).annotate({ identifier: "WebAppIcon" });
 
 export interface EnterprisesSendTestPushNotificationResponse {
   /** The message ID of the test push notification that was sent. */
@@ -767,29 +626,20 @@ export interface EnterprisesSendTestPushNotificationResponse {
   topicName?: string;
 }
 
-export const EnterprisesSendTestPushNotificationResponse: Schema.Schema<EnterprisesSendTestPushNotificationResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      messageId: Schema.optional(Schema.String),
-      topicName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnterprisesSendTestPushNotificationResponse",
-  }) as any as Schema.Schema<EnterprisesSendTestPushNotificationResponse>;
+export const EnterprisesSendTestPushNotificationResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    messageId: Schema.optional(Schema.String),
+    topicName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnterprisesSendTestPushNotificationResponse" });
 
 export interface AppUpdateEvent {
   /** The id of the product (e.g. "app:com.google.android.gm") that was updated. This field will always be present. */
   productId?: string;
 }
 
-export const AppUpdateEvent: Schema.Schema<AppUpdateEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      productId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AppUpdateEvent",
-  }) as any as Schema.Schema<AppUpdateEvent>;
+export const AppUpdateEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  productId: Schema.optional(Schema.String),
+}).annotate({ identifier: "AppUpdateEvent" });
 
 export interface StorePage {
   /** Ordered list of localized strings giving the name of this page. The text displayed is the one that best matches the user locale, or the first entry if there is no good match. There needs to be at least one entry. */
@@ -800,28 +650,21 @@ export interface StorePage {
   link?: Array<string>;
 }
 
-export const StorePage: Schema.Schema<StorePage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.Array(LocalizedText)),
-      id: Schema.optional(Schema.String),
-      link: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "StorePage" }) as any as Schema.Schema<StorePage>;
+export const StorePage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.Array(LocalizedText)),
+  id: Schema.optional(Schema.String),
+  link: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "StorePage" });
 
 export interface AdministratorWebTokenSpecStoreBuilder {
   /** Whether the Organize apps page is displayed. Default is true. */
   enabled?: boolean;
 }
 
-export const AdministratorWebTokenSpecStoreBuilder: Schema.Schema<AdministratorWebTokenSpecStoreBuilder> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "AdministratorWebTokenSpecStoreBuilder",
-  }) as any as Schema.Schema<AdministratorWebTokenSpecStoreBuilder>;
+export const AdministratorWebTokenSpecStoreBuilder =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "AdministratorWebTokenSpecStoreBuilder" });
 
 export interface PageInfo {
   /** Total number of results available on the backend ! The total number of results in the result set. */
@@ -832,14 +675,11 @@ export interface PageInfo {
   resultPerPage?: number;
 }
 
-export const PageInfo: Schema.Schema<PageInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      totalResults: Schema.optional(Schema.Number),
-      startIndex: Schema.optional(Schema.Number),
-      resultPerPage: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "PageInfo" }) as any as Schema.Schema<PageInfo>;
+export const PageInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  totalResults: Schema.optional(Schema.Number),
+  startIndex: Schema.optional(Schema.Number),
+  resultPerPage: Schema.optional(Schema.Number),
+}).annotate({ identifier: "PageInfo" });
 
 export interface DeviceReportUpdateEvent {
   /** The ID of the user. This field will always be present. */
@@ -850,44 +690,32 @@ export interface DeviceReportUpdateEvent {
   report?: DeviceReport;
 }
 
-export const DeviceReportUpdateEvent: Schema.Schema<DeviceReportUpdateEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userId: Schema.optional(Schema.String),
-      deviceId: Schema.optional(Schema.String),
-      report: Schema.optional(DeviceReport),
-    }),
-  ).annotate({
-    identifier: "DeviceReportUpdateEvent",
-  }) as any as Schema.Schema<DeviceReportUpdateEvent>;
+export const DeviceReportUpdateEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userId: Schema.optional(Schema.String),
+    deviceId: Schema.optional(Schema.String),
+    report: Schema.optional(DeviceReport),
+  }).annotate({ identifier: "DeviceReportUpdateEvent" });
 
 export interface AdministratorWebTokenSpecManagedConfigurations {
   /** Whether the Managed Configuration page is displayed. Default is true. */
   enabled?: boolean;
 }
 
-export const AdministratorWebTokenSpecManagedConfigurations: Schema.Schema<AdministratorWebTokenSpecManagedConfigurations> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "AdministratorWebTokenSpecManagedConfigurations",
-  }) as any as Schema.Schema<AdministratorWebTokenSpecManagedConfigurations>;
+export const AdministratorWebTokenSpecManagedConfigurations =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "AdministratorWebTokenSpecManagedConfigurations" });
 
 export interface AdministratorWebTokenSpecZeroTouch {
   /** Whether zero-touch embedded UI is usable with this token. If enabled, the admin can link zero-touch customers to this enterprise. */
   enabled?: boolean;
 }
 
-export const AdministratorWebTokenSpecZeroTouch: Schema.Schema<AdministratorWebTokenSpecZeroTouch> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "AdministratorWebTokenSpecZeroTouch",
-  }) as any as Schema.Schema<AdministratorWebTokenSpecZeroTouch>;
+export const AdministratorWebTokenSpecZeroTouch =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "AdministratorWebTokenSpecZeroTouch" });
 
 export interface AdministratorWebTokenSpecPlaySearch {
   /** Whether the managed Play Search apps page is displayed. Default is true. */
@@ -896,45 +724,33 @@ export interface AdministratorWebTokenSpecPlaySearch {
   approveApps?: boolean;
 }
 
-export const AdministratorWebTokenSpecPlaySearch: Schema.Schema<AdministratorWebTokenSpecPlaySearch> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-      approveApps: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "AdministratorWebTokenSpecPlaySearch",
-  }) as any as Schema.Schema<AdministratorWebTokenSpecPlaySearch>;
+export const AdministratorWebTokenSpecPlaySearch =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+    approveApps: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "AdministratorWebTokenSpecPlaySearch" });
 
 export interface ManagedConfigurationsForDeviceListResponse {
   /** A managed configuration for an app on a specific device. */
   managedConfigurationForDevice?: Array<ManagedConfiguration>;
 }
 
-export const ManagedConfigurationsForDeviceListResponse: Schema.Schema<ManagedConfigurationsForDeviceListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      managedConfigurationForDevice: Schema.optional(
-        Schema.Array(ManagedConfiguration),
-      ),
-    }),
-  ).annotate({
-    identifier: "ManagedConfigurationsForDeviceListResponse",
-  }) as any as Schema.Schema<ManagedConfigurationsForDeviceListResponse>;
+export const ManagedConfigurationsForDeviceListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    managedConfigurationForDevice: Schema.optional(
+      Schema.Array(ManagedConfiguration),
+    ),
+  }).annotate({ identifier: "ManagedConfigurationsForDeviceListResponse" });
 
 export interface StoreLayoutPagesListResponse {
   /** A store page of an enterprise. */
   page?: Array<StorePage>;
 }
 
-export const StoreLayoutPagesListResponse: Schema.Schema<StoreLayoutPagesListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      page: Schema.optional(Schema.Array(StorePage)),
-    }),
-  ).annotate({
-    identifier: "StoreLayoutPagesListResponse",
-  }) as any as Schema.Schema<StoreLayoutPagesListResponse>;
+export const StoreLayoutPagesListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    page: Schema.optional(Schema.Array(StorePage)),
+  }).annotate({ identifier: "StoreLayoutPagesListResponse" });
 
 export interface Entitlement {
   /** The reason for the entitlement. For example, "free" for free apps. This property is temporary: it will be replaced by the acquisition kind field of group licenses. */
@@ -943,29 +759,20 @@ export interface Entitlement {
   productId?: string;
 }
 
-export const Entitlement: Schema.Schema<Entitlement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reason: Schema.optional(Schema.String),
-      productId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Entitlement",
-  }) as any as Schema.Schema<Entitlement>;
+export const Entitlement = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  reason: Schema.optional(Schema.String),
+  productId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Entitlement" });
 
 export interface EntitlementsListResponse {
   /** An entitlement of a user to a product (e.g. an app). For example, a free app that they have installed, or a paid app that they have been allocated a license to. */
   entitlement?: Array<Entitlement>;
 }
 
-export const EntitlementsListResponse: Schema.Schema<EntitlementsListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entitlement: Schema.optional(Schema.Array(Entitlement)),
-    }),
-  ).annotate({
-    identifier: "EntitlementsListResponse",
-  }) as any as Schema.Schema<EntitlementsListResponse>;
+export const EntitlementsListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entitlement: Schema.optional(Schema.Array(Entitlement)),
+  }).annotate({ identifier: "EntitlementsListResponse" });
 
 export interface ProductVisibility {
   /** The product ID to make visible to the user. Required for each item in the productVisibility list. */
@@ -978,16 +785,11 @@ export interface ProductVisibility {
   >;
 }
 
-export const ProductVisibility: Schema.Schema<ProductVisibility> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      productId: Schema.optional(Schema.String),
-      trackIds: Schema.optional(Schema.Array(Schema.String)),
-      tracks: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ProductVisibility",
-  }) as any as Schema.Schema<ProductVisibility>;
+export const ProductVisibility = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  productId: Schema.optional(Schema.String),
+  trackIds: Schema.optional(Schema.Array(Schema.String)),
+  tracks: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ProductVisibility" });
 
 export interface Install {
   /** The ID of the product that the install is for. For example, "app:com.google.android.gm". */
@@ -998,56 +800,40 @@ export interface Install {
   versionCode?: number;
 }
 
-export const Install: Schema.Schema<Install> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      productId: Schema.optional(Schema.String),
-      installState: Schema.optional(Schema.String),
-      versionCode: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Install" }) as any as Schema.Schema<Install>;
+export const Install = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  productId: Schema.optional(Schema.String),
+  installState: Schema.optional(Schema.String),
+  versionCode: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Install" });
 
 export interface GenerateEnterpriseUpgradeUrlResponse {
   /** A URL for an enterprise admin to upgrade their enterprise. The page can't be rendered in an iframe. */
   url?: string;
 }
 
-export const GenerateEnterpriseUpgradeUrlResponse: Schema.Schema<GenerateEnterpriseUpgradeUrlResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      url: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GenerateEnterpriseUpgradeUrlResponse",
-  }) as any as Schema.Schema<GenerateEnterpriseUpgradeUrlResponse>;
+export const GenerateEnterpriseUpgradeUrlResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    url: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GenerateEnterpriseUpgradeUrlResponse" });
 
 export interface AdministratorWebTokenSpecWebApps {
   /** Whether the Web Apps page is displayed. Default is true. */
   enabled?: boolean;
 }
 
-export const AdministratorWebTokenSpecWebApps: Schema.Schema<AdministratorWebTokenSpecWebApps> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "AdministratorWebTokenSpecWebApps",
-  }) as any as Schema.Schema<AdministratorWebTokenSpecWebApps>;
+export const AdministratorWebTokenSpecWebApps =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "AdministratorWebTokenSpecWebApps" });
 
 export interface EnterpriseAccount {
   /** The email address of the service account. */
   accountEmail?: string;
 }
 
-export const EnterpriseAccount: Schema.Schema<EnterpriseAccount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accountEmail: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseAccount",
-  }) as any as Schema.Schema<EnterpriseAccount>;
+export const EnterpriseAccount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  accountEmail: Schema.optional(Schema.String),
+}).annotate({ identifier: "EnterpriseAccount" });
 
 export interface ProductPermissions {
   /** The ID of the app that the permissions relate to, e.g. "app:com.google.android.gm". */
@@ -1056,15 +842,10 @@ export interface ProductPermissions {
   permission?: Array<ProductPermission>;
 }
 
-export const ProductPermissions: Schema.Schema<ProductPermissions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      productId: Schema.optional(Schema.String),
-      permission: Schema.optional(Schema.Array(ProductPermission)),
-    }),
-  ).annotate({
-    identifier: "ProductPermissions",
-  }) as any as Schema.Schema<ProductPermissions>;
+export const ProductPermissions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  productId: Schema.optional(Schema.String),
+  permission: Schema.optional(Schema.Array(ProductPermission)),
+}).annotate({ identifier: "ProductPermissions" });
 
 export interface StoreLayout {
   /** The ID of the store page to be used as the homepage. The homepage is the first page shown in the managed Google Play Store. Not specifying a homepage is equivalent to setting the store layout type to "basic". */
@@ -1073,15 +854,10 @@ export interface StoreLayout {
   storeLayoutType?: "unknown" | "basic" | "custom" | (string & {});
 }
 
-export const StoreLayout: Schema.Schema<StoreLayout> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      homepageId: Schema.optional(Schema.String),
-      storeLayoutType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StoreLayout",
-  }) as any as Schema.Schema<StoreLayout>;
+export const StoreLayout = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  homepageId: Schema.optional(Schema.String),
+  storeLayoutType: Schema.optional(Schema.String),
+}).annotate({ identifier: "StoreLayout" });
 
 export interface GoogleAuthenticationSettings {
   /** Whether Google authentication is required. */
@@ -1098,29 +874,20 @@ export interface GoogleAuthenticationSettings {
     | (string & {});
 }
 
-export const GoogleAuthenticationSettings: Schema.Schema<GoogleAuthenticationSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      googleAuthenticationRequired: Schema.optional(Schema.String),
-      dedicatedDevicesAllowed: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAuthenticationSettings",
-  }) as any as Schema.Schema<GoogleAuthenticationSettings>;
+export const GoogleAuthenticationSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    googleAuthenticationRequired: Schema.optional(Schema.String),
+    dedicatedDevicesAllowed: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleAuthenticationSettings" });
 
 export interface Administrator {
   /** The admin's email address. */
   email?: string;
 }
 
-export const Administrator: Schema.Schema<Administrator> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      email: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Administrator",
-  }) as any as Schema.Schema<Administrator>;
+export const Administrator = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  email: Schema.optional(Schema.String),
+}).annotate({ identifier: "Administrator" });
 
 export interface Enterprise {
   /** The enterprise's primary domain, such as "example.com". */
@@ -1147,48 +914,34 @@ export interface Enterprise {
   administrator?: Array<Administrator>;
 }
 
-export const Enterprise: Schema.Schema<Enterprise> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      primaryDomain: Schema.optional(Schema.String),
-      managedGoogleDomainType: Schema.optional(Schema.String),
-      googleAuthenticationSettings: Schema.optional(
-        GoogleAuthenticationSettings,
-      ),
-      enterpriseType: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      administrator: Schema.optional(Schema.Array(Administrator)),
-    }),
-  ).annotate({ identifier: "Enterprise" }) as any as Schema.Schema<Enterprise>;
+export const Enterprise = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  primaryDomain: Schema.optional(Schema.String),
+  managedGoogleDomainType: Schema.optional(Schema.String),
+  googleAuthenticationSettings: Schema.optional(GoogleAuthenticationSettings),
+  enterpriseType: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  administrator: Schema.optional(Schema.Array(Administrator)),
+}).annotate({ identifier: "Enterprise" });
 
 export interface EnterprisesListResponse {
   /** An enterprise. */
   enterprise?: Array<Enterprise>;
 }
 
-export const EnterprisesListResponse: Schema.Schema<EnterprisesListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enterprise: Schema.optional(Schema.Array(Enterprise)),
-    }),
-  ).annotate({
-    identifier: "EnterprisesListResponse",
-  }) as any as Schema.Schema<EnterprisesListResponse>;
+export const EnterprisesListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enterprise: Schema.optional(Schema.Array(Enterprise)),
+  }).annotate({ identifier: "EnterprisesListResponse" });
 
 export interface AuthenticationToken {
   /** The authentication token to be passed to the device policy client on the device where it can be used to provision the account for which this token was generated. */
   token?: string;
 }
 
-export const AuthenticationToken: Schema.Schema<AuthenticationToken> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      token: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AuthenticationToken",
-  }) as any as Schema.Schema<AuthenticationToken>;
+export const AuthenticationToken = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  token: Schema.optional(Schema.String),
+}).annotate({ identifier: "AuthenticationToken" });
 
 export interface ProductSigningCertificate {
   /** The base64 urlsafe encoded SHA2-256 hash of the certificate. */
@@ -1197,15 +950,11 @@ export interface ProductSigningCertificate {
   certificateHashSha1?: string;
 }
 
-export const ProductSigningCertificate: Schema.Schema<ProductSigningCertificate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      certificateHashSha256: Schema.optional(Schema.String),
-      certificateHashSha1: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProductSigningCertificate",
-  }) as any as Schema.Schema<ProductSigningCertificate>;
+export const ProductSigningCertificate =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    certificateHashSha256: Schema.optional(Schema.String),
+    certificateHashSha1: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ProductSigningCertificate" });
 
 export interface InstallFailureEvent {
   /** The ID of the user. This field will always be present. */
@@ -1220,18 +969,13 @@ export interface InstallFailureEvent {
   deviceId?: string;
 }
 
-export const InstallFailureEvent: Schema.Schema<InstallFailureEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userId: Schema.optional(Schema.String),
-      failureReason: Schema.optional(Schema.String),
-      failureDetails: Schema.optional(Schema.String),
-      productId: Schema.optional(Schema.String),
-      deviceId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InstallFailureEvent",
-  }) as any as Schema.Schema<InstallFailureEvent>;
+export const InstallFailureEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  userId: Schema.optional(Schema.String),
+  failureReason: Schema.optional(Schema.String),
+  failureDetails: Schema.optional(Schema.String),
+  productId: Schema.optional(Schema.String),
+  deviceId: Schema.optional(Schema.String),
+}).annotate({ identifier: "InstallFailureEvent" });
 
 export interface NewDeviceEvent {
   /** Policy app on the device. */
@@ -1244,17 +988,12 @@ export interface NewDeviceEvent {
   managementType?: "managedDevice" | "managedProfile" | (string & {});
 }
 
-export const NewDeviceEvent: Schema.Schema<NewDeviceEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dpcPackageName: Schema.optional(Schema.String),
-      userId: Schema.optional(Schema.String),
-      deviceId: Schema.optional(Schema.String),
-      managementType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NewDeviceEvent",
-  }) as any as Schema.Schema<NewDeviceEvent>;
+export const NewDeviceEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dpcPackageName: Schema.optional(Schema.String),
+  userId: Schema.optional(Schema.String),
+  deviceId: Schema.optional(Schema.String),
+  managementType: Schema.optional(Schema.String),
+}).annotate({ identifier: "NewDeviceEvent" });
 
 export interface ProductAvailabilityChangeEvent {
   /** The id of the product (e.g. "app:com.google.android.gm") for which the product availability changed. This field will always be present. */
@@ -1268,15 +1007,11 @@ export interface ProductAvailabilityChangeEvent {
     | (string & {});
 }
 
-export const ProductAvailabilityChangeEvent: Schema.Schema<ProductAvailabilityChangeEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      productId: Schema.optional(Schema.String),
-      availabilityStatus: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProductAvailabilityChangeEvent",
-  }) as any as Schema.Schema<ProductAvailabilityChangeEvent>;
+export const ProductAvailabilityChangeEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    productId: Schema.optional(Schema.String),
+    availabilityStatus: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ProductAvailabilityChangeEvent" });
 
 export interface ProductApprovalEvent {
   /** The id of the product (e.g. "app:com.google.android.gm") for which the approval status has changed. This field will always be present. */
@@ -1285,15 +1020,10 @@ export interface ProductApprovalEvent {
   approved?: "unknown" | "approved" | "unapproved" | (string & {});
 }
 
-export const ProductApprovalEvent: Schema.Schema<ProductApprovalEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      productId: Schema.optional(Schema.String),
-      approved: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProductApprovalEvent",
-  }) as any as Schema.Schema<ProductApprovalEvent>;
+export const ProductApprovalEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  productId: Schema.optional(Schema.String),
+  approved: Schema.optional(Schema.String),
+}).annotate({ identifier: "ProductApprovalEvent" });
 
 export interface NewPermissionsEvent {
   /** The set of permissions that the enterprise admin has already approved for this application. Use Permissions.Get on the EMM API to retrieve details about these permissions. */
@@ -1304,16 +1034,11 @@ export interface NewPermissionsEvent {
   productId?: string;
 }
 
-export const NewPermissionsEvent: Schema.Schema<NewPermissionsEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      approvedPermissions: Schema.optional(Schema.Array(Schema.String)),
-      requestedPermissions: Schema.optional(Schema.Array(Schema.String)),
-      productId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NewPermissionsEvent",
-  }) as any as Schema.Schema<NewPermissionsEvent>;
+export const NewPermissionsEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  approvedPermissions: Schema.optional(Schema.Array(Schema.String)),
+  requestedPermissions: Schema.optional(Schema.Array(Schema.String)),
+  productId: Schema.optional(Schema.String),
+}).annotate({ identifier: "NewPermissionsEvent" });
 
 export interface Notification {
   /** Notifications about an app installation failure. */
@@ -1354,29 +1079,24 @@ export interface Notification {
   appUpdateEvent?: AppUpdateEvent;
 }
 
-export const Notification: Schema.Schema<Notification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      installFailureEvent: Schema.optional(InstallFailureEvent),
-      timestampMillis: Schema.optional(Schema.String),
-      enterpriseId: Schema.optional(Schema.String),
-      appRestrictionsSchemaChangeEvent: Schema.optional(
-        AppRestrictionsSchemaChangeEvent,
-      ),
-      notificationType: Schema.optional(Schema.String),
-      newDeviceEvent: Schema.optional(NewDeviceEvent),
-      enterpriseUpgradeEvent: Schema.optional(EnterpriseUpgradeEvent),
-      deviceReportUpdateEvent: Schema.optional(DeviceReportUpdateEvent),
-      productAvailabilityChangeEvent: Schema.optional(
-        ProductAvailabilityChangeEvent,
-      ),
-      productApprovalEvent: Schema.optional(ProductApprovalEvent),
-      newPermissionsEvent: Schema.optional(NewPermissionsEvent),
-      appUpdateEvent: Schema.optional(AppUpdateEvent),
-    }),
-  ).annotate({
-    identifier: "Notification",
-  }) as any as Schema.Schema<Notification>;
+export const Notification = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  installFailureEvent: Schema.optional(InstallFailureEvent),
+  timestampMillis: Schema.optional(Schema.String),
+  enterpriseId: Schema.optional(Schema.String),
+  appRestrictionsSchemaChangeEvent: Schema.optional(
+    AppRestrictionsSchemaChangeEvent,
+  ),
+  notificationType: Schema.optional(Schema.String),
+  newDeviceEvent: Schema.optional(NewDeviceEvent),
+  enterpriseUpgradeEvent: Schema.optional(EnterpriseUpgradeEvent),
+  deviceReportUpdateEvent: Schema.optional(DeviceReportUpdateEvent),
+  productAvailabilityChangeEvent: Schema.optional(
+    ProductAvailabilityChangeEvent,
+  ),
+  productApprovalEvent: Schema.optional(ProductApprovalEvent),
+  newPermissionsEvent: Schema.optional(NewPermissionsEvent),
+  appUpdateEvent: Schema.optional(AppUpdateEvent),
+}).annotate({ identifier: "Notification" });
 
 export interface TokenPagination {
   previousPageToken?: string;
@@ -1384,15 +1104,10 @@ export interface TokenPagination {
   nextPageToken?: string;
 }
 
-export const TokenPagination: Schema.Schema<TokenPagination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      previousPageToken: Schema.optional(Schema.String),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TokenPagination",
-  }) as any as Schema.Schema<TokenPagination>;
+export const TokenPagination = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  previousPageToken: Schema.optional(Schema.String),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "TokenPagination" });
 
 export interface AppRestrictionsSchemaRestrictionRestrictionValue {
   /** The integer value - this will only be present if type is integer. */
@@ -1416,18 +1131,16 @@ export interface AppRestrictionsSchemaRestrictionRestrictionValue {
   valueBool?: boolean;
 }
 
-export const AppRestrictionsSchemaRestrictionRestrictionValue: Schema.Schema<AppRestrictionsSchemaRestrictionRestrictionValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      valueInteger: Schema.optional(Schema.Number),
-      type: Schema.optional(Schema.String),
-      valueString: Schema.optional(Schema.String),
-      valueMultiselect: Schema.optional(Schema.Array(Schema.String)),
-      valueBool: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const AppRestrictionsSchemaRestrictionRestrictionValue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    valueInteger: Schema.optional(Schema.Number),
+    type: Schema.optional(Schema.String),
+    valueString: Schema.optional(Schema.String),
+    valueMultiselect: Schema.optional(Schema.Array(Schema.String)),
+    valueBool: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "AppRestrictionsSchemaRestrictionRestrictionValue",
-  }) as any as Schema.Schema<AppRestrictionsSchemaRestrictionRestrictionValue>;
+  });
 
 export interface AppRestrictionsSchemaRestriction {
   /** The type of the restriction. */
@@ -1484,17 +1197,10 @@ export interface AppRestrictionsSchema {
   restrictions?: Array<AppRestrictionsSchemaRestriction>;
 }
 
-export const AppRestrictionsSchema: Schema.Schema<AppRestrictionsSchema> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      restrictions: Schema.optional(
-        Schema.Array(AppRestrictionsSchemaRestriction),
-      ),
-    }),
-  ).annotate({
-    identifier: "AppRestrictionsSchema",
-  }) as any as Schema.Schema<AppRestrictionsSchema>;
+export const AppRestrictionsSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  restrictions: Schema.optional(Schema.Array(AppRestrictionsSchemaRestriction)),
+}).annotate({ identifier: "AppRestrictionsSchema" });
 
 export interface AppVersion {
   /** The SDK version this app targets, as specified in the manifest of the APK. See http://developer.android.com/guide/topics/manifest/uses-sdk-element.html */
@@ -1516,17 +1222,14 @@ export interface AppVersion {
   trackId?: Array<string>;
 }
 
-export const AppVersion: Schema.Schema<AppVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetSdkVersion: Schema.optional(Schema.Number),
-      isProduction: Schema.optional(Schema.Boolean),
-      track: Schema.optional(Schema.String),
-      versionString: Schema.optional(Schema.String),
-      versionCode: Schema.optional(Schema.Number),
-      trackId: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "AppVersion" }) as any as Schema.Schema<AppVersion>;
+export const AppVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  targetSdkVersion: Schema.optional(Schema.Number),
+  isProduction: Schema.optional(Schema.Boolean),
+  track: Schema.optional(Schema.String),
+  versionString: Schema.optional(Schema.String),
+  versionCode: Schema.optional(Schema.Number),
+  trackId: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "AppVersion" });
 
 export interface TrackInfo {
   /** Unmodifiable, unique track identifier. This identifier is the releaseTrackId in the url of the play developer console page that displays the track information. */
@@ -1535,13 +1238,10 @@ export interface TrackInfo {
   trackAlias?: string;
 }
 
-export const TrackInfo: Schema.Schema<TrackInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      trackId: Schema.optional(Schema.String),
-      trackAlias: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "TrackInfo" }) as any as Schema.Schema<TrackInfo>;
+export const TrackInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  trackId: Schema.optional(Schema.String),
+  trackAlias: Schema.optional(Schema.String),
+}).annotate({ identifier: "TrackInfo" });
 
 export interface Product {
   /** The app restriction schema */
@@ -1615,51 +1315,43 @@ export interface Product {
   permissions?: Array<ProductPermission>;
 }
 
-export const Product: Schema.Schema<Product> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      appRestrictionsSchema: Schema.optional(AppRestrictionsSchema),
-      productId: Schema.optional(Schema.String),
-      workDetailsUrl: Schema.optional(Schema.String),
-      availableCountries: Schema.optional(Schema.Array(Schema.String)),
-      detailsUrl: Schema.optional(Schema.String),
-      requiresContainerApp: Schema.optional(Schema.Boolean),
-      features: Schema.optional(Schema.Array(Schema.String)),
-      distributionChannel: Schema.optional(Schema.String),
-      iconUrl: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      productPricing: Schema.optional(Schema.String),
-      category: Schema.optional(Schema.String),
-      appVersion: Schema.optional(Schema.Array(AppVersion)),
-      signingCertificate: Schema.optional(ProductSigningCertificate),
-      screenshotUrls: Schema.optional(Schema.Array(Schema.String)),
-      contentRating: Schema.optional(Schema.String),
-      fullDescription: Schema.optional(Schema.String),
-      recentChanges: Schema.optional(Schema.String),
-      lastUpdatedTimestampMillis: Schema.optional(Schema.String),
-      authorName: Schema.optional(Schema.String),
-      availableTracks: Schema.optional(Schema.Array(Schema.String)),
-      appTracks: Schema.optional(Schema.Array(TrackInfo)),
-      smallIconUrl: Schema.optional(Schema.String),
-      minAndroidSdkVersion: Schema.optional(Schema.Number),
-      title: Schema.optional(Schema.String),
-      permissions: Schema.optional(Schema.Array(ProductPermission)),
-    }),
-  ).annotate({ identifier: "Product" }) as any as Schema.Schema<Product>;
+export const Product = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  appRestrictionsSchema: Schema.optional(AppRestrictionsSchema),
+  productId: Schema.optional(Schema.String),
+  workDetailsUrl: Schema.optional(Schema.String),
+  availableCountries: Schema.optional(Schema.Array(Schema.String)),
+  detailsUrl: Schema.optional(Schema.String),
+  requiresContainerApp: Schema.optional(Schema.Boolean),
+  features: Schema.optional(Schema.Array(Schema.String)),
+  distributionChannel: Schema.optional(Schema.String),
+  iconUrl: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  productPricing: Schema.optional(Schema.String),
+  category: Schema.optional(Schema.String),
+  appVersion: Schema.optional(Schema.Array(AppVersion)),
+  signingCertificate: Schema.optional(ProductSigningCertificate),
+  screenshotUrls: Schema.optional(Schema.Array(Schema.String)),
+  contentRating: Schema.optional(Schema.String),
+  fullDescription: Schema.optional(Schema.String),
+  recentChanges: Schema.optional(Schema.String),
+  lastUpdatedTimestampMillis: Schema.optional(Schema.String),
+  authorName: Schema.optional(Schema.String),
+  availableTracks: Schema.optional(Schema.Array(Schema.String)),
+  appTracks: Schema.optional(Schema.Array(TrackInfo)),
+  smallIconUrl: Schema.optional(Schema.String),
+  minAndroidSdkVersion: Schema.optional(Schema.Number),
+  title: Schema.optional(Schema.String),
+  permissions: Schema.optional(Schema.Array(ProductPermission)),
+}).annotate({ identifier: "Product" });
 
 export interface UsersListResponse {
   /** A user of an enterprise. */
   user?: Array<User>;
 }
 
-export const UsersListResponse: Schema.Schema<UsersListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      user: Schema.optional(Schema.Array(User)),
-    }),
-  ).annotate({
-    identifier: "UsersListResponse",
-  }) as any as Schema.Schema<UsersListResponse>;
+export const UsersListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  user: Schema.optional(Schema.Array(User)),
+}).annotate({ identifier: "UsersListResponse" });
 
 export interface EnrollmentTokenGoogleAuthenticationOptions {
   /** [Optional] Specifies whether user should authenticate with Google during enrollment. This setting, if specified,`GoogleAuthenticationSettings` specified for the enterprise resource is ignored for devices enrolled with this token. */
@@ -1672,15 +1364,11 @@ export interface EnrollmentTokenGoogleAuthenticationOptions {
   requiredAccountEmail?: string;
 }
 
-export const EnrollmentTokenGoogleAuthenticationOptions: Schema.Schema<EnrollmentTokenGoogleAuthenticationOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      authenticationRequirement: Schema.optional(Schema.String),
-      requiredAccountEmail: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnrollmentTokenGoogleAuthenticationOptions",
-  }) as any as Schema.Schema<EnrollmentTokenGoogleAuthenticationOptions>;
+export const EnrollmentTokenGoogleAuthenticationOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    authenticationRequirement: Schema.optional(Schema.String),
+    requiredAccountEmail: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnrollmentTokenGoogleAuthenticationOptions" });
 
 export interface EnrollmentToken {
   /** The token value that's passed to the device and authorizes the device to enroll. This is a read-only field generated by the server. */
@@ -1697,33 +1385,24 @@ export interface EnrollmentToken {
   googleAuthenticationOptions?: EnrollmentTokenGoogleAuthenticationOptions;
 }
 
-export const EnrollmentToken: Schema.Schema<EnrollmentToken> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      token: Schema.optional(Schema.String),
-      enrollmentTokenType: Schema.optional(Schema.String),
-      duration: Schema.optional(Schema.String),
-      googleAuthenticationOptions: Schema.optional(
-        EnrollmentTokenGoogleAuthenticationOptions,
-      ),
-    }),
-  ).annotate({
-    identifier: "EnrollmentToken",
-  }) as any as Schema.Schema<EnrollmentToken>;
+export const EnrollmentToken = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  token: Schema.optional(Schema.String),
+  enrollmentTokenType: Schema.optional(Schema.String),
+  duration: Schema.optional(Schema.String),
+  googleAuthenticationOptions: Schema.optional(
+    EnrollmentTokenGoogleAuthenticationOptions,
+  ),
+}).annotate({ identifier: "EnrollmentToken" });
 
 export interface GroupLicenseUsersListResponse {
   /** A user of an enterprise. */
   user?: Array<User>;
 }
 
-export const GroupLicenseUsersListResponse: Schema.Schema<GroupLicenseUsersListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      user: Schema.optional(Schema.Array(User)),
-    }),
-  ).annotate({
-    identifier: "GroupLicenseUsersListResponse",
-  }) as any as Schema.Schema<GroupLicenseUsersListResponse>;
+export const GroupLicenseUsersListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    user: Schema.optional(Schema.Array(User)),
+  }).annotate({ identifier: "GroupLicenseUsersListResponse" });
 
 export interface ProductSet {
   /** The list of product IDs making up the set of products. */
@@ -1739,28 +1418,20 @@ export interface ProductSet {
   productVisibility?: Array<ProductVisibility>;
 }
 
-export const ProductSet: Schema.Schema<ProductSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      productId: Schema.optional(Schema.Array(Schema.String)),
-      productSetBehavior: Schema.optional(Schema.String),
-      productVisibility: Schema.optional(Schema.Array(ProductVisibility)),
-    }),
-  ).annotate({ identifier: "ProductSet" }) as any as Schema.Schema<ProductSet>;
+export const ProductSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  productId: Schema.optional(Schema.Array(Schema.String)),
+  productSetBehavior: Schema.optional(Schema.String),
+  productVisibility: Schema.optional(Schema.Array(ProductVisibility)),
+}).annotate({ identifier: "ProductSet" });
 
 export interface InstallsListResponse {
   /** An installation of an app for a user on a specific device. The existence of an install implies that the user must have an entitlement to the app. */
   install?: Array<Install>;
 }
 
-export const InstallsListResponse: Schema.Schema<InstallsListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      install: Schema.optional(Schema.Array(Install)),
-    }),
-  ).annotate({
-    identifier: "InstallsListResponse",
-  }) as any as Schema.Schema<InstallsListResponse>;
+export const InstallsListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  install: Schema.optional(Schema.Array(Install)),
+}).annotate({ identifier: "InstallsListResponse" });
 
 export interface ProductsListResponse {
   /** Pagination information for token pagination. */
@@ -1771,16 +1442,11 @@ export interface ProductsListResponse {
   product?: Array<Product>;
 }
 
-export const ProductsListResponse: Schema.Schema<ProductsListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tokenPagination: Schema.optional(TokenPagination),
-      pageInfo: Schema.optional(PageInfo),
-      product: Schema.optional(Schema.Array(Product)),
-    }),
-  ).annotate({
-    identifier: "ProductsListResponse",
-  }) as any as Schema.Schema<ProductsListResponse>;
+export const ProductsListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tokenPagination: Schema.optional(TokenPagination),
+  pageInfo: Schema.optional(PageInfo),
+  product: Schema.optional(Schema.Array(Product)),
+}).annotate({ identifier: "ProductsListResponse" });
 
 export interface NotificationSet {
   /** The notification set ID, required to mark the notification as received with the Enterprises.AcknowledgeNotification API. This will be omitted if no notifications are present. */
@@ -1789,15 +1455,10 @@ export interface NotificationSet {
   notification?: Array<Notification>;
 }
 
-export const NotificationSet: Schema.Schema<NotificationSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      notificationSetId: Schema.optional(Schema.String),
-      notification: Schema.optional(Schema.Array(Notification)),
-    }),
-  ).annotate({
-    identifier: "NotificationSet",
-  }) as any as Schema.Schema<NotificationSet>;
+export const NotificationSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  notificationSetId: Schema.optional(Schema.String),
+  notification: Schema.optional(Schema.Array(Notification)),
+}).annotate({ identifier: "NotificationSet" });
 
 export interface WebApp {
   /** The ID of the application. A string of the form "app:<package name>" where the package name always starts with the prefix "com.google.enterprise.webapp." followed by a random id. */
@@ -1821,18 +1482,15 @@ export interface WebApp {
     | (string & {});
 }
 
-export const WebApp: Schema.Schema<WebApp> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      webAppId: Schema.optional(Schema.String),
-      icons: Schema.optional(Schema.Array(WebAppIcon)),
-      isPublished: Schema.optional(Schema.Boolean),
-      startUrl: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      versionCode: Schema.optional(Schema.String),
-      displayMode: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "WebApp" }) as any as Schema.Schema<WebApp>;
+export const WebApp = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  webAppId: Schema.optional(Schema.String),
+  icons: Schema.optional(Schema.Array(WebAppIcon)),
+  isPublished: Schema.optional(Schema.Boolean),
+  startUrl: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  versionCode: Schema.optional(Schema.String),
+  displayMode: Schema.optional(Schema.String),
+}).annotate({ identifier: "WebApp" });
 
 export interface ServiceAccount {
   /** The account name of the service account, in the form of an email address. Assigned by the server. */
@@ -1841,15 +1499,10 @@ export interface ServiceAccount {
   key?: ServiceAccountKey;
 }
 
-export const ServiceAccount: Schema.Schema<ServiceAccount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      key: Schema.optional(ServiceAccountKey),
-    }),
-  ).annotate({
-    identifier: "ServiceAccount",
-  }) as any as Schema.Schema<ServiceAccount>;
+export const ServiceAccount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  key: Schema.optional(ServiceAccountKey),
+}).annotate({ identifier: "ServiceAccount" });
 
 export interface Permission {
   /** The name of the permission. */
@@ -1860,28 +1513,20 @@ export interface Permission {
   permissionId?: string;
 }
 
-export const Permission: Schema.Schema<Permission> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      permissionId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Permission" }) as any as Schema.Schema<Permission>;
+export const Permission = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  permissionId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Permission" });
 
 export interface WebAppsListResponse {
   /** The manifest describing a web app. */
   webApp?: Array<WebApp>;
 }
 
-export const WebAppsListResponse: Schema.Schema<WebAppsListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      webApp: Schema.optional(Schema.Array(WebApp)),
-    }),
-  ).annotate({
-    identifier: "WebAppsListResponse",
-  }) as any as Schema.Schema<WebAppsListResponse>;
+export const WebAppsListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  webApp: Schema.optional(Schema.Array(WebApp)),
+}).annotate({ identifier: "WebAppsListResponse" });
 
 export interface AdministratorWebTokenSpec {
   /** Options for displaying the Managed Configuration page. */
@@ -1902,51 +1547,37 @@ export interface AdministratorWebTokenSpec {
   permission?: Array<"unknown" | "approveApps" | "manageMcm" | (string & {})>;
 }
 
-export const AdministratorWebTokenSpec: Schema.Schema<AdministratorWebTokenSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      managedConfigurations: Schema.optional(
-        AdministratorWebTokenSpecManagedConfigurations,
-      ),
-      zeroTouch: Schema.optional(AdministratorWebTokenSpecZeroTouch),
-      parent: Schema.optional(Schema.String),
-      playSearch: Schema.optional(AdministratorWebTokenSpecPlaySearch),
-      storeBuilder: Schema.optional(AdministratorWebTokenSpecStoreBuilder),
-      privateApps: Schema.optional(AdministratorWebTokenSpecPrivateApps),
-      webApps: Schema.optional(AdministratorWebTokenSpecWebApps),
-      permission: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AdministratorWebTokenSpec",
-  }) as any as Schema.Schema<AdministratorWebTokenSpec>;
+export const AdministratorWebTokenSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    managedConfigurations: Schema.optional(
+      AdministratorWebTokenSpecManagedConfigurations,
+    ),
+    zeroTouch: Schema.optional(AdministratorWebTokenSpecZeroTouch),
+    parent: Schema.optional(Schema.String),
+    playSearch: Schema.optional(AdministratorWebTokenSpecPlaySearch),
+    storeBuilder: Schema.optional(AdministratorWebTokenSpecStoreBuilder),
+    privateApps: Schema.optional(AdministratorWebTokenSpecPrivateApps),
+    webApps: Schema.optional(AdministratorWebTokenSpecWebApps),
+    permission: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "AdministratorWebTokenSpec" });
 
 export interface ApprovalUrlInfo {
   /** A URL that displays a product's permissions and that can also be used to approve the product with the Products.approve call. */
   approvalUrl?: string;
 }
 
-export const ApprovalUrlInfo: Schema.Schema<ApprovalUrlInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      approvalUrl: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ApprovalUrlInfo",
-  }) as any as Schema.Schema<ApprovalUrlInfo>;
+export const ApprovalUrlInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  approvalUrl: Schema.optional(Schema.String),
+}).annotate({ identifier: "ApprovalUrlInfo" });
 
 export interface DeviceState {
   /** The state of the Google account on the device. "enabled" indicates that the Google account on the device can be used to access Google services (including Google Play), while "disabled" means that it cannot. A new device is initially in the "disabled" state. */
   accountState?: "enabled" | "disabled" | (string & {});
 }
 
-export const DeviceState: Schema.Schema<DeviceState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accountState: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DeviceState",
-  }) as any as Schema.Schema<DeviceState>;
+export const DeviceState = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  accountState: Schema.optional(Schema.String),
+}).annotate({ identifier: "DeviceState" });
 
 export interface ProductsApproveRequest {
   /** The approval URL that was shown to the user. Only the permissions shown to the user with that URL will be accepted, which may not be the product's entire set of permissions. For example, the URL may only display new permissions from an update after the product was approved, or not include new permissions if the product was updated since the URL was generated. */
@@ -1958,15 +1589,12 @@ export interface ProductsApproveRequest {
     | (string & {});
 }
 
-export const ProductsApproveRequest: Schema.Schema<ProductsApproveRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      approvalUrlInfo: Schema.optional(ApprovalUrlInfo),
-      approvedPermissions: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProductsApproveRequest",
-  }) as any as Schema.Schema<ProductsApproveRequest>;
+export const ProductsApproveRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    approvalUrlInfo: Schema.optional(ApprovalUrlInfo),
+    approvedPermissions: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ProductsApproveRequest" });
 
 // ==========================================================================
 // Operations

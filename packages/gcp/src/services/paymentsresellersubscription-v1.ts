@@ -29,13 +29,10 @@ export interface Amount {
   currencyCode?: string;
 }
 
-export const Amount: Schema.Schema<Amount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      amountMicros: Schema.optional(Schema.String),
-      currencyCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Amount" }) as any as Schema.Schema<Amount>;
+export const Amount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  amountMicros: Schema.optional(Schema.String),
+  currencyCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "Amount" });
 
 export interface ProductPriceConfig {
   /** Output only. 2-letter ISO region code where the product is available in. Ex. "US". */
@@ -44,29 +41,20 @@ export interface ProductPriceConfig {
   amount?: Amount;
 }
 
-export const ProductPriceConfig: Schema.Schema<ProductPriceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      regionCode: Schema.optional(Schema.String),
-      amount: Schema.optional(Amount),
-    }),
-  ).annotate({
-    identifier: "ProductPriceConfig",
-  }) as any as Schema.Schema<ProductPriceConfig>;
+export const ProductPriceConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  regionCode: Schema.optional(Schema.String),
+  amount: Schema.optional(Amount),
+}).annotate({ identifier: "ProductPriceConfig" });
 
 export interface ProductBundleDetailsBundleElement {
   /** Required. Output only. Product resource name that identifies the bundle element. The format is 'partners/{partner_id}/products/{product_id}'. */
   product?: string;
 }
 
-export const ProductBundleDetailsBundleElement: Schema.Schema<ProductBundleDetailsBundleElement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      product: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProductBundleDetailsBundleElement",
-  }) as any as Schema.Schema<ProductBundleDetailsBundleElement>;
+export const ProductBundleDetailsBundleElement =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    product: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ProductBundleDetailsBundleElement" });
 
 export interface ProductBundleDetails {
   /** The entitlement mode of the bundle product. */
@@ -79,17 +67,12 @@ export interface ProductBundleDetails {
   bundleElements?: Array<ProductBundleDetailsBundleElement>;
 }
 
-export const ProductBundleDetails: Schema.Schema<ProductBundleDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entitlementMode: Schema.optional(Schema.String),
-      bundleElements: Schema.optional(
-        Schema.Array(ProductBundleDetailsBundleElement),
-      ),
-    }),
-  ).annotate({
-    identifier: "ProductBundleDetails",
-  }) as any as Schema.Schema<ProductBundleDetails>;
+export const ProductBundleDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  entitlementMode: Schema.optional(Schema.String),
+  bundleElements: Schema.optional(
+    Schema.Array(ProductBundleDetailsBundleElement),
+  ),
+}).annotate({ identifier: "ProductBundleDetails" });
 
 export interface SubscriptionUpgradeDowngradeDetails {
   /** Required. The previous subscription id to be replaced. The format can be one of the following: 1. `subscription_id`: the old subscription id under the same partner_id. 2. `partners/{partner_id}/subscriptions/{subscription_id}`. A different partner_id is allowed. But they must be under the same partner group. */
@@ -103,15 +86,11 @@ export interface SubscriptionUpgradeDowngradeDetails {
     | (string & {});
 }
 
-export const SubscriptionUpgradeDowngradeDetails: Schema.Schema<SubscriptionUpgradeDowngradeDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      previousSubscriptionId: Schema.optional(Schema.String),
-      billingCycleSpec: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SubscriptionUpgradeDowngradeDetails",
-  }) as any as Schema.Schema<SubscriptionUpgradeDowngradeDetails>;
+export const SubscriptionUpgradeDowngradeDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    previousSubscriptionId: Schema.optional(Schema.String),
+    billingCycleSpec: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SubscriptionUpgradeDowngradeDetails" });
 
 export interface GoogleTypeLocalizedText {
   /** Localized string in the language corresponding to language_code below. */
@@ -120,15 +99,11 @@ export interface GoogleTypeLocalizedText {
   languageCode?: string;
 }
 
-export const GoogleTypeLocalizedText: Schema.Schema<GoogleTypeLocalizedText> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-      languageCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleTypeLocalizedText",
-  }) as any as Schema.Schema<GoogleTypeLocalizedText>;
+export const GoogleTypeLocalizedText =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.String),
+    languageCode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleTypeLocalizedText" });
 
 export interface Duration {
   /** The unit used for the duration */
@@ -137,13 +112,10 @@ export interface Duration {
   count?: number;
 }
 
-export const Duration: Schema.Schema<Duration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unit: Schema.optional(Schema.String),
-      count: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Duration" }) as any as Schema.Schema<Duration>;
+export const Duration = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  unit: Schema.optional(Schema.String),
+  count: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Duration" });
 
 export interface PromotionIntroductoryPricingDetailsIntroductoryPricingSpec {
   /** Output only. The discount percentage in micros. For example, 50,000 represents 5%. */
@@ -156,35 +128,27 @@ export interface PromotionIntroductoryPricingDetailsIntroductoryPricingSpec {
   discountAmount?: Amount;
 }
 
-export const PromotionIntroductoryPricingDetailsIntroductoryPricingSpec: Schema.Schema<PromotionIntroductoryPricingDetailsIntroductoryPricingSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      discountRatioMicros: Schema.optional(Schema.String),
-      regionCode: Schema.optional(Schema.String),
-      recurrenceCount: Schema.optional(Schema.Number),
-      discountAmount: Schema.optional(Amount),
-    }),
-  ).annotate({
+export const PromotionIntroductoryPricingDetailsIntroductoryPricingSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    discountRatioMicros: Schema.optional(Schema.String),
+    regionCode: Schema.optional(Schema.String),
+    recurrenceCount: Schema.optional(Schema.Number),
+    discountAmount: Schema.optional(Amount),
+  }).annotate({
     identifier: "PromotionIntroductoryPricingDetailsIntroductoryPricingSpec",
-  }) as any as Schema.Schema<PromotionIntroductoryPricingDetailsIntroductoryPricingSpec>;
+  });
 
 export interface PromotionIntroductoryPricingDetails {
   /** Output only. Specifies the introductory pricing periods. */
   introductoryPricingSpecs?: Array<PromotionIntroductoryPricingDetailsIntroductoryPricingSpec>;
 }
 
-export const PromotionIntroductoryPricingDetails: Schema.Schema<PromotionIntroductoryPricingDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      introductoryPricingSpecs: Schema.optional(
-        Schema.Array(
-          PromotionIntroductoryPricingDetailsIntroductoryPricingSpec,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "PromotionIntroductoryPricingDetails",
-  }) as any as Schema.Schema<PromotionIntroductoryPricingDetails>;
+export const PromotionIntroductoryPricingDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    introductoryPricingSpecs: Schema.optional(
+      Schema.Array(PromotionIntroductoryPricingDetailsIntroductoryPricingSpec),
+    ),
+  }).annotate({ identifier: "PromotionIntroductoryPricingDetails" });
 
 export interface SubscriptionPromotionSpec {
   /** Required. Promotion resource name that identifies a promotion. The format is 'partners/{partner_id}/promotions/{promotion_id}'. */
@@ -201,19 +165,15 @@ export interface SubscriptionPromotionSpec {
   introductoryPricingDetails?: PromotionIntroductoryPricingDetails;
 }
 
-export const SubscriptionPromotionSpec: Schema.Schema<SubscriptionPromotionSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      promotion: Schema.optional(Schema.String),
-      freeTrialDuration: Schema.optional(Duration),
-      type: Schema.optional(Schema.String),
-      introductoryPricingDetails: Schema.optional(
-        PromotionIntroductoryPricingDetails,
-      ),
-    }),
-  ).annotate({
-    identifier: "SubscriptionPromotionSpec",
-  }) as any as Schema.Schema<SubscriptionPromotionSpec>;
+export const SubscriptionPromotionSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    promotion: Schema.optional(Schema.String),
+    freeTrialDuration: Schema.optional(Duration),
+    type: Schema.optional(Schema.String),
+    introductoryPricingDetails: Schema.optional(
+      PromotionIntroductoryPricingDetails,
+    ),
+  }).annotate({ identifier: "SubscriptionPromotionSpec" });
 
 export interface ServicePeriod {
   /** Required. The start time of the service period. Time is inclusive. */
@@ -222,29 +182,20 @@ export interface ServicePeriod {
   endTime?: string;
 }
 
-export const ServicePeriod: Schema.Schema<ServicePeriod> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ServicePeriod",
-  }) as any as Schema.Schema<ServicePeriod>;
+export const ServicePeriod = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "ServicePeriod" });
 
 export interface SubscriptionLineItemOneTimeRecurrenceDetails {
   /** Output only. The service period of the ONE_TIME line item. */
   servicePeriod?: ServicePeriod;
 }
 
-export const SubscriptionLineItemOneTimeRecurrenceDetails: Schema.Schema<SubscriptionLineItemOneTimeRecurrenceDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      servicePeriod: Schema.optional(ServicePeriod),
-    }),
-  ).annotate({
-    identifier: "SubscriptionLineItemOneTimeRecurrenceDetails",
-  }) as any as Schema.Schema<SubscriptionLineItemOneTimeRecurrenceDetails>;
+export const SubscriptionLineItemOneTimeRecurrenceDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    servicePeriod: Schema.optional(ServicePeriod),
+  }).annotate({ identifier: "SubscriptionLineItemOneTimeRecurrenceDetails" });
 
 export interface SubscriptionLineItemBundleDetailsBundleElementDetails {
   /** Output only. Product resource name that identifies the bundle element. The format is 'partners/{partner_id}/products/{product_id}'. */
@@ -253,31 +204,25 @@ export interface SubscriptionLineItemBundleDetailsBundleElementDetails {
   userAccountLinkedTime?: string;
 }
 
-export const SubscriptionLineItemBundleDetailsBundleElementDetails: Schema.Schema<SubscriptionLineItemBundleDetailsBundleElementDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      product: Schema.optional(Schema.String),
-      userAccountLinkedTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const SubscriptionLineItemBundleDetailsBundleElementDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    product: Schema.optional(Schema.String),
+    userAccountLinkedTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "SubscriptionLineItemBundleDetailsBundleElementDetails",
-  }) as any as Schema.Schema<SubscriptionLineItemBundleDetailsBundleElementDetails>;
+  });
 
 export interface SubscriptionLineItemBundleDetails {
   /** Output only. The details for each element in the hard bundle. */
   bundleElementDetails?: Array<SubscriptionLineItemBundleDetailsBundleElementDetails>;
 }
 
-export const SubscriptionLineItemBundleDetails: Schema.Schema<SubscriptionLineItemBundleDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bundleElementDetails: Schema.optional(
-        Schema.Array(SubscriptionLineItemBundleDetailsBundleElementDetails),
-      ),
-    }),
-  ).annotate({
-    identifier: "SubscriptionLineItemBundleDetails",
-  }) as any as Schema.Schema<SubscriptionLineItemBundleDetails>;
+export const SubscriptionLineItemBundleDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bundleElementDetails: Schema.optional(
+      Schema.Array(SubscriptionLineItemBundleDetailsBundleElementDetails),
+    ),
+  }).annotate({ identifier: "SubscriptionLineItemBundleDetails" });
 
 export interface GoogleOnePayload {
   /** The type of offering the subscription was sold by the partner. e.g. VAS. */
@@ -302,17 +247,12 @@ export interface GoogleOnePayload {
   storeId?: string;
 }
 
-export const GoogleOnePayload: Schema.Schema<GoogleOnePayload> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      offering: Schema.optional(Schema.String),
-      campaigns: Schema.optional(Schema.Array(Schema.String)),
-      salesChannel: Schema.optional(Schema.String),
-      storeId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleOnePayload",
-  }) as any as Schema.Schema<GoogleOnePayload>;
+export const GoogleOnePayload = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  offering: Schema.optional(Schema.String),
+  campaigns: Schema.optional(Schema.Array(Schema.String)),
+  salesChannel: Schema.optional(Schema.String),
+  storeId: Schema.optional(Schema.String),
+}).annotate({ identifier: "GoogleOnePayload" });
 
 export interface GoogleHomePayload {
   /** Output only. This identifies whether the subscription is attached to a Google Home structure. */
@@ -323,16 +263,11 @@ export interface GoogleHomePayload {
   partnerStructureId?: string;
 }
 
-export const GoogleHomePayload: Schema.Schema<GoogleHomePayload> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      attachedToGoogleStructure: Schema.optional(Schema.Boolean),
-      googleStructureId: Schema.optional(Schema.String),
-      partnerStructureId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleHomePayload",
-  }) as any as Schema.Schema<GoogleHomePayload>;
+export const GoogleHomePayload = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  attachedToGoogleStructure: Schema.optional(Schema.Boolean),
+  googleStructureId: Schema.optional(Schema.String),
+  partnerStructureId: Schema.optional(Schema.String),
+}).annotate({ identifier: "GoogleHomePayload" });
 
 export interface YoutubePayload {
   /** Output only. The access expiration time for this line item. */
@@ -348,16 +283,11 @@ export interface YoutubePayload {
   partnerEligibilityIds?: Array<string>;
 }
 
-export const YoutubePayload: Schema.Schema<YoutubePayload> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accessEndTime: Schema.optional(Schema.String),
-      partnerPlanType: Schema.optional(Schema.String),
-      partnerEligibilityIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "YoutubePayload",
-  }) as any as Schema.Schema<YoutubePayload>;
+export const YoutubePayload = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  accessEndTime: Schema.optional(Schema.String),
+  partnerPlanType: Schema.optional(Schema.String),
+  partnerEligibilityIds: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "YoutubePayload" });
 
 export interface ProductPayload {
   /** Product-specific payloads. Payload specific to Google One products. */
@@ -368,30 +298,21 @@ export interface ProductPayload {
   youtubePayload?: YoutubePayload;
 }
 
-export const ProductPayload: Schema.Schema<ProductPayload> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      googleOnePayload: Schema.optional(GoogleOnePayload),
-      googleHomePayload: Schema.optional(GoogleHomePayload),
-      youtubePayload: Schema.optional(YoutubePayload),
-    }),
-  ).annotate({
-    identifier: "ProductPayload",
-  }) as any as Schema.Schema<ProductPayload>;
+export const ProductPayload = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  googleOnePayload: Schema.optional(GoogleOnePayload),
+  googleHomePayload: Schema.optional(GoogleHomePayload),
+  youtubePayload: Schema.optional(YoutubePayload),
+}).annotate({ identifier: "ProductPayload" });
 
 export interface FiniteBillingCycleDetails {
   /** The number of a subscription line item billing cycles after which billing will stop automatically. */
   billingCycleCountLimit?: string;
 }
 
-export const FiniteBillingCycleDetails: Schema.Schema<FiniteBillingCycleDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      billingCycleCountLimit: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FiniteBillingCycleDetails",
-  }) as any as Schema.Schema<FiniteBillingCycleDetails>;
+export const FiniteBillingCycleDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    billingCycleCountLimit: Schema.optional(Schema.String),
+  }).annotate({ identifier: "FiniteBillingCycleDetails" });
 
 export interface SubscriptionLineItem {
   /** Optional. The promotions applied on the line item. It can be: - an introductory pricing promotion. - a free trial promotion. This feature is not enabled. If used, the request will be rejected. When used as input in Create or Provision API, specify its resource name only. */
@@ -435,44 +356,35 @@ export interface SubscriptionLineItem {
   product?: string;
 }
 
-export const SubscriptionLineItem: Schema.Schema<SubscriptionLineItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lineItemPromotionSpecs: Schema.optional(
-        Schema.Array(SubscriptionPromotionSpec),
-      ),
-      recurrenceType: Schema.optional(Schema.String),
-      oneTimeRecurrenceDetails: Schema.optional(
-        SubscriptionLineItemOneTimeRecurrenceDetails,
-      ),
-      name: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      bundleDetails: Schema.optional(SubscriptionLineItemBundleDetails),
-      lineItemFreeTrialEndTime: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      lineItemIndex: Schema.optional(Schema.Number),
-      productPayload: Schema.optional(ProductPayload),
-      finiteBillingCycleDetails: Schema.optional(FiniteBillingCycleDetails),
-      amount: Schema.optional(Amount),
-      product: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SubscriptionLineItem",
-  }) as any as Schema.Schema<SubscriptionLineItem>;
+export const SubscriptionLineItem = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  lineItemPromotionSpecs: Schema.optional(
+    Schema.Array(SubscriptionPromotionSpec),
+  ),
+  recurrenceType: Schema.optional(Schema.String),
+  oneTimeRecurrenceDetails: Schema.optional(
+    SubscriptionLineItemOneTimeRecurrenceDetails,
+  ),
+  name: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  bundleDetails: Schema.optional(SubscriptionLineItemBundleDetails),
+  lineItemFreeTrialEndTime: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  lineItemIndex: Schema.optional(Schema.Number),
+  productPayload: Schema.optional(ProductPayload),
+  finiteBillingCycleDetails: Schema.optional(FiniteBillingCycleDetails),
+  amount: Schema.optional(Amount),
+  product: Schema.optional(Schema.String),
+}).annotate({ identifier: "SubscriptionLineItem" });
 
 export interface SubscriptionMigrationDetails {
   /** Output only. The migrated subscription id in the legacy system. */
   migratedSubscriptionId?: string;
 }
 
-export const SubscriptionMigrationDetails: Schema.Schema<SubscriptionMigrationDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      migratedSubscriptionId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SubscriptionMigrationDetails",
-  }) as any as Schema.Schema<SubscriptionMigrationDetails>;
+export const SubscriptionMigrationDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    migratedSubscriptionId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SubscriptionMigrationDetails" });
 
 export interface SubscriptionCancellationDetails {
   /** Output only. The reason of the cancellation. */
@@ -492,14 +404,10 @@ export interface SubscriptionCancellationDetails {
     | (string & {});
 }
 
-export const SubscriptionCancellationDetails: Schema.Schema<SubscriptionCancellationDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reason: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SubscriptionCancellationDetails",
-  }) as any as Schema.Schema<SubscriptionCancellationDetails>;
+export const SubscriptionCancellationDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reason: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SubscriptionCancellationDetails" });
 
 export interface Location {
   /** The postal code this location refers to. Ex. "94043" */
@@ -508,13 +416,10 @@ export interface Location {
   regionCode?: string;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      postalCode: Schema.optional(Schema.String),
-      regionCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  postalCode: Schema.optional(Schema.String),
+  regionCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "Location" });
 
 export interface Subscription {
   /** Required. Identifier of the end-user in partner’s system. The value is restricted to 63 ASCII characters at the maximum. */
@@ -572,49 +477,37 @@ export interface Subscription {
   renewalTime?: string;
 }
 
-export const Subscription: Schema.Schema<Subscription> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      partnerUserToken: Schema.optional(Schema.String),
-      lineItems: Schema.optional(Schema.Array(SubscriptionLineItem)),
-      products: Schema.optional(Schema.Array(Schema.String)),
-      promotionSpecs: Schema.optional(Schema.Array(SubscriptionPromotionSpec)),
-      createTime: Schema.optional(Schema.String),
-      migrationDetails: Schema.optional(SubscriptionMigrationDetails),
-      cancellationDetails: Schema.optional(SubscriptionCancellationDetails),
-      updateTime: Schema.optional(Schema.String),
-      redirectUri: Schema.optional(Schema.String),
-      serviceLocation: Schema.optional(Location),
-      upgradeDowngradeDetails: Schema.optional(
-        SubscriptionUpgradeDowngradeDetails,
-      ),
-      processingState: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      purchaseTime: Schema.optional(Schema.String),
-      cycleEndTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      freeTrialEndTime: Schema.optional(Schema.String),
-      promotions: Schema.optional(Schema.Array(Schema.String)),
-      endUserEntitled: Schema.optional(Schema.Boolean),
-      renewalTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Subscription",
-  }) as any as Schema.Schema<Subscription>;
+export const Subscription = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  partnerUserToken: Schema.optional(Schema.String),
+  lineItems: Schema.optional(Schema.Array(SubscriptionLineItem)),
+  products: Schema.optional(Schema.Array(Schema.String)),
+  promotionSpecs: Schema.optional(Schema.Array(SubscriptionPromotionSpec)),
+  createTime: Schema.optional(Schema.String),
+  migrationDetails: Schema.optional(SubscriptionMigrationDetails),
+  cancellationDetails: Schema.optional(SubscriptionCancellationDetails),
+  updateTime: Schema.optional(Schema.String),
+  redirectUri: Schema.optional(Schema.String),
+  serviceLocation: Schema.optional(Location),
+  upgradeDowngradeDetails: Schema.optional(SubscriptionUpgradeDowngradeDetails),
+  processingState: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  purchaseTime: Schema.optional(Schema.String),
+  cycleEndTime: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  freeTrialEndTime: Schema.optional(Schema.String),
+  promotions: Schema.optional(Schema.Array(Schema.String)),
+  endUserEntitled: Schema.optional(Schema.Boolean),
+  renewalTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Subscription" });
 
 export interface CycleOptions {
   /** Optional. The duration of the initial cycle. Only `DAY` is supported. If set, Google will start the subscription with this initial cycle duration starting at the request time (see available methods below). A prorated charge will be applied. This option is available to the following methods: - partners.subscriptions.provision - partners.subscriptions.resume - partners.userSessions.generate */
   initialCycleDuration?: Duration;
 }
 
-export const CycleOptions: Schema.Schema<CycleOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      initialCycleDuration: Schema.optional(Duration),
-    }),
-  ).annotate({
-    identifier: "CycleOptions",
-  }) as any as Schema.Schema<CycleOptions>;
+export const CycleOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  initialCycleDuration: Schema.optional(Duration),
+}).annotate({ identifier: "CycleOptions" });
 
 export interface CreateSubscriptionIntent {
   /** Required. The parent resource name, which is the identifier of the partner. */
@@ -627,45 +520,33 @@ export interface CreateSubscriptionIntent {
   cycleOptions?: CycleOptions;
 }
 
-export const CreateSubscriptionIntent: Schema.Schema<CreateSubscriptionIntent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parent: Schema.optional(Schema.String),
-      subscriptionId: Schema.optional(Schema.String),
-      subscription: Schema.optional(Subscription),
-      cycleOptions: Schema.optional(CycleOptions),
-    }),
-  ).annotate({
-    identifier: "CreateSubscriptionIntent",
-  }) as any as Schema.Schema<CreateSubscriptionIntent>;
+export const CreateSubscriptionIntent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.optional(Schema.String),
+    subscriptionId: Schema.optional(Schema.String),
+    subscription: Schema.optional(Subscription),
+    cycleOptions: Schema.optional(CycleOptions),
+  }).annotate({ identifier: "CreateSubscriptionIntent" });
 
 export interface IntentPayloadIntentOptions {
   /** Optional. If true, Google may use a different product and promotion id from the ones in the `create_intent` based on the user's eligibility. Only applicable for certain YouTube free trial offers. */
   enableOfferOverride?: boolean;
 }
 
-export const IntentPayloadIntentOptions: Schema.Schema<IntentPayloadIntentOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableOfferOverride: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "IntentPayloadIntentOptions",
-  }) as any as Schema.Schema<IntentPayloadIntentOptions>;
+export const IntentPayloadIntentOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enableOfferOverride: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "IntentPayloadIntentOptions" });
 
 export interface EntitleSubscriptionIntent {
   /** Required. The name of the subscription resource that is entitled to the current end user. It is in the format of "partners/{partner_id}/subscriptions/{subscriptionId}". */
   name?: string;
 }
 
-export const EntitleSubscriptionIntent: Schema.Schema<EntitleSubscriptionIntent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EntitleSubscriptionIntent",
-  }) as any as Schema.Schema<EntitleSubscriptionIntent>;
+export const EntitleSubscriptionIntent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EntitleSubscriptionIntent" });
 
 export interface IntentPayload {
   /** The request to create a subscription. */
@@ -676,44 +557,31 @@ export interface IntentPayload {
   entitleIntent?: EntitleSubscriptionIntent;
 }
 
-export const IntentPayload: Schema.Schema<IntentPayload> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createIntent: Schema.optional(CreateSubscriptionIntent),
-      intentOptions: Schema.optional(IntentPayloadIntentOptions),
-      entitleIntent: Schema.optional(EntitleSubscriptionIntent),
-    }),
-  ).annotate({
-    identifier: "IntentPayload",
-  }) as any as Schema.Schema<IntentPayload>;
+export const IntentPayload = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createIntent: Schema.optional(CreateSubscriptionIntent),
+  intentOptions: Schema.optional(IntentPayloadIntentOptions),
+  entitleIntent: Schema.optional(EntitleSubscriptionIntent),
+}).annotate({ identifier: "IntentPayload" });
 
 export interface UndoCancelSubscriptionResponse {
   /** The updated subscription resource. */
   subscription?: Subscription;
 }
 
-export const UndoCancelSubscriptionResponse: Schema.Schema<UndoCancelSubscriptionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subscription: Schema.optional(Subscription),
-    }),
-  ).annotate({
-    identifier: "UndoCancelSubscriptionResponse",
-  }) as any as Schema.Schema<UndoCancelSubscriptionResponse>;
+export const UndoCancelSubscriptionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscription: Schema.optional(Subscription),
+  }).annotate({ identifier: "UndoCancelSubscriptionResponse" });
 
 export interface GenerateUserSessionRequest {
   /** The user intent to generate the user session. */
   intentPayload?: IntentPayload;
 }
 
-export const GenerateUserSessionRequest: Schema.Schema<GenerateUserSessionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      intentPayload: Schema.optional(IntentPayload),
-    }),
-  ).annotate({
-    identifier: "GenerateUserSessionRequest",
-  }) as any as Schema.Schema<GenerateUserSessionRequest>;
+export const GenerateUserSessionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    intentPayload: Schema.optional(IntentPayload),
+  }).annotate({ identifier: "GenerateUserSessionRequest" });
 
 export interface Product {
   /** Output only. Specifies the details for a bundle product. */
@@ -738,33 +606,26 @@ export interface Product {
   priceConfigs?: Array<ProductPriceConfig>;
 }
 
-export const Product: Schema.Schema<Product> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bundleDetails: Schema.optional(ProductBundleDetails),
-      subscriptionBillingCycleDuration: Schema.optional(Duration),
-      regionCodes: Schema.optional(Schema.Array(Schema.String)),
-      productType: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      titles: Schema.optional(Schema.Array(GoogleTypeLocalizedText)),
-      finiteBillingCycleDetails: Schema.optional(FiniteBillingCycleDetails),
-      priceConfigs: Schema.optional(Schema.Array(ProductPriceConfig)),
-    }),
-  ).annotate({ identifier: "Product" }) as any as Schema.Schema<Product>;
+export const Product = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bundleDetails: Schema.optional(ProductBundleDetails),
+  subscriptionBillingCycleDuration: Schema.optional(Duration),
+  regionCodes: Schema.optional(Schema.Array(Schema.String)),
+  productType: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  titles: Schema.optional(Schema.Array(GoogleTypeLocalizedText)),
+  finiteBillingCycleDetails: Schema.optional(FiniteBillingCycleDetails),
+  priceConfigs: Schema.optional(Schema.Array(ProductPriceConfig)),
+}).annotate({ identifier: "Product" });
 
 export interface CancelSubscriptionResponse {
   /** The cancelled subscription resource. */
   subscription?: Subscription;
 }
 
-export const CancelSubscriptionResponse: Schema.Schema<CancelSubscriptionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subscription: Schema.optional(Subscription),
-    }),
-  ).annotate({
-    identifier: "CancelSubscriptionResponse",
-  }) as any as Schema.Schema<CancelSubscriptionResponse>;
+export const CancelSubscriptionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscription: Schema.optional(Subscription),
+  }).annotate({ identifier: "CancelSubscriptionResponse" });
 
 export interface Promotion {
   /** Optional. Specifies the start time (inclusive) of the period that the promotion is available in. */
@@ -791,22 +652,19 @@ export interface Promotion {
   titles?: Array<GoogleTypeLocalizedText>;
 }
 
-export const Promotion: Schema.Schema<Promotion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Schema.String),
-      promotionType: Schema.optional(Schema.String),
-      freeTrialDuration: Schema.optional(Duration),
-      endTime: Schema.optional(Schema.String),
-      regionCodes: Schema.optional(Schema.Array(Schema.String)),
-      name: Schema.optional(Schema.String),
-      applicableProducts: Schema.optional(Schema.Array(Schema.String)),
-      introductoryPricingDetails: Schema.optional(
-        PromotionIntroductoryPricingDetails,
-      ),
-      titles: Schema.optional(Schema.Array(GoogleTypeLocalizedText)),
-    }),
-  ).annotate({ identifier: "Promotion" }) as any as Schema.Schema<Promotion>;
+export const Promotion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startTime: Schema.optional(Schema.String),
+  promotionType: Schema.optional(Schema.String),
+  freeTrialDuration: Schema.optional(Duration),
+  endTime: Schema.optional(Schema.String),
+  regionCodes: Schema.optional(Schema.Array(Schema.String)),
+  name: Schema.optional(Schema.String),
+  applicableProducts: Schema.optional(Schema.Array(Schema.String)),
+  introductoryPricingDetails: Schema.optional(
+    PromotionIntroductoryPricingDetails,
+  ),
+  titles: Schema.optional(Schema.Array(GoogleTypeLocalizedText)),
+}).annotate({ identifier: "Promotion" });
 
 export interface FindEligiblePromotionsResponse {
   /** The promotions for the current user. */
@@ -815,15 +673,11 @@ export interface FindEligiblePromotionsResponse {
   nextPageToken?: string;
 }
 
-export const FindEligiblePromotionsResponse: Schema.Schema<FindEligiblePromotionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      promotions: Schema.optional(Schema.Array(Promotion)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FindEligiblePromotionsResponse",
-  }) as any as Schema.Schema<FindEligiblePromotionsResponse>;
+export const FindEligiblePromotionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    promotions: Schema.optional(Schema.Array(Promotion)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "FindEligiblePromotionsResponse" });
 
 export interface Extension {
   /** Required. Specifies the period of access the subscription should grant. */
@@ -832,13 +686,10 @@ export interface Extension {
   partnerUserToken?: string;
 }
 
-export const Extension: Schema.Schema<Extension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      duration: Schema.optional(Duration),
-      partnerUserToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Extension" }) as any as Schema.Schema<Extension>;
+export const Extension = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  duration: Schema.optional(Duration),
+  partnerUserToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "Extension" });
 
 export interface ExtendSubscriptionRequest {
   /** Required. Restricted to 36 ASCII characters. A random UUID is recommended. The idempotency key for the request. The ID generation logic is controlled by the partner. request_id should be the same as on retries of the same request. A different request_id must be used for a extension of a different cycle. */
@@ -847,15 +698,11 @@ export interface ExtendSubscriptionRequest {
   extension?: Extension;
 }
 
-export const ExtendSubscriptionRequest: Schema.Schema<ExtendSubscriptionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestId: Schema.optional(Schema.String),
-      extension: Schema.optional(Extension),
-    }),
-  ).annotate({
-    identifier: "ExtendSubscriptionRequest",
-  }) as any as Schema.Schema<ExtendSubscriptionRequest>;
+export const ExtendSubscriptionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestId: Schema.optional(Schema.String),
+    extension: Schema.optional(Extension),
+  }).annotate({ identifier: "ExtendSubscriptionRequest" });
 
 export interface FindEligiblePromotionsRequest {
   /** Optional. A page token, received from a previous `FindEligiblePromotions` call. Provide this to retrieve the subsequent page. When paginating, all other parameters provided to `FindEligiblePromotions` must match the call that provided the page token. */
@@ -866,16 +713,12 @@ export interface FindEligiblePromotionsRequest {
   pageSize?: number;
 }
 
-export const FindEligiblePromotionsRequest: Schema.Schema<FindEligiblePromotionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pageToken: Schema.optional(Schema.String),
-      filter: Schema.optional(Schema.String),
-      pageSize: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "FindEligiblePromotionsRequest",
-  }) as any as Schema.Schema<FindEligiblePromotionsRequest>;
+export const FindEligiblePromotionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageToken: Schema.optional(Schema.String),
+    filter: Schema.optional(Schema.String),
+    pageSize: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "FindEligiblePromotionsRequest" });
 
 export interface UserSession {
   /** Output only. The time at which the user session expires. */
@@ -884,29 +727,20 @@ export interface UserSession {
   token?: string;
 }
 
-export const UserSession: Schema.Schema<UserSession> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expireTime: Schema.optional(Schema.String),
-      token: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UserSession",
-  }) as any as Schema.Schema<UserSession>;
+export const UserSession = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  expireTime: Schema.optional(Schema.String),
+  token: Schema.optional(Schema.String),
+}).annotate({ identifier: "UserSession" });
 
 export interface ResumeSubscriptionResponse {
   /** The resumed subscription resource. */
   subscription?: Subscription;
 }
 
-export const ResumeSubscriptionResponse: Schema.Schema<ResumeSubscriptionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subscription: Schema.optional(Subscription),
-    }),
-  ).annotate({
-    identifier: "ResumeSubscriptionResponse",
-  }) as any as Schema.Schema<ResumeSubscriptionResponse>;
+export const ResumeSubscriptionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscription: Schema.optional(Subscription),
+  }).annotate({ identifier: "ResumeSubscriptionResponse" });
 
 export interface EntitleSubscriptionRequestLineItemEntitlementDetails {
   /** Required. The index of the line item to be entitled. */
@@ -915,45 +749,35 @@ export interface EntitleSubscriptionRequestLineItemEntitlementDetails {
   products?: Array<string>;
 }
 
-export const EntitleSubscriptionRequestLineItemEntitlementDetails: Schema.Schema<EntitleSubscriptionRequestLineItemEntitlementDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lineItemIndex: Schema.optional(Schema.Number),
-      products: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const EntitleSubscriptionRequestLineItemEntitlementDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    lineItemIndex: Schema.optional(Schema.Number),
+    products: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "EntitleSubscriptionRequestLineItemEntitlementDetails",
-  }) as any as Schema.Schema<EntitleSubscriptionRequestLineItemEntitlementDetails>;
+  });
 
 export interface EntitleSubscriptionRequest {
   /** Optional. The line items to be entitled. If unspecified, all line items will be entitled. */
   lineItemEntitlementDetails?: Array<EntitleSubscriptionRequestLineItemEntitlementDetails>;
 }
 
-export const EntitleSubscriptionRequest: Schema.Schema<EntitleSubscriptionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lineItemEntitlementDetails: Schema.optional(
-        Schema.Array(EntitleSubscriptionRequestLineItemEntitlementDetails),
-      ),
-    }),
-  ).annotate({
-    identifier: "EntitleSubscriptionRequest",
-  }) as any as Schema.Schema<EntitleSubscriptionRequest>;
+export const EntitleSubscriptionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    lineItemEntitlementDetails: Schema.optional(
+      Schema.Array(EntitleSubscriptionRequestLineItemEntitlementDetails),
+    ),
+  }).annotate({ identifier: "EntitleSubscriptionRequest" });
 
 export interface SuspendSubscriptionResponse {
   /** The suspended subscription resource. */
   subscription?: Subscription;
 }
 
-export const SuspendSubscriptionResponse: Schema.Schema<SuspendSubscriptionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subscription: Schema.optional(Subscription),
-    }),
-  ).annotate({
-    identifier: "SuspendSubscriptionResponse",
-  }) as any as Schema.Schema<SuspendSubscriptionResponse>;
+export const SuspendSubscriptionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscription: Schema.optional(Subscription),
+  }).annotate({ identifier: "SuspendSubscriptionResponse" });
 
 export interface ExtendSubscriptionResponse {
   /** The time at which the subscription is expected to be extended, in ISO 8061 format. UTC timezone. Example, "cycleEndTime":"2019-08-31T17:28:54.564Z" */
@@ -964,44 +788,32 @@ export interface ExtendSubscriptionResponse {
   freeTrialEndTime?: string;
 }
 
-export const ExtendSubscriptionResponse: Schema.Schema<ExtendSubscriptionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cycleEndTime: Schema.optional(Schema.String),
-      renewalTime: Schema.optional(Schema.String),
-      freeTrialEndTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ExtendSubscriptionResponse",
-  }) as any as Schema.Schema<ExtendSubscriptionResponse>;
+export const ExtendSubscriptionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cycleEndTime: Schema.optional(Schema.String),
+    renewalTime: Schema.optional(Schema.String),
+    freeTrialEndTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ExtendSubscriptionResponse" });
 
 export interface GenerateUserSessionResponse {
   /** The generated user session. The token size is proportional to the size of the intent payload. */
   userSession?: UserSession;
 }
 
-export const GenerateUserSessionResponse: Schema.Schema<GenerateUserSessionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userSession: Schema.optional(UserSession),
-    }),
-  ).annotate({
-    identifier: "GenerateUserSessionResponse",
-  }) as any as Schema.Schema<GenerateUserSessionResponse>;
+export const GenerateUserSessionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userSession: Schema.optional(UserSession),
+  }).annotate({ identifier: "GenerateUserSessionResponse" });
 
 export interface EntitleSubscriptionResponse {
   /** The subscription that has user linked to it. */
   subscription?: Subscription;
 }
 
-export const EntitleSubscriptionResponse: Schema.Schema<EntitleSubscriptionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subscription: Schema.optional(Subscription),
-    }),
-  ).annotate({
-    identifier: "EntitleSubscriptionResponse",
-  }) as any as Schema.Schema<EntitleSubscriptionResponse>;
+export const EntitleSubscriptionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscription: Schema.optional(Subscription),
+  }).annotate({ identifier: "EntitleSubscriptionResponse" });
 
 export interface ListProductsResponse {
   /** The products for the specified partner. */
@@ -1010,15 +822,10 @@ export interface ListProductsResponse {
   nextPageToken?: string;
 }
 
-export const ListProductsResponse: Schema.Schema<ListProductsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      products: Schema.optional(Schema.Array(Product)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListProductsResponse",
-  }) as any as Schema.Schema<ListProductsResponse>;
+export const ListProductsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  products: Schema.optional(Schema.Array(Product)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListProductsResponse" });
 
 export interface ResumeSubscriptionRequest {
   /** Optional. The cycle options for the subscription. */
@@ -1031,15 +838,11 @@ export interface ResumeSubscriptionRequest {
     | (string & {});
 }
 
-export const ResumeSubscriptionRequest: Schema.Schema<ResumeSubscriptionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cycleOptions: Schema.optional(CycleOptions),
-      resumeMode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ResumeSubscriptionRequest",
-  }) as any as Schema.Schema<ResumeSubscriptionRequest>;
+export const ResumeSubscriptionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cycleOptions: Schema.optional(CycleOptions),
+    resumeMode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ResumeSubscriptionRequest" });
 
 export interface ListPromotionsResponse {
   /** The promotions for the specified partner. */
@@ -1048,22 +851,19 @@ export interface ListPromotionsResponse {
   nextPageToken?: string;
 }
 
-export const ListPromotionsResponse: Schema.Schema<ListPromotionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      promotions: Schema.optional(Schema.Array(Promotion)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListPromotionsResponse",
-  }) as any as Schema.Schema<ListPromotionsResponse>;
+export const ListPromotionsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    promotions: Schema.optional(Schema.Array(Promotion)),
+    nextPageToken: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ListPromotionsResponse" });
 
 export interface SuspendSubscriptionRequest {}
 
-export const SuspendSubscriptionRequest: Schema.Schema<SuspendSubscriptionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const SuspendSubscriptionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "SuspendSubscriptionRequest",
-  }) as any as Schema.Schema<SuspendSubscriptionRequest>;
+  });
 
 export interface CancelSubscriptionRequest {
   /** Specifies the reason for the cancellation. */
@@ -1085,22 +885,18 @@ export interface CancelSubscriptionRequest {
   cancelImmediately?: boolean;
 }
 
-export const CancelSubscriptionRequest: Schema.Schema<CancelSubscriptionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cancellationReason: Schema.optional(Schema.String),
-      cancelImmediately: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "CancelSubscriptionRequest",
-  }) as any as Schema.Schema<CancelSubscriptionRequest>;
+export const CancelSubscriptionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cancellationReason: Schema.optional(Schema.String),
+    cancelImmediately: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "CancelSubscriptionRequest" });
 
 export interface UndoCancelSubscriptionRequest {}
 
-export const UndoCancelSubscriptionRequest: Schema.Schema<UndoCancelSubscriptionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const UndoCancelSubscriptionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UndoCancelSubscriptionRequest",
-  }) as any as Schema.Schema<UndoCancelSubscriptionRequest>;
+  });
 
 // ==========================================================================
 // Operations

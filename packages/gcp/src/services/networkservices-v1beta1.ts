@@ -31,14 +31,10 @@ export interface AgentGatewayGoogleManaged {
     | (string & {});
 }
 
-export const AgentGatewayGoogleManaged: Schema.Schema<AgentGatewayGoogleManaged> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      governedAccessPath: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AgentGatewayGoogleManaged",
-  }) as any as Schema.Schema<AgentGatewayGoogleManaged>;
+export const AgentGatewayGoogleManaged =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    governedAccessPath: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AgentGatewayGoogleManaged" });
 
 export interface AgentGatewayAgentGatewayOutputCard {
   /** Output only. Root Certificates for Agents to validate this AgentGateway */
@@ -49,16 +45,12 @@ export interface AgentGatewayAgentGatewayOutputCard {
   mtlsEndpoint?: string;
 }
 
-export const AgentGatewayAgentGatewayOutputCard: Schema.Schema<AgentGatewayAgentGatewayOutputCard> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rootCertificates: Schema.optional(Schema.Array(Schema.String)),
-      serviceExtensionsServiceAccount: Schema.optional(Schema.String),
-      mtlsEndpoint: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AgentGatewayAgentGatewayOutputCard",
-  }) as any as Schema.Schema<AgentGatewayAgentGatewayOutputCard>;
+export const AgentGatewayAgentGatewayOutputCard =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rootCertificates: Schema.optional(Schema.Array(Schema.String)),
+    serviceExtensionsServiceAccount: Schema.optional(Schema.String),
+    mtlsEndpoint: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AgentGatewayAgentGatewayOutputCard" });
 
 export interface GrpcRouteFaultInjectionPolicyDelay {
   /** Specify a fixed delay before forwarding the request. */
@@ -67,15 +59,11 @@ export interface GrpcRouteFaultInjectionPolicyDelay {
   percentage?: number;
 }
 
-export const GrpcRouteFaultInjectionPolicyDelay: Schema.Schema<GrpcRouteFaultInjectionPolicyDelay> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fixedDelay: Schema.optional(Schema.String),
-      percentage: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GrpcRouteFaultInjectionPolicyDelay",
-  }) as any as Schema.Schema<GrpcRouteFaultInjectionPolicyDelay>;
+export const GrpcRouteFaultInjectionPolicyDelay =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fixedDelay: Schema.optional(Schema.String),
+    percentage: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GrpcRouteFaultInjectionPolicyDelay" });
 
 export interface TcpRouteRouteDestination {
   /** Required. The URL of a BackendService to route traffic to. */
@@ -84,15 +72,11 @@ export interface TcpRouteRouteDestination {
   weight?: number;
 }
 
-export const TcpRouteRouteDestination: Schema.Schema<TcpRouteRouteDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serviceName: Schema.optional(Schema.String),
-      weight: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "TcpRouteRouteDestination",
-  }) as any as Schema.Schema<TcpRouteRouteDestination>;
+export const TcpRouteRouteDestination =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    serviceName: Schema.optional(Schema.String),
+    weight: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "TcpRouteRouteDestination" });
 
 export interface GrpcRouteFaultInjectionPolicyAbort {
   /** The HTTP status code used to abort the request. The value must be between 200 and 599 inclusive. */
@@ -101,22 +85,17 @@ export interface GrpcRouteFaultInjectionPolicyAbort {
   percentage?: number;
 }
 
-export const GrpcRouteFaultInjectionPolicyAbort: Schema.Schema<GrpcRouteFaultInjectionPolicyAbort> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      httpStatus: Schema.optional(Schema.Number),
-      percentage: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GrpcRouteFaultInjectionPolicyAbort",
-  }) as any as Schema.Schema<GrpcRouteFaultInjectionPolicyAbort>;
+export const GrpcRouteFaultInjectionPolicyAbort =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    httpStatus: Schema.optional(Schema.Number),
+    percentage: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GrpcRouteFaultInjectionPolicyAbort" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface HttpRouteURLRewrite {
   /** Prior to forwarding the request to the selected destination, the requests host header is replaced by this value. */
@@ -125,29 +104,20 @@ export interface HttpRouteURLRewrite {
   pathPrefixRewrite?: string;
 }
 
-export const HttpRouteURLRewrite: Schema.Schema<HttpRouteURLRewrite> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hostRewrite: Schema.optional(Schema.String),
-      pathPrefixRewrite: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "HttpRouteURLRewrite",
-  }) as any as Schema.Schema<HttpRouteURLRewrite>;
+export const HttpRouteURLRewrite = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  hostRewrite: Schema.optional(Schema.String),
+  pathPrefixRewrite: Schema.optional(Schema.String),
+}).annotate({ identifier: "HttpRouteURLRewrite" });
 
 export interface HttpRouteStatefulSessionAffinityPolicy {
   /** Required. The cookie TTL value for the Set-Cookie header generated by the data plane. The lifetime of the cookie may be set to a value from 0 to 86400 seconds (24 hours) inclusive. Set this to 0s to use a session cookie and disable cookie expiration. */
   cookieTtl?: string;
 }
 
-export const HttpRouteStatefulSessionAffinityPolicy: Schema.Schema<HttpRouteStatefulSessionAffinityPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cookieTtl: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "HttpRouteStatefulSessionAffinityPolicy",
-  }) as any as Schema.Schema<HttpRouteStatefulSessionAffinityPolicy>;
+export const HttpRouteStatefulSessionAffinityPolicy =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cookieTtl: Schema.optional(Schema.String),
+  }).annotate({ identifier: "HttpRouteStatefulSessionAffinityPolicy" });
 
 export interface HttpRouteHeaderModifier {
   /** Remove headers (matching by header names) specified in the list. */
@@ -158,16 +128,12 @@ export interface HttpRouteHeaderModifier {
   set?: Record<string, string>;
 }
 
-export const HttpRouteHeaderModifier: Schema.Schema<HttpRouteHeaderModifier> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      remove: Schema.optional(Schema.Array(Schema.String)),
-      add: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      set: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "HttpRouteHeaderModifier",
-  }) as any as Schema.Schema<HttpRouteHeaderModifier>;
+export const HttpRouteHeaderModifier =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    remove: Schema.optional(Schema.Array(Schema.String)),
+    add: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    set: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({ identifier: "HttpRouteHeaderModifier" });
 
 export interface HttpRouteDestination {
   /** The URL of a BackendService to route traffic to. */
@@ -180,17 +146,12 @@ export interface HttpRouteDestination {
   responseHeaderModifier?: HttpRouteHeaderModifier;
 }
 
-export const HttpRouteDestination: Schema.Schema<HttpRouteDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serviceName: Schema.optional(Schema.String),
-      requestHeaderModifier: Schema.optional(HttpRouteHeaderModifier),
-      weight: Schema.optional(Schema.Number),
-      responseHeaderModifier: Schema.optional(HttpRouteHeaderModifier),
-    }),
-  ).annotate({
-    identifier: "HttpRouteDestination",
-  }) as any as Schema.Schema<HttpRouteDestination>;
+export const HttpRouteDestination = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  serviceName: Schema.optional(Schema.String),
+  requestHeaderModifier: Schema.optional(HttpRouteHeaderModifier),
+  weight: Schema.optional(Schema.Number),
+  responseHeaderModifier: Schema.optional(HttpRouteHeaderModifier),
+}).annotate({ identifier: "HttpRouteDestination" });
 
 export interface HttpRouteRequestMirrorPolicy {
   /** The destination the requests will be mirrored to. The weight of the destination will be ignored. */
@@ -199,15 +160,11 @@ export interface HttpRouteRequestMirrorPolicy {
   mirrorPercent?: number;
 }
 
-export const HttpRouteRequestMirrorPolicy: Schema.Schema<HttpRouteRequestMirrorPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      destination: Schema.optional(HttpRouteDestination),
-      mirrorPercent: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "HttpRouteRequestMirrorPolicy",
-  }) as any as Schema.Schema<HttpRouteRequestMirrorPolicy>;
+export const HttpRouteRequestMirrorPolicy =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    destination: Schema.optional(HttpRouteDestination),
+    mirrorPercent: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "HttpRouteRequestMirrorPolicy" });
 
 export interface HttpRouteFaultInjectionPolicyDelay {
   /** Specify a fixed delay before forwarding the request. */
@@ -216,15 +173,11 @@ export interface HttpRouteFaultInjectionPolicyDelay {
   percentage?: number;
 }
 
-export const HttpRouteFaultInjectionPolicyDelay: Schema.Schema<HttpRouteFaultInjectionPolicyDelay> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fixedDelay: Schema.optional(Schema.String),
-      percentage: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "HttpRouteFaultInjectionPolicyDelay",
-  }) as any as Schema.Schema<HttpRouteFaultInjectionPolicyDelay>;
+export const HttpRouteFaultInjectionPolicyDelay =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fixedDelay: Schema.optional(Schema.String),
+    percentage: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "HttpRouteFaultInjectionPolicyDelay" });
 
 export interface HttpRouteFaultInjectionPolicyAbort {
   /** The HTTP status code used to abort the request. The value must be between 200 and 599 inclusive. */
@@ -233,15 +186,11 @@ export interface HttpRouteFaultInjectionPolicyAbort {
   percentage?: number;
 }
 
-export const HttpRouteFaultInjectionPolicyAbort: Schema.Schema<HttpRouteFaultInjectionPolicyAbort> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      httpStatus: Schema.optional(Schema.Number),
-      percentage: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "HttpRouteFaultInjectionPolicyAbort",
-  }) as any as Schema.Schema<HttpRouteFaultInjectionPolicyAbort>;
+export const HttpRouteFaultInjectionPolicyAbort =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    httpStatus: Schema.optional(Schema.Number),
+    percentage: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "HttpRouteFaultInjectionPolicyAbort" });
 
 export interface HttpRouteFaultInjectionPolicy {
   /** The specification for injecting delay to client requests. */
@@ -250,15 +199,11 @@ export interface HttpRouteFaultInjectionPolicy {
   abort?: HttpRouteFaultInjectionPolicyAbort;
 }
 
-export const HttpRouteFaultInjectionPolicy: Schema.Schema<HttpRouteFaultInjectionPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      delay: Schema.optional(HttpRouteFaultInjectionPolicyDelay),
-      abort: Schema.optional(HttpRouteFaultInjectionPolicyAbort),
-    }),
-  ).annotate({
-    identifier: "HttpRouteFaultInjectionPolicy",
-  }) as any as Schema.Schema<HttpRouteFaultInjectionPolicy>;
+export const HttpRouteFaultInjectionPolicy =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    delay: Schema.optional(HttpRouteFaultInjectionPolicyDelay),
+    abort: Schema.optional(HttpRouteFaultInjectionPolicyAbort),
+  }).annotate({ identifier: "HttpRouteFaultInjectionPolicy" });
 
 export interface HttpRouteRedirect {
   /** The host that will be used in the redirect response instead of the one that was supplied in the request. */
@@ -284,20 +229,15 @@ export interface HttpRouteRedirect {
   stripQuery?: boolean;
 }
 
-export const HttpRouteRedirect: Schema.Schema<HttpRouteRedirect> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hostRedirect: Schema.optional(Schema.String),
-      responseCode: Schema.optional(Schema.String),
-      pathRedirect: Schema.optional(Schema.String),
-      httpsRedirect: Schema.optional(Schema.Boolean),
-      portRedirect: Schema.optional(Schema.Number),
-      prefixRewrite: Schema.optional(Schema.String),
-      stripQuery: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "HttpRouteRedirect",
-  }) as any as Schema.Schema<HttpRouteRedirect>;
+export const HttpRouteRedirect = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  hostRedirect: Schema.optional(Schema.String),
+  responseCode: Schema.optional(Schema.String),
+  pathRedirect: Schema.optional(Schema.String),
+  httpsRedirect: Schema.optional(Schema.Boolean),
+  portRedirect: Schema.optional(Schema.Number),
+  prefixRewrite: Schema.optional(Schema.String),
+  stripQuery: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "HttpRouteRedirect" });
 
 export interface HttpRouteHttpDirectResponse {
   /** Required. Status to return as part of HTTP Response. Must be a positive integer. */
@@ -308,16 +248,12 @@ export interface HttpRouteHttpDirectResponse {
   stringBody?: string;
 }
 
-export const HttpRouteHttpDirectResponse: Schema.Schema<HttpRouteHttpDirectResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      status: Schema.optional(Schema.Number),
-      bytesBody: Schema.optional(Schema.String),
-      stringBody: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "HttpRouteHttpDirectResponse",
-  }) as any as Schema.Schema<HttpRouteHttpDirectResponse>;
+export const HttpRouteHttpDirectResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    status: Schema.optional(Schema.Number),
+    bytesBody: Schema.optional(Schema.String),
+    stringBody: Schema.optional(Schema.String),
+  }).annotate({ identifier: "HttpRouteHttpDirectResponse" });
 
 export interface HttpRouteCorsPolicy {
   /** In response to a preflight request, setting this to true indicates that the actual request can include user credentials. This translates to the Access-Control-Allow-Credentials header. Default value is false. */
@@ -338,21 +274,16 @@ export interface HttpRouteCorsPolicy {
   exposeHeaders?: Array<string>;
 }
 
-export const HttpRouteCorsPolicy: Schema.Schema<HttpRouteCorsPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      allowCredentials: Schema.optional(Schema.Boolean),
-      allowOrigins: Schema.optional(Schema.Array(Schema.String)),
-      allowOriginRegexes: Schema.optional(Schema.Array(Schema.String)),
-      maxAge: Schema.optional(Schema.String),
-      allowHeaders: Schema.optional(Schema.Array(Schema.String)),
-      allowMethods: Schema.optional(Schema.Array(Schema.String)),
-      disabled: Schema.optional(Schema.Boolean),
-      exposeHeaders: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "HttpRouteCorsPolicy",
-  }) as any as Schema.Schema<HttpRouteCorsPolicy>;
+export const HttpRouteCorsPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  allowCredentials: Schema.optional(Schema.Boolean),
+  allowOrigins: Schema.optional(Schema.Array(Schema.String)),
+  allowOriginRegexes: Schema.optional(Schema.Array(Schema.String)),
+  maxAge: Schema.optional(Schema.String),
+  allowHeaders: Schema.optional(Schema.Array(Schema.String)),
+  allowMethods: Schema.optional(Schema.Array(Schema.String)),
+  disabled: Schema.optional(Schema.Boolean),
+  exposeHeaders: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "HttpRouteCorsPolicy" });
 
 export interface HttpRouteRetryPolicy {
   /** Specifies the allowed number of retries. This number must be > 0. If not specified, default to 1. */
@@ -363,16 +294,11 @@ export interface HttpRouteRetryPolicy {
   retryConditions?: Array<string>;
 }
 
-export const HttpRouteRetryPolicy: Schema.Schema<HttpRouteRetryPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      numRetries: Schema.optional(Schema.Number),
-      perTryTimeout: Schema.optional(Schema.String),
-      retryConditions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "HttpRouteRetryPolicy",
-  }) as any as Schema.Schema<HttpRouteRetryPolicy>;
+export const HttpRouteRetryPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  numRetries: Schema.optional(Schema.Number),
+  perTryTimeout: Schema.optional(Schema.String),
+  retryConditions: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "HttpRouteRetryPolicy" });
 
 export interface HttpRouteRouteAction {
   /** The specification for rewrite URL before forwarding requests to the destination. */
@@ -403,42 +329,33 @@ export interface HttpRouteRouteAction {
   retryPolicy?: HttpRouteRetryPolicy;
 }
 
-export const HttpRouteRouteAction: Schema.Schema<HttpRouteRouteAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      urlRewrite: Schema.optional(HttpRouteURLRewrite),
-      statefulSessionAffinity: Schema.optional(
-        HttpRouteStatefulSessionAffinityPolicy,
-      ),
-      requestMirrorPolicy: Schema.optional(HttpRouteRequestMirrorPolicy),
-      faultInjectionPolicy: Schema.optional(HttpRouteFaultInjectionPolicy),
-      timeout: Schema.optional(Schema.String),
-      destinations: Schema.optional(Schema.Array(HttpRouteDestination)),
-      redirect: Schema.optional(HttpRouteRedirect),
-      requestHeaderModifier: Schema.optional(HttpRouteHeaderModifier),
-      directResponse: Schema.optional(HttpRouteHttpDirectResponse),
-      idleTimeout: Schema.optional(Schema.String),
-      corsPolicy: Schema.optional(HttpRouteCorsPolicy),
-      responseHeaderModifier: Schema.optional(HttpRouteHeaderModifier),
-      retryPolicy: Schema.optional(HttpRouteRetryPolicy),
-    }),
-  ).annotate({
-    identifier: "HttpRouteRouteAction",
-  }) as any as Schema.Schema<HttpRouteRouteAction>;
+export const HttpRouteRouteAction = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  urlRewrite: Schema.optional(HttpRouteURLRewrite),
+  statefulSessionAffinity: Schema.optional(
+    HttpRouteStatefulSessionAffinityPolicy,
+  ),
+  requestMirrorPolicy: Schema.optional(HttpRouteRequestMirrorPolicy),
+  faultInjectionPolicy: Schema.optional(HttpRouteFaultInjectionPolicy),
+  timeout: Schema.optional(Schema.String),
+  destinations: Schema.optional(Schema.Array(HttpRouteDestination)),
+  redirect: Schema.optional(HttpRouteRedirect),
+  requestHeaderModifier: Schema.optional(HttpRouteHeaderModifier),
+  directResponse: Schema.optional(HttpRouteHttpDirectResponse),
+  idleTimeout: Schema.optional(Schema.String),
+  corsPolicy: Schema.optional(HttpRouteCorsPolicy),
+  responseHeaderModifier: Schema.optional(HttpRouteHeaderModifier),
+  retryPolicy: Schema.optional(HttpRouteRetryPolicy),
+}).annotate({ identifier: "HttpRouteRouteAction" });
 
 export interface RetryFilterPerRouteConfig {
   /** The name of the crypto key to use for encrypting event data. */
   cryptoKeyName?: string;
 }
 
-export const RetryFilterPerRouteConfig: Schema.Schema<RetryFilterPerRouteConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cryptoKeyName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RetryFilterPerRouteConfig",
-  }) as any as Schema.Schema<RetryFilterPerRouteConfig>;
+export const RetryFilterPerRouteConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cryptoKeyName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RetryFilterPerRouteConfig" });
 
 export interface TlsRouteRouteDestination {
   /** Required. The URL of a BackendService to route traffic to. */
@@ -447,15 +364,11 @@ export interface TlsRouteRouteDestination {
   weight?: number;
 }
 
-export const TlsRouteRouteDestination: Schema.Schema<TlsRouteRouteDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serviceName: Schema.optional(Schema.String),
-      weight: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "TlsRouteRouteDestination",
-  }) as any as Schema.Schema<TlsRouteRouteDestination>;
+export const TlsRouteRouteDestination =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    serviceName: Schema.optional(Schema.String),
+    weight: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "TlsRouteRouteDestination" });
 
 export interface TlsRouteRouteAction {
   /** Required. The destination services to which traffic should be forwarded. At least one destination service is required. */
@@ -464,15 +377,10 @@ export interface TlsRouteRouteAction {
   idleTimeout?: string;
 }
 
-export const TlsRouteRouteAction: Schema.Schema<TlsRouteRouteAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      destinations: Schema.optional(Schema.Array(TlsRouteRouteDestination)),
-      idleTimeout: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TlsRouteRouteAction",
-  }) as any as Schema.Schema<TlsRouteRouteAction>;
+export const TlsRouteRouteAction = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  destinations: Schema.optional(Schema.Array(TlsRouteRouteDestination)),
+  idleTimeout: Schema.optional(Schema.String),
+}).annotate({ identifier: "TlsRouteRouteAction" });
 
 export interface TlsRouteRouteMatch {
   /** Optional. SNI (server name indicator) to match against. SNI will be matched against all wildcard domains, i.e. `www.example.com` will be first matched against `www.example.com`, then `*.example.com`, then `*.com.` Partial wildcards are not supported, and values like *w.example.com are invalid. At least one of sni_host and alpn is required. Up to 100 sni hosts across all matches can be set. */
@@ -481,15 +389,10 @@ export interface TlsRouteRouteMatch {
   alpn?: Array<string>;
 }
 
-export const TlsRouteRouteMatch: Schema.Schema<TlsRouteRouteMatch> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sniHost: Schema.optional(Schema.Array(Schema.String)),
-      alpn: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TlsRouteRouteMatch",
-  }) as any as Schema.Schema<TlsRouteRouteMatch>;
+export const TlsRouteRouteMatch = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sniHost: Schema.optional(Schema.Array(Schema.String)),
+  alpn: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "TlsRouteRouteMatch" });
 
 export interface TlsRouteRouteRule {
   /** Required. The detailed rule defining how to route matched traffic. */
@@ -498,15 +401,10 @@ export interface TlsRouteRouteRule {
   matches?: Array<TlsRouteRouteMatch>;
 }
 
-export const TlsRouteRouteRule: Schema.Schema<TlsRouteRouteRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      action: Schema.optional(TlsRouteRouteAction),
-      matches: Schema.optional(Schema.Array(TlsRouteRouteMatch)),
-    }),
-  ).annotate({
-    identifier: "TlsRouteRouteRule",
-  }) as any as Schema.Schema<TlsRouteRouteRule>;
+export const TlsRouteRouteRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  action: Schema.optional(TlsRouteRouteAction),
+  matches: Schema.optional(Schema.Array(TlsRouteRouteMatch)),
+}).annotate({ identifier: "TlsRouteRouteRule" });
 
 export interface TlsRoute {
   /** Identifier. Name of the TlsRoute resource. It matches pattern `projects/* /locations/* /tlsRoutes/tls_route_name>`. */
@@ -531,21 +429,18 @@ export interface TlsRoute {
   description?: string;
 }
 
-export const TlsRoute: Schema.Schema<TlsRoute> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      targetProxies: Schema.optional(Schema.Array(Schema.String)),
-      gateways: Schema.optional(Schema.Array(Schema.String)),
-      selfLink: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      rules: Schema.optional(Schema.Array(TlsRouteRouteRule)),
-      meshes: Schema.optional(Schema.Array(Schema.String)),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "TlsRoute" }) as any as Schema.Schema<TlsRoute>;
+export const TlsRoute = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  targetProxies: Schema.optional(Schema.Array(Schema.String)),
+  gateways: Schema.optional(Schema.Array(Schema.String)),
+  selfLink: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  rules: Schema.optional(Schema.Array(TlsRouteRouteRule)),
+  meshes: Schema.optional(Schema.Array(Schema.String)),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "TlsRoute" });
 
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -556,16 +451,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
@@ -580,16 +472,13 @@ export interface Operation {
   name?: string;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      error: Schema.optional(Status),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  done: Schema.optional(Schema.Boolean),
+  error: Schema.optional(Status),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Operation" });
 
 export interface GrpcRouteHeaderMatch {
   /** Required. The key of the header. */
@@ -600,16 +489,11 @@ export interface GrpcRouteHeaderMatch {
   type?: "TYPE_UNSPECIFIED" | "EXACT" | "REGULAR_EXPRESSION" | (string & {});
 }
 
-export const GrpcRouteHeaderMatch: Schema.Schema<GrpcRouteHeaderMatch> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      key: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GrpcRouteHeaderMatch",
-  }) as any as Schema.Schema<GrpcRouteHeaderMatch>;
+export const GrpcRouteHeaderMatch = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  key: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "GrpcRouteHeaderMatch" });
 
 export interface GrpcRouteMethodMatch {
   /** Optional. Specifies how to match against the name. If not specified, a default value of "EXACT" is used. */
@@ -622,17 +506,12 @@ export interface GrpcRouteMethodMatch {
   grpcMethod?: string;
 }
 
-export const GrpcRouteMethodMatch: Schema.Schema<GrpcRouteMethodMatch> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      grpcService: Schema.optional(Schema.String),
-      caseSensitive: Schema.optional(Schema.Boolean),
-      grpcMethod: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GrpcRouteMethodMatch",
-  }) as any as Schema.Schema<GrpcRouteMethodMatch>;
+export const GrpcRouteMethodMatch = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  grpcService: Schema.optional(Schema.String),
+  caseSensitive: Schema.optional(Schema.Boolean),
+  grpcMethod: Schema.optional(Schema.String),
+}).annotate({ identifier: "GrpcRouteMethodMatch" });
 
 export interface GrpcRouteRouteMatch {
   /** Optional. Specifies a collection of headers to match. */
@@ -641,15 +520,10 @@ export interface GrpcRouteRouteMatch {
   method?: GrpcRouteMethodMatch;
 }
 
-export const GrpcRouteRouteMatch: Schema.Schema<GrpcRouteRouteMatch> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      headers: Schema.optional(Schema.Array(GrpcRouteHeaderMatch)),
-      method: Schema.optional(GrpcRouteMethodMatch),
-    }),
-  ).annotate({
-    identifier: "GrpcRouteRouteMatch",
-  }) as any as Schema.Schema<GrpcRouteRouteMatch>;
+export const GrpcRouteRouteMatch = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  headers: Schema.optional(Schema.Array(GrpcRouteHeaderMatch)),
+  method: Schema.optional(GrpcRouteMethodMatch),
+}).annotate({ identifier: "GrpcRouteRouteMatch" });
 
 export interface GrpcRouteFaultInjectionPolicy {
   /** The specification for aborting to client requests. */
@@ -658,15 +532,11 @@ export interface GrpcRouteFaultInjectionPolicy {
   delay?: GrpcRouteFaultInjectionPolicyDelay;
 }
 
-export const GrpcRouteFaultInjectionPolicy: Schema.Schema<GrpcRouteFaultInjectionPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      abort: Schema.optional(GrpcRouteFaultInjectionPolicyAbort),
-      delay: Schema.optional(GrpcRouteFaultInjectionPolicyDelay),
-    }),
-  ).annotate({
-    identifier: "GrpcRouteFaultInjectionPolicy",
-  }) as any as Schema.Schema<GrpcRouteFaultInjectionPolicy>;
+export const GrpcRouteFaultInjectionPolicy =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    abort: Schema.optional(GrpcRouteFaultInjectionPolicyAbort),
+    delay: Schema.optional(GrpcRouteFaultInjectionPolicyDelay),
+  }).annotate({ identifier: "GrpcRouteFaultInjectionPolicy" });
 
 export interface GrpcRouteRetryPolicy {
   /** Specifies the allowed number of retries. This number must be > 0. If not specified, default to 1. */
@@ -675,29 +545,20 @@ export interface GrpcRouteRetryPolicy {
   retryConditions?: Array<string>;
 }
 
-export const GrpcRouteRetryPolicy: Schema.Schema<GrpcRouteRetryPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      numRetries: Schema.optional(Schema.Number),
-      retryConditions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GrpcRouteRetryPolicy",
-  }) as any as Schema.Schema<GrpcRouteRetryPolicy>;
+export const GrpcRouteRetryPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  numRetries: Schema.optional(Schema.Number),
+  retryConditions: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "GrpcRouteRetryPolicy" });
 
 export interface GrpcRouteStatefulSessionAffinityPolicy {
   /** Required. The cookie TTL value for the Set-Cookie header generated by the data plane. The lifetime of the cookie may be set to a value from 0 to 86400 seconds (24 hours) inclusive. Set this to 0s to use a session cookie and disable cookie expiration. */
   cookieTtl?: string;
 }
 
-export const GrpcRouteStatefulSessionAffinityPolicy: Schema.Schema<GrpcRouteStatefulSessionAffinityPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cookieTtl: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GrpcRouteStatefulSessionAffinityPolicy",
-  }) as any as Schema.Schema<GrpcRouteStatefulSessionAffinityPolicy>;
+export const GrpcRouteStatefulSessionAffinityPolicy =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cookieTtl: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GrpcRouteStatefulSessionAffinityPolicy" });
 
 export interface GrpcRouteDestination {
   /** Required. The URL of a destination service to which to route traffic. Must refer to either a BackendService or ServiceDirectoryService. */
@@ -706,15 +567,10 @@ export interface GrpcRouteDestination {
   weight?: number;
 }
 
-export const GrpcRouteDestination: Schema.Schema<GrpcRouteDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serviceName: Schema.optional(Schema.String),
-      weight: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GrpcRouteDestination",
-  }) as any as Schema.Schema<GrpcRouteDestination>;
+export const GrpcRouteDestination = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  serviceName: Schema.optional(Schema.String),
+  weight: Schema.optional(Schema.Number),
+}).annotate({ identifier: "GrpcRouteDestination" });
 
 export interface GrpcRouteRouteAction {
   /** Optional. The specification for fault injection introduced into traffic to test the resiliency of clients to destination service failure. As part of fault injection, when clients send requests to a destination, delays can be introduced on a percentage of requests before sending those requests to the destination service. Similarly requests from clients can be aborted by for a percentage of requests. timeout and retry_policy will be ignored by clients that are configured with a fault_injection_policy */
@@ -731,21 +587,16 @@ export interface GrpcRouteRouteAction {
   destinations?: Array<GrpcRouteDestination>;
 }
 
-export const GrpcRouteRouteAction: Schema.Schema<GrpcRouteRouteAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      faultInjectionPolicy: Schema.optional(GrpcRouteFaultInjectionPolicy),
-      retryPolicy: Schema.optional(GrpcRouteRetryPolicy),
-      statefulSessionAffinity: Schema.optional(
-        GrpcRouteStatefulSessionAffinityPolicy,
-      ),
-      timeout: Schema.optional(Schema.String),
-      idleTimeout: Schema.optional(Schema.String),
-      destinations: Schema.optional(Schema.Array(GrpcRouteDestination)),
-    }),
-  ).annotate({
-    identifier: "GrpcRouteRouteAction",
-  }) as any as Schema.Schema<GrpcRouteRouteAction>;
+export const GrpcRouteRouteAction = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  faultInjectionPolicy: Schema.optional(GrpcRouteFaultInjectionPolicy),
+  retryPolicy: Schema.optional(GrpcRouteRetryPolicy),
+  statefulSessionAffinity: Schema.optional(
+    GrpcRouteStatefulSessionAffinityPolicy,
+  ),
+  timeout: Schema.optional(Schema.String),
+  idleTimeout: Schema.optional(Schema.String),
+  destinations: Schema.optional(Schema.Array(GrpcRouteDestination)),
+}).annotate({ identifier: "GrpcRouteRouteAction" });
 
 export interface GrpcRouteRouteRule {
   /** Optional. Matches define conditions used for matching the rule against incoming gRPC requests. Each match is independent, i.e. this rule will be matched if ANY one of the matches is satisfied. If no matches field is specified, this rule will unconditionally match traffic. */
@@ -754,15 +605,10 @@ export interface GrpcRouteRouteRule {
   action?: GrpcRouteRouteAction;
 }
 
-export const GrpcRouteRouteRule: Schema.Schema<GrpcRouteRouteRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      matches: Schema.optional(Schema.Array(GrpcRouteRouteMatch)),
-      action: Schema.optional(GrpcRouteRouteAction),
-    }),
-  ).annotate({
-    identifier: "GrpcRouteRouteRule",
-  }) as any as Schema.Schema<GrpcRouteRouteRule>;
+export const GrpcRouteRouteRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  matches: Schema.optional(Schema.Array(GrpcRouteRouteMatch)),
+  action: Schema.optional(GrpcRouteRouteAction),
+}).annotate({ identifier: "GrpcRouteRouteRule" });
 
 export interface GrpcRoute {
   /** Optional. A free-text description of the resource. Max length 1024 characters. */
@@ -787,21 +633,18 @@ export interface GrpcRoute {
   gateways?: Array<string>;
 }
 
-export const GrpcRoute: Schema.Schema<GrpcRoute> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      rules: Schema.optional(Schema.Array(GrpcRouteRouteRule)),
-      meshes: Schema.optional(Schema.Array(Schema.String)),
-      selfLink: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      hostnames: Schema.optional(Schema.Array(Schema.String)),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      gateways: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "GrpcRoute" }) as any as Schema.Schema<GrpcRoute>;
+export const GrpcRoute = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  rules: Schema.optional(Schema.Array(GrpcRouteRouteRule)),
+  meshes: Schema.optional(Schema.Array(Schema.String)),
+  selfLink: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  hostnames: Schema.optional(Schema.Array(Schema.String)),
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  gateways: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "GrpcRoute" });
 
 export interface ListGrpcRoutesResponse {
   /** Unreachable resources. Populated when the request opts into return_partial_success and reading across collections e.g. when attempting to list all resources across all supported locations. */
@@ -812,16 +655,13 @@ export interface ListGrpcRoutesResponse {
   nextPageToken?: string;
 }
 
-export const ListGrpcRoutesResponse: Schema.Schema<ListGrpcRoutesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      grpcRoutes: Schema.optional(Schema.Array(GrpcRoute)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListGrpcRoutesResponse",
-  }) as any as Schema.Schema<ListGrpcRoutesResponse>;
+export const ListGrpcRoutesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    grpcRoutes: Schema.optional(Schema.Array(GrpcRoute)),
+    nextPageToken: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ListGrpcRoutesResponse" });
 
 export interface ListTlsRoutesResponse {
   /** Unreachable resources. Populated when the request opts into return_partial_success and reading across collections e.g. when attempting to list all resources across all supported locations. */
@@ -832,16 +672,11 @@ export interface ListTlsRoutesResponse {
   nextPageToken?: string;
 }
 
-export const ListTlsRoutesResponse: Schema.Schema<ListTlsRoutesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      tlsRoutes: Schema.optional(Schema.Array(TlsRoute)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListTlsRoutesResponse",
-  }) as any as Schema.Schema<ListTlsRoutesResponse>;
+export const ListTlsRoutesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+  tlsRoutes: Schema.optional(Schema.Array(TlsRoute)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListTlsRoutesResponse" });
 
 export interface HttpRouteHeaderMatchIntegerRange {
   /** End of the range (exclusive) */
@@ -850,15 +685,11 @@ export interface HttpRouteHeaderMatchIntegerRange {
   start?: number;
 }
 
-export const HttpRouteHeaderMatchIntegerRange: Schema.Schema<HttpRouteHeaderMatchIntegerRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      end: Schema.optional(Schema.Number),
-      start: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "HttpRouteHeaderMatchIntegerRange",
-  }) as any as Schema.Schema<HttpRouteHeaderMatchIntegerRange>;
+export const HttpRouteHeaderMatchIntegerRange =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    end: Schema.optional(Schema.Number),
+    start: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "HttpRouteHeaderMatchIntegerRange" });
 
 export interface HttpRouteHeaderMatch {
   /** The value of the header should match exactly the content of exact_match. */
@@ -879,21 +710,16 @@ export interface HttpRouteHeaderMatch {
   invertMatch?: boolean;
 }
 
-export const HttpRouteHeaderMatch: Schema.Schema<HttpRouteHeaderMatch> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      exactMatch: Schema.optional(Schema.String),
-      presentMatch: Schema.optional(Schema.Boolean),
-      header: Schema.optional(Schema.String),
-      regexMatch: Schema.optional(Schema.String),
-      suffixMatch: Schema.optional(Schema.String),
-      prefixMatch: Schema.optional(Schema.String),
-      rangeMatch: Schema.optional(HttpRouteHeaderMatchIntegerRange),
-      invertMatch: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "HttpRouteHeaderMatch",
-  }) as any as Schema.Schema<HttpRouteHeaderMatch>;
+export const HttpRouteHeaderMatch = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  exactMatch: Schema.optional(Schema.String),
+  presentMatch: Schema.optional(Schema.Boolean),
+  header: Schema.optional(Schema.String),
+  regexMatch: Schema.optional(Schema.String),
+  suffixMatch: Schema.optional(Schema.String),
+  prefixMatch: Schema.optional(Schema.String),
+  rangeMatch: Schema.optional(HttpRouteHeaderMatchIntegerRange),
+  invertMatch: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "HttpRouteHeaderMatch" });
 
 export interface HttpRouteQueryParameterMatch {
   /** The value of the query parameter must exactly match the contents of exact_match. Only one of exact_match, regex_match, or present_match must be set. */
@@ -906,17 +732,13 @@ export interface HttpRouteQueryParameterMatch {
   regexMatch?: string;
 }
 
-export const HttpRouteQueryParameterMatch: Schema.Schema<HttpRouteQueryParameterMatch> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      exactMatch: Schema.optional(Schema.String),
-      presentMatch: Schema.optional(Schema.Boolean),
-      queryParameter: Schema.optional(Schema.String),
-      regexMatch: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "HttpRouteQueryParameterMatch",
-  }) as any as Schema.Schema<HttpRouteQueryParameterMatch>;
+export const HttpRouteQueryParameterMatch =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    exactMatch: Schema.optional(Schema.String),
+    presentMatch: Schema.optional(Schema.Boolean),
+    queryParameter: Schema.optional(Schema.String),
+    regexMatch: Schema.optional(Schema.String),
+  }).annotate({ identifier: "HttpRouteQueryParameterMatch" });
 
 export interface HttpRouteRouteMatch {
   /** The HTTP request path value should exactly match this value. Only one of full_path_match, prefix_match, or regex_match should be used. */
@@ -933,21 +755,14 @@ export interface HttpRouteRouteMatch {
   regexMatch?: string;
 }
 
-export const HttpRouteRouteMatch: Schema.Schema<HttpRouteRouteMatch> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fullPathMatch: Schema.optional(Schema.String),
-      ignoreCase: Schema.optional(Schema.Boolean),
-      prefixMatch: Schema.optional(Schema.String),
-      headers: Schema.optional(Schema.Array(HttpRouteHeaderMatch)),
-      queryParameters: Schema.optional(
-        Schema.Array(HttpRouteQueryParameterMatch),
-      ),
-      regexMatch: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "HttpRouteRouteMatch",
-  }) as any as Schema.Schema<HttpRouteRouteMatch>;
+export const HttpRouteRouteMatch = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fullPathMatch: Schema.optional(Schema.String),
+  ignoreCase: Schema.optional(Schema.Boolean),
+  prefixMatch: Schema.optional(Schema.String),
+  headers: Schema.optional(Schema.Array(HttpRouteHeaderMatch)),
+  queryParameters: Schema.optional(Schema.Array(HttpRouteQueryParameterMatch)),
+  regexMatch: Schema.optional(Schema.String),
+}).annotate({ identifier: "HttpRouteRouteMatch" });
 
 export interface ExtensionChainExtension {
   /** Optional. The name for this extension. The name is logged as part of the HTTP request logs. The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens, and can have a maximum length of 63 characters. Additionally, the first character must be a letter and the last a letter or a number. This field is required except for AuthzExtension. */
@@ -995,40 +810,32 @@ export interface ExtensionChainExtension {
   forwardHeaders?: Array<string>;
 }
 
-export const ExtensionChainExtension: Schema.Schema<ExtensionChainExtension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      responseBodySendMode: Schema.optional(Schema.String),
-      supportedEvents: Schema.optional(Schema.Array(Schema.String)),
-      service: Schema.optional(Schema.String),
-      timeout: Schema.optional(Schema.String),
-      forwardAttributes: Schema.optional(Schema.Array(Schema.String)),
-      requestBodySendMode: Schema.optional(Schema.String),
-      allowDynamicForwarding: Schema.optional(Schema.Boolean),
-      failOpen: Schema.optional(Schema.Boolean),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      observabilityMode: Schema.optional(Schema.Boolean),
-      authority: Schema.optional(Schema.String),
-      forwardHeaders: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ExtensionChainExtension",
-  }) as any as Schema.Schema<ExtensionChainExtension>;
+export const ExtensionChainExtension =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    responseBodySendMode: Schema.optional(Schema.String),
+    supportedEvents: Schema.optional(Schema.Array(Schema.String)),
+    service: Schema.optional(Schema.String),
+    timeout: Schema.optional(Schema.String),
+    forwardAttributes: Schema.optional(Schema.Array(Schema.String)),
+    requestBodySendMode: Schema.optional(Schema.String),
+    allowDynamicForwarding: Schema.optional(Schema.Boolean),
+    failOpen: Schema.optional(Schema.Boolean),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    observabilityMode: Schema.optional(Schema.Boolean),
+    authority: Schema.optional(Schema.String),
+    forwardHeaders: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ExtensionChainExtension" });
 
 export interface ExtensionChainMatchCondition {
   /** Required. A Common Expression Language (CEL) expression that is used to match requests for which the extension chain is executed. For more information, see [CEL matcher language reference](https://cloud.google.com/service-extensions/docs/cel-matcher-language-reference). */
   celExpression?: string;
 }
 
-export const ExtensionChainMatchCondition: Schema.Schema<ExtensionChainMatchCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      celExpression: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ExtensionChainMatchCondition",
-  }) as any as Schema.Schema<ExtensionChainMatchCondition>;
+export const ExtensionChainMatchCondition =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    celExpression: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ExtensionChainMatchCondition" });
 
 export interface ExtensionChain {
   /** Required. The name for this extension chain. The name is logged as part of the HTTP request logs. The name must conform with RFC-1034, is restricted to lower-cased letters, numbers and hyphens, and can have a maximum length of 63 characters. Additionally, the first character must be a letter and the last a letter or a number. */
@@ -1039,16 +846,11 @@ export interface ExtensionChain {
   matchCondition?: ExtensionChainMatchCondition;
 }
 
-export const ExtensionChain: Schema.Schema<ExtensionChain> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      extensions: Schema.optional(Schema.Array(ExtensionChainExtension)),
-      matchCondition: Schema.optional(ExtensionChainMatchCondition),
-    }),
-  ).annotate({
-    identifier: "ExtensionChain",
-  }) as any as Schema.Schema<ExtensionChain>;
+export const ExtensionChain = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  extensions: Schema.optional(Schema.Array(ExtensionChainExtension)),
+  matchCondition: Schema.optional(ExtensionChainMatchCondition),
+}).annotate({ identifier: "ExtensionChain" });
 
 export interface LbTrafficExtension {
   /** Optional. A human-readable description of the resource. */
@@ -1075,22 +877,17 @@ export interface LbTrafficExtension {
   metadata?: Record<string, unknown>;
 }
 
-export const LbTrafficExtension: Schema.Schema<LbTrafficExtension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      loadBalancingScheme: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      forwardingRules: Schema.optional(Schema.Array(Schema.String)),
-      updateTime: Schema.optional(Schema.String),
-      extensionChains: Schema.optional(Schema.Array(ExtensionChain)),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
-    identifier: "LbTrafficExtension",
-  }) as any as Schema.Schema<LbTrafficExtension>;
+export const LbTrafficExtension = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  loadBalancingScheme: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  forwardingRules: Schema.optional(Schema.Array(Schema.String)),
+  updateTime: Schema.optional(Schema.String),
+  extensionChains: Schema.optional(Schema.Array(ExtensionChain)),
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "LbTrafficExtension" });
 
 export interface ListLbTrafficExtensionsResponse {
   /** Locations that could not be reached. */
@@ -1101,16 +898,12 @@ export interface ListLbTrafficExtensionsResponse {
   nextPageToken?: string;
 }
 
-export const ListLbTrafficExtensionsResponse: Schema.Schema<ListLbTrafficExtensionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      lbTrafficExtensions: Schema.optional(Schema.Array(LbTrafficExtension)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLbTrafficExtensionsResponse",
-  }) as any as Schema.Schema<ListLbTrafficExtensionsResponse>;
+export const ListLbTrafficExtensionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    lbTrafficExtensions: Schema.optional(Schema.Array(LbTrafficExtension)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListLbTrafficExtensionsResponse" });
 
 export interface AgentGatewayNetworkConfigDnsPeeringConfig {
   /** Required. Target project ID to which DNS queries should be forwarded to. This can be the same project that contains the AgentGateway or a different project. */
@@ -1121,16 +914,12 @@ export interface AgentGatewayNetworkConfigDnsPeeringConfig {
   domains?: Array<string>;
 }
 
-export const AgentGatewayNetworkConfigDnsPeeringConfig: Schema.Schema<AgentGatewayNetworkConfigDnsPeeringConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetProject: Schema.optional(Schema.String),
-      targetNetwork: Schema.optional(Schema.String),
-      domains: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AgentGatewayNetworkConfigDnsPeeringConfig",
-  }) as any as Schema.Schema<AgentGatewayNetworkConfigDnsPeeringConfig>;
+export const AgentGatewayNetworkConfigDnsPeeringConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetProject: Schema.optional(Schema.String),
+    targetNetwork: Schema.optional(Schema.String),
+    domains: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "AgentGatewayNetworkConfigDnsPeeringConfig" });
 
 export interface WasmPluginLogConfig {
   /** Optional. Specifies whether to enable logging for activity by this plugin. Defaults to `false`. */
@@ -1149,30 +938,21 @@ export interface WasmPluginLogConfig {
   sampleRate?: number;
 }
 
-export const WasmPluginLogConfig: Schema.Schema<WasmPluginLogConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enable: Schema.optional(Schema.Boolean),
-      minLogLevel: Schema.optional(Schema.String),
-      sampleRate: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "WasmPluginLogConfig",
-  }) as any as Schema.Schema<WasmPluginLogConfig>;
+export const WasmPluginLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enable: Schema.optional(Schema.Boolean),
+  minLogLevel: Schema.optional(Schema.String),
+  sampleRate: Schema.optional(Schema.Number),
+}).annotate({ identifier: "WasmPluginLogConfig" });
 
 export interface AgentGatewayNetworkConfigEgress {
   /** Optional. The URI of the Network Attachment resource. */
   networkAttachment?: string;
 }
 
-export const AgentGatewayNetworkConfigEgress: Schema.Schema<AgentGatewayNetworkConfigEgress> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      networkAttachment: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AgentGatewayNetworkConfigEgress",
-  }) as any as Schema.Schema<AgentGatewayNetworkConfigEgress>;
+export const AgentGatewayNetworkConfigEgress =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    networkAttachment: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AgentGatewayNetworkConfigEgress" });
 
 export interface AgentGatewayNetworkConfig {
   /** Optional. Optional DNS peering configuration for connectivity to your private VPC network. */
@@ -1181,31 +961,23 @@ export interface AgentGatewayNetworkConfig {
   egress?: AgentGatewayNetworkConfigEgress;
 }
 
-export const AgentGatewayNetworkConfig: Schema.Schema<AgentGatewayNetworkConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dnsPeeringConfig: Schema.optional(
-        AgentGatewayNetworkConfigDnsPeeringConfig,
-      ),
-      egress: Schema.optional(AgentGatewayNetworkConfigEgress),
-    }),
-  ).annotate({
-    identifier: "AgentGatewayNetworkConfig",
-  }) as any as Schema.Schema<AgentGatewayNetworkConfig>;
+export const AgentGatewayNetworkConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dnsPeeringConfig: Schema.optional(
+      AgentGatewayNetworkConfigDnsPeeringConfig,
+    ),
+    egress: Schema.optional(AgentGatewayNetworkConfigEgress),
+  }).annotate({ identifier: "AgentGatewayNetworkConfig" });
 
 export interface AgentGatewaySelfManaged {
   /** Optional. A supported Google Cloud networking proxy in the Project and Location */
   resourceUri?: string;
 }
 
-export const AgentGatewaySelfManaged: Schema.Schema<AgentGatewaySelfManaged> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AgentGatewaySelfManaged",
-  }) as any as Schema.Schema<AgentGatewaySelfManaged>;
+export const AgentGatewaySelfManaged =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AgentGatewaySelfManaged" });
 
 export interface AgentGateway {
   /** Optional. Set of label tags associated with the AgentGateway resource. */
@@ -1234,25 +1006,20 @@ export interface AgentGateway {
   selfManaged?: AgentGatewaySelfManaged;
 }
 
-export const AgentGateway: Schema.Schema<AgentGateway> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      updateTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      protocols: Schema.optional(Schema.Array(Schema.String)),
-      etag: Schema.optional(Schema.String),
-      agentGatewayCard: Schema.optional(AgentGatewayAgentGatewayOutputCard),
-      description: Schema.optional(Schema.String),
-      googleManaged: Schema.optional(AgentGatewayGoogleManaged),
-      networkConfig: Schema.optional(AgentGatewayNetworkConfig),
-      registries: Schema.optional(Schema.Array(Schema.String)),
-      selfManaged: Schema.optional(AgentGatewaySelfManaged),
-    }),
-  ).annotate({
-    identifier: "AgentGateway",
-  }) as any as Schema.Schema<AgentGateway>;
+export const AgentGateway = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  updateTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  protocols: Schema.optional(Schema.Array(Schema.String)),
+  etag: Schema.optional(Schema.String),
+  agentGatewayCard: Schema.optional(AgentGatewayAgentGatewayOutputCard),
+  description: Schema.optional(Schema.String),
+  googleManaged: Schema.optional(AgentGatewayGoogleManaged),
+  networkConfig: Schema.optional(AgentGatewayNetworkConfig),
+  registries: Schema.optional(Schema.Array(Schema.String)),
+  selfManaged: Schema.optional(AgentGatewaySelfManaged),
+}).annotate({ identifier: "AgentGateway" });
 
 export interface MeshRouteView {
   /** Output only. The resource id for the route. */
@@ -1267,18 +1034,13 @@ export interface MeshRouteView {
   routeLocation?: string;
 }
 
-export const MeshRouteView: Schema.Schema<MeshRouteView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      routeId: Schema.optional(Schema.String),
-      routeType: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      routeProjectNumber: Schema.optional(Schema.String),
-      routeLocation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MeshRouteView",
-  }) as any as Schema.Schema<MeshRouteView>;
+export const MeshRouteView = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  routeId: Schema.optional(Schema.String),
+  routeType: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  routeProjectNumber: Schema.optional(Schema.String),
+  routeLocation: Schema.optional(Schema.String),
+}).annotate({ identifier: "MeshRouteView" });
 
 export interface ServiceBinding {
   /** Identifier. Name of the ServiceBinding resource. It matches pattern `projects/* /locations/* /serviceBindings/`. */
@@ -1297,20 +1059,15 @@ export interface ServiceBinding {
   labels?: Record<string, string>;
 }
 
-export const ServiceBinding: Schema.Schema<ServiceBinding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      serviceId: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      service: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ServiceBinding",
-  }) as any as Schema.Schema<ServiceBinding>;
+export const ServiceBinding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  serviceId: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  service: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "ServiceBinding" });
 
 export interface ServiceLbPolicyIsolationConfig {
   /** Optional. The isolation mode of the load balancer. */
@@ -1326,15 +1083,11 @@ export interface ServiceLbPolicyIsolationConfig {
     | (string & {});
 }
 
-export const ServiceLbPolicyIsolationConfig: Schema.Schema<ServiceLbPolicyIsolationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      isolationMode: Schema.optional(Schema.String),
-      isolationGranularity: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ServiceLbPolicyIsolationConfig",
-  }) as any as Schema.Schema<ServiceLbPolicyIsolationConfig>;
+export const ServiceLbPolicyIsolationConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    isolationMode: Schema.optional(Schema.String),
+    isolationGranularity: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ServiceLbPolicyIsolationConfig" });
 
 export interface Mesh {
   /** Output only. Server-defined URL of this resource */
@@ -1359,19 +1112,16 @@ export interface Mesh {
   createTime?: string;
 }
 
-export const Mesh: Schema.Schema<Mesh> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      selfLink: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      interceptionPort: Schema.optional(Schema.Number),
-      envoyHeaders: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Mesh" }) as any as Schema.Schema<Mesh>;
+export const Mesh = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  selfLink: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  interceptionPort: Schema.optional(Schema.Number),
+  envoyHeaders: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Mesh" });
 
 export interface ListMeshesResponse {
   /** List of Mesh resources. */
@@ -1382,16 +1132,11 @@ export interface ListMeshesResponse {
   unreachable?: Array<string>;
 }
 
-export const ListMeshesResponse: Schema.Schema<ListMeshesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      meshes: Schema.optional(Schema.Array(Mesh)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListMeshesResponse",
-  }) as any as Schema.Schema<ListMeshesResponse>;
+export const ListMeshesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  meshes: Schema.optional(Schema.Array(Mesh)),
+  nextPageToken: Schema.optional(Schema.String),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ListMeshesResponse" });
 
 export interface WasmPluginVersion {
   /** Optional. Set of labels associated with the `WasmPluginVersion` resource. */
@@ -1416,23 +1161,18 @@ export interface WasmPluginVersion {
   pluginConfigDigest?: string;
 }
 
-export const WasmPluginVersion: Schema.Schema<WasmPluginVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      pluginConfigData: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      imageUri: Schema.optional(Schema.String),
-      pluginConfigUri: Schema.optional(Schema.String),
-      imageDigest: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      pluginConfigDigest: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WasmPluginVersion",
-  }) as any as Schema.Schema<WasmPluginVersion>;
+export const WasmPluginVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  pluginConfigData: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  imageUri: Schema.optional(Schema.String),
+  pluginConfigUri: Schema.optional(Schema.String),
+  imageDigest: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  pluginConfigDigest: Schema.optional(Schema.String),
+}).annotate({ identifier: "WasmPluginVersion" });
 
 export interface Gateway {
   /** Optional. A fully-qualified GatewaySecurityPolicy URL reference. Defines how a server should apply security policy to inbound (VM to Proxy) initiated connections. For example: `projects/* /locations/* /gatewaySecurityPolicies/swg-policy`. This policy is specific to gateways of type 'SECURE_WEB_GATEWAY'. */
@@ -1488,31 +1228,28 @@ export interface Gateway {
   ports?: Array<number>;
 }
 
-export const Gateway: Schema.Schema<Gateway> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gatewaySecurityPolicy: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      network: Schema.optional(Schema.String),
-      allowGlobalAccess: Schema.optional(Schema.Boolean),
-      selfLink: Schema.optional(Schema.String),
-      envoyHeaders: Schema.optional(Schema.String),
-      addresses: Schema.optional(Schema.Array(Schema.String)),
-      serverTlsPolicy: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      ipVersion: Schema.optional(Schema.String),
-      certificateUrls: Schema.optional(Schema.Array(Schema.String)),
-      routingMode: Schema.optional(Schema.String),
-      scope: Schema.optional(Schema.String),
-      allPorts: Schema.optional(Schema.Boolean),
-      type: Schema.optional(Schema.String),
-      subnetwork: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      updateTime: Schema.optional(Schema.String),
-      ports: Schema.optional(Schema.Array(Schema.Number)),
-    }),
-  ).annotate({ identifier: "Gateway" }) as any as Schema.Schema<Gateway>;
+export const Gateway = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gatewaySecurityPolicy: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  network: Schema.optional(Schema.String),
+  allowGlobalAccess: Schema.optional(Schema.Boolean),
+  selfLink: Schema.optional(Schema.String),
+  envoyHeaders: Schema.optional(Schema.String),
+  addresses: Schema.optional(Schema.Array(Schema.String)),
+  serverTlsPolicy: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  ipVersion: Schema.optional(Schema.String),
+  certificateUrls: Schema.optional(Schema.Array(Schema.String)),
+  routingMode: Schema.optional(Schema.String),
+  scope: Schema.optional(Schema.String),
+  allPorts: Schema.optional(Schema.Boolean),
+  type: Schema.optional(Schema.String),
+  subnetwork: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  updateTime: Schema.optional(Schema.String),
+  ports: Schema.optional(Schema.Array(Schema.Number)),
+}).annotate({ identifier: "Gateway" });
 
 export interface ListGatewaysResponse {
   /** Locations that could not be reached. */
@@ -1523,16 +1260,11 @@ export interface ListGatewaysResponse {
   nextPageToken?: string;
 }
 
-export const ListGatewaysResponse: Schema.Schema<ListGatewaysResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      gateways: Schema.optional(Schema.Array(Gateway)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListGatewaysResponse",
-  }) as any as Schema.Schema<ListGatewaysResponse>;
+export const ListGatewaysResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+  gateways: Schema.optional(Schema.Array(Gateway)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListGatewaysResponse" });
 
 export interface ListWasmPluginVersionsResponse {
   /** Unreachable resources. Populated when the request attempts to list all resources across all supported locations, while some locations are temporarily unavailable. */
@@ -1543,16 +1275,12 @@ export interface ListWasmPluginVersionsResponse {
   nextPageToken?: string;
 }
 
-export const ListWasmPluginVersionsResponse: Schema.Schema<ListWasmPluginVersionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      wasmPluginVersions: Schema.optional(Schema.Array(WasmPluginVersion)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListWasmPluginVersionsResponse",
-  }) as any as Schema.Schema<ListWasmPluginVersionsResponse>;
+export const ListWasmPluginVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    wasmPluginVersions: Schema.optional(Schema.Array(WasmPluginVersion)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListWasmPluginVersionsResponse" });
 
 export interface LbEdgeExtension {
   /** Required. Identifier. Name of the `LbEdgeExtension` resource in the following format: `projects/{project}/locations/{location}/lbEdgeExtensions/{lb_edge_extension}`. */
@@ -1577,21 +1305,16 @@ export interface LbEdgeExtension {
   description?: string;
 }
 
-export const LbEdgeExtension: Schema.Schema<LbEdgeExtension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      extensionChains: Schema.optional(Schema.Array(ExtensionChain)),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      forwardingRules: Schema.optional(Schema.Array(Schema.String)),
-      loadBalancingScheme: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LbEdgeExtension",
-  }) as any as Schema.Schema<LbEdgeExtension>;
+export const LbEdgeExtension = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  extensionChains: Schema.optional(Schema.Array(ExtensionChain)),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  forwardingRules: Schema.optional(Schema.Array(Schema.String)),
+  loadBalancingScheme: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "LbEdgeExtension" });
 
 export interface HttpRouteRouteRule {
   /** A list of matches define conditions used for matching the rule against incoming HTTP requests. Each match is independent, i.e. this rule will be matched if ANY one of the matches is satisfied. If no matches field is specified, this rule will unconditionally match traffic. If a default rule is desired to be configured, add a rule with no matches specified to the end of the rules list. */
@@ -1600,15 +1323,10 @@ export interface HttpRouteRouteRule {
   action?: HttpRouteRouteAction;
 }
 
-export const HttpRouteRouteRule: Schema.Schema<HttpRouteRouteRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      matches: Schema.optional(Schema.Array(HttpRouteRouteMatch)),
-      action: Schema.optional(HttpRouteRouteAction),
-    }),
-  ).annotate({
-    identifier: "HttpRouteRouteRule",
-  }) as any as Schema.Schema<HttpRouteRouteRule>;
+export const HttpRouteRouteRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  matches: Schema.optional(Schema.Array(HttpRouteRouteMatch)),
+  action: Schema.optional(HttpRouteRouteAction),
+}).annotate({ identifier: "HttpRouteRouteRule" });
 
 export interface LoggingConfig {
   /** Optional. The minimum severity of logs that will be sent to Stackdriver/Platform Telemetry. Logs at severitiy ≥ this value will be sent, unless it is NONE. */
@@ -1626,28 +1344,18 @@ export interface LoggingConfig {
     | (string & {});
 }
 
-export const LoggingConfig: Schema.Schema<LoggingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      logSeverity: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LoggingConfig",
-  }) as any as Schema.Schema<LoggingConfig>;
+export const LoggingConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  logSeverity: Schema.optional(Schema.String),
+}).annotate({ identifier: "LoggingConfig" });
 
 export interface TrafficPortSelector {
   /** Optional. A list of ports. Can be port numbers or port range (example, [80-90] specifies all ports from 80 to 90, including 80 and 90) or named ports or * to specify all ports. If the list is empty, all ports are selected. */
   ports?: Array<string>;
 }
 
-export const TrafficPortSelector: Schema.Schema<TrafficPortSelector> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ports: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TrafficPortSelector",
-  }) as any as Schema.Schema<TrafficPortSelector>;
+export const TrafficPortSelector = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ports: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "TrafficPortSelector" });
 
 export interface LbTcpExtension {
   /** Required. Identifier. Name of the `LbTcpExtension` resource in the following format: `projects/{project}/locations/{location}/LbTcpExtension/{lb_tcp_extension}` */
@@ -1672,21 +1380,16 @@ export interface LbTcpExtension {
   description?: string;
 }
 
-export const LbTcpExtension: Schema.Schema<LbTcpExtension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      extensionChains: Schema.optional(Schema.Array(ExtensionChain)),
-      networks: Schema.optional(Schema.Array(Schema.String)),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      loadBalancingScheme: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LbTcpExtension",
-  }) as any as Schema.Schema<LbTcpExtension>;
+export const LbTcpExtension = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  extensionChains: Schema.optional(Schema.Array(ExtensionChain)),
+  networks: Schema.optional(Schema.Array(Schema.String)),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  loadBalancingScheme: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "LbTcpExtension" });
 
 export interface ListLbTcpExtensionsResponse {
   /** Locations that could not be reached. */
@@ -1697,16 +1400,12 @@ export interface ListLbTcpExtensionsResponse {
   nextPageToken?: string;
 }
 
-export const ListLbTcpExtensionsResponse: Schema.Schema<ListLbTcpExtensionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      lbTcpExtensions: Schema.optional(Schema.Array(LbTcpExtension)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLbTcpExtensionsResponse",
-  }) as any as Schema.Schema<ListLbTcpExtensionsResponse>;
+export const ListLbTcpExtensionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    lbTcpExtensions: Schema.optional(Schema.Array(LbTcpExtension)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListLbTcpExtensionsResponse" });
 
 export interface TcpRouteRouteMatch {
   /** Required. Must be specified in the CIDR range format. A CIDR range consists of an IP Address and a prefix length to construct the subnet mask. By default, the prefix length is 32 (i.e. matches a single IP address). Only IPV4 addresses are supported. Examples: "10.0.0.1" - matches against this exact IP address. "10.0.0.0/8" - matches against any IP address within the 10.0.0.0 subnet and 255.255.255.0 mask. "0.0.0.0/0" - matches against any IP address'. */
@@ -1715,15 +1414,10 @@ export interface TcpRouteRouteMatch {
   port?: string;
 }
 
-export const TcpRouteRouteMatch: Schema.Schema<TcpRouteRouteMatch> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      address: Schema.optional(Schema.String),
-      port: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TcpRouteRouteMatch",
-  }) as any as Schema.Schema<TcpRouteRouteMatch>;
+export const TcpRouteRouteMatch = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  address: Schema.optional(Schema.String),
+  port: Schema.optional(Schema.String),
+}).annotate({ identifier: "TcpRouteRouteMatch" });
 
 export interface TcpRouteRouteAction {
   /** Optional. Specifies the idle timeout for the selected route. The idle timeout is defined as the period in which there are no bytes sent or received on either the upstream or downstream connection. If not set, the default idle timeout is 30 seconds. If set to 0s, the timeout will be disabled. */
@@ -1734,16 +1428,11 @@ export interface TcpRouteRouteAction {
   originalDestination?: boolean;
 }
 
-export const TcpRouteRouteAction: Schema.Schema<TcpRouteRouteAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      idleTimeout: Schema.optional(Schema.String),
-      destinations: Schema.optional(Schema.Array(TcpRouteRouteDestination)),
-      originalDestination: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "TcpRouteRouteAction",
-  }) as any as Schema.Schema<TcpRouteRouteAction>;
+export const TcpRouteRouteAction = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  idleTimeout: Schema.optional(Schema.String),
+  destinations: Schema.optional(Schema.Array(TcpRouteRouteDestination)),
+  originalDestination: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "TcpRouteRouteAction" });
 
 export interface TcpRouteRouteRule {
   /** Optional. RouteMatch defines the predicate used to match requests to a given action. Multiple match types are "OR"ed for evaluation. If no routeMatch field is specified, this rule will unconditionally match traffic. */
@@ -1752,15 +1441,10 @@ export interface TcpRouteRouteRule {
   action?: TcpRouteRouteAction;
 }
 
-export const TcpRouteRouteRule: Schema.Schema<TcpRouteRouteRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      matches: Schema.optional(Schema.Array(TcpRouteRouteMatch)),
-      action: Schema.optional(TcpRouteRouteAction),
-    }),
-  ).annotate({
-    identifier: "TcpRouteRouteRule",
-  }) as any as Schema.Schema<TcpRouteRouteRule>;
+export const TcpRouteRouteRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  matches: Schema.optional(Schema.Array(TcpRouteRouteMatch)),
+  action: Schema.optional(TcpRouteRouteAction),
+}).annotate({ identifier: "TcpRouteRouteRule" });
 
 export interface TcpRoute {
   /** Optional. A free-text description of the resource. Max length 1024 characters. */
@@ -1783,34 +1467,27 @@ export interface TcpRoute {
   gateways?: Array<string>;
 }
 
-export const TcpRoute: Schema.Schema<TcpRoute> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      rules: Schema.optional(Schema.Array(TcpRouteRouteRule)),
-      meshes: Schema.optional(Schema.Array(Schema.String)),
-      selfLink: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      updateTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      gateways: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "TcpRoute" }) as any as Schema.Schema<TcpRoute>;
+export const TcpRoute = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  rules: Schema.optional(Schema.Array(TcpRouteRouteRule)),
+  meshes: Schema.optional(Schema.Array(Schema.String)),
+  selfLink: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  updateTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  gateways: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "TcpRoute" });
 
 export interface ServiceLbPolicyAutoCapacityDrain {
   /** Optional. If set to 'True', an unhealthy IG/NEG will be set as drained. - An IG/NEG is considered unhealthy if less than 25% of the instances/endpoints in the IG/NEG are healthy. - This option will never result in draining more than 50% of the configured IGs/NEGs for the Backend Service. */
   enable?: boolean;
 }
 
-export const ServiceLbPolicyAutoCapacityDrain: Schema.Schema<ServiceLbPolicyAutoCapacityDrain> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enable: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ServiceLbPolicyAutoCapacityDrain",
-  }) as any as Schema.Schema<ServiceLbPolicyAutoCapacityDrain>;
+export const ServiceLbPolicyAutoCapacityDrain =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enable: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "ServiceLbPolicyAutoCapacityDrain" });
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -1821,16 +1498,13 @@ export interface ListOperationsResponse {
   nextPageToken?: string;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(Schema.Array(Operation)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    operations: Schema.optional(Schema.Array(Operation)),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 export interface OperationMetadata {
   /** Output only. Name of the verb executed by the operation. */
@@ -1849,34 +1523,25 @@ export interface OperationMetadata {
   target?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      verb: Schema.optional(Schema.String),
-      apiVersion: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      target: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  verb: Schema.optional(Schema.String),
+  apiVersion: Schema.optional(Schema.String),
+  statusMessage: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  requestedCancellation: Schema.optional(Schema.Boolean),
+  target: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationMetadata" });
 
 export interface ServiceLbPolicyFailoverConfig {
   /** Optional. The percentage threshold that a load balancer will begin to send traffic to failover backends. If the percentage of endpoints in a MIG/NEG is smaller than this value, traffic would be sent to failover backends if possible. This field should be set to a value between 1 and 99. The default value is 50 for Global external HTTP(S) load balancer (classic) and Proxyless service mesh, and 70 for others. */
   failoverHealthThreshold?: number;
 }
 
-export const ServiceLbPolicyFailoverConfig: Schema.Schema<ServiceLbPolicyFailoverConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      failoverHealthThreshold: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "ServiceLbPolicyFailoverConfig",
-  }) as any as Schema.Schema<ServiceLbPolicyFailoverConfig>;
+export const ServiceLbPolicyFailoverConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    failoverHealthThreshold: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "ServiceLbPolicyFailoverConfig" });
 
 export interface ServiceLbPolicy {
   /** Output only. The timestamp when this resource was last updated. */
@@ -1905,22 +1570,17 @@ export interface ServiceLbPolicy {
   isolationConfig?: ServiceLbPolicyIsolationConfig;
 }
 
-export const ServiceLbPolicy: Schema.Schema<ServiceLbPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      autoCapacityDrain: Schema.optional(ServiceLbPolicyAutoCapacityDrain),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      loadBalancingAlgorithm: Schema.optional(Schema.String),
-      failoverConfig: Schema.optional(ServiceLbPolicyFailoverConfig),
-      description: Schema.optional(Schema.String),
-      isolationConfig: Schema.optional(ServiceLbPolicyIsolationConfig),
-    }),
-  ).annotate({
-    identifier: "ServiceLbPolicy",
-  }) as any as Schema.Schema<ServiceLbPolicy>;
+export const ServiceLbPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  updateTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  autoCapacityDrain: Schema.optional(ServiceLbPolicyAutoCapacityDrain),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  loadBalancingAlgorithm: Schema.optional(Schema.String),
+  failoverConfig: Schema.optional(ServiceLbPolicyFailoverConfig),
+  description: Schema.optional(Schema.String),
+  isolationConfig: Schema.optional(ServiceLbPolicyIsolationConfig),
+}).annotate({ identifier: "ServiceLbPolicy" });
 
 export interface Location {
   /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
@@ -1935,16 +1595,13 @@ export interface Location {
   metadata?: Record<string, unknown>;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      locationId: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+  locationId: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  name: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Location" });
 
 export interface WasmPluginVersionDetails {
   /** Output only. The timestamp when the resource was created. */
@@ -1967,36 +1624,27 @@ export interface WasmPluginVersionDetails {
   imageDigest?: string;
 }
 
-export const WasmPluginVersionDetails: Schema.Schema<WasmPluginVersionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      imageUri: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      pluginConfigData: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      pluginConfigDigest: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      pluginConfigUri: Schema.optional(Schema.String),
-      imageDigest: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WasmPluginVersionDetails",
-  }) as any as Schema.Schema<WasmPluginVersionDetails>;
+export const WasmPluginVersionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    imageUri: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    pluginConfigData: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    pluginConfigDigest: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    pluginConfigUri: Schema.optional(Schema.String),
+    imageDigest: Schema.optional(Schema.String),
+  }).annotate({ identifier: "WasmPluginVersionDetails" });
 
 export interface WasmPluginUsedBy {
   /** Output only. Full name of the resource https://google.aip.dev/122#full-resource-names, for example `//networkservices.googleapis.com/projects/{project}/locations/{location}/lbRouteExtensions/{extension}` */
   name?: string;
 }
 
-export const WasmPluginUsedBy: Schema.Schema<WasmPluginUsedBy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WasmPluginUsedBy",
-  }) as any as Schema.Schema<WasmPluginUsedBy>;
+export const WasmPluginUsedBy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "WasmPluginUsedBy" });
 
 export interface WasmPlugin {
   /** Optional. Set of labels associated with the `WasmPlugin` resource. The format must comply with [the following requirements](/compute/docs/labeling-resources#requirements). */
@@ -2023,24 +1671,21 @@ export interface WasmPlugin {
   logConfig?: WasmPluginLogConfig;
 }
 
-export const WasmPlugin: Schema.Schema<WasmPlugin> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      mainVersionId: Schema.optional(Schema.String),
-      kmsKeyName: Schema.optional(Schema.String),
-      kmsKeyVersion: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      usedBy: Schema.optional(Schema.Array(WasmPluginUsedBy)),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      versions: Schema.optional(
-        Schema.Record(Schema.String, WasmPluginVersionDetails),
-      ),
-      description: Schema.optional(Schema.String),
-      logConfig: Schema.optional(WasmPluginLogConfig),
-    }),
-  ).annotate({ identifier: "WasmPlugin" }) as any as Schema.Schema<WasmPlugin>;
+export const WasmPlugin = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  mainVersionId: Schema.optional(Schema.String),
+  kmsKeyName: Schema.optional(Schema.String),
+  kmsKeyVersion: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  usedBy: Schema.optional(Schema.Array(WasmPluginUsedBy)),
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  versions: Schema.optional(
+    Schema.Record(Schema.String, WasmPluginVersionDetails),
+  ),
+  description: Schema.optional(Schema.String),
+  logConfig: Schema.optional(WasmPluginLogConfig),
+}).annotate({ identifier: "WasmPlugin" });
 
 export interface ListServiceBindingsResponse {
   /** List of ServiceBinding resources. */
@@ -2051,16 +1696,12 @@ export interface ListServiceBindingsResponse {
   nextPageToken?: string;
 }
 
-export const ListServiceBindingsResponse: Schema.Schema<ListServiceBindingsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serviceBindings: Schema.optional(Schema.Array(ServiceBinding)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListServiceBindingsResponse",
-  }) as any as Schema.Schema<ListServiceBindingsResponse>;
+export const ListServiceBindingsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    serviceBindings: Schema.optional(Schema.Array(ServiceBinding)),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListServiceBindingsResponse" });
 
 export interface ListWasmPluginsResponse {
   /** Unreachable resources. Populated when the request attempts to list all resources across all supported locations, while some locations are temporarily unavailable. */
@@ -2071,16 +1712,12 @@ export interface ListWasmPluginsResponse {
   wasmPlugins?: Array<WasmPlugin>;
 }
 
-export const ListWasmPluginsResponse: Schema.Schema<ListWasmPluginsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-      wasmPlugins: Schema.optional(Schema.Array(WasmPlugin)),
-    }),
-  ).annotate({
-    identifier: "ListWasmPluginsResponse",
-  }) as any as Schema.Schema<ListWasmPluginsResponse>;
+export const ListWasmPluginsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+    wasmPlugins: Schema.optional(Schema.Array(WasmPlugin)),
+  }).annotate({ identifier: "ListWasmPluginsResponse" });
 
 export interface ListTcpRoutesResponse {
   /** Unreachable resources. Populated when the request opts into return_partial_success and reading across collections e.g. when attempting to list all resources across all supported locations. */
@@ -2091,16 +1728,11 @@ export interface ListTcpRoutesResponse {
   nextPageToken?: string;
 }
 
-export const ListTcpRoutesResponse: Schema.Schema<ListTcpRoutesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      tcpRoutes: Schema.optional(Schema.Array(TcpRoute)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListTcpRoutesResponse",
-  }) as any as Schema.Schema<ListTcpRoutesResponse>;
+export const ListTcpRoutesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+  tcpRoutes: Schema.optional(Schema.Array(TcpRoute)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListTcpRoutesResponse" });
 
 export interface ListServiceLbPoliciesResponse {
   /** If there might be more results than those appearing in this response, then `next_page_token` is included. To get the next set of results, call this method again using the value of `next_page_token` as `page_token`. */
@@ -2111,16 +1743,12 @@ export interface ListServiceLbPoliciesResponse {
   unreachable?: Array<string>;
 }
 
-export const ListServiceLbPoliciesResponse: Schema.Schema<ListServiceLbPoliciesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      serviceLbPolicies: Schema.optional(Schema.Array(ServiceLbPolicy)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListServiceLbPoliciesResponse",
-  }) as any as Schema.Schema<ListServiceLbPoliciesResponse>;
+export const ListServiceLbPoliciesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    serviceLbPolicies: Schema.optional(Schema.Array(ServiceLbPolicy)),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListServiceLbPoliciesResponse" });
 
 export interface MetadataLabels {
   /** Required. Label name presented as key in xDS Node Metadata. */
@@ -2129,15 +1757,10 @@ export interface MetadataLabels {
   labelValue?: string;
 }
 
-export const MetadataLabels: Schema.Schema<MetadataLabels> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labelName: Schema.optional(Schema.String),
-      labelValue: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MetadataLabels",
-  }) as any as Schema.Schema<MetadataLabels>;
+export const MetadataLabels = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  labelName: Schema.optional(Schema.String),
+  labelValue: Schema.optional(Schema.String),
+}).annotate({ identifier: "MetadataLabels" });
 
 export interface MetadataLabelMatcher {
   /** Specifies how matching should be done. Supported values are: MATCH_ANY: At least one of the Labels specified in the matcher should match the metadata presented by xDS client. MATCH_ALL: The metadata presented by the xDS client should contain all of the labels specified here. The selection is determined based on the best match. For example, suppose there are three EndpointPolicy resources P1, P2 and P3 and if P1 has a the matcher as MATCH_ANY , P2 has MATCH_ALL , and P3 has MATCH_ALL . If a client with label connects, the config from P1 will be selected. If a client with label connects, the config from P2 will be selected. If a client with label connects, the config from P3 will be selected. If there is more than one best match, (for example, if a config P4 with selector exists and if a client with label connects), pick up the one with older creation time. */
@@ -2150,29 +1773,19 @@ export interface MetadataLabelMatcher {
   metadataLabels?: Array<MetadataLabels>;
 }
 
-export const MetadataLabelMatcher: Schema.Schema<MetadataLabelMatcher> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadataLabelMatchCriteria: Schema.optional(Schema.String),
-      metadataLabels: Schema.optional(Schema.Array(MetadataLabels)),
-    }),
-  ).annotate({
-    identifier: "MetadataLabelMatcher",
-  }) as any as Schema.Schema<MetadataLabelMatcher>;
+export const MetadataLabelMatcher = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metadataLabelMatchCriteria: Schema.optional(Schema.String),
+  metadataLabels: Schema.optional(Schema.Array(MetadataLabels)),
+}).annotate({ identifier: "MetadataLabelMatcher" });
 
 export interface EndpointMatcher {
   /** The matcher is based on node metadata presented by xDS clients. */
   metadataLabelMatcher?: MetadataLabelMatcher;
 }
 
-export const EndpointMatcher: Schema.Schema<EndpointMatcher> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadataLabelMatcher: Schema.optional(MetadataLabelMatcher),
-    }),
-  ).annotate({
-    identifier: "EndpointMatcher",
-  }) as any as Schema.Schema<EndpointMatcher>;
+export const EndpointMatcher = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metadataLabelMatcher: Schema.optional(MetadataLabelMatcher),
+}).annotate({ identifier: "EndpointMatcher" });
 
 export interface AuthzExtension {
   /** Optional. All backend services and forwarding rules referenced by this extension must share the same load balancing scheme. Supported values: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`. Can be omitted for AuthzExtensions that do not reference a backend service. For more information, refer to [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service). */
@@ -2213,27 +1826,22 @@ export interface AuthzExtension {
   createTime?: string;
 }
 
-export const AuthzExtension: Schema.Schema<AuthzExtension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      loadBalancingScheme: Schema.optional(Schema.String),
-      authority: Schema.optional(Schema.String),
-      forwardHeaders: Schema.optional(Schema.Array(Schema.String)),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      service: Schema.optional(Schema.String),
-      timeout: Schema.optional(Schema.String),
-      forwardAttributes: Schema.optional(Schema.Array(Schema.String)),
-      failOpen: Schema.optional(Schema.Boolean),
-      updateTime: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      description: Schema.optional(Schema.String),
-      wireFormat: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AuthzExtension",
-  }) as any as Schema.Schema<AuthzExtension>;
+export const AuthzExtension = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  loadBalancingScheme: Schema.optional(Schema.String),
+  authority: Schema.optional(Schema.String),
+  forwardHeaders: Schema.optional(Schema.Array(Schema.String)),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  service: Schema.optional(Schema.String),
+  timeout: Schema.optional(Schema.String),
+  forwardAttributes: Schema.optional(Schema.Array(Schema.String)),
+  failOpen: Schema.optional(Schema.Boolean),
+  updateTime: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  description: Schema.optional(Schema.String),
+  wireFormat: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "AuthzExtension" });
 
 export interface ListAuthzExtensionsResponse {
   /** The list of `AuthzExtension` resources. */
@@ -2244,16 +1852,12 @@ export interface ListAuthzExtensionsResponse {
   nextPageToken?: string;
 }
 
-export const ListAuthzExtensionsResponse: Schema.Schema<ListAuthzExtensionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      authzExtensions: Schema.optional(Schema.Array(AuthzExtension)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAuthzExtensionsResponse",
-  }) as any as Schema.Schema<ListAuthzExtensionsResponse>;
+export const ListAuthzExtensionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    authzExtensions: Schema.optional(Schema.Array(AuthzExtension)),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListAuthzExtensionsResponse" });
 
 export interface GatewayRouteView {
   /** Output only. Type of the route: HttpRoute,GrpcRoute,TcpRoute, or TlsRoute */
@@ -2268,18 +1872,13 @@ export interface GatewayRouteView {
   routeId?: string;
 }
 
-export const GatewayRouteView: Schema.Schema<GatewayRouteView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      routeType: Schema.optional(Schema.String),
-      routeProjectNumber: Schema.optional(Schema.String),
-      routeLocation: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      routeId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GatewayRouteView",
-  }) as any as Schema.Schema<GatewayRouteView>;
+export const GatewayRouteView = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  routeType: Schema.optional(Schema.String),
+  routeProjectNumber: Schema.optional(Schema.String),
+  routeLocation: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  routeId: Schema.optional(Schema.String),
+}).annotate({ identifier: "GatewayRouteView" });
 
 export interface ListGatewayRouteViewsResponse {
   /** List of GatewayRouteView resources. */
@@ -2290,16 +1889,12 @@ export interface ListGatewayRouteViewsResponse {
   nextPageToken?: string;
 }
 
-export const ListGatewayRouteViewsResponse: Schema.Schema<ListGatewayRouteViewsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gatewayRouteViews: Schema.optional(Schema.Array(GatewayRouteView)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListGatewayRouteViewsResponse",
-  }) as any as Schema.Schema<ListGatewayRouteViewsResponse>;
+export const ListGatewayRouteViewsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gatewayRouteViews: Schema.optional(Schema.Array(GatewayRouteView)),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListGatewayRouteViewsResponse" });
 
 export interface LbRouteExtension {
   /** Optional. Set of labels associated with the `LbRouteExtension` resource. The format must comply with [the requirements for labels](https://cloud.google.com/compute/docs/labeling-resources#requirements) for Google Cloud resources. */
@@ -2326,22 +1921,17 @@ export interface LbRouteExtension {
     | (string & {});
 }
 
-export const LbRouteExtension: Schema.Schema<LbRouteExtension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      forwardingRules: Schema.optional(Schema.Array(Schema.String)),
-      updateTime: Schema.optional(Schema.String),
-      extensionChains: Schema.optional(Schema.Array(ExtensionChain)),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      description: Schema.optional(Schema.String),
-      loadBalancingScheme: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LbRouteExtension",
-  }) as any as Schema.Schema<LbRouteExtension>;
+export const LbRouteExtension = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  forwardingRules: Schema.optional(Schema.Array(Schema.String)),
+  updateTime: Schema.optional(Schema.String),
+  extensionChains: Schema.optional(Schema.Array(ExtensionChain)),
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  description: Schema.optional(Schema.String),
+  loadBalancingScheme: Schema.optional(Schema.String),
+}).annotate({ identifier: "LbRouteExtension" });
 
 export interface ListAgentGatewaysResponse {
   /** List of AgentGateway resources. */
@@ -2352,16 +1942,12 @@ export interface ListAgentGatewaysResponse {
   nextPageToken?: string;
 }
 
-export const ListAgentGatewaysResponse: Schema.Schema<ListAgentGatewaysResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      agentGateways: Schema.optional(Schema.Array(AgentGateway)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAgentGatewaysResponse",
-  }) as any as Schema.Schema<ListAgentGatewaysResponse>;
+export const ListAgentGatewaysResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    agentGateways: Schema.optional(Schema.Array(AgentGateway)),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListAgentGatewaysResponse" });
 
 export interface HttpRoute {
   /** Optional. Meshes defines a list of meshes this HttpRoute is attached to, as one of the routing rules to route the requests served by the mesh. Each mesh reference should match the pattern: `projects/* /locations/* /meshes/` The attached Mesh should be of a type SIDECAR */
@@ -2386,21 +1972,18 @@ export interface HttpRoute {
   labels?: Record<string, string>;
 }
 
-export const HttpRoute: Schema.Schema<HttpRoute> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      meshes: Schema.optional(Schema.Array(Schema.String)),
-      rules: Schema.optional(Schema.Array(HttpRouteRouteRule)),
-      description: Schema.optional(Schema.String),
-      gateways: Schema.optional(Schema.Array(Schema.String)),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      hostnames: Schema.optional(Schema.Array(Schema.String)),
-      selfLink: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({ identifier: "HttpRoute" }) as any as Schema.Schema<HttpRoute>;
+export const HttpRoute = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  meshes: Schema.optional(Schema.Array(Schema.String)),
+  rules: Schema.optional(Schema.Array(HttpRouteRouteRule)),
+  description: Schema.optional(Schema.String),
+  gateways: Schema.optional(Schema.Array(Schema.String)),
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  hostnames: Schema.optional(Schema.Array(Schema.String)),
+  selfLink: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "HttpRoute" });
 
 export interface EndpointPolicy {
   /** Optional. A URL referring to ServerTlsPolicy resource. ServerTlsPolicy is used to determine the authentication policy to be applied to terminate the inbound traffic at the identified backends. If this field is not set, authentication is disabled(open) for this endpoint. */
@@ -2433,25 +2016,20 @@ export interface EndpointPolicy {
   clientTlsPolicy?: string;
 }
 
-export const EndpointPolicy: Schema.Schema<EndpointPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serverTlsPolicy: Schema.optional(Schema.String),
-      securityPolicy: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      endpointMatcher: Schema.optional(EndpointMatcher),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      trafficPortSelector: Schema.optional(TrafficPortSelector),
-      description: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      authorizationPolicy: Schema.optional(Schema.String),
-      clientTlsPolicy: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EndpointPolicy",
-  }) as any as Schema.Schema<EndpointPolicy>;
+export const EndpointPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  serverTlsPolicy: Schema.optional(Schema.String),
+  securityPolicy: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  endpointMatcher: Schema.optional(EndpointMatcher),
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  trafficPortSelector: Schema.optional(TrafficPortSelector),
+  description: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  authorizationPolicy: Schema.optional(Schema.String),
+  clientTlsPolicy: Schema.optional(Schema.String),
+}).annotate({ identifier: "EndpointPolicy" });
 
 export interface ListEndpointPoliciesResponse {
   /** If there might be more results than those appearing in this response, then `next_page_token` is included. To get the next set of results, call this method again using the value of `next_page_token` as `page_token`. */
@@ -2462,16 +2040,12 @@ export interface ListEndpointPoliciesResponse {
   endpointPolicies?: Array<EndpointPolicy>;
 }
 
-export const ListEndpointPoliciesResponse: Schema.Schema<ListEndpointPoliciesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      endpointPolicies: Schema.optional(Schema.Array(EndpointPolicy)),
-    }),
-  ).annotate({
-    identifier: "ListEndpointPoliciesResponse",
-  }) as any as Schema.Schema<ListEndpointPoliciesResponse>;
+export const ListEndpointPoliciesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    endpointPolicies: Schema.optional(Schema.Array(EndpointPolicy)),
+  }).annotate({ identifier: "ListEndpointPoliciesResponse" });
 
 export interface ListLbEdgeExtensionsResponse {
   /** Locations that could not be reached. */
@@ -2482,23 +2056,18 @@ export interface ListLbEdgeExtensionsResponse {
   lbEdgeExtensions?: Array<LbEdgeExtension>;
 }
 
-export const ListLbEdgeExtensionsResponse: Schema.Schema<ListLbEdgeExtensionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-      lbEdgeExtensions: Schema.optional(Schema.Array(LbEdgeExtension)),
-    }),
-  ).annotate({
-    identifier: "ListLbEdgeExtensionsResponse",
-  }) as any as Schema.Schema<ListLbEdgeExtensionsResponse>;
+export const ListLbEdgeExtensionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+    lbEdgeExtensions: Schema.optional(Schema.Array(LbEdgeExtension)),
+  }).annotate({ identifier: "ListLbEdgeExtensionsResponse" });
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelOperationRequest",
-  }) as any as Schema.Schema<CancelOperationRequest>;
+export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelOperationRequest" });
 
 export interface ListMeshRouteViewsResponse {
   /** List of MeshRouteView resources. */
@@ -2509,16 +2078,12 @@ export interface ListMeshRouteViewsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListMeshRouteViewsResponse: Schema.Schema<ListMeshRouteViewsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      meshRouteViews: Schema.optional(Schema.Array(MeshRouteView)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListMeshRouteViewsResponse",
-  }) as any as Schema.Schema<ListMeshRouteViewsResponse>;
+export const ListMeshRouteViewsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    meshRouteViews: Schema.optional(Schema.Array(MeshRouteView)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListMeshRouteViewsResponse" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -2527,15 +2092,10 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(Location)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface ListHttpRoutesResponse {
   /** List of HttpRoute resources. */
@@ -2546,16 +2106,13 @@ export interface ListHttpRoutesResponse {
   nextPageToken?: string;
 }
 
-export const ListHttpRoutesResponse: Schema.Schema<ListHttpRoutesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      httpRoutes: Schema.optional(Schema.Array(HttpRoute)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListHttpRoutesResponse",
-  }) as any as Schema.Schema<ListHttpRoutesResponse>;
+export const ListHttpRoutesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    httpRoutes: Schema.optional(Schema.Array(HttpRoute)),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ListHttpRoutesResponse" });
 
 export interface ListLbRouteExtensionsResponse {
   /** Locations that could not be reached. */
@@ -2566,16 +2123,12 @@ export interface ListLbRouteExtensionsResponse {
   nextPageToken?: string;
 }
 
-export const ListLbRouteExtensionsResponse: Schema.Schema<ListLbRouteExtensionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      lbRouteExtensions: Schema.optional(Schema.Array(LbRouteExtension)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLbRouteExtensionsResponse",
-  }) as any as Schema.Schema<ListLbRouteExtensionsResponse>;
+export const ListLbRouteExtensionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    lbRouteExtensions: Schema.optional(Schema.Array(LbRouteExtension)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListLbRouteExtensionsResponse" });
 
 // ==========================================================================
 // Operations

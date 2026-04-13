@@ -27,70 +27,47 @@ export interface TestIamPermissionsRequest {
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsRequest",
-  }) as any as Schema.Schema<TestIamPermissionsRequest>;
+export const TestIamPermissionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsRequest" });
 
 export interface GetPolicyOptions {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   requestedPolicyVersion?: number;
 }
 
-export const GetPolicyOptions: Schema.Schema<GetPolicyOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestedPolicyVersion: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GetPolicyOptions",
-  }) as any as Schema.Schema<GetPolicyOptions>;
+export const GetPolicyOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  requestedPolicyVersion: Schema.optional(Schema.Number),
+}).annotate({ identifier: "GetPolicyOptions" });
 
 export interface GetIamPolicyRequest {
   /** OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`. */
   options?: GetPolicyOptions;
 }
 
-export const GetIamPolicyRequest: Schema.Schema<GetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      options: Schema.optional(GetPolicyOptions),
-    }),
-  ).annotate({
-    identifier: "GetIamPolicyRequest",
-  }) as any as Schema.Schema<GetIamPolicyRequest>;
+export const GetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  options: Schema.optional(GetPolicyOptions),
+}).annotate({ identifier: "GetIamPolicyRequest" });
 
 export interface TagsFullStateForChildResource {
   /** If TagsFullStateForChildResource is initialized, the values in this field represent all the tags in the next state for the child resource. Only one type of tags reference (numeric or namespace) is required to be passed. IMPORTANT: This field should only be used when the target resource IAM policy name is UNKNOWN and the resource's parent IAM policy name is being passed in the request. */
   tags?: Record<string, string>;
 }
 
-export const TagsFullStateForChildResource: Schema.Schema<TagsFullStateForChildResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TagsFullStateForChildResource",
-  }) as any as Schema.Schema<TagsFullStateForChildResource>;
+export const TagsFullStateForChildResource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({ identifier: "TagsFullStateForChildResource" });
 
 export interface CorsSettings {
   /** Configuration to allow HTTP `OPTIONS` calls to skip authentication and authorization. If undefined, IAP will not apply any special logic to `OPTIONS` requests. */
   allowHttpOptions?: boolean;
 }
 
-export const CorsSettings: Schema.Schema<CorsSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      allowHttpOptions: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "CorsSettings",
-  }) as any as Schema.Schema<CorsSettings>;
+export const CorsSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  allowHttpOptions: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "CorsSettings" });
 
 export interface AllowedDomainsSettings {
   /** Optional. Configuration for customers to opt in for the feature. */
@@ -99,15 +76,12 @@ export interface AllowedDomainsSettings {
   domains?: Array<string>;
 }
 
-export const AllowedDomainsSettings: Schema.Schema<AllowedDomainsSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enable: Schema.optional(Schema.Boolean),
-      domains: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AllowedDomainsSettings",
-  }) as any as Schema.Schema<AllowedDomainsSettings>;
+export const AllowedDomainsSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    enable: Schema.optional(Schema.Boolean),
+    domains: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "AllowedDomainsSettings" });
 
 export interface GcipSettings {
   /** Optional. GCIP tenant IDs that are linked to the IAP resource. `tenant_ids` could be a string beginning with a number character to indicate authenticating with GCIP tenant flow, or in the format of `_` to indicate authenticating with GCIP agent flow. If agent flow is used, `tenant_ids` should only contain one single element, while for tenant flow, `tenant_ids` can contain multiple elements. */
@@ -116,15 +90,10 @@ export interface GcipSettings {
   loginPageUri?: string;
 }
 
-export const GcipSettings: Schema.Schema<GcipSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tenantIds: Schema.optional(Schema.Array(Schema.String)),
-      loginPageUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GcipSettings",
-  }) as any as Schema.Schema<GcipSettings>;
+export const GcipSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tenantIds: Schema.optional(Schema.Array(Schema.String)),
+  loginPageUri: Schema.optional(Schema.String),
+}).annotate({ identifier: "GcipSettings" });
 
 export interface OAuthSettings {
   /** Optional. Input only. OAuth secret paired with client ID. */
@@ -139,18 +108,13 @@ export interface OAuthSettings {
   programmaticClients?: Array<string>;
 }
 
-export const OAuthSettings: Schema.Schema<OAuthSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clientSecret: Schema.optional(Schema.String),
-      loginHint: Schema.optional(Schema.String),
-      clientId: Schema.optional(Schema.String),
-      clientSecretSha256: Schema.optional(Schema.String),
-      programmaticClients: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "OAuthSettings",
-  }) as any as Schema.Schema<OAuthSettings>;
+export const OAuthSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  clientSecret: Schema.optional(Schema.String),
+  loginHint: Schema.optional(Schema.String),
+  clientId: Schema.optional(Schema.String),
+  clientSecretSha256: Schema.optional(Schema.String),
+  programmaticClients: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "OAuthSettings" });
 
 export interface PolicyName {
   /** Resource type. Types are defined in IAM's .service files. Valid values for type might be 'storage_buckets', 'compute_instances', 'resourcemanager_customers', 'billing_accounts', etc. */
@@ -161,28 +125,20 @@ export interface PolicyName {
   id?: string;
 }
 
-export const PolicyName: Schema.Schema<PolicyName> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      region: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "PolicyName" }) as any as Schema.Schema<PolicyName>;
+export const PolicyName = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  region: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+}).annotate({ identifier: "PolicyName" });
 
 export interface TagsFullState {
   /** If TagsFullState is initialized, the values in this field fully represent all the tags in the next state (the current tag values are not used). If tags.size() == 0, the next state of tags would be no tags for evaluation purposes. Only one type of tags reference (numeric or namespace) is required to be passed. */
   tags?: Record<string, string>;
 }
 
-export const TagsFullState: Schema.Schema<TagsFullState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TagsFullState",
-  }) as any as Schema.Schema<TagsFullState>;
+export const TagsFullState = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "TagsFullState" });
 
 export interface TagsPartialState {
   /** Tags that’ll be updated or added to the current state of tags for evaluation purposes. If a key exists in both "tags_to_upsert" and "tag_keys_to_remove", the one in "tag_keys_to_remove" is ignored. Only one type of tags reference (numeric or namespace) is required to be passed. */
@@ -191,17 +147,10 @@ export interface TagsPartialState {
   tagKeysToRemove?: Array<string>;
 }
 
-export const TagsPartialState: Schema.Schema<TagsPartialState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tagsToUpsert: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      tagKeysToRemove: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TagsPartialState",
-  }) as any as Schema.Schema<TagsPartialState>;
+export const TagsPartialState = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tagsToUpsert: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  tagKeysToRemove: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "TagsPartialState" });
 
 export interface NextStateOfTags {
   tagsFullState?: TagsFullState;
@@ -209,18 +158,11 @@ export interface NextStateOfTags {
   tagsPartialState?: TagsPartialState;
 }
 
-export const NextStateOfTags: Schema.Schema<NextStateOfTags> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tagsFullState: Schema.optional(TagsFullState),
-      tagsFullStateForChildResource: Schema.optional(
-        TagsFullStateForChildResource,
-      ),
-      tagsPartialState: Schema.optional(TagsPartialState),
-    }),
-  ).annotate({
-    identifier: "NextStateOfTags",
-  }) as any as Schema.Schema<NextStateOfTags>;
+export const NextStateOfTags = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tagsFullState: Schema.optional(TagsFullState),
+  tagsFullStateForChildResource: Schema.optional(TagsFullStateForChildResource),
+  tagsPartialState: Schema.optional(TagsPartialState),
+}).annotate({ identifier: "NextStateOfTags" });
 
 export interface Resource {
   /** The public resource type name of the resource. It is configured using the official_name of the ResourceType as defined in service configurations under //configs/cloud/resourcetypes. For example, the official_name for GCP projects is set as 'cloudresourcemanager.googleapis.com/Project' according to //configs/cloud/resourcetypes/google/cloud/resourcemanager/prod.yaml This field is **required** for services integrated with resource-attribute-based IAM conditions and/or CustomOrgPolicy. This field requires special handling for parents-only permissions such as `create` and `list`. See the document linked below for further details. See go/iam-conditions-sig-g3#populate-resource-attributes for specific details on populating this field. */
@@ -239,20 +181,17 @@ export interface Resource {
   name?: string;
 }
 
-export const Resource: Schema.Schema<Resource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      service: Schema.optional(Schema.String),
-      expectedNextState: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-      nextStateOfTags: Schema.optional(NextStateOfTags),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      locations: Schema.optional(Schema.Array(Schema.String)),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Resource" }) as any as Schema.Schema<Resource>;
+export const Resource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  service: Schema.optional(Schema.String),
+  expectedNextState: Schema.optional(
+    Schema.Record(Schema.String, Schema.Unknown),
+  ),
+  nextStateOfTags: Schema.optional(NextStateOfTags),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  locations: Schema.optional(Schema.Array(Schema.String)),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Resource" });
 
 export interface PolicyDelegationSettings {
   /** The DNS name of the service (e.g. "resourcemanager.googleapis.com"). This should be the domain name part of the full resource names (see https://aip.dev/122#full-resource-names), which is usually the same as IamServiceSpec.service of the service where the resource type is defined. */
@@ -265,17 +204,13 @@ export interface PolicyDelegationSettings {
   resource?: Resource;
 }
 
-export const PolicyDelegationSettings: Schema.Schema<PolicyDelegationSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      iamServiceName: Schema.optional(Schema.String),
-      policyName: Schema.optional(PolicyName),
-      iamPermission: Schema.optional(Schema.String),
-      resource: Schema.optional(Resource),
-    }),
-  ).annotate({
-    identifier: "PolicyDelegationSettings",
-  }) as any as Schema.Schema<PolicyDelegationSettings>;
+export const PolicyDelegationSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    iamServiceName: Schema.optional(Schema.String),
+    policyName: Schema.optional(PolicyName),
+    iamPermission: Schema.optional(Schema.String),
+    resource: Schema.optional(Resource),
+  }).annotate({ identifier: "PolicyDelegationSettings" });
 
 export interface OAuth2 {
   /** Input only. The OAuth 2.0 client secret created while registering the client ID. */
@@ -286,14 +221,11 @@ export interface OAuth2 {
   clientId?: string;
 }
 
-export const OAuth2: Schema.Schema<OAuth2> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clientSecret: Schema.optional(Schema.String),
-      clientSecretSha256: Schema.optional(Schema.String),
-      clientId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "OAuth2" }) as any as Schema.Schema<OAuth2>;
+export const OAuth2 = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  clientSecret: Schema.optional(Schema.String),
+  clientSecretSha256: Schema.optional(Schema.String),
+  clientId: Schema.optional(Schema.String),
+}).annotate({ identifier: "OAuth2" });
 
 export interface WorkforceIdentitySettings {
   /** The workforce pool resources. Only one workforce pool is accepted. */
@@ -302,15 +234,11 @@ export interface WorkforceIdentitySettings {
   oauth2?: OAuth2;
 }
 
-export const WorkforceIdentitySettings: Schema.Schema<WorkforceIdentitySettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      workforcePools: Schema.optional(Schema.Array(Schema.String)),
-      oauth2: Schema.optional(OAuth2),
-    }),
-  ).annotate({
-    identifier: "WorkforceIdentitySettings",
-  }) as any as Schema.Schema<WorkforceIdentitySettings>;
+export const WorkforceIdentitySettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    workforcePools: Schema.optional(Schema.Array(Schema.String)),
+    oauth2: Schema.optional(OAuth2),
+  }).annotate({ identifier: "WorkforceIdentitySettings" });
 
 export interface ReauthSettings {
   /** Optional. How IAP determines the effective policy in cases of hierarchical policies. Policies are merged from higher in the hierarchy to lower in the hierarchy. */
@@ -331,16 +259,11 @@ export interface ReauthSettings {
     | (string & {});
 }
 
-export const ReauthSettings: Schema.Schema<ReauthSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policyType: Schema.optional(Schema.String),
-      maxAge: Schema.optional(Schema.String),
-      method: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ReauthSettings",
-  }) as any as Schema.Schema<ReauthSettings>;
+export const ReauthSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policyType: Schema.optional(Schema.String),
+  maxAge: Schema.optional(Schema.String),
+  method: Schema.optional(Schema.String),
+}).annotate({ identifier: "ReauthSettings" });
 
 export interface AccessSettings {
   /** Optional. Configuration to allow cross-origin requests via IAP. */
@@ -365,21 +288,16 @@ export interface AccessSettings {
   reauthSettings?: ReauthSettings;
 }
 
-export const AccessSettings: Schema.Schema<AccessSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      corsSettings: Schema.optional(CorsSettings),
-      allowedDomainsSettings: Schema.optional(AllowedDomainsSettings),
-      gcipSettings: Schema.optional(GcipSettings),
-      oauthSettings: Schema.optional(OAuthSettings),
-      identitySources: Schema.optional(Schema.Array(Schema.String)),
-      policyDelegationSettings: Schema.optional(PolicyDelegationSettings),
-      workforceIdentitySettings: Schema.optional(WorkforceIdentitySettings),
-      reauthSettings: Schema.optional(ReauthSettings),
-    }),
-  ).annotate({
-    identifier: "AccessSettings",
-  }) as any as Schema.Schema<AccessSettings>;
+export const AccessSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  corsSettings: Schema.optional(CorsSettings),
+  allowedDomainsSettings: Schema.optional(AllowedDomainsSettings),
+  gcipSettings: Schema.optional(GcipSettings),
+  oauthSettings: Schema.optional(OAuthSettings),
+  identitySources: Schema.optional(Schema.Array(Schema.String)),
+  policyDelegationSettings: Schema.optional(PolicyDelegationSettings),
+  workforceIdentitySettings: Schema.optional(WorkforceIdentitySettings),
+  reauthSettings: Schema.optional(ReauthSettings),
+}).annotate({ identifier: "AccessSettings" });
 
 export interface AccessDeniedPageSettings {
   /** Whether to generate remediation token on access denied events to this application. */
@@ -390,23 +308,19 @@ export interface AccessDeniedPageSettings {
   generateTroubleshootingUri?: boolean;
 }
 
-export const AccessDeniedPageSettings: Schema.Schema<AccessDeniedPageSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      remediationTokenGenerationEnabled: Schema.optional(Schema.Boolean),
-      accessDeniedPageUri: Schema.optional(Schema.String),
-      generateTroubleshootingUri: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "AccessDeniedPageSettings",
-  }) as any as Schema.Schema<AccessDeniedPageSettings>;
+export const AccessDeniedPageSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    remediationTokenGenerationEnabled: Schema.optional(Schema.Boolean),
+    accessDeniedPageUri: Schema.optional(Schema.String),
+    generateTroubleshootingUri: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "AccessDeniedPageSettings" });
 
 export interface ResetIdentityAwareProxyClientSecretRequest {}
 
-export const ResetIdentityAwareProxyClientSecretRequest: Schema.Schema<ResetIdentityAwareProxyClientSecretRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const ResetIdentityAwareProxyClientSecretRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ResetIdentityAwareProxyClientSecretRequest",
-  }) as any as Schema.Schema<ResetIdentityAwareProxyClientSecretRequest>;
+  });
 
 export interface Expr {
   /** Textual representation of an expression in Common Expression Language syntax. */
@@ -419,15 +333,12 @@ export interface Expr {
   description?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expression: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Expr" }) as any as Schema.Schema<Expr>;
+export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  expression: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "Expr" });
 
 export interface Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
@@ -438,35 +349,28 @@ export interface Binding {
   condition?: Expr;
 }
 
-export const Binding: Schema.Schema<Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      members: Schema.optional(Schema.Array(Schema.String)),
-      role: Schema.optional(Schema.String),
-      condition: Schema.optional(Expr),
-    }),
-  ).annotate({ identifier: "Binding" }) as any as Schema.Schema<Binding>;
+export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  members: Schema.optional(Schema.Array(Schema.String)),
+  role: Schema.optional(Schema.String),
+  condition: Schema.optional(Expr),
+}).annotate({ identifier: "Binding" });
 
 export interface ValidateIapAttributeExpressionResponse {}
 
-export const ValidateIapAttributeExpressionResponse: Schema.Schema<ValidateIapAttributeExpressionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const ValidateIapAttributeExpressionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ValidateIapAttributeExpressionResponse",
-  }) as any as Schema.Schema<ValidateIapAttributeExpressionResponse>;
+  });
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsResponse",
-  }) as any as Schema.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsResponse" });
 
 export interface TunnelDestGroup {
   /** Identifier. Identifier for the TunnelDestGroup. Must be unique within the project and contain only lower case letters (a-z) and dashes (-). */
@@ -477,16 +381,11 @@ export interface TunnelDestGroup {
   fqdns?: Array<string>;
 }
 
-export const TunnelDestGroup: Schema.Schema<TunnelDestGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      cidrs: Schema.optional(Schema.Array(Schema.String)),
-      fqdns: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TunnelDestGroup",
-  }) as any as Schema.Schema<TunnelDestGroup>;
+export const TunnelDestGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  cidrs: Schema.optional(Schema.Array(Schema.String)),
+  fqdns: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "TunnelDestGroup" });
 
 export interface ListTunnelDestGroupsResponse {
   /** TunnelDestGroup existing in the project. */
@@ -495,15 +394,11 @@ export interface ListTunnelDestGroupsResponse {
   nextPageToken?: string;
 }
 
-export const ListTunnelDestGroupsResponse: Schema.Schema<ListTunnelDestGroupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tunnelDestGroups: Schema.optional(Schema.Array(TunnelDestGroup)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListTunnelDestGroupsResponse",
-  }) as any as Schema.Schema<ListTunnelDestGroupsResponse>;
+export const ListTunnelDestGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tunnelDestGroups: Schema.optional(Schema.Array(TunnelDestGroup)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListTunnelDestGroupsResponse" });
 
 export interface Brand {
   /** Support email displayed on the OAuth consent screen. */
@@ -516,29 +411,21 @@ export interface Brand {
   name?: string;
 }
 
-export const Brand: Schema.Schema<Brand> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      supportEmail: Schema.optional(Schema.String),
-      applicationTitle: Schema.optional(Schema.String),
-      orgInternalOnly: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Brand" }) as any as Schema.Schema<Brand>;
+export const Brand = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  supportEmail: Schema.optional(Schema.String),
+  applicationTitle: Schema.optional(Schema.String),
+  orgInternalOnly: Schema.optional(Schema.Boolean),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Brand" });
 
 export interface ListBrandsResponse {
   /** Brands existing in the project. */
   brands?: Array<Brand>;
 }
 
-export const ListBrandsResponse: Schema.Schema<ListBrandsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      brands: Schema.optional(Schema.Array(Brand)),
-    }),
-  ).annotate({
-    identifier: "ListBrandsResponse",
-  }) as any as Schema.Schema<ListBrandsResponse>;
+export const ListBrandsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  brands: Schema.optional(Schema.Array(Brand)),
+}).annotate({ identifier: "ListBrandsResponse" });
 
 export interface IdentityAwareProxyClient {
   /** Human-friendly name given to the OAuth client. */
@@ -549,23 +436,18 @@ export interface IdentityAwareProxyClient {
   secret?: string;
 }
 
-export const IdentityAwareProxyClient: Schema.Schema<IdentityAwareProxyClient> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      secret: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "IdentityAwareProxyClient",
-  }) as any as Schema.Schema<IdentityAwareProxyClient>;
+export const IdentityAwareProxyClient =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    secret: Schema.optional(Schema.String),
+  }).annotate({ identifier: "IdentityAwareProxyClient" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface Policy {
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
@@ -576,14 +458,11 @@ export interface Policy {
   bindings?: Array<Binding>;
 }
 
-export const Policy: Schema.Schema<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      etag: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.Number),
-      bindings: Schema.optional(Schema.Array(Binding)),
-    }),
-  ).annotate({ identifier: "Policy" }) as any as Schema.Schema<Policy>;
+export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  etag: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.Number),
+  bindings: Schema.optional(Schema.Array(Binding)),
+}).annotate({ identifier: "Policy" });
 
 export interface ListIdentityAwareProxyClientsResponse {
   /** Clients existing in the brand. */
@@ -592,17 +471,13 @@ export interface ListIdentityAwareProxyClientsResponse {
   nextPageToken?: string;
 }
 
-export const ListIdentityAwareProxyClientsResponse: Schema.Schema<ListIdentityAwareProxyClientsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      identityAwareProxyClients: Schema.optional(
-        Schema.Array(IdentityAwareProxyClient),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListIdentityAwareProxyClientsResponse",
-  }) as any as Schema.Schema<ListIdentityAwareProxyClientsResponse>;
+export const ListIdentityAwareProxyClientsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    identityAwareProxyClients: Schema.optional(
+      Schema.Array(IdentityAwareProxyClient),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListIdentityAwareProxyClientsResponse" });
 
 export interface AttributePropagationSettings {
   /** Optional. Which output credentials attributes selected by the CEL expression should be propagated in. All attributes will be fully duplicated in each selected output credential. */
@@ -619,30 +494,21 @@ export interface AttributePropagationSettings {
   enable?: boolean;
 }
 
-export const AttributePropagationSettings: Schema.Schema<AttributePropagationSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      outputCredentials: Schema.optional(Schema.Array(Schema.String)),
-      expression: Schema.optional(Schema.String),
-      enable: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "AttributePropagationSettings",
-  }) as any as Schema.Schema<AttributePropagationSettings>;
+export const AttributePropagationSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    outputCredentials: Schema.optional(Schema.Array(Schema.String)),
+    expression: Schema.optional(Schema.String),
+    enable: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "AttributePropagationSettings" });
 
 export interface CsmSettings {
   /** Audience claim set in the generated RCToken. This value is not validated by IAP. */
   rctokenAud?: string;
 }
 
-export const CsmSettings: Schema.Schema<CsmSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rctokenAud: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CsmSettings",
-  }) as any as Schema.Schema<CsmSettings>;
+export const CsmSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  rctokenAud: Schema.optional(Schema.String),
+}).annotate({ identifier: "CsmSettings" });
 
 export interface ApplicationSettings {
   /** Optional. Settings to configure IAP's behavior for a service mesh. */
@@ -655,33 +521,21 @@ export interface ApplicationSettings {
   attributePropagationSettings?: AttributePropagationSettings;
 }
 
-export const ApplicationSettings: Schema.Schema<ApplicationSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      csmSettings: Schema.optional(CsmSettings),
-      accessDeniedPageSettings: Schema.optional(AccessDeniedPageSettings),
-      cookieDomain: Schema.optional(Schema.String),
-      attributePropagationSettings: Schema.optional(
-        AttributePropagationSettings,
-      ),
-    }),
-  ).annotate({
-    identifier: "ApplicationSettings",
-  }) as any as Schema.Schema<ApplicationSettings>;
+export const ApplicationSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  csmSettings: Schema.optional(CsmSettings),
+  accessDeniedPageSettings: Schema.optional(AccessDeniedPageSettings),
+  cookieDomain: Schema.optional(Schema.String),
+  attributePropagationSettings: Schema.optional(AttributePropagationSettings),
+}).annotate({ identifier: "ApplicationSettings" });
 
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: Policy;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policy: Schema.optional(Policy),
-    }),
-  ).annotate({
-    identifier: "SetIamPolicyRequest",
-  }) as any as Schema.Schema<SetIamPolicyRequest>;
+export const SetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policy: Schema.optional(Policy),
+}).annotate({ identifier: "SetIamPolicyRequest" });
 
 export interface IapSettings {
   /** Optional. Top level wrapper for all application related settings in IAP */
@@ -692,16 +546,11 @@ export interface IapSettings {
   accessSettings?: AccessSettings;
 }
 
-export const IapSettings: Schema.Schema<IapSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      applicationSettings: Schema.optional(ApplicationSettings),
-      name: Schema.optional(Schema.String),
-      accessSettings: Schema.optional(AccessSettings),
-    }),
-  ).annotate({
-    identifier: "IapSettings",
-  }) as any as Schema.Schema<IapSettings>;
+export const IapSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  applicationSettings: Schema.optional(ApplicationSettings),
+  name: Schema.optional(Schema.String),
+  accessSettings: Schema.optional(AccessSettings),
+}).annotate({ identifier: "IapSettings" });
 
 // ==========================================================================
 // Operations

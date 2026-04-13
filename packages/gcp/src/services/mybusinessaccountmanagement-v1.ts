@@ -29,15 +29,10 @@ export interface TargetLocation {
   address?: string;
 }
 
-export const TargetLocation: Schema.Schema<TargetLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locationName: Schema.optional(Schema.String),
-      address: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TargetLocation",
-  }) as any as Schema.Schema<TargetLocation>;
+export const TargetLocation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locationName: Schema.optional(Schema.String),
+  address: Schema.optional(Schema.String),
+}).annotate({ identifier: "TargetLocation" });
 
 export interface PostalAddress {
   /** Optional. The recipient at the address. This field may, under certain circumstances, contain multiline information. For example, it might contain "care of" information. */
@@ -64,24 +59,19 @@ export interface PostalAddress {
   languageCode?: string;
 }
 
-export const PostalAddress: Schema.Schema<PostalAddress> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      recipients: Schema.optional(Schema.Array(Schema.String)),
-      postalCode: Schema.optional(Schema.String),
-      sortingCode: Schema.optional(Schema.String),
-      locality: Schema.optional(Schema.String),
-      administrativeArea: Schema.optional(Schema.String),
-      addressLines: Schema.optional(Schema.Array(Schema.String)),
-      revision: Schema.optional(Schema.Number),
-      regionCode: Schema.optional(Schema.String),
-      sublocality: Schema.optional(Schema.String),
-      organization: Schema.optional(Schema.String),
-      languageCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PostalAddress",
-  }) as any as Schema.Schema<PostalAddress>;
+export const PostalAddress = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  recipients: Schema.optional(Schema.Array(Schema.String)),
+  postalCode: Schema.optional(Schema.String),
+  sortingCode: Schema.optional(Schema.String),
+  locality: Schema.optional(Schema.String),
+  administrativeArea: Schema.optional(Schema.String),
+  addressLines: Schema.optional(Schema.Array(Schema.String)),
+  revision: Schema.optional(Schema.Number),
+  regionCode: Schema.optional(Schema.String),
+  sublocality: Schema.optional(Schema.String),
+  organization: Schema.optional(Schema.String),
+  languageCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "PostalAddress" });
 
 export interface OrganizationInfo {
   /** Output only. The postal address for the account. */
@@ -92,16 +82,11 @@ export interface OrganizationInfo {
   registeredDomain?: string;
 }
 
-export const OrganizationInfo: Schema.Schema<OrganizationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      address: Schema.optional(PostalAddress),
-      phoneNumber: Schema.optional(Schema.String),
-      registeredDomain: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OrganizationInfo",
-  }) as any as Schema.Schema<OrganizationInfo>;
+export const OrganizationInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  address: Schema.optional(PostalAddress),
+  phoneNumber: Schema.optional(Schema.String),
+  registeredDomain: Schema.optional(Schema.String),
+}).annotate({ identifier: "OrganizationInfo" });
 
 export interface Account {
   /** Output only. Account reference number if provisioned. */
@@ -152,21 +137,18 @@ export interface Account {
     | (string & {});
 }
 
-export const Account: Schema.Schema<Account> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accountNumber: Schema.optional(Schema.String),
-      accountName: Schema.optional(Schema.String),
-      organizationInfo: Schema.optional(OrganizationInfo),
-      type: Schema.optional(Schema.String),
-      permissionLevel: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      vettedState: Schema.optional(Schema.String),
-      role: Schema.optional(Schema.String),
-      primaryOwner: Schema.optional(Schema.String),
-      verificationState: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Account" }) as any as Schema.Schema<Account>;
+export const Account = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  accountNumber: Schema.optional(Schema.String),
+  accountName: Schema.optional(Schema.String),
+  organizationInfo: Schema.optional(OrganizationInfo),
+  type: Schema.optional(Schema.String),
+  permissionLevel: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  vettedState: Schema.optional(Schema.String),
+  role: Schema.optional(Schema.String),
+  primaryOwner: Schema.optional(Schema.String),
+  verificationState: Schema.optional(Schema.String),
+}).annotate({ identifier: "Account" });
 
 export interface Invitation {
   /** Output only. Specifies which target types should appear in the response. */
@@ -191,37 +173,30 @@ export interface Invitation {
     | (string & {});
 }
 
-export const Invitation: Schema.Schema<Invitation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetType: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      targetLocation: Schema.optional(TargetLocation),
-      targetAccount: Schema.optional(Account),
-      role: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Invitation" }) as any as Schema.Schema<Invitation>;
+export const Invitation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  targetType: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  targetLocation: Schema.optional(TargetLocation),
+  targetAccount: Schema.optional(Account),
+  role: Schema.optional(Schema.String),
+}).annotate({ identifier: "Invitation" });
 
 export interface ListInvitationsResponse {
   /** A collection of invitations that are pending for the account. The number of invitations listed here cannot exceed 1000. */
   invitations?: Array<Invitation>;
 }
 
-export const ListInvitationsResponse: Schema.Schema<ListInvitationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      invitations: Schema.optional(Schema.Array(Invitation)),
-    }),
-  ).annotate({
-    identifier: "ListInvitationsResponse",
-  }) as any as Schema.Schema<ListInvitationsResponse>;
+export const ListInvitationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    invitations: Schema.optional(Schema.Array(Invitation)),
+  }).annotate({ identifier: "ListInvitationsResponse" });
 
 export interface AcceptInvitationRequest {}
 
-export const AcceptInvitationRequest: Schema.Schema<AcceptInvitationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const AcceptInvitationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "AcceptInvitationRequest",
-  }) as any as Schema.Schema<AcceptInvitationRequest>;
+  });
 
 export interface ListAccountsResponse {
   /** If the number of accounts exceeds the requested page size, this field is populated with a token to fetch the next page of accounts on a subsequent call to `accounts.list`. If there are no more accounts, this field is not present in the response. */
@@ -230,36 +205,26 @@ export interface ListAccountsResponse {
   accounts?: Array<Account>;
 }
 
-export const ListAccountsResponse: Schema.Schema<ListAccountsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      accounts: Schema.optional(Schema.Array(Account)),
-    }),
-  ).annotate({
-    identifier: "ListAccountsResponse",
-  }) as any as Schema.Schema<ListAccountsResponse>;
+export const ListAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  accounts: Schema.optional(Schema.Array(Account)),
+}).annotate({ identifier: "ListAccountsResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface TransferLocationRequest {
   /** Required. Name of the account resource to transfer the location to (for example, "accounts/{account}"). */
   destinationAccount?: string;
 }
 
-export const TransferLocationRequest: Schema.Schema<TransferLocationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      destinationAccount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TransferLocationRequest",
-  }) as any as Schema.Schema<TransferLocationRequest>;
+export const TransferLocationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    destinationAccount: Schema.optional(Schema.String),
+  }).annotate({ identifier: "TransferLocationRequest" });
 
 export interface Admin {
   /** Required. Specifies the role that this admin uses with the specified Account or Location. */
@@ -280,51 +245,40 @@ export interface Admin {
   admin?: string;
 }
 
-export const Admin: Schema.Schema<Admin> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      role: Schema.optional(Schema.String),
-      pendingInvitation: Schema.optional(Schema.Boolean),
-      account: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      admin: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Admin" }) as any as Schema.Schema<Admin>;
+export const Admin = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  role: Schema.optional(Schema.String),
+  pendingInvitation: Schema.optional(Schema.Boolean),
+  account: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  admin: Schema.optional(Schema.String),
+}).annotate({ identifier: "Admin" });
 
 export interface DeclineInvitationRequest {}
 
-export const DeclineInvitationRequest: Schema.Schema<DeclineInvitationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const DeclineInvitationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeclineInvitationRequest",
-  }) as any as Schema.Schema<DeclineInvitationRequest>;
+  });
 
 export interface ListLocationAdminsResponse {
   /** A collection of Admins. */
   admins?: Array<Admin>;
 }
 
-export const ListLocationAdminsResponse: Schema.Schema<ListLocationAdminsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      admins: Schema.optional(Schema.Array(Admin)),
-    }),
-  ).annotate({
-    identifier: "ListLocationAdminsResponse",
-  }) as any as Schema.Schema<ListLocationAdminsResponse>;
+export const ListLocationAdminsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    admins: Schema.optional(Schema.Array(Admin)),
+  }).annotate({ identifier: "ListLocationAdminsResponse" });
 
 export interface ListAccountAdminsResponse {
   /** A collection of Admin instances. */
   accountAdmins?: Array<Admin>;
 }
 
-export const ListAccountAdminsResponse: Schema.Schema<ListAccountAdminsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accountAdmins: Schema.optional(Schema.Array(Admin)),
-    }),
-  ).annotate({
-    identifier: "ListAccountAdminsResponse",
-  }) as any as Schema.Schema<ListAccountAdminsResponse>;
+export const ListAccountAdminsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountAdmins: Schema.optional(Schema.Array(Admin)),
+  }).annotate({ identifier: "ListAccountAdminsResponse" });
 
 // ==========================================================================
 // Operations

@@ -49,21 +49,17 @@ export interface Quota {
   contactCenterCountSum?: number;
 }
 
-export const Quota: Schema.Schema<Quota> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contactCenterCountLimit: Schema.optional(Schema.Number),
-      contactCenterInstanceSize: Schema.optional(Schema.String),
-      contactCenterCountSum: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Quota" }) as any as Schema.Schema<Quota>;
+export const Quota = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  contactCenterCountLimit: Schema.optional(Schema.Number),
+  contactCenterInstanceSize: Schema.optional(Schema.String),
+  contactCenterCountSum: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Quota" });
 
 export interface Early {}
 
-export const Early: Schema.Schema<Early> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Early",
-  }) as any as Schema.Schema<Early>;
+export const Early = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Early",
+});
 
 export interface TimeZone {
   /** IANA Time Zone Database time zone. For example "America/New_York". */
@@ -72,13 +68,10 @@ export interface TimeZone {
   version?: string;
 }
 
-export const TimeZone: Schema.Schema<TimeZone> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "TimeZone" }) as any as Schema.Schema<TimeZone>;
+export const TimeZone = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+}).annotate({ identifier: "TimeZone" });
 
 export interface DateTime {
   /** Optional. Year of date. Must be from 1 to 9999, or 0 if specifying a datetime without a year. */
@@ -101,20 +94,17 @@ export interface DateTime {
   timeZone?: TimeZone;
 }
 
-export const DateTime: Schema.Schema<DateTime> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      year: Schema.optional(Schema.Number),
-      minutes: Schema.optional(Schema.Number),
-      month: Schema.optional(Schema.Number),
-      seconds: Schema.optional(Schema.Number),
-      hours: Schema.optional(Schema.Number),
-      utcOffset: Schema.optional(Schema.String),
-      day: Schema.optional(Schema.Number),
-      nanos: Schema.optional(Schema.Number),
-      timeZone: Schema.optional(TimeZone),
-    }),
-  ).annotate({ identifier: "DateTime" }) as any as Schema.Schema<DateTime>;
+export const DateTime = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  year: Schema.optional(Schema.Number),
+  minutes: Schema.optional(Schema.Number),
+  month: Schema.optional(Schema.Number),
+  seconds: Schema.optional(Schema.Number),
+  hours: Schema.optional(Schema.Number),
+  utcOffset: Schema.optional(Schema.String),
+  day: Schema.optional(Schema.Number),
+  nanos: Schema.optional(Schema.Number),
+  timeZone: Schema.optional(TimeZone),
+}).annotate({ identifier: "DateTime" });
 
 export interface WorkforceDemand {
   /** Required. Start of the time interval for the given demand (inclusive). These values are read down to the minute; seconds and all smaller units are ignored. */
@@ -125,30 +115,20 @@ export interface WorkforceDemand {
   employeeCount?: number;
 }
 
-export const WorkforceDemand: Schema.Schema<WorkforceDemand> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(DateTime),
-      endTime: Schema.optional(DateTime),
-      employeeCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "WorkforceDemand",
-  }) as any as Schema.Schema<WorkforceDemand>;
+export const WorkforceDemand = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startTime: Schema.optional(DateTime),
+  endTime: Schema.optional(DateTime),
+  employeeCount: Schema.optional(Schema.Number),
+}).annotate({ identifier: "WorkforceDemand" });
 
 export interface WorkforceDemandList {
   /** Optional. Values in the list. */
   values?: Array<WorkforceDemand>;
 }
 
-export const WorkforceDemandList: Schema.Schema<WorkforceDemandList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      values: Schema.optional(Schema.Array(WorkforceDemand)),
-    }),
-  ).annotate({
-    identifier: "WorkforceDemandList",
-  }) as any as Schema.Schema<WorkforceDemandList>;
+export const WorkforceDemandList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  values: Schema.optional(Schema.Array(WorkforceDemand)),
+}).annotate({ identifier: "WorkforceDemandList" });
 
 export interface SolverConfig {
   /** Optional. Maximum time the solver should spend on the problem. If not set, defaults to 1 minute. The choice of a time limit should depend on the size of the problem. To give an example, when solving a 7-day instance with 2 `ShiftTemplates`, each with ~20 possible start times and holding 2 events with ~30 possible start times, and two days off per week, recommended values are: <10s for fast solutions (and likely suboptimal), (10s, 300s) for good quality solutions, and >300s for an exhaustive search. Larger instances may require longer time limits. This value is not a hard limit and it does not account for the communication overhead. The expected latency to solve the problem may slightly exceed this value. */
@@ -162,15 +142,10 @@ export interface SolverConfig {
     | (string & {});
 }
 
-export const SolverConfig: Schema.Schema<SolverConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      maximumProcessingDuration: Schema.optional(Schema.String),
-      scheduleType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SolverConfig",
-  }) as any as Schema.Schema<SolverConfig>;
+export const SolverConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  maximumProcessingDuration: Schema.optional(Schema.String),
+  scheduleType: Schema.optional(Schema.String),
+}).annotate({ identifier: "SolverConfig" });
 
 export interface GoogleCloudCommonOperationMetadata {
   /** Output only. Name of the verb executed by the operation. */
@@ -189,20 +164,16 @@ export interface GoogleCloudCommonOperationMetadata {
   cancelRequested?: boolean;
 }
 
-export const GoogleCloudCommonOperationMetadata: Schema.Schema<GoogleCloudCommonOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      verb: Schema.optional(Schema.String),
-      statusDetail: Schema.optional(Schema.String),
-      apiVersion: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      cancelRequested: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudCommonOperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudCommonOperationMetadata>;
+export const GoogleCloudCommonOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    verb: Schema.optional(Schema.String),
+    statusDetail: Schema.optional(Schema.String),
+    apiVersion: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+    cancelRequested: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudCommonOperationMetadata" });
 
 export interface Location {
   /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
@@ -217,16 +188,13 @@ export interface Location {
   locationId?: string;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      displayName: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      name: Schema.optional(Schema.String),
-      locationId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  displayName: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  name: Schema.optional(Schema.String),
+  locationId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Location" });
 
 export interface URIs {
   /** Root Uri of the ContactCenter. */
@@ -239,15 +207,12 @@ export interface URIs {
   mediaUri?: string;
 }
 
-export const URIs: Schema.Schema<URIs> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rootUri: Schema.optional(Schema.String),
-      virtualAgentStreamingServiceUri: Schema.optional(Schema.String),
-      chatBotUri: Schema.optional(Schema.String),
-      mediaUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "URIs" }) as any as Schema.Schema<URIs>;
+export const URIs = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  rootUri: Schema.optional(Schema.String),
+  virtualAgentStreamingServiceUri: Schema.optional(Schema.String),
+  chatBotUri: Schema.optional(Schema.String),
+  mediaUri: Schema.optional(Schema.String),
+}).annotate({ identifier: "URIs" });
 
 export interface ContactCenterQuota {
   /** Deprecated: Use the Quota fields instead. Reflects the count sum of contact centers on a billing account. */
@@ -258,16 +223,11 @@ export interface ContactCenterQuota {
   quotas?: Array<Quota>;
 }
 
-export const ContactCenterQuota: Schema.Schema<ContactCenterQuota> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contactCenterCountSum: Schema.optional(Schema.Number),
-      contactCenterCountLimit: Schema.optional(Schema.Number),
-      quotas: Schema.optional(Schema.Array(Quota)),
-    }),
-  ).annotate({
-    identifier: "ContactCenterQuota",
-  }) as any as Schema.Schema<ContactCenterQuota>;
+export const ContactCenterQuota = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  contactCenterCountSum: Schema.optional(Schema.Number),
+  contactCenterCountLimit: Schema.optional(Schema.Number),
+  quotas: Schema.optional(Schema.Array(Quota)),
+}).annotate({ identifier: "ContactCenterQuota" });
 
 export interface UnwantedEventInterval {
   /** Required. Duration of the event. */
@@ -276,15 +236,10 @@ export interface UnwantedEventInterval {
   startTime?: DateTime;
 }
 
-export const UnwantedEventInterval: Schema.Schema<UnwantedEventInterval> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      durationMinutes: Schema.optional(Schema.Number),
-      startTime: Schema.optional(DateTime),
-    }),
-  ).annotate({
-    identifier: "UnwantedEventInterval",
-  }) as any as Schema.Schema<UnwantedEventInterval>;
+export const UnwantedEventInterval = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  durationMinutes: Schema.optional(Schema.Number),
+  startTime: Schema.optional(DateTime),
+}).annotate({ identifier: "UnwantedEventInterval" });
 
 export interface EmployeeInfo {
   /** Optional. A list of unwanted event intervals for this employee. The start time of the interval must be in the planning horizon. */
@@ -293,24 +248,16 @@ export interface EmployeeInfo {
   id?: string;
 }
 
-export const EmployeeInfo: Schema.Schema<EmployeeInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unwantedEventIntervals: Schema.optional(
-        Schema.Array(UnwantedEventInterval),
-      ),
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EmployeeInfo",
-  }) as any as Schema.Schema<EmployeeInfo>;
+export const EmployeeInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  unwantedEventIntervals: Schema.optional(Schema.Array(UnwantedEventInterval)),
+  id: Schema.optional(Schema.String),
+}).annotate({ identifier: "EmployeeInfo" });
 
 export interface Normal {}
 
-export const Normal: Schema.Schema<Normal> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Normal",
-  }) as any as Schema.Schema<Normal>;
+export const Normal = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Normal",
+});
 
 export interface EventTemplate {
   /** Optional. Maximum number of minutes after the beginning of a shift that this event can start. */
@@ -325,25 +272,19 @@ export interface EventTemplate {
   minimumMinutesAfterShiftStart?: number;
 }
 
-export const EventTemplate: Schema.Schema<EventTemplate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      maximumMinutesAfterShiftStart: Schema.optional(Schema.Number),
-      durationMinutes: Schema.optional(Schema.Number),
-      startTimeIncrementMinutes: Schema.optional(Schema.Number),
-      id: Schema.optional(Schema.String),
-      minimumMinutesAfterShiftStart: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "EventTemplate",
-  }) as any as Schema.Schema<EventTemplate>;
+export const EventTemplate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  maximumMinutesAfterShiftStart: Schema.optional(Schema.Number),
+  durationMinutes: Schema.optional(Schema.Number),
+  startTimeIncrementMinutes: Schema.optional(Schema.Number),
+  id: Schema.optional(Schema.String),
+  minimumMinutesAfterShiftStart: Schema.optional(Schema.Number),
+}).annotate({ identifier: "EventTemplate" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -354,16 +295,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
@@ -378,16 +316,13 @@ export interface Operation {
   name?: string;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      error: Schema.optional(Status),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  done: Schema.optional(Schema.Boolean),
+  error: Schema.optional(Status),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Operation" });
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -398,16 +333,13 @@ export interface ListOperationsResponse {
   nextPageToken?: string;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(Schema.Array(Operation)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    operations: Schema.optional(Schema.Array(Operation)),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -416,15 +348,10 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(Location)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface SAMLParams {
   /** IdP field that maps to the user’s email address */
@@ -468,31 +395,23 @@ export interface SAMLParams {
   >;
 }
 
-export const SAMLParams: Schema.Schema<SAMLParams> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      emailMapping: Schema.optional(Schema.String),
-      userEmail: Schema.optional(Schema.String),
-      ssoUri: Schema.optional(Schema.String),
-      entityId: Schema.optional(Schema.String),
-      certificate: Schema.optional(Schema.String),
-      authenticationContexts: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "SAMLParams" }) as any as Schema.Schema<SAMLParams>;
+export const SAMLParams = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  emailMapping: Schema.optional(Schema.String),
+  userEmail: Schema.optional(Schema.String),
+  ssoUri: Schema.optional(Schema.String),
+  entityId: Schema.optional(Schema.String),
+  certificate: Schema.optional(Schema.String),
+  authenticationContexts: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "SAMLParams" });
 
 export interface FeatureConfig {
   /** Optional. If true - enables the agent desktop feature. Default is false. */
   agentDesktopEnabled?: boolean;
 }
 
-export const FeatureConfig: Schema.Schema<FeatureConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      agentDesktopEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "FeatureConfig",
-  }) as any as Schema.Schema<FeatureConfig>;
+export const FeatureConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  agentDesktopEnabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "FeatureConfig" });
 
 export interface AdminUser {
   /** Optional. First/given name of the first admin user. */
@@ -501,13 +420,10 @@ export interface AdminUser {
   familyName?: string;
 }
 
-export const AdminUser: Schema.Schema<AdminUser> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      givenName: Schema.optional(Schema.String),
-      familyName: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "AdminUser" }) as any as Schema.Schema<AdminUser>;
+export const AdminUser = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  givenName: Schema.optional(Schema.String),
+  familyName: Schema.optional(Schema.String),
+}).annotate({ identifier: "AdminUser" });
 
 export interface InstanceConfig {
   /** The instance size of this the instance configuration. */
@@ -532,14 +448,9 @@ export interface InstanceConfig {
     | (string & {});
 }
 
-export const InstanceConfig: Schema.Schema<InstanceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      instanceSize: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InstanceConfig",
-  }) as any as Schema.Schema<InstanceConfig>;
+export const InstanceConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  instanceSize: Schema.optional(Schema.String),
+}).annotate({ identifier: "InstanceConfig" });
 
 export interface Component {
   /** Name of the component. */
@@ -548,13 +459,10 @@ export interface Component {
   serviceAttachmentNames?: Array<string>;
 }
 
-export const Component: Schema.Schema<Component> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      serviceAttachmentNames: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "Component" }) as any as Schema.Schema<Component>;
+export const Component = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  serviceAttachmentNames: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Component" });
 
 export interface PscSetting {
   /** The list of project ids that are allowed to send traffic to the service attachment. This field should be filled only for the ingress components. */
@@ -563,13 +471,10 @@ export interface PscSetting {
   producerProjectIds?: Array<string>;
 }
 
-export const PscSetting: Schema.Schema<PscSetting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      allowedConsumerProjectIds: Schema.optional(Schema.Array(Schema.String)),
-      producerProjectIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "PscSetting" }) as any as Schema.Schema<PscSetting>;
+export const PscSetting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  allowedConsumerProjectIds: Schema.optional(Schema.Array(Schema.String)),
+  producerProjectIds: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "PscSetting" });
 
 export interface PrivateAccess {
   /** List of egress components that should not be accessed via the Internet. For more information see go/ccaip-private-path-v2. */
@@ -580,16 +485,11 @@ export interface PrivateAccess {
   pscSetting?: PscSetting;
 }
 
-export const PrivateAccess: Schema.Schema<PrivateAccess> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      egressSettings: Schema.optional(Schema.Array(Component)),
-      ingressSettings: Schema.optional(Schema.Array(Component)),
-      pscSetting: Schema.optional(PscSetting),
-    }),
-  ).annotate({
-    identifier: "PrivateAccess",
-  }) as any as Schema.Schema<PrivateAccess>;
+export const PrivateAccess = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  egressSettings: Schema.optional(Schema.Array(Component)),
+  ingressSettings: Schema.optional(Schema.Array(Component)),
+  pscSetting: Schema.optional(PscSetting),
+}).annotate({ identifier: "PrivateAccess" });
 
 export interface TimeOfDay {
   /** Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59. */
@@ -602,15 +502,12 @@ export interface TimeOfDay {
   nanos?: number;
 }
 
-export const TimeOfDay: Schema.Schema<TimeOfDay> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      minutes: Schema.optional(Schema.Number),
-      seconds: Schema.optional(Schema.Number),
-      hours: Schema.optional(Schema.Number),
-      nanos: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "TimeOfDay" }) as any as Schema.Schema<TimeOfDay>;
+export const TimeOfDay = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  minutes: Schema.optional(Schema.Number),
+  seconds: Schema.optional(Schema.Number),
+  hours: Schema.optional(Schema.Number),
+  nanos: Schema.optional(Schema.Number),
+}).annotate({ identifier: "TimeOfDay" });
 
 export interface WeeklySchedule {
   /** Optional. Daily end time of the schedule. If `end_time` is before `start_time`, the schedule will be considered as ending on the next day. */
@@ -633,29 +530,21 @@ export interface WeeklySchedule {
   startTime?: TimeOfDay;
 }
 
-export const WeeklySchedule: Schema.Schema<WeeklySchedule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endTime: Schema.optional(TimeOfDay),
-      duration: Schema.optional(Schema.String),
-      days: Schema.optional(Schema.Array(Schema.String)),
-      startTime: Schema.optional(TimeOfDay),
-    }),
-  ).annotate({
-    identifier: "WeeklySchedule",
-  }) as any as Schema.Schema<WeeklySchedule>;
+export const WeeklySchedule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  endTime: Schema.optional(TimeOfDay),
+  duration: Schema.optional(Schema.String),
+  days: Schema.optional(Schema.Array(Schema.String)),
+  startTime: Schema.optional(TimeOfDay),
+}).annotate({ identifier: "WeeklySchedule" });
 
 export interface Critical {
   /** Required. Hours during which the instance should not be updated. */
   peakHours?: Array<WeeklySchedule>;
 }
 
-export const Critical: Schema.Schema<Critical> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      peakHours: Schema.optional(Schema.Array(WeeklySchedule)),
-    }),
-  ).annotate({ identifier: "Critical" }) as any as Schema.Schema<Critical>;
+export const Critical = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  peakHours: Schema.optional(Schema.Array(WeeklySchedule)),
+}).annotate({ identifier: "Critical" });
 
 export interface ContactCenter {
   /** Required. Immutable. At least 2 and max 16 char long, must conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). */
@@ -723,38 +612,33 @@ export interface ContactCenter {
   critical?: Critical;
 }
 
-export const ContactCenter: Schema.Schema<ContactCenter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customerDomainPrefix: Schema.optional(Schema.String),
-      kmsKey: Schema.optional(Schema.String),
-      early: Schema.optional(Early),
-      samlParams: Schema.optional(SAMLParams),
-      normal: Schema.optional(Normal),
-      userEmail: Schema.optional(Schema.String),
-      purgeTime: Schema.optional(Schema.String),
-      featureConfig: Schema.optional(FeatureConfig),
-      createTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      deleteTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      uris: Schema.optional(URIs),
-      releaseVersion: Schema.optional(Schema.String),
-      ccaipManagedUsers: Schema.optional(Schema.Boolean),
-      adminUser: Schema.optional(AdminUser),
-      expireTime: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      updateTime: Schema.optional(Schema.String),
-      advancedReportingEnabled: Schema.optional(Schema.Boolean),
-      instanceConfig: Schema.optional(InstanceConfig),
-      privateAccess: Schema.optional(PrivateAccess),
-      privateComponents: Schema.optional(Schema.Array(Schema.String)),
-      critical: Schema.optional(Critical),
-    }),
-  ).annotate({
-    identifier: "ContactCenter",
-  }) as any as Schema.Schema<ContactCenter>;
+export const ContactCenter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  customerDomainPrefix: Schema.optional(Schema.String),
+  kmsKey: Schema.optional(Schema.String),
+  early: Schema.optional(Early),
+  samlParams: Schema.optional(SAMLParams),
+  normal: Schema.optional(Normal),
+  userEmail: Schema.optional(Schema.String),
+  purgeTime: Schema.optional(Schema.String),
+  featureConfig: Schema.optional(FeatureConfig),
+  createTime: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  deleteTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  uris: Schema.optional(URIs),
+  releaseVersion: Schema.optional(Schema.String),
+  ccaipManagedUsers: Schema.optional(Schema.Boolean),
+  adminUser: Schema.optional(AdminUser),
+  expireTime: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  updateTime: Schema.optional(Schema.String),
+  advancedReportingEnabled: Schema.optional(Schema.Boolean),
+  instanceConfig: Schema.optional(InstanceConfig),
+  privateAccess: Schema.optional(PrivateAccess),
+  privateComponents: Schema.optional(Schema.Array(Schema.String)),
+  critical: Schema.optional(Critical),
+}).annotate({ identifier: "ContactCenter" });
 
 export interface PlanningHorizon {
   /** Required. End of the time interval for the given demand (exclusive). These values are read down to the minute; seconds and all smaller units are ignored. */
@@ -763,15 +647,10 @@ export interface PlanningHorizon {
   startTime?: DateTime;
 }
 
-export const PlanningHorizon: Schema.Schema<PlanningHorizon> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endTime: Schema.optional(DateTime),
-      startTime: Schema.optional(DateTime),
-    }),
-  ).annotate({
-    identifier: "PlanningHorizon",
-  }) as any as Schema.Schema<PlanningHorizon>;
+export const PlanningHorizon = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  endTime: Schema.optional(DateTime),
+  startTime: Schema.optional(DateTime),
+}).annotate({ identifier: "PlanningHorizon" });
 
 export interface ListContactCentersResponse {
   /** The list of ContactCenter */
@@ -782,16 +661,12 @@ export interface ListContactCentersResponse {
   nextPageToken?: string;
 }
 
-export const ListContactCentersResponse: Schema.Schema<ListContactCentersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contactCenters: Schema.optional(Schema.Array(ContactCenter)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListContactCentersResponse",
-  }) as any as Schema.Schema<ListContactCentersResponse>;
+export const ListContactCentersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    contactCenters: Schema.optional(Schema.Array(ContactCenter)),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListContactCentersResponse" });
 
 export interface Contactcenteraiplatform_Date {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
@@ -802,28 +677,21 @@ export interface Contactcenteraiplatform_Date {
   day?: number;
 }
 
-export const Contactcenteraiplatform_Date: Schema.Schema<Contactcenteraiplatform_Date> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      year: Schema.optional(Schema.Number),
-      month: Schema.optional(Schema.Number),
-      day: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "Contactcenteraiplatform_Date",
-  }) as any as Schema.Schema<Contactcenteraiplatform_Date>;
+export const Contactcenteraiplatform_Date =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    year: Schema.optional(Schema.Number),
+    month: Schema.optional(Schema.Number),
+    day: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "Contactcenteraiplatform_Date" });
 
 export interface DateList {
   /** Optional. Values in the list. */
   values?: Array<Contactcenteraiplatform_Date>;
 }
 
-export const DateList: Schema.Schema<DateList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      values: Schema.optional(Schema.Array(Contactcenteraiplatform_Date)),
-    }),
-  ).annotate({ identifier: "DateList" }) as any as Schema.Schema<DateList>;
+export const DateList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  values: Schema.optional(Schema.Array(Contactcenteraiplatform_Date)),
+}).annotate({ identifier: "DateList" });
 
 export interface ShiftTemplate {
   /** Optional. Minimum minutes between the end of one event and the start of the next. */
@@ -852,25 +720,20 @@ export interface ShiftTemplate {
   assignableEmployeeIds?: Array<string>;
 }
 
-export const ShiftTemplate: Schema.Schema<ShiftTemplate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      minimumIntereventGapMinutes: Schema.optional(Schema.Number),
-      earliestStartTime: Schema.optional(TimeOfDay),
-      startTimeIncrementMinutes: Schema.optional(Schema.Number),
-      minimumEmployeeCount: Schema.optional(Schema.Number),
-      maximumEmployeeCount: Schema.optional(Schema.Number),
-      daysOffDates: Schema.optional(DateList),
-      eventTemplates: Schema.optional(Schema.Array(EventTemplate)),
-      id: Schema.optional(Schema.String),
-      latestStartTime: Schema.optional(TimeOfDay),
-      durationMinutes: Schema.optional(Schema.Number),
-      daysOffCountPerWeek: Schema.optional(Schema.Number),
-      assignableEmployeeIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ShiftTemplate",
-  }) as any as Schema.Schema<ShiftTemplate>;
+export const ShiftTemplate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  minimumIntereventGapMinutes: Schema.optional(Schema.Number),
+  earliestStartTime: Schema.optional(TimeOfDay),
+  startTimeIncrementMinutes: Schema.optional(Schema.Number),
+  minimumEmployeeCount: Schema.optional(Schema.Number),
+  maximumEmployeeCount: Schema.optional(Schema.Number),
+  daysOffDates: Schema.optional(DateList),
+  eventTemplates: Schema.optional(Schema.Array(EventTemplate)),
+  id: Schema.optional(Schema.String),
+  latestStartTime: Schema.optional(TimeOfDay),
+  durationMinutes: Schema.optional(Schema.Number),
+  daysOffCountPerWeek: Schema.optional(Schema.Number),
+  assignableEmployeeIds: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ShiftTemplate" });
 
 export interface GenerateShiftsRequest {
   /** Required. Parameters for the solver. */
@@ -885,25 +748,19 @@ export interface GenerateShiftsRequest {
   shiftTemplates?: Array<ShiftTemplate>;
 }
 
-export const GenerateShiftsRequest: Schema.Schema<GenerateShiftsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      solverConfig: Schema.optional(SolverConfig),
-      planningHorizon: Schema.optional(PlanningHorizon),
-      workforceDemands: Schema.optional(WorkforceDemandList),
-      employeeInfo: Schema.optional(Schema.Array(EmployeeInfo)),
-      shiftTemplates: Schema.optional(Schema.Array(ShiftTemplate)),
-    }),
-  ).annotate({
-    identifier: "GenerateShiftsRequest",
-  }) as any as Schema.Schema<GenerateShiftsRequest>;
+export const GenerateShiftsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  solverConfig: Schema.optional(SolverConfig),
+  planningHorizon: Schema.optional(PlanningHorizon),
+  workforceDemands: Schema.optional(WorkforceDemandList),
+  employeeInfo: Schema.optional(Schema.Array(EmployeeInfo)),
+  shiftTemplates: Schema.optional(Schema.Array(ShiftTemplate)),
+}).annotate({ identifier: "GenerateShiftsRequest" });
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelOperationRequest",
-  }) as any as Schema.Schema<CancelOperationRequest>;
+export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelOperationRequest" });
 
 export interface OperationMetadata {
   /** Output only. The time the operation was created. */
@@ -924,21 +781,16 @@ export interface OperationMetadata {
   target?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      contactCenter: Schema.optional(ContactCenter),
-      verb: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-      apiVersion: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createTime: Schema.optional(Schema.String),
+  requestedCancellation: Schema.optional(Schema.Boolean),
+  contactCenter: Schema.optional(ContactCenter),
+  verb: Schema.optional(Schema.String),
+  statusMessage: Schema.optional(Schema.String),
+  apiVersion: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationMetadata" });
 
 // ==========================================================================
 // Operations

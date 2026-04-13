@@ -35,48 +35,42 @@ export interface GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizatio
   generator?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      summarizationModel: Schema.optional(Schema.String),
-      conversationProfile: Schema.optional(Schema.String),
-      generator: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    summarizationModel: Schema.optional(Schema.String),
+    conversationProfile: Schema.optional(Schema.String),
+    generator: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfigScorecardList {
   /** List of QaScorecardRevisions. */
   qaScorecardRevisions?: Array<string>;
 }
 
-export const GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfigScorecardList: Schema.Schema<GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfigScorecardList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      qaScorecardRevisions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfigScorecardList =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    qaScorecardRevisions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfigScorecardList",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfigScorecardList>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig {
   /** A manual list of scorecards to score. */
   scorecardList?: GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfigScorecardList;
 }
 
-export const GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scorecardList: Schema.optional(
-        GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfigScorecardList,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scorecardList: Schema.optional(
+      GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfigScorecardList,
+    ),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1AnnotatorSelector {
   /** The issue model to run. If not provided, the most recently deployed topic model will be used. The provided issue model will only be used for inference if the issue model is deployed and if run_issue_model_annotator is set to true. If more than one issue model is provided, only the first provided issue model will be used for inference. */
@@ -109,38 +103,36 @@ export interface GoogleCloudContactcenterinsightsV1AnnotatorSelector {
   runAutoLabelingAnnotator?: boolean;
 }
 
-export const GoogleCloudContactcenterinsightsV1AnnotatorSelector: Schema.Schema<GoogleCloudContactcenterinsightsV1AnnotatorSelector> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      issueModels: Schema.optional(Schema.Array(Schema.String)),
-      runSummarizationAnnotator: Schema.optional(Schema.Boolean),
-      runSilenceAnnotator: Schema.optional(Schema.Boolean),
-      runEntityAnnotator: Schema.optional(Schema.Boolean),
-      runPhraseMatcherAnnotator: Schema.optional(Schema.Boolean),
-      runQaAnnotator: Schema.optional(Schema.Boolean),
-      runInterruptionAnnotator: Schema.optional(Schema.Boolean),
-      phraseMatchers: Schema.optional(Schema.Array(Schema.String)),
-      runSentimentAnnotator: Schema.optional(Schema.Boolean),
-      runIssueModelAnnotator: Schema.optional(Schema.Boolean),
-      summarizationConfig: Schema.optional(
-        GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig,
-      ),
-      qaConfig: Schema.optional(
-        GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig,
-      ),
-      runIntentAnnotator: Schema.optional(Schema.Boolean),
-      runAutoLabelingAnnotator: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1AnnotatorSelector =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    issueModels: Schema.optional(Schema.Array(Schema.String)),
+    runSummarizationAnnotator: Schema.optional(Schema.Boolean),
+    runSilenceAnnotator: Schema.optional(Schema.Boolean),
+    runEntityAnnotator: Schema.optional(Schema.Boolean),
+    runPhraseMatcherAnnotator: Schema.optional(Schema.Boolean),
+    runQaAnnotator: Schema.optional(Schema.Boolean),
+    runInterruptionAnnotator: Schema.optional(Schema.Boolean),
+    phraseMatchers: Schema.optional(Schema.Array(Schema.String)),
+    runSentimentAnnotator: Schema.optional(Schema.Boolean),
+    runIssueModelAnnotator: Schema.optional(Schema.Boolean),
+    summarizationConfig: Schema.optional(
+      GoogleCloudContactcenterinsightsV1AnnotatorSelectorSummarizationConfig,
+    ),
+    qaConfig: Schema.optional(
+      GoogleCloudContactcenterinsightsV1AnnotatorSelectorQaConfig,
+    ),
+    runIntentAnnotator: Schema.optional(Schema.Boolean),
+    runAutoLabelingAnnotator: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1AnnotatorSelector",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1AnnotatorSelector>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1SilenceData {}
 
-export const GoogleCloudContactcenterinsightsV1SilenceData: Schema.Schema<GoogleCloudContactcenterinsightsV1SilenceData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudContactcenterinsightsV1SilenceData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1SilenceData",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1SilenceData>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1AnnotationBoundary {
   /** The index in the sequence of transcribed pieces of the conversation where the boundary is located. This index starts at zero. */
@@ -149,15 +141,13 @@ export interface GoogleCloudContactcenterinsightsV1AnnotationBoundary {
   wordIndex?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1AnnotationBoundary: Schema.Schema<GoogleCloudContactcenterinsightsV1AnnotationBoundary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      transcriptIndex: Schema.optional(Schema.Number),
-      wordIndex: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1AnnotationBoundary =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    transcriptIndex: Schema.optional(Schema.Number),
+    wordIndex: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1AnnotationBoundary",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1AnnotationBoundary>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1SentimentData {
   /** A non-negative number from 0 to infinity which represents the absolute magnitude of sentiment regardless of score. */
@@ -166,15 +156,13 @@ export interface GoogleCloudContactcenterinsightsV1SentimentData {
   score?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1SentimentData: Schema.Schema<GoogleCloudContactcenterinsightsV1SentimentData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      magnitude: Schema.optional(Schema.Number),
-      score: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1SentimentData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    magnitude: Schema.optional(Schema.Number),
+    score: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1SentimentData",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1SentimentData>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1EntityMentionData {
   /** The type of the entity mention. */
@@ -185,18 +173,14 @@ export interface GoogleCloudContactcenterinsightsV1EntityMentionData {
   entityUniqueId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1EntityMentionData: Schema.Schema<GoogleCloudContactcenterinsightsV1EntityMentionData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      sentiment: Schema.optional(
-        GoogleCloudContactcenterinsightsV1SentimentData,
-      ),
-      entityUniqueId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1EntityMentionData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    sentiment: Schema.optional(GoogleCloudContactcenterinsightsV1SentimentData),
+    entityUniqueId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1EntityMentionData",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1EntityMentionData>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1PhraseMatchData {
   /** The unique identifier (the resource name) of the phrase matcher. */
@@ -205,22 +189,20 @@ export interface GoogleCloudContactcenterinsightsV1PhraseMatchData {
   displayName?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1PhraseMatchData: Schema.Schema<GoogleCloudContactcenterinsightsV1PhraseMatchData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      phraseMatcher: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1PhraseMatchData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    phraseMatcher: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1PhraseMatchData",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1PhraseMatchData>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1InterruptionData {}
 
-export const GoogleCloudContactcenterinsightsV1InterruptionData: Schema.Schema<GoogleCloudContactcenterinsightsV1InterruptionData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudContactcenterinsightsV1InterruptionData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1InterruptionData",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1InterruptionData>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1IssueAssignment {
   /** Resource name of the assigned issue. */
@@ -231,53 +213,47 @@ export interface GoogleCloudContactcenterinsightsV1IssueAssignment {
   displayName?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1IssueAssignment: Schema.Schema<GoogleCloudContactcenterinsightsV1IssueAssignment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      issue: Schema.optional(Schema.String),
-      score: Schema.optional(Schema.Number),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1IssueAssignment =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    issue: Schema.optional(Schema.String),
+    score: Schema.optional(Schema.Number),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1IssueAssignment",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1IssueAssignment>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1IssueMatchData {
   /** Information about the issue's assignment. */
   issueAssignment?: GoogleCloudContactcenterinsightsV1IssueAssignment;
 }
 
-export const GoogleCloudContactcenterinsightsV1IssueMatchData: Schema.Schema<GoogleCloudContactcenterinsightsV1IssueMatchData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      issueAssignment: Schema.optional(
-        GoogleCloudContactcenterinsightsV1IssueAssignment,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1IssueMatchData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    issueAssignment: Schema.optional(
+      GoogleCloudContactcenterinsightsV1IssueAssignment,
+    ),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1IssueMatchData",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1IssueMatchData>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1HoldData {}
 
-export const GoogleCloudContactcenterinsightsV1HoldData: Schema.Schema<GoogleCloudContactcenterinsightsV1HoldData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudContactcenterinsightsV1HoldData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1HoldData",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1HoldData>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1IntentMatchData {
   /** The id of the matched intent. Can be used to retrieve the corresponding intent information. */
   intentUniqueId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1IntentMatchData: Schema.Schema<GoogleCloudContactcenterinsightsV1IntentMatchData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      intentUniqueId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1IntentMatchData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    intentUniqueId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1IntentMatchData",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1IntentMatchData>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1CallAnnotation {
   /** Data specifying silence. */
@@ -304,42 +280,38 @@ export interface GoogleCloudContactcenterinsightsV1CallAnnotation {
   channelTag?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1CallAnnotation: Schema.Schema<GoogleCloudContactcenterinsightsV1CallAnnotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      silenceData: Schema.optional(
-        GoogleCloudContactcenterinsightsV1SilenceData,
-      ),
-      annotationStartBoundary: Schema.optional(
-        GoogleCloudContactcenterinsightsV1AnnotationBoundary,
-      ),
-      sentimentData: Schema.optional(
-        GoogleCloudContactcenterinsightsV1SentimentData,
-      ),
-      entityMentionData: Schema.optional(
-        GoogleCloudContactcenterinsightsV1EntityMentionData,
-      ),
-      phraseMatchData: Schema.optional(
-        GoogleCloudContactcenterinsightsV1PhraseMatchData,
-      ),
-      interruptionData: Schema.optional(
-        GoogleCloudContactcenterinsightsV1InterruptionData,
-      ),
-      issueMatchData: Schema.optional(
-        GoogleCloudContactcenterinsightsV1IssueMatchData,
-      ),
-      annotationEndBoundary: Schema.optional(
-        GoogleCloudContactcenterinsightsV1AnnotationBoundary,
-      ),
-      holdData: Schema.optional(GoogleCloudContactcenterinsightsV1HoldData),
-      intentMatchData: Schema.optional(
-        GoogleCloudContactcenterinsightsV1IntentMatchData,
-      ),
-      channelTag: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1CallAnnotation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    silenceData: Schema.optional(GoogleCloudContactcenterinsightsV1SilenceData),
+    annotationStartBoundary: Schema.optional(
+      GoogleCloudContactcenterinsightsV1AnnotationBoundary,
+    ),
+    sentimentData: Schema.optional(
+      GoogleCloudContactcenterinsightsV1SentimentData,
+    ),
+    entityMentionData: Schema.optional(
+      GoogleCloudContactcenterinsightsV1EntityMentionData,
+    ),
+    phraseMatchData: Schema.optional(
+      GoogleCloudContactcenterinsightsV1PhraseMatchData,
+    ),
+    interruptionData: Schema.optional(
+      GoogleCloudContactcenterinsightsV1InterruptionData,
+    ),
+    issueMatchData: Schema.optional(
+      GoogleCloudContactcenterinsightsV1IssueMatchData,
+    ),
+    annotationEndBoundary: Schema.optional(
+      GoogleCloudContactcenterinsightsV1AnnotationBoundary,
+    ),
+    holdData: Schema.optional(GoogleCloudContactcenterinsightsV1HoldData),
+    intentMatchData: Schema.optional(
+      GoogleCloudContactcenterinsightsV1IntentMatchData,
+    ),
+    channelTag: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1CallAnnotation",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1CallAnnotation>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1ConversationLevelSilence {
   /** Percentage of the total conversation spent in silence. */
@@ -348,15 +320,13 @@ export interface GoogleCloudContactcenterinsightsV1ConversationLevelSilence {
   silenceDuration?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ConversationLevelSilence: Schema.Schema<GoogleCloudContactcenterinsightsV1ConversationLevelSilence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      silencePercentage: Schema.optional(Schema.Number),
-      silenceDuration: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1ConversationLevelSilence =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    silencePercentage: Schema.optional(Schema.Number),
+    silenceDuration: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1ConversationLevelSilence",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ConversationLevelSilence>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1IssueModelResult {
   /** Issue model that generates the result. Format: projects/{project}/locations/{location}/issueModels/{issue_model} */
@@ -365,17 +335,15 @@ export interface GoogleCloudContactcenterinsightsV1IssueModelResult {
   issues?: Array<GoogleCloudContactcenterinsightsV1IssueAssignment>;
 }
 
-export const GoogleCloudContactcenterinsightsV1IssueModelResult: Schema.Schema<GoogleCloudContactcenterinsightsV1IssueModelResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      issueModel: Schema.optional(Schema.String),
-      issues: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1IssueAssignment),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1IssueModelResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    issueModel: Schema.optional(Schema.String),
+    issues: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1IssueAssignment),
+    ),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1IssueModelResult",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1IssueModelResult>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1Entity {
   /** Metadata associated with the entity. For most entity types, the metadata is a Wikipedia URL (`wikipedia_url`) and Knowledge Graph MID (`mid`), if they are available. For the metadata associated with other entity types, see the Type table below. */
@@ -404,20 +372,14 @@ export interface GoogleCloudContactcenterinsightsV1Entity {
     | (string & {});
 }
 
-export const GoogleCloudContactcenterinsightsV1Entity: Schema.Schema<GoogleCloudContactcenterinsightsV1Entity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      salience: Schema.optional(Schema.Number),
-      sentiment: Schema.optional(
-        GoogleCloudContactcenterinsightsV1SentimentData,
-      ),
-      displayName: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1Entity",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1Entity>;
+export const GoogleCloudContactcenterinsightsV1Entity =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    salience: Schema.optional(Schema.Number),
+    sentiment: Schema.optional(GoogleCloudContactcenterinsightsV1SentimentData),
+    displayName: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudContactcenterinsightsV1Entity" });
 
 export interface GoogleCloudContactcenterinsightsV1ConversationLevelSentiment {
   /** The channel of the audio that the data applies to. */
@@ -426,17 +388,15 @@ export interface GoogleCloudContactcenterinsightsV1ConversationLevelSentiment {
   sentimentData?: GoogleCloudContactcenterinsightsV1SentimentData;
 }
 
-export const GoogleCloudContactcenterinsightsV1ConversationLevelSentiment: Schema.Schema<GoogleCloudContactcenterinsightsV1ConversationLevelSentiment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      channelTag: Schema.optional(Schema.Number),
-      sentimentData: Schema.optional(
-        GoogleCloudContactcenterinsightsV1SentimentData,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1ConversationLevelSentiment =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    channelTag: Schema.optional(Schema.Number),
+    sentimentData: Schema.optional(
+      GoogleCloudContactcenterinsightsV1SentimentData,
+    ),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1ConversationLevelSentiment",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ConversationLevelSentiment>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue {
   /** Boolean value. */
@@ -459,22 +419,20 @@ export interface GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue {
   key?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue: Schema.Schema<GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      boolValue: Schema.optional(Schema.Boolean),
-      score: Schema.optional(Schema.Number),
-      numValue: Schema.optional(Schema.Number),
-      skipValue: Schema.optional(Schema.Boolean),
-      normalizedScore: Schema.optional(Schema.Number),
-      naValue: Schema.optional(Schema.Boolean),
-      potentialScore: Schema.optional(Schema.Number),
-      strValue: Schema.optional(Schema.String),
-      key: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    boolValue: Schema.optional(Schema.Boolean),
+    score: Schema.optional(Schema.Number),
+    numValue: Schema.optional(Schema.Number),
+    skipValue: Schema.optional(Schema.Boolean),
+    normalizedScore: Schema.optional(Schema.Number),
+    naValue: Schema.optional(Schema.Boolean),
+    potentialScore: Schema.optional(Schema.Number),
+    strValue: Schema.optional(Schema.String),
+    key: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource {
   /** The answer value from this source. This field is populated by default, unless the question has a selection strategy configured to return multiple answer values, in which case `answer_values` will be populated instead. */
@@ -487,17 +445,15 @@ export interface GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource {
     | (string & {});
 }
 
-export const GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource: Schema.Schema<GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      answerValue: Schema.optional(
-        GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue,
-      ),
-      sourceType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    answerValue: Schema.optional(
+      GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue,
+    ),
+    sourceType: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1QaAnswer {
   /** The QaQuestion answered by this answer. */
@@ -514,23 +470,19 @@ export interface GoogleCloudContactcenterinsightsV1QaAnswer {
   answerSources?: Array<GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource>;
 }
 
-export const GoogleCloudContactcenterinsightsV1QaAnswer: Schema.Schema<GoogleCloudContactcenterinsightsV1QaAnswer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      qaQuestion: Schema.optional(Schema.String),
-      tags: Schema.optional(Schema.Array(Schema.String)),
-      answerValue: Schema.optional(
-        GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue,
-      ),
-      questionBody: Schema.optional(Schema.String),
-      conversation: Schema.optional(Schema.String),
-      answerSources: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1QaAnswer",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1QaAnswer>;
+export const GoogleCloudContactcenterinsightsV1QaAnswer =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    qaQuestion: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Array(Schema.String)),
+    answerValue: Schema.optional(
+      GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue,
+    ),
+    questionBody: Schema.optional(Schema.String),
+    conversation: Schema.optional(Schema.String),
+    answerSources: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1QaAnswerAnswerSource),
+    ),
+  }).annotate({ identifier: "GoogleCloudContactcenterinsightsV1QaAnswer" });
 
 export interface GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult {
   /** The normalized score the tag applies to. */
@@ -543,18 +495,16 @@ export interface GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult 
   potentialScore?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult: Schema.Schema<GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      normalizedScore: Schema.optional(Schema.Number),
-      tag: Schema.optional(Schema.String),
-      score: Schema.optional(Schema.Number),
-      potentialScore: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    normalizedScore: Schema.optional(Schema.Number),
+    tag: Schema.optional(Schema.String),
+    score: Schema.optional(Schema.Number),
+    potentialScore: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource {
   /** The overall numerical score of the result. */
@@ -573,23 +523,21 @@ export interface GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource 
   qaTagResults?: Array<GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult>;
 }
 
-export const GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource: Schema.Schema<GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      score: Schema.optional(Schema.Number),
-      sourceType: Schema.optional(Schema.String),
-      normalizedScore: Schema.optional(Schema.Number),
-      potentialScore: Schema.optional(Schema.Number),
-      qaTagResults: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult,
-        ),
+export const GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    score: Schema.optional(Schema.Number),
+    sourceType: Schema.optional(Schema.String),
+    normalizedScore: Schema.optional(Schema.Number),
+    potentialScore: Schema.optional(Schema.Number),
+    qaTagResults: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1QaScorecardResult {
   /** Set of QaAnswers represented in the result. */
@@ -616,34 +564,32 @@ export interface GoogleCloudContactcenterinsightsV1QaScorecardResult {
   conversation?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1QaScorecardResult: Schema.Schema<GoogleCloudContactcenterinsightsV1QaScorecardResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      qaAnswers: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1QaAnswer),
+export const GoogleCloudContactcenterinsightsV1QaScorecardResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    qaAnswers: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1QaAnswer),
+    ),
+    qaScorecardRevision: Schema.optional(Schema.String),
+    agentId: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    normalizedScore: Schema.optional(Schema.Number),
+    score: Schema.optional(Schema.Number),
+    scoreSources: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource,
       ),
-      qaScorecardRevision: Schema.optional(Schema.String),
-      agentId: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      normalizedScore: Schema.optional(Schema.Number),
-      score: Schema.optional(Schema.Number),
-      scoreSources: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1QaScorecardResultScoreSource,
-        ),
+    ),
+    potentialScore: Schema.optional(Schema.Number),
+    qaTagResults: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult,
       ),
-      potentialScore: Schema.optional(Schema.Number),
-      qaTagResults: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1QaScorecardResultQaTagResult,
-        ),
-      ),
-      name: Schema.optional(Schema.String),
-      conversation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+    ),
+    name: Schema.optional(Schema.String),
+    conversation: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1QaScorecardResult",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1QaScorecardResult>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1Intent {
   /** The unique identifier of the intent. */
@@ -652,15 +598,11 @@ export interface GoogleCloudContactcenterinsightsV1Intent {
   displayName?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1Intent: Schema.Schema<GoogleCloudContactcenterinsightsV1Intent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1Intent",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1Intent>;
+export const GoogleCloudContactcenterinsightsV1Intent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudContactcenterinsightsV1Intent" });
 
 export interface GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadata {
   /** A list of call annotations that apply to this call. */
@@ -684,43 +626,41 @@ export interface GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMet
   intents?: Record<string, GoogleCloudContactcenterinsightsV1Intent>;
 }
 
-export const GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      annotations: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1CallAnnotation),
+export const GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    annotations: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1CallAnnotation),
+    ),
+    silence: Schema.optional(
+      GoogleCloudContactcenterinsightsV1ConversationLevelSilence,
+    ),
+    phraseMatchers: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        GoogleCloudContactcenterinsightsV1PhraseMatchData,
       ),
-      silence: Schema.optional(
-        GoogleCloudContactcenterinsightsV1ConversationLevelSilence,
+    ),
+    issueModelResult: Schema.optional(
+      GoogleCloudContactcenterinsightsV1IssueModelResult,
+    ),
+    entities: Schema.optional(
+      Schema.Record(Schema.String, GoogleCloudContactcenterinsightsV1Entity),
+    ),
+    sentiments: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1ConversationLevelSentiment,
       ),
-      phraseMatchers: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          GoogleCloudContactcenterinsightsV1PhraseMatchData,
-        ),
-      ),
-      issueModelResult: Schema.optional(
-        GoogleCloudContactcenterinsightsV1IssueModelResult,
-      ),
-      entities: Schema.optional(
-        Schema.Record(Schema.String, GoogleCloudContactcenterinsightsV1Entity),
-      ),
-      sentiments: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1ConversationLevelSentiment,
-        ),
-      ),
-      qaScorecardResults: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1QaScorecardResult),
-      ),
-      intents: Schema.optional(
-        Schema.Record(Schema.String, GoogleCloudContactcenterinsightsV1Intent),
-      ),
-    }),
-  ).annotate({
+    ),
+    qaScorecardResults: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1QaScorecardResult),
+    ),
+    intents: Schema.optional(
+      Schema.Record(Schema.String, GoogleCloudContactcenterinsightsV1Intent),
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1AnalysisResult {
   /** The time at which the analysis ended. */
@@ -729,17 +669,15 @@ export interface GoogleCloudContactcenterinsightsV1AnalysisResult {
   callAnalysisMetadata?: GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadata;
 }
 
-export const GoogleCloudContactcenterinsightsV1AnalysisResult: Schema.Schema<GoogleCloudContactcenterinsightsV1AnalysisResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endTime: Schema.optional(Schema.String),
-      callAnalysisMetadata: Schema.optional(
-        GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadata,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1AnalysisResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endTime: Schema.optional(Schema.String),
+    callAnalysisMetadata: Schema.optional(
+      GoogleCloudContactcenterinsightsV1AnalysisResultCallAnalysisMetadata,
+    ),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1AnalysisResult",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1AnalysisResult>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1Analysis {
   /** Output only. The time at which the analysis was requested. */
@@ -754,22 +692,18 @@ export interface GoogleCloudContactcenterinsightsV1Analysis {
   analysisResult?: GoogleCloudContactcenterinsightsV1AnalysisResult;
 }
 
-export const GoogleCloudContactcenterinsightsV1Analysis: Schema.Schema<GoogleCloudContactcenterinsightsV1Analysis> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      annotatorSelector: Schema.optional(
-        GoogleCloudContactcenterinsightsV1AnnotatorSelector,
-      ),
-      analysisResult: Schema.optional(
-        GoogleCloudContactcenterinsightsV1AnalysisResult,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1Analysis",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1Analysis>;
+export const GoogleCloudContactcenterinsightsV1Analysis =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    annotatorSelector: Schema.optional(
+      GoogleCloudContactcenterinsightsV1AnnotatorSelector,
+    ),
+    analysisResult: Schema.optional(
+      GoogleCloudContactcenterinsightsV1AnalysisResult,
+    ),
+  }).annotate({ identifier: "GoogleCloudContactcenterinsightsV1Analysis" });
 
 export interface GoogleCloudContactcenterinsightsV1ConversationCorrelationInfo {
   /** Output only. The full conversation correlation id this conversation is a merged conversation of. */
@@ -787,16 +721,14 @@ export interface GoogleCloudContactcenterinsightsV1ConversationCorrelationInfo {
   >;
 }
 
-export const GoogleCloudContactcenterinsightsV1ConversationCorrelationInfo: Schema.Schema<GoogleCloudContactcenterinsightsV1ConversationCorrelationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mergedFullConversationCorrelationId: Schema.optional(Schema.String),
-      fullConversationCorrelationId: Schema.optional(Schema.String),
-      correlationTypes: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1ConversationCorrelationInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    mergedFullConversationCorrelationId: Schema.optional(Schema.String),
+    fullConversationCorrelationId: Schema.optional(Schema.String),
+    correlationTypes: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1ConversationCorrelationInfo",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ConversationCorrelationInfo>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1ConversationParticipant {
   /** The name of the participant provided by Dialogflow. Format: projects/{project}/locations/{location}/conversations/{conversation}/participants/{participant} */
@@ -817,33 +749,29 @@ export interface GoogleCloudContactcenterinsightsV1ConversationParticipant {
   obfuscatedExternalUserId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ConversationParticipant: Schema.Schema<GoogleCloudContactcenterinsightsV1ConversationParticipant> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dialogflowParticipantName: Schema.optional(Schema.String),
-      userId: Schema.optional(Schema.String),
-      dialogflowParticipant: Schema.optional(Schema.String),
-      role: Schema.optional(Schema.String),
-      obfuscatedExternalUserId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1ConversationParticipant =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dialogflowParticipantName: Schema.optional(Schema.String),
+    userId: Schema.optional(Schema.String),
+    dialogflowParticipant: Schema.optional(Schema.String),
+    role: Schema.optional(Schema.String),
+    obfuscatedExternalUserId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1ConversationParticipant",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ConversationParticipant>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata {
   /** Whether the transcript segment was covered under the configured smart reply allowlist in Agent Assist. */
   smartReplyAllowlistCovered?: boolean;
 }
 
-export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      smartReplyAllowlistCovered: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    smartReplyAllowlistCovered: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo {
   /** Time offset of the start of this word relative to the beginning of the total conversation. */
@@ -856,18 +784,16 @@ export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscr
   confidence?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo: Schema.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startOffset: Schema.optional(Schema.String),
-      endOffset: Schema.optional(Schema.String),
-      word: Schema.optional(Schema.String),
-      confidence: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startOffset: Schema.optional(Schema.String),
+    endOffset: Schema.optional(Schema.String),
+    word: Schema.optional(Schema.String),
+    confidence: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio {
   /** The Cloud Storage URI of the audio for any given turn. */
@@ -876,16 +802,14 @@ export interface GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLev
   audioDuration?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio: Schema.Schema<GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      audioGcsUri: Schema.optional(Schema.String),
-      audioDuration: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    audioGcsUri: Schema.optional(Schema.String),
+    audioDuration: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment {
   /** The participant of this segment. */
@@ -910,54 +834,48 @@ export interface GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscr
   languageCode?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment: Schema.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      segmentParticipant: Schema.optional(
-        GoogleCloudContactcenterinsightsV1ConversationParticipant,
+export const GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    segmentParticipant: Schema.optional(
+      GoogleCloudContactcenterinsightsV1ConversationParticipant,
+    ),
+    text: Schema.optional(Schema.String),
+    dialogflowSegmentMetadata: Schema.optional(
+      GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata,
+    ),
+    messageTime: Schema.optional(Schema.String),
+    sentiment: Schema.optional(GoogleCloudContactcenterinsightsV1SentimentData),
+    confidence: Schema.optional(Schema.Number),
+    channelTag: Schema.optional(Schema.Number),
+    words: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo,
       ),
-      text: Schema.optional(Schema.String),
-      dialogflowSegmentMetadata: Schema.optional(
-        GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata,
-      ),
-      messageTime: Schema.optional(Schema.String),
-      sentiment: Schema.optional(
-        GoogleCloudContactcenterinsightsV1SentimentData,
-      ),
-      confidence: Schema.optional(Schema.Number),
-      channelTag: Schema.optional(Schema.Number),
-      words: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegmentWordInfo,
-        ),
-      ),
-      turnLevelAudio: Schema.optional(
-        GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio,
-      ),
-      languageCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+    ),
+    turnLevelAudio: Schema.optional(
+      GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio,
+    ),
+    languageCode: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1ConversationTranscript {
   /** A list of sequential transcript segments that comprise the conversation. */
   transcriptSegments?: Array<GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment>;
 }
 
-export const GoogleCloudContactcenterinsightsV1ConversationTranscript: Schema.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscript> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      transcriptSegments: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment,
-        ),
+export const GoogleCloudContactcenterinsightsV1ConversationTranscript =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    transcriptSegments: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1ConversationTranscriptTranscriptSegment,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1ConversationTranscript",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ConversationTranscript>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1GcsSource {
   /** Cloud Storage URI that points to a file that contains the conversation audio. */
@@ -966,15 +884,11 @@ export interface GoogleCloudContactcenterinsightsV1GcsSource {
   transcriptUri?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1GcsSource: Schema.Schema<GoogleCloudContactcenterinsightsV1GcsSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      audioUri: Schema.optional(Schema.String),
-      transcriptUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1GcsSource",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1GcsSource>;
+export const GoogleCloudContactcenterinsightsV1GcsSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    audioUri: Schema.optional(Schema.String),
+    transcriptUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudContactcenterinsightsV1GcsSource" });
 
 export interface GoogleCloudContactcenterinsightsV1DialogflowSource {
   /** Cloud Storage URI that points to a file that contains the conversation audio. */
@@ -983,15 +897,13 @@ export interface GoogleCloudContactcenterinsightsV1DialogflowSource {
   dialogflowConversation?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1DialogflowSource: Schema.Schema<GoogleCloudContactcenterinsightsV1DialogflowSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      audioUri: Schema.optional(Schema.String),
-      dialogflowConversation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1DialogflowSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    audioUri: Schema.optional(Schema.String),
+    dialogflowConversation: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1DialogflowSource",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1DialogflowSource>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1ConversationDataSource {
   /** A Cloud Storage location specification for the audio and transcript. */
@@ -1004,23 +916,21 @@ export interface GoogleCloudContactcenterinsightsV1ConversationDataSource {
   turnLevelAudios?: Array<GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio>;
 }
 
-export const GoogleCloudContactcenterinsightsV1ConversationDataSource: Schema.Schema<GoogleCloudContactcenterinsightsV1ConversationDataSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsSource: Schema.optional(GoogleCloudContactcenterinsightsV1GcsSource),
-      metadataUri: Schema.optional(Schema.String),
-      dialogflowSource: Schema.optional(
-        GoogleCloudContactcenterinsightsV1DialogflowSource,
+export const GoogleCloudContactcenterinsightsV1ConversationDataSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gcsSource: Schema.optional(GoogleCloudContactcenterinsightsV1GcsSource),
+    metadataUri: Schema.optional(Schema.String),
+    dialogflowSource: Schema.optional(
+      GoogleCloudContactcenterinsightsV1DialogflowSource,
+    ),
+    turnLevelAudios: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio,
       ),
-      turnLevelAudios: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio,
-        ),
-      ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1ConversationDataSource",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ConversationDataSource>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData {
   /** Map that contains metadata about the Smart Compose suggestion and the document from which it originates. */
@@ -1033,17 +943,15 @@ export interface GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData {
   queryRecord?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData: Schema.Schema<GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      confidenceScore: Schema.optional(Schema.Number),
-      suggestion: Schema.optional(Schema.String),
-      queryRecord: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    confidenceScore: Schema.optional(Schema.Number),
+    suggestion: Schema.optional(Schema.String),
+    queryRecord: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1SmartReplyData {
   /** The system's confidence score that this reply is a good match for this conversation, ranging from 0.0 (completely uncertain) to 1.0 (completely certain). */
@@ -1056,17 +964,15 @@ export interface GoogleCloudContactcenterinsightsV1SmartReplyData {
   queryRecord?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1SmartReplyData: Schema.Schema<GoogleCloudContactcenterinsightsV1SmartReplyData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      confidenceScore: Schema.optional(Schema.Number),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      reply: Schema.optional(Schema.String),
-      queryRecord: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1SmartReplyData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    confidenceScore: Schema.optional(Schema.Number),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    reply: Schema.optional(Schema.String),
+    queryRecord: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1SmartReplyData",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1SmartReplyData>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1AnswerFeedback {
   /** The correctness level of an answer. */
@@ -1082,16 +988,14 @@ export interface GoogleCloudContactcenterinsightsV1AnswerFeedback {
   clicked?: boolean;
 }
 
-export const GoogleCloudContactcenterinsightsV1AnswerFeedback: Schema.Schema<GoogleCloudContactcenterinsightsV1AnswerFeedback> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      correctnessLevel: Schema.optional(Schema.String),
-      displayed: Schema.optional(Schema.Boolean),
-      clicked: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1AnswerFeedback =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    correctnessLevel: Schema.optional(Schema.String),
+    displayed: Schema.optional(Schema.Boolean),
+    clicked: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1AnswerFeedback",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1AnswerFeedback>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1ArticleSuggestionData {
   /** Article URI. */
@@ -1108,19 +1012,17 @@ export interface GoogleCloudContactcenterinsightsV1ArticleSuggestionData {
   source?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ArticleSuggestionData: Schema.Schema<GoogleCloudContactcenterinsightsV1ArticleSuggestionData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-      queryRecord: Schema.optional(Schema.String),
-      confidenceScore: Schema.optional(Schema.Number),
-      title: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      source: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1ArticleSuggestionData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uri: Schema.optional(Schema.String),
+    queryRecord: Schema.optional(Schema.String),
+    confidenceScore: Schema.optional(Schema.Number),
+    title: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    source: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1ArticleSuggestionData",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ArticleSuggestionData>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput {
   /** Query text. Article Search uses this to store the input query used to generate the search results. */
@@ -1135,16 +1037,14 @@ export interface GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput {
   generatorName?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput: Schema.Schema<GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      query: Schema.optional(Schema.String),
-      querySource: Schema.optional(Schema.String),
-      generatorName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    query: Schema.optional(Schema.String),
+    querySource: Schema.optional(Schema.String),
+    generatorName: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData {
   /** The name of the answer record. Format: projects/{project}/locations/{location}/answerRecords/{answer_record} */
@@ -1163,23 +1063,19 @@ export interface GoogleCloudContactcenterinsightsV1ConversationSummarizationSugg
   generatorId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData: Schema.Schema<GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      answerRecord: Schema.optional(Schema.String),
-      text: Schema.optional(Schema.String),
-      conversationModel: Schema.optional(Schema.String),
-      textSections: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      confidence: Schema.optional(Schema.Number),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      generatorId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    answerRecord: Schema.optional(Schema.String),
+    text: Schema.optional(Schema.String),
+    conversationModel: Schema.optional(Schema.String),
+    textSections: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    confidence: Schema.optional(Schema.Number),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    generatorId: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1DialogflowInteractionData {
   /** The confidence of the match ranging from 0.0 (completely uncertain) to 1.0 (completely certain). */
@@ -1188,15 +1084,13 @@ export interface GoogleCloudContactcenterinsightsV1DialogflowInteractionData {
   dialogflowIntentId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1DialogflowInteractionData: Schema.Schema<GoogleCloudContactcenterinsightsV1DialogflowInteractionData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      confidence: Schema.optional(Schema.Number),
-      dialogflowIntentId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1DialogflowInteractionData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    confidence: Schema.optional(Schema.Number),
+    dialogflowIntentId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1DialogflowInteractionData",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1DialogflowInteractionData>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1FaqAnswerData {
   /** The piece of text from the `source` knowledge base document. */
@@ -1213,19 +1107,17 @@ export interface GoogleCloudContactcenterinsightsV1FaqAnswerData {
   queryRecord?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1FaqAnswerData: Schema.Schema<GoogleCloudContactcenterinsightsV1FaqAnswerData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      answer: Schema.optional(Schema.String),
-      question: Schema.optional(Schema.String),
-      source: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      confidenceScore: Schema.optional(Schema.Number),
-      queryRecord: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1FaqAnswerData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    answer: Schema.optional(Schema.String),
+    question: Schema.optional(Schema.String),
+    source: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    confidenceScore: Schema.optional(Schema.Number),
+    queryRecord: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1FaqAnswerData",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1FaqAnswerData>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1RuntimeAnnotation {
   /** Agent Assist Smart Compose suggestion data. */
@@ -1254,45 +1146,41 @@ export interface GoogleCloudContactcenterinsightsV1RuntimeAnnotation {
   faqAnswer?: GoogleCloudContactcenterinsightsV1FaqAnswerData;
 }
 
-export const GoogleCloudContactcenterinsightsV1RuntimeAnnotation: Schema.Schema<GoogleCloudContactcenterinsightsV1RuntimeAnnotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      smartComposeSuggestion: Schema.optional(
-        GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData,
-      ),
-      smartReply: Schema.optional(
-        GoogleCloudContactcenterinsightsV1SmartReplyData,
-      ),
-      answerFeedback: Schema.optional(
-        GoogleCloudContactcenterinsightsV1AnswerFeedback,
-      ),
-      createTime: Schema.optional(Schema.String),
-      articleSuggestion: Schema.optional(
-        GoogleCloudContactcenterinsightsV1ArticleSuggestionData,
-      ),
-      userInput: Schema.optional(
-        GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput,
-      ),
-      conversationSummarizationSuggestion: Schema.optional(
-        GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData,
-      ),
-      startBoundary: Schema.optional(
-        GoogleCloudContactcenterinsightsV1AnnotationBoundary,
-      ),
-      dialogflowInteraction: Schema.optional(
-        GoogleCloudContactcenterinsightsV1DialogflowInteractionData,
-      ),
-      annotationId: Schema.optional(Schema.String),
-      endBoundary: Schema.optional(
-        GoogleCloudContactcenterinsightsV1AnnotationBoundary,
-      ),
-      faqAnswer: Schema.optional(
-        GoogleCloudContactcenterinsightsV1FaqAnswerData,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1RuntimeAnnotation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    smartComposeSuggestion: Schema.optional(
+      GoogleCloudContactcenterinsightsV1SmartComposeSuggestionData,
+    ),
+    smartReply: Schema.optional(
+      GoogleCloudContactcenterinsightsV1SmartReplyData,
+    ),
+    answerFeedback: Schema.optional(
+      GoogleCloudContactcenterinsightsV1AnswerFeedback,
+    ),
+    createTime: Schema.optional(Schema.String),
+    articleSuggestion: Schema.optional(
+      GoogleCloudContactcenterinsightsV1ArticleSuggestionData,
+    ),
+    userInput: Schema.optional(
+      GoogleCloudContactcenterinsightsV1RuntimeAnnotationUserInput,
+    ),
+    conversationSummarizationSuggestion: Schema.optional(
+      GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData,
+    ),
+    startBoundary: Schema.optional(
+      GoogleCloudContactcenterinsightsV1AnnotationBoundary,
+    ),
+    dialogflowInteraction: Schema.optional(
+      GoogleCloudContactcenterinsightsV1DialogflowInteractionData,
+    ),
+    annotationId: Schema.optional(Schema.String),
+    endBoundary: Schema.optional(
+      GoogleCloudContactcenterinsightsV1AnnotationBoundary,
+    ),
+    faqAnswer: Schema.optional(GoogleCloudContactcenterinsightsV1FaqAnswerData),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1RuntimeAnnotation",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1RuntimeAnnotation>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1ConversationCallMetadata {
   /** The audio channel that contains the agent. */
@@ -1301,15 +1189,13 @@ export interface GoogleCloudContactcenterinsightsV1ConversationCallMetadata {
   customerChannel?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1ConversationCallMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1ConversationCallMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      agentChannel: Schema.optional(Schema.Number),
-      customerChannel: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1ConversationCallMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    agentChannel: Schema.optional(Schema.Number),
+    customerChannel: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1ConversationCallMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ConversationCallMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo {
   /** The agent type, e.g. HUMAN_AGENT. */
@@ -1344,26 +1230,24 @@ export interface GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAg
   location?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo: Schema.Schema<GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      agentType: Schema.optional(Schema.String),
-      deploymentId: Schema.optional(Schema.String),
-      versionDisplayName: Schema.optional(Schema.String),
-      teams: Schema.optional(Schema.Array(Schema.String)),
-      team: Schema.optional(Schema.String),
-      deploymentDisplayName: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      agentId: Schema.optional(Schema.String),
-      versionId: Schema.optional(Schema.String),
-      dispositionCode: Schema.optional(Schema.String),
-      entrySubagentDisplayName: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    agentType: Schema.optional(Schema.String),
+    deploymentId: Schema.optional(Schema.String),
+    versionDisplayName: Schema.optional(Schema.String),
+    teams: Schema.optional(Schema.Array(Schema.String)),
+    team: Schema.optional(Schema.String),
+    deploymentDisplayName: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    agentId: Schema.optional(Schema.String),
+    versionId: Schema.optional(Schema.String),
+    dispositionCode: Schema.optional(Schema.String),
+    entrySubagentDisplayName: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1FeedbackLabel {
   /** Immutable. Resource name of the FeedbackLabel. Format: projects/{project}/locations/{location}/conversations/{conversation}/feedbackLabels/{feedback_label} */
@@ -1380,21 +1264,19 @@ export interface GoogleCloudContactcenterinsightsV1FeedbackLabel {
   qaAnswerLabel?: GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue;
 }
 
-export const GoogleCloudContactcenterinsightsV1FeedbackLabel: Schema.Schema<GoogleCloudContactcenterinsightsV1FeedbackLabel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      labeledResource: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      label: Schema.optional(Schema.String),
-      qaAnswerLabel: Schema.optional(
-        GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1FeedbackLabel =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    labeledResource: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    label: Schema.optional(Schema.String),
+    qaAnswerLabel: Schema.optional(
+      GoogleCloudContactcenterinsightsV1QaAnswerAnswerValue,
+    ),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1FeedbackLabel",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1FeedbackLabel>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1ConversationQualityMetadata {
   /** An arbitrary integer value indicating the customer's satisfaction rating. */
@@ -1409,38 +1291,34 @@ export interface GoogleCloudContactcenterinsightsV1ConversationQualityMetadata {
   feedbackLabels?: Array<GoogleCloudContactcenterinsightsV1FeedbackLabel>;
 }
 
-export const GoogleCloudContactcenterinsightsV1ConversationQualityMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1ConversationQualityMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customerSatisfactionRating: Schema.optional(Schema.Number),
-      agentInfo: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo,
-        ),
+export const GoogleCloudContactcenterinsightsV1ConversationQualityMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customerSatisfactionRating: Schema.optional(Schema.Number),
+    agentInfo: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo,
       ),
-      waitDuration: Schema.optional(Schema.String),
-      menuPath: Schema.optional(Schema.String),
-      feedbackLabels: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1FeedbackLabel),
-      ),
-    }),
-  ).annotate({
+    ),
+    waitDuration: Schema.optional(Schema.String),
+    menuPath: Schema.optional(Schema.String),
+    feedbackLabels: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1FeedbackLabel),
+    ),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1ConversationQualityMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ConversationQualityMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1DialogflowIntent {
   /** The human-readable name of the intent. */
   displayName?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1DialogflowIntent: Schema.Schema<GoogleCloudContactcenterinsightsV1DialogflowIntent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1DialogflowIntent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1DialogflowIntent",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1DialogflowIntent>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1Conversation {
   /** Input only. JSON metadata encoded as a string. This field is primarily used by Insights integrations with various telephony systems and must be in one of Insight's supported formats. */
@@ -1494,74 +1372,66 @@ export interface GoogleCloudContactcenterinsightsV1Conversation {
   >;
 }
 
-export const GoogleCloudContactcenterinsightsV1Conversation: Schema.Schema<GoogleCloudContactcenterinsightsV1Conversation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadataJson: Schema.optional(Schema.String),
-      latestAnalysis: Schema.optional(
-        GoogleCloudContactcenterinsightsV1Analysis,
+export const GoogleCloudContactcenterinsightsV1Conversation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    metadataJson: Schema.optional(Schema.String),
+    latestAnalysis: Schema.optional(GoogleCloudContactcenterinsightsV1Analysis),
+    correlationInfo: Schema.optional(
+      GoogleCloudContactcenterinsightsV1ConversationCorrelationInfo,
+    ),
+    transcript: Schema.optional(
+      GoogleCloudContactcenterinsightsV1ConversationTranscript,
+    ),
+    dataSource: Schema.optional(
+      GoogleCloudContactcenterinsightsV1ConversationDataSource,
+    ),
+    startTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    languageCode: Schema.optional(Schema.String),
+    expireTime: Schema.optional(Schema.String),
+    agentId: Schema.optional(Schema.String),
+    obfuscatedUserId: Schema.optional(Schema.String),
+    runtimeAnnotations: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1RuntimeAnnotation),
+    ),
+    updateTime: Schema.optional(Schema.String),
+    callMetadata: Schema.optional(
+      GoogleCloudContactcenterinsightsV1ConversationCallMetadata,
+    ),
+    ttl: Schema.optional(Schema.String),
+    latestSummary: Schema.optional(
+      GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData,
+    ),
+    turnCount: Schema.optional(Schema.Number),
+    medium: Schema.optional(Schema.String),
+    duration: Schema.optional(Schema.String),
+    qualityMetadata: Schema.optional(
+      GoogleCloudContactcenterinsightsV1ConversationQualityMetadata,
+    ),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    createTime: Schema.optional(Schema.String),
+    dialogflowIntents: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        GoogleCloudContactcenterinsightsV1DialogflowIntent,
       ),
-      correlationInfo: Schema.optional(
-        GoogleCloudContactcenterinsightsV1ConversationCorrelationInfo,
-      ),
-      transcript: Schema.optional(
-        GoogleCloudContactcenterinsightsV1ConversationTranscript,
-      ),
-      dataSource: Schema.optional(
-        GoogleCloudContactcenterinsightsV1ConversationDataSource,
-      ),
-      startTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      languageCode: Schema.optional(Schema.String),
-      expireTime: Schema.optional(Schema.String),
-      agentId: Schema.optional(Schema.String),
-      obfuscatedUserId: Schema.optional(Schema.String),
-      runtimeAnnotations: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1RuntimeAnnotation),
-      ),
-      updateTime: Schema.optional(Schema.String),
-      callMetadata: Schema.optional(
-        GoogleCloudContactcenterinsightsV1ConversationCallMetadata,
-      ),
-      ttl: Schema.optional(Schema.String),
-      latestSummary: Schema.optional(
-        GoogleCloudContactcenterinsightsV1ConversationSummarizationSuggestionData,
-      ),
-      turnCount: Schema.optional(Schema.Number),
-      medium: Schema.optional(Schema.String),
-      duration: Schema.optional(Schema.String),
-      qualityMetadata: Schema.optional(
-        GoogleCloudContactcenterinsightsV1ConversationQualityMetadata,
-      ),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      createTime: Schema.optional(Schema.String),
-      dialogflowIntents: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          GoogleCloudContactcenterinsightsV1DialogflowIntent,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1Conversation",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1Conversation>;
+    ),
+  }).annotate({ identifier: "GoogleCloudContactcenterinsightsV1Conversation" });
 
 export interface GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequestConversations {
   /** Optional. The conversations. */
   conversations?: Array<GoogleCloudContactcenterinsightsV1Conversation>;
 }
 
-export const GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequestConversations: Schema.Schema<GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequestConversations> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conversations: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1Conversation),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequestConversations =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conversations: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1Conversation),
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequestConversations",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequestConversations>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1CorrelationRule {
   /** Optional. Whether the config is active to be evaluated. */
@@ -1574,33 +1444,29 @@ export interface GoogleCloudContactcenterinsightsV1CorrelationRule {
   constraintExpression?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1CorrelationRule: Schema.Schema<GoogleCloudContactcenterinsightsV1CorrelationRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      active: Schema.optional(Schema.Boolean),
-      ruleId: Schema.optional(Schema.String),
-      joinKeyExpression: Schema.optional(Schema.String),
-      constraintExpression: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1CorrelationRule =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    active: Schema.optional(Schema.Boolean),
+    ruleId: Schema.optional(Schema.String),
+    joinKeyExpression: Schema.optional(Schema.String),
+    constraintExpression: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1CorrelationRule",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1CorrelationRule>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1CorrelationTypeConfig {
   /** A list of correlation rules to be evaluated for correlation. */
   correlationRules?: Array<GoogleCloudContactcenterinsightsV1CorrelationRule>;
 }
 
-export const GoogleCloudContactcenterinsightsV1CorrelationTypeConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1CorrelationTypeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      correlationRules: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1CorrelationRule),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1CorrelationTypeConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    correlationRules: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1CorrelationRule),
+    ),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1CorrelationTypeConfig",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1CorrelationTypeConfig>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1CorrelationConfig {
   /** The correlation type config for full conversations. */
@@ -1613,19 +1479,17 @@ export interface GoogleCloudContactcenterinsightsV1CorrelationConfig {
   createTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1CorrelationConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1CorrelationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fullConversationConfig: Schema.optional(
-        GoogleCloudContactcenterinsightsV1CorrelationTypeConfig,
-      ),
-      updateTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1CorrelationConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fullConversationConfig: Schema.optional(
+      GoogleCloudContactcenterinsightsV1CorrelationTypeConfig,
+    ),
+    updateTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1CorrelationConfig",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1CorrelationConfig>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequest {
   /** Optional. A list of conversations to test against. */
@@ -1638,22 +1502,20 @@ export interface GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequest 
   filter?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conversations: Schema.optional(
-        GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequestConversations,
-      ),
-      correlationConfig: Schema.optional(
-        GoogleCloudContactcenterinsightsV1CorrelationConfig,
-      ),
-      maxSampleCount: Schema.optional(Schema.Number),
-      filter: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conversations: Schema.optional(
+      GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequestConversations,
+    ),
+    correlationConfig: Schema.optional(
+      GoogleCloudContactcenterinsightsV1CorrelationConfig,
+    ),
+    maxSampleCount: Schema.optional(Schema.Number),
+    filter: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1TestCorrelationConfigRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainIssueModelInputDataConfig {
   /** Medium of conversations used in training data. This field is being deprecated. To specify the medium to be used in training a new issue model, set the `medium` field on `filter`. */
@@ -1664,17 +1526,15 @@ export interface GoogleCloudContactcenterinsightsV1mainIssueModelInputDataConfig
   trainingConversationsCount?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainIssueModelInputDataConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1mainIssueModelInputDataConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      medium: Schema.optional(Schema.String),
-      filter: Schema.optional(Schema.String),
-      trainingConversationsCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainIssueModelInputDataConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    medium: Schema.optional(Schema.String),
+    filter: Schema.optional(Schema.String),
+    trainingConversationsCount: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainIssueModelInputDataConfig",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainIssueModelInputDataConfig>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointPercentileResult {
   /** The 50th percentile value. */
@@ -1685,17 +1545,15 @@ export interface GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSli
   p99?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointPercentileResult: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointPercentileResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      p50: Schema.optional(Schema.Number),
-      p90: Schema.optional(Schema.Number),
-      p99: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointPercentileResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    p50: Schema.optional(Schema.Number),
+    p90: Schema.optional(Schema.Number),
+    p99: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointPercentileResult",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointPercentileResult>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionMetadata {
   /** Optional. The QA scorecard ID. */
@@ -1706,17 +1564,15 @@ export interface GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionM
   questionBody?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      qaScorecardId: Schema.optional(Schema.String),
-      qaQuestionId: Schema.optional(Schema.String),
-      questionBody: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    qaScorecardId: Schema.optional(Schema.String),
+    qaQuestionId: Schema.optional(Schema.String),
+    questionBody: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1ScheduleInfo {
   /** The timezone to use for the groc expression. If not specified, defaults to UTC. */
@@ -1729,17 +1585,13 @@ export interface GoogleCloudContactcenterinsightsV1ScheduleInfo {
   schedule?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ScheduleInfo: Schema.Schema<GoogleCloudContactcenterinsightsV1ScheduleInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      timeZone: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      schedule: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1ScheduleInfo",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ScheduleInfo>;
+export const GoogleCloudContactcenterinsightsV1ScheduleInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    timeZone: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    schedule: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudContactcenterinsightsV1ScheduleInfo" });
 
 export interface GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointConversationMeasureQaTagScore {
   /** Tag name. */
@@ -1748,23 +1600,21 @@ export interface GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceData
   averageTagNormalizedScore?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointConversationMeasureQaTagScore: Schema.Schema<GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointConversationMeasureQaTagScore> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tag: Schema.optional(Schema.String),
-      averageTagNormalizedScore: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointConversationMeasureQaTagScore =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tag: Schema.optional(Schema.String),
+    averageTagNormalizedScore: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointConversationMeasureQaTagScore",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointConversationMeasureQaTagScore>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1HoldData {}
 
-export const GoogleCloudContactcenterinsightsV1alpha1HoldData: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1HoldData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1HoldData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1alpha1HoldData",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1HoldData>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1IssueAssignment {
   /** Resource name of the assigned issue. */
@@ -1775,32 +1625,28 @@ export interface GoogleCloudContactcenterinsightsV1alpha1IssueAssignment {
   displayName?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1IssueAssignment: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1IssueAssignment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      issue: Schema.optional(Schema.String),
-      score: Schema.optional(Schema.Number),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1IssueAssignment =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    issue: Schema.optional(Schema.String),
+    score: Schema.optional(Schema.Number),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1alpha1IssueAssignment",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1IssueAssignment>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1IssueMatchData {
   /** Information about the issue's assignment. */
   issueAssignment?: GoogleCloudContactcenterinsightsV1alpha1IssueAssignment;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1IssueMatchData: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1IssueMatchData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      issueAssignment: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1IssueAssignment,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1IssueMatchData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    issueAssignment: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1IssueAssignment,
+    ),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1alpha1IssueMatchData",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1IssueMatchData>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1AnnotationBoundary {
   /** The index in the sequence of transcribed pieces of the conversation where the boundary is located. This index starts at zero. */
@@ -1809,29 +1655,25 @@ export interface GoogleCloudContactcenterinsightsV1alpha1AnnotationBoundary {
   wordIndex?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1AnnotationBoundary: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1AnnotationBoundary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      transcriptIndex: Schema.optional(Schema.Number),
-      wordIndex: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1AnnotationBoundary =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    transcriptIndex: Schema.optional(Schema.Number),
+    wordIndex: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1alpha1AnnotationBoundary",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1AnnotationBoundary>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1IntentMatchData {
   /** The id of the matched intent. Can be used to retrieve the corresponding intent information. */
   intentUniqueId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1IntentMatchData: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1IntentMatchData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      intentUniqueId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1IntentMatchData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    intentUniqueId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1alpha1IntentMatchData",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1IntentMatchData>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1PhraseMatchData {
   /** The unique identifier (the resource name) of the phrase matcher. */
@@ -1840,15 +1682,13 @@ export interface GoogleCloudContactcenterinsightsV1alpha1PhraseMatchData {
   displayName?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1PhraseMatchData: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1PhraseMatchData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      phraseMatcher: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1PhraseMatchData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    phraseMatcher: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1alpha1PhraseMatchData",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1PhraseMatchData>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1SentimentData {
   /** The sentiment score between -1.0 (negative) and 1.0 (positive). */
@@ -1857,15 +1697,13 @@ export interface GoogleCloudContactcenterinsightsV1alpha1SentimentData {
   magnitude?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1SentimentData: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1SentimentData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      score: Schema.optional(Schema.Number),
-      magnitude: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1SentimentData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    score: Schema.optional(Schema.Number),
+    magnitude: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1alpha1SentimentData",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1SentimentData>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1EntityMentionData {
   /** The type of the entity mention. */
@@ -1876,32 +1714,30 @@ export interface GoogleCloudContactcenterinsightsV1alpha1EntityMentionData {
   entityUniqueId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1EntityMentionData: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1EntityMentionData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      sentiment: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1SentimentData,
-      ),
-      entityUniqueId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1EntityMentionData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    sentiment: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1SentimentData,
+    ),
+    entityUniqueId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1alpha1EntityMentionData",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1EntityMentionData>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1SilenceData {}
 
-export const GoogleCloudContactcenterinsightsV1alpha1SilenceData: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1SilenceData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1SilenceData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1alpha1SilenceData",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1SilenceData>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1InterruptionData {}
 
-export const GoogleCloudContactcenterinsightsV1alpha1InterruptionData: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1InterruptionData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1InterruptionData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1alpha1InterruptionData",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1InterruptionData>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1CallAnnotation {
   /** Data specifying a hold. */
@@ -1928,44 +1764,40 @@ export interface GoogleCloudContactcenterinsightsV1alpha1CallAnnotation {
   interruptionData?: GoogleCloudContactcenterinsightsV1alpha1InterruptionData;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1CallAnnotation: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1CallAnnotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      holdData: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1HoldData,
-      ),
-      issueMatchData: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1IssueMatchData,
-      ),
-      annotationEndBoundary: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1AnnotationBoundary,
-      ),
-      intentMatchData: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1IntentMatchData,
-      ),
-      channelTag: Schema.optional(Schema.Number),
-      phraseMatchData: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1PhraseMatchData,
-      ),
-      entityMentionData: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1EntityMentionData,
-      ),
-      sentimentData: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1SentimentData,
-      ),
-      silenceData: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1SilenceData,
-      ),
-      annotationStartBoundary: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1AnnotationBoundary,
-      ),
-      interruptionData: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1InterruptionData,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1CallAnnotation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    holdData: Schema.optional(GoogleCloudContactcenterinsightsV1alpha1HoldData),
+    issueMatchData: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1IssueMatchData,
+    ),
+    annotationEndBoundary: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1AnnotationBoundary,
+    ),
+    intentMatchData: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1IntentMatchData,
+    ),
+    channelTag: Schema.optional(Schema.Number),
+    phraseMatchData: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1PhraseMatchData,
+    ),
+    entityMentionData: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1EntityMentionData,
+    ),
+    sentimentData: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1SentimentData,
+    ),
+    silenceData: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1SilenceData,
+    ),
+    annotationStartBoundary: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1AnnotationBoundary,
+    ),
+    interruptionData: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1InterruptionData,
+    ),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1alpha1CallAnnotation",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1CallAnnotation>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1Issue {
   /** Output only. The most recent time that this issue was updated. */
@@ -1982,19 +1814,15 @@ export interface GoogleCloudContactcenterinsightsV1Issue {
   createTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1Issue: Schema.Schema<GoogleCloudContactcenterinsightsV1Issue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateTime: Schema.optional(Schema.String),
-      sampleUtterances: Schema.optional(Schema.Array(Schema.String)),
-      displayDescription: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1Issue",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1Issue>;
+export const GoogleCloudContactcenterinsightsV1Issue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateTime: Schema.optional(Schema.String),
+    sampleUtterances: Schema.optional(Schema.Array(Schema.String)),
+    displayDescription: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudContactcenterinsightsV1Issue" });
 
 export interface GoogleCloudContactcenterinsightsV1CreateIssueRequest {
   /** Required. The values for the new issue. */
@@ -2003,15 +1831,13 @@ export interface GoogleCloudContactcenterinsightsV1CreateIssueRequest {
   parent?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1CreateIssueRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1CreateIssueRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      issue: Schema.optional(GoogleCloudContactcenterinsightsV1Issue),
-      parent: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1CreateIssueRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    issue: Schema.optional(GoogleCloudContactcenterinsightsV1Issue),
+    parent: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1CreateIssueRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1CreateIssueRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesInterval {
   /** The start time of this interval. */
@@ -2020,16 +1846,14 @@ export interface GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSer
   conversationCount?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesInterval: Schema.Schema<GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesInterval> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Schema.String),
-      conversationCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesInterval =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startTime: Schema.optional(Schema.String),
+    conversationCount: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesInterval",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesInterval>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeries {
   /** An ordered list of intervals from earliest to latest, where each interval represents the number of conversations that transpired during the time window. */
@@ -2038,35 +1862,31 @@ export interface GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSer
   intervalDuration?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeries: Schema.Schema<GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeries> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      points: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesInterval,
-        ),
+export const GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeries =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    points: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeriesInterval,
       ),
-      intervalDuration: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+    ),
+    intervalDuration: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeries",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeries>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1DeleteIssueModelRequest {
   /** Required. The name of the issue model to delete. */
   name?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1DeleteIssueModelRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DeleteIssueModelRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1DeleteIssueModelRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1DeleteIssueModelRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DeleteIssueModelRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainIssue {
   /** The representative name for the issue. */
@@ -2083,19 +1903,15 @@ export interface GoogleCloudContactcenterinsightsV1mainIssue {
   displayDescription?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainIssue: Schema.Schema<GoogleCloudContactcenterinsightsV1mainIssue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      sampleUtterances: Schema.optional(Schema.Array(Schema.String)),
-      displayDescription: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1mainIssue",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainIssue>;
+export const GoogleCloudContactcenterinsightsV1mainIssue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    sampleUtterances: Schema.optional(Schema.Array(Schema.String)),
+    displayDescription: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudContactcenterinsightsV1mainIssue" });
 
 export interface GoogleCloudContactcenterinsightsV1mainCreateIssueRequest {
   /** Required. The parent resource of the issue. */
@@ -2104,15 +1920,13 @@ export interface GoogleCloudContactcenterinsightsV1mainCreateIssueRequest {
   issue?: GoogleCloudContactcenterinsightsV1mainIssue;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainCreateIssueRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1mainCreateIssueRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parent: Schema.optional(Schema.String),
-      issue: Schema.optional(GoogleCloudContactcenterinsightsV1mainIssue),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainCreateIssueRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.optional(Schema.String),
+    issue: Schema.optional(GoogleCloudContactcenterinsightsV1mainIssue),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1mainCreateIssueRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainCreateIssueRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainCreateIssueMetadata {
   /** Output only. The time the operation finished running. */
@@ -2123,32 +1937,28 @@ export interface GoogleCloudContactcenterinsightsV1mainCreateIssueMetadata {
   createTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainCreateIssueMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainCreateIssueMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endTime: Schema.optional(Schema.String),
-      request: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainCreateIssueRequest,
-      ),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainCreateIssueMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endTime: Schema.optional(Schema.String),
+    request: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainCreateIssueRequest,
+    ),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1mainCreateIssueMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainCreateIssueMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1UndeployIssueModelRequest {
   /** Required. The issue model to undeploy. */
   name?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1UndeployIssueModelRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1UndeployIssueModelRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1UndeployIssueModelRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1UndeployIssueModelRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1UndeployIssueModelRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1UndeployIssueModelMetadata {
   /** Output only. The time the operation finished running. */
@@ -2159,33 +1969,29 @@ export interface GoogleCloudContactcenterinsightsV1UndeployIssueModelMetadata {
   createTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1UndeployIssueModelMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1UndeployIssueModelMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endTime: Schema.optional(Schema.String),
-      request: Schema.optional(
-        GoogleCloudContactcenterinsightsV1UndeployIssueModelRequest,
-      ),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1UndeployIssueModelMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endTime: Schema.optional(Schema.String),
+    request: Schema.optional(
+      GoogleCloudContactcenterinsightsV1UndeployIssueModelRequest,
+    ),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1UndeployIssueModelMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1UndeployIssueModelMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1DeleteQaQuestionTagRequest {
   /** Required. The name of the QaQuestionTag to delete. */
   name?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1DeleteQaQuestionTagRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DeleteQaQuestionTagRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1DeleteQaQuestionTagRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1DeleteQaQuestionTagRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DeleteQaQuestionTagRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1DeleteQaQuestionTagMetadata {
   /** Output only. The time the operation was created. */
@@ -2196,27 +2002,25 @@ export interface GoogleCloudContactcenterinsightsV1alpha1DeleteQaQuestionTagMeta
   request?: GoogleCloudContactcenterinsightsV1alpha1DeleteQaQuestionTagRequest;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1DeleteQaQuestionTagMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DeleteQaQuestionTagMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      request: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1DeleteQaQuestionTagRequest,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1DeleteQaQuestionTagMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    request: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1DeleteQaQuestionTagRequest,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1DeleteQaQuestionTagMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DeleteQaQuestionTagMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1DeployIssueModelResponse {}
 
-export const GoogleCloudContactcenterinsightsV1alpha1DeployIssueModelResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DeployIssueModelResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1DeployIssueModelResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1DeployIssueModelResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DeployIssueModelResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataRequestBigQueryDestination {
   /** Required. The name of the BigQuery dataset that the snapshot result should be exported to. If this dataset does not exist, the export call returns an INVALID_ARGUMENT error. */
@@ -2227,17 +2031,15 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataReque
   table?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataRequestBigQueryDestination: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataRequestBigQueryDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataset: Schema.optional(Schema.String),
-      projectId: Schema.optional(Schema.String),
-      table: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataRequestBigQueryDestination =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataset: Schema.optional(Schema.String),
+    projectId: Schema.optional(Schema.String),
+    table: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataRequestBigQueryDestination",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataRequestBigQueryDestination>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataRequest {
   /** A filter to reduce results to a specific subset. Useful for exporting conversations with specific properties. */
@@ -2278,22 +2080,20 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataReque
   bigQueryDestination?: GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataRequestBigQueryDestination;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filter: Schema.optional(Schema.String),
-      exportSchemaVersion: Schema.optional(Schema.String),
-      parent: Schema.optional(Schema.String),
-      writeDisposition: Schema.optional(Schema.String),
-      kmsKey: Schema.optional(Schema.String),
-      bigQueryDestination: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataRequestBigQueryDestination,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filter: Schema.optional(Schema.String),
+    exportSchemaVersion: Schema.optional(Schema.String),
+    parent: Schema.optional(Schema.String),
+    writeDisposition: Schema.optional(Schema.String),
+    kmsKey: Schema.optional(Schema.String),
+    bigQueryDestination: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataRequestBigQueryDestination,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentWordInfo {
   /** Time offset of the start of this word relative to the beginning of the total conversation. */
@@ -2306,18 +2106,16 @@ export interface GoogleCloudContactcenterinsightsV1mainConversationTranscriptTra
   confidence?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentWordInfo: Schema.Schema<GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentWordInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startOffset: Schema.optional(Schema.String),
-      endOffset: Schema.optional(Schema.String),
-      word: Schema.optional(Schema.String),
-      confidence: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentWordInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startOffset: Schema.optional(Schema.String),
+    endOffset: Schema.optional(Schema.String),
+    word: Schema.optional(Schema.String),
+    confidence: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentWordInfo",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentWordInfo>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainConversationDataSourceTurnLevelAudio {
   /** The Cloud Storage URI of the audio for any given turn. */
@@ -2326,31 +2124,27 @@ export interface GoogleCloudContactcenterinsightsV1mainConversationDataSourceTur
   audioDuration?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainConversationDataSourceTurnLevelAudio: Schema.Schema<GoogleCloudContactcenterinsightsV1mainConversationDataSourceTurnLevelAudio> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      audioGcsUri: Schema.optional(Schema.String),
-      audioDuration: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainConversationDataSourceTurnLevelAudio =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    audioGcsUri: Schema.optional(Schema.String),
+    audioDuration: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainConversationDataSourceTurnLevelAudio",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainConversationDataSourceTurnLevelAudio>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata {
   /** Whether the transcript segment was covered under the configured smart reply allowlist in Agent Assist. */
   smartReplyAllowlistCovered?: boolean;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      smartReplyAllowlistCovered: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    smartReplyAllowlistCovered: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainSentimentData {
   /** The sentiment score between -1.0 (negative) and 1.0 (positive). */
@@ -2359,15 +2153,13 @@ export interface GoogleCloudContactcenterinsightsV1mainSentimentData {
   magnitude?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainSentimentData: Schema.Schema<GoogleCloudContactcenterinsightsV1mainSentimentData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      score: Schema.optional(Schema.Number),
-      magnitude: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainSentimentData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    score: Schema.optional(Schema.Number),
+    magnitude: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1mainSentimentData",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainSentimentData>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainConversationParticipant {
   /** The role of the participant. */
@@ -2388,18 +2180,16 @@ export interface GoogleCloudContactcenterinsightsV1mainConversationParticipant {
   obfuscatedExternalUserId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainConversationParticipant: Schema.Schema<GoogleCloudContactcenterinsightsV1mainConversationParticipant> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      role: Schema.optional(Schema.String),
-      dialogflowParticipant: Schema.optional(Schema.String),
-      dialogflowParticipantName: Schema.optional(Schema.String),
-      userId: Schema.optional(Schema.String),
-      obfuscatedExternalUserId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainConversationParticipant =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    role: Schema.optional(Schema.String),
+    dialogflowParticipant: Schema.optional(Schema.String),
+    dialogflowParticipantName: Schema.optional(Schema.String),
+    userId: Schema.optional(Schema.String),
+    obfuscatedExternalUserId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1mainConversationParticipant",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainConversationParticipant>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegment {
   /** The language code of this segment as a [BCP-47](https://www.rfc-editor.org/rfc/bcp/bcp47.txt) language tag. Example: "en-US". */
@@ -2424,69 +2214,63 @@ export interface GoogleCloudContactcenterinsightsV1mainConversationTranscriptTra
   text?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegment: Schema.Schema<GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      languageCode: Schema.optional(Schema.String),
-      channelTag: Schema.optional(Schema.Number),
-      words: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentWordInfo,
-        ),
+export const GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegment =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    languageCode: Schema.optional(Schema.String),
+    channelTag: Schema.optional(Schema.Number),
+    words: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentWordInfo,
       ),
-      turnLevelAudio: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainConversationDataSourceTurnLevelAudio,
-      ),
-      dialogflowSegmentMetadata: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata,
-      ),
-      messageTime: Schema.optional(Schema.String),
-      sentiment: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainSentimentData,
-      ),
-      confidence: Schema.optional(Schema.Number),
-      segmentParticipant: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainConversationParticipant,
-      ),
-      text: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+    ),
+    turnLevelAudio: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainConversationDataSourceTurnLevelAudio,
+    ),
+    dialogflowSegmentMetadata: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata,
+    ),
+    messageTime: Schema.optional(Schema.String),
+    sentiment: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainSentimentData,
+    ),
+    confidence: Schema.optional(Schema.Number),
+    segmentParticipant: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainConversationParticipant,
+    ),
+    text: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegment",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegment>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainConversationTranscript {
   /** A list of sequential transcript segments that comprise the conversation. */
   transcriptSegments?: Array<GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegment>;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainConversationTranscript: Schema.Schema<GoogleCloudContactcenterinsightsV1mainConversationTranscript> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      transcriptSegments: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegment,
-        ),
+export const GoogleCloudContactcenterinsightsV1mainConversationTranscript =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    transcriptSegments: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1mainConversationTranscriptTranscriptSegment,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1mainConversationTranscript",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainConversationTranscript>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelRequestGcsSource {
   /** Required. Format: `gs:///` */
   objectUri?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelRequestGcsSource: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelRequestGcsSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      objectUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelRequestGcsSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    objectUri: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelRequestGcsSource",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelRequestGcsSource>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1SignedAudioUris {
   /** The signed URI for the audio corresponding to each turn in the conversation. */
@@ -2497,20 +2281,18 @@ export interface GoogleCloudContactcenterinsightsV1SignedAudioUris {
   signedGcsAudioUri?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1SignedAudioUris: Schema.Schema<GoogleCloudContactcenterinsightsV1SignedAudioUris> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      signedTurnLevelAudios: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio,
-        ),
+export const GoogleCloudContactcenterinsightsV1SignedAudioUris =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    signedTurnLevelAudios: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1ConversationDataSourceTurnLevelAudio,
       ),
-      signedDialogflowAudioUri: Schema.optional(Schema.String),
-      signedGcsAudioUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+    ),
+    signedDialogflowAudioUri: Schema.optional(Schema.String),
+    signedGcsAudioUri: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1SignedAudioUris",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1SignedAudioUris>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1QaQuestionTag {
   /** Optional. The list of Scorecard Question IDs that the tag applies to. Each QaQuestionId is represented as a full resource name containing the Question ID. Lastly, Since a tag may not necessarily be referenced by any Scorecard Questions, we treat this field as optional. */
@@ -2525,18 +2307,16 @@ export interface GoogleCloudContactcenterinsightsV1alpha1QaQuestionTag {
   updateTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1QaQuestionTag: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QaQuestionTag> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      qaQuestionIds: Schema.optional(Schema.Array(Schema.String)),
-      displayName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1QaQuestionTag =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    qaQuestionIds: Schema.optional(Schema.Array(Schema.String)),
+    displayName: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1alpha1QaQuestionTag",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QaQuestionTag>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRange {
   /** Required. The quantity of units in the past. */
@@ -2552,16 +2332,14 @@ export interface GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRa
     | (string & {});
 }
 
-export const GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRange: Schema.Schema<GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      quantity: Schema.optional(Schema.String),
-      unit: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRange =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    quantity: Schema.optional(Schema.String),
+    unit: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRange",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRange>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1QueryInterval {
   /** Required. The start time of the time window. */
@@ -2570,15 +2348,13 @@ export interface GoogleCloudContactcenterinsightsV1QueryInterval {
   endTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1QueryInterval: Schema.Schema<GoogleCloudContactcenterinsightsV1QueryInterval> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1QueryInterval =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1QueryInterval",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1QueryInterval>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1DateRangeConfig {
   /** A relative date range. */
@@ -2587,19 +2363,17 @@ export interface GoogleCloudContactcenterinsightsV1DateRangeConfig {
   absoluteDateRange?: GoogleCloudContactcenterinsightsV1QueryInterval;
 }
 
-export const GoogleCloudContactcenterinsightsV1DateRangeConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1DateRangeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      relativeDateRange: Schema.optional(
-        GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRange,
-      ),
-      absoluteDateRange: Schema.optional(
-        GoogleCloudContactcenterinsightsV1QueryInterval,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1DateRangeConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    relativeDateRange: Schema.optional(
+      GoogleCloudContactcenterinsightsV1DateRangeConfigRelativeDateRange,
+    ),
+    absoluteDateRange: Schema.optional(
+      GoogleCloudContactcenterinsightsV1QueryInterval,
+    ),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1DateRangeConfig",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1DateRangeConfig>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainExportInsightsDataRequestBigQueryDestination {
   /** The BigQuery table name to which the insights data should be written. If this table does not exist, the export call returns an INVALID_ARGUMENT error. */
@@ -2610,17 +2384,15 @@ export interface GoogleCloudContactcenterinsightsV1mainExportInsightsDataRequest
   projectId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainExportInsightsDataRequestBigQueryDestination: Schema.Schema<GoogleCloudContactcenterinsightsV1mainExportInsightsDataRequestBigQueryDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      table: Schema.optional(Schema.String),
-      dataset: Schema.optional(Schema.String),
-      projectId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainExportInsightsDataRequestBigQueryDestination =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    table: Schema.optional(Schema.String),
+    dataset: Schema.optional(Schema.String),
+    projectId: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainExportInsightsDataRequestBigQueryDestination",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainExportInsightsDataRequestBigQueryDestination>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainExportInsightsDataRequest {
   /** A filter to reduce results to a specific subset. Useful for exporting conversations with specific properties. */
@@ -2661,22 +2433,20 @@ export interface GoogleCloudContactcenterinsightsV1mainExportInsightsDataRequest
   bigQueryDestination?: GoogleCloudContactcenterinsightsV1mainExportInsightsDataRequestBigQueryDestination;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainExportInsightsDataRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1mainExportInsightsDataRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filter: Schema.optional(Schema.String),
-      exportSchemaVersion: Schema.optional(Schema.String),
-      parent: Schema.optional(Schema.String),
-      writeDisposition: Schema.optional(Schema.String),
-      kmsKey: Schema.optional(Schema.String),
-      bigQueryDestination: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainExportInsightsDataRequestBigQueryDestination,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainExportInsightsDataRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filter: Schema.optional(Schema.String),
+    exportSchemaVersion: Schema.optional(Schema.String),
+    parent: Schema.optional(Schema.String),
+    writeDisposition: Schema.optional(Schema.String),
+    kmsKey: Schema.optional(Schema.String),
+    bigQueryDestination: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainExportInsightsDataRequestBigQueryDestination,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainExportInsightsDataRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainExportInsightsDataRequest>;
+  });
 
 export interface GoogleRpcStatus {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -2687,18 +2457,13 @@ export interface GoogleRpcStatus {
   details?: Array<Record<string, unknown>>;
 }
 
-export const GoogleRpcStatus: Schema.Schema<GoogleRpcStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleRpcStatus",
-  }) as any as Schema.Schema<GoogleRpcStatus>;
+export const GoogleRpcStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "GoogleRpcStatus" });
 
 export interface GoogleCloudContactcenterinsightsV1mainExportInsightsDataMetadata {
   /** The original request for export. */
@@ -2715,37 +2480,33 @@ export interface GoogleCloudContactcenterinsightsV1mainExportInsightsDataMetadat
   failedExportCount?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainExportInsightsDataMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainExportInsightsDataMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      request: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainExportInsightsDataRequest,
-      ),
-      partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
-      createTime: Schema.optional(Schema.String),
-      completedExportCount: Schema.optional(Schema.Number),
-      endTime: Schema.optional(Schema.String),
-      failedExportCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainExportInsightsDataMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    request: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainExportInsightsDataRequest,
+    ),
+    partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
+    createTime: Schema.optional(Schema.String),
+    completedExportCount: Schema.optional(Schema.Number),
+    endTime: Schema.optional(Schema.String),
+    failedExportCount: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainExportInsightsDataMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainExportInsightsDataMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsMetadata {
   /** The error message when the generative insights request fails. */
   errorMessages?: Array<GoogleRpcStatus>;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errorMessages: Schema.optional(Schema.Array(GoogleRpcStatus)),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    errorMessages: Schema.optional(Schema.Array(GoogleRpcStatus)),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainRuntimeAnnotationUserInput {
   /** The resource name of associated generator. Format: `projects//locations//generators/` */
@@ -2760,25 +2521,23 @@ export interface GoogleCloudContactcenterinsightsV1mainRuntimeAnnotationUserInpu
     | (string & {});
 }
 
-export const GoogleCloudContactcenterinsightsV1mainRuntimeAnnotationUserInput: Schema.Schema<GoogleCloudContactcenterinsightsV1mainRuntimeAnnotationUserInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      generatorName: Schema.optional(Schema.String),
-      query: Schema.optional(Schema.String),
-      querySource: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainRuntimeAnnotationUserInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    generatorName: Schema.optional(Schema.String),
+    query: Schema.optional(Schema.String),
+    querySource: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainRuntimeAnnotationUserInput",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainRuntimeAnnotationUserInput>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsResponse {}
 
-export const GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainDialogflowSource {
   /** Cloud Storage URI that points to a file that contains the conversation audio. */
@@ -2787,15 +2546,13 @@ export interface GoogleCloudContactcenterinsightsV1mainDialogflowSource {
   dialogflowConversation?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainDialogflowSource: Schema.Schema<GoogleCloudContactcenterinsightsV1mainDialogflowSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      audioUri: Schema.optional(Schema.String),
-      dialogflowConversation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainDialogflowSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    audioUri: Schema.optional(Schema.String),
+    dialogflowConversation: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1mainDialogflowSource",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainDialogflowSource>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1EncryptionSpec {
   /** Immutable. The resource name of the encryption key specification resource. Format: projects/{project}/locations/{location}/encryptionSpec */
@@ -2804,32 +2561,28 @@ export interface GoogleCloudContactcenterinsightsV1alpha1EncryptionSpec {
   kmsKey?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1EncryptionSpec: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1EncryptionSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      kmsKey: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1EncryptionSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    kmsKey: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1alpha1EncryptionSpec",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1EncryptionSpec>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpecRequest {
   /** Required. The encryption spec used for CMEK encryption. It is required that the kms key is in the same region as the endpoint. The same key will be used for all provisioned resources, if encryption is available. If the `kms_key_name` field is left empty, no encryption will be enforced. */
   encryptionSpec?: GoogleCloudContactcenterinsightsV1alpha1EncryptionSpec;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpecRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpecRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      encryptionSpec: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1EncryptionSpec,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpecRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    encryptionSpec: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1EncryptionSpec,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpecRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpecRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingCondition {
   /** A optional CEL expression to be evaluated as a boolean value. Once evaluated as true, then we will proceed with the value evaluation. An empty condition will be auto evaluated as true. */
@@ -2838,16 +2591,14 @@ export interface GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingCondi
   value?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingCondition: Schema.Schema<GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      condition: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingCondition =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    condition: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingCondition",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingCondition>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1AutoLabelingRule {
   /** Identifier. The resource name of the auto-labeling rule. Format: projects/{project}/locations/{location}/autoLabelingRules/{auto_labeling_rule} */
@@ -2873,26 +2624,24 @@ export interface GoogleCloudContactcenterinsightsV1AutoLabelingRule {
   active?: boolean;
 }
 
-export const GoogleCloudContactcenterinsightsV1AutoLabelingRule: Schema.Schema<GoogleCloudContactcenterinsightsV1AutoLabelingRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      conditions: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingCondition,
-        ),
+export const GoogleCloudContactcenterinsightsV1AutoLabelingRule =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    conditions: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1AutoLabelingRuleLabelingCondition,
       ),
-      labelKeyType: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      labelKey: Schema.optional(Schema.String),
-      active: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+    ),
+    labelKeyType: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    labelKey: Schema.optional(Schema.String),
+    active: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1AutoLabelingRule",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1AutoLabelingRule>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1ListAutoLabelingRulesResponse {
   /** The auto labeling rules. */
@@ -2901,18 +2650,16 @@ export interface GoogleCloudContactcenterinsightsV1ListAutoLabelingRulesResponse
   nextPageToken?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ListAutoLabelingRulesResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1ListAutoLabelingRulesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      autoLabelingRules: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1AutoLabelingRule),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1ListAutoLabelingRulesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    autoLabelingRules: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1AutoLabelingRule),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1ListAutoLabelingRulesResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ListAutoLabelingRulesResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1DimensionIssueDimensionMetadata {
   /** The issue display name. */
@@ -2923,17 +2670,15 @@ export interface GoogleCloudContactcenterinsightsV1alpha1DimensionIssueDimension
   issueModelId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1DimensionIssueDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DimensionIssueDimensionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      issueDisplayName: Schema.optional(Schema.String),
-      issueId: Schema.optional(Schema.String),
-      issueModelId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1DimensionIssueDimensionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    issueDisplayName: Schema.optional(Schema.String),
+    issueId: Schema.optional(Schema.String),
+    issueModelId: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1DimensionIssueDimensionMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DimensionIssueDimensionMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainAnnotationBoundary {
   /** The word index of this boundary with respect to the first word in the transcript piece. This index starts at zero. */
@@ -2942,15 +2687,13 @@ export interface GoogleCloudContactcenterinsightsV1mainAnnotationBoundary {
   transcriptIndex?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainAnnotationBoundary: Schema.Schema<GoogleCloudContactcenterinsightsV1mainAnnotationBoundary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      wordIndex: Schema.optional(Schema.Number),
-      transcriptIndex: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainAnnotationBoundary =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    wordIndex: Schema.optional(Schema.Number),
+    transcriptIndex: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1mainAnnotationBoundary",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainAnnotationBoundary>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1SampleConversationsMetadataSampleConversationsStats {
   /** Output only. The number of objects which were unable to be sampled due to errors. The errors are populated in the partial_errors field. */
@@ -2959,30 +2702,26 @@ export interface GoogleCloudContactcenterinsightsV1SampleConversationsMetadataSa
   successfulSampleCount?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1SampleConversationsMetadataSampleConversationsStats: Schema.Schema<GoogleCloudContactcenterinsightsV1SampleConversationsMetadataSampleConversationsStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      failedSampleCount: Schema.optional(Schema.Number),
-      successfulSampleCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1SampleConversationsMetadataSampleConversationsStats =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    failedSampleCount: Schema.optional(Schema.Number),
+    successfulSampleCount: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1SampleConversationsMetadataSampleConversationsStats",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1SampleConversationsMetadataSampleConversationsStats>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1DialogflowIntent {
   /** The human-readable name of the intent. */
   displayName?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1DialogflowIntent: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DialogflowIntent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1DialogflowIntent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1alpha1DialogflowIntent",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DialogflowIntent>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainConversationCorrelationResultRuleCorrelationResult {
   /** The error status if the join key expression failed to evaluate. */
@@ -2993,17 +2732,15 @@ export interface GoogleCloudContactcenterinsightsV1mainConversationCorrelationRe
   correlationId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainConversationCorrelationResultRuleCorrelationResult: Schema.Schema<GoogleCloudContactcenterinsightsV1mainConversationCorrelationResultRuleCorrelationResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      error: Schema.optional(GoogleRpcStatus),
-      ruleId: Schema.optional(Schema.String),
-      correlationId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainConversationCorrelationResultRuleCorrelationResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(GoogleRpcStatus),
+    ruleId: Schema.optional(Schema.String),
+    correlationId: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainConversationCorrelationResultRuleCorrelationResult",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainConversationCorrelationResultRuleCorrelationResult>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainConversationCorrelationResult {
   /** The conversation resource name. */
@@ -3012,35 +2749,31 @@ export interface GoogleCloudContactcenterinsightsV1mainConversationCorrelationRe
   ruleResults?: Array<GoogleCloudContactcenterinsightsV1mainConversationCorrelationResultRuleCorrelationResult>;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainConversationCorrelationResult: Schema.Schema<GoogleCloudContactcenterinsightsV1mainConversationCorrelationResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conversation: Schema.optional(Schema.String),
-      ruleResults: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1mainConversationCorrelationResultRuleCorrelationResult,
-        ),
+export const GoogleCloudContactcenterinsightsV1mainConversationCorrelationResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conversation: Schema.optional(Schema.String),
+    ruleResults: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1mainConversationCorrelationResultRuleCorrelationResult,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainConversationCorrelationResult",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainConversationCorrelationResult>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainDimensionConversationProfileDimensionMetadata {
   /** Optional. The conversation profile ID. */
   conversationProfileId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainDimensionConversationProfileDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainDimensionConversationProfileDimensionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conversationProfileId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainDimensionConversationProfileDimensionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conversationProfileId: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainDimensionConversationProfileDimensionMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainDimensionConversationProfileDimensionMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError {
   /** The conversation resource name that had an error during correlation. */
@@ -3049,16 +2782,14 @@ export interface GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMeta
   status?: GoogleRpcStatus;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError: Schema.Schema<GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conversation: Schema.optional(Schema.String),
-      status: Schema.optional(GoogleRpcStatus),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conversation: Schema.optional(Schema.String),
+    status: Schema.optional(GoogleRpcStatus),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata {
   /** The issue ID. */
@@ -3069,17 +2800,15 @@ export interface GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetada
   issueDisplayName?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      issueId: Schema.optional(Schema.String),
-      issueModelId: Schema.optional(Schema.String),
-      issueDisplayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    issueId: Schema.optional(Schema.String),
+    issueModelId: Schema.optional(Schema.String),
+    issueDisplayName: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessageTextOutput {
   /** The parts of the message. */
@@ -3093,16 +2822,14 @@ export interface GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversa
     | (string & {});
 }
 
-export const GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessageTextOutput: Schema.Schema<GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessageTextOutput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.Array(Schema.String)),
-      textType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessageTextOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.Array(Schema.String)),
+    textType: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessageTextOutput",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessageTextOutput>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1Intent {
   /** The unique identifier of the intent. */
@@ -3111,15 +2838,11 @@ export interface GoogleCloudContactcenterinsightsV1alpha1Intent {
   displayName?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1Intent: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1Intent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1alpha1Intent",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1Intent>;
+export const GoogleCloudContactcenterinsightsV1alpha1Intent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudContactcenterinsightsV1alpha1Intent" });
 
 export interface GoogleCloudContactcenterinsightsV1mainPhraseMatchData {
   /** The unique identifier (the resource name) of the phrase matcher. */
@@ -3128,15 +2851,13 @@ export interface GoogleCloudContactcenterinsightsV1mainPhraseMatchData {
   displayName?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainPhraseMatchData: Schema.Schema<GoogleCloudContactcenterinsightsV1mainPhraseMatchData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      phraseMatcher: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainPhraseMatchData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    phraseMatcher: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1mainPhraseMatchData",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainPhraseMatchData>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessageTextOutput {
   /** The parts of the message. */
@@ -3150,16 +2871,14 @@ export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConver
     | (string & {});
 }
 
-export const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessageTextOutput: Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessageTextOutput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      texts: Schema.optional(Schema.Array(Schema.String)),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessageTextOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    texts: Schema.optional(Schema.Array(Schema.String)),
+    type: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessageTextOutput",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessageTextOutput>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1CreateAnalysisOperationMetadata {
   /** Output only. The annotator selector used for the analysis (if any). */
@@ -3172,20 +2891,18 @@ export interface GoogleCloudContactcenterinsightsV1CreateAnalysisOperationMetada
   conversation?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1CreateAnalysisOperationMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1CreateAnalysisOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      annotatorSelector: Schema.optional(
-        GoogleCloudContactcenterinsightsV1AnnotatorSelector,
-      ),
-      endTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      conversation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1CreateAnalysisOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    annotatorSelector: Schema.optional(
+      GoogleCloudContactcenterinsightsV1AnnotatorSelector,
+    ),
+    endTime: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    conversation: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1CreateAnalysisOperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1CreateAnalysisOperationMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainIssueModelLabelStatsIssueStats {
   /** Issue resource. Format: projects/{project}/locations/{location}/issueModels/{issue_model}/issues/{issue} */
@@ -3196,17 +2913,15 @@ export interface GoogleCloudContactcenterinsightsV1mainIssueModelLabelStatsIssue
   displayName?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainIssueModelLabelStatsIssueStats: Schema.Schema<GoogleCloudContactcenterinsightsV1mainIssueModelLabelStatsIssueStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      issue: Schema.optional(Schema.String),
-      labeledConversationsCount: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainIssueModelLabelStatsIssueStats =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    issue: Schema.optional(Schema.String),
+    labeledConversationsCount: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainIssueModelLabelStatsIssueStats",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainIssueModelLabelStatsIssueStats>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainIssueModelLabelStats {
   /** Number of analyzed conversations for which no issue was applicable at this point in time. */
@@ -3220,21 +2935,19 @@ export interface GoogleCloudContactcenterinsightsV1mainIssueModelLabelStats {
   >;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainIssueModelLabelStats: Schema.Schema<GoogleCloudContactcenterinsightsV1mainIssueModelLabelStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unclassifiedConversationsCount: Schema.optional(Schema.String),
-      analyzedConversationsCount: Schema.optional(Schema.String),
-      issueStats: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          GoogleCloudContactcenterinsightsV1mainIssueModelLabelStatsIssueStats,
-        ),
+export const GoogleCloudContactcenterinsightsV1mainIssueModelLabelStats =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unclassifiedConversationsCount: Schema.optional(Schema.String),
+    analyzedConversationsCount: Schema.optional(Schema.String),
+    issueStats: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        GoogleCloudContactcenterinsightsV1mainIssueModelLabelStatsIssueStats,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1mainIssueModelLabelStats",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainIssueModelLabelStats>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainIssueModel {
   /** Output only. The most recent time at which the issue model was updated. */
@@ -3266,27 +2979,25 @@ export interface GoogleCloudContactcenterinsightsV1mainIssueModel {
   modelType?: "MODEL_TYPE_UNSPECIFIED" | "TYPE_V1" | "TYPE_V2" | (string & {});
 }
 
-export const GoogleCloudContactcenterinsightsV1mainIssueModel: Schema.Schema<GoogleCloudContactcenterinsightsV1mainIssueModel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      inputDataConfig: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainIssueModelInputDataConfig,
-      ),
-      issueCount: Schema.optional(Schema.String),
-      trainingStats: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainIssueModelLabelStats,
-      ),
-      displayName: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      languageCode: Schema.optional(Schema.String),
-      modelType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainIssueModel =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    inputDataConfig: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainIssueModelInputDataConfig,
+    ),
+    issueCount: Schema.optional(Schema.String),
+    trainingStats: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainIssueModelLabelStats,
+    ),
+    displayName: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    languageCode: Schema.optional(Schema.String),
+    modelType: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1mainIssueModel",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainIssueModel>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainCreateIssueModelRequest {
   /** Required. The parent resource of the issue model. */
@@ -3295,17 +3006,15 @@ export interface GoogleCloudContactcenterinsightsV1mainCreateIssueModelRequest {
   issueModel?: GoogleCloudContactcenterinsightsV1mainIssueModel;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainCreateIssueModelRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1mainCreateIssueModelRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parent: Schema.optional(Schema.String),
-      issueModel: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainIssueModel,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainCreateIssueModelRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.optional(Schema.String),
+    issueModel: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainIssueModel,
+    ),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1mainCreateIssueModelRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainCreateIssueModelRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainCreateIssueModelMetadata {
   /** Output only. The time the operation was created. */
@@ -3316,41 +3025,37 @@ export interface GoogleCloudContactcenterinsightsV1mainCreateIssueModelMetadata 
   endTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainCreateIssueModelMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainCreateIssueModelMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      request: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainCreateIssueModelRequest,
-      ),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainCreateIssueModelMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    request: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainCreateIssueModelRequest,
+    ),
+    endTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainCreateIssueModelMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainCreateIssueModelMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainQueryMetricsMetadata {
   /** Whether the result rows were truncated because the result row size is too large to materialize. */
   resultIsTruncated?: boolean;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainQueryMetricsMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainQueryMetricsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resultIsTruncated: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainQueryMetricsMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resultIsTruncated: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1mainQueryMetricsMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainQueryMetricsMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1UndeployQaScorecardRevisionRequest {}
 
-export const GoogleCloudContactcenterinsightsV1UndeployQaScorecardRevisionRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1UndeployQaScorecardRevisionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudContactcenterinsightsV1UndeployQaScorecardRevisionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1UndeployQaScorecardRevisionRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1UndeployQaScorecardRevisionRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse {
   /** The next page token. */
@@ -3359,17 +3064,15 @@ export interface GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse {
   feedbackLabels?: Array<GoogleCloudContactcenterinsightsV1FeedbackLabel>;
 }
 
-export const GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      feedbackLabels: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1FeedbackLabel),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    feedbackLabels: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1FeedbackLabel),
+    ),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ListFeedbackLabelsResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainEncryptionSpec {
   /** Immutable. The resource name of the encryption key specification resource. Format: projects/{project}/locations/{location}/encryptionSpec */
@@ -3378,54 +3081,48 @@ export interface GoogleCloudContactcenterinsightsV1mainEncryptionSpec {
   kmsKey?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainEncryptionSpec: Schema.Schema<GoogleCloudContactcenterinsightsV1mainEncryptionSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      kmsKey: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainEncryptionSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    kmsKey: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1mainEncryptionSpec",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainEncryptionSpec>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainInitializeEncryptionSpecRequest {
   /** Required. The encryption spec used for CMEK encryption. It is required that the kms key is in the same region as the endpoint. The same key will be used for all provisioned resources, if encryption is available. If the `kms_key_name` field is left empty, no encryption will be enforced. */
   encryptionSpec?: GoogleCloudContactcenterinsightsV1mainEncryptionSpec;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainInitializeEncryptionSpecRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1mainInitializeEncryptionSpecRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      encryptionSpec: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainEncryptionSpec,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainInitializeEncryptionSpecRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    encryptionSpec: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainEncryptionSpec,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainInitializeEncryptionSpecRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainInitializeEncryptionSpecRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1NoteAssessmentNote {}
 
-export const GoogleCloudContactcenterinsightsV1NoteAssessmentNote: Schema.Schema<GoogleCloudContactcenterinsightsV1NoteAssessmentNote> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudContactcenterinsightsV1NoteAssessmentNote =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1NoteAssessmentNote",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1NoteAssessmentNote>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1DeployIssueModelRequest {
   /** Required. The issue model to deploy. */
   name?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1DeployIssueModelRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DeployIssueModelRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1DeployIssueModelRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1DeployIssueModelRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DeployIssueModelRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig {
   /** Medium of conversations used in training data. This field is being deprecated. To specify the medium to be used in training a new issue model, set the `medium` field on `filter`. */
@@ -3436,16 +3133,14 @@ export interface GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig {
   trainingConversationsCount?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      medium: Schema.optional(Schema.String),
-      filter: Schema.optional(Schema.String),
-      trainingConversationsCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    medium: Schema.optional(Schema.String),
+    filter: Schema.optional(Schema.String),
+    trainingConversationsCount: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats {
   /** Issue resource. Format: projects/{project}/locations/{location}/issueModels/{issue_model}/issues/{issue} */
@@ -3456,17 +3151,15 @@ export interface GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStat
   displayName?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats: Schema.Schema<GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      issue: Schema.optional(Schema.String),
-      labeledConversationsCount: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    issue: Schema.optional(Schema.String),
+    labeledConversationsCount: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1IssueModelLabelStats {
   /** Number of conversations the issue model has analyzed at this point in time. */
@@ -3480,21 +3173,19 @@ export interface GoogleCloudContactcenterinsightsV1IssueModelLabelStats {
   unclassifiedConversationsCount?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1IssueModelLabelStats: Schema.Schema<GoogleCloudContactcenterinsightsV1IssueModelLabelStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      analyzedConversationsCount: Schema.optional(Schema.String),
-      issueStats: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats,
-        ),
+export const GoogleCloudContactcenterinsightsV1IssueModelLabelStats =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    analyzedConversationsCount: Schema.optional(Schema.String),
+    issueStats: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats,
       ),
-      unclassifiedConversationsCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+    ),
+    unclassifiedConversationsCount: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1IssueModelLabelStats",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1IssueModelLabelStats>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1IssueModel {
   /** Output only. The most recent time at which the issue model was updated. */
@@ -3526,27 +3217,23 @@ export interface GoogleCloudContactcenterinsightsV1IssueModel {
   modelType?: "MODEL_TYPE_UNSPECIFIED" | "TYPE_V1" | "TYPE_V2" | (string & {});
 }
 
-export const GoogleCloudContactcenterinsightsV1IssueModel: Schema.Schema<GoogleCloudContactcenterinsightsV1IssueModel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      inputDataConfig: Schema.optional(
-        GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig,
-      ),
-      issueCount: Schema.optional(Schema.String),
-      trainingStats: Schema.optional(
-        GoogleCloudContactcenterinsightsV1IssueModelLabelStats,
-      ),
-      displayName: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      languageCode: Schema.optional(Schema.String),
-      modelType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1IssueModel",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1IssueModel>;
+export const GoogleCloudContactcenterinsightsV1IssueModel =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    inputDataConfig: Schema.optional(
+      GoogleCloudContactcenterinsightsV1IssueModelInputDataConfig,
+    ),
+    issueCount: Schema.optional(Schema.String),
+    trainingStats: Schema.optional(
+      GoogleCloudContactcenterinsightsV1IssueModelLabelStats,
+    ),
+    displayName: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    languageCode: Schema.optional(Schema.String),
+    modelType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudContactcenterinsightsV1IssueModel" });
 
 export interface GoogleCloudContactcenterinsightsV1CreateIssueModelRequest {
   /** Required. The parent resource of the issue model. */
@@ -3555,15 +3242,13 @@ export interface GoogleCloudContactcenterinsightsV1CreateIssueModelRequest {
   issueModel?: GoogleCloudContactcenterinsightsV1IssueModel;
 }
 
-export const GoogleCloudContactcenterinsightsV1CreateIssueModelRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1CreateIssueModelRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parent: Schema.optional(Schema.String),
-      issueModel: Schema.optional(GoogleCloudContactcenterinsightsV1IssueModel),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1CreateIssueModelRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.optional(Schema.String),
+    issueModel: Schema.optional(GoogleCloudContactcenterinsightsV1IssueModel),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1CreateIssueModelRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1CreateIssueModelRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1CreateIssueModelMetadata {
   /** Output only. The time the operation finished running. */
@@ -3574,18 +3259,16 @@ export interface GoogleCloudContactcenterinsightsV1CreateIssueModelMetadata {
   createTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1CreateIssueModelMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1CreateIssueModelMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endTime: Schema.optional(Schema.String),
-      request: Schema.optional(
-        GoogleCloudContactcenterinsightsV1CreateIssueModelRequest,
-      ),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1CreateIssueModelMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endTime: Schema.optional(Schema.String),
+    request: Schema.optional(
+      GoogleCloudContactcenterinsightsV1CreateIssueModelRequest,
+    ),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1CreateIssueModelMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1CreateIssueModelMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest {
   /** Filter used to select the subset of conversations to delete. */
@@ -3598,18 +3281,16 @@ export interface GoogleCloudContactcenterinsightsV1BulkDeleteConversationsReques
   maxDeleteCount?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filter: Schema.optional(Schema.String),
-      force: Schema.optional(Schema.Boolean),
-      parent: Schema.optional(Schema.String),
-      maxDeleteCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filter: Schema.optional(Schema.String),
+    force: Schema.optional(Schema.Boolean),
+    parent: Schema.optional(Schema.String),
+    maxDeleteCount: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1DialogflowInteractionData {
   /** The Dialogflow intent resource path. Format: projects/{project}/agent/{agent}/intents/{intent} */
@@ -3618,24 +3299,22 @@ export interface GoogleCloudContactcenterinsightsV1alpha1DialogflowInteractionDa
   confidence?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1DialogflowInteractionData: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DialogflowInteractionData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dialogflowIntentId: Schema.optional(Schema.String),
-      confidence: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1DialogflowInteractionData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dialogflowIntentId: Schema.optional(Schema.String),
+    confidence: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1DialogflowInteractionData",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DialogflowInteractionData>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainExportIssueModelResponse {}
 
-export const GoogleCloudContactcenterinsightsV1mainExportIssueModelResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1mainExportIssueModelResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudContactcenterinsightsV1mainExportIssueModelResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainExportIssueModelResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainExportIssueModelResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerValue {
   /** A short string used as an identifier. Matches the value used in QaQuestion.AnswerChoice.key. */
@@ -3658,22 +3337,20 @@ export interface GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerValue {
   normalizedScore?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerValue: Schema.Schema<GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      key: Schema.optional(Schema.String),
-      potentialScore: Schema.optional(Schema.Number),
-      strValue: Schema.optional(Schema.String),
-      naValue: Schema.optional(Schema.Boolean),
-      boolValue: Schema.optional(Schema.Boolean),
-      score: Schema.optional(Schema.Number),
-      numValue: Schema.optional(Schema.Number),
-      skipValue: Schema.optional(Schema.Boolean),
-      normalizedScore: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerValue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    key: Schema.optional(Schema.String),
+    potentialScore: Schema.optional(Schema.Number),
+    strValue: Schema.optional(Schema.String),
+    naValue: Schema.optional(Schema.Boolean),
+    boolValue: Schema.optional(Schema.Boolean),
+    score: Schema.optional(Schema.Number),
+    numValue: Schema.optional(Schema.Number),
+    skipValue: Schema.optional(Schema.Boolean),
+    normalizedScore: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerValue",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerValue>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerSource {
   /** The answer value from this source. This field is populated by default, unless the question has a selection strategy configured to return multiple answer values, in which case `answer_values` will be populated instead. */
@@ -3686,17 +3363,15 @@ export interface GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerSource {
     | (string & {});
 }
 
-export const GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerSource: Schema.Schema<GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      answerValue: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerValue,
-      ),
-      sourceType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    answerValue: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerValue,
+    ),
+    sourceType: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerSource",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerSource>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainQaAnswer {
   /** The conversation the answer applies to. */
@@ -3713,25 +3388,19 @@ export interface GoogleCloudContactcenterinsightsV1mainQaAnswer {
   answerValue?: GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerValue;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainQaAnswer: Schema.Schema<GoogleCloudContactcenterinsightsV1mainQaAnswer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conversation: Schema.optional(Schema.String),
-      answerSources: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerSource,
-        ),
-      ),
-      tags: Schema.optional(Schema.Array(Schema.String)),
-      qaQuestion: Schema.optional(Schema.String),
-      questionBody: Schema.optional(Schema.String),
-      answerValue: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerValue,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1mainQaAnswer",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainQaAnswer>;
+export const GoogleCloudContactcenterinsightsV1mainQaAnswer =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conversation: Schema.optional(Schema.String),
+    answerSources: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerSource),
+    ),
+    tags: Schema.optional(Schema.Array(Schema.String)),
+    qaQuestion: Schema.optional(Schema.String),
+    questionBody: Schema.optional(Schema.String),
+    answerValue: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerValue,
+    ),
+  }).annotate({ identifier: "GoogleCloudContactcenterinsightsV1mainQaAnswer" });
 
 export interface GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessage {
   /** Raw SQL from LLM, before templatization */
@@ -3746,57 +3415,51 @@ export interface GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversa
   chartSpec?: Record<string, unknown>;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessage: Schema.Schema<GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      generatedSqlQuery: Schema.optional(Schema.String),
-      userProvidedChartSpec: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-      textMessage: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessageTextOutput,
-      ),
-      userProvidedSqlQuery: Schema.optional(Schema.String),
-      chartSpec: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    generatedSqlQuery: Schema.optional(Schema.String),
+    userProvidedChartSpec: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
+    textMessage: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessageTextOutput,
+    ),
+    userProvidedSqlQuery: Schema.optional(Schema.String),
+    chartSpec: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessage",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessage>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessages {
   /** A message from the system in response to the user. */
   systemMessages?: Array<GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessage>;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessages: Schema.Schema<GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessages> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      systemMessages: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessage,
-        ),
+export const GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessages =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    systemMessages: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessage,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessages",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessages>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageUserMessage {
   /** A message from the user that is interacting with the system. */
   text?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageUserMessage: Schema.Schema<GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageUserMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageUserMessage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageUserMessage",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageUserMessage>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessage {
   /** The message id of the message. */
@@ -3809,37 +3472,33 @@ export interface GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversa
   userMessage?: GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageUserMessage;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessage: Schema.Schema<GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      messageId: Schema.optional(Schema.String),
-      systemMessageWrapper: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessages,
-      ),
-      createTime: Schema.optional(Schema.String),
-      userMessage: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageUserMessage,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    messageId: Schema.optional(Schema.String),
+    systemMessageWrapper: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageSystemMessages,
+    ),
+    createTime: Schema.optional(Schema.String),
+    userMessage: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessageUserMessage,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessage",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessage>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1DimensionMediumDimensionMetadata {
   /** Optional. The conversation medium. Currently supports : PHONE_CALL, CHAT. */
   medium?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1DimensionMediumDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1DimensionMediumDimensionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      medium: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1DimensionMediumDimensionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    medium: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1DimensionMediumDimensionMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1DimensionMediumDimensionMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestConversationConfig {
   /** Optional. Indicates which of the channels, 1 or 2, contains the agent. Note that this must be set for conversations to be properly displayed and analyzed. */
@@ -3850,17 +3509,15 @@ export interface GoogleCloudContactcenterinsightsV1mainIngestConversationsReques
   agentId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestConversationConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestConversationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      agentChannel: Schema.optional(Schema.Number),
-      customerChannel: Schema.optional(Schema.Number),
-      agentId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestConversationConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    agentChannel: Schema.optional(Schema.Number),
+    customerChannel: Schema.optional(Schema.Number),
+    agentId: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestConversationConfig",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestConversationConfig>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsRequest {
   /** Required. The parent resource for new feedback labels. */
@@ -3869,45 +3526,41 @@ export interface GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsR
   filter?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parent: Schema.optional(Schema.String),
-      filter: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.optional(Schema.String),
+    filter: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewMetadata {}
 
-export const GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1ExactMatchConfig {
   /** Whether to consider case sensitivity when performing an exact match. */
   caseSensitive?: boolean;
 }
 
-export const GoogleCloudContactcenterinsightsV1ExactMatchConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1ExactMatchConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      caseSensitive: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1ExactMatchConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    caseSensitive: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1ExactMatchConfig",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ExactMatchConfig>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1RegexMatchConfig {}
 
-export const GoogleCloudContactcenterinsightsV1RegexMatchConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1RegexMatchConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudContactcenterinsightsV1RegexMatchConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1RegexMatchConfig",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1RegexMatchConfig>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig {
   /** The configuration for the exact match rule. */
@@ -3916,19 +3569,17 @@ export interface GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig {
   regexMatchConfig?: GoogleCloudContactcenterinsightsV1RegexMatchConfig;
 }
 
-export const GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      exactMatchConfig: Schema.optional(
-        GoogleCloudContactcenterinsightsV1ExactMatchConfig,
-      ),
-      regexMatchConfig: Schema.optional(
-        GoogleCloudContactcenterinsightsV1RegexMatchConfig,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    exactMatchConfig: Schema.optional(
+      GoogleCloudContactcenterinsightsV1ExactMatchConfig,
+    ),
+    regexMatchConfig: Schema.optional(
+      GoogleCloudContactcenterinsightsV1RegexMatchConfig,
+    ),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1EncryptionSpec {
   /** Required. The name of customer-managed encryption key that is used to secure a resource and its sub-resources. If empty, the resource is secured by our default encryption key. Only the key in the same location as this resource is allowed to be used for encryption. Format: `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{key}` */
@@ -3937,15 +3588,13 @@ export interface GoogleCloudContactcenterinsightsV1EncryptionSpec {
   name?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1EncryptionSpec: Schema.Schema<GoogleCloudContactcenterinsightsV1EncryptionSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kmsKey: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1EncryptionSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kmsKey: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1EncryptionSpec",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1EncryptionSpec>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig {
   /** The type of the predefined question. */
@@ -3956,60 +3605,52 @@ export interface GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionC
     | (string & {});
 }
 
-export const GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1ConversationDataOptions {
   /** Whether to include the per turn Dialogflow interaction data in conversation transcript. */
   includeDialogflowInteractionData?: boolean;
 }
 
-export const GoogleCloudContactcenterinsightsV1ConversationDataOptions: Schema.Schema<GoogleCloudContactcenterinsightsV1ConversationDataOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      includeDialogflowInteractionData: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1ConversationDataOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    includeDialogflowInteractionData: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1ConversationDataOptions",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ConversationDataOptions>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1QaQuestionQaQuestionDataOptions {
   /** Options for configuring the conversation data used to generate the QA question. */
   conversationDataOptions?: GoogleCloudContactcenterinsightsV1ConversationDataOptions;
 }
 
-export const GoogleCloudContactcenterinsightsV1QaQuestionQaQuestionDataOptions: Schema.Schema<GoogleCloudContactcenterinsightsV1QaQuestionQaQuestionDataOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conversationDataOptions: Schema.optional(
-        GoogleCloudContactcenterinsightsV1ConversationDataOptions,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1QaQuestionQaQuestionDataOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conversationDataOptions: Schema.optional(
+      GoogleCloudContactcenterinsightsV1ConversationDataOptions,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1QaQuestionQaQuestionDataOptions",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1QaQuestionQaQuestionDataOptions>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1QaQuestionMetrics {
   /** Output only. Accuracy of the model. Measures the percentage of correct answers the model gave on the test set. */
   accuracy?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1QaQuestionMetrics: Schema.Schema<GoogleCloudContactcenterinsightsV1QaQuestionMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accuracy: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1QaQuestionMetrics =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accuracy: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1QaQuestionMetrics",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1QaQuestionMetrics>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata {
   /** Total number of valid labels provided for the question at the time of tuining. */
@@ -4027,16 +3668,14 @@ export interface GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata {
   >;
 }
 
-export const GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      totalValidLabelCount: Schema.optional(Schema.String),
-      tuningError: Schema.optional(Schema.String),
-      datasetValidationWarnings: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    totalValidLabelCount: Schema.optional(Schema.String),
+    tuningError: Schema.optional(Schema.String),
+    datasetValidationWarnings: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice {
   /** Boolean value. */
@@ -4053,19 +3692,17 @@ export interface GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice {
   naValue?: boolean;
 }
 
-export const GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice: Schema.Schema<GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      boolValue: Schema.optional(Schema.Boolean),
-      numValue: Schema.optional(Schema.Number),
-      strValue: Schema.optional(Schema.String),
-      score: Schema.optional(Schema.Number),
-      key: Schema.optional(Schema.String),
-      naValue: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    boolValue: Schema.optional(Schema.Boolean),
+    numValue: Schema.optional(Schema.Number),
+    strValue: Schema.optional(Schema.String),
+    score: Schema.optional(Schema.Number),
+    key: Schema.optional(Schema.String),
+    naValue: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1QaQuestion {
   /** Output only. The most recent time at which the question was updated. */
@@ -4102,37 +3739,33 @@ export interface GoogleCloudContactcenterinsightsV1QaQuestion {
   answerChoices?: Array<GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice>;
 }
 
-export const GoogleCloudContactcenterinsightsV1QaQuestion: Schema.Schema<GoogleCloudContactcenterinsightsV1QaQuestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateTime: Schema.optional(Schema.String),
-      questionType: Schema.optional(Schema.String),
-      predefinedQuestionConfig: Schema.optional(
-        GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig,
-      ),
-      qaQuestionDataOptions: Schema.optional(
-        GoogleCloudContactcenterinsightsV1QaQuestionQaQuestionDataOptions,
-      ),
-      createTime: Schema.optional(Schema.String),
-      order: Schema.optional(Schema.Number),
-      answerInstructions: Schema.optional(Schema.String),
-      metrics: Schema.optional(
-        GoogleCloudContactcenterinsightsV1QaQuestionMetrics,
-      ),
-      name: Schema.optional(Schema.String),
-      tags: Schema.optional(Schema.Array(Schema.String)),
-      abbreviation: Schema.optional(Schema.String),
-      questionBody: Schema.optional(Schema.String),
-      tuningMetadata: Schema.optional(
-        GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata,
-      ),
-      answerChoices: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1QaQuestion",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1QaQuestion>;
+export const GoogleCloudContactcenterinsightsV1QaQuestion =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateTime: Schema.optional(Schema.String),
+    questionType: Schema.optional(Schema.String),
+    predefinedQuestionConfig: Schema.optional(
+      GoogleCloudContactcenterinsightsV1QaQuestionPredefinedQuestionConfig,
+    ),
+    qaQuestionDataOptions: Schema.optional(
+      GoogleCloudContactcenterinsightsV1QaQuestionQaQuestionDataOptions,
+    ),
+    createTime: Schema.optional(Schema.String),
+    order: Schema.optional(Schema.Number),
+    answerInstructions: Schema.optional(Schema.String),
+    metrics: Schema.optional(
+      GoogleCloudContactcenterinsightsV1QaQuestionMetrics,
+    ),
+    name: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Array(Schema.String)),
+    abbreviation: Schema.optional(Schema.String),
+    questionBody: Schema.optional(Schema.String),
+    tuningMetadata: Schema.optional(
+      GoogleCloudContactcenterinsightsV1QaQuestionTuningMetadata,
+    ),
+    answerChoices: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1QaQuestionAnswerChoice),
+    ),
+  }).annotate({ identifier: "GoogleCloudContactcenterinsightsV1QaQuestion" });
 
 export interface GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest {
   /** Required. Percentage of selected conversation to analyze, between [0, 100]. */
@@ -4147,36 +3780,32 @@ export interface GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsReque
   relabel?: boolean;
 }
 
-export const GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      analysisPercentage: Schema.optional(Schema.Number),
-      parent: Schema.optional(Schema.String),
-      annotatorSelector: Schema.optional(
-        GoogleCloudContactcenterinsightsV1AnnotatorSelector,
-      ),
-      filter: Schema.optional(Schema.String),
-      relabel: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    analysisPercentage: Schema.optional(Schema.Number),
+    parent: Schema.optional(Schema.String),
+    annotatorSelector: Schema.optional(
+      GoogleCloudContactcenterinsightsV1AnnotatorSelector,
+    ),
+    filter: Schema.optional(Schema.String),
+    relabel: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainExportIssueModelRequestGcsDestination {
   /** Required. Format: `gs:///` */
   objectUri?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainExportIssueModelRequestGcsDestination: Schema.Schema<GoogleCloudContactcenterinsightsV1mainExportIssueModelRequestGcsDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      objectUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainExportIssueModelRequestGcsDestination =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    objectUri: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainExportIssueModelRequestGcsDestination",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainExportIssueModelRequestGcsDestination>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainExportIssueModelRequest {
   /** Required. The issue model to export. */
@@ -4185,17 +3814,15 @@ export interface GoogleCloudContactcenterinsightsV1mainExportIssueModelRequest {
   gcsDestination?: GoogleCloudContactcenterinsightsV1mainExportIssueModelRequestGcsDestination;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainExportIssueModelRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1mainExportIssueModelRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      gcsDestination: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainExportIssueModelRequestGcsDestination,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainExportIssueModelRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    gcsDestination: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainExportIssueModelRequestGcsDestination,
+    ),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1mainExportIssueModelRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainExportIssueModelRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessageTextOutput {
   /** The parts of the message. */
@@ -4209,16 +3836,14 @@ export interface GoogleCloudContactcenterinsightsV1GenerativeInsightConversation
     | (string & {});
 }
 
-export const GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessageTextOutput: Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessageTextOutput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.Array(Schema.String)),
-      textType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessageTextOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.Array(Schema.String)),
+    textType: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessageTextOutput",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessageTextOutput>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessage {
   /** Chart spec from LLM */
@@ -4233,57 +3858,51 @@ export interface GoogleCloudContactcenterinsightsV1GenerativeInsightConversation
   userProvidedSqlQuery?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessage: Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      chartSpec: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      generatedSqlQuery: Schema.optional(Schema.String),
-      userProvidedChartSpec: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-      textMessage: Schema.optional(
-        GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessageTextOutput,
-      ),
-      userProvidedSqlQuery: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    chartSpec: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    generatedSqlQuery: Schema.optional(Schema.String),
+    userProvidedChartSpec: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
+    textMessage: Schema.optional(
+      GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessageTextOutput,
+    ),
+    userProvidedSqlQuery: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessage",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessage>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessages {
   /** A message from the system in response to the user. */
   systemMessages?: Array<GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessage>;
 }
 
-export const GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessages: Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessages> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      systemMessages: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessage,
-        ),
+export const GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessages =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    systemMessages: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessage,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessages",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessages>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageUserMessage {
   /** A message from the user that is interacting with the system. */
   text?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageUserMessage: Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageUserMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageUserMessage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageUserMessage",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageUserMessage>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessage {
   /** A wrapper for system messages per turn. */
@@ -4296,22 +3915,20 @@ export interface GoogleCloudContactcenterinsightsV1GenerativeInsightConversation
   createTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessage: Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      systemMessageWrapper: Schema.optional(
-        GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessages,
-      ),
-      messageId: Schema.optional(Schema.String),
-      userMessage: Schema.optional(
-        GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageUserMessage,
-      ),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    systemMessageWrapper: Schema.optional(
+      GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageSystemMessages,
+    ),
+    messageId: Schema.optional(Schema.String),
+    userMessage: Schema.optional(
+      GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessageUserMessage,
+    ),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessage",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessage>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationResultRuleCorrelationResult {
   /** The error status if the join key expression failed to evaluate. */
@@ -4322,17 +3939,15 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelation
   ruleId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationResultRuleCorrelationResult: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationResultRuleCorrelationResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      error: Schema.optional(GoogleRpcStatus),
-      correlationId: Schema.optional(Schema.String),
-      ruleId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationResultRuleCorrelationResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(GoogleRpcStatus),
+    correlationId: Schema.optional(Schema.String),
+    ruleId: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationResultRuleCorrelationResult",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationResultRuleCorrelationResult>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationResult {
   /** The results for each correlation rule. */
@@ -4341,20 +3956,18 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelation
   conversation?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationResult: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ruleResults: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationResultRuleCorrelationResult,
-        ),
+export const GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ruleResults: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationResultRuleCorrelationResult,
       ),
-      conversation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+    ),
+    conversation: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationResult",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationResult>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1IssueModelInputDataConfig {
   /** Medium of conversations used in training data. This field is being deprecated. To specify the medium to be used in training a new issue model, set the `medium` field on `filter`. */
@@ -4365,17 +3978,15 @@ export interface GoogleCloudContactcenterinsightsV1alpha1IssueModelInputDataConf
   trainingConversationsCount?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1IssueModelInputDataConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1IssueModelInputDataConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      medium: Schema.optional(Schema.String),
-      filter: Schema.optional(Schema.String),
-      trainingConversationsCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1IssueModelInputDataConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    medium: Schema.optional(Schema.String),
+    filter: Schema.optional(Schema.String),
+    trainingConversationsCount: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1IssueModelInputDataConfig",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1IssueModelInputDataConfig>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1IssueModelLabelStatsIssueStats {
   /** Issue resource. Format: projects/{project}/locations/{location}/issueModels/{issue_model}/issues/{issue} */
@@ -4386,17 +3997,15 @@ export interface GoogleCloudContactcenterinsightsV1alpha1IssueModelLabelStatsIss
   displayName?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1IssueModelLabelStatsIssueStats: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1IssueModelLabelStatsIssueStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      issue: Schema.optional(Schema.String),
-      labeledConversationsCount: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1IssueModelLabelStatsIssueStats =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    issue: Schema.optional(Schema.String),
+    labeledConversationsCount: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1IssueModelLabelStatsIssueStats",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1IssueModelLabelStatsIssueStats>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1IssueModelLabelStats {
   /** Number of analyzed conversations for which no issue was applicable at this point in time. */
@@ -4410,21 +4019,19 @@ export interface GoogleCloudContactcenterinsightsV1alpha1IssueModelLabelStats {
   >;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1IssueModelLabelStats: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1IssueModelLabelStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unclassifiedConversationsCount: Schema.optional(Schema.String),
-      analyzedConversationsCount: Schema.optional(Schema.String),
-      issueStats: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          GoogleCloudContactcenterinsightsV1alpha1IssueModelLabelStatsIssueStats,
-        ),
+export const GoogleCloudContactcenterinsightsV1alpha1IssueModelLabelStats =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unclassifiedConversationsCount: Schema.optional(Schema.String),
+    analyzedConversationsCount: Schema.optional(Schema.String),
+    issueStats: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        GoogleCloudContactcenterinsightsV1alpha1IssueModelLabelStatsIssueStats,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1alpha1IssueModelLabelStats",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1IssueModelLabelStats>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1IssueModel {
   /** Immutable. The resource name of the issue model. Format: projects/{project}/locations/{location}/issueModels/{issue_model} */
@@ -4456,27 +4063,25 @@ export interface GoogleCloudContactcenterinsightsV1alpha1IssueModel {
   languageCode?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1IssueModel: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1IssueModel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      issueCount: Schema.optional(Schema.String),
-      inputDataConfig: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1IssueModelInputDataConfig,
-      ),
-      createTime: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      trainingStats: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1IssueModelLabelStats,
-      ),
-      modelType: Schema.optional(Schema.String),
-      languageCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1IssueModel =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    issueCount: Schema.optional(Schema.String),
+    inputDataConfig: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1IssueModelInputDataConfig,
+    ),
+    createTime: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    trainingStats: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1IssueModelLabelStats,
+    ),
+    modelType: Schema.optional(Schema.String),
+    languageCode: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1alpha1IssueModel",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1IssueModel>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1CreateIssueModelRequest {
   /** Required. The parent resource of the issue model. */
@@ -4485,18 +4090,16 @@ export interface GoogleCloudContactcenterinsightsV1alpha1CreateIssueModelRequest
   issueModel?: GoogleCloudContactcenterinsightsV1alpha1IssueModel;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1CreateIssueModelRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1CreateIssueModelRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parent: Schema.optional(Schema.String),
-      issueModel: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1IssueModel,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1CreateIssueModelRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.optional(Schema.String),
+    issueModel: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1IssueModel,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1CreateIssueModelRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1CreateIssueModelRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataMetadata {
   /** The original request for export. */
@@ -4513,37 +4116,33 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataMetad
   failedExportCount?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      request: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataRequest,
-      ),
-      partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
-      createTime: Schema.optional(Schema.String),
-      completedExportCount: Schema.optional(Schema.Number),
-      endTime: Schema.optional(Schema.String),
-      failedExportCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    request: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataRequest,
+    ),
+    partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
+    createTime: Schema.optional(Schema.String),
+    completedExportCount: Schema.optional(Schema.Number),
+    endTime: Schema.optional(Schema.String),
+    failedExportCount: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelRequestGcsDestination {
   /** Required. Format: `gs:///` */
   objectUri?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelRequestGcsDestination: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelRequestGcsDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      objectUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelRequestGcsDestination =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    objectUri: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelRequestGcsDestination",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelRequestGcsDestination>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelRequest {
   /** Google Cloud Storage URI to export the issue model to. */
@@ -4552,50 +4151,44 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelRequest
   name?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsDestination: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelRequestGcsDestination,
-      ),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gcsDestination: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelRequestGcsDestination,
+    ),
+    name: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorQaConfigScorecardList {
   /** List of QaScorecardRevisions. */
   qaScorecardRevisions?: Array<string>;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorQaConfigScorecardList: Schema.Schema<GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorQaConfigScorecardList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      qaScorecardRevisions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorQaConfigScorecardList =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    qaScorecardRevisions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorQaConfigScorecardList",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorQaConfigScorecardList>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorQaConfig {
   /** A manual list of scorecards to score. */
   scorecardList?: GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorQaConfigScorecardList;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorQaConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorQaConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scorecardList: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorQaConfigScorecardList,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorQaConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scorecardList: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorQaConfigScorecardList,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorQaConfig",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorQaConfig>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1DeployIssueModelMetadata {
   /** Output only. The time the operation finished running. */
@@ -4606,19 +4199,17 @@ export interface GoogleCloudContactcenterinsightsV1alpha1DeployIssueModelMetadat
   createTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1DeployIssueModelMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DeployIssueModelMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endTime: Schema.optional(Schema.String),
-      request: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1DeployIssueModelRequest,
-      ),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1DeployIssueModelMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endTime: Schema.optional(Schema.String),
+    request: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1DeployIssueModelRequest,
+    ),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1DeployIssueModelMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DeployIssueModelMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1ConstraintEvaluationResultRuleConstraintResult {
   /** The rule ID. */
@@ -4629,17 +4220,15 @@ export interface GoogleCloudContactcenterinsightsV1ConstraintEvaluationResultRul
   constraintMet?: boolean;
 }
 
-export const GoogleCloudContactcenterinsightsV1ConstraintEvaluationResultRuleConstraintResult: Schema.Schema<GoogleCloudContactcenterinsightsV1ConstraintEvaluationResultRuleConstraintResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ruleId: Schema.optional(Schema.String),
-      error: Schema.optional(GoogleRpcStatus),
-      constraintMet: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1ConstraintEvaluationResultRuleConstraintResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ruleId: Schema.optional(Schema.String),
+    error: Schema.optional(GoogleRpcStatus),
+    constraintMet: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1ConstraintEvaluationResultRuleConstraintResult",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ConstraintEvaluationResultRuleConstraintResult>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1RedactionConfig {
   /** The fully-qualified DLP deidentify template resource name. Format: `projects/{project}/deidentifyTemplates/{template}` */
@@ -4648,15 +4237,13 @@ export interface GoogleCloudContactcenterinsightsV1RedactionConfig {
   inspectTemplate?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1RedactionConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1RedactionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deidentifyTemplate: Schema.optional(Schema.String),
-      inspectTemplate: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1RedactionConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deidentifyTemplate: Schema.optional(Schema.String),
+    inspectTemplate: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1RedactionConfig",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1RedactionConfig>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscript {
   /** Output only. The create time of the conversation. */
@@ -4669,29 +4256,27 @@ export interface GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversa
   messages?: Array<GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessage>;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscript: Schema.Schema<GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscript> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      conversationId: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      messages: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessage,
-        ),
+export const GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscript =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    conversationId: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    messages: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscriptMessage,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscript",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscript>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1ExportIssueModelResponse {}
 
-export const GoogleCloudContactcenterinsightsV1ExportIssueModelResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1ExportIssueModelResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudContactcenterinsightsV1ExportIssueModelResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1ExportIssueModelResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ExportIssueModelResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainGenerativeInsightsResponseGenerativeResponseTextOutput {
   /** The type of text output. */
@@ -4705,16 +4290,14 @@ export interface GoogleCloudContactcenterinsightsV1mainGenerativeInsightsRespons
   text?: Array<string>;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainGenerativeInsightsResponseGenerativeResponseTextOutput: Schema.Schema<GoogleCloudContactcenterinsightsV1mainGenerativeInsightsResponseGenerativeResponseTextOutput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      textType: Schema.optional(Schema.String),
-      text: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainGenerativeInsightsResponseGenerativeResponseTextOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    textType: Schema.optional(Schema.String),
+    text: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainGenerativeInsightsResponseGenerativeResponseTextOutput",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainGenerativeInsightsResponseGenerativeResponseTextOutput>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestGcsSource {
   /** Optional. The Cloud Storage path to the conversation transcripts. Note that: [1] Transcript files are expected to be in JSON format. [2] Transcript, audio, metadata files must be in separate buckets / folders. [3] A source file and its corresponding metadata file must share the same name to be properly ingested, E.g. `gs://bucket/audio/conversation1.mp3` and `gs://bucket/metadata/conversation1.json`. */
@@ -4735,20 +4318,18 @@ export interface GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequ
   audioBucketUri?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestGcsSource: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestGcsSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      transcriptBucketUri: Schema.optional(Schema.String),
-      bucketUri: Schema.optional(Schema.String),
-      bucketObjectType: Schema.optional(Schema.String),
-      metadataBucketUri: Schema.optional(Schema.String),
-      customMetadataKeys: Schema.optional(Schema.Array(Schema.String)),
-      audioBucketUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestGcsSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    transcriptBucketUri: Schema.optional(Schema.String),
+    bucketUri: Schema.optional(Schema.String),
+    bucketObjectType: Schema.optional(Schema.String),
+    metadataBucketUri: Schema.optional(Schema.String),
+    customMetadataKeys: Schema.optional(Schema.Array(Schema.String)),
+    audioBucketUri: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestGcsSource",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestGcsSource>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1SpeechConfig {
   /** Whether to disable word time offsets. If true, the `enable_word_time_offsets` field in the recognition config will be set to false. */
@@ -4757,15 +4338,13 @@ export interface GoogleCloudContactcenterinsightsV1alpha1SpeechConfig {
   speechRecognizer?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1SpeechConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1SpeechConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      disableWordTimeOffsets: Schema.optional(Schema.Boolean),
-      speechRecognizer: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1SpeechConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    disableWordTimeOffsets: Schema.optional(Schema.Boolean),
+    speechRecognizer: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1alpha1SpeechConfig",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1SpeechConfig>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1RedactionConfig {
   /** The fully-qualified DLP deidentify template resource name. Format: `projects/{project}/deidentifyTemplates/{template}` */
@@ -4774,30 +4353,26 @@ export interface GoogleCloudContactcenterinsightsV1alpha1RedactionConfig {
   inspectTemplate?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1RedactionConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1RedactionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deidentifyTemplate: Schema.optional(Schema.String),
-      inspectTemplate: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1RedactionConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deidentifyTemplate: Schema.optional(Schema.String),
+    inspectTemplate: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1alpha1RedactionConfig",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1RedactionConfig>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestTranscriptObjectConfig {
   /** Required. The medium transcript objects represent. */
   medium?: "MEDIUM_UNSPECIFIED" | "PHONE_CALL" | "CHAT" | (string & {});
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestTranscriptObjectConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestTranscriptObjectConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      medium: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestTranscriptObjectConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    medium: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestTranscriptObjectConfig",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestTranscriptObjectConfig>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestConversationConfig {
   /** Optional. Indicates which of the channels, 1 or 2, contains the agent. Note that this must be set for conversations to be properly displayed and analyzed. */
@@ -4808,17 +4383,15 @@ export interface GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequ
   agentId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestConversationConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestConversationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      agentChannel: Schema.optional(Schema.Number),
-      customerChannel: Schema.optional(Schema.Number),
-      agentId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestConversationConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    agentChannel: Schema.optional(Schema.Number),
+    customerChannel: Schema.optional(Schema.Number),
+    agentId: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestConversationConfig",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestConversationConfig>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequest {
   /** A cloud storage bucket source. Note that any previously ingested objects from the source will be skipped to avoid duplication. */
@@ -4837,31 +4410,29 @@ export interface GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequ
   conversationConfig?: GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestConversationConfig;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsSource: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestGcsSource,
-      ),
-      speechConfig: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1SpeechConfig,
-      ),
-      parent: Schema.optional(Schema.String),
-      sampleSize: Schema.optional(Schema.Number),
-      redactionConfig: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1RedactionConfig,
-      ),
-      transcriptObjectConfig: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestTranscriptObjectConfig,
-      ),
-      conversationConfig: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestConversationConfig,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gcsSource: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestGcsSource,
+    ),
+    speechConfig: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1SpeechConfig,
+    ),
+    parent: Schema.optional(Schema.String),
+    sampleSize: Schema.optional(Schema.Number),
+    redactionConfig: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1RedactionConfig,
+    ),
+    transcriptObjectConfig: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestTranscriptObjectConfig,
+    ),
+    conversationConfig: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequestConversationConfig,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadataFullConversationCorrelationStats {
   /** The number of conversations that failed correlation. */
@@ -4876,23 +4447,21 @@ export interface GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMeta
   correlatedConversationsCount?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadataFullConversationCorrelationStats: Schema.Schema<GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadataFullConversationCorrelationStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      failedConversationsCount: Schema.optional(Schema.Number),
-      sampledConversationsCount: Schema.optional(Schema.Number),
-      partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
-      conversationCorrelationErrors: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError,
-        ),
+export const GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadataFullConversationCorrelationStats =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    failedConversationsCount: Schema.optional(Schema.Number),
+    sampledConversationsCount: Schema.optional(Schema.Number),
+    partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
+    conversationCorrelationErrors: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError,
       ),
-      correlatedConversationsCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+    ),
+    correlatedConversationsCount: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadataFullConversationCorrelationStats",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadataFullConversationCorrelationStats>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadata {
   /** The statistics for the operation. */
@@ -4903,33 +4472,29 @@ export interface GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMeta
   createTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stats: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadataFullConversationCorrelationStats,
-      ),
-      dataset: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    stats: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadataFullConversationCorrelationStats,
+    ),
+    dataset: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainDeployIssueModelRequest {
   /** Required. The issue model to deploy. */
   name?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainDeployIssueModelRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1mainDeployIssueModelRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainDeployIssueModelRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1mainDeployIssueModelRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainDeployIssueModelRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsResponse {
   /** Count of successful analyses. */
@@ -4938,33 +4503,29 @@ export interface GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversation
   failedAnalysisCount?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      successfulAnalysisCount: Schema.optional(Schema.Number),
-      failedAnalysisCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    successfulAnalysisCount: Schema.optional(Schema.Number),
+    failedAnalysisCount: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1CalculateIssueModelStatsResponse {
   /** The latest label statistics for the queried issue model. Includes results on both training data and data labeled after deployment. */
   currentStats?: GoogleCloudContactcenterinsightsV1IssueModelLabelStats;
 }
 
-export const GoogleCloudContactcenterinsightsV1CalculateIssueModelStatsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1CalculateIssueModelStatsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      currentStats: Schema.optional(
-        GoogleCloudContactcenterinsightsV1IssueModelLabelStats,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1CalculateIssueModelStatsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    currentStats: Schema.optional(
+      GoogleCloudContactcenterinsightsV1IssueModelLabelStats,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1CalculateIssueModelStatsResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1CalculateIssueModelStatsResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1DimensionConversationalAgentsPlaybookDimensionMetadata {
   /** Optional. The dialogflow playbook ID. */
@@ -4973,77 +4534,67 @@ export interface GoogleCloudContactcenterinsightsV1alpha1DimensionConversational
   playbookDisplayName?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1DimensionConversationalAgentsPlaybookDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DimensionConversationalAgentsPlaybookDimensionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      playbookId: Schema.optional(Schema.String),
-      playbookDisplayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1DimensionConversationalAgentsPlaybookDimensionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    playbookId: Schema.optional(Schema.String),
+    playbookDisplayName: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1DimensionConversationalAgentsPlaybookDimensionMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DimensionConversationalAgentsPlaybookDimensionMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1NoteQaQuestionNote {
   /** The question resource that the note is associated with. */
   qaQuestion?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1NoteQaQuestionNote: Schema.Schema<GoogleCloudContactcenterinsightsV1NoteQaQuestionNote> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      qaQuestion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1NoteQaQuestionNote =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    qaQuestion: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1NoteQaQuestionNote",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1NoteQaQuestionNote>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainDimensionQaScorecardDimensionMetadata {
   /** Optional. The QA scorecard ID. */
   qaScorecardId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainDimensionQaScorecardDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainDimensionQaScorecardDimensionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      qaScorecardId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainDimensionQaScorecardDimensionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    qaScorecardId: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainDimensionQaScorecardDimensionMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainDimensionQaScorecardDimensionMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorQaConfigScorecardList {
   /** List of QaScorecardRevisions. */
   qaScorecardRevisions?: Array<string>;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorQaConfigScorecardList: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorQaConfigScorecardList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      qaScorecardRevisions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorQaConfigScorecardList =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    qaScorecardRevisions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorQaConfigScorecardList",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorQaConfigScorecardList>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorQaConfig {
   /** A manual list of scorecards to score. */
   scorecardList?: GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorQaConfigScorecardList;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorQaConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorQaConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scorecardList: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorQaConfigScorecardList,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorQaConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scorecardList: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorQaConfigScorecardList,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorQaConfig",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorQaConfig>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1DialogflowSource {
   /** Cloud Storage URI that points to a file that contains the conversation audio. */
@@ -5052,30 +4603,26 @@ export interface GoogleCloudContactcenterinsightsV1alpha1DialogflowSource {
   dialogflowConversation?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1DialogflowSource: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DialogflowSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      audioUri: Schema.optional(Schema.String),
-      dialogflowConversation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1DialogflowSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    audioUri: Schema.optional(Schema.String),
+    dialogflowConversation: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1alpha1DialogflowSource",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DialogflowSource>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageUserMessage {
   /** A message from the user that is interacting with the system. */
   text?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageUserMessage: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageUserMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageUserMessage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageUserMessage",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageUserMessage>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessageTextOutput {
   /** The parts of the message. */
@@ -5089,16 +4636,14 @@ export interface GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConver
     | (string & {});
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessageTextOutput: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessageTextOutput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.Array(Schema.String)),
-      textType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessageTextOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.Array(Schema.String)),
+    textType: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessageTextOutput",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessageTextOutput>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessage {
   /** Raw SQL from LLM, before templatization */
@@ -5113,42 +4658,38 @@ export interface GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConver
   chartSpec?: Record<string, unknown>;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessage: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      generatedSqlQuery: Schema.optional(Schema.String),
-      userProvidedChartSpec: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-      textMessage: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessageTextOutput,
-      ),
-      userProvidedSqlQuery: Schema.optional(Schema.String),
-      chartSpec: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    generatedSqlQuery: Schema.optional(Schema.String),
+    userProvidedChartSpec: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
+    textMessage: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessageTextOutput,
+    ),
+    userProvidedSqlQuery: Schema.optional(Schema.String),
+    chartSpec: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessage",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessage>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessages {
   /** A message from the system in response to the user. */
   systemMessages?: Array<GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessage>;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessages: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessages> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      systemMessages: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessage,
-        ),
+export const GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessages =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    systemMessages: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessage,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessages",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessages>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessage {
   /** A message from the user that is interacting with the system. */
@@ -5161,22 +4702,20 @@ export interface GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConver
   messageId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessage: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userMessage: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageUserMessage,
-      ),
-      createTime: Schema.optional(Schema.String),
-      systemMessageWrapper: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessages,
-      ),
-      messageId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userMessage: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageUserMessage,
+    ),
+    createTime: Schema.optional(Schema.String),
+    systemMessageWrapper: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessageSystemMessages,
+    ),
+    messageId: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessage",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessage>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscript {
   /** Output only. The create time of the conversation. */
@@ -5189,22 +4728,20 @@ export interface GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConver
   messages?: Array<GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessage>;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscript: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscript> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      conversationId: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      messages: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessage,
-        ),
+export const GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscript =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    conversationId: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    messages: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscriptMessage,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscript",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscript>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainSampleRule {
   /** Number of the conversations that we should sample based on the dimension. */
@@ -5217,17 +4754,15 @@ export interface GoogleCloudContactcenterinsightsV1mainSampleRule {
   samplePercentage?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainSampleRule: Schema.Schema<GoogleCloudContactcenterinsightsV1mainSampleRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sampleRow: Schema.optional(Schema.String),
-      dimension: Schema.optional(Schema.String),
-      conversationFilter: Schema.optional(Schema.String),
-      samplePercentage: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainSampleRule =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sampleRow: Schema.optional(Schema.String),
+    dimension: Schema.optional(Schema.String),
+    conversationFilter: Schema.optional(Schema.String),
+    samplePercentage: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1mainSampleRule",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainSampleRule>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainDataset {
   /** Immutable. Identifier. Resource name of the dataset. Format: projects/{project}/locations/{location}/datasets/{dataset} */
@@ -5246,20 +4781,16 @@ export interface GoogleCloudContactcenterinsightsV1mainDataset {
   description?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainDataset: Schema.Schema<GoogleCloudContactcenterinsightsV1mainDataset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      ttl: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1mainDataset",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainDataset>;
+export const GoogleCloudContactcenterinsightsV1mainDataset =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    ttl: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudContactcenterinsightsV1mainDataset" });
 
 export interface GoogleCloudContactcenterinsightsV1mainSampleConversationsRequest {
   /** Required. The parent resource of the dataset. */
@@ -5270,21 +4801,19 @@ export interface GoogleCloudContactcenterinsightsV1mainSampleConversationsReques
   destinationDataset?: GoogleCloudContactcenterinsightsV1mainDataset;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainSampleConversationsRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1mainSampleConversationsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parent: Schema.optional(Schema.String),
-      sampleRule: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainSampleRule,
-      ),
-      destinationDataset: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainDataset,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainSampleConversationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.optional(Schema.String),
+    sampleRule: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainSampleRule,
+    ),
+    destinationDataset: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainDataset,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainSampleConversationsRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainSampleConversationsRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainSampleConversationsMetadataSampleConversationsStats {
   /** Output only. The number of new conversations added during this sample operation. */
@@ -5293,16 +4822,14 @@ export interface GoogleCloudContactcenterinsightsV1mainSampleConversationsMetada
   failedSampleCount?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainSampleConversationsMetadataSampleConversationsStats: Schema.Schema<GoogleCloudContactcenterinsightsV1mainSampleConversationsMetadataSampleConversationsStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      successfulSampleCount: Schema.optional(Schema.Number),
-      failedSampleCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainSampleConversationsMetadataSampleConversationsStats =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    successfulSampleCount: Schema.optional(Schema.Number),
+    failedSampleCount: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainSampleConversationsMetadataSampleConversationsStats",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainSampleConversationsMetadataSampleConversationsStats>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainSampleConversationsMetadata {
   /** Output only. The original request for sample conversations to dataset. */
@@ -5317,38 +4844,34 @@ export interface GoogleCloudContactcenterinsightsV1mainSampleConversationsMetada
   sampleConversationsStats?: GoogleCloudContactcenterinsightsV1mainSampleConversationsMetadataSampleConversationsStats;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainSampleConversationsMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainSampleConversationsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      request: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainSampleConversationsRequest,
-      ),
-      endTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
-      sampleConversationsStats: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainSampleConversationsMetadataSampleConversationsStats,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainSampleConversationsMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    request: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainSampleConversationsRequest,
+    ),
+    endTime: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
+    sampleConversationsStats: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainSampleConversationsMetadataSampleConversationsStats,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainSampleConversationsMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainSampleConversationsMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1DimensionMediumDimensionMetadata {
   /** Optional. The conversation medium. Currently supports : PHONE_CALL, CHAT. */
   medium?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1DimensionMediumDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DimensionMediumDimensionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      medium: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1DimensionMediumDimensionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    medium: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1DimensionMediumDimensionMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DimensionMediumDimensionMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1Assessment {
   /** Identifier. The resource name of the assessment. Format: projects/{project}/locations/{location}/conversations/{conversation}/assessments/{assessment} */
@@ -5369,20 +4892,16 @@ export interface GoogleCloudContactcenterinsightsV1Assessment {
   agentInfo?: GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo;
 }
 
-export const GoogleCloudContactcenterinsightsV1Assessment: Schema.Schema<GoogleCloudContactcenterinsightsV1Assessment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      agentInfo: Schema.optional(
-        GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1Assessment",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1Assessment>;
+export const GoogleCloudContactcenterinsightsV1Assessment =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    agentInfo: Schema.optional(
+      GoogleCloudContactcenterinsightsV1ConversationQualityMetadataAgentInfo,
+    ),
+  }).annotate({ identifier: "GoogleCloudContactcenterinsightsV1Assessment" });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpecMetadata {
   /** Output only. The original request for initialization. */
@@ -5395,35 +4914,31 @@ export interface GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpe
   partialErrors?: Array<GoogleRpcStatus>;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpecMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpecMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      request: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpecRequest,
-      ),
-      endTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpecMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    request: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpecRequest,
+    ),
+    endTime: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpecMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpecMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleResponse {
   /** The result of the test auto labeling rule. */
   labelResult?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labelResult: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    labelResult: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1SmartReplyData {
   /** The system's confidence score that this reply is a good match for this conversation, ranging from 0.0 (completely uncertain) to 1.0 (completely certain). */
@@ -5436,17 +4951,15 @@ export interface GoogleCloudContactcenterinsightsV1alpha1SmartReplyData {
   queryRecord?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1SmartReplyData: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1SmartReplyData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      confidenceScore: Schema.optional(Schema.Number),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      reply: Schema.optional(Schema.String),
-      queryRecord: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1SmartReplyData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    confidenceScore: Schema.optional(Schema.Number),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    reply: Schema.optional(Schema.String),
+    queryRecord: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1alpha1SmartReplyData",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1SmartReplyData>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1UpdateQaQuestionTagRequest {
   /** Required. The QaQuestionTag to update. */
@@ -5455,18 +4968,16 @@ export interface GoogleCloudContactcenterinsightsV1alpha1UpdateQaQuestionTagRequ
   updateMask?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1UpdateQaQuestionTagRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1UpdateQaQuestionTagRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      qaQuestionTag: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1QaQuestionTag,
-      ),
-      updateMask: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1UpdateQaQuestionTagRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    qaQuestionTag: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1QaQuestionTag,
+    ),
+    updateMask: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1UpdateQaQuestionTagRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1UpdateQaQuestionTagRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1UpdateQaQuestionTagMetadata {
   /** Output only. The time the operation was created. */
@@ -5477,34 +4988,30 @@ export interface GoogleCloudContactcenterinsightsV1alpha1UpdateQaQuestionTagMeta
   request?: GoogleCloudContactcenterinsightsV1alpha1UpdateQaQuestionTagRequest;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1UpdateQaQuestionTagMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1UpdateQaQuestionTagMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      request: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1UpdateQaQuestionTagRequest,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1UpdateQaQuestionTagMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    request: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1UpdateQaQuestionTagRequest,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1UpdateQaQuestionTagMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1UpdateQaQuestionTagMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageUserMessage {
   /** A message from the user that is interacting with the system. */
   text?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageUserMessage: Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageUserMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageUserMessage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageUserMessage",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageUserMessage>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1QaQuestionTag {
   /** Optional. The list of Scorecard Question IDs that the tag applies to. Each QaQuestionId is represented as a full resource name containing the Question ID. Lastly, Since a tag may not necessarily be referenced by any Scorecard Questions, we treat this field as optional. */
@@ -5519,18 +5026,16 @@ export interface GoogleCloudContactcenterinsightsV1QaQuestionTag {
   updateTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1QaQuestionTag: Schema.Schema<GoogleCloudContactcenterinsightsV1QaQuestionTag> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      qaQuestionIds: Schema.optional(Schema.Array(Schema.String)),
-      displayName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1QaQuestionTag =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    qaQuestionIds: Schema.optional(Schema.Array(Schema.String)),
+    displayName: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1QaQuestionTag",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1QaQuestionTag>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse {
   /** The parent resource of the questions. */
@@ -5539,17 +5044,15 @@ export interface GoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      qaQuestionTags: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1QaQuestionTag),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    qaQuestionTags: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1QaQuestionTag),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ListQaQuestionTagsResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError {
   /** The conversation resource name that had an error during correlation. */
@@ -5558,16 +5061,14 @@ export interface GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMe
   status?: GoogleRpcStatus;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conversation: Schema.optional(Schema.String),
-      status: Schema.optional(GoogleRpcStatus),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conversation: Schema.optional(Schema.String),
+    status: Schema.optional(GoogleRpcStatus),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadataFullConversationCorrelationStats {
   /** The number of conversations correlated. */
@@ -5582,23 +5083,21 @@ export interface GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMe
   failedConversationsCount?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadataFullConversationCorrelationStats: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadataFullConversationCorrelationStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      correlatedConversationsCount: Schema.optional(Schema.Number),
-      conversationCorrelationErrors: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError,
-        ),
+export const GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadataFullConversationCorrelationStats =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    correlatedConversationsCount: Schema.optional(Schema.Number),
+    conversationCorrelationErrors: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError,
       ),
-      partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
-      sampledConversationsCount: Schema.optional(Schema.Number),
-      failedConversationsCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+    ),
+    partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
+    sampledConversationsCount: Schema.optional(Schema.Number),
+    failedConversationsCount: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadataFullConversationCorrelationStats",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadataFullConversationCorrelationStats>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadata {
   /** Output only. The time the operation was created. */
@@ -5609,19 +5108,17 @@ export interface GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMe
   dataset?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      stats: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadataFullConversationCorrelationStats,
-      ),
-      dataset: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    stats: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadataFullConversationCorrelationStats,
+    ),
+    dataset: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError {
   /** The conversation resource name that had an error during correlation. */
@@ -5630,16 +5127,14 @@ export interface GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadata
   status?: GoogleRpcStatus;
 }
 
-export const GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError: Schema.Schema<GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conversation: Schema.optional(Schema.String),
-      status: Schema.optional(GoogleRpcStatus),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conversation: Schema.optional(Schema.String),
+    status: Schema.optional(GoogleRpcStatus),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadataFullConversationCorrelationStats {
   /** The number of conversations that failed correlation. */
@@ -5654,23 +5149,21 @@ export interface GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadata
   correlatedConversationsCount?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadataFullConversationCorrelationStats: Schema.Schema<GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadataFullConversationCorrelationStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      failedConversationsCount: Schema.optional(Schema.Number),
-      sampledConversationsCount: Schema.optional(Schema.Number),
-      partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
-      conversationCorrelationErrors: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError,
-        ),
+export const GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadataFullConversationCorrelationStats =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    failedConversationsCount: Schema.optional(Schema.Number),
+    sampledConversationsCount: Schema.optional(Schema.Number),
+    partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
+    conversationCorrelationErrors: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadataFullConversationCorrelationStatsConversationCorrelationError,
       ),
-      correlatedConversationsCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+    ),
+    correlatedConversationsCount: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadataFullConversationCorrelationStats",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadataFullConversationCorrelationStats>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadata {
   /** The dataset used for sampling conversations. */
@@ -5681,33 +5174,29 @@ export interface GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadata
   createTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataset: Schema.optional(Schema.String),
-      stats: Schema.optional(
-        GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadataFullConversationCorrelationStats,
-      ),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataset: Schema.optional(Schema.String),
+    stats: Schema.optional(
+      GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadataFullConversationCorrelationStats,
+    ),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1TestCorrelationConfigMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1CalculateStatsRequest {
   /** A filter to reduce results to a specific subset. This field is useful for getting statistics about conversations with specific properties. */
   filter?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1CalculateStatsRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1CalculateStatsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filter: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1CalculateStatsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filter: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1CalculateStatsRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1CalculateStatsRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1IngestConversationsMetadataIngestConversationsStats {
   /** Output only. The number of objects skipped because another conversation with the same transcript uri had already been ingested. */
@@ -5720,18 +5209,16 @@ export interface GoogleCloudContactcenterinsightsV1IngestConversationsMetadataIn
   failedIngestCount?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1IngestConversationsMetadataIngestConversationsStats: Schema.Schema<GoogleCloudContactcenterinsightsV1IngestConversationsMetadataIngestConversationsStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      duplicatesSkippedCount: Schema.optional(Schema.Number),
-      processedObjectCount: Schema.optional(Schema.Number),
-      successfulIngestCount: Schema.optional(Schema.Number),
-      failedIngestCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1IngestConversationsMetadataIngestConversationsStats =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    duplicatesSkippedCount: Schema.optional(Schema.Number),
+    processedObjectCount: Schema.optional(Schema.Number),
+    successfulIngestCount: Schema.optional(Schema.Number),
+    failedIngestCount: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1IngestConversationsMetadataIngestConversationsStats",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1IngestConversationsMetadataIngestConversationsStats>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource {
   /** Optional. The Cloud Storage path to the conversation audio file. Note that: [1] Audio files will be transcribed if not already. [2] Audio files and transcript files must be in separate buckets / folders. [3] A source file and its corresponding audio file must share the same name to be properly ingested, E.g. `gs://bucket/transcript/conversation1.json` and `gs://bucket/audio/conversation1.mp3`. */
@@ -5752,20 +5239,18 @@ export interface GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcs
   transcriptBucketUri?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource: Schema.Schema<GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      audioBucketUri: Schema.optional(Schema.String),
-      bucketUri: Schema.optional(Schema.String),
-      bucketObjectType: Schema.optional(Schema.String),
-      metadataBucketUri: Schema.optional(Schema.String),
-      customMetadataKeys: Schema.optional(Schema.Array(Schema.String)),
-      transcriptBucketUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    audioBucketUri: Schema.optional(Schema.String),
+    bucketUri: Schema.optional(Schema.String),
+    bucketObjectType: Schema.optional(Schema.String),
+    metadataBucketUri: Schema.optional(Schema.String),
+    customMetadataKeys: Schema.optional(Schema.Array(Schema.String)),
+    transcriptBucketUri: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1SpeechConfig {
   /** Whether to disable word time offsets. If true, the `enable_word_time_offsets` field in the recognition config will be set to false. */
@@ -5774,30 +5259,24 @@ export interface GoogleCloudContactcenterinsightsV1SpeechConfig {
   speechRecognizer?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1SpeechConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1SpeechConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      disableWordTimeOffsets: Schema.optional(Schema.Boolean),
-      speechRecognizer: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1SpeechConfig",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1SpeechConfig>;
+export const GoogleCloudContactcenterinsightsV1SpeechConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    disableWordTimeOffsets: Schema.optional(Schema.Boolean),
+    speechRecognizer: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudContactcenterinsightsV1SpeechConfig" });
 
 export interface GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig {
   /** Required. The medium transcript objects represent. */
   medium?: "MEDIUM_UNSPECIFIED" | "PHONE_CALL" | "CHAT" | (string & {});
 }
 
-export const GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      medium: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    medium: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig {
   /** Optional. An opaque, user-specified string representing a human agent who handled all conversations in the import. Note that this will be overridden if per-conversation metadata is provided through the `metadata_bucket_uri`. */
@@ -5808,17 +5287,15 @@ export interface GoogleCloudContactcenterinsightsV1IngestConversationsRequestCon
   customerChannel?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      agentId: Schema.optional(Schema.String),
-      agentChannel: Schema.optional(Schema.Number),
-      customerChannel: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    agentId: Schema.optional(Schema.String),
+    agentChannel: Schema.optional(Schema.Number),
+    customerChannel: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1IngestConversationsRequest {
   /** A cloud storage bucket source. Note that any previously ingested objects from the source will be skipped to avoid duplication. */
@@ -5837,30 +5314,28 @@ export interface GoogleCloudContactcenterinsightsV1IngestConversationsRequest {
   sampleSize?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1IngestConversationsRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1IngestConversationsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsSource: Schema.optional(
-        GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource,
-      ),
-      speechConfig: Schema.optional(
-        GoogleCloudContactcenterinsightsV1SpeechConfig,
-      ),
-      transcriptObjectConfig: Schema.optional(
-        GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig,
-      ),
-      conversationConfig: Schema.optional(
-        GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig,
-      ),
-      redactionConfig: Schema.optional(
-        GoogleCloudContactcenterinsightsV1RedactionConfig,
-      ),
-      parent: Schema.optional(Schema.String),
-      sampleSize: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1IngestConversationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gcsSource: Schema.optional(
+      GoogleCloudContactcenterinsightsV1IngestConversationsRequestGcsSource,
+    ),
+    speechConfig: Schema.optional(
+      GoogleCloudContactcenterinsightsV1SpeechConfig,
+    ),
+    transcriptObjectConfig: Schema.optional(
+      GoogleCloudContactcenterinsightsV1IngestConversationsRequestTranscriptObjectConfig,
+    ),
+    conversationConfig: Schema.optional(
+      GoogleCloudContactcenterinsightsV1IngestConversationsRequestConversationConfig,
+    ),
+    redactionConfig: Schema.optional(
+      GoogleCloudContactcenterinsightsV1RedactionConfig,
+    ),
+    parent: Schema.optional(Schema.String),
+    sampleSize: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1IngestConversationsRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1IngestConversationsRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1IngestConversationsMetadata {
   /** Output only. Partial errors during ingest operation that might cause the operation output to be incomplete. */
@@ -5877,23 +5352,21 @@ export interface GoogleCloudContactcenterinsightsV1IngestConversationsMetadata {
   request?: GoogleCloudContactcenterinsightsV1IngestConversationsRequest;
 }
 
-export const GoogleCloudContactcenterinsightsV1IngestConversationsMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1IngestConversationsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      ingestConversationsStats: Schema.optional(
-        GoogleCloudContactcenterinsightsV1IngestConversationsMetadataIngestConversationsStats,
-      ),
-      sampledConversations: Schema.optional(Schema.Array(Schema.String)),
-      request: Schema.optional(
-        GoogleCloudContactcenterinsightsV1IngestConversationsRequest,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1IngestConversationsMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
+    createTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    ingestConversationsStats: Schema.optional(
+      GoogleCloudContactcenterinsightsV1IngestConversationsMetadataIngestConversationsStats,
+    ),
+    sampledConversations: Schema.optional(Schema.Array(Schema.String)),
+    request: Schema.optional(
+      GoogleCloudContactcenterinsightsV1IngestConversationsRequest,
+    ),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1IngestConversationsMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1IngestConversationsMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationResultRuleConstraintResult {
   /** The rule ID. */
@@ -5904,17 +5377,15 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationRes
   constraintMet?: boolean;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationResultRuleConstraintResult: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationResultRuleConstraintResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ruleId: Schema.optional(Schema.String),
-      error: Schema.optional(GoogleRpcStatus),
-      constraintMet: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationResultRuleConstraintResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ruleId: Schema.optional(Schema.String),
+    error: Schema.optional(GoogleRpcStatus),
+    constraintMet: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationResultRuleConstraintResult",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationResultRuleConstraintResult>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainInitializeEncryptionSpecMetadata {
   /** Partial errors during initializing operation that might cause the operation output to be incomplete. */
@@ -5927,20 +5398,18 @@ export interface GoogleCloudContactcenterinsightsV1mainInitializeEncryptionSpecM
   request?: GoogleCloudContactcenterinsightsV1mainInitializeEncryptionSpecRequest;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainInitializeEncryptionSpecMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainInitializeEncryptionSpecMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      request: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainInitializeEncryptionSpecRequest,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainInitializeEncryptionSpecMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
+    createTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    request: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainInitializeEncryptionSpecRequest,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainInitializeEncryptionSpecMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainInitializeEncryptionSpecMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessage {
   /** A direct natural language response to the user message. */
@@ -5951,19 +5420,17 @@ export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConver
   chartSpec?: Record<string, unknown>;
 }
 
-export const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessage: Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      textOutput: Schema.optional(
-        GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessageTextOutput,
-      ),
-      generatedSqlQuery: Schema.optional(Schema.String),
-      chartSpec: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    textOutput: Schema.optional(
+      GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessageTextOutput,
+    ),
+    generatedSqlQuery: Schema.optional(Schema.String),
+    chartSpec: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessage",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessage>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessage {
   /** A message from the user that is interacting with the system. */
@@ -5976,22 +5443,20 @@ export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConver
   messageId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessage: Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userMessage: Schema.optional(
-        GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageUserMessage,
-      ),
-      systemMessage: Schema.optional(
-        GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessage,
-      ),
-      createTime: Schema.optional(Schema.String),
-      messageId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userMessage: Schema.optional(
+      GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageUserMessage,
+    ),
+    systemMessage: Schema.optional(
+      GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessageSystemMessage,
+    ),
+    createTime: Schema.optional(Schema.String),
+    messageId: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessage",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessage>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversation {
   /** The conversation id of the chart. */
@@ -6004,22 +5469,20 @@ export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConver
   messages?: Array<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessage>;
 }
 
-export const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversation: Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conversationId: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      messages: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessage,
-        ),
+export const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conversationId: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    messages: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversationMessage,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversation",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversation>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsChartCheckpoint {
   /** The revision id of the chart. */
@@ -6028,16 +5491,14 @@ export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsChartCheckp
   sessionId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartCheckpoint: Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartCheckpoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      revisionId: Schema.optional(Schema.String),
-      sessionId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1GenerativeInsightsChartCheckpoint =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    revisionId: Schema.optional(Schema.String),
+    sessionId: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1GenerativeInsightsChartCheckpoint",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsChartCheckpoint>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1GenerativeInsights {
   request?: Record<string, unknown>;
@@ -6053,38 +5514,32 @@ export interface GoogleCloudContactcenterinsightsV1GenerativeInsights {
   sqlQuery?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1GenerativeInsights: Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsights> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      request: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      chartSpec: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      chartConversations: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversation,
-        ),
+export const GoogleCloudContactcenterinsightsV1GenerativeInsights =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    request: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    chartSpec: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    chartConversations: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1GenerativeInsightsChartConversation,
       ),
-      chartCheckpoint: Schema.optional(
-        GoogleCloudContactcenterinsightsV1GenerativeInsightsChartCheckpoint,
-      ),
-      sqlComparisonKey: Schema.optional(Schema.String),
-      sqlQuery: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+    ),
+    chartCheckpoint: Schema.optional(
+      GoogleCloudContactcenterinsightsV1GenerativeInsightsChartCheckpoint,
+    ),
+    sqlComparisonKey: Schema.optional(Schema.String),
+    sqlQuery: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1GenerativeInsights",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsights>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1QueryMetrics {
   request?: Record<string, unknown>;
 }
 
-export const GoogleCloudContactcenterinsightsV1QueryMetrics: Schema.Schema<GoogleCloudContactcenterinsightsV1QueryMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      request: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1QueryMetrics",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1QueryMetrics>;
+export const GoogleCloudContactcenterinsightsV1QueryMetrics =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    request: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "GoogleCloudContactcenterinsightsV1QueryMetrics" });
 
 export interface GoogleCloudContactcenterinsightsV1ChartDataSource {
   /** Use natural language query to generate the chart. */
@@ -6093,49 +5548,41 @@ export interface GoogleCloudContactcenterinsightsV1ChartDataSource {
   queryMetrics?: GoogleCloudContactcenterinsightsV1QueryMetrics;
 }
 
-export const GoogleCloudContactcenterinsightsV1ChartDataSource: Schema.Schema<GoogleCloudContactcenterinsightsV1ChartDataSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      generativeInsights: Schema.optional(
-        GoogleCloudContactcenterinsightsV1GenerativeInsights,
-      ),
-      queryMetrics: Schema.optional(
-        GoogleCloudContactcenterinsightsV1QueryMetrics,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1ChartDataSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    generativeInsights: Schema.optional(
+      GoogleCloudContactcenterinsightsV1GenerativeInsights,
+    ),
+    queryMetrics: Schema.optional(
+      GoogleCloudContactcenterinsightsV1QueryMetrics,
+    ),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1ChartDataSource",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ChartDataSource>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1RedirectAction {
   /** The relative path to redirect to. */
   relativePath?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1RedirectAction: Schema.Schema<GoogleCloudContactcenterinsightsV1RedirectAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      relativePath: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1RedirectAction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    relativePath: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1RedirectAction",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1RedirectAction>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1ChartAction {
   /** Redirect action. */
   redirectAction?: GoogleCloudContactcenterinsightsV1RedirectAction;
 }
 
-export const GoogleCloudContactcenterinsightsV1ChartAction: Schema.Schema<GoogleCloudContactcenterinsightsV1ChartAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      redirectAction: Schema.optional(
-        GoogleCloudContactcenterinsightsV1RedirectAction,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1ChartAction",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ChartAction>;
+export const GoogleCloudContactcenterinsightsV1ChartAction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    redirectAction: Schema.optional(
+      GoogleCloudContactcenterinsightsV1RedirectAction,
+    ),
+  }).annotate({ identifier: "GoogleCloudContactcenterinsightsV1ChartAction" });
 
 export interface GoogleCloudContactcenterinsightsV1Chart {
   /** Date range config applied to the chart. */
@@ -6181,30 +5628,26 @@ export interface GoogleCloudContactcenterinsightsV1Chart {
   createTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1Chart: Schema.Schema<GoogleCloudContactcenterinsightsV1Chart> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dateRangeConfig: Schema.optional(
-        GoogleCloudContactcenterinsightsV1DateRangeConfig,
-      ),
-      dataSource: Schema.optional(
-        GoogleCloudContactcenterinsightsV1ChartDataSource,
-      ),
-      name: Schema.optional(Schema.String),
-      action: Schema.optional(GoogleCloudContactcenterinsightsV1ChartAction),
-      displayName: Schema.optional(Schema.String),
-      width: Schema.optional(Schema.Number),
-      height: Schema.optional(Schema.Number),
-      updateTime: Schema.optional(Schema.String),
-      chartType: Schema.optional(Schema.String),
-      filter: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      chartVisualizationType: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1Chart",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1Chart>;
+export const GoogleCloudContactcenterinsightsV1Chart =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dateRangeConfig: Schema.optional(
+      GoogleCloudContactcenterinsightsV1DateRangeConfig,
+    ),
+    dataSource: Schema.optional(
+      GoogleCloudContactcenterinsightsV1ChartDataSource,
+    ),
+    name: Schema.optional(Schema.String),
+    action: Schema.optional(GoogleCloudContactcenterinsightsV1ChartAction),
+    displayName: Schema.optional(Schema.String),
+    width: Schema.optional(Schema.Number),
+    height: Schema.optional(Schema.Number),
+    updateTime: Schema.optional(Schema.String),
+    chartType: Schema.optional(Schema.String),
+    filter: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    chartVisualizationType: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudContactcenterinsightsV1Chart" });
 
 export interface GoogleCloudContactcenterinsightsV1ListChartsResponse {
   /** The charts under the parent. */
@@ -6213,31 +5656,27 @@ export interface GoogleCloudContactcenterinsightsV1ListChartsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ListChartsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1ListChartsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      charts: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1Chart),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1ListChartsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    charts: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1Chart),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1ListChartsResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ListChartsResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1QueryMetricsMetadata {
   /** Whether the result rows were truncated because the result row size is too large to materialize. */
   resultIsTruncated?: boolean;
 }
 
-export const GoogleCloudContactcenterinsightsV1QueryMetricsMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1QueryMetricsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resultIsTruncated: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1QueryMetricsMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resultIsTruncated: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1QueryMetricsMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1QueryMetricsMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerValue {
   /** Output only. The maximum potential score of the question. */
@@ -6260,22 +5699,20 @@ export interface GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerValue {
   naValue?: boolean;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerValue: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      potentialScore: Schema.optional(Schema.Number),
-      strValue: Schema.optional(Schema.String),
-      key: Schema.optional(Schema.String),
-      boolValue: Schema.optional(Schema.Boolean),
-      numValue: Schema.optional(Schema.Number),
-      skipValue: Schema.optional(Schema.Boolean),
-      normalizedScore: Schema.optional(Schema.Number),
-      score: Schema.optional(Schema.Number),
-      naValue: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerValue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    potentialScore: Schema.optional(Schema.Number),
+    strValue: Schema.optional(Schema.String),
+    key: Schema.optional(Schema.String),
+    boolValue: Schema.optional(Schema.Boolean),
+    numValue: Schema.optional(Schema.Number),
+    skipValue: Schema.optional(Schema.Boolean),
+    normalizedScore: Schema.optional(Schema.Number),
+    score: Schema.optional(Schema.Number),
+    naValue: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerValue",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerValue>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerSource {
   /** What created the answer. */
@@ -6288,17 +5725,15 @@ export interface GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerSource {
   answerValue?: GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerValue;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerSource: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sourceType: Schema.optional(Schema.String),
-      answerValue: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerValue,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sourceType: Schema.optional(Schema.String),
+    answerValue: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerValue,
+    ),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerSource",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerSource>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1QaAnswer {
   /** The answer value from this source. This field is populated by default, unless the question has a selection strategy configured to return multiple answer values, in which case `answer_values` will be populated instead. */
@@ -6315,25 +5750,23 @@ export interface GoogleCloudContactcenterinsightsV1alpha1QaAnswer {
   conversation?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1QaAnswer: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QaAnswer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      answerValue: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerValue,
+export const GoogleCloudContactcenterinsightsV1alpha1QaAnswer =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    answerValue: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerValue,
+    ),
+    questionBody: Schema.optional(Schema.String),
+    qaQuestion: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Array(Schema.String)),
+    answerSources: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerSource,
       ),
-      questionBody: Schema.optional(Schema.String),
-      qaQuestion: Schema.optional(Schema.String),
-      tags: Schema.optional(Schema.Array(Schema.String)),
-      answerSources: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerSource,
-        ),
-      ),
-      conversation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+    ),
+    conversation: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1alpha1QaAnswer",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QaAnswer>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1ListAnalysesResponse {
   /** The analyses that match the request. */
@@ -6342,32 +5775,28 @@ export interface GoogleCloudContactcenterinsightsV1ListAnalysesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ListAnalysesResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1ListAnalysesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      analyses: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1Analysis),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1ListAnalysesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    analyses: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1Analysis),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1ListAnalysesResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ListAnalysesResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1ImportIssueModelRequestGcsSource {
   /** Required. Format: `gs:///` */
   objectUri?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ImportIssueModelRequestGcsSource: Schema.Schema<GoogleCloudContactcenterinsightsV1ImportIssueModelRequestGcsSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      objectUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1ImportIssueModelRequestGcsSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    objectUri: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1ImportIssueModelRequestGcsSource",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ImportIssueModelRequestGcsSource>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1ImportIssueModelRequest {
   /** Google Cloud Storage source message. */
@@ -6378,18 +5807,16 @@ export interface GoogleCloudContactcenterinsightsV1ImportIssueModelRequest {
   createNewModel?: boolean;
 }
 
-export const GoogleCloudContactcenterinsightsV1ImportIssueModelRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1ImportIssueModelRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsSource: Schema.optional(
-        GoogleCloudContactcenterinsightsV1ImportIssueModelRequestGcsSource,
-      ),
-      parent: Schema.optional(Schema.String),
-      createNewModel: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1ImportIssueModelRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gcsSource: Schema.optional(
+      GoogleCloudContactcenterinsightsV1ImportIssueModelRequestGcsSource,
+    ),
+    parent: Schema.optional(Schema.String),
+    createNewModel: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1ImportIssueModelRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ImportIssueModelRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelRequest {
   /** Google Cloud Storage source message. */
@@ -6400,19 +5827,17 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelRequest
   createNewModel?: boolean;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsSource: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelRequestGcsSource,
-      ),
-      parent: Schema.optional(Schema.String),
-      createNewModel: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gcsSource: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelRequestGcsSource,
+    ),
+    parent: Schema.optional(Schema.String),
+    createNewModel: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1SampleConversationsMetadataSampleConversationsStats {
   /** Output only. The number of new conversations added during this sample operation. */
@@ -6421,16 +5846,14 @@ export interface GoogleCloudContactcenterinsightsV1alpha1SampleConversationsMeta
   failedSampleCount?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1SampleConversationsMetadataSampleConversationsStats: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1SampleConversationsMetadataSampleConversationsStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      successfulSampleCount: Schema.optional(Schema.Number),
-      failedSampleCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1SampleConversationsMetadataSampleConversationsStats =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    successfulSampleCount: Schema.optional(Schema.Number),
+    failedSampleCount: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1SampleConversationsMetadataSampleConversationsStats",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1SampleConversationsMetadataSampleConversationsStats>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1SampleRule {
   /** Number of the conversations that we should sample based on the dimension. */
@@ -6443,17 +5866,13 @@ export interface GoogleCloudContactcenterinsightsV1SampleRule {
   samplePercentage?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1SampleRule: Schema.Schema<GoogleCloudContactcenterinsightsV1SampleRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sampleRow: Schema.optional(Schema.String),
-      dimension: Schema.optional(Schema.String),
-      conversationFilter: Schema.optional(Schema.String),
-      samplePercentage: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1SampleRule",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1SampleRule>;
+export const GoogleCloudContactcenterinsightsV1SampleRule =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sampleRow: Schema.optional(Schema.String),
+    dimension: Schema.optional(Schema.String),
+    conversationFilter: Schema.optional(Schema.String),
+    samplePercentage: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudContactcenterinsightsV1SampleRule" });
 
 export interface GoogleCloudContactcenterinsightsV1AssessmentRule {
   /** Output only. The most recent time at which this assessment rule was updated. */
@@ -6472,22 +5891,20 @@ export interface GoogleCloudContactcenterinsightsV1AssessmentRule {
   sampleRule?: GoogleCloudContactcenterinsightsV1SampleRule;
 }
 
-export const GoogleCloudContactcenterinsightsV1AssessmentRule: Schema.Schema<GoogleCloudContactcenterinsightsV1AssessmentRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateTime: Schema.optional(Schema.String),
-      active: Schema.optional(Schema.Boolean),
-      displayName: Schema.optional(Schema.String),
-      scheduleInfo: Schema.optional(
-        GoogleCloudContactcenterinsightsV1ScheduleInfo,
-      ),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      sampleRule: Schema.optional(GoogleCloudContactcenterinsightsV1SampleRule),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1AssessmentRule =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateTime: Schema.optional(Schema.String),
+    active: Schema.optional(Schema.Boolean),
+    displayName: Schema.optional(Schema.String),
+    scheduleInfo: Schema.optional(
+      GoogleCloudContactcenterinsightsV1ScheduleInfo,
+    ),
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    sampleRule: Schema.optional(GoogleCloudContactcenterinsightsV1SampleRule),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1AssessmentRule",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1AssessmentRule>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1ListAssessmentRulesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -6496,17 +5913,15 @@ export interface GoogleCloudContactcenterinsightsV1ListAssessmentRulesResponse {
   assessmentRules?: Array<GoogleCloudContactcenterinsightsV1AssessmentRule>;
 }
 
-export const GoogleCloudContactcenterinsightsV1ListAssessmentRulesResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1ListAssessmentRulesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      assessmentRules: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1AssessmentRule),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1ListAssessmentRulesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    assessmentRules: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1AssessmentRule),
+    ),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1ListAssessmentRulesResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ListAssessmentRulesResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainConversationLevelSentiment {
   /** The channel of the audio that the data applies to. */
@@ -6515,18 +5930,16 @@ export interface GoogleCloudContactcenterinsightsV1mainConversationLevelSentimen
   sentimentData?: GoogleCloudContactcenterinsightsV1mainSentimentData;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainConversationLevelSentiment: Schema.Schema<GoogleCloudContactcenterinsightsV1mainConversationLevelSentiment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      channelTag: Schema.optional(Schema.Number),
-      sentimentData: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainSentimentData,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainConversationLevelSentiment =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    channelTag: Schema.optional(Schema.Number),
+    sentimentData: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainSentimentData,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainConversationLevelSentiment",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainConversationLevelSentiment>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainQaScorecardResultQaTagResult {
   /** The normalized score the tag applies to. */
@@ -6539,18 +5952,16 @@ export interface GoogleCloudContactcenterinsightsV1mainQaScorecardResultQaTagRes
   potentialScore?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainQaScorecardResultQaTagResult: Schema.Schema<GoogleCloudContactcenterinsightsV1mainQaScorecardResultQaTagResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      normalizedScore: Schema.optional(Schema.Number),
-      tag: Schema.optional(Schema.String),
-      score: Schema.optional(Schema.Number),
-      potentialScore: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainQaScorecardResultQaTagResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    normalizedScore: Schema.optional(Schema.Number),
+    tag: Schema.optional(Schema.String),
+    score: Schema.optional(Schema.Number),
+    potentialScore: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainQaScorecardResultQaTagResult",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainQaScorecardResultQaTagResult>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainQaScorecardResultScoreSource {
   /** The maximum potential overall score of the scorecard. Any questions answered using `na_value` are excluded from this calculation. */
@@ -6569,23 +5980,21 @@ export interface GoogleCloudContactcenterinsightsV1mainQaScorecardResultScoreSou
   normalizedScore?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainQaScorecardResultScoreSource: Schema.Schema<GoogleCloudContactcenterinsightsV1mainQaScorecardResultScoreSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      potentialScore: Schema.optional(Schema.Number),
-      qaTagResults: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1mainQaScorecardResultQaTagResult,
-        ),
+export const GoogleCloudContactcenterinsightsV1mainQaScorecardResultScoreSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    potentialScore: Schema.optional(Schema.Number),
+    qaTagResults: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1mainQaScorecardResultQaTagResult,
       ),
-      score: Schema.optional(Schema.Number),
-      sourceType: Schema.optional(Schema.String),
-      normalizedScore: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+    ),
+    score: Schema.optional(Schema.Number),
+    sourceType: Schema.optional(Schema.String),
+    normalizedScore: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainQaScorecardResultScoreSource",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainQaScorecardResultScoreSource>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainQaScorecardResult {
   /** List of all individual score sets. */
@@ -6612,34 +6021,32 @@ export interface GoogleCloudContactcenterinsightsV1mainQaScorecardResult {
   qaTagResults?: Array<GoogleCloudContactcenterinsightsV1mainQaScorecardResultQaTagResult>;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainQaScorecardResult: Schema.Schema<GoogleCloudContactcenterinsightsV1mainQaScorecardResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scoreSources: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1mainQaScorecardResultScoreSource,
-        ),
+export const GoogleCloudContactcenterinsightsV1mainQaScorecardResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scoreSources: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1mainQaScorecardResultScoreSource,
       ),
-      createTime: Schema.optional(Schema.String),
-      normalizedScore: Schema.optional(Schema.Number),
-      score: Schema.optional(Schema.Number),
-      qaAnswers: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1mainQaAnswer),
+    ),
+    createTime: Schema.optional(Schema.String),
+    normalizedScore: Schema.optional(Schema.Number),
+    score: Schema.optional(Schema.Number),
+    qaAnswers: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1mainQaAnswer),
+    ),
+    qaScorecardRevision: Schema.optional(Schema.String),
+    agentId: Schema.optional(Schema.String),
+    conversation: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    potentialScore: Schema.optional(Schema.Number),
+    qaTagResults: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1mainQaScorecardResultQaTagResult,
       ),
-      qaScorecardRevision: Schema.optional(Schema.String),
-      agentId: Schema.optional(Schema.String),
-      conversation: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      potentialScore: Schema.optional(Schema.Number),
-      qaTagResults: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1mainQaScorecardResultQaTagResult,
-        ),
-      ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1mainQaScorecardResult",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainQaScorecardResult>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainEntity {
   /** Metadata associated with the entity. For most entity types, the metadata is a Wikipedia URL (`wikipedia_url`) and Knowledge Graph MID (`mid`), if they are available. For the metadata associated with other entity types, see the Type table below. */
@@ -6668,20 +6075,16 @@ export interface GoogleCloudContactcenterinsightsV1mainEntity {
     | (string & {});
 }
 
-export const GoogleCloudContactcenterinsightsV1mainEntity: Schema.Schema<GoogleCloudContactcenterinsightsV1mainEntity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      salience: Schema.optional(Schema.Number),
-      sentiment: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainSentimentData,
-      ),
-      displayName: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1mainEntity",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainEntity>;
+export const GoogleCloudContactcenterinsightsV1mainEntity =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    salience: Schema.optional(Schema.Number),
+    sentiment: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainSentimentData,
+    ),
+    displayName: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudContactcenterinsightsV1mainEntity" });
 
 export interface GoogleCloudContactcenterinsightsV1mainIntent {
   /** The unique identifier of the intent. */
@@ -6690,22 +6093,18 @@ export interface GoogleCloudContactcenterinsightsV1mainIntent {
   displayName?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainIntent: Schema.Schema<GoogleCloudContactcenterinsightsV1mainIntent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1mainIntent",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainIntent>;
+export const GoogleCloudContactcenterinsightsV1mainIntent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudContactcenterinsightsV1mainIntent" });
 
 export interface GoogleCloudContactcenterinsightsV1mainHoldData {}
 
-export const GoogleCloudContactcenterinsightsV1mainHoldData: Schema.Schema<GoogleCloudContactcenterinsightsV1mainHoldData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudContactcenterinsightsV1mainHoldData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1mainHoldData",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainHoldData>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainIssueAssignment {
   /** Resource name of the assigned issue. */
@@ -6716,46 +6115,40 @@ export interface GoogleCloudContactcenterinsightsV1mainIssueAssignment {
   displayName?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainIssueAssignment: Schema.Schema<GoogleCloudContactcenterinsightsV1mainIssueAssignment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      issue: Schema.optional(Schema.String),
-      score: Schema.optional(Schema.Number),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainIssueAssignment =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    issue: Schema.optional(Schema.String),
+    score: Schema.optional(Schema.Number),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1mainIssueAssignment",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainIssueAssignment>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainIssueMatchData {
   /** Information about the issue's assignment. */
   issueAssignment?: GoogleCloudContactcenterinsightsV1mainIssueAssignment;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainIssueMatchData: Schema.Schema<GoogleCloudContactcenterinsightsV1mainIssueMatchData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      issueAssignment: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainIssueAssignment,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainIssueMatchData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    issueAssignment: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainIssueAssignment,
+    ),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1mainIssueMatchData",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainIssueMatchData>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainIntentMatchData {
   /** The id of the matched intent. Can be used to retrieve the corresponding intent information. */
   intentUniqueId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainIntentMatchData: Schema.Schema<GoogleCloudContactcenterinsightsV1mainIntentMatchData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      intentUniqueId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainIntentMatchData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    intentUniqueId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1mainIntentMatchData",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainIntentMatchData>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainEntityMentionData {
   /** The type of the entity mention. */
@@ -6766,32 +6159,30 @@ export interface GoogleCloudContactcenterinsightsV1mainEntityMentionData {
   entityUniqueId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainEntityMentionData: Schema.Schema<GoogleCloudContactcenterinsightsV1mainEntityMentionData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      sentiment: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainSentimentData,
-      ),
-      entityUniqueId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainEntityMentionData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    sentiment: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainSentimentData,
+    ),
+    entityUniqueId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1mainEntityMentionData",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainEntityMentionData>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainSilenceData {}
 
-export const GoogleCloudContactcenterinsightsV1mainSilenceData: Schema.Schema<GoogleCloudContactcenterinsightsV1mainSilenceData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudContactcenterinsightsV1mainSilenceData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1mainSilenceData",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainSilenceData>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainInterruptionData {}
 
-export const GoogleCloudContactcenterinsightsV1mainInterruptionData: Schema.Schema<GoogleCloudContactcenterinsightsV1mainInterruptionData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudContactcenterinsightsV1mainInterruptionData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1mainInterruptionData",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainInterruptionData>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainCallAnnotation {
   /** Data specifying a hold. */
@@ -6818,42 +6209,40 @@ export interface GoogleCloudContactcenterinsightsV1mainCallAnnotation {
   interruptionData?: GoogleCloudContactcenterinsightsV1mainInterruptionData;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainCallAnnotation: Schema.Schema<GoogleCloudContactcenterinsightsV1mainCallAnnotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      holdData: Schema.optional(GoogleCloudContactcenterinsightsV1mainHoldData),
-      annotationEndBoundary: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainAnnotationBoundary,
-      ),
-      issueMatchData: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainIssueMatchData,
-      ),
-      channelTag: Schema.optional(Schema.Number),
-      intentMatchData: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainIntentMatchData,
-      ),
-      phraseMatchData: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainPhraseMatchData,
-      ),
-      entityMentionData: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainEntityMentionData,
-      ),
-      sentimentData: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainSentimentData,
-      ),
-      annotationStartBoundary: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainAnnotationBoundary,
-      ),
-      silenceData: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainSilenceData,
-      ),
-      interruptionData: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainInterruptionData,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainCallAnnotation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    holdData: Schema.optional(GoogleCloudContactcenterinsightsV1mainHoldData),
+    annotationEndBoundary: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainAnnotationBoundary,
+    ),
+    issueMatchData: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainIssueMatchData,
+    ),
+    channelTag: Schema.optional(Schema.Number),
+    intentMatchData: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainIntentMatchData,
+    ),
+    phraseMatchData: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainPhraseMatchData,
+    ),
+    entityMentionData: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainEntityMentionData,
+    ),
+    sentimentData: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainSentimentData,
+    ),
+    annotationStartBoundary: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainAnnotationBoundary,
+    ),
+    silenceData: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainSilenceData,
+    ),
+    interruptionData: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainInterruptionData,
+    ),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1mainCallAnnotation",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainCallAnnotation>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainConversationLevelSilence {
   /** Amount of time calculated to be in silence. */
@@ -6862,16 +6251,14 @@ export interface GoogleCloudContactcenterinsightsV1mainConversationLevelSilence 
   silencePercentage?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainConversationLevelSilence: Schema.Schema<GoogleCloudContactcenterinsightsV1mainConversationLevelSilence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      silenceDuration: Schema.optional(Schema.String),
-      silencePercentage: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainConversationLevelSilence =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    silenceDuration: Schema.optional(Schema.String),
+    silencePercentage: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainConversationLevelSilence",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainConversationLevelSilence>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainIssueModelResult {
   /** Issue model that generates the result. Format: projects/{project}/locations/{location}/issueModels/{issue_model} */
@@ -6880,17 +6267,15 @@ export interface GoogleCloudContactcenterinsightsV1mainIssueModelResult {
   issues?: Array<GoogleCloudContactcenterinsightsV1mainIssueAssignment>;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainIssueModelResult: Schema.Schema<GoogleCloudContactcenterinsightsV1mainIssueModelResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      issueModel: Schema.optional(Schema.String),
-      issues: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1mainIssueAssignment),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainIssueModelResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    issueModel: Schema.optional(Schema.String),
+    issues: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1mainIssueAssignment),
+    ),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1mainIssueModelResult",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainIssueModelResult>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainAnalysisResultCallAnalysisMetadata {
   /** Overall conversation-level sentiment for each channel of the call. */
@@ -6914,49 +6299,47 @@ export interface GoogleCloudContactcenterinsightsV1mainAnalysisResultCallAnalysi
   issueModelResult?: GoogleCloudContactcenterinsightsV1mainIssueModelResult;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainAnalysisResultCallAnalysisMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainAnalysisResultCallAnalysisMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sentiments: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1mainConversationLevelSentiment,
-        ),
+export const GoogleCloudContactcenterinsightsV1mainAnalysisResultCallAnalysisMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sentiments: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1mainConversationLevelSentiment,
       ),
-      qaScorecardResults: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1mainQaScorecardResult),
+    ),
+    qaScorecardResults: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1mainQaScorecardResult),
+    ),
+    entities: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        GoogleCloudContactcenterinsightsV1mainEntity,
       ),
-      entities: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          GoogleCloudContactcenterinsightsV1mainEntity,
-        ),
+    ),
+    intents: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        GoogleCloudContactcenterinsightsV1mainIntent,
       ),
-      intents: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          GoogleCloudContactcenterinsightsV1mainIntent,
-        ),
+    ),
+    phraseMatchers: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        GoogleCloudContactcenterinsightsV1mainPhraseMatchData,
       ),
-      phraseMatchers: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          GoogleCloudContactcenterinsightsV1mainPhraseMatchData,
-        ),
-      ),
-      annotations: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1mainCallAnnotation),
-      ),
-      silence: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainConversationLevelSilence,
-      ),
-      issueModelResult: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainIssueModelResult,
-      ),
-    }),
-  ).annotate({
+    ),
+    annotations: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1mainCallAnnotation),
+    ),
+    silence: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainConversationLevelSilence,
+    ),
+    issueModelResult: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainIssueModelResult,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainAnalysisResultCallAnalysisMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainAnalysisResultCallAnalysisMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainGcsSource {
   /** Immutable. Cloud Storage URI that points to a file that contains the conversation transcript. */
@@ -6965,15 +6348,13 @@ export interface GoogleCloudContactcenterinsightsV1mainGcsSource {
   audioUri?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainGcsSource: Schema.Schema<GoogleCloudContactcenterinsightsV1mainGcsSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      transcriptUri: Schema.optional(Schema.String),
-      audioUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainGcsSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    transcriptUri: Schema.optional(Schema.String),
+    audioUri: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1mainGcsSource",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainGcsSource>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainConversationDataSource {
   /** The source when the conversation comes from Dialogflow. */
@@ -6986,25 +6367,21 @@ export interface GoogleCloudContactcenterinsightsV1mainConversationDataSource {
   metadataUri?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainConversationDataSource: Schema.Schema<GoogleCloudContactcenterinsightsV1mainConversationDataSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dialogflowSource: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainDialogflowSource,
+export const GoogleCloudContactcenterinsightsV1mainConversationDataSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dialogflowSource: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainDialogflowSource,
+    ),
+    turnLevelAudios: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1mainConversationDataSourceTurnLevelAudio,
       ),
-      turnLevelAudios: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1mainConversationDataSourceTurnLevelAudio,
-        ),
-      ),
-      gcsSource: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainGcsSource,
-      ),
-      metadataUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+    ),
+    gcsSource: Schema.optional(GoogleCloudContactcenterinsightsV1mainGcsSource),
+    metadataUri: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1mainConversationDataSource",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainConversationDataSource>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1ConversationParticipant {
   /** Obfuscated user ID from Dialogflow. */
@@ -7025,34 +6402,30 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ConversationParticipant
     | (string & {});
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ConversationParticipant: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConversationParticipant> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      obfuscatedExternalUserId: Schema.optional(Schema.String),
-      dialogflowParticipantName: Schema.optional(Schema.String),
-      userId: Schema.optional(Schema.String),
-      dialogflowParticipant: Schema.optional(Schema.String),
-      role: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1ConversationParticipant =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    obfuscatedExternalUserId: Schema.optional(Schema.String),
+    dialogflowParticipantName: Schema.optional(Schema.String),
+    userId: Schema.optional(Schema.String),
+    dialogflowParticipant: Schema.optional(Schema.String),
+    role: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1ConversationParticipant",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConversationParticipant>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata {
   /** Whether the transcript segment was covered under the configured smart reply allowlist in Agent Assist. */
   smartReplyAllowlistCovered?: boolean;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      smartReplyAllowlistCovered: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    smartReplyAllowlistCovered: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentWordInfo {
   /** Time offset of the start of this word relative to the beginning of the total conversation. */
@@ -7065,18 +6438,16 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptT
   confidence?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentWordInfo: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentWordInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startOffset: Schema.optional(Schema.String),
-      endOffset: Schema.optional(Schema.String),
-      word: Schema.optional(Schema.String),
-      confidence: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentWordInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startOffset: Schema.optional(Schema.String),
+    endOffset: Schema.optional(Schema.String),
+    word: Schema.optional(Schema.String),
+    confidence: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentWordInfo",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentWordInfo>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1ConversationDataSourceTurnLevelAudio {
   /** The Cloud Storage URI of the audio for any given turn. */
@@ -7085,16 +6456,14 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ConversationDataSourceT
   audioDuration?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ConversationDataSourceTurnLevelAudio: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConversationDataSourceTurnLevelAudio> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      audioGcsUri: Schema.optional(Schema.String),
-      audioDuration: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1ConversationDataSourceTurnLevelAudio =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    audioGcsUri: Schema.optional(Schema.String),
+    audioDuration: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1ConversationDataSourceTurnLevelAudio",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConversationDataSourceTurnLevelAudio>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegment {
   /** The text of this segment. */
@@ -7119,36 +6488,34 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptT
   languageCode?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegment: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-      segmentParticipant: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1ConversationParticipant,
+export const GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegment =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.String),
+    segmentParticipant: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1ConversationParticipant,
+    ),
+    messageTime: Schema.optional(Schema.String),
+    dialogflowSegmentMetadata: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata,
+    ),
+    confidence: Schema.optional(Schema.Number),
+    sentiment: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1SentimentData,
+    ),
+    words: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentWordInfo,
       ),
-      messageTime: Schema.optional(Schema.String),
-      dialogflowSegmentMetadata: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentDialogflowSegmentMetadata,
-      ),
-      confidence: Schema.optional(Schema.Number),
-      sentiment: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1SentimentData,
-      ),
-      words: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegmentWordInfo,
-        ),
-      ),
-      channelTag: Schema.optional(Schema.Number),
-      turnLevelAudio: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1ConversationDataSourceTurnLevelAudio,
-      ),
-      languageCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+    ),
+    channelTag: Schema.optional(Schema.Number),
+    turnLevelAudio: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1ConversationDataSourceTurnLevelAudio,
+    ),
+    languageCode: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegment",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegment>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1AuthorizedView {
   /** Display Name. Limit 64 characters. */
@@ -7163,18 +6530,16 @@ export interface GoogleCloudContactcenterinsightsV1AuthorizedView {
   updateTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1AuthorizedView: Schema.Schema<GoogleCloudContactcenterinsightsV1AuthorizedView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      conversationFilter: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1AuthorizedView =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    conversationFilter: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1AuthorizedView",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1AuthorizedView>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1ListAuthorizedViewsResponse {
   /** The AuthorizedViews under the parent. */
@@ -7183,17 +6548,15 @@ export interface GoogleCloudContactcenterinsightsV1ListAuthorizedViewsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ListAuthorizedViewsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1ListAuthorizedViewsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      authorizedViews: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1AuthorizedView),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1ListAuthorizedViewsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    authorizedViews: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1AuthorizedView),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1ListAuthorizedViewsResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ListAuthorizedViewsResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1UploadConversationRequest {
   /** Optional. Speech-to-Text configuration. Will default to the config specified in Settings. */
@@ -7208,24 +6571,22 @@ export interface GoogleCloudContactcenterinsightsV1UploadConversationRequest {
   parent?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1UploadConversationRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1UploadConversationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      speechConfig: Schema.optional(
-        GoogleCloudContactcenterinsightsV1SpeechConfig,
-      ),
-      conversation: Schema.optional(
-        GoogleCloudContactcenterinsightsV1Conversation,
-      ),
-      conversationId: Schema.optional(Schema.String),
-      redactionConfig: Schema.optional(
-        GoogleCloudContactcenterinsightsV1RedactionConfig,
-      ),
-      parent: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1UploadConversationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    speechConfig: Schema.optional(
+      GoogleCloudContactcenterinsightsV1SpeechConfig,
+    ),
+    conversation: Schema.optional(
+      GoogleCloudContactcenterinsightsV1Conversation,
+    ),
+    conversationId: Schema.optional(Schema.String),
+    redactionConfig: Schema.optional(
+      GoogleCloudContactcenterinsightsV1RedactionConfig,
+    ),
+    parent: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1UploadConversationRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1UploadConversationRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1UploadConversationMetadata {
   /** Output only. The time the operation was created. */
@@ -7240,37 +6601,33 @@ export interface GoogleCloudContactcenterinsightsV1UploadConversationMetadata {
   appliedRedactionConfig?: GoogleCloudContactcenterinsightsV1RedactionConfig;
 }
 
-export const GoogleCloudContactcenterinsightsV1UploadConversationMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1UploadConversationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      analysisOperation: Schema.optional(Schema.String),
-      request: Schema.optional(
-        GoogleCloudContactcenterinsightsV1UploadConversationRequest,
-      ),
-      appliedRedactionConfig: Schema.optional(
-        GoogleCloudContactcenterinsightsV1RedactionConfig,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1UploadConversationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    analysisOperation: Schema.optional(Schema.String),
+    request: Schema.optional(
+      GoogleCloudContactcenterinsightsV1UploadConversationRequest,
+    ),
+    appliedRedactionConfig: Schema.optional(
+      GoogleCloudContactcenterinsightsV1RedactionConfig,
+    ),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1UploadConversationMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1UploadConversationMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1DimensionClientSentimentCategoryDimensionMetadata {
   /** Optional. The client sentiment category. */
   sentimentCategory?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1DimensionClientSentimentCategoryDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DimensionClientSentimentCategoryDimensionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sentimentCategory: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1DimensionClientSentimentCategoryDimensionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sentimentCategory: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1DimensionClientSentimentCategoryDimensionMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DimensionClientSentimentCategoryDimensionMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainArticleSuggestionData {
   /** The knowledge document that this answer was extracted from. Format: projects/{project}/knowledgeBases/{knowledge_base}/documents/{document} */
@@ -7287,19 +6644,17 @@ export interface GoogleCloudContactcenterinsightsV1mainArticleSuggestionData {
   queryRecord?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainArticleSuggestionData: Schema.Schema<GoogleCloudContactcenterinsightsV1mainArticleSuggestionData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      source: Schema.optional(Schema.String),
-      confidenceScore: Schema.optional(Schema.Number),
-      title: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      uri: Schema.optional(Schema.String),
-      queryRecord: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainArticleSuggestionData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    source: Schema.optional(Schema.String),
+    confidenceScore: Schema.optional(Schema.Number),
+    title: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    uri: Schema.optional(Schema.String),
+    queryRecord: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1mainArticleSuggestionData",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainArticleSuggestionData>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointConversationMeasureQaTagScore {
   /** Tag name. */
@@ -7308,16 +6663,14 @@ export interface GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSlice
   averageTagNormalizedScore?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointConversationMeasureQaTagScore: Schema.Schema<GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointConversationMeasureQaTagScore> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tag: Schema.optional(Schema.String),
-      averageTagNormalizedScore: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointConversationMeasureQaTagScore =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tag: Schema.optional(Schema.String),
+    averageTagNormalizedScore: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointConversationMeasureQaTagScore",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointConversationMeasureQaTagScore>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointConversationMeasure {
   /** The average latency of conversational agents' LLM call latency per interaction. This is computed as the average of the all the interactions LLM call latencies in a conversation and averaged across conversations. */
@@ -7432,110 +6785,102 @@ export interface GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSlice
   dialogflowConversationsEscalationCount?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointConversationMeasure: Schema.Schema<GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointConversationMeasure> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conversationalAgentsAverageLlmCallLatency: Schema.optional(Schema.Number),
-      averageClientSentimentScore: Schema.optional(Schema.Number),
-      knowledgeSearchPositiveFeedbackRatio: Schema.optional(Schema.Number),
-      averageTurnCount: Schema.optional(Schema.Number),
-      knowledgeSearchAgentQuerySourceRatio: Schema.optional(Schema.Number),
-      aiCoachSuggestionMessageTriggerCount: Schema.optional(Schema.Number),
-      averageQaQuestionNormalizedScore: Schema.optional(Schema.Number),
-      knowledgeSearchSuggestedQuerySourceRatio: Schema.optional(Schema.Number),
-      conversationTotalCustomerMessageCount: Schema.optional(Schema.Number),
-      averageDuration: Schema.optional(Schema.String),
-      conversationAiCoachSuggestionCount: Schema.optional(Schema.Number),
-      aiCoachSuggestionMessageTriggerRatio: Schema.optional(Schema.Number),
-      averageCustomerSatisfactionRating: Schema.optional(Schema.Number),
-      aiCoachSuggestionCustomerMessageTriggerCount: Schema.optional(
-        Schema.Number,
+export const GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointConversationMeasure =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conversationalAgentsAverageLlmCallLatency: Schema.optional(Schema.Number),
+    averageClientSentimentScore: Schema.optional(Schema.Number),
+    knowledgeSearchPositiveFeedbackRatio: Schema.optional(Schema.Number),
+    averageTurnCount: Schema.optional(Schema.Number),
+    knowledgeSearchAgentQuerySourceRatio: Schema.optional(Schema.Number),
+    aiCoachSuggestionMessageTriggerCount: Schema.optional(Schema.Number),
+    averageQaQuestionNormalizedScore: Schema.optional(Schema.Number),
+    knowledgeSearchSuggestedQuerySourceRatio: Schema.optional(Schema.Number),
+    conversationTotalCustomerMessageCount: Schema.optional(Schema.Number),
+    averageDuration: Schema.optional(Schema.String),
+    conversationAiCoachSuggestionCount: Schema.optional(Schema.Number),
+    aiCoachSuggestionMessageTriggerRatio: Schema.optional(Schema.Number),
+    averageCustomerSatisfactionRating: Schema.optional(Schema.Number),
+    aiCoachSuggestionCustomerMessageTriggerCount: Schema.optional(
+      Schema.Number,
+    ),
+    aaSupervisorEscalatedConversationsCount: Schema.optional(Schema.Number),
+    knowledgeSearchResultCount: Schema.optional(Schema.Number),
+    dialogflowAverageWebhookLatency: Schema.optional(Schema.Number),
+    conversationalAgentsAverageAudioInAudioOutLatency: Schema.optional(
+      Schema.Number,
+    ),
+    qaTagScores: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointConversationMeasureQaTagScore,
       ),
-      aaSupervisorEscalatedConversationsCount: Schema.optional(Schema.Number),
-      knowledgeSearchResultCount: Schema.optional(Schema.Number),
-      dialogflowAverageWebhookLatency: Schema.optional(Schema.Number),
-      conversationalAgentsAverageAudioInAudioOutLatency: Schema.optional(
-        Schema.Number,
-      ),
-      qaTagScores: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointConversationMeasureQaTagScore,
-        ),
-      ),
-      summarizationSuggestionResultCount: Schema.optional(Schema.Number),
-      aiCoachSuggestionAgentUsageCount: Schema.optional(Schema.Number),
-      conversationTotalAgentMessageCount: Schema.optional(Schema.Number),
-      dialogflowConversationsEscalationRatio: Schema.optional(Schema.Number),
-      conversationSuggestedSummaryRatio: Schema.optional(Schema.Number),
-      averageSummarizationSuggestionNormalizedEditDistance: Schema.optional(
-        Schema.Number,
-      ),
-      aiCoachSuggestionAgentUsageRatio: Schema.optional(Schema.Number),
-      knowledgeAssistPositiveFeedbackRatio: Schema.optional(Schema.Number),
-      containedConversationRatio: Schema.optional(Schema.Number),
-      knowledgeSearchUriClickRatio: Schema.optional(Schema.Number),
-      knowledgeAssistUriClickRatio: Schema.optional(Schema.Number),
-      dialogflowInteractionsNoMatchRatio: Schema.optional(Schema.Number),
-      aaSupervisorTransferredToHumanAgentConvCount: Schema.optional(
-        Schema.Number,
-      ),
-      knowledgeSearchNegativeFeedbackRatio: Schema.optional(Schema.Number),
-      aaSupervisorMonitoredConversationsCount: Schema.optional(Schema.Number),
-      dialogflowWebhookTimeoutRatio: Schema.optional(Schema.Number),
-      dialogflowInteractionsNoInputRatio: Schema.optional(Schema.Number),
-      aaSupervisorAssignedConversationsCount: Schema.optional(Schema.Number),
-      avgConversationClientTurnSentimentEma: Schema.optional(Schema.Number),
-      aiCoachSuggestionCustomerMessageTriggerRatio: Schema.optional(
-        Schema.Number,
-      ),
-      conversationalAgentsAverageEndToEndLatency: Schema.optional(
-        Schema.Number,
-      ),
-      aiCoachSuggestionAgentMessageTriggerCount: Schema.optional(Schema.Number),
-      summarizationSuggestionEditRatio: Schema.optional(Schema.Number),
-      averageSilencePercentage: Schema.optional(Schema.Number),
-      knowledgeAssistResultCount: Schema.optional(Schema.Number),
-      averageQaNormalizedScore: Schema.optional(Schema.Number),
-      conversationalAgentsAverageTtsLatency: Schema.optional(Schema.Number),
-      aaSupervisorDroppedConversationsCount: Schema.optional(Schema.Number),
-      knowledgeAssistNegativeFeedbackRatio: Schema.optional(Schema.Number),
-      averageAgentSentimentScore: Schema.optional(Schema.Number),
-      conversationAiCoachSuggestionRatio: Schema.optional(Schema.Number),
-      averageSummarizationSuggestionEditDistance: Schema.optional(
-        Schema.Number,
-      ),
-      conversationCount: Schema.optional(Schema.Number),
-      containedConversationCount: Schema.optional(Schema.Number),
-      dialogflowWebhookFailureRatio: Schema.optional(Schema.Number),
-      dialogflowConversationsEscalationCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+    ),
+    summarizationSuggestionResultCount: Schema.optional(Schema.Number),
+    aiCoachSuggestionAgentUsageCount: Schema.optional(Schema.Number),
+    conversationTotalAgentMessageCount: Schema.optional(Schema.Number),
+    dialogflowConversationsEscalationRatio: Schema.optional(Schema.Number),
+    conversationSuggestedSummaryRatio: Schema.optional(Schema.Number),
+    averageSummarizationSuggestionNormalizedEditDistance: Schema.optional(
+      Schema.Number,
+    ),
+    aiCoachSuggestionAgentUsageRatio: Schema.optional(Schema.Number),
+    knowledgeAssistPositiveFeedbackRatio: Schema.optional(Schema.Number),
+    containedConversationRatio: Schema.optional(Schema.Number),
+    knowledgeSearchUriClickRatio: Schema.optional(Schema.Number),
+    knowledgeAssistUriClickRatio: Schema.optional(Schema.Number),
+    dialogflowInteractionsNoMatchRatio: Schema.optional(Schema.Number),
+    aaSupervisorTransferredToHumanAgentConvCount: Schema.optional(
+      Schema.Number,
+    ),
+    knowledgeSearchNegativeFeedbackRatio: Schema.optional(Schema.Number),
+    aaSupervisorMonitoredConversationsCount: Schema.optional(Schema.Number),
+    dialogflowWebhookTimeoutRatio: Schema.optional(Schema.Number),
+    dialogflowInteractionsNoInputRatio: Schema.optional(Schema.Number),
+    aaSupervisorAssignedConversationsCount: Schema.optional(Schema.Number),
+    avgConversationClientTurnSentimentEma: Schema.optional(Schema.Number),
+    aiCoachSuggestionCustomerMessageTriggerRatio: Schema.optional(
+      Schema.Number,
+    ),
+    conversationalAgentsAverageEndToEndLatency: Schema.optional(Schema.Number),
+    aiCoachSuggestionAgentMessageTriggerCount: Schema.optional(Schema.Number),
+    summarizationSuggestionEditRatio: Schema.optional(Schema.Number),
+    averageSilencePercentage: Schema.optional(Schema.Number),
+    knowledgeAssistResultCount: Schema.optional(Schema.Number),
+    averageQaNormalizedScore: Schema.optional(Schema.Number),
+    conversationalAgentsAverageTtsLatency: Schema.optional(Schema.Number),
+    aaSupervisorDroppedConversationsCount: Schema.optional(Schema.Number),
+    knowledgeAssistNegativeFeedbackRatio: Schema.optional(Schema.Number),
+    averageAgentSentimentScore: Schema.optional(Schema.Number),
+    conversationAiCoachSuggestionRatio: Schema.optional(Schema.Number),
+    averageSummarizationSuggestionEditDistance: Schema.optional(Schema.Number),
+    conversationCount: Schema.optional(Schema.Number),
+    containedConversationCount: Schema.optional(Schema.Number),
+    dialogflowWebhookFailureRatio: Schema.optional(Schema.Number),
+    dialogflowConversationsEscalationCount: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointConversationMeasure",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointConversationMeasure>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainIngestConversationsResponse {}
 
-export const GoogleCloudContactcenterinsightsV1mainIngestConversationsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1mainIngestConversationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudContactcenterinsightsV1mainIngestConversationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainIngestConversationsResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainIngestConversationsResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelRequest {
   /** Required. The issue model to undeploy. */
   name?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelMetadata {
   /** Output only. The time the operation finished running. */
@@ -7546,19 +6891,17 @@ export interface GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelMetad
   createTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endTime: Schema.optional(Schema.String),
-      request: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelRequest,
-      ),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endTime: Schema.optional(Schema.String),
+    request: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelRequest,
+    ),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1RuntimeAnnotationUserInput {
   /** The resource name of associated generator. Format: `projects//locations//generators/` */
@@ -7573,17 +6916,15 @@ export interface GoogleCloudContactcenterinsightsV1alpha1RuntimeAnnotationUserIn
     | (string & {});
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1RuntimeAnnotationUserInput: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1RuntimeAnnotationUserInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      generatorName: Schema.optional(Schema.String),
-      query: Schema.optional(Schema.String),
-      querySource: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1RuntimeAnnotationUserInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    generatorName: Schema.optional(Schema.String),
+    query: Schema.optional(Schema.String),
+    querySource: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1RuntimeAnnotationUserInput",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1RuntimeAnnotationUserInput>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1CreateIssueMetadata {
   /** Output only. The time the operation was created. */
@@ -7594,18 +6935,16 @@ export interface GoogleCloudContactcenterinsightsV1CreateIssueMetadata {
   request?: GoogleCloudContactcenterinsightsV1CreateIssueRequest;
 }
 
-export const GoogleCloudContactcenterinsightsV1CreateIssueMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1CreateIssueMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      request: Schema.optional(
-        GoogleCloudContactcenterinsightsV1CreateIssueRequest,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1CreateIssueMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    request: Schema.optional(
+      GoogleCloudContactcenterinsightsV1CreateIssueRequest,
+    ),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1CreateIssueMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1CreateIssueMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainRedactionConfig {
   /** The fully-qualified DLP deidentify template resource name. Format: `projects/{project}/deidentifyTemplates/{template}` */
@@ -7614,29 +6953,25 @@ export interface GoogleCloudContactcenterinsightsV1mainRedactionConfig {
   inspectTemplate?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainRedactionConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1mainRedactionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deidentifyTemplate: Schema.optional(Schema.String),
-      inspectTemplate: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainRedactionConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deidentifyTemplate: Schema.optional(Schema.String),
+    inspectTemplate: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1mainRedactionConfig",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainRedactionConfig>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1DeployIssueModelRequest {
   /** Required. The issue model to deploy. */
   name?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1DeployIssueModelRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1DeployIssueModelRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1DeployIssueModelRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1DeployIssueModelRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1DeployIssueModelRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1DeployIssueModelMetadata {
   /** Output only. The time the operation was created. */
@@ -7647,18 +6982,16 @@ export interface GoogleCloudContactcenterinsightsV1DeployIssueModelMetadata {
   request?: GoogleCloudContactcenterinsightsV1DeployIssueModelRequest;
 }
 
-export const GoogleCloudContactcenterinsightsV1DeployIssueModelMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1DeployIssueModelMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      request: Schema.optional(
-        GoogleCloudContactcenterinsightsV1DeployIssueModelRequest,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1DeployIssueModelMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    request: Schema.optional(
+      GoogleCloudContactcenterinsightsV1DeployIssueModelRequest,
+    ),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1DeployIssueModelMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1DeployIssueModelMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainDimensionConversationalAgentsPlaybookDimensionMetadata {
   /** Optional. The dialogflow playbook ID. */
@@ -7667,16 +7000,14 @@ export interface GoogleCloudContactcenterinsightsV1mainDimensionConversationalAg
   playbookDisplayName?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainDimensionConversationalAgentsPlaybookDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainDimensionConversationalAgentsPlaybookDimensionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      playbookId: Schema.optional(Schema.String),
-      playbookDisplayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainDimensionConversationalAgentsPlaybookDimensionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    playbookId: Schema.optional(Schema.String),
+    playbookDisplayName: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainDimensionConversationalAgentsPlaybookDimensionMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainDimensionConversationalAgentsPlaybookDimensionMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainDimensionQaQuestionAnswerDimensionMetadata {
   /** Optional. The full body of the question. */
@@ -7689,33 +7020,29 @@ export interface GoogleCloudContactcenterinsightsV1mainDimensionQaQuestionAnswer
   questionBody?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainDimensionQaQuestionAnswerDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainDimensionQaQuestionAnswerDimensionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      answerValue: Schema.optional(Schema.String),
-      qaScorecardId: Schema.optional(Schema.String),
-      qaQuestionId: Schema.optional(Schema.String),
-      questionBody: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainDimensionQaQuestionAnswerDimensionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    answerValue: Schema.optional(Schema.String),
+    qaScorecardId: Schema.optional(Schema.String),
+    qaQuestionId: Schema.optional(Schema.String),
+    questionBody: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainDimensionQaQuestionAnswerDimensionMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainDimensionQaQuestionAnswerDimensionMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainDimensionMediumDimensionMetadata {
   /** Optional. The conversation medium. Currently supports : PHONE_CALL, CHAT. */
   medium?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainDimensionMediumDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainDimensionMediumDimensionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      medium: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainDimensionMediumDimensionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    medium: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainDimensionMediumDimensionMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainDimensionMediumDimensionMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainDimensionConversationalAgentsToolDimensionMetadata {
   /** Optional. The dialogflow tool display name. */
@@ -7724,16 +7051,14 @@ export interface GoogleCloudContactcenterinsightsV1mainDimensionConversationalAg
   toolId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainDimensionConversationalAgentsToolDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainDimensionConversationalAgentsToolDimensionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      toolDisplayName: Schema.optional(Schema.String),
-      toolId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainDimensionConversationalAgentsToolDimensionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    toolDisplayName: Schema.optional(Schema.String),
+    toolId: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainDimensionConversationalAgentsToolDimensionMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainDimensionConversationalAgentsToolDimensionMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainDimensionAgentDimensionMetadata {
   /** Optional. The agent's deployment display name. Only applicable to automated agents. This will be populated for AGENT_DEPLOYMENT_ID dimensions. */
@@ -7752,21 +7077,19 @@ export interface GoogleCloudContactcenterinsightsV1mainDimensionAgentDimensionMe
   agentVersionId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainDimensionAgentDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainDimensionAgentDimensionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      agentDeploymentDisplayName: Schema.optional(Schema.String),
-      agentId: Schema.optional(Schema.String),
-      agentDeploymentId: Schema.optional(Schema.String),
-      agentTeam: Schema.optional(Schema.String),
-      agentDisplayName: Schema.optional(Schema.String),
-      agentVersionDisplayName: Schema.optional(Schema.String),
-      agentVersionId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainDimensionAgentDimensionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    agentDeploymentDisplayName: Schema.optional(Schema.String),
+    agentId: Schema.optional(Schema.String),
+    agentDeploymentId: Schema.optional(Schema.String),
+    agentTeam: Schema.optional(Schema.String),
+    agentDisplayName: Schema.optional(Schema.String),
+    agentVersionDisplayName: Schema.optional(Schema.String),
+    agentVersionId: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainDimensionAgentDimensionMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainDimensionAgentDimensionMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainDimensionLabelDimensionMetadata {
   /** Optional. The label key. */
@@ -7775,16 +7098,14 @@ export interface GoogleCloudContactcenterinsightsV1mainDimensionLabelDimensionMe
   labelValue?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainDimensionLabelDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainDimensionLabelDimensionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labelKey: Schema.optional(Schema.String),
-      labelValue: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainDimensionLabelDimensionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    labelKey: Schema.optional(Schema.String),
+    labelValue: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainDimensionLabelDimensionMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainDimensionLabelDimensionMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainDimensionIssueDimensionMetadata {
   /** The issue display name. */
@@ -7795,17 +7116,15 @@ export interface GoogleCloudContactcenterinsightsV1mainDimensionIssueDimensionMe
   issueModelId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainDimensionIssueDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainDimensionIssueDimensionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      issueDisplayName: Schema.optional(Schema.String),
-      issueId: Schema.optional(Schema.String),
-      issueModelId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainDimensionIssueDimensionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    issueDisplayName: Schema.optional(Schema.String),
+    issueId: Schema.optional(Schema.String),
+    issueModelId: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainDimensionIssueDimensionMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainDimensionIssueDimensionMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainDimensionQaQuestionDimensionMetadata {
   /** Optional. The QA scorecard ID. */
@@ -7816,32 +7135,28 @@ export interface GoogleCloudContactcenterinsightsV1mainDimensionQaQuestionDimens
   questionBody?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainDimensionQaQuestionDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainDimensionQaQuestionDimensionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      qaScorecardId: Schema.optional(Schema.String),
-      qaQuestionId: Schema.optional(Schema.String),
-      questionBody: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainDimensionQaQuestionDimensionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    qaScorecardId: Schema.optional(Schema.String),
+    qaQuestionId: Schema.optional(Schema.String),
+    questionBody: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainDimensionQaQuestionDimensionMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainDimensionQaQuestionDimensionMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainDimensionClientSentimentCategoryDimensionMetadata {
   /** Optional. The client sentiment category. */
   sentimentCategory?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainDimensionClientSentimentCategoryDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainDimensionClientSentimentCategoryDimensionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sentimentCategory: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainDimensionClientSentimentCategoryDimensionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sentimentCategory: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainDimensionClientSentimentCategoryDimensionMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainDimensionClientSentimentCategoryDimensionMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainDimension {
   /** Output only. Metadata about the Conversational Agents playbook dimension. */
@@ -7893,47 +7208,45 @@ export interface GoogleCloudContactcenterinsightsV1mainDimension {
   clientSentimentCategoryDimensionMetadata?: GoogleCloudContactcenterinsightsV1mainDimensionClientSentimentCategoryDimensionMetadata;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainDimension: Schema.Schema<GoogleCloudContactcenterinsightsV1mainDimension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conversationalAgentsPlaybookDimensionMetadata: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainDimensionConversationalAgentsPlaybookDimensionMetadata,
-      ),
-      qaQuestionAnswerDimensionMetadata: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainDimensionQaQuestionAnswerDimensionMetadata,
-      ),
-      mediumDimensionMetadata: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainDimensionMediumDimensionMetadata,
-      ),
-      conversationProfileDimensionMetadata: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainDimensionConversationProfileDimensionMetadata,
-      ),
-      conversationalAgentsToolDimensionMetadata: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainDimensionConversationalAgentsToolDimensionMetadata,
-      ),
-      qaScorecardDimensionMetadata: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainDimensionQaScorecardDimensionMetadata,
-      ),
-      agentDimensionMetadata: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainDimensionAgentDimensionMetadata,
-      ),
-      labelDimensionMetadata: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainDimensionLabelDimensionMetadata,
-      ),
-      issueDimensionMetadata: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainDimensionIssueDimensionMetadata,
-      ),
-      qaQuestionDimensionMetadata: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainDimensionQaQuestionDimensionMetadata,
-      ),
-      dimensionKey: Schema.optional(Schema.String),
-      clientSentimentCategoryDimensionMetadata: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainDimensionClientSentimentCategoryDimensionMetadata,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainDimension =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conversationalAgentsPlaybookDimensionMetadata: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainDimensionConversationalAgentsPlaybookDimensionMetadata,
+    ),
+    qaQuestionAnswerDimensionMetadata: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainDimensionQaQuestionAnswerDimensionMetadata,
+    ),
+    mediumDimensionMetadata: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainDimensionMediumDimensionMetadata,
+    ),
+    conversationProfileDimensionMetadata: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainDimensionConversationProfileDimensionMetadata,
+    ),
+    conversationalAgentsToolDimensionMetadata: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainDimensionConversationalAgentsToolDimensionMetadata,
+    ),
+    qaScorecardDimensionMetadata: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainDimensionQaScorecardDimensionMetadata,
+    ),
+    agentDimensionMetadata: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainDimensionAgentDimensionMetadata,
+    ),
+    labelDimensionMetadata: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainDimensionLabelDimensionMetadata,
+    ),
+    issueDimensionMetadata: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainDimensionIssueDimensionMetadata,
+    ),
+    qaQuestionDimensionMetadata: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainDimensionQaQuestionDimensionMetadata,
+    ),
+    dimensionKey: Schema.optional(Schema.String),
+    clientSentimentCategoryDimensionMetadata: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainDimensionClientSentimentCategoryDimensionMetadata,
+    ),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1mainDimension",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainDimension>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointPercentileResult {
   /** The 50th percentile value. */
@@ -7944,17 +7257,15 @@ export interface GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSlice
   p99?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointPercentileResult: Schema.Schema<GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointPercentileResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      p50: Schema.optional(Schema.Number),
-      p90: Schema.optional(Schema.Number),
-      p99: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointPercentileResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    p50: Schema.optional(Schema.Number),
+    p90: Schema.optional(Schema.Number),
+    p99: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointPercentileResult",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointPercentileResult>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointDialogflowInteractionMeasure {
   /** The percentile result for LLM latency in milliseconds per dialogflow interaction level. */
@@ -7969,29 +7280,27 @@ export interface GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSlice
   percentileAudioInAudioOutLatency?: GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointPercentileResult;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointDialogflowInteractionMeasure: Schema.Schema<GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointDialogflowInteractionMeasure> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      percentileLlmCallLatency: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointPercentileResult,
-      ),
-      percentileEndToEndLatency: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointPercentileResult,
-      ),
-      percentileTtsLatency: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointPercentileResult,
-      ),
-      percentileToolUseLatency: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointPercentileResult,
-      ),
-      percentileAudioInAudioOutLatency: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointPercentileResult,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointDialogflowInteractionMeasure =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    percentileLlmCallLatency: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointPercentileResult,
+    ),
+    percentileEndToEndLatency: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointPercentileResult,
+    ),
+    percentileTtsLatency: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointPercentileResult,
+    ),
+    percentileToolUseLatency: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointPercentileResult,
+    ),
+    percentileAudioInAudioOutLatency: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointPercentileResult,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointDialogflowInteractionMeasure",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointDialogflowInteractionMeasure>;
+  });
 
 export interface GoogleTypeInterval {
   /** Optional. Inclusive start of the interval. If specified, a Timestamp matching this interval will have to be the same or after the start. */
@@ -8000,15 +7309,10 @@ export interface GoogleTypeInterval {
   endTime?: string;
 }
 
-export const GoogleTypeInterval: Schema.Schema<GoogleTypeInterval> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleTypeInterval",
-  }) as any as Schema.Schema<GoogleTypeInterval>;
+export const GoogleTypeInterval = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "GoogleTypeInterval" });
 
 export interface GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPoint {
   /** The measure related to dialogflow interactions. */
@@ -8019,40 +7323,36 @@ export interface GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSlice
   conversationMeasure?: GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointConversationMeasure;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPoint: Schema.Schema<GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dialogflowInteractionMeasure: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointDialogflowInteractionMeasure,
-      ),
-      interval: Schema.optional(GoogleTypeInterval),
-      conversationMeasure: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointConversationMeasure,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPoint =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dialogflowInteractionMeasure: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointDialogflowInteractionMeasure,
+    ),
+    interval: Schema.optional(GoogleTypeInterval),
+    conversationMeasure: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPointConversationMeasure,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPoint",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPoint>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceTimeSeries {
   /** The data points that make up the time series . */
   dataPoints?: Array<GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPoint>;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceTimeSeries: Schema.Schema<GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceTimeSeries> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataPoints: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPoint,
-        ),
+export const GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceTimeSeries =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataPoints: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPoint,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceTimeSeries",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceTimeSeries>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSlice {
   /** A unique combination of dimensions that this slice represents. */
@@ -8063,23 +7363,21 @@ export interface GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSlice
   timeSeries?: GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceTimeSeries;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSlice: Schema.Schema<GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSlice> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dimensions: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1mainDimension),
-      ),
-      total: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPoint,
-      ),
-      timeSeries: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceTimeSeries,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSlice =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dimensions: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1mainDimension),
+    ),
+    total: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceDataPoint,
+    ),
+    timeSeries: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSliceTimeSeries,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSlice",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSlice>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequestGcsDestination {
   /** Required. File format in which the labels will be exported. */
@@ -8094,19 +7392,17 @@ export interface GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabel
   recordsPerFileCount?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequestGcsDestination: Schema.Schema<GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequestGcsDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      format: Schema.optional(Schema.String),
-      objectUri: Schema.optional(Schema.String),
-      alwaysPrintEmptyFields: Schema.optional(Schema.Boolean),
-      addWhitespace: Schema.optional(Schema.Boolean),
-      recordsPerFileCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequestGcsDestination =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    format: Schema.optional(Schema.String),
+    objectUri: Schema.optional(Schema.String),
+    alwaysPrintEmptyFields: Schema.optional(Schema.Boolean),
+    addWhitespace: Schema.optional(Schema.Boolean),
+    recordsPerFileCount: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequestGcsDestination",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequestGcsDestination>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequestSheetsDestination {
   /** Required. The Google Sheets document to write the feedback labels to. Retrieved from Google Sheets URI. E.g. `https://docs.google.com/spreadsheets/d/1234567890` The spreadsheet must be shared with the Insights P4SA. The spreadsheet ID written to will be returned as `file_names` in the BulkDownloadFeedbackLabelsMetadata. */
@@ -8115,16 +7411,14 @@ export interface GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabel
   sheetTitle?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequestSheetsDestination: Schema.Schema<GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequestSheetsDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      spreadsheetUri: Schema.optional(Schema.String),
-      sheetTitle: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequestSheetsDestination =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    spreadsheetUri: Schema.optional(Schema.String),
+    sheetTitle: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequestSheetsDestination",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequestSheetsDestination>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequest {
   /** Required. The parent resource for new feedback labels. */
@@ -8150,41 +7444,37 @@ export interface GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabel
   templateQaScorecardId?: Array<string>;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parent: Schema.optional(Schema.String),
-      filter: Schema.optional(Schema.String),
-      gcsDestination: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequestGcsDestination,
-      ),
-      maxDownloadCount: Schema.optional(Schema.Number),
-      conversationFilter: Schema.optional(Schema.String),
-      feedbackLabelType: Schema.optional(Schema.String),
-      sheetsDestination: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequestSheetsDestination,
-      ),
-      templateQaScorecardId: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.optional(Schema.String),
+    filter: Schema.optional(Schema.String),
+    gcsDestination: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequestGcsDestination,
+    ),
+    maxDownloadCount: Schema.optional(Schema.Number),
+    conversationFilter: Schema.optional(Schema.String),
+    feedbackLabelType: Schema.optional(Schema.String),
+    sheetsDestination: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequestSheetsDestination,
+    ),
+    templateQaScorecardId: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination {
   /** Required. Format: `gs:///` */
   objectUri?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination: Schema.Schema<GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      objectUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    objectUri: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1ExportIssueModelRequest {
   /** Required. The issue model to export. */
@@ -8193,31 +7483,25 @@ export interface GoogleCloudContactcenterinsightsV1ExportIssueModelRequest {
   gcsDestination?: GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination;
 }
 
-export const GoogleCloudContactcenterinsightsV1ExportIssueModelRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1ExportIssueModelRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      gcsDestination: Schema.optional(
-        GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1ExportIssueModelRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    gcsDestination: Schema.optional(
+      GoogleCloudContactcenterinsightsV1ExportIssueModelRequestGcsDestination,
+    ),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1ExportIssueModelRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ExportIssueModelRequest>;
+  });
 
 export interface GoogleIamV1TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: Array<string>;
 }
 
-export const GoogleIamV1TestIamPermissionsResponse: Schema.Schema<GoogleIamV1TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1TestIamPermissionsResponse",
-  }) as any as Schema.Schema<GoogleIamV1TestIamPermissionsResponse>;
+export const GoogleIamV1TestIamPermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleIamV1TestIamPermissionsResponse" });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointDialogflowInteractionMeasure {
   /** The percentile result for LLM latency in milliseconds per dialogflow interaction level. */
@@ -8232,29 +7516,27 @@ export interface GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSli
   percentileAudioInAudioOutLatency?: GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointPercentileResult;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointDialogflowInteractionMeasure: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointDialogflowInteractionMeasure> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      percentileLlmCallLatency: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointPercentileResult,
-      ),
-      percentileEndToEndLatency: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointPercentileResult,
-      ),
-      percentileTtsLatency: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointPercentileResult,
-      ),
-      percentileToolUseLatency: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointPercentileResult,
-      ),
-      percentileAudioInAudioOutLatency: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointPercentileResult,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointDialogflowInteractionMeasure =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    percentileLlmCallLatency: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointPercentileResult,
+    ),
+    percentileEndToEndLatency: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointPercentileResult,
+    ),
+    percentileTtsLatency: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointPercentileResult,
+    ),
+    percentileToolUseLatency: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointPercentileResult,
+    ),
+    percentileAudioInAudioOutLatency: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointPercentileResult,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointDialogflowInteractionMeasure",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointDialogflowInteractionMeasure>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointConversationMeasureQaTagScore {
   /** Tag name. */
@@ -8263,16 +7545,14 @@ export interface GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSli
   averageTagNormalizedScore?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointConversationMeasureQaTagScore: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointConversationMeasureQaTagScore> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tag: Schema.optional(Schema.String),
-      averageTagNormalizedScore: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointConversationMeasureQaTagScore =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tag: Schema.optional(Schema.String),
+    averageTagNormalizedScore: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointConversationMeasureQaTagScore",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointConversationMeasureQaTagScore>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointConversationMeasure {
   /** The exponential moving average of the sentiment score of client turns in the conversation. */
@@ -8387,87 +7667,81 @@ export interface GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSli
   aiCoachSuggestionMessageTriggerRatio?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointConversationMeasure: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointConversationMeasure> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      avgConversationClientTurnSentimentEma: Schema.optional(Schema.Number),
-      aiCoachSuggestionCustomerMessageTriggerRatio: Schema.optional(
-        Schema.Number,
+export const GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointConversationMeasure =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    avgConversationClientTurnSentimentEma: Schema.optional(Schema.Number),
+    aiCoachSuggestionCustomerMessageTriggerRatio: Schema.optional(
+      Schema.Number,
+    ),
+    aiCoachSuggestionAgentMessageTriggerCount: Schema.optional(Schema.Number),
+    summarizationSuggestionEditRatio: Schema.optional(Schema.Number),
+    conversationalAgentsAverageEndToEndLatency: Schema.optional(Schema.Number),
+    averageSilencePercentage: Schema.optional(Schema.Number),
+    conversationalAgentsAverageTtsLatency: Schema.optional(Schema.Number),
+    aaSupervisorDroppedConversationsCount: Schema.optional(Schema.Number),
+    knowledgeAssistResultCount: Schema.optional(Schema.Number),
+    averageQaNormalizedScore: Schema.optional(Schema.Number),
+    averageAgentSentimentScore: Schema.optional(Schema.Number),
+    conversationAiCoachSuggestionRatio: Schema.optional(Schema.Number),
+    knowledgeAssistNegativeFeedbackRatio: Schema.optional(Schema.Number),
+    averageSummarizationSuggestionEditDistance: Schema.optional(Schema.Number),
+    dialogflowWebhookFailureRatio: Schema.optional(Schema.Number),
+    dialogflowConversationsEscalationCount: Schema.optional(Schema.Number),
+    conversationCount: Schema.optional(Schema.Number),
+    containedConversationCount: Schema.optional(Schema.Number),
+    dialogflowConversationsEscalationRatio: Schema.optional(Schema.Number),
+    conversationTotalAgentMessageCount: Schema.optional(Schema.Number),
+    averageSummarizationSuggestionNormalizedEditDistance: Schema.optional(
+      Schema.Number,
+    ),
+    aiCoachSuggestionAgentUsageRatio: Schema.optional(Schema.Number),
+    conversationSuggestedSummaryRatio: Schema.optional(Schema.Number),
+    containedConversationRatio: Schema.optional(Schema.Number),
+    knowledgeAssistPositiveFeedbackRatio: Schema.optional(Schema.Number),
+    knowledgeAssistUriClickRatio: Schema.optional(Schema.Number),
+    knowledgeSearchUriClickRatio: Schema.optional(Schema.Number),
+    knowledgeSearchNegativeFeedbackRatio: Schema.optional(Schema.Number),
+    dialogflowInteractionsNoMatchRatio: Schema.optional(Schema.Number),
+    aaSupervisorTransferredToHumanAgentConvCount: Schema.optional(
+      Schema.Number,
+    ),
+    aaSupervisorMonitoredConversationsCount: Schema.optional(Schema.Number),
+    dialogflowInteractionsNoInputRatio: Schema.optional(Schema.Number),
+    aaSupervisorAssignedConversationsCount: Schema.optional(Schema.Number),
+    dialogflowWebhookTimeoutRatio: Schema.optional(Schema.Number),
+    aiCoachSuggestionCustomerMessageTriggerCount: Schema.optional(
+      Schema.Number,
+    ),
+    averageCustomerSatisfactionRating: Schema.optional(Schema.Number),
+    knowledgeSearchResultCount: Schema.optional(Schema.Number),
+    aaSupervisorEscalatedConversationsCount: Schema.optional(Schema.Number),
+    dialogflowAverageWebhookLatency: Schema.optional(Schema.Number),
+    conversationalAgentsAverageAudioInAudioOutLatency: Schema.optional(
+      Schema.Number,
+    ),
+    summarizationSuggestionResultCount: Schema.optional(Schema.Number),
+    qaTagScores: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointConversationMeasureQaTagScore,
       ),
-      aiCoachSuggestionAgentMessageTriggerCount: Schema.optional(Schema.Number),
-      summarizationSuggestionEditRatio: Schema.optional(Schema.Number),
-      conversationalAgentsAverageEndToEndLatency: Schema.optional(
-        Schema.Number,
-      ),
-      averageSilencePercentage: Schema.optional(Schema.Number),
-      conversationalAgentsAverageTtsLatency: Schema.optional(Schema.Number),
-      aaSupervisorDroppedConversationsCount: Schema.optional(Schema.Number),
-      knowledgeAssistResultCount: Schema.optional(Schema.Number),
-      averageQaNormalizedScore: Schema.optional(Schema.Number),
-      averageAgentSentimentScore: Schema.optional(Schema.Number),
-      conversationAiCoachSuggestionRatio: Schema.optional(Schema.Number),
-      knowledgeAssistNegativeFeedbackRatio: Schema.optional(Schema.Number),
-      averageSummarizationSuggestionEditDistance: Schema.optional(
-        Schema.Number,
-      ),
-      dialogflowWebhookFailureRatio: Schema.optional(Schema.Number),
-      dialogflowConversationsEscalationCount: Schema.optional(Schema.Number),
-      conversationCount: Schema.optional(Schema.Number),
-      containedConversationCount: Schema.optional(Schema.Number),
-      dialogflowConversationsEscalationRatio: Schema.optional(Schema.Number),
-      conversationTotalAgentMessageCount: Schema.optional(Schema.Number),
-      averageSummarizationSuggestionNormalizedEditDistance: Schema.optional(
-        Schema.Number,
-      ),
-      aiCoachSuggestionAgentUsageRatio: Schema.optional(Schema.Number),
-      conversationSuggestedSummaryRatio: Schema.optional(Schema.Number),
-      containedConversationRatio: Schema.optional(Schema.Number),
-      knowledgeAssistPositiveFeedbackRatio: Schema.optional(Schema.Number),
-      knowledgeAssistUriClickRatio: Schema.optional(Schema.Number),
-      knowledgeSearchUriClickRatio: Schema.optional(Schema.Number),
-      knowledgeSearchNegativeFeedbackRatio: Schema.optional(Schema.Number),
-      dialogflowInteractionsNoMatchRatio: Schema.optional(Schema.Number),
-      aaSupervisorTransferredToHumanAgentConvCount: Schema.optional(
-        Schema.Number,
-      ),
-      aaSupervisorMonitoredConversationsCount: Schema.optional(Schema.Number),
-      dialogflowInteractionsNoInputRatio: Schema.optional(Schema.Number),
-      aaSupervisorAssignedConversationsCount: Schema.optional(Schema.Number),
-      dialogflowWebhookTimeoutRatio: Schema.optional(Schema.Number),
-      aiCoachSuggestionCustomerMessageTriggerCount: Schema.optional(
-        Schema.Number,
-      ),
-      averageCustomerSatisfactionRating: Schema.optional(Schema.Number),
-      knowledgeSearchResultCount: Schema.optional(Schema.Number),
-      aaSupervisorEscalatedConversationsCount: Schema.optional(Schema.Number),
-      dialogflowAverageWebhookLatency: Schema.optional(Schema.Number),
-      conversationalAgentsAverageAudioInAudioOutLatency: Schema.optional(
-        Schema.Number,
-      ),
-      summarizationSuggestionResultCount: Schema.optional(Schema.Number),
-      qaTagScores: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointConversationMeasureQaTagScore,
-        ),
-      ),
-      aiCoachSuggestionAgentUsageCount: Schema.optional(Schema.Number),
-      conversationalAgentsAverageLlmCallLatency: Schema.optional(Schema.Number),
-      knowledgeSearchPositiveFeedbackRatio: Schema.optional(Schema.Number),
-      averageClientSentimentScore: Schema.optional(Schema.Number),
-      averageTurnCount: Schema.optional(Schema.Number),
-      aiCoachSuggestionMessageTriggerCount: Schema.optional(Schema.Number),
-      averageQaQuestionNormalizedScore: Schema.optional(Schema.Number),
-      knowledgeSearchAgentQuerySourceRatio: Schema.optional(Schema.Number),
-      knowledgeSearchSuggestedQuerySourceRatio: Schema.optional(Schema.Number),
-      conversationTotalCustomerMessageCount: Schema.optional(Schema.Number),
-      averageDuration: Schema.optional(Schema.String),
-      conversationAiCoachSuggestionCount: Schema.optional(Schema.Number),
-      aiCoachSuggestionMessageTriggerRatio: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+    ),
+    aiCoachSuggestionAgentUsageCount: Schema.optional(Schema.Number),
+    conversationalAgentsAverageLlmCallLatency: Schema.optional(Schema.Number),
+    knowledgeSearchPositiveFeedbackRatio: Schema.optional(Schema.Number),
+    averageClientSentimentScore: Schema.optional(Schema.Number),
+    averageTurnCount: Schema.optional(Schema.Number),
+    aiCoachSuggestionMessageTriggerCount: Schema.optional(Schema.Number),
+    averageQaQuestionNormalizedScore: Schema.optional(Schema.Number),
+    knowledgeSearchAgentQuerySourceRatio: Schema.optional(Schema.Number),
+    knowledgeSearchSuggestedQuerySourceRatio: Schema.optional(Schema.Number),
+    conversationTotalCustomerMessageCount: Schema.optional(Schema.Number),
+    averageDuration: Schema.optional(Schema.String),
+    conversationAiCoachSuggestionCount: Schema.optional(Schema.Number),
+    aiCoachSuggestionMessageTriggerRatio: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointConversationMeasure",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointConversationMeasure>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPoint {
   /** The measure related to dialogflow interactions. */
@@ -8478,21 +7752,19 @@ export interface GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSli
   interval?: GoogleTypeInterval;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPoint: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dialogflowInteractionMeasure: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointDialogflowInteractionMeasure,
-      ),
-      conversationMeasure: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointConversationMeasure,
-      ),
-      interval: Schema.optional(GoogleTypeInterval),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPoint =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dialogflowInteractionMeasure: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointDialogflowInteractionMeasure,
+    ),
+    conversationMeasure: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPointConversationMeasure,
+    ),
+    interval: Schema.optional(GoogleTypeInterval),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPoint",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPoint>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainSpeechConfig {
   /** The fully-qualified Speech Recognizer resource name. Format: `projects/{project_id}/locations/{location}/recognizer/{recognizer}` */
@@ -8501,15 +7773,13 @@ export interface GoogleCloudContactcenterinsightsV1mainSpeechConfig {
   disableWordTimeOffsets?: boolean;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainSpeechConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1mainSpeechConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      speechRecognizer: Schema.optional(Schema.String),
-      disableWordTimeOffsets: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainSpeechConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    speechRecognizer: Schema.optional(Schema.String),
+    disableWordTimeOffsets: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1mainSpeechConfig",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainSpeechConfig>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainConversationCorrelationInfo {
   /** Output only. The full conversation correlation id this conversation is a segment of. */
@@ -8527,17 +7797,15 @@ export interface GoogleCloudContactcenterinsightsV1mainConversationCorrelationIn
   mergedFullConversationCorrelationId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainConversationCorrelationInfo: Schema.Schema<GoogleCloudContactcenterinsightsV1mainConversationCorrelationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fullConversationCorrelationId: Schema.optional(Schema.String),
-      correlationTypes: Schema.optional(Schema.Array(Schema.String)),
-      mergedFullConversationCorrelationId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainConversationCorrelationInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fullConversationCorrelationId: Schema.optional(Schema.String),
+    correlationTypes: Schema.optional(Schema.Array(Schema.String)),
+    mergedFullConversationCorrelationId: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainConversationCorrelationInfo",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainConversationCorrelationInfo>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainAnalysisResult {
   /** Call-specific metadata created by the analysis. */
@@ -8546,17 +7814,15 @@ export interface GoogleCloudContactcenterinsightsV1mainAnalysisResult {
   endTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainAnalysisResult: Schema.Schema<GoogleCloudContactcenterinsightsV1mainAnalysisResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      callAnalysisMetadata: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainAnalysisResultCallAnalysisMetadata,
-      ),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainAnalysisResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    callAnalysisMetadata: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainAnalysisResultCallAnalysisMetadata,
+    ),
+    endTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1mainAnalysisResult",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainAnalysisResult>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorSummarizationConfig {
   /** Default summarization model to be used. */
@@ -8571,17 +7837,15 @@ export interface GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorSummariz
   generator?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorSummarizationConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorSummarizationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      summarizationModel: Schema.optional(Schema.String),
-      conversationProfile: Schema.optional(Schema.String),
-      generator: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorSummarizationConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    summarizationModel: Schema.optional(Schema.String),
+    conversationProfile: Schema.optional(Schema.String),
+    generator: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorSummarizationConfig",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorSummarizationConfig>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainAnnotatorSelector {
   /** Whether to run the entity annotator. */
@@ -8614,31 +7878,29 @@ export interface GoogleCloudContactcenterinsightsV1mainAnnotatorSelector {
   runPhraseMatcherAnnotator?: boolean;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainAnnotatorSelector: Schema.Schema<GoogleCloudContactcenterinsightsV1mainAnnotatorSelector> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      runEntityAnnotator: Schema.optional(Schema.Boolean),
-      runSilenceAnnotator: Schema.optional(Schema.Boolean),
-      issueModels: Schema.optional(Schema.Array(Schema.String)),
-      runSummarizationAnnotator: Schema.optional(Schema.Boolean),
-      runIntentAnnotator: Schema.optional(Schema.Boolean),
-      runAutoLabelingAnnotator: Schema.optional(Schema.Boolean),
-      summarizationConfig: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorSummarizationConfig,
-      ),
-      qaConfig: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorQaConfig,
-      ),
-      runSentimentAnnotator: Schema.optional(Schema.Boolean),
-      runIssueModelAnnotator: Schema.optional(Schema.Boolean),
-      runInterruptionAnnotator: Schema.optional(Schema.Boolean),
-      phraseMatchers: Schema.optional(Schema.Array(Schema.String)),
-      runQaAnnotator: Schema.optional(Schema.Boolean),
-      runPhraseMatcherAnnotator: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainAnnotatorSelector =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    runEntityAnnotator: Schema.optional(Schema.Boolean),
+    runSilenceAnnotator: Schema.optional(Schema.Boolean),
+    issueModels: Schema.optional(Schema.Array(Schema.String)),
+    runSummarizationAnnotator: Schema.optional(Schema.Boolean),
+    runIntentAnnotator: Schema.optional(Schema.Boolean),
+    runAutoLabelingAnnotator: Schema.optional(Schema.Boolean),
+    summarizationConfig: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorSummarizationConfig,
+    ),
+    qaConfig: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainAnnotatorSelectorQaConfig,
+    ),
+    runSentimentAnnotator: Schema.optional(Schema.Boolean),
+    runIssueModelAnnotator: Schema.optional(Schema.Boolean),
+    runInterruptionAnnotator: Schema.optional(Schema.Boolean),
+    phraseMatchers: Schema.optional(Schema.Array(Schema.String)),
+    runQaAnnotator: Schema.optional(Schema.Boolean),
+    runPhraseMatcherAnnotator: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1mainAnnotatorSelector",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainAnnotatorSelector>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainAnalysis {
   /** Output only. The result of the analysis, which is populated when the analysis finishes. */
@@ -8653,36 +7915,30 @@ export interface GoogleCloudContactcenterinsightsV1mainAnalysis {
   requestTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainAnalysis: Schema.Schema<GoogleCloudContactcenterinsightsV1mainAnalysis> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      analysisResult: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainAnalysisResult,
-      ),
-      annotatorSelector: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainAnnotatorSelector,
-      ),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      requestTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1mainAnalysis",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainAnalysis>;
+export const GoogleCloudContactcenterinsightsV1mainAnalysis =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    analysisResult: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainAnalysisResult,
+    ),
+    annotatorSelector: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainAnnotatorSelector,
+    ),
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    requestTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudContactcenterinsightsV1mainAnalysis" });
 
 export interface GoogleCloudContactcenterinsightsV1mainDialogflowIntent {
   /** The human-readable name of the intent. */
   displayName?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainDialogflowIntent: Schema.Schema<GoogleCloudContactcenterinsightsV1mainDialogflowIntent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainDialogflowIntent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1mainDialogflowIntent",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainDialogflowIntent>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainConversationQualityMetadataAgentInfo {
   /** The agent's location. */
@@ -8717,26 +7973,24 @@ export interface GoogleCloudContactcenterinsightsV1mainConversationQualityMetada
   teams?: Array<string>;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainConversationQualityMetadataAgentInfo: Schema.Schema<GoogleCloudContactcenterinsightsV1mainConversationQualityMetadataAgentInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      location: Schema.optional(Schema.String),
-      versionId: Schema.optional(Schema.String),
-      entrySubagentDisplayName: Schema.optional(Schema.String),
-      dispositionCode: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      agentId: Schema.optional(Schema.String),
-      deploymentId: Schema.optional(Schema.String),
-      versionDisplayName: Schema.optional(Schema.String),
-      agentType: Schema.optional(Schema.String),
-      team: Schema.optional(Schema.String),
-      deploymentDisplayName: Schema.optional(Schema.String),
-      teams: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainConversationQualityMetadataAgentInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.optional(Schema.String),
+    versionId: Schema.optional(Schema.String),
+    entrySubagentDisplayName: Schema.optional(Schema.String),
+    dispositionCode: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    agentId: Schema.optional(Schema.String),
+    deploymentId: Schema.optional(Schema.String),
+    versionDisplayName: Schema.optional(Schema.String),
+    agentType: Schema.optional(Schema.String),
+    team: Schema.optional(Schema.String),
+    deploymentDisplayName: Schema.optional(Schema.String),
+    teams: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainConversationQualityMetadataAgentInfo",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainConversationQualityMetadataAgentInfo>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainFeedbackLabel {
   /** String label used for Topic Modeling. */
@@ -8753,21 +8007,19 @@ export interface GoogleCloudContactcenterinsightsV1mainFeedbackLabel {
   createTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainFeedbackLabel: Schema.Schema<GoogleCloudContactcenterinsightsV1mainFeedbackLabel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      label: Schema.optional(Schema.String),
-      qaAnswerLabel: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerValue,
-      ),
-      updateTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      labeledResource: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainFeedbackLabel =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    label: Schema.optional(Schema.String),
+    qaAnswerLabel: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainQaAnswerAnswerValue,
+    ),
+    updateTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    labeledResource: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1mainFeedbackLabel",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainFeedbackLabel>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainConversationQualityMetadata {
   /** An arbitrary integer value indicating the customer's satisfaction rating. */
@@ -8782,25 +8034,23 @@ export interface GoogleCloudContactcenterinsightsV1mainConversationQualityMetada
   menuPath?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainConversationQualityMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainConversationQualityMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customerSatisfactionRating: Schema.optional(Schema.Number),
-      agentInfo: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1mainConversationQualityMetadataAgentInfo,
-        ),
+export const GoogleCloudContactcenterinsightsV1mainConversationQualityMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customerSatisfactionRating: Schema.optional(Schema.Number),
+    agentInfo: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1mainConversationQualityMetadataAgentInfo,
       ),
-      feedbackLabels: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1mainFeedbackLabel),
-      ),
-      waitDuration: Schema.optional(Schema.String),
-      menuPath: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+    ),
+    feedbackLabels: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1mainFeedbackLabel),
+    ),
+    waitDuration: Schema.optional(Schema.String),
+    menuPath: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainConversationQualityMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainConversationQualityMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainConversationCallMetadata {
   /** The audio channel that contains the agent. */
@@ -8809,16 +8059,14 @@ export interface GoogleCloudContactcenterinsightsV1mainConversationCallMetadata 
   customerChannel?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainConversationCallMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainConversationCallMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      agentChannel: Schema.optional(Schema.Number),
-      customerChannel: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainConversationCallMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    agentChannel: Schema.optional(Schema.Number),
+    customerChannel: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainConversationCallMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainConversationCallMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainConversationSummarizationSuggestionData {
   /** The summarization content that is divided into sections. The key is the section's name and the value is the section's content. There is no specific format for the key or value. */
@@ -8837,23 +8085,19 @@ export interface GoogleCloudContactcenterinsightsV1mainConversationSummarization
   text?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainConversationSummarizationSuggestionData: Schema.Schema<GoogleCloudContactcenterinsightsV1mainConversationSummarizationSuggestionData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      textSections: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      confidence: Schema.optional(Schema.Number),
-      generatorId: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      answerRecord: Schema.optional(Schema.String),
-      conversationModel: Schema.optional(Schema.String),
-      text: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainConversationSummarizationSuggestionData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    textSections: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    confidence: Schema.optional(Schema.Number),
+    generatorId: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    answerRecord: Schema.optional(Schema.String),
+    conversationModel: Schema.optional(Schema.String),
+    text: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainConversationSummarizationSuggestionData",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainConversationSummarizationSuggestionData>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainDialogflowInteractionData {
   /** The Dialogflow intent resource path. Format: projects/{project}/agent/{agent}/intents/{intent} */
@@ -8862,16 +8106,14 @@ export interface GoogleCloudContactcenterinsightsV1mainDialogflowInteractionData
   confidence?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainDialogflowInteractionData: Schema.Schema<GoogleCloudContactcenterinsightsV1mainDialogflowInteractionData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dialogflowIntentId: Schema.optional(Schema.String),
-      confidence: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainDialogflowInteractionData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dialogflowIntentId: Schema.optional(Schema.String),
+    confidence: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainDialogflowInteractionData",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainDialogflowInteractionData>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainFaqAnswerData {
   /** The name of the answer record. Format: projects/{project}/locations/{location}/answerRecords/{answer_record} */
@@ -8888,19 +8130,17 @@ export interface GoogleCloudContactcenterinsightsV1mainFaqAnswerData {
   source?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainFaqAnswerData: Schema.Schema<GoogleCloudContactcenterinsightsV1mainFaqAnswerData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      queryRecord: Schema.optional(Schema.String),
-      confidenceScore: Schema.optional(Schema.Number),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      answer: Schema.optional(Schema.String),
-      question: Schema.optional(Schema.String),
-      source: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainFaqAnswerData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    queryRecord: Schema.optional(Schema.String),
+    confidenceScore: Schema.optional(Schema.Number),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    answer: Schema.optional(Schema.String),
+    question: Schema.optional(Schema.String),
+    source: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1mainFaqAnswerData",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainFaqAnswerData>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainSmartComposeSuggestionData {
   /** The system's confidence score that this suggestion is a good match for this conversation, ranging from 0.0 (completely uncertain) to 1.0 (completely certain). */
@@ -8913,18 +8153,16 @@ export interface GoogleCloudContactcenterinsightsV1mainSmartComposeSuggestionDat
   queryRecord?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainSmartComposeSuggestionData: Schema.Schema<GoogleCloudContactcenterinsightsV1mainSmartComposeSuggestionData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      confidenceScore: Schema.optional(Schema.Number),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      suggestion: Schema.optional(Schema.String),
-      queryRecord: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainSmartComposeSuggestionData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    confidenceScore: Schema.optional(Schema.Number),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    suggestion: Schema.optional(Schema.String),
+    queryRecord: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainSmartComposeSuggestionData",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainSmartComposeSuggestionData>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainAnswerFeedback {
   /** Indicates whether an answer or item was clicked by the human agent. */
@@ -8940,16 +8178,14 @@ export interface GoogleCloudContactcenterinsightsV1mainAnswerFeedback {
   displayed?: boolean;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainAnswerFeedback: Schema.Schema<GoogleCloudContactcenterinsightsV1mainAnswerFeedback> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clicked: Schema.optional(Schema.Boolean),
-      correctnessLevel: Schema.optional(Schema.String),
-      displayed: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainAnswerFeedback =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    clicked: Schema.optional(Schema.Boolean),
+    correctnessLevel: Schema.optional(Schema.String),
+    displayed: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1mainAnswerFeedback",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainAnswerFeedback>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainSmartReplyData {
   /** The system's confidence score that this reply is a good match for this conversation, ranging from 0.0 (completely uncertain) to 1.0 (completely certain). */
@@ -8962,17 +8198,15 @@ export interface GoogleCloudContactcenterinsightsV1mainSmartReplyData {
   queryRecord?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainSmartReplyData: Schema.Schema<GoogleCloudContactcenterinsightsV1mainSmartReplyData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      confidenceScore: Schema.optional(Schema.Number),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      reply: Schema.optional(Schema.String),
-      queryRecord: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainSmartReplyData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    confidenceScore: Schema.optional(Schema.Number),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    reply: Schema.optional(Schema.String),
+    queryRecord: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1mainSmartReplyData",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainSmartReplyData>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainRuntimeAnnotation {
   /** The unique identifier of the annotation. Format: projects/{project}/locations/{location}/conversationDatasets/{dataset}/conversationDataItems/{data_item}/conversationAnnotations/{annotation} */
@@ -9001,45 +8235,43 @@ export interface GoogleCloudContactcenterinsightsV1mainRuntimeAnnotation {
   smartReply?: GoogleCloudContactcenterinsightsV1mainSmartReplyData;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainRuntimeAnnotation: Schema.Schema<GoogleCloudContactcenterinsightsV1mainRuntimeAnnotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      annotationId: Schema.optional(Schema.String),
-      dialogflowInteraction: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainDialogflowInteractionData,
-      ),
-      faqAnswer: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainFaqAnswerData,
-      ),
-      endBoundary: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainAnnotationBoundary,
-      ),
-      startBoundary: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainAnnotationBoundary,
-      ),
-      conversationSummarizationSuggestion: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainConversationSummarizationSuggestionData,
-      ),
-      userInput: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainRuntimeAnnotationUserInput,
-      ),
-      articleSuggestion: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainArticleSuggestionData,
-      ),
-      createTime: Schema.optional(Schema.String),
-      smartComposeSuggestion: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainSmartComposeSuggestionData,
-      ),
-      answerFeedback: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainAnswerFeedback,
-      ),
-      smartReply: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainSmartReplyData,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainRuntimeAnnotation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    annotationId: Schema.optional(Schema.String),
+    dialogflowInteraction: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainDialogflowInteractionData,
+    ),
+    faqAnswer: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainFaqAnswerData,
+    ),
+    endBoundary: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainAnnotationBoundary,
+    ),
+    startBoundary: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainAnnotationBoundary,
+    ),
+    conversationSummarizationSuggestion: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainConversationSummarizationSuggestionData,
+    ),
+    userInput: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainRuntimeAnnotationUserInput,
+    ),
+    articleSuggestion: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainArticleSuggestionData,
+    ),
+    createTime: Schema.optional(Schema.String),
+    smartComposeSuggestion: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainSmartComposeSuggestionData,
+    ),
+    answerFeedback: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainAnswerFeedback,
+    ),
+    smartReply: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainSmartReplyData,
+    ),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1mainRuntimeAnnotation",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainRuntimeAnnotation>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainConversation {
   /** Obfuscated user ID which the customer sent to us. */
@@ -9093,57 +8325,55 @@ export interface GoogleCloudContactcenterinsightsV1mainConversation {
   runtimeAnnotations?: Array<GoogleCloudContactcenterinsightsV1mainRuntimeAnnotation>;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainConversation: Schema.Schema<GoogleCloudContactcenterinsightsV1mainConversation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      obfuscatedUserId: Schema.optional(Schema.String),
-      agentId: Schema.optional(Schema.String),
-      expireTime: Schema.optional(Schema.String),
-      languageCode: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      dataSource: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainConversationDataSource,
+export const GoogleCloudContactcenterinsightsV1mainConversation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    obfuscatedUserId: Schema.optional(Schema.String),
+    agentId: Schema.optional(Schema.String),
+    expireTime: Schema.optional(Schema.String),
+    languageCode: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    dataSource: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainConversationDataSource,
+    ),
+    startTime: Schema.optional(Schema.String),
+    transcript: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainConversationTranscript,
+    ),
+    correlationInfo: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainConversationCorrelationInfo,
+    ),
+    metadataJson: Schema.optional(Schema.String),
+    latestAnalysis: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainAnalysis,
+    ),
+    createTime: Schema.optional(Schema.String),
+    dialogflowIntents: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        GoogleCloudContactcenterinsightsV1mainDialogflowIntent,
       ),
-      startTime: Schema.optional(Schema.String),
-      transcript: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainConversationTranscript,
-      ),
-      correlationInfo: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainConversationCorrelationInfo,
-      ),
-      metadataJson: Schema.optional(Schema.String),
-      latestAnalysis: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainAnalysis,
-      ),
-      createTime: Schema.optional(Schema.String),
-      dialogflowIntents: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          GoogleCloudContactcenterinsightsV1mainDialogflowIntent,
-        ),
-      ),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      qualityMetadata: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainConversationQualityMetadata,
-      ),
-      duration: Schema.optional(Schema.String),
-      medium: Schema.optional(Schema.String),
-      turnCount: Schema.optional(Schema.Number),
-      callMetadata: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainConversationCallMetadata,
-      ),
-      latestSummary: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainConversationSummarizationSuggestionData,
-      ),
-      ttl: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      runtimeAnnotations: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1mainRuntimeAnnotation),
-      ),
-    }),
-  ).annotate({
+    ),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    qualityMetadata: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainConversationQualityMetadata,
+    ),
+    duration: Schema.optional(Schema.String),
+    medium: Schema.optional(Schema.String),
+    turnCount: Schema.optional(Schema.Number),
+    callMetadata: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainConversationCallMetadata,
+    ),
+    latestSummary: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainConversationSummarizationSuggestionData,
+    ),
+    ttl: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    runtimeAnnotations: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1mainRuntimeAnnotation),
+    ),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1mainConversation",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainConversation>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainUploadConversationRequest {
   /** Optional. Speech-to-Text configuration. Will default to the config specified in Settings. */
@@ -9158,25 +8388,23 @@ export interface GoogleCloudContactcenterinsightsV1mainUploadConversationRequest
   parent?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainUploadConversationRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1mainUploadConversationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      speechConfig: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainSpeechConfig,
-      ),
-      conversation: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainConversation,
-      ),
-      conversationId: Schema.optional(Schema.String),
-      redactionConfig: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainRedactionConfig,
-      ),
-      parent: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainUploadConversationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    speechConfig: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainSpeechConfig,
+    ),
+    conversation: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainConversation,
+    ),
+    conversationId: Schema.optional(Schema.String),
+    redactionConfig: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainRedactionConfig,
+    ),
+    parent: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainUploadConversationRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainUploadConversationRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1SearchAuthorizedViewsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -9185,18 +8413,16 @@ export interface GoogleCloudContactcenterinsightsV1SearchAuthorizedViewsResponse
   authorizedViews?: Array<GoogleCloudContactcenterinsightsV1AuthorizedView>;
 }
 
-export const GoogleCloudContactcenterinsightsV1SearchAuthorizedViewsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1SearchAuthorizedViewsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      authorizedViews: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1AuthorizedView),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1SearchAuthorizedViewsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    authorizedViews: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1AuthorizedView),
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1SearchAuthorizedViewsResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1SearchAuthorizedViewsResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1QaScorecard {
   /** The user-specified display name of the scorecard. */
@@ -9219,20 +8445,16 @@ export interface GoogleCloudContactcenterinsightsV1QaScorecard {
   isDefault?: boolean;
 }
 
-export const GoogleCloudContactcenterinsightsV1QaScorecard: Schema.Schema<GoogleCloudContactcenterinsightsV1QaScorecard> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      source: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      isDefault: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1QaScorecard",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1QaScorecard>;
+export const GoogleCloudContactcenterinsightsV1QaScorecard =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    source: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    isDefault: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudContactcenterinsightsV1QaScorecard" });
 
 export interface GoogleCloudContactcenterinsightsV1ListQaScorecardsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -9241,17 +8463,15 @@ export interface GoogleCloudContactcenterinsightsV1ListQaScorecardsResponse {
   qaScorecards?: Array<GoogleCloudContactcenterinsightsV1QaScorecard>;
 }
 
-export const GoogleCloudContactcenterinsightsV1ListQaScorecardsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1ListQaScorecardsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      qaScorecards: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1QaScorecard),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1ListQaScorecardsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    qaScorecards: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1QaScorecard),
+    ),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1ListQaScorecardsResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ListQaScorecardsResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsRequest {
   /** Maximum number of conversations to delete. */
@@ -9264,18 +8484,16 @@ export interface GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversations
   parent?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      maxDeleteCount: Schema.optional(Schema.Number),
-      filter: Schema.optional(Schema.String),
-      force: Schema.optional(Schema.Boolean),
-      parent: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    maxDeleteCount: Schema.optional(Schema.Number),
+    filter: Schema.optional(Schema.String),
+    force: Schema.optional(Schema.Boolean),
+    parent: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsMetadata {
   /** Partial errors during bulk delete conversations operation that might cause the operation output to be incomplete. */
@@ -9288,20 +8506,18 @@ export interface GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversations
   request?: GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsRequest;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      request: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsRequest,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
+    createTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    request: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsRequest,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1FaqAnswerData {
   /** The system's confidence score that this answer is a good match for this conversation, ranging from 0.0 (completely uncertain) to 1.0 (completely certain). */
@@ -9318,19 +8534,17 @@ export interface GoogleCloudContactcenterinsightsV1alpha1FaqAnswerData {
   source?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1FaqAnswerData: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1FaqAnswerData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      confidenceScore: Schema.optional(Schema.Number),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      queryRecord: Schema.optional(Schema.String),
-      answer: Schema.optional(Schema.String),
-      question: Schema.optional(Schema.String),
-      source: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1FaqAnswerData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    confidenceScore: Schema.optional(Schema.Number),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    queryRecord: Schema.optional(Schema.String),
+    answer: Schema.optional(Schema.String),
+    question: Schema.optional(Schema.String),
+    source: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1alpha1FaqAnswerData",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1FaqAnswerData>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1AuthorizedViewSet {
   /** Display Name. Limit 64 characters. */
@@ -9343,17 +8557,15 @@ export interface GoogleCloudContactcenterinsightsV1AuthorizedViewSet {
   updateTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1AuthorizedViewSet: Schema.Schema<GoogleCloudContactcenterinsightsV1AuthorizedViewSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1AuthorizedViewSet =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1AuthorizedViewSet",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1AuthorizedViewSet>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1ListAuthorizedViewSetsResponse {
   /** The AuthorizedViewSets under the parent. */
@@ -9362,18 +8574,16 @@ export interface GoogleCloudContactcenterinsightsV1ListAuthorizedViewSetsRespons
   nextPageToken?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ListAuthorizedViewSetsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1ListAuthorizedViewSetsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      authorizedViewSets: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1AuthorizedViewSet),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1ListAuthorizedViewSetsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    authorizedViewSets: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1AuthorizedViewSet),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1ListAuthorizedViewSetsResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ListAuthorizedViewSetsResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1SampleRule {
   /** Number of the conversations that we should sample based on the dimension. */
@@ -9386,24 +8596,22 @@ export interface GoogleCloudContactcenterinsightsV1alpha1SampleRule {
   samplePercentage?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1SampleRule: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1SampleRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sampleRow: Schema.optional(Schema.String),
-      dimension: Schema.optional(Schema.String),
-      conversationFilter: Schema.optional(Schema.String),
-      samplePercentage: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1SampleRule =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sampleRow: Schema.optional(Schema.String),
+    dimension: Schema.optional(Schema.String),
+    conversationFilter: Schema.optional(Schema.String),
+    samplePercentage: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1alpha1SampleRule",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1SampleRule>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1SampleConversationsResponse {}
 
-export const GoogleCloudContactcenterinsightsV1SampleConversationsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1SampleConversationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudContactcenterinsightsV1SampleConversationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1SampleConversationsResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1SampleConversationsResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1FeedbackLabel {
   /** Immutable. Resource name of the FeedbackLabel. Format: projects/{project}/locations/{location}/conversations/{conversation}/feedbackLabels/{feedback_label} */
@@ -9420,21 +8628,19 @@ export interface GoogleCloudContactcenterinsightsV1alpha1FeedbackLabel {
   qaAnswerLabel?: GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerValue;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1FeedbackLabel: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1FeedbackLabel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      labeledResource: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      label: Schema.optional(Schema.String),
-      qaAnswerLabel: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerValue,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1FeedbackLabel =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    labeledResource: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    label: Schema.optional(Schema.String),
+    qaAnswerLabel: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1QaAnswerAnswerValue,
+    ),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1alpha1FeedbackLabel",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1FeedbackLabel>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadataAgentInfo {
   /** The agent's version ID. Only applicable to automated agents. */
@@ -9469,26 +8675,24 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMeta
   agentId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadataAgentInfo: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadataAgentInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      versionId: Schema.optional(Schema.String),
-      entrySubagentDisplayName: Schema.optional(Schema.String),
-      dispositionCode: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-      deploymentId: Schema.optional(Schema.String),
-      versionDisplayName: Schema.optional(Schema.String),
-      agentType: Schema.optional(Schema.String),
-      team: Schema.optional(Schema.String),
-      deploymentDisplayName: Schema.optional(Schema.String),
-      teams: Schema.optional(Schema.Array(Schema.String)),
-      displayName: Schema.optional(Schema.String),
-      agentId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadataAgentInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    versionId: Schema.optional(Schema.String),
+    entrySubagentDisplayName: Schema.optional(Schema.String),
+    dispositionCode: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    deploymentId: Schema.optional(Schema.String),
+    versionDisplayName: Schema.optional(Schema.String),
+    agentType: Schema.optional(Schema.String),
+    team: Schema.optional(Schema.String),
+    deploymentDisplayName: Schema.optional(Schema.String),
+    teams: Schema.optional(Schema.Array(Schema.String)),
+    displayName: Schema.optional(Schema.String),
+    agentId: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadataAgentInfo",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadataAgentInfo>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadata {
   /** Input only. The feedback labels associated with the conversation. */
@@ -9503,25 +8707,23 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMeta
   agentInfo?: Array<GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadataAgentInfo>;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      feedbackLabels: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1alpha1FeedbackLabel),
+export const GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    feedbackLabels: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1alpha1FeedbackLabel),
+    ),
+    waitDuration: Schema.optional(Schema.String),
+    menuPath: Schema.optional(Schema.String),
+    customerSatisfactionRating: Schema.optional(Schema.Number),
+    agentInfo: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadataAgentInfo,
       ),
-      waitDuration: Schema.optional(Schema.String),
-      menuPath: Schema.optional(Schema.String),
-      customerSatisfactionRating: Schema.optional(Schema.Number),
-      agentInfo: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadataAgentInfo,
-        ),
-      ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1DeleteIssueModelMetadata {
   /** The original request for deletion. */
@@ -9532,19 +8734,17 @@ export interface GoogleCloudContactcenterinsightsV1alpha1DeleteIssueModelMetadat
   createTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1DeleteIssueModelMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DeleteIssueModelMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      request: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1DeleteIssueModelRequest,
-      ),
-      endTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1DeleteIssueModelMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    request: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1DeleteIssueModelRequest,
+    ),
+    endTime: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1DeleteIssueModelMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DeleteIssueModelMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1IssueModelResult {
   /** Issue model that generates the result. Format: projects/{project}/locations/{location}/issueModels/{issue_model} */
@@ -9553,17 +8753,15 @@ export interface GoogleCloudContactcenterinsightsV1alpha1IssueModelResult {
   issues?: Array<GoogleCloudContactcenterinsightsV1alpha1IssueAssignment>;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1IssueModelResult: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1IssueModelResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      issueModel: Schema.optional(Schema.String),
-      issues: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1alpha1IssueAssignment),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1IssueModelResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    issueModel: Schema.optional(Schema.String),
+    issues: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1alpha1IssueAssignment),
+    ),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1alpha1IssueModelResult",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1IssueModelResult>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1ConversationLevelSilence {
   /** Percentage of the total conversation spent in silence. */
@@ -9572,16 +8770,14 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ConversationLevelSilenc
   silenceDuration?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ConversationLevelSilence: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConversationLevelSilence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      silencePercentage: Schema.optional(Schema.Number),
-      silenceDuration: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1ConversationLevelSilence =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    silencePercentage: Schema.optional(Schema.Number),
+    silenceDuration: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1ConversationLevelSilence",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConversationLevelSilence>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1ConversationLevelSentiment {
   /** The channel of the audio that the data applies to. */
@@ -9590,18 +8786,16 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ConversationLevelSentim
   sentimentData?: GoogleCloudContactcenterinsightsV1alpha1SentimentData;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ConversationLevelSentiment: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConversationLevelSentiment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      channelTag: Schema.optional(Schema.Number),
-      sentimentData: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1SentimentData,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1ConversationLevelSentiment =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    channelTag: Schema.optional(Schema.Number),
+    sentimentData: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1SentimentData,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1ConversationLevelSentiment",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConversationLevelSentiment>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1QaScorecardResultQaTagResult {
   /** The potential score the tag applies to. */
@@ -9614,18 +8808,16 @@ export interface GoogleCloudContactcenterinsightsV1alpha1QaScorecardResultQaTagR
   score?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1QaScorecardResultQaTagResult: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QaScorecardResultQaTagResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      potentialScore: Schema.optional(Schema.Number),
-      normalizedScore: Schema.optional(Schema.Number),
-      tag: Schema.optional(Schema.String),
-      score: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1QaScorecardResultQaTagResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    potentialScore: Schema.optional(Schema.Number),
+    normalizedScore: Schema.optional(Schema.Number),
+    tag: Schema.optional(Schema.String),
+    score: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1QaScorecardResultQaTagResult",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QaScorecardResultQaTagResult>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1QaScorecardResultScoreSource {
   /** The overall numerical score of the result. */
@@ -9644,23 +8836,21 @@ export interface GoogleCloudContactcenterinsightsV1alpha1QaScorecardResultScoreS
   qaTagResults?: Array<GoogleCloudContactcenterinsightsV1alpha1QaScorecardResultQaTagResult>;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1QaScorecardResultScoreSource: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QaScorecardResultScoreSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      score: Schema.optional(Schema.Number),
-      sourceType: Schema.optional(Schema.String),
-      normalizedScore: Schema.optional(Schema.Number),
-      potentialScore: Schema.optional(Schema.Number),
-      qaTagResults: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1alpha1QaScorecardResultQaTagResult,
-        ),
+export const GoogleCloudContactcenterinsightsV1alpha1QaScorecardResultScoreSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    score: Schema.optional(Schema.Number),
+    sourceType: Schema.optional(Schema.String),
+    normalizedScore: Schema.optional(Schema.Number),
+    potentialScore: Schema.optional(Schema.Number),
+    qaTagResults: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1alpha1QaScorecardResultQaTagResult,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1QaScorecardResultScoreSource",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QaScorecardResultScoreSource>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1QaScorecardResult {
   /** The overall numerical score of the result, incorporating any manual edits if they exist. */
@@ -9687,34 +8877,32 @@ export interface GoogleCloudContactcenterinsightsV1alpha1QaScorecardResult {
   conversation?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1QaScorecardResult: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QaScorecardResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      score: Schema.optional(Schema.Number),
-      createTime: Schema.optional(Schema.String),
-      normalizedScore: Schema.optional(Schema.Number),
-      qaScorecardRevision: Schema.optional(Schema.String),
-      agentId: Schema.optional(Schema.String),
-      qaAnswers: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1alpha1QaAnswer),
+export const GoogleCloudContactcenterinsightsV1alpha1QaScorecardResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    score: Schema.optional(Schema.Number),
+    createTime: Schema.optional(Schema.String),
+    normalizedScore: Schema.optional(Schema.Number),
+    qaScorecardRevision: Schema.optional(Schema.String),
+    agentId: Schema.optional(Schema.String),
+    qaAnswers: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1alpha1QaAnswer),
+    ),
+    scoreSources: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1alpha1QaScorecardResultScoreSource,
       ),
-      scoreSources: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1alpha1QaScorecardResultScoreSource,
-        ),
+    ),
+    name: Schema.optional(Schema.String),
+    potentialScore: Schema.optional(Schema.Number),
+    qaTagResults: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1alpha1QaScorecardResultQaTagResult,
       ),
-      name: Schema.optional(Schema.String),
-      potentialScore: Schema.optional(Schema.Number),
-      qaTagResults: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1alpha1QaScorecardResultQaTagResult,
-        ),
-      ),
-      conversation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+    ),
+    conversation: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1alpha1QaScorecardResult",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QaScorecardResult>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1Entity {
   /** The representative name for the entity. */
@@ -9743,20 +8931,16 @@ export interface GoogleCloudContactcenterinsightsV1alpha1Entity {
   sentiment?: GoogleCloudContactcenterinsightsV1alpha1SentimentData;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1Entity: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1Entity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      salience: Schema.optional(Schema.Number),
-      sentiment: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1SentimentData,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1alpha1Entity",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1Entity>;
+export const GoogleCloudContactcenterinsightsV1alpha1Entity =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    salience: Schema.optional(Schema.Number),
+    sentiment: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1SentimentData,
+    ),
+  }).annotate({ identifier: "GoogleCloudContactcenterinsightsV1alpha1Entity" });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1AnalysisResultCallAnalysisMetadata {
   /** Overall conversation-level issue modeling result. */
@@ -9780,49 +8964,47 @@ export interface GoogleCloudContactcenterinsightsV1alpha1AnalysisResultCallAnaly
   entities?: Record<string, GoogleCloudContactcenterinsightsV1alpha1Entity>;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1AnalysisResultCallAnalysisMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1AnalysisResultCallAnalysisMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      issueModelResult: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1IssueModelResult,
+export const GoogleCloudContactcenterinsightsV1alpha1AnalysisResultCallAnalysisMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    issueModelResult: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1IssueModelResult,
+    ),
+    phraseMatchers: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        GoogleCloudContactcenterinsightsV1alpha1PhraseMatchData,
       ),
-      phraseMatchers: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          GoogleCloudContactcenterinsightsV1alpha1PhraseMatchData,
-        ),
+    ),
+    annotations: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1alpha1CallAnnotation),
+    ),
+    silence: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1ConversationLevelSilence,
+    ),
+    intents: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        GoogleCloudContactcenterinsightsV1alpha1Intent,
       ),
-      annotations: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1alpha1CallAnnotation),
+    ),
+    sentiments: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1alpha1ConversationLevelSentiment,
       ),
-      silence: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1ConversationLevelSilence,
+    ),
+    qaScorecardResults: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1alpha1QaScorecardResult),
+    ),
+    entities: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        GoogleCloudContactcenterinsightsV1alpha1Entity,
       ),
-      intents: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          GoogleCloudContactcenterinsightsV1alpha1Intent,
-        ),
-      ),
-      sentiments: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1alpha1ConversationLevelSentiment,
-        ),
-      ),
-      qaScorecardResults: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1alpha1QaScorecardResult),
-      ),
-      entities: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          GoogleCloudContactcenterinsightsV1alpha1Entity,
-        ),
-      ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1AnalysisResultCallAnalysisMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1AnalysisResultCallAnalysisMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1AnalysisResult {
   /** The time at which the analysis ended. */
@@ -9831,17 +9013,15 @@ export interface GoogleCloudContactcenterinsightsV1alpha1AnalysisResult {
   callAnalysisMetadata?: GoogleCloudContactcenterinsightsV1alpha1AnalysisResultCallAnalysisMetadata;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1AnalysisResult: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1AnalysisResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endTime: Schema.optional(Schema.String),
-      callAnalysisMetadata: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1AnalysisResultCallAnalysisMetadata,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1AnalysisResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endTime: Schema.optional(Schema.String),
+    callAnalysisMetadata: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1AnalysisResultCallAnalysisMetadata,
+    ),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1alpha1AnalysisResult",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1AnalysisResult>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointPercentileResult {
   /** The 50th percentile value. */
@@ -9852,17 +9032,15 @@ export interface GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceData
   p99?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointPercentileResult: Schema.Schema<GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointPercentileResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      p50: Schema.optional(Schema.Number),
-      p90: Schema.optional(Schema.Number),
-      p99: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointPercentileResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    p50: Schema.optional(Schema.Number),
+    p90: Schema.optional(Schema.Number),
+    p99: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointPercentileResult",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointPercentileResult>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointDialogflowInteractionMeasure {
   /** The percentile result for LLM latency in milliseconds per dialogflow interaction level. */
@@ -9877,29 +9055,27 @@ export interface GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceData
   percentileAudioInAudioOutLatency?: GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointPercentileResult;
 }
 
-export const GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointDialogflowInteractionMeasure: Schema.Schema<GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointDialogflowInteractionMeasure> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      percentileLlmCallLatency: Schema.optional(
-        GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointPercentileResult,
-      ),
-      percentileEndToEndLatency: Schema.optional(
-        GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointPercentileResult,
-      ),
-      percentileTtsLatency: Schema.optional(
-        GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointPercentileResult,
-      ),
-      percentileToolUseLatency: Schema.optional(
-        GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointPercentileResult,
-      ),
-      percentileAudioInAudioOutLatency: Schema.optional(
-        GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointPercentileResult,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointDialogflowInteractionMeasure =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    percentileLlmCallLatency: Schema.optional(
+      GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointPercentileResult,
+    ),
+    percentileEndToEndLatency: Schema.optional(
+      GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointPercentileResult,
+    ),
+    percentileTtsLatency: Schema.optional(
+      GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointPercentileResult,
+    ),
+    percentileToolUseLatency: Schema.optional(
+      GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointPercentileResult,
+    ),
+    percentileAudioInAudioOutLatency: Schema.optional(
+      GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointPercentileResult,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointDialogflowInteractionMeasure",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointDialogflowInteractionMeasure>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointConversationMeasure {
   /** The average normalized QA score for a scorecard. When computing the average across a set of conversations, if a conversation has been evaluated with multiple revisions of a scorecard, only the latest revision results will be used. Will exclude 0's in average calculation. Will be only populated if the request specifies a dimension of QA_SCORECARD_ID. */
@@ -10014,87 +9190,81 @@ export interface GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceData
   averageTurnCount?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointConversationMeasure: Schema.Schema<GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointConversationMeasure> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      averageQaNormalizedScore: Schema.optional(Schema.Number),
-      knowledgeAssistResultCount: Schema.optional(Schema.Number),
-      conversationalAgentsAverageTtsLatency: Schema.optional(Schema.Number),
-      aaSupervisorDroppedConversationsCount: Schema.optional(Schema.Number),
-      knowledgeAssistNegativeFeedbackRatio: Schema.optional(Schema.Number),
-      averageAgentSentimentScore: Schema.optional(Schema.Number),
-      conversationAiCoachSuggestionRatio: Schema.optional(Schema.Number),
-      averageSummarizationSuggestionEditDistance: Schema.optional(
-        Schema.Number,
+export const GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointConversationMeasure =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    averageQaNormalizedScore: Schema.optional(Schema.Number),
+    knowledgeAssistResultCount: Schema.optional(Schema.Number),
+    conversationalAgentsAverageTtsLatency: Schema.optional(Schema.Number),
+    aaSupervisorDroppedConversationsCount: Schema.optional(Schema.Number),
+    knowledgeAssistNegativeFeedbackRatio: Schema.optional(Schema.Number),
+    averageAgentSentimentScore: Schema.optional(Schema.Number),
+    conversationAiCoachSuggestionRatio: Schema.optional(Schema.Number),
+    averageSummarizationSuggestionEditDistance: Schema.optional(Schema.Number),
+    conversationCount: Schema.optional(Schema.Number),
+    containedConversationCount: Schema.optional(Schema.Number),
+    dialogflowWebhookFailureRatio: Schema.optional(Schema.Number),
+    dialogflowConversationsEscalationCount: Schema.optional(Schema.Number),
+    avgConversationClientTurnSentimentEma: Schema.optional(Schema.Number),
+    aiCoachSuggestionCustomerMessageTriggerRatio: Schema.optional(
+      Schema.Number,
+    ),
+    conversationalAgentsAverageEndToEndLatency: Schema.optional(Schema.Number),
+    summarizationSuggestionEditRatio: Schema.optional(Schema.Number),
+    aiCoachSuggestionAgentMessageTriggerCount: Schema.optional(Schema.Number),
+    averageSilencePercentage: Schema.optional(Schema.Number),
+    knowledgeSearchUriClickRatio: Schema.optional(Schema.Number),
+    knowledgeAssistUriClickRatio: Schema.optional(Schema.Number),
+    dialogflowInteractionsNoMatchRatio: Schema.optional(Schema.Number),
+    aaSupervisorTransferredToHumanAgentConvCount: Schema.optional(
+      Schema.Number,
+    ),
+    knowledgeSearchNegativeFeedbackRatio: Schema.optional(Schema.Number),
+    aaSupervisorMonitoredConversationsCount: Schema.optional(Schema.Number),
+    dialogflowWebhookTimeoutRatio: Schema.optional(Schema.Number),
+    aaSupervisorAssignedConversationsCount: Schema.optional(Schema.Number),
+    dialogflowInteractionsNoInputRatio: Schema.optional(Schema.Number),
+    conversationTotalAgentMessageCount: Schema.optional(Schema.Number),
+    dialogflowConversationsEscalationRatio: Schema.optional(Schema.Number),
+    conversationSuggestedSummaryRatio: Schema.optional(Schema.Number),
+    averageSummarizationSuggestionNormalizedEditDistance: Schema.optional(
+      Schema.Number,
+    ),
+    aiCoachSuggestionAgentUsageRatio: Schema.optional(Schema.Number),
+    knowledgeAssistPositiveFeedbackRatio: Schema.optional(Schema.Number),
+    containedConversationRatio: Schema.optional(Schema.Number),
+    dialogflowAverageWebhookLatency: Schema.optional(Schema.Number),
+    conversationalAgentsAverageAudioInAudioOutLatency: Schema.optional(
+      Schema.Number,
+    ),
+    qaTagScores: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointConversationMeasureQaTagScore,
       ),
-      conversationCount: Schema.optional(Schema.Number),
-      containedConversationCount: Schema.optional(Schema.Number),
-      dialogflowWebhookFailureRatio: Schema.optional(Schema.Number),
-      dialogflowConversationsEscalationCount: Schema.optional(Schema.Number),
-      avgConversationClientTurnSentimentEma: Schema.optional(Schema.Number),
-      aiCoachSuggestionCustomerMessageTriggerRatio: Schema.optional(
-        Schema.Number,
-      ),
-      conversationalAgentsAverageEndToEndLatency: Schema.optional(
-        Schema.Number,
-      ),
-      summarizationSuggestionEditRatio: Schema.optional(Schema.Number),
-      aiCoachSuggestionAgentMessageTriggerCount: Schema.optional(Schema.Number),
-      averageSilencePercentage: Schema.optional(Schema.Number),
-      knowledgeSearchUriClickRatio: Schema.optional(Schema.Number),
-      knowledgeAssistUriClickRatio: Schema.optional(Schema.Number),
-      dialogflowInteractionsNoMatchRatio: Schema.optional(Schema.Number),
-      aaSupervisorTransferredToHumanAgentConvCount: Schema.optional(
-        Schema.Number,
-      ),
-      knowledgeSearchNegativeFeedbackRatio: Schema.optional(Schema.Number),
-      aaSupervisorMonitoredConversationsCount: Schema.optional(Schema.Number),
-      dialogflowWebhookTimeoutRatio: Schema.optional(Schema.Number),
-      aaSupervisorAssignedConversationsCount: Schema.optional(Schema.Number),
-      dialogflowInteractionsNoInputRatio: Schema.optional(Schema.Number),
-      conversationTotalAgentMessageCount: Schema.optional(Schema.Number),
-      dialogflowConversationsEscalationRatio: Schema.optional(Schema.Number),
-      conversationSuggestedSummaryRatio: Schema.optional(Schema.Number),
-      averageSummarizationSuggestionNormalizedEditDistance: Schema.optional(
-        Schema.Number,
-      ),
-      aiCoachSuggestionAgentUsageRatio: Schema.optional(Schema.Number),
-      knowledgeAssistPositiveFeedbackRatio: Schema.optional(Schema.Number),
-      containedConversationRatio: Schema.optional(Schema.Number),
-      dialogflowAverageWebhookLatency: Schema.optional(Schema.Number),
-      conversationalAgentsAverageAudioInAudioOutLatency: Schema.optional(
-        Schema.Number,
-      ),
-      qaTagScores: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointConversationMeasureQaTagScore,
-        ),
-      ),
-      summarizationSuggestionResultCount: Schema.optional(Schema.Number),
-      aiCoachSuggestionAgentUsageCount: Schema.optional(Schema.Number),
-      averageCustomerSatisfactionRating: Schema.optional(Schema.Number),
-      aiCoachSuggestionCustomerMessageTriggerCount: Schema.optional(
-        Schema.Number,
-      ),
-      aaSupervisorEscalatedConversationsCount: Schema.optional(Schema.Number),
-      knowledgeSearchResultCount: Schema.optional(Schema.Number),
-      knowledgeSearchAgentQuerySourceRatio: Schema.optional(Schema.Number),
-      averageQaQuestionNormalizedScore: Schema.optional(Schema.Number),
-      aiCoachSuggestionMessageTriggerCount: Schema.optional(Schema.Number),
-      knowledgeSearchSuggestedQuerySourceRatio: Schema.optional(Schema.Number),
-      averageDuration: Schema.optional(Schema.String),
-      conversationTotalCustomerMessageCount: Schema.optional(Schema.Number),
-      aiCoachSuggestionMessageTriggerRatio: Schema.optional(Schema.Number),
-      conversationAiCoachSuggestionCount: Schema.optional(Schema.Number),
-      conversationalAgentsAverageLlmCallLatency: Schema.optional(Schema.Number),
-      averageClientSentimentScore: Schema.optional(Schema.Number),
-      knowledgeSearchPositiveFeedbackRatio: Schema.optional(Schema.Number),
-      averageTurnCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+    ),
+    summarizationSuggestionResultCount: Schema.optional(Schema.Number),
+    aiCoachSuggestionAgentUsageCount: Schema.optional(Schema.Number),
+    averageCustomerSatisfactionRating: Schema.optional(Schema.Number),
+    aiCoachSuggestionCustomerMessageTriggerCount: Schema.optional(
+      Schema.Number,
+    ),
+    aaSupervisorEscalatedConversationsCount: Schema.optional(Schema.Number),
+    knowledgeSearchResultCount: Schema.optional(Schema.Number),
+    knowledgeSearchAgentQuerySourceRatio: Schema.optional(Schema.Number),
+    averageQaQuestionNormalizedScore: Schema.optional(Schema.Number),
+    aiCoachSuggestionMessageTriggerCount: Schema.optional(Schema.Number),
+    knowledgeSearchSuggestedQuerySourceRatio: Schema.optional(Schema.Number),
+    averageDuration: Schema.optional(Schema.String),
+    conversationTotalCustomerMessageCount: Schema.optional(Schema.Number),
+    aiCoachSuggestionMessageTriggerRatio: Schema.optional(Schema.Number),
+    conversationAiCoachSuggestionCount: Schema.optional(Schema.Number),
+    conversationalAgentsAverageLlmCallLatency: Schema.optional(Schema.Number),
+    averageClientSentimentScore: Schema.optional(Schema.Number),
+    knowledgeSearchPositiveFeedbackRatio: Schema.optional(Schema.Number),
+    averageTurnCount: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointConversationMeasure",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointConversationMeasure>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPoint {
   /** The measure related to dialogflow interactions. */
@@ -10105,40 +9275,36 @@ export interface GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceData
   interval?: GoogleTypeInterval;
 }
 
-export const GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPoint: Schema.Schema<GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dialogflowInteractionMeasure: Schema.optional(
-        GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointDialogflowInteractionMeasure,
-      ),
-      conversationMeasure: Schema.optional(
-        GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointConversationMeasure,
-      ),
-      interval: Schema.optional(GoogleTypeInterval),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPoint =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dialogflowInteractionMeasure: Schema.optional(
+      GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointDialogflowInteractionMeasure,
+    ),
+    conversationMeasure: Schema.optional(
+      GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPointConversationMeasure,
+    ),
+    interval: Schema.optional(GoogleTypeInterval),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPoint",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPoint>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1ConversationTranscript {
   /** A list of sequential transcript segments that comprise the conversation. */
   transcriptSegments?: Array<GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegment>;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ConversationTranscript: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConversationTranscript> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      transcriptSegments: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegment,
-        ),
+export const GoogleCloudContactcenterinsightsV1alpha1ConversationTranscript =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    transcriptSegments: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1alpha1ConversationTranscriptTranscriptSegment,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1ConversationTranscript",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConversationTranscript>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1Dataset {
   /** Immutable. Identifier. Resource name of the dataset. Format: projects/{project}/locations/{location}/datasets/{dataset} */
@@ -10157,20 +9323,16 @@ export interface GoogleCloudContactcenterinsightsV1Dataset {
   description?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1Dataset: Schema.Schema<GoogleCloudContactcenterinsightsV1Dataset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      ttl: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1Dataset",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1Dataset>;
+export const GoogleCloudContactcenterinsightsV1Dataset =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    ttl: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudContactcenterinsightsV1Dataset" });
 
 export interface GoogleCloudContactcenterinsightsV1SampleConversationsRequest {
   /** Required. The parent resource of the dataset. */
@@ -10181,18 +9343,16 @@ export interface GoogleCloudContactcenterinsightsV1SampleConversationsRequest {
   sampleRule?: GoogleCloudContactcenterinsightsV1SampleRule;
 }
 
-export const GoogleCloudContactcenterinsightsV1SampleConversationsRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1SampleConversationsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parent: Schema.optional(Schema.String),
-      destinationDataset: Schema.optional(
-        GoogleCloudContactcenterinsightsV1Dataset,
-      ),
-      sampleRule: Schema.optional(GoogleCloudContactcenterinsightsV1SampleRule),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1SampleConversationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.optional(Schema.String),
+    destinationDataset: Schema.optional(
+      GoogleCloudContactcenterinsightsV1Dataset,
+    ),
+    sampleRule: Schema.optional(GoogleCloudContactcenterinsightsV1SampleRule),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1SampleConversationsRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1SampleConversationsRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1SampleConversationsMetadata {
   /** Output only. The time the operation was created. */
@@ -10207,37 +9367,33 @@ export interface GoogleCloudContactcenterinsightsV1SampleConversationsMetadata {
   request?: GoogleCloudContactcenterinsightsV1SampleConversationsRequest;
 }
 
-export const GoogleCloudContactcenterinsightsV1SampleConversationsMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1SampleConversationsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
-      sampleConversationsStats: Schema.optional(
-        GoogleCloudContactcenterinsightsV1SampleConversationsMetadataSampleConversationsStats,
-      ),
-      endTime: Schema.optional(Schema.String),
-      request: Schema.optional(
-        GoogleCloudContactcenterinsightsV1SampleConversationsRequest,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1SampleConversationsMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
+    sampleConversationsStats: Schema.optional(
+      GoogleCloudContactcenterinsightsV1SampleConversationsMetadataSampleConversationsStats,
+    ),
+    endTime: Schema.optional(Schema.String),
+    request: Schema.optional(
+      GoogleCloudContactcenterinsightsV1SampleConversationsRequest,
+    ),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1SampleConversationsMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1SampleConversationsMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainDeleteQaQuestionTagRequest {
   /** Required. The name of the QaQuestionTag to delete. */
   name?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainDeleteQaQuestionTagRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1mainDeleteQaQuestionTagRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainDeleteQaQuestionTagRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainDeleteQaQuestionTagRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainDeleteQaQuestionTagRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse {
   /** The feedback labels that match the request. */
@@ -10246,26 +9402,24 @@ export interface GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse
   nextPageToken?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      feedbackLabels: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1FeedbackLabel),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    feedbackLabels: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1FeedbackLabel),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ListAllFeedbackLabelsResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpecResponse {}
 
-export const GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpecResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpecResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpecResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpecResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1InitializeEncryptionSpecResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1DimensionQaQuestionAnswerDimensionMetadata {
   /** Optional. The QA scorecard ID. */
@@ -10278,18 +9432,16 @@ export interface GoogleCloudContactcenterinsightsV1alpha1DimensionQaQuestionAnsw
   answerValue?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1DimensionQaQuestionAnswerDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DimensionQaQuestionAnswerDimensionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      qaScorecardId: Schema.optional(Schema.String),
-      qaQuestionId: Schema.optional(Schema.String),
-      questionBody: Schema.optional(Schema.String),
-      answerValue: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1DimensionQaQuestionAnswerDimensionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    qaScorecardId: Schema.optional(Schema.String),
+    qaQuestionId: Schema.optional(Schema.String),
+    questionBody: Schema.optional(Schema.String),
+    answerValue: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1DimensionQaQuestionAnswerDimensionMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DimensionQaQuestionAnswerDimensionMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1DimensionConversationalAgentsToolDimensionMetadata {
   /** Optional. The dialogflow tool ID. */
@@ -10298,31 +9450,27 @@ export interface GoogleCloudContactcenterinsightsV1alpha1DimensionConversational
   toolDisplayName?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1DimensionConversationalAgentsToolDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DimensionConversationalAgentsToolDimensionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      toolId: Schema.optional(Schema.String),
-      toolDisplayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1DimensionConversationalAgentsToolDimensionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    toolId: Schema.optional(Schema.String),
+    toolDisplayName: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1DimensionConversationalAgentsToolDimensionMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DimensionConversationalAgentsToolDimensionMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1DimensionConversationProfileDimensionMetadata {
   /** Optional. The conversation profile ID. */
   conversationProfileId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1DimensionConversationProfileDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DimensionConversationProfileDimensionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conversationProfileId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1DimensionConversationProfileDimensionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conversationProfileId: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1DimensionConversationProfileDimensionMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DimensionConversationProfileDimensionMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1DimensionAgentDimensionMetadata {
   /** Optional. A user-specified string representing the agent's team. */
@@ -10341,21 +9489,19 @@ export interface GoogleCloudContactcenterinsightsV1alpha1DimensionAgentDimension
   agentDeploymentDisplayName?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1DimensionAgentDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DimensionAgentDimensionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      agentTeam: Schema.optional(Schema.String),
-      agentDisplayName: Schema.optional(Schema.String),
-      agentVersionDisplayName: Schema.optional(Schema.String),
-      agentVersionId: Schema.optional(Schema.String),
-      agentId: Schema.optional(Schema.String),
-      agentDeploymentId: Schema.optional(Schema.String),
-      agentDeploymentDisplayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1DimensionAgentDimensionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    agentTeam: Schema.optional(Schema.String),
+    agentDisplayName: Schema.optional(Schema.String),
+    agentVersionDisplayName: Schema.optional(Schema.String),
+    agentVersionId: Schema.optional(Schema.String),
+    agentId: Schema.optional(Schema.String),
+    agentDeploymentId: Schema.optional(Schema.String),
+    agentDeploymentDisplayName: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1DimensionAgentDimensionMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DimensionAgentDimensionMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1DimensionLabelDimensionMetadata {
   /** Optional. The label key. */
@@ -10364,31 +9510,27 @@ export interface GoogleCloudContactcenterinsightsV1alpha1DimensionLabelDimension
   labelValue?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1DimensionLabelDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DimensionLabelDimensionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labelKey: Schema.optional(Schema.String),
-      labelValue: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1DimensionLabelDimensionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    labelKey: Schema.optional(Schema.String),
+    labelValue: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1DimensionLabelDimensionMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DimensionLabelDimensionMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1DimensionQaScorecardDimensionMetadata {
   /** Optional. The QA scorecard ID. */
   qaScorecardId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1DimensionQaScorecardDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DimensionQaScorecardDimensionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      qaScorecardId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1DimensionQaScorecardDimensionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    qaScorecardId: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1DimensionQaScorecardDimensionMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DimensionQaScorecardDimensionMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1DimensionQaQuestionDimensionMetadata {
   /** Optional. The QA scorecard ID. */
@@ -10399,17 +9541,15 @@ export interface GoogleCloudContactcenterinsightsV1alpha1DimensionQaQuestionDime
   questionBody?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1DimensionQaQuestionDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DimensionQaQuestionDimensionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      qaScorecardId: Schema.optional(Schema.String),
-      qaQuestionId: Schema.optional(Schema.String),
-      questionBody: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1DimensionQaQuestionDimensionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    qaScorecardId: Schema.optional(Schema.String),
+    qaQuestionId: Schema.optional(Schema.String),
+    questionBody: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1DimensionQaQuestionDimensionMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1DimensionQaQuestionDimensionMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1Dimension {
   /** Output only. Metadata about the QA question-answer dimension. */
@@ -10461,47 +9601,45 @@ export interface GoogleCloudContactcenterinsightsV1alpha1Dimension {
   qaQuestionDimensionMetadata?: GoogleCloudContactcenterinsightsV1alpha1DimensionQaQuestionDimensionMetadata;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1Dimension: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1Dimension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      qaQuestionAnswerDimensionMetadata: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1DimensionQaQuestionAnswerDimensionMetadata,
-      ),
-      mediumDimensionMetadata: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1DimensionMediumDimensionMetadata,
-      ),
-      conversationalAgentsPlaybookDimensionMetadata: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1DimensionConversationalAgentsPlaybookDimensionMetadata,
-      ),
-      conversationalAgentsToolDimensionMetadata: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1DimensionConversationalAgentsToolDimensionMetadata,
-      ),
-      conversationProfileDimensionMetadata: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1DimensionConversationProfileDimensionMetadata,
-      ),
-      issueDimensionMetadata: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1DimensionIssueDimensionMetadata,
-      ),
-      agentDimensionMetadata: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1DimensionAgentDimensionMetadata,
-      ),
-      labelDimensionMetadata: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1DimensionLabelDimensionMetadata,
-      ),
-      qaScorecardDimensionMetadata: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1DimensionQaScorecardDimensionMetadata,
-      ),
-      clientSentimentCategoryDimensionMetadata: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1DimensionClientSentimentCategoryDimensionMetadata,
-      ),
-      dimensionKey: Schema.optional(Schema.String),
-      qaQuestionDimensionMetadata: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1DimensionQaQuestionDimensionMetadata,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1Dimension =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    qaQuestionAnswerDimensionMetadata: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1DimensionQaQuestionAnswerDimensionMetadata,
+    ),
+    mediumDimensionMetadata: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1DimensionMediumDimensionMetadata,
+    ),
+    conversationalAgentsPlaybookDimensionMetadata: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1DimensionConversationalAgentsPlaybookDimensionMetadata,
+    ),
+    conversationalAgentsToolDimensionMetadata: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1DimensionConversationalAgentsToolDimensionMetadata,
+    ),
+    conversationProfileDimensionMetadata: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1DimensionConversationProfileDimensionMetadata,
+    ),
+    issueDimensionMetadata: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1DimensionIssueDimensionMetadata,
+    ),
+    agentDimensionMetadata: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1DimensionAgentDimensionMetadata,
+    ),
+    labelDimensionMetadata: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1DimensionLabelDimensionMetadata,
+    ),
+    qaScorecardDimensionMetadata: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1DimensionQaScorecardDimensionMetadata,
+    ),
+    clientSentimentCategoryDimensionMetadata: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1DimensionClientSentimentCategoryDimensionMetadata,
+    ),
+    dimensionKey: Schema.optional(Schema.String),
+    qaQuestionDimensionMetadata: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1DimensionQaQuestionDimensionMetadata,
+    ),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1alpha1Dimension",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1Dimension>;
+  });
 
 export interface GoogleIamV1AuditLogConfig {
   /** The log type that this config enables. */
@@ -10515,15 +9653,11 @@ export interface GoogleIamV1AuditLogConfig {
   exemptedMembers?: Array<string>;
 }
 
-export const GoogleIamV1AuditLogConfig: Schema.Schema<GoogleIamV1AuditLogConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      logType: Schema.optional(Schema.String),
-      exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1AuditLogConfig",
-  }) as any as Schema.Schema<GoogleIamV1AuditLogConfig>;
+export const GoogleIamV1AuditLogConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    logType: Schema.optional(Schema.String),
+    exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleIamV1AuditLogConfig" });
 
 export interface GoogleIamV1AuditConfig {
   /** The configuration for logging of each type of permission. */
@@ -10532,15 +9666,12 @@ export interface GoogleIamV1AuditConfig {
   service?: string;
 }
 
-export const GoogleIamV1AuditConfig: Schema.Schema<GoogleIamV1AuditConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      auditLogConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditLogConfig)),
-      service: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1AuditConfig",
-  }) as any as Schema.Schema<GoogleIamV1AuditConfig>;
+export const GoogleIamV1AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    auditLogConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditLogConfig)),
+    service: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "GoogleIamV1AuditConfig" });
 
 export interface GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsToolDimensionMetadata {
   /** Optional. The dialogflow tool ID. */
@@ -10549,16 +9680,14 @@ export interface GoogleCloudContactcenterinsightsV1DimensionConversationalAgents
   toolDisplayName?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsToolDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsToolDimensionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      toolId: Schema.optional(Schema.String),
-      toolDisplayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsToolDimensionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    toolId: Schema.optional(Schema.String),
+    toolDisplayName: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsToolDimensionMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsToolDimensionMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1PhraseMatchRule {
   /** Required. The phrase to be matched. */
@@ -10569,18 +9698,16 @@ export interface GoogleCloudContactcenterinsightsV1PhraseMatchRule {
   config?: GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig;
 }
 
-export const GoogleCloudContactcenterinsightsV1PhraseMatchRule: Schema.Schema<GoogleCloudContactcenterinsightsV1PhraseMatchRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      query: Schema.optional(Schema.String),
-      negated: Schema.optional(Schema.Boolean),
-      config: Schema.optional(
-        GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1PhraseMatchRule =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    query: Schema.optional(Schema.String),
+    negated: Schema.optional(Schema.Boolean),
+    config: Schema.optional(
+      GoogleCloudContactcenterinsightsV1PhraseMatchRuleConfig,
+    ),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1PhraseMatchRule",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1PhraseMatchRule>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup {
   /** Required. The type of this phrase match rule group. */
@@ -10593,17 +9720,15 @@ export interface GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup {
   phraseMatchRules?: Array<GoogleCloudContactcenterinsightsV1PhraseMatchRule>;
 }
 
-export const GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup: Schema.Schema<GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      phraseMatchRules: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1PhraseMatchRule),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    phraseMatchRules: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1PhraseMatchRule),
+    ),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1PhraseMatcher {
   /** The human-readable name of the phrase matcher. */
@@ -10640,42 +9765,40 @@ export interface GoogleCloudContactcenterinsightsV1PhraseMatcher {
   updateTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1PhraseMatcher: Schema.Schema<GoogleCloudContactcenterinsightsV1PhraseMatcher> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      active: Schema.optional(Schema.Boolean),
-      revisionId: Schema.optional(Schema.String),
-      activationUpdateTime: Schema.optional(Schema.String),
-      phraseMatchRuleGroups: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup),
-      ),
-      versionTag: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      revisionCreateTime: Schema.optional(Schema.String),
-      roleMatch: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1PhraseMatcher =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    active: Schema.optional(Schema.Boolean),
+    revisionId: Schema.optional(Schema.String),
+    activationUpdateTime: Schema.optional(Schema.String),
+    phraseMatchRuleGroups: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1PhraseMatchRuleGroup),
+    ),
+    versionTag: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    revisionCreateTime: Schema.optional(Schema.String),
+    roleMatch: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1PhraseMatcher",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1PhraseMatcher>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1IngestConversationsResponse {}
 
-export const GoogleCloudContactcenterinsightsV1alpha1IngestConversationsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1IngestConversationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1IngestConversationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1IngestConversationsResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1IngestConversationsResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsResponse {}
 
-export const GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1ArticleSuggestionData {
   /** The knowledge document that this answer was extracted from. Format: projects/{project}/knowledgeBases/{knowledge_base}/documents/{document} */
@@ -10692,19 +9815,17 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ArticleSuggestionData {
   metadata?: Record<string, string>;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ArticleSuggestionData: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ArticleSuggestionData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      source: Schema.optional(Schema.String),
-      uri: Schema.optional(Schema.String),
-      queryRecord: Schema.optional(Schema.String),
-      confidenceScore: Schema.optional(Schema.Number),
-      title: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1ArticleSuggestionData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    source: Schema.optional(Schema.String),
+    uri: Schema.optional(Schema.String),
+    queryRecord: Schema.optional(Schema.String),
+    confidenceScore: Schema.optional(Schema.Number),
+    title: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1alpha1ArticleSuggestionData",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ArticleSuggestionData>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainListFeedbackLabelsResponse {
   /** The feedback labels that match the request. */
@@ -10713,35 +9834,31 @@ export interface GoogleCloudContactcenterinsightsV1mainListFeedbackLabelsRespons
   nextPageToken?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainListFeedbackLabelsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1mainListFeedbackLabelsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      feedbackLabels: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1mainFeedbackLabel),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainListFeedbackLabelsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    feedbackLabels: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1mainFeedbackLabel),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainListFeedbackLabelsResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainListFeedbackLabelsResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainImportIssueModelResponse {
   /** The issue model that was imported. */
   issueModel?: GoogleCloudContactcenterinsightsV1mainIssueModel;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainImportIssueModelResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1mainImportIssueModelResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      issueModel: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainIssueModel,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainImportIssueModelResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    issueModel: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainIssueModel,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainImportIssueModelResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainImportIssueModelResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsRequest {
   /** Required. Percentage of selected conversation to analyze, between [0, 100]. */
@@ -10756,21 +9873,19 @@ export interface GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsR
   annotatorSelector?: GoogleCloudContactcenterinsightsV1mainAnnotatorSelector;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      analysisPercentage: Schema.optional(Schema.Number),
-      filter: Schema.optional(Schema.String),
-      relabel: Schema.optional(Schema.Boolean),
-      parent: Schema.optional(Schema.String),
-      annotatorSelector: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainAnnotatorSelector,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    analysisPercentage: Schema.optional(Schema.Number),
+    filter: Schema.optional(Schema.String),
+    relabel: Schema.optional(Schema.Boolean),
+    parent: Schema.optional(Schema.String),
+    annotatorSelector: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainAnnotatorSelector,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsMetadata {
   /** Output only. If true, the labeling rules will be re-evaluated for the conversations. */
@@ -10791,24 +9906,22 @@ export interface GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsM
   totalRequestedAnalysesCount?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      relabel: Schema.optional(Schema.Boolean),
-      request: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsRequest,
-      ),
-      failedAnalysesCount: Schema.optional(Schema.Number),
-      completedAnalysesCount: Schema.optional(Schema.Number),
-      endTime: Schema.optional(Schema.String),
-      partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
-      createTime: Schema.optional(Schema.String),
-      totalRequestedAnalysesCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    relabel: Schema.optional(Schema.Boolean),
+    request: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsRequest,
+    ),
+    failedAnalysesCount: Schema.optional(Schema.Number),
+    completedAnalysesCount: Schema.optional(Schema.Number),
+    endTime: Schema.optional(Schema.String),
+    partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
+    createTime: Schema.optional(Schema.String),
+    totalRequestedAnalysesCount: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsMetadataDownloadStats {
   /** Total number of files written to the provided Cloud Storage bucket. */
@@ -10821,18 +9934,16 @@ export interface GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabel
   successfulDownloadCount?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsMetadataDownloadStats: Schema.Schema<GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsMetadataDownloadStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      totalFilesWritten: Schema.optional(Schema.Number),
-      processedObjectCount: Schema.optional(Schema.Number),
-      fileNames: Schema.optional(Schema.Array(Schema.String)),
-      successfulDownloadCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsMetadataDownloadStats =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    totalFilesWritten: Schema.optional(Schema.Number),
+    processedObjectCount: Schema.optional(Schema.Number),
+    fileNames: Schema.optional(Schema.Array(Schema.String)),
+    successfulDownloadCount: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsMetadataDownloadStats",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsMetadataDownloadStats>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsMetadata {
   /** Output only. The original request for download. */
@@ -10847,51 +9958,43 @@ export interface GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabel
   endTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      request: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequest,
-      ),
-      createTime: Schema.optional(Schema.String),
-      downloadStats: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsMetadataDownloadStats,
-      ),
-      partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    request: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsRequest,
+    ),
+    createTime: Schema.optional(Schema.String),
+    downloadStats: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsMetadataDownloadStats,
+    ),
+    partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
+    endTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1NoteConversationTurnNote {
   /** The conversation turn index that the note is associated with. */
   turnIndex?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1NoteConversationTurnNote: Schema.Schema<GoogleCloudContactcenterinsightsV1NoteConversationTurnNote> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      turnIndex: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1NoteConversationTurnNote =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    turnIndex: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1NoteConversationTurnNote",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1NoteConversationTurnNote>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1UserInfo {
   /** The user's username. */
   username?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1UserInfo: Schema.Schema<GoogleCloudContactcenterinsightsV1UserInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      username: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1UserInfo",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1UserInfo>;
+export const GoogleCloudContactcenterinsightsV1UserInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    username: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudContactcenterinsightsV1UserInfo" });
 
 export interface GoogleCloudContactcenterinsightsV1Note {
   /** The note is associated with a conversation turn. */
@@ -10912,27 +10015,23 @@ export interface GoogleCloudContactcenterinsightsV1Note {
   createTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1Note: Schema.Schema<GoogleCloudContactcenterinsightsV1Note> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conversationTurnNote: Schema.optional(
-        GoogleCloudContactcenterinsightsV1NoteConversationTurnNote,
-      ),
-      content: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      qaQuestionNote: Schema.optional(
-        GoogleCloudContactcenterinsightsV1NoteQaQuestionNote,
-      ),
-      noteCreator: Schema.optional(GoogleCloudContactcenterinsightsV1UserInfo),
-      assessmentNote: Schema.optional(
-        GoogleCloudContactcenterinsightsV1NoteAssessmentNote,
-      ),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1Note",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1Note>;
+export const GoogleCloudContactcenterinsightsV1Note =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conversationTurnNote: Schema.optional(
+      GoogleCloudContactcenterinsightsV1NoteConversationTurnNote,
+    ),
+    content: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    qaQuestionNote: Schema.optional(
+      GoogleCloudContactcenterinsightsV1NoteQaQuestionNote,
+    ),
+    noteCreator: Schema.optional(GoogleCloudContactcenterinsightsV1UserInfo),
+    assessmentNote: Schema.optional(
+      GoogleCloudContactcenterinsightsV1NoteAssessmentNote,
+    ),
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudContactcenterinsightsV1Note" });
 
 export interface GoogleCloudContactcenterinsightsV1ListNotesResponse {
   /** The notes that match the request. */
@@ -10941,17 +10040,15 @@ export interface GoogleCloudContactcenterinsightsV1ListNotesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ListNotesResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1ListNotesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      notes: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1Note),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1ListNotesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    notes: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1Note),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1ListNotesResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ListNotesResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination {
   /** A project ID or number. If specified, then export will attempt to write data to this project instead of the resource project. Otherwise, the resource project will be used. */
@@ -10962,17 +10059,15 @@ export interface GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQ
   table?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination: Schema.Schema<GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      projectId: Schema.optional(Schema.String),
-      dataset: Schema.optional(Schema.String),
-      table: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    projectId: Schema.optional(Schema.String),
+    dataset: Schema.optional(Schema.String),
+    table: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainCreateAnalysisOperationMetadata {
   /** Output only. The annotator selector used for the analysis (if any). */
@@ -10985,20 +10080,18 @@ export interface GoogleCloudContactcenterinsightsV1mainCreateAnalysisOperationMe
   conversation?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainCreateAnalysisOperationMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainCreateAnalysisOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      annotatorSelector: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainAnnotatorSelector,
-      ),
-      endTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      conversation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainCreateAnalysisOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    annotatorSelector: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainAnnotatorSelector,
+    ),
+    endTime: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    conversation: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainCreateAnalysisOperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainCreateAnalysisOperationMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1SmartComposeSuggestionData {
   /** The content of the suggestion. */
@@ -11011,33 +10104,29 @@ export interface GoogleCloudContactcenterinsightsV1alpha1SmartComposeSuggestionD
   metadata?: Record<string, string>;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1SmartComposeSuggestionData: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1SmartComposeSuggestionData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      suggestion: Schema.optional(Schema.String),
-      queryRecord: Schema.optional(Schema.String),
-      confidenceScore: Schema.optional(Schema.Number),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1SmartComposeSuggestionData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    suggestion: Schema.optional(Schema.String),
+    queryRecord: Schema.optional(Schema.String),
+    confidenceScore: Schema.optional(Schema.Number),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1SmartComposeSuggestionData",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1SmartComposeSuggestionData>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1DimensionClientSentimentCategoryDimensionMetadata {
   /** Optional. The client sentiment category. */
   sentimentCategory?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1DimensionClientSentimentCategoryDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1DimensionClientSentimentCategoryDimensionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sentimentCategory: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1DimensionClientSentimentCategoryDimensionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sentimentCategory: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1DimensionClientSentimentCategoryDimensionMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1DimensionClientSentimentCategoryDimensionMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResultRuleConstraintResult {
   /** The rule ID. */
@@ -11048,17 +10137,15 @@ export interface GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResul
   error?: GoogleRpcStatus;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResultRuleConstraintResult: Schema.Schema<GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResultRuleConstraintResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ruleId: Schema.optional(Schema.String),
-      constraintMet: Schema.optional(Schema.Boolean),
-      error: Schema.optional(GoogleRpcStatus),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResultRuleConstraintResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ruleId: Schema.optional(Schema.String),
+    constraintMet: Schema.optional(Schema.Boolean),
+    error: Schema.optional(GoogleRpcStatus),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResultRuleConstraintResult",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResultRuleConstraintResult>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResult {
   /** The first conversation resource name. */
@@ -11069,21 +10156,19 @@ export interface GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResul
   ruleConstraintResults?: Array<GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResultRuleConstraintResult>;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResult: Schema.Schema<GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conversationA: Schema.optional(Schema.String),
-      conversationB: Schema.optional(Schema.String),
-      ruleConstraintResults: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResultRuleConstraintResult,
-        ),
+export const GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conversationA: Schema.optional(Schema.String),
+    conversationB: Schema.optional(Schema.String),
+    ruleConstraintResults: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResultRuleConstraintResult,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResult",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResult>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigResponseDetailedCorrelationResults {
   /** A list of join key correlation results for each conversation tested. */
@@ -11092,24 +10177,22 @@ export interface GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigResp
   constraintResults?: Array<GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResult>;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigResponseDetailedCorrelationResults: Schema.Schema<GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigResponseDetailedCorrelationResults> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      joinKeyResults: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1mainConversationCorrelationResult,
-        ),
+export const GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigResponseDetailedCorrelationResults =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    joinKeyResults: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1mainConversationCorrelationResult,
       ),
-      constraintResults: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResult,
-        ),
+    ),
+    constraintResults: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1mainConstraintEvaluationResult,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigResponseDetailedCorrelationResults",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigResponseDetailedCorrelationResults>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1Container {
   /** The height of the container in grid units. */
@@ -11182,38 +10265,34 @@ export interface GoogleCloudContactcenterinsightsV1mainExportIssueModelMetadata 
   request?: GoogleCloudContactcenterinsightsV1mainExportIssueModelRequest;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainExportIssueModelMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainExportIssueModelMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      request: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainExportIssueModelRequest,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainExportIssueModelMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    request: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainExportIssueModelRequest,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainExportIssueModelMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainExportIssueModelMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceTimeSeries {
   /** The data points that make up the time series . */
   dataPoints?: Array<GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPoint>;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceTimeSeries: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceTimeSeries> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataPoints: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPoint,
-        ),
+export const GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceTimeSeries =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataPoints: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPoint,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceTimeSeries",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceTimeSeries>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1Dataset {
   /** Dataset description. */
@@ -11232,20 +10311,18 @@ export interface GoogleCloudContactcenterinsightsV1alpha1Dataset {
   ttl?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1Dataset: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1Dataset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      ttl: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1Dataset =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    ttl: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1alpha1Dataset",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1Dataset>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1SampleConversationsRequest {
   /** Required. The parent resource of the dataset. */
@@ -11256,21 +10333,19 @@ export interface GoogleCloudContactcenterinsightsV1alpha1SampleConversationsRequ
   destinationDataset?: GoogleCloudContactcenterinsightsV1alpha1Dataset;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1SampleConversationsRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1SampleConversationsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parent: Schema.optional(Schema.String),
-      sampleRule: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1SampleRule,
-      ),
-      destinationDataset: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1Dataset,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1SampleConversationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.optional(Schema.String),
+    sampleRule: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1SampleRule,
+    ),
+    destinationDataset: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1Dataset,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1SampleConversationsRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1SampleConversationsRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1SampleConversationsMetadata {
   /** Output only. The original request for sample conversations to dataset. */
@@ -11285,23 +10360,21 @@ export interface GoogleCloudContactcenterinsightsV1alpha1SampleConversationsMeta
   sampleConversationsStats?: GoogleCloudContactcenterinsightsV1alpha1SampleConversationsMetadataSampleConversationsStats;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1SampleConversationsMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1SampleConversationsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      request: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1SampleConversationsRequest,
-      ),
-      endTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
-      sampleConversationsStats: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1SampleConversationsMetadataSampleConversationsStats,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1SampleConversationsMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    request: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1SampleConversationsRequest,
+    ),
+    endTime: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
+    sampleConversationsStats: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1SampleConversationsMetadataSampleConversationsStats,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1SampleConversationsMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1SampleConversationsMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsRequest {
   /** Required. The parent resource to delete conversations from. Format: projects/{project}/locations/{location} */
@@ -11314,33 +10387,29 @@ export interface GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsRe
   maxDeleteCount?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parent: Schema.optional(Schema.String),
-      filter: Schema.optional(Schema.String),
-      force: Schema.optional(Schema.Boolean),
-      maxDeleteCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.optional(Schema.String),
+    filter: Schema.optional(Schema.String),
+    force: Schema.optional(Schema.Boolean),
+    maxDeleteCount: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequestAgentSource {
   /** Required. Agent id to query performance overview for. */
   agentId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequestAgentSource: Schema.Schema<GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequestAgentSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      agentId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequestAgentSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    agentId: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequestAgentSource",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequestAgentSource>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsMetadataDownloadStats {
   /** The number of new feedback labels downloaded during this operation. Different from "processed" because some labels might not be downloaded because an error. */
@@ -11353,18 +10422,16 @@ export interface GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsMet
   totalFilesWritten?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsMetadataDownloadStats: Schema.Schema<GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsMetadataDownloadStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      successfulDownloadCount: Schema.optional(Schema.Number),
-      processedObjectCount: Schema.optional(Schema.Number),
-      fileNames: Schema.optional(Schema.Array(Schema.String)),
-      totalFilesWritten: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsMetadataDownloadStats =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    successfulDownloadCount: Schema.optional(Schema.Number),
+    processedObjectCount: Schema.optional(Schema.Number),
+    fileNames: Schema.optional(Schema.Array(Schema.String)),
+    totalFilesWritten: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsMetadataDownloadStats",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsMetadataDownloadStats>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestSheetsDestination {
   /** Optional. The title of the new sheet to write the feedback labels to. */
@@ -11373,16 +10440,14 @@ export interface GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsReq
   spreadsheetUri?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestSheetsDestination: Schema.Schema<GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestSheetsDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sheetTitle: Schema.optional(Schema.String),
-      spreadsheetUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestSheetsDestination =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sheetTitle: Schema.optional(Schema.String),
+    spreadsheetUri: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestSheetsDestination",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestSheetsDestination>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestination {
   /** Optional. The number of records per file. Applicable for either format. */
@@ -11397,19 +10462,17 @@ export interface GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsReq
   format?: "FORMAT_UNSPECIFIED" | "CSV" | "JSON" | (string & {});
 }
 
-export const GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestination: Schema.Schema<GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      recordsPerFileCount: Schema.optional(Schema.String),
-      addWhitespace: Schema.optional(Schema.Boolean),
-      objectUri: Schema.optional(Schema.String),
-      alwaysPrintEmptyFields: Schema.optional(Schema.Boolean),
-      format: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestination =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    recordsPerFileCount: Schema.optional(Schema.String),
+    addWhitespace: Schema.optional(Schema.Boolean),
+    objectUri: Schema.optional(Schema.String),
+    alwaysPrintEmptyFields: Schema.optional(Schema.Boolean),
+    format: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestination",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestination>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest {
   /** Optional. Limits the maximum number of feedback labels that will be downloaded. The first `N` feedback labels will be downloaded. */
@@ -11435,26 +10498,24 @@ export interface GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsReq
   filter?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      maxDownloadCount: Schema.optional(Schema.Number),
-      conversationFilter: Schema.optional(Schema.String),
-      feedbackLabelType: Schema.optional(Schema.String),
-      sheetsDestination: Schema.optional(
-        GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestSheetsDestination,
-      ),
-      templateQaScorecardId: Schema.optional(Schema.Array(Schema.String)),
-      parent: Schema.optional(Schema.String),
-      gcsDestination: Schema.optional(
-        GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestination,
-      ),
-      filter: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    maxDownloadCount: Schema.optional(Schema.Number),
+    conversationFilter: Schema.optional(Schema.String),
+    feedbackLabelType: Schema.optional(Schema.String),
+    sheetsDestination: Schema.optional(
+      GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestSheetsDestination,
+    ),
+    templateQaScorecardId: Schema.optional(Schema.Array(Schema.String)),
+    parent: Schema.optional(Schema.String),
+    gcsDestination: Schema.optional(
+      GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequestGcsDestination,
+    ),
+    filter: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsMetadata {
   /** Output only. The time the operation finished running. */
@@ -11469,23 +10530,21 @@ export interface GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsMet
   request?: GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest;
 }
 
-export const GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endTime: Schema.optional(Schema.String),
-      partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
-      createTime: Schema.optional(Schema.String),
-      downloadStats: Schema.optional(
-        GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsMetadataDownloadStats,
-      ),
-      request: Schema.optional(
-        GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endTime: Schema.optional(Schema.String),
+    partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
+    createTime: Schema.optional(Schema.String),
+    downloadStats: Schema.optional(
+      GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsMetadataDownloadStats,
+    ),
+    request: Schema.optional(
+      GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsRequest,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1BulkDownloadFeedbackLabelsMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1View {
   /** The human-readable display name of the view. */
@@ -11500,49 +10559,41 @@ export interface GoogleCloudContactcenterinsightsV1View {
   value?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1View: Schema.Schema<GoogleCloudContactcenterinsightsV1View> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1View",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1View>;
+export const GoogleCloudContactcenterinsightsV1View =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudContactcenterinsightsV1View" });
 
 export interface GoogleCloudContactcenterinsightsV1ListIssuesResponse {
   /** The issues that match the request. */
   issues?: Array<GoogleCloudContactcenterinsightsV1Issue>;
 }
 
-export const GoogleCloudContactcenterinsightsV1ListIssuesResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1ListIssuesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      issues: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1Issue),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1ListIssuesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    issues: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1Issue),
+    ),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1ListIssuesResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ListIssuesResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1DimensionConversationProfileDimensionMetadata {
   /** Optional. The conversation profile ID. */
   conversationProfileId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1DimensionConversationProfileDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1DimensionConversationProfileDimensionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conversationProfileId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1DimensionConversationProfileDimensionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conversationProfileId: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1DimensionConversationProfileDimensionMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1DimensionConversationProfileDimensionMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest {
   /** A filter to reduce results to a specific subset. Useful for exporting conversations with specific properties. */
@@ -11583,21 +10634,19 @@ export interface GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest {
   bigQueryDestination?: GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination;
 }
 
-export const GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filter: Schema.optional(Schema.String),
-      exportSchemaVersion: Schema.optional(Schema.String),
-      parent: Schema.optional(Schema.String),
-      writeDisposition: Schema.optional(Schema.String),
-      kmsKey: Schema.optional(Schema.String),
-      bigQueryDestination: Schema.optional(
-        GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filter: Schema.optional(Schema.String),
+    exportSchemaVersion: Schema.optional(Schema.String),
+    parent: Schema.optional(Schema.String),
+    writeDisposition: Schema.optional(Schema.String),
+    kmsKey: Schema.optional(Schema.String),
+    bigQueryDestination: Schema.optional(
+      GoogleCloudContactcenterinsightsV1ExportInsightsDataRequestBigQueryDestination,
+    ),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1ExportInsightsDataMetadata {
   /** The original request for export. */
@@ -11614,21 +10663,19 @@ export interface GoogleCloudContactcenterinsightsV1ExportInsightsDataMetadata {
   completedExportCount?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1ExportInsightsDataMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1ExportInsightsDataMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      request: Schema.optional(
-        GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest,
-      ),
-      endTime: Schema.optional(Schema.String),
-      failedExportCount: Schema.optional(Schema.Number),
-      partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
-      createTime: Schema.optional(Schema.String),
-      completedExportCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1ExportInsightsDataMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    request: Schema.optional(
+      GoogleCloudContactcenterinsightsV1ExportInsightsDataRequest,
+    ),
+    endTime: Schema.optional(Schema.String),
+    failedExportCount: Schema.optional(Schema.Number),
+    partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
+    createTime: Schema.optional(Schema.String),
+    completedExportCount: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1ExportInsightsDataMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ExportInsightsDataMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1AnalysisRule {
   /** Identifier. The resource name of the analysis rule. Format: projects/{project}/locations/{location}/analysisRules/{analysis_rule} */
@@ -11649,23 +10696,19 @@ export interface GoogleCloudContactcenterinsightsV1AnalysisRule {
   annotatorSelector?: GoogleCloudContactcenterinsightsV1AnnotatorSelector;
 }
 
-export const GoogleCloudContactcenterinsightsV1AnalysisRule: Schema.Schema<GoogleCloudContactcenterinsightsV1AnalysisRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      analysisPercentage: Schema.optional(Schema.Number),
-      displayName: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      conversationFilter: Schema.optional(Schema.String),
-      active: Schema.optional(Schema.Boolean),
-      annotatorSelector: Schema.optional(
-        GoogleCloudContactcenterinsightsV1AnnotatorSelector,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1AnalysisRule",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1AnalysisRule>;
+export const GoogleCloudContactcenterinsightsV1AnalysisRule =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    analysisPercentage: Schema.optional(Schema.Number),
+    displayName: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    conversationFilter: Schema.optional(Schema.String),
+    active: Schema.optional(Schema.Boolean),
+    annotatorSelector: Schema.optional(
+      GoogleCloudContactcenterinsightsV1AnnotatorSelector,
+    ),
+  }).annotate({ identifier: "GoogleCloudContactcenterinsightsV1AnalysisRule" });
 
 export interface GoogleCloudContactcenterinsightsV1ListAnalysisRulesResponse {
   /** The analysis_rule that match the request. */
@@ -11674,17 +10717,15 @@ export interface GoogleCloudContactcenterinsightsV1ListAnalysisRulesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ListAnalysisRulesResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1ListAnalysisRulesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      analysisRules: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1AnalysisRule),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1ListAnalysisRulesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    analysisRules: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1AnalysisRule),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1ListAnalysisRulesResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ListAnalysisRulesResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1ListViewsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -11693,17 +10734,15 @@ export interface GoogleCloudContactcenterinsightsV1ListViewsResponse {
   views?: Array<GoogleCloudContactcenterinsightsV1View>;
 }
 
-export const GoogleCloudContactcenterinsightsV1ListViewsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1ListViewsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      views: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1View),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1ListViewsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    views: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1View),
+    ),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1ListViewsResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ListViewsResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsResponseGenerativeResponseTextOutput {
   /** The text output from the LLM. */
@@ -11717,16 +10756,14 @@ export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsResponseGen
     | (string & {});
 }
 
-export const GoogleCloudContactcenterinsightsV1GenerativeInsightsResponseGenerativeResponseTextOutput: Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsResponseGenerativeResponseTextOutput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.Array(Schema.String)),
-      textType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1GenerativeInsightsResponseGenerativeResponseTextOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.Array(Schema.String)),
+    textType: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1GenerativeInsightsResponseGenerativeResponseTextOutput",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsResponseGenerativeResponseTextOutput>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSlice {
   /** A unique combination of dimensions that this slice represents. */
@@ -11737,23 +10774,21 @@ export interface GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSli
   timeSeries?: GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceTimeSeries;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSlice: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSlice> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dimensions: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1alpha1Dimension),
-      ),
-      total: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPoint,
-      ),
-      timeSeries: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceTimeSeries,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSlice =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dimensions: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1alpha1Dimension),
+    ),
+    total: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceDataPoint,
+    ),
+    timeSeries: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSliceTimeSeries,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSlice",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSlice>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponse {
   /** The macro average slice contains aggregated averages across all selected dimensions. i.e. if group_by agent and scorecard_id is specified, this field will contain the average across all agents and all scorecards. This field is only populated if the request specifies a Dimension. */
@@ -11766,23 +10801,21 @@ export interface GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponse {
   updateTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      macroAverageSlice: Schema.optional(
+export const GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    macroAverageSlice: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSlice,
+    ),
+    slices: Schema.optional(
+      Schema.Array(
         GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSlice,
       ),
-      slices: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponseSlice,
-        ),
-      ),
-      location: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+    ),
+    location: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QueryMetricsResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1UpdateQaQuestionTagRequest {
   /** Required. The QaQuestionTag to update. */
@@ -11791,17 +10824,15 @@ export interface GoogleCloudContactcenterinsightsV1UpdateQaQuestionTagRequest {
   updateMask?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1UpdateQaQuestionTagRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1UpdateQaQuestionTagRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      qaQuestionTag: Schema.optional(
-        GoogleCloudContactcenterinsightsV1QaQuestionTag,
-      ),
-      updateMask: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1UpdateQaQuestionTagRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    qaQuestionTag: Schema.optional(
+      GoogleCloudContactcenterinsightsV1QaQuestionTag,
+    ),
+    updateMask: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1UpdateQaQuestionTagRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1UpdateQaQuestionTagRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscript {
   /** Output only. The update time of the conversation. */
@@ -11814,30 +10845,28 @@ export interface GoogleCloudContactcenterinsightsV1GenerativeInsightConversation
   conversationId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscript: Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscript> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateTime: Schema.optional(Schema.String),
-      messages: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessage,
-        ),
+export const GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscript =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateTime: Schema.optional(Schema.String),
+    messages: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscriptMessage,
       ),
-      createTime: Schema.optional(Schema.String),
-      conversationId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+    ),
+    createTime: Schema.optional(Schema.String),
+    conversationId: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscript",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscript>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsResponse {}
 
-export const GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1CreateIssueModelMetadata {
   /** Output only. The time the operation finished running. */
@@ -11848,19 +10877,17 @@ export interface GoogleCloudContactcenterinsightsV1alpha1CreateIssueModelMetadat
   createTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1CreateIssueModelMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1CreateIssueModelMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endTime: Schema.optional(Schema.String),
-      request: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1CreateIssueModelRequest,
-      ),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1CreateIssueModelMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endTime: Schema.optional(Schema.String),
+    request: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1CreateIssueModelRequest,
+    ),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1CreateIssueModelMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1CreateIssueModelMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1IngestConversationsMetadataIngestConversationsStats {
   /** Output only. The number of new conversations added during this ingest operation. */
@@ -11873,18 +10900,16 @@ export interface GoogleCloudContactcenterinsightsV1alpha1IngestConversationsMeta
   processedObjectCount?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1IngestConversationsMetadataIngestConversationsStats: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1IngestConversationsMetadataIngestConversationsStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      successfulIngestCount: Schema.optional(Schema.Number),
-      failedIngestCount: Schema.optional(Schema.Number),
-      duplicatesSkippedCount: Schema.optional(Schema.Number),
-      processedObjectCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1IngestConversationsMetadataIngestConversationsStats =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    successfulIngestCount: Schema.optional(Schema.Number),
+    failedIngestCount: Schema.optional(Schema.Number),
+    duplicatesSkippedCount: Schema.optional(Schema.Number),
+    processedObjectCount: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1IngestConversationsMetadataIngestConversationsStats",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1IngestConversationsMetadataIngestConversationsStats>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1IngestConversationsMetadata {
   /** Output only. The original request for ingest. */
@@ -11901,24 +10926,22 @@ export interface GoogleCloudContactcenterinsightsV1alpha1IngestConversationsMeta
   sampledConversations?: Array<string>;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1IngestConversationsMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1IngestConversationsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      request: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequest,
-      ),
-      partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      ingestConversationsStats: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1IngestConversationsMetadataIngestConversationsStats,
-      ),
-      sampledConversations: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1IngestConversationsMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    request: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1IngestConversationsRequest,
+    ),
+    partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
+    createTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    ingestConversationsStats: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1IngestConversationsMetadataIngestConversationsStats,
+    ),
+    sampledConversations: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1IngestConversationsMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1IngestConversationsMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1QaScorecardRevision {
   /** Output only. State of the scorecard revision, indicating whether it's ready to be used in analysis. */
@@ -11941,18 +10964,16 @@ export interface GoogleCloudContactcenterinsightsV1QaScorecardRevision {
   snapshot?: GoogleCloudContactcenterinsightsV1QaScorecard;
 }
 
-export const GoogleCloudContactcenterinsightsV1QaScorecardRevision: Schema.Schema<GoogleCloudContactcenterinsightsV1QaScorecardRevision> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      alternateIds: Schema.optional(Schema.Array(Schema.String)),
-      snapshot: Schema.optional(GoogleCloudContactcenterinsightsV1QaScorecard),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1QaScorecardRevision =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    alternateIds: Schema.optional(Schema.Array(Schema.String)),
+    snapshot: Schema.optional(GoogleCloudContactcenterinsightsV1QaScorecard),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1QaScorecardRevision",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1QaScorecardRevision>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -11961,18 +10982,16 @@ export interface GoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsRespo
   qaScorecardRevisions?: Array<GoogleCloudContactcenterinsightsV1QaScorecardRevision>;
 }
 
-export const GoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      qaScorecardRevisions: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1QaScorecardRevision),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    qaScorecardRevisions: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1QaScorecardRevision),
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ListQaScorecardRevisionsResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1DimensionLabelDimensionMetadata {
   /** Optional. The label value. */
@@ -11981,16 +11000,14 @@ export interface GoogleCloudContactcenterinsightsV1DimensionLabelDimensionMetada
   labelKey?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1DimensionLabelDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1DimensionLabelDimensionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labelValue: Schema.optional(Schema.String),
-      labelKey: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1DimensionLabelDimensionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    labelValue: Schema.optional(Schema.String),
+    labelKey: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1DimensionLabelDimensionMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1DimensionLabelDimensionMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1SettingsAnalysisConfig {
   /** Percentage of conversations created using the UploadConversation endpoint to analyze automatically, between [0, 100]. */
@@ -12001,18 +11018,16 @@ export interface GoogleCloudContactcenterinsightsV1SettingsAnalysisConfig {
   runtimeIntegrationAnalysisPercentage?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1SettingsAnalysisConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1SettingsAnalysisConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uploadConversationAnalysisPercentage: Schema.optional(Schema.Number),
-      annotatorSelector: Schema.optional(
-        GoogleCloudContactcenterinsightsV1AnnotatorSelector,
-      ),
-      runtimeIntegrationAnalysisPercentage: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1SettingsAnalysisConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uploadConversationAnalysisPercentage: Schema.optional(Schema.Number),
+    annotatorSelector: Schema.optional(
+      GoogleCloudContactcenterinsightsV1AnnotatorSelector,
+    ),
+    runtimeIntegrationAnalysisPercentage: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1SettingsAnalysisConfig",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1SettingsAnalysisConfig>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1Settings {
   /** Optional. Default Speech-to-Text resources to use while ingesting audio files. Optional, CCAI Insights will create a default if not provided. This applies to conversations ingested from the `UploadConversation` and `IngestConversations` endpoints, including conversations coming from CCAI Platform. */
@@ -12039,47 +11054,41 @@ export interface GoogleCloudContactcenterinsightsV1Settings {
   redactionConfig?: GoogleCloudContactcenterinsightsV1RedactionConfig;
 }
 
-export const GoogleCloudContactcenterinsightsV1Settings: Schema.Schema<GoogleCloudContactcenterinsightsV1Settings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      speechConfig: Schema.optional(
-        GoogleCloudContactcenterinsightsV1SpeechConfig,
-      ),
-      createTime: Schema.optional(Schema.String),
-      languageCode: Schema.optional(Schema.String),
-      timeZone: Schema.optional(Schema.String),
-      conversationTtl: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      pubsubNotificationSettings: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      screenRecordingBucketUri: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      analysisConfig: Schema.optional(
-        GoogleCloudContactcenterinsightsV1SettingsAnalysisConfig,
-      ),
-      redactionConfig: Schema.optional(
-        GoogleCloudContactcenterinsightsV1RedactionConfig,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1Settings",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1Settings>;
+export const GoogleCloudContactcenterinsightsV1Settings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    speechConfig: Schema.optional(
+      GoogleCloudContactcenterinsightsV1SpeechConfig,
+    ),
+    createTime: Schema.optional(Schema.String),
+    languageCode: Schema.optional(Schema.String),
+    timeZone: Schema.optional(Schema.String),
+    conversationTtl: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    pubsubNotificationSettings: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    screenRecordingBucketUri: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    analysisConfig: Schema.optional(
+      GoogleCloudContactcenterinsightsV1SettingsAnalysisConfig,
+    ),
+    redactionConfig: Schema.optional(
+      GoogleCloudContactcenterinsightsV1RedactionConfig,
+    ),
+  }).annotate({ identifier: "GoogleCloudContactcenterinsightsV1Settings" });
 
 export interface GoogleCloudContactcenterinsightsV1mainImportIssueModelRequestGcsSource {
   /** Required. Format: `gs:///` */
   objectUri?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainImportIssueModelRequestGcsSource: Schema.Schema<GoogleCloudContactcenterinsightsV1mainImportIssueModelRequestGcsSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      objectUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainImportIssueModelRequestGcsSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    objectUri: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainImportIssueModelRequestGcsSource",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainImportIssueModelRequestGcsSource>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainImportIssueModelRequest {
   /** Optional. If set to true, will create an issue model from the imported file with randomly generated IDs for the issue model and corresponding issues. Otherwise, replaces an existing model with the same ID as the file. */
@@ -12090,18 +11099,16 @@ export interface GoogleCloudContactcenterinsightsV1mainImportIssueModelRequest {
   gcsSource?: GoogleCloudContactcenterinsightsV1mainImportIssueModelRequestGcsSource;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainImportIssueModelRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1mainImportIssueModelRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createNewModel: Schema.optional(Schema.Boolean),
-      parent: Schema.optional(Schema.String),
-      gcsSource: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainImportIssueModelRequestGcsSource,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainImportIssueModelRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createNewModel: Schema.optional(Schema.Boolean),
+    parent: Schema.optional(Schema.String),
+    gcsSource: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainImportIssueModelRequestGcsSource,
+    ),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1mainImportIssueModelRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainImportIssueModelRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainImportIssueModelMetadata {
   /** The original import request. */
@@ -12112,19 +11119,17 @@ export interface GoogleCloudContactcenterinsightsV1mainImportIssueModelMetadata 
   createTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainImportIssueModelMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainImportIssueModelMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      request: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainImportIssueModelRequest,
-      ),
-      endTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainImportIssueModelMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    request: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainImportIssueModelRequest,
+    ),
+    endTime: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainImportIssueModelMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainImportIssueModelMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationResult {
   /** The second conversation resource name. */
@@ -12135,21 +11140,19 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationRes
   conversationA?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationResult: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conversationB: Schema.optional(Schema.String),
-      ruleConstraintResults: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationResultRuleConstraintResult,
-        ),
+export const GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conversationB: Schema.optional(Schema.String),
+    ruleConstraintResults: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationResultRuleConstraintResult,
       ),
-      conversationA: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+    ),
+    conversationA: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationResult",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationResult>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigResponseDetailedCorrelationResults {
   /** A list of join key correlation results for each conversation tested. */
@@ -12158,24 +11161,22 @@ export interface GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigRe
   constraintResults?: Array<GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationResult>;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigResponseDetailedCorrelationResults: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigResponseDetailedCorrelationResults> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      joinKeyResults: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationResult,
-        ),
+export const GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigResponseDetailedCorrelationResults =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    joinKeyResults: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationResult,
       ),
-      constraintResults: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationResult,
-        ),
+    ),
+    constraintResults: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1alpha1ConstraintEvaluationResult,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigResponseDetailedCorrelationResults",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigResponseDetailedCorrelationResults>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigResponse {
   /** Results for the DETAILED_SYNC execution mode. */
@@ -12184,33 +11185,29 @@ export interface GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigRe
   partialErrors?: Array<GoogleRpcStatus>;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      detailedResults: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigResponseDetailedCorrelationResults,
-      ),
-      partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    detailedResults: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigResponseDetailedCorrelationResults,
+    ),
+    partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1TestCorrelationConfigResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainQueryPerformanceOverviewResponse {
   /** The summary text of the performance. */
   summaryText?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainQueryPerformanceOverviewResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1mainQueryPerformanceOverviewResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      summaryText: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainQueryPerformanceOverviewResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    summaryText: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainQueryPerformanceOverviewResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainQueryPerformanceOverviewResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsMetadata {
   /** Partial errors during deletion operation that might cause the operation output to be incomplete. */
@@ -12219,18 +11216,16 @@ export interface GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsM
   request?: GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsRequest;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
-      request: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsRequest,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
+    request: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsRequest,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainQueryMetricsResponse {
   /** Required. The location of the data. "projects/{project}/locations/{location}" */
@@ -12243,23 +11238,21 @@ export interface GoogleCloudContactcenterinsightsV1mainQueryMetricsResponse {
   macroAverageSlice?: GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSlice;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainQueryMetricsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1mainQueryMetricsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      location: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      slices: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSlice,
-        ),
-      ),
-      macroAverageSlice: Schema.optional(
+export const GoogleCloudContactcenterinsightsV1mainQueryMetricsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    slices: Schema.optional(
+      Schema.Array(
         GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSlice,
       ),
-    }),
-  ).annotate({
+    ),
+    macroAverageSlice: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainQueryMetricsResponseSlice,
+    ),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1mainQueryMetricsResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainQueryMetricsResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelMetadata {
   /** The time the operation was created. */
@@ -12270,34 +11263,30 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelMetadat
   request?: GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelRequest;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      request: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelRequest,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    request: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelRequest,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestSheetsSource {
   /** Required. The Google Sheets document to write the feedback labels to. Retrieved from Google Sheets URI. E.g. `https://docs.google.com/spreadsheets/d/1234567890` The spreadsheet must be shared with the Insights P4SA. */
   spreadsheetUri?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestSheetsSource: Schema.Schema<GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestSheetsSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      spreadsheetUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestSheetsSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    spreadsheetUri: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestSheetsSource",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestSheetsSource>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsResponseGenerativeResponse {
   /** The text output from the LLM. Will be populated during the chart building phase. For a reloaded chart, this will NOT be populated. May contain THOUGHT or a FINAL response or some in-progress response. */
@@ -12310,35 +11299,31 @@ export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsResponseGen
   chartSpec?: Record<string, unknown>;
 }
 
-export const GoogleCloudContactcenterinsightsV1GenerativeInsightsResponseGenerativeResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsResponseGenerativeResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      textOutput: Schema.optional(Schema.String),
-      textMessage: Schema.optional(
-        GoogleCloudContactcenterinsightsV1GenerativeInsightsResponseGenerativeResponseTextOutput,
-      ),
-      generatedSqlQuery: Schema.optional(Schema.String),
-      chartSpec: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1GenerativeInsightsResponseGenerativeResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    textOutput: Schema.optional(Schema.String),
+    textMessage: Schema.optional(
+      GoogleCloudContactcenterinsightsV1GenerativeInsightsResponseGenerativeResponseTextOutput,
+    ),
+    generatedSqlQuery: Schema.optional(Schema.String),
+    chartSpec: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1GenerativeInsightsResponseGenerativeResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsResponseGenerativeResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewResponse {
   /** The summary text of the performance. */
   summaryText?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      summaryText: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    summaryText: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorSummarizationConfig {
   /** Default summarization model to be used. */
@@ -12353,17 +11338,15 @@ export interface GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorSummar
   generator?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorSummarizationConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorSummarizationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      summarizationModel: Schema.optional(Schema.String),
-      conversationProfile: Schema.optional(Schema.String),
-      generator: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorSummarizationConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    summarizationModel: Schema.optional(Schema.String),
+    conversationProfile: Schema.optional(Schema.String),
+    generator: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorSummarizationConfig",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorSummarizationConfig>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelector {
   /** Configuration for the summarization annotator. */
@@ -12396,31 +11379,29 @@ export interface GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelector {
   runSummarizationAnnotator?: boolean;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelector: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelector> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      summarizationConfig: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorSummarizationConfig,
-      ),
-      qaConfig: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorQaConfig,
-      ),
-      runIntentAnnotator: Schema.optional(Schema.Boolean),
-      runAutoLabelingAnnotator: Schema.optional(Schema.Boolean),
-      runInterruptionAnnotator: Schema.optional(Schema.Boolean),
-      phraseMatchers: Schema.optional(Schema.Array(Schema.String)),
-      runSentimentAnnotator: Schema.optional(Schema.Boolean),
-      runIssueModelAnnotator: Schema.optional(Schema.Boolean),
-      runQaAnnotator: Schema.optional(Schema.Boolean),
-      runPhraseMatcherAnnotator: Schema.optional(Schema.Boolean),
-      runSilenceAnnotator: Schema.optional(Schema.Boolean),
-      runEntityAnnotator: Schema.optional(Schema.Boolean),
-      issueModels: Schema.optional(Schema.Array(Schema.String)),
-      runSummarizationAnnotator: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelector =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    summarizationConfig: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorSummarizationConfig,
+    ),
+    qaConfig: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelectorQaConfig,
+    ),
+    runIntentAnnotator: Schema.optional(Schema.Boolean),
+    runAutoLabelingAnnotator: Schema.optional(Schema.Boolean),
+    runInterruptionAnnotator: Schema.optional(Schema.Boolean),
+    phraseMatchers: Schema.optional(Schema.Array(Schema.String)),
+    runSentimentAnnotator: Schema.optional(Schema.Boolean),
+    runIssueModelAnnotator: Schema.optional(Schema.Boolean),
+    runQaAnnotator: Schema.optional(Schema.Boolean),
+    runPhraseMatcherAnnotator: Schema.optional(Schema.Boolean),
+    runSilenceAnnotator: Schema.optional(Schema.Boolean),
+    runEntityAnnotator: Schema.optional(Schema.Boolean),
+    issueModels: Schema.optional(Schema.Array(Schema.String)),
+    runSummarizationAnnotator: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelector",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelector>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1Analysis {
   /** To select the annotators to run and the phrase matchers to use (if any). If not specified, all annotators will be run. */
@@ -12435,22 +11416,20 @@ export interface GoogleCloudContactcenterinsightsV1alpha1Analysis {
   createTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1Analysis: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1Analysis> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      annotatorSelector: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelector,
-      ),
-      analysisResult: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1AnalysisResult,
-      ),
-      requestTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1Analysis =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    annotatorSelector: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelector,
+    ),
+    analysisResult: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1AnalysisResult,
+    ),
+    requestTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1alpha1Analysis",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1Analysis>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationInfo {
   /** Output only. The full conversation correlation id this conversation is a segment of. */
@@ -12468,17 +11447,15 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelation
   mergedFullConversationCorrelationId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationInfo: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fullConversationCorrelationId: Schema.optional(Schema.String),
-      correlationTypes: Schema.optional(Schema.Array(Schema.String)),
-      mergedFullConversationCorrelationId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fullConversationCorrelationId: Schema.optional(Schema.String),
+    correlationTypes: Schema.optional(Schema.Array(Schema.String)),
+    mergedFullConversationCorrelationId: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationInfo",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationInfo>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1GcsSource {
   /** Immutable. Cloud Storage URI that points to a file that contains the conversation transcript. */
@@ -12487,15 +11464,13 @@ export interface GoogleCloudContactcenterinsightsV1alpha1GcsSource {
   audioUri?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1GcsSource: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1GcsSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      transcriptUri: Schema.optional(Schema.String),
-      audioUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1GcsSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    transcriptUri: Schema.optional(Schema.String),
+    audioUri: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1alpha1GcsSource",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1GcsSource>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1ConversationDataSource {
   /** Cloud Storage URIs that points to files that contain the conversation audio for each turn. Assume the order of the URIs is the same as the order of the transcript turns. */
@@ -12508,26 +11483,24 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ConversationDataSource 
   gcsSource?: GoogleCloudContactcenterinsightsV1alpha1GcsSource;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ConversationDataSource: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConversationDataSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      turnLevelAudios: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1alpha1ConversationDataSourceTurnLevelAudio,
-        ),
+export const GoogleCloudContactcenterinsightsV1alpha1ConversationDataSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    turnLevelAudios: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1alpha1ConversationDataSourceTurnLevelAudio,
       ),
-      dialogflowSource: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1DialogflowSource,
-      ),
-      metadataUri: Schema.optional(Schema.String),
-      gcsSource: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1GcsSource,
-      ),
-    }),
-  ).annotate({
+    ),
+    dialogflowSource: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1DialogflowSource,
+    ),
+    metadataUri: Schema.optional(Schema.String),
+    gcsSource: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1GcsSource,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1ConversationDataSource",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConversationDataSource>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1ConversationSummarizationSuggestionData {
   /** The summarization content that is divided into sections. The key is the section's name and the value is the section's content. There is no specific format for the key or value. */
@@ -12546,23 +11519,19 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ConversationSummarizati
   conversationModel?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ConversationSummarizationSuggestionData: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConversationSummarizationSuggestionData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      textSections: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      confidence: Schema.optional(Schema.Number),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      generatorId: Schema.optional(Schema.String),
-      answerRecord: Schema.optional(Schema.String),
-      text: Schema.optional(Schema.String),
-      conversationModel: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1ConversationSummarizationSuggestionData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    textSections: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    confidence: Schema.optional(Schema.Number),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    generatorId: Schema.optional(Schema.String),
+    answerRecord: Schema.optional(Schema.String),
+    text: Schema.optional(Schema.String),
+    conversationModel: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1ConversationSummarizationSuggestionData",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConversationSummarizationSuggestionData>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1AnswerFeedback {
   /** The correctness level of an answer. */
@@ -12578,16 +11547,14 @@ export interface GoogleCloudContactcenterinsightsV1alpha1AnswerFeedback {
   clicked?: boolean;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1AnswerFeedback: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1AnswerFeedback> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      correctnessLevel: Schema.optional(Schema.String),
-      displayed: Schema.optional(Schema.Boolean),
-      clicked: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1AnswerFeedback =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    correctnessLevel: Schema.optional(Schema.String),
+    displayed: Schema.optional(Schema.Boolean),
+    clicked: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1alpha1AnswerFeedback",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1AnswerFeedback>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1RuntimeAnnotation {
   /** Conversation summarization suggestion data. */
@@ -12616,45 +11583,43 @@ export interface GoogleCloudContactcenterinsightsV1alpha1RuntimeAnnotation {
   createTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1RuntimeAnnotation: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1RuntimeAnnotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conversationSummarizationSuggestion: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1ConversationSummarizationSuggestionData,
-      ),
-      startBoundary: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1AnnotationBoundary,
-      ),
-      userInput: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1RuntimeAnnotationUserInput,
-      ),
-      dialogflowInteraction: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1DialogflowInteractionData,
-      ),
-      annotationId: Schema.optional(Schema.String),
-      faqAnswer: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1FaqAnswerData,
-      ),
-      endBoundary: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1AnnotationBoundary,
-      ),
-      smartComposeSuggestion: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1SmartComposeSuggestionData,
-      ),
-      smartReply: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1SmartReplyData,
-      ),
-      answerFeedback: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1AnswerFeedback,
-      ),
-      articleSuggestion: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1ArticleSuggestionData,
-      ),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1RuntimeAnnotation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conversationSummarizationSuggestion: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1ConversationSummarizationSuggestionData,
+    ),
+    startBoundary: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1AnnotationBoundary,
+    ),
+    userInput: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1RuntimeAnnotationUserInput,
+    ),
+    dialogflowInteraction: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1DialogflowInteractionData,
+    ),
+    annotationId: Schema.optional(Schema.String),
+    faqAnswer: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1FaqAnswerData,
+    ),
+    endBoundary: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1AnnotationBoundary,
+    ),
+    smartComposeSuggestion: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1SmartComposeSuggestionData,
+    ),
+    smartReply: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1SmartReplyData,
+    ),
+    answerFeedback: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1AnswerFeedback,
+    ),
+    articleSuggestion: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1ArticleSuggestionData,
+    ),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1alpha1RuntimeAnnotation",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1RuntimeAnnotation>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1ConversationCallMetadata {
   /** The audio channel that contains the customer. */
@@ -12663,16 +11628,14 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ConversationCallMetadat
   agentChannel?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ConversationCallMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConversationCallMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customerChannel: Schema.optional(Schema.Number),
-      agentChannel: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1ConversationCallMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customerChannel: Schema.optional(Schema.Number),
+    agentChannel: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1ConversationCallMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ConversationCallMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1Conversation {
   /** A user-specified language code for the conversation. */
@@ -12726,57 +11689,55 @@ export interface GoogleCloudContactcenterinsightsV1alpha1Conversation {
   turnCount?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1Conversation: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1Conversation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      languageCode: Schema.optional(Schema.String),
-      expireTime: Schema.optional(Schema.String),
-      agentId: Schema.optional(Schema.String),
-      obfuscatedUserId: Schema.optional(Schema.String),
-      metadataJson: Schema.optional(Schema.String),
-      latestAnalysis: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1Analysis,
+export const GoogleCloudContactcenterinsightsV1alpha1Conversation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    languageCode: Schema.optional(Schema.String),
+    expireTime: Schema.optional(Schema.String),
+    agentId: Schema.optional(Schema.String),
+    obfuscatedUserId: Schema.optional(Schema.String),
+    metadataJson: Schema.optional(Schema.String),
+    latestAnalysis: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1Analysis,
+    ),
+    correlationInfo: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationInfo,
+    ),
+    transcript: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1ConversationTranscript,
+    ),
+    dataSource: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1ConversationDataSource,
+    ),
+    startTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    medium: Schema.optional(Schema.String),
+    duration: Schema.optional(Schema.String),
+    qualityMetadata: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadata,
+    ),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    createTime: Schema.optional(Schema.String),
+    dialogflowIntents: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        GoogleCloudContactcenterinsightsV1alpha1DialogflowIntent,
       ),
-      correlationInfo: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1ConversationCorrelationInfo,
-      ),
-      transcript: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1ConversationTranscript,
-      ),
-      dataSource: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1ConversationDataSource,
-      ),
-      startTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      medium: Schema.optional(Schema.String),
-      duration: Schema.optional(Schema.String),
-      qualityMetadata: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1ConversationQualityMetadata,
-      ),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      createTime: Schema.optional(Schema.String),
-      dialogflowIntents: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          GoogleCloudContactcenterinsightsV1alpha1DialogflowIntent,
-        ),
-      ),
-      runtimeAnnotations: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1alpha1RuntimeAnnotation),
-      ),
-      updateTime: Schema.optional(Schema.String),
-      callMetadata: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1ConversationCallMetadata,
-      ),
-      ttl: Schema.optional(Schema.String),
-      latestSummary: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1ConversationSummarizationSuggestionData,
-      ),
-      turnCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+    ),
+    runtimeAnnotations: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1alpha1RuntimeAnnotation),
+    ),
+    updateTime: Schema.optional(Schema.String),
+    callMetadata: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1ConversationCallMetadata,
+    ),
+    ttl: Schema.optional(Schema.String),
+    latestSummary: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1ConversationSummarizationSuggestionData,
+    ),
+    turnCount: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1alpha1Conversation",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1Conversation>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1UploadConversationRequest {
   /** Required. The conversation resource to create. */
@@ -12791,25 +11752,23 @@ export interface GoogleCloudContactcenterinsightsV1alpha1UploadConversationReque
   speechConfig?: GoogleCloudContactcenterinsightsV1alpha1SpeechConfig;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1UploadConversationRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1UploadConversationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conversation: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1Conversation,
-      ),
-      conversationId: Schema.optional(Schema.String),
-      redactionConfig: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1RedactionConfig,
-      ),
-      parent: Schema.optional(Schema.String),
-      speechConfig: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1SpeechConfig,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1UploadConversationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conversation: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1Conversation,
+    ),
+    conversationId: Schema.optional(Schema.String),
+    redactionConfig: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1RedactionConfig,
+    ),
+    parent: Schema.optional(Schema.String),
+    speechConfig: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1SpeechConfig,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1UploadConversationRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1UploadConversationRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainQaQuestionTag {
   /** Optional. The list of Scorecard Question IDs that the tag applies to. Each QaQuestionId is represented as a full resource name containing the Question ID. Lastly, Since a tag may not necessarily be referenced by any Scorecard Questions, we treat this field as optional. */
@@ -12824,18 +11783,16 @@ export interface GoogleCloudContactcenterinsightsV1mainQaQuestionTag {
   updateTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainQaQuestionTag: Schema.Schema<GoogleCloudContactcenterinsightsV1mainQaQuestionTag> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      qaQuestionIds: Schema.optional(Schema.Array(Schema.String)),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainQaQuestionTag =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    qaQuestionIds: Schema.optional(Schema.Array(Schema.String)),
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1mainQaQuestionTag",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainQaQuestionTag>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainUpdateQaQuestionTagRequest {
   /** Required. The QaQuestionTag to update. */
@@ -12844,33 +11801,29 @@ export interface GoogleCloudContactcenterinsightsV1mainUpdateQaQuestionTagReques
   updateMask?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainUpdateQaQuestionTagRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1mainUpdateQaQuestionTagRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      qaQuestionTag: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainQaQuestionTag,
-      ),
-      updateMask: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainUpdateQaQuestionTagRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    qaQuestionTag: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainQaQuestionTag,
+    ),
+    updateMask: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainUpdateQaQuestionTagRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainUpdateQaQuestionTagRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1DimensionQaScorecardDimensionMetadata {
   /** Optional. The QA scorecard ID. */
   qaScorecardId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1DimensionQaScorecardDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1DimensionQaScorecardDimensionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      qaScorecardId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1DimensionQaScorecardDimensionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    qaScorecardId: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1DimensionQaScorecardDimensionMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1DimensionQaScorecardDimensionMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetadata {
   /** Optional. The agent's deployment display name. Only applicable to automated agents. This will be populated for AGENT_DEPLOYMENT_ID dimensions. */
@@ -12889,21 +11842,19 @@ export interface GoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetada
   agentDeploymentId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      agentDeploymentDisplayName: Schema.optional(Schema.String),
-      agentDisplayName: Schema.optional(Schema.String),
-      agentVersionDisplayName: Schema.optional(Schema.String),
-      agentVersionId: Schema.optional(Schema.String),
-      agentTeam: Schema.optional(Schema.String),
-      agentId: Schema.optional(Schema.String),
-      agentDeploymentId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    agentDeploymentDisplayName: Schema.optional(Schema.String),
+    agentDisplayName: Schema.optional(Schema.String),
+    agentVersionDisplayName: Schema.optional(Schema.String),
+    agentVersionId: Schema.optional(Schema.String),
+    agentTeam: Schema.optional(Schema.String),
+    agentId: Schema.optional(Schema.String),
+    agentDeploymentId: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsPlaybookDimensionMetadata {
   /** Optional. The dialogflow playbook ID. */
@@ -12912,16 +11863,14 @@ export interface GoogleCloudContactcenterinsightsV1DimensionConversationalAgents
   playbookDisplayName?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsPlaybookDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsPlaybookDimensionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      playbookId: Schema.optional(Schema.String),
-      playbookDisplayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsPlaybookDimensionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    playbookId: Schema.optional(Schema.String),
+    playbookDisplayName: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsPlaybookDimensionMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsPlaybookDimensionMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDimensionMetadata {
   /** Optional. The QA scorecard ID. */
@@ -12934,18 +11883,16 @@ export interface GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDime
   answerValue?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDimensionMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDimensionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      qaScorecardId: Schema.optional(Schema.String),
-      qaQuestionId: Schema.optional(Schema.String),
-      questionBody: Schema.optional(Schema.String),
-      answerValue: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDimensionMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    qaScorecardId: Schema.optional(Schema.String),
+    qaQuestionId: Schema.optional(Schema.String),
+    questionBody: Schema.optional(Schema.String),
+    answerValue: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDimensionMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDimensionMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1Dimension {
   /** Output only. Metadata about the QA scorecard dimension. */
@@ -12997,47 +11944,43 @@ export interface GoogleCloudContactcenterinsightsV1Dimension {
   conversationalAgentsToolDimensionMetadata?: GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsToolDimensionMetadata;
 }
 
-export const GoogleCloudContactcenterinsightsV1Dimension: Schema.Schema<GoogleCloudContactcenterinsightsV1Dimension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      qaScorecardDimensionMetadata: Schema.optional(
-        GoogleCloudContactcenterinsightsV1DimensionQaScorecardDimensionMetadata,
-      ),
-      agentDimensionMetadata: Schema.optional(
-        GoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetadata,
-      ),
-      labelDimensionMetadata: Schema.optional(
-        GoogleCloudContactcenterinsightsV1DimensionLabelDimensionMetadata,
-      ),
-      issueDimensionMetadata: Schema.optional(
-        GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata,
-      ),
-      qaQuestionDimensionMetadata: Schema.optional(
-        GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionMetadata,
-      ),
-      clientSentimentCategoryDimensionMetadata: Schema.optional(
-        GoogleCloudContactcenterinsightsV1DimensionClientSentimentCategoryDimensionMetadata,
-      ),
-      dimensionKey: Schema.optional(Schema.String),
-      conversationalAgentsPlaybookDimensionMetadata: Schema.optional(
-        GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsPlaybookDimensionMetadata,
-      ),
-      qaQuestionAnswerDimensionMetadata: Schema.optional(
-        GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDimensionMetadata,
-      ),
-      mediumDimensionMetadata: Schema.optional(
-        GoogleCloudContactcenterinsightsV1DimensionMediumDimensionMetadata,
-      ),
-      conversationProfileDimensionMetadata: Schema.optional(
-        GoogleCloudContactcenterinsightsV1DimensionConversationProfileDimensionMetadata,
-      ),
-      conversationalAgentsToolDimensionMetadata: Schema.optional(
-        GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsToolDimensionMetadata,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1Dimension",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1Dimension>;
+export const GoogleCloudContactcenterinsightsV1Dimension =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    qaScorecardDimensionMetadata: Schema.optional(
+      GoogleCloudContactcenterinsightsV1DimensionQaScorecardDimensionMetadata,
+    ),
+    agentDimensionMetadata: Schema.optional(
+      GoogleCloudContactcenterinsightsV1DimensionAgentDimensionMetadata,
+    ),
+    labelDimensionMetadata: Schema.optional(
+      GoogleCloudContactcenterinsightsV1DimensionLabelDimensionMetadata,
+    ),
+    issueDimensionMetadata: Schema.optional(
+      GoogleCloudContactcenterinsightsV1DimensionIssueDimensionMetadata,
+    ),
+    qaQuestionDimensionMetadata: Schema.optional(
+      GoogleCloudContactcenterinsightsV1DimensionQaQuestionDimensionMetadata,
+    ),
+    clientSentimentCategoryDimensionMetadata: Schema.optional(
+      GoogleCloudContactcenterinsightsV1DimensionClientSentimentCategoryDimensionMetadata,
+    ),
+    dimensionKey: Schema.optional(Schema.String),
+    conversationalAgentsPlaybookDimensionMetadata: Schema.optional(
+      GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsPlaybookDimensionMetadata,
+    ),
+    qaQuestionAnswerDimensionMetadata: Schema.optional(
+      GoogleCloudContactcenterinsightsV1DimensionQaQuestionAnswerDimensionMetadata,
+    ),
+    mediumDimensionMetadata: Schema.optional(
+      GoogleCloudContactcenterinsightsV1DimensionMediumDimensionMetadata,
+    ),
+    conversationProfileDimensionMetadata: Schema.optional(
+      GoogleCloudContactcenterinsightsV1DimensionConversationProfileDimensionMetadata,
+    ),
+    conversationalAgentsToolDimensionMetadata: Schema.optional(
+      GoogleCloudContactcenterinsightsV1DimensionConversationalAgentsToolDimensionMetadata,
+    ),
+  }).annotate({ identifier: "GoogleCloudContactcenterinsightsV1Dimension" });
 
 export interface GoogleCloudContactcenterinsightsV1QueryMetricsRequest {
   /** The dimensions that determine the grouping key for the query. Defaults to no dimension if this field is unspecified. If a dimension is specified, its key must also be specified. Each dimension's key must be unique. If a time granularity is also specified, metric values in the dimension will be bucketed by this granularity. Up to one dimension is supported for now. */
@@ -13058,27 +12001,25 @@ export interface GoogleCloudContactcenterinsightsV1QueryMetricsRequest {
     | (string & {});
 }
 
-export const GoogleCloudContactcenterinsightsV1QueryMetricsRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1QueryMetricsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dimensions: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1Dimension),
-      ),
-      measureMask: Schema.optional(Schema.String),
-      filter: Schema.optional(Schema.String),
-      timeGranularity: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1QueryMetricsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dimensions: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1Dimension),
+    ),
+    measureMask: Schema.optional(Schema.String),
+    filter: Schema.optional(Schema.String),
+    timeGranularity: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1QueryMetricsRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1QueryMetricsRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelResponse {}
 
-export const GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1UndeployIssueModelResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSource {
   /** Required. File format which will be ingested. */
@@ -13087,16 +12028,14 @@ export interface GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsReque
   objectUri?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSource: Schema.Schema<GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      format: Schema.optional(Schema.String),
-      objectUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    format: Schema.optional(Schema.String),
+    objectUri: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSource",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSource>;
+  });
 
 export interface GoogleTypeExpr {
   /** Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file. */
@@ -13109,17 +12048,12 @@ export interface GoogleTypeExpr {
   description?: string;
 }
 
-export const GoogleTypeExpr: Schema.Schema<GoogleTypeExpr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      location: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      expression: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleTypeExpr",
-  }) as any as Schema.Schema<GoogleTypeExpr>;
+export const GoogleTypeExpr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  location: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  expression: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "GoogleTypeExpr" });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabelsRequest {
   /** Required. The parent resource for new feedback labels. */
@@ -13128,16 +12062,14 @@ export interface GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabel
   filter?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabelsRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabelsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parent: Schema.optional(Schema.String),
-      filter: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabelsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.optional(Schema.String),
+    filter: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabelsRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabelsRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsRequest {
   /** Optional. The revision id that maps to the state of the chart state revision. When specified, the backend will reload the chart with the sql and visual spec from that revision. */
@@ -13160,24 +12092,22 @@ export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsRequest {
   comparisonFilter?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1GenerativeInsightsRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      revisionId: Schema.optional(Schema.String),
-      sessionId: Schema.optional(Schema.String),
-      filter: Schema.optional(Schema.String),
-      chart: Schema.optional(Schema.String),
-      userProvidedChartSpec: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-      sqlComparisonKey: Schema.optional(Schema.String),
-      naturalLanguageQuery: Schema.optional(Schema.String),
-      sqlQuery: Schema.optional(Schema.String),
-      comparisonFilter: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1GenerativeInsightsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    revisionId: Schema.optional(Schema.String),
+    sessionId: Schema.optional(Schema.String),
+    filter: Schema.optional(Schema.String),
+    chart: Schema.optional(Schema.String),
+    userProvidedChartSpec: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
+    sqlComparisonKey: Schema.optional(Schema.String),
+    naturalLanguageQuery: Schema.optional(Schema.String),
+    sqlQuery: Schema.optional(Schema.String),
+    comparisonFilter: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1GenerativeInsightsRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1ListConversationsResponse {
   /** The conversations that match the request. */
@@ -13186,17 +12116,15 @@ export interface GoogleCloudContactcenterinsightsV1ListConversationsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ListConversationsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1ListConversationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conversations: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1Conversation),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1ListConversationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conversations: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1Conversation),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1ListConversationsResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ListConversationsResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1ConversationCorrelationResultRuleCorrelationResult {
   /** The error status if the join key expression failed to evaluate. */
@@ -13207,31 +12135,27 @@ export interface GoogleCloudContactcenterinsightsV1ConversationCorrelationResult
   ruleId?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ConversationCorrelationResultRuleCorrelationResult: Schema.Schema<GoogleCloudContactcenterinsightsV1ConversationCorrelationResultRuleCorrelationResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      error: Schema.optional(GoogleRpcStatus),
-      correlationId: Schema.optional(Schema.String),
-      ruleId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1ConversationCorrelationResultRuleCorrelationResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(GoogleRpcStatus),
+    correlationId: Schema.optional(Schema.String),
+    ruleId: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1ConversationCorrelationResultRuleCorrelationResult",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ConversationCorrelationResultRuleCorrelationResult>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1ImportIssueModelResponse {
   /** The issue model that was imported. */
   issueModel?: GoogleCloudContactcenterinsightsV1IssueModel;
 }
 
-export const GoogleCloudContactcenterinsightsV1ImportIssueModelResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1ImportIssueModelResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      issueModel: Schema.optional(GoogleCloudContactcenterinsightsV1IssueModel),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1ImportIssueModelResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    issueModel: Schema.optional(GoogleCloudContactcenterinsightsV1IssueModel),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1ImportIssueModelResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ImportIssueModelResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1ListAssessmentsResponse {
   /** The assessments that match the request. */
@@ -13240,33 +12164,31 @@ export interface GoogleCloudContactcenterinsightsV1ListAssessmentsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ListAssessmentsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1ListAssessmentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      assessments: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1Assessment),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1ListAssessmentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    assessments: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1Assessment),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1ListAssessmentsResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ListAssessmentsResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainExportInsightsDataResponse {}
 
-export const GoogleCloudContactcenterinsightsV1mainExportInsightsDataResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1mainExportInsightsDataResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudContactcenterinsightsV1mainExportInsightsDataResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainExportInsightsDataResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainExportInsightsDataResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsResponse {}
 
-export const GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainBulkDownloadFeedbackLabelsResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1UploadConversationMetadata {
   /** Output only. The time the operation finished running. */
@@ -13281,23 +12203,21 @@ export interface GoogleCloudContactcenterinsightsV1alpha1UploadConversationMetad
   appliedRedactionConfig?: GoogleCloudContactcenterinsightsV1alpha1RedactionConfig;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1UploadConversationMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1UploadConversationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endTime: Schema.optional(Schema.String),
-      analysisOperation: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      request: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1UploadConversationRequest,
-      ),
-      appliedRedactionConfig: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1RedactionConfig,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1UploadConversationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endTime: Schema.optional(Schema.String),
+    analysisOperation: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    request: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1UploadConversationRequest,
+    ),
+    appliedRedactionConfig: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1RedactionConfig,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1UploadConversationMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1UploadConversationMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1ListQaQuestionsResponse {
   /** The QaQuestions under the parent. */
@@ -13306,25 +12226,23 @@ export interface GoogleCloudContactcenterinsightsV1ListQaQuestionsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ListQaQuestionsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1ListQaQuestionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      qaQuestions: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1QaQuestion),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1ListQaQuestionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    qaQuestions: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1QaQuestion),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1ListQaQuestionsResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ListQaQuestionsResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataResponse {}
 
-export const GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ExportInsightsDataResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsMetadata {
   /** The time the operation finished running. */
@@ -13345,38 +12263,34 @@ export interface GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsMetad
   completedAnalysesCount?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endTime: Schema.optional(Schema.String),
-      partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
-      createTime: Schema.optional(Schema.String),
-      totalRequestedAnalysesCount: Schema.optional(Schema.Number),
-      relabel: Schema.optional(Schema.Boolean),
-      request: Schema.optional(
-        GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest,
-      ),
-      failedAnalysesCount: Schema.optional(Schema.Number),
-      completedAnalysesCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endTime: Schema.optional(Schema.String),
+    partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
+    createTime: Schema.optional(Schema.String),
+    totalRequestedAnalysesCount: Schema.optional(Schema.Number),
+    relabel: Schema.optional(Schema.Boolean),
+    request: Schema.optional(
+      GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRequest,
+    ),
+    failedAnalysesCount: Schema.optional(Schema.Number),
+    completedAnalysesCount: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1QueryMetricsMetadata {
   /** Whether the result rows were truncated because the result row size is too large to materialize. */
   resultIsTruncated?: boolean;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1QueryMetricsMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QueryMetricsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resultIsTruncated: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1QueryMetricsMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resultIsTruncated: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1alpha1QueryMetricsMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QueryMetricsMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainUploadConversationMetadata {
   /** Output only. The time the operation finished running. */
@@ -13391,23 +12305,21 @@ export interface GoogleCloudContactcenterinsightsV1mainUploadConversationMetadat
   appliedRedactionConfig?: GoogleCloudContactcenterinsightsV1mainRedactionConfig;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainUploadConversationMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainUploadConversationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endTime: Schema.optional(Schema.String),
-      analysisOperation: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      request: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainUploadConversationRequest,
-      ),
-      appliedRedactionConfig: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainRedactionConfig,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainUploadConversationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endTime: Schema.optional(Schema.String),
+    analysisOperation: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    request: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainUploadConversationRequest,
+    ),
+    appliedRedactionConfig: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainRedactionConfig,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainUploadConversationMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainUploadConversationMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainGenerativeInsightsResponseGenerativeResponse {
   /** The text output from the LLM. Will be populated during the chart building phase. For a reloaded chart, this will NOT be populated. May contain THOUGHT or a FINAL response or some in-progress response. */
@@ -13420,20 +12332,18 @@ export interface GoogleCloudContactcenterinsightsV1mainGenerativeInsightsRespons
   chartSpec?: Record<string, unknown>;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainGenerativeInsightsResponseGenerativeResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1mainGenerativeInsightsResponseGenerativeResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      textOutput: Schema.optional(Schema.String),
-      textMessage: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainGenerativeInsightsResponseGenerativeResponseTextOutput,
-      ),
-      generatedSqlQuery: Schema.optional(Schema.String),
-      chartSpec: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainGenerativeInsightsResponseGenerativeResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    textOutput: Schema.optional(Schema.String),
+    textMessage: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainGenerativeInsightsResponseGenerativeResponseTextOutput,
+    ),
+    generatedSqlQuery: Schema.optional(Schema.String),
+    chartSpec: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainGenerativeInsightsResponseGenerativeResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainGenerativeInsightsResponseGenerativeResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainGenerativeInsightsResponse {
   /** The full list of generative responses. Each response is ordered by time. */
@@ -13442,29 +12352,27 @@ export interface GoogleCloudContactcenterinsightsV1mainGenerativeInsightsRespons
   transcript?: GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscript;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainGenerativeInsightsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1mainGenerativeInsightsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      generativeResponses: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1mainGenerativeInsightsResponseGenerativeResponse,
-        ),
+export const GoogleCloudContactcenterinsightsV1mainGenerativeInsightsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    generativeResponses: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1mainGenerativeInsightsResponseGenerativeResponse,
       ),
-      transcript: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscript,
-      ),
-    }),
-  ).annotate({
+    ),
+    transcript: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainGenerativeInsightConversationTranscript,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainGenerativeInsightsResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainGenerativeInsightsResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1DeployIssueModelResponse {}
 
-export const GoogleCloudContactcenterinsightsV1DeployIssueModelResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1DeployIssueModelResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudContactcenterinsightsV1DeployIssueModelResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1DeployIssueModelResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1DeployIssueModelResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsRequest {
   /** Required. Filter used to select the subset of conversations to analyze. */
@@ -13479,37 +12387,35 @@ export interface GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversation
   analysisPercentage?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filter: Schema.optional(Schema.String),
-      relabel: Schema.optional(Schema.Boolean),
-      parent: Schema.optional(Schema.String),
-      annotatorSelector: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelector,
-      ),
-      analysisPercentage: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filter: Schema.optional(Schema.String),
+    relabel: Schema.optional(Schema.Boolean),
+    parent: Schema.optional(Schema.String),
+    annotatorSelector: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelector,
+    ),
+    analysisPercentage: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsResponse {}
 
-export const GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1BulkDeleteConversationsResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainSampleConversationsResponse {}
 
-export const GoogleCloudContactcenterinsightsV1mainSampleConversationsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1mainSampleConversationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudContactcenterinsightsV1mainSampleConversationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainSampleConversationsResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainSampleConversationsResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1ListPhraseMatchersResponse {
   /** The phrase matchers that match the request. */
@@ -13518,17 +12424,15 @@ export interface GoogleCloudContactcenterinsightsV1ListPhraseMatchersResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ListPhraseMatchersResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1ListPhraseMatchersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      phraseMatchers: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1PhraseMatcher),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1ListPhraseMatchersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    phraseMatchers: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1PhraseMatcher),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1ListPhraseMatchersResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ListPhraseMatchersResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest {
   /** Optional. A filter to reduce results to a specific subset. Supports disjunctions (OR) and conjunctions (AND). Supported fields: * `issue_model_id` * `qa_question_id` * `qa_scorecard_id` * `min_create_time` * `max_create_time` * `min_update_time` * `max_update_time` * `feedback_label_type`: QUALITY_AI, TOPIC_MODELING */
@@ -13537,33 +12441,29 @@ export interface GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsReque
   parent?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filter: Schema.optional(Schema.String),
-      parent: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filter: Schema.optional(Schema.String),
+    parent: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest {
   /** Required. The encryption spec used for CMEK encryption. It is required that the kms key is in the same region as the endpoint. The same key will be used for all provisioned resources, if encryption is available. If the `kms_key_name` field is left empty, no encryption will be enforced. */
   encryptionSpec?: GoogleCloudContactcenterinsightsV1EncryptionSpec;
 }
 
-export const GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      encryptionSpec: Schema.optional(
-        GoogleCloudContactcenterinsightsV1EncryptionSpec,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    encryptionSpec: Schema.optional(
+      GoogleCloudContactcenterinsightsV1EncryptionSpec,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecMetadata {
   /** Partial errors during initializing operation that might cause the operation output to be incomplete. */
@@ -13576,35 +12476,31 @@ export interface GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecMetad
   request?: GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest;
 }
 
-export const GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      request: Schema.optional(
-        GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
+    createTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    request: Schema.optional(
+      GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecRequest,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainUndeployIssueModelRequest {
   /** Required. The issue model to undeploy. */
   name?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainUndeployIssueModelRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1mainUndeployIssueModelRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainUndeployIssueModelRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainUndeployIssueModelRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainUndeployIssueModelRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1ConstraintEvaluationResult {
   /** The second conversation resource name. */
@@ -13615,20 +12511,18 @@ export interface GoogleCloudContactcenterinsightsV1ConstraintEvaluationResult {
   conversationA?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ConstraintEvaluationResult: Schema.Schema<GoogleCloudContactcenterinsightsV1ConstraintEvaluationResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conversationB: Schema.optional(Schema.String),
-      ruleConstraintResults: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1ConstraintEvaluationResultRuleConstraintResult,
-        ),
+export const GoogleCloudContactcenterinsightsV1ConstraintEvaluationResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conversationB: Schema.optional(Schema.String),
+    ruleConstraintResults: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1ConstraintEvaluationResultRuleConstraintResult,
       ),
-      conversationA: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+    ),
+    conversationA: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1ConstraintEvaluationResult",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ConstraintEvaluationResult>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1ConversationCorrelationResult {
   /** The conversation resource name. */
@@ -13637,20 +12531,18 @@ export interface GoogleCloudContactcenterinsightsV1ConversationCorrelationResult
   ruleResults?: Array<GoogleCloudContactcenterinsightsV1ConversationCorrelationResultRuleCorrelationResult>;
 }
 
-export const GoogleCloudContactcenterinsightsV1ConversationCorrelationResult: Schema.Schema<GoogleCloudContactcenterinsightsV1ConversationCorrelationResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conversation: Schema.optional(Schema.String),
-      ruleResults: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1ConversationCorrelationResultRuleCorrelationResult,
-        ),
+export const GoogleCloudContactcenterinsightsV1ConversationCorrelationResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conversation: Schema.optional(Schema.String),
+    ruleResults: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1ConversationCorrelationResultRuleCorrelationResult,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1ConversationCorrelationResult",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ConversationCorrelationResult>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1TestCorrelationConfigResponseDetailedCorrelationResults {
   /** A list of constraint evaluation results for each pair of conversations. */
@@ -13659,24 +12551,22 @@ export interface GoogleCloudContactcenterinsightsV1TestCorrelationConfigResponse
   joinKeyResults?: Array<GoogleCloudContactcenterinsightsV1ConversationCorrelationResult>;
 }
 
-export const GoogleCloudContactcenterinsightsV1TestCorrelationConfigResponseDetailedCorrelationResults: Schema.Schema<GoogleCloudContactcenterinsightsV1TestCorrelationConfigResponseDetailedCorrelationResults> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      constraintResults: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1ConstraintEvaluationResult,
-        ),
+export const GoogleCloudContactcenterinsightsV1TestCorrelationConfigResponseDetailedCorrelationResults =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    constraintResults: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1ConstraintEvaluationResult,
       ),
-      joinKeyResults: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1ConversationCorrelationResult,
-        ),
+    ),
+    joinKeyResults: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1ConversationCorrelationResult,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1TestCorrelationConfigResponseDetailedCorrelationResults",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1TestCorrelationConfigResponseDetailedCorrelationResults>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1TestCorrelationConfigResponse {
   /** Results for the DETAILED_SYNC execution mode. */
@@ -13685,18 +12575,16 @@ export interface GoogleCloudContactcenterinsightsV1TestCorrelationConfigResponse
   partialErrors?: Array<GoogleRpcStatus>;
 }
 
-export const GoogleCloudContactcenterinsightsV1TestCorrelationConfigResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1TestCorrelationConfigResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      detailedResults: Schema.optional(
-        GoogleCloudContactcenterinsightsV1TestCorrelationConfigResponseDetailedCorrelationResults,
-      ),
-      partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1TestCorrelationConfigResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    detailedResults: Schema.optional(
+      GoogleCloudContactcenterinsightsV1TestCorrelationConfigResponseDetailedCorrelationResults,
+    ),
+    partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1TestCorrelationConfigResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1TestCorrelationConfigResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1BulkDeleteConversationsMetadata {
   /** The time the operation was created. */
@@ -13709,43 +12597,41 @@ export interface GoogleCloudContactcenterinsightsV1BulkDeleteConversationsMetada
   endTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1BulkDeleteConversationsMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1BulkDeleteConversationsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
-      request: Schema.optional(
-        GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest,
-      ),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1BulkDeleteConversationsMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
+    request: Schema.optional(
+      GoogleCloudContactcenterinsightsV1BulkDeleteConversationsRequest,
+    ),
+    endTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1BulkDeleteConversationsMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1BulkDeleteConversationsMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1AppealAssessmentRequest {}
 
-export const GoogleCloudContactcenterinsightsV1AppealAssessmentRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1AppealAssessmentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudContactcenterinsightsV1AppealAssessmentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1AppealAssessmentRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1AppealAssessmentRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelResponse {}
 
-export const GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ExportIssueModelResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1SampleConversationsResponse {}
 
-export const GoogleCloudContactcenterinsightsV1alpha1SampleConversationsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1SampleConversationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1SampleConversationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1SampleConversationsResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1SampleConversationsResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestGcsSource {
   /** Optional. The Cloud Storage path to the conversation transcripts. Note that: [1] Transcript files are expected to be in JSON format. [2] Transcript, audio, metadata files must be in separate buckets / folders. [3] A source file and its corresponding metadata file must share the same name to be properly ingested, E.g. `gs://bucket/audio/conversation1.mp3` and `gs://bucket/metadata/conversation1.json`. */
@@ -13766,35 +12652,31 @@ export interface GoogleCloudContactcenterinsightsV1mainIngestConversationsReques
   audioBucketUri?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestGcsSource: Schema.Schema<GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestGcsSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      transcriptBucketUri: Schema.optional(Schema.String),
-      bucketUri: Schema.optional(Schema.String),
-      bucketObjectType: Schema.optional(Schema.String),
-      metadataBucketUri: Schema.optional(Schema.String),
-      customMetadataKeys: Schema.optional(Schema.Array(Schema.String)),
-      audioBucketUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestGcsSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    transcriptBucketUri: Schema.optional(Schema.String),
+    bucketUri: Schema.optional(Schema.String),
+    bucketObjectType: Schema.optional(Schema.String),
+    metadataBucketUri: Schema.optional(Schema.String),
+    customMetadataKeys: Schema.optional(Schema.Array(Schema.String)),
+    audioBucketUri: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestGcsSource",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestGcsSource>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestTranscriptObjectConfig {
   /** Required. The medium transcript objects represent. */
   medium?: "MEDIUM_UNSPECIFIED" | "PHONE_CALL" | "CHAT" | (string & {});
 }
 
-export const GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestTranscriptObjectConfig: Schema.Schema<GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestTranscriptObjectConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      medium: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestTranscriptObjectConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    medium: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestTranscriptObjectConfig",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestTranscriptObjectConfig>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainIngestConversationsRequest {
   /** A cloud storage bucket source. Note that any previously ingested objects from the source will be skipped to avoid duplication. */
@@ -13813,31 +12695,29 @@ export interface GoogleCloudContactcenterinsightsV1mainIngestConversationsReques
   conversationConfig?: GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestConversationConfig;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainIngestConversationsRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1mainIngestConversationsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsSource: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestGcsSource,
-      ),
-      speechConfig: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainSpeechConfig,
-      ),
-      parent: Schema.optional(Schema.String),
-      sampleSize: Schema.optional(Schema.Number),
-      redactionConfig: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainRedactionConfig,
-      ),
-      transcriptObjectConfig: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestTranscriptObjectConfig,
-      ),
-      conversationConfig: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestConversationConfig,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainIngestConversationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gcsSource: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestGcsSource,
+    ),
+    speechConfig: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainSpeechConfig,
+    ),
+    parent: Schema.optional(Schema.String),
+    sampleSize: Schema.optional(Schema.Number),
+    redactionConfig: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainRedactionConfig,
+    ),
+    transcriptObjectConfig: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestTranscriptObjectConfig,
+    ),
+    conversationConfig: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainIngestConversationsRequestConversationConfig,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainIngestConversationsRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainIngestConversationsRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainIngestConversationsMetadataIngestConversationsStats {
   /** Output only. The number of new conversations added during this ingest operation. */
@@ -13850,18 +12730,16 @@ export interface GoogleCloudContactcenterinsightsV1mainIngestConversationsMetada
   duplicatesSkippedCount?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainIngestConversationsMetadataIngestConversationsStats: Schema.Schema<GoogleCloudContactcenterinsightsV1mainIngestConversationsMetadataIngestConversationsStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      successfulIngestCount: Schema.optional(Schema.Number),
-      failedIngestCount: Schema.optional(Schema.Number),
-      processedObjectCount: Schema.optional(Schema.Number),
-      duplicatesSkippedCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainIngestConversationsMetadataIngestConversationsStats =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    successfulIngestCount: Schema.optional(Schema.Number),
+    failedIngestCount: Schema.optional(Schema.Number),
+    processedObjectCount: Schema.optional(Schema.Number),
+    duplicatesSkippedCount: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainIngestConversationsMetadataIngestConversationsStats",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainIngestConversationsMetadataIngestConversationsStats>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainIngestConversationsMetadata {
   /** Output only. The original request for ingest. */
@@ -13878,32 +12756,30 @@ export interface GoogleCloudContactcenterinsightsV1mainIngestConversationsMetada
   partialErrors?: Array<GoogleRpcStatus>;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainIngestConversationsMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainIngestConversationsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      request: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainIngestConversationsRequest,
-      ),
-      endTime: Schema.optional(Schema.String),
-      ingestConversationsStats: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainIngestConversationsMetadataIngestConversationsStats,
-      ),
-      sampledConversations: Schema.optional(Schema.Array(Schema.String)),
-      createTime: Schema.optional(Schema.String),
-      partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainIngestConversationsMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    request: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainIngestConversationsRequest,
+    ),
+    endTime: Schema.optional(Schema.String),
+    ingestConversationsStats: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainIngestConversationsMetadataIngestConversationsStats,
+    ),
+    sampledConversations: Schema.optional(Schema.Array(Schema.String)),
+    createTime: Schema.optional(Schema.String),
+    partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainIngestConversationsMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainIngestConversationsMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecResponse {}
 
-export const GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1InitializeEncryptionSpecResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1UpdateQaQuestionTagMetadata {
   /** Output only. The time the operation was created. */
@@ -13914,25 +12790,23 @@ export interface GoogleCloudContactcenterinsightsV1UpdateQaQuestionTagMetadata {
   endTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1UpdateQaQuestionTagMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1UpdateQaQuestionTagMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      request: Schema.optional(
-        GoogleCloudContactcenterinsightsV1UpdateQaQuestionTagRequest,
-      ),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1UpdateQaQuestionTagMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    request: Schema.optional(
+      GoogleCloudContactcenterinsightsV1UpdateQaQuestionTagRequest,
+    ),
+    endTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1UpdateQaQuestionTagMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1UpdateQaQuestionTagMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1UndeployIssueModelResponse {}
 
-export const GoogleCloudContactcenterinsightsV1UndeployIssueModelResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1UndeployIssueModelResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudContactcenterinsightsV1UndeployIssueModelResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1UndeployIssueModelResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1UndeployIssueModelResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsResponse {
   /** The full list of generative responses. Each response is ordered by time. */
@@ -13941,21 +12815,19 @@ export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsResponse {
   transcript?: GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscript;
 }
 
-export const GoogleCloudContactcenterinsightsV1GenerativeInsightsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      generativeResponses: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1GenerativeInsightsResponseGenerativeResponse,
-        ),
+export const GoogleCloudContactcenterinsightsV1GenerativeInsightsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    generativeResponses: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1GenerativeInsightsResponseGenerativeResponse,
       ),
-      transcript: Schema.optional(
-        GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscript,
-      ),
-    }),
-  ).annotate({
+    ),
+    transcript: Schema.optional(
+      GoogleCloudContactcenterinsightsV1GenerativeInsightConversationTranscript,
+    ),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1GenerativeInsightsResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsResponse>;
+  });
 
 export interface GoogleLongrunningOperation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
@@ -13970,18 +12842,14 @@ export interface GoogleLongrunningOperation {
   name?: string;
 }
 
-export const GoogleLongrunningOperation: Schema.Schema<GoogleLongrunningOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      done: Schema.optional(Schema.Boolean),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      error: Schema.optional(GoogleRpcStatus),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleLongrunningOperation",
-  }) as any as Schema.Schema<GoogleLongrunningOperation>;
+export const GoogleLongrunningOperation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    done: Schema.optional(Schema.Boolean),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    error: Schema.optional(GoogleRpcStatus),
+    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleLongrunningOperation" });
 
 export interface GoogleLongrunningListOperationsResponse {
   /** The standard List next-page token. */
@@ -13992,16 +12860,12 @@ export interface GoogleLongrunningListOperationsResponse {
   operations?: Array<GoogleLongrunningOperation>;
 }
 
-export const GoogleLongrunningListOperationsResponse: Schema.Schema<GoogleLongrunningListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
-    }),
-  ).annotate({
-    identifier: "GoogleLongrunningListOperationsResponse",
-  }) as any as Schema.Schema<GoogleLongrunningListOperationsResponse>;
+export const GoogleLongrunningListOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
+  }).annotate({ identifier: "GoogleLongrunningListOperationsResponse" });
 
 export interface GoogleIamV1Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
@@ -14012,33 +12876,26 @@ export interface GoogleIamV1Binding {
   condition?: GoogleTypeExpr;
 }
 
-export const GoogleIamV1Binding: Schema.Schema<GoogleIamV1Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      role: Schema.optional(Schema.String),
-      members: Schema.optional(Schema.Array(Schema.String)),
-      condition: Schema.optional(GoogleTypeExpr),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1Binding",
-  }) as any as Schema.Schema<GoogleIamV1Binding>;
+export const GoogleIamV1Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  role: Schema.optional(Schema.String),
+  members: Schema.optional(Schema.Array(Schema.String)),
+  condition: Schema.optional(GoogleTypeExpr),
+}).annotate({ identifier: "GoogleIamV1Binding" });
 
 export interface GoogleCloudContactcenterinsightsV1GenerateConversationSignedAudioResponse {
   /** The signed uris for the audio. */
   signedAudioUris?: GoogleCloudContactcenterinsightsV1SignedAudioUris;
 }
 
-export const GoogleCloudContactcenterinsightsV1GenerateConversationSignedAudioResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1GenerateConversationSignedAudioResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      signedAudioUris: Schema.optional(
-        GoogleCloudContactcenterinsightsV1SignedAudioUris,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1GenerateConversationSignedAudioResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    signedAudioUris: Schema.optional(
+      GoogleCloudContactcenterinsightsV1SignedAudioUris,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1GenerateConversationSignedAudioResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1GenerateConversationSignedAudioResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1Issue {
   /** Output only. The most recent time that this issue was updated. */
@@ -14055,19 +12912,15 @@ export interface GoogleCloudContactcenterinsightsV1alpha1Issue {
   createTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1Issue: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1Issue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateTime: Schema.optional(Schema.String),
-      sampleUtterances: Schema.optional(Schema.Array(Schema.String)),
-      displayDescription: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1alpha1Issue",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1Issue>;
+export const GoogleCloudContactcenterinsightsV1alpha1Issue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateTime: Schema.optional(Schema.String),
+    sampleUtterances: Schema.optional(Schema.Array(Schema.String)),
+    displayDescription: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudContactcenterinsightsV1alpha1Issue" });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1CreateIssueRequest {
   /** Required. The values for the new issue. */
@@ -14076,15 +12929,13 @@ export interface GoogleCloudContactcenterinsightsV1alpha1CreateIssueRequest {
   parent?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1CreateIssueRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1CreateIssueRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      issue: Schema.optional(GoogleCloudContactcenterinsightsV1alpha1Issue),
-      parent: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1CreateIssueRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    issue: Schema.optional(GoogleCloudContactcenterinsightsV1alpha1Issue),
+    parent: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1alpha1CreateIssueRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1CreateIssueRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1CreateAnalysisOperationMetadata {
   /** Output only. The time the operation finished running. */
@@ -14097,39 +12948,35 @@ export interface GoogleCloudContactcenterinsightsV1alpha1CreateAnalysisOperation
   createTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1CreateAnalysisOperationMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1CreateAnalysisOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endTime: Schema.optional(Schema.String),
-      annotatorSelector: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelector,
-      ),
-      conversation: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1CreateAnalysisOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endTime: Schema.optional(Schema.String),
+    annotatorSelector: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1AnnotatorSelector,
+    ),
+    conversation: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1CreateAnalysisOperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1CreateAnalysisOperationMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceTimeSeries {
   /** The data points that make up the time series . */
   dataPoints?: Array<GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPoint>;
 }
 
-export const GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceTimeSeries: Schema.Schema<GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceTimeSeries> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataPoints: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPoint,
-        ),
+export const GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceTimeSeries =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataPoints: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPoint,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceTimeSeries",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceTimeSeries>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1QueryMetricsResponseSlice {
   /** A unique combination of dimensions that this slice represents. */
@@ -14140,22 +12987,20 @@ export interface GoogleCloudContactcenterinsightsV1QueryMetricsResponseSlice {
   timeSeries?: GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceTimeSeries;
 }
 
-export const GoogleCloudContactcenterinsightsV1QueryMetricsResponseSlice: Schema.Schema<GoogleCloudContactcenterinsightsV1QueryMetricsResponseSlice> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dimensions: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1Dimension),
-      ),
-      total: Schema.optional(
-        GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPoint,
-      ),
-      timeSeries: Schema.optional(
-        GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceTimeSeries,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1QueryMetricsResponseSlice =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dimensions: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1Dimension),
+    ),
+    total: Schema.optional(
+      GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceDataPoint,
+    ),
+    timeSeries: Schema.optional(
+      GoogleCloudContactcenterinsightsV1QueryMetricsResponseSliceTimeSeries,
+    ),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1QueryMetricsResponseSlice",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1QueryMetricsResponseSlice>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsMetadata {
   /** Partial errors during deletion operation that might cause the operation output to be incomplete. */
@@ -14164,18 +13009,16 @@ export interface GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsMetad
   request?: GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest;
 }
 
-export const GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
-      request: Schema.optional(
-        GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
+    request: Schema.optional(
+      GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsRequest,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1BulkDeleteFeedbackLabelsMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabelsMetadata {
   /** Output only. The original request for delete. */
@@ -14184,25 +13027,23 @@ export interface GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabel
   partialErrors?: Array<GoogleRpcStatus>;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabelsMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabelsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      request: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabelsRequest,
-      ),
-      partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabelsMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    request: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabelsRequest,
+    ),
+    partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabelsMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabelsMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1PublishAssessmentRequest {}
 
-export const GoogleCloudContactcenterinsightsV1PublishAssessmentRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1PublishAssessmentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudContactcenterinsightsV1PublishAssessmentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1PublishAssessmentRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1PublishAssessmentRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1Dashboard {
   /** Filter applied to all charts in the dashboard. Should support scope later. */
@@ -14225,26 +13066,20 @@ export interface GoogleCloudContactcenterinsightsV1Dashboard {
   name?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1Dashboard: Schema.Schema<GoogleCloudContactcenterinsightsV1Dashboard> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filter: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      rootContainer: Schema.optional(
-        GoogleCloudContactcenterinsightsV1Container,
-      ),
-      updateTime: Schema.optional(Schema.String),
-      dateRangeConfig: Schema.optional(
-        GoogleCloudContactcenterinsightsV1DateRangeConfig,
-      ),
-      readOnly: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudContactcenterinsightsV1Dashboard",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1Dashboard>;
+export const GoogleCloudContactcenterinsightsV1Dashboard =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filter: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    rootContainer: Schema.optional(GoogleCloudContactcenterinsightsV1Container),
+    updateTime: Schema.optional(Schema.String),
+    dateRangeConfig: Schema.optional(
+      GoogleCloudContactcenterinsightsV1DateRangeConfig,
+    ),
+    readOnly: Schema.optional(Schema.Boolean),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudContactcenterinsightsV1Dashboard" });
 
 export interface GoogleCloudContactcenterinsightsV1ListDashboardsResponse {
   /** The dashboards under the parent. */
@@ -14253,25 +13088,23 @@ export interface GoogleCloudContactcenterinsightsV1ListDashboardsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ListDashboardsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1ListDashboardsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dashboards: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1Dashboard),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1ListDashboardsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dashboards: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1Dashboard),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1ListDashboardsResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ListDashboardsResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1QueryPerformanceOverviewMetadata {}
 
-export const GoogleCloudContactcenterinsightsV1alpha1QueryPerformanceOverviewMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QueryPerformanceOverviewMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1QueryPerformanceOverviewMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1QueryPerformanceOverviewMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QueryPerformanceOverviewMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1TuneQaScorecardRevisionRequest {
   /** Required. Filter for selecting the feedback labels that needs to be used for training. This filter can be used to limit the feedback labels used for tuning to a feedback labels created or updated for a specific time-window etc. */
@@ -14280,58 +13113,50 @@ export interface GoogleCloudContactcenterinsightsV1TuneQaScorecardRevisionReques
   validateOnly?: boolean;
 }
 
-export const GoogleCloudContactcenterinsightsV1TuneQaScorecardRevisionRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1TuneQaScorecardRevisionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filter: Schema.optional(Schema.String),
-      validateOnly: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1TuneQaScorecardRevisionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filter: Schema.optional(Schema.String),
+    validateOnly: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1TuneQaScorecardRevisionRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1TuneQaScorecardRevisionRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainDeleteIssueModelRequest {
   /** Required. The name of the issue model to delete. */
   name?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainDeleteIssueModelRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1mainDeleteIssueModelRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainDeleteIssueModelRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1mainDeleteIssueModelRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainDeleteIssueModelRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1GenerativeInsightsMetadata {
   /** The error message when the generative insights request fails. */
   errorMessages?: Array<GoogleRpcStatus>;
 }
 
-export const GoogleCloudContactcenterinsightsV1GenerativeInsightsMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errorMessages: Schema.optional(Schema.Array(GoogleRpcStatus)),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1GenerativeInsightsMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    errorMessages: Schema.optional(Schema.Array(GoogleRpcStatus)),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1GenerativeInsightsMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1GenerativeInsightsMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1DeleteIssueModelRequest {
   /** Required. The name of the issue model to delete. */
   name?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1DeleteIssueModelRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1DeleteIssueModelRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1DeleteIssueModelRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1DeleteIssueModelRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1DeleteIssueModelRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1DeleteIssueModelMetadata {
   /** Output only. The time the operation was created. */
@@ -14342,25 +13167,22 @@ export interface GoogleCloudContactcenterinsightsV1DeleteIssueModelMetadata {
   endTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1DeleteIssueModelMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1DeleteIssueModelMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      request: Schema.optional(
-        GoogleCloudContactcenterinsightsV1DeleteIssueModelRequest,
-      ),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1DeleteIssueModelMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    request: Schema.optional(
+      GoogleCloudContactcenterinsightsV1DeleteIssueModelRequest,
+    ),
+    endTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1DeleteIssueModelMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1DeleteIssueModelMetadata>;
+  });
 
 export interface GoogleProtobufEmpty {}
 
-export const GoogleProtobufEmpty: Schema.Schema<GoogleProtobufEmpty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "GoogleProtobufEmpty",
-  }) as any as Schema.Schema<GoogleProtobufEmpty>;
+export const GoogleProtobufEmpty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "GoogleProtobufEmpty" });
 
 export interface GoogleCloudContactcenterinsightsV1mainUpdateQaQuestionTagMetadata {
   /** Output only. The time the operation finished running. */
@@ -14371,19 +13193,17 @@ export interface GoogleCloudContactcenterinsightsV1mainUpdateQaQuestionTagMetada
   createTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainUpdateQaQuestionTagMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainUpdateQaQuestionTagMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endTime: Schema.optional(Schema.String),
-      request: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainUpdateQaQuestionTagRequest,
-      ),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainUpdateQaQuestionTagMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endTime: Schema.optional(Schema.String),
+    request: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainUpdateQaQuestionTagRequest,
+    ),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainUpdateQaQuestionTagMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainUpdateQaQuestionTagMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsMetadata {
   /** The time the operation finished running. */
@@ -14396,20 +13216,18 @@ export interface GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsMe
   createTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endTime: Schema.optional(Schema.String),
-      request: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsRequest,
-      ),
-      partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endTime: Schema.optional(Schema.String),
+    request: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsRequest,
+    ),
+    partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainBulkDeleteConversationsMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsResponseGenerativeResponseTextOutput {
   /** The type of text output. */
@@ -14423,16 +13241,14 @@ export interface GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsRespo
   text?: Array<string>;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsResponseGenerativeResponseTextOutput: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsResponseGenerativeResponseTextOutput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      textType: Schema.optional(Schema.String),
-      text: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsResponseGenerativeResponseTextOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    textType: Schema.optional(Schema.String),
+    text: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsResponseGenerativeResponseTextOutput",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsResponseGenerativeResponseTextOutput>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsResponseGenerativeResponse {
   /** The generated SQL query from the LLM. Will be populated during the chart building phase. The generated SQL will be cached in the corresponding chart resource. */
@@ -14445,20 +13261,18 @@ export interface GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsRespo
   textMessage?: GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsResponseGenerativeResponseTextOutput;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsResponseGenerativeResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsResponseGenerativeResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      generatedSqlQuery: Schema.optional(Schema.String),
-      chartSpec: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      textOutput: Schema.optional(Schema.String),
-      textMessage: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsResponseGenerativeResponseTextOutput,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsResponseGenerativeResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    generatedSqlQuery: Schema.optional(Schema.String),
+    chartSpec: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    textOutput: Schema.optional(Schema.String),
+    textMessage: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsResponseGenerativeResponseTextOutput,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsResponseGenerativeResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsResponseGenerativeResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainDeleteQaQuestionTagMetadata {
   /** Output only. The original request. */
@@ -14469,19 +13283,17 @@ export interface GoogleCloudContactcenterinsightsV1mainDeleteQaQuestionTagMetada
   createTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainDeleteQaQuestionTagMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainDeleteQaQuestionTagMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      request: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainDeleteQaQuestionTagRequest,
-      ),
-      endTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainDeleteQaQuestionTagMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    request: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainDeleteQaQuestionTagRequest,
+    ),
+    endTime: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainDeleteQaQuestionTagMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainDeleteQaQuestionTagMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleRequest {
   /** Required. Conversation data to test rules against. */
@@ -14490,19 +13302,17 @@ export interface GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleRequest {
   autoLabelingRule?: GoogleCloudContactcenterinsightsV1AutoLabelingRule;
 }
 
-export const GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conversation: Schema.optional(
-        GoogleCloudContactcenterinsightsV1Conversation,
-      ),
-      autoLabelingRule: Schema.optional(
-        GoogleCloudContactcenterinsightsV1AutoLabelingRule,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conversation: Schema.optional(
+      GoogleCloudContactcenterinsightsV1Conversation,
+    ),
+    autoLabelingRule: Schema.optional(
+      GoogleCloudContactcenterinsightsV1AutoLabelingRule,
+    ),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1TestAutoLabelingRuleRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest {
   /** The time window of the conversations to compare the performance to. */
@@ -14515,46 +13325,42 @@ export interface GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewReque
   queryInterval?: GoogleCloudContactcenterinsightsV1QueryInterval;
 }
 
-export const GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      comparisonQueryInterval: Schema.optional(
-        GoogleCloudContactcenterinsightsV1QueryInterval,
-      ),
-      agentPerformanceSource: Schema.optional(
-        GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequestAgentSource,
-      ),
-      filter: Schema.optional(Schema.String),
-      queryInterval: Schema.optional(
-        GoogleCloudContactcenterinsightsV1QueryInterval,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    comparisonQueryInterval: Schema.optional(
+      GoogleCloudContactcenterinsightsV1QueryInterval,
+    ),
+    agentPerformanceSource: Schema.optional(
+      GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequestAgentSource,
+    ),
+    filter: Schema.optional(Schema.String),
+    queryInterval: Schema.optional(
+      GoogleCloudContactcenterinsightsV1QueryInterval,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1QueryPerformanceOverviewRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1IngestConversationsResponse {}
 
-export const GoogleCloudContactcenterinsightsV1IngestConversationsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1IngestConversationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudContactcenterinsightsV1IngestConversationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1IngestConversationsResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1IngestConversationsResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainGenerativeInsightsMetadata {
   /** The error message when the generative insights request fails. */
   errorMessages?: Array<GoogleRpcStatus>;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainGenerativeInsightsMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainGenerativeInsightsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errorMessages: Schema.optional(Schema.Array(GoogleRpcStatus)),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainGenerativeInsightsMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    errorMessages: Schema.optional(Schema.Array(GoogleRpcStatus)),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainGenerativeInsightsMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainGenerativeInsightsMetadata>;
+  });
 
 export interface GoogleIamV1Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -14567,17 +13373,12 @@ export interface GoogleIamV1Policy {
   bindings?: Array<GoogleIamV1Binding>;
 }
 
-export const GoogleIamV1Policy: Schema.Schema<GoogleIamV1Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.Number),
-      auditConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditConfig)),
-      etag: Schema.optional(Schema.String),
-      bindings: Schema.optional(Schema.Array(GoogleIamV1Binding)),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1Policy",
-  }) as any as Schema.Schema<GoogleIamV1Policy>;
+export const GoogleIamV1Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.Number),
+  auditConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditConfig)),
+  etag: Schema.optional(Schema.String),
+  bindings: Schema.optional(Schema.Array(GoogleIamV1Binding)),
+}).annotate({ identifier: "GoogleIamV1Policy" });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1ListAllFeedbackLabelsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -14586,18 +13387,16 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ListAllFeedbackLabelsRe
   feedbackLabels?: Array<GoogleCloudContactcenterinsightsV1alpha1FeedbackLabel>;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ListAllFeedbackLabelsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ListAllFeedbackLabelsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      feedbackLabels: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1alpha1FeedbackLabel),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1ListAllFeedbackLabelsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    feedbackLabels: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1alpha1FeedbackLabel),
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1ListAllFeedbackLabelsResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ListAllFeedbackLabelsResponse>;
+  });
 
 export interface GoogleIamV1SetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
@@ -14606,15 +13405,11 @@ export interface GoogleIamV1SetIamPolicyRequest {
   policy?: GoogleIamV1Policy;
 }
 
-export const GoogleIamV1SetIamPolicyRequest: Schema.Schema<GoogleIamV1SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateMask: Schema.optional(Schema.String),
-      policy: Schema.optional(GoogleIamV1Policy),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1SetIamPolicyRequest",
-  }) as any as Schema.Schema<GoogleIamV1SetIamPolicyRequest>;
+export const GoogleIamV1SetIamPolicyRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateMask: Schema.optional(Schema.String),
+    policy: Schema.optional(GoogleIamV1Policy),
+  }).annotate({ identifier: "GoogleIamV1SetIamPolicyRequest" });
 
 export interface GoogleCloudContactcenterinsightsV1QueryMetricsResponse {
   /** The macro average slice contains aggregated averages across all selected dimensions. i.e. if group_by agent and scorecard_id is specified, this field will contain the average across all agents and all scorecards. This field is only populated if the request specifies a Dimension. */
@@ -14627,23 +13422,19 @@ export interface GoogleCloudContactcenterinsightsV1QueryMetricsResponse {
   updateTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1QueryMetricsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1QueryMetricsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      macroAverageSlice: Schema.optional(
-        GoogleCloudContactcenterinsightsV1QueryMetricsResponseSlice,
-      ),
-      slices: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1QueryMetricsResponseSlice,
-        ),
-      ),
-      location: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1QueryMetricsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    macroAverageSlice: Schema.optional(
+      GoogleCloudContactcenterinsightsV1QueryMetricsResponseSlice,
+    ),
+    slices: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1QueryMetricsResponseSlice),
+    ),
+    location: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1QueryMetricsResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1QueryMetricsResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1CreateIssueMetadata {
   /** Output only. The time the operation was created. */
@@ -14654,41 +13445,37 @@ export interface GoogleCloudContactcenterinsightsV1alpha1CreateIssueMetadata {
   endTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1CreateIssueMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1CreateIssueMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      request: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1CreateIssueRequest,
-      ),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1CreateIssueMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    request: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1CreateIssueRequest,
+    ),
+    endTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1alpha1CreateIssueMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1CreateIssueMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1QueryPerformanceOverviewResponse {
   /** The summary text of the performance. */
   summaryText?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1QueryPerformanceOverviewResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QueryPerformanceOverviewResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      summaryText: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1QueryPerformanceOverviewResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    summaryText: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1QueryPerformanceOverviewResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1QueryPerformanceOverviewResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainQueryPerformanceOverviewMetadata {}
 
-export const GoogleCloudContactcenterinsightsV1mainQueryPerformanceOverviewMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainQueryPerformanceOverviewMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudContactcenterinsightsV1mainQueryPerformanceOverviewMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainQueryPerformanceOverviewMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainQueryPerformanceOverviewMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsMetadata {
   /** Output only. Partial errors during bulk analyze operation that might cause the operation output to be incomplete. */
@@ -14709,24 +13496,22 @@ export interface GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversation
   failedAnalysesCount?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
-      createTime: Schema.optional(Schema.String),
-      totalRequestedAnalysesCount: Schema.optional(Schema.Number),
-      endTime: Schema.optional(Schema.String),
-      completedAnalysesCount: Schema.optional(Schema.Number),
-      relabel: Schema.optional(Schema.Boolean),
-      request: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsRequest,
-      ),
-      failedAnalysesCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
+    createTime: Schema.optional(Schema.String),
+    totalRequestedAnalysesCount: Schema.optional(Schema.Number),
+    endTime: Schema.optional(Schema.String),
+    completedAnalysesCount: Schema.optional(Schema.Number),
+    relabel: Schema.optional(Schema.Boolean),
+    request: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsRequest,
+    ),
+    failedAnalysesCount: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1BulkAnalyzeConversationsMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsResponse {
   /** Count of successful analyses. */
@@ -14735,38 +13520,34 @@ export interface GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsR
   failedAnalysisCount?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      successfulAnalysisCount: Schema.optional(Schema.Number),
-      failedAnalysisCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    successfulAnalysisCount: Schema.optional(Schema.Number),
+    failedAnalysisCount: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainBulkAnalyzeConversationsResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1DeleteQaQuestionTagRequest {
   /** Required. The name of the QaQuestionTag to delete. */
   name?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1DeleteQaQuestionTagRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1DeleteQaQuestionTagRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1DeleteQaQuestionTagRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1DeleteQaQuestionTagRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1DeleteQaQuestionTagRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1DeployQaScorecardRevisionRequest {}
 
-export const GoogleCloudContactcenterinsightsV1DeployQaScorecardRevisionRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1DeployQaScorecardRevisionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudContactcenterinsightsV1DeployQaScorecardRevisionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1DeployQaScorecardRevisionRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1DeployQaScorecardRevisionRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1ExportIssueModelMetadata {
   /** The original export request. */
@@ -14777,18 +13558,16 @@ export interface GoogleCloudContactcenterinsightsV1ExportIssueModelMetadata {
   createTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ExportIssueModelMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1ExportIssueModelMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      request: Schema.optional(
-        GoogleCloudContactcenterinsightsV1ExportIssueModelRequest,
-      ),
-      endTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1ExportIssueModelMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    request: Schema.optional(
+      GoogleCloudContactcenterinsightsV1ExportIssueModelRequest,
+    ),
+    endTime: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1ExportIssueModelMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ExportIssueModelMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1ImportIssueModelMetadata {
   /** The time the operation was created. */
@@ -14799,26 +13578,24 @@ export interface GoogleCloudContactcenterinsightsV1ImportIssueModelMetadata {
   endTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ImportIssueModelMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1ImportIssueModelMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      request: Schema.optional(
-        GoogleCloudContactcenterinsightsV1ImportIssueModelRequest,
-      ),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1ImportIssueModelMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    request: Schema.optional(
+      GoogleCloudContactcenterinsightsV1ImportIssueModelRequest,
+    ),
+    endTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1ImportIssueModelMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ImportIssueModelMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabelsResponse {}
 
-export const GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabelsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabelsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabelsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabelsResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1BulkDeleteFeedbackLabelsResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1CalculateStatsResponse {
   /** A map associating each issue resource name with its respective number of matches in the set of conversations. Key has the format: `projects//locations//issueModels//issues/` Deprecated, use `issue_matches_stats` field instead. */
@@ -14842,55 +13619,47 @@ export interface GoogleCloudContactcenterinsightsV1CalculateStatsResponse {
   averageTurnCount?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1CalculateStatsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1CalculateStatsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      issueMatches: Schema.optional(
-        Schema.Record(Schema.String, Schema.Number),
+export const GoogleCloudContactcenterinsightsV1CalculateStatsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    issueMatches: Schema.optional(Schema.Record(Schema.String, Schema.Number)),
+    conversationCount: Schema.optional(Schema.Number),
+    customHighlighterMatches: Schema.optional(
+      Schema.Record(Schema.String, Schema.Number),
+    ),
+    issueMatchesStats: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats,
       ),
-      conversationCount: Schema.optional(Schema.Number),
-      customHighlighterMatches: Schema.optional(
-        Schema.Record(Schema.String, Schema.Number),
-      ),
-      issueMatchesStats: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          GoogleCloudContactcenterinsightsV1IssueModelLabelStatsIssueStats,
-        ),
-      ),
-      conversationCountTimeSeries: Schema.optional(
-        GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeries,
-      ),
-      smartHighlighterMatches: Schema.optional(
-        Schema.Record(Schema.String, Schema.Number),
-      ),
-      averageDuration: Schema.optional(Schema.String),
-      averageTurnCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+    ),
+    conversationCountTimeSeries: Schema.optional(
+      GoogleCloudContactcenterinsightsV1CalculateStatsResponseTimeSeries,
+    ),
+    smartHighlighterMatches: Schema.optional(
+      Schema.Record(Schema.String, Schema.Number),
+    ),
+    averageDuration: Schema.optional(Schema.String),
+    averageTurnCount: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1CalculateStatsResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1CalculateStatsResponse>;
+  });
 
 export interface GoogleIamV1TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: Array<string>;
 }
 
-export const GoogleIamV1TestIamPermissionsRequest: Schema.Schema<GoogleIamV1TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1TestIamPermissionsRequest",
-  }) as any as Schema.Schema<GoogleIamV1TestIamPermissionsRequest>;
+export const GoogleIamV1TestIamPermissionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleIamV1TestIamPermissionsRequest" });
 
 export interface GoogleCloudContactcenterinsightsV1ExportInsightsDataResponse {}
 
-export const GoogleCloudContactcenterinsightsV1ExportInsightsDataResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1ExportInsightsDataResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudContactcenterinsightsV1ExportInsightsDataResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1ExportInsightsDataResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ExportInsightsDataResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1DeleteQaQuestionTagMetadata {
   /** Output only. The original request. */
@@ -14901,25 +13670,23 @@ export interface GoogleCloudContactcenterinsightsV1DeleteQaQuestionTagMetadata {
   createTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1DeleteQaQuestionTagMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1DeleteQaQuestionTagMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      request: Schema.optional(
-        GoogleCloudContactcenterinsightsV1DeleteQaQuestionTagRequest,
-      ),
-      endTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1DeleteQaQuestionTagMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    request: Schema.optional(
+      GoogleCloudContactcenterinsightsV1DeleteQaQuestionTagRequest,
+    ),
+    endTime: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1DeleteQaQuestionTagMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1DeleteQaQuestionTagMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1FinalizeAssessmentRequest {}
 
-export const GoogleCloudContactcenterinsightsV1FinalizeAssessmentRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1FinalizeAssessmentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudContactcenterinsightsV1FinalizeAssessmentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1FinalizeAssessmentRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1FinalizeAssessmentRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainUndeployIssueModelMetadata {
   /** Output only. The time the operation was created. */
@@ -14930,19 +13697,17 @@ export interface GoogleCloudContactcenterinsightsV1mainUndeployIssueModelMetadat
   request?: GoogleCloudContactcenterinsightsV1mainUndeployIssueModelRequest;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainUndeployIssueModelMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainUndeployIssueModelMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      request: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainUndeployIssueModelRequest,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainUndeployIssueModelMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    request: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainUndeployIssueModelRequest,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainUndeployIssueModelMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainUndeployIssueModelMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest {
   /** A cloud storage bucket source. */
@@ -14953,54 +13718,50 @@ export interface GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsReque
   validateOnly?: boolean;
 }
 
-export const GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest: Schema.Schema<GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsSource: Schema.optional(
-        GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSource,
-      ),
-      sheetsSource: Schema.optional(
-        GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestSheetsSource,
-      ),
-      validateOnly: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gcsSource: Schema.optional(
+      GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestGcsSource,
+    ),
+    sheetsSource: Schema.optional(
+      GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequestSheetsSource,
+    ),
+    validateOnly: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1BulkUploadFeedbackLabelsRequest>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelResponse {
   /** The issue model that was imported. */
   issueModel?: GoogleCloudContactcenterinsightsV1alpha1IssueModel;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      issueModel: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1IssueModel,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    issueModel: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1IssueModel,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1BulkDeleteConversationsResponse {}
 
-export const GoogleCloudContactcenterinsightsV1BulkDeleteConversationsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1BulkDeleteConversationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudContactcenterinsightsV1BulkDeleteConversationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1BulkDeleteConversationsResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1BulkDeleteConversationsResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainInitializeEncryptionSpecResponse {}
 
-export const GoogleCloudContactcenterinsightsV1mainInitializeEncryptionSpecResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1mainInitializeEncryptionSpecResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudContactcenterinsightsV1mainInitializeEncryptionSpecResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainInitializeEncryptionSpecResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainInitializeEncryptionSpecResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1ListDatasetsResponse {
   /** The datasets that match the request. */
@@ -15009,17 +13770,15 @@ export interface GoogleCloudContactcenterinsightsV1ListDatasetsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1ListDatasetsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1ListDatasetsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      datasets: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1Dataset),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1ListDatasetsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    datasets: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1Dataset),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1ListDatasetsResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ListDatasetsResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelMetadata {
   /** The time the operation was created. */
@@ -15030,27 +13789,25 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelMetadat
   request?: GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelRequest;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      request: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelRequest,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    request: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelRequest,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ImportIssueModelMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsResponse {}
 
-export const GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainBulkDeleteFeedbackLabelsResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1ListFeedbackLabelsResponse {
   /** The feedback labels that match the request. */
@@ -15059,26 +13816,24 @@ export interface GoogleCloudContactcenterinsightsV1alpha1ListFeedbackLabelsRespo
   nextPageToken?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1ListFeedbackLabelsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ListFeedbackLabelsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      feedbackLabels: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1alpha1FeedbackLabel),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1alpha1ListFeedbackLabelsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    feedbackLabels: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1alpha1FeedbackLabel),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1ListFeedbackLabelsResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1ListFeedbackLabelsResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainDeployIssueModelResponse {}
 
-export const GoogleCloudContactcenterinsightsV1mainDeployIssueModelResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1mainDeployIssueModelResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudContactcenterinsightsV1mainDeployIssueModelResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainDeployIssueModelResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainDeployIssueModelResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainDeployIssueModelMetadata {
   /** Output only. The time the operation was created. */
@@ -15089,19 +13844,17 @@ export interface GoogleCloudContactcenterinsightsV1mainDeployIssueModelMetadata 
   endTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainDeployIssueModelMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainDeployIssueModelMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      request: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainDeployIssueModelRequest,
-      ),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainDeployIssueModelMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    request: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainDeployIssueModelRequest,
+    ),
+    endTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainDeployIssueModelMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainDeployIssueModelMetadata>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigResponse {
   /** Results for the DETAILED_SYNC execution mode. */
@@ -15110,18 +13863,16 @@ export interface GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigResp
   partialErrors?: Array<GoogleRpcStatus>;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      detailedResults: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigResponseDetailedCorrelationResults,
-      ),
-      partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    detailedResults: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigResponseDetailedCorrelationResults,
+    ),
+    partialErrors: Schema.optional(Schema.Array(GoogleRpcStatus)),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainTestCorrelationConfigResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainListAllFeedbackLabelsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -15130,34 +13881,30 @@ export interface GoogleCloudContactcenterinsightsV1mainListAllFeedbackLabelsResp
   feedbackLabels?: Array<GoogleCloudContactcenterinsightsV1mainFeedbackLabel>;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainListAllFeedbackLabelsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1mainListAllFeedbackLabelsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      feedbackLabels: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1mainFeedbackLabel),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainListAllFeedbackLabelsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    feedbackLabels: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1mainFeedbackLabel),
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainListAllFeedbackLabelsResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainListAllFeedbackLabelsResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1ListIssueModelsResponse {
   /** The issue models that match the request. */
   issueModels?: Array<GoogleCloudContactcenterinsightsV1IssueModel>;
 }
 
-export const GoogleCloudContactcenterinsightsV1ListIssueModelsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1ListIssueModelsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      issueModels: Schema.optional(
-        Schema.Array(GoogleCloudContactcenterinsightsV1IssueModel),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1ListIssueModelsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    issueModels: Schema.optional(
+      Schema.Array(GoogleCloudContactcenterinsightsV1IssueModel),
+    ),
+  }).annotate({
     identifier: "GoogleCloudContactcenterinsightsV1ListIssueModelsResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1ListIssueModelsResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsResponse {
   /** Count of successful analyses. */
@@ -15166,16 +13913,14 @@ export interface GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsRespo
   failedAnalysisCount?: number;
 }
 
-export const GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      successfulAnalysisCount: Schema.optional(Schema.Number),
-      failedAnalysisCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    successfulAnalysisCount: Schema.optional(Schema.Number),
+    failedAnalysisCount: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1BulkAnalyzeConversationsResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsResponse {
   /** The full list of generative responses. Each response is ordered by time. */
@@ -15184,30 +13929,28 @@ export interface GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsRespo
   transcript?: GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscript;
 }
 
-export const GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      generativeResponses: Schema.optional(
-        Schema.Array(
-          GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsResponseGenerativeResponse,
-        ),
+export const GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    generativeResponses: Schema.optional(
+      Schema.Array(
+        GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsResponseGenerativeResponse,
       ),
-      transcript: Schema.optional(
-        GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscript,
-      ),
-    }),
-  ).annotate({
+    ),
+    transcript: Schema.optional(
+      GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightConversationTranscript,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1alpha1GenerativeInsightsResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainUndeployIssueModelResponse {}
 
-export const GoogleCloudContactcenterinsightsV1mainUndeployIssueModelResponse: Schema.Schema<GoogleCloudContactcenterinsightsV1mainUndeployIssueModelResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudContactcenterinsightsV1mainUndeployIssueModelResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainUndeployIssueModelResponse",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainUndeployIssueModelResponse>;
+  });
 
 export interface GoogleCloudContactcenterinsightsV1mainDeleteIssueModelMetadata {
   /** The original request for deletion. */
@@ -15218,19 +13961,17 @@ export interface GoogleCloudContactcenterinsightsV1mainDeleteIssueModelMetadata 
   createTime?: string;
 }
 
-export const GoogleCloudContactcenterinsightsV1mainDeleteIssueModelMetadata: Schema.Schema<GoogleCloudContactcenterinsightsV1mainDeleteIssueModelMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      request: Schema.optional(
-        GoogleCloudContactcenterinsightsV1mainDeleteIssueModelRequest,
-      ),
-      endTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudContactcenterinsightsV1mainDeleteIssueModelMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    request: Schema.optional(
+      GoogleCloudContactcenterinsightsV1mainDeleteIssueModelRequest,
+    ),
+    endTime: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudContactcenterinsightsV1mainDeleteIssueModelMetadata",
-  }) as any as Schema.Schema<GoogleCloudContactcenterinsightsV1mainDeleteIssueModelMetadata>;
+  });
 
 // ==========================================================================
 // Operations

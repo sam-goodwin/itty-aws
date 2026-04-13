@@ -24,10 +24,9 @@ const svc = T.Service({
 
 export interface StopInstanceRequest {}
 
-export const StopInstanceRequest: Schema.Schema<StopInstanceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "StopInstanceRequest",
-  }) as any as Schema.Schema<StopInstanceRequest>;
+export const StopInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "StopInstanceRequest" });
 
 export interface SnapshotReservationDetail {
   /** The percent of snapshot space on this storage volume actually being used by the snapshot copies. This value might be higher than 100% if the snapshot copies have overflowed into the data portion of the storage volume. */
@@ -40,17 +39,13 @@ export interface SnapshotReservationDetail {
   reservedSpaceRemainingGib?: string;
 }
 
-export const SnapshotReservationDetail: Schema.Schema<SnapshotReservationDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reservedSpaceUsedPercent: Schema.optional(Schema.Number),
-      reservedSpaceGib: Schema.optional(Schema.String),
-      reservedSpacePercent: Schema.optional(Schema.Number),
-      reservedSpaceRemainingGib: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SnapshotReservationDetail",
-  }) as any as Schema.Schema<SnapshotReservationDetail>;
+export const SnapshotReservationDetail =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reservedSpaceUsedPercent: Schema.optional(Schema.Number),
+    reservedSpaceGib: Schema.optional(Schema.String),
+    reservedSpacePercent: Schema.optional(Schema.Number),
+    reservedSpaceRemainingGib: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SnapshotReservationDetail" });
 
 export interface Volume {
   /** Details about snapshot space reservation and usage on the storage volume. */
@@ -125,35 +120,32 @@ export interface Volume {
   instances?: Array<string>;
 }
 
-export const Volume: Schema.Schema<Volume> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      snapshotReservationDetail: Schema.optional(SnapshotReservationDetail),
-      bootVolume: Schema.optional(Schema.Boolean),
-      snapshotEnabled: Schema.optional(Schema.Boolean),
-      storageType: Schema.optional(Schema.String),
-      performanceTier: Schema.optional(Schema.String),
-      originallyRequestedSizeGib: Schema.optional(Schema.String),
-      workloadProfile: Schema.optional(Schema.String),
-      expireTime: Schema.optional(Schema.String),
-      protocol: Schema.optional(Schema.String),
-      currentSizeGib: Schema.optional(Schema.String),
-      notes: Schema.optional(Schema.String),
-      pod: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      requestedSizeGib: Schema.optional(Schema.String),
-      autoGrownSizeGib: Schema.optional(Schema.String),
-      remainingSpaceGib: Schema.optional(Schema.String),
-      maxSizeGib: Schema.optional(Schema.String),
-      snapshotAutoDeleteBehavior: Schema.optional(Schema.String),
-      emergencySizeGib: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      state: Schema.optional(Schema.String),
-      attached: Schema.optional(Schema.Boolean),
-      instances: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "Volume" }) as any as Schema.Schema<Volume>;
+export const Volume = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  snapshotReservationDetail: Schema.optional(SnapshotReservationDetail),
+  bootVolume: Schema.optional(Schema.Boolean),
+  snapshotEnabled: Schema.optional(Schema.Boolean),
+  storageType: Schema.optional(Schema.String),
+  performanceTier: Schema.optional(Schema.String),
+  originallyRequestedSizeGib: Schema.optional(Schema.String),
+  workloadProfile: Schema.optional(Schema.String),
+  expireTime: Schema.optional(Schema.String),
+  protocol: Schema.optional(Schema.String),
+  currentSizeGib: Schema.optional(Schema.String),
+  notes: Schema.optional(Schema.String),
+  pod: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  requestedSizeGib: Schema.optional(Schema.String),
+  autoGrownSizeGib: Schema.optional(Schema.String),
+  remainingSpaceGib: Schema.optional(Schema.String),
+  maxSizeGib: Schema.optional(Schema.String),
+  snapshotAutoDeleteBehavior: Schema.optional(Schema.String),
+  emergencySizeGib: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  state: Schema.optional(Schema.String),
+  attached: Schema.optional(Schema.Boolean),
+  instances: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Volume" });
 
 export interface Lun {
   /** The WWID for this LUN. */
@@ -192,23 +184,20 @@ export interface Lun {
   instances?: Array<string>;
 }
 
-export const Lun: Schema.Schema<Lun> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      wwid: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      bootLun: Schema.optional(Schema.Boolean),
-      storageVolume: Schema.optional(Schema.String),
-      shareable: Schema.optional(Schema.Boolean),
-      storageType: Schema.optional(Schema.String),
-      expireTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      sizeGb: Schema.optional(Schema.String),
-      multiprotocolType: Schema.optional(Schema.String),
-      instances: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "Lun" }) as any as Schema.Schema<Lun>;
+export const Lun = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  wwid: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  bootLun: Schema.optional(Schema.Boolean),
+  storageVolume: Schema.optional(Schema.String),
+  shareable: Schema.optional(Schema.Boolean),
+  storageType: Schema.optional(Schema.String),
+  expireTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  sizeGb: Schema.optional(Schema.String),
+  multiprotocolType: Schema.optional(Schema.String),
+  instances: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Lun" });
 
 export interface NetworkAddressReservation {
   /** The first address of this reservation block. Must be specified as a single IPv4 address, e.g. 10.1.2.2. */
@@ -219,16 +208,12 @@ export interface NetworkAddressReservation {
   note?: string;
 }
 
-export const NetworkAddressReservation: Schema.Schema<NetworkAddressReservation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startAddress: Schema.optional(Schema.String),
-      endAddress: Schema.optional(Schema.String),
-      note: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NetworkAddressReservation",
-  }) as any as Schema.Schema<NetworkAddressReservation>;
+export const NetworkAddressReservation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startAddress: Schema.optional(Schema.String),
+    endAddress: Schema.optional(Schema.String),
+    note: Schema.optional(Schema.String),
+  }).annotate({ identifier: "NetworkAddressReservation" });
 
 export interface NetworkMountPoint {
   /** Ip address of the server. */
@@ -241,29 +226,21 @@ export interface NetworkMountPoint {
   defaultGateway?: boolean;
 }
 
-export const NetworkMountPoint: Schema.Schema<NetworkMountPoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ipAddress: Schema.optional(Schema.String),
-      logicalInterface: Schema.optional(Schema.String),
-      instance: Schema.optional(Schema.String),
-      defaultGateway: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "NetworkMountPoint",
-  }) as any as Schema.Schema<NetworkMountPoint>;
+export const NetworkMountPoint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ipAddress: Schema.optional(Schema.String),
+  logicalInterface: Schema.optional(Schema.String),
+  instance: Schema.optional(Schema.String),
+  defaultGateway: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "NetworkMountPoint" });
 
 export interface QosPolicy {
   /** The bandwidth permitted by the QOS policy, in gbps. */
   bandwidthGbps?: number;
 }
 
-export const QosPolicy: Schema.Schema<QosPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bandwidthGbps: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "QosPolicy" }) as any as Schema.Schema<QosPolicy>;
+export const QosPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bandwidthGbps: Schema.optional(Schema.Number),
+}).annotate({ identifier: "QosPolicy" });
 
 export interface VlanAttachment {
   /** The router IP of the attachment. */
@@ -282,20 +259,15 @@ export interface VlanAttachment {
   peerVlanId?: string;
 }
 
-export const VlanAttachment: Schema.Schema<VlanAttachment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      routerIp: Schema.optional(Schema.String),
-      pairingKey: Schema.optional(Schema.String),
-      interconnectAttachment: Schema.optional(Schema.String),
-      peerIp: Schema.optional(Schema.String),
-      qosPolicy: Schema.optional(QosPolicy),
-      id: Schema.optional(Schema.String),
-      peerVlanId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VlanAttachment",
-  }) as any as Schema.Schema<VlanAttachment>;
+export const VlanAttachment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  routerIp: Schema.optional(Schema.String),
+  pairingKey: Schema.optional(Schema.String),
+  interconnectAttachment: Schema.optional(Schema.String),
+  peerIp: Schema.optional(Schema.String),
+  qosPolicy: Schema.optional(QosPolicy),
+  id: Schema.optional(Schema.String),
+  peerVlanId: Schema.optional(Schema.String),
+}).annotate({ identifier: "VlanAttachment" });
 
 export interface VRF {
   /** The QOS policy applied to this VRF. The value is only meaningful when all the vlan attachments have the same QoS. This field should not be used for new integrations, use vlan attachment level qos instead. The field is left for backward-compatibility. */
@@ -308,15 +280,12 @@ export interface VRF {
   name?: string;
 }
 
-export const VRF: Schema.Schema<VRF> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      qosPolicy: Schema.optional(QosPolicy),
-      state: Schema.optional(Schema.String),
-      vlanAttachments: Schema.optional(Schema.Array(VlanAttachment)),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "VRF" }) as any as Schema.Schema<VRF>;
+export const VRF = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  qosPolicy: Schema.optional(QosPolicy),
+  state: Schema.optional(Schema.String),
+  vlanAttachments: Schema.optional(Schema.Array(VlanAttachment)),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "VRF" });
 
 export interface Network {
   /** List of IP address reservations in this network. When updating this field, an error will be generated if a reservation conflicts with an IP address already allocated to a physical server. */
@@ -361,28 +330,25 @@ export interface Network {
   jumboFramesEnabled?: boolean;
 }
 
-export const Network: Schema.Schema<Network> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reservations: Schema.optional(Schema.Array(NetworkAddressReservation)),
-      pod: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      servicesCidr: Schema.optional(Schema.String),
-      cidr: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      mountPoints: Schema.optional(Schema.Array(NetworkMountPoint)),
-      name: Schema.optional(Schema.String),
-      vlanId: Schema.optional(Schema.String),
-      gatewayIp: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      ipAddress: Schema.optional(Schema.String),
-      vrf: Schema.optional(VRF),
-      vrfAttachment: Schema.optional(Schema.String),
-      macAddress: Schema.optional(Schema.Array(Schema.String)),
-      jumboFramesEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "Network" }) as any as Schema.Schema<Network>;
+export const Network = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  reservations: Schema.optional(Schema.Array(NetworkAddressReservation)),
+  pod: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  servicesCidr: Schema.optional(Schema.String),
+  cidr: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  mountPoints: Schema.optional(Schema.Array(NetworkMountPoint)),
+  name: Schema.optional(Schema.String),
+  vlanId: Schema.optional(Schema.String),
+  gatewayIp: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  ipAddress: Schema.optional(Schema.String),
+  vrf: Schema.optional(VRF),
+  vrfAttachment: Schema.optional(Schema.String),
+  macAddress: Schema.optional(Schema.Array(Schema.String)),
+  jumboFramesEnabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Network" });
 
 export interface LogicalNetworkInterface {
   /** IP address in the network */
@@ -397,18 +363,14 @@ export interface LogicalNetworkInterface {
   network?: string;
 }
 
-export const LogicalNetworkInterface: Schema.Schema<LogicalNetworkInterface> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ipAddress: Schema.optional(Schema.String),
-      defaultGateway: Schema.optional(Schema.Boolean),
-      networkType: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      network: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LogicalNetworkInterface",
-  }) as any as Schema.Schema<LogicalNetworkInterface>;
+export const LogicalNetworkInterface =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ipAddress: Schema.optional(Schema.String),
+    defaultGateway: Schema.optional(Schema.Boolean),
+    networkType: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    network: Schema.optional(Schema.String),
+  }).annotate({ identifier: "LogicalNetworkInterface" });
 
 export interface GoogleCloudBaremetalsolutionV2LogicalInterface {
   /** Interface name. This is of syntax or and forms part of the network template name. */
@@ -419,18 +381,14 @@ export interface GoogleCloudBaremetalsolutionV2LogicalInterface {
   logicalNetworkInterfaces?: Array<LogicalNetworkInterface>;
 }
 
-export const GoogleCloudBaremetalsolutionV2LogicalInterface: Schema.Schema<GoogleCloudBaremetalsolutionV2LogicalInterface> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      interfaceIndex: Schema.optional(Schema.Number),
-      logicalNetworkInterfaces: Schema.optional(
-        Schema.Array(LogicalNetworkInterface),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudBaremetalsolutionV2LogicalInterface",
-  }) as any as Schema.Schema<GoogleCloudBaremetalsolutionV2LogicalInterface>;
+export const GoogleCloudBaremetalsolutionV2LogicalInterface =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    interfaceIndex: Schema.optional(Schema.Number),
+    logicalNetworkInterfaces: Schema.optional(
+      Schema.Array(LogicalNetworkInterface),
+    ),
+  }).annotate({ identifier: "GoogleCloudBaremetalsolutionV2LogicalInterface" });
 
 export interface Instance {
   /** Immutable. The resource name of this `Instance`. Resource names are schemeless URIs that follow the conventions in https://cloud.google.com/apis/design/resource_names. Format: `projects/{project}/locations/{location}/instances/{instance}` */
@@ -490,34 +448,31 @@ export interface Instance {
   firmwareVersion?: string;
 }
 
-export const Instance: Schema.Schema<Instance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      loginInfo: Schema.optional(Schema.String),
-      volumes: Schema.optional(Schema.Array(Volume)),
-      updateTime: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      osImage: Schema.optional(Schema.String),
-      kmsKeyVersion: Schema.optional(Schema.String),
-      pod: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      interactiveSerialConsoleEnabled: Schema.optional(Schema.Boolean),
-      networkTemplate: Schema.optional(Schema.String),
-      hyperthreadingEnabled: Schema.optional(Schema.Boolean),
-      machineType: Schema.optional(Schema.String),
-      workloadProfile: Schema.optional(Schema.String),
-      sshKeys: Schema.optional(Schema.Array(Schema.String)),
-      luns: Schema.optional(Schema.Array(Lun)),
-      networks: Schema.optional(Schema.Array(Network)),
-      logicalInterfaces: Schema.optional(
-        Schema.Array(GoogleCloudBaremetalsolutionV2LogicalInterface),
-      ),
-      firmwareVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Instance" }) as any as Schema.Schema<Instance>;
+export const Instance = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  loginInfo: Schema.optional(Schema.String),
+  volumes: Schema.optional(Schema.Array(Volume)),
+  updateTime: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  osImage: Schema.optional(Schema.String),
+  kmsKeyVersion: Schema.optional(Schema.String),
+  pod: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  interactiveSerialConsoleEnabled: Schema.optional(Schema.Boolean),
+  networkTemplate: Schema.optional(Schema.String),
+  hyperthreadingEnabled: Schema.optional(Schema.Boolean),
+  machineType: Schema.optional(Schema.String),
+  workloadProfile: Schema.optional(Schema.String),
+  sshKeys: Schema.optional(Schema.Array(Schema.String)),
+  luns: Schema.optional(Schema.Array(Lun)),
+  networks: Schema.optional(Schema.Array(Network)),
+  logicalInterfaces: Schema.optional(
+    Schema.Array(GoogleCloudBaremetalsolutionV2LogicalInterface),
+  ),
+  firmwareVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "Instance" });
 
 export interface ListInstancesResponse {
   /** A token identifying a page of results from the server. */
@@ -528,16 +483,11 @@ export interface ListInstancesResponse {
   unreachable?: Array<string>;
 }
 
-export const ListInstancesResponse: Schema.Schema<ListInstancesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      instances: Schema.optional(Schema.Array(Instance)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListInstancesResponse",
-  }) as any as Schema.Schema<ListInstancesResponse>;
+export const ListInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  instances: Schema.optional(Schema.Array(Instance)),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ListInstancesResponse" });
 
 export interface NetworkAddress {
   /** Id of the network to use, within the same ProvisioningConfig request. */
@@ -548,16 +498,11 @@ export interface NetworkAddress {
   address?: string;
 }
 
-export const NetworkAddress: Schema.Schema<NetworkAddress> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      networkId: Schema.optional(Schema.String),
-      existingNetworkId: Schema.optional(Schema.String),
-      address: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NetworkAddress",
-  }) as any as Schema.Schema<NetworkAddress>;
+export const NetworkAddress = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  networkId: Schema.optional(Schema.String),
+  existingNetworkId: Schema.optional(Schema.String),
+  address: Schema.optional(Schema.String),
+}).annotate({ identifier: "NetworkAddress" });
 
 export interface InstanceConfig {
   /** List of logical interfaces for the instance. The number of logical interfaces will be the same as number of hardware bond/nic on the chosen network template. Filled if InstanceConfig.multivlan_config is true. */
@@ -594,50 +539,40 @@ export interface InstanceConfig {
   hyperthreading?: boolean;
 }
 
-export const InstanceConfig: Schema.Schema<InstanceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      logicalInterfaces: Schema.optional(
-        Schema.Array(GoogleCloudBaremetalsolutionV2LogicalInterface),
-      ),
-      accountNetworksEnabled: Schema.optional(Schema.Boolean),
-      instanceType: Schema.optional(Schema.String),
-      userNote: Schema.optional(Schema.String),
-      privateNetwork: Schema.optional(NetworkAddress),
-      networkTemplate: Schema.optional(Schema.String),
-      networkConfig: Schema.optional(Schema.String),
-      clientNetwork: Schema.optional(NetworkAddress),
-      id: Schema.optional(Schema.String),
-      sshKeyNames: Schema.optional(Schema.Array(Schema.String)),
-      osImage: Schema.optional(Schema.String),
-      kmsKeyVersion: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      hyperthreading: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "InstanceConfig",
-  }) as any as Schema.Schema<InstanceConfig>;
+export const InstanceConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  logicalInterfaces: Schema.optional(
+    Schema.Array(GoogleCloudBaremetalsolutionV2LogicalInterface),
+  ),
+  accountNetworksEnabled: Schema.optional(Schema.Boolean),
+  instanceType: Schema.optional(Schema.String),
+  userNote: Schema.optional(Schema.String),
+  privateNetwork: Schema.optional(NetworkAddress),
+  networkTemplate: Schema.optional(Schema.String),
+  networkConfig: Schema.optional(Schema.String),
+  clientNetwork: Schema.optional(NetworkAddress),
+  id: Schema.optional(Schema.String),
+  sshKeyNames: Schema.optional(Schema.Array(Schema.String)),
+  osImage: Schema.optional(Schema.String),
+  kmsKeyVersion: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  hyperthreading: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "InstanceConfig" });
 
 export interface DisableHyperthreadingRequest {}
 
-export const DisableHyperthreadingRequest: Schema.Schema<DisableHyperthreadingRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const DisableHyperthreadingRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DisableHyperthreadingRequest",
-  }) as any as Schema.Schema<DisableHyperthreadingRequest>;
+  });
 
 export interface ResizeVolumeRequest {
   /** New Volume size, in GiB. */
   sizeGib?: string;
 }
 
-export const ResizeVolumeRequest: Schema.Schema<ResizeVolumeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sizeGib: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ResizeVolumeRequest",
-  }) as any as Schema.Schema<ResizeVolumeRequest>;
+export const ResizeVolumeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sizeGib: Schema.optional(Schema.String),
+}).annotate({ identifier: "ResizeVolumeRequest" });
 
 export interface ReimageInstanceRequest {
   /** Optional. List of SSH Keys used during reimaging an instance. */
@@ -648,16 +583,13 @@ export interface ReimageInstanceRequest {
   kmsKeyVersion?: string;
 }
 
-export const ReimageInstanceRequest: Schema.Schema<ReimageInstanceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sshKeys: Schema.optional(Schema.Array(Schema.String)),
-      osImage: Schema.optional(Schema.String),
-      kmsKeyVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ReimageInstanceRequest",
-  }) as any as Schema.Schema<ReimageInstanceRequest>;
+export const ReimageInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    sshKeys: Schema.optional(Schema.Array(Schema.String)),
+    osImage: Schema.optional(Schema.String),
+    kmsKeyVersion: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ReimageInstanceRequest" });
 
 export interface AllowedClient {
   /** Disable root squashing, which is a feature of NFS. Root squash is a special mapping of the remote superuser (root) identity when using identity authentication. */
@@ -682,21 +614,16 @@ export interface AllowedClient {
   network?: string;
 }
 
-export const AllowedClient: Schema.Schema<AllowedClient> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      noRootSquash: Schema.optional(Schema.Boolean),
-      allowedClientsCidr: Schema.optional(Schema.String),
-      allowSuid: Schema.optional(Schema.Boolean),
-      shareIp: Schema.optional(Schema.String),
-      mountPermissions: Schema.optional(Schema.String),
-      allowDev: Schema.optional(Schema.Boolean),
-      nfsPath: Schema.optional(Schema.String),
-      network: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AllowedClient",
-  }) as any as Schema.Schema<AllowedClient>;
+export const AllowedClient = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  noRootSquash: Schema.optional(Schema.Boolean),
+  allowedClientsCidr: Schema.optional(Schema.String),
+  allowSuid: Schema.optional(Schema.Boolean),
+  shareIp: Schema.optional(Schema.String),
+  mountPermissions: Schema.optional(Schema.String),
+  allowDev: Schema.optional(Schema.Boolean),
+  nfsPath: Schema.optional(Schema.String),
+  network: Schema.optional(Schema.String),
+}).annotate({ identifier: "AllowedClient" });
 
 export interface NfsShare {
   /** List of allowed access points. */
@@ -727,21 +654,18 @@ export interface NfsShare {
   pod?: string;
 }
 
-export const NfsShare: Schema.Schema<NfsShare> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      allowedClients: Schema.optional(Schema.Array(AllowedClient)),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      nfsShareId: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      storageType: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      volume: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      requestedSizeGib: Schema.optional(Schema.String),
-      pod: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "NfsShare" }) as any as Schema.Schema<NfsShare>;
+export const NfsShare = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  allowedClients: Schema.optional(Schema.Array(AllowedClient)),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  nfsShareId: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  storageType: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  volume: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  requestedSizeGib: Schema.optional(Schema.String),
+  pod: Schema.optional(Schema.String),
+}).annotate({ identifier: "NfsShare" });
 
 export interface ListNfsSharesResponse {
   /** A token identifying a page of results from the server. */
@@ -752,30 +676,23 @@ export interface ListNfsSharesResponse {
   nfsShares?: Array<NfsShare>;
 }
 
-export const ListNfsSharesResponse: Schema.Schema<ListNfsSharesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      nfsShares: Schema.optional(Schema.Array(NfsShare)),
-    }),
-  ).annotate({
-    identifier: "ListNfsSharesResponse",
-  }) as any as Schema.Schema<ListNfsSharesResponse>;
+export const ListNfsSharesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+  nfsShares: Schema.optional(Schema.Array(NfsShare)),
+}).annotate({ identifier: "ListNfsSharesResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface ResetInstanceResponse {}
 
-export const ResetInstanceResponse: Schema.Schema<ResetInstanceResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "ResetInstanceResponse",
-  }) as any as Schema.Schema<ResetInstanceResponse>;
+export const ResetInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "ResetInstanceResponse" });
 
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -786,16 +703,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface InstanceQuota {
   /** Instance type. Deprecated: use gcp_service. */
@@ -810,18 +724,13 @@ export interface InstanceQuota {
   availableMachineCount?: number;
 }
 
-export const InstanceQuota: Schema.Schema<InstanceQuota> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      instanceType: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      gcpService: Schema.optional(Schema.String),
-      availableMachineCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "InstanceQuota",
-  }) as any as Schema.Schema<InstanceQuota>;
+export const InstanceQuota = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  instanceType: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  gcpService: Schema.optional(Schema.String),
+  availableMachineCount: Schema.optional(Schema.Number),
+}).annotate({ identifier: "InstanceQuota" });
 
 export interface OSImage {
   /** Output only. OS Image's unique name. */
@@ -836,16 +745,13 @@ export interface OSImage {
   supportedNetworkTemplates?: Array<string>;
 }
 
-export const OSImage: Schema.Schema<OSImage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      applicableInstanceTypes: Schema.optional(Schema.Array(Schema.String)),
-      code: Schema.optional(Schema.String),
-      supportedNetworkTemplates: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "OSImage" }) as any as Schema.Schema<OSImage>;
+export const OSImage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  applicableInstanceTypes: Schema.optional(Schema.Array(Schema.String)),
+  code: Schema.optional(Schema.String),
+  supportedNetworkTemplates: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "OSImage" });
 
 export interface ListOSImagesResponse {
   /** The OS images available. */
@@ -854,29 +760,19 @@ export interface ListOSImagesResponse {
   nextPageToken?: string;
 }
 
-export const ListOSImagesResponse: Schema.Schema<ListOSImagesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      osImages: Schema.optional(Schema.Array(OSImage)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListOSImagesResponse",
-  }) as any as Schema.Schema<ListOSImagesResponse>;
+export const ListOSImagesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  osImages: Schema.optional(Schema.Array(OSImage)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListOSImagesResponse" });
 
 export interface RenameNfsShareRequest {
   /** Required. The new `id` of the nfsshare. */
   newNfsshareId?: string;
 }
 
-export const RenameNfsShareRequest: Schema.Schema<RenameNfsShareRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      newNfsshareId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RenameNfsShareRequest",
-  }) as any as Schema.Schema<RenameNfsShareRequest>;
+export const RenameNfsShareRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  newNfsshareId: Schema.optional(Schema.String),
+}).annotate({ identifier: "RenameNfsShareRequest" });
 
 export interface UserAccount {
   /** Encrypted initial password value. */
@@ -885,15 +781,10 @@ export interface UserAccount {
   kmsKeyVersion?: string;
 }
 
-export const UserAccount: Schema.Schema<UserAccount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      encryptedPassword: Schema.optional(Schema.String),
-      kmsKeyVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UserAccount",
-  }) as any as Schema.Schema<UserAccount>;
+export const UserAccount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  encryptedPassword: Schema.optional(Schema.String),
+  kmsKeyVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "UserAccount" });
 
 export interface SSHKey {
   /** Output only. The name of this SSH key. Currently, the only valid value for the location is "global". */
@@ -902,13 +793,10 @@ export interface SSHKey {
   publicKey?: string;
 }
 
-export const SSHKey: Schema.Schema<SSHKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      publicKey: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "SSHKey" }) as any as Schema.Schema<SSHKey>;
+export const SSHKey = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  publicKey: Schema.optional(Schema.String),
+}).annotate({ identifier: "SSHKey" });
 
 export interface LoadInstanceAuthInfoResponse {
   /** Map of username to the user account info. */
@@ -917,15 +805,11 @@ export interface LoadInstanceAuthInfoResponse {
   sshKeys?: Array<SSHKey>;
 }
 
-export const LoadInstanceAuthInfoResponse: Schema.Schema<LoadInstanceAuthInfoResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userAccounts: Schema.optional(Schema.Record(Schema.String, UserAccount)),
-      sshKeys: Schema.optional(Schema.Array(SSHKey)),
-    }),
-  ).annotate({
-    identifier: "LoadInstanceAuthInfoResponse",
-  }) as any as Schema.Schema<LoadInstanceAuthInfoResponse>;
+export const LoadInstanceAuthInfoResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userAccounts: Schema.optional(Schema.Record(Schema.String, UserAccount)),
+    sshKeys: Schema.optional(Schema.Array(SSHKey)),
+  }).annotate({ identifier: "LoadInstanceAuthInfoResponse" });
 
 export interface ProvisioningQuota {
   /** The asset type of this provisioning quota. */
@@ -953,22 +837,17 @@ export interface ProvisioningQuota {
   gcpService?: string;
 }
 
-export const ProvisioningQuota: Schema.Schema<ProvisioningQuota> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      assetType: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-      availableCount: Schema.optional(Schema.Number),
-      serverCount: Schema.optional(Schema.String),
-      storageGib: Schema.optional(Schema.String),
-      instanceQuota: Schema.optional(InstanceQuota),
-      networkBandwidth: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      gcpService: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProvisioningQuota",
-  }) as any as Schema.Schema<ProvisioningQuota>;
+export const ProvisioningQuota = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  assetType: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  availableCount: Schema.optional(Schema.Number),
+  serverCount: Schema.optional(Schema.String),
+  storageGib: Schema.optional(Schema.String),
+  instanceQuota: Schema.optional(InstanceQuota),
+  networkBandwidth: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  gcpService: Schema.optional(Schema.String),
+}).annotate({ identifier: "ProvisioningQuota" });
 
 export interface ListVolumesResponse {
   /** A token identifying a page of results from the server. */
@@ -979,16 +858,11 @@ export interface ListVolumesResponse {
   unreachable?: Array<string>;
 }
 
-export const ListVolumesResponse: Schema.Schema<ListVolumesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      volumes: Schema.optional(Schema.Array(Volume)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListVolumesResponse",
-  }) as any as Schema.Schema<ListVolumesResponse>;
+export const ListVolumesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  volumes: Schema.optional(Schema.Array(Volume)),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ListVolumesResponse" });
 
 export interface NfsExport {
   /** Network to use to publish the export. */
@@ -1011,18 +885,15 @@ export interface NfsExport {
     | (string & {});
 }
 
-export const NfsExport: Schema.Schema<NfsExport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      networkId: Schema.optional(Schema.String),
-      machineId: Schema.optional(Schema.String),
-      noRootSquash: Schema.optional(Schema.Boolean),
-      allowSuid: Schema.optional(Schema.Boolean),
-      cidr: Schema.optional(Schema.String),
-      allowDev: Schema.optional(Schema.Boolean),
-      permissions: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "NfsExport" }) as any as Schema.Schema<NfsExport>;
+export const NfsExport = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  networkId: Schema.optional(Schema.String),
+  machineId: Schema.optional(Schema.String),
+  noRootSquash: Schema.optional(Schema.Boolean),
+  allowSuid: Schema.optional(Schema.Boolean),
+  cidr: Schema.optional(Schema.String),
+  allowDev: Schema.optional(Schema.Boolean),
+  permissions: Schema.optional(Schema.String),
+}).annotate({ identifier: "NfsExport" });
 
 export interface LunRange {
   /** Number of LUNs to create. */
@@ -1031,13 +902,10 @@ export interface LunRange {
   sizeGb?: number;
 }
 
-export const LunRange: Schema.Schema<LunRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      quantity: Schema.optional(Schema.Number),
-      sizeGb: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "LunRange" }) as any as Schema.Schema<LunRange>;
+export const LunRange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  quantity: Schema.optional(Schema.Number),
+  sizeGb: Schema.optional(Schema.Number),
+}).annotate({ identifier: "LunRange" });
 
 export interface VolumeConfig {
   /** The type of this Volume. */
@@ -1076,25 +944,20 @@ export interface VolumeConfig {
   sizeGb?: number;
 }
 
-export const VolumeConfig: Schema.Schema<VolumeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      nfsExports: Schema.optional(Schema.Array(NfsExport)),
-      lunRanges: Schema.optional(Schema.Array(LunRange)),
-      machineIds: Schema.optional(Schema.Array(Schema.String)),
-      protocol: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      gcpService: Schema.optional(Schema.String),
-      performanceTier: Schema.optional(Schema.String),
-      snapshotsEnabled: Schema.optional(Schema.Boolean),
-      userNote: Schema.optional(Schema.String),
-      sizeGb: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "VolumeConfig",
-  }) as any as Schema.Schema<VolumeConfig>;
+export const VolumeConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  nfsExports: Schema.optional(Schema.Array(NfsExport)),
+  lunRanges: Schema.optional(Schema.Array(LunRange)),
+  machineIds: Schema.optional(Schema.Array(Schema.String)),
+  protocol: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  gcpService: Schema.optional(Schema.String),
+  performanceTier: Schema.optional(Schema.String),
+  snapshotsEnabled: Schema.optional(Schema.Boolean),
+  userNote: Schema.optional(Schema.String),
+  sizeGb: Schema.optional(Schema.Number),
+}).annotate({ identifier: "VolumeConfig" });
 
 export interface IntakeVlanAttachment {
   /** Identifier of the VLAN attachment. */
@@ -1103,15 +966,10 @@ export interface IntakeVlanAttachment {
   pairingKey?: string;
 }
 
-export const IntakeVlanAttachment: Schema.Schema<IntakeVlanAttachment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      pairingKey: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "IntakeVlanAttachment",
-  }) as any as Schema.Schema<IntakeVlanAttachment>;
+export const IntakeVlanAttachment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  pairingKey: Schema.optional(Schema.String),
+}).annotate({ identifier: "IntakeVlanAttachment" });
 
 export interface NetworkConfig {
   /** Interconnect bandwidth. Set only when type is CLIENT. */
@@ -1152,25 +1010,20 @@ export interface NetworkConfig {
   vlanAttachments?: Array<IntakeVlanAttachment>;
 }
 
-export const NetworkConfig: Schema.Schema<NetworkConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bandwidth: Schema.optional(Schema.String),
-      serviceCidr: Schema.optional(Schema.String),
-      vlanSameProject: Schema.optional(Schema.Boolean),
-      id: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      cidr: Schema.optional(Schema.String),
-      vrf: Schema.optional(Schema.String),
-      userNote: Schema.optional(Schema.String),
-      jumboFramesEnabled: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-      gcpService: Schema.optional(Schema.String),
-      vlanAttachments: Schema.optional(Schema.Array(IntakeVlanAttachment)),
-    }),
-  ).annotate({
-    identifier: "NetworkConfig",
-  }) as any as Schema.Schema<NetworkConfig>;
+export const NetworkConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bandwidth: Schema.optional(Schema.String),
+  serviceCidr: Schema.optional(Schema.String),
+  vlanSameProject: Schema.optional(Schema.Boolean),
+  id: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  cidr: Schema.optional(Schema.String),
+  vrf: Schema.optional(Schema.String),
+  userNote: Schema.optional(Schema.String),
+  jumboFramesEnabled: Schema.optional(Schema.Boolean),
+  name: Schema.optional(Schema.String),
+  gcpService: Schema.optional(Schema.String),
+  vlanAttachments: Schema.optional(Schema.Array(IntakeVlanAttachment)),
+}).annotate({ identifier: "NetworkConfig" });
 
 export interface ProvisioningConfig {
   /** A service account to enable customers to access instance credentials upon handover. */
@@ -1214,28 +1067,23 @@ export interface ProvisioningConfig {
   cloudConsoleUri?: string;
 }
 
-export const ProvisioningConfig: Schema.Schema<ProvisioningConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      handoverServiceAccount: Schema.optional(Schema.String),
-      ticketId: Schema.optional(Schema.String),
-      email: Schema.optional(Schema.String),
-      pod: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      instances: Schema.optional(Schema.Array(InstanceConfig)),
-      volumes: Schema.optional(Schema.Array(VolumeConfig)),
-      statusMessage: Schema.optional(Schema.String),
-      customId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      networks: Schema.optional(Schema.Array(NetworkConfig)),
-      vpcScEnabled: Schema.optional(Schema.Boolean),
-      location: Schema.optional(Schema.String),
-      cloudConsoleUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProvisioningConfig",
-  }) as any as Schema.Schema<ProvisioningConfig>;
+export const ProvisioningConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  handoverServiceAccount: Schema.optional(Schema.String),
+  ticketId: Schema.optional(Schema.String),
+  email: Schema.optional(Schema.String),
+  pod: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  instances: Schema.optional(Schema.Array(InstanceConfig)),
+  volumes: Schema.optional(Schema.Array(VolumeConfig)),
+  statusMessage: Schema.optional(Schema.String),
+  customId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  networks: Schema.optional(Schema.Array(NetworkConfig)),
+  vpcScEnabled: Schema.optional(Schema.Boolean),
+  location: Schema.optional(Schema.String),
+  cloudConsoleUri: Schema.optional(Schema.String),
+}).annotate({ identifier: "ProvisioningConfig" });
 
 export interface SubmitProvisioningConfigRequest {
   /** Optional. Email provided to send a confirmation with provisioning config to. */
@@ -1244,15 +1092,11 @@ export interface SubmitProvisioningConfigRequest {
   provisioningConfig?: ProvisioningConfig;
 }
 
-export const SubmitProvisioningConfigRequest: Schema.Schema<SubmitProvisioningConfigRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      email: Schema.optional(Schema.String),
-      provisioningConfig: Schema.optional(ProvisioningConfig),
-    }),
-  ).annotate({
-    identifier: "SubmitProvisioningConfigRequest",
-  }) as any as Schema.Schema<SubmitProvisioningConfigRequest>;
+export const SubmitProvisioningConfigRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    email: Schema.optional(Schema.String),
+    provisioningConfig: Schema.optional(ProvisioningConfig),
+  }).annotate({ identifier: "SubmitProvisioningConfigRequest" });
 
 export interface NetworkUsage {
   /** Network. */
@@ -1261,15 +1105,10 @@ export interface NetworkUsage {
   usedIps?: Array<string>;
 }
 
-export const NetworkUsage: Schema.Schema<NetworkUsage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      network: Schema.optional(Network),
-      usedIps: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "NetworkUsage",
-  }) as any as Schema.Schema<NetworkUsage>;
+export const NetworkUsage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  network: Schema.optional(Network),
+  usedIps: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "NetworkUsage" });
 
 export interface Location {
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
@@ -1284,37 +1123,32 @@ export interface Location {
   labels?: Record<string, string>;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      locationId: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      displayName: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  locationId: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  displayName: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "Location" });
 
 export interface StartInstanceRequest {}
 
-export const StartInstanceRequest: Schema.Schema<StartInstanceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "StartInstanceRequest",
-  }) as any as Schema.Schema<StartInstanceRequest>;
+export const StartInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "StartInstanceRequest" });
 
 export interface EvictVolumeRequest {}
 
-export const EvictVolumeRequest: Schema.Schema<EvictVolumeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "EvictVolumeRequest",
-  }) as any as Schema.Schema<EvictVolumeRequest>;
+export const EvictVolumeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "EvictVolumeRequest" });
 
 export interface EnableInteractiveSerialConsoleResponse {}
 
-export const EnableInteractiveSerialConsoleResponse: Schema.Schema<EnableInteractiveSerialConsoleResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const EnableInteractiveSerialConsoleResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "EnableInteractiveSerialConsoleResponse",
-  }) as any as Schema.Schema<EnableInteractiveSerialConsoleResponse>;
+  });
 
 export interface Operation {
   /** The error result of the operation in case of failure or cancellation. */
@@ -1329,16 +1163,13 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      error: Schema.optional(Status),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  error: Schema.optional(Status),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  done: Schema.optional(Schema.Boolean),
+  name: Schema.optional(Schema.String),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Operation" });
 
 export interface VolumeSnapshot {
   /** The description of the snapshot. */
@@ -1355,19 +1186,14 @@ export interface VolumeSnapshot {
   createTime?: string;
 }
 
-export const VolumeSnapshot: Schema.Schema<VolumeSnapshot> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      storageVolume: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VolumeSnapshot",
-  }) as any as Schema.Schema<VolumeSnapshot>;
+export const VolumeSnapshot = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  storageVolume: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "VolumeSnapshot" });
 
 export interface ListVolumeSnapshotsResponse {
   /** Locations that could not be reached. */
@@ -1378,16 +1204,12 @@ export interface ListVolumeSnapshotsResponse {
   nextPageToken?: string;
 }
 
-export const ListVolumeSnapshotsResponse: Schema.Schema<ListVolumeSnapshotsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      volumeSnapshots: Schema.optional(Schema.Array(VolumeSnapshot)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListVolumeSnapshotsResponse",
-  }) as any as Schema.Schema<ListVolumeSnapshotsResponse>;
+export const ListVolumeSnapshotsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    volumeSnapshots: Schema.optional(Schema.Array(VolumeSnapshot)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListVolumeSnapshotsResponse" });
 
 export interface GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface {
   /** Interface type. */
@@ -1398,17 +1220,15 @@ export interface GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInter
   required?: boolean;
 }
 
-export const GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface: Schema.Schema<GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      required: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    required: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier:
       "GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface",
-  }) as any as Schema.Schema<GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface>;
+  });
 
 export interface ServerNetworkTemplate {
   /** Instance types this template is applicable to. */
@@ -1419,20 +1239,15 @@ export interface ServerNetworkTemplate {
   logicalInterfaces?: Array<GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface>;
 }
 
-export const ServerNetworkTemplate: Schema.Schema<ServerNetworkTemplate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      applicableInstanceTypes: Schema.optional(Schema.Array(Schema.String)),
-      name: Schema.optional(Schema.String),
-      logicalInterfaces: Schema.optional(
-        Schema.Array(
-          GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "ServerNetworkTemplate",
-  }) as any as Schema.Schema<ServerNetworkTemplate>;
+export const ServerNetworkTemplate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  applicableInstanceTypes: Schema.optional(Schema.Array(Schema.String)),
+  name: Schema.optional(Schema.String),
+  logicalInterfaces: Schema.optional(
+    Schema.Array(
+      GoogleCloudBaremetalsolutionV2ServerNetworkTemplateLogicalInterface,
+    ),
+  ),
+}).annotate({ identifier: "ServerNetworkTemplate" });
 
 export interface ListLunsResponse {
   /** Locations that could not be reached. */
@@ -1443,16 +1258,11 @@ export interface ListLunsResponse {
   luns?: Array<Lun>;
 }
 
-export const ListLunsResponse: Schema.Schema<ListLunsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-      luns: Schema.optional(Schema.Array(Lun)),
-    }),
-  ).annotate({
-    identifier: "ListLunsResponse",
-  }) as any as Schema.Schema<ListLunsResponse>;
+export const ListLunsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+  nextPageToken: Schema.optional(Schema.String),
+  luns: Schema.optional(Schema.Array(Lun)),
+}).annotate({ identifier: "ListLunsResponse" });
 
 export interface ListProvisioningQuotasResponse {
   /** The provisioning quotas registered in this project. */
@@ -1461,71 +1271,56 @@ export interface ListProvisioningQuotasResponse {
   nextPageToken?: string;
 }
 
-export const ListProvisioningQuotasResponse: Schema.Schema<ListProvisioningQuotasResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      provisioningQuotas: Schema.optional(Schema.Array(ProvisioningQuota)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListProvisioningQuotasResponse",
-  }) as any as Schema.Schema<ListProvisioningQuotasResponse>;
+export const ListProvisioningQuotasResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provisioningQuotas: Schema.optional(Schema.Array(ProvisioningQuota)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListProvisioningQuotasResponse" });
 
 export interface RenameNetworkRequest {
   /** Required. The new `id` of the network. */
   newNetworkId?: string;
 }
 
-export const RenameNetworkRequest: Schema.Schema<RenameNetworkRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      newNetworkId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RenameNetworkRequest",
-  }) as any as Schema.Schema<RenameNetworkRequest>;
+export const RenameNetworkRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  newNetworkId: Schema.optional(Schema.String),
+}).annotate({ identifier: "RenameNetworkRequest" });
 
 export interface EnableInteractiveSerialConsoleRequest {}
 
-export const EnableInteractiveSerialConsoleRequest: Schema.Schema<EnableInteractiveSerialConsoleRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const EnableInteractiveSerialConsoleRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "EnableInteractiveSerialConsoleRequest",
-  }) as any as Schema.Schema<EnableInteractiveSerialConsoleRequest>;
+  });
 
 export interface RestoreVolumeSnapshotRequest {}
 
-export const RestoreVolumeSnapshotRequest: Schema.Schema<RestoreVolumeSnapshotRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const RestoreVolumeSnapshotRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RestoreVolumeSnapshotRequest",
-  }) as any as Schema.Schema<RestoreVolumeSnapshotRequest>;
+  });
 
 export interface StartInstanceResponse {}
 
-export const StartInstanceResponse: Schema.Schema<StartInstanceResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "StartInstanceResponse",
-  }) as any as Schema.Schema<StartInstanceResponse>;
+export const StartInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "StartInstanceResponse" });
 
 export interface RenameInstanceRequest {
   /** Required. The new `id` of the instance. */
   newInstanceId?: string;
 }
 
-export const RenameInstanceRequest: Schema.Schema<RenameInstanceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      newInstanceId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RenameInstanceRequest",
-  }) as any as Schema.Schema<RenameInstanceRequest>;
+export const RenameInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  newInstanceId: Schema.optional(Schema.String),
+}).annotate({ identifier: "RenameInstanceRequest" });
 
 export interface DisableInteractiveSerialConsoleRequest {}
 
-export const DisableInteractiveSerialConsoleRequest: Schema.Schema<DisableInteractiveSerialConsoleRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const DisableInteractiveSerialConsoleRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DisableInteractiveSerialConsoleRequest",
-  }) as any as Schema.Schema<DisableInteractiveSerialConsoleRequest>;
+  });
 
 export interface ListNetworksResponse {
   /** Locations that could not be reached. */
@@ -1536,30 +1331,24 @@ export interface ListNetworksResponse {
   nextPageToken?: string;
 }
 
-export const ListNetworksResponse: Schema.Schema<ListNetworksResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      networks: Schema.optional(Schema.Array(Network)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListNetworksResponse",
-  }) as any as Schema.Schema<ListNetworksResponse>;
+export const ListNetworksResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+  networks: Schema.optional(Schema.Array(Network)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListNetworksResponse" });
 
 export interface ResetInstanceRequest {}
 
-export const ResetInstanceRequest: Schema.Schema<ResetInstanceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "ResetInstanceRequest",
-  }) as any as Schema.Schema<ResetInstanceRequest>;
+export const ResetInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "ResetInstanceRequest" });
 
 export interface DisableInteractiveSerialConsoleResponse {}
 
-export const DisableInteractiveSerialConsoleResponse: Schema.Schema<DisableInteractiveSerialConsoleResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const DisableInteractiveSerialConsoleResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DisableInteractiveSerialConsoleResponse",
-  }) as any as Schema.Schema<DisableInteractiveSerialConsoleResponse>;
+  });
 
 export interface DetachLunRequest {
   /** If true, performs lun unmapping without instance reboot. */
@@ -1568,57 +1357,42 @@ export interface DetachLunRequest {
   lun?: string;
 }
 
-export const DetachLunRequest: Schema.Schema<DetachLunRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      skipReboot: Schema.optional(Schema.Boolean),
-      lun: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DetachLunRequest",
-  }) as any as Schema.Schema<DetachLunRequest>;
+export const DetachLunRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  skipReboot: Schema.optional(Schema.Boolean),
+  lun: Schema.optional(Schema.String),
+}).annotate({ identifier: "DetachLunRequest" });
 
 export interface ListNetworkUsageResponse {
   /** Networks with IPs. */
   networks?: Array<NetworkUsage>;
 }
 
-export const ListNetworkUsageResponse: Schema.Schema<ListNetworkUsageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      networks: Schema.optional(Schema.Array(NetworkUsage)),
-    }),
-  ).annotate({
-    identifier: "ListNetworkUsageResponse",
-  }) as any as Schema.Schema<ListNetworkUsageResponse>;
+export const ListNetworkUsageResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    networks: Schema.optional(Schema.Array(NetworkUsage)),
+  }).annotate({ identifier: "ListNetworkUsageResponse" });
 
 export interface SubmitProvisioningConfigResponse {
   /** The submitted provisioning config. */
   provisioningConfig?: ProvisioningConfig;
 }
 
-export const SubmitProvisioningConfigResponse: Schema.Schema<SubmitProvisioningConfigResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      provisioningConfig: Schema.optional(ProvisioningConfig),
-    }),
-  ).annotate({
-    identifier: "SubmitProvisioningConfigResponse",
-  }) as any as Schema.Schema<SubmitProvisioningConfigResponse>;
+export const SubmitProvisioningConfigResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provisioningConfig: Schema.optional(ProvisioningConfig),
+  }).annotate({ identifier: "SubmitProvisioningConfigResponse" });
 
 export interface StopInstanceResponse {}
 
-export const StopInstanceResponse: Schema.Schema<StopInstanceResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "StopInstanceResponse",
-  }) as any as Schema.Schema<StopInstanceResponse>;
+export const StopInstanceResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "StopInstanceResponse" });
 
 export interface EvictLunRequest {}
 
-export const EvictLunRequest: Schema.Schema<EvictLunRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "EvictLunRequest",
-  }) as any as Schema.Schema<EvictLunRequest>;
+export const EvictLunRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "EvictLunRequest" });
 
 export interface ListSSHKeysResponse {
   /** The SSH keys registered in the project. */
@@ -1627,15 +1401,10 @@ export interface ListSSHKeysResponse {
   nextPageToken?: string;
 }
 
-export const ListSSHKeysResponse: Schema.Schema<ListSSHKeysResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sshKeys: Schema.optional(Schema.Array(SSHKey)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListSSHKeysResponse",
-  }) as any as Schema.Schema<ListSSHKeysResponse>;
+export const ListSSHKeysResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sshKeys: Schema.optional(Schema.Array(SSHKey)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListSSHKeysResponse" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -1644,36 +1413,26 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(Location)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface RenameVolumeRequest {
   /** Required. The new `id` of the volume. */
   newVolumeId?: string;
 }
 
-export const RenameVolumeRequest: Schema.Schema<RenameVolumeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      newVolumeId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RenameVolumeRequest",
-  }) as any as Schema.Schema<RenameVolumeRequest>;
+export const RenameVolumeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  newVolumeId: Schema.optional(Schema.String),
+}).annotate({ identifier: "RenameVolumeRequest" });
 
 export interface EnableHyperthreadingRequest {}
 
-export const EnableHyperthreadingRequest: Schema.Schema<EnableHyperthreadingRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const EnableHyperthreadingRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "EnableHyperthreadingRequest",
-  }) as any as Schema.Schema<EnableHyperthreadingRequest>;
+  });
 
 // ==========================================================================
 // Operations

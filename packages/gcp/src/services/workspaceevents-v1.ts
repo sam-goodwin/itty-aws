@@ -26,12 +26,9 @@ export interface DataPart {
   data?: Record<string, unknown>;
 }
 
-export const DataPart: Schema.Schema<DataPart> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      data: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "DataPart" }) as any as Schema.Schema<DataPart>;
+export const DataPart = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  data: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "DataPart" });
 
 export interface PayloadOptions {
   /** Optional. Whether the event payload includes data about the resource that changed. For example, for an event where a Google Chat message was created, whether the payload contains data about the [`Message`](https://developers.google.com/chat/api/reference/rest/v1/spaces.messages) resource. If false, the event payload only includes the name of the changed resource. */
@@ -40,15 +37,10 @@ export interface PayloadOptions {
   fieldMask?: string;
 }
 
-export const PayloadOptions: Schema.Schema<PayloadOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      includeResource: Schema.optional(Schema.Boolean),
-      fieldMask: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PayloadOptions",
-  }) as any as Schema.Schema<PayloadOptions>;
+export const PayloadOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  includeResource: Schema.optional(Schema.Boolean),
+  fieldMask: Schema.optional(Schema.String),
+}).annotate({ identifier: "PayloadOptions" });
 
 export interface FilePart {
   mimeType?: string;
@@ -57,15 +49,12 @@ export interface FilePart {
   fileWithBytes?: string;
 }
 
-export const FilePart: Schema.Schema<FilePart> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mimeType: Schema.optional(Schema.String),
-      fileWithUri: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      fileWithBytes: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "FilePart" }) as any as Schema.Schema<FilePart>;
+export const FilePart = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  mimeType: Schema.optional(Schema.String),
+  fileWithUri: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  fileWithBytes: Schema.optional(Schema.String),
+}).annotate({ identifier: "FilePart" });
 
 export interface Part {
   /** Optional metadata associated with this part. */
@@ -75,15 +64,12 @@ export interface Part {
   data?: DataPart;
 }
 
-export const Part: Schema.Schema<Part> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      text: Schema.optional(Schema.String),
-      file: Schema.optional(FilePart),
-      data: Schema.optional(DataPart),
-    }),
-  ).annotate({ identifier: "Part" }) as any as Schema.Schema<Part>;
+export const Part = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  text: Schema.optional(Schema.String),
+  file: Schema.optional(FilePart),
+  data: Schema.optional(DataPart),
+}).annotate({ identifier: "Part" });
 
 export interface Message {
   /** protolint:disable REPEATED_FIELD_NAMES_PLURALIZED Content is the container of the message content. */
@@ -102,18 +88,15 @@ export interface Message {
   extensions?: Array<string>;
 }
 
-export const Message: Schema.Schema<Message> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      content: Schema.optional(Schema.Array(Part)),
-      contextId: Schema.optional(Schema.String),
-      messageId: Schema.optional(Schema.String),
-      taskId: Schema.optional(Schema.String),
-      role: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      extensions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "Message" }) as any as Schema.Schema<Message>;
+export const Message = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  content: Schema.optional(Schema.Array(Part)),
+  contextId: Schema.optional(Schema.String),
+  messageId: Schema.optional(Schema.String),
+  taskId: Schema.optional(Schema.String),
+  role: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  extensions: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Message" });
 
 export interface TaskStatus {
   /** The current state of this task */
@@ -134,14 +117,11 @@ export interface TaskStatus {
   timestamp?: string;
 }
 
-export const TaskStatus: Schema.Schema<TaskStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      message: Schema.optional(Message),
-      timestamp: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "TaskStatus" }) as any as Schema.Schema<TaskStatus>;
+export const TaskStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.String),
+  message: Schema.optional(Message),
+  timestamp: Schema.optional(Schema.String),
+}).annotate({ identifier: "TaskStatus" });
 
 export interface Artifact {
   /** Optional metadata included with the artifact. */
@@ -158,17 +138,14 @@ export interface Artifact {
   artifactId?: string;
 }
 
-export const Artifact: Schema.Schema<Artifact> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      extensions: Schema.optional(Schema.Array(Schema.String)),
-      name: Schema.optional(Schema.String),
-      parts: Schema.optional(Schema.Array(Part)),
-      description: Schema.optional(Schema.String),
-      artifactId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Artifact" }) as any as Schema.Schema<Artifact>;
+export const Artifact = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  extensions: Schema.optional(Schema.Array(Schema.String)),
+  name: Schema.optional(Schema.String),
+  parts: Schema.optional(Schema.Array(Part)),
+  description: Schema.optional(Schema.String),
+  artifactId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Artifact" });
 
 export interface Task {
   /** Unique identifier (e.g. UUID) for the contextual collection of interactions (tasks and messages). Created by the A2A server. */
@@ -185,17 +162,14 @@ export interface Task {
   id?: string;
 }
 
-export const Task: Schema.Schema<Task> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contextId: Schema.optional(Schema.String),
-      status: Schema.optional(TaskStatus),
-      artifacts: Schema.optional(Schema.Array(Artifact)),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      history: Schema.optional(Schema.Array(Message)),
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Task" }) as any as Schema.Schema<Task>;
+export const Task = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  contextId: Schema.optional(Schema.String),
+  status: Schema.optional(TaskStatus),
+  artifacts: Schema.optional(Schema.Array(Artifact)),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  history: Schema.optional(Schema.Array(Message)),
+  id: Schema.optional(Schema.String),
+}).annotate({ identifier: "Task" });
 
 export interface TaskStatusUpdateEvent {
   /** The id of the task that is changed */
@@ -210,18 +184,13 @@ export interface TaskStatusUpdateEvent {
   status?: TaskStatus;
 }
 
-export const TaskStatusUpdateEvent: Schema.Schema<TaskStatusUpdateEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      taskId: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      final: Schema.optional(Schema.Boolean),
-      contextId: Schema.optional(Schema.String),
-      status: Schema.optional(TaskStatus),
-    }),
-  ).annotate({
-    identifier: "TaskStatusUpdateEvent",
-  }) as any as Schema.Schema<TaskStatusUpdateEvent>;
+export const TaskStatusUpdateEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  taskId: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  final: Schema.optional(Schema.Boolean),
+  contextId: Schema.optional(Schema.String),
+  status: Schema.optional(TaskStatus),
+}).annotate({ identifier: "TaskStatusUpdateEvent" });
 
 export interface TaskArtifactUpdateEvent {
   /** The id of the task for this artifact */
@@ -238,19 +207,15 @@ export interface TaskArtifactUpdateEvent {
   lastChunk?: boolean;
 }
 
-export const TaskArtifactUpdateEvent: Schema.Schema<TaskArtifactUpdateEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      taskId: Schema.optional(Schema.String),
-      artifact: Schema.optional(Artifact),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      append: Schema.optional(Schema.Boolean),
-      contextId: Schema.optional(Schema.String),
-      lastChunk: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "TaskArtifactUpdateEvent",
-  }) as any as Schema.Schema<TaskArtifactUpdateEvent>;
+export const TaskArtifactUpdateEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    taskId: Schema.optional(Schema.String),
+    artifact: Schema.optional(Artifact),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    append: Schema.optional(Schema.Boolean),
+    contextId: Schema.optional(Schema.String),
+    lastChunk: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "TaskArtifactUpdateEvent" });
 
 export interface StreamResponse {
   message?: Message;
@@ -259,24 +224,19 @@ export interface StreamResponse {
   artifactUpdate?: TaskArtifactUpdateEvent;
 }
 
-export const StreamResponse: Schema.Schema<StreamResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      message: Schema.optional(Message),
-      task: Schema.optional(Task),
-      statusUpdate: Schema.optional(TaskStatusUpdateEvent),
-      artifactUpdate: Schema.optional(TaskArtifactUpdateEvent),
-    }),
-  ).annotate({
-    identifier: "StreamResponse",
-  }) as any as Schema.Schema<StreamResponse>;
+export const StreamResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  message: Schema.optional(Message),
+  task: Schema.optional(Task),
+  statusUpdate: Schema.optional(TaskStatusUpdateEvent),
+  artifactUpdate: Schema.optional(TaskArtifactUpdateEvent),
+}).annotate({ identifier: "StreamResponse" });
 
 export interface ReactivateSubscriptionRequest {}
 
-export const ReactivateSubscriptionRequest: Schema.Schema<ReactivateSubscriptionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const ReactivateSubscriptionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ReactivateSubscriptionRequest",
-  }) as any as Schema.Schema<ReactivateSubscriptionRequest>;
+  });
 
 export interface AuthenticationInfo {
   /** Supported authentication schemes - e.g. Basic, Bearer, etc */
@@ -285,15 +245,10 @@ export interface AuthenticationInfo {
   credentials?: string;
 }
 
-export const AuthenticationInfo: Schema.Schema<AuthenticationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      schemes: Schema.optional(Schema.Array(Schema.String)),
-      credentials: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AuthenticationInfo",
-  }) as any as Schema.Schema<AuthenticationInfo>;
+export const AuthenticationInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  schemes: Schema.optional(Schema.Array(Schema.String)),
+  credentials: Schema.optional(Schema.String),
+}).annotate({ identifier: "AuthenticationInfo" });
 
 export interface PushNotificationConfig {
   /** Url to send the notification too */
@@ -306,17 +261,14 @@ export interface PushNotificationConfig {
   token?: string;
 }
 
-export const PushNotificationConfig: Schema.Schema<PushNotificationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      url: Schema.optional(Schema.String),
-      authentication: Schema.optional(AuthenticationInfo),
-      id: Schema.optional(Schema.String),
-      token: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PushNotificationConfig",
-  }) as any as Schema.Schema<PushNotificationConfig>;
+export const PushNotificationConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    url: Schema.optional(Schema.String),
+    authentication: Schema.optional(AuthenticationInfo),
+    id: Schema.optional(Schema.String),
+    token: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "PushNotificationConfig" });
 
 export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -327,30 +279,22 @@ export interface Status {
   code?: number;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      code: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  code: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Status" });
 
 export interface CancelTaskRequest {
   /** Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release. */
   tenant?: string;
 }
 
-export const CancelTaskRequest: Schema.Schema<CancelTaskRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tenant: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CancelTaskRequest",
-  }) as any as Schema.Schema<CancelTaskRequest>;
+export const CancelTaskRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tenant: Schema.optional(Schema.String),
+}).annotate({ identifier: "CancelTaskRequest" });
 
 export interface TaskPushNotificationConfig {
   /** The resource name of the config. Format: tasks/{task_id}/pushNotificationConfigs/{config_id} */
@@ -359,15 +303,11 @@ export interface TaskPushNotificationConfig {
   pushNotificationConfig?: PushNotificationConfig;
 }
 
-export const TaskPushNotificationConfig: Schema.Schema<TaskPushNotificationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      pushNotificationConfig: Schema.optional(PushNotificationConfig),
-    }),
-  ).annotate({
-    identifier: "TaskPushNotificationConfig",
-  }) as any as Schema.Schema<TaskPushNotificationConfig>;
+export const TaskPushNotificationConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    pushNotificationConfig: Schema.optional(PushNotificationConfig),
+  }).annotate({ identifier: "TaskPushNotificationConfig" });
 
 export interface SendMessageConfiguration {
   /** The output modes that the agent is expected to respond with. */
@@ -380,17 +320,13 @@ export interface SendMessageConfiguration {
   blocking?: boolean;
 }
 
-export const SendMessageConfiguration: Schema.Schema<SendMessageConfiguration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      acceptedOutputModes: Schema.optional(Schema.Array(Schema.String)),
-      pushNotification: Schema.optional(PushNotificationConfig),
-      historyLength: Schema.optional(Schema.Number),
-      blocking: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "SendMessageConfiguration",
-  }) as any as Schema.Schema<SendMessageConfiguration>;
+export const SendMessageConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    acceptedOutputModes: Schema.optional(Schema.Array(Schema.String)),
+    pushNotification: Schema.optional(PushNotificationConfig),
+    historyLength: Schema.optional(Schema.Number),
+    blocking: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "SendMessageConfiguration" });
 
 export interface SendMessageRequest {
   /** Optional tenant, provided as a path parameter. Experimental, might still change for 1.0 release. */
@@ -403,17 +339,12 @@ export interface SendMessageRequest {
   configuration?: SendMessageConfiguration;
 }
 
-export const SendMessageRequest: Schema.Schema<SendMessageRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tenant: Schema.optional(Schema.String),
-      message: Schema.optional(Message),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      configuration: Schema.optional(SendMessageConfiguration),
-    }),
-  ).annotate({
-    identifier: "SendMessageRequest",
-  }) as any as Schema.Schema<SendMessageRequest>;
+export const SendMessageRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tenant: Schema.optional(Schema.String),
+  message: Schema.optional(Message),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  configuration: Schema.optional(SendMessageConfiguration),
+}).annotate({ identifier: "SendMessageRequest" });
 
 export interface ListTaskPushNotificationConfigResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -422,29 +353,20 @@ export interface ListTaskPushNotificationConfigResponse {
   configs?: Array<TaskPushNotificationConfig>;
 }
 
-export const ListTaskPushNotificationConfigResponse: Schema.Schema<ListTaskPushNotificationConfigResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      configs: Schema.optional(Schema.Array(TaskPushNotificationConfig)),
-    }),
-  ).annotate({
-    identifier: "ListTaskPushNotificationConfigResponse",
-  }) as any as Schema.Schema<ListTaskPushNotificationConfigResponse>;
+export const ListTaskPushNotificationConfigResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    configs: Schema.optional(Schema.Array(TaskPushNotificationConfig)),
+  }).annotate({ identifier: "ListTaskPushNotificationConfigResponse" });
 
 export interface NotificationEndpoint {
   /** Immutable. The Pub/Sub topic that receives events for the subscription. Format: `projects/{project}/topics/{topic}` You must create the topic in the same Google Cloud project where you create this subscription. Note: The Google Workspace Events API uses [ordering keys](https://cloud.google.com/pubsub/docs/ordering) for the benefit of sequential events. If the Cloud Pub/Sub topic has a [message storage policy](https://cloud.google.com/pubsub/docs/resource-location-restriction#exceptions) configured to exclude the nearest Google Cloud region, publishing events with ordering keys will fail. When the topic receives events, the events are encoded as Pub/Sub messages. For details, see the [Google Cloud Pub/Sub Protocol Binding for CloudEvents](https://github.com/googleapis/google-cloudevents/blob/main/docs/spec/pubsub.md). */
   pubsubTopic?: string;
 }
 
-export const NotificationEndpoint: Schema.Schema<NotificationEndpoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pubsubTopic: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NotificationEndpoint",
-  }) as any as Schema.Schema<NotificationEndpoint>;
+export const NotificationEndpoint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pubsubTopic: Schema.optional(Schema.String),
+}).annotate({ identifier: "NotificationEndpoint" });
 
 export interface Subscription {
   /** Output only. The user who authorized the creation of the subscription. The user must be able to view the `target_resource`. For Google Workspace users, the `{user}` value is the [`user.id`](https://developers.google.com/workspace/admin/directory/reference/rest/v1/users#User.FIELDS.id) field from the Directory API. Format: `users/{user}` */
@@ -499,30 +421,25 @@ export interface Subscription {
   reconciling?: boolean;
 }
 
-export const Subscription: Schema.Schema<Subscription> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userAuthority: Schema.optional(Schema.String),
-      serviceAccountAuthority: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      suspensionReason: Schema.optional(Schema.String),
-      authority: Schema.optional(Schema.String),
-      ttl: Schema.optional(Schema.String),
-      eventTypes: Schema.optional(Schema.Array(Schema.String)),
-      payloadOptions: Schema.optional(PayloadOptions),
-      notificationEndpoint: Schema.optional(NotificationEndpoint),
-      state: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      uid: Schema.optional(Schema.String),
-      targetResource: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      expireTime: Schema.optional(Schema.String),
-      reconciling: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "Subscription",
-  }) as any as Schema.Schema<Subscription>;
+export const Subscription = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  userAuthority: Schema.optional(Schema.String),
+  serviceAccountAuthority: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  suspensionReason: Schema.optional(Schema.String),
+  authority: Schema.optional(Schema.String),
+  ttl: Schema.optional(Schema.String),
+  eventTypes: Schema.optional(Schema.Array(Schema.String)),
+  payloadOptions: Schema.optional(PayloadOptions),
+  notificationEndpoint: Schema.optional(NotificationEndpoint),
+  state: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  uid: Schema.optional(Schema.String),
+  targetResource: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  expireTime: Schema.optional(Schema.String),
+  reconciling: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Subscription" });
 
 export interface ListSubscriptionsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -531,15 +448,11 @@ export interface ListSubscriptionsResponse {
   subscriptions?: Array<Subscription>;
 }
 
-export const ListSubscriptionsResponse: Schema.Schema<ListSubscriptionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      subscriptions: Schema.optional(Schema.Array(Subscription)),
-    }),
-  ).annotate({
-    identifier: "ListSubscriptionsResponse",
-  }) as any as Schema.Schema<ListSubscriptionsResponse>;
+export const ListSubscriptionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    subscriptions: Schema.optional(Schema.Array(Subscription)),
+  }).annotate({ identifier: "ListSubscriptionsResponse" });
 
 export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
@@ -554,23 +467,19 @@ export interface Operation {
   error?: Status;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      name: Schema.optional(Schema.String),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      error: Schema.optional(Status),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  name: Schema.optional(Schema.String),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  done: Schema.optional(Schema.Boolean),
+  error: Schema.optional(Status),
+}).annotate({ identifier: "Operation" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 // ==========================================================================
 // Operations

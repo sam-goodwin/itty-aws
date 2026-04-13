@@ -41,14 +41,11 @@ export interface Location {
   >;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locationId: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      features: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locationId: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  features: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Location" });
 
 export interface AddGoogleAnalyticsRequest {
   /** The ID for the existing [Google Analytics account](http://www.google.com/analytics/) that you want to link with the `FirebaseProject`. Specifying this field will provision a new Google Analytics property in your Google Analytics account and associate the new property with the `FirebaseProject`. */
@@ -57,15 +54,11 @@ export interface AddGoogleAnalyticsRequest {
   analyticsPropertyId?: string;
 }
 
-export const AddGoogleAnalyticsRequest: Schema.Schema<AddGoogleAnalyticsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      analyticsAccountId: Schema.optional(Schema.String),
-      analyticsPropertyId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AddGoogleAnalyticsRequest",
-  }) as any as Schema.Schema<AddGoogleAnalyticsRequest>;
+export const AddGoogleAnalyticsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    analyticsAccountId: Schema.optional(Schema.String),
+    analyticsPropertyId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AddGoogleAnalyticsRequest" });
 
 export interface IosApp {
   /** Output only. If the App has been removed from the Project, this is the timestamp of when the App is considered expired and will be permanently deleted. After this time, the App cannot be undeleted (that is, restored to the Project). This value is only provided if the App is in the `DELETED` state. */
@@ -92,29 +85,25 @@ export interface IosApp {
   state?: "STATE_UNSPECIFIED" | "ACTIVE" | "DELETED" | (string & {});
 }
 
-export const IosApp: Schema.Schema<IosApp> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expireTime: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      appId: Schema.optional(Schema.String),
-      apiKeyId: Schema.optional(Schema.String),
-      bundleId: Schema.optional(Schema.String),
-      teamId: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      projectId: Schema.optional(Schema.String),
-      appStoreId: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "IosApp" }) as any as Schema.Schema<IosApp>;
+export const IosApp = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  expireTime: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  appId: Schema.optional(Schema.String),
+  apiKeyId: Schema.optional(Schema.String),
+  bundleId: Schema.optional(Schema.String),
+  teamId: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  projectId: Schema.optional(Schema.String),
+  appStoreId: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+}).annotate({ identifier: "IosApp" });
 
 export interface OperationMetadata {}
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "OperationMetadata" });
 
 export interface DefaultResources {
   /** Output only. **DEPRECATED.** _Instead, find the name of the default Firebase Hosting site using [ListSites](https://firebase.google.com/docs/reference/hosting/rest/v1beta1/projects.sites/list) within the Firebase Hosting REST API. If the default Hosting site for the Project has not yet been provisioned, the return might not contain a default site._ The name of the default Firebase Hosting site, in the format: PROJECT_ID Though rare, your `projectId` might already be used as the name for an existing Hosting site in another project (learn more about creating non-default, [additional sites](https://firebase.google.com/docs/hosting/multisites)). In these cases, your `projectId` is appended with a hyphen then five alphanumeric characters to create your default Hosting site name. For example, if your `projectId` is `myproject123`, your default Hosting site name might be: `myproject123-a5c16` */
@@ -127,17 +116,12 @@ export interface DefaultResources {
   storageBucket?: string;
 }
 
-export const DefaultResources: Schema.Schema<DefaultResources> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hostingSite: Schema.optional(Schema.String),
-      locationId: Schema.optional(Schema.String),
-      realtimeDatabaseInstance: Schema.optional(Schema.String),
-      storageBucket: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DefaultResources",
-  }) as any as Schema.Schema<DefaultResources>;
+export const DefaultResources = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  hostingSite: Schema.optional(Schema.String),
+  locationId: Schema.optional(Schema.String),
+  realtimeDatabaseInstance: Schema.optional(Schema.String),
+  storageBucket: Schema.optional(Schema.String),
+}).annotate({ identifier: "DefaultResources" });
 
 export interface FirebaseProject {
   /** The user-assigned display name of the Project. */
@@ -158,28 +142,22 @@ export interface FirebaseProject {
   etag?: string;
 }
 
-export const FirebaseProject: Schema.Schema<FirebaseProject> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      projectId: Schema.optional(Schema.String),
-      projectNumber: Schema.optional(Schema.String),
-      resources: Schema.optional(DefaultResources),
-      state: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FirebaseProject",
-  }) as any as Schema.Schema<FirebaseProject>;
+export const FirebaseProject = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  projectId: Schema.optional(Schema.String),
+  projectNumber: Schema.optional(Schema.String),
+  resources: Schema.optional(DefaultResources),
+  state: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "FirebaseProject" });
 
 export interface MessageSet {}
 
-export const MessageSet: Schema.Schema<MessageSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "MessageSet",
-  }) as any as Schema.Schema<MessageSet>;
+export const MessageSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "MessageSet" });
 
 export interface WebAppConfig {
   /** Immutable. A user-assigned unique identifier for the `FirebaseProject`. */
@@ -208,39 +186,29 @@ export interface WebAppConfig {
   locationId?: string;
 }
 
-export const WebAppConfig: Schema.Schema<WebAppConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      projectId: Schema.optional(Schema.String),
-      projectNumber: Schema.optional(Schema.String),
-      apiKey: Schema.optional(Schema.String),
-      databaseURL: Schema.optional(Schema.String),
-      storageBucket: Schema.optional(Schema.String),
-      measurementId: Schema.optional(Schema.String),
-      messagingSenderId: Schema.optional(Schema.String),
-      realtimeDatabaseUrl: Schema.optional(Schema.String),
-      appId: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-      authDomain: Schema.optional(Schema.String),
-      locationId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WebAppConfig",
-  }) as any as Schema.Schema<WebAppConfig>;
+export const WebAppConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  projectId: Schema.optional(Schema.String),
+  projectNumber: Schema.optional(Schema.String),
+  apiKey: Schema.optional(Schema.String),
+  databaseURL: Schema.optional(Schema.String),
+  storageBucket: Schema.optional(Schema.String),
+  measurementId: Schema.optional(Schema.String),
+  messagingSenderId: Schema.optional(Schema.String),
+  realtimeDatabaseUrl: Schema.optional(Schema.String),
+  appId: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+  authDomain: Schema.optional(Schema.String),
+  locationId: Schema.optional(Schema.String),
+}).annotate({ identifier: "WebAppConfig" });
 
 export interface ProductMetadata {
   /** List of warnings related to the associated operation. */
   warningMessages?: Array<string>;
 }
 
-export const ProductMetadata: Schema.Schema<ProductMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      warningMessages: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ProductMetadata",
-  }) as any as Schema.Schema<ProductMetadata>;
+export const ProductMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  warningMessages: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ProductMetadata" });
 
 export interface WebApp {
   /** The URLs where the `WebApp` is hosted. */
@@ -265,21 +233,18 @@ export interface WebApp {
   appId?: string;
 }
 
-export const WebApp: Schema.Schema<WebApp> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      appUrls: Schema.optional(Schema.Array(Schema.String)),
-      webId: Schema.optional(Schema.String),
-      projectId: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      expireTime: Schema.optional(Schema.String),
-      apiKeyId: Schema.optional(Schema.String),
-      appId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "WebApp" }) as any as Schema.Schema<WebApp>;
+export const WebApp = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  appUrls: Schema.optional(Schema.Array(Schema.String)),
+  webId: Schema.optional(Schema.String),
+  projectId: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  expireTime: Schema.optional(Schema.String),
+  apiKeyId: Schema.optional(Schema.String),
+  appId: Schema.optional(Schema.String),
+}).annotate({ identifier: "WebApp" });
 
 export interface ShaCertificate {
   /** The resource name of the ShaCertificate for the AndroidApp, in the format: projects/PROJECT_IDENTIFIER/androidApps/APP_ID/sha/SHA_HASH * PROJECT_IDENTIFIER: the parent Project's [`ProjectNumber`](../projects#FirebaseProject.FIELDS.project_number) ***(recommended)*** or its [`ProjectId`](../projects#FirebaseProject.FIELDS.project_id). Learn more about using project identifiers in Google's [AIP 2510 standard](https://google.aip.dev/cloud/2510). Note that the value for PROJECT_IDENTIFIER in any response body will be the `ProjectId`. * APP_ID: the globally unique, Firebase-assigned identifier for the App (see [`appId`](../projects.androidApps#AndroidApp.FIELDS.app_id)). * SHA_HASH: the certificate hash for the App (see [`shaHash`](../projects.androidApps.sha#ShaCertificate.FIELDS.sha_hash)). */
@@ -294,30 +259,21 @@ export interface ShaCertificate {
     | (string & {});
 }
 
-export const ShaCertificate: Schema.Schema<ShaCertificate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      shaHash: Schema.optional(Schema.String),
-      certType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ShaCertificate",
-  }) as any as Schema.Schema<ShaCertificate>;
+export const ShaCertificate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  shaHash: Schema.optional(Schema.String),
+  certType: Schema.optional(Schema.String),
+}).annotate({ identifier: "ShaCertificate" });
 
 export interface ListShaCertificatesResponse {
   /** The list of each `ShaCertificate` associated with the `AndroidApp`. */
   certificates?: Array<ShaCertificate>;
 }
 
-export const ListShaCertificatesResponse: Schema.Schema<ListShaCertificatesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      certificates: Schema.optional(Schema.Array(ShaCertificate)),
-    }),
-  ).annotate({
-    identifier: "ListShaCertificatesResponse",
-  }) as any as Schema.Schema<ListShaCertificatesResponse>;
+export const ListShaCertificatesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    certificates: Schema.optional(Schema.Array(ShaCertificate)),
+  }).annotate({ identifier: "ListShaCertificatesResponse" });
 
 export interface ListFirebaseProjectsResponse {
   /** One page of the list of Projects that are accessible to the caller. */
@@ -326,15 +282,11 @@ export interface ListFirebaseProjectsResponse {
   nextPageToken?: string;
 }
 
-export const ListFirebaseProjectsResponse: Schema.Schema<ListFirebaseProjectsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      results: Schema.optional(Schema.Array(FirebaseProject)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListFirebaseProjectsResponse",
-  }) as any as Schema.Schema<ListFirebaseProjectsResponse>;
+export const ListFirebaseProjectsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    results: Schema.optional(Schema.Array(FirebaseProject)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListFirebaseProjectsResponse" });
 
 export interface FirebaseAppInfo {
   /** Output only. If the App has been removed from the Project, this is the timestamp of when the App is considered expired and will be permanently deleted. After this time, the App cannot be undeleted (that is, restored to the Project). This value is only provided if the App is in the `DELETED` state. */
@@ -355,21 +307,16 @@ export interface FirebaseAppInfo {
   state?: "STATE_UNSPECIFIED" | "ACTIVE" | "DELETED" | (string & {});
 }
 
-export const FirebaseAppInfo: Schema.Schema<FirebaseAppInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expireTime: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      platform: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      namespace: Schema.optional(Schema.String),
-      appId: Schema.optional(Schema.String),
-      apiKeyId: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FirebaseAppInfo",
-  }) as any as Schema.Schema<FirebaseAppInfo>;
+export const FirebaseAppInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  expireTime: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  platform: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  namespace: Schema.optional(Schema.String),
+  appId: Schema.optional(Schema.String),
+  apiKeyId: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+}).annotate({ identifier: "FirebaseAppInfo" });
 
 export interface SearchFirebaseAppsResponse {
   /** One page of results from a call to `SearchFirebaseApps`. */
@@ -378,15 +325,11 @@ export interface SearchFirebaseAppsResponse {
   nextPageToken?: string;
 }
 
-export const SearchFirebaseAppsResponse: Schema.Schema<SearchFirebaseAppsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      apps: Schema.optional(Schema.Array(FirebaseAppInfo)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SearchFirebaseAppsResponse",
-  }) as any as Schema.Schema<SearchFirebaseAppsResponse>;
+export const SearchFirebaseAppsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apps: Schema.optional(Schema.Array(FirebaseAppInfo)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SearchFirebaseAppsResponse" });
 
 export interface AdminSdkConfig {
   /** **DEPRECATED.** _Instead, find the URL of the default Realtime Database instance using the [list endpoint](https://firebase.google.com/docs/reference/rest/database/database-management/rest/v1beta/projects.locations.instances/list) within the Firebase Realtime Database REST API. If the default instance for the Project has not yet been provisioned, the return might not contain a default instance. Note that the config that's generated for the Firebase console or the Firebase CLI uses the Realtime Database endpoint to populate this value for that config._ The URL of the default Firebase Realtime Database instance. */
@@ -399,17 +342,12 @@ export interface AdminSdkConfig {
   storageBucket?: string;
 }
 
-export const AdminSdkConfig: Schema.Schema<AdminSdkConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      databaseURL: Schema.optional(Schema.String),
-      locationId: Schema.optional(Schema.String),
-      projectId: Schema.optional(Schema.String),
-      storageBucket: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AdminSdkConfig",
-  }) as any as Schema.Schema<AdminSdkConfig>;
+export const AdminSdkConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  databaseURL: Schema.optional(Schema.String),
+  locationId: Schema.optional(Schema.String),
+  projectId: Schema.optional(Schema.String),
+  storageBucket: Schema.optional(Schema.String),
+}).annotate({ identifier: "AdminSdkConfig" });
 
 export interface RemoveWebAppRequest {
   /** If set to true, the request is only validated. The App will _not_ be removed. */
@@ -422,17 +360,12 @@ export interface RemoveWebAppRequest {
   immediate?: boolean;
 }
 
-export const RemoveWebAppRequest: Schema.Schema<RemoveWebAppRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      validateOnly: Schema.optional(Schema.Boolean),
-      allowMissing: Schema.optional(Schema.Boolean),
-      etag: Schema.optional(Schema.String),
-      immediate: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "RemoveWebAppRequest",
-  }) as any as Schema.Schema<RemoveWebAppRequest>;
+export const RemoveWebAppRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  validateOnly: Schema.optional(Schema.Boolean),
+  allowMissing: Schema.optional(Schema.Boolean),
+  etag: Schema.optional(Schema.String),
+  immediate: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "RemoveWebAppRequest" });
 
 export interface StatusProto {
   /** Detail message copybara:strip_begin(b/383363683) copybara:strip_end_and_replace optional string message = 3; */
@@ -447,18 +380,13 @@ export interface StatusProto {
   space?: string;
 }
 
-export const StatusProto: Schema.Schema<StatusProto> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      message: Schema.optional(Schema.String),
-      canonicalCode: Schema.optional(Schema.Number),
-      code: Schema.optional(Schema.Number),
-      messageSet: Schema.optional(MessageSet),
-      space: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StatusProto",
-  }) as any as Schema.Schema<StatusProto>;
+export const StatusProto = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  message: Schema.optional(Schema.String),
+  canonicalCode: Schema.optional(Schema.Number),
+  code: Schema.optional(Schema.Number),
+  messageSet: Schema.optional(MessageSet),
+  space: Schema.optional(Schema.String),
+}).annotate({ identifier: "StatusProto" });
 
 export interface ProjectInfo {
   /** The user-assigned display name of the Google Cloud `Project`, for example: `My App`. */
@@ -469,16 +397,11 @@ export interface ProjectInfo {
   locationId?: string;
 }
 
-export const ProjectInfo: Schema.Schema<ProjectInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      project: Schema.optional(Schema.String),
-      locationId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProjectInfo",
-  }) as any as Schema.Schema<ProjectInfo>;
+export const ProjectInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+  project: Schema.optional(Schema.String),
+  locationId: Schema.optional(Schema.String),
+}).annotate({ identifier: "ProjectInfo" });
 
 export interface ListAvailableProjectsResponse {
   /** The list of Google Cloud `Projects` which can have Firebase resources added to them. */
@@ -487,15 +410,11 @@ export interface ListAvailableProjectsResponse {
   nextPageToken?: string;
 }
 
-export const ListAvailableProjectsResponse: Schema.Schema<ListAvailableProjectsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      projectInfo: Schema.optional(Schema.Array(ProjectInfo)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAvailableProjectsResponse",
-  }) as any as Schema.Schema<ListAvailableProjectsResponse>;
+export const ListAvailableProjectsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    projectInfo: Schema.optional(Schema.Array(ProjectInfo)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListAvailableProjectsResponse" });
 
 export interface ListIosAppsResponse {
   /** List of each `IosApp` associated with the specified `FirebaseProject`. */
@@ -504,15 +423,10 @@ export interface ListIosAppsResponse {
   nextPageToken?: string;
 }
 
-export const ListIosAppsResponse: Schema.Schema<ListIosAppsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      apps: Schema.optional(Schema.Array(IosApp)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListIosAppsResponse",
-  }) as any as Schema.Schema<ListIosAppsResponse>;
+export const ListIosAppsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  apps: Schema.optional(Schema.Array(IosApp)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListIosAppsResponse" });
 
 export interface UndeleteIosAppRequest {
   /** Checksum provided in the IosApp resource. If provided, this checksum ensures that the client has an up-to-date value before proceeding. */
@@ -521,15 +435,10 @@ export interface UndeleteIosAppRequest {
   validateOnly?: boolean;
 }
 
-export const UndeleteIosAppRequest: Schema.Schema<UndeleteIosAppRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      etag: Schema.optional(Schema.String),
-      validateOnly: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "UndeleteIosAppRequest",
-  }) as any as Schema.Schema<UndeleteIosAppRequest>;
+export const UndeleteIosAppRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  etag: Schema.optional(Schema.String),
+  validateOnly: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "UndeleteIosAppRequest" });
 
 export interface RemoveAndroidAppRequest {
   /** If set to true, and the App is not found, the request will succeed but no action will be taken on the server. */
@@ -542,24 +451,19 @@ export interface RemoveAndroidAppRequest {
   validateOnly?: boolean;
 }
 
-export const RemoveAndroidAppRequest: Schema.Schema<RemoveAndroidAppRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      allowMissing: Schema.optional(Schema.Boolean),
-      etag: Schema.optional(Schema.String),
-      immediate: Schema.optional(Schema.Boolean),
-      validateOnly: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "RemoveAndroidAppRequest",
-  }) as any as Schema.Schema<RemoveAndroidAppRequest>;
+export const RemoveAndroidAppRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allowMissing: Schema.optional(Schema.Boolean),
+    etag: Schema.optional(Schema.String),
+    immediate: Schema.optional(Schema.Boolean),
+    validateOnly: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "RemoveAndroidAppRequest" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
@@ -570,16 +474,13 @@ export interface Status {
   message?: string;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** The error result of the operation in case of failure or cancellation. */
@@ -594,16 +495,13 @@ export interface Operation {
   done?: boolean;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      error: Schema.optional(Status),
-      name: Schema.optional(Schema.String),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  error: Schema.optional(Status),
+  name: Schema.optional(Schema.String),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  done: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Operation" });
 
 export interface UndeleteWebAppRequest {
   /** If set to true, the request is only validated. The App will _not_ be undeleted. */
@@ -612,15 +510,10 @@ export interface UndeleteWebAppRequest {
   etag?: string;
 }
 
-export const UndeleteWebAppRequest: Schema.Schema<UndeleteWebAppRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      validateOnly: Schema.optional(Schema.Boolean),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UndeleteWebAppRequest",
-  }) as any as Schema.Schema<UndeleteWebAppRequest>;
+export const UndeleteWebAppRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  validateOnly: Schema.optional(Schema.Boolean),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "UndeleteWebAppRequest" });
 
 export interface StreamMapping {
   /** The unique Google-assigned identifier of the Google Analytics data stream associated with the Firebase App. Learn more about Google Analytics data streams in the [Analytics documentation](https://support.google.com/analytics/answer/9303323). */
@@ -631,16 +524,11 @@ export interface StreamMapping {
   app?: string;
 }
 
-export const StreamMapping: Schema.Schema<StreamMapping> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      streamId: Schema.optional(Schema.String),
-      measurementId: Schema.optional(Schema.String),
-      app: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StreamMapping",
-  }) as any as Schema.Schema<StreamMapping>;
+export const StreamMapping = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  streamId: Schema.optional(Schema.String),
+  measurementId: Schema.optional(Schema.String),
+  app: Schema.optional(Schema.String),
+}).annotate({ identifier: "StreamMapping" });
 
 export interface AnalyticsProperty {
   /** The display name of the Google Analytics property associated with the specified `FirebaseProject`. */
@@ -651,16 +539,11 @@ export interface AnalyticsProperty {
   analyticsAccountId?: string;
 }
 
-export const AnalyticsProperty: Schema.Schema<AnalyticsProperty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      analyticsAccountId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AnalyticsProperty",
-  }) as any as Schema.Schema<AnalyticsProperty>;
+export const AnalyticsProperty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  analyticsAccountId: Schema.optional(Schema.String),
+}).annotate({ identifier: "AnalyticsProperty" });
 
 export interface AnalyticsDetails {
   /** - For `AndroidApps` and `IosApps`: a map of `app` to `streamId` for each Firebase App in the specified `FirebaseProject`. Each `app` and `streamId` appears only once. - For `WebApps`: a map of `app` to `streamId` and `measurementId` for each `WebApp` in the specified `FirebaseProject`. Each `app`, `streamId`, and `measurementId` appears only once. */
@@ -669,15 +552,10 @@ export interface AnalyticsDetails {
   analyticsProperty?: AnalyticsProperty;
 }
 
-export const AnalyticsDetails: Schema.Schema<AnalyticsDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      streamMappings: Schema.optional(Schema.Array(StreamMapping)),
-      analyticsProperty: Schema.optional(AnalyticsProperty),
-    }),
-  ).annotate({
-    identifier: "AnalyticsDetails",
-  }) as any as Schema.Schema<AnalyticsDetails>;
+export const AnalyticsDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  streamMappings: Schema.optional(Schema.Array(StreamMapping)),
+  analyticsProperty: Schema.optional(AnalyticsProperty),
+}).annotate({ identifier: "AnalyticsDetails" });
 
 export interface AndroidApp {
   /** Output only. Immutable. The globally unique, Firebase-assigned identifier for the `AndroidApp`. This identifier should be treated as an opaque token, as the data format is not specified. */
@@ -704,36 +582,29 @@ export interface AndroidApp {
   sha256Hashes?: Array<string>;
 }
 
-export const AndroidApp: Schema.Schema<AndroidApp> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      appId: Schema.optional(Schema.String),
-      packageName: Schema.optional(Schema.String),
-      apiKeyId: Schema.optional(Schema.String),
-      expireTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      sha1Hashes: Schema.optional(Schema.Array(Schema.String)),
-      displayName: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      projectId: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      sha256Hashes: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "AndroidApp" }) as any as Schema.Schema<AndroidApp>;
+export const AndroidApp = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  appId: Schema.optional(Schema.String),
+  packageName: Schema.optional(Schema.String),
+  apiKeyId: Schema.optional(Schema.String),
+  expireTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  sha1Hashes: Schema.optional(Schema.Array(Schema.String)),
+  displayName: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  projectId: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  sha256Hashes: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "AndroidApp" });
 
 export interface FinalizeDefaultLocationRequest {
   /** **DEPRECATED** The ID of the Project's ["location for default Google Cloud resources"](https://firebase.google.com/docs/projects/locations#default-cloud-location), which are resources associated with Google App Engine. The location must be one of the available [Google App Engine locations](https://cloud.google.com/about/locations#region). */
   locationId?: string;
 }
 
-export const FinalizeDefaultLocationRequest: Schema.Schema<FinalizeDefaultLocationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locationId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FinalizeDefaultLocationRequest",
-  }) as any as Schema.Schema<FinalizeDefaultLocationRequest>;
+export const FinalizeDefaultLocationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locationId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "FinalizeDefaultLocationRequest" });
 
 export interface ListAndroidAppsResponse {
   /** List of each `AndroidApp` associated with the specified `FirebaseProject`. */
@@ -742,15 +613,11 @@ export interface ListAndroidAppsResponse {
   nextPageToken?: string;
 }
 
-export const ListAndroidAppsResponse: Schema.Schema<ListAndroidAppsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      apps: Schema.optional(Schema.Array(AndroidApp)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAndroidAppsResponse",
-  }) as any as Schema.Schema<ListAndroidAppsResponse>;
+export const ListAndroidAppsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apps: Schema.optional(Schema.Array(AndroidApp)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListAndroidAppsResponse" });
 
 export interface UndeleteAndroidAppRequest {
   /** Checksum provided in the AndroidApp resource. If provided, this checksum ensures that the client has an up-to-date value before proceeding. */
@@ -759,15 +626,11 @@ export interface UndeleteAndroidAppRequest {
   validateOnly?: boolean;
 }
 
-export const UndeleteAndroidAppRequest: Schema.Schema<UndeleteAndroidAppRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      etag: Schema.optional(Schema.String),
-      validateOnly: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "UndeleteAndroidAppRequest",
-  }) as any as Schema.Schema<UndeleteAndroidAppRequest>;
+export const UndeleteAndroidAppRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    etag: Schema.optional(Schema.String),
+    validateOnly: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "UndeleteAndroidAppRequest" });
 
 export interface AndroidAppConfig {
   /** The filename that the configuration artifact for the `AndroidApp` is typically saved as. For example: `google-services.json` */
@@ -776,15 +639,10 @@ export interface AndroidAppConfig {
   configFileContents?: string;
 }
 
-export const AndroidAppConfig: Schema.Schema<AndroidAppConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      configFilename: Schema.optional(Schema.String),
-      configFileContents: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AndroidAppConfig",
-  }) as any as Schema.Schema<AndroidAppConfig>;
+export const AndroidAppConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  configFilename: Schema.optional(Schema.String),
+  configFileContents: Schema.optional(Schema.String),
+}).annotate({ identifier: "AndroidAppConfig" });
 
 export interface ListAvailableLocationsResponse {
   /** One page of results from a call to `ListAvailableLocations`. */
@@ -793,15 +651,11 @@ export interface ListAvailableLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListAvailableLocationsResponse: Schema.Schema<ListAvailableLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAvailableLocationsResponse",
-  }) as any as Schema.Schema<ListAvailableLocationsResponse>;
+export const ListAvailableLocationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locations: Schema.optional(Schema.Array(Location)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListAvailableLocationsResponse" });
 
 export interface IosAppConfig {
   /** The filename that the configuration artifact for the `IosApp` is typically saved as. For example: `GoogleService-Info.plist` */
@@ -810,29 +664,19 @@ export interface IosAppConfig {
   configFileContents?: string;
 }
 
-export const IosAppConfig: Schema.Schema<IosAppConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      configFilename: Schema.optional(Schema.String),
-      configFileContents: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "IosAppConfig",
-  }) as any as Schema.Schema<IosAppConfig>;
+export const IosAppConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  configFilename: Schema.optional(Schema.String),
+  configFileContents: Schema.optional(Schema.String),
+}).annotate({ identifier: "IosAppConfig" });
 
 export interface AddFirebaseRequest {
   /** **DEPRECATED.** _Instead, use product-specific REST APIs to work with the location of each resource in a Project. This field may be ignored, especially for newly provisioned projects after October 30, 2024._ The ID of the Project's ["location for default Google Cloud resources"](https://firebase.google.com/docs/projects/locations#default-cloud-location), which are resources associated with Google App Engine. The location must be one of the available [Google App Engine locations](https://cloud.google.com/about/locations#region). */
   locationId?: string;
 }
 
-export const AddFirebaseRequest: Schema.Schema<AddFirebaseRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locationId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AddFirebaseRequest",
-  }) as any as Schema.Schema<AddFirebaseRequest>;
+export const AddFirebaseRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locationId: Schema.optional(Schema.String),
+}).annotate({ identifier: "AddFirebaseRequest" });
 
 export interface RemoveIosAppRequest {
   /** If set to true, the request is only validated. The App will _not_ be removed. */
@@ -845,17 +689,12 @@ export interface RemoveIosAppRequest {
   immediate?: boolean;
 }
 
-export const RemoveIosAppRequest: Schema.Schema<RemoveIosAppRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      validateOnly: Schema.optional(Schema.Boolean),
-      allowMissing: Schema.optional(Schema.Boolean),
-      etag: Schema.optional(Schema.String),
-      immediate: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "RemoveIosAppRequest",
-  }) as any as Schema.Schema<RemoveIosAppRequest>;
+export const RemoveIosAppRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  validateOnly: Schema.optional(Schema.Boolean),
+  allowMissing: Schema.optional(Schema.Boolean),
+  etag: Schema.optional(Schema.String),
+  immediate: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "RemoveIosAppRequest" });
 
 export interface ListWebAppsResponse {
   /** List of each `WebApp` associated with the specified `FirebaseProject`. */
@@ -864,29 +703,21 @@ export interface ListWebAppsResponse {
   nextPageToken?: string;
 }
 
-export const ListWebAppsResponse: Schema.Schema<ListWebAppsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      apps: Schema.optional(Schema.Array(WebApp)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListWebAppsResponse",
-  }) as any as Schema.Schema<ListWebAppsResponse>;
+export const ListWebAppsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  apps: Schema.optional(Schema.Array(WebApp)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListWebAppsResponse" });
 
 export interface RemoveAnalyticsRequest {
   /** Optional. The ID of the Google Analytics property associated with the specified `FirebaseProject`. - If not set, then the Google Analytics property that is currently associated with the specified `FirebaseProject` is removed. - If set, and the specified `FirebaseProject` is currently associated with a *different* Google Analytics property, then the response is a `412 Precondition Failed` error. */
   analyticsPropertyId?: string;
 }
 
-export const RemoveAnalyticsRequest: Schema.Schema<RemoveAnalyticsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      analyticsPropertyId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RemoveAnalyticsRequest",
-  }) as any as Schema.Schema<RemoveAnalyticsRequest>;
+export const RemoveAnalyticsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    analyticsPropertyId: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "RemoveAnalyticsRequest" });
 
 // ==========================================================================
 // Operations

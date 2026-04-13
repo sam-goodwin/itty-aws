@@ -31,14 +31,11 @@ export interface Position {
   length?: string;
 }
 
-export const Position: Schema.Schema<Position> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      line: Schema.optional(Schema.String),
-      column: Schema.optional(Schema.String),
-      length: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Position" }) as any as Schema.Schema<Position>;
+export const Position = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  line: Schema.optional(Schema.String),
+  column: Schema.optional(Schema.String),
+  length: Schema.optional(Schema.String),
+}).annotate({ identifier: "Position" });
 
 export interface StackTraceElement {
   /** The step the error occurred at. */
@@ -49,28 +46,20 @@ export interface StackTraceElement {
   position?: Position;
 }
 
-export const StackTraceElement: Schema.Schema<StackTraceElement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      step: Schema.optional(Schema.String),
-      routine: Schema.optional(Schema.String),
-      position: Schema.optional(Position),
-    }),
-  ).annotate({
-    identifier: "StackTraceElement",
-  }) as any as Schema.Schema<StackTraceElement>;
+export const StackTraceElement = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  step: Schema.optional(Schema.String),
+  routine: Schema.optional(Schema.String),
+  position: Schema.optional(Position),
+}).annotate({ identifier: "StackTraceElement" });
 
 export interface StackTrace {
   /** An array of stack elements. */
   elements?: Array<StackTraceElement>;
 }
 
-export const StackTrace: Schema.Schema<StackTrace> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      elements: Schema.optional(Schema.Array(StackTraceElement)),
-    }),
-  ).annotate({ identifier: "StackTrace" }) as any as Schema.Schema<StackTrace>;
+export const StackTrace = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  elements: Schema.optional(Schema.Array(StackTraceElement)),
+}).annotate({ identifier: "StackTrace" });
 
 export interface Workflowexecutions_Error {
   /** Error message and data returned represented as a JSON string. */
@@ -81,16 +70,12 @@ export interface Workflowexecutions_Error {
   stackTrace?: StackTrace;
 }
 
-export const Workflowexecutions_Error: Schema.Schema<Workflowexecutions_Error> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      payload: Schema.optional(Schema.String),
-      context: Schema.optional(Schema.String),
-      stackTrace: Schema.optional(StackTrace),
-    }),
-  ).annotate({
-    identifier: "Workflowexecutions_Error",
-  }) as any as Schema.Schema<Workflowexecutions_Error>;
+export const Workflowexecutions_Error =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    payload: Schema.optional(Schema.String),
+    context: Schema.optional(Schema.String),
+    stackTrace: Schema.optional(StackTrace),
+  }).annotate({ identifier: "Workflowexecutions_Error" });
 
 export interface Step {
   /** Name of a routine within the workflow. */
@@ -99,25 +84,19 @@ export interface Step {
   step?: string;
 }
 
-export const Step: Schema.Schema<Step> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      routine: Schema.optional(Schema.String),
-      step: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Step" }) as any as Schema.Schema<Step>;
+export const Step = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  routine: Schema.optional(Schema.String),
+  step: Schema.optional(Schema.String),
+}).annotate({ identifier: "Step" });
 
 export interface Status {
   /** A list of currently executing or last executed step names for the workflow execution currently running. If the workflow has succeeded or failed, this is the last attempted or executed step. Presently, if the current step is inside a subworkflow, the list only includes that step. In the future, the list will contain items for each step in the call stack, starting with the outermost step in the `main` subworkflow, and ending with the most deeply nested step. */
   currentSteps?: Array<Step>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      currentSteps: Schema.optional(Schema.Array(Step)),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  currentSteps: Schema.optional(Schema.Array(Step)),
+}).annotate({ identifier: "Status" });
 
 export interface Execution {
   /** Output only. The resource name of the execution. Format: projects/{project}/locations/{location}/workflows/{workflow}/executions/{execution} */
@@ -154,21 +133,18 @@ export interface Execution {
   status?: Status;
 }
 
-export const Execution: Schema.Schema<Execution> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      argument: Schema.optional(Schema.String),
-      result: Schema.optional(Schema.String),
-      error: Schema.optional(Workflowexecutions_Error),
-      workflowRevisionId: Schema.optional(Schema.String),
-      callLogLevel: Schema.optional(Schema.String),
-      status: Schema.optional(Status),
-    }),
-  ).annotate({ identifier: "Execution" }) as any as Schema.Schema<Execution>;
+export const Execution = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  argument: Schema.optional(Schema.String),
+  result: Schema.optional(Schema.String),
+  error: Schema.optional(Workflowexecutions_Error),
+  workflowRevisionId: Schema.optional(Schema.String),
+  callLogLevel: Schema.optional(Schema.String),
+  status: Schema.optional(Status),
+}).annotate({ identifier: "Execution" });
 
 export interface ListExecutionsResponse {
   /** The executions which match the request. */
@@ -177,22 +153,18 @@ export interface ListExecutionsResponse {
   nextPageToken?: string;
 }
 
-export const ListExecutionsResponse: Schema.Schema<ListExecutionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      executions: Schema.optional(Schema.Array(Execution)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListExecutionsResponse",
-  }) as any as Schema.Schema<ListExecutionsResponse>;
+export const ListExecutionsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    executions: Schema.optional(Schema.Array(Execution)),
+    nextPageToken: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ListExecutionsResponse" });
 
 export interface CancelExecutionRequest {}
 
-export const CancelExecutionRequest: Schema.Schema<CancelExecutionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelExecutionRequest",
-  }) as any as Schema.Schema<CancelExecutionRequest>;
+export const CancelExecutionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelExecutionRequest" });
 
 // ==========================================================================
 // Operations

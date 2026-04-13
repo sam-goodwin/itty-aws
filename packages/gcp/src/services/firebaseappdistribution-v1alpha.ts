@@ -35,34 +35,24 @@ export interface GoogleFirebaseAppdistroV1alphaAiStep {
   hint?: string;
 }
 
-export const GoogleFirebaseAppdistroV1alphaAiStep: Schema.Schema<GoogleFirebaseAppdistroV1alphaAiStep> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      assertion: Schema.optional(Schema.String),
-      goal: Schema.optional(Schema.String),
-      testCase: Schema.optional(Schema.String),
-      successCriteria: Schema.optional(Schema.String),
-      hint: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppdistroV1alphaAiStep",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1alphaAiStep>;
+export const GoogleFirebaseAppdistroV1alphaAiStep =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    assertion: Schema.optional(Schema.String),
+    goal: Schema.optional(Schema.String),
+    testCase: Schema.optional(Schema.String),
+    successCriteria: Schema.optional(Schema.String),
+    hint: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirebaseAppdistroV1alphaAiStep" });
 
 export interface GoogleFirebaseAppdistroV1alphaAiInstructions {
   /** Required. Steps to be accomplished by the AI */
   steps?: Array<GoogleFirebaseAppdistroV1alphaAiStep>;
 }
 
-export const GoogleFirebaseAppdistroV1alphaAiInstructions: Schema.Schema<GoogleFirebaseAppdistroV1alphaAiInstructions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      steps: Schema.optional(
-        Schema.Array(GoogleFirebaseAppdistroV1alphaAiStep),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppdistroV1alphaAiInstructions",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1alphaAiInstructions>;
+export const GoogleFirebaseAppdistroV1alphaAiInstructions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    steps: Schema.optional(Schema.Array(GoogleFirebaseAppdistroV1alphaAiStep)),
+  }).annotate({ identifier: "GoogleFirebaseAppdistroV1alphaAiInstructions" });
 
 export interface GoogleFirebaseAppdistroV1alphaLoginCredentialFieldHints {
   /** Required. The Android resource name of the username UI element. For example, in Java: R.string.foo in xml: @string/foo Only the "foo" part is needed. Reference doc: https://developer.android.com/guide/topics/resources/accessing-resources.html */
@@ -71,15 +61,13 @@ export interface GoogleFirebaseAppdistroV1alphaLoginCredentialFieldHints {
   passwordResourceName?: string;
 }
 
-export const GoogleFirebaseAppdistroV1alphaLoginCredentialFieldHints: Schema.Schema<GoogleFirebaseAppdistroV1alphaLoginCredentialFieldHints> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      usernameResourceName: Schema.optional(Schema.String),
-      passwordResourceName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppdistroV1alphaLoginCredentialFieldHints =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    usernameResourceName: Schema.optional(Schema.String),
+    passwordResourceName: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleFirebaseAppdistroV1alphaLoginCredentialFieldHints",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1alphaLoginCredentialFieldHints>;
+  });
 
 export interface GoogleFirebaseAppdistroV1alphaLoginCredential {
   /** Optional. Password for automated tests */
@@ -92,19 +80,15 @@ export interface GoogleFirebaseAppdistroV1alphaLoginCredential {
   username?: string;
 }
 
-export const GoogleFirebaseAppdistroV1alphaLoginCredential: Schema.Schema<GoogleFirebaseAppdistroV1alphaLoginCredential> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      password: Schema.optional(Schema.String),
-      fieldHints: Schema.optional(
-        GoogleFirebaseAppdistroV1alphaLoginCredentialFieldHints,
-      ),
-      google: Schema.optional(Schema.Boolean),
-      username: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppdistroV1alphaLoginCredential",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1alphaLoginCredential>;
+export const GoogleFirebaseAppdistroV1alphaLoginCredential =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    password: Schema.optional(Schema.String),
+    fieldHints: Schema.optional(
+      GoogleFirebaseAppdistroV1alphaLoginCredentialFieldHints,
+    ),
+    google: Schema.optional(Schema.Boolean),
+    username: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirebaseAppdistroV1alphaLoginCredential" });
 
 export interface GoogleFirebaseAppdistroV1alphaRoboCrawler {
   /** Optional. Instructions for AI driven test */
@@ -113,19 +97,15 @@ export interface GoogleFirebaseAppdistroV1alphaRoboCrawler {
   loginCredential?: GoogleFirebaseAppdistroV1alphaLoginCredential;
 }
 
-export const GoogleFirebaseAppdistroV1alphaRoboCrawler: Schema.Schema<GoogleFirebaseAppdistroV1alphaRoboCrawler> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      aiInstructions: Schema.optional(
-        GoogleFirebaseAppdistroV1alphaAiInstructions,
-      ),
-      loginCredential: Schema.optional(
-        GoogleFirebaseAppdistroV1alphaLoginCredential,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppdistroV1alphaRoboCrawler",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1alphaRoboCrawler>;
+export const GoogleFirebaseAppdistroV1alphaRoboCrawler =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    aiInstructions: Schema.optional(
+      GoogleFirebaseAppdistroV1alphaAiInstructions,
+    ),
+    loginCredential: Schema.optional(
+      GoogleFirebaseAppdistroV1alphaLoginCredential,
+    ),
+  }).annotate({ identifier: "GoogleFirebaseAppdistroV1alphaRoboCrawler" });
 
 export interface GoogleFirebaseAppdistroV1alphaTestDevice {
   /** Optional. The locale of the device (e.g. "en_US" for US English) during the test. */
@@ -138,17 +118,13 @@ export interface GoogleFirebaseAppdistroV1alphaTestDevice {
   orientation?: string;
 }
 
-export const GoogleFirebaseAppdistroV1alphaTestDevice: Schema.Schema<GoogleFirebaseAppdistroV1alphaTestDevice> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locale: Schema.optional(Schema.String),
-      model: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-      orientation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppdistroV1alphaTestDevice",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1alphaTestDevice>;
+export const GoogleFirebaseAppdistroV1alphaTestDevice =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locale: Schema.optional(Schema.String),
+    model: Schema.optional(Schema.String),
+    version: Schema.optional(Schema.String),
+    orientation: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirebaseAppdistroV1alphaTestDevice" });
 
 export interface GoogleFirebaseAppdistroV1alphaTestConfig {
   /** Optional. Display name of the AI driven test. Required if the release test is created with multiple goals. */
@@ -161,34 +137,26 @@ export interface GoogleFirebaseAppdistroV1alphaTestConfig {
   testDevices?: Array<GoogleFirebaseAppdistroV1alphaTestDevice>;
 }
 
-export const GoogleFirebaseAppdistroV1alphaTestConfig: Schema.Schema<GoogleFirebaseAppdistroV1alphaTestConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      roboCrawler: Schema.optional(GoogleFirebaseAppdistroV1alphaRoboCrawler),
-      testDevices: Schema.optional(
-        Schema.Array(GoogleFirebaseAppdistroV1alphaTestDevice),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppdistroV1alphaTestConfig",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1alphaTestConfig>;
+export const GoogleFirebaseAppdistroV1alphaTestConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    roboCrawler: Schema.optional(GoogleFirebaseAppdistroV1alphaRoboCrawler),
+    testDevices: Schema.optional(
+      Schema.Array(GoogleFirebaseAppdistroV1alphaTestDevice),
+    ),
+  }).annotate({ identifier: "GoogleFirebaseAppdistroV1alphaTestConfig" });
 
 export interface AndroidxCrawlerOutputPoint {
   xCoordinate?: number;
   yCoordinate?: number;
 }
 
-export const AndroidxCrawlerOutputPoint: Schema.Schema<AndroidxCrawlerOutputPoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      xCoordinate: Schema.optional(Schema.Number),
-      yCoordinate: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "AndroidxCrawlerOutputPoint",
-  }) as any as Schema.Schema<AndroidxCrawlerOutputPoint>;
+export const AndroidxCrawlerOutputPoint =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    xCoordinate: Schema.optional(Schema.Number),
+    yCoordinate: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "AndroidxCrawlerOutputPoint" });
 
 export interface GoogleFirebaseAppdistroV1alphaScreenshot {
   /** Output only. The height of the screenshot, in pixels. */
@@ -199,23 +167,19 @@ export interface GoogleFirebaseAppdistroV1alphaScreenshot {
   width?: number;
 }
 
-export const GoogleFirebaseAppdistroV1alphaScreenshot: Schema.Schema<GoogleFirebaseAppdistroV1alphaScreenshot> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      height: Schema.optional(Schema.Number),
-      uri: Schema.optional(Schema.String),
-      width: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppdistroV1alphaScreenshot",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1alphaScreenshot>;
+export const GoogleFirebaseAppdistroV1alphaScreenshot =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    height: Schema.optional(Schema.Number),
+    uri: Schema.optional(Schema.String),
+    width: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleFirebaseAppdistroV1alphaScreenshot" });
 
 export interface GoogleFirebaseAppdistroV1alphaDeviceInteractionBack {}
 
-export const GoogleFirebaseAppdistroV1alphaDeviceInteractionBack: Schema.Schema<GoogleFirebaseAppdistroV1alphaDeviceInteractionBack> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleFirebaseAppdistroV1alphaDeviceInteractionBack =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleFirebaseAppdistroV1alphaDeviceInteractionBack",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1alphaDeviceInteractionBack>;
+  });
 
 export interface GoogleFirebaseAppdistroV1alphaDeviceInteractionDragAndDrop {
   /** Output only. The end point of the drag and drop. */
@@ -224,15 +188,13 @@ export interface GoogleFirebaseAppdistroV1alphaDeviceInteractionDragAndDrop {
   start?: AndroidxCrawlerOutputPoint;
 }
 
-export const GoogleFirebaseAppdistroV1alphaDeviceInteractionDragAndDrop: Schema.Schema<GoogleFirebaseAppdistroV1alphaDeviceInteractionDragAndDrop> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      end: Schema.optional(AndroidxCrawlerOutputPoint),
-      start: Schema.optional(AndroidxCrawlerOutputPoint),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppdistroV1alphaDeviceInteractionDragAndDrop =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    end: Schema.optional(AndroidxCrawlerOutputPoint),
+    start: Schema.optional(AndroidxCrawlerOutputPoint),
+  }).annotate({
     identifier: "GoogleFirebaseAppdistroV1alphaDeviceInteractionDragAndDrop",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1alphaDeviceInteractionDragAndDrop>;
+  });
 
 export interface GoogleFirebaseAppdistroV1alphaDeviceInteractionSwipe {
   /** Output only. The end point of the swipe. */
@@ -241,15 +203,13 @@ export interface GoogleFirebaseAppdistroV1alphaDeviceInteractionSwipe {
   start?: AndroidxCrawlerOutputPoint;
 }
 
-export const GoogleFirebaseAppdistroV1alphaDeviceInteractionSwipe: Schema.Schema<GoogleFirebaseAppdistroV1alphaDeviceInteractionSwipe> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      end: Schema.optional(AndroidxCrawlerOutputPoint),
-      start: Schema.optional(AndroidxCrawlerOutputPoint),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppdistroV1alphaDeviceInteractionSwipe =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    end: Schema.optional(AndroidxCrawlerOutputPoint),
+    start: Schema.optional(AndroidxCrawlerOutputPoint),
+  }).annotate({
     identifier: "GoogleFirebaseAppdistroV1alphaDeviceInteractionSwipe",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1alphaDeviceInteractionSwipe>;
+  });
 
 export interface AndroidxCrawlerOutputRectangle {
   right?: number;
@@ -258,17 +218,13 @@ export interface AndroidxCrawlerOutputRectangle {
   top?: number;
 }
 
-export const AndroidxCrawlerOutputRectangle: Schema.Schema<AndroidxCrawlerOutputRectangle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      right: Schema.optional(Schema.Number),
-      bottom: Schema.optional(Schema.Number),
-      left: Schema.optional(Schema.Number),
-      top: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "AndroidxCrawlerOutputRectangle",
-  }) as any as Schema.Schema<AndroidxCrawlerOutputRectangle>;
+export const AndroidxCrawlerOutputRectangle =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    right: Schema.optional(Schema.Number),
+    bottom: Schema.optional(Schema.Number),
+    left: Schema.optional(Schema.Number),
+    top: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "AndroidxCrawlerOutputRectangle" });
 
 export interface GoogleFirebaseAppdistroV1alphaDeviceInteractionEnterText {
   /** Output only. The text to enter. */
@@ -277,29 +233,25 @@ export interface GoogleFirebaseAppdistroV1alphaDeviceInteractionEnterText {
   elementBounds?: AndroidxCrawlerOutputRectangle;
 }
 
-export const GoogleFirebaseAppdistroV1alphaDeviceInteractionEnterText: Schema.Schema<GoogleFirebaseAppdistroV1alphaDeviceInteractionEnterText> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-      elementBounds: Schema.optional(AndroidxCrawlerOutputRectangle),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppdistroV1alphaDeviceInteractionEnterText =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.String),
+    elementBounds: Schema.optional(AndroidxCrawlerOutputRectangle),
+  }).annotate({
     identifier: "GoogleFirebaseAppdistroV1alphaDeviceInteractionEnterText",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1alphaDeviceInteractionEnterText>;
+  });
 
 export interface GoogleFirebaseAppdistroV1alphaDeviceInteractionWait {
   /** Output only. The duration of the wait. */
   duration?: string;
 }
 
-export const GoogleFirebaseAppdistroV1alphaDeviceInteractionWait: Schema.Schema<GoogleFirebaseAppdistroV1alphaDeviceInteractionWait> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      duration: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppdistroV1alphaDeviceInteractionWait =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    duration: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleFirebaseAppdistroV1alphaDeviceInteractionWait",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1alphaDeviceInteractionWait>;
+  });
 
 export interface GoogleFirebaseAppdistroV1alphaDeviceInteraction {
   /** Output only. A tap action. */
@@ -324,33 +276,29 @@ export interface GoogleFirebaseAppdistroV1alphaDeviceInteraction {
   wait?: GoogleFirebaseAppdistroV1alphaDeviceInteractionWait;
 }
 
-export const GoogleFirebaseAppdistroV1alphaDeviceInteraction: Schema.Schema<GoogleFirebaseAppdistroV1alphaDeviceInteraction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tap: Schema.optional(AndroidxCrawlerOutputPoint),
-      screenshot: Schema.optional(GoogleFirebaseAppdistroV1alphaScreenshot),
-      textInput: Schema.optional(Schema.String),
-      longPress: Schema.optional(AndroidxCrawlerOutputPoint),
-      keyCode: Schema.optional(Schema.String),
-      backAction: Schema.optional(
-        GoogleFirebaseAppdistroV1alphaDeviceInteractionBack,
-      ),
-      dragAndDrop: Schema.optional(
-        GoogleFirebaseAppdistroV1alphaDeviceInteractionDragAndDrop,
-      ),
-      swipe: Schema.optional(
-        GoogleFirebaseAppdistroV1alphaDeviceInteractionSwipe,
-      ),
-      enterText: Schema.optional(
-        GoogleFirebaseAppdistroV1alphaDeviceInteractionEnterText,
-      ),
-      wait: Schema.optional(
-        GoogleFirebaseAppdistroV1alphaDeviceInteractionWait,
-      ),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppdistroV1alphaDeviceInteraction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tap: Schema.optional(AndroidxCrawlerOutputPoint),
+    screenshot: Schema.optional(GoogleFirebaseAppdistroV1alphaScreenshot),
+    textInput: Schema.optional(Schema.String),
+    longPress: Schema.optional(AndroidxCrawlerOutputPoint),
+    keyCode: Schema.optional(Schema.String),
+    backAction: Schema.optional(
+      GoogleFirebaseAppdistroV1alphaDeviceInteractionBack,
+    ),
+    dragAndDrop: Schema.optional(
+      GoogleFirebaseAppdistroV1alphaDeviceInteractionDragAndDrop,
+    ),
+    swipe: Schema.optional(
+      GoogleFirebaseAppdistroV1alphaDeviceInteractionSwipe,
+    ),
+    enterText: Schema.optional(
+      GoogleFirebaseAppdistroV1alphaDeviceInteractionEnterText,
+    ),
+    wait: Schema.optional(GoogleFirebaseAppdistroV1alphaDeviceInteractionWait),
+  }).annotate({
     identifier: "GoogleFirebaseAppdistroV1alphaDeviceInteraction",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1alphaDeviceInteraction>;
+  });
 
 export interface GoogleFirebaseAppdistroV1alphaDeviceAction {
   /** Output only. A short description of the high level action taken by the AI agent. */
@@ -359,17 +307,13 @@ export interface GoogleFirebaseAppdistroV1alphaDeviceAction {
   deviceInteractions?: Array<GoogleFirebaseAppdistroV1alphaDeviceInteraction>;
 }
 
-export const GoogleFirebaseAppdistroV1alphaDeviceAction: Schema.Schema<GoogleFirebaseAppdistroV1alphaDeviceAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      deviceInteractions: Schema.optional(
-        Schema.Array(GoogleFirebaseAppdistroV1alphaDeviceInteraction),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppdistroV1alphaDeviceAction",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1alphaDeviceAction>;
+export const GoogleFirebaseAppdistroV1alphaDeviceAction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    deviceInteractions: Schema.optional(
+      Schema.Array(GoogleFirebaseAppdistroV1alphaDeviceInteraction),
+    ),
+  }).annotate({ identifier: "GoogleFirebaseAppdistroV1alphaDeviceAction" });
 
 export interface GoogleFirebaseAppdistroV1alphaGoalActionDebugInfo {
   /** Output only. URI of the screenshot with elements labeled which was used by the agent. */
@@ -378,15 +322,13 @@ export interface GoogleFirebaseAppdistroV1alphaGoalActionDebugInfo {
   jsonUri?: string;
 }
 
-export const GoogleFirebaseAppdistroV1alphaGoalActionDebugInfo: Schema.Schema<GoogleFirebaseAppdistroV1alphaGoalActionDebugInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      annotatedScreenshotUri: Schema.optional(Schema.String),
-      jsonUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppdistroV1alphaGoalActionDebugInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    annotatedScreenshotUri: Schema.optional(Schema.String),
+    jsonUri: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleFirebaseAppdistroV1alphaGoalActionDebugInfo",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1alphaGoalActionDebugInfo>;
+  });
 
 export interface GoogleFirebaseAppdistroV1alphaTerminalAction {
   /** Output only. The screenshot used in the context of this terminal action. */
@@ -399,15 +341,11 @@ export interface GoogleFirebaseAppdistroV1alphaTerminalAction {
     | (string & {});
 }
 
-export const GoogleFirebaseAppdistroV1alphaTerminalAction: Schema.Schema<GoogleFirebaseAppdistroV1alphaTerminalAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      screenshot: Schema.optional(GoogleFirebaseAppdistroV1alphaScreenshot),
-      reason: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppdistroV1alphaTerminalAction",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1alphaTerminalAction>;
+export const GoogleFirebaseAppdistroV1alphaTerminalAction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    screenshot: Schema.optional(GoogleFirebaseAppdistroV1alphaScreenshot),
+    reason: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirebaseAppdistroV1alphaTerminalAction" });
 
 export interface GoogleFirebaseAppdistroV1alphaGoalAction {
   /** Output only. A high level action taken by the AI on the device. */
@@ -429,39 +367,31 @@ export interface GoogleFirebaseAppdistroV1alphaGoalAction {
   startTime?: string;
 }
 
-export const GoogleFirebaseAppdistroV1alphaGoalAction: Schema.Schema<GoogleFirebaseAppdistroV1alphaGoalAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deviceAction: Schema.optional(GoogleFirebaseAppdistroV1alphaDeviceAction),
-      debugInfo: Schema.optional(
-        GoogleFirebaseAppdistroV1alphaGoalActionDebugInfo,
-      ),
-      cachingType: Schema.optional(Schema.String),
-      explanation: Schema.optional(Schema.String),
-      terminalAction: Schema.optional(
-        GoogleFirebaseAppdistroV1alphaTerminalAction,
-      ),
-      startTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppdistroV1alphaGoalAction",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1alphaGoalAction>;
+export const GoogleFirebaseAppdistroV1alphaGoalAction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deviceAction: Schema.optional(GoogleFirebaseAppdistroV1alphaDeviceAction),
+    debugInfo: Schema.optional(
+      GoogleFirebaseAppdistroV1alphaGoalActionDebugInfo,
+    ),
+    cachingType: Schema.optional(Schema.String),
+    explanation: Schema.optional(Schema.String),
+    terminalAction: Schema.optional(
+      GoogleFirebaseAppdistroV1alphaTerminalAction,
+    ),
+    startTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirebaseAppdistroV1alphaGoalAction" });
 
 export interface GoogleFirebaseAppdistroV1alphaGoalDetails {
   /** Output only. The actions taken by the AI while attempting to accomplish the goal. */
   goalActions?: Array<GoogleFirebaseAppdistroV1alphaGoalAction>;
 }
 
-export const GoogleFirebaseAppdistroV1alphaGoalDetails: Schema.Schema<GoogleFirebaseAppdistroV1alphaGoalDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      goalActions: Schema.optional(
-        Schema.Array(GoogleFirebaseAppdistroV1alphaGoalAction),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppdistroV1alphaGoalDetails",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1alphaGoalDetails>;
+export const GoogleFirebaseAppdistroV1alphaGoalDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    goalActions: Schema.optional(
+      Schema.Array(GoogleFirebaseAppdistroV1alphaGoalAction),
+    ),
+  }).annotate({ identifier: "GoogleFirebaseAppdistroV1alphaGoalDetails" });
 
 export interface GoogleFirebaseAppdistroV1alphaAssertionDetails {
   /** Output only. The screenshot used in the context of this assertion. */
@@ -472,16 +402,12 @@ export interface GoogleFirebaseAppdistroV1alphaAssertionDetails {
   result?: boolean;
 }
 
-export const GoogleFirebaseAppdistroV1alphaAssertionDetails: Schema.Schema<GoogleFirebaseAppdistroV1alphaAssertionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      screenshot: Schema.optional(GoogleFirebaseAppdistroV1alphaScreenshot),
-      explanation: Schema.optional(Schema.String),
-      result: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppdistroV1alphaAssertionDetails",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1alphaAssertionDetails>;
+export const GoogleFirebaseAppdistroV1alphaAssertionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    screenshot: Schema.optional(GoogleFirebaseAppdistroV1alphaScreenshot),
+    explanation: Schema.optional(Schema.String),
+    result: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleFirebaseAppdistroV1alphaAssertionDetails" });
 
 export interface GoogleFirebaseAppdistroV1alphaAiStepResult {
   /** Output only. Details for a goal step. */
@@ -501,19 +427,15 @@ export interface GoogleFirebaseAppdistroV1alphaAiStepResult {
   step?: GoogleFirebaseAppdistroV1alphaAiStep;
 }
 
-export const GoogleFirebaseAppdistroV1alphaAiStepResult: Schema.Schema<GoogleFirebaseAppdistroV1alphaAiStepResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      goalDetails: Schema.optional(GoogleFirebaseAppdistroV1alphaGoalDetails),
-      state: Schema.optional(Schema.String),
-      assertionDetails: Schema.optional(
-        GoogleFirebaseAppdistroV1alphaAssertionDetails,
-      ),
-      step: Schema.optional(GoogleFirebaseAppdistroV1alphaAiStep),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppdistroV1alphaAiStepResult",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1alphaAiStepResult>;
+export const GoogleFirebaseAppdistroV1alphaAiStepResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    goalDetails: Schema.optional(GoogleFirebaseAppdistroV1alphaGoalDetails),
+    state: Schema.optional(Schema.String),
+    assertionDetails: Schema.optional(
+      GoogleFirebaseAppdistroV1alphaAssertionDetails,
+    ),
+    step: Schema.optional(GoogleFirebaseAppdistroV1alphaAiStep),
+  }).annotate({ identifier: "GoogleFirebaseAppdistroV1alphaAiStepResult" });
 
 export interface GoogleFirebaseAppdistroV1alphaAppCrash {
   /** Output only. The raw stack trace. */
@@ -522,15 +444,11 @@ export interface GoogleFirebaseAppdistroV1alphaAppCrash {
   message?: string;
 }
 
-export const GoogleFirebaseAppdistroV1alphaAppCrash: Schema.Schema<GoogleFirebaseAppdistroV1alphaAppCrash> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stackTrace: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppdistroV1alphaAppCrash",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1alphaAppCrash>;
+export const GoogleFirebaseAppdistroV1alphaAppCrash =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    stackTrace: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirebaseAppdistroV1alphaAppCrash" });
 
 export interface GoogleFirebaseAppdistroV1alphaRoboStats {
   /** Output only. Whether the main activity crawl timed out. */
@@ -543,17 +461,13 @@ export interface GoogleFirebaseAppdistroV1alphaRoboStats {
   actionsPerformed?: number;
 }
 
-export const GoogleFirebaseAppdistroV1alphaRoboStats: Schema.Schema<GoogleFirebaseAppdistroV1alphaRoboStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mainActivityCrawlTimedOut: Schema.optional(Schema.Boolean),
-      distinctVisitedScreens: Schema.optional(Schema.Number),
-      crawlDuration: Schema.optional(Schema.String),
-      actionsPerformed: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppdistroV1alphaRoboStats",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1alphaRoboStats>;
+export const GoogleFirebaseAppdistroV1alphaRoboStats =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    mainActivityCrawlTimedOut: Schema.optional(Schema.Boolean),
+    distinctVisitedScreens: Schema.optional(Schema.Number),
+    crawlDuration: Schema.optional(Schema.String),
+    actionsPerformed: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleFirebaseAppdistroV1alphaRoboStats" });
 
 export interface GoogleFirebaseAppdistroV1alphaDeviceExecution {
   /** Output only. Results of the AI steps if passed in */
@@ -621,31 +535,27 @@ export interface GoogleFirebaseAppdistroV1alphaDeviceExecution {
     | (string & {});
 }
 
-export const GoogleFirebaseAppdistroV1alphaDeviceExecution: Schema.Schema<GoogleFirebaseAppdistroV1alphaDeviceExecution> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      aiStepResults: Schema.optional(
-        Schema.Array(GoogleFirebaseAppdistroV1alphaAiStepResult),
-      ),
-      crawlGraphUri: Schema.optional(Schema.String),
-      executionType: Schema.optional(Schema.String),
-      device: Schema.optional(GoogleFirebaseAppdistroV1alphaTestDevice),
-      videoStartTime: Schema.optional(Schema.String),
-      screenshotUris: Schema.optional(Schema.Array(Schema.String)),
-      state: Schema.optional(Schema.String),
-      resultsStoragePath: Schema.optional(Schema.String),
-      originDeviceExecution: Schema.optional(Schema.String),
-      failedReason: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      appCrash: Schema.optional(GoogleFirebaseAppdistroV1alphaAppCrash),
-      videoUri: Schema.optional(Schema.String),
-      roboStats: Schema.optional(GoogleFirebaseAppdistroV1alphaRoboStats),
-      finalAiAssertionMissing: Schema.optional(Schema.Boolean),
-      inconclusiveReason: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppdistroV1alphaDeviceExecution",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1alphaDeviceExecution>;
+export const GoogleFirebaseAppdistroV1alphaDeviceExecution =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    aiStepResults: Schema.optional(
+      Schema.Array(GoogleFirebaseAppdistroV1alphaAiStepResult),
+    ),
+    crawlGraphUri: Schema.optional(Schema.String),
+    executionType: Schema.optional(Schema.String),
+    device: Schema.optional(GoogleFirebaseAppdistroV1alphaTestDevice),
+    videoStartTime: Schema.optional(Schema.String),
+    screenshotUris: Schema.optional(Schema.Array(Schema.String)),
+    state: Schema.optional(Schema.String),
+    resultsStoragePath: Schema.optional(Schema.String),
+    originDeviceExecution: Schema.optional(Schema.String),
+    failedReason: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    appCrash: Schema.optional(GoogleFirebaseAppdistroV1alphaAppCrash),
+    videoUri: Schema.optional(Schema.String),
+    roboStats: Schema.optional(GoogleFirebaseAppdistroV1alphaRoboStats),
+    finalAiAssertionMissing: Schema.optional(Schema.Boolean),
+    inconclusiveReason: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirebaseAppdistroV1alphaDeviceExecution" });
 
 export interface GoogleFirebaseAppdistroV1alphaTestCase {
   /** Optional. Instructions for AI driven test. */
@@ -662,21 +572,17 @@ export interface GoogleFirebaseAppdistroV1alphaTestCase {
   dependentTestCases?: Array<string>;
 }
 
-export const GoogleFirebaseAppdistroV1alphaTestCase: Schema.Schema<GoogleFirebaseAppdistroV1alphaTestCase> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      aiInstructions: Schema.optional(
-        GoogleFirebaseAppdistroV1alphaAiInstructions,
-      ),
-      displayName: Schema.optional(Schema.String),
-      prerequisiteTestCase: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      dependentTestCases: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppdistroV1alphaTestCase",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1alphaTestCase>;
+export const GoogleFirebaseAppdistroV1alphaTestCase =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    aiInstructions: Schema.optional(
+      GoogleFirebaseAppdistroV1alphaAiInstructions,
+    ),
+    displayName: Schema.optional(Schema.String),
+    prerequisiteTestCase: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    dependentTestCases: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleFirebaseAppdistroV1alphaTestCase" });
 
 export interface GoogleFirebaseAppdistroV1alphaUpdateTestCaseRequest {
   /** Required. The test case to update. The test case's `name` field is used to identify the test case to update. Format: `projects/{project_number}/apps/{app}/testCases/{test_case}` */
@@ -685,38 +591,33 @@ export interface GoogleFirebaseAppdistroV1alphaUpdateTestCaseRequest {
   allowMissing?: boolean;
 }
 
-export const GoogleFirebaseAppdistroV1alphaUpdateTestCaseRequest: Schema.Schema<GoogleFirebaseAppdistroV1alphaUpdateTestCaseRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      testCase: Schema.optional(GoogleFirebaseAppdistroV1alphaTestCase),
-      allowMissing: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppdistroV1alphaUpdateTestCaseRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    testCase: Schema.optional(GoogleFirebaseAppdistroV1alphaTestCase),
+    allowMissing: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleFirebaseAppdistroV1alphaUpdateTestCaseRequest",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1alphaUpdateTestCaseRequest>;
+  });
 
 export interface GoogleFirebaseAppdistroV1alphaBatchUpdateTestCasesRequest {
   /** Required. The update requests. A maximum number of 1000 test cases can be updated in one batch */
   requests?: Array<GoogleFirebaseAppdistroV1alphaUpdateTestCaseRequest>;
 }
 
-export const GoogleFirebaseAppdistroV1alphaBatchUpdateTestCasesRequest: Schema.Schema<GoogleFirebaseAppdistroV1alphaBatchUpdateTestCasesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requests: Schema.optional(
-        Schema.Array(GoogleFirebaseAppdistroV1alphaUpdateTestCaseRequest),
-      ),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppdistroV1alphaBatchUpdateTestCasesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requests: Schema.optional(
+      Schema.Array(GoogleFirebaseAppdistroV1alphaUpdateTestCaseRequest),
+    ),
+  }).annotate({
     identifier: "GoogleFirebaseAppdistroV1alphaBatchUpdateTestCasesRequest",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1alphaBatchUpdateTestCasesRequest>;
+  });
 
 export interface GoogleProtobufEmpty {}
 
-export const GoogleProtobufEmpty: Schema.Schema<GoogleProtobufEmpty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "GoogleProtobufEmpty",
-  }) as any as Schema.Schema<GoogleProtobufEmpty>;
+export const GoogleProtobufEmpty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "GoogleProtobufEmpty" });
 
 export interface GoogleFirebaseAppdistroV1alphaReleaseTest {
   /** Output only. The state of the release test. */
@@ -743,27 +644,23 @@ export interface GoogleFirebaseAppdistroV1alphaReleaseTest {
   loginCredential?: GoogleFirebaseAppdistroV1alphaLoginCredential;
 }
 
-export const GoogleFirebaseAppdistroV1alphaReleaseTest: Schema.Schema<GoogleFirebaseAppdistroV1alphaReleaseTest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      testState: Schema.optional(Schema.String),
-      testCase: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      deviceExecutions: Schema.optional(
-        Schema.Array(GoogleFirebaseAppdistroV1alphaDeviceExecution),
-      ),
-      aiInstructions: Schema.optional(
-        GoogleFirebaseAppdistroV1alphaAiInstructions,
-      ),
-      loginCredential: Schema.optional(
-        GoogleFirebaseAppdistroV1alphaLoginCredential,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppdistroV1alphaReleaseTest",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1alphaReleaseTest>;
+export const GoogleFirebaseAppdistroV1alphaReleaseTest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    testState: Schema.optional(Schema.String),
+    testCase: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    deviceExecutions: Schema.optional(
+      Schema.Array(GoogleFirebaseAppdistroV1alphaDeviceExecution),
+    ),
+    aiInstructions: Schema.optional(
+      GoogleFirebaseAppdistroV1alphaAiInstructions,
+    ),
+    loginCredential: Schema.optional(
+      GoogleFirebaseAppdistroV1alphaLoginCredential,
+    ),
+  }).annotate({ identifier: "GoogleFirebaseAppdistroV1alphaReleaseTest" });
 
 export interface GoogleFirebaseAppdistroV1alphaListReleaseTestsResponse {
   /** The tests listed. */
@@ -772,17 +669,15 @@ export interface GoogleFirebaseAppdistroV1alphaListReleaseTestsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleFirebaseAppdistroV1alphaListReleaseTestsResponse: Schema.Schema<GoogleFirebaseAppdistroV1alphaListReleaseTestsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      releaseTests: Schema.optional(
-        Schema.Array(GoogleFirebaseAppdistroV1alphaReleaseTest),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppdistroV1alphaListReleaseTestsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    releaseTests: Schema.optional(
+      Schema.Array(GoogleFirebaseAppdistroV1alphaReleaseTest),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleFirebaseAppdistroV1alphaListReleaseTestsResponse",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1alphaListReleaseTestsResponse>;
+  });
 
 export interface GoogleFirebaseAppdistroV1alphaAabCertificate {
   /** SHA1 hash of the certificate used to resign the AAB */
@@ -793,16 +688,12 @@ export interface GoogleFirebaseAppdistroV1alphaAabCertificate {
   certificateHashSha256?: string;
 }
 
-export const GoogleFirebaseAppdistroV1alphaAabCertificate: Schema.Schema<GoogleFirebaseAppdistroV1alphaAabCertificate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      certificateHashSha1: Schema.optional(Schema.String),
-      certificateHashMd5: Schema.optional(Schema.String),
-      certificateHashSha256: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppdistroV1alphaAabCertificate",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1alphaAabCertificate>;
+export const GoogleFirebaseAppdistroV1alphaAabCertificate =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    certificateHashSha1: Schema.optional(Schema.String),
+    certificateHashMd5: Schema.optional(Schema.String),
+    certificateHashSha256: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirebaseAppdistroV1alphaAabCertificate" });
 
 export interface GoogleFirebaseAppdistroV1alphaApp {
   /** Developer contact email for testers to reach out to about privacy or support issues. */
@@ -829,22 +720,18 @@ export interface GoogleFirebaseAppdistroV1alphaApp {
     | (string & {});
 }
 
-export const GoogleFirebaseAppdistroV1alphaApp: Schema.Schema<GoogleFirebaseAppdistroV1alphaApp> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contactEmail: Schema.optional(Schema.String),
-      appId: Schema.optional(Schema.String),
-      aabCertificate: Schema.optional(
-        GoogleFirebaseAppdistroV1alphaAabCertificate,
-      ),
-      platform: Schema.optional(Schema.String),
-      projectNumber: Schema.optional(Schema.String),
-      bundleId: Schema.optional(Schema.String),
-      aabState: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppdistroV1alphaApp",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1alphaApp>;
+export const GoogleFirebaseAppdistroV1alphaApp =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    contactEmail: Schema.optional(Schema.String),
+    appId: Schema.optional(Schema.String),
+    aabCertificate: Schema.optional(
+      GoogleFirebaseAppdistroV1alphaAabCertificate,
+    ),
+    platform: Schema.optional(Schema.String),
+    projectNumber: Schema.optional(Schema.String),
+    bundleId: Schema.optional(Schema.String),
+    aabState: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirebaseAppdistroV1alphaApp" });
 
 export interface GoogleFirebaseAppdistroV1alphaTesterUdid {
   /** The UDID of the tester's device */
@@ -855,55 +742,47 @@ export interface GoogleFirebaseAppdistroV1alphaTesterUdid {
   platform?: string;
 }
 
-export const GoogleFirebaseAppdistroV1alphaTesterUdid: Schema.Schema<GoogleFirebaseAppdistroV1alphaTesterUdid> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      udid: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      platform: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppdistroV1alphaTesterUdid",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1alphaTesterUdid>;
+export const GoogleFirebaseAppdistroV1alphaTesterUdid =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    udid: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    platform: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirebaseAppdistroV1alphaTesterUdid" });
 
 export interface GoogleFirebaseAppdistroV1alphaGetTesterUdidsResponse {
   /** The UDIDs of tester iOS devices in a project */
   testerUdids?: Array<GoogleFirebaseAppdistroV1alphaTesterUdid>;
 }
 
-export const GoogleFirebaseAppdistroV1alphaGetTesterUdidsResponse: Schema.Schema<GoogleFirebaseAppdistroV1alphaGetTesterUdidsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      testerUdids: Schema.optional(
-        Schema.Array(GoogleFirebaseAppdistroV1alphaTesterUdid),
-      ),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppdistroV1alphaGetTesterUdidsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    testerUdids: Schema.optional(
+      Schema.Array(GoogleFirebaseAppdistroV1alphaTesterUdid),
+    ),
+  }).annotate({
     identifier: "GoogleFirebaseAppdistroV1alphaGetTesterUdidsResponse",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1alphaGetTesterUdidsResponse>;
+  });
 
 export interface GoogleFirebaseAppdistroV1alphaBatchUpdateTestCasesResponse {
   /** The updated test cases. */
   testCases?: Array<GoogleFirebaseAppdistroV1alphaTestCase>;
 }
 
-export const GoogleFirebaseAppdistroV1alphaBatchUpdateTestCasesResponse: Schema.Schema<GoogleFirebaseAppdistroV1alphaBatchUpdateTestCasesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      testCases: Schema.optional(
-        Schema.Array(GoogleFirebaseAppdistroV1alphaTestCase),
-      ),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppdistroV1alphaBatchUpdateTestCasesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    testCases: Schema.optional(
+      Schema.Array(GoogleFirebaseAppdistroV1alphaTestCase),
+    ),
+  }).annotate({
     identifier: "GoogleFirebaseAppdistroV1alphaBatchUpdateTestCasesResponse",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1alphaBatchUpdateTestCasesResponse>;
+  });
 
 export interface GoogleFirebaseAppdistroV1UploadReleaseMetadata {}
 
-export const GoogleFirebaseAppdistroV1UploadReleaseMetadata: Schema.Schema<GoogleFirebaseAppdistroV1UploadReleaseMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleFirebaseAppdistroV1UploadReleaseMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleFirebaseAppdistroV1UploadReleaseMetadata",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1UploadReleaseMetadata>;
+  });
 
 export interface GoogleFirebaseAppdistroV1alphaListTestCasesResponse {
   /** The test cases from the specified app. */
@@ -912,31 +791,25 @@ export interface GoogleFirebaseAppdistroV1alphaListTestCasesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleFirebaseAppdistroV1alphaListTestCasesResponse: Schema.Schema<GoogleFirebaseAppdistroV1alphaListTestCasesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      testCases: Schema.optional(
-        Schema.Array(GoogleFirebaseAppdistroV1alphaTestCase),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppdistroV1alphaListTestCasesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    testCases: Schema.optional(
+      Schema.Array(GoogleFirebaseAppdistroV1alphaTestCase),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleFirebaseAppdistroV1alphaListTestCasesResponse",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1alphaListTestCasesResponse>;
+  });
 
 export interface GoogleFirebaseAppdistroV1ReleaseNotes {
   /** The text of the release notes. */
   text?: string;
 }
 
-export const GoogleFirebaseAppdistroV1ReleaseNotes: Schema.Schema<GoogleFirebaseAppdistroV1ReleaseNotes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppdistroV1ReleaseNotes",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1ReleaseNotes>;
+export const GoogleFirebaseAppdistroV1ReleaseNotes =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirebaseAppdistroV1ReleaseNotes" });
 
 export interface GoogleFirebaseAppdistroV1Release {
   /** The name of the release resource. Format: `projects/{project_number}/apps/{app}/releases/{release}` */
@@ -961,30 +834,26 @@ export interface GoogleFirebaseAppdistroV1Release {
   buildVersion?: string;
 }
 
-export const GoogleFirebaseAppdistroV1Release: Schema.Schema<GoogleFirebaseAppdistroV1Release> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayVersion: Schema.optional(Schema.String),
-      testingUri: Schema.optional(Schema.String),
-      releaseNotes: Schema.optional(GoogleFirebaseAppdistroV1ReleaseNotes),
-      firebaseConsoleUri: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      expireTime: Schema.optional(Schema.String),
-      binaryDownloadUri: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      buildVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppdistroV1Release",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1Release>;
+export const GoogleFirebaseAppdistroV1Release =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayVersion: Schema.optional(Schema.String),
+    testingUri: Schema.optional(Schema.String),
+    releaseNotes: Schema.optional(GoogleFirebaseAppdistroV1ReleaseNotes),
+    firebaseConsoleUri: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    expireTime: Schema.optional(Schema.String),
+    binaryDownloadUri: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    buildVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirebaseAppdistroV1Release" });
 
 export interface GoogleFirebaseAppdistroV1alphaCreateReleaseNotesResponse {}
 
-export const GoogleFirebaseAppdistroV1alphaCreateReleaseNotesResponse: Schema.Schema<GoogleFirebaseAppdistroV1alphaCreateReleaseNotesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleFirebaseAppdistroV1alphaCreateReleaseNotesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleFirebaseAppdistroV1alphaCreateReleaseNotesResponse",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1alphaCreateReleaseNotesResponse>;
+  });
 
 export interface GoogleFirebaseAppdistroV1alphaRelease {
   /** Last activity timestamp */
@@ -1011,24 +880,20 @@ export interface GoogleFirebaseAppdistroV1alphaRelease {
   testerCount?: number;
 }
 
-export const GoogleFirebaseAppdistroV1alphaRelease: Schema.Schema<GoogleFirebaseAppdistroV1alphaRelease> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lastActivityAt: Schema.optional(Schema.String),
-      testerWithInstallCount: Schema.optional(Schema.Number),
-      instanceId: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      receivedAt: Schema.optional(Schema.String),
-      displayVersion: Schema.optional(Schema.String),
-      buildVersion: Schema.optional(Schema.String),
-      distributedAt: Schema.optional(Schema.String),
-      openInvitationCount: Schema.optional(Schema.Number),
-      releaseNotesSummary: Schema.optional(Schema.String),
-      testerCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppdistroV1alphaRelease",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1alphaRelease>;
+export const GoogleFirebaseAppdistroV1alphaRelease =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    lastActivityAt: Schema.optional(Schema.String),
+    testerWithInstallCount: Schema.optional(Schema.Number),
+    instanceId: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    receivedAt: Schema.optional(Schema.String),
+    displayVersion: Schema.optional(Schema.String),
+    buildVersion: Schema.optional(Schema.String),
+    distributedAt: Schema.optional(Schema.String),
+    openInvitationCount: Schema.optional(Schema.Number),
+    releaseNotesSummary: Schema.optional(Schema.String),
+    testerCount: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleFirebaseAppdistroV1alphaRelease" });
 
 export interface GoogleFirebaseAppdistroV1alphaGetUploadStatusResponse {
   /** The status of the upload */
@@ -1071,17 +936,15 @@ export interface GoogleFirebaseAppdistroV1alphaGetUploadStatusResponse {
   release?: GoogleFirebaseAppdistroV1alphaRelease;
 }
 
-export const GoogleFirebaseAppdistroV1alphaGetUploadStatusResponse: Schema.Schema<GoogleFirebaseAppdistroV1alphaGetUploadStatusResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      status: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-      errorCode: Schema.optional(Schema.String),
-      release: Schema.optional(GoogleFirebaseAppdistroV1alphaRelease),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppdistroV1alphaGetUploadStatusResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    status: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+    errorCode: Schema.optional(Schema.String),
+    release: Schema.optional(GoogleFirebaseAppdistroV1alphaRelease),
+  }).annotate({
     identifier: "GoogleFirebaseAppdistroV1alphaGetUploadStatusResponse",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1alphaGetUploadStatusResponse>;
+  });
 
 export interface GoogleFirebaseAppdistroV1alphaTestQuota {
   /** Output only. Maximum number of `ReleaseTests` allotted for the current month. */
@@ -1092,37 +955,31 @@ export interface GoogleFirebaseAppdistroV1alphaTestQuota {
   usage?: string;
 }
 
-export const GoogleFirebaseAppdistroV1alphaTestQuota: Schema.Schema<GoogleFirebaseAppdistroV1alphaTestQuota> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      limit: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      usage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppdistroV1alphaTestQuota",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1alphaTestQuota>;
+export const GoogleFirebaseAppdistroV1alphaTestQuota =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    limit: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    usage: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirebaseAppdistroV1alphaTestQuota" });
 
 export interface GoogleFirebaseAppdistroV1alphaClearTestCaseCacheResponse {}
 
-export const GoogleFirebaseAppdistroV1alphaClearTestCaseCacheResponse: Schema.Schema<GoogleFirebaseAppdistroV1alphaClearTestCaseCacheResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleFirebaseAppdistroV1alphaClearTestCaseCacheResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleFirebaseAppdistroV1alphaClearTestCaseCacheResponse",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1alphaClearTestCaseCacheResponse>;
+  });
 
 export interface GoogleFirebaseAppdistroV1alphaBatchDeleteTestCasesRequest {
   /** Required. The name of the test cases to delete. A maximum number of 1000 test cases can be deleted in one batch Format: `projects/{project_number}/apps/{app}/testCases/{test_case}` */
   names?: Array<string>;
 }
 
-export const GoogleFirebaseAppdistroV1alphaBatchDeleteTestCasesRequest: Schema.Schema<GoogleFirebaseAppdistroV1alphaBatchDeleteTestCasesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      names: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppdistroV1alphaBatchDeleteTestCasesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    names: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleFirebaseAppdistroV1alphaBatchDeleteTestCasesRequest",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1alphaBatchDeleteTestCasesRequest>;
+  });
 
 export interface GoogleFirebaseAppdistroV1UploadReleaseResponse {
   /** Result of upload release. */
@@ -1136,22 +993,18 @@ export interface GoogleFirebaseAppdistroV1UploadReleaseResponse {
   release?: GoogleFirebaseAppdistroV1Release;
 }
 
-export const GoogleFirebaseAppdistroV1UploadReleaseResponse: Schema.Schema<GoogleFirebaseAppdistroV1UploadReleaseResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      result: Schema.optional(Schema.String),
-      release: Schema.optional(GoogleFirebaseAppdistroV1Release),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppdistroV1UploadReleaseResponse",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1UploadReleaseResponse>;
+export const GoogleFirebaseAppdistroV1UploadReleaseResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    result: Schema.optional(Schema.String),
+    release: Schema.optional(GoogleFirebaseAppdistroV1Release),
+  }).annotate({ identifier: "GoogleFirebaseAppdistroV1UploadReleaseResponse" });
 
 export interface GoogleFirebaseAppdistroV1alphaCancelReleaseTestResponse {}
 
-export const GoogleFirebaseAppdistroV1alphaCancelReleaseTestResponse: Schema.Schema<GoogleFirebaseAppdistroV1alphaCancelReleaseTestResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleFirebaseAppdistroV1alphaCancelReleaseTestResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleFirebaseAppdistroV1alphaCancelReleaseTestResponse",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1alphaCancelReleaseTestResponse>;
+  });
 
 export interface GoogleFirebaseAppdistroV1alphaEnableAccessOnReleaseRequest {
   /** Optional. Ignored. Used to be build version of the app release if an instance identifier was provided for the release_id. */
@@ -1164,96 +1017,80 @@ export interface GoogleFirebaseAppdistroV1alphaEnableAccessOnReleaseRequest {
   displayVersion?: string;
 }
 
-export const GoogleFirebaseAppdistroV1alphaEnableAccessOnReleaseRequest: Schema.Schema<GoogleFirebaseAppdistroV1alphaEnableAccessOnReleaseRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      buildVersion: Schema.optional(Schema.String),
-      groupIds: Schema.optional(Schema.Array(Schema.String)),
-      emails: Schema.optional(Schema.Array(Schema.String)),
-      displayVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppdistroV1alphaEnableAccessOnReleaseRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    buildVersion: Schema.optional(Schema.String),
+    groupIds: Schema.optional(Schema.Array(Schema.String)),
+    emails: Schema.optional(Schema.Array(Schema.String)),
+    displayVersion: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleFirebaseAppdistroV1alphaEnableAccessOnReleaseRequest",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1alphaEnableAccessOnReleaseRequest>;
+  });
 
 export interface GoogleFirebaseAppdistroV1alphaReleaseNotes {
   /** The actual release notes text from the user. */
   releaseNotes?: string;
 }
 
-export const GoogleFirebaseAppdistroV1alphaReleaseNotes: Schema.Schema<GoogleFirebaseAppdistroV1alphaReleaseNotes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      releaseNotes: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppdistroV1alphaReleaseNotes",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1alphaReleaseNotes>;
+export const GoogleFirebaseAppdistroV1alphaReleaseNotes =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    releaseNotes: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirebaseAppdistroV1alphaReleaseNotes" });
 
 export interface GoogleFirebaseAppdistroV1alphaJwt {
   /** The JWT token (three Base64URL-encoded strings joined by dots). */
   token?: string;
 }
 
-export const GoogleFirebaseAppdistroV1alphaJwt: Schema.Schema<GoogleFirebaseAppdistroV1alphaJwt> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      token: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppdistroV1alphaJwt",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1alphaJwt>;
+export const GoogleFirebaseAppdistroV1alphaJwt =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    token: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirebaseAppdistroV1alphaJwt" });
 
 export interface GoogleFirebaseAppdistroV1alphaCreateReleaseNotesRequest {
   /** The actual release notes body from the user */
   releaseNotes?: GoogleFirebaseAppdistroV1alphaReleaseNotes;
 }
 
-export const GoogleFirebaseAppdistroV1alphaCreateReleaseNotesRequest: Schema.Schema<GoogleFirebaseAppdistroV1alphaCreateReleaseNotesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      releaseNotes: Schema.optional(GoogleFirebaseAppdistroV1alphaReleaseNotes),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppdistroV1alphaCreateReleaseNotesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    releaseNotes: Schema.optional(GoogleFirebaseAppdistroV1alphaReleaseNotes),
+  }).annotate({
     identifier: "GoogleFirebaseAppdistroV1alphaCreateReleaseNotesRequest",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1alphaCreateReleaseNotesRequest>;
+  });
 
 export interface GoogleFirebaseAppdistroV1alphaEnableAccessOnReleaseResponse {}
 
-export const GoogleFirebaseAppdistroV1alphaEnableAccessOnReleaseResponse: Schema.Schema<GoogleFirebaseAppdistroV1alphaEnableAccessOnReleaseResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleFirebaseAppdistroV1alphaEnableAccessOnReleaseResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleFirebaseAppdistroV1alphaEnableAccessOnReleaseResponse",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1alphaEnableAccessOnReleaseResponse>;
+  });
 
 export interface GoogleFirebaseAppdistroV1alphaGetReleaseByUploadHashResponse {
   /** Release object */
   release?: GoogleFirebaseAppdistroV1alphaRelease;
 }
 
-export const GoogleFirebaseAppdistroV1alphaGetReleaseByUploadHashResponse: Schema.Schema<GoogleFirebaseAppdistroV1alphaGetReleaseByUploadHashResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      release: Schema.optional(GoogleFirebaseAppdistroV1alphaRelease),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppdistroV1alphaGetReleaseByUploadHashResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    release: Schema.optional(GoogleFirebaseAppdistroV1alphaRelease),
+  }).annotate({
     identifier: "GoogleFirebaseAppdistroV1alphaGetReleaseByUploadHashResponse",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1alphaGetReleaseByUploadHashResponse>;
+  });
 
 export interface GoogleFirebaseAppdistroV1alphaClearTestCaseCacheRequest {
   /** Optional. The list of devices for which to clear the cache. If not present, clear all of them. */
   testDevices?: Array<GoogleFirebaseAppdistroV1alphaTestDevice>;
 }
 
-export const GoogleFirebaseAppdistroV1alphaClearTestCaseCacheRequest: Schema.Schema<GoogleFirebaseAppdistroV1alphaClearTestCaseCacheRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      testDevices: Schema.optional(
-        Schema.Array(GoogleFirebaseAppdistroV1alphaTestDevice),
-      ),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppdistroV1alphaClearTestCaseCacheRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    testDevices: Schema.optional(
+      Schema.Array(GoogleFirebaseAppdistroV1alphaTestDevice),
+    ),
+  }).annotate({
     identifier: "GoogleFirebaseAppdistroV1alphaClearTestCaseCacheRequest",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1alphaClearTestCaseCacheRequest>;
+  });
 
 // ==========================================================================
 // Operations

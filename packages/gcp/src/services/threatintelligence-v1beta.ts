@@ -31,16 +31,13 @@ export interface Status {
   message?: string;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      message: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  message: Schema.optional(Schema.String),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
@@ -55,16 +52,13 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      done: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      error: Schema.optional(Status),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  done: Schema.optional(Schema.Boolean),
+  name: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  error: Schema.optional(Status),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Operation" });
 
 export interface Audit {
   /** Output only. Time of creation or last update. */
@@ -77,15 +71,12 @@ export interface Audit {
   creator?: string;
 }
 
-export const Audit: Schema.Schema<Audit> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updater: Schema.optional(Schema.String),
-      creator: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Audit" }) as any as Schema.Schema<Audit>;
+export const Audit = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  updateTime: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updater: Schema.optional(Schema.String),
+  creator: Schema.optional(Schema.String),
+}).annotate({ identifier: "Audit" });
 
 export interface CustomerProfileCompany {
   /** Required. The name of the company. */
@@ -94,15 +85,12 @@ export interface CustomerProfileCompany {
   citationIds?: Array<string>;
 }
 
-export const CustomerProfileCompany: Schema.Schema<CustomerProfileCompany> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      company: Schema.optional(Schema.String),
-      citationIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "CustomerProfileCompany",
-  }) as any as Schema.Schema<CustomerProfileCompany>;
+export const CustomerProfileCompany = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    company: Schema.optional(Schema.String),
+    citationIds: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "CustomerProfileCompany" });
 
 export interface CustomerProfileProduct {
   /** Required. The brand of the product. */
@@ -113,16 +101,13 @@ export interface CustomerProfileProduct {
   citationIds?: Array<string>;
 }
 
-export const CustomerProfileProduct: Schema.Schema<CustomerProfileProduct> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      brand: Schema.optional(Schema.String),
-      product: Schema.optional(Schema.String),
-      citationIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "CustomerProfileProduct",
-  }) as any as Schema.Schema<CustomerProfileProduct>;
+export const CustomerProfileProduct = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    brand: Schema.optional(Schema.String),
+    product: Schema.optional(Schema.String),
+    citationIds: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "CustomerProfileProduct" });
 
 export interface CustomerProfileLocation {
   /** Optional. The type of location. */
@@ -135,17 +120,13 @@ export interface CustomerProfileLocation {
   brand?: string;
 }
 
-export const CustomerProfileLocation: Schema.Schema<CustomerProfileLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      facilityType: Schema.optional(Schema.String),
-      address: Schema.optional(Schema.String),
-      citationIds: Schema.optional(Schema.Array(Schema.String)),
-      brand: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomerProfileLocation",
-  }) as any as Schema.Schema<CustomerProfileLocation>;
+export const CustomerProfileLocation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    facilityType: Schema.optional(Schema.String),
+    address: Schema.optional(Schema.String),
+    citationIds: Schema.optional(Schema.Array(Schema.String)),
+    brand: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CustomerProfileLocation" });
 
 export interface CustomerProfileIndustry {
   /** Required. The name of the industry. */
@@ -154,15 +135,11 @@ export interface CustomerProfileIndustry {
   citationIds?: Array<string>;
 }
 
-export const CustomerProfileIndustry: Schema.Schema<CustomerProfileIndustry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      industry: Schema.optional(Schema.String),
-      citationIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "CustomerProfileIndustry",
-  }) as any as Schema.Schema<CustomerProfileIndustry>;
+export const CustomerProfileIndustry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    industry: Schema.optional(Schema.String),
+    citationIds: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "CustomerProfileIndustry" });
 
 export interface CustomerProfilePerson {
   /** Required. The name of the person. */
@@ -173,16 +150,11 @@ export interface CustomerProfilePerson {
   citationIds?: Array<string>;
 }
 
-export const CustomerProfilePerson: Schema.Schema<CustomerProfilePerson> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      citationIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "CustomerProfilePerson",
-  }) as any as Schema.Schema<CustomerProfilePerson>;
+export const CustomerProfilePerson = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  citationIds: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "CustomerProfilePerson" });
 
 export interface CustomerProfileSecurityConsiderations {
   /** Optional. A note about the security considerations. */
@@ -191,15 +163,11 @@ export interface CustomerProfileSecurityConsiderations {
   considerations?: Array<string>;
 }
 
-export const CustomerProfileSecurityConsiderations: Schema.Schema<CustomerProfileSecurityConsiderations> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      note: Schema.optional(Schema.String),
-      considerations: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "CustomerProfileSecurityConsiderations",
-  }) as any as Schema.Schema<CustomerProfileSecurityConsiderations>;
+export const CustomerProfileSecurityConsiderations =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    note: Schema.optional(Schema.String),
+    considerations: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "CustomerProfileSecurityConsiderations" });
 
 export interface CustomerProfileContactInfo {
   /** The other contact information. */
@@ -216,19 +184,15 @@ export interface CustomerProfileContactInfo {
   address?: string;
 }
 
-export const CustomerProfileContactInfo: Schema.Schema<CustomerProfileContactInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      other: Schema.optional(Schema.String),
-      phone: Schema.optional(Schema.String),
-      label: Schema.optional(Schema.String),
-      email: Schema.optional(Schema.String),
-      citationIds: Schema.optional(Schema.Array(Schema.String)),
-      address: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomerProfileContactInfo",
-  }) as any as Schema.Schema<CustomerProfileContactInfo>;
+export const CustomerProfileContactInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    other: Schema.optional(Schema.String),
+    phone: Schema.optional(Schema.String),
+    label: Schema.optional(Schema.String),
+    email: Schema.optional(Schema.String),
+    citationIds: Schema.optional(Schema.Array(Schema.String)),
+    address: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CustomerProfileContactInfo" });
 
 export interface CustomerProfileCitedString {
   /** Required. The value of the string. */
@@ -237,15 +201,11 @@ export interface CustomerProfileCitedString {
   citationIds?: Array<string>;
 }
 
-export const CustomerProfileCitedString: Schema.Schema<CustomerProfileCitedString> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-      citationIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "CustomerProfileCitedString",
-  }) as any as Schema.Schema<CustomerProfileCitedString>;
+export const CustomerProfileCitedString =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(Schema.String),
+    citationIds: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "CustomerProfileCitedString" });
 
 export interface CustomerProfileSummary {
   /** Optional. The date the customer was founded. */
@@ -274,25 +234,22 @@ export interface CustomerProfileSummary {
   productsSummary?: CustomerProfileCitedString;
 }
 
-export const CustomerProfileSummary: Schema.Schema<CustomerProfileSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      founded: Schema.optional(CustomerProfileCitedString),
-      industry: Schema.optional(CustomerProfileCitedString),
-      parentCompany: Schema.optional(CustomerProfileCitedString),
-      primaryWebsite: Schema.optional(CustomerProfileCitedString),
-      servicesSummary: Schema.optional(CustomerProfileCitedString),
-      title: Schema.optional(CustomerProfileCitedString),
-      headquarters: Schema.optional(CustomerProfileCitedString),
-      areaServed: Schema.optional(CustomerProfileCitedString),
-      brands: Schema.optional(CustomerProfileCitedString),
-      entityType: Schema.optional(CustomerProfileCitedString),
-      keyPeopleSummary: Schema.optional(CustomerProfileCitedString),
-      productsSummary: Schema.optional(CustomerProfileCitedString),
-    }),
-  ).annotate({
-    identifier: "CustomerProfileSummary",
-  }) as any as Schema.Schema<CustomerProfileSummary>;
+export const CustomerProfileSummary = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    founded: Schema.optional(CustomerProfileCitedString),
+    industry: Schema.optional(CustomerProfileCitedString),
+    parentCompany: Schema.optional(CustomerProfileCitedString),
+    primaryWebsite: Schema.optional(CustomerProfileCitedString),
+    servicesSummary: Schema.optional(CustomerProfileCitedString),
+    title: Schema.optional(CustomerProfileCitedString),
+    headquarters: Schema.optional(CustomerProfileCitedString),
+    areaServed: Schema.optional(CustomerProfileCitedString),
+    brands: Schema.optional(CustomerProfileCitedString),
+    entityType: Schema.optional(CustomerProfileCitedString),
+    keyPeopleSummary: Schema.optional(CustomerProfileCitedString),
+    productsSummary: Schema.optional(CustomerProfileCitedString),
+  },
+).annotate({ identifier: "CustomerProfileSummary" });
 
 export interface CustomerProfileCitation {
   /** Optional. The url of the citation. */
@@ -307,18 +264,14 @@ export interface CustomerProfileCitation {
   source?: string;
 }
 
-export const CustomerProfileCitation: Schema.Schema<CustomerProfileCitation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-      document: Schema.optional(Schema.String),
-      citationId: Schema.optional(Schema.String),
-      retrievalTime: Schema.optional(Schema.String),
-      source: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomerProfileCitation",
-  }) as any as Schema.Schema<CustomerProfileCitation>;
+export const CustomerProfileCitation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uri: Schema.optional(Schema.String),
+    document: Schema.optional(Schema.String),
+    citationId: Schema.optional(Schema.String),
+    retrievalTime: Schema.optional(Schema.String),
+    source: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CustomerProfileCitation" });
 
 export interface CustomerProfileWebPresence {
   /** Required. The domain name of the web presence. */
@@ -327,15 +280,11 @@ export interface CustomerProfileWebPresence {
   citationIds?: Array<string>;
 }
 
-export const CustomerProfileWebPresence: Schema.Schema<CustomerProfileWebPresence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      domain: Schema.optional(Schema.String),
-      citationIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "CustomerProfileWebPresence",
-  }) as any as Schema.Schema<CustomerProfileWebPresence>;
+export const CustomerProfileWebPresence =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    domain: Schema.optional(Schema.String),
+    citationIds: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "CustomerProfileWebPresence" });
 
 export interface CustomerProfileConfig {
   /** Optional. The parent companies of the organization. */
@@ -366,28 +315,23 @@ export interface CustomerProfileConfig {
   webPresences?: Array<CustomerProfileWebPresence>;
 }
 
-export const CustomerProfileConfig: Schema.Schema<CustomerProfileConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parentCompanies: Schema.optional(Schema.Array(CustomerProfileCompany)),
-      org: Schema.optional(Schema.String),
-      products: Schema.optional(Schema.Array(CustomerProfileProduct)),
-      locations: Schema.optional(Schema.Array(CustomerProfileLocation)),
-      industries: Schema.optional(Schema.Array(CustomerProfileIndustry)),
-      executives: Schema.optional(Schema.Array(CustomerProfilePerson)),
-      securityConsiderations: Schema.optional(
-        CustomerProfileSecurityConsiderations,
-      ),
-      technologyPresence: Schema.optional(Schema.String),
-      contactInfo: Schema.optional(Schema.Array(CustomerProfileContactInfo)),
-      summary: Schema.optional(CustomerProfileSummary),
-      orgSummary: Schema.optional(Schema.String),
-      citations: Schema.optional(Schema.Array(CustomerProfileCitation)),
-      webPresences: Schema.optional(Schema.Array(CustomerProfileWebPresence)),
-    }),
-  ).annotate({
-    identifier: "CustomerProfileConfig",
-  }) as any as Schema.Schema<CustomerProfileConfig>;
+export const CustomerProfileConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  parentCompanies: Schema.optional(Schema.Array(CustomerProfileCompany)),
+  org: Schema.optional(Schema.String),
+  products: Schema.optional(Schema.Array(CustomerProfileProduct)),
+  locations: Schema.optional(Schema.Array(CustomerProfileLocation)),
+  industries: Schema.optional(Schema.Array(CustomerProfileIndustry)),
+  executives: Schema.optional(Schema.Array(CustomerProfilePerson)),
+  securityConsiderations: Schema.optional(
+    CustomerProfileSecurityConsiderations,
+  ),
+  technologyPresence: Schema.optional(Schema.String),
+  contactInfo: Schema.optional(Schema.Array(CustomerProfileContactInfo)),
+  summary: Schema.optional(CustomerProfileSummary),
+  orgSummary: Schema.optional(Schema.String),
+  citations: Schema.optional(Schema.Array(CustomerProfileCitation)),
+  webPresences: Schema.optional(Schema.Array(CustomerProfileWebPresence)),
+}).annotate({ identifier: "CustomerProfileConfig" });
 
 export interface ConfigurationDetail {
   /** Output only. Name of the detail type. Will be set by the server during creation to the name of the field that is set in the detail union. */
@@ -396,15 +340,10 @@ export interface ConfigurationDetail {
   customerProfile?: CustomerProfileConfig;
 }
 
-export const ConfigurationDetail: Schema.Schema<ConfigurationDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      detailType: Schema.optional(Schema.String),
-      customerProfile: Schema.optional(CustomerProfileConfig),
-    }),
-  ).annotate({
-    identifier: "ConfigurationDetail",
-  }) as any as Schema.Schema<ConfigurationDetail>;
+export const ConfigurationDetail = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  detailType: Schema.optional(Schema.String),
+  customerProfile: Schema.optional(CustomerProfileConfig),
+}).annotate({ identifier: "ConfigurationDetail" });
 
 export interface Configuration {
   /** Optional. State of the configuration. */
@@ -430,21 +369,16 @@ export interface Configuration {
   detail?: ConfigurationDetail;
 }
 
-export const Configuration: Schema.Schema<Configuration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      provider: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      audit: Schema.optional(Audit),
-      detail: Schema.optional(ConfigurationDetail),
-    }),
-  ).annotate({
-    identifier: "Configuration",
-  }) as any as Schema.Schema<Configuration>;
+export const Configuration = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  provider: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  audit: Schema.optional(Audit),
+  detail: Schema.optional(ConfigurationDetail),
+}).annotate({ identifier: "Configuration" });
 
 export interface ConfigurationRevision {
   /** Output only. The time the Revision was created */
@@ -455,16 +389,11 @@ export interface ConfigurationRevision {
   snapshot?: Configuration;
 }
 
-export const ConfigurationRevision: Schema.Schema<ConfigurationRevision> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      snapshot: Schema.optional(Configuration),
-    }),
-  ).annotate({
-    identifier: "ConfigurationRevision",
-  }) as any as Schema.Schema<ConfigurationRevision>;
+export const ConfigurationRevision = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  snapshot: Schema.optional(Configuration),
+}).annotate({ identifier: "ConfigurationRevision" });
 
 export interface ListConfigurationRevisionsResponse {
   /** The Configuration Revisions associated with the specified Configuration */
@@ -473,15 +402,11 @@ export interface ListConfigurationRevisionsResponse {
   nextPageToken?: string;
 }
 
-export const ListConfigurationRevisionsResponse: Schema.Schema<ListConfigurationRevisionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      revisions: Schema.optional(Schema.Array(ConfigurationRevision)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListConfigurationRevisionsResponse",
-  }) as any as Schema.Schema<ListConfigurationRevisionsResponse>;
+export const ListConfigurationRevisionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    revisions: Schema.optional(Schema.Array(ConfigurationRevision)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListConfigurationRevisionsResponse" });
 
 export interface SeverityAnalysis {
   /** The level of severity. */
@@ -502,30 +427,21 @@ export interface SeverityAnalysis {
     | (string & {});
 }
 
-export const SeverityAnalysis: Schema.Schema<SeverityAnalysis> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      severityLevel: Schema.optional(Schema.String),
-      reasoning: Schema.optional(Schema.String),
-      confidence: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SeverityAnalysis",
-  }) as any as Schema.Schema<SeverityAnalysis>;
+export const SeverityAnalysis = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  severityLevel: Schema.optional(Schema.String),
+  reasoning: Schema.optional(Schema.String),
+  confidence: Schema.optional(Schema.String),
+}).annotate({ identifier: "SeverityAnalysis" });
 
 export interface MarkAlertAsDuplicateRequest {
   /** Optional. Name of the alert to mark as a duplicate of. Format: projects/{project}/alerts/{alert} */
   duplicateOf?: string;
 }
 
-export const MarkAlertAsDuplicateRequest: Schema.Schema<MarkAlertAsDuplicateRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      duplicateOf: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MarkAlertAsDuplicateRequest",
-  }) as any as Schema.Schema<MarkAlertAsDuplicateRequest>;
+export const MarkAlertAsDuplicateRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    duplicateOf: Schema.optional(Schema.String),
+  }).annotate({ identifier: "MarkAlertAsDuplicateRequest" });
 
 export interface Evidence {
   /** A list of semantic themes or concepts found to be common, related, or aligned between the sources, supporting the verdict. */
@@ -534,13 +450,10 @@ export interface Evidence {
   distinctThemes?: Array<string>;
 }
 
-export const Evidence: Schema.Schema<Evidence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonThemes: Schema.optional(Schema.Array(Schema.String)),
-      distinctThemes: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "Evidence" }) as any as Schema.Schema<Evidence>;
+export const Evidence = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  commonThemes: Schema.optional(Schema.Array(Schema.String)),
+  distinctThemes: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Evidence" });
 
 export interface RelevanceAnalysis {
   /** Indicates whether the threat is considered relevant. */
@@ -565,18 +478,13 @@ export interface RelevanceAnalysis {
   reasoning?: string;
 }
 
-export const RelevanceAnalysis: Schema.Schema<RelevanceAnalysis> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      relevant: Schema.optional(Schema.Boolean),
-      relevanceLevel: Schema.optional(Schema.String),
-      confidence: Schema.optional(Schema.String),
-      evidence: Schema.optional(Evidence),
-      reasoning: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RelevanceAnalysis",
-  }) as any as Schema.Schema<RelevanceAnalysis>;
+export const RelevanceAnalysis = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  relevant: Schema.optional(Schema.Boolean),
+  relevanceLevel: Schema.optional(Schema.String),
+  confidence: Schema.optional(Schema.String),
+  evidence: Schema.optional(Evidence),
+  reasoning: Schema.optional(Schema.String),
+}).annotate({ identifier: "RelevanceAnalysis" });
 
 export interface InitialAccessBrokerFindingDetail {
   /** Required. The severity of the IAB finding. This indicates the potential impact of the threat. */
@@ -593,16 +501,12 @@ export interface InitialAccessBrokerFindingDetail {
   matchScore?: number;
 }
 
-export const InitialAccessBrokerFindingDetail: Schema.Schema<InitialAccessBrokerFindingDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      severity: Schema.optional(Schema.String),
-      documentId: Schema.optional(Schema.String),
-      matchScore: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "InitialAccessBrokerFindingDetail",
-  }) as any as Schema.Schema<InitialAccessBrokerFindingDetail>;
+export const InitialAccessBrokerFindingDetail =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    severity: Schema.optional(Schema.String),
+    documentId: Schema.optional(Schema.String),
+    matchScore: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "InitialAccessBrokerFindingDetail" });
 
 export interface DataLeakFindingDetail {
   /** Required. Reference to the match score of the Data Leak finding. This is a float value greater than 0 and less than or equal to 1 calculated by the matching engine based on the similarity of the document and the user provided configurations. */
@@ -619,16 +523,11 @@ export interface DataLeakFindingDetail {
   documentId?: string;
 }
 
-export const DataLeakFindingDetail: Schema.Schema<DataLeakFindingDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      matchScore: Schema.optional(Schema.Number),
-      severity: Schema.optional(Schema.String),
-      documentId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DataLeakFindingDetail",
-  }) as any as Schema.Schema<DataLeakFindingDetail>;
+export const DataLeakFindingDetail = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  matchScore: Schema.optional(Schema.Number),
+  severity: Schema.optional(Schema.String),
+  documentId: Schema.optional(Schema.String),
+}).annotate({ identifier: "DataLeakFindingDetail" });
 
 export interface InsiderThreatFindingDetail {
   /** Required. The severity of the InsiderThreat finding. This indicates the potential impact of the threat. */
@@ -645,16 +544,12 @@ export interface InsiderThreatFindingDetail {
   matchScore?: number;
 }
 
-export const InsiderThreatFindingDetail: Schema.Schema<InsiderThreatFindingDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      severity: Schema.optional(Schema.String),
-      documentId: Schema.optional(Schema.String),
-      matchScore: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "InsiderThreatFindingDetail",
-  }) as any as Schema.Schema<InsiderThreatFindingDetail>;
+export const InsiderThreatFindingDetail =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    severity: Schema.optional(Schema.String),
+    documentId: Schema.optional(Schema.String),
+    matchScore: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "InsiderThreatFindingDetail" });
 
 export interface FindingDetail {
   /** Initial Access Broker finding detail type. */
@@ -667,17 +562,12 @@ export interface FindingDetail {
   insiderThreat?: InsiderThreatFindingDetail;
 }
 
-export const FindingDetail: Schema.Schema<FindingDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      initialAccessBroker: Schema.optional(InitialAccessBrokerFindingDetail),
-      detailType: Schema.optional(Schema.String),
-      dataLeak: Schema.optional(DataLeakFindingDetail),
-      insiderThreat: Schema.optional(InsiderThreatFindingDetail),
-    }),
-  ).annotate({
-    identifier: "FindingDetail",
-  }) as any as Schema.Schema<FindingDetail>;
+export const FindingDetail = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  initialAccessBroker: Schema.optional(InitialAccessBrokerFindingDetail),
+  detailType: Schema.optional(Schema.String),
+  dataLeak: Schema.optional(DataLeakFindingDetail),
+  insiderThreat: Schema.optional(InsiderThreatFindingDetail),
+}).annotate({ identifier: "FindingDetail" });
 
 export interface Finding {
   /** Output only. When identical finding (same labels and same details) has re-occurred. */
@@ -706,23 +596,20 @@ export interface Finding {
   detail?: FindingDetail;
 }
 
-export const Finding: Schema.Schema<Finding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reoccurrenceTimes: Schema.optional(Schema.Array(Schema.String)),
-      aiSummary: Schema.optional(Schema.String),
-      audit: Schema.optional(Audit),
-      alert: Schema.optional(Schema.String),
-      severity: Schema.optional(Schema.Number),
-      configurations: Schema.optional(Schema.Array(Schema.String)),
-      name: Schema.optional(Schema.String),
-      provider: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      relevanceAnalysis: Schema.optional(RelevanceAnalysis),
-      severityAnalysis: Schema.optional(SeverityAnalysis),
-      detail: Schema.optional(FindingDetail),
-    }),
-  ).annotate({ identifier: "Finding" }) as any as Schema.Schema<Finding>;
+export const Finding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  reoccurrenceTimes: Schema.optional(Schema.Array(Schema.String)),
+  aiSummary: Schema.optional(Schema.String),
+  audit: Schema.optional(Audit),
+  alert: Schema.optional(Schema.String),
+  severity: Schema.optional(Schema.Number),
+  configurations: Schema.optional(Schema.Array(Schema.String)),
+  name: Schema.optional(Schema.String),
+  provider: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  relevanceAnalysis: Schema.optional(RelevanceAnalysis),
+  severityAnalysis: Schema.optional(SeverityAnalysis),
+  detail: Schema.optional(FindingDetail),
+}).annotate({ identifier: "Finding" });
 
 export interface ListFindingsResponse {
   /** List of findings. */
@@ -731,15 +618,10 @@ export interface ListFindingsResponse {
   nextPageToken?: string;
 }
 
-export const ListFindingsResponse: Schema.Schema<ListFindingsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      findings: Schema.optional(Schema.Array(Finding)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListFindingsResponse",
-  }) as any as Schema.Schema<ListFindingsResponse>;
+export const ListFindingsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  findings: Schema.optional(Schema.Array(Finding)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListFindingsResponse" });
 
 export interface FacetCount {
   /** Count of records with the value. */
@@ -748,13 +630,10 @@ export interface FacetCount {
   value?: string;
 }
 
-export const FacetCount: Schema.Schema<FacetCount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      count: Schema.optional(Schema.Number),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "FacetCount" }) as any as Schema.Schema<FacetCount>;
+export const FacetCount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  count: Schema.optional(Schema.Number),
+  value: Schema.optional(Schema.String),
+}).annotate({ identifier: "FacetCount" });
 
 export interface DataLeakAlertDetail {
   /** Required. Array of ids to accommodate multiple discovery documents */
@@ -763,15 +642,10 @@ export interface DataLeakAlertDetail {
   severity?: string;
 }
 
-export const DataLeakAlertDetail: Schema.Schema<DataLeakAlertDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      discoveryDocumentIds: Schema.optional(Schema.Array(Schema.String)),
-      severity: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DataLeakAlertDetail",
-  }) as any as Schema.Schema<DataLeakAlertDetail>;
+export const DataLeakAlertDetail = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  discoveryDocumentIds: Schema.optional(Schema.Array(Schema.String)),
+  severity: Schema.optional(Schema.String),
+}).annotate({ identifier: "DataLeakAlertDetail" });
 
 export interface Facet {
   /** Max value of the facet stringified based on type. Will be populated and formatted the same as min_value. */
@@ -788,45 +662,38 @@ export interface Facet {
   minValue?: string;
 }
 
-export const Facet: Schema.Schema<Facet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      maxValue: Schema.optional(Schema.String),
-      facet: Schema.optional(Schema.String),
-      totalCount: Schema.optional(Schema.String),
-      facetCounts: Schema.optional(Schema.Array(FacetCount)),
-      facetType: Schema.optional(Schema.String),
-      minValue: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Facet" }) as any as Schema.Schema<Facet>;
+export const Facet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  maxValue: Schema.optional(Schema.String),
+  facet: Schema.optional(Schema.String),
+  totalCount: Schema.optional(Schema.String),
+  facetCounts: Schema.optional(Schema.Array(FacetCount)),
+  facetType: Schema.optional(Schema.String),
+  minValue: Schema.optional(Schema.String),
+}).annotate({ identifier: "Facet" });
 
 export interface EnumerateAlertFacetsResponse {
   /** List of facets and the counts. */
   facets?: Array<Facet>;
 }
 
-export const EnumerateAlertFacetsResponse: Schema.Schema<EnumerateAlertFacetsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      facets: Schema.optional(Schema.Array(Facet)),
-    }),
-  ).annotate({
-    identifier: "EnumerateAlertFacetsResponse",
-  }) as any as Schema.Schema<EnumerateAlertFacetsResponse>;
+export const EnumerateAlertFacetsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    facets: Schema.optional(Schema.Array(Facet)),
+  }).annotate({ identifier: "EnumerateAlertFacetsResponse" });
 
 export interface MarkAlertAsBenignRequest {}
 
-export const MarkAlertAsBenignRequest: Schema.Schema<MarkAlertAsBenignRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const MarkAlertAsBenignRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "MarkAlertAsBenignRequest",
-  }) as any as Schema.Schema<MarkAlertAsBenignRequest>;
+  });
 
 export interface MarkAlertAsTrackedExternallyRequest {}
 
-export const MarkAlertAsTrackedExternallyRequest: Schema.Schema<MarkAlertAsTrackedExternallyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const MarkAlertAsTrackedExternallyRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "MarkAlertAsTrackedExternallyRequest",
-  }) as any as Schema.Schema<MarkAlertAsTrackedExternallyRequest>;
+  });
 
 export interface InsiderThreatAlertDetail {
   /** Required. Array of ids to accommodate multiple discovery documents */
@@ -835,15 +702,11 @@ export interface InsiderThreatAlertDetail {
   severity?: string;
 }
 
-export const InsiderThreatAlertDetail: Schema.Schema<InsiderThreatAlertDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      discoveryDocumentIds: Schema.optional(Schema.Array(Schema.String)),
-      severity: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InsiderThreatAlertDetail",
-  }) as any as Schema.Schema<InsiderThreatAlertDetail>;
+export const InsiderThreatAlertDetail =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    discoveryDocumentIds: Schema.optional(Schema.Array(Schema.String)),
+    severity: Schema.optional(Schema.String),
+  }).annotate({ identifier: "InsiderThreatAlertDetail" });
 
 export interface InitialAccessBrokerAlertDetail {
   /** Required. Array of ids to accommodate multiple discovery documents */
@@ -852,15 +715,11 @@ export interface InitialAccessBrokerAlertDetail {
   severity?: string;
 }
 
-export const InitialAccessBrokerAlertDetail: Schema.Schema<InitialAccessBrokerAlertDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      discoveryDocumentIds: Schema.optional(Schema.Array(Schema.String)),
-      severity: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InitialAccessBrokerAlertDetail",
-  }) as any as Schema.Schema<InitialAccessBrokerAlertDetail>;
+export const InitialAccessBrokerAlertDetail =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    discoveryDocumentIds: Schema.optional(Schema.Array(Schema.String)),
+    severity: Schema.optional(Schema.String),
+  }).annotate({ identifier: "InitialAccessBrokerAlertDetail" });
 
 export interface AlertDetail {
   /** Data Leak alert detail type. */
@@ -873,17 +732,12 @@ export interface AlertDetail {
   detailType?: string;
 }
 
-export const AlertDetail: Schema.Schema<AlertDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataLeak: Schema.optional(DataLeakAlertDetail),
-      insiderThreat: Schema.optional(InsiderThreatAlertDetail),
-      initialAccessBroker: Schema.optional(InitialAccessBrokerAlertDetail),
-      detailType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AlertDetail",
-  }) as any as Schema.Schema<AlertDetail>;
+export const AlertDetail = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dataLeak: Schema.optional(DataLeakAlertDetail),
+  insiderThreat: Schema.optional(InsiderThreatAlertDetail),
+  initialAccessBroker: Schema.optional(InitialAccessBrokerAlertDetail),
+  detailType: Schema.optional(Schema.String),
+}).annotate({ identifier: "AlertDetail" });
 
 export interface GenerateOrgProfileConfigurationRequest {
   /** Required. The domain of the organization to generate the profile for. */
@@ -892,15 +746,11 @@ export interface GenerateOrgProfileConfigurationRequest {
   displayName?: string;
 }
 
-export const GenerateOrgProfileConfigurationRequest: Schema.Schema<GenerateOrgProfileConfigurationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      domain: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GenerateOrgProfileConfigurationRequest",
-  }) as any as Schema.Schema<GenerateOrgProfileConfigurationRequest>;
+export const GenerateOrgProfileConfigurationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    domain: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GenerateOrgProfileConfigurationRequest" });
 
 export interface SearchFindingsResponse {
   /** List of findings. */
@@ -909,29 +759,26 @@ export interface SearchFindingsResponse {
   nextPageToken?: string;
 }
 
-export const SearchFindingsResponse: Schema.Schema<SearchFindingsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      findings: Schema.optional(Schema.Array(Finding)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SearchFindingsResponse",
-  }) as any as Schema.Schema<SearchFindingsResponse>;
+export const SearchFindingsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    findings: Schema.optional(Schema.Array(Finding)),
+    nextPageToken: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "SearchFindingsResponse" });
 
 export interface MarkAlertAsFalsePositiveRequest {}
 
-export const MarkAlertAsFalsePositiveRequest: Schema.Schema<MarkAlertAsFalsePositiveRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const MarkAlertAsFalsePositiveRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "MarkAlertAsFalsePositiveRequest",
-  }) as any as Schema.Schema<MarkAlertAsFalsePositiveRequest>;
+  });
 
 export interface MarkAlertAsEscalatedRequest {}
 
-export const MarkAlertAsEscalatedRequest: Schema.Schema<MarkAlertAsEscalatedRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const MarkAlertAsEscalatedRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "MarkAlertAsEscalatedRequest",
-  }) as any as Schema.Schema<MarkAlertAsEscalatedRequest>;
+  });
 
 export interface PriorityAnalysis {
   /** The level of confidence in the given verdict. */
@@ -953,16 +800,11 @@ export interface PriorityAnalysis {
   reasoning?: string;
 }
 
-export const PriorityAnalysis: Schema.Schema<PriorityAnalysis> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      confidence: Schema.optional(Schema.String),
-      priorityLevel: Schema.optional(Schema.String),
-      reasoning: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PriorityAnalysis",
-  }) as any as Schema.Schema<PriorityAnalysis>;
+export const PriorityAnalysis = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  confidence: Schema.optional(Schema.String),
+  priorityLevel: Schema.optional(Schema.String),
+  reasoning: Schema.optional(Schema.String),
+}).annotate({ identifier: "PriorityAnalysis" });
 
 export interface Alert {
   /** Output only. High-Precision Severity Analysis for the alert. */
@@ -1011,34 +853,31 @@ export interface Alert {
   aiSummary?: string;
 }
 
-export const Alert: Schema.Schema<Alert> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      severityAnalysis: Schema.optional(SeverityAnalysis),
-      configurations: Schema.optional(Schema.Array(Schema.String)),
-      name: Schema.optional(Schema.String),
-      findings: Schema.optional(Schema.Array(Schema.String)),
-      etag: Schema.optional(Schema.String),
-      findingCount: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      relevanceAnalysis: Schema.optional(RelevanceAnalysis),
-      detail: Schema.optional(AlertDetail),
-      priorityAnalysis: Schema.optional(PriorityAnalysis),
-      externalId: Schema.optional(Schema.String),
-      audit: Schema.optional(Audit),
-      duplicatedBy: Schema.optional(Schema.Array(Schema.String)),
-      state: Schema.optional(Schema.String),
-      duplicateOf: Schema.optional(Schema.String),
-      aiSummary: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Alert" }) as any as Schema.Schema<Alert>;
+export const Alert = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  severityAnalysis: Schema.optional(SeverityAnalysis),
+  configurations: Schema.optional(Schema.Array(Schema.String)),
+  name: Schema.optional(Schema.String),
+  findings: Schema.optional(Schema.Array(Schema.String)),
+  etag: Schema.optional(Schema.String),
+  findingCount: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  relevanceAnalysis: Schema.optional(RelevanceAnalysis),
+  detail: Schema.optional(AlertDetail),
+  priorityAnalysis: Schema.optional(PriorityAnalysis),
+  externalId: Schema.optional(Schema.String),
+  audit: Schema.optional(Audit),
+  duplicatedBy: Schema.optional(Schema.Array(Schema.String)),
+  state: Schema.optional(Schema.String),
+  duplicateOf: Schema.optional(Schema.String),
+  aiSummary: Schema.optional(Schema.String),
+}).annotate({ identifier: "Alert" });
 
 export interface MarkAlertAsResolvedRequest {}
 
-export const MarkAlertAsResolvedRequest: Schema.Schema<MarkAlertAsResolvedRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const MarkAlertAsResolvedRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "MarkAlertAsResolvedRequest",
-  }) as any as Schema.Schema<MarkAlertAsResolvedRequest>;
+  });
 
 export interface ListConfigurationsResponse {
   /** List of configurations. */
@@ -1047,15 +886,11 @@ export interface ListConfigurationsResponse {
   nextPageToken?: string;
 }
 
-export const ListConfigurationsResponse: Schema.Schema<ListConfigurationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      configurations: Schema.optional(Schema.Array(Configuration)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListConfigurationsResponse",
-  }) as any as Schema.Schema<ListConfigurationsResponse>;
+export const ListConfigurationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    configurations: Schema.optional(Schema.Array(Configuration)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListConfigurationsResponse" });
 
 export interface AlertDocumentTranslation {
   /** Output only. The translated content of the document. */
@@ -1064,43 +899,35 @@ export interface AlertDocumentTranslation {
   translatedTitle?: string;
 }
 
-export const AlertDocumentTranslation: Schema.Schema<AlertDocumentTranslation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      translatedContent: Schema.optional(Schema.String),
-      translatedTitle: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AlertDocumentTranslation",
-  }) as any as Schema.Schema<AlertDocumentTranslation>;
+export const AlertDocumentTranslation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    translatedContent: Schema.optional(Schema.String),
+    translatedTitle: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AlertDocumentTranslation" });
 
 export interface MarkAlertAsNotActionableRequest {}
 
-export const MarkAlertAsNotActionableRequest: Schema.Schema<MarkAlertAsNotActionableRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const MarkAlertAsNotActionableRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "MarkAlertAsNotActionableRequest",
-  }) as any as Schema.Schema<MarkAlertAsNotActionableRequest>;
+  });
 
 export interface MarkAlertAsTriagedRequest {}
 
-export const MarkAlertAsTriagedRequest: Schema.Schema<MarkAlertAsTriagedRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const MarkAlertAsTriagedRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "MarkAlertAsTriagedRequest",
-  }) as any as Schema.Schema<MarkAlertAsTriagedRequest>;
+  });
 
 export interface UpsertConfigurationResponse {
   /** Output only. Created configuration ID with server assigned id. */
   configuration?: string;
 }
 
-export const UpsertConfigurationResponse: Schema.Schema<UpsertConfigurationResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      configuration: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpsertConfigurationResponse",
-  }) as any as Schema.Schema<UpsertConfigurationResponse>;
+export const UpsertConfigurationResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    configuration: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UpsertConfigurationResponse" });
 
 export interface AlertDocument {
   /** Output only. AI summary of the finding. */
@@ -1131,26 +958,21 @@ export interface AlertDocument {
   name?: string;
 }
 
-export const AlertDocument: Schema.Schema<AlertDocument> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      aiSummary: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      languageCode: Schema.optional(Schema.String),
-      content: Schema.optional(Schema.String),
-      sourceUpdateTime: Schema.optional(Schema.String),
-      author: Schema.optional(Schema.String),
-      source: Schema.optional(Schema.String),
-      ingestTime: Schema.optional(Schema.String),
-      sourceUri: Schema.optional(Schema.String),
-      collectionTime: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      translation: Schema.optional(AlertDocumentTranslation),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AlertDocument",
-  }) as any as Schema.Schema<AlertDocument>;
+export const AlertDocument = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  aiSummary: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  languageCode: Schema.optional(Schema.String),
+  content: Schema.optional(Schema.String),
+  sourceUpdateTime: Schema.optional(Schema.String),
+  author: Schema.optional(Schema.String),
+  source: Schema.optional(Schema.String),
+  ingestTime: Schema.optional(Schema.String),
+  sourceUri: Schema.optional(Schema.String),
+  collectionTime: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  translation: Schema.optional(AlertDocumentTranslation),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "AlertDocument" });
 
 export interface ListAlertsResponse {
   /** List of alerts. */
@@ -1159,22 +981,16 @@ export interface ListAlertsResponse {
   nextPageToken?: string;
 }
 
-export const ListAlertsResponse: Schema.Schema<ListAlertsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      alerts: Schema.optional(Schema.Array(Alert)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAlertsResponse",
-  }) as any as Schema.Schema<ListAlertsResponse>;
+export const ListAlertsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  alerts: Schema.optional(Schema.Array(Alert)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListAlertsResponse" });
 
 export interface MarkAlertAsReadRequest {}
 
-export const MarkAlertAsReadRequest: Schema.Schema<MarkAlertAsReadRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "MarkAlertAsReadRequest",
-  }) as any as Schema.Schema<MarkAlertAsReadRequest>;
+export const MarkAlertAsReadRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "MarkAlertAsReadRequest" });
 
 // ==========================================================================
 // Operations

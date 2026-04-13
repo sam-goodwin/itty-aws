@@ -31,16 +31,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -55,16 +52,13 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      error: Schema.optional(Status),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  done: Schema.optional(Schema.Boolean),
+  error: Schema.optional(Status),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Operation" });
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -75,30 +69,25 @@ export interface ListOperationsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(Schema.Array(Operation)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    operations: Schema.optional(Schema.Array(Operation)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelOperationRequest",
-  }) as any as Schema.Schema<CancelOperationRequest>;
+export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelOperationRequest" });
 
 export interface AccessPolicy {
   /** Output only. Identifier. Resource name of the `AccessPolicy`. Format: `accessPolicies/{access_policy}` */
@@ -113,18 +102,13 @@ export interface AccessPolicy {
   etag?: string;
 }
 
-export const AccessPolicy: Schema.Schema<AccessPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      parent: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      scopes: Schema.optional(Schema.Array(Schema.String)),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccessPolicy",
-  }) as any as Schema.Schema<AccessPolicy>;
+export const AccessPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  parent: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  scopes: Schema.optional(Schema.Array(Schema.String)),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "AccessPolicy" });
 
 export interface ListAccessPoliciesResponse {
   /** List of the AccessPolicy instances. */
@@ -133,15 +117,11 @@ export interface ListAccessPoliciesResponse {
   nextPageToken?: string;
 }
 
-export const ListAccessPoliciesResponse: Schema.Schema<ListAccessPoliciesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accessPolicies: Schema.optional(Schema.Array(AccessPolicy)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAccessPoliciesResponse",
-  }) as any as Schema.Schema<ListAccessPoliciesResponse>;
+export const ListAccessPoliciesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accessPolicies: Schema.optional(Schema.Array(AccessPolicy)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListAccessPoliciesResponse" });
 
 export interface OsConstraint {
   /** Required. The allowed OS type. */
@@ -160,16 +140,11 @@ export interface OsConstraint {
   requireVerifiedChromeOs?: boolean;
 }
 
-export const OsConstraint: Schema.Schema<OsConstraint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      osType: Schema.optional(Schema.String),
-      minimumVersion: Schema.optional(Schema.String),
-      requireVerifiedChromeOs: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "OsConstraint",
-  }) as any as Schema.Schema<OsConstraint>;
+export const OsConstraint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  osType: Schema.optional(Schema.String),
+  minimumVersion: Schema.optional(Schema.String),
+  requireVerifiedChromeOs: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "OsConstraint" });
 
 export interface DevicePolicy {
   /** Whether or not screenlock is required for the DevicePolicy to be true. Defaults to `false`. */
@@ -194,21 +169,14 @@ export interface DevicePolicy {
   requireCorpOwned?: boolean;
 }
 
-export const DevicePolicy: Schema.Schema<DevicePolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requireScreenlock: Schema.optional(Schema.Boolean),
-      allowedEncryptionStatuses: Schema.optional(Schema.Array(Schema.String)),
-      osConstraints: Schema.optional(Schema.Array(OsConstraint)),
-      allowedDeviceManagementLevels: Schema.optional(
-        Schema.Array(Schema.String),
-      ),
-      requireAdminApproval: Schema.optional(Schema.Boolean),
-      requireCorpOwned: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "DevicePolicy",
-  }) as any as Schema.Schema<DevicePolicy>;
+export const DevicePolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  requireScreenlock: Schema.optional(Schema.Boolean),
+  allowedEncryptionStatuses: Schema.optional(Schema.Array(Schema.String)),
+  osConstraints: Schema.optional(Schema.Array(OsConstraint)),
+  allowedDeviceManagementLevels: Schema.optional(Schema.Array(Schema.String)),
+  requireAdminApproval: Schema.optional(Schema.Boolean),
+  requireCorpOwned: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "DevicePolicy" });
 
 export interface VpcSubNetwork {
   /** Required. Network name. If the network is not part of the organization, the `compute.network.get` permission must be granted to the caller. Format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NETWORK_NAME}` Example: `//compute.googleapis.com/projects/my-project/global/networks/network-1` */
@@ -217,29 +185,19 @@ export interface VpcSubNetwork {
   vpcIpSubnetworks?: Array<string>;
 }
 
-export const VpcSubNetwork: Schema.Schema<VpcSubNetwork> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      network: Schema.optional(Schema.String),
-      vpcIpSubnetworks: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "VpcSubNetwork",
-  }) as any as Schema.Schema<VpcSubNetwork>;
+export const VpcSubNetwork = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  network: Schema.optional(Schema.String),
+  vpcIpSubnetworks: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "VpcSubNetwork" });
 
 export interface VpcNetworkSource {
   /** Sub-segment ranges of a VPC network. */
   vpcSubnetwork?: VpcSubNetwork;
 }
 
-export const VpcNetworkSource: Schema.Schema<VpcNetworkSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      vpcSubnetwork: Schema.optional(VpcSubNetwork),
-    }),
-  ).annotate({
-    identifier: "VpcNetworkSource",
-  }) as any as Schema.Schema<VpcNetworkSource>;
+export const VpcNetworkSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  vpcSubnetwork: Schema.optional(VpcSubNetwork),
+}).annotate({ identifier: "VpcNetworkSource" });
 
 export interface Condition {
   /** CIDR block IP subnetwork specification. May be IPv4 or IPv6. Note that for a CIDR IP address block, the specified IP address portion must be properly truncated (i.e. all the host bits must be zero) or the input is considered malformed. For example, "192.0.2.0/24" is accepted but "192.0.2.1/24" is not. Similarly, for IPv6, "2001:db8::/32" is accepted whereas "2001:db8::1/32" is not. The originating IP of a request must be in one of the listed subnets in order for this Condition to be true. If empty, all IP addresses are allowed. */
@@ -258,18 +216,15 @@ export interface Condition {
   vpcNetworkSources?: Array<VpcNetworkSource>;
 }
 
-export const Condition: Schema.Schema<Condition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ipSubnetworks: Schema.optional(Schema.Array(Schema.String)),
-      devicePolicy: Schema.optional(DevicePolicy),
-      requiredAccessLevels: Schema.optional(Schema.Array(Schema.String)),
-      negate: Schema.optional(Schema.Boolean),
-      members: Schema.optional(Schema.Array(Schema.String)),
-      regions: Schema.optional(Schema.Array(Schema.String)),
-      vpcNetworkSources: Schema.optional(Schema.Array(VpcNetworkSource)),
-    }),
-  ).annotate({ identifier: "Condition" }) as any as Schema.Schema<Condition>;
+export const Condition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ipSubnetworks: Schema.optional(Schema.Array(Schema.String)),
+  devicePolicy: Schema.optional(DevicePolicy),
+  requiredAccessLevels: Schema.optional(Schema.Array(Schema.String)),
+  negate: Schema.optional(Schema.Boolean),
+  members: Schema.optional(Schema.Array(Schema.String)),
+  regions: Schema.optional(Schema.Array(Schema.String)),
+  vpcNetworkSources: Schema.optional(Schema.Array(VpcNetworkSource)),
+}).annotate({ identifier: "Condition" });
 
 export interface BasicLevel {
   /** Required. A list of requirements for the `AccessLevel` to be granted. */
@@ -278,13 +233,10 @@ export interface BasicLevel {
   combiningFunction?: "AND" | "OR" | (string & {});
 }
 
-export const BasicLevel: Schema.Schema<BasicLevel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conditions: Schema.optional(Schema.Array(Condition)),
-      combiningFunction: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "BasicLevel" }) as any as Schema.Schema<BasicLevel>;
+export const BasicLevel = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  conditions: Schema.optional(Schema.Array(Condition)),
+  combiningFunction: Schema.optional(Schema.String),
+}).annotate({ identifier: "BasicLevel" });
 
 export interface Expr {
   /** Textual representation of an expression in Common Expression Language syntax. */
@@ -297,29 +249,21 @@ export interface Expr {
   location?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expression: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Expr" }) as any as Schema.Schema<Expr>;
+export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  expression: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+}).annotate({ identifier: "Expr" });
 
 export interface CustomLevel {
   /** Required. A Cloud CEL expression evaluating to a boolean. */
   expr?: Expr;
 }
 
-export const CustomLevel: Schema.Schema<CustomLevel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expr: Schema.optional(Expr),
-    }),
-  ).annotate({
-    identifier: "CustomLevel",
-  }) as any as Schema.Schema<CustomLevel>;
+export const CustomLevel = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  expr: Schema.optional(Expr),
+}).annotate({ identifier: "CustomLevel" });
 
 export interface AccessLevel {
   /** Identifier. Resource name for the `AccessLevel`. Format: `accessPolicies/{access_policy}/accessLevels/{access_level}`. The `access_level` component must begin with a letter, followed by alphanumeric characters or `_`. Its maximum length is 50 characters. After you create an `AccessLevel`, you cannot change its `name`. */
@@ -334,18 +278,13 @@ export interface AccessLevel {
   custom?: CustomLevel;
 }
 
-export const AccessLevel: Schema.Schema<AccessLevel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      basic: Schema.optional(BasicLevel),
-      custom: Schema.optional(CustomLevel),
-    }),
-  ).annotate({
-    identifier: "AccessLevel",
-  }) as any as Schema.Schema<AccessLevel>;
+export const AccessLevel = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  basic: Schema.optional(BasicLevel),
+  custom: Schema.optional(CustomLevel),
+}).annotate({ identifier: "AccessLevel" });
 
 export interface ListAccessLevelsResponse {
   /** List of the Access Level instances. */
@@ -354,15 +293,11 @@ export interface ListAccessLevelsResponse {
   nextPageToken?: string;
 }
 
-export const ListAccessLevelsResponse: Schema.Schema<ListAccessLevelsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accessLevels: Schema.optional(Schema.Array(AccessLevel)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAccessLevelsResponse",
-  }) as any as Schema.Schema<ListAccessLevelsResponse>;
+export const ListAccessLevelsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accessLevels: Schema.optional(Schema.Array(AccessLevel)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListAccessLevelsResponse" });
 
 export interface ReplaceAccessLevelsRequest {
   /** Required. The desired Access Levels that should replace all existing Access Levels in the Access Policy. */
@@ -371,15 +306,11 @@ export interface ReplaceAccessLevelsRequest {
   etag?: string;
 }
 
-export const ReplaceAccessLevelsRequest: Schema.Schema<ReplaceAccessLevelsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accessLevels: Schema.optional(Schema.Array(AccessLevel)),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ReplaceAccessLevelsRequest",
-  }) as any as Schema.Schema<ReplaceAccessLevelsRequest>;
+export const ReplaceAccessLevelsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accessLevels: Schema.optional(Schema.Array(AccessLevel)),
+    etag: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ReplaceAccessLevelsRequest" });
 
 export interface VpcAccessibleServices {
   /** Whether to restrict API calls within the Service Perimeter to the list of APIs specified in 'allowed_services'. */
@@ -388,15 +319,10 @@ export interface VpcAccessibleServices {
   allowedServices?: Array<string>;
 }
 
-export const VpcAccessibleServices: Schema.Schema<VpcAccessibleServices> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableRestriction: Schema.optional(Schema.Boolean),
-      allowedServices: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "VpcAccessibleServices",
-  }) as any as Schema.Schema<VpcAccessibleServices>;
+export const VpcAccessibleServices = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enableRestriction: Schema.optional(Schema.Boolean),
+  allowedServices: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "VpcAccessibleServices" });
 
 export interface IngressSource {
   /** An AccessLevel resource name that allow resources within the ServicePerimeters to be accessed from the internet. AccessLevels listed must be in the same policy as this ServicePerimeter. Referencing a nonexistent AccessLevel will cause an error. If no AccessLevel names are listed, resources within the perimeter can only be accessed via Google Cloud calls with request origins within the perimeter. Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If a single `*` is specified for `access_level`, then all IngressSources will be allowed. */
@@ -405,15 +331,10 @@ export interface IngressSource {
   resource?: string;
 }
 
-export const IngressSource: Schema.Schema<IngressSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accessLevel: Schema.optional(Schema.String),
-      resource: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "IngressSource",
-  }) as any as Schema.Schema<IngressSource>;
+export const IngressSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  accessLevel: Schema.optional(Schema.String),
+  resource: Schema.optional(Schema.String),
+}).annotate({ identifier: "IngressSource" });
 
 export interface IngressFrom {
   /** Sources that this IngressPolicy authorizes access from. */
@@ -429,16 +350,11 @@ export interface IngressFrom {
     | (string & {});
 }
 
-export const IngressFrom: Schema.Schema<IngressFrom> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sources: Schema.optional(Schema.Array(IngressSource)),
-      identities: Schema.optional(Schema.Array(Schema.String)),
-      identityType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "IngressFrom",
-  }) as any as Schema.Schema<IngressFrom>;
+export const IngressFrom = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sources: Schema.optional(Schema.Array(IngressSource)),
+  identities: Schema.optional(Schema.Array(Schema.String)),
+  identityType: Schema.optional(Schema.String),
+}).annotate({ identifier: "IngressFrom" });
 
 export interface MethodSelector {
   /** A valid method name for the corresponding `service_name` in ApiOperation. If `*` is used as the value for the `method`, then ALL methods and permissions are allowed. */
@@ -447,15 +363,10 @@ export interface MethodSelector {
   permission?: string;
 }
 
-export const MethodSelector: Schema.Schema<MethodSelector> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      method: Schema.optional(Schema.String),
-      permission: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MethodSelector",
-  }) as any as Schema.Schema<MethodSelector>;
+export const MethodSelector = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  method: Schema.optional(Schema.String),
+  permission: Schema.optional(Schema.String),
+}).annotate({ identifier: "MethodSelector" });
 
 export interface ApiOperation {
   /** The name of the API whose methods or permissions the IngressPolicy or EgressPolicy want to allow. A single ApiOperation with `service_name` field set to `*` will allow all methods AND permissions for all services. */
@@ -464,15 +375,10 @@ export interface ApiOperation {
   methodSelectors?: Array<MethodSelector>;
 }
 
-export const ApiOperation: Schema.Schema<ApiOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serviceName: Schema.optional(Schema.String),
-      methodSelectors: Schema.optional(Schema.Array(MethodSelector)),
-    }),
-  ).annotate({
-    identifier: "ApiOperation",
-  }) as any as Schema.Schema<ApiOperation>;
+export const ApiOperation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  serviceName: Schema.optional(Schema.String),
+  methodSelectors: Schema.optional(Schema.Array(MethodSelector)),
+}).annotate({ identifier: "ApiOperation" });
 
 export interface IngressTo {
   /** A list of ApiOperations allowed to be performed by the sources specified in corresponding IngressFrom in this ServicePerimeter. */
@@ -483,14 +389,11 @@ export interface IngressTo {
   roles?: Array<string>;
 }
 
-export const IngressTo: Schema.Schema<IngressTo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(Schema.Array(ApiOperation)),
-      resources: Schema.optional(Schema.Array(Schema.String)),
-      roles: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "IngressTo" }) as any as Schema.Schema<IngressTo>;
+export const IngressTo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  operations: Schema.optional(Schema.Array(ApiOperation)),
+  resources: Schema.optional(Schema.Array(Schema.String)),
+  roles: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "IngressTo" });
 
 export interface IngressPolicy {
   /** Defines the conditions on the source of a request causing this IngressPolicy to apply. */
@@ -501,16 +404,11 @@ export interface IngressPolicy {
   title?: string;
 }
 
-export const IngressPolicy: Schema.Schema<IngressPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ingressFrom: Schema.optional(IngressFrom),
-      ingressTo: Schema.optional(IngressTo),
-      title: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "IngressPolicy",
-  }) as any as Schema.Schema<IngressPolicy>;
+export const IngressPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ingressFrom: Schema.optional(IngressFrom),
+  ingressTo: Schema.optional(IngressTo),
+  title: Schema.optional(Schema.String),
+}).annotate({ identifier: "IngressPolicy" });
 
 export interface EgressSource {
   /** An AccessLevel resource name that allows protected resources inside the ServicePerimeters to access outside the ServicePerimeter boundaries. AccessLevels listed must be in the same policy as this ServicePerimeter. Referencing a nonexistent AccessLevel will cause an error. If an AccessLevel name is not specified, only resources within the perimeter can be accessed through Google Cloud calls with request origins within the perimeter. Example: `accessPolicies/MY_POLICY/accessLevels/MY_LEVEL`. If a single `*` is specified for `access_level`, then all EgressSources will be allowed. */
@@ -519,15 +417,10 @@ export interface EgressSource {
   resource?: string;
 }
 
-export const EgressSource: Schema.Schema<EgressSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accessLevel: Schema.optional(Schema.String),
-      resource: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EgressSource",
-  }) as any as Schema.Schema<EgressSource>;
+export const EgressSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  accessLevel: Schema.optional(Schema.String),
+  resource: Schema.optional(Schema.String),
+}).annotate({ identifier: "EgressSource" });
 
 export interface EgressFrom {
   /** A list of identities that are allowed access through [EgressPolicy]. Identities can be an individual user, service account, Google group, third-party identity, or agent identity. For the list of supported identity types, see https://docs.cloud.google.com/vpc-service-controls/docs/supported-identities. */
@@ -549,15 +442,12 @@ export interface EgressFrom {
     | (string & {});
 }
 
-export const EgressFrom: Schema.Schema<EgressFrom> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      identities: Schema.optional(Schema.Array(Schema.String)),
-      identityType: Schema.optional(Schema.String),
-      sources: Schema.optional(Schema.Array(EgressSource)),
-      sourceRestriction: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "EgressFrom" }) as any as Schema.Schema<EgressFrom>;
+export const EgressFrom = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  identities: Schema.optional(Schema.Array(Schema.String)),
+  identityType: Schema.optional(Schema.String),
+  sources: Schema.optional(Schema.Array(EgressSource)),
+  sourceRestriction: Schema.optional(Schema.String),
+}).annotate({ identifier: "EgressFrom" });
 
 export interface EgressTo {
   /** A list of resources, currently only projects in the form `projects/`, that are allowed to be accessed by sources defined in the corresponding EgressFrom. A request matches if it contains a resource in this list. If `*` is specified for `resources`, then this EgressTo rule will authorize access to all resources outside the perimeter. */
@@ -570,15 +460,12 @@ export interface EgressTo {
   roles?: Array<string>;
 }
 
-export const EgressTo: Schema.Schema<EgressTo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resources: Schema.optional(Schema.Array(Schema.String)),
-      operations: Schema.optional(Schema.Array(ApiOperation)),
-      externalResources: Schema.optional(Schema.Array(Schema.String)),
-      roles: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "EgressTo" }) as any as Schema.Schema<EgressTo>;
+export const EgressTo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resources: Schema.optional(Schema.Array(Schema.String)),
+  operations: Schema.optional(Schema.Array(ApiOperation)),
+  externalResources: Schema.optional(Schema.Array(Schema.String)),
+  roles: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "EgressTo" });
 
 export interface EgressPolicy {
   /** Defines conditions on the source of a request causing this EgressPolicy to apply. */
@@ -589,16 +476,11 @@ export interface EgressPolicy {
   title?: string;
 }
 
-export const EgressPolicy: Schema.Schema<EgressPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      egressFrom: Schema.optional(EgressFrom),
-      egressTo: Schema.optional(EgressTo),
-      title: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EgressPolicy",
-  }) as any as Schema.Schema<EgressPolicy>;
+export const EgressPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  egressFrom: Schema.optional(EgressFrom),
+  egressTo: Schema.optional(EgressTo),
+  title: Schema.optional(Schema.String),
+}).annotate({ identifier: "EgressPolicy" });
 
 export interface ServicePerimeterConfig {
   /** A list of Google Cloud resources that are inside of the service perimeter. Currently only projects and VPCs are allowed. Project format: `projects/{project_number}` VPC network format: `//compute.googleapis.com/projects/{PROJECT_ID}/global/networks/{NAME}`. */
@@ -615,19 +497,16 @@ export interface ServicePerimeterConfig {
   egressPolicies?: Array<EgressPolicy>;
 }
 
-export const ServicePerimeterConfig: Schema.Schema<ServicePerimeterConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resources: Schema.optional(Schema.Array(Schema.String)),
-      accessLevels: Schema.optional(Schema.Array(Schema.String)),
-      restrictedServices: Schema.optional(Schema.Array(Schema.String)),
-      vpcAccessibleServices: Schema.optional(VpcAccessibleServices),
-      ingressPolicies: Schema.optional(Schema.Array(IngressPolicy)),
-      egressPolicies: Schema.optional(Schema.Array(EgressPolicy)),
-    }),
-  ).annotate({
-    identifier: "ServicePerimeterConfig",
-  }) as any as Schema.Schema<ServicePerimeterConfig>;
+export const ServicePerimeterConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    resources: Schema.optional(Schema.Array(Schema.String)),
+    accessLevels: Schema.optional(Schema.Array(Schema.String)),
+    restrictedServices: Schema.optional(Schema.Array(Schema.String)),
+    vpcAccessibleServices: Schema.optional(VpcAccessibleServices),
+    ingressPolicies: Schema.optional(Schema.Array(IngressPolicy)),
+    egressPolicies: Schema.optional(Schema.Array(EgressPolicy)),
+  },
+).annotate({ identifier: "ServicePerimeterConfig" });
 
 export interface ServicePerimeter {
   /** Identifier. Resource name for the `ServicePerimeter`. Format: `accessPolicies/{access_policy}/servicePerimeters/{service_perimeter}`. The `service_perimeter` component must begin with a letter, followed by alphanumeric characters or `_`. After you create a `ServicePerimeter`, you cannot change its `name`. */
@@ -651,21 +530,16 @@ export interface ServicePerimeter {
   etag?: string;
 }
 
-export const ServicePerimeter: Schema.Schema<ServicePerimeter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      perimeterType: Schema.optional(Schema.String),
-      status: Schema.optional(ServicePerimeterConfig),
-      spec: Schema.optional(ServicePerimeterConfig),
-      useExplicitDryRunSpec: Schema.optional(Schema.Boolean),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ServicePerimeter",
-  }) as any as Schema.Schema<ServicePerimeter>;
+export const ServicePerimeter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  perimeterType: Schema.optional(Schema.String),
+  status: Schema.optional(ServicePerimeterConfig),
+  spec: Schema.optional(ServicePerimeterConfig),
+  useExplicitDryRunSpec: Schema.optional(Schema.Boolean),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "ServicePerimeter" });
 
 export interface ListServicePerimetersResponse {
   /** List of the Service Perimeter instances. */
@@ -674,15 +548,11 @@ export interface ListServicePerimetersResponse {
   nextPageToken?: string;
 }
 
-export const ListServicePerimetersResponse: Schema.Schema<ListServicePerimetersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      servicePerimeters: Schema.optional(Schema.Array(ServicePerimeter)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListServicePerimetersResponse",
-  }) as any as Schema.Schema<ListServicePerimetersResponse>;
+export const ListServicePerimetersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    servicePerimeters: Schema.optional(Schema.Array(ServicePerimeter)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListServicePerimetersResponse" });
 
 export interface ReplaceServicePerimetersRequest {
   /** Required. The desired Service Perimeters that should replace all existing Service Perimeters in the Access Policy. */
@@ -691,29 +561,21 @@ export interface ReplaceServicePerimetersRequest {
   etag?: string;
 }
 
-export const ReplaceServicePerimetersRequest: Schema.Schema<ReplaceServicePerimetersRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      servicePerimeters: Schema.optional(Schema.Array(ServicePerimeter)),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ReplaceServicePerimetersRequest",
-  }) as any as Schema.Schema<ReplaceServicePerimetersRequest>;
+export const ReplaceServicePerimetersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    servicePerimeters: Schema.optional(Schema.Array(ServicePerimeter)),
+    etag: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ReplaceServicePerimetersRequest" });
 
 export interface CommitServicePerimetersRequest {
   /** Optional. The etag for the version of the Access Policy that this commit operation is to be performed on. If, at the time of commit, the etag for the Access Policy stored in Access Context Manager is different from the specified etag, then the commit operation will not be performed and the call will fail. This field is not required. If etag is not provided, the operation will be performed as if a valid etag is provided. */
   etag?: string;
 }
 
-export const CommitServicePerimetersRequest: Schema.Schema<CommitServicePerimetersRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CommitServicePerimetersRequest",
-  }) as any as Schema.Schema<CommitServicePerimetersRequest>;
+export const CommitServicePerimetersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    etag: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CommitServicePerimetersRequest" });
 
 export interface SupportedService {
   /** The service name or address of the supported service, such as `service.googleapis.com`. */
@@ -746,20 +608,15 @@ export interface SupportedService {
     | (string & {});
 }
 
-export const SupportedService: Schema.Schema<SupportedService> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      supportStage: Schema.optional(Schema.String),
-      availableOnRestrictedVip: Schema.optional(Schema.Boolean),
-      title: Schema.optional(Schema.String),
-      supportedMethods: Schema.optional(Schema.Array(MethodSelector)),
-      knownLimitations: Schema.optional(Schema.Boolean),
-      serviceSupportStage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SupportedService",
-  }) as any as Schema.Schema<SupportedService>;
+export const SupportedService = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  supportStage: Schema.optional(Schema.String),
+  availableOnRestrictedVip: Schema.optional(Schema.Boolean),
+  title: Schema.optional(Schema.String),
+  supportedMethods: Schema.optional(Schema.Array(MethodSelector)),
+  knownLimitations: Schema.optional(Schema.Boolean),
+  serviceSupportStage: Schema.optional(Schema.String),
+}).annotate({ identifier: "SupportedService" });
 
 export interface ListSupportedServicesResponse {
   /** List of services supported by VPC Service Controls instances. */
@@ -768,15 +625,11 @@ export interface ListSupportedServicesResponse {
   nextPageToken?: string;
 }
 
-export const ListSupportedServicesResponse: Schema.Schema<ListSupportedServicesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      supportedServices: Schema.optional(Schema.Array(SupportedService)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListSupportedServicesResponse",
-  }) as any as Schema.Schema<ListSupportedServicesResponse>;
+export const ListSupportedServicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    supportedServices: Schema.optional(Schema.Array(SupportedService)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListSupportedServicesResponse" });
 
 export interface SessionSettings {
   /** Optional. Session method when user's Google Cloud session is up. */
@@ -796,18 +649,13 @@ export interface SessionSettings {
   sessionLengthEnabled?: boolean;
 }
 
-export const SessionSettings: Schema.Schema<SessionSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sessionReauthMethod: Schema.optional(Schema.String),
-      sessionLength: Schema.optional(Schema.String),
-      maxInactivity: Schema.optional(Schema.String),
-      useOidcMaxAge: Schema.optional(Schema.Boolean),
-      sessionLengthEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "SessionSettings",
-  }) as any as Schema.Schema<SessionSettings>;
+export const SessionSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sessionReauthMethod: Schema.optional(Schema.String),
+  sessionLength: Schema.optional(Schema.String),
+  maxInactivity: Schema.optional(Schema.String),
+  useOidcMaxAge: Schema.optional(Schema.Boolean),
+  sessionLengthEnabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "SessionSettings" });
 
 export interface Application {
   /** The OAuth client ID of the application. */
@@ -816,43 +664,28 @@ export interface Application {
   name?: string;
 }
 
-export const Application: Schema.Schema<Application> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clientId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Application",
-  }) as any as Schema.Schema<Application>;
+export const Application = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  clientId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Application" });
 
 export interface ClientScope {
   /** Optional. The application that is subject to this binding's scope. */
   restrictedClientApplication?: Application;
 }
 
-export const ClientScope: Schema.Schema<ClientScope> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      restrictedClientApplication: Schema.optional(Application),
-    }),
-  ).annotate({
-    identifier: "ClientScope",
-  }) as any as Schema.Schema<ClientScope>;
+export const ClientScope = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  restrictedClientApplication: Schema.optional(Application),
+}).annotate({ identifier: "ClientScope" });
 
 export interface AccessScope {
   /** Optional. Client scope for this access scope. */
   clientScope?: ClientScope;
 }
 
-export const AccessScope: Schema.Schema<AccessScope> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clientScope: Schema.optional(ClientScope),
-    }),
-  ).annotate({
-    identifier: "AccessScope",
-  }) as any as Schema.Schema<AccessScope>;
+export const AccessScope = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  clientScope: Schema.optional(ClientScope),
+}).annotate({ identifier: "AccessScope" });
 
 export interface AccessSettings {
   /** Optional. Access level that a user must have to be granted access. Only one access level is supported, not multiple. This repeated field must have exactly one element. Example: "accessPolicies/9522/accessLevels/device_trusted" */
@@ -861,15 +694,10 @@ export interface AccessSettings {
   sessionSettings?: SessionSettings;
 }
 
-export const AccessSettings: Schema.Schema<AccessSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accessLevels: Schema.optional(Schema.Array(Schema.String)),
-      sessionSettings: Schema.optional(SessionSettings),
-    }),
-  ).annotate({
-    identifier: "AccessSettings",
-  }) as any as Schema.Schema<AccessSettings>;
+export const AccessSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  accessLevels: Schema.optional(Schema.Array(Schema.String)),
+  sessionSettings: Schema.optional(SessionSettings),
+}).annotate({ identifier: "AccessSettings" });
 
 export interface ScopedAccessSettings {
   /** Optional. Application, etc. to which the access settings will be applied to. Implicitly, this is the scoped access settings key; as such, it must be unique and non-empty. */
@@ -880,16 +708,11 @@ export interface ScopedAccessSettings {
   dryRunSettings?: AccessSettings;
 }
 
-export const ScopedAccessSettings: Schema.Schema<ScopedAccessSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scope: Schema.optional(AccessScope),
-      activeSettings: Schema.optional(AccessSettings),
-      dryRunSettings: Schema.optional(AccessSettings),
-    }),
-  ).annotate({
-    identifier: "ScopedAccessSettings",
-  }) as any as Schema.Schema<ScopedAccessSettings>;
+export const ScopedAccessSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  scope: Schema.optional(AccessScope),
+  activeSettings: Schema.optional(AccessSettings),
+  dryRunSettings: Schema.optional(AccessSettings),
+}).annotate({ identifier: "ScopedAccessSettings" });
 
 export interface GcpUserAccessBinding {
   /** Immutable. Assigned by the server during creation. The last segment has an arbitrary length and has only URI unreserved characters (as defined by [RFC 3986 Section 2.3](https://tools.ietf.org/html/rfc3986#section-2.3)). Should not be specified by the client during creation. Example: "organizations/256/gcpUserAccessBindings/b3-BhcX_Ud5N" */
@@ -908,20 +731,15 @@ export interface GcpUserAccessBinding {
   scopedAccessSettings?: Array<ScopedAccessSettings>;
 }
 
-export const GcpUserAccessBinding: Schema.Schema<GcpUserAccessBinding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      groupKey: Schema.optional(Schema.String),
-      accessLevels: Schema.optional(Schema.Array(Schema.String)),
-      dryRunAccessLevels: Schema.optional(Schema.Array(Schema.String)),
-      sessionSettings: Schema.optional(SessionSettings),
-      restrictedClientApplications: Schema.optional(Schema.Array(Application)),
-      scopedAccessSettings: Schema.optional(Schema.Array(ScopedAccessSettings)),
-    }),
-  ).annotate({
-    identifier: "GcpUserAccessBinding",
-  }) as any as Schema.Schema<GcpUserAccessBinding>;
+export const GcpUserAccessBinding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  groupKey: Schema.optional(Schema.String),
+  accessLevels: Schema.optional(Schema.Array(Schema.String)),
+  dryRunAccessLevels: Schema.optional(Schema.Array(Schema.String)),
+  sessionSettings: Schema.optional(SessionSettings),
+  restrictedClientApplications: Schema.optional(Schema.Array(Application)),
+  scopedAccessSettings: Schema.optional(Schema.Array(ScopedAccessSettings)),
+}).annotate({ identifier: "GcpUserAccessBinding" });
 
 export interface ListGcpUserAccessBindingsResponse {
   /** GcpUserAccessBinding */
@@ -930,17 +748,11 @@ export interface ListGcpUserAccessBindingsResponse {
   nextPageToken?: string;
 }
 
-export const ListGcpUserAccessBindingsResponse: Schema.Schema<ListGcpUserAccessBindingsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcpUserAccessBindings: Schema.optional(
-        Schema.Array(GcpUserAccessBinding),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListGcpUserAccessBindingsResponse",
-  }) as any as Schema.Schema<ListGcpUserAccessBindingsResponse>;
+export const ListGcpUserAccessBindingsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gcpUserAccessBindings: Schema.optional(Schema.Array(GcpUserAccessBinding)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListGcpUserAccessBindingsResponse" });
 
 export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
@@ -951,14 +763,11 @@ export interface Binding {
   condition?: Expr;
 }
 
-export const Binding: Schema.Schema<Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      role: Schema.optional(Schema.String),
-      members: Schema.optional(Schema.Array(Schema.String)),
-      condition: Schema.optional(Expr),
-    }),
-  ).annotate({ identifier: "Binding" }) as any as Schema.Schema<Binding>;
+export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  role: Schema.optional(Schema.String),
+  members: Schema.optional(Schema.Array(Schema.String)),
+  condition: Schema.optional(Expr),
+}).annotate({ identifier: "Binding" });
 
 export interface AuditLogConfig {
   /** The log type that this config enables. */
@@ -972,15 +781,10 @@ export interface AuditLogConfig {
   exemptedMembers?: Array<string>;
 }
 
-export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      logType: Schema.optional(Schema.String),
-      exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AuditLogConfig",
-  }) as any as Schema.Schema<AuditLogConfig>;
+export const AuditLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  logType: Schema.optional(Schema.String),
+  exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "AuditLogConfig" });
 
 export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
@@ -989,15 +793,10 @@ export interface AuditConfig {
   auditLogConfigs?: Array<AuditLogConfig>;
 }
 
-export const AuditConfig: Schema.Schema<AuditConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      service: Schema.optional(Schema.String),
-      auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
-    }),
-  ).annotate({
-    identifier: "AuditConfig",
-  }) as any as Schema.Schema<AuditConfig>;
+export const AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  service: Schema.optional(Schema.String),
+  auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
+}).annotate({ identifier: "AuditConfig" });
 
 export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -1010,15 +809,12 @@ export interface Policy {
   etag?: string;
 }
 
-export const Policy: Schema.Schema<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.Number),
-      bindings: Schema.optional(Schema.Array(Binding)),
-      auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Policy" }) as any as Schema.Schema<Policy>;
+export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.Number),
+  bindings: Schema.optional(Schema.Array(Binding)),
+  auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "Policy" });
 
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
@@ -1027,71 +823,48 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policy: Schema.optional(Policy),
-      updateMask: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SetIamPolicyRequest",
-  }) as any as Schema.Schema<SetIamPolicyRequest>;
+export const SetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policy: Schema.optional(Policy),
+  updateMask: Schema.optional(Schema.String),
+}).annotate({ identifier: "SetIamPolicyRequest" });
 
 export interface GetPolicyOptions {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   requestedPolicyVersion?: number;
 }
 
-export const GetPolicyOptions: Schema.Schema<GetPolicyOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestedPolicyVersion: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GetPolicyOptions",
-  }) as any as Schema.Schema<GetPolicyOptions>;
+export const GetPolicyOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  requestedPolicyVersion: Schema.optional(Schema.Number),
+}).annotate({ identifier: "GetPolicyOptions" });
 
 export interface GetIamPolicyRequest {
   /** OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`. */
   options?: GetPolicyOptions;
 }
 
-export const GetIamPolicyRequest: Schema.Schema<GetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      options: Schema.optional(GetPolicyOptions),
-    }),
-  ).annotate({
-    identifier: "GetIamPolicyRequest",
-  }) as any as Schema.Schema<GetIamPolicyRequest>;
+export const GetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  options: Schema.optional(GetPolicyOptions),
+}).annotate({ identifier: "GetIamPolicyRequest" });
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsRequest",
-  }) as any as Schema.Schema<TestIamPermissionsRequest>;
+export const TestIamPermissionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsRequest" });
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsResponse",
-  }) as any as Schema.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsResponse" });
 
 export interface AuthorizedOrgsDesc {
   /** Identifier. Resource name for the `AuthorizedOrgsDesc`. Format: `accessPolicies/{access_policy}/authorizedOrgsDescs/{authorized_orgs_desc}`. The `authorized_orgs_desc` component must begin with a letter, followed by alphanumeric characters or `_`. After you create an `AuthorizedOrgsDesc`, you cannot change its `name`. */
@@ -1117,18 +890,13 @@ export interface AuthorizedOrgsDesc {
   orgs?: Array<string>;
 }
 
-export const AuthorizedOrgsDesc: Schema.Schema<AuthorizedOrgsDesc> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      authorizationType: Schema.optional(Schema.String),
-      assetType: Schema.optional(Schema.String),
-      authorizationDirection: Schema.optional(Schema.String),
-      orgs: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AuthorizedOrgsDesc",
-  }) as any as Schema.Schema<AuthorizedOrgsDesc>;
+export const AuthorizedOrgsDesc = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  authorizationType: Schema.optional(Schema.String),
+  assetType: Schema.optional(Schema.String),
+  authorizationDirection: Schema.optional(Schema.String),
+  orgs: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "AuthorizedOrgsDesc" });
 
 export interface ListAuthorizedOrgsDescsResponse {
   /** List of all the Authorized Orgs Desc instances. */
@@ -1137,15 +905,11 @@ export interface ListAuthorizedOrgsDescsResponse {
   nextPageToken?: string;
 }
 
-export const ListAuthorizedOrgsDescsResponse: Schema.Schema<ListAuthorizedOrgsDescsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      authorizedOrgsDescs: Schema.optional(Schema.Array(AuthorizedOrgsDesc)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAuthorizedOrgsDescsResponse",
-  }) as any as Schema.Schema<ListAuthorizedOrgsDescsResponse>;
+export const ListAuthorizedOrgsDescsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    authorizedOrgsDescs: Schema.optional(Schema.Array(AuthorizedOrgsDesc)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListAuthorizedOrgsDescsResponse" });
 
 export interface ListSupportedPermissionsResponse {
   /** List of VPC-SC supported permissions. */
@@ -1154,71 +918,55 @@ export interface ListSupportedPermissionsResponse {
   nextPageToken?: string;
 }
 
-export const ListSupportedPermissionsResponse: Schema.Schema<ListSupportedPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      supportedPermissions: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListSupportedPermissionsResponse",
-  }) as any as Schema.Schema<ListSupportedPermissionsResponse>;
+export const ListSupportedPermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    supportedPermissions: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListSupportedPermissionsResponse" });
 
 export interface ReplaceAccessLevelsResponse {
   /** List of the Access Level instances. */
   accessLevels?: Array<AccessLevel>;
 }
 
-export const ReplaceAccessLevelsResponse: Schema.Schema<ReplaceAccessLevelsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accessLevels: Schema.optional(Schema.Array(AccessLevel)),
-    }),
-  ).annotate({
-    identifier: "ReplaceAccessLevelsResponse",
-  }) as any as Schema.Schema<ReplaceAccessLevelsResponse>;
+export const ReplaceAccessLevelsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accessLevels: Schema.optional(Schema.Array(AccessLevel)),
+  }).annotate({ identifier: "ReplaceAccessLevelsResponse" });
 
 export interface ReplaceServicePerimetersResponse {
   /** List of the Service Perimeter instances. */
   servicePerimeters?: Array<ServicePerimeter>;
 }
 
-export const ReplaceServicePerimetersResponse: Schema.Schema<ReplaceServicePerimetersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      servicePerimeters: Schema.optional(Schema.Array(ServicePerimeter)),
-    }),
-  ).annotate({
-    identifier: "ReplaceServicePerimetersResponse",
-  }) as any as Schema.Schema<ReplaceServicePerimetersResponse>;
+export const ReplaceServicePerimetersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    servicePerimeters: Schema.optional(Schema.Array(ServicePerimeter)),
+  }).annotate({ identifier: "ReplaceServicePerimetersResponse" });
 
 export interface CommitServicePerimetersResponse {
   /** List of all the Service Perimeter instances in the Access Policy. */
   servicePerimeters?: Array<ServicePerimeter>;
 }
 
-export const CommitServicePerimetersResponse: Schema.Schema<CommitServicePerimetersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      servicePerimeters: Schema.optional(Schema.Array(ServicePerimeter)),
-    }),
-  ).annotate({
-    identifier: "CommitServicePerimetersResponse",
-  }) as any as Schema.Schema<CommitServicePerimetersResponse>;
+export const CommitServicePerimetersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    servicePerimeters: Schema.optional(Schema.Array(ServicePerimeter)),
+  }).annotate({ identifier: "CommitServicePerimetersResponse" });
 
 export interface GcpUserAccessBindingOperationMetadata {}
 
-export const GcpUserAccessBindingOperationMetadata: Schema.Schema<GcpUserAccessBindingOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GcpUserAccessBindingOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GcpUserAccessBindingOperationMetadata",
-  }) as any as Schema.Schema<GcpUserAccessBindingOperationMetadata>;
+  });
 
 export interface AccessContextManagerOperationMetadata {}
 
-export const AccessContextManagerOperationMetadata: Schema.Schema<AccessContextManagerOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const AccessContextManagerOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "AccessContextManagerOperationMetadata",
-  }) as any as Schema.Schema<AccessContextManagerOperationMetadata>;
+  });
 
 // ==========================================================================
 // Operations

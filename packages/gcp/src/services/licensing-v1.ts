@@ -41,21 +41,16 @@ export interface LicenseAssignment {
   userId?: string;
 }
 
-export const LicenseAssignment: Schema.Schema<LicenseAssignment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      productId: Schema.optional(Schema.String),
-      skuId: Schema.optional(Schema.String),
-      productName: Schema.optional(Schema.String),
-      skuName: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      selfLink: Schema.optional(Schema.String),
-      etags: Schema.optional(Schema.String),
-      userId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LicenseAssignment",
-  }) as any as Schema.Schema<LicenseAssignment>;
+export const LicenseAssignment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  productId: Schema.optional(Schema.String),
+  skuId: Schema.optional(Schema.String),
+  productName: Schema.optional(Schema.String),
+  skuName: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  selfLink: Schema.optional(Schema.String),
+  etags: Schema.optional(Schema.String),
+  userId: Schema.optional(Schema.String),
+}).annotate({ identifier: "LicenseAssignment" });
 
 export interface LicenseAssignmentList {
   /** The token that you must submit in a subsequent request to retrieve additional license results matching your query parameters. The `maxResults` query string is related to the `nextPageToken` since `maxResults` determines how many entries are returned on each next page. */
@@ -68,38 +63,28 @@ export interface LicenseAssignmentList {
   etag?: string;
 }
 
-export const LicenseAssignmentList: Schema.Schema<LicenseAssignmentList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(LicenseAssignment)),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LicenseAssignmentList",
-  }) as any as Schema.Schema<LicenseAssignmentList>;
+export const LicenseAssignmentList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(LicenseAssignment)),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "LicenseAssignmentList" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface LicenseAssignmentInsert {
   /** Email id of the user */
   userId?: string;
 }
 
-export const LicenseAssignmentInsert: Schema.Schema<LicenseAssignmentInsert> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LicenseAssignmentInsert",
-  }) as any as Schema.Schema<LicenseAssignmentInsert>;
+export const LicenseAssignmentInsert =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "LicenseAssignmentInsert" });
 
 // ==========================================================================
 // Operations

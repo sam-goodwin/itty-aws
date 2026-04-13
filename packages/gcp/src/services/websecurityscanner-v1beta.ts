@@ -73,15 +73,10 @@ export interface ScanConfigError {
     | (string & {});
 }
 
-export const ScanConfigError: Schema.Schema<ScanConfigError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fieldName: Schema.optional(Schema.String),
-      code: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ScanConfigError",
-  }) as any as Schema.Schema<ScanConfigError>;
+export const ScanConfigError = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fieldName: Schema.optional(Schema.String),
+  code: Schema.optional(Schema.String),
+}).annotate({ identifier: "ScanConfigError" });
 
 export interface Schedule {
   /** A timestamp indicates when the next run will be scheduled. The value is refreshed by the server after each run. If unspecified, it will default to current server time, which means the scan will be scheduled to start immediately. */
@@ -90,13 +85,10 @@ export interface Schedule {
   intervalDurationDays?: number;
 }
 
-export const Schedule: Schema.Schema<Schedule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scheduleTime: Schema.optional(Schema.String),
-      intervalDurationDays: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Schedule" }) as any as Schema.Schema<Schedule>;
+export const Schedule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  scheduleTime: Schema.optional(Schema.String),
+  intervalDurationDays: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Schedule" });
 
 export interface ScanRunWarningTrace {
   /** Indicates the warning code. */
@@ -110,14 +102,9 @@ export interface ScanRunWarningTrace {
     | (string & {});
 }
 
-export const ScanRunWarningTrace: Schema.Schema<ScanRunWarningTrace> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ScanRunWarningTrace",
-  }) as any as Schema.Schema<ScanRunWarningTrace>;
+export const ScanRunWarningTrace = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.String),
+}).annotate({ identifier: "ScanRunWarningTrace" });
 
 export interface CrawledUrl {
   /** The http method of the request that was used to visit the URL, in uppercase. */
@@ -128,14 +115,11 @@ export interface CrawledUrl {
   url?: string;
 }
 
-export const CrawledUrl: Schema.Schema<CrawledUrl> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      httpMethod: Schema.optional(Schema.String),
-      body: Schema.optional(Schema.String),
-      url: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "CrawledUrl" }) as any as Schema.Schema<CrawledUrl>;
+export const CrawledUrl = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  httpMethod: Schema.optional(Schema.String),
+  body: Schema.optional(Schema.String),
+  url: Schema.optional(Schema.String),
+}).annotate({ identifier: "CrawledUrl" });
 
 export interface ListCrawledUrlsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
@@ -144,15 +128,11 @@ export interface ListCrawledUrlsResponse {
   crawledUrls?: Array<CrawledUrl>;
 }
 
-export const ListCrawledUrlsResponse: Schema.Schema<ListCrawledUrlsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      crawledUrls: Schema.optional(Schema.Array(CrawledUrl)),
-    }),
-  ).annotate({
-    identifier: "ListCrawledUrlsResponse",
-  }) as any as Schema.Schema<ListCrawledUrlsResponse>;
+export const ListCrawledUrlsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    crawledUrls: Schema.optional(Schema.Array(CrawledUrl)),
+  }).annotate({ identifier: "ListCrawledUrlsResponse" });
 
 export interface ScanRunErrorTrace {
   /** If the scan encounters TOO_MANY_HTTP_ERRORS, this field indicates the most common HTTP error code, if such is available. For example, if this code is 404, the scan has encountered too many NOT_FOUND responses. */
@@ -172,16 +152,11 @@ export interface ScanRunErrorTrace {
     | (string & {});
 }
 
-export const ScanRunErrorTrace: Schema.Schema<ScanRunErrorTrace> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mostCommonHttpErrorCode: Schema.optional(Schema.Number),
-      scanConfigError: Schema.optional(ScanConfigError),
-      code: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ScanRunErrorTrace",
-  }) as any as Schema.Schema<ScanRunErrorTrace>;
+export const ScanRunErrorTrace = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  mostCommonHttpErrorCode: Schema.optional(Schema.Number),
+  scanConfigError: Schema.optional(ScanConfigError),
+  code: Schema.optional(Schema.String),
+}).annotate({ identifier: "ScanRunErrorTrace" });
 
 export interface ScanRun {
   /** If result_state is an ERROR, this field provides the primary reason for scan's termination and more details, if such are available. */
@@ -218,22 +193,19 @@ export interface ScanRun {
     | (string & {});
 }
 
-export const ScanRun: Schema.Schema<ScanRun> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errorTrace: Schema.optional(ScanRunErrorTrace),
-      urlsTestedCount: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      warningTraces: Schema.optional(Schema.Array(ScanRunWarningTrace)),
-      executionState: Schema.optional(Schema.String),
-      progressPercent: Schema.optional(Schema.Number),
-      hasVulnerabilities: Schema.optional(Schema.Boolean),
-      urlsCrawledCount: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      resultState: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "ScanRun" }) as any as Schema.Schema<ScanRun>;
+export const ScanRun = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  errorTrace: Schema.optional(ScanRunErrorTrace),
+  urlsTestedCount: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  warningTraces: Schema.optional(Schema.Array(ScanRunWarningTrace)),
+  executionState: Schema.optional(Schema.String),
+  progressPercent: Schema.optional(Schema.Number),
+  hasVulnerabilities: Schema.optional(Schema.Boolean),
+  urlsCrawledCount: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  resultState: Schema.optional(Schema.String),
+}).annotate({ identifier: "ScanRun" });
 
 export interface ViolatingResource {
   /** URL of this violating resource. */
@@ -242,22 +214,16 @@ export interface ViolatingResource {
   contentType?: string;
 }
 
-export const ViolatingResource: Schema.Schema<ViolatingResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceUrl: Schema.optional(Schema.String),
-      contentType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ViolatingResource",
-  }) as any as Schema.Schema<ViolatingResource>;
+export const ViolatingResource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceUrl: Schema.optional(Schema.String),
+  contentType: Schema.optional(Schema.String),
+}).annotate({ identifier: "ViolatingResource" });
 
 export interface StopScanRunRequest {}
 
-export const StopScanRunRequest: Schema.Schema<StopScanRunRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "StopScanRunRequest",
-  }) as any as Schema.Schema<StopScanRunRequest>;
+export const StopScanRunRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "StopScanRunRequest" });
 
 export interface Xxe {
   /** The XML string that triggered the XXE vulnerability. Non-payload values might be redacted. */
@@ -269,13 +235,10 @@ export interface Xxe {
     | (string & {});
 }
 
-export const Xxe: Schema.Schema<Xxe> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      payloadValue: Schema.optional(Schema.String),
-      payloadLocation: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Xxe" }) as any as Schema.Schema<Xxe>;
+export const Xxe = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  payloadValue: Schema.optional(Schema.String),
+  payloadLocation: Schema.optional(Schema.String),
+}).annotate({ identifier: "Xxe" });
 
 export interface Xss {
   /** Stack traces leading to the point where the XSS occurred. */
@@ -284,13 +247,10 @@ export interface Xss {
   errorMessage?: string;
 }
 
-export const Xss: Schema.Schema<Xss> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stackTraces: Schema.optional(Schema.Array(Schema.String)),
-      errorMessage: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Xss" }) as any as Schema.Schema<Xss>;
+export const Xss = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  stackTraces: Schema.optional(Schema.Array(Schema.String)),
+  errorMessage: Schema.optional(Schema.String),
+}).annotate({ identifier: "Xss" });
 
 export interface OutdatedLibrary {
   /** The name of the outdated library. */
@@ -301,16 +261,11 @@ export interface OutdatedLibrary {
   version?: string;
 }
 
-export const OutdatedLibrary: Schema.Schema<OutdatedLibrary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      libraryName: Schema.optional(Schema.String),
-      learnMoreUrls: Schema.optional(Schema.Array(Schema.String)),
-      version: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OutdatedLibrary",
-  }) as any as Schema.Schema<OutdatedLibrary>;
+export const OutdatedLibrary = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  libraryName: Schema.optional(Schema.String),
+  learnMoreUrls: Schema.optional(Schema.Array(Schema.String)),
+  version: Schema.optional(Schema.String),
+}).annotate({ identifier: "OutdatedLibrary" });
 
 export interface Header {
   /** Header name. */
@@ -319,13 +274,10 @@ export interface Header {
   value?: string;
 }
 
-export const Header: Schema.Schema<Header> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Header" }) as any as Schema.Schema<Header>;
+export const Header = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+}).annotate({ identifier: "Header" });
 
 export interface VulnerableHeaders {
   /** List of missing headers. */
@@ -334,15 +286,10 @@ export interface VulnerableHeaders {
   headers?: Array<Header>;
 }
 
-export const VulnerableHeaders: Schema.Schema<VulnerableHeaders> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      missingHeaders: Schema.optional(Schema.Array(Header)),
-      headers: Schema.optional(Schema.Array(Header)),
-    }),
-  ).annotate({
-    identifier: "VulnerableHeaders",
-  }) as any as Schema.Schema<VulnerableHeaders>;
+export const VulnerableHeaders = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  missingHeaders: Schema.optional(Schema.Array(Header)),
+  headers: Schema.optional(Schema.Array(Header)),
+}).annotate({ identifier: "VulnerableHeaders" });
 
 export interface Form {
   /** ! The URI where to send the form when it's submitted. */
@@ -351,27 +298,19 @@ export interface Form {
   fields?: Array<string>;
 }
 
-export const Form: Schema.Schema<Form> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      actionUri: Schema.optional(Schema.String),
-      fields: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "Form" }) as any as Schema.Schema<Form>;
+export const Form = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  actionUri: Schema.optional(Schema.String),
+  fields: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Form" });
 
 export interface VulnerableParameters {
   /** The vulnerable parameter names. */
   parameterNames?: Array<string>;
 }
 
-export const VulnerableParameters: Schema.Schema<VulnerableParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parameterNames: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "VulnerableParameters",
-  }) as any as Schema.Schema<VulnerableParameters>;
+export const VulnerableParameters = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  parameterNames: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "VulnerableParameters" });
 
 export interface Finding {
   /** An addon containing information reported for an XXE, if any. */
@@ -418,29 +357,26 @@ export interface Finding {
   vulnerableParameters?: VulnerableParameters;
 }
 
-export const Finding: Schema.Schema<Finding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      xxe: Schema.optional(Xxe),
-      body: Schema.optional(Schema.String),
-      severity: Schema.optional(Schema.String),
-      xss: Schema.optional(Xss),
-      outdatedLibrary: Schema.optional(OutdatedLibrary),
-      trackingId: Schema.optional(Schema.String),
-      fuzzedUrl: Schema.optional(Schema.String),
-      findingType: Schema.optional(Schema.String),
-      vulnerableHeaders: Schema.optional(VulnerableHeaders),
-      violatingResource: Schema.optional(ViolatingResource),
-      description: Schema.optional(Schema.String),
-      finalUrl: Schema.optional(Schema.String),
-      reproductionUrl: Schema.optional(Schema.String),
-      httpMethod: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      form: Schema.optional(Form),
-      frameUrl: Schema.optional(Schema.String),
-      vulnerableParameters: Schema.optional(VulnerableParameters),
-    }),
-  ).annotate({ identifier: "Finding" }) as any as Schema.Schema<Finding>;
+export const Finding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  xxe: Schema.optional(Xxe),
+  body: Schema.optional(Schema.String),
+  severity: Schema.optional(Schema.String),
+  xss: Schema.optional(Xss),
+  outdatedLibrary: Schema.optional(OutdatedLibrary),
+  trackingId: Schema.optional(Schema.String),
+  fuzzedUrl: Schema.optional(Schema.String),
+  findingType: Schema.optional(Schema.String),
+  vulnerableHeaders: Schema.optional(VulnerableHeaders),
+  violatingResource: Schema.optional(ViolatingResource),
+  description: Schema.optional(Schema.String),
+  finalUrl: Schema.optional(Schema.String),
+  reproductionUrl: Schema.optional(Schema.String),
+  httpMethod: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  form: Schema.optional(Form),
+  frameUrl: Schema.optional(Schema.String),
+  vulnerableParameters: Schema.optional(VulnerableParameters),
+}).annotate({ identifier: "Finding" });
 
 export interface ListFindingsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
@@ -449,15 +385,10 @@ export interface ListFindingsResponse {
   findings?: Array<Finding>;
 }
 
-export const ListFindingsResponse: Schema.Schema<ListFindingsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      findings: Schema.optional(Schema.Array(Finding)),
-    }),
-  ).annotate({
-    identifier: "ListFindingsResponse",
-  }) as any as Schema.Schema<ListFindingsResponse>;
+export const ListFindingsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  findings: Schema.optional(Schema.Array(Finding)),
+}).annotate({ identifier: "ListFindingsResponse" });
 
 export interface ListScanRunsResponse {
   /** The list of ScanRuns returned. */
@@ -466,57 +397,41 @@ export interface ListScanRunsResponse {
   nextPageToken?: string;
 }
 
-export const ListScanRunsResponse: Schema.Schema<ListScanRunsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scanRuns: Schema.optional(Schema.Array(ScanRun)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListScanRunsResponse",
-  }) as any as Schema.Schema<ListScanRunsResponse>;
+export const ListScanRunsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  scanRuns: Schema.optional(Schema.Array(ScanRun)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListScanRunsResponse" });
 
 export interface StartScanRunRequest {}
 
-export const StartScanRunRequest: Schema.Schema<StartScanRunRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "StartScanRunRequest",
-  }) as any as Schema.Schema<StartScanRunRequest>;
+export const StartScanRunRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "StartScanRunRequest" });
 
 export interface IapTestServiceAccountInfo {
   /** Required. Describes OAuth2 Client ID of resources protected by Identity-Aware-Proxy(IAP). */
   targetAudienceClientId?: string;
 }
 
-export const IapTestServiceAccountInfo: Schema.Schema<IapTestServiceAccountInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetAudienceClientId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "IapTestServiceAccountInfo",
-  }) as any as Schema.Schema<IapTestServiceAccountInfo>;
+export const IapTestServiceAccountInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetAudienceClientId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "IapTestServiceAccountInfo" });
 
 export interface IapCredential {
   /** Authentication configuration when Web-Security-Scanner service account is added in Identity-Aware-Proxy (IAP) access policies. */
   iapTestServiceAccountInfo?: IapTestServiceAccountInfo;
 }
 
-export const IapCredential: Schema.Schema<IapCredential> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      iapTestServiceAccountInfo: Schema.optional(IapTestServiceAccountInfo),
-    }),
-  ).annotate({
-    identifier: "IapCredential",
-  }) as any as Schema.Schema<IapCredential>;
+export const IapCredential = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  iapTestServiceAccountInfo: Schema.optional(IapTestServiceAccountInfo),
+}).annotate({ identifier: "IapCredential" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface GoogleAccount {
   /** Required. Input only. The password of the Google account. The credential is stored encrypted and not returned in any response nor included in audit logs. */
@@ -525,15 +440,10 @@ export interface GoogleAccount {
   username?: string;
 }
 
-export const GoogleAccount: Schema.Schema<GoogleAccount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      password: Schema.optional(Schema.String),
-      username: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAccount",
-  }) as any as Schema.Schema<GoogleAccount>;
+export const GoogleAccount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  password: Schema.optional(Schema.String),
+  username: Schema.optional(Schema.String),
+}).annotate({ identifier: "GoogleAccount" });
 
 export interface CustomAccount {
   /** Required. The user name of the custom account. */
@@ -544,16 +454,11 @@ export interface CustomAccount {
   loginUrl?: string;
 }
 
-export const CustomAccount: Schema.Schema<CustomAccount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      username: Schema.optional(Schema.String),
-      password: Schema.optional(Schema.String),
-      loginUrl: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomAccount",
-  }) as any as Schema.Schema<CustomAccount>;
+export const CustomAccount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  username: Schema.optional(Schema.String),
+  password: Schema.optional(Schema.String),
+  loginUrl: Schema.optional(Schema.String),
+}).annotate({ identifier: "CustomAccount" });
 
 export interface Authentication {
   /** Authentication using a Google account. */
@@ -564,16 +469,11 @@ export interface Authentication {
   iapCredential?: IapCredential;
 }
 
-export const Authentication: Schema.Schema<Authentication> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      googleAccount: Schema.optional(GoogleAccount),
-      customAccount: Schema.optional(CustomAccount),
-      iapCredential: Schema.optional(IapCredential),
-    }),
-  ).annotate({
-    identifier: "Authentication",
-  }) as any as Schema.Schema<Authentication>;
+export const Authentication = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  googleAccount: Schema.optional(GoogleAccount),
+  customAccount: Schema.optional(CustomAccount),
+  iapCredential: Schema.optional(IapCredential),
+}).annotate({ identifier: "Authentication" });
 
 export interface FindingTypeStats {
   /** The finding type associated with the stats. */
@@ -582,15 +482,10 @@ export interface FindingTypeStats {
   findingCount?: number;
 }
 
-export const FindingTypeStats: Schema.Schema<FindingTypeStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      findingType: Schema.optional(Schema.String),
-      findingCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "FindingTypeStats",
-  }) as any as Schema.Schema<FindingTypeStats>;
+export const FindingTypeStats = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  findingType: Schema.optional(Schema.String),
+  findingCount: Schema.optional(Schema.Number),
+}).annotate({ identifier: "FindingTypeStats" });
 
 export interface ScanConfig {
   /** Whether the scan config is managed by Web Security Scanner, output only. */
@@ -641,26 +536,23 @@ export interface ScanConfig {
   startingUrls?: Array<string>;
 }
 
-export const ScanConfig: Schema.Schema<ScanConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      managedScan: Schema.optional(Schema.Boolean),
-      staticIpScan: Schema.optional(Schema.Boolean),
-      exportToSecurityCommandCenter: Schema.optional(Schema.String),
-      authentication: Schema.optional(Authentication),
-      name: Schema.optional(Schema.String),
-      maxQps: Schema.optional(Schema.Number),
-      riskLevel: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      blacklistPatterns: Schema.optional(Schema.Array(Schema.String)),
-      latestRun: Schema.optional(ScanRun),
-      schedule: Schema.optional(Schedule),
-      ignoreHttpStatusErrors: Schema.optional(Schema.Boolean),
-      userAgent: Schema.optional(Schema.String),
-      targetPlatforms: Schema.optional(Schema.Array(Schema.String)),
-      startingUrls: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "ScanConfig" }) as any as Schema.Schema<ScanConfig>;
+export const ScanConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  managedScan: Schema.optional(Schema.Boolean),
+  staticIpScan: Schema.optional(Schema.Boolean),
+  exportToSecurityCommandCenter: Schema.optional(Schema.String),
+  authentication: Schema.optional(Authentication),
+  name: Schema.optional(Schema.String),
+  maxQps: Schema.optional(Schema.Number),
+  riskLevel: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  blacklistPatterns: Schema.optional(Schema.Array(Schema.String)),
+  latestRun: Schema.optional(ScanRun),
+  schedule: Schema.optional(Schedule),
+  ignoreHttpStatusErrors: Schema.optional(Schema.Boolean),
+  userAgent: Schema.optional(Schema.String),
+  targetPlatforms: Schema.optional(Schema.Array(Schema.String)),
+  startingUrls: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ScanConfig" });
 
 export interface ListScanConfigsResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
@@ -669,29 +561,21 @@ export interface ListScanConfigsResponse {
   scanConfigs?: Array<ScanConfig>;
 }
 
-export const ListScanConfigsResponse: Schema.Schema<ListScanConfigsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      scanConfigs: Schema.optional(Schema.Array(ScanConfig)),
-    }),
-  ).annotate({
-    identifier: "ListScanConfigsResponse",
-  }) as any as Schema.Schema<ListScanConfigsResponse>;
+export const ListScanConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    scanConfigs: Schema.optional(Schema.Array(ScanConfig)),
+  }).annotate({ identifier: "ListScanConfigsResponse" });
 
 export interface ListFindingTypeStatsResponse {
   /** The list of FindingTypeStats returned. */
   findingTypeStats?: Array<FindingTypeStats>;
 }
 
-export const ListFindingTypeStatsResponse: Schema.Schema<ListFindingTypeStatsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      findingTypeStats: Schema.optional(Schema.Array(FindingTypeStats)),
-    }),
-  ).annotate({
-    identifier: "ListFindingTypeStatsResponse",
-  }) as any as Schema.Schema<ListFindingTypeStatsResponse>;
+export const ListFindingTypeStatsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    findingTypeStats: Schema.optional(Schema.Array(FindingTypeStats)),
+  }).annotate({ identifier: "ListFindingTypeStatsResponse" });
 
 // ==========================================================================
 // Operations

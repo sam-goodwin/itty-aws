@@ -36,14 +36,11 @@ export interface HistoryKey {
     | (string & {});
 }
 
-export const HistoryKey: Schema.Schema<HistoryKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      origin: Schema.optional(Schema.String),
-      url: Schema.optional(Schema.String),
-      formFactor: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "HistoryKey" }) as any as Schema.Schema<HistoryKey>;
+export const HistoryKey = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  origin: Schema.optional(Schema.String),
+  url: Schema.optional(Schema.String),
+  formFactor: Schema.optional(Schema.String),
+}).annotate({ identifier: "HistoryKey" });
 
 export interface TimeseriesBin {
   /** End is the end of the data bin. If end is not populated, then the bin has no end and is valid from start to +inf. */
@@ -54,16 +51,11 @@ export interface TimeseriesBin {
   densities?: Array<number>;
 }
 
-export const TimeseriesBin: Schema.Schema<TimeseriesBin> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      end: Schema.optional(Schema.Unknown),
-      start: Schema.optional(Schema.Unknown),
-      densities: Schema.optional(Schema.Array(Schema.Number)),
-    }),
-  ).annotate({
-    identifier: "TimeseriesBin",
-  }) as any as Schema.Schema<TimeseriesBin>;
+export const TimeseriesBin = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  end: Schema.optional(Schema.Unknown),
+  start: Schema.optional(Schema.Unknown),
+  densities: Schema.optional(Schema.Array(Schema.Number)),
+}).annotate({ identifier: "TimeseriesBin" });
 
 export interface QueryRequest {
   /** The effective connection type is a query dimension that specifies the effective network class that the record's data should belong to. This field uses the values ["offline", "slow-2G", "2G", "3G", "4G"] as specified in: https://wicg.github.io/netinfo/#effective-connection-types Note: If no effective connection type is specified, then a special record with aggregated data over all effective connection types will be returned. */
@@ -83,18 +75,13 @@ export interface QueryRequest {
     | (string & {});
 }
 
-export const QueryRequest: Schema.Schema<QueryRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      effectiveConnectionType: Schema.optional(Schema.String),
-      metrics: Schema.optional(Schema.Array(Schema.String)),
-      url: Schema.optional(Schema.String),
-      origin: Schema.optional(Schema.String),
-      formFactor: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "QueryRequest",
-  }) as any as Schema.Schema<QueryRequest>;
+export const QueryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  effectiveConnectionType: Schema.optional(Schema.String),
+  metrics: Schema.optional(Schema.Array(Schema.String)),
+  url: Schema.optional(Schema.String),
+  origin: Schema.optional(Schema.String),
+  formFactor: Schema.optional(Schema.String),
+}).annotate({ identifier: "QueryRequest" });
 
 export interface Chromeuxreport_Date {
   /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
@@ -105,16 +92,11 @@ export interface Chromeuxreport_Date {
   year?: number;
 }
 
-export const Chromeuxreport_Date: Schema.Schema<Chromeuxreport_Date> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      day: Schema.optional(Schema.Number),
-      month: Schema.optional(Schema.Number),
-      year: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "Chromeuxreport_Date",
-  }) as any as Schema.Schema<Chromeuxreport_Date>;
+export const Chromeuxreport_Date = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  day: Schema.optional(Schema.Number),
+  month: Schema.optional(Schema.Number),
+  year: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Chromeuxreport_Date" });
 
 export interface CollectionPeriod {
   /** The last day in the collection period, inclusive. */
@@ -123,15 +105,10 @@ export interface CollectionPeriod {
   firstDate?: Chromeuxreport_Date;
 }
 
-export const CollectionPeriod: Schema.Schema<CollectionPeriod> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lastDate: Schema.optional(Chromeuxreport_Date),
-      firstDate: Schema.optional(Chromeuxreport_Date),
-    }),
-  ).annotate({
-    identifier: "CollectionPeriod",
-  }) as any as Schema.Schema<CollectionPeriod>;
+export const CollectionPeriod = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  lastDate: Schema.optional(Chromeuxreport_Date),
+  firstDate: Schema.optional(Chromeuxreport_Date),
+}).annotate({ identifier: "CollectionPeriod" });
 
 export interface Bin {
   /** End is the end of the data bin. If end is not populated, then the bin has no end and is valid from start to +inf. */
@@ -142,28 +119,20 @@ export interface Bin {
   start?: unknown;
 }
 
-export const Bin: Schema.Schema<Bin> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      end: Schema.optional(Schema.Unknown),
-      density: Schema.optional(Schema.Unknown),
-      start: Schema.optional(Schema.Unknown),
-    }),
-  ).annotate({ identifier: "Bin" }) as any as Schema.Schema<Bin>;
+export const Bin = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  end: Schema.optional(Schema.Unknown),
+  density: Schema.optional(Schema.Unknown),
+  start: Schema.optional(Schema.Unknown),
+}).annotate({ identifier: "Bin" });
 
 export interface Percentiles {
   /** 75% of users experienced the given metric at or below this value. */
   p75?: unknown;
 }
 
-export const Percentiles: Schema.Schema<Percentiles> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      p75: Schema.optional(Schema.Unknown),
-    }),
-  ).annotate({
-    identifier: "Percentiles",
-  }) as any as Schema.Schema<Percentiles>;
+export const Percentiles = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  p75: Schema.optional(Schema.Unknown),
+}).annotate({ identifier: "Percentiles" });
 
 export interface Metric {
   /** For enum metrics, provides fractions which add up to approximately 1.0. */
@@ -174,14 +143,11 @@ export interface Metric {
   percentiles?: Percentiles;
 }
 
-export const Metric: Schema.Schema<Metric> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fractions: Schema.optional(Schema.Record(Schema.String, Schema.Number)),
-      histogram: Schema.optional(Schema.Array(Bin)),
-      percentiles: Schema.optional(Percentiles),
-    }),
-  ).annotate({ identifier: "Metric" }) as any as Schema.Schema<Metric>;
+export const Metric = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fractions: Schema.optional(Schema.Record(Schema.String, Schema.Number)),
+  histogram: Schema.optional(Schema.Array(Bin)),
+  percentiles: Schema.optional(Percentiles),
+}).annotate({ identifier: "Metric" });
 
 export interface Key {
   /** The effective connection type is the general connection class that all users experienced for this record. This field uses the values ["offline", "slow-2G", "2G", "3G", "4G"] as specified in: https://wicg.github.io/netinfo/#effective-connection-types If the effective connection type is unspecified, then aggregated data over all effective connection types will be returned. */
@@ -199,15 +165,12 @@ export interface Key {
     | (string & {});
 }
 
-export const Key: Schema.Schema<Key> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      effectiveConnectionType: Schema.optional(Schema.String),
-      origin: Schema.optional(Schema.String),
-      url: Schema.optional(Schema.String),
-      formFactor: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Key" }) as any as Schema.Schema<Key>;
+export const Key = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  effectiveConnectionType: Schema.optional(Schema.String),
+  origin: Schema.optional(Schema.String),
+  url: Schema.optional(Schema.String),
+  formFactor: Schema.optional(Schema.String),
+}).annotate({ identifier: "Key" });
 
 export interface Chromeuxreport_Record {
   /** The collection period indicates when the data reflected in this record was collected. */
@@ -218,16 +181,11 @@ export interface Chromeuxreport_Record {
   key?: Key;
 }
 
-export const Chromeuxreport_Record: Schema.Schema<Chromeuxreport_Record> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      collectionPeriod: Schema.optional(CollectionPeriod),
-      metrics: Schema.optional(Schema.Record(Schema.String, Metric)),
-      key: Schema.optional(Key),
-    }),
-  ).annotate({
-    identifier: "Chromeuxreport_Record",
-  }) as any as Schema.Schema<Chromeuxreport_Record>;
+export const Chromeuxreport_Record = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  collectionPeriod: Schema.optional(CollectionPeriod),
+  metrics: Schema.optional(Schema.Record(Schema.String, Metric)),
+  key: Schema.optional(Key),
+}).annotate({ identifier: "Chromeuxreport_Record" });
 
 export interface UrlNormalization {
   /** The original requested URL prior to any normalization actions. */
@@ -236,15 +194,10 @@ export interface UrlNormalization {
   normalizedUrl?: string;
 }
 
-export const UrlNormalization: Schema.Schema<UrlNormalization> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      originalUrl: Schema.optional(Schema.String),
-      normalizedUrl: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UrlNormalization",
-  }) as any as Schema.Schema<UrlNormalization>;
+export const UrlNormalization = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  originalUrl: Schema.optional(Schema.String),
+  normalizedUrl: Schema.optional(Schema.String),
+}).annotate({ identifier: "UrlNormalization" });
 
 export interface QueryResponse {
   /** The record that was found. */
@@ -253,15 +206,10 @@ export interface QueryResponse {
   urlNormalizationDetails?: UrlNormalization;
 }
 
-export const QueryResponse: Schema.Schema<QueryResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      record: Schema.optional(Chromeuxreport_Record),
-      urlNormalizationDetails: Schema.optional(UrlNormalization),
-    }),
-  ).annotate({
-    identifier: "QueryResponse",
-  }) as any as Schema.Schema<QueryResponse>;
+export const QueryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  record: Schema.optional(Chromeuxreport_Record),
+  urlNormalizationDetails: Schema.optional(UrlNormalization),
+}).annotate({ identifier: "QueryResponse" });
 
 export interface QueryHistoryRequest {
   /** The metrics that should be included in the response. If none are specified then any metrics found will be returned. Allowed values: ["first_contentful_paint", "first_input_delay", "largest_contentful_paint", "cumulative_layout_shift", "experimental_time_to_first_byte", "experimental_interaction_to_next_paint"] */
@@ -281,46 +229,31 @@ export interface QueryHistoryRequest {
     | (string & {});
 }
 
-export const QueryHistoryRequest: Schema.Schema<QueryHistoryRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metrics: Schema.optional(Schema.Array(Schema.String)),
-      url: Schema.optional(Schema.String),
-      origin: Schema.optional(Schema.String),
-      collectionPeriodCount: Schema.optional(Schema.Number),
-      formFactor: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "QueryHistoryRequest",
-  }) as any as Schema.Schema<QueryHistoryRequest>;
+export const QueryHistoryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metrics: Schema.optional(Schema.Array(Schema.String)),
+  url: Schema.optional(Schema.String),
+  origin: Schema.optional(Schema.String),
+  collectionPeriodCount: Schema.optional(Schema.Number),
+  formFactor: Schema.optional(Schema.String),
+}).annotate({ identifier: "QueryHistoryRequest" });
 
 export interface TimeseriesPercentiles {
   /** 75% of users experienced the given metric at or below this value. The length of this list of densities is equal to the length of the CollectionPeriods field in the HistoryRecord message, which describes when the density was observed in the field. */
   p75s?: Array<unknown>;
 }
 
-export const TimeseriesPercentiles: Schema.Schema<TimeseriesPercentiles> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      p75s: Schema.optional(Schema.Array(Schema.Unknown)),
-    }),
-  ).annotate({
-    identifier: "TimeseriesPercentiles",
-  }) as any as Schema.Schema<TimeseriesPercentiles>;
+export const TimeseriesPercentiles = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  p75s: Schema.optional(Schema.Array(Schema.Unknown)),
+}).annotate({ identifier: "TimeseriesPercentiles" });
 
 export interface FractionTimeseries {
   /** Values between 0.0 and 1.0 (inclusive) and NaN. */
   fractions?: Array<number>;
 }
 
-export const FractionTimeseries: Schema.Schema<FractionTimeseries> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fractions: Schema.optional(Schema.Array(Schema.Number)),
-    }),
-  ).annotate({
-    identifier: "FractionTimeseries",
-  }) as any as Schema.Schema<FractionTimeseries>;
+export const FractionTimeseries = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fractions: Schema.optional(Schema.Array(Schema.Number)),
+}).annotate({ identifier: "FractionTimeseries" });
 
 export interface MetricTimeseries {
   /** The histogram of user experiences for a metric. The histogram will have at least one bin and the densities of all bins will add up to ~1, for each timeseries entry. */
@@ -331,18 +264,13 @@ export interface MetricTimeseries {
   fractionTimeseries?: Record<string, FractionTimeseries>;
 }
 
-export const MetricTimeseries: Schema.Schema<MetricTimeseries> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      histogramTimeseries: Schema.optional(Schema.Array(TimeseriesBin)),
-      percentilesTimeseries: Schema.optional(TimeseriesPercentiles),
-      fractionTimeseries: Schema.optional(
-        Schema.Record(Schema.String, FractionTimeseries),
-      ),
-    }),
-  ).annotate({
-    identifier: "MetricTimeseries",
-  }) as any as Schema.Schema<MetricTimeseries>;
+export const MetricTimeseries = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  histogramTimeseries: Schema.optional(Schema.Array(TimeseriesBin)),
+  percentilesTimeseries: Schema.optional(TimeseriesPercentiles),
+  fractionTimeseries: Schema.optional(
+    Schema.Record(Schema.String, FractionTimeseries),
+  ),
+}).annotate({ identifier: "MetricTimeseries" });
 
 export interface HistoryRecord {
   /** The collection periods indicate when each of the data points reflected in the time series data in metrics was collected. Note that all the time series share the same collection periods, and it is enforced in the CrUX pipeline that every time series has the same number of data points. */
@@ -353,16 +281,11 @@ export interface HistoryRecord {
   metrics?: Record<string, MetricTimeseries>;
 }
 
-export const HistoryRecord: Schema.Schema<HistoryRecord> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      collectionPeriods: Schema.optional(Schema.Array(CollectionPeriod)),
-      key: Schema.optional(HistoryKey),
-      metrics: Schema.optional(Schema.Record(Schema.String, MetricTimeseries)),
-    }),
-  ).annotate({
-    identifier: "HistoryRecord",
-  }) as any as Schema.Schema<HistoryRecord>;
+export const HistoryRecord = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  collectionPeriods: Schema.optional(Schema.Array(CollectionPeriod)),
+  key: Schema.optional(HistoryKey),
+  metrics: Schema.optional(Schema.Record(Schema.String, MetricTimeseries)),
+}).annotate({ identifier: "HistoryRecord" });
 
 export interface QueryHistoryResponse {
   /** The record that was found. */
@@ -371,15 +294,10 @@ export interface QueryHistoryResponse {
   urlNormalizationDetails?: UrlNormalization;
 }
 
-export const QueryHistoryResponse: Schema.Schema<QueryHistoryResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      record: Schema.optional(HistoryRecord),
-      urlNormalizationDetails: Schema.optional(UrlNormalization),
-    }),
-  ).annotate({
-    identifier: "QueryHistoryResponse",
-  }) as any as Schema.Schema<QueryHistoryResponse>;
+export const QueryHistoryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  record: Schema.optional(HistoryRecord),
+  urlNormalizationDetails: Schema.optional(UrlNormalization),
+}).annotate({ identifier: "QueryHistoryResponse" });
 
 // ==========================================================================
 // Operations

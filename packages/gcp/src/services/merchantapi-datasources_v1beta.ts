@@ -29,15 +29,11 @@ export interface RegionalInventoryDataSource {
   feedLabel?: string;
 }
 
-export const RegionalInventoryDataSource: Schema.Schema<RegionalInventoryDataSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contentLanguage: Schema.optional(Schema.String),
-      feedLabel: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RegionalInventoryDataSource",
-  }) as any as Schema.Schema<RegionalInventoryDataSource>;
+export const RegionalInventoryDataSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    contentLanguage: Schema.optional(Schema.String),
+    feedLabel: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RegionalInventoryDataSource" });
 
 export interface DataSourceReference {
   /** Optional. The name of the primary data source. Format: `accounts/{account}/dataSources/{datasource}` */
@@ -48,16 +44,11 @@ export interface DataSourceReference {
   self?: boolean;
 }
 
-export const DataSourceReference: Schema.Schema<DataSourceReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      primaryDataSourceName: Schema.optional(Schema.String),
-      supplementalDataSourceName: Schema.optional(Schema.String),
-      self: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "DataSourceReference",
-  }) as any as Schema.Schema<DataSourceReference>;
+export const DataSourceReference = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  primaryDataSourceName: Schema.optional(Schema.String),
+  supplementalDataSourceName: Schema.optional(Schema.String),
+  self: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "DataSourceReference" });
 
 export interface PromotionDataSource {
   /** Required. Immutable. The target country used as part of the unique identifier. Represented as a [CLDR territory code](https://github.com/unicode-org/cldr/blob/latest/common/main/en.xml). Promotions are only available in selected [countries](https://support.google.com/merchants/answer/4588460). */
@@ -66,22 +57,17 @@ export interface PromotionDataSource {
   contentLanguage?: string;
 }
 
-export const PromotionDataSource: Schema.Schema<PromotionDataSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetCountry: Schema.optional(Schema.String),
-      contentLanguage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PromotionDataSource",
-  }) as any as Schema.Schema<PromotionDataSource>;
+export const PromotionDataSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  targetCountry: Schema.optional(Schema.String),
+  contentLanguage: Schema.optional(Schema.String),
+}).annotate({ identifier: "PromotionDataSource" });
 
 export interface ProductReviewDataSource {}
 
-export const ProductReviewDataSource: Schema.Schema<ProductReviewDataSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const ProductReviewDataSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ProductReviewDataSource",
-  }) as any as Schema.Schema<ProductReviewDataSource>;
+  });
 
 export interface TimeOfDay {
   /** Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds. */
@@ -94,15 +80,12 @@ export interface TimeOfDay {
   nanos?: number;
 }
 
-export const TimeOfDay: Schema.Schema<TimeOfDay> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      seconds: Schema.optional(Schema.Number),
-      minutes: Schema.optional(Schema.Number),
-      hours: Schema.optional(Schema.Number),
-      nanos: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "TimeOfDay" }) as any as Schema.Schema<TimeOfDay>;
+export const TimeOfDay = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  seconds: Schema.optional(Schema.Number),
+  minutes: Schema.optional(Schema.Number),
+  hours: Schema.optional(Schema.Number),
+  nanos: Schema.optional(Schema.Number),
+}).annotate({ identifier: "TimeOfDay" });
 
 export interface FetchSettings {
   /** Optional. The day of the month when the data source file should be fetched (1-31). This field can only be set for monthly frequency. */
@@ -139,22 +122,17 @@ export interface FetchSettings {
   enabled?: boolean;
 }
 
-export const FetchSettings: Schema.Schema<FetchSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dayOfMonth: Schema.optional(Schema.Number),
-      fetchUri: Schema.optional(Schema.String),
-      dayOfWeek: Schema.optional(Schema.String),
-      password: Schema.optional(Schema.String),
-      timeZone: Schema.optional(Schema.String),
-      username: Schema.optional(Schema.String),
-      timeOfDay: Schema.optional(TimeOfDay),
-      frequency: Schema.optional(Schema.String),
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "FetchSettings",
-  }) as any as Schema.Schema<FetchSettings>;
+export const FetchSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dayOfMonth: Schema.optional(Schema.Number),
+  fetchUri: Schema.optional(Schema.String),
+  dayOfWeek: Schema.optional(Schema.String),
+  password: Schema.optional(Schema.String),
+  timeZone: Schema.optional(Schema.String),
+  username: Schema.optional(Schema.String),
+  timeOfDay: Schema.optional(TimeOfDay),
+  frequency: Schema.optional(Schema.String),
+  enabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "FetchSettings" });
 
 export interface FileInput {
   /** Optional. Fetch details to deliver the data source. It contains settings for `FETCH` and `GOOGLE_SHEETS` file input types. The required fields vary based on the frequency of fetching. */
@@ -170,14 +148,11 @@ export interface FileInput {
     | (string & {});
 }
 
-export const FileInput: Schema.Schema<FileInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fetchSettings: Schema.optional(FetchSettings),
-      fileName: Schema.optional(Schema.String),
-      fileInputType: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "FileInput" }) as any as Schema.Schema<FileInput>;
+export const FileInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fetchSettings: Schema.optional(FetchSettings),
+  fileName: Schema.optional(Schema.String),
+  fileInputType: Schema.optional(Schema.String),
+}).annotate({ identifier: "FileInput" });
 
 export interface Destination {
   /** [Marketing methods](https://support.google.com/merchants/answer/15130232) (also known as destination) selections. */
@@ -200,29 +175,19 @@ export interface Destination {
   state?: "STATE_UNSPECIFIED" | "ENABLED" | "DISABLED" | (string & {});
 }
 
-export const Destination: Schema.Schema<Destination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      destination: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Destination",
-  }) as any as Schema.Schema<Destination>;
+export const Destination = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  destination: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+}).annotate({ identifier: "Destination" });
 
 export interface DefaultRule {
   /** Required. The list of data sources linked in the [default rule](https://support.google.com/merchants/answer/7450276). This list is ordered by the default rule priority of joining the data. It might include none or multiple references to `self` and supplemental data sources. The list must not be empty. To link the data source to the default rule, you need to add a new reference to this list (in sequential order). To unlink the data source from the default rule, you need to remove the given reference from this list. Changing the order of this list will result in changing the priority of data sources in the default rule. For example, providing the following list: [`1001`, `self`] will take attribute values from supplemental data source `1001`, and fallback to `self` if the attribute is not set in `1001`. */
   takeFromDataSources?: Array<DataSourceReference>;
 }
 
-export const DefaultRule: Schema.Schema<DefaultRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      takeFromDataSources: Schema.optional(Schema.Array(DataSourceReference)),
-    }),
-  ).annotate({
-    identifier: "DefaultRule",
-  }) as any as Schema.Schema<DefaultRule>;
+export const DefaultRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  takeFromDataSources: Schema.optional(Schema.Array(DataSourceReference)),
+}).annotate({ identifier: "DefaultRule" });
 
 export interface PrimaryProductDataSource {
   /** Optional. A list of destinations describing where products of the data source can be shown. When retrieving the data source, the list contains all the destinations that can be used for the data source, including the ones that are disabled for the data source but enabled for the account. Only destinations that are enabled on the account, for example through program participation, can be enabled on the data source. If unset, during creation, the destinations will be inherited based on the account level program participation. If set, during creation or update, the data source will be set only for the specified destinations. Updating this field requires at least one destination. */
@@ -244,19 +209,15 @@ export interface PrimaryProductDataSource {
   feedLabel?: string;
 }
 
-export const PrimaryProductDataSource: Schema.Schema<PrimaryProductDataSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      destinations: Schema.optional(Schema.Array(Destination)),
-      defaultRule: Schema.optional(DefaultRule),
-      contentLanguage: Schema.optional(Schema.String),
-      countries: Schema.optional(Schema.Array(Schema.String)),
-      channel: Schema.optional(Schema.String),
-      feedLabel: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PrimaryProductDataSource",
-  }) as any as Schema.Schema<PrimaryProductDataSource>;
+export const PrimaryProductDataSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    destinations: Schema.optional(Schema.Array(Destination)),
+    defaultRule: Schema.optional(DefaultRule),
+    contentLanguage: Schema.optional(Schema.String),
+    countries: Schema.optional(Schema.Array(Schema.String)),
+    channel: Schema.optional(Schema.String),
+    feedLabel: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PrimaryProductDataSource" });
 
 export interface LocalInventoryDataSource {
   /** Required. Immutable. The feed label of the offers to which the local inventory is provided. Must be less than or equal to 20 uppercase letters (A-Z), numbers (0-9), and dashes (-). */
@@ -265,22 +226,18 @@ export interface LocalInventoryDataSource {
   contentLanguage?: string;
 }
 
-export const LocalInventoryDataSource: Schema.Schema<LocalInventoryDataSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      feedLabel: Schema.optional(Schema.String),
-      contentLanguage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LocalInventoryDataSource",
-  }) as any as Schema.Schema<LocalInventoryDataSource>;
+export const LocalInventoryDataSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    feedLabel: Schema.optional(Schema.String),
+    contentLanguage: Schema.optional(Schema.String),
+  }).annotate({ identifier: "LocalInventoryDataSource" });
 
 export interface MerchantReviewDataSource {}
 
-export const MerchantReviewDataSource: Schema.Schema<MerchantReviewDataSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const MerchantReviewDataSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "MerchantReviewDataSource",
-  }) as any as Schema.Schema<MerchantReviewDataSource>;
+  });
 
 export interface SupplementalProductDataSource {
   /** Optional. Immutable. The two-letter ISO 639-1 language of the items in the data source. `feedLabel` and `contentLanguage` must be either both set or unset. The fields can only be unset for data sources without file input. If set, the data source will only accept products matching this combination. If unset, the data source will accept produts without that restriction. */
@@ -291,18 +248,14 @@ export interface SupplementalProductDataSource {
   referencingPrimaryDataSources?: Array<DataSourceReference>;
 }
 
-export const SupplementalProductDataSource: Schema.Schema<SupplementalProductDataSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contentLanguage: Schema.optional(Schema.String),
-      feedLabel: Schema.optional(Schema.String),
-      referencingPrimaryDataSources: Schema.optional(
-        Schema.Array(DataSourceReference),
-      ),
-    }),
-  ).annotate({
-    identifier: "SupplementalProductDataSource",
-  }) as any as Schema.Schema<SupplementalProductDataSource>;
+export const SupplementalProductDataSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    contentLanguage: Schema.optional(Schema.String),
+    feedLabel: Schema.optional(Schema.String),
+    referencingPrimaryDataSources: Schema.optional(
+      Schema.Array(DataSourceReference),
+    ),
+  }).annotate({ identifier: "SupplementalProductDataSource" });
 
 export interface DataSource {
   /** The [local inventory](https://support.google.com/merchants/answer/7023001) data source. */
@@ -337,32 +290,26 @@ export interface DataSource {
     | (string & {});
 }
 
-export const DataSource: Schema.Schema<DataSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      localInventoryDataSource: Schema.optional(LocalInventoryDataSource),
-      primaryProductDataSource: Schema.optional(PrimaryProductDataSource),
-      regionalInventoryDataSource: Schema.optional(RegionalInventoryDataSource),
-      promotionDataSource: Schema.optional(PromotionDataSource),
-      merchantReviewDataSource: Schema.optional(MerchantReviewDataSource),
-      name: Schema.optional(Schema.String),
-      fileInput: Schema.optional(FileInput),
-      dataSourceId: Schema.optional(Schema.String),
-      productReviewDataSource: Schema.optional(ProductReviewDataSource),
-      supplementalProductDataSource: Schema.optional(
-        SupplementalProductDataSource,
-      ),
-      displayName: Schema.optional(Schema.String),
-      input: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "DataSource" }) as any as Schema.Schema<DataSource>;
+export const DataSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  localInventoryDataSource: Schema.optional(LocalInventoryDataSource),
+  primaryProductDataSource: Schema.optional(PrimaryProductDataSource),
+  regionalInventoryDataSource: Schema.optional(RegionalInventoryDataSource),
+  promotionDataSource: Schema.optional(PromotionDataSource),
+  merchantReviewDataSource: Schema.optional(MerchantReviewDataSource),
+  name: Schema.optional(Schema.String),
+  fileInput: Schema.optional(FileInput),
+  dataSourceId: Schema.optional(Schema.String),
+  productReviewDataSource: Schema.optional(ProductReviewDataSource),
+  supplementalProductDataSource: Schema.optional(SupplementalProductDataSource),
+  displayName: Schema.optional(Schema.String),
+  input: Schema.optional(Schema.String),
+}).annotate({ identifier: "DataSource" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface Issue {
   /** Output only. The error description, for example, "Your data source contains items which have too many attributes, or are too big. These items will be dropped". */
@@ -379,17 +326,14 @@ export interface Issue {
   documentationUri?: string;
 }
 
-export const Issue: Schema.Schema<Issue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      severity: Schema.optional(Schema.String),
-      code: Schema.optional(Schema.String),
-      count: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      documentationUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Issue" }) as any as Schema.Schema<Issue>;
+export const Issue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  severity: Schema.optional(Schema.String),
+  code: Schema.optional(Schema.String),
+  count: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  documentationUri: Schema.optional(Schema.String),
+}).annotate({ identifier: "Issue" });
 
 export interface FileUpload {
   /** Output only. The number of items in the data source that were processed. */
@@ -415,19 +359,16 @@ export interface FileUpload {
     | (string & {});
 }
 
-export const FileUpload: Schema.Schema<FileUpload> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      itemsTotal: Schema.optional(Schema.String),
-      issues: Schema.optional(Schema.Array(Issue)),
-      itemsCreated: Schema.optional(Schema.String),
-      itemsUpdated: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      uploadTime: Schema.optional(Schema.String),
-      dataSourceId: Schema.optional(Schema.String),
-      processingState: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "FileUpload" }) as any as Schema.Schema<FileUpload>;
+export const FileUpload = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  itemsTotal: Schema.optional(Schema.String),
+  issues: Schema.optional(Schema.Array(Issue)),
+  itemsCreated: Schema.optional(Schema.String),
+  itemsUpdated: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  uploadTime: Schema.optional(Schema.String),
+  dataSourceId: Schema.optional(Schema.String),
+  processingState: Schema.optional(Schema.String),
+}).annotate({ identifier: "FileUpload" });
 
 export interface ListDataSourcesResponse {
   /** The data sources from the specified account. */
@@ -436,22 +377,17 @@ export interface ListDataSourcesResponse {
   nextPageToken?: string;
 }
 
-export const ListDataSourcesResponse: Schema.Schema<ListDataSourcesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataSources: Schema.optional(Schema.Array(DataSource)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListDataSourcesResponse",
-  }) as any as Schema.Schema<ListDataSourcesResponse>;
+export const ListDataSourcesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataSources: Schema.optional(Schema.Array(DataSource)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListDataSourcesResponse" });
 
 export interface FetchDataSourceRequest {}
 
-export const FetchDataSourceRequest: Schema.Schema<FetchDataSourceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "FetchDataSourceRequest",
-  }) as any as Schema.Schema<FetchDataSourceRequest>;
+export const FetchDataSourceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "FetchDataSourceRequest" });
 
 export interface ProductChange {
   /** Countries that have the change (if applicable). Represented in the ISO 3166 format. */
@@ -485,17 +421,12 @@ export interface ProductChange {
   newValue?: string;
 }
 
-export const ProductChange: Schema.Schema<ProductChange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      regionCode: Schema.optional(Schema.String),
-      reportingContext: Schema.optional(Schema.String),
-      oldValue: Schema.optional(Schema.String),
-      newValue: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProductChange",
-  }) as any as Schema.Schema<ProductChange>;
+export const ProductChange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  regionCode: Schema.optional(Schema.String),
+  reportingContext: Schema.optional(Schema.String),
+  oldValue: Schema.optional(Schema.String),
+  newValue: Schema.optional(Schema.String),
+}).annotate({ identifier: "ProductChange" });
 
 export interface ProductStatusChangeMessage {
   /** The account that manages the merchant's account. can be the same as merchant id if it is standalone account. Format : `accounts/{service_provider_id}` */
@@ -518,22 +449,18 @@ export interface ProductStatusChangeMessage {
   attribute?: "ATTRIBUTE_UNSPECIFIED" | "STATUS" | (string & {});
 }
 
-export const ProductStatusChangeMessage: Schema.Schema<ProductStatusChangeMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      managingAccount: Schema.optional(Schema.String),
-      resourceType: Schema.optional(Schema.String),
-      resourceId: Schema.optional(Schema.String),
-      account: Schema.optional(Schema.String),
-      eventTime: Schema.optional(Schema.String),
-      expirationTime: Schema.optional(Schema.String),
-      resource: Schema.optional(Schema.String),
-      changes: Schema.optional(Schema.Array(ProductChange)),
-      attribute: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProductStatusChangeMessage",
-  }) as any as Schema.Schema<ProductStatusChangeMessage>;
+export const ProductStatusChangeMessage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    managingAccount: Schema.optional(Schema.String),
+    resourceType: Schema.optional(Schema.String),
+    resourceId: Schema.optional(Schema.String),
+    account: Schema.optional(Schema.String),
+    eventTime: Schema.optional(Schema.String),
+    expirationTime: Schema.optional(Schema.String),
+    resource: Schema.optional(Schema.String),
+    changes: Schema.optional(Schema.Array(ProductChange)),
+    attribute: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ProductStatusChangeMessage" });
 
 // ==========================================================================
 // Operations

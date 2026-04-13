@@ -36,16 +36,12 @@ export interface GoogleCloudFunctionsV2alphaStateMessage {
   message?: string;
 }
 
-export const GoogleCloudFunctionsV2alphaStateMessage: Schema.Schema<GoogleCloudFunctionsV2alphaStateMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      severity: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudFunctionsV2alphaStateMessage",
-  }) as any as Schema.Schema<GoogleCloudFunctionsV2alphaStateMessage>;
+export const GoogleCloudFunctionsV2alphaStateMessage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    severity: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudFunctionsV2alphaStateMessage" });
 
 export interface GoogleCloudFunctionsV2alphaStage {
   /** State messages from the current Stage. */
@@ -75,21 +71,17 @@ export interface GoogleCloudFunctionsV2alphaStage {
     | (string & {});
 }
 
-export const GoogleCloudFunctionsV2alphaStage: Schema.Schema<GoogleCloudFunctionsV2alphaStage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stateMessages: Schema.optional(
-        Schema.Array(GoogleCloudFunctionsV2alphaStateMessage),
-      ),
-      name: Schema.optional(Schema.String),
-      resource: Schema.optional(Schema.String),
-      resourceUri: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudFunctionsV2alphaStage",
-  }) as any as Schema.Schema<GoogleCloudFunctionsV2alphaStage>;
+export const GoogleCloudFunctionsV2alphaStage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    stateMessages: Schema.optional(
+      Schema.Array(GoogleCloudFunctionsV2alphaStateMessage),
+    ),
+    name: Schema.optional(Schema.String),
+    resource: Schema.optional(Schema.String),
+    resourceUri: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudFunctionsV2alphaStage" });
 
 export interface StorageSource {
   /** Google Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). */
@@ -102,17 +94,12 @@ export interface StorageSource {
   sourceUploadUrl?: string;
 }
 
-export const StorageSource: Schema.Schema<StorageSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bucket: Schema.optional(Schema.String),
-      object: Schema.optional(Schema.String),
-      generation: Schema.optional(Schema.String),
-      sourceUploadUrl: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StorageSource",
-  }) as any as Schema.Schema<StorageSource>;
+export const StorageSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bucket: Schema.optional(Schema.String),
+  object: Schema.optional(Schema.String),
+  generation: Schema.optional(Schema.String),
+  sourceUploadUrl: Schema.optional(Schema.String),
+}).annotate({ identifier: "StorageSource" });
 
 export interface RepoSource {
   /** Name of the Cloud Source Repository. */
@@ -129,17 +116,14 @@ export interface RepoSource {
   branchName?: string;
 }
 
-export const RepoSource: Schema.Schema<RepoSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      repoName: Schema.optional(Schema.String),
-      commitSha: Schema.optional(Schema.String),
-      dir: Schema.optional(Schema.String),
-      tagName: Schema.optional(Schema.String),
-      projectId: Schema.optional(Schema.String),
-      branchName: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "RepoSource" }) as any as Schema.Schema<RepoSource>;
+export const RepoSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  repoName: Schema.optional(Schema.String),
+  commitSha: Schema.optional(Schema.String),
+  dir: Schema.optional(Schema.String),
+  tagName: Schema.optional(Schema.String),
+  projectId: Schema.optional(Schema.String),
+  branchName: Schema.optional(Schema.String),
+}).annotate({ identifier: "RepoSource" });
 
 export interface SourceProvenance {
   /** A copy of the build's `source.storage_source`, if exists, with any generations resolved. */
@@ -150,37 +134,26 @@ export interface SourceProvenance {
   gitUri?: string;
 }
 
-export const SourceProvenance: Schema.Schema<SourceProvenance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resolvedStorageSource: Schema.optional(StorageSource),
-      resolvedRepoSource: Schema.optional(RepoSource),
-      gitUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SourceProvenance",
-  }) as any as Schema.Schema<SourceProvenance>;
+export const SourceProvenance = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resolvedStorageSource: Schema.optional(StorageSource),
+  resolvedRepoSource: Schema.optional(RepoSource),
+  gitUri: Schema.optional(Schema.String),
+}).annotate({ identifier: "SourceProvenance" });
 
 export interface OnDeployUpdatePolicy {
   /** Output only. contains the runtime version which was used during latest function deployment. */
   runtimeVersion?: string;
 }
 
-export const OnDeployUpdatePolicy: Schema.Schema<OnDeployUpdatePolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      runtimeVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OnDeployUpdatePolicy",
-  }) as any as Schema.Schema<OnDeployUpdatePolicy>;
+export const OnDeployUpdatePolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  runtimeVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "OnDeployUpdatePolicy" });
 
 export interface AutomaticUpdatePolicy {}
 
-export const AutomaticUpdatePolicy: Schema.Schema<AutomaticUpdatePolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "AutomaticUpdatePolicy",
-  }) as any as Schema.Schema<AutomaticUpdatePolicy>;
+export const AutomaticUpdatePolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "AutomaticUpdatePolicy" });
 
 export interface Source {
   /** If provided, get the source from this location in Google Cloud Storage. */
@@ -191,14 +164,11 @@ export interface Source {
   gitUri?: string;
 }
 
-export const Source: Schema.Schema<Source> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      storageSource: Schema.optional(StorageSource),
-      repoSource: Schema.optional(RepoSource),
-      gitUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Source" }) as any as Schema.Schema<Source>;
+export const Source = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  storageSource: Schema.optional(StorageSource),
+  repoSource: Schema.optional(RepoSource),
+  gitUri: Schema.optional(Schema.String),
+}).annotate({ identifier: "Source" });
 
 export interface BuildConfig {
   /** Output only. A permanent fixed identifier for source. */
@@ -231,28 +201,23 @@ export interface BuildConfig {
   runtime?: string;
 }
 
-export const BuildConfig: Schema.Schema<BuildConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sourceProvenance: Schema.optional(SourceProvenance),
-      workerPool: Schema.optional(Schema.String),
-      dockerRegistry: Schema.optional(Schema.String),
-      sourceToken: Schema.optional(Schema.String),
-      onDeployUpdatePolicy: Schema.optional(OnDeployUpdatePolicy),
-      automaticUpdatePolicy: Schema.optional(AutomaticUpdatePolicy),
-      environmentVariables: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      serviceAccount: Schema.optional(Schema.String),
-      build: Schema.optional(Schema.String),
-      source: Schema.optional(Source),
-      entryPoint: Schema.optional(Schema.String),
-      dockerRepository: Schema.optional(Schema.String),
-      runtime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BuildConfig",
-  }) as any as Schema.Schema<BuildConfig>;
+export const BuildConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sourceProvenance: Schema.optional(SourceProvenance),
+  workerPool: Schema.optional(Schema.String),
+  dockerRegistry: Schema.optional(Schema.String),
+  sourceToken: Schema.optional(Schema.String),
+  onDeployUpdatePolicy: Schema.optional(OnDeployUpdatePolicy),
+  automaticUpdatePolicy: Schema.optional(AutomaticUpdatePolicy),
+  environmentVariables: Schema.optional(
+    Schema.Record(Schema.String, Schema.String),
+  ),
+  serviceAccount: Schema.optional(Schema.String),
+  build: Schema.optional(Schema.String),
+  source: Schema.optional(Source),
+  entryPoint: Schema.optional(Schema.String),
+  dockerRepository: Schema.optional(Schema.String),
+  runtime: Schema.optional(Schema.String),
+}).annotate({ identifier: "BuildConfig" });
 
 export interface Expr {
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
@@ -265,15 +230,12 @@ export interface Expr {
   expression?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-      expression: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Expr" }) as any as Schema.Schema<Expr>;
+export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  title: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  expression: Schema.optional(Schema.String),
+}).annotate({ identifier: "Expr" });
 
 export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
@@ -284,14 +246,11 @@ export interface Binding {
   condition?: Expr;
 }
 
-export const Binding: Schema.Schema<Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      role: Schema.optional(Schema.String),
-      members: Schema.optional(Schema.Array(Schema.String)),
-      condition: Schema.optional(Expr),
-    }),
-  ).annotate({ identifier: "Binding" }) as any as Schema.Schema<Binding>;
+export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  role: Schema.optional(Schema.String),
+  members: Schema.optional(Schema.Array(Schema.String)),
+  condition: Schema.optional(Expr),
+}).annotate({ identifier: "Binding" });
 
 export interface AuditLogConfig {
   /** The log type that this config enables. */
@@ -305,15 +264,10 @@ export interface AuditLogConfig {
   exemptedMembers?: Array<string>;
 }
 
-export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      logType: Schema.optional(Schema.String),
-      exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AuditLogConfig",
-  }) as any as Schema.Schema<AuditLogConfig>;
+export const AuditLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  logType: Schema.optional(Schema.String),
+  exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "AuditLogConfig" });
 
 export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
@@ -322,15 +276,10 @@ export interface AuditConfig {
   auditLogConfigs?: Array<AuditLogConfig>;
 }
 
-export const AuditConfig: Schema.Schema<AuditConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      service: Schema.optional(Schema.String),
-      auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
-    }),
-  ).annotate({
-    identifier: "AuditConfig",
-  }) as any as Schema.Schema<AuditConfig>;
+export const AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  service: Schema.optional(Schema.String),
+  auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
+}).annotate({ identifier: "AuditConfig" });
 
 export interface Policy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
@@ -343,15 +292,12 @@ export interface Policy {
   etag?: string;
 }
 
-export const Policy: Schema.Schema<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bindings: Schema.optional(Schema.Array(Binding)),
-      auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
-      version: Schema.optional(Schema.Number),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Policy" }) as any as Schema.Schema<Policy>;
+export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bindings: Schema.optional(Schema.Array(Binding)),
+  auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
+  version: Schema.optional(Schema.Number),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "Policy" });
 
 export interface GenerateUploadUrlRequest {
   /** Resource name of a KMS crypto key (managed by the user) used to encrypt/decrypt function source code objects in intermediate Cloud Storage buckets. When you generate an upload url and upload your source code, it gets copied to an intermediate Cloud Storage bucket. The source code is then copied to a versioned directory in the sources bucket in the consumer project during the function deployment. It must match the pattern `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`. The Google Cloud Functions service account (service-{project_number}@gcf-admin-robot.iam.gserviceaccount.com) must be granted the role 'Cloud KMS CryptoKey Encrypter/Decrypter (roles/cloudkms.cryptoKeyEncrypterDecrypter)' on the Key/KeyRing/Project/Organization (least access preferred). */
@@ -360,29 +306,21 @@ export interface GenerateUploadUrlRequest {
   environment?: "ENVIRONMENT_UNSPECIFIED" | "GEN_1" | "GEN_2" | (string & {});
 }
 
-export const GenerateUploadUrlRequest: Schema.Schema<GenerateUploadUrlRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kmsKeyName: Schema.optional(Schema.String),
-      environment: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GenerateUploadUrlRequest",
-  }) as any as Schema.Schema<GenerateUploadUrlRequest>;
+export const GenerateUploadUrlRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kmsKeyName: Schema.optional(Schema.String),
+    environment: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GenerateUploadUrlRequest" });
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsResponse",
-  }) as any as Schema.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsResponse" });
 
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -393,16 +331,13 @@ export interface Status {
   message?: string;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      message: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  message: Schema.optional(Schema.String),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -417,16 +352,13 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      error: Schema.optional(Status),
-      done: Schema.optional(Schema.Boolean),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  error: Schema.optional(Status),
+  done: Schema.optional(Schema.Boolean),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Operation" });
 
 export interface ListOperationsResponse {
   /** The standard List next-page token. */
@@ -437,16 +369,13 @@ export interface ListOperationsResponse {
   operations?: Array<Operation>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      operations: Schema.optional(Schema.Array(Operation)),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    operations: Schema.optional(Schema.Array(Operation)),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 export interface SecretEnvVar {
   /** Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it is assumed that the secret is in the same project as the function. */
@@ -459,17 +388,12 @@ export interface SecretEnvVar {
   version?: string;
 }
 
-export const SecretEnvVar: Schema.Schema<SecretEnvVar> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      projectId: Schema.optional(Schema.String),
-      secret: Schema.optional(Schema.String),
-      key: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SecretEnvVar",
-  }) as any as Schema.Schema<SecretEnvVar>;
+export const SecretEnvVar = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  projectId: Schema.optional(Schema.String),
+  secret: Schema.optional(Schema.String),
+  key: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+}).annotate({ identifier: "SecretEnvVar" });
 
 export interface DirectVpcNetworkInterface {
   /** Optional. The name of the VPC subnetwork that the Cloud Function resource will get IPs from. Specify either a VPC network or a subnet, or both. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the subnetwork with the same name with the network will be used. */
@@ -480,16 +404,12 @@ export interface DirectVpcNetworkInterface {
   network?: string;
 }
 
-export const DirectVpcNetworkInterface: Schema.Schema<DirectVpcNetworkInterface> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subnetwork: Schema.optional(Schema.String),
-      tags: Schema.optional(Schema.Array(Schema.String)),
-      network: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DirectVpcNetworkInterface",
-  }) as any as Schema.Schema<DirectVpcNetworkInterface>;
+export const DirectVpcNetworkInterface =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subnetwork: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Array(Schema.String)),
+    network: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DirectVpcNetworkInterface" });
 
 export interface SecretVersion {
   /** Version of the secret (version number or the string 'latest'). It is preferable to use `latest` version with secret volumes as secret value changes are reflected immediately. */
@@ -498,15 +418,10 @@ export interface SecretVersion {
   path?: string;
 }
 
-export const SecretVersion: Schema.Schema<SecretVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.String),
-      path: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SecretVersion",
-  }) as any as Schema.Schema<SecretVersion>;
+export const SecretVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.String),
+  path: Schema.optional(Schema.String),
+}).annotate({ identifier: "SecretVersion" });
 
 export interface SecretVolume {
   /** The path within the container to mount the secret volume. For example, setting the mount_path as `/etc/secrets` would mount the secret value files under the `/etc/secrets` directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount path: /etc/secrets */
@@ -519,17 +434,12 @@ export interface SecretVolume {
   secret?: string;
 }
 
-export const SecretVolume: Schema.Schema<SecretVolume> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mountPath: Schema.optional(Schema.String),
-      versions: Schema.optional(Schema.Array(SecretVersion)),
-      projectId: Schema.optional(Schema.String),
-      secret: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SecretVolume",
-  }) as any as Schema.Schema<SecretVolume>;
+export const SecretVolume = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  mountPath: Schema.optional(Schema.String),
+  versions: Schema.optional(Schema.Array(SecretVersion)),
+  projectId: Schema.optional(Schema.String),
+  secret: Schema.optional(Schema.String),
+}).annotate({ identifier: "SecretVolume" });
 
 export interface ServiceConfig {
   /** The amount of memory available for a function. Defaults to 256M. Supported units are k, M, G, Mi, Gi. If no unit is supplied the value is interpreted as bytes. See https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go a full description. */
@@ -593,38 +503,33 @@ export interface ServiceConfig {
   maxInstanceRequestConcurrency?: number;
 }
 
-export const ServiceConfig: Schema.Schema<ServiceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      availableMemory: Schema.optional(Schema.String),
-      service: Schema.optional(Schema.String),
-      secretEnvironmentVariables: Schema.optional(Schema.Array(SecretEnvVar)),
-      directVpcNetworkInterface: Schema.optional(
-        Schema.Array(DirectVpcNetworkInterface),
-      ),
-      directVpcEgress: Schema.optional(Schema.String),
-      securityLevel: Schema.optional(Schema.String),
-      secretVolumes: Schema.optional(Schema.Array(SecretVolume)),
-      minInstanceCount: Schema.optional(Schema.Number),
-      timeoutSeconds: Schema.optional(Schema.Number),
-      vpcConnector: Schema.optional(Schema.String),
-      ingressSettings: Schema.optional(Schema.String),
-      environmentVariables: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      revision: Schema.optional(Schema.String),
-      binaryAuthorizationPolicy: Schema.optional(Schema.String),
-      serviceAccountEmail: Schema.optional(Schema.String),
-      availableCpu: Schema.optional(Schema.String),
-      vpcConnectorEgressSettings: Schema.optional(Schema.String),
-      uri: Schema.optional(Schema.String),
-      allTrafficOnLatestRevision: Schema.optional(Schema.Boolean),
-      maxInstanceCount: Schema.optional(Schema.Number),
-      maxInstanceRequestConcurrency: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "ServiceConfig",
-  }) as any as Schema.Schema<ServiceConfig>;
+export const ServiceConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  availableMemory: Schema.optional(Schema.String),
+  service: Schema.optional(Schema.String),
+  secretEnvironmentVariables: Schema.optional(Schema.Array(SecretEnvVar)),
+  directVpcNetworkInterface: Schema.optional(
+    Schema.Array(DirectVpcNetworkInterface),
+  ),
+  directVpcEgress: Schema.optional(Schema.String),
+  securityLevel: Schema.optional(Schema.String),
+  secretVolumes: Schema.optional(Schema.Array(SecretVolume)),
+  minInstanceCount: Schema.optional(Schema.Number),
+  timeoutSeconds: Schema.optional(Schema.Number),
+  vpcConnector: Schema.optional(Schema.String),
+  ingressSettings: Schema.optional(Schema.String),
+  environmentVariables: Schema.optional(
+    Schema.Record(Schema.String, Schema.String),
+  ),
+  revision: Schema.optional(Schema.String),
+  binaryAuthorizationPolicy: Schema.optional(Schema.String),
+  serviceAccountEmail: Schema.optional(Schema.String),
+  availableCpu: Schema.optional(Schema.String),
+  vpcConnectorEgressSettings: Schema.optional(Schema.String),
+  uri: Schema.optional(Schema.String),
+  allTrafficOnLatestRevision: Schema.optional(Schema.Boolean),
+  maxInstanceCount: Schema.optional(Schema.Number),
+  maxInstanceRequestConcurrency: Schema.optional(Schema.Number),
+}).annotate({ identifier: "ServiceConfig" });
 
 export interface EventFilter {
   /** Required. The value for the attribute. */
@@ -635,16 +540,11 @@ export interface EventFilter {
   attribute?: string;
 }
 
-export const EventFilter: Schema.Schema<EventFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-      operator: Schema.optional(Schema.String),
-      attribute: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EventFilter",
-  }) as any as Schema.Schema<EventFilter>;
+export const EventFilter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.String),
+  operator: Schema.optional(Schema.String),
+  attribute: Schema.optional(Schema.String),
+}).annotate({ identifier: "EventFilter" });
 
 export interface EventTrigger {
   /** Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners. */
@@ -671,22 +571,17 @@ export interface EventTrigger {
   serviceAccountEmail?: string;
 }
 
-export const EventTrigger: Schema.Schema<EventTrigger> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      channel: Schema.optional(Schema.String),
-      triggerRegion: Schema.optional(Schema.String),
-      eventFilters: Schema.optional(Schema.Array(EventFilter)),
-      eventType: Schema.optional(Schema.String),
-      retryPolicy: Schema.optional(Schema.String),
-      service: Schema.optional(Schema.String),
-      trigger: Schema.optional(Schema.String),
-      pubsubTopic: Schema.optional(Schema.String),
-      serviceAccountEmail: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EventTrigger",
-  }) as any as Schema.Schema<EventTrigger>;
+export const EventTrigger = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  channel: Schema.optional(Schema.String),
+  triggerRegion: Schema.optional(Schema.String),
+  eventFilters: Schema.optional(Schema.Array(EventFilter)),
+  eventType: Schema.optional(Schema.String),
+  retryPolicy: Schema.optional(Schema.String),
+  service: Schema.optional(Schema.String),
+  trigger: Schema.optional(Schema.String),
+  pubsubTopic: Schema.optional(Schema.String),
+  serviceAccountEmail: Schema.optional(Schema.String),
+}).annotate({ identifier: "EventTrigger" });
 
 export interface UpgradeInfo {
   /** UpgradeState of the function */
@@ -714,17 +609,12 @@ export interface UpgradeInfo {
   eventTrigger?: EventTrigger;
 }
 
-export const UpgradeInfo: Schema.Schema<UpgradeInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      upgradeState: Schema.optional(Schema.String),
-      serviceConfig: Schema.optional(ServiceConfig),
-      buildConfig: Schema.optional(BuildConfig),
-      eventTrigger: Schema.optional(EventTrigger),
-    }),
-  ).annotate({
-    identifier: "UpgradeInfo",
-  }) as any as Schema.Schema<UpgradeInfo>;
+export const UpgradeInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  upgradeState: Schema.optional(Schema.String),
+  serviceConfig: Schema.optional(ServiceConfig),
+  buildConfig: Schema.optional(BuildConfig),
+  eventTrigger: Schema.optional(EventTrigger),
+}).annotate({ identifier: "UpgradeInfo" });
 
 export interface Cloudfunctions_Function {
   /** Describes the Build step of the function that builds a container from the given source. */
@@ -770,73 +660,62 @@ export interface Cloudfunctions_Function {
   url?: string;
 }
 
-export const Cloudfunctions_Function: Schema.Schema<Cloudfunctions_Function> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      buildConfig: Schema.optional(BuildConfig),
-      serviceConfig: Schema.optional(ServiceConfig),
-      name: Schema.optional(Schema.String),
-      stateMessages: Schema.optional(
-        Schema.Array(GoogleCloudFunctionsV2alphaStateMessage),
-      ),
-      satisfiesPzs: Schema.optional(Schema.Boolean),
-      state: Schema.optional(Schema.String),
-      kmsKeyName: Schema.optional(Schema.String),
-      environment: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      satisfiesPzi: Schema.optional(Schema.Boolean),
-      upgradeInfo: Schema.optional(UpgradeInfo),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      createTime: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      eventTrigger: Schema.optional(EventTrigger),
-      url: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Cloudfunctions_Function",
-  }) as any as Schema.Schema<Cloudfunctions_Function>;
+export const Cloudfunctions_Function =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    buildConfig: Schema.optional(BuildConfig),
+    serviceConfig: Schema.optional(ServiceConfig),
+    name: Schema.optional(Schema.String),
+    stateMessages: Schema.optional(
+      Schema.Array(GoogleCloudFunctionsV2alphaStateMessage),
+    ),
+    satisfiesPzs: Schema.optional(Schema.Boolean),
+    state: Schema.optional(Schema.String),
+    kmsKeyName: Schema.optional(Schema.String),
+    environment: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    satisfiesPzi: Schema.optional(Schema.Boolean),
+    upgradeInfo: Schema.optional(UpgradeInfo),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    createTime: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    eventTrigger: Schema.optional(EventTrigger),
+    url: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Cloudfunctions_Function" });
 
 export interface CommitFunctionUpgradeAsGen2Request {}
 
-export const CommitFunctionUpgradeAsGen2Request: Schema.Schema<CommitFunctionUpgradeAsGen2Request> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const CommitFunctionUpgradeAsGen2Request =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CommitFunctionUpgradeAsGen2Request",
-  }) as any as Schema.Schema<CommitFunctionUpgradeAsGen2Request>;
+  });
 
 export interface ServiceConfigOverrides {
   /** Optional. Specifies the maximum number of instances for the new Cloud Run function. If provided, this overrides the max_instance_count setting of the Gen1 function. */
   maxInstanceCount?: number;
 }
 
-export const ServiceConfigOverrides: Schema.Schema<ServiceConfigOverrides> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      maxInstanceCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "ServiceConfigOverrides",
-  }) as any as Schema.Schema<ServiceConfigOverrides>;
+export const ServiceConfigOverrides = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    maxInstanceCount: Schema.optional(Schema.Number),
+  },
+).annotate({ identifier: "ServiceConfigOverrides" });
 
 export interface GenerateDownloadUrlResponse {
   /** The generated Google Cloud Storage signed URL that should be used for function source code download. */
   downloadUrl?: string;
 }
 
-export const GenerateDownloadUrlResponse: Schema.Schema<GenerateDownloadUrlResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      downloadUrl: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GenerateDownloadUrlResponse",
-  }) as any as Schema.Schema<GenerateDownloadUrlResponse>;
+export const GenerateDownloadUrlResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    downloadUrl: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GenerateDownloadUrlResponse" });
 
 export interface GenerateDownloadUrlRequest {}
 
-export const GenerateDownloadUrlRequest: Schema.Schema<GenerateDownloadUrlRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GenerateDownloadUrlRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GenerateDownloadUrlRequest",
-  }) as any as Schema.Schema<GenerateDownloadUrlRequest>;
+  });
 
 export interface ListFunctionsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -847,23 +726,18 @@ export interface ListFunctionsResponse {
   functions?: Array<Cloudfunctions_Function>;
 }
 
-export const ListFunctionsResponse: Schema.Schema<ListFunctionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      functions: Schema.optional(Schema.Array(Cloudfunctions_Function)),
-    }),
-  ).annotate({
-    identifier: "ListFunctionsResponse",
-  }) as any as Schema.Schema<ListFunctionsResponse>;
+export const ListFunctionsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+  functions: Schema.optional(Schema.Array(Cloudfunctions_Function)),
+}).annotate({ identifier: "ListFunctionsResponse" });
 
 export interface RedirectFunctionUpgradeTrafficRequest {}
 
-export const RedirectFunctionUpgradeTrafficRequest: Schema.Schema<RedirectFunctionUpgradeTrafficRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const RedirectFunctionUpgradeTrafficRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RedirectFunctionUpgradeTrafficRequest",
-  }) as any as Schema.Schema<RedirectFunctionUpgradeTrafficRequest>;
+  });
 
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
@@ -872,15 +746,10 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policy: Schema.optional(Policy),
-      updateMask: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SetIamPolicyRequest",
-  }) as any as Schema.Schema<SetIamPolicyRequest>;
+export const SetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policy: Schema.optional(Policy),
+  updateMask: Schema.optional(Schema.String),
+}).annotate({ identifier: "SetIamPolicyRequest" });
 
 export interface Cloudfunctions_Date {
   /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
@@ -891,16 +760,11 @@ export interface Cloudfunctions_Date {
   month?: number;
 }
 
-export const Cloudfunctions_Date: Schema.Schema<Cloudfunctions_Date> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      day: Schema.optional(Schema.Number),
-      year: Schema.optional(Schema.Number),
-      month: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "Cloudfunctions_Date",
-  }) as any as Schema.Schema<Cloudfunctions_Date>;
+export const Cloudfunctions_Date = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  day: Schema.optional(Schema.Number),
+  year: Schema.optional(Schema.Number),
+  month: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Cloudfunctions_Date" });
 
 export interface Runtime {
   /** Decommission date for the runtime. */
@@ -927,18 +791,15 @@ export interface Runtime {
     | (string & {});
 }
 
-export const Runtime: Schema.Schema<Runtime> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      decommissionDate: Schema.optional(Cloudfunctions_Date),
-      deprecationDate: Schema.optional(Cloudfunctions_Date),
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      warnings: Schema.optional(Schema.Array(Schema.String)),
-      environment: Schema.optional(Schema.String),
-      stage: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Runtime" }) as any as Schema.Schema<Runtime>;
+export const Runtime = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  decommissionDate: Schema.optional(Cloudfunctions_Date),
+  deprecationDate: Schema.optional(Cloudfunctions_Date),
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  warnings: Schema.optional(Schema.Array(Schema.String)),
+  environment: Schema.optional(Schema.String),
+  stage: Schema.optional(Schema.String),
+}).annotate({ identifier: "Runtime" });
 
 export interface GoogleCloudFunctionsV2alphaLocationMetadata {
   /** The Cloud Function environments this location supports. */
@@ -947,14 +808,10 @@ export interface GoogleCloudFunctionsV2alphaLocationMetadata {
   >;
 }
 
-export const GoogleCloudFunctionsV2alphaLocationMetadata: Schema.Schema<GoogleCloudFunctionsV2alphaLocationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      environments: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudFunctionsV2alphaLocationMetadata",
-  }) as any as Schema.Schema<GoogleCloudFunctionsV2alphaLocationMetadata>;
+export const GoogleCloudFunctionsV2alphaLocationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    environments: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudFunctionsV2alphaLocationMetadata" });
 
 export interface Location {
   /** The canonical id for this location. For example: `"us-east1"`. */
@@ -969,37 +826,28 @@ export interface Location {
   labels?: Record<string, string>;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locationId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locationId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "Location" });
 
 export interface DetachFunctionRequest {}
 
-export const DetachFunctionRequest: Schema.Schema<DetachFunctionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "DetachFunctionRequest",
-  }) as any as Schema.Schema<DetachFunctionRequest>;
+export const DetachFunctionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "DetachFunctionRequest" });
 
 export interface BuildConfigOverrides {
   /** Optional. Specifies the desired runtime for the new Cloud Run function. (e.g., `"nodejs20"`, `"python312"`). Constraints: 1. This field CANNOT be used to change the runtime language (e.g., from `NODEJS` to `PYTHON`). The backend will enforce this. 2. This field can ONLY be used to upgrade the runtime version (e.g., `nodejs18` to `nodejs20`). Downgrading the version is not permitted. The backend will validate the version change. If provided and valid, this overrides the runtime of the Gen1 function. */
   runtime?: string;
 }
 
-export const BuildConfigOverrides: Schema.Schema<BuildConfigOverrides> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      runtime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BuildConfigOverrides",
-  }) as any as Schema.Schema<BuildConfigOverrides>;
+export const BuildConfigOverrides = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  runtime: Schema.optional(Schema.String),
+}).annotate({ identifier: "BuildConfigOverrides" });
 
 export interface SetupFunctionUpgradeConfigRequest {
   /** Optional. The trigger's service account. The service account must have permission to invoke Cloud Run services, the permission is `run.routes.invoke`. If empty, defaults to the Compute Engine default service account: `{project_number}-compute@developer.gserviceaccount.com`. */
@@ -1010,23 +858,19 @@ export interface SetupFunctionUpgradeConfigRequest {
   serviceConfigOverrides?: ServiceConfigOverrides;
 }
 
-export const SetupFunctionUpgradeConfigRequest: Schema.Schema<SetupFunctionUpgradeConfigRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      triggerServiceAccount: Schema.optional(Schema.String),
-      buildConfigOverrides: Schema.optional(BuildConfigOverrides),
-      serviceConfigOverrides: Schema.optional(ServiceConfigOverrides),
-    }),
-  ).annotate({
-    identifier: "SetupFunctionUpgradeConfigRequest",
-  }) as any as Schema.Schema<SetupFunctionUpgradeConfigRequest>;
+export const SetupFunctionUpgradeConfigRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    triggerServiceAccount: Schema.optional(Schema.String),
+    buildConfigOverrides: Schema.optional(BuildConfigOverrides),
+    serviceConfigOverrides: Schema.optional(ServiceConfigOverrides),
+  }).annotate({ identifier: "SetupFunctionUpgradeConfigRequest" });
 
 export interface AbortFunctionUpgradeRequest {}
 
-export const AbortFunctionUpgradeRequest: Schema.Schema<AbortFunctionUpgradeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const AbortFunctionUpgradeRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "AbortFunctionUpgradeRequest",
-  }) as any as Schema.Schema<AbortFunctionUpgradeRequest>;
+  });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -1035,15 +879,10 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(Location)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface GoogleCloudFunctionsV2alphaOperationMetadata {
   /** Server-defined resource path for the target of the operation. */
@@ -1086,49 +925,41 @@ export interface GoogleCloudFunctionsV2alphaOperationMetadata {
   stages?: Array<GoogleCloudFunctionsV2alphaStage>;
 }
 
-export const GoogleCloudFunctionsV2alphaOperationMetadata: Schema.Schema<GoogleCloudFunctionsV2alphaOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      target: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      operationType: Schema.optional(Schema.String),
-      sourceToken: Schema.optional(Schema.String),
-      cancelRequested: Schema.optional(Schema.Boolean),
-      requestResource: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-      createTime: Schema.optional(Schema.String),
-      buildName: Schema.optional(Schema.String),
-      statusDetail: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      customIamRoleDetected: Schema.optional(Schema.Boolean),
-      apiVersion: Schema.optional(Schema.String),
-      stages: Schema.optional(Schema.Array(GoogleCloudFunctionsV2alphaStage)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudFunctionsV2alphaOperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudFunctionsV2alphaOperationMetadata>;
+export const GoogleCloudFunctionsV2alphaOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    target: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    operationType: Schema.optional(Schema.String),
+    sourceToken: Schema.optional(Schema.String),
+    cancelRequested: Schema.optional(Schema.Boolean),
+    requestResource: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
+    createTime: Schema.optional(Schema.String),
+    buildName: Schema.optional(Schema.String),
+    statusDetail: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+    customIamRoleDetected: Schema.optional(Schema.Boolean),
+    apiVersion: Schema.optional(Schema.String),
+    stages: Schema.optional(Schema.Array(GoogleCloudFunctionsV2alphaStage)),
+  }).annotate({ identifier: "GoogleCloudFunctionsV2alphaOperationMetadata" });
 
 export interface CommitFunctionUpgradeRequest {}
 
-export const CommitFunctionUpgradeRequest: Schema.Schema<CommitFunctionUpgradeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const CommitFunctionUpgradeRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CommitFunctionUpgradeRequest",
-  }) as any as Schema.Schema<CommitFunctionUpgradeRequest>;
+  });
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsRequest",
-  }) as any as Schema.Schema<TestIamPermissionsRequest>;
+export const TestIamPermissionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsRequest" });
 
 export interface GenerateUploadUrlResponse {
   /** The generated Google Cloud Storage signed URL that should be used for a function source code upload. The uploaded file should be a zip archive which contains a function. */
@@ -1137,15 +968,11 @@ export interface GenerateUploadUrlResponse {
   storageSource?: StorageSource;
 }
 
-export const GenerateUploadUrlResponse: Schema.Schema<GenerateUploadUrlResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uploadUrl: Schema.optional(Schema.String),
-      storageSource: Schema.optional(StorageSource),
-    }),
-  ).annotate({
-    identifier: "GenerateUploadUrlResponse",
-  }) as any as Schema.Schema<GenerateUploadUrlResponse>;
+export const GenerateUploadUrlResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uploadUrl: Schema.optional(Schema.String),
+    storageSource: Schema.optional(StorageSource),
+  }).annotate({ identifier: "GenerateUploadUrlResponse" });
 
 export interface OperationMetadataV1 {
   /** Version id of the function created or updated by an API call. This field is only populated for Create and Update operations. */
@@ -1171,42 +998,32 @@ export interface OperationMetadataV1 {
   buildName?: string;
 }
 
-export const OperationMetadataV1: Schema.Schema<OperationMetadataV1> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      versionId: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      buildId: Schema.optional(Schema.String),
-      sourceToken: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      request: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      buildName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadataV1",
-  }) as any as Schema.Schema<OperationMetadataV1>;
+export const OperationMetadataV1 = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  versionId: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  buildId: Schema.optional(Schema.String),
+  sourceToken: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  request: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  buildName: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationMetadataV1" });
 
 export interface RollbackFunctionUpgradeTrafficRequest {}
 
-export const RollbackFunctionUpgradeTrafficRequest: Schema.Schema<RollbackFunctionUpgradeTrafficRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const RollbackFunctionUpgradeTrafficRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RollbackFunctionUpgradeTrafficRequest",
-  }) as any as Schema.Schema<RollbackFunctionUpgradeTrafficRequest>;
+  });
 
 export interface ListRuntimesResponse {
   /** The runtimes that match the request. */
   runtimes?: Array<Runtime>;
 }
 
-export const ListRuntimesResponse: Schema.Schema<ListRuntimesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      runtimes: Schema.optional(Schema.Array(Runtime)),
-    }),
-  ).annotate({
-    identifier: "ListRuntimesResponse",
-  }) as any as Schema.Schema<ListRuntimesResponse>;
+export const ListRuntimesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  runtimes: Schema.optional(Schema.Array(Runtime)),
+}).annotate({ identifier: "ListRuntimesResponse" });
 
 // ==========================================================================
 // Operations

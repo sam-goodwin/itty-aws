@@ -52,25 +52,22 @@ export interface ChangeLog {
   action?: string;
 }
 
-export const ChangeLog: Schema.Schema<ChangeLog> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fieldName: Schema.optional(Schema.String),
-      objectType: Schema.optional(Schema.String),
-      userProfileName: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      userProfileId: Schema.optional(Schema.String),
-      objectId: Schema.optional(Schema.String),
-      oldValue: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      newValue: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-      changeTime: Schema.optional(Schema.String),
-      transactionId: Schema.optional(Schema.String),
-      subaccountId: Schema.optional(Schema.String),
-      action: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "ChangeLog" }) as any as Schema.Schema<ChangeLog>;
+export const ChangeLog = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fieldName: Schema.optional(Schema.String),
+  objectType: Schema.optional(Schema.String),
+  userProfileName: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  userProfileId: Schema.optional(Schema.String),
+  objectId: Schema.optional(Schema.String),
+  oldValue: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  newValue: Schema.optional(Schema.String),
+  accountId: Schema.optional(Schema.String),
+  changeTime: Schema.optional(Schema.String),
+  transactionId: Schema.optional(Schema.String),
+  subaccountId: Schema.optional(Schema.String),
+  action: Schema.optional(Schema.String),
+}).annotate({ identifier: "ChangeLog" });
 
 export interface ChangeLogsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#changeLogsListResponse". */
@@ -81,16 +78,13 @@ export interface ChangeLogsListResponse {
   nextPageToken?: string;
 }
 
-export const ChangeLogsListResponse: Schema.Schema<ChangeLogsListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      changeLogs: Schema.optional(Schema.Array(ChangeLog)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ChangeLogsListResponse",
-  }) as any as Schema.Schema<ChangeLogsListResponse>;
+export const ChangeLogsListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    kind: Schema.optional(Schema.String),
+    changeLogs: Schema.optional(Schema.Array(ChangeLog)),
+    nextPageToken: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ChangeLogsListResponse" });
 
 export interface AudienceSegment {
   /** Name of this audience segment. This is a required field and must be less than 65 characters long. */
@@ -101,16 +95,11 @@ export interface AudienceSegment {
   allocation?: number;
 }
 
-export const AudienceSegment: Schema.Schema<AudienceSegment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      allocation: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "AudienceSegment",
-  }) as any as Schema.Schema<AudienceSegment>;
+export const AudienceSegment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  allocation: Schema.optional(Schema.Number),
+}).annotate({ identifier: "AudienceSegment" });
 
 export interface AudienceSegmentGroup {
   /** Name of this audience segment group. This is a required field and must be less than 65 characters long. */
@@ -121,16 +110,11 @@ export interface AudienceSegmentGroup {
   audienceSegments?: Array<AudienceSegment>;
 }
 
-export const AudienceSegmentGroup: Schema.Schema<AudienceSegmentGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      audienceSegments: Schema.optional(Schema.Array(AudienceSegment)),
-    }),
-  ).annotate({
-    identifier: "AudienceSegmentGroup",
-  }) as any as Schema.Schema<AudienceSegmentGroup>;
+export const AudienceSegmentGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  audienceSegments: Schema.optional(Schema.Array(AudienceSegment)),
+}).annotate({ identifier: "AudienceSegmentGroup" });
 
 export interface TagData {
   /** Creative associated with this placement tag. Applicable only when format is PLACEMENT_TAG_TRACKING. */
@@ -166,16 +150,13 @@ export interface TagData {
   impressionTag?: string;
 }
 
-export const TagData: Schema.Schema<TagData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      creativeId: Schema.optional(Schema.String),
-      format: Schema.optional(Schema.String),
-      clickTag: Schema.optional(Schema.String),
-      adId: Schema.optional(Schema.String),
-      impressionTag: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "TagData" }) as any as Schema.Schema<TagData>;
+export const TagData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  creativeId: Schema.optional(Schema.String),
+  format: Schema.optional(Schema.String),
+  clickTag: Schema.optional(Schema.String),
+  adId: Schema.optional(Schema.String),
+  impressionTag: Schema.optional(Schema.String),
+}).annotate({ identifier: "TagData" });
 
 export interface PlacementTag {
   /** Tags generated for this placement. */
@@ -184,15 +165,10 @@ export interface PlacementTag {
   placementId?: string;
 }
 
-export const PlacementTag: Schema.Schema<PlacementTag> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tagDatas: Schema.optional(Schema.Array(TagData)),
-      placementId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PlacementTag",
-  }) as any as Schema.Schema<PlacementTag>;
+export const PlacementTag = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tagDatas: Schema.optional(Schema.Array(TagData)),
+  placementId: Schema.optional(Schema.String),
+}).annotate({ identifier: "PlacementTag" });
 
 export interface RequestValue {
   /** Optional. User attribute IDs in the request. Used only when the field type is REMARKETING_VALUE or USER_ATTRIBUTE_ID. */
@@ -203,16 +179,11 @@ export interface RequestValue {
   key?: string;
 }
 
-export const RequestValue: Schema.Schema<RequestValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userAttributeIds: Schema.optional(Schema.Array(Schema.String)),
-      excludeFromUserAttributeIds: Schema.optional(Schema.Array(Schema.String)),
-      key: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RequestValue",
-  }) as any as Schema.Schema<RequestValue>;
+export const RequestValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  userAttributeIds: Schema.optional(Schema.Array(Schema.String)),
+  excludeFromUserAttributeIds: Schema.optional(Schema.Array(Schema.String)),
+  key: Schema.optional(Schema.String),
+}).annotate({ identifier: "RequestValue" });
 
 export interface DependentFieldValue {
   /** Optional. The field id of the dependent field. */
@@ -221,15 +192,10 @@ export interface DependentFieldValue {
   elementId?: string;
 }
 
-export const DependentFieldValue: Schema.Schema<DependentFieldValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fieldId: Schema.optional(Schema.Number),
-      elementId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DependentFieldValue",
-  }) as any as Schema.Schema<DependentFieldValue>;
+export const DependentFieldValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fieldId: Schema.optional(Schema.Number),
+  elementId: Schema.optional(Schema.String),
+}).annotate({ identifier: "DependentFieldValue" });
 
 export interface FieldFilter {
   /** Optional. The request value, only applicable when rhs_value_type is REQUEST. */
@@ -260,32 +226,24 @@ export interface FieldFilter {
   stringValue?: string;
 }
 
-export const FieldFilter: Schema.Schema<FieldFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestValue: Schema.optional(RequestValue),
-      boolValue: Schema.optional(Schema.Boolean),
-      valueType: Schema.optional(Schema.String),
-      fieldId: Schema.optional(Schema.Number),
-      matchType: Schema.optional(Schema.String),
-      dependentFieldValue: Schema.optional(DependentFieldValue),
-      stringValue: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FieldFilter",
-  }) as any as Schema.Schema<FieldFilter>;
+export const FieldFilter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  requestValue: Schema.optional(RequestValue),
+  boolValue: Schema.optional(Schema.Boolean),
+  valueType: Schema.optional(Schema.String),
+  fieldId: Schema.optional(Schema.Number),
+  matchType: Schema.optional(Schema.String),
+  dependentFieldValue: Schema.optional(DependentFieldValue),
+  stringValue: Schema.optional(Schema.String),
+}).annotate({ identifier: "FieldFilter" });
 
 export interface RuleBlock {
   /** Optional. A list of non-auto field filters */
   fieldFilter?: Array<FieldFilter>;
 }
 
-export const RuleBlock: Schema.Schema<RuleBlock> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fieldFilter: Schema.optional(Schema.Array(FieldFilter)),
-    }),
-  ).annotate({ identifier: "RuleBlock" }) as any as Schema.Schema<RuleBlock>;
+export const RuleBlock = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fieldFilter: Schema.optional(Schema.Array(FieldFilter)),
+}).annotate({ identifier: "RuleBlock" });
 
 export interface Region {
   /** Country code of the country to which this region belongs. */
@@ -302,17 +260,14 @@ export interface Region {
   name?: string;
 }
 
-export const Region: Schema.Schema<Region> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      countryCode: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      countryDartId: Schema.optional(Schema.String),
-      regionCode: Schema.optional(Schema.String),
-      dartId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Region" }) as any as Schema.Schema<Region>;
+export const Region = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  countryCode: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  countryDartId: Schema.optional(Schema.String),
+  regionCode: Schema.optional(Schema.String),
+  dartId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Region" });
 
 export interface RemarketingListShare {
   /** Advertisers that the remarketing list is shared with. */
@@ -325,17 +280,12 @@ export interface RemarketingListShare {
   sharedAccountIds?: Array<string>;
 }
 
-export const RemarketingListShare: Schema.Schema<RemarketingListShare> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sharedAdvertiserIds: Schema.optional(Schema.Array(Schema.String)),
-      remarketingListId: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      sharedAccountIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "RemarketingListShare",
-  }) as any as Schema.Schema<RemarketingListShare>;
+export const RemarketingListShare = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sharedAdvertiserIds: Schema.optional(Schema.Array(Schema.String)),
+  remarketingListId: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  sharedAccountIds: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "RemarketingListShare" });
 
 export interface DimensionValue {
   /** The name of the dimension. */
@@ -357,19 +307,14 @@ export interface DimensionValue {
   kind?: string;
 }
 
-export const DimensionValue: Schema.Schema<DimensionValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dimensionName: Schema.optional(Schema.String),
-      matchType: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DimensionValue",
-  }) as any as Schema.Schema<DimensionValue>;
+export const DimensionValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dimensionName: Schema.optional(Schema.String),
+  matchType: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "DimensionValue" });
 
 export interface CreativeGroup {
   /** Account ID of this creative group. This is a read-only field that can be left blank. */
@@ -390,21 +335,16 @@ export interface CreativeGroup {
   id?: string;
 }
 
-export const CreativeGroup: Schema.Schema<CreativeGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accountId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      groupNumber: Schema.optional(Schema.Number),
-      advertiserIdDimensionValue: Schema.optional(DimensionValue),
-      subaccountId: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      advertiserId: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreativeGroup",
-  }) as any as Schema.Schema<CreativeGroup>;
+export const CreativeGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  accountId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  groupNumber: Schema.optional(Schema.Number),
+  advertiserIdDimensionValue: Schema.optional(DimensionValue),
+  subaccountId: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  advertiserId: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+}).annotate({ identifier: "CreativeGroup" });
 
 export interface DfpSettings {
   /** Whether this directory site accepts programmatic placements. */
@@ -419,18 +359,13 @@ export interface DfpSettings {
   dfpNetworkName?: string;
 }
 
-export const DfpSettings: Schema.Schema<DfpSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      programmaticPlacementAccepted: Schema.optional(Schema.Boolean),
-      pubPaidPlacementAccepted: Schema.optional(Schema.Boolean),
-      publisherPortalOnly: Schema.optional(Schema.Boolean),
-      dfpNetworkCode: Schema.optional(Schema.String),
-      dfpNetworkName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DfpSettings",
-  }) as any as Schema.Schema<DfpSettings>;
+export const DfpSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  programmaticPlacementAccepted: Schema.optional(Schema.Boolean),
+  pubPaidPlacementAccepted: Schema.optional(Schema.Boolean),
+  publisherPortalOnly: Schema.optional(Schema.Boolean),
+  dfpNetworkCode: Schema.optional(Schema.String),
+  dfpNetworkName: Schema.optional(Schema.String),
+}).annotate({ identifier: "DfpSettings" });
 
 export interface DirectorySiteSettings {
   /** Whether this site accepts interstitial ads. */
@@ -443,17 +378,12 @@ export interface DirectorySiteSettings {
   activeViewOptOut?: boolean;
 }
 
-export const DirectorySiteSettings: Schema.Schema<DirectorySiteSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      interstitialPlacementAccepted: Schema.optional(Schema.Boolean),
-      instreamVideoPlacementAccepted: Schema.optional(Schema.Boolean),
-      dfpSettings: Schema.optional(DfpSettings),
-      activeViewOptOut: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "DirectorySiteSettings",
-  }) as any as Schema.Schema<DirectorySiteSettings>;
+export const DirectorySiteSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  interstitialPlacementAccepted: Schema.optional(Schema.Boolean),
+  instreamVideoPlacementAccepted: Schema.optional(Schema.Boolean),
+  dfpSettings: Schema.optional(DfpSettings),
+  activeViewOptOut: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "DirectorySiteSettings" });
 
 export interface DirectorySite {
   /** URL of this directory site. */
@@ -487,22 +417,17 @@ export interface DirectorySite {
   idDimensionValue?: DimensionValue;
 }
 
-export const DirectorySite: Schema.Schema<DirectorySite> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      url: Schema.optional(Schema.String),
-      publisherSpecificationId: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      inpageTagFormats: Schema.optional(Schema.Array(Schema.String)),
-      interstitialTagFormats: Schema.optional(Schema.Array(Schema.String)),
-      name: Schema.optional(Schema.String),
-      settings: Schema.optional(DirectorySiteSettings),
-      id: Schema.optional(Schema.String),
-      idDimensionValue: Schema.optional(DimensionValue),
-    }),
-  ).annotate({
-    identifier: "DirectorySite",
-  }) as any as Schema.Schema<DirectorySite>;
+export const DirectorySite = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  url: Schema.optional(Schema.String),
+  publisherSpecificationId: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  inpageTagFormats: Schema.optional(Schema.Array(Schema.String)),
+  interstitialTagFormats: Schema.optional(Schema.Array(Schema.String)),
+  name: Schema.optional(Schema.String),
+  settings: Schema.optional(DirectorySiteSettings),
+  id: Schema.optional(Schema.String),
+  idDimensionValue: Schema.optional(DimensionValue),
+}).annotate({ identifier: "DirectorySite" });
 
 export interface DirectorySitesListResponse {
   /** Directory site collection. */
@@ -513,16 +438,12 @@ export interface DirectorySitesListResponse {
   nextPageToken?: string;
 }
 
-export const DirectorySitesListResponse: Schema.Schema<DirectorySitesListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      directorySites: Schema.optional(Schema.Array(DirectorySite)),
-      kind: Schema.optional(Schema.String),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DirectorySitesListResponse",
-  }) as any as Schema.Schema<DirectorySitesListResponse>;
+export const DirectorySitesListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    directorySites: Schema.optional(Schema.Array(DirectorySite)),
+    kind: Schema.optional(Schema.String),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DirectorySitesListResponse" });
 
 export interface ClickThroughUrl {
   /** ID of the landing page for the click-through URL. Applicable if the defaultLandingPage field is set to false. */
@@ -535,17 +456,12 @@ export interface ClickThroughUrl {
   customClickThroughUrl?: string;
 }
 
-export const ClickThroughUrl: Schema.Schema<ClickThroughUrl> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      landingPageId: Schema.optional(Schema.String),
-      defaultLandingPage: Schema.optional(Schema.Boolean),
-      computedClickThroughUrl: Schema.optional(Schema.String),
-      customClickThroughUrl: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ClickThroughUrl",
-  }) as any as Schema.Schema<ClickThroughUrl>;
+export const ClickThroughUrl = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  landingPageId: Schema.optional(Schema.String),
+  defaultLandingPage: Schema.optional(Schema.Boolean),
+  computedClickThroughUrl: Schema.optional(Schema.String),
+  customClickThroughUrl: Schema.optional(Schema.String),
+}).annotate({ identifier: "ClickThroughUrl" });
 
 export interface CompanionClickThroughOverride {
   /** ID of the creative for this companion click-through override. */
@@ -554,15 +470,11 @@ export interface CompanionClickThroughOverride {
   clickThroughUrl?: ClickThroughUrl;
 }
 
-export const CompanionClickThroughOverride: Schema.Schema<CompanionClickThroughOverride> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      creativeId: Schema.optional(Schema.String),
-      clickThroughUrl: Schema.optional(ClickThroughUrl),
-    }),
-  ).annotate({
-    identifier: "CompanionClickThroughOverride",
-  }) as any as Schema.Schema<CompanionClickThroughOverride>;
+export const CompanionClickThroughOverride =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    creativeId: Schema.optional(Schema.String),
+    clickThroughUrl: Schema.optional(ClickThroughUrl),
+  }).annotate({ identifier: "CompanionClickThroughOverride" });
 
 export interface RichMediaExitOverride {
   /** Click-through URL of this rich media exit override. Applicable if the enabled field is set to true. */
@@ -573,16 +485,11 @@ export interface RichMediaExitOverride {
   enabled?: boolean;
 }
 
-export const RichMediaExitOverride: Schema.Schema<RichMediaExitOverride> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clickThroughUrl: Schema.optional(ClickThroughUrl),
-      exitId: Schema.optional(Schema.String),
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "RichMediaExitOverride",
-  }) as any as Schema.Schema<RichMediaExitOverride>;
+export const RichMediaExitOverride = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  clickThroughUrl: Schema.optional(ClickThroughUrl),
+  exitId: Schema.optional(Schema.String),
+  enabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "RichMediaExitOverride" });
 
 export interface CreativeGroupAssignment {
   /** ID of the creative group to be assigned. */
@@ -594,15 +501,11 @@ export interface CreativeGroupAssignment {
     | (string & {});
 }
 
-export const CreativeGroupAssignment: Schema.Schema<CreativeGroupAssignment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      creativeGroupId: Schema.optional(Schema.String),
-      creativeGroupNumber: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreativeGroupAssignment",
-  }) as any as Schema.Schema<CreativeGroupAssignment>;
+export const CreativeGroupAssignment =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    creativeGroupId: Schema.optional(Schema.String),
+    creativeGroupNumber: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CreativeGroupAssignment" });
 
 export interface CreativeAssignment {
   /** Whether applicable event tags should fire when this creative assignment is rendered. If this value is unset when the ad is inserted or updated, it will default to true for all creative types EXCEPT for INTERNAL_REDIRECT, INTERSTITIAL_INTERNAL_REDIRECT, and INSTREAM_VIDEO. */
@@ -631,32 +534,25 @@ export interface CreativeAssignment {
   creativeId?: string;
 }
 
-export const CreativeAssignment: Schema.Schema<CreativeAssignment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      applyEventTags: Schema.optional(Schema.Boolean),
-      weight: Schema.optional(Schema.Number),
-      companionCreativeOverrides: Schema.optional(
-        Schema.Array(CompanionClickThroughOverride),
-      ),
-      sequence: Schema.optional(Schema.Number),
-      active: Schema.optional(Schema.Boolean),
-      richMediaExitOverrides: Schema.optional(
-        Schema.Array(RichMediaExitOverride),
-      ),
-      sslCompliant: Schema.optional(Schema.Boolean),
-      startTime: Schema.optional(Schema.String),
-      creativeIdDimensionValue: Schema.optional(DimensionValue),
-      creativeGroupAssignments: Schema.optional(
-        Schema.Array(CreativeGroupAssignment),
-      ),
-      clickThroughUrl: Schema.optional(ClickThroughUrl),
-      endTime: Schema.optional(Schema.String),
-      creativeId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreativeAssignment",
-  }) as any as Schema.Schema<CreativeAssignment>;
+export const CreativeAssignment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  applyEventTags: Schema.optional(Schema.Boolean),
+  weight: Schema.optional(Schema.Number),
+  companionCreativeOverrides: Schema.optional(
+    Schema.Array(CompanionClickThroughOverride),
+  ),
+  sequence: Schema.optional(Schema.Number),
+  active: Schema.optional(Schema.Boolean),
+  richMediaExitOverrides: Schema.optional(Schema.Array(RichMediaExitOverride)),
+  sslCompliant: Schema.optional(Schema.Boolean),
+  startTime: Schema.optional(Schema.String),
+  creativeIdDimensionValue: Schema.optional(DimensionValue),
+  creativeGroupAssignments: Schema.optional(
+    Schema.Array(CreativeGroupAssignment),
+  ),
+  clickThroughUrl: Schema.optional(ClickThroughUrl),
+  endTime: Schema.optional(Schema.String),
+  creativeId: Schema.optional(Schema.String),
+}).annotate({ identifier: "CreativeAssignment" });
 
 export interface CreativeRotation {
   /** Type of creative rotation. Can be used to specify whether to use sequential or random rotation. */
@@ -677,17 +573,12 @@ export interface CreativeRotation {
     | (string & {});
 }
 
-export const CreativeRotation: Schema.Schema<CreativeRotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      creativeAssignments: Schema.optional(Schema.Array(CreativeAssignment)),
-      creativeOptimizationConfigurationId: Schema.optional(Schema.String),
-      weightCalculationStrategy: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreativeRotation",
-  }) as any as Schema.Schema<CreativeRotation>;
+export const CreativeRotation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  creativeAssignments: Schema.optional(Schema.Array(CreativeAssignment)),
+  creativeOptimizationConfigurationId: Schema.optional(Schema.String),
+  weightCalculationStrategy: Schema.optional(Schema.String),
+}).annotate({ identifier: "CreativeRotation" });
 
 export interface FloodlightActivityDynamicTag {
   /** ID of this dynamic tag. This is a read-only, auto-generated field. */
@@ -698,16 +589,12 @@ export interface FloodlightActivityDynamicTag {
   name?: string;
 }
 
-export const FloodlightActivityDynamicTag: Schema.Schema<FloodlightActivityDynamicTag> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      tag: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FloodlightActivityDynamicTag",
-  }) as any as Schema.Schema<FloodlightActivityDynamicTag>;
+export const FloodlightActivityDynamicTag =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    tag: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "FloodlightActivityDynamicTag" });
 
 export interface FloodlightActivityPublisherDynamicTag {
   /** Site ID of this dynamic tag. */
@@ -724,19 +611,15 @@ export interface FloodlightActivityPublisherDynamicTag {
   directorySiteId?: string;
 }
 
-export const FloodlightActivityPublisherDynamicTag: Schema.Schema<FloodlightActivityPublisherDynamicTag> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      siteId: Schema.optional(Schema.String),
-      viewThrough: Schema.optional(Schema.Boolean),
-      dynamicTag: Schema.optional(FloodlightActivityDynamicTag),
-      clickThrough: Schema.optional(Schema.Boolean),
-      siteIdDimensionValue: Schema.optional(DimensionValue),
-      directorySiteId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FloodlightActivityPublisherDynamicTag",
-  }) as any as Schema.Schema<FloodlightActivityPublisherDynamicTag>;
+export const FloodlightActivityPublisherDynamicTag =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    siteId: Schema.optional(Schema.String),
+    viewThrough: Schema.optional(Schema.Boolean),
+    dynamicTag: Schema.optional(FloodlightActivityDynamicTag),
+    clickThrough: Schema.optional(Schema.Boolean),
+    siteIdDimensionValue: Schema.optional(DimensionValue),
+    directorySiteId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "FloodlightActivityPublisherDynamicTag" });
 
 export interface FloodlightActivity {
   /** Code type used for cache busting in the generated tag. Applicable only when floodlightActivityGroupType is COUNTER and countingMethod is STANDARD_COUNTING or UNIQUE_COUNTING. */
@@ -947,45 +830,40 @@ export interface FloodlightActivity {
   kind?: string;
 }
 
-export const FloodlightActivity: Schema.Schema<FloodlightActivity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cacheBustingType: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-      advertiserId: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-      attributionEnabled: Schema.optional(Schema.Boolean),
-      floodlightActivityGroupType: Schema.optional(Schema.String),
-      advertiserIdDimensionValue: Schema.optional(DimensionValue),
-      idDimensionValue: Schema.optional(DimensionValue),
-      sslCompliant: Schema.optional(Schema.Boolean),
-      userDefinedVariableTypes: Schema.optional(Schema.Array(Schema.String)),
-      floodlightTagType: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      tagString: Schema.optional(Schema.String),
-      floodlightConfigurationIdDimensionValue: Schema.optional(DimensionValue),
-      id: Schema.optional(Schema.String),
-      notes: Schema.optional(Schema.String),
-      floodlightActivityGroupName: Schema.optional(Schema.String),
-      floodlightConfigurationId: Schema.optional(Schema.String),
-      subaccountId: Schema.optional(Schema.String),
-      publisherTags: Schema.optional(
-        Schema.Array(FloodlightActivityPublisherDynamicTag),
-      ),
-      floodlightActivityGroupId: Schema.optional(Schema.String),
-      conversionCategory: Schema.optional(Schema.String),
-      expectedUrl: Schema.optional(Schema.String),
-      sslRequired: Schema.optional(Schema.Boolean),
-      floodlightActivityGroupTagString: Schema.optional(Schema.String),
-      defaultTags: Schema.optional(Schema.Array(FloodlightActivityDynamicTag)),
-      countingMethod: Schema.optional(Schema.String),
-      secure: Schema.optional(Schema.Boolean),
-      tagFormat: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FloodlightActivity",
-  }) as any as Schema.Schema<FloodlightActivity>;
+export const FloodlightActivity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cacheBustingType: Schema.optional(Schema.String),
+  accountId: Schema.optional(Schema.String),
+  advertiserId: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.String),
+  attributionEnabled: Schema.optional(Schema.Boolean),
+  floodlightActivityGroupType: Schema.optional(Schema.String),
+  advertiserIdDimensionValue: Schema.optional(DimensionValue),
+  idDimensionValue: Schema.optional(DimensionValue),
+  sslCompliant: Schema.optional(Schema.Boolean),
+  userDefinedVariableTypes: Schema.optional(Schema.Array(Schema.String)),
+  floodlightTagType: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  tagString: Schema.optional(Schema.String),
+  floodlightConfigurationIdDimensionValue: Schema.optional(DimensionValue),
+  id: Schema.optional(Schema.String),
+  notes: Schema.optional(Schema.String),
+  floodlightActivityGroupName: Schema.optional(Schema.String),
+  floodlightConfigurationId: Schema.optional(Schema.String),
+  subaccountId: Schema.optional(Schema.String),
+  publisherTags: Schema.optional(
+    Schema.Array(FloodlightActivityPublisherDynamicTag),
+  ),
+  floodlightActivityGroupId: Schema.optional(Schema.String),
+  conversionCategory: Schema.optional(Schema.String),
+  expectedUrl: Schema.optional(Schema.String),
+  sslRequired: Schema.optional(Schema.Boolean),
+  floodlightActivityGroupTagString: Schema.optional(Schema.String),
+  defaultTags: Schema.optional(Schema.Array(FloodlightActivityDynamicTag)),
+  countingMethod: Schema.optional(Schema.String),
+  secure: Schema.optional(Schema.Boolean),
+  tagFormat: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "FloodlightActivity" });
 
 export interface FloodlightActivitiesListResponse {
   /** Pagination token to be used for the next list operation. */
@@ -996,16 +874,12 @@ export interface FloodlightActivitiesListResponse {
   kind?: string;
 }
 
-export const FloodlightActivitiesListResponse: Schema.Schema<FloodlightActivitiesListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      floodlightActivities: Schema.optional(Schema.Array(FloodlightActivity)),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FloodlightActivitiesListResponse",
-  }) as any as Schema.Schema<FloodlightActivitiesListResponse>;
+export const FloodlightActivitiesListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    floodlightActivities: Schema.optional(Schema.Array(FloodlightActivity)),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "FloodlightActivitiesListResponse" });
 
 export interface IngestionStatus {
   /** Output only. The number of rows with errors in the feed. */
@@ -1020,48 +894,35 @@ export interface IngestionStatus {
   numRowsProcessed?: string;
 }
 
-export const IngestionStatus: Schema.Schema<IngestionStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      numRowsWithErrors: Schema.optional(Schema.String),
-      numActiveRows: Schema.optional(Schema.String),
-      numRowsTotal: Schema.optional(Schema.String),
-      numWarningsTotal: Schema.optional(Schema.String),
-      numRowsProcessed: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "IngestionStatus",
-  }) as any as Schema.Schema<IngestionStatus>;
+export const IngestionStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  numRowsWithErrors: Schema.optional(Schema.String),
+  numActiveRows: Schema.optional(Schema.String),
+  numRowsTotal: Schema.optional(Schema.String),
+  numWarningsTotal: Schema.optional(Schema.String),
+  numRowsProcessed: Schema.optional(Schema.String),
+}).annotate({ identifier: "IngestionStatus" });
 
 export interface PlacementSingleConversionDomain {
   conversionDomainValue?: string;
   conversionDomainId?: string;
 }
 
-export const PlacementSingleConversionDomain: Schema.Schema<PlacementSingleConversionDomain> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conversionDomainValue: Schema.optional(Schema.String),
-      conversionDomainId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PlacementSingleConversionDomain",
-  }) as any as Schema.Schema<PlacementSingleConversionDomain>;
+export const PlacementSingleConversionDomain =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conversionDomainValue: Schema.optional(Schema.String),
+    conversionDomainId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PlacementSingleConversionDomain" });
 
 export interface PlacementConversionDomainOverride {
   conversionDomains?: Array<PlacementSingleConversionDomain>;
 }
 
-export const PlacementConversionDomainOverride: Schema.Schema<PlacementConversionDomainOverride> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conversionDomains: Schema.optional(
-        Schema.Array(PlacementSingleConversionDomain),
-      ),
-    }),
-  ).annotate({
-    identifier: "PlacementConversionDomainOverride",
-  }) as any as Schema.Schema<PlacementConversionDomainOverride>;
+export const PlacementConversionDomainOverride =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conversionDomains: Schema.optional(
+      Schema.Array(PlacementSingleConversionDomain),
+    ),
+  }).annotate({ identifier: "PlacementConversionDomainOverride" });
 
 export interface CreativeField {
   /** Subaccount ID of this creative field. This is a read-only field that can be left blank. */
@@ -1080,20 +941,15 @@ export interface CreativeField {
   kind?: string;
 }
 
-export const CreativeField: Schema.Schema<CreativeField> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subaccountId: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      advertiserIdDimensionValue: Schema.optional(DimensionValue),
-      advertiserId: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreativeField",
-  }) as any as Schema.Schema<CreativeField>;
+export const CreativeField = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subaccountId: Schema.optional(Schema.String),
+  accountId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  advertiserIdDimensionValue: Schema.optional(DimensionValue),
+  advertiserId: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "CreativeField" });
 
 export interface TranscodeSetting {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#transcodeSetting". */
@@ -1102,15 +958,10 @@ export interface TranscodeSetting {
   enabledVideoFormats?: Array<number>;
 }
 
-export const TranscodeSetting: Schema.Schema<TranscodeSetting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      enabledVideoFormats: Schema.optional(Schema.Array(Schema.Number)),
-    }),
-  ).annotate({
-    identifier: "TranscodeSetting",
-  }) as any as Schema.Schema<TranscodeSetting>;
+export const TranscodeSetting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  enabledVideoFormats: Schema.optional(Schema.Array(Schema.Number)),
+}).annotate({ identifier: "TranscodeSetting" });
 
 export interface Size {
   /** Width of this size. Acceptable values are 0 to 32767, inclusive. */
@@ -1125,16 +976,13 @@ export interface Size {
   iab?: boolean;
 }
 
-export const Size: Schema.Schema<Size> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      width: Schema.optional(Schema.Number),
-      kind: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      height: Schema.optional(Schema.Number),
-      iab: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "Size" }) as any as Schema.Schema<Size>;
+export const Size = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  width: Schema.optional(Schema.Number),
+  kind: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  height: Schema.optional(Schema.Number),
+  iab: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Size" });
 
 export interface ObaIcon {
   /** OBA icon size. */
@@ -1155,19 +1003,16 @@ export interface ObaIcon {
   iconViewTrackingUrl?: string;
 }
 
-export const ObaIcon: Schema.Schema<ObaIcon> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      size: Schema.optional(Size),
-      yPosition: Schema.optional(Schema.String),
-      resourceUrl: Schema.optional(Schema.String),
-      iconClickThroughUrl: Schema.optional(Schema.String),
-      iconClickTrackingUrl: Schema.optional(Schema.String),
-      xPosition: Schema.optional(Schema.String),
-      program: Schema.optional(Schema.String),
-      iconViewTrackingUrl: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "ObaIcon" }) as any as Schema.Schema<ObaIcon>;
+export const ObaIcon = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  size: Schema.optional(Size),
+  yPosition: Schema.optional(Schema.String),
+  resourceUrl: Schema.optional(Schema.String),
+  iconClickThroughUrl: Schema.optional(Schema.String),
+  iconClickTrackingUrl: Schema.optional(Schema.String),
+  xPosition: Schema.optional(Schema.String),
+  program: Schema.optional(Schema.String),
+  iconViewTrackingUrl: Schema.optional(Schema.String),
+}).annotate({ identifier: "ObaIcon" });
 
 export interface VideoOffset {
   /** Duration, as a percentage of video duration. Do not set when offsetSeconds is set. Acceptable values are 0 to 100, inclusive. */
@@ -1176,15 +1021,10 @@ export interface VideoOffset {
   offsetSeconds?: number;
 }
 
-export const VideoOffset: Schema.Schema<VideoOffset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      offsetPercentage: Schema.optional(Schema.Number),
-      offsetSeconds: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "VideoOffset",
-  }) as any as Schema.Schema<VideoOffset>;
+export const VideoOffset = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  offsetPercentage: Schema.optional(Schema.Number),
+  offsetSeconds: Schema.optional(Schema.Number),
+}).annotate({ identifier: "VideoOffset" });
 
 export interface SkippableSetting {
   /** Amount of time to play videos served to this placement before the skip button should appear. Applicable when skippable is true. */
@@ -1197,17 +1037,12 @@ export interface SkippableSetting {
   kind?: string;
 }
 
-export const SkippableSetting: Schema.Schema<SkippableSetting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      skipOffset: Schema.optional(VideoOffset),
-      progressOffset: Schema.optional(VideoOffset),
-      skippable: Schema.optional(Schema.Boolean),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SkippableSetting",
-  }) as any as Schema.Schema<SkippableSetting>;
+export const SkippableSetting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  skipOffset: Schema.optional(VideoOffset),
+  progressOffset: Schema.optional(VideoOffset),
+  skippable: Schema.optional(Schema.Boolean),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "SkippableSetting" });
 
 export interface CompanionSetting {
   /** Whether companions are disabled for this placement. */
@@ -1220,17 +1055,12 @@ export interface CompanionSetting {
   imageOnly?: boolean;
 }
 
-export const CompanionSetting: Schema.Schema<CompanionSetting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      companionsDisabled: Schema.optional(Schema.Boolean),
-      enabledSizes: Schema.optional(Schema.Array(Size)),
-      kind: Schema.optional(Schema.String),
-      imageOnly: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "CompanionSetting",
-  }) as any as Schema.Schema<CompanionSetting>;
+export const CompanionSetting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  companionsDisabled: Schema.optional(Schema.Boolean),
+  enabledSizes: Schema.optional(Schema.Array(Size)),
+  kind: Schema.optional(Schema.String),
+  imageOnly: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "CompanionSetting" });
 
 export interface VideoSettings {
   /** Duration of a video placement in seconds. */
@@ -1253,22 +1083,17 @@ export interface VideoSettings {
   orientation?: "ANY" | "LANDSCAPE" | "PORTRAIT" | (string & {});
 }
 
-export const VideoSettings: Schema.Schema<VideoSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      durationSeconds: Schema.optional(Schema.Number),
-      transcodeSettings: Schema.optional(TranscodeSetting),
-      obaSettings: Schema.optional(ObaIcon),
-      obaEnabled: Schema.optional(Schema.Boolean),
-      skippableSettings: Schema.optional(SkippableSetting),
-      publisherSpecificationId: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      companionSettings: Schema.optional(CompanionSetting),
-      orientation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VideoSettings",
-  }) as any as Schema.Schema<VideoSettings>;
+export const VideoSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  durationSeconds: Schema.optional(Schema.Number),
+  transcodeSettings: Schema.optional(TranscodeSetting),
+  obaSettings: Schema.optional(ObaIcon),
+  obaEnabled: Schema.optional(Schema.Boolean),
+  skippableSettings: Schema.optional(SkippableSetting),
+  publisherSpecificationId: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  companionSettings: Schema.optional(CompanionSetting),
+  orientation: Schema.optional(Schema.String),
+}).annotate({ identifier: "VideoSettings" });
 
 export interface FsCommand {
   /** Width of the window. */
@@ -1283,16 +1108,13 @@ export interface FsCommand {
   left?: number;
 }
 
-export const FsCommand: Schema.Schema<FsCommand> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      windowWidth: Schema.optional(Schema.Number),
-      top: Schema.optional(Schema.Number),
-      windowHeight: Schema.optional(Schema.Number),
-      positionOption: Schema.optional(Schema.String),
-      left: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "FsCommand" }) as any as Schema.Schema<FsCommand>;
+export const FsCommand = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  windowWidth: Schema.optional(Schema.Number),
+  top: Schema.optional(Schema.Number),
+  windowHeight: Schema.optional(Schema.Number),
+  positionOption: Schema.optional(Schema.String),
+  left: Schema.optional(Schema.Number),
+}).annotate({ identifier: "FsCommand" });
 
 export interface SiteTranscodeSetting {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#siteTranscodeSetting". */
@@ -1301,15 +1123,10 @@ export interface SiteTranscodeSetting {
   enabledVideoFormats?: Array<number>;
 }
 
-export const SiteTranscodeSetting: Schema.Schema<SiteTranscodeSetting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      enabledVideoFormats: Schema.optional(Schema.Array(Schema.Number)),
-    }),
-  ).annotate({
-    identifier: "SiteTranscodeSetting",
-  }) as any as Schema.Schema<SiteTranscodeSetting>;
+export const SiteTranscodeSetting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  enabledVideoFormats: Schema.optional(Schema.Array(Schema.Number)),
+}).annotate({ identifier: "SiteTranscodeSetting" });
 
 export interface ConversionError {
   /** A description of the error. */
@@ -1325,16 +1142,11 @@ export interface ConversionError {
     | (string & {});
 }
 
-export const ConversionError: Schema.Schema<ConversionError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      message: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      code: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConversionError",
-  }) as any as Schema.Schema<ConversionError>;
+export const ConversionError = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  message: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  code: Schema.optional(Schema.String),
+}).annotate({ identifier: "ConversionError" });
 
 export interface CartDataItem {
   /** Number of items sold. This is a required field. */
@@ -1345,16 +1157,11 @@ export interface CartDataItem {
   itemId?: string;
 }
 
-export const CartDataItem: Schema.Schema<CartDataItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      quantity: Schema.optional(Schema.Number),
-      unitPrice: Schema.optional(Schema.Number),
-      itemId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CartDataItem",
-  }) as any as Schema.Schema<CartDataItem>;
+export const CartDataItem = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  quantity: Schema.optional(Schema.Number),
+  unitPrice: Schema.optional(Schema.Number),
+  itemId: Schema.optional(Schema.String),
+}).annotate({ identifier: "CartDataItem" });
 
 export interface CartData {
   /** The feed labels associated with the feed where your items are uploaded. For more information, please refer to ​​ https://support.google.com/merchants/answer/12453549. Providing the feed label reduces ambiguity in identifying the right offer details. */
@@ -1367,15 +1174,12 @@ export interface CartData {
   items?: Array<CartDataItem>;
 }
 
-export const CartData: Schema.Schema<CartData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      merchantFeedLabel: Schema.optional(Schema.String),
-      merchantId: Schema.optional(Schema.String),
-      merchantFeedLanguage: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(CartDataItem)),
-    }),
-  ).annotate({ identifier: "CartData" }) as any as Schema.Schema<CartData>;
+export const CartData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  merchantFeedLabel: Schema.optional(Schema.String),
+  merchantId: Schema.optional(Schema.String),
+  merchantFeedLanguage: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(CartDataItem)),
+}).annotate({ identifier: "CartData" });
 
 export interface CustomFloodlightVariable {
   /** The type of custom floodlight variable to supply a value for. These map to the "u[1-100]=" in the tags. */
@@ -1487,16 +1291,12 @@ export interface CustomFloodlightVariable {
   kind?: string;
 }
 
-export const CustomFloodlightVariable: Schema.Schema<CustomFloodlightVariable> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomFloodlightVariable",
-  }) as any as Schema.Schema<CustomFloodlightVariable>;
+export const CustomFloodlightVariable =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CustomFloodlightVariable" });
 
 export interface OfflineUserAddressInfo {
   /** First name of the user, which is hashed as SHA-256 after normalized (Lowercase all characters; Remove any extra spaces before, after, and in between). */
@@ -1515,20 +1315,17 @@ export interface OfflineUserAddressInfo {
   countryCode?: string;
 }
 
-export const OfflineUserAddressInfo: Schema.Schema<OfflineUserAddressInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hashedFirstName: Schema.optional(Schema.String),
-      postalCode: Schema.optional(Schema.String),
-      hashedLastName: Schema.optional(Schema.String),
-      city: Schema.optional(Schema.String),
-      hashedStreetAddress: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      countryCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OfflineUserAddressInfo",
-  }) as any as Schema.Schema<OfflineUserAddressInfo>;
+export const OfflineUserAddressInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    hashedFirstName: Schema.optional(Schema.String),
+    postalCode: Schema.optional(Schema.String),
+    hashedLastName: Schema.optional(Schema.String),
+    city: Schema.optional(Schema.String),
+    hashedStreetAddress: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    countryCode: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "OfflineUserAddressInfo" });
 
 export interface UserIdentifier {
   /** Hashed email address using SHA-256 hash function after normalization. */
@@ -1539,16 +1336,11 @@ export interface UserIdentifier {
   hashedPhoneNumber?: string;
 }
 
-export const UserIdentifier: Schema.Schema<UserIdentifier> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hashedEmail: Schema.optional(Schema.String),
-      addressInfo: Schema.optional(OfflineUserAddressInfo),
-      hashedPhoneNumber: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UserIdentifier",
-  }) as any as Schema.Schema<UserIdentifier>;
+export const UserIdentifier = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  hashedEmail: Schema.optional(Schema.String),
+  addressInfo: Schema.optional(OfflineUserAddressInfo),
+  hashedPhoneNumber: Schema.optional(Schema.String),
+}).annotate({ identifier: "UserIdentifier" });
 
 export interface Conversion {
   /** A list of the alphanumeric encrypted user IDs. Any user ID with exposure prior to the conversion timestamp will be used in the inserted conversion. If no such user ID is found then the conversion will be rejected with INVALID_ARGUMENT error. When set, encryptionInfo should also be specified. This field may only be used when calling batchinsert; it is not supported by batchupdate. This field is mutually exclusive with encryptedUserId, matchId, mobileDeviceId, gclid dclid, and impressionId. This or encryptedUserId or matchId or mobileDeviceId or gclid or dclid or impressionId is a required field. */
@@ -1599,34 +1391,31 @@ export interface Conversion {
   userIdentifiers?: Array<UserIdentifier>;
 }
 
-export const Conversion: Schema.Schema<Conversion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      encryptedUserIdCandidates: Schema.optional(Schema.Array(Schema.String)),
-      matchId: Schema.optional(Schema.String),
-      gclid: Schema.optional(Schema.String),
-      floodlightConfigurationId: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.Number),
-      limitAdTracking: Schema.optional(Schema.Boolean),
-      impressionId: Schema.optional(Schema.String),
-      floodlightActivityId: Schema.optional(Schema.String),
-      quantity: Schema.optional(Schema.String),
-      cartData: Schema.optional(CartData),
-      customVariables: Schema.optional(Schema.Array(CustomFloodlightVariable)),
-      kind: Schema.optional(Schema.String),
-      adUserDataConsent: Schema.optional(Schema.String),
-      ordinal: Schema.optional(Schema.String),
-      timestampMicros: Schema.optional(Schema.String),
-      childDirectedTreatment: Schema.optional(Schema.Boolean),
-      mobileDeviceId: Schema.optional(Schema.String),
-      dclid: Schema.optional(Schema.String),
-      nonPersonalizedAd: Schema.optional(Schema.Boolean),
-      sessionAttributesEncoded: Schema.optional(Schema.String),
-      encryptedUserId: Schema.optional(Schema.String),
-      treatmentForUnderage: Schema.optional(Schema.Boolean),
-      userIdentifiers: Schema.optional(Schema.Array(UserIdentifier)),
-    }),
-  ).annotate({ identifier: "Conversion" }) as any as Schema.Schema<Conversion>;
+export const Conversion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  encryptedUserIdCandidates: Schema.optional(Schema.Array(Schema.String)),
+  matchId: Schema.optional(Schema.String),
+  gclid: Schema.optional(Schema.String),
+  floodlightConfigurationId: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.Number),
+  limitAdTracking: Schema.optional(Schema.Boolean),
+  impressionId: Schema.optional(Schema.String),
+  floodlightActivityId: Schema.optional(Schema.String),
+  quantity: Schema.optional(Schema.String),
+  cartData: Schema.optional(CartData),
+  customVariables: Schema.optional(Schema.Array(CustomFloodlightVariable)),
+  kind: Schema.optional(Schema.String),
+  adUserDataConsent: Schema.optional(Schema.String),
+  ordinal: Schema.optional(Schema.String),
+  timestampMicros: Schema.optional(Schema.String),
+  childDirectedTreatment: Schema.optional(Schema.Boolean),
+  mobileDeviceId: Schema.optional(Schema.String),
+  dclid: Schema.optional(Schema.String),
+  nonPersonalizedAd: Schema.optional(Schema.Boolean),
+  sessionAttributesEncoded: Schema.optional(Schema.String),
+  encryptedUserId: Schema.optional(Schema.String),
+  treatmentForUnderage: Schema.optional(Schema.Boolean),
+  userIdentifiers: Schema.optional(Schema.Array(UserIdentifier)),
+}).annotate({ identifier: "Conversion" });
 
 export interface ConversionStatus {
   /** A list of errors related to this conversion. */
@@ -1637,16 +1426,11 @@ export interface ConversionStatus {
   kind?: string;
 }
 
-export const ConversionStatus: Schema.Schema<ConversionStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errors: Schema.optional(Schema.Array(ConversionError)),
-      conversion: Schema.optional(Conversion),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConversionStatus",
-  }) as any as Schema.Schema<ConversionStatus>;
+export const ConversionStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  errors: Schema.optional(Schema.Array(ConversionError)),
+  conversion: Schema.optional(Conversion),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "ConversionStatus" });
 
 export interface ConversionsBatchUpdateResponse {
   /** Indicates that some or all conversions failed to update. */
@@ -1657,16 +1441,12 @@ export interface ConversionsBatchUpdateResponse {
   kind?: string;
 }
 
-export const ConversionsBatchUpdateResponse: Schema.Schema<ConversionsBatchUpdateResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hasFailures: Schema.optional(Schema.Boolean),
-      status: Schema.optional(Schema.Array(ConversionStatus)),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConversionsBatchUpdateResponse",
-  }) as any as Schema.Schema<ConversionsBatchUpdateResponse>;
+export const ConversionsBatchUpdateResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    hasFailures: Schema.optional(Schema.Boolean),
+    status: Schema.optional(Schema.Array(ConversionStatus)),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ConversionsBatchUpdateResponse" });
 
 export interface TagSetting {
   /** Whether static landing page URLs should be included in the tags. New placements will default to the value set on their site. */
@@ -1685,30 +1465,23 @@ export interface TagSetting {
     | (string & {});
 }
 
-export const TagSetting: Schema.Schema<TagSetting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      includeClickThroughUrls: Schema.optional(Schema.Boolean),
-      includeUnescapedlpurlMacro: Schema.optional(Schema.Boolean),
-      additionalKeyValues: Schema.optional(Schema.String),
-      includeClickTracking: Schema.optional(Schema.Boolean),
-      keywordOption: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "TagSetting" }) as any as Schema.Schema<TagSetting>;
+export const TagSetting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  includeClickThroughUrls: Schema.optional(Schema.Boolean),
+  includeUnescapedlpurlMacro: Schema.optional(Schema.Boolean),
+  additionalKeyValues: Schema.optional(Schema.String),
+  includeClickTracking: Schema.optional(Schema.Boolean),
+  keywordOption: Schema.optional(Schema.String),
+}).annotate({ identifier: "TagSetting" });
 
 export interface ListTargetingExpression {
   /** Expression describing which lists are being targeted by the ad. */
   expression?: string;
 }
 
-export const ListTargetingExpression: Schema.Schema<ListTargetingExpression> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expression: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListTargetingExpression",
-  }) as any as Schema.Schema<ListTargetingExpression>;
+export const ListTargetingExpression =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    expression: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListTargetingExpression" });
 
 export interface AccountActiveAdSummary {
   /** Ads that can be activated for the account. */
@@ -1732,32 +1505,24 @@ export interface AccountActiveAdSummary {
     | (string & {});
 }
 
-export const AccountActiveAdSummary: Schema.Schema<AccountActiveAdSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      availableAds: Schema.optional(Schema.String),
-      activeAds: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-      activeAdsLimitTier: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccountActiveAdSummary",
-  }) as any as Schema.Schema<AccountActiveAdSummary>;
+export const AccountActiveAdSummary = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    availableAds: Schema.optional(Schema.String),
+    activeAds: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    accountId: Schema.optional(Schema.String),
+    activeAdsLimitTier: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "AccountActiveAdSummary" });
 
 export interface LastModifiedInfo {
   /** Timestamp of the last change in milliseconds since epoch. */
   time?: string;
 }
 
-export const LastModifiedInfo: Schema.Schema<LastModifiedInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      time: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LastModifiedInfo",
-  }) as any as Schema.Schema<LastModifiedInfo>;
+export const LastModifiedInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  time: Schema.optional(Schema.String),
+}).annotate({ identifier: "LastModifiedInfo" });
 
 export interface StudioCreativeDimension {
   /** Height of the studio creative. */
@@ -1766,15 +1531,11 @@ export interface StudioCreativeDimension {
   width?: number;
 }
 
-export const StudioCreativeDimension: Schema.Schema<StudioCreativeDimension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      height: Schema.optional(Schema.Number),
-      width: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "StudioCreativeDimension",
-  }) as any as Schema.Schema<StudioCreativeDimension>;
+export const StudioCreativeDimension =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    height: Schema.optional(Schema.Number),
+    width: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "StudioCreativeDimension" });
 
 export interface StudioCreative {
   /** The timestamp when the studio creative was created. This is a read-only, auto-generated field. */
@@ -1818,26 +1579,21 @@ export interface StudioCreative {
     | (string & {});
 }
 
-export const StudioCreative: Schema.Schema<StudioCreative> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createdInfo: Schema.optional(LastModifiedInfo),
-      dimension: Schema.optional(StudioCreativeDimension),
-      backupImageAssetId: Schema.optional(Schema.String),
-      studioCampaignId: Schema.optional(Schema.String),
-      format: Schema.optional(Schema.String),
-      assetIds: Schema.optional(Schema.Array(Schema.String)),
-      lastModifiedInfo: Schema.optional(LastModifiedInfo),
-      studioAdvertiserId: Schema.optional(Schema.String),
-      dynamicProfileId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      studioAccountId: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StudioCreative",
-  }) as any as Schema.Schema<StudioCreative>;
+export const StudioCreative = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdInfo: Schema.optional(LastModifiedInfo),
+  dimension: Schema.optional(StudioCreativeDimension),
+  backupImageAssetId: Schema.optional(Schema.String),
+  studioCampaignId: Schema.optional(Schema.String),
+  format: Schema.optional(Schema.String),
+  assetIds: Schema.optional(Schema.Array(Schema.String)),
+  lastModifiedInfo: Schema.optional(LastModifiedInfo),
+  studioAdvertiserId: Schema.optional(Schema.String),
+  dynamicProfileId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  studioAccountId: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.String),
+}).annotate({ identifier: "StudioCreative" });
 
 export interface AccountPermission {
   /** Name of this account permission. */
@@ -1856,19 +1612,14 @@ export interface AccountPermission {
   level?: "USER" | "ADMINISTRATOR" | (string & {});
 }
 
-export const AccountPermission: Schema.Schema<AccountPermission> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      permissionGroupId: Schema.optional(Schema.String),
-      accountProfiles: Schema.optional(Schema.Array(Schema.String)),
-      kind: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      level: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccountPermission",
-  }) as any as Schema.Schema<AccountPermission>;
+export const AccountPermission = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  permissionGroupId: Schema.optional(Schema.String),
+  accountProfiles: Schema.optional(Schema.Array(Schema.String)),
+  kind: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  level: Schema.optional(Schema.String),
+}).annotate({ identifier: "AccountPermission" });
 
 export interface DynamicTargetingKey {
   /** Type of the object of this dynamic targeting key. This is a required field. */
@@ -1886,17 +1637,12 @@ export interface DynamicTargetingKey {
   name?: string;
 }
 
-export const DynamicTargetingKey: Schema.Schema<DynamicTargetingKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      objectType: Schema.optional(Schema.String),
-      objectId: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DynamicTargetingKey",
-  }) as any as Schema.Schema<DynamicTargetingKey>;
+export const DynamicTargetingKey = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  objectType: Schema.optional(Schema.String),
+  objectId: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "DynamicTargetingKey" });
 
 export interface UserProfile {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#userProfile". */
@@ -1917,21 +1663,16 @@ export interface UserProfile {
   accountName?: string;
 }
 
-export const UserProfile: Schema.Schema<UserProfile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      profileId: Schema.optional(Schema.String),
-      userName: Schema.optional(Schema.String),
-      subAccountId: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-      subAccountName: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      accountName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UserProfile",
-  }) as any as Schema.Schema<UserProfile>;
+export const UserProfile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  profileId: Schema.optional(Schema.String),
+  userName: Schema.optional(Schema.String),
+  subAccountId: Schema.optional(Schema.String),
+  accountId: Schema.optional(Schema.String),
+  subAccountName: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  accountName: Schema.optional(Schema.String),
+}).annotate({ identifier: "UserProfile" });
 
 export interface UserProfileList {
   /** Etag of this resource. */
@@ -1942,16 +1683,11 @@ export interface UserProfileList {
   kind?: string;
 }
 
-export const UserProfileList: Schema.Schema<UserProfileList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      etag: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(UserProfile)),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UserProfileList",
-  }) as any as Schema.Schema<UserProfileList>;
+export const UserProfileList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  etag: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(UserProfile)),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "UserProfileList" });
 
 export interface FieldError {
   /** Output only. Incidcates whether the field has error or warning. */
@@ -2009,16 +1745,13 @@ export interface FieldError {
   fieldValues?: Array<string>;
 }
 
-export const FieldError: Schema.Schema<FieldError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      isError: Schema.optional(Schema.Boolean),
-      ingestionError: Schema.optional(Schema.String),
-      fieldName: Schema.optional(Schema.String),
-      fieldId: Schema.optional(Schema.Number),
-      fieldValues: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "FieldError" }) as any as Schema.Schema<FieldError>;
+export const FieldError = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  isError: Schema.optional(Schema.Boolean),
+  ingestionError: Schema.optional(Schema.String),
+  fieldName: Schema.optional(Schema.String),
+  fieldId: Schema.optional(Schema.Number),
+  fieldValues: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "FieldError" });
 
 export interface IngestionErrorRecord {
   /** Output only. The record ID of the ingestion error record. */
@@ -2027,15 +1760,10 @@ export interface IngestionErrorRecord {
   errors?: Array<FieldError>;
 }
 
-export const IngestionErrorRecord: Schema.Schema<IngestionErrorRecord> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      recordId: Schema.optional(Schema.String),
-      errors: Schema.optional(Schema.Array(FieldError)),
-    }),
-  ).annotate({
-    identifier: "IngestionErrorRecord",
-  }) as any as Schema.Schema<IngestionErrorRecord>;
+export const IngestionErrorRecord = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  recordId: Schema.optional(Schema.String),
+  errors: Schema.optional(Schema.Array(FieldError)),
+}).annotate({ identifier: "IngestionErrorRecord" });
 
 export interface CampaignSummary {
   /** The tax amount for this campaign, in micros of the invoice's currency. */
@@ -2050,18 +1778,13 @@ export interface CampaignSummary {
   preTaxAmountMicros?: string;
 }
 
-export const CampaignSummary: Schema.Schema<CampaignSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      taxAmountMicros: Schema.optional(Schema.String),
-      billingInvoiceCode: Schema.optional(Schema.String),
-      campaignId: Schema.optional(Schema.String),
-      totalAmountMicros: Schema.optional(Schema.String),
-      preTaxAmountMicros: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CampaignSummary",
-  }) as any as Schema.Schema<CampaignSummary>;
+export const CampaignSummary = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  taxAmountMicros: Schema.optional(Schema.String),
+  billingInvoiceCode: Schema.optional(Schema.String),
+  campaignId: Schema.optional(Schema.String),
+  totalAmountMicros: Schema.optional(Schema.String),
+  preTaxAmountMicros: Schema.optional(Schema.String),
+}).annotate({ identifier: "CampaignSummary" });
 
 export interface Invoice {
   /** The pre-tax subtotal amount, in micros of the invoice's currency. */
@@ -2106,29 +1829,26 @@ export interface Invoice {
   serviceStartDate?: string;
 }
 
-export const Invoice: Schema.Schema<Invoice> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subtotalAmountMicros: Schema.optional(Schema.String),
-      campaign_summaries: Schema.optional(Schema.Array(CampaignSummary)),
-      dueDate: Schema.optional(Schema.String),
-      totalAmountMicros: Schema.optional(Schema.String),
-      replacedInvoiceIds: Schema.optional(Schema.Array(Schema.String)),
-      kind: Schema.optional(Schema.String),
-      currencyCode: Schema.optional(Schema.String),
-      invoiceType: Schema.optional(Schema.String),
-      correctedInvoiceId: Schema.optional(Schema.String),
-      pdfUrl: Schema.optional(Schema.String),
-      paymentsProfileId: Schema.optional(Schema.String),
-      totalTaxAmountMicros: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      issueDate: Schema.optional(Schema.String),
-      serviceEndDate: Schema.optional(Schema.String),
-      purchaseOrderNumber: Schema.optional(Schema.String),
-      paymentsAccountId: Schema.optional(Schema.String),
-      serviceStartDate: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Invoice" }) as any as Schema.Schema<Invoice>;
+export const Invoice = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subtotalAmountMicros: Schema.optional(Schema.String),
+  campaign_summaries: Schema.optional(Schema.Array(CampaignSummary)),
+  dueDate: Schema.optional(Schema.String),
+  totalAmountMicros: Schema.optional(Schema.String),
+  replacedInvoiceIds: Schema.optional(Schema.Array(Schema.String)),
+  kind: Schema.optional(Schema.String),
+  currencyCode: Schema.optional(Schema.String),
+  invoiceType: Schema.optional(Schema.String),
+  correctedInvoiceId: Schema.optional(Schema.String),
+  pdfUrl: Schema.optional(Schema.String),
+  paymentsProfileId: Schema.optional(Schema.String),
+  totalTaxAmountMicros: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  issueDate: Schema.optional(Schema.String),
+  serviceEndDate: Schema.optional(Schema.String),
+  purchaseOrderNumber: Schema.optional(Schema.String),
+  paymentsAccountId: Schema.optional(Schema.String),
+  serviceStartDate: Schema.optional(Schema.String),
+}).annotate({ identifier: "Invoice" });
 
 export interface TvCampaignSummary {
   /** "CampaignComponentType" of this TV campaign. */
@@ -2157,22 +1877,17 @@ export interface TvCampaignSummary {
   impressions?: string;
 }
 
-export const TvCampaignSummary: Schema.Schema<TvCampaignSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      startDate: Schema.optional(Schema.String),
-      endDate: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      grp: Schema.optional(Schema.String),
-      spend: Schema.optional(Schema.Number),
-      name: Schema.optional(Schema.String),
-      impressions: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TvCampaignSummary",
-  }) as any as Schema.Schema<TvCampaignSummary>;
+export const TvCampaignSummary = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  startDate: Schema.optional(Schema.String),
+  endDate: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  grp: Schema.optional(Schema.String),
+  spend: Schema.optional(Schema.Number),
+  name: Schema.optional(Schema.String),
+  impressions: Schema.optional(Schema.String),
+}).annotate({ identifier: "TvCampaignSummary" });
 
 export interface BillingRateTieredRate {
   /** Rate in micros for this tier. */
@@ -2183,16 +1898,11 @@ export interface BillingRateTieredRate {
   highValue?: string;
 }
 
-export const BillingRateTieredRate: Schema.Schema<BillingRateTieredRate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rateInMicros: Schema.optional(Schema.String),
-      lowValue: Schema.optional(Schema.String),
-      highValue: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BillingRateTieredRate",
-  }) as any as Schema.Schema<BillingRateTieredRate>;
+export const BillingRateTieredRate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  rateInMicros: Schema.optional(Schema.String),
+  lowValue: Schema.optional(Schema.String),
+  highValue: Schema.optional(Schema.String),
+}).annotate({ identifier: "BillingRateTieredRate" });
 
 export interface BillingRate {
   /** Type of this billing rate. */
@@ -2248,22 +1958,17 @@ export interface BillingRate {
   name?: string;
 }
 
-export const BillingRate: Schema.Schema<BillingRate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      currencyCode: Schema.optional(Schema.String),
-      endDate: Schema.optional(Schema.String),
-      startDate: Schema.optional(Schema.String),
-      tieredRates: Schema.optional(Schema.Array(BillingRateTieredRate)),
-      id: Schema.optional(Schema.String),
-      unitOfMeasure: Schema.optional(Schema.String),
-      rateInMicros: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BillingRate",
-  }) as any as Schema.Schema<BillingRate>;
+export const BillingRate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  currencyCode: Schema.optional(Schema.String),
+  endDate: Schema.optional(Schema.String),
+  startDate: Schema.optional(Schema.String),
+  tieredRates: Schema.optional(Schema.Array(BillingRateTieredRate)),
+  id: Schema.optional(Schema.String),
+  unitOfMeasure: Schema.optional(Schema.String),
+  rateInMicros: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "BillingRate" });
 
 export interface BillingRatesListResponse {
   /** Pagination token to be used for the next list operation. */
@@ -2274,16 +1979,12 @@ export interface BillingRatesListResponse {
   kind?: string;
 }
 
-export const BillingRatesListResponse: Schema.Schema<BillingRatesListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      billingRates: Schema.optional(Schema.Array(BillingRate)),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BillingRatesListResponse",
-  }) as any as Schema.Schema<BillingRatesListResponse>;
+export const BillingRatesListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    billingRates: Schema.optional(Schema.Array(BillingRate)),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BillingRatesListResponse" });
 
 export interface FeedField {
   /** Optional. Whether the field is able to display. Could be set as true when the field type is not in any of the following and the field is not filterable: - COUNTRY_CODE_ISO - CITY - REGION - POSTAL_CODE - METRO - GEO_CANONICAL - USERLIST_ID - CONTEXTUAL_KEYWORD - CM360_DYNAMIC_TARGETING_KEY - WEIGHT */
@@ -2337,18 +2038,15 @@ export interface FeedField {
   name?: string;
 }
 
-export const FeedField: Schema.Schema<FeedField> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      renderable: Schema.optional(Schema.Boolean),
-      id: Schema.optional(Schema.Number),
-      type: Schema.optional(Schema.String),
-      required: Schema.optional(Schema.Boolean),
-      defaultValue: Schema.optional(Schema.String),
-      filterable: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "FeedField" }) as any as Schema.Schema<FeedField>;
+export const FeedField = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  renderable: Schema.optional(Schema.Boolean),
+  id: Schema.optional(Schema.Number),
+  type: Schema.optional(Schema.String),
+  required: Schema.optional(Schema.Boolean),
+  defaultValue: Schema.optional(Schema.String),
+  filterable: Schema.optional(Schema.Boolean),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "FeedField" });
 
 export interface Element {
   /** Required. The field ID to specify the field used for uniquely identifying the feed row. This is a required field. */
@@ -2377,23 +2075,20 @@ export interface Element {
   defaultFieldId?: number;
 }
 
-export const Element: Schema.Schema<Element> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      externalIdFieldId: Schema.optional(Schema.Number),
-      isLocalTimestamp: Schema.optional(Schema.Boolean),
-      lastModifiedInfo: Schema.optional(LastModifiedInfo),
-      reportingLabelFieldId: Schema.optional(Schema.Number),
-      elementName: Schema.optional(Schema.String),
-      proximityTargetingFieldId: Schema.optional(Schema.Number),
-      createInfo: Schema.optional(LastModifiedInfo),
-      endTimestampFieldId: Schema.optional(Schema.Number),
-      activeFieldId: Schema.optional(Schema.Number),
-      feedFields: Schema.optional(Schema.Array(FeedField)),
-      startTimestampFieldId: Schema.optional(Schema.Number),
-      defaultFieldId: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Element" }) as any as Schema.Schema<Element>;
+export const Element = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  externalIdFieldId: Schema.optional(Schema.Number),
+  isLocalTimestamp: Schema.optional(Schema.Boolean),
+  lastModifiedInfo: Schema.optional(LastModifiedInfo),
+  reportingLabelFieldId: Schema.optional(Schema.Number),
+  elementName: Schema.optional(Schema.String),
+  proximityTargetingFieldId: Schema.optional(Schema.Number),
+  createInfo: Schema.optional(LastModifiedInfo),
+  endTimestampFieldId: Schema.optional(Schema.Number),
+  activeFieldId: Schema.optional(Schema.Number),
+  feedFields: Schema.optional(Schema.Array(FeedField)),
+  startTimestampFieldId: Schema.optional(Schema.Number),
+  defaultFieldId: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Element" });
 
 export interface FeedSchedule {
   /** Optional. The hour of the day to start the feed. It is applicable if the repeat value is equal to 1. Default value is 0. */
@@ -2408,18 +2103,13 @@ export interface FeedSchedule {
   timeZone?: string;
 }
 
-export const FeedSchedule: Schema.Schema<FeedSchedule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startHour: Schema.optional(Schema.String),
-      startMinute: Schema.optional(Schema.String),
-      scheduleEnabled: Schema.optional(Schema.Boolean),
-      repeatValue: Schema.optional(Schema.String),
-      timeZone: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FeedSchedule",
-  }) as any as Schema.Schema<FeedSchedule>;
+export const FeedSchedule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startHour: Schema.optional(Schema.String),
+  startMinute: Schema.optional(Schema.String),
+  scheduleEnabled: Schema.optional(Schema.Boolean),
+  repeatValue: Schema.optional(Schema.String),
+  timeZone: Schema.optional(Schema.String),
+}).annotate({ identifier: "FeedSchedule" });
 
 export interface ContentSourceMetaData {
   /** Output only. The charset of the content source. */
@@ -2432,17 +2122,12 @@ export interface ContentSourceMetaData {
   rowNumber?: number;
 }
 
-export const ContentSourceMetaData: Schema.Schema<ContentSourceMetaData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      charset: Schema.optional(Schema.String),
-      fieldNames: Schema.optional(Schema.Array(Schema.String)),
-      separator: Schema.optional(Schema.String),
-      rowNumber: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "ContentSourceMetaData",
-  }) as any as Schema.Schema<ContentSourceMetaData>;
+export const ContentSourceMetaData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  charset: Schema.optional(Schema.String),
+  fieldNames: Schema.optional(Schema.Array(Schema.String)),
+  separator: Schema.optional(Schema.String),
+  rowNumber: Schema.optional(Schema.Number),
+}).annotate({ identifier: "ContentSourceMetaData" });
 
 export interface ContentSource {
   /** Output only. The creation timestamp of the content source. This is a read-only field. */
@@ -2463,19 +2148,14 @@ export interface ContentSource {
     | (string & {});
 }
 
-export const ContentSource: Schema.Schema<ContentSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createInfo: Schema.optional(LastModifiedInfo),
-      metaData: Schema.optional(ContentSourceMetaData),
-      resourceLink: Schema.optional(Schema.String),
-      lastModifiedInfo: Schema.optional(LastModifiedInfo),
-      contentSourceName: Schema.optional(Schema.String),
-      resourceType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ContentSource",
-  }) as any as Schema.Schema<ContentSource>;
+export const ContentSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createInfo: Schema.optional(LastModifiedInfo),
+  metaData: Schema.optional(ContentSourceMetaData),
+  resourceLink: Schema.optional(Schema.String),
+  lastModifiedInfo: Schema.optional(LastModifiedInfo),
+  contentSourceName: Schema.optional(Schema.String),
+  resourceType: Schema.optional(Schema.String),
+}).annotate({ identifier: "ContentSource" });
 
 export interface FeedIngestionStatus {
   /** Output only. The processing state of the feed. */
@@ -2497,18 +2177,11 @@ export interface FeedIngestionStatus {
   ingestionStatus?: IngestionStatus;
 }
 
-export const FeedIngestionStatus: Schema.Schema<FeedIngestionStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      ingestionErrorRecords: Schema.optional(
-        Schema.Array(IngestionErrorRecord),
-      ),
-      ingestionStatus: Schema.optional(IngestionStatus),
-    }),
-  ).annotate({
-    identifier: "FeedIngestionStatus",
-  }) as any as Schema.Schema<FeedIngestionStatus>;
+export const FeedIngestionStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.String),
+  ingestionErrorRecords: Schema.optional(Schema.Array(IngestionErrorRecord)),
+  ingestionStatus: Schema.optional(IngestionStatus),
+}).annotate({ identifier: "FeedIngestionStatus" });
 
 export interface DynamicFeed {
   /** Output only. The status of the feed. It is a read-only field that depends on the the feed ingestion status. The default value is INACTIVE, and it will be updated to ACTIVE once the feed is ingested successfully. */
@@ -2535,24 +2208,19 @@ export interface DynamicFeed {
   lastModifiedInfo?: LastModifiedInfo;
 }
 
-export const DynamicFeed: Schema.Schema<DynamicFeed> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      status: Schema.optional(Schema.String),
-      element: Schema.optional(Element),
-      feedSchedule: Schema.optional(FeedSchedule),
-      dynamicFeedId: Schema.optional(Schema.String),
-      contentSource: Schema.optional(ContentSource),
-      feedIngestionStatus: Schema.optional(FeedIngestionStatus),
-      dynamicFeedName: Schema.optional(Schema.String),
-      createInfo: Schema.optional(LastModifiedInfo),
-      studioAdvertiserId: Schema.optional(Schema.String),
-      hasPublished: Schema.optional(Schema.Boolean),
-      lastModifiedInfo: Schema.optional(LastModifiedInfo),
-    }),
-  ).annotate({
-    identifier: "DynamicFeed",
-  }) as any as Schema.Schema<DynamicFeed>;
+export const DynamicFeed = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  status: Schema.optional(Schema.String),
+  element: Schema.optional(Element),
+  feedSchedule: Schema.optional(FeedSchedule),
+  dynamicFeedId: Schema.optional(Schema.String),
+  contentSource: Schema.optional(ContentSource),
+  feedIngestionStatus: Schema.optional(FeedIngestionStatus),
+  dynamicFeedName: Schema.optional(Schema.String),
+  createInfo: Schema.optional(LastModifiedInfo),
+  studioAdvertiserId: Schema.optional(Schema.String),
+  hasPublished: Schema.optional(Schema.Boolean),
+  lastModifiedInfo: Schema.optional(LastModifiedInfo),
+}).annotate({ identifier: "DynamicFeed" });
 
 export interface DynamicFeedsInsertRequest {
   /** Required. Dynamic profile ID of the inserted dynamic feed. */
@@ -2561,15 +2229,11 @@ export interface DynamicFeedsInsertRequest {
   dynamicFeed?: DynamicFeed;
 }
 
-export const DynamicFeedsInsertRequest: Schema.Schema<DynamicFeedsInsertRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dynamicProfileId: Schema.optional(Schema.String),
-      dynamicFeed: Schema.optional(DynamicFeed),
-    }),
-  ).annotate({
-    identifier: "DynamicFeedsInsertRequest",
-  }) as any as Schema.Schema<DynamicFeedsInsertRequest>;
+export const DynamicFeedsInsertRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dynamicProfileId: Schema.optional(Schema.String),
+    dynamicFeed: Schema.optional(DynamicFeed),
+  }).annotate({ identifier: "DynamicFeedsInsertRequest" });
 
 export interface SiteContact {
   /** Site contact type. */
@@ -2590,21 +2254,16 @@ export interface SiteContact {
   firstName?: string;
 }
 
-export const SiteContact: Schema.Schema<SiteContact> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contactType: Schema.optional(Schema.String),
-      email: Schema.optional(Schema.String),
-      address: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      lastName: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      phone: Schema.optional(Schema.String),
-      firstName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SiteContact",
-  }) as any as Schema.Schema<SiteContact>;
+export const SiteContact = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  contactType: Schema.optional(Schema.String),
+  email: Schema.optional(Schema.String),
+  address: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  lastName: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  phone: Schema.optional(Schema.String),
+  firstName: Schema.optional(Schema.String),
+}).annotate({ identifier: "SiteContact" });
 
 export interface PricingSchedulePricingPeriod {
   startDate?: string;
@@ -2617,18 +2276,14 @@ export interface PricingSchedulePricingPeriod {
   pricingComment?: string;
 }
 
-export const PricingSchedulePricingPeriod: Schema.Schema<PricingSchedulePricingPeriod> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startDate: Schema.optional(Schema.String),
-      endDate: Schema.optional(Schema.String),
-      units: Schema.optional(Schema.String),
-      rateOrCostNanos: Schema.optional(Schema.String),
-      pricingComment: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PricingSchedulePricingPeriod",
-  }) as any as Schema.Schema<PricingSchedulePricingPeriod>;
+export const PricingSchedulePricingPeriod =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startDate: Schema.optional(Schema.String),
+    endDate: Schema.optional(Schema.String),
+    units: Schema.optional(Schema.String),
+    rateOrCostNanos: Schema.optional(Schema.String),
+    pricingComment: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PricingSchedulePricingPeriod" });
 
 export interface PricingSchedule {
   /** Whether this placement is flighted. If true, pricing periods will be computed automatically. */
@@ -2657,23 +2312,16 @@ export interface PricingSchedule {
   endDate?: string;
 }
 
-export const PricingSchedule: Schema.Schema<PricingSchedule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      flighted: Schema.optional(Schema.Boolean),
-      testingStartDate: Schema.optional(Schema.String),
-      pricingPeriods: Schema.optional(
-        Schema.Array(PricingSchedulePricingPeriod),
-      ),
-      pricingType: Schema.optional(Schema.String),
-      capCostOption: Schema.optional(Schema.String),
-      floodlightActivityId: Schema.optional(Schema.String),
-      startDate: Schema.optional(Schema.String),
-      endDate: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PricingSchedule",
-  }) as any as Schema.Schema<PricingSchedule>;
+export const PricingSchedule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  flighted: Schema.optional(Schema.Boolean),
+  testingStartDate: Schema.optional(Schema.String),
+  pricingPeriods: Schema.optional(Schema.Array(PricingSchedulePricingPeriod)),
+  pricingType: Schema.optional(Schema.String),
+  capCostOption: Schema.optional(Schema.String),
+  floodlightActivityId: Schema.optional(Schema.String),
+  startDate: Schema.optional(Schema.String),
+  endDate: Schema.optional(Schema.String),
+}).annotate({ identifier: "PricingSchedule" });
 
 export interface PlacementGroup {
   /** Dimension value for the ID of the advertiser. This is a read-only, auto-generated field. */
@@ -2739,39 +2387,34 @@ export interface PlacementGroup {
   createInfo?: LastModifiedInfo;
 }
 
-export const PlacementGroup: Schema.Schema<PlacementGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      advertiserIdDimensionValue: Schema.optional(DimensionValue),
-      primaryPlacementIdDimensionValue: Schema.optional(DimensionValue),
-      activeStatus: Schema.optional(Schema.String),
-      comment: Schema.optional(Schema.String),
-      idDimensionValue: Schema.optional(DimensionValue),
-      placementGroupType: Schema.optional(Schema.String),
-      pricingSchedule: Schema.optional(PricingSchedule),
-      accountId: Schema.optional(Schema.String),
-      primaryPlacementId: Schema.optional(Schema.String),
-      advertiserId: Schema.optional(Schema.String),
-      siteId: Schema.optional(Schema.String),
-      campaignIdDimensionValue: Schema.optional(DimensionValue),
-      directorySiteId: Schema.optional(Schema.String),
-      externalId: Schema.optional(Schema.String),
-      campaignId: Schema.optional(Schema.String),
-      placementStrategyId: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      directorySiteIdDimensionValue: Schema.optional(DimensionValue),
-      name: Schema.optional(Schema.String),
-      contentCategoryId: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      childPlacementIds: Schema.optional(Schema.Array(Schema.String)),
-      subaccountId: Schema.optional(Schema.String),
-      lastModifiedInfo: Schema.optional(LastModifiedInfo),
-      siteIdDimensionValue: Schema.optional(DimensionValue),
-      createInfo: Schema.optional(LastModifiedInfo),
-    }),
-  ).annotate({
-    identifier: "PlacementGroup",
-  }) as any as Schema.Schema<PlacementGroup>;
+export const PlacementGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  advertiserIdDimensionValue: Schema.optional(DimensionValue),
+  primaryPlacementIdDimensionValue: Schema.optional(DimensionValue),
+  activeStatus: Schema.optional(Schema.String),
+  comment: Schema.optional(Schema.String),
+  idDimensionValue: Schema.optional(DimensionValue),
+  placementGroupType: Schema.optional(Schema.String),
+  pricingSchedule: Schema.optional(PricingSchedule),
+  accountId: Schema.optional(Schema.String),
+  primaryPlacementId: Schema.optional(Schema.String),
+  advertiserId: Schema.optional(Schema.String),
+  siteId: Schema.optional(Schema.String),
+  campaignIdDimensionValue: Schema.optional(DimensionValue),
+  directorySiteId: Schema.optional(Schema.String),
+  externalId: Schema.optional(Schema.String),
+  campaignId: Schema.optional(Schema.String),
+  placementStrategyId: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  directorySiteIdDimensionValue: Schema.optional(DimensionValue),
+  name: Schema.optional(Schema.String),
+  contentCategoryId: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  childPlacementIds: Schema.optional(Schema.Array(Schema.String)),
+  subaccountId: Schema.optional(Schema.String),
+  lastModifiedInfo: Schema.optional(LastModifiedInfo),
+  siteIdDimensionValue: Schema.optional(DimensionValue),
+  createInfo: Schema.optional(LastModifiedInfo),
+}).annotate({ identifier: "PlacementGroup" });
 
 export interface CreativeGroupsListResponse {
   /** Pagination token to be used for the next list operation. */
@@ -2782,16 +2425,12 @@ export interface CreativeGroupsListResponse {
   kind?: string;
 }
 
-export const CreativeGroupsListResponse: Schema.Schema<CreativeGroupsListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      creativeGroups: Schema.optional(Schema.Array(CreativeGroup)),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreativeGroupsListResponse",
-  }) as any as Schema.Schema<CreativeGroupsListResponse>;
+export const CreativeGroupsListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    creativeGroups: Schema.optional(Schema.Array(CreativeGroup)),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CreativeGroupsListResponse" });
 
 export interface DfareportingStudioCreativeAssetsInsertRequest {
   /** Optional. Studio creative ID of the studio creative asset. It is a optional field. If it is set, the asset will be associated to the creative. */
@@ -2802,16 +2441,12 @@ export interface DfareportingStudioCreativeAssetsInsertRequest {
   studioAdvertiserId?: string;
 }
 
-export const DfareportingStudioCreativeAssetsInsertRequest: Schema.Schema<DfareportingStudioCreativeAssetsInsertRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      studioCreativeId: Schema.optional(Schema.String),
-      studioAccountId: Schema.optional(Schema.String),
-      studioAdvertiserId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DfareportingStudioCreativeAssetsInsertRequest",
-  }) as any as Schema.Schema<DfareportingStudioCreativeAssetsInsertRequest>;
+export const DfareportingStudioCreativeAssetsInsertRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    studioCreativeId: Schema.optional(Schema.String),
+    studioAccountId: Schema.optional(Schema.String),
+    studioAdvertiserId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DfareportingStudioCreativeAssetsInsertRequest" });
 
 export interface PlacementsGenerateTagsResponse {
   /** Set of generated tags for the specified placements. */
@@ -2820,15 +2455,11 @@ export interface PlacementsGenerateTagsResponse {
   kind?: string;
 }
 
-export const PlacementsGenerateTagsResponse: Schema.Schema<PlacementsGenerateTagsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      placementTags: Schema.optional(Schema.Array(PlacementTag)),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PlacementsGenerateTagsResponse",
-  }) as any as Schema.Schema<PlacementsGenerateTagsResponse>;
+export const PlacementsGenerateTagsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    placementTags: Schema.optional(Schema.Array(PlacementTag)),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PlacementsGenerateTagsResponse" });
 
 export interface PlacementStrategy {
   /** ID of this placement strategy. This is a read-only, auto-generated field. */
@@ -2841,17 +2472,12 @@ export interface PlacementStrategy {
   accountId?: string;
 }
 
-export const PlacementStrategy: Schema.Schema<PlacementStrategy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PlacementStrategy",
-  }) as any as Schema.Schema<PlacementStrategy>;
+export const PlacementStrategy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  accountId: Schema.optional(Schema.String),
+}).annotate({ identifier: "PlacementStrategy" });
 
 export interface PlacementStrategiesListResponse {
   /** Pagination token to be used for the next list operation. */
@@ -2862,16 +2488,12 @@ export interface PlacementStrategiesListResponse {
   placementStrategies?: Array<PlacementStrategy>;
 }
 
-export const PlacementStrategiesListResponse: Schema.Schema<PlacementStrategiesListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      placementStrategies: Schema.optional(Schema.Array(PlacementStrategy)),
-    }),
-  ).annotate({
-    identifier: "PlacementStrategiesListResponse",
-  }) as any as Schema.Schema<PlacementStrategiesListResponse>;
+export const PlacementStrategiesListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    placementStrategies: Schema.optional(Schema.Array(PlacementStrategy)),
+  }).annotate({ identifier: "PlacementStrategiesListResponse" });
 
 export interface AccountPermissionsListResponse {
   /** Account permission collection. */
@@ -2880,15 +2502,11 @@ export interface AccountPermissionsListResponse {
   kind?: string;
 }
 
-export const AccountPermissionsListResponse: Schema.Schema<AccountPermissionsListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accountPermissions: Schema.optional(Schema.Array(AccountPermission)),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccountPermissionsListResponse",
-  }) as any as Schema.Schema<AccountPermissionsListResponse>;
+export const AccountPermissionsListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountPermissions: Schema.optional(Schema.Array(AccountPermission)),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AccountPermissionsListResponse" });
 
 export interface ListPopulationTerm {
   /** Friendly name of this term's variable. This is a read-only, auto-generated field. This field is only relevant when type is left unset or set to CUSTOM_VARIABLE_TERM. */
@@ -2921,35 +2539,25 @@ export interface ListPopulationTerm {
     | (string & {});
 }
 
-export const ListPopulationTerm: Schema.Schema<ListPopulationTerm> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      variableFriendlyName: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-      contains: Schema.optional(Schema.Boolean),
-      variableName: Schema.optional(Schema.String),
-      remarketingListId: Schema.optional(Schema.String),
-      operator: Schema.optional(Schema.String),
-      negation: Schema.optional(Schema.Boolean),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListPopulationTerm",
-  }) as any as Schema.Schema<ListPopulationTerm>;
+export const ListPopulationTerm = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  variableFriendlyName: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+  contains: Schema.optional(Schema.Boolean),
+  variableName: Schema.optional(Schema.String),
+  remarketingListId: Schema.optional(Schema.String),
+  operator: Schema.optional(Schema.String),
+  negation: Schema.optional(Schema.Boolean),
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListPopulationTerm" });
 
 export interface ListPopulationClause {
   /** Terms of this list population clause. Each clause is made up of list population terms representing constraints and are joined by ORs. */
   terms?: Array<ListPopulationTerm>;
 }
 
-export const ListPopulationClause: Schema.Schema<ListPopulationClause> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      terms: Schema.optional(Schema.Array(ListPopulationTerm)),
-    }),
-  ).annotate({
-    identifier: "ListPopulationClause",
-  }) as any as Schema.Schema<ListPopulationClause>;
+export const ListPopulationClause = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  terms: Schema.optional(Schema.Array(ListPopulationTerm)),
+}).annotate({ identifier: "ListPopulationClause" });
 
 export interface ListPopulationRule {
   /** Name of floodlight activity associated with this rule. This is a read-only, auto-generated field. */
@@ -2960,18 +2568,11 @@ export interface ListPopulationRule {
   listPopulationClauses?: Array<ListPopulationClause>;
 }
 
-export const ListPopulationRule: Schema.Schema<ListPopulationRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      floodlightActivityName: Schema.optional(Schema.String),
-      floodlightActivityId: Schema.optional(Schema.String),
-      listPopulationClauses: Schema.optional(
-        Schema.Array(ListPopulationClause),
-      ),
-    }),
-  ).annotate({
-    identifier: "ListPopulationRule",
-  }) as any as Schema.Schema<ListPopulationRule>;
+export const ListPopulationRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  floodlightActivityName: Schema.optional(Schema.String),
+  floodlightActivityId: Schema.optional(Schema.String),
+  listPopulationClauses: Schema.optional(Schema.Array(ListPopulationClause)),
+}).annotate({ identifier: "ListPopulationRule" });
 
 export interface SortedDimension {
   /** The kind of resource this is, in this case dfareporting#sortedDimension. */
@@ -2982,16 +2583,11 @@ export interface SortedDimension {
   sortOrder?: "ASCENDING" | "DESCENDING" | (string & {});
 }
 
-export const SortedDimension: Schema.Schema<SortedDimension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      sortOrder: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SortedDimension",
-  }) as any as Schema.Schema<SortedDimension>;
+export const SortedDimension = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  sortOrder: Schema.optional(Schema.String),
+}).annotate({ identifier: "SortedDimension" });
 
 export interface DateRange {
   startDate?: string;
@@ -3020,15 +2616,12 @@ export interface DateRange {
   kind?: string;
 }
 
-export const DateRange: Schema.Schema<DateRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startDate: Schema.optional(Schema.String),
-      relativeDateRange: Schema.optional(Schema.String),
-      endDate: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "DateRange" }) as any as Schema.Schema<DateRange>;
+export const DateRange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startDate: Schema.optional(Schema.String),
+  relativeDateRange: Schema.optional(Schema.String),
+  endDate: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "DateRange" });
 
 export interface CustomRichMediaEvents {
   /** List of custom rich media event IDs. Dimension values must be all of type dfa:richMediaEventTypeIdAndName. */
@@ -3037,15 +2630,10 @@ export interface CustomRichMediaEvents {
   kind?: string;
 }
 
-export const CustomRichMediaEvents: Schema.Schema<CustomRichMediaEvents> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filteredEventIds: Schema.optional(Schema.Array(DimensionValue)),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomRichMediaEvents",
-  }) as any as Schema.Schema<CustomRichMediaEvents>;
+export const CustomRichMediaEvents = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  filteredEventIds: Schema.optional(Schema.Array(DimensionValue)),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "CustomRichMediaEvents" });
 
 export interface Activities {
   /** List of activity filters. The dimension values need to be all either of type "dfa:activity" or "dfa:activityGroup". */
@@ -3056,14 +2644,11 @@ export interface Activities {
   kind?: string;
 }
 
-export const Activities: Schema.Schema<Activities> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filters: Schema.optional(Schema.Array(DimensionValue)),
-      metricNames: Schema.optional(Schema.Array(Schema.String)),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Activities" }) as any as Schema.Schema<Activities>;
+export const Activities = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  filters: Schema.optional(Schema.Array(DimensionValue)),
+  metricNames: Schema.optional(Schema.Array(Schema.String)),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "Activities" });
 
 export interface Recipient {
   /** The kind of resource this is, in this case dfareporting#recipient. */
@@ -3074,14 +2659,11 @@ export interface Recipient {
   email?: string;
 }
 
-export const Recipient: Schema.Schema<Recipient> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      deliveryType: Schema.optional(Schema.String),
-      email: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Recipient" }) as any as Schema.Schema<Recipient>;
+export const Recipient = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  deliveryType: Schema.optional(Schema.String),
+  email: Schema.optional(Schema.String),
+}).annotate({ identifier: "Recipient" });
 
 export interface Report {
   /** The timestamp (in milliseconds since epoch) of when this report was last modified. */
@@ -3203,123 +2785,110 @@ export interface Report {
   };
 }
 
-export const Report: Schema.Schema<Report> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const Report = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  lastModifiedTime: Schema.optional(Schema.String),
+  ownerProfileId: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  reachCriteria: Schema.optional(
     Schema.Struct({
-      lastModifiedTime: Schema.optional(Schema.String),
-      ownerProfileId: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      reachCriteria: Schema.optional(
-        Schema.Struct({
-          dimensions: Schema.optional(Schema.Array(SortedDimension)),
-          dateRange: Schema.optional(DateRange),
-          metricNames: Schema.optional(Schema.Array(Schema.String)),
-          customRichMediaEvents: Schema.optional(CustomRichMediaEvents),
-          reachByFrequencyMetricNames: Schema.optional(
-            Schema.Array(Schema.String),
-          ),
-          dimensionFilters: Schema.optional(Schema.Array(DimensionValue)),
-          activities: Schema.optional(Activities),
-        }),
-      ),
-      type: Schema.optional(Schema.String),
-      criteria: Schema.optional(
-        Schema.Struct({
-          activities: Schema.optional(Activities),
-          dimensionFilters: Schema.optional(Schema.Array(DimensionValue)),
-          dateRange: Schema.optional(DateRange),
-          metricNames: Schema.optional(Schema.Array(Schema.String)),
-          customRichMediaEvents: Schema.optional(CustomRichMediaEvents),
-          dimensions: Schema.optional(Schema.Array(SortedDimension)),
-        }),
-      ),
-      fileName: Schema.optional(Schema.String),
-      subAccountId: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      floodlightCriteria: Schema.optional(
-        Schema.Struct({
-          reportProperties: Schema.optional(
-            Schema.Struct({
-              includeAttributedIPConversions: Schema.optional(Schema.Boolean),
-              includeUnattributedIPConversions: Schema.optional(Schema.Boolean),
-              includeUnattributedCookieConversions: Schema.optional(
-                Schema.Boolean,
-              ),
-            }),
-          ),
-          dimensionFilters: Schema.optional(Schema.Array(DimensionValue)),
-          dateRange: Schema.optional(DateRange),
-          metricNames: Schema.optional(Schema.Array(Schema.String)),
-          customRichMediaEvents: Schema.optional(Schema.Array(DimensionValue)),
-          floodlightConfigId: Schema.optional(DimensionValue),
-          dimensions: Schema.optional(Schema.Array(SortedDimension)),
-        }),
-      ),
-      delivery: Schema.optional(
-        Schema.Struct({
-          emailOwner: Schema.optional(Schema.Boolean),
-          recipients: Schema.optional(Schema.Array(Recipient)),
-          emailOwnerDeliveryType: Schema.optional(Schema.String),
-          message: Schema.optional(Schema.String),
-        }),
-      ),
-      etag: Schema.optional(Schema.String),
-      pathToConversionCriteria: Schema.optional(
-        Schema.Struct({
-          metricNames: Schema.optional(Schema.Array(Schema.String)),
-          activityFilters: Schema.optional(Schema.Array(DimensionValue)),
-          reportProperties: Schema.optional(
-            Schema.Struct({
-              clicksLookbackWindow: Schema.optional(Schema.Number),
-              includeUnattributedCookieConversions: Schema.optional(
-                Schema.Boolean,
-              ),
-              includeAttributedIPConversions: Schema.optional(Schema.Boolean),
-              maximumClickInteractions: Schema.optional(Schema.Number),
-              maximumImpressionInteractions: Schema.optional(Schema.Number),
-              impressionsLookbackWindow: Schema.optional(Schema.Number),
-              includeUnattributedIPConversions: Schema.optional(Schema.Boolean),
-              maximumInteractionGap: Schema.optional(Schema.Number),
-              pivotOnInteractionPath: Schema.optional(Schema.Boolean),
-            }),
-          ),
-          floodlightConfigId: Schema.optional(DimensionValue),
-          dateRange: Schema.optional(DateRange),
-          customRichMediaEvents: Schema.optional(Schema.Array(DimensionValue)),
-          customFloodlightVariables: Schema.optional(
-            Schema.Array(SortedDimension),
-          ),
-          conversionDimensions: Schema.optional(Schema.Array(SortedDimension)),
-          perInteractionDimensions: Schema.optional(
-            Schema.Array(SortedDimension),
-          ),
-        }),
-      ),
-      schedule: Schema.optional(
-        Schema.Struct({
-          runsOnDayOfMonth: Schema.optional(Schema.String),
-          active: Schema.optional(Schema.Boolean),
-          repeatsOnWeekDays: Schema.optional(Schema.Array(Schema.String)),
-          expirationDate: Schema.optional(Schema.String),
-          timezone: Schema.optional(Schema.String),
-          every: Schema.optional(Schema.Number),
-          startDate: Schema.optional(Schema.String),
-          repeats: Schema.optional(Schema.String),
-        }),
-      ),
-      format: Schema.optional(Schema.String),
-      crossMediaReachCriteria: Schema.optional(
-        Schema.Struct({
-          dimensionFilters: Schema.optional(Schema.Array(DimensionValue)),
-          dimensions: Schema.optional(Schema.Array(SortedDimension)),
-          dateRange: Schema.optional(DateRange),
-          metricNames: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ),
+      dimensions: Schema.optional(Schema.Array(SortedDimension)),
+      dateRange: Schema.optional(DateRange),
+      metricNames: Schema.optional(Schema.Array(Schema.String)),
+      customRichMediaEvents: Schema.optional(CustomRichMediaEvents),
+      reachByFrequencyMetricNames: Schema.optional(Schema.Array(Schema.String)),
+      dimensionFilters: Schema.optional(Schema.Array(DimensionValue)),
+      activities: Schema.optional(Activities),
     }),
-  ).annotate({ identifier: "Report" }) as any as Schema.Schema<Report>;
+  ),
+  type: Schema.optional(Schema.String),
+  criteria: Schema.optional(
+    Schema.Struct({
+      activities: Schema.optional(Activities),
+      dimensionFilters: Schema.optional(Schema.Array(DimensionValue)),
+      dateRange: Schema.optional(DateRange),
+      metricNames: Schema.optional(Schema.Array(Schema.String)),
+      customRichMediaEvents: Schema.optional(CustomRichMediaEvents),
+      dimensions: Schema.optional(Schema.Array(SortedDimension)),
+    }),
+  ),
+  fileName: Schema.optional(Schema.String),
+  subAccountId: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  accountId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  floodlightCriteria: Schema.optional(
+    Schema.Struct({
+      reportProperties: Schema.optional(
+        Schema.Struct({
+          includeAttributedIPConversions: Schema.optional(Schema.Boolean),
+          includeUnattributedIPConversions: Schema.optional(Schema.Boolean),
+          includeUnattributedCookieConversions: Schema.optional(Schema.Boolean),
+        }),
+      ),
+      dimensionFilters: Schema.optional(Schema.Array(DimensionValue)),
+      dateRange: Schema.optional(DateRange),
+      metricNames: Schema.optional(Schema.Array(Schema.String)),
+      customRichMediaEvents: Schema.optional(Schema.Array(DimensionValue)),
+      floodlightConfigId: Schema.optional(DimensionValue),
+      dimensions: Schema.optional(Schema.Array(SortedDimension)),
+    }),
+  ),
+  delivery: Schema.optional(
+    Schema.Struct({
+      emailOwner: Schema.optional(Schema.Boolean),
+      recipients: Schema.optional(Schema.Array(Recipient)),
+      emailOwnerDeliveryType: Schema.optional(Schema.String),
+      message: Schema.optional(Schema.String),
+    }),
+  ),
+  etag: Schema.optional(Schema.String),
+  pathToConversionCriteria: Schema.optional(
+    Schema.Struct({
+      metricNames: Schema.optional(Schema.Array(Schema.String)),
+      activityFilters: Schema.optional(Schema.Array(DimensionValue)),
+      reportProperties: Schema.optional(
+        Schema.Struct({
+          clicksLookbackWindow: Schema.optional(Schema.Number),
+          includeUnattributedCookieConversions: Schema.optional(Schema.Boolean),
+          includeAttributedIPConversions: Schema.optional(Schema.Boolean),
+          maximumClickInteractions: Schema.optional(Schema.Number),
+          maximumImpressionInteractions: Schema.optional(Schema.Number),
+          impressionsLookbackWindow: Schema.optional(Schema.Number),
+          includeUnattributedIPConversions: Schema.optional(Schema.Boolean),
+          maximumInteractionGap: Schema.optional(Schema.Number),
+          pivotOnInteractionPath: Schema.optional(Schema.Boolean),
+        }),
+      ),
+      floodlightConfigId: Schema.optional(DimensionValue),
+      dateRange: Schema.optional(DateRange),
+      customRichMediaEvents: Schema.optional(Schema.Array(DimensionValue)),
+      customFloodlightVariables: Schema.optional(Schema.Array(SortedDimension)),
+      conversionDimensions: Schema.optional(Schema.Array(SortedDimension)),
+      perInteractionDimensions: Schema.optional(Schema.Array(SortedDimension)),
+    }),
+  ),
+  schedule: Schema.optional(
+    Schema.Struct({
+      runsOnDayOfMonth: Schema.optional(Schema.String),
+      active: Schema.optional(Schema.Boolean),
+      repeatsOnWeekDays: Schema.optional(Schema.Array(Schema.String)),
+      expirationDate: Schema.optional(Schema.String),
+      timezone: Schema.optional(Schema.String),
+      every: Schema.optional(Schema.Number),
+      startDate: Schema.optional(Schema.String),
+      repeats: Schema.optional(Schema.String),
+    }),
+  ),
+  format: Schema.optional(Schema.String),
+  crossMediaReachCriteria: Schema.optional(
+    Schema.Struct({
+      dimensionFilters: Schema.optional(Schema.Array(DimensionValue)),
+      dimensions: Schema.optional(Schema.Array(SortedDimension)),
+      dateRange: Schema.optional(DateRange),
+      metricNames: Schema.optional(Schema.Array(Schema.String)),
+    }),
+  ),
+}).annotate({ identifier: "Report" });
 
 export interface ProximityFilter {
   /** Optional. Radius length in units defined by radius_units. */
@@ -3343,17 +2912,12 @@ export interface ProximityFilter {
     | (string & {});
 }
 
-export const ProximityFilter: Schema.Schema<ProximityFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      radiusValue: Schema.optional(Schema.Number),
-      radiusBucketType: Schema.optional(Schema.String),
-      fieldId: Schema.optional(Schema.Number),
-      radiusUnitType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProximityFilter",
-  }) as any as Schema.Schema<ProximityFilter>;
+export const ProximityFilter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  radiusValue: Schema.optional(Schema.Number),
+  radiusBucketType: Schema.optional(Schema.String),
+  fieldId: Schema.optional(Schema.Number),
+  radiusUnitType: Schema.optional(Schema.String),
+}).annotate({ identifier: "ProximityFilter" });
 
 export interface TvCampaignSummariesListResponse {
   /** List of TV campaign summaries. */
@@ -3362,15 +2926,11 @@ export interface TvCampaignSummariesListResponse {
   kind?: string;
 }
 
-export const TvCampaignSummariesListResponse: Schema.Schema<TvCampaignSummariesListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tvCampaignSummaries: Schema.optional(Schema.Array(TvCampaignSummary)),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TvCampaignSummariesListResponse",
-  }) as any as Schema.Schema<TvCampaignSummariesListResponse>;
+export const TvCampaignSummariesListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tvCampaignSummaries: Schema.optional(Schema.Array(TvCampaignSummary)),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "TvCampaignSummariesListResponse" });
 
 export interface UserRolePermissionGroup {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#userRolePermissionGroup". */
@@ -3381,16 +2941,12 @@ export interface UserRolePermissionGroup {
   id?: string;
 }
 
-export const UserRolePermissionGroup: Schema.Schema<UserRolePermissionGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UserRolePermissionGroup",
-  }) as any as Schema.Schema<UserRolePermissionGroup>;
+export const UserRolePermissionGroup =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UserRolePermissionGroup" });
 
 export interface UserRolePermissionGroupsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#userRolePermissionGroupsListResponse". */
@@ -3399,17 +2955,13 @@ export interface UserRolePermissionGroupsListResponse {
   userRolePermissionGroups?: Array<UserRolePermissionGroup>;
 }
 
-export const UserRolePermissionGroupsListResponse: Schema.Schema<UserRolePermissionGroupsListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      userRolePermissionGroups: Schema.optional(
-        Schema.Array(UserRolePermissionGroup),
-      ),
-    }),
-  ).annotate({
-    identifier: "UserRolePermissionGroupsListResponse",
-  }) as any as Schema.Schema<UserRolePermissionGroupsListResponse>;
+export const UserRolePermissionGroupsListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    userRolePermissionGroups: Schema.optional(
+      Schema.Array(UserRolePermissionGroup),
+    ),
+  }).annotate({ identifier: "UserRolePermissionGroupsListResponse" });
 
 export interface RemarketingList {
   /** Dimension value for the advertiser ID that owns this remarketing list. This is a required field. */
@@ -3452,26 +3004,21 @@ export interface RemarketingList {
   listPopulationRule?: ListPopulationRule;
 }
 
-export const RemarketingList: Schema.Schema<RemarketingList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      advertiserId: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      listSource: Schema.optional(Schema.String),
-      listSize: Schema.optional(Schema.String),
-      subaccountId: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      advertiserIdDimensionValue: Schema.optional(DimensionValue),
-      lifeSpan: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      active: Schema.optional(Schema.Boolean),
-      listPopulationRule: Schema.optional(ListPopulationRule),
-    }),
-  ).annotate({
-    identifier: "RemarketingList",
-  }) as any as Schema.Schema<RemarketingList>;
+export const RemarketingList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  advertiserId: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  accountId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  listSource: Schema.optional(Schema.String),
+  listSize: Schema.optional(Schema.String),
+  subaccountId: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  advertiserIdDimensionValue: Schema.optional(DimensionValue),
+  lifeSpan: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  active: Schema.optional(Schema.Boolean),
+  listPopulationRule: Schema.optional(ListPopulationRule),
+}).annotate({ identifier: "RemarketingList" });
 
 export interface PlacementGroupsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#placementGroupsListResponse". */
@@ -3482,16 +3029,12 @@ export interface PlacementGroupsListResponse {
   nextPageToken?: string;
 }
 
-export const PlacementGroupsListResponse: Schema.Schema<PlacementGroupsListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      placementGroups: Schema.optional(Schema.Array(PlacementGroup)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PlacementGroupsListResponse",
-  }) as any as Schema.Schema<PlacementGroupsListResponse>;
+export const PlacementGroupsListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    placementGroups: Schema.optional(Schema.Array(PlacementGroup)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PlacementGroupsListResponse" });
 
 export interface LookbackConfiguration {
   /** Lookback window, in days, from the last time a given user viewed one of your ads. If you enter 0, impressions will not be considered as triggering events for floodlight tracking. If you leave this field blank, the default value for your account will be used. Acceptable values are 0 to 90, inclusive. */
@@ -3500,15 +3043,10 @@ export interface LookbackConfiguration {
   clickDuration?: number;
 }
 
-export const LookbackConfiguration: Schema.Schema<LookbackConfiguration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      postImpressionActivitiesDuration: Schema.optional(Schema.Number),
-      clickDuration: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "LookbackConfiguration",
-  }) as any as Schema.Schema<LookbackConfiguration>;
+export const LookbackConfiguration = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  postImpressionActivitiesDuration: Schema.optional(Schema.Number),
+  clickDuration: Schema.optional(Schema.Number),
+}).annotate({ identifier: "LookbackConfiguration" });
 
 export interface ReportsConfiguration {
   /** Report generation time zone ID of this account. This is a required field that cannot be changed on update. Acceptable values are: - "1" for "America/New_York" - "2" for "Europe/London" - "3" for "Europe/Paris" - "4" for "Africa/Johannesburg" - "5" for "Asia/Jerusalem" - "6" for "Asia/Shanghai" - "7" for "Asia/Hong_Kong" - "8" for "Asia/Tokyo" - "9" for "Australia/Sydney" - "10" for "Asia/Dubai" - "11" for "America/Los_Angeles" - "12" for "Pacific/Auckland" - "13" for "America/Sao_Paulo" - "16" for "America/Asuncion" - "17" for "America/Chicago" - "18" for "America/Denver" - "19" for "America/St_Johns" - "20" for "Asia/Dhaka" - "21" for "Asia/Jakarta" - "22" for "Asia/Kabul" - "23" for "Asia/Karachi" - "24" for "Asia/Calcutta" - "25" for "Asia/Pyongyang" - "26" for "Asia/Rangoon" - "27" for "Atlantic/Cape_Verde" - "28" for "Atlantic/South_Georgia" - "29" for "Australia/Adelaide" - "30" for "Australia/Lord_Howe" - "31" for "Europe/Moscow" - "32" for "Pacific/Kiritimati" - "35" for "Pacific/Norfolk" - "36" for "Pacific/Tongatapu" */
@@ -3519,16 +3057,11 @@ export interface ReportsConfiguration {
   lookbackConfiguration?: LookbackConfiguration;
 }
 
-export const ReportsConfiguration: Schema.Schema<ReportsConfiguration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reportGenerationTimeZoneId: Schema.optional(Schema.String),
-      exposureToConversionEnabled: Schema.optional(Schema.Boolean),
-      lookbackConfiguration: Schema.optional(LookbackConfiguration),
-    }),
-  ).annotate({
-    identifier: "ReportsConfiguration",
-  }) as any as Schema.Schema<ReportsConfiguration>;
+export const ReportsConfiguration = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  reportGenerationTimeZoneId: Schema.optional(Schema.String),
+  exposureToConversionEnabled: Schema.optional(Schema.Boolean),
+  lookbackConfiguration: Schema.optional(LookbackConfiguration),
+}).annotate({ identifier: "ReportsConfiguration" });
 
 export interface TagSettings {
   /** Whether dynamic floodlight tags are enabled. */
@@ -3537,15 +3070,10 @@ export interface TagSettings {
   imageTagEnabled?: boolean;
 }
 
-export const TagSettings: Schema.Schema<TagSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dynamicTagEnabled: Schema.optional(Schema.Boolean),
-      imageTagEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "TagSettings",
-  }) as any as Schema.Schema<TagSettings>;
+export const TagSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dynamicTagEnabled: Schema.optional(Schema.Boolean),
+  imageTagEnabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "TagSettings" });
 
 export interface OperatingSystem {
   /** DART ID of this operating system. This is the ID used for targeting. */
@@ -3560,18 +3088,13 @@ export interface OperatingSystem {
   kind?: string;
 }
 
-export const OperatingSystem: Schema.Schema<OperatingSystem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dartId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      desktop: Schema.optional(Schema.Boolean),
-      mobile: Schema.optional(Schema.Boolean),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperatingSystem",
-  }) as any as Schema.Schema<OperatingSystem>;
+export const OperatingSystem = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dartId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  desktop: Schema.optional(Schema.Boolean),
+  mobile: Schema.optional(Schema.Boolean),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperatingSystem" });
 
 export interface OperatingSystemsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#operatingSystemsListResponse". */
@@ -3580,15 +3103,11 @@ export interface OperatingSystemsListResponse {
   operatingSystems?: Array<OperatingSystem>;
 }
 
-export const OperatingSystemsListResponse: Schema.Schema<OperatingSystemsListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      operatingSystems: Schema.optional(Schema.Array(OperatingSystem)),
-    }),
-  ).annotate({
-    identifier: "OperatingSystemsListResponse",
-  }) as any as Schema.Schema<OperatingSystemsListResponse>;
+export const OperatingSystemsListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    operatingSystems: Schema.optional(Schema.Array(OperatingSystem)),
+  }).annotate({ identifier: "OperatingSystemsListResponse" });
 
 export interface Country {
   /** DART ID of this country. This is the ID used for targeting and generating reports. */
@@ -3617,17 +3136,14 @@ export interface Country {
   sslEnabled?: boolean;
 }
 
-export const Country: Schema.Schema<Country> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dartId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      countryCode: Schema.optional(Schema.String),
-      tvDataProviders: Schema.optional(Schema.Array(Schema.String)),
-      kind: Schema.optional(Schema.String),
-      sslEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "Country" }) as any as Schema.Schema<Country>;
+export const Country = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dartId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  countryCode: Schema.optional(Schema.String),
+  tvDataProviders: Schema.optional(Schema.Array(Schema.String)),
+  kind: Schema.optional(Schema.String),
+  sslEnabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Country" });
 
 export interface CountriesListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#countriesListResponse". */
@@ -3636,15 +3152,10 @@ export interface CountriesListResponse {
   countries?: Array<Country>;
 }
 
-export const CountriesListResponse: Schema.Schema<CountriesListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      countries: Schema.optional(Schema.Array(Country)),
-    }),
-  ).annotate({
-    identifier: "CountriesListResponse",
-  }) as any as Schema.Schema<CountriesListResponse>;
+export const CountriesListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  countries: Schema.optional(Schema.Array(Country)),
+}).annotate({ identifier: "CountriesListResponse" });
 
 export interface SiteSkippableSetting {
   /** Whether the user can skip creatives served to this site. This will act as default for new placements created under this site. */
@@ -3657,17 +3168,12 @@ export interface SiteSkippableSetting {
   progressOffset?: VideoOffset;
 }
 
-export const SiteSkippableSetting: Schema.Schema<SiteSkippableSetting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      skippable: Schema.optional(Schema.Boolean),
-      kind: Schema.optional(Schema.String),
-      skipOffset: Schema.optional(VideoOffset),
-      progressOffset: Schema.optional(VideoOffset),
-    }),
-  ).annotate({
-    identifier: "SiteSkippableSetting",
-  }) as any as Schema.Schema<SiteSkippableSetting>;
+export const SiteSkippableSetting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  skippable: Schema.optional(Schema.Boolean),
+  kind: Schema.optional(Schema.String),
+  skipOffset: Schema.optional(VideoOffset),
+  progressOffset: Schema.optional(VideoOffset),
+}).annotate({ identifier: "SiteSkippableSetting" });
 
 export interface SiteCompanionSetting {
   /** Whether to serve only static images as companions. */
@@ -3680,17 +3186,12 @@ export interface SiteCompanionSetting {
   kind?: string;
 }
 
-export const SiteCompanionSetting: Schema.Schema<SiteCompanionSetting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      imageOnly: Schema.optional(Schema.Boolean),
-      companionsDisabled: Schema.optional(Schema.Boolean),
-      enabledSizes: Schema.optional(Schema.Array(Size)),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SiteCompanionSetting",
-  }) as any as Schema.Schema<SiteCompanionSetting>;
+export const SiteCompanionSetting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  imageOnly: Schema.optional(Schema.Boolean),
+  companionsDisabled: Schema.optional(Schema.Boolean),
+  enabledSizes: Schema.optional(Schema.Array(Size)),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "SiteCompanionSetting" });
 
 export interface SiteVideoSettings {
   /** Publisher specification ID used to identify site-associated publisher requirements and automatically populate transcode settings. If publisher specification ID is specified, it will take precedence over transcode settings. Possible values are: * `1`, Hulu * `2`, NBC * `3`, CBS * `4`, CBS Desktop * `5`, Discovery * `6`, VEVO HD * `7`, VEVO Vertical * `8`, Fox * `9`, CW Network * `10`, Disney * `11`, IGN * `12`, NFL.com * `13`, Turner Broadcasting * `14`, Tubi on Fox * `15`, Hearst Corporation * `16`, Twitch Desktop * `17`, ABC * `18`, Univision * `19`, MLB.com * `20`, MLB.com Mobile * `21`, MLB.com OTT * `22`, Polsat * `23`, TVN * `24`, Mediaset * `25`, Antena 3 * `26`, Mediamond * `27`, Sky Italia * `28`, Tubi on CBS * `29`, Spotify * `30`, Paramount * `31`, Max */
@@ -3711,21 +3212,16 @@ export interface SiteVideoSettings {
   kind?: string;
 }
 
-export const SiteVideoSettings: Schema.Schema<SiteVideoSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      publisherSpecificationId: Schema.optional(Schema.String),
-      skippableSettings: Schema.optional(SiteSkippableSetting),
-      obaEnabled: Schema.optional(Schema.Boolean),
-      obaSettings: Schema.optional(ObaIcon),
-      orientation: Schema.optional(Schema.String),
-      companionSettings: Schema.optional(SiteCompanionSetting),
-      transcodeSettings: Schema.optional(SiteTranscodeSetting),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SiteVideoSettings",
-  }) as any as Schema.Schema<SiteVideoSettings>;
+export const SiteVideoSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  publisherSpecificationId: Schema.optional(Schema.String),
+  skippableSettings: Schema.optional(SiteSkippableSetting),
+  obaEnabled: Schema.optional(Schema.Boolean),
+  obaSettings: Schema.optional(ObaIcon),
+  orientation: Schema.optional(Schema.String),
+  companionSettings: Schema.optional(SiteCompanionSetting),
+  transcodeSettings: Schema.optional(SiteTranscodeSetting),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "SiteVideoSettings" });
 
 export interface TargetableRemarketingList {
   /** Account ID of this remarketing list. This is a read-only, auto-generated field that is only returned in GET requests. */
@@ -3766,25 +3262,21 @@ export interface TargetableRemarketingList {
   kind?: string;
 }
 
-export const TargetableRemarketingList: Schema.Schema<TargetableRemarketingList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accountId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      advertiserIdDimensionValue: Schema.optional(DimensionValue),
-      lifeSpan: Schema.optional(Schema.String),
-      advertiserId: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      subaccountId: Schema.optional(Schema.String),
-      active: Schema.optional(Schema.Boolean),
-      listSource: Schema.optional(Schema.String),
-      listSize: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TargetableRemarketingList",
-  }) as any as Schema.Schema<TargetableRemarketingList>;
+export const TargetableRemarketingList =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountId: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    advertiserIdDimensionValue: Schema.optional(DimensionValue),
+    lifeSpan: Schema.optional(Schema.String),
+    advertiserId: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    subaccountId: Schema.optional(Schema.String),
+    active: Schema.optional(Schema.Boolean),
+    listSource: Schema.optional(Schema.String),
+    listSize: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "TargetableRemarketingList" });
 
 export interface TargetableRemarketingListsListResponse {
   /** Targetable remarketing list collection. */
@@ -3795,18 +3287,14 @@ export interface TargetableRemarketingListsListResponse {
   nextPageToken?: string;
 }
 
-export const TargetableRemarketingListsListResponse: Schema.Schema<TargetableRemarketingListsListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetableRemarketingLists: Schema.optional(
-        Schema.Array(TargetableRemarketingList),
-      ),
-      kind: Schema.optional(Schema.String),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TargetableRemarketingListsListResponse",
-  }) as any as Schema.Schema<TargetableRemarketingListsListResponse>;
+export const TargetableRemarketingListsListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetableRemarketingLists: Schema.optional(
+      Schema.Array(TargetableRemarketingList),
+    ),
+    kind: Schema.optional(Schema.String),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "TargetableRemarketingListsListResponse" });
 
 export interface AccountPermissionGroup {
   /** Name of this account permission group. */
@@ -3817,16 +3305,13 @@ export interface AccountPermissionGroup {
   id?: string;
 }
 
-export const AccountPermissionGroup: Schema.Schema<AccountPermissionGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccountPermissionGroup",
-  }) as any as Schema.Schema<AccountPermissionGroup>;
+export const AccountPermissionGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    name: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "AccountPermissionGroup" });
 
 export interface Dimension {
   /** The dimension name, e.g. advertiser */
@@ -3835,13 +3320,10 @@ export interface Dimension {
   kind?: string;
 }
 
-export const Dimension: Schema.Schema<Dimension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Dimension" }) as any as Schema.Schema<Dimension>;
+export const Dimension = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "Dimension" });
 
 export interface Metric {
   /** The metric name, e.g. impressions */
@@ -3850,13 +3332,10 @@ export interface Metric {
   kind?: string;
 }
 
-export const Metric: Schema.Schema<Metric> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Metric" }) as any as Schema.Schema<Metric>;
+export const Metric = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "Metric" });
 
 export interface PathToConversionReportCompatibleFields {
   /** Conversion dimensions which are compatible to be selected in the "conversionDimensions" section of the report. */
@@ -3871,18 +3350,14 @@ export interface PathToConversionReportCompatibleFields {
   kind?: string;
 }
 
-export const PathToConversionReportCompatibleFields: Schema.Schema<PathToConversionReportCompatibleFields> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conversionDimensions: Schema.optional(Schema.Array(Dimension)),
-      perInteractionDimensions: Schema.optional(Schema.Array(Dimension)),
-      customFloodlightVariables: Schema.optional(Schema.Array(Dimension)),
-      metrics: Schema.optional(Schema.Array(Metric)),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PathToConversionReportCompatibleFields",
-  }) as any as Schema.Schema<PathToConversionReportCompatibleFields>;
+export const PathToConversionReportCompatibleFields =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conversionDimensions: Schema.optional(Schema.Array(Dimension)),
+    perInteractionDimensions: Schema.optional(Schema.Array(Dimension)),
+    customFloodlightVariables: Schema.optional(Schema.Array(Dimension)),
+    metrics: Schema.optional(Schema.Array(Metric)),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PathToConversionReportCompatibleFields" });
 
 export interface OptimizationActivity {
   /** Dimension value for the ID of the floodlight activity. This is a read-only, auto-generated field. */
@@ -3893,16 +3368,11 @@ export interface OptimizationActivity {
   weight?: number;
 }
 
-export const OptimizationActivity: Schema.Schema<OptimizationActivity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      floodlightActivityIdDimensionValue: Schema.optional(DimensionValue),
-      floodlightActivityId: Schema.optional(Schema.String),
-      weight: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "OptimizationActivity",
-  }) as any as Schema.Schema<OptimizationActivity>;
+export const OptimizationActivity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  floodlightActivityIdDimensionValue: Schema.optional(DimensionValue),
+  floodlightActivityId: Schema.optional(Schema.String),
+  weight: Schema.optional(Schema.Number),
+}).annotate({ identifier: "OptimizationActivity" });
 
 export interface CreativeOptimizationConfiguration {
   /** Optimization model for this configuration. */
@@ -3921,19 +3391,13 @@ export interface CreativeOptimizationConfiguration {
   optimizationActivitys?: Array<OptimizationActivity>;
 }
 
-export const CreativeOptimizationConfiguration: Schema.Schema<CreativeOptimizationConfiguration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      optimizationModel: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      optimizationActivitys: Schema.optional(
-        Schema.Array(OptimizationActivity),
-      ),
-    }),
-  ).annotate({
-    identifier: "CreativeOptimizationConfiguration",
-  }) as any as Schema.Schema<CreativeOptimizationConfiguration>;
+export const CreativeOptimizationConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    optimizationModel: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    optimizationActivitys: Schema.optional(Schema.Array(OptimizationActivity)),
+  }).annotate({ identifier: "CreativeOptimizationConfiguration" });
 
 export interface EventTag {
   /** Subaccount ID of this event tag. This is a read-only field that can be left blank. */
@@ -3978,29 +3442,26 @@ export interface EventTag {
   advertiserIdDimensionValue?: DimensionValue;
 }
 
-export const EventTag: Schema.Schema<EventTag> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subaccountId: Schema.optional(Schema.String),
-      campaignIdDimensionValue: Schema.optional(DimensionValue),
-      urlEscapeLevels: Schema.optional(Schema.Number),
-      siteIds: Schema.optional(Schema.Array(Schema.String)),
-      siteFilterType: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-      advertiserId: Schema.optional(Schema.String),
-      excludeFromAdxRequests: Schema.optional(Schema.Boolean),
-      id: Schema.optional(Schema.String),
-      enabledByDefault: Schema.optional(Schema.Boolean),
-      status: Schema.optional(Schema.String),
-      campaignId: Schema.optional(Schema.String),
-      sslCompliant: Schema.optional(Schema.Boolean),
-      url: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      advertiserIdDimensionValue: Schema.optional(DimensionValue),
-    }),
-  ).annotate({ identifier: "EventTag" }) as any as Schema.Schema<EventTag>;
+export const EventTag = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subaccountId: Schema.optional(Schema.String),
+  campaignIdDimensionValue: Schema.optional(DimensionValue),
+  urlEscapeLevels: Schema.optional(Schema.Number),
+  siteIds: Schema.optional(Schema.Array(Schema.String)),
+  siteFilterType: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  accountId: Schema.optional(Schema.String),
+  advertiserId: Schema.optional(Schema.String),
+  excludeFromAdxRequests: Schema.optional(Schema.Boolean),
+  id: Schema.optional(Schema.String),
+  enabledByDefault: Schema.optional(Schema.Boolean),
+  status: Schema.optional(Schema.String),
+  campaignId: Schema.optional(Schema.String),
+  sslCompliant: Schema.optional(Schema.Boolean),
+  url: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  advertiserIdDimensionValue: Schema.optional(DimensionValue),
+}).annotate({ identifier: "EventTag" });
 
 export interface SiteSettings {
   /** Whether this site opts out of ad blocking. When true, ad blocking is disabled for all placements under the site, regardless of the individual placement settings. When false, the campaign and placement settings take effect. */
@@ -4022,19 +3483,14 @@ export interface SiteSettings {
   videoActiveViewOptOutTemplate?: boolean;
 }
 
-export const SiteSettings: Schema.Schema<SiteSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      adBlockingOptOut: Schema.optional(Schema.Boolean),
-      vpaidAdapterChoiceTemplate: Schema.optional(Schema.String),
-      activeViewOptOut: Schema.optional(Schema.Boolean),
-      tagSetting: Schema.optional(TagSetting),
-      disableNewCookie: Schema.optional(Schema.Boolean),
-      videoActiveViewOptOutTemplate: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "SiteSettings",
-  }) as any as Schema.Schema<SiteSettings>;
+export const SiteSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  adBlockingOptOut: Schema.optional(Schema.Boolean),
+  vpaidAdapterChoiceTemplate: Schema.optional(Schema.String),
+  activeViewOptOut: Schema.optional(Schema.Boolean),
+  tagSetting: Schema.optional(TagSetting),
+  disableNewCookie: Schema.optional(Schema.Boolean),
+  videoActiveViewOptOutTemplate: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "SiteSettings" });
 
 export interface Site {
   /** Name of this site.This is a required field. Must be less than 128 characters long. If this site is under a subaccount, the name must be unique among sites of the same subaccount. Otherwise, this site is a top-level site, and the name must be unique among top-level sites of the same account. */
@@ -4067,25 +3523,22 @@ export interface Site {
   kind?: string;
 }
 
-export const Site: Schema.Schema<Site> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-      directorySiteIdDimensionValue: Schema.optional(DimensionValue),
-      approved: Schema.optional(Schema.Boolean),
-      siteSettings: Schema.optional(SiteSettings),
-      videoSettings: Schema.optional(SiteVideoSettings),
-      adServingPlatformId: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      subaccountId: Schema.optional(Schema.String),
-      directorySiteId: Schema.optional(Schema.String),
-      siteContacts: Schema.optional(Schema.Array(SiteContact)),
-      idDimensionValue: Schema.optional(DimensionValue),
-      keyName: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Site" }) as any as Schema.Schema<Site>;
+export const Site = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  accountId: Schema.optional(Schema.String),
+  directorySiteIdDimensionValue: Schema.optional(DimensionValue),
+  approved: Schema.optional(Schema.Boolean),
+  siteSettings: Schema.optional(SiteSettings),
+  videoSettings: Schema.optional(SiteVideoSettings),
+  adServingPlatformId: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  subaccountId: Schema.optional(Schema.String),
+  directorySiteId: Schema.optional(Schema.String),
+  siteContacts: Schema.optional(Schema.Array(SiteContact)),
+  idDimensionValue: Schema.optional(DimensionValue),
+  keyName: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "Site" });
 
 export interface SitesListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#sitesListResponse". */
@@ -4096,16 +3549,11 @@ export interface SitesListResponse {
   sites?: Array<Site>;
 }
 
-export const SitesListResponse: Schema.Schema<SitesListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      nextPageToken: Schema.optional(Schema.String),
-      sites: Schema.optional(Schema.Array(Site)),
-    }),
-  ).annotate({
-    identifier: "SitesListResponse",
-  }) as any as Schema.Schema<SitesListResponse>;
+export const SitesListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  nextPageToken: Schema.optional(Schema.String),
+  sites: Schema.optional(Schema.Array(Site)),
+}).annotate({ identifier: "SitesListResponse" });
 
 export interface ThirdPartyTrackingUrl {
   /** Third-party URL type for in-stream video and in-stream audio creatives. */
@@ -4134,15 +3582,10 @@ export interface ThirdPartyTrackingUrl {
   url?: string;
 }
 
-export const ThirdPartyTrackingUrl: Schema.Schema<ThirdPartyTrackingUrl> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      thirdPartyUrlType: Schema.optional(Schema.String),
-      url: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ThirdPartyTrackingUrl",
-  }) as any as Schema.Schema<ThirdPartyTrackingUrl>;
+export const ThirdPartyTrackingUrl = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  thirdPartyUrlType: Schema.optional(Schema.String),
+  url: Schema.optional(Schema.String),
+}).annotate({ identifier: "ThirdPartyTrackingUrl" });
 
 export interface MobileApp {
   /** Title of this mobile app. */
@@ -4169,16 +3612,13 @@ export interface MobileApp {
   id?: string;
 }
 
-export const MobileApp: Schema.Schema<MobileApp> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-      directory: Schema.optional(Schema.String),
-      publisherName: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "MobileApp" }) as any as Schema.Schema<MobileApp>;
+export const MobileApp = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  title: Schema.optional(Schema.String),
+  directory: Schema.optional(Schema.String),
+  publisherName: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+}).annotate({ identifier: "MobileApp" });
 
 export interface DeepLink {
   /** The URL of the mobile app being linked to. */
@@ -4193,16 +3633,13 @@ export interface DeepLink {
   fallbackUrl?: string;
 }
 
-export const DeepLink: Schema.Schema<DeepLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      appUrl: Schema.optional(Schema.String),
-      mobileApp: Schema.optional(MobileApp),
-      kind: Schema.optional(Schema.String),
-      remarketingListIds: Schema.optional(Schema.Array(Schema.String)),
-      fallbackUrl: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "DeepLink" }) as any as Schema.Schema<DeepLink>;
+export const DeepLink = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  appUrl: Schema.optional(Schema.String),
+  mobileApp: Schema.optional(MobileApp),
+  kind: Schema.optional(Schema.String),
+  remarketingListIds: Schema.optional(Schema.Array(Schema.String)),
+  fallbackUrl: Schema.optional(Schema.String),
+}).annotate({ identifier: "DeepLink" });
 
 export interface LandingPage {
   /** Advertiser ID of this landing page. This is a required field. */
@@ -4221,20 +3658,15 @@ export interface LandingPage {
   url?: string;
 }
 
-export const LandingPage: Schema.Schema<LandingPage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      advertiserId: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      deepLinks: Schema.optional(Schema.Array(DeepLink)),
-      kind: Schema.optional(Schema.String),
-      archived: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-      url: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LandingPage",
-  }) as any as Schema.Schema<LandingPage>;
+export const LandingPage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  advertiserId: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  deepLinks: Schema.optional(Schema.Array(DeepLink)),
+  kind: Schema.optional(Schema.String),
+  archived: Schema.optional(Schema.Boolean),
+  name: Schema.optional(Schema.String),
+  url: Schema.optional(Schema.String),
+}).annotate({ identifier: "LandingPage" });
 
 export interface Subaccount {
   /** Name of this subaccount. This is a required field. Must be less than 128 characters long and be unique among subaccounts of the same account. */
@@ -4249,16 +3681,13 @@ export interface Subaccount {
   kind?: string;
 }
 
-export const Subaccount: Schema.Schema<Subaccount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-      availablePermissionIds: Schema.optional(Schema.Array(Schema.String)),
-      id: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Subaccount" }) as any as Schema.Schema<Subaccount>;
+export const Subaccount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  accountId: Schema.optional(Schema.String),
+  availablePermissionIds: Schema.optional(Schema.Array(Schema.String)),
+  id: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "Subaccount" });
 
 export interface SubaccountsListResponse {
   /** Pagination token to be used for the next list operation. */
@@ -4269,16 +3698,12 @@ export interface SubaccountsListResponse {
   kind?: string;
 }
 
-export const SubaccountsListResponse: Schema.Schema<SubaccountsListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      subaccounts: Schema.optional(Schema.Array(Subaccount)),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SubaccountsListResponse",
-  }) as any as Schema.Schema<SubaccountsListResponse>;
+export const SubaccountsListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    subaccounts: Schema.optional(Schema.Array(Subaccount)),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SubaccountsListResponse" });
 
 export interface CampaignCreativeAssociation {
   /** ID of the creative associated with the campaign. This is a required field. */
@@ -4287,15 +3712,11 @@ export interface CampaignCreativeAssociation {
   kind?: string;
 }
 
-export const CampaignCreativeAssociation: Schema.Schema<CampaignCreativeAssociation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      creativeId: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CampaignCreativeAssociation",
-  }) as any as Schema.Schema<CampaignCreativeAssociation>;
+export const CampaignCreativeAssociation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    creativeId: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CampaignCreativeAssociation" });
 
 export interface CampaignCreativeAssociationsListResponse {
   /** Pagination token to be used for the next list operation. */
@@ -4306,18 +3727,14 @@ export interface CampaignCreativeAssociationsListResponse {
   kind?: string;
 }
 
-export const CampaignCreativeAssociationsListResponse: Schema.Schema<CampaignCreativeAssociationsListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      campaignCreativeAssociations: Schema.optional(
-        Schema.Array(CampaignCreativeAssociation),
-      ),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CampaignCreativeAssociationsListResponse",
-  }) as any as Schema.Schema<CampaignCreativeAssociationsListResponse>;
+export const CampaignCreativeAssociationsListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    campaignCreativeAssociations: Schema.optional(
+      Schema.Array(CampaignCreativeAssociation),
+    ),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CampaignCreativeAssociationsListResponse" });
 
 export interface ConnectionType {
   /** ID of this connection type. */
@@ -4328,16 +3745,11 @@ export interface ConnectionType {
   kind?: string;
 }
 
-export const ConnectionType: Schema.Schema<ConnectionType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConnectionType",
-  }) as any as Schema.Schema<ConnectionType>;
+export const ConnectionType = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "ConnectionType" });
 
 export interface FrequencyCap {
   /** Number of times an individual user can be served the ad within the specified duration. Acceptable values are 1 to 15, inclusive. */
@@ -4346,15 +3758,10 @@ export interface FrequencyCap {
   duration?: string;
 }
 
-export const FrequencyCap: Schema.Schema<FrequencyCap> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      impressions: Schema.optional(Schema.String),
-      duration: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FrequencyCap",
-  }) as any as Schema.Schema<FrequencyCap>;
+export const FrequencyCap = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  impressions: Schema.optional(Schema.String),
+  duration: Schema.optional(Schema.String),
+}).annotate({ identifier: "FrequencyCap" });
 
 export interface DeliverySchedule {
   /** Serving priority of an ad, with respect to other ads. The lower the priority number, the greater the priority with which it is served. */
@@ -4384,17 +3791,12 @@ export interface DeliverySchedule {
   hardCutoff?: boolean;
 }
 
-export const DeliverySchedule: Schema.Schema<DeliverySchedule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      priority: Schema.optional(Schema.String),
-      frequencyCap: Schema.optional(FrequencyCap),
-      impressionRatio: Schema.optional(Schema.String),
-      hardCutoff: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "DeliverySchedule",
-  }) as any as Schema.Schema<DeliverySchedule>;
+export const DeliverySchedule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  priority: Schema.optional(Schema.String),
+  frequencyCap: Schema.optional(FrequencyCap),
+  impressionRatio: Schema.optional(Schema.String),
+  hardCutoff: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "DeliverySchedule" });
 
 export interface FloodlightReportCompatibleFields {
   /** Metrics which are compatible to be selected in the "metricNames" section of the report. */
@@ -4407,17 +3809,13 @@ export interface FloodlightReportCompatibleFields {
   dimensionFilters?: Array<Dimension>;
 }
 
-export const FloodlightReportCompatibleFields: Schema.Schema<FloodlightReportCompatibleFields> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metrics: Schema.optional(Schema.Array(Metric)),
-      kind: Schema.optional(Schema.String),
-      dimensions: Schema.optional(Schema.Array(Dimension)),
-      dimensionFilters: Schema.optional(Schema.Array(Dimension)),
-    }),
-  ).annotate({
-    identifier: "FloodlightReportCompatibleFields",
-  }) as any as Schema.Schema<FloodlightReportCompatibleFields>;
+export const FloodlightReportCompatibleFields =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    metrics: Schema.optional(Schema.Array(Metric)),
+    kind: Schema.optional(Schema.String),
+    dimensions: Schema.optional(Schema.Array(Dimension)),
+    dimensionFilters: Schema.optional(Schema.Array(Dimension)),
+  }).annotate({ identifier: "FloodlightReportCompatibleFields" });
 
 export interface CrossMediaReachReportCompatibleFields {
   /** Dimensions which are compatible to be selected in the "dimensions" section of the report. */
@@ -4430,17 +3828,13 @@ export interface CrossMediaReachReportCompatibleFields {
   kind?: string;
 }
 
-export const CrossMediaReachReportCompatibleFields: Schema.Schema<CrossMediaReachReportCompatibleFields> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dimensions: Schema.optional(Schema.Array(Dimension)),
-      dimensionFilters: Schema.optional(Schema.Array(Dimension)),
-      metrics: Schema.optional(Schema.Array(Metric)),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CrossMediaReachReportCompatibleFields",
-  }) as any as Schema.Schema<CrossMediaReachReportCompatibleFields>;
+export const CrossMediaReachReportCompatibleFields =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dimensions: Schema.optional(Schema.Array(Dimension)),
+    dimensionFilters: Schema.optional(Schema.Array(Dimension)),
+    metrics: Schema.optional(Schema.Array(Metric)),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CrossMediaReachReportCompatibleFields" });
 
 export interface ReportCompatibleFields {
   /** Dimensions which are compatible to be selected in the "dimensions" section of the report. */
@@ -4455,18 +3849,15 @@ export interface ReportCompatibleFields {
   dimensionFilters?: Array<Dimension>;
 }
 
-export const ReportCompatibleFields: Schema.Schema<ReportCompatibleFields> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dimensions: Schema.optional(Schema.Array(Dimension)),
-      pivotedActivityMetrics: Schema.optional(Schema.Array(Metric)),
-      metrics: Schema.optional(Schema.Array(Metric)),
-      kind: Schema.optional(Schema.String),
-      dimensionFilters: Schema.optional(Schema.Array(Dimension)),
-    }),
-  ).annotate({
-    identifier: "ReportCompatibleFields",
-  }) as any as Schema.Schema<ReportCompatibleFields>;
+export const ReportCompatibleFields = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    dimensions: Schema.optional(Schema.Array(Dimension)),
+    pivotedActivityMetrics: Schema.optional(Schema.Array(Metric)),
+    metrics: Schema.optional(Schema.Array(Metric)),
+    kind: Schema.optional(Schema.String),
+    dimensionFilters: Schema.optional(Schema.Array(Dimension)),
+  },
+).annotate({ identifier: "ReportCompatibleFields" });
 
 export interface CrossDimensionReachReportCompatibleFields {
   /** Dimensions which are compatible to be selected in the "dimensionFilters" section of the report. */
@@ -4481,18 +3872,14 @@ export interface CrossDimensionReachReportCompatibleFields {
   kind?: string;
 }
 
-export const CrossDimensionReachReportCompatibleFields: Schema.Schema<CrossDimensionReachReportCompatibleFields> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dimensionFilters: Schema.optional(Schema.Array(Dimension)),
-      overlapMetrics: Schema.optional(Schema.Array(Metric)),
-      breakdown: Schema.optional(Schema.Array(Dimension)),
-      metrics: Schema.optional(Schema.Array(Metric)),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CrossDimensionReachReportCompatibleFields",
-  }) as any as Schema.Schema<CrossDimensionReachReportCompatibleFields>;
+export const CrossDimensionReachReportCompatibleFields =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dimensionFilters: Schema.optional(Schema.Array(Dimension)),
+    overlapMetrics: Schema.optional(Schema.Array(Metric)),
+    breakdown: Schema.optional(Schema.Array(Dimension)),
+    metrics: Schema.optional(Schema.Array(Metric)),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CrossDimensionReachReportCompatibleFields" });
 
 export interface ReachReportCompatibleFields {
   /** Dimensions which are compatible to be selected in the "dimensions" section of the report. */
@@ -4509,19 +3896,15 @@ export interface ReachReportCompatibleFields {
   reachByFrequencyMetrics?: Array<Metric>;
 }
 
-export const ReachReportCompatibleFields: Schema.Schema<ReachReportCompatibleFields> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dimensions: Schema.optional(Schema.Array(Dimension)),
-      pivotedActivityMetrics: Schema.optional(Schema.Array(Metric)),
-      metrics: Schema.optional(Schema.Array(Metric)),
-      kind: Schema.optional(Schema.String),
-      dimensionFilters: Schema.optional(Schema.Array(Dimension)),
-      reachByFrequencyMetrics: Schema.optional(Schema.Array(Metric)),
-    }),
-  ).annotate({
-    identifier: "ReachReportCompatibleFields",
-  }) as any as Schema.Schema<ReachReportCompatibleFields>;
+export const ReachReportCompatibleFields =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dimensions: Schema.optional(Schema.Array(Dimension)),
+    pivotedActivityMetrics: Schema.optional(Schema.Array(Metric)),
+    metrics: Schema.optional(Schema.Array(Metric)),
+    kind: Schema.optional(Schema.String),
+    dimensionFilters: Schema.optional(Schema.Array(Dimension)),
+    reachByFrequencyMetrics: Schema.optional(Schema.Array(Metric)),
+  }).annotate({ identifier: "ReachReportCompatibleFields" });
 
 export interface CompatibleFields {
   /** Contains items that are compatible to be selected for a report of type "FLOODLIGHT". */
@@ -4540,28 +3923,23 @@ export interface CompatibleFields {
   reachReportCompatibleFields?: ReachReportCompatibleFields;
 }
 
-export const CompatibleFields: Schema.Schema<CompatibleFields> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      floodlightReportCompatibleFields: Schema.optional(
-        FloodlightReportCompatibleFields,
-      ),
-      crossMediaReachReportCompatibleFields: Schema.optional(
-        CrossMediaReachReportCompatibleFields,
-      ),
-      reportCompatibleFields: Schema.optional(ReportCompatibleFields),
-      pathToConversionReportCompatibleFields: Schema.optional(
-        PathToConversionReportCompatibleFields,
-      ),
-      crossDimensionReachReportCompatibleFields: Schema.optional(
-        CrossDimensionReachReportCompatibleFields,
-      ),
-      kind: Schema.optional(Schema.String),
-      reachReportCompatibleFields: Schema.optional(ReachReportCompatibleFields),
-    }),
-  ).annotate({
-    identifier: "CompatibleFields",
-  }) as any as Schema.Schema<CompatibleFields>;
+export const CompatibleFields = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  floodlightReportCompatibleFields: Schema.optional(
+    FloodlightReportCompatibleFields,
+  ),
+  crossMediaReachReportCompatibleFields: Schema.optional(
+    CrossMediaReachReportCompatibleFields,
+  ),
+  reportCompatibleFields: Schema.optional(ReportCompatibleFields),
+  pathToConversionReportCompatibleFields: Schema.optional(
+    PathToConversionReportCompatibleFields,
+  ),
+  crossDimensionReachReportCompatibleFields: Schema.optional(
+    CrossDimensionReachReportCompatibleFields,
+  ),
+  kind: Schema.optional(Schema.String),
+  reachReportCompatibleFields: Schema.optional(ReachReportCompatibleFields),
+}).annotate({ identifier: "CompatibleFields" });
 
 export interface MobileCarrier {
   /** Name of this mobile carrier. */
@@ -4576,18 +3954,13 @@ export interface MobileCarrier {
   countryCode?: string;
 }
 
-export const MobileCarrier: Schema.Schema<MobileCarrier> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      countryDartId: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      countryCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MobileCarrier",
-  }) as any as Schema.Schema<MobileCarrier>;
+export const MobileCarrier = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  countryDartId: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  countryCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "MobileCarrier" });
 
 export interface DimensionValueList {
   /** Continuation token used to page through dimension values. To retrieve the next page of results, set the next request's "pageToken" to the value of this field. The page token is only valid for a limited amount of time and should not be persisted. */
@@ -4600,17 +3973,12 @@ export interface DimensionValueList {
   etag?: string;
 }
 
-export const DimensionValueList: Schema.Schema<DimensionValueList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(DimensionValue)),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DimensionValueList",
-  }) as any as Schema.Schema<DimensionValueList>;
+export const DimensionValueList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(DimensionValue)),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "DimensionValueList" });
 
 export interface CreativeFieldAssignment {
   /** ID of the creative field. */
@@ -4619,15 +3987,11 @@ export interface CreativeFieldAssignment {
   creativeFieldValueId?: string;
 }
 
-export const CreativeFieldAssignment: Schema.Schema<CreativeFieldAssignment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      creativeFieldId: Schema.optional(Schema.String),
-      creativeFieldValueId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreativeFieldAssignment",
-  }) as any as Schema.Schema<CreativeFieldAssignment>;
+export const CreativeFieldAssignment =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    creativeFieldId: Schema.optional(Schema.String),
+    creativeFieldValueId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CreativeFieldAssignment" });
 
 export interface CreativeClickThroughUrl {
   /** ID of the landing page for the click-through URL. */
@@ -4638,16 +4002,12 @@ export interface CreativeClickThroughUrl {
   customClickThroughUrl?: string;
 }
 
-export const CreativeClickThroughUrl: Schema.Schema<CreativeClickThroughUrl> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      landingPageId: Schema.optional(Schema.String),
-      computedClickThroughUrl: Schema.optional(Schema.String),
-      customClickThroughUrl: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreativeClickThroughUrl",
-  }) as any as Schema.Schema<CreativeClickThroughUrl>;
+export const CreativeClickThroughUrl =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    landingPageId: Schema.optional(Schema.String),
+    computedClickThroughUrl: Schema.optional(Schema.String),
+    customClickThroughUrl: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CreativeClickThroughUrl" });
 
 export interface OffsetPosition {
   /** Offset distance from top side of an asset or a window. */
@@ -4656,15 +4016,10 @@ export interface OffsetPosition {
   left?: number;
 }
 
-export const OffsetPosition: Schema.Schema<OffsetPosition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      top: Schema.optional(Schema.Number),
-      left: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "OffsetPosition",
-  }) as any as Schema.Schema<OffsetPosition>;
+export const OffsetPosition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  top: Schema.optional(Schema.Number),
+  left: Schema.optional(Schema.Number),
+}).annotate({ identifier: "OffsetPosition" });
 
 export interface PopupWindowProperties {
   /** Whether to display the browser scroll bar. */
@@ -4687,22 +4042,17 @@ export interface PopupWindowProperties {
   showMenuBar?: boolean;
 }
 
-export const PopupWindowProperties: Schema.Schema<PopupWindowProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      showScrollBar: Schema.optional(Schema.Boolean),
-      offset: Schema.optional(OffsetPosition),
-      title: Schema.optional(Schema.String),
-      showToolBar: Schema.optional(Schema.Boolean),
-      showAddressBar: Schema.optional(Schema.Boolean),
-      showStatusBar: Schema.optional(Schema.Boolean),
-      positionType: Schema.optional(Schema.String),
-      dimension: Schema.optional(Size),
-      showMenuBar: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "PopupWindowProperties",
-  }) as any as Schema.Schema<PopupWindowProperties>;
+export const PopupWindowProperties = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  showScrollBar: Schema.optional(Schema.Boolean),
+  offset: Schema.optional(OffsetPosition),
+  title: Schema.optional(Schema.String),
+  showToolBar: Schema.optional(Schema.Boolean),
+  showAddressBar: Schema.optional(Schema.Boolean),
+  showStatusBar: Schema.optional(Schema.Boolean),
+  positionType: Schema.optional(Schema.String),
+  dimension: Schema.optional(Size),
+  showMenuBar: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "PopupWindowProperties" });
 
 export interface CreativeCustomEvent {
   /** Unique ID of this event used by Reporting and Data Transfer. This is a read-only field. */
@@ -4742,23 +4092,18 @@ export interface CreativeCustomEvent {
     | (string & {});
 }
 
-export const CreativeCustomEvent: Schema.Schema<CreativeCustomEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      advertiserCustomEventId: Schema.optional(Schema.String),
-      exitClickThroughUrl: Schema.optional(CreativeClickThroughUrl),
-      videoReportingId: Schema.optional(Schema.String),
-      artworkLabel: Schema.optional(Schema.String),
-      targetType: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      artworkType: Schema.optional(Schema.String),
-      popupWindowProperties: Schema.optional(PopupWindowProperties),
-      advertiserCustomEventName: Schema.optional(Schema.String),
-      advertiserCustomEventType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreativeCustomEvent",
-  }) as any as Schema.Schema<CreativeCustomEvent>;
+export const CreativeCustomEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  advertiserCustomEventId: Schema.optional(Schema.String),
+  exitClickThroughUrl: Schema.optional(CreativeClickThroughUrl),
+  videoReportingId: Schema.optional(Schema.String),
+  artworkLabel: Schema.optional(Schema.String),
+  targetType: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  artworkType: Schema.optional(Schema.String),
+  popupWindowProperties: Schema.optional(PopupWindowProperties),
+  advertiserCustomEventName: Schema.optional(Schema.String),
+  advertiserCustomEventType: Schema.optional(Schema.String),
+}).annotate({ identifier: "CreativeCustomEvent" });
 
 export interface ClickTag {
   /** Advertiser event name associated with the click tag. This field is used by DISPLAY_IMAGE_GALLERY and HTML5_BANNER creatives. Applicable to DISPLAY when the primary asset type is not HTML_IMAGE. */
@@ -4769,14 +4114,11 @@ export interface ClickTag {
   clickThroughUrl?: CreativeClickThroughUrl;
 }
 
-export const ClickTag: Schema.Schema<ClickTag> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      eventName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      clickThroughUrl: Schema.optional(CreativeClickThroughUrl),
-    }),
-  ).annotate({ identifier: "ClickTag" }) as any as Schema.Schema<ClickTag>;
+export const ClickTag = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  eventName: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  clickThroughUrl: Schema.optional(CreativeClickThroughUrl),
+}).annotate({ identifier: "ClickTag" });
 
 export interface CreativeAssetId {
   /** Name of the creative asset. This is a required field while inserting an asset. After insertion, this assetIdentifier is used to identify the uploaded asset. Characters in the name must be alphanumeric or one of the following: ".-_ ". Spaces are allowed. */
@@ -4792,15 +4134,10 @@ export interface CreativeAssetId {
     | (string & {});
 }
 
-export const CreativeAssetId: Schema.Schema<CreativeAssetId> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreativeAssetId",
-  }) as any as Schema.Schema<CreativeAssetId>;
+export const CreativeAssetId = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "CreativeAssetId" });
 
 export interface CreativeAsset {
   /** Audio sample bit rate in hertz. This is a read-only field. Applicable to the following creative types: INSTREAM_AUDIO, INSTREAM_VIDEO and all VPAID. */
@@ -5025,63 +4362,58 @@ export interface CreativeAsset {
   zipFilesize?: string;
 }
 
-export const CreativeAsset: Schema.Schema<CreativeAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      audioSampleRate: Schema.optional(Schema.Number),
-      durationType: Schema.optional(Schema.String),
-      companionCreativeIds: Schema.optional(Schema.Array(Schema.String)),
-      streamingServingUrl: Schema.optional(Schema.String),
-      positionLeftUnit: Schema.optional(Schema.String),
-      positionTopUnit: Schema.optional(Schema.String),
-      originalBackup: Schema.optional(Schema.Boolean),
-      zIndex: Schema.optional(Schema.Number),
-      orientation: Schema.optional(Schema.String),
-      sslCompliant: Schema.optional(Schema.Boolean),
-      backupImageExit: Schema.optional(CreativeCustomEvent),
-      fileSize: Schema.optional(Schema.String),
-      verticallyLocked: Schema.optional(Schema.Boolean),
-      mimeType: Schema.optional(Schema.String),
-      transparency: Schema.optional(Schema.Boolean),
-      zipFilename: Schema.optional(Schema.String),
-      position: Schema.optional(OffsetPosition),
-      detectedFeatures: Schema.optional(Schema.Array(Schema.String)),
-      assetIdentifier: Schema.optional(CreativeAssetId),
-      artworkType: Schema.optional(Schema.String),
-      bitRate: Schema.optional(Schema.Number),
-      collapsedSize: Schema.optional(Size),
-      size: Schema.optional(Size),
-      additionalSizes: Schema.optional(Schema.Array(Size)),
-      flashVersion: Schema.optional(Schema.Number),
-      childAssetType: Schema.optional(Schema.String),
-      progressiveServingUrl: Schema.optional(Schema.String),
-      idDimensionValue: Schema.optional(DimensionValue),
-      pushdownDuration: Schema.optional(Schema.Number),
-      hideFlashObjects: Schema.optional(Schema.Boolean),
-      frameRate: Schema.optional(Schema.Number),
-      actionScript3: Schema.optional(Schema.Boolean),
-      pushdown: Schema.optional(Schema.Boolean),
-      active: Schema.optional(Schema.Boolean),
-      windowMode: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      alignment: Schema.optional(Schema.String),
-      role: Schema.optional(Schema.String),
-      offset: Schema.optional(OffsetPosition),
-      customStartTimeValue: Schema.optional(Schema.Number),
-      hideSelectionBoxes: Schema.optional(Schema.Boolean),
-      audioBitRate: Schema.optional(Schema.Number),
-      startTimeType: Schema.optional(Schema.String),
-      mediaDuration: Schema.optional(Schema.Number),
-      expandedDimension: Schema.optional(Size),
-      horizontallyLocked: Schema.optional(Schema.Boolean),
-      displayType: Schema.optional(Schema.String),
-      duration: Schema.optional(Schema.Number),
-      politeLoad: Schema.optional(Schema.Boolean),
-      zipFilesize: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreativeAsset",
-  }) as any as Schema.Schema<CreativeAsset>;
+export const CreativeAsset = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  audioSampleRate: Schema.optional(Schema.Number),
+  durationType: Schema.optional(Schema.String),
+  companionCreativeIds: Schema.optional(Schema.Array(Schema.String)),
+  streamingServingUrl: Schema.optional(Schema.String),
+  positionLeftUnit: Schema.optional(Schema.String),
+  positionTopUnit: Schema.optional(Schema.String),
+  originalBackup: Schema.optional(Schema.Boolean),
+  zIndex: Schema.optional(Schema.Number),
+  orientation: Schema.optional(Schema.String),
+  sslCompliant: Schema.optional(Schema.Boolean),
+  backupImageExit: Schema.optional(CreativeCustomEvent),
+  fileSize: Schema.optional(Schema.String),
+  verticallyLocked: Schema.optional(Schema.Boolean),
+  mimeType: Schema.optional(Schema.String),
+  transparency: Schema.optional(Schema.Boolean),
+  zipFilename: Schema.optional(Schema.String),
+  position: Schema.optional(OffsetPosition),
+  detectedFeatures: Schema.optional(Schema.Array(Schema.String)),
+  assetIdentifier: Schema.optional(CreativeAssetId),
+  artworkType: Schema.optional(Schema.String),
+  bitRate: Schema.optional(Schema.Number),
+  collapsedSize: Schema.optional(Size),
+  size: Schema.optional(Size),
+  additionalSizes: Schema.optional(Schema.Array(Size)),
+  flashVersion: Schema.optional(Schema.Number),
+  childAssetType: Schema.optional(Schema.String),
+  progressiveServingUrl: Schema.optional(Schema.String),
+  idDimensionValue: Schema.optional(DimensionValue),
+  pushdownDuration: Schema.optional(Schema.Number),
+  hideFlashObjects: Schema.optional(Schema.Boolean),
+  frameRate: Schema.optional(Schema.Number),
+  actionScript3: Schema.optional(Schema.Boolean),
+  pushdown: Schema.optional(Schema.Boolean),
+  active: Schema.optional(Schema.Boolean),
+  windowMode: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  alignment: Schema.optional(Schema.String),
+  role: Schema.optional(Schema.String),
+  offset: Schema.optional(OffsetPosition),
+  customStartTimeValue: Schema.optional(Schema.Number),
+  hideSelectionBoxes: Schema.optional(Schema.Boolean),
+  audioBitRate: Schema.optional(Schema.Number),
+  startTimeType: Schema.optional(Schema.String),
+  mediaDuration: Schema.optional(Schema.Number),
+  expandedDimension: Schema.optional(Size),
+  horizontallyLocked: Schema.optional(Schema.Boolean),
+  displayType: Schema.optional(Schema.String),
+  duration: Schema.optional(Schema.Number),
+  politeLoad: Schema.optional(Schema.Boolean),
+  zipFilesize: Schema.optional(Schema.String),
+}).annotate({ identifier: "CreativeAsset" });
 
 export interface TargetWindow {
   /** User-entered value. */
@@ -5094,15 +4426,10 @@ export interface TargetWindow {
     | (string & {});
 }
 
-export const TargetWindow: Schema.Schema<TargetWindow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customHtml: Schema.optional(Schema.String),
-      targetWindowOption: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TargetWindow",
-  }) as any as Schema.Schema<TargetWindow>;
+export const TargetWindow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  customHtml: Schema.optional(Schema.String),
+  targetWindowOption: Schema.optional(Schema.String),
+}).annotate({ identifier: "TargetWindow" });
 
 export interface UniversalAdId {
   /** ID value for this creative. Only alphanumeric characters and the following symbols are valid: "_/\-". Maximum length is 64 characters. Read only when registry is DCM. */
@@ -5118,15 +4445,10 @@ export interface UniversalAdId {
     | (string & {});
 }
 
-export const UniversalAdId: Schema.Schema<UniversalAdId> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-      registry: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UniversalAdId",
-  }) as any as Schema.Schema<UniversalAdId>;
+export const UniversalAdId = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.String),
+  registry: Schema.optional(Schema.String),
+}).annotate({ identifier: "UniversalAdId" });
 
 export interface Creative {
   /** Creative audio or video duration in seconds. This is a read-only field. Applicable to the following creative types: INSTREAM_VIDEO, INSTREAM_AUDIO, all RICH_MEDIA, and all VPAID. */
@@ -5375,76 +4697,73 @@ export interface Creative {
   sslCompliant?: boolean;
 }
 
-export const Creative: Schema.Schema<Creative> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mediaDuration: Schema.optional(Schema.Number),
-      progressOffset: Schema.optional(VideoOffset),
-      requiredFlashPluginVersion: Schema.optional(Schema.String),
-      subaccountId: Schema.optional(Schema.String),
-      totalFileSize: Schema.optional(Schema.String),
-      lastModifiedInfo: Schema.optional(LastModifiedInfo),
-      id: Schema.optional(Schema.String),
-      backupImageFeatures: Schema.optional(Schema.Array(Schema.String)),
-      htmlCodeLocked: Schema.optional(Schema.Boolean),
-      fsCommand: Schema.optional(FsCommand),
-      companionCreatives: Schema.optional(Schema.Array(Schema.String)),
-      thirdPartyUrls: Schema.optional(Schema.Array(ThirdPartyTrackingUrl)),
-      requiredFlashVersion: Schema.optional(Schema.Number),
-      convertFlashToHtml5: Schema.optional(Schema.Boolean),
-      backupImageReportingLabel: Schema.optional(Schema.String),
-      skipOffset: Schema.optional(VideoOffset),
-      additionalSizes: Schema.optional(Schema.Array(Size)),
-      size: Schema.optional(Size),
-      adTagKeys: Schema.optional(Schema.Array(Schema.String)),
-      customKeyValues: Schema.optional(Schema.Array(Schema.String)),
-      artworkType: Schema.optional(Schema.String),
-      commercialId: Schema.optional(Schema.String),
-      autoAdvanceImages: Schema.optional(Schema.Boolean),
-      renderingIdDimensionValue: Schema.optional(DimensionValue),
-      allowScriptAccess: Schema.optional(Schema.Boolean),
-      studioTraffickedCreativeId: Schema.optional(Schema.String),
-      renderingId: Schema.optional(Schema.String),
-      active: Schema.optional(Schema.Boolean),
-      overrideCss: Schema.optional(Schema.String),
-      sslOverride: Schema.optional(Schema.Boolean),
-      mediaDescription: Schema.optional(Schema.String),
-      idDimensionValue: Schema.optional(DimensionValue),
-      thirdPartyRichMediaImpressionsUrl: Schema.optional(Schema.String),
-      skippable: Schema.optional(Schema.Boolean),
-      version: Schema.optional(Schema.Number),
-      backgroundColor: Schema.optional(Schema.String),
-      studioCreativeId: Schema.optional(Schema.String),
-      creativeFieldAssignments: Schema.optional(
-        Schema.Array(CreativeFieldAssignment),
-      ),
-      adParameters: Schema.optional(Schema.String),
-      timerCustomEvents: Schema.optional(Schema.Array(CreativeCustomEvent)),
-      backupImageClickThroughUrl: Schema.optional(CreativeClickThroughUrl),
-      archived: Schema.optional(Schema.Boolean),
-      authoringSource: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      clickTags: Schema.optional(Schema.Array(ClickTag)),
-      redirectUrl: Schema.optional(Schema.String),
-      counterCustomEvents: Schema.optional(Schema.Array(CreativeCustomEvent)),
-      obaIcon: Schema.optional(ObaIcon),
-      exitCustomEvents: Schema.optional(Schema.Array(CreativeCustomEvent)),
-      compatibility: Schema.optional(Schema.Array(Schema.String)),
-      creativeAssets: Schema.optional(Schema.Array(CreativeAsset)),
-      backupImageTargetWindow: Schema.optional(TargetWindow),
-      htmlCode: Schema.optional(Schema.String),
-      thirdPartyBackupImageImpressionsUrl: Schema.optional(Schema.String),
-      studioAdvertiserId: Schema.optional(Schema.String),
-      advertiserId: Schema.optional(Schema.String),
-      authoringTool: Schema.optional(Schema.String),
-      universalAdId: Schema.optional(UniversalAdId),
-      latestTraffickedCreativeId: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      sslCompliant: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "Creative" }) as any as Schema.Schema<Creative>;
+export const Creative = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  mediaDuration: Schema.optional(Schema.Number),
+  progressOffset: Schema.optional(VideoOffset),
+  requiredFlashPluginVersion: Schema.optional(Schema.String),
+  subaccountId: Schema.optional(Schema.String),
+  totalFileSize: Schema.optional(Schema.String),
+  lastModifiedInfo: Schema.optional(LastModifiedInfo),
+  id: Schema.optional(Schema.String),
+  backupImageFeatures: Schema.optional(Schema.Array(Schema.String)),
+  htmlCodeLocked: Schema.optional(Schema.Boolean),
+  fsCommand: Schema.optional(FsCommand),
+  companionCreatives: Schema.optional(Schema.Array(Schema.String)),
+  thirdPartyUrls: Schema.optional(Schema.Array(ThirdPartyTrackingUrl)),
+  requiredFlashVersion: Schema.optional(Schema.Number),
+  convertFlashToHtml5: Schema.optional(Schema.Boolean),
+  backupImageReportingLabel: Schema.optional(Schema.String),
+  skipOffset: Schema.optional(VideoOffset),
+  additionalSizes: Schema.optional(Schema.Array(Size)),
+  size: Schema.optional(Size),
+  adTagKeys: Schema.optional(Schema.Array(Schema.String)),
+  customKeyValues: Schema.optional(Schema.Array(Schema.String)),
+  artworkType: Schema.optional(Schema.String),
+  commercialId: Schema.optional(Schema.String),
+  autoAdvanceImages: Schema.optional(Schema.Boolean),
+  renderingIdDimensionValue: Schema.optional(DimensionValue),
+  allowScriptAccess: Schema.optional(Schema.Boolean),
+  studioTraffickedCreativeId: Schema.optional(Schema.String),
+  renderingId: Schema.optional(Schema.String),
+  active: Schema.optional(Schema.Boolean),
+  overrideCss: Schema.optional(Schema.String),
+  sslOverride: Schema.optional(Schema.Boolean),
+  mediaDescription: Schema.optional(Schema.String),
+  idDimensionValue: Schema.optional(DimensionValue),
+  thirdPartyRichMediaImpressionsUrl: Schema.optional(Schema.String),
+  skippable: Schema.optional(Schema.Boolean),
+  version: Schema.optional(Schema.Number),
+  backgroundColor: Schema.optional(Schema.String),
+  studioCreativeId: Schema.optional(Schema.String),
+  creativeFieldAssignments: Schema.optional(
+    Schema.Array(CreativeFieldAssignment),
+  ),
+  adParameters: Schema.optional(Schema.String),
+  timerCustomEvents: Schema.optional(Schema.Array(CreativeCustomEvent)),
+  backupImageClickThroughUrl: Schema.optional(CreativeClickThroughUrl),
+  archived: Schema.optional(Schema.Boolean),
+  authoringSource: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  clickTags: Schema.optional(Schema.Array(ClickTag)),
+  redirectUrl: Schema.optional(Schema.String),
+  counterCustomEvents: Schema.optional(Schema.Array(CreativeCustomEvent)),
+  obaIcon: Schema.optional(ObaIcon),
+  exitCustomEvents: Schema.optional(Schema.Array(CreativeCustomEvent)),
+  compatibility: Schema.optional(Schema.Array(Schema.String)),
+  creativeAssets: Schema.optional(Schema.Array(CreativeAsset)),
+  backupImageTargetWindow: Schema.optional(TargetWindow),
+  htmlCode: Schema.optional(Schema.String),
+  thirdPartyBackupImageImpressionsUrl: Schema.optional(Schema.String),
+  studioAdvertiserId: Schema.optional(Schema.String),
+  advertiserId: Schema.optional(Schema.String),
+  authoringTool: Schema.optional(Schema.String),
+  universalAdId: Schema.optional(UniversalAdId),
+  latestTraffickedCreativeId: Schema.optional(Schema.String),
+  accountId: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  sslCompliant: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Creative" });
 
 export interface DefaultClickThroughEventTagProperties {
   /** ID of the click-through event tag to apply to all ads in this entity's scope. */
@@ -5453,15 +4772,11 @@ export interface DefaultClickThroughEventTagProperties {
   overrideInheritedEventTag?: boolean;
 }
 
-export const DefaultClickThroughEventTagProperties: Schema.Schema<DefaultClickThroughEventTagProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      defaultClickThroughEventTagId: Schema.optional(Schema.String),
-      overrideInheritedEventTag: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "DefaultClickThroughEventTagProperties",
-  }) as any as Schema.Schema<DefaultClickThroughEventTagProperties>;
+export const DefaultClickThroughEventTagProperties =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    defaultClickThroughEventTagId: Schema.optional(Schema.String),
+    overrideInheritedEventTag: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "DefaultClickThroughEventTagProperties" });
 
 export interface CreativesListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#creativesListResponse". */
@@ -5472,16 +4787,11 @@ export interface CreativesListResponse {
   creatives?: Array<Creative>;
 }
 
-export const CreativesListResponse: Schema.Schema<CreativesListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      nextPageToken: Schema.optional(Schema.String),
-      creatives: Schema.optional(Schema.Array(Creative)),
-    }),
-  ).annotate({
-    identifier: "CreativesListResponse",
-  }) as any as Schema.Schema<CreativesListResponse>;
+export const CreativesListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  nextPageToken: Schema.optional(Schema.String),
+  creatives: Schema.optional(Schema.Array(Creative)),
+}).annotate({ identifier: "CreativesListResponse" });
 
 export interface Metro {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#metro". */
@@ -5500,18 +4810,15 @@ export interface Metro {
   dmaId?: string;
 }
 
-export const Metro: Schema.Schema<Metro> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      countryDartId: Schema.optional(Schema.String),
-      countryCode: Schema.optional(Schema.String),
-      dartId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      metroCode: Schema.optional(Schema.String),
-      dmaId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Metro" }) as any as Schema.Schema<Metro>;
+export const Metro = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  countryDartId: Schema.optional(Schema.String),
+  countryCode: Schema.optional(Schema.String),
+  dartId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  metroCode: Schema.optional(Schema.String),
+  dmaId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Metro" });
 
 export interface MetrosListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#metrosListResponse". */
@@ -5520,15 +4827,10 @@ export interface MetrosListResponse {
   metros?: Array<Metro>;
 }
 
-export const MetrosListResponse: Schema.Schema<MetrosListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      metros: Schema.optional(Schema.Array(Metro)),
-    }),
-  ).annotate({
-    identifier: "MetrosListResponse",
-  }) as any as Schema.Schema<MetrosListResponse>;
+export const MetrosListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  metros: Schema.optional(Schema.Array(Metro)),
+}).annotate({ identifier: "MetrosListResponse" });
 
 export interface CustomValueField {
   /** Optional. Field ID in the element. */
@@ -5537,15 +4839,10 @@ export interface CustomValueField {
   requestKey?: string;
 }
 
-export const CustomValueField: Schema.Schema<CustomValueField> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fieldId: Schema.optional(Schema.Number),
-      requestKey: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomValueField",
-  }) as any as Schema.Schema<CustomValueField>;
+export const CustomValueField = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fieldId: Schema.optional(Schema.Number),
+  requestKey: Schema.optional(Schema.String),
+}).annotate({ identifier: "CustomValueField" });
 
 export interface CustomRule {
   /** Optional. Priority of the custom rule. */
@@ -5556,14 +4853,11 @@ export interface CustomRule {
   ruleBlocks?: Array<RuleBlock>;
 }
 
-export const CustomRule: Schema.Schema<CustomRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      priority: Schema.optional(Schema.Number),
-      name: Schema.optional(Schema.String),
-      ruleBlocks: Schema.optional(Schema.Array(RuleBlock)),
-    }),
-  ).annotate({ identifier: "CustomRule" }) as any as Schema.Schema<CustomRule>;
+export const CustomRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  priority: Schema.optional(Schema.Number),
+  name: Schema.optional(Schema.String),
+  ruleBlocks: Schema.optional(Schema.Array(RuleBlock)),
+}).annotate({ identifier: "CustomRule" });
 
 export interface RemarketingValueAttribute {
   /** Optional. Field ID in the element. */
@@ -5572,15 +4866,11 @@ export interface RemarketingValueAttribute {
   userAttributeIds?: Array<string>;
 }
 
-export const RemarketingValueAttribute: Schema.Schema<RemarketingValueAttribute> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fieldId: Schema.optional(Schema.Number),
-      userAttributeIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "RemarketingValueAttribute",
-  }) as any as Schema.Schema<RemarketingValueAttribute>;
+export const RemarketingValueAttribute =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fieldId: Schema.optional(Schema.Number),
+    userAttributeIds: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "RemarketingValueAttribute" });
 
 export interface DynamicRules {
   /** Optional. The proximity targeting rules of the dynamic feed, only applicable when rule type is PROXIMITY_TARGETING. */
@@ -5612,23 +4902,18 @@ export interface DynamicRules {
   remarketingValueAttributes?: Array<RemarketingValueAttribute>;
 }
 
-export const DynamicRules: Schema.Schema<DynamicRules> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      proximityFilter: Schema.optional(ProximityFilter),
-      rotationType: Schema.optional(Schema.String),
-      customValueFields: Schema.optional(Schema.Array(CustomValueField)),
-      ruleType: Schema.optional(Schema.String),
-      customRules: Schema.optional(Schema.Array(CustomRule)),
-      weightFieldId: Schema.optional(Schema.Number),
-      autoTargetedFieldIds: Schema.optional(Schema.Array(Schema.Number)),
-      remarketingValueAttributes: Schema.optional(
-        Schema.Array(RemarketingValueAttribute),
-      ),
-    }),
-  ).annotate({
-    identifier: "DynamicRules",
-  }) as any as Schema.Schema<DynamicRules>;
+export const DynamicRules = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  proximityFilter: Schema.optional(ProximityFilter),
+  rotationType: Schema.optional(Schema.String),
+  customValueFields: Schema.optional(Schema.Array(CustomValueField)),
+  ruleType: Schema.optional(Schema.String),
+  customRules: Schema.optional(Schema.Array(CustomRule)),
+  weightFieldId: Schema.optional(Schema.Number),
+  autoTargetedFieldIds: Schema.optional(Schema.Array(Schema.Number)),
+  remarketingValueAttributes: Schema.optional(
+    Schema.Array(RemarketingValueAttribute),
+  ),
+}).annotate({ identifier: "DynamicRules" });
 
 export interface DynamicProfileFeedSettings {
   /** Optional. The number of this dynamic feed rows needed by the dynamic profile, default value is 1. Acceptable values are between 1 to 99, inclusive. */
@@ -5639,16 +4924,12 @@ export interface DynamicProfileFeedSettings {
   dynamicRules?: DynamicRules;
 }
 
-export const DynamicProfileFeedSettings: Schema.Schema<DynamicProfileFeedSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      quantity: Schema.optional(Schema.Number),
-      dynamicFeedId: Schema.optional(Schema.String),
-      dynamicRules: Schema.optional(DynamicRules),
-    }),
-  ).annotate({
-    identifier: "DynamicProfileFeedSettings",
-  }) as any as Schema.Schema<DynamicProfileFeedSettings>;
+export const DynamicProfileFeedSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    quantity: Schema.optional(Schema.Number),
+    dynamicFeedId: Schema.optional(Schema.String),
+    dynamicRules: Schema.optional(DynamicRules),
+  }).annotate({ identifier: "DynamicProfileFeedSettings" });
 
 export interface DynamicProfileVersion {
   /** Output only. Version ID of this dynamic profile version. This is a read-only, auto-generated field. -1 for draft version, 0+ for published versions. */
@@ -5657,17 +4938,12 @@ export interface DynamicProfileVersion {
   dynamicProfileFeedSettings?: Array<DynamicProfileFeedSettings>;
 }
 
-export const DynamicProfileVersion: Schema.Schema<DynamicProfileVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      versionId: Schema.optional(Schema.String),
-      dynamicProfileFeedSettings: Schema.optional(
-        Schema.Array(DynamicProfileFeedSettings),
-      ),
-    }),
-  ).annotate({
-    identifier: "DynamicProfileVersion",
-  }) as any as Schema.Schema<DynamicProfileVersion>;
+export const DynamicProfileVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  versionId: Schema.optional(Schema.String),
+  dynamicProfileFeedSettings: Schema.optional(
+    Schema.Array(DynamicProfileFeedSettings),
+  ),
+}).annotate({ identifier: "DynamicProfileVersion" });
 
 export interface MeasurementPartnerAdvertiserLink {
   /** Status of the partner link. */
@@ -5692,16 +4968,12 @@ export interface MeasurementPartnerAdvertiserLink {
   partnerAdvertiserId?: string;
 }
 
-export const MeasurementPartnerAdvertiserLink: Schema.Schema<MeasurementPartnerAdvertiserLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      linkStatus: Schema.optional(Schema.String),
-      measurementPartner: Schema.optional(Schema.String),
-      partnerAdvertiserId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MeasurementPartnerAdvertiserLink",
-  }) as any as Schema.Schema<MeasurementPartnerAdvertiserLink>;
+export const MeasurementPartnerAdvertiserLink =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    linkStatus: Schema.optional(Schema.String),
+    measurementPartner: Schema.optional(Schema.String),
+    partnerAdvertiserId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "MeasurementPartnerAdvertiserLink" });
 
 export interface Advertiser {
   /** ID of this advertiser. This is a read-only, auto-generated field. */
@@ -5743,28 +5015,25 @@ export interface Advertiser {
   measurementPartnerLink?: MeasurementPartnerAdvertiserLink;
 }
 
-export const Advertiser: Schema.Schema<Advertiser> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      floodlightConfigurationIdDimensionValue: Schema.optional(DimensionValue),
-      status: Schema.optional(Schema.String),
-      advertiserGroupId: Schema.optional(Schema.String),
-      originalFloodlightConfigurationId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-      clickThroughUrlSuffix: Schema.optional(Schema.String),
-      subaccountId: Schema.optional(Schema.String),
-      floodlightConfigurationId: Schema.optional(Schema.String),
-      defaultEmail: Schema.optional(Schema.String),
-      idDimensionValue: Schema.optional(DimensionValue),
-      suspended: Schema.optional(Schema.Boolean),
-      euPoliticalAdsDeclaration: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      defaultClickThroughEventTagId: Schema.optional(Schema.String),
-      measurementPartnerLink: Schema.optional(MeasurementPartnerAdvertiserLink),
-    }),
-  ).annotate({ identifier: "Advertiser" }) as any as Schema.Schema<Advertiser>;
+export const Advertiser = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  floodlightConfigurationIdDimensionValue: Schema.optional(DimensionValue),
+  status: Schema.optional(Schema.String),
+  advertiserGroupId: Schema.optional(Schema.String),
+  originalFloodlightConfigurationId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  accountId: Schema.optional(Schema.String),
+  clickThroughUrlSuffix: Schema.optional(Schema.String),
+  subaccountId: Schema.optional(Schema.String),
+  floodlightConfigurationId: Schema.optional(Schema.String),
+  defaultEmail: Schema.optional(Schema.String),
+  idDimensionValue: Schema.optional(DimensionValue),
+  suspended: Schema.optional(Schema.Boolean),
+  euPoliticalAdsDeclaration: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  defaultClickThroughEventTagId: Schema.optional(Schema.String),
+  measurementPartnerLink: Schema.optional(MeasurementPartnerAdvertiserLink),
+}).annotate({ identifier: "Advertiser" });
 
 export interface PlacementAssignment {
   /** Whether the placement to be assigned requires SSL. This is a read-only field that is auto-generated when the ad is inserted or updated. */
@@ -5777,17 +5046,12 @@ export interface PlacementAssignment {
   active?: boolean;
 }
 
-export const PlacementAssignment: Schema.Schema<PlacementAssignment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sslRequired: Schema.optional(Schema.Boolean),
-      placementIdDimensionValue: Schema.optional(DimensionValue),
-      placementId: Schema.optional(Schema.String),
-      active: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "PlacementAssignment",
-  }) as any as Schema.Schema<PlacementAssignment>;
+export const PlacementAssignment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sslRequired: Schema.optional(Schema.Boolean),
+  placementIdDimensionValue: Schema.optional(DimensionValue),
+  placementId: Schema.optional(Schema.String),
+  active: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "PlacementAssignment" });
 
 export interface CustomViewabilityMetricConfiguration {
   /** Whether the video must be audible to count an impression. */
@@ -5800,17 +5064,13 @@ export interface CustomViewabilityMetricConfiguration {
   timePercent?: number;
 }
 
-export const CustomViewabilityMetricConfiguration: Schema.Schema<CustomViewabilityMetricConfiguration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      audible: Schema.optional(Schema.Boolean),
-      viewabilityPercent: Schema.optional(Schema.Number),
-      timeMillis: Schema.optional(Schema.Number),
-      timePercent: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "CustomViewabilityMetricConfiguration",
-  }) as any as Schema.Schema<CustomViewabilityMetricConfiguration>;
+export const CustomViewabilityMetricConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    audible: Schema.optional(Schema.Boolean),
+    viewabilityPercent: Schema.optional(Schema.Number),
+    timeMillis: Schema.optional(Schema.Number),
+    timePercent: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "CustomViewabilityMetricConfiguration" });
 
 export interface CustomViewabilityMetric {
   /** ID of the custom viewability metric. */
@@ -5821,16 +5081,12 @@ export interface CustomViewabilityMetric {
   configuration?: CustomViewabilityMetricConfiguration;
 }
 
-export const CustomViewabilityMetric: Schema.Schema<CustomViewabilityMetric> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      configuration: Schema.optional(CustomViewabilityMetricConfiguration),
-    }),
-  ).annotate({
-    identifier: "CustomViewabilityMetric",
-  }) as any as Schema.Schema<CustomViewabilityMetric>;
+export const CustomViewabilityMetric =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    configuration: Schema.optional(CustomViewabilityMetricConfiguration),
+  }).annotate({ identifier: "CustomViewabilityMetric" });
 
 export interface OmnitureSettings {
   /** Whether Omniture integration is enabled. This property can be enabled only when the "Advanced Ad Serving" account setting is enabled. */
@@ -5839,15 +5095,10 @@ export interface OmnitureSettings {
   omnitureCostDataEnabled?: boolean;
 }
 
-export const OmnitureSettings: Schema.Schema<OmnitureSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      omnitureIntegrationEnabled: Schema.optional(Schema.Boolean),
-      omnitureCostDataEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "OmnitureSettings",
-  }) as any as Schema.Schema<OmnitureSettings>;
+export const OmnitureSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  omnitureIntegrationEnabled: Schema.optional(Schema.Boolean),
+  omnitureCostDataEnabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "OmnitureSettings" });
 
 export interface UserDefinedVariableConfiguration {
   /** Variable name in the tag. This is a required field. */
@@ -5959,16 +5210,12 @@ export interface UserDefinedVariableConfiguration {
   reportName?: string;
 }
 
-export const UserDefinedVariableConfiguration: Schema.Schema<UserDefinedVariableConfiguration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      variableType: Schema.optional(Schema.String),
-      dataType: Schema.optional(Schema.String),
-      reportName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UserDefinedVariableConfiguration",
-  }) as any as Schema.Schema<UserDefinedVariableConfiguration>;
+export const UserDefinedVariableConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    variableType: Schema.optional(Schema.String),
+    dataType: Schema.optional(Schema.String),
+    reportName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UserDefinedVariableConfiguration" });
 
 export interface ThirdPartyAuthenticationToken {
   /** Name of the third-party authentication token. */
@@ -5977,15 +5224,11 @@ export interface ThirdPartyAuthenticationToken {
   value?: string;
 }
 
-export const ThirdPartyAuthenticationToken: Schema.Schema<ThirdPartyAuthenticationToken> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ThirdPartyAuthenticationToken",
-  }) as any as Schema.Schema<ThirdPartyAuthenticationToken>;
+export const ThirdPartyAuthenticationToken =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ThirdPartyAuthenticationToken" });
 
 export interface FloodlightConfiguration {
   firstDayOfWeek?: "SUNDAY" | "MONDAY" | (string & {});
@@ -6029,35 +5272,31 @@ export interface FloodlightConfiguration {
   subaccountId?: string;
 }
 
-export const FloodlightConfiguration: Schema.Schema<FloodlightConfiguration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      firstDayOfWeek: Schema.optional(Schema.String),
-      tagSettings: Schema.optional(TagSettings),
-      analyticsDataSharingEnabled: Schema.optional(Schema.Boolean),
-      idDimensionValue: Schema.optional(DimensionValue),
-      advertiserIdDimensionValue: Schema.optional(DimensionValue),
-      kind: Schema.optional(Schema.String),
-      exposureToConversionEnabled: Schema.optional(Schema.Boolean),
-      customViewabilityMetric: Schema.optional(CustomViewabilityMetric),
-      advertiserId: Schema.optional(Schema.String),
-      lookbackConfiguration: Schema.optional(LookbackConfiguration),
-      id: Schema.optional(Schema.String),
-      omnitureSettings: Schema.optional(OmnitureSettings),
-      naturalSearchConversionAttributionOption: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-      inAppAttributionTrackingEnabled: Schema.optional(Schema.Boolean),
-      userDefinedVariableConfigurations: Schema.optional(
-        Schema.Array(UserDefinedVariableConfiguration),
-      ),
-      thirdPartyAuthenticationTokens: Schema.optional(
-        Schema.Array(ThirdPartyAuthenticationToken),
-      ),
-      subaccountId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FloodlightConfiguration",
-  }) as any as Schema.Schema<FloodlightConfiguration>;
+export const FloodlightConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    firstDayOfWeek: Schema.optional(Schema.String),
+    tagSettings: Schema.optional(TagSettings),
+    analyticsDataSharingEnabled: Schema.optional(Schema.Boolean),
+    idDimensionValue: Schema.optional(DimensionValue),
+    advertiserIdDimensionValue: Schema.optional(DimensionValue),
+    kind: Schema.optional(Schema.String),
+    exposureToConversionEnabled: Schema.optional(Schema.Boolean),
+    customViewabilityMetric: Schema.optional(CustomViewabilityMetric),
+    advertiserId: Schema.optional(Schema.String),
+    lookbackConfiguration: Schema.optional(LookbackConfiguration),
+    id: Schema.optional(Schema.String),
+    omnitureSettings: Schema.optional(OmnitureSettings),
+    naturalSearchConversionAttributionOption: Schema.optional(Schema.String),
+    accountId: Schema.optional(Schema.String),
+    inAppAttributionTrackingEnabled: Schema.optional(Schema.Boolean),
+    userDefinedVariableConfigurations: Schema.optional(
+      Schema.Array(UserDefinedVariableConfiguration),
+    ),
+    thirdPartyAuthenticationTokens: Schema.optional(
+      Schema.Array(ThirdPartyAuthenticationToken),
+    ),
+    subaccountId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "FloodlightConfiguration" });
 
 export interface FloodlightConfigurationsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#floodlightConfigurationsListResponse". */
@@ -6066,17 +5305,13 @@ export interface FloodlightConfigurationsListResponse {
   floodlightConfigurations?: Array<FloodlightConfiguration>;
 }
 
-export const FloodlightConfigurationsListResponse: Schema.Schema<FloodlightConfigurationsListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      floodlightConfigurations: Schema.optional(
-        Schema.Array(FloodlightConfiguration),
-      ),
-    }),
-  ).annotate({
-    identifier: "FloodlightConfigurationsListResponse",
-  }) as any as Schema.Schema<FloodlightConfigurationsListResponse>;
+export const FloodlightConfigurationsListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    floodlightConfigurations: Schema.optional(
+      Schema.Array(FloodlightConfiguration),
+    ),
+  }).annotate({ identifier: "FloodlightConfigurationsListResponse" });
 
 export interface YoutubeSettings {
   /** Optional. The business name. */
@@ -6119,19 +5354,14 @@ export interface YoutubeSettings {
   descriptions?: Array<string>;
 }
 
-export const YoutubeSettings: Schema.Schema<YoutubeSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      businessName: Schema.optional(Schema.String),
-      callToActions: Schema.optional(Schema.Array(Schema.String)),
-      longHeadlines: Schema.optional(Schema.Array(Schema.String)),
-      businessLogoCreativeIds: Schema.optional(Schema.Array(Schema.String)),
-      headlines: Schema.optional(Schema.Array(Schema.String)),
-      descriptions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "YoutubeSettings",
-  }) as any as Schema.Schema<YoutubeSettings>;
+export const YoutubeSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  businessName: Schema.optional(Schema.String),
+  callToActions: Schema.optional(Schema.Array(Schema.String)),
+  longHeadlines: Schema.optional(Schema.Array(Schema.String)),
+  businessLogoCreativeIds: Schema.optional(Schema.Array(Schema.String)),
+  headlines: Schema.optional(Schema.Array(Schema.String)),
+  descriptions: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "YoutubeSettings" });
 
 export interface MobileCarriersListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#mobileCarriersListResponse". */
@@ -6140,15 +5370,11 @@ export interface MobileCarriersListResponse {
   mobileCarriers?: Array<MobileCarrier>;
 }
 
-export const MobileCarriersListResponse: Schema.Schema<MobileCarriersListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      mobileCarriers: Schema.optional(Schema.Array(MobileCarrier)),
-    }),
-  ).annotate({
-    identifier: "MobileCarriersListResponse",
-  }) as any as Schema.Schema<MobileCarriersListResponse>;
+export const MobileCarriersListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    mobileCarriers: Schema.optional(Schema.Array(MobileCarrier)),
+  }).annotate({ identifier: "MobileCarriersListResponse" });
 
 export interface PlatformType {
   /** ID of this platform type. */
@@ -6159,16 +5385,11 @@ export interface PlatformType {
   name?: string;
 }
 
-export const PlatformType: Schema.Schema<PlatformType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PlatformType",
-  }) as any as Schema.Schema<PlatformType>;
+export const PlatformType = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "PlatformType" });
 
 export interface PlatformTypesListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#platformTypesListResponse". */
@@ -6177,15 +5398,11 @@ export interface PlatformTypesListResponse {
   platformTypes?: Array<PlatformType>;
 }
 
-export const PlatformTypesListResponse: Schema.Schema<PlatformTypesListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      platformTypes: Schema.optional(Schema.Array(PlatformType)),
-    }),
-  ).annotate({
-    identifier: "PlatformTypesListResponse",
-  }) as any as Schema.Schema<PlatformTypesListResponse>;
+export const PlatformTypesListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    platformTypes: Schema.optional(Schema.Array(PlatformType)),
+  }).annotate({ identifier: "PlatformTypesListResponse" });
 
 export interface City {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#city". */
@@ -6208,20 +5425,17 @@ export interface City {
   metroDmaId?: string;
 }
 
-export const City: Schema.Schema<City> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      countryDartId: Schema.optional(Schema.String),
-      dartId: Schema.optional(Schema.String),
-      countryCode: Schema.optional(Schema.String),
-      regionDartId: Schema.optional(Schema.String),
-      regionCode: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      metroCode: Schema.optional(Schema.String),
-      metroDmaId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "City" }) as any as Schema.Schema<City>;
+export const City = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  countryDartId: Schema.optional(Schema.String),
+  dartId: Schema.optional(Schema.String),
+  countryCode: Schema.optional(Schema.String),
+  regionDartId: Schema.optional(Schema.String),
+  regionCode: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  metroCode: Schema.optional(Schema.String),
+  metroDmaId: Schema.optional(Schema.String),
+}).annotate({ identifier: "City" });
 
 export interface CitiesListResponse {
   /** City collection. */
@@ -6230,29 +5444,20 @@ export interface CitiesListResponse {
   kind?: string;
 }
 
-export const CitiesListResponse: Schema.Schema<CitiesListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cities: Schema.optional(Schema.Array(City)),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CitiesListResponse",
-  }) as any as Schema.Schema<CitiesListResponse>;
+export const CitiesListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cities: Schema.optional(Schema.Array(City)),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "CitiesListResponse" });
 
 export interface KeyValueTargetingExpression {
   /** Keyword expression being targeted by the ad. */
   expression?: string;
 }
 
-export const KeyValueTargetingExpression: Schema.Schema<KeyValueTargetingExpression> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expression: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "KeyValueTargetingExpression",
-  }) as any as Schema.Schema<KeyValueTargetingExpression>;
+export const KeyValueTargetingExpression =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    expression: Schema.optional(Schema.String),
+  }).annotate({ identifier: "KeyValueTargetingExpression" });
 
 export interface DayPartTargeting {
   /** Hours of the day when the ad will serve, where 0 is midnight to 1 AM and 23 is 11 PM to midnight. Can be specified with days of week, in which case the ad would serve during these hours on the specified days. For example if Monday, Wednesday, Friday are the days of week specified and 9-10am, 3-5pm (hours 9, 15, and 16) is specified, the ad would serve Monday, Wednesdays, and Fridays at 9-10am and 3-5pm. Acceptable values are 0 to 23, inclusive. */
@@ -6272,16 +5477,11 @@ export interface DayPartTargeting {
   >;
 }
 
-export const DayPartTargeting: Schema.Schema<DayPartTargeting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hoursOfDay: Schema.optional(Schema.Array(Schema.Number)),
-      userLocalTime: Schema.optional(Schema.Boolean),
-      daysOfWeek: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "DayPartTargeting",
-  }) as any as Schema.Schema<DayPartTargeting>;
+export const DayPartTargeting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  hoursOfDay: Schema.optional(Schema.Array(Schema.Number)),
+  userLocalTime: Schema.optional(Schema.Boolean),
+  daysOfWeek: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "DayPartTargeting" });
 
 export interface ClickThroughUrlSuffixProperties {
   /** Click-through URL suffix to apply to all ads in this entity's scope. Must be less than 128 characters long. */
@@ -6290,15 +5490,11 @@ export interface ClickThroughUrlSuffixProperties {
   overrideInheritedSuffix?: boolean;
 }
 
-export const ClickThroughUrlSuffixProperties: Schema.Schema<ClickThroughUrlSuffixProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clickThroughUrlSuffix: Schema.optional(Schema.String),
-      overrideInheritedSuffix: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ClickThroughUrlSuffixProperties",
-  }) as any as Schema.Schema<ClickThroughUrlSuffixProperties>;
+export const ClickThroughUrlSuffixProperties =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    clickThroughUrlSuffix: Schema.optional(Schema.String),
+    overrideInheritedSuffix: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "ClickThroughUrlSuffixProperties" });
 
 export interface Language {
   /** Language ID of this language. This is the ID used for targeting and generating reports. */
@@ -6311,29 +5507,21 @@ export interface Language {
   kind?: string;
 }
 
-export const Language: Schema.Schema<Language> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      languageCode: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Language" }) as any as Schema.Schema<Language>;
+export const Language = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  languageCode: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "Language" });
 
 export interface LanguageTargeting {
   /** Languages that this ad targets. For each language only languageId is required. The other fields are populated automatically when the ad is inserted or updated. */
   languages?: Array<Language>;
 }
 
-export const LanguageTargeting: Schema.Schema<LanguageTargeting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      languages: Schema.optional(Schema.Array(Language)),
-    }),
-  ).annotate({
-    identifier: "LanguageTargeting",
-  }) as any as Schema.Schema<LanguageTargeting>;
+export const LanguageTargeting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  languages: Schema.optional(Schema.Array(Language)),
+}).annotate({ identifier: "LanguageTargeting" });
 
 export interface EventTagOverride {
   /** ID of this event tag override. This is a read-only, auto-generated field. */
@@ -6342,15 +5530,10 @@ export interface EventTagOverride {
   enabled?: boolean;
 }
 
-export const EventTagOverride: Schema.Schema<EventTagOverride> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "EventTagOverride",
-  }) as any as Schema.Schema<EventTagOverride>;
+export const EventTagOverride = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  enabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "EventTagOverride" });
 
 export interface PostalCode {
   /** ID of this postal code. */
@@ -6365,16 +5548,13 @@ export interface PostalCode {
   countryDartId?: string;
 }
 
-export const PostalCode: Schema.Schema<PostalCode> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      countryCode: Schema.optional(Schema.String),
-      code: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      countryDartId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "PostalCode" }) as any as Schema.Schema<PostalCode>;
+export const PostalCode = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  countryCode: Schema.optional(Schema.String),
+  code: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  countryDartId: Schema.optional(Schema.String),
+}).annotate({ identifier: "PostalCode" });
 
 export interface GeoTargeting {
   /** Cities to be targeted. For each city only dartId is required. The other fields are populated automatically when the ad is inserted or updated. If targeting a city, do not target or exclude the country of the city, and do not target the metro or region of the city. */
@@ -6391,47 +5571,33 @@ export interface GeoTargeting {
   excludeCountries?: boolean;
 }
 
-export const GeoTargeting: Schema.Schema<GeoTargeting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cities: Schema.optional(Schema.Array(City)),
-      postalCodes: Schema.optional(Schema.Array(PostalCode)),
-      metros: Schema.optional(Schema.Array(Metro)),
-      countries: Schema.optional(Schema.Array(Country)),
-      regions: Schema.optional(Schema.Array(Region)),
-      excludeCountries: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GeoTargeting",
-  }) as any as Schema.Schema<GeoTargeting>;
+export const GeoTargeting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cities: Schema.optional(Schema.Array(City)),
+  postalCodes: Schema.optional(Schema.Array(PostalCode)),
+  metros: Schema.optional(Schema.Array(Metro)),
+  countries: Schema.optional(Schema.Array(Country)),
+  regions: Schema.optional(Schema.Array(Region)),
+  excludeCountries: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "GeoTargeting" });
 
 export interface ContextualKeyword {
   /** The keyword that can be targeted by ads. */
   keyword?: string;
 }
 
-export const ContextualKeyword: Schema.Schema<ContextualKeyword> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      keyword: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ContextualKeyword",
-  }) as any as Schema.Schema<ContextualKeyword>;
+export const ContextualKeyword = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  keyword: Schema.optional(Schema.String),
+}).annotate({ identifier: "ContextualKeyword" });
 
 export interface ContextualKeywordTargeting {
   /** Contextual keywords that this ad targets */
   keywords?: Array<ContextualKeyword>;
 }
 
-export const ContextualKeywordTargeting: Schema.Schema<ContextualKeywordTargeting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      keywords: Schema.optional(Schema.Array(ContextualKeyword)),
-    }),
-  ).annotate({
-    identifier: "ContextualKeywordTargeting",
-  }) as any as Schema.Schema<ContextualKeywordTargeting>;
+export const ContextualKeywordTargeting =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    keywords: Schema.optional(Schema.Array(ContextualKeyword)),
+  }).annotate({ identifier: "ContextualKeywordTargeting" });
 
 export interface OperatingSystemVersion {
   /** ID of this operating system version. */
@@ -6448,19 +5614,16 @@ export interface OperatingSystemVersion {
   operatingSystem?: OperatingSystem;
 }
 
-export const OperatingSystemVersion: Schema.Schema<OperatingSystemVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      majorVersion: Schema.optional(Schema.String),
-      minorVersion: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      operatingSystem: Schema.optional(OperatingSystem),
-    }),
-  ).annotate({
-    identifier: "OperatingSystemVersion",
-  }) as any as Schema.Schema<OperatingSystemVersion>;
+export const OperatingSystemVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    id: Schema.optional(Schema.String),
+    majorVersion: Schema.optional(Schema.String),
+    minorVersion: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    operatingSystem: Schema.optional(OperatingSystem),
+  },
+).annotate({ identifier: "OperatingSystemVersion" });
 
 export interface Browser {
   /** DART ID of this browser. This is the ID used when generating reports. */
@@ -6477,17 +5640,14 @@ export interface Browser {
   minorVersion?: string;
 }
 
-export const Browser: Schema.Schema<Browser> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dartId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      browserVersionId: Schema.optional(Schema.String),
-      majorVersion: Schema.optional(Schema.String),
-      minorVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Browser" }) as any as Schema.Schema<Browser>;
+export const Browser = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dartId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  browserVersionId: Schema.optional(Schema.String),
+  majorVersion: Schema.optional(Schema.String),
+  minorVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "Browser" });
 
 export interface TechnologyTargeting {
   /** Platform types that this ad targets. For example, desktop, mobile, or tablet. For each platform type, only id is required, and the other fields are populated automatically when the ad is inserted or updated. */
@@ -6504,21 +5664,16 @@ export interface TechnologyTargeting {
   browsers?: Array<Browser>;
 }
 
-export const TechnologyTargeting: Schema.Schema<TechnologyTargeting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      platformTypes: Schema.optional(Schema.Array(PlatformType)),
-      operatingSystems: Schema.optional(Schema.Array(OperatingSystem)),
-      mobileCarriers: Schema.optional(Schema.Array(MobileCarrier)),
-      connectionTypes: Schema.optional(Schema.Array(ConnectionType)),
-      operatingSystemVersions: Schema.optional(
-        Schema.Array(OperatingSystemVersion),
-      ),
-      browsers: Schema.optional(Schema.Array(Browser)),
-    }),
-  ).annotate({
-    identifier: "TechnologyTargeting",
-  }) as any as Schema.Schema<TechnologyTargeting>;
+export const TechnologyTargeting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  platformTypes: Schema.optional(Schema.Array(PlatformType)),
+  operatingSystems: Schema.optional(Schema.Array(OperatingSystem)),
+  mobileCarriers: Schema.optional(Schema.Array(MobileCarrier)),
+  connectionTypes: Schema.optional(Schema.Array(ConnectionType)),
+  operatingSystemVersions: Schema.optional(
+    Schema.Array(OperatingSystemVersion),
+  ),
+  browsers: Schema.optional(Schema.Array(Browser)),
+}).annotate({ identifier: "TechnologyTargeting" });
 
 export interface Ad {
   /** Campaign ID of this ad. This is a required field on insertion. */
@@ -6614,57 +5769,54 @@ export interface Ad {
   comments?: string;
 }
 
-export const Ad: Schema.Schema<Ad> = /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(
-  () =>
-    Schema.Struct({
-      campaignId: Schema.optional(Schema.String),
-      creativeRotation: Schema.optional(CreativeRotation),
-      kind: Schema.optional(Schema.String),
-      deliverySchedule: Schema.optional(DeliverySchedule),
-      sslRequired: Schema.optional(Schema.Boolean),
-      compatibility: Schema.optional(Schema.String),
-      keyValueTargetingExpression: Schema.optional(KeyValueTargetingExpression),
-      startTime: Schema.optional(Schema.String),
-      dayPartTargeting: Schema.optional(DayPartTargeting),
-      clickThroughUrlSuffixProperties: Schema.optional(
-        ClickThroughUrlSuffixProperties,
-      ),
-      lastModifiedInfo: Schema.optional(LastModifiedInfo),
-      subaccountId: Schema.optional(Schema.String),
-      languageTargeting: Schema.optional(LanguageTargeting),
-      eventTagOverrides: Schema.optional(Schema.Array(EventTagOverride)),
-      createInfo: Schema.optional(LastModifiedInfo),
-      creativeGroupAssignments: Schema.optional(
-        Schema.Array(CreativeGroupAssignment),
-      ),
-      name: Schema.optional(Schema.String),
-      archived: Schema.optional(Schema.Boolean),
-      clickThroughUrl: Schema.optional(ClickThroughUrl),
-      id: Schema.optional(Schema.String),
-      active: Schema.optional(Schema.Boolean),
-      sslCompliant: Schema.optional(Schema.Boolean),
-      geoTargeting: Schema.optional(GeoTargeting),
-      type: Schema.optional(Schema.String),
-      contextualKeywordTargeting: Schema.optional(ContextualKeywordTargeting),
-      dynamicClickTracker: Schema.optional(Schema.Boolean),
-      advertiserIdDimensionValue: Schema.optional(DimensionValue),
-      targetingTemplateId: Schema.optional(Schema.String),
-      idDimensionValue: Schema.optional(DimensionValue),
-      defaultClickThroughEventTagProperties: Schema.optional(
-        DefaultClickThroughEventTagProperties,
-      ),
-      campaignIdDimensionValue: Schema.optional(DimensionValue),
-      size: Schema.optional(Size),
-      accountId: Schema.optional(Schema.String),
-      technologyTargeting: Schema.optional(TechnologyTargeting),
-      audienceSegmentId: Schema.optional(Schema.String),
-      placementAssignments: Schema.optional(Schema.Array(PlacementAssignment)),
-      endTime: Schema.optional(Schema.String),
-      remarketingListExpression: Schema.optional(ListTargetingExpression),
-      advertiserId: Schema.optional(Schema.String),
-      comments: Schema.optional(Schema.String),
-    }),
-).annotate({ identifier: "Ad" }) as any as Schema.Schema<Ad>;
+export const Ad = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  campaignId: Schema.optional(Schema.String),
+  creativeRotation: Schema.optional(CreativeRotation),
+  kind: Schema.optional(Schema.String),
+  deliverySchedule: Schema.optional(DeliverySchedule),
+  sslRequired: Schema.optional(Schema.Boolean),
+  compatibility: Schema.optional(Schema.String),
+  keyValueTargetingExpression: Schema.optional(KeyValueTargetingExpression),
+  startTime: Schema.optional(Schema.String),
+  dayPartTargeting: Schema.optional(DayPartTargeting),
+  clickThroughUrlSuffixProperties: Schema.optional(
+    ClickThroughUrlSuffixProperties,
+  ),
+  lastModifiedInfo: Schema.optional(LastModifiedInfo),
+  subaccountId: Schema.optional(Schema.String),
+  languageTargeting: Schema.optional(LanguageTargeting),
+  eventTagOverrides: Schema.optional(Schema.Array(EventTagOverride)),
+  createInfo: Schema.optional(LastModifiedInfo),
+  creativeGroupAssignments: Schema.optional(
+    Schema.Array(CreativeGroupAssignment),
+  ),
+  name: Schema.optional(Schema.String),
+  archived: Schema.optional(Schema.Boolean),
+  clickThroughUrl: Schema.optional(ClickThroughUrl),
+  id: Schema.optional(Schema.String),
+  active: Schema.optional(Schema.Boolean),
+  sslCompliant: Schema.optional(Schema.Boolean),
+  geoTargeting: Schema.optional(GeoTargeting),
+  type: Schema.optional(Schema.String),
+  contextualKeywordTargeting: Schema.optional(ContextualKeywordTargeting),
+  dynamicClickTracker: Schema.optional(Schema.Boolean),
+  advertiserIdDimensionValue: Schema.optional(DimensionValue),
+  targetingTemplateId: Schema.optional(Schema.String),
+  idDimensionValue: Schema.optional(DimensionValue),
+  defaultClickThroughEventTagProperties: Schema.optional(
+    DefaultClickThroughEventTagProperties,
+  ),
+  campaignIdDimensionValue: Schema.optional(DimensionValue),
+  size: Schema.optional(Size),
+  accountId: Schema.optional(Schema.String),
+  technologyTargeting: Schema.optional(TechnologyTargeting),
+  audienceSegmentId: Schema.optional(Schema.String),
+  placementAssignments: Schema.optional(Schema.Array(PlacementAssignment)),
+  endTime: Schema.optional(Schema.String),
+  remarketingListExpression: Schema.optional(ListTargetingExpression),
+  advertiserId: Schema.optional(Schema.String),
+  comments: Schema.optional(Schema.String),
+}).annotate({ identifier: "Ad" });
 
 export interface FloodlightActivityGroup {
   /** Floodlight configuration ID of this floodlight activity group. This is a required field. */
@@ -6693,25 +5845,21 @@ export interface FloodlightActivityGroup {
   idDimensionValue?: DimensionValue;
 }
 
-export const FloodlightActivityGroup: Schema.Schema<FloodlightActivityGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      floodlightConfigurationId: Schema.optional(Schema.String),
-      subaccountId: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      tagString: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-      advertiserIdDimensionValue: Schema.optional(DimensionValue),
-      advertiserId: Schema.optional(Schema.String),
-      floodlightConfigurationIdDimensionValue: Schema.optional(DimensionValue),
-      id: Schema.optional(Schema.String),
-      idDimensionValue: Schema.optional(DimensionValue),
-    }),
-  ).annotate({
-    identifier: "FloodlightActivityGroup",
-  }) as any as Schema.Schema<FloodlightActivityGroup>;
+export const FloodlightActivityGroup =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    floodlightConfigurationId: Schema.optional(Schema.String),
+    subaccountId: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    tagString: Schema.optional(Schema.String),
+    accountId: Schema.optional(Schema.String),
+    advertiserIdDimensionValue: Schema.optional(DimensionValue),
+    advertiserId: Schema.optional(Schema.String),
+    floodlightConfigurationIdDimensionValue: Schema.optional(DimensionValue),
+    id: Schema.optional(Schema.String),
+    idDimensionValue: Schema.optional(DimensionValue),
+  }).annotate({ identifier: "FloodlightActivityGroup" });
 
 export interface FloodlightActivityGroupsListResponse {
   /** Pagination token to be used for the next list operation. */
@@ -6722,18 +5870,14 @@ export interface FloodlightActivityGroupsListResponse {
   floodlightActivityGroups?: Array<FloodlightActivityGroup>;
 }
 
-export const FloodlightActivityGroupsListResponse: Schema.Schema<FloodlightActivityGroupsListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      floodlightActivityGroups: Schema.optional(
-        Schema.Array(FloodlightActivityGroup),
-      ),
-    }),
-  ).annotate({
-    identifier: "FloodlightActivityGroupsListResponse",
-  }) as any as Schema.Schema<FloodlightActivityGroupsListResponse>;
+export const FloodlightActivityGroupsListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    floodlightActivityGroups: Schema.optional(
+      Schema.Array(FloodlightActivityGroup),
+    ),
+  }).annotate({ identifier: "FloodlightActivityGroupsListResponse" });
 
 export interface Account {
   /** Description of this account. */
@@ -6788,30 +5932,27 @@ export interface Account {
   teaserSizeLimit?: string;
 }
 
-export const Account: Schema.Schema<Account> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      availablePermissionIds: Schema.optional(Schema.Array(Schema.String)),
-      defaultCreativeSizeId: Schema.optional(Schema.String),
-      activeViewOptOut: Schema.optional(Schema.Boolean),
-      reportsConfiguration: Schema.optional(ReportsConfiguration),
-      kind: Schema.optional(Schema.String),
-      locale: Schema.optional(Schema.String),
-      activeAdsLimitTier: Schema.optional(Schema.String),
-      currencyId: Schema.optional(Schema.String),
-      active: Schema.optional(Schema.Boolean),
-      maximumImageSize: Schema.optional(Schema.String),
-      accountProfile: Schema.optional(Schema.String),
-      nielsenOcrEnabled: Schema.optional(Schema.Boolean),
-      accountPermissionIds: Schema.optional(Schema.Array(Schema.String)),
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      countryId: Schema.optional(Schema.String),
-      shareReportsWithTwitter: Schema.optional(Schema.Boolean),
-      teaserSizeLimit: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Account" }) as any as Schema.Schema<Account>;
+export const Account = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  availablePermissionIds: Schema.optional(Schema.Array(Schema.String)),
+  defaultCreativeSizeId: Schema.optional(Schema.String),
+  activeViewOptOut: Schema.optional(Schema.Boolean),
+  reportsConfiguration: Schema.optional(ReportsConfiguration),
+  kind: Schema.optional(Schema.String),
+  locale: Schema.optional(Schema.String),
+  activeAdsLimitTier: Schema.optional(Schema.String),
+  currencyId: Schema.optional(Schema.String),
+  active: Schema.optional(Schema.Boolean),
+  maximumImageSize: Schema.optional(Schema.String),
+  accountProfile: Schema.optional(Schema.String),
+  nielsenOcrEnabled: Schema.optional(Schema.Boolean),
+  accountPermissionIds: Schema.optional(Schema.Array(Schema.String)),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  countryId: Schema.optional(Schema.String),
+  shareReportsWithTwitter: Schema.optional(Schema.Boolean),
+  teaserSizeLimit: Schema.optional(Schema.String),
+}).annotate({ identifier: "Account" });
 
 export interface EncryptionInfo {
   /** Describes whether the encrypted cookie was received from ad serving (the %m macro) or from Data Transfer. */
@@ -6836,17 +5977,12 @@ export interface EncryptionInfo {
   kind?: string;
 }
 
-export const EncryptionInfo: Schema.Schema<EncryptionInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      encryptionSource: Schema.optional(Schema.String),
-      encryptionEntityType: Schema.optional(Schema.String),
-      encryptionEntityId: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EncryptionInfo",
-  }) as any as Schema.Schema<EncryptionInfo>;
+export const EncryptionInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  encryptionSource: Schema.optional(Schema.String),
+  encryptionEntityType: Schema.optional(Schema.String),
+  encryptionEntityId: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "EncryptionInfo" });
 
 export interface ConversionsBatchInsertRequest {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#conversionsBatchInsertRequest". */
@@ -6857,16 +5993,12 @@ export interface ConversionsBatchInsertRequest {
   encryptionInfo?: EncryptionInfo;
 }
 
-export const ConversionsBatchInsertRequest: Schema.Schema<ConversionsBatchInsertRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      conversions: Schema.optional(Schema.Array(Conversion)),
-      encryptionInfo: Schema.optional(EncryptionInfo),
-    }),
-  ).annotate({
-    identifier: "ConversionsBatchInsertRequest",
-  }) as any as Schema.Schema<ConversionsBatchInsertRequest>;
+export const ConversionsBatchInsertRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    conversions: Schema.optional(Schema.Array(Conversion)),
+    encryptionInfo: Schema.optional(EncryptionInfo),
+  }).annotate({ identifier: "ConversionsBatchInsertRequest" });
 
 export interface MeasurementPartnerCampaignLink {
   /** . */
@@ -6891,16 +6023,12 @@ export interface MeasurementPartnerCampaignLink {
     | (string & {});
 }
 
-export const MeasurementPartnerCampaignLink: Schema.Schema<MeasurementPartnerCampaignLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      linkStatus: Schema.optional(Schema.String),
-      partnerCampaignId: Schema.optional(Schema.String),
-      measurementPartner: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MeasurementPartnerCampaignLink",
-  }) as any as Schema.Schema<MeasurementPartnerCampaignLink>;
+export const MeasurementPartnerCampaignLink =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    linkStatus: Schema.optional(Schema.String),
+    partnerCampaignId: Schema.optional(Schema.String),
+    measurementPartner: Schema.optional(Schema.String),
+  }).annotate({ identifier: "MeasurementPartnerCampaignLink" });
 
 export interface AdvertiserLandingPagesListResponse {
   /** Pagination token to be used for the next list operation. */
@@ -6911,16 +6039,12 @@ export interface AdvertiserLandingPagesListResponse {
   landingPages?: Array<LandingPage>;
 }
 
-export const AdvertiserLandingPagesListResponse: Schema.Schema<AdvertiserLandingPagesListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      landingPages: Schema.optional(Schema.Array(LandingPage)),
-    }),
-  ).annotate({
-    identifier: "AdvertiserLandingPagesListResponse",
-  }) as any as Schema.Schema<AdvertiserLandingPagesListResponse>;
+export const AdvertiserLandingPagesListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    landingPages: Schema.optional(Schema.Array(LandingPage)),
+  }).annotate({ identifier: "AdvertiserLandingPagesListResponse" });
 
 export interface ConversionsBatchUpdateRequest {
   /** The set of conversions to update. */
@@ -6931,16 +6055,12 @@ export interface ConversionsBatchUpdateRequest {
   kind?: string;
 }
 
-export const ConversionsBatchUpdateRequest: Schema.Schema<ConversionsBatchUpdateRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conversions: Schema.optional(Schema.Array(Conversion)),
-      encryptionInfo: Schema.optional(EncryptionInfo),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConversionsBatchUpdateRequest",
-  }) as any as Schema.Schema<ConversionsBatchUpdateRequest>;
+export const ConversionsBatchUpdateRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conversions: Schema.optional(Schema.Array(Conversion)),
+    encryptionInfo: Schema.optional(EncryptionInfo),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ConversionsBatchUpdateRequest" });
 
 export interface AccountPermissionGroupsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#accountPermissionGroupGroupsListResponse". */
@@ -6949,17 +6069,13 @@ export interface AccountPermissionGroupsListResponse {
   accountPermissionGroups?: Array<AccountPermissionGroup>;
 }
 
-export const AccountPermissionGroupsListResponse: Schema.Schema<AccountPermissionGroupsListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      accountPermissionGroups: Schema.optional(
-        Schema.Array(AccountPermissionGroup),
-      ),
-    }),
-  ).annotate({
-    identifier: "AccountPermissionGroupsListResponse",
-  }) as any as Schema.Schema<AccountPermissionGroupsListResponse>;
+export const AccountPermissionGroupsListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    accountPermissionGroups: Schema.optional(
+      Schema.Array(AccountPermissionGroup),
+    ),
+  }).annotate({ identifier: "AccountPermissionGroupsListResponse" });
 
 export interface MeasurementPartnerWrappingData {
   /** Tag provided by the measurement partner during wrapping. */
@@ -7003,17 +6119,13 @@ export interface MeasurementPartnerWrappingData {
     | (string & {});
 }
 
-export const MeasurementPartnerWrappingData: Schema.Schema<MeasurementPartnerWrappingData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      wrappedTag: Schema.optional(Schema.String),
-      tagWrappingMode: Schema.optional(Schema.String),
-      measurementPartner: Schema.optional(Schema.String),
-      linkStatus: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MeasurementPartnerWrappingData",
-  }) as any as Schema.Schema<MeasurementPartnerWrappingData>;
+export const MeasurementPartnerWrappingData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    wrappedTag: Schema.optional(Schema.String),
+    tagWrappingMode: Schema.optional(Schema.String),
+    measurementPartner: Schema.optional(Schema.String),
+    linkStatus: Schema.optional(Schema.String),
+  }).annotate({ identifier: "MeasurementPartnerWrappingData" });
 
 export interface TvCampaignTimepoint {
   /** The spend within the time range of the timepoint. */
@@ -7031,16 +6143,11 @@ export interface TvCampaignTimepoint {
   startDate?: string;
 }
 
-export const TvCampaignTimepoint: Schema.Schema<TvCampaignTimepoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      spend: Schema.optional(Schema.Number),
-      dateWindow: Schema.optional(Schema.String),
-      startDate: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TvCampaignTimepoint",
-  }) as any as Schema.Schema<TvCampaignTimepoint>;
+export const TvCampaignTimepoint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  spend: Schema.optional(Schema.Number),
+  dateWindow: Schema.optional(Schema.String),
+  startDate: Schema.optional(Schema.String),
+}).annotate({ identifier: "TvCampaignTimepoint" });
 
 export interface TvCampaignDetail {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#tvCampaignSummary". */
@@ -7051,16 +6158,11 @@ export interface TvCampaignDetail {
   timepoints?: Array<TvCampaignTimepoint>;
 }
 
-export const TvCampaignDetail: Schema.Schema<TvCampaignDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      timepoints: Schema.optional(Schema.Array(TvCampaignTimepoint)),
-    }),
-  ).annotate({
-    identifier: "TvCampaignDetail",
-  }) as any as Schema.Schema<TvCampaignDetail>;
+export const TvCampaignDetail = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  timepoints: Schema.optional(Schema.Array(TvCampaignTimepoint)),
+}).annotate({ identifier: "TvCampaignDetail" });
 
 export interface Placement {
   /** Whether this placement is the primary placement of a roadblock (placement group). You cannot change this field from true to false. Setting this field to true will automatically set the primary field on the original primary placement of the roadblock to false, and it will automatically set the roadblock's primaryPlacementId field to the ID of this placement. */
@@ -7206,61 +6308,56 @@ export interface Placement {
   siteId?: string;
 }
 
-export const Placement: Schema.Schema<Placement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      primary: Schema.optional(Schema.Boolean),
-      placementGroupId: Schema.optional(Schema.String),
-      compatibility: Schema.optional(Schema.String),
-      sslRequired: Schema.optional(Schema.Boolean),
-      externalId: Schema.optional(Schema.String),
-      paymentApproved: Schema.optional(Schema.Boolean),
-      kind: Schema.optional(Schema.String),
-      campaignId: Schema.optional(Schema.String),
-      placementStrategyId: Schema.optional(Schema.String),
-      tagFormats: Schema.optional(Schema.Array(Schema.String)),
-      siteServed: Schema.optional(Schema.Boolean),
-      youtubeSettings: Schema.optional(YoutubeSettings),
-      id: Schema.optional(Schema.String),
-      placementGroupIdDimensionValue: Schema.optional(DimensionValue),
-      partnerWrappingData: Schema.optional(MeasurementPartnerWrappingData),
-      contentCategoryId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      tagSetting: Schema.optional(TagSetting),
-      directorySiteIdDimensionValue: Schema.optional(DimensionValue),
-      siteIdDimensionValue: Schema.optional(DimensionValue),
-      createInfo: Schema.optional(LastModifiedInfo),
-      lastModifiedInfo: Schema.optional(LastModifiedInfo),
-      adBlockingOptOut: Schema.optional(Schema.Boolean),
-      subaccountId: Schema.optional(Schema.String),
-      conversionDomainOverride: Schema.optional(
-        PlacementConversionDomainOverride,
-      ),
-      videoActiveViewOptOut: Schema.optional(Schema.Boolean),
-      idDimensionValue: Schema.optional(DimensionValue),
-      wrappingOptOut: Schema.optional(Schema.Boolean),
-      comment: Schema.optional(Schema.String),
-      activeStatus: Schema.optional(Schema.String),
-      publisherUpdateInfo: Schema.optional(LastModifiedInfo),
-      advertiserIdDimensionValue: Schema.optional(DimensionValue),
-      pricingSchedule: Schema.optional(PricingSchedule),
-      vpaidAdapterChoice: Schema.optional(Schema.String),
-      keyName: Schema.optional(Schema.String),
-      allowOnYoutube: Schema.optional(Schema.Boolean),
-      advertiserId: Schema.optional(Schema.String),
-      lookbackConfiguration: Schema.optional(LookbackConfiguration),
-      adServingPlatformId: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-      videoSettings: Schema.optional(VideoSettings),
-      accountId: Schema.optional(Schema.String),
-      paymentSource: Schema.optional(Schema.String),
-      additionalSizes: Schema.optional(Schema.Array(Size)),
-      directorySiteId: Schema.optional(Schema.String),
-      size: Schema.optional(Size),
-      campaignIdDimensionValue: Schema.optional(DimensionValue),
-      siteId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Placement" }) as any as Schema.Schema<Placement>;
+export const Placement = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  primary: Schema.optional(Schema.Boolean),
+  placementGroupId: Schema.optional(Schema.String),
+  compatibility: Schema.optional(Schema.String),
+  sslRequired: Schema.optional(Schema.Boolean),
+  externalId: Schema.optional(Schema.String),
+  paymentApproved: Schema.optional(Schema.Boolean),
+  kind: Schema.optional(Schema.String),
+  campaignId: Schema.optional(Schema.String),
+  placementStrategyId: Schema.optional(Schema.String),
+  tagFormats: Schema.optional(Schema.Array(Schema.String)),
+  siteServed: Schema.optional(Schema.Boolean),
+  youtubeSettings: Schema.optional(YoutubeSettings),
+  id: Schema.optional(Schema.String),
+  placementGroupIdDimensionValue: Schema.optional(DimensionValue),
+  partnerWrappingData: Schema.optional(MeasurementPartnerWrappingData),
+  contentCategoryId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  tagSetting: Schema.optional(TagSetting),
+  directorySiteIdDimensionValue: Schema.optional(DimensionValue),
+  siteIdDimensionValue: Schema.optional(DimensionValue),
+  createInfo: Schema.optional(LastModifiedInfo),
+  lastModifiedInfo: Schema.optional(LastModifiedInfo),
+  adBlockingOptOut: Schema.optional(Schema.Boolean),
+  subaccountId: Schema.optional(Schema.String),
+  conversionDomainOverride: Schema.optional(PlacementConversionDomainOverride),
+  videoActiveViewOptOut: Schema.optional(Schema.Boolean),
+  idDimensionValue: Schema.optional(DimensionValue),
+  wrappingOptOut: Schema.optional(Schema.Boolean),
+  comment: Schema.optional(Schema.String),
+  activeStatus: Schema.optional(Schema.String),
+  publisherUpdateInfo: Schema.optional(LastModifiedInfo),
+  advertiserIdDimensionValue: Schema.optional(DimensionValue),
+  pricingSchedule: Schema.optional(PricingSchedule),
+  vpaidAdapterChoice: Schema.optional(Schema.String),
+  keyName: Schema.optional(Schema.String),
+  allowOnYoutube: Schema.optional(Schema.Boolean),
+  advertiserId: Schema.optional(Schema.String),
+  lookbackConfiguration: Schema.optional(LookbackConfiguration),
+  adServingPlatformId: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.String),
+  videoSettings: Schema.optional(VideoSettings),
+  accountId: Schema.optional(Schema.String),
+  paymentSource: Schema.optional(Schema.String),
+  additionalSizes: Schema.optional(Schema.Array(Size)),
+  directorySiteId: Schema.optional(Schema.String),
+  size: Schema.optional(Size),
+  campaignIdDimensionValue: Schema.optional(DimensionValue),
+  siteId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Placement" });
 
 export interface File {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#file". */
@@ -7291,26 +6388,23 @@ export interface File {
   id?: string;
 }
 
-export const File: Schema.Schema<File> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const File = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  fileName: Schema.optional(Schema.String),
+  reportId: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  format: Schema.optional(Schema.String),
+  urls: Schema.optional(
     Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      fileName: Schema.optional(Schema.String),
-      reportId: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      format: Schema.optional(Schema.String),
-      urls: Schema.optional(
-        Schema.Struct({
-          browserUrl: Schema.optional(Schema.String),
-          apiUrl: Schema.optional(Schema.String),
-        }),
-      ),
-      dateRange: Schema.optional(DateRange),
-      status: Schema.optional(Schema.String),
-      lastModifiedTime: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
+      browserUrl: Schema.optional(Schema.String),
+      apiUrl: Schema.optional(Schema.String),
     }),
-  ).annotate({ identifier: "File" }) as any as Schema.Schema<File>;
+  ),
+  dateRange: Schema.optional(DateRange),
+  status: Schema.optional(Schema.String),
+  lastModifiedTime: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+}).annotate({ identifier: "File" });
 
 export interface FileList {
   /** Etag of this resource. */
@@ -7323,15 +6417,12 @@ export interface FileList {
   nextPageToken?: string;
 }
 
-export const FileList: Schema.Schema<FileList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      etag: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(File)),
-      kind: Schema.optional(Schema.String),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "FileList" }) as any as Schema.Schema<FileList>;
+export const FileList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  etag: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(File)),
+  kind: Schema.optional(Schema.String),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "FileList" });
 
 export interface PlacementsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#placementsListResponse". */
@@ -7342,16 +6433,13 @@ export interface PlacementsListResponse {
   placements?: Array<Placement>;
 }
 
-export const PlacementsListResponse: Schema.Schema<PlacementsListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      nextPageToken: Schema.optional(Schema.String),
-      placements: Schema.optional(Schema.Array(Placement)),
-    }),
-  ).annotate({
-    identifier: "PlacementsListResponse",
-  }) as any as Schema.Schema<PlacementsListResponse>;
+export const PlacementsListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    kind: Schema.optional(Schema.String),
+    nextPageToken: Schema.optional(Schema.String),
+    placements: Schema.optional(Schema.Array(Placement)),
+  },
+).annotate({ identifier: "PlacementsListResponse" });
 
 export interface ObjectFilter {
   /** Status of the filter. NONE means the user has access to none of the objects. ALL means the user has access to all objects. ASSIGNED means the user has access to the objects with IDs in the objectIds list. */
@@ -7362,16 +6450,11 @@ export interface ObjectFilter {
   objectIds?: Array<string>;
 }
 
-export const ObjectFilter: Schema.Schema<ObjectFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      status: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      objectIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ObjectFilter",
-  }) as any as Schema.Schema<ObjectFilter>;
+export const ObjectFilter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  status: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  objectIds: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ObjectFilter" });
 
 export interface AccountUserProfile {
   /** Subaccount ID of the user profile. This is a read-only field that can be left blank. */
@@ -7417,29 +6500,24 @@ export interface AccountUserProfile {
   kind?: string;
 }
 
-export const AccountUserProfile: Schema.Schema<AccountUserProfile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subaccountId: Schema.optional(Schema.String),
-      userRoleId: Schema.optional(Schema.String),
-      traffickerType: Schema.optional(Schema.String),
-      campaignFilter: Schema.optional(ObjectFilter),
-      userAccessType: Schema.optional(Schema.String),
-      advertiserFilter: Schema.optional(ObjectFilter),
-      name: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      comments: Schema.optional(Schema.String),
-      userRoleFilter: Schema.optional(ObjectFilter),
-      email: Schema.optional(Schema.String),
-      active: Schema.optional(Schema.Boolean),
-      locale: Schema.optional(Schema.String),
-      siteFilter: Schema.optional(ObjectFilter),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccountUserProfile",
-  }) as any as Schema.Schema<AccountUserProfile>;
+export const AccountUserProfile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subaccountId: Schema.optional(Schema.String),
+  userRoleId: Schema.optional(Schema.String),
+  traffickerType: Schema.optional(Schema.String),
+  campaignFilter: Schema.optional(ObjectFilter),
+  userAccessType: Schema.optional(Schema.String),
+  advertiserFilter: Schema.optional(ObjectFilter),
+  name: Schema.optional(Schema.String),
+  accountId: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  comments: Schema.optional(Schema.String),
+  userRoleFilter: Schema.optional(ObjectFilter),
+  email: Schema.optional(Schema.String),
+  active: Schema.optional(Schema.Boolean),
+  locale: Schema.optional(Schema.String),
+  siteFilter: Schema.optional(ObjectFilter),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "AccountUserProfile" });
 
 export interface PostalCodesListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#postalCodesListResponse". */
@@ -7448,29 +6526,21 @@ export interface PostalCodesListResponse {
   postalCodes?: Array<PostalCode>;
 }
 
-export const PostalCodesListResponse: Schema.Schema<PostalCodesListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      postalCodes: Schema.optional(Schema.Array(PostalCode)),
-    }),
-  ).annotate({
-    identifier: "PostalCodesListResponse",
-  }) as any as Schema.Schema<PostalCodesListResponse>;
+export const PostalCodesListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    postalCodes: Schema.optional(Schema.Array(PostalCode)),
+  }).annotate({ identifier: "PostalCodesListResponse" });
 
 export interface AdBlockingConfiguration {
   /** Whether this campaign has enabled ad blocking. When true, ad blocking is enabled for placements in the campaign, but this may be overridden by site and placement settings. When false, ad blocking is disabled for all placements under the campaign, regardless of site and placement settings. */
   enabled?: boolean;
 }
 
-export const AdBlockingConfiguration: Schema.Schema<AdBlockingConfiguration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "AdBlockingConfiguration",
-  }) as any as Schema.Schema<AdBlockingConfiguration>;
+export const AdBlockingConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "AdBlockingConfiguration" });
 
 export interface Campaign {
   /** Dimension value for the ID of this campaign. This is a read-only, auto-generated field. */
@@ -7532,49 +6602,44 @@ export interface Campaign {
   subaccountId?: string;
 }
 
-export const Campaign: Schema.Schema<Campaign> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      idDimensionValue: Schema.optional(DimensionValue),
-      comment: Schema.optional(Schema.String),
-      advertiserIdDimensionValue: Schema.optional(DimensionValue),
-      endDate: Schema.optional(Schema.String),
-      measurementPartnerLink: Schema.optional(MeasurementPartnerCampaignLink),
-      advertiserId: Schema.optional(Schema.String),
-      advertiserGroupId: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-      adBlockingConfiguration: Schema.optional(AdBlockingConfiguration),
-      defaultLandingPageId: Schema.optional(Schema.String),
-      creativeGroupIds: Schema.optional(Schema.Array(Schema.String)),
-      defaultClickThroughEventTagProperties: Schema.optional(
-        DefaultClickThroughEventTagProperties,
-      ),
-      euPoliticalAdsDeclaration: Schema.optional(Schema.String),
-      clickThroughUrlSuffixProperties: Schema.optional(
-        ClickThroughUrlSuffixProperties,
-      ),
-      additionalCreativeOptimizationConfigurations: Schema.optional(
-        Schema.Array(CreativeOptimizationConfiguration),
-      ),
-      externalId: Schema.optional(Schema.String),
-      audienceSegmentGroups: Schema.optional(
-        Schema.Array(AudienceSegmentGroup),
-      ),
-      kind: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      creativeOptimizationConfiguration: Schema.optional(
-        CreativeOptimizationConfiguration,
-      ),
-      archived: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-      createInfo: Schema.optional(LastModifiedInfo),
-      startDate: Schema.optional(Schema.String),
-      billingInvoiceCode: Schema.optional(Schema.String),
-      eventTagOverrides: Schema.optional(Schema.Array(EventTagOverride)),
-      lastModifiedInfo: Schema.optional(LastModifiedInfo),
-      subaccountId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Campaign" }) as any as Schema.Schema<Campaign>;
+export const Campaign = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  idDimensionValue: Schema.optional(DimensionValue),
+  comment: Schema.optional(Schema.String),
+  advertiserIdDimensionValue: Schema.optional(DimensionValue),
+  endDate: Schema.optional(Schema.String),
+  measurementPartnerLink: Schema.optional(MeasurementPartnerCampaignLink),
+  advertiserId: Schema.optional(Schema.String),
+  advertiserGroupId: Schema.optional(Schema.String),
+  accountId: Schema.optional(Schema.String),
+  adBlockingConfiguration: Schema.optional(AdBlockingConfiguration),
+  defaultLandingPageId: Schema.optional(Schema.String),
+  creativeGroupIds: Schema.optional(Schema.Array(Schema.String)),
+  defaultClickThroughEventTagProperties: Schema.optional(
+    DefaultClickThroughEventTagProperties,
+  ),
+  euPoliticalAdsDeclaration: Schema.optional(Schema.String),
+  clickThroughUrlSuffixProperties: Schema.optional(
+    ClickThroughUrlSuffixProperties,
+  ),
+  additionalCreativeOptimizationConfigurations: Schema.optional(
+    Schema.Array(CreativeOptimizationConfiguration),
+  ),
+  externalId: Schema.optional(Schema.String),
+  audienceSegmentGroups: Schema.optional(Schema.Array(AudienceSegmentGroup)),
+  kind: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  creativeOptimizationConfiguration: Schema.optional(
+    CreativeOptimizationConfiguration,
+  ),
+  archived: Schema.optional(Schema.Boolean),
+  name: Schema.optional(Schema.String),
+  createInfo: Schema.optional(LastModifiedInfo),
+  startDate: Schema.optional(Schema.String),
+  billingInvoiceCode: Schema.optional(Schema.String),
+  eventTagOverrides: Schema.optional(Schema.Array(EventTagOverride)),
+  lastModifiedInfo: Schema.optional(LastModifiedInfo),
+  subaccountId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Campaign" });
 
 export interface VideoProcessingData {
   /** Output only. The processing state of the studio creative asset. */
@@ -7588,15 +6653,10 @@ export interface VideoProcessingData {
   errorReason?: string;
 }
 
-export const VideoProcessingData: Schema.Schema<VideoProcessingData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      processingState: Schema.optional(Schema.String),
-      errorReason: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VideoProcessingData",
-  }) as any as Schema.Schema<VideoProcessingData>;
+export const VideoProcessingData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  processingState: Schema.optional(Schema.String),
+  errorReason: Schema.optional(Schema.String),
+}).annotate({ identifier: "VideoProcessingData" });
 
 export interface StudioCreativeAsset {
   /** Output only. The creation timestamp of the studio creative asset. This is a read-only field. */
@@ -7621,37 +6681,28 @@ export interface StudioCreativeAsset {
   filename?: string;
 }
 
-export const StudioCreativeAsset: Schema.Schema<StudioCreativeAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createInfo: Schema.optional(LastModifiedInfo),
-      type: Schema.optional(Schema.String),
-      lastModifiedInfo: Schema.optional(LastModifiedInfo),
-      studioCreativeId: Schema.optional(Schema.String),
-      filesize: Schema.optional(Schema.String),
-      videoProcessingData: Schema.optional(VideoProcessingData),
-      studioAdvertiserId: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      studioAccountId: Schema.optional(Schema.String),
-      filename: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StudioCreativeAsset",
-  }) as any as Schema.Schema<StudioCreativeAsset>;
+export const StudioCreativeAsset = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createInfo: Schema.optional(LastModifiedInfo),
+  type: Schema.optional(Schema.String),
+  lastModifiedInfo: Schema.optional(LastModifiedInfo),
+  studioCreativeId: Schema.optional(Schema.String),
+  filesize: Schema.optional(Schema.String),
+  videoProcessingData: Schema.optional(VideoProcessingData),
+  studioAdvertiserId: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  studioAccountId: Schema.optional(Schema.String),
+  filename: Schema.optional(Schema.String),
+}).annotate({ identifier: "StudioCreativeAsset" });
 
 export interface StudioCreativeAssetsResponse {
   /** The list of studio creative assets. */
   assets?: Array<StudioCreativeAsset>;
 }
 
-export const StudioCreativeAssetsResponse: Schema.Schema<StudioCreativeAssetsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      assets: Schema.optional(Schema.Array(StudioCreativeAsset)),
-    }),
-  ).annotate({
-    identifier: "StudioCreativeAssetsResponse",
-  }) as any as Schema.Schema<StudioCreativeAssetsResponse>;
+export const StudioCreativeAssetsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    assets: Schema.optional(Schema.Array(StudioCreativeAsset)),
+  }).annotate({ identifier: "StudioCreativeAssetsResponse" });
 
 export interface RemarketingListsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#remarketingListsListResponse". */
@@ -7662,16 +6713,12 @@ export interface RemarketingListsListResponse {
   remarketingLists?: Array<RemarketingList>;
 }
 
-export const RemarketingListsListResponse: Schema.Schema<RemarketingListsListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      nextPageToken: Schema.optional(Schema.String),
-      remarketingLists: Schema.optional(Schema.Array(RemarketingList)),
-    }),
-  ).annotate({
-    identifier: "RemarketingListsListResponse",
-  }) as any as Schema.Schema<RemarketingListsListResponse>;
+export const RemarketingListsListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    nextPageToken: Schema.optional(Schema.String),
+    remarketingLists: Schema.optional(Schema.Array(RemarketingList)),
+  }).annotate({ identifier: "RemarketingListsListResponse" });
 
 export interface ContentCategory {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#contentCategory". */
@@ -7684,17 +6731,12 @@ export interface ContentCategory {
   id?: string;
 }
 
-export const ContentCategory: Schema.Schema<ContentCategory> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ContentCategory",
-  }) as any as Schema.Schema<ContentCategory>;
+export const ContentCategory = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  accountId: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+}).annotate({ identifier: "ContentCategory" });
 
 export interface UserRolePermission {
   /** Name of this user role permission. */
@@ -7716,18 +6758,13 @@ export interface UserRolePermission {
     | (string & {});
 }
 
-export const UserRolePermission: Schema.Schema<UserRolePermission> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      permissionGroupId: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      availability: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UserRolePermission",
-  }) as any as Schema.Schema<UserRolePermission>;
+export const UserRolePermission = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  permissionGroupId: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  availability: Schema.optional(Schema.String),
+}).annotate({ identifier: "UserRolePermission" });
 
 export interface UserRolePermissionsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#userRolePermissionsListResponse". */
@@ -7736,15 +6773,11 @@ export interface UserRolePermissionsListResponse {
   userRolePermissions?: Array<UserRolePermission>;
 }
 
-export const UserRolePermissionsListResponse: Schema.Schema<UserRolePermissionsListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      userRolePermissions: Schema.optional(Schema.Array(UserRolePermission)),
-    }),
-  ).annotate({
-    identifier: "UserRolePermissionsListResponse",
-  }) as any as Schema.Schema<UserRolePermissionsListResponse>;
+export const UserRolePermissionsListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    userRolePermissions: Schema.optional(Schema.Array(UserRolePermission)),
+  }).annotate({ identifier: "UserRolePermissionsListResponse" });
 
 export interface CreativeFieldValue {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#creativeFieldValue". */
@@ -7755,16 +6788,11 @@ export interface CreativeFieldValue {
   value?: string;
 }
 
-export const CreativeFieldValue: Schema.Schema<CreativeFieldValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreativeFieldValue",
-  }) as any as Schema.Schema<CreativeFieldValue>;
+export const CreativeFieldValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+}).annotate({ identifier: "CreativeFieldValue" });
 
 export interface AdvertisersListResponse {
   /** Pagination token to be used for the next list operation. */
@@ -7775,16 +6803,12 @@ export interface AdvertisersListResponse {
   advertisers?: Array<Advertiser>;
 }
 
-export const AdvertisersListResponse: Schema.Schema<AdvertisersListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      advertisers: Schema.optional(Schema.Array(Advertiser)),
-    }),
-  ).annotate({
-    identifier: "AdvertisersListResponse",
-  }) as any as Schema.Schema<AdvertisersListResponse>;
+export const AdvertisersListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    advertisers: Schema.optional(Schema.Array(Advertiser)),
+  }).annotate({ identifier: "AdvertisersListResponse" });
 
 export interface CampaignsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#campaignsListResponse". */
@@ -7795,16 +6819,11 @@ export interface CampaignsListResponse {
   nextPageToken?: string;
 }
 
-export const CampaignsListResponse: Schema.Schema<CampaignsListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      campaigns: Schema.optional(Schema.Array(Campaign)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CampaignsListResponse",
-  }) as any as Schema.Schema<CampaignsListResponse>;
+export const CampaignsListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  campaigns: Schema.optional(Schema.Array(Campaign)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "CampaignsListResponse" });
 
 export interface BillingAssignment {
   /** ID of the subaccount associated with the billing assignment.Wildcard (*) means this assignment is not limited to a single subaccountThis is a read-only, auto-generated field. */
@@ -7819,18 +6838,13 @@ export interface BillingAssignment {
   kind?: string;
 }
 
-export const BillingAssignment: Schema.Schema<BillingAssignment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subaccountId: Schema.optional(Schema.String),
-      campaignId: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-      advertiserId: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BillingAssignment",
-  }) as any as Schema.Schema<BillingAssignment>;
+export const BillingAssignment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subaccountId: Schema.optional(Schema.String),
+  campaignId: Schema.optional(Schema.String),
+  accountId: Schema.optional(Schema.String),
+  advertiserId: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "BillingAssignment" });
 
 export interface BillingAssignmentsListResponse {
   /** Billing assignments collection. */
@@ -7839,15 +6853,11 @@ export interface BillingAssignmentsListResponse {
   kind?: string;
 }
 
-export const BillingAssignmentsListResponse: Schema.Schema<BillingAssignmentsListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      billingAssignments: Schema.optional(Schema.Array(BillingAssignment)),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BillingAssignmentsListResponse",
-  }) as any as Schema.Schema<BillingAssignmentsListResponse>;
+export const BillingAssignmentsListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    billingAssignments: Schema.optional(Schema.Array(BillingAssignment)),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BillingAssignmentsListResponse" });
 
 export interface ConnectionTypesListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#connectionTypesListResponse". */
@@ -7856,15 +6866,11 @@ export interface ConnectionTypesListResponse {
   connectionTypes?: Array<ConnectionType>;
 }
 
-export const ConnectionTypesListResponse: Schema.Schema<ConnectionTypesListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      connectionTypes: Schema.optional(Schema.Array(ConnectionType)),
-    }),
-  ).annotate({
-    identifier: "ConnectionTypesListResponse",
-  }) as any as Schema.Schema<ConnectionTypesListResponse>;
+export const ConnectionTypesListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    connectionTypes: Schema.optional(Schema.Array(ConnectionType)),
+  }).annotate({ identifier: "ConnectionTypesListResponse" });
 
 export interface BrowsersListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#browsersListResponse". */
@@ -7873,15 +6879,10 @@ export interface BrowsersListResponse {
   browsers?: Array<Browser>;
 }
 
-export const BrowsersListResponse: Schema.Schema<BrowsersListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      browsers: Schema.optional(Schema.Array(Browser)),
-    }),
-  ).annotate({
-    identifier: "BrowsersListResponse",
-  }) as any as Schema.Schema<BrowsersListResponse>;
+export const BrowsersListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  browsers: Schema.optional(Schema.Array(Browser)),
+}).annotate({ identifier: "BrowsersListResponse" });
 
 export interface UserRole {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#userRole". */
@@ -7902,19 +6903,16 @@ export interface UserRole {
   subaccountId?: string;
 }
 
-export const UserRole: Schema.Schema<UserRole> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      permissions: Schema.optional(Schema.Array(UserRolePermission)),
-      name: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-      defaultUserRole: Schema.optional(Schema.Boolean),
-      parentUserRoleId: Schema.optional(Schema.String),
-      subaccountId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "UserRole" }) as any as Schema.Schema<UserRole>;
+export const UserRole = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  permissions: Schema.optional(Schema.Array(UserRolePermission)),
+  name: Schema.optional(Schema.String),
+  accountId: Schema.optional(Schema.String),
+  defaultUserRole: Schema.optional(Schema.Boolean),
+  parentUserRoleId: Schema.optional(Schema.String),
+  subaccountId: Schema.optional(Schema.String),
+}).annotate({ identifier: "UserRole" });
 
 export interface AdvertiserGroup {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#advertiserGroup". */
@@ -7927,17 +6925,12 @@ export interface AdvertiserGroup {
   id?: string;
 }
 
-export const AdvertiserGroup: Schema.Schema<AdvertiserGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AdvertiserGroup",
-  }) as any as Schema.Schema<AdvertiserGroup>;
+export const AdvertiserGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  accountId: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+}).annotate({ identifier: "AdvertiserGroup" });
 
 export interface AdvertiserGroupsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#advertiserGroupsListResponse". */
@@ -7948,16 +6941,12 @@ export interface AdvertiserGroupsListResponse {
   advertiserGroups?: Array<AdvertiserGroup>;
 }
 
-export const AdvertiserGroupsListResponse: Schema.Schema<AdvertiserGroupsListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      nextPageToken: Schema.optional(Schema.String),
-      advertiserGroups: Schema.optional(Schema.Array(AdvertiserGroup)),
-    }),
-  ).annotate({
-    identifier: "AdvertiserGroupsListResponse",
-  }) as any as Schema.Schema<AdvertiserGroupsListResponse>;
+export const AdvertiserGroupsListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    nextPageToken: Schema.optional(Schema.String),
+    advertiserGroups: Schema.optional(Schema.Array(AdvertiserGroup)),
+  }).annotate({ identifier: "AdvertiserGroupsListResponse" });
 
 export interface DynamicProfile {
   /** Optional. Archive status of this dynamic profile. */
@@ -7988,24 +6977,19 @@ export interface DynamicProfile {
   kind?: string;
 }
 
-export const DynamicProfile: Schema.Schema<DynamicProfile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      archiveStatus: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      draft: Schema.optional(DynamicProfileVersion),
-      status: Schema.optional(Schema.String),
-      lastModifiedInfo: Schema.optional(LastModifiedInfo),
-      active: Schema.optional(DynamicProfileVersion),
-      studioAdvertiserId: Schema.optional(Schema.String),
-      createInfo: Schema.optional(LastModifiedInfo),
-      dynamicProfileId: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DynamicProfile",
-  }) as any as Schema.Schema<DynamicProfile>;
+export const DynamicProfile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  archiveStatus: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  draft: Schema.optional(DynamicProfileVersion),
+  status: Schema.optional(Schema.String),
+  lastModifiedInfo: Schema.optional(LastModifiedInfo),
+  active: Schema.optional(DynamicProfileVersion),
+  studioAdvertiserId: Schema.optional(Schema.String),
+  createInfo: Schema.optional(LastModifiedInfo),
+  dynamicProfileId: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "DynamicProfile" });
 
 export interface OperatingSystemVersionsListResponse {
   /** Operating system version collection. */
@@ -8014,17 +6998,13 @@ export interface OperatingSystemVersionsListResponse {
   kind?: string;
 }
 
-export const OperatingSystemVersionsListResponse: Schema.Schema<OperatingSystemVersionsListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operatingSystemVersions: Schema.optional(
-        Schema.Array(OperatingSystemVersion),
-      ),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperatingSystemVersionsListResponse",
-  }) as any as Schema.Schema<OperatingSystemVersionsListResponse>;
+export const OperatingSystemVersionsListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operatingSystemVersions: Schema.optional(
+      Schema.Array(OperatingSystemVersion),
+    ),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OperatingSystemVersionsListResponse" });
 
 export interface ConversionsBatchInsertResponse {
   /** Indicates that some or all conversions failed to insert. */
@@ -8035,16 +7015,12 @@ export interface ConversionsBatchInsertResponse {
   kind?: string;
 }
 
-export const ConversionsBatchInsertResponse: Schema.Schema<ConversionsBatchInsertResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hasFailures: Schema.optional(Schema.Boolean),
-      status: Schema.optional(Schema.Array(ConversionStatus)),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConversionsBatchInsertResponse",
-  }) as any as Schema.Schema<ConversionsBatchInsertResponse>;
+export const ConversionsBatchInsertResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    hasFailures: Schema.optional(Schema.Boolean),
+    status: Schema.optional(Schema.Array(ConversionStatus)),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ConversionsBatchInsertResponse" });
 
 export interface MobileAppsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#mobileAppsListResponse". */
@@ -8055,16 +7031,13 @@ export interface MobileAppsListResponse {
   nextPageToken?: string;
 }
 
-export const MobileAppsListResponse: Schema.Schema<MobileAppsListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      mobileApps: Schema.optional(Schema.Array(MobileApp)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MobileAppsListResponse",
-  }) as any as Schema.Schema<MobileAppsListResponse>;
+export const MobileAppsListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    kind: Schema.optional(Schema.String),
+    mobileApps: Schema.optional(Schema.Array(MobileApp)),
+    nextPageToken: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "MobileAppsListResponse" });
 
 export interface CreativeFieldsListResponse {
   /** Pagination token to be used for the next list operation. */
@@ -8075,16 +7048,12 @@ export interface CreativeFieldsListResponse {
   creativeFields?: Array<CreativeField>;
 }
 
-export const CreativeFieldsListResponse: Schema.Schema<CreativeFieldsListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      creativeFields: Schema.optional(Schema.Array(CreativeField)),
-    }),
-  ).annotate({
-    identifier: "CreativeFieldsListResponse",
-  }) as any as Schema.Schema<CreativeFieldsListResponse>;
+export const CreativeFieldsListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    creativeFields: Schema.optional(Schema.Array(CreativeField)),
+  }).annotate({ identifier: "CreativeFieldsListResponse" });
 
 export interface DimensionFilter {
   /** The kind of resource this is, in this case dfareporting#dimensionFilter. */
@@ -8095,16 +7064,11 @@ export interface DimensionFilter {
   dimensionName?: string;
 }
 
-export const DimensionFilter: Schema.Schema<DimensionFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-      dimensionName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DimensionFilter",
-  }) as any as Schema.Schema<DimensionFilter>;
+export const DimensionFilter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+  dimensionName: Schema.optional(Schema.String),
+}).annotate({ identifier: "DimensionFilter" });
 
 export interface DimensionValueRequest {
   /** The name of the dimension for which values should be requested. */
@@ -8117,18 +7081,13 @@ export interface DimensionValueRequest {
   kind?: string;
 }
 
-export const DimensionValueRequest: Schema.Schema<DimensionValueRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dimensionName: Schema.optional(Schema.String),
-      filters: Schema.optional(Schema.Array(DimensionFilter)),
-      startDate: Schema.optional(Schema.String),
-      endDate: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DimensionValueRequest",
-  }) as any as Schema.Schema<DimensionValueRequest>;
+export const DimensionValueRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dimensionName: Schema.optional(Schema.String),
+  filters: Schema.optional(Schema.Array(DimensionFilter)),
+  startDate: Schema.optional(Schema.String),
+  endDate: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "DimensionValueRequest" });
 
 export interface AdsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#adsListResponse". */
@@ -8139,16 +7098,11 @@ export interface AdsListResponse {
   ads?: Array<Ad>;
 }
 
-export const AdsListResponse: Schema.Schema<AdsListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      nextPageToken: Schema.optional(Schema.String),
-      ads: Schema.optional(Schema.Array(Ad)),
-    }),
-  ).annotate({
-    identifier: "AdsListResponse",
-  }) as any as Schema.Schema<AdsListResponse>;
+export const AdsListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  nextPageToken: Schema.optional(Schema.String),
+  ads: Schema.optional(Schema.Array(Ad)),
+}).annotate({ identifier: "AdsListResponse" });
 
 export interface ReportList {
   /** The eTag of this response for caching purposes. */
@@ -8161,15 +7115,12 @@ export interface ReportList {
   nextPageToken?: string;
 }
 
-export const ReportList: Schema.Schema<ReportList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      etag: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(Report)),
-      kind: Schema.optional(Schema.String),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "ReportList" }) as any as Schema.Schema<ReportList>;
+export const ReportList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  etag: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(Report)),
+  kind: Schema.optional(Schema.String),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ReportList" });
 
 export interface TargetingTemplate {
   /** Subaccount ID of this targeting template. This field, if left unset, will be auto-generated on insert and is read-only after insert. */
@@ -8202,27 +7153,22 @@ export interface TargetingTemplate {
   advertiserIdDimensionValue?: DimensionValue;
 }
 
-export const TargetingTemplate: Schema.Schema<TargetingTemplate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subaccountId: Schema.optional(Schema.String),
-      languageTargeting: Schema.optional(LanguageTargeting),
-      id: Schema.optional(Schema.String),
-      advertiserId: Schema.optional(Schema.String),
-      listTargetingExpression: Schema.optional(ListTargetingExpression),
-      technologyTargeting: Schema.optional(TechnologyTargeting),
-      accountId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      contextualKeywordTargeting: Schema.optional(ContextualKeywordTargeting),
-      geoTargeting: Schema.optional(GeoTargeting),
-      kind: Schema.optional(Schema.String),
-      dayPartTargeting: Schema.optional(DayPartTargeting),
-      keyValueTargetingExpression: Schema.optional(KeyValueTargetingExpression),
-      advertiserIdDimensionValue: Schema.optional(DimensionValue),
-    }),
-  ).annotate({
-    identifier: "TargetingTemplate",
-  }) as any as Schema.Schema<TargetingTemplate>;
+export const TargetingTemplate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subaccountId: Schema.optional(Schema.String),
+  languageTargeting: Schema.optional(LanguageTargeting),
+  id: Schema.optional(Schema.String),
+  advertiserId: Schema.optional(Schema.String),
+  listTargetingExpression: Schema.optional(ListTargetingExpression),
+  technologyTargeting: Schema.optional(TechnologyTargeting),
+  accountId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  contextualKeywordTargeting: Schema.optional(ContextualKeywordTargeting),
+  geoTargeting: Schema.optional(GeoTargeting),
+  kind: Schema.optional(Schema.String),
+  dayPartTargeting: Schema.optional(DayPartTargeting),
+  keyValueTargetingExpression: Schema.optional(KeyValueTargetingExpression),
+  advertiserIdDimensionValue: Schema.optional(DimensionValue),
+}).annotate({ identifier: "TargetingTemplate" });
 
 export interface TargetingTemplatesListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#targetingTemplatesListResponse". */
@@ -8233,16 +7179,12 @@ export interface TargetingTemplatesListResponse {
   targetingTemplates?: Array<TargetingTemplate>;
 }
 
-export const TargetingTemplatesListResponse: Schema.Schema<TargetingTemplatesListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      nextPageToken: Schema.optional(Schema.String),
-      targetingTemplates: Schema.optional(Schema.Array(TargetingTemplate)),
-    }),
-  ).annotate({
-    identifier: "TargetingTemplatesListResponse",
-  }) as any as Schema.Schema<TargetingTemplatesListResponse>;
+export const TargetingTemplatesListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    nextPageToken: Schema.optional(Schema.String),
+    targetingTemplates: Schema.optional(Schema.Array(TargetingTemplate)),
+  }).annotate({ identifier: "TargetingTemplatesListResponse" });
 
 export interface VideoFormat {
   /** The resolution of this video format. */
@@ -8257,18 +7199,13 @@ export interface VideoFormat {
   kind?: string;
 }
 
-export const VideoFormat: Schema.Schema<VideoFormat> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resolution: Schema.optional(Size),
-      id: Schema.optional(Schema.Number),
-      fileType: Schema.optional(Schema.String),
-      targetBitRate: Schema.optional(Schema.Number),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VideoFormat",
-  }) as any as Schema.Schema<VideoFormat>;
+export const VideoFormat = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resolution: Schema.optional(Size),
+  id: Schema.optional(Schema.Number),
+  fileType: Schema.optional(Schema.String),
+  targetBitRate: Schema.optional(Schema.Number),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "VideoFormat" });
 
 export interface CreativeAssetMetadata {
   /** Numeric ID of the asset. This is a read-only, auto-generated field. */
@@ -8391,38 +7328,29 @@ export interface CreativeAssetMetadata {
   counterCustomEvents?: Array<CreativeCustomEvent>;
 }
 
-export const CreativeAssetMetadata: Schema.Schema<CreativeAssetMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      idDimensionValue: Schema.optional(DimensionValue),
-      timerCustomEvents: Schema.optional(Schema.Array(CreativeCustomEvent)),
-      warnedValidationRules: Schema.optional(Schema.Array(Schema.String)),
-      assetIdentifier: Schema.optional(CreativeAssetId),
-      exitCustomEvents: Schema.optional(Schema.Array(CreativeCustomEvent)),
-      detectedFeatures: Schema.optional(Schema.Array(Schema.String)),
-      kind: Schema.optional(Schema.String),
-      clickTags: Schema.optional(Schema.Array(ClickTag)),
-      richMedia: Schema.optional(Schema.Boolean),
-      counterCustomEvents: Schema.optional(Schema.Array(CreativeCustomEvent)),
-    }),
-  ).annotate({
-    identifier: "CreativeAssetMetadata",
-  }) as any as Schema.Schema<CreativeAssetMetadata>;
+export const CreativeAssetMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  idDimensionValue: Schema.optional(DimensionValue),
+  timerCustomEvents: Schema.optional(Schema.Array(CreativeCustomEvent)),
+  warnedValidationRules: Schema.optional(Schema.Array(Schema.String)),
+  assetIdentifier: Schema.optional(CreativeAssetId),
+  exitCustomEvents: Schema.optional(Schema.Array(CreativeCustomEvent)),
+  detectedFeatures: Schema.optional(Schema.Array(Schema.String)),
+  kind: Schema.optional(Schema.String),
+  clickTags: Schema.optional(Schema.Array(ClickTag)),
+  richMedia: Schema.optional(Schema.Boolean),
+  counterCustomEvents: Schema.optional(Schema.Array(CreativeCustomEvent)),
+}).annotate({ identifier: "CreativeAssetMetadata" });
 
 export interface DynamicProfileGenerateCodeResponse {
   /** Generated code for the dynamic profile. The code will need to be unescaped. */
   code?: string;
 }
 
-export const DynamicProfileGenerateCodeResponse: Schema.Schema<DynamicProfileGenerateCodeResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DynamicProfileGenerateCodeResponse",
-  }) as any as Schema.Schema<DynamicProfileGenerateCodeResponse>;
+export const DynamicProfileGenerateCodeResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    code: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DynamicProfileGenerateCodeResponse" });
 
 export interface UserRolesListResponse {
   /** User role collection. */
@@ -8433,16 +7361,11 @@ export interface UserRolesListResponse {
   kind?: string;
 }
 
-export const UserRolesListResponse: Schema.Schema<UserRolesListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userRoles: Schema.optional(Schema.Array(UserRole)),
-      nextPageToken: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UserRolesListResponse",
-  }) as any as Schema.Schema<UserRolesListResponse>;
+export const UserRolesListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  userRoles: Schema.optional(Schema.Array(UserRole)),
+  nextPageToken: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "UserRolesListResponse" });
 
 export interface AccountUserProfilesListResponse {
   /** Pagination token to be used for the next list operation. */
@@ -8453,16 +7376,12 @@ export interface AccountUserProfilesListResponse {
   kind?: string;
 }
 
-export const AccountUserProfilesListResponse: Schema.Schema<AccountUserProfilesListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      accountUserProfiles: Schema.optional(Schema.Array(AccountUserProfile)),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccountUserProfilesListResponse",
-  }) as any as Schema.Schema<AccountUserProfilesListResponse>;
+export const AccountUserProfilesListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    accountUserProfiles: Schema.optional(Schema.Array(AccountUserProfile)),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AccountUserProfilesListResponse" });
 
 export interface SizesListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#sizesListResponse". */
@@ -8471,15 +7390,10 @@ export interface SizesListResponse {
   sizes?: Array<Size>;
 }
 
-export const SizesListResponse: Schema.Schema<SizesListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      sizes: Schema.optional(Schema.Array(Size)),
-    }),
-  ).annotate({
-    identifier: "SizesListResponse",
-  }) as any as Schema.Schema<SizesListResponse>;
+export const SizesListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  sizes: Schema.optional(Schema.Array(Size)),
+}).annotate({ identifier: "SizesListResponse" });
 
 export interface AccountsListResponse {
   /** Account collection. */
@@ -8490,16 +7404,11 @@ export interface AccountsListResponse {
   nextPageToken?: string;
 }
 
-export const AccountsListResponse: Schema.Schema<AccountsListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accounts: Schema.optional(Schema.Array(Account)),
-      kind: Schema.optional(Schema.String),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccountsListResponse",
-  }) as any as Schema.Schema<AccountsListResponse>;
+export const AccountsListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  accounts: Schema.optional(Schema.Array(Account)),
+  kind: Schema.optional(Schema.String),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "AccountsListResponse" });
 
 export interface AdvertiserInvoicesListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#advertiserInvoicesListResponse". */
@@ -8510,16 +7419,12 @@ export interface AdvertiserInvoicesListResponse {
   nextPageToken?: string;
 }
 
-export const AdvertiserInvoicesListResponse: Schema.Schema<AdvertiserInvoicesListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      invoices: Schema.optional(Schema.Array(Invoice)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AdvertiserInvoicesListResponse",
-  }) as any as Schema.Schema<AdvertiserInvoicesListResponse>;
+export const AdvertiserInvoicesListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    invoices: Schema.optional(Schema.Array(Invoice)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AdvertiserInvoicesListResponse" });
 
 export interface ContentCategoriesListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#contentCategoriesListResponse". */
@@ -8530,16 +7435,12 @@ export interface ContentCategoriesListResponse {
   contentCategories?: Array<ContentCategory>;
 }
 
-export const ContentCategoriesListResponse: Schema.Schema<ContentCategoriesListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      nextPageToken: Schema.optional(Schema.String),
-      contentCategories: Schema.optional(Schema.Array(ContentCategory)),
-    }),
-  ).annotate({
-    identifier: "ContentCategoriesListResponse",
-  }) as any as Schema.Schema<ContentCategoriesListResponse>;
+export const ContentCategoriesListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    nextPageToken: Schema.optional(Schema.String),
+    contentCategories: Schema.optional(Schema.Array(ContentCategory)),
+  }).annotate({ identifier: "ContentCategoriesListResponse" });
 
 export interface CreativeFieldValuesListResponse {
   /** Pagination token to be used for the next list operation. */
@@ -8550,16 +7451,12 @@ export interface CreativeFieldValuesListResponse {
   creativeFieldValues?: Array<CreativeFieldValue>;
 }
 
-export const CreativeFieldValuesListResponse: Schema.Schema<CreativeFieldValuesListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      creativeFieldValues: Schema.optional(Schema.Array(CreativeFieldValue)),
-    }),
-  ).annotate({
-    identifier: "CreativeFieldValuesListResponse",
-  }) as any as Schema.Schema<CreativeFieldValuesListResponse>;
+export const CreativeFieldValuesListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    creativeFieldValues: Schema.optional(Schema.Array(CreativeFieldValue)),
+  }).annotate({ identifier: "CreativeFieldValuesListResponse" });
 
 export interface BillingProfile {
   /** ID of this billing profile. This is a read-only, auto-generated field. */
@@ -8594,26 +7491,21 @@ export interface BillingProfile {
   purchaseOrder?: string;
 }
 
-export const BillingProfile: Schema.Schema<BillingProfile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-      isDefault: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-      invoiceLevel: Schema.optional(Schema.String),
-      paymentsAccountId: Schema.optional(Schema.String),
-      countryCode: Schema.optional(Schema.String),
-      consolidatedInvoice: Schema.optional(Schema.Boolean),
-      secondaryPaymentsCustomerId: Schema.optional(Schema.String),
-      paymentsCustomerId: Schema.optional(Schema.String),
-      currencyCode: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      purchaseOrder: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BillingProfile",
-  }) as any as Schema.Schema<BillingProfile>;
+export const BillingProfile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.String),
+  isDefault: Schema.optional(Schema.Boolean),
+  name: Schema.optional(Schema.String),
+  invoiceLevel: Schema.optional(Schema.String),
+  paymentsAccountId: Schema.optional(Schema.String),
+  countryCode: Schema.optional(Schema.String),
+  consolidatedInvoice: Schema.optional(Schema.Boolean),
+  secondaryPaymentsCustomerId: Schema.optional(Schema.String),
+  paymentsCustomerId: Schema.optional(Schema.String),
+  currencyCode: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  purchaseOrder: Schema.optional(Schema.String),
+}).annotate({ identifier: "BillingProfile" });
 
 export interface FloodlightActivitiesGenerateTagResponse {
   /** Generated tag for this Floodlight activity. For Google tags, this is the event snippet. */
@@ -8624,16 +7516,12 @@ export interface FloodlightActivitiesGenerateTagResponse {
   globalSiteTagGlobalSnippet?: string;
 }
 
-export const FloodlightActivitiesGenerateTagResponse: Schema.Schema<FloodlightActivitiesGenerateTagResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      floodlightActivityTag: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      globalSiteTagGlobalSnippet: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FloodlightActivitiesGenerateTagResponse",
-  }) as any as Schema.Schema<FloodlightActivitiesGenerateTagResponse>;
+export const FloodlightActivitiesGenerateTagResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    floodlightActivityTag: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    globalSiteTagGlobalSnippet: Schema.optional(Schema.String),
+  }).annotate({ identifier: "FloodlightActivitiesGenerateTagResponse" });
 
 export interface EventTagsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#eventTagsListResponse". */
@@ -8642,15 +7530,10 @@ export interface EventTagsListResponse {
   eventTags?: Array<EventTag>;
 }
 
-export const EventTagsListResponse: Schema.Schema<EventTagsListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      eventTags: Schema.optional(Schema.Array(EventTag)),
-    }),
-  ).annotate({
-    identifier: "EventTagsListResponse",
-  }) as any as Schema.Schema<EventTagsListResponse>;
+export const EventTagsListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  eventTags: Schema.optional(Schema.Array(EventTag)),
+}).annotate({ identifier: "EventTagsListResponse" });
 
 export interface BillingProfilesListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#billingProfilesListResponse". */
@@ -8661,16 +7544,12 @@ export interface BillingProfilesListResponse {
   billingProfiles?: Array<BillingProfile>;
 }
 
-export const BillingProfilesListResponse: Schema.Schema<BillingProfilesListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      nextPageToken: Schema.optional(Schema.String),
-      billingProfiles: Schema.optional(Schema.Array(BillingProfile)),
-    }),
-  ).annotate({
-    identifier: "BillingProfilesListResponse",
-  }) as any as Schema.Schema<BillingProfilesListResponse>;
+export const BillingProfilesListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    nextPageToken: Schema.optional(Schema.String),
+    billingProfiles: Schema.optional(Schema.Array(BillingProfile)),
+  }).annotate({ identifier: "BillingProfilesListResponse" });
 
 export interface DynamicTargetingKeysListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#dynamicTargetingKeysListResponse". */
@@ -8679,15 +7558,11 @@ export interface DynamicTargetingKeysListResponse {
   dynamicTargetingKeys?: Array<DynamicTargetingKey>;
 }
 
-export const DynamicTargetingKeysListResponse: Schema.Schema<DynamicTargetingKeysListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      dynamicTargetingKeys: Schema.optional(Schema.Array(DynamicTargetingKey)),
-    }),
-  ).annotate({
-    identifier: "DynamicTargetingKeysListResponse",
-  }) as any as Schema.Schema<DynamicTargetingKeysListResponse>;
+export const DynamicTargetingKeysListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    dynamicTargetingKeys: Schema.optional(Schema.Array(DynamicTargetingKey)),
+  }).annotate({ identifier: "DynamicTargetingKeysListResponse" });
 
 export interface LanguagesListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#languagesListResponse". */
@@ -8696,15 +7571,10 @@ export interface LanguagesListResponse {
   languages?: Array<Language>;
 }
 
-export const LanguagesListResponse: Schema.Schema<LanguagesListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      languages: Schema.optional(Schema.Array(Language)),
-    }),
-  ).annotate({
-    identifier: "LanguagesListResponse",
-  }) as any as Schema.Schema<LanguagesListResponse>;
+export const LanguagesListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  languages: Schema.optional(Schema.Array(Language)),
+}).annotate({ identifier: "LanguagesListResponse" });
 
 export interface VideoFormatsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#videoFormatsListResponse". */
@@ -8713,15 +7583,11 @@ export interface VideoFormatsListResponse {
   videoFormats?: Array<VideoFormat>;
 }
 
-export const VideoFormatsListResponse: Schema.Schema<VideoFormatsListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      videoFormats: Schema.optional(Schema.Array(VideoFormat)),
-    }),
-  ).annotate({
-    identifier: "VideoFormatsListResponse",
-  }) as any as Schema.Schema<VideoFormatsListResponse>;
+export const VideoFormatsListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    videoFormats: Schema.optional(Schema.Array(VideoFormat)),
+  }).annotate({ identifier: "VideoFormatsListResponse" });
 
 export interface RegionsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "dfareporting#regionsListResponse". */
@@ -8730,15 +7596,10 @@ export interface RegionsListResponse {
   regions?: Array<Region>;
 }
 
-export const RegionsListResponse: Schema.Schema<RegionsListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      regions: Schema.optional(Schema.Array(Region)),
-    }),
-  ).annotate({
-    identifier: "RegionsListResponse",
-  }) as any as Schema.Schema<RegionsListResponse>;
+export const RegionsListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  regions: Schema.optional(Schema.Array(Region)),
+}).annotate({ identifier: "RegionsListResponse" });
 
 // ==========================================================================
 // Operations

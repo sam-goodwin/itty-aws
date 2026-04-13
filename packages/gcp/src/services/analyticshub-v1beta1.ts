@@ -29,36 +29,27 @@ export interface DestinationDatasetReference {
   projectId?: string;
 }
 
-export const DestinationDatasetReference: Schema.Schema<DestinationDatasetReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      datasetId: Schema.optional(Schema.String),
-      projectId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DestinationDatasetReference",
-  }) as any as Schema.Schema<DestinationDatasetReference>;
+export const DestinationDatasetReference =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    datasetId: Schema.optional(Schema.String),
+    projectId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DestinationDatasetReference" });
 
 export interface SubscribeListingResponse {}
 
-export const SubscribeListingResponse: Schema.Schema<SubscribeListingResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const SubscribeListingResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "SubscribeListingResponse",
-  }) as any as Schema.Schema<SubscribeListingResponse>;
+  });
 
 export interface BigQueryDatasetSource {
   /** Resource name of the dataset source for this listing. e.g. `projects/myproject/datasets/123` */
   dataset?: string;
 }
 
-export const BigQueryDatasetSource: Schema.Schema<BigQueryDatasetSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataset: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BigQueryDatasetSource",
-  }) as any as Schema.Schema<BigQueryDatasetSource>;
+export const BigQueryDatasetSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dataset: Schema.optional(Schema.String),
+}).annotate({ identifier: "BigQueryDatasetSource" });
 
 export interface Publisher {
   /** Optional. Name of the listing publisher. */
@@ -67,13 +58,10 @@ export interface Publisher {
   primaryContact?: string;
 }
 
-export const Publisher: Schema.Schema<Publisher> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      primaryContact: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Publisher" }) as any as Schema.Schema<Publisher>;
+export const Publisher = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  primaryContact: Schema.optional(Schema.String),
+}).annotate({ identifier: "Publisher" });
 
 export interface RestrictedExportConfig {
   /** Output only. If true, restrict direct table access(read api/tabledata.list) on linked table. */
@@ -84,16 +72,13 @@ export interface RestrictedExportConfig {
   enabled?: boolean;
 }
 
-export const RestrictedExportConfig: Schema.Schema<RestrictedExportConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      restrictDirectTableAccess: Schema.optional(Schema.Boolean),
-      restrictQueryResult: Schema.optional(Schema.Boolean),
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "RestrictedExportConfig",
-  }) as any as Schema.Schema<RestrictedExportConfig>;
+export const RestrictedExportConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    restrictDirectTableAccess: Schema.optional(Schema.Boolean),
+    restrictQueryResult: Schema.optional(Schema.Boolean),
+    enabled: Schema.optional(Schema.Boolean),
+  },
+).annotate({ identifier: "RestrictedExportConfig" });
 
 export interface DataProvider {
   /** Optional. Name of the data provider. */
@@ -102,15 +87,10 @@ export interface DataProvider {
   primaryContact?: string;
 }
 
-export const DataProvider: Schema.Schema<DataProvider> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      primaryContact: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DataProvider",
-  }) as any as Schema.Schema<DataProvider>;
+export const DataProvider = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  primaryContact: Schema.optional(Schema.String),
+}).annotate({ identifier: "DataProvider" });
 
 export interface Listing {
   /** Optional. If true, the listing is only available to get the resource metadata. Listing is non subscribable. */
@@ -166,25 +146,22 @@ export interface Listing {
   description?: string;
 }
 
-export const Listing: Schema.Schema<Listing> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      allowOnlyMetadataSharing: Schema.optional(Schema.Boolean),
-      primaryContact: Schema.optional(Schema.String),
-      bigqueryDataset: Schema.optional(BigQueryDatasetSource),
-      categories: Schema.optional(Schema.Array(Schema.String)),
-      state: Schema.optional(Schema.String),
-      icon: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      publisher: Schema.optional(Publisher),
-      requestAccess: Schema.optional(Schema.String),
-      restrictedExportConfig: Schema.optional(RestrictedExportConfig),
-      name: Schema.optional(Schema.String),
-      dataProvider: Schema.optional(DataProvider),
-      documentation: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Listing" }) as any as Schema.Schema<Listing>;
+export const Listing = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  allowOnlyMetadataSharing: Schema.optional(Schema.Boolean),
+  primaryContact: Schema.optional(Schema.String),
+  bigqueryDataset: Schema.optional(BigQueryDatasetSource),
+  categories: Schema.optional(Schema.Array(Schema.String)),
+  state: Schema.optional(Schema.String),
+  icon: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  publisher: Schema.optional(Publisher),
+  requestAccess: Schema.optional(Schema.String),
+  restrictedExportConfig: Schema.optional(RestrictedExportConfig),
+  name: Schema.optional(Schema.String),
+  dataProvider: Schema.optional(DataProvider),
+  documentation: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "Listing" });
 
 export interface ListListingsResponse {
   /** The list of Listing. */
@@ -193,71 +170,47 @@ export interface ListListingsResponse {
   nextPageToken?: string;
 }
 
-export const ListListingsResponse: Schema.Schema<ListListingsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      listings: Schema.optional(Schema.Array(Listing)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListListingsResponse",
-  }) as any as Schema.Schema<ListListingsResponse>;
+export const ListListingsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  listings: Schema.optional(Schema.Array(Listing)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListListingsResponse" });
 
 export interface GetPolicyOptions {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   requestedPolicyVersion?: number;
 }
 
-export const GetPolicyOptions: Schema.Schema<GetPolicyOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestedPolicyVersion: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GetPolicyOptions",
-  }) as any as Schema.Schema<GetPolicyOptions>;
+export const GetPolicyOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  requestedPolicyVersion: Schema.optional(Schema.Number),
+}).annotate({ identifier: "GetPolicyOptions" });
 
 export interface GetIamPolicyRequest {
   /** OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`. */
   options?: GetPolicyOptions;
 }
 
-export const GetIamPolicyRequest: Schema.Schema<GetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      options: Schema.optional(GetPolicyOptions),
-    }),
-  ).annotate({
-    identifier: "GetIamPolicyRequest",
-  }) as any as Schema.Schema<GetIamPolicyRequest>;
+export const GetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  options: Schema.optional(GetPolicyOptions),
+}).annotate({ identifier: "GetIamPolicyRequest" });
 
 export interface GoogleCloudMarketplaceInfo {
   /** Resource name of the Marketplace Order. */
   order?: string;
 }
 
-export const GoogleCloudMarketplaceInfo: Schema.Schema<GoogleCloudMarketplaceInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      order: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudMarketplaceInfo",
-  }) as any as Schema.Schema<GoogleCloudMarketplaceInfo>;
+export const GoogleCloudMarketplaceInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    order: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudMarketplaceInfo" });
 
 export interface CommercialInfo {
   /** Output only. This is set when the subscription is commercialised via Cloud Marketplace. */
   cloudMarketplace?: GoogleCloudMarketplaceInfo;
 }
 
-export const CommercialInfo: Schema.Schema<CommercialInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cloudMarketplace: Schema.optional(GoogleCloudMarketplaceInfo),
-    }),
-  ).annotate({
-    identifier: "CommercialInfo",
-  }) as any as Schema.Schema<CommercialInfo>;
+export const CommercialInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cloudMarketplace: Schema.optional(GoogleCloudMarketplaceInfo),
+}).annotate({ identifier: "CommercialInfo" });
 
 export interface Expr {
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
@@ -270,15 +223,12 @@ export interface Expr {
   expression?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-      expression: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Expr" }) as any as Schema.Schema<Expr>;
+export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  title: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  expression: Schema.optional(Schema.String),
+}).annotate({ identifier: "Expr" });
 
 export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
@@ -289,14 +239,11 @@ export interface Binding {
   condition?: Expr;
 }
 
-export const Binding: Schema.Schema<Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      role: Schema.optional(Schema.String),
-      members: Schema.optional(Schema.Array(Schema.String)),
-      condition: Schema.optional(Expr),
-    }),
-  ).annotate({ identifier: "Binding" }) as any as Schema.Schema<Binding>;
+export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  role: Schema.optional(Schema.String),
+  members: Schema.optional(Schema.Array(Schema.String)),
+  condition: Schema.optional(Expr),
+}).annotate({ identifier: "Binding" });
 
 export interface AuditLogConfig {
   /** The log type that this config enables. */
@@ -310,15 +257,10 @@ export interface AuditLogConfig {
   exemptedMembers?: Array<string>;
 }
 
-export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      logType: Schema.optional(Schema.String),
-      exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AuditLogConfig",
-  }) as any as Schema.Schema<AuditLogConfig>;
+export const AuditLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  logType: Schema.optional(Schema.String),
+  exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "AuditLogConfig" });
 
 export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
@@ -327,15 +269,10 @@ export interface AuditConfig {
   auditLogConfigs?: Array<AuditLogConfig>;
 }
 
-export const AuditConfig: Schema.Schema<AuditConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      service: Schema.optional(Schema.String),
-      auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
-    }),
-  ).annotate({
-    identifier: "AuditConfig",
-  }) as any as Schema.Schema<AuditConfig>;
+export const AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  service: Schema.optional(Schema.String),
+  auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
+}).annotate({ identifier: "AuditConfig" });
 
 export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -348,15 +285,12 @@ export interface Policy {
   etag?: string;
 }
 
-export const Policy: Schema.Schema<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.Number),
-      bindings: Schema.optional(Schema.Array(Binding)),
-      auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Policy" }) as any as Schema.Schema<Policy>;
+export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.Number),
+  bindings: Schema.optional(Schema.Array(Binding)),
+  auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "Policy" });
 
 export interface LinkedResource {
   /** Output only. Name of the linked dataset, e.g. projects/subscriberproject/datasets/linked_dataset */
@@ -367,16 +301,11 @@ export interface LinkedResource {
   linkedPubsubSubscription?: string;
 }
 
-export const LinkedResource: Schema.Schema<LinkedResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      linkedDataset: Schema.optional(Schema.String),
-      listing: Schema.optional(Schema.String),
-      linkedPubsubSubscription: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LinkedResource",
-  }) as any as Schema.Schema<LinkedResource>;
+export const LinkedResource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  linkedDataset: Schema.optional(Schema.String),
+  listing: Schema.optional(Schema.String),
+  linkedPubsubSubscription: Schema.optional(Schema.String),
+}).annotate({ identifier: "LinkedResource" });
 
 export interface DestinationDataset {
   /** Optional. The geographic locations where the dataset should be replicated. See [BigQuery locations](https://cloud.google.com/bigquery/docs/locations) for supported locations. */
@@ -393,19 +322,14 @@ export interface DestinationDataset {
   labels?: Record<string, string>;
 }
 
-export const DestinationDataset: Schema.Schema<DestinationDataset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      replicaLocations: Schema.optional(Schema.Array(Schema.String)),
-      datasetReference: Schema.optional(DestinationDatasetReference),
-      location: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      friendlyName: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "DestinationDataset",
-  }) as any as Schema.Schema<DestinationDataset>;
+export const DestinationDataset = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  replicaLocations: Schema.optional(Schema.Array(Schema.String)),
+  datasetReference: Schema.optional(DestinationDatasetReference),
+  location: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  friendlyName: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "DestinationDataset" });
 
 export interface Subscription {
   /** Output only. Linked resources created in the subscription. Only contains values if state = STATE_ACTIVE. */
@@ -449,44 +373,35 @@ export interface Subscription {
     | (string & {});
 }
 
-export const Subscription: Schema.Schema<Subscription> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      linkedResources: Schema.optional(Schema.Array(LinkedResource)),
-      name: Schema.optional(Schema.String),
-      linkedDatasetMap: Schema.optional(
-        Schema.Record(Schema.String, LinkedResource),
-      ),
-      organizationDisplayName: Schema.optional(Schema.String),
-      destinationDataset: Schema.optional(DestinationDataset),
-      dataExchange: Schema.optional(Schema.String),
-      commercialInfo: Schema.optional(CommercialInfo),
-      resourceType: Schema.optional(Schema.String),
-      listing: Schema.optional(Schema.String),
-      logLinkedDatasetQueryUserEmail: Schema.optional(Schema.Boolean),
-      creationTime: Schema.optional(Schema.String),
-      subscriberContact: Schema.optional(Schema.String),
-      lastModifyTime: Schema.optional(Schema.String),
-      organizationId: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Subscription",
-  }) as any as Schema.Schema<Subscription>;
+export const Subscription = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  linkedResources: Schema.optional(Schema.Array(LinkedResource)),
+  name: Schema.optional(Schema.String),
+  linkedDatasetMap: Schema.optional(
+    Schema.Record(Schema.String, LinkedResource),
+  ),
+  organizationDisplayName: Schema.optional(Schema.String),
+  destinationDataset: Schema.optional(DestinationDataset),
+  dataExchange: Schema.optional(Schema.String),
+  commercialInfo: Schema.optional(CommercialInfo),
+  resourceType: Schema.optional(Schema.String),
+  listing: Schema.optional(Schema.String),
+  logLinkedDatasetQueryUserEmail: Schema.optional(Schema.Boolean),
+  creationTime: Schema.optional(Schema.String),
+  subscriberContact: Schema.optional(Schema.String),
+  lastModifyTime: Schema.optional(Schema.String),
+  organizationId: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+}).annotate({ identifier: "Subscription" });
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsRequest",
-  }) as any as Schema.Schema<TestIamPermissionsRequest>;
+export const TestIamPermissionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsRequest" });
 
 export interface DataExchange {
   /** Required. Human-readable display name of the data exchange. The display name must contain only Unicode letters, numbers (0-9), underscores (_), dashes (-), spaces ( ), ampersands (&) and must not start or end with spaces. Default value is an empty string. Max length: 63 bytes. */
@@ -505,20 +420,15 @@ export interface DataExchange {
   name?: string;
 }
 
-export const DataExchange: Schema.Schema<DataExchange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      listingCount: Schema.optional(Schema.Number),
-      documentation: Schema.optional(Schema.String),
-      icon: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      primaryContact: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DataExchange",
-  }) as any as Schema.Schema<DataExchange>;
+export const DataExchange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+  listingCount: Schema.optional(Schema.Number),
+  documentation: Schema.optional(Schema.String),
+  icon: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  primaryContact: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "DataExchange" });
 
 export interface ListDataExchangesResponse {
   /** The list of data exchanges. */
@@ -527,50 +437,37 @@ export interface ListDataExchangesResponse {
   nextPageToken?: string;
 }
 
-export const ListDataExchangesResponse: Schema.Schema<ListDataExchangesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataExchanges: Schema.optional(Schema.Array(DataExchange)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListDataExchangesResponse",
-  }) as any as Schema.Schema<ListDataExchangesResponse>;
+export const ListDataExchangesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataExchanges: Schema.optional(Schema.Array(DataExchange)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListDataExchangesResponse" });
 
 export interface RefreshSubscriptionResponse {
   /** The refreshed subscription resource. */
   subscription?: Subscription;
 }
 
-export const RefreshSubscriptionResponse: Schema.Schema<RefreshSubscriptionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subscription: Schema.optional(Subscription),
-    }),
-  ).annotate({
-    identifier: "RefreshSubscriptionResponse",
-  }) as any as Schema.Schema<RefreshSubscriptionResponse>;
+export const RefreshSubscriptionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscription: Schema.optional(Subscription),
+  }).annotate({ identifier: "RefreshSubscriptionResponse" });
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsResponse",
-  }) as any as Schema.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface ListOrgDataExchangesResponse {
   /** The list of data exchanges. */
@@ -579,15 +476,11 @@ export interface ListOrgDataExchangesResponse {
   nextPageToken?: string;
 }
 
-export const ListOrgDataExchangesResponse: Schema.Schema<ListOrgDataExchangesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataExchanges: Schema.optional(Schema.Array(DataExchange)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListOrgDataExchangesResponse",
-  }) as any as Schema.Schema<ListOrgDataExchangesResponse>;
+export const ListOrgDataExchangesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataExchanges: Schema.optional(Schema.Array(DataExchange)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListOrgDataExchangesResponse" });
 
 export interface OperationMetadata {
   /** Output only. The time the operation finished running. */
@@ -606,34 +499,25 @@ export interface OperationMetadata {
   statusMessage?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endTime: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      apiVersion: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      target: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  endTime: Schema.optional(Schema.String),
+  verb: Schema.optional(Schema.String),
+  apiVersion: Schema.optional(Schema.String),
+  requestedCancellation: Schema.optional(Schema.Boolean),
+  target: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  statusMessage: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationMetadata" });
 
 export interface SubscribeDataExchangeResponse {
   /** Subscription object created from this subscribe action. */
   subscription?: Subscription;
 }
 
-export const SubscribeDataExchangeResponse: Schema.Schema<SubscribeDataExchangeResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subscription: Schema.optional(Subscription),
-    }),
-  ).annotate({
-    identifier: "SubscribeDataExchangeResponse",
-  }) as any as Schema.Schema<SubscribeDataExchangeResponse>;
+export const SubscribeDataExchangeResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subscription: Schema.optional(Subscription),
+  }).annotate({ identifier: "SubscribeDataExchangeResponse" });
 
 export interface GoogleCloudBigqueryDataexchangeV1beta1DestinationDatasetReference {
   /** Required. The ID of the project containing this dataset. */
@@ -642,16 +526,14 @@ export interface GoogleCloudBigqueryDataexchangeV1beta1DestinationDatasetReferen
   datasetId?: string;
 }
 
-export const GoogleCloudBigqueryDataexchangeV1beta1DestinationDatasetReference: Schema.Schema<GoogleCloudBigqueryDataexchangeV1beta1DestinationDatasetReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      projectId: Schema.optional(Schema.String),
-      datasetId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudBigqueryDataexchangeV1beta1DestinationDatasetReference =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    projectId: Schema.optional(Schema.String),
+    datasetId: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudBigqueryDataexchangeV1beta1DestinationDatasetReference",
-  }) as any as Schema.Schema<GoogleCloudBigqueryDataexchangeV1beta1DestinationDatasetReference>;
+  });
 
 export interface GoogleCloudBigqueryDataexchangeV1beta1DestinationDataset {
   /** Optional. A descriptive name for the dataset. */
@@ -666,36 +548,30 @@ export interface GoogleCloudBigqueryDataexchangeV1beta1DestinationDataset {
   location?: string;
 }
 
-export const GoogleCloudBigqueryDataexchangeV1beta1DestinationDataset: Schema.Schema<GoogleCloudBigqueryDataexchangeV1beta1DestinationDataset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      friendlyName: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      description: Schema.optional(Schema.String),
-      datasetReference: Schema.optional(
-        GoogleCloudBigqueryDataexchangeV1beta1DestinationDatasetReference,
-      ),
-      location: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudBigqueryDataexchangeV1beta1DestinationDataset =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    friendlyName: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    description: Schema.optional(Schema.String),
+    datasetReference: Schema.optional(
+      GoogleCloudBigqueryDataexchangeV1beta1DestinationDatasetReference,
+    ),
+    location: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudBigqueryDataexchangeV1beta1DestinationDataset",
-  }) as any as Schema.Schema<GoogleCloudBigqueryDataexchangeV1beta1DestinationDataset>;
+  });
 
 export interface SubscribeListingRequest {
   /** BigQuery destination dataset to create for the subscriber. */
   destinationDataset?: GoogleCloudBigqueryDataexchangeV1beta1DestinationDataset;
 }
 
-export const SubscribeListingRequest: Schema.Schema<SubscribeListingRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      destinationDataset: Schema.optional(
-        GoogleCloudBigqueryDataexchangeV1beta1DestinationDataset,
-      ),
-    }),
-  ).annotate({
-    identifier: "SubscribeListingRequest",
-  }) as any as Schema.Schema<SubscribeListingRequest>;
+export const SubscribeListingRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    destinationDataset: Schema.optional(
+      GoogleCloudBigqueryDataexchangeV1beta1DestinationDataset,
+    ),
+  }).annotate({ identifier: "SubscribeListingRequest" });
 
 export interface SetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
@@ -704,15 +580,10 @@ export interface SetIamPolicyRequest {
   policy?: Policy;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateMask: Schema.optional(Schema.String),
-      policy: Schema.optional(Policy),
-    }),
-  ).annotate({
-    identifier: "SetIamPolicyRequest",
-  }) as any as Schema.Schema<SetIamPolicyRequest>;
+export const SetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  updateMask: Schema.optional(Schema.String),
+  policy: Schema.optional(Policy),
+}).annotate({ identifier: "SetIamPolicyRequest" });
 
 // ==========================================================================
 // Operations

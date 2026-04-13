@@ -57,16 +57,12 @@ export interface NetworkReportSpecSortCondition {
     | (string & {});
 }
 
-export const NetworkReportSpecSortCondition: Schema.Schema<NetworkReportSpecSortCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metric: Schema.optional(Schema.String),
-      order: Schema.optional(Schema.String),
-      dimension: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NetworkReportSpecSortCondition",
-  }) as any as Schema.Schema<NetworkReportSpecSortCondition>;
+export const NetworkReportSpecSortCondition =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    metric: Schema.optional(Schema.String),
+    order: Schema.optional(Schema.String),
+    dimension: Schema.optional(Schema.String),
+  }).annotate({ identifier: "NetworkReportSpecSortCondition" });
 
 export interface Admob_Date {
   /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
@@ -77,14 +73,11 @@ export interface Admob_Date {
   month?: number;
 }
 
-export const Admob_Date: Schema.Schema<Admob_Date> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      day: Schema.optional(Schema.Number),
-      year: Schema.optional(Schema.Number),
-      month: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Admob_Date" }) as any as Schema.Schema<Admob_Date>;
+export const Admob_Date = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  day: Schema.optional(Schema.Number),
+  year: Schema.optional(Schema.Number),
+  month: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Admob_Date" });
 
 export interface DateRange {
   /** Start date of the date range, inclusive. Must be less than or equal to the end date. */
@@ -93,25 +86,19 @@ export interface DateRange {
   endDate?: Admob_Date;
 }
 
-export const DateRange: Schema.Schema<DateRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startDate: Schema.optional(Admob_Date),
-      endDate: Schema.optional(Admob_Date),
-    }),
-  ).annotate({ identifier: "DateRange" }) as any as Schema.Schema<DateRange>;
+export const DateRange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startDate: Schema.optional(Admob_Date),
+  endDate: Schema.optional(Admob_Date),
+}).annotate({ identifier: "DateRange" });
 
 export interface StringList {
   /** The string values. */
   values?: Array<string>;
 }
 
-export const StringList: Schema.Schema<StringList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      values: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "StringList" }) as any as Schema.Schema<StringList>;
+export const StringList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  values: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "StringList" });
 
 export interface NetworkReportSpecDimensionFilter {
   /** Applies the filter criterion to the specified dimension. */
@@ -135,15 +122,11 @@ export interface NetworkReportSpecDimensionFilter {
   matchesAny?: StringList;
 }
 
-export const NetworkReportSpecDimensionFilter: Schema.Schema<NetworkReportSpecDimensionFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dimension: Schema.optional(Schema.String),
-      matchesAny: Schema.optional(StringList),
-    }),
-  ).annotate({
-    identifier: "NetworkReportSpecDimensionFilter",
-  }) as any as Schema.Schema<NetworkReportSpecDimensionFilter>;
+export const NetworkReportSpecDimensionFilter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dimension: Schema.optional(Schema.String),
+    matchesAny: Schema.optional(StringList),
+  }).annotate({ identifier: "NetworkReportSpecDimensionFilter" });
 
 export interface LocalizationSettings {
   /** Currency code of the earning related metrics, which is the 3-letter code defined in ISO 4217. The daily average rate is used for the currency conversion. Defaults to the account currency code if unspecified. */
@@ -152,15 +135,10 @@ export interface LocalizationSettings {
   languageCode?: string;
 }
 
-export const LocalizationSettings: Schema.Schema<LocalizationSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      currencyCode: Schema.optional(Schema.String),
-      languageCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LocalizationSettings",
-  }) as any as Schema.Schema<LocalizationSettings>;
+export const LocalizationSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  currencyCode: Schema.optional(Schema.String),
+  languageCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "LocalizationSettings" });
 
 export interface NetworkReportSpec {
   /** List of metrics of the report. A report must specify at least one metric. */
@@ -209,25 +187,18 @@ export interface NetworkReportSpec {
   maxReportRows?: number;
 }
 
-export const NetworkReportSpec: Schema.Schema<NetworkReportSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metrics: Schema.optional(Schema.Array(Schema.String)),
-      sortConditions: Schema.optional(
-        Schema.Array(NetworkReportSpecSortCondition),
-      ),
-      timeZone: Schema.optional(Schema.String),
-      dateRange: Schema.optional(DateRange),
-      dimensionFilters: Schema.optional(
-        Schema.Array(NetworkReportSpecDimensionFilter),
-      ),
-      localizationSettings: Schema.optional(LocalizationSettings),
-      dimensions: Schema.optional(Schema.Array(Schema.String)),
-      maxReportRows: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "NetworkReportSpec",
-  }) as any as Schema.Schema<NetworkReportSpec>;
+export const NetworkReportSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metrics: Schema.optional(Schema.Array(Schema.String)),
+  sortConditions: Schema.optional(Schema.Array(NetworkReportSpecSortCondition)),
+  timeZone: Schema.optional(Schema.String),
+  dateRange: Schema.optional(DateRange),
+  dimensionFilters: Schema.optional(
+    Schema.Array(NetworkReportSpecDimensionFilter),
+  ),
+  localizationSettings: Schema.optional(LocalizationSettings),
+  dimensions: Schema.optional(Schema.Array(Schema.String)),
+  maxReportRows: Schema.optional(Schema.Number),
+}).annotate({ identifier: "NetworkReportSpec" });
 
 export interface ReportHeader {
   /** The report time zone. The value is a time-zone ID as specified by the CLDR project, for example, "America/Los_Angeles". */
@@ -238,44 +209,30 @@ export interface ReportHeader {
   localizationSettings?: LocalizationSettings;
 }
 
-export const ReportHeader: Schema.Schema<ReportHeader> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reportingTimeZone: Schema.optional(Schema.String),
-      dateRange: Schema.optional(DateRange),
-      localizationSettings: Schema.optional(LocalizationSettings),
-    }),
-  ).annotate({
-    identifier: "ReportHeader",
-  }) as any as Schema.Schema<ReportHeader>;
+export const ReportHeader = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  reportingTimeZone: Schema.optional(Schema.String),
+  dateRange: Schema.optional(DateRange),
+  localizationSettings: Schema.optional(LocalizationSettings),
+}).annotate({ identifier: "ReportHeader" });
 
 export interface GenerateNetworkReportRequest {
   /** Network report specification. */
   reportSpec?: NetworkReportSpec;
 }
 
-export const GenerateNetworkReportRequest: Schema.Schema<GenerateNetworkReportRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reportSpec: Schema.optional(NetworkReportSpec),
-    }),
-  ).annotate({
-    identifier: "GenerateNetworkReportRequest",
-  }) as any as Schema.Schema<GenerateNetworkReportRequest>;
+export const GenerateNetworkReportRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reportSpec: Schema.optional(NetworkReportSpec),
+  }).annotate({ identifier: "GenerateNetworkReportRequest" });
 
 export interface AppManualAppInfo {
   /** The display name of the app as shown in the AdMob UI, which is provided by the user. The maximum length allowed is 80 characters. */
   displayName?: string;
 }
 
-export const AppManualAppInfo: Schema.Schema<AppManualAppInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AppManualAppInfo",
-  }) as any as Schema.Schema<AppManualAppInfo>;
+export const AppManualAppInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+}).annotate({ identifier: "AppManualAppInfo" });
 
 export interface ReportRowMetricValue {
   /** Metric integer value. */
@@ -286,16 +243,11 @@ export interface ReportRowMetricValue {
   microsValue?: string;
 }
 
-export const ReportRowMetricValue: Schema.Schema<ReportRowMetricValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      integerValue: Schema.optional(Schema.String),
-      doubleValue: Schema.optional(Schema.Number),
-      microsValue: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ReportRowMetricValue",
-  }) as any as Schema.Schema<ReportRowMetricValue>;
+export const ReportRowMetricValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  integerValue: Schema.optional(Schema.String),
+  doubleValue: Schema.optional(Schema.Number),
+  microsValue: Schema.optional(Schema.String),
+}).annotate({ identifier: "ReportRowMetricValue" });
 
 export interface MediationGroupTargeting {
   /** Ad units targeted by this mediation group. Example: "ca-app-pub-1234/8790". */
@@ -317,19 +269,15 @@ export interface MediationGroupTargeting {
   format?: string;
 }
 
-export const MediationGroupTargeting: Schema.Schema<MediationGroupTargeting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      adUnitIds: Schema.optional(Schema.Array(Schema.String)),
-      idfaTargeting: Schema.optional(Schema.String),
-      targetedRegionCodes: Schema.optional(Schema.Array(Schema.String)),
-      excludedRegionCodes: Schema.optional(Schema.Array(Schema.String)),
-      platform: Schema.optional(Schema.String),
-      format: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MediationGroupTargeting",
-  }) as any as Schema.Schema<MediationGroupTargeting>;
+export const MediationGroupTargeting =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    adUnitIds: Schema.optional(Schema.Array(Schema.String)),
+    idfaTargeting: Schema.optional(Schema.String),
+    targetedRegionCodes: Schema.optional(Schema.Array(Schema.String)),
+    excludedRegionCodes: Schema.optional(Schema.Array(Schema.String)),
+    platform: Schema.optional(Schema.String),
+    format: Schema.optional(Schema.String),
+  }).annotate({ identifier: "MediationGroupTargeting" });
 
 export interface MediationGroupMediationGroupLine {
   /** The ID of the ad source this mediation line is associated with. */
@@ -360,23 +308,19 @@ export interface MediationGroupMediationGroupLine {
   cpmMode?: "CPM_MODE_UNSPECIFIED" | "LIVE" | "MANUAL" | "ANO" | (string & {});
 }
 
-export const MediationGroupMediationGroupLine: Schema.Schema<MediationGroupMediationGroupLine> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      adSourceId: Schema.optional(Schema.String),
-      adUnitMappings: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      state: Schema.optional(Schema.String),
-      cpmMicros: Schema.optional(Schema.String),
-      experimentVariant: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      cpmMode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MediationGroupMediationGroupLine",
-  }) as any as Schema.Schema<MediationGroupMediationGroupLine>;
+export const MediationGroupMediationGroupLine =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    adSourceId: Schema.optional(Schema.String),
+    adUnitMappings: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    state: Schema.optional(Schema.String),
+    cpmMicros: Schema.optional(Schema.String),
+    experimentVariant: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    cpmMode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "MediationGroupMediationGroupLine" });
 
 export interface MediationGroup {
   /** Resource name for this mediation group. Format is: accounts/{publisher_id}/mediationGroups/{mediation_group_id} Example: accounts/pub-9876543210987654/mediationGroups/0123456789 */
@@ -399,22 +343,17 @@ export interface MediationGroup {
   displayName?: string;
 }
 
-export const MediationGroup: Schema.Schema<MediationGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      mediationGroupId: Schema.optional(Schema.String),
-      targeting: Schema.optional(MediationGroupTargeting),
-      mediationGroupLines: Schema.optional(
-        Schema.Record(Schema.String, MediationGroupMediationGroupLine),
-      ),
-      mediationAbExperimentState: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MediationGroup",
-  }) as any as Schema.Schema<MediationGroup>;
+export const MediationGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  mediationGroupId: Schema.optional(Schema.String),
+  targeting: Schema.optional(MediationGroupTargeting),
+  mediationGroupLines: Schema.optional(
+    Schema.Record(Schema.String, MediationGroupMediationGroupLine),
+  ),
+  mediationAbExperimentState: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+}).annotate({ identifier: "MediationGroup" });
 
 export interface ListMediationGroupsResponse {
   /** If not empty, indicates that there may be more mediation groups for the request; this value should be passed in a new `ListMediationGroupsRequest`. */
@@ -423,15 +362,11 @@ export interface ListMediationGroupsResponse {
   mediationGroups?: Array<MediationGroup>;
 }
 
-export const ListMediationGroupsResponse: Schema.Schema<ListMediationGroupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      mediationGroups: Schema.optional(Schema.Array(MediationGroup)),
-    }),
-  ).annotate({
-    identifier: "ListMediationGroupsResponse",
-  }) as any as Schema.Schema<ListMediationGroupsResponse>;
+export const ListMediationGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    mediationGroups: Schema.optional(Schema.Array(MediationGroup)),
+  }).annotate({ identifier: "ListMediationGroupsResponse" });
 
 export interface MediationReportSpecDimensionFilter {
   /** Applies the filter criterion to the specified dimension. */
@@ -457,15 +392,11 @@ export interface MediationReportSpecDimensionFilter {
   matchesAny?: StringList;
 }
 
-export const MediationReportSpecDimensionFilter: Schema.Schema<MediationReportSpecDimensionFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dimension: Schema.optional(Schema.String),
-      matchesAny: Schema.optional(StringList),
-    }),
-  ).annotate({
-    identifier: "MediationReportSpecDimensionFilter",
-  }) as any as Schema.Schema<MediationReportSpecDimensionFilter>;
+export const MediationReportSpecDimensionFilter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dimension: Schema.optional(Schema.String),
+    matchesAny: Schema.optional(StringList),
+  }).annotate({ identifier: "MediationReportSpecDimensionFilter" });
 
 export interface CampaignReportSpec {
   /** List of dimensions of the report. The value combination of these dimensions determines the row of the report. If no dimensions are specified, the report returns a single row of requested metrics for the entire account. */
@@ -501,31 +432,22 @@ export interface CampaignReportSpec {
   dateRange?: DateRange;
 }
 
-export const CampaignReportSpec: Schema.Schema<CampaignReportSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dimensions: Schema.optional(Schema.Array(Schema.String)),
-      metrics: Schema.optional(Schema.Array(Schema.String)),
-      languageCode: Schema.optional(Schema.String),
-      dateRange: Schema.optional(DateRange),
-    }),
-  ).annotate({
-    identifier: "CampaignReportSpec",
-  }) as any as Schema.Schema<CampaignReportSpec>;
+export const CampaignReportSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dimensions: Schema.optional(Schema.Array(Schema.String)),
+  metrics: Schema.optional(Schema.Array(Schema.String)),
+  languageCode: Schema.optional(Schema.String),
+  dateRange: Schema.optional(DateRange),
+}).annotate({ identifier: "CampaignReportSpec" });
 
 export interface GenerateCampaignReportRequest {
   /** Campaign report specification. */
   reportSpec?: CampaignReportSpec;
 }
 
-export const GenerateCampaignReportRequest: Schema.Schema<GenerateCampaignReportRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reportSpec: Schema.optional(CampaignReportSpec),
-    }),
-  ).annotate({
-    identifier: "GenerateCampaignReportRequest",
-  }) as any as Schema.Schema<GenerateCampaignReportRequest>;
+export const GenerateCampaignReportRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reportSpec: Schema.optional(CampaignReportSpec),
+  }).annotate({ identifier: "GenerateCampaignReportRequest" });
 
 export interface StopMediationAbExperimentRequest {
   /** The choice for the winning variant. */
@@ -536,14 +458,10 @@ export interface StopMediationAbExperimentRequest {
     | (string & {});
 }
 
-export const StopMediationAbExperimentRequest: Schema.Schema<StopMediationAbExperimentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      variantChoice: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StopMediationAbExperimentRequest",
-  }) as any as Schema.Schema<StopMediationAbExperimentRequest>;
+export const StopMediationAbExperimentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    variantChoice: Schema.optional(Schema.String),
+  }).annotate({ identifier: "StopMediationAbExperimentRequest" });
 
 export interface AdapterAdapterConfigMetadata {
   /** This is used to fill the key of the [ad_unit_configurations](#AdUnitMapping.ad_unit_configurations). */
@@ -554,16 +472,12 @@ export interface AdapterAdapterConfigMetadata {
   adapterConfigMetadataLabel?: string;
 }
 
-export const AdapterAdapterConfigMetadata: Schema.Schema<AdapterAdapterConfigMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      adapterConfigMetadataId: Schema.optional(Schema.String),
-      isRequired: Schema.optional(Schema.Boolean),
-      adapterConfigMetadataLabel: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AdapterAdapterConfigMetadata",
-  }) as any as Schema.Schema<AdapterAdapterConfigMetadata>;
+export const AdapterAdapterConfigMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    adapterConfigMetadataId: Schema.optional(Schema.String),
+    isRequired: Schema.optional(Schema.Boolean),
+    adapterConfigMetadataLabel: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AdapterAdapterConfigMetadata" });
 
 export interface Adapter {
   /** Output only. Indicates the formats of the ad units supported by this adapter. */
@@ -580,19 +494,16 @@ export interface Adapter {
   platform?: string;
 }
 
-export const Adapter: Schema.Schema<Adapter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      formats: Schema.optional(Schema.Array(Schema.String)),
-      adapterId: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      adapterConfigMetadata: Schema.optional(
-        Schema.Array(AdapterAdapterConfigMetadata),
-      ),
-      platform: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Adapter" }) as any as Schema.Schema<Adapter>;
+export const Adapter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  formats: Schema.optional(Schema.Array(Schema.String)),
+  adapterId: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  adapterConfigMetadata: Schema.optional(
+    Schema.Array(AdapterAdapterConfigMetadata),
+  ),
+  platform: Schema.optional(Schema.String),
+}).annotate({ identifier: "Adapter" });
 
 export interface ListAdaptersResponse {
   /** The adapter. */
@@ -601,15 +512,10 @@ export interface ListAdaptersResponse {
   nextPageToken?: string;
 }
 
-export const ListAdaptersResponse: Schema.Schema<ListAdaptersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      adapters: Schema.optional(Schema.Array(Adapter)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAdaptersResponse",
-  }) as any as Schema.Schema<ListAdaptersResponse>;
+export const ListAdaptersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  adapters: Schema.optional(Schema.Array(Adapter)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListAdaptersResponse" });
 
 export interface ReportWarning {
   /** Type of the warning. */
@@ -624,15 +530,10 @@ export interface ReportWarning {
   description?: string;
 }
 
-export const ReportWarning: Schema.Schema<ReportWarning> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ReportWarning",
-  }) as any as Schema.Schema<ReportWarning>;
+export const ReportWarning = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "ReportWarning" });
 
 export interface ReportFooter {
   /** Total number of rows that matched the request. Warning: This count does NOT always match the number of rows in the response. Do not make that assumption when processing the response. */
@@ -641,15 +542,10 @@ export interface ReportFooter {
   warnings?: Array<ReportWarning>;
 }
 
-export const ReportFooter: Schema.Schema<ReportFooter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      matchingRowCount: Schema.optional(Schema.String),
-      warnings: Schema.optional(Schema.Array(ReportWarning)),
-    }),
-  ).annotate({
-    identifier: "ReportFooter",
-  }) as any as Schema.Schema<ReportFooter>;
+export const ReportFooter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  matchingRowCount: Schema.optional(Schema.String),
+  warnings: Schema.optional(Schema.Array(ReportWarning)),
+}).annotate({ identifier: "ReportFooter" });
 
 export interface ReportRowDimensionValue {
   /** The localized string representation of the value. If unspecified, the display label should be derived from the value. */
@@ -658,15 +554,11 @@ export interface ReportRowDimensionValue {
   value?: string;
 }
 
-export const ReportRowDimensionValue: Schema.Schema<ReportRowDimensionValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayLabel: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ReportRowDimensionValue",
-  }) as any as Schema.Schema<ReportRowDimensionValue>;
+export const ReportRowDimensionValue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayLabel: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ReportRowDimensionValue" });
 
 export interface ReportRow {
   /** Map of dimension values in a row, with keys as enum name of the dimensions. */
@@ -675,17 +567,14 @@ export interface ReportRow {
   metricValues?: Record<string, ReportRowMetricValue>;
 }
 
-export const ReportRow: Schema.Schema<ReportRow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dimensionValues: Schema.optional(
-        Schema.Record(Schema.String, ReportRowDimensionValue),
-      ),
-      metricValues: Schema.optional(
-        Schema.Record(Schema.String, ReportRowMetricValue),
-      ),
-    }),
-  ).annotate({ identifier: "ReportRow" }) as any as Schema.Schema<ReportRow>;
+export const ReportRow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dimensionValues: Schema.optional(
+    Schema.Record(Schema.String, ReportRowDimensionValue),
+  ),
+  metricValues: Schema.optional(
+    Schema.Record(Schema.String, ReportRowMetricValue),
+  ),
+}).annotate({ identifier: "ReportRow" });
 
 export interface GenerateNetworkReportResponse {
   /** Report generation settings that describes the report contents, such as the report date range and localization settings. */
@@ -696,16 +585,12 @@ export interface GenerateNetworkReportResponse {
   row?: ReportRow;
 }
 
-export const GenerateNetworkReportResponse: Schema.Schema<GenerateNetworkReportResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      header: Schema.optional(ReportHeader),
-      footer: Schema.optional(ReportFooter),
-      row: Schema.optional(ReportRow),
-    }),
-  ).annotate({
-    identifier: "GenerateNetworkReportResponse",
-  }) as any as Schema.Schema<GenerateNetworkReportResponse>;
+export const GenerateNetworkReportResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    header: Schema.optional(ReportHeader),
+    footer: Schema.optional(ReportFooter),
+    row: Schema.optional(ReportRow),
+  }).annotate({ identifier: "GenerateNetworkReportResponse" });
 
 export interface AdUnitMapping {
   /** Settings for the specified ad unit to make an ad request to 3rd party ad network. Key-value pairs with values set by the user for the keys requested by the ad network. Please see https://support.google.com/admob/answer/3245073 for details on how to configure the network settings. */
@@ -720,20 +605,15 @@ export interface AdUnitMapping {
   name?: string;
 }
 
-export const AdUnitMapping: Schema.Schema<AdUnitMapping> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      adUnitConfigurations: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      displayName: Schema.optional(Schema.String),
-      adapterId: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AdUnitMapping",
-  }) as any as Schema.Schema<AdUnitMapping>;
+export const AdUnitMapping = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  adUnitConfigurations: Schema.optional(
+    Schema.Record(Schema.String, Schema.String),
+  ),
+  displayName: Schema.optional(Schema.String),
+  adapterId: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "AdUnitMapping" });
 
 export interface ListAdUnitMappingsResponse {
   /** Used to set the `page_token` in the `ListAdUnitMappingsRequest` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -742,29 +622,21 @@ export interface ListAdUnitMappingsResponse {
   adUnitMappings?: Array<AdUnitMapping>;
 }
 
-export const ListAdUnitMappingsResponse: Schema.Schema<ListAdUnitMappingsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      adUnitMappings: Schema.optional(Schema.Array(AdUnitMapping)),
-    }),
-  ).annotate({
-    identifier: "ListAdUnitMappingsResponse",
-  }) as any as Schema.Schema<ListAdUnitMappingsResponse>;
+export const ListAdUnitMappingsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    adUnitMappings: Schema.optional(Schema.Array(AdUnitMapping)),
+  }).annotate({ identifier: "ListAdUnitMappingsResponse" });
 
 export interface MediationAbExperimentExperimentMediationLine {
   /** The mediation group line used by the experiment. */
   mediationGroupLine?: MediationGroupMediationGroupLine;
 }
 
-export const MediationAbExperimentExperimentMediationLine: Schema.Schema<MediationAbExperimentExperimentMediationLine> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mediationGroupLine: Schema.optional(MediationGroupMediationGroupLine),
-    }),
-  ).annotate({
-    identifier: "MediationAbExperimentExperimentMediationLine",
-  }) as any as Schema.Schema<MediationAbExperimentExperimentMediationLine>;
+export const MediationAbExperimentExperimentMediationLine =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    mediationGroupLine: Schema.optional(MediationGroupMediationGroupLine),
+  }).annotate({ identifier: "MediationAbExperimentExperimentMediationLine" });
 
 export interface MediationAbExperiment {
   /** The experiment mediation lines created for the treatment. They will be used for serving when the experiment status is RUNNING. */
@@ -803,28 +675,23 @@ export interface MediationAbExperiment {
   mediationGroupId?: string;
 }
 
-export const MediationAbExperiment: Schema.Schema<MediationAbExperiment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      treatmentMediationLines: Schema.optional(
-        Schema.Array(MediationAbExperimentExperimentMediationLine),
-      ),
-      displayName: Schema.optional(Schema.String),
-      experimentId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      variantLeader: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      controlMediationLines: Schema.optional(
-        Schema.Array(MediationAbExperimentExperimentMediationLine),
-      ),
-      treatmentTrafficPercentage: Schema.optional(Schema.String),
-      mediationGroupId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MediationAbExperiment",
-  }) as any as Schema.Schema<MediationAbExperiment>;
+export const MediationAbExperiment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  treatmentMediationLines: Schema.optional(
+    Schema.Array(MediationAbExperimentExperimentMediationLine),
+  ),
+  displayName: Schema.optional(Schema.String),
+  experimentId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  variantLeader: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+  controlMediationLines: Schema.optional(
+    Schema.Array(MediationAbExperimentExperimentMediationLine),
+  ),
+  treatmentTrafficPercentage: Schema.optional(Schema.String),
+  mediationGroupId: Schema.optional(Schema.String),
+}).annotate({ identifier: "MediationAbExperiment" });
 
 export interface AppLinkedAppInfo {
   /** Optional. The app store information for published Android apps. This field is only used for apps on the Android platform and will be ignored if the PLATFORM is set to iOS. The default value is the Google Play App store. This field can be updated after app is created. If the app is not published, this field will not be included in the response. */
@@ -844,16 +711,11 @@ export interface AppLinkedAppInfo {
   displayName?: string;
 }
 
-export const AppLinkedAppInfo: Schema.Schema<AppLinkedAppInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      androidAppStores: Schema.optional(Schema.Array(Schema.String)),
-      appStoreId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AppLinkedAppInfo",
-  }) as any as Schema.Schema<AppLinkedAppInfo>;
+export const AppLinkedAppInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  androidAppStores: Schema.optional(Schema.Array(Schema.String)),
+  appStoreId: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+}).annotate({ identifier: "AppLinkedAppInfo" });
 
 export interface App {
   /** The externally visible ID of the app which can be used to integrate with the AdMob SDK. This is a read only property. Example: ca-app-pub-9876543210987654~0123456789 */
@@ -875,17 +737,14 @@ export interface App {
     | (string & {});
 }
 
-export const App: Schema.Schema<App> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      appId: Schema.optional(Schema.String),
-      platform: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      manualAppInfo: Schema.optional(AppManualAppInfo),
-      linkedAppInfo: Schema.optional(AppLinkedAppInfo),
-      appApprovalState: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "App" }) as any as Schema.Schema<App>;
+export const App = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  appId: Schema.optional(Schema.String),
+  platform: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  manualAppInfo: Schema.optional(AppManualAppInfo),
+  linkedAppInfo: Schema.optional(AppLinkedAppInfo),
+  appApprovalState: Schema.optional(Schema.String),
+}).annotate({ identifier: "App" });
 
 export interface PublisherAccount {
   /** Resource name of this account. Format is accounts/{publisher_id}. */
@@ -898,17 +757,12 @@ export interface PublisherAccount {
   currencyCode?: string;
 }
 
-export const PublisherAccount: Schema.Schema<PublisherAccount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      publisherId: Schema.optional(Schema.String),
-      reportingTimeZone: Schema.optional(Schema.String),
-      currencyCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PublisherAccount",
-  }) as any as Schema.Schema<PublisherAccount>;
+export const PublisherAccount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  publisherId: Schema.optional(Schema.String),
+  reportingTimeZone: Schema.optional(Schema.String),
+  currencyCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "PublisherAccount" });
 
 export interface AdUnitRewardSettings {
   /** Reward item for this ad unit. */
@@ -917,15 +771,10 @@ export interface AdUnitRewardSettings {
   unitAmount?: string;
 }
 
-export const AdUnitRewardSettings: Schema.Schema<AdUnitRewardSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unitType: Schema.optional(Schema.String),
-      unitAmount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AdUnitRewardSettings",
-  }) as any as Schema.Schema<AdUnitRewardSettings>;
+export const AdUnitRewardSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  unitType: Schema.optional(Schema.String),
+  unitAmount: Schema.optional(Schema.String),
+}).annotate({ identifier: "AdUnitRewardSettings" });
 
 export interface AdUnit {
   /** AdFormat of the ad unit. Possible values are as follows: "APP_OPEN" - App Open ad format. "BANNER" - Banner ad format. "BANNER_INTERSTITIAL" - Legacy format that can be used as either banner or interstitial. This format can no longer be created but can be targeted by mediation groups. "INTERSTITIAL" - A full screen ad. Supported ad types are "RICH_MEDIA" and "VIDEO". "NATIVE" - Native ad format. "REWARDED" - An ad that, once viewed, gets a callback verifying the view so that a reward can be given to the user. Supported ad types are "RICH_MEDIA" (interactive) and video where video can not be excluded. "REWARDED_INTERSTITIAL" - Rewarded Interstitial ad format. Only supports video ad type. See https://support.google.com/admob/answer/9884467. */
@@ -944,18 +793,15 @@ export interface AdUnit {
   appId?: string;
 }
 
-export const AdUnit: Schema.Schema<AdUnit> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      adFormat: Schema.optional(Schema.String),
-      adTypes: Schema.optional(Schema.Array(Schema.String)),
-      rewardSettings: Schema.optional(AdUnitRewardSettings),
-      displayName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      adUnitId: Schema.optional(Schema.String),
-      appId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "AdUnit" }) as any as Schema.Schema<AdUnit>;
+export const AdUnit = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  adFormat: Schema.optional(Schema.String),
+  adTypes: Schema.optional(Schema.Array(Schema.String)),
+  rewardSettings: Schema.optional(AdUnitRewardSettings),
+  displayName: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  adUnitId: Schema.optional(Schema.String),
+  appId: Schema.optional(Schema.String),
+}).annotate({ identifier: "AdUnit" });
 
 export interface ListPublisherAccountsResponse {
   /** If not empty, indicates that there might be more accounts for the request; you must pass this value in a new `ListPublisherAccountsRequest`. */
@@ -964,29 +810,21 @@ export interface ListPublisherAccountsResponse {
   account?: Array<PublisherAccount>;
 }
 
-export const ListPublisherAccountsResponse: Schema.Schema<ListPublisherAccountsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      account: Schema.optional(Schema.Array(PublisherAccount)),
-    }),
-  ).annotate({
-    identifier: "ListPublisherAccountsResponse",
-  }) as any as Schema.Schema<ListPublisherAccountsResponse>;
+export const ListPublisherAccountsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    account: Schema.optional(Schema.Array(PublisherAccount)),
+  }).annotate({ identifier: "ListPublisherAccountsResponse" });
 
 export interface BatchCreateAdUnitMappingsResponse {
   /** The Ad units mappings created under the requested account. */
   adUnitMappings?: Array<AdUnitMapping>;
 }
 
-export const BatchCreateAdUnitMappingsResponse: Schema.Schema<BatchCreateAdUnitMappingsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      adUnitMappings: Schema.optional(Schema.Array(AdUnitMapping)),
-    }),
-  ).annotate({
-    identifier: "BatchCreateAdUnitMappingsResponse",
-  }) as any as Schema.Schema<BatchCreateAdUnitMappingsResponse>;
+export const BatchCreateAdUnitMappingsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    adUnitMappings: Schema.optional(Schema.Array(AdUnitMapping)),
+  }).annotate({ identifier: "BatchCreateAdUnitMappingsResponse" });
 
 export interface CreateAdUnitMappingRequest {
   /** Required. The ad unit mapping to create. */
@@ -995,15 +833,11 @@ export interface CreateAdUnitMappingRequest {
   parent?: string;
 }
 
-export const CreateAdUnitMappingRequest: Schema.Schema<CreateAdUnitMappingRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      adUnitMapping: Schema.optional(AdUnitMapping),
-      parent: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreateAdUnitMappingRequest",
-  }) as any as Schema.Schema<CreateAdUnitMappingRequest>;
+export const CreateAdUnitMappingRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    adUnitMapping: Schema.optional(AdUnitMapping),
+    parent: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CreateAdUnitMappingRequest" });
 
 export interface GenerateMediationReportResponse {
   /** Actual report data. */
@@ -1014,16 +848,12 @@ export interface GenerateMediationReportResponse {
   footer?: ReportFooter;
 }
 
-export const GenerateMediationReportResponse: Schema.Schema<GenerateMediationReportResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      row: Schema.optional(ReportRow),
-      header: Schema.optional(ReportHeader),
-      footer: Schema.optional(ReportFooter),
-    }),
-  ).annotate({
-    identifier: "GenerateMediationReportResponse",
-  }) as any as Schema.Schema<GenerateMediationReportResponse>;
+export const GenerateMediationReportResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    row: Schema.optional(ReportRow),
+    header: Schema.optional(ReportHeader),
+    footer: Schema.optional(ReportFooter),
+  }).annotate({ identifier: "GenerateMediationReportResponse" });
 
 export interface MediationReportSpecSortCondition {
   /** Sort by the specified dimension. */
@@ -1061,16 +891,12 @@ export interface MediationReportSpecSortCondition {
     | (string & {});
 }
 
-export const MediationReportSpecSortCondition: Schema.Schema<MediationReportSpecSortCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dimension: Schema.optional(Schema.String),
-      order: Schema.optional(Schema.String),
-      metric: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MediationReportSpecSortCondition",
-  }) as any as Schema.Schema<MediationReportSpecSortCondition>;
+export const MediationReportSpecSortCondition =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dimension: Schema.optional(Schema.String),
+    order: Schema.optional(Schema.String),
+    metric: Schema.optional(Schema.String),
+  }).annotate({ identifier: "MediationReportSpecSortCondition" });
 
 export interface MediationReportSpec {
   /** List of metrics of the report. A report must specify at least one metric. */
@@ -1120,39 +946,30 @@ export interface MediationReportSpec {
   maxReportRows?: number;
 }
 
-export const MediationReportSpec: Schema.Schema<MediationReportSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metrics: Schema.optional(Schema.Array(Schema.String)),
-      sortConditions: Schema.optional(
-        Schema.Array(MediationReportSpecSortCondition),
-      ),
-      dateRange: Schema.optional(DateRange),
-      dimensionFilters: Schema.optional(
-        Schema.Array(MediationReportSpecDimensionFilter),
-      ),
-      localizationSettings: Schema.optional(LocalizationSettings),
-      timeZone: Schema.optional(Schema.String),
-      dimensions: Schema.optional(Schema.Array(Schema.String)),
-      maxReportRows: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "MediationReportSpec",
-  }) as any as Schema.Schema<MediationReportSpec>;
+export const MediationReportSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metrics: Schema.optional(Schema.Array(Schema.String)),
+  sortConditions: Schema.optional(
+    Schema.Array(MediationReportSpecSortCondition),
+  ),
+  dateRange: Schema.optional(DateRange),
+  dimensionFilters: Schema.optional(
+    Schema.Array(MediationReportSpecDimensionFilter),
+  ),
+  localizationSettings: Schema.optional(LocalizationSettings),
+  timeZone: Schema.optional(Schema.String),
+  dimensions: Schema.optional(Schema.Array(Schema.String)),
+  maxReportRows: Schema.optional(Schema.Number),
+}).annotate({ identifier: "MediationReportSpec" });
 
 export interface GenerateMediationReportRequest {
   /** Network report specification. */
   reportSpec?: MediationReportSpec;
 }
 
-export const GenerateMediationReportRequest: Schema.Schema<GenerateMediationReportRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reportSpec: Schema.optional(MediationReportSpec),
-    }),
-  ).annotate({
-    identifier: "GenerateMediationReportRequest",
-  }) as any as Schema.Schema<GenerateMediationReportRequest>;
+export const GenerateMediationReportRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reportSpec: Schema.optional(MediationReportSpec),
+  }).annotate({ identifier: "GenerateMediationReportRequest" });
 
 export interface AdSource {
   /** Display name of this ad source. */
@@ -1163,42 +980,31 @@ export interface AdSource {
   name?: string;
 }
 
-export const AdSource: Schema.Schema<AdSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-      adSourceId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "AdSource" }) as any as Schema.Schema<AdSource>;
+export const AdSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  title: Schema.optional(Schema.String),
+  adSourceId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "AdSource" });
 
 export interface GenerateCampaignReportResponse {
   /** The campaign report data from the specified publisher. At most 100000 rows will be returned from the API. */
   rows?: Array<ReportRow>;
 }
 
-export const GenerateCampaignReportResponse: Schema.Schema<GenerateCampaignReportResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rows: Schema.optional(Schema.Array(ReportRow)),
-    }),
-  ).annotate({
-    identifier: "GenerateCampaignReportResponse",
-  }) as any as Schema.Schema<GenerateCampaignReportResponse>;
+export const GenerateCampaignReportResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rows: Schema.optional(Schema.Array(ReportRow)),
+  }).annotate({ identifier: "GenerateCampaignReportResponse" });
 
 export interface BatchCreateAdUnitMappingsRequest {
   /** Required. The request message specifying the ad unit mappings to create. A maximum of 100 ad unit mappings can be created in a batch. If the number of ad unit mappings in the batch request exceed 100, the entire request will be rejected and no ad unit mappings will be created. */
   requests?: Array<CreateAdUnitMappingRequest>;
 }
 
-export const BatchCreateAdUnitMappingsRequest: Schema.Schema<BatchCreateAdUnitMappingsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requests: Schema.optional(Schema.Array(CreateAdUnitMappingRequest)),
-    }),
-  ).annotate({
-    identifier: "BatchCreateAdUnitMappingsRequest",
-  }) as any as Schema.Schema<BatchCreateAdUnitMappingsRequest>;
+export const BatchCreateAdUnitMappingsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requests: Schema.optional(Schema.Array(CreateAdUnitMappingRequest)),
+  }).annotate({ identifier: "BatchCreateAdUnitMappingsRequest" });
 
 export interface ListAdUnitsResponse {
   /** The resulting ad units for the requested account. */
@@ -1207,15 +1013,10 @@ export interface ListAdUnitsResponse {
   nextPageToken?: string;
 }
 
-export const ListAdUnitsResponse: Schema.Schema<ListAdUnitsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      adUnits: Schema.optional(Schema.Array(AdUnit)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAdUnitsResponse",
-  }) as any as Schema.Schema<ListAdUnitsResponse>;
+export const ListAdUnitsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  adUnits: Schema.optional(Schema.Array(AdUnit)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListAdUnitsResponse" });
 
 export interface ListAdSourcesResponse {
   /** The ad sources. */
@@ -1224,15 +1025,10 @@ export interface ListAdSourcesResponse {
   nextPageToken?: string;
 }
 
-export const ListAdSourcesResponse: Schema.Schema<ListAdSourcesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      adSources: Schema.optional(Schema.Array(AdSource)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAdSourcesResponse",
-  }) as any as Schema.Schema<ListAdSourcesResponse>;
+export const ListAdSourcesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  adSources: Schema.optional(Schema.Array(AdSource)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListAdSourcesResponse" });
 
 export interface ListAppsResponse {
   /** The resulting apps for the requested account. */
@@ -1241,15 +1037,10 @@ export interface ListAppsResponse {
   nextPageToken?: string;
 }
 
-export const ListAppsResponse: Schema.Schema<ListAppsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      apps: Schema.optional(Schema.Array(App)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAppsResponse",
-  }) as any as Schema.Schema<ListAppsResponse>;
+export const ListAppsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  apps: Schema.optional(Schema.Array(App)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListAppsResponse" });
 
 // ==========================================================================
 // Operations

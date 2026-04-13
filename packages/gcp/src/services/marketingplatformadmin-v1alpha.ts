@@ -29,22 +29,16 @@ export interface Organization {
   displayName?: string;
 }
 
-export const Organization: Schema.Schema<Organization> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Organization",
-  }) as any as Schema.Schema<Organization>;
+export const Organization = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+}).annotate({ identifier: "Organization" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface ListOrganizationsResponse {
   /** The Organization resource that the user has access to, which includes the org id and display name. */
@@ -53,15 +47,11 @@ export interface ListOrganizationsResponse {
   nextPageToken?: string;
 }
 
-export const ListOrganizationsResponse: Schema.Schema<ListOrganizationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      organizations: Schema.optional(Schema.Array(Organization)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListOrganizationsResponse",
-  }) as any as Schema.Schema<ListOrganizationsResponse>;
+export const ListOrganizationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    organizations: Schema.optional(Schema.Array(Organization)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListOrganizationsResponse" });
 
 export interface Marketingplatformadmin_Date {
   /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
@@ -72,16 +62,12 @@ export interface Marketingplatformadmin_Date {
   month?: number;
 }
 
-export const Marketingplatformadmin_Date: Schema.Schema<Marketingplatformadmin_Date> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      day: Schema.optional(Schema.Number),
-      year: Schema.optional(Schema.Number),
-      month: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "Marketingplatformadmin_Date",
-  }) as any as Schema.Schema<Marketingplatformadmin_Date>;
+export const Marketingplatformadmin_Date =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    day: Schema.optional(Schema.Number),
+    year: Schema.optional(Schema.Number),
+    month: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "Marketingplatformadmin_Date" });
 
 export interface ClientData {
   /** The start date of the contract between the sales org and the end client. */
@@ -92,28 +78,21 @@ export interface ClientData {
   organization?: Organization;
 }
 
-export const ClientData: Schema.Schema<ClientData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startDate: Schema.optional(Marketingplatformadmin_Date),
-      endDate: Schema.optional(Marketingplatformadmin_Date),
-      organization: Schema.optional(Organization),
-    }),
-  ).annotate({ identifier: "ClientData" }) as any as Schema.Schema<ClientData>;
+export const ClientData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startDate: Schema.optional(Marketingplatformadmin_Date),
+  endDate: Schema.optional(Marketingplatformadmin_Date),
+  organization: Schema.optional(Organization),
+}).annotate({ identifier: "ClientData" });
 
 export interface FindSalesPartnerManagedClientsResponse {
   /** The clients managed by the sales org. */
   clientData?: Array<ClientData>;
 }
 
-export const FindSalesPartnerManagedClientsResponse: Schema.Schema<FindSalesPartnerManagedClientsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clientData: Schema.optional(Schema.Array(ClientData)),
-    }),
-  ).annotate({
-    identifier: "FindSalesPartnerManagedClientsResponse",
-  }) as any as Schema.Schema<FindSalesPartnerManagedClientsResponse>;
+export const FindSalesPartnerManagedClientsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    clientData: Schema.optional(Schema.Array(ClientData)),
+  }).annotate({ identifier: "FindSalesPartnerManagedClientsResponse" });
 
 export interface Money {
   /** Number of nano (10^-9) units of the amount. The value must be between -999,999,999 and +999,999,999 inclusive. If `units` is positive, `nanos` must be positive or zero. If `units` is zero, `nanos` can be positive, zero, or negative. If `units` is negative, `nanos` must be negative or zero. For example $-1.75 is represented as `units`=-1 and `nanos`=-750,000,000. */
@@ -124,28 +103,21 @@ export interface Money {
   units?: string;
 }
 
-export const Money: Schema.Schema<Money> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nanos: Schema.optional(Schema.Number),
-      currencyCode: Schema.optional(Schema.String),
-      units: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Money" }) as any as Schema.Schema<Money>;
+export const Money = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nanos: Schema.optional(Schema.Number),
+  currencyCode: Schema.optional(Schema.String),
+  units: Schema.optional(Schema.String),
+}).annotate({ identifier: "Money" });
 
 export interface ReportPropertyUsageRequest {
   /** Required. The target month to list property usages. Format: YYYY-MM. For example, "2025-05" */
   month?: string;
 }
 
-export const ReportPropertyUsageRequest: Schema.Schema<ReportPropertyUsageRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      month: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ReportPropertyUsageRequest",
-  }) as any as Schema.Schema<ReportPropertyUsageRequest>;
+export const ReportPropertyUsageRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    month: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ReportPropertyUsageRequest" });
 
 export interface AnalyticsAccountLink {
   /** Identifier. Resource name of this AnalyticsAccountLink. Note the resource ID is the same as the ID of the Analtyics account. Format: organizations/{org_id}/analyticsAccountLinks/{analytics_account_link_id} Example: "organizations/xyz/analyticsAccountLinks/1234" */
@@ -162,17 +134,12 @@ export interface AnalyticsAccountLink {
     | (string & {});
 }
 
-export const AnalyticsAccountLink: Schema.Schema<AnalyticsAccountLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      analyticsAccount: Schema.optional(Schema.String),
-      linkVerificationState: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AnalyticsAccountLink",
-  }) as any as Schema.Schema<AnalyticsAccountLink>;
+export const AnalyticsAccountLink = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  analyticsAccount: Schema.optional(Schema.String),
+  linkVerificationState: Schema.optional(Schema.String),
+}).annotate({ identifier: "AnalyticsAccountLink" });
 
 export interface ListAnalyticsAccountLinksResponse {
   /** Analytics account links in this organization. */
@@ -181,17 +148,11 @@ export interface ListAnalyticsAccountLinksResponse {
   nextPageToken?: string;
 }
 
-export const ListAnalyticsAccountLinksResponse: Schema.Schema<ListAnalyticsAccountLinksResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      analyticsAccountLinks: Schema.optional(
-        Schema.Array(AnalyticsAccountLink),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAnalyticsAccountLinksResponse",
-  }) as any as Schema.Schema<ListAnalyticsAccountLinksResponse>;
+export const ListAnalyticsAccountLinksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    analyticsAccountLinks: Schema.optional(Schema.Array(AnalyticsAccountLink)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListAnalyticsAccountLinksResponse" });
 
 export interface BillInfo {
   /** The total amount of the bill. */
@@ -204,36 +165,29 @@ export interface BillInfo {
   baseFee?: Money;
 }
 
-export const BillInfo: Schema.Schema<BillInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      total: Schema.optional(Money),
-      eventFee: Schema.optional(Money),
-      priceProtectionCredit: Schema.optional(Money),
-      baseFee: Schema.optional(Money),
-    }),
-  ).annotate({ identifier: "BillInfo" }) as any as Schema.Schema<BillInfo>;
+export const BillInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  total: Schema.optional(Money),
+  eventFee: Schema.optional(Money),
+  priceProtectionCredit: Schema.optional(Money),
+  baseFee: Schema.optional(Money),
+}).annotate({ identifier: "BillInfo" });
 
 export interface SetPropertyServiceLevelResponse {}
 
-export const SetPropertyServiceLevelResponse: Schema.Schema<SetPropertyServiceLevelResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const SetPropertyServiceLevelResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "SetPropertyServiceLevelResponse",
-  }) as any as Schema.Schema<SetPropertyServiceLevelResponse>;
+  });
 
 export interface FindSalesPartnerManagedClientsRequest {
   /** Optional. If set, only active and just ended clients will be returned. */
   isActive?: boolean;
 }
 
-export const FindSalesPartnerManagedClientsRequest: Schema.Schema<FindSalesPartnerManagedClientsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      isActive: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "FindSalesPartnerManagedClientsRequest",
-  }) as any as Schema.Schema<FindSalesPartnerManagedClientsRequest>;
+export const FindSalesPartnerManagedClientsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    isActive: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "FindSalesPartnerManagedClientsRequest" });
 
 export interface SetPropertyServiceLevelRequest {
   /** Required. The Analytics property to change the ServiceLevel setting. This field is the name of the Google Analytics Admin API property resource. Format: analyticsadmin.googleapis.com/properties/{property_id} */
@@ -246,15 +200,11 @@ export interface SetPropertyServiceLevelRequest {
     | (string & {});
 }
 
-export const SetPropertyServiceLevelRequest: Schema.Schema<SetPropertyServiceLevelRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      analyticsProperty: Schema.optional(Schema.String),
-      serviceLevel: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SetPropertyServiceLevelRequest",
-  }) as any as Schema.Schema<SetPropertyServiceLevelRequest>;
+export const SetPropertyServiceLevelRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    analyticsProperty: Schema.optional(Schema.String),
+    serviceLevel: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SetPropertyServiceLevelRequest" });
 
 export interface PropertyUsage {
   /** The subtype of the analytics property. This affects the billable event count. */
@@ -282,20 +232,15 @@ export interface PropertyUsage {
   property?: string;
 }
 
-export const PropertyUsage: Schema.Schema<PropertyUsage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      propertyType: Schema.optional(Schema.String),
-      serviceLevel: Schema.optional(Schema.String),
-      billableEventCount: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      totalEventCount: Schema.optional(Schema.String),
-      property: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PropertyUsage",
-  }) as any as Schema.Schema<PropertyUsage>;
+export const PropertyUsage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  propertyType: Schema.optional(Schema.String),
+  serviceLevel: Schema.optional(Schema.String),
+  billableEventCount: Schema.optional(Schema.String),
+  accountId: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  totalEventCount: Schema.optional(Schema.String),
+  property: Schema.optional(Schema.String),
+}).annotate({ identifier: "PropertyUsage" });
 
 export interface ReportPropertyUsageResponse {
   /** Usage data for all properties in the specified organization and month. */
@@ -304,15 +249,11 @@ export interface ReportPropertyUsageResponse {
   billInfo?: BillInfo;
 }
 
-export const ReportPropertyUsageResponse: Schema.Schema<ReportPropertyUsageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      propertyUsages: Schema.optional(Schema.Array(PropertyUsage)),
-      billInfo: Schema.optional(BillInfo),
-    }),
-  ).annotate({
-    identifier: "ReportPropertyUsageResponse",
-  }) as any as Schema.Schema<ReportPropertyUsageResponse>;
+export const ReportPropertyUsageResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    propertyUsages: Schema.optional(Schema.Array(PropertyUsage)),
+    billInfo: Schema.optional(BillInfo),
+  }).annotate({ identifier: "ReportPropertyUsageResponse" });
 
 // ==========================================================================
 // Operations

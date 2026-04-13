@@ -27,12 +27,9 @@ export interface Location {
   name?: string;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Location" });
 
 export interface CompositeRef {
   /** Required. Reference to the ApplicationTemplate resource. */
@@ -43,16 +40,11 @@ export interface CompositeRef {
   syncOperation?: string;
 }
 
-export const CompositeRef: Schema.Schema<CompositeRef> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      applicationTemplate: Schema.optional(Schema.String),
-      revision: Schema.optional(Schema.String),
-      syncOperation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CompositeRef",
-  }) as any as Schema.Schema<CompositeRef>;
+export const CompositeRef = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  applicationTemplate: Schema.optional(Schema.String),
+  revision: Schema.optional(Schema.String),
+  syncOperation: Schema.optional(Schema.String),
+}).annotate({ identifier: "CompositeRef" });
 
 export interface SaasCondition {
   /** Required. Status of the condition. */
@@ -76,18 +68,13 @@ export interface SaasCondition {
   reason?: string;
 }
 
-export const SaasCondition: Schema.Schema<SaasCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      status: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      lastTransitionTime: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-      reason: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SaasCondition",
-  }) as any as Schema.Schema<SaasCondition>;
+export const SaasCondition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  status: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  lastTransitionTime: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+}).annotate({ identifier: "SaasCondition" });
 
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -98,16 +85,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface Saas {
   /** Identifier. The resource name (full URI of the resource) following the standard naming scheme: "projects/{project}/locations/{location}/saas/{saas}" */
@@ -146,24 +130,21 @@ export interface Saas {
   updateTime?: string;
 }
 
-export const Saas: Schema.Schema<Saas> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      locations: Schema.optional(Schema.Array(Location)),
-      applicationTemplate: Schema.optional(CompositeRef),
-      blueprintRepo: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      conditions: Schema.optional(Schema.Array(SaasCondition)),
-      error: Schema.optional(Status),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      uid: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Saas" }) as any as Schema.Schema<Saas>;
+export const Saas = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  locations: Schema.optional(Schema.Array(Location)),
+  applicationTemplate: Schema.optional(CompositeRef),
+  blueprintRepo: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  conditions: Schema.optional(Schema.Array(SaasCondition)),
+  error: Schema.optional(Status),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  uid: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Saas" });
 
 export interface ListSaasResponse {
   /** The resulting saas. */
@@ -174,23 +155,17 @@ export interface ListSaasResponse {
   unreachable?: Array<string>;
 }
 
-export const ListSaasResponse: Schema.Schema<ListSaasResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      saas: Schema.optional(Schema.Array(Saas)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListSaasResponse",
-  }) as any as Schema.Schema<ListSaasResponse>;
+export const ListSaasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  saas: Schema.optional(Schema.Array(Saas)),
+  nextPageToken: Schema.optional(Schema.String),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ListSaasResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface Tenant {
   /** Identifier. The resource name (full URI of the resource) following the standard naming scheme: "projects/{project}/locations/{location}/tenants/{tenant}" */
@@ -213,20 +188,17 @@ export interface Tenant {
   updateTime?: string;
 }
 
-export const Tenant: Schema.Schema<Tenant> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      consumerResource: Schema.optional(Schema.String),
-      saas: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      uid: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Tenant" }) as any as Schema.Schema<Tenant>;
+export const Tenant = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  consumerResource: Schema.optional(Schema.String),
+  saas: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  uid: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Tenant" });
 
 export interface ListTenantsResponse {
   /** The resulting tenants. */
@@ -237,16 +209,11 @@ export interface ListTenantsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListTenantsResponse: Schema.Schema<ListTenantsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tenants: Schema.optional(Schema.Array(Tenant)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListTenantsResponse",
-  }) as any as Schema.Schema<ListTenantsResponse>;
+export const ListTenantsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tenants: Schema.optional(Schema.Array(Tenant)),
+  nextPageToken: Schema.optional(Schema.String),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ListTenantsResponse" });
 
 export interface Dependency {
   /** Required. Immutable. The unit kind of the dependency. */
@@ -255,13 +222,10 @@ export interface Dependency {
   alias?: string;
 }
 
-export const Dependency: Schema.Schema<Dependency> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unitKind: Schema.optional(Schema.String),
-      alias: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Dependency" }) as any as Schema.Schema<Dependency>;
+export const Dependency = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  unitKind: Schema.optional(Schema.String),
+  alias: Schema.optional(Schema.String),
+}).annotate({ identifier: "Dependency" });
 
 export interface FromMapping {
   /** Required. Alias of the dependency that the outputVariable will pass its value to */
@@ -270,15 +234,10 @@ export interface FromMapping {
   outputVariable?: string;
 }
 
-export const FromMapping: Schema.Schema<FromMapping> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dependency: Schema.optional(Schema.String),
-      outputVariable: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FromMapping",
-  }) as any as Schema.Schema<FromMapping>;
+export const FromMapping = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dependency: Schema.optional(Schema.String),
+  outputVariable: Schema.optional(Schema.String),
+}).annotate({ identifier: "FromMapping" });
 
 export interface ToMapping {
   /** Required. Alias of the dependency that the inputVariable will pass its value to */
@@ -289,14 +248,11 @@ export interface ToMapping {
   ignoreForLookup?: boolean;
 }
 
-export const ToMapping: Schema.Schema<ToMapping> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dependency: Schema.optional(Schema.String),
-      inputVariable: Schema.optional(Schema.String),
-      ignoreForLookup: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "ToMapping" }) as any as Schema.Schema<ToMapping>;
+export const ToMapping = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dependency: Schema.optional(Schema.String),
+  inputVariable: Schema.optional(Schema.String),
+  ignoreForLookup: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "ToMapping" });
 
 export interface VariableMapping {
   /** Optional. Output variables which will get their values from dependencies */
@@ -307,16 +263,11 @@ export interface VariableMapping {
   variable?: string;
 }
 
-export const VariableMapping: Schema.Schema<VariableMapping> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      from: Schema.optional(FromMapping),
-      to: Schema.optional(ToMapping),
-      variable: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VariableMapping",
-  }) as any as Schema.Schema<VariableMapping>;
+export const VariableMapping = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  from: Schema.optional(FromMapping),
+  to: Schema.optional(ToMapping),
+  variable: Schema.optional(Schema.String),
+}).annotate({ identifier: "VariableMapping" });
 
 export interface ComponentRef {
   /** Reference to the Composite ApplicationTemplate. */
@@ -327,16 +278,11 @@ export interface ComponentRef {
   revision?: string;
 }
 
-export const ComponentRef: Schema.Schema<ComponentRef> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      compositeRef: Schema.optional(CompositeRef),
-      component: Schema.optional(Schema.String),
-      revision: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ComponentRef",
-  }) as any as Schema.Schema<ComponentRef>;
+export const ComponentRef = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  compositeRef: Schema.optional(CompositeRef),
+  component: Schema.optional(Schema.String),
+  revision: Schema.optional(Schema.String),
+}).annotate({ identifier: "ComponentRef" });
 
 export interface Scope {
   /** Required. Scope Type. */
@@ -349,12 +295,9 @@ export interface Scope {
     | (string & {});
 }
 
-export const Scope: Schema.Schema<Scope> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Scope" }) as any as Schema.Schema<Scope>;
+export const Scope = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "Scope" });
 
 export interface AppParams {
   /** Grouping used to construct the name of the AppHub Application. Multiple UnitKinds can specify the same group to use the same Application across their respective units. Corresponds to the app_boundary_id in the ADC composite ApplicationTemplate. Defaults to UnitKind.name */
@@ -363,13 +306,10 @@ export interface AppParams {
   scope?: Scope;
 }
 
-export const AppParams: Schema.Schema<AppParams> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      group: Schema.optional(Schema.String),
-      scope: Schema.optional(Scope),
-    }),
-  ).annotate({ identifier: "AppParams" }) as any as Schema.Schema<AppParams>;
+export const AppParams = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  group: Schema.optional(Schema.String),
+  scope: Schema.optional(Scope),
+}).annotate({ identifier: "AppParams" });
 
 export interface UnitKind {
   /** Identifier. The resource name (full URI of the resource) following the standard naming scheme: "projects/{project}/locations/{location}/unitKinds/{unitKind}" */
@@ -404,26 +344,23 @@ export interface UnitKind {
   updateTime?: string;
 }
 
-export const UnitKind: Schema.Schema<UnitKind> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      defaultRelease: Schema.optional(Schema.String),
-      dependencies: Schema.optional(Schema.Array(Dependency)),
-      inputVariableMappings: Schema.optional(Schema.Array(VariableMapping)),
-      outputVariableMappings: Schema.optional(Schema.Array(VariableMapping)),
-      defaultFlagRevisions: Schema.optional(Schema.Array(Schema.String)),
-      saas: Schema.optional(Schema.String),
-      applicationTemplateComponent: Schema.optional(ComponentRef),
-      appParams: Schema.optional(AppParams),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      uid: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "UnitKind" }) as any as Schema.Schema<UnitKind>;
+export const UnitKind = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  defaultRelease: Schema.optional(Schema.String),
+  dependencies: Schema.optional(Schema.Array(Dependency)),
+  inputVariableMappings: Schema.optional(Schema.Array(VariableMapping)),
+  outputVariableMappings: Schema.optional(Schema.Array(VariableMapping)),
+  defaultFlagRevisions: Schema.optional(Schema.Array(Schema.String)),
+  saas: Schema.optional(Schema.String),
+  applicationTemplateComponent: Schema.optional(ComponentRef),
+  appParams: Schema.optional(AppParams),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  uid: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "UnitKind" });
 
 export interface ListUnitKindsResponse {
   /** The resulting unit kinds. */
@@ -434,16 +371,11 @@ export interface ListUnitKindsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListUnitKindsResponse: Schema.Schema<ListUnitKindsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unitKinds: Schema.optional(Schema.Array(UnitKind)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListUnitKindsResponse",
-  }) as any as Schema.Schema<ListUnitKindsResponse>;
+export const ListUnitKindsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  unitKinds: Schema.optional(Schema.Array(UnitKind)),
+  nextPageToken: Schema.optional(Schema.String),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ListUnitKindsResponse" });
 
 export interface UnitDependency {
   /** Output only. Alias for the name of the dependency. */
@@ -452,15 +384,10 @@ export interface UnitDependency {
   unit?: string;
 }
 
-export const UnitDependency: Schema.Schema<UnitDependency> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      alias: Schema.optional(Schema.String),
-      unit: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UnitDependency",
-  }) as any as Schema.Schema<UnitDependency>;
+export const UnitDependency = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  alias: Schema.optional(Schema.String),
+  unit: Schema.optional(Schema.String),
+}).annotate({ identifier: "UnitDependency" });
 
 export interface UnitVariable {
   /** Required. Immutable. Name of the variable from actuation configs. */
@@ -478,30 +405,20 @@ export interface UnitVariable {
   value?: string;
 }
 
-export const UnitVariable: Schema.Schema<UnitVariable> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      variable: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UnitVariable",
-  }) as any as Schema.Schema<UnitVariable>;
+export const UnitVariable = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  variable: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+}).annotate({ identifier: "UnitVariable" });
 
 export interface MaintenanceSettings {
   /** Optional. If present, it fixes the release on the unit until the given time; i.e. changes to the release field will be rejected. Rollouts should and will also respect this by not requesting an upgrade in the first place. */
   pinnedUntilTime?: string;
 }
 
-export const MaintenanceSettings: Schema.Schema<MaintenanceSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pinnedUntilTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MaintenanceSettings",
-  }) as any as Schema.Schema<MaintenanceSettings>;
+export const MaintenanceSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pinnedUntilTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "MaintenanceSettings" });
 
 export interface UnitCondition {
   /** Required. Status of the condition. */
@@ -527,18 +444,13 @@ export interface UnitCondition {
   reason?: string;
 }
 
-export const UnitCondition: Schema.Schema<UnitCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      status: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      lastTransitionTime: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-      reason: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UnitCondition",
-  }) as any as Schema.Schema<UnitCondition>;
+export const UnitCondition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  status: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  lastTransitionTime: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+}).annotate({ identifier: "UnitCondition" });
 
 export interface Unit {
   /** Identifier. The resource name (full URI of the resource) following the standard naming scheme: "projects/{project}/locations/{location}/units/{unit}" */
@@ -616,39 +528,36 @@ export interface Unit {
   satisfiesPzi?: boolean;
 }
 
-export const Unit: Schema.Schema<Unit> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      unitKind: Schema.optional(Schema.String),
-      release: Schema.optional(Schema.String),
-      tenant: Schema.optional(Schema.String),
-      ongoingOperations: Schema.optional(Schema.Array(Schema.String)),
-      pendingOperations: Schema.optional(Schema.Array(Schema.String)),
-      scheduledOperations: Schema.optional(Schema.Array(Schema.String)),
-      dependents: Schema.optional(Schema.Array(UnitDependency)),
-      dependencies: Schema.optional(Schema.Array(UnitDependency)),
-      inputVariables: Schema.optional(Schema.Array(UnitVariable)),
-      outputVariables: Schema.optional(Schema.Array(UnitVariable)),
-      maintenance: Schema.optional(MaintenanceSettings),
-      state: Schema.optional(Schema.String),
-      conditions: Schema.optional(Schema.Array(UnitCondition)),
-      managementMode: Schema.optional(Schema.String),
-      systemManagedState: Schema.optional(Schema.String),
-      systemCleanupAt: Schema.optional(Schema.String),
-      flagRevisions: Schema.optional(Schema.Array(Schema.String)),
-      application: Schema.optional(Schema.String),
-      flagConfigName: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      uid: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      satisfiesPzs: Schema.optional(Schema.Boolean),
-      satisfiesPzi: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "Unit" }) as any as Schema.Schema<Unit>;
+export const Unit = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  unitKind: Schema.optional(Schema.String),
+  release: Schema.optional(Schema.String),
+  tenant: Schema.optional(Schema.String),
+  ongoingOperations: Schema.optional(Schema.Array(Schema.String)),
+  pendingOperations: Schema.optional(Schema.Array(Schema.String)),
+  scheduledOperations: Schema.optional(Schema.Array(Schema.String)),
+  dependents: Schema.optional(Schema.Array(UnitDependency)),
+  dependencies: Schema.optional(Schema.Array(UnitDependency)),
+  inputVariables: Schema.optional(Schema.Array(UnitVariable)),
+  outputVariables: Schema.optional(Schema.Array(UnitVariable)),
+  maintenance: Schema.optional(MaintenanceSettings),
+  state: Schema.optional(Schema.String),
+  conditions: Schema.optional(Schema.Array(UnitCondition)),
+  managementMode: Schema.optional(Schema.String),
+  systemManagedState: Schema.optional(Schema.String),
+  systemCleanupAt: Schema.optional(Schema.String),
+  flagRevisions: Schema.optional(Schema.Array(Schema.String)),
+  application: Schema.optional(Schema.String),
+  flagConfigName: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  uid: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  satisfiesPzs: Schema.optional(Schema.Boolean),
+  satisfiesPzi: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Unit" });
 
 export interface ListUnitsResponse {
   /** The resulting units. */
@@ -659,16 +568,11 @@ export interface ListUnitsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListUnitsResponse: Schema.Schema<ListUnitsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      units: Schema.optional(Schema.Array(Unit)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListUnitsResponse",
-  }) as any as Schema.Schema<ListUnitsResponse>;
+export const ListUnitsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  units: Schema.optional(Schema.Array(Unit)),
+  nextPageToken: Schema.optional(Schema.String),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ListUnitsResponse" });
 
 export interface Provision {
   /** Optional. Reference to the Release object to use for the Unit. (optional). */
@@ -677,13 +581,10 @@ export interface Provision {
   inputVariables?: Array<UnitVariable>;
 }
 
-export const Provision: Schema.Schema<Provision> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      release: Schema.optional(Schema.String),
-      inputVariables: Schema.optional(Schema.Array(UnitVariable)),
-    }),
-  ).annotate({ identifier: "Provision" }) as any as Schema.Schema<Provision>;
+export const Provision = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  release: Schema.optional(Schema.String),
+  inputVariables: Schema.optional(Schema.Array(UnitVariable)),
+}).annotate({ identifier: "Provision" });
 
 export interface Upgrade {
   /** Optional. Reference to the Release object to use for the Unit. (optional). */
@@ -692,32 +593,25 @@ export interface Upgrade {
   inputVariables?: Array<UnitVariable>;
 }
 
-export const Upgrade: Schema.Schema<Upgrade> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      release: Schema.optional(Schema.String),
-      inputVariables: Schema.optional(Schema.Array(UnitVariable)),
-    }),
-  ).annotate({ identifier: "Upgrade" }) as any as Schema.Schema<Upgrade>;
+export const Upgrade = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  release: Schema.optional(Schema.String),
+  inputVariables: Schema.optional(Schema.Array(UnitVariable)),
+}).annotate({ identifier: "Upgrade" });
 
 export interface Deprovision {}
 
-export const Deprovision: Schema.Schema<Deprovision> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Deprovision",
-  }) as any as Schema.Schema<Deprovision>;
+export const Deprovision = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "Deprovision" });
 
 export interface FlagUpdate {
   /** Required. Flag release being applied by UnitOperation. */
   flagRelease?: string;
 }
 
-export const FlagUpdate: Schema.Schema<FlagUpdate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      flagRelease: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "FlagUpdate" }) as any as Schema.Schema<FlagUpdate>;
+export const FlagUpdate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  flagRelease: Schema.optional(Schema.String),
+}).annotate({ identifier: "FlagUpdate" });
 
 export interface UnitOperationCondition {
   /** Required. Status of the condition. */
@@ -745,30 +639,24 @@ export interface UnitOperationCondition {
   reason?: string;
 }
 
-export const UnitOperationCondition: Schema.Schema<UnitOperationCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      status: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      lastTransitionTime: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-      reason: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UnitOperationCondition",
-  }) as any as Schema.Schema<UnitOperationCondition>;
+export const UnitOperationCondition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    status: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    lastTransitionTime: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "UnitOperationCondition" });
 
 export interface Schedule {
   /** Optional. Start of operation. If not set, will be set to the start of the next window. (optional) */
   startTime?: string;
 }
 
-export const Schedule: Schema.Schema<Schedule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Schedule" }) as any as Schema.Schema<Schedule>;
+export const Schedule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Schedule" });
 
 export interface UnitOperation {
   provision?: Provision;
@@ -826,34 +714,29 @@ export interface UnitOperation {
   deleteTime?: string;
 }
 
-export const UnitOperation: Schema.Schema<UnitOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      provision: Schema.optional(Provision),
-      upgrade: Schema.optional(Upgrade),
-      deprovision: Schema.optional(Deprovision),
-      flagUpdate: Schema.optional(FlagUpdate),
-      name: Schema.optional(Schema.String),
-      unit: Schema.optional(Schema.String),
-      parentUnitOperation: Schema.optional(Schema.String),
-      rollout: Schema.optional(Schema.String),
-      cancel: Schema.optional(Schema.Boolean),
-      state: Schema.optional(Schema.String),
-      conditions: Schema.optional(Schema.Array(UnitOperationCondition)),
-      schedule: Schema.optional(Schedule),
-      engineState: Schema.optional(Schema.String),
-      errorCategory: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      uid: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      deleteTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UnitOperation",
-  }) as any as Schema.Schema<UnitOperation>;
+export const UnitOperation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provision: Schema.optional(Provision),
+  upgrade: Schema.optional(Upgrade),
+  deprovision: Schema.optional(Deprovision),
+  flagUpdate: Schema.optional(FlagUpdate),
+  name: Schema.optional(Schema.String),
+  unit: Schema.optional(Schema.String),
+  parentUnitOperation: Schema.optional(Schema.String),
+  rollout: Schema.optional(Schema.String),
+  cancel: Schema.optional(Schema.Boolean),
+  state: Schema.optional(Schema.String),
+  conditions: Schema.optional(Schema.Array(UnitOperationCondition)),
+  schedule: Schema.optional(Schedule),
+  engineState: Schema.optional(Schema.String),
+  errorCategory: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  uid: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  deleteTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "UnitOperation" });
 
 export interface ListUnitOperationsResponse {
   /** The resulting unit operations. */
@@ -864,16 +747,12 @@ export interface ListUnitOperationsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListUnitOperationsResponse: Schema.Schema<ListUnitOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unitOperations: Schema.optional(Schema.Array(UnitOperation)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListUnitOperationsResponse",
-  }) as any as Schema.Schema<ListUnitOperationsResponse>;
+export const ListUnitOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unitOperations: Schema.optional(Schema.Array(UnitOperation)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListUnitOperationsResponse" });
 
 export interface Blueprint {
   /** Optional. Immutable. URI to a blueprint used by the Unit (required unless unitKind or release is set). */
@@ -884,28 +763,20 @@ export interface Blueprint {
   version?: string;
 }
 
-export const Blueprint: Schema.Schema<Blueprint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      package: Schema.optional(Schema.String),
-      engine: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Blueprint" }) as any as Schema.Schema<Blueprint>;
+export const Blueprint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  package: Schema.optional(Schema.String),
+  engine: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+}).annotate({ identifier: "Blueprint" });
 
 export interface ReleaseRequirements {
   /** Optional. A list of releases from which a unit can be upgraded to this one (optional). If left empty no constraints will be applied. When provided, unit upgrade requests to this release will check and enforce this constraint. */
   upgradeableFromReleases?: Array<string>;
 }
 
-export const ReleaseRequirements: Schema.Schema<ReleaseRequirements> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      upgradeableFromReleases: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ReleaseRequirements",
-  }) as any as Schema.Schema<ReleaseRequirements>;
+export const ReleaseRequirements = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  upgradeableFromReleases: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ReleaseRequirements" });
 
 export interface Release {
   /** Identifier. The resource name (full URI of the resource) following the standard naming scheme: "projects/{project}/locations/{location}/releases/{release}" */
@@ -938,25 +809,22 @@ export interface Release {
   updateTime?: string;
 }
 
-export const Release: Schema.Schema<Release> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      unitKind: Schema.optional(Schema.String),
-      blueprint: Schema.optional(Blueprint),
-      releaseRequirements: Schema.optional(ReleaseRequirements),
-      inputVariables: Schema.optional(Schema.Array(UnitVariable)),
-      outputVariables: Schema.optional(Schema.Array(UnitVariable)),
-      inputVariableDefaults: Schema.optional(Schema.Array(UnitVariable)),
-      applicationTemplateComponent: Schema.optional(ComponentRef),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      uid: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Release" }) as any as Schema.Schema<Release>;
+export const Release = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  unitKind: Schema.optional(Schema.String),
+  blueprint: Schema.optional(Blueprint),
+  releaseRequirements: Schema.optional(ReleaseRequirements),
+  inputVariables: Schema.optional(Schema.Array(UnitVariable)),
+  outputVariables: Schema.optional(Schema.Array(UnitVariable)),
+  inputVariableDefaults: Schema.optional(Schema.Array(UnitVariable)),
+  applicationTemplateComponent: Schema.optional(ComponentRef),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  uid: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Release" });
 
 export interface ListReleasesResponse {
   /** The resulting releases. */
@@ -967,16 +835,11 @@ export interface ListReleasesResponse {
   unreachable?: Array<string>;
 }
 
-export const ListReleasesResponse: Schema.Schema<ListReleasesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      releases: Schema.optional(Schema.Array(Release)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListReleasesResponse",
-  }) as any as Schema.Schema<ListReleasesResponse>;
+export const ListReleasesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  releases: Schema.optional(Schema.Array(Release)),
+  nextPageToken: Schema.optional(Schema.String),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ListReleasesResponse" });
 
 export interface Variant {
   /** Optional. Boolean flag value. */
@@ -991,16 +854,13 @@ export interface Variant {
   name?: string;
 }
 
-export const Variant: Schema.Schema<Variant> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      boolValue: Schema.optional(Schema.Boolean),
-      intValue: Schema.optional(Schema.String),
-      stringValue: Schema.optional(Schema.String),
-      doubleValue: Schema.optional(Schema.Number),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Variant" }) as any as Schema.Schema<Variant>;
+export const Variant = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  boolValue: Schema.optional(Schema.Boolean),
+  intValue: Schema.optional(Schema.String),
+  stringValue: Schema.optional(Schema.String),
+  doubleValue: Schema.optional(Schema.Number),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Variant" });
 
 export interface AllocationSlot {
   /** Required. Variant of the allocation slot. */
@@ -1009,15 +869,10 @@ export interface AllocationSlot {
   weight?: number;
 }
 
-export const AllocationSlot: Schema.Schema<AllocationSlot> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      variant: Schema.optional(Schema.String),
-      weight: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "AllocationSlot",
-  }) as any as Schema.Schema<AllocationSlot>;
+export const AllocationSlot = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  variant: Schema.optional(Schema.String),
+  weight: Schema.optional(Schema.Number),
+}).annotate({ identifier: "AllocationSlot" });
 
 export interface Allocation {
   /** Required. Allocation ID. Max length: 128 bytes. */
@@ -1030,15 +885,12 @@ export interface Allocation {
   slots?: Array<AllocationSlot>;
 }
 
-export const Allocation: Schema.Schema<Allocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      randomizedOn: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      slots: Schema.optional(Schema.Array(AllocationSlot)),
-    }),
-  ).annotate({ identifier: "Allocation" }) as any as Schema.Schema<Allocation>;
+export const Allocation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  randomizedOn: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  slots: Schema.optional(Schema.Array(AllocationSlot)),
+}).annotate({ identifier: "Allocation" });
 
 export interface EvaluationRule {
   /** Required. Evaluation rule ID. Max length: 128 bytes. */
@@ -1049,16 +901,11 @@ export interface EvaluationRule {
   target?: string;
 }
 
-export const EvaluationRule: Schema.Schema<EvaluationRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      condition: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EvaluationRule",
-  }) as any as Schema.Schema<EvaluationRule>;
+export const EvaluationRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  condition: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+}).annotate({ identifier: "EvaluationRule" });
 
 export interface EvaluationSpec {
   /** Optional. A list of variants. */
@@ -1073,18 +920,13 @@ export interface EvaluationSpec {
   attributes?: Array<string>;
 }
 
-export const EvaluationSpec: Schema.Schema<EvaluationSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      variants: Schema.optional(Schema.Array(Variant)),
-      defaultTarget: Schema.optional(Schema.String),
-      allocations: Schema.optional(Schema.Array(Allocation)),
-      rules: Schema.optional(Schema.Array(EvaluationRule)),
-      attributes: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "EvaluationSpec",
-  }) as any as Schema.Schema<EvaluationSpec>;
+export const EvaluationSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  variants: Schema.optional(Schema.Array(Variant)),
+  defaultTarget: Schema.optional(Schema.String),
+  allocations: Schema.optional(Schema.Array(Allocation)),
+  rules: Schema.optional(Schema.Array(EvaluationRule)),
+  attributes: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "EvaluationSpec" });
 
 export interface FlagVariant {
   /** Optional. Boolean variant value. */
@@ -1103,20 +945,15 @@ export interface FlagVariant {
   description?: string;
 }
 
-export const FlagVariant: Schema.Schema<FlagVariant> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      booleanValue: Schema.optional(Schema.Boolean),
-      integerValue: Schema.optional(Schema.String),
-      stringValue: Schema.optional(Schema.String),
-      doubleValue: Schema.optional(Schema.Number),
-      id: Schema.optional(Schema.String),
-      trackingId: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FlagVariant",
-  }) as any as Schema.Schema<FlagVariant>;
+export const FlagVariant = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  booleanValue: Schema.optional(Schema.Boolean),
+  integerValue: Schema.optional(Schema.String),
+  stringValue: Schema.optional(Schema.String),
+  doubleValue: Schema.optional(Schema.Number),
+  id: Schema.optional(Schema.String),
+  trackingId: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "FlagVariant" });
 
 export interface Flag {
   /** Identifier. The resource name (full URI of the resource) following the standard naming scheme: "projects/{project}/locations/{location}/flags/{flag_id}" */
@@ -1171,27 +1008,24 @@ export interface Flag {
   updateTime?: string;
 }
 
-export const Flag: Schema.Schema<Flag> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      key: Schema.optional(Schema.String),
-      valueType: Schema.optional(Schema.String),
-      flagValueType: Schema.optional(Schema.String),
-      evaluationSpec: Schema.optional(EvaluationSpec),
-      unitKind: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      variants: Schema.optional(Schema.Array(FlagVariant)),
-      flagSet: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      uid: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Flag" }) as any as Schema.Schema<Flag>;
+export const Flag = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  key: Schema.optional(Schema.String),
+  valueType: Schema.optional(Schema.String),
+  flagValueType: Schema.optional(Schema.String),
+  evaluationSpec: Schema.optional(EvaluationSpec),
+  unitKind: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  variants: Schema.optional(Schema.Array(FlagVariant)),
+  flagSet: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  uid: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Flag" });
 
 export interface ListFlagsResponse {
   /** The resulting flags. */
@@ -1202,16 +1036,11 @@ export interface ListFlagsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListFlagsResponse: Schema.Schema<ListFlagsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      flags: Schema.optional(Schema.Array(Flag)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListFlagsResponse",
-  }) as any as Schema.Schema<ListFlagsResponse>;
+export const ListFlagsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  flags: Schema.optional(Schema.Array(Flag)),
+  nextPageToken: Schema.optional(Schema.String),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ListFlagsResponse" });
 
 export interface FlagRevision {
   /** Identifier. The resource name (full URI of the resource) following the standard naming scheme: "projects/{project}/locations/{location}/flagRevisions/{flag_revision_id}" */
@@ -1236,23 +1065,18 @@ export interface FlagRevision {
   updateTime?: string;
 }
 
-export const FlagRevision: Schema.Schema<FlagRevision> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      flag: Schema.optional(Schema.String),
-      evaluationSpec: Schema.optional(EvaluationSpec),
-      snapshot: Schema.optional(Flag),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      uid: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FlagRevision",
-  }) as any as Schema.Schema<FlagRevision>;
+export const FlagRevision = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  flag: Schema.optional(Schema.String),
+  evaluationSpec: Schema.optional(EvaluationSpec),
+  snapshot: Schema.optional(Flag),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  uid: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "FlagRevision" });
 
 export interface ListFlagRevisionsResponse {
   /** The resulting flag revisions. */
@@ -1263,44 +1087,30 @@ export interface ListFlagRevisionsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListFlagRevisionsResponse: Schema.Schema<ListFlagRevisionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      flagRevisions: Schema.optional(Schema.Array(FlagRevision)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListFlagRevisionsResponse",
-  }) as any as Schema.Schema<ListFlagRevisionsResponse>;
+export const ListFlagRevisionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    flagRevisions: Schema.optional(Schema.Array(FlagRevision)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListFlagRevisionsResponse" });
 
 export interface FlagRevisionList {
   /** Required. FlagRevisions to be rolled out. */
   revisions?: Array<string>;
 }
 
-export const FlagRevisionList: Schema.Schema<FlagRevisionList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      revisions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "FlagRevisionList",
-  }) as any as Schema.Schema<FlagRevisionList>;
+export const FlagRevisionList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  revisions: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "FlagRevisionList" });
 
 export interface FlagSetList {
   /** Required. Flag sets to be rolled out. */
   sets?: Array<string>;
 }
 
-export const FlagSetList: Schema.Schema<FlagSetList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sets: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "FlagSetList",
-  }) as any as Schema.Schema<FlagSetList>;
+export const FlagSetList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sets: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "FlagSetList" });
 
 export interface FlagRelease {
   /** Optional. Immutable. Specifies the release consists of a list of flag revisions. */
@@ -1337,29 +1147,24 @@ export interface FlagRelease {
   updateTime?: string;
 }
 
-export const FlagRelease: Schema.Schema<FlagRelease> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      flagRevisionsRelease: Schema.optional(FlagRevisionList),
-      flagSetsRelease: Schema.optional(FlagSetList),
-      allFlagsRelease: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-      flagRevisions: Schema.optional(Schema.Array(Schema.String)),
-      obsoleteFlags: Schema.optional(Schema.Array(Schema.String)),
-      unitKind: Schema.optional(Schema.String),
-      flagSets: Schema.optional(Schema.Array(Schema.String)),
-      allFlags: Schema.optional(Schema.Boolean),
-      effectiveFlagRevisions: Schema.optional(Schema.Array(Schema.String)),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      uid: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FlagRelease",
-  }) as any as Schema.Schema<FlagRelease>;
+export const FlagRelease = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  flagRevisionsRelease: Schema.optional(FlagRevisionList),
+  flagSetsRelease: Schema.optional(FlagSetList),
+  allFlagsRelease: Schema.optional(Schema.Boolean),
+  name: Schema.optional(Schema.String),
+  flagRevisions: Schema.optional(Schema.Array(Schema.String)),
+  obsoleteFlags: Schema.optional(Schema.Array(Schema.String)),
+  unitKind: Schema.optional(Schema.String),
+  flagSets: Schema.optional(Schema.Array(Schema.String)),
+  allFlags: Schema.optional(Schema.Boolean),
+  effectiveFlagRevisions: Schema.optional(Schema.Array(Schema.String)),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  uid: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "FlagRelease" });
 
 export interface ListFlagReleasesResponse {
   /** The resulting flag releases. */
@@ -1370,16 +1175,12 @@ export interface ListFlagReleasesResponse {
   unreachable?: Array<string>;
 }
 
-export const ListFlagReleasesResponse: Schema.Schema<ListFlagReleasesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      flagReleases: Schema.optional(Schema.Array(FlagRelease)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListFlagReleasesResponse",
-  }) as any as Schema.Schema<ListFlagReleasesResponse>;
+export const ListFlagReleasesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    flagReleases: Schema.optional(Schema.Array(FlagRelease)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListFlagReleasesResponse" });
 
 export interface FlagAttribute {
   /** Identifier. The resource name (full URI of the resource) following the standard naming scheme: "projects/{project}/locations/{location}/flagAttributes/{flag_attribute_id}" */
@@ -1416,23 +1217,18 @@ export interface FlagAttribute {
   updateTime?: string;
 }
 
-export const FlagAttribute: Schema.Schema<FlagAttribute> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      key: Schema.optional(Schema.String),
-      valueType: Schema.optional(Schema.String),
-      attributeValueType: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      uid: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FlagAttribute",
-  }) as any as Schema.Schema<FlagAttribute>;
+export const FlagAttribute = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  key: Schema.optional(Schema.String),
+  valueType: Schema.optional(Schema.String),
+  attributeValueType: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  uid: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "FlagAttribute" });
 
 export interface ListFlagAttributesResponse {
   /** The resulting flag attributes. */
@@ -1443,16 +1239,12 @@ export interface ListFlagAttributesResponse {
   unreachable?: Array<string>;
 }
 
-export const ListFlagAttributesResponse: Schema.Schema<ListFlagAttributesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      flagAttributes: Schema.optional(Schema.Array(FlagAttribute)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListFlagAttributesResponse",
-  }) as any as Schema.Schema<ListFlagAttributesResponse>;
+export const ListFlagAttributesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    flagAttributes: Schema.optional(Schema.Array(FlagAttribute)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListFlagAttributesResponse" });
 
 export interface Aggregate {
   /** Required. Group by which to aggregate. */
@@ -1461,13 +1253,10 @@ export interface Aggregate {
   count?: number;
 }
 
-export const Aggregate: Schema.Schema<Aggregate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      group: Schema.optional(Schema.String),
-      count: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Aggregate" }) as any as Schema.Schema<Aggregate>;
+export const Aggregate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  group: Schema.optional(Schema.String),
+  count: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Aggregate" });
 
 export interface RolloutStats {
   /** Optional. Output only. Unordered list. A breakdown of the progress of operations triggered by the rollout. Provides a count of Operations by their state. This can be used to determine the number of units which have been updated, or are scheduled to be updated. There will be at most one entry per group. Possible values for operation groups are: - "SCHEDULED" - "PENDING" - "RUNNING" - "SUCCEEDED" - "FAILED" - "CANCELLED" */
@@ -1476,29 +1265,21 @@ export interface RolloutStats {
   estimatedTotalUnitCount?: string;
 }
 
-export const RolloutStats: Schema.Schema<RolloutStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operationsByState: Schema.optional(Schema.Array(Aggregate)),
-      estimatedTotalUnitCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RolloutStats",
-  }) as any as Schema.Schema<RolloutStats>;
+export const RolloutStats = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  operationsByState: Schema.optional(Schema.Array(Aggregate)),
+  estimatedTotalUnitCount: Schema.optional(Schema.String),
+}).annotate({ identifier: "RolloutStats" });
 
 export interface RunRolloutActionParams {
   /** Required. If true, the rollout will retry failed operations when resumed. This is applicable only the current state of the Rollout is PAUSED and the requested action is RUN. */
   retryFailedOperations?: boolean;
 }
 
-export const RunRolloutActionParams: Schema.Schema<RunRolloutActionParams> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      retryFailedOperations: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "RunRolloutActionParams",
-  }) as any as Schema.Schema<RunRolloutActionParams>;
+export const RunRolloutActionParams = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    retryFailedOperations: Schema.optional(Schema.Boolean),
+  },
+).annotate({ identifier: "RunRolloutActionParams" });
 
 export interface RolloutControl {
   /** Optional. Parameters for the RUN action. It is an error to specify this if the RolloutAction is not set to RUN. By default, the rollout will retry failed operations when resumed. */
@@ -1512,15 +1293,10 @@ export interface RolloutControl {
     | (string & {});
 }
 
-export const RolloutControl: Schema.Schema<RolloutControl> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      runParams: Schema.optional(RunRolloutActionParams),
-      action: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RolloutControl",
-  }) as any as Schema.Schema<RolloutControl>;
+export const RolloutControl = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  runParams: Schema.optional(RunRolloutActionParams),
+  action: Schema.optional(Schema.String),
+}).annotate({ identifier: "RolloutControl" });
 
 export interface Rollout {
   /** Identifier. The resource name (full URI of the resource) following the standard naming scheme: "projects/{project}/locations/{location}/rollout/{rollout_id}" */
@@ -1582,34 +1358,31 @@ export interface Rollout {
   deleteTime?: string;
 }
 
-export const Rollout: Schema.Schema<Rollout> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      release: Schema.optional(Schema.String),
-      flagRelease: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      stateMessage: Schema.optional(Schema.String),
-      stateTransitionTime: Schema.optional(Schema.String),
-      rootRollout: Schema.optional(Schema.String),
-      parentRollout: Schema.optional(Schema.String),
-      rolloutOrchestrationStrategy: Schema.optional(Schema.String),
-      unitFilter: Schema.optional(Schema.String),
-      rolloutKind: Schema.optional(Schema.String),
-      stats: Schema.optional(RolloutStats),
-      control: Schema.optional(RolloutControl),
-      effectiveUnitFilter: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      uid: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      deleteTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Rollout" }) as any as Schema.Schema<Rollout>;
+export const Rollout = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  release: Schema.optional(Schema.String),
+  flagRelease: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  stateMessage: Schema.optional(Schema.String),
+  stateTransitionTime: Schema.optional(Schema.String),
+  rootRollout: Schema.optional(Schema.String),
+  parentRollout: Schema.optional(Schema.String),
+  rolloutOrchestrationStrategy: Schema.optional(Schema.String),
+  unitFilter: Schema.optional(Schema.String),
+  rolloutKind: Schema.optional(Schema.String),
+  stats: Schema.optional(RolloutStats),
+  control: Schema.optional(RolloutControl),
+  effectiveUnitFilter: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  uid: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  deleteTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Rollout" });
 
 export interface ListRolloutsResponse {
   /** The resulting rollouts. */
@@ -1620,16 +1393,11 @@ export interface ListRolloutsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListRolloutsResponse: Schema.Schema<ListRolloutsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rollouts: Schema.optional(Schema.Array(Rollout)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListRolloutsResponse",
-  }) as any as Schema.Schema<ListRolloutsResponse>;
+export const ListRolloutsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  rollouts: Schema.optional(Schema.Array(Rollout)),
+  nextPageToken: Schema.optional(Schema.String),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ListRolloutsResponse" });
 
 export interface ErrorBudget {
   /** Optional. The maximum number of failed units allowed in a location without pausing the rollout. */
@@ -1638,15 +1406,10 @@ export interface ErrorBudget {
   allowedPercentage?: number;
 }
 
-export const ErrorBudget: Schema.Schema<ErrorBudget> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      allowedCount: Schema.optional(Schema.Number),
-      allowedPercentage: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "ErrorBudget",
-  }) as any as Schema.Schema<ErrorBudget>;
+export const ErrorBudget = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  allowedCount: Schema.optional(Schema.Number),
+  allowedPercentage: Schema.optional(Schema.Number),
+}).annotate({ identifier: "ErrorBudget" });
 
 export interface RolloutKind {
   /** Identifier. The resource name (full URI of the resource) following the standard naming scheme: "projects/{project}/locations/{location}/rolloutKinds/{rollout_kind_id}" */
@@ -1679,25 +1442,20 @@ export interface RolloutKind {
   updateTime?: string;
 }
 
-export const RolloutKind: Schema.Schema<RolloutKind> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      unitKind: Schema.optional(Schema.String),
-      rolloutOrchestrationStrategy: Schema.optional(Schema.String),
-      unitFilter: Schema.optional(Schema.String),
-      updateUnitKindStrategy: Schema.optional(Schema.String),
-      errorBudget: Schema.optional(ErrorBudget),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      uid: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RolloutKind",
-  }) as any as Schema.Schema<RolloutKind>;
+export const RolloutKind = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  unitKind: Schema.optional(Schema.String),
+  rolloutOrchestrationStrategy: Schema.optional(Schema.String),
+  unitFilter: Schema.optional(Schema.String),
+  updateUnitKindStrategy: Schema.optional(Schema.String),
+  errorBudget: Schema.optional(ErrorBudget),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  uid: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "RolloutKind" });
 
 export interface ListRolloutKindsResponse {
   /** The resulting rollout kinds. */
@@ -1708,16 +1466,12 @@ export interface ListRolloutKindsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListRolloutKindsResponse: Schema.Schema<ListRolloutKindsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rolloutKinds: Schema.optional(Schema.Array(RolloutKind)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListRolloutKindsResponse",
-  }) as any as Schema.Schema<ListRolloutKindsResponse>;
+export const ListRolloutKindsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rolloutKinds: Schema.optional(Schema.Array(RolloutKind)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListRolloutKindsResponse" });
 
 export interface GoogleCloudLocationLocation {
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
@@ -1732,18 +1486,14 @@ export interface GoogleCloudLocationLocation {
   metadata?: Record<string, unknown>;
 }
 
-export const GoogleCloudLocationLocation: Schema.Schema<GoogleCloudLocationLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      locationId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudLocationLocation",
-  }) as any as Schema.Schema<GoogleCloudLocationLocation>;
+export const GoogleCloudLocationLocation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    locationId: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "GoogleCloudLocationLocation" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -1752,15 +1502,10 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(GoogleCloudLocationLocation)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(GoogleCloudLocationLocation)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 // ==========================================================================
 // Operations

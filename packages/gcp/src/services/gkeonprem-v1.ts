@@ -29,25 +29,19 @@ export interface Version {
   version?: string;
 }
 
-export const Version: Schema.Schema<Version> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      count: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Version" }) as any as Schema.Schema<Version>;
+export const Version = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  count: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+}).annotate({ identifier: "Version" });
 
 export interface Versions {
   /** Shows the mapping of a given version to the number of machines under this version. */
   versions?: Array<Version>;
 }
 
-export const Versions: Schema.Schema<Versions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      versions: Schema.optional(Schema.Array(Version)),
-    }),
-  ).annotate({ identifier: "Versions" }) as any as Schema.Schema<Versions>;
+export const Versions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  versions: Schema.optional(Schema.Array(Version)),
+}).annotate({ identifier: "Versions" });
 
 export interface ResourceCondition {
   /** Human-readable message indicating details about last transition. */
@@ -67,18 +61,13 @@ export interface ResourceCondition {
   type?: string;
 }
 
-export const ResourceCondition: Schema.Schema<ResourceCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      message: Schema.optional(Schema.String),
-      lastTransitionTime: Schema.optional(Schema.String),
-      reason: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ResourceCondition",
-  }) as any as Schema.Schema<ResourceCondition>;
+export const ResourceCondition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  message: Schema.optional(Schema.String),
+  lastTransitionTime: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "ResourceCondition" });
 
 export interface ResourceStatus {
   /** Human-friendly representation of the error message from controller. The error message can be temporary as the controller controller creates a cluster or node pool. If the error message persists for a longer period of time, it can be used to surface error message to indicate real problems requiring user intervention. */
@@ -91,17 +80,12 @@ export interface ResourceStatus {
   conditions?: Array<ResourceCondition>;
 }
 
-export const ResourceStatus: Schema.Schema<ResourceStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errorMessage: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-      versions: Schema.optional(Versions),
-      conditions: Schema.optional(Schema.Array(ResourceCondition)),
-    }),
-  ).annotate({
-    identifier: "ResourceStatus",
-  }) as any as Schema.Schema<ResourceStatus>;
+export const ResourceStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  errorMessage: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+  versions: Schema.optional(Versions),
+  conditions: Schema.optional(Schema.Array(ResourceCondition)),
+}).annotate({ identifier: "ResourceStatus" });
 
 export interface BinaryAuthorization {
   /** Mode of operation for binauthz policy evaluation. If unspecified, defaults to DISABLED. */
@@ -112,14 +96,9 @@ export interface BinaryAuthorization {
     | (string & {});
 }
 
-export const BinaryAuthorization: Schema.Schema<BinaryAuthorization> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      evaluationMode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BinaryAuthorization",
-  }) as any as Schema.Schema<BinaryAuthorization>;
+export const BinaryAuthorization = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  evaluationMode: Schema.optional(Schema.String),
+}).annotate({ identifier: "BinaryAuthorization" });
 
 export interface BareMetalApiServerArgument {
   /** Required. The argument name as it appears on the API Server command line, make sure to remove the leading dashes. */
@@ -128,15 +107,11 @@ export interface BareMetalApiServerArgument {
   value?: string;
 }
 
-export const BareMetalApiServerArgument: Schema.Schema<BareMetalApiServerArgument> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      argument: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BareMetalApiServerArgument",
-  }) as any as Schema.Schema<BareMetalApiServerArgument>;
+export const BareMetalApiServerArgument =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    argument: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BareMetalApiServerArgument" });
 
 export interface VmwareF5BigIpConfig {
   /** The preexisting partition to be used by the load balancer. This partition is usually created for the admin cluster for example: 'my-f5-admin-partition'. */
@@ -147,30 +122,21 @@ export interface VmwareF5BigIpConfig {
   address?: string;
 }
 
-export const VmwareF5BigIpConfig: Schema.Schema<VmwareF5BigIpConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      partition: Schema.optional(Schema.String),
-      snatPool: Schema.optional(Schema.String),
-      address: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VmwareF5BigIpConfig",
-  }) as any as Schema.Schema<VmwareF5BigIpConfig>;
+export const VmwareF5BigIpConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  partition: Schema.optional(Schema.String),
+  snatPool: Schema.optional(Schema.String),
+  address: Schema.optional(Schema.String),
+}).annotate({ identifier: "VmwareF5BigIpConfig" });
 
 export interface VmwareAdminMetalLbConfig {
   /** Whether MetalLB is enabled. */
   enabled?: boolean;
 }
 
-export const VmwareAdminMetalLbConfig: Schema.Schema<VmwareAdminMetalLbConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "VmwareAdminMetalLbConfig",
-  }) as any as Schema.Schema<VmwareAdminMetalLbConfig>;
+export const VmwareAdminMetalLbConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "VmwareAdminMetalLbConfig" });
 
 export interface BareMetalAdminLoadBalancerAddressPool {
   /** Required. The name of the address pool. */
@@ -183,17 +149,13 @@ export interface BareMetalAdminLoadBalancerAddressPool {
   avoidBuggyIps?: boolean;
 }
 
-export const BareMetalAdminLoadBalancerAddressPool: Schema.Schema<BareMetalAdminLoadBalancerAddressPool> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pool: Schema.optional(Schema.String),
-      addresses: Schema.optional(Schema.Array(Schema.String)),
-      manualAssign: Schema.optional(Schema.Boolean),
-      avoidBuggyIps: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "BareMetalAdminLoadBalancerAddressPool",
-  }) as any as Schema.Schema<BareMetalAdminLoadBalancerAddressPool>;
+export const BareMetalAdminLoadBalancerAddressPool =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pool: Schema.optional(Schema.String),
+    addresses: Schema.optional(Schema.Array(Schema.String)),
+    manualAssign: Schema.optional(Schema.Boolean),
+    avoidBuggyIps: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "BareMetalAdminLoadBalancerAddressPool" });
 
 export interface VmwareBundleConfig {
   /** The version of the bundle. */
@@ -202,15 +164,10 @@ export interface VmwareBundleConfig {
   status?: ResourceStatus;
 }
 
-export const VmwareBundleConfig: Schema.Schema<VmwareBundleConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.String),
-      status: Schema.optional(ResourceStatus),
-    }),
-  ).annotate({
-    identifier: "VmwareBundleConfig",
-  }) as any as Schema.Schema<VmwareBundleConfig>;
+export const VmwareBundleConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.String),
+  status: Schema.optional(ResourceStatus),
+}).annotate({ identifier: "VmwareBundleConfig" });
 
 export interface VmwareHostIp {
   /** IP could be an IP address (like 1.2.3.4) or a CIDR (like 1.2.3.0/24). */
@@ -219,15 +176,10 @@ export interface VmwareHostIp {
   hostname?: string;
 }
 
-export const VmwareHostIp: Schema.Schema<VmwareHostIp> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ip: Schema.optional(Schema.String),
-      hostname: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VmwareHostIp",
-  }) as any as Schema.Schema<VmwareHostIp>;
+export const VmwareHostIp = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ip: Schema.optional(Schema.String),
+  hostname: Schema.optional(Schema.String),
+}).annotate({ identifier: "VmwareHostIp" });
 
 export interface VmwareIpBlock {
   /** The network gateway used by the VMware user cluster. */
@@ -238,58 +190,39 @@ export interface VmwareIpBlock {
   netmask?: string;
 }
 
-export const VmwareIpBlock: Schema.Schema<VmwareIpBlock> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gateway: Schema.optional(Schema.String),
-      ips: Schema.optional(Schema.Array(VmwareHostIp)),
-      netmask: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VmwareIpBlock",
-  }) as any as Schema.Schema<VmwareIpBlock>;
+export const VmwareIpBlock = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gateway: Schema.optional(Schema.String),
+  ips: Schema.optional(Schema.Array(VmwareHostIp)),
+  netmask: Schema.optional(Schema.String),
+}).annotate({ identifier: "VmwareIpBlock" });
 
 export interface VmwareAdminHAControlPlaneConfig {
   /** Static IP addresses for the admin control plane nodes. */
   controlPlaneIpBlock?: VmwareIpBlock;
 }
 
-export const VmwareAdminHAControlPlaneConfig: Schema.Schema<VmwareAdminHAControlPlaneConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      controlPlaneIpBlock: Schema.optional(VmwareIpBlock),
-    }),
-  ).annotate({
-    identifier: "VmwareAdminHAControlPlaneConfig",
-  }) as any as Schema.Schema<VmwareAdminHAControlPlaneConfig>;
+export const VmwareAdminHAControlPlaneConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    controlPlaneIpBlock: Schema.optional(VmwareIpBlock),
+  }).annotate({ identifier: "VmwareAdminHAControlPlaneConfig" });
 
 export interface VmwareStaticIpConfig {
   /** Represents the configuration values for static IP allocation to nodes. */
   ipBlocks?: Array<VmwareIpBlock>;
 }
 
-export const VmwareStaticIpConfig: Schema.Schema<VmwareStaticIpConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ipBlocks: Schema.optional(Schema.Array(VmwareIpBlock)),
-    }),
-  ).annotate({
-    identifier: "VmwareStaticIpConfig",
-  }) as any as Schema.Schema<VmwareStaticIpConfig>;
+export const VmwareStaticIpConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ipBlocks: Schema.optional(Schema.Array(VmwareIpBlock)),
+}).annotate({ identifier: "VmwareStaticIpConfig" });
 
 export interface VmwareDhcpIpConfig {
   /** enabled is a flag to mark if DHCP IP allocation is used for VMware user clusters. */
   enabled?: boolean;
 }
 
-export const VmwareDhcpIpConfig: Schema.Schema<VmwareDhcpIpConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "VmwareDhcpIpConfig",
-  }) as any as Schema.Schema<VmwareDhcpIpConfig>;
+export const VmwareDhcpIpConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "VmwareDhcpIpConfig" });
 
 export interface VmwareHostConfig {
   /** DNS search domains. */
@@ -300,16 +233,11 @@ export interface VmwareHostConfig {
   ntpServers?: Array<string>;
 }
 
-export const VmwareHostConfig: Schema.Schema<VmwareHostConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dnsSearchDomains: Schema.optional(Schema.Array(Schema.String)),
-      dnsServers: Schema.optional(Schema.Array(Schema.String)),
-      ntpServers: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "VmwareHostConfig",
-  }) as any as Schema.Schema<VmwareHostConfig>;
+export const VmwareHostConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dnsSearchDomains: Schema.optional(Schema.Array(Schema.String)),
+  dnsServers: Schema.optional(Schema.Array(Schema.String)),
+  ntpServers: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "VmwareHostConfig" });
 
 export interface VmwareAdminNetworkConfig {
   /** Required. All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. Only a single range is supported. This field cannot be changed after creation. */
@@ -328,20 +256,16 @@ export interface VmwareAdminNetworkConfig {
   serviceAddressCidrBlocks?: Array<string>;
 }
 
-export const VmwareAdminNetworkConfig: Schema.Schema<VmwareAdminNetworkConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      podAddressCidrBlocks: Schema.optional(Schema.Array(Schema.String)),
-      vcenterNetwork: Schema.optional(Schema.String),
-      haControlPlaneConfig: Schema.optional(VmwareAdminHAControlPlaneConfig),
-      staticIpConfig: Schema.optional(VmwareStaticIpConfig),
-      dhcpIpConfig: Schema.optional(VmwareDhcpIpConfig),
-      hostConfig: Schema.optional(VmwareHostConfig),
-      serviceAddressCidrBlocks: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "VmwareAdminNetworkConfig",
-  }) as any as Schema.Schema<VmwareAdminNetworkConfig>;
+export const VmwareAdminNetworkConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    podAddressCidrBlocks: Schema.optional(Schema.Array(Schema.String)),
+    vcenterNetwork: Schema.optional(Schema.String),
+    haControlPlaneConfig: Schema.optional(VmwareAdminHAControlPlaneConfig),
+    staticIpConfig: Schema.optional(VmwareStaticIpConfig),
+    dhcpIpConfig: Schema.optional(VmwareDhcpIpConfig),
+    hostConfig: Schema.optional(VmwareHostConfig),
+    serviceAddressCidrBlocks: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "VmwareAdminNetworkConfig" });
 
 export interface VmwarePlatformConfig {
   /** Input only. The required platform version e.g. 1.13.1. If the current platform version is lower than the target version, the platform version will be updated to the target version. If the target version is not installed in the platform (bundle versions), download the target version bundle. */
@@ -354,17 +278,12 @@ export interface VmwarePlatformConfig {
   status?: ResourceStatus;
 }
 
-export const VmwarePlatformConfig: Schema.Schema<VmwarePlatformConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requiredPlatformVersion: Schema.optional(Schema.String),
-      bundles: Schema.optional(Schema.Array(VmwareBundleConfig)),
-      platformVersion: Schema.optional(Schema.String),
-      status: Schema.optional(ResourceStatus),
-    }),
-  ).annotate({
-    identifier: "VmwarePlatformConfig",
-  }) as any as Schema.Schema<VmwarePlatformConfig>;
+export const VmwarePlatformConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  requiredPlatformVersion: Schema.optional(Schema.String),
+  bundles: Schema.optional(Schema.Array(VmwareBundleConfig)),
+  platformVersion: Schema.optional(Schema.String),
+  status: Schema.optional(ResourceStatus),
+}).annotate({ identifier: "VmwarePlatformConfig" });
 
 export interface VmwareAdminPrivateRegistryConfig {
   /** The registry address. */
@@ -373,43 +292,30 @@ export interface VmwareAdminPrivateRegistryConfig {
   caCert?: string;
 }
 
-export const VmwareAdminPrivateRegistryConfig: Schema.Schema<VmwareAdminPrivateRegistryConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      address: Schema.optional(Schema.String),
-      caCert: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VmwareAdminPrivateRegistryConfig",
-  }) as any as Schema.Schema<VmwareAdminPrivateRegistryConfig>;
+export const VmwareAdminPrivateRegistryConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    address: Schema.optional(Schema.String),
+    caCert: Schema.optional(Schema.String),
+  }).annotate({ identifier: "VmwareAdminPrivateRegistryConfig" });
 
 export interface ClusterUser {
   /** Required. The name of the user, e.g. `my-gcp-id@gmail.com`. */
   username?: string;
 }
 
-export const ClusterUser: Schema.Schema<ClusterUser> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      username: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ClusterUser",
-  }) as any as Schema.Schema<ClusterUser>;
+export const ClusterUser = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  username: Schema.optional(Schema.String),
+}).annotate({ identifier: "ClusterUser" });
 
 export interface VmwareAdminAuthorizationConfig {
   /** For VMware admin clusters, users will be granted the cluster-viewer role on the cluster. */
   viewerUsers?: Array<ClusterUser>;
 }
 
-export const VmwareAdminAuthorizationConfig: Schema.Schema<VmwareAdminAuthorizationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      viewerUsers: Schema.optional(Schema.Array(ClusterUser)),
-    }),
-  ).annotate({
-    identifier: "VmwareAdminAuthorizationConfig",
-  }) as any as Schema.Schema<VmwareAdminAuthorizationConfig>;
+export const VmwareAdminAuthorizationConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    viewerUsers: Schema.optional(Schema.Array(ClusterUser)),
+  }).annotate({ identifier: "VmwareAdminAuthorizationConfig" });
 
 export interface VmwareAdminControlPlaneNodeConfig {
   /** The number of mebibytes of memory for the control-plane node of the admin cluster. */
@@ -420,58 +326,42 @@ export interface VmwareAdminControlPlaneNodeConfig {
   cpus?: string;
 }
 
-export const VmwareAdminControlPlaneNodeConfig: Schema.Schema<VmwareAdminControlPlaneNodeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      memory: Schema.optional(Schema.String),
-      replicas: Schema.optional(Schema.String),
-      cpus: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VmwareAdminControlPlaneNodeConfig",
-  }) as any as Schema.Schema<VmwareAdminControlPlaneNodeConfig>;
+export const VmwareAdminControlPlaneNodeConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    memory: Schema.optional(Schema.String),
+    replicas: Schema.optional(Schema.String),
+    cpus: Schema.optional(Schema.String),
+  }).annotate({ identifier: "VmwareAdminControlPlaneNodeConfig" });
 
 export interface VmwareAutoResizeConfig {
   /** Whether to enable controle plane node auto resizing. */
   enabled?: boolean;
 }
 
-export const VmwareAutoResizeConfig: Schema.Schema<VmwareAutoResizeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "VmwareAutoResizeConfig",
-  }) as any as Schema.Schema<VmwareAutoResizeConfig>;
+export const VmwareAutoResizeConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    enabled: Schema.optional(Schema.Boolean),
+  },
+).annotate({ identifier: "VmwareAutoResizeConfig" });
 
 export interface VmwareAdminAddonNodeConfig {
   /** VmwareAutoResizeConfig config specifies auto resize config. */
   autoResizeConfig?: VmwareAutoResizeConfig;
 }
 
-export const VmwareAdminAddonNodeConfig: Schema.Schema<VmwareAdminAddonNodeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      autoResizeConfig: Schema.optional(VmwareAutoResizeConfig),
-    }),
-  ).annotate({
-    identifier: "VmwareAdminAddonNodeConfig",
-  }) as any as Schema.Schema<VmwareAdminAddonNodeConfig>;
+export const VmwareAdminAddonNodeConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    autoResizeConfig: Schema.optional(VmwareAutoResizeConfig),
+  }).annotate({ identifier: "VmwareAdminAddonNodeConfig" });
 
 export interface VmwareAAGConfig {
   /** Spread nodes across at least three physical hosts (requires at least three hosts). Enabled by default. */
   aagConfigDisabled?: boolean;
 }
 
-export const VmwareAAGConfig: Schema.Schema<VmwareAAGConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      aagConfigDisabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "VmwareAAGConfig",
-  }) as any as Schema.Schema<VmwareAAGConfig>;
+export const VmwareAAGConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  aagConfigDisabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "VmwareAAGConfig" });
 
 export interface ValidationCheckResult {
   /** The description of the validation check. */
@@ -492,32 +382,22 @@ export interface ValidationCheckResult {
   details?: string;
 }
 
-export const ValidationCheckResult: Schema.Schema<ValidationCheckResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      category: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      reason: Schema.optional(Schema.String),
-      details: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ValidationCheckResult",
-  }) as any as Schema.Schema<ValidationCheckResult>;
+export const ValidationCheckResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  category: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  details: Schema.optional(Schema.String),
+}).annotate({ identifier: "ValidationCheckResult" });
 
 export interface ValidationCheckStatus {
   /** Individual checks which failed as part of the Preflight check execution. */
   result?: Array<ValidationCheckResult>;
 }
 
-export const ValidationCheckStatus: Schema.Schema<ValidationCheckStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      result: Schema.optional(Schema.Array(ValidationCheckResult)),
-    }),
-  ).annotate({
-    identifier: "ValidationCheckStatus",
-  }) as any as Schema.Schema<ValidationCheckStatus>;
+export const ValidationCheckStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  result: Schema.optional(Schema.Array(ValidationCheckResult)),
+}).annotate({ identifier: "ValidationCheckStatus" });
 
 export interface ValidationCheck {
   /** Options used for the validation check */
@@ -532,56 +412,41 @@ export interface ValidationCheck {
   scenario?: "SCENARIO_UNSPECIFIED" | "CREATE" | "UPDATE" | (string & {});
 }
 
-export const ValidationCheck: Schema.Schema<ValidationCheck> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      option: Schema.optional(Schema.String),
-      status: Schema.optional(ValidationCheckStatus),
-      scenario: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ValidationCheck",
-  }) as any as Schema.Schema<ValidationCheck>;
+export const ValidationCheck = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  option: Schema.optional(Schema.String),
+  status: Schema.optional(ValidationCheckStatus),
+  scenario: Schema.optional(Schema.String),
+}).annotate({ identifier: "ValidationCheck" });
 
 export interface VmwareAdminPreparedSecretsConfig {
   /** Whether prepared secrets is enabled. */
   enabled?: boolean;
 }
 
-export const VmwareAdminPreparedSecretsConfig: Schema.Schema<VmwareAdminPreparedSecretsConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "VmwareAdminPreparedSecretsConfig",
-  }) as any as Schema.Schema<VmwareAdminPreparedSecretsConfig>;
+export const VmwareAdminPreparedSecretsConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "VmwareAdminPreparedSecretsConfig" });
 
 export interface Fleet {
   /** Output only. The name of the managed fleet Membership resource associated to this cluster. Membership names are formatted as `projects//locations//memberships/`. */
   membership?: string;
 }
 
-export const Fleet: Schema.Schema<Fleet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      membership: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Fleet" }) as any as Schema.Schema<Fleet>;
+export const Fleet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  membership: Schema.optional(Schema.String),
+}).annotate({ identifier: "Fleet" });
 
 export interface VmwareAutoRepairConfig {
   /** Whether auto repair is enabled. */
   enabled?: boolean;
 }
 
-export const VmwareAutoRepairConfig: Schema.Schema<VmwareAutoRepairConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "VmwareAutoRepairConfig",
-  }) as any as Schema.Schema<VmwareAutoRepairConfig>;
+export const VmwareAutoRepairConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    enabled: Schema.optional(Schema.Boolean),
+  },
+).annotate({ identifier: "VmwareAutoRepairConfig" });
 
 export interface VmwareAdminSeesawConfig {
   /** Enable two load balancer VMs to achieve a highly-available Seesaw load balancer. */
@@ -598,19 +463,15 @@ export interface VmwareAdminSeesawConfig {
   vms?: Array<string>;
 }
 
-export const VmwareAdminSeesawConfig: Schema.Schema<VmwareAdminSeesawConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableHa: Schema.optional(Schema.Boolean),
-      stackdriverName: Schema.optional(Schema.String),
-      group: Schema.optional(Schema.String),
-      masterIp: Schema.optional(Schema.String),
-      ipBlocks: Schema.optional(Schema.Array(VmwareIpBlock)),
-      vms: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "VmwareAdminSeesawConfig",
-  }) as any as Schema.Schema<VmwareAdminSeesawConfig>;
+export const VmwareAdminSeesawConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enableHa: Schema.optional(Schema.Boolean),
+    stackdriverName: Schema.optional(Schema.String),
+    group: Schema.optional(Schema.String),
+    masterIp: Schema.optional(Schema.String),
+    ipBlocks: Schema.optional(Schema.Array(VmwareIpBlock)),
+    vms: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "VmwareAdminSeesawConfig" });
 
 export interface VmwareAdminManualLbConfig {
   /** NodePort for konnectivity server service running as a sidecar in each kube-apiserver pod (ex. 30564). */
@@ -625,18 +486,14 @@ export interface VmwareAdminManualLbConfig {
   ingressHttpsNodePort?: number;
 }
 
-export const VmwareAdminManualLbConfig: Schema.Schema<VmwareAdminManualLbConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      konnectivityServerNodePort: Schema.optional(Schema.Number),
-      addonsNodePort: Schema.optional(Schema.Number),
-      ingressHttpNodePort: Schema.optional(Schema.Number),
-      controlPlaneNodePort: Schema.optional(Schema.Number),
-      ingressHttpsNodePort: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "VmwareAdminManualLbConfig",
-  }) as any as Schema.Schema<VmwareAdminManualLbConfig>;
+export const VmwareAdminManualLbConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    konnectivityServerNodePort: Schema.optional(Schema.Number),
+    addonsNodePort: Schema.optional(Schema.Number),
+    ingressHttpNodePort: Schema.optional(Schema.Number),
+    controlPlaneNodePort: Schema.optional(Schema.Number),
+    ingressHttpsNodePort: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "VmwareAdminManualLbConfig" });
 
 export interface VmwareAdminVipConfig {
   /** The VIP which you previously set aside for the Kubernetes API of the admin cluster. */
@@ -645,15 +502,10 @@ export interface VmwareAdminVipConfig {
   addonsVip?: string;
 }
 
-export const VmwareAdminVipConfig: Schema.Schema<VmwareAdminVipConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      controlPlaneVip: Schema.optional(Schema.String),
-      addonsVip: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VmwareAdminVipConfig",
-  }) as any as Schema.Schema<VmwareAdminVipConfig>;
+export const VmwareAdminVipConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  controlPlaneVip: Schema.optional(Schema.String),
+  addonsVip: Schema.optional(Schema.String),
+}).annotate({ identifier: "VmwareAdminVipConfig" });
 
 export interface VmwareAdminF5BigIpConfig {
   /** The load balancer's IP address. */
@@ -664,16 +516,12 @@ export interface VmwareAdminF5BigIpConfig {
   snatPool?: string;
 }
 
-export const VmwareAdminF5BigIpConfig: Schema.Schema<VmwareAdminF5BigIpConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      address: Schema.optional(Schema.String),
-      partition: Schema.optional(Schema.String),
-      snatPool: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VmwareAdminF5BigIpConfig",
-  }) as any as Schema.Schema<VmwareAdminF5BigIpConfig>;
+export const VmwareAdminF5BigIpConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    address: Schema.optional(Schema.String),
+    partition: Schema.optional(Schema.String),
+    snatPool: Schema.optional(Schema.String),
+  }).annotate({ identifier: "VmwareAdminF5BigIpConfig" });
 
 export interface VmwareAdminLoadBalancerConfig {
   /** Output only. Configuration for Seesaw typed load balancers. */
@@ -688,18 +536,14 @@ export interface VmwareAdminLoadBalancerConfig {
   f5Config?: VmwareAdminF5BigIpConfig;
 }
 
-export const VmwareAdminLoadBalancerConfig: Schema.Schema<VmwareAdminLoadBalancerConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      seesawConfig: Schema.optional(VmwareAdminSeesawConfig),
-      manualLbConfig: Schema.optional(VmwareAdminManualLbConfig),
-      metalLbConfig: Schema.optional(VmwareAdminMetalLbConfig),
-      vipConfig: Schema.optional(VmwareAdminVipConfig),
-      f5Config: Schema.optional(VmwareAdminF5BigIpConfig),
-    }),
-  ).annotate({
-    identifier: "VmwareAdminLoadBalancerConfig",
-  }) as any as Schema.Schema<VmwareAdminLoadBalancerConfig>;
+export const VmwareAdminLoadBalancerConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    seesawConfig: Schema.optional(VmwareAdminSeesawConfig),
+    manualLbConfig: Schema.optional(VmwareAdminManualLbConfig),
+    metalLbConfig: Schema.optional(VmwareAdminMetalLbConfig),
+    vipConfig: Schema.optional(VmwareAdminVipConfig),
+    f5Config: Schema.optional(VmwareAdminF5BigIpConfig),
+  }).annotate({ identifier: "VmwareAdminLoadBalancerConfig" });
 
 export interface VmwareAdminVCenterConfig {
   /** The name of the virtual machine disk (VMDK) for the admin cluster. */
@@ -722,22 +566,18 @@ export interface VmwareAdminVCenterConfig {
   cluster?: string;
 }
 
-export const VmwareAdminVCenterConfig: Schema.Schema<VmwareAdminVCenterConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataDisk: Schema.optional(Schema.String),
-      resourcePool: Schema.optional(Schema.String),
-      folder: Schema.optional(Schema.String),
-      datacenter: Schema.optional(Schema.String),
-      storagePolicyName: Schema.optional(Schema.String),
-      datastore: Schema.optional(Schema.String),
-      caCertData: Schema.optional(Schema.String),
-      address: Schema.optional(Schema.String),
-      cluster: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VmwareAdminVCenterConfig",
-  }) as any as Schema.Schema<VmwareAdminVCenterConfig>;
+export const VmwareAdminVCenterConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataDisk: Schema.optional(Schema.String),
+    resourcePool: Schema.optional(Schema.String),
+    folder: Schema.optional(Schema.String),
+    datacenter: Schema.optional(Schema.String),
+    storagePolicyName: Schema.optional(Schema.String),
+    datastore: Schema.optional(Schema.String),
+    caCertData: Schema.optional(Schema.String),
+    address: Schema.optional(Schema.String),
+    cluster: Schema.optional(Schema.String),
+  }).annotate({ identifier: "VmwareAdminVCenterConfig" });
 
 export interface VmwareAdminProxy {
   /** The HTTP address of proxy server. */
@@ -746,15 +586,10 @@ export interface VmwareAdminProxy {
   noProxy?: string;
 }
 
-export const VmwareAdminProxy: Schema.Schema<VmwareAdminProxy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      url: Schema.optional(Schema.String),
-      noProxy: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VmwareAdminProxy",
-  }) as any as Schema.Schema<VmwareAdminProxy>;
+export const VmwareAdminProxy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  url: Schema.optional(Schema.String),
+  noProxy: Schema.optional(Schema.String),
+}).annotate({ identifier: "VmwareAdminProxy" });
 
 export interface VmwareAdminCluster {
   /** The OS image type for the VMware admin cluster. */
@@ -827,43 +662,38 @@ export interface VmwareAdminCluster {
     | (string & {});
 }
 
-export const VmwareAdminCluster: Schema.Schema<VmwareAdminCluster> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      imageType: Schema.optional(Schema.String),
-      enableAdvancedCluster: Schema.optional(Schema.Boolean),
-      networkConfig: Schema.optional(VmwareAdminNetworkConfig),
-      platformConfig: Schema.optional(VmwarePlatformConfig),
-      privateRegistryConfig: Schema.optional(VmwareAdminPrivateRegistryConfig),
-      authorization: Schema.optional(VmwareAdminAuthorizationConfig),
-      controlPlaneNode: Schema.optional(VmwareAdminControlPlaneNodeConfig),
-      uid: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      reconciling: Schema.optional(Schema.Boolean),
-      endpoint: Schema.optional(Schema.String),
-      status: Schema.optional(ResourceStatus),
-      addonNode: Schema.optional(VmwareAdminAddonNodeConfig),
-      antiAffinityGroups: Schema.optional(VmwareAAGConfig),
-      validationCheck: Schema.optional(ValidationCheck),
-      description: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      preparedSecrets: Schema.optional(VmwareAdminPreparedSecretsConfig),
-      fleet: Schema.optional(Fleet),
-      autoRepairConfig: Schema.optional(VmwareAutoRepairConfig),
-      etag: Schema.optional(Schema.String),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      onPremVersion: Schema.optional(Schema.String),
-      localName: Schema.optional(Schema.String),
-      loadBalancer: Schema.optional(VmwareAdminLoadBalancerConfig),
-      vcenter: Schema.optional(VmwareAdminVCenterConfig),
-      bootstrapClusterMembership: Schema.optional(Schema.String),
-      proxy: Schema.optional(VmwareAdminProxy),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VmwareAdminCluster",
-  }) as any as Schema.Schema<VmwareAdminCluster>;
+export const VmwareAdminCluster = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  imageType: Schema.optional(Schema.String),
+  enableAdvancedCluster: Schema.optional(Schema.Boolean),
+  networkConfig: Schema.optional(VmwareAdminNetworkConfig),
+  platformConfig: Schema.optional(VmwarePlatformConfig),
+  privateRegistryConfig: Schema.optional(VmwareAdminPrivateRegistryConfig),
+  authorization: Schema.optional(VmwareAdminAuthorizationConfig),
+  controlPlaneNode: Schema.optional(VmwareAdminControlPlaneNodeConfig),
+  uid: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  reconciling: Schema.optional(Schema.Boolean),
+  endpoint: Schema.optional(Schema.String),
+  status: Schema.optional(ResourceStatus),
+  addonNode: Schema.optional(VmwareAdminAddonNodeConfig),
+  antiAffinityGroups: Schema.optional(VmwareAAGConfig),
+  validationCheck: Schema.optional(ValidationCheck),
+  description: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  preparedSecrets: Schema.optional(VmwareAdminPreparedSecretsConfig),
+  fleet: Schema.optional(Fleet),
+  autoRepairConfig: Schema.optional(VmwareAutoRepairConfig),
+  etag: Schema.optional(Schema.String),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  onPremVersion: Schema.optional(Schema.String),
+  localName: Schema.optional(Schema.String),
+  loadBalancer: Schema.optional(VmwareAdminLoadBalancerConfig),
+  vcenter: Schema.optional(VmwareAdminVCenterConfig),
+  bootstrapClusterMembership: Schema.optional(Schema.String),
+  proxy: Schema.optional(VmwareAdminProxy),
+  state: Schema.optional(Schema.String),
+}).annotate({ identifier: "VmwareAdminCluster" });
 
 export interface ListVmwareAdminClustersResponse {
   /** Locations that could not be reached. */
@@ -874,30 +704,22 @@ export interface ListVmwareAdminClustersResponse {
   vmwareAdminClusters?: Array<VmwareAdminCluster>;
 }
 
-export const ListVmwareAdminClustersResponse: Schema.Schema<ListVmwareAdminClustersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-      vmwareAdminClusters: Schema.optional(Schema.Array(VmwareAdminCluster)),
-    }),
-  ).annotate({
-    identifier: "ListVmwareAdminClustersResponse",
-  }) as any as Schema.Schema<ListVmwareAdminClustersResponse>;
+export const ListVmwareAdminClustersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+    vmwareAdminClusters: Schema.optional(Schema.Array(VmwareAdminCluster)),
+  }).annotate({ identifier: "ListVmwareAdminClustersResponse" });
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsResponse",
-  }) as any as Schema.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsResponse" });
 
 export interface BareMetalAdminProxyConfig {
   /** Required. Specifies the address of your proxy server. Examples: `http://domain` WARNING: Do not provide credentials in the format `http://(username:password@)domain` these will be rejected by the server. */
@@ -906,15 +728,11 @@ export interface BareMetalAdminProxyConfig {
   noProxy?: Array<string>;
 }
 
-export const BareMetalAdminProxyConfig: Schema.Schema<BareMetalAdminProxyConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-      noProxy: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "BareMetalAdminProxyConfig",
-  }) as any as Schema.Schema<BareMetalAdminProxyConfig>;
+export const BareMetalAdminProxyConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uri: Schema.optional(Schema.String),
+    noProxy: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "BareMetalAdminProxyConfig" });
 
 export interface BareMetalProxyConfig {
   /** A list of IPs, hostnames, and domains that should skip the proxy. Examples: ["127.0.0.1", "example.com", ".corp", "localhost"]. */
@@ -923,29 +741,20 @@ export interface BareMetalProxyConfig {
   uri?: string;
 }
 
-export const BareMetalProxyConfig: Schema.Schema<BareMetalProxyConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      noProxy: Schema.optional(Schema.Array(Schema.String)),
-      uri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BareMetalProxyConfig",
-  }) as any as Schema.Schema<BareMetalProxyConfig>;
+export const BareMetalProxyConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  noProxy: Schema.optional(Schema.Array(Schema.String)),
+  uri: Schema.optional(Schema.String),
+}).annotate({ identifier: "BareMetalProxyConfig" });
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsRequest",
-  }) as any as Schema.Schema<TestIamPermissionsRequest>;
+export const TestIamPermissionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsRequest" });
 
 export interface BareMetalVipConfig {
   /** The VIP which you previously set aside for the Kubernetes API of this bare metal user cluster. */
@@ -954,29 +763,19 @@ export interface BareMetalVipConfig {
   ingressVip?: string;
 }
 
-export const BareMetalVipConfig: Schema.Schema<BareMetalVipConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      controlPlaneVip: Schema.optional(Schema.String),
-      ingressVip: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BareMetalVipConfig",
-  }) as any as Schema.Schema<BareMetalVipConfig>;
+export const BareMetalVipConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  controlPlaneVip: Schema.optional(Schema.String),
+  ingressVip: Schema.optional(Schema.String),
+}).annotate({ identifier: "BareMetalVipConfig" });
 
 export interface BareMetalPortConfig {
   /** The port that control plane hosted load balancers will listen on. */
   controlPlaneLoadBalancerPort?: number;
 }
 
-export const BareMetalPortConfig: Schema.Schema<BareMetalPortConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      controlPlaneLoadBalancerPort: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "BareMetalPortConfig",
-  }) as any as Schema.Schema<BareMetalPortConfig>;
+export const BareMetalPortConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  controlPlaneLoadBalancerPort: Schema.optional(Schema.Number),
+}).annotate({ identifier: "BareMetalPortConfig" });
 
 export interface BareMetalLoadBalancerAddressPool {
   /** If true, avoid using IPs ending in .0 or .255. This avoids buggy consumer devices mistakenly dropping IPv4 traffic for those special IP addresses. */
@@ -989,17 +788,13 @@ export interface BareMetalLoadBalancerAddressPool {
   manualAssign?: boolean;
 }
 
-export const BareMetalLoadBalancerAddressPool: Schema.Schema<BareMetalLoadBalancerAddressPool> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      avoidBuggyIps: Schema.optional(Schema.Boolean),
-      pool: Schema.optional(Schema.String),
-      addresses: Schema.optional(Schema.Array(Schema.String)),
-      manualAssign: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "BareMetalLoadBalancerAddressPool",
-  }) as any as Schema.Schema<BareMetalLoadBalancerAddressPool>;
+export const BareMetalLoadBalancerAddressPool =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    avoidBuggyIps: Schema.optional(Schema.Boolean),
+    pool: Schema.optional(Schema.String),
+    addresses: Schema.optional(Schema.Array(Schema.String)),
+    manualAssign: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "BareMetalLoadBalancerAddressPool" });
 
 export interface BareMetalNodeConfig {
   /** The default IPv4 address for SSH access and Kubernetes node. Example: 192.168.0.1 */
@@ -1008,15 +803,10 @@ export interface BareMetalNodeConfig {
   labels?: Record<string, string>;
 }
 
-export const BareMetalNodeConfig: Schema.Schema<BareMetalNodeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nodeIp: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "BareMetalNodeConfig",
-  }) as any as Schema.Schema<BareMetalNodeConfig>;
+export const BareMetalNodeConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nodeIp: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "BareMetalNodeConfig" });
 
 export interface NodeTaint {
   /** Value associated with the effect. */
@@ -1032,14 +822,11 @@ export interface NodeTaint {
     | (string & {});
 }
 
-export const NodeTaint: Schema.Schema<NodeTaint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-      key: Schema.optional(Schema.String),
-      effect: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "NodeTaint" }) as any as Schema.Schema<NodeTaint>;
+export const NodeTaint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.String),
+  key: Schema.optional(Schema.String),
+  effect: Schema.optional(Schema.String),
+}).annotate({ identifier: "NodeTaint" });
 
 export interface BareMetalKubeletConfig {
   /** Prevents the Kubelet from pulling multiple images at a time. We recommend *not* changing the default value on nodes that run docker daemon with version < 1.9 or an Another Union File System (Aufs) storage backend. Issue https://github.com/kubernetes/kubernetes/issues/10959 has more details. */
@@ -1050,16 +837,13 @@ export interface BareMetalKubeletConfig {
   registryBurst?: number;
 }
 
-export const BareMetalKubeletConfig: Schema.Schema<BareMetalKubeletConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serializeImagePullsDisabled: Schema.optional(Schema.Boolean),
-      registryPullQps: Schema.optional(Schema.Number),
-      registryBurst: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "BareMetalKubeletConfig",
-  }) as any as Schema.Schema<BareMetalKubeletConfig>;
+export const BareMetalKubeletConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    serializeImagePullsDisabled: Schema.optional(Schema.Boolean),
+    registryPullQps: Schema.optional(Schema.Number),
+    registryBurst: Schema.optional(Schema.Number),
+  },
+).annotate({ identifier: "BareMetalKubeletConfig" });
 
 export interface BareMetalNodePoolConfig {
   /** Required. The list of machine addresses in the bare metal node pool. */
@@ -1074,32 +858,24 @@ export interface BareMetalNodePoolConfig {
   labels?: Record<string, string>;
 }
 
-export const BareMetalNodePoolConfig: Schema.Schema<BareMetalNodePoolConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nodeConfigs: Schema.optional(Schema.Array(BareMetalNodeConfig)),
-      taints: Schema.optional(Schema.Array(NodeTaint)),
-      kubeletConfig: Schema.optional(BareMetalKubeletConfig),
-      operatingSystem: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "BareMetalNodePoolConfig",
-  }) as any as Schema.Schema<BareMetalNodePoolConfig>;
+export const BareMetalNodePoolConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nodeConfigs: Schema.optional(Schema.Array(BareMetalNodeConfig)),
+    taints: Schema.optional(Schema.Array(NodeTaint)),
+    kubeletConfig: Schema.optional(BareMetalKubeletConfig),
+    operatingSystem: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({ identifier: "BareMetalNodePoolConfig" });
 
 export interface BareMetalLoadBalancerNodePoolConfig {
   /** The generic configuration for a node pool running a load balancer. */
   nodePoolConfig?: BareMetalNodePoolConfig;
 }
 
-export const BareMetalLoadBalancerNodePoolConfig: Schema.Schema<BareMetalLoadBalancerNodePoolConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nodePoolConfig: Schema.optional(BareMetalNodePoolConfig),
-    }),
-  ).annotate({
-    identifier: "BareMetalLoadBalancerNodePoolConfig",
-  }) as any as Schema.Schema<BareMetalLoadBalancerNodePoolConfig>;
+export const BareMetalLoadBalancerNodePoolConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nodePoolConfig: Schema.optional(BareMetalNodePoolConfig),
+  }).annotate({ identifier: "BareMetalLoadBalancerNodePoolConfig" });
 
 export interface BareMetalBgpPeerConfig {
   /** Required. The IP address of the external peer device. */
@@ -1110,16 +886,13 @@ export interface BareMetalBgpPeerConfig {
   asn?: string;
 }
 
-export const BareMetalBgpPeerConfig: Schema.Schema<BareMetalBgpPeerConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ipAddress: Schema.optional(Schema.String),
-      controlPlaneNodes: Schema.optional(Schema.Array(Schema.String)),
-      asn: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BareMetalBgpPeerConfig",
-  }) as any as Schema.Schema<BareMetalBgpPeerConfig>;
+export const BareMetalBgpPeerConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    ipAddress: Schema.optional(Schema.String),
+    controlPlaneNodes: Schema.optional(Schema.Array(Schema.String)),
+    asn: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "BareMetalBgpPeerConfig" });
 
 export interface BareMetalBgpLbConfig {
   /** Required. AddressPools is a list of non-overlapping IP pools used by load balancer typed services. All addresses must be routable to load balancer nodes. IngressVIP must be included in the pools. */
@@ -1132,21 +905,14 @@ export interface BareMetalBgpLbConfig {
   bgpPeerConfigs?: Array<BareMetalBgpPeerConfig>;
 }
 
-export const BareMetalBgpLbConfig: Schema.Schema<BareMetalBgpLbConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      addressPools: Schema.optional(
-        Schema.Array(BareMetalLoadBalancerAddressPool),
-      ),
-      loadBalancerNodePoolConfig: Schema.optional(
-        BareMetalLoadBalancerNodePoolConfig,
-      ),
-      asn: Schema.optional(Schema.String),
-      bgpPeerConfigs: Schema.optional(Schema.Array(BareMetalBgpPeerConfig)),
-    }),
-  ).annotate({
-    identifier: "BareMetalBgpLbConfig",
-  }) as any as Schema.Schema<BareMetalBgpLbConfig>;
+export const BareMetalBgpLbConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  addressPools: Schema.optional(Schema.Array(BareMetalLoadBalancerAddressPool)),
+  loadBalancerNodePoolConfig: Schema.optional(
+    BareMetalLoadBalancerNodePoolConfig,
+  ),
+  asn: Schema.optional(Schema.String),
+  bgpPeerConfigs: Schema.optional(Schema.Array(BareMetalBgpPeerConfig)),
+}).annotate({ identifier: "BareMetalBgpLbConfig" });
 
 export interface BareMetalMetalLbConfig {
   /** Required. AddressPools is a list of non-overlapping IP pools used by load balancer typed services. All addresses must be routable to load balancer nodes. IngressVIP must be included in the pools. */
@@ -1155,33 +921,26 @@ export interface BareMetalMetalLbConfig {
   loadBalancerNodePoolConfig?: BareMetalLoadBalancerNodePoolConfig;
 }
 
-export const BareMetalMetalLbConfig: Schema.Schema<BareMetalMetalLbConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      addressPools: Schema.optional(
-        Schema.Array(BareMetalLoadBalancerAddressPool),
-      ),
-      loadBalancerNodePoolConfig: Schema.optional(
-        BareMetalLoadBalancerNodePoolConfig,
-      ),
-    }),
-  ).annotate({
-    identifier: "BareMetalMetalLbConfig",
-  }) as any as Schema.Schema<BareMetalMetalLbConfig>;
+export const BareMetalMetalLbConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    addressPools: Schema.optional(
+      Schema.Array(BareMetalLoadBalancerAddressPool),
+    ),
+    loadBalancerNodePoolConfig: Schema.optional(
+      BareMetalLoadBalancerNodePoolConfig,
+    ),
+  },
+).annotate({ identifier: "BareMetalMetalLbConfig" });
 
 export interface BareMetalManualLbConfig {
   /** Whether manual load balancing is enabled. */
   enabled?: boolean;
 }
 
-export const BareMetalManualLbConfig: Schema.Schema<BareMetalManualLbConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "BareMetalManualLbConfig",
-  }) as any as Schema.Schema<BareMetalManualLbConfig>;
+export const BareMetalManualLbConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "BareMetalManualLbConfig" });
 
 export interface BareMetalLoadBalancerConfig {
   /** The VIPs used by the load balancer. */
@@ -1196,18 +955,14 @@ export interface BareMetalLoadBalancerConfig {
   manualLbConfig?: BareMetalManualLbConfig;
 }
 
-export const BareMetalLoadBalancerConfig: Schema.Schema<BareMetalLoadBalancerConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      vipConfig: Schema.optional(BareMetalVipConfig),
-      portConfig: Schema.optional(BareMetalPortConfig),
-      bgpLbConfig: Schema.optional(BareMetalBgpLbConfig),
-      metalLbConfig: Schema.optional(BareMetalMetalLbConfig),
-      manualLbConfig: Schema.optional(BareMetalManualLbConfig),
-    }),
-  ).annotate({
-    identifier: "BareMetalLoadBalancerConfig",
-  }) as any as Schema.Schema<BareMetalLoadBalancerConfig>;
+export const BareMetalLoadBalancerConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    vipConfig: Schema.optional(BareMetalVipConfig),
+    portConfig: Schema.optional(BareMetalPortConfig),
+    bgpLbConfig: Schema.optional(BareMetalBgpLbConfig),
+    metalLbConfig: Schema.optional(BareMetalMetalLbConfig),
+    manualLbConfig: Schema.optional(BareMetalManualLbConfig),
+  }).annotate({ identifier: "BareMetalLoadBalancerConfig" });
 
 export interface VmwareVsphereTag {
   /** The Vsphere tag category. */
@@ -1216,15 +971,10 @@ export interface VmwareVsphereTag {
   tag?: string;
 }
 
-export const VmwareVsphereTag: Schema.Schema<VmwareVsphereTag> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      category: Schema.optional(Schema.String),
-      tag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VmwareVsphereTag",
-  }) as any as Schema.Schema<VmwareVsphereTag>;
+export const VmwareVsphereTag = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  category: Schema.optional(Schema.String),
+  tag: Schema.optional(Schema.String),
+}).annotate({ identifier: "VmwareVsphereTag" });
 
 export interface VmwareAddressPool {
   /** If true, avoid using IPs ending in .0 or .255. This avoids buggy consumer devices mistakenly dropping IPv4 traffic for those special IP addresses. */
@@ -1237,31 +987,21 @@ export interface VmwareAddressPool {
   manualAssign?: boolean;
 }
 
-export const VmwareAddressPool: Schema.Schema<VmwareAddressPool> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      avoidBuggyIps: Schema.optional(Schema.Boolean),
-      pool: Schema.optional(Schema.String),
-      addresses: Schema.optional(Schema.Array(Schema.String)),
-      manualAssign: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "VmwareAddressPool",
-  }) as any as Schema.Schema<VmwareAddressPool>;
+export const VmwareAddressPool = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  avoidBuggyIps: Schema.optional(Schema.Boolean),
+  pool: Schema.optional(Schema.String),
+  addresses: Schema.optional(Schema.Array(Schema.String)),
+  manualAssign: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "VmwareAddressPool" });
 
 export interface VmwareMetalLbConfig {
   /** Required. AddressPools is a list of non-overlapping IP pools used by load balancer typed services. All addresses must be routable to load balancer nodes. IngressVIP must be included in the pools. */
   addressPools?: Array<VmwareAddressPool>;
 }
 
-export const VmwareMetalLbConfig: Schema.Schema<VmwareMetalLbConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      addressPools: Schema.optional(Schema.Array(VmwareAddressPool)),
-    }),
-  ).annotate({
-    identifier: "VmwareMetalLbConfig",
-  }) as any as Schema.Schema<VmwareMetalLbConfig>;
+export const VmwareMetalLbConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  addressPools: Schema.optional(Schema.Array(VmwareAddressPool)),
+}).annotate({ identifier: "VmwareMetalLbConfig" });
 
 export interface BareMetalParallelUpgradeConfig {
   /** The maximum number of nodes that can be upgraded at once. */
@@ -1270,29 +1010,21 @@ export interface BareMetalParallelUpgradeConfig {
   minimumAvailableNodes?: number;
 }
 
-export const BareMetalParallelUpgradeConfig: Schema.Schema<BareMetalParallelUpgradeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      concurrentNodes: Schema.optional(Schema.Number),
-      minimumAvailableNodes: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "BareMetalParallelUpgradeConfig",
-  }) as any as Schema.Schema<BareMetalParallelUpgradeConfig>;
+export const BareMetalParallelUpgradeConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    concurrentNodes: Schema.optional(Schema.Number),
+    minimumAvailableNodes: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "BareMetalParallelUpgradeConfig" });
 
 export interface BareMetalNodePoolUpgradePolicy {
   /** The parallel upgrade settings for worker node pools. */
   parallelUpgradeConfig?: BareMetalParallelUpgradeConfig;
 }
 
-export const BareMetalNodePoolUpgradePolicy: Schema.Schema<BareMetalNodePoolUpgradePolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parallelUpgradeConfig: Schema.optional(BareMetalParallelUpgradeConfig),
-    }),
-  ).annotate({
-    identifier: "BareMetalNodePoolUpgradePolicy",
-  }) as any as Schema.Schema<BareMetalNodePoolUpgradePolicy>;
+export const BareMetalNodePoolUpgradePolicy =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parallelUpgradeConfig: Schema.optional(BareMetalParallelUpgradeConfig),
+  }).annotate({ identifier: "BareMetalNodePoolUpgradePolicy" });
 
 export interface BareMetalNodePool {
   /** Output only. The unique identifier of the bare metal node pool. */
@@ -1331,26 +1063,21 @@ export interface BareMetalNodePool {
   annotations?: Record<string, string>;
 }
 
-export const BareMetalNodePool: Schema.Schema<BareMetalNodePool> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uid: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      upgradePolicy: Schema.optional(BareMetalNodePoolUpgradePolicy),
-      name: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      nodePoolConfig: Schema.optional(BareMetalNodePoolConfig),
-      deleteTime: Schema.optional(Schema.String),
-      status: Schema.optional(ResourceStatus),
-      reconciling: Schema.optional(Schema.Boolean),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "BareMetalNodePool",
-  }) as any as Schema.Schema<BareMetalNodePool>;
+export const BareMetalNodePool = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  uid: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  upgradePolicy: Schema.optional(BareMetalNodePoolUpgradePolicy),
+  name: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  nodePoolConfig: Schema.optional(BareMetalNodePoolConfig),
+  deleteTime: Schema.optional(Schema.String),
+  status: Schema.optional(ResourceStatus),
+  reconciling: Schema.optional(Schema.Boolean),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "BareMetalNodePool" });
 
 export interface BareMetalDrainingMachine {
   /** Draining machine IP address. */
@@ -1359,15 +1086,11 @@ export interface BareMetalDrainingMachine {
   podCount?: number;
 }
 
-export const BareMetalDrainingMachine: Schema.Schema<BareMetalDrainingMachine> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nodeIp: Schema.optional(Schema.String),
-      podCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "BareMetalDrainingMachine",
-  }) as any as Schema.Schema<BareMetalDrainingMachine>;
+export const BareMetalDrainingMachine =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nodeIp: Schema.optional(Schema.String),
+    podCount: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "BareMetalDrainingMachine" });
 
 export interface VmwareVipConfig {
   /** The VIP which you previously set aside for the Kubernetes API of this cluster. */
@@ -1376,57 +1099,40 @@ export interface VmwareVipConfig {
   ingressVip?: string;
 }
 
-export const VmwareVipConfig: Schema.Schema<VmwareVipConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      controlPlaneVip: Schema.optional(Schema.String),
-      ingressVip: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VmwareVipConfig",
-  }) as any as Schema.Schema<VmwareVipConfig>;
+export const VmwareVipConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  controlPlaneVip: Schema.optional(Schema.String),
+  ingressVip: Schema.optional(Schema.String),
+}).annotate({ identifier: "VmwareVipConfig" });
 
 export interface BareMetalControlPlaneNodePoolConfig {
   /** Required. The generic configuration for a node pool running the control plane. */
   nodePoolConfig?: BareMetalNodePoolConfig;
 }
 
-export const BareMetalControlPlaneNodePoolConfig: Schema.Schema<BareMetalControlPlaneNodePoolConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nodePoolConfig: Schema.optional(BareMetalNodePoolConfig),
-    }),
-  ).annotate({
-    identifier: "BareMetalControlPlaneNodePoolConfig",
-  }) as any as Schema.Schema<BareMetalControlPlaneNodePoolConfig>;
+export const BareMetalControlPlaneNodePoolConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nodePoolConfig: Schema.optional(BareMetalNodePoolConfig),
+  }).annotate({ identifier: "BareMetalControlPlaneNodePoolConfig" });
 
 export interface BareMetalAdminNodeAccessConfig {
   /** Required. LoginUser is the user name used to access node machines. It defaults to "root" if not set. */
   loginUser?: string;
 }
 
-export const BareMetalAdminNodeAccessConfig: Schema.Schema<BareMetalAdminNodeAccessConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      loginUser: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BareMetalAdminNodeAccessConfig",
-  }) as any as Schema.Schema<BareMetalAdminNodeAccessConfig>;
+export const BareMetalAdminNodeAccessConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    loginUser: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BareMetalAdminNodeAccessConfig" });
 
 export interface BareMetalAdminControlPlaneNodePoolConfig {
   /** Required. The generic configuration for a node pool running the control plane. */
   nodePoolConfig?: BareMetalNodePoolConfig;
 }
 
-export const BareMetalAdminControlPlaneNodePoolConfig: Schema.Schema<BareMetalAdminControlPlaneNodePoolConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nodePoolConfig: Schema.optional(BareMetalNodePoolConfig),
-    }),
-  ).annotate({
-    identifier: "BareMetalAdminControlPlaneNodePoolConfig",
-  }) as any as Schema.Schema<BareMetalAdminControlPlaneNodePoolConfig>;
+export const BareMetalAdminControlPlaneNodePoolConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nodePoolConfig: Schema.optional(BareMetalNodePoolConfig),
+  }).annotate({ identifier: "BareMetalAdminControlPlaneNodePoolConfig" });
 
 export interface BareMetalAdminApiServerArgument {
   /** Required. The argument name as it appears on the API Server command line please make sure to remove the leading dashes. */
@@ -1435,15 +1141,11 @@ export interface BareMetalAdminApiServerArgument {
   value?: string;
 }
 
-export const BareMetalAdminApiServerArgument: Schema.Schema<BareMetalAdminApiServerArgument> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      argument: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BareMetalAdminApiServerArgument",
-  }) as any as Schema.Schema<BareMetalAdminApiServerArgument>;
+export const BareMetalAdminApiServerArgument =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    argument: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BareMetalAdminApiServerArgument" });
 
 export interface BareMetalAdminControlPlaneConfig {
   /** Required. Configures the node pool running the control plane. If specified the corresponding NodePool will be created for the cluster's control plane. The NodePool will have the same name and namespace as the cluster. */
@@ -1452,49 +1154,35 @@ export interface BareMetalAdminControlPlaneConfig {
   apiServerArgs?: Array<BareMetalAdminApiServerArgument>;
 }
 
-export const BareMetalAdminControlPlaneConfig: Schema.Schema<BareMetalAdminControlPlaneConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      controlPlaneNodePoolConfig: Schema.optional(
-        BareMetalAdminControlPlaneNodePoolConfig,
-      ),
-      apiServerArgs: Schema.optional(
-        Schema.Array(BareMetalAdminApiServerArgument),
-      ),
-    }),
-  ).annotate({
-    identifier: "BareMetalAdminControlPlaneConfig",
-  }) as any as Schema.Schema<BareMetalAdminControlPlaneConfig>;
+export const BareMetalAdminControlPlaneConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    controlPlaneNodePoolConfig: Schema.optional(
+      BareMetalAdminControlPlaneNodePoolConfig,
+    ),
+    apiServerArgs: Schema.optional(
+      Schema.Array(BareMetalAdminApiServerArgument),
+    ),
+  }).annotate({ identifier: "BareMetalAdminControlPlaneConfig" });
 
 export interface BareMetalAdminOsEnvironmentConfig {
   /** Whether the package repo should be added when initializing bare metal machines. */
   packageRepoExcluded?: boolean;
 }
 
-export const BareMetalAdminOsEnvironmentConfig: Schema.Schema<BareMetalAdminOsEnvironmentConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      packageRepoExcluded: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "BareMetalAdminOsEnvironmentConfig",
-  }) as any as Schema.Schema<BareMetalAdminOsEnvironmentConfig>;
+export const BareMetalAdminOsEnvironmentConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageRepoExcluded: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "BareMetalAdminOsEnvironmentConfig" });
 
 export interface BareMetalAdminMaintenanceConfig {
   /** Required. All IPv4 address from these ranges will be placed into maintenance mode. Nodes in maintenance mode will be cordoned and drained. When both of these are true, the "baremetal.cluster.gke.io/maintenance" annotation will be set on the node resource. */
   maintenanceAddressCidrBlocks?: Array<string>;
 }
 
-export const BareMetalAdminMaintenanceConfig: Schema.Schema<BareMetalAdminMaintenanceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      maintenanceAddressCidrBlocks: Schema.optional(
-        Schema.Array(Schema.String),
-      ),
-    }),
-  ).annotate({
-    identifier: "BareMetalAdminMaintenanceConfig",
-  }) as any as Schema.Schema<BareMetalAdminMaintenanceConfig>;
+export const BareMetalAdminMaintenanceConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    maintenanceAddressCidrBlocks: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "BareMetalAdminMaintenanceConfig" });
 
 export interface BareMetalAdminDrainingMachine {
   /** The count of pods yet to drain. */
@@ -1503,29 +1191,21 @@ export interface BareMetalAdminDrainingMachine {
   nodeIp?: string;
 }
 
-export const BareMetalAdminDrainingMachine: Schema.Schema<BareMetalAdminDrainingMachine> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      podCount: Schema.optional(Schema.Number),
-      nodeIp: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BareMetalAdminDrainingMachine",
-  }) as any as Schema.Schema<BareMetalAdminDrainingMachine>;
+export const BareMetalAdminDrainingMachine =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    podCount: Schema.optional(Schema.Number),
+    nodeIp: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BareMetalAdminDrainingMachine" });
 
 export interface BareMetalAdminDrainedMachine {
   /** Drained machine IP address. */
   nodeIp?: string;
 }
 
-export const BareMetalAdminDrainedMachine: Schema.Schema<BareMetalAdminDrainedMachine> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nodeIp: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BareMetalAdminDrainedMachine",
-  }) as any as Schema.Schema<BareMetalAdminDrainedMachine>;
+export const BareMetalAdminDrainedMachine =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nodeIp: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BareMetalAdminDrainedMachine" });
 
 export interface BareMetalAdminMachineDrainStatus {
   /** The list of draning machines. */
@@ -1534,61 +1214,44 @@ export interface BareMetalAdminMachineDrainStatus {
   drainedMachines?: Array<BareMetalAdminDrainedMachine>;
 }
 
-export const BareMetalAdminMachineDrainStatus: Schema.Schema<BareMetalAdminMachineDrainStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      drainingMachines: Schema.optional(
-        Schema.Array(BareMetalAdminDrainingMachine),
-      ),
-      drainedMachines: Schema.optional(
-        Schema.Array(BareMetalAdminDrainedMachine),
-      ),
-    }),
-  ).annotate({
-    identifier: "BareMetalAdminMachineDrainStatus",
-  }) as any as Schema.Schema<BareMetalAdminMachineDrainStatus>;
+export const BareMetalAdminMachineDrainStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    drainingMachines: Schema.optional(
+      Schema.Array(BareMetalAdminDrainingMachine),
+    ),
+    drainedMachines: Schema.optional(
+      Schema.Array(BareMetalAdminDrainedMachine),
+    ),
+  }).annotate({ identifier: "BareMetalAdminMachineDrainStatus" });
 
 export interface BareMetalAdminMaintenanceStatus {
   /** Represents the status of draining and drained machine nodes. This is used to show the progress of cluster upgrade. */
   machineDrainStatus?: BareMetalAdminMachineDrainStatus;
 }
 
-export const BareMetalAdminMaintenanceStatus: Schema.Schema<BareMetalAdminMaintenanceStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      machineDrainStatus: Schema.optional(BareMetalAdminMachineDrainStatus),
-    }),
-  ).annotate({
-    identifier: "BareMetalAdminMaintenanceStatus",
-  }) as any as Schema.Schema<BareMetalAdminMaintenanceStatus>;
+export const BareMetalAdminMaintenanceStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    machineDrainStatus: Schema.optional(BareMetalAdminMachineDrainStatus),
+  }).annotate({ identifier: "BareMetalAdminMaintenanceStatus" });
 
 export interface Authorization {
   /** For VMware and bare metal user clusters, users will be granted the cluster-admin role on the cluster, which provides full administrative access to the cluster. For bare metal admin clusters, users will be granted the cluster-view role, which limits users to read-only access. */
   adminUsers?: Array<ClusterUser>;
 }
 
-export const Authorization: Schema.Schema<Authorization> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      adminUsers: Schema.optional(Schema.Array(ClusterUser)),
-    }),
-  ).annotate({
-    identifier: "Authorization",
-  }) as any as Schema.Schema<Authorization>;
+export const Authorization = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  adminUsers: Schema.optional(Schema.Array(ClusterUser)),
+}).annotate({ identifier: "Authorization" });
 
 export interface BareMetalAdminSecurityConfig {
   /** Configures user access to the admin cluster. */
   authorization?: Authorization;
 }
 
-export const BareMetalAdminSecurityConfig: Schema.Schema<BareMetalAdminSecurityConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      authorization: Schema.optional(Authorization),
-    }),
-  ).annotate({
-    identifier: "BareMetalAdminSecurityConfig",
-  }) as any as Schema.Schema<BareMetalAdminSecurityConfig>;
+export const BareMetalAdminSecurityConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    authorization: Schema.optional(Authorization),
+  }).annotate({ identifier: "BareMetalAdminSecurityConfig" });
 
 export interface BareMetalAdminIslandModeCidrConfig {
   /** Required. All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. This field cannot be changed after creation. */
@@ -1597,29 +1260,21 @@ export interface BareMetalAdminIslandModeCidrConfig {
   serviceAddressCidrBlocks?: Array<string>;
 }
 
-export const BareMetalAdminIslandModeCidrConfig: Schema.Schema<BareMetalAdminIslandModeCidrConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      podAddressCidrBlocks: Schema.optional(Schema.Array(Schema.String)),
-      serviceAddressCidrBlocks: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "BareMetalAdminIslandModeCidrConfig",
-  }) as any as Schema.Schema<BareMetalAdminIslandModeCidrConfig>;
+export const BareMetalAdminIslandModeCidrConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    podAddressCidrBlocks: Schema.optional(Schema.Array(Schema.String)),
+    serviceAddressCidrBlocks: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "BareMetalAdminIslandModeCidrConfig" });
 
 export interface BareMetalAdminMultipleNetworkInterfacesConfig {
   /** Whether to enable multiple network interfaces for your pods. When set network_config.advanced_networking is automatically set to true. */
   enabled?: boolean;
 }
 
-export const BareMetalAdminMultipleNetworkInterfacesConfig: Schema.Schema<BareMetalAdminMultipleNetworkInterfacesConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "BareMetalAdminMultipleNetworkInterfacesConfig",
-  }) as any as Schema.Schema<BareMetalAdminMultipleNetworkInterfacesConfig>;
+export const BareMetalAdminMultipleNetworkInterfacesConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "BareMetalAdminMultipleNetworkInterfacesConfig" });
 
 export interface BareMetalAdminNetworkConfig {
   /** Enables the use of advanced Anthos networking features, such as Bundled Load Balancing with BGP or the egress NAT gateway. Setting configuration for advanced networking features will automatically set this flag. */
@@ -1630,18 +1285,14 @@ export interface BareMetalAdminNetworkConfig {
   multipleNetworkInterfacesConfig?: BareMetalAdminMultipleNetworkInterfacesConfig;
 }
 
-export const BareMetalAdminNetworkConfig: Schema.Schema<BareMetalAdminNetworkConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      advancedNetworking: Schema.optional(Schema.Boolean),
-      islandModeCidr: Schema.optional(BareMetalAdminIslandModeCidrConfig),
-      multipleNetworkInterfacesConfig: Schema.optional(
-        BareMetalAdminMultipleNetworkInterfacesConfig,
-      ),
-    }),
-  ).annotate({
-    identifier: "BareMetalAdminNetworkConfig",
-  }) as any as Schema.Schema<BareMetalAdminNetworkConfig>;
+export const BareMetalAdminNetworkConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    advancedNetworking: Schema.optional(Schema.Boolean),
+    islandModeCidr: Schema.optional(BareMetalAdminIslandModeCidrConfig),
+    multipleNetworkInterfacesConfig: Schema.optional(
+      BareMetalAdminMultipleNetworkInterfacesConfig,
+    ),
+  }).annotate({ identifier: "BareMetalAdminNetworkConfig" });
 
 export interface BareMetalLvpConfig {
   /** Required. The host machine path. */
@@ -1650,15 +1301,10 @@ export interface BareMetalLvpConfig {
   storageClass?: string;
 }
 
-export const BareMetalLvpConfig: Schema.Schema<BareMetalLvpConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      path: Schema.optional(Schema.String),
-      storageClass: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BareMetalLvpConfig",
-  }) as any as Schema.Schema<BareMetalLvpConfig>;
+export const BareMetalLvpConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  path: Schema.optional(Schema.String),
+  storageClass: Schema.optional(Schema.String),
+}).annotate({ identifier: "BareMetalLvpConfig" });
 
 export interface BareMetalLvpShareConfig {
   /** Required. Defines the machine path and storage class for the LVP Share. */
@@ -1667,15 +1313,11 @@ export interface BareMetalLvpShareConfig {
   sharedPathPvCount?: number;
 }
 
-export const BareMetalLvpShareConfig: Schema.Schema<BareMetalLvpShareConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lvpConfig: Schema.optional(BareMetalLvpConfig),
-      sharedPathPvCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "BareMetalLvpShareConfig",
-  }) as any as Schema.Schema<BareMetalLvpShareConfig>;
+export const BareMetalLvpShareConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    lvpConfig: Schema.optional(BareMetalLvpConfig),
+    sharedPathPvCount: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "BareMetalLvpShareConfig" });
 
 export interface BareMetalAdminStorageConfig {
   /** Required. Specifies the config for local PersistentVolumes backed by subdirectories in a shared filesystem. These subdirectores are automatically created during cluster creation. */
@@ -1684,29 +1326,21 @@ export interface BareMetalAdminStorageConfig {
   lvpNodeMountsConfig?: BareMetalLvpConfig;
 }
 
-export const BareMetalAdminStorageConfig: Schema.Schema<BareMetalAdminStorageConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lvpShareConfig: Schema.optional(BareMetalLvpShareConfig),
-      lvpNodeMountsConfig: Schema.optional(BareMetalLvpConfig),
-    }),
-  ).annotate({
-    identifier: "BareMetalAdminStorageConfig",
-  }) as any as Schema.Schema<BareMetalAdminStorageConfig>;
+export const BareMetalAdminStorageConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    lvpShareConfig: Schema.optional(BareMetalLvpShareConfig),
+    lvpNodeMountsConfig: Schema.optional(BareMetalLvpConfig),
+  }).annotate({ identifier: "BareMetalAdminStorageConfig" });
 
 export interface BareMetalAdminLoadBalancerNodePoolConfig {
   /** The generic configuration for a node pool running a load balancer. */
   nodePoolConfig?: BareMetalNodePoolConfig;
 }
 
-export const BareMetalAdminLoadBalancerNodePoolConfig: Schema.Schema<BareMetalAdminLoadBalancerNodePoolConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nodePoolConfig: Schema.optional(BareMetalNodePoolConfig),
-    }),
-  ).annotate({
-    identifier: "BareMetalAdminLoadBalancerNodePoolConfig",
-  }) as any as Schema.Schema<BareMetalAdminLoadBalancerNodePoolConfig>;
+export const BareMetalAdminLoadBalancerNodePoolConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nodePoolConfig: Schema.optional(BareMetalNodePoolConfig),
+  }).annotate({ identifier: "BareMetalAdminLoadBalancerNodePoolConfig" });
 
 export interface BareMetalAdminBgpPeerConfig {
   /** Required. BGP autonomous system number (ASN) for the network that contains the external peer device. */
@@ -1717,16 +1351,12 @@ export interface BareMetalAdminBgpPeerConfig {
   controlPlaneNodes?: Array<string>;
 }
 
-export const BareMetalAdminBgpPeerConfig: Schema.Schema<BareMetalAdminBgpPeerConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      asn: Schema.optional(Schema.String),
-      ipAddress: Schema.optional(Schema.String),
-      controlPlaneNodes: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "BareMetalAdminBgpPeerConfig",
-  }) as any as Schema.Schema<BareMetalAdminBgpPeerConfig>;
+export const BareMetalAdminBgpPeerConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    asn: Schema.optional(Schema.String),
+    ipAddress: Schema.optional(Schema.String),
+    controlPlaneNodes: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "BareMetalAdminBgpPeerConfig" });
 
 export interface BareMetalAdminBgpLbConfig {
   /** Required. AddressPools is a list of non-overlapping IP pools used by load balancer typed services. All addresses must be routable to load balancer nodes. IngressVIP must be included in the pools. */
@@ -1739,65 +1369,47 @@ export interface BareMetalAdminBgpLbConfig {
   bgpPeerConfigs?: Array<BareMetalAdminBgpPeerConfig>;
 }
 
-export const BareMetalAdminBgpLbConfig: Schema.Schema<BareMetalAdminBgpLbConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      addressPools: Schema.optional(
-        Schema.Array(BareMetalAdminLoadBalancerAddressPool),
-      ),
-      loadBalancerNodePoolConfig: Schema.optional(
-        BareMetalAdminLoadBalancerNodePoolConfig,
-      ),
-      asn: Schema.optional(Schema.String),
-      bgpPeerConfigs: Schema.optional(
-        Schema.Array(BareMetalAdminBgpPeerConfig),
-      ),
-    }),
-  ).annotate({
-    identifier: "BareMetalAdminBgpLbConfig",
-  }) as any as Schema.Schema<BareMetalAdminBgpLbConfig>;
+export const BareMetalAdminBgpLbConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    addressPools: Schema.optional(
+      Schema.Array(BareMetalAdminLoadBalancerAddressPool),
+    ),
+    loadBalancerNodePoolConfig: Schema.optional(
+      BareMetalAdminLoadBalancerNodePoolConfig,
+    ),
+    asn: Schema.optional(Schema.String),
+    bgpPeerConfigs: Schema.optional(Schema.Array(BareMetalAdminBgpPeerConfig)),
+  }).annotate({ identifier: "BareMetalAdminBgpLbConfig" });
 
 export interface BareMetalAdminPortConfig {
   /** The port that control plane hosted load balancers will listen on. */
   controlPlaneLoadBalancerPort?: number;
 }
 
-export const BareMetalAdminPortConfig: Schema.Schema<BareMetalAdminPortConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      controlPlaneLoadBalancerPort: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "BareMetalAdminPortConfig",
-  }) as any as Schema.Schema<BareMetalAdminPortConfig>;
+export const BareMetalAdminPortConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    controlPlaneLoadBalancerPort: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "BareMetalAdminPortConfig" });
 
 export interface BareMetalAdminManualLbConfig {
   /** Whether manual load balancing is enabled. */
   enabled?: boolean;
 }
 
-export const BareMetalAdminManualLbConfig: Schema.Schema<BareMetalAdminManualLbConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "BareMetalAdminManualLbConfig",
-  }) as any as Schema.Schema<BareMetalAdminManualLbConfig>;
+export const BareMetalAdminManualLbConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "BareMetalAdminManualLbConfig" });
 
 export interface BareMetalAdminVipConfig {
   /** The VIP which you previously set aside for the Kubernetes API of this bare metal admin cluster. */
   controlPlaneVip?: string;
 }
 
-export const BareMetalAdminVipConfig: Schema.Schema<BareMetalAdminVipConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      controlPlaneVip: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BareMetalAdminVipConfig",
-  }) as any as Schema.Schema<BareMetalAdminVipConfig>;
+export const BareMetalAdminVipConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    controlPlaneVip: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BareMetalAdminVipConfig" });
 
 export interface BareMetalAdminLoadBalancerConfig {
   /** Configuration for BGP typed load balancers. */
@@ -1810,45 +1422,33 @@ export interface BareMetalAdminLoadBalancerConfig {
   vipConfig?: BareMetalAdminVipConfig;
 }
 
-export const BareMetalAdminLoadBalancerConfig: Schema.Schema<BareMetalAdminLoadBalancerConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bgpLbConfig: Schema.optional(BareMetalAdminBgpLbConfig),
-      portConfig: Schema.optional(BareMetalAdminPortConfig),
-      manualLbConfig: Schema.optional(BareMetalAdminManualLbConfig),
-      vipConfig: Schema.optional(BareMetalAdminVipConfig),
-    }),
-  ).annotate({
-    identifier: "BareMetalAdminLoadBalancerConfig",
-  }) as any as Schema.Schema<BareMetalAdminLoadBalancerConfig>;
+export const BareMetalAdminLoadBalancerConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bgpLbConfig: Schema.optional(BareMetalAdminBgpLbConfig),
+    portConfig: Schema.optional(BareMetalAdminPortConfig),
+    manualLbConfig: Schema.optional(BareMetalAdminManualLbConfig),
+    vipConfig: Schema.optional(BareMetalAdminVipConfig),
+  }).annotate({ identifier: "BareMetalAdminLoadBalancerConfig" });
 
 export interface BareMetalAdminWorkloadNodeConfig {
   /** The maximum number of pods a node can run. The size of the CIDR range assigned to the node will be derived from this parameter. By default 110 Pods are created per Node. Upper bound is 250 for both HA and non-HA admin cluster. Lower bound is 64 for non-HA admin cluster and 32 for HA admin cluster. */
   maxPodsPerNode?: string;
 }
 
-export const BareMetalAdminWorkloadNodeConfig: Schema.Schema<BareMetalAdminWorkloadNodeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      maxPodsPerNode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BareMetalAdminWorkloadNodeConfig",
-  }) as any as Schema.Schema<BareMetalAdminWorkloadNodeConfig>;
+export const BareMetalAdminWorkloadNodeConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    maxPodsPerNode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BareMetalAdminWorkloadNodeConfig" });
 
 export interface BareMetalAdminClusterOperationsConfig {
   /** Whether collection of application logs/metrics should be enabled (in addition to system logs/metrics). */
   enableApplicationLogs?: boolean;
 }
 
-export const BareMetalAdminClusterOperationsConfig: Schema.Schema<BareMetalAdminClusterOperationsConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableApplicationLogs: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "BareMetalAdminClusterOperationsConfig",
-  }) as any as Schema.Schema<BareMetalAdminClusterOperationsConfig>;
+export const BareMetalAdminClusterOperationsConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enableApplicationLogs: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "BareMetalAdminClusterOperationsConfig" });
 
 export interface BareMetalAdminCluster {
   /** A human readable description of this bare metal admin cluster. */
@@ -1919,42 +1519,37 @@ export interface BareMetalAdminCluster {
   clusterOperations?: BareMetalAdminClusterOperationsConfig;
 }
 
-export const BareMetalAdminCluster: Schema.Schema<BareMetalAdminCluster> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      validationCheck: Schema.optional(ValidationCheck),
-      binaryAuthorization: Schema.optional(BinaryAuthorization),
-      nodeAccessConfig: Schema.optional(BareMetalAdminNodeAccessConfig),
-      deleteTime: Schema.optional(Schema.String),
-      status: Schema.optional(ResourceStatus),
-      endpoint: Schema.optional(Schema.String),
-      controlPlane: Schema.optional(BareMetalAdminControlPlaneConfig),
-      osEnvironmentConfig: Schema.optional(BareMetalAdminOsEnvironmentConfig),
-      reconciling: Schema.optional(Schema.Boolean),
-      maintenanceConfig: Schema.optional(BareMetalAdminMaintenanceConfig),
-      uid: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      maintenanceStatus: Schema.optional(BareMetalAdminMaintenanceStatus),
-      securityConfig: Schema.optional(BareMetalAdminSecurityConfig),
-      networkConfig: Schema.optional(BareMetalAdminNetworkConfig),
-      storage: Schema.optional(BareMetalAdminStorageConfig),
-      state: Schema.optional(Schema.String),
-      proxy: Schema.optional(BareMetalAdminProxyConfig),
-      bareMetalVersion: Schema.optional(Schema.String),
-      localName: Schema.optional(Schema.String),
-      loadBalancer: Schema.optional(BareMetalAdminLoadBalancerConfig),
-      nodeConfig: Schema.optional(BareMetalAdminWorkloadNodeConfig),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      etag: Schema.optional(Schema.String),
-      fleet: Schema.optional(Fleet),
-      updateTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      clusterOperations: Schema.optional(BareMetalAdminClusterOperationsConfig),
-    }),
-  ).annotate({
-    identifier: "BareMetalAdminCluster",
-  }) as any as Schema.Schema<BareMetalAdminCluster>;
+export const BareMetalAdminCluster = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  validationCheck: Schema.optional(ValidationCheck),
+  binaryAuthorization: Schema.optional(BinaryAuthorization),
+  nodeAccessConfig: Schema.optional(BareMetalAdminNodeAccessConfig),
+  deleteTime: Schema.optional(Schema.String),
+  status: Schema.optional(ResourceStatus),
+  endpoint: Schema.optional(Schema.String),
+  controlPlane: Schema.optional(BareMetalAdminControlPlaneConfig),
+  osEnvironmentConfig: Schema.optional(BareMetalAdminOsEnvironmentConfig),
+  reconciling: Schema.optional(Schema.Boolean),
+  maintenanceConfig: Schema.optional(BareMetalAdminMaintenanceConfig),
+  uid: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  maintenanceStatus: Schema.optional(BareMetalAdminMaintenanceStatus),
+  securityConfig: Schema.optional(BareMetalAdminSecurityConfig),
+  networkConfig: Schema.optional(BareMetalAdminNetworkConfig),
+  storage: Schema.optional(BareMetalAdminStorageConfig),
+  state: Schema.optional(Schema.String),
+  proxy: Schema.optional(BareMetalAdminProxyConfig),
+  bareMetalVersion: Schema.optional(Schema.String),
+  localName: Schema.optional(Schema.String),
+  loadBalancer: Schema.optional(BareMetalAdminLoadBalancerConfig),
+  nodeConfig: Schema.optional(BareMetalAdminWorkloadNodeConfig),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  etag: Schema.optional(Schema.String),
+  fleet: Schema.optional(Fleet),
+  updateTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  clusterOperations: Schema.optional(BareMetalAdminClusterOperationsConfig),
+}).annotate({ identifier: "BareMetalAdminCluster" });
 
 export interface ListBareMetalAdminClustersResponse {
   /** Locations that could not be reached. */
@@ -1965,18 +1560,14 @@ export interface ListBareMetalAdminClustersResponse {
   nextPageToken?: string;
 }
 
-export const ListBareMetalAdminClustersResponse: Schema.Schema<ListBareMetalAdminClustersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      bareMetalAdminClusters: Schema.optional(
-        Schema.Array(BareMetalAdminCluster),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListBareMetalAdminClustersResponse",
-  }) as any as Schema.Schema<ListBareMetalAdminClustersResponse>;
+export const ListBareMetalAdminClustersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    bareMetalAdminClusters: Schema.optional(
+      Schema.Array(BareMetalAdminCluster),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListBareMetalAdminClustersResponse" });
 
 export interface UpgradeDependency {
   /** Resource name of the dependency. */
@@ -1989,17 +1580,12 @@ export interface UpgradeDependency {
   targetVersion?: string;
 }
 
-export const UpgradeDependency: Schema.Schema<UpgradeDependency> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceName: Schema.optional(Schema.String),
-      currentVersion: Schema.optional(Schema.String),
-      membership: Schema.optional(Schema.String),
-      targetVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpgradeDependency",
-  }) as any as Schema.Schema<UpgradeDependency>;
+export const UpgradeDependency = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceName: Schema.optional(Schema.String),
+  currentVersion: Schema.optional(Schema.String),
+  membership: Schema.optional(Schema.String),
+  targetVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "UpgradeDependency" });
 
 export interface BareMetalVersionInfo {
   /** If set, the cluster dependencies (e.g. the admin cluster, other user clusters managed by the same admin cluster, version skew policy, etc) must be upgraded before this version can be installed or upgraded to. */
@@ -2010,58 +1596,40 @@ export interface BareMetalVersionInfo {
   version?: string;
 }
 
-export const BareMetalVersionInfo: Schema.Schema<BareMetalVersionInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hasDependencies: Schema.optional(Schema.Boolean),
-      dependencies: Schema.optional(Schema.Array(UpgradeDependency)),
-      version: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BareMetalVersionInfo",
-  }) as any as Schema.Schema<BareMetalVersionInfo>;
+export const BareMetalVersionInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  hasDependencies: Schema.optional(Schema.Boolean),
+  dependencies: Schema.optional(Schema.Array(UpgradeDependency)),
+  version: Schema.optional(Schema.String),
+}).annotate({ identifier: "BareMetalVersionInfo" });
 
 export interface QueryBareMetalAdminVersionConfigResponse {
   /** List of available versions to install or to upgrade to. */
   versions?: Array<BareMetalVersionInfo>;
 }
 
-export const QueryBareMetalAdminVersionConfigResponse: Schema.Schema<QueryBareMetalAdminVersionConfigResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      versions: Schema.optional(Schema.Array(BareMetalVersionInfo)),
-    }),
-  ).annotate({
-    identifier: "QueryBareMetalAdminVersionConfigResponse",
-  }) as any as Schema.Schema<QueryBareMetalAdminVersionConfigResponse>;
+export const QueryBareMetalAdminVersionConfigResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    versions: Schema.optional(Schema.Array(BareMetalVersionInfo)),
+  }).annotate({ identifier: "QueryBareMetalAdminVersionConfigResponse" });
 
 export interface VmwareStorageConfig {
   /** Whether or not to deploy vSphere CSI components in the VMware user cluster. Enabled by default. */
   vsphereCsiDisabled?: boolean;
 }
 
-export const VmwareStorageConfig: Schema.Schema<VmwareStorageConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      vsphereCsiDisabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "VmwareStorageConfig",
-  }) as any as Schema.Schema<VmwareStorageConfig>;
+export const VmwareStorageConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  vsphereCsiDisabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "VmwareStorageConfig" });
 
 export interface BareMetalDrainedMachine {
   /** Drained machine IP address. */
   nodeIp?: string;
 }
 
-export const BareMetalDrainedMachine: Schema.Schema<BareMetalDrainedMachine> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nodeIp: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BareMetalDrainedMachine",
-  }) as any as Schema.Schema<BareMetalDrainedMachine>;
+export const BareMetalDrainedMachine =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nodeIp: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BareMetalDrainedMachine" });
 
 export interface BareMetalMachineDrainStatus {
   /** The list of draning machines. */
@@ -2070,15 +1638,11 @@ export interface BareMetalMachineDrainStatus {
   drainedMachines?: Array<BareMetalDrainedMachine>;
 }
 
-export const BareMetalMachineDrainStatus: Schema.Schema<BareMetalMachineDrainStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      drainingMachines: Schema.optional(Schema.Array(BareMetalDrainingMachine)),
-      drainedMachines: Schema.optional(Schema.Array(BareMetalDrainedMachine)),
-    }),
-  ).annotate({
-    identifier: "BareMetalMachineDrainStatus",
-  }) as any as Schema.Schema<BareMetalMachineDrainStatus>;
+export const BareMetalMachineDrainStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    drainingMachines: Schema.optional(Schema.Array(BareMetalDrainingMachine)),
+    drainedMachines: Schema.optional(Schema.Array(BareMetalDrainedMachine)),
+  }).annotate({ identifier: "BareMetalMachineDrainStatus" });
 
 export interface VmwareManualLbConfig {
   /** NodePort for ingress service's http. The ingress service in the admin cluster is implemented as a Service of type NodePort (ex. 32527). */
@@ -2091,17 +1655,12 @@ export interface VmwareManualLbConfig {
   konnectivityServerNodePort?: number;
 }
 
-export const VmwareManualLbConfig: Schema.Schema<VmwareManualLbConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ingressHttpNodePort: Schema.optional(Schema.Number),
-      ingressHttpsNodePort: Schema.optional(Schema.Number),
-      controlPlaneNodePort: Schema.optional(Schema.Number),
-      konnectivityServerNodePort: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "VmwareManualLbConfig",
-  }) as any as Schema.Schema<VmwareManualLbConfig>;
+export const VmwareManualLbConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ingressHttpNodePort: Schema.optional(Schema.Number),
+  ingressHttpsNodePort: Schema.optional(Schema.Number),
+  controlPlaneNodePort: Schema.optional(Schema.Number),
+  konnectivityServerNodePort: Schema.optional(Schema.Number),
+}).annotate({ identifier: "VmwareManualLbConfig" });
 
 export interface VmwareSeesawConfig {
   /** Enable two load balancer VMs to achieve a highly-available Seesaw load balancer. */
@@ -2118,19 +1677,14 @@ export interface VmwareSeesawConfig {
   vms?: Array<string>;
 }
 
-export const VmwareSeesawConfig: Schema.Schema<VmwareSeesawConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableHa: Schema.optional(Schema.Boolean),
-      stackdriverName: Schema.optional(Schema.String),
-      group: Schema.optional(Schema.String),
-      masterIp: Schema.optional(Schema.String),
-      ipBlocks: Schema.optional(Schema.Array(VmwareIpBlock)),
-      vms: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "VmwareSeesawConfig",
-  }) as any as Schema.Schema<VmwareSeesawConfig>;
+export const VmwareSeesawConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enableHa: Schema.optional(Schema.Boolean),
+  stackdriverName: Schema.optional(Schema.String),
+  group: Schema.optional(Schema.String),
+  masterIp: Schema.optional(Schema.String),
+  ipBlocks: Schema.optional(Schema.Array(VmwareIpBlock)),
+  vms: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "VmwareSeesawConfig" });
 
 export interface VmwareLoadBalancerConfig {
   /** Manually configured load balancers. */
@@ -2145,32 +1699,24 @@ export interface VmwareLoadBalancerConfig {
   f5Config?: VmwareF5BigIpConfig;
 }
 
-export const VmwareLoadBalancerConfig: Schema.Schema<VmwareLoadBalancerConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      manualLbConfig: Schema.optional(VmwareManualLbConfig),
-      metalLbConfig: Schema.optional(VmwareMetalLbConfig),
-      seesawConfig: Schema.optional(VmwareSeesawConfig),
-      vipConfig: Schema.optional(VmwareVipConfig),
-      f5Config: Schema.optional(VmwareF5BigIpConfig),
-    }),
-  ).annotate({
-    identifier: "VmwareLoadBalancerConfig",
-  }) as any as Schema.Schema<VmwareLoadBalancerConfig>;
+export const VmwareLoadBalancerConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    manualLbConfig: Schema.optional(VmwareManualLbConfig),
+    metalLbConfig: Schema.optional(VmwareMetalLbConfig),
+    seesawConfig: Schema.optional(VmwareSeesawConfig),
+    vipConfig: Schema.optional(VmwareVipConfig),
+    f5Config: Schema.optional(VmwareF5BigIpConfig),
+  }).annotate({ identifier: "VmwareLoadBalancerConfig" });
 
 export interface VmwareClusterUpgradePolicy {
   /** Controls whether the upgrade applies to the control plane only. */
   controlPlaneOnly?: boolean;
 }
 
-export const VmwareClusterUpgradePolicy: Schema.Schema<VmwareClusterUpgradePolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      controlPlaneOnly: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "VmwareClusterUpgradePolicy",
-  }) as any as Schema.Schema<VmwareClusterUpgradePolicy>;
+export const VmwareClusterUpgradePolicy =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    controlPlaneOnly: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "VmwareClusterUpgradePolicy" });
 
 export interface BareMetalIslandModeCidrConfig {
   /** Required. All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges. This field cannot be changed after creation. */
@@ -2179,15 +1725,11 @@ export interface BareMetalIslandModeCidrConfig {
   serviceAddressCidrBlocks?: Array<string>;
 }
 
-export const BareMetalIslandModeCidrConfig: Schema.Schema<BareMetalIslandModeCidrConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      podAddressCidrBlocks: Schema.optional(Schema.Array(Schema.String)),
-      serviceAddressCidrBlocks: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "BareMetalIslandModeCidrConfig",
-  }) as any as Schema.Schema<BareMetalIslandModeCidrConfig>;
+export const BareMetalIslandModeCidrConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    podAddressCidrBlocks: Schema.optional(Schema.Array(Schema.String)),
+    serviceAddressCidrBlocks: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "BareMetalIslandModeCidrConfig" });
 
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -2198,16 +1740,13 @@ export interface Status {
   message?: string;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      message: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  message: Schema.optional(Schema.String),
+}).annotate({ identifier: "Status" });
 
 export interface Metric {
   /** For metrics with integer value. */
@@ -2235,15 +1774,12 @@ export interface Metric {
   stringValue?: string;
 }
 
-export const Metric: Schema.Schema<Metric> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      intValue: Schema.optional(Schema.String),
-      metric: Schema.optional(Schema.String),
-      doubleValue: Schema.optional(Schema.Number),
-      stringValue: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Metric" }) as any as Schema.Schema<Metric>;
+export const Metric = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  intValue: Schema.optional(Schema.String),
+  metric: Schema.optional(Schema.String),
+  doubleValue: Schema.optional(Schema.Number),
+  stringValue: Schema.optional(Schema.String),
+}).annotate({ identifier: "Metric" });
 
 export interface OperationStage {
   /** Time the stage started. */
@@ -2271,18 +1807,13 @@ export interface OperationStage {
     | (string & {});
 }
 
-export const OperationStage: Schema.Schema<OperationStage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Schema.String),
-      stage: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      metrics: Schema.optional(Schema.Array(Metric)),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationStage",
-  }) as any as Schema.Schema<OperationStage>;
+export const OperationStage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startTime: Schema.optional(Schema.String),
+  stage: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  metrics: Schema.optional(Schema.Array(Metric)),
+  state: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationStage" });
 
 export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
@@ -2297,16 +1828,13 @@ export interface Operation {
   error?: Status;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      name: Schema.optional(Schema.String),
-      done: Schema.optional(Schema.Boolean),
-      error: Schema.optional(Status),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  name: Schema.optional(Schema.String),
+  done: Schema.optional(Schema.Boolean),
+  error: Schema.optional(Status),
+}).annotate({ identifier: "Operation" });
 
 export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
@@ -2317,16 +1845,13 @@ export interface ListOperationsResponse {
   nextPageToken?: string;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      operations: Schema.optional(Schema.Array(Operation)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    operations: Schema.optional(Schema.Array(Operation)),
+    nextPageToken: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 export interface Location {
   /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
@@ -2341,16 +1866,13 @@ export interface Location {
   metadata?: Record<string, unknown>;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      displayName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      locationId: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  displayName: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  locationId: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Location" });
 
 export interface ListLocationsResponse {
   /** The standard List next-page token. */
@@ -2359,29 +1881,20 @@ export interface ListLocationsResponse {
   locations?: Array<Location>;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      locations: Schema.optional(Schema.Array(Location)),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  locations: Schema.optional(Schema.Array(Location)),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface VmwareControlPlaneV2Config {
   /** Static IP addresses for the control plane nodes. */
   controlPlaneIpBlock?: VmwareIpBlock;
 }
 
-export const VmwareControlPlaneV2Config: Schema.Schema<VmwareControlPlaneV2Config> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      controlPlaneIpBlock: Schema.optional(VmwareIpBlock),
-    }),
-  ).annotate({
-    identifier: "VmwareControlPlaneV2Config",
-  }) as any as Schema.Schema<VmwareControlPlaneV2Config>;
+export const VmwareControlPlaneV2Config =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    controlPlaneIpBlock: Schema.optional(VmwareIpBlock),
+  }).annotate({ identifier: "VmwareControlPlaneV2Config" });
 
 export interface BareMetalControlPlaneConfig {
   /** Required. Configures the node pool running the control plane. */
@@ -2390,117 +1903,82 @@ export interface BareMetalControlPlaneConfig {
   apiServerArgs?: Array<BareMetalApiServerArgument>;
 }
 
-export const BareMetalControlPlaneConfig: Schema.Schema<BareMetalControlPlaneConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      controlPlaneNodePoolConfig: Schema.optional(
-        BareMetalControlPlaneNodePoolConfig,
-      ),
-      apiServerArgs: Schema.optional(Schema.Array(BareMetalApiServerArgument)),
-    }),
-  ).annotate({
-    identifier: "BareMetalControlPlaneConfig",
-  }) as any as Schema.Schema<BareMetalControlPlaneConfig>;
+export const BareMetalControlPlaneConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    controlPlaneNodePoolConfig: Schema.optional(
+      BareMetalControlPlaneNodePoolConfig,
+    ),
+    apiServerArgs: Schema.optional(Schema.Array(BareMetalApiServerArgument)),
+  }).annotate({ identifier: "BareMetalControlPlaneConfig" });
 
 export interface BareMetalOsEnvironmentConfig {
   /** Whether the package repo should not be included when initializing bare metal machines. */
   packageRepoExcluded?: boolean;
 }
 
-export const BareMetalOsEnvironmentConfig: Schema.Schema<BareMetalOsEnvironmentConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      packageRepoExcluded: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "BareMetalOsEnvironmentConfig",
-  }) as any as Schema.Schema<BareMetalOsEnvironmentConfig>;
+export const BareMetalOsEnvironmentConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageRepoExcluded: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "BareMetalOsEnvironmentConfig" });
 
 export interface BareMetalNodeAccessConfig {
   /** LoginUser is the user name used to access node machines. It defaults to "root" if not set. */
   loginUser?: string;
 }
 
-export const BareMetalNodeAccessConfig: Schema.Schema<BareMetalNodeAccessConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      loginUser: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BareMetalNodeAccessConfig",
-  }) as any as Schema.Schema<BareMetalNodeAccessConfig>;
+export const BareMetalNodeAccessConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    loginUser: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BareMetalNodeAccessConfig" });
 
 export interface BareMetalMaintenanceConfig {
   /** Required. All IPv4 address from these ranges will be placed into maintenance mode. Nodes in maintenance mode will be cordoned and drained. When both of these are true, the "baremetal.cluster.gke.io/maintenance" annotation will be set on the node resource. */
   maintenanceAddressCidrBlocks?: Array<string>;
 }
 
-export const BareMetalMaintenanceConfig: Schema.Schema<BareMetalMaintenanceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      maintenanceAddressCidrBlocks: Schema.optional(
-        Schema.Array(Schema.String),
-      ),
-    }),
-  ).annotate({
-    identifier: "BareMetalMaintenanceConfig",
-  }) as any as Schema.Schema<BareMetalMaintenanceConfig>;
+export const BareMetalMaintenanceConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    maintenanceAddressCidrBlocks: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "BareMetalMaintenanceConfig" });
 
 export interface BareMetalMaintenanceStatus {
   /** The maintenance status of node machines. */
   machineDrainStatus?: BareMetalMachineDrainStatus;
 }
 
-export const BareMetalMaintenanceStatus: Schema.Schema<BareMetalMaintenanceStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      machineDrainStatus: Schema.optional(BareMetalMachineDrainStatus),
-    }),
-  ).annotate({
-    identifier: "BareMetalMaintenanceStatus",
-  }) as any as Schema.Schema<BareMetalMaintenanceStatus>;
+export const BareMetalMaintenanceStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    machineDrainStatus: Schema.optional(BareMetalMachineDrainStatus),
+  }).annotate({ identifier: "BareMetalMaintenanceStatus" });
 
 export interface BareMetalSecurityConfig {
   /** Configures user access to the user cluster. */
   authorization?: Authorization;
 }
 
-export const BareMetalSecurityConfig: Schema.Schema<BareMetalSecurityConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      authorization: Schema.optional(Authorization),
-    }),
-  ).annotate({
-    identifier: "BareMetalSecurityConfig",
-  }) as any as Schema.Schema<BareMetalSecurityConfig>;
+export const BareMetalSecurityConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    authorization: Schema.optional(Authorization),
+  }).annotate({ identifier: "BareMetalSecurityConfig" });
 
 export interface BareMetalMultipleNetworkInterfacesConfig {
   /** Whether to enable multiple network interfaces for your pods. When set network_config.advanced_networking is automatically set to true. */
   enabled?: boolean;
 }
 
-export const BareMetalMultipleNetworkInterfacesConfig: Schema.Schema<BareMetalMultipleNetworkInterfacesConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "BareMetalMultipleNetworkInterfacesConfig",
-  }) as any as Schema.Schema<BareMetalMultipleNetworkInterfacesConfig>;
+export const BareMetalMultipleNetworkInterfacesConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "BareMetalMultipleNetworkInterfacesConfig" });
 
 export interface BareMetalSrIovConfig {
   /** Whether to install the SR-IOV operator. */
   enabled?: boolean;
 }
 
-export const BareMetalSrIovConfig: Schema.Schema<BareMetalSrIovConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "BareMetalSrIovConfig",
-  }) as any as Schema.Schema<BareMetalSrIovConfig>;
+export const BareMetalSrIovConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "BareMetalSrIovConfig" });
 
 export interface BareMetalNetworkConfig {
   /** Configuration for multiple network interfaces. */
@@ -2513,19 +1991,16 @@ export interface BareMetalNetworkConfig {
   srIovConfig?: BareMetalSrIovConfig;
 }
 
-export const BareMetalNetworkConfig: Schema.Schema<BareMetalNetworkConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      multipleNetworkInterfacesConfig: Schema.optional(
-        BareMetalMultipleNetworkInterfacesConfig,
-      ),
-      islandModeCidr: Schema.optional(BareMetalIslandModeCidrConfig),
-      advancedNetworking: Schema.optional(Schema.Boolean),
-      srIovConfig: Schema.optional(BareMetalSrIovConfig),
-    }),
-  ).annotate({
-    identifier: "BareMetalNetworkConfig",
-  }) as any as Schema.Schema<BareMetalNetworkConfig>;
+export const BareMetalNetworkConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    multipleNetworkInterfacesConfig: Schema.optional(
+      BareMetalMultipleNetworkInterfacesConfig,
+    ),
+    islandModeCidr: Schema.optional(BareMetalIslandModeCidrConfig),
+    advancedNetworking: Schema.optional(Schema.Boolean),
+    srIovConfig: Schema.optional(BareMetalSrIovConfig),
+  },
+).annotate({ identifier: "BareMetalNetworkConfig" });
 
 export interface BareMetalStorageConfig {
   /** Required. Specifies the config for local PersistentVolumes backed by subdirectories in a shared filesystem. These subdirectores are automatically created during cluster creation. */
@@ -2534,15 +2009,12 @@ export interface BareMetalStorageConfig {
   lvpNodeMountsConfig?: BareMetalLvpConfig;
 }
 
-export const BareMetalStorageConfig: Schema.Schema<BareMetalStorageConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lvpShareConfig: Schema.optional(BareMetalLvpShareConfig),
-      lvpNodeMountsConfig: Schema.optional(BareMetalLvpConfig),
-    }),
-  ).annotate({
-    identifier: "BareMetalStorageConfig",
-  }) as any as Schema.Schema<BareMetalStorageConfig>;
+export const BareMetalStorageConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    lvpShareConfig: Schema.optional(BareMetalLvpShareConfig),
+    lvpNodeMountsConfig: Schema.optional(BareMetalLvpConfig),
+  },
+).annotate({ identifier: "BareMetalStorageConfig" });
 
 export interface BareMetalWorkloadNodeConfig {
   /** Specifies which container runtime will be used. */
@@ -2554,15 +2026,11 @@ export interface BareMetalWorkloadNodeConfig {
   maxPodsPerNode?: string;
 }
 
-export const BareMetalWorkloadNodeConfig: Schema.Schema<BareMetalWorkloadNodeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      containerRuntime: Schema.optional(Schema.String),
-      maxPodsPerNode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BareMetalWorkloadNodeConfig",
-  }) as any as Schema.Schema<BareMetalWorkloadNodeConfig>;
+export const BareMetalWorkloadNodeConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    containerRuntime: Schema.optional(Schema.String),
+    maxPodsPerNode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BareMetalWorkloadNodeConfig" });
 
 export interface BareMetalClusterUpgradePolicy {
   /** Specifies which upgrade policy to use. */
@@ -2575,29 +2043,21 @@ export interface BareMetalClusterUpgradePolicy {
   pause?: boolean;
 }
 
-export const BareMetalClusterUpgradePolicy: Schema.Schema<BareMetalClusterUpgradePolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policy: Schema.optional(Schema.String),
-      pause: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "BareMetalClusterUpgradePolicy",
-  }) as any as Schema.Schema<BareMetalClusterUpgradePolicy>;
+export const BareMetalClusterUpgradePolicy =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policy: Schema.optional(Schema.String),
+    pause: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "BareMetalClusterUpgradePolicy" });
 
 export interface BareMetalClusterOperationsConfig {
   /** Whether collection of application logs/metrics should be enabled (in addition to system logs/metrics). */
   enableApplicationLogs?: boolean;
 }
 
-export const BareMetalClusterOperationsConfig: Schema.Schema<BareMetalClusterOperationsConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableApplicationLogs: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "BareMetalClusterOperationsConfig",
-  }) as any as Schema.Schema<BareMetalClusterOperationsConfig>;
+export const BareMetalClusterOperationsConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enableApplicationLogs: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "BareMetalClusterOperationsConfig" });
 
 export interface BareMetalCluster {
   /** Output only. The result of the preflight check. */
@@ -2676,60 +2136,51 @@ export interface BareMetalCluster {
   name?: string;
 }
 
-export const BareMetalCluster: Schema.Schema<BareMetalCluster> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      validationCheck: Schema.optional(ValidationCheck),
-      binaryAuthorization: Schema.optional(BinaryAuthorization),
-      description: Schema.optional(Schema.String),
-      endpoint: Schema.optional(Schema.String),
-      controlPlane: Schema.optional(BareMetalControlPlaneConfig),
-      osEnvironmentConfig: Schema.optional(BareMetalOsEnvironmentConfig),
-      reconciling: Schema.optional(Schema.Boolean),
-      nodeAccessConfig: Schema.optional(BareMetalNodeAccessConfig),
-      deleteTime: Schema.optional(Schema.String),
-      status: Schema.optional(ResourceStatus),
-      maintenanceConfig: Schema.optional(BareMetalMaintenanceConfig),
-      uid: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      maintenanceStatus: Schema.optional(BareMetalMaintenanceStatus),
-      securityConfig: Schema.optional(BareMetalSecurityConfig),
-      networkConfig: Schema.optional(BareMetalNetworkConfig),
-      storage: Schema.optional(BareMetalStorageConfig),
-      adminClusterMembership: Schema.optional(Schema.String),
-      proxy: Schema.optional(BareMetalProxyConfig),
-      state: Schema.optional(Schema.String),
-      localName: Schema.optional(Schema.String),
-      loadBalancer: Schema.optional(BareMetalLoadBalancerConfig),
-      nodeConfig: Schema.optional(BareMetalWorkloadNodeConfig),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      bareMetalVersion: Schema.optional(Schema.String),
-      fleet: Schema.optional(Fleet),
-      upgradePolicy: Schema.optional(BareMetalClusterUpgradePolicy),
-      etag: Schema.optional(Schema.String),
-      localNamespace: Schema.optional(Schema.String),
-      adminClusterName: Schema.optional(Schema.String),
-      clusterOperations: Schema.optional(BareMetalClusterOperationsConfig),
-      updateTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BareMetalCluster",
-  }) as any as Schema.Schema<BareMetalCluster>;
+export const BareMetalCluster = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  validationCheck: Schema.optional(ValidationCheck),
+  binaryAuthorization: Schema.optional(BinaryAuthorization),
+  description: Schema.optional(Schema.String),
+  endpoint: Schema.optional(Schema.String),
+  controlPlane: Schema.optional(BareMetalControlPlaneConfig),
+  osEnvironmentConfig: Schema.optional(BareMetalOsEnvironmentConfig),
+  reconciling: Schema.optional(Schema.Boolean),
+  nodeAccessConfig: Schema.optional(BareMetalNodeAccessConfig),
+  deleteTime: Schema.optional(Schema.String),
+  status: Schema.optional(ResourceStatus),
+  maintenanceConfig: Schema.optional(BareMetalMaintenanceConfig),
+  uid: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  maintenanceStatus: Schema.optional(BareMetalMaintenanceStatus),
+  securityConfig: Schema.optional(BareMetalSecurityConfig),
+  networkConfig: Schema.optional(BareMetalNetworkConfig),
+  storage: Schema.optional(BareMetalStorageConfig),
+  adminClusterMembership: Schema.optional(Schema.String),
+  proxy: Schema.optional(BareMetalProxyConfig),
+  state: Schema.optional(Schema.String),
+  localName: Schema.optional(Schema.String),
+  loadBalancer: Schema.optional(BareMetalLoadBalancerConfig),
+  nodeConfig: Schema.optional(BareMetalWorkloadNodeConfig),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  bareMetalVersion: Schema.optional(Schema.String),
+  fleet: Schema.optional(Fleet),
+  upgradePolicy: Schema.optional(BareMetalClusterUpgradePolicy),
+  etag: Schema.optional(Schema.String),
+  localNamespace: Schema.optional(Schema.String),
+  adminClusterName: Schema.optional(Schema.String),
+  clusterOperations: Schema.optional(BareMetalClusterOperationsConfig),
+  updateTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "BareMetalCluster" });
 
 export interface QueryBareMetalVersionConfigResponse {
   /** List of available versions to install or to upgrade to. */
   versions?: Array<BareMetalVersionInfo>;
 }
 
-export const QueryBareMetalVersionConfigResponse: Schema.Schema<QueryBareMetalVersionConfigResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      versions: Schema.optional(Schema.Array(BareMetalVersionInfo)),
-    }),
-  ).annotate({
-    identifier: "QueryBareMetalVersionConfigResponse",
-  }) as any as Schema.Schema<QueryBareMetalVersionConfigResponse>;
+export const QueryBareMetalVersionConfigResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    versions: Schema.optional(Schema.Array(BareMetalVersionInfo)),
+  }).annotate({ identifier: "QueryBareMetalVersionConfigResponse" });
 
 export interface VmwareVsphereConfig {
   /** Vsphere host groups to apply to all VMs in the node pool */
@@ -2740,16 +2191,11 @@ export interface VmwareVsphereConfig {
   tags?: Array<VmwareVsphereTag>;
 }
 
-export const VmwareVsphereConfig: Schema.Schema<VmwareVsphereConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hostGroups: Schema.optional(Schema.Array(Schema.String)),
-      datastore: Schema.optional(Schema.String),
-      tags: Schema.optional(Schema.Array(VmwareVsphereTag)),
-    }),
-  ).annotate({
-    identifier: "VmwareVsphereConfig",
-  }) as any as Schema.Schema<VmwareVsphereConfig>;
+export const VmwareVsphereConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  hostGroups: Schema.optional(Schema.Array(Schema.String)),
+  datastore: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Array(VmwareVsphereTag)),
+}).annotate({ identifier: "VmwareVsphereConfig" });
 
 export interface VmwareNodeConfig {
   /** Specifies the vSphere config for node pool. */
@@ -2774,23 +2220,18 @@ export interface VmwareNodeConfig {
   bootDiskSizeGb?: string;
 }
 
-export const VmwareNodeConfig: Schema.Schema<VmwareNodeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      vsphereConfig: Schema.optional(VmwareVsphereConfig),
-      enableLoadBalancer: Schema.optional(Schema.Boolean),
-      image: Schema.optional(Schema.String),
-      taints: Schema.optional(Schema.Array(NodeTaint)),
-      cpus: Schema.optional(Schema.String),
-      imageType: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      memoryMb: Schema.optional(Schema.String),
-      replicas: Schema.optional(Schema.String),
-      bootDiskSizeGb: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VmwareNodeConfig",
-  }) as any as Schema.Schema<VmwareNodeConfig>;
+export const VmwareNodeConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  vsphereConfig: Schema.optional(VmwareVsphereConfig),
+  enableLoadBalancer: Schema.optional(Schema.Boolean),
+  image: Schema.optional(Schema.String),
+  taints: Schema.optional(Schema.Array(NodeTaint)),
+  cpus: Schema.optional(Schema.String),
+  imageType: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  memoryMb: Schema.optional(Schema.String),
+  replicas: Schema.optional(Schema.String),
+  bootDiskSizeGb: Schema.optional(Schema.String),
+}).annotate({ identifier: "VmwareNodeConfig" });
 
 export interface VmwareNodePoolAutoscalingConfig {
   /** Minimum number of replicas in the NodePool. */
@@ -2799,15 +2240,11 @@ export interface VmwareNodePoolAutoscalingConfig {
   maxReplicas?: number;
 }
 
-export const VmwareNodePoolAutoscalingConfig: Schema.Schema<VmwareNodePoolAutoscalingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      minReplicas: Schema.optional(Schema.Number),
-      maxReplicas: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "VmwareNodePoolAutoscalingConfig",
-  }) as any as Schema.Schema<VmwareNodePoolAutoscalingConfig>;
+export const VmwareNodePoolAutoscalingConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    minReplicas: Schema.optional(Schema.Number),
+    maxReplicas: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "VmwareNodePoolAutoscalingConfig" });
 
 export interface VmwareNodePool {
   /** Output only. The time at which this node pool was last updated. */
@@ -2848,27 +2285,22 @@ export interface VmwareNodePool {
   nodePoolAutoscaling?: VmwareNodePoolAutoscalingConfig;
 }
 
-export const VmwareNodePool: Schema.Schema<VmwareNodePool> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      config: Schema.optional(VmwareNodeConfig),
-      displayName: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      uid: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      status: Schema.optional(ResourceStatus),
-      deleteTime: Schema.optional(Schema.String),
-      reconciling: Schema.optional(Schema.Boolean),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      onPremVersion: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      nodePoolAutoscaling: Schema.optional(VmwareNodePoolAutoscalingConfig),
-    }),
-  ).annotate({
-    identifier: "VmwareNodePool",
-  }) as any as Schema.Schema<VmwareNodePool>;
+export const VmwareNodePool = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  updateTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  config: Schema.optional(VmwareNodeConfig),
+  displayName: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  uid: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  status: Schema.optional(ResourceStatus),
+  deleteTime: Schema.optional(Schema.String),
+  reconciling: Schema.optional(Schema.Boolean),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  onPremVersion: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  nodePoolAutoscaling: Schema.optional(VmwareNodePoolAutoscalingConfig),
+}).annotate({ identifier: "VmwareNodePool" });
 
 export interface ListVmwareNodePoolsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -2879,16 +2311,12 @@ export interface ListVmwareNodePoolsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListVmwareNodePoolsResponse: Schema.Schema<ListVmwareNodePoolsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      vmwareNodePools: Schema.optional(Schema.Array(VmwareNodePool)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListVmwareNodePoolsResponse",
-  }) as any as Schema.Schema<ListVmwareNodePoolsResponse>;
+export const ListVmwareNodePoolsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    vmwareNodePools: Schema.optional(Schema.Array(VmwareNodePool)),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListVmwareNodePoolsResponse" });
 
 export interface VmwareControlPlaneVsphereConfig {
   /** The Vsphere datastore used by the control plane Node. */
@@ -2897,15 +2325,11 @@ export interface VmwareControlPlaneVsphereConfig {
   storagePolicyName?: string;
 }
 
-export const VmwareControlPlaneVsphereConfig: Schema.Schema<VmwareControlPlaneVsphereConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      datastore: Schema.optional(Schema.String),
-      storagePolicyName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VmwareControlPlaneVsphereConfig",
-  }) as any as Schema.Schema<VmwareControlPlaneVsphereConfig>;
+export const VmwareControlPlaneVsphereConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    datastore: Schema.optional(Schema.String),
+    storagePolicyName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "VmwareControlPlaneVsphereConfig" });
 
 export interface VmwareControlPlaneNodeConfig {
   /** The megabytes of memory for each admin cluster node that serves as a control plane for this VMware user cluster (default: 8192 MB memory). */
@@ -2920,18 +2344,14 @@ export interface VmwareControlPlaneNodeConfig {
   vsphereConfig?: VmwareControlPlaneVsphereConfig;
 }
 
-export const VmwareControlPlaneNodeConfig: Schema.Schema<VmwareControlPlaneNodeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      memory: Schema.optional(Schema.String),
-      replicas: Schema.optional(Schema.String),
-      cpus: Schema.optional(Schema.String),
-      autoResizeConfig: Schema.optional(VmwareAutoResizeConfig),
-      vsphereConfig: Schema.optional(VmwareControlPlaneVsphereConfig),
-    }),
-  ).annotate({
-    identifier: "VmwareControlPlaneNodeConfig",
-  }) as any as Schema.Schema<VmwareControlPlaneNodeConfig>;
+export const VmwareControlPlaneNodeConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    memory: Schema.optional(Schema.String),
+    replicas: Schema.optional(Schema.String),
+    cpus: Schema.optional(Schema.String),
+    autoResizeConfig: Schema.optional(VmwareAutoResizeConfig),
+    vsphereConfig: Schema.optional(VmwareControlPlaneVsphereConfig),
+  }).annotate({ identifier: "VmwareControlPlaneNodeConfig" });
 
 export interface VmwareVCenterConfig {
   /** The name of the vCenter folder for the user cluster. */
@@ -2952,21 +2372,16 @@ export interface VmwareVCenterConfig {
   storagePolicyName?: string;
 }
 
-export const VmwareVCenterConfig: Schema.Schema<VmwareVCenterConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      folder: Schema.optional(Schema.String),
-      resourcePool: Schema.optional(Schema.String),
-      cluster: Schema.optional(Schema.String),
-      datastore: Schema.optional(Schema.String),
-      datacenter: Schema.optional(Schema.String),
-      caCertData: Schema.optional(Schema.String),
-      address: Schema.optional(Schema.String),
-      storagePolicyName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VmwareVCenterConfig",
-  }) as any as Schema.Schema<VmwareVCenterConfig>;
+export const VmwareVCenterConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  folder: Schema.optional(Schema.String),
+  resourcePool: Schema.optional(Schema.String),
+  cluster: Schema.optional(Schema.String),
+  datastore: Schema.optional(Schema.String),
+  datacenter: Schema.optional(Schema.String),
+  caCertData: Schema.optional(Schema.String),
+  address: Schema.optional(Schema.String),
+  storagePolicyName: Schema.optional(Schema.String),
+}).annotate({ identifier: "VmwareVCenterConfig" });
 
 export interface EnrollVmwareAdminClusterRequest {
   /** Required. This is the full resource name of this admin cluster's fleet membership. */
@@ -2975,36 +2390,27 @@ export interface EnrollVmwareAdminClusterRequest {
   vmwareAdminClusterId?: string;
 }
 
-export const EnrollVmwareAdminClusterRequest: Schema.Schema<EnrollVmwareAdminClusterRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      membership: Schema.optional(Schema.String),
-      vmwareAdminClusterId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnrollVmwareAdminClusterRequest",
-  }) as any as Schema.Schema<EnrollVmwareAdminClusterRequest>;
+export const EnrollVmwareAdminClusterRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    membership: Schema.optional(Schema.String),
+    vmwareAdminClusterId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnrollVmwareAdminClusterRequest" });
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelOperationRequest",
-  }) as any as Schema.Schema<CancelOperationRequest>;
+export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelOperationRequest" });
 
 export interface EnrollVmwareNodePoolRequest {
   /** The target node pool id to be enrolled. */
   vmwareNodePoolId?: string;
 }
 
-export const EnrollVmwareNodePoolRequest: Schema.Schema<EnrollVmwareNodePoolRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      vmwareNodePoolId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnrollVmwareNodePoolRequest",
-  }) as any as Schema.Schema<EnrollVmwareNodePoolRequest>;
+export const EnrollVmwareNodePoolRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    vmwareNodePoolId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnrollVmwareNodePoolRequest" });
 
 export interface EnrollBareMetalNodePoolRequest {
   /** If set, only validate the request, but do not actually enroll the node pool. */
@@ -3013,15 +2419,11 @@ export interface EnrollBareMetalNodePoolRequest {
   bareMetalNodePoolId?: string;
 }
 
-export const EnrollBareMetalNodePoolRequest: Schema.Schema<EnrollBareMetalNodePoolRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      validateOnly: Schema.optional(Schema.Boolean),
-      bareMetalNodePoolId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnrollBareMetalNodePoolRequest",
-  }) as any as Schema.Schema<EnrollBareMetalNodePoolRequest>;
+export const EnrollBareMetalNodePoolRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    validateOnly: Schema.optional(Schema.Boolean),
+    bareMetalNodePoolId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnrollBareMetalNodePoolRequest" });
 
 export interface ListBareMetalClustersResponse {
   /** The list of bare metal Clusters. */
@@ -3032,16 +2434,12 @@ export interface ListBareMetalClustersResponse {
   unreachable?: Array<string>;
 }
 
-export const ListBareMetalClustersResponse: Schema.Schema<ListBareMetalClustersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bareMetalClusters: Schema.optional(Schema.Array(BareMetalCluster)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListBareMetalClustersResponse",
-  }) as any as Schema.Schema<ListBareMetalClustersResponse>;
+export const ListBareMetalClustersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bareMetalClusters: Schema.optional(Schema.Array(BareMetalCluster)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListBareMetalClustersResponse" });
 
 export interface EnrollVmwareClusterRequest {
   /** User provided OnePlatform identifier that is used as part of the resource name. This must be unique among all GKE on-prem clusters within a project and location and will return a 409 if the cluster already exists. (https://tools.ietf.org/html/rfc1123) format. */
@@ -3054,17 +2452,13 @@ export interface EnrollVmwareClusterRequest {
   adminClusterMembership?: string;
 }
 
-export const EnrollVmwareClusterRequest: Schema.Schema<EnrollVmwareClusterRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      vmwareClusterId: Schema.optional(Schema.String),
-      localName: Schema.optional(Schema.String),
-      validateOnly: Schema.optional(Schema.Boolean),
-      adminClusterMembership: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnrollVmwareClusterRequest",
-  }) as any as Schema.Schema<EnrollVmwareClusterRequest>;
+export const EnrollVmwareClusterRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    vmwareClusterId: Schema.optional(Schema.String),
+    localName: Schema.optional(Schema.String),
+    validateOnly: Schema.optional(Schema.Boolean),
+    adminClusterMembership: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnrollVmwareClusterRequest" });
 
 export interface ListBareMetalNodePoolsResponse {
   /** The node pools from the specified parent resource. */
@@ -3075,16 +2469,12 @@ export interface ListBareMetalNodePoolsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListBareMetalNodePoolsResponse: Schema.Schema<ListBareMetalNodePoolsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bareMetalNodePools: Schema.optional(Schema.Array(BareMetalNodePool)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListBareMetalNodePoolsResponse",
-  }) as any as Schema.Schema<ListBareMetalNodePoolsResponse>;
+export const ListBareMetalNodePoolsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bareMetalNodePools: Schema.optional(Schema.Array(BareMetalNodePool)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListBareMetalNodePoolsResponse" });
 
 export interface VmwareVersionInfo {
   /** Version number e.g. 1.13.1-gke.1000. */
@@ -3097,31 +2487,22 @@ export interface VmwareVersionInfo {
   dependencies?: Array<UpgradeDependency>;
 }
 
-export const VmwareVersionInfo: Schema.Schema<VmwareVersionInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.String),
-      isInstalled: Schema.optional(Schema.Boolean),
-      hasDependencies: Schema.optional(Schema.Boolean),
-      dependencies: Schema.optional(Schema.Array(UpgradeDependency)),
-    }),
-  ).annotate({
-    identifier: "VmwareVersionInfo",
-  }) as any as Schema.Schema<VmwareVersionInfo>;
+export const VmwareVersionInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.String),
+  isInstalled: Schema.optional(Schema.Boolean),
+  hasDependencies: Schema.optional(Schema.Boolean),
+  dependencies: Schema.optional(Schema.Array(UpgradeDependency)),
+}).annotate({ identifier: "VmwareVersionInfo" });
 
 export interface QueryVmwareVersionConfigResponse {
   /** List of available versions to install or to upgrade to. */
   versions?: Array<VmwareVersionInfo>;
 }
 
-export const QueryVmwareVersionConfigResponse: Schema.Schema<QueryVmwareVersionConfigResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      versions: Schema.optional(Schema.Array(VmwareVersionInfo)),
-    }),
-  ).annotate({
-    identifier: "QueryVmwareVersionConfigResponse",
-  }) as any as Schema.Schema<QueryVmwareVersionConfigResponse>;
+export const QueryVmwareVersionConfigResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    versions: Schema.optional(Schema.Array(VmwareVersionInfo)),
+  }).annotate({ identifier: "QueryVmwareVersionConfigResponse" });
 
 export interface Expr {
   /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
@@ -3134,15 +2515,12 @@ export interface Expr {
   location?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      expression: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Expr" }) as any as Schema.Schema<Expr>;
+export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  expression: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+}).annotate({ identifier: "Expr" });
 
 export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
@@ -3153,14 +2531,11 @@ export interface Binding {
   condition?: Expr;
 }
 
-export const Binding: Schema.Schema<Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      role: Schema.optional(Schema.String),
-      members: Schema.optional(Schema.Array(Schema.String)),
-      condition: Schema.optional(Expr),
-    }),
-  ).annotate({ identifier: "Binding" }) as any as Schema.Schema<Binding>;
+export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  role: Schema.optional(Schema.String),
+  members: Schema.optional(Schema.Array(Schema.String)),
+  condition: Schema.optional(Expr),
+}).annotate({ identifier: "Binding" });
 
 export interface Policy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
@@ -3171,28 +2546,20 @@ export interface Policy {
   etag?: string;
 }
 
-export const Policy: Schema.Schema<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bindings: Schema.optional(Schema.Array(Binding)),
-      version: Schema.optional(Schema.Number),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Policy" }) as any as Schema.Schema<Policy>;
+export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bindings: Schema.optional(Schema.Array(Binding)),
+  version: Schema.optional(Schema.Number),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "Policy" });
 
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: Policy;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policy: Schema.optional(Policy),
-    }),
-  ).annotate({
-    identifier: "SetIamPolicyRequest",
-  }) as any as Schema.Schema<SetIamPolicyRequest>;
+export const SetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policy: Schema.optional(Policy),
+}).annotate({ identifier: "SetIamPolicyRequest" });
 
 export interface EnrollBareMetalClusterRequest {
   /** Required. The admin cluster this bare metal user cluster belongs to. This is the full resource name of the admin cluster's fleet membership. In the future, references to other resource types might be allowed if admin clusters are modeled as their own resources. */
@@ -3205,17 +2572,13 @@ export interface EnrollBareMetalClusterRequest {
   bareMetalClusterId?: string;
 }
 
-export const EnrollBareMetalClusterRequest: Schema.Schema<EnrollBareMetalClusterRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      adminClusterMembership: Schema.optional(Schema.String),
-      localNamespace: Schema.optional(Schema.String),
-      localName: Schema.optional(Schema.String),
-      bareMetalClusterId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnrollBareMetalClusterRequest",
-  }) as any as Schema.Schema<EnrollBareMetalClusterRequest>;
+export const EnrollBareMetalClusterRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    adminClusterMembership: Schema.optional(Schema.String),
+    localNamespace: Schema.optional(Schema.String),
+    localName: Schema.optional(Schema.String),
+    bareMetalClusterId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnrollBareMetalClusterRequest" });
 
 export interface VmwareNetworkConfig {
   /** vcenter_network specifies vCenter network name. Inherited from the admin cluster. */
@@ -3234,20 +2597,15 @@ export interface VmwareNetworkConfig {
   controlPlaneV2Config?: VmwareControlPlaneV2Config;
 }
 
-export const VmwareNetworkConfig: Schema.Schema<VmwareNetworkConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      vcenterNetwork: Schema.optional(Schema.String),
-      podAddressCidrBlocks: Schema.optional(Schema.Array(Schema.String)),
-      serviceAddressCidrBlocks: Schema.optional(Schema.Array(Schema.String)),
-      staticIpConfig: Schema.optional(VmwareStaticIpConfig),
-      dhcpIpConfig: Schema.optional(VmwareDhcpIpConfig),
-      hostConfig: Schema.optional(VmwareHostConfig),
-      controlPlaneV2Config: Schema.optional(VmwareControlPlaneV2Config),
-    }),
-  ).annotate({
-    identifier: "VmwareNetworkConfig",
-  }) as any as Schema.Schema<VmwareNetworkConfig>;
+export const VmwareNetworkConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  vcenterNetwork: Schema.optional(Schema.String),
+  podAddressCidrBlocks: Schema.optional(Schema.Array(Schema.String)),
+  serviceAddressCidrBlocks: Schema.optional(Schema.Array(Schema.String)),
+  staticIpConfig: Schema.optional(VmwareStaticIpConfig),
+  dhcpIpConfig: Schema.optional(VmwareDhcpIpConfig),
+  hostConfig: Schema.optional(VmwareHostConfig),
+  controlPlaneV2Config: Schema.optional(VmwareControlPlaneV2Config),
+}).annotate({ identifier: "VmwareNetworkConfig" });
 
 export interface EnrollBareMetalAdminClusterRequest {
   /** Required. This is the full resource name of this admin cluster's fleet membership. */
@@ -3256,36 +2614,26 @@ export interface EnrollBareMetalAdminClusterRequest {
   bareMetalAdminClusterId?: string;
 }
 
-export const EnrollBareMetalAdminClusterRequest: Schema.Schema<EnrollBareMetalAdminClusterRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      membership: Schema.optional(Schema.String),
-      bareMetalAdminClusterId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnrollBareMetalAdminClusterRequest",
-  }) as any as Schema.Schema<EnrollBareMetalAdminClusterRequest>;
+export const EnrollBareMetalAdminClusterRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    membership: Schema.optional(Schema.String),
+    bareMetalAdminClusterId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnrollBareMetalAdminClusterRequest" });
 
 export interface OperationProgress {
   /** The stages of the operation. */
   stages?: Array<OperationStage>;
 }
 
-export const OperationProgress: Schema.Schema<OperationProgress> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stages: Schema.optional(Schema.Array(OperationStage)),
-    }),
-  ).annotate({
-    identifier: "OperationProgress",
-  }) as any as Schema.Schema<OperationProgress>;
+export const OperationProgress = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  stages: Schema.optional(Schema.Array(OperationStage)),
+}).annotate({ identifier: "OperationProgress" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface OperationMetadata {
   /** Output only. Human-readable status of the operation, if any. */
@@ -3317,23 +2665,18 @@ export interface OperationMetadata {
   requestedCancellation?: boolean;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      statusMessage: Schema.optional(Schema.String),
-      controlPlaneDisconnected: Schema.optional(Schema.Boolean),
-      createTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      progress: Schema.optional(OperationProgress),
-      apiVersion: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  statusMessage: Schema.optional(Schema.String),
+  controlPlaneDisconnected: Schema.optional(Schema.Boolean),
+  createTime: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  progress: Schema.optional(OperationProgress),
+  apiVersion: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  verb: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  requestedCancellation: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "OperationMetadata" });
 
 export interface VmwareDataplaneV2Config {
   /** Configure ForwardMode for Dataplane v2. */
@@ -3346,17 +2689,13 @@ export interface VmwareDataplaneV2Config {
   windowsDataplaneV2Enabled?: boolean;
 }
 
-export const VmwareDataplaneV2Config: Schema.Schema<VmwareDataplaneV2Config> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      forwardMode: Schema.optional(Schema.String),
-      dataplaneV2Enabled: Schema.optional(Schema.Boolean),
-      advancedNetworking: Schema.optional(Schema.Boolean),
-      windowsDataplaneV2Enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "VmwareDataplaneV2Config",
-  }) as any as Schema.Schema<VmwareDataplaneV2Config>;
+export const VmwareDataplaneV2Config =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    forwardMode: Schema.optional(Schema.String),
+    dataplaneV2Enabled: Schema.optional(Schema.Boolean),
+    advancedNetworking: Schema.optional(Schema.Boolean),
+    windowsDataplaneV2Enabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "VmwareDataplaneV2Config" });
 
 export interface VmwareCluster {
   /** Immutable. The VMware user cluster resource name. */
@@ -3435,46 +2774,41 @@ export interface VmwareCluster {
   description?: string;
 }
 
-export const VmwareCluster: Schema.Schema<VmwareCluster> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      vmTrackingEnabled: Schema.optional(Schema.Boolean),
-      upgradePolicy: Schema.optional(VmwareClusterUpgradePolicy),
-      fleet: Schema.optional(Fleet),
-      autoRepairConfig: Schema.optional(VmwareAutoRepairConfig),
-      adminClusterName: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      dataplaneV2: Schema.optional(VmwareDataplaneV2Config),
-      onPremVersion: Schema.optional(Schema.String),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      enableControlPlaneV2: Schema.optional(Schema.Boolean),
-      localName: Schema.optional(Schema.String),
-      loadBalancer: Schema.optional(VmwareLoadBalancerConfig),
-      vcenter: Schema.optional(VmwareVCenterConfig),
-      state: Schema.optional(Schema.String),
-      enableAdvancedCluster: Schema.optional(Schema.Boolean),
-      storage: Schema.optional(VmwareStorageConfig),
-      disableBundledIngress: Schema.optional(Schema.Boolean),
-      networkConfig: Schema.optional(VmwareNetworkConfig),
-      authorization: Schema.optional(Authorization),
-      controlPlaneNode: Schema.optional(VmwareControlPlaneNodeConfig),
-      adminClusterMembership: Schema.optional(Schema.String),
-      uid: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      reconciling: Schema.optional(Schema.Boolean),
-      endpoint: Schema.optional(Schema.String),
-      antiAffinityGroups: Schema.optional(VmwareAAGConfig),
-      deleteTime: Schema.optional(Schema.String),
-      status: Schema.optional(ResourceStatus),
-      binaryAuthorization: Schema.optional(BinaryAuthorization),
-      validationCheck: Schema.optional(ValidationCheck),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VmwareCluster",
-  }) as any as Schema.Schema<VmwareCluster>;
+export const VmwareCluster = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  vmTrackingEnabled: Schema.optional(Schema.Boolean),
+  upgradePolicy: Schema.optional(VmwareClusterUpgradePolicy),
+  fleet: Schema.optional(Fleet),
+  autoRepairConfig: Schema.optional(VmwareAutoRepairConfig),
+  adminClusterName: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  dataplaneV2: Schema.optional(VmwareDataplaneV2Config),
+  onPremVersion: Schema.optional(Schema.String),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  enableControlPlaneV2: Schema.optional(Schema.Boolean),
+  localName: Schema.optional(Schema.String),
+  loadBalancer: Schema.optional(VmwareLoadBalancerConfig),
+  vcenter: Schema.optional(VmwareVCenterConfig),
+  state: Schema.optional(Schema.String),
+  enableAdvancedCluster: Schema.optional(Schema.Boolean),
+  storage: Schema.optional(VmwareStorageConfig),
+  disableBundledIngress: Schema.optional(Schema.Boolean),
+  networkConfig: Schema.optional(VmwareNetworkConfig),
+  authorization: Schema.optional(Authorization),
+  controlPlaneNode: Schema.optional(VmwareControlPlaneNodeConfig),
+  adminClusterMembership: Schema.optional(Schema.String),
+  uid: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  reconciling: Schema.optional(Schema.Boolean),
+  endpoint: Schema.optional(Schema.String),
+  antiAffinityGroups: Schema.optional(VmwareAAGConfig),
+  deleteTime: Schema.optional(Schema.String),
+  status: Schema.optional(ResourceStatus),
+  binaryAuthorization: Schema.optional(BinaryAuthorization),
+  validationCheck: Schema.optional(ValidationCheck),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "VmwareCluster" });
 
 export interface ListVmwareClustersResponse {
   /** The list of VMware Cluster. */
@@ -3485,16 +2819,12 @@ export interface ListVmwareClustersResponse {
   unreachable?: Array<string>;
 }
 
-export const ListVmwareClustersResponse: Schema.Schema<ListVmwareClustersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      vmwareClusters: Schema.optional(Schema.Array(VmwareCluster)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListVmwareClustersResponse",
-  }) as any as Schema.Schema<ListVmwareClustersResponse>;
+export const ListVmwareClustersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    vmwareClusters: Schema.optional(Schema.Array(VmwareCluster)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListVmwareClustersResponse" });
 
 // ==========================================================================
 // Operations

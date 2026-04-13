@@ -52,21 +52,17 @@ export interface GoogleCloudEssentialcontactsV1Contact {
   validateTime?: string;
 }
 
-export const GoogleCloudEssentialcontactsV1Contact: Schema.Schema<GoogleCloudEssentialcontactsV1Contact> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      email: Schema.optional(Schema.String),
-      notificationCategorySubscriptions: Schema.optional(
-        Schema.Array(Schema.String),
-      ),
-      languageTag: Schema.optional(Schema.String),
-      validationState: Schema.optional(Schema.String),
-      validateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudEssentialcontactsV1Contact",
-  }) as any as Schema.Schema<GoogleCloudEssentialcontactsV1Contact>;
+export const GoogleCloudEssentialcontactsV1Contact =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    email: Schema.optional(Schema.String),
+    notificationCategorySubscriptions: Schema.optional(
+      Schema.Array(Schema.String),
+    ),
+    languageTag: Schema.optional(Schema.String),
+    validationState: Schema.optional(Schema.String),
+    validateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudEssentialcontactsV1Contact" });
 
 export interface GoogleCloudEssentialcontactsV1ListContactsResponse {
   /** The contacts for the specified resource. */
@@ -75,24 +71,21 @@ export interface GoogleCloudEssentialcontactsV1ListContactsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudEssentialcontactsV1ListContactsResponse: Schema.Schema<GoogleCloudEssentialcontactsV1ListContactsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contacts: Schema.optional(
-        Schema.Array(GoogleCloudEssentialcontactsV1Contact),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudEssentialcontactsV1ListContactsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    contacts: Schema.optional(
+      Schema.Array(GoogleCloudEssentialcontactsV1Contact),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudEssentialcontactsV1ListContactsResponse",
-  }) as any as Schema.Schema<GoogleCloudEssentialcontactsV1ListContactsResponse>;
+  });
 
 export interface GoogleProtobufEmpty {}
 
-export const GoogleProtobufEmpty: Schema.Schema<GoogleProtobufEmpty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "GoogleProtobufEmpty",
-  }) as any as Schema.Schema<GoogleProtobufEmpty>;
+export const GoogleProtobufEmpty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "GoogleProtobufEmpty" });
 
 export interface GoogleCloudEssentialcontactsV1ComputeContactsResponse {
   /** All contacts for the resource that are subscribed to the specified notification categories, including contacts inherited from any parent resources. */
@@ -101,17 +94,15 @@ export interface GoogleCloudEssentialcontactsV1ComputeContactsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudEssentialcontactsV1ComputeContactsResponse: Schema.Schema<GoogleCloudEssentialcontactsV1ComputeContactsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contacts: Schema.optional(
-        Schema.Array(GoogleCloudEssentialcontactsV1Contact),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudEssentialcontactsV1ComputeContactsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    contacts: Schema.optional(
+      Schema.Array(GoogleCloudEssentialcontactsV1Contact),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudEssentialcontactsV1ComputeContactsResponse",
-  }) as any as Schema.Schema<GoogleCloudEssentialcontactsV1ComputeContactsResponse>;
+  });
 
 export interface GoogleCloudEssentialcontactsV1SendTestMessageRequest {
   /** Required. The list of names of the contacts to send a test message to. Format: organizations/{organization}/contacts/{contact}, folders/{folder}/contacts/{contact} or projects/{project}/contacts/{contact} (where {project} is the project number) */
@@ -130,15 +121,13 @@ export interface GoogleCloudEssentialcontactsV1SendTestMessageRequest {
     | (string & {});
 }
 
-export const GoogleCloudEssentialcontactsV1SendTestMessageRequest: Schema.Schema<GoogleCloudEssentialcontactsV1SendTestMessageRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contacts: Schema.optional(Schema.Array(Schema.String)),
-      notificationCategory: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudEssentialcontactsV1SendTestMessageRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    contacts: Schema.optional(Schema.Array(Schema.String)),
+    notificationCategory: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudEssentialcontactsV1SendTestMessageRequest",
-  }) as any as Schema.Schema<GoogleCloudEssentialcontactsV1SendTestMessageRequest>;
+  });
 
 // ==========================================================================
 // Operations

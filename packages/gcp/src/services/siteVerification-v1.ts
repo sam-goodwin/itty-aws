@@ -29,20 +29,16 @@ export interface SiteVerificationWebResourceGettokenRequest {
   verificationMethod?: string;
 }
 
-export const SiteVerificationWebResourceGettokenRequest: Schema.Schema<SiteVerificationWebResourceGettokenRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      site: Schema.optional(
-        Schema.Struct({
-          identifier: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
-      verificationMethod: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SiteVerificationWebResourceGettokenRequest",
-  }) as any as Schema.Schema<SiteVerificationWebResourceGettokenRequest>;
+export const SiteVerificationWebResourceGettokenRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    site: Schema.optional(
+      Schema.Struct({
+        identifier: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
+    ),
+    verificationMethod: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SiteVerificationWebResourceGettokenRequest" });
 
 export interface SiteVerificationWebResourceGettokenResponse {
   /** The verification method to use in conjunction with this token. For FILE, the token should be placed in the top-level directory of the site, stored inside a file of the same name. For META, the token should be placed in the HEAD tag of the default page that is loaded for the site. For DNS, the token should be placed in a TXT record of the domain. */
@@ -51,15 +47,11 @@ export interface SiteVerificationWebResourceGettokenResponse {
   token?: string;
 }
 
-export const SiteVerificationWebResourceGettokenResponse: Schema.Schema<SiteVerificationWebResourceGettokenResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      method: Schema.optional(Schema.String),
-      token: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SiteVerificationWebResourceGettokenResponse",
-  }) as any as Schema.Schema<SiteVerificationWebResourceGettokenResponse>;
+export const SiteVerificationWebResourceGettokenResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    method: Schema.optional(Schema.String),
+    token: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SiteVerificationWebResourceGettokenResponse" });
 
 export interface SiteVerificationWebResourceResource {
   /** The string used to identify this site. This value should be used in the "id" portion of the REST URL for the Get, Update, and Delete operations. */
@@ -70,35 +62,27 @@ export interface SiteVerificationWebResourceResource {
   site?: { identifier?: string; type?: string };
 }
 
-export const SiteVerificationWebResourceResource: Schema.Schema<SiteVerificationWebResourceResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      owners: Schema.optional(Schema.Array(Schema.String)),
-      site: Schema.optional(
-        Schema.Struct({
-          identifier: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
-    }),
-  ).annotate({
-    identifier: "SiteVerificationWebResourceResource",
-  }) as any as Schema.Schema<SiteVerificationWebResourceResource>;
+export const SiteVerificationWebResourceResource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    owners: Schema.optional(Schema.Array(Schema.String)),
+    site: Schema.optional(
+      Schema.Struct({
+        identifier: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
+    ),
+  }).annotate({ identifier: "SiteVerificationWebResourceResource" });
 
 export interface SiteVerificationWebResourceListResponse {
   /** The list of sites that are owned by the authenticated user. */
   items?: Array<SiteVerificationWebResourceResource>;
 }
 
-export const SiteVerificationWebResourceListResponse: Schema.Schema<SiteVerificationWebResourceListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      items: Schema.optional(Schema.Array(SiteVerificationWebResourceResource)),
-    }),
-  ).annotate({
-    identifier: "SiteVerificationWebResourceListResponse",
-  }) as any as Schema.Schema<SiteVerificationWebResourceListResponse>;
+export const SiteVerificationWebResourceListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    items: Schema.optional(Schema.Array(SiteVerificationWebResourceResource)),
+  }).annotate({ identifier: "SiteVerificationWebResourceListResponse" });
 
 // ==========================================================================
 // Operations

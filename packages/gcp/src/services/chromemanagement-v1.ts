@@ -31,16 +31,12 @@ export interface GoogleChromeManagementV1RiskAssessment {
   version?: string;
 }
 
-export const GoogleChromeManagementV1RiskAssessment: Schema.Schema<GoogleChromeManagementV1RiskAssessment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      assessment: Schema.optional(Schema.String),
-      detailsUrl: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1RiskAssessment",
-  }) as any as Schema.Schema<GoogleChromeManagementV1RiskAssessment>;
+export const GoogleChromeManagementV1RiskAssessment =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    assessment: Schema.optional(Schema.String),
+    detailsUrl: Schema.optional(Schema.String),
+    version: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChromeManagementV1RiskAssessment" });
 
 export interface GoogleChromeManagementV1RiskAssessmentEntry {
   /** Output only. The risk assessment provider from which this entry comes from. */
@@ -62,16 +58,12 @@ export interface GoogleChromeManagementV1RiskAssessmentEntry {
     | (string & {});
 }
 
-export const GoogleChromeManagementV1RiskAssessmentEntry: Schema.Schema<GoogleChromeManagementV1RiskAssessmentEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      provider: Schema.optional(Schema.String),
-      riskAssessment: Schema.optional(GoogleChromeManagementV1RiskAssessment),
-      riskLevel: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1RiskAssessmentEntry",
-  }) as any as Schema.Schema<GoogleChromeManagementV1RiskAssessmentEntry>;
+export const GoogleChromeManagementV1RiskAssessmentEntry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provider: Schema.optional(Schema.String),
+    riskAssessment: Schema.optional(GoogleChromeManagementV1RiskAssessment),
+    riskLevel: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChromeManagementV1RiskAssessmentEntry" });
 
 export interface GoogleChromeManagementV1DeviceHardwareCountReport {
   /** Count of devices with a unique hardware specification. */
@@ -80,15 +72,13 @@ export interface GoogleChromeManagementV1DeviceHardwareCountReport {
   bucket?: string;
 }
 
-export const GoogleChromeManagementV1DeviceHardwareCountReport: Schema.Schema<GoogleChromeManagementV1DeviceHardwareCountReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      count: Schema.optional(Schema.String),
-      bucket: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromeManagementV1DeviceHardwareCountReport =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    count: Schema.optional(Schema.String),
+    bucket: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleChromeManagementV1DeviceHardwareCountReport",
-  }) as any as Schema.Schema<GoogleChromeManagementV1DeviceHardwareCountReport>;
+  });
 
 export interface GoogleChromeManagementV1CountChromeHardwareFleetDevicesResponse {
   /** The DeviceHardwareCountReport for device cpu type (for example Intel(R) Core(TM) i7-10610U CPU @ 1.80GHz). */
@@ -101,26 +91,24 @@ export interface GoogleChromeManagementV1CountChromeHardwareFleetDevicesResponse
   storageReports?: Array<GoogleChromeManagementV1DeviceHardwareCountReport>;
 }
 
-export const GoogleChromeManagementV1CountChromeHardwareFleetDevicesResponse: Schema.Schema<GoogleChromeManagementV1CountChromeHardwareFleetDevicesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cpuReports: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1DeviceHardwareCountReport),
-      ),
-      memoryReports: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1DeviceHardwareCountReport),
-      ),
-      modelReports: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1DeviceHardwareCountReport),
-      ),
-      storageReports: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1DeviceHardwareCountReport),
-      ),
-    }),
-  ).annotate({
+export const GoogleChromeManagementV1CountChromeHardwareFleetDevicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cpuReports: Schema.optional(
+      Schema.Array(GoogleChromeManagementV1DeviceHardwareCountReport),
+    ),
+    memoryReports: Schema.optional(
+      Schema.Array(GoogleChromeManagementV1DeviceHardwareCountReport),
+    ),
+    modelReports: Schema.optional(
+      Schema.Array(GoogleChromeManagementV1DeviceHardwareCountReport),
+    ),
+    storageReports: Schema.optional(
+      Schema.Array(GoogleChromeManagementV1DeviceHardwareCountReport),
+    ),
+  }).annotate({
     identifier:
       "GoogleChromeManagementV1CountChromeHardwareFleetDevicesResponse",
-  }) as any as Schema.Schema<GoogleChromeManagementV1CountChromeHardwareFleetDevicesResponse>;
+  });
 
 export interface GoogleChromeManagementV1NetworkDevice {
   /** Output only. Network device type. */
@@ -142,19 +130,15 @@ export interface GoogleChromeManagementV1NetworkDevice {
   macAddress?: string;
 }
 
-export const GoogleChromeManagementV1NetworkDevice: Schema.Schema<GoogleChromeManagementV1NetworkDevice> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      imei: Schema.optional(Schema.String),
-      meid: Schema.optional(Schema.String),
-      iccid: Schema.optional(Schema.String),
-      mdn: Schema.optional(Schema.String),
-      macAddress: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1NetworkDevice",
-  }) as any as Schema.Schema<GoogleChromeManagementV1NetworkDevice>;
+export const GoogleChromeManagementV1NetworkDevice =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    imei: Schema.optional(Schema.String),
+    meid: Schema.optional(Schema.String),
+    iccid: Schema.optional(Schema.String),
+    mdn: Schema.optional(Schema.String),
+    macAddress: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChromeManagementV1NetworkDevice" });
 
 export interface GoogleChromeManagementV1TelemetryAppInstallEvent {
   /** App installation reason. */
@@ -208,18 +192,16 @@ export interface GoogleChromeManagementV1TelemetryAppInstallEvent {
     | (string & {});
 }
 
-export const GoogleChromeManagementV1TelemetryAppInstallEvent: Schema.Schema<GoogleChromeManagementV1TelemetryAppInstallEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      appInstallReason: Schema.optional(Schema.String),
-      appType: Schema.optional(Schema.String),
-      appInstallSource: Schema.optional(Schema.String),
-      appId: Schema.optional(Schema.String),
-      appInstallTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromeManagementV1TelemetryAppInstallEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    appInstallReason: Schema.optional(Schema.String),
+    appType: Schema.optional(Schema.String),
+    appInstallSource: Schema.optional(Schema.String),
+    appId: Schema.optional(Schema.String),
+    appInstallTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleChromeManagementV1TelemetryAppInstallEvent",
-  }) as any as Schema.Schema<GoogleChromeManagementV1TelemetryAppInstallEvent>;
+  });
 
 export interface GoogleChromeManagementV1GraphicsAdapterInfo {
   /** Output only. Represents the graphics card device id. */
@@ -230,16 +212,12 @@ export interface GoogleChromeManagementV1GraphicsAdapterInfo {
   driverVersion?: string;
 }
 
-export const GoogleChromeManagementV1GraphicsAdapterInfo: Schema.Schema<GoogleChromeManagementV1GraphicsAdapterInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deviceId: Schema.optional(Schema.String),
-      adapter: Schema.optional(Schema.String),
-      driverVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1GraphicsAdapterInfo",
-  }) as any as Schema.Schema<GoogleChromeManagementV1GraphicsAdapterInfo>;
+export const GoogleChromeManagementV1GraphicsAdapterInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deviceId: Schema.optional(Schema.String),
+    adapter: Schema.optional(Schema.String),
+    driverVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChromeManagementV1GraphicsAdapterInfo" });
 
 export interface GoogleChromeManagementV1ChromeAppRequest {
   /** Output only. Unique store identifier for the app. Example: "gmbmikajjgmnabiglmofipeabaddhgne" for the Save to Google Drive Chrome extension. */
@@ -258,20 +236,16 @@ export interface GoogleChromeManagementV1ChromeAppRequest {
   iconUri?: string;
 }
 
-export const GoogleChromeManagementV1ChromeAppRequest: Schema.Schema<GoogleChromeManagementV1ChromeAppRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      appId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      detailUri: Schema.optional(Schema.String),
-      latestRequestTime: Schema.optional(Schema.String),
-      requestCount: Schema.optional(Schema.String),
-      appDetails: Schema.optional(Schema.String),
-      iconUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1ChromeAppRequest",
-  }) as any as Schema.Schema<GoogleChromeManagementV1ChromeAppRequest>;
+export const GoogleChromeManagementV1ChromeAppRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    appId: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    detailUri: Schema.optional(Schema.String),
+    latestRequestTime: Schema.optional(Schema.String),
+    requestCount: Schema.optional(Schema.String),
+    appDetails: Schema.optional(Schema.String),
+    iconUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChromeManagementV1ChromeAppRequest" });
 
 export interface GoogleChromeManagementV1CountChromeAppRequestsResponse {
   /** Total number of matching app requests. */
@@ -282,18 +256,16 @@ export interface GoogleChromeManagementV1CountChromeAppRequestsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleChromeManagementV1CountChromeAppRequestsResponse: Schema.Schema<GoogleChromeManagementV1CountChromeAppRequestsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      totalSize: Schema.optional(Schema.Number),
-      requestedApps: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1ChromeAppRequest),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromeManagementV1CountChromeAppRequestsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    totalSize: Schema.optional(Schema.Number),
+    requestedApps: Schema.optional(
+      Schema.Array(GoogleChromeManagementV1ChromeAppRequest),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleChromeManagementV1CountChromeAppRequestsResponse",
-  }) as any as Schema.Schema<GoogleChromeManagementV1CountChromeAppRequestsResponse>;
+  });
 
 export interface GoogleChromeManagementV1AppUsageData {
   /** Application instance id. This will be unique per window/instance. */
@@ -323,31 +295,23 @@ export interface GoogleChromeManagementV1AppUsageData {
     | (string & {});
 }
 
-export const GoogleChromeManagementV1AppUsageData: Schema.Schema<GoogleChromeManagementV1AppUsageData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      appInstanceId: Schema.optional(Schema.String),
-      runningDuration: Schema.optional(Schema.String),
-      appId: Schema.optional(Schema.String),
-      appType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1AppUsageData",
-  }) as any as Schema.Schema<GoogleChromeManagementV1AppUsageData>;
+export const GoogleChromeManagementV1AppUsageData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    appInstanceId: Schema.optional(Schema.String),
+    runningDuration: Schema.optional(Schema.String),
+    appId: Schema.optional(Schema.String),
+    appType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChromeManagementV1AppUsageData" });
 
 export interface GoogleChromeManagementV1ChromeAppSiteAccess {
   /** Output only. This can contain very specific hosts, or patterns like "*.com" for instance. */
   hostMatch?: string;
 }
 
-export const GoogleChromeManagementV1ChromeAppSiteAccess: Schema.Schema<GoogleChromeManagementV1ChromeAppSiteAccess> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hostMatch: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1ChromeAppSiteAccess",
-  }) as any as Schema.Schema<GoogleChromeManagementV1ChromeAppSiteAccess>;
+export const GoogleChromeManagementV1ChromeAppSiteAccess =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    hostMatch: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChromeManagementV1ChromeAppSiteAccess" });
 
 export interface GoogleChromeManagementV1TelemetryEventNotificationFilter {
   /** Only sends the notifications for events of these types. Must not be empty. */
@@ -371,14 +335,12 @@ export interface GoogleChromeManagementV1TelemetryEventNotificationFilter {
   >;
 }
 
-export const GoogleChromeManagementV1TelemetryEventNotificationFilter: Schema.Schema<GoogleChromeManagementV1TelemetryEventNotificationFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      eventTypes: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleChromeManagementV1TelemetryEventNotificationFilter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    eventTypes: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleChromeManagementV1TelemetryEventNotificationFilter",
-  }) as any as Schema.Schema<GoogleChromeManagementV1TelemetryEventNotificationFilter>;
+  });
 
 export interface GoogleChromeManagementV1TelemetryNotificationFilter {
   /** If set, only sends notifications for telemetry data coming from devices owned by this user. */
@@ -393,20 +355,18 @@ export interface GoogleChromeManagementV1TelemetryNotificationFilter {
   deviceId?: string;
 }
 
-export const GoogleChromeManagementV1TelemetryNotificationFilter: Schema.Schema<GoogleChromeManagementV1TelemetryNotificationFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userEmail: Schema.optional(Schema.String),
-      telemetryEventNotificationFilter: Schema.optional(
-        GoogleChromeManagementV1TelemetryEventNotificationFilter,
-      ),
-      deviceOrgUnitId: Schema.optional(Schema.String),
-      userOrgUnitId: Schema.optional(Schema.String),
-      deviceId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromeManagementV1TelemetryNotificationFilter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userEmail: Schema.optional(Schema.String),
+    telemetryEventNotificationFilter: Schema.optional(
+      GoogleChromeManagementV1TelemetryEventNotificationFilter,
+    ),
+    deviceOrgUnitId: Schema.optional(Schema.String),
+    userOrgUnitId: Schema.optional(Schema.String),
+    deviceId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleChromeManagementV1TelemetryNotificationFilter",
-  }) as any as Schema.Schema<GoogleChromeManagementV1TelemetryNotificationFilter>;
+  });
 
 export interface GoogleChromeManagementV1TelemetryNotificationConfig {
   /** Output only. Resource name of the notification configuration. */
@@ -419,19 +379,17 @@ export interface GoogleChromeManagementV1TelemetryNotificationConfig {
   googleCloudPubsubTopic?: string;
 }
 
-export const GoogleChromeManagementV1TelemetryNotificationConfig: Schema.Schema<GoogleChromeManagementV1TelemetryNotificationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      customer: Schema.optional(Schema.String),
-      filter: Schema.optional(
-        GoogleChromeManagementV1TelemetryNotificationFilter,
-      ),
-      googleCloudPubsubTopic: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromeManagementV1TelemetryNotificationConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    customer: Schema.optional(Schema.String),
+    filter: Schema.optional(
+      GoogleChromeManagementV1TelemetryNotificationFilter,
+    ),
+    googleCloudPubsubTopic: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleChromeManagementV1TelemetryNotificationConfig",
-  }) as any as Schema.Schema<GoogleChromeManagementV1TelemetryNotificationConfig>;
+  });
 
 export interface GoogleChromeManagementV1ListTelemetryNotificationConfigsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -440,25 +398,23 @@ export interface GoogleChromeManagementV1ListTelemetryNotificationConfigsRespons
   telemetryNotificationConfigs?: Array<GoogleChromeManagementV1TelemetryNotificationConfig>;
 }
 
-export const GoogleChromeManagementV1ListTelemetryNotificationConfigsResponse: Schema.Schema<GoogleChromeManagementV1ListTelemetryNotificationConfigsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      telemetryNotificationConfigs: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1TelemetryNotificationConfig),
-      ),
-    }),
-  ).annotate({
+export const GoogleChromeManagementV1ListTelemetryNotificationConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    telemetryNotificationConfigs: Schema.optional(
+      Schema.Array(GoogleChromeManagementV1TelemetryNotificationConfig),
+    ),
+  }).annotate({
     identifier:
       "GoogleChromeManagementV1ListTelemetryNotificationConfigsResponse",
-  }) as any as Schema.Schema<GoogleChromeManagementV1ListTelemetryNotificationConfigsResponse>;
+  });
 
 export interface GoogleChromeManagementVersionsV1SetFailureResponse {}
 
-export const GoogleChromeManagementVersionsV1SetFailureResponse: Schema.Schema<GoogleChromeManagementVersionsV1SetFailureResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleChromeManagementVersionsV1SetFailureResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleChromeManagementVersionsV1SetFailureResponse",
-  }) as any as Schema.Schema<GoogleChromeManagementVersionsV1SetFailureResponse>;
+  });
 
 export interface GoogleChromeManagementV1UserRequestingExtensionDetails {
   /** The e-mail address of a user that has requested the extension. */
@@ -467,15 +423,13 @@ export interface GoogleChromeManagementV1UserRequestingExtensionDetails {
   justification?: string;
 }
 
-export const GoogleChromeManagementV1UserRequestingExtensionDetails: Schema.Schema<GoogleChromeManagementV1UserRequestingExtensionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      email: Schema.optional(Schema.String),
-      justification: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromeManagementV1UserRequestingExtensionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    email: Schema.optional(Schema.String),
+    justification: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleChromeManagementV1UserRequestingExtensionDetails",
-  }) as any as Schema.Schema<GoogleChromeManagementV1UserRequestingExtensionDetails>;
+  });
 
 export interface GoogleChromeManagementV1FetchUsersRequestingExtensionResponse {
   /** Total number of users in response. */
@@ -486,34 +440,28 @@ export interface GoogleChromeManagementV1FetchUsersRequestingExtensionResponse {
   nextPageToken?: string;
 }
 
-export const GoogleChromeManagementV1FetchUsersRequestingExtensionResponse: Schema.Schema<GoogleChromeManagementV1FetchUsersRequestingExtensionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      totalSize: Schema.optional(Schema.Number),
-      userDetails: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1UserRequestingExtensionDetails),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromeManagementV1FetchUsersRequestingExtensionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    totalSize: Schema.optional(Schema.Number),
+    userDetails: Schema.optional(
+      Schema.Array(GoogleChromeManagementV1UserRequestingExtensionDetails),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleChromeManagementV1FetchUsersRequestingExtensionResponse",
-  }) as any as Schema.Schema<GoogleChromeManagementV1FetchUsersRequestingExtensionResponse>;
+  });
 
 export interface GoogleChromeManagementV1NetworkInfo {
   /** Output only. List of network devices. */
   networkDevices?: Array<GoogleChromeManagementV1NetworkDevice>;
 }
 
-export const GoogleChromeManagementV1NetworkInfo: Schema.Schema<GoogleChromeManagementV1NetworkInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      networkDevices: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1NetworkDevice),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1NetworkInfo",
-  }) as any as Schema.Schema<GoogleChromeManagementV1NetworkInfo>;
+export const GoogleChromeManagementV1NetworkInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    networkDevices: Schema.optional(
+      Schema.Array(GoogleChromeManagementV1NetworkDevice),
+    ),
+  }).annotate({ identifier: "GoogleChromeManagementV1NetworkInfo" });
 
 export interface GoogleChromeManagementV1DeviceAueCountReport {
   /** Enum value of month corresponding to the auto update expiration date in UTC time zone. If the device is already expired, this field is empty. */
@@ -542,35 +490,29 @@ export interface GoogleChromeManagementV1DeviceAueCountReport {
   model?: string;
 }
 
-export const GoogleChromeManagementV1DeviceAueCountReport: Schema.Schema<GoogleChromeManagementV1DeviceAueCountReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      aueMonth: Schema.optional(Schema.String),
-      expired: Schema.optional(Schema.Boolean),
-      count: Schema.optional(Schema.String),
-      aueYear: Schema.optional(Schema.String),
-      model: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1DeviceAueCountReport",
-  }) as any as Schema.Schema<GoogleChromeManagementV1DeviceAueCountReport>;
+export const GoogleChromeManagementV1DeviceAueCountReport =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    aueMonth: Schema.optional(Schema.String),
+    expired: Schema.optional(Schema.Boolean),
+    count: Schema.optional(Schema.String),
+    aueYear: Schema.optional(Schema.String),
+    model: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChromeManagementV1DeviceAueCountReport" });
 
 export interface GoogleChromeManagementV1CountChromeDevicesReachingAutoExpirationDateResponse {
   /** The list of reports sorted by auto update expiration date in ascending order. */
   deviceAueCountReports?: Array<GoogleChromeManagementV1DeviceAueCountReport>;
 }
 
-export const GoogleChromeManagementV1CountChromeDevicesReachingAutoExpirationDateResponse: Schema.Schema<GoogleChromeManagementV1CountChromeDevicesReachingAutoExpirationDateResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deviceAueCountReports: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1DeviceAueCountReport),
-      ),
-    }),
-  ).annotate({
+export const GoogleChromeManagementV1CountChromeDevicesReachingAutoExpirationDateResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deviceAueCountReports: Schema.optional(
+      Schema.Array(GoogleChromeManagementV1DeviceAueCountReport),
+    ),
+  }).annotate({
     identifier:
       "GoogleChromeManagementV1CountChromeDevicesReachingAutoExpirationDateResponse",
-  }) as any as Schema.Schema<GoogleChromeManagementV1CountChromeDevicesReachingAutoExpirationDateResponse>;
+  });
 
 export interface GoogleChromeManagementV1ChromeAppPermission {
   /** Output only. The type of the permission. */
@@ -581,16 +523,12 @@ export interface GoogleChromeManagementV1ChromeAppPermission {
   documentationUri?: string;
 }
 
-export const GoogleChromeManagementV1ChromeAppPermission: Schema.Schema<GoogleChromeManagementV1ChromeAppPermission> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      accessUserData: Schema.optional(Schema.Boolean),
-      documentationUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1ChromeAppPermission",
-  }) as any as Schema.Schema<GoogleChromeManagementV1ChromeAppPermission>;
+export const GoogleChromeManagementV1ChromeAppPermission =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    accessUserData: Schema.optional(Schema.Boolean),
+    documentationUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChromeManagementV1ChromeAppPermission" });
 
 export interface GoogleChromeManagementV1ChromeAppInfo {
   /** Output only. The minimum number of users using this app. */
@@ -619,29 +557,25 @@ export interface GoogleChromeManagementV1ChromeAppInfo {
   kioskEnabled?: boolean;
 }
 
-export const GoogleChromeManagementV1ChromeAppInfo: Schema.Schema<GoogleChromeManagementV1ChromeAppInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      minUserCount: Schema.optional(Schema.Number),
-      permissions: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1ChromeAppPermission),
-      ),
-      isTheme: Schema.optional(Schema.Boolean),
-      googleOwned: Schema.optional(Schema.Boolean),
-      isCwsHosted: Schema.optional(Schema.Boolean),
-      isExtensionPolicySupported: Schema.optional(Schema.Boolean),
-      siteAccess: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1ChromeAppSiteAccess),
-      ),
-      type: Schema.optional(Schema.String),
-      supportEnabled: Schema.optional(Schema.Boolean),
-      manifestVersion: Schema.optional(Schema.String),
-      isKioskOnly: Schema.optional(Schema.Boolean),
-      kioskEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1ChromeAppInfo",
-  }) as any as Schema.Schema<GoogleChromeManagementV1ChromeAppInfo>;
+export const GoogleChromeManagementV1ChromeAppInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    minUserCount: Schema.optional(Schema.Number),
+    permissions: Schema.optional(
+      Schema.Array(GoogleChromeManagementV1ChromeAppPermission),
+    ),
+    isTheme: Schema.optional(Schema.Boolean),
+    googleOwned: Schema.optional(Schema.Boolean),
+    isCwsHosted: Schema.optional(Schema.Boolean),
+    isExtensionPolicySupported: Schema.optional(Schema.Boolean),
+    siteAccess: Schema.optional(
+      Schema.Array(GoogleChromeManagementV1ChromeAppSiteAccess),
+    ),
+    type: Schema.optional(Schema.String),
+    supportEnabled: Schema.optional(Schema.Boolean),
+    manifestVersion: Schema.optional(Schema.String),
+    isKioskOnly: Schema.optional(Schema.Boolean),
+    kioskEnabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleChromeManagementV1ChromeAppInfo" });
 
 export interface GoogleChromeManagementV1TelemetryUserInfo {
   /** Output only. User's email. */
@@ -650,15 +584,11 @@ export interface GoogleChromeManagementV1TelemetryUserInfo {
   orgUnitId?: string;
 }
 
-export const GoogleChromeManagementV1TelemetryUserInfo: Schema.Schema<GoogleChromeManagementV1TelemetryUserInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      email: Schema.optional(Schema.String),
-      orgUnitId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1TelemetryUserInfo",
-  }) as any as Schema.Schema<GoogleChromeManagementV1TelemetryUserInfo>;
+export const GoogleChromeManagementV1TelemetryUserInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    email: Schema.optional(Schema.String),
+    orgUnitId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChromeManagementV1TelemetryUserInfo" });
 
 export interface GoogleChromeManagementV1BrowserVersion {
   /** Output only. Count grouped by device_system and major version */
@@ -688,18 +618,14 @@ export interface GoogleChromeManagementV1BrowserVersion {
   version?: string;
 }
 
-export const GoogleChromeManagementV1BrowserVersion: Schema.Schema<GoogleChromeManagementV1BrowserVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      count: Schema.optional(Schema.String),
-      deviceOsVersion: Schema.optional(Schema.String),
-      channel: Schema.optional(Schema.String),
-      system: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1BrowserVersion",
-  }) as any as Schema.Schema<GoogleChromeManagementV1BrowserVersion>;
+export const GoogleChromeManagementV1BrowserVersion =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    count: Schema.optional(Schema.String),
+    deviceOsVersion: Schema.optional(Schema.String),
+    channel: Schema.optional(Schema.String),
+    system: Schema.optional(Schema.String),
+    version: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChromeManagementV1BrowserVersion" });
 
 export interface GoogleChromeManagementV1CountChromeDevicesThatNeedAttentionResponse {
   /** Number of devices that are pending an OS update. */
@@ -714,19 +640,17 @@ export interface GoogleChromeManagementV1CountChromeDevicesThatNeedAttentionResp
   noRecentPolicySyncCount?: string;
 }
 
-export const GoogleChromeManagementV1CountChromeDevicesThatNeedAttentionResponse: Schema.Schema<GoogleChromeManagementV1CountChromeDevicesThatNeedAttentionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pendingUpdate: Schema.optional(Schema.String),
-      noRecentUserActivityCount: Schema.optional(Schema.String),
-      osVersionNotCompliantCount: Schema.optional(Schema.String),
-      unsupportedPolicyCount: Schema.optional(Schema.String),
-      noRecentPolicySyncCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromeManagementV1CountChromeDevicesThatNeedAttentionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pendingUpdate: Schema.optional(Schema.String),
+    noRecentUserActivityCount: Schema.optional(Schema.String),
+    osVersionNotCompliantCount: Schema.optional(Schema.String),
+    unsupportedPolicyCount: Schema.optional(Schema.String),
+    noRecentPolicySyncCount: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleChromeManagementV1CountChromeDevicesThatNeedAttentionResponse",
-  }) as any as Schema.Schema<GoogleChromeManagementV1CountChromeDevicesThatNeedAttentionResponse>;
+  });
 
 export interface GoogleChromeManagementVersionsV1SignDataRequest {
   /** Required. The data that the client was asked to sign. */
@@ -739,15 +663,13 @@ export interface GoogleChromeManagementVersionsV1SignDataRequest {
     | (string & {});
 }
 
-export const GoogleChromeManagementVersionsV1SignDataRequest: Schema.Schema<GoogleChromeManagementVersionsV1SignDataRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      signData: Schema.optional(Schema.String),
-      signatureAlgorithm: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromeManagementVersionsV1SignDataRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    signData: Schema.optional(Schema.String),
+    signatureAlgorithm: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleChromeManagementVersionsV1SignDataRequest",
-  }) as any as Schema.Schema<GoogleChromeManagementVersionsV1SignDataRequest>;
+  });
 
 export interface GoogleChromeManagementV1TelemetryExternalDisplayData {
   /** The vertical resolution. */
@@ -764,19 +686,17 @@ export interface GoogleChromeManagementV1TelemetryExternalDisplayData {
   serialNumber?: number;
 }
 
-export const GoogleChromeManagementV1TelemetryExternalDisplayData: Schema.Schema<GoogleChromeManagementV1TelemetryExternalDisplayData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resolutionVertical: Schema.optional(Schema.Number),
-      refreshRate: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      resolutionHorizontal: Schema.optional(Schema.Number),
-      edidVersion: Schema.optional(Schema.String),
-      serialNumber: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleChromeManagementV1TelemetryExternalDisplayData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resolutionVertical: Schema.optional(Schema.Number),
+    refreshRate: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    resolutionHorizontal: Schema.optional(Schema.Number),
+    edidVersion: Schema.optional(Schema.String),
+    serialNumber: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleChromeManagementV1TelemetryExternalDisplayData",
-  }) as any as Schema.Schema<GoogleChromeManagementV1TelemetryExternalDisplayData>;
+  });
 
 export interface GoogleChromeManagementV1HttpsLatencyRoutineData {
   /** Output only. HTTPS latency routine problem if a problem occurred. */
@@ -791,15 +711,13 @@ export interface GoogleChromeManagementV1HttpsLatencyRoutineData {
   latency?: string;
 }
 
-export const GoogleChromeManagementV1HttpsLatencyRoutineData: Schema.Schema<GoogleChromeManagementV1HttpsLatencyRoutineData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      problem: Schema.optional(Schema.String),
-      latency: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromeManagementV1HttpsLatencyRoutineData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    problem: Schema.optional(Schema.String),
+    latency: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleChromeManagementV1HttpsLatencyRoutineData",
-  }) as any as Schema.Schema<GoogleChromeManagementV1HttpsLatencyRoutineData>;
+  });
 
 export interface GoogleChromeManagementVersionsV1ReportingDataConflictingPolicyData {
   /** Output only. Source of the policy. */
@@ -813,15 +731,13 @@ export interface GoogleChromeManagementVersionsV1ReportingDataConflictingPolicyD
     | (string & {});
 }
 
-export const GoogleChromeManagementVersionsV1ReportingDataConflictingPolicyData: Schema.Schema<GoogleChromeManagementVersionsV1ReportingDataConflictingPolicyData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      source: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromeManagementVersionsV1ReportingDataConflictingPolicyData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    source: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleChromeManagementVersionsV1ReportingDataConflictingPolicyData",
-  }) as any as Schema.Schema<GoogleChromeManagementVersionsV1ReportingDataConflictingPolicyData>;
+  });
 
 export interface GoogleChromeManagementVersionsV1ReportingDataPolicyData {
   /** Output only. Conflicting policy information. */
@@ -843,22 +759,20 @@ export interface GoogleChromeManagementVersionsV1ReportingDataPolicyData {
   value?: string;
 }
 
-export const GoogleChromeManagementVersionsV1ReportingDataPolicyData: Schema.Schema<GoogleChromeManagementVersionsV1ReportingDataPolicyData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conflicts: Schema.optional(
-        Schema.Array(
-          GoogleChromeManagementVersionsV1ReportingDataConflictingPolicyData,
-        ),
+export const GoogleChromeManagementVersionsV1ReportingDataPolicyData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conflicts: Schema.optional(
+      Schema.Array(
+        GoogleChromeManagementVersionsV1ReportingDataConflictingPolicyData,
       ),
-      error: Schema.optional(Schema.String),
-      source: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+    ),
+    error: Schema.optional(Schema.String),
+    source: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleChromeManagementVersionsV1ReportingDataPolicyData",
-  }) as any as Schema.Schema<GoogleChromeManagementVersionsV1ReportingDataPolicyData>;
+  });
 
 export interface GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent {
   /** Unique identifier of the network. */
@@ -874,44 +788,38 @@ export interface GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEv
     | (string & {});
 }
 
-export const GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent: Schema.Schema<GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      guid: Schema.optional(Schema.String),
-      connectionState: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    guid: Schema.optional(Schema.String),
+    connectionState: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent",
-  }) as any as Schema.Schema<GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent>;
+  });
 
 export interface GoogleChromeManagementVersionsV1UploadCertificateRequest {
   /** Required. The issued certificate in PEM format. */
   certificatePem?: string;
 }
 
-export const GoogleChromeManagementVersionsV1UploadCertificateRequest: Schema.Schema<GoogleChromeManagementVersionsV1UploadCertificateRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      certificatePem: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromeManagementVersionsV1UploadCertificateRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    certificatePem: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleChromeManagementVersionsV1UploadCertificateRequest",
-  }) as any as Schema.Schema<GoogleChromeManagementVersionsV1UploadCertificateRequest>;
+  });
 
 export interface GoogleChromeManagementVersionsV1GenericCaConnection {
   /** Output only. A string that references the administrator-provided configuration for the certification authority service. */
   caConnectionAdapterConfigReference?: string;
 }
 
-export const GoogleChromeManagementVersionsV1GenericCaConnection: Schema.Schema<GoogleChromeManagementVersionsV1GenericCaConnection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      caConnectionAdapterConfigReference: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromeManagementVersionsV1GenericCaConnection =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    caConnectionAdapterConfigReference: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleChromeManagementVersionsV1GenericCaConnection",
-  }) as any as Schema.Schema<GoogleChromeManagementVersionsV1GenericCaConnection>;
+  });
 
 export interface GoogleChromeManagementV1NetworkBandwidthReport {
   /** Output only. Timestamp of when the report was collected. */
@@ -920,15 +828,11 @@ export interface GoogleChromeManagementV1NetworkBandwidthReport {
   downloadSpeedKbps?: string;
 }
 
-export const GoogleChromeManagementV1NetworkBandwidthReport: Schema.Schema<GoogleChromeManagementV1NetworkBandwidthReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reportTime: Schema.optional(Schema.String),
-      downloadSpeedKbps: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1NetworkBandwidthReport",
-  }) as any as Schema.Schema<GoogleChromeManagementV1NetworkBandwidthReport>;
+export const GoogleChromeManagementV1NetworkBandwidthReport =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reportTime: Schema.optional(Schema.String),
+    downloadSpeedKbps: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChromeManagementV1NetworkBandwidthReport" });
 
 export interface GoogleChromeManagementV1RuntimeCountersReport {
   /** Number of times that the device has entered into the sleep state. Currently obtained via the PSR, count from S0->S3. */
@@ -943,32 +847,26 @@ export interface GoogleChromeManagementV1RuntimeCountersReport {
   reportTime?: string;
 }
 
-export const GoogleChromeManagementV1RuntimeCountersReport: Schema.Schema<GoogleChromeManagementV1RuntimeCountersReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enterSleepCount: Schema.optional(Schema.String),
-      enterHibernationCount: Schema.optional(Schema.String),
-      enterPoweroffCount: Schema.optional(Schema.String),
-      uptimeRuntimeDuration: Schema.optional(Schema.String),
-      reportTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1RuntimeCountersReport",
-  }) as any as Schema.Schema<GoogleChromeManagementV1RuntimeCountersReport>;
+export const GoogleChromeManagementV1RuntimeCountersReport =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enterSleepCount: Schema.optional(Schema.String),
+    enterHibernationCount: Schema.optional(Schema.String),
+    enterPoweroffCount: Schema.optional(Schema.String),
+    uptimeRuntimeDuration: Schema.optional(Schema.String),
+    reportTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChromeManagementV1RuntimeCountersReport" });
 
 export interface GoogleChromeManagementVersionsV1SetFailureRequest {
   /** Required. A message describing the failure details. It is displayed on the ChromeOS client device. */
   errorMessage?: string;
 }
 
-export const GoogleChromeManagementVersionsV1SetFailureRequest: Schema.Schema<GoogleChromeManagementVersionsV1SetFailureRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errorMessage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromeManagementVersionsV1SetFailureRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    errorMessage: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleChromeManagementVersionsV1SetFailureRequest",
-  }) as any as Schema.Schema<GoogleChromeManagementVersionsV1SetFailureRequest>;
+  });
 
 export interface GoogleRpcStatus {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
@@ -979,18 +877,13 @@ export interface GoogleRpcStatus {
   code?: number;
 }
 
-export const GoogleRpcStatus: Schema.Schema<GoogleRpcStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      message: Schema.optional(Schema.String),
-      code: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleRpcStatus",
-  }) as any as Schema.Schema<GoogleRpcStatus>;
+export const GoogleRpcStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  message: Schema.optional(Schema.String),
+  code: Schema.optional(Schema.Number),
+}).annotate({ identifier: "GoogleRpcStatus" });
 
 export interface GoogleLongrunningOperation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
@@ -1005,18 +898,14 @@ export interface GoogleLongrunningOperation {
   error?: GoogleRpcStatus;
 }
 
-export const GoogleLongrunningOperation: Schema.Schema<GoogleLongrunningOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      error: Schema.optional(GoogleRpcStatus),
-    }),
-  ).annotate({
-    identifier: "GoogleLongrunningOperation",
-  }) as any as Schema.Schema<GoogleLongrunningOperation>;
+export const GoogleLongrunningOperation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    name: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    done: Schema.optional(Schema.Boolean),
+    error: Schema.optional(GoogleRpcStatus),
+  }).annotate({ identifier: "GoogleLongrunningOperation" });
 
 export interface GoogleLongrunningListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -1027,16 +916,12 @@ export interface GoogleLongrunningListOperationsResponse {
   unreachable?: Array<string>;
 }
 
-export const GoogleLongrunningListOperationsResponse: Schema.Schema<GoogleLongrunningListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleLongrunningListOperationsResponse",
-  }) as any as Schema.Schema<GoogleLongrunningListOperationsResponse>;
+export const GoogleLongrunningListOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleLongrunningListOperationsResponse" });
 
 export interface GoogleChromeManagementVersionsV1DeviceInfo {
   /** Output only. Type of the device on which the profile exists. */
@@ -1049,17 +934,13 @@ export interface GoogleChromeManagementVersionsV1DeviceInfo {
   hostname?: string;
 }
 
-export const GoogleChromeManagementVersionsV1DeviceInfo: Schema.Schema<GoogleChromeManagementVersionsV1DeviceInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deviceType: Schema.optional(Schema.String),
-      affiliatedDeviceId: Schema.optional(Schema.String),
-      machine: Schema.optional(Schema.String),
-      hostname: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementVersionsV1DeviceInfo",
-  }) as any as Schema.Schema<GoogleChromeManagementVersionsV1DeviceInfo>;
+export const GoogleChromeManagementVersionsV1DeviceInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deviceType: Schema.optional(Schema.String),
+    affiliatedDeviceId: Schema.optional(Schema.String),
+    machine: Schema.optional(Schema.String),
+    hostname: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChromeManagementVersionsV1DeviceInfo" });
 
 export interface GoogleChromeManagementV1CountDevicesPerReleaseChannelResponse {
   /** Number of devices with an unreported release channel. */
@@ -1080,51 +961,41 @@ export interface GoogleChromeManagementV1CountDevicesPerReleaseChannelResponse {
   canaryChannelCount?: string;
 }
 
-export const GoogleChromeManagementV1CountDevicesPerReleaseChannelResponse: Schema.Schema<GoogleChromeManagementV1CountDevicesPerReleaseChannelResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreportedChannelCount: Schema.optional(Schema.String),
-      betaChannelCount: Schema.optional(Schema.String),
-      stableChannelCount: Schema.optional(Schema.String),
-      ltcChannelCount: Schema.optional(Schema.String),
-      ltsChannelCount: Schema.optional(Schema.String),
-      unsupportedChannelCount: Schema.optional(Schema.String),
-      devChannelCount: Schema.optional(Schema.String),
-      canaryChannelCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromeManagementV1CountDevicesPerReleaseChannelResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unreportedChannelCount: Schema.optional(Schema.String),
+    betaChannelCount: Schema.optional(Schema.String),
+    stableChannelCount: Schema.optional(Schema.String),
+    ltcChannelCount: Schema.optional(Schema.String),
+    ltsChannelCount: Schema.optional(Schema.String),
+    unsupportedChannelCount: Schema.optional(Schema.String),
+    devChannelCount: Schema.optional(Schema.String),
+    canaryChannelCount: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleChromeManagementV1CountDevicesPerReleaseChannelResponse",
-  }) as any as Schema.Schema<GoogleChromeManagementV1CountDevicesPerReleaseChannelResponse>;
+  });
 
 export interface GoogleChromeManagementV1AndroidAppPermission {
   /** Output only. The type of the permission. */
   type?: string;
 }
 
-export const GoogleChromeManagementV1AndroidAppPermission: Schema.Schema<GoogleChromeManagementV1AndroidAppPermission> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1AndroidAppPermission",
-  }) as any as Schema.Schema<GoogleChromeManagementV1AndroidAppPermission>;
+export const GoogleChromeManagementV1AndroidAppPermission =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChromeManagementV1AndroidAppPermission" });
 
 export interface GoogleChromeManagementV1AndroidAppInfo {
   /** Output only. Permissions requested by an Android app. */
   permissions?: Array<GoogleChromeManagementV1AndroidAppPermission>;
 }
 
-export const GoogleChromeManagementV1AndroidAppInfo: Schema.Schema<GoogleChromeManagementV1AndroidAppInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1AndroidAppPermission),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1AndroidAppInfo",
-  }) as any as Schema.Schema<GoogleChromeManagementV1AndroidAppInfo>;
+export const GoogleChromeManagementV1AndroidAppInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(
+      Schema.Array(GoogleChromeManagementV1AndroidAppPermission),
+    ),
+  }).annotate({ identifier: "GoogleChromeManagementV1AndroidAppInfo" });
 
 export interface GoogleChromeManagementV1AppDetails {
   /** Output only. App's display name. */
@@ -1172,32 +1043,28 @@ export interface GoogleChromeManagementV1AppDetails {
   reviewNumber?: string;
 }
 
-export const GoogleChromeManagementV1AppDetails: Schema.Schema<GoogleChromeManagementV1AppDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      revisionId: Schema.optional(Schema.String),
-      firstPublishTime: Schema.optional(Schema.String),
-      latestPublishTime: Schema.optional(Schema.String),
-      chromeAppInfo: Schema.optional(GoogleChromeManagementV1ChromeAppInfo),
-      appId: Schema.optional(Schema.String),
-      privacyPolicyUri: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      detailUri: Schema.optional(Schema.String),
-      homepageUri: Schema.optional(Schema.String),
-      publisher: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      serviceError: Schema.optional(GoogleRpcStatus),
-      iconUri: Schema.optional(Schema.String),
-      reviewRating: Schema.optional(Schema.Number),
-      type: Schema.optional(Schema.String),
-      androidAppInfo: Schema.optional(GoogleChromeManagementV1AndroidAppInfo),
-      isPaidApp: Schema.optional(Schema.Boolean),
-      reviewNumber: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1AppDetails",
-  }) as any as Schema.Schema<GoogleChromeManagementV1AppDetails>;
+export const GoogleChromeManagementV1AppDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    revisionId: Schema.optional(Schema.String),
+    firstPublishTime: Schema.optional(Schema.String),
+    latestPublishTime: Schema.optional(Schema.String),
+    chromeAppInfo: Schema.optional(GoogleChromeManagementV1ChromeAppInfo),
+    appId: Schema.optional(Schema.String),
+    privacyPolicyUri: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    detailUri: Schema.optional(Schema.String),
+    homepageUri: Schema.optional(Schema.String),
+    publisher: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    serviceError: Schema.optional(GoogleRpcStatus),
+    iconUri: Schema.optional(Schema.String),
+    reviewRating: Schema.optional(Schema.Number),
+    type: Schema.optional(Schema.String),
+    androidAppInfo: Schema.optional(GoogleChromeManagementV1AndroidAppInfo),
+    isPaidApp: Schema.optional(Schema.Boolean),
+    reviewNumber: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChromeManagementV1AppDetails" });
 
 export interface GoogleChromeManagementV1TouchScreenDevice {
   /** Output only. Number of touch points supported on the device. */
@@ -1208,16 +1075,12 @@ export interface GoogleChromeManagementV1TouchScreenDevice {
   displayName?: string;
 }
 
-export const GoogleChromeManagementV1TouchScreenDevice: Schema.Schema<GoogleChromeManagementV1TouchScreenDevice> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      touchPointCount: Schema.optional(Schema.Number),
-      stylusCapable: Schema.optional(Schema.Boolean),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1TouchScreenDevice",
-  }) as any as Schema.Schema<GoogleChromeManagementV1TouchScreenDevice>;
+export const GoogleChromeManagementV1TouchScreenDevice =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    touchPointCount: Schema.optional(Schema.Number),
+    stylusCapable: Schema.optional(Schema.Boolean),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChromeManagementV1TouchScreenDevice" });
 
 export interface GoogleChromeManagementV1UsbPeripheralReport {
   /** Output only. Firmware version */
@@ -1238,44 +1101,38 @@ export interface GoogleChromeManagementV1UsbPeripheralReport {
   classId?: number;
 }
 
-export const GoogleChromeManagementV1UsbPeripheralReport: Schema.Schema<GoogleChromeManagementV1UsbPeripheralReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      firmwareVersion: Schema.optional(Schema.String),
-      vendor: Schema.optional(Schema.String),
-      vid: Schema.optional(Schema.Number),
-      categories: Schema.optional(Schema.Array(Schema.String)),
-      pid: Schema.optional(Schema.Number),
-      name: Schema.optional(Schema.String),
-      subclassId: Schema.optional(Schema.Number),
-      classId: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1UsbPeripheralReport",
-  }) as any as Schema.Schema<GoogleChromeManagementV1UsbPeripheralReport>;
+export const GoogleChromeManagementV1UsbPeripheralReport =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    firmwareVersion: Schema.optional(Schema.String),
+    vendor: Schema.optional(Schema.String),
+    vid: Schema.optional(Schema.Number),
+    categories: Schema.optional(Schema.Array(Schema.String)),
+    pid: Schema.optional(Schema.Number),
+    name: Schema.optional(Schema.String),
+    subclassId: Schema.optional(Schema.Number),
+    classId: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleChromeManagementV1UsbPeripheralReport" });
 
 export interface GoogleChromeManagementV1TelemetryUsbPeripheralsEvent {
   /** List of usb devices that were either added or removed. */
   usbPeripheralReport?: Array<GoogleChromeManagementV1UsbPeripheralReport>;
 }
 
-export const GoogleChromeManagementV1TelemetryUsbPeripheralsEvent: Schema.Schema<GoogleChromeManagementV1TelemetryUsbPeripheralsEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      usbPeripheralReport: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1UsbPeripheralReport),
-      ),
-    }),
-  ).annotate({
+export const GoogleChromeManagementV1TelemetryUsbPeripheralsEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    usbPeripheralReport: Schema.optional(
+      Schema.Array(GoogleChromeManagementV1UsbPeripheralReport),
+    ),
+  }).annotate({
     identifier: "GoogleChromeManagementV1TelemetryUsbPeripheralsEvent",
-  }) as any as Schema.Schema<GoogleChromeManagementV1TelemetryUsbPeripheralsEvent>;
+  });
 
 export interface GoogleLongrunningCancelOperationRequest {}
 
-export const GoogleLongrunningCancelOperationRequest: Schema.Schema<GoogleLongrunningCancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleLongrunningCancelOperationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleLongrunningCancelOperationRequest",
-  }) as any as Schema.Schema<GoogleLongrunningCancelOperationRequest>;
+  });
 
 export interface GoogleChromeManagementV1TelemetryDeviceInfo {
   /** Output only. The unique Directory API ID of the device. This value is the same as the Admin Console's Directory API ID in the ChromeOS Devices tab. */
@@ -1284,15 +1141,11 @@ export interface GoogleChromeManagementV1TelemetryDeviceInfo {
   orgUnitId?: string;
 }
 
-export const GoogleChromeManagementV1TelemetryDeviceInfo: Schema.Schema<GoogleChromeManagementV1TelemetryDeviceInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deviceId: Schema.optional(Schema.String),
-      orgUnitId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1TelemetryDeviceInfo",
-  }) as any as Schema.Schema<GoogleChromeManagementV1TelemetryDeviceInfo>;
+export const GoogleChromeManagementV1TelemetryDeviceInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deviceId: Schema.optional(Schema.String),
+    orgUnitId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChromeManagementV1TelemetryDeviceInfo" });
 
 export interface GoogleChromeManagementV1TelemetryAppUninstallEvent {
   /** App id. For PWAs this is the start URL, and for extensions this is the extension id. */
@@ -1326,16 +1179,14 @@ export interface GoogleChromeManagementV1TelemetryAppUninstallEvent {
     | (string & {});
 }
 
-export const GoogleChromeManagementV1TelemetryAppUninstallEvent: Schema.Schema<GoogleChromeManagementV1TelemetryAppUninstallEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      appId: Schema.optional(Schema.String),
-      appUninstallSource: Schema.optional(Schema.String),
-      appType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromeManagementV1TelemetryAppUninstallEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    appId: Schema.optional(Schema.String),
+    appUninstallSource: Schema.optional(Schema.String),
+    appType: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleChromeManagementV1TelemetryAppUninstallEvent",
-  }) as any as Schema.Schema<GoogleChromeManagementV1TelemetryAppUninstallEvent>;
+  });
 
 export interface GoogleChromeManagementV1TelemetryAppLaunchEvent {
   /** App launch source. */
@@ -1408,16 +1259,14 @@ export interface GoogleChromeManagementV1TelemetryAppLaunchEvent {
   appId?: string;
 }
 
-export const GoogleChromeManagementV1TelemetryAppLaunchEvent: Schema.Schema<GoogleChromeManagementV1TelemetryAppLaunchEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      appLaunchSource: Schema.optional(Schema.String),
-      appType: Schema.optional(Schema.String),
-      appId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromeManagementV1TelemetryAppLaunchEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    appLaunchSource: Schema.optional(Schema.String),
+    appType: Schema.optional(Schema.String),
+    appId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleChromeManagementV1TelemetryAppLaunchEvent",
-  }) as any as Schema.Schema<GoogleChromeManagementV1TelemetryAppLaunchEvent>;
+  });
 
 export interface GoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent {
   /** Current HTTPS latency state. */
@@ -1430,24 +1279,22 @@ export interface GoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent {
   httpsLatencyRoutineData?: GoogleChromeManagementV1HttpsLatencyRoutineData;
 }
 
-export const GoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent: Schema.Schema<GoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      httpsLatencyState: Schema.optional(Schema.String),
-      httpsLatencyRoutineData: Schema.optional(
-        GoogleChromeManagementV1HttpsLatencyRoutineData,
-      ),
-    }),
-  ).annotate({
+export const GoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    httpsLatencyState: Schema.optional(Schema.String),
+    httpsLatencyRoutineData: Schema.optional(
+      GoogleChromeManagementV1HttpsLatencyRoutineData,
+    ),
+  }).annotate({
     identifier: "GoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent",
-  }) as any as Schema.Schema<GoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent>;
+  });
 
 export interface GoogleChromeManagementV1TelemetryAudioSevereUnderrunEvent {}
 
-export const GoogleChromeManagementV1TelemetryAudioSevereUnderrunEvent: Schema.Schema<GoogleChromeManagementV1TelemetryAudioSevereUnderrunEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleChromeManagementV1TelemetryAudioSevereUnderrunEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleChromeManagementV1TelemetryAudioSevereUnderrunEvent",
-  }) as any as Schema.Schema<GoogleChromeManagementV1TelemetryAudioSevereUnderrunEvent>;
+  });
 
 export interface GoogleChromeManagementV1TelemetryOsCrashEvent {
   /** Crash type. */
@@ -1468,32 +1315,26 @@ export interface GoogleChromeManagementV1TelemetryOsCrashEvent {
   crashId?: string;
 }
 
-export const GoogleChromeManagementV1TelemetryOsCrashEvent: Schema.Schema<GoogleChromeManagementV1TelemetryOsCrashEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      crashType: Schema.optional(Schema.String),
-      sessionType: Schema.optional(Schema.String),
-      crashId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1TelemetryOsCrashEvent",
-  }) as any as Schema.Schema<GoogleChromeManagementV1TelemetryOsCrashEvent>;
+export const GoogleChromeManagementV1TelemetryOsCrashEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    crashType: Schema.optional(Schema.String),
+    sessionType: Schema.optional(Schema.String),
+    crashId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChromeManagementV1TelemetryOsCrashEvent" });
 
 export interface GoogleChromeManagementV1TelemetryExternalDisplayEvent {
   /** List of external displays that were connected/disconnected. */
   externalDisplayData?: Array<GoogleChromeManagementV1TelemetryExternalDisplayData>;
 }
 
-export const GoogleChromeManagementV1TelemetryExternalDisplayEvent: Schema.Schema<GoogleChromeManagementV1TelemetryExternalDisplayEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      externalDisplayData: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1TelemetryExternalDisplayData),
-      ),
-    }),
-  ).annotate({
+export const GoogleChromeManagementV1TelemetryExternalDisplayEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    externalDisplayData: Schema.optional(
+      Schema.Array(GoogleChromeManagementV1TelemetryExternalDisplayData),
+    ),
+  }).annotate({
     identifier: "GoogleChromeManagementV1TelemetryExternalDisplayEvent",
-  }) as any as Schema.Schema<GoogleChromeManagementV1TelemetryExternalDisplayEvent>;
+  });
 
 export interface GoogleChromeManagementV1TelemetryNetworkSignalStrengthEvent {
   /** Unique identifier of the network. */
@@ -1502,15 +1343,13 @@ export interface GoogleChromeManagementV1TelemetryNetworkSignalStrengthEvent {
   signalStrengthDbm?: number;
 }
 
-export const GoogleChromeManagementV1TelemetryNetworkSignalStrengthEvent: Schema.Schema<GoogleChromeManagementV1TelemetryNetworkSignalStrengthEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      guid: Schema.optional(Schema.String),
-      signalStrengthDbm: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleChromeManagementV1TelemetryNetworkSignalStrengthEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    guid: Schema.optional(Schema.String),
+    signalStrengthDbm: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleChromeManagementV1TelemetryNetworkSignalStrengthEvent",
-  }) as any as Schema.Schema<GoogleChromeManagementV1TelemetryNetworkSignalStrengthEvent>;
+  });
 
 export interface GoogleChromeManagementV1TelemetryEvent {
   /** Timestamp that represents when the event was reported. */
@@ -1563,51 +1402,47 @@ export interface GoogleChromeManagementV1TelemetryEvent {
   wifiSignalStrengthEvent?: GoogleChromeManagementV1TelemetryNetworkSignalStrengthEvent;
 }
 
-export const GoogleChromeManagementV1TelemetryEvent: Schema.Schema<GoogleChromeManagementV1TelemetryEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reportTime: Schema.optional(Schema.String),
-      device: Schema.optional(GoogleChromeManagementV1TelemetryDeviceInfo),
-      appUninstallEvent: Schema.optional(
-        GoogleChromeManagementV1TelemetryAppUninstallEvent,
-      ),
-      user: Schema.optional(GoogleChromeManagementV1TelemetryUserInfo),
-      appLaunchEvent: Schema.optional(
-        GoogleChromeManagementV1TelemetryAppLaunchEvent,
-      ),
-      httpsLatencyChangeEvent: Schema.optional(
-        GoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent,
-      ),
-      audioSevereUnderrunEvent: Schema.optional(
-        GoogleChromeManagementV1TelemetryAudioSevereUnderrunEvent,
-      ),
-      networkStateChangeEvent: Schema.optional(
-        GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent,
-      ),
-      appInstallEvent: Schema.optional(
-        GoogleChromeManagementV1TelemetryAppInstallEvent,
-      ),
-      osCrashEvent: Schema.optional(
-        GoogleChromeManagementV1TelemetryOsCrashEvent,
-      ),
-      externalDisplaysEvent: Schema.optional(
-        GoogleChromeManagementV1TelemetryExternalDisplayEvent,
-      ),
-      eventType: Schema.optional(Schema.String),
-      usbPeripheralsEvent: Schema.optional(
-        GoogleChromeManagementV1TelemetryUsbPeripheralsEvent,
-      ),
-      vpnConnectionStateChangeEvent: Schema.optional(
-        GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent,
-      ),
-      name: Schema.optional(Schema.String),
-      wifiSignalStrengthEvent: Schema.optional(
-        GoogleChromeManagementV1TelemetryNetworkSignalStrengthEvent,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1TelemetryEvent",
-  }) as any as Schema.Schema<GoogleChromeManagementV1TelemetryEvent>;
+export const GoogleChromeManagementV1TelemetryEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reportTime: Schema.optional(Schema.String),
+    device: Schema.optional(GoogleChromeManagementV1TelemetryDeviceInfo),
+    appUninstallEvent: Schema.optional(
+      GoogleChromeManagementV1TelemetryAppUninstallEvent,
+    ),
+    user: Schema.optional(GoogleChromeManagementV1TelemetryUserInfo),
+    appLaunchEvent: Schema.optional(
+      GoogleChromeManagementV1TelemetryAppLaunchEvent,
+    ),
+    httpsLatencyChangeEvent: Schema.optional(
+      GoogleChromeManagementV1TelemetryHttpsLatencyChangeEvent,
+    ),
+    audioSevereUnderrunEvent: Schema.optional(
+      GoogleChromeManagementV1TelemetryAudioSevereUnderrunEvent,
+    ),
+    networkStateChangeEvent: Schema.optional(
+      GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent,
+    ),
+    appInstallEvent: Schema.optional(
+      GoogleChromeManagementV1TelemetryAppInstallEvent,
+    ),
+    osCrashEvent: Schema.optional(
+      GoogleChromeManagementV1TelemetryOsCrashEvent,
+    ),
+    externalDisplaysEvent: Schema.optional(
+      GoogleChromeManagementV1TelemetryExternalDisplayEvent,
+    ),
+    eventType: Schema.optional(Schema.String),
+    usbPeripheralsEvent: Schema.optional(
+      GoogleChromeManagementV1TelemetryUsbPeripheralsEvent,
+    ),
+    vpnConnectionStateChangeEvent: Schema.optional(
+      GoogleChromeManagementV1TelemetryNetworkConnectionStateChangeEvent,
+    ),
+    name: Schema.optional(Schema.String),
+    wifiSignalStrengthEvent: Schema.optional(
+      GoogleChromeManagementV1TelemetryNetworkSignalStrengthEvent,
+    ),
+  }).annotate({ identifier: "GoogleChromeManagementV1TelemetryEvent" });
 
 export interface GoogleChromeManagementV1PrintJob {
   /** The title of the document. */
@@ -1652,34 +1487,30 @@ export interface GoogleChromeManagementV1PrintJob {
     | (string & {});
 }
 
-export const GoogleChromeManagementV1PrintJob: Schema.Schema<GoogleChromeManagementV1PrintJob> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      colorMode: Schema.optional(Schema.String),
-      printerId: Schema.optional(Schema.String),
-      printer: Schema.optional(Schema.String),
-      userEmail: Schema.optional(Schema.String),
-      completeTime: Schema.optional(Schema.String),
-      copyCount: Schema.optional(Schema.Number),
-      userId: Schema.optional(Schema.String),
-      documentPageCount: Schema.optional(Schema.Number),
-      duplexMode: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1PrintJob",
-  }) as any as Schema.Schema<GoogleChromeManagementV1PrintJob>;
+export const GoogleChromeManagementV1PrintJob =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    title: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    colorMode: Schema.optional(Schema.String),
+    printerId: Schema.optional(Schema.String),
+    printer: Schema.optional(Schema.String),
+    userEmail: Schema.optional(Schema.String),
+    completeTime: Schema.optional(Schema.String),
+    copyCount: Schema.optional(Schema.Number),
+    userId: Schema.optional(Schema.String),
+    documentPageCount: Schema.optional(Schema.Number),
+    duplexMode: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChromeManagementV1PrintJob" });
 
 export interface GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessResponse {}
 
-export const GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessResponse: Schema.Schema<GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessResponse",
-  }) as any as Schema.Schema<GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessResponse>;
+  });
 
 export interface GoogleTypeDate {
   /** Day of a month. Must be from 1 to 31 and valid for the year and month, or 0 to specify a year by itself or a year and month where the day isn't significant. */
@@ -1690,16 +1521,11 @@ export interface GoogleTypeDate {
   month?: number;
 }
 
-export const GoogleTypeDate: Schema.Schema<GoogleTypeDate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      day: Schema.optional(Schema.Number),
-      year: Schema.optional(Schema.Number),
-      month: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleTypeDate",
-  }) as any as Schema.Schema<GoogleTypeDate>;
+export const GoogleTypeDate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  day: Schema.optional(Schema.Number),
+  year: Schema.optional(Schema.Number),
+  month: Schema.optional(Schema.Number),
+}).annotate({ identifier: "GoogleTypeDate" });
 
 export interface GoogleChromeManagementV1BatteryInfo {
   /** Output only. The date the battery was manufactured. */
@@ -1716,19 +1542,15 @@ export interface GoogleChromeManagementV1BatteryInfo {
   serialNumber?: string;
 }
 
-export const GoogleChromeManagementV1BatteryInfo: Schema.Schema<GoogleChromeManagementV1BatteryInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      manufactureDate: Schema.optional(GoogleTypeDate),
-      manufacturer: Schema.optional(Schema.String),
-      designMinVoltage: Schema.optional(Schema.Number),
-      technology: Schema.optional(Schema.String),
-      designCapacity: Schema.optional(Schema.String),
-      serialNumber: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1BatteryInfo",
-  }) as any as Schema.Schema<GoogleChromeManagementV1BatteryInfo>;
+export const GoogleChromeManagementV1BatteryInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    manufactureDate: Schema.optional(GoogleTypeDate),
+    manufacturer: Schema.optional(Schema.String),
+    designMinVoltage: Schema.optional(Schema.Number),
+    technology: Schema.optional(Schema.String),
+    designCapacity: Schema.optional(Schema.String),
+    serialNumber: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChromeManagementV1BatteryInfo" });
 
 export interface GoogleChromeManagementV1RiskAssessmentData {
   /** Overall assessed risk level across all entries. This will be the highest risk level from all entries. */
@@ -1742,17 +1564,13 @@ export interface GoogleChromeManagementV1RiskAssessmentData {
   entries?: Array<GoogleChromeManagementV1RiskAssessmentEntry>;
 }
 
-export const GoogleChromeManagementV1RiskAssessmentData: Schema.Schema<GoogleChromeManagementV1RiskAssessmentData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      overallRiskLevel: Schema.optional(Schema.String),
-      entries: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1RiskAssessmentEntry),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1RiskAssessmentData",
-  }) as any as Schema.Schema<GoogleChromeManagementV1RiskAssessmentData>;
+export const GoogleChromeManagementV1RiskAssessmentData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    overallRiskLevel: Schema.optional(Schema.String),
+    entries: Schema.optional(
+      Schema.Array(GoogleChromeManagementV1RiskAssessmentEntry),
+    ),
+  }).annotate({ identifier: "GoogleChromeManagementV1RiskAssessmentData" });
 
 export interface GoogleChromeManagementV1InstalledApp {
   /** Output only. Count of browser devices with this app installed. */
@@ -1800,27 +1618,21 @@ export interface GoogleChromeManagementV1InstalledApp {
   homepageUri?: string;
 }
 
-export const GoogleChromeManagementV1InstalledApp: Schema.Schema<GoogleChromeManagementV1InstalledApp> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      browserDeviceCount: Schema.optional(Schema.String),
-      appSource: Schema.optional(Schema.String),
-      osUserCount: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-      displayName: Schema.optional(Schema.String),
-      appId: Schema.optional(Schema.String),
-      riskAssessment: Schema.optional(
-        GoogleChromeManagementV1RiskAssessmentData,
-      ),
-      appType: Schema.optional(Schema.String),
-      appInstallType: Schema.optional(Schema.String),
-      disabled: Schema.optional(Schema.Boolean),
-      homepageUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1InstalledApp",
-  }) as any as Schema.Schema<GoogleChromeManagementV1InstalledApp>;
+export const GoogleChromeManagementV1InstalledApp =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    browserDeviceCount: Schema.optional(Schema.String),
+    appSource: Schema.optional(Schema.String),
+    osUserCount: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+    displayName: Schema.optional(Schema.String),
+    appId: Schema.optional(Schema.String),
+    riskAssessment: Schema.optional(GoogleChromeManagementV1RiskAssessmentData),
+    appType: Schema.optional(Schema.String),
+    appInstallType: Schema.optional(Schema.String),
+    disabled: Schema.optional(Schema.Boolean),
+    homepageUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChromeManagementV1InstalledApp" });
 
 export interface GoogleChromeManagementV1CountInstalledAppsResponse {
   /** List of installed apps matching request. */
@@ -1831,18 +1643,16 @@ export interface GoogleChromeManagementV1CountInstalledAppsResponse {
   totalSize?: number;
 }
 
-export const GoogleChromeManagementV1CountInstalledAppsResponse: Schema.Schema<GoogleChromeManagementV1CountInstalledAppsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      installedApps: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1InstalledApp),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-      totalSize: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleChromeManagementV1CountInstalledAppsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    installedApps: Schema.optional(
+      Schema.Array(GoogleChromeManagementV1InstalledApp),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+    totalSize: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleChromeManagementV1CountInstalledAppsResponse",
-  }) as any as Schema.Schema<GoogleChromeManagementV1CountInstalledAppsResponse>;
+  });
 
 export interface GoogleChromeManagementVersionsV1ReportingDataExtensionPolicyData {
   /** Output only. ID of the extension. */
@@ -1853,19 +1663,17 @@ export interface GoogleChromeManagementVersionsV1ReportingDataExtensionPolicyDat
   extensionName?: string;
 }
 
-export const GoogleChromeManagementVersionsV1ReportingDataExtensionPolicyData: Schema.Schema<GoogleChromeManagementVersionsV1ReportingDataExtensionPolicyData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      extensionId: Schema.optional(Schema.String),
-      policyData: Schema.optional(
-        Schema.Array(GoogleChromeManagementVersionsV1ReportingDataPolicyData),
-      ),
-      extensionName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromeManagementVersionsV1ReportingDataExtensionPolicyData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    extensionId: Schema.optional(Schema.String),
+    policyData: Schema.optional(
+      Schema.Array(GoogleChromeManagementVersionsV1ReportingDataPolicyData),
+    ),
+    extensionName: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleChromeManagementVersionsV1ReportingDataExtensionPolicyData",
-  }) as any as Schema.Schema<GoogleChromeManagementVersionsV1ReportingDataExtensionPolicyData>;
+  });
 
 export interface GoogleChromeManagementVersionsV1ReportingDataExtensionData {
   /** Output only. The URL of the homepage of the extension. */
@@ -1906,24 +1714,22 @@ export interface GoogleChromeManagementVersionsV1ReportingDataExtensionData {
   extensionId?: string;
 }
 
-export const GoogleChromeManagementVersionsV1ReportingDataExtensionData: Schema.Schema<GoogleChromeManagementVersionsV1ReportingDataExtensionData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      homepageUri: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      extensionType: Schema.optional(Schema.String),
-      manifestVersion: Schema.optional(Schema.Number),
-      isDisabled: Schema.optional(Schema.Boolean),
-      installationType: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-      description: Schema.optional(Schema.String),
-      isWebstoreExtension: Schema.optional(Schema.Boolean),
-      extensionId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromeManagementVersionsV1ReportingDataExtensionData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    homepageUri: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    extensionType: Schema.optional(Schema.String),
+    manifestVersion: Schema.optional(Schema.Number),
+    isDisabled: Schema.optional(Schema.Boolean),
+    installationType: Schema.optional(Schema.String),
+    version: Schema.optional(Schema.String),
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+    description: Schema.optional(Schema.String),
+    isWebstoreExtension: Schema.optional(Schema.Boolean),
+    extensionId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleChromeManagementVersionsV1ReportingDataExtensionData",
-  }) as any as Schema.Schema<GoogleChromeManagementVersionsV1ReportingDataExtensionData>;
+  });
 
 export interface GoogleChromeManagementVersionsV1ReportingData {
   /** Output only. Executable path of the installed Chrome browser. A valid path is included only in affiliated profiles. */
@@ -1940,57 +1746,47 @@ export interface GoogleChromeManagementVersionsV1ReportingData {
   policyData?: Array<GoogleChromeManagementVersionsV1ReportingDataPolicyData>;
 }
 
-export const GoogleChromeManagementVersionsV1ReportingData: Schema.Schema<GoogleChromeManagementVersionsV1ReportingData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      browserExecutablePath: Schema.optional(Schema.String),
-      extensionPolicyData: Schema.optional(
-        Schema.Array(
-          GoogleChromeManagementVersionsV1ReportingDataExtensionPolicyData,
-        ),
+export const GoogleChromeManagementVersionsV1ReportingData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    browserExecutablePath: Schema.optional(Schema.String),
+    extensionPolicyData: Schema.optional(
+      Schema.Array(
+        GoogleChromeManagementVersionsV1ReportingDataExtensionPolicyData,
       ),
-      extensionData: Schema.optional(
-        Schema.Array(
-          GoogleChromeManagementVersionsV1ReportingDataExtensionData,
-        ),
-      ),
-      profilePath: Schema.optional(Schema.String),
-      installedBrowserVersion: Schema.optional(Schema.String),
-      policyData: Schema.optional(
-        Schema.Array(GoogleChromeManagementVersionsV1ReportingDataPolicyData),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementVersionsV1ReportingData",
-  }) as any as Schema.Schema<GoogleChromeManagementVersionsV1ReportingData>;
+    ),
+    extensionData: Schema.optional(
+      Schema.Array(GoogleChromeManagementVersionsV1ReportingDataExtensionData),
+    ),
+    profilePath: Schema.optional(Schema.String),
+    installedBrowserVersion: Schema.optional(Schema.String),
+    policyData: Schema.optional(
+      Schema.Array(GoogleChromeManagementVersionsV1ReportingDataPolicyData),
+    ),
+  }).annotate({ identifier: "GoogleChromeManagementVersionsV1ReportingData" });
 
 export interface GoogleChromeManagementVersionsV1SignDataMetadata {
   /** Output only. Start time of the SignData operation. */
   startTime?: string;
 }
 
-export const GoogleChromeManagementVersionsV1SignDataMetadata: Schema.Schema<GoogleChromeManagementVersionsV1SignDataMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromeManagementVersionsV1SignDataMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleChromeManagementVersionsV1SignDataMetadata",
-  }) as any as Schema.Schema<GoogleChromeManagementVersionsV1SignDataMetadata>;
+  });
 
 export interface GoogleChromeManagementVersionsV1ScepCaConnection {
   /** Output only. A string that references the administrator-provided configuration for the certification authority service. */
   caConnectionAdapterConfigReference?: string;
 }
 
-export const GoogleChromeManagementVersionsV1ScepCaConnection: Schema.Schema<GoogleChromeManagementVersionsV1ScepCaConnection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      caConnectionAdapterConfigReference: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromeManagementVersionsV1ScepCaConnection =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    caConnectionAdapterConfigReference: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleChromeManagementVersionsV1ScepCaConnection",
-  }) as any as Schema.Schema<GoogleChromeManagementVersionsV1ScepCaConnection>;
+  });
 
 export interface GoogleChromeManagementV1BatterySampleReport {
   /** Output only. Battery voltage (millivolt). */
@@ -2011,21 +1807,17 @@ export interface GoogleChromeManagementV1BatterySampleReport {
   current?: string;
 }
 
-export const GoogleChromeManagementV1BatterySampleReport: Schema.Schema<GoogleChromeManagementV1BatterySampleReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      voltage: Schema.optional(Schema.String),
-      reportTime: Schema.optional(Schema.String),
-      remainingCapacity: Schema.optional(Schema.String),
-      dischargeRate: Schema.optional(Schema.Number),
-      status: Schema.optional(Schema.String),
-      chargeRate: Schema.optional(Schema.Number),
-      temperature: Schema.optional(Schema.Number),
-      current: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1BatterySampleReport",
-  }) as any as Schema.Schema<GoogleChromeManagementV1BatterySampleReport>;
+export const GoogleChromeManagementV1BatterySampleReport =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    voltage: Schema.optional(Schema.String),
+    reportTime: Schema.optional(Schema.String),
+    remainingCapacity: Schema.optional(Schema.String),
+    dischargeRate: Schema.optional(Schema.Number),
+    status: Schema.optional(Schema.String),
+    chargeRate: Schema.optional(Schema.Number),
+    temperature: Schema.optional(Schema.Number),
+    current: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChromeManagementV1BatterySampleReport" });
 
 export interface GoogleChromeManagementV1AudioStatusReport {
   /** Output only. Timestamp of when the sample was collected on device. */
@@ -2044,20 +1836,16 @@ export interface GoogleChromeManagementV1AudioStatusReport {
   outputMute?: boolean;
 }
 
-export const GoogleChromeManagementV1AudioStatusReport: Schema.Schema<GoogleChromeManagementV1AudioStatusReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reportTime: Schema.optional(Schema.String),
-      outputDevice: Schema.optional(Schema.String),
-      inputMute: Schema.optional(Schema.Boolean),
-      outputVolume: Schema.optional(Schema.Number),
-      inputGain: Schema.optional(Schema.Number),
-      inputDevice: Schema.optional(Schema.String),
-      outputMute: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1AudioStatusReport",
-  }) as any as Schema.Schema<GoogleChromeManagementV1AudioStatusReport>;
+export const GoogleChromeManagementV1AudioStatusReport =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reportTime: Schema.optional(Schema.String),
+    outputDevice: Schema.optional(Schema.String),
+    inputMute: Schema.optional(Schema.Boolean),
+    outputVolume: Schema.optional(Schema.Number),
+    inputGain: Schema.optional(Schema.Number),
+    inputDevice: Schema.optional(Schema.String),
+    outputMute: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleChromeManagementV1AudioStatusReport" });
 
 export interface GoogleChromeManagementVersionsV1AttestationCredential {
   /** Output only. Trust level of the public key. */
@@ -2074,17 +1862,15 @@ export interface GoogleChromeManagementVersionsV1AttestationCredential {
   keyType?: "KEY_TYPE_UNSPECIFIED" | "RSA_KEY" | "EC_KEY" | (string & {});
 }
 
-export const GoogleChromeManagementVersionsV1AttestationCredential: Schema.Schema<GoogleChromeManagementVersionsV1AttestationCredential> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      keyTrustLevel: Schema.optional(Schema.String),
-      keyRotationTime: Schema.optional(Schema.String),
-      publicKey: Schema.optional(Schema.String),
-      keyType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromeManagementVersionsV1AttestationCredential =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    keyTrustLevel: Schema.optional(Schema.String),
+    keyRotationTime: Schema.optional(Schema.String),
+    publicKey: Schema.optional(Schema.String),
+    keyType: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleChromeManagementVersionsV1AttestationCredential",
-  }) as any as Schema.Schema<GoogleChromeManagementVersionsV1AttestationCredential>;
+  });
 
 export interface GoogleChromeManagementVersionsV1ChromeBrowserProfile {
   /** Output only. Attestation credential information of the profile. */
@@ -2154,44 +1940,42 @@ export interface GoogleChromeManagementVersionsV1ChromeBrowserProfile {
   userId?: string;
 }
 
-export const GoogleChromeManagementVersionsV1ChromeBrowserProfile: Schema.Schema<GoogleChromeManagementVersionsV1ChromeBrowserProfile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      attestationCredential: Schema.optional(
-        GoogleChromeManagementVersionsV1AttestationCredential,
-      ),
-      lastPolicyFetchTime: Schema.optional(Schema.String),
-      deviceInfo: Schema.optional(GoogleChromeManagementVersionsV1DeviceInfo),
-      supportsFcmNotifications: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-      reportingData: Schema.optional(
-        GoogleChromeManagementVersionsV1ReportingData,
-      ),
-      firstEnrollmentTime: Schema.optional(Schema.String),
-      annotatedUser: Schema.optional(Schema.String),
-      identityProvider: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      lastActivityTime: Schema.optional(Schema.String),
-      extensionCount: Schema.optional(Schema.String),
-      userEmail: Schema.optional(Schema.String),
-      profileId: Schema.optional(Schema.String),
-      annotatedLocation: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      browserVersion: Schema.optional(Schema.String),
-      lastStatusReportTime: Schema.optional(Schema.String),
-      osPlatformType: Schema.optional(Schema.String),
-      profilePermanentId: Schema.optional(Schema.String),
-      browserChannel: Schema.optional(Schema.String),
-      lastPolicySyncTime: Schema.optional(Schema.String),
-      affiliationState: Schema.optional(Schema.String),
-      policyCount: Schema.optional(Schema.String),
-      osVersion: Schema.optional(Schema.String),
-      osPlatformVersion: Schema.optional(Schema.String),
-      userId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromeManagementVersionsV1ChromeBrowserProfile =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    attestationCredential: Schema.optional(
+      GoogleChromeManagementVersionsV1AttestationCredential,
+    ),
+    lastPolicyFetchTime: Schema.optional(Schema.String),
+    deviceInfo: Schema.optional(GoogleChromeManagementVersionsV1DeviceInfo),
+    supportsFcmNotifications: Schema.optional(Schema.Boolean),
+    name: Schema.optional(Schema.String),
+    reportingData: Schema.optional(
+      GoogleChromeManagementVersionsV1ReportingData,
+    ),
+    firstEnrollmentTime: Schema.optional(Schema.String),
+    annotatedUser: Schema.optional(Schema.String),
+    identityProvider: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    lastActivityTime: Schema.optional(Schema.String),
+    extensionCount: Schema.optional(Schema.String),
+    userEmail: Schema.optional(Schema.String),
+    profileId: Schema.optional(Schema.String),
+    annotatedLocation: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    browserVersion: Schema.optional(Schema.String),
+    lastStatusReportTime: Schema.optional(Schema.String),
+    osPlatformType: Schema.optional(Schema.String),
+    profilePermanentId: Schema.optional(Schema.String),
+    browserChannel: Schema.optional(Schema.String),
+    lastPolicySyncTime: Schema.optional(Schema.String),
+    affiliationState: Schema.optional(Schema.String),
+    policyCount: Schema.optional(Schema.String),
+    osVersion: Schema.optional(Schema.String),
+    osPlatformVersion: Schema.optional(Schema.String),
+    userId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleChromeManagementVersionsV1ChromeBrowserProfile",
-  }) as any as Schema.Schema<GoogleChromeManagementVersionsV1ChromeBrowserProfile>;
+  });
 
 export interface GoogleChromeManagementVersionsV1ListChromeBrowserProfilesResponse {
   /** The pagination token that can be used to list the next page. */
@@ -2202,19 +1986,17 @@ export interface GoogleChromeManagementVersionsV1ListChromeBrowserProfilesRespon
   chromeBrowserProfiles?: Array<GoogleChromeManagementVersionsV1ChromeBrowserProfile>;
 }
 
-export const GoogleChromeManagementVersionsV1ListChromeBrowserProfilesResponse: Schema.Schema<GoogleChromeManagementVersionsV1ListChromeBrowserProfilesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      totalSize: Schema.optional(Schema.String),
-      chromeBrowserProfiles: Schema.optional(
-        Schema.Array(GoogleChromeManagementVersionsV1ChromeBrowserProfile),
-      ),
-    }),
-  ).annotate({
+export const GoogleChromeManagementVersionsV1ListChromeBrowserProfilesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    totalSize: Schema.optional(Schema.String),
+    chromeBrowserProfiles: Schema.optional(
+      Schema.Array(GoogleChromeManagementVersionsV1ChromeBrowserProfile),
+    ),
+  }).annotate({
     identifier:
       "GoogleChromeManagementVersionsV1ListChromeBrowserProfilesResponse",
-  }) as any as Schema.Schema<GoogleChromeManagementVersionsV1ListChromeBrowserProfilesResponse>;
+  });
 
 export interface GoogleChromeManagementV1KioskAppStatusReport {
   /** App version number of kiosk app for example "1.10.118" */
@@ -2225,16 +2007,12 @@ export interface GoogleChromeManagementV1KioskAppStatusReport {
   appId?: string;
 }
 
-export const GoogleChromeManagementV1KioskAppStatusReport: Schema.Schema<GoogleChromeManagementV1KioskAppStatusReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      appVersion: Schema.optional(Schema.String),
-      reportTime: Schema.optional(Schema.String),
-      appId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1KioskAppStatusReport",
-  }) as any as Schema.Schema<GoogleChromeManagementV1KioskAppStatusReport>;
+export const GoogleChromeManagementV1KioskAppStatusReport =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    appVersion: Schema.optional(Schema.String),
+    reportTime: Schema.optional(Schema.String),
+    appId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChromeManagementV1KioskAppStatusReport" });
 
 export interface GoogleChromeManagementV1CountChromeCrashEventsResponseCrashEventCount {
   /** Date of the crash event. */
@@ -2245,35 +2023,31 @@ export interface GoogleChromeManagementV1CountChromeCrashEventsResponseCrashEven
   count?: string;
 }
 
-export const GoogleChromeManagementV1CountChromeCrashEventsResponseCrashEventCount: Schema.Schema<GoogleChromeManagementV1CountChromeCrashEventsResponseCrashEventCount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      date: Schema.optional(GoogleTypeDate),
-      browserVersion: Schema.optional(Schema.String),
-      count: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromeManagementV1CountChromeCrashEventsResponseCrashEventCount =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    date: Schema.optional(GoogleTypeDate),
+    browserVersion: Schema.optional(Schema.String),
+    count: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleChromeManagementV1CountChromeCrashEventsResponseCrashEventCount",
-  }) as any as Schema.Schema<GoogleChromeManagementV1CountChromeCrashEventsResponseCrashEventCount>;
+  });
 
 export interface GoogleChromeManagementV1CountChromeCrashEventsResponse {
   /** Crash event counts grouped by date and browser version. */
   crashEventCounts?: Array<GoogleChromeManagementV1CountChromeCrashEventsResponseCrashEventCount>;
 }
 
-export const GoogleChromeManagementV1CountChromeCrashEventsResponse: Schema.Schema<GoogleChromeManagementV1CountChromeCrashEventsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      crashEventCounts: Schema.optional(
-        Schema.Array(
-          GoogleChromeManagementV1CountChromeCrashEventsResponseCrashEventCount,
-        ),
+export const GoogleChromeManagementV1CountChromeCrashEventsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    crashEventCounts: Schema.optional(
+      Schema.Array(
+        GoogleChromeManagementV1CountChromeCrashEventsResponseCrashEventCount,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier: "GoogleChromeManagementV1CountChromeCrashEventsResponse",
-  }) as any as Schema.Schema<GoogleChromeManagementV1CountChromeCrashEventsResponse>;
+  });
 
 export interface GoogleChromeManagementV1PeripheralsReport {
   /** Reports of all usb connected devices. */
@@ -2282,17 +2056,13 @@ export interface GoogleChromeManagementV1PeripheralsReport {
   reportTime?: string;
 }
 
-export const GoogleChromeManagementV1PeripheralsReport: Schema.Schema<GoogleChromeManagementV1PeripheralsReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      usbPeripheralReport: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1UsbPeripheralReport),
-      ),
-      reportTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1PeripheralsReport",
-  }) as any as Schema.Schema<GoogleChromeManagementV1PeripheralsReport>;
+export const GoogleChromeManagementV1PeripheralsReport =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    usbPeripheralReport: Schema.optional(
+      Schema.Array(GoogleChromeManagementV1UsbPeripheralReport),
+    ),
+    reportTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChromeManagementV1PeripheralsReport" });
 
 export interface GoogleChromeManagementV1DeviceActivityReport {
   /** Output only. Timestamp of when the report was collected. */
@@ -2306,15 +2076,11 @@ export interface GoogleChromeManagementV1DeviceActivityReport {
     | (string & {});
 }
 
-export const GoogleChromeManagementV1DeviceActivityReport: Schema.Schema<GoogleChromeManagementV1DeviceActivityReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reportTime: Schema.optional(Schema.String),
-      deviceActivityState: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1DeviceActivityReport",
-  }) as any as Schema.Schema<GoogleChromeManagementV1DeviceActivityReport>;
+export const GoogleChromeManagementV1DeviceActivityReport =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reportTime: Schema.optional(Schema.String),
+    deviceActivityState: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChromeManagementV1DeviceActivityReport" });
 
 export interface GoogleChromeManagementV1AppReport {
   /** Timestamp when the report was collected. */
@@ -2323,17 +2089,13 @@ export interface GoogleChromeManagementV1AppReport {
   usageData?: Array<GoogleChromeManagementV1AppUsageData>;
 }
 
-export const GoogleChromeManagementV1AppReport: Schema.Schema<GoogleChromeManagementV1AppReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reportTime: Schema.optional(Schema.String),
-      usageData: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1AppUsageData),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1AppReport",
-  }) as any as Schema.Schema<GoogleChromeManagementV1AppReport>;
+export const GoogleChromeManagementV1AppReport =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reportTime: Schema.optional(Schema.String),
+    usageData: Schema.optional(
+      Schema.Array(GoogleChromeManagementV1AppUsageData),
+    ),
+  }).annotate({ identifier: "GoogleChromeManagementV1AppReport" });
 
 export interface GoogleChromeManagementV1TelemetryUserDevice {
   /** Output only. Network bandwidth reports collected periodically sorted in a decreasing order of report_time. */
@@ -2350,29 +2112,23 @@ export interface GoogleChromeManagementV1TelemetryUserDevice {
   appReport?: Array<GoogleChromeManagementV1AppReport>;
 }
 
-export const GoogleChromeManagementV1TelemetryUserDevice: Schema.Schema<GoogleChromeManagementV1TelemetryUserDevice> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      networkBandwidthReport: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1NetworkBandwidthReport),
-      ),
-      audioStatusReport: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1AudioStatusReport),
-      ),
-      peripheralsReport: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1PeripheralsReport),
-      ),
-      deviceActivityReport: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1DeviceActivityReport),
-      ),
-      deviceId: Schema.optional(Schema.String),
-      appReport: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1AppReport),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1TelemetryUserDevice",
-  }) as any as Schema.Schema<GoogleChromeManagementV1TelemetryUserDevice>;
+export const GoogleChromeManagementV1TelemetryUserDevice =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    networkBandwidthReport: Schema.optional(
+      Schema.Array(GoogleChromeManagementV1NetworkBandwidthReport),
+    ),
+    audioStatusReport: Schema.optional(
+      Schema.Array(GoogleChromeManagementV1AudioStatusReport),
+    ),
+    peripheralsReport: Schema.optional(
+      Schema.Array(GoogleChromeManagementV1PeripheralsReport),
+    ),
+    deviceActivityReport: Schema.optional(
+      Schema.Array(GoogleChromeManagementV1DeviceActivityReport),
+    ),
+    deviceId: Schema.optional(Schema.String),
+    appReport: Schema.optional(Schema.Array(GoogleChromeManagementV1AppReport)),
+  }).annotate({ identifier: "GoogleChromeManagementV1TelemetryUserDevice" });
 
 export interface GoogleChromeManagementV1TelemetryUser {
   /** Resource name of the user. */
@@ -2389,21 +2145,17 @@ export interface GoogleChromeManagementV1TelemetryUser {
   userId?: string;
 }
 
-export const GoogleChromeManagementV1TelemetryUser: Schema.Schema<GoogleChromeManagementV1TelemetryUser> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      userEmail: Schema.optional(Schema.String),
-      customer: Schema.optional(Schema.String),
-      userDevice: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1TelemetryUserDevice),
-      ),
-      orgUnitId: Schema.optional(Schema.String),
-      userId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1TelemetryUser",
-  }) as any as Schema.Schema<GoogleChromeManagementV1TelemetryUser>;
+export const GoogleChromeManagementV1TelemetryUser =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    userEmail: Schema.optional(Schema.String),
+    customer: Schema.optional(Schema.String),
+    userDevice: Schema.optional(
+      Schema.Array(GoogleChromeManagementV1TelemetryUserDevice),
+    ),
+    orgUnitId: Schema.optional(Schema.String),
+    userId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChromeManagementV1TelemetryUser" });
 
 export interface GoogleChromeManagementV1DeviceRequestingExtensionDetails {
   /** The name of a device that has requested the extension. */
@@ -2412,15 +2164,13 @@ export interface GoogleChromeManagementV1DeviceRequestingExtensionDetails {
   justification?: string;
 }
 
-export const GoogleChromeManagementV1DeviceRequestingExtensionDetails: Schema.Schema<GoogleChromeManagementV1DeviceRequestingExtensionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deviceName: Schema.optional(Schema.String),
-      justification: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromeManagementV1DeviceRequestingExtensionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deviceName: Schema.optional(Schema.String),
+    justification: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleChromeManagementV1DeviceRequestingExtensionDetails",
-  }) as any as Schema.Schema<GoogleChromeManagementV1DeviceRequestingExtensionDetails>;
+  });
 
 export interface GoogleChromeManagementV1FetchDevicesRequestingExtensionResponse {
   /** Optional. Total number of devices in response. */
@@ -2431,19 +2181,17 @@ export interface GoogleChromeManagementV1FetchDevicesRequestingExtensionResponse
   nextPageToken?: string;
 }
 
-export const GoogleChromeManagementV1FetchDevicesRequestingExtensionResponse: Schema.Schema<GoogleChromeManagementV1FetchDevicesRequestingExtensionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      totalSize: Schema.optional(Schema.Number),
-      deviceDetails: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1DeviceRequestingExtensionDetails),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromeManagementV1FetchDevicesRequestingExtensionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    totalSize: Schema.optional(Schema.Number),
+    deviceDetails: Schema.optional(
+      Schema.Array(GoogleChromeManagementV1DeviceRequestingExtensionDetails),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleChromeManagementV1FetchDevicesRequestingExtensionResponse",
-  }) as any as Schema.Schema<GoogleChromeManagementV1FetchDevicesRequestingExtensionResponse>;
+  });
 
 export interface GoogleChromeManagementV1Device {
   /** Output only. The ID of the device that reported this Chrome browser information. */
@@ -2452,15 +2200,11 @@ export interface GoogleChromeManagementV1Device {
   machine?: string;
 }
 
-export const GoogleChromeManagementV1Device: Schema.Schema<GoogleChromeManagementV1Device> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deviceId: Schema.optional(Schema.String),
-      machine: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1Device",
-  }) as any as Schema.Schema<GoogleChromeManagementV1Device>;
+export const GoogleChromeManagementV1Device =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deviceId: Schema.optional(Schema.String),
+    machine: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChromeManagementV1Device" });
 
 export interface GoogleChromeManagementV1FindInstalledAppDevicesResponse {
   /** A list of devices which have the app installed. Sorted in ascending alphabetical order on the Device.machine field. */
@@ -2471,16 +2215,14 @@ export interface GoogleChromeManagementV1FindInstalledAppDevicesResponse {
   totalSize?: number;
 }
 
-export const GoogleChromeManagementV1FindInstalledAppDevicesResponse: Schema.Schema<GoogleChromeManagementV1FindInstalledAppDevicesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      devices: Schema.optional(Schema.Array(GoogleChromeManagementV1Device)),
-      nextPageToken: Schema.optional(Schema.String),
-      totalSize: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleChromeManagementV1FindInstalledAppDevicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    devices: Schema.optional(Schema.Array(GoogleChromeManagementV1Device)),
+    nextPageToken: Schema.optional(Schema.String),
+    totalSize: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleChromeManagementV1FindInstalledAppDevicesResponse",
-  }) as any as Schema.Schema<GoogleChromeManagementV1FindInstalledAppDevicesResponse>;
+  });
 
 export interface GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandResult {
   /** Output only. Result type of the remote command. */
@@ -2496,17 +2238,15 @@ export interface GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandComm
   resultCode?: string;
 }
 
-export const GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandResult: Schema.Schema<GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resultType: Schema.optional(Schema.String),
-      clientExecutionTime: Schema.optional(Schema.String),
-      resultCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resultType: Schema.optional(Schema.String),
+    clientExecutionTime: Schema.optional(Schema.String),
+    resultCode: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandResult",
-  }) as any as Schema.Schema<GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandResult>;
+  });
 
 export interface GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand {
   /** Output only. Result of the remote command. */
@@ -2530,22 +2270,20 @@ export interface GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand {
   issueTime?: string;
 }
 
-export const GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand: Schema.Schema<GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commandResult: Schema.optional(
-        GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandResult,
-      ),
-      validDuration: Schema.optional(Schema.String),
-      commandType: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      commandState: Schema.optional(Schema.String),
-      issueTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commandResult: Schema.optional(
+      GoogleChromeManagementVersionsV1ChromeBrowserProfileCommandCommandResult,
+    ),
+    validDuration: Schema.optional(Schema.String),
+    commandType: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    commandState: Schema.optional(Schema.String),
+    issueTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand",
-  }) as any as Schema.Schema<GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand>;
+  });
 
 export interface GoogleChromeManagementVersionsV1ListChromeBrowserProfileCommandsResponse {
   /** Total size represents an estimated number of resources returned. */
@@ -2556,21 +2294,17 @@ export interface GoogleChromeManagementVersionsV1ListChromeBrowserProfileCommand
   nextPageToken?: string;
 }
 
-export const GoogleChromeManagementVersionsV1ListChromeBrowserProfileCommandsResponse: Schema.Schema<GoogleChromeManagementVersionsV1ListChromeBrowserProfileCommandsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      totalSize: Schema.optional(Schema.String),
-      chromeBrowserProfileCommands: Schema.optional(
-        Schema.Array(
-          GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand,
-        ),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromeManagementVersionsV1ListChromeBrowserProfileCommandsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    totalSize: Schema.optional(Schema.String),
+    chromeBrowserProfileCommands: Schema.optional(
+      Schema.Array(GoogleChromeManagementVersionsV1ChromeBrowserProfileCommand),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleChromeManagementVersionsV1ListChromeBrowserProfileCommandsResponse",
-  }) as any as Schema.Schema<GoogleChromeManagementVersionsV1ListChromeBrowserProfileCommandsResponse>;
+  });
 
 export interface GoogleChromeManagementV1DiskInfo {
   /** Output only. Disk volumes. */
@@ -2601,26 +2335,22 @@ export interface GoogleChromeManagementV1DiskInfo {
   writeTimeThisSession?: string;
 }
 
-export const GoogleChromeManagementV1DiskInfo: Schema.Schema<GoogleChromeManagementV1DiskInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      volumeIds: Schema.optional(Schema.Array(Schema.String)),
-      bytesWrittenThisSession: Schema.optional(Schema.String),
-      readTimeThisSession: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      discardTimeThisSession: Schema.optional(Schema.String),
-      ioTimeThisSession: Schema.optional(Schema.String),
-      manufacturer: Schema.optional(Schema.String),
-      health: Schema.optional(Schema.String),
-      bytesReadThisSession: Schema.optional(Schema.String),
-      sizeBytes: Schema.optional(Schema.String),
-      serialNumber: Schema.optional(Schema.String),
-      model: Schema.optional(Schema.String),
-      writeTimeThisSession: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1DiskInfo",
-  }) as any as Schema.Schema<GoogleChromeManagementV1DiskInfo>;
+export const GoogleChromeManagementV1DiskInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    volumeIds: Schema.optional(Schema.Array(Schema.String)),
+    bytesWrittenThisSession: Schema.optional(Schema.String),
+    readTimeThisSession: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    discardTimeThisSession: Schema.optional(Schema.String),
+    ioTimeThisSession: Schema.optional(Schema.String),
+    manufacturer: Schema.optional(Schema.String),
+    health: Schema.optional(Schema.String),
+    bytesReadThisSession: Schema.optional(Schema.String),
+    sizeBytes: Schema.optional(Schema.String),
+    serialNumber: Schema.optional(Schema.String),
+    model: Schema.optional(Schema.String),
+    writeTimeThisSession: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChromeManagementV1DiskInfo" });
 
 export interface GoogleChromeManagementV1StorageStatusReport {
   /** Output only. Timestamp of when the sample was collected on device */
@@ -2629,15 +2359,11 @@ export interface GoogleChromeManagementV1StorageStatusReport {
   disk?: Array<GoogleChromeManagementV1DiskInfo>;
 }
 
-export const GoogleChromeManagementV1StorageStatusReport: Schema.Schema<GoogleChromeManagementV1StorageStatusReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reportTime: Schema.optional(Schema.String),
-      disk: Schema.optional(Schema.Array(GoogleChromeManagementV1DiskInfo)),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1StorageStatusReport",
-  }) as any as Schema.Schema<GoogleChromeManagementV1StorageStatusReport>;
+export const GoogleChromeManagementV1StorageStatusReport =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reportTime: Schema.optional(Schema.String),
+    disk: Schema.optional(Schema.Array(GoogleChromeManagementV1DiskInfo)),
+  }).annotate({ identifier: "GoogleChromeManagementV1StorageStatusReport" });
 
 export interface GoogleChromeManagementV1BootPerformanceReport {
   /** Total time since shutdown start to power off. */
@@ -2660,19 +2386,15 @@ export interface GoogleChromeManagementV1BootPerformanceReport {
   bootUpDuration?: string;
 }
 
-export const GoogleChromeManagementV1BootPerformanceReport: Schema.Schema<GoogleChromeManagementV1BootPerformanceReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      shutdownDuration: Schema.optional(Schema.String),
-      bootUpTime: Schema.optional(Schema.String),
-      reportTime: Schema.optional(Schema.String),
-      shutdownTime: Schema.optional(Schema.String),
-      shutdownReason: Schema.optional(Schema.String),
-      bootUpDuration: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1BootPerformanceReport",
-  }) as any as Schema.Schema<GoogleChromeManagementV1BootPerformanceReport>;
+export const GoogleChromeManagementV1BootPerformanceReport =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    shutdownDuration: Schema.optional(Schema.String),
+    bootUpTime: Schema.optional(Schema.String),
+    reportTime: Schema.optional(Schema.String),
+    shutdownTime: Schema.optional(Schema.String),
+    shutdownReason: Schema.optional(Schema.String),
+    bootUpDuration: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChromeManagementV1BootPerformanceReport" });
 
 export interface GoogleChromeManagementV1ThunderboltInfo {
   /** Security level of the Thunderbolt bus. */
@@ -2687,14 +2409,10 @@ export interface GoogleChromeManagementV1ThunderboltInfo {
     | (string & {});
 }
 
-export const GoogleChromeManagementV1ThunderboltInfo: Schema.Schema<GoogleChromeManagementV1ThunderboltInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      securityLevel: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1ThunderboltInfo",
-  }) as any as Schema.Schema<GoogleChromeManagementV1ThunderboltInfo>;
+export const GoogleChromeManagementV1ThunderboltInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    securityLevel: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChromeManagementV1ThunderboltInfo" });
 
 export interface GoogleChromeManagementV1TouchScreenInfo {
   /** Output only. List of the internal touch screen devices. */
@@ -2703,17 +2421,13 @@ export interface GoogleChromeManagementV1TouchScreenInfo {
   touchpadLibrary?: string;
 }
 
-export const GoogleChromeManagementV1TouchScreenInfo: Schema.Schema<GoogleChromeManagementV1TouchScreenInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      devices: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1TouchScreenDevice),
-      ),
-      touchpadLibrary: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1TouchScreenInfo",
-  }) as any as Schema.Schema<GoogleChromeManagementV1TouchScreenInfo>;
+export const GoogleChromeManagementV1TouchScreenInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    devices: Schema.optional(
+      Schema.Array(GoogleChromeManagementV1TouchScreenDevice),
+    ),
+    touchpadLibrary: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChromeManagementV1TouchScreenInfo" });
 
 export interface GoogleChromeManagementV1CountChromeVersionsResponse {
   /** Total number browser versions matching request. */
@@ -2724,18 +2438,16 @@ export interface GoogleChromeManagementV1CountChromeVersionsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleChromeManagementV1CountChromeVersionsResponse: Schema.Schema<GoogleChromeManagementV1CountChromeVersionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      totalSize: Schema.optional(Schema.Number),
-      browserVersions: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1BrowserVersion),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromeManagementV1CountChromeVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    totalSize: Schema.optional(Schema.Number),
+    browserVersions: Schema.optional(
+      Schema.Array(GoogleChromeManagementV1BrowserVersion),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleChromeManagementV1CountChromeVersionsResponse",
-  }) as any as Schema.Schema<GoogleChromeManagementV1CountChromeVersionsResponse>;
+  });
 
 export interface GoogleChromeManagementVersionsV1SubjectAltName {
   /** Output only. The value of the subject alternative name with respect to the `type`. */
@@ -2750,15 +2462,11 @@ export interface GoogleChromeManagementVersionsV1SubjectAltName {
     | (string & {});
 }
 
-export const GoogleChromeManagementVersionsV1SubjectAltName: Schema.Schema<GoogleChromeManagementVersionsV1SubjectAltName> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementVersionsV1SubjectAltName",
-  }) as any as Schema.Schema<GoogleChromeManagementVersionsV1SubjectAltName>;
+export const GoogleChromeManagementVersionsV1SubjectAltName =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChromeManagementVersionsV1SubjectAltName" });
 
 export interface GoogleChromeManagementVersionsV1ScepProfile {
   /** Output only. The common name of the subject. */
@@ -2786,24 +2494,20 @@ export interface GoogleChromeManagementVersionsV1ScepProfile {
   state?: string;
 }
 
-export const GoogleChromeManagementVersionsV1ScepProfile: Schema.Schema<GoogleChromeManagementVersionsV1ScepProfile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subjectCommonName: Schema.optional(Schema.String),
-      organization: Schema.optional(Schema.String),
-      organizationalUnits: Schema.optional(Schema.Array(Schema.String)),
-      locality: Schema.optional(Schema.String),
-      subjectAltNames: Schema.optional(
-        Schema.Array(GoogleChromeManagementVersionsV1SubjectAltName),
-      ),
-      keyUsages: Schema.optional(Schema.Array(Schema.String)),
-      certificateTemplateName: Schema.optional(Schema.String),
-      country: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementVersionsV1ScepProfile",
-  }) as any as Schema.Schema<GoogleChromeManagementVersionsV1ScepProfile>;
+export const GoogleChromeManagementVersionsV1ScepProfile =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subjectCommonName: Schema.optional(Schema.String),
+    organization: Schema.optional(Schema.String),
+    organizationalUnits: Schema.optional(Schema.Array(Schema.String)),
+    locality: Schema.optional(Schema.String),
+    subjectAltNames: Schema.optional(
+      Schema.Array(GoogleChromeManagementVersionsV1SubjectAltName),
+    ),
+    keyUsages: Schema.optional(Schema.Array(Schema.String)),
+    certificateTemplateName: Schema.optional(Schema.String),
+    country: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChromeManagementVersionsV1ScepProfile" });
 
 export interface GoogleChromeManagementV1CpuInfo {
   /** Output only. Whether keylocker is configured.`TRUE` = Enabled; `FALSE` = disabled. Only reported if keylockerSupported = `TRUE`. */
@@ -2818,18 +2522,14 @@ export interface GoogleChromeManagementV1CpuInfo {
   maxClockSpeed?: number;
 }
 
-export const GoogleChromeManagementV1CpuInfo: Schema.Schema<GoogleChromeManagementV1CpuInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      keylockerConfigured: Schema.optional(Schema.Boolean),
-      architecture: Schema.optional(Schema.String),
-      model: Schema.optional(Schema.String),
-      keylockerSupported: Schema.optional(Schema.Boolean),
-      maxClockSpeed: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1CpuInfo",
-  }) as any as Schema.Schema<GoogleChromeManagementV1CpuInfo>;
+export const GoogleChromeManagementV1CpuInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    keylockerConfigured: Schema.optional(Schema.Boolean),
+    architecture: Schema.optional(Schema.String),
+    model: Schema.optional(Schema.String),
+    keylockerSupported: Schema.optional(Schema.Boolean),
+    maxClockSpeed: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleChromeManagementV1CpuInfo" });
 
 export interface GoogleChromeManagementV1TotalMemoryEncryptionInfo {
   /** The state of memory encryption on the device. */
@@ -2853,17 +2553,15 @@ export interface GoogleChromeManagementV1TotalMemoryEncryptionInfo {
     | (string & {});
 }
 
-export const GoogleChromeManagementV1TotalMemoryEncryptionInfo: Schema.Schema<GoogleChromeManagementV1TotalMemoryEncryptionInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      encryptionState: Schema.optional(Schema.String),
-      maxKeys: Schema.optional(Schema.String),
-      keyLength: Schema.optional(Schema.String),
-      encryptionAlgorithm: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromeManagementV1TotalMemoryEncryptionInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    encryptionState: Schema.optional(Schema.String),
+    maxKeys: Schema.optional(Schema.String),
+    keyLength: Schema.optional(Schema.String),
+    encryptionAlgorithm: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleChromeManagementV1TotalMemoryEncryptionInfo",
-  }) as any as Schema.Schema<GoogleChromeManagementV1TotalMemoryEncryptionInfo>;
+  });
 
 export interface GoogleChromeManagementV1MemoryInfo {
   /** Output only. Total memory encryption info for the device. */
@@ -2874,18 +2572,14 @@ export interface GoogleChromeManagementV1MemoryInfo {
   availableRamBytes?: string;
 }
 
-export const GoogleChromeManagementV1MemoryInfo: Schema.Schema<GoogleChromeManagementV1MemoryInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      totalMemoryEncryption: Schema.optional(
-        GoogleChromeManagementV1TotalMemoryEncryptionInfo,
-      ),
-      totalRamBytes: Schema.optional(Schema.String),
-      availableRamBytes: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1MemoryInfo",
-  }) as any as Schema.Schema<GoogleChromeManagementV1MemoryInfo>;
+export const GoogleChromeManagementV1MemoryInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    totalMemoryEncryption: Schema.optional(
+      GoogleChromeManagementV1TotalMemoryEncryptionInfo,
+    ),
+    totalRamBytes: Schema.optional(Schema.String),
+    availableRamBytes: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChromeManagementV1MemoryInfo" });
 
 export interface GoogleChromeManagementV1PrinterReport {
   /** Number of print jobs sent to the printer. */
@@ -2902,19 +2596,15 @@ export interface GoogleChromeManagementV1PrinterReport {
   deviceCount?: string;
 }
 
-export const GoogleChromeManagementV1PrinterReport: Schema.Schema<GoogleChromeManagementV1PrinterReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      jobCount: Schema.optional(Schema.String),
-      printerModel: Schema.optional(Schema.String),
-      printerId: Schema.optional(Schema.String),
-      printer: Schema.optional(Schema.String),
-      userCount: Schema.optional(Schema.String),
-      deviceCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1PrinterReport",
-  }) as any as Schema.Schema<GoogleChromeManagementV1PrinterReport>;
+export const GoogleChromeManagementV1PrinterReport =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    jobCount: Schema.optional(Schema.String),
+    printerModel: Schema.optional(Schema.String),
+    printerId: Schema.optional(Schema.String),
+    printer: Schema.optional(Schema.String),
+    userCount: Schema.optional(Schema.String),
+    deviceCount: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChromeManagementV1PrinterReport" });
 
 export interface GoogleChromeManagementV1CountPrintJobsByPrinterResponse {
   /** List of PrinterReports matching request. */
@@ -2925,18 +2615,16 @@ export interface GoogleChromeManagementV1CountPrintJobsByPrinterResponse {
   nextPageToken?: string;
 }
 
-export const GoogleChromeManagementV1CountPrintJobsByPrinterResponse: Schema.Schema<GoogleChromeManagementV1CountPrintJobsByPrinterResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      printerReports: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1PrinterReport),
-      ),
-      totalSize: Schema.optional(Schema.String),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromeManagementV1CountPrintJobsByPrinterResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    printerReports: Schema.optional(
+      Schema.Array(GoogleChromeManagementV1PrinterReport),
+    ),
+    totalSize: Schema.optional(Schema.String),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleChromeManagementV1CountPrintJobsByPrinterResponse",
-  }) as any as Schema.Schema<GoogleChromeManagementV1CountPrintJobsByPrinterResponse>;
+  });
 
 export interface GoogleChromeManagementV1OsUpdateStatus {
   /** Output only. Timestamp of the last update check. */
@@ -2958,19 +2646,15 @@ export interface GoogleChromeManagementV1OsUpdateStatus {
   lastUpdateTime?: string;
 }
 
-export const GoogleChromeManagementV1OsUpdateStatus: Schema.Schema<GoogleChromeManagementV1OsUpdateStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lastUpdateCheckTime: Schema.optional(Schema.String),
-      newRequestedPlatformVersion: Schema.optional(Schema.String),
-      lastRebootTime: Schema.optional(Schema.String),
-      newPlatformVersion: Schema.optional(Schema.String),
-      updateState: Schema.optional(Schema.String),
-      lastUpdateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1OsUpdateStatus",
-  }) as any as Schema.Schema<GoogleChromeManagementV1OsUpdateStatus>;
+export const GoogleChromeManagementV1OsUpdateStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    lastUpdateCheckTime: Schema.optional(Schema.String),
+    newRequestedPlatformVersion: Schema.optional(Schema.String),
+    lastRebootTime: Schema.optional(Schema.String),
+    newPlatformVersion: Schema.optional(Schema.String),
+    updateState: Schema.optional(Schema.String),
+    lastUpdateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChromeManagementV1OsUpdateStatus" });
 
 export interface GoogleChromeManagementV1HeartbeatStatusReport {
   /** State the device changed to */
@@ -2985,15 +2669,11 @@ export interface GoogleChromeManagementV1HeartbeatStatusReport {
   reportTime?: string;
 }
 
-export const GoogleChromeManagementV1HeartbeatStatusReport: Schema.Schema<GoogleChromeManagementV1HeartbeatStatusReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      reportTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1HeartbeatStatusReport",
-  }) as any as Schema.Schema<GoogleChromeManagementV1HeartbeatStatusReport>;
+export const GoogleChromeManagementV1HeartbeatStatusReport =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+    reportTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChromeManagementV1HeartbeatStatusReport" });
 
 export interface GoogleChromeManagementVersionsV1ThirdPartyProfileUser {
   /** Identifier. Format: customers/{customer_id}/thirdPartyProfileUsers/{third_party_profile_user_id} */
@@ -3002,30 +2682,26 @@ export interface GoogleChromeManagementVersionsV1ThirdPartyProfileUser {
   orgUnitId?: string;
 }
 
-export const GoogleChromeManagementVersionsV1ThirdPartyProfileUser: Schema.Schema<GoogleChromeManagementVersionsV1ThirdPartyProfileUser> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      orgUnitId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromeManagementVersionsV1ThirdPartyProfileUser =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    orgUnitId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleChromeManagementVersionsV1ThirdPartyProfileUser",
-  }) as any as Schema.Schema<GoogleChromeManagementVersionsV1ThirdPartyProfileUser>;
+  });
 
 export interface GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserRequest {
   /** Required. Destination organizational unit where the third party chrome profile user will be moved to. */
   destinationOrgUnit?: string;
 }
 
-export const GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserRequest: Schema.Schema<GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      destinationOrgUnit: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    destinationOrgUnit: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserRequest",
-  }) as any as Schema.Schema<GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserRequest>;
+  });
 
 export interface GoogleChromeManagementV1NetworkDiagnosticsReport {
   /** Output only. Timestamp of when the diagnostics were collected. */
@@ -3034,17 +2710,15 @@ export interface GoogleChromeManagementV1NetworkDiagnosticsReport {
   httpsLatencyData?: GoogleChromeManagementV1HttpsLatencyRoutineData;
 }
 
-export const GoogleChromeManagementV1NetworkDiagnosticsReport: Schema.Schema<GoogleChromeManagementV1NetworkDiagnosticsReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reportTime: Schema.optional(Schema.String),
-      httpsLatencyData: Schema.optional(
-        GoogleChromeManagementV1HttpsLatencyRoutineData,
-      ),
-    }),
-  ).annotate({
+export const GoogleChromeManagementV1NetworkDiagnosticsReport =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reportTime: Schema.optional(Schema.String),
+    httpsLatencyData: Schema.optional(
+      GoogleChromeManagementV1HttpsLatencyRoutineData,
+    ),
+  }).annotate({
     identifier: "GoogleChromeManagementV1NetworkDiagnosticsReport",
-  }) as any as Schema.Schema<GoogleChromeManagementV1NetworkDiagnosticsReport>;
+  });
 
 export interface GoogleChromeManagementV1DisplayDevice {
   /** Output only. Display width in millimeters. */
@@ -3067,22 +2741,18 @@ export interface GoogleChromeManagementV1DisplayDevice {
   edidVersion?: string;
 }
 
-export const GoogleChromeManagementV1DisplayDevice: Schema.Schema<GoogleChromeManagementV1DisplayDevice> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayWidthMm: Schema.optional(Schema.Number),
-      internal: Schema.optional(Schema.Boolean),
-      manufactureYear: Schema.optional(Schema.Number),
-      displayName: Schema.optional(Schema.String),
-      displayHeightMm: Schema.optional(Schema.Number),
-      manufacturerId: Schema.optional(Schema.String),
-      modelId: Schema.optional(Schema.Number),
-      serialNumber: Schema.optional(Schema.Number),
-      edidVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1DisplayDevice",
-  }) as any as Schema.Schema<GoogleChromeManagementV1DisplayDevice>;
+export const GoogleChromeManagementV1DisplayDevice =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayWidthMm: Schema.optional(Schema.Number),
+    internal: Schema.optional(Schema.Boolean),
+    manufactureYear: Schema.optional(Schema.Number),
+    displayName: Schema.optional(Schema.String),
+    displayHeightMm: Schema.optional(Schema.Number),
+    manufacturerId: Schema.optional(Schema.String),
+    modelId: Schema.optional(Schema.Number),
+    serialNumber: Schema.optional(Schema.Number),
+    edidVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChromeManagementV1DisplayDevice" });
 
 export interface GoogleChromeManagementV1DisplayInfo {
   /** Output only. Serial number. */
@@ -3103,21 +2773,17 @@ export interface GoogleChromeManagementV1DisplayInfo {
   isInternal?: boolean;
 }
 
-export const GoogleChromeManagementV1DisplayInfo: Schema.Schema<GoogleChromeManagementV1DisplayInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serialNumber: Schema.optional(Schema.Number),
-      deviceId: Schema.optional(Schema.String),
-      edidVersion: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      resolutionWidth: Schema.optional(Schema.Number),
-      resolutionHeight: Schema.optional(Schema.Number),
-      refreshRate: Schema.optional(Schema.Number),
-      isInternal: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1DisplayInfo",
-  }) as any as Schema.Schema<GoogleChromeManagementV1DisplayInfo>;
+export const GoogleChromeManagementV1DisplayInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    serialNumber: Schema.optional(Schema.Number),
+    deviceId: Schema.optional(Schema.String),
+    edidVersion: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    resolutionWidth: Schema.optional(Schema.Number),
+    resolutionHeight: Schema.optional(Schema.Number),
+    refreshRate: Schema.optional(Schema.Number),
+    isInternal: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleChromeManagementV1DisplayInfo" });
 
 export interface GoogleChromeManagementVersionsV1ChromeOsDevice {
   /** Output only. Device serial number. This value is the same as the Admin Console's Serial Number in the ChromeOS Devices tab. */
@@ -3126,15 +2792,11 @@ export interface GoogleChromeManagementVersionsV1ChromeOsDevice {
   deviceDirectoryApiId?: string;
 }
 
-export const GoogleChromeManagementVersionsV1ChromeOsDevice: Schema.Schema<GoogleChromeManagementVersionsV1ChromeOsDevice> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serialNumber: Schema.optional(Schema.String),
-      deviceDirectoryApiId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementVersionsV1ChromeOsDevice",
-  }) as any as Schema.Schema<GoogleChromeManagementVersionsV1ChromeOsDevice>;
+export const GoogleChromeManagementVersionsV1ChromeOsDevice =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    serialNumber: Schema.optional(Schema.String),
+    deviceDirectoryApiId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChromeManagementVersionsV1ChromeOsDevice" });
 
 export interface GoogleChromeManagementV1GraphicsInfo {
   /** Output only. Information about the internal touch screen(s) of the device. */
@@ -3147,19 +2809,15 @@ export interface GoogleChromeManagementV1GraphicsInfo {
   displayDevices?: Array<GoogleChromeManagementV1DisplayDevice>;
 }
 
-export const GoogleChromeManagementV1GraphicsInfo: Schema.Schema<GoogleChromeManagementV1GraphicsInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      touchScreenInfo: Schema.optional(GoogleChromeManagementV1TouchScreenInfo),
-      adapterInfo: Schema.optional(GoogleChromeManagementV1GraphicsAdapterInfo),
-      eprivacySupported: Schema.optional(Schema.Boolean),
-      displayDevices: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1DisplayDevice),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1GraphicsInfo",
-  }) as any as Schema.Schema<GoogleChromeManagementV1GraphicsInfo>;
+export const GoogleChromeManagementV1GraphicsInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    touchScreenInfo: Schema.optional(GoogleChromeManagementV1TouchScreenInfo),
+    adapterInfo: Schema.optional(GoogleChromeManagementV1GraphicsAdapterInfo),
+    eprivacySupported: Schema.optional(Schema.Boolean),
+    displayDevices: Schema.optional(
+      Schema.Array(GoogleChromeManagementV1DisplayDevice),
+    ),
+  }).annotate({ identifier: "GoogleChromeManagementV1GraphicsInfo" });
 
 export interface GoogleChromeManagementV1NetworkStatusReport {
   /** Output only. The maximum downstream bandwidth in Kilobits per second (Kbps), if reported by the network interface or connection. */
@@ -3214,31 +2872,27 @@ export interface GoogleChromeManagementV1NetworkStatusReport {
   receivingBitRateMbps?: string;
 }
 
-export const GoogleChromeManagementV1NetworkStatusReport: Schema.Schema<GoogleChromeManagementV1NetworkStatusReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      linkDownSpeedKbps: Schema.optional(Schema.String),
-      transmissionPowerDbm: Schema.optional(Schema.Number),
-      gatewayIpv6Address: Schema.optional(Schema.String),
-      gatewayIpAddress: Schema.optional(Schema.String),
-      transmissionBitRateMbps: Schema.optional(Schema.String),
-      reportTime: Schema.optional(Schema.String),
-      signalStrengthDbm: Schema.optional(Schema.Number),
-      lanIpAddress: Schema.optional(Schema.String),
-      guid: Schema.optional(Schema.String),
-      connectionState: Schema.optional(Schema.String),
-      connectionType: Schema.optional(Schema.String),
-      ipv6Address: Schema.optional(Schema.Array(Schema.String)),
-      encryptionOn: Schema.optional(Schema.Boolean),
-      wifiPowerManagementEnabled: Schema.optional(Schema.Boolean),
-      metered: Schema.optional(Schema.Boolean),
-      wifiLinkQuality: Schema.optional(Schema.String),
-      sampleFrequency: Schema.optional(Schema.String),
-      receivingBitRateMbps: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1NetworkStatusReport",
-  }) as any as Schema.Schema<GoogleChromeManagementV1NetworkStatusReport>;
+export const GoogleChromeManagementV1NetworkStatusReport =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    linkDownSpeedKbps: Schema.optional(Schema.String),
+    transmissionPowerDbm: Schema.optional(Schema.Number),
+    gatewayIpv6Address: Schema.optional(Schema.String),
+    gatewayIpAddress: Schema.optional(Schema.String),
+    transmissionBitRateMbps: Schema.optional(Schema.String),
+    reportTime: Schema.optional(Schema.String),
+    signalStrengthDbm: Schema.optional(Schema.Number),
+    lanIpAddress: Schema.optional(Schema.String),
+    guid: Schema.optional(Schema.String),
+    connectionState: Schema.optional(Schema.String),
+    connectionType: Schema.optional(Schema.String),
+    ipv6Address: Schema.optional(Schema.Array(Schema.String)),
+    encryptionOn: Schema.optional(Schema.Boolean),
+    wifiPowerManagementEnabled: Schema.optional(Schema.Boolean),
+    metered: Schema.optional(Schema.Boolean),
+    wifiLinkQuality: Schema.optional(Schema.String),
+    sampleFrequency: Schema.optional(Schema.String),
+    receivingBitRateMbps: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChromeManagementV1NetworkStatusReport" });
 
 export interface GoogleChromeManagementV1BatteryStatusReport {
   /** Output only. Timestamp of when the sample was collected on device */
@@ -3260,21 +2914,17 @@ export interface GoogleChromeManagementV1BatteryStatusReport {
   cycleCount?: number;
 }
 
-export const GoogleChromeManagementV1BatteryStatusReport: Schema.Schema<GoogleChromeManagementV1BatteryStatusReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reportTime: Schema.optional(Schema.String),
-      serialNumber: Schema.optional(Schema.String),
-      batteryHealth: Schema.optional(Schema.String),
-      sample: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1BatterySampleReport),
-      ),
-      fullChargeCapacity: Schema.optional(Schema.String),
-      cycleCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1BatteryStatusReport",
-  }) as any as Schema.Schema<GoogleChromeManagementV1BatteryStatusReport>;
+export const GoogleChromeManagementV1BatteryStatusReport =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reportTime: Schema.optional(Schema.String),
+    serialNumber: Schema.optional(Schema.String),
+    batteryHealth: Schema.optional(Schema.String),
+    sample: Schema.optional(
+      Schema.Array(GoogleChromeManagementV1BatterySampleReport),
+    ),
+    fullChargeCapacity: Schema.optional(Schema.String),
+    cycleCount: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleChromeManagementV1BatteryStatusReport" });
 
 export interface GoogleChromeManagementV1CpuTemperatureInfo {
   /** Output only. CPU label. Example: Core 0 */
@@ -3283,15 +2933,11 @@ export interface GoogleChromeManagementV1CpuTemperatureInfo {
   temperatureCelsius?: number;
 }
 
-export const GoogleChromeManagementV1CpuTemperatureInfo: Schema.Schema<GoogleChromeManagementV1CpuTemperatureInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      label: Schema.optional(Schema.String),
-      temperatureCelsius: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1CpuTemperatureInfo",
-  }) as any as Schema.Schema<GoogleChromeManagementV1CpuTemperatureInfo>;
+export const GoogleChromeManagementV1CpuTemperatureInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    label: Schema.optional(Schema.String),
+    temperatureCelsius: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleChromeManagementV1CpuTemperatureInfo" });
 
 export interface GoogleChromeManagementV1CpuStatusReport {
   /** Output only. Frequency the report is sampled. */
@@ -3304,19 +2950,15 @@ export interface GoogleChromeManagementV1CpuStatusReport {
   reportTime?: string;
 }
 
-export const GoogleChromeManagementV1CpuStatusReport: Schema.Schema<GoogleChromeManagementV1CpuStatusReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sampleFrequency: Schema.optional(Schema.String),
-      cpuTemperatureInfo: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1CpuTemperatureInfo),
-      ),
-      cpuUtilizationPct: Schema.optional(Schema.Number),
-      reportTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1CpuStatusReport",
-  }) as any as Schema.Schema<GoogleChromeManagementV1CpuStatusReport>;
+export const GoogleChromeManagementV1CpuStatusReport =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sampleFrequency: Schema.optional(Schema.String),
+    cpuTemperatureInfo: Schema.optional(
+      Schema.Array(GoogleChromeManagementV1CpuTemperatureInfo),
+    ),
+    cpuUtilizationPct: Schema.optional(Schema.Number),
+    reportTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChromeManagementV1CpuStatusReport" });
 
 export interface GoogleChromeManagementV1StorageInfoDiskVolume {
   /** Total storage space in bytes. */
@@ -3327,16 +2969,12 @@ export interface GoogleChromeManagementV1StorageInfoDiskVolume {
   volumeId?: string;
 }
 
-export const GoogleChromeManagementV1StorageInfoDiskVolume: Schema.Schema<GoogleChromeManagementV1StorageInfoDiskVolume> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      storageTotalBytes: Schema.optional(Schema.String),
-      storageFreeBytes: Schema.optional(Schema.String),
-      volumeId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1StorageInfoDiskVolume",
-  }) as any as Schema.Schema<GoogleChromeManagementV1StorageInfoDiskVolume>;
+export const GoogleChromeManagementV1StorageInfoDiskVolume =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    storageTotalBytes: Schema.optional(Schema.String),
+    storageFreeBytes: Schema.optional(Schema.String),
+    volumeId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChromeManagementV1StorageInfoDiskVolume" });
 
 export interface GoogleChromeManagementV1StorageInfo {
   /** Information for disk volumes */
@@ -3347,18 +2985,14 @@ export interface GoogleChromeManagementV1StorageInfo {
   totalDiskBytes?: string;
 }
 
-export const GoogleChromeManagementV1StorageInfo: Schema.Schema<GoogleChromeManagementV1StorageInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      volume: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1StorageInfoDiskVolume),
-      ),
-      availableDiskBytes: Schema.optional(Schema.String),
-      totalDiskBytes: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1StorageInfo",
-  }) as any as Schema.Schema<GoogleChromeManagementV1StorageInfo>;
+export const GoogleChromeManagementV1StorageInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    volume: Schema.optional(
+      Schema.Array(GoogleChromeManagementV1StorageInfoDiskVolume),
+    ),
+    availableDiskBytes: Schema.optional(Schema.String),
+    totalDiskBytes: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChromeManagementV1StorageInfo" });
 
 export interface GoogleChromeManagementV1GraphicsStatusReport {
   /** Output only. Time at which the graphics data was reported. */
@@ -3367,17 +3001,13 @@ export interface GoogleChromeManagementV1GraphicsStatusReport {
   displays?: Array<GoogleChromeManagementV1DisplayInfo>;
 }
 
-export const GoogleChromeManagementV1GraphicsStatusReport: Schema.Schema<GoogleChromeManagementV1GraphicsStatusReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reportTime: Schema.optional(Schema.String),
-      displays: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1DisplayInfo),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1GraphicsStatusReport",
-  }) as any as Schema.Schema<GoogleChromeManagementV1GraphicsStatusReport>;
+export const GoogleChromeManagementV1GraphicsStatusReport =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reportTime: Schema.optional(Schema.String),
+    displays: Schema.optional(
+      Schema.Array(GoogleChromeManagementV1DisplayInfo),
+    ),
+  }).annotate({ identifier: "GoogleChromeManagementV1GraphicsStatusReport" });
 
 export interface GoogleChromeManagementV1MemoryStatusReport {
   /** Output only. The timestamp in milliseconds representing time at which this report was sampled. */
@@ -3390,17 +3020,13 @@ export interface GoogleChromeManagementV1MemoryStatusReport {
   systemRamFreeBytes?: string;
 }
 
-export const GoogleChromeManagementV1MemoryStatusReport: Schema.Schema<GoogleChromeManagementV1MemoryStatusReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reportTime: Schema.optional(Schema.String),
-      pageFaults: Schema.optional(Schema.Number),
-      sampleFrequency: Schema.optional(Schema.String),
-      systemRamFreeBytes: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1MemoryStatusReport",
-  }) as any as Schema.Schema<GoogleChromeManagementV1MemoryStatusReport>;
+export const GoogleChromeManagementV1MemoryStatusReport =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reportTime: Schema.optional(Schema.String),
+    pageFaults: Schema.optional(Schema.Number),
+    sampleFrequency: Schema.optional(Schema.String),
+    systemRamFreeBytes: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChromeManagementV1MemoryStatusReport" });
 
 export interface GoogleChromeManagementV1TelemetryDevice {
   /** Output only. Heartbeat status report containing timestamps periodically sorted in decreasing order of report_time */
@@ -3461,77 +3087,71 @@ export interface GoogleChromeManagementV1TelemetryDevice {
   name?: string;
 }
 
-export const GoogleChromeManagementV1TelemetryDevice: Schema.Schema<GoogleChromeManagementV1TelemetryDevice> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      heartbeatStatusReport: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1HeartbeatStatusReport),
-      ),
-      bootPerformanceReport: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1BootPerformanceReport),
-      ),
-      audioStatusReport: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1AudioStatusReport),
-      ),
-      deviceId: Schema.optional(Schema.String),
-      memoryInfo: Schema.optional(GoogleChromeManagementV1MemoryInfo),
-      cpuStatusReport: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1CpuStatusReport),
-      ),
-      serialNumber: Schema.optional(Schema.String),
-      appReport: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1AppReport),
-      ),
-      networkBandwidthReport: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1NetworkBandwidthReport),
-      ),
-      batteryStatusReport: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1BatteryStatusReport),
-      ),
-      networkDiagnosticsReport: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1NetworkDiagnosticsReport),
-      ),
-      storageInfo: Schema.optional(GoogleChromeManagementV1StorageInfo),
-      graphicsInfo: Schema.optional(GoogleChromeManagementV1GraphicsInfo),
-      thunderboltInfo: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1ThunderboltInfo),
-      ),
-      cpuInfo: Schema.optional(Schema.Array(GoogleChromeManagementV1CpuInfo)),
-      osUpdateStatus: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1OsUpdateStatus),
-      ),
-      batteryInfo: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1BatteryInfo),
-      ),
-      peripheralsReport: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1PeripheralsReport),
-      ),
-      networkStatusReport: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1NetworkStatusReport),
-      ),
-      storageStatusReport: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1StorageStatusReport),
-      ),
-      runtimeCountersReport: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1RuntimeCountersReport),
-      ),
-      graphicsStatusReport: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1GraphicsStatusReport),
-      ),
-      orgUnitId: Schema.optional(Schema.String),
-      memoryStatusReport: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1MemoryStatusReport),
-      ),
-      networkInfo: Schema.optional(GoogleChromeManagementV1NetworkInfo),
-      customer: Schema.optional(Schema.String),
-      kioskAppStatusReport: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1KioskAppStatusReport),
-      ),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1TelemetryDevice",
-  }) as any as Schema.Schema<GoogleChromeManagementV1TelemetryDevice>;
+export const GoogleChromeManagementV1TelemetryDevice =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    heartbeatStatusReport: Schema.optional(
+      Schema.Array(GoogleChromeManagementV1HeartbeatStatusReport),
+    ),
+    bootPerformanceReport: Schema.optional(
+      Schema.Array(GoogleChromeManagementV1BootPerformanceReport),
+    ),
+    audioStatusReport: Schema.optional(
+      Schema.Array(GoogleChromeManagementV1AudioStatusReport),
+    ),
+    deviceId: Schema.optional(Schema.String),
+    memoryInfo: Schema.optional(GoogleChromeManagementV1MemoryInfo),
+    cpuStatusReport: Schema.optional(
+      Schema.Array(GoogleChromeManagementV1CpuStatusReport),
+    ),
+    serialNumber: Schema.optional(Schema.String),
+    appReport: Schema.optional(Schema.Array(GoogleChromeManagementV1AppReport)),
+    networkBandwidthReport: Schema.optional(
+      Schema.Array(GoogleChromeManagementV1NetworkBandwidthReport),
+    ),
+    batteryStatusReport: Schema.optional(
+      Schema.Array(GoogleChromeManagementV1BatteryStatusReport),
+    ),
+    networkDiagnosticsReport: Schema.optional(
+      Schema.Array(GoogleChromeManagementV1NetworkDiagnosticsReport),
+    ),
+    storageInfo: Schema.optional(GoogleChromeManagementV1StorageInfo),
+    graphicsInfo: Schema.optional(GoogleChromeManagementV1GraphicsInfo),
+    thunderboltInfo: Schema.optional(
+      Schema.Array(GoogleChromeManagementV1ThunderboltInfo),
+    ),
+    cpuInfo: Schema.optional(Schema.Array(GoogleChromeManagementV1CpuInfo)),
+    osUpdateStatus: Schema.optional(
+      Schema.Array(GoogleChromeManagementV1OsUpdateStatus),
+    ),
+    batteryInfo: Schema.optional(
+      Schema.Array(GoogleChromeManagementV1BatteryInfo),
+    ),
+    peripheralsReport: Schema.optional(
+      Schema.Array(GoogleChromeManagementV1PeripheralsReport),
+    ),
+    networkStatusReport: Schema.optional(
+      Schema.Array(GoogleChromeManagementV1NetworkStatusReport),
+    ),
+    storageStatusReport: Schema.optional(
+      Schema.Array(GoogleChromeManagementV1StorageStatusReport),
+    ),
+    runtimeCountersReport: Schema.optional(
+      Schema.Array(GoogleChromeManagementV1RuntimeCountersReport),
+    ),
+    graphicsStatusReport: Schema.optional(
+      Schema.Array(GoogleChromeManagementV1GraphicsStatusReport),
+    ),
+    orgUnitId: Schema.optional(Schema.String),
+    memoryStatusReport: Schema.optional(
+      Schema.Array(GoogleChromeManagementV1MemoryStatusReport),
+    ),
+    networkInfo: Schema.optional(GoogleChromeManagementV1NetworkInfo),
+    customer: Schema.optional(Schema.String),
+    kioskAppStatusReport: Schema.optional(
+      Schema.Array(GoogleChromeManagementV1KioskAppStatusReport),
+    ),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChromeManagementV1TelemetryDevice" });
 
 export interface GoogleChromeManagementV1ListTelemetryDevicesResponse {
   /** Telemetry devices returned in the response. */
@@ -3540,17 +3160,15 @@ export interface GoogleChromeManagementV1ListTelemetryDevicesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleChromeManagementV1ListTelemetryDevicesResponse: Schema.Schema<GoogleChromeManagementV1ListTelemetryDevicesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      devices: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1TelemetryDevice),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromeManagementV1ListTelemetryDevicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    devices: Schema.optional(
+      Schema.Array(GoogleChromeManagementV1TelemetryDevice),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleChromeManagementV1ListTelemetryDevicesResponse",
-  }) as any as Schema.Schema<GoogleChromeManagementV1ListTelemetryDevicesResponse>;
+  });
 
 export interface GoogleChromeManagementV1ListTelemetryEventsResponse {
   /** Telemetry events returned in the response. */
@@ -3559,17 +3177,15 @@ export interface GoogleChromeManagementV1ListTelemetryEventsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleChromeManagementV1ListTelemetryEventsResponse: Schema.Schema<GoogleChromeManagementV1ListTelemetryEventsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      telemetryEvents: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1TelemetryEvent),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromeManagementV1ListTelemetryEventsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    telemetryEvents: Schema.optional(
+      Schema.Array(GoogleChromeManagementV1TelemetryEvent),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleChromeManagementV1ListTelemetryEventsResponse",
-  }) as any as Schema.Schema<GoogleChromeManagementV1ListTelemetryEventsResponse>;
+  });
 
 export interface GoogleChromeManagementVersionsV1ChromeOsUserSession {
   /** Output only. This field contains information about the ChromeOS device that the user session is running on. It is only set if the user is affiliated, i.e., if the user is managed by the same organization that manages the ChromeOS device. */
@@ -3580,32 +3196,26 @@ export interface GoogleChromeManagementVersionsV1ChromeOsUserSession {
   userPrimaryEmail?: string;
 }
 
-export const GoogleChromeManagementVersionsV1ChromeOsUserSession: Schema.Schema<GoogleChromeManagementVersionsV1ChromeOsUserSession> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      chromeOsDevice: Schema.optional(
-        GoogleChromeManagementVersionsV1ChromeOsDevice,
-      ),
-      userDirectoryApiId: Schema.optional(Schema.String),
-      userPrimaryEmail: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromeManagementVersionsV1ChromeOsUserSession =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    chromeOsDevice: Schema.optional(
+      GoogleChromeManagementVersionsV1ChromeOsDevice,
+    ),
+    userDirectoryApiId: Schema.optional(Schema.String),
+    userPrimaryEmail: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleChromeManagementVersionsV1ChromeOsUserSession",
-  }) as any as Schema.Schema<GoogleChromeManagementVersionsV1ChromeOsUserSession>;
+  });
 
 export interface GoogleChromeManagementVersionsV1GenericProfile {
   /** Output only. A string that references the administrator-provided configuration for the certificate provisioning profile. */
   profileAdapterConfigReference?: string;
 }
 
-export const GoogleChromeManagementVersionsV1GenericProfile: Schema.Schema<GoogleChromeManagementVersionsV1GenericProfile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      profileAdapterConfigReference: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementVersionsV1GenericProfile",
-  }) as any as Schema.Schema<GoogleChromeManagementVersionsV1GenericProfile>;
+export const GoogleChromeManagementVersionsV1GenericProfile =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    profileAdapterConfigReference: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChromeManagementVersionsV1GenericProfile" });
 
 export interface GoogleChromeManagementVersionsV1CertificateProvisioningProcess {
   /** Output only. The client certificate is being provisioned for a ChromeOS user. This contains information about the current user session. */
@@ -3644,39 +3254,37 @@ export interface GoogleChromeManagementVersionsV1CertificateProvisioningProcess 
   genericCaConnection?: GoogleChromeManagementVersionsV1GenericCaConnection;
 }
 
-export const GoogleChromeManagementVersionsV1CertificateProvisioningProcess: Schema.Schema<GoogleChromeManagementVersionsV1CertificateProvisioningProcess> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      chromeOsUserSession: Schema.optional(
-        GoogleChromeManagementVersionsV1ChromeOsUserSession,
-      ),
-      genericProfile: Schema.optional(
-        GoogleChromeManagementVersionsV1GenericProfile,
-      ),
-      signatureAlgorithm: Schema.optional(Schema.String),
-      scepCaConnection: Schema.optional(
-        GoogleChromeManagementVersionsV1ScepCaConnection,
-      ),
-      signature: Schema.optional(Schema.String),
-      failureMessage: Schema.optional(Schema.String),
-      chromeOsDevice: Schema.optional(
-        GoogleChromeManagementVersionsV1ChromeOsDevice,
-      ),
-      signData: Schema.optional(Schema.String),
-      provisioningProfileId: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      issuedCertificate: Schema.optional(Schema.String),
-      scepProfile: Schema.optional(GoogleChromeManagementVersionsV1ScepProfile),
-      name: Schema.optional(Schema.String),
-      subjectPublicKeyInfo: Schema.optional(Schema.String),
-      genericCaConnection: Schema.optional(
-        GoogleChromeManagementVersionsV1GenericCaConnection,
-      ),
-    }),
-  ).annotate({
+export const GoogleChromeManagementVersionsV1CertificateProvisioningProcess =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    chromeOsUserSession: Schema.optional(
+      GoogleChromeManagementVersionsV1ChromeOsUserSession,
+    ),
+    genericProfile: Schema.optional(
+      GoogleChromeManagementVersionsV1GenericProfile,
+    ),
+    signatureAlgorithm: Schema.optional(Schema.String),
+    scepCaConnection: Schema.optional(
+      GoogleChromeManagementVersionsV1ScepCaConnection,
+    ),
+    signature: Schema.optional(Schema.String),
+    failureMessage: Schema.optional(Schema.String),
+    chromeOsDevice: Schema.optional(
+      GoogleChromeManagementVersionsV1ChromeOsDevice,
+    ),
+    signData: Schema.optional(Schema.String),
+    provisioningProfileId: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    issuedCertificate: Schema.optional(Schema.String),
+    scepProfile: Schema.optional(GoogleChromeManagementVersionsV1ScepProfile),
+    name: Schema.optional(Schema.String),
+    subjectPublicKeyInfo: Schema.optional(Schema.String),
+    genericCaConnection: Schema.optional(
+      GoogleChromeManagementVersionsV1GenericCaConnection,
+    ),
+  }).annotate({
     identifier:
       "GoogleChromeManagementVersionsV1CertificateProvisioningProcess",
-  }) as any as Schema.Schema<GoogleChromeManagementVersionsV1CertificateProvisioningProcess>;
+  });
 
 export interface GoogleChromeManagementV1CountDevicesPerBootTypeResponse {
   /** Number of devices with dev boot type. */
@@ -3687,33 +3295,29 @@ export interface GoogleChromeManagementV1CountDevicesPerBootTypeResponse {
   unreportedBootTypeCount?: string;
 }
 
-export const GoogleChromeManagementV1CountDevicesPerBootTypeResponse: Schema.Schema<GoogleChromeManagementV1CountDevicesPerBootTypeResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      devBootTypeCount: Schema.optional(Schema.String),
-      verifiedBootTypeCount: Schema.optional(Schema.String),
-      unreportedBootTypeCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromeManagementV1CountDevicesPerBootTypeResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    devBootTypeCount: Schema.optional(Schema.String),
+    verifiedBootTypeCount: Schema.optional(Schema.String),
+    unreportedBootTypeCount: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleChromeManagementV1CountDevicesPerBootTypeResponse",
-  }) as any as Schema.Schema<GoogleChromeManagementV1CountDevicesPerBootTypeResponse>;
+  });
 
 export interface GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserResponse {
   /** Output only. The moved third party profile user. */
   thirdPartyProfileUser?: GoogleChromeManagementVersionsV1ThirdPartyProfileUser;
 }
 
-export const GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserResponse: Schema.Schema<GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      thirdPartyProfileUser: Schema.optional(
-        GoogleChromeManagementVersionsV1ThirdPartyProfileUser,
-      ),
-    }),
-  ).annotate({
+export const GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    thirdPartyProfileUser: Schema.optional(
+      GoogleChromeManagementVersionsV1ThirdPartyProfileUser,
+    ),
+  }).annotate({
     identifier:
       "GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserResponse",
-  }) as any as Schema.Schema<GoogleChromeManagementVersionsV1MoveThirdPartyProfileUserResponse>;
+  });
 
 export interface GoogleChromeManagementV1EnumeratePrintJobsResponse {
   /** List of requested print jobs. */
@@ -3724,33 +3328,27 @@ export interface GoogleChromeManagementV1EnumeratePrintJobsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleChromeManagementV1EnumeratePrintJobsResponse: Schema.Schema<GoogleChromeManagementV1EnumeratePrintJobsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      printJobs: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1PrintJob),
-      ),
-      totalSize: Schema.optional(Schema.String),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromeManagementV1EnumeratePrintJobsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    printJobs: Schema.optional(Schema.Array(GoogleChromeManagementV1PrintJob)),
+    totalSize: Schema.optional(Schema.String),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleChromeManagementV1EnumeratePrintJobsResponse",
-  }) as any as Schema.Schema<GoogleChromeManagementV1EnumeratePrintJobsResponse>;
+  });
 
 export interface GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessRequest {
   /** Required. The instance id of the caller. */
   callerInstanceId?: string;
 }
 
-export const GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessRequest: Schema.Schema<GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      callerInstanceId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    callerInstanceId: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessRequest",
-  }) as any as Schema.Schema<GoogleChromeManagementVersionsV1ClaimCertificateProvisioningProcessRequest>;
+  });
 
 export interface GoogleChromeManagementV1UserPrintReport {
   /** Number of print jobs initiated by the user. */
@@ -3765,18 +3363,14 @@ export interface GoogleChromeManagementV1UserPrintReport {
   deviceCount?: string;
 }
 
-export const GoogleChromeManagementV1UserPrintReport: Schema.Schema<GoogleChromeManagementV1UserPrintReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      jobCount: Schema.optional(Schema.String),
-      userEmail: Schema.optional(Schema.String),
-      printerCount: Schema.optional(Schema.String),
-      userId: Schema.optional(Schema.String),
-      deviceCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChromeManagementV1UserPrintReport",
-  }) as any as Schema.Schema<GoogleChromeManagementV1UserPrintReport>;
+export const GoogleChromeManagementV1UserPrintReport =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    jobCount: Schema.optional(Schema.String),
+    userEmail: Schema.optional(Schema.String),
+    printerCount: Schema.optional(Schema.String),
+    userId: Schema.optional(Schema.String),
+    deviceCount: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChromeManagementV1UserPrintReport" });
 
 export interface GoogleChromeManagementV1CountPrintJobsByUserResponse {
   /** Total number of users matching request. */
@@ -3787,25 +3381,22 @@ export interface GoogleChromeManagementV1CountPrintJobsByUserResponse {
   userPrintReports?: Array<GoogleChromeManagementV1UserPrintReport>;
 }
 
-export const GoogleChromeManagementV1CountPrintJobsByUserResponse: Schema.Schema<GoogleChromeManagementV1CountPrintJobsByUserResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      totalSize: Schema.optional(Schema.String),
-      nextPageToken: Schema.optional(Schema.String),
-      userPrintReports: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1UserPrintReport),
-      ),
-    }),
-  ).annotate({
+export const GoogleChromeManagementV1CountPrintJobsByUserResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    totalSize: Schema.optional(Schema.String),
+    nextPageToken: Schema.optional(Schema.String),
+    userPrintReports: Schema.optional(
+      Schema.Array(GoogleChromeManagementV1UserPrintReport),
+    ),
+  }).annotate({
     identifier: "GoogleChromeManagementV1CountPrintJobsByUserResponse",
-  }) as any as Schema.Schema<GoogleChromeManagementV1CountPrintJobsByUserResponse>;
+  });
 
 export interface GoogleProtobufEmpty {}
 
-export const GoogleProtobufEmpty: Schema.Schema<GoogleProtobufEmpty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "GoogleProtobufEmpty",
-  }) as any as Schema.Schema<GoogleProtobufEmpty>;
+export const GoogleProtobufEmpty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "GoogleProtobufEmpty" });
 
 export interface GoogleChromeManagementV1CountActiveDevicesResponse {
   /** Number of active devices in the 7 days leading up to the date specified in the request. */
@@ -3814,15 +3405,13 @@ export interface GoogleChromeManagementV1CountActiveDevicesResponse {
   thirtyDaysCount?: string;
 }
 
-export const GoogleChromeManagementV1CountActiveDevicesResponse: Schema.Schema<GoogleChromeManagementV1CountActiveDevicesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sevenDaysCount: Schema.optional(Schema.String),
-      thirtyDaysCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromeManagementV1CountActiveDevicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sevenDaysCount: Schema.optional(Schema.String),
+    thirtyDaysCount: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleChromeManagementV1CountActiveDevicesResponse",
-  }) as any as Schema.Schema<GoogleChromeManagementV1CountActiveDevicesResponse>;
+  });
 
 export interface GoogleChromeManagementV1ListTelemetryUsersResponse {
   /** Telemetry users returned in the response. */
@@ -3831,24 +3420,22 @@ export interface GoogleChromeManagementV1ListTelemetryUsersResponse {
   nextPageToken?: string;
 }
 
-export const GoogleChromeManagementV1ListTelemetryUsersResponse: Schema.Schema<GoogleChromeManagementV1ListTelemetryUsersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      telemetryUsers: Schema.optional(
-        Schema.Array(GoogleChromeManagementV1TelemetryUser),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromeManagementV1ListTelemetryUsersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    telemetryUsers: Schema.optional(
+      Schema.Array(GoogleChromeManagementV1TelemetryUser),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleChromeManagementV1ListTelemetryUsersResponse",
-  }) as any as Schema.Schema<GoogleChromeManagementV1ListTelemetryUsersResponse>;
+  });
 
 export interface GoogleChromeManagementVersionsV1UploadCertificateResponse {}
 
-export const GoogleChromeManagementVersionsV1UploadCertificateResponse: Schema.Schema<GoogleChromeManagementVersionsV1UploadCertificateResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleChromeManagementVersionsV1UploadCertificateResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleChromeManagementVersionsV1UploadCertificateResponse",
-  }) as any as Schema.Schema<GoogleChromeManagementVersionsV1UploadCertificateResponse>;
+  });
 
 export interface GoogleChromeManagementV1CountChromeBrowsersNeedingAttentionResponse {
   /** Number of browsers that have been recently enrolled */
@@ -3859,33 +3446,29 @@ export interface GoogleChromeManagementV1CountChromeBrowsersNeedingAttentionResp
   pendingBrowserUpdateCount?: string;
 }
 
-export const GoogleChromeManagementV1CountChromeBrowsersNeedingAttentionResponse: Schema.Schema<GoogleChromeManagementV1CountChromeBrowsersNeedingAttentionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      recentlyEnrolledCount: Schema.optional(Schema.String),
-      noRecentActivityCount: Schema.optional(Schema.String),
-      pendingBrowserUpdateCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromeManagementV1CountChromeBrowsersNeedingAttentionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    recentlyEnrolledCount: Schema.optional(Schema.String),
+    noRecentActivityCount: Schema.optional(Schema.String),
+    pendingBrowserUpdateCount: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleChromeManagementV1CountChromeBrowsersNeedingAttentionResponse",
-  }) as any as Schema.Schema<GoogleChromeManagementV1CountChromeBrowsersNeedingAttentionResponse>;
+  });
 
 export interface GoogleChromeManagementVersionsV1SignDataResponse {
   /** Output only. The certificate provisioning process. The signature generated by the client will be available in the `signature` field of `CertificateProvisioningProcess`. */
   certificateProvisioningProcess?: GoogleChromeManagementVersionsV1CertificateProvisioningProcess;
 }
 
-export const GoogleChromeManagementVersionsV1SignDataResponse: Schema.Schema<GoogleChromeManagementVersionsV1SignDataResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      certificateProvisioningProcess: Schema.optional(
-        GoogleChromeManagementVersionsV1CertificateProvisioningProcess,
-      ),
-    }),
-  ).annotate({
+export const GoogleChromeManagementVersionsV1SignDataResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    certificateProvisioningProcess: Schema.optional(
+      GoogleChromeManagementVersionsV1CertificateProvisioningProcess,
+    ),
+  }).annotate({
     identifier: "GoogleChromeManagementVersionsV1SignDataResponse",
-  }) as any as Schema.Schema<GoogleChromeManagementVersionsV1SignDataResponse>;
+  });
 
 // ==========================================================================
 // Operations

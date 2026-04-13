@@ -41,25 +41,21 @@ export interface PortabilityArchiveState {
   startTime?: string;
 }
 
-export const PortabilityArchiveState: Schema.Schema<PortabilityArchiveState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      urls: Schema.optional(Schema.Array(Schema.String)),
-      exportTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PortabilityArchiveState",
-  }) as any as Schema.Schema<PortabilityArchiveState>;
+export const PortabilityArchiveState =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    urls: Schema.optional(Schema.Array(Schema.String)),
+    exportTime: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PortabilityArchiveState" });
 
 export interface RetryPortabilityArchiveRequest {}
 
-export const RetryPortabilityArchiveRequest: Schema.Schema<RetryPortabilityArchiveRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const RetryPortabilityArchiveRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RetryPortabilityArchiveRequest",
-  }) as any as Schema.Schema<RetryPortabilityArchiveRequest>;
+  });
 
 export interface CheckAccessTypeResponse {
   /** Jobs initiated with this token will be time-based if all requested resources have time-based access. */
@@ -68,15 +64,11 @@ export interface CheckAccessTypeResponse {
   oneTimeResources?: Array<string>;
 }
 
-export const CheckAccessTypeResponse: Schema.Schema<CheckAccessTypeResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      timeBasedResources: Schema.optional(Schema.Array(Schema.String)),
-      oneTimeResources: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "CheckAccessTypeResponse",
-  }) as any as Schema.Schema<CheckAccessTypeResponse>;
+export const CheckAccessTypeResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    timeBasedResources: Schema.optional(Schema.Array(Schema.String)),
+    oneTimeResources: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "CheckAccessTypeResponse" });
 
 export interface InitiatePortabilityArchiveResponse {
   /** The archive job ID that is initiated in the API. This can be used to get the state of the job. */
@@ -89,36 +81,30 @@ export interface InitiatePortabilityArchiveResponse {
     | (string & {});
 }
 
-export const InitiatePortabilityArchiveResponse: Schema.Schema<InitiatePortabilityArchiveResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      archiveJobId: Schema.optional(Schema.String),
-      accessType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InitiatePortabilityArchiveResponse",
-  }) as any as Schema.Schema<InitiatePortabilityArchiveResponse>;
+export const InitiatePortabilityArchiveResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    archiveJobId: Schema.optional(Schema.String),
+    accessType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "InitiatePortabilityArchiveResponse" });
 
 export interface CheckAccessTypeRequest {}
 
-export const CheckAccessTypeRequest: Schema.Schema<CheckAccessTypeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CheckAccessTypeRequest",
-  }) as any as Schema.Schema<CheckAccessTypeRequest>;
+export const CheckAccessTypeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CheckAccessTypeRequest" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface CancelPortabilityArchiveRequest {}
 
-export const CancelPortabilityArchiveRequest: Schema.Schema<CancelPortabilityArchiveRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const CancelPortabilityArchiveRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelPortabilityArchiveRequest",
-  }) as any as Schema.Schema<CancelPortabilityArchiveRequest>;
+  });
 
 export interface InitiatePortabilityArchiveRequest {
   /** The resources from which you're exporting data. These values have a 1:1 correspondence with the OAuth scopes. */
@@ -129,44 +115,36 @@ export interface InitiatePortabilityArchiveRequest {
   endTime?: string;
 }
 
-export const InitiatePortabilityArchiveRequest: Schema.Schema<InitiatePortabilityArchiveRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resources: Schema.optional(Schema.Array(Schema.String)),
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InitiatePortabilityArchiveRequest",
-  }) as any as Schema.Schema<InitiatePortabilityArchiveRequest>;
+export const InitiatePortabilityArchiveRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resources: Schema.optional(Schema.Array(Schema.String)),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "InitiatePortabilityArchiveRequest" });
 
 export interface RetryPortabilityArchiveResponse {
   /** The archive job ID that is initiated by the retry endpoint. This can be used to get the state of the new job. */
   archiveJobId?: string;
 }
 
-export const RetryPortabilityArchiveResponse: Schema.Schema<RetryPortabilityArchiveResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      archiveJobId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RetryPortabilityArchiveResponse",
-  }) as any as Schema.Schema<RetryPortabilityArchiveResponse>;
+export const RetryPortabilityArchiveResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    archiveJobId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RetryPortabilityArchiveResponse" });
 
 export interface CancelPortabilityArchiveResponse {}
 
-export const CancelPortabilityArchiveResponse: Schema.Schema<CancelPortabilityArchiveResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const CancelPortabilityArchiveResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CancelPortabilityArchiveResponse",
-  }) as any as Schema.Schema<CancelPortabilityArchiveResponse>;
+  });
 
 export interface ResetAuthorizationRequest {}
 
-export const ResetAuthorizationRequest: Schema.Schema<ResetAuthorizationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const ResetAuthorizationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ResetAuthorizationRequest",
-  }) as any as Schema.Schema<ResetAuthorizationRequest>;
+  });
 
 // ==========================================================================
 // Operations

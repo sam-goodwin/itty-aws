@@ -33,14 +33,10 @@ export interface GooglePrivacyDlpV2SensitivityScore {
     | (string & {});
 }
 
-export const GooglePrivacyDlpV2SensitivityScore: Schema.Schema<GooglePrivacyDlpV2SensitivityScore> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      score: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2SensitivityScore",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2SensitivityScore>;
+export const GooglePrivacyDlpV2SensitivityScore =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    score: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2SensitivityScore" });
 
 export interface GooglePrivacyDlpV2InfoType {
   /** Name of the information type. Either a name of your choosing when creating a CustomInfoType, or one of the names listed at https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference when specifying a built-in type. When sending Cloud DLP results to Data Catalog, infoType names should conform to the pattern `[A-Za-z0-9$_-]{1,64}`. */
@@ -51,44 +47,36 @@ export interface GooglePrivacyDlpV2InfoType {
   sensitivityScore?: GooglePrivacyDlpV2SensitivityScore;
 }
 
-export const GooglePrivacyDlpV2InfoType: Schema.Schema<GooglePrivacyDlpV2InfoType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-      sensitivityScore: Schema.optional(GooglePrivacyDlpV2SensitivityScore),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2InfoType",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2InfoType>;
+export const GooglePrivacyDlpV2InfoType =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    version: Schema.optional(Schema.String),
+    sensitivityScore: Schema.optional(GooglePrivacyDlpV2SensitivityScore),
+  }).annotate({ identifier: "GooglePrivacyDlpV2InfoType" });
 
 export interface GooglePrivacyDlpV2SelectedInfoTypes {
   /** Required. InfoTypes to apply the transformation to. Required. Provided InfoType must be unique within the ImageTransformations message. */
   infoTypes?: Array<GooglePrivacyDlpV2InfoType>;
 }
 
-export const GooglePrivacyDlpV2SelectedInfoTypes: Schema.Schema<GooglePrivacyDlpV2SelectedInfoTypes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      infoTypes: Schema.optional(Schema.Array(GooglePrivacyDlpV2InfoType)),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2SelectedInfoTypes",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2SelectedInfoTypes>;
+export const GooglePrivacyDlpV2SelectedInfoTypes =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    infoTypes: Schema.optional(Schema.Array(GooglePrivacyDlpV2InfoType)),
+  }).annotate({ identifier: "GooglePrivacyDlpV2SelectedInfoTypes" });
 
 export interface GooglePrivacyDlpV2AllInfoTypes {}
 
-export const GooglePrivacyDlpV2AllInfoTypes: Schema.Schema<GooglePrivacyDlpV2AllInfoTypes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GooglePrivacyDlpV2AllInfoTypes =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2AllInfoTypes",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2AllInfoTypes>;
+  });
 
 export interface GooglePrivacyDlpV2AllText {}
 
-export const GooglePrivacyDlpV2AllText: Schema.Schema<GooglePrivacyDlpV2AllText> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GooglePrivacyDlpV2AllText =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2AllText",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2AllText>;
+  });
 
 export interface GooglePrivacyDlpV2Color {
   /** The amount of green in the color as a value in the interval [0, 1]. */
@@ -99,16 +87,12 @@ export interface GooglePrivacyDlpV2Color {
   blue?: number;
 }
 
-export const GooglePrivacyDlpV2Color: Schema.Schema<GooglePrivacyDlpV2Color> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      green: Schema.optional(Schema.Number),
-      red: Schema.optional(Schema.Number),
-      blue: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2Color",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2Color>;
+export const GooglePrivacyDlpV2Color =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    green: Schema.optional(Schema.Number),
+    red: Schema.optional(Schema.Number),
+    blue: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GooglePrivacyDlpV2Color" });
 
 export interface GooglePrivacyDlpV2ImageTransformation {
   /** Apply transformation to the selected info_types. */
@@ -121,47 +105,39 @@ export interface GooglePrivacyDlpV2ImageTransformation {
   redactionColor?: GooglePrivacyDlpV2Color;
 }
 
-export const GooglePrivacyDlpV2ImageTransformation: Schema.Schema<GooglePrivacyDlpV2ImageTransformation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      selectedInfoTypes: Schema.optional(GooglePrivacyDlpV2SelectedInfoTypes),
-      allInfoTypes: Schema.optional(GooglePrivacyDlpV2AllInfoTypes),
-      allText: Schema.optional(GooglePrivacyDlpV2AllText),
-      redactionColor: Schema.optional(GooglePrivacyDlpV2Color),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2ImageTransformation",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2ImageTransformation>;
+export const GooglePrivacyDlpV2ImageTransformation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    selectedInfoTypes: Schema.optional(GooglePrivacyDlpV2SelectedInfoTypes),
+    allInfoTypes: Schema.optional(GooglePrivacyDlpV2AllInfoTypes),
+    allText: Schema.optional(GooglePrivacyDlpV2AllText),
+    redactionColor: Schema.optional(GooglePrivacyDlpV2Color),
+  }).annotate({ identifier: "GooglePrivacyDlpV2ImageTransformation" });
 
 export interface GooglePrivacyDlpV2ImageTransformations {
   /** List of transforms to make. */
   transforms?: Array<GooglePrivacyDlpV2ImageTransformation>;
 }
 
-export const GooglePrivacyDlpV2ImageTransformations: Schema.Schema<GooglePrivacyDlpV2ImageTransformations> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      transforms: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2ImageTransformation),
-      ),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2ImageTransformations",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2ImageTransformations>;
+export const GooglePrivacyDlpV2ImageTransformations =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    transforms: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2ImageTransformation),
+    ),
+  }).annotate({ identifier: "GooglePrivacyDlpV2ImageTransformations" });
 
 export interface GooglePrivacyDlpV2LeaveUntransformed {}
 
-export const GooglePrivacyDlpV2LeaveUntransformed: Schema.Schema<GooglePrivacyDlpV2LeaveUntransformed> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GooglePrivacyDlpV2LeaveUntransformed =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2LeaveUntransformed",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2LeaveUntransformed>;
+  });
 
 export interface GooglePrivacyDlpV2ThrowError {}
 
-export const GooglePrivacyDlpV2ThrowError: Schema.Schema<GooglePrivacyDlpV2ThrowError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GooglePrivacyDlpV2ThrowError =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2ThrowError",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2ThrowError>;
+  });
 
 export interface GooglePrivacyDlpV2TransformationErrorHandling {
   /** Ignore errors */
@@ -170,15 +146,11 @@ export interface GooglePrivacyDlpV2TransformationErrorHandling {
   throwError?: GooglePrivacyDlpV2ThrowError;
 }
 
-export const GooglePrivacyDlpV2TransformationErrorHandling: Schema.Schema<GooglePrivacyDlpV2TransformationErrorHandling> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      leaveUntransformed: Schema.optional(GooglePrivacyDlpV2LeaveUntransformed),
-      throwError: Schema.optional(GooglePrivacyDlpV2ThrowError),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2TransformationErrorHandling",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2TransformationErrorHandling>;
+export const GooglePrivacyDlpV2TransformationErrorHandling =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    leaveUntransformed: Schema.optional(GooglePrivacyDlpV2LeaveUntransformed),
+    throwError: Schema.optional(GooglePrivacyDlpV2ThrowError),
+  }).annotate({ identifier: "GooglePrivacyDlpV2TransformationErrorHandling" });
 
 export interface GoogleTypeTimeOfDay {
   /** Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time. */
@@ -191,17 +163,12 @@ export interface GoogleTypeTimeOfDay {
   seconds?: number;
 }
 
-export const GoogleTypeTimeOfDay: Schema.Schema<GoogleTypeTimeOfDay> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hours: Schema.optional(Schema.Number),
-      nanos: Schema.optional(Schema.Number),
-      minutes: Schema.optional(Schema.Number),
-      seconds: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleTypeTimeOfDay",
-  }) as any as Schema.Schema<GoogleTypeTimeOfDay>;
+export const GoogleTypeTimeOfDay = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  hours: Schema.optional(Schema.Number),
+  nanos: Schema.optional(Schema.Number),
+  minutes: Schema.optional(Schema.Number),
+  seconds: Schema.optional(Schema.Number),
+}).annotate({ identifier: "GoogleTypeTimeOfDay" });
 
 export interface GoogleTypeDate {
   /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
@@ -212,16 +179,11 @@ export interface GoogleTypeDate {
   day?: number;
 }
 
-export const GoogleTypeDate: Schema.Schema<GoogleTypeDate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      month: Schema.optional(Schema.Number),
-      year: Schema.optional(Schema.Number),
-      day: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleTypeDate",
-  }) as any as Schema.Schema<GoogleTypeDate>;
+export const GoogleTypeDate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  month: Schema.optional(Schema.Number),
+  year: Schema.optional(Schema.Number),
+  day: Schema.optional(Schema.Number),
+}).annotate({ identifier: "GoogleTypeDate" });
 
 export interface GooglePrivacyDlpV2Value {
   /** string */
@@ -251,21 +213,17 @@ export interface GooglePrivacyDlpV2Value {
     | (string & {});
 }
 
-export const GooglePrivacyDlpV2Value: Schema.Schema<GooglePrivacyDlpV2Value> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stringValue: Schema.optional(Schema.String),
-      timeValue: Schema.optional(GoogleTypeTimeOfDay),
-      timestampValue: Schema.optional(Schema.String),
-      dateValue: Schema.optional(GoogleTypeDate),
-      integerValue: Schema.optional(Schema.String),
-      floatValue: Schema.optional(Schema.Number),
-      booleanValue: Schema.optional(Schema.Boolean),
-      dayOfWeekValue: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2Value",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2Value>;
+export const GooglePrivacyDlpV2Value =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    stringValue: Schema.optional(Schema.String),
+    timeValue: Schema.optional(GoogleTypeTimeOfDay),
+    timestampValue: Schema.optional(Schema.String),
+    dateValue: Schema.optional(GoogleTypeDate),
+    integerValue: Schema.optional(Schema.String),
+    floatValue: Schema.optional(Schema.Number),
+    booleanValue: Schema.optional(Schema.Boolean),
+    dayOfWeekValue: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2Value" });
 
 export interface GooglePrivacyDlpV2FixedSizeBucketingConfig {
   /** Required. Upper bound value of buckets. All values greater than upper_bound are grouped together into a single bucket; for example if `upper_bound` = 89, then all values greater than 89 are replaced with the value "89+". */
@@ -276,44 +234,32 @@ export interface GooglePrivacyDlpV2FixedSizeBucketingConfig {
   lowerBound?: GooglePrivacyDlpV2Value;
 }
 
-export const GooglePrivacyDlpV2FixedSizeBucketingConfig: Schema.Schema<GooglePrivacyDlpV2FixedSizeBucketingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      upperBound: Schema.optional(GooglePrivacyDlpV2Value),
-      bucketSize: Schema.optional(Schema.Number),
-      lowerBound: Schema.optional(GooglePrivacyDlpV2Value),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2FixedSizeBucketingConfig",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2FixedSizeBucketingConfig>;
+export const GooglePrivacyDlpV2FixedSizeBucketingConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    upperBound: Schema.optional(GooglePrivacyDlpV2Value),
+    bucketSize: Schema.optional(Schema.Number),
+    lowerBound: Schema.optional(GooglePrivacyDlpV2Value),
+  }).annotate({ identifier: "GooglePrivacyDlpV2FixedSizeBucketingConfig" });
 
 export interface GooglePrivacyDlpV2UnwrappedCryptoKey {
   /** Required. A 128/192/256 bit key. */
   key?: string;
 }
 
-export const GooglePrivacyDlpV2UnwrappedCryptoKey: Schema.Schema<GooglePrivacyDlpV2UnwrappedCryptoKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      key: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2UnwrappedCryptoKey",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2UnwrappedCryptoKey>;
+export const GooglePrivacyDlpV2UnwrappedCryptoKey =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    key: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2UnwrappedCryptoKey" });
 
 export interface GooglePrivacyDlpV2TransientCryptoKey {
   /** Required. Name of the key. This is an arbitrary string used to differentiate different keys. A unique key is generated per name: two separate `TransientCryptoKey` protos share the same generated key if their names are the same. When the data crypto key is generated, this name is not used in any way (repeating the api call will result in a different key being generated). */
   name?: string;
 }
 
-export const GooglePrivacyDlpV2TransientCryptoKey: Schema.Schema<GooglePrivacyDlpV2TransientCryptoKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2TransientCryptoKey",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2TransientCryptoKey>;
+export const GooglePrivacyDlpV2TransientCryptoKey =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2TransientCryptoKey" });
 
 export interface GooglePrivacyDlpV2KmsWrappedCryptoKey {
   /** Required. The wrapped data crypto key. */
@@ -322,15 +268,11 @@ export interface GooglePrivacyDlpV2KmsWrappedCryptoKey {
   cryptoKeyName?: string;
 }
 
-export const GooglePrivacyDlpV2KmsWrappedCryptoKey: Schema.Schema<GooglePrivacyDlpV2KmsWrappedCryptoKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      wrappedKey: Schema.optional(Schema.String),
-      cryptoKeyName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2KmsWrappedCryptoKey",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2KmsWrappedCryptoKey>;
+export const GooglePrivacyDlpV2KmsWrappedCryptoKey =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    wrappedKey: Schema.optional(Schema.String),
+    cryptoKeyName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2KmsWrappedCryptoKey" });
 
 export interface GooglePrivacyDlpV2CryptoKey {
   /** Unwrapped crypto key */
@@ -341,72 +283,56 @@ export interface GooglePrivacyDlpV2CryptoKey {
   kmsWrapped?: GooglePrivacyDlpV2KmsWrappedCryptoKey;
 }
 
-export const GooglePrivacyDlpV2CryptoKey: Schema.Schema<GooglePrivacyDlpV2CryptoKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unwrapped: Schema.optional(GooglePrivacyDlpV2UnwrappedCryptoKey),
-      transient: Schema.optional(GooglePrivacyDlpV2TransientCryptoKey),
-      kmsWrapped: Schema.optional(GooglePrivacyDlpV2KmsWrappedCryptoKey),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2CryptoKey",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2CryptoKey>;
+export const GooglePrivacyDlpV2CryptoKey =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unwrapped: Schema.optional(GooglePrivacyDlpV2UnwrappedCryptoKey),
+    transient: Schema.optional(GooglePrivacyDlpV2TransientCryptoKey),
+    kmsWrapped: Schema.optional(GooglePrivacyDlpV2KmsWrappedCryptoKey),
+  }).annotate({ identifier: "GooglePrivacyDlpV2CryptoKey" });
 
 export interface GooglePrivacyDlpV2CryptoHashConfig {
   /** The key used by the hash function. */
   cryptoKey?: GooglePrivacyDlpV2CryptoKey;
 }
 
-export const GooglePrivacyDlpV2CryptoHashConfig: Schema.Schema<GooglePrivacyDlpV2CryptoHashConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cryptoKey: Schema.optional(GooglePrivacyDlpV2CryptoKey),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2CryptoHashConfig",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2CryptoHashConfig>;
+export const GooglePrivacyDlpV2CryptoHashConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cryptoKey: Schema.optional(GooglePrivacyDlpV2CryptoKey),
+  }).annotate({ identifier: "GooglePrivacyDlpV2CryptoHashConfig" });
 
 export interface GooglePrivacyDlpV2ReplaceValueConfig {
   /** Value to replace it with. */
   newValue?: GooglePrivacyDlpV2Value;
 }
 
-export const GooglePrivacyDlpV2ReplaceValueConfig: Schema.Schema<GooglePrivacyDlpV2ReplaceValueConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      newValue: Schema.optional(GooglePrivacyDlpV2Value),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2ReplaceValueConfig",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2ReplaceValueConfig>;
+export const GooglePrivacyDlpV2ReplaceValueConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    newValue: Schema.optional(GooglePrivacyDlpV2Value),
+  }).annotate({ identifier: "GooglePrivacyDlpV2ReplaceValueConfig" });
 
 export interface GooglePrivacyDlpV2RedactConfig {}
 
-export const GooglePrivacyDlpV2RedactConfig: Schema.Schema<GooglePrivacyDlpV2RedactConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GooglePrivacyDlpV2RedactConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2RedactConfig",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2RedactConfig>;
+  });
 
 export interface GooglePrivacyDlpV2ReplaceWithInfoTypeConfig {}
 
-export const GooglePrivacyDlpV2ReplaceWithInfoTypeConfig: Schema.Schema<GooglePrivacyDlpV2ReplaceWithInfoTypeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GooglePrivacyDlpV2ReplaceWithInfoTypeConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2ReplaceWithInfoTypeConfig",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2ReplaceWithInfoTypeConfig>;
+  });
 
 export interface GooglePrivacyDlpV2FieldId {
   /** Name describing the field. */
   name?: string;
 }
 
-export const GooglePrivacyDlpV2FieldId: Schema.Schema<GooglePrivacyDlpV2FieldId> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2FieldId",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2FieldId>;
+export const GooglePrivacyDlpV2FieldId =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2FieldId" });
 
 export interface GooglePrivacyDlpV2CryptoDeterministicConfig {
   /** A context may be used for higher security and maintaining referential integrity such that the same identifier in two different contexts will be given a distinct surrogate. The context is appended to plaintext value being encrypted. On decryption the provided context is validated against the value used during encryption. If a context was provided during encryption, same context must be provided during decryption as well. If the context is not set, plaintext would be used as is for encryption. If the context is set but: 1. there is no record present when transforming a given value or 2. the field is not present when transforming a given value, plaintext would be used as is for encryption. Note that case (1) is expected when an `InfoTypeTransformation` is applied to both structured and unstructured `ContentItem`s. */
@@ -417,16 +343,12 @@ export interface GooglePrivacyDlpV2CryptoDeterministicConfig {
   surrogateInfoType?: GooglePrivacyDlpV2InfoType;
 }
 
-export const GooglePrivacyDlpV2CryptoDeterministicConfig: Schema.Schema<GooglePrivacyDlpV2CryptoDeterministicConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      context: Schema.optional(GooglePrivacyDlpV2FieldId),
-      cryptoKey: Schema.optional(GooglePrivacyDlpV2CryptoKey),
-      surrogateInfoType: Schema.optional(GooglePrivacyDlpV2InfoType),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2CryptoDeterministicConfig",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2CryptoDeterministicConfig>;
+export const GooglePrivacyDlpV2CryptoDeterministicConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    context: Schema.optional(GooglePrivacyDlpV2FieldId),
+    cryptoKey: Schema.optional(GooglePrivacyDlpV2CryptoKey),
+    surrogateInfoType: Schema.optional(GooglePrivacyDlpV2InfoType),
+  }).annotate({ identifier: "GooglePrivacyDlpV2CryptoDeterministicConfig" });
 
 export interface GooglePrivacyDlpV2Bucket {
   /** Upper bound of the range, exclusive; type must match min. */
@@ -437,30 +359,22 @@ export interface GooglePrivacyDlpV2Bucket {
   min?: GooglePrivacyDlpV2Value;
 }
 
-export const GooglePrivacyDlpV2Bucket: Schema.Schema<GooglePrivacyDlpV2Bucket> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      max: Schema.optional(GooglePrivacyDlpV2Value),
-      replacementValue: Schema.optional(GooglePrivacyDlpV2Value),
-      min: Schema.optional(GooglePrivacyDlpV2Value),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2Bucket",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2Bucket>;
+export const GooglePrivacyDlpV2Bucket =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    max: Schema.optional(GooglePrivacyDlpV2Value),
+    replacementValue: Schema.optional(GooglePrivacyDlpV2Value),
+    min: Schema.optional(GooglePrivacyDlpV2Value),
+  }).annotate({ identifier: "GooglePrivacyDlpV2Bucket" });
 
 export interface GooglePrivacyDlpV2BucketingConfig {
   /** Set of buckets. Ranges must be non-overlapping. */
   buckets?: Array<GooglePrivacyDlpV2Bucket>;
 }
 
-export const GooglePrivacyDlpV2BucketingConfig: Schema.Schema<GooglePrivacyDlpV2BucketingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      buckets: Schema.optional(Schema.Array(GooglePrivacyDlpV2Bucket)),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2BucketingConfig",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2BucketingConfig>;
+export const GooglePrivacyDlpV2BucketingConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    buckets: Schema.optional(Schema.Array(GooglePrivacyDlpV2Bucket)),
+  }).annotate({ identifier: "GooglePrivacyDlpV2BucketingConfig" });
 
 export interface GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig {
   /** The custom infoType to annotate the surrogate with. This annotation will be applied to the surrogate by prefixing it with the name of the custom infoType followed by the number of characters comprising the surrogate. The following scheme defines the format: info_type_name(surrogate_character_count):surrogate For example, if the name of custom infoType is 'MY_TOKEN_INFO_TYPE' and the surrogate is 'abc', the full replacement value will be: 'MY_TOKEN_INFO_TYPE(3):abc' This annotation identifies the surrogate when inspecting content using the custom infoType [`SurrogateType`](https://cloud.google.com/sensitive-data-protection/docs/reference/rest/v2/InspectConfig#surrogatetype). This facilitates reversal of the surrogate when it occurs in free text. In order for inspection to work properly, the name of this infoType must not occur naturally anywhere in your data; otherwise, inspection may find a surrogate that does not correspond to an actual identifier. Therefore, choose your custom infoType name carefully after considering what your data looks like. One way to select a name that has a high chance of yielding reliable detection is to include one or more unicode characters that are highly improbable to exist in your data. For example, assuming your data is entered from a regular ASCII keyboard, the symbol with the hex code point 29DD might be used like so: ⧝MY_TOKEN_TYPE */
@@ -483,19 +397,15 @@ export interface GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig {
   customAlphabet?: string;
 }
 
-export const GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig: Schema.Schema<GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      surrogateInfoType: Schema.optional(GooglePrivacyDlpV2InfoType),
-      context: Schema.optional(GooglePrivacyDlpV2FieldId),
-      radix: Schema.optional(Schema.Number),
-      cryptoKey: Schema.optional(GooglePrivacyDlpV2CryptoKey),
-      commonAlphabet: Schema.optional(Schema.String),
-      customAlphabet: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig>;
+export const GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    surrogateInfoType: Schema.optional(GooglePrivacyDlpV2InfoType),
+    context: Schema.optional(GooglePrivacyDlpV2FieldId),
+    radix: Schema.optional(Schema.Number),
+    cryptoKey: Schema.optional(GooglePrivacyDlpV2CryptoKey),
+    commonAlphabet: Schema.optional(Schema.String),
+    customAlphabet: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig" });
 
 export interface GooglePrivacyDlpV2TimePartConfig {
   /** The part of the time to keep. */
@@ -510,14 +420,10 @@ export interface GooglePrivacyDlpV2TimePartConfig {
     | (string & {});
 }
 
-export const GooglePrivacyDlpV2TimePartConfig: Schema.Schema<GooglePrivacyDlpV2TimePartConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      partToExtract: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2TimePartConfig",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2TimePartConfig>;
+export const GooglePrivacyDlpV2TimePartConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    partToExtract: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2TimePartConfig" });
 
 export interface GooglePrivacyDlpV2DateShiftConfig {
   /** Causes the shift to be computed based on this key and the context. This results in the same shift for the same context and crypto_key. If set, must also set context. Can only be applied to table items. */
@@ -530,45 +436,33 @@ export interface GooglePrivacyDlpV2DateShiftConfig {
   context?: GooglePrivacyDlpV2FieldId;
 }
 
-export const GooglePrivacyDlpV2DateShiftConfig: Schema.Schema<GooglePrivacyDlpV2DateShiftConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cryptoKey: Schema.optional(GooglePrivacyDlpV2CryptoKey),
-      upperBoundDays: Schema.optional(Schema.Number),
-      lowerBoundDays: Schema.optional(Schema.Number),
-      context: Schema.optional(GooglePrivacyDlpV2FieldId),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2DateShiftConfig",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DateShiftConfig>;
+export const GooglePrivacyDlpV2DateShiftConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cryptoKey: Schema.optional(GooglePrivacyDlpV2CryptoKey),
+    upperBoundDays: Schema.optional(Schema.Number),
+    lowerBoundDays: Schema.optional(Schema.Number),
+    context: Schema.optional(GooglePrivacyDlpV2FieldId),
+  }).annotate({ identifier: "GooglePrivacyDlpV2DateShiftConfig" });
 
 export interface GooglePrivacyDlpV2WordList {
   /** Words or phrases defining the dictionary. The dictionary must contain at least one phrase and every phrase must contain at least 2 characters that are letters or digits. [required] */
   words?: Array<string>;
 }
 
-export const GooglePrivacyDlpV2WordList: Schema.Schema<GooglePrivacyDlpV2WordList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      words: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2WordList",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2WordList>;
+export const GooglePrivacyDlpV2WordList =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    words: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GooglePrivacyDlpV2WordList" });
 
 export interface GooglePrivacyDlpV2ReplaceDictionaryConfig {
   /** A list of words to select from for random replacement. The [limits](https://cloud.google.com/sensitive-data-protection/limits) page contains details about the size limits of dictionaries. */
   wordList?: GooglePrivacyDlpV2WordList;
 }
 
-export const GooglePrivacyDlpV2ReplaceDictionaryConfig: Schema.Schema<GooglePrivacyDlpV2ReplaceDictionaryConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      wordList: Schema.optional(GooglePrivacyDlpV2WordList),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2ReplaceDictionaryConfig",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2ReplaceDictionaryConfig>;
+export const GooglePrivacyDlpV2ReplaceDictionaryConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    wordList: Schema.optional(GooglePrivacyDlpV2WordList),
+  }).annotate({ identifier: "GooglePrivacyDlpV2ReplaceDictionaryConfig" });
 
 export interface GooglePrivacyDlpV2CharsToIgnore {
   /** Common characters to not transform when masking. Useful to avoid removing punctuation. */
@@ -584,15 +478,11 @@ export interface GooglePrivacyDlpV2CharsToIgnore {
   charactersToSkip?: string;
 }
 
-export const GooglePrivacyDlpV2CharsToIgnore: Schema.Schema<GooglePrivacyDlpV2CharsToIgnore> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commonCharactersToIgnore: Schema.optional(Schema.String),
-      charactersToSkip: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2CharsToIgnore",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2CharsToIgnore>;
+export const GooglePrivacyDlpV2CharsToIgnore =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commonCharactersToIgnore: Schema.optional(Schema.String),
+    charactersToSkip: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2CharsToIgnore" });
 
 export interface GooglePrivacyDlpV2CharacterMaskConfig {
   /** Character to use to mask the sensitive values—for example, `*` for an alphabetic string such as a name, or `0` for a numeric string such as ZIP code or credit card number. This string must have a length of 1. If not supplied, this value defaults to `*` for strings, and `0` for digits. */
@@ -605,19 +495,15 @@ export interface GooglePrivacyDlpV2CharacterMaskConfig {
   reverseOrder?: boolean;
 }
 
-export const GooglePrivacyDlpV2CharacterMaskConfig: Schema.Schema<GooglePrivacyDlpV2CharacterMaskConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      maskingCharacter: Schema.optional(Schema.String),
-      charactersToIgnore: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2CharsToIgnore),
-      ),
-      numberToMask: Schema.optional(Schema.Number),
-      reverseOrder: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2CharacterMaskConfig",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2CharacterMaskConfig>;
+export const GooglePrivacyDlpV2CharacterMaskConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    maskingCharacter: Schema.optional(Schema.String),
+    charactersToIgnore: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2CharsToIgnore),
+    ),
+    numberToMask: Schema.optional(Schema.Number),
+    reverseOrder: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GooglePrivacyDlpV2CharacterMaskConfig" });
 
 export interface GooglePrivacyDlpV2PrimitiveTransformation {
   /** Fixed size bucketing */
@@ -646,37 +532,31 @@ export interface GooglePrivacyDlpV2PrimitiveTransformation {
   characterMaskConfig?: GooglePrivacyDlpV2CharacterMaskConfig;
 }
 
-export const GooglePrivacyDlpV2PrimitiveTransformation: Schema.Schema<GooglePrivacyDlpV2PrimitiveTransformation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fixedSizeBucketingConfig: Schema.optional(
-        GooglePrivacyDlpV2FixedSizeBucketingConfig,
-      ),
-      cryptoHashConfig: Schema.optional(GooglePrivacyDlpV2CryptoHashConfig),
-      replaceConfig: Schema.optional(GooglePrivacyDlpV2ReplaceValueConfig),
-      redactConfig: Schema.optional(GooglePrivacyDlpV2RedactConfig),
-      replaceWithInfoTypeConfig: Schema.optional(
-        GooglePrivacyDlpV2ReplaceWithInfoTypeConfig,
-      ),
-      cryptoDeterministicConfig: Schema.optional(
-        GooglePrivacyDlpV2CryptoDeterministicConfig,
-      ),
-      bucketingConfig: Schema.optional(GooglePrivacyDlpV2BucketingConfig),
-      cryptoReplaceFfxFpeConfig: Schema.optional(
-        GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig,
-      ),
-      timePartConfig: Schema.optional(GooglePrivacyDlpV2TimePartConfig),
-      dateShiftConfig: Schema.optional(GooglePrivacyDlpV2DateShiftConfig),
-      replaceDictionaryConfig: Schema.optional(
-        GooglePrivacyDlpV2ReplaceDictionaryConfig,
-      ),
-      characterMaskConfig: Schema.optional(
-        GooglePrivacyDlpV2CharacterMaskConfig,
-      ),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2PrimitiveTransformation",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2PrimitiveTransformation>;
+export const GooglePrivacyDlpV2PrimitiveTransformation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fixedSizeBucketingConfig: Schema.optional(
+      GooglePrivacyDlpV2FixedSizeBucketingConfig,
+    ),
+    cryptoHashConfig: Schema.optional(GooglePrivacyDlpV2CryptoHashConfig),
+    replaceConfig: Schema.optional(GooglePrivacyDlpV2ReplaceValueConfig),
+    redactConfig: Schema.optional(GooglePrivacyDlpV2RedactConfig),
+    replaceWithInfoTypeConfig: Schema.optional(
+      GooglePrivacyDlpV2ReplaceWithInfoTypeConfig,
+    ),
+    cryptoDeterministicConfig: Schema.optional(
+      GooglePrivacyDlpV2CryptoDeterministicConfig,
+    ),
+    bucketingConfig: Schema.optional(GooglePrivacyDlpV2BucketingConfig),
+    cryptoReplaceFfxFpeConfig: Schema.optional(
+      GooglePrivacyDlpV2CryptoReplaceFfxFpeConfig,
+    ),
+    timePartConfig: Schema.optional(GooglePrivacyDlpV2TimePartConfig),
+    dateShiftConfig: Schema.optional(GooglePrivacyDlpV2DateShiftConfig),
+    replaceDictionaryConfig: Schema.optional(
+      GooglePrivacyDlpV2ReplaceDictionaryConfig,
+    ),
+    characterMaskConfig: Schema.optional(GooglePrivacyDlpV2CharacterMaskConfig),
+  }).annotate({ identifier: "GooglePrivacyDlpV2PrimitiveTransformation" });
 
 export interface GooglePrivacyDlpV2InfoTypeTransformation {
   /** InfoTypes to apply the transformation to. An empty list will cause this transformation to apply to all findings that correspond to infoTypes that were requested in `InspectConfig`. */
@@ -685,33 +565,25 @@ export interface GooglePrivacyDlpV2InfoTypeTransformation {
   primitiveTransformation?: GooglePrivacyDlpV2PrimitiveTransformation;
 }
 
-export const GooglePrivacyDlpV2InfoTypeTransformation: Schema.Schema<GooglePrivacyDlpV2InfoTypeTransformation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      infoTypes: Schema.optional(Schema.Array(GooglePrivacyDlpV2InfoType)),
-      primitiveTransformation: Schema.optional(
-        GooglePrivacyDlpV2PrimitiveTransformation,
-      ),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2InfoTypeTransformation",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2InfoTypeTransformation>;
+export const GooglePrivacyDlpV2InfoTypeTransformation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    infoTypes: Schema.optional(Schema.Array(GooglePrivacyDlpV2InfoType)),
+    primitiveTransformation: Schema.optional(
+      GooglePrivacyDlpV2PrimitiveTransformation,
+    ),
+  }).annotate({ identifier: "GooglePrivacyDlpV2InfoTypeTransformation" });
 
 export interface GooglePrivacyDlpV2InfoTypeTransformations {
   /** Required. Transformation for each infoType. Cannot specify more than one for a given infoType. */
   transformations?: Array<GooglePrivacyDlpV2InfoTypeTransformation>;
 }
 
-export const GooglePrivacyDlpV2InfoTypeTransformations: Schema.Schema<GooglePrivacyDlpV2InfoTypeTransformations> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      transformations: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2InfoTypeTransformation),
-      ),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2InfoTypeTransformations",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2InfoTypeTransformations>;
+export const GooglePrivacyDlpV2InfoTypeTransformations =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    transformations: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2InfoTypeTransformation),
+    ),
+  }).annotate({ identifier: "GooglePrivacyDlpV2InfoTypeTransformations" });
 
 export interface GooglePrivacyDlpV2Condition {
   /** Required. Field within the record this condition is evaluated against. */
@@ -731,30 +603,22 @@ export interface GooglePrivacyDlpV2Condition {
   value?: GooglePrivacyDlpV2Value;
 }
 
-export const GooglePrivacyDlpV2Condition: Schema.Schema<GooglePrivacyDlpV2Condition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      field: Schema.optional(GooglePrivacyDlpV2FieldId),
-      operator: Schema.optional(Schema.String),
-      value: Schema.optional(GooglePrivacyDlpV2Value),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2Condition",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2Condition>;
+export const GooglePrivacyDlpV2Condition =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    field: Schema.optional(GooglePrivacyDlpV2FieldId),
+    operator: Schema.optional(Schema.String),
+    value: Schema.optional(GooglePrivacyDlpV2Value),
+  }).annotate({ identifier: "GooglePrivacyDlpV2Condition" });
 
 export interface GooglePrivacyDlpV2Conditions {
   /** A collection of conditions. */
   conditions?: Array<GooglePrivacyDlpV2Condition>;
 }
 
-export const GooglePrivacyDlpV2Conditions: Schema.Schema<GooglePrivacyDlpV2Conditions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conditions: Schema.optional(Schema.Array(GooglePrivacyDlpV2Condition)),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2Conditions",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2Conditions>;
+export const GooglePrivacyDlpV2Conditions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conditions: Schema.optional(Schema.Array(GooglePrivacyDlpV2Condition)),
+  }).annotate({ identifier: "GooglePrivacyDlpV2Conditions" });
 
 export interface GooglePrivacyDlpV2Expressions {
   /** The operator to apply to the result of conditions. Default and currently only supported value is `AND`. */
@@ -763,43 +627,31 @@ export interface GooglePrivacyDlpV2Expressions {
   conditions?: GooglePrivacyDlpV2Conditions;
 }
 
-export const GooglePrivacyDlpV2Expressions: Schema.Schema<GooglePrivacyDlpV2Expressions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      logicalOperator: Schema.optional(Schema.String),
-      conditions: Schema.optional(GooglePrivacyDlpV2Conditions),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2Expressions",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2Expressions>;
+export const GooglePrivacyDlpV2Expressions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    logicalOperator: Schema.optional(Schema.String),
+    conditions: Schema.optional(GooglePrivacyDlpV2Conditions),
+  }).annotate({ identifier: "GooglePrivacyDlpV2Expressions" });
 
 export interface GooglePrivacyDlpV2RecordCondition {
   /** An expression. */
   expressions?: GooglePrivacyDlpV2Expressions;
 }
 
-export const GooglePrivacyDlpV2RecordCondition: Schema.Schema<GooglePrivacyDlpV2RecordCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expressions: Schema.optional(GooglePrivacyDlpV2Expressions),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2RecordCondition",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2RecordCondition>;
+export const GooglePrivacyDlpV2RecordCondition =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    expressions: Schema.optional(GooglePrivacyDlpV2Expressions),
+  }).annotate({ identifier: "GooglePrivacyDlpV2RecordCondition" });
 
 export interface GooglePrivacyDlpV2RecordSuppression {
   /** A condition that when it evaluates to true will result in the record being evaluated to be suppressed from the transformed content. */
   condition?: GooglePrivacyDlpV2RecordCondition;
 }
 
-export const GooglePrivacyDlpV2RecordSuppression: Schema.Schema<GooglePrivacyDlpV2RecordSuppression> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      condition: Schema.optional(GooglePrivacyDlpV2RecordCondition),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2RecordSuppression",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2RecordSuppression>;
+export const GooglePrivacyDlpV2RecordSuppression =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    condition: Schema.optional(GooglePrivacyDlpV2RecordCondition),
+  }).annotate({ identifier: "GooglePrivacyDlpV2RecordSuppression" });
 
 export interface GooglePrivacyDlpV2FieldTransformation {
   /** Required. Input field(s) to apply the transformation to. When you have columns that reference their position within a list, omit the index from the FieldId. FieldId name matching ignores the index. For example, instead of "contact.nums[0].type", use "contact.nums.type". */
@@ -812,21 +664,17 @@ export interface GooglePrivacyDlpV2FieldTransformation {
   primitiveTransformation?: GooglePrivacyDlpV2PrimitiveTransformation;
 }
 
-export const GooglePrivacyDlpV2FieldTransformation: Schema.Schema<GooglePrivacyDlpV2FieldTransformation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fields: Schema.optional(Schema.Array(GooglePrivacyDlpV2FieldId)),
-      condition: Schema.optional(GooglePrivacyDlpV2RecordCondition),
-      infoTypeTransformations: Schema.optional(
-        GooglePrivacyDlpV2InfoTypeTransformations,
-      ),
-      primitiveTransformation: Schema.optional(
-        GooglePrivacyDlpV2PrimitiveTransformation,
-      ),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2FieldTransformation",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2FieldTransformation>;
+export const GooglePrivacyDlpV2FieldTransformation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fields: Schema.optional(Schema.Array(GooglePrivacyDlpV2FieldId)),
+    condition: Schema.optional(GooglePrivacyDlpV2RecordCondition),
+    infoTypeTransformations: Schema.optional(
+      GooglePrivacyDlpV2InfoTypeTransformations,
+    ),
+    primitiveTransformation: Schema.optional(
+      GooglePrivacyDlpV2PrimitiveTransformation,
+    ),
+  }).annotate({ identifier: "GooglePrivacyDlpV2FieldTransformation" });
 
 export interface GooglePrivacyDlpV2RecordTransformations {
   /** Configuration defining which records get suppressed entirely. Records that match any suppression rule are omitted from the output. */
@@ -835,19 +683,15 @@ export interface GooglePrivacyDlpV2RecordTransformations {
   fieldTransformations?: Array<GooglePrivacyDlpV2FieldTransformation>;
 }
 
-export const GooglePrivacyDlpV2RecordTransformations: Schema.Schema<GooglePrivacyDlpV2RecordTransformations> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      recordSuppressions: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2RecordSuppression),
-      ),
-      fieldTransformations: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2FieldTransformation),
-      ),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2RecordTransformations",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2RecordTransformations>;
+export const GooglePrivacyDlpV2RecordTransformations =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    recordSuppressions: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2RecordSuppression),
+    ),
+    fieldTransformations: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2FieldTransformation),
+    ),
+  }).annotate({ identifier: "GooglePrivacyDlpV2RecordTransformations" });
 
 export interface GooglePrivacyDlpV2DeidentifyConfig {
   /** Treat the dataset as an image and redact. */
@@ -860,25 +704,21 @@ export interface GooglePrivacyDlpV2DeidentifyConfig {
   recordTransformations?: GooglePrivacyDlpV2RecordTransformations;
 }
 
-export const GooglePrivacyDlpV2DeidentifyConfig: Schema.Schema<GooglePrivacyDlpV2DeidentifyConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      imageTransformations: Schema.optional(
-        GooglePrivacyDlpV2ImageTransformations,
-      ),
-      transformationErrorHandling: Schema.optional(
-        GooglePrivacyDlpV2TransformationErrorHandling,
-      ),
-      infoTypeTransformations: Schema.optional(
-        GooglePrivacyDlpV2InfoTypeTransformations,
-      ),
-      recordTransformations: Schema.optional(
-        GooglePrivacyDlpV2RecordTransformations,
-      ),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2DeidentifyConfig",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DeidentifyConfig>;
+export const GooglePrivacyDlpV2DeidentifyConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    imageTransformations: Schema.optional(
+      GooglePrivacyDlpV2ImageTransformations,
+    ),
+    transformationErrorHandling: Schema.optional(
+      GooglePrivacyDlpV2TransformationErrorHandling,
+    ),
+    infoTypeTransformations: Schema.optional(
+      GooglePrivacyDlpV2InfoTypeTransformations,
+    ),
+    recordTransformations: Schema.optional(
+      GooglePrivacyDlpV2RecordTransformations,
+    ),
+  }).annotate({ identifier: "GooglePrivacyDlpV2DeidentifyConfig" });
 
 export interface GooglePrivacyDlpV2DeidentifyTemplate {
   /** Output only. The creation timestamp of an inspectTemplate. */
@@ -895,19 +735,15 @@ export interface GooglePrivacyDlpV2DeidentifyTemplate {
   updateTime?: string;
 }
 
-export const GooglePrivacyDlpV2DeidentifyTemplate: Schema.Schema<GooglePrivacyDlpV2DeidentifyTemplate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      deidentifyConfig: Schema.optional(GooglePrivacyDlpV2DeidentifyConfig),
-      displayName: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2DeidentifyTemplate",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DeidentifyTemplate>;
+export const GooglePrivacyDlpV2DeidentifyTemplate =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    deidentifyConfig: Schema.optional(GooglePrivacyDlpV2DeidentifyConfig),
+    displayName: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2DeidentifyTemplate" });
 
 export interface GooglePrivacyDlpV2CreateDeidentifyTemplateRequest {
   /** Deprecated. This field has no effect. */
@@ -918,23 +754,21 @@ export interface GooglePrivacyDlpV2CreateDeidentifyTemplateRequest {
   templateId?: string;
 }
 
-export const GooglePrivacyDlpV2CreateDeidentifyTemplateRequest: Schema.Schema<GooglePrivacyDlpV2CreateDeidentifyTemplateRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locationId: Schema.optional(Schema.String),
-      deidentifyTemplate: Schema.optional(GooglePrivacyDlpV2DeidentifyTemplate),
-      templateId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GooglePrivacyDlpV2CreateDeidentifyTemplateRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locationId: Schema.optional(Schema.String),
+    deidentifyTemplate: Schema.optional(GooglePrivacyDlpV2DeidentifyTemplate),
+    templateId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GooglePrivacyDlpV2CreateDeidentifyTemplateRequest",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2CreateDeidentifyTemplateRequest>;
+  });
 
 export interface GooglePrivacyDlpV2AllOtherDatabaseResources {}
 
-export const GooglePrivacyDlpV2AllOtherDatabaseResources: Schema.Schema<GooglePrivacyDlpV2AllOtherDatabaseResources> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GooglePrivacyDlpV2AllOtherDatabaseResources =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2AllOtherDatabaseResources",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2AllOtherDatabaseResources>;
+  });
 
 export interface GooglePrivacyDlpV2DatabaseResourceRegex {
   /** For organizations, if unset, will match all projects. Has no effect for configurations created within a project. */
@@ -947,49 +781,35 @@ export interface GooglePrivacyDlpV2DatabaseResourceRegex {
   databaseResourceNameRegex?: string;
 }
 
-export const GooglePrivacyDlpV2DatabaseResourceRegex: Schema.Schema<GooglePrivacyDlpV2DatabaseResourceRegex> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      projectIdRegex: Schema.optional(Schema.String),
-      instanceRegex: Schema.optional(Schema.String),
-      databaseRegex: Schema.optional(Schema.String),
-      databaseResourceNameRegex: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2DatabaseResourceRegex",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DatabaseResourceRegex>;
+export const GooglePrivacyDlpV2DatabaseResourceRegex =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    projectIdRegex: Schema.optional(Schema.String),
+    instanceRegex: Schema.optional(Schema.String),
+    databaseRegex: Schema.optional(Schema.String),
+    databaseResourceNameRegex: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2DatabaseResourceRegex" });
 
 export interface GooglePrivacyDlpV2DatabaseResourceRegexes {
   /** A group of regular expression patterns to match against one or more database resources. Maximum of 100 entries. The sum of all regular expression's length can't exceed 10 KiB. */
   patterns?: Array<GooglePrivacyDlpV2DatabaseResourceRegex>;
 }
 
-export const GooglePrivacyDlpV2DatabaseResourceRegexes: Schema.Schema<GooglePrivacyDlpV2DatabaseResourceRegexes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      patterns: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2DatabaseResourceRegex),
-      ),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2DatabaseResourceRegexes",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DatabaseResourceRegexes>;
+export const GooglePrivacyDlpV2DatabaseResourceRegexes =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    patterns: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2DatabaseResourceRegex),
+    ),
+  }).annotate({ identifier: "GooglePrivacyDlpV2DatabaseResourceRegexes" });
 
 export interface GooglePrivacyDlpV2DatabaseResourceCollection {
   /** A collection of regular expressions to match a database resource against. */
   includeRegexes?: GooglePrivacyDlpV2DatabaseResourceRegexes;
 }
 
-export const GooglePrivacyDlpV2DatabaseResourceCollection: Schema.Schema<GooglePrivacyDlpV2DatabaseResourceCollection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      includeRegexes: Schema.optional(
-        GooglePrivacyDlpV2DatabaseResourceRegexes,
-      ),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2DatabaseResourceCollection",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DatabaseResourceCollection>;
+export const GooglePrivacyDlpV2DatabaseResourceCollection =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    includeRegexes: Schema.optional(GooglePrivacyDlpV2DatabaseResourceRegexes),
+  }).annotate({ identifier: "GooglePrivacyDlpV2DatabaseResourceCollection" });
 
 export interface GooglePrivacyDlpV2DatabaseResourceReference {
   /** Required. Name of a database within the instance. */
@@ -1002,17 +822,13 @@ export interface GooglePrivacyDlpV2DatabaseResourceReference {
   instance?: string;
 }
 
-export const GooglePrivacyDlpV2DatabaseResourceReference: Schema.Schema<GooglePrivacyDlpV2DatabaseResourceReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      database: Schema.optional(Schema.String),
-      projectId: Schema.optional(Schema.String),
-      databaseResource: Schema.optional(Schema.String),
-      instance: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2DatabaseResourceReference",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DatabaseResourceReference>;
+export const GooglePrivacyDlpV2DatabaseResourceReference =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    database: Schema.optional(Schema.String),
+    projectId: Schema.optional(Schema.String),
+    databaseResource: Schema.optional(Schema.String),
+    instance: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2DatabaseResourceReference" });
 
 export interface GooglePrivacyDlpV2DiscoveryCloudSqlFilter {
   /** Catch-all. This should always be the last target in the list because anything above it will apply first. Should only appear once in a configuration. If none is specified, a default one will be added automatically. */
@@ -1023,18 +839,14 @@ export interface GooglePrivacyDlpV2DiscoveryCloudSqlFilter {
   databaseResourceReference?: GooglePrivacyDlpV2DatabaseResourceReference;
 }
 
-export const GooglePrivacyDlpV2DiscoveryCloudSqlFilter: Schema.Schema<GooglePrivacyDlpV2DiscoveryCloudSqlFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      others: Schema.optional(GooglePrivacyDlpV2AllOtherDatabaseResources),
-      collection: Schema.optional(GooglePrivacyDlpV2DatabaseResourceCollection),
-      databaseResourceReference: Schema.optional(
-        GooglePrivacyDlpV2DatabaseResourceReference,
-      ),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2DiscoveryCloudSqlFilter",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DiscoveryCloudSqlFilter>;
+export const GooglePrivacyDlpV2DiscoveryCloudSqlFilter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    others: Schema.optional(GooglePrivacyDlpV2AllOtherDatabaseResources),
+    collection: Schema.optional(GooglePrivacyDlpV2DatabaseResourceCollection),
+    databaseResourceReference: Schema.optional(
+      GooglePrivacyDlpV2DatabaseResourceReference,
+    ),
+  }).annotate({ identifier: "GooglePrivacyDlpV2DiscoveryCloudSqlFilter" });
 
 export interface GooglePrivacyDlpV2SchemaModifiedCadence {
   /** The types of schema modifications to consider. Defaults to NEW_COLUMNS. */
@@ -1053,15 +865,11 @@ export interface GooglePrivacyDlpV2SchemaModifiedCadence {
     | (string & {});
 }
 
-export const GooglePrivacyDlpV2SchemaModifiedCadence: Schema.Schema<GooglePrivacyDlpV2SchemaModifiedCadence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      types: Schema.optional(Schema.Array(Schema.String)),
-      frequency: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2SchemaModifiedCadence",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2SchemaModifiedCadence>;
+export const GooglePrivacyDlpV2SchemaModifiedCadence =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    types: Schema.optional(Schema.Array(Schema.String)),
+    frequency: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2SchemaModifiedCadence" });
 
 export interface GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence {
   /** How frequently data profiles can be updated when the template is modified. Defaults to never. */
@@ -1073,14 +881,12 @@ export interface GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence {
     | (string & {});
 }
 
-export const GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence: Schema.Schema<GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      frequency: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    frequency: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence>;
+  });
 
 export interface GooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence {
   /** When to reprofile if the schema has changed. */
@@ -1096,20 +902,18 @@ export interface GooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence {
     | (string & {});
 }
 
-export const GooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence: Schema.Schema<GooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      schemaModifiedCadence: Schema.optional(
-        GooglePrivacyDlpV2SchemaModifiedCadence,
-      ),
-      inspectTemplateModifiedCadence: Schema.optional(
-        GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence,
-      ),
-      refreshFrequency: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    schemaModifiedCadence: Schema.optional(
+      GooglePrivacyDlpV2SchemaModifiedCadence,
+    ),
+    inspectTemplateModifiedCadence: Schema.optional(
+      GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence,
+    ),
+    refreshFrequency: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence>;
+  });
 
 export interface GooglePrivacyDlpV2DiscoveryCloudSqlConditions {
   /** Data profiles will only be generated for the database resource types specified in this field. If not specified, defaults to [DATABASE_RESOURCE_TYPE_ALL_SUPPORTED_TYPES]. */
@@ -1129,22 +933,18 @@ export interface GooglePrivacyDlpV2DiscoveryCloudSqlConditions {
   >;
 }
 
-export const GooglePrivacyDlpV2DiscoveryCloudSqlConditions: Schema.Schema<GooglePrivacyDlpV2DiscoveryCloudSqlConditions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      types: Schema.optional(Schema.Array(Schema.String)),
-      databaseEngines: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2DiscoveryCloudSqlConditions",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DiscoveryCloudSqlConditions>;
+export const GooglePrivacyDlpV2DiscoveryCloudSqlConditions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    types: Schema.optional(Schema.Array(Schema.String)),
+    databaseEngines: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GooglePrivacyDlpV2DiscoveryCloudSqlConditions" });
 
 export interface GooglePrivacyDlpV2Disabled {}
 
-export const GooglePrivacyDlpV2Disabled: Schema.Schema<GooglePrivacyDlpV2Disabled> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GooglePrivacyDlpV2Disabled =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2Disabled",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2Disabled>;
+  });
 
 export interface GooglePrivacyDlpV2CloudSqlDiscoveryTarget {
   /** Required. The tables the discovery cadence applies to. The first target with a matching filter will be the one to apply to a table. */
@@ -1157,21 +957,15 @@ export interface GooglePrivacyDlpV2CloudSqlDiscoveryTarget {
   disabled?: GooglePrivacyDlpV2Disabled;
 }
 
-export const GooglePrivacyDlpV2CloudSqlDiscoveryTarget: Schema.Schema<GooglePrivacyDlpV2CloudSqlDiscoveryTarget> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filter: Schema.optional(GooglePrivacyDlpV2DiscoveryCloudSqlFilter),
-      generationCadence: Schema.optional(
-        GooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence,
-      ),
-      conditions: Schema.optional(
-        GooglePrivacyDlpV2DiscoveryCloudSqlConditions,
-      ),
-      disabled: Schema.optional(GooglePrivacyDlpV2Disabled),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2CloudSqlDiscoveryTarget",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2CloudSqlDiscoveryTarget>;
+export const GooglePrivacyDlpV2CloudSqlDiscoveryTarget =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filter: Schema.optional(GooglePrivacyDlpV2DiscoveryCloudSqlFilter),
+    generationCadence: Schema.optional(
+      GooglePrivacyDlpV2DiscoveryCloudSqlGenerationCadence,
+    ),
+    conditions: Schema.optional(GooglePrivacyDlpV2DiscoveryCloudSqlConditions),
+    disabled: Schema.optional(GooglePrivacyDlpV2Disabled),
+  }).annotate({ identifier: "GooglePrivacyDlpV2CloudSqlDiscoveryTarget" });
 
 export interface GooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadence {
   /** Optional. Data changes in Cloud Storage can't trigger reprofiling. If you set this field, profiles are refreshed at this frequency regardless of whether the underlying buckets have changed. Defaults to never. */
@@ -1185,24 +979,22 @@ export interface GooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadence {
   inspectTemplateModifiedCadence?: GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence;
 }
 
-export const GooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadence: Schema.Schema<GooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      refreshFrequency: Schema.optional(Schema.String),
-      inspectTemplateModifiedCadence: Schema.optional(
-        GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence,
-      ),
-    }),
-  ).annotate({
+export const GooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadence =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    refreshFrequency: Schema.optional(Schema.String),
+    inspectTemplateModifiedCadence: Schema.optional(
+      GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence,
+    ),
+  }).annotate({
     identifier: "GooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadence",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadence>;
+  });
 
 export interface GooglePrivacyDlpV2AllOtherResources {}
 
-export const GooglePrivacyDlpV2AllOtherResources: Schema.Schema<GooglePrivacyDlpV2AllOtherResources> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GooglePrivacyDlpV2AllOtherResources =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2AllOtherResources",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2AllOtherResources>;
+  });
 
 export interface GooglePrivacyDlpV2CloudStorageRegex {
   /** Optional. Regex to test the bucket name against. If empty, all buckets match. Example: "marketing2021" or "(marketing)\d{4}" will both match the bucket gs://marketing2021 */
@@ -1211,43 +1003,31 @@ export interface GooglePrivacyDlpV2CloudStorageRegex {
   projectIdRegex?: string;
 }
 
-export const GooglePrivacyDlpV2CloudStorageRegex: Schema.Schema<GooglePrivacyDlpV2CloudStorageRegex> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bucketNameRegex: Schema.optional(Schema.String),
-      projectIdRegex: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2CloudStorageRegex",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2CloudStorageRegex>;
+export const GooglePrivacyDlpV2CloudStorageRegex =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bucketNameRegex: Schema.optional(Schema.String),
+    projectIdRegex: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2CloudStorageRegex" });
 
 export interface GooglePrivacyDlpV2FileStoreRegex {
   /** Optional. Regex for Cloud Storage. */
   cloudStorageRegex?: GooglePrivacyDlpV2CloudStorageRegex;
 }
 
-export const GooglePrivacyDlpV2FileStoreRegex: Schema.Schema<GooglePrivacyDlpV2FileStoreRegex> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cloudStorageRegex: Schema.optional(GooglePrivacyDlpV2CloudStorageRegex),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2FileStoreRegex",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2FileStoreRegex>;
+export const GooglePrivacyDlpV2FileStoreRegex =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cloudStorageRegex: Schema.optional(GooglePrivacyDlpV2CloudStorageRegex),
+  }).annotate({ identifier: "GooglePrivacyDlpV2FileStoreRegex" });
 
 export interface GooglePrivacyDlpV2FileStoreRegexes {
   /** Required. The group of regular expression patterns to match against one or more file stores. Maximum of 100 entries. The sum of all regular expression's length can't exceed 10 KiB. */
   patterns?: Array<GooglePrivacyDlpV2FileStoreRegex>;
 }
 
-export const GooglePrivacyDlpV2FileStoreRegexes: Schema.Schema<GooglePrivacyDlpV2FileStoreRegexes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      patterns: Schema.optional(Schema.Array(GooglePrivacyDlpV2FileStoreRegex)),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2FileStoreRegexes",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2FileStoreRegexes>;
+export const GooglePrivacyDlpV2FileStoreRegexes =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    patterns: Schema.optional(Schema.Array(GooglePrivacyDlpV2FileStoreRegex)),
+  }).annotate({ identifier: "GooglePrivacyDlpV2FileStoreRegexes" });
 
 export interface GooglePrivacyDlpV2TagFilter {
   /** The namespaced name for the tag value. Must be in the format `{parent_id}/{tag_key_short_name}/{short_name}`, for example, "123456/environment/prod" for an organization parent, or "my-project/environment/prod" for a project parent. */
@@ -1256,29 +1036,21 @@ export interface GooglePrivacyDlpV2TagFilter {
   namespacedTagKey?: string;
 }
 
-export const GooglePrivacyDlpV2TagFilter: Schema.Schema<GooglePrivacyDlpV2TagFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      namespacedTagValue: Schema.optional(Schema.String),
-      namespacedTagKey: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2TagFilter",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2TagFilter>;
+export const GooglePrivacyDlpV2TagFilter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    namespacedTagValue: Schema.optional(Schema.String),
+    namespacedTagKey: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2TagFilter" });
 
 export interface GooglePrivacyDlpV2TagFilters {
   /** Required. A resource must match ALL of the specified tag filters to be included in the collection. */
   tagFilters?: Array<GooglePrivacyDlpV2TagFilter>;
 }
 
-export const GooglePrivacyDlpV2TagFilters: Schema.Schema<GooglePrivacyDlpV2TagFilters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tagFilters: Schema.optional(Schema.Array(GooglePrivacyDlpV2TagFilter)),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2TagFilters",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2TagFilters>;
+export const GooglePrivacyDlpV2TagFilters =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tagFilters: Schema.optional(Schema.Array(GooglePrivacyDlpV2TagFilter)),
+  }).annotate({ identifier: "GooglePrivacyDlpV2TagFilters" });
 
 export interface GooglePrivacyDlpV2FileStoreCollection {
   /** Optional. A collection of regular expressions to match a file store against. */
@@ -1287,15 +1059,11 @@ export interface GooglePrivacyDlpV2FileStoreCollection {
   includeTags?: GooglePrivacyDlpV2TagFilters;
 }
 
-export const GooglePrivacyDlpV2FileStoreCollection: Schema.Schema<GooglePrivacyDlpV2FileStoreCollection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      includeRegexes: Schema.optional(GooglePrivacyDlpV2FileStoreRegexes),
-      includeTags: Schema.optional(GooglePrivacyDlpV2TagFilters),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2FileStoreCollection",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2FileStoreCollection>;
+export const GooglePrivacyDlpV2FileStoreCollection =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    includeRegexes: Schema.optional(GooglePrivacyDlpV2FileStoreRegexes),
+    includeTags: Schema.optional(GooglePrivacyDlpV2TagFilters),
+  }).annotate({ identifier: "GooglePrivacyDlpV2FileStoreCollection" });
 
 export interface GooglePrivacyDlpV2CloudStorageResourceReference {
   /** Required. The bucket to scan. */
@@ -1304,15 +1072,13 @@ export interface GooglePrivacyDlpV2CloudStorageResourceReference {
   projectId?: string;
 }
 
-export const GooglePrivacyDlpV2CloudStorageResourceReference: Schema.Schema<GooglePrivacyDlpV2CloudStorageResourceReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bucketName: Schema.optional(Schema.String),
-      projectId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GooglePrivacyDlpV2CloudStorageResourceReference =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bucketName: Schema.optional(Schema.String),
+    projectId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GooglePrivacyDlpV2CloudStorageResourceReference",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2CloudStorageResourceReference>;
+  });
 
 export interface GooglePrivacyDlpV2DiscoveryCloudStorageFilter {
   /** Optional. Catch-all. This should always be the last target in the list because anything above it will apply first. Should only appear once in a configuration. If none is specified, a default one will be added automatically. */
@@ -1323,18 +1089,14 @@ export interface GooglePrivacyDlpV2DiscoveryCloudStorageFilter {
   cloudStorageResourceReference?: GooglePrivacyDlpV2CloudStorageResourceReference;
 }
 
-export const GooglePrivacyDlpV2DiscoveryCloudStorageFilter: Schema.Schema<GooglePrivacyDlpV2DiscoveryCloudStorageFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      others: Schema.optional(GooglePrivacyDlpV2AllOtherResources),
-      collection: Schema.optional(GooglePrivacyDlpV2FileStoreCollection),
-      cloudStorageResourceReference: Schema.optional(
-        GooglePrivacyDlpV2CloudStorageResourceReference,
-      ),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2DiscoveryCloudStorageFilter",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DiscoveryCloudStorageFilter>;
+export const GooglePrivacyDlpV2DiscoveryCloudStorageFilter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    others: Schema.optional(GooglePrivacyDlpV2AllOtherResources),
+    collection: Schema.optional(GooglePrivacyDlpV2FileStoreCollection),
+    cloudStorageResourceReference: Schema.optional(
+      GooglePrivacyDlpV2CloudStorageResourceReference,
+    ),
+  }).annotate({ identifier: "GooglePrivacyDlpV2DiscoveryCloudStorageFilter" });
 
 export interface GooglePrivacyDlpV2DiscoveryCloudStorageConditions {
   /** Required. Only objects with the specified attributes will be scanned. If an object has one of the specified attributes but is inside an excluded bucket, it will not be scanned. Defaults to [ALL_SUPPORTED_OBJECTS]. A profile will be created even if no objects match the included_object_attributes. */
@@ -1360,15 +1122,13 @@ export interface GooglePrivacyDlpV2DiscoveryCloudStorageConditions {
   >;
 }
 
-export const GooglePrivacyDlpV2DiscoveryCloudStorageConditions: Schema.Schema<GooglePrivacyDlpV2DiscoveryCloudStorageConditions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      includedObjectAttributes: Schema.optional(Schema.Array(Schema.String)),
-      includedBucketAttributes: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GooglePrivacyDlpV2DiscoveryCloudStorageConditions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    includedObjectAttributes: Schema.optional(Schema.Array(Schema.String)),
+    includedBucketAttributes: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GooglePrivacyDlpV2DiscoveryCloudStorageConditions",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DiscoveryCloudStorageConditions>;
+  });
 
 export interface GooglePrivacyDlpV2DiscoveryFileStoreConditions {
   /** Optional. Minimum age a file store must have. If set, the value must be 1 hour or greater. */
@@ -1379,18 +1139,14 @@ export interface GooglePrivacyDlpV2DiscoveryFileStoreConditions {
   cloudStorageConditions?: GooglePrivacyDlpV2DiscoveryCloudStorageConditions;
 }
 
-export const GooglePrivacyDlpV2DiscoveryFileStoreConditions: Schema.Schema<GooglePrivacyDlpV2DiscoveryFileStoreConditions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      minAge: Schema.optional(Schema.String),
-      createdAfter: Schema.optional(Schema.String),
-      cloudStorageConditions: Schema.optional(
-        GooglePrivacyDlpV2DiscoveryCloudStorageConditions,
-      ),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2DiscoveryFileStoreConditions",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DiscoveryFileStoreConditions>;
+export const GooglePrivacyDlpV2DiscoveryFileStoreConditions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    minAge: Schema.optional(Schema.String),
+    createdAfter: Schema.optional(Schema.String),
+    cloudStorageConditions: Schema.optional(
+      GooglePrivacyDlpV2DiscoveryCloudStorageConditions,
+    ),
+  }).annotate({ identifier: "GooglePrivacyDlpV2DiscoveryFileStoreConditions" });
 
 export interface GooglePrivacyDlpV2CloudStorageDiscoveryTarget {
   /** Optional. How often and when to update profiles. New buckets that match both the filter and conditions are scanned as quickly as possible depending on system capacity. */
@@ -1403,21 +1159,15 @@ export interface GooglePrivacyDlpV2CloudStorageDiscoveryTarget {
   disabled?: GooglePrivacyDlpV2Disabled;
 }
 
-export const GooglePrivacyDlpV2CloudStorageDiscoveryTarget: Schema.Schema<GooglePrivacyDlpV2CloudStorageDiscoveryTarget> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      generationCadence: Schema.optional(
-        GooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadence,
-      ),
-      filter: Schema.optional(GooglePrivacyDlpV2DiscoveryCloudStorageFilter),
-      conditions: Schema.optional(
-        GooglePrivacyDlpV2DiscoveryFileStoreConditions,
-      ),
-      disabled: Schema.optional(GooglePrivacyDlpV2Disabled),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2CloudStorageDiscoveryTarget",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2CloudStorageDiscoveryTarget>;
+export const GooglePrivacyDlpV2CloudStorageDiscoveryTarget =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    generationCadence: Schema.optional(
+      GooglePrivacyDlpV2DiscoveryCloudStorageGenerationCadence,
+    ),
+    filter: Schema.optional(GooglePrivacyDlpV2DiscoveryCloudStorageFilter),
+    conditions: Schema.optional(GooglePrivacyDlpV2DiscoveryFileStoreConditions),
+    disabled: Schema.optional(GooglePrivacyDlpV2Disabled),
+  }).annotate({ identifier: "GooglePrivacyDlpV2CloudStorageDiscoveryTarget" });
 
 export interface GooglePrivacyDlpV2DiscoveryVertexDatasetConditions {
   /** Vertex AI dataset must have been created after this date. Used to avoid backfilling. */
@@ -1426,15 +1176,13 @@ export interface GooglePrivacyDlpV2DiscoveryVertexDatasetConditions {
   minAge?: string;
 }
 
-export const GooglePrivacyDlpV2DiscoveryVertexDatasetConditions: Schema.Schema<GooglePrivacyDlpV2DiscoveryVertexDatasetConditions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createdAfter: Schema.optional(Schema.String),
-      minAge: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GooglePrivacyDlpV2DiscoveryVertexDatasetConditions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createdAfter: Schema.optional(Schema.String),
+    minAge: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GooglePrivacyDlpV2DiscoveryVertexDatasetConditions",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DiscoveryVertexDatasetConditions>;
+  });
 
 export interface GooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence {
   /** If you set this field, profiles are refreshed at this frequency regardless of whether the underlying datasets have changed. Defaults to never. */
@@ -1448,77 +1196,61 @@ export interface GooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence {
   inspectTemplateModifiedCadence?: GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence;
 }
 
-export const GooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence: Schema.Schema<GooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      refreshFrequency: Schema.optional(Schema.String),
-      inspectTemplateModifiedCadence: Schema.optional(
-        GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence,
-      ),
-    }),
-  ).annotate({
+export const GooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    refreshFrequency: Schema.optional(Schema.String),
+    inspectTemplateModifiedCadence: Schema.optional(
+      GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence,
+    ),
+  }).annotate({
     identifier: "GooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence>;
+  });
 
 export interface GooglePrivacyDlpV2VertexDatasetRegex {
   /** For organizations, if unset, will match all projects. Has no effect for configurations created within a project. */
   projectIdRegex?: string;
 }
 
-export const GooglePrivacyDlpV2VertexDatasetRegex: Schema.Schema<GooglePrivacyDlpV2VertexDatasetRegex> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      projectIdRegex: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2VertexDatasetRegex",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2VertexDatasetRegex>;
+export const GooglePrivacyDlpV2VertexDatasetRegex =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    projectIdRegex: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2VertexDatasetRegex" });
 
 export interface GooglePrivacyDlpV2VertexDatasetRegexes {
   /** Required. The group of regular expression patterns to match against one or more datasets. Maximum of 100 entries. The sum of the lengths of all regular expressions can't exceed 10 KiB. */
   patterns?: Array<GooglePrivacyDlpV2VertexDatasetRegex>;
 }
 
-export const GooglePrivacyDlpV2VertexDatasetRegexes: Schema.Schema<GooglePrivacyDlpV2VertexDatasetRegexes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      patterns: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2VertexDatasetRegex),
-      ),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2VertexDatasetRegexes",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2VertexDatasetRegexes>;
+export const GooglePrivacyDlpV2VertexDatasetRegexes =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    patterns: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2VertexDatasetRegex),
+    ),
+  }).annotate({ identifier: "GooglePrivacyDlpV2VertexDatasetRegexes" });
 
 export interface GooglePrivacyDlpV2VertexDatasetCollection {
   /** The regex used to filter dataset resources. */
   vertexDatasetRegexes?: GooglePrivacyDlpV2VertexDatasetRegexes;
 }
 
-export const GooglePrivacyDlpV2VertexDatasetCollection: Schema.Schema<GooglePrivacyDlpV2VertexDatasetCollection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      vertexDatasetRegexes: Schema.optional(
-        GooglePrivacyDlpV2VertexDatasetRegexes,
-      ),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2VertexDatasetCollection",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2VertexDatasetCollection>;
+export const GooglePrivacyDlpV2VertexDatasetCollection =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    vertexDatasetRegexes: Schema.optional(
+      GooglePrivacyDlpV2VertexDatasetRegexes,
+    ),
+  }).annotate({ identifier: "GooglePrivacyDlpV2VertexDatasetCollection" });
 
 export interface GooglePrivacyDlpV2VertexDatasetResourceReference {
   /** Required. The name of the Vertex AI resource. If set within a project-level configuration, the specified resource must be within the project. Examples: * `projects/{project}/locations/{location}/datasets/{dataset}` */
   datasetResourceName?: string;
 }
 
-export const GooglePrivacyDlpV2VertexDatasetResourceReference: Schema.Schema<GooglePrivacyDlpV2VertexDatasetResourceReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      datasetResourceName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GooglePrivacyDlpV2VertexDatasetResourceReference =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    datasetResourceName: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GooglePrivacyDlpV2VertexDatasetResourceReference",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2VertexDatasetResourceReference>;
+  });
 
 export interface GooglePrivacyDlpV2DiscoveryVertexDatasetFilter {
   /** A specific set of Vertex AI datasets for this filter to apply to. */
@@ -1529,18 +1261,14 @@ export interface GooglePrivacyDlpV2DiscoveryVertexDatasetFilter {
   others?: GooglePrivacyDlpV2AllOtherResources;
 }
 
-export const GooglePrivacyDlpV2DiscoveryVertexDatasetFilter: Schema.Schema<GooglePrivacyDlpV2DiscoveryVertexDatasetFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      collection: Schema.optional(GooglePrivacyDlpV2VertexDatasetCollection),
-      vertexDatasetResourceReference: Schema.optional(
-        GooglePrivacyDlpV2VertexDatasetResourceReference,
-      ),
-      others: Schema.optional(GooglePrivacyDlpV2AllOtherResources),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2DiscoveryVertexDatasetFilter",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DiscoveryVertexDatasetFilter>;
+export const GooglePrivacyDlpV2DiscoveryVertexDatasetFilter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    collection: Schema.optional(GooglePrivacyDlpV2VertexDatasetCollection),
+    vertexDatasetResourceReference: Schema.optional(
+      GooglePrivacyDlpV2VertexDatasetResourceReference,
+    ),
+    others: Schema.optional(GooglePrivacyDlpV2AllOtherResources),
+  }).annotate({ identifier: "GooglePrivacyDlpV2DiscoveryVertexDatasetFilter" });
 
 export interface GooglePrivacyDlpV2VertexDatasetDiscoveryTarget {
   /** In addition to matching the filter, these conditions must be true before a profile is generated. */
@@ -1553,28 +1281,24 @@ export interface GooglePrivacyDlpV2VertexDatasetDiscoveryTarget {
   filter?: GooglePrivacyDlpV2DiscoveryVertexDatasetFilter;
 }
 
-export const GooglePrivacyDlpV2VertexDatasetDiscoveryTarget: Schema.Schema<GooglePrivacyDlpV2VertexDatasetDiscoveryTarget> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conditions: Schema.optional(
-        GooglePrivacyDlpV2DiscoveryVertexDatasetConditions,
-      ),
-      disabled: Schema.optional(GooglePrivacyDlpV2Disabled),
-      generationCadence: Schema.optional(
-        GooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence,
-      ),
-      filter: Schema.optional(GooglePrivacyDlpV2DiscoveryVertexDatasetFilter),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2VertexDatasetDiscoveryTarget",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2VertexDatasetDiscoveryTarget>;
+export const GooglePrivacyDlpV2VertexDatasetDiscoveryTarget =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conditions: Schema.optional(
+      GooglePrivacyDlpV2DiscoveryVertexDatasetConditions,
+    ),
+    disabled: Schema.optional(GooglePrivacyDlpV2Disabled),
+    generationCadence: Schema.optional(
+      GooglePrivacyDlpV2DiscoveryVertexDatasetGenerationCadence,
+    ),
+    filter: Schema.optional(GooglePrivacyDlpV2DiscoveryVertexDatasetFilter),
+  }).annotate({ identifier: "GooglePrivacyDlpV2VertexDatasetDiscoveryTarget" });
 
 export interface GooglePrivacyDlpV2SecretsDiscoveryTarget {}
 
-export const GooglePrivacyDlpV2SecretsDiscoveryTarget: Schema.Schema<GooglePrivacyDlpV2SecretsDiscoveryTarget> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GooglePrivacyDlpV2SecretsDiscoveryTarget =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2SecretsDiscoveryTarget",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2SecretsDiscoveryTarget>;
+  });
 
 export interface GooglePrivacyDlpV2BigQueryRegex {
   /** If unset, this property matches all datasets. */
@@ -1585,44 +1309,32 @@ export interface GooglePrivacyDlpV2BigQueryRegex {
   tableIdRegex?: string;
 }
 
-export const GooglePrivacyDlpV2BigQueryRegex: Schema.Schema<GooglePrivacyDlpV2BigQueryRegex> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      datasetIdRegex: Schema.optional(Schema.String),
-      projectIdRegex: Schema.optional(Schema.String),
-      tableIdRegex: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2BigQueryRegex",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2BigQueryRegex>;
+export const GooglePrivacyDlpV2BigQueryRegex =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    datasetIdRegex: Schema.optional(Schema.String),
+    projectIdRegex: Schema.optional(Schema.String),
+    tableIdRegex: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2BigQueryRegex" });
 
 export interface GooglePrivacyDlpV2BigQueryRegexes {
   /** A single BigQuery regular expression pattern to match against one or more tables, datasets, or projects that contain BigQuery tables. */
   patterns?: Array<GooglePrivacyDlpV2BigQueryRegex>;
 }
 
-export const GooglePrivacyDlpV2BigQueryRegexes: Schema.Schema<GooglePrivacyDlpV2BigQueryRegexes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      patterns: Schema.optional(Schema.Array(GooglePrivacyDlpV2BigQueryRegex)),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2BigQueryRegexes",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2BigQueryRegexes>;
+export const GooglePrivacyDlpV2BigQueryRegexes =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    patterns: Schema.optional(Schema.Array(GooglePrivacyDlpV2BigQueryRegex)),
+  }).annotate({ identifier: "GooglePrivacyDlpV2BigQueryRegexes" });
 
 export interface GooglePrivacyDlpV2BigQueryTableCollection {
   /** A collection of regular expressions to match a BigQuery table against. */
   includeRegexes?: GooglePrivacyDlpV2BigQueryRegexes;
 }
 
-export const GooglePrivacyDlpV2BigQueryTableCollection: Schema.Schema<GooglePrivacyDlpV2BigQueryTableCollection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      includeRegexes: Schema.optional(GooglePrivacyDlpV2BigQueryRegexes),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2BigQueryTableCollection",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2BigQueryTableCollection>;
+export const GooglePrivacyDlpV2BigQueryTableCollection =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    includeRegexes: Schema.optional(GooglePrivacyDlpV2BigQueryRegexes),
+  }).annotate({ identifier: "GooglePrivacyDlpV2BigQueryTableCollection" });
 
 export interface GooglePrivacyDlpV2TableReference {
   /** The Google Cloud project ID of the project containing the table. If omitted, the project ID is inferred from the parent project. This field is required if the parent resource is an organization. */
@@ -1633,23 +1345,19 @@ export interface GooglePrivacyDlpV2TableReference {
   tableId?: string;
 }
 
-export const GooglePrivacyDlpV2TableReference: Schema.Schema<GooglePrivacyDlpV2TableReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      projectId: Schema.optional(Schema.String),
-      datasetId: Schema.optional(Schema.String),
-      tableId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2TableReference",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2TableReference>;
+export const GooglePrivacyDlpV2TableReference =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    projectId: Schema.optional(Schema.String),
+    datasetId: Schema.optional(Schema.String),
+    tableId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2TableReference" });
 
 export interface GooglePrivacyDlpV2AllOtherBigQueryTables {}
 
-export const GooglePrivacyDlpV2AllOtherBigQueryTables: Schema.Schema<GooglePrivacyDlpV2AllOtherBigQueryTables> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GooglePrivacyDlpV2AllOtherBigQueryTables =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2AllOtherBigQueryTables",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2AllOtherBigQueryTables>;
+  });
 
 export interface GooglePrivacyDlpV2DiscoveryBigQueryFilter {
   /** A specific set of tables for this filter to apply to. A table collection must be specified in only one filter per config. If a table id or dataset is empty, Cloud DLP assumes all tables in that collection must be profiled. Must specify a project ID. */
@@ -1660,16 +1368,12 @@ export interface GooglePrivacyDlpV2DiscoveryBigQueryFilter {
   otherTables?: GooglePrivacyDlpV2AllOtherBigQueryTables;
 }
 
-export const GooglePrivacyDlpV2DiscoveryBigQueryFilter: Schema.Schema<GooglePrivacyDlpV2DiscoveryBigQueryFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tables: Schema.optional(GooglePrivacyDlpV2BigQueryTableCollection),
-      tableReference: Schema.optional(GooglePrivacyDlpV2TableReference),
-      otherTables: Schema.optional(GooglePrivacyDlpV2AllOtherBigQueryTables),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2DiscoveryBigQueryFilter",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DiscoveryBigQueryFilter>;
+export const GooglePrivacyDlpV2DiscoveryBigQueryFilter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tables: Schema.optional(GooglePrivacyDlpV2BigQueryTableCollection),
+    tableReference: Schema.optional(GooglePrivacyDlpV2TableReference),
+    otherTables: Schema.optional(GooglePrivacyDlpV2AllOtherBigQueryTables),
+  }).annotate({ identifier: "GooglePrivacyDlpV2DiscoveryBigQueryFilter" });
 
 export interface GooglePrivacyDlpV2OrConditions {
   /** Minimum age a table must have before Cloud DLP can profile it. Value must be 1 hour or greater. */
@@ -1678,15 +1382,11 @@ export interface GooglePrivacyDlpV2OrConditions {
   minRowCount?: number;
 }
 
-export const GooglePrivacyDlpV2OrConditions: Schema.Schema<GooglePrivacyDlpV2OrConditions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      minAge: Schema.optional(Schema.String),
-      minRowCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2OrConditions",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2OrConditions>;
+export const GooglePrivacyDlpV2OrConditions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    minAge: Schema.optional(Schema.String),
+    minRowCount: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GooglePrivacyDlpV2OrConditions" });
 
 export interface GooglePrivacyDlpV2BigQueryTableTypes {
   /** A set of BigQuery table types. */
@@ -1699,14 +1399,10 @@ export interface GooglePrivacyDlpV2BigQueryTableTypes {
   >;
 }
 
-export const GooglePrivacyDlpV2BigQueryTableTypes: Schema.Schema<GooglePrivacyDlpV2BigQueryTableTypes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      types: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2BigQueryTableTypes",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2BigQueryTableTypes>;
+export const GooglePrivacyDlpV2BigQueryTableTypes =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    types: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GooglePrivacyDlpV2BigQueryTableTypes" });
 
 export interface GooglePrivacyDlpV2DiscoveryBigQueryConditions {
   /** At least one of the conditions must be true for a table to be scanned. */
@@ -1723,17 +1419,13 @@ export interface GooglePrivacyDlpV2DiscoveryBigQueryConditions {
   createdAfter?: string;
 }
 
-export const GooglePrivacyDlpV2DiscoveryBigQueryConditions: Schema.Schema<GooglePrivacyDlpV2DiscoveryBigQueryConditions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      orConditions: Schema.optional(GooglePrivacyDlpV2OrConditions),
-      types: Schema.optional(GooglePrivacyDlpV2BigQueryTableTypes),
-      typeCollection: Schema.optional(Schema.String),
-      createdAfter: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2DiscoveryBigQueryConditions",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DiscoveryBigQueryConditions>;
+export const GooglePrivacyDlpV2DiscoveryBigQueryConditions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    orConditions: Schema.optional(GooglePrivacyDlpV2OrConditions),
+    types: Schema.optional(GooglePrivacyDlpV2BigQueryTableTypes),
+    typeCollection: Schema.optional(Schema.String),
+    createdAfter: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2DiscoveryBigQueryConditions" });
 
 export interface GooglePrivacyDlpV2DiscoverySchemaModifiedCadence {
   /** The type of events to consider when deciding if the table's schema has been modified and should have the profile updated. Defaults to NEW_COLUMNS. */
@@ -1752,15 +1444,13 @@ export interface GooglePrivacyDlpV2DiscoverySchemaModifiedCadence {
     | (string & {});
 }
 
-export const GooglePrivacyDlpV2DiscoverySchemaModifiedCadence: Schema.Schema<GooglePrivacyDlpV2DiscoverySchemaModifiedCadence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      types: Schema.optional(Schema.Array(Schema.String)),
-      frequency: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GooglePrivacyDlpV2DiscoverySchemaModifiedCadence =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    types: Schema.optional(Schema.Array(Schema.String)),
+    frequency: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GooglePrivacyDlpV2DiscoverySchemaModifiedCadence",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DiscoverySchemaModifiedCadence>;
+  });
 
 export interface GooglePrivacyDlpV2DiscoveryTableModifiedCadence {
   /** The type of events to consider when deciding if the table has been modified and should have the profile updated. Defaults to MODIFIED_TIMESTAMP. */
@@ -1778,15 +1468,13 @@ export interface GooglePrivacyDlpV2DiscoveryTableModifiedCadence {
     | (string & {});
 }
 
-export const GooglePrivacyDlpV2DiscoveryTableModifiedCadence: Schema.Schema<GooglePrivacyDlpV2DiscoveryTableModifiedCadence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      types: Schema.optional(Schema.Array(Schema.String)),
-      frequency: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GooglePrivacyDlpV2DiscoveryTableModifiedCadence =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    types: Schema.optional(Schema.Array(Schema.String)),
+    frequency: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GooglePrivacyDlpV2DiscoveryTableModifiedCadence",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DiscoveryTableModifiedCadence>;
+  });
 
 export interface GooglePrivacyDlpV2DiscoveryGenerationCadence {
   /** Frequency at which profiles should be updated, regardless of whether the underlying resource has changed. Defaults to never. */
@@ -1804,23 +1492,19 @@ export interface GooglePrivacyDlpV2DiscoveryGenerationCadence {
   inspectTemplateModifiedCadence?: GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence;
 }
 
-export const GooglePrivacyDlpV2DiscoveryGenerationCadence: Schema.Schema<GooglePrivacyDlpV2DiscoveryGenerationCadence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      refreshFrequency: Schema.optional(Schema.String),
-      schemaModifiedCadence: Schema.optional(
-        GooglePrivacyDlpV2DiscoverySchemaModifiedCadence,
-      ),
-      tableModifiedCadence: Schema.optional(
-        GooglePrivacyDlpV2DiscoveryTableModifiedCadence,
-      ),
-      inspectTemplateModifiedCadence: Schema.optional(
-        GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence,
-      ),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2DiscoveryGenerationCadence",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DiscoveryGenerationCadence>;
+export const GooglePrivacyDlpV2DiscoveryGenerationCadence =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    refreshFrequency: Schema.optional(Schema.String),
+    schemaModifiedCadence: Schema.optional(
+      GooglePrivacyDlpV2DiscoverySchemaModifiedCadence,
+    ),
+    tableModifiedCadence: Schema.optional(
+      GooglePrivacyDlpV2DiscoveryTableModifiedCadence,
+    ),
+    inspectTemplateModifiedCadence: Schema.optional(
+      GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence,
+    ),
+  }).annotate({ identifier: "GooglePrivacyDlpV2DiscoveryGenerationCadence" });
 
 export interface GooglePrivacyDlpV2BigQueryDiscoveryTarget {
   /** Required. The tables the discovery cadence applies to. The first target with a matching filter will be the one to apply to a table. */
@@ -1833,33 +1517,23 @@ export interface GooglePrivacyDlpV2BigQueryDiscoveryTarget {
   disabled?: GooglePrivacyDlpV2Disabled;
 }
 
-export const GooglePrivacyDlpV2BigQueryDiscoveryTarget: Schema.Schema<GooglePrivacyDlpV2BigQueryDiscoveryTarget> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filter: Schema.optional(GooglePrivacyDlpV2DiscoveryBigQueryFilter),
-      conditions: Schema.optional(
-        GooglePrivacyDlpV2DiscoveryBigQueryConditions,
-      ),
-      cadence: Schema.optional(GooglePrivacyDlpV2DiscoveryGenerationCadence),
-      disabled: Schema.optional(GooglePrivacyDlpV2Disabled),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2BigQueryDiscoveryTarget",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2BigQueryDiscoveryTarget>;
+export const GooglePrivacyDlpV2BigQueryDiscoveryTarget =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filter: Schema.optional(GooglePrivacyDlpV2DiscoveryBigQueryFilter),
+    conditions: Schema.optional(GooglePrivacyDlpV2DiscoveryBigQueryConditions),
+    cadence: Schema.optional(GooglePrivacyDlpV2DiscoveryGenerationCadence),
+    disabled: Schema.optional(GooglePrivacyDlpV2Disabled),
+  }).annotate({ identifier: "GooglePrivacyDlpV2BigQueryDiscoveryTarget" });
 
 export interface GooglePrivacyDlpV2DataSourceType {
   /** A string that identifies the type of resource being profiled. Current values: * google/bigquery/table * google/project * google/sql/table * google/gcs/bucket */
   dataSource?: string;
 }
 
-export const GooglePrivacyDlpV2DataSourceType: Schema.Schema<GooglePrivacyDlpV2DataSourceType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataSource: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2DataSourceType",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DataSourceType>;
+export const GooglePrivacyDlpV2DataSourceType =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataSource: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2DataSourceType" });
 
 export interface GooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadence {
   /** Optional. Frequency to update profiles regardless of whether the underlying resource has changes. Defaults to never. */
@@ -1873,31 +1547,25 @@ export interface GooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadence {
   inspectTemplateModifiedCadence?: GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence;
 }
 
-export const GooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadence: Schema.Schema<GooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      refreshFrequency: Schema.optional(Schema.String),
-      inspectTemplateModifiedCadence: Schema.optional(
-        GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence,
-      ),
-    }),
-  ).annotate({
+export const GooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadence =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    refreshFrequency: Schema.optional(Schema.String),
+    inspectTemplateModifiedCadence: Schema.optional(
+      GooglePrivacyDlpV2DiscoveryInspectTemplateModifiedCadence,
+    ),
+  }).annotate({
     identifier: "GooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadence",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadence>;
+  });
 
 export interface GooglePrivacyDlpV2AwsAccountRegex {
   /** Optional. Regex to test the AWS account ID against. If empty, all accounts match. */
   accountIdRegex?: string;
 }
 
-export const GooglePrivacyDlpV2AwsAccountRegex: Schema.Schema<GooglePrivacyDlpV2AwsAccountRegex> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accountIdRegex: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2AwsAccountRegex",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2AwsAccountRegex>;
+export const GooglePrivacyDlpV2AwsAccountRegex =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountIdRegex: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2AwsAccountRegex" });
 
 export interface GooglePrivacyDlpV2AmazonS3BucketRegex {
   /** The AWS account regex. */
@@ -1906,77 +1574,55 @@ export interface GooglePrivacyDlpV2AmazonS3BucketRegex {
   bucketNameRegex?: string;
 }
 
-export const GooglePrivacyDlpV2AmazonS3BucketRegex: Schema.Schema<GooglePrivacyDlpV2AmazonS3BucketRegex> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      awsAccountRegex: Schema.optional(GooglePrivacyDlpV2AwsAccountRegex),
-      bucketNameRegex: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2AmazonS3BucketRegex",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2AmazonS3BucketRegex>;
+export const GooglePrivacyDlpV2AmazonS3BucketRegex =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    awsAccountRegex: Schema.optional(GooglePrivacyDlpV2AwsAccountRegex),
+    bucketNameRegex: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2AmazonS3BucketRegex" });
 
 export interface GooglePrivacyDlpV2OtherCloudResourceRegex {
   /** Regex for Amazon S3 buckets. */
   amazonS3BucketRegex?: GooglePrivacyDlpV2AmazonS3BucketRegex;
 }
 
-export const GooglePrivacyDlpV2OtherCloudResourceRegex: Schema.Schema<GooglePrivacyDlpV2OtherCloudResourceRegex> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      amazonS3BucketRegex: Schema.optional(
-        GooglePrivacyDlpV2AmazonS3BucketRegex,
-      ),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2OtherCloudResourceRegex",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2OtherCloudResourceRegex>;
+export const GooglePrivacyDlpV2OtherCloudResourceRegex =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    amazonS3BucketRegex: Schema.optional(GooglePrivacyDlpV2AmazonS3BucketRegex),
+  }).annotate({ identifier: "GooglePrivacyDlpV2OtherCloudResourceRegex" });
 
 export interface GooglePrivacyDlpV2OtherCloudResourceRegexes {
   /** A group of regular expression patterns to match against one or more resources. Maximum of 100 entries. The sum of all regular expression's length can't exceed 10 KiB. */
   patterns?: Array<GooglePrivacyDlpV2OtherCloudResourceRegex>;
 }
 
-export const GooglePrivacyDlpV2OtherCloudResourceRegexes: Schema.Schema<GooglePrivacyDlpV2OtherCloudResourceRegexes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      patterns: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2OtherCloudResourceRegex),
-      ),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2OtherCloudResourceRegexes",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2OtherCloudResourceRegexes>;
+export const GooglePrivacyDlpV2OtherCloudResourceRegexes =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    patterns: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2OtherCloudResourceRegex),
+    ),
+  }).annotate({ identifier: "GooglePrivacyDlpV2OtherCloudResourceRegexes" });
 
 export interface GooglePrivacyDlpV2OtherCloudResourceCollection {
   /** A collection of regular expressions to match a resource against. */
   includeRegexes?: GooglePrivacyDlpV2OtherCloudResourceRegexes;
 }
 
-export const GooglePrivacyDlpV2OtherCloudResourceCollection: Schema.Schema<GooglePrivacyDlpV2OtherCloudResourceCollection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      includeRegexes: Schema.optional(
-        GooglePrivacyDlpV2OtherCloudResourceRegexes,
-      ),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2OtherCloudResourceCollection",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2OtherCloudResourceCollection>;
+export const GooglePrivacyDlpV2OtherCloudResourceCollection =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    includeRegexes: Schema.optional(
+      GooglePrivacyDlpV2OtherCloudResourceRegexes,
+    ),
+  }).annotate({ identifier: "GooglePrivacyDlpV2OtherCloudResourceCollection" });
 
 export interface GooglePrivacyDlpV2AwsAccount {
   /** Required. AWS account ID. */
   accountId?: string;
 }
 
-export const GooglePrivacyDlpV2AwsAccount: Schema.Schema<GooglePrivacyDlpV2AwsAccount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accountId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2AwsAccount",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2AwsAccount>;
+export const GooglePrivacyDlpV2AwsAccount =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2AwsAccount" });
 
 export interface GooglePrivacyDlpV2AmazonS3Bucket {
   /** The AWS account. */
@@ -1985,29 +1631,23 @@ export interface GooglePrivacyDlpV2AmazonS3Bucket {
   bucketName?: string;
 }
 
-export const GooglePrivacyDlpV2AmazonS3Bucket: Schema.Schema<GooglePrivacyDlpV2AmazonS3Bucket> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      awsAccount: Schema.optional(GooglePrivacyDlpV2AwsAccount),
-      bucketName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2AmazonS3Bucket",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2AmazonS3Bucket>;
+export const GooglePrivacyDlpV2AmazonS3Bucket =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    awsAccount: Schema.optional(GooglePrivacyDlpV2AwsAccount),
+    bucketName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2AmazonS3Bucket" });
 
 export interface GooglePrivacyDlpV2OtherCloudSingleResourceReference {
   /** Amazon S3 bucket. */
   amazonS3Bucket?: GooglePrivacyDlpV2AmazonS3Bucket;
 }
 
-export const GooglePrivacyDlpV2OtherCloudSingleResourceReference: Schema.Schema<GooglePrivacyDlpV2OtherCloudSingleResourceReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      amazonS3Bucket: Schema.optional(GooglePrivacyDlpV2AmazonS3Bucket),
-    }),
-  ).annotate({
+export const GooglePrivacyDlpV2OtherCloudSingleResourceReference =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    amazonS3Bucket: Schema.optional(GooglePrivacyDlpV2AmazonS3Bucket),
+  }).annotate({
     identifier: "GooglePrivacyDlpV2OtherCloudSingleResourceReference",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2OtherCloudSingleResourceReference>;
+  });
 
 export interface GooglePrivacyDlpV2DiscoveryOtherCloudFilter {
   /** A collection of resources for this filter to apply to. */
@@ -2018,20 +1658,14 @@ export interface GooglePrivacyDlpV2DiscoveryOtherCloudFilter {
   others?: GooglePrivacyDlpV2AllOtherResources;
 }
 
-export const GooglePrivacyDlpV2DiscoveryOtherCloudFilter: Schema.Schema<GooglePrivacyDlpV2DiscoveryOtherCloudFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      collection: Schema.optional(
-        GooglePrivacyDlpV2OtherCloudResourceCollection,
-      ),
-      singleResource: Schema.optional(
-        GooglePrivacyDlpV2OtherCloudSingleResourceReference,
-      ),
-      others: Schema.optional(GooglePrivacyDlpV2AllOtherResources),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2DiscoveryOtherCloudFilter",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DiscoveryOtherCloudFilter>;
+export const GooglePrivacyDlpV2DiscoveryOtherCloudFilter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    collection: Schema.optional(GooglePrivacyDlpV2OtherCloudResourceCollection),
+    singleResource: Schema.optional(
+      GooglePrivacyDlpV2OtherCloudSingleResourceReference,
+    ),
+    others: Schema.optional(GooglePrivacyDlpV2AllOtherResources),
+  }).annotate({ identifier: "GooglePrivacyDlpV2DiscoveryOtherCloudFilter" });
 
 export interface GooglePrivacyDlpV2AmazonS3BucketConditions {
   /** Optional. Bucket types that should be profiled. Optional. Defaults to TYPE_ALL_SUPPORTED if unspecified. */
@@ -2053,15 +1687,11 @@ export interface GooglePrivacyDlpV2AmazonS3BucketConditions {
   >;
 }
 
-export const GooglePrivacyDlpV2AmazonS3BucketConditions: Schema.Schema<GooglePrivacyDlpV2AmazonS3BucketConditions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bucketTypes: Schema.optional(Schema.Array(Schema.String)),
-      objectStorageClasses: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2AmazonS3BucketConditions",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2AmazonS3BucketConditions>;
+export const GooglePrivacyDlpV2AmazonS3BucketConditions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bucketTypes: Schema.optional(Schema.Array(Schema.String)),
+    objectStorageClasses: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GooglePrivacyDlpV2AmazonS3BucketConditions" });
 
 export interface GooglePrivacyDlpV2DiscoveryOtherCloudConditions {
   /** Minimum age a resource must be before Cloud DLP can profile it. Value must be 1 hour or greater. */
@@ -2070,17 +1700,15 @@ export interface GooglePrivacyDlpV2DiscoveryOtherCloudConditions {
   amazonS3BucketConditions?: GooglePrivacyDlpV2AmazonS3BucketConditions;
 }
 
-export const GooglePrivacyDlpV2DiscoveryOtherCloudConditions: Schema.Schema<GooglePrivacyDlpV2DiscoveryOtherCloudConditions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      minAge: Schema.optional(Schema.String),
-      amazonS3BucketConditions: Schema.optional(
-        GooglePrivacyDlpV2AmazonS3BucketConditions,
-      ),
-    }),
-  ).annotate({
+export const GooglePrivacyDlpV2DiscoveryOtherCloudConditions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    minAge: Schema.optional(Schema.String),
+    amazonS3BucketConditions: Schema.optional(
+      GooglePrivacyDlpV2AmazonS3BucketConditions,
+    ),
+  }).annotate({
     identifier: "GooglePrivacyDlpV2DiscoveryOtherCloudConditions",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DiscoveryOtherCloudConditions>;
+  });
 
 export interface GooglePrivacyDlpV2OtherCloudDiscoveryTarget {
   /** Required. The type of data profiles generated by this discovery target. Supported values are: * aws/s3/bucket */
@@ -2095,22 +1723,18 @@ export interface GooglePrivacyDlpV2OtherCloudDiscoveryTarget {
   disabled?: GooglePrivacyDlpV2Disabled;
 }
 
-export const GooglePrivacyDlpV2OtherCloudDiscoveryTarget: Schema.Schema<GooglePrivacyDlpV2OtherCloudDiscoveryTarget> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataSourceType: Schema.optional(GooglePrivacyDlpV2DataSourceType),
-      generationCadence: Schema.optional(
-        GooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadence,
-      ),
-      filter: Schema.optional(GooglePrivacyDlpV2DiscoveryOtherCloudFilter),
-      conditions: Schema.optional(
-        GooglePrivacyDlpV2DiscoveryOtherCloudConditions,
-      ),
-      disabled: Schema.optional(GooglePrivacyDlpV2Disabled),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2OtherCloudDiscoveryTarget",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2OtherCloudDiscoveryTarget>;
+export const GooglePrivacyDlpV2OtherCloudDiscoveryTarget =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataSourceType: Schema.optional(GooglePrivacyDlpV2DataSourceType),
+    generationCadence: Schema.optional(
+      GooglePrivacyDlpV2DiscoveryOtherCloudGenerationCadence,
+    ),
+    filter: Schema.optional(GooglePrivacyDlpV2DiscoveryOtherCloudFilter),
+    conditions: Schema.optional(
+      GooglePrivacyDlpV2DiscoveryOtherCloudConditions,
+    ),
+    disabled: Schema.optional(GooglePrivacyDlpV2Disabled),
+  }).annotate({ identifier: "GooglePrivacyDlpV2OtherCloudDiscoveryTarget" });
 
 export interface GooglePrivacyDlpV2DiscoveryTarget {
   /** Cloud SQL target for Discovery. The first target to match a table will be the one applied. */
@@ -2127,29 +1751,21 @@ export interface GooglePrivacyDlpV2DiscoveryTarget {
   otherCloudTarget?: GooglePrivacyDlpV2OtherCloudDiscoveryTarget;
 }
 
-export const GooglePrivacyDlpV2DiscoveryTarget: Schema.Schema<GooglePrivacyDlpV2DiscoveryTarget> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cloudSqlTarget: Schema.optional(
-        GooglePrivacyDlpV2CloudSqlDiscoveryTarget,
-      ),
-      cloudStorageTarget: Schema.optional(
-        GooglePrivacyDlpV2CloudStorageDiscoveryTarget,
-      ),
-      vertexDatasetTarget: Schema.optional(
-        GooglePrivacyDlpV2VertexDatasetDiscoveryTarget,
-      ),
-      secretsTarget: Schema.optional(GooglePrivacyDlpV2SecretsDiscoveryTarget),
-      bigQueryTarget: Schema.optional(
-        GooglePrivacyDlpV2BigQueryDiscoveryTarget,
-      ),
-      otherCloudTarget: Schema.optional(
-        GooglePrivacyDlpV2OtherCloudDiscoveryTarget,
-      ),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2DiscoveryTarget",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DiscoveryTarget>;
+export const GooglePrivacyDlpV2DiscoveryTarget =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cloudSqlTarget: Schema.optional(GooglePrivacyDlpV2CloudSqlDiscoveryTarget),
+    cloudStorageTarget: Schema.optional(
+      GooglePrivacyDlpV2CloudStorageDiscoveryTarget,
+    ),
+    vertexDatasetTarget: Schema.optional(
+      GooglePrivacyDlpV2VertexDatasetDiscoveryTarget,
+    ),
+    secretsTarget: Schema.optional(GooglePrivacyDlpV2SecretsDiscoveryTarget),
+    bigQueryTarget: Schema.optional(GooglePrivacyDlpV2BigQueryDiscoveryTarget),
+    otherCloudTarget: Schema.optional(
+      GooglePrivacyDlpV2OtherCloudDiscoveryTarget,
+    ),
+  }).annotate({ identifier: "GooglePrivacyDlpV2DiscoveryTarget" });
 
 export interface GooglePrivacyDlpV2BigQueryTable {
   /** The Google Cloud project ID of the project containing the table. If omitted, project ID is inferred from the API call. */
@@ -2160,16 +1776,12 @@ export interface GooglePrivacyDlpV2BigQueryTable {
   datasetId?: string;
 }
 
-export const GooglePrivacyDlpV2BigQueryTable: Schema.Schema<GooglePrivacyDlpV2BigQueryTable> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      projectId: Schema.optional(Schema.String),
-      tableId: Schema.optional(Schema.String),
-      datasetId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2BigQueryTable",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2BigQueryTable>;
+export const GooglePrivacyDlpV2BigQueryTable =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    projectId: Schema.optional(Schema.String),
+    tableId: Schema.optional(Schema.String),
+    datasetId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2BigQueryTable" });
 
 export interface GooglePrivacyDlpV2Export {
   /** Store all profiles to BigQuery. * The system will create a new dataset and table for you if none are are provided. The dataset will be named `sensitive_data_protection_discovery` and table will be named `discovery_profiles`. This table will be placed in the same project as the container project running the scan. After the first profile is generated and the dataset and table are created, the discovery scan configuration will be updated with the dataset and table names. * See [Analyze data profiles stored in BigQuery](https://cloud.google.com/sensitive-data-protection/docs/analyze-data-profiles). * See [Sample queries for your BigQuery table](https://cloud.google.com/sensitive-data-protection/docs/analyze-data-profiles#sample_sql_queries). * Data is inserted using [streaming insert](https://cloud.google.com/blog/products/bigquery/life-of-a-bigquery-streaming-insert) and so data may be in the buffer for a period of time after the profile has finished. * The Pub/Sub notification is sent before the streaming buffer is guaranteed to be written, so data may not be instantly visible to queries by the time your topic receives the Pub/Sub notification. * The best practice is to use the same table for an entire organization so that you can take advantage of the [provided Looker reports](https://cloud.google.com/sensitive-data-protection/docs/analyze-data-profiles#use_a_premade_report). If you use VPC Service Controls to define security perimeters, then you must use a separate table for each boundary. */
@@ -2178,36 +1790,28 @@ export interface GooglePrivacyDlpV2Export {
   sampleFindingsTable?: GooglePrivacyDlpV2BigQueryTable;
 }
 
-export const GooglePrivacyDlpV2Export: Schema.Schema<GooglePrivacyDlpV2Export> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      profileTable: Schema.optional(GooglePrivacyDlpV2BigQueryTable),
-      sampleFindingsTable: Schema.optional(GooglePrivacyDlpV2BigQueryTable),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2Export",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2Export>;
+export const GooglePrivacyDlpV2Export =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    profileTable: Schema.optional(GooglePrivacyDlpV2BigQueryTable),
+    sampleFindingsTable: Schema.optional(GooglePrivacyDlpV2BigQueryTable),
+  }).annotate({ identifier: "GooglePrivacyDlpV2Export" });
 
 export interface GooglePrivacyDlpV2PublishToChronicle {}
 
-export const GooglePrivacyDlpV2PublishToChronicle: Schema.Schema<GooglePrivacyDlpV2PublishToChronicle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GooglePrivacyDlpV2PublishToChronicle =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2PublishToChronicle",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2PublishToChronicle>;
+  });
 
 export interface GooglePrivacyDlpV2TagValue {
   /** The namespaced name for the tag value to attach to resources. Must be in the format `{parent_id}/{tag_key_short_name}/{short_name}`, for example, "123456/environment/prod" for an organization parent, or "my-project/environment/prod" for a project parent. */
   namespacedValue?: string;
 }
 
-export const GooglePrivacyDlpV2TagValue: Schema.Schema<GooglePrivacyDlpV2TagValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      namespacedValue: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2TagValue",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2TagValue>;
+export const GooglePrivacyDlpV2TagValue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    namespacedValue: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2TagValue" });
 
 export interface GooglePrivacyDlpV2TagCondition {
   /** The tag value to attach to resources. */
@@ -2216,15 +1820,11 @@ export interface GooglePrivacyDlpV2TagCondition {
   sensitivityScore?: GooglePrivacyDlpV2SensitivityScore;
 }
 
-export const GooglePrivacyDlpV2TagCondition: Schema.Schema<GooglePrivacyDlpV2TagCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tag: Schema.optional(GooglePrivacyDlpV2TagValue),
-      sensitivityScore: Schema.optional(GooglePrivacyDlpV2SensitivityScore),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2TagCondition",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2TagCondition>;
+export const GooglePrivacyDlpV2TagCondition =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tag: Schema.optional(GooglePrivacyDlpV2TagValue),
+    sensitivityScore: Schema.optional(GooglePrivacyDlpV2SensitivityScore),
+  }).annotate({ identifier: "GooglePrivacyDlpV2TagCondition" });
 
 export interface GooglePrivacyDlpV2TagResources {
   /** The profile generations for which the tag should be attached to resources. If you attach a tag to only new profiles, then if the sensitivity score of a profile subsequently changes, its tag doesn't change. By default, this field includes only new profiles. To include both new and updated profiles for tagging, this field should explicitly include both `PROFILE_GENERATION_NEW` and `PROFILE_GENERATION_UPDATE`. */
@@ -2240,39 +1840,31 @@ export interface GooglePrivacyDlpV2TagResources {
   lowerDataRiskToLow?: boolean;
 }
 
-export const GooglePrivacyDlpV2TagResources: Schema.Schema<GooglePrivacyDlpV2TagResources> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      profileGenerationsToTag: Schema.optional(Schema.Array(Schema.String)),
-      tagConditions: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2TagCondition),
-      ),
-      lowerDataRiskToLow: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2TagResources",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2TagResources>;
+export const GooglePrivacyDlpV2TagResources =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    profileGenerationsToTag: Schema.optional(Schema.Array(Schema.String)),
+    tagConditions: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2TagCondition),
+    ),
+    lowerDataRiskToLow: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GooglePrivacyDlpV2TagResources" });
 
 export interface GooglePrivacyDlpV2PublishToDataplexCatalog {
   /** Whether creating a Dataplex Universal Catalog aspect for a profiled resource should lower the risk of the profile for that resource. This also lowers the data risk of resources at the lower levels of the resource hierarchy. For example, reducing the data risk of a table data profile also reduces the data risk of the constituent column data profiles. */
   lowerDataRiskToLow?: boolean;
 }
 
-export const GooglePrivacyDlpV2PublishToDataplexCatalog: Schema.Schema<GooglePrivacyDlpV2PublishToDataplexCatalog> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lowerDataRiskToLow: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2PublishToDataplexCatalog",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2PublishToDataplexCatalog>;
+export const GooglePrivacyDlpV2PublishToDataplexCatalog =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    lowerDataRiskToLow: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GooglePrivacyDlpV2PublishToDataplexCatalog" });
 
 export interface GooglePrivacyDlpV2PublishToSecurityCommandCenter {}
 
-export const GooglePrivacyDlpV2PublishToSecurityCommandCenter: Schema.Schema<GooglePrivacyDlpV2PublishToSecurityCommandCenter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GooglePrivacyDlpV2PublishToSecurityCommandCenter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2PublishToSecurityCommandCenter",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2PublishToSecurityCommandCenter>;
+  });
 
 export interface GooglePrivacyDlpV2PubSubCondition {
   /** The minimum data risk score that triggers the condition. */
@@ -2289,15 +1881,11 @@ export interface GooglePrivacyDlpV2PubSubCondition {
     | (string & {});
 }
 
-export const GooglePrivacyDlpV2PubSubCondition: Schema.Schema<GooglePrivacyDlpV2PubSubCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      minimumRiskScore: Schema.optional(Schema.String),
-      minimumSensitivityScore: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2PubSubCondition",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2PubSubCondition>;
+export const GooglePrivacyDlpV2PubSubCondition =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    minimumRiskScore: Schema.optional(Schema.String),
+    minimumSensitivityScore: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2PubSubCondition" });
 
 export interface GooglePrivacyDlpV2PubSubExpressions {
   /** The operator to apply to the collection of conditions. */
@@ -2310,31 +1898,23 @@ export interface GooglePrivacyDlpV2PubSubExpressions {
   conditions?: Array<GooglePrivacyDlpV2PubSubCondition>;
 }
 
-export const GooglePrivacyDlpV2PubSubExpressions: Schema.Schema<GooglePrivacyDlpV2PubSubExpressions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      logicalOperator: Schema.optional(Schema.String),
-      conditions: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2PubSubCondition),
-      ),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2PubSubExpressions",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2PubSubExpressions>;
+export const GooglePrivacyDlpV2PubSubExpressions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    logicalOperator: Schema.optional(Schema.String),
+    conditions: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2PubSubCondition),
+    ),
+  }).annotate({ identifier: "GooglePrivacyDlpV2PubSubExpressions" });
 
 export interface GooglePrivacyDlpV2DataProfilePubSubCondition {
   /** An expression. */
   expressions?: GooglePrivacyDlpV2PubSubExpressions;
 }
 
-export const GooglePrivacyDlpV2DataProfilePubSubCondition: Schema.Schema<GooglePrivacyDlpV2DataProfilePubSubCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expressions: Schema.optional(GooglePrivacyDlpV2PubSubExpressions),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2DataProfilePubSubCondition",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DataProfilePubSubCondition>;
+export const GooglePrivacyDlpV2DataProfilePubSubCondition =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    expressions: Schema.optional(GooglePrivacyDlpV2PubSubExpressions),
+  }).annotate({ identifier: "GooglePrivacyDlpV2DataProfilePubSubCondition" });
 
 export interface GooglePrivacyDlpV2PubSubNotification {
   /** Cloud Pub/Sub topic to send notifications to. Format is projects/{project}/topics/{topic}. */
@@ -2358,19 +1938,15 @@ export interface GooglePrivacyDlpV2PubSubNotification {
     | (string & {});
 }
 
-export const GooglePrivacyDlpV2PubSubNotification: Schema.Schema<GooglePrivacyDlpV2PubSubNotification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      topic: Schema.optional(Schema.String),
-      event: Schema.optional(Schema.String),
-      pubsubCondition: Schema.optional(
-        GooglePrivacyDlpV2DataProfilePubSubCondition,
-      ),
-      detailOfMessage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2PubSubNotification",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2PubSubNotification>;
+export const GooglePrivacyDlpV2PubSubNotification =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    topic: Schema.optional(Schema.String),
+    event: Schema.optional(Schema.String),
+    pubsubCondition: Schema.optional(
+      GooglePrivacyDlpV2DataProfilePubSubCondition,
+    ),
+    detailOfMessage: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2PubSubNotification" });
 
 export interface GooglePrivacyDlpV2DataProfileAction {
   /** Export data profiles into a provided location. */
@@ -2387,23 +1963,19 @@ export interface GooglePrivacyDlpV2DataProfileAction {
   pubSubNotification?: GooglePrivacyDlpV2PubSubNotification;
 }
 
-export const GooglePrivacyDlpV2DataProfileAction: Schema.Schema<GooglePrivacyDlpV2DataProfileAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      exportData: Schema.optional(GooglePrivacyDlpV2Export),
-      publishToChronicle: Schema.optional(GooglePrivacyDlpV2PublishToChronicle),
-      tagResources: Schema.optional(GooglePrivacyDlpV2TagResources),
-      publishToDataplexCatalog: Schema.optional(
-        GooglePrivacyDlpV2PublishToDataplexCatalog,
-      ),
-      publishToScc: Schema.optional(
-        GooglePrivacyDlpV2PublishToSecurityCommandCenter,
-      ),
-      pubSubNotification: Schema.optional(GooglePrivacyDlpV2PubSubNotification),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2DataProfileAction",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DataProfileAction>;
+export const GooglePrivacyDlpV2DataProfileAction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    exportData: Schema.optional(GooglePrivacyDlpV2Export),
+    publishToChronicle: Schema.optional(GooglePrivacyDlpV2PublishToChronicle),
+    tagResources: Schema.optional(GooglePrivacyDlpV2TagResources),
+    publishToDataplexCatalog: Schema.optional(
+      GooglePrivacyDlpV2PublishToDataplexCatalog,
+    ),
+    publishToScc: Schema.optional(
+      GooglePrivacyDlpV2PublishToSecurityCommandCenter,
+    ),
+    pubSubNotification: Schema.optional(GooglePrivacyDlpV2PubSubNotification),
+  }).annotate({ identifier: "GooglePrivacyDlpV2DataProfileAction" });
 
 export interface GooglePrivacyDlpV2DiscoveryStartingLocation {
   /** The ID of the folder within an organization to be scanned. */
@@ -2412,15 +1984,11 @@ export interface GooglePrivacyDlpV2DiscoveryStartingLocation {
   organizationId?: string;
 }
 
-export const GooglePrivacyDlpV2DiscoveryStartingLocation: Schema.Schema<GooglePrivacyDlpV2DiscoveryStartingLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      folderId: Schema.optional(Schema.String),
-      organizationId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2DiscoveryStartingLocation",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DiscoveryStartingLocation>;
+export const GooglePrivacyDlpV2DiscoveryStartingLocation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    folderId: Schema.optional(Schema.String),
+    organizationId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2DiscoveryStartingLocation" });
 
 export interface GooglePrivacyDlpV2OrgConfig {
   /** The data to scan: folder, org, or project */
@@ -2429,29 +1997,25 @@ export interface GooglePrivacyDlpV2OrgConfig {
   projectId?: string;
 }
 
-export const GooglePrivacyDlpV2OrgConfig: Schema.Schema<GooglePrivacyDlpV2OrgConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      location: Schema.optional(GooglePrivacyDlpV2DiscoveryStartingLocation),
-      projectId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2OrgConfig",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2OrgConfig>;
+export const GooglePrivacyDlpV2OrgConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.optional(GooglePrivacyDlpV2DiscoveryStartingLocation),
+    projectId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2OrgConfig" });
 
 export interface GooglePrivacyDlpV2MultiRegionProcessing {}
 
-export const GooglePrivacyDlpV2MultiRegionProcessing: Schema.Schema<GooglePrivacyDlpV2MultiRegionProcessing> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GooglePrivacyDlpV2MultiRegionProcessing =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2MultiRegionProcessing",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2MultiRegionProcessing>;
+  });
 
 export interface GooglePrivacyDlpV2GlobalProcessing {}
 
-export const GooglePrivacyDlpV2GlobalProcessing: Schema.Schema<GooglePrivacyDlpV2GlobalProcessing> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GooglePrivacyDlpV2GlobalProcessing =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2GlobalProcessing",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2GlobalProcessing>;
+  });
 
 export interface GooglePrivacyDlpV2ImageFallbackLocation {
   /** Processing occurs in a multi-region that contains the current region if available. */
@@ -2460,17 +2024,13 @@ export interface GooglePrivacyDlpV2ImageFallbackLocation {
   globalProcessing?: GooglePrivacyDlpV2GlobalProcessing;
 }
 
-export const GooglePrivacyDlpV2ImageFallbackLocation: Schema.Schema<GooglePrivacyDlpV2ImageFallbackLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      multiRegionProcessing: Schema.optional(
-        GooglePrivacyDlpV2MultiRegionProcessing,
-      ),
-      globalProcessing: Schema.optional(GooglePrivacyDlpV2GlobalProcessing),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2ImageFallbackLocation",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2ImageFallbackLocation>;
+export const GooglePrivacyDlpV2ImageFallbackLocation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    multiRegionProcessing: Schema.optional(
+      GooglePrivacyDlpV2MultiRegionProcessing,
+    ),
+    globalProcessing: Schema.optional(GooglePrivacyDlpV2GlobalProcessing),
+  }).annotate({ identifier: "GooglePrivacyDlpV2ImageFallbackLocation" });
 
 export interface GooglePrivacyDlpV2DocumentFallbackLocation {
   /** Processing occurs in a multi-region that contains the current region if available. */
@@ -2479,17 +2039,13 @@ export interface GooglePrivacyDlpV2DocumentFallbackLocation {
   globalProcessing?: GooglePrivacyDlpV2GlobalProcessing;
 }
 
-export const GooglePrivacyDlpV2DocumentFallbackLocation: Schema.Schema<GooglePrivacyDlpV2DocumentFallbackLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      multiRegionProcessing: Schema.optional(
-        GooglePrivacyDlpV2MultiRegionProcessing,
-      ),
-      globalProcessing: Schema.optional(GooglePrivacyDlpV2GlobalProcessing),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2DocumentFallbackLocation",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DocumentFallbackLocation>;
+export const GooglePrivacyDlpV2DocumentFallbackLocation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    multiRegionProcessing: Schema.optional(
+      GooglePrivacyDlpV2MultiRegionProcessing,
+    ),
+    globalProcessing: Schema.optional(GooglePrivacyDlpV2GlobalProcessing),
+  }).annotate({ identifier: "GooglePrivacyDlpV2DocumentFallbackLocation" });
 
 export interface GooglePrivacyDlpV2ProcessingLocation {
   /** Image processing falls back using this configuration. */
@@ -2498,19 +2054,15 @@ export interface GooglePrivacyDlpV2ProcessingLocation {
   documentFallbackLocation?: GooglePrivacyDlpV2DocumentFallbackLocation;
 }
 
-export const GooglePrivacyDlpV2ProcessingLocation: Schema.Schema<GooglePrivacyDlpV2ProcessingLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      imageFallbackLocation: Schema.optional(
-        GooglePrivacyDlpV2ImageFallbackLocation,
-      ),
-      documentFallbackLocation: Schema.optional(
-        GooglePrivacyDlpV2DocumentFallbackLocation,
-      ),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2ProcessingLocation",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2ProcessingLocation>;
+export const GooglePrivacyDlpV2ProcessingLocation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    imageFallbackLocation: Schema.optional(
+      GooglePrivacyDlpV2ImageFallbackLocation,
+    ),
+    documentFallbackLocation: Schema.optional(
+      GooglePrivacyDlpV2DocumentFallbackLocation,
+    ),
+  }).annotate({ identifier: "GooglePrivacyDlpV2ProcessingLocation" });
 
 export interface GoogleRpcStatus {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -2521,18 +2073,13 @@ export interface GoogleRpcStatus {
   code?: number;
 }
 
-export const GoogleRpcStatus: Schema.Schema<GoogleRpcStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      code: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleRpcStatus",
-  }) as any as Schema.Schema<GoogleRpcStatus>;
+export const GoogleRpcStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  code: Schema.optional(Schema.Number),
+}).annotate({ identifier: "GoogleRpcStatus" });
 
 export interface GooglePrivacyDlpV2Error {
   /** Detailed error codes and messages. */
@@ -2547,16 +2094,12 @@ export interface GooglePrivacyDlpV2Error {
     | (string & {});
 }
 
-export const GooglePrivacyDlpV2Error: Schema.Schema<GooglePrivacyDlpV2Error> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      details: Schema.optional(GoogleRpcStatus),
-      timestamps: Schema.optional(Schema.Array(Schema.String)),
-      extraInfo: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2Error",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2Error>;
+export const GooglePrivacyDlpV2Error =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    details: Schema.optional(GoogleRpcStatus),
+    timestamps: Schema.optional(Schema.Array(Schema.String)),
+    extraInfo: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2Error" });
 
 export interface GooglePrivacyDlpV2AwsDiscoveryStartingLocation {
   /** The AWS account ID that this discovery config applies to. Within an AWS organization, you can find the AWS account ID inside an AWS account ARN. Example: arn:{partition}:organizations::{management_account_id}:account/{org_id}/{account_id} */
@@ -2565,31 +2108,25 @@ export interface GooglePrivacyDlpV2AwsDiscoveryStartingLocation {
   allAssetInventoryAssets?: boolean;
 }
 
-export const GooglePrivacyDlpV2AwsDiscoveryStartingLocation: Schema.Schema<GooglePrivacyDlpV2AwsDiscoveryStartingLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accountId: Schema.optional(Schema.String),
-      allAssetInventoryAssets: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2AwsDiscoveryStartingLocation",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2AwsDiscoveryStartingLocation>;
+export const GooglePrivacyDlpV2AwsDiscoveryStartingLocation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountId: Schema.optional(Schema.String),
+    allAssetInventoryAssets: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GooglePrivacyDlpV2AwsDiscoveryStartingLocation" });
 
 export interface GooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation {
   /** The AWS starting location for discovery. */
   awsLocation?: GooglePrivacyDlpV2AwsDiscoveryStartingLocation;
 }
 
-export const GooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation: Schema.Schema<GooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      awsLocation: Schema.optional(
-        GooglePrivacyDlpV2AwsDiscoveryStartingLocation,
-      ),
-    }),
-  ).annotate({
+export const GooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    awsLocation: Schema.optional(
+      GooglePrivacyDlpV2AwsDiscoveryStartingLocation,
+    ),
+  }).annotate({
     identifier: "GooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation>;
+  });
 
 export interface GooglePrivacyDlpV2DiscoveryConfig {
   /** Output only. The last update timestamp of a DiscoveryConfig. */
@@ -2620,30 +2157,24 @@ export interface GooglePrivacyDlpV2DiscoveryConfig {
   inspectTemplates?: Array<string>;
 }
 
-export const GooglePrivacyDlpV2DiscoveryConfig: Schema.Schema<GooglePrivacyDlpV2DiscoveryConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateTime: Schema.optional(Schema.String),
-      targets: Schema.optional(Schema.Array(GooglePrivacyDlpV2DiscoveryTarget)),
-      status: Schema.optional(Schema.String),
-      actions: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2DataProfileAction),
-      ),
-      orgConfig: Schema.optional(GooglePrivacyDlpV2OrgConfig),
-      processingLocation: Schema.optional(GooglePrivacyDlpV2ProcessingLocation),
-      errors: Schema.optional(Schema.Array(GooglePrivacyDlpV2Error)),
-      name: Schema.optional(Schema.String),
-      lastRunTime: Schema.optional(Schema.String),
-      otherCloudStartingLocation: Schema.optional(
-        GooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation,
-      ),
-      displayName: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      inspectTemplates: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2DiscoveryConfig",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DiscoveryConfig>;
+export const GooglePrivacyDlpV2DiscoveryConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateTime: Schema.optional(Schema.String),
+    targets: Schema.optional(Schema.Array(GooglePrivacyDlpV2DiscoveryTarget)),
+    status: Schema.optional(Schema.String),
+    actions: Schema.optional(Schema.Array(GooglePrivacyDlpV2DataProfileAction)),
+    orgConfig: Schema.optional(GooglePrivacyDlpV2OrgConfig),
+    processingLocation: Schema.optional(GooglePrivacyDlpV2ProcessingLocation),
+    errors: Schema.optional(Schema.Array(GooglePrivacyDlpV2Error)),
+    name: Schema.optional(Schema.String),
+    lastRunTime: Schema.optional(Schema.String),
+    otherCloudStartingLocation: Schema.optional(
+      GooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation,
+    ),
+    displayName: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    inspectTemplates: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GooglePrivacyDlpV2DiscoveryConfig" });
 
 export interface GooglePrivacyDlpV2ListDiscoveryConfigsResponse {
   /** List of configs, up to page_size in ListDiscoveryConfigsRequest. */
@@ -2652,17 +2183,13 @@ export interface GooglePrivacyDlpV2ListDiscoveryConfigsResponse {
   nextPageToken?: string;
 }
 
-export const GooglePrivacyDlpV2ListDiscoveryConfigsResponse: Schema.Schema<GooglePrivacyDlpV2ListDiscoveryConfigsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      discoveryConfigs: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2DiscoveryConfig),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2ListDiscoveryConfigsResponse",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2ListDiscoveryConfigsResponse>;
+export const GooglePrivacyDlpV2ListDiscoveryConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    discoveryConfigs: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2DiscoveryConfig),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2ListDiscoveryConfigsResponse" });
 
 export interface GooglePrivacyDlpV2BoundingBox {
   /** Width of the bounding box in pixels. */
@@ -2675,33 +2202,23 @@ export interface GooglePrivacyDlpV2BoundingBox {
   height?: number;
 }
 
-export const GooglePrivacyDlpV2BoundingBox: Schema.Schema<GooglePrivacyDlpV2BoundingBox> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      width: Schema.optional(Schema.Number),
-      left: Schema.optional(Schema.Number),
-      top: Schema.optional(Schema.Number),
-      height: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2BoundingBox",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2BoundingBox>;
+export const GooglePrivacyDlpV2BoundingBox =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    width: Schema.optional(Schema.Number),
+    left: Schema.optional(Schema.Number),
+    top: Schema.optional(Schema.Number),
+    height: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GooglePrivacyDlpV2BoundingBox" });
 
 export interface GooglePrivacyDlpV2ImageLocation {
   /** Bounding boxes locating the pixels within the image containing the finding. */
   boundingBoxes?: Array<GooglePrivacyDlpV2BoundingBox>;
 }
 
-export const GooglePrivacyDlpV2ImageLocation: Schema.Schema<GooglePrivacyDlpV2ImageLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      boundingBoxes: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2BoundingBox),
-      ),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2ImageLocation",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2ImageLocation>;
+export const GooglePrivacyDlpV2ImageLocation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    boundingBoxes: Schema.optional(Schema.Array(GooglePrivacyDlpV2BoundingBox)),
+  }).annotate({ identifier: "GooglePrivacyDlpV2ImageLocation" });
 
 export interface GooglePrivacyDlpV2CloudStorageRegexFileSet {
   /** The name of a Cloud Storage bucket. Required. */
@@ -2712,16 +2229,12 @@ export interface GooglePrivacyDlpV2CloudStorageRegexFileSet {
   excludeRegex?: Array<string>;
 }
 
-export const GooglePrivacyDlpV2CloudStorageRegexFileSet: Schema.Schema<GooglePrivacyDlpV2CloudStorageRegexFileSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bucketName: Schema.optional(Schema.String),
-      includeRegex: Schema.optional(Schema.Array(Schema.String)),
-      excludeRegex: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2CloudStorageRegexFileSet",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2CloudStorageRegexFileSet>;
+export const GooglePrivacyDlpV2CloudStorageRegexFileSet =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bucketName: Schema.optional(Schema.String),
+    includeRegex: Schema.optional(Schema.Array(Schema.String)),
+    excludeRegex: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GooglePrivacyDlpV2CloudStorageRegexFileSet" });
 
 export interface GooglePrivacyDlpV2FileSet {
   /** The Cloud Storage url of the file(s) to scan, in the format `gs:///`. Trailing wildcard in the path is allowed. If the url ends in a trailing slash, the bucket or directory represented by the url will be scanned non-recursively (content in sub-directories will not be scanned). This means that `gs://mybucket/` is equivalent to `gs://mybucket/*`, and `gs://mybucket/directory/` is equivalent to `gs://mybucket/directory/*`. Exactly one of `url` or `regex_file_set` must be set. */
@@ -2730,15 +2243,11 @@ export interface GooglePrivacyDlpV2FileSet {
   regexFileSet?: GooglePrivacyDlpV2CloudStorageRegexFileSet;
 }
 
-export const GooglePrivacyDlpV2FileSet: Schema.Schema<GooglePrivacyDlpV2FileSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      url: Schema.optional(Schema.String),
-      regexFileSet: Schema.optional(GooglePrivacyDlpV2CloudStorageRegexFileSet),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2FileSet",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2FileSet>;
+export const GooglePrivacyDlpV2FileSet =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    url: Schema.optional(Schema.String),
+    regexFileSet: Schema.optional(GooglePrivacyDlpV2CloudStorageRegexFileSet),
+  }).annotate({ identifier: "GooglePrivacyDlpV2FileSet" });
 
 export interface GooglePrivacyDlpV2CloudStorageOptions {
   /** List of file type groups to include in the scan. If empty, all files are scanned and available data format processors are applied. In addition, the binary content of the selected files is always scanned as well. Images are scanned only as binary if the specified region does not support image inspection and no file_types were specified. Image inspection is restricted to 'global', 'us', 'asia', and 'europe'. */
@@ -2772,35 +2281,25 @@ export interface GooglePrivacyDlpV2CloudStorageOptions {
     | (string & {});
 }
 
-export const GooglePrivacyDlpV2CloudStorageOptions: Schema.Schema<GooglePrivacyDlpV2CloudStorageOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fileTypes: Schema.optional(Schema.Array(Schema.String)),
-      bytesLimitPerFile: Schema.optional(Schema.String),
-      filesLimitPercent: Schema.optional(Schema.Number),
-      fileSet: Schema.optional(GooglePrivacyDlpV2FileSet),
-      bytesLimitPerFilePercent: Schema.optional(Schema.Number),
-      sampleMethod: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2CloudStorageOptions",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2CloudStorageOptions>;
+export const GooglePrivacyDlpV2CloudStorageOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fileTypes: Schema.optional(Schema.Array(Schema.String)),
+    bytesLimitPerFile: Schema.optional(Schema.String),
+    filesLimitPercent: Schema.optional(Schema.Number),
+    fileSet: Schema.optional(GooglePrivacyDlpV2FileSet),
+    bytesLimitPerFilePercent: Schema.optional(Schema.Number),
+    sampleMethod: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2CloudStorageOptions" });
 
 export interface GooglePrivacyDlpV2TableOptions {
   /** The columns that are the primary keys for table objects included in ContentItem. A copy of this cell's value will stored alongside alongside each finding so that the finding can be traced to the specific row it came from. No more than 3 may be provided. */
   identifyingFields?: Array<GooglePrivacyDlpV2FieldId>;
 }
 
-export const GooglePrivacyDlpV2TableOptions: Schema.Schema<GooglePrivacyDlpV2TableOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      identifyingFields: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2FieldId),
-      ),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2TableOptions",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2TableOptions>;
+export const GooglePrivacyDlpV2TableOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    identifyingFields: Schema.optional(Schema.Array(GooglePrivacyDlpV2FieldId)),
+  }).annotate({ identifier: "GooglePrivacyDlpV2TableOptions" });
 
 export interface GooglePrivacyDlpV2HybridOptions {
   /** If the container is a table, additional information to make findings meaningful such as the columns that are primary keys. */
@@ -2813,17 +2312,13 @@ export interface GooglePrivacyDlpV2HybridOptions {
   requiredFindingLabelKeys?: Array<string>;
 }
 
-export const GooglePrivacyDlpV2HybridOptions: Schema.Schema<GooglePrivacyDlpV2HybridOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tableOptions: Schema.optional(GooglePrivacyDlpV2TableOptions),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      description: Schema.optional(Schema.String),
-      requiredFindingLabelKeys: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2HybridOptions",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2HybridOptions>;
+export const GooglePrivacyDlpV2HybridOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tableOptions: Schema.optional(GooglePrivacyDlpV2TableOptions),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    description: Schema.optional(Schema.String),
+    requiredFindingLabelKeys: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GooglePrivacyDlpV2HybridOptions" });
 
 export interface GooglePrivacyDlpV2TimespanConfig {
   /** Specification of the field containing the timestamp of scanned items. Used for data sources like Datastore and BigQuery. **For BigQuery** If this value is not specified and the table was modified between the given start and end times, the entire table will be scanned. If this value is specified, then rows are filtered based on the given start and end times. Rows with a `NULL` value in the provided BigQuery column are skipped. Valid data types of the provided BigQuery column are: `INTEGER`, `DATE`, `TIMESTAMP`, and `DATETIME`. If your BigQuery table is [partitioned at ingestion time](https://cloud.google.com/bigquery/docs/partitioned-tables#ingestion_time), you can use any of the following pseudo-columns as your timestamp field. When used with Cloud DLP, these pseudo-column names are case sensitive. - `_PARTITIONTIME` - `_PARTITIONDATE` - `_PARTITION_LOAD_TIME` **For Datastore** If this value is specified, then entities are filtered based on the given start and end times. If an entity does not contain the provided timestamp property or contains empty or invalid values, then it is included. Valid data types of the provided timestamp property are: `TIMESTAMP`. See the [known issue](https://cloud.google.com/sensitive-data-protection/docs/known-issues#bq-timespan) related to this operation. */
@@ -2836,17 +2331,13 @@ export interface GooglePrivacyDlpV2TimespanConfig {
   enableAutoPopulationOfTimespanConfig?: boolean;
 }
 
-export const GooglePrivacyDlpV2TimespanConfig: Schema.Schema<GooglePrivacyDlpV2TimespanConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      timestampField: Schema.optional(GooglePrivacyDlpV2FieldId),
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      enableAutoPopulationOfTimespanConfig: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2TimespanConfig",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2TimespanConfig>;
+export const GooglePrivacyDlpV2TimespanConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    timestampField: Schema.optional(GooglePrivacyDlpV2FieldId),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    enableAutoPopulationOfTimespanConfig: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GooglePrivacyDlpV2TimespanConfig" });
 
 export interface GooglePrivacyDlpV2BigQueryOptions {
   /** Table fields that may uniquely identify a row within the table. When `actions.saveFindings.outputConfig.table` is specified, the values of columns specified here are available in the output table under `location.content_locations.record_location.record_key.id_values`. Nested fields such as `person.birthdate.year` are allowed. */
@@ -2869,22 +2360,16 @@ export interface GooglePrivacyDlpV2BigQueryOptions {
   tableReference?: GooglePrivacyDlpV2BigQueryTable;
 }
 
-export const GooglePrivacyDlpV2BigQueryOptions: Schema.Schema<GooglePrivacyDlpV2BigQueryOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      identifyingFields: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2FieldId),
-      ),
-      sampleMethod: Schema.optional(Schema.String),
-      excludedFields: Schema.optional(Schema.Array(GooglePrivacyDlpV2FieldId)),
-      rowsLimitPercent: Schema.optional(Schema.Number),
-      includedFields: Schema.optional(Schema.Array(GooglePrivacyDlpV2FieldId)),
-      rowsLimit: Schema.optional(Schema.String),
-      tableReference: Schema.optional(GooglePrivacyDlpV2BigQueryTable),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2BigQueryOptions",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2BigQueryOptions>;
+export const GooglePrivacyDlpV2BigQueryOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    identifyingFields: Schema.optional(Schema.Array(GooglePrivacyDlpV2FieldId)),
+    sampleMethod: Schema.optional(Schema.String),
+    excludedFields: Schema.optional(Schema.Array(GooglePrivacyDlpV2FieldId)),
+    rowsLimitPercent: Schema.optional(Schema.Number),
+    includedFields: Schema.optional(Schema.Array(GooglePrivacyDlpV2FieldId)),
+    rowsLimit: Schema.optional(Schema.String),
+    tableReference: Schema.optional(GooglePrivacyDlpV2BigQueryTable),
+  }).annotate({ identifier: "GooglePrivacyDlpV2BigQueryOptions" });
 
 export interface GooglePrivacyDlpV2PartitionId {
   /** If not empty, the ID of the namespace to which the entities belong. */
@@ -2893,29 +2378,21 @@ export interface GooglePrivacyDlpV2PartitionId {
   projectId?: string;
 }
 
-export const GooglePrivacyDlpV2PartitionId: Schema.Schema<GooglePrivacyDlpV2PartitionId> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      namespaceId: Schema.optional(Schema.String),
-      projectId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2PartitionId",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2PartitionId>;
+export const GooglePrivacyDlpV2PartitionId =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    namespaceId: Schema.optional(Schema.String),
+    projectId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2PartitionId" });
 
 export interface GooglePrivacyDlpV2KindExpression {
   /** The name of the kind. */
   name?: string;
 }
 
-export const GooglePrivacyDlpV2KindExpression: Schema.Schema<GooglePrivacyDlpV2KindExpression> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2KindExpression",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2KindExpression>;
+export const GooglePrivacyDlpV2KindExpression =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2KindExpression" });
 
 export interface GooglePrivacyDlpV2DatastoreOptions {
   /** A partition ID identifies a grouping of entities. The grouping is always by project and namespace, however the namespace ID may be empty. */
@@ -2924,15 +2401,11 @@ export interface GooglePrivacyDlpV2DatastoreOptions {
   kind?: GooglePrivacyDlpV2KindExpression;
 }
 
-export const GooglePrivacyDlpV2DatastoreOptions: Schema.Schema<GooglePrivacyDlpV2DatastoreOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      partitionId: Schema.optional(GooglePrivacyDlpV2PartitionId),
-      kind: Schema.optional(GooglePrivacyDlpV2KindExpression),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2DatastoreOptions",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DatastoreOptions>;
+export const GooglePrivacyDlpV2DatastoreOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    partitionId: Schema.optional(GooglePrivacyDlpV2PartitionId),
+    kind: Schema.optional(GooglePrivacyDlpV2KindExpression),
+  }).annotate({ identifier: "GooglePrivacyDlpV2DatastoreOptions" });
 
 export interface GooglePrivacyDlpV2StorageConfig {
   /** Cloud Storage options. */
@@ -2947,20 +2420,14 @@ export interface GooglePrivacyDlpV2StorageConfig {
   datastoreOptions?: GooglePrivacyDlpV2DatastoreOptions;
 }
 
-export const GooglePrivacyDlpV2StorageConfig: Schema.Schema<GooglePrivacyDlpV2StorageConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cloudStorageOptions: Schema.optional(
-        GooglePrivacyDlpV2CloudStorageOptions,
-      ),
-      hybridOptions: Schema.optional(GooglePrivacyDlpV2HybridOptions),
-      timespanConfig: Schema.optional(GooglePrivacyDlpV2TimespanConfig),
-      bigQueryOptions: Schema.optional(GooglePrivacyDlpV2BigQueryOptions),
-      datastoreOptions: Schema.optional(GooglePrivacyDlpV2DatastoreOptions),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2StorageConfig",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2StorageConfig>;
+export const GooglePrivacyDlpV2StorageConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cloudStorageOptions: Schema.optional(GooglePrivacyDlpV2CloudStorageOptions),
+    hybridOptions: Schema.optional(GooglePrivacyDlpV2HybridOptions),
+    timespanConfig: Schema.optional(GooglePrivacyDlpV2TimespanConfig),
+    bigQueryOptions: Schema.optional(GooglePrivacyDlpV2BigQueryOptions),
+    datastoreOptions: Schema.optional(GooglePrivacyDlpV2DatastoreOptions),
+  }).annotate({ identifier: "GooglePrivacyDlpV2StorageConfig" });
 
 export interface GooglePrivacyDlpV2QuasiIdField {
   /** A auxiliary field. */
@@ -2969,15 +2436,11 @@ export interface GooglePrivacyDlpV2QuasiIdField {
   field?: GooglePrivacyDlpV2FieldId;
 }
 
-export const GooglePrivacyDlpV2QuasiIdField: Schema.Schema<GooglePrivacyDlpV2QuasiIdField> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customTag: Schema.optional(Schema.String),
-      field: Schema.optional(GooglePrivacyDlpV2FieldId),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2QuasiIdField",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2QuasiIdField>;
+export const GooglePrivacyDlpV2QuasiIdField =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customTag: Schema.optional(Schema.String),
+    field: Schema.optional(GooglePrivacyDlpV2FieldId),
+  }).annotate({ identifier: "GooglePrivacyDlpV2QuasiIdField" });
 
 export interface GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues {
   /** The quasi-identifier values. */
@@ -2986,29 +2449,22 @@ export interface GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues {
   estimatedProbability?: number;
 }
 
-export const GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues: Schema.Schema<GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      quasiIdsValues: Schema.optional(Schema.Array(GooglePrivacyDlpV2Value)),
-      estimatedProbability: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    quasiIdsValues: Schema.optional(Schema.Array(GooglePrivacyDlpV2Value)),
+    estimatedProbability: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues>;
+  });
 
 export interface GooglePrivacyDlpV2Row {
   /** Individual cells. */
   values?: Array<GooglePrivacyDlpV2Value>;
 }
 
-export const GooglePrivacyDlpV2Row: Schema.Schema<GooglePrivacyDlpV2Row> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      values: Schema.optional(Schema.Array(GooglePrivacyDlpV2Value)),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2Row",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2Row>;
+export const GooglePrivacyDlpV2Row = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  values: Schema.optional(Schema.Array(GooglePrivacyDlpV2Value)),
+}).annotate({ identifier: "GooglePrivacyDlpV2Row" });
 
 export interface GooglePrivacyDlpV2Table {
   /** Rows of the table. */
@@ -3017,15 +2473,11 @@ export interface GooglePrivacyDlpV2Table {
   headers?: Array<GooglePrivacyDlpV2FieldId>;
 }
 
-export const GooglePrivacyDlpV2Table: Schema.Schema<GooglePrivacyDlpV2Table> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rows: Schema.optional(Schema.Array(GooglePrivacyDlpV2Row)),
-      headers: Schema.optional(Schema.Array(GooglePrivacyDlpV2FieldId)),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2Table",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2Table>;
+export const GooglePrivacyDlpV2Table =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rows: Schema.optional(Schema.Array(GooglePrivacyDlpV2Row)),
+    headers: Schema.optional(Schema.Array(GooglePrivacyDlpV2FieldId)),
+  }).annotate({ identifier: "GooglePrivacyDlpV2Table" });
 
 export interface GooglePrivacyDlpV2KeyValueMetadataProperty {
   /** The value of the property. */
@@ -3034,31 +2486,23 @@ export interface GooglePrivacyDlpV2KeyValueMetadataProperty {
   key?: string;
 }
 
-export const GooglePrivacyDlpV2KeyValueMetadataProperty: Schema.Schema<GooglePrivacyDlpV2KeyValueMetadataProperty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-      key: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2KeyValueMetadataProperty",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2KeyValueMetadataProperty>;
+export const GooglePrivacyDlpV2KeyValueMetadataProperty =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(Schema.String),
+    key: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2KeyValueMetadataProperty" });
 
 export interface GooglePrivacyDlpV2ContentMetadata {
   /** User provided key-value pairs of content metadata. */
   properties?: Array<GooglePrivacyDlpV2KeyValueMetadataProperty>;
 }
 
-export const GooglePrivacyDlpV2ContentMetadata: Schema.Schema<GooglePrivacyDlpV2ContentMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      properties: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2KeyValueMetadataProperty),
-      ),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2ContentMetadata",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2ContentMetadata>;
+export const GooglePrivacyDlpV2ContentMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    properties: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2KeyValueMetadataProperty),
+    ),
+  }).annotate({ identifier: "GooglePrivacyDlpV2ContentMetadata" });
 
 export interface GooglePrivacyDlpV2ByteContentItem {
   /** Content data to inspect or redact. */
@@ -3086,15 +2530,11 @@ export interface GooglePrivacyDlpV2ByteContentItem {
     | (string & {});
 }
 
-export const GooglePrivacyDlpV2ByteContentItem: Schema.Schema<GooglePrivacyDlpV2ByteContentItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      data: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2ByteContentItem",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2ByteContentItem>;
+export const GooglePrivacyDlpV2ByteContentItem =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    data: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2ByteContentItem" });
 
 export interface GooglePrivacyDlpV2ContentItem {
   /** Structured content for inspection. See https://cloud.google.com/sensitive-data-protection/docs/inspecting-text#inspecting_a_table to learn more. */
@@ -3107,17 +2547,13 @@ export interface GooglePrivacyDlpV2ContentItem {
   byteItem?: GooglePrivacyDlpV2ByteContentItem;
 }
 
-export const GooglePrivacyDlpV2ContentItem: Schema.Schema<GooglePrivacyDlpV2ContentItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      table: Schema.optional(GooglePrivacyDlpV2Table),
-      contentMetadata: Schema.optional(GooglePrivacyDlpV2ContentMetadata),
-      value: Schema.optional(Schema.String),
-      byteItem: Schema.optional(GooglePrivacyDlpV2ByteContentItem),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2ContentItem",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2ContentItem>;
+export const GooglePrivacyDlpV2ContentItem =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    table: Schema.optional(GooglePrivacyDlpV2Table),
+    contentMetadata: Schema.optional(GooglePrivacyDlpV2ContentMetadata),
+    value: Schema.optional(Schema.String),
+    byteItem: Schema.optional(GooglePrivacyDlpV2ByteContentItem),
+  }).annotate({ identifier: "GooglePrivacyDlpV2ContentItem" });
 
 export interface GooglePrivacyDlpV2SummaryResult {
   /** Outcome of the transformation. */
@@ -3132,16 +2568,12 @@ export interface GooglePrivacyDlpV2SummaryResult {
   details?: string;
 }
 
-export const GooglePrivacyDlpV2SummaryResult: Schema.Schema<GooglePrivacyDlpV2SummaryResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.String),
-      count: Schema.optional(Schema.String),
-      details: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2SummaryResult",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2SummaryResult>;
+export const GooglePrivacyDlpV2SummaryResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    code: Schema.optional(Schema.String),
+    count: Schema.optional(Schema.String),
+    details: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2SummaryResult" });
 
 export interface GooglePrivacyDlpV2TransformationSummary {
   /** The specific suppression option these stats apply to. */
@@ -3160,24 +2592,18 @@ export interface GooglePrivacyDlpV2TransformationSummary {
   results?: Array<GooglePrivacyDlpV2SummaryResult>;
 }
 
-export const GooglePrivacyDlpV2TransformationSummary: Schema.Schema<GooglePrivacyDlpV2TransformationSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      recordSuppress: Schema.optional(GooglePrivacyDlpV2RecordSuppression),
-      transformation: Schema.optional(
-        GooglePrivacyDlpV2PrimitiveTransformation,
-      ),
-      transformedBytes: Schema.optional(Schema.String),
-      fieldTransformations: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2FieldTransformation),
-      ),
-      infoType: Schema.optional(GooglePrivacyDlpV2InfoType),
-      field: Schema.optional(GooglePrivacyDlpV2FieldId),
-      results: Schema.optional(Schema.Array(GooglePrivacyDlpV2SummaryResult)),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2TransformationSummary",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2TransformationSummary>;
+export const GooglePrivacyDlpV2TransformationSummary =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    recordSuppress: Schema.optional(GooglePrivacyDlpV2RecordSuppression),
+    transformation: Schema.optional(GooglePrivacyDlpV2PrimitiveTransformation),
+    transformedBytes: Schema.optional(Schema.String),
+    fieldTransformations: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2FieldTransformation),
+    ),
+    infoType: Schema.optional(GooglePrivacyDlpV2InfoType),
+    field: Schema.optional(GooglePrivacyDlpV2FieldId),
+    results: Schema.optional(Schema.Array(GooglePrivacyDlpV2SummaryResult)),
+  }).annotate({ identifier: "GooglePrivacyDlpV2TransformationSummary" });
 
 export interface GooglePrivacyDlpV2TransformationOverview {
   /** Total size in bytes that were transformed in some way. */
@@ -3186,17 +2612,13 @@ export interface GooglePrivacyDlpV2TransformationOverview {
   transformationSummaries?: Array<GooglePrivacyDlpV2TransformationSummary>;
 }
 
-export const GooglePrivacyDlpV2TransformationOverview: Schema.Schema<GooglePrivacyDlpV2TransformationOverview> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      transformedBytes: Schema.optional(Schema.String),
-      transformationSummaries: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2TransformationSummary),
-      ),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2TransformationOverview",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2TransformationOverview>;
+export const GooglePrivacyDlpV2TransformationOverview =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    transformedBytes: Schema.optional(Schema.String),
+    transformationSummaries: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2TransformationSummary),
+    ),
+  }).annotate({ identifier: "GooglePrivacyDlpV2TransformationOverview" });
 
 export interface GooglePrivacyDlpV2ReidentifyContentResponse {
   /** The re-identified item. */
@@ -3205,22 +2627,18 @@ export interface GooglePrivacyDlpV2ReidentifyContentResponse {
   overview?: GooglePrivacyDlpV2TransformationOverview;
 }
 
-export const GooglePrivacyDlpV2ReidentifyContentResponse: Schema.Schema<GooglePrivacyDlpV2ReidentifyContentResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      item: Schema.optional(GooglePrivacyDlpV2ContentItem),
-      overview: Schema.optional(GooglePrivacyDlpV2TransformationOverview),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2ReidentifyContentResponse",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2ReidentifyContentResponse>;
+export const GooglePrivacyDlpV2ReidentifyContentResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    item: Schema.optional(GooglePrivacyDlpV2ContentItem),
+    overview: Schema.optional(GooglePrivacyDlpV2TransformationOverview),
+  }).annotate({ identifier: "GooglePrivacyDlpV2ReidentifyContentResponse" });
 
 export interface GooglePrivacyDlpV2FinishDlpJobRequest {}
 
-export const GooglePrivacyDlpV2FinishDlpJobRequest: Schema.Schema<GooglePrivacyDlpV2FinishDlpJobRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GooglePrivacyDlpV2FinishDlpJobRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2FinishDlpJobRequest",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2FinishDlpJobRequest>;
+  });
 
 export interface GooglePrivacyDlpV2RecordTransformation {
   /** Container version, if available ("generation" for Cloud Storage). */
@@ -3231,16 +2649,12 @@ export interface GooglePrivacyDlpV2RecordTransformation {
   containerTimestamp?: string;
 }
 
-export const GooglePrivacyDlpV2RecordTransformation: Schema.Schema<GooglePrivacyDlpV2RecordTransformation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      containerVersion: Schema.optional(Schema.String),
-      fieldId: Schema.optional(GooglePrivacyDlpV2FieldId),
-      containerTimestamp: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2RecordTransformation",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2RecordTransformation>;
+export const GooglePrivacyDlpV2RecordTransformation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    containerVersion: Schema.optional(Schema.String),
+    fieldId: Schema.optional(GooglePrivacyDlpV2FieldId),
+    containerTimestamp: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2RecordTransformation" });
 
 export interface GooglePrivacyDlpV2InfoTypeLikelihood {
   /** Type of information the likelihood threshold applies to. Only one likelihood per info_type should be provided. If InfoTypeLikelihood does not have an info_type, the configuration fails. */
@@ -3256,15 +2670,11 @@ export interface GooglePrivacyDlpV2InfoTypeLikelihood {
     | (string & {});
 }
 
-export const GooglePrivacyDlpV2InfoTypeLikelihood: Schema.Schema<GooglePrivacyDlpV2InfoTypeLikelihood> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      infoType: Schema.optional(GooglePrivacyDlpV2InfoType),
-      minLikelihood: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2InfoTypeLikelihood",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2InfoTypeLikelihood>;
+export const GooglePrivacyDlpV2InfoTypeLikelihood =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    infoType: Schema.optional(GooglePrivacyDlpV2InfoType),
+    minLikelihood: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2InfoTypeLikelihood" });
 
 export interface GooglePrivacyDlpV2LikelihoodAdjustment {
   /** Set the likelihood of a finding to a fixed value. */
@@ -3280,15 +2690,11 @@ export interface GooglePrivacyDlpV2LikelihoodAdjustment {
   relativeLikelihood?: number;
 }
 
-export const GooglePrivacyDlpV2LikelihoodAdjustment: Schema.Schema<GooglePrivacyDlpV2LikelihoodAdjustment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fixedLikelihood: Schema.optional(Schema.String),
-      relativeLikelihood: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2LikelihoodAdjustment",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2LikelihoodAdjustment>;
+export const GooglePrivacyDlpV2LikelihoodAdjustment =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fixedLikelihood: Schema.optional(Schema.String),
+    relativeLikelihood: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GooglePrivacyDlpV2LikelihoodAdjustment" });
 
 export interface GooglePrivacyDlpV2Regex {
   /** Pattern defining the regular expression. Its syntax (https://github.com/google/re2/wiki/Syntax) can be found under the google/re2 repository on GitHub. */
@@ -3297,15 +2703,11 @@ export interface GooglePrivacyDlpV2Regex {
   groupIndexes?: Array<number>;
 }
 
-export const GooglePrivacyDlpV2Regex: Schema.Schema<GooglePrivacyDlpV2Regex> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pattern: Schema.optional(Schema.String),
-      groupIndexes: Schema.optional(Schema.Array(Schema.Number)),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2Regex",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2Regex>;
+export const GooglePrivacyDlpV2Regex =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pattern: Schema.optional(Schema.String),
+    groupIndexes: Schema.optional(Schema.Array(Schema.Number)),
+  }).annotate({ identifier: "GooglePrivacyDlpV2Regex" });
 
 export interface GooglePrivacyDlpV2Proximity {
   /** Number of characters before the finding to consider. For tabular data, if you want to modify the likelihood of an entire column of findngs, set this to 1. For more information, see [Hotword example: Set the match likelihood of a table column] (https://cloud.google.com/sensitive-data-protection/docs/creating-custom-infotypes-likelihood#match-column-values). */
@@ -3314,15 +2716,11 @@ export interface GooglePrivacyDlpV2Proximity {
   windowAfter?: number;
 }
 
-export const GooglePrivacyDlpV2Proximity: Schema.Schema<GooglePrivacyDlpV2Proximity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      windowBefore: Schema.optional(Schema.Number),
-      windowAfter: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2Proximity",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2Proximity>;
+export const GooglePrivacyDlpV2Proximity =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    windowBefore: Schema.optional(Schema.Number),
+    windowAfter: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GooglePrivacyDlpV2Proximity" });
 
 export interface GooglePrivacyDlpV2HotwordRule {
   /** Likelihood adjustment to apply to all matching findings. */
@@ -3333,46 +2731,34 @@ export interface GooglePrivacyDlpV2HotwordRule {
   proximity?: GooglePrivacyDlpV2Proximity;
 }
 
-export const GooglePrivacyDlpV2HotwordRule: Schema.Schema<GooglePrivacyDlpV2HotwordRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      likelihoodAdjustment: Schema.optional(
-        GooglePrivacyDlpV2LikelihoodAdjustment,
-      ),
-      hotwordRegex: Schema.optional(GooglePrivacyDlpV2Regex),
-      proximity: Schema.optional(GooglePrivacyDlpV2Proximity),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2HotwordRule",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2HotwordRule>;
+export const GooglePrivacyDlpV2HotwordRule =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    likelihoodAdjustment: Schema.optional(
+      GooglePrivacyDlpV2LikelihoodAdjustment,
+    ),
+    hotwordRegex: Schema.optional(GooglePrivacyDlpV2Regex),
+    proximity: Schema.optional(GooglePrivacyDlpV2Proximity),
+  }).annotate({ identifier: "GooglePrivacyDlpV2HotwordRule" });
 
 export interface GooglePrivacyDlpV2DetectionRule {
   /** Hotword-based detection rule. */
   hotwordRule?: GooglePrivacyDlpV2HotwordRule;
 }
 
-export const GooglePrivacyDlpV2DetectionRule: Schema.Schema<GooglePrivacyDlpV2DetectionRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hotwordRule: Schema.optional(GooglePrivacyDlpV2HotwordRule),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2DetectionRule",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DetectionRule>;
+export const GooglePrivacyDlpV2DetectionRule =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    hotwordRule: Schema.optional(GooglePrivacyDlpV2HotwordRule),
+  }).annotate({ identifier: "GooglePrivacyDlpV2DetectionRule" });
 
 export interface GooglePrivacyDlpV2CloudStoragePath {
   /** A URL representing a file or path (no wildcards) in Cloud Storage. Example: `gs://[BUCKET_NAME]/dictionary.txt` */
   path?: string;
 }
 
-export const GooglePrivacyDlpV2CloudStoragePath: Schema.Schema<GooglePrivacyDlpV2CloudStoragePath> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      path: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2CloudStoragePath",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2CloudStoragePath>;
+export const GooglePrivacyDlpV2CloudStoragePath =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    path: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2CloudStoragePath" });
 
 export interface GooglePrivacyDlpV2Dictionary {
   /** Newline-delimited file of words in Cloud Storage. Only a single file is accepted. */
@@ -3381,22 +2767,18 @@ export interface GooglePrivacyDlpV2Dictionary {
   wordList?: GooglePrivacyDlpV2WordList;
 }
 
-export const GooglePrivacyDlpV2Dictionary: Schema.Schema<GooglePrivacyDlpV2Dictionary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cloudStoragePath: Schema.optional(GooglePrivacyDlpV2CloudStoragePath),
-      wordList: Schema.optional(GooglePrivacyDlpV2WordList),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2Dictionary",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2Dictionary>;
+export const GooglePrivacyDlpV2Dictionary =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cloudStoragePath: Schema.optional(GooglePrivacyDlpV2CloudStoragePath),
+    wordList: Schema.optional(GooglePrivacyDlpV2WordList),
+  }).annotate({ identifier: "GooglePrivacyDlpV2Dictionary" });
 
 export interface GooglePrivacyDlpV2SurrogateType {}
 
-export const GooglePrivacyDlpV2SurrogateType: Schema.Schema<GooglePrivacyDlpV2SurrogateType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GooglePrivacyDlpV2SurrogateType =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2SurrogateType",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2SurrogateType>;
+  });
 
 export interface GooglePrivacyDlpV2MetadataKeyValueExpression {
   /** The regular expression for the key. Key should be non-empty. */
@@ -3405,15 +2787,11 @@ export interface GooglePrivacyDlpV2MetadataKeyValueExpression {
   valueRegex?: string;
 }
 
-export const GooglePrivacyDlpV2MetadataKeyValueExpression: Schema.Schema<GooglePrivacyDlpV2MetadataKeyValueExpression> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      keyRegex: Schema.optional(Schema.String),
-      valueRegex: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2MetadataKeyValueExpression",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2MetadataKeyValueExpression>;
+export const GooglePrivacyDlpV2MetadataKeyValueExpression =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    keyRegex: Schema.optional(Schema.String),
+    valueRegex: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2MetadataKeyValueExpression" });
 
 export interface GooglePrivacyDlpV2StoredType {
   /** Resource name of the requested `StoredInfoType`, for example `organizations/433245324/storedInfoTypes/432452342` or `projects/project-id/storedInfoTypes/432452342`. */
@@ -3422,15 +2800,11 @@ export interface GooglePrivacyDlpV2StoredType {
   createTime?: string;
 }
 
-export const GooglePrivacyDlpV2StoredType: Schema.Schema<GooglePrivacyDlpV2StoredType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2StoredType",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2StoredType>;
+export const GooglePrivacyDlpV2StoredType =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2StoredType" });
 
 export interface GooglePrivacyDlpV2CustomInfoType {
   /** Set of detection rules to apply to all findings of this CustomInfoType. Rules are applied in the order that they are specified. Only supported for the `dictionary`, `regex`, and `stored_type` CustomInfoTypes. */
@@ -3465,27 +2839,23 @@ export interface GooglePrivacyDlpV2CustomInfoType {
   storedType?: GooglePrivacyDlpV2StoredType;
 }
 
-export const GooglePrivacyDlpV2CustomInfoType: Schema.Schema<GooglePrivacyDlpV2CustomInfoType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      detectionRules: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2DetectionRule),
-      ),
-      dictionary: Schema.optional(GooglePrivacyDlpV2Dictionary),
-      exclusionType: Schema.optional(Schema.String),
-      infoType: Schema.optional(GooglePrivacyDlpV2InfoType),
-      surrogateType: Schema.optional(GooglePrivacyDlpV2SurrogateType),
-      sensitivityScore: Schema.optional(GooglePrivacyDlpV2SensitivityScore),
-      regex: Schema.optional(GooglePrivacyDlpV2Regex),
-      metadataKeyValueExpression: Schema.optional(
-        GooglePrivacyDlpV2MetadataKeyValueExpression,
-      ),
-      likelihood: Schema.optional(Schema.String),
-      storedType: Schema.optional(GooglePrivacyDlpV2StoredType),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2CustomInfoType",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2CustomInfoType>;
+export const GooglePrivacyDlpV2CustomInfoType =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    detectionRules: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2DetectionRule),
+    ),
+    dictionary: Schema.optional(GooglePrivacyDlpV2Dictionary),
+    exclusionType: Schema.optional(Schema.String),
+    infoType: Schema.optional(GooglePrivacyDlpV2InfoType),
+    surrogateType: Schema.optional(GooglePrivacyDlpV2SurrogateType),
+    sensitivityScore: Schema.optional(GooglePrivacyDlpV2SensitivityScore),
+    regex: Schema.optional(GooglePrivacyDlpV2Regex),
+    metadataKeyValueExpression: Schema.optional(
+      GooglePrivacyDlpV2MetadataKeyValueExpression,
+    ),
+    likelihood: Schema.optional(Schema.String),
+    storedType: Schema.optional(GooglePrivacyDlpV2StoredType),
+  }).annotate({ identifier: "GooglePrivacyDlpV2CustomInfoType" });
 
 export interface GooglePrivacyDlpV2InfoTypeLimit {
   /** Type of information the findings limit applies to. Only one limit per info_type should be provided. If InfoTypeLimit does not have an info_type, the DLP API applies the limit against all info_types that are found but not specified in another InfoTypeLimit. */
@@ -3494,15 +2864,11 @@ export interface GooglePrivacyDlpV2InfoTypeLimit {
   maxFindings?: number;
 }
 
-export const GooglePrivacyDlpV2InfoTypeLimit: Schema.Schema<GooglePrivacyDlpV2InfoTypeLimit> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      infoType: Schema.optional(GooglePrivacyDlpV2InfoType),
-      maxFindings: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2InfoTypeLimit",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2InfoTypeLimit>;
+export const GooglePrivacyDlpV2InfoTypeLimit =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    infoType: Schema.optional(GooglePrivacyDlpV2InfoType),
+    maxFindings: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GooglePrivacyDlpV2InfoTypeLimit" });
 
 export interface GooglePrivacyDlpV2FindingLimits {
   /** Max number of findings that are returned for each item scanned. When set within an InspectContentRequest, this field is ignored. This value isn't a hard limit. If the number of findings for an item reaches this limit, the inspection of that item ends gradually, not abruptly. Therefore, the actual number of findings that Cloud DLP returns for the item can be multiple times higher than this value. */
@@ -3513,18 +2879,14 @@ export interface GooglePrivacyDlpV2FindingLimits {
   maxFindingsPerRequest?: number;
 }
 
-export const GooglePrivacyDlpV2FindingLimits: Schema.Schema<GooglePrivacyDlpV2FindingLimits> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      maxFindingsPerItem: Schema.optional(Schema.Number),
-      maxFindingsPerInfoType: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2InfoTypeLimit),
-      ),
-      maxFindingsPerRequest: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2FindingLimits",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2FindingLimits>;
+export const GooglePrivacyDlpV2FindingLimits =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    maxFindingsPerItem: Schema.optional(Schema.Number),
+    maxFindingsPerInfoType: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2InfoTypeLimit),
+    ),
+    maxFindingsPerRequest: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GooglePrivacyDlpV2FindingLimits" });
 
 export interface GooglePrivacyDlpV2AdjustByMatchingInfoTypes {
   /** Required. Minimum likelihood of the `adjust_by_matching_info_types.info_types` finding. If the likelihood is lower than this value, Sensitive Data Protection doesn't adjust the likelihood of the `InspectionRuleSet.info_types` finding. */
@@ -3548,37 +2910,33 @@ export interface GooglePrivacyDlpV2AdjustByMatchingInfoTypes {
     | (string & {});
 }
 
-export const GooglePrivacyDlpV2AdjustByMatchingInfoTypes: Schema.Schema<GooglePrivacyDlpV2AdjustByMatchingInfoTypes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      minLikelihood: Schema.optional(Schema.String),
-      infoTypes: Schema.optional(Schema.Array(GooglePrivacyDlpV2InfoType)),
-      matchingType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2AdjustByMatchingInfoTypes",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2AdjustByMatchingInfoTypes>;
+export const GooglePrivacyDlpV2AdjustByMatchingInfoTypes =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    minLikelihood: Schema.optional(Schema.String),
+    infoTypes: Schema.optional(Schema.Array(GooglePrivacyDlpV2InfoType)),
+    matchingType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2AdjustByMatchingInfoTypes" });
 
 export interface GooglePrivacyDlpV2Encloses {}
 
-export const GooglePrivacyDlpV2Encloses: Schema.Schema<GooglePrivacyDlpV2Encloses> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GooglePrivacyDlpV2Encloses =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2Encloses",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2Encloses>;
+  });
 
 export interface GooglePrivacyDlpV2FullyInside {}
 
-export const GooglePrivacyDlpV2FullyInside: Schema.Schema<GooglePrivacyDlpV2FullyInside> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GooglePrivacyDlpV2FullyInside =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2FullyInside",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2FullyInside>;
+  });
 
 export interface GooglePrivacyDlpV2Overlap {}
 
-export const GooglePrivacyDlpV2Overlap: Schema.Schema<GooglePrivacyDlpV2Overlap> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GooglePrivacyDlpV2Overlap =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2Overlap",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2Overlap>;
+  });
 
 export interface GooglePrivacyDlpV2ImageContainmentType {
   /** The context finding's bounding box must fully contain the target finding's bounding box. */
@@ -3589,16 +2947,12 @@ export interface GooglePrivacyDlpV2ImageContainmentType {
   overlaps?: GooglePrivacyDlpV2Overlap;
 }
 
-export const GooglePrivacyDlpV2ImageContainmentType: Schema.Schema<GooglePrivacyDlpV2ImageContainmentType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      encloses: Schema.optional(GooglePrivacyDlpV2Encloses),
-      fullyInside: Schema.optional(GooglePrivacyDlpV2FullyInside),
-      overlaps: Schema.optional(GooglePrivacyDlpV2Overlap),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2ImageContainmentType",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2ImageContainmentType>;
+export const GooglePrivacyDlpV2ImageContainmentType =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    encloses: Schema.optional(GooglePrivacyDlpV2Encloses),
+    fullyInside: Schema.optional(GooglePrivacyDlpV2FullyInside),
+    overlaps: Schema.optional(GooglePrivacyDlpV2Overlap),
+  }).annotate({ identifier: "GooglePrivacyDlpV2ImageContainmentType" });
 
 export interface GooglePrivacyDlpV2AdjustByImageFindings {
   /** A list of image-supported infoTypes—excluding [document infoTypes](https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference#documents)—to be used as context for the adjustment rule. Sensitive Data Protection adjusts the likelihood of an image finding if its bounding box has the specified spatial relationship (defined by `image_containment_type`) with a finding of an infoType in this list. For example, you can create a rule to adjust the likelihood of a `US_PASSPORT` finding if it is enclosed by a finding of `OBJECT_TYPE/PERSON/PASSPORT`. To configure this, set `US_PASSPORT` in `InspectionRuleSet.info_types`. Add an `adjustment_rule` with an `adjust_by_image_findings.info_types` that contains `OBJECT_TYPE/PERSON/PASSPORT` and `image_containment_type` set to `encloses`. In this case, the likelihood of the `US_PASSPORT` finding is adjusted, but the likelihood of the `OBJECT_TYPE/PERSON/PASSPORT` finding is not. */
@@ -3616,18 +2970,14 @@ export interface GooglePrivacyDlpV2AdjustByImageFindings {
     | (string & {});
 }
 
-export const GooglePrivacyDlpV2AdjustByImageFindings: Schema.Schema<GooglePrivacyDlpV2AdjustByImageFindings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      infoTypes: Schema.optional(Schema.Array(GooglePrivacyDlpV2InfoType)),
-      imageContainmentType: Schema.optional(
-        GooglePrivacyDlpV2ImageContainmentType,
-      ),
-      minLikelihood: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2AdjustByImageFindings",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2AdjustByImageFindings>;
+export const GooglePrivacyDlpV2AdjustByImageFindings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    infoTypes: Schema.optional(Schema.Array(GooglePrivacyDlpV2InfoType)),
+    imageContainmentType: Schema.optional(
+      GooglePrivacyDlpV2ImageContainmentType,
+    ),
+    minLikelihood: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2AdjustByImageFindings" });
 
 export interface GooglePrivacyDlpV2AdjustmentRule {
   /** Set of infoTypes for which findings would affect this rule. */
@@ -3638,22 +2988,18 @@ export interface GooglePrivacyDlpV2AdjustmentRule {
   likelihoodAdjustment?: GooglePrivacyDlpV2LikelihoodAdjustment;
 }
 
-export const GooglePrivacyDlpV2AdjustmentRule: Schema.Schema<GooglePrivacyDlpV2AdjustmentRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      adjustByMatchingInfoTypes: Schema.optional(
-        GooglePrivacyDlpV2AdjustByMatchingInfoTypes,
-      ),
-      adjustByImageFindings: Schema.optional(
-        GooglePrivacyDlpV2AdjustByImageFindings,
-      ),
-      likelihoodAdjustment: Schema.optional(
-        GooglePrivacyDlpV2LikelihoodAdjustment,
-      ),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2AdjustmentRule",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2AdjustmentRule>;
+export const GooglePrivacyDlpV2AdjustmentRule =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    adjustByMatchingInfoTypes: Schema.optional(
+      GooglePrivacyDlpV2AdjustByMatchingInfoTypes,
+    ),
+    adjustByImageFindings: Schema.optional(
+      GooglePrivacyDlpV2AdjustByImageFindings,
+    ),
+    likelihoodAdjustment: Schema.optional(
+      GooglePrivacyDlpV2LikelihoodAdjustment,
+    ),
+  }).annotate({ identifier: "GooglePrivacyDlpV2AdjustmentRule" });
 
 export interface GooglePrivacyDlpV2ExcludeByHotword {
   /** Regular expression pattern defining what qualifies as a hotword. */
@@ -3662,15 +3008,11 @@ export interface GooglePrivacyDlpV2ExcludeByHotword {
   proximity?: GooglePrivacyDlpV2Proximity;
 }
 
-export const GooglePrivacyDlpV2ExcludeByHotword: Schema.Schema<GooglePrivacyDlpV2ExcludeByHotword> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hotwordRegex: Schema.optional(GooglePrivacyDlpV2Regex),
-      proximity: Schema.optional(GooglePrivacyDlpV2Proximity),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2ExcludeByHotword",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2ExcludeByHotword>;
+export const GooglePrivacyDlpV2ExcludeByHotword =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    hotwordRegex: Schema.optional(GooglePrivacyDlpV2Regex),
+    proximity: Schema.optional(GooglePrivacyDlpV2Proximity),
+  }).annotate({ identifier: "GooglePrivacyDlpV2ExcludeByHotword" });
 
 export interface GooglePrivacyDlpV2ExcludeByImageFindings {
   /** A list of image-supported infoTypes—excluding [document infoTypes](https://cloud.google.com/sensitive-data-protection/docs/infotypes-reference#documents)—to be used as context for the exclusion rule. A finding is excluded if its bounding box has the specified spatial relationship (defined by `image_containment_type`) with a finding of an infoType in this list. For example, if `InspectionRuleSet.info_types` includes `OBJECT_TYPE/PERSON` and this `exclusion_rule` specifies `info_types` as `OBJECT_TYPE/PERSON/PASSPORT` with `image_containment_type` set to `encloses`, then `OBJECT_TYPE/PERSON` findings will be excluded if they are fully contained within the bounding box of an `OBJECT_TYPE/PERSON/PASSPORT` finding. */
@@ -3679,31 +3021,23 @@ export interface GooglePrivacyDlpV2ExcludeByImageFindings {
   imageContainmentType?: GooglePrivacyDlpV2ImageContainmentType;
 }
 
-export const GooglePrivacyDlpV2ExcludeByImageFindings: Schema.Schema<GooglePrivacyDlpV2ExcludeByImageFindings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      infoTypes: Schema.optional(Schema.Array(GooglePrivacyDlpV2InfoType)),
-      imageContainmentType: Schema.optional(
-        GooglePrivacyDlpV2ImageContainmentType,
-      ),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2ExcludeByImageFindings",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2ExcludeByImageFindings>;
+export const GooglePrivacyDlpV2ExcludeByImageFindings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    infoTypes: Schema.optional(Schema.Array(GooglePrivacyDlpV2InfoType)),
+    imageContainmentType: Schema.optional(
+      GooglePrivacyDlpV2ImageContainmentType,
+    ),
+  }).annotate({ identifier: "GooglePrivacyDlpV2ExcludeByImageFindings" });
 
 export interface GooglePrivacyDlpV2ExcludeInfoTypes {
   /** InfoType list in ExclusionRule rule drops a finding when it overlaps or contained within with a finding of an infoType from this list. For example, for `InspectionRuleSet.info_types` containing "PHONE_NUMBER"` and `exclusion_rule` containing `exclude_info_types.info_types` with "EMAIL_ADDRESS" the phone number findings are dropped if they overlap with EMAIL_ADDRESS finding. That leads to "555-222-2222@example.org" to generate only a single finding, namely email address. */
   infoTypes?: Array<GooglePrivacyDlpV2InfoType>;
 }
 
-export const GooglePrivacyDlpV2ExcludeInfoTypes: Schema.Schema<GooglePrivacyDlpV2ExcludeInfoTypes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      infoTypes: Schema.optional(Schema.Array(GooglePrivacyDlpV2InfoType)),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2ExcludeInfoTypes",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2ExcludeInfoTypes>;
+export const GooglePrivacyDlpV2ExcludeInfoTypes =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    infoTypes: Schema.optional(Schema.Array(GooglePrivacyDlpV2InfoType)),
+  }).annotate({ identifier: "GooglePrivacyDlpV2ExcludeInfoTypes" });
 
 export interface GooglePrivacyDlpV2ExclusionRule {
   /** Dictionary which defines the rule. */
@@ -3726,21 +3060,17 @@ export interface GooglePrivacyDlpV2ExclusionRule {
   excludeInfoTypes?: GooglePrivacyDlpV2ExcludeInfoTypes;
 }
 
-export const GooglePrivacyDlpV2ExclusionRule: Schema.Schema<GooglePrivacyDlpV2ExclusionRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dictionary: Schema.optional(GooglePrivacyDlpV2Dictionary),
-      regex: Schema.optional(GooglePrivacyDlpV2Regex),
-      excludeByHotword: Schema.optional(GooglePrivacyDlpV2ExcludeByHotword),
-      excludeByImageFindings: Schema.optional(
-        GooglePrivacyDlpV2ExcludeByImageFindings,
-      ),
-      matchingType: Schema.optional(Schema.String),
-      excludeInfoTypes: Schema.optional(GooglePrivacyDlpV2ExcludeInfoTypes),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2ExclusionRule",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2ExclusionRule>;
+export const GooglePrivacyDlpV2ExclusionRule =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dictionary: Schema.optional(GooglePrivacyDlpV2Dictionary),
+    regex: Schema.optional(GooglePrivacyDlpV2Regex),
+    excludeByHotword: Schema.optional(GooglePrivacyDlpV2ExcludeByHotword),
+    excludeByImageFindings: Schema.optional(
+      GooglePrivacyDlpV2ExcludeByImageFindings,
+    ),
+    matchingType: Schema.optional(Schema.String),
+    excludeInfoTypes: Schema.optional(GooglePrivacyDlpV2ExcludeInfoTypes),
+  }).annotate({ identifier: "GooglePrivacyDlpV2ExclusionRule" });
 
 export interface GooglePrivacyDlpV2InspectionRule {
   /** Adjustment rule. */
@@ -3751,16 +3081,12 @@ export interface GooglePrivacyDlpV2InspectionRule {
   exclusionRule?: GooglePrivacyDlpV2ExclusionRule;
 }
 
-export const GooglePrivacyDlpV2InspectionRule: Schema.Schema<GooglePrivacyDlpV2InspectionRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      adjustmentRule: Schema.optional(GooglePrivacyDlpV2AdjustmentRule),
-      hotwordRule: Schema.optional(GooglePrivacyDlpV2HotwordRule),
-      exclusionRule: Schema.optional(GooglePrivacyDlpV2ExclusionRule),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2InspectionRule",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2InspectionRule>;
+export const GooglePrivacyDlpV2InspectionRule =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    adjustmentRule: Schema.optional(GooglePrivacyDlpV2AdjustmentRule),
+    hotwordRule: Schema.optional(GooglePrivacyDlpV2HotwordRule),
+    exclusionRule: Schema.optional(GooglePrivacyDlpV2ExclusionRule),
+  }).annotate({ identifier: "GooglePrivacyDlpV2InspectionRule" });
 
 export interface GooglePrivacyDlpV2InspectionRuleSet {
   /** Set of rules to be applied to infoTypes. The rules are applied in order. */
@@ -3769,15 +3095,11 @@ export interface GooglePrivacyDlpV2InspectionRuleSet {
   infoTypes?: Array<GooglePrivacyDlpV2InfoType>;
 }
 
-export const GooglePrivacyDlpV2InspectionRuleSet: Schema.Schema<GooglePrivacyDlpV2InspectionRuleSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rules: Schema.optional(Schema.Array(GooglePrivacyDlpV2InspectionRule)),
-      infoTypes: Schema.optional(Schema.Array(GooglePrivacyDlpV2InfoType)),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2InspectionRuleSet",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2InspectionRuleSet>;
+export const GooglePrivacyDlpV2InspectionRuleSet =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rules: Schema.optional(Schema.Array(GooglePrivacyDlpV2InspectionRule)),
+    infoTypes: Schema.optional(Schema.Array(GooglePrivacyDlpV2InfoType)),
+  }).annotate({ identifier: "GooglePrivacyDlpV2InspectionRuleSet" });
 
 export interface GooglePrivacyDlpV2InspectConfig {
   /** Only returns findings equal to or above this threshold. The default is POSSIBLE. In general, the highest likelihood setting yields the fewest findings in results and the lowest chance of a false positive. For more information, see [Match likelihood](https://cloud.google.com/sensitive-data-protection/docs/likelihood). */
@@ -3809,28 +3131,22 @@ export interface GooglePrivacyDlpV2InspectConfig {
   ruleSet?: Array<GooglePrivacyDlpV2InspectionRuleSet>;
 }
 
-export const GooglePrivacyDlpV2InspectConfig: Schema.Schema<GooglePrivacyDlpV2InspectConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      minLikelihood: Schema.optional(Schema.String),
-      infoTypes: Schema.optional(Schema.Array(GooglePrivacyDlpV2InfoType)),
-      excludeInfoTypes: Schema.optional(Schema.Boolean),
-      minLikelihoodPerInfoType: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2InfoTypeLikelihood),
-      ),
-      customInfoTypes: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2CustomInfoType),
-      ),
-      limits: Schema.optional(GooglePrivacyDlpV2FindingLimits),
-      contentOptions: Schema.optional(Schema.Array(Schema.String)),
-      includeQuote: Schema.optional(Schema.Boolean),
-      ruleSet: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2InspectionRuleSet),
-      ),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2InspectConfig",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2InspectConfig>;
+export const GooglePrivacyDlpV2InspectConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    minLikelihood: Schema.optional(Schema.String),
+    infoTypes: Schema.optional(Schema.Array(GooglePrivacyDlpV2InfoType)),
+    excludeInfoTypes: Schema.optional(Schema.Boolean),
+    minLikelihoodPerInfoType: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2InfoTypeLikelihood),
+    ),
+    customInfoTypes: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2CustomInfoType),
+    ),
+    limits: Schema.optional(GooglePrivacyDlpV2FindingLimits),
+    contentOptions: Schema.optional(Schema.Array(Schema.String)),
+    includeQuote: Schema.optional(Schema.Boolean),
+    ruleSet: Schema.optional(Schema.Array(GooglePrivacyDlpV2InspectionRuleSet)),
+  }).annotate({ identifier: "GooglePrivacyDlpV2InspectConfig" });
 
 export interface GooglePrivacyDlpV2DataProfileLocation {
   /** The ID of an organization to scan. */
@@ -3839,15 +3155,11 @@ export interface GooglePrivacyDlpV2DataProfileLocation {
   folderId?: string;
 }
 
-export const GooglePrivacyDlpV2DataProfileLocation: Schema.Schema<GooglePrivacyDlpV2DataProfileLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      organizationId: Schema.optional(Schema.String),
-      folderId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2DataProfileLocation",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DataProfileLocation>;
+export const GooglePrivacyDlpV2DataProfileLocation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    organizationId: Schema.optional(Schema.String),
+    folderId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2DataProfileLocation" });
 
 export interface GooglePrivacyDlpV2DataProfileJobConfig {
   /** Must be set only when scanning other clouds. */
@@ -3862,22 +3174,18 @@ export interface GooglePrivacyDlpV2DataProfileJobConfig {
   location?: GooglePrivacyDlpV2DataProfileLocation;
 }
 
-export const GooglePrivacyDlpV2DataProfileJobConfig: Schema.Schema<GooglePrivacyDlpV2DataProfileJobConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      otherCloudStartingLocation: Schema.optional(
-        GooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation,
-      ),
-      projectId: Schema.optional(Schema.String),
-      dataProfileActions: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2DataProfileAction),
-      ),
-      inspectTemplates: Schema.optional(Schema.Array(Schema.String)),
-      location: Schema.optional(GooglePrivacyDlpV2DataProfileLocation),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2DataProfileJobConfig",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DataProfileJobConfig>;
+export const GooglePrivacyDlpV2DataProfileJobConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    otherCloudStartingLocation: Schema.optional(
+      GooglePrivacyDlpV2OtherCloudDiscoveryStartingLocation,
+    ),
+    projectId: Schema.optional(Schema.String),
+    dataProfileActions: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2DataProfileAction),
+    ),
+    inspectTemplates: Schema.optional(Schema.Array(Schema.String)),
+    location: Schema.optional(GooglePrivacyDlpV2DataProfileLocation),
+  }).annotate({ identifier: "GooglePrivacyDlpV2DataProfileJobConfig" });
 
 export interface GooglePrivacyDlpV2DataProfileConfigSnapshot {
   /** A copy of the configuration used to generate this profile. */
@@ -3892,18 +3200,14 @@ export interface GooglePrivacyDlpV2DataProfileConfigSnapshot {
   dataProfileJob?: GooglePrivacyDlpV2DataProfileJobConfig;
 }
 
-export const GooglePrivacyDlpV2DataProfileConfigSnapshot: Schema.Schema<GooglePrivacyDlpV2DataProfileConfigSnapshot> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      discoveryConfig: Schema.optional(GooglePrivacyDlpV2DiscoveryConfig),
-      inspectTemplateName: Schema.optional(Schema.String),
-      inspectTemplateModifiedTime: Schema.optional(Schema.String),
-      inspectConfig: Schema.optional(GooglePrivacyDlpV2InspectConfig),
-      dataProfileJob: Schema.optional(GooglePrivacyDlpV2DataProfileJobConfig),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2DataProfileConfigSnapshot",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DataProfileConfigSnapshot>;
+export const GooglePrivacyDlpV2DataProfileConfigSnapshot =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    discoveryConfig: Schema.optional(GooglePrivacyDlpV2DiscoveryConfig),
+    inspectTemplateName: Schema.optional(Schema.String),
+    inspectTemplateModifiedTime: Schema.optional(Schema.String),
+    inspectConfig: Schema.optional(GooglePrivacyDlpV2InspectConfig),
+    dataProfileJob: Schema.optional(GooglePrivacyDlpV2DataProfileJobConfig),
+  }).annotate({ identifier: "GooglePrivacyDlpV2DataProfileConfigSnapshot" });
 
 export interface GooglePrivacyDlpV2InfoTypeSummary {
   /** The infoType. */
@@ -3912,15 +3216,11 @@ export interface GooglePrivacyDlpV2InfoTypeSummary {
   estimatedPrevalence?: number;
 }
 
-export const GooglePrivacyDlpV2InfoTypeSummary: Schema.Schema<GooglePrivacyDlpV2InfoTypeSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      infoType: Schema.optional(GooglePrivacyDlpV2InfoType),
-      estimatedPrevalence: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2InfoTypeSummary",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2InfoTypeSummary>;
+export const GooglePrivacyDlpV2InfoTypeSummary =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    infoType: Schema.optional(GooglePrivacyDlpV2InfoType),
+    estimatedPrevalence: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GooglePrivacyDlpV2InfoTypeSummary" });
 
 export interface GooglePrivacyDlpV2ProfileStatus {
   /** Time when the profile generation status was updated */
@@ -3929,15 +3229,11 @@ export interface GooglePrivacyDlpV2ProfileStatus {
   status?: GoogleRpcStatus;
 }
 
-export const GooglePrivacyDlpV2ProfileStatus: Schema.Schema<GooglePrivacyDlpV2ProfileStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      timestamp: Schema.optional(Schema.String),
-      status: Schema.optional(GoogleRpcStatus),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2ProfileStatus",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2ProfileStatus>;
+export const GooglePrivacyDlpV2ProfileStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    timestamp: Schema.optional(Schema.String),
+    status: Schema.optional(GoogleRpcStatus),
+  }).annotate({ identifier: "GooglePrivacyDlpV2ProfileStatus" });
 
 export interface GooglePrivacyDlpV2DataRiskLevel {
   /** The score applied to the resource. */
@@ -3950,14 +3246,10 @@ export interface GooglePrivacyDlpV2DataRiskLevel {
     | (string & {});
 }
 
-export const GooglePrivacyDlpV2DataRiskLevel: Schema.Schema<GooglePrivacyDlpV2DataRiskLevel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      score: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2DataRiskLevel",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DataRiskLevel>;
+export const GooglePrivacyDlpV2DataRiskLevel =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    score: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2DataRiskLevel" });
 
 export interface GooglePrivacyDlpV2OtherInfoTypeSummary {
   /** Approximate percentage of non-null rows that contained data detected by this infotype. */
@@ -3968,16 +3260,12 @@ export interface GooglePrivacyDlpV2OtherInfoTypeSummary {
   infoType?: GooglePrivacyDlpV2InfoType;
 }
 
-export const GooglePrivacyDlpV2OtherInfoTypeSummary: Schema.Schema<GooglePrivacyDlpV2OtherInfoTypeSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      estimatedPrevalence: Schema.optional(Schema.Number),
-      excludedFromAnalysis: Schema.optional(Schema.Boolean),
-      infoType: Schema.optional(GooglePrivacyDlpV2InfoType),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2OtherInfoTypeSummary",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2OtherInfoTypeSummary>;
+export const GooglePrivacyDlpV2OtherInfoTypeSummary =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    estimatedPrevalence: Schema.optional(Schema.Number),
+    excludedFromAnalysis: Schema.optional(Schema.Boolean),
+    infoType: Schema.optional(GooglePrivacyDlpV2InfoType),
+  }).annotate({ identifier: "GooglePrivacyDlpV2OtherInfoTypeSummary" });
 
 export interface GooglePrivacyDlpV2Tag {
   /** The value of a tag key-value pair. For Google Cloud resources, this is the resource name of the value, for example, "tagValues/123456". */
@@ -3988,16 +3276,11 @@ export interface GooglePrivacyDlpV2Tag {
   namespacedTagValue?: string;
 }
 
-export const GooglePrivacyDlpV2Tag: Schema.Schema<GooglePrivacyDlpV2Tag> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-      key: Schema.optional(Schema.String),
-      namespacedTagValue: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2Tag",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2Tag>;
+export const GooglePrivacyDlpV2Tag = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.String),
+  key: Schema.optional(Schema.String),
+  namespacedTagValue: Schema.optional(Schema.String),
+}).annotate({ identifier: "GooglePrivacyDlpV2Tag" });
 
 export interface GooglePrivacyDlpV2Domain {
   /** A domain category that this profile is related to. */
@@ -4016,29 +3299,21 @@ export interface GooglePrivacyDlpV2Domain {
   >;
 }
 
-export const GooglePrivacyDlpV2Domain: Schema.Schema<GooglePrivacyDlpV2Domain> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      category: Schema.optional(Schema.String),
-      signals: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2Domain",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2Domain>;
+export const GooglePrivacyDlpV2Domain =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    category: Schema.optional(Schema.String),
+    signals: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GooglePrivacyDlpV2Domain" });
 
 export interface GooglePrivacyDlpV2RelatedResource {
   /** The full resource name of the related resource. */
   fullResource?: string;
 }
 
-export const GooglePrivacyDlpV2RelatedResource: Schema.Schema<GooglePrivacyDlpV2RelatedResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fullResource: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2RelatedResource",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2RelatedResource>;
+export const GooglePrivacyDlpV2RelatedResource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fullResource: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2RelatedResource" });
 
 export interface GooglePrivacyDlpV2TableDataProfile {
   /** The snapshot of the configurations used to generate the profile. */
@@ -4112,53 +3387,49 @@ export interface GooglePrivacyDlpV2TableDataProfile {
   relatedResources?: Array<GooglePrivacyDlpV2RelatedResource>;
 }
 
-export const GooglePrivacyDlpV2TableDataProfile: Schema.Schema<GooglePrivacyDlpV2TableDataProfile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      configSnapshot: Schema.optional(
-        GooglePrivacyDlpV2DataProfileConfigSnapshot,
-      ),
-      datasetProjectId: Schema.optional(Schema.String),
-      tableId: Schema.optional(Schema.String),
-      predictedInfoTypes: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2InfoTypeSummary),
-      ),
-      datasetId: Schema.optional(Schema.String),
-      resourceVisibility: Schema.optional(Schema.String),
-      sampleFindingsTable: Schema.optional(GooglePrivacyDlpV2BigQueryTable),
-      rowCount: Schema.optional(Schema.String),
-      profileStatus: Schema.optional(GooglePrivacyDlpV2ProfileStatus),
-      dataRiskLevel: Schema.optional(GooglePrivacyDlpV2DataRiskLevel),
-      scannedColumnCount: Schema.optional(Schema.String),
-      tableSizeBytes: Schema.optional(Schema.String),
-      datasetLocation: Schema.optional(Schema.String),
-      projectDataProfile: Schema.optional(Schema.String),
-      encryptionStatus: Schema.optional(Schema.String),
-      failedColumnCount: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      profileLastGenerated: Schema.optional(Schema.String),
-      resourceLabels: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      name: Schema.optional(Schema.String),
-      sensitivityScore: Schema.optional(GooglePrivacyDlpV2SensitivityScore),
-      dataSourceType: Schema.optional(GooglePrivacyDlpV2DataSourceType),
-      expirationTime: Schema.optional(Schema.String),
-      fullResource: Schema.optional(Schema.String),
-      otherInfoTypes: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2OtherInfoTypeSummary),
-      ),
-      lastModifiedTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      tags: Schema.optional(Schema.Array(GooglePrivacyDlpV2Tag)),
-      domains: Schema.optional(Schema.Array(GooglePrivacyDlpV2Domain)),
-      relatedResources: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2RelatedResource),
-      ),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2TableDataProfile",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2TableDataProfile>;
+export const GooglePrivacyDlpV2TableDataProfile =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    configSnapshot: Schema.optional(
+      GooglePrivacyDlpV2DataProfileConfigSnapshot,
+    ),
+    datasetProjectId: Schema.optional(Schema.String),
+    tableId: Schema.optional(Schema.String),
+    predictedInfoTypes: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2InfoTypeSummary),
+    ),
+    datasetId: Schema.optional(Schema.String),
+    resourceVisibility: Schema.optional(Schema.String),
+    sampleFindingsTable: Schema.optional(GooglePrivacyDlpV2BigQueryTable),
+    rowCount: Schema.optional(Schema.String),
+    profileStatus: Schema.optional(GooglePrivacyDlpV2ProfileStatus),
+    dataRiskLevel: Schema.optional(GooglePrivacyDlpV2DataRiskLevel),
+    scannedColumnCount: Schema.optional(Schema.String),
+    tableSizeBytes: Schema.optional(Schema.String),
+    datasetLocation: Schema.optional(Schema.String),
+    projectDataProfile: Schema.optional(Schema.String),
+    encryptionStatus: Schema.optional(Schema.String),
+    failedColumnCount: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    profileLastGenerated: Schema.optional(Schema.String),
+    resourceLabels: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    name: Schema.optional(Schema.String),
+    sensitivityScore: Schema.optional(GooglePrivacyDlpV2SensitivityScore),
+    dataSourceType: Schema.optional(GooglePrivacyDlpV2DataSourceType),
+    expirationTime: Schema.optional(Schema.String),
+    fullResource: Schema.optional(Schema.String),
+    otherInfoTypes: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2OtherInfoTypeSummary),
+    ),
+    lastModifiedTime: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Array(GooglePrivacyDlpV2Tag)),
+    domains: Schema.optional(Schema.Array(GooglePrivacyDlpV2Domain)),
+    relatedResources: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2RelatedResource),
+    ),
+  }).annotate({ identifier: "GooglePrivacyDlpV2TableDataProfile" });
 
 export interface GooglePrivacyDlpV2ColumnDataProfile {
   /** If it's been determined this column can be identified as a single type, this will be set. Otherwise the column either has unidentifiable content or mixed types. */
@@ -4237,49 +3508,41 @@ export interface GooglePrivacyDlpV2ColumnDataProfile {
   datasetProjectId?: string;
 }
 
-export const GooglePrivacyDlpV2ColumnDataProfile: Schema.Schema<GooglePrivacyDlpV2ColumnDataProfile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      columnInfoType: Schema.optional(GooglePrivacyDlpV2InfoTypeSummary),
-      estimatedNullPercentage: Schema.optional(Schema.String),
-      policyState: Schema.optional(Schema.String),
-      tableFullResource: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      estimatedUniquenessScore: Schema.optional(Schema.String),
-      columnType: Schema.optional(Schema.String),
-      otherMatches: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2OtherInfoTypeSummary),
-      ),
-      profileStatus: Schema.optional(GooglePrivacyDlpV2ProfileStatus),
-      tableDataProfile: Schema.optional(Schema.String),
-      dataRiskLevel: Schema.optional(GooglePrivacyDlpV2DataRiskLevel),
-      datasetLocation: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      column: Schema.optional(Schema.String),
-      sensitivityScore: Schema.optional(GooglePrivacyDlpV2SensitivityScore),
-      freeTextScore: Schema.optional(Schema.Number),
-      tableId: Schema.optional(Schema.String),
-      profileLastGenerated: Schema.optional(Schema.String),
-      datasetId: Schema.optional(Schema.String),
-      datasetProjectId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2ColumnDataProfile",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2ColumnDataProfile>;
+export const GooglePrivacyDlpV2ColumnDataProfile =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    columnInfoType: Schema.optional(GooglePrivacyDlpV2InfoTypeSummary),
+    estimatedNullPercentage: Schema.optional(Schema.String),
+    policyState: Schema.optional(Schema.String),
+    tableFullResource: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    estimatedUniquenessScore: Schema.optional(Schema.String),
+    columnType: Schema.optional(Schema.String),
+    otherMatches: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2OtherInfoTypeSummary),
+    ),
+    profileStatus: Schema.optional(GooglePrivacyDlpV2ProfileStatus),
+    tableDataProfile: Schema.optional(Schema.String),
+    dataRiskLevel: Schema.optional(GooglePrivacyDlpV2DataRiskLevel),
+    datasetLocation: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    column: Schema.optional(Schema.String),
+    sensitivityScore: Schema.optional(GooglePrivacyDlpV2SensitivityScore),
+    freeTextScore: Schema.optional(Schema.Number),
+    tableId: Schema.optional(Schema.String),
+    profileLastGenerated: Schema.optional(Schema.String),
+    datasetId: Schema.optional(Schema.String),
+    datasetProjectId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2ColumnDataProfile" });
 
 export interface GooglePrivacyDlpV2FileExtensionInfo {
   /** The file extension if set. (aka .pdf, .jpg, .txt) */
   fileExtension?: string;
 }
 
-export const GooglePrivacyDlpV2FileExtensionInfo: Schema.Schema<GooglePrivacyDlpV2FileExtensionInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fileExtension: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2FileExtensionInfo",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2FileExtensionInfo>;
+export const GooglePrivacyDlpV2FileExtensionInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fileExtension: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2FileExtensionInfo" });
 
 export interface GooglePrivacyDlpV2FileClusterType {
   /** Cluster type. */
@@ -4298,28 +3561,20 @@ export interface GooglePrivacyDlpV2FileClusterType {
     | (string & {});
 }
 
-export const GooglePrivacyDlpV2FileClusterType: Schema.Schema<GooglePrivacyDlpV2FileClusterType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cluster: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2FileClusterType",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2FileClusterType>;
+export const GooglePrivacyDlpV2FileClusterType =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cluster: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2FileClusterType" });
 
 export interface GooglePrivacyDlpV2FileStoreInfoTypeSummary {
   /** The InfoType seen. */
   infoType?: GooglePrivacyDlpV2InfoType;
 }
 
-export const GooglePrivacyDlpV2FileStoreInfoTypeSummary: Schema.Schema<GooglePrivacyDlpV2FileStoreInfoTypeSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      infoType: Schema.optional(GooglePrivacyDlpV2InfoType),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2FileStoreInfoTypeSummary",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2FileStoreInfoTypeSummary>;
+export const GooglePrivacyDlpV2FileStoreInfoTypeSummary =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    infoType: Schema.optional(GooglePrivacyDlpV2InfoType),
+  }).annotate({ identifier: "GooglePrivacyDlpV2FileStoreInfoTypeSummary" });
 
 export interface GooglePrivacyDlpV2FileClusterSummary {
   /** The sensitivity score of this cluster. The score will be SENSITIVITY_LOW if nothing has been scanned. */
@@ -4340,27 +3595,23 @@ export interface GooglePrivacyDlpV2FileClusterSummary {
   fileExtensionsScanned?: Array<GooglePrivacyDlpV2FileExtensionInfo>;
 }
 
-export const GooglePrivacyDlpV2FileClusterSummary: Schema.Schema<GooglePrivacyDlpV2FileClusterSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sensitivityScore: Schema.optional(GooglePrivacyDlpV2SensitivityScore),
-      errors: Schema.optional(Schema.Array(GooglePrivacyDlpV2Error)),
-      fileExtensionsSeen: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2FileExtensionInfo),
-      ),
-      noFilesExist: Schema.optional(Schema.Boolean),
-      fileClusterType: Schema.optional(GooglePrivacyDlpV2FileClusterType),
-      dataRiskLevel: Schema.optional(GooglePrivacyDlpV2DataRiskLevel),
-      fileStoreInfoTypeSummaries: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2FileStoreInfoTypeSummary),
-      ),
-      fileExtensionsScanned: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2FileExtensionInfo),
-      ),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2FileClusterSummary",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2FileClusterSummary>;
+export const GooglePrivacyDlpV2FileClusterSummary =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sensitivityScore: Schema.optional(GooglePrivacyDlpV2SensitivityScore),
+    errors: Schema.optional(Schema.Array(GooglePrivacyDlpV2Error)),
+    fileExtensionsSeen: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2FileExtensionInfo),
+    ),
+    noFilesExist: Schema.optional(Schema.Boolean),
+    fileClusterType: Schema.optional(GooglePrivacyDlpV2FileClusterType),
+    dataRiskLevel: Schema.optional(GooglePrivacyDlpV2DataRiskLevel),
+    fileStoreInfoTypeSummaries: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2FileStoreInfoTypeSummary),
+    ),
+    fileExtensionsScanned: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2FileExtensionInfo),
+    ),
+  }).annotate({ identifier: "GooglePrivacyDlpV2FileClusterSummary" });
 
 export interface GooglePrivacyDlpV2FileStoreDataProfile {
   /** The resource name of the project data profile for this file store. */
@@ -4424,52 +3675,48 @@ export interface GooglePrivacyDlpV2FileStoreDataProfile {
   profileLastGenerated?: string;
 }
 
-export const GooglePrivacyDlpV2FileStoreDataProfile: Schema.Schema<GooglePrivacyDlpV2FileStoreDataProfile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      projectDataProfile: Schema.optional(Schema.String),
-      fileStoreLocation: Schema.optional(Schema.String),
-      projectId: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      dataRiskLevel: Schema.optional(GooglePrivacyDlpV2DataRiskLevel),
-      profileStatus: Schema.optional(GooglePrivacyDlpV2ProfileStatus),
-      fileStorePath: Schema.optional(Schema.String),
-      resourceVisibility: Schema.optional(Schema.String),
-      sampleFindingsTable: Schema.optional(GooglePrivacyDlpV2BigQueryTable),
-      dataStorageLocations: Schema.optional(Schema.Array(Schema.String)),
-      resourceAttributes: Schema.optional(
-        Schema.Record(Schema.String, GooglePrivacyDlpV2Value),
-      ),
-      configSnapshot: Schema.optional(
-        GooglePrivacyDlpV2DataProfileConfigSnapshot,
-      ),
-      locationType: Schema.optional(Schema.String),
-      fileClusterSummaries: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2FileClusterSummary),
-      ),
-      createTime: Schema.optional(Schema.String),
-      relatedResources: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2RelatedResource),
-      ),
-      domains: Schema.optional(Schema.Array(GooglePrivacyDlpV2Domain)),
-      tags: Schema.optional(Schema.Array(GooglePrivacyDlpV2Tag)),
-      fullResource: Schema.optional(Schema.String),
-      dataSourceType: Schema.optional(GooglePrivacyDlpV2DataSourceType),
-      lastModifiedTime: Schema.optional(Schema.String),
-      fileStoreIsEmpty: Schema.optional(Schema.Boolean),
-      resourceLabels: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      name: Schema.optional(Schema.String),
-      sensitivityScore: Schema.optional(GooglePrivacyDlpV2SensitivityScore),
-      fileStoreInfoTypeSummaries: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2FileStoreInfoTypeSummary),
-      ),
-      profileLastGenerated: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2FileStoreDataProfile",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2FileStoreDataProfile>;
+export const GooglePrivacyDlpV2FileStoreDataProfile =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    projectDataProfile: Schema.optional(Schema.String),
+    fileStoreLocation: Schema.optional(Schema.String),
+    projectId: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    dataRiskLevel: Schema.optional(GooglePrivacyDlpV2DataRiskLevel),
+    profileStatus: Schema.optional(GooglePrivacyDlpV2ProfileStatus),
+    fileStorePath: Schema.optional(Schema.String),
+    resourceVisibility: Schema.optional(Schema.String),
+    sampleFindingsTable: Schema.optional(GooglePrivacyDlpV2BigQueryTable),
+    dataStorageLocations: Schema.optional(Schema.Array(Schema.String)),
+    resourceAttributes: Schema.optional(
+      Schema.Record(Schema.String, GooglePrivacyDlpV2Value),
+    ),
+    configSnapshot: Schema.optional(
+      GooglePrivacyDlpV2DataProfileConfigSnapshot,
+    ),
+    locationType: Schema.optional(Schema.String),
+    fileClusterSummaries: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2FileClusterSummary),
+    ),
+    createTime: Schema.optional(Schema.String),
+    relatedResources: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2RelatedResource),
+    ),
+    domains: Schema.optional(Schema.Array(GooglePrivacyDlpV2Domain)),
+    tags: Schema.optional(Schema.Array(GooglePrivacyDlpV2Tag)),
+    fullResource: Schema.optional(Schema.String),
+    dataSourceType: Schema.optional(GooglePrivacyDlpV2DataSourceType),
+    lastModifiedTime: Schema.optional(Schema.String),
+    fileStoreIsEmpty: Schema.optional(Schema.Boolean),
+    resourceLabels: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    name: Schema.optional(Schema.String),
+    sensitivityScore: Schema.optional(GooglePrivacyDlpV2SensitivityScore),
+    fileStoreInfoTypeSummaries: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2FileStoreInfoTypeSummary),
+    ),
+    profileLastGenerated: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2FileStoreDataProfile" });
 
 export interface GooglePrivacyDlpV2DataProfileBigQueryRowSchema {
   /** Table data profile column */
@@ -4480,44 +3727,32 @@ export interface GooglePrivacyDlpV2DataProfileBigQueryRowSchema {
   fileStoreProfile?: GooglePrivacyDlpV2FileStoreDataProfile;
 }
 
-export const GooglePrivacyDlpV2DataProfileBigQueryRowSchema: Schema.Schema<GooglePrivacyDlpV2DataProfileBigQueryRowSchema> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tableProfile: Schema.optional(GooglePrivacyDlpV2TableDataProfile),
-      columnProfile: Schema.optional(GooglePrivacyDlpV2ColumnDataProfile),
-      fileStoreProfile: Schema.optional(GooglePrivacyDlpV2FileStoreDataProfile),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2DataProfileBigQueryRowSchema",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DataProfileBigQueryRowSchema>;
+export const GooglePrivacyDlpV2DataProfileBigQueryRowSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tableProfile: Schema.optional(GooglePrivacyDlpV2TableDataProfile),
+    columnProfile: Schema.optional(GooglePrivacyDlpV2ColumnDataProfile),
+    fileStoreProfile: Schema.optional(GooglePrivacyDlpV2FileStoreDataProfile),
+  }).annotate({ identifier: "GooglePrivacyDlpV2DataProfileBigQueryRowSchema" });
 
 export interface GooglePrivacyDlpV2StorageMetadataLabel {
   /** Label name. */
   key?: string;
 }
 
-export const GooglePrivacyDlpV2StorageMetadataLabel: Schema.Schema<GooglePrivacyDlpV2StorageMetadataLabel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      key: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2StorageMetadataLabel",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2StorageMetadataLabel>;
+export const GooglePrivacyDlpV2StorageMetadataLabel =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    key: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2StorageMetadataLabel" });
 
 export interface GooglePrivacyDlpV2KeyValueMetadataLabel {
   /** The metadata key. The format depends on the source of the metadata. Example: - `MSIP_Label_122709e3-8f6b-4860-985f-7f722a94f61e_Enabled` (a Microsoft Purview Information Protection key example) */
   key?: string;
 }
 
-export const GooglePrivacyDlpV2KeyValueMetadataLabel: Schema.Schema<GooglePrivacyDlpV2KeyValueMetadataLabel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      key: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2KeyValueMetadataLabel",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2KeyValueMetadataLabel>;
+export const GooglePrivacyDlpV2KeyValueMetadataLabel =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    key: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2KeyValueMetadataLabel" });
 
 export interface GooglePrivacyDlpV2MetadataLocation {
   /** Type of metadata containing the finding. */
@@ -4533,32 +3768,24 @@ export interface GooglePrivacyDlpV2MetadataLocation {
   keyValueMetadataLabel?: GooglePrivacyDlpV2KeyValueMetadataLabel;
 }
 
-export const GooglePrivacyDlpV2MetadataLocation: Schema.Schema<GooglePrivacyDlpV2MetadataLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      storageLabel: Schema.optional(GooglePrivacyDlpV2StorageMetadataLabel),
-      keyValueMetadataLabel: Schema.optional(
-        GooglePrivacyDlpV2KeyValueMetadataLabel,
-      ),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2MetadataLocation",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2MetadataLocation>;
+export const GooglePrivacyDlpV2MetadataLocation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    storageLabel: Schema.optional(GooglePrivacyDlpV2StorageMetadataLabel),
+    keyValueMetadataLabel: Schema.optional(
+      GooglePrivacyDlpV2KeyValueMetadataLabel,
+    ),
+  }).annotate({ identifier: "GooglePrivacyDlpV2MetadataLocation" });
 
 export interface GooglePrivacyDlpV2DocumentLocation {
   /** Offset of the line, from the beginning of the file, where the finding is located. */
   fileOffset?: string;
 }
 
-export const GooglePrivacyDlpV2DocumentLocation: Schema.Schema<GooglePrivacyDlpV2DocumentLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fileOffset: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2DocumentLocation",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DocumentLocation>;
+export const GooglePrivacyDlpV2DocumentLocation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fileOffset: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2DocumentLocation" });
 
 export interface GooglePrivacyDlpV2PathElement {
   /** The name of the entity. A name matching regex `__.*__` is reserved/read-only. A name must not be more than 1500 bytes when UTF-8 encoded. Cannot be `""`. */
@@ -4569,16 +3796,12 @@ export interface GooglePrivacyDlpV2PathElement {
   id?: string;
 }
 
-export const GooglePrivacyDlpV2PathElement: Schema.Schema<GooglePrivacyDlpV2PathElement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2PathElement",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2PathElement>;
+export const GooglePrivacyDlpV2PathElement =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2PathElement" });
 
 export interface GooglePrivacyDlpV2Key {
   /** Entities are partitioned into subsets, currently identified by a project ID and namespace ID. Queries are scoped to a single partition. */
@@ -4587,29 +3810,20 @@ export interface GooglePrivacyDlpV2Key {
   path?: Array<GooglePrivacyDlpV2PathElement>;
 }
 
-export const GooglePrivacyDlpV2Key: Schema.Schema<GooglePrivacyDlpV2Key> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      partitionId: Schema.optional(GooglePrivacyDlpV2PartitionId),
-      path: Schema.optional(Schema.Array(GooglePrivacyDlpV2PathElement)),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2Key",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2Key>;
+export const GooglePrivacyDlpV2Key = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  partitionId: Schema.optional(GooglePrivacyDlpV2PartitionId),
+  path: Schema.optional(Schema.Array(GooglePrivacyDlpV2PathElement)),
+}).annotate({ identifier: "GooglePrivacyDlpV2Key" });
 
 export interface GooglePrivacyDlpV2DatastoreKey {
   /** Datastore entity key. */
   entityKey?: GooglePrivacyDlpV2Key;
 }
 
-export const GooglePrivacyDlpV2DatastoreKey: Schema.Schema<GooglePrivacyDlpV2DatastoreKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entityKey: Schema.optional(GooglePrivacyDlpV2Key),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2DatastoreKey",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DatastoreKey>;
+export const GooglePrivacyDlpV2DatastoreKey =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entityKey: Schema.optional(GooglePrivacyDlpV2Key),
+  }).annotate({ identifier: "GooglePrivacyDlpV2DatastoreKey" });
 
 export interface GooglePrivacyDlpV2BigQueryKey {
   /** Complete BigQuery table reference. */
@@ -4618,15 +3832,11 @@ export interface GooglePrivacyDlpV2BigQueryKey {
   rowNumber?: string;
 }
 
-export const GooglePrivacyDlpV2BigQueryKey: Schema.Schema<GooglePrivacyDlpV2BigQueryKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tableReference: Schema.optional(GooglePrivacyDlpV2BigQueryTable),
-      rowNumber: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2BigQueryKey",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2BigQueryKey>;
+export const GooglePrivacyDlpV2BigQueryKey =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tableReference: Schema.optional(GooglePrivacyDlpV2BigQueryTable),
+    rowNumber: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2BigQueryKey" });
 
 export interface GooglePrivacyDlpV2RecordKey {
   /** BigQuery key */
@@ -4637,30 +3847,22 @@ export interface GooglePrivacyDlpV2RecordKey {
   bigQueryKey?: GooglePrivacyDlpV2BigQueryKey;
 }
 
-export const GooglePrivacyDlpV2RecordKey: Schema.Schema<GooglePrivacyDlpV2RecordKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      datastoreKey: Schema.optional(GooglePrivacyDlpV2DatastoreKey),
-      idValues: Schema.optional(Schema.Array(Schema.String)),
-      bigQueryKey: Schema.optional(GooglePrivacyDlpV2BigQueryKey),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2RecordKey",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2RecordKey>;
+export const GooglePrivacyDlpV2RecordKey =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    datastoreKey: Schema.optional(GooglePrivacyDlpV2DatastoreKey),
+    idValues: Schema.optional(Schema.Array(Schema.String)),
+    bigQueryKey: Schema.optional(GooglePrivacyDlpV2BigQueryKey),
+  }).annotate({ identifier: "GooglePrivacyDlpV2RecordKey" });
 
 export interface GooglePrivacyDlpV2TableLocation {
   /** The zero-based index of the row where the finding is located. Only populated for resources that have a natural ordering, not BigQuery. In BigQuery, to identify the row a finding came from, populate BigQueryOptions.identifying_fields with your primary key column names and when you store the findings the value of those columns will be stored inside of Finding. */
   rowIndex?: string;
 }
 
-export const GooglePrivacyDlpV2TableLocation: Schema.Schema<GooglePrivacyDlpV2TableLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rowIndex: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2TableLocation",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2TableLocation>;
+export const GooglePrivacyDlpV2TableLocation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rowIndex: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2TableLocation" });
 
 export interface GooglePrivacyDlpV2RecordLocation {
   /** Key of the finding. */
@@ -4671,16 +3873,12 @@ export interface GooglePrivacyDlpV2RecordLocation {
   fieldId?: GooglePrivacyDlpV2FieldId;
 }
 
-export const GooglePrivacyDlpV2RecordLocation: Schema.Schema<GooglePrivacyDlpV2RecordLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      recordKey: Schema.optional(GooglePrivacyDlpV2RecordKey),
-      tableLocation: Schema.optional(GooglePrivacyDlpV2TableLocation),
-      fieldId: Schema.optional(GooglePrivacyDlpV2FieldId),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2RecordLocation",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2RecordLocation>;
+export const GooglePrivacyDlpV2RecordLocation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    recordKey: Schema.optional(GooglePrivacyDlpV2RecordKey),
+    tableLocation: Schema.optional(GooglePrivacyDlpV2TableLocation),
+    fieldId: Schema.optional(GooglePrivacyDlpV2FieldId),
+  }).annotate({ identifier: "GooglePrivacyDlpV2RecordLocation" });
 
 export interface GooglePrivacyDlpV2ContentLocation {
   /** Location within the metadata for inspected content. */
@@ -4699,34 +3897,28 @@ export interface GooglePrivacyDlpV2ContentLocation {
   recordLocation?: GooglePrivacyDlpV2RecordLocation;
 }
 
-export const GooglePrivacyDlpV2ContentLocation: Schema.Schema<GooglePrivacyDlpV2ContentLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadataLocation: Schema.optional(GooglePrivacyDlpV2MetadataLocation),
-      containerVersion: Schema.optional(Schema.String),
-      documentLocation: Schema.optional(GooglePrivacyDlpV2DocumentLocation),
-      imageLocation: Schema.optional(GooglePrivacyDlpV2ImageLocation),
-      containerName: Schema.optional(Schema.String),
-      containerTimestamp: Schema.optional(Schema.String),
-      recordLocation: Schema.optional(GooglePrivacyDlpV2RecordLocation),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2ContentLocation",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2ContentLocation>;
+export const GooglePrivacyDlpV2ContentLocation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    metadataLocation: Schema.optional(GooglePrivacyDlpV2MetadataLocation),
+    containerVersion: Schema.optional(Schema.String),
+    documentLocation: Schema.optional(GooglePrivacyDlpV2DocumentLocation),
+    imageLocation: Schema.optional(GooglePrivacyDlpV2ImageLocation),
+    containerName: Schema.optional(Schema.String),
+    containerTimestamp: Schema.optional(Schema.String),
+    recordLocation: Schema.optional(GooglePrivacyDlpV2RecordLocation),
+  }).annotate({ identifier: "GooglePrivacyDlpV2ContentLocation" });
 
 export interface GooglePrivacyDlpV2TransformationDetailsStorageConfig {
   /** The BigQuery table in which to store the output. This may be an existing table or in a new table in an existing dataset. If table_id is not set a new one will be generated for you with the following format: dlp_googleapis_transformation_details_yyyy_mm_dd_[dlp_job_id]. Pacific time zone will be used for generating the date details. */
   table?: GooglePrivacyDlpV2BigQueryTable;
 }
 
-export const GooglePrivacyDlpV2TransformationDetailsStorageConfig: Schema.Schema<GooglePrivacyDlpV2TransformationDetailsStorageConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      table: Schema.optional(GooglePrivacyDlpV2BigQueryTable),
-    }),
-  ).annotate({
+export const GooglePrivacyDlpV2TransformationDetailsStorageConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    table: Schema.optional(GooglePrivacyDlpV2BigQueryTable),
+  }).annotate({
     identifier: "GooglePrivacyDlpV2TransformationDetailsStorageConfig",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2TransformationDetailsStorageConfig>;
+  });
 
 export interface GooglePrivacyDlpV2TransformationConfig {
   /** De-identify template. If this template is specified, it will serve as the default de-identify template. This template cannot contain `record_transformations` since it can be used for unstructured content such as free-form text files. If this template is not set, a default `ReplaceWithInfoTypeConfig` will be used to de-identify unstructured content. */
@@ -4737,16 +3929,12 @@ export interface GooglePrivacyDlpV2TransformationConfig {
   imageRedactTemplate?: string;
 }
 
-export const GooglePrivacyDlpV2TransformationConfig: Schema.Schema<GooglePrivacyDlpV2TransformationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deidentifyTemplate: Schema.optional(Schema.String),
-      structuredDeidentifyTemplate: Schema.optional(Schema.String),
-      imageRedactTemplate: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2TransformationConfig",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2TransformationConfig>;
+export const GooglePrivacyDlpV2TransformationConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deidentifyTemplate: Schema.optional(Schema.String),
+    structuredDeidentifyTemplate: Schema.optional(Schema.String),
+    imageRedactTemplate: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2TransformationConfig" });
 
 export interface GooglePrivacyDlpV2Deidentify {
   /** Required. User settable Cloud Storage bucket and folders to store de-identified files. This field must be set for Cloud Storage deidentification. The output Cloud Storage bucket must be different from the input bucket. De-identified files will overwrite files in the output path. Form of: gs://bucket/folder/ or gs://bucket */
@@ -4772,21 +3960,17 @@ export interface GooglePrivacyDlpV2Deidentify {
   >;
 }
 
-export const GooglePrivacyDlpV2Deidentify: Schema.Schema<GooglePrivacyDlpV2Deidentify> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cloudStorageOutput: Schema.optional(Schema.String),
-      transformationDetailsStorageConfig: Schema.optional(
-        GooglePrivacyDlpV2TransformationDetailsStorageConfig,
-      ),
-      transformationConfig: Schema.optional(
-        GooglePrivacyDlpV2TransformationConfig,
-      ),
-      fileTypesToTransform: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2Deidentify",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2Deidentify>;
+export const GooglePrivacyDlpV2Deidentify =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cloudStorageOutput: Schema.optional(Schema.String),
+    transformationDetailsStorageConfig: Schema.optional(
+      GooglePrivacyDlpV2TransformationDetailsStorageConfig,
+    ),
+    transformationConfig: Schema.optional(
+      GooglePrivacyDlpV2TransformationConfig,
+    ),
+    fileTypesToTransform: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GooglePrivacyDlpV2Deidentify" });
 
 export interface GooglePrivacyDlpV2ListTableDataProfilesResponse {
   /** List of data profiles. */
@@ -4795,17 +3979,15 @@ export interface GooglePrivacyDlpV2ListTableDataProfilesResponse {
   nextPageToken?: string;
 }
 
-export const GooglePrivacyDlpV2ListTableDataProfilesResponse: Schema.Schema<GooglePrivacyDlpV2ListTableDataProfilesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tableDataProfiles: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2TableDataProfile),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GooglePrivacyDlpV2ListTableDataProfilesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tableDataProfiles: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2TableDataProfile),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GooglePrivacyDlpV2ListTableDataProfilesResponse",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2ListTableDataProfilesResponse>;
+  });
 
 export interface GooglePrivacyDlpV2LDiversityConfig {
   /** Set of quasi-identifiers indicating how equivalence classes are defined for the l-diversity computation. When multiple fields are specified, they are considered a single composite key. */
@@ -4814,29 +3996,21 @@ export interface GooglePrivacyDlpV2LDiversityConfig {
   sensitiveAttribute?: GooglePrivacyDlpV2FieldId;
 }
 
-export const GooglePrivacyDlpV2LDiversityConfig: Schema.Schema<GooglePrivacyDlpV2LDiversityConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      quasiIds: Schema.optional(Schema.Array(GooglePrivacyDlpV2FieldId)),
-      sensitiveAttribute: Schema.optional(GooglePrivacyDlpV2FieldId),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2LDiversityConfig",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2LDiversityConfig>;
+export const GooglePrivacyDlpV2LDiversityConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    quasiIds: Schema.optional(Schema.Array(GooglePrivacyDlpV2FieldId)),
+    sensitiveAttribute: Schema.optional(GooglePrivacyDlpV2FieldId),
+  }).annotate({ identifier: "GooglePrivacyDlpV2LDiversityConfig" });
 
 export interface GooglePrivacyDlpV2EntityId {
   /** Composite key indicating which field contains the entity identifier. */
   field?: GooglePrivacyDlpV2FieldId;
 }
 
-export const GooglePrivacyDlpV2EntityId: Schema.Schema<GooglePrivacyDlpV2EntityId> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      field: Schema.optional(GooglePrivacyDlpV2FieldId),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2EntityId",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2EntityId>;
+export const GooglePrivacyDlpV2EntityId =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    field: Schema.optional(GooglePrivacyDlpV2FieldId),
+  }).annotate({ identifier: "GooglePrivacyDlpV2EntityId" });
 
 export interface GooglePrivacyDlpV2KAnonymityConfig {
   /** Set of fields to compute k-anonymity over. When multiple fields are specified, they are considered a single composite key. Structs and repeated data types are not supported; however, nested fields are supported so long as they are not structs themselves or nested within a repeated field. */
@@ -4845,36 +4019,27 @@ export interface GooglePrivacyDlpV2KAnonymityConfig {
   entityId?: GooglePrivacyDlpV2EntityId;
 }
 
-export const GooglePrivacyDlpV2KAnonymityConfig: Schema.Schema<GooglePrivacyDlpV2KAnonymityConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      quasiIds: Schema.optional(Schema.Array(GooglePrivacyDlpV2FieldId)),
-      entityId: Schema.optional(GooglePrivacyDlpV2EntityId),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2KAnonymityConfig",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2KAnonymityConfig>;
+export const GooglePrivacyDlpV2KAnonymityConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    quasiIds: Schema.optional(Schema.Array(GooglePrivacyDlpV2FieldId)),
+    entityId: Schema.optional(GooglePrivacyDlpV2EntityId),
+  }).annotate({ identifier: "GooglePrivacyDlpV2KAnonymityConfig" });
 
 export interface GooglePrivacyDlpV2NumericalStatsConfig {
   /** Field to compute numerical stats on. Supported types are integer, float, date, datetime, timestamp, time. */
   field?: GooglePrivacyDlpV2FieldId;
 }
 
-export const GooglePrivacyDlpV2NumericalStatsConfig: Schema.Schema<GooglePrivacyDlpV2NumericalStatsConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      field: Schema.optional(GooglePrivacyDlpV2FieldId),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2NumericalStatsConfig",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2NumericalStatsConfig>;
+export const GooglePrivacyDlpV2NumericalStatsConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    field: Schema.optional(GooglePrivacyDlpV2FieldId),
+  }).annotate({ identifier: "GooglePrivacyDlpV2NumericalStatsConfig" });
 
 export interface GoogleProtobufEmpty {}
 
-export const GoogleProtobufEmpty: Schema.Schema<GoogleProtobufEmpty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "GoogleProtobufEmpty",
-  }) as any as Schema.Schema<GoogleProtobufEmpty>;
+export const GoogleProtobufEmpty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "GoogleProtobufEmpty" });
 
 export interface GooglePrivacyDlpV2TaggedField {
   /** Required. Identifies the column. */
@@ -4887,17 +4052,13 @@ export interface GooglePrivacyDlpV2TaggedField {
   customTag?: string;
 }
 
-export const GooglePrivacyDlpV2TaggedField: Schema.Schema<GooglePrivacyDlpV2TaggedField> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      field: Schema.optional(GooglePrivacyDlpV2FieldId),
-      infoType: Schema.optional(GooglePrivacyDlpV2InfoType),
-      inferred: Schema.optional(GoogleProtobufEmpty),
-      customTag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2TaggedField",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2TaggedField>;
+export const GooglePrivacyDlpV2TaggedField =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    field: Schema.optional(GooglePrivacyDlpV2FieldId),
+    infoType: Schema.optional(GooglePrivacyDlpV2InfoType),
+    inferred: Schema.optional(GoogleProtobufEmpty),
+    customTag: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2TaggedField" });
 
 export interface GooglePrivacyDlpV2AuxiliaryTable {
   /** Required. Quasi-identifier columns. */
@@ -4908,16 +4069,12 @@ export interface GooglePrivacyDlpV2AuxiliaryTable {
   relativeFrequency?: GooglePrivacyDlpV2FieldId;
 }
 
-export const GooglePrivacyDlpV2AuxiliaryTable: Schema.Schema<GooglePrivacyDlpV2AuxiliaryTable> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      quasiIds: Schema.optional(Schema.Array(GooglePrivacyDlpV2QuasiIdField)),
-      table: Schema.optional(GooglePrivacyDlpV2BigQueryTable),
-      relativeFrequency: Schema.optional(GooglePrivacyDlpV2FieldId),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2AuxiliaryTable",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2AuxiliaryTable>;
+export const GooglePrivacyDlpV2AuxiliaryTable =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    quasiIds: Schema.optional(Schema.Array(GooglePrivacyDlpV2QuasiIdField)),
+    table: Schema.optional(GooglePrivacyDlpV2BigQueryTable),
+    relativeFrequency: Schema.optional(GooglePrivacyDlpV2FieldId),
+  }).annotate({ identifier: "GooglePrivacyDlpV2AuxiliaryTable" });
 
 export interface GooglePrivacyDlpV2KMapEstimationConfig {
   /** Required. Fields considered to be quasi-identifiers. No two columns can have the same tag. */
@@ -4928,18 +4085,14 @@ export interface GooglePrivacyDlpV2KMapEstimationConfig {
   auxiliaryTables?: Array<GooglePrivacyDlpV2AuxiliaryTable>;
 }
 
-export const GooglePrivacyDlpV2KMapEstimationConfig: Schema.Schema<GooglePrivacyDlpV2KMapEstimationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      quasiIds: Schema.optional(Schema.Array(GooglePrivacyDlpV2TaggedField)),
-      regionCode: Schema.optional(Schema.String),
-      auxiliaryTables: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2AuxiliaryTable),
-      ),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2KMapEstimationConfig",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2KMapEstimationConfig>;
+export const GooglePrivacyDlpV2KMapEstimationConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    quasiIds: Schema.optional(Schema.Array(GooglePrivacyDlpV2TaggedField)),
+    regionCode: Schema.optional(Schema.String),
+    auxiliaryTables: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2AuxiliaryTable),
+    ),
+  }).annotate({ identifier: "GooglePrivacyDlpV2KMapEstimationConfig" });
 
 export interface GooglePrivacyDlpV2QuasiIdentifierField {
   /** A column can be tagged with a custom tag. In this case, the user must indicate an auxiliary table that contains statistical information on the possible values of this column. */
@@ -4948,15 +4101,11 @@ export interface GooglePrivacyDlpV2QuasiIdentifierField {
   field?: GooglePrivacyDlpV2FieldId;
 }
 
-export const GooglePrivacyDlpV2QuasiIdentifierField: Schema.Schema<GooglePrivacyDlpV2QuasiIdentifierField> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customTag: Schema.optional(Schema.String),
-      field: Schema.optional(GooglePrivacyDlpV2FieldId),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2QuasiIdentifierField",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2QuasiIdentifierField>;
+export const GooglePrivacyDlpV2QuasiIdentifierField =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customTag: Schema.optional(Schema.String),
+    field: Schema.optional(GooglePrivacyDlpV2FieldId),
+  }).annotate({ identifier: "GooglePrivacyDlpV2QuasiIdentifierField" });
 
 export interface GooglePrivacyDlpV2StatisticalTable {
   /** Required. The relative frequency column must contain a floating-point number between 0 and 1 (inclusive). Null values are assumed to be zero. */
@@ -4967,18 +4116,14 @@ export interface GooglePrivacyDlpV2StatisticalTable {
   quasiIds?: Array<GooglePrivacyDlpV2QuasiIdentifierField>;
 }
 
-export const GooglePrivacyDlpV2StatisticalTable: Schema.Schema<GooglePrivacyDlpV2StatisticalTable> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      relativeFrequency: Schema.optional(GooglePrivacyDlpV2FieldId),
-      table: Schema.optional(GooglePrivacyDlpV2BigQueryTable),
-      quasiIds: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2QuasiIdentifierField),
-      ),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2StatisticalTable",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2StatisticalTable>;
+export const GooglePrivacyDlpV2StatisticalTable =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    relativeFrequency: Schema.optional(GooglePrivacyDlpV2FieldId),
+    table: Schema.optional(GooglePrivacyDlpV2BigQueryTable),
+    quasiIds: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2QuasiIdentifierField),
+    ),
+  }).annotate({ identifier: "GooglePrivacyDlpV2StatisticalTable" });
 
 export interface GooglePrivacyDlpV2QuasiId {
   /** A column can be tagged with a custom tag. In this case, the user must indicate an auxiliary table that contains statistical information on the possible values of this column. */
@@ -4991,17 +4136,13 @@ export interface GooglePrivacyDlpV2QuasiId {
   inferred?: GoogleProtobufEmpty;
 }
 
-export const GooglePrivacyDlpV2QuasiId: Schema.Schema<GooglePrivacyDlpV2QuasiId> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customTag: Schema.optional(Schema.String),
-      field: Schema.optional(GooglePrivacyDlpV2FieldId),
-      infoType: Schema.optional(GooglePrivacyDlpV2InfoType),
-      inferred: Schema.optional(GoogleProtobufEmpty),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2QuasiId",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2QuasiId>;
+export const GooglePrivacyDlpV2QuasiId =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customTag: Schema.optional(Schema.String),
+    field: Schema.optional(GooglePrivacyDlpV2FieldId),
+    infoType: Schema.optional(GooglePrivacyDlpV2InfoType),
+    inferred: Schema.optional(GoogleProtobufEmpty),
+  }).annotate({ identifier: "GooglePrivacyDlpV2QuasiId" });
 
 export interface GooglePrivacyDlpV2DeltaPresenceEstimationConfig {
   /** Several auxiliary tables can be used in the analysis. Each custom_tag used to tag a quasi-identifiers field must appear in exactly one field of one auxiliary table. */
@@ -5012,32 +4153,26 @@ export interface GooglePrivacyDlpV2DeltaPresenceEstimationConfig {
   regionCode?: string;
 }
 
-export const GooglePrivacyDlpV2DeltaPresenceEstimationConfig: Schema.Schema<GooglePrivacyDlpV2DeltaPresenceEstimationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      auxiliaryTables: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2StatisticalTable),
-      ),
-      quasiIds: Schema.optional(Schema.Array(GooglePrivacyDlpV2QuasiId)),
-      regionCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GooglePrivacyDlpV2DeltaPresenceEstimationConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    auxiliaryTables: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2StatisticalTable),
+    ),
+    quasiIds: Schema.optional(Schema.Array(GooglePrivacyDlpV2QuasiId)),
+    regionCode: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GooglePrivacyDlpV2DeltaPresenceEstimationConfig",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DeltaPresenceEstimationConfig>;
+  });
 
 export interface GooglePrivacyDlpV2CategoricalStatsConfig {
   /** Field to compute categorical stats on. All column types are supported except for arrays and structs. However, it may be more informative to use NumericalStats when the field type is supported, depending on the data. */
   field?: GooglePrivacyDlpV2FieldId;
 }
 
-export const GooglePrivacyDlpV2CategoricalStatsConfig: Schema.Schema<GooglePrivacyDlpV2CategoricalStatsConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      field: Schema.optional(GooglePrivacyDlpV2FieldId),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2CategoricalStatsConfig",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2CategoricalStatsConfig>;
+export const GooglePrivacyDlpV2CategoricalStatsConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    field: Schema.optional(GooglePrivacyDlpV2FieldId),
+  }).annotate({ identifier: "GooglePrivacyDlpV2CategoricalStatsConfig" });
 
 export interface GooglePrivacyDlpV2PrivacyMetric {
   /** K-anonymity */
@@ -5054,27 +4189,23 @@ export interface GooglePrivacyDlpV2PrivacyMetric {
   lDiversityConfig?: GooglePrivacyDlpV2LDiversityConfig;
 }
 
-export const GooglePrivacyDlpV2PrivacyMetric: Schema.Schema<GooglePrivacyDlpV2PrivacyMetric> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kAnonymityConfig: Schema.optional(GooglePrivacyDlpV2KAnonymityConfig),
-      numericalStatsConfig: Schema.optional(
-        GooglePrivacyDlpV2NumericalStatsConfig,
-      ),
-      kMapEstimationConfig: Schema.optional(
-        GooglePrivacyDlpV2KMapEstimationConfig,
-      ),
-      deltaPresenceEstimationConfig: Schema.optional(
-        GooglePrivacyDlpV2DeltaPresenceEstimationConfig,
-      ),
-      categoricalStatsConfig: Schema.optional(
-        GooglePrivacyDlpV2CategoricalStatsConfig,
-      ),
-      lDiversityConfig: Schema.optional(GooglePrivacyDlpV2LDiversityConfig),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2PrivacyMetric",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2PrivacyMetric>;
+export const GooglePrivacyDlpV2PrivacyMetric =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kAnonymityConfig: Schema.optional(GooglePrivacyDlpV2KAnonymityConfig),
+    numericalStatsConfig: Schema.optional(
+      GooglePrivacyDlpV2NumericalStatsConfig,
+    ),
+    kMapEstimationConfig: Schema.optional(
+      GooglePrivacyDlpV2KMapEstimationConfig,
+    ),
+    deltaPresenceEstimationConfig: Schema.optional(
+      GooglePrivacyDlpV2DeltaPresenceEstimationConfig,
+    ),
+    categoricalStatsConfig: Schema.optional(
+      GooglePrivacyDlpV2CategoricalStatsConfig,
+    ),
+    lDiversityConfig: Schema.optional(GooglePrivacyDlpV2LDiversityConfig),
+  }).annotate({ identifier: "GooglePrivacyDlpV2PrivacyMetric" });
 
 export interface GooglePrivacyDlpV2OutputStorageConfig {
   /** Store findings in an existing table or a new table in an existing dataset. If table_id is not set a new one will be generated for you with the following format: dlp_googleapis_yyyy_mm_dd_[dlp_job_id]. Pacific time zone will be used for generating the date details. For Inspect, each column in an existing output table must have the same name, type, and mode of a field in the `Finding` object. For Risk, an existing output table should be the output of a previous Risk analysis job run on the same source table, with the same privacy metric and quasi-identifiers. Risk jobs that analyze the same table but compute a different privacy metric, or use different sets of quasi-identifiers, cannot store their results in the same table. */
@@ -5092,79 +4223,67 @@ export interface GooglePrivacyDlpV2OutputStorageConfig {
   storagePath?: GooglePrivacyDlpV2CloudStoragePath;
 }
 
-export const GooglePrivacyDlpV2OutputStorageConfig: Schema.Schema<GooglePrivacyDlpV2OutputStorageConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      table: Schema.optional(GooglePrivacyDlpV2BigQueryTable),
-      outputSchema: Schema.optional(Schema.String),
-      storagePath: Schema.optional(GooglePrivacyDlpV2CloudStoragePath),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2OutputStorageConfig",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2OutputStorageConfig>;
+export const GooglePrivacyDlpV2OutputStorageConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    table: Schema.optional(GooglePrivacyDlpV2BigQueryTable),
+    outputSchema: Schema.optional(Schema.String),
+    storagePath: Schema.optional(GooglePrivacyDlpV2CloudStoragePath),
+  }).annotate({ identifier: "GooglePrivacyDlpV2OutputStorageConfig" });
 
 export interface GooglePrivacyDlpV2SaveFindings {
   /** Location to store findings outside of DLP. */
   outputConfig?: GooglePrivacyDlpV2OutputStorageConfig;
 }
 
-export const GooglePrivacyDlpV2SaveFindings: Schema.Schema<GooglePrivacyDlpV2SaveFindings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      outputConfig: Schema.optional(GooglePrivacyDlpV2OutputStorageConfig),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2SaveFindings",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2SaveFindings>;
+export const GooglePrivacyDlpV2SaveFindings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    outputConfig: Schema.optional(GooglePrivacyDlpV2OutputStorageConfig),
+  }).annotate({ identifier: "GooglePrivacyDlpV2SaveFindings" });
 
 export interface GooglePrivacyDlpV2PublishSummaryToCscc {}
 
-export const GooglePrivacyDlpV2PublishSummaryToCscc: Schema.Schema<GooglePrivacyDlpV2PublishSummaryToCscc> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GooglePrivacyDlpV2PublishSummaryToCscc =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2PublishSummaryToCscc",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2PublishSummaryToCscc>;
+  });
 
 export interface GooglePrivacyDlpV2JobNotificationEmails {}
 
-export const GooglePrivacyDlpV2JobNotificationEmails: Schema.Schema<GooglePrivacyDlpV2JobNotificationEmails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GooglePrivacyDlpV2JobNotificationEmails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2JobNotificationEmails",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2JobNotificationEmails>;
+  });
 
 export interface GooglePrivacyDlpV2PublishToStackdriver {}
 
-export const GooglePrivacyDlpV2PublishToStackdriver: Schema.Schema<GooglePrivacyDlpV2PublishToStackdriver> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GooglePrivacyDlpV2PublishToStackdriver =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2PublishToStackdriver",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2PublishToStackdriver>;
+  });
 
 export interface GooglePrivacyDlpV2PublishToPubSub {
   /** Cloud Pub/Sub topic to send notifications to. The topic must have given publishing access rights to the DLP API service account executing the long running DlpJob sending the notifications. Format is projects/{project}/topics/{topic}. */
   topic?: string;
 }
 
-export const GooglePrivacyDlpV2PublishToPubSub: Schema.Schema<GooglePrivacyDlpV2PublishToPubSub> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      topic: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2PublishToPubSub",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2PublishToPubSub>;
+export const GooglePrivacyDlpV2PublishToPubSub =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    topic: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2PublishToPubSub" });
 
 export interface GooglePrivacyDlpV2PublishFindingsToDataplexCatalog {}
 
-export const GooglePrivacyDlpV2PublishFindingsToDataplexCatalog: Schema.Schema<GooglePrivacyDlpV2PublishFindingsToDataplexCatalog> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GooglePrivacyDlpV2PublishFindingsToDataplexCatalog =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2PublishFindingsToDataplexCatalog",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2PublishFindingsToDataplexCatalog>;
+  });
 
 export interface GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog {}
 
-export const GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog: Schema.Schema<GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog>;
+  });
 
 export interface GooglePrivacyDlpV2Action {
   /** Save resulting findings in a provided location. */
@@ -5185,31 +4304,27 @@ export interface GooglePrivacyDlpV2Action {
   publishFindingsToCloudDataCatalog?: GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog;
 }
 
-export const GooglePrivacyDlpV2Action: Schema.Schema<GooglePrivacyDlpV2Action> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      saveFindings: Schema.optional(GooglePrivacyDlpV2SaveFindings),
-      publishSummaryToCscc: Schema.optional(
-        GooglePrivacyDlpV2PublishSummaryToCscc,
-      ),
-      jobNotificationEmails: Schema.optional(
-        GooglePrivacyDlpV2JobNotificationEmails,
-      ),
-      publishToStackdriver: Schema.optional(
-        GooglePrivacyDlpV2PublishToStackdriver,
-      ),
-      pubSub: Schema.optional(GooglePrivacyDlpV2PublishToPubSub),
-      publishFindingsToDataplexCatalog: Schema.optional(
-        GooglePrivacyDlpV2PublishFindingsToDataplexCatalog,
-      ),
-      deidentify: Schema.optional(GooglePrivacyDlpV2Deidentify),
-      publishFindingsToCloudDataCatalog: Schema.optional(
-        GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog,
-      ),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2Action",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2Action>;
+export const GooglePrivacyDlpV2Action =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    saveFindings: Schema.optional(GooglePrivacyDlpV2SaveFindings),
+    publishSummaryToCscc: Schema.optional(
+      GooglePrivacyDlpV2PublishSummaryToCscc,
+    ),
+    jobNotificationEmails: Schema.optional(
+      GooglePrivacyDlpV2JobNotificationEmails,
+    ),
+    publishToStackdriver: Schema.optional(
+      GooglePrivacyDlpV2PublishToStackdriver,
+    ),
+    pubSub: Schema.optional(GooglePrivacyDlpV2PublishToPubSub),
+    publishFindingsToDataplexCatalog: Schema.optional(
+      GooglePrivacyDlpV2PublishFindingsToDataplexCatalog,
+    ),
+    deidentify: Schema.optional(GooglePrivacyDlpV2Deidentify),
+    publishFindingsToCloudDataCatalog: Schema.optional(
+      GooglePrivacyDlpV2PublishFindingsToCloudDataCatalog,
+    ),
+  }).annotate({ identifier: "GooglePrivacyDlpV2Action" });
 
 export interface GooglePrivacyDlpV2RiskAnalysisJobConfig {
   /** Privacy metric to compute. */
@@ -5220,16 +4335,12 @@ export interface GooglePrivacyDlpV2RiskAnalysisJobConfig {
   sourceTable?: GooglePrivacyDlpV2BigQueryTable;
 }
 
-export const GooglePrivacyDlpV2RiskAnalysisJobConfig: Schema.Schema<GooglePrivacyDlpV2RiskAnalysisJobConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      privacyMetric: Schema.optional(GooglePrivacyDlpV2PrivacyMetric),
-      actions: Schema.optional(Schema.Array(GooglePrivacyDlpV2Action)),
-      sourceTable: Schema.optional(GooglePrivacyDlpV2BigQueryTable),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2RiskAnalysisJobConfig",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2RiskAnalysisJobConfig>;
+export const GooglePrivacyDlpV2RiskAnalysisJobConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    privacyMetric: Schema.optional(GooglePrivacyDlpV2PrivacyMetric),
+    actions: Schema.optional(Schema.Array(GooglePrivacyDlpV2Action)),
+    sourceTable: Schema.optional(GooglePrivacyDlpV2BigQueryTable),
+  }).annotate({ identifier: "GooglePrivacyDlpV2RiskAnalysisJobConfig" });
 
 export interface GooglePrivacyDlpV2InspectJobConfig {
   /** Actions to execute at the completion of the job. */
@@ -5242,17 +4353,13 @@ export interface GooglePrivacyDlpV2InspectJobConfig {
   inspectTemplateName?: string;
 }
 
-export const GooglePrivacyDlpV2InspectJobConfig: Schema.Schema<GooglePrivacyDlpV2InspectJobConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      actions: Schema.optional(Schema.Array(GooglePrivacyDlpV2Action)),
-      inspectConfig: Schema.optional(GooglePrivacyDlpV2InspectConfig),
-      storageConfig: Schema.optional(GooglePrivacyDlpV2StorageConfig),
-      inspectTemplateName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2InspectJobConfig",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2InspectJobConfig>;
+export const GooglePrivacyDlpV2InspectJobConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    actions: Schema.optional(Schema.Array(GooglePrivacyDlpV2Action)),
+    inspectConfig: Schema.optional(GooglePrivacyDlpV2InspectConfig),
+    storageConfig: Schema.optional(GooglePrivacyDlpV2StorageConfig),
+    inspectTemplateName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2InspectJobConfig" });
 
 export interface GooglePrivacyDlpV2CreateDlpJobRequest {
   /** A risk analysis job calculates re-identification risk metrics for a BigQuery table. */
@@ -5265,17 +4372,13 @@ export interface GooglePrivacyDlpV2CreateDlpJobRequest {
   jobId?: string;
 }
 
-export const GooglePrivacyDlpV2CreateDlpJobRequest: Schema.Schema<GooglePrivacyDlpV2CreateDlpJobRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      riskJob: Schema.optional(GooglePrivacyDlpV2RiskAnalysisJobConfig),
-      inspectJob: Schema.optional(GooglePrivacyDlpV2InspectJobConfig),
-      locationId: Schema.optional(Schema.String),
-      jobId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2CreateDlpJobRequest",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2CreateDlpJobRequest>;
+export const GooglePrivacyDlpV2CreateDlpJobRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    riskJob: Schema.optional(GooglePrivacyDlpV2RiskAnalysisJobConfig),
+    inspectJob: Schema.optional(GooglePrivacyDlpV2InspectJobConfig),
+    locationId: Schema.optional(Schema.String),
+    jobId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2CreateDlpJobRequest" });
 
 export interface GooglePrivacyDlpV2Range {
   /** Index of the last character of the range (exclusive). */
@@ -5284,15 +4387,11 @@ export interface GooglePrivacyDlpV2Range {
   start?: string;
 }
 
-export const GooglePrivacyDlpV2Range: Schema.Schema<GooglePrivacyDlpV2Range> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      end: Schema.optional(Schema.String),
-      start: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2Range",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2Range>;
+export const GooglePrivacyDlpV2Range =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    end: Schema.optional(Schema.String),
+    start: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2Range" });
 
 export interface GooglePrivacyDlpV2Container {
   /** The root of the container. Examples: - For BigQuery table `project_id:dataset_id.table_id`, the root is `dataset_id` - For Cloud Storage file `gs://bucket/folder/filename.txt`, the root is `gs://bucket` */
@@ -5311,20 +4410,16 @@ export interface GooglePrivacyDlpV2Container {
   relativePath?: string;
 }
 
-export const GooglePrivacyDlpV2Container: Schema.Schema<GooglePrivacyDlpV2Container> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rootPath: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      fullPath: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-      projectId: Schema.optional(Schema.String),
-      relativePath: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2Container",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2Container>;
+export const GooglePrivacyDlpV2Container =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rootPath: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    fullPath: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    version: Schema.optional(Schema.String),
+    projectId: Schema.optional(Schema.String),
+    relativePath: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2Container" });
 
 export interface GooglePrivacyDlpV2Location {
   /** Unicode character offsets delimiting the finding. These are relative to the finding's containing element. Provided when the content is text. */
@@ -5337,33 +4432,25 @@ export interface GooglePrivacyDlpV2Location {
   contentLocations?: Array<GooglePrivacyDlpV2ContentLocation>;
 }
 
-export const GooglePrivacyDlpV2Location: Schema.Schema<GooglePrivacyDlpV2Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      codepointRange: Schema.optional(GooglePrivacyDlpV2Range),
-      container: Schema.optional(GooglePrivacyDlpV2Container),
-      byteRange: Schema.optional(GooglePrivacyDlpV2Range),
-      contentLocations: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2ContentLocation),
-      ),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2Location",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2Location>;
+export const GooglePrivacyDlpV2Location =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    codepointRange: Schema.optional(GooglePrivacyDlpV2Range),
+    container: Schema.optional(GooglePrivacyDlpV2Container),
+    byteRange: Schema.optional(GooglePrivacyDlpV2Range),
+    contentLocations: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2ContentLocation),
+    ),
+  }).annotate({ identifier: "GooglePrivacyDlpV2Location" });
 
 export interface GooglePrivacyDlpV2TimeZone {
   /** Set only if the offset can be determined. Positive for time ahead of UTC. E.g. For "UTC-9", this value is -540. */
   offsetMinutes?: number;
 }
 
-export const GooglePrivacyDlpV2TimeZone: Schema.Schema<GooglePrivacyDlpV2TimeZone> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      offsetMinutes: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2TimeZone",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2TimeZone>;
+export const GooglePrivacyDlpV2TimeZone =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    offsetMinutes: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GooglePrivacyDlpV2TimeZone" });
 
 export interface GooglePrivacyDlpV2DateTime {
   /** One or more of the following must be set. Must be a valid date or time value. */
@@ -5385,31 +4472,23 @@ export interface GooglePrivacyDlpV2DateTime {
     | (string & {});
 }
 
-export const GooglePrivacyDlpV2DateTime: Schema.Schema<GooglePrivacyDlpV2DateTime> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      date: Schema.optional(GoogleTypeDate),
-      time: Schema.optional(GoogleTypeTimeOfDay),
-      timeZone: Schema.optional(GooglePrivacyDlpV2TimeZone),
-      dayOfWeek: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2DateTime",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DateTime>;
+export const GooglePrivacyDlpV2DateTime =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    date: Schema.optional(GoogleTypeDate),
+    time: Schema.optional(GoogleTypeTimeOfDay),
+    timeZone: Schema.optional(GooglePrivacyDlpV2TimeZone),
+    dayOfWeek: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2DateTime" });
 
 export interface GooglePrivacyDlpV2QuoteInfo {
   /** The date time indicated by the quote. */
   dateTime?: GooglePrivacyDlpV2DateTime;
 }
 
-export const GooglePrivacyDlpV2QuoteInfo: Schema.Schema<GooglePrivacyDlpV2QuoteInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dateTime: Schema.optional(GooglePrivacyDlpV2DateTime),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2QuoteInfo",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2QuoteInfo>;
+export const GooglePrivacyDlpV2QuoteInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dateTime: Schema.optional(GooglePrivacyDlpV2DateTime),
+  }).annotate({ identifier: "GooglePrivacyDlpV2QuoteInfo" });
 
 export interface GooglePrivacyDlpV2Finding {
   /** The type of content that might have been found. Provided if `excluded_types` is false. */
@@ -5447,26 +4526,22 @@ export interface GooglePrivacyDlpV2Finding {
   triggerName?: string;
 }
 
-export const GooglePrivacyDlpV2Finding: Schema.Schema<GooglePrivacyDlpV2Finding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      infoType: Schema.optional(GooglePrivacyDlpV2InfoType),
-      jobCreateTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      location: Schema.optional(GooglePrivacyDlpV2Location),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      likelihood: Schema.optional(Schema.String),
-      resourceName: Schema.optional(Schema.String),
-      jobName: Schema.optional(Schema.String),
-      quoteInfo: Schema.optional(GooglePrivacyDlpV2QuoteInfo),
-      name: Schema.optional(Schema.String),
-      findingId: Schema.optional(Schema.String),
-      quote: Schema.optional(Schema.String),
-      triggerName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2Finding",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2Finding>;
+export const GooglePrivacyDlpV2Finding =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    infoType: Schema.optional(GooglePrivacyDlpV2InfoType),
+    jobCreateTime: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    location: Schema.optional(GooglePrivacyDlpV2Location),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    likelihood: Schema.optional(Schema.String),
+    resourceName: Schema.optional(Schema.String),
+    jobName: Schema.optional(Schema.String),
+    quoteInfo: Schema.optional(GooglePrivacyDlpV2QuoteInfo),
+    name: Schema.optional(Schema.String),
+    findingId: Schema.optional(Schema.String),
+    quote: Schema.optional(Schema.String),
+    triggerName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2Finding" });
 
 export interface GooglePrivacyDlpV2InspectResult {
   /** List of findings for an item. */
@@ -5475,36 +4550,28 @@ export interface GooglePrivacyDlpV2InspectResult {
   findingsTruncated?: boolean;
 }
 
-export const GooglePrivacyDlpV2InspectResult: Schema.Schema<GooglePrivacyDlpV2InspectResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      findings: Schema.optional(Schema.Array(GooglePrivacyDlpV2Finding)),
-      findingsTruncated: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2InspectResult",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2InspectResult>;
+export const GooglePrivacyDlpV2InspectResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    findings: Schema.optional(Schema.Array(GooglePrivacyDlpV2Finding)),
+    findingsTruncated: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GooglePrivacyDlpV2InspectResult" });
 
 export interface GooglePrivacyDlpV2InspectContentResponse {
   /** The findings. */
   result?: GooglePrivacyDlpV2InspectResult;
 }
 
-export const GooglePrivacyDlpV2InspectContentResponse: Schema.Schema<GooglePrivacyDlpV2InspectContentResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      result: Schema.optional(GooglePrivacyDlpV2InspectResult),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2InspectContentResponse",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2InspectContentResponse>;
+export const GooglePrivacyDlpV2InspectContentResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    result: Schema.optional(GooglePrivacyDlpV2InspectResult),
+  }).annotate({ identifier: "GooglePrivacyDlpV2InspectContentResponse" });
 
 export interface GooglePrivacyDlpV2CancelDlpJobRequest {}
 
-export const GooglePrivacyDlpV2CancelDlpJobRequest: Schema.Schema<GooglePrivacyDlpV2CancelDlpJobRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GooglePrivacyDlpV2CancelDlpJobRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2CancelDlpJobRequest",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2CancelDlpJobRequest>;
+  });
 
 export interface GooglePrivacyDlpV2DeidentifyDataSourceStats {
   /** Number of successfully applied transformations. */
@@ -5515,16 +4582,12 @@ export interface GooglePrivacyDlpV2DeidentifyDataSourceStats {
   transformationErrorCount?: string;
 }
 
-export const GooglePrivacyDlpV2DeidentifyDataSourceStats: Schema.Schema<GooglePrivacyDlpV2DeidentifyDataSourceStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      transformationCount: Schema.optional(Schema.String),
-      transformedBytes: Schema.optional(Schema.String),
-      transformationErrorCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2DeidentifyDataSourceStats",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DeidentifyDataSourceStats>;
+export const GooglePrivacyDlpV2DeidentifyDataSourceStats =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    transformationCount: Schema.optional(Schema.String),
+    transformedBytes: Schema.optional(Schema.String),
+    transformationErrorCount: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2DeidentifyDataSourceStats" });
 
 export interface GooglePrivacyDlpV2RequestedDeidentifyOptions {
   /** Snapshot of the state of the structured `DeidentifyTemplate` from the `Deidentify` action at the time this job was run. */
@@ -5535,22 +4598,18 @@ export interface GooglePrivacyDlpV2RequestedDeidentifyOptions {
   snapshotDeidentifyTemplate?: GooglePrivacyDlpV2DeidentifyTemplate;
 }
 
-export const GooglePrivacyDlpV2RequestedDeidentifyOptions: Schema.Schema<GooglePrivacyDlpV2RequestedDeidentifyOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      snapshotStructuredDeidentifyTemplate: Schema.optional(
-        GooglePrivacyDlpV2DeidentifyTemplate,
-      ),
-      snapshotImageRedactTemplate: Schema.optional(
-        GooglePrivacyDlpV2DeidentifyTemplate,
-      ),
-      snapshotDeidentifyTemplate: Schema.optional(
-        GooglePrivacyDlpV2DeidentifyTemplate,
-      ),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2RequestedDeidentifyOptions",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2RequestedDeidentifyOptions>;
+export const GooglePrivacyDlpV2RequestedDeidentifyOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    snapshotStructuredDeidentifyTemplate: Schema.optional(
+      GooglePrivacyDlpV2DeidentifyTemplate,
+    ),
+    snapshotImageRedactTemplate: Schema.optional(
+      GooglePrivacyDlpV2DeidentifyTemplate,
+    ),
+    snapshotDeidentifyTemplate: Schema.optional(
+      GooglePrivacyDlpV2DeidentifyTemplate,
+    ),
+  }).annotate({ identifier: "GooglePrivacyDlpV2RequestedDeidentifyOptions" });
 
 export interface GooglePrivacyDlpV2DeidentifyDataSourceDetails {
   /** Stats about the de-identification operation. */
@@ -5559,26 +4618,22 @@ export interface GooglePrivacyDlpV2DeidentifyDataSourceDetails {
   requestedOptions?: GooglePrivacyDlpV2RequestedDeidentifyOptions;
 }
 
-export const GooglePrivacyDlpV2DeidentifyDataSourceDetails: Schema.Schema<GooglePrivacyDlpV2DeidentifyDataSourceDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deidentifyStats: Schema.optional(
-        GooglePrivacyDlpV2DeidentifyDataSourceStats,
-      ),
-      requestedOptions: Schema.optional(
-        GooglePrivacyDlpV2RequestedDeidentifyOptions,
-      ),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2DeidentifyDataSourceDetails",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DeidentifyDataSourceDetails>;
+export const GooglePrivacyDlpV2DeidentifyDataSourceDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deidentifyStats: Schema.optional(
+      GooglePrivacyDlpV2DeidentifyDataSourceStats,
+    ),
+    requestedOptions: Schema.optional(
+      GooglePrivacyDlpV2RequestedDeidentifyOptions,
+    ),
+  }).annotate({ identifier: "GooglePrivacyDlpV2DeidentifyDataSourceDetails" });
 
 export interface GooglePrivacyDlpV2Manual {}
 
-export const GooglePrivacyDlpV2Manual: Schema.Schema<GooglePrivacyDlpV2Manual> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GooglePrivacyDlpV2Manual =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2Manual",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2Manual>;
+  });
 
 export interface GooglePrivacyDlpV2VersionDescription {
   /** Name of the version */
@@ -5587,15 +4642,11 @@ export interface GooglePrivacyDlpV2VersionDescription {
   description?: string;
 }
 
-export const GooglePrivacyDlpV2VersionDescription: Schema.Schema<GooglePrivacyDlpV2VersionDescription> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2VersionDescription",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2VersionDescription>;
+export const GooglePrivacyDlpV2VersionDescription =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    version: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2VersionDescription" });
 
 export interface GooglePrivacyDlpV2LocationSupport {
   /** The current scope for location on this feature. This may expand over time. */
@@ -5608,15 +4659,11 @@ export interface GooglePrivacyDlpV2LocationSupport {
   locations?: Array<string>;
 }
 
-export const GooglePrivacyDlpV2LocationSupport: Schema.Schema<GooglePrivacyDlpV2LocationSupport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      regionalizationScope: Schema.optional(Schema.String),
-      locations: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2LocationSupport",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2LocationSupport>;
+export const GooglePrivacyDlpV2LocationSupport =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    regionalizationScope: Schema.optional(Schema.String),
+    locations: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GooglePrivacyDlpV2LocationSupport" });
 
 export interface GooglePrivacyDlpV2InfoTypeCategory {
   /** The region or country that issued the ID or document represented by the infoType. */
@@ -5696,16 +4743,12 @@ export interface GooglePrivacyDlpV2InfoTypeCategory {
     | (string & {});
 }
 
-export const GooglePrivacyDlpV2InfoTypeCategory: Schema.Schema<GooglePrivacyDlpV2InfoTypeCategory> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locationCategory: Schema.optional(Schema.String),
-      industryCategory: Schema.optional(Schema.String),
-      typeCategory: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2InfoTypeCategory",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2InfoTypeCategory>;
+export const GooglePrivacyDlpV2InfoTypeCategory =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locationCategory: Schema.optional(Schema.String),
+    industryCategory: Schema.optional(Schema.String),
+    typeCategory: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2InfoTypeCategory" });
 
 export interface GooglePrivacyDlpV2InfoTypeDescription {
   /** A list of available versions for the infotype. */
@@ -5739,51 +4782,43 @@ export interface GooglePrivacyDlpV2InfoTypeDescription {
     | (string & {});
 }
 
-export const GooglePrivacyDlpV2InfoTypeDescription: Schema.Schema<GooglePrivacyDlpV2InfoTypeDescription> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      versions: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2VersionDescription),
-      ),
-      name: Schema.optional(Schema.String),
-      sensitivityScore: Schema.optional(GooglePrivacyDlpV2SensitivityScore),
-      supportedBy: Schema.optional(Schema.Array(Schema.String)),
-      example: Schema.optional(Schema.String),
-      locationSupport: Schema.optional(GooglePrivacyDlpV2LocationSupport),
-      description: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      specificInfoTypes: Schema.optional(Schema.Array(Schema.String)),
-      categories: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2InfoTypeCategory),
-      ),
-      launchStatus: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2InfoTypeDescription",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2InfoTypeDescription>;
+export const GooglePrivacyDlpV2InfoTypeDescription =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    versions: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2VersionDescription),
+    ),
+    name: Schema.optional(Schema.String),
+    sensitivityScore: Schema.optional(GooglePrivacyDlpV2SensitivityScore),
+    supportedBy: Schema.optional(Schema.Array(Schema.String)),
+    example: Schema.optional(Schema.String),
+    locationSupport: Schema.optional(GooglePrivacyDlpV2LocationSupport),
+    description: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    specificInfoTypes: Schema.optional(Schema.Array(Schema.String)),
+    categories: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2InfoTypeCategory),
+    ),
+    launchStatus: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2InfoTypeDescription" });
 
 export interface GooglePrivacyDlpV2ListInfoTypesResponse {
   /** Set of sensitive infoTypes. */
   infoTypes?: Array<GooglePrivacyDlpV2InfoTypeDescription>;
 }
 
-export const GooglePrivacyDlpV2ListInfoTypesResponse: Schema.Schema<GooglePrivacyDlpV2ListInfoTypesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      infoTypes: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2InfoTypeDescription),
-      ),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2ListInfoTypesResponse",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2ListInfoTypesResponse>;
+export const GooglePrivacyDlpV2ListInfoTypesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    infoTypes: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2InfoTypeDescription),
+    ),
+  }).annotate({ identifier: "GooglePrivacyDlpV2ListInfoTypesResponse" });
 
 export interface GooglePrivacyDlpV2CloudSqlIamCredential {}
 
-export const GooglePrivacyDlpV2CloudSqlIamCredential: Schema.Schema<GooglePrivacyDlpV2CloudSqlIamCredential> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GooglePrivacyDlpV2CloudSqlIamCredential =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2CloudSqlIamCredential",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2CloudSqlIamCredential>;
+  });
 
 export interface GooglePrivacyDlpV2SecretManagerCredential {
   /** Required. The username. */
@@ -5792,15 +4827,11 @@ export interface GooglePrivacyDlpV2SecretManagerCredential {
   passwordSecretVersionName?: string;
 }
 
-export const GooglePrivacyDlpV2SecretManagerCredential: Schema.Schema<GooglePrivacyDlpV2SecretManagerCredential> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      username: Schema.optional(Schema.String),
-      passwordSecretVersionName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2SecretManagerCredential",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2SecretManagerCredential>;
+export const GooglePrivacyDlpV2SecretManagerCredential =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    username: Schema.optional(Schema.String),
+    passwordSecretVersionName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2SecretManagerCredential" });
 
 export interface GooglePrivacyDlpV2CloudSqlProperties {
   /** Optional. Immutable. The Cloud SQL instance for which the connection is defined. Only one connection per instance is allowed. This can only be set at creation time, and cannot be updated. It is an error to use a connection_name from different project or region than the one that holds the connection. For example, a Connection resource for Cloud SQL connection_name `project-id:us-central1:sql-instance` must be created under the parent `projects/project-id/locations/us-central1` */
@@ -5819,20 +4850,16 @@ export interface GooglePrivacyDlpV2CloudSqlProperties {
     | (string & {});
 }
 
-export const GooglePrivacyDlpV2CloudSqlProperties: Schema.Schema<GooglePrivacyDlpV2CloudSqlProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      connectionName: Schema.optional(Schema.String),
-      cloudSqlIam: Schema.optional(GooglePrivacyDlpV2CloudSqlIamCredential),
-      maxConnections: Schema.optional(Schema.Number),
-      usernamePassword: Schema.optional(
-        GooglePrivacyDlpV2SecretManagerCredential,
-      ),
-      databaseEngine: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2CloudSqlProperties",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2CloudSqlProperties>;
+export const GooglePrivacyDlpV2CloudSqlProperties =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    connectionName: Schema.optional(Schema.String),
+    cloudSqlIam: Schema.optional(GooglePrivacyDlpV2CloudSqlIamCredential),
+    maxConnections: Schema.optional(Schema.Number),
+    usernamePassword: Schema.optional(
+      GooglePrivacyDlpV2SecretManagerCredential,
+    ),
+    databaseEngine: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2CloudSqlProperties" });
 
 export interface GooglePrivacyDlpV2Connection {
   /** Output only. Name of the connection: `projects/{project}/locations/{location}/connections/{name}`. */
@@ -5850,17 +4877,13 @@ export interface GooglePrivacyDlpV2Connection {
   errors?: Array<GooglePrivacyDlpV2Error>;
 }
 
-export const GooglePrivacyDlpV2Connection: Schema.Schema<GooglePrivacyDlpV2Connection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      cloudSql: Schema.optional(GooglePrivacyDlpV2CloudSqlProperties),
-      errors: Schema.optional(Schema.Array(GooglePrivacyDlpV2Error)),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2Connection",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2Connection>;
+export const GooglePrivacyDlpV2Connection =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    cloudSql: Schema.optional(GooglePrivacyDlpV2CloudSqlProperties),
+    errors: Schema.optional(Schema.Array(GooglePrivacyDlpV2Error)),
+  }).annotate({ identifier: "GooglePrivacyDlpV2Connection" });
 
 export interface GooglePrivacyDlpV2TransformationLocation {
   /** For infotype transformations, link to the corresponding findings ID so that location information does not need to be duplicated. Each findings ID correlates to an entry in the findings output table, this table only gets created when users specify to save findings (add the save findings action to the request). */
@@ -5876,32 +4899,24 @@ export interface GooglePrivacyDlpV2TransformationLocation {
   recordTransformation?: GooglePrivacyDlpV2RecordTransformation;
 }
 
-export const GooglePrivacyDlpV2TransformationLocation: Schema.Schema<GooglePrivacyDlpV2TransformationLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      findingId: Schema.optional(Schema.String),
-      containerType: Schema.optional(Schema.String),
-      recordTransformation: Schema.optional(
-        GooglePrivacyDlpV2RecordTransformation,
-      ),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2TransformationLocation",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2TransformationLocation>;
+export const GooglePrivacyDlpV2TransformationLocation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    findingId: Schema.optional(Schema.String),
+    containerType: Schema.optional(Schema.String),
+    recordTransformation: Schema.optional(
+      GooglePrivacyDlpV2RecordTransformation,
+    ),
+  }).annotate({ identifier: "GooglePrivacyDlpV2TransformationLocation" });
 
 export interface GooglePrivacyDlpV2SaveToGcsFindingsOutput {
   /** List of findings. */
   findings?: Array<GooglePrivacyDlpV2Finding>;
 }
 
-export const GooglePrivacyDlpV2SaveToGcsFindingsOutput: Schema.Schema<GooglePrivacyDlpV2SaveToGcsFindingsOutput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      findings: Schema.optional(Schema.Array(GooglePrivacyDlpV2Finding)),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2SaveToGcsFindingsOutput",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2SaveToGcsFindingsOutput>;
+export const GooglePrivacyDlpV2SaveToGcsFindingsOutput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    findings: Schema.optional(Schema.Array(GooglePrivacyDlpV2Finding)),
+  }).annotate({ identifier: "GooglePrivacyDlpV2SaveToGcsFindingsOutput" });
 
 export interface GooglePrivacyDlpV2ListDeidentifyTemplatesResponse {
   /** List of deidentify templates, up to page_size in ListDeidentifyTemplatesRequest. */
@@ -5910,31 +4925,25 @@ export interface GooglePrivacyDlpV2ListDeidentifyTemplatesResponse {
   nextPageToken?: string;
 }
 
-export const GooglePrivacyDlpV2ListDeidentifyTemplatesResponse: Schema.Schema<GooglePrivacyDlpV2ListDeidentifyTemplatesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deidentifyTemplates: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2DeidentifyTemplate),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GooglePrivacyDlpV2ListDeidentifyTemplatesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deidentifyTemplates: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2DeidentifyTemplate),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GooglePrivacyDlpV2ListDeidentifyTemplatesResponse",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2ListDeidentifyTemplatesResponse>;
+  });
 
 export interface GooglePrivacyDlpV2CloudStorageFileSet {
   /** The url, in the format `gs:///`. Trailing wildcard in the path is allowed. */
   url?: string;
 }
 
-export const GooglePrivacyDlpV2CloudStorageFileSet: Schema.Schema<GooglePrivacyDlpV2CloudStorageFileSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      url: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2CloudStorageFileSet",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2CloudStorageFileSet>;
+export const GooglePrivacyDlpV2CloudStorageFileSet =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    url: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2CloudStorageFileSet" });
 
 export interface GooglePrivacyDlpV2BigQueryField {
   /** Source table of the field. */
@@ -5943,15 +4952,11 @@ export interface GooglePrivacyDlpV2BigQueryField {
   field?: GooglePrivacyDlpV2FieldId;
 }
 
-export const GooglePrivacyDlpV2BigQueryField: Schema.Schema<GooglePrivacyDlpV2BigQueryField> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      table: Schema.optional(GooglePrivacyDlpV2BigQueryTable),
-      field: Schema.optional(GooglePrivacyDlpV2FieldId),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2BigQueryField",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2BigQueryField>;
+export const GooglePrivacyDlpV2BigQueryField =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    table: Schema.optional(GooglePrivacyDlpV2BigQueryTable),
+    field: Schema.optional(GooglePrivacyDlpV2FieldId),
+  }).annotate({ identifier: "GooglePrivacyDlpV2BigQueryField" });
 
 export interface GooglePrivacyDlpV2LargeCustomDictionaryConfig {
   /** Location to store dictionary artifacts in Cloud Storage. These files will only be accessible by project owners and the DLP API. If any of these artifacts are modified, the dictionary is considered invalid and can no longer be used. */
@@ -5962,34 +4967,24 @@ export interface GooglePrivacyDlpV2LargeCustomDictionaryConfig {
   bigQueryField?: GooglePrivacyDlpV2BigQueryField;
 }
 
-export const GooglePrivacyDlpV2LargeCustomDictionaryConfig: Schema.Schema<GooglePrivacyDlpV2LargeCustomDictionaryConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      outputPath: Schema.optional(GooglePrivacyDlpV2CloudStoragePath),
-      cloudStorageFileSet: Schema.optional(
-        GooglePrivacyDlpV2CloudStorageFileSet,
-      ),
-      bigQueryField: Schema.optional(GooglePrivacyDlpV2BigQueryField),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2LargeCustomDictionaryConfig",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2LargeCustomDictionaryConfig>;
+export const GooglePrivacyDlpV2LargeCustomDictionaryConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    outputPath: Schema.optional(GooglePrivacyDlpV2CloudStoragePath),
+    cloudStorageFileSet: Schema.optional(GooglePrivacyDlpV2CloudStorageFileSet),
+    bigQueryField: Schema.optional(GooglePrivacyDlpV2BigQueryField),
+  }).annotate({ identifier: "GooglePrivacyDlpV2LargeCustomDictionaryConfig" });
 
 export interface GooglePrivacyDlpV2ActionDetails {
   /** Outcome of a de-identification action. */
   deidentifyDetails?: GooglePrivacyDlpV2DeidentifyDataSourceDetails;
 }
 
-export const GooglePrivacyDlpV2ActionDetails: Schema.Schema<GooglePrivacyDlpV2ActionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deidentifyDetails: Schema.optional(
-        GooglePrivacyDlpV2DeidentifyDataSourceDetails,
-      ),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2ActionDetails",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2ActionDetails>;
+export const GooglePrivacyDlpV2ActionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deidentifyDetails: Schema.optional(
+      GooglePrivacyDlpV2DeidentifyDataSourceDetails,
+    ),
+  }).annotate({ identifier: "GooglePrivacyDlpV2ActionDetails" });
 
 export interface GooglePrivacyDlpV2InspectTemplate {
   /** Output only. The creation timestamp of an inspectTemplate. */
@@ -6006,19 +5001,15 @@ export interface GooglePrivacyDlpV2InspectTemplate {
   inspectConfig?: GooglePrivacyDlpV2InspectConfig;
 }
 
-export const GooglePrivacyDlpV2InspectTemplate: Schema.Schema<GooglePrivacyDlpV2InspectTemplate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      inspectConfig: Schema.optional(GooglePrivacyDlpV2InspectConfig),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2InspectTemplate",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2InspectTemplate>;
+export const GooglePrivacyDlpV2InspectTemplate =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    inspectConfig: Schema.optional(GooglePrivacyDlpV2InspectConfig),
+  }).annotate({ identifier: "GooglePrivacyDlpV2InspectTemplate" });
 
 export interface GooglePrivacyDlpV2DeidentifyContentResponse {
   /** The de-identified item. */
@@ -6027,15 +5018,11 @@ export interface GooglePrivacyDlpV2DeidentifyContentResponse {
   overview?: GooglePrivacyDlpV2TransformationOverview;
 }
 
-export const GooglePrivacyDlpV2DeidentifyContentResponse: Schema.Schema<GooglePrivacyDlpV2DeidentifyContentResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      item: Schema.optional(GooglePrivacyDlpV2ContentItem),
-      overview: Schema.optional(GooglePrivacyDlpV2TransformationOverview),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2DeidentifyContentResponse",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DeidentifyContentResponse>;
+export const GooglePrivacyDlpV2DeidentifyContentResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    item: Schema.optional(GooglePrivacyDlpV2ContentItem),
+    overview: Schema.optional(GooglePrivacyDlpV2TransformationOverview),
+  }).annotate({ identifier: "GooglePrivacyDlpV2DeidentifyContentResponse" });
 
 export interface GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest {
   /** Mask to control which fields get updated. */
@@ -6044,15 +5031,13 @@ export interface GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest {
   deidentifyTemplate?: GooglePrivacyDlpV2DeidentifyTemplate;
 }
 
-export const GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest: Schema.Schema<GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateMask: Schema.optional(Schema.String),
-      deidentifyTemplate: Schema.optional(GooglePrivacyDlpV2DeidentifyTemplate),
-    }),
-  ).annotate({
+export const GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateMask: Schema.optional(Schema.String),
+    deidentifyTemplate: Schema.optional(GooglePrivacyDlpV2DeidentifyTemplate),
+  }).annotate({
     identifier: "GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2UpdateDeidentifyTemplateRequest>;
+  });
 
 export interface GooglePrivacyDlpV2KMapEstimationQuasiIdValues {
   /** The quasi-identifier values. */
@@ -6061,15 +5046,11 @@ export interface GooglePrivacyDlpV2KMapEstimationQuasiIdValues {
   estimatedAnonymity?: string;
 }
 
-export const GooglePrivacyDlpV2KMapEstimationQuasiIdValues: Schema.Schema<GooglePrivacyDlpV2KMapEstimationQuasiIdValues> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      quasiIdsValues: Schema.optional(Schema.Array(GooglePrivacyDlpV2Value)),
-      estimatedAnonymity: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2KMapEstimationQuasiIdValues",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2KMapEstimationQuasiIdValues>;
+export const GooglePrivacyDlpV2KMapEstimationQuasiIdValues =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    quasiIdsValues: Schema.optional(Schema.Array(GooglePrivacyDlpV2Value)),
+    estimatedAnonymity: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2KMapEstimationQuasiIdValues" });
 
 export interface GooglePrivacyDlpV2KMapEstimationHistogramBucket {
   /** Sample of quasi-identifier tuple values in this bucket. The total number of classes returned per bucket is capped at 20. */
@@ -6084,36 +5065,30 @@ export interface GooglePrivacyDlpV2KMapEstimationHistogramBucket {
   maxAnonymity?: string;
 }
 
-export const GooglePrivacyDlpV2KMapEstimationHistogramBucket: Schema.Schema<GooglePrivacyDlpV2KMapEstimationHistogramBucket> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bucketValues: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2KMapEstimationQuasiIdValues),
-      ),
-      minAnonymity: Schema.optional(Schema.String),
-      bucketValueCount: Schema.optional(Schema.String),
-      bucketSize: Schema.optional(Schema.String),
-      maxAnonymity: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GooglePrivacyDlpV2KMapEstimationHistogramBucket =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bucketValues: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2KMapEstimationQuasiIdValues),
+    ),
+    minAnonymity: Schema.optional(Schema.String),
+    bucketValueCount: Schema.optional(Schema.String),
+    bucketSize: Schema.optional(Schema.String),
+    maxAnonymity: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GooglePrivacyDlpV2KMapEstimationHistogramBucket",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2KMapEstimationHistogramBucket>;
+  });
 
 export interface GooglePrivacyDlpV2KMapEstimationResult {
   /** The intervals [min_anonymity, max_anonymity] do not overlap. If a value doesn't correspond to any such interval, the associated frequency is zero. For example, the following records: {min_anonymity: 1, max_anonymity: 1, frequency: 17} {min_anonymity: 2, max_anonymity: 3, frequency: 42} {min_anonymity: 5, max_anonymity: 10, frequency: 99} mean that there are no record with an estimated anonymity of 4, 5, or larger than 10. */
   kMapEstimationHistogram?: Array<GooglePrivacyDlpV2KMapEstimationHistogramBucket>;
 }
 
-export const GooglePrivacyDlpV2KMapEstimationResult: Schema.Schema<GooglePrivacyDlpV2KMapEstimationResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kMapEstimationHistogram: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2KMapEstimationHistogramBucket),
-      ),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2KMapEstimationResult",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2KMapEstimationResult>;
+export const GooglePrivacyDlpV2KMapEstimationResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kMapEstimationHistogram: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2KMapEstimationHistogramBucket),
+    ),
+  }).annotate({ identifier: "GooglePrivacyDlpV2KMapEstimationResult" });
 
 export interface GooglePrivacyDlpV2ValueFrequency {
   /** How many times the value is contained in the field. */
@@ -6122,15 +5097,11 @@ export interface GooglePrivacyDlpV2ValueFrequency {
   value?: GooglePrivacyDlpV2Value;
 }
 
-export const GooglePrivacyDlpV2ValueFrequency: Schema.Schema<GooglePrivacyDlpV2ValueFrequency> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      count: Schema.optional(Schema.String),
-      value: Schema.optional(GooglePrivacyDlpV2Value),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2ValueFrequency",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2ValueFrequency>;
+export const GooglePrivacyDlpV2ValueFrequency =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    count: Schema.optional(Schema.String),
+    value: Schema.optional(GooglePrivacyDlpV2Value),
+  }).annotate({ identifier: "GooglePrivacyDlpV2ValueFrequency" });
 
 export interface GooglePrivacyDlpV2LDiversityEquivalenceClass {
   /** Size of the k-anonymity equivalence class. */
@@ -6143,19 +5114,15 @@ export interface GooglePrivacyDlpV2LDiversityEquivalenceClass {
   quasiIdsValues?: Array<GooglePrivacyDlpV2Value>;
 }
 
-export const GooglePrivacyDlpV2LDiversityEquivalenceClass: Schema.Schema<GooglePrivacyDlpV2LDiversityEquivalenceClass> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      equivalenceClassSize: Schema.optional(Schema.String),
-      numDistinctSensitiveValues: Schema.optional(Schema.String),
-      topSensitiveValues: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2ValueFrequency),
-      ),
-      quasiIdsValues: Schema.optional(Schema.Array(GooglePrivacyDlpV2Value)),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2LDiversityEquivalenceClass",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2LDiversityEquivalenceClass>;
+export const GooglePrivacyDlpV2LDiversityEquivalenceClass =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    equivalenceClassSize: Schema.optional(Schema.String),
+    numDistinctSensitiveValues: Schema.optional(Schema.String),
+    topSensitiveValues: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2ValueFrequency),
+    ),
+    quasiIdsValues: Schema.optional(Schema.Array(GooglePrivacyDlpV2Value)),
+  }).annotate({ identifier: "GooglePrivacyDlpV2LDiversityEquivalenceClass" });
 
 export interface GooglePrivacyDlpV2LDiversityHistogramBucket {
   /** Sample of equivalence classes in this bucket. The total number of classes returned per bucket is capped at 20. */
@@ -6170,64 +5137,50 @@ export interface GooglePrivacyDlpV2LDiversityHistogramBucket {
   bucketSize?: string;
 }
 
-export const GooglePrivacyDlpV2LDiversityHistogramBucket: Schema.Schema<GooglePrivacyDlpV2LDiversityHistogramBucket> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bucketValues: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2LDiversityEquivalenceClass),
-      ),
-      sensitiveValueFrequencyLowerBound: Schema.optional(Schema.String),
-      bucketValueCount: Schema.optional(Schema.String),
-      sensitiveValueFrequencyUpperBound: Schema.optional(Schema.String),
-      bucketSize: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2LDiversityHistogramBucket",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2LDiversityHistogramBucket>;
+export const GooglePrivacyDlpV2LDiversityHistogramBucket =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bucketValues: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2LDiversityEquivalenceClass),
+    ),
+    sensitiveValueFrequencyLowerBound: Schema.optional(Schema.String),
+    bucketValueCount: Schema.optional(Schema.String),
+    sensitiveValueFrequencyUpperBound: Schema.optional(Schema.String),
+    bucketSize: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2LDiversityHistogramBucket" });
 
 export interface GooglePrivacyDlpV2LargeCustomDictionaryStats {
   /** Approximate number of distinct phrases in the dictionary. */
   approxNumPhrases?: string;
 }
 
-export const GooglePrivacyDlpV2LargeCustomDictionaryStats: Schema.Schema<GooglePrivacyDlpV2LargeCustomDictionaryStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      approxNumPhrases: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2LargeCustomDictionaryStats",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2LargeCustomDictionaryStats>;
+export const GooglePrivacyDlpV2LargeCustomDictionaryStats =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    approxNumPhrases: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2LargeCustomDictionaryStats" });
 
 export interface GooglePrivacyDlpV2StoredInfoTypeStats {
   /** StoredInfoType where findings are defined by a dictionary of phrases. */
   largeCustomDictionary?: GooglePrivacyDlpV2LargeCustomDictionaryStats;
 }
 
-export const GooglePrivacyDlpV2StoredInfoTypeStats: Schema.Schema<GooglePrivacyDlpV2StoredInfoTypeStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      largeCustomDictionary: Schema.optional(
-        GooglePrivacyDlpV2LargeCustomDictionaryStats,
-      ),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2StoredInfoTypeStats",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2StoredInfoTypeStats>;
+export const GooglePrivacyDlpV2StoredInfoTypeStats =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    largeCustomDictionary: Schema.optional(
+      GooglePrivacyDlpV2LargeCustomDictionaryStats,
+    ),
+  }).annotate({ identifier: "GooglePrivacyDlpV2StoredInfoTypeStats" });
 
 export interface GooglePrivacyDlpV2DataProfileFindingRecordLocation {
   /** Field ID of the column containing the finding. */
   field?: GooglePrivacyDlpV2FieldId;
 }
 
-export const GooglePrivacyDlpV2DataProfileFindingRecordLocation: Schema.Schema<GooglePrivacyDlpV2DataProfileFindingRecordLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      field: Schema.optional(GooglePrivacyDlpV2FieldId),
-    }),
-  ).annotate({
+export const GooglePrivacyDlpV2DataProfileFindingRecordLocation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    field: Schema.optional(GooglePrivacyDlpV2FieldId),
+  }).annotate({
     identifier: "GooglePrivacyDlpV2DataProfileFindingRecordLocation",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DataProfileFindingRecordLocation>;
+  });
 
 export interface GooglePrivacyDlpV2DataProfileFindingLocation {
   /** Name of the container where the finding is located. The top-level name is the source file name or table name. Names of some common storage containers are formatted as follows: * BigQuery tables: `{project_id}:{dataset_id}.{table_id}` * Cloud Storage files: `gs://{bucket}/{path}` */
@@ -6236,17 +5189,13 @@ export interface GooglePrivacyDlpV2DataProfileFindingLocation {
   dataProfileFindingRecordLocation?: GooglePrivacyDlpV2DataProfileFindingRecordLocation;
 }
 
-export const GooglePrivacyDlpV2DataProfileFindingLocation: Schema.Schema<GooglePrivacyDlpV2DataProfileFindingLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      containerName: Schema.optional(Schema.String),
-      dataProfileFindingRecordLocation: Schema.optional(
-        GooglePrivacyDlpV2DataProfileFindingRecordLocation,
-      ),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2DataProfileFindingLocation",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DataProfileFindingLocation>;
+export const GooglePrivacyDlpV2DataProfileFindingLocation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    containerName: Schema.optional(Schema.String),
+    dataProfileFindingRecordLocation: Schema.optional(
+      GooglePrivacyDlpV2DataProfileFindingRecordLocation,
+    ),
+  }).annotate({ identifier: "GooglePrivacyDlpV2DataProfileFindingLocation" });
 
 export interface GooglePrivacyDlpV2DataProfileFinding {
   /** Timestamp when the finding was detected. */
@@ -6276,23 +5225,19 @@ export interface GooglePrivacyDlpV2DataProfileFinding {
   location?: GooglePrivacyDlpV2DataProfileFindingLocation;
 }
 
-export const GooglePrivacyDlpV2DataProfileFinding: Schema.Schema<GooglePrivacyDlpV2DataProfileFinding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      timestamp: Schema.optional(Schema.String),
-      infotype: Schema.optional(GooglePrivacyDlpV2InfoType),
-      dataProfileResourceName: Schema.optional(Schema.String),
-      dataSourceType: Schema.optional(GooglePrivacyDlpV2DataSourceType),
-      quoteInfo: Schema.optional(GooglePrivacyDlpV2QuoteInfo),
-      fullResourceName: Schema.optional(Schema.String),
-      findingId: Schema.optional(Schema.String),
-      resourceVisibility: Schema.optional(Schema.String),
-      quote: Schema.optional(Schema.String),
-      location: Schema.optional(GooglePrivacyDlpV2DataProfileFindingLocation),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2DataProfileFinding",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DataProfileFinding>;
+export const GooglePrivacyDlpV2DataProfileFinding =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    timestamp: Schema.optional(Schema.String),
+    infotype: Schema.optional(GooglePrivacyDlpV2InfoType),
+    dataProfileResourceName: Schema.optional(Schema.String),
+    dataSourceType: Schema.optional(GooglePrivacyDlpV2DataSourceType),
+    quoteInfo: Schema.optional(GooglePrivacyDlpV2QuoteInfo),
+    fullResourceName: Schema.optional(Schema.String),
+    findingId: Schema.optional(Schema.String),
+    resourceVisibility: Schema.optional(Schema.String),
+    quote: Schema.optional(Schema.String),
+    location: Schema.optional(GooglePrivacyDlpV2DataProfileFindingLocation),
+  }).annotate({ identifier: "GooglePrivacyDlpV2DataProfileFinding" });
 
 export interface GooglePrivacyDlpV2UpdateConnectionRequest {
   /** Optional. Mask to control which fields get updated. */
@@ -6301,22 +5246,18 @@ export interface GooglePrivacyDlpV2UpdateConnectionRequest {
   connection?: GooglePrivacyDlpV2Connection;
 }
 
-export const GooglePrivacyDlpV2UpdateConnectionRequest: Schema.Schema<GooglePrivacyDlpV2UpdateConnectionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateMask: Schema.optional(Schema.String),
-      connection: Schema.optional(GooglePrivacyDlpV2Connection),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2UpdateConnectionRequest",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2UpdateConnectionRequest>;
+export const GooglePrivacyDlpV2UpdateConnectionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateMask: Schema.optional(Schema.String),
+    connection: Schema.optional(GooglePrivacyDlpV2Connection),
+  }).annotate({ identifier: "GooglePrivacyDlpV2UpdateConnectionRequest" });
 
 export interface GooglePrivacyDlpV2HybridInspectResponse {}
 
-export const GooglePrivacyDlpV2HybridInspectResponse: Schema.Schema<GooglePrivacyDlpV2HybridInspectResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GooglePrivacyDlpV2HybridInspectResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2HybridInspectResponse",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2HybridInspectResponse>;
+  });
 
 export interface GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket {
   /** Sample of quasi-identifier tuple values in this bucket. The total number of classes returned per bucket is capped at 20. */
@@ -6331,20 +5272,18 @@ export interface GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket {
   minProbability?: number;
 }
 
-export const GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket: Schema.Schema<GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bucketValues: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues),
-      ),
-      maxProbability: Schema.optional(Schema.Number),
-      bucketValueCount: Schema.optional(Schema.String),
-      bucketSize: Schema.optional(Schema.String),
-      minProbability: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bucketValues: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2DeltaPresenceEstimationQuasiIdValues),
+    ),
+    maxProbability: Schema.optional(Schema.Number),
+    bucketValueCount: Schema.optional(Schema.String),
+    bucketSize: Schema.optional(Schema.String),
+    minProbability: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket>;
+  });
 
 export interface GooglePrivacyDlpV2HybridFindingDetails {
   /** Offset of the row for tables. Populate if the row(s) being scanned are part of a bigger dataset and you want to keep track of their absolute position. */
@@ -6359,18 +5298,14 @@ export interface GooglePrivacyDlpV2HybridFindingDetails {
   tableOptions?: GooglePrivacyDlpV2TableOptions;
 }
 
-export const GooglePrivacyDlpV2HybridFindingDetails: Schema.Schema<GooglePrivacyDlpV2HybridFindingDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rowOffset: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      containerDetails: Schema.optional(GooglePrivacyDlpV2Container),
-      fileOffset: Schema.optional(Schema.String),
-      tableOptions: Schema.optional(GooglePrivacyDlpV2TableOptions),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2HybridFindingDetails",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2HybridFindingDetails>;
+export const GooglePrivacyDlpV2HybridFindingDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rowOffset: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    containerDetails: Schema.optional(GooglePrivacyDlpV2Container),
+    fileOffset: Schema.optional(Schema.String),
+    tableOptions: Schema.optional(GooglePrivacyDlpV2TableOptions),
+  }).annotate({ identifier: "GooglePrivacyDlpV2HybridFindingDetails" });
 
 export interface GooglePrivacyDlpV2HybridContentItem {
   /** The item to inspect. */
@@ -6379,29 +5314,23 @@ export interface GooglePrivacyDlpV2HybridContentItem {
   findingDetails?: GooglePrivacyDlpV2HybridFindingDetails;
 }
 
-export const GooglePrivacyDlpV2HybridContentItem: Schema.Schema<GooglePrivacyDlpV2HybridContentItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      item: Schema.optional(GooglePrivacyDlpV2ContentItem),
-      findingDetails: Schema.optional(GooglePrivacyDlpV2HybridFindingDetails),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2HybridContentItem",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2HybridContentItem>;
+export const GooglePrivacyDlpV2HybridContentItem =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    item: Schema.optional(GooglePrivacyDlpV2ContentItem),
+    findingDetails: Schema.optional(GooglePrivacyDlpV2HybridFindingDetails),
+  }).annotate({ identifier: "GooglePrivacyDlpV2HybridContentItem" });
 
 export interface GooglePrivacyDlpV2HybridInspectJobTriggerRequest {
   /** The item to inspect. */
   hybridItem?: GooglePrivacyDlpV2HybridContentItem;
 }
 
-export const GooglePrivacyDlpV2HybridInspectJobTriggerRequest: Schema.Schema<GooglePrivacyDlpV2HybridInspectJobTriggerRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hybridItem: Schema.optional(GooglePrivacyDlpV2HybridContentItem),
-    }),
-  ).annotate({
+export const GooglePrivacyDlpV2HybridInspectJobTriggerRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    hybridItem: Schema.optional(GooglePrivacyDlpV2HybridContentItem),
+  }).annotate({
     identifier: "GooglePrivacyDlpV2HybridInspectJobTriggerRequest",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2HybridInspectJobTriggerRequest>;
+  });
 
 export interface GooglePrivacyDlpV2InfoTypeStats {
   /** Number of findings for this infoType. */
@@ -6410,15 +5339,11 @@ export interface GooglePrivacyDlpV2InfoTypeStats {
   infoType?: GooglePrivacyDlpV2InfoType;
 }
 
-export const GooglePrivacyDlpV2InfoTypeStats: Schema.Schema<GooglePrivacyDlpV2InfoTypeStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      count: Schema.optional(Schema.String),
-      infoType: Schema.optional(GooglePrivacyDlpV2InfoType),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2InfoTypeStats",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2InfoTypeStats>;
+export const GooglePrivacyDlpV2InfoTypeStats =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    count: Schema.optional(Schema.String),
+    infoType: Schema.optional(GooglePrivacyDlpV2InfoType),
+  }).annotate({ identifier: "GooglePrivacyDlpV2InfoTypeStats" });
 
 export interface GooglePrivacyDlpV2HybridInspectStatistics {
   /** The number of hybrid inspection requests processed within this job. */
@@ -6429,16 +5354,12 @@ export interface GooglePrivacyDlpV2HybridInspectStatistics {
   pendingCount?: string;
 }
 
-export const GooglePrivacyDlpV2HybridInspectStatistics: Schema.Schema<GooglePrivacyDlpV2HybridInspectStatistics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      processedCount: Schema.optional(Schema.String),
-      abortedCount: Schema.optional(Schema.String),
-      pendingCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2HybridInspectStatistics",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2HybridInspectStatistics>;
+export const GooglePrivacyDlpV2HybridInspectStatistics =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    processedCount: Schema.optional(Schema.String),
+    abortedCount: Schema.optional(Schema.String),
+    pendingCount: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2HybridInspectStatistics" });
 
 export interface GooglePrivacyDlpV2Result {
   /** Number of rows scanned after sampling and time filtering (applicable for row based stores such as BigQuery). */
@@ -6453,20 +5374,16 @@ export interface GooglePrivacyDlpV2Result {
   hybridStats?: GooglePrivacyDlpV2HybridInspectStatistics;
 }
 
-export const GooglePrivacyDlpV2Result: Schema.Schema<GooglePrivacyDlpV2Result> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      numRowsProcessed: Schema.optional(Schema.String),
-      processedBytes: Schema.optional(Schema.String),
-      infoTypeStats: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2InfoTypeStats),
-      ),
-      totalEstimatedBytes: Schema.optional(Schema.String),
-      hybridStats: Schema.optional(GooglePrivacyDlpV2HybridInspectStatistics),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2Result",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2Result>;
+export const GooglePrivacyDlpV2Result =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    numRowsProcessed: Schema.optional(Schema.String),
+    processedBytes: Schema.optional(Schema.String),
+    infoTypeStats: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2InfoTypeStats),
+    ),
+    totalEstimatedBytes: Schema.optional(Schema.String),
+    hybridStats: Schema.optional(GooglePrivacyDlpV2HybridInspectStatistics),
+  }).annotate({ identifier: "GooglePrivacyDlpV2Result" });
 
 export interface GooglePrivacyDlpV2RequestedOptions {
   /** If run with an InspectTemplate, a snapshot of its state at the time of this run. */
@@ -6475,17 +5392,11 @@ export interface GooglePrivacyDlpV2RequestedOptions {
   jobConfig?: GooglePrivacyDlpV2InspectJobConfig;
 }
 
-export const GooglePrivacyDlpV2RequestedOptions: Schema.Schema<GooglePrivacyDlpV2RequestedOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      snapshotInspectTemplate: Schema.optional(
-        GooglePrivacyDlpV2InspectTemplate,
-      ),
-      jobConfig: Schema.optional(GooglePrivacyDlpV2InspectJobConfig),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2RequestedOptions",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2RequestedOptions>;
+export const GooglePrivacyDlpV2RequestedOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    snapshotInspectTemplate: Schema.optional(GooglePrivacyDlpV2InspectTemplate),
+    jobConfig: Schema.optional(GooglePrivacyDlpV2InspectJobConfig),
+  }).annotate({ identifier: "GooglePrivacyDlpV2RequestedOptions" });
 
 export interface GooglePrivacyDlpV2InspectDataSourceDetails {
   /** A summary of the outcome of this inspection job. */
@@ -6494,15 +5405,11 @@ export interface GooglePrivacyDlpV2InspectDataSourceDetails {
   requestedOptions?: GooglePrivacyDlpV2RequestedOptions;
 }
 
-export const GooglePrivacyDlpV2InspectDataSourceDetails: Schema.Schema<GooglePrivacyDlpV2InspectDataSourceDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      result: Schema.optional(GooglePrivacyDlpV2Result),
-      requestedOptions: Schema.optional(GooglePrivacyDlpV2RequestedOptions),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2InspectDataSourceDetails",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2InspectDataSourceDetails>;
+export const GooglePrivacyDlpV2InspectDataSourceDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    result: Schema.optional(GooglePrivacyDlpV2Result),
+    requestedOptions: Schema.optional(GooglePrivacyDlpV2RequestedOptions),
+  }).annotate({ identifier: "GooglePrivacyDlpV2InspectDataSourceDetails" });
 
 export interface GooglePrivacyDlpV2StoredInfoTypeConfig {
   /** Display name of the StoredInfoType (max 256 characters). */
@@ -6517,20 +5424,16 @@ export interface GooglePrivacyDlpV2StoredInfoTypeConfig {
   regex?: GooglePrivacyDlpV2Regex;
 }
 
-export const GooglePrivacyDlpV2StoredInfoTypeConfig: Schema.Schema<GooglePrivacyDlpV2StoredInfoTypeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      largeCustomDictionary: Schema.optional(
-        GooglePrivacyDlpV2LargeCustomDictionaryConfig,
-      ),
-      dictionary: Schema.optional(GooglePrivacyDlpV2Dictionary),
-      regex: Schema.optional(GooglePrivacyDlpV2Regex),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2StoredInfoTypeConfig",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2StoredInfoTypeConfig>;
+export const GooglePrivacyDlpV2StoredInfoTypeConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    largeCustomDictionary: Schema.optional(
+      GooglePrivacyDlpV2LargeCustomDictionaryConfig,
+    ),
+    dictionary: Schema.optional(GooglePrivacyDlpV2Dictionary),
+    regex: Schema.optional(GooglePrivacyDlpV2Regex),
+  }).annotate({ identifier: "GooglePrivacyDlpV2StoredInfoTypeConfig" });
 
 export interface GooglePrivacyDlpV2StoredInfoTypeVersion {
   /** Create timestamp of the version. Read-only, determined by the system when the version is created. */
@@ -6551,34 +5454,26 @@ export interface GooglePrivacyDlpV2StoredInfoTypeVersion {
   errors?: Array<GooglePrivacyDlpV2Error>;
 }
 
-export const GooglePrivacyDlpV2StoredInfoTypeVersion: Schema.Schema<GooglePrivacyDlpV2StoredInfoTypeVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      stats: Schema.optional(GooglePrivacyDlpV2StoredInfoTypeStats),
-      config: Schema.optional(GooglePrivacyDlpV2StoredInfoTypeConfig),
-      state: Schema.optional(Schema.String),
-      errors: Schema.optional(Schema.Array(GooglePrivacyDlpV2Error)),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2StoredInfoTypeVersion",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2StoredInfoTypeVersion>;
+export const GooglePrivacyDlpV2StoredInfoTypeVersion =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    stats: Schema.optional(GooglePrivacyDlpV2StoredInfoTypeStats),
+    config: Schema.optional(GooglePrivacyDlpV2StoredInfoTypeConfig),
+    state: Schema.optional(Schema.String),
+    errors: Schema.optional(Schema.Array(GooglePrivacyDlpV2Error)),
+  }).annotate({ identifier: "GooglePrivacyDlpV2StoredInfoTypeVersion" });
 
 export interface GooglePrivacyDlpV2LDiversityResult {
   /** Histogram of l-diversity equivalence class sensitive value frequencies. */
   sensitiveValueFrequencyHistogramBuckets?: Array<GooglePrivacyDlpV2LDiversityHistogramBucket>;
 }
 
-export const GooglePrivacyDlpV2LDiversityResult: Schema.Schema<GooglePrivacyDlpV2LDiversityResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sensitiveValueFrequencyHistogramBuckets: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2LDiversityHistogramBucket),
-      ),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2LDiversityResult",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2LDiversityResult>;
+export const GooglePrivacyDlpV2LDiversityResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sensitiveValueFrequencyHistogramBuckets: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2LDiversityHistogramBucket),
+    ),
+  }).annotate({ identifier: "GooglePrivacyDlpV2LDiversityResult" });
 
 export interface GooglePrivacyDlpV2UpdateInspectTemplateRequest {
   /** Mask to control which fields get updated. */
@@ -6587,15 +5482,11 @@ export interface GooglePrivacyDlpV2UpdateInspectTemplateRequest {
   inspectTemplate?: GooglePrivacyDlpV2InspectTemplate;
 }
 
-export const GooglePrivacyDlpV2UpdateInspectTemplateRequest: Schema.Schema<GooglePrivacyDlpV2UpdateInspectTemplateRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateMask: Schema.optional(Schema.String),
-      inspectTemplate: Schema.optional(GooglePrivacyDlpV2InspectTemplate),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2UpdateInspectTemplateRequest",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2UpdateInspectTemplateRequest>;
+export const GooglePrivacyDlpV2UpdateInspectTemplateRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateMask: Schema.optional(Schema.String),
+    inspectTemplate: Schema.optional(GooglePrivacyDlpV2InspectTemplate),
+  }).annotate({ identifier: "GooglePrivacyDlpV2UpdateInspectTemplateRequest" });
 
 export interface GooglePrivacyDlpV2CreateInspectTemplateRequest {
   /** Deprecated. This field has no effect. */
@@ -6606,30 +5497,22 @@ export interface GooglePrivacyDlpV2CreateInspectTemplateRequest {
   templateId?: string;
 }
 
-export const GooglePrivacyDlpV2CreateInspectTemplateRequest: Schema.Schema<GooglePrivacyDlpV2CreateInspectTemplateRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locationId: Schema.optional(Schema.String),
-      inspectTemplate: Schema.optional(GooglePrivacyDlpV2InspectTemplate),
-      templateId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2CreateInspectTemplateRequest",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2CreateInspectTemplateRequest>;
+export const GooglePrivacyDlpV2CreateInspectTemplateRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locationId: Schema.optional(Schema.String),
+    inspectTemplate: Schema.optional(GooglePrivacyDlpV2InspectTemplate),
+    templateId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2CreateInspectTemplateRequest" });
 
 export interface GooglePrivacyDlpV2HybridInspectDlpJobRequest {
   /** The item to inspect. */
   hybridItem?: GooglePrivacyDlpV2HybridContentItem;
 }
 
-export const GooglePrivacyDlpV2HybridInspectDlpJobRequest: Schema.Schema<GooglePrivacyDlpV2HybridInspectDlpJobRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hybridItem: Schema.optional(GooglePrivacyDlpV2HybridContentItem),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2HybridInspectDlpJobRequest",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2HybridInspectDlpJobRequest>;
+export const GooglePrivacyDlpV2HybridInspectDlpJobRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    hybridItem: Schema.optional(GooglePrivacyDlpV2HybridContentItem),
+  }).annotate({ identifier: "GooglePrivacyDlpV2HybridInspectDlpJobRequest" });
 
 export interface GooglePrivacyDlpV2InspectContentRequest {
   /** Deprecated. This field has no effect. */
@@ -6642,17 +5525,13 @@ export interface GooglePrivacyDlpV2InspectContentRequest {
   inspectConfig?: GooglePrivacyDlpV2InspectConfig;
 }
 
-export const GooglePrivacyDlpV2InspectContentRequest: Schema.Schema<GooglePrivacyDlpV2InspectContentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locationId: Schema.optional(Schema.String),
-      item: Schema.optional(GooglePrivacyDlpV2ContentItem),
-      inspectTemplateName: Schema.optional(Schema.String),
-      inspectConfig: Schema.optional(GooglePrivacyDlpV2InspectConfig),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2InspectContentRequest",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2InspectContentRequest>;
+export const GooglePrivacyDlpV2InspectContentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locationId: Schema.optional(Schema.String),
+    item: Schema.optional(GooglePrivacyDlpV2ContentItem),
+    inspectTemplateName: Schema.optional(Schema.String),
+    inspectConfig: Schema.optional(GooglePrivacyDlpV2InspectConfig),
+  }).annotate({ identifier: "GooglePrivacyDlpV2InspectContentRequest" });
 
 export interface GooglePrivacyDlpV2ImageRedactionConfig {
   /** Only one per info_type should be provided per request. If not specified, and redact_all_text is false, the DLP API will redact all text that it matches against all info_types that are found, but not specified in another ImageRedactionConfig. */
@@ -6663,16 +5542,12 @@ export interface GooglePrivacyDlpV2ImageRedactionConfig {
   redactionColor?: GooglePrivacyDlpV2Color;
 }
 
-export const GooglePrivacyDlpV2ImageRedactionConfig: Schema.Schema<GooglePrivacyDlpV2ImageRedactionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      infoType: Schema.optional(GooglePrivacyDlpV2InfoType),
-      redactAllText: Schema.optional(Schema.Boolean),
-      redactionColor: Schema.optional(GooglePrivacyDlpV2Color),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2ImageRedactionConfig",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2ImageRedactionConfig>;
+export const GooglePrivacyDlpV2ImageRedactionConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    infoType: Schema.optional(GooglePrivacyDlpV2InfoType),
+    redactAllText: Schema.optional(Schema.Boolean),
+    redactionColor: Schema.optional(GooglePrivacyDlpV2Color),
+  }).annotate({ identifier: "GooglePrivacyDlpV2ImageRedactionConfig" });
 
 export interface GooglePrivacyDlpV2StoredInfoType {
   /** Pending versions of the stored info type. Empty if no versions are pending. */
@@ -6683,18 +5558,14 @@ export interface GooglePrivacyDlpV2StoredInfoType {
   currentVersion?: GooglePrivacyDlpV2StoredInfoTypeVersion;
 }
 
-export const GooglePrivacyDlpV2StoredInfoType: Schema.Schema<GooglePrivacyDlpV2StoredInfoType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pendingVersions: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2StoredInfoTypeVersion),
-      ),
-      name: Schema.optional(Schema.String),
-      currentVersion: Schema.optional(GooglePrivacyDlpV2StoredInfoTypeVersion),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2StoredInfoType",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2StoredInfoType>;
+export const GooglePrivacyDlpV2StoredInfoType =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pendingVersions: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2StoredInfoTypeVersion),
+    ),
+    name: Schema.optional(Schema.String),
+    currentVersion: Schema.optional(GooglePrivacyDlpV2StoredInfoTypeVersion),
+  }).annotate({ identifier: "GooglePrivacyDlpV2StoredInfoType" });
 
 export interface GooglePrivacyDlpV2DataProfilePubSubMessage {
   /** If `DetailLevel` is `FILE_STORE_PROFILE` this will be fully populated. Otherwise, if `DetailLevel` is `RESOURCE_NAME`, then only `name` and `file_store_path` will be populated. */
@@ -6711,16 +5582,12 @@ export interface GooglePrivacyDlpV2DataProfilePubSubMessage {
   profile?: GooglePrivacyDlpV2TableDataProfile;
 }
 
-export const GooglePrivacyDlpV2DataProfilePubSubMessage: Schema.Schema<GooglePrivacyDlpV2DataProfilePubSubMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fileStoreProfile: Schema.optional(GooglePrivacyDlpV2FileStoreDataProfile),
-      event: Schema.optional(Schema.String),
-      profile: Schema.optional(GooglePrivacyDlpV2TableDataProfile),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2DataProfilePubSubMessage",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DataProfilePubSubMessage>;
+export const GooglePrivacyDlpV2DataProfilePubSubMessage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fileStoreProfile: Schema.optional(GooglePrivacyDlpV2FileStoreDataProfile),
+    event: Schema.optional(Schema.String),
+    profile: Schema.optional(GooglePrivacyDlpV2TableDataProfile),
+  }).annotate({ identifier: "GooglePrivacyDlpV2DataProfilePubSubMessage" });
 
 export interface GooglePrivacyDlpV2ListConnectionsResponse {
   /** List of connections. */
@@ -6729,29 +5596,21 @@ export interface GooglePrivacyDlpV2ListConnectionsResponse {
   nextPageToken?: string;
 }
 
-export const GooglePrivacyDlpV2ListConnectionsResponse: Schema.Schema<GooglePrivacyDlpV2ListConnectionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      connections: Schema.optional(Schema.Array(GooglePrivacyDlpV2Connection)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2ListConnectionsResponse",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2ListConnectionsResponse>;
+export const GooglePrivacyDlpV2ListConnectionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    connections: Schema.optional(Schema.Array(GooglePrivacyDlpV2Connection)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2ListConnectionsResponse" });
 
 export interface GooglePrivacyDlpV2Schedule {
   /** With this option a job is started on a regular periodic basis. For example: every day (86400 seconds). A scheduled start time will be skipped if the previous execution has not ended when its scheduled time occurs. This value must be set to a time duration greater than or equal to 1 day and can be no longer than 60 days. */
   recurrencePeriodDuration?: string;
 }
 
-export const GooglePrivacyDlpV2Schedule: Schema.Schema<GooglePrivacyDlpV2Schedule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      recurrencePeriodDuration: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2Schedule",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2Schedule>;
+export const GooglePrivacyDlpV2Schedule =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    recurrencePeriodDuration: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2Schedule" });
 
 export interface GooglePrivacyDlpV2Trigger {
   /** Create a job on a repeating basis based on the elapse of time. */
@@ -6760,15 +5619,11 @@ export interface GooglePrivacyDlpV2Trigger {
   manual?: GooglePrivacyDlpV2Manual;
 }
 
-export const GooglePrivacyDlpV2Trigger: Schema.Schema<GooglePrivacyDlpV2Trigger> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      schedule: Schema.optional(GooglePrivacyDlpV2Schedule),
-      manual: Schema.optional(GooglePrivacyDlpV2Manual),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2Trigger",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2Trigger>;
+export const GooglePrivacyDlpV2Trigger =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    schedule: Schema.optional(GooglePrivacyDlpV2Schedule),
+    manual: Schema.optional(GooglePrivacyDlpV2Manual),
+  }).annotate({ identifier: "GooglePrivacyDlpV2Trigger" });
 
 export interface GooglePrivacyDlpV2JobTrigger {
   /** Required. A status for this trigger. */
@@ -6798,23 +5653,19 @@ export interface GooglePrivacyDlpV2JobTrigger {
   updateTime?: string;
 }
 
-export const GooglePrivacyDlpV2JobTrigger: Schema.Schema<GooglePrivacyDlpV2JobTrigger> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      status: Schema.optional(Schema.String),
-      triggers: Schema.optional(Schema.Array(GooglePrivacyDlpV2Trigger)),
-      createTime: Schema.optional(Schema.String),
-      errors: Schema.optional(Schema.Array(GooglePrivacyDlpV2Error)),
-      name: Schema.optional(Schema.String),
-      lastRunTime: Schema.optional(Schema.String),
-      inspectJob: Schema.optional(GooglePrivacyDlpV2InspectJobConfig),
-      description: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2JobTrigger",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2JobTrigger>;
+export const GooglePrivacyDlpV2JobTrigger =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    status: Schema.optional(Schema.String),
+    triggers: Schema.optional(Schema.Array(GooglePrivacyDlpV2Trigger)),
+    createTime: Schema.optional(Schema.String),
+    errors: Schema.optional(Schema.Array(GooglePrivacyDlpV2Error)),
+    name: Schema.optional(Schema.String),
+    lastRunTime: Schema.optional(Schema.String),
+    inspectJob: Schema.optional(GooglePrivacyDlpV2InspectJobConfig),
+    description: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2JobTrigger" });
 
 export interface GooglePrivacyDlpV2CreateJobTriggerRequest {
   /** Required. The JobTrigger to create. */
@@ -6825,16 +5676,12 @@ export interface GooglePrivacyDlpV2CreateJobTriggerRequest {
   triggerId?: string;
 }
 
-export const GooglePrivacyDlpV2CreateJobTriggerRequest: Schema.Schema<GooglePrivacyDlpV2CreateJobTriggerRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      jobTrigger: Schema.optional(GooglePrivacyDlpV2JobTrigger),
-      locationId: Schema.optional(Schema.String),
-      triggerId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2CreateJobTriggerRequest",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2CreateJobTriggerRequest>;
+export const GooglePrivacyDlpV2CreateJobTriggerRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    jobTrigger: Schema.optional(GooglePrivacyDlpV2JobTrigger),
+    locationId: Schema.optional(Schema.String),
+    triggerId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2CreateJobTriggerRequest" });
 
 export interface GooglePrivacyDlpV2KAnonymityEquivalenceClass {
   /** Set of values defining the equivalence class. One value per quasi-identifier column in the original KAnonymity metric message. The order is always the same as the original request. */
@@ -6843,15 +5690,11 @@ export interface GooglePrivacyDlpV2KAnonymityEquivalenceClass {
   equivalenceClassSize?: string;
 }
 
-export const GooglePrivacyDlpV2KAnonymityEquivalenceClass: Schema.Schema<GooglePrivacyDlpV2KAnonymityEquivalenceClass> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      quasiIdsValues: Schema.optional(Schema.Array(GooglePrivacyDlpV2Value)),
-      equivalenceClassSize: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2KAnonymityEquivalenceClass",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2KAnonymityEquivalenceClass>;
+export const GooglePrivacyDlpV2KAnonymityEquivalenceClass =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    quasiIdsValues: Schema.optional(Schema.Array(GooglePrivacyDlpV2Value)),
+    equivalenceClassSize: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2KAnonymityEquivalenceClass" });
 
 export interface GooglePrivacyDlpV2SearchConnectionsResponse {
   /** List of connections that match the search query. Note that only a subset of the fields will be populated, and only "name" is guaranteed to be set. For full details of a Connection, call GetConnection with the name. */
@@ -6860,36 +5703,27 @@ export interface GooglePrivacyDlpV2SearchConnectionsResponse {
   nextPageToken?: string;
 }
 
-export const GooglePrivacyDlpV2SearchConnectionsResponse: Schema.Schema<GooglePrivacyDlpV2SearchConnectionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      connections: Schema.optional(Schema.Array(GooglePrivacyDlpV2Connection)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2SearchConnectionsResponse",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2SearchConnectionsResponse>;
+export const GooglePrivacyDlpV2SearchConnectionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    connections: Schema.optional(Schema.Array(GooglePrivacyDlpV2Connection)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2SearchConnectionsResponse" });
 
 export interface GooglePrivacyDlpV2RequestedRiskAnalysisOptions {
   /** The job config for the risk job. */
   jobConfig?: GooglePrivacyDlpV2RiskAnalysisJobConfig;
 }
 
-export const GooglePrivacyDlpV2RequestedRiskAnalysisOptions: Schema.Schema<GooglePrivacyDlpV2RequestedRiskAnalysisOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      jobConfig: Schema.optional(GooglePrivacyDlpV2RiskAnalysisJobConfig),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2RequestedRiskAnalysisOptions",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2RequestedRiskAnalysisOptions>;
+export const GooglePrivacyDlpV2RequestedRiskAnalysisOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    jobConfig: Schema.optional(GooglePrivacyDlpV2RiskAnalysisJobConfig),
+  }).annotate({ identifier: "GooglePrivacyDlpV2RequestedRiskAnalysisOptions" });
 
 export interface Proto2BridgeMessageSet {}
 
-export const Proto2BridgeMessageSet: Schema.Schema<Proto2BridgeMessageSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Proto2BridgeMessageSet",
-  }) as any as Schema.Schema<Proto2BridgeMessageSet>;
+export const Proto2BridgeMessageSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "Proto2BridgeMessageSet" });
 
 export interface UtilStatusProto {
   /** Numeric code drawn from the space specified below. Often, this is the canonical error space, and code is drawn from google3/util/task/codes.proto copybara:strip_begin(b/383363683) copybara:strip_end_and_replace optional int32 code = 1; */
@@ -6904,18 +5738,13 @@ export interface UtilStatusProto {
   canonicalCode?: number;
 }
 
-export const UtilStatusProto: Schema.Schema<UtilStatusProto> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      messageSet: Schema.optional(Proto2BridgeMessageSet),
-      space: Schema.optional(Schema.String),
-      canonicalCode: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "UtilStatusProto",
-  }) as any as Schema.Schema<UtilStatusProto>;
+export const UtilStatusProto = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  messageSet: Schema.optional(Proto2BridgeMessageSet),
+  space: Schema.optional(Schema.String),
+  canonicalCode: Schema.optional(Schema.Number),
+}).annotate({ identifier: "UtilStatusProto" });
 
 export interface GooglePrivacyDlpV2KAnonymityHistogramBucket {
   /** Upper bound on the size of the equivalence classes in this bucket. */
@@ -6930,20 +5759,16 @@ export interface GooglePrivacyDlpV2KAnonymityHistogramBucket {
   bucketValues?: Array<GooglePrivacyDlpV2KAnonymityEquivalenceClass>;
 }
 
-export const GooglePrivacyDlpV2KAnonymityHistogramBucket: Schema.Schema<GooglePrivacyDlpV2KAnonymityHistogramBucket> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      equivalenceClassSizeUpperBound: Schema.optional(Schema.String),
-      equivalenceClassSizeLowerBound: Schema.optional(Schema.String),
-      bucketSize: Schema.optional(Schema.String),
-      bucketValueCount: Schema.optional(Schema.String),
-      bucketValues: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2KAnonymityEquivalenceClass),
-      ),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2KAnonymityHistogramBucket",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2KAnonymityHistogramBucket>;
+export const GooglePrivacyDlpV2KAnonymityHistogramBucket =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    equivalenceClassSizeUpperBound: Schema.optional(Schema.String),
+    equivalenceClassSizeLowerBound: Schema.optional(Schema.String),
+    bucketSize: Schema.optional(Schema.String),
+    bucketValueCount: Schema.optional(Schema.String),
+    bucketValues: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2KAnonymityEquivalenceClass),
+    ),
+  }).annotate({ identifier: "GooglePrivacyDlpV2KAnonymityHistogramBucket" });
 
 export interface GooglePrivacyDlpV2ListStoredInfoTypesResponse {
   /** List of storedInfoTypes, up to page_size in ListStoredInfoTypesRequest. */
@@ -6952,17 +5777,13 @@ export interface GooglePrivacyDlpV2ListStoredInfoTypesResponse {
   nextPageToken?: string;
 }
 
-export const GooglePrivacyDlpV2ListStoredInfoTypesResponse: Schema.Schema<GooglePrivacyDlpV2ListStoredInfoTypesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      storedInfoTypes: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2StoredInfoType),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2ListStoredInfoTypesResponse",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2ListStoredInfoTypesResponse>;
+export const GooglePrivacyDlpV2ListStoredInfoTypesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    storedInfoTypes: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2StoredInfoType),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2ListStoredInfoTypesResponse" });
 
 export interface GooglePrivacyDlpV2NumericalStatsResult {
   /** Maximum value appearing in the column. */
@@ -6973,16 +5794,12 @@ export interface GooglePrivacyDlpV2NumericalStatsResult {
   minValue?: GooglePrivacyDlpV2Value;
 }
 
-export const GooglePrivacyDlpV2NumericalStatsResult: Schema.Schema<GooglePrivacyDlpV2NumericalStatsResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      maxValue: Schema.optional(GooglePrivacyDlpV2Value),
-      quantileValues: Schema.optional(Schema.Array(GooglePrivacyDlpV2Value)),
-      minValue: Schema.optional(GooglePrivacyDlpV2Value),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2NumericalStatsResult",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2NumericalStatsResult>;
+export const GooglePrivacyDlpV2NumericalStatsResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    maxValue: Schema.optional(GooglePrivacyDlpV2Value),
+    quantileValues: Schema.optional(Schema.Array(GooglePrivacyDlpV2Value)),
+    minValue: Schema.optional(GooglePrivacyDlpV2Value),
+  }).annotate({ identifier: "GooglePrivacyDlpV2NumericalStatsResult" });
 
 export interface GooglePrivacyDlpV2ListJobTriggersResponse {
   /** If the next page is available then this value is the next page token to be used in the following ListJobTriggers request. */
@@ -6991,45 +5808,33 @@ export interface GooglePrivacyDlpV2ListJobTriggersResponse {
   jobTriggers?: Array<GooglePrivacyDlpV2JobTrigger>;
 }
 
-export const GooglePrivacyDlpV2ListJobTriggersResponse: Schema.Schema<GooglePrivacyDlpV2ListJobTriggersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      jobTriggers: Schema.optional(Schema.Array(GooglePrivacyDlpV2JobTrigger)),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2ListJobTriggersResponse",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2ListJobTriggersResponse>;
+export const GooglePrivacyDlpV2ListJobTriggersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    jobTriggers: Schema.optional(Schema.Array(GooglePrivacyDlpV2JobTrigger)),
+  }).annotate({ identifier: "GooglePrivacyDlpV2ListJobTriggersResponse" });
 
 export interface GooglePrivacyDlpV2KAnonymityResult {
   /** Histogram of k-anonymity equivalence classes. */
   equivalenceClassHistogramBuckets?: Array<GooglePrivacyDlpV2KAnonymityHistogramBucket>;
 }
 
-export const GooglePrivacyDlpV2KAnonymityResult: Schema.Schema<GooglePrivacyDlpV2KAnonymityResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      equivalenceClassHistogramBuckets: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2KAnonymityHistogramBucket),
-      ),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2KAnonymityResult",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2KAnonymityResult>;
+export const GooglePrivacyDlpV2KAnonymityResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    equivalenceClassHistogramBuckets: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2KAnonymityHistogramBucket),
+    ),
+  }).annotate({ identifier: "GooglePrivacyDlpV2KAnonymityResult" });
 
 export interface GooglePrivacyDlpV2CreateConnectionRequest {
   /** Required. The connection resource. */
   connection?: GooglePrivacyDlpV2Connection;
 }
 
-export const GooglePrivacyDlpV2CreateConnectionRequest: Schema.Schema<GooglePrivacyDlpV2CreateConnectionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      connection: Schema.optional(GooglePrivacyDlpV2Connection),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2CreateConnectionRequest",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2CreateConnectionRequest>;
+export const GooglePrivacyDlpV2CreateConnectionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    connection: Schema.optional(GooglePrivacyDlpV2Connection),
+  }).annotate({ identifier: "GooglePrivacyDlpV2CreateConnectionRequest" });
 
 export interface GooglePrivacyDlpV2CreateDiscoveryConfigRequest {
   /** Required. The DiscoveryConfig to create. */
@@ -7038,15 +5843,11 @@ export interface GooglePrivacyDlpV2CreateDiscoveryConfigRequest {
   configId?: string;
 }
 
-export const GooglePrivacyDlpV2CreateDiscoveryConfigRequest: Schema.Schema<GooglePrivacyDlpV2CreateDiscoveryConfigRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      discoveryConfig: Schema.optional(GooglePrivacyDlpV2DiscoveryConfig),
-      configId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2CreateDiscoveryConfigRequest",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2CreateDiscoveryConfigRequest>;
+export const GooglePrivacyDlpV2CreateDiscoveryConfigRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    discoveryConfig: Schema.optional(GooglePrivacyDlpV2DiscoveryConfig),
+    configId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2CreateDiscoveryConfigRequest" });
 
 export interface GooglePrivacyDlpV2RedactImageResponse {
   /** The redacted image. The type will be the same as the original image. */
@@ -7057,16 +5858,12 @@ export interface GooglePrivacyDlpV2RedactImageResponse {
   inspectResult?: GooglePrivacyDlpV2InspectResult;
 }
 
-export const GooglePrivacyDlpV2RedactImageResponse: Schema.Schema<GooglePrivacyDlpV2RedactImageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      redactedImage: Schema.optional(Schema.String),
-      extractedText: Schema.optional(Schema.String),
-      inspectResult: Schema.optional(GooglePrivacyDlpV2InspectResult),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2RedactImageResponse",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2RedactImageResponse>;
+export const GooglePrivacyDlpV2RedactImageResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    redactedImage: Schema.optional(Schema.String),
+    extractedText: Schema.optional(Schema.String),
+    inspectResult: Schema.optional(GooglePrivacyDlpV2InspectResult),
+  }).annotate({ identifier: "GooglePrivacyDlpV2RedactImageResponse" });
 
 export interface GooglePrivacyDlpV2UpdateJobTriggerRequest {
   /** New JobTrigger value. */
@@ -7075,15 +5872,11 @@ export interface GooglePrivacyDlpV2UpdateJobTriggerRequest {
   updateMask?: string;
 }
 
-export const GooglePrivacyDlpV2UpdateJobTriggerRequest: Schema.Schema<GooglePrivacyDlpV2UpdateJobTriggerRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      jobTrigger: Schema.optional(GooglePrivacyDlpV2JobTrigger),
-      updateMask: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2UpdateJobTriggerRequest",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2UpdateJobTriggerRequest>;
+export const GooglePrivacyDlpV2UpdateJobTriggerRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    jobTrigger: Schema.optional(GooglePrivacyDlpV2JobTrigger),
+    updateMask: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2UpdateJobTriggerRequest" });
 
 export interface GooglePrivacyDlpV2ReidentifyContentRequest {
   /** Template to use. References an instance of `DeidentifyTemplate`. Any configuration directly specified in `reidentify_config` or `inspect_config` will override those set in the template. The `DeidentifyTemplate` used must include only reversible transformations. Singular fields that are set in this request will replace their corresponding fields in the template. Repeated fields are appended. Singular sub-messages and groups are recursively merged. */
@@ -7100,35 +5893,29 @@ export interface GooglePrivacyDlpV2ReidentifyContentRequest {
   inspectConfig?: GooglePrivacyDlpV2InspectConfig;
 }
 
-export const GooglePrivacyDlpV2ReidentifyContentRequest: Schema.Schema<GooglePrivacyDlpV2ReidentifyContentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reidentifyTemplateName: Schema.optional(Schema.String),
-      reidentifyConfig: Schema.optional(GooglePrivacyDlpV2DeidentifyConfig),
-      item: Schema.optional(GooglePrivacyDlpV2ContentItem),
-      locationId: Schema.optional(Schema.String),
-      inspectTemplateName: Schema.optional(Schema.String),
-      inspectConfig: Schema.optional(GooglePrivacyDlpV2InspectConfig),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2ReidentifyContentRequest",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2ReidentifyContentRequest>;
+export const GooglePrivacyDlpV2ReidentifyContentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reidentifyTemplateName: Schema.optional(Schema.String),
+    reidentifyConfig: Schema.optional(GooglePrivacyDlpV2DeidentifyConfig),
+    item: Schema.optional(GooglePrivacyDlpV2ContentItem),
+    locationId: Schema.optional(Schema.String),
+    inspectTemplateName: Schema.optional(Schema.String),
+    inspectConfig: Schema.optional(GooglePrivacyDlpV2InspectConfig),
+  }).annotate({ identifier: "GooglePrivacyDlpV2ReidentifyContentRequest" });
 
 export interface GooglePrivacyDlpV2DeltaPresenceEstimationResult {
   /** The intervals [min_probability, max_probability) do not overlap. If a value doesn't correspond to any such interval, the associated frequency is zero. For example, the following records: {min_probability: 0, max_probability: 0.1, frequency: 17} {min_probability: 0.2, max_probability: 0.3, frequency: 42} {min_probability: 0.3, max_probability: 0.4, frequency: 99} mean that there are no record with an estimated probability in [0.1, 0.2) nor larger or equal to 0.4. */
   deltaPresenceEstimationHistogram?: Array<GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket>;
 }
 
-export const GooglePrivacyDlpV2DeltaPresenceEstimationResult: Schema.Schema<GooglePrivacyDlpV2DeltaPresenceEstimationResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deltaPresenceEstimationHistogram: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket),
-      ),
-    }),
-  ).annotate({
+export const GooglePrivacyDlpV2DeltaPresenceEstimationResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deltaPresenceEstimationHistogram: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2DeltaPresenceEstimationHistogramBucket),
+    ),
+  }).annotate({
     identifier: "GooglePrivacyDlpV2DeltaPresenceEstimationResult",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DeltaPresenceEstimationResult>;
+  });
 
 export interface GooglePrivacyDlpV2ListInspectTemplatesResponse {
   /** List of inspectTemplates, up to page_size in ListInspectTemplatesRequest. */
@@ -7137,17 +5924,13 @@ export interface GooglePrivacyDlpV2ListInspectTemplatesResponse {
   nextPageToken?: string;
 }
 
-export const GooglePrivacyDlpV2ListInspectTemplatesResponse: Schema.Schema<GooglePrivacyDlpV2ListInspectTemplatesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inspectTemplates: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2InspectTemplate),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2ListInspectTemplatesResponse",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2ListInspectTemplatesResponse>;
+export const GooglePrivacyDlpV2ListInspectTemplatesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    inspectTemplates: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2InspectTemplate),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2ListInspectTemplatesResponse" });
 
 export interface GooglePrivacyDlpV2CategoricalStatsHistogramBucket {
   /** Total number of values in this bucket. */
@@ -7162,20 +5945,18 @@ export interface GooglePrivacyDlpV2CategoricalStatsHistogramBucket {
   bucketValueCount?: string;
 }
 
-export const GooglePrivacyDlpV2CategoricalStatsHistogramBucket: Schema.Schema<GooglePrivacyDlpV2CategoricalStatsHistogramBucket> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bucketSize: Schema.optional(Schema.String),
-      valueFrequencyUpperBound: Schema.optional(Schema.String),
-      valueFrequencyLowerBound: Schema.optional(Schema.String),
-      bucketValues: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2ValueFrequency),
-      ),
-      bucketValueCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GooglePrivacyDlpV2CategoricalStatsHistogramBucket =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bucketSize: Schema.optional(Schema.String),
+    valueFrequencyUpperBound: Schema.optional(Schema.String),
+    valueFrequencyLowerBound: Schema.optional(Schema.String),
+    bucketValues: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2ValueFrequency),
+    ),
+    bucketValueCount: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GooglePrivacyDlpV2CategoricalStatsHistogramBucket",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2CategoricalStatsHistogramBucket>;
+  });
 
 export interface GooglePrivacyDlpV2TransformationResultStatus {
   /** Transformation result status type, this will be either SUCCESS, or it will be the reason for why the transformation was not completely successful. */
@@ -7190,15 +5971,11 @@ export interface GooglePrivacyDlpV2TransformationResultStatus {
   details?: GoogleRpcStatus;
 }
 
-export const GooglePrivacyDlpV2TransformationResultStatus: Schema.Schema<GooglePrivacyDlpV2TransformationResultStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resultStatusType: Schema.optional(Schema.String),
-      details: Schema.optional(GoogleRpcStatus),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2TransformationResultStatus",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2TransformationResultStatus>;
+export const GooglePrivacyDlpV2TransformationResultStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resultStatusType: Schema.optional(Schema.String),
+    details: Schema.optional(GoogleRpcStatus),
+  }).annotate({ identifier: "GooglePrivacyDlpV2TransformationResultStatus" });
 
 export interface GooglePrivacyDlpV2ProjectDataProfile {
   /** The last time the profile was generated. */
@@ -7219,37 +5996,29 @@ export interface GooglePrivacyDlpV2ProjectDataProfile {
   fileStoreDataProfileCount?: string;
 }
 
-export const GooglePrivacyDlpV2ProjectDataProfile: Schema.Schema<GooglePrivacyDlpV2ProjectDataProfile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      profileLastGenerated: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      sensitivityScore: Schema.optional(GooglePrivacyDlpV2SensitivityScore),
-      projectId: Schema.optional(Schema.String),
-      tableDataProfileCount: Schema.optional(Schema.String),
-      profileStatus: Schema.optional(GooglePrivacyDlpV2ProfileStatus),
-      dataRiskLevel: Schema.optional(GooglePrivacyDlpV2DataRiskLevel),
-      fileStoreDataProfileCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2ProjectDataProfile",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2ProjectDataProfile>;
+export const GooglePrivacyDlpV2ProjectDataProfile =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    profileLastGenerated: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    sensitivityScore: Schema.optional(GooglePrivacyDlpV2SensitivityScore),
+    projectId: Schema.optional(Schema.String),
+    tableDataProfileCount: Schema.optional(Schema.String),
+    profileStatus: Schema.optional(GooglePrivacyDlpV2ProfileStatus),
+    dataRiskLevel: Schema.optional(GooglePrivacyDlpV2DataRiskLevel),
+    fileStoreDataProfileCount: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2ProjectDataProfile" });
 
 export interface GooglePrivacyDlpV2CategoricalStatsResult {
   /** Histogram of value frequencies in the column. */
   valueFrequencyHistogramBuckets?: Array<GooglePrivacyDlpV2CategoricalStatsHistogramBucket>;
 }
 
-export const GooglePrivacyDlpV2CategoricalStatsResult: Schema.Schema<GooglePrivacyDlpV2CategoricalStatsResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      valueFrequencyHistogramBuckets: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2CategoricalStatsHistogramBucket),
-      ),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2CategoricalStatsResult",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2CategoricalStatsResult>;
+export const GooglePrivacyDlpV2CategoricalStatsResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    valueFrequencyHistogramBuckets: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2CategoricalStatsHistogramBucket),
+    ),
+  }).annotate({ identifier: "GooglePrivacyDlpV2CategoricalStatsResult" });
 
 export interface GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails {
   /** Privacy metric to compute. */
@@ -7272,32 +6041,28 @@ export interface GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails {
   kAnonymityResult?: GooglePrivacyDlpV2KAnonymityResult;
 }
 
-export const GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails: Schema.Schema<GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestedPrivacyMetric: Schema.optional(GooglePrivacyDlpV2PrivacyMetric),
-      numericalStatsResult: Schema.optional(
-        GooglePrivacyDlpV2NumericalStatsResult,
-      ),
-      requestedOptions: Schema.optional(
-        GooglePrivacyDlpV2RequestedRiskAnalysisOptions,
-      ),
-      kMapEstimationResult: Schema.optional(
-        GooglePrivacyDlpV2KMapEstimationResult,
-      ),
-      deltaPresenceEstimationResult: Schema.optional(
-        GooglePrivacyDlpV2DeltaPresenceEstimationResult,
-      ),
-      requestedSourceTable: Schema.optional(GooglePrivacyDlpV2BigQueryTable),
-      lDiversityResult: Schema.optional(GooglePrivacyDlpV2LDiversityResult),
-      categoricalStatsResult: Schema.optional(
-        GooglePrivacyDlpV2CategoricalStatsResult,
-      ),
-      kAnonymityResult: Schema.optional(GooglePrivacyDlpV2KAnonymityResult),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails>;
+export const GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestedPrivacyMetric: Schema.optional(GooglePrivacyDlpV2PrivacyMetric),
+    numericalStatsResult: Schema.optional(
+      GooglePrivacyDlpV2NumericalStatsResult,
+    ),
+    requestedOptions: Schema.optional(
+      GooglePrivacyDlpV2RequestedRiskAnalysisOptions,
+    ),
+    kMapEstimationResult: Schema.optional(
+      GooglePrivacyDlpV2KMapEstimationResult,
+    ),
+    deltaPresenceEstimationResult: Schema.optional(
+      GooglePrivacyDlpV2DeltaPresenceEstimationResult,
+    ),
+    requestedSourceTable: Schema.optional(GooglePrivacyDlpV2BigQueryTable),
+    lDiversityResult: Schema.optional(GooglePrivacyDlpV2LDiversityResult),
+    categoricalStatsResult: Schema.optional(
+      GooglePrivacyDlpV2CategoricalStatsResult,
+    ),
+    kAnonymityResult: Schema.optional(GooglePrivacyDlpV2KAnonymityResult),
+  }).annotate({ identifier: "GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails" });
 
 export interface GooglePrivacyDlpV2DlpJob {
   /** A stream of errors encountered running the job. */
@@ -7338,31 +6103,25 @@ export interface GooglePrivacyDlpV2DlpJob {
     | (string & {});
 }
 
-export const GooglePrivacyDlpV2DlpJob: Schema.Schema<GooglePrivacyDlpV2DlpJob> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errors: Schema.optional(Schema.Array(GooglePrivacyDlpV2Error)),
-      jobTriggerName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      lastModified: Schema.optional(Schema.String),
-      actionDetails: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2ActionDetails),
-      ),
-      inspectDetails: Schema.optional(
-        GooglePrivacyDlpV2InspectDataSourceDetails,
-      ),
-      riskDetails: Schema.optional(
-        GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails,
-      ),
-      endTime: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2DlpJob",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DlpJob>;
+export const GooglePrivacyDlpV2DlpJob =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    errors: Schema.optional(Schema.Array(GooglePrivacyDlpV2Error)),
+    jobTriggerName: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    lastModified: Schema.optional(Schema.String),
+    actionDetails: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2ActionDetails),
+    ),
+    inspectDetails: Schema.optional(GooglePrivacyDlpV2InspectDataSourceDetails),
+    riskDetails: Schema.optional(
+      GooglePrivacyDlpV2AnalyzeDataSourceRiskDetails,
+    ),
+    endTime: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2DlpJob" });
 
 export interface GooglePrivacyDlpV2ListProjectDataProfilesResponse {
   /** The next page token. */
@@ -7371,17 +6130,15 @@ export interface GooglePrivacyDlpV2ListProjectDataProfilesResponse {
   projectDataProfiles?: Array<GooglePrivacyDlpV2ProjectDataProfile>;
 }
 
-export const GooglePrivacyDlpV2ListProjectDataProfilesResponse: Schema.Schema<GooglePrivacyDlpV2ListProjectDataProfilesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      projectDataProfiles: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2ProjectDataProfile),
-      ),
-    }),
-  ).annotate({
+export const GooglePrivacyDlpV2ListProjectDataProfilesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    projectDataProfiles: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2ProjectDataProfile),
+    ),
+  }).annotate({
     identifier: "GooglePrivacyDlpV2ListProjectDataProfilesResponse",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2ListProjectDataProfilesResponse>;
+  });
 
 export interface GooglePrivacyDlpV2DeidentifyContentRequest {
   /** Template to use. Any configuration directly specified in deidentify_config will override those set in the template. Singular fields that are set in this request will replace their corresponding fields in the template. Repeated fields are appended. Singular sub-messages and groups are recursively merged. */
@@ -7398,19 +6155,15 @@ export interface GooglePrivacyDlpV2DeidentifyContentRequest {
   inspectConfig?: GooglePrivacyDlpV2InspectConfig;
 }
 
-export const GooglePrivacyDlpV2DeidentifyContentRequest: Schema.Schema<GooglePrivacyDlpV2DeidentifyContentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deidentifyTemplateName: Schema.optional(Schema.String),
-      item: Schema.optional(GooglePrivacyDlpV2ContentItem),
-      deidentifyConfig: Schema.optional(GooglePrivacyDlpV2DeidentifyConfig),
-      locationId: Schema.optional(Schema.String),
-      inspectTemplateName: Schema.optional(Schema.String),
-      inspectConfig: Schema.optional(GooglePrivacyDlpV2InspectConfig),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2DeidentifyContentRequest",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2DeidentifyContentRequest>;
+export const GooglePrivacyDlpV2DeidentifyContentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deidentifyTemplateName: Schema.optional(Schema.String),
+    item: Schema.optional(GooglePrivacyDlpV2ContentItem),
+    deidentifyConfig: Schema.optional(GooglePrivacyDlpV2DeidentifyConfig),
+    locationId: Schema.optional(Schema.String),
+    inspectTemplateName: Schema.optional(Schema.String),
+    inspectConfig: Schema.optional(GooglePrivacyDlpV2InspectConfig),
+  }).annotate({ identifier: "GooglePrivacyDlpV2DeidentifyContentRequest" });
 
 export interface GooglePrivacyDlpV2ListDlpJobsResponse {
   /** A list of DlpJobs that matches the specified filter in the request. */
@@ -7419,15 +6172,11 @@ export interface GooglePrivacyDlpV2ListDlpJobsResponse {
   nextPageToken?: string;
 }
 
-export const GooglePrivacyDlpV2ListDlpJobsResponse: Schema.Schema<GooglePrivacyDlpV2ListDlpJobsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      jobs: Schema.optional(Schema.Array(GooglePrivacyDlpV2DlpJob)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2ListDlpJobsResponse",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2ListDlpJobsResponse>;
+export const GooglePrivacyDlpV2ListDlpJobsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    jobs: Schema.optional(Schema.Array(GooglePrivacyDlpV2DlpJob)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2ListDlpJobsResponse" });
 
 export interface GooglePrivacyDlpV2CreateStoredInfoTypeRequest {
   /** Deprecated. This field has no effect. */
@@ -7438,16 +6187,12 @@ export interface GooglePrivacyDlpV2CreateStoredInfoTypeRequest {
   storedInfoTypeId?: string;
 }
 
-export const GooglePrivacyDlpV2CreateStoredInfoTypeRequest: Schema.Schema<GooglePrivacyDlpV2CreateStoredInfoTypeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locationId: Schema.optional(Schema.String),
-      config: Schema.optional(GooglePrivacyDlpV2StoredInfoTypeConfig),
-      storedInfoTypeId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2CreateStoredInfoTypeRequest",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2CreateStoredInfoTypeRequest>;
+export const GooglePrivacyDlpV2CreateStoredInfoTypeRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locationId: Schema.optional(Schema.String),
+    config: Schema.optional(GooglePrivacyDlpV2StoredInfoTypeConfig),
+    storedInfoTypeId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2CreateStoredInfoTypeRequest" });
 
 export interface GooglePrivacyDlpV2ListFileStoreDataProfilesResponse {
   /** List of data profiles. */
@@ -7456,17 +6201,15 @@ export interface GooglePrivacyDlpV2ListFileStoreDataProfilesResponse {
   nextPageToken?: string;
 }
 
-export const GooglePrivacyDlpV2ListFileStoreDataProfilesResponse: Schema.Schema<GooglePrivacyDlpV2ListFileStoreDataProfilesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fileStoreDataProfiles: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2FileStoreDataProfile),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GooglePrivacyDlpV2ListFileStoreDataProfilesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fileStoreDataProfiles: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2FileStoreDataProfile),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GooglePrivacyDlpV2ListFileStoreDataProfilesResponse",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2ListFileStoreDataProfilesResponse>;
+  });
 
 export interface GooglePrivacyDlpV2UpdateStoredInfoTypeRequest {
   /** Updated configuration for the storedInfoType. If not provided, a new version of the storedInfoType will be created with the existing configuration. */
@@ -7475,15 +6218,11 @@ export interface GooglePrivacyDlpV2UpdateStoredInfoTypeRequest {
   updateMask?: string;
 }
 
-export const GooglePrivacyDlpV2UpdateStoredInfoTypeRequest: Schema.Schema<GooglePrivacyDlpV2UpdateStoredInfoTypeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      config: Schema.optional(GooglePrivacyDlpV2StoredInfoTypeConfig),
-      updateMask: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2UpdateStoredInfoTypeRequest",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2UpdateStoredInfoTypeRequest>;
+export const GooglePrivacyDlpV2UpdateStoredInfoTypeRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    config: Schema.optional(GooglePrivacyDlpV2StoredInfoTypeConfig),
+    updateMask: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2UpdateStoredInfoTypeRequest" });
 
 export interface GooglePrivacyDlpV2UpdateDiscoveryConfigRequest {
   /** Required. New DiscoveryConfig value. */
@@ -7492,15 +6231,11 @@ export interface GooglePrivacyDlpV2UpdateDiscoveryConfigRequest {
   updateMask?: string;
 }
 
-export const GooglePrivacyDlpV2UpdateDiscoveryConfigRequest: Schema.Schema<GooglePrivacyDlpV2UpdateDiscoveryConfigRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      discoveryConfig: Schema.optional(GooglePrivacyDlpV2DiscoveryConfig),
-      updateMask: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2UpdateDiscoveryConfigRequest",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2UpdateDiscoveryConfigRequest>;
+export const GooglePrivacyDlpV2UpdateDiscoveryConfigRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    discoveryConfig: Schema.optional(GooglePrivacyDlpV2DiscoveryConfig),
+    updateMask: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2UpdateDiscoveryConfigRequest" });
 
 export interface GooglePrivacyDlpV2ListColumnDataProfilesResponse {
   /** The next page token. */
@@ -7509,24 +6244,22 @@ export interface GooglePrivacyDlpV2ListColumnDataProfilesResponse {
   columnDataProfiles?: Array<GooglePrivacyDlpV2ColumnDataProfile>;
 }
 
-export const GooglePrivacyDlpV2ListColumnDataProfilesResponse: Schema.Schema<GooglePrivacyDlpV2ListColumnDataProfilesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      columnDataProfiles: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2ColumnDataProfile),
-      ),
-    }),
-  ).annotate({
+export const GooglePrivacyDlpV2ListColumnDataProfilesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    columnDataProfiles: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2ColumnDataProfile),
+    ),
+  }).annotate({
     identifier: "GooglePrivacyDlpV2ListColumnDataProfilesResponse",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2ListColumnDataProfilesResponse>;
+  });
 
 export interface GooglePrivacyDlpV2ActivateJobTriggerRequest {}
 
-export const GooglePrivacyDlpV2ActivateJobTriggerRequest: Schema.Schema<GooglePrivacyDlpV2ActivateJobTriggerRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GooglePrivacyDlpV2ActivateJobTriggerRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GooglePrivacyDlpV2ActivateJobTriggerRequest",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2ActivateJobTriggerRequest>;
+  });
 
 export interface GooglePrivacyDlpV2TransformationDescription {
   /** A description of the transformation. This is empty for a RECORD_SUPPRESSION, or is the output of calling toString() on the `PrimitiveTransformation` protocol buffer message for any other type of transformation. */
@@ -7555,17 +6288,13 @@ export interface GooglePrivacyDlpV2TransformationDescription {
     | (string & {});
 }
 
-export const GooglePrivacyDlpV2TransformationDescription: Schema.Schema<GooglePrivacyDlpV2TransformationDescription> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      condition: Schema.optional(Schema.String),
-      infoType: Schema.optional(GooglePrivacyDlpV2InfoType),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2TransformationDescription",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2TransformationDescription>;
+export const GooglePrivacyDlpV2TransformationDescription =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    condition: Schema.optional(Schema.String),
+    infoType: Schema.optional(GooglePrivacyDlpV2InfoType),
+    type: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2TransformationDescription" });
 
 export interface GooglePrivacyDlpV2TransformationDetails {
   /** Status of the transformation, if transformation was not successful, this will specify what caused it to fail, otherwise it will show that the transformation was successful. */
@@ -7582,25 +6311,21 @@ export interface GooglePrivacyDlpV2TransformationDetails {
   resourceName?: string;
 }
 
-export const GooglePrivacyDlpV2TransformationDetails: Schema.Schema<GooglePrivacyDlpV2TransformationDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      statusDetails: Schema.optional(
-        GooglePrivacyDlpV2TransformationResultStatus,
-      ),
-      containerName: Schema.optional(Schema.String),
-      transformation: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2TransformationDescription),
-      ),
-      transformedBytes: Schema.optional(Schema.String),
-      transformationLocation: Schema.optional(
-        GooglePrivacyDlpV2TransformationLocation,
-      ),
-      resourceName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2TransformationDetails",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2TransformationDetails>;
+export const GooglePrivacyDlpV2TransformationDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    statusDetails: Schema.optional(
+      GooglePrivacyDlpV2TransformationResultStatus,
+    ),
+    containerName: Schema.optional(Schema.String),
+    transformation: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2TransformationDescription),
+    ),
+    transformedBytes: Schema.optional(Schema.String),
+    transformationLocation: Schema.optional(
+      GooglePrivacyDlpV2TransformationLocation,
+    ),
+    resourceName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2TransformationDetails" });
 
 export interface GooglePrivacyDlpV2RedactImageRequest {
   /** The configuration for specifying what content to redact from images. */
@@ -7619,22 +6344,18 @@ export interface GooglePrivacyDlpV2RedactImageRequest {
   locationId?: string;
 }
 
-export const GooglePrivacyDlpV2RedactImageRequest: Schema.Schema<GooglePrivacyDlpV2RedactImageRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      imageRedactionConfigs: Schema.optional(
-        Schema.Array(GooglePrivacyDlpV2ImageRedactionConfig),
-      ),
-      includeFindings: Schema.optional(Schema.Boolean),
-      inspectTemplate: Schema.optional(Schema.String),
-      byteItem: Schema.optional(GooglePrivacyDlpV2ByteContentItem),
-      inspectConfig: Schema.optional(GooglePrivacyDlpV2InspectConfig),
-      deidentifyTemplate: Schema.optional(Schema.String),
-      locationId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GooglePrivacyDlpV2RedactImageRequest",
-  }) as any as Schema.Schema<GooglePrivacyDlpV2RedactImageRequest>;
+export const GooglePrivacyDlpV2RedactImageRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    imageRedactionConfigs: Schema.optional(
+      Schema.Array(GooglePrivacyDlpV2ImageRedactionConfig),
+    ),
+    includeFindings: Schema.optional(Schema.Boolean),
+    inspectTemplate: Schema.optional(Schema.String),
+    byteItem: Schema.optional(GooglePrivacyDlpV2ByteContentItem),
+    inspectConfig: Schema.optional(GooglePrivacyDlpV2InspectConfig),
+    deidentifyTemplate: Schema.optional(Schema.String),
+    locationId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GooglePrivacyDlpV2RedactImageRequest" });
 
 // ==========================================================================
 // Operations

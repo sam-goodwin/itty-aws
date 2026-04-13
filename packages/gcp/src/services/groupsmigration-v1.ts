@@ -29,13 +29,10 @@ export interface Groups {
   kind?: string;
 }
 
-export const Groups: Schema.Schema<Groups> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      responseCode: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Groups" }) as any as Schema.Schema<Groups>;
+export const Groups = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  responseCode: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "Groups" });
 
 // ==========================================================================
 // Operations

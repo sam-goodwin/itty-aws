@@ -32,14 +32,9 @@ export interface ActivationStatus {
     | (string & {});
 }
 
-export const ActivationStatus: Schema.Schema<ActivationStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ActivationStatus",
-  }) as any as Schema.Schema<ActivationStatus>;
+export const ActivationStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.String),
+}).annotate({ identifier: "ActivationStatus" });
 
 export interface TranslatedString {
   /** Identifies what kind of resource this is. Value: the fixed string `"walletobjects#translatedString"`. */
@@ -50,16 +45,11 @@ export interface TranslatedString {
   value?: string;
 }
 
-export const TranslatedString: Schema.Schema<TranslatedString> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      language: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TranslatedString",
-  }) as any as Schema.Schema<TranslatedString>;
+export const TranslatedString = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  language: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+}).annotate({ identifier: "TranslatedString" });
 
 export interface LocalizedString {
   /** Contains the translations for the string. */
@@ -70,16 +60,11 @@ export interface LocalizedString {
   defaultValue?: TranslatedString;
 }
 
-export const LocalizedString: Schema.Schema<LocalizedString> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      translatedValues: Schema.optional(Schema.Array(TranslatedString)),
-      kind: Schema.optional(Schema.String),
-      defaultValue: Schema.optional(TranslatedString),
-    }),
-  ).annotate({
-    identifier: "LocalizedString",
-  }) as any as Schema.Schema<LocalizedString>;
+export const LocalizedString = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  translatedValues: Schema.optional(Schema.Array(TranslatedString)),
+  kind: Schema.optional(Schema.String),
+  defaultValue: Schema.optional(TranslatedString),
+}).annotate({ identifier: "LocalizedString" });
 
 export interface LabelValue {
   /** The label for a specific row and column. Recommended maximum is 15 characters for a two-column layout and 30 characters for a one-column layout. */
@@ -92,29 +77,21 @@ export interface LabelValue {
   localizedValue?: LocalizedString;
 }
 
-export const LabelValue: Schema.Schema<LabelValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      label: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-      localizedLabel: Schema.optional(LocalizedString),
-      localizedValue: Schema.optional(LocalizedString),
-    }),
-  ).annotate({ identifier: "LabelValue" }) as any as Schema.Schema<LabelValue>;
+export const LabelValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  label: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+  localizedLabel: Schema.optional(LocalizedString),
+  localizedValue: Schema.optional(LocalizedString),
+}).annotate({ identifier: "LabelValue" });
 
 export interface LabelValueRow {
   /** A list of labels and values. These will be displayed in a singular column, one after the other, not in multiple columns, despite the field name. */
   columns?: Array<LabelValue>;
 }
 
-export const LabelValueRow: Schema.Schema<LabelValueRow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      columns: Schema.optional(Schema.Array(LabelValue)),
-    }),
-  ).annotate({
-    identifier: "LabelValueRow",
-  }) as any as Schema.Schema<LabelValueRow>;
+export const LabelValueRow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  columns: Schema.optional(Schema.Array(LabelValue)),
+}).annotate({ identifier: "LabelValueRow" });
 
 export interface InfoModuleData {
   /** A list of collections of labels and values. These will be displayed one after the other in a singular column. */
@@ -122,15 +99,10 @@ export interface InfoModuleData {
   showLastUpdateTime?: boolean;
 }
 
-export const InfoModuleData: Schema.Schema<InfoModuleData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labelValueRows: Schema.optional(Schema.Array(LabelValueRow)),
-      showLastUpdateTime: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "InfoModuleData",
-  }) as any as Schema.Schema<InfoModuleData>;
+export const InfoModuleData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  labelValueRows: Schema.optional(Schema.Array(LabelValueRow)),
+  showLastUpdateTime: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "InfoModuleData" });
 
 export interface ImageUri {
   /** The location of the image. URIs must have a scheme. */
@@ -141,14 +113,11 @@ export interface ImageUri {
   localizedDescription?: LocalizedString;
 }
 
-export const ImageUri: Schema.Schema<ImageUri> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      localizedDescription: Schema.optional(LocalizedString),
-    }),
-  ).annotate({ identifier: "ImageUri" }) as any as Schema.Schema<ImageUri>;
+export const ImageUri = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  uri: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  localizedDescription: Schema.optional(LocalizedString),
+}).annotate({ identifier: "ImageUri" });
 
 export interface Image {
   /** Identifies what kind of resource this is. Value: the fixed string `"walletobjects#image"`. */
@@ -161,15 +130,12 @@ export interface Image {
   contentDescription?: LocalizedString;
 }
 
-export const Image: Schema.Schema<Image> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      privateImageId: Schema.optional(Schema.String),
-      sourceUri: Schema.optional(ImageUri),
-      contentDescription: Schema.optional(LocalizedString),
-    }),
-  ).annotate({ identifier: "Image" }) as any as Schema.Schema<Image>;
+export const Image = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  privateImageId: Schema.optional(Schema.String),
+  sourceUri: Schema.optional(ImageUri),
+  contentDescription: Schema.optional(LocalizedString),
+}).annotate({ identifier: "Image" });
 
 export interface Uri {
   /** Identifies what kind of resource this is. Value: the fixed string `"walletobjects#uri"`. */
@@ -184,16 +150,13 @@ export interface Uri {
   uri?: string;
 }
 
-export const Uri: Schema.Schema<Uri> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      localizedDescription: Schema.optional(LocalizedString),
-      uri: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Uri" }) as any as Schema.Schema<Uri>;
+export const Uri = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  localizedDescription: Schema.optional(LocalizedString),
+  uri: Schema.optional(Schema.String),
+}).annotate({ identifier: "Uri" });
 
 export interface AppLinkDataAppLinkInfoAppTarget {
   /** Package name for AppTarget. For example: com.google.android.gm */
@@ -202,15 +165,11 @@ export interface AppLinkDataAppLinkInfoAppTarget {
   targetUri?: Uri;
 }
 
-export const AppLinkDataAppLinkInfoAppTarget: Schema.Schema<AppLinkDataAppLinkInfoAppTarget> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      packageName: Schema.optional(Schema.String),
-      targetUri: Schema.optional(Uri),
-    }),
-  ).annotate({
-    identifier: "AppLinkDataAppLinkInfoAppTarget",
-  }) as any as Schema.Schema<AppLinkDataAppLinkInfoAppTarget>;
+export const AppLinkDataAppLinkInfoAppTarget =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    packageName: Schema.optional(Schema.String),
+    targetUri: Schema.optional(Uri),
+  }).annotate({ identifier: "AppLinkDataAppLinkInfoAppTarget" });
 
 export interface AppLinkDataAppLinkInfo {
   /** Deprecated. Image isn't supported in the app link module. */
@@ -223,17 +182,14 @@ export interface AppLinkDataAppLinkInfo {
   title?: LocalizedString;
 }
 
-export const AppLinkDataAppLinkInfo: Schema.Schema<AppLinkDataAppLinkInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      appLogoImage: Schema.optional(Image),
-      description: Schema.optional(LocalizedString),
-      appTarget: Schema.optional(AppLinkDataAppLinkInfoAppTarget),
-      title: Schema.optional(LocalizedString),
-    }),
-  ).annotate({
-    identifier: "AppLinkDataAppLinkInfo",
-  }) as any as Schema.Schema<AppLinkDataAppLinkInfo>;
+export const AppLinkDataAppLinkInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    appLogoImage: Schema.optional(Image),
+    description: Schema.optional(LocalizedString),
+    appTarget: Schema.optional(AppLinkDataAppLinkInfoAppTarget),
+    title: Schema.optional(LocalizedString),
+  },
+).annotate({ identifier: "AppLinkDataAppLinkInfo" });
 
 export interface AppLinkData {
   /** Optional information about the partner web link. */
@@ -246,17 +202,12 @@ export interface AppLinkData {
   iosAppLinkInfo?: AppLinkDataAppLinkInfo;
 }
 
-export const AppLinkData: Schema.Schema<AppLinkData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      webAppLinkInfo: Schema.optional(AppLinkDataAppLinkInfo),
-      displayText: Schema.optional(LocalizedString),
-      androidAppLinkInfo: Schema.optional(AppLinkDataAppLinkInfo),
-      iosAppLinkInfo: Schema.optional(AppLinkDataAppLinkInfo),
-    }),
-  ).annotate({
-    identifier: "AppLinkData",
-  }) as any as Schema.Schema<AppLinkData>;
+export const AppLinkData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  webAppLinkInfo: Schema.optional(AppLinkDataAppLinkInfo),
+  displayText: Schema.optional(LocalizedString),
+  androidAppLinkInfo: Schema.optional(AppLinkDataAppLinkInfo),
+  iosAppLinkInfo: Schema.optional(AppLinkDataAppLinkInfo),
+}).annotate({ identifier: "AppLinkData" });
 
 export interface MerchantLocation {
   /** The latitude specified as any value in the range of -90.0 through +90.0, both inclusive. Values outside these bounds will be rejected. */
@@ -265,15 +216,10 @@ export interface MerchantLocation {
   longitude?: number;
 }
 
-export const MerchantLocation: Schema.Schema<MerchantLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      latitude: Schema.optional(Schema.Number),
-      longitude: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "MerchantLocation",
-  }) as any as Schema.Schema<MerchantLocation>;
+export const MerchantLocation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  latitude: Schema.optional(Schema.Number),
+  longitude: Schema.optional(Schema.Number),
+}).annotate({ identifier: "MerchantLocation" });
 
 export interface EventSeat {
   /** The section of the seat, such as "121". This field is localizable so you may translate words or use different alphabets for the characters in an identifier. */
@@ -288,16 +234,13 @@ export interface EventSeat {
   seat?: LocalizedString;
 }
 
-export const EventSeat: Schema.Schema<EventSeat> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      section: Schema.optional(LocalizedString),
-      row: Schema.optional(LocalizedString),
-      gate: Schema.optional(LocalizedString),
-      kind: Schema.optional(Schema.String),
-      seat: Schema.optional(LocalizedString),
-    }),
-  ).annotate({ identifier: "EventSeat" }) as any as Schema.Schema<EventSeat>;
+export const EventSeat = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  section: Schema.optional(LocalizedString),
+  row: Schema.optional(LocalizedString),
+  gate: Schema.optional(LocalizedString),
+  kind: Schema.optional(Schema.String),
+  seat: Schema.optional(LocalizedString),
+}).annotate({ identifier: "EventSeat" });
 
 export interface ImageModuleData {
   /** The ID associated with an image module. This field is here to enable ease of management of image modules. */
@@ -306,15 +249,10 @@ export interface ImageModuleData {
   mainImage?: Image;
 }
 
-export const ImageModuleData: Schema.Schema<ImageModuleData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      mainImage: Schema.optional(Image),
-    }),
-  ).annotate({
-    identifier: "ImageModuleData",
-  }) as any as Schema.Schema<ImageModuleData>;
+export const ImageModuleData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  mainImage: Schema.optional(Image),
+}).annotate({ identifier: "ImageModuleData" });
 
 export interface LatLongPoint {
   /** The latitude specified as any value in the range of -90.0 through +90.0, both inclusive. Values outside these bounds will be rejected. */
@@ -325,16 +263,11 @@ export interface LatLongPoint {
   longitude?: number;
 }
 
-export const LatLongPoint: Schema.Schema<LatLongPoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      latitude: Schema.optional(Schema.Number),
-      kind: Schema.optional(Schema.String),
-      longitude: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "LatLongPoint",
-  }) as any as Schema.Schema<LatLongPoint>;
+export const LatLongPoint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  latitude: Schema.optional(Schema.Number),
+  kind: Schema.optional(Schema.String),
+  longitude: Schema.optional(Schema.Number),
+}).annotate({ identifier: "LatLongPoint" });
 
 export interface EventReservationInfo {
   /** Identifies what kind of resource this is. Value: the fixed string `"walletobjects#eventReservationInfo"`. */
@@ -343,15 +276,10 @@ export interface EventReservationInfo {
   confirmationCode?: string;
 }
 
-export const EventReservationInfo: Schema.Schema<EventReservationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      confirmationCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EventReservationInfo",
-  }) as any as Schema.Schema<EventReservationInfo>;
+export const EventReservationInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  confirmationCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "EventReservationInfo" });
 
 export interface RotatingBarcodeTotpDetailsTotpParameters {
   /** The secret key used for the TOTP value generation, encoded as a Base16 string. */
@@ -360,15 +288,11 @@ export interface RotatingBarcodeTotpDetailsTotpParameters {
   valueLength?: number;
 }
 
-export const RotatingBarcodeTotpDetailsTotpParameters: Schema.Schema<RotatingBarcodeTotpDetailsTotpParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      key: Schema.optional(Schema.String),
-      valueLength: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "RotatingBarcodeTotpDetailsTotpParameters",
-  }) as any as Schema.Schema<RotatingBarcodeTotpDetailsTotpParameters>;
+export const RotatingBarcodeTotpDetailsTotpParameters =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    key: Schema.optional(Schema.String),
+    valueLength: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "RotatingBarcodeTotpDetailsTotpParameters" });
 
 export interface RotatingBarcodeTotpDetails {
   /** The TOTP parameters for each of the {totp_value_*} substitutions. The TotpParameters at index n is used for the {totp_value_n} substitution. */
@@ -379,18 +303,14 @@ export interface RotatingBarcodeTotpDetails {
   algorithm?: "TOTP_ALGORITHM_UNSPECIFIED" | "TOTP_SHA1" | (string & {});
 }
 
-export const RotatingBarcodeTotpDetails: Schema.Schema<RotatingBarcodeTotpDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parameters: Schema.optional(
-        Schema.Array(RotatingBarcodeTotpDetailsTotpParameters),
-      ),
-      periodMillis: Schema.optional(Schema.String),
-      algorithm: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RotatingBarcodeTotpDetails",
-  }) as any as Schema.Schema<RotatingBarcodeTotpDetails>;
+export const RotatingBarcodeTotpDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parameters: Schema.optional(
+      Schema.Array(RotatingBarcodeTotpDetailsTotpParameters),
+    ),
+    periodMillis: Schema.optional(Schema.String),
+    algorithm: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RotatingBarcodeTotpDetails" });
 
 export interface RotatingBarcodeValues {
   /** Required. The date/time the first barcode is valid from. Barcodes will be rotated through using period_millis defined on the object's RotatingBarcodeValueInfo. This is an ISO 8601 extended format date/time, with an offset. Time may be specified up to nanosecond precision. Offsets may be specified with seconds precision (even though offset seconds is not part of ISO 8601). For example: `1985-04-12T23:20:50.52Z` would be 20 minutes and 50.52 seconds after the 23rd hour of April 12th, 1985 in UTC. `1985-04-12T19:20:50.52-04:00` would be 20 minutes and 50.52 seconds after the 19th hour of April 12th, 1985, 4 hours before UTC (same instant in time as the above example). If the event were in New York, this would be the equivalent of Eastern Daylight Time (EDT). Remember that offset varies in regions that observe Daylight Saving Time (or Summer Time), depending on the time of the year. */
@@ -401,16 +321,11 @@ export interface RotatingBarcodeValues {
   values?: Array<string>;
 }
 
-export const RotatingBarcodeValues: Schema.Schema<RotatingBarcodeValues> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startDateTime: Schema.optional(Schema.String),
-      periodMillis: Schema.optional(Schema.String),
-      values: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "RotatingBarcodeValues",
-  }) as any as Schema.Schema<RotatingBarcodeValues>;
+export const RotatingBarcodeValues = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startDateTime: Schema.optional(Schema.String),
+  periodMillis: Schema.optional(Schema.String),
+  values: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "RotatingBarcodeValues" });
 
 export interface RotatingBarcode {
   /** Details used to evaluate the {totp_value_n} substitutions. */
@@ -458,34 +373,24 @@ export interface RotatingBarcode {
   renderEncoding?: "RENDER_ENCODING_UNSPECIFIED" | "UTF_8" | (string & {});
 }
 
-export const RotatingBarcode: Schema.Schema<RotatingBarcode> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      totpDetails: Schema.optional(RotatingBarcodeTotpDetails),
-      type: Schema.optional(Schema.String),
-      initialRotatingBarcodeValues: Schema.optional(RotatingBarcodeValues),
-      alternateText: Schema.optional(Schema.String),
-      showCodeText: Schema.optional(LocalizedString),
-      valuePattern: Schema.optional(Schema.String),
-      renderEncoding: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RotatingBarcode",
-  }) as any as Schema.Schema<RotatingBarcode>;
+export const RotatingBarcode = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  totpDetails: Schema.optional(RotatingBarcodeTotpDetails),
+  type: Schema.optional(Schema.String),
+  initialRotatingBarcodeValues: Schema.optional(RotatingBarcodeValues),
+  alternateText: Schema.optional(Schema.String),
+  showCodeText: Schema.optional(LocalizedString),
+  valuePattern: Schema.optional(Schema.String),
+  renderEncoding: Schema.optional(Schema.String),
+}).annotate({ identifier: "RotatingBarcode" });
 
 export interface LinksModuleData {
   /** The list of URIs. */
   uris?: Array<Uri>;
 }
 
-export const LinksModuleData: Schema.Schema<LinksModuleData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uris: Schema.optional(Schema.Array(Uri)),
-    }),
-  ).annotate({
-    identifier: "LinksModuleData",
-  }) as any as Schema.Schema<LinksModuleData>;
+export const LinksModuleData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  uris: Schema.optional(Schema.Array(Uri)),
+}).annotate({ identifier: "LinksModuleData" });
 
 export interface TextModuleData {
   /** The ID associated with a text module. This field is here to enable ease of management of text modules and referencing them in template overrides. The ID should only include alphanumeric characters, '_', or '-'. It can not include dots, as dots are used to separate fields within FieldReference.fieldPaths in template overrides. */
@@ -500,32 +405,22 @@ export interface TextModuleData {
   header?: string;
 }
 
-export const TextModuleData: Schema.Schema<TextModuleData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      localizedHeader: Schema.optional(LocalizedString),
-      body: Schema.optional(Schema.String),
-      localizedBody: Schema.optional(LocalizedString),
-      header: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TextModuleData",
-  }) as any as Schema.Schema<TextModuleData>;
+export const TextModuleData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  localizedHeader: Schema.optional(LocalizedString),
+  body: Schema.optional(Schema.String),
+  localizedBody: Schema.optional(LocalizedString),
+  header: Schema.optional(Schema.String),
+}).annotate({ identifier: "TextModuleData" });
 
 export interface SaveRestrictions {
   /** Restrict the save of the referencing object to the given email address only. This is the hex output of SHA256 sum of the email address, all lowercase and without any notations like "." or "+", except "@". For example, for example@example.com, this value will be 31c5543c1734d25c7206f5fd591525d0295bec6fe84ff82f946a34fe970a1e66 and for Example@example.com, this value will be bc34f262c93ad7122763684ccea6f07fb7f5d8a2d11e60ce15a6f43fe70ce632 If email address of the logged-in user who tries to save this pass does not match with the defined value here, users won't be allowed to save this pass. They will instead be prompted with an error to contact the issuer. This information should be gathered from the user with an explicit consent via Sign in with Google integration https://developers.google.com/identity/authentication. Please contact with support before using Save Restrictions. */
   restrictToEmailSha256?: string;
 }
 
-export const SaveRestrictions: Schema.Schema<SaveRestrictions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      restrictToEmailSha256: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SaveRestrictions",
-  }) as any as Schema.Schema<SaveRestrictions>;
+export const SaveRestrictions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  restrictToEmailSha256: Schema.optional(Schema.String),
+}).annotate({ identifier: "SaveRestrictions" });
 
 export interface GroupingInfo {
   /** Optional index for sorting the passes when they are grouped with other passes. Passes with lower sort index are shown before passes with higher sort index. If unspecified, the value is assumed to be INT_MAX. For two passes with the same sort index, the sorting behavior is undefined. */
@@ -534,27 +429,19 @@ export interface GroupingInfo {
   groupingId?: string;
 }
 
-export const GroupingInfo: Schema.Schema<GroupingInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sortIndex: Schema.optional(Schema.Number),
-      groupingId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GroupingInfo",
-  }) as any as Schema.Schema<GroupingInfo>;
+export const GroupingInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sortIndex: Schema.optional(Schema.Number),
+  groupingId: Schema.optional(Schema.String),
+}).annotate({ identifier: "GroupingInfo" });
 
 export interface DateTime {
   /** An ISO 8601 extended format date/time. Offset may or may not be required (refer to the parent field's documentation). Time may be specified up to nanosecond precision. Offsets may be specified with seconds precision (even though offset seconds is not part of ISO 8601). For example: `1985-04-12T23:20:50.52Z` would be 20 minutes and 50.52 seconds after the 23rd hour of April 12th, 1985 in UTC. `1985-04-12T19:20:50.52-04:00` would be 20 minutes and 50.52 seconds after the 19th hour of April 12th, 1985, 4 hours before UTC (same instant in time as the above example). If the date/time is intended for a physical location in New York, this would be the equivalent of Eastern Daylight Time (EDT). Remember that offset varies in regions that observe Daylight Saving Time (or Summer Time), depending on the time of the year. `1985-04-12T19:20:50.52` would be 20 minutes and 50.52 seconds after the 19th hour of April 12th, 1985 with no offset information. Providing an offset makes this an absolute instant in time around the world. The date/time will be adjusted based on the user's time zone. For example, a time of `2018-06-19T18:30:00-04:00` will be 18:30:00 for a user in New York and 15:30:00 for a user in Los Angeles. Omitting the offset makes this a local date/time, representing several instants in time around the world. The date/time will always be in the user's current time zone. For example, a time of `2018-06-19T18:30:00` will be 18:30:00 for a user in New York and also 18:30:00 for a user in Los Angeles. This is useful when the same local date/time should apply to many physical locations across several time zones. */
   date?: string;
 }
 
-export const DateTime: Schema.Schema<DateTime> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      date: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "DateTime" }) as any as Schema.Schema<DateTime>;
+export const DateTime = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  date: Schema.optional(Schema.String),
+}).annotate({ identifier: "DateTime" });
 
 export interface TimeInterval {
   /** Identifies what kind of resource this is. Value: the fixed string `"walletobjects#timeInterval"`. */
@@ -565,30 +452,20 @@ export interface TimeInterval {
   start?: DateTime;
 }
 
-export const TimeInterval: Schema.Schema<TimeInterval> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      end: Schema.optional(DateTime),
-      start: Schema.optional(DateTime),
-    }),
-  ).annotate({
-    identifier: "TimeInterval",
-  }) as any as Schema.Schema<TimeInterval>;
+export const TimeInterval = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  end: Schema.optional(DateTime),
+  start: Schema.optional(DateTime),
+}).annotate({ identifier: "TimeInterval" });
 
 export interface ModuleViewConstraints {
   /** The period of time that the module will be displayed to users. Can define both a `startTime` and `endTime`. The module is displayed immediately after insertion unless a `startTime` is set. The module is displayed indefinitely if `endTime` is not set. */
   displayInterval?: TimeInterval;
 }
 
-export const ModuleViewConstraints: Schema.Schema<ModuleViewConstraints> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayInterval: Schema.optional(TimeInterval),
-    }),
-  ).annotate({
-    identifier: "ModuleViewConstraints",
-  }) as any as Schema.Schema<ModuleViewConstraints>;
+export const ModuleViewConstraints = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayInterval: Schema.optional(TimeInterval),
+}).annotate({ identifier: "ModuleViewConstraints" });
 
 export interface ValueAddedModuleData {
   /** Image to be displayed on the module. Recommended image ratio is 1:1. Images will be resized to fit this ratio. */
@@ -605,30 +482,22 @@ export interface ValueAddedModuleData {
   uri?: string;
 }
 
-export const ValueAddedModuleData: Schema.Schema<ValueAddedModuleData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      image: Schema.optional(Image),
-      header: Schema.optional(LocalizedString),
-      viewConstraints: Schema.optional(ModuleViewConstraints),
-      sortIndex: Schema.optional(Schema.Number),
-      body: Schema.optional(LocalizedString),
-      uri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ValueAddedModuleData",
-  }) as any as Schema.Schema<ValueAddedModuleData>;
+export const ValueAddedModuleData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  image: Schema.optional(Image),
+  header: Schema.optional(LocalizedString),
+  viewConstraints: Schema.optional(ModuleViewConstraints),
+  sortIndex: Schema.optional(Schema.Number),
+  body: Schema.optional(LocalizedString),
+  uri: Schema.optional(Schema.String),
+}).annotate({ identifier: "ValueAddedModuleData" });
 
 export interface Review {
   comments?: string;
 }
 
-export const Review: Schema.Schema<Review> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      comments: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Review" }) as any as Schema.Schema<Review>;
+export const Review = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  comments: Schema.optional(Schema.String),
+}).annotate({ identifier: "Review" });
 
 export interface CallbackOptions {
   /** The HTTPS url configured by the merchant. The URL should be hosted on HTTPS and robots.txt should allow the URL path to be accessible by UserAgent:Googlebot. */
@@ -637,15 +506,10 @@ export interface CallbackOptions {
   updateRequestUrl?: string;
 }
 
-export const CallbackOptions: Schema.Schema<CallbackOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      url: Schema.optional(Schema.String),
-      updateRequestUrl: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CallbackOptions",
-  }) as any as Schema.Schema<CallbackOptions>;
+export const CallbackOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  url: Schema.optional(Schema.String),
+  updateRequestUrl: Schema.optional(Schema.String),
+}).annotate({ identifier: "CallbackOptions" });
 
 export interface EventDateTime {
   /** A custom label to use for the doors open value (`doorsOpen`) on the card detail view. This should only be used if the default "Doors Open" label or one of the `doorsOpenLabel` options is not sufficient. Both `doorsOpenLabel` and `customDoorsOpenLabel` may not be set. If neither is set, the label will default to "Doors Open", localized. If the doors open field is unset, this label will not be used. */
@@ -668,19 +532,14 @@ export interface EventDateTime {
   start?: string;
 }
 
-export const EventDateTime: Schema.Schema<EventDateTime> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customDoorsOpenLabel: Schema.optional(LocalizedString),
-      end: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      doorsOpen: Schema.optional(Schema.String),
-      doorsOpenLabel: Schema.optional(Schema.String),
-      start: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EventDateTime",
-  }) as any as Schema.Schema<EventDateTime>;
+export const EventDateTime = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  customDoorsOpenLabel: Schema.optional(LocalizedString),
+  end: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  doorsOpen: Schema.optional(Schema.String),
+  doorsOpenLabel: Schema.optional(Schema.String),
+  start: Schema.optional(Schema.String),
+}).annotate({ identifier: "EventDateTime" });
 
 export interface EventVenue {
   /** Identifies what kind of resource this is. Value: the fixed string `"walletobjects#eventVenue"`. */
@@ -691,14 +550,11 @@ export interface EventVenue {
   address?: LocalizedString;
 }
 
-export const EventVenue: Schema.Schema<EventVenue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      name: Schema.optional(LocalizedString),
-      address: Schema.optional(LocalizedString),
-    }),
-  ).annotate({ identifier: "EventVenue" }) as any as Schema.Schema<EventVenue>;
+export const EventVenue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  name: Schema.optional(LocalizedString),
+  address: Schema.optional(LocalizedString),
+}).annotate({ identifier: "EventVenue" });
 
 export interface FieldReference {
   /** Only valid if the `fieldPath` references a date field. Chooses how the date field will be formatted and displayed in the UI. */
@@ -721,29 +577,19 @@ export interface FieldReference {
   fieldPath?: string;
 }
 
-export const FieldReference: Schema.Schema<FieldReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dateFormat: Schema.optional(Schema.String),
-      fieldPath: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FieldReference",
-  }) as any as Schema.Schema<FieldReference>;
+export const FieldReference = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dateFormat: Schema.optional(Schema.String),
+  fieldPath: Schema.optional(Schema.String),
+}).annotate({ identifier: "FieldReference" });
 
 export interface FieldSelector {
   /** If more than one reference is supplied, then the first one that references a non-empty field will be displayed. */
   fields?: Array<FieldReference>;
 }
 
-export const FieldSelector: Schema.Schema<FieldSelector> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fields: Schema.optional(Schema.Array(FieldReference)),
-    }),
-  ).annotate({
-    identifier: "FieldSelector",
-  }) as any as Schema.Schema<FieldSelector>;
+export const FieldSelector = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fields: Schema.optional(Schema.Array(FieldReference)),
+}).annotate({ identifier: "FieldSelector" });
 
 export interface TemplateItem {
   /** A reference to a field to display. This may only be populated if the `firstValue` field is populated. */
@@ -760,16 +606,11 @@ export interface TemplateItem {
     | (string & {});
 }
 
-export const TemplateItem: Schema.Schema<TemplateItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      secondValue: Schema.optional(FieldSelector),
-      firstValue: Schema.optional(FieldSelector),
-      predefinedItem: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TemplateItem",
-  }) as any as Schema.Schema<TemplateItem>;
+export const TemplateItem = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  secondValue: Schema.optional(FieldSelector),
+  firstValue: Schema.optional(FieldSelector),
+  predefinedItem: Schema.optional(Schema.String),
+}).annotate({ identifier: "TemplateItem" });
 
 export interface CardRowThreeItems {
   /** The item to be displayed at the start of the row. This item will be aligned to the left. */
@@ -780,30 +621,20 @@ export interface CardRowThreeItems {
   endItem?: TemplateItem;
 }
 
-export const CardRowThreeItems: Schema.Schema<CardRowThreeItems> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startItem: Schema.optional(TemplateItem),
-      middleItem: Schema.optional(TemplateItem),
-      endItem: Schema.optional(TemplateItem),
-    }),
-  ).annotate({
-    identifier: "CardRowThreeItems",
-  }) as any as Schema.Schema<CardRowThreeItems>;
+export const CardRowThreeItems = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startItem: Schema.optional(TemplateItem),
+  middleItem: Schema.optional(TemplateItem),
+  endItem: Schema.optional(TemplateItem),
+}).annotate({ identifier: "CardRowThreeItems" });
 
 export interface CardRowOneItem {
   /** The item to be displayed in the row. This item will be automatically centered. */
   item?: TemplateItem;
 }
 
-export const CardRowOneItem: Schema.Schema<CardRowOneItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      item: Schema.optional(TemplateItem),
-    }),
-  ).annotate({
-    identifier: "CardRowOneItem",
-  }) as any as Schema.Schema<CardRowOneItem>;
+export const CardRowOneItem = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  item: Schema.optional(TemplateItem),
+}).annotate({ identifier: "CardRowOneItem" });
 
 export interface CardRowTwoItems {
   /** The item to be displayed at the start of the row. This item will be aligned to the left. */
@@ -812,15 +643,10 @@ export interface CardRowTwoItems {
   endItem?: TemplateItem;
 }
 
-export const CardRowTwoItems: Schema.Schema<CardRowTwoItems> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startItem: Schema.optional(TemplateItem),
-      endItem: Schema.optional(TemplateItem),
-    }),
-  ).annotate({
-    identifier: "CardRowTwoItems",
-  }) as any as Schema.Schema<CardRowTwoItems>;
+export const CardRowTwoItems = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startItem: Schema.optional(TemplateItem),
+  endItem: Schema.optional(TemplateItem),
+}).annotate({ identifier: "CardRowTwoItems" });
 
 export interface CardRowTemplateInfo {
   /** Template for a row containing three items. Exactly one of "one_item", "two_items", "three_items" must be set. */
@@ -831,72 +657,48 @@ export interface CardRowTemplateInfo {
   twoItems?: CardRowTwoItems;
 }
 
-export const CardRowTemplateInfo: Schema.Schema<CardRowTemplateInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      threeItems: Schema.optional(CardRowThreeItems),
-      oneItem: Schema.optional(CardRowOneItem),
-      twoItems: Schema.optional(CardRowTwoItems),
-    }),
-  ).annotate({
-    identifier: "CardRowTemplateInfo",
-  }) as any as Schema.Schema<CardRowTemplateInfo>;
+export const CardRowTemplateInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  threeItems: Schema.optional(CardRowThreeItems),
+  oneItem: Schema.optional(CardRowOneItem),
+  twoItems: Schema.optional(CardRowTwoItems),
+}).annotate({ identifier: "CardRowTemplateInfo" });
 
 export interface CardTemplateOverride {
   /** Template information for rows in the card view. At most three rows are allowed to be specified. */
   cardRowTemplateInfos?: Array<CardRowTemplateInfo>;
 }
 
-export const CardTemplateOverride: Schema.Schema<CardTemplateOverride> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cardRowTemplateInfos: Schema.optional(Schema.Array(CardRowTemplateInfo)),
-    }),
-  ).annotate({
-    identifier: "CardTemplateOverride",
-  }) as any as Schema.Schema<CardTemplateOverride>;
+export const CardTemplateOverride = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cardRowTemplateInfos: Schema.optional(Schema.Array(CardRowTemplateInfo)),
+}).annotate({ identifier: "CardTemplateOverride" });
 
 export interface DetailsItemInfo {
   /** The item to be displayed in the details list. */
   item?: TemplateItem;
 }
 
-export const DetailsItemInfo: Schema.Schema<DetailsItemInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      item: Schema.optional(TemplateItem),
-    }),
-  ).annotate({
-    identifier: "DetailsItemInfo",
-  }) as any as Schema.Schema<DetailsItemInfo>;
+export const DetailsItemInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  item: Schema.optional(TemplateItem),
+}).annotate({ identifier: "DetailsItemInfo" });
 
 export interface DetailsTemplateOverride {
   /** Information for the "nth" item displayed in the details list. */
   detailsItemInfos?: Array<DetailsItemInfo>;
 }
 
-export const DetailsTemplateOverride: Schema.Schema<DetailsTemplateOverride> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      detailsItemInfos: Schema.optional(Schema.Array(DetailsItemInfo)),
-    }),
-  ).annotate({
-    identifier: "DetailsTemplateOverride",
-  }) as any as Schema.Schema<DetailsTemplateOverride>;
+export const DetailsTemplateOverride =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    detailsItemInfos: Schema.optional(Schema.Array(DetailsItemInfo)),
+  }).annotate({ identifier: "DetailsTemplateOverride" });
 
 export interface BarcodeSectionDetail {
   /** A reference to an existing text-based or image field to display. */
   fieldSelector?: FieldSelector;
 }
 
-export const BarcodeSectionDetail: Schema.Schema<BarcodeSectionDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fieldSelector: Schema.optional(FieldSelector),
-    }),
-  ).annotate({
-    identifier: "BarcodeSectionDetail",
-  }) as any as Schema.Schema<BarcodeSectionDetail>;
+export const BarcodeSectionDetail = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fieldSelector: Schema.optional(FieldSelector),
+}).annotate({ identifier: "BarcodeSectionDetail" });
 
 export interface CardBarcodeSectionDetails {
   /** Optional information to display above the barcode. If `secondTopDetail` is defined, this will be displayed to the start side of this detail section. */
@@ -907,16 +709,12 @@ export interface CardBarcodeSectionDetails {
   secondTopDetail?: BarcodeSectionDetail;
 }
 
-export const CardBarcodeSectionDetails: Schema.Schema<CardBarcodeSectionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      firstTopDetail: Schema.optional(BarcodeSectionDetail),
-      firstBottomDetail: Schema.optional(BarcodeSectionDetail),
-      secondTopDetail: Schema.optional(BarcodeSectionDetail),
-    }),
-  ).annotate({
-    identifier: "CardBarcodeSectionDetails",
-  }) as any as Schema.Schema<CardBarcodeSectionDetails>;
+export const CardBarcodeSectionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    firstTopDetail: Schema.optional(BarcodeSectionDetail),
+    firstBottomDetail: Schema.optional(BarcodeSectionDetail),
+    secondTopDetail: Schema.optional(BarcodeSectionDetail),
+  }).annotate({ identifier: "CardBarcodeSectionDetails" });
 
 export interface FirstRowOption {
   transitOption?:
@@ -932,15 +730,10 @@ export interface FirstRowOption {
   fieldOption?: FieldSelector;
 }
 
-export const FirstRowOption: Schema.Schema<FirstRowOption> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      transitOption: Schema.optional(Schema.String),
-      fieldOption: Schema.optional(FieldSelector),
-    }),
-  ).annotate({
-    identifier: "FirstRowOption",
-  }) as any as Schema.Schema<FirstRowOption>;
+export const FirstRowOption = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  transitOption: Schema.optional(Schema.String),
+  fieldOption: Schema.optional(FieldSelector),
+}).annotate({ identifier: "FirstRowOption" });
 
 export interface ListTemplateOverride {
   /** A reference to the field to be displayed in the second row. This option is only displayed if there are not multiple user objects in a group. If there is a group, the second row will always display a field shared by all objects. To set this override, please set secondRowOption to the FieldSelector of you choice. */
@@ -951,16 +744,11 @@ export interface ListTemplateOverride {
   firstRowOption?: FirstRowOption;
 }
 
-export const ListTemplateOverride: Schema.Schema<ListTemplateOverride> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      secondRowOption: Schema.optional(FieldSelector),
-      thirdRowOption: Schema.optional(FieldSelector),
-      firstRowOption: Schema.optional(FirstRowOption),
-    }),
-  ).annotate({
-    identifier: "ListTemplateOverride",
-  }) as any as Schema.Schema<ListTemplateOverride>;
+export const ListTemplateOverride = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  secondRowOption: Schema.optional(FieldSelector),
+  thirdRowOption: Schema.optional(FieldSelector),
+  firstRowOption: Schema.optional(FirstRowOption),
+}).annotate({ identifier: "ListTemplateOverride" });
 
 export interface ClassTemplateInfo {
   /** Override for the card view. */
@@ -973,17 +761,12 @@ export interface ClassTemplateInfo {
   listTemplateOverride?: ListTemplateOverride;
 }
 
-export const ClassTemplateInfo: Schema.Schema<ClassTemplateInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cardTemplateOverride: Schema.optional(CardTemplateOverride),
-      detailsTemplateOverride: Schema.optional(DetailsTemplateOverride),
-      cardBarcodeSectionDetails: Schema.optional(CardBarcodeSectionDetails),
-      listTemplateOverride: Schema.optional(ListTemplateOverride),
-    }),
-  ).annotate({
-    identifier: "ClassTemplateInfo",
-  }) as any as Schema.Schema<ClassTemplateInfo>;
+export const ClassTemplateInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cardTemplateOverride: Schema.optional(CardTemplateOverride),
+  detailsTemplateOverride: Schema.optional(DetailsTemplateOverride),
+  cardBarcodeSectionDetails: Schema.optional(CardBarcodeSectionDetails),
+  listTemplateOverride: Schema.optional(ListTemplateOverride),
+}).annotate({ identifier: "ClassTemplateInfo" });
 
 export interface SecurityAnimation {
   /** Type of animation. */
@@ -994,14 +777,9 @@ export interface SecurityAnimation {
     | (string & {});
 }
 
-export const SecurityAnimation: Schema.Schema<SecurityAnimation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      animationType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SecurityAnimation",
-  }) as any as Schema.Schema<SecurityAnimation>;
+export const SecurityAnimation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  animationType: Schema.optional(Schema.String),
+}).annotate({ identifier: "SecurityAnimation" });
 
 export interface Message {
   /** The message body. */
@@ -1029,19 +807,16 @@ export interface Message {
     | (string & {});
 }
 
-export const Message: Schema.Schema<Message> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      body: Schema.optional(Schema.String),
-      localizedBody: Schema.optional(LocalizedString),
-      header: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      displayInterval: Schema.optional(TimeInterval),
-      localizedHeader: Schema.optional(LocalizedString),
-      id: Schema.optional(Schema.String),
-      messageType: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Message" }) as any as Schema.Schema<Message>;
+export const Message = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  body: Schema.optional(Schema.String),
+  localizedBody: Schema.optional(LocalizedString),
+  header: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  displayInterval: Schema.optional(TimeInterval),
+  localizedHeader: Schema.optional(LocalizedString),
+  id: Schema.optional(Schema.String),
+  messageType: Schema.optional(Schema.String),
+}).annotate({ identifier: "Message" });
 
 export interface EventTicketClass {
   /** Required. The status of the class. This field can be set to `draft` or `underReview` using the insert, patch, or update API calls. Once the review state is changed from `draft` it may not be changed back to `draft`. You should keep this field to `draft` when the class is under development. A `draft` class cannot be used to create any object. You should set this field to `underReview` when you believe the class is ready for use. The platform will automatically set this field to `approved` and it can be immediately used to create or migrate objects. When updating an already `approved` class you should keep setting this field to `underReview`. */
@@ -1189,60 +964,55 @@ export interface EventTicketClass {
   localizedIssuerName?: LocalizedString;
 }
 
-export const EventTicketClass: Schema.Schema<EventTicketClass> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reviewStatus: Schema.optional(Schema.String),
-      notifyPreference: Schema.optional(Schema.String),
-      appLinkData: Schema.optional(AppLinkData),
-      sectionLabel: Schema.optional(Schema.String),
-      wideLogo: Schema.optional(Image),
-      merchantLocations: Schema.optional(Schema.Array(MerchantLocation)),
-      eventId: Schema.optional(Schema.String),
-      review: Schema.optional(Review),
-      kind: Schema.optional(Schema.String),
-      locations: Schema.optional(Schema.Array(LatLongPoint)),
-      wordMark: Schema.optional(Image),
-      version: Schema.optional(Schema.String),
-      heroImage: Schema.optional(Image),
-      seatLabel: Schema.optional(Schema.String),
-      allowMultipleUsersPerObject: Schema.optional(Schema.Boolean),
-      issuerName: Schema.optional(Schema.String),
-      rowLabel: Schema.optional(Schema.String),
-      imageModulesData: Schema.optional(Schema.Array(ImageModuleData)),
-      redemptionIssuers: Schema.optional(Schema.Array(Schema.String)),
-      hexBackgroundColor: Schema.optional(Schema.String),
-      callbackOptions: Schema.optional(CallbackOptions),
-      linksModuleData: Schema.optional(LinksModuleData),
-      customConfirmationCodeLabel: Schema.optional(LocalizedString),
-      infoModuleData: Schema.optional(InfoModuleData),
-      countryCode: Schema.optional(Schema.String),
-      textModulesData: Schema.optional(Schema.Array(TextModuleData)),
-      customSectionLabel: Schema.optional(LocalizedString),
-      eventName: Schema.optional(LocalizedString),
-      dateTime: Schema.optional(EventDateTime),
-      valueAddedModuleData: Schema.optional(Schema.Array(ValueAddedModuleData)),
-      customSeatLabel: Schema.optional(LocalizedString),
-      logo: Schema.optional(Image),
-      enableSmartTap: Schema.optional(Schema.Boolean),
-      multipleDevicesAndHoldersAllowedStatus: Schema.optional(Schema.String),
-      homepageUri: Schema.optional(Uri),
-      viewUnlockRequirement: Schema.optional(Schema.String),
-      confirmationCodeLabel: Schema.optional(Schema.String),
-      customRowLabel: Schema.optional(LocalizedString),
-      id: Schema.optional(Schema.String),
-      gateLabel: Schema.optional(Schema.String),
-      venue: Schema.optional(EventVenue),
-      finePrint: Schema.optional(LocalizedString),
-      customGateLabel: Schema.optional(LocalizedString),
-      classTemplateInfo: Schema.optional(ClassTemplateInfo),
-      securityAnimation: Schema.optional(SecurityAnimation),
-      messages: Schema.optional(Schema.Array(Message)),
-      localizedIssuerName: Schema.optional(LocalizedString),
-    }),
-  ).annotate({
-    identifier: "EventTicketClass",
-  }) as any as Schema.Schema<EventTicketClass>;
+export const EventTicketClass = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  reviewStatus: Schema.optional(Schema.String),
+  notifyPreference: Schema.optional(Schema.String),
+  appLinkData: Schema.optional(AppLinkData),
+  sectionLabel: Schema.optional(Schema.String),
+  wideLogo: Schema.optional(Image),
+  merchantLocations: Schema.optional(Schema.Array(MerchantLocation)),
+  eventId: Schema.optional(Schema.String),
+  review: Schema.optional(Review),
+  kind: Schema.optional(Schema.String),
+  locations: Schema.optional(Schema.Array(LatLongPoint)),
+  wordMark: Schema.optional(Image),
+  version: Schema.optional(Schema.String),
+  heroImage: Schema.optional(Image),
+  seatLabel: Schema.optional(Schema.String),
+  allowMultipleUsersPerObject: Schema.optional(Schema.Boolean),
+  issuerName: Schema.optional(Schema.String),
+  rowLabel: Schema.optional(Schema.String),
+  imageModulesData: Schema.optional(Schema.Array(ImageModuleData)),
+  redemptionIssuers: Schema.optional(Schema.Array(Schema.String)),
+  hexBackgroundColor: Schema.optional(Schema.String),
+  callbackOptions: Schema.optional(CallbackOptions),
+  linksModuleData: Schema.optional(LinksModuleData),
+  customConfirmationCodeLabel: Schema.optional(LocalizedString),
+  infoModuleData: Schema.optional(InfoModuleData),
+  countryCode: Schema.optional(Schema.String),
+  textModulesData: Schema.optional(Schema.Array(TextModuleData)),
+  customSectionLabel: Schema.optional(LocalizedString),
+  eventName: Schema.optional(LocalizedString),
+  dateTime: Schema.optional(EventDateTime),
+  valueAddedModuleData: Schema.optional(Schema.Array(ValueAddedModuleData)),
+  customSeatLabel: Schema.optional(LocalizedString),
+  logo: Schema.optional(Image),
+  enableSmartTap: Schema.optional(Schema.Boolean),
+  multipleDevicesAndHoldersAllowedStatus: Schema.optional(Schema.String),
+  homepageUri: Schema.optional(Uri),
+  viewUnlockRequirement: Schema.optional(Schema.String),
+  confirmationCodeLabel: Schema.optional(Schema.String),
+  customRowLabel: Schema.optional(LocalizedString),
+  id: Schema.optional(Schema.String),
+  gateLabel: Schema.optional(Schema.String),
+  venue: Schema.optional(EventVenue),
+  finePrint: Schema.optional(LocalizedString),
+  customGateLabel: Schema.optional(LocalizedString),
+  classTemplateInfo: Schema.optional(ClassTemplateInfo),
+  securityAnimation: Schema.optional(SecurityAnimation),
+  messages: Schema.optional(Schema.Array(Message)),
+  localizedIssuerName: Schema.optional(LocalizedString),
+}).annotate({ identifier: "EventTicketClass" });
 
 export interface PassConstraints {
   /** The screenshot eligibility for the pass. */
@@ -1260,15 +1030,10 @@ export interface PassConstraints {
   >;
 }
 
-export const PassConstraints: Schema.Schema<PassConstraints> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      screenshotEligibility: Schema.optional(Schema.String),
-      nfcConstraint: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "PassConstraints",
-  }) as any as Schema.Schema<PassConstraints>;
+export const PassConstraints = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  screenshotEligibility: Schema.optional(Schema.String),
+  nfcConstraint: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "PassConstraints" });
 
 export interface Barcode {
   /** The type of barcode. */
@@ -1314,17 +1079,14 @@ export interface Barcode {
   renderEncoding?: "RENDER_ENCODING_UNSPECIFIED" | "UTF_8" | (string & {});
 }
 
-export const Barcode: Schema.Schema<Barcode> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      alternateText: Schema.optional(Schema.String),
-      showCodeText: Schema.optional(LocalizedString),
-      kind: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-      renderEncoding: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Barcode" }) as any as Schema.Schema<Barcode>;
+export const Barcode = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  alternateText: Schema.optional(Schema.String),
+  showCodeText: Schema.optional(LocalizedString),
+  kind: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+  renderEncoding: Schema.optional(Schema.String),
+}).annotate({ identifier: "Barcode" });
 
 export interface Money {
   /** Identifies what kind of resource this is. Value: the fixed string `"walletobjects#money"`. */
@@ -1335,14 +1097,11 @@ export interface Money {
   currencyCode?: string;
 }
 
-export const Money: Schema.Schema<Money> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      micros: Schema.optional(Schema.String),
-      currencyCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Money" }) as any as Schema.Schema<Money>;
+export const Money = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  micros: Schema.optional(Schema.String),
+  currencyCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "Money" });
 
 export interface EventTicketObject {
   /** Optional app or website link that will be displayed as a button on the front of the pass. If AppLinkData is provided for the corresponding class only object AppLinkData will be displayed. */
@@ -1432,63 +1191,54 @@ export interface EventTicketObject {
   messages?: Array<Message>;
 }
 
-export const EventTicketObject: Schema.Schema<EventTicketObject> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      appLinkData: Schema.optional(AppLinkData),
-      notifyPreference: Schema.optional(Schema.String),
-      ticketNumber: Schema.optional(Schema.String),
-      ticketType: Schema.optional(LocalizedString),
-      classId: Schema.optional(Schema.String),
-      merchantLocations: Schema.optional(Schema.Array(MerchantLocation)),
-      smartTapRedemptionValue: Schema.optional(Schema.String),
-      seatInfo: Schema.optional(EventSeat),
-      imageModulesData: Schema.optional(Schema.Array(ImageModuleData)),
-      version: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      locations: Schema.optional(Schema.Array(LatLongPoint)),
-      reservationInfo: Schema.optional(EventReservationInfo),
-      heroImage: Schema.optional(Image),
-      disableExpirationNotification: Schema.optional(Schema.Boolean),
-      rotatingBarcode: Schema.optional(RotatingBarcode),
-      ticketHolderName: Schema.optional(Schema.String),
-      hexBackgroundColor: Schema.optional(Schema.String),
-      infoModuleData: Schema.optional(InfoModuleData),
-      linksModuleData: Schema.optional(LinksModuleData),
-      linkedOfferIds: Schema.optional(Schema.Array(Schema.String)),
-      textModulesData: Schema.optional(Schema.Array(TextModuleData)),
-      saveRestrictions: Schema.optional(SaveRestrictions),
-      linkedObjectIds: Schema.optional(Schema.Array(Schema.String)),
-      state: Schema.optional(Schema.String),
-      hasLinkedDevice: Schema.optional(Schema.Boolean),
-      groupingInfo: Schema.optional(GroupingInfo),
-      validTimeInterval: Schema.optional(TimeInterval),
-      valueAddedModuleData: Schema.optional(Schema.Array(ValueAddedModuleData)),
-      classReference: Schema.optional(EventTicketClass),
-      hasUsers: Schema.optional(Schema.Boolean),
-      passConstraints: Schema.optional(PassConstraints),
-      id: Schema.optional(Schema.String),
-      barcode: Schema.optional(Barcode),
-      faceValue: Schema.optional(Money),
-      messages: Schema.optional(Schema.Array(Message)),
-    }),
-  ).annotate({
-    identifier: "EventTicketObject",
-  }) as any as Schema.Schema<EventTicketObject>;
+export const EventTicketObject = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  appLinkData: Schema.optional(AppLinkData),
+  notifyPreference: Schema.optional(Schema.String),
+  ticketNumber: Schema.optional(Schema.String),
+  ticketType: Schema.optional(LocalizedString),
+  classId: Schema.optional(Schema.String),
+  merchantLocations: Schema.optional(Schema.Array(MerchantLocation)),
+  smartTapRedemptionValue: Schema.optional(Schema.String),
+  seatInfo: Schema.optional(EventSeat),
+  imageModulesData: Schema.optional(Schema.Array(ImageModuleData)),
+  version: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  locations: Schema.optional(Schema.Array(LatLongPoint)),
+  reservationInfo: Schema.optional(EventReservationInfo),
+  heroImage: Schema.optional(Image),
+  disableExpirationNotification: Schema.optional(Schema.Boolean),
+  rotatingBarcode: Schema.optional(RotatingBarcode),
+  ticketHolderName: Schema.optional(Schema.String),
+  hexBackgroundColor: Schema.optional(Schema.String),
+  infoModuleData: Schema.optional(InfoModuleData),
+  linksModuleData: Schema.optional(LinksModuleData),
+  linkedOfferIds: Schema.optional(Schema.Array(Schema.String)),
+  textModulesData: Schema.optional(Schema.Array(TextModuleData)),
+  saveRestrictions: Schema.optional(SaveRestrictions),
+  linkedObjectIds: Schema.optional(Schema.Array(Schema.String)),
+  state: Schema.optional(Schema.String),
+  hasLinkedDevice: Schema.optional(Schema.Boolean),
+  groupingInfo: Schema.optional(GroupingInfo),
+  validTimeInterval: Schema.optional(TimeInterval),
+  valueAddedModuleData: Schema.optional(Schema.Array(ValueAddedModuleData)),
+  classReference: Schema.optional(EventTicketClass),
+  hasUsers: Schema.optional(Schema.Boolean),
+  passConstraints: Schema.optional(PassConstraints),
+  id: Schema.optional(Schema.String),
+  barcode: Schema.optional(Barcode),
+  faceValue: Schema.optional(Money),
+  messages: Schema.optional(Schema.Array(Message)),
+}).annotate({ identifier: "EventTicketObject" });
 
 export interface EventTicketObjectAddMessageResponse {
   /** The updated EventTicketObject resource. */
   resource?: EventTicketObject;
 }
 
-export const EventTicketObjectAddMessageResponse: Schema.Schema<EventTicketObjectAddMessageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resource: Schema.optional(EventTicketObject),
-    }),
-  ).annotate({
-    identifier: "EventTicketObjectAddMessageResponse",
-  }) as any as Schema.Schema<EventTicketObjectAddMessageResponse>;
+export const EventTicketObjectAddMessageResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.optional(EventTicketObject),
+  }).annotate({ identifier: "EventTicketObjectAddMessageResponse" });
 
 export interface TicketCost {
   /** A message describing any kind of discount that was applied. */
@@ -1499,14 +1249,11 @@ export interface TicketCost {
   faceValue?: Money;
 }
 
-export const TicketCost: Schema.Schema<TicketCost> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      discountMessage: Schema.optional(LocalizedString),
-      purchasePrice: Schema.optional(Money),
-      faceValue: Schema.optional(Money),
-    }),
-  ).annotate({ identifier: "TicketCost" }) as any as Schema.Schema<TicketCost>;
+export const TicketCost = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  discountMessage: Schema.optional(LocalizedString),
+  purchasePrice: Schema.optional(Money),
+  faceValue: Schema.optional(Money),
+}).annotate({ identifier: "TicketCost" });
 
 export interface GiftCardClass {
   /** Deprecated */
@@ -1618,54 +1365,49 @@ export interface GiftCardClass {
     | (string & {});
 }
 
-export const GiftCardClass: Schema.Schema<GiftCardClass> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      locations: Schema.optional(Schema.Array(LatLongPoint)),
-      wordMark: Schema.optional(Image),
-      allowMultipleUsersPerObject: Schema.optional(Schema.Boolean),
-      heroImage: Schema.optional(Image),
-      issuerName: Schema.optional(Schema.String),
-      imageModulesData: Schema.optional(Schema.Array(ImageModuleData)),
-      redemptionIssuers: Schema.optional(Schema.Array(Schema.String)),
-      programLogo: Schema.optional(Image),
-      pinLabel: Schema.optional(Schema.String),
-      callbackOptions: Schema.optional(CallbackOptions),
-      hexBackgroundColor: Schema.optional(Schema.String),
-      infoModuleData: Schema.optional(InfoModuleData),
-      eventNumberLabel: Schema.optional(Schema.String),
-      linksModuleData: Schema.optional(LinksModuleData),
-      countryCode: Schema.optional(Schema.String),
-      reviewStatus: Schema.optional(Schema.String),
-      notifyPreference: Schema.optional(Schema.String),
-      allowBarcodeRedemption: Schema.optional(Schema.Boolean),
-      cardNumberLabel: Schema.optional(Schema.String),
-      appLinkData: Schema.optional(AppLinkData),
-      merchantLocations: Schema.optional(Schema.Array(MerchantLocation)),
-      review: Schema.optional(Review),
-      localizedEventNumberLabel: Schema.optional(LocalizedString),
-      id: Schema.optional(Schema.String),
-      classTemplateInfo: Schema.optional(ClassTemplateInfo),
-      securityAnimation: Schema.optional(SecurityAnimation),
-      localizedIssuerName: Schema.optional(LocalizedString),
-      wideProgramLogo: Schema.optional(Image),
-      messages: Schema.optional(Schema.Array(Message)),
-      textModulesData: Schema.optional(Schema.Array(TextModuleData)),
-      localizedPinLabel: Schema.optional(LocalizedString),
-      merchantName: Schema.optional(Schema.String),
-      localizedCardNumberLabel: Schema.optional(LocalizedString),
-      valueAddedModuleData: Schema.optional(Schema.Array(ValueAddedModuleData)),
-      enableSmartTap: Schema.optional(Schema.Boolean),
-      localizedMerchantName: Schema.optional(LocalizedString),
-      homepageUri: Schema.optional(Uri),
-      multipleDevicesAndHoldersAllowedStatus: Schema.optional(Schema.String),
-      viewUnlockRequirement: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GiftCardClass",
-  }) as any as Schema.Schema<GiftCardClass>;
+export const GiftCardClass = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  locations: Schema.optional(Schema.Array(LatLongPoint)),
+  wordMark: Schema.optional(Image),
+  allowMultipleUsersPerObject: Schema.optional(Schema.Boolean),
+  heroImage: Schema.optional(Image),
+  issuerName: Schema.optional(Schema.String),
+  imageModulesData: Schema.optional(Schema.Array(ImageModuleData)),
+  redemptionIssuers: Schema.optional(Schema.Array(Schema.String)),
+  programLogo: Schema.optional(Image),
+  pinLabel: Schema.optional(Schema.String),
+  callbackOptions: Schema.optional(CallbackOptions),
+  hexBackgroundColor: Schema.optional(Schema.String),
+  infoModuleData: Schema.optional(InfoModuleData),
+  eventNumberLabel: Schema.optional(Schema.String),
+  linksModuleData: Schema.optional(LinksModuleData),
+  countryCode: Schema.optional(Schema.String),
+  reviewStatus: Schema.optional(Schema.String),
+  notifyPreference: Schema.optional(Schema.String),
+  allowBarcodeRedemption: Schema.optional(Schema.Boolean),
+  cardNumberLabel: Schema.optional(Schema.String),
+  appLinkData: Schema.optional(AppLinkData),
+  merchantLocations: Schema.optional(Schema.Array(MerchantLocation)),
+  review: Schema.optional(Review),
+  localizedEventNumberLabel: Schema.optional(LocalizedString),
+  id: Schema.optional(Schema.String),
+  classTemplateInfo: Schema.optional(ClassTemplateInfo),
+  securityAnimation: Schema.optional(SecurityAnimation),
+  localizedIssuerName: Schema.optional(LocalizedString),
+  wideProgramLogo: Schema.optional(Image),
+  messages: Schema.optional(Schema.Array(Message)),
+  textModulesData: Schema.optional(Schema.Array(TextModuleData)),
+  localizedPinLabel: Schema.optional(LocalizedString),
+  merchantName: Schema.optional(Schema.String),
+  localizedCardNumberLabel: Schema.optional(LocalizedString),
+  valueAddedModuleData: Schema.optional(Schema.Array(ValueAddedModuleData)),
+  enableSmartTap: Schema.optional(Schema.Boolean),
+  localizedMerchantName: Schema.optional(LocalizedString),
+  homepageUri: Schema.optional(Uri),
+  multipleDevicesAndHoldersAllowedStatus: Schema.optional(Schema.String),
+  viewUnlockRequirement: Schema.optional(Schema.String),
+}).annotate({ identifier: "GiftCardClass" });
 
 export interface GiftCardObject {
   /** The barcode type and value. */
@@ -1749,60 +1491,51 @@ export interface GiftCardObject {
   pin?: string;
 }
 
-export const GiftCardObject: Schema.Schema<GiftCardObject> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      barcode: Schema.optional(Barcode),
-      messages: Schema.optional(Schema.Array(Message)),
-      balance: Schema.optional(Money),
-      cardNumber: Schema.optional(Schema.String),
-      classReference: Schema.optional(GiftCardClass),
-      hasUsers: Schema.optional(Schema.Boolean),
-      passConstraints: Schema.optional(PassConstraints),
-      id: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      hasLinkedDevice: Schema.optional(Schema.Boolean),
-      validTimeInterval: Schema.optional(TimeInterval),
-      groupingInfo: Schema.optional(GroupingInfo),
-      balanceUpdateTime: Schema.optional(DateTime),
-      valueAddedModuleData: Schema.optional(Schema.Array(ValueAddedModuleData)),
-      linkedObjectIds: Schema.optional(Schema.Array(Schema.String)),
-      textModulesData: Schema.optional(Schema.Array(TextModuleData)),
-      saveRestrictions: Schema.optional(SaveRestrictions),
-      eventNumber: Schema.optional(Schema.String),
-      disableExpirationNotification: Schema.optional(Schema.Boolean),
-      rotatingBarcode: Schema.optional(RotatingBarcode),
-      linksModuleData: Schema.optional(LinksModuleData),
-      infoModuleData: Schema.optional(InfoModuleData),
-      imageModulesData: Schema.optional(Schema.Array(ImageModuleData)),
-      kind: Schema.optional(Schema.String),
-      locations: Schema.optional(Schema.Array(LatLongPoint)),
-      version: Schema.optional(Schema.String),
-      heroImage: Schema.optional(Image),
-      classId: Schema.optional(Schema.String),
-      smartTapRedemptionValue: Schema.optional(Schema.String),
-      merchantLocations: Schema.optional(Schema.Array(MerchantLocation)),
-      appLinkData: Schema.optional(AppLinkData),
-      notifyPreference: Schema.optional(Schema.String),
-      pin: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GiftCardObject",
-  }) as any as Schema.Schema<GiftCardObject>;
+export const GiftCardObject = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  barcode: Schema.optional(Barcode),
+  messages: Schema.optional(Schema.Array(Message)),
+  balance: Schema.optional(Money),
+  cardNumber: Schema.optional(Schema.String),
+  classReference: Schema.optional(GiftCardClass),
+  hasUsers: Schema.optional(Schema.Boolean),
+  passConstraints: Schema.optional(PassConstraints),
+  id: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  hasLinkedDevice: Schema.optional(Schema.Boolean),
+  validTimeInterval: Schema.optional(TimeInterval),
+  groupingInfo: Schema.optional(GroupingInfo),
+  balanceUpdateTime: Schema.optional(DateTime),
+  valueAddedModuleData: Schema.optional(Schema.Array(ValueAddedModuleData)),
+  linkedObjectIds: Schema.optional(Schema.Array(Schema.String)),
+  textModulesData: Schema.optional(Schema.Array(TextModuleData)),
+  saveRestrictions: Schema.optional(SaveRestrictions),
+  eventNumber: Schema.optional(Schema.String),
+  disableExpirationNotification: Schema.optional(Schema.Boolean),
+  rotatingBarcode: Schema.optional(RotatingBarcode),
+  linksModuleData: Schema.optional(LinksModuleData),
+  infoModuleData: Schema.optional(InfoModuleData),
+  imageModulesData: Schema.optional(Schema.Array(ImageModuleData)),
+  kind: Schema.optional(Schema.String),
+  locations: Schema.optional(Schema.Array(LatLongPoint)),
+  version: Schema.optional(Schema.String),
+  heroImage: Schema.optional(Image),
+  classId: Schema.optional(Schema.String),
+  smartTapRedemptionValue: Schema.optional(Schema.String),
+  merchantLocations: Schema.optional(Schema.Array(MerchantLocation)),
+  appLinkData: Schema.optional(AppLinkData),
+  notifyPreference: Schema.optional(Schema.String),
+  pin: Schema.optional(Schema.String),
+}).annotate({ identifier: "GiftCardObject" });
 
 export interface GiftCardObjectAddMessageResponse {
   /** The updated GiftCardObject resource. */
   resource?: GiftCardObject;
 }
 
-export const GiftCardObjectAddMessageResponse: Schema.Schema<GiftCardObjectAddMessageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resource: Schema.optional(GiftCardObject),
-    }),
-  ).annotate({
-    identifier: "GiftCardObjectAddMessageResponse",
-  }) as any as Schema.Schema<GiftCardObjectAddMessageResponse>;
+export const GiftCardObjectAddMessageResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.optional(GiftCardObject),
+  }).annotate({ identifier: "GiftCardObjectAddMessageResponse" });
 
 export interface OfferClass {
   /** The background color for the card. If not set the dominant color of the hero image is used, and if no hero image is set, the dominant color of the logo is used. The format is #rrggbb where rrggbb is a hex RGB triplet, such as `#ffcc00`. You can also use the shorthand version of the RGB triplet which is #rgb, such as `#fc0`. */
@@ -1930,55 +1663,52 @@ export interface OfferClass {
   textModulesData?: Array<TextModuleData>;
 }
 
-export const OfferClass: Schema.Schema<OfferClass> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hexBackgroundColor: Schema.optional(Schema.String),
-      callbackOptions: Schema.optional(CallbackOptions),
-      linksModuleData: Schema.optional(LinksModuleData),
-      details: Schema.optional(Schema.String),
-      infoModuleData: Schema.optional(InfoModuleData),
-      countryCode: Schema.optional(Schema.String),
-      helpUri: Schema.optional(Uri),
-      kind: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      locations: Schema.optional(Schema.Array(LatLongPoint)),
-      wordMark: Schema.optional(Image),
-      version: Schema.optional(Schema.String),
-      redemptionChannel: Schema.optional(Schema.String),
-      heroImage: Schema.optional(Image),
-      allowMultipleUsersPerObject: Schema.optional(Schema.Boolean),
-      localizedShortTitle: Schema.optional(LocalizedString),
-      localizedDetails: Schema.optional(LocalizedString),
-      issuerName: Schema.optional(Schema.String),
-      imageModulesData: Schema.optional(Schema.Array(ImageModuleData)),
-      redemptionIssuers: Schema.optional(Schema.Array(Schema.String)),
-      merchantLocations: Schema.optional(Schema.Array(MerchantLocation)),
-      review: Schema.optional(Review),
-      reviewStatus: Schema.optional(Schema.String),
-      notifyPreference: Schema.optional(Schema.String),
-      titleImage: Schema.optional(Image),
-      wideTitleImage: Schema.optional(Image),
-      appLinkData: Schema.optional(AppLinkData),
-      finePrint: Schema.optional(Schema.String),
-      shortTitle: Schema.optional(Schema.String),
-      classTemplateInfo: Schema.optional(ClassTemplateInfo),
-      securityAnimation: Schema.optional(SecurityAnimation),
-      messages: Schema.optional(Schema.Array(Message)),
-      localizedFinePrint: Schema.optional(LocalizedString),
-      localizedIssuerName: Schema.optional(LocalizedString),
-      id: Schema.optional(Schema.String),
-      localizedTitle: Schema.optional(LocalizedString),
-      localizedProvider: Schema.optional(LocalizedString),
-      valueAddedModuleData: Schema.optional(Schema.Array(ValueAddedModuleData)),
-      provider: Schema.optional(Schema.String),
-      enableSmartTap: Schema.optional(Schema.Boolean),
-      multipleDevicesAndHoldersAllowedStatus: Schema.optional(Schema.String),
-      homepageUri: Schema.optional(Uri),
-      viewUnlockRequirement: Schema.optional(Schema.String),
-      textModulesData: Schema.optional(Schema.Array(TextModuleData)),
-    }),
-  ).annotate({ identifier: "OfferClass" }) as any as Schema.Schema<OfferClass>;
+export const OfferClass = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  hexBackgroundColor: Schema.optional(Schema.String),
+  callbackOptions: Schema.optional(CallbackOptions),
+  linksModuleData: Schema.optional(LinksModuleData),
+  details: Schema.optional(Schema.String),
+  infoModuleData: Schema.optional(InfoModuleData),
+  countryCode: Schema.optional(Schema.String),
+  helpUri: Schema.optional(Uri),
+  kind: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  locations: Schema.optional(Schema.Array(LatLongPoint)),
+  wordMark: Schema.optional(Image),
+  version: Schema.optional(Schema.String),
+  redemptionChannel: Schema.optional(Schema.String),
+  heroImage: Schema.optional(Image),
+  allowMultipleUsersPerObject: Schema.optional(Schema.Boolean),
+  localizedShortTitle: Schema.optional(LocalizedString),
+  localizedDetails: Schema.optional(LocalizedString),
+  issuerName: Schema.optional(Schema.String),
+  imageModulesData: Schema.optional(Schema.Array(ImageModuleData)),
+  redemptionIssuers: Schema.optional(Schema.Array(Schema.String)),
+  merchantLocations: Schema.optional(Schema.Array(MerchantLocation)),
+  review: Schema.optional(Review),
+  reviewStatus: Schema.optional(Schema.String),
+  notifyPreference: Schema.optional(Schema.String),
+  titleImage: Schema.optional(Image),
+  wideTitleImage: Schema.optional(Image),
+  appLinkData: Schema.optional(AppLinkData),
+  finePrint: Schema.optional(Schema.String),
+  shortTitle: Schema.optional(Schema.String),
+  classTemplateInfo: Schema.optional(ClassTemplateInfo),
+  securityAnimation: Schema.optional(SecurityAnimation),
+  messages: Schema.optional(Schema.Array(Message)),
+  localizedFinePrint: Schema.optional(LocalizedString),
+  localizedIssuerName: Schema.optional(LocalizedString),
+  id: Schema.optional(Schema.String),
+  localizedTitle: Schema.optional(LocalizedString),
+  localizedProvider: Schema.optional(LocalizedString),
+  valueAddedModuleData: Schema.optional(Schema.Array(ValueAddedModuleData)),
+  provider: Schema.optional(Schema.String),
+  enableSmartTap: Schema.optional(Schema.Boolean),
+  multipleDevicesAndHoldersAllowedStatus: Schema.optional(Schema.String),
+  homepageUri: Schema.optional(Uri),
+  viewUnlockRequirement: Schema.optional(Schema.String),
+  textModulesData: Schema.optional(Schema.Array(TextModuleData)),
+}).annotate({ identifier: "OfferClass" });
 
 export interface ObjectId {
   /** The name of the object. */
@@ -1989,14 +1719,11 @@ export interface ObjectId {
   bucketName?: string;
 }
 
-export const ObjectId: Schema.Schema<ObjectId> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      objectName: Schema.optional(Schema.String),
-      generation: Schema.optional(Schema.String),
-      bucketName: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "ObjectId" }) as any as Schema.Schema<ObjectId>;
+export const ObjectId = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  objectName: Schema.optional(Schema.String),
+  generation: Schema.optional(Schema.String),
+  bucketName: Schema.optional(Schema.String),
+}).annotate({ identifier: "ObjectId" });
 
 export interface Blobstore2Info {
   /** The blob read token. Needed to read blobs that have not been replicated. Might not be available until the final call. */
@@ -2015,20 +1742,15 @@ export interface Blobstore2Info {
   blobId?: string;
 }
 
-export const Blobstore2Info: Schema.Schema<Blobstore2Info> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      readToken: Schema.optional(Schema.String),
-      uploadMetadataContainer: Schema.optional(Schema.String),
-      downloadExternalReadToken: Schema.optional(Schema.String),
-      blobGeneration: Schema.optional(Schema.String),
-      downloadReadHandle: Schema.optional(Schema.String),
-      uploadFragmentListCreationInfo: Schema.optional(Schema.String),
-      blobId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Blobstore2Info",
-  }) as any as Schema.Schema<Blobstore2Info>;
+export const Blobstore2Info = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  readToken: Schema.optional(Schema.String),
+  uploadMetadataContainer: Schema.optional(Schema.String),
+  downloadExternalReadToken: Schema.optional(Schema.String),
+  blobGeneration: Schema.optional(Schema.String),
+  downloadReadHandle: Schema.optional(Schema.String),
+  uploadFragmentListCreationInfo: Schema.optional(Schema.String),
+  blobId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Blobstore2Info" });
 
 export interface CompositeMedia {
   /** Blobstore v1 reference, set if reference_type is BLOBSTORE_REF This should be the byte representation of a blobstore.BlobRef. Since Blobstore is deprecating v1, use blobstore2_info instead. For now, any v2 blob will also be represented in this field as v1 BlobRef. */
@@ -2061,24 +1783,19 @@ export interface CompositeMedia {
   inline?: string;
 }
 
-export const CompositeMedia: Schema.Schema<CompositeMedia> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      blobRef: Schema.optional(Schema.String),
-      md5Hash: Schema.optional(Schema.String),
-      sha1Hash: Schema.optional(Schema.String),
-      length: Schema.optional(Schema.String),
-      path: Schema.optional(Schema.String),
-      cosmoBinaryReference: Schema.optional(Schema.String),
-      referenceType: Schema.optional(Schema.String),
-      objectId: Schema.optional(ObjectId),
-      blobstore2Info: Schema.optional(Blobstore2Info),
-      crc32cHash: Schema.optional(Schema.Number),
-      inline: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CompositeMedia",
-  }) as any as Schema.Schema<CompositeMedia>;
+export const CompositeMedia = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  blobRef: Schema.optional(Schema.String),
+  md5Hash: Schema.optional(Schema.String),
+  sha1Hash: Schema.optional(Schema.String),
+  length: Schema.optional(Schema.String),
+  path: Schema.optional(Schema.String),
+  cosmoBinaryReference: Schema.optional(Schema.String),
+  referenceType: Schema.optional(Schema.String),
+  objectId: Schema.optional(ObjectId),
+  blobstore2Info: Schema.optional(Blobstore2Info),
+  crc32cHash: Schema.optional(Schema.Number),
+  inline: Schema.optional(Schema.String),
+}).annotate({ identifier: "CompositeMedia" });
 
 export interface DiffUploadRequest {
   /** The object version of the object that is the base version the incoming diff script will be applied to. This field will always be filled in. */
@@ -2089,30 +1806,21 @@ export interface DiffUploadRequest {
   checksumsInfo?: CompositeMedia;
 }
 
-export const DiffUploadRequest: Schema.Schema<DiffUploadRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      objectVersion: Schema.optional(Schema.String),
-      objectInfo: Schema.optional(CompositeMedia),
-      checksumsInfo: Schema.optional(CompositeMedia),
-    }),
-  ).annotate({
-    identifier: "DiffUploadRequest",
-  }) as any as Schema.Schema<DiffUploadRequest>;
+export const DiffUploadRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  objectVersion: Schema.optional(Schema.String),
+  objectInfo: Schema.optional(CompositeMedia),
+  checksumsInfo: Schema.optional(CompositeMedia),
+}).annotate({ identifier: "DiffUploadRequest" });
 
 export interface DiscoverableProgramMerchantSigninInfo {
   /** The URL to direct the user to for the merchant's signin site. */
   signinWebsite?: Uri;
 }
 
-export const DiscoverableProgramMerchantSigninInfo: Schema.Schema<DiscoverableProgramMerchantSigninInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      signinWebsite: Schema.optional(Uri),
-    }),
-  ).annotate({
-    identifier: "DiscoverableProgramMerchantSigninInfo",
-  }) as any as Schema.Schema<DiscoverableProgramMerchantSigninInfo>;
+export const DiscoverableProgramMerchantSigninInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    signinWebsite: Schema.optional(Uri),
+  }).annotate({ identifier: "DiscoverableProgramMerchantSigninInfo" });
 
 export interface DiscoverableProgramMerchantSignupInfo {
   /** User data that is sent in a POST request to the signup website URL. This information is encoded and then shared so that the merchant's website can prefill fields used to enroll the user for the discoverable program. */
@@ -2136,15 +1844,11 @@ export interface DiscoverableProgramMerchantSignupInfo {
   signupWebsite?: Uri;
 }
 
-export const DiscoverableProgramMerchantSignupInfo: Schema.Schema<DiscoverableProgramMerchantSignupInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      signupSharedDatas: Schema.optional(Schema.Array(Schema.String)),
-      signupWebsite: Schema.optional(Uri),
-    }),
-  ).annotate({
-    identifier: "DiscoverableProgramMerchantSignupInfo",
-  }) as any as Schema.Schema<DiscoverableProgramMerchantSignupInfo>;
+export const DiscoverableProgramMerchantSignupInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    signupSharedDatas: Schema.optional(Schema.Array(Schema.String)),
+    signupWebsite: Schema.optional(Uri),
+  }).annotate({ identifier: "DiscoverableProgramMerchantSignupInfo" });
 
 export interface DiscoverableProgram {
   /** Visibility state of the discoverable program. */
@@ -2163,20 +1867,11 @@ export interface DiscoverableProgram {
   merchantSignupInfo?: DiscoverableProgramMerchantSignupInfo;
 }
 
-export const DiscoverableProgram: Schema.Schema<DiscoverableProgram> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      merchantSigninInfo: Schema.optional(
-        DiscoverableProgramMerchantSigninInfo,
-      ),
-      merchantSignupInfo: Schema.optional(
-        DiscoverableProgramMerchantSignupInfo,
-      ),
-    }),
-  ).annotate({
-    identifier: "DiscoverableProgram",
-  }) as any as Schema.Schema<DiscoverableProgram>;
+export const DiscoverableProgram = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.String),
+  merchantSigninInfo: Schema.optional(DiscoverableProgramMerchantSigninInfo),
+  merchantSignupInfo: Schema.optional(DiscoverableProgramMerchantSignupInfo),
+}).annotate({ identifier: "DiscoverableProgram" });
 
 export interface LoyaltyClass {
   /** Required. The unique identifier for a class. This ID must be unique across all classes from an issuer. This value should follow the format issuer ID. identifier where the former is issued by Google and latter is chosen by you. Your unique identifier should only include alphanumeric characters, '.', '_', or '-'. */
@@ -2300,60 +1995,55 @@ export interface LoyaltyClass {
   secondaryRewardsTier?: string;
 }
 
-export const LoyaltyClass: Schema.Schema<LoyaltyClass> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      localizedRewardsTierLabel: Schema.optional(LocalizedString),
-      localizedSecondaryRewardsTier: Schema.optional(LocalizedString),
-      localizedIssuerName: Schema.optional(LocalizedString),
-      wideProgramLogo: Schema.optional(Image),
-      messages: Schema.optional(Schema.Array(Message)),
-      localizedSecondaryRewardsTierLabel: Schema.optional(LocalizedString),
-      classTemplateInfo: Schema.optional(ClassTemplateInfo),
-      securityAnimation: Schema.optional(SecurityAnimation),
-      localizedRewardsTier: Schema.optional(LocalizedString),
-      textModulesData: Schema.optional(Schema.Array(TextModuleData)),
-      viewUnlockRequirement: Schema.optional(Schema.String),
-      homepageUri: Schema.optional(Uri),
-      multipleDevicesAndHoldersAllowedStatus: Schema.optional(Schema.String),
-      enableSmartTap: Schema.optional(Schema.Boolean),
-      valueAddedModuleData: Schema.optional(Schema.Array(ValueAddedModuleData)),
-      imageModulesData: Schema.optional(Schema.Array(ImageModuleData)),
-      redemptionIssuers: Schema.optional(Schema.Array(Schema.String)),
-      issuerName: Schema.optional(Schema.String),
-      programName: Schema.optional(Schema.String),
-      accountIdLabel: Schema.optional(Schema.String),
-      allowMultipleUsersPerObject: Schema.optional(Schema.Boolean),
-      rewardsTier: Schema.optional(Schema.String),
-      localizedAccountNameLabel: Schema.optional(LocalizedString),
-      heroImage: Schema.optional(Image),
-      discoverableProgram: Schema.optional(DiscoverableProgram),
-      version: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      locations: Schema.optional(Schema.Array(LatLongPoint)),
-      wordMark: Schema.optional(Image),
-      countryCode: Schema.optional(Schema.String),
-      infoModuleData: Schema.optional(InfoModuleData),
-      linksModuleData: Schema.optional(LinksModuleData),
-      programLogo: Schema.optional(Image),
-      callbackOptions: Schema.optional(CallbackOptions),
-      hexBackgroundColor: Schema.optional(Schema.String),
-      localizedAccountIdLabel: Schema.optional(LocalizedString),
-      appLinkData: Schema.optional(AppLinkData),
-      reviewStatus: Schema.optional(Schema.String),
-      notifyPreference: Schema.optional(Schema.String),
-      accountNameLabel: Schema.optional(Schema.String),
-      rewardsTierLabel: Schema.optional(Schema.String),
-      secondaryRewardsTierLabel: Schema.optional(Schema.String),
-      localizedProgramName: Schema.optional(LocalizedString),
-      review: Schema.optional(Review),
-      merchantLocations: Schema.optional(Schema.Array(MerchantLocation)),
-      secondaryRewardsTier: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LoyaltyClass",
-  }) as any as Schema.Schema<LoyaltyClass>;
+export const LoyaltyClass = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  localizedRewardsTierLabel: Schema.optional(LocalizedString),
+  localizedSecondaryRewardsTier: Schema.optional(LocalizedString),
+  localizedIssuerName: Schema.optional(LocalizedString),
+  wideProgramLogo: Schema.optional(Image),
+  messages: Schema.optional(Schema.Array(Message)),
+  localizedSecondaryRewardsTierLabel: Schema.optional(LocalizedString),
+  classTemplateInfo: Schema.optional(ClassTemplateInfo),
+  securityAnimation: Schema.optional(SecurityAnimation),
+  localizedRewardsTier: Schema.optional(LocalizedString),
+  textModulesData: Schema.optional(Schema.Array(TextModuleData)),
+  viewUnlockRequirement: Schema.optional(Schema.String),
+  homepageUri: Schema.optional(Uri),
+  multipleDevicesAndHoldersAllowedStatus: Schema.optional(Schema.String),
+  enableSmartTap: Schema.optional(Schema.Boolean),
+  valueAddedModuleData: Schema.optional(Schema.Array(ValueAddedModuleData)),
+  imageModulesData: Schema.optional(Schema.Array(ImageModuleData)),
+  redemptionIssuers: Schema.optional(Schema.Array(Schema.String)),
+  issuerName: Schema.optional(Schema.String),
+  programName: Schema.optional(Schema.String),
+  accountIdLabel: Schema.optional(Schema.String),
+  allowMultipleUsersPerObject: Schema.optional(Schema.Boolean),
+  rewardsTier: Schema.optional(Schema.String),
+  localizedAccountNameLabel: Schema.optional(LocalizedString),
+  heroImage: Schema.optional(Image),
+  discoverableProgram: Schema.optional(DiscoverableProgram),
+  version: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  locations: Schema.optional(Schema.Array(LatLongPoint)),
+  wordMark: Schema.optional(Image),
+  countryCode: Schema.optional(Schema.String),
+  infoModuleData: Schema.optional(InfoModuleData),
+  linksModuleData: Schema.optional(LinksModuleData),
+  programLogo: Schema.optional(Image),
+  callbackOptions: Schema.optional(CallbackOptions),
+  hexBackgroundColor: Schema.optional(Schema.String),
+  localizedAccountIdLabel: Schema.optional(LocalizedString),
+  appLinkData: Schema.optional(AppLinkData),
+  reviewStatus: Schema.optional(Schema.String),
+  notifyPreference: Schema.optional(Schema.String),
+  accountNameLabel: Schema.optional(Schema.String),
+  rewardsTierLabel: Schema.optional(Schema.String),
+  secondaryRewardsTierLabel: Schema.optional(Schema.String),
+  localizedProgramName: Schema.optional(LocalizedString),
+  review: Schema.optional(Review),
+  merchantLocations: Schema.optional(Schema.Array(MerchantLocation)),
+  secondaryRewardsTier: Schema.optional(Schema.String),
+}).annotate({ identifier: "LoyaltyClass" });
 
 export interface FlightCarrier {
   /** Three character ICAO airline code of the marketing carrier (as opposed to operating carrier). Exactly one of this or `carrierIataCode` needs to be provided for `carrier` and `operatingCarrier`. eg: "EZY" for Easy Jet */
@@ -2372,20 +2062,15 @@ export interface FlightCarrier {
   wideAirlineLogo?: Image;
 }
 
-export const FlightCarrier: Schema.Schema<FlightCarrier> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      carrierIcaoCode: Schema.optional(Schema.String),
-      airlineLogo: Schema.optional(Image),
-      airlineAllianceLogo: Schema.optional(Image),
-      airlineName: Schema.optional(LocalizedString),
-      kind: Schema.optional(Schema.String),
-      carrierIataCode: Schema.optional(Schema.String),
-      wideAirlineLogo: Schema.optional(Image),
-    }),
-  ).annotate({
-    identifier: "FlightCarrier",
-  }) as any as Schema.Schema<FlightCarrier>;
+export const FlightCarrier = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  carrierIcaoCode: Schema.optional(Schema.String),
+  airlineLogo: Schema.optional(Image),
+  airlineAllianceLogo: Schema.optional(Image),
+  airlineName: Schema.optional(LocalizedString),
+  kind: Schema.optional(Schema.String),
+  carrierIataCode: Schema.optional(Schema.String),
+  wideAirlineLogo: Schema.optional(Image),
+}).annotate({ identifier: "FlightCarrier" });
 
 export interface FlightHeader {
   /** The flight number used by the operating carrier without IATA carrier code. This field should contain only digits. eg: "234" */
@@ -2402,19 +2087,14 @@ export interface FlightHeader {
   flightNumberDisplayOverride?: string;
 }
 
-export const FlightHeader: Schema.Schema<FlightHeader> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operatingFlightNumber: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      carrier: Schema.optional(FlightCarrier),
-      flightNumber: Schema.optional(Schema.String),
-      operatingCarrier: Schema.optional(FlightCarrier),
-      flightNumberDisplayOverride: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FlightHeader",
-  }) as any as Schema.Schema<FlightHeader>;
+export const FlightHeader = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  operatingFlightNumber: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  carrier: Schema.optional(FlightCarrier),
+  flightNumber: Schema.optional(Schema.String),
+  operatingCarrier: Schema.optional(FlightCarrier),
+  flightNumberDisplayOverride: Schema.optional(Schema.String),
+}).annotate({ identifier: "FlightHeader" });
 
 export interface AirportInfo {
   /** A name of the gate. Eg: "B59" or "59" */
@@ -2429,18 +2109,13 @@ export interface AirportInfo {
   airportIataCode?: string;
 }
 
-export const AirportInfo: Schema.Schema<AirportInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gate: Schema.optional(Schema.String),
-      terminal: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      airportNameOverride: Schema.optional(LocalizedString),
-      airportIataCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AirportInfo",
-  }) as any as Schema.Schema<AirportInfo>;
+export const AirportInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gate: Schema.optional(Schema.String),
+  terminal: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  airportNameOverride: Schema.optional(LocalizedString),
+  airportIataCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "AirportInfo" });
 
 export interface BoardingAndSeatingPolicy {
   /** Indicates the policy the airline uses for boarding. If unset, Google will default to `zoneBased`. */
@@ -2469,16 +2144,12 @@ export interface BoardingAndSeatingPolicy {
   kind?: string;
 }
 
-export const BoardingAndSeatingPolicy: Schema.Schema<BoardingAndSeatingPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      boardingPolicy: Schema.optional(Schema.String),
-      seatClassPolicy: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BoardingAndSeatingPolicy",
-  }) as any as Schema.Schema<BoardingAndSeatingPolicy>;
+export const BoardingAndSeatingPolicy =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    boardingPolicy: Schema.optional(Schema.String),
+    seatClassPolicy: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BoardingAndSeatingPolicy" });
 
 export interface FlightClass {
   /** Country code used to display the card's country (when the user is not in that country), as well as to display localized content when content is not available in the user's locale. */
@@ -2606,55 +2277,50 @@ export interface FlightClass {
   textModulesData?: Array<TextModuleData>;
 }
 
-export const FlightClass: Schema.Schema<FlightClass> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      countryCode: Schema.optional(Schema.String),
-      callbackOptions: Schema.optional(CallbackOptions),
-      hexBackgroundColor: Schema.optional(Schema.String),
-      infoModuleData: Schema.optional(InfoModuleData),
-      linksModuleData: Schema.optional(LinksModuleData),
-      localScheduledDepartureDateTime: Schema.optional(Schema.String),
-      issuerName: Schema.optional(Schema.String),
-      imageModulesData: Schema.optional(Schema.Array(ImageModuleData)),
-      redemptionIssuers: Schema.optional(Schema.Array(Schema.String)),
-      version: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      locations: Schema.optional(Schema.Array(LatLongPoint)),
-      wordMark: Schema.optional(Image),
-      flightHeader: Schema.optional(FlightHeader),
-      allowMultipleUsersPerObject: Schema.optional(Schema.Boolean),
-      heroImage: Schema.optional(Image),
-      review: Schema.optional(Review),
-      languageOverride: Schema.optional(Schema.String),
-      merchantLocations: Schema.optional(Schema.Array(MerchantLocation)),
-      appLinkData: Schema.optional(AppLinkData),
-      reviewStatus: Schema.optional(Schema.String),
-      notifyPreference: Schema.optional(Schema.String),
-      localEstimatedOrActualDepartureDateTime: Schema.optional(Schema.String),
-      destination: Schema.optional(AirportInfo),
-      localScheduledArrivalDateTime: Schema.optional(Schema.String),
-      classTemplateInfo: Schema.optional(ClassTemplateInfo),
-      securityAnimation: Schema.optional(SecurityAnimation),
-      origin: Schema.optional(AirportInfo),
-      localizedIssuerName: Schema.optional(LocalizedString),
-      messages: Schema.optional(Schema.Array(Message)),
-      localEstimatedOrActualArrivalDateTime: Schema.optional(Schema.String),
-      flightStatus: Schema.optional(Schema.String),
-      boardingAndSeatingPolicy: Schema.optional(BoardingAndSeatingPolicy),
-      localGateClosingDateTime: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      homepageUri: Schema.optional(Uri),
-      multipleDevicesAndHoldersAllowedStatus: Schema.optional(Schema.String),
-      localBoardingDateTime: Schema.optional(Schema.String),
-      viewUnlockRequirement: Schema.optional(Schema.String),
-      valueAddedModuleData: Schema.optional(Schema.Array(ValueAddedModuleData)),
-      enableSmartTap: Schema.optional(Schema.Boolean),
-      textModulesData: Schema.optional(Schema.Array(TextModuleData)),
-    }),
-  ).annotate({
-    identifier: "FlightClass",
-  }) as any as Schema.Schema<FlightClass>;
+export const FlightClass = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  countryCode: Schema.optional(Schema.String),
+  callbackOptions: Schema.optional(CallbackOptions),
+  hexBackgroundColor: Schema.optional(Schema.String),
+  infoModuleData: Schema.optional(InfoModuleData),
+  linksModuleData: Schema.optional(LinksModuleData),
+  localScheduledDepartureDateTime: Schema.optional(Schema.String),
+  issuerName: Schema.optional(Schema.String),
+  imageModulesData: Schema.optional(Schema.Array(ImageModuleData)),
+  redemptionIssuers: Schema.optional(Schema.Array(Schema.String)),
+  version: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  locations: Schema.optional(Schema.Array(LatLongPoint)),
+  wordMark: Schema.optional(Image),
+  flightHeader: Schema.optional(FlightHeader),
+  allowMultipleUsersPerObject: Schema.optional(Schema.Boolean),
+  heroImage: Schema.optional(Image),
+  review: Schema.optional(Review),
+  languageOverride: Schema.optional(Schema.String),
+  merchantLocations: Schema.optional(Schema.Array(MerchantLocation)),
+  appLinkData: Schema.optional(AppLinkData),
+  reviewStatus: Schema.optional(Schema.String),
+  notifyPreference: Schema.optional(Schema.String),
+  localEstimatedOrActualDepartureDateTime: Schema.optional(Schema.String),
+  destination: Schema.optional(AirportInfo),
+  localScheduledArrivalDateTime: Schema.optional(Schema.String),
+  classTemplateInfo: Schema.optional(ClassTemplateInfo),
+  securityAnimation: Schema.optional(SecurityAnimation),
+  origin: Schema.optional(AirportInfo),
+  localizedIssuerName: Schema.optional(LocalizedString),
+  messages: Schema.optional(Schema.Array(Message)),
+  localEstimatedOrActualArrivalDateTime: Schema.optional(Schema.String),
+  flightStatus: Schema.optional(Schema.String),
+  boardingAndSeatingPolicy: Schema.optional(BoardingAndSeatingPolicy),
+  localGateClosingDateTime: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  homepageUri: Schema.optional(Uri),
+  multipleDevicesAndHoldersAllowedStatus: Schema.optional(Schema.String),
+  localBoardingDateTime: Schema.optional(Schema.String),
+  viewUnlockRequirement: Schema.optional(Schema.String),
+  valueAddedModuleData: Schema.optional(Schema.Array(ValueAddedModuleData)),
+  enableSmartTap: Schema.optional(Schema.Boolean),
+  textModulesData: Schema.optional(Schema.Array(TextModuleData)),
+}).annotate({ identifier: "FlightClass" });
 
 export interface BoardingAndSeatingInfo {
   /** The value of the seat class. eg: "Economy" or "Economy Plus" */
@@ -2683,22 +2349,19 @@ export interface BoardingAndSeatingInfo {
   boardingPrivilegeImage?: Image;
 }
 
-export const BoardingAndSeatingInfo: Schema.Schema<BoardingAndSeatingInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      seatClass: Schema.optional(Schema.String),
-      sequenceNumber: Schema.optional(Schema.String),
-      boardingDoor: Schema.optional(Schema.String),
-      boardingGroup: Schema.optional(Schema.String),
-      seatAssignment: Schema.optional(LocalizedString),
-      boardingPosition: Schema.optional(Schema.String),
-      seatNumber: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      boardingPrivilegeImage: Schema.optional(Image),
-    }),
-  ).annotate({
-    identifier: "BoardingAndSeatingInfo",
-  }) as any as Schema.Schema<BoardingAndSeatingInfo>;
+export const BoardingAndSeatingInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    seatClass: Schema.optional(Schema.String),
+    sequenceNumber: Schema.optional(Schema.String),
+    boardingDoor: Schema.optional(Schema.String),
+    boardingGroup: Schema.optional(Schema.String),
+    seatAssignment: Schema.optional(LocalizedString),
+    boardingPosition: Schema.optional(Schema.String),
+    seatNumber: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    boardingPrivilegeImage: Schema.optional(Image),
+  },
+).annotate({ identifier: "BoardingAndSeatingInfo" });
 
 export interface FrequentFlyerInfo {
   /** Frequent flyer program name. eg: "Lufthansa Miles & More" */
@@ -2709,16 +2372,11 @@ export interface FrequentFlyerInfo {
   frequentFlyerNumber?: string;
 }
 
-export const FrequentFlyerInfo: Schema.Schema<FrequentFlyerInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      frequentFlyerProgramName: Schema.optional(LocalizedString),
-      kind: Schema.optional(Schema.String),
-      frequentFlyerNumber: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FrequentFlyerInfo",
-  }) as any as Schema.Schema<FrequentFlyerInfo>;
+export const FrequentFlyerInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  frequentFlyerProgramName: Schema.optional(LocalizedString),
+  kind: Schema.optional(Schema.String),
+  frequentFlyerNumber: Schema.optional(Schema.String),
+}).annotate({ identifier: "FrequentFlyerInfo" });
 
 export interface ReservationInfo {
   /** E-ticket number. */
@@ -2731,17 +2389,12 @@ export interface ReservationInfo {
   confirmationCode?: string;
 }
 
-export const ReservationInfo: Schema.Schema<ReservationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      eticketNumber: Schema.optional(Schema.String),
-      frequentFlyerInfo: Schema.optional(FrequentFlyerInfo),
-      kind: Schema.optional(Schema.String),
-      confirmationCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ReservationInfo",
-  }) as any as Schema.Schema<ReservationInfo>;
+export const ReservationInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  eticketNumber: Schema.optional(Schema.String),
+  frequentFlyerInfo: Schema.optional(FrequentFlyerInfo),
+  kind: Schema.optional(Schema.String),
+  confirmationCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "ReservationInfo" });
 
 export interface FlightObject {
   /** An image for the security program that applies to the passenger. */
@@ -2825,46 +2478,41 @@ export interface FlightObject {
   id?: string;
 }
 
-export const FlightObject: Schema.Schema<FlightObject> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      securityProgramLogo: Schema.optional(Image),
-      boardingAndSeatingInfo: Schema.optional(BoardingAndSeatingInfo),
-      classId: Schema.optional(Schema.String),
-      merchantLocations: Schema.optional(Schema.Array(MerchantLocation)),
-      smartTapRedemptionValue: Schema.optional(Schema.String),
-      appLinkData: Schema.optional(AppLinkData),
-      notifyPreference: Schema.optional(Schema.String),
-      passengerName: Schema.optional(Schema.String),
-      disableExpirationNotification: Schema.optional(Schema.Boolean),
-      rotatingBarcode: Schema.optional(RotatingBarcode),
-      hexBackgroundColor: Schema.optional(Schema.String),
-      infoModuleData: Schema.optional(InfoModuleData),
-      linksModuleData: Schema.optional(LinksModuleData),
-      imageModulesData: Schema.optional(Schema.Array(ImageModuleData)),
-      version: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      locations: Schema.optional(Schema.Array(LatLongPoint)),
-      reservationInfo: Schema.optional(ReservationInfo),
-      heroImage: Schema.optional(Image),
-      state: Schema.optional(Schema.String),
-      hasLinkedDevice: Schema.optional(Schema.Boolean),
-      groupingInfo: Schema.optional(GroupingInfo),
-      validTimeInterval: Schema.optional(TimeInterval),
-      valueAddedModuleData: Schema.optional(Schema.Array(ValueAddedModuleData)),
-      textModulesData: Schema.optional(Schema.Array(TextModuleData)),
-      saveRestrictions: Schema.optional(SaveRestrictions),
-      linkedObjectIds: Schema.optional(Schema.Array(Schema.String)),
-      barcode: Schema.optional(Barcode),
-      messages: Schema.optional(Schema.Array(Message)),
-      classReference: Schema.optional(FlightClass),
-      hasUsers: Schema.optional(Schema.Boolean),
-      passConstraints: Schema.optional(PassConstraints),
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FlightObject",
-  }) as any as Schema.Schema<FlightObject>;
+export const FlightObject = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  securityProgramLogo: Schema.optional(Image),
+  boardingAndSeatingInfo: Schema.optional(BoardingAndSeatingInfo),
+  classId: Schema.optional(Schema.String),
+  merchantLocations: Schema.optional(Schema.Array(MerchantLocation)),
+  smartTapRedemptionValue: Schema.optional(Schema.String),
+  appLinkData: Schema.optional(AppLinkData),
+  notifyPreference: Schema.optional(Schema.String),
+  passengerName: Schema.optional(Schema.String),
+  disableExpirationNotification: Schema.optional(Schema.Boolean),
+  rotatingBarcode: Schema.optional(RotatingBarcode),
+  hexBackgroundColor: Schema.optional(Schema.String),
+  infoModuleData: Schema.optional(InfoModuleData),
+  linksModuleData: Schema.optional(LinksModuleData),
+  imageModulesData: Schema.optional(Schema.Array(ImageModuleData)),
+  version: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  locations: Schema.optional(Schema.Array(LatLongPoint)),
+  reservationInfo: Schema.optional(ReservationInfo),
+  heroImage: Schema.optional(Image),
+  state: Schema.optional(Schema.String),
+  hasLinkedDevice: Schema.optional(Schema.Boolean),
+  groupingInfo: Schema.optional(GroupingInfo),
+  validTimeInterval: Schema.optional(TimeInterval),
+  valueAddedModuleData: Schema.optional(Schema.Array(ValueAddedModuleData)),
+  textModulesData: Schema.optional(Schema.Array(TextModuleData)),
+  saveRestrictions: Schema.optional(SaveRestrictions),
+  linkedObjectIds: Schema.optional(Schema.Array(Schema.String)),
+  barcode: Schema.optional(Barcode),
+  messages: Schema.optional(Schema.Array(Message)),
+  classReference: Schema.optional(FlightClass),
+  hasUsers: Schema.optional(Schema.Boolean),
+  passConstraints: Schema.optional(PassConstraints),
+  id: Schema.optional(Schema.String),
+}).annotate({ identifier: "FlightObject" });
 
 export interface TicketSeat {
   /** The fare class of the ticketed seat. */
@@ -2887,16 +2535,13 @@ export interface TicketSeat {
   seatAssignment?: LocalizedString;
 }
 
-export const TicketSeat: Schema.Schema<TicketSeat> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fareClass: Schema.optional(Schema.String),
-      coach: Schema.optional(Schema.String),
-      customFareClass: Schema.optional(LocalizedString),
-      seat: Schema.optional(Schema.String),
-      seatAssignment: Schema.optional(LocalizedString),
-    }),
-  ).annotate({ identifier: "TicketSeat" }) as any as Schema.Schema<TicketSeat>;
+export const TicketSeat = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fareClass: Schema.optional(Schema.String),
+  coach: Schema.optional(Schema.String),
+  customFareClass: Schema.optional(LocalizedString),
+  seat: Schema.optional(Schema.String),
+  seatAssignment: Schema.optional(LocalizedString),
+}).annotate({ identifier: "TicketSeat" });
 
 export interface TicketLeg {
   /** The reserved seat for the passenger(s). If more than one seat is to be specified then use the `ticketSeats` field instead. Both `ticketSeat` and `ticketSeats` may not be set. */
@@ -2929,25 +2574,22 @@ export interface TicketLeg {
   departureDateTime?: string;
 }
 
-export const TicketLeg: Schema.Schema<TicketLeg> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ticketSeat: Schema.optional(TicketSeat),
-      transitTerminusName: Schema.optional(LocalizedString),
-      zone: Schema.optional(Schema.String),
-      destinationStationCode: Schema.optional(Schema.String),
-      originName: Schema.optional(LocalizedString),
-      platform: Schema.optional(Schema.String),
-      ticketSeats: Schema.optional(Schema.Array(TicketSeat)),
-      arrivalDateTime: Schema.optional(Schema.String),
-      transitOperatorName: Schema.optional(LocalizedString),
-      originStationCode: Schema.optional(Schema.String),
-      fareName: Schema.optional(LocalizedString),
-      destinationName: Schema.optional(LocalizedString),
-      carriage: Schema.optional(Schema.String),
-      departureDateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "TicketLeg" }) as any as Schema.Schema<TicketLeg>;
+export const TicketLeg = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ticketSeat: Schema.optional(TicketSeat),
+  transitTerminusName: Schema.optional(LocalizedString),
+  zone: Schema.optional(Schema.String),
+  destinationStationCode: Schema.optional(Schema.String),
+  originName: Schema.optional(LocalizedString),
+  platform: Schema.optional(Schema.String),
+  ticketSeats: Schema.optional(Schema.Array(TicketSeat)),
+  arrivalDateTime: Schema.optional(Schema.String),
+  transitOperatorName: Schema.optional(LocalizedString),
+  originStationCode: Schema.optional(Schema.String),
+  fareName: Schema.optional(LocalizedString),
+  destinationName: Schema.optional(LocalizedString),
+  carriage: Schema.optional(Schema.String),
+  departureDateTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "TicketLeg" });
 
 export interface PurchaseDetails {
   /** ID of the account used to purchase the ticket. */
@@ -2962,18 +2604,13 @@ export interface PurchaseDetails {
   purchaseReceiptNumber?: string;
 }
 
-export const PurchaseDetails: Schema.Schema<PurchaseDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accountId: Schema.optional(Schema.String),
-      confirmationCode: Schema.optional(Schema.String),
-      ticketCost: Schema.optional(TicketCost),
-      purchaseDateTime: Schema.optional(Schema.String),
-      purchaseReceiptNumber: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PurchaseDetails",
-  }) as any as Schema.Schema<PurchaseDetails>;
+export const PurchaseDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  accountId: Schema.optional(Schema.String),
+  confirmationCode: Schema.optional(Schema.String),
+  ticketCost: Schema.optional(TicketCost),
+  purchaseDateTime: Schema.optional(Schema.String),
+  purchaseReceiptNumber: Schema.optional(Schema.String),
+}).annotate({ identifier: "PurchaseDetails" });
 
 export interface TicketRestrictions {
   /** More details about the above `routeRestrictions`. */
@@ -2986,31 +2623,21 @@ export interface TicketRestrictions {
   timeRestrictions?: LocalizedString;
 }
 
-export const TicketRestrictions: Schema.Schema<TicketRestrictions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      routeRestrictionsDetails: Schema.optional(LocalizedString),
-      otherRestrictions: Schema.optional(LocalizedString),
-      routeRestrictions: Schema.optional(LocalizedString),
-      timeRestrictions: Schema.optional(LocalizedString),
-    }),
-  ).annotate({
-    identifier: "TicketRestrictions",
-  }) as any as Schema.Schema<TicketRestrictions>;
+export const TicketRestrictions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  routeRestrictionsDetails: Schema.optional(LocalizedString),
+  otherRestrictions: Schema.optional(LocalizedString),
+  routeRestrictions: Schema.optional(LocalizedString),
+  timeRestrictions: Schema.optional(LocalizedString),
+}).annotate({ identifier: "TicketRestrictions" });
 
 export interface DeviceContext {
   /** If set, redemption information will only be returned to the given device upon activation of the object. This should not be used as a stable identifier to trace a user's device. It can change across different passes for the same device or even across different activations for the same device. When setting this, callers must also set has_linked_device on the object being activated. */
   deviceToken?: string;
 }
 
-export const DeviceContext: Schema.Schema<DeviceContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deviceToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DeviceContext",
-  }) as any as Schema.Schema<DeviceContext>;
+export const DeviceContext = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  deviceToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "DeviceContext" });
 
 export interface ActivationOptions {
   /** HTTPS URL that supports REST semantics. Would be used for requesting activation from partners for given valuable, triggered by the users. */
@@ -3019,15 +2646,10 @@ export interface ActivationOptions {
   allowReactivation?: boolean;
 }
 
-export const ActivationOptions: Schema.Schema<ActivationOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      activationUrl: Schema.optional(Schema.String),
-      allowReactivation: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ActivationOptions",
-  }) as any as Schema.Schema<ActivationOptions>;
+export const ActivationOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  activationUrl: Schema.optional(Schema.String),
+  allowReactivation: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "ActivationOptions" });
 
 export interface TransitClass {
   /** A custom label to use for the seat location value (`transitObject.ticketLeg.ticketSeat.seat`). */
@@ -3181,69 +2803,64 @@ export interface TransitClass {
   customDiscountMessageLabel?: LocalizedString;
 }
 
-export const TransitClass: Schema.Schema<TransitClass> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customSeatLabel: Schema.optional(LocalizedString),
-      valueAddedModuleData: Schema.optional(Schema.Array(ValueAddedModuleData)),
-      customPurchaseFaceValueLabel: Schema.optional(LocalizedString),
-      multipleDevicesAndHoldersAllowedStatus: Schema.optional(Schema.String),
-      transitType: Schema.optional(Schema.String),
-      customCoachLabel: Schema.optional(LocalizedString),
-      textModulesData: Schema.optional(Schema.Array(TextModuleData)),
-      transitOperatorName: Schema.optional(LocalizedString),
-      customFareNameLabel: Schema.optional(LocalizedString),
-      customRouteRestrictionsDetailsLabel: Schema.optional(LocalizedString),
-      localizedIssuerName: Schema.optional(LocalizedString),
-      securityAnimation: Schema.optional(SecurityAnimation),
-      customTimeRestrictionsLabel: Schema.optional(LocalizedString),
-      id: Schema.optional(Schema.String),
-      customRouteRestrictionsLabel: Schema.optional(LocalizedString),
-      languageOverride: Schema.optional(Schema.String),
-      review: Schema.optional(Review),
-      reviewStatus: Schema.optional(Schema.String),
-      linksModuleData: Schema.optional(LinksModuleData),
-      infoModuleData: Schema.optional(InfoModuleData),
-      hexBackgroundColor: Schema.optional(Schema.String),
-      callbackOptions: Schema.optional(CallbackOptions),
-      customZoneLabel: Schema.optional(LocalizedString),
-      countryCode: Schema.optional(Schema.String),
-      customCarriageLabel: Schema.optional(LocalizedString),
-      locations: Schema.optional(Schema.Array(LatLongPoint)),
-      customPurchaseReceiptNumberLabel: Schema.optional(LocalizedString),
-      redemptionIssuers: Schema.optional(Schema.Array(Schema.String)),
-      issuerName: Schema.optional(Schema.String),
-      logo: Schema.optional(Image),
-      enableSmartTap: Schema.optional(Schema.Boolean),
-      viewUnlockRequirement: Schema.optional(Schema.String),
-      customOtherRestrictionsLabel: Schema.optional(LocalizedString),
-      customPurchasePriceLabel: Schema.optional(LocalizedString),
-      homepageUri: Schema.optional(Uri),
-      customPlatformLabel: Schema.optional(LocalizedString),
-      messages: Schema.optional(Schema.Array(Message)),
-      classTemplateInfo: Schema.optional(ClassTemplateInfo),
-      enableSingleLegItinerary: Schema.optional(Schema.Boolean),
-      merchantLocations: Schema.optional(Schema.Array(MerchantLocation)),
-      watermark: Schema.optional(Image),
-      activationOptions: Schema.optional(ActivationOptions),
-      wideLogo: Schema.optional(Image),
-      customConcessionCategoryLabel: Schema.optional(LocalizedString),
-      notifyPreference: Schema.optional(Schema.String),
-      customTicketNumberLabel: Schema.optional(LocalizedString),
-      customFareClassLabel: Schema.optional(LocalizedString),
-      appLinkData: Schema.optional(AppLinkData),
-      customConfirmationCodeLabel: Schema.optional(LocalizedString),
-      customTransitTerminusNameLabel: Schema.optional(LocalizedString),
-      heroImage: Schema.optional(Image),
-      allowMultipleUsersPerObject: Schema.optional(Schema.Boolean),
-      wordMark: Schema.optional(Image),
-      version: Schema.optional(Schema.String),
-      imageModulesData: Schema.optional(Schema.Array(ImageModuleData)),
-      customDiscountMessageLabel: Schema.optional(LocalizedString),
-    }),
-  ).annotate({
-    identifier: "TransitClass",
-  }) as any as Schema.Schema<TransitClass>;
+export const TransitClass = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  customSeatLabel: Schema.optional(LocalizedString),
+  valueAddedModuleData: Schema.optional(Schema.Array(ValueAddedModuleData)),
+  customPurchaseFaceValueLabel: Schema.optional(LocalizedString),
+  multipleDevicesAndHoldersAllowedStatus: Schema.optional(Schema.String),
+  transitType: Schema.optional(Schema.String),
+  customCoachLabel: Schema.optional(LocalizedString),
+  textModulesData: Schema.optional(Schema.Array(TextModuleData)),
+  transitOperatorName: Schema.optional(LocalizedString),
+  customFareNameLabel: Schema.optional(LocalizedString),
+  customRouteRestrictionsDetailsLabel: Schema.optional(LocalizedString),
+  localizedIssuerName: Schema.optional(LocalizedString),
+  securityAnimation: Schema.optional(SecurityAnimation),
+  customTimeRestrictionsLabel: Schema.optional(LocalizedString),
+  id: Schema.optional(Schema.String),
+  customRouteRestrictionsLabel: Schema.optional(LocalizedString),
+  languageOverride: Schema.optional(Schema.String),
+  review: Schema.optional(Review),
+  reviewStatus: Schema.optional(Schema.String),
+  linksModuleData: Schema.optional(LinksModuleData),
+  infoModuleData: Schema.optional(InfoModuleData),
+  hexBackgroundColor: Schema.optional(Schema.String),
+  callbackOptions: Schema.optional(CallbackOptions),
+  customZoneLabel: Schema.optional(LocalizedString),
+  countryCode: Schema.optional(Schema.String),
+  customCarriageLabel: Schema.optional(LocalizedString),
+  locations: Schema.optional(Schema.Array(LatLongPoint)),
+  customPurchaseReceiptNumberLabel: Schema.optional(LocalizedString),
+  redemptionIssuers: Schema.optional(Schema.Array(Schema.String)),
+  issuerName: Schema.optional(Schema.String),
+  logo: Schema.optional(Image),
+  enableSmartTap: Schema.optional(Schema.Boolean),
+  viewUnlockRequirement: Schema.optional(Schema.String),
+  customOtherRestrictionsLabel: Schema.optional(LocalizedString),
+  customPurchasePriceLabel: Schema.optional(LocalizedString),
+  homepageUri: Schema.optional(Uri),
+  customPlatformLabel: Schema.optional(LocalizedString),
+  messages: Schema.optional(Schema.Array(Message)),
+  classTemplateInfo: Schema.optional(ClassTemplateInfo),
+  enableSingleLegItinerary: Schema.optional(Schema.Boolean),
+  merchantLocations: Schema.optional(Schema.Array(MerchantLocation)),
+  watermark: Schema.optional(Image),
+  activationOptions: Schema.optional(ActivationOptions),
+  wideLogo: Schema.optional(Image),
+  customConcessionCategoryLabel: Schema.optional(LocalizedString),
+  notifyPreference: Schema.optional(Schema.String),
+  customTicketNumberLabel: Schema.optional(LocalizedString),
+  customFareClassLabel: Schema.optional(LocalizedString),
+  appLinkData: Schema.optional(AppLinkData),
+  customConfirmationCodeLabel: Schema.optional(LocalizedString),
+  customTransitTerminusNameLabel: Schema.optional(LocalizedString),
+  heroImage: Schema.optional(Image),
+  allowMultipleUsersPerObject: Schema.optional(Schema.Boolean),
+  wordMark: Schema.optional(Image),
+  version: Schema.optional(Schema.String),
+  imageModulesData: Schema.optional(Schema.Array(ImageModuleData)),
+  customDiscountMessageLabel: Schema.optional(LocalizedString),
+}).annotate({ identifier: "TransitClass" });
 
 export interface TransitObject {
   /** The number of passengers. */
@@ -3375,56 +2992,51 @@ export interface TransitObject {
   imageModulesData?: Array<ImageModuleData>;
 }
 
-export const TransitObject: Schema.Schema<TransitObject> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      passengerType: Schema.optional(Schema.String),
-      concessionCategory: Schema.optional(Schema.String),
-      customTicketStatus: Schema.optional(LocalizedString),
-      valueAddedModuleData: Schema.optional(Schema.Array(ValueAddedModuleData)),
-      validTimeInterval: Schema.optional(TimeInterval),
-      groupingInfo: Schema.optional(GroupingInfo),
-      state: Schema.optional(Schema.String),
-      hasLinkedDevice: Schema.optional(Schema.Boolean),
-      activationStatus: Schema.optional(ActivationStatus),
-      ticketLeg: Schema.optional(TicketLeg),
-      linkedObjectIds: Schema.optional(Schema.Array(Schema.String)),
-      purchaseDetails: Schema.optional(PurchaseDetails),
-      textModulesData: Schema.optional(Schema.Array(TextModuleData)),
-      saveRestrictions: Schema.optional(SaveRestrictions),
-      ticketRestrictions: Schema.optional(TicketRestrictions),
-      messages: Schema.optional(Schema.Array(Message)),
-      barcode: Schema.optional(Barcode),
-      id: Schema.optional(Schema.String),
-      deviceContext: Schema.optional(DeviceContext),
-      passengerNames: Schema.optional(Schema.String),
-      tripId: Schema.optional(Schema.String),
-      ticketStatus: Schema.optional(Schema.String),
-      customConcessionCategory: Schema.optional(LocalizedString),
-      classReference: Schema.optional(TransitClass),
-      hasUsers: Schema.optional(Schema.Boolean),
-      passConstraints: Schema.optional(PassConstraints),
-      smartTapRedemptionValue: Schema.optional(Schema.String),
-      merchantLocations: Schema.optional(Schema.Array(MerchantLocation)),
-      classId: Schema.optional(Schema.String),
-      ticketNumber: Schema.optional(Schema.String),
-      ticketLegs: Schema.optional(Schema.Array(TicketLeg)),
-      notifyPreference: Schema.optional(Schema.String),
-      appLinkData: Schema.optional(AppLinkData),
-      tripType: Schema.optional(Schema.String),
-      linksModuleData: Schema.optional(LinksModuleData),
-      infoModuleData: Schema.optional(InfoModuleData),
-      hexBackgroundColor: Schema.optional(Schema.String),
-      rotatingBarcode: Schema.optional(RotatingBarcode),
-      disableExpirationNotification: Schema.optional(Schema.Boolean),
-      heroImage: Schema.optional(Image),
-      locations: Schema.optional(Schema.Array(LatLongPoint)),
-      version: Schema.optional(Schema.String),
-      imageModulesData: Schema.optional(Schema.Array(ImageModuleData)),
-    }),
-  ).annotate({
-    identifier: "TransitObject",
-  }) as any as Schema.Schema<TransitObject>;
+export const TransitObject = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  passengerType: Schema.optional(Schema.String),
+  concessionCategory: Schema.optional(Schema.String),
+  customTicketStatus: Schema.optional(LocalizedString),
+  valueAddedModuleData: Schema.optional(Schema.Array(ValueAddedModuleData)),
+  validTimeInterval: Schema.optional(TimeInterval),
+  groupingInfo: Schema.optional(GroupingInfo),
+  state: Schema.optional(Schema.String),
+  hasLinkedDevice: Schema.optional(Schema.Boolean),
+  activationStatus: Schema.optional(ActivationStatus),
+  ticketLeg: Schema.optional(TicketLeg),
+  linkedObjectIds: Schema.optional(Schema.Array(Schema.String)),
+  purchaseDetails: Schema.optional(PurchaseDetails),
+  textModulesData: Schema.optional(Schema.Array(TextModuleData)),
+  saveRestrictions: Schema.optional(SaveRestrictions),
+  ticketRestrictions: Schema.optional(TicketRestrictions),
+  messages: Schema.optional(Schema.Array(Message)),
+  barcode: Schema.optional(Barcode),
+  id: Schema.optional(Schema.String),
+  deviceContext: Schema.optional(DeviceContext),
+  passengerNames: Schema.optional(Schema.String),
+  tripId: Schema.optional(Schema.String),
+  ticketStatus: Schema.optional(Schema.String),
+  customConcessionCategory: Schema.optional(LocalizedString),
+  classReference: Schema.optional(TransitClass),
+  hasUsers: Schema.optional(Schema.Boolean),
+  passConstraints: Schema.optional(PassConstraints),
+  smartTapRedemptionValue: Schema.optional(Schema.String),
+  merchantLocations: Schema.optional(Schema.Array(MerchantLocation)),
+  classId: Schema.optional(Schema.String),
+  ticketNumber: Schema.optional(Schema.String),
+  ticketLegs: Schema.optional(Schema.Array(TicketLeg)),
+  notifyPreference: Schema.optional(Schema.String),
+  appLinkData: Schema.optional(AppLinkData),
+  tripType: Schema.optional(Schema.String),
+  linksModuleData: Schema.optional(LinksModuleData),
+  infoModuleData: Schema.optional(InfoModuleData),
+  hexBackgroundColor: Schema.optional(Schema.String),
+  rotatingBarcode: Schema.optional(RotatingBarcode),
+  disableExpirationNotification: Schema.optional(Schema.Boolean),
+  heroImage: Schema.optional(Image),
+  locations: Schema.optional(Schema.Array(LatLongPoint)),
+  version: Schema.optional(Schema.String),
+  imageModulesData: Schema.optional(Schema.Array(ImageModuleData)),
+}).annotate({ identifier: "TransitObject" });
 
 export interface LoyaltyPointsBalance {
   /** The double form of a balance. Only one of these subtypes (string, int, double, money) should be populated. */
@@ -3437,17 +3049,12 @@ export interface LoyaltyPointsBalance {
   int?: number;
 }
 
-export const LoyaltyPointsBalance: Schema.Schema<LoyaltyPointsBalance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      double: Schema.optional(Schema.Number),
-      money: Schema.optional(Money),
-      string: Schema.optional(Schema.String),
-      int: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "LoyaltyPointsBalance",
-  }) as any as Schema.Schema<LoyaltyPointsBalance>;
+export const LoyaltyPointsBalance = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  double: Schema.optional(Schema.Number),
+  money: Schema.optional(Money),
+  string: Schema.optional(Schema.String),
+  int: Schema.optional(Schema.Number),
+}).annotate({ identifier: "LoyaltyPointsBalance" });
 
 export interface LoyaltyPoints {
   /** The loyalty points label, such as "Points". Recommended maximum length is 9 characters. */
@@ -3458,16 +3065,11 @@ export interface LoyaltyPoints {
   localizedLabel?: LocalizedString;
 }
 
-export const LoyaltyPoints: Schema.Schema<LoyaltyPoints> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      label: Schema.optional(Schema.String),
-      balance: Schema.optional(LoyaltyPointsBalance),
-      localizedLabel: Schema.optional(LocalizedString),
-    }),
-  ).annotate({
-    identifier: "LoyaltyPoints",
-  }) as any as Schema.Schema<LoyaltyPoints>;
+export const LoyaltyPoints = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  label: Schema.optional(Schema.String),
+  balance: Schema.optional(LoyaltyPointsBalance),
+  localizedLabel: Schema.optional(LocalizedString),
+}).annotate({ identifier: "LoyaltyPoints" });
 
 export interface LoyaltyObject {
   /** An array of messages displayed in the app. All users of this object will receive its associated messages. The maximum number of these fields is 10. */
@@ -3551,46 +3153,41 @@ export interface LoyaltyObject {
   appLinkData?: AppLinkData;
 }
 
-export const LoyaltyObject: Schema.Schema<LoyaltyObject> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      messages: Schema.optional(Schema.Array(Message)),
-      barcode: Schema.optional(Barcode),
-      id: Schema.optional(Schema.String),
-      accountName: Schema.optional(Schema.String),
-      loyaltyPoints: Schema.optional(LoyaltyPoints),
-      classReference: Schema.optional(LoyaltyClass),
-      hasUsers: Schema.optional(Schema.Boolean),
-      passConstraints: Schema.optional(PassConstraints),
-      valueAddedModuleData: Schema.optional(Schema.Array(ValueAddedModuleData)),
-      validTimeInterval: Schema.optional(TimeInterval),
-      groupingInfo: Schema.optional(GroupingInfo),
-      state: Schema.optional(Schema.String),
-      hasLinkedDevice: Schema.optional(Schema.Boolean),
-      secondaryLoyaltyPoints: Schema.optional(LoyaltyPoints),
-      linkedObjectIds: Schema.optional(Schema.Array(Schema.String)),
-      textModulesData: Schema.optional(Schema.Array(TextModuleData)),
-      saveRestrictions: Schema.optional(SaveRestrictions),
-      accountId: Schema.optional(Schema.String),
-      linkedOfferIds: Schema.optional(Schema.Array(Schema.String)),
-      linksModuleData: Schema.optional(LinksModuleData),
-      infoModuleData: Schema.optional(InfoModuleData),
-      rotatingBarcode: Schema.optional(RotatingBarcode),
-      disableExpirationNotification: Schema.optional(Schema.Boolean),
-      heroImage: Schema.optional(Image),
-      kind: Schema.optional(Schema.String),
-      locations: Schema.optional(Schema.Array(LatLongPoint)),
-      version: Schema.optional(Schema.String),
-      imageModulesData: Schema.optional(Schema.Array(ImageModuleData)),
-      smartTapRedemptionValue: Schema.optional(Schema.String),
-      merchantLocations: Schema.optional(Schema.Array(MerchantLocation)),
-      classId: Schema.optional(Schema.String),
-      notifyPreference: Schema.optional(Schema.String),
-      appLinkData: Schema.optional(AppLinkData),
-    }),
-  ).annotate({
-    identifier: "LoyaltyObject",
-  }) as any as Schema.Schema<LoyaltyObject>;
+export const LoyaltyObject = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  messages: Schema.optional(Schema.Array(Message)),
+  barcode: Schema.optional(Barcode),
+  id: Schema.optional(Schema.String),
+  accountName: Schema.optional(Schema.String),
+  loyaltyPoints: Schema.optional(LoyaltyPoints),
+  classReference: Schema.optional(LoyaltyClass),
+  hasUsers: Schema.optional(Schema.Boolean),
+  passConstraints: Schema.optional(PassConstraints),
+  valueAddedModuleData: Schema.optional(Schema.Array(ValueAddedModuleData)),
+  validTimeInterval: Schema.optional(TimeInterval),
+  groupingInfo: Schema.optional(GroupingInfo),
+  state: Schema.optional(Schema.String),
+  hasLinkedDevice: Schema.optional(Schema.Boolean),
+  secondaryLoyaltyPoints: Schema.optional(LoyaltyPoints),
+  linkedObjectIds: Schema.optional(Schema.Array(Schema.String)),
+  textModulesData: Schema.optional(Schema.Array(TextModuleData)),
+  saveRestrictions: Schema.optional(SaveRestrictions),
+  accountId: Schema.optional(Schema.String),
+  linkedOfferIds: Schema.optional(Schema.Array(Schema.String)),
+  linksModuleData: Schema.optional(LinksModuleData),
+  infoModuleData: Schema.optional(InfoModuleData),
+  rotatingBarcode: Schema.optional(RotatingBarcode),
+  disableExpirationNotification: Schema.optional(Schema.Boolean),
+  heroImage: Schema.optional(Image),
+  kind: Schema.optional(Schema.String),
+  locations: Schema.optional(Schema.Array(LatLongPoint)),
+  version: Schema.optional(Schema.String),
+  imageModulesData: Schema.optional(Schema.Array(ImageModuleData)),
+  smartTapRedemptionValue: Schema.optional(Schema.String),
+  merchantLocations: Schema.optional(Schema.Array(MerchantLocation)),
+  classId: Schema.optional(Schema.String),
+  notifyPreference: Schema.optional(Schema.String),
+  appLinkData: Schema.optional(AppLinkData),
+}).annotate({ identifier: "LoyaltyObject" });
 
 export interface OfferObject {
   /** Indicates if notifications should explicitly be suppressed. If this field is set to true, regardless of the `messages` field, expiration notifications to the user will be suppressed. By default, this field is set to false. Currently, this can only be set for offers. */
@@ -3664,69 +3261,54 @@ export interface OfferObject {
   linkedObjectIds?: Array<string>;
 }
 
-export const OfferObject: Schema.Schema<OfferObject> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      disableExpirationNotification: Schema.optional(Schema.Boolean),
-      rotatingBarcode: Schema.optional(RotatingBarcode),
-      infoModuleData: Schema.optional(InfoModuleData),
-      linksModuleData: Schema.optional(LinksModuleData),
-      imageModulesData: Schema.optional(Schema.Array(ImageModuleData)),
-      version: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      locations: Schema.optional(Schema.Array(LatLongPoint)),
-      heroImage: Schema.optional(Image),
-      classId: Schema.optional(Schema.String),
-      merchantLocations: Schema.optional(Schema.Array(MerchantLocation)),
-      smartTapRedemptionValue: Schema.optional(Schema.String),
-      appLinkData: Schema.optional(AppLinkData),
-      notifyPreference: Schema.optional(Schema.String),
-      barcode: Schema.optional(Barcode),
-      messages: Schema.optional(Schema.Array(Message)),
-      classReference: Schema.optional(OfferClass),
-      hasUsers: Schema.optional(Schema.Boolean),
-      passConstraints: Schema.optional(PassConstraints),
-      id: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      hasLinkedDevice: Schema.optional(Schema.Boolean),
-      groupingInfo: Schema.optional(GroupingInfo),
-      validTimeInterval: Schema.optional(TimeInterval),
-      valueAddedModuleData: Schema.optional(Schema.Array(ValueAddedModuleData)),
-      textModulesData: Schema.optional(Schema.Array(TextModuleData)),
-      saveRestrictions: Schema.optional(SaveRestrictions),
-      linkedObjectIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "OfferObject",
-  }) as any as Schema.Schema<OfferObject>;
+export const OfferObject = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  disableExpirationNotification: Schema.optional(Schema.Boolean),
+  rotatingBarcode: Schema.optional(RotatingBarcode),
+  infoModuleData: Schema.optional(InfoModuleData),
+  linksModuleData: Schema.optional(LinksModuleData),
+  imageModulesData: Schema.optional(Schema.Array(ImageModuleData)),
+  version: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  locations: Schema.optional(Schema.Array(LatLongPoint)),
+  heroImage: Schema.optional(Image),
+  classId: Schema.optional(Schema.String),
+  merchantLocations: Schema.optional(Schema.Array(MerchantLocation)),
+  smartTapRedemptionValue: Schema.optional(Schema.String),
+  appLinkData: Schema.optional(AppLinkData),
+  notifyPreference: Schema.optional(Schema.String),
+  barcode: Schema.optional(Barcode),
+  messages: Schema.optional(Schema.Array(Message)),
+  classReference: Schema.optional(OfferClass),
+  hasUsers: Schema.optional(Schema.Boolean),
+  passConstraints: Schema.optional(PassConstraints),
+  id: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  hasLinkedDevice: Schema.optional(Schema.Boolean),
+  groupingInfo: Schema.optional(GroupingInfo),
+  validTimeInterval: Schema.optional(TimeInterval),
+  valueAddedModuleData: Schema.optional(Schema.Array(ValueAddedModuleData)),
+  textModulesData: Schema.optional(Schema.Array(TextModuleData)),
+  saveRestrictions: Schema.optional(SaveRestrictions),
+  linkedObjectIds: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "OfferObject" });
 
 export interface ExpiryNotification {
   /** Indicates if the object needs to have expiry notification enabled. */
   enableNotification?: boolean;
 }
 
-export const ExpiryNotification: Schema.Schema<ExpiryNotification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableNotification: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ExpiryNotification",
-  }) as any as Schema.Schema<ExpiryNotification>;
+export const ExpiryNotification = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enableNotification: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "ExpiryNotification" });
 
 export interface UpcomingNotification {
   /** Indicates if the object needs to have upcoming notification enabled. */
   enableNotification?: boolean;
 }
 
-export const UpcomingNotification: Schema.Schema<UpcomingNotification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableNotification: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "UpcomingNotification",
-  }) as any as Schema.Schema<UpcomingNotification>;
+export const UpcomingNotification = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enableNotification: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "UpcomingNotification" });
 
 export interface Notifications {
   /** A notification would be triggered at a specific time before the card expires. */
@@ -3735,15 +3317,10 @@ export interface Notifications {
   upcomingNotification?: UpcomingNotification;
 }
 
-export const Notifications: Schema.Schema<Notifications> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expiryNotification: Schema.optional(ExpiryNotification),
-      upcomingNotification: Schema.optional(UpcomingNotification),
-    }),
-  ).annotate({
-    identifier: "Notifications",
-  }) as any as Schema.Schema<Notifications>;
+export const Notifications = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  expiryNotification: Schema.optional(ExpiryNotification),
+  upcomingNotification: Schema.optional(UpcomingNotification),
+}).annotate({ identifier: "Notifications" });
 
 export interface GenericObject {
   /** An array of messages displayed in the app. All users of this object will receive its associated messages. The maximum number of these fields is 10. */
@@ -3835,41 +3412,36 @@ export interface GenericObject {
   appLinkData?: AppLinkData;
 }
 
-export const GenericObject: Schema.Schema<GenericObject> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      messages: Schema.optional(Schema.Array(Message)),
-      barcode: Schema.optional(Barcode),
-      id: Schema.optional(Schema.String),
-      subheader: Schema.optional(LocalizedString),
-      hasUsers: Schema.optional(Schema.Boolean),
-      passConstraints: Schema.optional(PassConstraints),
-      logo: Schema.optional(Image),
-      valueAddedModuleData: Schema.optional(Schema.Array(ValueAddedModuleData)),
-      validTimeInterval: Schema.optional(TimeInterval),
-      groupingInfo: Schema.optional(GroupingInfo),
-      header: Schema.optional(LocalizedString),
-      state: Schema.optional(Schema.String),
-      linkedObjectIds: Schema.optional(Schema.Array(Schema.String)),
-      textModulesData: Schema.optional(Schema.Array(TextModuleData)),
-      saveRestrictions: Schema.optional(SaveRestrictions),
-      linksModuleData: Schema.optional(LinksModuleData),
-      hexBackgroundColor: Schema.optional(Schema.String),
-      rotatingBarcode: Schema.optional(RotatingBarcode),
-      heroImage: Schema.optional(Image),
-      imageModulesData: Schema.optional(Schema.Array(ImageModuleData)),
-      cardTitle: Schema.optional(LocalizedString),
-      smartTapRedemptionValue: Schema.optional(Schema.String),
-      merchantLocations: Schema.optional(Schema.Array(MerchantLocation)),
-      classId: Schema.optional(Schema.String),
-      wideLogo: Schema.optional(Image),
-      genericType: Schema.optional(Schema.String),
-      notifications: Schema.optional(Notifications),
-      appLinkData: Schema.optional(AppLinkData),
-    }),
-  ).annotate({
-    identifier: "GenericObject",
-  }) as any as Schema.Schema<GenericObject>;
+export const GenericObject = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  messages: Schema.optional(Schema.Array(Message)),
+  barcode: Schema.optional(Barcode),
+  id: Schema.optional(Schema.String),
+  subheader: Schema.optional(LocalizedString),
+  hasUsers: Schema.optional(Schema.Boolean),
+  passConstraints: Schema.optional(PassConstraints),
+  logo: Schema.optional(Image),
+  valueAddedModuleData: Schema.optional(Schema.Array(ValueAddedModuleData)),
+  validTimeInterval: Schema.optional(TimeInterval),
+  groupingInfo: Schema.optional(GroupingInfo),
+  header: Schema.optional(LocalizedString),
+  state: Schema.optional(Schema.String),
+  linkedObjectIds: Schema.optional(Schema.Array(Schema.String)),
+  textModulesData: Schema.optional(Schema.Array(TextModuleData)),
+  saveRestrictions: Schema.optional(SaveRestrictions),
+  linksModuleData: Schema.optional(LinksModuleData),
+  hexBackgroundColor: Schema.optional(Schema.String),
+  rotatingBarcode: Schema.optional(RotatingBarcode),
+  heroImage: Schema.optional(Image),
+  imageModulesData: Schema.optional(Schema.Array(ImageModuleData)),
+  cardTitle: Schema.optional(LocalizedString),
+  smartTapRedemptionValue: Schema.optional(Schema.String),
+  merchantLocations: Schema.optional(Schema.Array(MerchantLocation)),
+  classId: Schema.optional(Schema.String),
+  wideLogo: Schema.optional(Image),
+  genericType: Schema.optional(Schema.String),
+  notifications: Schema.optional(Notifications),
+  appLinkData: Schema.optional(AppLinkData),
+}).annotate({ identifier: "GenericObject" });
 
 export interface GenericClass {
   /** Available only to Smart Tap enabled partners. Contact support for additional guidance. */
@@ -3916,28 +3488,23 @@ export interface GenericClass {
   redemptionIssuers?: Array<string>;
 }
 
-export const GenericClass: Schema.Schema<GenericClass> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableSmartTap: Schema.optional(Schema.Boolean),
-      merchantLocations: Schema.optional(Schema.Array(MerchantLocation)),
-      valueAddedModuleData: Schema.optional(Schema.Array(ValueAddedModuleData)),
-      viewUnlockRequirement: Schema.optional(Schema.String),
-      multipleDevicesAndHoldersAllowedStatus: Schema.optional(Schema.String),
-      textModulesData: Schema.optional(Schema.Array(TextModuleData)),
-      appLinkData: Schema.optional(AppLinkData),
-      linksModuleData: Schema.optional(LinksModuleData),
-      callbackOptions: Schema.optional(CallbackOptions),
-      messages: Schema.optional(Schema.Array(Message)),
-      classTemplateInfo: Schema.optional(ClassTemplateInfo),
-      securityAnimation: Schema.optional(SecurityAnimation),
-      id: Schema.optional(Schema.String),
-      imageModulesData: Schema.optional(Schema.Array(ImageModuleData)),
-      redemptionIssuers: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GenericClass",
-  }) as any as Schema.Schema<GenericClass>;
+export const GenericClass = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enableSmartTap: Schema.optional(Schema.Boolean),
+  merchantLocations: Schema.optional(Schema.Array(MerchantLocation)),
+  valueAddedModuleData: Schema.optional(Schema.Array(ValueAddedModuleData)),
+  viewUnlockRequirement: Schema.optional(Schema.String),
+  multipleDevicesAndHoldersAllowedStatus: Schema.optional(Schema.String),
+  textModulesData: Schema.optional(Schema.Array(TextModuleData)),
+  appLinkData: Schema.optional(AppLinkData),
+  linksModuleData: Schema.optional(LinksModuleData),
+  callbackOptions: Schema.optional(CallbackOptions),
+  messages: Schema.optional(Schema.Array(Message)),
+  classTemplateInfo: Schema.optional(ClassTemplateInfo),
+  securityAnimation: Schema.optional(SecurityAnimation),
+  id: Schema.optional(Schema.String),
+  imageModulesData: Schema.optional(Schema.Array(ImageModuleData)),
+  redemptionIssuers: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "GenericClass" });
 
 export interface Resources {
   /** A list of loyalty classes. */
@@ -3970,25 +3537,22 @@ export interface Resources {
   transitClasses?: Array<TransitClass>;
 }
 
-export const Resources: Schema.Schema<Resources> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      loyaltyClasses: Schema.optional(Schema.Array(LoyaltyClass)),
-      flightClasses: Schema.optional(Schema.Array(FlightClass)),
-      flightObjects: Schema.optional(Schema.Array(FlightObject)),
-      transitObjects: Schema.optional(Schema.Array(TransitObject)),
-      giftCardObjects: Schema.optional(Schema.Array(GiftCardObject)),
-      eventTicketClasses: Schema.optional(Schema.Array(EventTicketClass)),
-      offerClasses: Schema.optional(Schema.Array(OfferClass)),
-      eventTicketObjects: Schema.optional(Schema.Array(EventTicketObject)),
-      giftCardClasses: Schema.optional(Schema.Array(GiftCardClass)),
-      loyaltyObjects: Schema.optional(Schema.Array(LoyaltyObject)),
-      offerObjects: Schema.optional(Schema.Array(OfferObject)),
-      genericObjects: Schema.optional(Schema.Array(GenericObject)),
-      genericClasses: Schema.optional(Schema.Array(GenericClass)),
-      transitClasses: Schema.optional(Schema.Array(TransitClass)),
-    }),
-  ).annotate({ identifier: "Resources" }) as any as Schema.Schema<Resources>;
+export const Resources = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  loyaltyClasses: Schema.optional(Schema.Array(LoyaltyClass)),
+  flightClasses: Schema.optional(Schema.Array(FlightClass)),
+  flightObjects: Schema.optional(Schema.Array(FlightObject)),
+  transitObjects: Schema.optional(Schema.Array(TransitObject)),
+  giftCardObjects: Schema.optional(Schema.Array(GiftCardObject)),
+  eventTicketClasses: Schema.optional(Schema.Array(EventTicketClass)),
+  offerClasses: Schema.optional(Schema.Array(OfferClass)),
+  eventTicketObjects: Schema.optional(Schema.Array(EventTicketObject)),
+  giftCardClasses: Schema.optional(Schema.Array(GiftCardClass)),
+  loyaltyObjects: Schema.optional(Schema.Array(LoyaltyObject)),
+  offerObjects: Schema.optional(Schema.Array(OfferObject)),
+  genericObjects: Schema.optional(Schema.Array(GenericObject)),
+  genericClasses: Schema.optional(Schema.Array(GenericClass)),
+  transitClasses: Schema.optional(Schema.Array(TransitClass)),
+}).annotate({ identifier: "Resources" });
 
 export interface Pagination {
   /** Number of results returned in this page. */
@@ -3999,14 +3563,11 @@ export interface Pagination {
   nextPageToken?: string;
 }
 
-export const Pagination: Schema.Schema<Pagination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resultsPerPage: Schema.optional(Schema.Number),
-      kind: Schema.optional(Schema.String),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Pagination" }) as any as Schema.Schema<Pagination>;
+export const Pagination = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resultsPerPage: Schema.optional(Schema.Number),
+  kind: Schema.optional(Schema.String),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "Pagination" });
 
 export interface OfferClassListResponse {
   /** Pagination of the response. */
@@ -4015,15 +3576,12 @@ export interface OfferClassListResponse {
   resources?: Array<OfferClass>;
 }
 
-export const OfferClassListResponse: Schema.Schema<OfferClassListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pagination: Schema.optional(Pagination),
-      resources: Schema.optional(Schema.Array(OfferClass)),
-    }),
-  ).annotate({
-    identifier: "OfferClassListResponse",
-  }) as any as Schema.Schema<OfferClassListResponse>;
+export const OfferClassListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    pagination: Schema.optional(Pagination),
+    resources: Schema.optional(Schema.Array(OfferClass)),
+  },
+).annotate({ identifier: "OfferClassListResponse" });
 
 export interface GenericObjectListResponse {
   /** Resources corresponding to the list request. */
@@ -4032,29 +3590,21 @@ export interface GenericObjectListResponse {
   pagination?: Pagination;
 }
 
-export const GenericObjectListResponse: Schema.Schema<GenericObjectListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resources: Schema.optional(Schema.Array(GenericObject)),
-      pagination: Schema.optional(Pagination),
-    }),
-  ).annotate({
-    identifier: "GenericObjectListResponse",
-  }) as any as Schema.Schema<GenericObjectListResponse>;
+export const GenericObjectListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resources: Schema.optional(Schema.Array(GenericObject)),
+    pagination: Schema.optional(Pagination),
+  }).annotate({ identifier: "GenericObjectListResponse" });
 
 export interface EventTicketClassAddMessageResponse {
   /** The updated EventTicketClass resource. */
   resource?: EventTicketClass;
 }
 
-export const EventTicketClassAddMessageResponse: Schema.Schema<EventTicketClassAddMessageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resource: Schema.optional(EventTicketClass),
-    }),
-  ).annotate({
-    identifier: "EventTicketClassAddMessageResponse",
-  }) as any as Schema.Schema<EventTicketClassAddMessageResponse>;
+export const EventTicketClassAddMessageResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.optional(EventTicketClass),
+  }).annotate({ identifier: "EventTicketClassAddMessageResponse" });
 
 export interface IssuerContactInfo {
   /** The primary contact name. */
@@ -4067,17 +3617,12 @@ export interface IssuerContactInfo {
   phone?: string;
 }
 
-export const IssuerContactInfo: Schema.Schema<IssuerContactInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      email: Schema.optional(Schema.String),
-      alertsEmails: Schema.optional(Schema.Array(Schema.String)),
-      phone: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "IssuerContactInfo",
-  }) as any as Schema.Schema<IssuerContactInfo>;
+export const IssuerContactInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  email: Schema.optional(Schema.String),
+  alertsEmails: Schema.optional(Schema.Array(Schema.String)),
+  phone: Schema.optional(Schema.String),
+}).annotate({ identifier: "IssuerContactInfo" });
 
 export interface AuthenticationKey {
   /** Available only to Smart Tap enabled partners. Contact support for additional guidance. */
@@ -4086,15 +3631,10 @@ export interface AuthenticationKey {
   publicKeyPem?: string;
 }
 
-export const AuthenticationKey: Schema.Schema<AuthenticationKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Number),
-      publicKeyPem: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AuthenticationKey",
-  }) as any as Schema.Schema<AuthenticationKey>;
+export const AuthenticationKey = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.Number),
+  publicKeyPem: Schema.optional(Schema.String),
+}).annotate({ identifier: "AuthenticationKey" });
 
 export interface SmartTapMerchantData {
   /** Available only to Smart Tap enabled partners. Contact support for additional guidance. */
@@ -4103,15 +3643,10 @@ export interface SmartTapMerchantData {
   authenticationKeys?: Array<AuthenticationKey>;
 }
 
-export const SmartTapMerchantData: Schema.Schema<SmartTapMerchantData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      smartTapMerchantId: Schema.optional(Schema.String),
-      authenticationKeys: Schema.optional(Schema.Array(AuthenticationKey)),
-    }),
-  ).annotate({
-    identifier: "SmartTapMerchantData",
-  }) as any as Schema.Schema<SmartTapMerchantData>;
+export const SmartTapMerchantData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  smartTapMerchantId: Schema.optional(Schema.String),
+  authenticationKeys: Schema.optional(Schema.Array(AuthenticationKey)),
+}).annotate({ identifier: "SmartTapMerchantData" });
 
 export interface Issuer {
   /** Issuer contact information. */
@@ -4128,31 +3663,23 @@ export interface Issuer {
   callbackOptions?: CallbackOptions;
 }
 
-export const Issuer: Schema.Schema<Issuer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contactInfo: Schema.optional(IssuerContactInfo),
-      name: Schema.optional(Schema.String),
-      issuerId: Schema.optional(Schema.String),
-      smartTapMerchantData: Schema.optional(SmartTapMerchantData),
-      homepageUrl: Schema.optional(Schema.String),
-      callbackOptions: Schema.optional(CallbackOptions),
-    }),
-  ).annotate({ identifier: "Issuer" }) as any as Schema.Schema<Issuer>;
+export const Issuer = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  contactInfo: Schema.optional(IssuerContactInfo),
+  name: Schema.optional(Schema.String),
+  issuerId: Schema.optional(Schema.String),
+  smartTapMerchantData: Schema.optional(SmartTapMerchantData),
+  homepageUrl: Schema.optional(Schema.String),
+  callbackOptions: Schema.optional(CallbackOptions),
+}).annotate({ identifier: "Issuer" });
 
 export interface IssuerListResponse {
   /** Resources corresponding to the list request. */
   resources?: Array<Issuer>;
 }
 
-export const IssuerListResponse: Schema.Schema<IssuerListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resources: Schema.optional(Schema.Array(Issuer)),
-    }),
-  ).annotate({
-    identifier: "IssuerListResponse",
-  }) as any as Schema.Schema<IssuerListResponse>;
+export const IssuerListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resources: Schema.optional(Schema.Array(Issuer)),
+}).annotate({ identifier: "IssuerListResponse" });
 
 export interface DownloadParameters {
   /** Determining whether or not Apiary should skip the inclusion of any Content-Range header on its response to Scotty. */
@@ -4161,15 +3688,10 @@ export interface DownloadParameters {
   allowGzipCompression?: boolean;
 }
 
-export const DownloadParameters: Schema.Schema<DownloadParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ignoreRange: Schema.optional(Schema.Boolean),
-      allowGzipCompression: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "DownloadParameters",
-  }) as any as Schema.Schema<DownloadParameters>;
+export const DownloadParameters = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ignoreRange: Schema.optional(Schema.Boolean),
+  allowGzipCompression: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "DownloadParameters" });
 
 export interface DiffUploadResponse {
   /** The location of the original file for a diff upload request. Must be filled in if responding to an upload start notification. */
@@ -4178,15 +3700,10 @@ export interface DiffUploadResponse {
   objectVersion?: string;
 }
 
-export const DiffUploadResponse: Schema.Schema<DiffUploadResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      originalObject: Schema.optional(CompositeMedia),
-      objectVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DiffUploadResponse",
-  }) as any as Schema.Schema<DiffUploadResponse>;
+export const DiffUploadResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  originalObject: Schema.optional(CompositeMedia),
+  objectVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "DiffUploadResponse" });
 
 export interface DiffChecksumsResponse {
   /** The chunk size of checksums. Must be a multiple of 256KB. */
@@ -4201,32 +3718,22 @@ export interface DiffChecksumsResponse {
   objectVersion?: string;
 }
 
-export const DiffChecksumsResponse: Schema.Schema<DiffChecksumsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      chunkSizeBytes: Schema.optional(Schema.String),
-      objectLocation: Schema.optional(CompositeMedia),
-      objectSizeBytes: Schema.optional(Schema.String),
-      checksumsLocation: Schema.optional(CompositeMedia),
-      objectVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DiffChecksumsResponse",
-  }) as any as Schema.Schema<DiffChecksumsResponse>;
+export const DiffChecksumsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  chunkSizeBytes: Schema.optional(Schema.String),
+  objectLocation: Schema.optional(CompositeMedia),
+  objectSizeBytes: Schema.optional(Schema.String),
+  checksumsLocation: Schema.optional(CompositeMedia),
+  objectVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "DiffChecksumsResponse" });
 
 export interface DiffDownloadResponse {
   /** The original object location. */
   objectLocation?: CompositeMedia;
 }
 
-export const DiffDownloadResponse: Schema.Schema<DiffDownloadResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      objectLocation: Schema.optional(CompositeMedia),
-    }),
-  ).annotate({
-    identifier: "DiffDownloadResponse",
-  }) as any as Schema.Schema<DiffDownloadResponse>;
+export const DiffDownloadResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  objectLocation: Schema.optional(CompositeMedia),
+}).annotate({ identifier: "DiffDownloadResponse" });
 
 export interface DiffVersionResponse {
   /** The version of the object stored at the server. */
@@ -4235,15 +3742,10 @@ export interface DiffVersionResponse {
   objectSizeBytes?: string;
 }
 
-export const DiffVersionResponse: Schema.Schema<DiffVersionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      objectVersion: Schema.optional(Schema.String),
-      objectSizeBytes: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DiffVersionResponse",
-  }) as any as Schema.Schema<DiffVersionResponse>;
+export const DiffVersionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  objectVersion: Schema.optional(Schema.String),
+  objectSizeBytes: Schema.optional(Schema.String),
+}).annotate({ identifier: "DiffVersionResponse" });
 
 export interface ContentTypeInfo {
   /** The content type of the file detected by Fusion ID. go/fusionid */
@@ -4262,20 +3764,15 @@ export interface ContentTypeInfo {
   fusionIdDetectionMetadata?: string;
 }
 
-export const ContentTypeInfo: Schema.Schema<ContentTypeInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fromFusionId: Schema.optional(Schema.String),
-      bestGuess: Schema.optional(Schema.String),
-      fromFileName: Schema.optional(Schema.String),
-      fromBytes: Schema.optional(Schema.String),
-      fromHeader: Schema.optional(Schema.String),
-      fromUrlPath: Schema.optional(Schema.String),
-      fusionIdDetectionMetadata: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ContentTypeInfo",
-  }) as any as Schema.Schema<ContentTypeInfo>;
+export const ContentTypeInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fromFusionId: Schema.optional(Schema.String),
+  bestGuess: Schema.optional(Schema.String),
+  fromFileName: Schema.optional(Schema.String),
+  fromBytes: Schema.optional(Schema.String),
+  fromHeader: Schema.optional(Schema.String),
+  fromUrlPath: Schema.optional(Schema.String),
+  fusionIdDetectionMetadata: Schema.optional(Schema.String),
+}).annotate({ identifier: "ContentTypeInfo" });
 
 export interface Media {
   /** Parameters for a media download. */
@@ -4354,41 +3851,38 @@ export interface Media {
   sha256Hash?: string;
 }
 
-export const Media: Schema.Schema<Media> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      downloadParameters: Schema.optional(DownloadParameters),
-      diffUploadResponse: Schema.optional(DiffUploadResponse),
-      diffUploadRequest: Schema.optional(DiffUploadRequest),
-      crc32cHash: Schema.optional(Schema.Number),
-      diffChecksumsResponse: Schema.optional(DiffChecksumsResponse),
-      length: Schema.optional(Schema.String),
-      sha1Hash: Schema.optional(Schema.String),
-      cosmoBinaryReference: Schema.optional(Schema.String),
-      bigstoreObjectRef: Schema.optional(Schema.String),
-      diffDownloadResponse: Schema.optional(DiffDownloadResponse),
-      diffVersionResponse: Schema.optional(DiffVersionResponse),
-      objectId: Schema.optional(ObjectId),
-      blobstore2Info: Schema.optional(Blobstore2Info),
-      contentType: Schema.optional(Schema.String),
-      path: Schema.optional(Schema.String),
-      compositeMedia: Schema.optional(Schema.Array(CompositeMedia)),
-      referenceType: Schema.optional(Schema.String),
-      hashVerified: Schema.optional(Schema.Boolean),
-      isPotentialRetry: Schema.optional(Schema.Boolean),
-      md5Hash: Schema.optional(Schema.String),
-      mediaId: Schema.optional(Schema.String),
-      token: Schema.optional(Schema.String),
-      algorithm: Schema.optional(Schema.String),
-      inline: Schema.optional(Schema.String),
-      filename: Schema.optional(Schema.String),
-      blobRef: Schema.optional(Schema.String),
-      hash: Schema.optional(Schema.String),
-      contentTypeInfo: Schema.optional(ContentTypeInfo),
-      timestamp: Schema.optional(Schema.String),
-      sha256Hash: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Media" }) as any as Schema.Schema<Media>;
+export const Media = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  downloadParameters: Schema.optional(DownloadParameters),
+  diffUploadResponse: Schema.optional(DiffUploadResponse),
+  diffUploadRequest: Schema.optional(DiffUploadRequest),
+  crc32cHash: Schema.optional(Schema.Number),
+  diffChecksumsResponse: Schema.optional(DiffChecksumsResponse),
+  length: Schema.optional(Schema.String),
+  sha1Hash: Schema.optional(Schema.String),
+  cosmoBinaryReference: Schema.optional(Schema.String),
+  bigstoreObjectRef: Schema.optional(Schema.String),
+  diffDownloadResponse: Schema.optional(DiffDownloadResponse),
+  diffVersionResponse: Schema.optional(DiffVersionResponse),
+  objectId: Schema.optional(ObjectId),
+  blobstore2Info: Schema.optional(Blobstore2Info),
+  contentType: Schema.optional(Schema.String),
+  path: Schema.optional(Schema.String),
+  compositeMedia: Schema.optional(Schema.Array(CompositeMedia)),
+  referenceType: Schema.optional(Schema.String),
+  hashVerified: Schema.optional(Schema.Boolean),
+  isPotentialRetry: Schema.optional(Schema.Boolean),
+  md5Hash: Schema.optional(Schema.String),
+  mediaId: Schema.optional(Schema.String),
+  token: Schema.optional(Schema.String),
+  algorithm: Schema.optional(Schema.String),
+  inline: Schema.optional(Schema.String),
+  filename: Schema.optional(Schema.String),
+  blobRef: Schema.optional(Schema.String),
+  hash: Schema.optional(Schema.String),
+  contentTypeInfo: Schema.optional(ContentTypeInfo),
+  timestamp: Schema.optional(Schema.String),
+  sha256Hash: Schema.optional(Schema.String),
+}).annotate({ identifier: "Media" });
 
 export interface MediaRequestInfo {
   /** Set if the http request info is diff encoded. The value of this field is the version number of the base revision. This is corresponding to Apiary's mediaDiffObjectVersion (//depot/google3/java/com/google/api/server/media/variable/DiffObjectVersionVariable.java). See go/esf-scotty-diff-upload for more information. */
@@ -4419,23 +3913,18 @@ export interface MediaRequestInfo {
   finalStatus?: number;
 }
 
-export const MediaRequestInfo: Schema.Schema<MediaRequestInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      diffObjectVersion: Schema.optional(Schema.String),
-      totalBytesIsEstimated: Schema.optional(Schema.Boolean),
-      notificationType: Schema.optional(Schema.String),
-      customData: Schema.optional(Schema.String),
-      totalBytes: Schema.optional(Schema.String),
-      physicalHeaders: Schema.optional(Schema.String),
-      currentBytes: Schema.optional(Schema.String),
-      requestReceivedParamsServingInfo: Schema.optional(Schema.String),
-      requestId: Schema.optional(Schema.String),
-      finalStatus: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "MediaRequestInfo",
-  }) as any as Schema.Schema<MediaRequestInfo>;
+export const MediaRequestInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  diffObjectVersion: Schema.optional(Schema.String),
+  totalBytesIsEstimated: Schema.optional(Schema.Boolean),
+  notificationType: Schema.optional(Schema.String),
+  customData: Schema.optional(Schema.String),
+  totalBytes: Schema.optional(Schema.String),
+  physicalHeaders: Schema.optional(Schema.String),
+  currentBytes: Schema.optional(Schema.String),
+  requestReceivedParamsServingInfo: Schema.optional(Schema.String),
+  requestId: Schema.optional(Schema.String),
+  finalStatus: Schema.optional(Schema.Number),
+}).annotate({ identifier: "MediaRequestInfo" });
 
 export interface TransitObjectUploadRotatingBarcodeValuesRequest {
   /** A reference to the rotating barcode values payload that was uploaded. */
@@ -4444,27 +3933,22 @@ export interface TransitObjectUploadRotatingBarcodeValuesRequest {
   mediaRequestInfo?: MediaRequestInfo;
 }
 
-export const TransitObjectUploadRotatingBarcodeValuesRequest: Schema.Schema<TransitObjectUploadRotatingBarcodeValuesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      blob: Schema.optional(Media),
-      mediaRequestInfo: Schema.optional(MediaRequestInfo),
-    }),
-  ).annotate({
+export const TransitObjectUploadRotatingBarcodeValuesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    blob: Schema.optional(Media),
+    mediaRequestInfo: Schema.optional(MediaRequestInfo),
+  }).annotate({
     identifier: "TransitObjectUploadRotatingBarcodeValuesRequest",
-  }) as any as Schema.Schema<TransitObjectUploadRotatingBarcodeValuesRequest>;
+  });
 
 export interface SignUpInfo {
   /** ID of the class the user can sign up for. */
   classId?: string;
 }
 
-export const SignUpInfo: Schema.Schema<SignUpInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      classId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "SignUpInfo" }) as any as Schema.Schema<SignUpInfo>;
+export const SignUpInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  classId: Schema.optional(Schema.String),
+}).annotate({ identifier: "SignUpInfo" });
 
 export interface IssuerToUserInfo {
   /** Currently not used, consider deprecating. */
@@ -4481,59 +3965,42 @@ export interface IssuerToUserInfo {
   value?: string;
 }
 
-export const IssuerToUserInfo: Schema.Schema<IssuerToUserInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      url: Schema.optional(Schema.String),
-      action: Schema.optional(Schema.String),
-      signUpInfo: Schema.optional(SignUpInfo),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "IssuerToUserInfo",
-  }) as any as Schema.Schema<IssuerToUserInfo>;
+export const IssuerToUserInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  url: Schema.optional(Schema.String),
+  action: Schema.optional(Schema.String),
+  signUpInfo: Schema.optional(SignUpInfo),
+  value: Schema.optional(Schema.String),
+}).annotate({ identifier: "IssuerToUserInfo" });
 
 export interface GenericClassAddMessageResponse {
   /** The updated EventTicketClass resource. */
   resource?: GenericClass;
 }
 
-export const GenericClassAddMessageResponse: Schema.Schema<GenericClassAddMessageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resource: Schema.optional(GenericClass),
-    }),
-  ).annotate({
-    identifier: "GenericClassAddMessageResponse",
-  }) as any as Schema.Schema<GenericClassAddMessageResponse>;
+export const GenericClassAddMessageResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.optional(GenericClass),
+  }).annotate({ identifier: "GenericClassAddMessageResponse" });
 
 export interface OfferObjectAddMessageResponse {
   /** The updated OfferObject resource. */
   resource?: OfferObject;
 }
 
-export const OfferObjectAddMessageResponse: Schema.Schema<OfferObjectAddMessageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resource: Schema.optional(OfferObject),
-    }),
-  ).annotate({
-    identifier: "OfferObjectAddMessageResponse",
-  }) as any as Schema.Schema<OfferObjectAddMessageResponse>;
+export const OfferObjectAddMessageResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.optional(OfferObject),
+  }).annotate({ identifier: "OfferObjectAddMessageResponse" });
 
 export interface TransitObjectAddMessageResponse {
   /** The updated TransitObject resource. */
   resource?: TransitObject;
 }
 
-export const TransitObjectAddMessageResponse: Schema.Schema<TransitObjectAddMessageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resource: Schema.optional(TransitObject),
-    }),
-  ).annotate({
-    identifier: "TransitObjectAddMessageResponse",
-  }) as any as Schema.Schema<TransitObjectAddMessageResponse>;
+export const TransitObjectAddMessageResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.optional(TransitObject),
+  }).annotate({ identifier: "TransitObjectAddMessageResponse" });
 
 export interface EventTicketClassListResponse {
   /** Pagination of the response. */
@@ -4542,29 +4009,21 @@ export interface EventTicketClassListResponse {
   resources?: Array<EventTicketClass>;
 }
 
-export const EventTicketClassListResponse: Schema.Schema<EventTicketClassListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pagination: Schema.optional(Pagination),
-      resources: Schema.optional(Schema.Array(EventTicketClass)),
-    }),
-  ).annotate({
-    identifier: "EventTicketClassListResponse",
-  }) as any as Schema.Schema<EventTicketClassListResponse>;
+export const EventTicketClassListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pagination: Schema.optional(Pagination),
+    resources: Schema.optional(Schema.Array(EventTicketClass)),
+  }).annotate({ identifier: "EventTicketClassListResponse" });
 
 export interface FlightObjectAddMessageResponse {
   /** The updated FlightObject resource. */
   resource?: FlightObject;
 }
 
-export const FlightObjectAddMessageResponse: Schema.Schema<FlightObjectAddMessageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resource: Schema.optional(FlightObject),
-    }),
-  ).annotate({
-    identifier: "FlightObjectAddMessageResponse",
-  }) as any as Schema.Schema<FlightObjectAddMessageResponse>;
+export const FlightObjectAddMessageResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.optional(FlightObject),
+  }).annotate({ identifier: "FlightObjectAddMessageResponse" });
 
 export interface EventTicketObjectListResponse {
   /** Resources corresponding to the list request. */
@@ -4573,15 +4032,11 @@ export interface EventTicketObjectListResponse {
   pagination?: Pagination;
 }
 
-export const EventTicketObjectListResponse: Schema.Schema<EventTicketObjectListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resources: Schema.optional(Schema.Array(EventTicketObject)),
-      pagination: Schema.optional(Pagination),
-    }),
-  ).annotate({
-    identifier: "EventTicketObjectListResponse",
-  }) as any as Schema.Schema<EventTicketObjectListResponse>;
+export const EventTicketObjectListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resources: Schema.optional(Schema.Array(EventTicketObject)),
+    pagination: Schema.optional(Pagination),
+  }).annotate({ identifier: "EventTicketObjectListResponse" });
 
 export interface GenericClassListResponse {
   /** Resources corresponding to the list request. */
@@ -4590,15 +4045,11 @@ export interface GenericClassListResponse {
   pagination?: Pagination;
 }
 
-export const GenericClassListResponse: Schema.Schema<GenericClassListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resources: Schema.optional(Schema.Array(GenericClass)),
-      pagination: Schema.optional(Pagination),
-    }),
-  ).annotate({
-    identifier: "GenericClassListResponse",
-  }) as any as Schema.Schema<GenericClassListResponse>;
+export const GenericClassListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resources: Schema.optional(Schema.Array(GenericClass)),
+    pagination: Schema.optional(Pagination),
+  }).annotate({ identifier: "GenericClassListResponse" });
 
 export interface JwtInsertResponse {
   /** Data that corresponds to the ids of the provided classes and objects in the JWT. resources will only include the non-empty arrays (i.e. if the JWT only includes eventTicketObjects, then that is the only field that will be present in resources). */
@@ -4607,29 +4058,20 @@ export interface JwtInsertResponse {
   saveUri?: string;
 }
 
-export const JwtInsertResponse: Schema.Schema<JwtInsertResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resources: Schema.optional(Resources),
-      saveUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "JwtInsertResponse",
-  }) as any as Schema.Schema<JwtInsertResponse>;
+export const JwtInsertResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resources: Schema.optional(Resources),
+  saveUri: Schema.optional(Schema.String),
+}).annotate({ identifier: "JwtInsertResponse" });
 
 export interface LoyaltyObjectAddMessageResponse {
   /** The updated LoyaltyObject resource. */
   resource?: LoyaltyObject;
 }
 
-export const LoyaltyObjectAddMessageResponse: Schema.Schema<LoyaltyObjectAddMessageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resource: Schema.optional(LoyaltyObject),
-    }),
-  ).annotate({
-    identifier: "LoyaltyObjectAddMessageResponse",
-  }) as any as Schema.Schema<LoyaltyObjectAddMessageResponse>;
+export const LoyaltyObjectAddMessageResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.optional(LoyaltyObject),
+  }).annotate({ identifier: "LoyaltyObjectAddMessageResponse" });
 
 export interface FlightObjectListResponse {
   /** Pagination of the response. */
@@ -4638,15 +4080,11 @@ export interface FlightObjectListResponse {
   resources?: Array<FlightObject>;
 }
 
-export const FlightObjectListResponse: Schema.Schema<FlightObjectListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pagination: Schema.optional(Pagination),
-      resources: Schema.optional(Schema.Array(FlightObject)),
-    }),
-  ).annotate({
-    identifier: "FlightObjectListResponse",
-  }) as any as Schema.Schema<FlightObjectListResponse>;
+export const FlightObjectListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pagination: Schema.optional(Pagination),
+    resources: Schema.optional(Schema.Array(FlightObject)),
+  }).annotate({ identifier: "FlightObjectListResponse" });
 
 export interface Permission {
   /** The email address of the user, group, or service account to which this permission refers to. */
@@ -4663,13 +4101,10 @@ export interface Permission {
     | (string & {});
 }
 
-export const Permission: Schema.Schema<Permission> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      emailAddress: Schema.optional(Schema.String),
-      role: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Permission" }) as any as Schema.Schema<Permission>;
+export const Permission = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  emailAddress: Schema.optional(Schema.String),
+  role: Schema.optional(Schema.String),
+}).annotate({ identifier: "Permission" });
 
 export interface Permissions {
   /** The complete list of permissions for the issuer account. */
@@ -4678,29 +4113,20 @@ export interface Permissions {
   issuerId?: string;
 }
 
-export const Permissions: Schema.Schema<Permissions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Permission)),
-      issuerId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Permissions",
-  }) as any as Schema.Schema<Permissions>;
+export const Permissions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  permissions: Schema.optional(Schema.Array(Permission)),
+  issuerId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Permissions" });
 
 export interface OfferClassAddMessageResponse {
   /** The updated OfferClass resource. */
   resource?: OfferClass;
 }
 
-export const OfferClassAddMessageResponse: Schema.Schema<OfferClassAddMessageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resource: Schema.optional(OfferClass),
-    }),
-  ).annotate({
-    identifier: "OfferClassAddMessageResponse",
-  }) as any as Schema.Schema<OfferClassAddMessageResponse>;
+export const OfferClassAddMessageResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.optional(OfferClass),
+  }).annotate({ identifier: "OfferClassAddMessageResponse" });
 
 export interface GiftCardClassListResponse {
   /** Pagination of the response. */
@@ -4709,15 +4135,11 @@ export interface GiftCardClassListResponse {
   resources?: Array<GiftCardClass>;
 }
 
-export const GiftCardClassListResponse: Schema.Schema<GiftCardClassListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pagination: Schema.optional(Pagination),
-      resources: Schema.optional(Schema.Array(GiftCardClass)),
-    }),
-  ).annotate({
-    identifier: "GiftCardClassListResponse",
-  }) as any as Schema.Schema<GiftCardClassListResponse>;
+export const GiftCardClassListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pagination: Schema.optional(Pagination),
+    resources: Schema.optional(Schema.Array(GiftCardClass)),
+  }).annotate({ identifier: "GiftCardClassListResponse" });
 
 export interface ModifyLinkedOfferObjects {
   /** The linked offer object ids to add to the object. */
@@ -4726,15 +4148,11 @@ export interface ModifyLinkedOfferObjects {
   removeLinkedOfferObjectIds?: Array<string>;
 }
 
-export const ModifyLinkedOfferObjects: Schema.Schema<ModifyLinkedOfferObjects> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      addLinkedOfferObjectIds: Schema.optional(Schema.Array(Schema.String)),
-      removeLinkedOfferObjectIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ModifyLinkedOfferObjects",
-  }) as any as Schema.Schema<ModifyLinkedOfferObjects>;
+export const ModifyLinkedOfferObjects =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    addLinkedOfferObjectIds: Schema.optional(Schema.Array(Schema.String)),
+    removeLinkedOfferObjectIds: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ModifyLinkedOfferObjects" });
 
 export interface OfferObjectListResponse {
   /** Resources corresponding to the list request. */
@@ -4743,77 +4161,56 @@ export interface OfferObjectListResponse {
   pagination?: Pagination;
 }
 
-export const OfferObjectListResponse: Schema.Schema<OfferObjectListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resources: Schema.optional(Schema.Array(OfferObject)),
-      pagination: Schema.optional(Pagination),
-    }),
-  ).annotate({
-    identifier: "OfferObjectListResponse",
-  }) as any as Schema.Schema<OfferObjectListResponse>;
+export const OfferObjectListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resources: Schema.optional(Schema.Array(OfferObject)),
+    pagination: Schema.optional(Pagination),
+  }).annotate({ identifier: "OfferObjectListResponse" });
 
 export interface UploadPrivateImageRequest {}
 
-export const UploadPrivateImageRequest: Schema.Schema<UploadPrivateImageRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const UploadPrivateImageRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UploadPrivateImageRequest",
-  }) as any as Schema.Schema<UploadPrivateImageRequest>;
+  });
 
 export interface UploadPrivateImageResponse {
   /** Unique ID of the uploaded image to be referenced later in Image.private_image_id. */
   privateImageId?: string;
 }
 
-export const UploadPrivateImageResponse: Schema.Schema<UploadPrivateImageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      privateImageId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UploadPrivateImageResponse",
-  }) as any as Schema.Schema<UploadPrivateImageResponse>;
+export const UploadPrivateImageResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    privateImageId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UploadPrivateImageResponse" });
 
 export interface AddMessageRequest {
   message?: Message;
 }
 
-export const AddMessageRequest: Schema.Schema<AddMessageRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      message: Schema.optional(Message),
-    }),
-  ).annotate({
-    identifier: "AddMessageRequest",
-  }) as any as Schema.Schema<AddMessageRequest>;
+export const AddMessageRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  message: Schema.optional(Message),
+}).annotate({ identifier: "AddMessageRequest" });
 
 export interface LoyaltyClassAddMessageResponse {
   /** The updated LoyaltyClass resource. */
   resource?: LoyaltyClass;
 }
 
-export const LoyaltyClassAddMessageResponse: Schema.Schema<LoyaltyClassAddMessageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resource: Schema.optional(LoyaltyClass),
-    }),
-  ).annotate({
-    identifier: "LoyaltyClassAddMessageResponse",
-  }) as any as Schema.Schema<LoyaltyClassAddMessageResponse>;
+export const LoyaltyClassAddMessageResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.optional(LoyaltyClass),
+  }).annotate({ identifier: "LoyaltyClassAddMessageResponse" });
 
 export interface GenericObjectAddMessageResponse {
   /** The updated GenericObject resource. */
   resource?: GenericObject;
 }
 
-export const GenericObjectAddMessageResponse: Schema.Schema<GenericObjectAddMessageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resource: Schema.optional(GenericObject),
-    }),
-  ).annotate({
-    identifier: "GenericObjectAddMessageResponse",
-  }) as any as Schema.Schema<GenericObjectAddMessageResponse>;
+export const GenericObjectAddMessageResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.optional(GenericObject),
+  }).annotate({ identifier: "GenericObjectAddMessageResponse" });
 
 export interface GiftCardObjectListResponse {
   /** Resources corresponding to the list request. */
@@ -4822,15 +4219,11 @@ export interface GiftCardObjectListResponse {
   pagination?: Pagination;
 }
 
-export const GiftCardObjectListResponse: Schema.Schema<GiftCardObjectListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resources: Schema.optional(Schema.Array(GiftCardObject)),
-      pagination: Schema.optional(Pagination),
-    }),
-  ).annotate({
-    identifier: "GiftCardObjectListResponse",
-  }) as any as Schema.Schema<GiftCardObjectListResponse>;
+export const GiftCardObjectListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resources: Schema.optional(Schema.Array(GiftCardObject)),
+    pagination: Schema.optional(Pagination),
+  }).annotate({ identifier: "GiftCardObjectListResponse" });
 
 export interface TransitObjectListResponse {
   /** Resources corresponding to the list request. */
@@ -4839,15 +4232,11 @@ export interface TransitObjectListResponse {
   pagination?: Pagination;
 }
 
-export const TransitObjectListResponse: Schema.Schema<TransitObjectListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resources: Schema.optional(Schema.Array(TransitObject)),
-      pagination: Schema.optional(Pagination),
-    }),
-  ).annotate({
-    identifier: "TransitObjectListResponse",
-  }) as any as Schema.Schema<TransitObjectListResponse>;
+export const TransitObjectListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resources: Schema.optional(Schema.Array(TransitObject)),
+    pagination: Schema.optional(Pagination),
+  }).annotate({ identifier: "TransitObjectListResponse" });
 
 export interface LoyaltyObjectListResponse {
   /** Pagination of the response. */
@@ -4856,15 +4245,11 @@ export interface LoyaltyObjectListResponse {
   resources?: Array<LoyaltyObject>;
 }
 
-export const LoyaltyObjectListResponse: Schema.Schema<LoyaltyObjectListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pagination: Schema.optional(Pagination),
-      resources: Schema.optional(Schema.Array(LoyaltyObject)),
-    }),
-  ).annotate({
-    identifier: "LoyaltyObjectListResponse",
-  }) as any as Schema.Schema<LoyaltyObjectListResponse>;
+export const LoyaltyObjectListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pagination: Schema.optional(Pagination),
+    resources: Schema.optional(Schema.Array(LoyaltyObject)),
+  }).annotate({ identifier: "LoyaltyObjectListResponse" });
 
 export interface SetPassUpdateNoticeRequest {
   /** Required. A fully qualified identifier of the pass that the issuer wants to notify the pass holder(s) about. Formatted as . */
@@ -4875,16 +4260,12 @@ export interface SetPassUpdateNoticeRequest {
   updateUri?: string;
 }
 
-export const SetPassUpdateNoticeRequest: Schema.Schema<SetPassUpdateNoticeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      externalPassId: Schema.optional(Schema.String),
-      updatedPassJwtSignature: Schema.optional(Schema.String),
-      updateUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SetPassUpdateNoticeRequest",
-  }) as any as Schema.Schema<SetPassUpdateNoticeRequest>;
+export const SetPassUpdateNoticeRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    externalPassId: Schema.optional(Schema.String),
+    updatedPassJwtSignature: Schema.optional(Schema.String),
+    updateUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SetPassUpdateNoticeRequest" });
 
 export interface SmartTap {
   /** Identifies what kind of resource this is. Value: the fixed string `"walletobjects#smartTap"`. */
@@ -4897,29 +4278,21 @@ export interface SmartTap {
   infos?: Array<IssuerToUserInfo>;
 }
 
-export const SmartTap: Schema.Schema<SmartTap> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      merchantId: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      infos: Schema.optional(Schema.Array(IssuerToUserInfo)),
-    }),
-  ).annotate({ identifier: "SmartTap" }) as any as Schema.Schema<SmartTap>;
+export const SmartTap = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  merchantId: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  infos: Schema.optional(Schema.Array(IssuerToUserInfo)),
+}).annotate({ identifier: "SmartTap" });
 
 export interface JwtResource {
   /** Required. A string representing a JWT of the format described at https://developers.google.com/wallet/reference/rest/v1/Jwt */
   jwt?: string;
 }
 
-export const JwtResource: Schema.Schema<JwtResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      jwt: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "JwtResource",
-  }) as any as Schema.Schema<JwtResource>;
+export const JwtResource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  jwt: Schema.optional(Schema.String),
+}).annotate({ identifier: "JwtResource" });
 
 export interface FlightClassListResponse {
   /** Resources corresponding to the list request. */
@@ -4928,29 +4301,21 @@ export interface FlightClassListResponse {
   pagination?: Pagination;
 }
 
-export const FlightClassListResponse: Schema.Schema<FlightClassListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resources: Schema.optional(Schema.Array(FlightClass)),
-      pagination: Schema.optional(Pagination),
-    }),
-  ).annotate({
-    identifier: "FlightClassListResponse",
-  }) as any as Schema.Schema<FlightClassListResponse>;
+export const FlightClassListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resources: Schema.optional(Schema.Array(FlightClass)),
+    pagination: Schema.optional(Pagination),
+  }).annotate({ identifier: "FlightClassListResponse" });
 
 export interface ModifyLinkedOfferObjectsRequest {
   /** The linked offer object ids to add or remove from the object. */
   linkedOfferObjectIds?: ModifyLinkedOfferObjects;
 }
 
-export const ModifyLinkedOfferObjectsRequest: Schema.Schema<ModifyLinkedOfferObjectsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      linkedOfferObjectIds: Schema.optional(ModifyLinkedOfferObjects),
-    }),
-  ).annotate({
-    identifier: "ModifyLinkedOfferObjectsRequest",
-  }) as any as Schema.Schema<ModifyLinkedOfferObjectsRequest>;
+export const ModifyLinkedOfferObjectsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    linkedOfferObjectIds: Schema.optional(ModifyLinkedOfferObjects),
+  }).annotate({ identifier: "ModifyLinkedOfferObjectsRequest" });
 
 export interface TransitClassListResponse {
   /** Resources corresponding to the list request. */
@@ -4959,71 +4324,55 @@ export interface TransitClassListResponse {
   pagination?: Pagination;
 }
 
-export const TransitClassListResponse: Schema.Schema<TransitClassListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resources: Schema.optional(Schema.Array(TransitClass)),
-      pagination: Schema.optional(Pagination),
-    }),
-  ).annotate({
-    identifier: "TransitClassListResponse",
-  }) as any as Schema.Schema<TransitClassListResponse>;
+export const TransitClassListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resources: Schema.optional(Schema.Array(TransitClass)),
+    pagination: Schema.optional(Pagination),
+  }).annotate({ identifier: "TransitClassListResponse" });
 
 export interface TransitObjectUploadRotatingBarcodeValuesResponse {}
 
-export const TransitObjectUploadRotatingBarcodeValuesResponse: Schema.Schema<TransitObjectUploadRotatingBarcodeValuesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const TransitObjectUploadRotatingBarcodeValuesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "TransitObjectUploadRotatingBarcodeValuesResponse",
-  }) as any as Schema.Schema<TransitObjectUploadRotatingBarcodeValuesResponse>;
+  });
 
 export interface TransitClassAddMessageResponse {
   /** The updated TransitClass resource. */
   resource?: TransitClass;
 }
 
-export const TransitClassAddMessageResponse: Schema.Schema<TransitClassAddMessageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resource: Schema.optional(TransitClass),
-    }),
-  ).annotate({
-    identifier: "TransitClassAddMessageResponse",
-  }) as any as Schema.Schema<TransitClassAddMessageResponse>;
+export const TransitClassAddMessageResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.optional(TransitClass),
+  }).annotate({ identifier: "TransitClassAddMessageResponse" });
 
 export interface SetPassUpdateNoticeResponse {}
 
-export const SetPassUpdateNoticeResponse: Schema.Schema<SetPassUpdateNoticeResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const SetPassUpdateNoticeResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "SetPassUpdateNoticeResponse",
-  }) as any as Schema.Schema<SetPassUpdateNoticeResponse>;
+  });
 
 export interface FlightClassAddMessageResponse {
   /** The updated FlightClass resource. */
   resource?: FlightClass;
 }
 
-export const FlightClassAddMessageResponse: Schema.Schema<FlightClassAddMessageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resource: Schema.optional(FlightClass),
-    }),
-  ).annotate({
-    identifier: "FlightClassAddMessageResponse",
-  }) as any as Schema.Schema<FlightClassAddMessageResponse>;
+export const FlightClassAddMessageResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.optional(FlightClass),
+  }).annotate({ identifier: "FlightClassAddMessageResponse" });
 
 export interface GiftCardClassAddMessageResponse {
   /** The updated GiftCardClass resource. */
   resource?: GiftCardClass;
 }
 
-export const GiftCardClassAddMessageResponse: Schema.Schema<GiftCardClassAddMessageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resource: Schema.optional(GiftCardClass),
-    }),
-  ).annotate({
-    identifier: "GiftCardClassAddMessageResponse",
-  }) as any as Schema.Schema<GiftCardClassAddMessageResponse>;
+export const GiftCardClassAddMessageResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.optional(GiftCardClass),
+  }).annotate({ identifier: "GiftCardClassAddMessageResponse" });
 
 export interface LoyaltyClassListResponse {
   /** Pagination of the response. */
@@ -5032,15 +4381,11 @@ export interface LoyaltyClassListResponse {
   resources?: Array<LoyaltyClass>;
 }
 
-export const LoyaltyClassListResponse: Schema.Schema<LoyaltyClassListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pagination: Schema.optional(Pagination),
-      resources: Schema.optional(Schema.Array(LoyaltyClass)),
-    }),
-  ).annotate({
-    identifier: "LoyaltyClassListResponse",
-  }) as any as Schema.Schema<LoyaltyClassListResponse>;
+export const LoyaltyClassListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pagination: Schema.optional(Pagination),
+    resources: Schema.optional(Schema.Array(LoyaltyClass)),
+  }).annotate({ identifier: "LoyaltyClassListResponse" });
 
 // ==========================================================================
 // Operations

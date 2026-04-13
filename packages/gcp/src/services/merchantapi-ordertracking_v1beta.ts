@@ -29,13 +29,10 @@ export interface TimeZone {
   version?: string;
 }
 
-export const TimeZone: Schema.Schema<TimeZone> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "TimeZone" }) as any as Schema.Schema<TimeZone>;
+export const TimeZone = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+}).annotate({ identifier: "TimeZone" });
 
 export interface DateTime {
   /** Optional. Hours of day in 24 hour format. Should be from 0 to 23, defaults to 0 (midnight). An API may choose to allow the value "24:00:00" for scenarios like business closing time. */
@@ -58,20 +55,17 @@ export interface DateTime {
   utcOffset?: string;
 }
 
-export const DateTime: Schema.Schema<DateTime> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hours: Schema.optional(Schema.Number),
-      seconds: Schema.optional(Schema.Number),
-      day: Schema.optional(Schema.Number),
-      minutes: Schema.optional(Schema.Number),
-      year: Schema.optional(Schema.Number),
-      nanos: Schema.optional(Schema.Number),
-      timeZone: Schema.optional(TimeZone),
-      month: Schema.optional(Schema.Number),
-      utcOffset: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "DateTime" }) as any as Schema.Schema<DateTime>;
+export const DateTime = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  hours: Schema.optional(Schema.Number),
+  seconds: Schema.optional(Schema.Number),
+  day: Schema.optional(Schema.Number),
+  minutes: Schema.optional(Schema.Number),
+  year: Schema.optional(Schema.Number),
+  nanos: Schema.optional(Schema.Number),
+  timeZone: Schema.optional(TimeZone),
+  month: Schema.optional(Schema.Number),
+  utcOffset: Schema.optional(Schema.String),
+}).annotate({ identifier: "DateTime" });
 
 export interface ShippingInfo {
   /** Optional. The time when the shipment was shipped. Include the year and timezone string, if available. */
@@ -102,24 +96,19 @@ export interface ShippingInfo {
   trackingId?: string;
 }
 
-export const ShippingInfo: Schema.Schema<ShippingInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      shippedTime: Schema.optional(DateTime),
-      shipmentId: Schema.optional(Schema.String),
-      carrierService: Schema.optional(Schema.String),
-      earliestDeliveryPromiseTime: Schema.optional(DateTime),
-      latestDeliveryPromiseTime: Schema.optional(DateTime),
-      originPostalCode: Schema.optional(Schema.String),
-      originRegionCode: Schema.optional(Schema.String),
-      carrier: Schema.optional(Schema.String),
-      actualDeliveryTime: Schema.optional(DateTime),
-      shippingStatus: Schema.optional(Schema.String),
-      trackingId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ShippingInfo",
-  }) as any as Schema.Schema<ShippingInfo>;
+export const ShippingInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  shippedTime: Schema.optional(DateTime),
+  shipmentId: Schema.optional(Schema.String),
+  carrierService: Schema.optional(Schema.String),
+  earliestDeliveryPromiseTime: Schema.optional(DateTime),
+  latestDeliveryPromiseTime: Schema.optional(DateTime),
+  originPostalCode: Schema.optional(Schema.String),
+  originRegionCode: Schema.optional(Schema.String),
+  carrier: Schema.optional(Schema.String),
+  actualDeliveryTime: Schema.optional(DateTime),
+  shippingStatus: Schema.optional(Schema.String),
+  trackingId: Schema.optional(Schema.String),
+}).annotate({ identifier: "ShippingInfo" });
 
 export interface ShipmentLineItemMapping {
   /** Required. The line item ID. */
@@ -130,16 +119,12 @@ export interface ShipmentLineItemMapping {
   quantity?: string;
 }
 
-export const ShipmentLineItemMapping: Schema.Schema<ShipmentLineItemMapping> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lineItemId: Schema.optional(Schema.String),
-      shipmentId: Schema.optional(Schema.String),
-      quantity: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ShipmentLineItemMapping",
-  }) as any as Schema.Schema<ShipmentLineItemMapping>;
+export const ShipmentLineItemMapping =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    lineItemId: Schema.optional(Schema.String),
+    shipmentId: Schema.optional(Schema.String),
+    quantity: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ShipmentLineItemMapping" });
 
 export interface ProductChange {
   /** Countries that have the change (if applicable). Represented in the ISO 3166 format. */
@@ -173,17 +158,12 @@ export interface ProductChange {
     | (string & {});
 }
 
-export const ProductChange: Schema.Schema<ProductChange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      regionCode: Schema.optional(Schema.String),
-      oldValue: Schema.optional(Schema.String),
-      newValue: Schema.optional(Schema.String),
-      reportingContext: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProductChange",
-  }) as any as Schema.Schema<ProductChange>;
+export const ProductChange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  regionCode: Schema.optional(Schema.String),
+  oldValue: Schema.optional(Schema.String),
+  newValue: Schema.optional(Schema.String),
+  reportingContext: Schema.optional(Schema.String),
+}).annotate({ identifier: "ProductChange" });
 
 export interface Price {
   /** The price represented as a number in micros (1 million micros is an equivalent to one's currency standard unit, for example, 1 USD = 1000000 micros). */
@@ -192,13 +172,10 @@ export interface Price {
   currencyCode?: string;
 }
 
-export const Price: Schema.Schema<Price> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      amountMicros: Schema.optional(Schema.String),
-      currencyCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Price" }) as any as Schema.Schema<Price>;
+export const Price = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  amountMicros: Schema.optional(Schema.String),
+  currencyCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "Price" });
 
 export interface LineItemDetails {
   /** Optional. The manufacturer part number. */
@@ -219,21 +196,16 @@ export interface LineItemDetails {
   gtin?: string;
 }
 
-export const LineItemDetails: Schema.Schema<LineItemDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mpn: Schema.optional(Schema.String),
-      quantity: Schema.optional(Schema.String),
-      productTitle: Schema.optional(Schema.String),
-      brand: Schema.optional(Schema.String),
-      productId: Schema.optional(Schema.String),
-      gtins: Schema.optional(Schema.Array(Schema.String)),
-      lineItemId: Schema.optional(Schema.String),
-      gtin: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LineItemDetails",
-  }) as any as Schema.Schema<LineItemDetails>;
+export const LineItemDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  mpn: Schema.optional(Schema.String),
+  quantity: Schema.optional(Schema.String),
+  productTitle: Schema.optional(Schema.String),
+  brand: Schema.optional(Schema.String),
+  productId: Schema.optional(Schema.String),
+  gtins: Schema.optional(Schema.Array(Schema.String)),
+  lineItemId: Schema.optional(Schema.String),
+  gtin: Schema.optional(Schema.String),
+}).annotate({ identifier: "LineItemDetails" });
 
 export interface OrderTrackingSignal {
   /** Required. The time when the order was created on the businesses side. Include the year and timezone string, if available. */
@@ -258,25 +230,20 @@ export interface OrderTrackingSignal {
   shipmentLineItemMapping?: Array<ShipmentLineItemMapping>;
 }
 
-export const OrderTrackingSignal: Schema.Schema<OrderTrackingSignal> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      orderCreatedTime: Schema.optional(DateTime),
-      deliveryRegionCode: Schema.optional(Schema.String),
-      shippingInfo: Schema.optional(Schema.Array(ShippingInfo)),
-      customerShippingFee: Schema.optional(Price),
-      deliveryPostalCode: Schema.optional(Schema.String),
-      orderTrackingSignalId: Schema.optional(Schema.String),
-      merchantId: Schema.optional(Schema.String),
-      orderId: Schema.optional(Schema.String),
-      lineItems: Schema.optional(Schema.Array(LineItemDetails)),
-      shipmentLineItemMapping: Schema.optional(
-        Schema.Array(ShipmentLineItemMapping),
-      ),
-    }),
-  ).annotate({
-    identifier: "OrderTrackingSignal",
-  }) as any as Schema.Schema<OrderTrackingSignal>;
+export const OrderTrackingSignal = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  orderCreatedTime: Schema.optional(DateTime),
+  deliveryRegionCode: Schema.optional(Schema.String),
+  shippingInfo: Schema.optional(Schema.Array(ShippingInfo)),
+  customerShippingFee: Schema.optional(Price),
+  deliveryPostalCode: Schema.optional(Schema.String),
+  orderTrackingSignalId: Schema.optional(Schema.String),
+  merchantId: Schema.optional(Schema.String),
+  orderId: Schema.optional(Schema.String),
+  lineItems: Schema.optional(Schema.Array(LineItemDetails)),
+  shipmentLineItemMapping: Schema.optional(
+    Schema.Array(ShipmentLineItemMapping),
+  ),
+}).annotate({ identifier: "OrderTrackingSignal" });
 
 export interface ProductStatusChangeMessage {
   /** The target account that owns the entity that changed. Format : `accounts/{merchant_id}` */
@@ -299,22 +266,18 @@ export interface ProductStatusChangeMessage {
   expirationTime?: string;
 }
 
-export const ProductStatusChangeMessage: Schema.Schema<ProductStatusChangeMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      account: Schema.optional(Schema.String),
-      resourceId: Schema.optional(Schema.String),
-      resource: Schema.optional(Schema.String),
-      managingAccount: Schema.optional(Schema.String),
-      attribute: Schema.optional(Schema.String),
-      resourceType: Schema.optional(Schema.String),
-      changes: Schema.optional(Schema.Array(ProductChange)),
-      eventTime: Schema.optional(Schema.String),
-      expirationTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProductStatusChangeMessage",
-  }) as any as Schema.Schema<ProductStatusChangeMessage>;
+export const ProductStatusChangeMessage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    account: Schema.optional(Schema.String),
+    resourceId: Schema.optional(Schema.String),
+    resource: Schema.optional(Schema.String),
+    managingAccount: Schema.optional(Schema.String),
+    attribute: Schema.optional(Schema.String),
+    resourceType: Schema.optional(Schema.String),
+    changes: Schema.optional(Schema.Array(ProductChange)),
+    eventTime: Schema.optional(Schema.String),
+    expirationTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ProductStatusChangeMessage" });
 
 // ==========================================================================
 // Operations

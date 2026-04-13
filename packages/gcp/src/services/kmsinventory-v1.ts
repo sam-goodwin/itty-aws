@@ -29,15 +29,11 @@ export interface GoogleCloudKmsV1ExternalProtectionLevelOptions {
   ekmConnectionKeyPath?: string;
 }
 
-export const GoogleCloudKmsV1ExternalProtectionLevelOptions: Schema.Schema<GoogleCloudKmsV1ExternalProtectionLevelOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      externalKeyUri: Schema.optional(Schema.String),
-      ekmConnectionKeyPath: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudKmsV1ExternalProtectionLevelOptions",
-  }) as any as Schema.Schema<GoogleCloudKmsV1ExternalProtectionLevelOptions>;
+export const GoogleCloudKmsV1ExternalProtectionLevelOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    externalKeyUri: Schema.optional(Schema.String),
+    ekmConnectionKeyPath: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudKmsV1ExternalProtectionLevelOptions" });
 
 export interface GoogleCloudKmsV1KeyAccessJustificationsPolicy {
   /** The list of allowed reasons for access to a CryptoKey. Note that empty allowed_access_reasons has a different meaning depending on where this message appears. If this is under KeyAccessJustificationsPolicyConfig, it means allow-all. If this is under CryptoKey, it means deny-all. */
@@ -58,14 +54,10 @@ export interface GoogleCloudKmsV1KeyAccessJustificationsPolicy {
   >;
 }
 
-export const GoogleCloudKmsV1KeyAccessJustificationsPolicy: Schema.Schema<GoogleCloudKmsV1KeyAccessJustificationsPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      allowedAccessReasons: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudKmsV1KeyAccessJustificationsPolicy",
-  }) as any as Schema.Schema<GoogleCloudKmsV1KeyAccessJustificationsPolicy>;
+export const GoogleCloudKmsV1KeyAccessJustificationsPolicy =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allowedAccessReasons: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudKmsV1KeyAccessJustificationsPolicy" });
 
 export interface GoogleCloudKmsV1KeyOperationAttestationCertificateChains {
   /** Cavium certificate chain corresponding to the attestation. */
@@ -76,16 +68,14 @@ export interface GoogleCloudKmsV1KeyOperationAttestationCertificateChains {
   googleCardCerts?: Array<string>;
 }
 
-export const GoogleCloudKmsV1KeyOperationAttestationCertificateChains: Schema.Schema<GoogleCloudKmsV1KeyOperationAttestationCertificateChains> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      caviumCerts: Schema.optional(Schema.Array(Schema.String)),
-      googlePartitionCerts: Schema.optional(Schema.Array(Schema.String)),
-      googleCardCerts: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudKmsV1KeyOperationAttestationCertificateChains =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    caviumCerts: Schema.optional(Schema.Array(Schema.String)),
+    googlePartitionCerts: Schema.optional(Schema.Array(Schema.String)),
+    googleCardCerts: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudKmsV1KeyOperationAttestationCertificateChains",
-  }) as any as Schema.Schema<GoogleCloudKmsV1KeyOperationAttestationCertificateChains>;
+  });
 
 export interface GoogleCloudKmsV1KeyOperationAttestation {
   /** Output only. The format of the attestation data. */
@@ -100,18 +90,14 @@ export interface GoogleCloudKmsV1KeyOperationAttestation {
   content?: string;
 }
 
-export const GoogleCloudKmsV1KeyOperationAttestation: Schema.Schema<GoogleCloudKmsV1KeyOperationAttestation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      format: Schema.optional(Schema.String),
-      certChains: Schema.optional(
-        GoogleCloudKmsV1KeyOperationAttestationCertificateChains,
-      ),
-      content: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudKmsV1KeyOperationAttestation",
-  }) as any as Schema.Schema<GoogleCloudKmsV1KeyOperationAttestation>;
+export const GoogleCloudKmsV1KeyOperationAttestation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    format: Schema.optional(Schema.String),
+    certChains: Schema.optional(
+      GoogleCloudKmsV1KeyOperationAttestationCertificateChains,
+    ),
+    content: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudKmsV1KeyOperationAttestation" });
 
 export interface GoogleCloudKmsV1CryptoKeyVersion {
   /** Output only. The time this CryptoKeyVersion's key material is scheduled for destruction. Only present if state is DESTROY_SCHEDULED. */
@@ -215,31 +201,27 @@ export interface GoogleCloudKmsV1CryptoKeyVersion {
   createTime?: string;
 }
 
-export const GoogleCloudKmsV1CryptoKeyVersion: Schema.Schema<GoogleCloudKmsV1CryptoKeyVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      destroyTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      reimportEligible: Schema.optional(Schema.Boolean),
-      importTime: Schema.optional(Schema.String),
-      importFailureReason: Schema.optional(Schema.String),
-      protectionLevel: Schema.optional(Schema.String),
-      importJob: Schema.optional(Schema.String),
-      destroyEventTime: Schema.optional(Schema.String),
-      attestation: Schema.optional(GoogleCloudKmsV1KeyOperationAttestation),
-      generationFailureReason: Schema.optional(Schema.String),
-      externalProtectionLevelOptions: Schema.optional(
-        GoogleCloudKmsV1ExternalProtectionLevelOptions,
-      ),
-      externalDestructionFailureReason: Schema.optional(Schema.String),
-      generateTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      algorithm: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudKmsV1CryptoKeyVersion",
-  }) as any as Schema.Schema<GoogleCloudKmsV1CryptoKeyVersion>;
+export const GoogleCloudKmsV1CryptoKeyVersion =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    destroyTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    reimportEligible: Schema.optional(Schema.Boolean),
+    importTime: Schema.optional(Schema.String),
+    importFailureReason: Schema.optional(Schema.String),
+    protectionLevel: Schema.optional(Schema.String),
+    importJob: Schema.optional(Schema.String),
+    destroyEventTime: Schema.optional(Schema.String),
+    attestation: Schema.optional(GoogleCloudKmsV1KeyOperationAttestation),
+    generationFailureReason: Schema.optional(Schema.String),
+    externalProtectionLevelOptions: Schema.optional(
+      GoogleCloudKmsV1ExternalProtectionLevelOptions,
+    ),
+    externalDestructionFailureReason: Schema.optional(Schema.String),
+    generateTime: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    algorithm: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudKmsV1CryptoKeyVersion" });
 
 export interface GoogleCloudKmsV1CryptoKeyVersionTemplate {
   /** Required. Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT. */
@@ -303,15 +285,11 @@ export interface GoogleCloudKmsV1CryptoKeyVersionTemplate {
     | (string & {});
 }
 
-export const GoogleCloudKmsV1CryptoKeyVersionTemplate: Schema.Schema<GoogleCloudKmsV1CryptoKeyVersionTemplate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      algorithm: Schema.optional(Schema.String),
-      protectionLevel: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudKmsV1CryptoKeyVersionTemplate",
-  }) as any as Schema.Schema<GoogleCloudKmsV1CryptoKeyVersionTemplate>;
+export const GoogleCloudKmsV1CryptoKeyVersionTemplate =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    algorithm: Schema.optional(Schema.String),
+    protectionLevel: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudKmsV1CryptoKeyVersionTemplate" });
 
 export interface GoogleCloudKmsV1CryptoKey {
   /** Immutable. The period of time that versions of this key spend in the DESTROY_SCHEDULED state before transitioning to DESTROYED. If not specified at creation time, the default duration is 30 days. */
@@ -348,29 +326,23 @@ export interface GoogleCloudKmsV1CryptoKey {
   cryptoKeyBackend?: string;
 }
 
-export const GoogleCloudKmsV1CryptoKey: Schema.Schema<GoogleCloudKmsV1CryptoKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      destroyScheduledDuration: Schema.optional(Schema.String),
-      rotationPeriod: Schema.optional(Schema.String),
-      primary: Schema.optional(GoogleCloudKmsV1CryptoKeyVersion),
-      importOnly: Schema.optional(Schema.Boolean),
-      keyAccessJustificationsPolicy: Schema.optional(
-        GoogleCloudKmsV1KeyAccessJustificationsPolicy,
-      ),
-      createTime: Schema.optional(Schema.String),
-      purpose: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      nextRotationTime: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      versionTemplate: Schema.optional(
-        GoogleCloudKmsV1CryptoKeyVersionTemplate,
-      ),
-      cryptoKeyBackend: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudKmsV1CryptoKey",
-  }) as any as Schema.Schema<GoogleCloudKmsV1CryptoKey>;
+export const GoogleCloudKmsV1CryptoKey =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    destroyScheduledDuration: Schema.optional(Schema.String),
+    rotationPeriod: Schema.optional(Schema.String),
+    primary: Schema.optional(GoogleCloudKmsV1CryptoKeyVersion),
+    importOnly: Schema.optional(Schema.Boolean),
+    keyAccessJustificationsPolicy: Schema.optional(
+      GoogleCloudKmsV1KeyAccessJustificationsPolicy,
+    ),
+    createTime: Schema.optional(Schema.String),
+    purpose: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    nextRotationTime: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    versionTemplate: Schema.optional(GoogleCloudKmsV1CryptoKeyVersionTemplate),
+    cryptoKeyBackend: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudKmsV1CryptoKey" });
 
 export interface GoogleCloudKmsInventoryV1ListCryptoKeysResponse {
   /** The page token returned from the previous response if the next page is desired. */
@@ -379,15 +351,13 @@ export interface GoogleCloudKmsInventoryV1ListCryptoKeysResponse {
   cryptoKeys?: Array<GoogleCloudKmsV1CryptoKey>;
 }
 
-export const GoogleCloudKmsInventoryV1ListCryptoKeysResponse: Schema.Schema<GoogleCloudKmsInventoryV1ListCryptoKeysResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      cryptoKeys: Schema.optional(Schema.Array(GoogleCloudKmsV1CryptoKey)),
-    }),
-  ).annotate({
+export const GoogleCloudKmsInventoryV1ListCryptoKeysResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    cryptoKeys: Schema.optional(Schema.Array(GoogleCloudKmsV1CryptoKey)),
+  }).annotate({
     identifier: "GoogleCloudKmsInventoryV1ListCryptoKeysResponse",
-  }) as any as Schema.Schema<GoogleCloudKmsInventoryV1ListCryptoKeysResponse>;
+  });
 
 export interface GoogleCloudKmsInventoryV1ProtectedResource {
   /** The full resource name of the resource. Example: `//compute.googleapis.com/projects/my_project_123/zones/zone1/instances/instance1`. */
@@ -412,23 +382,19 @@ export interface GoogleCloudKmsInventoryV1ProtectedResource {
   cryptoKeyVersions?: Array<string>;
 }
 
-export const GoogleCloudKmsInventoryV1ProtectedResource: Schema.Schema<GoogleCloudKmsInventoryV1ProtectedResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      resourceType: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      project: Schema.optional(Schema.String),
-      projectId: Schema.optional(Schema.String),
-      cryptoKeyVersion: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      cloudProduct: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-      cryptoKeyVersions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudKmsInventoryV1ProtectedResource",
-  }) as any as Schema.Schema<GoogleCloudKmsInventoryV1ProtectedResource>;
+export const GoogleCloudKmsInventoryV1ProtectedResource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    resourceType: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    project: Schema.optional(Schema.String),
+    projectId: Schema.optional(Schema.String),
+    cryptoKeyVersion: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    cloudProduct: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    cryptoKeyVersions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudKmsInventoryV1ProtectedResource" });
 
 export interface GoogleCloudKmsInventoryV1Warning {
   /** The specific warning code for the displayed message. */
@@ -442,15 +408,11 @@ export interface GoogleCloudKmsInventoryV1Warning {
   displayMessage?: string;
 }
 
-export const GoogleCloudKmsInventoryV1Warning: Schema.Schema<GoogleCloudKmsInventoryV1Warning> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      warningCode: Schema.optional(Schema.String),
-      displayMessage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudKmsInventoryV1Warning",
-  }) as any as Schema.Schema<GoogleCloudKmsInventoryV1Warning>;
+export const GoogleCloudKmsInventoryV1Warning =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    warningCode: Schema.optional(Schema.String),
+    displayMessage: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudKmsInventoryV1Warning" });
 
 export interface GoogleCloudKmsInventoryV1ProtectedResourcesSummary {
   /** The number of resources protected by the key grouped by Cloud product. */
@@ -469,24 +431,18 @@ export interface GoogleCloudKmsInventoryV1ProtectedResourcesSummary {
   locations?: Record<string, string>;
 }
 
-export const GoogleCloudKmsInventoryV1ProtectedResourcesSummary: Schema.Schema<GoogleCloudKmsInventoryV1ProtectedResourcesSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cloudProducts: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      warnings: Schema.optional(Schema.Array(GoogleCloudKmsInventoryV1Warning)),
-      name: Schema.optional(Schema.String),
-      resourceCount: Schema.optional(Schema.String),
-      projectCount: Schema.optional(Schema.Number),
-      resourceTypes: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      locations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudKmsInventoryV1ProtectedResourcesSummary =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cloudProducts: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    warnings: Schema.optional(Schema.Array(GoogleCloudKmsInventoryV1Warning)),
+    name: Schema.optional(Schema.String),
+    resourceCount: Schema.optional(Schema.String),
+    projectCount: Schema.optional(Schema.Number),
+    resourceTypes: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    locations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudKmsInventoryV1ProtectedResourcesSummary",
-  }) as any as Schema.Schema<GoogleCloudKmsInventoryV1ProtectedResourcesSummary>;
+  });
 
 export interface GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse {
   /** Protected resources for this page. */
@@ -495,17 +451,15 @@ export interface GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse: Schema.Schema<GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      protectedResources: Schema.optional(
-        Schema.Array(GoogleCloudKmsInventoryV1ProtectedResource),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    protectedResources: Schema.optional(
+      Schema.Array(GoogleCloudKmsInventoryV1ProtectedResource),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse",
-  }) as any as Schema.Schema<GoogleCloudKmsInventoryV1SearchProtectedResourcesResponse>;
+  });
 
 // ==========================================================================
 // Operations

@@ -29,15 +29,10 @@ export interface GoogleTypeLatLng {
   longitude?: number;
 }
 
-export const GoogleTypeLatLng: Schema.Schema<GoogleTypeLatLng> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      latitude: Schema.optional(Schema.Number),
-      longitude: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleTypeLatLng",
-  }) as any as Schema.Schema<GoogleTypeLatLng>;
+export const GoogleTypeLatLng = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  latitude: Schema.optional(Schema.Number),
+  longitude: Schema.optional(Schema.Number),
+}).annotate({ identifier: "GoogleTypeLatLng" });
 
 export interface GoogleGeoTypeViewport {
   /** Required. The low point of the viewport. */
@@ -46,15 +41,10 @@ export interface GoogleGeoTypeViewport {
   high?: GoogleTypeLatLng;
 }
 
-export const GoogleGeoTypeViewport: Schema.Schema<GoogleGeoTypeViewport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      low: Schema.optional(GoogleTypeLatLng),
-      high: Schema.optional(GoogleTypeLatLng),
-    }),
-  ).annotate({
-    identifier: "GoogleGeoTypeViewport",
-  }) as any as Schema.Schema<GoogleGeoTypeViewport>;
+export const GoogleGeoTypeViewport = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  low: Schema.optional(GoogleTypeLatLng),
+  high: Schema.optional(GoogleTypeLatLng),
+}).annotate({ identifier: "GoogleGeoTypeViewport" });
 
 export interface GoogleMapsPlacesV1PlaceAccessibilityOptions {
   /** Place has wheelchair accessible seating. */
@@ -67,33 +57,27 @@ export interface GoogleMapsPlacesV1PlaceAccessibilityOptions {
   wheelchairAccessibleRestroom?: boolean;
 }
 
-export const GoogleMapsPlacesV1PlaceAccessibilityOptions: Schema.Schema<GoogleMapsPlacesV1PlaceAccessibilityOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      wheelchairAccessibleSeating: Schema.optional(Schema.Boolean),
-      wheelchairAccessibleParking: Schema.optional(Schema.Boolean),
-      wheelchairAccessibleEntrance: Schema.optional(Schema.Boolean),
-      wheelchairAccessibleRestroom: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsPlacesV1PlaceAccessibilityOptions",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1PlaceAccessibilityOptions>;
+export const GoogleMapsPlacesV1PlaceAccessibilityOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    wheelchairAccessibleSeating: Schema.optional(Schema.Boolean),
+    wheelchairAccessibleParking: Schema.optional(Schema.Boolean),
+    wheelchairAccessibleEntrance: Schema.optional(Schema.Boolean),
+    wheelchairAccessibleRestroom: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleMapsPlacesV1PlaceAccessibilityOptions" });
 
 export interface GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedTextHighlightedTextRange {
   startIndex?: number;
   endIndex?: number;
 }
 
-export const GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedTextHighlightedTextRange: Schema.Schema<GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedTextHighlightedTextRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startIndex: Schema.optional(Schema.Number),
-      endIndex: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedTextHighlightedTextRange =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startIndex: Schema.optional(Schema.Number),
+    endIndex: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedTextHighlightedTextRange",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedTextHighlightedTextRange>;
+  });
 
 export interface GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedText {
   /** The list of the ranges of the highlighted text. */
@@ -101,20 +85,18 @@ export interface GoogleMapsPlacesV1ContextualContentJustificationReviewJustifica
   text?: string;
 }
 
-export const GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedText: Schema.Schema<GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedText> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      highlightedTextRanges: Schema.optional(
-        Schema.Array(
-          GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedTextHighlightedTextRange,
-        ),
+export const GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedText =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    highlightedTextRanges: Schema.optional(
+      Schema.Array(
+        GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedTextHighlightedTextRange,
       ),
-      text: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+    ),
+    text: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedText",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedText>;
+  });
 
 export interface GoogleTypeLocalizedText {
   /** Localized string in the language corresponding to language_code below. */
@@ -123,15 +105,11 @@ export interface GoogleTypeLocalizedText {
   languageCode?: string;
 }
 
-export const GoogleTypeLocalizedText: Schema.Schema<GoogleTypeLocalizedText> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-      languageCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleTypeLocalizedText",
-  }) as any as Schema.Schema<GoogleTypeLocalizedText>;
+export const GoogleTypeLocalizedText =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.String),
+    languageCode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleTypeLocalizedText" });
 
 export interface GoogleMapsPlacesV1AuthorAttribution {
   /** Name of the author of the Photo or Review. */
@@ -142,16 +120,12 @@ export interface GoogleMapsPlacesV1AuthorAttribution {
   photoUri?: string;
 }
 
-export const GoogleMapsPlacesV1AuthorAttribution: Schema.Schema<GoogleMapsPlacesV1AuthorAttribution> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      uri: Schema.optional(Schema.String),
-      photoUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsPlacesV1AuthorAttribution",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1AuthorAttribution>;
+export const GoogleMapsPlacesV1AuthorAttribution =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    uri: Schema.optional(Schema.String),
+    photoUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleMapsPlacesV1AuthorAttribution" });
 
 export interface GoogleTypeDate {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
@@ -162,16 +136,11 @@ export interface GoogleTypeDate {
   day?: number;
 }
 
-export const GoogleTypeDate: Schema.Schema<GoogleTypeDate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      year: Schema.optional(Schema.Number),
-      month: Schema.optional(Schema.Number),
-      day: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleTypeDate",
-  }) as any as Schema.Schema<GoogleTypeDate>;
+export const GoogleTypeDate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  year: Schema.optional(Schema.Number),
+  month: Schema.optional(Schema.Number),
+  day: Schema.optional(Schema.Number),
+}).annotate({ identifier: "GoogleTypeDate" });
 
 export interface GoogleMapsPlacesV1Review {
   /** A link where users can flag a problem with the review. */
@@ -196,23 +165,19 @@ export interface GoogleMapsPlacesV1Review {
   originalText?: GoogleTypeLocalizedText;
 }
 
-export const GoogleMapsPlacesV1Review: Schema.Schema<GoogleMapsPlacesV1Review> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      flagContentUri: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      text: Schema.optional(GoogleTypeLocalizedText),
-      authorAttribution: Schema.optional(GoogleMapsPlacesV1AuthorAttribution),
-      googleMapsUri: Schema.optional(Schema.String),
-      rating: Schema.optional(Schema.Number),
-      publishTime: Schema.optional(Schema.String),
-      visitDate: Schema.optional(GoogleTypeDate),
-      relativePublishTimeDescription: Schema.optional(Schema.String),
-      originalText: Schema.optional(GoogleTypeLocalizedText),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsPlacesV1Review",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1Review>;
+export const GoogleMapsPlacesV1Review =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    flagContentUri: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    text: Schema.optional(GoogleTypeLocalizedText),
+    authorAttribution: Schema.optional(GoogleMapsPlacesV1AuthorAttribution),
+    googleMapsUri: Schema.optional(Schema.String),
+    rating: Schema.optional(Schema.Number),
+    publishTime: Schema.optional(Schema.String),
+    visitDate: Schema.optional(GoogleTypeDate),
+    relativePublishTimeDescription: Schema.optional(Schema.String),
+    originalText: Schema.optional(GoogleTypeLocalizedText),
+  }).annotate({ identifier: "GoogleMapsPlacesV1Review" });
 
 export interface GoogleMapsPlacesV1ContextualContentJustificationReviewJustification {
   highlightedText?: GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedText;
@@ -220,18 +185,16 @@ export interface GoogleMapsPlacesV1ContextualContentJustificationReviewJustifica
   review?: GoogleMapsPlacesV1Review;
 }
 
-export const GoogleMapsPlacesV1ContextualContentJustificationReviewJustification: Schema.Schema<GoogleMapsPlacesV1ContextualContentJustificationReviewJustification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      highlightedText: Schema.optional(
-        GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedText,
-      ),
-      review: Schema.optional(GoogleMapsPlacesV1Review),
-    }),
-  ).annotate({
+export const GoogleMapsPlacesV1ContextualContentJustificationReviewJustification =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    highlightedText: Schema.optional(
+      GoogleMapsPlacesV1ContextualContentJustificationReviewJustificationHighlightedText,
+    ),
+    review: Schema.optional(GoogleMapsPlacesV1Review),
+  }).annotate({
     identifier:
       "GoogleMapsPlacesV1ContextualContentJustificationReviewJustification",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1ContextualContentJustificationReviewJustification>;
+  });
 
 export interface GoogleMapsPlacesV1ContextualContentJustificationBusinessAvailabilityAttributesJustification {
   /** If a place provides takeout. */
@@ -242,17 +205,15 @@ export interface GoogleMapsPlacesV1ContextualContentJustificationBusinessAvailab
   dineIn?: boolean;
 }
 
-export const GoogleMapsPlacesV1ContextualContentJustificationBusinessAvailabilityAttributesJustification: Schema.Schema<GoogleMapsPlacesV1ContextualContentJustificationBusinessAvailabilityAttributesJustification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      takeout: Schema.optional(Schema.Boolean),
-      delivery: Schema.optional(Schema.Boolean),
-      dineIn: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleMapsPlacesV1ContextualContentJustificationBusinessAvailabilityAttributesJustification =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    takeout: Schema.optional(Schema.Boolean),
+    delivery: Schema.optional(Schema.Boolean),
+    dineIn: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier:
       "GoogleMapsPlacesV1ContextualContentJustificationBusinessAvailabilityAttributesJustification",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1ContextualContentJustificationBusinessAvailabilityAttributesJustification>;
+  });
 
 export interface GoogleMapsPlacesV1ContextualContentJustification {
   /** Experimental: See https://developers.google.com/maps/documentation/places/web-service/experimental/places-generative for more details. */
@@ -261,19 +222,17 @@ export interface GoogleMapsPlacesV1ContextualContentJustification {
   businessAvailabilityAttributesJustification?: GoogleMapsPlacesV1ContextualContentJustificationBusinessAvailabilityAttributesJustification;
 }
 
-export const GoogleMapsPlacesV1ContextualContentJustification: Schema.Schema<GoogleMapsPlacesV1ContextualContentJustification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reviewJustification: Schema.optional(
-        GoogleMapsPlacesV1ContextualContentJustificationReviewJustification,
-      ),
-      businessAvailabilityAttributesJustification: Schema.optional(
-        GoogleMapsPlacesV1ContextualContentJustificationBusinessAvailabilityAttributesJustification,
-      ),
-    }),
-  ).annotate({
+export const GoogleMapsPlacesV1ContextualContentJustification =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reviewJustification: Schema.optional(
+      GoogleMapsPlacesV1ContextualContentJustificationReviewJustification,
+    ),
+    businessAvailabilityAttributesJustification: Schema.optional(
+      GoogleMapsPlacesV1ContextualContentJustificationBusinessAvailabilityAttributesJustification,
+    ),
+  }).annotate({
     identifier: "GoogleMapsPlacesV1ContextualContentJustification",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1ContextualContentJustification>;
+  });
 
 export interface GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange {
   /** Zero-based offset of the first Unicode character of the string (inclusive). */
@@ -282,16 +241,14 @@ export interface GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRan
   endOffset?: number;
 }
 
-export const GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange: Schema.Schema<GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startOffset: Schema.optional(Schema.Number),
-      endOffset: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startOffset: Schema.optional(Schema.Number),
+    endOffset: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange>;
+  });
 
 export interface GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText {
   /** Text that may be used as is or formatted with `matches`. */
@@ -300,20 +257,18 @@ export interface GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattab
   matches?: Array<GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange>;
 }
 
-export const GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText: Schema.Schema<GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-      matches: Schema.optional(
-        Schema.Array(
-          GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange,
-        ),
+export const GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.String),
+    matches: Schema.optional(
+      Schema.Array(
+        GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStringRange,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier:
       "GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText>;
+  });
 
 export interface GoogleTypePostalAddress {
   /** Optional. Postal code of the address. Not all countries use or require postal codes to be present, but where they are used, they may trigger additional validation with other parts of the address (for example, state or zip code validation in the United States). */
@@ -340,24 +295,20 @@ export interface GoogleTypePostalAddress {
   languageCode?: string;
 }
 
-export const GoogleTypePostalAddress: Schema.Schema<GoogleTypePostalAddress> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      postalCode: Schema.optional(Schema.String),
-      locality: Schema.optional(Schema.String),
-      administrativeArea: Schema.optional(Schema.String),
-      sortingCode: Schema.optional(Schema.String),
-      addressLines: Schema.optional(Schema.Array(Schema.String)),
-      regionCode: Schema.optional(Schema.String),
-      sublocality: Schema.optional(Schema.String),
-      organization: Schema.optional(Schema.String),
-      revision: Schema.optional(Schema.Number),
-      recipients: Schema.optional(Schema.Array(Schema.String)),
-      languageCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleTypePostalAddress",
-  }) as any as Schema.Schema<GoogleTypePostalAddress>;
+export const GoogleTypePostalAddress =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    postalCode: Schema.optional(Schema.String),
+    locality: Schema.optional(Schema.String),
+    administrativeArea: Schema.optional(Schema.String),
+    sortingCode: Schema.optional(Schema.String),
+    addressLines: Schema.optional(Schema.Array(Schema.String)),
+    regionCode: Schema.optional(Schema.String),
+    sublocality: Schema.optional(Schema.String),
+    organization: Schema.optional(Schema.String),
+    revision: Schema.optional(Schema.Number),
+    recipients: Schema.optional(Schema.Array(Schema.String)),
+    languageCode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleTypePostalAddress" });
 
 export interface GoogleMapsPlacesV1Photo {
   /** A link to show the photo on Google Maps. */
@@ -374,21 +325,17 @@ export interface GoogleMapsPlacesV1Photo {
   widthPx?: number;
 }
 
-export const GoogleMapsPlacesV1Photo: Schema.Schema<GoogleMapsPlacesV1Photo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      googleMapsUri: Schema.optional(Schema.String),
-      heightPx: Schema.optional(Schema.Number),
-      authorAttributions: Schema.optional(
-        Schema.Array(GoogleMapsPlacesV1AuthorAttribution),
-      ),
-      flagContentUri: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      widthPx: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsPlacesV1Photo",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1Photo>;
+export const GoogleMapsPlacesV1Photo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    googleMapsUri: Schema.optional(Schema.String),
+    heightPx: Schema.optional(Schema.Number),
+    authorAttributions: Schema.optional(
+      Schema.Array(GoogleMapsPlacesV1AuthorAttribution),
+    ),
+    flagContentUri: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    widthPx: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleMapsPlacesV1Photo" });
 
 export interface GoogleMapsPlacesV1ContextualContent {
   /** Information (including references) about photos of this place, contextual to the place query. */
@@ -399,18 +346,14 @@ export interface GoogleMapsPlacesV1ContextualContent {
   reviews?: Array<GoogleMapsPlacesV1Review>;
 }
 
-export const GoogleMapsPlacesV1ContextualContent: Schema.Schema<GoogleMapsPlacesV1ContextualContent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      photos: Schema.optional(Schema.Array(GoogleMapsPlacesV1Photo)),
-      justifications: Schema.optional(
-        Schema.Array(GoogleMapsPlacesV1ContextualContentJustification),
-      ),
-      reviews: Schema.optional(Schema.Array(GoogleMapsPlacesV1Review)),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsPlacesV1ContextualContent",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1ContextualContent>;
+export const GoogleMapsPlacesV1ContextualContent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    photos: Schema.optional(Schema.Array(GoogleMapsPlacesV1Photo)),
+    justifications: Schema.optional(
+      Schema.Array(GoogleMapsPlacesV1ContextualContentJustification),
+    ),
+    reviews: Schema.optional(Schema.Array(GoogleMapsPlacesV1Review)),
+  }).annotate({ identifier: "GoogleMapsPlacesV1ContextualContent" });
 
 export interface GoogleMapsPlacesV1RouteModifiers {
   /** Optional. When set to true, avoids toll roads where reasonable, giving preference to routes not containing toll roads. Applies only to the `DRIVE` and `TWO_WHEELER` `TravelMode`. */
@@ -423,17 +366,13 @@ export interface GoogleMapsPlacesV1RouteModifiers {
   avoidIndoor?: boolean;
 }
 
-export const GoogleMapsPlacesV1RouteModifiers: Schema.Schema<GoogleMapsPlacesV1RouteModifiers> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      avoidTolls: Schema.optional(Schema.Boolean),
-      avoidHighways: Schema.optional(Schema.Boolean),
-      avoidFerries: Schema.optional(Schema.Boolean),
-      avoidIndoor: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsPlacesV1RouteModifiers",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1RouteModifiers>;
+export const GoogleMapsPlacesV1RouteModifiers =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    avoidTolls: Schema.optional(Schema.Boolean),
+    avoidHighways: Schema.optional(Schema.Boolean),
+    avoidFerries: Schema.optional(Schema.Boolean),
+    avoidIndoor: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleMapsPlacesV1RouteModifiers" });
 
 export interface GoogleMapsPlacesV1PlaceGoogleMapsLinks {
   /** A link to show the directions to the place. The link only populates the destination location and uses the default travel mode `DRIVE`. */
@@ -448,18 +387,14 @@ export interface GoogleMapsPlacesV1PlaceGoogleMapsLinks {
   reviewsUri?: string;
 }
 
-export const GoogleMapsPlacesV1PlaceGoogleMapsLinks: Schema.Schema<GoogleMapsPlacesV1PlaceGoogleMapsLinks> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      directionsUri: Schema.optional(Schema.String),
-      writeAReviewUri: Schema.optional(Schema.String),
-      photosUri: Schema.optional(Schema.String),
-      placeUri: Schema.optional(Schema.String),
-      reviewsUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsPlacesV1PlaceGoogleMapsLinks",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1PlaceGoogleMapsLinks>;
+export const GoogleMapsPlacesV1PlaceGoogleMapsLinks =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    directionsUri: Schema.optional(Schema.String),
+    writeAReviewUri: Schema.optional(Schema.String),
+    photosUri: Schema.optional(Schema.String),
+    placeUri: Schema.optional(Schema.String),
+    reviewsUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleMapsPlacesV1PlaceGoogleMapsLinks" });
 
 export interface GoogleMapsPlacesV1RoutingParameters {
   /** Optional. An explicit routing origin that overrides the origin defined in the polyline. By default, the polyline origin is used. */
@@ -483,17 +418,13 @@ export interface GoogleMapsPlacesV1RoutingParameters {
     | (string & {});
 }
 
-export const GoogleMapsPlacesV1RoutingParameters: Schema.Schema<GoogleMapsPlacesV1RoutingParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      origin: Schema.optional(GoogleTypeLatLng),
-      travelMode: Schema.optional(Schema.String),
-      routeModifiers: Schema.optional(GoogleMapsPlacesV1RouteModifiers),
-      routingPreference: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsPlacesV1RoutingParameters",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1RoutingParameters>;
+export const GoogleMapsPlacesV1RoutingParameters =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    origin: Schema.optional(GoogleTypeLatLng),
+    travelMode: Schema.optional(Schema.String),
+    routeModifiers: Schema.optional(GoogleMapsPlacesV1RouteModifiers),
+    routingPreference: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleMapsPlacesV1RoutingParameters" });
 
 export interface GoogleTypeMoney {
   /** The three-letter currency code defined in ISO 4217. */
@@ -504,16 +435,11 @@ export interface GoogleTypeMoney {
   nanos?: number;
 }
 
-export const GoogleTypeMoney: Schema.Schema<GoogleTypeMoney> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      currencyCode: Schema.optional(Schema.String),
-      units: Schema.optional(Schema.String),
-      nanos: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleTypeMoney",
-  }) as any as Schema.Schema<GoogleTypeMoney>;
+export const GoogleTypeMoney = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  currencyCode: Schema.optional(Schema.String),
+  units: Schema.optional(Schema.String),
+  nanos: Schema.optional(Schema.Number),
+}).annotate({ identifier: "GoogleTypeMoney" });
 
 export interface GoogleMapsPlacesV1EVChargeOptionsConnectorAggregation {
   /** Number of connectors in this aggregation. */
@@ -542,33 +468,27 @@ export interface GoogleMapsPlacesV1EVChargeOptionsConnectorAggregation {
   maxChargeRateKw?: number;
 }
 
-export const GoogleMapsPlacesV1EVChargeOptionsConnectorAggregation: Schema.Schema<GoogleMapsPlacesV1EVChargeOptionsConnectorAggregation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      count: Schema.optional(Schema.Number),
-      availabilityLastUpdateTime: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      availableCount: Schema.optional(Schema.Number),
-      outOfServiceCount: Schema.optional(Schema.Number),
-      maxChargeRateKw: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleMapsPlacesV1EVChargeOptionsConnectorAggregation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    count: Schema.optional(Schema.Number),
+    availabilityLastUpdateTime: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    availableCount: Schema.optional(Schema.Number),
+    outOfServiceCount: Schema.optional(Schema.Number),
+    maxChargeRateKw: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleMapsPlacesV1EVChargeOptionsConnectorAggregation",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1EVChargeOptionsConnectorAggregation>;
+  });
 
 export interface GoogleMapsPlacesV1Polyline {
   /** An [encoded polyline](https://developers.google.com/maps/documentation/utilities/polylinealgorithm), as returned by the [Routes API by default](https://developers.google.com/maps/documentation/routes/reference/rest/v2/TopLevel/computeRoutes#polylineencoding). See the [encoder](https://developers.google.com/maps/documentation/utilities/polylineutility) and [decoder](https://developers.google.com/maps/documentation/routes/polylinedecoder) tools. */
   encodedPolyline?: string;
 }
 
-export const GoogleMapsPlacesV1Polyline: Schema.Schema<GoogleMapsPlacesV1Polyline> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      encodedPolyline: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsPlacesV1Polyline",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1Polyline>;
+export const GoogleMapsPlacesV1Polyline =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    encodedPolyline: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleMapsPlacesV1Polyline" });
 
 export interface GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructuredFormat {
   /** Represents the name of the Place or query. */
@@ -577,20 +497,18 @@ export interface GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructure
   secondaryText?: GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText;
 }
 
-export const GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructuredFormat: Schema.Schema<GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructuredFormat> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mainText: Schema.optional(
-        GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText,
-      ),
-      secondaryText: Schema.optional(
-        GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText,
-      ),
-    }),
-  ).annotate({
+export const GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructuredFormat =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    mainText: Schema.optional(
+      GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText,
+    ),
+    secondaryText: Schema.optional(
+      GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText,
+    ),
+  }).annotate({
     identifier:
       "GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructuredFormat",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructuredFormat>;
+  });
 
 export interface GoogleMapsPlacesV1ContentBlock {
   /** Content related to the topic. */
@@ -599,15 +517,11 @@ export interface GoogleMapsPlacesV1ContentBlock {
   referencedPlaces?: Array<string>;
 }
 
-export const GoogleMapsPlacesV1ContentBlock: Schema.Schema<GoogleMapsPlacesV1ContentBlock> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      content: Schema.optional(GoogleTypeLocalizedText),
-      referencedPlaces: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsPlacesV1ContentBlock",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1ContentBlock>;
+export const GoogleMapsPlacesV1ContentBlock =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    content: Schema.optional(GoogleTypeLocalizedText),
+    referencedPlaces: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleMapsPlacesV1ContentBlock" });
 
 export interface GoogleMapsPlacesV1PlaceNeighborhoodSummary {
   /** A link where users can flag a problem with the summary. */
@@ -620,17 +534,13 @@ export interface GoogleMapsPlacesV1PlaceNeighborhoodSummary {
   description?: GoogleMapsPlacesV1ContentBlock;
 }
 
-export const GoogleMapsPlacesV1PlaceNeighborhoodSummary: Schema.Schema<GoogleMapsPlacesV1PlaceNeighborhoodSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      flagContentUri: Schema.optional(Schema.String),
-      disclosureText: Schema.optional(GoogleTypeLocalizedText),
-      overview: Schema.optional(GoogleMapsPlacesV1ContentBlock),
-      description: Schema.optional(GoogleMapsPlacesV1ContentBlock),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsPlacesV1PlaceNeighborhoodSummary",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1PlaceNeighborhoodSummary>;
+export const GoogleMapsPlacesV1PlaceNeighborhoodSummary =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    flagContentUri: Schema.optional(Schema.String),
+    disclosureText: Schema.optional(GoogleTypeLocalizedText),
+    overview: Schema.optional(GoogleMapsPlacesV1ContentBlock),
+    description: Schema.optional(GoogleMapsPlacesV1ContentBlock),
+  }).annotate({ identifier: "GoogleMapsPlacesV1PlaceNeighborhoodSummary" });
 
 export interface GoogleMapsPlacesV1RoutingSummaryLeg {
   /** The time it takes to complete this leg of the trip. */
@@ -639,15 +549,11 @@ export interface GoogleMapsPlacesV1RoutingSummaryLeg {
   distanceMeters?: number;
 }
 
-export const GoogleMapsPlacesV1RoutingSummaryLeg: Schema.Schema<GoogleMapsPlacesV1RoutingSummaryLeg> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      duration: Schema.optional(Schema.String),
-      distanceMeters: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsPlacesV1RoutingSummaryLeg",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1RoutingSummaryLeg>;
+export const GoogleMapsPlacesV1RoutingSummaryLeg =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    duration: Schema.optional(Schema.String),
+    distanceMeters: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleMapsPlacesV1RoutingSummaryLeg" });
 
 export interface GoogleMapsPlacesV1AddressDescriptorLandmark {
   /** The landmark's display name. */
@@ -674,20 +580,16 @@ export interface GoogleMapsPlacesV1AddressDescriptorLandmark {
   straightLineDistanceMeters?: number;
 }
 
-export const GoogleMapsPlacesV1AddressDescriptorLandmark: Schema.Schema<GoogleMapsPlacesV1AddressDescriptorLandmark> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(GoogleTypeLocalizedText),
-      types: Schema.optional(Schema.Array(Schema.String)),
-      placeId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      travelDistanceMeters: Schema.optional(Schema.Number),
-      spatialRelationship: Schema.optional(Schema.String),
-      straightLineDistanceMeters: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsPlacesV1AddressDescriptorLandmark",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1AddressDescriptorLandmark>;
+export const GoogleMapsPlacesV1AddressDescriptorLandmark =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(GoogleTypeLocalizedText),
+    types: Schema.optional(Schema.Array(Schema.String)),
+    placeId: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    travelDistanceMeters: Schema.optional(Schema.Number),
+    spatialRelationship: Schema.optional(Schema.String),
+    straightLineDistanceMeters: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleMapsPlacesV1AddressDescriptorLandmark" });
 
 export interface GoogleMapsPlacesV1AddressDescriptorArea {
   /** The area's resource name. */
@@ -705,17 +607,13 @@ export interface GoogleMapsPlacesV1AddressDescriptorArea {
     | (string & {});
 }
 
-export const GoogleMapsPlacesV1AddressDescriptorArea: Schema.Schema<GoogleMapsPlacesV1AddressDescriptorArea> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      placeId: Schema.optional(Schema.String),
-      displayName: Schema.optional(GoogleTypeLocalizedText),
-      containment: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsPlacesV1AddressDescriptorArea",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1AddressDescriptorArea>;
+export const GoogleMapsPlacesV1AddressDescriptorArea =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    placeId: Schema.optional(Schema.String),
+    displayName: Schema.optional(GoogleTypeLocalizedText),
+    containment: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleMapsPlacesV1AddressDescriptorArea" });
 
 export interface GoogleMapsPlacesV1AddressDescriptor {
   /** A ranked list of nearby landmarks. The most recognizable and nearby landmarks are ranked first. */
@@ -724,19 +622,15 @@ export interface GoogleMapsPlacesV1AddressDescriptor {
   areas?: Array<GoogleMapsPlacesV1AddressDescriptorArea>;
 }
 
-export const GoogleMapsPlacesV1AddressDescriptor: Schema.Schema<GoogleMapsPlacesV1AddressDescriptor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      landmarks: Schema.optional(
-        Schema.Array(GoogleMapsPlacesV1AddressDescriptorLandmark),
-      ),
-      areas: Schema.optional(
-        Schema.Array(GoogleMapsPlacesV1AddressDescriptorArea),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsPlacesV1AddressDescriptor",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1AddressDescriptor>;
+export const GoogleMapsPlacesV1AddressDescriptor =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    landmarks: Schema.optional(
+      Schema.Array(GoogleMapsPlacesV1AddressDescriptorLandmark),
+    ),
+    areas: Schema.optional(
+      Schema.Array(GoogleMapsPlacesV1AddressDescriptorArea),
+    ),
+  }).annotate({ identifier: "GoogleMapsPlacesV1AddressDescriptor" });
 
 export interface GoogleMapsPlacesV1RoutingSummary {
   /** The legs of the trip. When you calculate travel duration and distance from a set origin, `legs` contains a single leg containing the duration and distance from the origin to the destination. When you do a search along route, `legs` contains two legs: one from the origin to place, and one from the place to the destination. */
@@ -745,29 +639,21 @@ export interface GoogleMapsPlacesV1RoutingSummary {
   directionsUri?: string;
 }
 
-export const GoogleMapsPlacesV1RoutingSummary: Schema.Schema<GoogleMapsPlacesV1RoutingSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      legs: Schema.optional(Schema.Array(GoogleMapsPlacesV1RoutingSummaryLeg)),
-      directionsUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsPlacesV1RoutingSummary",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1RoutingSummary>;
+export const GoogleMapsPlacesV1RoutingSummary =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    legs: Schema.optional(Schema.Array(GoogleMapsPlacesV1RoutingSummaryLeg)),
+    directionsUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleMapsPlacesV1RoutingSummary" });
 
 export interface GoogleMapsPlacesV1PlaceOpeningHoursSpecialDay {
   /** The date of this special day. */
   date?: GoogleTypeDate;
 }
 
-export const GoogleMapsPlacesV1PlaceOpeningHoursSpecialDay: Schema.Schema<GoogleMapsPlacesV1PlaceOpeningHoursSpecialDay> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      date: Schema.optional(GoogleTypeDate),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsPlacesV1PlaceOpeningHoursSpecialDay",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1PlaceOpeningHoursSpecialDay>;
+export const GoogleMapsPlacesV1PlaceOpeningHoursSpecialDay =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    date: Schema.optional(GoogleTypeDate),
+  }).annotate({ identifier: "GoogleMapsPlacesV1PlaceOpeningHoursSpecialDay" });
 
 export interface GoogleMapsPlacesV1PlaceOpeningHoursPeriodPoint {
   /** Whether or not this endpoint was truncated. Truncation occurs when the real hours are outside the times we are willing to return hours between, so we truncate the hours back to these boundaries. This ensures that at most 24 * 7 hours from midnight of the day of the request are returned. */
@@ -782,18 +668,14 @@ export interface GoogleMapsPlacesV1PlaceOpeningHoursPeriodPoint {
   hour?: number;
 }
 
-export const GoogleMapsPlacesV1PlaceOpeningHoursPeriodPoint: Schema.Schema<GoogleMapsPlacesV1PlaceOpeningHoursPeriodPoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      truncated: Schema.optional(Schema.Boolean),
-      day: Schema.optional(Schema.Number),
-      minute: Schema.optional(Schema.Number),
-      date: Schema.optional(GoogleTypeDate),
-      hour: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsPlacesV1PlaceOpeningHoursPeriodPoint",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1PlaceOpeningHoursPeriodPoint>;
+export const GoogleMapsPlacesV1PlaceOpeningHoursPeriodPoint =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    truncated: Schema.optional(Schema.Boolean),
+    day: Schema.optional(Schema.Number),
+    minute: Schema.optional(Schema.Number),
+    date: Schema.optional(GoogleTypeDate),
+    hour: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleMapsPlacesV1PlaceOpeningHoursPeriodPoint" });
 
 export interface GoogleMapsPlacesV1PlaceOpeningHoursPeriod {
   /** The time that the place starts to be open. */
@@ -802,15 +684,11 @@ export interface GoogleMapsPlacesV1PlaceOpeningHoursPeriod {
   close?: GoogleMapsPlacesV1PlaceOpeningHoursPeriodPoint;
 }
 
-export const GoogleMapsPlacesV1PlaceOpeningHoursPeriod: Schema.Schema<GoogleMapsPlacesV1PlaceOpeningHoursPeriod> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      open: Schema.optional(GoogleMapsPlacesV1PlaceOpeningHoursPeriodPoint),
-      close: Schema.optional(GoogleMapsPlacesV1PlaceOpeningHoursPeriodPoint),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsPlacesV1PlaceOpeningHoursPeriod",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1PlaceOpeningHoursPeriod>;
+export const GoogleMapsPlacesV1PlaceOpeningHoursPeriod =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    open: Schema.optional(GoogleMapsPlacesV1PlaceOpeningHoursPeriodPoint),
+    close: Schema.optional(GoogleMapsPlacesV1PlaceOpeningHoursPeriodPoint),
+  }).annotate({ identifier: "GoogleMapsPlacesV1PlaceOpeningHoursPeriod" });
 
 export interface GoogleMapsPlacesV1PlaceOpeningHours {
   /** Structured information for special days that fall within the period that the returned opening hours cover. Special days are days that could impact the business hours of a place, e.g. Christmas day. Set for current_opening_hours and current_secondary_opening_hours if there are exceptional hours. */
@@ -844,24 +722,20 @@ export interface GoogleMapsPlacesV1PlaceOpeningHours {
   periods?: Array<GoogleMapsPlacesV1PlaceOpeningHoursPeriod>;
 }
 
-export const GoogleMapsPlacesV1PlaceOpeningHours: Schema.Schema<GoogleMapsPlacesV1PlaceOpeningHours> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      specialDays: Schema.optional(
-        Schema.Array(GoogleMapsPlacesV1PlaceOpeningHoursSpecialDay),
-      ),
-      weekdayDescriptions: Schema.optional(Schema.Array(Schema.String)),
-      nextOpenTime: Schema.optional(Schema.String),
-      secondaryHoursType: Schema.optional(Schema.String),
-      nextCloseTime: Schema.optional(Schema.String),
-      openNow: Schema.optional(Schema.Boolean),
-      periods: Schema.optional(
-        Schema.Array(GoogleMapsPlacesV1PlaceOpeningHoursPeriod),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsPlacesV1PlaceOpeningHours",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1PlaceOpeningHours>;
+export const GoogleMapsPlacesV1PlaceOpeningHours =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    specialDays: Schema.optional(
+      Schema.Array(GoogleMapsPlacesV1PlaceOpeningHoursSpecialDay),
+    ),
+    weekdayDescriptions: Schema.optional(Schema.Array(Schema.String)),
+    nextOpenTime: Schema.optional(Schema.String),
+    secondaryHoursType: Schema.optional(Schema.String),
+    nextCloseTime: Schema.optional(Schema.String),
+    openNow: Schema.optional(Schema.Boolean),
+    periods: Schema.optional(
+      Schema.Array(GoogleMapsPlacesV1PlaceOpeningHoursPeriod),
+    ),
+  }).annotate({ identifier: "GoogleMapsPlacesV1PlaceOpeningHours" });
 
 export interface GoogleMapsPlacesV1PriceRange {
   /** The low end of the price range (inclusive). Price should be at or above this amount. */
@@ -870,15 +744,11 @@ export interface GoogleMapsPlacesV1PriceRange {
   endPrice?: GoogleTypeMoney;
 }
 
-export const GoogleMapsPlacesV1PriceRange: Schema.Schema<GoogleMapsPlacesV1PriceRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startPrice: Schema.optional(GoogleTypeMoney),
-      endPrice: Schema.optional(GoogleTypeMoney),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsPlacesV1PriceRange",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1PriceRange>;
+export const GoogleMapsPlacesV1PriceRange =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startPrice: Schema.optional(GoogleTypeMoney),
+    endPrice: Schema.optional(GoogleTypeMoney),
+  }).annotate({ identifier: "GoogleMapsPlacesV1PriceRange" });
 
 export interface GoogleMapsPlacesV1PlaceEvChargeAmenitySummary {
   /** A summary of the nearby stores. */
@@ -895,19 +765,15 @@ export interface GoogleMapsPlacesV1PlaceEvChargeAmenitySummary {
   disclosureText?: GoogleTypeLocalizedText;
 }
 
-export const GoogleMapsPlacesV1PlaceEvChargeAmenitySummary: Schema.Schema<GoogleMapsPlacesV1PlaceEvChargeAmenitySummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      store: Schema.optional(GoogleMapsPlacesV1ContentBlock),
-      flagContentUri: Schema.optional(Schema.String),
-      overview: Schema.optional(GoogleMapsPlacesV1ContentBlock),
-      coffee: Schema.optional(GoogleMapsPlacesV1ContentBlock),
-      restaurant: Schema.optional(GoogleMapsPlacesV1ContentBlock),
-      disclosureText: Schema.optional(GoogleTypeLocalizedText),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsPlacesV1PlaceEvChargeAmenitySummary",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1PlaceEvChargeAmenitySummary>;
+export const GoogleMapsPlacesV1PlaceEvChargeAmenitySummary =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    store: Schema.optional(GoogleMapsPlacesV1ContentBlock),
+    flagContentUri: Schema.optional(Schema.String),
+    overview: Schema.optional(GoogleMapsPlacesV1ContentBlock),
+    coffee: Schema.optional(GoogleMapsPlacesV1ContentBlock),
+    restaurant: Schema.optional(GoogleMapsPlacesV1ContentBlock),
+    disclosureText: Schema.optional(GoogleTypeLocalizedText),
+  }).annotate({ identifier: "GoogleMapsPlacesV1PlaceEvChargeAmenitySummary" });
 
 export interface GoogleMapsPlacesV1PlaceReviewSummary {
   /** The summary of user reviews. */
@@ -920,17 +786,13 @@ export interface GoogleMapsPlacesV1PlaceReviewSummary {
   reviewsUri?: string;
 }
 
-export const GoogleMapsPlacesV1PlaceReviewSummary: Schema.Schema<GoogleMapsPlacesV1PlaceReviewSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(GoogleTypeLocalizedText),
-      flagContentUri: Schema.optional(Schema.String),
-      disclosureText: Schema.optional(GoogleTypeLocalizedText),
-      reviewsUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsPlacesV1PlaceReviewSummary",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1PlaceReviewSummary>;
+export const GoogleMapsPlacesV1PlaceReviewSummary =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(GoogleTypeLocalizedText),
+    flagContentUri: Schema.optional(Schema.String),
+    disclosureText: Schema.optional(GoogleTypeLocalizedText),
+    reviewsUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleMapsPlacesV1PlaceReviewSummary" });
 
 export interface GoogleMapsPlacesV1PlacePlusCode {
   /** Place's global (full) code, such as "9FWM33GV+HQ", representing an 1/8000 by 1/8000 degree area (~14 by 14 meters). */
@@ -939,15 +801,11 @@ export interface GoogleMapsPlacesV1PlacePlusCode {
   compoundCode?: string;
 }
 
-export const GoogleMapsPlacesV1PlacePlusCode: Schema.Schema<GoogleMapsPlacesV1PlacePlusCode> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      globalCode: Schema.optional(Schema.String),
-      compoundCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsPlacesV1PlacePlusCode",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1PlacePlusCode>;
+export const GoogleMapsPlacesV1PlacePlusCode =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    globalCode: Schema.optional(Schema.String),
+    compoundCode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleMapsPlacesV1PlacePlusCode" });
 
 export interface GoogleTypeTimeZone {
   /** IANA Time Zone Database time zone. For example "America/New_York". */
@@ -956,15 +814,10 @@ export interface GoogleTypeTimeZone {
   version?: string;
 }
 
-export const GoogleTypeTimeZone: Schema.Schema<GoogleTypeTimeZone> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleTypeTimeZone",
-  }) as any as Schema.Schema<GoogleTypeTimeZone>;
+export const GoogleTypeTimeZone = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+}).annotate({ identifier: "GoogleTypeTimeZone" });
 
 export interface GoogleMapsPlacesV1PlaceParkingOptions {
   /** Place offers free parking lots. */
@@ -983,20 +836,16 @@ export interface GoogleMapsPlacesV1PlaceParkingOptions {
   paidStreetParking?: boolean;
 }
 
-export const GoogleMapsPlacesV1PlaceParkingOptions: Schema.Schema<GoogleMapsPlacesV1PlaceParkingOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      freeParkingLot: Schema.optional(Schema.Boolean),
-      freeGarageParking: Schema.optional(Schema.Boolean),
-      paidGarageParking: Schema.optional(Schema.Boolean),
-      valetParking: Schema.optional(Schema.Boolean),
-      paidParkingLot: Schema.optional(Schema.Boolean),
-      freeStreetParking: Schema.optional(Schema.Boolean),
-      paidStreetParking: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsPlacesV1PlaceParkingOptions",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1PlaceParkingOptions>;
+export const GoogleMapsPlacesV1PlaceParkingOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    freeParkingLot: Schema.optional(Schema.Boolean),
+    freeGarageParking: Schema.optional(Schema.Boolean),
+    paidGarageParking: Schema.optional(Schema.Boolean),
+    valetParking: Schema.optional(Schema.Boolean),
+    paidParkingLot: Schema.optional(Schema.Boolean),
+    freeStreetParking: Schema.optional(Schema.Boolean),
+    paidStreetParking: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleMapsPlacesV1PlaceParkingOptions" });
 
 export interface GoogleMapsPlacesV1PlacePaymentOptions {
   /** Place accepts credit cards as payment. */
@@ -1009,17 +858,13 @@ export interface GoogleMapsPlacesV1PlacePaymentOptions {
   acceptsDebitCards?: boolean;
 }
 
-export const GoogleMapsPlacesV1PlacePaymentOptions: Schema.Schema<GoogleMapsPlacesV1PlacePaymentOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      acceptsCreditCards: Schema.optional(Schema.Boolean),
-      acceptsCashOnly: Schema.optional(Schema.Boolean),
-      acceptsNfc: Schema.optional(Schema.Boolean),
-      acceptsDebitCards: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsPlacesV1PlacePaymentOptions",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1PlacePaymentOptions>;
+export const GoogleMapsPlacesV1PlacePaymentOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    acceptsCreditCards: Schema.optional(Schema.Boolean),
+    acceptsCashOnly: Schema.optional(Schema.Boolean),
+    acceptsNfc: Schema.optional(Schema.Boolean),
+    acceptsDebitCards: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleMapsPlacesV1PlacePaymentOptions" });
 
 export interface GoogleMapsPlacesV1PlaceAddressComponent {
   /** An abbreviated textual name for the address component, if available. For example, an address component for the country of Australia may have a short_name of "AU". */
@@ -1032,17 +877,13 @@ export interface GoogleMapsPlacesV1PlaceAddressComponent {
   languageCode?: string;
 }
 
-export const GoogleMapsPlacesV1PlaceAddressComponent: Schema.Schema<GoogleMapsPlacesV1PlaceAddressComponent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      shortText: Schema.optional(Schema.String),
-      longText: Schema.optional(Schema.String),
-      types: Schema.optional(Schema.Array(Schema.String)),
-      languageCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsPlacesV1PlaceAddressComponent",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1PlaceAddressComponent>;
+export const GoogleMapsPlacesV1PlaceAddressComponent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    shortText: Schema.optional(Schema.String),
+    longText: Schema.optional(Schema.String),
+    types: Schema.optional(Schema.Array(Schema.String)),
+    languageCode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleMapsPlacesV1PlaceAddressComponent" });
 
 export interface GoogleMapsPlacesV1PlaceConsumerAlertDetailsLink {
   /** The title to show for the link. */
@@ -1051,15 +892,13 @@ export interface GoogleMapsPlacesV1PlaceConsumerAlertDetailsLink {
   uri?: string;
 }
 
-export const GoogleMapsPlacesV1PlaceConsumerAlertDetailsLink: Schema.Schema<GoogleMapsPlacesV1PlaceConsumerAlertDetailsLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-      uri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleMapsPlacesV1PlaceConsumerAlertDetailsLink =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    title: Schema.optional(Schema.String),
+    uri: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleMapsPlacesV1PlaceConsumerAlertDetailsLink",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1PlaceConsumerAlertDetailsLink>;
+  });
 
 export interface GoogleMapsPlacesV1PlaceConsumerAlertDetails {
   /** The title to show together with the description. */
@@ -1070,18 +909,12 @@ export interface GoogleMapsPlacesV1PlaceConsumerAlertDetails {
   aboutLink?: GoogleMapsPlacesV1PlaceConsumerAlertDetailsLink;
 }
 
-export const GoogleMapsPlacesV1PlaceConsumerAlertDetails: Schema.Schema<GoogleMapsPlacesV1PlaceConsumerAlertDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      aboutLink: Schema.optional(
-        GoogleMapsPlacesV1PlaceConsumerAlertDetailsLink,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsPlacesV1PlaceConsumerAlertDetails",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1PlaceConsumerAlertDetails>;
+export const GoogleMapsPlacesV1PlaceConsumerAlertDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    title: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    aboutLink: Schema.optional(GoogleMapsPlacesV1PlaceConsumerAlertDetailsLink),
+  }).annotate({ identifier: "GoogleMapsPlacesV1PlaceConsumerAlertDetails" });
 
 export interface GoogleMapsPlacesV1PlaceConsumerAlert {
   /** The overview of the consumer alert message. */
@@ -1092,16 +925,12 @@ export interface GoogleMapsPlacesV1PlaceConsumerAlert {
   languageCode?: string;
 }
 
-export const GoogleMapsPlacesV1PlaceConsumerAlert: Schema.Schema<GoogleMapsPlacesV1PlaceConsumerAlert> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      overview: Schema.optional(Schema.String),
-      details: Schema.optional(GoogleMapsPlacesV1PlaceConsumerAlertDetails),
-      languageCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsPlacesV1PlaceConsumerAlert",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1PlaceConsumerAlert>;
+export const GoogleMapsPlacesV1PlaceConsumerAlert =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    overview: Schema.optional(Schema.String),
+    details: Schema.optional(GoogleMapsPlacesV1PlaceConsumerAlertDetails),
+    languageCode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleMapsPlacesV1PlaceConsumerAlert" });
 
 export interface GoogleMapsPlacesV1PlaceAttribution {
   /** URI to the Place's data provider. */
@@ -1110,15 +939,11 @@ export interface GoogleMapsPlacesV1PlaceAttribution {
   provider?: string;
 }
 
-export const GoogleMapsPlacesV1PlaceAttribution: Schema.Schema<GoogleMapsPlacesV1PlaceAttribution> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      providerUri: Schema.optional(Schema.String),
-      provider: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsPlacesV1PlaceAttribution",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1PlaceAttribution>;
+export const GoogleMapsPlacesV1PlaceAttribution =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    providerUri: Schema.optional(Schema.String),
+    provider: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleMapsPlacesV1PlaceAttribution" });
 
 export interface GoogleMapsPlacesV1PlaceGenerativeSummary {
   /** The overview of the place. */
@@ -1129,16 +954,12 @@ export interface GoogleMapsPlacesV1PlaceGenerativeSummary {
   overviewFlagContentUri?: string;
 }
 
-export const GoogleMapsPlacesV1PlaceGenerativeSummary: Schema.Schema<GoogleMapsPlacesV1PlaceGenerativeSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      overview: Schema.optional(GoogleTypeLocalizedText),
-      disclosureText: Schema.optional(GoogleTypeLocalizedText),
-      overviewFlagContentUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsPlacesV1PlaceGenerativeSummary",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1PlaceGenerativeSummary>;
+export const GoogleMapsPlacesV1PlaceGenerativeSummary =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    overview: Schema.optional(GoogleTypeLocalizedText),
+    disclosureText: Schema.optional(GoogleTypeLocalizedText),
+    overviewFlagContentUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleMapsPlacesV1PlaceGenerativeSummary" });
 
 export interface GoogleMapsPlacesV1FuelOptionsFuelPrice {
   /** The price of the fuel. */
@@ -1171,32 +992,24 @@ export interface GoogleMapsPlacesV1FuelOptionsFuelPrice {
   updateTime?: string;
 }
 
-export const GoogleMapsPlacesV1FuelOptionsFuelPrice: Schema.Schema<GoogleMapsPlacesV1FuelOptionsFuelPrice> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      price: Schema.optional(GoogleTypeMoney),
-      type: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsPlacesV1FuelOptionsFuelPrice",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1FuelOptionsFuelPrice>;
+export const GoogleMapsPlacesV1FuelOptionsFuelPrice =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    price: Schema.optional(GoogleTypeMoney),
+    type: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleMapsPlacesV1FuelOptionsFuelPrice" });
 
 export interface GoogleMapsPlacesV1FuelOptions {
   /** The last known fuel price for each type of fuel this station has. There is one entry per fuel type this station has. Order is not important. */
   fuelPrices?: Array<GoogleMapsPlacesV1FuelOptionsFuelPrice>;
 }
 
-export const GoogleMapsPlacesV1FuelOptions: Schema.Schema<GoogleMapsPlacesV1FuelOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fuelPrices: Schema.optional(
-        Schema.Array(GoogleMapsPlacesV1FuelOptionsFuelPrice),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsPlacesV1FuelOptions",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1FuelOptions>;
+export const GoogleMapsPlacesV1FuelOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fuelPrices: Schema.optional(
+      Schema.Array(GoogleMapsPlacesV1FuelOptionsFuelPrice),
+    ),
+  }).annotate({ identifier: "GoogleMapsPlacesV1FuelOptions" });
 
 export interface GoogleMapsPlacesV1PlaceContainingPlace {
   /** The resource name of the place in which this place is located. */
@@ -1205,15 +1018,11 @@ export interface GoogleMapsPlacesV1PlaceContainingPlace {
   id?: string;
 }
 
-export const GoogleMapsPlacesV1PlaceContainingPlace: Schema.Schema<GoogleMapsPlacesV1PlaceContainingPlace> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsPlacesV1PlaceContainingPlace",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1PlaceContainingPlace>;
+export const GoogleMapsPlacesV1PlaceContainingPlace =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleMapsPlacesV1PlaceContainingPlace" });
 
 export interface GoogleMapsPlacesV1PlaceSubDestination {
   /** The place id of the sub-destination. */
@@ -1222,15 +1031,11 @@ export interface GoogleMapsPlacesV1PlaceSubDestination {
   name?: string;
 }
 
-export const GoogleMapsPlacesV1PlaceSubDestination: Schema.Schema<GoogleMapsPlacesV1PlaceSubDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsPlacesV1PlaceSubDestination",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1PlaceSubDestination>;
+export const GoogleMapsPlacesV1PlaceSubDestination =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleMapsPlacesV1PlaceSubDestination" });
 
 export interface GoogleMapsPlacesV1EVChargeOptions {
   /** A list of EV charging connector aggregations that contain connectors of the same type and same charge rate. */
@@ -1239,17 +1044,13 @@ export interface GoogleMapsPlacesV1EVChargeOptions {
   connectorCount?: number;
 }
 
-export const GoogleMapsPlacesV1EVChargeOptions: Schema.Schema<GoogleMapsPlacesV1EVChargeOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      connectorAggregation: Schema.optional(
-        Schema.Array(GoogleMapsPlacesV1EVChargeOptionsConnectorAggregation),
-      ),
-      connectorCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsPlacesV1EVChargeOptions",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1EVChargeOptions>;
+export const GoogleMapsPlacesV1EVChargeOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    connectorAggregation: Schema.optional(
+      Schema.Array(GoogleMapsPlacesV1EVChargeOptionsConnectorAggregation),
+    ),
+    connectorCount: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleMapsPlacesV1EVChargeOptions" });
 
 export interface GoogleMapsPlacesV1Place {
   /** The type label of the place on Google Maps, localized to the request language if applicable, for example, "Restaurant", "Cafe", "Airport", etc. The type label may be different from the primary type display name and may not be a supported type in [Places API Place Types table](https://developers.google.com/maps/documentation/places/web-service/place-types). */
@@ -1421,110 +1222,106 @@ export interface GoogleMapsPlacesV1Place {
   evChargeOptions?: GoogleMapsPlacesV1EVChargeOptions;
 }
 
-export const GoogleMapsPlacesV1Place: Schema.Schema<GoogleMapsPlacesV1Place> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      googleMapsTypeLabel: Schema.optional(GoogleTypeLocalizedText),
-      outdoorSeating: Schema.optional(Schema.Boolean),
-      servesCocktails: Schema.optional(Schema.Boolean),
-      regularOpeningHours: Schema.optional(GoogleMapsPlacesV1PlaceOpeningHours),
-      delivery: Schema.optional(Schema.Boolean),
-      editorialSummary: Schema.optional(GoogleTypeLocalizedText),
-      menuForChildren: Schema.optional(Schema.Boolean),
-      iconBackgroundColor: Schema.optional(Schema.String),
-      servesBreakfast: Schema.optional(Schema.Boolean),
-      websiteUri: Schema.optional(Schema.String),
-      currentOpeningHours: Schema.optional(GoogleMapsPlacesV1PlaceOpeningHours),
-      userRatingCount: Schema.optional(Schema.Number),
-      postalAddress: Schema.optional(GoogleTypePostalAddress),
-      goodForGroups: Schema.optional(Schema.Boolean),
-      primaryTypeDisplayName: Schema.optional(GoogleTypeLocalizedText),
-      formattedAddress: Schema.optional(Schema.String),
-      accessibilityOptions: Schema.optional(
-        GoogleMapsPlacesV1PlaceAccessibilityOptions,
-      ),
-      pureServiceAreaBusiness: Schema.optional(Schema.Boolean),
-      photos: Schema.optional(Schema.Array(GoogleMapsPlacesV1Photo)),
-      servesDinner: Schema.optional(Schema.Boolean),
-      viewport: Schema.optional(GoogleGeoTypeViewport),
-      allowsDogs: Schema.optional(Schema.Boolean),
-      id: Schema.optional(Schema.String),
-      shortFormattedAddress: Schema.optional(Schema.String),
-      priceRange: Schema.optional(GoogleMapsPlacesV1PriceRange),
-      evChargeAmenitySummary: Schema.optional(
-        GoogleMapsPlacesV1PlaceEvChargeAmenitySummary,
-      ),
-      curbsidePickup: Schema.optional(Schema.Boolean),
-      rating: Schema.optional(Schema.Number),
-      servesLunch: Schema.optional(Schema.Boolean),
-      reservable: Schema.optional(Schema.Boolean),
-      adrFormatAddress: Schema.optional(Schema.String),
-      liveMusic: Schema.optional(Schema.Boolean),
-      takeout: Schema.optional(Schema.Boolean),
-      reviewSummary: Schema.optional(GoogleMapsPlacesV1PlaceReviewSummary),
-      servesBeer: Schema.optional(Schema.Boolean),
-      location: Schema.optional(GoogleTypeLatLng),
-      types: Schema.optional(Schema.Array(Schema.String)),
-      goodForWatchingSports: Schema.optional(Schema.Boolean),
-      addressDescriptor: Schema.optional(GoogleMapsPlacesV1AddressDescriptor),
-      plusCode: Schema.optional(GoogleMapsPlacesV1PlacePlusCode),
-      timeZone: Schema.optional(GoogleTypeTimeZone),
-      movedPlace: Schema.optional(Schema.String),
-      currentSecondaryOpeningHours: Schema.optional(
-        Schema.Array(GoogleMapsPlacesV1PlaceOpeningHours),
-      ),
-      servesVegetarianFood: Schema.optional(Schema.Boolean),
-      googleMapsLinks: Schema.optional(GoogleMapsPlacesV1PlaceGoogleMapsLinks),
-      regularSecondaryOpeningHours: Schema.optional(
-        Schema.Array(GoogleMapsPlacesV1PlaceOpeningHours),
-      ),
-      parkingOptions: Schema.optional(GoogleMapsPlacesV1PlaceParkingOptions),
-      internationalPhoneNumber: Schema.optional(Schema.String),
-      servesDessert: Schema.optional(Schema.Boolean),
-      paymentOptions: Schema.optional(GoogleMapsPlacesV1PlacePaymentOptions),
-      servesBrunch: Schema.optional(Schema.Boolean),
-      addressComponents: Schema.optional(
-        Schema.Array(GoogleMapsPlacesV1PlaceAddressComponent),
-      ),
-      priceLevel: Schema.optional(Schema.String),
-      consumerAlert: Schema.optional(GoogleMapsPlacesV1PlaceConsumerAlert),
-      iconMaskBaseUri: Schema.optional(Schema.String),
-      attributions: Schema.optional(
-        Schema.Array(GoogleMapsPlacesV1PlaceAttribution),
-      ),
-      displayName: Schema.optional(GoogleTypeLocalizedText),
-      generativeSummary: Schema.optional(
-        GoogleMapsPlacesV1PlaceGenerativeSummary,
-      ),
-      primaryType: Schema.optional(Schema.String),
-      neighborhoodSummary: Schema.optional(
-        GoogleMapsPlacesV1PlaceNeighborhoodSummary,
-      ),
-      nationalPhoneNumber: Schema.optional(Schema.String),
-      openingDate: Schema.optional(GoogleTypeDate),
-      name: Schema.optional(Schema.String),
-      businessStatus: Schema.optional(Schema.String),
-      fuelOptions: Schema.optional(GoogleMapsPlacesV1FuelOptions),
-      reviews: Schema.optional(Schema.Array(GoogleMapsPlacesV1Review)),
-      movedPlaceId: Schema.optional(Schema.String),
-      googleMapsUri: Schema.optional(Schema.String),
-      servesWine: Schema.optional(Schema.Boolean),
-      dineIn: Schema.optional(Schema.Boolean),
-      servesCoffee: Schema.optional(Schema.Boolean),
-      containingPlaces: Schema.optional(
-        Schema.Array(GoogleMapsPlacesV1PlaceContainingPlace),
-      ),
-      utcOffsetMinutes: Schema.optional(Schema.Number),
-      subDestinations: Schema.optional(
-        Schema.Array(GoogleMapsPlacesV1PlaceSubDestination),
-      ),
-      restroom: Schema.optional(Schema.Boolean),
-      goodForChildren: Schema.optional(Schema.Boolean),
-      evChargeOptions: Schema.optional(GoogleMapsPlacesV1EVChargeOptions),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsPlacesV1Place",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1Place>;
+export const GoogleMapsPlacesV1Place =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    googleMapsTypeLabel: Schema.optional(GoogleTypeLocalizedText),
+    outdoorSeating: Schema.optional(Schema.Boolean),
+    servesCocktails: Schema.optional(Schema.Boolean),
+    regularOpeningHours: Schema.optional(GoogleMapsPlacesV1PlaceOpeningHours),
+    delivery: Schema.optional(Schema.Boolean),
+    editorialSummary: Schema.optional(GoogleTypeLocalizedText),
+    menuForChildren: Schema.optional(Schema.Boolean),
+    iconBackgroundColor: Schema.optional(Schema.String),
+    servesBreakfast: Schema.optional(Schema.Boolean),
+    websiteUri: Schema.optional(Schema.String),
+    currentOpeningHours: Schema.optional(GoogleMapsPlacesV1PlaceOpeningHours),
+    userRatingCount: Schema.optional(Schema.Number),
+    postalAddress: Schema.optional(GoogleTypePostalAddress),
+    goodForGroups: Schema.optional(Schema.Boolean),
+    primaryTypeDisplayName: Schema.optional(GoogleTypeLocalizedText),
+    formattedAddress: Schema.optional(Schema.String),
+    accessibilityOptions: Schema.optional(
+      GoogleMapsPlacesV1PlaceAccessibilityOptions,
+    ),
+    pureServiceAreaBusiness: Schema.optional(Schema.Boolean),
+    photos: Schema.optional(Schema.Array(GoogleMapsPlacesV1Photo)),
+    servesDinner: Schema.optional(Schema.Boolean),
+    viewport: Schema.optional(GoogleGeoTypeViewport),
+    allowsDogs: Schema.optional(Schema.Boolean),
+    id: Schema.optional(Schema.String),
+    shortFormattedAddress: Schema.optional(Schema.String),
+    priceRange: Schema.optional(GoogleMapsPlacesV1PriceRange),
+    evChargeAmenitySummary: Schema.optional(
+      GoogleMapsPlacesV1PlaceEvChargeAmenitySummary,
+    ),
+    curbsidePickup: Schema.optional(Schema.Boolean),
+    rating: Schema.optional(Schema.Number),
+    servesLunch: Schema.optional(Schema.Boolean),
+    reservable: Schema.optional(Schema.Boolean),
+    adrFormatAddress: Schema.optional(Schema.String),
+    liveMusic: Schema.optional(Schema.Boolean),
+    takeout: Schema.optional(Schema.Boolean),
+    reviewSummary: Schema.optional(GoogleMapsPlacesV1PlaceReviewSummary),
+    servesBeer: Schema.optional(Schema.Boolean),
+    location: Schema.optional(GoogleTypeLatLng),
+    types: Schema.optional(Schema.Array(Schema.String)),
+    goodForWatchingSports: Schema.optional(Schema.Boolean),
+    addressDescriptor: Schema.optional(GoogleMapsPlacesV1AddressDescriptor),
+    plusCode: Schema.optional(GoogleMapsPlacesV1PlacePlusCode),
+    timeZone: Schema.optional(GoogleTypeTimeZone),
+    movedPlace: Schema.optional(Schema.String),
+    currentSecondaryOpeningHours: Schema.optional(
+      Schema.Array(GoogleMapsPlacesV1PlaceOpeningHours),
+    ),
+    servesVegetarianFood: Schema.optional(Schema.Boolean),
+    googleMapsLinks: Schema.optional(GoogleMapsPlacesV1PlaceGoogleMapsLinks),
+    regularSecondaryOpeningHours: Schema.optional(
+      Schema.Array(GoogleMapsPlacesV1PlaceOpeningHours),
+    ),
+    parkingOptions: Schema.optional(GoogleMapsPlacesV1PlaceParkingOptions),
+    internationalPhoneNumber: Schema.optional(Schema.String),
+    servesDessert: Schema.optional(Schema.Boolean),
+    paymentOptions: Schema.optional(GoogleMapsPlacesV1PlacePaymentOptions),
+    servesBrunch: Schema.optional(Schema.Boolean),
+    addressComponents: Schema.optional(
+      Schema.Array(GoogleMapsPlacesV1PlaceAddressComponent),
+    ),
+    priceLevel: Schema.optional(Schema.String),
+    consumerAlert: Schema.optional(GoogleMapsPlacesV1PlaceConsumerAlert),
+    iconMaskBaseUri: Schema.optional(Schema.String),
+    attributions: Schema.optional(
+      Schema.Array(GoogleMapsPlacesV1PlaceAttribution),
+    ),
+    displayName: Schema.optional(GoogleTypeLocalizedText),
+    generativeSummary: Schema.optional(
+      GoogleMapsPlacesV1PlaceGenerativeSummary,
+    ),
+    primaryType: Schema.optional(Schema.String),
+    neighborhoodSummary: Schema.optional(
+      GoogleMapsPlacesV1PlaceNeighborhoodSummary,
+    ),
+    nationalPhoneNumber: Schema.optional(Schema.String),
+    openingDate: Schema.optional(GoogleTypeDate),
+    name: Schema.optional(Schema.String),
+    businessStatus: Schema.optional(Schema.String),
+    fuelOptions: Schema.optional(GoogleMapsPlacesV1FuelOptions),
+    reviews: Schema.optional(Schema.Array(GoogleMapsPlacesV1Review)),
+    movedPlaceId: Schema.optional(Schema.String),
+    googleMapsUri: Schema.optional(Schema.String),
+    servesWine: Schema.optional(Schema.Boolean),
+    dineIn: Schema.optional(Schema.Boolean),
+    servesCoffee: Schema.optional(Schema.Boolean),
+    containingPlaces: Schema.optional(
+      Schema.Array(GoogleMapsPlacesV1PlaceContainingPlace),
+    ),
+    utcOffsetMinutes: Schema.optional(Schema.Number),
+    subDestinations: Schema.optional(
+      Schema.Array(GoogleMapsPlacesV1PlaceSubDestination),
+    ),
+    restroom: Schema.optional(Schema.Boolean),
+    goodForChildren: Schema.optional(Schema.Boolean),
+    evChargeOptions: Schema.optional(GoogleMapsPlacesV1EVChargeOptions),
+  }).annotate({ identifier: "GoogleMapsPlacesV1Place" });
 
 export interface GoogleMapsPlacesV1SearchNearbyResponse {
   /** A list of routing summaries where each entry associates to the corresponding place in the same index in the `places` field. If the routing summary is not available for one of the places, it will contain an empty entry. This list should have as many entries as the list of places if requested. */
@@ -1533,17 +1330,13 @@ export interface GoogleMapsPlacesV1SearchNearbyResponse {
   places?: Array<GoogleMapsPlacesV1Place>;
 }
 
-export const GoogleMapsPlacesV1SearchNearbyResponse: Schema.Schema<GoogleMapsPlacesV1SearchNearbyResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      routingSummaries: Schema.optional(
-        Schema.Array(GoogleMapsPlacesV1RoutingSummary),
-      ),
-      places: Schema.optional(Schema.Array(GoogleMapsPlacesV1Place)),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsPlacesV1SearchNearbyResponse",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1SearchNearbyResponse>;
+export const GoogleMapsPlacesV1SearchNearbyResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    routingSummaries: Schema.optional(
+      Schema.Array(GoogleMapsPlacesV1RoutingSummary),
+    ),
+    places: Schema.optional(Schema.Array(GoogleMapsPlacesV1Place)),
+  }).annotate({ identifier: "GoogleMapsPlacesV1SearchNearbyResponse" });
 
 export interface GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionQueryPrediction {
   /** The predicted text. This text does not represent a Place, but rather a text query that could be used in a search endpoint (for example, Text Search). `text` is recommended for developers who wish to show a single UI element. Developers who wish to show two separate, but related, UI elements may want to use `structured_format` instead. They are two different ways to represent a query prediction. Users should not try to parse `structured_format` into `text` or vice versa. May be in mixed languages if the request `input` and `language_code` are in different languages or if part of the query does not have a translation from the local language to `language_code`. */
@@ -1552,20 +1345,18 @@ export interface GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionQueryPred
   structuredFormat?: GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructuredFormat;
 }
 
-export const GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionQueryPrediction: Schema.Schema<GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionQueryPrediction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(
-        GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText,
-      ),
-      structuredFormat: Schema.optional(
-        GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructuredFormat,
-      ),
-    }),
-  ).annotate({
+export const GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionQueryPrediction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(
+      GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText,
+    ),
+    structuredFormat: Schema.optional(
+      GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructuredFormat,
+    ),
+  }).annotate({
     identifier:
       "GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionQueryPrediction",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionQueryPrediction>;
+  });
 
 export interface GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionPlacePrediction {
   /** The unique identifier of the suggested Place. This identifier can be used in other APIs that accept Place IDs. */
@@ -1582,24 +1373,22 @@ export interface GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionPlacePred
   structuredFormat?: GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructuredFormat;
 }
 
-export const GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionPlacePrediction: Schema.Schema<GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionPlacePrediction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      placeId: Schema.optional(Schema.String),
-      text: Schema.optional(
-        GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText,
-      ),
-      types: Schema.optional(Schema.Array(Schema.String)),
-      distanceMeters: Schema.optional(Schema.Number),
-      place: Schema.optional(Schema.String),
-      structuredFormat: Schema.optional(
-        GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructuredFormat,
-      ),
-    }),
-  ).annotate({
+export const GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionPlacePrediction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    placeId: Schema.optional(Schema.String),
+    text: Schema.optional(
+      GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionFormattableText,
+    ),
+    types: Schema.optional(Schema.Array(Schema.String)),
+    distanceMeters: Schema.optional(Schema.Number),
+    place: Schema.optional(Schema.String),
+    structuredFormat: Schema.optional(
+      GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionStructuredFormat,
+    ),
+  }).annotate({
     identifier:
       "GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionPlacePrediction",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionPlacePrediction>;
+  });
 
 export interface GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion {
   /** A prediction for a query. */
@@ -1608,35 +1397,29 @@ export interface GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion {
   placePrediction?: GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionPlacePrediction;
 }
 
-export const GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion: Schema.Schema<GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      queryPrediction: Schema.optional(
-        GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionQueryPrediction,
-      ),
-      placePrediction: Schema.optional(
-        GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionPlacePrediction,
-      ),
-    }),
-  ).annotate({
+export const GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    queryPrediction: Schema.optional(
+      GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionQueryPrediction,
+    ),
+    placePrediction: Schema.optional(
+      GoogleMapsPlacesV1AutocompletePlacesResponseSuggestionPlacePrediction,
+    ),
+  }).annotate({
     identifier: "GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion>;
+  });
 
 export interface GoogleMapsPlacesV1AutocompletePlacesResponse {
   /** Contains a list of suggestions, ordered in descending order of relevance. */
   suggestions?: Array<GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion>;
 }
 
-export const GoogleMapsPlacesV1AutocompletePlacesResponse: Schema.Schema<GoogleMapsPlacesV1AutocompletePlacesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      suggestions: Schema.optional(
-        Schema.Array(GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsPlacesV1AutocompletePlacesResponse",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1AutocompletePlacesResponse>;
+export const GoogleMapsPlacesV1AutocompletePlacesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    suggestions: Schema.optional(
+      Schema.Array(GoogleMapsPlacesV1AutocompletePlacesResponseSuggestion),
+    ),
+  }).annotate({ identifier: "GoogleMapsPlacesV1AutocompletePlacesResponse" });
 
 export interface GoogleMapsPlacesV1Circle {
   /** Required. Center latitude and longitude. The range of latitude must be within [-90.0, 90.0]. The range of the longitude must be within [-180.0, 180.0]. */
@@ -1645,15 +1428,11 @@ export interface GoogleMapsPlacesV1Circle {
   radius?: number;
 }
 
-export const GoogleMapsPlacesV1Circle: Schema.Schema<GoogleMapsPlacesV1Circle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      center: Schema.optional(GoogleTypeLatLng),
-      radius: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsPlacesV1Circle",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1Circle>;
+export const GoogleMapsPlacesV1Circle =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    center: Schema.optional(GoogleTypeLatLng),
+    radius: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleMapsPlacesV1Circle" });
 
 export interface GoogleMapsPlacesV1AutocompletePlacesRequestLocationBias {
   /** A viewport defined by a northeast and a southwest corner. */
@@ -1662,15 +1441,13 @@ export interface GoogleMapsPlacesV1AutocompletePlacesRequestLocationBias {
   circle?: GoogleMapsPlacesV1Circle;
 }
 
-export const GoogleMapsPlacesV1AutocompletePlacesRequestLocationBias: Schema.Schema<GoogleMapsPlacesV1AutocompletePlacesRequestLocationBias> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rectangle: Schema.optional(GoogleGeoTypeViewport),
-      circle: Schema.optional(GoogleMapsPlacesV1Circle),
-    }),
-  ).annotate({
+export const GoogleMapsPlacesV1AutocompletePlacesRequestLocationBias =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rectangle: Schema.optional(GoogleGeoTypeViewport),
+    circle: Schema.optional(GoogleMapsPlacesV1Circle),
+  }).annotate({
     identifier: "GoogleMapsPlacesV1AutocompletePlacesRequestLocationBias",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1AutocompletePlacesRequestLocationBias>;
+  });
 
 export interface GoogleMapsPlacesV1AutocompletePlacesRequestLocationRestriction {
   /** A viewport defined by a northeast and a southwest corner. */
@@ -1679,16 +1456,14 @@ export interface GoogleMapsPlacesV1AutocompletePlacesRequestLocationRestriction 
   circle?: GoogleMapsPlacesV1Circle;
 }
 
-export const GoogleMapsPlacesV1AutocompletePlacesRequestLocationRestriction: Schema.Schema<GoogleMapsPlacesV1AutocompletePlacesRequestLocationRestriction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rectangle: Schema.optional(GoogleGeoTypeViewport),
-      circle: Schema.optional(GoogleMapsPlacesV1Circle),
-    }),
-  ).annotate({
+export const GoogleMapsPlacesV1AutocompletePlacesRequestLocationRestriction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rectangle: Schema.optional(GoogleGeoTypeViewport),
+    circle: Schema.optional(GoogleMapsPlacesV1Circle),
+  }).annotate({
     identifier:
       "GoogleMapsPlacesV1AutocompletePlacesRequestLocationRestriction",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1AutocompletePlacesRequestLocationRestriction>;
+  });
 
 export interface GoogleMapsPlacesV1SearchTextResponse {
   /** A list of routing summaries where each entry associates to the corresponding place in the same index in the `places` field. If the routing summary is not available for one of the places, it will contain an empty entry. This list will have as many entries as the list of places if requested. */
@@ -1703,22 +1478,18 @@ export interface GoogleMapsPlacesV1SearchTextResponse {
   nextPageToken?: string;
 }
 
-export const GoogleMapsPlacesV1SearchTextResponse: Schema.Schema<GoogleMapsPlacesV1SearchTextResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      routingSummaries: Schema.optional(
-        Schema.Array(GoogleMapsPlacesV1RoutingSummary),
-      ),
-      places: Schema.optional(Schema.Array(GoogleMapsPlacesV1Place)),
-      contextualContents: Schema.optional(
-        Schema.Array(GoogleMapsPlacesV1ContextualContent),
-      ),
-      searchUri: Schema.optional(Schema.String),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsPlacesV1SearchTextResponse",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1SearchTextResponse>;
+export const GoogleMapsPlacesV1SearchTextResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    routingSummaries: Schema.optional(
+      Schema.Array(GoogleMapsPlacesV1RoutingSummary),
+    ),
+    places: Schema.optional(Schema.Array(GoogleMapsPlacesV1Place)),
+    contextualContents: Schema.optional(
+      Schema.Array(GoogleMapsPlacesV1ContextualContent),
+    ),
+    searchUri: Schema.optional(Schema.String),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleMapsPlacesV1SearchTextResponse" });
 
 export interface GoogleMapsPlacesV1SearchTextRequestEVOptions {
   /** Optional. Minimum required charging rate in kilowatts. A place with a charging rate less than the specified rate is filtered out. */
@@ -1740,43 +1511,35 @@ export interface GoogleMapsPlacesV1SearchTextRequestEVOptions {
   >;
 }
 
-export const GoogleMapsPlacesV1SearchTextRequestEVOptions: Schema.Schema<GoogleMapsPlacesV1SearchTextRequestEVOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      minimumChargingRateKw: Schema.optional(Schema.Number),
-      connectorTypes: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsPlacesV1SearchTextRequestEVOptions",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1SearchTextRequestEVOptions>;
+export const GoogleMapsPlacesV1SearchTextRequestEVOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    minimumChargingRateKw: Schema.optional(Schema.Number),
+    connectorTypes: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleMapsPlacesV1SearchTextRequestEVOptions" });
 
 export interface GoogleMapsPlacesV1SearchTextRequestLocationRestriction {
   /** A rectangle box defined by northeast and southwest corner. `rectangle.high()` must be the northeast point of the rectangle viewport. `rectangle.low()` must be the southwest point of the rectangle viewport. `rectangle.low().latitude()` cannot be greater than `rectangle.high().latitude()`. This will result in an empty latitude range. A rectangle viewport cannot be wider than 180 degrees. */
   rectangle?: GoogleGeoTypeViewport;
 }
 
-export const GoogleMapsPlacesV1SearchTextRequestLocationRestriction: Schema.Schema<GoogleMapsPlacesV1SearchTextRequestLocationRestriction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rectangle: Schema.optional(GoogleGeoTypeViewport),
-    }),
-  ).annotate({
+export const GoogleMapsPlacesV1SearchTextRequestLocationRestriction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rectangle: Schema.optional(GoogleGeoTypeViewport),
+  }).annotate({
     identifier: "GoogleMapsPlacesV1SearchTextRequestLocationRestriction",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1SearchTextRequestLocationRestriction>;
+  });
 
 export interface GoogleMapsPlacesV1SearchTextRequestSearchAlongRouteParameters {
   /** Required. The route polyline. */
   polyline?: GoogleMapsPlacesV1Polyline;
 }
 
-export const GoogleMapsPlacesV1SearchTextRequestSearchAlongRouteParameters: Schema.Schema<GoogleMapsPlacesV1SearchTextRequestSearchAlongRouteParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      polyline: Schema.optional(GoogleMapsPlacesV1Polyline),
-    }),
-  ).annotate({
+export const GoogleMapsPlacesV1SearchTextRequestSearchAlongRouteParameters =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    polyline: Schema.optional(GoogleMapsPlacesV1Polyline),
+  }).annotate({
     identifier: "GoogleMapsPlacesV1SearchTextRequestSearchAlongRouteParameters",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1SearchTextRequestSearchAlongRouteParameters>;
+  });
 
 export interface GoogleMapsPlacesV1SearchTextRequestLocationBias {
   /** A rectangle box defined by northeast and southwest corner. `rectangle.high()` must be the northeast point of the rectangle viewport. `rectangle.low()` must be the southwest point of the rectangle viewport. `rectangle.low().latitude()` cannot be greater than `rectangle.high().latitude()`. This will result in an empty latitude range. A rectangle viewport cannot be wider than 180 degrees. */
@@ -1785,15 +1548,13 @@ export interface GoogleMapsPlacesV1SearchTextRequestLocationBias {
   circle?: GoogleMapsPlacesV1Circle;
 }
 
-export const GoogleMapsPlacesV1SearchTextRequestLocationBias: Schema.Schema<GoogleMapsPlacesV1SearchTextRequestLocationBias> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rectangle: Schema.optional(GoogleGeoTypeViewport),
-      circle: Schema.optional(GoogleMapsPlacesV1Circle),
-    }),
-  ).annotate({
+export const GoogleMapsPlacesV1SearchTextRequestLocationBias =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rectangle: Schema.optional(GoogleGeoTypeViewport),
+    circle: Schema.optional(GoogleMapsPlacesV1Circle),
+  }).annotate({
     identifier: "GoogleMapsPlacesV1SearchTextRequestLocationBias",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1SearchTextRequestLocationBias>;
+  });
 
 export interface GoogleMapsPlacesV1SearchTextRequest {
   /** The Unicode country/region code (CLDR) of the location where the request is coming from. This parameter is used to display the place details, like region-specific place name, if available. The parameter can affect results based on applicable law. For more information, see https://www.unicode.org/cldr/charts/latest/supplemental/territory_language_information.html. Note that 3-digit region codes are not currently supported. */
@@ -1848,38 +1609,34 @@ export interface GoogleMapsPlacesV1SearchTextRequest {
   locationBias?: GoogleMapsPlacesV1SearchTextRequestLocationBias;
 }
 
-export const GoogleMapsPlacesV1SearchTextRequest: Schema.Schema<GoogleMapsPlacesV1SearchTextRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      regionCode: Schema.optional(Schema.String),
-      evOptions: Schema.optional(GoogleMapsPlacesV1SearchTextRequestEVOptions),
-      openNow: Schema.optional(Schema.Boolean),
-      rankPreference: Schema.optional(Schema.String),
-      includeFutureOpeningBusinesses: Schema.optional(Schema.Boolean),
-      locationRestriction: Schema.optional(
-        GoogleMapsPlacesV1SearchTextRequestLocationRestriction,
-      ),
-      maxResultCount: Schema.optional(Schema.Number),
-      routingParameters: Schema.optional(GoogleMapsPlacesV1RoutingParameters),
-      textQuery: Schema.optional(Schema.String),
-      pageToken: Schema.optional(Schema.String),
-      minRating: Schema.optional(Schema.Number),
-      includePureServiceAreaBusinesses: Schema.optional(Schema.Boolean),
-      searchAlongRouteParameters: Schema.optional(
-        GoogleMapsPlacesV1SearchTextRequestSearchAlongRouteParameters,
-      ),
-      strictTypeFiltering: Schema.optional(Schema.Boolean),
-      languageCode: Schema.optional(Schema.String),
-      includedType: Schema.optional(Schema.String),
-      pageSize: Schema.optional(Schema.Number),
-      priceLevels: Schema.optional(Schema.Array(Schema.String)),
-      locationBias: Schema.optional(
-        GoogleMapsPlacesV1SearchTextRequestLocationBias,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsPlacesV1SearchTextRequest",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1SearchTextRequest>;
+export const GoogleMapsPlacesV1SearchTextRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    regionCode: Schema.optional(Schema.String),
+    evOptions: Schema.optional(GoogleMapsPlacesV1SearchTextRequestEVOptions),
+    openNow: Schema.optional(Schema.Boolean),
+    rankPreference: Schema.optional(Schema.String),
+    includeFutureOpeningBusinesses: Schema.optional(Schema.Boolean),
+    locationRestriction: Schema.optional(
+      GoogleMapsPlacesV1SearchTextRequestLocationRestriction,
+    ),
+    maxResultCount: Schema.optional(Schema.Number),
+    routingParameters: Schema.optional(GoogleMapsPlacesV1RoutingParameters),
+    textQuery: Schema.optional(Schema.String),
+    pageToken: Schema.optional(Schema.String),
+    minRating: Schema.optional(Schema.Number),
+    includePureServiceAreaBusinesses: Schema.optional(Schema.Boolean),
+    searchAlongRouteParameters: Schema.optional(
+      GoogleMapsPlacesV1SearchTextRequestSearchAlongRouteParameters,
+    ),
+    strictTypeFiltering: Schema.optional(Schema.Boolean),
+    languageCode: Schema.optional(Schema.String),
+    includedType: Schema.optional(Schema.String),
+    pageSize: Schema.optional(Schema.Number),
+    priceLevels: Schema.optional(Schema.Array(Schema.String)),
+    locationBias: Schema.optional(
+      GoogleMapsPlacesV1SearchTextRequestLocationBias,
+    ),
+  }).annotate({ identifier: "GoogleMapsPlacesV1SearchTextRequest" });
 
 export interface GoogleMapsPlacesV1PhotoMedia {
   /** The resource name of a photo media in the format: `places/{place_id}/photos/{photo_reference}/media`. */
@@ -1888,29 +1645,23 @@ export interface GoogleMapsPlacesV1PhotoMedia {
   photoUri?: string;
 }
 
-export const GoogleMapsPlacesV1PhotoMedia: Schema.Schema<GoogleMapsPlacesV1PhotoMedia> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      photoUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsPlacesV1PhotoMedia",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1PhotoMedia>;
+export const GoogleMapsPlacesV1PhotoMedia =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    photoUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleMapsPlacesV1PhotoMedia" });
 
 export interface GoogleMapsPlacesV1SearchNearbyRequestLocationRestriction {
   /** A circle defined by center point and radius. */
   circle?: GoogleMapsPlacesV1Circle;
 }
 
-export const GoogleMapsPlacesV1SearchNearbyRequestLocationRestriction: Schema.Schema<GoogleMapsPlacesV1SearchNearbyRequestLocationRestriction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      circle: Schema.optional(GoogleMapsPlacesV1Circle),
-    }),
-  ).annotate({
+export const GoogleMapsPlacesV1SearchNearbyRequestLocationRestriction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    circle: Schema.optional(GoogleMapsPlacesV1Circle),
+  }).annotate({
     identifier: "GoogleMapsPlacesV1SearchNearbyRequestLocationRestriction",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1SearchNearbyRequestLocationRestriction>;
+  });
 
 export interface GoogleMapsPlacesV1SearchNearbyRequest {
   /** Included Place type (eg, "restaurant" or "gas_station") from https://developers.google.com/maps/documentation/places/web-service/place-types. Up to 50 types from [Table A](https://developers.google.com/maps/documentation/places/web-service/place-types#table-a) may be specified. If there are any conflicting types, i.e. a type appears in both included_types and excluded_types, an INVALID_ARGUMENT error is returned. If a Place type is specified with multiple type restrictions, only places that satisfy all of the restrictions are returned. For example, if we have {included_types = ["restaurant"], excluded_primary_types = ["restaurant"]}, the returned places provide "restaurant" related services but do not operate primarily as "restaurants". */
@@ -1941,26 +1692,22 @@ export interface GoogleMapsPlacesV1SearchNearbyRequest {
   excludedTypes?: Array<string>;
 }
 
-export const GoogleMapsPlacesV1SearchNearbyRequest: Schema.Schema<GoogleMapsPlacesV1SearchNearbyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      includedTypes: Schema.optional(Schema.Array(Schema.String)),
-      rankPreference: Schema.optional(Schema.String),
-      includeFutureOpeningBusinesses: Schema.optional(Schema.Boolean),
-      languageCode: Schema.optional(Schema.String),
-      includedPrimaryTypes: Schema.optional(Schema.Array(Schema.String)),
-      locationRestriction: Schema.optional(
-        GoogleMapsPlacesV1SearchNearbyRequestLocationRestriction,
-      ),
-      maxResultCount: Schema.optional(Schema.Number),
-      routingParameters: Schema.optional(GoogleMapsPlacesV1RoutingParameters),
-      regionCode: Schema.optional(Schema.String),
-      excludedPrimaryTypes: Schema.optional(Schema.Array(Schema.String)),
-      excludedTypes: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsPlacesV1SearchNearbyRequest",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1SearchNearbyRequest>;
+export const GoogleMapsPlacesV1SearchNearbyRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    includedTypes: Schema.optional(Schema.Array(Schema.String)),
+    rankPreference: Schema.optional(Schema.String),
+    includeFutureOpeningBusinesses: Schema.optional(Schema.Boolean),
+    languageCode: Schema.optional(Schema.String),
+    includedPrimaryTypes: Schema.optional(Schema.Array(Schema.String)),
+    locationRestriction: Schema.optional(
+      GoogleMapsPlacesV1SearchNearbyRequestLocationRestriction,
+    ),
+    maxResultCount: Schema.optional(Schema.Number),
+    routingParameters: Schema.optional(GoogleMapsPlacesV1RoutingParameters),
+    regionCode: Schema.optional(Schema.String),
+    excludedPrimaryTypes: Schema.optional(Schema.Array(Schema.String)),
+    excludedTypes: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleMapsPlacesV1SearchNearbyRequest" });
 
 export interface GoogleMapsPlacesV1AutocompletePlacesRequest {
   /** Optional. A zero-based Unicode character offset of `input` indicating the cursor position in `input`. The cursor position may influence what predictions are returned. If empty, defaults to the length of `input`. */
@@ -1991,30 +1738,26 @@ export interface GoogleMapsPlacesV1AutocompletePlacesRequest {
   input?: string;
 }
 
-export const GoogleMapsPlacesV1AutocompletePlacesRequest: Schema.Schema<GoogleMapsPlacesV1AutocompletePlacesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inputOffset: Schema.optional(Schema.Number),
-      includeFutureOpeningBusinesses: Schema.optional(Schema.Boolean),
-      locationRestriction: Schema.optional(
-        GoogleMapsPlacesV1AutocompletePlacesRequestLocationRestriction,
-      ),
-      includedPrimaryTypes: Schema.optional(Schema.Array(Schema.String)),
-      includedRegionCodes: Schema.optional(Schema.Array(Schema.String)),
-      includeQueryPredictions: Schema.optional(Schema.Boolean),
-      regionCode: Schema.optional(Schema.String),
-      sessionToken: Schema.optional(Schema.String),
-      locationBias: Schema.optional(
-        GoogleMapsPlacesV1AutocompletePlacesRequestLocationBias,
-      ),
-      origin: Schema.optional(GoogleTypeLatLng),
-      languageCode: Schema.optional(Schema.String),
-      includePureServiceAreaBusinesses: Schema.optional(Schema.Boolean),
-      input: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleMapsPlacesV1AutocompletePlacesRequest",
-  }) as any as Schema.Schema<GoogleMapsPlacesV1AutocompletePlacesRequest>;
+export const GoogleMapsPlacesV1AutocompletePlacesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    inputOffset: Schema.optional(Schema.Number),
+    includeFutureOpeningBusinesses: Schema.optional(Schema.Boolean),
+    locationRestriction: Schema.optional(
+      GoogleMapsPlacesV1AutocompletePlacesRequestLocationRestriction,
+    ),
+    includedPrimaryTypes: Schema.optional(Schema.Array(Schema.String)),
+    includedRegionCodes: Schema.optional(Schema.Array(Schema.String)),
+    includeQueryPredictions: Schema.optional(Schema.Boolean),
+    regionCode: Schema.optional(Schema.String),
+    sessionToken: Schema.optional(Schema.String),
+    locationBias: Schema.optional(
+      GoogleMapsPlacesV1AutocompletePlacesRequestLocationBias,
+    ),
+    origin: Schema.optional(GoogleTypeLatLng),
+    languageCode: Schema.optional(Schema.String),
+    includePureServiceAreaBusinesses: Schema.optional(Schema.Boolean),
+    input: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleMapsPlacesV1AutocompletePlacesRequest" });
 
 // ==========================================================================
 // Operations

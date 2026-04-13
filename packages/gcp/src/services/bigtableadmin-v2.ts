@@ -31,16 +31,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -55,16 +52,13 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      error: Schema.optional(Status),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  done: Schema.optional(Schema.Boolean),
+  error: Schema.optional(Status),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Operation" });
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -75,16 +69,13 @@ export interface ListOperationsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(Schema.Array(Operation)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    operations: Schema.optional(Schema.Array(Operation)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 export interface Instance {
   /** The unique name of the instance. Values are of the form `projects/{project}/instances/a-z+[a-z0-9]`. */
@@ -113,21 +104,18 @@ export interface Instance {
   tags?: Record<string, string>;
 }
 
-export const Instance: Schema.Schema<Instance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      edition: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      createTime: Schema.optional(Schema.String),
-      satisfiesPzs: Schema.optional(Schema.Boolean),
-      satisfiesPzi: Schema.optional(Schema.Boolean),
-      tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({ identifier: "Instance" }) as any as Schema.Schema<Instance>;
+export const Instance = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  edition: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  createTime: Schema.optional(Schema.String),
+  satisfiesPzs: Schema.optional(Schema.Boolean),
+  satisfiesPzi: Schema.optional(Schema.Boolean),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "Instance" });
 
 export interface AutoscalingLimits {
   /** Required. Minimum number of nodes to scale down to. */
@@ -136,15 +124,10 @@ export interface AutoscalingLimits {
   maxServeNodes?: number;
 }
 
-export const AutoscalingLimits: Schema.Schema<AutoscalingLimits> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      minServeNodes: Schema.optional(Schema.Number),
-      maxServeNodes: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "AutoscalingLimits",
-  }) as any as Schema.Schema<AutoscalingLimits>;
+export const AutoscalingLimits = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  minServeNodes: Schema.optional(Schema.Number),
+  maxServeNodes: Schema.optional(Schema.Number),
+}).annotate({ identifier: "AutoscalingLimits" });
 
 export interface AutoscalingTargets {
   /** The cpu utilization that the Autoscaler should be trying to achieve. This number is on a scale from 0 (no utilization) to 100 (total utilization), and is limited between 10 and 80, otherwise it will return INVALID_ARGUMENT error. */
@@ -153,15 +136,10 @@ export interface AutoscalingTargets {
   storageUtilizationGibPerNode?: number;
 }
 
-export const AutoscalingTargets: Schema.Schema<AutoscalingTargets> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cpuUtilizationPercent: Schema.optional(Schema.Number),
-      storageUtilizationGibPerNode: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "AutoscalingTargets",
-  }) as any as Schema.Schema<AutoscalingTargets>;
+export const AutoscalingTargets = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cpuUtilizationPercent: Schema.optional(Schema.Number),
+  storageUtilizationGibPerNode: Schema.optional(Schema.Number),
+}).annotate({ identifier: "AutoscalingTargets" });
 
 export interface ClusterAutoscalingConfig {
   /** Required. Autoscaling limits for this cluster. */
@@ -170,43 +148,29 @@ export interface ClusterAutoscalingConfig {
   autoscalingTargets?: AutoscalingTargets;
 }
 
-export const ClusterAutoscalingConfig: Schema.Schema<ClusterAutoscalingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      autoscalingLimits: Schema.optional(AutoscalingLimits),
-      autoscalingTargets: Schema.optional(AutoscalingTargets),
-    }),
-  ).annotate({
-    identifier: "ClusterAutoscalingConfig",
-  }) as any as Schema.Schema<ClusterAutoscalingConfig>;
+export const ClusterAutoscalingConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    autoscalingLimits: Schema.optional(AutoscalingLimits),
+    autoscalingTargets: Schema.optional(AutoscalingTargets),
+  }).annotate({ identifier: "ClusterAutoscalingConfig" });
 
 export interface ClusterConfig {
   /** Autoscaling configuration for this cluster. */
   clusterAutoscalingConfig?: ClusterAutoscalingConfig;
 }
 
-export const ClusterConfig: Schema.Schema<ClusterConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clusterAutoscalingConfig: Schema.optional(ClusterAutoscalingConfig),
-    }),
-  ).annotate({
-    identifier: "ClusterConfig",
-  }) as any as Schema.Schema<ClusterConfig>;
+export const ClusterConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  clusterAutoscalingConfig: Schema.optional(ClusterAutoscalingConfig),
+}).annotate({ identifier: "ClusterConfig" });
 
 export interface EncryptionConfig {
   /** Describes the Cloud KMS encryption key that will be used to protect the destination Bigtable cluster. The requirements for this key are: 1) The Cloud Bigtable service account associated with the project that contains this cluster must be granted the `cloudkms.cryptoKeyEncrypterDecrypter` role on the CMEK key. 2) Only regional keys can be used and the region of the CMEK key must match the region of the cluster. Values are of the form `projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key}` */
   kmsKeyName?: string;
 }
 
-export const EncryptionConfig: Schema.Schema<EncryptionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kmsKeyName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EncryptionConfig",
-  }) as any as Schema.Schema<EncryptionConfig>;
+export const EncryptionConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kmsKeyName: Schema.optional(Schema.String),
+}).annotate({ identifier: "EncryptionConfig" });
 
 export interface Cluster {
   /** The unique name of the cluster. Values are of the form `projects/{project}/instances/{instance}/clusters/a-z*`. */
@@ -241,19 +205,16 @@ export interface Cluster {
   encryptionConfig?: EncryptionConfig;
 }
 
-export const Cluster: Schema.Schema<Cluster> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      serveNodes: Schema.optional(Schema.Number),
-      nodeScalingFactor: Schema.optional(Schema.String),
-      clusterConfig: Schema.optional(ClusterConfig),
-      defaultStorageType: Schema.optional(Schema.String),
-      encryptionConfig: Schema.optional(EncryptionConfig),
-    }),
-  ).annotate({ identifier: "Cluster" }) as any as Schema.Schema<Cluster>;
+export const Cluster = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  serveNodes: Schema.optional(Schema.Number),
+  nodeScalingFactor: Schema.optional(Schema.String),
+  clusterConfig: Schema.optional(ClusterConfig),
+  defaultStorageType: Schema.optional(Schema.String),
+  encryptionConfig: Schema.optional(EncryptionConfig),
+}).annotate({ identifier: "Cluster" });
 
 export interface CreateInstanceRequest {
   /** Required. The unique name of the project in which to create the new instance. Values are of the form `projects/{project}`. */
@@ -266,17 +227,12 @@ export interface CreateInstanceRequest {
   clusters?: Record<string, Cluster>;
 }
 
-export const CreateInstanceRequest: Schema.Schema<CreateInstanceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parent: Schema.optional(Schema.String),
-      instanceId: Schema.optional(Schema.String),
-      instance: Schema.optional(Instance),
-      clusters: Schema.optional(Schema.Record(Schema.String, Cluster)),
-    }),
-  ).annotate({
-    identifier: "CreateInstanceRequest",
-  }) as any as Schema.Schema<CreateInstanceRequest>;
+export const CreateInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  parent: Schema.optional(Schema.String),
+  instanceId: Schema.optional(Schema.String),
+  instance: Schema.optional(Instance),
+  clusters: Schema.optional(Schema.Record(Schema.String, Cluster)),
+}).annotate({ identifier: "CreateInstanceRequest" });
 
 export interface ListInstancesResponse {
   /** The list of requested instances. */
@@ -287,23 +243,17 @@ export interface ListInstancesResponse {
   nextPageToken?: string;
 }
 
-export const ListInstancesResponse: Schema.Schema<ListInstancesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      instances: Schema.optional(Schema.Array(Instance)),
-      failedLocations: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListInstancesResponse",
-  }) as any as Schema.Schema<ListInstancesResponse>;
+export const ListInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  instances: Schema.optional(Schema.Array(Instance)),
+  failedLocations: Schema.optional(Schema.Array(Schema.String)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListInstancesResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface ListClustersResponse {
   /** The list of requested clusters. */
@@ -314,30 +264,21 @@ export interface ListClustersResponse {
   nextPageToken?: string;
 }
 
-export const ListClustersResponse: Schema.Schema<ListClustersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clusters: Schema.optional(Schema.Array(Cluster)),
-      failedLocations: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListClustersResponse",
-  }) as any as Schema.Schema<ListClustersResponse>;
+export const ListClustersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  clusters: Schema.optional(Schema.Array(Cluster)),
+  failedLocations: Schema.optional(Schema.Array(Schema.String)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListClustersResponse" });
 
 export interface GoogleBigtableAdminV2MemoryLayerMemoryConfig {
   /** Output only. Reporting the current size of the memory layer in GiB. */
   storageSizeGib?: number;
 }
 
-export const GoogleBigtableAdminV2MemoryLayerMemoryConfig: Schema.Schema<GoogleBigtableAdminV2MemoryLayerMemoryConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      storageSizeGib: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleBigtableAdminV2MemoryLayerMemoryConfig",
-  }) as any as Schema.Schema<GoogleBigtableAdminV2MemoryLayerMemoryConfig>;
+export const GoogleBigtableAdminV2MemoryLayerMemoryConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    storageSizeGib: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleBigtableAdminV2MemoryLayerMemoryConfig" });
 
 export interface MemoryLayer {
   /** Identifier. Name of the memory layer. This is always: "projects/{project}/instances/{instance}/clusters/{cluster}/memoryLayer". */
@@ -356,19 +297,12 @@ export interface MemoryLayer {
     | (string & {});
 }
 
-export const MemoryLayer: Schema.Schema<MemoryLayer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      memoryConfig: Schema.optional(
-        GoogleBigtableAdminV2MemoryLayerMemoryConfig,
-      ),
-      etag: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MemoryLayer",
-  }) as any as Schema.Schema<MemoryLayer>;
+export const MemoryLayer = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  memoryConfig: Schema.optional(GoogleBigtableAdminV2MemoryLayerMemoryConfig),
+  etag: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+}).annotate({ identifier: "MemoryLayer" });
 
 export interface ListMemoryLayersResponse {
   /** The list of requested memory layers. */
@@ -379,23 +313,18 @@ export interface ListMemoryLayersResponse {
   nextPageToken?: string;
 }
 
-export const ListMemoryLayersResponse: Schema.Schema<ListMemoryLayersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      memoryLayers: Schema.optional(Schema.Array(MemoryLayer)),
-      failedLocations: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListMemoryLayersResponse",
-  }) as any as Schema.Schema<ListMemoryLayersResponse>;
+export const ListMemoryLayersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    memoryLayers: Schema.optional(Schema.Array(MemoryLayer)),
+    failedLocations: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListMemoryLayersResponse" });
 
 export interface RowAffinity {}
 
-export const RowAffinity: Schema.Schema<RowAffinity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "RowAffinity",
-  }) as any as Schema.Schema<RowAffinity>;
+export const RowAffinity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "RowAffinity" });
 
 export interface MultiClusterRoutingUseAny {
   /** The set of clusters to route to. The order is ignored; clusters will be tried in order of distance. If left empty, all clusters are eligible. */
@@ -404,15 +333,11 @@ export interface MultiClusterRoutingUseAny {
   rowAffinity?: RowAffinity;
 }
 
-export const MultiClusterRoutingUseAny: Schema.Schema<MultiClusterRoutingUseAny> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clusterIds: Schema.optional(Schema.Array(Schema.String)),
-      rowAffinity: Schema.optional(RowAffinity),
-    }),
-  ).annotate({
-    identifier: "MultiClusterRoutingUseAny",
-  }) as any as Schema.Schema<MultiClusterRoutingUseAny>;
+export const MultiClusterRoutingUseAny =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    clusterIds: Schema.optional(Schema.Array(Schema.String)),
+    rowAffinity: Schema.optional(RowAffinity),
+  }).annotate({ identifier: "MultiClusterRoutingUseAny" });
 
 export interface SingleClusterRouting {
   /** The cluster to which read/write requests should be routed. */
@@ -421,22 +346,16 @@ export interface SingleClusterRouting {
   allowTransactionalWrites?: boolean;
 }
 
-export const SingleClusterRouting: Schema.Schema<SingleClusterRouting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clusterId: Schema.optional(Schema.String),
-      allowTransactionalWrites: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "SingleClusterRouting",
-  }) as any as Schema.Schema<SingleClusterRouting>;
+export const SingleClusterRouting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  clusterId: Schema.optional(Schema.String),
+  allowTransactionalWrites: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "SingleClusterRouting" });
 
 export interface MemoryConfig {}
 
-export const MemoryConfig: Schema.Schema<MemoryConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "MemoryConfig",
-  }) as any as Schema.Schema<MemoryConfig>;
+export const MemoryConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "MemoryConfig" });
 
 export interface StandardIsolation {
   /** The priority of requests sent using this app profile. */
@@ -450,15 +369,10 @@ export interface StandardIsolation {
   memoryConfig?: MemoryConfig;
 }
 
-export const StandardIsolation: Schema.Schema<StandardIsolation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      priority: Schema.optional(Schema.String),
-      memoryConfig: Schema.optional(MemoryConfig),
-    }),
-  ).annotate({
-    identifier: "StandardIsolation",
-  }) as any as Schema.Schema<StandardIsolation>;
+export const StandardIsolation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  priority: Schema.optional(Schema.String),
+  memoryConfig: Schema.optional(MemoryConfig),
+}).annotate({ identifier: "StandardIsolation" });
 
 export interface DataBoostIsolationReadOnly {
   /** The Compute Billing Owner for this Data Boost App Profile. */
@@ -468,14 +382,10 @@ export interface DataBoostIsolationReadOnly {
     | (string & {});
 }
 
-export const DataBoostIsolationReadOnly: Schema.Schema<DataBoostIsolationReadOnly> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      computeBillingOwner: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DataBoostIsolationReadOnly",
-  }) as any as Schema.Schema<DataBoostIsolationReadOnly>;
+export const DataBoostIsolationReadOnly =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    computeBillingOwner: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DataBoostIsolationReadOnly" });
 
 export interface AppProfile {
   /** The unique name of the app profile, up to 50 characters long. Values are of the form `projects/{project}/instances/{instance}/appProfiles/_a-zA-Z0-9*`. */
@@ -501,19 +411,16 @@ export interface AppProfile {
   dataBoostIsolationReadOnly?: DataBoostIsolationReadOnly;
 }
 
-export const AppProfile: Schema.Schema<AppProfile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      multiClusterRoutingUseAny: Schema.optional(MultiClusterRoutingUseAny),
-      singleClusterRouting: Schema.optional(SingleClusterRouting),
-      priority: Schema.optional(Schema.String),
-      standardIsolation: Schema.optional(StandardIsolation),
-      dataBoostIsolationReadOnly: Schema.optional(DataBoostIsolationReadOnly),
-    }),
-  ).annotate({ identifier: "AppProfile" }) as any as Schema.Schema<AppProfile>;
+export const AppProfile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  multiClusterRoutingUseAny: Schema.optional(MultiClusterRoutingUseAny),
+  singleClusterRouting: Schema.optional(SingleClusterRouting),
+  priority: Schema.optional(Schema.String),
+  standardIsolation: Schema.optional(StandardIsolation),
+  dataBoostIsolationReadOnly: Schema.optional(DataBoostIsolationReadOnly),
+}).annotate({ identifier: "AppProfile" });
 
 export interface ListAppProfilesResponse {
   /** The list of requested app profiles. */
@@ -524,44 +431,30 @@ export interface ListAppProfilesResponse {
   failedLocations?: Array<string>;
 }
 
-export const ListAppProfilesResponse: Schema.Schema<ListAppProfilesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      appProfiles: Schema.optional(Schema.Array(AppProfile)),
-      nextPageToken: Schema.optional(Schema.String),
-      failedLocations: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListAppProfilesResponse",
-  }) as any as Schema.Schema<ListAppProfilesResponse>;
+export const ListAppProfilesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    appProfiles: Schema.optional(Schema.Array(AppProfile)),
+    nextPageToken: Schema.optional(Schema.String),
+    failedLocations: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListAppProfilesResponse" });
 
 export interface GetPolicyOptions {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   requestedPolicyVersion?: number;
 }
 
-export const GetPolicyOptions: Schema.Schema<GetPolicyOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestedPolicyVersion: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GetPolicyOptions",
-  }) as any as Schema.Schema<GetPolicyOptions>;
+export const GetPolicyOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  requestedPolicyVersion: Schema.optional(Schema.Number),
+}).annotate({ identifier: "GetPolicyOptions" });
 
 export interface GetIamPolicyRequest {
   /** OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`. */
   options?: GetPolicyOptions;
 }
 
-export const GetIamPolicyRequest: Schema.Schema<GetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      options: Schema.optional(GetPolicyOptions),
-    }),
-  ).annotate({
-    identifier: "GetIamPolicyRequest",
-  }) as any as Schema.Schema<GetIamPolicyRequest>;
+export const GetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  options: Schema.optional(GetPolicyOptions),
+}).annotate({ identifier: "GetIamPolicyRequest" });
 
 export interface Expr {
   /** Textual representation of an expression in Common Expression Language syntax. */
@@ -574,15 +467,12 @@ export interface Expr {
   location?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expression: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Expr" }) as any as Schema.Schema<Expr>;
+export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  expression: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+}).annotate({ identifier: "Expr" });
 
 export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
@@ -593,14 +483,11 @@ export interface Binding {
   condition?: Expr;
 }
 
-export const Binding: Schema.Schema<Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      role: Schema.optional(Schema.String),
-      members: Schema.optional(Schema.Array(Schema.String)),
-      condition: Schema.optional(Expr),
-    }),
-  ).annotate({ identifier: "Binding" }) as any as Schema.Schema<Binding>;
+export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  role: Schema.optional(Schema.String),
+  members: Schema.optional(Schema.Array(Schema.String)),
+  condition: Schema.optional(Expr),
+}).annotate({ identifier: "Binding" });
 
 export interface AuditLogConfig {
   /** The log type that this config enables. */
@@ -614,15 +501,10 @@ export interface AuditLogConfig {
   exemptedMembers?: Array<string>;
 }
 
-export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      logType: Schema.optional(Schema.String),
-      exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AuditLogConfig",
-  }) as any as Schema.Schema<AuditLogConfig>;
+export const AuditLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  logType: Schema.optional(Schema.String),
+  exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "AuditLogConfig" });
 
 export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
@@ -631,15 +513,10 @@ export interface AuditConfig {
   auditLogConfigs?: Array<AuditLogConfig>;
 }
 
-export const AuditConfig: Schema.Schema<AuditConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      service: Schema.optional(Schema.String),
-      auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
-    }),
-  ).annotate({
-    identifier: "AuditConfig",
-  }) as any as Schema.Schema<AuditConfig>;
+export const AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  service: Schema.optional(Schema.String),
+  auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
+}).annotate({ identifier: "AuditConfig" });
 
 export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -652,15 +529,12 @@ export interface Policy {
   etag?: string;
 }
 
-export const Policy: Schema.Schema<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.Number),
-      bindings: Schema.optional(Schema.Array(Binding)),
-      auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Policy" }) as any as Schema.Schema<Policy>;
+export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.Number),
+  bindings: Schema.optional(Schema.Array(Binding)),
+  auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "Policy" });
 
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
@@ -669,43 +543,30 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policy: Schema.optional(Policy),
-      updateMask: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SetIamPolicyRequest",
-  }) as any as Schema.Schema<SetIamPolicyRequest>;
+export const SetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policy: Schema.optional(Policy),
+  updateMask: Schema.optional(Schema.String),
+}).annotate({ identifier: "SetIamPolicyRequest" });
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsRequest",
-  }) as any as Schema.Schema<TestIamPermissionsRequest>;
+export const TestIamPermissionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsRequest" });
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsResponse",
-  }) as any as Schema.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsResponse" });
 
 export interface HotTablet {
   /** The unique name of the hot tablet. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}/hotTablets/[a-zA-Z0-9_-]*`. */
@@ -724,18 +585,15 @@ export interface HotTablet {
   nodeCpuUsagePercent?: number;
 }
 
-export const HotTablet: Schema.Schema<HotTablet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      tableName: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      startKey: Schema.optional(Schema.String),
-      endKey: Schema.optional(Schema.String),
-      nodeCpuUsagePercent: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "HotTablet" }) as any as Schema.Schema<HotTablet>;
+export const HotTablet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  tableName: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  startKey: Schema.optional(Schema.String),
+  endKey: Schema.optional(Schema.String),
+  nodeCpuUsagePercent: Schema.optional(Schema.Number),
+}).annotate({ identifier: "HotTablet" });
 
 export interface ListHotTabletsResponse {
   /** List of hot tablets in the tables of the requested cluster that fall within the requested time range. Hot tablets are ordered by node cpu usage percent. If there are multiple hot tablets that correspond to the same tablet within a 15-minute interval, only the hot tablet with the highest node cpu usage will be included in the response. */
@@ -744,15 +602,12 @@ export interface ListHotTabletsResponse {
   nextPageToken?: string;
 }
 
-export const ListHotTabletsResponse: Schema.Schema<ListHotTabletsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hotTablets: Schema.optional(Schema.Array(HotTablet)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListHotTabletsResponse",
-  }) as any as Schema.Schema<ListHotTabletsResponse>;
+export const ListHotTabletsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    hotTablets: Schema.optional(Schema.Array(HotTablet)),
+    nextPageToken: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ListHotTabletsResponse" });
 
 export interface LogicalView {
   /** Identifier. The unique name of the logical view. Format: `projects/{project}/instances/{instance}/logicalViews/{logical_view}` */
@@ -765,17 +620,12 @@ export interface LogicalView {
   deletionProtection?: boolean;
 }
 
-export const LogicalView: Schema.Schema<LogicalView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      query: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      deletionProtection: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "LogicalView",
-  }) as any as Schema.Schema<LogicalView>;
+export const LogicalView = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  query: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  deletionProtection: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "LogicalView" });
 
 export interface ListLogicalViewsResponse {
   /** The list of requested logical views. */
@@ -784,15 +634,11 @@ export interface ListLogicalViewsResponse {
   nextPageToken?: string;
 }
 
-export const ListLogicalViewsResponse: Schema.Schema<ListLogicalViewsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      logicalViews: Schema.optional(Schema.Array(LogicalView)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLogicalViewsResponse",
-  }) as any as Schema.Schema<ListLogicalViewsResponse>;
+export const ListLogicalViewsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    logicalViews: Schema.optional(Schema.Array(LogicalView)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListLogicalViewsResponse" });
 
 export interface GoogleBigtableAdminV2MaterializedViewClusterState {
   /** Output only. The state of the materialized view in this cluster. */
@@ -803,14 +649,12 @@ export interface GoogleBigtableAdminV2MaterializedViewClusterState {
     | (string & {});
 }
 
-export const GoogleBigtableAdminV2MaterializedViewClusterState: Schema.Schema<GoogleBigtableAdminV2MaterializedViewClusterState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      replicationState: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleBigtableAdminV2MaterializedViewClusterState =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    replicationState: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleBigtableAdminV2MaterializedViewClusterState",
-  }) as any as Schema.Schema<GoogleBigtableAdminV2MaterializedViewClusterState>;
+  });
 
 export interface MaterializedView {
   /** Identifier. The unique name of the materialized view. Format: `projects/{project}/instances/{instance}/materializedViews/{materialized_view}` Views: `SCHEMA_VIEW`, `REPLICATION_VIEW`, `FULL`. */
@@ -828,23 +672,18 @@ export interface MaterializedView {
   >;
 }
 
-export const MaterializedView: Schema.Schema<MaterializedView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      query: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      deletionProtection: Schema.optional(Schema.Boolean),
-      clusterStates: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          GoogleBigtableAdminV2MaterializedViewClusterState,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "MaterializedView",
-  }) as any as Schema.Schema<MaterializedView>;
+export const MaterializedView = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  query: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  deletionProtection: Schema.optional(Schema.Boolean),
+  clusterStates: Schema.optional(
+    Schema.Record(
+      Schema.String,
+      GoogleBigtableAdminV2MaterializedViewClusterState,
+    ),
+  ),
+}).annotate({ identifier: "MaterializedView" });
 
 export interface ListMaterializedViewsResponse {
   /** The list of requested materialized views. */
@@ -853,15 +692,11 @@ export interface ListMaterializedViewsResponse {
   nextPageToken?: string;
 }
 
-export const ListMaterializedViewsResponse: Schema.Schema<ListMaterializedViewsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      materializedViews: Schema.optional(Schema.Array(MaterializedView)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListMaterializedViewsResponse",
-  }) as any as Schema.Schema<ListMaterializedViewsResponse>;
+export const ListMaterializedViewsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    materializedViews: Schema.optional(Schema.Array(MaterializedView)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListMaterializedViewsResponse" });
 
 export interface EncryptionInfo {
   /** Output only. The type of encryption used to protect this resource. */
@@ -876,16 +711,11 @@ export interface EncryptionInfo {
   kmsKeyVersion?: string;
 }
 
-export const EncryptionInfo: Schema.Schema<EncryptionInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      encryptionType: Schema.optional(Schema.String),
-      encryptionStatus: Schema.optional(Status),
-      kmsKeyVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EncryptionInfo",
-  }) as any as Schema.Schema<EncryptionInfo>;
+export const EncryptionInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  encryptionType: Schema.optional(Schema.String),
+  encryptionStatus: Schema.optional(Status),
+  kmsKeyVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "EncryptionInfo" });
 
 export interface ClusterState {
   /** Output only. The state of replication for the table in this cluster. */
@@ -901,15 +731,10 @@ export interface ClusterState {
   encryptionInfo?: Array<EncryptionInfo>;
 }
 
-export const ClusterState: Schema.Schema<ClusterState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      replicationState: Schema.optional(Schema.String),
-      encryptionInfo: Schema.optional(Schema.Array(EncryptionInfo)),
-    }),
-  ).annotate({
-    identifier: "ClusterState",
-  }) as any as Schema.Schema<ClusterState>;
+export const ClusterState = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  replicationState: Schema.optional(Schema.String),
+  encryptionInfo: Schema.optional(Schema.Array(EncryptionInfo)),
+}).annotate({ identifier: "ClusterState" });
 
 export interface Intersection {
   /** Only delete cells which would be deleted by every element of `rules`. */
@@ -967,79 +792,60 @@ export interface ColumnFamilyStats {
   logicalDataBytes?: string;
 }
 
-export const ColumnFamilyStats: Schema.Schema<ColumnFamilyStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      averageColumnsPerRow: Schema.optional(Schema.Number),
-      averageCellsPerColumn: Schema.optional(Schema.Number),
-      logicalDataBytes: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ColumnFamilyStats",
-  }) as any as Schema.Schema<ColumnFamilyStats>;
+export const ColumnFamilyStats = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  averageColumnsPerRow: Schema.optional(Schema.Number),
+  averageCellsPerColumn: Schema.optional(Schema.Number),
+  logicalDataBytes: Schema.optional(Schema.String),
+}).annotate({ identifier: "ColumnFamilyStats" });
 
 export interface GoogleBigtableAdminV2TypeBytesEncodingRaw {
   /** If set, allows NULL values to be encoded as the empty string "". The actual empty string, or any value which only contains the null byte `0x00`, has one more null byte appended. */
   escapeNulls?: boolean;
 }
 
-export const GoogleBigtableAdminV2TypeBytesEncodingRaw: Schema.Schema<GoogleBigtableAdminV2TypeBytesEncodingRaw> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      escapeNulls: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleBigtableAdminV2TypeBytesEncodingRaw",
-  }) as any as Schema.Schema<GoogleBigtableAdminV2TypeBytesEncodingRaw>;
+export const GoogleBigtableAdminV2TypeBytesEncodingRaw =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    escapeNulls: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleBigtableAdminV2TypeBytesEncodingRaw" });
 
 export interface GoogleBigtableAdminV2TypeBytesEncoding {
   /** Use `Raw` encoding. */
   raw?: GoogleBigtableAdminV2TypeBytesEncodingRaw;
 }
 
-export const GoogleBigtableAdminV2TypeBytesEncoding: Schema.Schema<GoogleBigtableAdminV2TypeBytesEncoding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      raw: Schema.optional(GoogleBigtableAdminV2TypeBytesEncodingRaw),
-    }),
-  ).annotate({
-    identifier: "GoogleBigtableAdminV2TypeBytesEncoding",
-  }) as any as Schema.Schema<GoogleBigtableAdminV2TypeBytesEncoding>;
+export const GoogleBigtableAdminV2TypeBytesEncoding =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    raw: Schema.optional(GoogleBigtableAdminV2TypeBytesEncodingRaw),
+  }).annotate({ identifier: "GoogleBigtableAdminV2TypeBytesEncoding" });
 
 export interface GoogleBigtableAdminV2TypeBytes {
   /** The encoding to use when converting to or from lower level types. */
   encoding?: GoogleBigtableAdminV2TypeBytesEncoding;
 }
 
-export const GoogleBigtableAdminV2TypeBytes: Schema.Schema<GoogleBigtableAdminV2TypeBytes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      encoding: Schema.optional(GoogleBigtableAdminV2TypeBytesEncoding),
-    }),
-  ).annotate({
-    identifier: "GoogleBigtableAdminV2TypeBytes",
-  }) as any as Schema.Schema<GoogleBigtableAdminV2TypeBytes>;
+export const GoogleBigtableAdminV2TypeBytes =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    encoding: Schema.optional(GoogleBigtableAdminV2TypeBytesEncoding),
+  }).annotate({ identifier: "GoogleBigtableAdminV2TypeBytes" });
 
 export interface GoogleBigtableAdminV2TypeStringEncodingUtf8Raw {}
 
-export const GoogleBigtableAdminV2TypeStringEncodingUtf8Raw: Schema.Schema<GoogleBigtableAdminV2TypeStringEncodingUtf8Raw> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleBigtableAdminV2TypeStringEncodingUtf8Raw =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleBigtableAdminV2TypeStringEncodingUtf8Raw",
-  }) as any as Schema.Schema<GoogleBigtableAdminV2TypeStringEncodingUtf8Raw>;
+  });
 
 export interface GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes {
   /** Single-character escape sequence used to support NULL values. If set, allows NULL values to be encoded as the empty string "". The actual empty string, or any value where every character equals `null_escape_char`, has one more `null_escape_char` appended. If `null_escape_char` is set and does not equal the ASCII null character `0x00`, then the encoding will not support sorted mode. . */
   nullEscapeChar?: string;
 }
 
-export const GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes: Schema.Schema<GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nullEscapeChar: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nullEscapeChar: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes",
-  }) as any as Schema.Schema<GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes>;
+  });
 
 export interface GoogleBigtableAdminV2TypeStringEncoding {
   /** Deprecated: if set, converts to an empty `utf8_bytes`. */
@@ -1048,52 +854,42 @@ export interface GoogleBigtableAdminV2TypeStringEncoding {
   utf8Bytes?: GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes;
 }
 
-export const GoogleBigtableAdminV2TypeStringEncoding: Schema.Schema<GoogleBigtableAdminV2TypeStringEncoding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      utf8Raw: Schema.optional(GoogleBigtableAdminV2TypeStringEncodingUtf8Raw),
-      utf8Bytes: Schema.optional(
-        GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleBigtableAdminV2TypeStringEncoding",
-  }) as any as Schema.Schema<GoogleBigtableAdminV2TypeStringEncoding>;
+export const GoogleBigtableAdminV2TypeStringEncoding =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    utf8Raw: Schema.optional(GoogleBigtableAdminV2TypeStringEncodingUtf8Raw),
+    utf8Bytes: Schema.optional(
+      GoogleBigtableAdminV2TypeStringEncodingUtf8Bytes,
+    ),
+  }).annotate({ identifier: "GoogleBigtableAdminV2TypeStringEncoding" });
 
 export interface GoogleBigtableAdminV2TypeString {
   /** The encoding to use when converting to or from lower level types. */
   encoding?: GoogleBigtableAdminV2TypeStringEncoding;
 }
 
-export const GoogleBigtableAdminV2TypeString: Schema.Schema<GoogleBigtableAdminV2TypeString> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      encoding: Schema.optional(GoogleBigtableAdminV2TypeStringEncoding),
-    }),
-  ).annotate({
-    identifier: "GoogleBigtableAdminV2TypeString",
-  }) as any as Schema.Schema<GoogleBigtableAdminV2TypeString>;
+export const GoogleBigtableAdminV2TypeString =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    encoding: Schema.optional(GoogleBigtableAdminV2TypeStringEncoding),
+  }).annotate({ identifier: "GoogleBigtableAdminV2TypeString" });
 
 export interface GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes {
   /** Deprecated: ignored if set. */
   bytesType?: GoogleBigtableAdminV2TypeBytes;
 }
 
-export const GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes: Schema.Schema<GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bytesType: Schema.optional(GoogleBigtableAdminV2TypeBytes),
-    }),
-  ).annotate({
+export const GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bytesType: Schema.optional(GoogleBigtableAdminV2TypeBytes),
+  }).annotate({
     identifier: "GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes",
-  }) as any as Schema.Schema<GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes>;
+  });
 
 export interface GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes {}
 
-export const GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes: Schema.Schema<GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes",
-  }) as any as Schema.Schema<GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes>;
+  });
 
 export interface GoogleBigtableAdminV2TypeInt64Encoding {
   /** Use `BigEndianBytes` encoding. */
@@ -1102,132 +898,112 @@ export interface GoogleBigtableAdminV2TypeInt64Encoding {
   orderedCodeBytes?: GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes;
 }
 
-export const GoogleBigtableAdminV2TypeInt64Encoding: Schema.Schema<GoogleBigtableAdminV2TypeInt64Encoding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bigEndianBytes: Schema.optional(
-        GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes,
-      ),
-      orderedCodeBytes: Schema.optional(
-        GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleBigtableAdminV2TypeInt64Encoding",
-  }) as any as Schema.Schema<GoogleBigtableAdminV2TypeInt64Encoding>;
+export const GoogleBigtableAdminV2TypeInt64Encoding =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bigEndianBytes: Schema.optional(
+      GoogleBigtableAdminV2TypeInt64EncodingBigEndianBytes,
+    ),
+    orderedCodeBytes: Schema.optional(
+      GoogleBigtableAdminV2TypeInt64EncodingOrderedCodeBytes,
+    ),
+  }).annotate({ identifier: "GoogleBigtableAdminV2TypeInt64Encoding" });
 
 export interface GoogleBigtableAdminV2TypeInt64 {
   /** The encoding to use when converting to or from lower level types. */
   encoding?: GoogleBigtableAdminV2TypeInt64Encoding;
 }
 
-export const GoogleBigtableAdminV2TypeInt64: Schema.Schema<GoogleBigtableAdminV2TypeInt64> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      encoding: Schema.optional(GoogleBigtableAdminV2TypeInt64Encoding),
-    }),
-  ).annotate({
-    identifier: "GoogleBigtableAdminV2TypeInt64",
-  }) as any as Schema.Schema<GoogleBigtableAdminV2TypeInt64>;
+export const GoogleBigtableAdminV2TypeInt64 =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    encoding: Schema.optional(GoogleBigtableAdminV2TypeInt64Encoding),
+  }).annotate({ identifier: "GoogleBigtableAdminV2TypeInt64" });
 
 export interface GoogleBigtableAdminV2TypeFloat32 {}
 
-export const GoogleBigtableAdminV2TypeFloat32: Schema.Schema<GoogleBigtableAdminV2TypeFloat32> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleBigtableAdminV2TypeFloat32 =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleBigtableAdminV2TypeFloat32",
-  }) as any as Schema.Schema<GoogleBigtableAdminV2TypeFloat32>;
+  });
 
 export interface GoogleBigtableAdminV2TypeFloat64 {}
 
-export const GoogleBigtableAdminV2TypeFloat64: Schema.Schema<GoogleBigtableAdminV2TypeFloat64> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleBigtableAdminV2TypeFloat64 =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleBigtableAdminV2TypeFloat64",
-  }) as any as Schema.Schema<GoogleBigtableAdminV2TypeFloat64>;
+  });
 
 export interface GoogleBigtableAdminV2TypeBoolEncoding {}
 
-export const GoogleBigtableAdminV2TypeBoolEncoding: Schema.Schema<GoogleBigtableAdminV2TypeBoolEncoding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleBigtableAdminV2TypeBoolEncoding =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleBigtableAdminV2TypeBoolEncoding",
-  }) as any as Schema.Schema<GoogleBigtableAdminV2TypeBoolEncoding>;
+  });
 
 export interface GoogleBigtableAdminV2TypeBool {
   /** Specifies the encoding to use when converting to or from lower level types. */
   encoding?: GoogleBigtableAdminV2TypeBoolEncoding;
 }
 
-export const GoogleBigtableAdminV2TypeBool: Schema.Schema<GoogleBigtableAdminV2TypeBool> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      encoding: Schema.optional(GoogleBigtableAdminV2TypeBoolEncoding),
-    }),
-  ).annotate({
-    identifier: "GoogleBigtableAdminV2TypeBool",
-  }) as any as Schema.Schema<GoogleBigtableAdminV2TypeBool>;
+export const GoogleBigtableAdminV2TypeBool =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    encoding: Schema.optional(GoogleBigtableAdminV2TypeBoolEncoding),
+  }).annotate({ identifier: "GoogleBigtableAdminV2TypeBool" });
 
 export interface GoogleBigtableAdminV2TypeTimestampEncoding {
   /** Encodes the number of microseconds since the Unix epoch using the given `Int64` encoding. Values must be microsecond-aligned. Compatible with: - Java `Instant.truncatedTo()` with `ChronoUnit.MICROS` */
   unixMicrosInt64?: GoogleBigtableAdminV2TypeInt64Encoding;
 }
 
-export const GoogleBigtableAdminV2TypeTimestampEncoding: Schema.Schema<GoogleBigtableAdminV2TypeTimestampEncoding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unixMicrosInt64: Schema.optional(GoogleBigtableAdminV2TypeInt64Encoding),
-    }),
-  ).annotate({
-    identifier: "GoogleBigtableAdminV2TypeTimestampEncoding",
-  }) as any as Schema.Schema<GoogleBigtableAdminV2TypeTimestampEncoding>;
+export const GoogleBigtableAdminV2TypeTimestampEncoding =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unixMicrosInt64: Schema.optional(GoogleBigtableAdminV2TypeInt64Encoding),
+  }).annotate({ identifier: "GoogleBigtableAdminV2TypeTimestampEncoding" });
 
 export interface GoogleBigtableAdminV2TypeTimestamp {
   /** The encoding to use when converting to or from lower level types. */
   encoding?: GoogleBigtableAdminV2TypeTimestampEncoding;
 }
 
-export const GoogleBigtableAdminV2TypeTimestamp: Schema.Schema<GoogleBigtableAdminV2TypeTimestamp> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      encoding: Schema.optional(GoogleBigtableAdminV2TypeTimestampEncoding),
-    }),
-  ).annotate({
-    identifier: "GoogleBigtableAdminV2TypeTimestamp",
-  }) as any as Schema.Schema<GoogleBigtableAdminV2TypeTimestamp>;
+export const GoogleBigtableAdminV2TypeTimestamp =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    encoding: Schema.optional(GoogleBigtableAdminV2TypeTimestampEncoding),
+  }).annotate({ identifier: "GoogleBigtableAdminV2TypeTimestamp" });
 
 export interface GoogleBigtableAdminV2TypeDate {}
 
-export const GoogleBigtableAdminV2TypeDate: Schema.Schema<GoogleBigtableAdminV2TypeDate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleBigtableAdminV2TypeDate =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleBigtableAdminV2TypeDate",
-  }) as any as Schema.Schema<GoogleBigtableAdminV2TypeDate>;
+  });
 
 export interface GoogleBigtableAdminV2TypeAggregateSum {}
 
-export const GoogleBigtableAdminV2TypeAggregateSum: Schema.Schema<GoogleBigtableAdminV2TypeAggregateSum> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleBigtableAdminV2TypeAggregateSum =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleBigtableAdminV2TypeAggregateSum",
-  }) as any as Schema.Schema<GoogleBigtableAdminV2TypeAggregateSum>;
+  });
 
 export interface GoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount {}
 
-export const GoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount: Schema.Schema<GoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "GoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount",
-  }) as any as Schema.Schema<GoogleBigtableAdminV2TypeAggregateHyperLogLogPlusPlusUniqueCount>;
+  });
 
 export interface GoogleBigtableAdminV2TypeAggregateMax {}
 
-export const GoogleBigtableAdminV2TypeAggregateMax: Schema.Schema<GoogleBigtableAdminV2TypeAggregateMax> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleBigtableAdminV2TypeAggregateMax =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleBigtableAdminV2TypeAggregateMax",
-  }) as any as Schema.Schema<GoogleBigtableAdminV2TypeAggregateMax>;
+  });
 
 export interface GoogleBigtableAdminV2TypeAggregateMin {}
 
-export const GoogleBigtableAdminV2TypeAggregateMin: Schema.Schema<GoogleBigtableAdminV2TypeAggregateMin> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleBigtableAdminV2TypeAggregateMin =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleBigtableAdminV2TypeAggregateMin",
-  }) as any as Schema.Schema<GoogleBigtableAdminV2TypeAggregateMin>;
+  });
 
 export interface GoogleBigtableAdminV2TypeAggregate {
   /** Type of the inputs that are accumulated by this `Aggregate`. Use `AddInput` mutations to accumulate new inputs. */
@@ -1279,31 +1055,29 @@ export const GoogleBigtableAdminV2TypeStructField: Schema.Schema<GoogleBigtableA
 
 export interface GoogleBigtableAdminV2TypeStructEncodingSingleton {}
 
-export const GoogleBigtableAdminV2TypeStructEncodingSingleton: Schema.Schema<GoogleBigtableAdminV2TypeStructEncodingSingleton> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleBigtableAdminV2TypeStructEncodingSingleton =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleBigtableAdminV2TypeStructEncodingSingleton",
-  }) as any as Schema.Schema<GoogleBigtableAdminV2TypeStructEncodingSingleton>;
+  });
 
 export interface GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes {
   /** Byte sequence used to delimit concatenated fields. The delimiter must contain at least 1 character and at most 50 characters. */
   delimiter?: string;
 }
 
-export const GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes: Schema.Schema<GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      delimiter: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    delimiter: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes",
-  }) as any as Schema.Schema<GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes>;
+  });
 
 export interface GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes {}
 
-export const GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes: Schema.Schema<GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes",
-  }) as any as Schema.Schema<GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes>;
+  });
 
 export interface GoogleBigtableAdminV2TypeStructEncoding {
   /** Use `Singleton` encoding. */
@@ -1314,22 +1088,18 @@ export interface GoogleBigtableAdminV2TypeStructEncoding {
   orderedCodeBytes?: GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes;
 }
 
-export const GoogleBigtableAdminV2TypeStructEncoding: Schema.Schema<GoogleBigtableAdminV2TypeStructEncoding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      singleton: Schema.optional(
-        GoogleBigtableAdminV2TypeStructEncodingSingleton,
-      ),
-      delimitedBytes: Schema.optional(
-        GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes,
-      ),
-      orderedCodeBytes: Schema.optional(
-        GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleBigtableAdminV2TypeStructEncoding",
-  }) as any as Schema.Schema<GoogleBigtableAdminV2TypeStructEncoding>;
+export const GoogleBigtableAdminV2TypeStructEncoding =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    singleton: Schema.optional(
+      GoogleBigtableAdminV2TypeStructEncodingSingleton,
+    ),
+    delimitedBytes: Schema.optional(
+      GoogleBigtableAdminV2TypeStructEncodingDelimitedBytes,
+    ),
+    orderedCodeBytes: Schema.optional(
+      GoogleBigtableAdminV2TypeStructEncodingOrderedCodeBytes,
+    ),
+  }).annotate({ identifier: "GoogleBigtableAdminV2TypeStructEncoding" });
 
 export interface GoogleBigtableAdminV2TypeStruct {
   /** The names and types of the fields in this struct. */
@@ -1388,15 +1158,11 @@ export interface GoogleBigtableAdminV2TypeProto {
   messageName?: string;
 }
 
-export const GoogleBigtableAdminV2TypeProto: Schema.Schema<GoogleBigtableAdminV2TypeProto> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      schemaBundleId: Schema.optional(Schema.String),
-      messageName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleBigtableAdminV2TypeProto",
-  }) as any as Schema.Schema<GoogleBigtableAdminV2TypeProto>;
+export const GoogleBigtableAdminV2TypeProto =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    schemaBundleId: Schema.optional(Schema.String),
+    messageName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleBigtableAdminV2TypeProto" });
 
 export interface GoogleBigtableAdminV2TypeEnum {
   /** The ID of the schema bundle that this enum is defined in. */
@@ -1405,36 +1171,32 @@ export interface GoogleBigtableAdminV2TypeEnum {
   enumName?: string;
 }
 
-export const GoogleBigtableAdminV2TypeEnum: Schema.Schema<GoogleBigtableAdminV2TypeEnum> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      schemaBundleId: Schema.optional(Schema.String),
-      enumName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleBigtableAdminV2TypeEnum",
-  }) as any as Schema.Schema<GoogleBigtableAdminV2TypeEnum>;
+export const GoogleBigtableAdminV2TypeEnum =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    schemaBundleId: Schema.optional(Schema.String),
+    enumName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleBigtableAdminV2TypeEnum" });
 
 export interface GoogleBigtableAdminV2TypeGeography {}
 
-export const GoogleBigtableAdminV2TypeGeography: Schema.Schema<GoogleBigtableAdminV2TypeGeography> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleBigtableAdminV2TypeGeography =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleBigtableAdminV2TypeGeography",
-  }) as any as Schema.Schema<GoogleBigtableAdminV2TypeGeography>;
+  });
 
 export interface GoogleBigtableAdminV2TypeInt32EncodingBigEndianBytes {}
 
-export const GoogleBigtableAdminV2TypeInt32EncodingBigEndianBytes: Schema.Schema<GoogleBigtableAdminV2TypeInt32EncodingBigEndianBytes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleBigtableAdminV2TypeInt32EncodingBigEndianBytes =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleBigtableAdminV2TypeInt32EncodingBigEndianBytes",
-  }) as any as Schema.Schema<GoogleBigtableAdminV2TypeInt32EncodingBigEndianBytes>;
+  });
 
 export interface GoogleBigtableAdminV2TypeInt32EncodingOrderedCodeBytes {}
 
-export const GoogleBigtableAdminV2TypeInt32EncodingOrderedCodeBytes: Schema.Schema<GoogleBigtableAdminV2TypeInt32EncodingOrderedCodeBytes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleBigtableAdminV2TypeInt32EncodingOrderedCodeBytes =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleBigtableAdminV2TypeInt32EncodingOrderedCodeBytes",
-  }) as any as Schema.Schema<GoogleBigtableAdminV2TypeInt32EncodingOrderedCodeBytes>;
+  });
 
 export interface GoogleBigtableAdminV2TypeInt32Encoding {
   /** Use `BigEndianBytes` encoding. */
@@ -1443,33 +1205,25 @@ export interface GoogleBigtableAdminV2TypeInt32Encoding {
   orderedCodeBytes?: GoogleBigtableAdminV2TypeInt32EncodingOrderedCodeBytes;
 }
 
-export const GoogleBigtableAdminV2TypeInt32Encoding: Schema.Schema<GoogleBigtableAdminV2TypeInt32Encoding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bigEndianBytes: Schema.optional(
-        GoogleBigtableAdminV2TypeInt32EncodingBigEndianBytes,
-      ),
-      orderedCodeBytes: Schema.optional(
-        GoogleBigtableAdminV2TypeInt32EncodingOrderedCodeBytes,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleBigtableAdminV2TypeInt32Encoding",
-  }) as any as Schema.Schema<GoogleBigtableAdminV2TypeInt32Encoding>;
+export const GoogleBigtableAdminV2TypeInt32Encoding =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bigEndianBytes: Schema.optional(
+      GoogleBigtableAdminV2TypeInt32EncodingBigEndianBytes,
+    ),
+    orderedCodeBytes: Schema.optional(
+      GoogleBigtableAdminV2TypeInt32EncodingOrderedCodeBytes,
+    ),
+  }).annotate({ identifier: "GoogleBigtableAdminV2TypeInt32Encoding" });
 
 export interface GoogleBigtableAdminV2TypeInt32 {
   /** The encoding to use when converting to or from lower level types. */
   encoding?: GoogleBigtableAdminV2TypeInt32Encoding;
 }
 
-export const GoogleBigtableAdminV2TypeInt32: Schema.Schema<GoogleBigtableAdminV2TypeInt32> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      encoding: Schema.optional(GoogleBigtableAdminV2TypeInt32Encoding),
-    }),
-  ).annotate({
-    identifier: "GoogleBigtableAdminV2TypeInt32",
-  }) as any as Schema.Schema<GoogleBigtableAdminV2TypeInt32>;
+export const GoogleBigtableAdminV2TypeInt32 =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    encoding: Schema.optional(GoogleBigtableAdminV2TypeInt32Encoding),
+  }).annotate({ identifier: "GoogleBigtableAdminV2TypeInt32" });
 
 export interface Type {
   /** Bytes */
@@ -1537,16 +1291,11 @@ export interface ColumnFamily {
   valueType?: Type;
 }
 
-export const ColumnFamily: Schema.Schema<ColumnFamily> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcRule: Schema.optional(GcRule),
-      stats: Schema.optional(ColumnFamilyStats),
-      valueType: Schema.optional(Type),
-    }),
-  ).annotate({
-    identifier: "ColumnFamily",
-  }) as any as Schema.Schema<ColumnFamily>;
+export const ColumnFamily = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gcRule: Schema.optional(GcRule),
+  stats: Schema.optional(ColumnFamilyStats),
+  valueType: Schema.optional(Type),
+}).annotate({ identifier: "ColumnFamily" });
 
 export interface BackupInfo {
   /** Output only. Name of the backup. */
@@ -1561,16 +1310,13 @@ export interface BackupInfo {
   sourceBackup?: string;
 }
 
-export const BackupInfo: Schema.Schema<BackupInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      backup: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      sourceTable: Schema.optional(Schema.String),
-      sourceBackup: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "BackupInfo" }) as any as Schema.Schema<BackupInfo>;
+export const BackupInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  backup: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  sourceTable: Schema.optional(Schema.String),
+  sourceBackup: Schema.optional(Schema.String),
+}).annotate({ identifier: "BackupInfo" });
 
 export interface RestoreInfo {
   /** The type of the restore source. */
@@ -1579,29 +1325,19 @@ export interface RestoreInfo {
   backupInfo?: BackupInfo;
 }
 
-export const RestoreInfo: Schema.Schema<RestoreInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sourceType: Schema.optional(Schema.String),
-      backupInfo: Schema.optional(BackupInfo),
-    }),
-  ).annotate({
-    identifier: "RestoreInfo",
-  }) as any as Schema.Schema<RestoreInfo>;
+export const RestoreInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sourceType: Schema.optional(Schema.String),
+  backupInfo: Schema.optional(BackupInfo),
+}).annotate({ identifier: "RestoreInfo" });
 
 export interface ChangeStreamConfig {
   /** How long the change stream should be retained. Change stream data older than the retention period will not be returned when reading the change stream from the table. Values must be at least 1 day and at most 7 days, and will be truncated to microsecond granularity. */
   retentionPeriod?: string;
 }
 
-export const ChangeStreamConfig: Schema.Schema<ChangeStreamConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      retentionPeriod: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ChangeStreamConfig",
-  }) as any as Schema.Schema<ChangeStreamConfig>;
+export const ChangeStreamConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  retentionPeriod: Schema.optional(Schema.String),
+}).annotate({ identifier: "ChangeStreamConfig" });
 
 export interface TableStats {
   /** How many rows are in the table. */
@@ -1614,15 +1350,12 @@ export interface TableStats {
   logicalDataBytes?: string;
 }
 
-export const TableStats: Schema.Schema<TableStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rowCount: Schema.optional(Schema.String),
-      averageColumnsPerRow: Schema.optional(Schema.Number),
-      averageCellsPerColumn: Schema.optional(Schema.Number),
-      logicalDataBytes: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "TableStats" }) as any as Schema.Schema<TableStats>;
+export const TableStats = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  rowCount: Schema.optional(Schema.String),
+  averageColumnsPerRow: Schema.optional(Schema.Number),
+  averageCellsPerColumn: Schema.optional(Schema.Number),
+  logicalDataBytes: Schema.optional(Schema.String),
+}).annotate({ identifier: "TableStats" });
 
 export interface AutomatedBackupPolicy {
   /** Required. How long the automated backups should be retained. Values must be at least 3 days and at most 90 days. */
@@ -1633,44 +1366,29 @@ export interface AutomatedBackupPolicy {
   locations?: Array<string>;
 }
 
-export const AutomatedBackupPolicy: Schema.Schema<AutomatedBackupPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      retentionPeriod: Schema.optional(Schema.String),
-      frequency: Schema.optional(Schema.String),
-      locations: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AutomatedBackupPolicy",
-  }) as any as Schema.Schema<AutomatedBackupPolicy>;
+export const AutomatedBackupPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  retentionPeriod: Schema.optional(Schema.String),
+  frequency: Schema.optional(Schema.String),
+  locations: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "AutomatedBackupPolicy" });
 
 export interface TieredStorageRule {
   /** Include cells older than the given age. For the infrequent access tier, this value must be at least 30 days. */
   includeIfOlderThan?: string;
 }
 
-export const TieredStorageRule: Schema.Schema<TieredStorageRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      includeIfOlderThan: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TieredStorageRule",
-  }) as any as Schema.Schema<TieredStorageRule>;
+export const TieredStorageRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  includeIfOlderThan: Schema.optional(Schema.String),
+}).annotate({ identifier: "TieredStorageRule" });
 
 export interface TieredStorageConfig {
   /** Rule to specify what data is stored in the infrequent access(IA) tier. The IA tier allows storing more data per node with reduced performance. */
   infrequentAccess?: TieredStorageRule;
 }
 
-export const TieredStorageConfig: Schema.Schema<TieredStorageConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      infrequentAccess: Schema.optional(TieredStorageRule),
-    }),
-  ).annotate({
-    identifier: "TieredStorageConfig",
-  }) as any as Schema.Schema<TieredStorageConfig>;
+export const TieredStorageConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  infrequentAccess: Schema.optional(TieredStorageRule),
+}).annotate({ identifier: "TieredStorageConfig" });
 
 export interface Table {
   /** The unique name of the table. Values are of the form `projects/{project}/instances/{instance}/tables/_a-zA-Z0-9*`. Views: `NAME_ONLY`, `SCHEMA_VIEW`, `REPLICATION_VIEW`, `STATS_VIEW`, `FULL` */
@@ -1697,38 +1415,28 @@ export interface Table {
   rowKeySchema?: GoogleBigtableAdminV2TypeStruct;
 }
 
-export const Table: Schema.Schema<Table> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      clusterStates: Schema.optional(
-        Schema.Record(Schema.String, ClusterState),
-      ),
-      columnFamilies: Schema.optional(
-        Schema.Record(Schema.String, ColumnFamily),
-      ),
-      granularity: Schema.optional(Schema.String),
-      restoreInfo: Schema.optional(RestoreInfo),
-      changeStreamConfig: Schema.optional(ChangeStreamConfig),
-      deletionProtection: Schema.optional(Schema.Boolean),
-      stats: Schema.optional(TableStats),
-      automatedBackupPolicy: Schema.optional(AutomatedBackupPolicy),
-      tieredStorageConfig: Schema.optional(TieredStorageConfig),
-      rowKeySchema: Schema.optional(GoogleBigtableAdminV2TypeStruct),
-    }),
-  ).annotate({ identifier: "Table" }) as any as Schema.Schema<Table>;
+export const Table = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  clusterStates: Schema.optional(Schema.Record(Schema.String, ClusterState)),
+  columnFamilies: Schema.optional(Schema.Record(Schema.String, ColumnFamily)),
+  granularity: Schema.optional(Schema.String),
+  restoreInfo: Schema.optional(RestoreInfo),
+  changeStreamConfig: Schema.optional(ChangeStreamConfig),
+  deletionProtection: Schema.optional(Schema.Boolean),
+  stats: Schema.optional(TableStats),
+  automatedBackupPolicy: Schema.optional(AutomatedBackupPolicy),
+  tieredStorageConfig: Schema.optional(TieredStorageConfig),
+  rowKeySchema: Schema.optional(GoogleBigtableAdminV2TypeStruct),
+}).annotate({ identifier: "Table" });
 
 export interface Split {
   /** Row key to use as an initial tablet boundary. */
   key?: string;
 }
 
-export const Split: Schema.Schema<Split> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      key: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Split" }) as any as Schema.Schema<Split>;
+export const Split = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  key: Schema.optional(Schema.String),
+}).annotate({ identifier: "Split" });
 
 export interface CreateTableRequest {
   /** Required. The name by which the new table should be referred to within the parent instance, e.g., `foobar` rather than `{parent}/tables/foobar`. Maximum 50 characters. */
@@ -1739,16 +1447,11 @@ export interface CreateTableRequest {
   initialSplits?: Array<Split>;
 }
 
-export const CreateTableRequest: Schema.Schema<CreateTableRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tableId: Schema.optional(Schema.String),
-      table: Schema.optional(Table),
-      initialSplits: Schema.optional(Schema.Array(Split)),
-    }),
-  ).annotate({
-    identifier: "CreateTableRequest",
-  }) as any as Schema.Schema<CreateTableRequest>;
+export const CreateTableRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tableId: Schema.optional(Schema.String),
+  table: Schema.optional(Table),
+  initialSplits: Schema.optional(Schema.Array(Split)),
+}).annotate({ identifier: "CreateTableRequest" });
 
 export interface ListTablesResponse {
   /** The tables present in the requested instance. */
@@ -1757,22 +1460,16 @@ export interface ListTablesResponse {
   nextPageToken?: string;
 }
 
-export const ListTablesResponse: Schema.Schema<ListTablesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tables: Schema.optional(Schema.Array(Table)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListTablesResponse",
-  }) as any as Schema.Schema<ListTablesResponse>;
+export const ListTablesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tables: Schema.optional(Schema.Array(Table)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListTablesResponse" });
 
 export interface UndeleteTableRequest {}
 
-export const UndeleteTableRequest: Schema.Schema<UndeleteTableRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "UndeleteTableRequest",
-  }) as any as Schema.Schema<UndeleteTableRequest>;
+export const UndeleteTableRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "UndeleteTableRequest" });
 
 export interface GoogleBigtableAdminV2AuthorizedViewFamilySubsets {
   /** Individual exact column qualifiers to be included in the AuthorizedView. */
@@ -1781,15 +1478,13 @@ export interface GoogleBigtableAdminV2AuthorizedViewFamilySubsets {
   qualifierPrefixes?: Array<string>;
 }
 
-export const GoogleBigtableAdminV2AuthorizedViewFamilySubsets: Schema.Schema<GoogleBigtableAdminV2AuthorizedViewFamilySubsets> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      qualifiers: Schema.optional(Schema.Array(Schema.String)),
-      qualifierPrefixes: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleBigtableAdminV2AuthorizedViewFamilySubsets =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    qualifiers: Schema.optional(Schema.Array(Schema.String)),
+    qualifierPrefixes: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleBigtableAdminV2AuthorizedViewFamilySubsets",
-  }) as any as Schema.Schema<GoogleBigtableAdminV2AuthorizedViewFamilySubsets>;
+  });
 
 export interface GoogleBigtableAdminV2AuthorizedViewSubsetView {
   /** Row prefixes to be included in the AuthorizedView. To provide access to all rows, include the empty string as a prefix (""). */
@@ -1801,20 +1496,16 @@ export interface GoogleBigtableAdminV2AuthorizedViewSubsetView {
   >;
 }
 
-export const GoogleBigtableAdminV2AuthorizedViewSubsetView: Schema.Schema<GoogleBigtableAdminV2AuthorizedViewSubsetView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rowPrefixes: Schema.optional(Schema.Array(Schema.String)),
-      familySubsets: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          GoogleBigtableAdminV2AuthorizedViewFamilySubsets,
-        ),
+export const GoogleBigtableAdminV2AuthorizedViewSubsetView =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rowPrefixes: Schema.optional(Schema.Array(Schema.String)),
+    familySubsets: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        GoogleBigtableAdminV2AuthorizedViewFamilySubsets,
       ),
-    }),
-  ).annotate({
-    identifier: "GoogleBigtableAdminV2AuthorizedViewSubsetView",
-  }) as any as Schema.Schema<GoogleBigtableAdminV2AuthorizedViewSubsetView>;
+    ),
+  }).annotate({ identifier: "GoogleBigtableAdminV2AuthorizedViewSubsetView" });
 
 export interface AuthorizedView {
   /** Identifier. The name of this AuthorizedView. Values are of the form `projects/{project}/instances/{instance}/tables/{table}/authorizedViews/{authorized_view}` */
@@ -1827,19 +1518,12 @@ export interface AuthorizedView {
   deletionProtection?: boolean;
 }
 
-export const AuthorizedView: Schema.Schema<AuthorizedView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      subsetView: Schema.optional(
-        GoogleBigtableAdminV2AuthorizedViewSubsetView,
-      ),
-      etag: Schema.optional(Schema.String),
-      deletionProtection: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "AuthorizedView",
-  }) as any as Schema.Schema<AuthorizedView>;
+export const AuthorizedView = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  subsetView: Schema.optional(GoogleBigtableAdminV2AuthorizedViewSubsetView),
+  etag: Schema.optional(Schema.String),
+  deletionProtection: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "AuthorizedView" });
 
 export interface ListAuthorizedViewsResponse {
   /** The AuthorizedViews present in the requested table. */
@@ -1848,15 +1532,11 @@ export interface ListAuthorizedViewsResponse {
   nextPageToken?: string;
 }
 
-export const ListAuthorizedViewsResponse: Schema.Schema<ListAuthorizedViewsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      authorizedViews: Schema.optional(Schema.Array(AuthorizedView)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAuthorizedViewsResponse",
-  }) as any as Schema.Schema<ListAuthorizedViewsResponse>;
+export const ListAuthorizedViewsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    authorizedViews: Schema.optional(Schema.Array(AuthorizedView)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListAuthorizedViewsResponse" });
 
 export interface Modification {
   /** The ID of the column family to be modified. */
@@ -1871,18 +1551,13 @@ export interface Modification {
   updateMask?: string;
 }
 
-export const Modification: Schema.Schema<Modification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      create: Schema.optional(ColumnFamily),
-      update: Schema.optional(ColumnFamily),
-      drop: Schema.optional(Schema.Boolean),
-      updateMask: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Modification",
-  }) as any as Schema.Schema<Modification>;
+export const Modification = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  create: Schema.optional(ColumnFamily),
+  update: Schema.optional(ColumnFamily),
+  drop: Schema.optional(Schema.Boolean),
+  updateMask: Schema.optional(Schema.String),
+}).annotate({ identifier: "Modification" });
 
 export interface ModifyColumnFamiliesRequest {
   /** Required. Modifications to be atomically applied to the specified table's families. Entries are applied in order, meaning that earlier modifications can be masked by later ones (in the case of repeated updates to the same family, for example). */
@@ -1891,15 +1566,11 @@ export interface ModifyColumnFamiliesRequest {
   ignoreWarnings?: boolean;
 }
 
-export const ModifyColumnFamiliesRequest: Schema.Schema<ModifyColumnFamiliesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      modifications: Schema.optional(Schema.Array(Modification)),
-      ignoreWarnings: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ModifyColumnFamiliesRequest",
-  }) as any as Schema.Schema<ModifyColumnFamiliesRequest>;
+export const ModifyColumnFamiliesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    modifications: Schema.optional(Schema.Array(Modification)),
+    ignoreWarnings: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "ModifyColumnFamiliesRequest" });
 
 export interface DropRowRangeRequest {
   /** Delete all rows that start with this row key prefix. Prefix cannot be zero length. */
@@ -1908,50 +1579,41 @@ export interface DropRowRangeRequest {
   deleteAllDataFromTable?: boolean;
 }
 
-export const DropRowRangeRequest: Schema.Schema<DropRowRangeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rowKeyPrefix: Schema.optional(Schema.String),
-      deleteAllDataFromTable: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "DropRowRangeRequest",
-  }) as any as Schema.Schema<DropRowRangeRequest>;
+export const DropRowRangeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  rowKeyPrefix: Schema.optional(Schema.String),
+  deleteAllDataFromTable: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "DropRowRangeRequest" });
 
 export interface GenerateConsistencyTokenRequest {}
 
-export const GenerateConsistencyTokenRequest: Schema.Schema<GenerateConsistencyTokenRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GenerateConsistencyTokenRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GenerateConsistencyTokenRequest",
-  }) as any as Schema.Schema<GenerateConsistencyTokenRequest>;
+  });
 
 export interface GenerateConsistencyTokenResponse {
   /** The generated consistency token. */
   consistencyToken?: string;
 }
 
-export const GenerateConsistencyTokenResponse: Schema.Schema<GenerateConsistencyTokenResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      consistencyToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GenerateConsistencyTokenResponse",
-  }) as any as Schema.Schema<GenerateConsistencyTokenResponse>;
+export const GenerateConsistencyTokenResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    consistencyToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GenerateConsistencyTokenResponse" });
 
 export interface StandardReadRemoteWrites {}
 
-export const StandardReadRemoteWrites: Schema.Schema<StandardReadRemoteWrites> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const StandardReadRemoteWrites =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "StandardReadRemoteWrites",
-  }) as any as Schema.Schema<StandardReadRemoteWrites>;
+  });
 
 export interface DataBoostReadLocalWrites {}
 
-export const DataBoostReadLocalWrites: Schema.Schema<DataBoostReadLocalWrites> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const DataBoostReadLocalWrites =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DataBoostReadLocalWrites",
-  }) as any as Schema.Schema<DataBoostReadLocalWrites>;
+  });
 
 export interface CheckConsistencyRequest {
   /** Required. The token created using GenerateConsistencyToken for the Table. */
@@ -1962,30 +1624,22 @@ export interface CheckConsistencyRequest {
   dataBoostReadLocalWrites?: DataBoostReadLocalWrites;
 }
 
-export const CheckConsistencyRequest: Schema.Schema<CheckConsistencyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      consistencyToken: Schema.optional(Schema.String),
-      standardReadRemoteWrites: Schema.optional(StandardReadRemoteWrites),
-      dataBoostReadLocalWrites: Schema.optional(DataBoostReadLocalWrites),
-    }),
-  ).annotate({
-    identifier: "CheckConsistencyRequest",
-  }) as any as Schema.Schema<CheckConsistencyRequest>;
+export const CheckConsistencyRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    consistencyToken: Schema.optional(Schema.String),
+    standardReadRemoteWrites: Schema.optional(StandardReadRemoteWrites),
+    dataBoostReadLocalWrites: Schema.optional(DataBoostReadLocalWrites),
+  }).annotate({ identifier: "CheckConsistencyRequest" });
 
 export interface CheckConsistencyResponse {
   /** True only if the token is consistent. A token is consistent if replication has caught up with the restrictions specified in the request. */
   consistent?: boolean;
 }
 
-export const CheckConsistencyResponse: Schema.Schema<CheckConsistencyResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      consistent: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "CheckConsistencyResponse",
-  }) as any as Schema.Schema<CheckConsistencyResponse>;
+export const CheckConsistencyResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    consistent: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "CheckConsistencyResponse" });
 
 export interface Backup {
   /** A globally unique identifier for the backup which cannot be changed. Values are of the form `projects/{project}/instances/{instance}/clusters/{cluster}/ backups/_a-zA-Z0-9*` The final segment of the name must be between 1 and 50 characters in length. The backup is stored in the cluster identified by the prefix of the backup name of the form `projects/{project}/instances/{instance}/clusters/{cluster}`. */
@@ -2012,22 +1666,19 @@ export interface Backup {
   hotToStandardTime?: string;
 }
 
-export const Backup: Schema.Schema<Backup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      sourceTable: Schema.optional(Schema.String),
-      sourceBackup: Schema.optional(Schema.String),
-      expireTime: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      sizeBytes: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      encryptionInfo: Schema.optional(EncryptionInfo),
-      backupType: Schema.optional(Schema.String),
-      hotToStandardTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Backup" }) as any as Schema.Schema<Backup>;
+export const Backup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  sourceTable: Schema.optional(Schema.String),
+  sourceBackup: Schema.optional(Schema.String),
+  expireTime: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  sizeBytes: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  encryptionInfo: Schema.optional(EncryptionInfo),
+  backupType: Schema.optional(Schema.String),
+  hotToStandardTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Backup" });
 
 export interface ListBackupsResponse {
   /** The list of matching backups. */
@@ -2036,15 +1687,10 @@ export interface ListBackupsResponse {
   nextPageToken?: string;
 }
 
-export const ListBackupsResponse: Schema.Schema<ListBackupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      backups: Schema.optional(Schema.Array(Backup)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListBackupsResponse",
-  }) as any as Schema.Schema<ListBackupsResponse>;
+export const ListBackupsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  backups: Schema.optional(Schema.Array(Backup)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListBackupsResponse" });
 
 export interface RestoreTableRequest {
   /** Required. The id of the table to create and restore to. This table must not already exist. The `table_id` appended to `parent` forms the full table name of the form `projects//instances//tables/`. */
@@ -2053,15 +1699,10 @@ export interface RestoreTableRequest {
   backup?: string;
 }
 
-export const RestoreTableRequest: Schema.Schema<RestoreTableRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tableId: Schema.optional(Schema.String),
-      backup: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RestoreTableRequest",
-  }) as any as Schema.Schema<RestoreTableRequest>;
+export const RestoreTableRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tableId: Schema.optional(Schema.String),
+  backup: Schema.optional(Schema.String),
+}).annotate({ identifier: "RestoreTableRequest" });
 
 export interface CopyBackupRequest {
   /** Required. The id of the new backup. The `backup_id` along with `parent` are combined as {parent}/backups/{backup_id} to create the full backup name, of the form: `projects/{project}/instances/{instance}/clusters/{cluster}/backups/{backup_id}`. This string must be between 1 and 50 characters in length and match the regex _a-zA-Z0-9*. */
@@ -2072,30 +1713,20 @@ export interface CopyBackupRequest {
   expireTime?: string;
 }
 
-export const CopyBackupRequest: Schema.Schema<CopyBackupRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      backupId: Schema.optional(Schema.String),
-      sourceBackup: Schema.optional(Schema.String),
-      expireTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CopyBackupRequest",
-  }) as any as Schema.Schema<CopyBackupRequest>;
+export const CopyBackupRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  backupId: Schema.optional(Schema.String),
+  sourceBackup: Schema.optional(Schema.String),
+  expireTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "CopyBackupRequest" });
 
 export interface ProtoSchema {
   /** Required. Contains a protobuf-serialized [google.protobuf.FileDescriptorSet](https://github.com/protocolbuffers/protobuf/blob/main/src/google/protobuf/descriptor.proto), which could include multiple proto files. To generate it, [install](https://grpc.io/docs/protoc-installation/) and run `protoc` with `--include_imports` and `--descriptor_set_out`. For example, to generate for moon/shot/app.proto, run ``` $protoc --proto_path=/app_path --proto_path=/lib_path \ --include_imports \ --descriptor_set_out=descriptors.pb \ moon/shot/app.proto ``` For more details, see protobuffer [self description](https://developers.google.com/protocol-buffers/docs/techniques#self-description). */
   protoDescriptors?: string;
 }
 
-export const ProtoSchema: Schema.Schema<ProtoSchema> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      protoDescriptors: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProtoSchema",
-  }) as any as Schema.Schema<ProtoSchema>;
+export const ProtoSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  protoDescriptors: Schema.optional(Schema.String),
+}).annotate({ identifier: "ProtoSchema" });
 
 export interface SchemaBundle {
   /** Identifier. The unique name identifying this schema bundle. Values are of the form `projects/{project}/instances/{instance}/tables/{table}/schemaBundles/{schema_bundle}` */
@@ -2106,16 +1737,11 @@ export interface SchemaBundle {
   etag?: string;
 }
 
-export const SchemaBundle: Schema.Schema<SchemaBundle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      protoSchema: Schema.optional(ProtoSchema),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SchemaBundle",
-  }) as any as Schema.Schema<SchemaBundle>;
+export const SchemaBundle = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  protoSchema: Schema.optional(ProtoSchema),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "SchemaBundle" });
 
 export interface ListSchemaBundlesResponse {
   /** The schema bundles from the specified table. */
@@ -2124,15 +1750,11 @@ export interface ListSchemaBundlesResponse {
   nextPageToken?: string;
 }
 
-export const ListSchemaBundlesResponse: Schema.Schema<ListSchemaBundlesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      schemaBundles: Schema.optional(Schema.Array(SchemaBundle)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListSchemaBundlesResponse",
-  }) as any as Schema.Schema<ListSchemaBundlesResponse>;
+export const ListSchemaBundlesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    schemaBundles: Schema.optional(Schema.Array(SchemaBundle)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListSchemaBundlesResponse" });
 
 export interface Location {
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
@@ -2147,16 +1769,13 @@ export interface Location {
   metadata?: Record<string, unknown>;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      locationId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  locationId: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Location" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -2165,15 +1784,10 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(Location)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface CreateInstanceMetadata {
   /** The request that prompted the initiation of this CreateInstance operation. */
@@ -2184,16 +1798,13 @@ export interface CreateInstanceMetadata {
   finishTime?: string;
 }
 
-export const CreateInstanceMetadata: Schema.Schema<CreateInstanceMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      originalRequest: Schema.optional(CreateInstanceRequest),
-      requestTime: Schema.optional(Schema.String),
-      finishTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreateInstanceMetadata",
-  }) as any as Schema.Schema<CreateInstanceMetadata>;
+export const CreateInstanceMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    originalRequest: Schema.optional(CreateInstanceRequest),
+    requestTime: Schema.optional(Schema.String),
+    finishTime: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "CreateInstanceMetadata" });
 
 export interface PartialUpdateInstanceRequest {
   /** Required. The Instance which will (partially) replace the current value. */
@@ -2202,15 +1813,11 @@ export interface PartialUpdateInstanceRequest {
   updateMask?: string;
 }
 
-export const PartialUpdateInstanceRequest: Schema.Schema<PartialUpdateInstanceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      instance: Schema.optional(Instance),
-      updateMask: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PartialUpdateInstanceRequest",
-  }) as any as Schema.Schema<PartialUpdateInstanceRequest>;
+export const PartialUpdateInstanceRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    instance: Schema.optional(Instance),
+    updateMask: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PartialUpdateInstanceRequest" });
 
 export interface UpdateInstanceMetadata {
   /** The request that prompted the initiation of this UpdateInstance operation. */
@@ -2221,16 +1828,13 @@ export interface UpdateInstanceMetadata {
   finishTime?: string;
 }
 
-export const UpdateInstanceMetadata: Schema.Schema<UpdateInstanceMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      originalRequest: Schema.optional(PartialUpdateInstanceRequest),
-      requestTime: Schema.optional(Schema.String),
-      finishTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpdateInstanceMetadata",
-  }) as any as Schema.Schema<UpdateInstanceMetadata>;
+export const UpdateInstanceMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    originalRequest: Schema.optional(PartialUpdateInstanceRequest),
+    requestTime: Schema.optional(Schema.String),
+    finishTime: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "UpdateInstanceMetadata" });
 
 export interface CreateClusterRequest {
   /** Required. The unique name of the instance in which to create the new cluster. Values are of the form `projects/{project}/instances/{instance}`. */
@@ -2241,16 +1845,11 @@ export interface CreateClusterRequest {
   cluster?: Cluster;
 }
 
-export const CreateClusterRequest: Schema.Schema<CreateClusterRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parent: Schema.optional(Schema.String),
-      clusterId: Schema.optional(Schema.String),
-      cluster: Schema.optional(Cluster),
-    }),
-  ).annotate({
-    identifier: "CreateClusterRequest",
-  }) as any as Schema.Schema<CreateClusterRequest>;
+export const CreateClusterRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  parent: Schema.optional(Schema.String),
+  clusterId: Schema.optional(Schema.String),
+  cluster: Schema.optional(Cluster),
+}).annotate({ identifier: "CreateClusterRequest" });
 
 export interface TableProgress {
   /** Estimate of the size of the table to be copied. */
@@ -2266,16 +1865,11 @@ export interface TableProgress {
     | (string & {});
 }
 
-export const TableProgress: Schema.Schema<TableProgress> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      estimatedSizeBytes: Schema.optional(Schema.String),
-      estimatedCopiedBytes: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TableProgress",
-  }) as any as Schema.Schema<TableProgress>;
+export const TableProgress = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  estimatedSizeBytes: Schema.optional(Schema.String),
+  estimatedCopiedBytes: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+}).annotate({ identifier: "TableProgress" });
 
 export interface CreateClusterMetadata {
   /** The request that prompted the initiation of this CreateCluster operation. */
@@ -2288,17 +1882,12 @@ export interface CreateClusterMetadata {
   tables?: Record<string, TableProgress>;
 }
 
-export const CreateClusterMetadata: Schema.Schema<CreateClusterMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      originalRequest: Schema.optional(CreateClusterRequest),
-      requestTime: Schema.optional(Schema.String),
-      finishTime: Schema.optional(Schema.String),
-      tables: Schema.optional(Schema.Record(Schema.String, TableProgress)),
-    }),
-  ).annotate({
-    identifier: "CreateClusterMetadata",
-  }) as any as Schema.Schema<CreateClusterMetadata>;
+export const CreateClusterMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  originalRequest: Schema.optional(CreateClusterRequest),
+  requestTime: Schema.optional(Schema.String),
+  finishTime: Schema.optional(Schema.String),
+  tables: Schema.optional(Schema.Record(Schema.String, TableProgress)),
+}).annotate({ identifier: "CreateClusterMetadata" });
 
 export interface PartialUpdateClusterRequest {
   /** Required. The Cluster which contains the partial updates to be applied, subject to the update_mask. */
@@ -2307,15 +1896,11 @@ export interface PartialUpdateClusterRequest {
   updateMask?: string;
 }
 
-export const PartialUpdateClusterRequest: Schema.Schema<PartialUpdateClusterRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cluster: Schema.optional(Cluster),
-      updateMask: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PartialUpdateClusterRequest",
-  }) as any as Schema.Schema<PartialUpdateClusterRequest>;
+export const PartialUpdateClusterRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cluster: Schema.optional(Cluster),
+    updateMask: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PartialUpdateClusterRequest" });
 
 export interface PartialUpdateClusterMetadata {
   /** The time at which the original request was received. */
@@ -2326,16 +1911,12 @@ export interface PartialUpdateClusterMetadata {
   originalRequest?: PartialUpdateClusterRequest;
 }
 
-export const PartialUpdateClusterMetadata: Schema.Schema<PartialUpdateClusterMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestTime: Schema.optional(Schema.String),
-      finishTime: Schema.optional(Schema.String),
-      originalRequest: Schema.optional(PartialUpdateClusterRequest),
-    }),
-  ).annotate({
-    identifier: "PartialUpdateClusterMetadata",
-  }) as any as Schema.Schema<PartialUpdateClusterMetadata>;
+export const PartialUpdateClusterMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestTime: Schema.optional(Schema.String),
+    finishTime: Schema.optional(Schema.String),
+    originalRequest: Schema.optional(PartialUpdateClusterRequest),
+  }).annotate({ identifier: "PartialUpdateClusterMetadata" });
 
 export interface UpdateClusterMetadata {
   /** The request that prompted the initiation of this UpdateCluster operation. */
@@ -2346,23 +1927,18 @@ export interface UpdateClusterMetadata {
   finishTime?: string;
 }
 
-export const UpdateClusterMetadata: Schema.Schema<UpdateClusterMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      originalRequest: Schema.optional(Cluster),
-      requestTime: Schema.optional(Schema.String),
-      finishTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpdateClusterMetadata",
-  }) as any as Schema.Schema<UpdateClusterMetadata>;
+export const UpdateClusterMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  originalRequest: Schema.optional(Cluster),
+  requestTime: Schema.optional(Schema.String),
+  finishTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "UpdateClusterMetadata" });
 
 export interface UpdateAppProfileMetadata {}
 
-export const UpdateAppProfileMetadata: Schema.Schema<UpdateAppProfileMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const UpdateAppProfileMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UpdateAppProfileMetadata",
-  }) as any as Schema.Schema<UpdateAppProfileMetadata>;
+  });
 
 export interface CreateBackupMetadata {
   /** The name of the backup being created. */
@@ -2379,19 +1955,14 @@ export interface CreateBackupMetadata {
   finishTime?: string;
 }
 
-export const CreateBackupMetadata: Schema.Schema<CreateBackupMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      sourceTable: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      requestTime: Schema.optional(Schema.String),
-      finishTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreateBackupMetadata",
-  }) as any as Schema.Schema<CreateBackupMetadata>;
+export const CreateBackupMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  sourceTable: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  requestTime: Schema.optional(Schema.String),
+  finishTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "CreateBackupMetadata" });
 
 export interface CreateAuthorizedViewRequest {
   /** Required. This is the name of the table the AuthorizedView belongs to. Values are of the form `projects/{project}/instances/{instance}/tables/{table}`. */
@@ -2402,16 +1973,12 @@ export interface CreateAuthorizedViewRequest {
   authorizedView?: AuthorizedView;
 }
 
-export const CreateAuthorizedViewRequest: Schema.Schema<CreateAuthorizedViewRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parent: Schema.optional(Schema.String),
-      authorizedViewId: Schema.optional(Schema.String),
-      authorizedView: Schema.optional(AuthorizedView),
-    }),
-  ).annotate({
-    identifier: "CreateAuthorizedViewRequest",
-  }) as any as Schema.Schema<CreateAuthorizedViewRequest>;
+export const CreateAuthorizedViewRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.optional(Schema.String),
+    authorizedViewId: Schema.optional(Schema.String),
+    authorizedView: Schema.optional(AuthorizedView),
+  }).annotate({ identifier: "CreateAuthorizedViewRequest" });
 
 export interface CreateAuthorizedViewMetadata {
   /** The request that prompted the initiation of this CreateAuthorizedView operation. */
@@ -2422,16 +1989,12 @@ export interface CreateAuthorizedViewMetadata {
   finishTime?: string;
 }
 
-export const CreateAuthorizedViewMetadata: Schema.Schema<CreateAuthorizedViewMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      originalRequest: Schema.optional(CreateAuthorizedViewRequest),
-      requestTime: Schema.optional(Schema.String),
-      finishTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreateAuthorizedViewMetadata",
-  }) as any as Schema.Schema<CreateAuthorizedViewMetadata>;
+export const CreateAuthorizedViewMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    originalRequest: Schema.optional(CreateAuthorizedViewRequest),
+    requestTime: Schema.optional(Schema.String),
+    finishTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CreateAuthorizedViewMetadata" });
 
 export interface OperationProgress {
   /** Percent completion of the operation. Values are between 0 and 100 inclusive. */
@@ -2442,16 +2005,11 @@ export interface OperationProgress {
   endTime?: string;
 }
 
-export const OperationProgress: Schema.Schema<OperationProgress> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      progressPercent: Schema.optional(Schema.Number),
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationProgress",
-  }) as any as Schema.Schema<OperationProgress>;
+export const OperationProgress = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  progressPercent: Schema.optional(Schema.Number),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationProgress" });
 
 export interface CopyBackupMetadata {
   /** The name of the backup being created through the copy operation. Values are of the form `projects//instances//clusters//backups/`. */
@@ -2462,16 +2020,11 @@ export interface CopyBackupMetadata {
   progress?: OperationProgress;
 }
 
-export const CopyBackupMetadata: Schema.Schema<CopyBackupMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      sourceBackupInfo: Schema.optional(BackupInfo),
-      progress: Schema.optional(OperationProgress),
-    }),
-  ).annotate({
-    identifier: "CopyBackupMetadata",
-  }) as any as Schema.Schema<CopyBackupMetadata>;
+export const CopyBackupMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  sourceBackupInfo: Schema.optional(BackupInfo),
+  progress: Schema.optional(OperationProgress),
+}).annotate({ identifier: "CopyBackupMetadata" });
 
 export interface RestoreTableMetadata {
   /** Name of the table being created and restored to. */
@@ -2485,18 +2038,13 @@ export interface RestoreTableMetadata {
   progress?: OperationProgress;
 }
 
-export const RestoreTableMetadata: Schema.Schema<RestoreTableMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      sourceType: Schema.optional(Schema.String),
-      backupInfo: Schema.optional(BackupInfo),
-      optimizeTableOperationName: Schema.optional(Schema.String),
-      progress: Schema.optional(OperationProgress),
-    }),
-  ).annotate({
-    identifier: "RestoreTableMetadata",
-  }) as any as Schema.Schema<RestoreTableMetadata>;
+export const RestoreTableMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  sourceType: Schema.optional(Schema.String),
+  backupInfo: Schema.optional(BackupInfo),
+  optimizeTableOperationName: Schema.optional(Schema.String),
+  progress: Schema.optional(OperationProgress),
+}).annotate({ identifier: "RestoreTableMetadata" });
 
 export interface OptimizeRestoredTableMetadata {
   /** Name of the restored table being optimized. */
@@ -2505,15 +2053,11 @@ export interface OptimizeRestoredTableMetadata {
   progress?: OperationProgress;
 }
 
-export const OptimizeRestoredTableMetadata: Schema.Schema<OptimizeRestoredTableMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      progress: Schema.optional(OperationProgress),
-    }),
-  ).annotate({
-    identifier: "OptimizeRestoredTableMetadata",
-  }) as any as Schema.Schema<OptimizeRestoredTableMetadata>;
+export const OptimizeRestoredTableMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    progress: Schema.optional(OperationProgress),
+  }).annotate({ identifier: "OptimizeRestoredTableMetadata" });
 
 export interface UndeleteTableMetadata {
   /** The name of the table being restored. */
@@ -2528,18 +2072,13 @@ export interface UndeleteTableMetadata {
   finishTime?: string;
 }
 
-export const UndeleteTableMetadata: Schema.Schema<UndeleteTableMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      requestTime: Schema.optional(Schema.String),
-      finishTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UndeleteTableMetadata",
-  }) as any as Schema.Schema<UndeleteTableMetadata>;
+export const UndeleteTableMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  requestTime: Schema.optional(Schema.String),
+  finishTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "UndeleteTableMetadata" });
 
 export interface UpdateTableMetadata {
   /** The name of the table being updated. */
@@ -2554,18 +2093,13 @@ export interface UpdateTableMetadata {
   finishTime?: string;
 }
 
-export const UpdateTableMetadata: Schema.Schema<UpdateTableMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      requestTime: Schema.optional(Schema.String),
-      finishTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpdateTableMetadata",
-  }) as any as Schema.Schema<UpdateTableMetadata>;
+export const UpdateTableMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  requestTime: Schema.optional(Schema.String),
+  finishTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "UpdateTableMetadata" });
 
 export interface UpdateAuthorizedViewRequest {
   /** Required. The AuthorizedView to update. The `name` in `authorized_view` is used to identify the AuthorizedView. AuthorizedView name must in this format: `projects/{project}/instances/{instance}/tables/{table}/authorizedViews/{authorized_view}`. */
@@ -2576,16 +2110,12 @@ export interface UpdateAuthorizedViewRequest {
   ignoreWarnings?: boolean;
 }
 
-export const UpdateAuthorizedViewRequest: Schema.Schema<UpdateAuthorizedViewRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      authorizedView: Schema.optional(AuthorizedView),
-      updateMask: Schema.optional(Schema.String),
-      ignoreWarnings: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "UpdateAuthorizedViewRequest",
-  }) as any as Schema.Schema<UpdateAuthorizedViewRequest>;
+export const UpdateAuthorizedViewRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    authorizedView: Schema.optional(AuthorizedView),
+    updateMask: Schema.optional(Schema.String),
+    ignoreWarnings: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "UpdateAuthorizedViewRequest" });
 
 export interface UpdateAuthorizedViewMetadata {
   /** The request that prompted the initiation of this UpdateAuthorizedView operation. */
@@ -2596,16 +2126,12 @@ export interface UpdateAuthorizedViewMetadata {
   finishTime?: string;
 }
 
-export const UpdateAuthorizedViewMetadata: Schema.Schema<UpdateAuthorizedViewMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      originalRequest: Schema.optional(UpdateAuthorizedViewRequest),
-      requestTime: Schema.optional(Schema.String),
-      finishTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpdateAuthorizedViewMetadata",
-  }) as any as Schema.Schema<UpdateAuthorizedViewMetadata>;
+export const UpdateAuthorizedViewMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    originalRequest: Schema.optional(UpdateAuthorizedViewRequest),
+    requestTime: Schema.optional(Schema.String),
+    finishTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UpdateAuthorizedViewMetadata" });
 
 export interface CreateSchemaBundleMetadata {
   /** The unique name identifying this schema bundle. Values are of the form `projects/{project}/instances/{instance}/tables/{table}/schemaBundles/{schema_bundle}` */
@@ -2616,16 +2142,12 @@ export interface CreateSchemaBundleMetadata {
   finishTime?: string;
 }
 
-export const CreateSchemaBundleMetadata: Schema.Schema<CreateSchemaBundleMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      requestTime: Schema.optional(Schema.String),
-      finishTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreateSchemaBundleMetadata",
-  }) as any as Schema.Schema<CreateSchemaBundleMetadata>;
+export const CreateSchemaBundleMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    requestTime: Schema.optional(Schema.String),
+    finishTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CreateSchemaBundleMetadata" });
 
 export interface UpdateSchemaBundleMetadata {
   /** The unique name identifying this schema bundle. Values are of the form `projects/{project}/instances/{instance}/tables/{table}/schemaBundles/{schema_bundle}` */
@@ -2636,16 +2158,12 @@ export interface UpdateSchemaBundleMetadata {
   finishTime?: string;
 }
 
-export const UpdateSchemaBundleMetadata: Schema.Schema<UpdateSchemaBundleMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      requestTime: Schema.optional(Schema.String),
-      finishTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpdateSchemaBundleMetadata",
-  }) as any as Schema.Schema<UpdateSchemaBundleMetadata>;
+export const UpdateSchemaBundleMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    requestTime: Schema.optional(Schema.String),
+    finishTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UpdateSchemaBundleMetadata" });
 
 export interface CreateLogicalViewRequest {
   /** Required. The parent instance where this logical view will be created. Format: `projects/{project}/instances/{instance}`. */
@@ -2656,16 +2174,12 @@ export interface CreateLogicalViewRequest {
   logicalView?: LogicalView;
 }
 
-export const CreateLogicalViewRequest: Schema.Schema<CreateLogicalViewRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parent: Schema.optional(Schema.String),
-      logicalViewId: Schema.optional(Schema.String),
-      logicalView: Schema.optional(LogicalView),
-    }),
-  ).annotate({
-    identifier: "CreateLogicalViewRequest",
-  }) as any as Schema.Schema<CreateLogicalViewRequest>;
+export const CreateLogicalViewRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.optional(Schema.String),
+    logicalViewId: Schema.optional(Schema.String),
+    logicalView: Schema.optional(LogicalView),
+  }).annotate({ identifier: "CreateLogicalViewRequest" });
 
 export interface CreateLogicalViewMetadata {
   /** The request that prompted the initiation of this CreateLogicalView operation. */
@@ -2680,18 +2194,14 @@ export interface CreateLogicalViewMetadata {
   finishTime?: string;
 }
 
-export const CreateLogicalViewMetadata: Schema.Schema<CreateLogicalViewMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      originalRequest: Schema.optional(CreateLogicalViewRequest),
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      requestTime: Schema.optional(Schema.String),
-      finishTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreateLogicalViewMetadata",
-  }) as any as Schema.Schema<CreateLogicalViewMetadata>;
+export const CreateLogicalViewMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    originalRequest: Schema.optional(CreateLogicalViewRequest),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    requestTime: Schema.optional(Schema.String),
+    finishTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CreateLogicalViewMetadata" });
 
 export interface UpdateLogicalViewRequest {
   /** Required. The logical view to update. The logical view's `name` field is used to identify the view to update. Format: `projects/{project}/instances/{instance}/logicalViews/{logical_view}`. */
@@ -2700,15 +2210,11 @@ export interface UpdateLogicalViewRequest {
   updateMask?: string;
 }
 
-export const UpdateLogicalViewRequest: Schema.Schema<UpdateLogicalViewRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      logicalView: Schema.optional(LogicalView),
-      updateMask: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpdateLogicalViewRequest",
-  }) as any as Schema.Schema<UpdateLogicalViewRequest>;
+export const UpdateLogicalViewRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    logicalView: Schema.optional(LogicalView),
+    updateMask: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UpdateLogicalViewRequest" });
 
 export interface UpdateLogicalViewMetadata {
   /** The request that prompted the initiation of this UpdateLogicalView operation. */
@@ -2723,18 +2229,14 @@ export interface UpdateLogicalViewMetadata {
   finishTime?: string;
 }
 
-export const UpdateLogicalViewMetadata: Schema.Schema<UpdateLogicalViewMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      originalRequest: Schema.optional(UpdateLogicalViewRequest),
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      requestTime: Schema.optional(Schema.String),
-      finishTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpdateLogicalViewMetadata",
-  }) as any as Schema.Schema<UpdateLogicalViewMetadata>;
+export const UpdateLogicalViewMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    originalRequest: Schema.optional(UpdateLogicalViewRequest),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    requestTime: Schema.optional(Schema.String),
+    finishTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UpdateLogicalViewMetadata" });
 
 export interface CreateMaterializedViewRequest {
   /** Required. The parent instance where this materialized view will be created. Format: `projects/{project}/instances/{instance}`. */
@@ -2745,16 +2247,12 @@ export interface CreateMaterializedViewRequest {
   materializedView?: MaterializedView;
 }
 
-export const CreateMaterializedViewRequest: Schema.Schema<CreateMaterializedViewRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parent: Schema.optional(Schema.String),
-      materializedViewId: Schema.optional(Schema.String),
-      materializedView: Schema.optional(MaterializedView),
-    }),
-  ).annotate({
-    identifier: "CreateMaterializedViewRequest",
-  }) as any as Schema.Schema<CreateMaterializedViewRequest>;
+export const CreateMaterializedViewRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.optional(Schema.String),
+    materializedViewId: Schema.optional(Schema.String),
+    materializedView: Schema.optional(MaterializedView),
+  }).annotate({ identifier: "CreateMaterializedViewRequest" });
 
 export interface CreateMaterializedViewMetadata {
   /** The request that prompted the initiation of this CreateMaterializedView operation. */
@@ -2769,18 +2267,14 @@ export interface CreateMaterializedViewMetadata {
   finishTime?: string;
 }
 
-export const CreateMaterializedViewMetadata: Schema.Schema<CreateMaterializedViewMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      originalRequest: Schema.optional(CreateMaterializedViewRequest),
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      requestTime: Schema.optional(Schema.String),
-      finishTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreateMaterializedViewMetadata",
-  }) as any as Schema.Schema<CreateMaterializedViewMetadata>;
+export const CreateMaterializedViewMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    originalRequest: Schema.optional(CreateMaterializedViewRequest),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    requestTime: Schema.optional(Schema.String),
+    finishTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CreateMaterializedViewMetadata" });
 
 export interface UpdateMemoryLayerRequest {
   /** Required. The memory layer to update. The memory layer's `name` format is as follows: `projects/{project}/instances/{instance}/clusters/{cluster}/memoryLayer`. */
@@ -2789,15 +2283,11 @@ export interface UpdateMemoryLayerRequest {
   updateMask?: string;
 }
 
-export const UpdateMemoryLayerRequest: Schema.Schema<UpdateMemoryLayerRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      memoryLayer: Schema.optional(MemoryLayer),
-      updateMask: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpdateMemoryLayerRequest",
-  }) as any as Schema.Schema<UpdateMemoryLayerRequest>;
+export const UpdateMemoryLayerRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    memoryLayer: Schema.optional(MemoryLayer),
+    updateMask: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UpdateMemoryLayerRequest" });
 
 export interface UpdateMemoryLayerMetadata {
   /** The request that prompted the initiation of this UpdateMemoryLayer operation. */
@@ -2808,16 +2298,12 @@ export interface UpdateMemoryLayerMetadata {
   finishTime?: string;
 }
 
-export const UpdateMemoryLayerMetadata: Schema.Schema<UpdateMemoryLayerMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      originalRequest: Schema.optional(UpdateMemoryLayerRequest),
-      requestTime: Schema.optional(Schema.String),
-      finishTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpdateMemoryLayerMetadata",
-  }) as any as Schema.Schema<UpdateMemoryLayerMetadata>;
+export const UpdateMemoryLayerMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    originalRequest: Schema.optional(UpdateMemoryLayerRequest),
+    requestTime: Schema.optional(Schema.String),
+    finishTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UpdateMemoryLayerMetadata" });
 
 // ==========================================================================
 // Operations

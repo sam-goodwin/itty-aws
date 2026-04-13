@@ -38,15 +38,12 @@ export interface Approval {
   reason?: string;
 }
 
-export const Approval: Schema.Schema<Approval> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      reason: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Approval" }) as any as Schema.Schema<Approval>;
+export const Approval = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+}).annotate({ identifier: "Approval" });
 
 export interface Account {
   /** Output only. The identifier of the service provider that this account was created against. Each service provider is assigned a unique provider value when they onboard with Cloud Commerce platform. */
@@ -71,21 +68,18 @@ export interface Account {
   name?: string;
 }
 
-export const Account: Schema.Schema<Account> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      provider: Schema.optional(Schema.String),
-      approvals: Schema.optional(Schema.Array(Approval)),
-      state: Schema.optional(Schema.String),
-      inputProperties: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-      resellerParentBillingAccount: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Account" }) as any as Schema.Schema<Account>;
+export const Account = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provider: Schema.optional(Schema.String),
+  approvals: Schema.optional(Schema.Array(Approval)),
+  state: Schema.optional(Schema.String),
+  inputProperties: Schema.optional(
+    Schema.Record(Schema.String, Schema.Unknown),
+  ),
+  resellerParentBillingAccount: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Account" });
 
 export interface ListAccountsResponse {
   /** The list of accounts in this response. */
@@ -94,27 +88,19 @@ export interface ListAccountsResponse {
   nextPageToken?: string;
 }
 
-export const ListAccountsResponse: Schema.Schema<ListAccountsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accounts: Schema.optional(Schema.Array(Account)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAccountsResponse",
-  }) as any as Schema.Schema<ListAccountsResponse>;
+export const ListAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  accounts: Schema.optional(Schema.Array(Account)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListAccountsResponse" });
 
 export interface Consumer {
   /** A project name with format `projects/`. */
   project?: string;
 }
 
-export const Consumer: Schema.Schema<Consumer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      project: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Consumer" }) as any as Schema.Schema<Consumer>;
+export const Consumer = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  project: Schema.optional(Schema.String),
+}).annotate({ identifier: "Consumer" });
 
 export interface Entitlement {
   /** Provider-supplied message that is displayed to the end user. Currently this is used to communicate progress and ETA for provisioning. This field can be updated only when a user is waiting for an action from the provider, i.e. entitlement state is EntitlementState.ENTITLEMENT_ACTIVATION_REQUESTED or EntitlementState.ENTITLEMENT_PENDING_PLAN_CHANGE_APPROVAL. This field is cleared automatically when the entitlement state changes. */
@@ -180,41 +166,36 @@ export interface Entitlement {
   offerEndTime?: string;
 }
 
-export const Entitlement: Schema.Schema<Entitlement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      messageToUser: Schema.optional(Schema.String),
-      plan: Schema.optional(Schema.String),
-      inputProperties: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-      quoteExternalName: Schema.optional(Schema.String),
-      provider: Schema.optional(Schema.String),
-      product: Schema.optional(Schema.String),
-      usageReportingId: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      account: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      productExternalName: Schema.optional(Schema.String),
-      subscriptionEndTime: Schema.optional(Schema.String),
-      orderId: Schema.optional(Schema.String),
-      newPendingOfferDuration: Schema.optional(Schema.String),
-      newPendingPlan: Schema.optional(Schema.String),
-      newOfferEndTime: Schema.optional(Schema.String),
-      offerDuration: Schema.optional(Schema.String),
-      cancellationReason: Schema.optional(Schema.String),
-      offer: Schema.optional(Schema.String),
-      consumers: Schema.optional(Schema.Array(Consumer)),
-      newOfferStartTime: Schema.optional(Schema.String),
-      newPendingOffer: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      entitlementBenefitIds: Schema.optional(Schema.Array(Schema.String)),
-      name: Schema.optional(Schema.String),
-      offerEndTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Entitlement",
-  }) as any as Schema.Schema<Entitlement>;
+export const Entitlement = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  messageToUser: Schema.optional(Schema.String),
+  plan: Schema.optional(Schema.String),
+  inputProperties: Schema.optional(
+    Schema.Record(Schema.String, Schema.Unknown),
+  ),
+  quoteExternalName: Schema.optional(Schema.String),
+  provider: Schema.optional(Schema.String),
+  product: Schema.optional(Schema.String),
+  usageReportingId: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  account: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  productExternalName: Schema.optional(Schema.String),
+  subscriptionEndTime: Schema.optional(Schema.String),
+  orderId: Schema.optional(Schema.String),
+  newPendingOfferDuration: Schema.optional(Schema.String),
+  newPendingPlan: Schema.optional(Schema.String),
+  newOfferEndTime: Schema.optional(Schema.String),
+  offerDuration: Schema.optional(Schema.String),
+  cancellationReason: Schema.optional(Schema.String),
+  offer: Schema.optional(Schema.String),
+  consumers: Schema.optional(Schema.Array(Consumer)),
+  newOfferStartTime: Schema.optional(Schema.String),
+  newPendingOffer: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  entitlementBenefitIds: Schema.optional(Schema.Array(Schema.String)),
+  name: Schema.optional(Schema.String),
+  offerEndTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Entitlement" });
 
 export interface ListEntitlementsResponse {
   /** The list of entitlements in this response. */
@@ -223,15 +204,11 @@ export interface ListEntitlementsResponse {
   nextPageToken?: string;
 }
 
-export const ListEntitlementsResponse: Schema.Schema<ListEntitlementsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entitlements: Schema.optional(Schema.Array(Entitlement)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListEntitlementsResponse",
-  }) as any as Schema.Schema<ListEntitlementsResponse>;
+export const ListEntitlementsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entitlements: Schema.optional(Schema.Array(Entitlement)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListEntitlementsResponse" });
 
 export interface ApproveEntitlementRequest {
   /** Optional. The resource name of the entitlement that was migrated, with the format `providers/{provider_id}/entitlements/{entitlement_id}`. Should only be sent when resources have been migrated from entitlement_migrated to the new entitlement. Optional. */
@@ -240,15 +217,11 @@ export interface ApproveEntitlementRequest {
   properties?: Record<string, string>;
 }
 
-export const ApproveEntitlementRequest: Schema.Schema<ApproveEntitlementRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entitlementMigrated: Schema.optional(Schema.String),
-      properties: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ApproveEntitlementRequest",
-  }) as any as Schema.Schema<ApproveEntitlementRequest>;
+export const ApproveEntitlementRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entitlementMigrated: Schema.optional(Schema.String),
+    properties: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({ identifier: "ApproveEntitlementRequest" });
 
 export interface ApproveAccountRequest {
   /** The name of the approval being approved. If absent and there is only one approval possible, that approval will be granted. If absent and there are many approvals possible, the request will fail with a 400 Bad Request. Optional. */
@@ -259,30 +232,21 @@ export interface ApproveAccountRequest {
   reason?: string;
 }
 
-export const ApproveAccountRequest: Schema.Schema<ApproveAccountRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      approvalName: Schema.optional(Schema.String),
-      properties: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      reason: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ApproveAccountRequest",
-  }) as any as Schema.Schema<ApproveAccountRequest>;
+export const ApproveAccountRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  approvalName: Schema.optional(Schema.String),
+  properties: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  reason: Schema.optional(Schema.String),
+}).annotate({ identifier: "ApproveAccountRequest" });
 
 export interface SuspendEntitlementRequest {
   /** A free-form reason string, explaining the reason for suspension request. */
   reason?: string;
 }
 
-export const SuspendEntitlementRequest: Schema.Schema<SuspendEntitlementRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reason: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SuspendEntitlementRequest",
-  }) as any as Schema.Schema<SuspendEntitlementRequest>;
+export const SuspendEntitlementRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reason: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SuspendEntitlementRequest" });
 
 export interface RejectAccountRequest {
   /** Free form text string explaining the rejection reason. Max allowed length: 256 bytes. Longer strings will be truncated. */
@@ -291,29 +255,20 @@ export interface RejectAccountRequest {
   approvalName?: string;
 }
 
-export const RejectAccountRequest: Schema.Schema<RejectAccountRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reason: Schema.optional(Schema.String),
-      approvalName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RejectAccountRequest",
-  }) as any as Schema.Schema<RejectAccountRequest>;
+export const RejectAccountRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  reason: Schema.optional(Schema.String),
+  approvalName: Schema.optional(Schema.String),
+}).annotate({ identifier: "RejectAccountRequest" });
 
 export interface RejectEntitlementRequest {
   /** Free form text string explaining the rejection reason. Max allowed length: 256 bytes. Longer strings will be truncated. */
   reason?: string;
 }
 
-export const RejectEntitlementRequest: Schema.Schema<RejectEntitlementRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reason: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RejectEntitlementRequest",
-  }) as any as Schema.Schema<RejectEntitlementRequest>;
+export const RejectEntitlementRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reason: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RejectEntitlementRequest" });
 
 export interface RejectEntitlementPlanChangeRequest {
   /** Free form text string explaining the rejection reason. Max allowed length: 256 bytes. Longer strings will be truncated. */
@@ -322,43 +277,33 @@ export interface RejectEntitlementPlanChangeRequest {
   pendingPlanName?: string;
 }
 
-export const RejectEntitlementPlanChangeRequest: Schema.Schema<RejectEntitlementPlanChangeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reason: Schema.optional(Schema.String),
-      pendingPlanName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RejectEntitlementPlanChangeRequest",
-  }) as any as Schema.Schema<RejectEntitlementPlanChangeRequest>;
+export const RejectEntitlementPlanChangeRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reason: Schema.optional(Schema.String),
+    pendingPlanName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RejectEntitlementPlanChangeRequest" });
 
 export interface ResetAccountRequest {}
 
-export const ResetAccountRequest: Schema.Schema<ResetAccountRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "ResetAccountRequest",
-  }) as any as Schema.Schema<ResetAccountRequest>;
+export const ResetAccountRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "ResetAccountRequest" });
 
 export interface ApproveEntitlementPlanChangeRequest {
   /** Required. Name of the pending plan that's being approved. */
   pendingPlanName?: string;
 }
 
-export const ApproveEntitlementPlanChangeRequest: Schema.Schema<ApproveEntitlementPlanChangeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pendingPlanName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ApproveEntitlementPlanChangeRequest",
-  }) as any as Schema.Schema<ApproveEntitlementPlanChangeRequest>;
+export const ApproveEntitlementPlanChangeRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pendingPlanName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ApproveEntitlementPlanChangeRequest" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 // ==========================================================================
 // Operations

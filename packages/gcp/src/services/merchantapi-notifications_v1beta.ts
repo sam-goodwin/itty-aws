@@ -38,18 +38,14 @@ export interface NotificationSubscription {
     | (string & {});
 }
 
-export const NotificationSubscription: Schema.Schema<NotificationSubscription> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      callBackUri: Schema.optional(Schema.String),
-      targetAccount: Schema.optional(Schema.String),
-      allManagedAccounts: Schema.optional(Schema.Boolean),
-      registeredEvent: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NotificationSubscription",
-  }) as any as Schema.Schema<NotificationSubscription>;
+export const NotificationSubscription =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    callBackUri: Schema.optional(Schema.String),
+    targetAccount: Schema.optional(Schema.String),
+    allManagedAccounts: Schema.optional(Schema.Boolean),
+    registeredEvent: Schema.optional(Schema.String),
+  }).annotate({ identifier: "NotificationSubscription" });
 
 export interface ProductChange {
   /** The old value of the changed resource or attribute. If empty, it means that the product was created. Will have one of these values : (`approved`, `pending`, `disapproved`, ``) */
@@ -83,17 +79,12 @@ export interface ProductChange {
   regionCode?: string;
 }
 
-export const ProductChange: Schema.Schema<ProductChange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      oldValue: Schema.optional(Schema.String),
-      newValue: Schema.optional(Schema.String),
-      reportingContext: Schema.optional(Schema.String),
-      regionCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProductChange",
-  }) as any as Schema.Schema<ProductChange>;
+export const ProductChange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  oldValue: Schema.optional(Schema.String),
+  newValue: Schema.optional(Schema.String),
+  reportingContext: Schema.optional(Schema.String),
+  regionCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "ProductChange" });
 
 export interface ProductStatusChangeMessage {
   /** A message to describe the change that happened to the product */
@@ -116,29 +107,24 @@ export interface ProductStatusChangeMessage {
   expirationTime?: string;
 }
 
-export const ProductStatusChangeMessage: Schema.Schema<ProductStatusChangeMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      changes: Schema.optional(Schema.Array(ProductChange)),
-      attribute: Schema.optional(Schema.String),
-      managingAccount: Schema.optional(Schema.String),
-      resource: Schema.optional(Schema.String),
-      resourceId: Schema.optional(Schema.String),
-      resourceType: Schema.optional(Schema.String),
-      eventTime: Schema.optional(Schema.String),
-      account: Schema.optional(Schema.String),
-      expirationTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProductStatusChangeMessage",
-  }) as any as Schema.Schema<ProductStatusChangeMessage>;
+export const ProductStatusChangeMessage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    changes: Schema.optional(Schema.Array(ProductChange)),
+    attribute: Schema.optional(Schema.String),
+    managingAccount: Schema.optional(Schema.String),
+    resource: Schema.optional(Schema.String),
+    resourceId: Schema.optional(Schema.String),
+    resourceType: Schema.optional(Schema.String),
+    eventTime: Schema.optional(Schema.String),
+    account: Schema.optional(Schema.String),
+    expirationTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ProductStatusChangeMessage" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface ListNotificationSubscriptionsResponse {
   /** The list of notification subscriptions requested by the merchant. */
@@ -147,17 +133,13 @@ export interface ListNotificationSubscriptionsResponse {
   nextPageToken?: string;
 }
 
-export const ListNotificationSubscriptionsResponse: Schema.Schema<ListNotificationSubscriptionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      notificationSubscriptions: Schema.optional(
-        Schema.Array(NotificationSubscription),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListNotificationSubscriptionsResponse",
-  }) as any as Schema.Schema<ListNotificationSubscriptionsResponse>;
+export const ListNotificationSubscriptionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    notificationSubscriptions: Schema.optional(
+      Schema.Array(NotificationSubscription),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListNotificationSubscriptionsResponse" });
 
 // ==========================================================================
 // Operations

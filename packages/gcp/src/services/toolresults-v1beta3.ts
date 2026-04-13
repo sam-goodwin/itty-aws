@@ -24,10 +24,9 @@ const svc = T.Service({
 
 export interface LogcatCollectionError {}
 
-export const LogcatCollectionError: Schema.Schema<LogcatCollectionError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "LogcatCollectionError",
-  }) as any as Schema.Schema<LogcatCollectionError>;
+export const LogcatCollectionError = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "LogcatCollectionError" });
 
 export interface Duration {
   /** Signed seconds of the span of time. Must be from -315,576,000,000 to +315,576,000,000 inclusive. Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years */
@@ -36,39 +35,28 @@ export interface Duration {
   nanos?: number;
 }
 
-export const Duration: Schema.Schema<Duration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      seconds: Schema.optional(Schema.String),
-      nanos: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Duration" }) as any as Schema.Schema<Duration>;
+export const Duration = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  seconds: Schema.optional(Schema.String),
+  nanos: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Duration" });
 
 export interface StackTrace {
   /** The stack trace message. Required */
   exception?: string;
 }
 
-export const StackTrace: Schema.Schema<StackTrace> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      exception: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "StackTrace" }) as any as Schema.Schema<StackTrace>;
+export const StackTrace = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  exception: Schema.optional(Schema.String),
+}).annotate({ identifier: "StackTrace" });
 
 export interface IosAppCrashed {
   /** The stack trace, if one is available. Optional. */
   stackTrace?: StackTrace;
 }
 
-export const IosAppCrashed: Schema.Schema<IosAppCrashed> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stackTrace: Schema.optional(StackTrace),
-    }),
-  ).annotate({
-    identifier: "IosAppCrashed",
-  }) as any as Schema.Schema<IosAppCrashed>;
+export const IosAppCrashed = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  stackTrace: Schema.optional(StackTrace),
+}).annotate({ identifier: "IosAppCrashed" });
 
 export interface Timestamp {
   /** Represents seconds of UTC time since Unix epoch 1970-01-01T00:00:00Z. Must be from 0001-01-01T00:00:00Z to 9999-12-31T23:59:59Z inclusive. */
@@ -77,13 +65,10 @@ export interface Timestamp {
   nanos?: number;
 }
 
-export const Timestamp: Schema.Schema<Timestamp> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      seconds: Schema.optional(Schema.String),
-      nanos: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Timestamp" }) as any as Schema.Schema<Timestamp>;
+export const Timestamp = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  seconds: Schema.optional(Schema.String),
+  nanos: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Timestamp" });
 
 export interface PerfSample {
   /** Timestamp of collection. */
@@ -92,20 +77,17 @@ export interface PerfSample {
   value?: number;
 }
 
-export const PerfSample: Schema.Schema<PerfSample> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sampleTime: Schema.optional(Timestamp),
-      value: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "PerfSample" }) as any as Schema.Schema<PerfSample>;
+export const PerfSample = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sampleTime: Schema.optional(Timestamp),
+  value: Schema.optional(Schema.Number),
+}).annotate({ identifier: "PerfSample" });
 
 export interface LauncherActivityNotFound {}
 
-export const LauncherActivityNotFound: Schema.Schema<LauncherActivityNotFound> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const LauncherActivityNotFound =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "LauncherActivityNotFound",
-  }) as any as Schema.Schema<LauncherActivityNotFound>;
+  });
 
 export interface FailureDetail {
   /** If the failure was severe because the system (app) under test crashed. */
@@ -124,20 +106,15 @@ export interface FailureDetail {
   deviceOutOfMemory?: boolean;
 }
 
-export const FailureDetail: Schema.Schema<FailureDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      crashed: Schema.optional(Schema.Boolean),
-      unableToCrawl: Schema.optional(Schema.Boolean),
-      failedRoboscript: Schema.optional(Schema.Boolean),
-      notInstalled: Schema.optional(Schema.Boolean),
-      timedOut: Schema.optional(Schema.Boolean),
-      otherNativeCrash: Schema.optional(Schema.Boolean),
-      deviceOutOfMemory: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "FailureDetail",
-  }) as any as Schema.Schema<FailureDetail>;
+export const FailureDetail = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  crashed: Schema.optional(Schema.Boolean),
+  unableToCrawl: Schema.optional(Schema.Boolean),
+  failedRoboscript: Schema.optional(Schema.Boolean),
+  notInstalled: Schema.optional(Schema.Boolean),
+  timedOut: Schema.optional(Schema.Boolean),
+  otherNativeCrash: Schema.optional(Schema.Boolean),
+  deviceOutOfMemory: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "FailureDetail" });
 
 export interface UpgradeInsight {
   /** The name of the package to be upgraded. */
@@ -146,29 +123,20 @@ export interface UpgradeInsight {
   upgradeToVersion?: string;
 }
 
-export const UpgradeInsight: Schema.Schema<UpgradeInsight> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      packageName: Schema.optional(Schema.String),
-      upgradeToVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpgradeInsight",
-  }) as any as Schema.Schema<UpgradeInsight>;
+export const UpgradeInsight = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  packageName: Schema.optional(Schema.String),
+  upgradeToVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "UpgradeInsight" });
 
 export interface PendingGoogleUpdateInsight {
   /** The name of the Google-provided library with the non-SDK API dependency. */
   nameOfGoogleLibrary?: string;
 }
 
-export const PendingGoogleUpdateInsight: Schema.Schema<PendingGoogleUpdateInsight> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nameOfGoogleLibrary: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PendingGoogleUpdateInsight",
-  }) as any as Schema.Schema<PendingGoogleUpdateInsight>;
+export const PendingGoogleUpdateInsight =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nameOfGoogleLibrary: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PendingGoogleUpdateInsight" });
 
 export interface NonSdkApiInsight {
   /** An insight indicating that the hidden API usage originates from the use of a library that needs to be upgraded. */
@@ -181,17 +149,12 @@ export interface NonSdkApiInsight {
   pendingGoogleUpdateInsight?: PendingGoogleUpdateInsight;
 }
 
-export const NonSdkApiInsight: Schema.Schema<NonSdkApiInsight> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      upgradeInsight: Schema.optional(UpgradeInsight),
-      exampleTraceMessages: Schema.optional(Schema.Array(Schema.String)),
-      matcherId: Schema.optional(Schema.String),
-      pendingGoogleUpdateInsight: Schema.optional(PendingGoogleUpdateInsight),
-    }),
-  ).annotate({
-    identifier: "NonSdkApiInsight",
-  }) as any as Schema.Schema<NonSdkApiInsight>;
+export const NonSdkApiInsight = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  upgradeInsight: Schema.optional(UpgradeInsight),
+  exampleTraceMessages: Schema.optional(Schema.Array(Schema.String)),
+  matcherId: Schema.optional(Schema.String),
+  pendingGoogleUpdateInsight: Schema.optional(PendingGoogleUpdateInsight),
+}).annotate({ identifier: "NonSdkApiInsight" });
 
 export interface NonSdkApi {
   /** The total number of times this API was observed to have been called. */
@@ -216,30 +179,22 @@ export interface NonSdkApi {
   insights?: Array<NonSdkApiInsight>;
 }
 
-export const NonSdkApi: Schema.Schema<NonSdkApi> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      invocationCount: Schema.optional(Schema.Number),
-      list: Schema.optional(Schema.String),
-      apiSignature: Schema.optional(Schema.String),
-      exampleStackTraces: Schema.optional(Schema.Array(Schema.String)),
-      insights: Schema.optional(Schema.Array(NonSdkApiInsight)),
-    }),
-  ).annotate({ identifier: "NonSdkApi" }) as any as Schema.Schema<NonSdkApi>;
+export const NonSdkApi = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  invocationCount: Schema.optional(Schema.Number),
+  list: Schema.optional(Schema.String),
+  apiSignature: Schema.optional(Schema.String),
+  exampleStackTraces: Schema.optional(Schema.Array(Schema.String)),
+  insights: Schema.optional(Schema.Array(NonSdkApiInsight)),
+}).annotate({ identifier: "NonSdkApi" });
 
 export interface NativeCrash {
   /** The stack trace of the native crash. Optional. */
   stackTrace?: StackTrace;
 }
 
-export const NativeCrash: Schema.Schema<NativeCrash> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stackTrace: Schema.optional(StackTrace),
-    }),
-  ).annotate({
-    identifier: "NativeCrash",
-  }) as any as Schema.Schema<NativeCrash>;
+export const NativeCrash = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  stackTrace: Schema.optional(StackTrace),
+}).annotate({ identifier: "NativeCrash" });
 
 export interface TestCaseReference {
   /** The name of the class. */
@@ -250,45 +205,31 @@ export interface TestCaseReference {
   testSuiteName?: string;
 }
 
-export const TestCaseReference: Schema.Schema<TestCaseReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      className: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      testSuiteName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TestCaseReference",
-  }) as any as Schema.Schema<TestCaseReference>;
+export const TestCaseReference = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  className: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  testSuiteName: Schema.optional(Schema.String),
+}).annotate({ identifier: "TestCaseReference" });
 
 export interface StepDimensionValueEntry {
   value?: string;
   key?: string;
 }
 
-export const StepDimensionValueEntry: Schema.Schema<StepDimensionValueEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-      key: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StepDimensionValueEntry",
-  }) as any as Schema.Schema<StepDimensionValueEntry>;
+export const StepDimensionValueEntry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(Schema.String),
+    key: Schema.optional(Schema.String),
+  }).annotate({ identifier: "StepDimensionValueEntry" });
 
 export interface FileReference {
   /** The URI of a file stored in Google Cloud Storage. For example: `http://storage.googleapis.com/mybucket/path/to/test.xml` or in Cloud Storage URI format: `gs://mybucket/path/to/test.xml` with version-specific info, `gs://mybucket/path/to/test.xml#1360383693690000` An INVALID_ARGUMENT error will be returned if the URI format is not supported. - In response: always set - In create/update request: always set */
   fileUri?: string;
 }
 
-export const FileReference: Schema.Schema<FileReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fileUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FileReference",
-  }) as any as Schema.Schema<FileReference>;
+export const FileReference = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fileUri: Schema.optional(Schema.String),
+}).annotate({ identifier: "FileReference" });
 
 export interface ToolOutputReference {
   /** The creation time of the file. - In response: present if set by create/update request - In create/update request: optional */
@@ -299,23 +240,17 @@ export interface ToolOutputReference {
   output?: FileReference;
 }
 
-export const ToolOutputReference: Schema.Schema<ToolOutputReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      creationTime: Schema.optional(Timestamp),
-      testCase: Schema.optional(TestCaseReference),
-      output: Schema.optional(FileReference),
-    }),
-  ).annotate({
-    identifier: "ToolOutputReference",
-  }) as any as Schema.Schema<ToolOutputReference>;
+export const ToolOutputReference = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  creationTime: Schema.optional(Timestamp),
+  testCase: Schema.optional(TestCaseReference),
+  output: Schema.optional(FileReference),
+}).annotate({ identifier: "ToolOutputReference" });
 
 export interface DeviceOutOfMemory {}
 
-export const DeviceOutOfMemory: Schema.Schema<DeviceOutOfMemory> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "DeviceOutOfMemory",
-  }) as any as Schema.Schema<DeviceOutOfMemory>;
+export const DeviceOutOfMemory = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "DeviceOutOfMemory" });
 
 export interface Any {
   /** A URL/resource name that uniquely identifies the type of the serialized protocol buffer message. This string must contain at least one "/" character. The last segment of the URL's path must represent the fully qualified name of the type (as in `path/google.protobuf.Duration`). The name should be in a canonical form (e.g., leading "." is not accepted). In practice, teams usually precompile into the binary all types that they expect it to use in the context of Any. However, for URLs which use the scheme `http`, `https`, or no scheme, one can optionally set up a type server that maps type URLs to message definitions as follows: * If no scheme is provided, `https` is assumed. * An HTTP GET on the URL must yield a google.protobuf.Type value in binary format, or produce an error. * Applications are allowed to cache lookup results based on the URL, or have them precompiled into a binary to avoid any lookup. Therefore, binary compatibility needs to be preserved on changes to types. (Use versioned type names to manage breaking changes.) Note: this functionality is not currently available in the official protobuf release, and it is not used for type URLs beginning with type.googleapis.com. Schemes other than `http`, `https` (or the empty scheme) might be used with implementation specific semantics. */
@@ -324,13 +259,10 @@ export interface Any {
   value?: string;
 }
 
-export const Any: Schema.Schema<Any> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      typeUrl: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Any" }) as any as Schema.Schema<Any>;
+export const Any = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  typeUrl: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+}).annotate({ identifier: "Any" });
 
 export interface TestIssue {
   /** Type of issue. Required. */
@@ -387,17 +319,14 @@ export interface TestIssue {
   stackTrace?: StackTrace;
 }
 
-export const TestIssue: Schema.Schema<TestIssue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      errorMessage: Schema.optional(Schema.String),
-      warning_migration: Schema.optional(Any),
-      severity: Schema.optional(Schema.String),
-      category: Schema.optional(Schema.String),
-      stackTrace: Schema.optional(StackTrace),
-    }),
-  ).annotate({ identifier: "TestIssue" }) as any as Schema.Schema<TestIssue>;
+export const TestIssue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  errorMessage: Schema.optional(Schema.String),
+  warning_migration: Schema.optional(Any),
+  severity: Schema.optional(Schema.String),
+  category: Schema.optional(Schema.String),
+  stackTrace: Schema.optional(StackTrace),
+}).annotate({ identifier: "TestIssue" });
 
 export interface AndroidInstrumentationTest {
   /** The java package for the test to be executed. Required */
@@ -410,17 +339,13 @@ export interface AndroidInstrumentationTest {
   testTargets?: Array<string>;
 }
 
-export const AndroidInstrumentationTest: Schema.Schema<AndroidInstrumentationTest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      testPackageId: Schema.optional(Schema.String),
-      testRunnerClass: Schema.optional(Schema.String),
-      useOrchestrator: Schema.optional(Schema.Boolean),
-      testTargets: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AndroidInstrumentationTest",
-  }) as any as Schema.Schema<AndroidInstrumentationTest>;
+export const AndroidInstrumentationTest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    testPackageId: Schema.optional(Schema.String),
+    testRunnerClass: Schema.optional(Schema.String),
+    useOrchestrator: Schema.optional(Schema.Boolean),
+    testTargets: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "AndroidInstrumentationTest" });
 
 export interface TestCase {
   /** The start time of the test case. */
@@ -443,20 +368,17 @@ export interface TestCase {
   stackTraces?: Array<StackTrace>;
 }
 
-export const TestCase: Schema.Schema<TestCase> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Timestamp),
-      testCaseId: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-      endTime: Schema.optional(Timestamp),
-      elapsedTime: Schema.optional(Duration),
-      skippedMessage: Schema.optional(Schema.String),
-      testCaseReference: Schema.optional(TestCaseReference),
-      toolOutputs: Schema.optional(Schema.Array(ToolOutputReference)),
-      stackTraces: Schema.optional(Schema.Array(StackTrace)),
-    }),
-  ).annotate({ identifier: "TestCase" }) as any as Schema.Schema<TestCase>;
+export const TestCase = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startTime: Schema.optional(Timestamp),
+  testCaseId: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.String),
+  endTime: Schema.optional(Timestamp),
+  elapsedTime: Schema.optional(Duration),
+  skippedMessage: Schema.optional(Schema.String),
+  testCaseReference: Schema.optional(TestCaseReference),
+  toolOutputs: Schema.optional(Schema.Array(ToolOutputReference)),
+  stackTraces: Schema.optional(Schema.Array(StackTrace)),
+}).annotate({ identifier: "TestCase" });
 
 export interface IndividualOutcome {
   outcomeSummary?:
@@ -474,31 +396,21 @@ export interface IndividualOutcome {
   runDuration?: Duration;
 }
 
-export const IndividualOutcome: Schema.Schema<IndividualOutcome> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      outcomeSummary: Schema.optional(Schema.String),
-      multistepNumber: Schema.optional(Schema.Number),
-      stepId: Schema.optional(Schema.String),
-      runDuration: Schema.optional(Duration),
-    }),
-  ).annotate({
-    identifier: "IndividualOutcome",
-  }) as any as Schema.Schema<IndividualOutcome>;
+export const IndividualOutcome = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  outcomeSummary: Schema.optional(Schema.String),
+  multistepNumber: Schema.optional(Schema.Number),
+  stepId: Schema.optional(Schema.String),
+  runDuration: Schema.optional(Duration),
+}).annotate({ identifier: "IndividualOutcome" });
 
 export interface ToolExitCode {
   /** Tool execution exit code. A value of 0 means that the execution was successful. - In response: always set - In create/update request: always set */
   number?: number;
 }
 
-export const ToolExitCode: Schema.Schema<ToolExitCode> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      number: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "ToolExitCode",
-  }) as any as Schema.Schema<ToolExitCode>;
+export const ToolExitCode = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  number: Schema.optional(Schema.Number),
+}).annotate({ identifier: "ToolExitCode" });
 
 export interface ToolExecution {
   /** Tool execution exit code. This field will be set once the tool has exited. - In response: present if set by create/update request - In create request: optional - In update request: optional, a FAILED_PRECONDITION error will be returned if an exit_code is already set. */
@@ -511,31 +423,21 @@ export interface ToolExecution {
   toolLogs?: Array<FileReference>;
 }
 
-export const ToolExecution: Schema.Schema<ToolExecution> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      exitCode: Schema.optional(ToolExitCode),
-      toolOutputs: Schema.optional(Schema.Array(ToolOutputReference)),
-      commandLineArguments: Schema.optional(Schema.Array(Schema.String)),
-      toolLogs: Schema.optional(Schema.Array(FileReference)),
-    }),
-  ).annotate({
-    identifier: "ToolExecution",
-  }) as any as Schema.Schema<ToolExecution>;
+export const ToolExecution = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  exitCode: Schema.optional(ToolExitCode),
+  toolOutputs: Schema.optional(Schema.Array(ToolOutputReference)),
+  commandLineArguments: Schema.optional(Schema.Array(Schema.String)),
+  toolLogs: Schema.optional(Schema.Array(FileReference)),
+}).annotate({ identifier: "ToolExecution" });
 
 export interface ToolExecutionStep {
   /** A Tool execution. - In response: present if set by create/update request - In create/update request: optional */
   toolExecution?: ToolExecution;
 }
 
-export const ToolExecutionStep: Schema.Schema<ToolExecutionStep> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      toolExecution: Schema.optional(ToolExecution),
-    }),
-  ).annotate({
-    identifier: "ToolExecutionStep",
-  }) as any as Schema.Schema<ToolExecutionStep>;
+export const ToolExecutionStep = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  toolExecution: Schema.optional(ToolExecution),
+}).annotate({ identifier: "ToolExecutionStep" });
 
 export interface PrimaryStep {
   /** Rollup test status of multiple steps that were run with the same configuration as a group. */
@@ -551,15 +453,10 @@ export interface PrimaryStep {
   individualOutcome?: Array<IndividualOutcome>;
 }
 
-export const PrimaryStep: Schema.Schema<PrimaryStep> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rollUp: Schema.optional(Schema.String),
-      individualOutcome: Schema.optional(Schema.Array(IndividualOutcome)),
-    }),
-  ).annotate({
-    identifier: "PrimaryStep",
-  }) as any as Schema.Schema<PrimaryStep>;
+export const PrimaryStep = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  rollUp: Schema.optional(Schema.String),
+  individualOutcome: Schema.optional(Schema.Array(IndividualOutcome)),
+}).annotate({ identifier: "PrimaryStep" });
 
 export interface MultiStep {
   /** Step Id of the primary (original) step, which might be this step. */
@@ -570,29 +467,21 @@ export interface MultiStep {
   primaryStep?: PrimaryStep;
 }
 
-export const MultiStep: Schema.Schema<MultiStep> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      primaryStepId: Schema.optional(Schema.String),
-      multistepNumber: Schema.optional(Schema.Number),
-      primaryStep: Schema.optional(PrimaryStep),
-    }),
-  ).annotate({ identifier: "MultiStep" }) as any as Schema.Schema<MultiStep>;
+export const MultiStep = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  primaryStepId: Schema.optional(Schema.String),
+  multistepNumber: Schema.optional(Schema.Number),
+  primaryStep: Schema.optional(PrimaryStep),
+}).annotate({ identifier: "MultiStep" });
 
 export interface StepLabelsEntry {
   key?: string;
   value?: string;
 }
 
-export const StepLabelsEntry: Schema.Schema<StepLabelsEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      key: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StepLabelsEntry",
-  }) as any as Schema.Schema<StepLabelsEntry>;
+export const StepLabelsEntry = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  key: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+}).annotate({ identifier: "StepLabelsEntry" });
 
 export interface InconclusiveDetail {
   /** If the end user aborted the test execution before a pass or fail could be determined. For example, the user pressed ctrl-c which sent a kill signal to the test runner while the test was running. */
@@ -603,16 +492,11 @@ export interface InconclusiveDetail {
   infrastructureFailure?: boolean;
 }
 
-export const InconclusiveDetail: Schema.Schema<InconclusiveDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      abortedByUser: Schema.optional(Schema.Boolean),
-      hasErrorLogs: Schema.optional(Schema.Boolean),
-      infrastructureFailure: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "InconclusiveDetail",
-  }) as any as Schema.Schema<InconclusiveDetail>;
+export const InconclusiveDetail = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  abortedByUser: Schema.optional(Schema.Boolean),
+  hasErrorLogs: Schema.optional(Schema.Boolean),
+  infrastructureFailure: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "InconclusiveDetail" });
 
 export interface SkippedDetail {
   /** Indicates that the test could not be scheduled in the requested time because no suitable device was available. */
@@ -625,31 +509,21 @@ export interface SkippedDetail {
   incompatibleArchitecture?: boolean;
 }
 
-export const SkippedDetail: Schema.Schema<SkippedDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pendingTimeout: Schema.optional(Schema.Boolean),
-      incompatibleDevice: Schema.optional(Schema.Boolean),
-      incompatibleAppVersion: Schema.optional(Schema.Boolean),
-      incompatibleArchitecture: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "SkippedDetail",
-  }) as any as Schema.Schema<SkippedDetail>;
+export const SkippedDetail = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pendingTimeout: Schema.optional(Schema.Boolean),
+  incompatibleDevice: Schema.optional(Schema.Boolean),
+  incompatibleAppVersion: Schema.optional(Schema.Boolean),
+  incompatibleArchitecture: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "SkippedDetail" });
 
 export interface SuccessDetail {
   /** If a native process other than the app crashed. */
   otherNativeCrash?: boolean;
 }
 
-export const SuccessDetail: Schema.Schema<SuccessDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      otherNativeCrash: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "SuccessDetail",
-  }) as any as Schema.Schema<SuccessDetail>;
+export const SuccessDetail = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  otherNativeCrash: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "SuccessDetail" });
 
 export interface Outcome {
   /** More information about an INCONCLUSIVE outcome. Returns INVALID_ARGUMENT if this field is set but the summary is not INCONCLUSIVE. Optional */
@@ -671,28 +545,22 @@ export interface Outcome {
     | (string & {});
 }
 
-export const Outcome: Schema.Schema<Outcome> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inconclusiveDetail: Schema.optional(InconclusiveDetail),
-      skippedDetail: Schema.optional(SkippedDetail),
-      successDetail: Schema.optional(SuccessDetail),
-      failureDetail: Schema.optional(FailureDetail),
-      summary: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Outcome" }) as any as Schema.Schema<Outcome>;
+export const Outcome = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  inconclusiveDetail: Schema.optional(InconclusiveDetail),
+  skippedDetail: Schema.optional(SkippedDetail),
+  successDetail: Schema.optional(SuccessDetail),
+  failureDetail: Schema.optional(FailureDetail),
+  summary: Schema.optional(Schema.String),
+}).annotate({ identifier: "Outcome" });
 
 export interface TestTiming {
   /** How long it took to run the test process. - In response: present if previously set. - In create/update request: optional */
   testProcessDuration?: Duration;
 }
 
-export const TestTiming: Schema.Schema<TestTiming> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      testProcessDuration: Schema.optional(Duration),
-    }),
-  ).annotate({ identifier: "TestTiming" }) as any as Schema.Schema<TestTiming>;
+export const TestTiming = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  testProcessDuration: Schema.optional(Duration),
+}).annotate({ identifier: "TestTiming" });
 
 export interface TestSuiteOverview {
   /** Number of test cases in error, typically set by the service by parsing the xml_source. - In create/response: always set - In update request: never */
@@ -713,21 +581,16 @@ export interface TestSuiteOverview {
   flakyCount?: number;
 }
 
-export const TestSuiteOverview: Schema.Schema<TestSuiteOverview> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errorCount: Schema.optional(Schema.Number),
-      elapsedTime: Schema.optional(Duration),
-      name: Schema.optional(Schema.String),
-      failureCount: Schema.optional(Schema.Number),
-      skippedCount: Schema.optional(Schema.Number),
-      xmlSource: Schema.optional(FileReference),
-      totalCount: Schema.optional(Schema.Number),
-      flakyCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "TestSuiteOverview",
-  }) as any as Schema.Schema<TestSuiteOverview>;
+export const TestSuiteOverview = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  errorCount: Schema.optional(Schema.Number),
+  elapsedTime: Schema.optional(Duration),
+  name: Schema.optional(Schema.String),
+  failureCount: Schema.optional(Schema.Number),
+  skippedCount: Schema.optional(Schema.Number),
+  xmlSource: Schema.optional(FileReference),
+  totalCount: Schema.optional(Schema.Number),
+  flakyCount: Schema.optional(Schema.Number),
+}).annotate({ identifier: "TestSuiteOverview" });
 
 export interface TestExecutionStep {
   /** Represents the execution of the test runner. The exit code of this tool will be used to determine if the test passed. - In response: always set - In create/update request: optional */
@@ -740,17 +603,12 @@ export interface TestExecutionStep {
   testIssues?: Array<TestIssue>;
 }
 
-export const TestExecutionStep: Schema.Schema<TestExecutionStep> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      toolExecution: Schema.optional(ToolExecution),
-      testTiming: Schema.optional(TestTiming),
-      testSuiteOverviews: Schema.optional(Schema.Array(TestSuiteOverview)),
-      testIssues: Schema.optional(Schema.Array(TestIssue)),
-    }),
-  ).annotate({
-    identifier: "TestExecutionStep",
-  }) as any as Schema.Schema<TestExecutionStep>;
+export const TestExecutionStep = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  toolExecution: Schema.optional(ToolExecution),
+  testTiming: Schema.optional(TestTiming),
+  testSuiteOverviews: Schema.optional(Schema.Array(TestSuiteOverview)),
+  testIssues: Schema.optional(Schema.Array(TestIssue)),
+}).annotate({ identifier: "TestExecutionStep" });
 
 export interface Step {
   /** An execution of a tool (used for steps we don't explicitly support). */
@@ -790,26 +648,23 @@ export interface Step {
   testExecutionStep?: TestExecutionStep;
 }
 
-export const Step: Schema.Schema<Step> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      toolExecutionStep: Schema.optional(ToolExecutionStep),
-      hasImages: Schema.optional(Schema.Boolean),
-      completionTime: Schema.optional(Timestamp),
-      dimensionValue: Schema.optional(Schema.Array(StepDimensionValueEntry)),
-      multiStep: Schema.optional(MultiStep),
-      labels: Schema.optional(Schema.Array(StepLabelsEntry)),
-      creationTime: Schema.optional(Timestamp),
-      stepId: Schema.optional(Schema.String),
-      runDuration: Schema.optional(Duration),
-      outcome: Schema.optional(Outcome),
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      deviceUsageDuration: Schema.optional(Duration),
-      state: Schema.optional(Schema.String),
-      testExecutionStep: Schema.optional(TestExecutionStep),
-    }),
-  ).annotate({ identifier: "Step" }) as any as Schema.Schema<Step>;
+export const Step = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  toolExecutionStep: Schema.optional(ToolExecutionStep),
+  hasImages: Schema.optional(Schema.Boolean),
+  completionTime: Schema.optional(Timestamp),
+  dimensionValue: Schema.optional(Schema.Array(StepDimensionValueEntry)),
+  multiStep: Schema.optional(MultiStep),
+  labels: Schema.optional(Schema.Array(StepLabelsEntry)),
+  creationTime: Schema.optional(Timestamp),
+  stepId: Schema.optional(Schema.String),
+  runDuration: Schema.optional(Duration),
+  outcome: Schema.optional(Outcome),
+  name: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  deviceUsageDuration: Schema.optional(Duration),
+  state: Schema.optional(Schema.String),
+  testExecutionStep: Schema.optional(TestExecutionStep),
+}).annotate({ identifier: "Step" });
 
 export interface ListStepsResponse {
   /** Steps. */
@@ -818,53 +673,36 @@ export interface ListStepsResponse {
   nextPageToken?: string;
 }
 
-export const ListStepsResponse: Schema.Schema<ListStepsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      steps: Schema.optional(Schema.Array(Step)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListStepsResponse",
-  }) as any as Schema.Schema<ListStepsResponse>;
+export const ListStepsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  steps: Schema.optional(Schema.Array(Step)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListStepsResponse" });
 
 export interface SafeHtmlProto {
   /** IMPORTANT: Never set or read this field, even from tests, it is private. See documentation at the top of .proto file for programming language packages with which to create or read this message. */
   privateDoNotAccessOrElseSafeHtmlWrappedValue?: string;
 }
 
-export const SafeHtmlProto: Schema.Schema<SafeHtmlProto> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      privateDoNotAccessOrElseSafeHtmlWrappedValue: Schema.optional(
-        Schema.String,
-      ),
-    }),
-  ).annotate({
-    identifier: "SafeHtmlProto",
-  }) as any as Schema.Schema<SafeHtmlProto>;
+export const SafeHtmlProto = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  privateDoNotAccessOrElseSafeHtmlWrappedValue: Schema.optional(Schema.String),
+}).annotate({ identifier: "SafeHtmlProto" });
 
 export interface UnspecifiedWarning {}
 
-export const UnspecifiedWarning: Schema.Schema<UnspecifiedWarning> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "UnspecifiedWarning",
-  }) as any as Schema.Schema<UnspecifiedWarning>;
+export const UnspecifiedWarning = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "UnspecifiedWarning" });
 
 export interface EnvironmentDimensionValueEntry {
   key?: string;
   value?: string;
 }
 
-export const EnvironmentDimensionValueEntry: Schema.Schema<EnvironmentDimensionValueEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      key: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnvironmentDimensionValueEntry",
-  }) as any as Schema.Schema<EnvironmentDimensionValueEntry>;
+export const EnvironmentDimensionValueEntry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    key: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EnvironmentDimensionValueEntry" });
 
 export interface RegionProto {
   /** The left side of the rectangle, in pixels. Always set. */
@@ -877,17 +715,12 @@ export interface RegionProto {
   topPx?: number;
 }
 
-export const RegionProto: Schema.Schema<RegionProto> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      leftPx: Schema.optional(Schema.Number),
-      heightPx: Schema.optional(Schema.Number),
-      widthPx: Schema.optional(Schema.Number),
-      topPx: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "RegionProto",
-  }) as any as Schema.Schema<RegionProto>;
+export const RegionProto = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  leftPx: Schema.optional(Schema.Number),
+  heightPx: Schema.optional(Schema.Number),
+  widthPx: Schema.optional(Schema.Number),
+  topPx: Schema.optional(Schema.Number),
+}).annotate({ identifier: "RegionProto" });
 
 export interface SuggestionProto {
   /** General title for the suggestion, in the user's language, without markup. Always set. */
@@ -912,23 +745,18 @@ export interface SuggestionProto {
   secondaryPriority?: number;
 }
 
-export const SuggestionProto: Schema.Schema<SuggestionProto> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-      longMessage: Schema.optional(SafeHtmlProto),
-      priority: Schema.optional(Schema.String),
-      pseudoResourceId: Schema.optional(Schema.String),
-      region: Schema.optional(RegionProto),
-      screenId: Schema.optional(Schema.String),
-      shortMessage: Schema.optional(SafeHtmlProto),
-      resourceName: Schema.optional(Schema.String),
-      helpUrl: Schema.optional(Schema.String),
-      secondaryPriority: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "SuggestionProto",
-  }) as any as Schema.Schema<SuggestionProto>;
+export const SuggestionProto = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  title: Schema.optional(Schema.String),
+  longMessage: Schema.optional(SafeHtmlProto),
+  priority: Schema.optional(Schema.String),
+  pseudoResourceId: Schema.optional(Schema.String),
+  region: Schema.optional(RegionProto),
+  screenId: Schema.optional(Schema.String),
+  shortMessage: Schema.optional(SafeHtmlProto),
+  resourceName: Schema.optional(Schema.String),
+  helpUrl: Schema.optional(Schema.String),
+  secondaryPriority: Schema.optional(Schema.Number),
+}).annotate({ identifier: "SuggestionProto" });
 
 export interface SuggestionClusterProto {
   /** A sequence of suggestions. All of the suggestions within a cluster must have the same SuggestionPriority and belong to the same SuggestionCategory. Suggestions with the same screenshot URL should be adjacent. */
@@ -943,15 +771,12 @@ export interface SuggestionClusterProto {
     | (string & {});
 }
 
-export const SuggestionClusterProto: Schema.Schema<SuggestionClusterProto> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      suggestions: Schema.optional(Schema.Array(SuggestionProto)),
-      category: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SuggestionClusterProto",
-  }) as any as Schema.Schema<SuggestionClusterProto>;
+export const SuggestionClusterProto = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    suggestions: Schema.optional(Schema.Array(SuggestionProto)),
+    category: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "SuggestionClusterProto" });
 
 export interface ListStepAccessibilityClustersResponse {
   /** A sequence of accessibility suggestions, grouped into clusters. Within the sequence, clusters that belong to the same SuggestionCategory should be adjacent. Within each category, clusters should be ordered by their SuggestionPriority (ERRORs first). The categories should be ordered by their highest priority cluster. */
@@ -960,15 +785,11 @@ export interface ListStepAccessibilityClustersResponse {
   name?: string;
 }
 
-export const ListStepAccessibilityClustersResponse: Schema.Schema<ListStepAccessibilityClustersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clusters: Schema.optional(Schema.Array(SuggestionClusterProto)),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListStepAccessibilityClustersResponse",
-  }) as any as Schema.Schema<ListStepAccessibilityClustersResponse>;
+export const ListStepAccessibilityClustersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    clusters: Schema.optional(Schema.Array(SuggestionClusterProto)),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListStepAccessibilityClustersResponse" });
 
 export interface ListPerfSamplesResponse {
   perfSamples?: Array<PerfSample>;
@@ -976,29 +797,21 @@ export interface ListPerfSamplesResponse {
   nextPageToken?: string;
 }
 
-export const ListPerfSamplesResponse: Schema.Schema<ListPerfSamplesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      perfSamples: Schema.optional(Schema.Array(PerfSample)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListPerfSamplesResponse",
-  }) as any as Schema.Schema<ListPerfSamplesResponse>;
+export const ListPerfSamplesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    perfSamples: Schema.optional(Schema.Array(PerfSample)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListPerfSamplesResponse" });
 
 export interface UsedRoboIgnoreDirective {
   /** The name of the resource that was ignored. */
   resourceName?: string;
 }
 
-export const UsedRoboIgnoreDirective: Schema.Schema<UsedRoboIgnoreDirective> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UsedRoboIgnoreDirective",
-  }) as any as Schema.Schema<UsedRoboIgnoreDirective>;
+export const UsedRoboIgnoreDirective =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UsedRoboIgnoreDirective" });
 
 export interface ResultsStorage {
   /** The root directory for test results. */
@@ -1007,22 +820,16 @@ export interface ResultsStorage {
   xunitXmlFile?: FileReference;
 }
 
-export const ResultsStorage: Schema.Schema<ResultsStorage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resultsStoragePath: Schema.optional(FileReference),
-      xunitXmlFile: Schema.optional(FileReference),
-    }),
-  ).annotate({
-    identifier: "ResultsStorage",
-  }) as any as Schema.Schema<ResultsStorage>;
+export const ResultsStorage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resultsStoragePath: Schema.optional(FileReference),
+  xunitXmlFile: Schema.optional(FileReference),
+}).annotate({ identifier: "ResultsStorage" });
 
 export interface StepSummary {}
 
-export const StepSummary: Schema.Schema<StepSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "StepSummary",
-  }) as any as Schema.Schema<StepSummary>;
+export const StepSummary = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "StepSummary" });
 
 export interface MergedResult {
   /** The combined and rolled-up result of each test suite that was run as part of this environment. Combining: When the test cases from a suite are run in different steps (sharding), the results are added back together in one overview. (e.g., if shard1 has 2 failures and shard2 has 1 failure than the overview failure_count = 3). Rollup: When test cases from the same suite are run multiple times (flaky), the results are combined (e.g., if testcase1.run1 fails, testcase1.run2 passes, and both testcase2.run1 and testcase2.run2 fail then the overview flaky_count = 1 and failure_count = 1). */
@@ -1038,16 +845,11 @@ export interface MergedResult {
   outcome?: Outcome;
 }
 
-export const MergedResult: Schema.Schema<MergedResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      testSuiteOverviews: Schema.optional(Schema.Array(TestSuiteOverview)),
-      state: Schema.optional(Schema.String),
-      outcome: Schema.optional(Outcome),
-    }),
-  ).annotate({
-    identifier: "MergedResult",
-  }) as any as Schema.Schema<MergedResult>;
+export const MergedResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  testSuiteOverviews: Schema.optional(Schema.Array(TestSuiteOverview)),
+  state: Schema.optional(Schema.String),
+  outcome: Schema.optional(Outcome),
+}).annotate({ identifier: "MergedResult" });
 
 export interface ShardSummary {
   /** Summaries of the steps belonging to the shard. With flaky_test_attempts enabled from TestExecutionService, more than one run (Step) can present. And the runs will be sorted by multistep_number. */
@@ -1056,15 +858,10 @@ export interface ShardSummary {
   shardResult?: MergedResult;
 }
 
-export const ShardSummary: Schema.Schema<ShardSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      runs: Schema.optional(Schema.Array(StepSummary)),
-      shardResult: Schema.optional(MergedResult),
-    }),
-  ).annotate({
-    identifier: "ShardSummary",
-  }) as any as Schema.Schema<ShardSummary>;
+export const ShardSummary = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  runs: Schema.optional(Schema.Array(StepSummary)),
+  shardResult: Schema.optional(MergedResult),
+}).annotate({ identifier: "ShardSummary" });
 
 export interface Environment {
   /** Output only. A Project id. */
@@ -1091,26 +888,19 @@ export interface Environment {
   displayName?: string;
 }
 
-export const Environment: Schema.Schema<Environment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      projectId: Schema.optional(Schema.String),
-      executionId: Schema.optional(Schema.String),
-      creationTime: Schema.optional(Timestamp),
-      resultsStorage: Schema.optional(ResultsStorage),
-      environmentId: Schema.optional(Schema.String),
-      completionTime: Schema.optional(Timestamp),
-      historyId: Schema.optional(Schema.String),
-      dimensionValue: Schema.optional(
-        Schema.Array(EnvironmentDimensionValueEntry),
-      ),
-      shardSummaries: Schema.optional(Schema.Array(ShardSummary)),
-      environmentResult: Schema.optional(MergedResult),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Environment",
-  }) as any as Schema.Schema<Environment>;
+export const Environment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  projectId: Schema.optional(Schema.String),
+  executionId: Schema.optional(Schema.String),
+  creationTime: Schema.optional(Timestamp),
+  resultsStorage: Schema.optional(ResultsStorage),
+  environmentId: Schema.optional(Schema.String),
+  completionTime: Schema.optional(Timestamp),
+  historyId: Schema.optional(Schema.String),
+  dimensionValue: Schema.optional(Schema.Array(EnvironmentDimensionValueEntry)),
+  shardSummaries: Schema.optional(Schema.Array(ShardSummary)),
+  environmentResult: Schema.optional(MergedResult),
+  displayName: Schema.optional(Schema.String),
+}).annotate({ identifier: "Environment" });
 
 export interface ListEnvironmentsResponse {
   /** A History id. Always set. */
@@ -1125,44 +915,33 @@ export interface ListEnvironmentsResponse {
   nextPageToken?: string;
 }
 
-export const ListEnvironmentsResponse: Schema.Schema<ListEnvironmentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      historyId: Schema.optional(Schema.String),
-      executionId: Schema.optional(Schema.String),
-      projectId: Schema.optional(Schema.String),
-      environments: Schema.optional(Schema.Array(Environment)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListEnvironmentsResponse",
-  }) as any as Schema.Schema<ListEnvironmentsResponse>;
+export const ListEnvironmentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    historyId: Schema.optional(Schema.String),
+    executionId: Schema.optional(Schema.String),
+    projectId: Schema.optional(Schema.String),
+    environments: Schema.optional(Schema.Array(Environment)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListEnvironmentsResponse" });
 
 export interface ANR {
   /** The stack trace of the ANR crash. Optional. */
   stackTrace?: StackTrace;
 }
 
-export const ANR: Schema.Schema<ANR> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stackTrace: Schema.optional(StackTrace),
-    }),
-  ).annotate({ identifier: "ANR" }) as any as Schema.Schema<ANR>;
+export const ANR = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  stackTrace: Schema.optional(StackTrace),
+}).annotate({ identifier: "ANR" });
 
 export interface PublishXunitXmlFilesRequest {
   /** URI of the Xunit XML files to publish. The maximum size of the file this reference is pointing to is 50MB. Required. */
   xunitXmlFiles?: Array<FileReference>;
 }
 
-export const PublishXunitXmlFilesRequest: Schema.Schema<PublishXunitXmlFilesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      xunitXmlFiles: Schema.optional(Schema.Array(FileReference)),
-    }),
-  ).annotate({
-    identifier: "PublishXunitXmlFilesRequest",
-  }) as any as Schema.Schema<PublishXunitXmlFilesRequest>;
+export const PublishXunitXmlFilesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    xunitXmlFiles: Schema.optional(Schema.Array(FileReference)),
+  }).annotate({ identifier: "PublishXunitXmlFilesRequest" });
 
 export interface CPUInfo {
   /** description of the device processor ie '1.8 GHz hexa core 64-bit ARMv8-A' */
@@ -1173,14 +952,11 @@ export interface CPUInfo {
   numberOfCores?: number;
 }
 
-export const CPUInfo: Schema.Schema<CPUInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cpuProcessor: Schema.optional(Schema.String),
-      cpuSpeedInGhz: Schema.optional(Schema.Number),
-      numberOfCores: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "CPUInfo" }) as any as Schema.Schema<CPUInfo>;
+export const CPUInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cpuProcessor: Schema.optional(Schema.String),
+  cpuSpeedInGhz: Schema.optional(Schema.Number),
+  numberOfCores: Schema.optional(Schema.Number),
+}).annotate({ identifier: "CPUInfo" });
 
 export interface Thumbnail {
   /** The thumbnail's content type, i.e. "image/png". Always set. */
@@ -1193,36 +969,27 @@ export interface Thumbnail {
   data?: string;
 }
 
-export const Thumbnail: Schema.Schema<Thumbnail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contentType: Schema.optional(Schema.String),
-      heightPx: Schema.optional(Schema.Number),
-      widthPx: Schema.optional(Schema.Number),
-      data: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Thumbnail" }) as any as Schema.Schema<Thumbnail>;
+export const Thumbnail = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  contentType: Schema.optional(Schema.String),
+  heightPx: Schema.optional(Schema.Number),
+  widthPx: Schema.optional(Schema.Number),
+  data: Schema.optional(Schema.String),
+}).annotate({ identifier: "Thumbnail" });
 
 export interface AvailableDeepLinks {}
 
-export const AvailableDeepLinks: Schema.Schema<AvailableDeepLinks> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "AvailableDeepLinks",
-  }) as any as Schema.Schema<AvailableDeepLinks>;
+export const AvailableDeepLinks = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "AvailableDeepLinks" });
 
 export interface FatalException {
   /** The stack trace of the fatal exception. Optional. */
   stackTrace?: StackTrace;
 }
 
-export const FatalException: Schema.Schema<FatalException> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stackTrace: Schema.optional(StackTrace),
-    }),
-  ).annotate({
-    identifier: "FatalException",
-  }) as any as Schema.Schema<FatalException>;
+export const FatalException = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  stackTrace: Schema.optional(StackTrace),
+}).annotate({ identifier: "FatalException" });
 
 export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
@@ -1233,23 +1000,20 @@ export interface Status {
   code?: number;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      message: Schema.optional(Schema.String),
-      code: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  message: Schema.optional(Schema.String),
+  code: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Status" });
 
 export interface DetectedAppSplashScreen {}
 
-export const DetectedAppSplashScreen: Schema.Schema<DetectedAppSplashScreen> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const DetectedAppSplashScreen =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DetectedAppSplashScreen",
-  }) as any as Schema.Schema<DetectedAppSplashScreen>;
+  });
 
 export interface AndroidRoboTest {
   /** The initial activity that should be used to start the app. Optional */
@@ -1264,32 +1028,22 @@ export interface AndroidRoboTest {
   maxDepth?: number;
 }
 
-export const AndroidRoboTest: Schema.Schema<AndroidRoboTest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      appInitialActivity: Schema.optional(Schema.String),
-      bootstrapPackageId: Schema.optional(Schema.String),
-      maxSteps: Schema.optional(Schema.Number),
-      bootstrapRunnerClass: Schema.optional(Schema.String),
-      maxDepth: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "AndroidRoboTest",
-  }) as any as Schema.Schema<AndroidRoboTest>;
+export const AndroidRoboTest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  appInitialActivity: Schema.optional(Schema.String),
+  bootstrapPackageId: Schema.optional(Schema.String),
+  maxSteps: Schema.optional(Schema.Number),
+  bootstrapRunnerClass: Schema.optional(Schema.String),
+  maxDepth: Schema.optional(Schema.Number),
+}).annotate({ identifier: "AndroidRoboTest" });
 
 export interface CrashDialogError {
   /** The name of the package that caused the dialog. */
   crashPackage?: string;
 }
 
-export const CrashDialogError: Schema.Schema<CrashDialogError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      crashPackage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CrashDialogError",
-  }) as any as Schema.Schema<CrashDialogError>;
+export const CrashDialogError = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  crashPackage: Schema.optional(Schema.String),
+}).annotate({ identifier: "CrashDialogError" });
 
 export interface NonSdkApiUsageViolationReport {
   /** Minimum API level required for the application to run. */
@@ -1302,17 +1056,13 @@ export interface NonSdkApiUsageViolationReport {
   targetSdkVersion?: number;
 }
 
-export const NonSdkApiUsageViolationReport: Schema.Schema<NonSdkApiUsageViolationReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      minSdkVersion: Schema.optional(Schema.Number),
-      exampleApis: Schema.optional(Schema.Array(NonSdkApi)),
-      uniqueApis: Schema.optional(Schema.Number),
-      targetSdkVersion: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "NonSdkApiUsageViolationReport",
-  }) as any as Schema.Schema<NonSdkApiUsageViolationReport>;
+export const NonSdkApiUsageViolationReport =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    minSdkVersion: Schema.optional(Schema.Number),
+    exampleApis: Schema.optional(Schema.Array(NonSdkApi)),
+    uniqueApis: Schema.optional(Schema.Number),
+    targetSdkVersion: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "NonSdkApiUsageViolationReport" });
 
 export interface MemoryInfo {
   /** Total memory available on the device in KiB */
@@ -1321,13 +1071,10 @@ export interface MemoryInfo {
   memoryCapInKibibyte?: string;
 }
 
-export const MemoryInfo: Schema.Schema<MemoryInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      memoryTotalInKibibyte: Schema.optional(Schema.String),
-      memoryCapInKibibyte: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "MemoryInfo" }) as any as Schema.Schema<MemoryInfo>;
+export const MemoryInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  memoryTotalInKibibyte: Schema.optional(Schema.String),
+  memoryCapInKibibyte: Schema.optional(Schema.String),
+}).annotate({ identifier: "MemoryInfo" });
 
 export interface PerfEnvironment {
   /** CPU related environment info */
@@ -1336,29 +1083,19 @@ export interface PerfEnvironment {
   memoryInfo?: MemoryInfo;
 }
 
-export const PerfEnvironment: Schema.Schema<PerfEnvironment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cpuInfo: Schema.optional(CPUInfo),
-      memoryInfo: Schema.optional(MemoryInfo),
-    }),
-  ).annotate({
-    identifier: "PerfEnvironment",
-  }) as any as Schema.Schema<PerfEnvironment>;
+export const PerfEnvironment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cpuInfo: Schema.optional(CPUInfo),
+  memoryInfo: Schema.optional(MemoryInfo),
+}).annotate({ identifier: "PerfEnvironment" });
 
 export interface IosTestLoop {
   /** Bundle ID of the app. */
   bundleId?: string;
 }
 
-export const IosTestLoop: Schema.Schema<IosTestLoop> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bundleId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "IosTestLoop",
-  }) as any as Schema.Schema<IosTestLoop>;
+export const IosTestLoop = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bundleId: Schema.optional(Schema.String),
+}).annotate({ identifier: "IosTestLoop" });
 
 export interface BasicPerfSampleSeries {
   sampleSeriesLabel?:
@@ -1393,16 +1130,11 @@ export interface BasicPerfSampleSeries {
     | (string & {});
 }
 
-export const BasicPerfSampleSeries: Schema.Schema<BasicPerfSampleSeries> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sampleSeriesLabel: Schema.optional(Schema.String),
-      perfMetricType: Schema.optional(Schema.String),
-      perfUnit: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BasicPerfSampleSeries",
-  }) as any as Schema.Schema<BasicPerfSampleSeries>;
+export const BasicPerfSampleSeries = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sampleSeriesLabel: Schema.optional(Schema.String),
+  perfMetricType: Schema.optional(Schema.String),
+  perfUnit: Schema.optional(Schema.String),
+}).annotate({ identifier: "BasicPerfSampleSeries" });
 
 export interface PerfSampleSeries {
   /** A sample series id @OutputOnly */
@@ -1419,33 +1151,24 @@ export interface PerfSampleSeries {
   executionId?: string;
 }
 
-export const PerfSampleSeries: Schema.Schema<PerfSampleSeries> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sampleSeriesId: Schema.optional(Schema.String),
-      projectId: Schema.optional(Schema.String),
-      basicPerfSampleSeries: Schema.optional(BasicPerfSampleSeries),
-      historyId: Schema.optional(Schema.String),
-      stepId: Schema.optional(Schema.String),
-      executionId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PerfSampleSeries",
-  }) as any as Schema.Schema<PerfSampleSeries>;
+export const PerfSampleSeries = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sampleSeriesId: Schema.optional(Schema.String),
+  projectId: Schema.optional(Schema.String),
+  basicPerfSampleSeries: Schema.optional(BasicPerfSampleSeries),
+  historyId: Schema.optional(Schema.String),
+  stepId: Schema.optional(Schema.String),
+  executionId: Schema.optional(Schema.String),
+}).annotate({ identifier: "PerfSampleSeries" });
 
 export interface ListPerfSampleSeriesResponse {
   /** The resulting PerfSampleSeries sorted by id */
   perfSampleSeries?: Array<PerfSampleSeries>;
 }
 
-export const ListPerfSampleSeriesResponse: Schema.Schema<ListPerfSampleSeriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      perfSampleSeries: Schema.optional(Schema.Array(PerfSampleSeries)),
-    }),
-  ).annotate({
-    identifier: "ListPerfSampleSeriesResponse",
-  }) as any as Schema.Schema<ListPerfSampleSeriesResponse>;
+export const ListPerfSampleSeriesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    perfSampleSeries: Schema.optional(Schema.Array(PerfSampleSeries)),
+  }).annotate({ identifier: "ListPerfSampleSeriesResponse" });
 
 export interface RoboScriptExecution {
   /** The total number of actions in the Robo script. */
@@ -1454,15 +1177,10 @@ export interface RoboScriptExecution {
   successfulActions?: number;
 }
 
-export const RoboScriptExecution: Schema.Schema<RoboScriptExecution> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      totalActions: Schema.optional(Schema.Number),
-      successfulActions: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "RoboScriptExecution",
-  }) as any as Schema.Schema<RoboScriptExecution>;
+export const RoboScriptExecution = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  totalActions: Schema.optional(Schema.Number),
+  successfulActions: Schema.optional(Schema.Number),
+}).annotate({ identifier: "RoboScriptExecution" });
 
 export interface NonSdkApiUsageViolation {
   /** Total number of unique hidden API's accessed. */
@@ -1471,15 +1189,11 @@ export interface NonSdkApiUsageViolation {
   apiSignatures?: Array<string>;
 }
 
-export const NonSdkApiUsageViolation: Schema.Schema<NonSdkApiUsageViolation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uniqueApis: Schema.optional(Schema.Number),
-      apiSignatures: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "NonSdkApiUsageViolation",
-  }) as any as Schema.Schema<NonSdkApiUsageViolation>;
+export const NonSdkApiUsageViolation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uniqueApis: Schema.optional(Schema.Number),
+    apiSignatures: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "NonSdkApiUsageViolation" });
 
 export interface AndroidAppInfo {
   /** The internal version code of the app. Optional. */
@@ -1492,24 +1206,18 @@ export interface AndroidAppInfo {
   name?: string;
 }
 
-export const AndroidAppInfo: Schema.Schema<AndroidAppInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      versionCode: Schema.optional(Schema.String),
-      versionName: Schema.optional(Schema.String),
-      packageName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AndroidAppInfo",
-  }) as any as Schema.Schema<AndroidAppInfo>;
+export const AndroidAppInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  versionCode: Schema.optional(Schema.String),
+  versionName: Schema.optional(Schema.String),
+  packageName: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "AndroidAppInfo" });
 
 export interface AndroidTestLoop {}
 
-export const AndroidTestLoop: Schema.Schema<AndroidTestLoop> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "AndroidTestLoop",
-  }) as any as Schema.Schema<AndroidTestLoop>;
+export const AndroidTestLoop = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "AndroidTestLoop" });
 
 export interface AndroidTest {
   /** Max time a test is allowed to run before it is automatically cancelled. */
@@ -1524,25 +1232,19 @@ export interface AndroidTest {
   androidTestLoop?: AndroidTestLoop;
 }
 
-export const AndroidTest: Schema.Schema<AndroidTest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      testTimeout: Schema.optional(Duration),
-      androidRoboTest: Schema.optional(AndroidRoboTest),
-      androidInstrumentationTest: Schema.optional(AndroidInstrumentationTest),
-      androidAppInfo: Schema.optional(AndroidAppInfo),
-      androidTestLoop: Schema.optional(AndroidTestLoop),
-    }),
-  ).annotate({
-    identifier: "AndroidTest",
-  }) as any as Schema.Schema<AndroidTest>;
+export const AndroidTest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  testTimeout: Schema.optional(Duration),
+  androidRoboTest: Schema.optional(AndroidRoboTest),
+  androidInstrumentationTest: Schema.optional(AndroidInstrumentationTest),
+  androidAppInfo: Schema.optional(AndroidAppInfo),
+  androidTestLoop: Schema.optional(AndroidTestLoop),
+}).annotate({ identifier: "AndroidTest" });
 
 export interface IosRoboTest {}
 
-export const IosRoboTest: Schema.Schema<IosRoboTest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "IosRoboTest",
-  }) as any as Schema.Schema<IosRoboTest>;
+export const IosRoboTest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "IosRoboTest" });
 
 export interface IosXcTest {
   /** Bundle ID of the app. */
@@ -1551,25 +1253,19 @@ export interface IosXcTest {
   xcodeVersion?: string;
 }
 
-export const IosXcTest: Schema.Schema<IosXcTest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bundleId: Schema.optional(Schema.String),
-      xcodeVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "IosXcTest" }) as any as Schema.Schema<IosXcTest>;
+export const IosXcTest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bundleId: Schema.optional(Schema.String),
+  xcodeVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "IosXcTest" });
 
 export interface IosAppInfo {
   /** The name of the app. Required */
   name?: string;
 }
 
-export const IosAppInfo: Schema.Schema<IosAppInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "IosAppInfo" }) as any as Schema.Schema<IosAppInfo>;
+export const IosAppInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "IosAppInfo" });
 
 export interface IosTest {
   /** An iOS test loop. */
@@ -1584,16 +1280,13 @@ export interface IosTest {
   testTimeout?: Duration;
 }
 
-export const IosTest: Schema.Schema<IosTest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      iosTestLoop: Schema.optional(IosTestLoop),
-      iosRoboTest: Schema.optional(IosRoboTest),
-      iosXcTest: Schema.optional(IosXcTest),
-      iosAppInfo: Schema.optional(IosAppInfo),
-      testTimeout: Schema.optional(Duration),
-    }),
-  ).annotate({ identifier: "IosTest" }) as any as Schema.Schema<IosTest>;
+export const IosTest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  iosTestLoop: Schema.optional(IosTestLoop),
+  iosRoboTest: Schema.optional(IosRoboTest),
+  iosXcTest: Schema.optional(IosXcTest),
+  iosAppInfo: Schema.optional(IosAppInfo),
+  testTimeout: Schema.optional(Duration),
+}).annotate({ identifier: "IosTest" });
 
 export interface Specification {
   /** An Android mobile test execution specification. */
@@ -1602,22 +1295,16 @@ export interface Specification {
   iosTest?: IosTest;
 }
 
-export const Specification: Schema.Schema<Specification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      androidTest: Schema.optional(AndroidTest),
-      iosTest: Schema.optional(IosTest),
-    }),
-  ).annotate({
-    identifier: "Specification",
-  }) as any as Schema.Schema<Specification>;
+export const Specification = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  androidTest: Schema.optional(AndroidTest),
+  iosTest: Schema.optional(IosTest),
+}).annotate({ identifier: "Specification" });
 
 export interface PerformedGoogleLogin {}
 
-export const PerformedGoogleLogin: Schema.Schema<PerformedGoogleLogin> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "PerformedGoogleLogin",
-  }) as any as Schema.Schema<PerformedGoogleLogin>;
+export const PerformedGoogleLogin = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "PerformedGoogleLogin" });
 
 export interface AppStartTime {
   /** The time from app start to the first displayed activity being drawn, as reported in Logcat. See https://developer.android.com/topic/performance/launch-time.html#time-initial */
@@ -1626,15 +1313,10 @@ export interface AppStartTime {
   fullyDrawnTime?: Duration;
 }
 
-export const AppStartTime: Schema.Schema<AppStartTime> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      initialDisplayTime: Schema.optional(Duration),
-      fullyDrawnTime: Schema.optional(Duration),
-    }),
-  ).annotate({
-    identifier: "AppStartTime",
-  }) as any as Schema.Schema<AppStartTime>;
+export const AppStartTime = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  initialDisplayTime: Schema.optional(Duration),
+  fullyDrawnTime: Schema.optional(Duration),
+}).annotate({ identifier: "AppStartTime" });
 
 export interface GraphicsStatsBucket {
   /** Number of frames in the bucket. */
@@ -1643,15 +1325,10 @@ export interface GraphicsStatsBucket {
   renderMillis?: string;
 }
 
-export const GraphicsStatsBucket: Schema.Schema<GraphicsStatsBucket> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      frameCount: Schema.optional(Schema.String),
-      renderMillis: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GraphicsStatsBucket",
-  }) as any as Schema.Schema<GraphicsStatsBucket>;
+export const GraphicsStatsBucket = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  frameCount: Schema.optional(Schema.String),
+  renderMillis: Schema.optional(Schema.String),
+}).annotate({ identifier: "GraphicsStatsBucket" });
 
 export interface GraphicsStats {
   /** 90th percentile frame render time in milliseconds. */
@@ -1680,25 +1357,20 @@ export interface GraphicsStats {
   missedVsyncCount?: string;
 }
 
-export const GraphicsStats: Schema.Schema<GraphicsStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      p90Millis: Schema.optional(Schema.String),
-      slowUiThreadCount: Schema.optional(Schema.String),
-      p99Millis: Schema.optional(Schema.String),
-      totalFrames: Schema.optional(Schema.String),
-      jankyFrames: Schema.optional(Schema.String),
-      p95Millis: Schema.optional(Schema.String),
-      buckets: Schema.optional(Schema.Array(GraphicsStatsBucket)),
-      highInputLatencyCount: Schema.optional(Schema.String),
-      p50Millis: Schema.optional(Schema.String),
-      slowBitmapUploadCount: Schema.optional(Schema.String),
-      slowDrawCount: Schema.optional(Schema.String),
-      missedVsyncCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GraphicsStats",
-  }) as any as Schema.Schema<GraphicsStats>;
+export const GraphicsStats = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  p90Millis: Schema.optional(Schema.String),
+  slowUiThreadCount: Schema.optional(Schema.String),
+  p99Millis: Schema.optional(Schema.String),
+  totalFrames: Schema.optional(Schema.String),
+  jankyFrames: Schema.optional(Schema.String),
+  p95Millis: Schema.optional(Schema.String),
+  buckets: Schema.optional(Schema.Array(GraphicsStatsBucket)),
+  highInputLatencyCount: Schema.optional(Schema.String),
+  p50Millis: Schema.optional(Schema.String),
+  slowBitmapUploadCount: Schema.optional(Schema.String),
+  slowDrawCount: Schema.optional(Schema.String),
+  missedVsyncCount: Schema.optional(Schema.String),
+}).annotate({ identifier: "GraphicsStats" });
 
 export interface PerfMetricsSummary {
   /** Set of resource collected */
@@ -1725,21 +1397,16 @@ export interface PerfMetricsSummary {
   graphicsStats?: GraphicsStats;
 }
 
-export const PerfMetricsSummary: Schema.Schema<PerfMetricsSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      perfMetrics: Schema.optional(Schema.Array(Schema.String)),
-      projectId: Schema.optional(Schema.String),
-      historyId: Schema.optional(Schema.String),
-      stepId: Schema.optional(Schema.String),
-      executionId: Schema.optional(Schema.String),
-      appStartTime: Schema.optional(AppStartTime),
-      perfEnvironment: Schema.optional(PerfEnvironment),
-      graphicsStats: Schema.optional(GraphicsStats),
-    }),
-  ).annotate({
-    identifier: "PerfMetricsSummary",
-  }) as any as Schema.Schema<PerfMetricsSummary>;
+export const PerfMetricsSummary = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  perfMetrics: Schema.optional(Schema.Array(Schema.String)),
+  projectId: Schema.optional(Schema.String),
+  historyId: Schema.optional(Schema.String),
+  stepId: Schema.optional(Schema.String),
+  executionId: Schema.optional(Schema.String),
+  appStartTime: Schema.optional(AppStartTime),
+  perfEnvironment: Schema.optional(PerfEnvironment),
+  graphicsStats: Schema.optional(GraphicsStats),
+}).annotate({ identifier: "PerfMetricsSummary" });
 
 export interface Screen {
   /** Model of the device that the screenshot was taken on. Required. */
@@ -1752,64 +1419,46 @@ export interface Screen {
   fileReference?: string;
 }
 
-export const Screen: Schema.Schema<Screen> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      model: Schema.optional(Schema.String),
-      locale: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-      fileReference: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Screen" }) as any as Schema.Schema<Screen>;
+export const Screen = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  model: Schema.optional(Schema.String),
+  locale: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+  fileReference: Schema.optional(Schema.String),
+}).annotate({ identifier: "Screen" });
 
 export interface BlankScreen {
   /** The screen id of the element */
   screenId?: string;
 }
 
-export const BlankScreen: Schema.Schema<BlankScreen> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      screenId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BlankScreen",
-  }) as any as Schema.Schema<BlankScreen>;
+export const BlankScreen = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  screenId: Schema.optional(Schema.String),
+}).annotate({ identifier: "BlankScreen" });
 
 export interface FailedToInstall {}
 
-export const FailedToInstall: Schema.Schema<FailedToInstall> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "FailedToInstall",
-  }) as any as Schema.Schema<FailedToInstall>;
+export const FailedToInstall = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "FailedToInstall" });
 
 export interface BatchCreatePerfSamplesResponse {
   perfSamples?: Array<PerfSample>;
 }
 
-export const BatchCreatePerfSamplesResponse: Schema.Schema<BatchCreatePerfSamplesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      perfSamples: Schema.optional(Schema.Array(PerfSample)),
-    }),
-  ).annotate({
-    identifier: "BatchCreatePerfSamplesResponse",
-  }) as any as Schema.Schema<BatchCreatePerfSamplesResponse>;
+export const BatchCreatePerfSamplesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    perfSamples: Schema.optional(Schema.Array(PerfSample)),
+  }).annotate({ identifier: "BatchCreatePerfSamplesResponse" });
 
 export interface StartActivityNotFound {
   action?: string;
   uri?: string;
 }
 
-export const StartActivityNotFound: Schema.Schema<StartActivityNotFound> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      action: Schema.optional(Schema.String),
-      uri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StartActivityNotFound",
-  }) as any as Schema.Schema<StartActivityNotFound>;
+export const StartActivityNotFound = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  action: Schema.optional(Schema.String),
+  uri: Schema.optional(Schema.String),
+}).annotate({ identifier: "StartActivityNotFound" });
 
 export interface EncounteredNonAndroidUiWidgetScreen {
   /** Number of encountered distinct screens with non Android UI widgets. */
@@ -1818,15 +1467,11 @@ export interface EncounteredNonAndroidUiWidgetScreen {
   screenIds?: Array<string>;
 }
 
-export const EncounteredNonAndroidUiWidgetScreen: Schema.Schema<EncounteredNonAndroidUiWidgetScreen> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      distinctScreens: Schema.optional(Schema.Number),
-      screenIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "EncounteredNonAndroidUiWidgetScreen",
-  }) as any as Schema.Schema<EncounteredNonAndroidUiWidgetScreen>;
+export const EncounteredNonAndroidUiWidgetScreen =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    distinctScreens: Schema.optional(Schema.Number),
+    screenIds: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "EncounteredNonAndroidUiWidgetScreen" });
 
 export interface Image {
   /** A reference to the full-size, original image. This is the same as the tool_outputs entry for the image under its Step. Always set. */
@@ -1839,29 +1484,21 @@ export interface Image {
   error?: Status;
 }
 
-export const Image: Schema.Schema<Image> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sourceImage: Schema.optional(ToolOutputReference),
-      stepId: Schema.optional(Schema.String),
-      thumbnail: Schema.optional(Thumbnail),
-      error: Schema.optional(Status),
-    }),
-  ).annotate({ identifier: "Image" }) as any as Schema.Schema<Image>;
+export const Image = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sourceImage: Schema.optional(ToolOutputReference),
+  stepId: Schema.optional(Schema.String),
+  thumbnail: Schema.optional(Thumbnail),
+  error: Schema.optional(Status),
+}).annotate({ identifier: "Image" });
 
 export interface UsedRoboDirective {
   /** The name of the resource that was used. */
   resourceName?: string;
 }
 
-export const UsedRoboDirective: Schema.Schema<UsedRoboDirective> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UsedRoboDirective",
-  }) as any as Schema.Schema<UsedRoboDirective>;
+export const UsedRoboDirective = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceName: Schema.optional(Schema.String),
+}).annotate({ identifier: "UsedRoboDirective" });
 
 export interface InAppPurchasesFound {
   /** The total number of in-app purchases flows explored: how many times the robo tries to buy a SKU. */
@@ -1870,15 +1507,10 @@ export interface InAppPurchasesFound {
   inAppPurchasesFlowsStarted?: number;
 }
 
-export const InAppPurchasesFound: Schema.Schema<InAppPurchasesFound> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inAppPurchasesFlowsExplored: Schema.optional(Schema.Number),
-      inAppPurchasesFlowsStarted: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "InAppPurchasesFound",
-  }) as any as Schema.Schema<InAppPurchasesFound>;
+export const InAppPurchasesFound = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  inAppPurchasesFlowsExplored: Schema.optional(Schema.Number),
+  inAppPurchasesFlowsStarted: Schema.optional(Schema.Number),
+}).annotate({ identifier: "InAppPurchasesFound" });
 
 export interface UIElementTooDeep {
   /** The screen state id of the element */
@@ -1889,16 +1521,11 @@ export interface UIElementTooDeep {
   depth?: number;
 }
 
-export const UIElementTooDeep: Schema.Schema<UIElementTooDeep> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      screenStateId: Schema.optional(Schema.String),
-      screenId: Schema.optional(Schema.String),
-      depth: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "UIElementTooDeep",
-  }) as any as Schema.Schema<UIElementTooDeep>;
+export const UIElementTooDeep = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  screenStateId: Schema.optional(Schema.String),
+  screenId: Schema.optional(Schema.String),
+  depth: Schema.optional(Schema.Number),
+}).annotate({ identifier: "UIElementTooDeep" });
 
 export interface ListStepThumbnailsResponse {
   /** A list of image data. Images are returned in a deterministic order; they are ordered by these factors, in order of importance: * First, by their associated test case. Images without a test case are considered greater than images with one. * Second, by their creation time. Images without a creation time are greater than images with one. * Third, by the order in which they were added to the step (by calls to CreateStep or UpdateStep). */
@@ -1907,43 +1534,30 @@ export interface ListStepThumbnailsResponse {
   nextPageToken?: string;
 }
 
-export const ListStepThumbnailsResponse: Schema.Schema<ListStepThumbnailsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      thumbnails: Schema.optional(Schema.Array(Image)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListStepThumbnailsResponse",
-  }) as any as Schema.Schema<ListStepThumbnailsResponse>;
+export const ListStepThumbnailsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    thumbnails: Schema.optional(Schema.Array(Image)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListStepThumbnailsResponse" });
 
 export interface BatchCreatePerfSamplesRequest {
   /** The set of PerfSamples to create should not include existing timestamps */
   perfSamples?: Array<PerfSample>;
 }
 
-export const BatchCreatePerfSamplesRequest: Schema.Schema<BatchCreatePerfSamplesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      perfSamples: Schema.optional(Schema.Array(PerfSample)),
-    }),
-  ).annotate({
-    identifier: "BatchCreatePerfSamplesRequest",
-  }) as any as Schema.Schema<BatchCreatePerfSamplesRequest>;
+export const BatchCreatePerfSamplesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    perfSamples: Schema.optional(Schema.Array(PerfSample)),
+  }).annotate({ identifier: "BatchCreatePerfSamplesRequest" });
 
 export interface UnusedRoboDirective {
   /** The name of the resource that was unused. */
   resourceName?: string;
 }
 
-export const UnusedRoboDirective: Schema.Schema<UnusedRoboDirective> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UnusedRoboDirective",
-  }) as any as Schema.Schema<UnusedRoboDirective>;
+export const UnusedRoboDirective = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceName: Schema.optional(Schema.String),
+}).annotate({ identifier: "UnusedRoboDirective" });
 
 export interface ProjectSettings {
   /** The name of the project's settings. Always of the form: projects/{project-id}/settings In update request: never set In response: always set */
@@ -1952,22 +1566,17 @@ export interface ProjectSettings {
   defaultBucket?: string;
 }
 
-export const ProjectSettings: Schema.Schema<ProjectSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      defaultBucket: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProjectSettings",
-  }) as any as Schema.Schema<ProjectSettings>;
+export const ProjectSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  defaultBucket: Schema.optional(Schema.String),
+}).annotate({ identifier: "ProjectSettings" });
 
 export interface MatrixDimensionDefinition {}
 
-export const MatrixDimensionDefinition: Schema.Schema<MatrixDimensionDefinition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const MatrixDimensionDefinition =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "MatrixDimensionDefinition",
-  }) as any as Schema.Schema<MatrixDimensionDefinition>;
+  });
 
 export interface Execution {
   /** A unique identifier within a History for this Execution. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response always set - In create/update request: never set */
@@ -1993,21 +1602,18 @@ export interface Execution {
   specification?: Specification;
 }
 
-export const Execution: Schema.Schema<Execution> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      executionId: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      creationTime: Schema.optional(Timestamp),
-      completionTime: Schema.optional(Timestamp),
-      testExecutionMatrixId: Schema.optional(Schema.String),
-      outcome: Schema.optional(Outcome),
-      dimensionDefinitions: Schema.optional(
-        Schema.Array(MatrixDimensionDefinition),
-      ),
-      specification: Schema.optional(Specification),
-    }),
-  ).annotate({ identifier: "Execution" }) as any as Schema.Schema<Execution>;
+export const Execution = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  executionId: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  creationTime: Schema.optional(Timestamp),
+  completionTime: Schema.optional(Timestamp),
+  testExecutionMatrixId: Schema.optional(Schema.String),
+  outcome: Schema.optional(Outcome),
+  dimensionDefinitions: Schema.optional(
+    Schema.Array(MatrixDimensionDefinition),
+  ),
+  specification: Schema.optional(Specification),
+}).annotate({ identifier: "Execution" });
 
 export interface ListExecutionsResponse {
   /** Executions. Always set. */
@@ -2016,22 +1622,18 @@ export interface ListExecutionsResponse {
   nextPageToken?: string;
 }
 
-export const ListExecutionsResponse: Schema.Schema<ListExecutionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      executions: Schema.optional(Schema.Array(Execution)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListExecutionsResponse",
-  }) as any as Schema.Schema<ListExecutionsResponse>;
+export const ListExecutionsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    executions: Schema.optional(Schema.Array(Execution)),
+    nextPageToken: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ListExecutionsResponse" });
 
 export interface AssetIssue {}
 
-export const AssetIssue: Schema.Schema<AssetIssue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "AssetIssue",
-  }) as any as Schema.Schema<AssetIssue>;
+export const AssetIssue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "AssetIssue" });
 
 export interface OverlappingUIElements {
   /** The screen id of the elements */
@@ -2040,15 +1642,10 @@ export interface OverlappingUIElements {
   resourceName?: Array<string>;
 }
 
-export const OverlappingUIElements: Schema.Schema<OverlappingUIElements> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      screenId: Schema.optional(Schema.String),
-      resourceName: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "OverlappingUIElements",
-  }) as any as Schema.Schema<OverlappingUIElements>;
+export const OverlappingUIElements = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  screenId: Schema.optional(Schema.String),
+  resourceName: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "OverlappingUIElements" });
 
 export interface EncounteredLoginScreen {
   /** Number of encountered distinct login screens. */
@@ -2057,15 +1654,12 @@ export interface EncounteredLoginScreen {
   screenIds?: Array<string>;
 }
 
-export const EncounteredLoginScreen: Schema.Schema<EncounteredLoginScreen> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      distinctScreens: Schema.optional(Schema.Number),
-      screenIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "EncounteredLoginScreen",
-  }) as any as Schema.Schema<EncounteredLoginScreen>;
+export const EncounteredLoginScreen = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    distinctScreens: Schema.optional(Schema.Number),
+    screenIds: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "EncounteredLoginScreen" });
 
 export interface ListTestCasesResponse {
   /** List of test cases. */
@@ -2073,15 +1667,10 @@ export interface ListTestCasesResponse {
   nextPageToken?: string;
 }
 
-export const ListTestCasesResponse: Schema.Schema<ListTestCasesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      testCases: Schema.optional(Schema.Array(TestCase)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListTestCasesResponse",
-  }) as any as Schema.Schema<ListTestCasesResponse>;
+export const ListTestCasesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  testCases: Schema.optional(Schema.Array(TestCase)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListTestCasesResponse" });
 
 export interface History {
   /** A unique identifier within a project for this History. Returns INVALID_ARGUMENT if this field is set or overwritten by the caller. - In response always set - In create request: never set */
@@ -2094,29 +1683,23 @@ export interface History {
   displayName?: string;
 }
 
-export const History: Schema.Schema<History> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      historyId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      testPlatform: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "History" }) as any as Schema.Schema<History>;
+export const History = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  historyId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  testPlatform: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+}).annotate({ identifier: "History" });
 
 export interface PerformedMonkeyActions {
   /** The total number of monkey actions performed during the crawl. */
   totalActions?: number;
 }
 
-export const PerformedMonkeyActions: Schema.Schema<PerformedMonkeyActions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      totalActions: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "PerformedMonkeyActions",
-  }) as any as Schema.Schema<PerformedMonkeyActions>;
+export const PerformedMonkeyActions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    totalActions: Schema.optional(Schema.Number),
+  },
+).annotate({ identifier: "PerformedMonkeyActions" });
 
 export interface ListHistoriesResponse {
   /** A continuation token to resume the query at the next item. Will only be set if there are more histories to fetch. Tokens are valid for up to one hour from the time of the first list request. For instance, if you make a list request at 1PM and use the token from this first request 10 minutes later, the token from this second response will only be valid for 50 minutes. */
@@ -2125,15 +1708,10 @@ export interface ListHistoriesResponse {
   histories?: Array<History>;
 }
 
-export const ListHistoriesResponse: Schema.Schema<ListHistoriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      histories: Schema.optional(Schema.Array(History)),
-    }),
-  ).annotate({
-    identifier: "ListHistoriesResponse",
-  }) as any as Schema.Schema<ListHistoriesResponse>;
+export const ListHistoriesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  histories: Schema.optional(Schema.Array(History)),
+}).annotate({ identifier: "ListHistoriesResponse" });
 
 export interface ScreenshotCluster {
   /** A string that describes the activity of every screen in the cluster. */
@@ -2146,38 +1724,28 @@ export interface ScreenshotCluster {
   keyScreen?: Screen;
 }
 
-export const ScreenshotCluster: Schema.Schema<ScreenshotCluster> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      activity: Schema.optional(Schema.String),
-      screens: Schema.optional(Schema.Array(Screen)),
-      clusterId: Schema.optional(Schema.String),
-      keyScreen: Schema.optional(Screen),
-    }),
-  ).annotate({
-    identifier: "ScreenshotCluster",
-  }) as any as Schema.Schema<ScreenshotCluster>;
+export const ScreenshotCluster = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  activity: Schema.optional(Schema.String),
+  screens: Schema.optional(Schema.Array(Screen)),
+  clusterId: Schema.optional(Schema.String),
+  keyScreen: Schema.optional(Screen),
+}).annotate({ identifier: "ScreenshotCluster" });
 
 export interface ListScreenshotClustersResponse {
   /** The set of clusters associated with an execution Always set */
   clusters?: Array<ScreenshotCluster>;
 }
 
-export const ListScreenshotClustersResponse: Schema.Schema<ListScreenshotClustersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clusters: Schema.optional(Schema.Array(ScreenshotCluster)),
-    }),
-  ).annotate({
-    identifier: "ListScreenshotClustersResponse",
-  }) as any as Schema.Schema<ListScreenshotClustersResponse>;
+export const ListScreenshotClustersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    clusters: Schema.optional(Schema.Array(ScreenshotCluster)),
+  }).annotate({ identifier: "ListScreenshotClustersResponse" });
 
 export interface InsufficientCoverage {}
 
-export const InsufficientCoverage: Schema.Schema<InsufficientCoverage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "InsufficientCoverage",
-  }) as any as Schema.Schema<InsufficientCoverage>;
+export const InsufficientCoverage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "InsufficientCoverage" });
 
 // ==========================================================================
 // Operations

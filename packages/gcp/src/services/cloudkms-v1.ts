@@ -24,17 +24,17 @@ const svc = T.Service({
 
 export interface VerifyConnectivityResponse {}
 
-export const VerifyConnectivityResponse: Schema.Schema<VerifyConnectivityResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const VerifyConnectivityResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "VerifyConnectivityResponse",
-  }) as any as Schema.Schema<VerifyConnectivityResponse>;
+  });
 
 export interface EnableSingleTenantHsmInstance {}
 
-export const EnableSingleTenantHsmInstance: Schema.Schema<EnableSingleTenantHsmInstance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const EnableSingleTenantHsmInstance =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "EnableSingleTenantHsmInstance",
-  }) as any as Schema.Schema<EnableSingleTenantHsmInstance>;
+  });
 
 export interface MacSignRequest {
   /** Required. The data to sign. The MAC tag is computed over this data field based on the specific algorithm. */
@@ -43,15 +43,10 @@ export interface MacSignRequest {
   dataCrc32c?: string;
 }
 
-export const MacSignRequest: Schema.Schema<MacSignRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      data: Schema.optional(Schema.String),
-      dataCrc32c: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MacSignRequest",
-  }) as any as Schema.Schema<MacSignRequest>;
+export const MacSignRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  data: Schema.optional(Schema.String),
+  dataCrc32c: Schema.optional(Schema.String),
+}).annotate({ identifier: "MacSignRequest" });
 
 export interface AsymmetricDecryptRequest {
   /** Required. The data encrypted with the named CryptoKeyVersion's public key using OAEP. */
@@ -60,15 +55,11 @@ export interface AsymmetricDecryptRequest {
   ciphertextCrc32c?: string;
 }
 
-export const AsymmetricDecryptRequest: Schema.Schema<AsymmetricDecryptRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ciphertext: Schema.optional(Schema.String),
-      ciphertextCrc32c: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AsymmetricDecryptRequest",
-  }) as any as Schema.Schema<AsymmetricDecryptRequest>;
+export const AsymmetricDecryptRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ciphertext: Schema.optional(Schema.String),
+    ciphertextCrc32c: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AsymmetricDecryptRequest" });
 
 export interface ChallengeReply {
   /** Required. The signed challenge associated with the 2FA key. The signature must be RSASSA-PKCS1 v1.5 with a SHA256 digest. */
@@ -77,15 +68,10 @@ export interface ChallengeReply {
   publicKeyPem?: string;
 }
 
-export const ChallengeReply: Schema.Schema<ChallengeReply> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      signedChallenge: Schema.optional(Schema.String),
-      publicKeyPem: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ChallengeReply",
-  }) as any as Schema.Schema<ChallengeReply>;
+export const ChallengeReply = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  signedChallenge: Schema.optional(Schema.String),
+  publicKeyPem: Schema.optional(Schema.String),
+}).annotate({ identifier: "ChallengeReply" });
 
 export interface RequiredActionQuorumReply {
   /** Required. All required challenges must be signed for the proposal to be approved. These can be sent across multiple requests. */
@@ -94,29 +80,20 @@ export interface RequiredActionQuorumReply {
   quorumChallengeReplies?: Array<ChallengeReply>;
 }
 
-export const RequiredActionQuorumReply: Schema.Schema<RequiredActionQuorumReply> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requiredChallengeReplies: Schema.optional(Schema.Array(ChallengeReply)),
-      quorumChallengeReplies: Schema.optional(Schema.Array(ChallengeReply)),
-    }),
-  ).annotate({
-    identifier: "RequiredActionQuorumReply",
-  }) as any as Schema.Schema<RequiredActionQuorumReply>;
+export const RequiredActionQuorumReply =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requiredChallengeReplies: Schema.optional(Schema.Array(ChallengeReply)),
+    quorumChallengeReplies: Schema.optional(Schema.Array(ChallengeReply)),
+  }).annotate({ identifier: "RequiredActionQuorumReply" });
 
 export interface QuorumReply {
   /** Required. The challenge replies to approve the proposal. Challenge replies can be sent across multiple requests. The proposal will be approved when required_approver_count challenge replies are provided. */
   challengeReplies?: Array<ChallengeReply>;
 }
 
-export const QuorumReply: Schema.Schema<QuorumReply> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      challengeReplies: Schema.optional(Schema.Array(ChallengeReply)),
-    }),
-  ).annotate({
-    identifier: "QuorumReply",
-  }) as any as Schema.Schema<QuorumReply>;
+export const QuorumReply = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  challengeReplies: Schema.optional(Schema.Array(ChallengeReply)),
+}).annotate({ identifier: "QuorumReply" });
 
 export interface ApproveSingleTenantHsmInstanceProposalRequest {
   /** Required. The reply to RequiredActionQuorumParameters for approving the proposal. */
@@ -125,15 +102,11 @@ export interface ApproveSingleTenantHsmInstanceProposalRequest {
   quorumReply?: QuorumReply;
 }
 
-export const ApproveSingleTenantHsmInstanceProposalRequest: Schema.Schema<ApproveSingleTenantHsmInstanceProposalRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requiredActionQuorumReply: Schema.optional(RequiredActionQuorumReply),
-      quorumReply: Schema.optional(QuorumReply),
-    }),
-  ).annotate({
-    identifier: "ApproveSingleTenantHsmInstanceProposalRequest",
-  }) as any as Schema.Schema<ApproveSingleTenantHsmInstanceProposalRequest>;
+export const ApproveSingleTenantHsmInstanceProposalRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requiredActionQuorumReply: Schema.optional(RequiredActionQuorumReply),
+    quorumReply: Schema.optional(QuorumReply),
+  }).annotate({ identifier: "ApproveSingleTenantHsmInstanceProposalRequest" });
 
 export interface AutokeyConfig {
   /** Identifier. Name of the AutokeyConfig resource, e.g. `folders/{FOLDER_NUMBER}/autokeyConfig` or `projects/{PROJECT_NUMBER}/autokeyConfig`. */
@@ -158,18 +131,13 @@ export interface AutokeyConfig {
     | (string & {});
 }
 
-export const AutokeyConfig: Schema.Schema<AutokeyConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      keyProject: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      keyProjectResolutionMode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AutokeyConfig",
-  }) as any as Schema.Schema<AutokeyConfig>;
+export const AutokeyConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  keyProject: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  keyProjectResolutionMode: Schema.optional(Schema.String),
+}).annotate({ identifier: "AutokeyConfig" });
 
 export interface GenerateRandomBytesRequest {
   /** The length in bytes of the amount of randomness to retrieve. Minimum 8 bytes, maximum 1024 bytes. */
@@ -185,22 +153,18 @@ export interface GenerateRandomBytesRequest {
     | (string & {});
 }
 
-export const GenerateRandomBytesRequest: Schema.Schema<GenerateRandomBytesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lengthBytes: Schema.optional(Schema.Number),
-      protectionLevel: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GenerateRandomBytesRequest",
-  }) as any as Schema.Schema<GenerateRandomBytesRequest>;
+export const GenerateRandomBytesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    lengthBytes: Schema.optional(Schema.Number),
+    protectionLevel: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GenerateRandomBytesRequest" });
 
 export interface DeleteSingleTenantHsmInstance {}
 
-export const DeleteSingleTenantHsmInstance: Schema.Schema<DeleteSingleTenantHsmInstance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const DeleteSingleTenantHsmInstance =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeleteSingleTenantHsmInstance",
-  }) as any as Schema.Schema<DeleteSingleTenantHsmInstance>;
+  });
 
 export interface ExternalProtectionLevelOptions {
   /** The URI for an external resource that this CryptoKeyVersion represents. */
@@ -209,15 +173,11 @@ export interface ExternalProtectionLevelOptions {
   ekmConnectionKeyPath?: string;
 }
 
-export const ExternalProtectionLevelOptions: Schema.Schema<ExternalProtectionLevelOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      externalKeyUri: Schema.optional(Schema.String),
-      ekmConnectionKeyPath: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ExternalProtectionLevelOptions",
-  }) as any as Schema.Schema<ExternalProtectionLevelOptions>;
+export const ExternalProtectionLevelOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    externalKeyUri: Schema.optional(Schema.String),
+    ekmConnectionKeyPath: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ExternalProtectionLevelOptions" });
 
 export interface CertificateChains {
   /** Google card certificate chain corresponding to the attestation. */
@@ -228,16 +188,11 @@ export interface CertificateChains {
   caviumCerts?: Array<string>;
 }
 
-export const CertificateChains: Schema.Schema<CertificateChains> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      googleCardCerts: Schema.optional(Schema.Array(Schema.String)),
-      googlePartitionCerts: Schema.optional(Schema.Array(Schema.String)),
-      caviumCerts: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "CertificateChains",
-  }) as any as Schema.Schema<CertificateChains>;
+export const CertificateChains = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  googleCardCerts: Schema.optional(Schema.Array(Schema.String)),
+  googlePartitionCerts: Schema.optional(Schema.Array(Schema.String)),
+  caviumCerts: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "CertificateChains" });
 
 export interface KeyOperationAttestation {
   /** Output only. The format of the attestation data. */
@@ -252,16 +207,12 @@ export interface KeyOperationAttestation {
   certChains?: CertificateChains;
 }
 
-export const KeyOperationAttestation: Schema.Schema<KeyOperationAttestation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      format: Schema.optional(Schema.String),
-      content: Schema.optional(Schema.String),
-      certChains: Schema.optional(CertificateChains),
-    }),
-  ).annotate({
-    identifier: "KeyOperationAttestation",
-  }) as any as Schema.Schema<KeyOperationAttestation>;
+export const KeyOperationAttestation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    format: Schema.optional(Schema.String),
+    content: Schema.optional(Schema.String),
+    certChains: Schema.optional(CertificateChains),
+  }).annotate({ identifier: "KeyOperationAttestation" });
 
 export interface CryptoKeyVersion {
   /** Output only. The time this CryptoKeyVersion's key material was generated. */
@@ -365,31 +316,26 @@ export interface CryptoKeyVersion {
   reimportEligible?: boolean;
 }
 
-export const CryptoKeyVersion: Schema.Schema<CryptoKeyVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      generateTime: Schema.optional(Schema.String),
-      protectionLevel: Schema.optional(Schema.String),
-      destroyEventTime: Schema.optional(Schema.String),
-      externalProtectionLevelOptions: Schema.optional(
-        ExternalProtectionLevelOptions,
-      ),
-      state: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      importTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      destroyTime: Schema.optional(Schema.String),
-      importJob: Schema.optional(Schema.String),
-      externalDestructionFailureReason: Schema.optional(Schema.String),
-      importFailureReason: Schema.optional(Schema.String),
-      attestation: Schema.optional(KeyOperationAttestation),
-      algorithm: Schema.optional(Schema.String),
-      generationFailureReason: Schema.optional(Schema.String),
-      reimportEligible: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "CryptoKeyVersion",
-  }) as any as Schema.Schema<CryptoKeyVersion>;
+export const CryptoKeyVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  generateTime: Schema.optional(Schema.String),
+  protectionLevel: Schema.optional(Schema.String),
+  destroyEventTime: Schema.optional(Schema.String),
+  externalProtectionLevelOptions: Schema.optional(
+    ExternalProtectionLevelOptions,
+  ),
+  state: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  importTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  destroyTime: Schema.optional(Schema.String),
+  importJob: Schema.optional(Schema.String),
+  externalDestructionFailureReason: Schema.optional(Schema.String),
+  importFailureReason: Schema.optional(Schema.String),
+  attestation: Schema.optional(KeyOperationAttestation),
+  algorithm: Schema.optional(Schema.String),
+  generationFailureReason: Schema.optional(Schema.String),
+  reimportEligible: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "CryptoKeyVersion" });
 
 export interface ListCryptoKeyVersionsResponse {
   /** The total number of CryptoKeyVersions that matched the query. This field is not populated if ListCryptoKeyVersionsRequest.filter is applied. */
@@ -400,16 +346,12 @@ export interface ListCryptoKeyVersionsResponse {
   cryptoKeyVersions?: Array<CryptoKeyVersion>;
 }
 
-export const ListCryptoKeyVersionsResponse: Schema.Schema<ListCryptoKeyVersionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      totalSize: Schema.optional(Schema.Number),
-      nextPageToken: Schema.optional(Schema.String),
-      cryptoKeyVersions: Schema.optional(Schema.Array(CryptoKeyVersion)),
-    }),
-  ).annotate({
-    identifier: "ListCryptoKeyVersionsResponse",
-  }) as any as Schema.Schema<ListCryptoKeyVersionsResponse>;
+export const ListCryptoKeyVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    totalSize: Schema.optional(Schema.Number),
+    nextPageToken: Schema.optional(Schema.String),
+    cryptoKeyVersions: Schema.optional(Schema.Array(CryptoKeyVersion)),
+  }).annotate({ identifier: "ListCryptoKeyVersionsResponse" });
 
 export interface RetiredResource {
   /** Output only. The resource type of the original deleted resource. */
@@ -422,17 +364,12 @@ export interface RetiredResource {
   deleteTime?: string;
 }
 
-export const RetiredResource: Schema.Schema<RetiredResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceType: Schema.optional(Schema.String),
-      originalResource: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      deleteTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RetiredResource",
-  }) as any as Schema.Schema<RetiredResource>;
+export const RetiredResource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceType: Schema.optional(Schema.String),
+  originalResource: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  deleteTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "RetiredResource" });
 
 export interface ListRetiredResourcesResponse {
   /** The list of RetiredResources. */
@@ -443,16 +380,12 @@ export interface ListRetiredResourcesResponse {
   nextPageToken?: string;
 }
 
-export const ListRetiredResourcesResponse: Schema.Schema<ListRetiredResourcesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      retiredResources: Schema.optional(Schema.Array(RetiredResource)),
-      totalSize: Schema.optional(Schema.String),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListRetiredResourcesResponse",
-  }) as any as Schema.Schema<ListRetiredResourcesResponse>;
+export const ListRetiredResourcesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    retiredResources: Schema.optional(Schema.Array(RetiredResource)),
+    totalSize: Schema.optional(Schema.String),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListRetiredResourcesResponse" });
 
 export interface ChecksummedData {
   /** Integrity verification field. A CRC32C checksum of the returned ChecksummedData.data. An integrity check of ChecksummedData.data can be performed by computing the CRC32C checksum of ChecksummedData.data and comparing your results to this field. Discard the response in case of non-matching checksum values, and perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed `2^32-1`, and can be safely downconverted to uint32 in languages that support this type. */
@@ -461,15 +394,10 @@ export interface ChecksummedData {
   data?: string;
 }
 
-export const ChecksummedData: Schema.Schema<ChecksummedData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      crc32cChecksum: Schema.optional(Schema.String),
-      data: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ChecksummedData",
-  }) as any as Schema.Schema<ChecksummedData>;
+export const ChecksummedData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  crc32cChecksum: Schema.optional(Schema.String),
+  data: Schema.optional(Schema.String),
+}).annotate({ identifier: "ChecksummedData" });
 
 export interface PublicKey {
   /** The ProtectionLevel of the CryptoKeyVersion public key. */
@@ -549,18 +477,15 @@ export interface PublicKey {
   pem?: string;
 }
 
-export const PublicKey: Schema.Schema<PublicKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      protectionLevel: Schema.optional(Schema.String),
-      algorithm: Schema.optional(Schema.String),
-      publicKey: Schema.optional(ChecksummedData),
-      pemCrc32c: Schema.optional(Schema.String),
-      publicKeyFormat: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      pem: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "PublicKey" }) as any as Schema.Schema<PublicKey>;
+export const PublicKey = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  protectionLevel: Schema.optional(Schema.String),
+  algorithm: Schema.optional(Schema.String),
+  publicKey: Schema.optional(ChecksummedData),
+  pemCrc32c: Schema.optional(Schema.String),
+  publicKeyFormat: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  pem: Schema.optional(Schema.String),
+}).annotate({ identifier: "PublicKey" });
 
 export interface KeyAccessJustificationsPolicy {
   /** The list of allowed reasons for access to a CryptoKey. Note that empty allowed_access_reasons has a different meaning depending on where this message appears. If this is under KeyAccessJustificationsPolicyConfig, it means allow-all. If this is under CryptoKey, it means deny-all. */
@@ -581,14 +506,10 @@ export interface KeyAccessJustificationsPolicy {
   >;
 }
 
-export const KeyAccessJustificationsPolicy: Schema.Schema<KeyAccessJustificationsPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      allowedAccessReasons: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "KeyAccessJustificationsPolicy",
-  }) as any as Schema.Schema<KeyAccessJustificationsPolicy>;
+export const KeyAccessJustificationsPolicy =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allowedAccessReasons: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "KeyAccessJustificationsPolicy" });
 
 export interface EncryptResponse {
   /** The resource name of the CryptoKeyVersion used in encryption. Check this field to verify that the intended resource was used for encryption. */
@@ -612,21 +533,14 @@ export interface EncryptResponse {
     | (string & {});
 }
 
-export const EncryptResponse: Schema.Schema<EncryptResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      ciphertextCrc32c: Schema.optional(Schema.String),
-      ciphertext: Schema.optional(Schema.String),
-      verifiedPlaintextCrc32c: Schema.optional(Schema.Boolean),
-      verifiedAdditionalAuthenticatedDataCrc32c: Schema.optional(
-        Schema.Boolean,
-      ),
-      protectionLevel: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EncryptResponse",
-  }) as any as Schema.Schema<EncryptResponse>;
+export const EncryptResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  ciphertextCrc32c: Schema.optional(Schema.String),
+  ciphertext: Schema.optional(Schema.String),
+  verifiedPlaintextCrc32c: Schema.optional(Schema.Boolean),
+  verifiedAdditionalAuthenticatedDataCrc32c: Schema.optional(Schema.Boolean),
+  protectionLevel: Schema.optional(Schema.String),
+}).annotate({ identifier: "EncryptResponse" });
 
 export interface QuorumAuth {
   /** Output only. The required numbers of approvers. The M value used for M of N quorum auth. Must be greater than or equal to 2 and less than or equal to total_approver_count - 1. */
@@ -637,14 +551,11 @@ export interface QuorumAuth {
   totalApproverCount?: number;
 }
 
-export const QuorumAuth: Schema.Schema<QuorumAuth> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requiredApproverCount: Schema.optional(Schema.Number),
-      twoFactorPublicKeyPems: Schema.optional(Schema.Array(Schema.String)),
-      totalApproverCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "QuorumAuth" }) as any as Schema.Schema<QuorumAuth>;
+export const QuorumAuth = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  requiredApproverCount: Schema.optional(Schema.Number),
+  twoFactorPublicKeyPems: Schema.optional(Schema.Array(Schema.String)),
+  totalApproverCount: Schema.optional(Schema.Number),
+}).annotate({ identifier: "QuorumAuth" });
 
 export interface KeyRing {
   /** Output only. The resource name for the KeyRing in the format `projects/* /locations/* /keyRings/*`. */
@@ -653,13 +564,10 @@ export interface KeyRing {
   createTime?: string;
 }
 
-export const KeyRing: Schema.Schema<KeyRing> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "KeyRing" }) as any as Schema.Schema<KeyRing>;
+export const KeyRing = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "KeyRing" });
 
 export interface Challenge {
   /** Output only. The challenge to be signed by the 2FA key indicated by the public key. */
@@ -668,13 +576,10 @@ export interface Challenge {
   publicKeyPem?: string;
 }
 
-export const Challenge: Schema.Schema<Challenge> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      challenge: Schema.optional(Schema.String),
-      publicKeyPem: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Challenge" }) as any as Schema.Schema<Challenge>;
+export const Challenge = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  challenge: Schema.optional(Schema.String),
+  publicKeyPem: Schema.optional(Schema.String),
+}).annotate({ identifier: "Challenge" });
 
 export interface RequiredActionQuorumParameters {
   /** Output only. A list of specific challenges that must be signed. For some operations, this will contain a single challenge. */
@@ -687,19 +592,15 @@ export interface RequiredActionQuorumParameters {
   approvedTwoFactorPublicKeyPems?: Array<string>;
 }
 
-export const RequiredActionQuorumParameters: Schema.Schema<RequiredActionQuorumParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requiredChallenges: Schema.optional(Schema.Array(Challenge)),
-      requiredApproverCount: Schema.optional(Schema.Number),
-      quorumChallenges: Schema.optional(Schema.Array(Challenge)),
-      approvedTwoFactorPublicKeyPems: Schema.optional(
-        Schema.Array(Schema.String),
-      ),
-    }),
-  ).annotate({
-    identifier: "RequiredActionQuorumParameters",
-  }) as any as Schema.Schema<RequiredActionQuorumParameters>;
+export const RequiredActionQuorumParameters =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requiredChallenges: Schema.optional(Schema.Array(Challenge)),
+    requiredApproverCount: Schema.optional(Schema.Number),
+    quorumChallenges: Schema.optional(Schema.Array(Challenge)),
+    approvedTwoFactorPublicKeyPems: Schema.optional(
+      Schema.Array(Schema.String),
+    ),
+  }).annotate({ identifier: "RequiredActionQuorumParameters" });
 
 export interface Digest {
   /** A message digest produced with the SHA-256 algorithm. */
@@ -712,15 +613,12 @@ export interface Digest {
   externalMu?: string;
 }
 
-export const Digest: Schema.Schema<Digest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sha256: Schema.optional(Schema.String),
-      sha384: Schema.optional(Schema.String),
-      sha512: Schema.optional(Schema.String),
-      externalMu: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Digest" }) as any as Schema.Schema<Digest>;
+export const Digest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sha256: Schema.optional(Schema.String),
+  sha384: Schema.optional(Schema.String),
+  sha512: Schema.optional(Schema.String),
+  externalMu: Schema.optional(Schema.String),
+}).annotate({ identifier: "Digest" });
 
 export interface RawEncryptResponse {
   /** Integrity verification field. A flag indicating whether RawEncryptRequest.plaintext_crc32c was received by KeyManagementService and used for the integrity verification of the plaintext. A false value of this field indicates either that RawEncryptRequest.plaintext_crc32c was left unset or that it was not delivered to KeyManagementService. If you've set RawEncryptRequest.plaintext_crc32c but this field is still false, discard the response and perform a limited number of retries. */
@@ -752,32 +650,25 @@ export interface RawEncryptResponse {
   initializationVectorCrc32c?: string;
 }
 
-export const RawEncryptResponse: Schema.Schema<RawEncryptResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      verifiedPlaintextCrc32c: Schema.optional(Schema.Boolean),
-      verifiedAdditionalAuthenticatedDataCrc32c: Schema.optional(
-        Schema.Boolean,
-      ),
-      tagLength: Schema.optional(Schema.Number),
-      protectionLevel: Schema.optional(Schema.String),
-      initializationVector: Schema.optional(Schema.String),
-      ciphertextCrc32c: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      ciphertext: Schema.optional(Schema.String),
-      verifiedInitializationVectorCrc32c: Schema.optional(Schema.Boolean),
-      initializationVectorCrc32c: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RawEncryptResponse",
-  }) as any as Schema.Schema<RawEncryptResponse>;
+export const RawEncryptResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  verifiedPlaintextCrc32c: Schema.optional(Schema.Boolean),
+  verifiedAdditionalAuthenticatedDataCrc32c: Schema.optional(Schema.Boolean),
+  tagLength: Schema.optional(Schema.Number),
+  protectionLevel: Schema.optional(Schema.String),
+  initializationVector: Schema.optional(Schema.String),
+  ciphertextCrc32c: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  ciphertext: Schema.optional(Schema.String),
+  verifiedInitializationVectorCrc32c: Schema.optional(Schema.Boolean),
+  initializationVectorCrc32c: Schema.optional(Schema.String),
+}).annotate({ identifier: "RawEncryptResponse" });
 
 export interface DestroyCryptoKeyVersionRequest {}
 
-export const DestroyCryptoKeyVersionRequest: Schema.Schema<DestroyCryptoKeyVersionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const DestroyCryptoKeyVersionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DestroyCryptoKeyVersionRequest",
-  }) as any as Schema.Schema<DestroyCryptoKeyVersionRequest>;
+  });
 
 export interface RawDecryptResponse {
   /** The decrypted data. */
@@ -801,21 +692,14 @@ export interface RawDecryptResponse {
   verifiedInitializationVectorCrc32c?: boolean;
 }
 
-export const RawDecryptResponse: Schema.Schema<RawDecryptResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      plaintext: Schema.optional(Schema.String),
-      plaintextCrc32c: Schema.optional(Schema.String),
-      protectionLevel: Schema.optional(Schema.String),
-      verifiedAdditionalAuthenticatedDataCrc32c: Schema.optional(
-        Schema.Boolean,
-      ),
-      verifiedCiphertextCrc32c: Schema.optional(Schema.Boolean),
-      verifiedInitializationVectorCrc32c: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "RawDecryptResponse",
-  }) as any as Schema.Schema<RawDecryptResponse>;
+export const RawDecryptResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  plaintext: Schema.optional(Schema.String),
+  plaintextCrc32c: Schema.optional(Schema.String),
+  protectionLevel: Schema.optional(Schema.String),
+  verifiedAdditionalAuthenticatedDataCrc32c: Schema.optional(Schema.Boolean),
+  verifiedCiphertextCrc32c: Schema.optional(Schema.Boolean),
+  verifiedInitializationVectorCrc32c: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "RawDecryptResponse" });
 
 export interface RawDecryptRequest {
   /** The length of the authentication tag that is appended to the end of the ciphertext. If unspecified (0), the default value for the key's algorithm will be used (for AES-GCM, the default value is 16). */
@@ -834,20 +718,15 @@ export interface RawDecryptRequest {
   initializationVector?: string;
 }
 
-export const RawDecryptRequest: Schema.Schema<RawDecryptRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tagLength: Schema.optional(Schema.Number),
-      initializationVectorCrc32c: Schema.optional(Schema.String),
-      additionalAuthenticatedData: Schema.optional(Schema.String),
-      ciphertext: Schema.optional(Schema.String),
-      additionalAuthenticatedDataCrc32c: Schema.optional(Schema.String),
-      ciphertextCrc32c: Schema.optional(Schema.String),
-      initializationVector: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RawDecryptRequest",
-  }) as any as Schema.Schema<RawDecryptRequest>;
+export const RawDecryptRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tagLength: Schema.optional(Schema.Number),
+  initializationVectorCrc32c: Schema.optional(Schema.String),
+  additionalAuthenticatedData: Schema.optional(Schema.String),
+  ciphertext: Schema.optional(Schema.String),
+  additionalAuthenticatedDataCrc32c: Schema.optional(Schema.String),
+  ciphertextCrc32c: Schema.optional(Schema.String),
+  initializationVector: Schema.optional(Schema.String),
+}).annotate({ identifier: "RawDecryptRequest" });
 
 export interface DecryptResponse {
   /** Whether the Decryption was performed using the primary key version. */
@@ -867,17 +746,12 @@ export interface DecryptResponse {
   plaintextCrc32c?: string;
 }
 
-export const DecryptResponse: Schema.Schema<DecryptResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      usedPrimary: Schema.optional(Schema.Boolean),
-      protectionLevel: Schema.optional(Schema.String),
-      plaintext: Schema.optional(Schema.String),
-      plaintextCrc32c: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DecryptResponse",
-  }) as any as Schema.Schema<DecryptResponse>;
+export const DecryptResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  usedPrimary: Schema.optional(Schema.Boolean),
+  protectionLevel: Schema.optional(Schema.String),
+  plaintext: Schema.optional(Schema.String),
+  plaintextCrc32c: Schema.optional(Schema.String),
+}).annotate({ identifier: "DecryptResponse" });
 
 export interface DecapsulateResponse {
   /** Integrity verification field. A CRC32C checksum of the returned DecapsulateResponse.shared_secret. An integrity check of DecapsulateResponse.shared_secret can be performed by computing the CRC32C checksum of DecapsulateResponse.shared_secret and comparing your results to this field. Discard the response in case of non-matching checksum values, and perform a limited number of retries. A persistent mismatch may indicate an issue in your computation of the CRC32C checksum. Note: receiving this response message indicates that KeyManagementService is able to successfully decrypt the ciphertext. Note: This field is defined as int64 for reasons of compatibility across different languages. However, it is a non-negative integer, which will never exceed 2^32-1, and can be safely downconverted to uint32 in languages that support this type. */
@@ -899,18 +773,13 @@ export interface DecapsulateResponse {
   verifiedCiphertextCrc32c?: boolean;
 }
 
-export const DecapsulateResponse: Schema.Schema<DecapsulateResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sharedSecretCrc32c: Schema.optional(Schema.String),
-      protectionLevel: Schema.optional(Schema.String),
-      sharedSecret: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      verifiedCiphertextCrc32c: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "DecapsulateResponse",
-  }) as any as Schema.Schema<DecapsulateResponse>;
+export const DecapsulateResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sharedSecretCrc32c: Schema.optional(Schema.String),
+  protectionLevel: Schema.optional(Schema.String),
+  sharedSecret: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  verifiedCiphertextCrc32c: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "DecapsulateResponse" });
 
 export interface QuorumParameters {
   /** Output only. The public keys associated with the 2FA keys that have already approved the SingleTenantHsmInstanceProposal by signing the challenge. */
@@ -921,18 +790,11 @@ export interface QuorumParameters {
   challenges?: Array<Challenge>;
 }
 
-export const QuorumParameters: Schema.Schema<QuorumParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      approvedTwoFactorPublicKeyPems: Schema.optional(
-        Schema.Array(Schema.String),
-      ),
-      requiredApproverCount: Schema.optional(Schema.Number),
-      challenges: Schema.optional(Schema.Array(Challenge)),
-    }),
-  ).annotate({
-    identifier: "QuorumParameters",
-  }) as any as Schema.Schema<QuorumParameters>;
+export const QuorumParameters = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  approvedTwoFactorPublicKeyPems: Schema.optional(Schema.Array(Schema.String)),
+  requiredApproverCount: Schema.optional(Schema.Number),
+  challenges: Schema.optional(Schema.Array(Challenge)),
+}).annotate({ identifier: "QuorumParameters" });
 
 export interface LocationMetadata {
   /** Indicates whether CryptoKeys with protection_level HSM_SINGLE_TENANT can be created in this location. */
@@ -943,23 +805,18 @@ export interface LocationMetadata {
   ekmAvailable?: boolean;
 }
 
-export const LocationMetadata: Schema.Schema<LocationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hsmSingleTenantAvailable: Schema.optional(Schema.Boolean),
-      hsmAvailable: Schema.optional(Schema.Boolean),
-      ekmAvailable: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "LocationMetadata",
-  }) as any as Schema.Schema<LocationMetadata>;
+export const LocationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  hsmSingleTenantAvailable: Schema.optional(Schema.Boolean),
+  hsmAvailable: Schema.optional(Schema.Boolean),
+  ekmAvailable: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "LocationMetadata" });
 
 export interface ExecuteSingleTenantHsmInstanceProposalRequest {}
 
-export const ExecuteSingleTenantHsmInstanceProposalRequest: Schema.Schema<ExecuteSingleTenantHsmInstanceProposalRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const ExecuteSingleTenantHsmInstanceProposalRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ExecuteSingleTenantHsmInstanceProposalRequest",
-  }) as any as Schema.Schema<ExecuteSingleTenantHsmInstanceProposalRequest>;
+  });
 
 export interface AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
@@ -973,15 +830,10 @@ export interface AuditLogConfig {
     | (string & {});
 }
 
-export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
-      logType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AuditLogConfig",
-  }) as any as Schema.Schema<AuditLogConfig>;
+export const AuditLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
+  logType: Schema.optional(Schema.String),
+}).annotate({ identifier: "AuditLogConfig" });
 
 export interface MacVerifyResponse {
   /** Integrity verification field. This value is used for the integrity verification of [MacVerifyResponse.success]. If the value of this field contradicts the value of [MacVerifyResponse.success], discard the response and perform a limited number of retries. */
@@ -1005,19 +857,14 @@ export interface MacVerifyResponse {
   name?: string;
 }
 
-export const MacVerifyResponse: Schema.Schema<MacVerifyResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      verifiedSuccessIntegrity: Schema.optional(Schema.Boolean),
-      success: Schema.optional(Schema.Boolean),
-      verifiedDataCrc32c: Schema.optional(Schema.Boolean),
-      protectionLevel: Schema.optional(Schema.String),
-      verifiedMacCrc32c: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MacVerifyResponse",
-  }) as any as Schema.Schema<MacVerifyResponse>;
+export const MacVerifyResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  verifiedSuccessIntegrity: Schema.optional(Schema.Boolean),
+  success: Schema.optional(Schema.Boolean),
+  verifiedDataCrc32c: Schema.optional(Schema.Boolean),
+  protectionLevel: Schema.optional(Schema.String),
+  verifiedMacCrc32c: Schema.optional(Schema.Boolean),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "MacVerifyResponse" });
 
 export interface Certificate {
   /** Output only. The certificate serial number as a hex string. Only present if parsed is true. */
@@ -1040,22 +887,17 @@ export interface Certificate {
   sha256Fingerprint?: string;
 }
 
-export const Certificate: Schema.Schema<Certificate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serialNumber: Schema.optional(Schema.String),
-      rawDer: Schema.optional(Schema.String),
-      subjectAlternativeDnsNames: Schema.optional(Schema.Array(Schema.String)),
-      issuer: Schema.optional(Schema.String),
-      subject: Schema.optional(Schema.String),
-      notAfterTime: Schema.optional(Schema.String),
-      parsed: Schema.optional(Schema.Boolean),
-      notBeforeTime: Schema.optional(Schema.String),
-      sha256Fingerprint: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Certificate",
-  }) as any as Schema.Schema<Certificate>;
+export const Certificate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  serialNumber: Schema.optional(Schema.String),
+  rawDer: Schema.optional(Schema.String),
+  subjectAlternativeDnsNames: Schema.optional(Schema.Array(Schema.String)),
+  issuer: Schema.optional(Schema.String),
+  subject: Schema.optional(Schema.String),
+  notAfterTime: Schema.optional(Schema.String),
+  parsed: Schema.optional(Schema.Boolean),
+  notBeforeTime: Schema.optional(Schema.String),
+  sha256Fingerprint: Schema.optional(Schema.String),
+}).annotate({ identifier: "Certificate" });
 
 export interface ServiceResolver {
   /** Required. The resource name of the Service Directory service pointing to an EKM replica, in the format `projects/* /locations/* /namespaces/* /services/*`. */
@@ -1068,17 +910,12 @@ export interface ServiceResolver {
   hostname?: string;
 }
 
-export const ServiceResolver: Schema.Schema<ServiceResolver> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serviceDirectoryService: Schema.optional(Schema.String),
-      serverCertificates: Schema.optional(Schema.Array(Certificate)),
-      endpointFilter: Schema.optional(Schema.String),
-      hostname: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ServiceResolver",
-  }) as any as Schema.Schema<ServiceResolver>;
+export const ServiceResolver = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  serviceDirectoryService: Schema.optional(Schema.String),
+  serverCertificates: Schema.optional(Schema.Array(Certificate)),
+  endpointFilter: Schema.optional(Schema.String),
+  hostname: Schema.optional(Schema.String),
+}).annotate({ identifier: "ServiceResolver" });
 
 export interface Expr {
   /** Textual representation of an expression in Common Expression Language syntax. */
@@ -1091,15 +928,12 @@ export interface Expr {
   description?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expression: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Expr" }) as any as Schema.Schema<Expr>;
+export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  expression: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "Expr" });
 
 export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
@@ -1110,14 +944,11 @@ export interface Binding {
   condition?: Expr;
 }
 
-export const Binding: Schema.Schema<Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      role: Schema.optional(Schema.String),
-      members: Schema.optional(Schema.Array(Schema.String)),
-      condition: Schema.optional(Expr),
-    }),
-  ).annotate({ identifier: "Binding" }) as any as Schema.Schema<Binding>;
+export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  role: Schema.optional(Schema.String),
+  members: Schema.optional(Schema.Array(Schema.String)),
+  condition: Schema.optional(Expr),
+}).annotate({ identifier: "Binding" });
 
 export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
@@ -1126,15 +957,10 @@ export interface AuditConfig {
   auditLogConfigs?: Array<AuditLogConfig>;
 }
 
-export const AuditConfig: Schema.Schema<AuditConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      service: Schema.optional(Schema.String),
-      auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
-    }),
-  ).annotate({
-    identifier: "AuditConfig",
-  }) as any as Schema.Schema<AuditConfig>;
+export const AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  service: Schema.optional(Schema.String),
+  auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
+}).annotate({ identifier: "AuditConfig" });
 
 export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -1147,15 +973,12 @@ export interface Policy {
   etag?: string;
 }
 
-export const Policy: Schema.Schema<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.Number),
-      bindings: Schema.optional(Schema.Array(Binding)),
-      auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Policy" }) as any as Schema.Schema<Policy>;
+export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.Number),
+  bindings: Schema.optional(Schema.Array(Binding)),
+  auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "Policy" });
 
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
@@ -1164,15 +987,10 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policy: Schema.optional(Policy),
-      updateMask: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SetIamPolicyRequest",
-  }) as any as Schema.Schema<SetIamPolicyRequest>;
+export const SetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policy: Schema.optional(Policy),
+  updateMask: Schema.optional(Schema.String),
+}).annotate({ identifier: "SetIamPolicyRequest" });
 
 export interface KeyAccessJustificationsEnrollmentConfig {
   /** Indicates whether the project has KAJ logging enabled. */
@@ -1181,15 +999,11 @@ export interface KeyAccessJustificationsEnrollmentConfig {
   policyEnforcement?: boolean;
 }
 
-export const KeyAccessJustificationsEnrollmentConfig: Schema.Schema<KeyAccessJustificationsEnrollmentConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      auditLogging: Schema.optional(Schema.Boolean),
-      policyEnforcement: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "KeyAccessJustificationsEnrollmentConfig",
-  }) as any as Schema.Schema<KeyAccessJustificationsEnrollmentConfig>;
+export const KeyAccessJustificationsEnrollmentConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    auditLogging: Schema.optional(Schema.Boolean),
+    policyEnforcement: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "KeyAccessJustificationsEnrollmentConfig" });
 
 export interface AsymmetricDecryptResponse {
   /** The decrypted data originally encrypted with the matching public key. */
@@ -1209,17 +1023,13 @@ export interface AsymmetricDecryptResponse {
     | (string & {});
 }
 
-export const AsymmetricDecryptResponse: Schema.Schema<AsymmetricDecryptResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      plaintext: Schema.optional(Schema.String),
-      plaintextCrc32c: Schema.optional(Schema.String),
-      verifiedCiphertextCrc32c: Schema.optional(Schema.Boolean),
-      protectionLevel: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AsymmetricDecryptResponse",
-  }) as any as Schema.Schema<AsymmetricDecryptResponse>;
+export const AsymmetricDecryptResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    plaintext: Schema.optional(Schema.String),
+    plaintextCrc32c: Schema.optional(Schema.String),
+    verifiedCiphertextCrc32c: Schema.optional(Schema.Boolean),
+    protectionLevel: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AsymmetricDecryptResponse" });
 
 export interface GenerateRandomBytesResponse {
   /** The generated data. */
@@ -1228,15 +1038,11 @@ export interface GenerateRandomBytesResponse {
   dataCrc32c?: string;
 }
 
-export const GenerateRandomBytesResponse: Schema.Schema<GenerateRandomBytesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      data: Schema.optional(Schema.String),
-      dataCrc32c: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GenerateRandomBytesResponse",
-  }) as any as Schema.Schema<GenerateRandomBytesResponse>;
+export const GenerateRandomBytesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    data: Schema.optional(Schema.String),
+    dataCrc32c: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GenerateRandomBytesResponse" });
 
 export interface MacVerifyRequest {
   /** Required. The data used previously as a MacSignRequest.data to generate the MAC tag. */
@@ -1249,17 +1055,12 @@ export interface MacVerifyRequest {
   macCrc32c?: string;
 }
 
-export const MacVerifyRequest: Schema.Schema<MacVerifyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      data: Schema.optional(Schema.String),
-      dataCrc32c: Schema.optional(Schema.String),
-      mac: Schema.optional(Schema.String),
-      macCrc32c: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MacVerifyRequest",
-  }) as any as Schema.Schema<MacVerifyRequest>;
+export const MacVerifyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  data: Schema.optional(Schema.String),
+  dataCrc32c: Schema.optional(Schema.String),
+  mac: Schema.optional(Schema.String),
+  macCrc32c: Schema.optional(Schema.String),
+}).annotate({ identifier: "MacVerifyRequest" });
 
 export interface EkmConfig {
   /** Output only. The resource name for the EkmConfig in the format `projects/* /locations/* /ekmConfig`. */
@@ -1268,13 +1069,10 @@ export interface EkmConfig {
   defaultEkmConnection?: string;
 }
 
-export const EkmConfig: Schema.Schema<EkmConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      defaultEkmConnection: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "EkmConfig" }) as any as Schema.Schema<EkmConfig>;
+export const EkmConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  defaultEkmConnection: Schema.optional(Schema.String),
+}).annotate({ identifier: "EkmConfig" });
 
 export interface RawEncryptRequest {
   /** Required. The data to encrypt. Must be no larger than 64KiB. The maximum size depends on the key version's protection_level. For SOFTWARE keys, the plaintext must be no larger than 64KiB. For HSM keys, the combined length of the plaintext and additional_authenticated_data fields must be no larger than 8KiB. */
@@ -1291,33 +1089,24 @@ export interface RawEncryptRequest {
   initializationVector?: string;
 }
 
-export const RawEncryptRequest: Schema.Schema<RawEncryptRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      plaintext: Schema.optional(Schema.String),
-      plaintextCrc32c: Schema.optional(Schema.String),
-      additionalAuthenticatedData: Schema.optional(Schema.String),
-      initializationVectorCrc32c: Schema.optional(Schema.String),
-      additionalAuthenticatedDataCrc32c: Schema.optional(Schema.String),
-      initializationVector: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RawEncryptRequest",
-  }) as any as Schema.Schema<RawEncryptRequest>;
+export const RawEncryptRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  plaintext: Schema.optional(Schema.String),
+  plaintextCrc32c: Schema.optional(Schema.String),
+  additionalAuthenticatedData: Schema.optional(Schema.String),
+  initializationVectorCrc32c: Schema.optional(Schema.String),
+  additionalAuthenticatedDataCrc32c: Schema.optional(Schema.String),
+  initializationVector: Schema.optional(Schema.String),
+}).annotate({ identifier: "RawEncryptRequest" });
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsResponse",
-  }) as any as Schema.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsResponse" });
 
 export interface CryptoKeyVersionTemplate {
   /** Required. Algorithm to use when creating a CryptoKeyVersion based on this template. For backwards compatibility, GOOGLE_SYMMETRIC_ENCRYPTION is implied if both this field is omitted and CryptoKey.purpose is ENCRYPT_DECRYPT. */
@@ -1381,15 +1170,11 @@ export interface CryptoKeyVersionTemplate {
     | (string & {});
 }
 
-export const CryptoKeyVersionTemplate: Schema.Schema<CryptoKeyVersionTemplate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      algorithm: Schema.optional(Schema.String),
-      protectionLevel: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CryptoKeyVersionTemplate",
-  }) as any as Schema.Schema<CryptoKeyVersionTemplate>;
+export const CryptoKeyVersionTemplate =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    algorithm: Schema.optional(Schema.String),
+    protectionLevel: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CryptoKeyVersionTemplate" });
 
 export interface CryptoKey {
   /** A template describing settings for new CryptoKeyVersion instances. The properties of new CryptoKeyVersion instances created by either CreateCryptoKeyVersion or auto-rotation are controlled by this template. */
@@ -1426,25 +1211,20 @@ export interface CryptoKey {
   cryptoKeyBackend?: string;
 }
 
-export const CryptoKey: Schema.Schema<CryptoKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      versionTemplate: Schema.optional(CryptoKeyVersionTemplate),
-      destroyScheduledDuration: Schema.optional(Schema.String),
-      importOnly: Schema.optional(Schema.Boolean),
-      primary: Schema.optional(CryptoKeyVersion),
-      nextRotationTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      rotationPeriod: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      keyAccessJustificationsPolicy: Schema.optional(
-        KeyAccessJustificationsPolicy,
-      ),
-      purpose: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      cryptoKeyBackend: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "CryptoKey" }) as any as Schema.Schema<CryptoKey>;
+export const CryptoKey = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  versionTemplate: Schema.optional(CryptoKeyVersionTemplate),
+  destroyScheduledDuration: Schema.optional(Schema.String),
+  importOnly: Schema.optional(Schema.Boolean),
+  primary: Schema.optional(CryptoKeyVersion),
+  nextRotationTime: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  rotationPeriod: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  keyAccessJustificationsPolicy: Schema.optional(KeyAccessJustificationsPolicy),
+  purpose: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  cryptoKeyBackend: Schema.optional(Schema.String),
+}).annotate({ identifier: "CryptoKey" });
 
 export interface MacSignResponse {
   /** The resource name of the CryptoKeyVersion used for signing. Check this field to verify that the intended resource was used for signing. */
@@ -1466,18 +1246,13 @@ export interface MacSignResponse {
     | (string & {});
 }
 
-export const MacSignResponse: Schema.Schema<MacSignResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      mac: Schema.optional(Schema.String),
-      macCrc32c: Schema.optional(Schema.String),
-      verifiedDataCrc32c: Schema.optional(Schema.Boolean),
-      protectionLevel: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MacSignResponse",
-  }) as any as Schema.Schema<MacSignResponse>;
+export const MacSignResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  mac: Schema.optional(Schema.String),
+  macCrc32c: Schema.optional(Schema.String),
+  verifiedDataCrc32c: Schema.optional(Schema.Boolean),
+  protectionLevel: Schema.optional(Schema.String),
+}).annotate({ identifier: "MacSignResponse" });
 
 export interface DecapsulateRequest {
   /** Required. The ciphertext produced from encapsulation with the named CryptoKeyVersion public key(s). */
@@ -1486,15 +1261,10 @@ export interface DecapsulateRequest {
   ciphertextCrc32c?: string;
 }
 
-export const DecapsulateRequest: Schema.Schema<DecapsulateRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ciphertext: Schema.optional(Schema.String),
-      ciphertextCrc32c: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DecapsulateRequest",
-  }) as any as Schema.Schema<DecapsulateRequest>;
+export const DecapsulateRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ciphertext: Schema.optional(Schema.String),
+  ciphertextCrc32c: Schema.optional(Schema.String),
+}).annotate({ identifier: "DecapsulateRequest" });
 
 export interface ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse {
   /** Contains the effective KeyAccessJustificationsEnrollmentConfig for hardware keys. */
@@ -1505,16 +1275,14 @@ export interface ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse {
   softwareConfig?: KeyAccessJustificationsEnrollmentConfig;
 }
 
-export const ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse: Schema.Schema<ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hardwareConfig: Schema.optional(KeyAccessJustificationsEnrollmentConfig),
-      externalConfig: Schema.optional(KeyAccessJustificationsEnrollmentConfig),
-      softwareConfig: Schema.optional(KeyAccessJustificationsEnrollmentConfig),
-    }),
-  ).annotate({
+export const ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    hardwareConfig: Schema.optional(KeyAccessJustificationsEnrollmentConfig),
+    externalConfig: Schema.optional(KeyAccessJustificationsEnrollmentConfig),
+    softwareConfig: Schema.optional(KeyAccessJustificationsEnrollmentConfig),
+  }).annotate({
     identifier: "ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse",
-  }) as any as Schema.Schema<ShowEffectiveKeyAccessJustificationsEnrollmentConfigResponse>;
+  });
 
 export interface ListCryptoKeysResponse {
   /** A token to retrieve next page of results. Pass this value in ListCryptoKeysRequest.page_token to retrieve the next page of results. */
@@ -1525,16 +1293,13 @@ export interface ListCryptoKeysResponse {
   totalSize?: number;
 }
 
-export const ListCryptoKeysResponse: Schema.Schema<ListCryptoKeysResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      cryptoKeys: Schema.optional(Schema.Array(CryptoKey)),
-      totalSize: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "ListCryptoKeysResponse",
-  }) as any as Schema.Schema<ListCryptoKeysResponse>;
+export const ListCryptoKeysResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    nextPageToken: Schema.optional(Schema.String),
+    cryptoKeys: Schema.optional(Schema.Array(CryptoKey)),
+    totalSize: Schema.optional(Schema.Number),
+  },
+).annotate({ identifier: "ListCryptoKeysResponse" });
 
 export interface EkmConnection {
   /** Output only. The resource name for the EkmConnection in the format `projects/* /locations/* /ekmConnections/*`. */
@@ -1555,19 +1320,14 @@ export interface EkmConnection {
   cryptoSpacePath?: string;
 }
 
-export const EkmConnection: Schema.Schema<EkmConnection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      serviceResolvers: Schema.optional(Schema.Array(ServiceResolver)),
-      createTime: Schema.optional(Schema.String),
-      keyManagementMode: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      cryptoSpacePath: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EkmConnection",
-  }) as any as Schema.Schema<EkmConnection>;
+export const EkmConnection = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  serviceResolvers: Schema.optional(Schema.Array(ServiceResolver)),
+  createTime: Schema.optional(Schema.String),
+  keyManagementMode: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  cryptoSpacePath: Schema.optional(Schema.String),
+}).annotate({ identifier: "EkmConnection" });
 
 export interface KeyHandle {
   /** Identifier. Name of the KeyHandle resource, e.g. `projects/{PROJECT_ID}/locations/{LOCATION}/keyHandles/{KEY_HANDLE_ID}`. */
@@ -1578,14 +1338,11 @@ export interface KeyHandle {
   kmsKey?: string;
 }
 
-export const KeyHandle: Schema.Schema<KeyHandle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      resourceTypeSelector: Schema.optional(Schema.String),
-      kmsKey: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "KeyHandle" }) as any as Schema.Schema<KeyHandle>;
+export const KeyHandle = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  resourceTypeSelector: Schema.optional(Schema.String),
+  kmsKey: Schema.optional(Schema.String),
+}).annotate({ identifier: "KeyHandle" });
 
 export interface ListKeyHandlesResponse {
   /** Resulting KeyHandles. */
@@ -1594,64 +1351,48 @@ export interface ListKeyHandlesResponse {
   nextPageToken?: string;
 }
 
-export const ListKeyHandlesResponse: Schema.Schema<ListKeyHandlesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      keyHandles: Schema.optional(Schema.Array(KeyHandle)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListKeyHandlesResponse",
-  }) as any as Schema.Schema<ListKeyHandlesResponse>;
+export const ListKeyHandlesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    keyHandles: Schema.optional(Schema.Array(KeyHandle)),
+    nextPageToken: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ListKeyHandlesResponse" });
 
 export interface ApproveSingleTenantHsmInstanceProposalResponse {}
 
-export const ApproveSingleTenantHsmInstanceProposalResponse: Schema.Schema<ApproveSingleTenantHsmInstanceProposalResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const ApproveSingleTenantHsmInstanceProposalResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ApproveSingleTenantHsmInstanceProposalResponse",
-  }) as any as Schema.Schema<ApproveSingleTenantHsmInstanceProposalResponse>;
+  });
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsRequest",
-  }) as any as Schema.Schema<TestIamPermissionsRequest>;
+export const TestIamPermissionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsRequest" });
 
 export interface AddQuorumMember {
   /** Required. The public key associated with the 2FA key for the new quorum member to add. Public keys must be associated with RSA 2048 keys. */
   twoFactorPublicKeyPem?: string;
 }
 
-export const AddQuorumMember: Schema.Schema<AddQuorumMember> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      twoFactorPublicKeyPem: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AddQuorumMember",
-  }) as any as Schema.Schema<AddQuorumMember>;
+export const AddQuorumMember = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  twoFactorPublicKeyPem: Schema.optional(Schema.String),
+}).annotate({ identifier: "AddQuorumMember" });
 
 export interface ShowEffectiveAutokeyConfigResponse {
   /** Name of the key project configured in the resource project's folder ancestry. */
   keyProject?: string;
 }
 
-export const ShowEffectiveAutokeyConfigResponse: Schema.Schema<ShowEffectiveAutokeyConfigResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      keyProject: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ShowEffectiveAutokeyConfigResponse",
-  }) as any as Schema.Schema<ShowEffectiveAutokeyConfigResponse>;
+export const ShowEffectiveAutokeyConfigResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    keyProject: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ShowEffectiveAutokeyConfigResponse" });
 
 export interface SingleTenantHsmInstance {
   /** Required. The quorum auth configuration for the SingleTenantHsmInstance. */
@@ -1680,20 +1421,16 @@ export interface SingleTenantHsmInstance {
   createTime?: string;
 }
 
-export const SingleTenantHsmInstance: Schema.Schema<SingleTenantHsmInstance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      quorumAuth: Schema.optional(QuorumAuth),
-      state: Schema.optional(Schema.String),
-      disableTime: Schema.optional(Schema.String),
-      deleteTime: Schema.optional(Schema.String),
-      unrefreshedDurationUntilDisable: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SingleTenantHsmInstance",
-  }) as any as Schema.Schema<SingleTenantHsmInstance>;
+export const SingleTenantHsmInstance =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    quorumAuth: Schema.optional(QuorumAuth),
+    state: Schema.optional(Schema.String),
+    disableTime: Schema.optional(Schema.String),
+    deleteTime: Schema.optional(Schema.String),
+    unrefreshedDurationUntilDisable: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SingleTenantHsmInstance" });
 
 export interface ListSingleTenantHsmInstancesResponse {
   /** A token to retrieve next page of results. Pass this value in ListSingleTenantHsmInstancesRequest.page_token to retrieve the next page of results. */
@@ -1704,74 +1441,56 @@ export interface ListSingleTenantHsmInstancesResponse {
   totalSize?: number;
 }
 
-export const ListSingleTenantHsmInstancesResponse: Schema.Schema<ListSingleTenantHsmInstancesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      singleTenantHsmInstances: Schema.optional(
-        Schema.Array(SingleTenantHsmInstance),
-      ),
-      totalSize: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "ListSingleTenantHsmInstancesResponse",
-  }) as any as Schema.Schema<ListSingleTenantHsmInstancesResponse>;
+export const ListSingleTenantHsmInstancesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    singleTenantHsmInstances: Schema.optional(
+      Schema.Array(SingleTenantHsmInstance),
+    ),
+    totalSize: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "ListSingleTenantHsmInstancesResponse" });
 
 export interface WrappingPublicKey {
   /** The public key, encoded in PEM format. For more information, see the [RFC 7468](https://tools.ietf.org/html/rfc7468) sections for [General Considerations](https://tools.ietf.org/html/rfc7468#section-2) and [Textual Encoding of Subject Public Key Info] (https://tools.ietf.org/html/rfc7468#section-13). */
   pem?: string;
 }
 
-export const WrappingPublicKey: Schema.Schema<WrappingPublicKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pem: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WrappingPublicKey",
-  }) as any as Schema.Schema<WrappingPublicKey>;
+export const WrappingPublicKey = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pem: Schema.optional(Schema.String),
+}).annotate({ identifier: "WrappingPublicKey" });
 
 export interface UpdateCryptoKeyPrimaryVersionRequest {
   /** Required. The id of the child CryptoKeyVersion to use as primary. */
   cryptoKeyVersionId?: string;
 }
 
-export const UpdateCryptoKeyPrimaryVersionRequest: Schema.Schema<UpdateCryptoKeyPrimaryVersionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cryptoKeyVersionId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpdateCryptoKeyPrimaryVersionRequest",
-  }) as any as Schema.Schema<UpdateCryptoKeyPrimaryVersionRequest>;
+export const UpdateCryptoKeyPrimaryVersionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cryptoKeyVersionId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UpdateCryptoKeyPrimaryVersionRequest" });
 
 export interface RefreshSingleTenantHsmInstance {}
 
-export const RefreshSingleTenantHsmInstance: Schema.Schema<RefreshSingleTenantHsmInstance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const RefreshSingleTenantHsmInstance =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RefreshSingleTenantHsmInstance",
-  }) as any as Schema.Schema<RefreshSingleTenantHsmInstance>;
+  });
 
 export interface RemoveQuorumMember {
   /** Required. The public key associated with the 2FA key for the quorum member to remove. Public keys must be associated with RSA 2048 keys. */
   twoFactorPublicKeyPem?: string;
 }
 
-export const RemoveQuorumMember: Schema.Schema<RemoveQuorumMember> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      twoFactorPublicKeyPem: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RemoveQuorumMember",
-  }) as any as Schema.Schema<RemoveQuorumMember>;
+export const RemoveQuorumMember = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  twoFactorPublicKeyPem: Schema.optional(Schema.String),
+}).annotate({ identifier: "RemoveQuorumMember" });
 
 export interface DisableSingleTenantHsmInstance {}
 
-export const DisableSingleTenantHsmInstance: Schema.Schema<DisableSingleTenantHsmInstance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const DisableSingleTenantHsmInstance =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DisableSingleTenantHsmInstance",
-  }) as any as Schema.Schema<DisableSingleTenantHsmInstance>;
+  });
 
 export interface RegisterTwoFactorAuthKeys {
   /** Required. The public keys associated with the 2FA keys for M of N quorum auth. Public keys must be associated with RSA 2048 keys. */
@@ -1780,15 +1499,11 @@ export interface RegisterTwoFactorAuthKeys {
   requiredApproverCount?: number;
 }
 
-export const RegisterTwoFactorAuthKeys: Schema.Schema<RegisterTwoFactorAuthKeys> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      twoFactorPublicKeyPems: Schema.optional(Schema.Array(Schema.String)),
-      requiredApproverCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "RegisterTwoFactorAuthKeys",
-  }) as any as Schema.Schema<RegisterTwoFactorAuthKeys>;
+export const RegisterTwoFactorAuthKeys =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    twoFactorPublicKeyPems: Schema.optional(Schema.Array(Schema.String)),
+    requiredApproverCount: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "RegisterTwoFactorAuthKeys" });
 
 export interface SingleTenantHsmInstanceProposal {
   /** Output only. The state of the SingleTenantHsmInstanceProposal. */
@@ -1836,40 +1551,36 @@ export interface SingleTenantHsmInstanceProposal {
   quorumParameters?: QuorumParameters;
 }
 
-export const SingleTenantHsmInstanceProposal: Schema.Schema<SingleTenantHsmInstanceProposal> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      removeQuorumMember: Schema.optional(RemoveQuorumMember),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      deleteSingleTenantHsmInstance: Schema.optional(
-        DeleteSingleTenantHsmInstance,
-      ),
-      refreshSingleTenantHsmInstance: Schema.optional(
-        RefreshSingleTenantHsmInstance,
-      ),
-      enableSingleTenantHsmInstance: Schema.optional(
-        EnableSingleTenantHsmInstance,
-      ),
-      ttl: Schema.optional(Schema.String),
-      deleteTime: Schema.optional(Schema.String),
-      disableSingleTenantHsmInstance: Schema.optional(
-        DisableSingleTenantHsmInstance,
-      ),
-      purgeTime: Schema.optional(Schema.String),
-      requiredActionQuorumParameters: Schema.optional(
-        RequiredActionQuorumParameters,
-      ),
-      addQuorumMember: Schema.optional(AddQuorumMember),
-      expireTime: Schema.optional(Schema.String),
-      registerTwoFactorAuthKeys: Schema.optional(RegisterTwoFactorAuthKeys),
-      failureReason: Schema.optional(Schema.String),
-      quorumParameters: Schema.optional(QuorumParameters),
-    }),
-  ).annotate({
-    identifier: "SingleTenantHsmInstanceProposal",
-  }) as any as Schema.Schema<SingleTenantHsmInstanceProposal>;
+export const SingleTenantHsmInstanceProposal =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+    removeQuorumMember: Schema.optional(RemoveQuorumMember),
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    deleteSingleTenantHsmInstance: Schema.optional(
+      DeleteSingleTenantHsmInstance,
+    ),
+    refreshSingleTenantHsmInstance: Schema.optional(
+      RefreshSingleTenantHsmInstance,
+    ),
+    enableSingleTenantHsmInstance: Schema.optional(
+      EnableSingleTenantHsmInstance,
+    ),
+    ttl: Schema.optional(Schema.String),
+    deleteTime: Schema.optional(Schema.String),
+    disableSingleTenantHsmInstance: Schema.optional(
+      DisableSingleTenantHsmInstance,
+    ),
+    purgeTime: Schema.optional(Schema.String),
+    requiredActionQuorumParameters: Schema.optional(
+      RequiredActionQuorumParameters,
+    ),
+    addQuorumMember: Schema.optional(AddQuorumMember),
+    expireTime: Schema.optional(Schema.String),
+    registerTwoFactorAuthKeys: Schema.optional(RegisterTwoFactorAuthKeys),
+    failureReason: Schema.optional(Schema.String),
+    quorumParameters: Schema.optional(QuorumParameters),
+  }).annotate({ identifier: "SingleTenantHsmInstanceProposal" });
 
 export interface ListSingleTenantHsmInstanceProposalsResponse {
   /** The list of SingleTenantHsmInstanceProposals. */
@@ -1880,18 +1591,14 @@ export interface ListSingleTenantHsmInstanceProposalsResponse {
   totalSize?: number;
 }
 
-export const ListSingleTenantHsmInstanceProposalsResponse: Schema.Schema<ListSingleTenantHsmInstanceProposalsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      singleTenantHsmInstanceProposals: Schema.optional(
-        Schema.Array(SingleTenantHsmInstanceProposal),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-      totalSize: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "ListSingleTenantHsmInstanceProposalsResponse",
-  }) as any as Schema.Schema<ListSingleTenantHsmInstanceProposalsResponse>;
+export const ListSingleTenantHsmInstanceProposalsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    singleTenantHsmInstanceProposals: Schema.optional(
+      Schema.Array(SingleTenantHsmInstanceProposal),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+    totalSize: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "ListSingleTenantHsmInstanceProposalsResponse" });
 
 export interface ListEkmConnectionsResponse {
   /** A token to retrieve next page of results. Pass this value in ListEkmConnectionsRequest.page_token to retrieve the next page of results. */
@@ -1902,16 +1609,12 @@ export interface ListEkmConnectionsResponse {
   totalSize?: number;
 }
 
-export const ListEkmConnectionsResponse: Schema.Schema<ListEkmConnectionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      ekmConnections: Schema.optional(Schema.Array(EkmConnection)),
-      totalSize: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "ListEkmConnectionsResponse",
-  }) as any as Schema.Schema<ListEkmConnectionsResponse>;
+export const ListEkmConnectionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    ekmConnections: Schema.optional(Schema.Array(EkmConnection)),
+    totalSize: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "ListEkmConnectionsResponse" });
 
 export interface EncryptRequest {
   /** Optional. Optional data that, if specified, must also be provided during decryption through DecryptRequest.additional_authenticated_data. The maximum size depends on the key version's protection_level. For SOFTWARE, EXTERNAL, and EXTERNAL_VPC keys the AAD must be no larger than 64KiB. For HSM keys, the combined length of the plaintext and additional_authenticated_data fields must be no larger than 8KiB. */
@@ -1924,24 +1627,18 @@ export interface EncryptRequest {
   additionalAuthenticatedDataCrc32c?: string;
 }
 
-export const EncryptRequest: Schema.Schema<EncryptRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      additionalAuthenticatedData: Schema.optional(Schema.String),
-      plaintext: Schema.optional(Schema.String),
-      plaintextCrc32c: Schema.optional(Schema.String),
-      additionalAuthenticatedDataCrc32c: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EncryptRequest",
-  }) as any as Schema.Schema<EncryptRequest>;
+export const EncryptRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  additionalAuthenticatedData: Schema.optional(Schema.String),
+  plaintext: Schema.optional(Schema.String),
+  plaintextCrc32c: Schema.optional(Schema.String),
+  additionalAuthenticatedDataCrc32c: Schema.optional(Schema.String),
+}).annotate({ identifier: "EncryptRequest" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface KeyAccessJustificationsPolicyConfig {
   /** Output only. Indicates whether this parent resource is available to default policy feature. Please consult [the prerequisite of default policy feature](https://cloud.google.com/assured-workloads/key-access-justifications/docs/set-default-policy#before) for more details. */
@@ -1952,18 +1649,14 @@ export interface KeyAccessJustificationsPolicyConfig {
   name?: string;
 }
 
-export const KeyAccessJustificationsPolicyConfig: Schema.Schema<KeyAccessJustificationsPolicyConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      defaultPolicyAvailable: Schema.optional(Schema.Boolean),
-      defaultKeyAccessJustificationPolicy: Schema.optional(
-        KeyAccessJustificationsPolicy,
-      ),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "KeyAccessJustificationsPolicyConfig",
-  }) as any as Schema.Schema<KeyAccessJustificationsPolicyConfig>;
+export const KeyAccessJustificationsPolicyConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    defaultPolicyAvailable: Schema.optional(Schema.Boolean),
+    defaultKeyAccessJustificationPolicy: Schema.optional(
+      KeyAccessJustificationsPolicy,
+    ),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "KeyAccessJustificationsPolicyConfig" });
 
 export interface ListKeyRingsResponse {
   /** The total number of KeyRings that matched the query. This field is not populated if ListKeyRingsRequest.filter is applied. */
@@ -1974,16 +1667,11 @@ export interface ListKeyRingsResponse {
   nextPageToken?: string;
 }
 
-export const ListKeyRingsResponse: Schema.Schema<ListKeyRingsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      totalSize: Schema.optional(Schema.Number),
-      keyRings: Schema.optional(Schema.Array(KeyRing)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListKeyRingsResponse",
-  }) as any as Schema.Schema<ListKeyRingsResponse>;
+export const ListKeyRingsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  totalSize: Schema.optional(Schema.Number),
+  keyRings: Schema.optional(Schema.Array(KeyRing)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListKeyRingsResponse" });
 
 export interface DecryptRequest {
   /** Optional. Optional data that must match the data originally supplied in EncryptRequest.additional_authenticated_data. */
@@ -1996,17 +1684,12 @@ export interface DecryptRequest {
   ciphertextCrc32c?: string;
 }
 
-export const DecryptRequest: Schema.Schema<DecryptRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      additionalAuthenticatedData: Schema.optional(Schema.String),
-      ciphertext: Schema.optional(Schema.String),
-      additionalAuthenticatedDataCrc32c: Schema.optional(Schema.String),
-      ciphertextCrc32c: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DecryptRequest",
-  }) as any as Schema.Schema<DecryptRequest>;
+export const DecryptRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  additionalAuthenticatedData: Schema.optional(Schema.String),
+  ciphertext: Schema.optional(Schema.String),
+  additionalAuthenticatedDataCrc32c: Schema.optional(Schema.String),
+  ciphertextCrc32c: Schema.optional(Schema.String),
+}).annotate({ identifier: "DecryptRequest" });
 
 export interface AsymmetricSignRequest {
   /** Optional. The data to sign. It can't be supplied if AsymmetricSignRequest.digest is supplied. */
@@ -2019,17 +1702,12 @@ export interface AsymmetricSignRequest {
   digest?: Digest;
 }
 
-export const AsymmetricSignRequest: Schema.Schema<AsymmetricSignRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      data: Schema.optional(Schema.String),
-      dataCrc32c: Schema.optional(Schema.String),
-      digestCrc32c: Schema.optional(Schema.String),
-      digest: Schema.optional(Digest),
-    }),
-  ).annotate({
-    identifier: "AsymmetricSignRequest",
-  }) as any as Schema.Schema<AsymmetricSignRequest>;
+export const AsymmetricSignRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  data: Schema.optional(Schema.String),
+  dataCrc32c: Schema.optional(Schema.String),
+  digestCrc32c: Schema.optional(Schema.String),
+  digest: Schema.optional(Digest),
+}).annotate({ identifier: "AsymmetricSignRequest" });
 
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -2040,16 +1718,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface Location {
   /** The canonical id for this location. For example: `"us-east1"`. */
@@ -2064,16 +1739,13 @@ export interface Location {
   labels?: Record<string, string>;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locationId: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locationId: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "Location" });
 
 export interface ListLocationsResponse {
   /** The standard List next-page token. */
@@ -2082,29 +1754,22 @@ export interface ListLocationsResponse {
   locations?: Array<Location>;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      locations: Schema.optional(Schema.Array(Location)),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  locations: Schema.optional(Schema.Array(Location)),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface ShowEffectiveKeyAccessJustificationsPolicyConfigResponse {
   /** Contains the effective KeyAccessJustificationsPolicyConfig. */
   effectiveKajPolicy?: KeyAccessJustificationsPolicyConfig;
 }
 
-export const ShowEffectiveKeyAccessJustificationsPolicyConfigResponse: Schema.Schema<ShowEffectiveKeyAccessJustificationsPolicyConfigResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      effectiveKajPolicy: Schema.optional(KeyAccessJustificationsPolicyConfig),
-    }),
-  ).annotate({
+export const ShowEffectiveKeyAccessJustificationsPolicyConfigResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    effectiveKajPolicy: Schema.optional(KeyAccessJustificationsPolicyConfig),
+  }).annotate({
     identifier: "ShowEffectiveKeyAccessJustificationsPolicyConfigResponse",
-  }) as any as Schema.Schema<ShowEffectiveKeyAccessJustificationsPolicyConfigResponse>;
+  });
 
 export interface AsymmetricSignResponse {
   /** The created signature. */
@@ -2128,19 +1793,16 @@ export interface AsymmetricSignResponse {
   name?: string;
 }
 
-export const AsymmetricSignResponse: Schema.Schema<AsymmetricSignResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      signature: Schema.optional(Schema.String),
-      verifiedDataCrc32c: Schema.optional(Schema.Boolean),
-      protectionLevel: Schema.optional(Schema.String),
-      signatureCrc32c: Schema.optional(Schema.String),
-      verifiedDigestCrc32c: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AsymmetricSignResponse",
-  }) as any as Schema.Schema<AsymmetricSignResponse>;
+export const AsymmetricSignResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    signature: Schema.optional(Schema.String),
+    verifiedDataCrc32c: Schema.optional(Schema.Boolean),
+    protectionLevel: Schema.optional(Schema.String),
+    signatureCrc32c: Schema.optional(Schema.String),
+    verifiedDigestCrc32c: Schema.optional(Schema.Boolean),
+    name: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "AsymmetricSignResponse" });
 
 export interface ImportJob {
   /** Output only. The time this ImportJob's key material was generated. */
@@ -2187,22 +1849,19 @@ export interface ImportJob {
   expireEventTime?: string;
 }
 
-export const ImportJob: Schema.Schema<ImportJob> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      generateTime: Schema.optional(Schema.String),
-      publicKey: Schema.optional(WrappingPublicKey),
-      createTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      importMethod: Schema.optional(Schema.String),
-      expireTime: Schema.optional(Schema.String),
-      protectionLevel: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      attestation: Schema.optional(KeyOperationAttestation),
-      cryptoKeyBackend: Schema.optional(Schema.String),
-      expireEventTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "ImportJob" }) as any as Schema.Schema<ImportJob>;
+export const ImportJob = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  generateTime: Schema.optional(Schema.String),
+  publicKey: Schema.optional(WrappingPublicKey),
+  createTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  importMethod: Schema.optional(Schema.String),
+  expireTime: Schema.optional(Schema.String),
+  protectionLevel: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  attestation: Schema.optional(KeyOperationAttestation),
+  cryptoKeyBackend: Schema.optional(Schema.String),
+  expireEventTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "ImportJob" });
 
 export interface ListImportJobsResponse {
   /** The list of ImportJobs. */
@@ -2213,16 +1872,13 @@ export interface ListImportJobsResponse {
   nextPageToken?: string;
 }
 
-export const ListImportJobsResponse: Schema.Schema<ListImportJobsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      importJobs: Schema.optional(Schema.Array(ImportJob)),
-      totalSize: Schema.optional(Schema.Number),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListImportJobsResponse",
-  }) as any as Schema.Schema<ListImportJobsResponse>;
+export const ListImportJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    importJobs: Schema.optional(Schema.Array(ImportJob)),
+    totalSize: Schema.optional(Schema.Number),
+    nextPageToken: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ListImportJobsResponse" });
 
 export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
@@ -2237,16 +1893,13 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      name: Schema.optional(Schema.String),
-      error: Schema.optional(Status),
-      done: Schema.optional(Schema.Boolean),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  name: Schema.optional(Schema.String),
+  error: Schema.optional(Status),
+  done: Schema.optional(Schema.Boolean),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Operation" });
 
 export interface ImportCryptoKeyVersionRequest {
   /** Optional. The optional name of an existing CryptoKeyVersion to target for an import operation. If this field is not present, a new CryptoKeyVersion containing the supplied key material is created. If this field is present, the supplied key material is imported into the existing CryptoKeyVersion. To import into an existing CryptoKeyVersion, the CryptoKeyVersion must be a child of ImportCryptoKeyVersionRequest.parent, have been previously created via ImportCryptoKeyVersion, and be in DESTROYED or IMPORT_FAILED state. The key material and algorithm must match the previous CryptoKeyVersion exactly if the CryptoKeyVersion has ever contained key material. */
@@ -2309,25 +1962,21 @@ export interface ImportCryptoKeyVersionRequest {
   importJob?: string;
 }
 
-export const ImportCryptoKeyVersionRequest: Schema.Schema<ImportCryptoKeyVersionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cryptoKeyVersion: Schema.optional(Schema.String),
-      algorithm: Schema.optional(Schema.String),
-      wrappedKey: Schema.optional(Schema.String),
-      rsaAesWrappedKey: Schema.optional(Schema.String),
-      importJob: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ImportCryptoKeyVersionRequest",
-  }) as any as Schema.Schema<ImportCryptoKeyVersionRequest>;
+export const ImportCryptoKeyVersionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cryptoKeyVersion: Schema.optional(Schema.String),
+    algorithm: Schema.optional(Schema.String),
+    wrappedKey: Schema.optional(Schema.String),
+    rsaAesWrappedKey: Schema.optional(Schema.String),
+    importJob: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ImportCryptoKeyVersionRequest" });
 
 export interface RestoreCryptoKeyVersionRequest {}
 
-export const RestoreCryptoKeyVersionRequest: Schema.Schema<RestoreCryptoKeyVersionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const RestoreCryptoKeyVersionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RestoreCryptoKeyVersionRequest",
-  }) as any as Schema.Schema<RestoreCryptoKeyVersionRequest>;
+  });
 
 // ==========================================================================
 // Operations

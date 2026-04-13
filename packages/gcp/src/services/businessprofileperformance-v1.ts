@@ -31,16 +31,12 @@ export interface Businessprofileperformance_Date {
   month?: number;
 }
 
-export const Businessprofileperformance_Date: Schema.Schema<Businessprofileperformance_Date> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      day: Schema.optional(Schema.Number),
-      year: Schema.optional(Schema.Number),
-      month: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "Businessprofileperformance_Date",
-  }) as any as Schema.Schema<Businessprofileperformance_Date>;
+export const Businessprofileperformance_Date =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    day: Schema.optional(Schema.Number),
+    year: Schema.optional(Schema.Number),
+    month: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "Businessprofileperformance_Date" });
 
 export interface DatedValue {
   /** The date that the datapoint corresponds to. This represents a month value if the day field is not set. */
@@ -49,25 +45,19 @@ export interface DatedValue {
   value?: string;
 }
 
-export const DatedValue: Schema.Schema<DatedValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      date: Schema.optional(Businessprofileperformance_Date),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "DatedValue" }) as any as Schema.Schema<DatedValue>;
+export const DatedValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  date: Schema.optional(Businessprofileperformance_Date),
+  value: Schema.optional(Schema.String),
+}).annotate({ identifier: "DatedValue" });
 
 export interface TimeSeries {
   /** List of datapoints in the timeseries, where each datapoint is a date-value pair. */
   datedValues?: Array<DatedValue>;
 }
 
-export const TimeSeries: Schema.Schema<TimeSeries> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      datedValues: Schema.optional(Schema.Array(DatedValue)),
-    }),
-  ).annotate({ identifier: "TimeSeries" }) as any as Schema.Schema<TimeSeries>;
+export const TimeSeries = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  datedValues: Schema.optional(Schema.Array(DatedValue)),
+}).annotate({ identifier: "TimeSeries" });
 
 export interface TimeOfDay {
   /** Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds. */
@@ -80,15 +70,12 @@ export interface TimeOfDay {
   hours?: number;
 }
 
-export const TimeOfDay: Schema.Schema<TimeOfDay> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      seconds: Schema.optional(Schema.Number),
-      minutes: Schema.optional(Schema.Number),
-      nanos: Schema.optional(Schema.Number),
-      hours: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "TimeOfDay" }) as any as Schema.Schema<TimeOfDay>;
+export const TimeOfDay = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  seconds: Schema.optional(Schema.Number),
+  minutes: Schema.optional(Schema.Number),
+  nanos: Schema.optional(Schema.Number),
+  hours: Schema.optional(Schema.Number),
+}).annotate({ identifier: "TimeOfDay" });
 
 export interface DailySubEntityType {
   /** Represents the day of the week. Eg: MONDAY. Currently supported DailyMetrics = NONE. */
@@ -106,15 +93,10 @@ export interface DailySubEntityType {
   timeOfDay?: TimeOfDay;
 }
 
-export const DailySubEntityType: Schema.Schema<DailySubEntityType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dayOfWeek: Schema.optional(Schema.String),
-      timeOfDay: Schema.optional(TimeOfDay),
-    }),
-  ).annotate({
-    identifier: "DailySubEntityType",
-  }) as any as Schema.Schema<DailySubEntityType>;
+export const DailySubEntityType = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dayOfWeek: Schema.optional(Schema.String),
+  timeOfDay: Schema.optional(TimeOfDay),
+}).annotate({ identifier: "DailySubEntityType" });
 
 export interface DailyMetricTimeSeries {
   /** The DailyMetric that the TimeSeries represents. */
@@ -138,32 +120,21 @@ export interface DailyMetricTimeSeries {
   timeSeries?: TimeSeries;
 }
 
-export const DailyMetricTimeSeries: Schema.Schema<DailyMetricTimeSeries> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dailyMetric: Schema.optional(Schema.String),
-      dailySubEntityType: Schema.optional(DailySubEntityType),
-      timeSeries: Schema.optional(TimeSeries),
-    }),
-  ).annotate({
-    identifier: "DailyMetricTimeSeries",
-  }) as any as Schema.Schema<DailyMetricTimeSeries>;
+export const DailyMetricTimeSeries = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dailyMetric: Schema.optional(Schema.String),
+  dailySubEntityType: Schema.optional(DailySubEntityType),
+  timeSeries: Schema.optional(TimeSeries),
+}).annotate({ identifier: "DailyMetricTimeSeries" });
 
 export interface MultiDailyMetricTimeSeries {
   /** List of DailyMetric-TimeSeries pairs. */
   dailyMetricTimeSeries?: Array<DailyMetricTimeSeries>;
 }
 
-export const MultiDailyMetricTimeSeries: Schema.Schema<MultiDailyMetricTimeSeries> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dailyMetricTimeSeries: Schema.optional(
-        Schema.Array(DailyMetricTimeSeries),
-      ),
-    }),
-  ).annotate({
-    identifier: "MultiDailyMetricTimeSeries",
-  }) as any as Schema.Schema<MultiDailyMetricTimeSeries>;
+export const MultiDailyMetricTimeSeries =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dailyMetricTimeSeries: Schema.optional(Schema.Array(DailyMetricTimeSeries)),
+  }).annotate({ identifier: "MultiDailyMetricTimeSeries" });
 
 export interface InsightsValue {
   /** Represents the actual value. */
@@ -172,15 +143,10 @@ export interface InsightsValue {
   threshold?: string;
 }
 
-export const InsightsValue: Schema.Schema<InsightsValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-      threshold: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InsightsValue",
-  }) as any as Schema.Schema<InsightsValue>;
+export const InsightsValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.String),
+  threshold: Schema.optional(Schema.String),
+}).annotate({ identifier: "InsightsValue" });
 
 export interface SearchKeywordCount {
   /** One of either: 1) The sum of the number of unique users that used the keyword in a month, aggregated for each month requested. 2) A threshold that indicates that the actual value is below this threshold. */
@@ -189,15 +155,10 @@ export interface SearchKeywordCount {
   searchKeyword?: string;
 }
 
-export const SearchKeywordCount: Schema.Schema<SearchKeywordCount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      insightsValue: Schema.optional(InsightsValue),
-      searchKeyword: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SearchKeywordCount",
-  }) as any as Schema.Schema<SearchKeywordCount>;
+export const SearchKeywordCount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  insightsValue: Schema.optional(InsightsValue),
+  searchKeyword: Schema.optional(Schema.String),
+}).annotate({ identifier: "SearchKeywordCount" });
 
 export interface ListSearchKeywordImpressionsMonthlyResponse {
   /** Search terms which have been used to find a business. */
@@ -206,45 +167,33 @@ export interface ListSearchKeywordImpressionsMonthlyResponse {
   nextPageToken?: string;
 }
 
-export const ListSearchKeywordImpressionsMonthlyResponse: Schema.Schema<ListSearchKeywordImpressionsMonthlyResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      searchKeywordsCounts: Schema.optional(Schema.Array(SearchKeywordCount)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListSearchKeywordImpressionsMonthlyResponse",
-  }) as any as Schema.Schema<ListSearchKeywordImpressionsMonthlyResponse>;
+export const ListSearchKeywordImpressionsMonthlyResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    searchKeywordsCounts: Schema.optional(Schema.Array(SearchKeywordCount)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListSearchKeywordImpressionsMonthlyResponse" });
 
 export interface GetDailyMetricsTimeSeriesResponse {
   /** The daily time series. */
   timeSeries?: TimeSeries;
 }
 
-export const GetDailyMetricsTimeSeriesResponse: Schema.Schema<GetDailyMetricsTimeSeriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      timeSeries: Schema.optional(TimeSeries),
-    }),
-  ).annotate({
-    identifier: "GetDailyMetricsTimeSeriesResponse",
-  }) as any as Schema.Schema<GetDailyMetricsTimeSeriesResponse>;
+export const GetDailyMetricsTimeSeriesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    timeSeries: Schema.optional(TimeSeries),
+  }).annotate({ identifier: "GetDailyMetricsTimeSeriesResponse" });
 
 export interface FetchMultiDailyMetricsTimeSeriesResponse {
   /** DailyMetrics and their corresponding time series. */
   multiDailyMetricTimeSeries?: Array<MultiDailyMetricTimeSeries>;
 }
 
-export const FetchMultiDailyMetricsTimeSeriesResponse: Schema.Schema<FetchMultiDailyMetricsTimeSeriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      multiDailyMetricTimeSeries: Schema.optional(
-        Schema.Array(MultiDailyMetricTimeSeries),
-      ),
-    }),
-  ).annotate({
-    identifier: "FetchMultiDailyMetricsTimeSeriesResponse",
-  }) as any as Schema.Schema<FetchMultiDailyMetricsTimeSeriesResponse>;
+export const FetchMultiDailyMetricsTimeSeriesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    multiDailyMetricTimeSeries: Schema.optional(
+      Schema.Array(MultiDailyMetricTimeSeries),
+    ),
+  }).annotate({ identifier: "FetchMultiDailyMetricsTimeSeriesResponse" });
 
 // ==========================================================================
 // Operations

@@ -29,59 +29,41 @@ export interface ReportStateAndNotificationDevice {
   notifications?: Record<string, unknown>;
 }
 
-export const ReportStateAndNotificationDevice: Schema.Schema<ReportStateAndNotificationDevice> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      states: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      notifications: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-    }),
-  ).annotate({
-    identifier: "ReportStateAndNotificationDevice",
-  }) as any as Schema.Schema<ReportStateAndNotificationDevice>;
+export const ReportStateAndNotificationDevice =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    states: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    notifications: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
+  }).annotate({ identifier: "ReportStateAndNotificationDevice" });
 
 export interface StateAndNotificationPayload {
   /** The devices for updating state and sending notifications. */
   devices?: ReportStateAndNotificationDevice;
 }
 
-export const StateAndNotificationPayload: Schema.Schema<StateAndNotificationPayload> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      devices: Schema.optional(ReportStateAndNotificationDevice),
-    }),
-  ).annotate({
-    identifier: "StateAndNotificationPayload",
-  }) as any as Schema.Schema<StateAndNotificationPayload>;
+export const StateAndNotificationPayload =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    devices: Schema.optional(ReportStateAndNotificationDevice),
+  }).annotate({ identifier: "StateAndNotificationPayload" });
 
 export interface AgentDeviceId {
   /** Third-party device ID. */
   id?: string;
 }
 
-export const AgentDeviceId: Schema.Schema<AgentDeviceId> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AgentDeviceId",
-  }) as any as Schema.Schema<AgentDeviceId>;
+export const AgentDeviceId = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+}).annotate({ identifier: "AgentDeviceId" });
 
 export interface QueryRequestPayload {
   /** Third-party device IDs for which to get the device states. */
   devices?: Array<AgentDeviceId>;
 }
 
-export const QueryRequestPayload: Schema.Schema<QueryRequestPayload> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      devices: Schema.optional(Schema.Array(AgentDeviceId)),
-    }),
-  ).annotate({
-    identifier: "QueryRequestPayload",
-  }) as any as Schema.Schema<QueryRequestPayload>;
+export const QueryRequestPayload = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  devices: Schema.optional(Schema.Array(AgentDeviceId)),
+}).annotate({ identifier: "QueryRequestPayload" });
 
 export interface AgentOtherDeviceId {
   /** Project ID for your smart home Action. */
@@ -90,34 +72,21 @@ export interface AgentOtherDeviceId {
   deviceId?: string;
 }
 
-export const AgentOtherDeviceId: Schema.Schema<AgentOtherDeviceId> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      agentId: Schema.optional(Schema.String),
-      deviceId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AgentOtherDeviceId",
-  }) as any as Schema.Schema<AgentOtherDeviceId>;
+export const AgentOtherDeviceId = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  agentId: Schema.optional(Schema.String),
+  deviceId: Schema.optional(Schema.String),
+}).annotate({ identifier: "AgentOtherDeviceId" });
 
 export interface QueryResponsePayload {
   /** States of the devices. Map of third-party device ID to struct of device states. */
   devices?: Record<string, Record<string, unknown>>;
 }
 
-export const QueryResponsePayload: Schema.Schema<QueryResponsePayload> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      devices: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          Schema.Record(Schema.String, Schema.Unknown),
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "QueryResponsePayload",
-  }) as any as Schema.Schema<QueryResponsePayload>;
+export const QueryResponsePayload = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  devices: Schema.optional(
+    Schema.Record(Schema.String, Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "QueryResponsePayload" });
 
 export interface SyncRequest {
   /** Request ID used for debugging. */
@@ -126,15 +95,10 @@ export interface SyncRequest {
   agentUserId?: string;
 }
 
-export const SyncRequest: Schema.Schema<SyncRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestId: Schema.optional(Schema.String),
-      agentUserId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SyncRequest",
-  }) as any as Schema.Schema<SyncRequest>;
+export const SyncRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  requestId: Schema.optional(Schema.String),
+  agentUserId: Schema.optional(Schema.String),
+}).annotate({ identifier: "SyncRequest" });
 
 export interface DeviceNames {
   /** Primary name of the device, generally provided by the user. Names will be truncated if over the 60 Unicode code point (character) limit and no errors will be thrown. Developers are responsible for handling long names. */
@@ -145,16 +109,11 @@ export interface DeviceNames {
   defaultNames?: Array<string>;
 }
 
-export const DeviceNames: Schema.Schema<DeviceNames> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      nicknames: Schema.optional(Schema.Array(Schema.String)),
-      defaultNames: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "DeviceNames",
-  }) as any as Schema.Schema<DeviceNames>;
+export const DeviceNames = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  nicknames: Schema.optional(Schema.Array(Schema.String)),
+  defaultNames: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "DeviceNames" });
 
 export interface RequestSyncDevicesRequest {
   /** Required. Third-party user ID. */
@@ -163,15 +122,11 @@ export interface RequestSyncDevicesRequest {
   async?: boolean;
 }
 
-export const RequestSyncDevicesRequest: Schema.Schema<RequestSyncDevicesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      agentUserId: Schema.optional(Schema.String),
-      async: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "RequestSyncDevicesRequest",
-  }) as any as Schema.Schema<RequestSyncDevicesRequest>;
+export const RequestSyncDevicesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    agentUserId: Schema.optional(Schema.String),
+    async: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "RequestSyncDevicesRequest" });
 
 export interface DeviceInfo {
   /** Device model. */
@@ -184,15 +139,12 @@ export interface DeviceInfo {
   hwVersion?: string;
 }
 
-export const DeviceInfo: Schema.Schema<DeviceInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      model: Schema.optional(Schema.String),
-      swVersion: Schema.optional(Schema.String),
-      manufacturer: Schema.optional(Schema.String),
-      hwVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "DeviceInfo" }) as any as Schema.Schema<DeviceInfo>;
+export const DeviceInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  model: Schema.optional(Schema.String),
+  swVersion: Schema.optional(Schema.String),
+  manufacturer: Schema.optional(Schema.String),
+  hwVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "DeviceInfo" });
 
 export interface Device {
   /** Names given to this device by your smart home Action. */
@@ -221,44 +173,37 @@ export interface Device {
   structureHint?: string;
 }
 
-export const Device: Schema.Schema<Device> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(DeviceNames),
-      attributes: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      customData: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      notificationSupportedByAgent: Schema.optional(Schema.Boolean),
-      type: Schema.optional(Schema.String),
-      willReportState: Schema.optional(Schema.Boolean),
-      deviceInfo: Schema.optional(DeviceInfo),
-      id: Schema.optional(Schema.String),
-      traits: Schema.optional(Schema.Array(Schema.String)),
-      roomHint: Schema.optional(Schema.String),
-      otherDeviceIds: Schema.optional(Schema.Array(AgentOtherDeviceId)),
-      structureHint: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Device" }) as any as Schema.Schema<Device>;
+export const Device = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(DeviceNames),
+  attributes: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  customData: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  notificationSupportedByAgent: Schema.optional(Schema.Boolean),
+  type: Schema.optional(Schema.String),
+  willReportState: Schema.optional(Schema.Boolean),
+  deviceInfo: Schema.optional(DeviceInfo),
+  id: Schema.optional(Schema.String),
+  traits: Schema.optional(Schema.Array(Schema.String)),
+  roomHint: Schema.optional(Schema.String),
+  otherDeviceIds: Schema.optional(Schema.Array(AgentOtherDeviceId)),
+  structureHint: Schema.optional(Schema.String),
+}).annotate({ identifier: "Device" });
 
 export interface RequestSyncDevicesResponse {}
 
-export const RequestSyncDevicesResponse: Schema.Schema<RequestSyncDevicesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const RequestSyncDevicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RequestSyncDevicesResponse",
-  }) as any as Schema.Schema<RequestSyncDevicesResponse>;
+  });
 
 export interface ReportStateAndNotificationResponse {
   /** Request ID copied from ReportStateAndNotificationRequest. */
   requestId?: string;
 }
 
-export const ReportStateAndNotificationResponse: Schema.Schema<ReportStateAndNotificationResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ReportStateAndNotificationResponse",
-  }) as any as Schema.Schema<ReportStateAndNotificationResponse>;
+export const ReportStateAndNotificationResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ReportStateAndNotificationResponse" });
 
 export interface ReportStateAndNotificationRequest {
   /** Request ID used for debugging. */
@@ -273,18 +218,14 @@ export interface ReportStateAndNotificationRequest {
   payload?: StateAndNotificationPayload;
 }
 
-export const ReportStateAndNotificationRequest: Schema.Schema<ReportStateAndNotificationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestId: Schema.optional(Schema.String),
-      eventId: Schema.optional(Schema.String),
-      followUpToken: Schema.optional(Schema.String),
-      agentUserId: Schema.optional(Schema.String),
-      payload: Schema.optional(StateAndNotificationPayload),
-    }),
-  ).annotate({
-    identifier: "ReportStateAndNotificationRequest",
-  }) as any as Schema.Schema<ReportStateAndNotificationRequest>;
+export const ReportStateAndNotificationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestId: Schema.optional(Schema.String),
+    eventId: Schema.optional(Schema.String),
+    followUpToken: Schema.optional(Schema.String),
+    agentUserId: Schema.optional(Schema.String),
+    payload: Schema.optional(StateAndNotificationPayload),
+  }).annotate({ identifier: "ReportStateAndNotificationRequest" });
 
 export interface SyncResponsePayload {
   /** Third-party user ID */
@@ -293,15 +234,10 @@ export interface SyncResponsePayload {
   devices?: Array<Device>;
 }
 
-export const SyncResponsePayload: Schema.Schema<SyncResponsePayload> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      agentUserId: Schema.optional(Schema.String),
-      devices: Schema.optional(Schema.Array(Device)),
-    }),
-  ).annotate({
-    identifier: "SyncResponsePayload",
-  }) as any as Schema.Schema<SyncResponsePayload>;
+export const SyncResponsePayload = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  agentUserId: Schema.optional(Schema.String),
+  devices: Schema.optional(Schema.Array(Device)),
+}).annotate({ identifier: "SyncResponsePayload" });
 
 export interface QueryResponse {
   /** Request ID used for debugging. Copied from the request. */
@@ -310,29 +246,19 @@ export interface QueryResponse {
   payload?: QueryResponsePayload;
 }
 
-export const QueryResponse: Schema.Schema<QueryResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestId: Schema.optional(Schema.String),
-      payload: Schema.optional(QueryResponsePayload),
-    }),
-  ).annotate({
-    identifier: "QueryResponse",
-  }) as any as Schema.Schema<QueryResponse>;
+export const QueryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  requestId: Schema.optional(Schema.String),
+  payload: Schema.optional(QueryResponsePayload),
+}).annotate({ identifier: "QueryResponse" });
 
 export interface QueryRequestInput {
   /** Payload containing third-party device IDs. */
   payload?: QueryRequestPayload;
 }
 
-export const QueryRequestInput: Schema.Schema<QueryRequestInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      payload: Schema.optional(QueryRequestPayload),
-    }),
-  ).annotate({
-    identifier: "QueryRequestInput",
-  }) as any as Schema.Schema<QueryRequestInput>;
+export const QueryRequestInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  payload: Schema.optional(QueryRequestPayload),
+}).annotate({ identifier: "QueryRequestInput" });
 
 export interface QueryRequest {
   /** Required. Third-party user ID. */
@@ -343,16 +269,11 @@ export interface QueryRequest {
   inputs?: Array<QueryRequestInput>;
 }
 
-export const QueryRequest: Schema.Schema<QueryRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      agentUserId: Schema.optional(Schema.String),
-      requestId: Schema.optional(Schema.String),
-      inputs: Schema.optional(Schema.Array(QueryRequestInput)),
-    }),
-  ).annotate({
-    identifier: "QueryRequest",
-  }) as any as Schema.Schema<QueryRequest>;
+export const QueryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  agentUserId: Schema.optional(Schema.String),
+  requestId: Schema.optional(Schema.String),
+  inputs: Schema.optional(Schema.Array(QueryRequestInput)),
+}).annotate({ identifier: "QueryRequest" });
 
 export interface SyncResponse {
   /** Request ID used for debugging. Copied from the request. */
@@ -361,22 +282,16 @@ export interface SyncResponse {
   payload?: SyncResponsePayload;
 }
 
-export const SyncResponse: Schema.Schema<SyncResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestId: Schema.optional(Schema.String),
-      payload: Schema.optional(SyncResponsePayload),
-    }),
-  ).annotate({
-    identifier: "SyncResponse",
-  }) as any as Schema.Schema<SyncResponse>;
+export const SyncResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  requestId: Schema.optional(Schema.String),
+  payload: Schema.optional(SyncResponsePayload),
+}).annotate({ identifier: "SyncResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 // ==========================================================================
 // Operations

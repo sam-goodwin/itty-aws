@@ -32,12 +32,9 @@ export interface Antivirus {
     | (string & {});
 }
 
-export const Antivirus: Schema.Schema<Antivirus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Antivirus" }) as any as Schema.Schema<Antivirus>;
+export const Antivirus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.String),
+}).annotate({ identifier: "Antivirus" });
 
 export interface CrowdStrikeAgent {
   /** Output only. The Agent ID of the Crowdstrike agent. */
@@ -46,15 +43,10 @@ export interface CrowdStrikeAgent {
   customerId?: string;
 }
 
-export const CrowdStrikeAgent: Schema.Schema<CrowdStrikeAgent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      agentId: Schema.optional(Schema.String),
-      customerId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CrowdStrikeAgent",
-  }) as any as Schema.Schema<CrowdStrikeAgent>;
+export const CrowdStrikeAgent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  agentId: Schema.optional(Schema.String),
+  customerId: Schema.optional(Schema.String),
+}).annotate({ identifier: "CrowdStrikeAgent" });
 
 export interface DeviceSignals {
   /** Output only. The current version of the Operating System. On Windows and linux, the value will also include the security patch information. */
@@ -171,46 +163,41 @@ export interface DeviceSignals {
   hostname?: string;
 }
 
-export const DeviceSignals: Schema.Schema<DeviceSignals> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      osVersion: Schema.optional(Schema.String),
-      deviceManufacturer: Schema.optional(Schema.String),
-      trigger: Schema.optional(Schema.String),
-      macAddresses: Schema.optional(Schema.Array(Schema.String)),
-      antivirus: Schema.optional(Antivirus),
-      builtInDnsClientEnabled: Schema.optional(Schema.Boolean),
-      operatingSystem: Schema.optional(Schema.String),
-      browserVersion: Schema.optional(Schema.String),
-      osFirewall: Schema.optional(Schema.String),
-      crowdStrikeAgent: Schema.optional(CrowdStrikeAgent),
-      windowsUserDomain: Schema.optional(Schema.String),
-      deviceEnrollmentDomain: Schema.optional(Schema.String),
-      windowsMachineDomain: Schema.optional(Schema.String),
-      safeBrowsingProtectionLevel: Schema.optional(Schema.String),
-      allowScreenLock: Schema.optional(Schema.Boolean),
-      siteIsolationEnabled: Schema.optional(Schema.Boolean),
-      passwordProtectionWarningTrigger: Schema.optional(Schema.String),
-      chromeRemoteDesktopAppBlocked: Schema.optional(Schema.Boolean),
-      profileAffiliationIds: Schema.optional(Schema.Array(Schema.String)),
-      deviceModel: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      secureBootMode: Schema.optional(Schema.String),
-      thirdPartyBlockingEnabled: Schema.optional(Schema.Boolean),
-      screenLockSecured: Schema.optional(Schema.String),
-      realtimeUrlCheckMode: Schema.optional(Schema.String),
-      deviceAffiliationIds: Schema.optional(Schema.Array(Schema.String)),
-      diskEncryption: Schema.optional(Schema.String),
-      serialNumber: Schema.optional(Schema.String),
-      imei: Schema.optional(Schema.Array(Schema.String)),
-      meid: Schema.optional(Schema.Array(Schema.String)),
-      systemDnsServers: Schema.optional(Schema.Array(Schema.String)),
-      profileEnrollmentDomain: Schema.optional(Schema.String),
-      hostname: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DeviceSignals",
-  }) as any as Schema.Schema<DeviceSignals>;
+export const DeviceSignals = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  osVersion: Schema.optional(Schema.String),
+  deviceManufacturer: Schema.optional(Schema.String),
+  trigger: Schema.optional(Schema.String),
+  macAddresses: Schema.optional(Schema.Array(Schema.String)),
+  antivirus: Schema.optional(Antivirus),
+  builtInDnsClientEnabled: Schema.optional(Schema.Boolean),
+  operatingSystem: Schema.optional(Schema.String),
+  browserVersion: Schema.optional(Schema.String),
+  osFirewall: Schema.optional(Schema.String),
+  crowdStrikeAgent: Schema.optional(CrowdStrikeAgent),
+  windowsUserDomain: Schema.optional(Schema.String),
+  deviceEnrollmentDomain: Schema.optional(Schema.String),
+  windowsMachineDomain: Schema.optional(Schema.String),
+  safeBrowsingProtectionLevel: Schema.optional(Schema.String),
+  allowScreenLock: Schema.optional(Schema.Boolean),
+  siteIsolationEnabled: Schema.optional(Schema.Boolean),
+  passwordProtectionWarningTrigger: Schema.optional(Schema.String),
+  chromeRemoteDesktopAppBlocked: Schema.optional(Schema.Boolean),
+  profileAffiliationIds: Schema.optional(Schema.Array(Schema.String)),
+  deviceModel: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  secureBootMode: Schema.optional(Schema.String),
+  thirdPartyBlockingEnabled: Schema.optional(Schema.Boolean),
+  screenLockSecured: Schema.optional(Schema.String),
+  realtimeUrlCheckMode: Schema.optional(Schema.String),
+  deviceAffiliationIds: Schema.optional(Schema.Array(Schema.String)),
+  diskEncryption: Schema.optional(Schema.String),
+  serialNumber: Schema.optional(Schema.String),
+  imei: Schema.optional(Schema.Array(Schema.String)),
+  meid: Schema.optional(Schema.Array(Schema.String)),
+  systemDnsServers: Schema.optional(Schema.Array(Schema.String)),
+  profileEnrollmentDomain: Schema.optional(Schema.String),
+  hostname: Schema.optional(Schema.String),
+}).annotate({ identifier: "DeviceSignals" });
 
 export interface VerifyChallengeResponseResult {
   /** Output only. The client-provided ID of a profile on the device. */
@@ -257,45 +244,37 @@ export interface VerifyChallengeResponseResult {
   profileCustomerId?: string;
 }
 
-export const VerifyChallengeResponseResult: Schema.Schema<VerifyChallengeResponseResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      virtualProfileId: Schema.optional(Schema.String),
-      profileKeyTrustLevel: Schema.optional(Schema.String),
-      attestedDeviceId: Schema.optional(Schema.String),
-      deviceSignals: Schema.optional(DeviceSignals),
-      signedPublicKeyAndChallenge: Schema.optional(Schema.String),
-      deviceSignal: Schema.optional(Schema.String),
-      customerId: Schema.optional(Schema.String),
-      profilePermanentId: Schema.optional(Schema.String),
-      virtualDeviceId: Schema.optional(Schema.String),
-      keyTrustLevel: Schema.optional(Schema.String),
-      deviceEnrollmentId: Schema.optional(Schema.String),
-      devicePermanentId: Schema.optional(Schema.String),
-      profileCustomerId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VerifyChallengeResponseResult",
-  }) as any as Schema.Schema<VerifyChallengeResponseResult>;
+export const VerifyChallengeResponseResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    virtualProfileId: Schema.optional(Schema.String),
+    profileKeyTrustLevel: Schema.optional(Schema.String),
+    attestedDeviceId: Schema.optional(Schema.String),
+    deviceSignals: Schema.optional(DeviceSignals),
+    signedPublicKeyAndChallenge: Schema.optional(Schema.String),
+    deviceSignal: Schema.optional(Schema.String),
+    customerId: Schema.optional(Schema.String),
+    profilePermanentId: Schema.optional(Schema.String),
+    virtualDeviceId: Schema.optional(Schema.String),
+    keyTrustLevel: Schema.optional(Schema.String),
+    deviceEnrollmentId: Schema.optional(Schema.String),
+    devicePermanentId: Schema.optional(Schema.String),
+    profileCustomerId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "VerifyChallengeResponseResult" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface Challenge {
   /** Generated challenge, the bytes representation of SignedData. */
   challenge?: string;
 }
 
-export const Challenge: Schema.Schema<Challenge> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      challenge: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Challenge" }) as any as Schema.Schema<Challenge>;
+export const Challenge = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  challenge: Schema.optional(Schema.String),
+}).annotate({ identifier: "Challenge" });
 
 export interface VerifyChallengeResponseRequest {
   /** Optional. Service can optionally provide identity information about the device or user associated with the key. For an EMK, this value is the enrolled domain. For an EUK, this value is the user's email address. If present, this value will be checked against contents of the response, and verification will fail if there is no match. */
@@ -304,15 +283,11 @@ export interface VerifyChallengeResponseRequest {
   challengeResponse?: string;
 }
 
-export const VerifyChallengeResponseRequest: Schema.Schema<VerifyChallengeResponseRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expectedIdentity: Schema.optional(Schema.String),
-      challengeResponse: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VerifyChallengeResponseRequest",
-  }) as any as Schema.Schema<VerifyChallengeResponseRequest>;
+export const VerifyChallengeResponseRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    expectedIdentity: Schema.optional(Schema.String),
+    challengeResponse: Schema.optional(Schema.String),
+  }).annotate({ identifier: "VerifyChallengeResponseRequest" });
 
 // ==========================================================================
 // Operations

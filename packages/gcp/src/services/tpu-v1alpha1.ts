@@ -35,16 +35,13 @@ export interface Location {
   metadata?: Record<string, unknown>;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locationId: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      displayName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locationId: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  displayName: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Location" });
 
 export interface OperationMetadata {
   /** Specifies if cancellation was requested for the operation. */
@@ -63,20 +60,15 @@ export interface OperationMetadata {
   apiVersion?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cancelRequested: Schema.optional(Schema.Boolean),
-      endTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      statusDetail: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      apiVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cancelRequested: Schema.optional(Schema.Boolean),
+  endTime: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  statusDetail: Schema.optional(Schema.String),
+  verb: Schema.optional(Schema.String),
+  apiVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationMetadata" });
 
 export interface NetworkEndpoint {
   /** The IP address of this network endpoint. */
@@ -85,15 +77,10 @@ export interface NetworkEndpoint {
   port?: number;
 }
 
-export const NetworkEndpoint: Schema.Schema<NetworkEndpoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ipAddress: Schema.optional(Schema.String),
-      port: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "NetworkEndpoint",
-  }) as any as Schema.Schema<NetworkEndpoint>;
+export const NetworkEndpoint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ipAddress: Schema.optional(Schema.String),
+  port: Schema.optional(Schema.Number),
+}).annotate({ identifier: "NetworkEndpoint" });
 
 export interface TensorFlowVersion {
   /** the tensorflow version. */
@@ -102,15 +89,10 @@ export interface TensorFlowVersion {
   name?: string;
 }
 
-export const TensorFlowVersion: Schema.Schema<TensorFlowVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TensorFlowVersion",
-  }) as any as Schema.Schema<TensorFlowVersion>;
+export const TensorFlowVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "TensorFlowVersion" });
 
 export interface ListTensorFlowVersionsResponse {
   /** The next page token or empty if none. */
@@ -121,16 +103,12 @@ export interface ListTensorFlowVersionsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListTensorFlowVersionsResponse: Schema.Schema<ListTensorFlowVersionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      tensorflowVersions: Schema.optional(Schema.Array(TensorFlowVersion)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListTensorFlowVersionsResponse",
-  }) as any as Schema.Schema<ListTensorFlowVersionsResponse>;
+export const ListTensorFlowVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    tensorflowVersions: Schema.optional(Schema.Array(TensorFlowVersion)),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListTensorFlowVersionsResponse" });
 
 export interface Symptom {
   /** Detailed information of the current Symptom. */
@@ -151,15 +129,12 @@ export interface Symptom {
   workerId?: string;
 }
 
-export const Symptom: Schema.Schema<Symptom> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      details: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      symptomType: Schema.optional(Schema.String),
-      workerId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Symptom" }) as any as Schema.Schema<Symptom>;
+export const Symptom = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  details: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  symptomType: Schema.optional(Schema.String),
+  workerId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Symptom" });
 
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -170,23 +145,19 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface StopNodeRequest {}
 
-export const StopNodeRequest: Schema.Schema<StopNodeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "StopNodeRequest",
-  }) as any as Schema.Schema<StopNodeRequest>;
+export const StopNodeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "StopNodeRequest" });
 
 export interface Operation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
@@ -201,16 +172,13 @@ export interface Operation {
   metadata?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      error: Schema.optional(Status),
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  done: Schema.optional(Schema.Boolean),
+  error: Schema.optional(Status),
+  name: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Operation" });
 
 export interface SchedulingConfig {
   /** Defines whether the node is preemptible. */
@@ -219,15 +187,10 @@ export interface SchedulingConfig {
   reserved?: boolean;
 }
 
-export const SchedulingConfig: Schema.Schema<SchedulingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      preemptible: Schema.optional(Schema.Boolean),
-      reserved: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "SchedulingConfig",
-  }) as any as Schema.Schema<SchedulingConfig>;
+export const SchedulingConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  preemptible: Schema.optional(Schema.Boolean),
+  reserved: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "SchedulingConfig" });
 
 export interface Node {
   /** The user-supplied description of the TPU. Maximum of 512 characters. */
@@ -299,30 +262,27 @@ export interface Node {
     | (string & {});
 }
 
-export const Node: Schema.Schema<Node> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      acceleratorType: Schema.optional(Schema.String),
-      networkEndpoints: Schema.optional(Schema.Array(NetworkEndpoint)),
-      cidrBlock: Schema.optional(Schema.String),
-      ipAddress: Schema.optional(Schema.String),
-      network: Schema.optional(Schema.String),
-      schedulingConfig: Schema.optional(SchedulingConfig),
-      healthDescription: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      symptoms: Schema.optional(Schema.Array(Symptom)),
-      useServiceNetworking: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-      port: Schema.optional(Schema.String),
-      tensorflowVersion: Schema.optional(Schema.String),
-      serviceAccount: Schema.optional(Schema.String),
-      apiVersion: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      health: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Node" }) as any as Schema.Schema<Node>;
+export const Node = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  acceleratorType: Schema.optional(Schema.String),
+  networkEndpoints: Schema.optional(Schema.Array(NetworkEndpoint)),
+  cidrBlock: Schema.optional(Schema.String),
+  ipAddress: Schema.optional(Schema.String),
+  network: Schema.optional(Schema.String),
+  schedulingConfig: Schema.optional(SchedulingConfig),
+  healthDescription: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  symptoms: Schema.optional(Schema.Array(Symptom)),
+  useServiceNetworking: Schema.optional(Schema.Boolean),
+  name: Schema.optional(Schema.String),
+  port: Schema.optional(Schema.String),
+  tensorflowVersion: Schema.optional(Schema.String),
+  serviceAccount: Schema.optional(Schema.String),
+  apiVersion: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  health: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+}).annotate({ identifier: "Node" });
 
 export interface ListNodesResponse {
   /** The next page token or empty if none. */
@@ -333,30 +293,20 @@ export interface ListNodesResponse {
   unreachable?: Array<string>;
 }
 
-export const ListNodesResponse: Schema.Schema<ListNodesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      nodes: Schema.optional(Schema.Array(Node)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListNodesResponse",
-  }) as any as Schema.Schema<ListNodesResponse>;
+export const ListNodesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  nodes: Schema.optional(Schema.Array(Node)),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ListNodesResponse" });
 
 export interface ReimageNodeRequest {
   /** The version for reimage to create. */
   tensorflowVersion?: string;
 }
 
-export const ReimageNodeRequest: Schema.Schema<ReimageNodeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tensorflowVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ReimageNodeRequest",
-  }) as any as Schema.Schema<ReimageNodeRequest>;
+export const ReimageNodeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tensorflowVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "ReimageNodeRequest" });
 
 export interface ListOperationsResponse {
   /** The standard List next-page token. */
@@ -367,23 +317,19 @@ export interface ListOperationsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      operations: Schema.optional(Schema.Array(Operation)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    nextPageToken: Schema.optional(Schema.String),
+    operations: Schema.optional(Schema.Array(Operation)),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 export interface StartNodeRequest {}
 
-export const StartNodeRequest: Schema.Schema<StartNodeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "StartNodeRequest",
-  }) as any as Schema.Schema<StartNodeRequest>;
+export const StartNodeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "StartNodeRequest" });
 
 export interface AcceleratorType {
   /** The resource name. */
@@ -392,15 +338,10 @@ export interface AcceleratorType {
   type?: string;
 }
 
-export const AcceleratorType: Schema.Schema<AcceleratorType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AcceleratorType",
-  }) as any as Schema.Schema<AcceleratorType>;
+export const AcceleratorType = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "AcceleratorType" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -409,22 +350,16 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(Location)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface ListAcceleratorTypesResponse {
   /** Locations that could not be reached. */
@@ -435,16 +370,12 @@ export interface ListAcceleratorTypesResponse {
   nextPageToken?: string;
 }
 
-export const ListAcceleratorTypesResponse: Schema.Schema<ListAcceleratorTypesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      acceleratorTypes: Schema.optional(Schema.Array(AcceleratorType)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAcceleratorTypesResponse",
-  }) as any as Schema.Schema<ListAcceleratorTypesResponse>;
+export const ListAcceleratorTypesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    acceleratorTypes: Schema.optional(Schema.Array(AcceleratorType)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListAcceleratorTypesResponse" });
 
 // ==========================================================================
 // Operations

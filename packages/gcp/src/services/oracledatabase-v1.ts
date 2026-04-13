@@ -78,33 +78,29 @@ export interface AutonomousDatabaseBackupProperties {
   isAutomaticBackup?: boolean;
 }
 
-export const AutonomousDatabaseBackupProperties: Schema.Schema<AutonomousDatabaseBackupProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      compartmentId: Schema.optional(Schema.String),
-      ocid: Schema.optional(Schema.String),
-      isLongTermBackup: Schema.optional(Schema.Boolean),
-      isRestorable: Schema.optional(Schema.Boolean),
-      lifecycleState: Schema.optional(Schema.String),
-      dbVersion: Schema.optional(Schema.String),
-      kmsKeyId: Schema.optional(Schema.String),
-      keyStoreWallet: Schema.optional(Schema.String),
-      databaseSizeTb: Schema.optional(Schema.Number),
-      endTime: Schema.optional(Schema.String),
-      kmsKeyVersionId: Schema.optional(Schema.String),
-      vaultId: Schema.optional(Schema.String),
-      sizeTb: Schema.optional(Schema.Number),
-      lifecycleDetails: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      retentionPeriodDays: Schema.optional(Schema.Number),
-      startTime: Schema.optional(Schema.String),
-      keyStoreId: Schema.optional(Schema.String),
-      availableTillTime: Schema.optional(Schema.String),
-      isAutomaticBackup: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "AutonomousDatabaseBackupProperties",
-  }) as any as Schema.Schema<AutonomousDatabaseBackupProperties>;
+export const AutonomousDatabaseBackupProperties =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    compartmentId: Schema.optional(Schema.String),
+    ocid: Schema.optional(Schema.String),
+    isLongTermBackup: Schema.optional(Schema.Boolean),
+    isRestorable: Schema.optional(Schema.Boolean),
+    lifecycleState: Schema.optional(Schema.String),
+    dbVersion: Schema.optional(Schema.String),
+    kmsKeyId: Schema.optional(Schema.String),
+    keyStoreWallet: Schema.optional(Schema.String),
+    databaseSizeTb: Schema.optional(Schema.Number),
+    endTime: Schema.optional(Schema.String),
+    kmsKeyVersionId: Schema.optional(Schema.String),
+    vaultId: Schema.optional(Schema.String),
+    sizeTb: Schema.optional(Schema.Number),
+    lifecycleDetails: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    retentionPeriodDays: Schema.optional(Schema.Number),
+    startTime: Schema.optional(Schema.String),
+    keyStoreId: Schema.optional(Schema.String),
+    availableTillTime: Schema.optional(Schema.String),
+    isAutomaticBackup: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "AutonomousDatabaseBackupProperties" });
 
 export interface AutonomousDatabaseBackup {
   /** Optional. labels or tags associated with the resource. */
@@ -119,18 +115,14 @@ export interface AutonomousDatabaseBackup {
   autonomousDatabase?: string;
 }
 
-export const AutonomousDatabaseBackup: Schema.Schema<AutonomousDatabaseBackup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      properties: Schema.optional(AutonomousDatabaseBackupProperties),
-      displayName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      autonomousDatabase: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AutonomousDatabaseBackup",
-  }) as any as Schema.Schema<AutonomousDatabaseBackup>;
+export const AutonomousDatabaseBackup =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    properties: Schema.optional(AutonomousDatabaseBackupProperties),
+    displayName: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    autonomousDatabase: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AutonomousDatabaseBackup" });
 
 export interface ListAutonomousDatabaseBackupsResponse {
   /** The list of Autonomous Database Backups. */
@@ -139,17 +131,13 @@ export interface ListAutonomousDatabaseBackupsResponse {
   nextPageToken?: string;
 }
 
-export const ListAutonomousDatabaseBackupsResponse: Schema.Schema<ListAutonomousDatabaseBackupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      autonomousDatabaseBackups: Schema.optional(
-        Schema.Array(AutonomousDatabaseBackup),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAutonomousDatabaseBackupsResponse",
-  }) as any as Schema.Schema<ListAutonomousDatabaseBackupsResponse>;
+export const ListAutonomousDatabaseBackupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    autonomousDatabaseBackups: Schema.optional(
+      Schema.Array(AutonomousDatabaseBackup),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListAutonomousDatabaseBackupsResponse" });
 
 export interface AutonomousDatabaseApex {
   /** Output only. The Oracle REST Data Services (ORDS) version. */
@@ -158,15 +146,12 @@ export interface AutonomousDatabaseApex {
   apexVersion?: string;
 }
 
-export const AutonomousDatabaseApex: Schema.Schema<AutonomousDatabaseApex> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ordsVersion: Schema.optional(Schema.String),
-      apexVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AutonomousDatabaseApex",
-  }) as any as Schema.Schema<AutonomousDatabaseApex>;
+export const AutonomousDatabaseApex = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    ordsVersion: Schema.optional(Schema.String),
+    apexVersion: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "AutonomousDatabaseApex" });
 
 export interface GiVersion {
   /** Optional. version */
@@ -175,13 +160,10 @@ export interface GiVersion {
   name?: string;
 }
 
-export const GiVersion: Schema.Schema<GiVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "GiVersion" }) as any as Schema.Schema<GiVersion>;
+export const GiVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "GiVersion" });
 
 export interface MaintenanceWindow {
   /** Optional. If true, enables the configuration of a custom action timeout (waiting period) between database server patching operations. */
@@ -237,22 +219,17 @@ export interface MaintenanceWindow {
   leadTimeWeek?: number;
 }
 
-export const MaintenanceWindow: Schema.Schema<MaintenanceWindow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      isCustomActionTimeoutEnabled: Schema.optional(Schema.Boolean),
-      daysOfWeek: Schema.optional(Schema.Array(Schema.String)),
-      customActionTimeoutMins: Schema.optional(Schema.Number),
-      preference: Schema.optional(Schema.String),
-      weeksOfMonth: Schema.optional(Schema.Array(Schema.Number)),
-      hoursOfDay: Schema.optional(Schema.Array(Schema.Number)),
-      patchingMode: Schema.optional(Schema.String),
-      months: Schema.optional(Schema.Array(Schema.String)),
-      leadTimeWeek: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "MaintenanceWindow",
-  }) as any as Schema.Schema<MaintenanceWindow>;
+export const MaintenanceWindow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  isCustomActionTimeoutEnabled: Schema.optional(Schema.Boolean),
+  daysOfWeek: Schema.optional(Schema.Array(Schema.String)),
+  customActionTimeoutMins: Schema.optional(Schema.Number),
+  preference: Schema.optional(Schema.String),
+  weeksOfMonth: Schema.optional(Schema.Array(Schema.Number)),
+  hoursOfDay: Schema.optional(Schema.Array(Schema.Number)),
+  patchingMode: Schema.optional(Schema.String),
+  months: Schema.optional(Schema.Array(Schema.String)),
+  leadTimeWeek: Schema.optional(Schema.Number),
+}).annotate({ identifier: "MaintenanceWindow" });
 
 export interface DatabaseCharacterSet {
   /** Identifier. The name of the Database Character Set resource in the following format: projects/{project}/locations/{region}/databaseCharacterSets/{database_character_set} */
@@ -267,16 +244,11 @@ export interface DatabaseCharacterSet {
     | (string & {});
 }
 
-export const DatabaseCharacterSet: Schema.Schema<DatabaseCharacterSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      characterSet: Schema.optional(Schema.String),
-      characterSetType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DatabaseCharacterSet",
-  }) as any as Schema.Schema<DatabaseCharacterSet>;
+export const DatabaseCharacterSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  characterSet: Schema.optional(Schema.String),
+  characterSetType: Schema.optional(Schema.String),
+}).annotate({ identifier: "DatabaseCharacterSet" });
 
 export interface DbNodeProperties {
   /** Output only. OCID of database node. */
@@ -310,22 +282,17 @@ export interface DbNodeProperties {
   ocpuCount?: number;
 }
 
-export const DbNodeProperties: Schema.Schema<DbNodeProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ocid: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      hostname: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      memorySizeGb: Schema.optional(Schema.Number),
-      dbServerOcid: Schema.optional(Schema.String),
-      dbNodeStorageSizeGb: Schema.optional(Schema.Number),
-      totalCpuCoreCount: Schema.optional(Schema.Number),
-      ocpuCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "DbNodeProperties",
-  }) as any as Schema.Schema<DbNodeProperties>;
+export const DbNodeProperties = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ocid: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  hostname: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  memorySizeGb: Schema.optional(Schema.Number),
+  dbServerOcid: Schema.optional(Schema.String),
+  dbNodeStorageSizeGb: Schema.optional(Schema.Number),
+  totalCpuCoreCount: Schema.optional(Schema.Number),
+  ocpuCount: Schema.optional(Schema.Number),
+}).annotate({ identifier: "DbNodeProperties" });
 
 export interface BackupDestinationDetails {
   /** Optional. The type of the database backup destination. */
@@ -339,14 +306,10 @@ export interface BackupDestinationDetails {
     | (string & {});
 }
 
-export const BackupDestinationDetails: Schema.Schema<BackupDestinationDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BackupDestinationDetails",
-  }) as any as Schema.Schema<BackupDestinationDetails>;
+export const BackupDestinationDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BackupDestinationDetails" });
 
 export interface DbBackupConfig {
   /** Optional. The window in which the full backup should be performed on the database. If no value is provided, the default is anytime. */
@@ -406,22 +369,17 @@ export interface DbBackupConfig {
   autoBackupEnabled?: boolean;
 }
 
-export const DbBackupConfig: Schema.Schema<DbBackupConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      autoFullBackupWindow: Schema.optional(Schema.String),
-      autoFullBackupDay: Schema.optional(Schema.String),
-      backupDestinationDetails: Schema.optional(
-        Schema.Array(BackupDestinationDetails),
-      ),
-      backupDeletionPolicy: Schema.optional(Schema.String),
-      retentionPeriodDays: Schema.optional(Schema.Number),
-      autoIncrementalBackupWindow: Schema.optional(Schema.String),
-      autoBackupEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "DbBackupConfig",
-  }) as any as Schema.Schema<DbBackupConfig>;
+export const DbBackupConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  autoFullBackupWindow: Schema.optional(Schema.String),
+  autoFullBackupDay: Schema.optional(Schema.String),
+  backupDestinationDetails: Schema.optional(
+    Schema.Array(BackupDestinationDetails),
+  ),
+  backupDeletionPolicy: Schema.optional(Schema.String),
+  retentionPeriodDays: Schema.optional(Schema.Number),
+  autoIncrementalBackupWindow: Schema.optional(Schema.String),
+  autoBackupEnabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "DbBackupConfig" });
 
 export interface DatabaseManagementConfig {
   /** Output only. The status of the Database Management service. */
@@ -444,15 +402,11 @@ export interface DatabaseManagementConfig {
     | (string & {});
 }
 
-export const DatabaseManagementConfig: Schema.Schema<DatabaseManagementConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      managementState: Schema.optional(Schema.String),
-      managementType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DatabaseManagementConfig",
-  }) as any as Schema.Schema<DatabaseManagementConfig>;
+export const DatabaseManagementConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    managementState: Schema.optional(Schema.String),
+    managementType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DatabaseManagementConfig" });
 
 export interface DatabaseProperties {
   /** Required. The Oracle Database version. */
@@ -477,17 +431,12 @@ export interface DatabaseProperties {
   databaseManagementConfig?: DatabaseManagementConfig;
 }
 
-export const DatabaseProperties: Schema.Schema<DatabaseProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dbVersion: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      dbBackupConfig: Schema.optional(DbBackupConfig),
-      databaseManagementConfig: Schema.optional(DatabaseManagementConfig),
-    }),
-  ).annotate({
-    identifier: "DatabaseProperties",
-  }) as any as Schema.Schema<DatabaseProperties>;
+export const DatabaseProperties = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dbVersion: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  dbBackupConfig: Schema.optional(DbBackupConfig),
+  databaseManagementConfig: Schema.optional(DatabaseManagementConfig),
+}).annotate({ identifier: "DatabaseProperties" });
 
 export interface Database {
   /** Optional. The TDE wallet password for the database. Note: Only one of `tde_wallet_password_secret_version` or `tde_wallet_password` can be populated. */
@@ -536,29 +485,26 @@ export interface Database {
   dbName?: string;
 }
 
-export const Database: Schema.Schema<Database> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tdeWalletPassword: Schema.optional(Schema.String),
-      pluggableDatabaseId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      databaseId: Schema.optional(Schema.String),
-      adminPassword: Schema.optional(Schema.String),
-      dbHomeName: Schema.optional(Schema.String),
-      opsInsightsStatus: Schema.optional(Schema.String),
-      adminPasswordSecretVersion: Schema.optional(Schema.String),
-      characterSet: Schema.optional(Schema.String),
-      properties: Schema.optional(DatabaseProperties),
-      tdeWalletPasswordSecretVersion: Schema.optional(Schema.String),
-      ncharacterSet: Schema.optional(Schema.String),
-      pluggableDatabaseName: Schema.optional(Schema.String),
-      ociUrl: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      gcpOracleZone: Schema.optional(Schema.String),
-      dbUniqueName: Schema.optional(Schema.String),
-      dbName: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Database" }) as any as Schema.Schema<Database>;
+export const Database = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tdeWalletPassword: Schema.optional(Schema.String),
+  pluggableDatabaseId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  databaseId: Schema.optional(Schema.String),
+  adminPassword: Schema.optional(Schema.String),
+  dbHomeName: Schema.optional(Schema.String),
+  opsInsightsStatus: Schema.optional(Schema.String),
+  adminPasswordSecretVersion: Schema.optional(Schema.String),
+  characterSet: Schema.optional(Schema.String),
+  properties: Schema.optional(DatabaseProperties),
+  tdeWalletPasswordSecretVersion: Schema.optional(Schema.String),
+  ncharacterSet: Schema.optional(Schema.String),
+  pluggableDatabaseName: Schema.optional(Schema.String),
+  ociUrl: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  gcpOracleZone: Schema.optional(Schema.String),
+  dbUniqueName: Schema.optional(Schema.String),
+  dbName: Schema.optional(Schema.String),
+}).annotate({ identifier: "Database" });
 
 export interface DbHome {
   /** Optional. The display name for the Database Home. The name does not have to be unique within your project. */
@@ -571,15 +517,12 @@ export interface DbHome {
   isUnifiedAuditingEnabled?: boolean;
 }
 
-export const DbHome: Schema.Schema<DbHome> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      dbVersion: Schema.optional(Schema.String),
-      database: Schema.optional(Database),
-      isUnifiedAuditingEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "DbHome" }) as any as Schema.Schema<DbHome>;
+export const DbHome = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+  dbVersion: Schema.optional(Schema.String),
+  database: Schema.optional(Database),
+  isUnifiedAuditingEnabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "DbHome" });
 
 export interface DataCollectionOptionsDbSystem {
   /** Optional. Indicates whether to enable data collection for diagnostics. */
@@ -588,15 +531,11 @@ export interface DataCollectionOptionsDbSystem {
   isIncidentLogsEnabled?: boolean;
 }
 
-export const DataCollectionOptionsDbSystem: Schema.Schema<DataCollectionOptionsDbSystem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      isDiagnosticsEventsEnabled: Schema.optional(Schema.Boolean),
-      isIncidentLogsEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "DataCollectionOptionsDbSystem",
-  }) as any as Schema.Schema<DataCollectionOptionsDbSystem>;
+export const DataCollectionOptionsDbSystem =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    isDiagnosticsEventsEnabled: Schema.optional(Schema.Boolean),
+    isIncidentLogsEnabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "DataCollectionOptionsDbSystem" });
 
 export interface DbSystemOptions {
   /** Optional. The storage option used in DB system. */
@@ -607,14 +546,9 @@ export interface DbSystemOptions {
     | (string & {});
 }
 
-export const DbSystemOptions: Schema.Schema<DbSystemOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      storageManagement: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DbSystemOptions",
-  }) as any as Schema.Schema<DbSystemOptions>;
+export const DbSystemOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  storageManagement: Schema.optional(Schema.String),
+}).annotate({ identifier: "DbSystemOptions" });
 
 export interface TimeZone {
   /** IANA Time Zone Database time zone. For example "America/New_York". */
@@ -623,13 +557,10 @@ export interface TimeZone {
   version?: string;
 }
 
-export const TimeZone: Schema.Schema<TimeZone> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "TimeZone" }) as any as Schema.Schema<TimeZone>;
+export const TimeZone = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+}).annotate({ identifier: "TimeZone" });
 
 export interface DbSystemProperties {
   /** Output only. State of the DbSystem. */
@@ -697,34 +628,29 @@ export interface DbSystemProperties {
     | (string & {});
 }
 
-export const DbSystemProperties: Schema.Schema<DbSystemProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lifecycleState: Schema.optional(Schema.String),
-      databaseEdition: Schema.optional(Schema.String),
-      ocid: Schema.optional(Schema.String),
-      computeModel: Schema.optional(Schema.String),
-      domain: Schema.optional(Schema.String),
-      nodeCount: Schema.optional(Schema.Number),
-      shape: Schema.optional(Schema.String),
-      hostnamePrefix: Schema.optional(Schema.String),
-      memorySizeGb: Schema.optional(Schema.Number),
-      dbHome: Schema.optional(DbHome),
-      privateIp: Schema.optional(Schema.String),
-      dataCollectionOptions: Schema.optional(DataCollectionOptionsDbSystem),
-      recoStorageSizeGb: Schema.optional(Schema.Number),
-      dbSystemOptions: Schema.optional(DbSystemOptions),
-      computeCount: Schema.optional(Schema.Number),
-      initialDataStorageSizeGb: Schema.optional(Schema.Number),
-      hostname: Schema.optional(Schema.String),
-      sshPublicKeys: Schema.optional(Schema.Array(Schema.String)),
-      timeZone: Schema.optional(TimeZone),
-      dataStorageSizeGb: Schema.optional(Schema.Number),
-      licenseModel: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DbSystemProperties",
-  }) as any as Schema.Schema<DbSystemProperties>;
+export const DbSystemProperties = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  lifecycleState: Schema.optional(Schema.String),
+  databaseEdition: Schema.optional(Schema.String),
+  ocid: Schema.optional(Schema.String),
+  computeModel: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+  nodeCount: Schema.optional(Schema.Number),
+  shape: Schema.optional(Schema.String),
+  hostnamePrefix: Schema.optional(Schema.String),
+  memorySizeGb: Schema.optional(Schema.Number),
+  dbHome: Schema.optional(DbHome),
+  privateIp: Schema.optional(Schema.String),
+  dataCollectionOptions: Schema.optional(DataCollectionOptionsDbSystem),
+  recoStorageSizeGb: Schema.optional(Schema.Number),
+  dbSystemOptions: Schema.optional(DbSystemOptions),
+  computeCount: Schema.optional(Schema.Number),
+  initialDataStorageSizeGb: Schema.optional(Schema.Number),
+  hostname: Schema.optional(Schema.String),
+  sshPublicKeys: Schema.optional(Schema.Array(Schema.String)),
+  timeZone: Schema.optional(TimeZone),
+  dataStorageSizeGb: Schema.optional(Schema.Number),
+  licenseModel: Schema.optional(Schema.String),
+}).annotate({ identifier: "DbSystemProperties" });
 
 export interface DbSystem {
   /** Output only. HTTPS link to OCI resources exposed to Customer via UI Interface. */
@@ -749,21 +675,18 @@ export interface DbSystem {
   entitlementId?: string;
 }
 
-export const DbSystem: Schema.Schema<DbSystem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ociUrl: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      gcpOracleZone: Schema.optional(Schema.String),
-      odbNetwork: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      odbSubnet: Schema.optional(Schema.String),
-      properties: Schema.optional(DbSystemProperties),
-      displayName: Schema.optional(Schema.String),
-      entitlementId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "DbSystem" }) as any as Schema.Schema<DbSystem>;
+export const DbSystem = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ociUrl: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  gcpOracleZone: Schema.optional(Schema.String),
+  odbNetwork: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  odbSubnet: Schema.optional(Schema.String),
+  properties: Schema.optional(DbSystemProperties),
+  displayName: Schema.optional(Schema.String),
+  entitlementId: Schema.optional(Schema.String),
+}).annotate({ identifier: "DbSystem" });
 
 export interface DbServerProperties {
   /** Optional. Maximum local storage per VM. */
@@ -795,23 +718,18 @@ export interface DbServerProperties {
     | (string & {});
 }
 
-export const DbServerProperties: Schema.Schema<DbServerProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      maxDbNodeStorageSizeGb: Schema.optional(Schema.Number),
-      maxOcpuCount: Schema.optional(Schema.Number),
-      dbNodeStorageSizeGb: Schema.optional(Schema.Number),
-      ocpuCount: Schema.optional(Schema.Number),
-      maxMemorySizeGb: Schema.optional(Schema.Number),
-      dbNodeIds: Schema.optional(Schema.Array(Schema.String)),
-      ocid: Schema.optional(Schema.String),
-      memorySizeGb: Schema.optional(Schema.Number),
-      vmCount: Schema.optional(Schema.Number),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DbServerProperties",
-  }) as any as Schema.Schema<DbServerProperties>;
+export const DbServerProperties = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  maxDbNodeStorageSizeGb: Schema.optional(Schema.Number),
+  maxOcpuCount: Schema.optional(Schema.Number),
+  dbNodeStorageSizeGb: Schema.optional(Schema.Number),
+  ocpuCount: Schema.optional(Schema.Number),
+  maxMemorySizeGb: Schema.optional(Schema.Number),
+  dbNodeIds: Schema.optional(Schema.Array(Schema.String)),
+  ocid: Schema.optional(Schema.String),
+  memorySizeGb: Schema.optional(Schema.Number),
+  vmCount: Schema.optional(Schema.Number),
+  state: Schema.optional(Schema.String),
+}).annotate({ identifier: "DbServerProperties" });
 
 export interface DbServer {
   /** Optional. User friendly name for this resource. */
@@ -822,21 +740,18 @@ export interface DbServer {
   properties?: DbServerProperties;
 }
 
-export const DbServer: Schema.Schema<DbServer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      properties: Schema.optional(DbServerProperties),
-    }),
-  ).annotate({ identifier: "DbServer" }) as any as Schema.Schema<DbServer>;
+export const DbServer = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  properties: Schema.optional(DbServerProperties),
+}).annotate({ identifier: "DbServer" });
 
 export interface RestartAutonomousDatabaseRequest {}
 
-export const RestartAutonomousDatabaseRequest: Schema.Schema<RestartAutonomousDatabaseRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const RestartAutonomousDatabaseRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RestartAutonomousDatabaseRequest",
-  }) as any as Schema.Schema<RestartAutonomousDatabaseRequest>;
+  });
 
 export interface ListDbSystemsResponse {
   /** The list of DbSystems. */
@@ -845,15 +760,10 @@ export interface ListDbSystemsResponse {
   nextPageToken?: string;
 }
 
-export const ListDbSystemsResponse: Schema.Schema<ListDbSystemsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dbSystems: Schema.optional(Schema.Array(DbSystem)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListDbSystemsResponse",
-  }) as any as Schema.Schema<ListDbSystemsResponse>;
+export const ListDbSystemsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dbSystems: Schema.optional(Schema.Array(DbSystem)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListDbSystemsResponse" });
 
 export interface TimeOfDay {
   /** Hours of a day in 24 hour format. Must be greater than or equal to 0 and typically must be less than or equal to 23. An API may choose to allow the value "24:00:00" for scenarios like business closing time. */
@@ -866,15 +776,12 @@ export interface TimeOfDay {
   minutes?: number;
 }
 
-export const TimeOfDay: Schema.Schema<TimeOfDay> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hours: Schema.optional(Schema.Number),
-      nanos: Schema.optional(Schema.Number),
-      seconds: Schema.optional(Schema.Number),
-      minutes: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "TimeOfDay" }) as any as Schema.Schema<TimeOfDay>;
+export const TimeOfDay = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  hours: Schema.optional(Schema.Number),
+  nanos: Schema.optional(Schema.Number),
+  seconds: Schema.optional(Schema.Number),
+  minutes: Schema.optional(Schema.Number),
+}).annotate({ identifier: "TimeOfDay" });
 
 export interface ScheduledOperationDetails {
   /** Output only. Day of week. */
@@ -894,16 +801,12 @@ export interface ScheduledOperationDetails {
   startTime?: TimeOfDay;
 }
 
-export const ScheduledOperationDetails: Schema.Schema<ScheduledOperationDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dayOfWeek: Schema.optional(Schema.String),
-      stopTime: Schema.optional(TimeOfDay),
-      startTime: Schema.optional(TimeOfDay),
-    }),
-  ).annotate({
-    identifier: "ScheduledOperationDetails",
-  }) as any as Schema.Schema<ScheduledOperationDetails>;
+export const ScheduledOperationDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dayOfWeek: Schema.optional(Schema.String),
+    stopTime: Schema.optional(TimeOfDay),
+    startTime: Schema.optional(TimeOfDay),
+  }).annotate({ identifier: "ScheduledOperationDetails" });
 
 export interface AllConnectionStrings {
   /** Output only. The database service provides a lower level of resources to each SQL statement. */
@@ -914,16 +817,11 @@ export interface AllConnectionStrings {
   low?: string;
 }
 
-export const AllConnectionStrings: Schema.Schema<AllConnectionStrings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      medium: Schema.optional(Schema.String),
-      high: Schema.optional(Schema.String),
-      low: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AllConnectionStrings",
-  }) as any as Schema.Schema<AllConnectionStrings>;
+export const AllConnectionStrings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  medium: Schema.optional(Schema.String),
+  high: Schema.optional(Schema.String),
+  low: Schema.optional(Schema.String),
+}).annotate({ identifier: "AllConnectionStrings" });
 
 export interface DatabaseConnectionStringProfile {
   /** Output only. The current consumer group being used by the connection. */
@@ -966,22 +864,18 @@ export interface DatabaseConnectionStringProfile {
     | (string & {});
 }
 
-export const DatabaseConnectionStringProfile: Schema.Schema<DatabaseConnectionStringProfile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      consumerGroup: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      isRegional: Schema.optional(Schema.Boolean),
-      hostFormat: Schema.optional(Schema.String),
-      protocol: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-      syntaxFormat: Schema.optional(Schema.String),
-      tlsAuthentication: Schema.optional(Schema.String),
-      sessionMode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DatabaseConnectionStringProfile",
-  }) as any as Schema.Schema<DatabaseConnectionStringProfile>;
+export const DatabaseConnectionStringProfile =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    consumerGroup: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    isRegional: Schema.optional(Schema.Boolean),
+    hostFormat: Schema.optional(Schema.String),
+    protocol: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
+    syntaxFormat: Schema.optional(Schema.String),
+    tlsAuthentication: Schema.optional(Schema.String),
+    sessionMode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DatabaseConnectionStringProfile" });
 
 export interface AutonomousDatabaseConnectionStrings {
   /** Output only. Returns all connection strings that can be used to connect to the Autonomous Database. */
@@ -998,19 +892,15 @@ export interface AutonomousDatabaseConnectionStrings {
   medium?: string;
 }
 
-export const AutonomousDatabaseConnectionStrings: Schema.Schema<AutonomousDatabaseConnectionStrings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      allConnectionStrings: Schema.optional(AllConnectionStrings),
-      dedicated: Schema.optional(Schema.String),
-      low: Schema.optional(Schema.String),
-      profiles: Schema.optional(Schema.Array(DatabaseConnectionStringProfile)),
-      high: Schema.optional(Schema.String),
-      medium: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AutonomousDatabaseConnectionStrings",
-  }) as any as Schema.Schema<AutonomousDatabaseConnectionStrings>;
+export const AutonomousDatabaseConnectionStrings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allConnectionStrings: Schema.optional(AllConnectionStrings),
+    dedicated: Schema.optional(Schema.String),
+    low: Schema.optional(Schema.String),
+    profiles: Schema.optional(Schema.Array(DatabaseConnectionStringProfile)),
+    high: Schema.optional(Schema.String),
+    medium: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AutonomousDatabaseConnectionStrings" });
 
 export interface AutonomousDatabaseStandbySummary {
   /** Output only. The date and time the Disaster Recovery role was switched for the standby Autonomous Database. */
@@ -1048,18 +938,14 @@ export interface AutonomousDatabaseStandbySummary {
     | (string & {});
 }
 
-export const AutonomousDatabaseStandbySummary: Schema.Schema<AutonomousDatabaseStandbySummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      disasterRecoveryRoleChangedTime: Schema.optional(Schema.String),
-      lagTimeDuration: Schema.optional(Schema.String),
-      dataGuardRoleChangedTime: Schema.optional(Schema.String),
-      lifecycleDetails: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AutonomousDatabaseStandbySummary",
-  }) as any as Schema.Schema<AutonomousDatabaseStandbySummary>;
+export const AutonomousDatabaseStandbySummary =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    disasterRecoveryRoleChangedTime: Schema.optional(Schema.String),
+    lagTimeDuration: Schema.optional(Schema.String),
+    dataGuardRoleChangedTime: Schema.optional(Schema.String),
+    lifecycleDetails: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AutonomousDatabaseStandbySummary" });
 
 export interface EncryptionKey {
   /** Optional. The provider of the encryption key. */
@@ -1072,15 +958,10 @@ export interface EncryptionKey {
   kmsKey?: string;
 }
 
-export const EncryptionKey: Schema.Schema<EncryptionKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      provider: Schema.optional(Schema.String),
-      kmsKey: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EncryptionKey",
-  }) as any as Schema.Schema<EncryptionKey>;
+export const EncryptionKey = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provider: Schema.optional(Schema.String),
+  kmsKey: Schema.optional(Schema.String),
+}).annotate({ identifier: "EncryptionKey" });
 
 export interface EncryptionKeyHistoryEntry {
   /** Output only. The date and time when the encryption key was activated on the Autonomous Database.. */
@@ -1089,29 +970,20 @@ export interface EncryptionKeyHistoryEntry {
   encryptionKey?: EncryptionKey;
 }
 
-export const EncryptionKeyHistoryEntry: Schema.Schema<EncryptionKeyHistoryEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      activationTime: Schema.optional(Schema.String),
-      encryptionKey: Schema.optional(EncryptionKey),
-    }),
-  ).annotate({
-    identifier: "EncryptionKeyHistoryEntry",
-  }) as any as Schema.Schema<EncryptionKeyHistoryEntry>;
+export const EncryptionKeyHistoryEntry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    activationTime: Schema.optional(Schema.String),
+    encryptionKey: Schema.optional(EncryptionKey),
+  }).annotate({ identifier: "EncryptionKeyHistoryEntry" });
 
 export interface CustomerContact {
   /** Required. The email address used by Oracle to send notifications regarding databases and infrastructure. */
   email?: string;
 }
 
-export const CustomerContact: Schema.Schema<CustomerContact> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      email: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomerContact",
-  }) as any as Schema.Schema<CustomerContact>;
+export const CustomerContact = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  email: Schema.optional(Schema.String),
+}).annotate({ identifier: "CustomerContact" });
 
 export interface AutonomousDatabaseConnectionUrls {
   /** Output only. The URL of the Oracle SQL Developer Web for the Autonomous Database. */
@@ -1132,21 +1004,17 @@ export interface AutonomousDatabaseConnectionUrls {
   databaseTransformsUri?: string;
 }
 
-export const AutonomousDatabaseConnectionUrls: Schema.Schema<AutonomousDatabaseConnectionUrls> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sqlDevWebUri: Schema.optional(Schema.String),
-      graphStudioUri: Schema.optional(Schema.String),
-      mongoDbUri: Schema.optional(Schema.String),
-      apexUri: Schema.optional(Schema.String),
-      machineLearningNotebookUri: Schema.optional(Schema.String),
-      machineLearningUserManagementUri: Schema.optional(Schema.String),
-      ordsUri: Schema.optional(Schema.String),
-      databaseTransformsUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AutonomousDatabaseConnectionUrls",
-  }) as any as Schema.Schema<AutonomousDatabaseConnectionUrls>;
+export const AutonomousDatabaseConnectionUrls =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sqlDevWebUri: Schema.optional(Schema.String),
+    graphStudioUri: Schema.optional(Schema.String),
+    mongoDbUri: Schema.optional(Schema.String),
+    apexUri: Schema.optional(Schema.String),
+    machineLearningNotebookUri: Schema.optional(Schema.String),
+    machineLearningUserManagementUri: Schema.optional(Schema.String),
+    ordsUri: Schema.optional(Schema.String),
+    databaseTransformsUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AutonomousDatabaseConnectionUrls" });
 
 export interface AutonomousDatabaseProperties {
   /** Optional. Immutable. The retention period for the Autonomous Database. This field is specified in days, can range from 1 day to 60 days, and has a default value of 60 days. */
@@ -1373,84 +1241,80 @@ export interface AutonomousDatabaseProperties {
   sqlWebDeveloperUrl?: string;
 }
 
-export const AutonomousDatabaseProperties: Schema.Schema<AutonomousDatabaseProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      backupRetentionPeriodDays: Schema.optional(Schema.Number),
-      maintenanceBeginTime: Schema.optional(Schema.String),
-      mtlsConnectionRequired: Schema.optional(Schema.Boolean),
-      operationsInsightsState: Schema.optional(Schema.String),
-      scheduledOperationDetails: Schema.optional(
-        Schema.Array(ScheduledOperationDetails),
-      ),
-      dbWorkload: Schema.optional(Schema.String),
-      localAdgAutoFailoverMaxDataLossLimitDuration: Schema.optional(
-        Schema.Number,
-      ),
-      peerDbIds: Schema.optional(Schema.Array(Schema.String)),
-      dataSafeState: Schema.optional(Schema.String),
-      privateEndpointIp: Schema.optional(Schema.String),
-      privateEndpointLabel: Schema.optional(Schema.String),
-      vaultId: Schema.optional(Schema.String),
-      isStorageAutoScalingEnabled: Schema.optional(Schema.Boolean),
-      autonomousContainerDatabaseId: Schema.optional(Schema.String),
-      characterSet: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      isLocalDataGuardEnabled: Schema.optional(Schema.Boolean),
-      serviceAgentEmail: Schema.optional(Schema.String),
-      dbEdition: Schema.optional(Schema.String),
-      totalAutoBackupStorageSizeGbs: Schema.optional(Schema.Number),
-      nextLongTermBackupTime: Schema.optional(Schema.String),
-      memoryTableGbs: Schema.optional(Schema.Number),
-      dbVersion: Schema.optional(Schema.String),
-      openMode: Schema.optional(Schema.String),
-      computeCount: Schema.optional(Schema.Number),
-      localAdgAutoFailoverMaxDataLossLimit: Schema.optional(Schema.Number),
-      disasterRecoveryRoleChangedTime: Schema.optional(Schema.String),
-      allowlistedIps: Schema.optional(Schema.Array(Schema.String)),
-      cpuCoreCount: Schema.optional(Schema.Number),
-      allocatedStorageSizeTb: Schema.optional(Schema.Number),
-      ociUrl: Schema.optional(Schema.String),
-      connectionStrings: Schema.optional(AutonomousDatabaseConnectionStrings),
-      role: Schema.optional(Schema.String),
-      dataGuardRoleChangedTime: Schema.optional(Schema.String),
-      dataStorageSizeGb: Schema.optional(Schema.Number),
-      secretId: Schema.optional(Schema.String),
-      lifecycleDetails: Schema.optional(Schema.String),
-      localDisasterRecoveryType: Schema.optional(Schema.String),
-      availableUpgradeVersions: Schema.optional(Schema.Array(Schema.String)),
-      supportedCloneRegions: Schema.optional(Schema.Array(Schema.String)),
-      memoryPerOracleComputeUnitGbs: Schema.optional(Schema.Number),
-      usedDataStorageSizeTbs: Schema.optional(Schema.Number),
-      privateEndpoint: Schema.optional(Schema.String),
-      licenseType: Schema.optional(Schema.String),
-      databaseManagementState: Schema.optional(Schema.String),
-      actualUsedDataStorageSizeTb: Schema.optional(Schema.Number),
-      refreshableState: Schema.optional(Schema.String),
-      nCharacterSet: Schema.optional(Schema.String),
-      localStandbyDb: Schema.optional(AutonomousDatabaseStandbySummary),
-      encryptionKey: Schema.optional(EncryptionKey),
-      refreshableMode: Schema.optional(Schema.String),
-      localDataGuardEnabled: Schema.optional(Schema.Boolean),
-      encryptionKeyHistoryEntries: Schema.optional(
-        Schema.Array(EncryptionKeyHistoryEntry),
-      ),
-      arePrimaryAllowlistedIpsUsed: Schema.optional(Schema.Boolean),
-      maintenanceEndTime: Schema.optional(Schema.String),
-      customerContacts: Schema.optional(Schema.Array(CustomerContact)),
-      maintenanceScheduleType: Schema.optional(Schema.String),
-      dataStorageSizeTb: Schema.optional(Schema.Number),
-      failedDataRecoveryDuration: Schema.optional(Schema.String),
-      connectionUrls: Schema.optional(AutonomousDatabaseConnectionUrls),
-      permissionLevel: Schema.optional(Schema.String),
-      ocid: Schema.optional(Schema.String),
-      isAutoScalingEnabled: Schema.optional(Schema.Boolean),
-      apexDetails: Schema.optional(AutonomousDatabaseApex),
-      sqlWebDeveloperUrl: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AutonomousDatabaseProperties",
-  }) as any as Schema.Schema<AutonomousDatabaseProperties>;
+export const AutonomousDatabaseProperties =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    backupRetentionPeriodDays: Schema.optional(Schema.Number),
+    maintenanceBeginTime: Schema.optional(Schema.String),
+    mtlsConnectionRequired: Schema.optional(Schema.Boolean),
+    operationsInsightsState: Schema.optional(Schema.String),
+    scheduledOperationDetails: Schema.optional(
+      Schema.Array(ScheduledOperationDetails),
+    ),
+    dbWorkload: Schema.optional(Schema.String),
+    localAdgAutoFailoverMaxDataLossLimitDuration: Schema.optional(
+      Schema.Number,
+    ),
+    peerDbIds: Schema.optional(Schema.Array(Schema.String)),
+    dataSafeState: Schema.optional(Schema.String),
+    privateEndpointIp: Schema.optional(Schema.String),
+    privateEndpointLabel: Schema.optional(Schema.String),
+    vaultId: Schema.optional(Schema.String),
+    isStorageAutoScalingEnabled: Schema.optional(Schema.Boolean),
+    autonomousContainerDatabaseId: Schema.optional(Schema.String),
+    characterSet: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    isLocalDataGuardEnabled: Schema.optional(Schema.Boolean),
+    serviceAgentEmail: Schema.optional(Schema.String),
+    dbEdition: Schema.optional(Schema.String),
+    totalAutoBackupStorageSizeGbs: Schema.optional(Schema.Number),
+    nextLongTermBackupTime: Schema.optional(Schema.String),
+    memoryTableGbs: Schema.optional(Schema.Number),
+    dbVersion: Schema.optional(Schema.String),
+    openMode: Schema.optional(Schema.String),
+    computeCount: Schema.optional(Schema.Number),
+    localAdgAutoFailoverMaxDataLossLimit: Schema.optional(Schema.Number),
+    disasterRecoveryRoleChangedTime: Schema.optional(Schema.String),
+    allowlistedIps: Schema.optional(Schema.Array(Schema.String)),
+    cpuCoreCount: Schema.optional(Schema.Number),
+    allocatedStorageSizeTb: Schema.optional(Schema.Number),
+    ociUrl: Schema.optional(Schema.String),
+    connectionStrings: Schema.optional(AutonomousDatabaseConnectionStrings),
+    role: Schema.optional(Schema.String),
+    dataGuardRoleChangedTime: Schema.optional(Schema.String),
+    dataStorageSizeGb: Schema.optional(Schema.Number),
+    secretId: Schema.optional(Schema.String),
+    lifecycleDetails: Schema.optional(Schema.String),
+    localDisasterRecoveryType: Schema.optional(Schema.String),
+    availableUpgradeVersions: Schema.optional(Schema.Array(Schema.String)),
+    supportedCloneRegions: Schema.optional(Schema.Array(Schema.String)),
+    memoryPerOracleComputeUnitGbs: Schema.optional(Schema.Number),
+    usedDataStorageSizeTbs: Schema.optional(Schema.Number),
+    privateEndpoint: Schema.optional(Schema.String),
+    licenseType: Schema.optional(Schema.String),
+    databaseManagementState: Schema.optional(Schema.String),
+    actualUsedDataStorageSizeTb: Schema.optional(Schema.Number),
+    refreshableState: Schema.optional(Schema.String),
+    nCharacterSet: Schema.optional(Schema.String),
+    localStandbyDb: Schema.optional(AutonomousDatabaseStandbySummary),
+    encryptionKey: Schema.optional(EncryptionKey),
+    refreshableMode: Schema.optional(Schema.String),
+    localDataGuardEnabled: Schema.optional(Schema.Boolean),
+    encryptionKeyHistoryEntries: Schema.optional(
+      Schema.Array(EncryptionKeyHistoryEntry),
+    ),
+    arePrimaryAllowlistedIpsUsed: Schema.optional(Schema.Boolean),
+    maintenanceEndTime: Schema.optional(Schema.String),
+    customerContacts: Schema.optional(Schema.Array(CustomerContact)),
+    maintenanceScheduleType: Schema.optional(Schema.String),
+    dataStorageSizeTb: Schema.optional(Schema.Number),
+    failedDataRecoveryDuration: Schema.optional(Schema.String),
+    connectionUrls: Schema.optional(AutonomousDatabaseConnectionUrls),
+    permissionLevel: Schema.optional(Schema.String),
+    ocid: Schema.optional(Schema.String),
+    isAutoScalingEnabled: Schema.optional(Schema.Boolean),
+    apexDetails: Schema.optional(AutonomousDatabaseApex),
+    sqlWebDeveloperUrl: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AutonomousDatabaseProperties" });
 
 export interface SourceConfig {
   /** Optional. This field specifies if the replication of automatic backups is enabled when creating a Data Guard. */
@@ -1459,15 +1323,10 @@ export interface SourceConfig {
   autonomousDatabase?: string;
 }
 
-export const SourceConfig: Schema.Schema<SourceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      automaticBackupsReplicationEnabled: Schema.optional(Schema.Boolean),
-      autonomousDatabase: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SourceConfig",
-  }) as any as Schema.Schema<SourceConfig>;
+export const SourceConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  automaticBackupsReplicationEnabled: Schema.optional(Schema.Boolean),
+  autonomousDatabase: Schema.optional(Schema.String),
+}).annotate({ identifier: "SourceConfig" });
 
 export interface AutonomousDatabase {
   /** Identifier. The name of the Autonomous Database resource in the following format: projects/{project}/locations/{region}/autonomousDatabases/{autonomous_database} */
@@ -1504,31 +1363,26 @@ export interface AutonomousDatabase {
   sourceConfig?: SourceConfig;
 }
 
-export const AutonomousDatabase: Schema.Schema<AutonomousDatabase> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      disasterRecoverySupportedLocations: Schema.optional(
-        Schema.Array(Schema.String),
-      ),
-      properties: Schema.optional(AutonomousDatabaseProperties),
-      peerAutonomousDatabases: Schema.optional(Schema.Array(Schema.String)),
-      adminPassword: Schema.optional(Schema.String),
-      adminPasswordSecretVersion: Schema.optional(Schema.String),
-      odbSubnet: Schema.optional(Schema.String),
-      cidr: Schema.optional(Schema.String),
-      odbNetwork: Schema.optional(Schema.String),
-      database: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      entitlementId: Schema.optional(Schema.String),
-      network: Schema.optional(Schema.String),
-      sourceConfig: Schema.optional(SourceConfig),
-    }),
-  ).annotate({
-    identifier: "AutonomousDatabase",
-  }) as any as Schema.Schema<AutonomousDatabase>;
+export const AutonomousDatabase = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  disasterRecoverySupportedLocations: Schema.optional(
+    Schema.Array(Schema.String),
+  ),
+  properties: Schema.optional(AutonomousDatabaseProperties),
+  peerAutonomousDatabases: Schema.optional(Schema.Array(Schema.String)),
+  adminPassword: Schema.optional(Schema.String),
+  adminPasswordSecretVersion: Schema.optional(Schema.String),
+  odbSubnet: Schema.optional(Schema.String),
+  cidr: Schema.optional(Schema.String),
+  odbNetwork: Schema.optional(Schema.String),
+  database: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  entitlementId: Schema.optional(Schema.String),
+  network: Schema.optional(Schema.String),
+  sourceConfig: Schema.optional(SourceConfig),
+}).annotate({ identifier: "AutonomousDatabase" });
 
 export interface ListAutonomousDatabasesResponse {
   /** The list of Autonomous Databases. */
@@ -1537,15 +1391,11 @@ export interface ListAutonomousDatabasesResponse {
   nextPageToken?: string;
 }
 
-export const ListAutonomousDatabasesResponse: Schema.Schema<ListAutonomousDatabasesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      autonomousDatabases: Schema.optional(Schema.Array(AutonomousDatabase)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAutonomousDatabasesResponse",
-  }) as any as Schema.Schema<ListAutonomousDatabasesResponse>;
+export const ListAutonomousDatabasesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    autonomousDatabases: Schema.optional(Schema.Array(AutonomousDatabase)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListAutonomousDatabasesResponse" });
 
 export interface DbVersionProperties {
   /** Output only. True if this version of the Oracle Database software is the preview version. */
@@ -1560,18 +1410,13 @@ export interface DbVersionProperties {
   isUpgradeSupported?: boolean;
 }
 
-export const DbVersionProperties: Schema.Schema<DbVersionProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      isPreviewDbVersion: Schema.optional(Schema.Boolean),
-      version: Schema.optional(Schema.String),
-      isLatestForMajorVersion: Schema.optional(Schema.Boolean),
-      supportsPdb: Schema.optional(Schema.Boolean),
-      isUpgradeSupported: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "DbVersionProperties",
-  }) as any as Schema.Schema<DbVersionProperties>;
+export const DbVersionProperties = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  isPreviewDbVersion: Schema.optional(Schema.Boolean),
+  version: Schema.optional(Schema.String),
+  isLatestForMajorVersion: Schema.optional(Schema.Boolean),
+  supportsPdb: Schema.optional(Schema.Boolean),
+  isUpgradeSupported: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "DbVersionProperties" });
 
 export interface DbVersion {
   /** Output only. The name of the DbVersion resource in the following format: projects/{project}/locations/{region}/dbVersions/{db_version} */
@@ -1580,13 +1425,10 @@ export interface DbVersion {
   properties?: DbVersionProperties;
 }
 
-export const DbVersion: Schema.Schema<DbVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      properties: Schema.optional(DbVersionProperties),
-    }),
-  ).annotate({ identifier: "DbVersion" }) as any as Schema.Schema<DbVersion>;
+export const DbVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  properties: Schema.optional(DbVersionProperties),
+}).annotate({ identifier: "DbVersion" });
 
 export interface OdbSubnet {
   /** Required. Purpose of the subnet. */
@@ -1613,17 +1455,14 @@ export interface OdbSubnet {
     | (string & {});
 }
 
-export const OdbSubnet: Schema.Schema<OdbSubnet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      purpose: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      createTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      cidrRange: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "OdbSubnet" }) as any as Schema.Schema<OdbSubnet>;
+export const OdbSubnet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  purpose: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  createTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  cidrRange: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+}).annotate({ identifier: "OdbSubnet" });
 
 export interface ListOdbSubnetsResponse {
   /** The list of ODB Subnets. */
@@ -1634,16 +1473,13 @@ export interface ListOdbSubnetsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListOdbSubnetsResponse: Schema.Schema<ListOdbSubnetsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      odbSubnets: Schema.optional(Schema.Array(OdbSubnet)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListOdbSubnetsResponse",
-  }) as any as Schema.Schema<ListOdbSubnetsResponse>;
+export const ListOdbSubnetsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    odbSubnets: Schema.optional(Schema.Array(OdbSubnet)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "ListOdbSubnetsResponse" });
 
 export interface Location {
   /** The canonical id for this location. For example: `"us-east1"`. */
@@ -1658,16 +1494,13 @@ export interface Location {
   name?: string;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locationId: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      displayName: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locationId: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  displayName: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Location" });
 
 export interface DataCollectionOptionsCommon {
   /** Optional. Indicates whether to enable health monitoring. */
@@ -1678,30 +1511,22 @@ export interface DataCollectionOptionsCommon {
   isIncidentLogsEnabled?: boolean;
 }
 
-export const DataCollectionOptionsCommon: Schema.Schema<DataCollectionOptionsCommon> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      isHealthMonitoringEnabled: Schema.optional(Schema.Boolean),
-      isDiagnosticsEventsEnabled: Schema.optional(Schema.Boolean),
-      isIncidentLogsEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "DataCollectionOptionsCommon",
-  }) as any as Schema.Schema<DataCollectionOptionsCommon>;
+export const DataCollectionOptionsCommon =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    isHealthMonitoringEnabled: Schema.optional(Schema.Boolean),
+    isDiagnosticsEventsEnabled: Schema.optional(Schema.Boolean),
+    isIncidentLogsEnabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "DataCollectionOptionsCommon" });
 
 export interface ExadbVmClusterStorageDetails {
   /** Required. The storage allocation for the exadbvmcluster per node, in gigabytes (GB). This field is used to calculate the total storage allocation for the exadbvmcluster. */
   sizeInGbsPerNode?: number;
 }
 
-export const ExadbVmClusterStorageDetails: Schema.Schema<ExadbVmClusterStorageDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sizeInGbsPerNode: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "ExadbVmClusterStorageDetails",
-  }) as any as Schema.Schema<ExadbVmClusterStorageDetails>;
+export const ExadbVmClusterStorageDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sizeInGbsPerNode: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "ExadbVmClusterStorageDetails" });
 
 export interface ExadbVmClusterProperties {
   /** Required. Immutable. The number of ECPUs enabled per node for an exadata vm cluster on exascale infrastructure. */
@@ -1761,32 +1586,28 @@ export interface ExadbVmClusterProperties {
   timeZone?: TimeZone;
 }
 
-export const ExadbVmClusterProperties: Schema.Schema<ExadbVmClusterProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabledEcpuCountPerNode: Schema.optional(Schema.Number),
-      dataCollectionOptions: Schema.optional(DataCollectionOptionsCommon),
-      scanListenerPortTcp: Schema.optional(Schema.Number),
-      vmFileSystemStorage: Schema.optional(ExadbVmClusterStorageDetails),
-      additionalEcpuCountPerNode: Schema.optional(Schema.Number),
-      lifecycleState: Schema.optional(Schema.String),
-      ociUri: Schema.optional(Schema.String),
-      hostnamePrefix: Schema.optional(Schema.String),
-      nodeCount: Schema.optional(Schema.Number),
-      memorySizeGb: Schema.optional(Schema.Number),
-      gridImageId: Schema.optional(Schema.String),
-      licenseModel: Schema.optional(Schema.String),
-      giVersion: Schema.optional(Schema.String),
-      shapeAttribute: Schema.optional(Schema.String),
-      sshPublicKeys: Schema.optional(Schema.Array(Schema.String)),
-      clusterName: Schema.optional(Schema.String),
-      hostname: Schema.optional(Schema.String),
-      exascaleDbStorageVault: Schema.optional(Schema.String),
-      timeZone: Schema.optional(TimeZone),
-    }),
-  ).annotate({
-    identifier: "ExadbVmClusterProperties",
-  }) as any as Schema.Schema<ExadbVmClusterProperties>;
+export const ExadbVmClusterProperties =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabledEcpuCountPerNode: Schema.optional(Schema.Number),
+    dataCollectionOptions: Schema.optional(DataCollectionOptionsCommon),
+    scanListenerPortTcp: Schema.optional(Schema.Number),
+    vmFileSystemStorage: Schema.optional(ExadbVmClusterStorageDetails),
+    additionalEcpuCountPerNode: Schema.optional(Schema.Number),
+    lifecycleState: Schema.optional(Schema.String),
+    ociUri: Schema.optional(Schema.String),
+    hostnamePrefix: Schema.optional(Schema.String),
+    nodeCount: Schema.optional(Schema.Number),
+    memorySizeGb: Schema.optional(Schema.Number),
+    gridImageId: Schema.optional(Schema.String),
+    licenseModel: Schema.optional(Schema.String),
+    giVersion: Schema.optional(Schema.String),
+    shapeAttribute: Schema.optional(Schema.String),
+    sshPublicKeys: Schema.optional(Schema.Array(Schema.String)),
+    clusterName: Schema.optional(Schema.String),
+    hostname: Schema.optional(Schema.String),
+    exascaleDbStorageVault: Schema.optional(Schema.String),
+    timeZone: Schema.optional(TimeZone),
+  }).annotate({ identifier: "ExadbVmClusterProperties" });
 
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -1797,16 +1618,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface OperationMetadata {
   /** Output only. The status of the operation. */
@@ -1827,21 +1645,16 @@ export interface OperationMetadata {
   percentComplete?: number;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      statusMessage: Schema.optional(Schema.String),
-      apiVersion: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      percentComplete: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  statusMessage: Schema.optional(Schema.String),
+  apiVersion: Schema.optional(Schema.String),
+  verb: Schema.optional(Schema.String),
+  requestedCancellation: Schema.optional(Schema.Boolean),
+  createTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  percentComplete: Schema.optional(Schema.Number),
+}).annotate({ identifier: "OperationMetadata" });
 
 export interface MinorVersion {
   /** Identifier. The name of the MinorVersion resource with the format: projects/{project}/locations/{region}/giVersions/{gi_version}/minorVersions/{minor_version} */
@@ -1852,16 +1665,11 @@ export interface MinorVersion {
   version?: string;
 }
 
-export const MinorVersion: Schema.Schema<MinorVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      gridImageId: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MinorVersion",
-  }) as any as Schema.Schema<MinorVersion>;
+export const MinorVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  gridImageId: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+}).annotate({ identifier: "MinorVersion" });
 
 export interface ListMinorVersionsResponse {
   /** The list of MinorVersions. */
@@ -1870,15 +1678,11 @@ export interface ListMinorVersionsResponse {
   nextPageToken?: string;
 }
 
-export const ListMinorVersionsResponse: Schema.Schema<ListMinorVersionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      minorVersions: Schema.optional(Schema.Array(MinorVersion)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListMinorVersionsResponse",
-  }) as any as Schema.Schema<ListMinorVersionsResponse>;
+export const ListMinorVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    minorVersions: Schema.optional(Schema.Array(MinorVersion)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListMinorVersionsResponse" });
 
 export interface PluggableDatabaseNodeLevelDetails {
   /** Required. The Node name of the Database home. */
@@ -1895,16 +1699,12 @@ export interface PluggableDatabaseNodeLevelDetails {
   pluggableDatabaseId?: string;
 }
 
-export const PluggableDatabaseNodeLevelDetails: Schema.Schema<PluggableDatabaseNodeLevelDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nodeName: Schema.optional(Schema.String),
-      openMode: Schema.optional(Schema.String),
-      pluggableDatabaseId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PluggableDatabaseNodeLevelDetails",
-  }) as any as Schema.Schema<PluggableDatabaseNodeLevelDetails>;
+export const PluggableDatabaseNodeLevelDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nodeName: Schema.optional(Schema.String),
+    openMode: Schema.optional(Schema.String),
+    pluggableDatabaseId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PluggableDatabaseNodeLevelDetails" });
 
 export interface CloudAccountDetails {
   /** Output only. OCI account name. */
@@ -1917,17 +1717,12 @@ export interface CloudAccountDetails {
   accountCreationUri?: string;
 }
 
-export const CloudAccountDetails: Schema.Schema<CloudAccountDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cloudAccount: Schema.optional(Schema.String),
-      cloudAccountHomeRegion: Schema.optional(Schema.String),
-      linkExistingAccountUri: Schema.optional(Schema.String),
-      accountCreationUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CloudAccountDetails",
-  }) as any as Schema.Schema<CloudAccountDetails>;
+export const CloudAccountDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cloudAccount: Schema.optional(Schema.String),
+  cloudAccountHomeRegion: Schema.optional(Schema.String),
+  linkExistingAccountUri: Schema.optional(Schema.String),
+  accountCreationUri: Schema.optional(Schema.String),
+}).annotate({ identifier: "CloudAccountDetails" });
 
 export interface Entitlement {
   /** Identifier. The name of the Entitlement resource with the format: projects/{project}/locations/{region}/entitlements/{entitlement} */
@@ -1947,31 +1742,21 @@ export interface Entitlement {
     | (string & {});
 }
 
-export const Entitlement: Schema.Schema<Entitlement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      cloudAccountDetails: Schema.optional(CloudAccountDetails),
-      entitlementId: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Entitlement",
-  }) as any as Schema.Schema<Entitlement>;
+export const Entitlement = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  cloudAccountDetails: Schema.optional(CloudAccountDetails),
+  entitlementId: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+}).annotate({ identifier: "Entitlement" });
 
 export interface DefinedTagValue {
   /** The tags within the namespace. */
   tags?: Record<string, string>;
 }
 
-export const DefinedTagValue: Schema.Schema<DefinedTagValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "DefinedTagValue",
-  }) as any as Schema.Schema<DefinedTagValue>;
+export const DefinedTagValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "DefinedTagValue" });
 
 export interface PluggableDatabaseConnectionStrings {
   /** Optional. The default connection string to use to connect to the pluggable database. */
@@ -1982,18 +1767,14 @@ export interface PluggableDatabaseConnectionStrings {
   pdbIpDefault?: string;
 }
 
-export const PluggableDatabaseConnectionStrings: Schema.Schema<PluggableDatabaseConnectionStrings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pdbDefault: Schema.optional(Schema.String),
-      allConnectionStrings: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      pdbIpDefault: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PluggableDatabaseConnectionStrings",
-  }) as any as Schema.Schema<PluggableDatabaseConnectionStrings>;
+export const PluggableDatabaseConnectionStrings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pdbDefault: Schema.optional(Schema.String),
+    allConnectionStrings: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    pdbIpDefault: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PluggableDatabaseConnectionStrings" });
 
 export interface PluggableDatabaseProperties {
   /** Required. The OCID of the compartment. */
@@ -2047,32 +1828,24 @@ export interface PluggableDatabaseProperties {
   pdbNodeLevelDetails?: Array<PluggableDatabaseNodeLevelDetails>;
 }
 
-export const PluggableDatabaseProperties: Schema.Schema<PluggableDatabaseProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      compartmentId: Schema.optional(Schema.String),
-      ocid: Schema.optional(Schema.String),
-      databaseManagementConfig: Schema.optional(DatabaseManagementConfig),
-      definedTags: Schema.optional(
-        Schema.Record(Schema.String, DefinedTagValue),
-      ),
-      lifecycleState: Schema.optional(Schema.String),
-      connectionStrings: Schema.optional(PluggableDatabaseConnectionStrings),
-      isRestricted: Schema.optional(Schema.Boolean),
-      pdbName: Schema.optional(Schema.String),
-      freeformTags: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      operationsInsightsState: Schema.optional(Schema.String),
-      containerDatabaseOcid: Schema.optional(Schema.String),
-      lifecycleDetails: Schema.optional(Schema.String),
-      pdbNodeLevelDetails: Schema.optional(
-        Schema.Array(PluggableDatabaseNodeLevelDetails),
-      ),
-    }),
-  ).annotate({
-    identifier: "PluggableDatabaseProperties",
-  }) as any as Schema.Schema<PluggableDatabaseProperties>;
+export const PluggableDatabaseProperties =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    compartmentId: Schema.optional(Schema.String),
+    ocid: Schema.optional(Schema.String),
+    databaseManagementConfig: Schema.optional(DatabaseManagementConfig),
+    definedTags: Schema.optional(Schema.Record(Schema.String, DefinedTagValue)),
+    lifecycleState: Schema.optional(Schema.String),
+    connectionStrings: Schema.optional(PluggableDatabaseConnectionStrings),
+    isRestricted: Schema.optional(Schema.Boolean),
+    pdbName: Schema.optional(Schema.String),
+    freeformTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    operationsInsightsState: Schema.optional(Schema.String),
+    containerDatabaseOcid: Schema.optional(Schema.String),
+    lifecycleDetails: Schema.optional(Schema.String),
+    pdbNodeLevelDetails: Schema.optional(
+      Schema.Array(PluggableDatabaseNodeLevelDetails),
+    ),
+  }).annotate({ identifier: "PluggableDatabaseProperties" });
 
 export interface DataCollectionOptions {
   /** Optional. Indicates whether incident logs and trace collection are enabled for the VM cluster */
@@ -2083,16 +1856,11 @@ export interface DataCollectionOptions {
   healthMonitoringEnabled?: boolean;
 }
 
-export const DataCollectionOptions: Schema.Schema<DataCollectionOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      incidentLogsEnabled: Schema.optional(Schema.Boolean),
-      diagnosticsEventsEnabled: Schema.optional(Schema.Boolean),
-      healthMonitoringEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "DataCollectionOptions",
-  }) as any as Schema.Schema<DataCollectionOptions>;
+export const DataCollectionOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  incidentLogsEnabled: Schema.optional(Schema.Boolean),
+  diagnosticsEventsEnabled: Schema.optional(Schema.Boolean),
+  healthMonitoringEnabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "DataCollectionOptions" });
 
 export interface CloudVmClusterProperties {
   /** Optional. OCPU count per VM. Minimum is 0.1. */
@@ -2184,46 +1952,42 @@ export interface CloudVmClusterProperties {
   scanDnsRecordId?: string;
 }
 
-export const CloudVmClusterProperties: Schema.Schema<CloudVmClusterProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ocpuCount: Schema.optional(Schema.Number),
-      diagnosticsDataCollectionOptions: Schema.optional(DataCollectionOptions),
-      timeZone: Schema.optional(TimeZone),
-      scanListenerPortTcpSsl: Schema.optional(Schema.Number),
-      scanListenerPortTcp: Schema.optional(Schema.Number),
-      licenseType: Schema.optional(Schema.String),
-      localBackupEnabled: Schema.optional(Schema.Boolean),
-      memorySizeGb: Schema.optional(Schema.Number),
-      shape: Schema.optional(Schema.String),
-      nodeCount: Schema.optional(Schema.Number),
-      scanIpIds: Schema.optional(Schema.Array(Schema.String)),
-      giVersion: Schema.optional(Schema.String),
-      dbNodeStorageSizeGb: Schema.optional(Schema.Number),
-      storageSizeGb: Schema.optional(Schema.Number),
-      scanDns: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      sshPublicKeys: Schema.optional(Schema.Array(Schema.String)),
-      hostname: Schema.optional(Schema.String),
-      clusterName: Schema.optional(Schema.String),
-      sparseDiskgroupEnabled: Schema.optional(Schema.Boolean),
-      dnsListenerIp: Schema.optional(Schema.String),
-      dataStorageSizeTb: Schema.optional(Schema.Number),
-      diskRedundancy: Schema.optional(Schema.String),
-      systemVersion: Schema.optional(Schema.String),
-      cpuCoreCount: Schema.optional(Schema.Number),
-      compartmentId: Schema.optional(Schema.String),
-      hostnamePrefix: Schema.optional(Schema.String),
-      dbServerOcids: Schema.optional(Schema.Array(Schema.String)),
-      domain: Schema.optional(Schema.String),
-      computeModel: Schema.optional(Schema.String),
-      ocid: Schema.optional(Schema.String),
-      ociUrl: Schema.optional(Schema.String),
-      scanDnsRecordId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CloudVmClusterProperties",
-  }) as any as Schema.Schema<CloudVmClusterProperties>;
+export const CloudVmClusterProperties =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ocpuCount: Schema.optional(Schema.Number),
+    diagnosticsDataCollectionOptions: Schema.optional(DataCollectionOptions),
+    timeZone: Schema.optional(TimeZone),
+    scanListenerPortTcpSsl: Schema.optional(Schema.Number),
+    scanListenerPortTcp: Schema.optional(Schema.Number),
+    licenseType: Schema.optional(Schema.String),
+    localBackupEnabled: Schema.optional(Schema.Boolean),
+    memorySizeGb: Schema.optional(Schema.Number),
+    shape: Schema.optional(Schema.String),
+    nodeCount: Schema.optional(Schema.Number),
+    scanIpIds: Schema.optional(Schema.Array(Schema.String)),
+    giVersion: Schema.optional(Schema.String),
+    dbNodeStorageSizeGb: Schema.optional(Schema.Number),
+    storageSizeGb: Schema.optional(Schema.Number),
+    scanDns: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    sshPublicKeys: Schema.optional(Schema.Array(Schema.String)),
+    hostname: Schema.optional(Schema.String),
+    clusterName: Schema.optional(Schema.String),
+    sparseDiskgroupEnabled: Schema.optional(Schema.Boolean),
+    dnsListenerIp: Schema.optional(Schema.String),
+    dataStorageSizeTb: Schema.optional(Schema.Number),
+    diskRedundancy: Schema.optional(Schema.String),
+    systemVersion: Schema.optional(Schema.String),
+    cpuCoreCount: Schema.optional(Schema.Number),
+    compartmentId: Schema.optional(Schema.String),
+    hostnamePrefix: Schema.optional(Schema.String),
+    dbServerOcids: Schema.optional(Schema.Array(Schema.String)),
+    domain: Schema.optional(Schema.String),
+    computeModel: Schema.optional(Schema.String),
+    ocid: Schema.optional(Schema.String),
+    ociUrl: Schema.optional(Schema.String),
+    scanDnsRecordId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CloudVmClusterProperties" });
 
 export interface IdentityConnector {
   /** Output only. A google managed service account on which customers can grant roles to access resources in the customer project. Example: `p176944527254-55-75119d87fd8f@gcp-sa-oci.iam.gserviceaccount.com` */
@@ -2238,15 +2002,10 @@ export interface IdentityConnector {
     | (string & {});
 }
 
-export const IdentityConnector: Schema.Schema<IdentityConnector> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serviceAgentEmail: Schema.optional(Schema.String),
-      connectionState: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "IdentityConnector",
-  }) as any as Schema.Schema<IdentityConnector>;
+export const IdentityConnector = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  serviceAgentEmail: Schema.optional(Schema.String),
+  connectionState: Schema.optional(Schema.String),
+}).annotate({ identifier: "IdentityConnector" });
 
 export interface CloudVmCluster {
   /** Optional. The name of the VPC network. Format: projects/{project}/global/networks/{network} */
@@ -2279,27 +2038,22 @@ export interface CloudVmCluster {
   name?: string;
 }
 
-export const CloudVmCluster: Schema.Schema<CloudVmCluster> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      network: Schema.optional(Schema.String),
-      identityConnector: Schema.optional(IdentityConnector),
-      displayName: Schema.optional(Schema.String),
-      backupOdbSubnet: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      gcpOracleZone: Schema.optional(Schema.String),
-      cidr: Schema.optional(Schema.String),
-      odbNetwork: Schema.optional(Schema.String),
-      odbSubnet: Schema.optional(Schema.String),
-      properties: Schema.optional(CloudVmClusterProperties),
-      exadataInfrastructure: Schema.optional(Schema.String),
-      backupSubnetCidr: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CloudVmCluster",
-  }) as any as Schema.Schema<CloudVmCluster>;
+export const CloudVmCluster = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  network: Schema.optional(Schema.String),
+  identityConnector: Schema.optional(IdentityConnector),
+  displayName: Schema.optional(Schema.String),
+  backupOdbSubnet: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  gcpOracleZone: Schema.optional(Schema.String),
+  cidr: Schema.optional(Schema.String),
+  odbNetwork: Schema.optional(Schema.String),
+  odbSubnet: Schema.optional(Schema.String),
+  properties: Schema.optional(CloudVmClusterProperties),
+  exadataInfrastructure: Schema.optional(Schema.String),
+  backupSubnetCidr: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "CloudVmCluster" });
 
 export interface CloudExadataInfrastructureProperties {
   /** Output only. The requested number of additional storage servers activated for the Exadata Infrastructure. */
@@ -2377,43 +2131,39 @@ export interface CloudExadataInfrastructureProperties {
   maintenanceWindow?: MaintenanceWindow;
 }
 
-export const CloudExadataInfrastructureProperties: Schema.Schema<CloudExadataInfrastructureProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      activatedStorageCount: Schema.optional(Schema.Number),
-      state: Schema.optional(Schema.String),
-      maxMemoryGb: Schema.optional(Schema.Number),
-      dbNodeStorageSizeGb: Schema.optional(Schema.Number),
-      monthlyStorageServerVersion: Schema.optional(Schema.String),
-      availableStorageSizeGb: Schema.optional(Schema.Number),
-      monthlyDbServerVersion: Schema.optional(Schema.String),
-      computeModel: Schema.optional(Schema.String),
-      ocid: Schema.optional(Schema.String),
-      ociUrl: Schema.optional(Schema.String),
-      nextMaintenanceRunId: Schema.optional(Schema.String),
-      totalStorageSizeGb: Schema.optional(Schema.Number),
-      maxDbNodeStorageSizeGb: Schema.optional(Schema.Number),
-      dataStorageSizeTb: Schema.optional(Schema.Number),
-      computeCount: Schema.optional(Schema.Number),
-      storageCount: Schema.optional(Schema.Number),
-      customerContacts: Schema.optional(Schema.Array(CustomerContact)),
-      cpuCount: Schema.optional(Schema.Number),
-      nextMaintenanceRunTime: Schema.optional(Schema.String),
-      maxCpuCount: Schema.optional(Schema.Number),
-      nextSecurityMaintenanceRunTime: Schema.optional(Schema.String),
-      additionalStorageCount: Schema.optional(Schema.Number),
-      memorySizeGb: Schema.optional(Schema.Number),
-      databaseServerType: Schema.optional(Schema.String),
-      shape: Schema.optional(Schema.String),
-      dbServerVersion: Schema.optional(Schema.String),
-      storageServerVersion: Schema.optional(Schema.String),
-      maxDataStorageTb: Schema.optional(Schema.Number),
-      storageServerType: Schema.optional(Schema.String),
-      maintenanceWindow: Schema.optional(MaintenanceWindow),
-    }),
-  ).annotate({
-    identifier: "CloudExadataInfrastructureProperties",
-  }) as any as Schema.Schema<CloudExadataInfrastructureProperties>;
+export const CloudExadataInfrastructureProperties =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    activatedStorageCount: Schema.optional(Schema.Number),
+    state: Schema.optional(Schema.String),
+    maxMemoryGb: Schema.optional(Schema.Number),
+    dbNodeStorageSizeGb: Schema.optional(Schema.Number),
+    monthlyStorageServerVersion: Schema.optional(Schema.String),
+    availableStorageSizeGb: Schema.optional(Schema.Number),
+    monthlyDbServerVersion: Schema.optional(Schema.String),
+    computeModel: Schema.optional(Schema.String),
+    ocid: Schema.optional(Schema.String),
+    ociUrl: Schema.optional(Schema.String),
+    nextMaintenanceRunId: Schema.optional(Schema.String),
+    totalStorageSizeGb: Schema.optional(Schema.Number),
+    maxDbNodeStorageSizeGb: Schema.optional(Schema.Number),
+    dataStorageSizeTb: Schema.optional(Schema.Number),
+    computeCount: Schema.optional(Schema.Number),
+    storageCount: Schema.optional(Schema.Number),
+    customerContacts: Schema.optional(Schema.Array(CustomerContact)),
+    cpuCount: Schema.optional(Schema.Number),
+    nextMaintenanceRunTime: Schema.optional(Schema.String),
+    maxCpuCount: Schema.optional(Schema.Number),
+    nextSecurityMaintenanceRunTime: Schema.optional(Schema.String),
+    additionalStorageCount: Schema.optional(Schema.Number),
+    memorySizeGb: Schema.optional(Schema.Number),
+    databaseServerType: Schema.optional(Schema.String),
+    shape: Schema.optional(Schema.String),
+    dbServerVersion: Schema.optional(Schema.String),
+    storageServerVersion: Schema.optional(Schema.String),
+    maxDataStorageTb: Schema.optional(Schema.Number),
+    storageServerType: Schema.optional(Schema.String),
+    maintenanceWindow: Schema.optional(MaintenanceWindow),
+  }).annotate({ identifier: "CloudExadataInfrastructureProperties" });
 
 export interface CloudExadataInfrastructure {
   /** Optional. User friendly name for this resource. */
@@ -2432,27 +2182,22 @@ export interface CloudExadataInfrastructure {
   createTime?: string;
 }
 
-export const CloudExadataInfrastructure: Schema.Schema<CloudExadataInfrastructure> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      entitlementId: Schema.optional(Schema.String),
-      gcpOracleZone: Schema.optional(Schema.String),
-      properties: Schema.optional(CloudExadataInfrastructureProperties),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CloudExadataInfrastructure",
-  }) as any as Schema.Schema<CloudExadataInfrastructure>;
+export const CloudExadataInfrastructure =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    entitlementId: Schema.optional(Schema.String),
+    gcpOracleZone: Schema.optional(Schema.String),
+    properties: Schema.optional(CloudExadataInfrastructureProperties),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CloudExadataInfrastructure" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface AutonomousDatabaseCharacterSet {
   /** Identifier. The name of the Autonomous Database Character Set resource in the following format: projects/{project}/locations/{region}/autonomousDatabaseCharacterSets/{autonomous_database_character_set} */
@@ -2467,16 +2212,12 @@ export interface AutonomousDatabaseCharacterSet {
     | (string & {});
 }
 
-export const AutonomousDatabaseCharacterSet: Schema.Schema<AutonomousDatabaseCharacterSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      characterSet: Schema.optional(Schema.String),
-      characterSetType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AutonomousDatabaseCharacterSet",
-  }) as any as Schema.Schema<AutonomousDatabaseCharacterSet>;
+export const AutonomousDatabaseCharacterSet =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    characterSet: Schema.optional(Schema.String),
+    characterSetType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AutonomousDatabaseCharacterSet" });
 
 export interface ListAutonomousDatabaseCharacterSetsResponse {
   /** The list of Autonomous Database Character Sets. */
@@ -2485,31 +2226,23 @@ export interface ListAutonomousDatabaseCharacterSetsResponse {
   nextPageToken?: string;
 }
 
-export const ListAutonomousDatabaseCharacterSetsResponse: Schema.Schema<ListAutonomousDatabaseCharacterSetsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      autonomousDatabaseCharacterSets: Schema.optional(
-        Schema.Array(AutonomousDatabaseCharacterSet),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAutonomousDatabaseCharacterSetsResponse",
-  }) as any as Schema.Schema<ListAutonomousDatabaseCharacterSetsResponse>;
+export const ListAutonomousDatabaseCharacterSetsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    autonomousDatabaseCharacterSets: Schema.optional(
+      Schema.Array(AutonomousDatabaseCharacterSet),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListAutonomousDatabaseCharacterSetsResponse" });
 
 export interface FailoverAutonomousDatabaseRequest {
   /** Optional. The peer database name to fail over to. Required for cross-region standby, and must be omitted for in-region Data Guard. */
   peerAutonomousDatabase?: string;
 }
 
-export const FailoverAutonomousDatabaseRequest: Schema.Schema<FailoverAutonomousDatabaseRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      peerAutonomousDatabase: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FailoverAutonomousDatabaseRequest",
-  }) as any as Schema.Schema<FailoverAutonomousDatabaseRequest>;
+export const FailoverAutonomousDatabaseRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    peerAutonomousDatabase: Schema.optional(Schema.String),
+  }).annotate({ identifier: "FailoverAutonomousDatabaseRequest" });
 
 export interface ListDatabaseCharacterSetsResponse {
   /** The list of DatabaseCharacterSets. */
@@ -2518,17 +2251,11 @@ export interface ListDatabaseCharacterSetsResponse {
   nextPageToken?: string;
 }
 
-export const ListDatabaseCharacterSetsResponse: Schema.Schema<ListDatabaseCharacterSetsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      databaseCharacterSets: Schema.optional(
-        Schema.Array(DatabaseCharacterSet),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListDatabaseCharacterSetsResponse",
-  }) as any as Schema.Schema<ListDatabaseCharacterSetsResponse>;
+export const ListDatabaseCharacterSetsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    databaseCharacterSets: Schema.optional(Schema.Array(DatabaseCharacterSet)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListDatabaseCharacterSetsResponse" });
 
 export interface ExascaleDbStorageDetails {
   /** Output only. The available storage capacity for the ExascaleDbStorageVault, in gigabytes (GB). */
@@ -2537,15 +2264,11 @@ export interface ExascaleDbStorageDetails {
   totalSizeGbs?: number;
 }
 
-export const ExascaleDbStorageDetails: Schema.Schema<ExascaleDbStorageDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      availableSizeGbs: Schema.optional(Schema.Number),
-      totalSizeGbs: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "ExascaleDbStorageDetails",
-  }) as any as Schema.Schema<ExascaleDbStorageDetails>;
+export const ExascaleDbStorageDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    availableSizeGbs: Schema.optional(Schema.Number),
+    totalSizeGbs: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "ExascaleDbStorageDetails" });
 
 export interface ExascaleDbStorageVaultProperties {
   /** Optional. The description of the ExascaleDbStorageVault. */
@@ -2590,24 +2313,20 @@ export interface ExascaleDbStorageVaultProperties {
   exascaleDbStorageDetails?: ExascaleDbStorageDetails;
 }
 
-export const ExascaleDbStorageVaultProperties: Schema.Schema<ExascaleDbStorageVaultProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      attachedShapeAttributes: Schema.optional(Schema.Array(Schema.String)),
-      vmClusterCount: Schema.optional(Schema.Number),
-      additionalFlashCachePercent: Schema.optional(Schema.Number),
-      ocid: Schema.optional(Schema.String),
-      ociUri: Schema.optional(Schema.String),
-      availableShapeAttributes: Schema.optional(Schema.Array(Schema.String)),
-      timeZone: Schema.optional(TimeZone),
-      state: Schema.optional(Schema.String),
-      vmClusterIds: Schema.optional(Schema.Array(Schema.String)),
-      exascaleDbStorageDetails: Schema.optional(ExascaleDbStorageDetails),
-    }),
-  ).annotate({
-    identifier: "ExascaleDbStorageVaultProperties",
-  }) as any as Schema.Schema<ExascaleDbStorageVaultProperties>;
+export const ExascaleDbStorageVaultProperties =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    attachedShapeAttributes: Schema.optional(Schema.Array(Schema.String)),
+    vmClusterCount: Schema.optional(Schema.Number),
+    additionalFlashCachePercent: Schema.optional(Schema.Number),
+    ocid: Schema.optional(Schema.String),
+    ociUri: Schema.optional(Schema.String),
+    availableShapeAttributes: Schema.optional(Schema.Array(Schema.String)),
+    timeZone: Schema.optional(TimeZone),
+    state: Schema.optional(Schema.String),
+    vmClusterIds: Schema.optional(Schema.Array(Schema.String)),
+    exascaleDbStorageDetails: Schema.optional(ExascaleDbStorageDetails),
+  }).annotate({ identifier: "ExascaleDbStorageVaultProperties" });
 
 export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
@@ -2622,16 +2341,13 @@ export interface Operation {
   done?: boolean;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      error: Schema.optional(Status),
-      name: Schema.optional(Schema.String),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  error: Schema.optional(Status),
+  name: Schema.optional(Schema.String),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  done: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Operation" });
 
 export interface ListCloudExadataInfrastructuresResponse {
   /** A token for fetching next page of response. */
@@ -2640,17 +2356,13 @@ export interface ListCloudExadataInfrastructuresResponse {
   cloudExadataInfrastructures?: Array<CloudExadataInfrastructure>;
 }
 
-export const ListCloudExadataInfrastructuresResponse: Schema.Schema<ListCloudExadataInfrastructuresResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      cloudExadataInfrastructures: Schema.optional(
-        Schema.Array(CloudExadataInfrastructure),
-      ),
-    }),
-  ).annotate({
-    identifier: "ListCloudExadataInfrastructuresResponse",
-  }) as any as Schema.Schema<ListCloudExadataInfrastructuresResponse>;
+export const ListCloudExadataInfrastructuresResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    cloudExadataInfrastructures: Schema.optional(
+      Schema.Array(CloudExadataInfrastructure),
+    ),
+  }).annotate({ identifier: "ListCloudExadataInfrastructuresResponse" });
 
 export interface ExascaleDbStorageVault {
   /** Optional. The labels or tags associated with the ExascaleDbStorageVault. */
@@ -2669,20 +2381,17 @@ export interface ExascaleDbStorageVault {
   properties?: ExascaleDbStorageVaultProperties;
 }
 
-export const ExascaleDbStorageVault: Schema.Schema<ExascaleDbStorageVault> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      createTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      entitlementId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      gcpOracleZone: Schema.optional(Schema.String),
-      properties: Schema.optional(ExascaleDbStorageVaultProperties),
-    }),
-  ).annotate({
-    identifier: "ExascaleDbStorageVault",
-  }) as any as Schema.Schema<ExascaleDbStorageVault>;
+export const ExascaleDbStorageVault = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    createTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    entitlementId: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    gcpOracleZone: Schema.optional(Schema.String),
+    properties: Schema.optional(ExascaleDbStorageVaultProperties),
+  },
+).annotate({ identifier: "ExascaleDbStorageVault" });
 
 export interface ListExascaleDbStorageVaultsResponse {
   /** The ExascaleDbStorageVaults. */
@@ -2691,31 +2400,22 @@ export interface ListExascaleDbStorageVaultsResponse {
   nextPageToken?: string;
 }
 
-export const ListExascaleDbStorageVaultsResponse: Schema.Schema<ListExascaleDbStorageVaultsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      exascaleDbStorageVaults: Schema.optional(
-        Schema.Array(ExascaleDbStorageVault),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListExascaleDbStorageVaultsResponse",
-  }) as any as Schema.Schema<ListExascaleDbStorageVaultsResponse>;
+export const ListExascaleDbStorageVaultsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    exascaleDbStorageVaults: Schema.optional(
+      Schema.Array(ExascaleDbStorageVault),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListExascaleDbStorageVaultsResponse" });
 
 export interface LocationMetadata {
   /** Output only. Google Cloud Platform Oracle zones in a location. */
   gcpOracleZones?: Array<string>;
 }
 
-export const LocationMetadata: Schema.Schema<LocationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcpOracleZones: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "LocationMetadata",
-  }) as any as Schema.Schema<LocationMetadata>;
+export const LocationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gcpOracleZones: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "LocationMetadata" });
 
 export interface StorageSizeDetails {
   /** Output only. The data storage size, in gigabytes, that is applicable for virtual machine DBSystem. */
@@ -2724,15 +2424,10 @@ export interface StorageSizeDetails {
   recoStorageSizeInGbs?: number;
 }
 
-export const StorageSizeDetails: Schema.Schema<StorageSizeDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataStorageSizeInGbs: Schema.optional(Schema.Number),
-      recoStorageSizeInGbs: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "StorageSizeDetails",
-  }) as any as Schema.Schema<StorageSizeDetails>;
+export const StorageSizeDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dataStorageSizeInGbs: Schema.optional(Schema.Number),
+  recoStorageSizeInGbs: Schema.optional(Schema.Number),
+}).annotate({ identifier: "StorageSizeDetails" });
 
 export interface DbSystemInitialStorageSizeProperties {
   /** Output only. VM shape platform type */
@@ -2749,19 +2444,15 @@ export interface DbSystemInitialStorageSizeProperties {
   storageSizeDetails?: Array<StorageSizeDetails>;
 }
 
-export const DbSystemInitialStorageSizeProperties: Schema.Schema<DbSystemInitialStorageSizeProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      shapeType: Schema.optional(Schema.String),
-      launchFromBackupStorageSizeDetails: Schema.optional(
-        Schema.Array(StorageSizeDetails),
-      ),
-      storageManagement: Schema.optional(Schema.String),
-      storageSizeDetails: Schema.optional(Schema.Array(StorageSizeDetails)),
-    }),
-  ).annotate({
-    identifier: "DbSystemInitialStorageSizeProperties",
-  }) as any as Schema.Schema<DbSystemInitialStorageSizeProperties>;
+export const DbSystemInitialStorageSizeProperties =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    shapeType: Schema.optional(Schema.String),
+    launchFromBackupStorageSizeDetails: Schema.optional(
+      Schema.Array(StorageSizeDetails),
+    ),
+    storageManagement: Schema.optional(Schema.String),
+    storageSizeDetails: Schema.optional(Schema.Array(StorageSizeDetails)),
+  }).annotate({ identifier: "DbSystemInitialStorageSizeProperties" });
 
 export interface GenerateAutonomousDatabaseWalletRequest {
   /** Optional. True when requesting regional connection strings in PDB connect info, applicable to cross-region Data Guard only. */
@@ -2772,16 +2463,12 @@ export interface GenerateAutonomousDatabaseWalletRequest {
   password?: string;
 }
 
-export const GenerateAutonomousDatabaseWalletRequest: Schema.Schema<GenerateAutonomousDatabaseWalletRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      isRegional: Schema.optional(Schema.Boolean),
-      type: Schema.optional(Schema.String),
-      password: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GenerateAutonomousDatabaseWalletRequest",
-  }) as any as Schema.Schema<GenerateAutonomousDatabaseWalletRequest>;
+export const GenerateAutonomousDatabaseWalletRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    isRegional: Schema.optional(Schema.Boolean),
+    type: Schema.optional(Schema.String),
+    password: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GenerateAutonomousDatabaseWalletRequest" });
 
 export interface ListEntitlementsResponse {
   /** The list of Entitlements */
@@ -2790,15 +2477,11 @@ export interface ListEntitlementsResponse {
   nextPageToken?: string;
 }
 
-export const ListEntitlementsResponse: Schema.Schema<ListEntitlementsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entitlements: Schema.optional(Schema.Array(Entitlement)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListEntitlementsResponse",
-  }) as any as Schema.Schema<ListEntitlementsResponse>;
+export const ListEntitlementsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entitlements: Schema.optional(Schema.Array(Entitlement)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListEntitlementsResponse" });
 
 export interface ListDatabasesResponse {
   /** The list of Databases. */
@@ -2807,15 +2490,10 @@ export interface ListDatabasesResponse {
   nextPageToken?: string;
 }
 
-export const ListDatabasesResponse: Schema.Schema<ListDatabasesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      databases: Schema.optional(Schema.Array(Database)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListDatabasesResponse",
-  }) as any as Schema.Schema<ListDatabasesResponse>;
+export const ListDatabasesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  databases: Schema.optional(Schema.Array(Database)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListDatabasesResponse" });
 
 export interface DbSystemShape {
   /** Optional. Number of cores per node. */
@@ -2844,25 +2522,20 @@ export interface DbSystemShape {
   availableMemoryPerNodeGb?: number;
 }
 
-export const DbSystemShape: Schema.Schema<DbSystemShape> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      availableCoreCountPerNode: Schema.optional(Schema.Number),
-      maxStorageCount: Schema.optional(Schema.Number),
-      availableDataStorageTb: Schema.optional(Schema.Number),
-      minMemoryPerNodeGb: Schema.optional(Schema.Number),
-      name: Schema.optional(Schema.String),
-      minNodeCount: Schema.optional(Schema.Number),
-      minCoreCountPerNode: Schema.optional(Schema.Number),
-      shape: Schema.optional(Schema.String),
-      maxNodeCount: Schema.optional(Schema.Number),
-      minDbNodeStoragePerNodeGb: Schema.optional(Schema.Number),
-      minStorageCount: Schema.optional(Schema.Number),
-      availableMemoryPerNodeGb: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "DbSystemShape",
-  }) as any as Schema.Schema<DbSystemShape>;
+export const DbSystemShape = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  availableCoreCountPerNode: Schema.optional(Schema.Number),
+  maxStorageCount: Schema.optional(Schema.Number),
+  availableDataStorageTb: Schema.optional(Schema.Number),
+  minMemoryPerNodeGb: Schema.optional(Schema.Number),
+  name: Schema.optional(Schema.String),
+  minNodeCount: Schema.optional(Schema.Number),
+  minCoreCountPerNode: Schema.optional(Schema.Number),
+  shape: Schema.optional(Schema.String),
+  maxNodeCount: Schema.optional(Schema.Number),
+  minDbNodeStoragePerNodeGb: Schema.optional(Schema.Number),
+  minStorageCount: Schema.optional(Schema.Number),
+  availableMemoryPerNodeGb: Schema.optional(Schema.Number),
+}).annotate({ identifier: "DbSystemShape" });
 
 export interface ListDbSystemShapesResponse {
   /** The list of Database System shapes. */
@@ -2871,15 +2544,11 @@ export interface ListDbSystemShapesResponse {
   nextPageToken?: string;
 }
 
-export const ListDbSystemShapesResponse: Schema.Schema<ListDbSystemShapesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dbSystemShapes: Schema.optional(Schema.Array(DbSystemShape)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListDbSystemShapesResponse",
-  }) as any as Schema.Schema<ListDbSystemShapesResponse>;
+export const ListDbSystemShapesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dbSystemShapes: Schema.optional(Schema.Array(DbSystemShape)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListDbSystemShapesResponse" });
 
 export interface PluggableDatabase {
   /** Identifier. The name of the PluggableDatabase resource in the following format: projects/{project}/locations/{region}/pluggableDatabases/{pluggable_database} */
@@ -2892,17 +2561,12 @@ export interface PluggableDatabase {
   createTime?: string;
 }
 
-export const PluggableDatabase: Schema.Schema<PluggableDatabase> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      properties: Schema.optional(PluggableDatabaseProperties),
-      ociUrl: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PluggableDatabase",
-  }) as any as Schema.Schema<PluggableDatabase>;
+export const PluggableDatabase = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  properties: Schema.optional(PluggableDatabaseProperties),
+  ociUrl: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "PluggableDatabase" });
 
 export interface ListPluggableDatabasesResponse {
   /** The list of PluggableDatabases. */
@@ -2911,15 +2575,11 @@ export interface ListPluggableDatabasesResponse {
   nextPageToken?: string;
 }
 
-export const ListPluggableDatabasesResponse: Schema.Schema<ListPluggableDatabasesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pluggableDatabases: Schema.optional(Schema.Array(PluggableDatabase)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListPluggableDatabasesResponse",
-  }) as any as Schema.Schema<ListPluggableDatabasesResponse>;
+export const ListPluggableDatabasesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pluggableDatabases: Schema.optional(Schema.Array(PluggableDatabase)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListPluggableDatabasesResponse" });
 
 export interface ListDbServersResponse {
   /** A token identifying a page of results the server should return. */
@@ -2928,15 +2588,10 @@ export interface ListDbServersResponse {
   dbServers?: Array<DbServer>;
 }
 
-export const ListDbServersResponse: Schema.Schema<ListDbServersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      dbServers: Schema.optional(Schema.Array(DbServer)),
-    }),
-  ).annotate({
-    identifier: "ListDbServersResponse",
-  }) as any as Schema.Schema<ListDbServersResponse>;
+export const ListDbServersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  dbServers: Schema.optional(Schema.Array(DbServer)),
+}).annotate({ identifier: "ListDbServersResponse" });
 
 export interface OdbNetwork {
   /** Optional. Labels or tags associated with the resource. */
@@ -2961,18 +2616,15 @@ export interface OdbNetwork {
   gcpOracleZone?: string;
 }
 
-export const OdbNetwork: Schema.Schema<OdbNetwork> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      createTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      entitlementId: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      network: Schema.optional(Schema.String),
-      gcpOracleZone: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "OdbNetwork" }) as any as Schema.Schema<OdbNetwork>;
+export const OdbNetwork = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  createTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  entitlementId: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  network: Schema.optional(Schema.String),
+  gcpOracleZone: Schema.optional(Schema.String),
+}).annotate({ identifier: "OdbNetwork" });
 
 export interface ListOdbNetworksResponse {
   /** Unreachable locations when listing resources across all locations using wildcard location '-'. */
@@ -2983,16 +2635,12 @@ export interface ListOdbNetworksResponse {
   nextPageToken?: string;
 }
 
-export const ListOdbNetworksResponse: Schema.Schema<ListOdbNetworksResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      odbNetworks: Schema.optional(Schema.Array(OdbNetwork)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListOdbNetworksResponse",
-  }) as any as Schema.Schema<ListOdbNetworksResponse>;
+export const ListOdbNetworksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    odbNetworks: Schema.optional(Schema.Array(OdbNetwork)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListOdbNetworksResponse" });
 
 export interface ExadbVmCluster {
   /** Output only. Immutable. The GCP Oracle zone where Oracle ExadbVmCluster is hosted. Example: us-east4-b-r2. During creation, the system will pick the zone assigned to the ExascaleDbStorageVault. */
@@ -3017,37 +2665,28 @@ export interface ExadbVmCluster {
   odbSubnet?: string;
 }
 
-export const ExadbVmCluster: Schema.Schema<ExadbVmCluster> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcpOracleZone: Schema.optional(Schema.String),
-      odbNetwork: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      properties: Schema.optional(ExadbVmClusterProperties),
-      backupOdbSubnet: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      entitlementId: Schema.optional(Schema.String),
-      odbSubnet: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ExadbVmCluster",
-  }) as any as Schema.Schema<ExadbVmCluster>;
+export const ExadbVmCluster = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gcpOracleZone: Schema.optional(Schema.String),
+  odbNetwork: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  properties: Schema.optional(ExadbVmClusterProperties),
+  backupOdbSubnet: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  entitlementId: Schema.optional(Schema.String),
+  odbSubnet: Schema.optional(Schema.String),
+}).annotate({ identifier: "ExadbVmCluster" });
 
 export interface RestoreAutonomousDatabaseRequest {
   /** Required. The time and date to restore the database to. */
   restoreTime?: string;
 }
 
-export const RestoreAutonomousDatabaseRequest: Schema.Schema<RestoreAutonomousDatabaseRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      restoreTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RestoreAutonomousDatabaseRequest",
-  }) as any as Schema.Schema<RestoreAutonomousDatabaseRequest>;
+export const RestoreAutonomousDatabaseRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    restoreTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RestoreAutonomousDatabaseRequest" });
 
 export interface ListGiVersionsResponse {
   /** The list of Oracle Grid Infrastructure (GI) versions. */
@@ -3056,22 +2695,19 @@ export interface ListGiVersionsResponse {
   nextPageToken?: string;
 }
 
-export const ListGiVersionsResponse: Schema.Schema<ListGiVersionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      giVersions: Schema.optional(Schema.Array(GiVersion)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListGiVersionsResponse",
-  }) as any as Schema.Schema<ListGiVersionsResponse>;
+export const ListGiVersionsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    giVersions: Schema.optional(Schema.Array(GiVersion)),
+    nextPageToken: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ListGiVersionsResponse" });
 
 export interface StopAutonomousDatabaseRequest {}
 
-export const StopAutonomousDatabaseRequest: Schema.Schema<StopAutonomousDatabaseRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const StopAutonomousDatabaseRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "StopAutonomousDatabaseRequest",
-  }) as any as Schema.Schema<StopAutonomousDatabaseRequest>;
+  });
 
 export interface AutonomousDbVersion {
   /** Output only. The Autonomous Database workload type. */
@@ -3090,17 +2726,12 @@ export interface AutonomousDbVersion {
   version?: string;
 }
 
-export const AutonomousDbVersion: Schema.Schema<AutonomousDbVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dbWorkload: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      workloadUri: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AutonomousDbVersion",
-  }) as any as Schema.Schema<AutonomousDbVersion>;
+export const AutonomousDbVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dbWorkload: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  workloadUri: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+}).annotate({ identifier: "AutonomousDbVersion" });
 
 export interface ListAutonomousDbVersionsResponse {
   /** The list of Autonomous Database versions. */
@@ -3109,15 +2740,11 @@ export interface ListAutonomousDbVersionsResponse {
   nextPageToken?: string;
 }
 
-export const ListAutonomousDbVersionsResponse: Schema.Schema<ListAutonomousDbVersionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      autonomousDbVersions: Schema.optional(Schema.Array(AutonomousDbVersion)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAutonomousDbVersionsResponse",
-  }) as any as Schema.Schema<ListAutonomousDbVersionsResponse>;
+export const ListAutonomousDbVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    autonomousDbVersions: Schema.optional(Schema.Array(AutonomousDbVersion)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListAutonomousDbVersionsResponse" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -3126,15 +2753,10 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(Location)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
@@ -3145,16 +2767,13 @@ export interface ListOperationsResponse {
   nextPageToken?: string;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      operations: Schema.optional(Schema.Array(Operation)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    operations: Schema.optional(Schema.Array(Operation)),
+    nextPageToken: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 export interface RemoveVirtualMachineExadbVmClusterRequest {
   /** Required. The list of host names of db nodes to be removed from the ExadbVmCluster. */
@@ -3163,15 +2782,11 @@ export interface RemoveVirtualMachineExadbVmClusterRequest {
   requestId?: string;
 }
 
-export const RemoveVirtualMachineExadbVmClusterRequest: Schema.Schema<RemoveVirtualMachineExadbVmClusterRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hostnames: Schema.optional(Schema.Array(Schema.String)),
-      requestId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RemoveVirtualMachineExadbVmClusterRequest",
-  }) as any as Schema.Schema<RemoveVirtualMachineExadbVmClusterRequest>;
+export const RemoveVirtualMachineExadbVmClusterRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    hostnames: Schema.optional(Schema.Array(Schema.String)),
+    requestId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RemoveVirtualMachineExadbVmClusterRequest" });
 
 export interface ListExadbVmClustersResponse {
   /** The list of ExadbVmClusters. */
@@ -3180,29 +2795,21 @@ export interface ListExadbVmClustersResponse {
   nextPageToken?: string;
 }
 
-export const ListExadbVmClustersResponse: Schema.Schema<ListExadbVmClustersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      exadbVmClusters: Schema.optional(Schema.Array(ExadbVmCluster)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListExadbVmClustersResponse",
-  }) as any as Schema.Schema<ListExadbVmClustersResponse>;
+export const ListExadbVmClustersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    exadbVmClusters: Schema.optional(Schema.Array(ExadbVmCluster)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListExadbVmClustersResponse" });
 
 export interface GenerateAutonomousDatabaseWalletResponse {
   /** Output only. The base64 encoded wallet files. */
   archiveContent?: string;
 }
 
-export const GenerateAutonomousDatabaseWalletResponse: Schema.Schema<GenerateAutonomousDatabaseWalletResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      archiveContent: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GenerateAutonomousDatabaseWalletResponse",
-  }) as any as Schema.Schema<GenerateAutonomousDatabaseWalletResponse>;
+export const GenerateAutonomousDatabaseWalletResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    archiveContent: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GenerateAutonomousDatabaseWalletResponse" });
 
 export interface DbNode {
   /** Identifier. The name of the database node resource in the following format: projects/{project}/locations/{location}/cloudVmClusters/{cloud_vm_cluster}/dbNodes/{db_node} */
@@ -3211,13 +2818,10 @@ export interface DbNode {
   properties?: DbNodeProperties;
 }
 
-export const DbNode: Schema.Schema<DbNode> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      properties: Schema.optional(DbNodeProperties),
-    }),
-  ).annotate({ identifier: "DbNode" }) as any as Schema.Schema<DbNode>;
+export const DbNode = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  properties: Schema.optional(DbNodeProperties),
+}).annotate({ identifier: "DbNode" });
 
 export interface DbSystemInitialStorageSize {
   /** Output only. The name of the resource. */
@@ -3226,15 +2830,11 @@ export interface DbSystemInitialStorageSize {
   properties?: DbSystemInitialStorageSizeProperties;
 }
 
-export const DbSystemInitialStorageSize: Schema.Schema<DbSystemInitialStorageSize> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      properties: Schema.optional(DbSystemInitialStorageSizeProperties),
-    }),
-  ).annotate({
-    identifier: "DbSystemInitialStorageSize",
-  }) as any as Schema.Schema<DbSystemInitialStorageSize>;
+export const DbSystemInitialStorageSize =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    properties: Schema.optional(DbSystemInitialStorageSizeProperties),
+  }).annotate({ identifier: "DbSystemInitialStorageSize" });
 
 export interface ListDbSystemInitialStorageSizesResponse {
   /** The list of DbSystemInitialStorageSizes. */
@@ -3243,31 +2843,23 @@ export interface ListDbSystemInitialStorageSizesResponse {
   nextPageToken?: string;
 }
 
-export const ListDbSystemInitialStorageSizesResponse: Schema.Schema<ListDbSystemInitialStorageSizesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dbSystemInitialStorageSizes: Schema.optional(
-        Schema.Array(DbSystemInitialStorageSize),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListDbSystemInitialStorageSizesResponse",
-  }) as any as Schema.Schema<ListDbSystemInitialStorageSizesResponse>;
+export const ListDbSystemInitialStorageSizesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dbSystemInitialStorageSizes: Schema.optional(
+      Schema.Array(DbSystemInitialStorageSize),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListDbSystemInitialStorageSizesResponse" });
 
 export interface SwitchoverAutonomousDatabaseRequest {
   /** Optional. The peer database name to switch over to. Required for cross-region standby, and must be omitted for in-region Data Guard. */
   peerAutonomousDatabase?: string;
 }
 
-export const SwitchoverAutonomousDatabaseRequest: Schema.Schema<SwitchoverAutonomousDatabaseRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      peerAutonomousDatabase: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SwitchoverAutonomousDatabaseRequest",
-  }) as any as Schema.Schema<SwitchoverAutonomousDatabaseRequest>;
+export const SwitchoverAutonomousDatabaseRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    peerAutonomousDatabase: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SwitchoverAutonomousDatabaseRequest" });
 
 export interface ListDbNodesResponse {
   /** The list of DB Nodes */
@@ -3276,15 +2868,10 @@ export interface ListDbNodesResponse {
   nextPageToken?: string;
 }
 
-export const ListDbNodesResponse: Schema.Schema<ListDbNodesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dbNodes: Schema.optional(Schema.Array(DbNode)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListDbNodesResponse",
-  }) as any as Schema.Schema<ListDbNodesResponse>;
+export const ListDbNodesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dbNodes: Schema.optional(Schema.Array(DbNode)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListDbNodesResponse" });
 
 export interface ListCloudVmClustersResponse {
   /** The list of VM Clusters. */
@@ -3293,29 +2880,24 @@ export interface ListCloudVmClustersResponse {
   nextPageToken?: string;
 }
 
-export const ListCloudVmClustersResponse: Schema.Schema<ListCloudVmClustersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cloudVmClusters: Schema.optional(Schema.Array(CloudVmCluster)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListCloudVmClustersResponse",
-  }) as any as Schema.Schema<ListCloudVmClustersResponse>;
+export const ListCloudVmClustersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cloudVmClusters: Schema.optional(Schema.Array(CloudVmCluster)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListCloudVmClustersResponse" });
 
 export interface StartAutonomousDatabaseRequest {}
 
-export const StartAutonomousDatabaseRequest: Schema.Schema<StartAutonomousDatabaseRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const StartAutonomousDatabaseRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "StartAutonomousDatabaseRequest",
-  }) as any as Schema.Schema<StartAutonomousDatabaseRequest>;
+  });
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelOperationRequest",
-  }) as any as Schema.Schema<CancelOperationRequest>;
+export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelOperationRequest" });
 
 export interface ListDbVersionsResponse {
   /** The list of DbVersions. */
@@ -3324,15 +2906,12 @@ export interface ListDbVersionsResponse {
   nextPageToken?: string;
 }
 
-export const ListDbVersionsResponse: Schema.Schema<ListDbVersionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dbVersions: Schema.optional(Schema.Array(DbVersion)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListDbVersionsResponse",
-  }) as any as Schema.Schema<ListDbVersionsResponse>;
+export const ListDbVersionsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    dbVersions: Schema.optional(Schema.Array(DbVersion)),
+    nextPageToken: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ListDbVersionsResponse" });
 
 // ==========================================================================
 // Operations

@@ -29,29 +29,21 @@ export interface SheetsChartReference {
   chartId?: number;
 }
 
-export const SheetsChartReference: Schema.Schema<SheetsChartReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      spreadsheetId: Schema.optional(Schema.String),
-      chartId: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "SheetsChartReference",
-  }) as any as Schema.Schema<SheetsChartReference>;
+export const SheetsChartReference = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  spreadsheetId: Schema.optional(Schema.String),
+  chartId: Schema.optional(Schema.Number),
+}).annotate({ identifier: "SheetsChartReference" });
 
 export interface LinkedContentReference {
   /** A reference to the linked chart. */
   sheetsChartReference?: SheetsChartReference;
 }
 
-export const LinkedContentReference: Schema.Schema<LinkedContentReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sheetsChartReference: Schema.optional(SheetsChartReference),
-    }),
-  ).annotate({
-    identifier: "LinkedContentReference",
-  }) as any as Schema.Schema<LinkedContentReference>;
+export const LinkedContentReference = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    sheetsChartReference: Schema.optional(SheetsChartReference),
+  },
+).annotate({ identifier: "LinkedContentReference" });
 
 export interface Range {
   /** The zero-based start index of this range, in UTF-16 code units. In all current uses, a start index must be provided. This field is an Int32Value in order to accommodate future use cases with open-ended ranges. */
@@ -64,29 +56,22 @@ export interface Range {
   segmentId?: string;
 }
 
-export const Range: Schema.Schema<Range> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startIndex: Schema.optional(Schema.Number),
-      endIndex: Schema.optional(Schema.Number),
-      tabId: Schema.optional(Schema.String),
-      segmentId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Range" }) as any as Schema.Schema<Range>;
+export const Range = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startIndex: Schema.optional(Schema.Number),
+  endIndex: Schema.optional(Schema.Number),
+  tabId: Schema.optional(Schema.String),
+  segmentId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Range" });
 
 export interface DeleteParagraphBulletsRequest {
   /** The range to delete bullets from. */
   range?: Range;
 }
 
-export const DeleteParagraphBulletsRequest: Schema.Schema<DeleteParagraphBulletsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      range: Schema.optional(Range),
-    }),
-  ).annotate({
-    identifier: "DeleteParagraphBulletsRequest",
-  }) as any as Schema.Schema<DeleteParagraphBulletsRequest>;
+export const DeleteParagraphBulletsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    range: Schema.optional(Range),
+  }).annotate({ identifier: "DeleteParagraphBulletsRequest" });
 
 export interface Location {
   /** The zero-based index, in UTF-16 code units. The index is relative to the beginning of the segment specified by segment_id. */
@@ -97,14 +82,11 @@ export interface Location {
   tabId?: string;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      index: Schema.optional(Schema.Number),
-      segmentId: Schema.optional(Schema.String),
-      tabId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  index: Schema.optional(Schema.Number),
+  segmentId: Schema.optional(Schema.String),
+  tabId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Location" });
 
 export interface CreateFooterRequest {
   /** The type of footer to create. */
@@ -113,29 +95,21 @@ export interface CreateFooterRequest {
   sectionBreakLocation?: Location;
 }
 
-export const CreateFooterRequest: Schema.Schema<CreateFooterRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      sectionBreakLocation: Schema.optional(Location),
-    }),
-  ).annotate({
-    identifier: "CreateFooterRequest",
-  }) as any as Schema.Schema<CreateFooterRequest>;
+export const CreateFooterRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  sectionBreakLocation: Schema.optional(Location),
+}).annotate({ identifier: "CreateFooterRequest" });
 
 export interface CreateFootnoteResponse {
   /** The ID of the created footnote. */
   footnoteId?: string;
 }
 
-export const CreateFootnoteResponse: Schema.Schema<CreateFootnoteResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      footnoteId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreateFootnoteResponse",
-  }) as any as Schema.Schema<CreateFootnoteResponse>;
+export const CreateFootnoteResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    footnoteId: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "CreateFootnoteResponse" });
 
 export interface Dimension {
   /** The units for magnitude. */
@@ -144,13 +118,10 @@ export interface Dimension {
   magnitude?: number;
 }
 
-export const Dimension: Schema.Schema<Dimension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unit: Schema.optional(Schema.String),
-      magnitude: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Dimension" }) as any as Schema.Schema<Dimension>;
+export const Dimension = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  unit: Schema.optional(Schema.String),
+  magnitude: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Dimension" });
 
 export interface TableRowStyle {
   /** Whether the row is a table header. */
@@ -161,30 +132,21 @@ export interface TableRowStyle {
   minRowHeight?: Dimension;
 }
 
-export const TableRowStyle: Schema.Schema<TableRowStyle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tableHeader: Schema.optional(Schema.Boolean),
-      preventOverflow: Schema.optional(Schema.Boolean),
-      minRowHeight: Schema.optional(Dimension),
-    }),
-  ).annotate({
-    identifier: "TableRowStyle",
-  }) as any as Schema.Schema<TableRowStyle>;
+export const TableRowStyle = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tableHeader: Schema.optional(Schema.Boolean),
+  preventOverflow: Schema.optional(Schema.Boolean),
+  minRowHeight: Schema.optional(Dimension),
+}).annotate({ identifier: "TableRowStyle" });
 
 export interface TableRowStyleSuggestionState {
   /** Indicates if there was a suggested change to min_row_height. */
   minRowHeightSuggested?: boolean;
 }
 
-export const TableRowStyleSuggestionState: Schema.Schema<TableRowStyleSuggestionState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      minRowHeightSuggested: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "TableRowStyleSuggestionState",
-  }) as any as Schema.Schema<TableRowStyleSuggestionState>;
+export const TableRowStyleSuggestionState =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    minRowHeightSuggested: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "TableRowStyleSuggestionState" });
 
 export interface SuggestedTableRowStyle {
   /** A TableRowStyle that only includes the changes made in this suggestion. This can be used along with the table_row_style_suggestion_state to see which fields have changed and their new values. */
@@ -193,17 +155,12 @@ export interface SuggestedTableRowStyle {
   tableRowStyleSuggestionState?: TableRowStyleSuggestionState;
 }
 
-export const SuggestedTableRowStyle: Schema.Schema<SuggestedTableRowStyle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tableRowStyle: Schema.optional(TableRowStyle),
-      tableRowStyleSuggestionState: Schema.optional(
-        TableRowStyleSuggestionState,
-      ),
-    }),
-  ).annotate({
-    identifier: "SuggestedTableRowStyle",
-  }) as any as Schema.Schema<SuggestedTableRowStyle>;
+export const SuggestedTableRowStyle = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    tableRowStyle: Schema.optional(TableRowStyle),
+    tableRowStyleSuggestionState: Schema.optional(TableRowStyleSuggestionState),
+  },
+).annotate({ identifier: "SuggestedTableRowStyle" });
 
 export interface RgbColor {
   /** The blue component of the color, from 0.0 to 1.0. */
@@ -214,40 +171,29 @@ export interface RgbColor {
   green?: number;
 }
 
-export const RgbColor: Schema.Schema<RgbColor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      blue: Schema.optional(Schema.Number),
-      red: Schema.optional(Schema.Number),
-      green: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "RgbColor" }) as any as Schema.Schema<RgbColor>;
+export const RgbColor = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  blue: Schema.optional(Schema.Number),
+  red: Schema.optional(Schema.Number),
+  green: Schema.optional(Schema.Number),
+}).annotate({ identifier: "RgbColor" });
 
 export interface Color {
   /** The RGB color value. */
   rgbColor?: RgbColor;
 }
 
-export const Color: Schema.Schema<Color> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rgbColor: Schema.optional(RgbColor),
-    }),
-  ).annotate({ identifier: "Color" }) as any as Schema.Schema<Color>;
+export const Color = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  rgbColor: Schema.optional(RgbColor),
+}).annotate({ identifier: "Color" });
 
 export interface OptionalColor {
   /** If set, this will be used as an opaque color. If unset, this represents a transparent color. */
   color?: Color;
 }
 
-export const OptionalColor: Schema.Schema<OptionalColor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      color: Schema.optional(Color),
-    }),
-  ).annotate({
-    identifier: "OptionalColor",
-  }) as any as Schema.Schema<OptionalColor>;
+export const OptionalColor = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  color: Schema.optional(Color),
+}).annotate({ identifier: "OptionalColor" });
 
 export interface TableCellBorder {
   /** The color of the border. This color cannot be transparent. */
@@ -263,16 +209,11 @@ export interface TableCellBorder {
     | (string & {});
 }
 
-export const TableCellBorder: Schema.Schema<TableCellBorder> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      color: Schema.optional(OptionalColor),
-      width: Schema.optional(Dimension),
-      dashStyle: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TableCellBorder",
-  }) as any as Schema.Schema<TableCellBorder>;
+export const TableCellBorder = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  color: Schema.optional(OptionalColor),
+  width: Schema.optional(Dimension),
+  dashStyle: Schema.optional(Schema.String),
+}).annotate({ identifier: "TableCellBorder" });
 
 export interface TableCellStyle {
   /** The top border of the cell. */
@@ -307,25 +248,20 @@ export interface TableCellStyle {
   borderBottom?: TableCellBorder;
 }
 
-export const TableCellStyle: Schema.Schema<TableCellStyle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      borderTop: Schema.optional(TableCellBorder),
-      paddingRight: Schema.optional(Dimension),
-      borderLeft: Schema.optional(TableCellBorder),
-      borderRight: Schema.optional(TableCellBorder),
-      columnSpan: Schema.optional(Schema.Number),
-      backgroundColor: Schema.optional(OptionalColor),
-      rowSpan: Schema.optional(Schema.Number),
-      paddingBottom: Schema.optional(Dimension),
-      paddingTop: Schema.optional(Dimension),
-      paddingLeft: Schema.optional(Dimension),
-      contentAlignment: Schema.optional(Schema.String),
-      borderBottom: Schema.optional(TableCellBorder),
-    }),
-  ).annotate({
-    identifier: "TableCellStyle",
-  }) as any as Schema.Schema<TableCellStyle>;
+export const TableCellStyle = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  borderTop: Schema.optional(TableCellBorder),
+  paddingRight: Schema.optional(Dimension),
+  borderLeft: Schema.optional(TableCellBorder),
+  borderRight: Schema.optional(TableCellBorder),
+  columnSpan: Schema.optional(Schema.Number),
+  backgroundColor: Schema.optional(OptionalColor),
+  rowSpan: Schema.optional(Schema.Number),
+  paddingBottom: Schema.optional(Dimension),
+  paddingTop: Schema.optional(Dimension),
+  paddingLeft: Schema.optional(Dimension),
+  contentAlignment: Schema.optional(Schema.String),
+  borderBottom: Schema.optional(TableCellBorder),
+}).annotate({ identifier: "TableCellStyle" });
 
 export interface TableCellStyleSuggestionState {
   /** Indicates if there was a suggested change to padding_top. */
@@ -354,25 +290,21 @@ export interface TableCellStyleSuggestionState {
   paddingBottomSuggested?: boolean;
 }
 
-export const TableCellStyleSuggestionState: Schema.Schema<TableCellStyleSuggestionState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      paddingTopSuggested: Schema.optional(Schema.Boolean),
-      paddingRightSuggested: Schema.optional(Schema.Boolean),
-      borderRightSuggested: Schema.optional(Schema.Boolean),
-      contentAlignmentSuggested: Schema.optional(Schema.Boolean),
-      columnSpanSuggested: Schema.optional(Schema.Boolean),
-      paddingLeftSuggested: Schema.optional(Schema.Boolean),
-      borderTopSuggested: Schema.optional(Schema.Boolean),
-      rowSpanSuggested: Schema.optional(Schema.Boolean),
-      backgroundColorSuggested: Schema.optional(Schema.Boolean),
-      borderLeftSuggested: Schema.optional(Schema.Boolean),
-      borderBottomSuggested: Schema.optional(Schema.Boolean),
-      paddingBottomSuggested: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "TableCellStyleSuggestionState",
-  }) as any as Schema.Schema<TableCellStyleSuggestionState>;
+export const TableCellStyleSuggestionState =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    paddingTopSuggested: Schema.optional(Schema.Boolean),
+    paddingRightSuggested: Schema.optional(Schema.Boolean),
+    borderRightSuggested: Schema.optional(Schema.Boolean),
+    contentAlignmentSuggested: Schema.optional(Schema.Boolean),
+    columnSpanSuggested: Schema.optional(Schema.Boolean),
+    paddingLeftSuggested: Schema.optional(Schema.Boolean),
+    borderTopSuggested: Schema.optional(Schema.Boolean),
+    rowSpanSuggested: Schema.optional(Schema.Boolean),
+    backgroundColorSuggested: Schema.optional(Schema.Boolean),
+    borderLeftSuggested: Schema.optional(Schema.Boolean),
+    borderBottomSuggested: Schema.optional(Schema.Boolean),
+    paddingBottomSuggested: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "TableCellStyleSuggestionState" });
 
 export interface SuggestedTableCellStyle {
   /** A TableCellStyle that only includes the changes made in this suggestion. This can be used along with the table_cell_style_suggestion_state to see which fields have changed and their new values. */
@@ -381,17 +313,13 @@ export interface SuggestedTableCellStyle {
   tableCellStyleSuggestionState?: TableCellStyleSuggestionState;
 }
 
-export const SuggestedTableCellStyle: Schema.Schema<SuggestedTableCellStyle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tableCellStyle: Schema.optional(TableCellStyle),
-      tableCellStyleSuggestionState: Schema.optional(
-        TableCellStyleSuggestionState,
-      ),
-    }),
-  ).annotate({
-    identifier: "SuggestedTableCellStyle",
-  }) as any as Schema.Schema<SuggestedTableCellStyle>;
+export const SuggestedTableCellStyle =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tableCellStyle: Schema.optional(TableCellStyle),
+    tableCellStyleSuggestionState: Schema.optional(
+      TableCellStyleSuggestionState,
+    ),
+  }).annotate({ identifier: "SuggestedTableCellStyle" });
 
 export interface TableCell {
   /** The suggested insertion IDs. A TableCell may have multiple insertion IDs if it's a nested suggested change. If empty, then this is not a suggested insertion. */
@@ -468,29 +396,19 @@ export interface TableColumnProperties {
   width?: Dimension;
 }
 
-export const TableColumnProperties: Schema.Schema<TableColumnProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      widthType: Schema.optional(Schema.String),
-      width: Schema.optional(Dimension),
-    }),
-  ).annotate({
-    identifier: "TableColumnProperties",
-  }) as any as Schema.Schema<TableColumnProperties>;
+export const TableColumnProperties = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  widthType: Schema.optional(Schema.String),
+  width: Schema.optional(Dimension),
+}).annotate({ identifier: "TableColumnProperties" });
 
 export interface TableStyle {
   /** The properties of each column. Note that in Docs, tables contain rows and rows contain cells, similar to HTML. So the properties for a row can be found on the row's table_row_style. */
   tableColumnProperties?: Array<TableColumnProperties>;
 }
 
-export const TableStyle: Schema.Schema<TableStyle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tableColumnProperties: Schema.optional(
-        Schema.Array(TableColumnProperties),
-      ),
-    }),
-  ).annotate({ identifier: "TableStyle" }) as any as Schema.Schema<TableStyle>;
+export const TableStyle = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tableColumnProperties: Schema.optional(Schema.Array(TableColumnProperties)),
+}).annotate({ identifier: "TableStyle" });
 
 export interface Table {
   /** The contents and style of each row. */
@@ -526,15 +444,11 @@ export interface SectionColumnProperties {
   paddingEnd?: Dimension;
 }
 
-export const SectionColumnProperties: Schema.Schema<SectionColumnProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      width: Schema.optional(Dimension),
-      paddingEnd: Schema.optional(Dimension),
-    }),
-  ).annotate({
-    identifier: "SectionColumnProperties",
-  }) as any as Schema.Schema<SectionColumnProperties>;
+export const SectionColumnProperties =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    width: Schema.optional(Dimension),
+    paddingEnd: Schema.optional(Dimension),
+  }).annotate({ identifier: "SectionColumnProperties" });
 
 export interface SectionStyle {
   /** The right page margin of the section. If unset, the value defaults to margin_right from DocumentStyle. Updating the right margin causes columns in this section to resize. Since the margin affects column width, it's applied before column properties. If DocumentMode is PAGELESS, this property will not be rendered. When updating this property, setting a concrete value is required. Unsetting this property results in a 400 bad request error. */
@@ -589,32 +503,27 @@ export interface SectionStyle {
   useFirstPageHeaderFooter?: boolean;
 }
 
-export const SectionStyle: Schema.Schema<SectionStyle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      marginRight: Schema.optional(Dimension),
-      pageNumberStart: Schema.optional(Schema.Number),
-      marginBottom: Schema.optional(Dimension),
-      defaultFooterId: Schema.optional(Schema.String),
-      contentDirection: Schema.optional(Schema.String),
-      marginLeft: Schema.optional(Dimension),
-      marginHeader: Schema.optional(Dimension),
-      firstPageHeaderId: Schema.optional(Schema.String),
-      columnSeparatorStyle: Schema.optional(Schema.String),
-      evenPageHeaderId: Schema.optional(Schema.String),
-      evenPageFooterId: Schema.optional(Schema.String),
-      columnProperties: Schema.optional(Schema.Array(SectionColumnProperties)),
-      marginFooter: Schema.optional(Dimension),
-      sectionType: Schema.optional(Schema.String),
-      marginTop: Schema.optional(Dimension),
-      defaultHeaderId: Schema.optional(Schema.String),
-      flipPageOrientation: Schema.optional(Schema.Boolean),
-      firstPageFooterId: Schema.optional(Schema.String),
-      useFirstPageHeaderFooter: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "SectionStyle",
-  }) as any as Schema.Schema<SectionStyle>;
+export const SectionStyle = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  marginRight: Schema.optional(Dimension),
+  pageNumberStart: Schema.optional(Schema.Number),
+  marginBottom: Schema.optional(Dimension),
+  defaultFooterId: Schema.optional(Schema.String),
+  contentDirection: Schema.optional(Schema.String),
+  marginLeft: Schema.optional(Dimension),
+  marginHeader: Schema.optional(Dimension),
+  firstPageHeaderId: Schema.optional(Schema.String),
+  columnSeparatorStyle: Schema.optional(Schema.String),
+  evenPageHeaderId: Schema.optional(Schema.String),
+  evenPageFooterId: Schema.optional(Schema.String),
+  columnProperties: Schema.optional(Schema.Array(SectionColumnProperties)),
+  marginFooter: Schema.optional(Dimension),
+  sectionType: Schema.optional(Schema.String),
+  marginTop: Schema.optional(Dimension),
+  defaultHeaderId: Schema.optional(Schema.String),
+  flipPageOrientation: Schema.optional(Schema.Boolean),
+  firstPageFooterId: Schema.optional(Schema.String),
+  useFirstPageHeaderFooter: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "SectionStyle" });
 
 export interface SectionBreak {
   /** The suggested insertion IDs. A SectionBreak may have multiple insertion IDs if it's a nested suggested change. If empty, then this is not a suggested insertion. */
@@ -625,16 +534,11 @@ export interface SectionBreak {
   sectionStyle?: SectionStyle;
 }
 
-export const SectionBreak: Schema.Schema<SectionBreak> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      suggestedInsertionIds: Schema.optional(Schema.Array(Schema.String)),
-      suggestedDeletionIds: Schema.optional(Schema.Array(Schema.String)),
-      sectionStyle: Schema.optional(SectionStyle),
-    }),
-  ).annotate({
-    identifier: "SectionBreak",
-  }) as any as Schema.Schema<SectionBreak>;
+export const SectionBreak = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  suggestedInsertionIds: Schema.optional(Schema.Array(Schema.String)),
+  suggestedDeletionIds: Schema.optional(Schema.Array(Schema.String)),
+  sectionStyle: Schema.optional(SectionStyle),
+}).annotate({ identifier: "SectionBreak" });
 
 export interface WeightedFontFamily {
   /** The font family of the text. The font family can be any font from the Font menu in Docs or from [Google Fonts] (https://fonts.google.com/). If the font name is unrecognized, the text is rendered in `Arial`. */
@@ -643,15 +547,10 @@ export interface WeightedFontFamily {
   weight?: number;
 }
 
-export const WeightedFontFamily: Schema.Schema<WeightedFontFamily> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fontFamily: Schema.optional(Schema.String),
-      weight: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "WeightedFontFamily",
-  }) as any as Schema.Schema<WeightedFontFamily>;
+export const WeightedFontFamily = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fontFamily: Schema.optional(Schema.String),
+  weight: Schema.optional(Schema.Number),
+}).annotate({ identifier: "WeightedFontFamily" });
 
 export interface BookmarkLink {
   /** The ID of a bookmark in this document. */
@@ -660,15 +559,10 @@ export interface BookmarkLink {
   tabId?: string;
 }
 
-export const BookmarkLink: Schema.Schema<BookmarkLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      tabId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BookmarkLink",
-  }) as any as Schema.Schema<BookmarkLink>;
+export const BookmarkLink = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  tabId: Schema.optional(Schema.String),
+}).annotate({ identifier: "BookmarkLink" });
 
 export interface HeadingLink {
   /** The ID of the tab containing this heading. */
@@ -677,15 +571,10 @@ export interface HeadingLink {
   id?: string;
 }
 
-export const HeadingLink: Schema.Schema<HeadingLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tabId: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "HeadingLink",
-  }) as any as Schema.Schema<HeadingLink>;
+export const HeadingLink = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tabId: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+}).annotate({ identifier: "HeadingLink" });
 
 export interface Link {
   /** A bookmark in this document. In documents containing a single tab, links to bookmarks within the singular tab continue to return Link.bookmarkId when the includeTabsContent parameter is set to `false` or unset. Otherwise, this field is returned. */
@@ -702,17 +591,14 @@ export interface Link {
   bookmarkId?: string;
 }
 
-export const Link: Schema.Schema<Link> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bookmark: Schema.optional(BookmarkLink),
-      url: Schema.optional(Schema.String),
-      headingId: Schema.optional(Schema.String),
-      tabId: Schema.optional(Schema.String),
-      heading: Schema.optional(HeadingLink),
-      bookmarkId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Link" }) as any as Schema.Schema<Link>;
+export const Link = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bookmark: Schema.optional(BookmarkLink),
+  url: Schema.optional(Schema.String),
+  headingId: Schema.optional(Schema.String),
+  tabId: Schema.optional(Schema.String),
+  heading: Schema.optional(HeadingLink),
+  bookmarkId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Link" });
 
 export interface TextStyle {
   /** The font family and rendered weight of the text. If an update request specifies values for both `weighted_font_family` and `bold`, the `weighted_font_family` is applied first, then `bold`. If `weighted_font_family#weight` is not set, it defaults to `400`. If `weighted_font_family` is set, then `weighted_font_family#font_family` must also be set with a non-empty value. Otherwise, a 400 bad request error is returned. */
@@ -744,22 +630,19 @@ export interface TextStyle {
     | (string & {});
 }
 
-export const TextStyle: Schema.Schema<TextStyle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      weightedFontFamily: Schema.optional(WeightedFontFamily),
-      bold: Schema.optional(Schema.Boolean),
-      italic: Schema.optional(Schema.Boolean),
-      backgroundColor: Schema.optional(OptionalColor),
-      strikethrough: Schema.optional(Schema.Boolean),
-      smallCaps: Schema.optional(Schema.Boolean),
-      link: Schema.optional(Link),
-      foregroundColor: Schema.optional(OptionalColor),
-      underline: Schema.optional(Schema.Boolean),
-      fontSize: Schema.optional(Dimension),
-      baselineOffset: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "TextStyle" }) as any as Schema.Schema<TextStyle>;
+export const TextStyle = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  weightedFontFamily: Schema.optional(WeightedFontFamily),
+  bold: Schema.optional(Schema.Boolean),
+  italic: Schema.optional(Schema.Boolean),
+  backgroundColor: Schema.optional(OptionalColor),
+  strikethrough: Schema.optional(Schema.Boolean),
+  smallCaps: Schema.optional(Schema.Boolean),
+  link: Schema.optional(Link),
+  foregroundColor: Schema.optional(OptionalColor),
+  underline: Schema.optional(Schema.Boolean),
+  fontSize: Schema.optional(Dimension),
+  baselineOffset: Schema.optional(Schema.String),
+}).annotate({ identifier: "TextStyle" });
 
 export interface Bullet {
   /** The ID of the list this paragraph belongs to. */
@@ -770,14 +653,11 @@ export interface Bullet {
   textStyle?: TextStyle;
 }
 
-export const Bullet: Schema.Schema<Bullet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      listId: Schema.optional(Schema.String),
-      nestingLevel: Schema.optional(Schema.Number),
-      textStyle: Schema.optional(TextStyle),
-    }),
-  ).annotate({ identifier: "Bullet" }) as any as Schema.Schema<Bullet>;
+export const Bullet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  listId: Schema.optional(Schema.String),
+  nestingLevel: Schema.optional(Schema.Number),
+  textStyle: Schema.optional(TextStyle),
+}).annotate({ identifier: "Bullet" });
 
 export interface TextStyleSuggestionState {
   /** Indicates if there was a suggested change to foreground_color. */
@@ -804,24 +684,20 @@ export interface TextStyleSuggestionState {
   underlineSuggested?: boolean;
 }
 
-export const TextStyleSuggestionState: Schema.Schema<TextStyleSuggestionState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      foregroundColorSuggested: Schema.optional(Schema.Boolean),
-      linkSuggested: Schema.optional(Schema.Boolean),
-      italicSuggested: Schema.optional(Schema.Boolean),
-      weightedFontFamilySuggested: Schema.optional(Schema.Boolean),
-      baselineOffsetSuggested: Schema.optional(Schema.Boolean),
-      fontSizeSuggested: Schema.optional(Schema.Boolean),
-      boldSuggested: Schema.optional(Schema.Boolean),
-      backgroundColorSuggested: Schema.optional(Schema.Boolean),
-      strikethroughSuggested: Schema.optional(Schema.Boolean),
-      smallCapsSuggested: Schema.optional(Schema.Boolean),
-      underlineSuggested: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "TextStyleSuggestionState",
-  }) as any as Schema.Schema<TextStyleSuggestionState>;
+export const TextStyleSuggestionState =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    foregroundColorSuggested: Schema.optional(Schema.Boolean),
+    linkSuggested: Schema.optional(Schema.Boolean),
+    italicSuggested: Schema.optional(Schema.Boolean),
+    weightedFontFamilySuggested: Schema.optional(Schema.Boolean),
+    baselineOffsetSuggested: Schema.optional(Schema.Boolean),
+    fontSizeSuggested: Schema.optional(Schema.Boolean),
+    boldSuggested: Schema.optional(Schema.Boolean),
+    backgroundColorSuggested: Schema.optional(Schema.Boolean),
+    strikethroughSuggested: Schema.optional(Schema.Boolean),
+    smallCapsSuggested: Schema.optional(Schema.Boolean),
+    underlineSuggested: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "TextStyleSuggestionState" });
 
 export interface BulletSuggestionState {
   /** Indicates if there was a suggested change to the nesting_level. */
@@ -832,16 +708,11 @@ export interface BulletSuggestionState {
   listIdSuggested?: boolean;
 }
 
-export const BulletSuggestionState: Schema.Schema<BulletSuggestionState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nestingLevelSuggested: Schema.optional(Schema.Boolean),
-      textStyleSuggestionState: Schema.optional(TextStyleSuggestionState),
-      listIdSuggested: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "BulletSuggestionState",
-  }) as any as Schema.Schema<BulletSuggestionState>;
+export const BulletSuggestionState = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nestingLevelSuggested: Schema.optional(Schema.Boolean),
+  textStyleSuggestionState: Schema.optional(TextStyleSuggestionState),
+  listIdSuggested: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "BulletSuggestionState" });
 
 export interface SuggestedBullet {
   /** A Bullet that only includes the changes made in this suggestion. This can be used along with the bullet_suggestion_state to see which fields have changed and their new values. */
@@ -850,15 +721,10 @@ export interface SuggestedBullet {
   bulletSuggestionState?: BulletSuggestionState;
 }
 
-export const SuggestedBullet: Schema.Schema<SuggestedBullet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bullet: Schema.optional(Bullet),
-      bulletSuggestionState: Schema.optional(BulletSuggestionState),
-    }),
-  ).annotate({
-    identifier: "SuggestedBullet",
-  }) as any as Schema.Schema<SuggestedBullet>;
+export const SuggestedBullet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bullet: Schema.optional(Bullet),
+  bulletSuggestionState: Schema.optional(BulletSuggestionState),
+}).annotate({ identifier: "SuggestedBullet" });
 
 export interface SuggestedTextStyle {
   /** A TextStyle that only includes the changes made in this suggestion. This can be used along with the text_style_suggestion_state to see which fields have changed and their new values. */
@@ -867,15 +733,10 @@ export interface SuggestedTextStyle {
   textStyleSuggestionState?: TextStyleSuggestionState;
 }
 
-export const SuggestedTextStyle: Schema.Schema<SuggestedTextStyle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      textStyle: Schema.optional(TextStyle),
-      textStyleSuggestionState: Schema.optional(TextStyleSuggestionState),
-    }),
-  ).annotate({
-    identifier: "SuggestedTextStyle",
-  }) as any as Schema.Schema<SuggestedTextStyle>;
+export const SuggestedTextStyle = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  textStyle: Schema.optional(TextStyle),
+  textStyleSuggestionState: Schema.optional(TextStyleSuggestionState),
+}).annotate({ identifier: "SuggestedTextStyle" });
 
 export interface ColumnBreak {
   /** The suggested insertion IDs. A ColumnBreak may have multiple insertion IDs if it's a nested suggested change. If empty, then this is not a suggested insertion. */
@@ -888,19 +749,14 @@ export interface ColumnBreak {
   suggestedDeletionIds?: Array<string>;
 }
 
-export const ColumnBreak: Schema.Schema<ColumnBreak> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      suggestedInsertionIds: Schema.optional(Schema.Array(Schema.String)),
-      textStyle: Schema.optional(TextStyle),
-      suggestedTextStyleChanges: Schema.optional(
-        Schema.Record(Schema.String, SuggestedTextStyle),
-      ),
-      suggestedDeletionIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ColumnBreak",
-  }) as any as Schema.Schema<ColumnBreak>;
+export const ColumnBreak = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  suggestedInsertionIds: Schema.optional(Schema.Array(Schema.String)),
+  textStyle: Schema.optional(TextStyle),
+  suggestedTextStyleChanges: Schema.optional(
+    Schema.Record(Schema.String, SuggestedTextStyle),
+  ),
+  suggestedDeletionIds: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ColumnBreak" });
 
 export interface TextRun {
   /** The suggested text style changes to this run, keyed by suggestion ID. */
@@ -915,18 +771,15 @@ export interface TextRun {
   content?: string;
 }
 
-export const TextRun: Schema.Schema<TextRun> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      suggestedTextStyleChanges: Schema.optional(
-        Schema.Record(Schema.String, SuggestedTextStyle),
-      ),
-      suggestedInsertionIds: Schema.optional(Schema.Array(Schema.String)),
-      textStyle: Schema.optional(TextStyle),
-      suggestedDeletionIds: Schema.optional(Schema.Array(Schema.String)),
-      content: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "TextRun" }) as any as Schema.Schema<TextRun>;
+export const TextRun = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  suggestedTextStyleChanges: Schema.optional(
+    Schema.Record(Schema.String, SuggestedTextStyle),
+  ),
+  suggestedInsertionIds: Schema.optional(Schema.Array(Schema.String)),
+  textStyle: Schema.optional(TextStyle),
+  suggestedDeletionIds: Schema.optional(Schema.Array(Schema.String)),
+  content: Schema.optional(Schema.String),
+}).annotate({ identifier: "TextRun" });
 
 export interface Equation {
   /** The suggested insertion IDs. An Equation may have multiple insertion IDs if it's a nested suggested change. If empty, then this is not a suggested insertion. */
@@ -935,13 +788,10 @@ export interface Equation {
   suggestedDeletionIds?: Array<string>;
 }
 
-export const Equation: Schema.Schema<Equation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      suggestedInsertionIds: Schema.optional(Schema.Array(Schema.String)),
-      suggestedDeletionIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "Equation" }) as any as Schema.Schema<Equation>;
+export const Equation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  suggestedInsertionIds: Schema.optional(Schema.Array(Schema.String)),
+  suggestedDeletionIds: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Equation" });
 
 export interface FootnoteReference {
   /** The text style of this FootnoteReference. */
@@ -958,21 +808,16 @@ export interface FootnoteReference {
   suggestedInsertionIds?: Array<string>;
 }
 
-export const FootnoteReference: Schema.Schema<FootnoteReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      textStyle: Schema.optional(TextStyle),
-      suggestedDeletionIds: Schema.optional(Schema.Array(Schema.String)),
-      footnoteNumber: Schema.optional(Schema.String),
-      suggestedTextStyleChanges: Schema.optional(
-        Schema.Record(Schema.String, SuggestedTextStyle),
-      ),
-      footnoteId: Schema.optional(Schema.String),
-      suggestedInsertionIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "FootnoteReference",
-  }) as any as Schema.Schema<FootnoteReference>;
+export const FootnoteReference = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  textStyle: Schema.optional(TextStyle),
+  suggestedDeletionIds: Schema.optional(Schema.Array(Schema.String)),
+  footnoteNumber: Schema.optional(Schema.String),
+  suggestedTextStyleChanges: Schema.optional(
+    Schema.Record(Schema.String, SuggestedTextStyle),
+  ),
+  footnoteId: Schema.optional(Schema.String),
+  suggestedInsertionIds: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "FootnoteReference" });
 
 export interface InlineObjectElement {
   /** The suggested insertion IDs. An InlineObjectElement may have multiple insertion IDs if it's a nested suggested change. If empty, then this is not a suggested insertion. */
@@ -987,20 +832,15 @@ export interface InlineObjectElement {
   textStyle?: TextStyle;
 }
 
-export const InlineObjectElement: Schema.Schema<InlineObjectElement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      suggestedInsertionIds: Schema.optional(Schema.Array(Schema.String)),
-      suggestedTextStyleChanges: Schema.optional(
-        Schema.Record(Schema.String, SuggestedTextStyle),
-      ),
-      inlineObjectId: Schema.optional(Schema.String),
-      suggestedDeletionIds: Schema.optional(Schema.Array(Schema.String)),
-      textStyle: Schema.optional(TextStyle),
-    }),
-  ).annotate({
-    identifier: "InlineObjectElement",
-  }) as any as Schema.Schema<InlineObjectElement>;
+export const InlineObjectElement = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  suggestedInsertionIds: Schema.optional(Schema.Array(Schema.String)),
+  suggestedTextStyleChanges: Schema.optional(
+    Schema.Record(Schema.String, SuggestedTextStyle),
+  ),
+  inlineObjectId: Schema.optional(Schema.String),
+  suggestedDeletionIds: Schema.optional(Schema.Array(Schema.String)),
+  textStyle: Schema.optional(TextStyle),
+}).annotate({ identifier: "InlineObjectElement" });
 
 export interface RichLinkProperties {
   /** The URI to the RichLink. This is always present. */
@@ -1011,16 +851,11 @@ export interface RichLinkProperties {
   mimeType?: string;
 }
 
-export const RichLinkProperties: Schema.Schema<RichLinkProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      mimeType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RichLinkProperties",
-  }) as any as Schema.Schema<RichLinkProperties>;
+export const RichLinkProperties = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  uri: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  mimeType: Schema.optional(Schema.String),
+}).annotate({ identifier: "RichLinkProperties" });
 
 export interface RichLink {
   /** IDs for suggestions that remove this link from the document. A RichLink might have multiple deletion IDs if, for example, multiple users suggest deleting it. If empty, then this person link isn't suggested for deletion. */
@@ -1037,19 +872,16 @@ export interface RichLink {
   suggestedInsertionIds?: Array<string>;
 }
 
-export const RichLink: Schema.Schema<RichLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      suggestedDeletionIds: Schema.optional(Schema.Array(Schema.String)),
-      textStyle: Schema.optional(TextStyle),
-      richLinkProperties: Schema.optional(RichLinkProperties),
-      suggestedTextStyleChanges: Schema.optional(
-        Schema.Record(Schema.String, SuggestedTextStyle),
-      ),
-      richLinkId: Schema.optional(Schema.String),
-      suggestedInsertionIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "RichLink" }) as any as Schema.Schema<RichLink>;
+export const RichLink = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  suggestedDeletionIds: Schema.optional(Schema.Array(Schema.String)),
+  textStyle: Schema.optional(TextStyle),
+  richLinkProperties: Schema.optional(RichLinkProperties),
+  suggestedTextStyleChanges: Schema.optional(
+    Schema.Record(Schema.String, SuggestedTextStyle),
+  ),
+  richLinkId: Schema.optional(Schema.String),
+  suggestedInsertionIds: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "RichLink" });
 
 export interface PersonProperties {
   /** The email address linked to this Person. This field is always present. */
@@ -1058,15 +890,10 @@ export interface PersonProperties {
   name?: string;
 }
 
-export const PersonProperties: Schema.Schema<PersonProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      email: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PersonProperties",
-  }) as any as Schema.Schema<PersonProperties>;
+export const PersonProperties = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  email: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "PersonProperties" });
 
 export interface Person {
   /** The text style of this Person. */
@@ -1083,19 +910,16 @@ export interface Person {
   suggestedInsertionIds?: Array<string>;
 }
 
-export const Person: Schema.Schema<Person> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      textStyle: Schema.optional(TextStyle),
-      personId: Schema.optional(Schema.String),
-      suggestedDeletionIds: Schema.optional(Schema.Array(Schema.String)),
-      personProperties: Schema.optional(PersonProperties),
-      suggestedTextStyleChanges: Schema.optional(
-        Schema.Record(Schema.String, SuggestedTextStyle),
-      ),
-      suggestedInsertionIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "Person" }) as any as Schema.Schema<Person>;
+export const Person = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  textStyle: Schema.optional(TextStyle),
+  personId: Schema.optional(Schema.String),
+  suggestedDeletionIds: Schema.optional(Schema.Array(Schema.String)),
+  personProperties: Schema.optional(PersonProperties),
+  suggestedTextStyleChanges: Schema.optional(
+    Schema.Record(Schema.String, SuggestedTextStyle),
+  ),
+  suggestedInsertionIds: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Person" });
 
 export interface DateElementProperties {
   /** The time zone of the DateElement, as defined by the Unicode Common Locale Data Repository (CLDR) project. For example, `America/New_York`. If unset, the default time zone is `etc/UTC`. */
@@ -1124,19 +948,14 @@ export interface DateElementProperties {
   timestamp?: string;
 }
 
-export const DateElementProperties: Schema.Schema<DateElementProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      timeZoneId: Schema.optional(Schema.String),
-      timeFormat: Schema.optional(Schema.String),
-      displayText: Schema.optional(Schema.String),
-      locale: Schema.optional(Schema.String),
-      dateFormat: Schema.optional(Schema.String),
-      timestamp: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DateElementProperties",
-  }) as any as Schema.Schema<DateElementProperties>;
+export const DateElementProperties = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  timeZoneId: Schema.optional(Schema.String),
+  timeFormat: Schema.optional(Schema.String),
+  displayText: Schema.optional(Schema.String),
+  locale: Schema.optional(Schema.String),
+  dateFormat: Schema.optional(Schema.String),
+  timestamp: Schema.optional(Schema.String),
+}).annotate({ identifier: "DateElementProperties" });
 
 export interface DateElementPropertiesSuggestionState {
   /** Indicates if there was a suggested change to date_format. */
@@ -1151,18 +970,14 @@ export interface DateElementPropertiesSuggestionState {
   timeFormatSuggested?: boolean;
 }
 
-export const DateElementPropertiesSuggestionState: Schema.Schema<DateElementPropertiesSuggestionState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dateFormatSuggested: Schema.optional(Schema.Boolean),
-      localeSuggested: Schema.optional(Schema.Boolean),
-      timestampSuggested: Schema.optional(Schema.Boolean),
-      timeZoneIdSuggested: Schema.optional(Schema.Boolean),
-      timeFormatSuggested: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "DateElementPropertiesSuggestionState",
-  }) as any as Schema.Schema<DateElementPropertiesSuggestionState>;
+export const DateElementPropertiesSuggestionState =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dateFormatSuggested: Schema.optional(Schema.Boolean),
+    localeSuggested: Schema.optional(Schema.Boolean),
+    timestampSuggested: Schema.optional(Schema.Boolean),
+    timeZoneIdSuggested: Schema.optional(Schema.Boolean),
+    timeFormatSuggested: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "DateElementPropertiesSuggestionState" });
 
 export interface SuggestedDateElementProperties {
   /** DateElementProperties that only includes the changes made in this suggestion. This can be used along with the date_element_properties_suggestion_state to see which fields have changed and their new values. */
@@ -1171,17 +986,13 @@ export interface SuggestedDateElementProperties {
   dateElementPropertiesSuggestionState?: DateElementPropertiesSuggestionState;
 }
 
-export const SuggestedDateElementProperties: Schema.Schema<SuggestedDateElementProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dateElementProperties: Schema.optional(DateElementProperties),
-      dateElementPropertiesSuggestionState: Schema.optional(
-        DateElementPropertiesSuggestionState,
-      ),
-    }),
-  ).annotate({
-    identifier: "SuggestedDateElementProperties",
-  }) as any as Schema.Schema<SuggestedDateElementProperties>;
+export const SuggestedDateElementProperties =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dateElementProperties: Schema.optional(DateElementProperties),
+    dateElementPropertiesSuggestionState: Schema.optional(
+      DateElementPropertiesSuggestionState,
+    ),
+  }).annotate({ identifier: "SuggestedDateElementProperties" });
 
 export interface DateElement {
   /** IDs for suggestions that insert this date into the document. A DateElement might have multiple insertion IDs if it's a nested suggested change (a suggestion within a suggestion made by a different user, for example). If empty, then this date isn't a suggested insertion. */
@@ -1203,24 +1014,19 @@ export interface DateElement {
   suggestedDeletionIds?: Array<string>;
 }
 
-export const DateElement: Schema.Schema<DateElement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      suggestedInsertionIds: Schema.optional(Schema.Array(Schema.String)),
-      dateElementProperties: Schema.optional(DateElementProperties),
-      dateId: Schema.optional(Schema.String),
-      suggestedTextStyleChanges: Schema.optional(
-        Schema.Record(Schema.String, SuggestedTextStyle),
-      ),
-      textStyle: Schema.optional(TextStyle),
-      suggestedDateElementPropertiesChanges: Schema.optional(
-        Schema.Record(Schema.String, SuggestedDateElementProperties),
-      ),
-      suggestedDeletionIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "DateElement",
-  }) as any as Schema.Schema<DateElement>;
+export const DateElement = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  suggestedInsertionIds: Schema.optional(Schema.Array(Schema.String)),
+  dateElementProperties: Schema.optional(DateElementProperties),
+  dateId: Schema.optional(Schema.String),
+  suggestedTextStyleChanges: Schema.optional(
+    Schema.Record(Schema.String, SuggestedTextStyle),
+  ),
+  textStyle: Schema.optional(TextStyle),
+  suggestedDateElementPropertiesChanges: Schema.optional(
+    Schema.Record(Schema.String, SuggestedDateElementProperties),
+  ),
+  suggestedDeletionIds: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "DateElement" });
 
 export interface AutoText {
   /** The text style of this AutoText. */
@@ -1235,18 +1041,15 @@ export interface AutoText {
   suggestedInsertionIds?: Array<string>;
 }
 
-export const AutoText: Schema.Schema<AutoText> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      textStyle: Schema.optional(TextStyle),
-      suggestedDeletionIds: Schema.optional(Schema.Array(Schema.String)),
-      type: Schema.optional(Schema.String),
-      suggestedTextStyleChanges: Schema.optional(
-        Schema.Record(Schema.String, SuggestedTextStyle),
-      ),
-      suggestedInsertionIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "AutoText" }) as any as Schema.Schema<AutoText>;
+export const AutoText = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  textStyle: Schema.optional(TextStyle),
+  suggestedDeletionIds: Schema.optional(Schema.Array(Schema.String)),
+  type: Schema.optional(Schema.String),
+  suggestedTextStyleChanges: Schema.optional(
+    Schema.Record(Schema.String, SuggestedTextStyle),
+  ),
+  suggestedInsertionIds: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "AutoText" });
 
 export interface HorizontalRule {
   /** The suggested insertion IDs. A HorizontalRule may have multiple insertion IDs if it is a nested suggested change. If empty, then this is not a suggested insertion. */
@@ -1259,19 +1062,14 @@ export interface HorizontalRule {
   suggestedTextStyleChanges?: Record<string, SuggestedTextStyle>;
 }
 
-export const HorizontalRule: Schema.Schema<HorizontalRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      suggestedInsertionIds: Schema.optional(Schema.Array(Schema.String)),
-      suggestedDeletionIds: Schema.optional(Schema.Array(Schema.String)),
-      textStyle: Schema.optional(TextStyle),
-      suggestedTextStyleChanges: Schema.optional(
-        Schema.Record(Schema.String, SuggestedTextStyle),
-      ),
-    }),
-  ).annotate({
-    identifier: "HorizontalRule",
-  }) as any as Schema.Schema<HorizontalRule>;
+export const HorizontalRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  suggestedInsertionIds: Schema.optional(Schema.Array(Schema.String)),
+  suggestedDeletionIds: Schema.optional(Schema.Array(Schema.String)),
+  textStyle: Schema.optional(TextStyle),
+  suggestedTextStyleChanges: Schema.optional(
+    Schema.Record(Schema.String, SuggestedTextStyle),
+  ),
+}).annotate({ identifier: "HorizontalRule" });
 
 export interface PageBreak {
   /** The suggested deletion IDs. If empty, then there are no suggested deletions of this content. */
@@ -1284,17 +1082,14 @@ export interface PageBreak {
   suggestedInsertionIds?: Array<string>;
 }
 
-export const PageBreak: Schema.Schema<PageBreak> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      suggestedDeletionIds: Schema.optional(Schema.Array(Schema.String)),
-      textStyle: Schema.optional(TextStyle),
-      suggestedTextStyleChanges: Schema.optional(
-        Schema.Record(Schema.String, SuggestedTextStyle),
-      ),
-      suggestedInsertionIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "PageBreak" }) as any as Schema.Schema<PageBreak>;
+export const PageBreak = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  suggestedDeletionIds: Schema.optional(Schema.Array(Schema.String)),
+  textStyle: Schema.optional(TextStyle),
+  suggestedTextStyleChanges: Schema.optional(
+    Schema.Record(Schema.String, SuggestedTextStyle),
+  ),
+  suggestedInsertionIds: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "PageBreak" });
 
 export interface ParagraphElement {
   /** A column break paragraph element. */
@@ -1325,26 +1120,21 @@ export interface ParagraphElement {
   pageBreak?: PageBreak;
 }
 
-export const ParagraphElement: Schema.Schema<ParagraphElement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      columnBreak: Schema.optional(ColumnBreak),
-      textRun: Schema.optional(TextRun),
-      equation: Schema.optional(Equation),
-      footnoteReference: Schema.optional(FootnoteReference),
-      inlineObjectElement: Schema.optional(InlineObjectElement),
-      richLink: Schema.optional(RichLink),
-      startIndex: Schema.optional(Schema.Number),
-      person: Schema.optional(Person),
-      dateElement: Schema.optional(DateElement),
-      autoText: Schema.optional(AutoText),
-      horizontalRule: Schema.optional(HorizontalRule),
-      endIndex: Schema.optional(Schema.Number),
-      pageBreak: Schema.optional(PageBreak),
-    }),
-  ).annotate({
-    identifier: "ParagraphElement",
-  }) as any as Schema.Schema<ParagraphElement>;
+export const ParagraphElement = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  columnBreak: Schema.optional(ColumnBreak),
+  textRun: Schema.optional(TextRun),
+  equation: Schema.optional(Equation),
+  footnoteReference: Schema.optional(FootnoteReference),
+  inlineObjectElement: Schema.optional(InlineObjectElement),
+  richLink: Schema.optional(RichLink),
+  startIndex: Schema.optional(Schema.Number),
+  person: Schema.optional(Person),
+  dateElement: Schema.optional(DateElement),
+  autoText: Schema.optional(AutoText),
+  horizontalRule: Schema.optional(HorizontalRule),
+  endIndex: Schema.optional(Schema.Number),
+  pageBreak: Schema.optional(PageBreak),
+}).annotate({ identifier: "ParagraphElement" });
 
 export interface ParagraphBorder {
   /** The width of the border. */
@@ -1362,17 +1152,12 @@ export interface ParagraphBorder {
   color?: OptionalColor;
 }
 
-export const ParagraphBorder: Schema.Schema<ParagraphBorder> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      width: Schema.optional(Dimension),
-      dashStyle: Schema.optional(Schema.String),
-      padding: Schema.optional(Dimension),
-      color: Schema.optional(OptionalColor),
-    }),
-  ).annotate({
-    identifier: "ParagraphBorder",
-  }) as any as Schema.Schema<ParagraphBorder>;
+export const ParagraphBorder = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  width: Schema.optional(Dimension),
+  dashStyle: Schema.optional(Schema.String),
+  padding: Schema.optional(Dimension),
+  color: Schema.optional(OptionalColor),
+}).annotate({ identifier: "ParagraphBorder" });
 
 export interface TabStop {
   /** The offset between this tab stop and the start margin. */
@@ -1386,25 +1171,19 @@ export interface TabStop {
     | (string & {});
 }
 
-export const TabStop: Schema.Schema<TabStop> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      offset: Schema.optional(Dimension),
-      alignment: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "TabStop" }) as any as Schema.Schema<TabStop>;
+export const TabStop = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  offset: Schema.optional(Dimension),
+  alignment: Schema.optional(Schema.String),
+}).annotate({ identifier: "TabStop" });
 
 export interface Shading {
   /** The background color of this paragraph shading. */
   backgroundColor?: OptionalColor;
 }
 
-export const Shading: Schema.Schema<Shading> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      backgroundColor: Schema.optional(OptionalColor),
-    }),
-  ).annotate({ identifier: "Shading" }) as any as Schema.Schema<Shading>;
+export const Shading = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  backgroundColor: Schema.optional(OptionalColor),
+}).annotate({ identifier: "Shading" });
 
 export interface ParagraphStyle {
   /** The heading ID of the paragraph. If empty, then this paragraph is not a heading. This property is read-only. */
@@ -1478,49 +1257,41 @@ export interface ParagraphStyle {
   keepLinesTogether?: boolean;
 }
 
-export const ParagraphStyle: Schema.Schema<ParagraphStyle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      headingId: Schema.optional(Schema.String),
-      namedStyleType: Schema.optional(Schema.String),
-      spacingMode: Schema.optional(Schema.String),
-      spaceBelow: Schema.optional(Dimension),
-      borderBetween: Schema.optional(ParagraphBorder),
-      indentStart: Schema.optional(Dimension),
-      pageBreakBefore: Schema.optional(Schema.Boolean),
-      borderRight: Schema.optional(ParagraphBorder),
-      keepWithNext: Schema.optional(Schema.Boolean),
-      lineSpacing: Schema.optional(Schema.Number),
-      indentEnd: Schema.optional(Dimension),
-      avoidWidowAndOrphan: Schema.optional(Schema.Boolean),
-      direction: Schema.optional(Schema.String),
-      spaceAbove: Schema.optional(Dimension),
-      tabStops: Schema.optional(Schema.Array(TabStop)),
-      borderTop: Schema.optional(ParagraphBorder),
-      shading: Schema.optional(Shading),
-      borderLeft: Schema.optional(ParagraphBorder),
-      indentFirstLine: Schema.optional(Dimension),
-      borderBottom: Schema.optional(ParagraphBorder),
-      alignment: Schema.optional(Schema.String),
-      keepLinesTogether: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ParagraphStyle",
-  }) as any as Schema.Schema<ParagraphStyle>;
+export const ParagraphStyle = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  headingId: Schema.optional(Schema.String),
+  namedStyleType: Schema.optional(Schema.String),
+  spacingMode: Schema.optional(Schema.String),
+  spaceBelow: Schema.optional(Dimension),
+  borderBetween: Schema.optional(ParagraphBorder),
+  indentStart: Schema.optional(Dimension),
+  pageBreakBefore: Schema.optional(Schema.Boolean),
+  borderRight: Schema.optional(ParagraphBorder),
+  keepWithNext: Schema.optional(Schema.Boolean),
+  lineSpacing: Schema.optional(Schema.Number),
+  indentEnd: Schema.optional(Dimension),
+  avoidWidowAndOrphan: Schema.optional(Schema.Boolean),
+  direction: Schema.optional(Schema.String),
+  spaceAbove: Schema.optional(Dimension),
+  tabStops: Schema.optional(Schema.Array(TabStop)),
+  borderTop: Schema.optional(ParagraphBorder),
+  shading: Schema.optional(Shading),
+  borderLeft: Schema.optional(ParagraphBorder),
+  indentFirstLine: Schema.optional(Dimension),
+  borderBottom: Schema.optional(ParagraphBorder),
+  alignment: Schema.optional(Schema.String),
+  keepLinesTogether: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "ParagraphStyle" });
 
 export interface ShadingSuggestionState {
   /** Indicates if there was a suggested change to the Shading. */
   backgroundColorSuggested?: boolean;
 }
 
-export const ShadingSuggestionState: Schema.Schema<ShadingSuggestionState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      backgroundColorSuggested: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ShadingSuggestionState",
-  }) as any as Schema.Schema<ShadingSuggestionState>;
+export const ShadingSuggestionState = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    backgroundColorSuggested: Schema.optional(Schema.Boolean),
+  },
+).annotate({ identifier: "ShadingSuggestionState" });
 
 export interface ParagraphStyleSuggestionState {
   /** Indicates if there was a suggested change to indent_start. */
@@ -1567,34 +1338,30 @@ export interface ParagraphStyleSuggestionState {
   namedStyleTypeSuggested?: boolean;
 }
 
-export const ParagraphStyleSuggestionState: Schema.Schema<ParagraphStyleSuggestionState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      indentStartSuggested: Schema.optional(Schema.Boolean),
-      borderBottomSuggested: Schema.optional(Schema.Boolean),
-      indentEndSuggested: Schema.optional(Schema.Boolean),
-      spacingModeSuggested: Schema.optional(Schema.Boolean),
-      indentFirstLineSuggested: Schema.optional(Schema.Boolean),
-      spaceBelowSuggested: Schema.optional(Schema.Boolean),
-      lineSpacingSuggested: Schema.optional(Schema.Boolean),
-      headingIdSuggested: Schema.optional(Schema.Boolean),
-      borderRightSuggested: Schema.optional(Schema.Boolean),
-      pageBreakBeforeSuggested: Schema.optional(Schema.Boolean),
-      shadingSuggestionState: Schema.optional(ShadingSuggestionState),
-      alignmentSuggested: Schema.optional(Schema.Boolean),
-      directionSuggested: Schema.optional(Schema.Boolean),
-      borderLeftSuggested: Schema.optional(Schema.Boolean),
-      keepLinesTogetherSuggested: Schema.optional(Schema.Boolean),
-      borderTopSuggested: Schema.optional(Schema.Boolean),
-      keepWithNextSuggested: Schema.optional(Schema.Boolean),
-      spaceAboveSuggested: Schema.optional(Schema.Boolean),
-      borderBetweenSuggested: Schema.optional(Schema.Boolean),
-      avoidWidowAndOrphanSuggested: Schema.optional(Schema.Boolean),
-      namedStyleTypeSuggested: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ParagraphStyleSuggestionState",
-  }) as any as Schema.Schema<ParagraphStyleSuggestionState>;
+export const ParagraphStyleSuggestionState =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    indentStartSuggested: Schema.optional(Schema.Boolean),
+    borderBottomSuggested: Schema.optional(Schema.Boolean),
+    indentEndSuggested: Schema.optional(Schema.Boolean),
+    spacingModeSuggested: Schema.optional(Schema.Boolean),
+    indentFirstLineSuggested: Schema.optional(Schema.Boolean),
+    spaceBelowSuggested: Schema.optional(Schema.Boolean),
+    lineSpacingSuggested: Schema.optional(Schema.Boolean),
+    headingIdSuggested: Schema.optional(Schema.Boolean),
+    borderRightSuggested: Schema.optional(Schema.Boolean),
+    pageBreakBeforeSuggested: Schema.optional(Schema.Boolean),
+    shadingSuggestionState: Schema.optional(ShadingSuggestionState),
+    alignmentSuggested: Schema.optional(Schema.Boolean),
+    directionSuggested: Schema.optional(Schema.Boolean),
+    borderLeftSuggested: Schema.optional(Schema.Boolean),
+    keepLinesTogetherSuggested: Schema.optional(Schema.Boolean),
+    borderTopSuggested: Schema.optional(Schema.Boolean),
+    keepWithNextSuggested: Schema.optional(Schema.Boolean),
+    spaceAboveSuggested: Schema.optional(Schema.Boolean),
+    borderBetweenSuggested: Schema.optional(Schema.Boolean),
+    avoidWidowAndOrphanSuggested: Schema.optional(Schema.Boolean),
+    namedStyleTypeSuggested: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "ParagraphStyleSuggestionState" });
 
 export interface SuggestedParagraphStyle {
   /** A ParagraphStyle that only includes the changes made in this suggestion. This can be used along with the paragraph_style_suggestion_state to see which fields have changed and their new values. */
@@ -1603,31 +1370,22 @@ export interface SuggestedParagraphStyle {
   paragraphStyleSuggestionState?: ParagraphStyleSuggestionState;
 }
 
-export const SuggestedParagraphStyle: Schema.Schema<SuggestedParagraphStyle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      paragraphStyle: Schema.optional(ParagraphStyle),
-      paragraphStyleSuggestionState: Schema.optional(
-        ParagraphStyleSuggestionState,
-      ),
-    }),
-  ).annotate({
-    identifier: "SuggestedParagraphStyle",
-  }) as any as Schema.Schema<SuggestedParagraphStyle>;
+export const SuggestedParagraphStyle =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    paragraphStyle: Schema.optional(ParagraphStyle),
+    paragraphStyleSuggestionState: Schema.optional(
+      ParagraphStyleSuggestionState,
+    ),
+  }).annotate({ identifier: "SuggestedParagraphStyle" });
 
 export interface ObjectReferences {
   /** The object IDs. */
   objectIds?: Array<string>;
 }
 
-export const ObjectReferences: Schema.Schema<ObjectReferences> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      objectIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ObjectReferences",
-  }) as any as Schema.Schema<ObjectReferences>;
+export const ObjectReferences = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  objectIds: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ObjectReferences" });
 
 export interface Paragraph {
   /** The bullet for this paragraph. If not present, the paragraph does not belong to a list. */
@@ -1646,24 +1404,21 @@ export interface Paragraph {
   suggestedPositionedObjectIds?: Record<string, ObjectReferences>;
 }
 
-export const Paragraph: Schema.Schema<Paragraph> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bullet: Schema.optional(Bullet),
-      suggestedBulletChanges: Schema.optional(
-        Schema.Record(Schema.String, SuggestedBullet),
-      ),
-      elements: Schema.optional(Schema.Array(ParagraphElement)),
-      suggestedParagraphStyleChanges: Schema.optional(
-        Schema.Record(Schema.String, SuggestedParagraphStyle),
-      ),
-      paragraphStyle: Schema.optional(ParagraphStyle),
-      positionedObjectIds: Schema.optional(Schema.Array(Schema.String)),
-      suggestedPositionedObjectIds: Schema.optional(
-        Schema.Record(Schema.String, ObjectReferences),
-      ),
-    }),
-  ).annotate({ identifier: "Paragraph" }) as any as Schema.Schema<Paragraph>;
+export const Paragraph = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bullet: Schema.optional(Bullet),
+  suggestedBulletChanges: Schema.optional(
+    Schema.Record(Schema.String, SuggestedBullet),
+  ),
+  elements: Schema.optional(Schema.Array(ParagraphElement)),
+  suggestedParagraphStyleChanges: Schema.optional(
+    Schema.Record(Schema.String, SuggestedParagraphStyle),
+  ),
+  paragraphStyle: Schema.optional(ParagraphStyle),
+  positionedObjectIds: Schema.optional(Schema.Array(Schema.String)),
+  suggestedPositionedObjectIds: Schema.optional(
+    Schema.Record(Schema.String, ObjectReferences),
+  ),
+}).annotate({ identifier: "Paragraph" });
 
 export interface TableOfContents {
   /** The suggested deletion IDs. If empty, then there are no suggested deletions of this content. */
@@ -1719,12 +1474,9 @@ export interface Body {
   content?: Array<StructuralElement>;
 }
 
-export const Body: Schema.Schema<Body> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      content: Schema.optional(Schema.Array(StructuralElement)),
-    }),
-  ).annotate({ identifier: "Body" }) as any as Schema.Schema<Body>;
+export const Body = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  content: Schema.optional(Schema.Array(StructuralElement)),
+}).annotate({ identifier: "Body" });
 
 export interface Footer {
   /** The ID of the footer. */
@@ -1733,13 +1485,10 @@ export interface Footer {
   content?: Array<StructuralElement>;
 }
 
-export const Footer: Schema.Schema<Footer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      footerId: Schema.optional(Schema.String),
-      content: Schema.optional(Schema.Array(StructuralElement)),
-    }),
-  ).annotate({ identifier: "Footer" }) as any as Schema.Schema<Footer>;
+export const Footer = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  footerId: Schema.optional(Schema.String),
+  content: Schema.optional(Schema.Array(StructuralElement)),
+}).annotate({ identifier: "Footer" });
 
 export interface DocumentFormat {
   /** Whether the document has pages or is pageless. */
@@ -1750,14 +1499,9 @@ export interface DocumentFormat {
     | (string & {});
 }
 
-export const DocumentFormat: Schema.Schema<DocumentFormat> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      documentMode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DocumentFormat",
-  }) as any as Schema.Schema<DocumentFormat>;
+export const DocumentFormat = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  documentMode: Schema.optional(Schema.String),
+}).annotate({ identifier: "DocumentFormat" });
 
 export interface NamedStyleSuggestionState {
   /** A mask that indicates which of the fields in paragraph style have been changed in this suggestion. */
@@ -1779,34 +1523,26 @@ export interface NamedStyleSuggestionState {
   textStyleSuggestionState?: TextStyleSuggestionState;
 }
 
-export const NamedStyleSuggestionState: Schema.Schema<NamedStyleSuggestionState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      paragraphStyleSuggestionState: Schema.optional(
-        ParagraphStyleSuggestionState,
-      ),
-      namedStyleType: Schema.optional(Schema.String),
-      textStyleSuggestionState: Schema.optional(TextStyleSuggestionState),
-    }),
-  ).annotate({
-    identifier: "NamedStyleSuggestionState",
-  }) as any as Schema.Schema<NamedStyleSuggestionState>;
+export const NamedStyleSuggestionState =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    paragraphStyleSuggestionState: Schema.optional(
+      ParagraphStyleSuggestionState,
+    ),
+    namedStyleType: Schema.optional(Schema.String),
+    textStyleSuggestionState: Schema.optional(TextStyleSuggestionState),
+  }).annotate({ identifier: "NamedStyleSuggestionState" });
 
 export interface NamedStylesSuggestionState {
   /** A mask that indicates which of the fields on the corresponding NamedStyle in styles have been changed in this suggestion. The order of these named style suggestion states matches the order of the corresponding named style within the named styles suggestion. */
   stylesSuggestionStates?: Array<NamedStyleSuggestionState>;
 }
 
-export const NamedStylesSuggestionState: Schema.Schema<NamedStylesSuggestionState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stylesSuggestionStates: Schema.optional(
-        Schema.Array(NamedStyleSuggestionState),
-      ),
-    }),
-  ).annotate({
-    identifier: "NamedStylesSuggestionState",
-  }) as any as Schema.Schema<NamedStylesSuggestionState>;
+export const NamedStylesSuggestionState =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    stylesSuggestionStates: Schema.optional(
+      Schema.Array(NamedStyleSuggestionState),
+    ),
+  }).annotate({ identifier: "NamedStylesSuggestionState" });
 
 export interface NamedStyle {
   /** The text style of this named style. */
@@ -1828,28 +1564,20 @@ export interface NamedStyle {
   paragraphStyle?: ParagraphStyle;
 }
 
-export const NamedStyle: Schema.Schema<NamedStyle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      textStyle: Schema.optional(TextStyle),
-      namedStyleType: Schema.optional(Schema.String),
-      paragraphStyle: Schema.optional(ParagraphStyle),
-    }),
-  ).annotate({ identifier: "NamedStyle" }) as any as Schema.Schema<NamedStyle>;
+export const NamedStyle = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  textStyle: Schema.optional(TextStyle),
+  namedStyleType: Schema.optional(Schema.String),
+  paragraphStyle: Schema.optional(ParagraphStyle),
+}).annotate({ identifier: "NamedStyle" });
 
 export interface NamedStyles {
   /** The named styles. There's an entry for each of the possible named style types. */
   styles?: Array<NamedStyle>;
 }
 
-export const NamedStyles: Schema.Schema<NamedStyles> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      styles: Schema.optional(Schema.Array(NamedStyle)),
-    }),
-  ).annotate({
-    identifier: "NamedStyles",
-  }) as any as Schema.Schema<NamedStyles>;
+export const NamedStyles = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  styles: Schema.optional(Schema.Array(NamedStyle)),
+}).annotate({ identifier: "NamedStyles" });
 
 export interface SuggestedNamedStyles {
   /** A mask that indicates which of the fields on the base NamedStyles have been changed in this suggestion. */
@@ -1858,29 +1586,20 @@ export interface SuggestedNamedStyles {
   namedStyles?: NamedStyles;
 }
 
-export const SuggestedNamedStyles: Schema.Schema<SuggestedNamedStyles> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      namedStylesSuggestionState: Schema.optional(NamedStylesSuggestionState),
-      namedStyles: Schema.optional(NamedStyles),
-    }),
-  ).annotate({
-    identifier: "SuggestedNamedStyles",
-  }) as any as Schema.Schema<SuggestedNamedStyles>;
+export const SuggestedNamedStyles = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  namedStylesSuggestionState: Schema.optional(NamedStylesSuggestionState),
+  namedStyles: Schema.optional(NamedStyles),
+}).annotate({ identifier: "SuggestedNamedStyles" });
 
 export interface DeleteContentRangeRequest {
   /** The range of content to delete. Deleting text that crosses a paragraph boundary may result in changes to paragraph styles, lists, positioned objects and bookmarks as the two paragraphs are merged. Attempting to delete certain ranges can result in an invalid document structure in which case a 400 bad request error is returned. Some examples of invalid delete requests include: * Deleting one code unit of a surrogate pair. * Deleting the last newline character of a Body, Header, Footer, Footnote, TableCell or TableOfContents. * Deleting the start or end of a Table, TableOfContents or Equation without deleting the entire element. * Deleting the newline character before a Table, TableOfContents or SectionBreak without deleting the element. * Deleting individual rows or cells of a table. Deleting the content within a table cell is allowed. */
   range?: Range;
 }
 
-export const DeleteContentRangeRequest: Schema.Schema<DeleteContentRangeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      range: Schema.optional(Range),
-    }),
-  ).annotate({
-    identifier: "DeleteContentRangeRequest",
-  }) as any as Schema.Schema<DeleteContentRangeRequest>;
+export const DeleteContentRangeRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    range: Schema.optional(Range),
+  }).annotate({ identifier: "DeleteContentRangeRequest" });
 
 export interface EndOfSegmentLocation {
   /** The tab that the location is in. When omitted, the request is applied to the first tab. In a document containing a single tab: - If provided, must match the singular tab's ID. - If omitted, the request applies to the singular tab. In a document containing multiple tabs: - If provided, the request applies to the specified tab. - If omitted, the request applies to the first tab in the document. */
@@ -1889,15 +1608,10 @@ export interface EndOfSegmentLocation {
   segmentId?: string;
 }
 
-export const EndOfSegmentLocation: Schema.Schema<EndOfSegmentLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tabId: Schema.optional(Schema.String),
-      segmentId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EndOfSegmentLocation",
-  }) as any as Schema.Schema<EndOfSegmentLocation>;
+export const EndOfSegmentLocation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tabId: Schema.optional(Schema.String),
+  segmentId: Schema.optional(Schema.String),
+}).annotate({ identifier: "EndOfSegmentLocation" });
 
 export interface InsertPersonRequest {
   /** Inserts the person mention at a specific index in the document. The person mention must be inserted inside the bounds of an existing Paragraph. For instance, it cannot be inserted at a table's start index (i.e. between the table and its preceding paragraph). Person mentions cannot be inserted inside an equation. */
@@ -1908,30 +1622,20 @@ export interface InsertPersonRequest {
   endOfSegmentLocation?: EndOfSegmentLocation;
 }
 
-export const InsertPersonRequest: Schema.Schema<InsertPersonRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      location: Schema.optional(Location),
-      personProperties: Schema.optional(PersonProperties),
-      endOfSegmentLocation: Schema.optional(EndOfSegmentLocation),
-    }),
-  ).annotate({
-    identifier: "InsertPersonRequest",
-  }) as any as Schema.Schema<InsertPersonRequest>;
+export const InsertPersonRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  location: Schema.optional(Location),
+  personProperties: Schema.optional(PersonProperties),
+  endOfSegmentLocation: Schema.optional(EndOfSegmentLocation),
+}).annotate({ identifier: "InsertPersonRequest" });
 
 export interface TabsCriteria {
   /** The list of tab IDs in which the request executes. */
   tabIds?: Array<string>;
 }
 
-export const TabsCriteria: Schema.Schema<TabsCriteria> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tabIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TabsCriteria",
-  }) as any as Schema.Schema<TabsCriteria>;
+export const TabsCriteria = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tabIds: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "TabsCriteria" });
 
 export interface ReplaceNamedRangeContentRequest {
   /** The ID of the named range whose content will be replaced. If there is no named range with the given ID a 400 bad request error is returned. */
@@ -1944,17 +1648,13 @@ export interface ReplaceNamedRangeContentRequest {
   tabsCriteria?: TabsCriteria;
 }
 
-export const ReplaceNamedRangeContentRequest: Schema.Schema<ReplaceNamedRangeContentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      namedRangeId: Schema.optional(Schema.String),
-      namedRangeName: Schema.optional(Schema.String),
-      text: Schema.optional(Schema.String),
-      tabsCriteria: Schema.optional(TabsCriteria),
-    }),
-  ).annotate({
-    identifier: "ReplaceNamedRangeContentRequest",
-  }) as any as Schema.Schema<ReplaceNamedRangeContentRequest>;
+export const ReplaceNamedRangeContentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    namedRangeId: Schema.optional(Schema.String),
+    namedRangeName: Schema.optional(Schema.String),
+    text: Schema.optional(Schema.String),
+    tabsCriteria: Schema.optional(TabsCriteria),
+  }).annotate({ identifier: "ReplaceNamedRangeContentRequest" });
 
 export interface TabProperties {
   /** Optional. The ID of the parent tab. Empty when the current tab is a root-level tab, which means it doesn't have any parents. */
@@ -1971,19 +1671,14 @@ export interface TabProperties {
   tabId?: string;
 }
 
-export const TabProperties: Schema.Schema<TabProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parentTabId: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      nestingLevel: Schema.optional(Schema.Number),
-      index: Schema.optional(Schema.Number),
-      iconEmoji: Schema.optional(Schema.String),
-      tabId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TabProperties",
-  }) as any as Schema.Schema<TabProperties>;
+export const TabProperties = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  parentTabId: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  nestingLevel: Schema.optional(Schema.Number),
+  index: Schema.optional(Schema.Number),
+  iconEmoji: Schema.optional(Schema.String),
+  tabId: Schema.optional(Schema.String),
+}).annotate({ identifier: "TabProperties" });
 
 export interface UpdateDocumentTabPropertiesRequest {
   /** The tab properties to update. */
@@ -1992,15 +1687,11 @@ export interface UpdateDocumentTabPropertiesRequest {
   fields?: string;
 }
 
-export const UpdateDocumentTabPropertiesRequest: Schema.Schema<UpdateDocumentTabPropertiesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tabProperties: Schema.optional(TabProperties),
-      fields: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpdateDocumentTabPropertiesRequest",
-  }) as any as Schema.Schema<UpdateDocumentTabPropertiesRequest>;
+export const UpdateDocumentTabPropertiesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tabProperties: Schema.optional(TabProperties),
+    fields: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UpdateDocumentTabPropertiesRequest" });
 
 export interface InsertTableRequest {
   /** The number of rows in the table. */
@@ -2013,17 +1704,12 @@ export interface InsertTableRequest {
   location?: Location;
 }
 
-export const InsertTableRequest: Schema.Schema<InsertTableRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rows: Schema.optional(Schema.Number),
-      columns: Schema.optional(Schema.Number),
-      endOfSegmentLocation: Schema.optional(EndOfSegmentLocation),
-      location: Schema.optional(Location),
-    }),
-  ).annotate({
-    identifier: "InsertTableRequest",
-  }) as any as Schema.Schema<InsertTableRequest>;
+export const InsertTableRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  rows: Schema.optional(Schema.Number),
+  columns: Schema.optional(Schema.Number),
+  endOfSegmentLocation: Schema.optional(EndOfSegmentLocation),
+  location: Schema.optional(Location),
+}).annotate({ identifier: "InsertTableRequest" });
 
 export interface CropPropertiesSuggestionState {
   /** Indicates if there was a suggested change to offset_top. */
@@ -2038,18 +1724,14 @@ export interface CropPropertiesSuggestionState {
   offsetLeftSuggested?: boolean;
 }
 
-export const CropPropertiesSuggestionState: Schema.Schema<CropPropertiesSuggestionState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      offsetTopSuggested: Schema.optional(Schema.Boolean),
-      offsetRightSuggested: Schema.optional(Schema.Boolean),
-      offsetBottomSuggested: Schema.optional(Schema.Boolean),
-      angleSuggested: Schema.optional(Schema.Boolean),
-      offsetLeftSuggested: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "CropPropertiesSuggestionState",
-  }) as any as Schema.Schema<CropPropertiesSuggestionState>;
+export const CropPropertiesSuggestionState =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    offsetTopSuggested: Schema.optional(Schema.Boolean),
+    offsetRightSuggested: Schema.optional(Schema.Boolean),
+    offsetBottomSuggested: Schema.optional(Schema.Boolean),
+    angleSuggested: Schema.optional(Schema.Boolean),
+    offsetLeftSuggested: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "CropPropertiesSuggestionState" });
 
 export interface ImagePropertiesSuggestionState {
   /** Indicates if there was a suggested change to brightness. */
@@ -2068,22 +1750,18 @@ export interface ImagePropertiesSuggestionState {
   contentUriSuggested?: boolean;
 }
 
-export const ImagePropertiesSuggestionState: Schema.Schema<ImagePropertiesSuggestionState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      brightnessSuggested: Schema.optional(Schema.Boolean),
-      cropPropertiesSuggestionState: Schema.optional(
-        CropPropertiesSuggestionState,
-      ),
-      contrastSuggested: Schema.optional(Schema.Boolean),
-      transparencySuggested: Schema.optional(Schema.Boolean),
-      angleSuggested: Schema.optional(Schema.Boolean),
-      sourceUriSuggested: Schema.optional(Schema.Boolean),
-      contentUriSuggested: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ImagePropertiesSuggestionState",
-  }) as any as Schema.Schema<ImagePropertiesSuggestionState>;
+export const ImagePropertiesSuggestionState =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    brightnessSuggested: Schema.optional(Schema.Boolean),
+    cropPropertiesSuggestionState: Schema.optional(
+      CropPropertiesSuggestionState,
+    ),
+    contrastSuggested: Schema.optional(Schema.Boolean),
+    transparencySuggested: Schema.optional(Schema.Boolean),
+    angleSuggested: Schema.optional(Schema.Boolean),
+    sourceUriSuggested: Schema.optional(Schema.Boolean),
+    contentUriSuggested: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "ImagePropertiesSuggestionState" });
 
 export interface TableCellLocation {
   /** The zero-based row index. For example, the second row in the table has a row index of 1. */
@@ -2094,16 +1772,11 @@ export interface TableCellLocation {
   columnIndex?: number;
 }
 
-export const TableCellLocation: Schema.Schema<TableCellLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rowIndex: Schema.optional(Schema.Number),
-      tableStartLocation: Schema.optional(Location),
-      columnIndex: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "TableCellLocation",
-  }) as any as Schema.Schema<TableCellLocation>;
+export const TableCellLocation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  rowIndex: Schema.optional(Schema.Number),
+  tableStartLocation: Schema.optional(Location),
+  columnIndex: Schema.optional(Schema.Number),
+}).annotate({ identifier: "TableCellLocation" });
 
 export interface TableRange {
   /** The row span of the table range. */
@@ -2114,14 +1787,11 @@ export interface TableRange {
   columnSpan?: number;
 }
 
-export const TableRange: Schema.Schema<TableRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rowSpan: Schema.optional(Schema.Number),
-      tableCellLocation: Schema.optional(TableCellLocation),
-      columnSpan: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "TableRange" }) as any as Schema.Schema<TableRange>;
+export const TableRange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  rowSpan: Schema.optional(Schema.Number),
+  tableCellLocation: Schema.optional(TableCellLocation),
+  columnSpan: Schema.optional(Schema.Number),
+}).annotate({ identifier: "TableRange" });
 
 export interface UpdateSectionStyleRequest {
   /** The fields that should be updated. At least one field must be specified. The root `section_style` is implied and must not be specified. A single `"*"` can be used as short-hand for listing every field. For example to update the left margin, set `fields` to `"margin_left"`. */
@@ -2132,28 +1802,21 @@ export interface UpdateSectionStyleRequest {
   sectionStyle?: SectionStyle;
 }
 
-export const UpdateSectionStyleRequest: Schema.Schema<UpdateSectionStyleRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fields: Schema.optional(Schema.String),
-      range: Schema.optional(Range),
-      sectionStyle: Schema.optional(SectionStyle),
-    }),
-  ).annotate({
-    identifier: "UpdateSectionStyleRequest",
-  }) as any as Schema.Schema<UpdateSectionStyleRequest>;
+export const UpdateSectionStyleRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fields: Schema.optional(Schema.String),
+    range: Schema.optional(Range),
+    sectionStyle: Schema.optional(SectionStyle),
+  }).annotate({ identifier: "UpdateSectionStyleRequest" });
 
 export interface Background {
   /** The background color. */
   color?: OptionalColor;
 }
 
-export const Background: Schema.Schema<Background> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      color: Schema.optional(OptionalColor),
-    }),
-  ).annotate({ identifier: "Background" }) as any as Schema.Schema<Background>;
+export const Background = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  color: Schema.optional(OptionalColor),
+}).annotate({ identifier: "Background" });
 
 export interface Size {
   /** The width of the object. */
@@ -2162,13 +1825,10 @@ export interface Size {
   height?: Dimension;
 }
 
-export const Size: Schema.Schema<Size> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      width: Schema.optional(Dimension),
-      height: Schema.optional(Dimension),
-    }),
-  ).annotate({ identifier: "Size" }) as any as Schema.Schema<Size>;
+export const Size = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  width: Schema.optional(Dimension),
+  height: Schema.optional(Dimension),
+}).annotate({ identifier: "Size" });
 
 export interface DocumentStyle {
   /** The top page margin. Updating the top page margin on the document style clears the top page margin on all section styles. If DocumentMode is PAGELESS, this property will not be rendered. */
@@ -2213,33 +1873,28 @@ export interface DocumentStyle {
   marginHeader?: Dimension;
 }
 
-export const DocumentStyle: Schema.Schema<DocumentStyle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      marginTop: Schema.optional(Dimension),
-      defaultHeaderId: Schema.optional(Schema.String),
-      flipPageOrientation: Schema.optional(Schema.Boolean),
-      firstPageFooterId: Schema.optional(Schema.String),
-      useFirstPageHeaderFooter: Schema.optional(Schema.Boolean),
-      useEvenPageHeaderFooter: Schema.optional(Schema.Boolean),
-      documentFormat: Schema.optional(DocumentFormat),
-      background: Schema.optional(Background),
-      marginFooter: Schema.optional(Dimension),
-      useCustomHeaderFooterMargins: Schema.optional(Schema.Boolean),
-      pageSize: Schema.optional(Size),
-      evenPageHeaderId: Schema.optional(Schema.String),
-      evenPageFooterId: Schema.optional(Schema.String),
-      pageNumberStart: Schema.optional(Schema.Number),
-      marginRight: Schema.optional(Dimension),
-      marginBottom: Schema.optional(Dimension),
-      defaultFooterId: Schema.optional(Schema.String),
-      firstPageHeaderId: Schema.optional(Schema.String),
-      marginLeft: Schema.optional(Dimension),
-      marginHeader: Schema.optional(Dimension),
-    }),
-  ).annotate({
-    identifier: "DocumentStyle",
-  }) as any as Schema.Schema<DocumentStyle>;
+export const DocumentStyle = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  marginTop: Schema.optional(Dimension),
+  defaultHeaderId: Schema.optional(Schema.String),
+  flipPageOrientation: Schema.optional(Schema.Boolean),
+  firstPageFooterId: Schema.optional(Schema.String),
+  useFirstPageHeaderFooter: Schema.optional(Schema.Boolean),
+  useEvenPageHeaderFooter: Schema.optional(Schema.Boolean),
+  documentFormat: Schema.optional(DocumentFormat),
+  background: Schema.optional(Background),
+  marginFooter: Schema.optional(Dimension),
+  useCustomHeaderFooterMargins: Schema.optional(Schema.Boolean),
+  pageSize: Schema.optional(Size),
+  evenPageHeaderId: Schema.optional(Schema.String),
+  evenPageFooterId: Schema.optional(Schema.String),
+  pageNumberStart: Schema.optional(Schema.Number),
+  marginRight: Schema.optional(Dimension),
+  marginBottom: Schema.optional(Dimension),
+  defaultFooterId: Schema.optional(Schema.String),
+  firstPageHeaderId: Schema.optional(Schema.String),
+  marginLeft: Schema.optional(Dimension),
+  marginHeader: Schema.optional(Dimension),
+}).annotate({ identifier: "DocumentStyle" });
 
 export interface UpdateDocumentStyleRequest {
   /** The styles to set on the document. Certain document style changes may cause other changes in order to mirror the behavior of the Docs editor. See the documentation of DocumentStyle for more information. */
@@ -2250,16 +1905,12 @@ export interface UpdateDocumentStyleRequest {
   fields?: string;
 }
 
-export const UpdateDocumentStyleRequest: Schema.Schema<UpdateDocumentStyleRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      documentStyle: Schema.optional(DocumentStyle),
-      tabId: Schema.optional(Schema.String),
-      fields: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpdateDocumentStyleRequest",
-  }) as any as Schema.Schema<UpdateDocumentStyleRequest>;
+export const UpdateDocumentStyleRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    documentStyle: Schema.optional(DocumentStyle),
+    tabId: Schema.optional(Schema.String),
+    fields: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UpdateDocumentStyleRequest" });
 
 export interface UpdateTableCellStyleRequest {
   /** The style to set on the table cells. When updating borders, if a cell shares a border with an adjacent cell, the corresponding border property of the adjacent cell is updated as well. Borders that are merged and invisible are not updated. Since updating a border shared by adjacent cells in the same request can cause conflicting border updates, border updates are applied in the following order: - `border_right` - `border_left` - `border_bottom` - `border_top` */
@@ -2272,17 +1923,13 @@ export interface UpdateTableCellStyleRequest {
   tableRange?: TableRange;
 }
 
-export const UpdateTableCellStyleRequest: Schema.Schema<UpdateTableCellStyleRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tableCellStyle: Schema.optional(TableCellStyle),
-      tableStartLocation: Schema.optional(Location),
-      fields: Schema.optional(Schema.String),
-      tableRange: Schema.optional(TableRange),
-    }),
-  ).annotate({
-    identifier: "UpdateTableCellStyleRequest",
-  }) as any as Schema.Schema<UpdateTableCellStyleRequest>;
+export const UpdateTableCellStyleRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tableCellStyle: Schema.optional(TableCellStyle),
+    tableStartLocation: Schema.optional(Location),
+    fields: Schema.optional(Schema.String),
+    tableRange: Schema.optional(TableRange),
+  }).annotate({ identifier: "UpdateTableCellStyleRequest" });
 
 export interface InsertTextRequest {
   /** Inserts the text at a specific index in the document. Text must be inserted inside the bounds of an existing Paragraph. For instance, text cannot be inserted at a table's start index (i.e. between the table and its preceding paragraph). The text must be inserted in the preceding paragraph. */
@@ -2293,16 +1940,11 @@ export interface InsertTextRequest {
   text?: string;
 }
 
-export const InsertTextRequest: Schema.Schema<InsertTextRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      location: Schema.optional(Location),
-      endOfSegmentLocation: Schema.optional(EndOfSegmentLocation),
-      text: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InsertTextRequest",
-  }) as any as Schema.Schema<InsertTextRequest>;
+export const InsertTextRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  location: Schema.optional(Location),
+  endOfSegmentLocation: Schema.optional(EndOfSegmentLocation),
+  text: Schema.optional(Schema.String),
+}).annotate({ identifier: "InsertTextRequest" });
 
 export interface UpdateTableRowStyleRequest {
   /** The list of zero-based row indices whose style should be updated. If no indices are specified, all rows will be updated. */
@@ -2315,17 +1957,13 @@ export interface UpdateTableRowStyleRequest {
   fields?: string;
 }
 
-export const UpdateTableRowStyleRequest: Schema.Schema<UpdateTableRowStyleRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rowIndices: Schema.optional(Schema.Array(Schema.Number)),
-      tableRowStyle: Schema.optional(TableRowStyle),
-      tableStartLocation: Schema.optional(Location),
-      fields: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpdateTableRowStyleRequest",
-  }) as any as Schema.Schema<UpdateTableRowStyleRequest>;
+export const UpdateTableRowStyleRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rowIndices: Schema.optional(Schema.Array(Schema.Number)),
+    tableRowStyle: Schema.optional(TableRowStyle),
+    tableStartLocation: Schema.optional(Location),
+    fields: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UpdateTableRowStyleRequest" });
 
 export interface CreateParagraphBulletsRequest {
   /** The kinds of bullet glyphs to be used. */
@@ -2351,15 +1989,11 @@ export interface CreateParagraphBulletsRequest {
   range?: Range;
 }
 
-export const CreateParagraphBulletsRequest: Schema.Schema<CreateParagraphBulletsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bulletPreset: Schema.optional(Schema.String),
-      range: Schema.optional(Range),
-    }),
-  ).annotate({
-    identifier: "CreateParagraphBulletsRequest",
-  }) as any as Schema.Schema<CreateParagraphBulletsRequest>;
+export const CreateParagraphBulletsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bulletPreset: Schema.optional(Schema.String),
+    range: Schema.optional(Range),
+  }).annotate({ identifier: "CreateParagraphBulletsRequest" });
 
 export interface InsertInlineImageRequest {
   /** Inserts the image at a specific index in the document. The image must be inserted inside the bounds of an existing Paragraph. For instance, it cannot be inserted at a table's start index (i.e. between the table and its preceding paragraph). Inline images cannot be inserted inside a footnote or equation. */
@@ -2372,45 +2006,33 @@ export interface InsertInlineImageRequest {
   objectSize?: Size;
 }
 
-export const InsertInlineImageRequest: Schema.Schema<InsertInlineImageRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      location: Schema.optional(Location),
-      uri: Schema.optional(Schema.String),
-      endOfSegmentLocation: Schema.optional(EndOfSegmentLocation),
-      objectSize: Schema.optional(Size),
-    }),
-  ).annotate({
-    identifier: "InsertInlineImageRequest",
-  }) as any as Schema.Schema<InsertInlineImageRequest>;
+export const InsertInlineImageRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.optional(Location),
+    uri: Schema.optional(Schema.String),
+    endOfSegmentLocation: Schema.optional(EndOfSegmentLocation),
+    objectSize: Schema.optional(Size),
+  }).annotate({ identifier: "InsertInlineImageRequest" });
 
 export interface MergeTableCellsRequest {
   /** The table range specifying which cells of the table to merge. Any text in the cells being merged will be concatenated and stored in the "head" cell of the range. This is the upper-left cell of the range when the content direction is left to right, and the upper-right cell of the range otherwise. If the range is non-rectangular (which can occur in some cases where the range covers cells that are already merged or where the table is non-rectangular), a 400 bad request error is returned. */
   tableRange?: TableRange;
 }
 
-export const MergeTableCellsRequest: Schema.Schema<MergeTableCellsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tableRange: Schema.optional(TableRange),
-    }),
-  ).annotate({
-    identifier: "MergeTableCellsRequest",
-  }) as any as Schema.Schema<MergeTableCellsRequest>;
+export const MergeTableCellsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    tableRange: Schema.optional(TableRange),
+  },
+).annotate({ identifier: "MergeTableCellsRequest" });
 
 export interface DeleteTabRequest {
   /** The ID of the tab to delete. */
   tabId?: string;
 }
 
-export const DeleteTabRequest: Schema.Schema<DeleteTabRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tabId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DeleteTabRequest",
-  }) as any as Schema.Schema<DeleteTabRequest>;
+export const DeleteTabRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tabId: Schema.optional(Schema.String),
+}).annotate({ identifier: "DeleteTabRequest" });
 
 export interface DeleteNamedRangeRequest {
   /** The ID of the named range to delete. */
@@ -2421,16 +2043,12 @@ export interface DeleteNamedRangeRequest {
   tabsCriteria?: TabsCriteria;
 }
 
-export const DeleteNamedRangeRequest: Schema.Schema<DeleteNamedRangeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      namedRangeId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      tabsCriteria: Schema.optional(TabsCriteria),
-    }),
-  ).annotate({
-    identifier: "DeleteNamedRangeRequest",
-  }) as any as Schema.Schema<DeleteNamedRangeRequest>;
+export const DeleteNamedRangeRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    namedRangeId: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    tabsCriteria: Schema.optional(TabsCriteria),
+  }).annotate({ identifier: "DeleteNamedRangeRequest" });
 
 export interface PinTableHeaderRowsRequest {
   /** The location where the table starts in the document. */
@@ -2439,15 +2057,11 @@ export interface PinTableHeaderRowsRequest {
   pinnedHeaderRowsCount?: number;
 }
 
-export const PinTableHeaderRowsRequest: Schema.Schema<PinTableHeaderRowsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tableStartLocation: Schema.optional(Location),
-      pinnedHeaderRowsCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "PinTableHeaderRowsRequest",
-  }) as any as Schema.Schema<PinTableHeaderRowsRequest>;
+export const PinTableHeaderRowsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tableStartLocation: Schema.optional(Location),
+    pinnedHeaderRowsCount: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "PinTableHeaderRowsRequest" });
 
 export interface CreateHeaderRequest {
   /** The type of header to create. */
@@ -2456,29 +2070,20 @@ export interface CreateHeaderRequest {
   sectionBreakLocation?: Location;
 }
 
-export const CreateHeaderRequest: Schema.Schema<CreateHeaderRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      sectionBreakLocation: Schema.optional(Location),
-    }),
-  ).annotate({
-    identifier: "CreateHeaderRequest",
-  }) as any as Schema.Schema<CreateHeaderRequest>;
+export const CreateHeaderRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  sectionBreakLocation: Schema.optional(Location),
+}).annotate({ identifier: "CreateHeaderRequest" });
 
 export interface UnmergeTableCellsRequest {
   /** The table range specifying which cells of the table to unmerge. All merged cells in this range will be unmerged, and cells that are already unmerged will not be affected. If the range has no merged cells, the request will do nothing. If there is text in any of the merged cells, the text will remain in the "head" cell of the resulting block of unmerged cells. The "head" cell is the upper-left cell when the content direction is from left to right, and the upper-right otherwise. */
   tableRange?: TableRange;
 }
 
-export const UnmergeTableCellsRequest: Schema.Schema<UnmergeTableCellsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tableRange: Schema.optional(TableRange),
-    }),
-  ).annotate({
-    identifier: "UnmergeTableCellsRequest",
-  }) as any as Schema.Schema<UnmergeTableCellsRequest>;
+export const UnmergeTableCellsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tableRange: Schema.optional(TableRange),
+  }).annotate({ identifier: "UnmergeTableCellsRequest" });
 
 export interface DeleteFooterRequest {
   /** The tab that contains the footer to delete. When omitted, the request is applied to the first tab. In a document containing a single tab: - If provided, must match the singular tab's ID. - If omitted, the request applies to the singular tab. In a document containing multiple tabs: - If provided, the request applies to the specified tab. - If omitted, the request applies to the first tab in the document. */
@@ -2487,15 +2092,10 @@ export interface DeleteFooterRequest {
   footerId?: string;
 }
 
-export const DeleteFooterRequest: Schema.Schema<DeleteFooterRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tabId: Schema.optional(Schema.String),
-      footerId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DeleteFooterRequest",
-  }) as any as Schema.Schema<DeleteFooterRequest>;
+export const DeleteFooterRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tabId: Schema.optional(Schema.String),
+  footerId: Schema.optional(Schema.String),
+}).annotate({ identifier: "DeleteFooterRequest" });
 
 export interface InsertPageBreakRequest {
   /** Inserts the page break at the end of the document body. Page breaks cannot be inserted inside a footnote, header or footer. Since page breaks can only be inserted inside the body, the segment ID field must be empty. */
@@ -2504,15 +2104,12 @@ export interface InsertPageBreakRequest {
   location?: Location;
 }
 
-export const InsertPageBreakRequest: Schema.Schema<InsertPageBreakRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endOfSegmentLocation: Schema.optional(EndOfSegmentLocation),
-      location: Schema.optional(Location),
-    }),
-  ).annotate({
-    identifier: "InsertPageBreakRequest",
-  }) as any as Schema.Schema<InsertPageBreakRequest>;
+export const InsertPageBreakRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    endOfSegmentLocation: Schema.optional(EndOfSegmentLocation),
+    location: Schema.optional(Location),
+  },
+).annotate({ identifier: "InsertPageBreakRequest" });
 
 export interface InsertTableColumnRequest {
   /** Whether to insert new column to the right of the reference cell location. - `True`: insert to the right. - `False`: insert to the left. */
@@ -2521,15 +2118,11 @@ export interface InsertTableColumnRequest {
   tableCellLocation?: TableCellLocation;
 }
 
-export const InsertTableColumnRequest: Schema.Schema<InsertTableColumnRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      insertRight: Schema.optional(Schema.Boolean),
-      tableCellLocation: Schema.optional(TableCellLocation),
-    }),
-  ).annotate({
-    identifier: "InsertTableColumnRequest",
-  }) as any as Schema.Schema<InsertTableColumnRequest>;
+export const InsertTableColumnRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    insertRight: Schema.optional(Schema.Boolean),
+    tableCellLocation: Schema.optional(TableCellLocation),
+  }).annotate({ identifier: "InsertTableColumnRequest" });
 
 export interface UpdateParagraphStyleRequest {
   /** The range overlapping the paragraphs to style. */
@@ -2540,16 +2133,12 @@ export interface UpdateParagraphStyleRequest {
   paragraphStyle?: ParagraphStyle;
 }
 
-export const UpdateParagraphStyleRequest: Schema.Schema<UpdateParagraphStyleRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      range: Schema.optional(Range),
-      fields: Schema.optional(Schema.String),
-      paragraphStyle: Schema.optional(ParagraphStyle),
-    }),
-  ).annotate({
-    identifier: "UpdateParagraphStyleRequest",
-  }) as any as Schema.Schema<UpdateParagraphStyleRequest>;
+export const UpdateParagraphStyleRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    range: Schema.optional(Range),
+    fields: Schema.optional(Schema.String),
+    paragraphStyle: Schema.optional(ParagraphStyle),
+  }).annotate({ identifier: "UpdateParagraphStyleRequest" });
 
 export interface CreateNamedRangeRequest {
   /** The name of the NamedRange. Names do not need to be unique. Names must be at least 1 character and no more than 256 characters, measured in UTF-16 code units. */
@@ -2558,15 +2147,11 @@ export interface CreateNamedRangeRequest {
   range?: Range;
 }
 
-export const CreateNamedRangeRequest: Schema.Schema<CreateNamedRangeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      range: Schema.optional(Range),
-    }),
-  ).annotate({
-    identifier: "CreateNamedRangeRequest",
-  }) as any as Schema.Schema<CreateNamedRangeRequest>;
+export const CreateNamedRangeRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    range: Schema.optional(Range),
+  }).annotate({ identifier: "CreateNamedRangeRequest" });
 
 export interface ReplaceImageRequest {
   /** The ID of the existing image that will be replaced. The ID can be retrieved from the response of a get request. */
@@ -2582,45 +2167,31 @@ export interface ReplaceImageRequest {
     | (string & {});
 }
 
-export const ReplaceImageRequest: Schema.Schema<ReplaceImageRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      imageObjectId: Schema.optional(Schema.String),
-      uri: Schema.optional(Schema.String),
-      tabId: Schema.optional(Schema.String),
-      imageReplaceMethod: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ReplaceImageRequest",
-  }) as any as Schema.Schema<ReplaceImageRequest>;
+export const ReplaceImageRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  imageObjectId: Schema.optional(Schema.String),
+  uri: Schema.optional(Schema.String),
+  tabId: Schema.optional(Schema.String),
+  imageReplaceMethod: Schema.optional(Schema.String),
+}).annotate({ identifier: "ReplaceImageRequest" });
 
 export interface DeleteTableColumnRequest {
   /** The reference table cell location from which the column will be deleted. The column this cell spans will be deleted. If this is a merged cell that spans multiple columns, all columns that the cell spans will be deleted. If no columns remain in the table after this deletion, the whole table is deleted. */
   tableCellLocation?: TableCellLocation;
 }
 
-export const DeleteTableColumnRequest: Schema.Schema<DeleteTableColumnRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tableCellLocation: Schema.optional(TableCellLocation),
-    }),
-  ).annotate({
-    identifier: "DeleteTableColumnRequest",
-  }) as any as Schema.Schema<DeleteTableColumnRequest>;
+export const DeleteTableColumnRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tableCellLocation: Schema.optional(TableCellLocation),
+  }).annotate({ identifier: "DeleteTableColumnRequest" });
 
 export interface DeleteTableRowRequest {
   /** The reference table cell location from which the row will be deleted. The row this cell spans will be deleted. If this is a merged cell that spans multiple rows, all rows that the cell spans will be deleted. If no rows remain in the table after this deletion, the whole table is deleted. */
   tableCellLocation?: TableCellLocation;
 }
 
-export const DeleteTableRowRequest: Schema.Schema<DeleteTableRowRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tableCellLocation: Schema.optional(TableCellLocation),
-    }),
-  ).annotate({
-    identifier: "DeleteTableRowRequest",
-  }) as any as Schema.Schema<DeleteTableRowRequest>;
+export const DeleteTableRowRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tableCellLocation: Schema.optional(TableCellLocation),
+}).annotate({ identifier: "DeleteTableRowRequest" });
 
 export interface InsertSectionBreakRequest {
   /** Inserts a newline and a section break at the end of the document body. Section breaks cannot be inserted inside a footnote, header or footer. Because section breaks can only be inserted inside the body, the segment ID field must be empty. */
@@ -2635,30 +2206,21 @@ export interface InsertSectionBreakRequest {
     | (string & {});
 }
 
-export const InsertSectionBreakRequest: Schema.Schema<InsertSectionBreakRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endOfSegmentLocation: Schema.optional(EndOfSegmentLocation),
-      location: Schema.optional(Location),
-      sectionType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InsertSectionBreakRequest",
-  }) as any as Schema.Schema<InsertSectionBreakRequest>;
+export const InsertSectionBreakRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endOfSegmentLocation: Schema.optional(EndOfSegmentLocation),
+    location: Schema.optional(Location),
+    sectionType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "InsertSectionBreakRequest" });
 
 export interface AddDocumentTabRequest {
   /** The properties of the tab to add. All properties are optional. */
   tabProperties?: TabProperties;
 }
 
-export const AddDocumentTabRequest: Schema.Schema<AddDocumentTabRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tabProperties: Schema.optional(TabProperties),
-    }),
-  ).annotate({
-    identifier: "AddDocumentTabRequest",
-  }) as any as Schema.Schema<AddDocumentTabRequest>;
+export const AddDocumentTabRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tabProperties: Schema.optional(TabProperties),
+}).annotate({ identifier: "AddDocumentTabRequest" });
 
 export interface InsertTableRowRequest {
   /** The reference table cell location from which rows will be inserted. A new row will be inserted above (or below) the row where the reference cell is. If the reference cell is a merged cell, a new row will be inserted above (or below) the merged cell. */
@@ -2667,15 +2229,10 @@ export interface InsertTableRowRequest {
   insertBelow?: boolean;
 }
 
-export const InsertTableRowRequest: Schema.Schema<InsertTableRowRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tableCellLocation: Schema.optional(TableCellLocation),
-      insertBelow: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "InsertTableRowRequest",
-  }) as any as Schema.Schema<InsertTableRowRequest>;
+export const InsertTableRowRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tableCellLocation: Schema.optional(TableCellLocation),
+  insertBelow: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "InsertTableRowRequest" });
 
 export interface InsertDateRequest {
   /** Inserts the date at a specific index in the document. The date must be inserted inside the bounds of an existing Paragraph. For instance, it cannot be inserted at a table's start index (i.e. between an existing table and its preceding paragraph). */
@@ -2686,16 +2243,11 @@ export interface InsertDateRequest {
   dateElementProperties?: DateElementProperties;
 }
 
-export const InsertDateRequest: Schema.Schema<InsertDateRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      location: Schema.optional(Location),
-      endOfSegmentLocation: Schema.optional(EndOfSegmentLocation),
-      dateElementProperties: Schema.optional(DateElementProperties),
-    }),
-  ).annotate({
-    identifier: "InsertDateRequest",
-  }) as any as Schema.Schema<InsertDateRequest>;
+export const InsertDateRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  location: Schema.optional(Location),
+  endOfSegmentLocation: Schema.optional(EndOfSegmentLocation),
+  dateElementProperties: Schema.optional(DateElementProperties),
+}).annotate({ identifier: "InsertDateRequest" });
 
 export interface UpdateTableColumnPropertiesRequest {
   /** The table column properties to update. If the value of `table_column_properties#width` is less than 5 points (5/72 inch), a 400 bad request error is returned. */
@@ -2708,17 +2260,13 @@ export interface UpdateTableColumnPropertiesRequest {
   fields?: string;
 }
 
-export const UpdateTableColumnPropertiesRequest: Schema.Schema<UpdateTableColumnPropertiesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tableColumnProperties: Schema.optional(TableColumnProperties),
-      tableStartLocation: Schema.optional(Location),
-      columnIndices: Schema.optional(Schema.Array(Schema.Number)),
-      fields: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpdateTableColumnPropertiesRequest",
-  }) as any as Schema.Schema<UpdateTableColumnPropertiesRequest>;
+export const UpdateTableColumnPropertiesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tableColumnProperties: Schema.optional(TableColumnProperties),
+    tableStartLocation: Schema.optional(Location),
+    columnIndices: Schema.optional(Schema.Array(Schema.Number)),
+    fields: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UpdateTableColumnPropertiesRequest" });
 
 export interface UpdateTextStyleRequest {
   /** The fields that should be updated. At least one field must be specified. The root `text_style` is implied and should not be specified. A single `"*"` can be used as short-hand for listing every field. For example, to update the text style to bold, set `fields` to `"bold"`. To reset a property to its default value, include its field name in the field mask but leave the field itself unset. */
@@ -2729,16 +2277,13 @@ export interface UpdateTextStyleRequest {
   textStyle?: TextStyle;
 }
 
-export const UpdateTextStyleRequest: Schema.Schema<UpdateTextStyleRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fields: Schema.optional(Schema.String),
-      range: Schema.optional(Range),
-      textStyle: Schema.optional(TextStyle),
-    }),
-  ).annotate({
-    identifier: "UpdateTextStyleRequest",
-  }) as any as Schema.Schema<UpdateTextStyleRequest>;
+export const UpdateTextStyleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    fields: Schema.optional(Schema.String),
+    range: Schema.optional(Range),
+    textStyle: Schema.optional(TextStyle),
+  },
+).annotate({ identifier: "UpdateTextStyleRequest" });
 
 export interface CreateFootnoteRequest {
   /** Inserts the footnote reference at a specific index in the document. The footnote reference must be inserted inside the bounds of an existing Paragraph. For instance, it cannot be inserted at a table's start index (i.e. between the table and its preceding paragraph). Footnote references cannot be inserted inside an equation, header, footer or footnote. Since footnote references can only be inserted in the body, the segment ID field must be empty. */
@@ -2747,15 +2292,10 @@ export interface CreateFootnoteRequest {
   endOfSegmentLocation?: EndOfSegmentLocation;
 }
 
-export const CreateFootnoteRequest: Schema.Schema<CreateFootnoteRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      location: Schema.optional(Location),
-      endOfSegmentLocation: Schema.optional(EndOfSegmentLocation),
-    }),
-  ).annotate({
-    identifier: "CreateFootnoteRequest",
-  }) as any as Schema.Schema<CreateFootnoteRequest>;
+export const CreateFootnoteRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  location: Schema.optional(Location),
+  endOfSegmentLocation: Schema.optional(EndOfSegmentLocation),
+}).annotate({ identifier: "CreateFootnoteRequest" });
 
 export interface DeleteHeaderRequest {
   /** The id of the header to delete. If this header is defined on DocumentStyle, the reference to this header is removed, resulting in no header of that type for the first section of the document. If this header is defined on a SectionStyle, the reference to this header is removed and the header of that type is now continued from the previous section. */
@@ -2764,15 +2304,10 @@ export interface DeleteHeaderRequest {
   tabId?: string;
 }
 
-export const DeleteHeaderRequest: Schema.Schema<DeleteHeaderRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      headerId: Schema.optional(Schema.String),
-      tabId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DeleteHeaderRequest",
-  }) as any as Schema.Schema<DeleteHeaderRequest>;
+export const DeleteHeaderRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  headerId: Schema.optional(Schema.String),
+  tabId: Schema.optional(Schema.String),
+}).annotate({ identifier: "DeleteHeaderRequest" });
 
 export interface SubstringMatchCriteria {
   /** Indicates whether the search should respect case: - `True`: the search is case sensitive. - `False`: the search is case insensitive. */
@@ -2783,16 +2318,13 @@ export interface SubstringMatchCriteria {
   text?: string;
 }
 
-export const SubstringMatchCriteria: Schema.Schema<SubstringMatchCriteria> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      matchCase: Schema.optional(Schema.Boolean),
-      searchByRegex: Schema.optional(Schema.Boolean),
-      text: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SubstringMatchCriteria",
-  }) as any as Schema.Schema<SubstringMatchCriteria>;
+export const SubstringMatchCriteria = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    matchCase: Schema.optional(Schema.Boolean),
+    searchByRegex: Schema.optional(Schema.Boolean),
+    text: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "SubstringMatchCriteria" });
 
 export interface ReplaceAllTextRequest {
   /** The text that will replace the matched text. */
@@ -2803,16 +2335,11 @@ export interface ReplaceAllTextRequest {
   tabsCriteria?: TabsCriteria;
 }
 
-export const ReplaceAllTextRequest: Schema.Schema<ReplaceAllTextRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      replaceText: Schema.optional(Schema.String),
-      containsText: Schema.optional(SubstringMatchCriteria),
-      tabsCriteria: Schema.optional(TabsCriteria),
-    }),
-  ).annotate({
-    identifier: "ReplaceAllTextRequest",
-  }) as any as Schema.Schema<ReplaceAllTextRequest>;
+export const ReplaceAllTextRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  replaceText: Schema.optional(Schema.String),
+  containsText: Schema.optional(SubstringMatchCriteria),
+  tabsCriteria: Schema.optional(TabsCriteria),
+}).annotate({ identifier: "ReplaceAllTextRequest" });
 
 export interface DeletePositionedObjectRequest {
   /** The ID of the positioned object to delete. */
@@ -2821,15 +2348,11 @@ export interface DeletePositionedObjectRequest {
   tabId?: string;
 }
 
-export const DeletePositionedObjectRequest: Schema.Schema<DeletePositionedObjectRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      objectId: Schema.optional(Schema.String),
-      tabId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DeletePositionedObjectRequest",
-  }) as any as Schema.Schema<DeletePositionedObjectRequest>;
+export const DeletePositionedObjectRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    objectId: Schema.optional(Schema.String),
+    tabId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DeletePositionedObjectRequest" });
 
 export interface Request {
   /** Updates the section style of the specified range. */
@@ -2910,55 +2433,50 @@ export interface Request {
   deletePositionedObject?: DeletePositionedObjectRequest;
 }
 
-export const Request: Schema.Schema<Request> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateSectionStyle: Schema.optional(UpdateSectionStyleRequest),
-      deleteParagraphBullets: Schema.optional(DeleteParagraphBulletsRequest),
-      deleteContentRange: Schema.optional(DeleteContentRangeRequest),
-      updateDocumentStyle: Schema.optional(UpdateDocumentStyleRequest),
-      updateTableCellStyle: Schema.optional(UpdateTableCellStyleRequest),
-      insertText: Schema.optional(InsertTextRequest),
-      updateTableRowStyle: Schema.optional(UpdateTableRowStyleRequest),
-      createParagraphBullets: Schema.optional(CreateParagraphBulletsRequest),
-      insertTable: Schema.optional(InsertTableRequest),
-      insertInlineImage: Schema.optional(InsertInlineImageRequest),
-      mergeTableCells: Schema.optional(MergeTableCellsRequest),
-      deleteTab: Schema.optional(DeleteTabRequest),
-      deleteNamedRange: Schema.optional(DeleteNamedRangeRequest),
-      pinTableHeaderRows: Schema.optional(PinTableHeaderRowsRequest),
-      createHeader: Schema.optional(CreateHeaderRequest),
-      unmergeTableCells: Schema.optional(UnmergeTableCellsRequest),
-      deleteFooter: Schema.optional(DeleteFooterRequest),
-      insertPageBreak: Schema.optional(InsertPageBreakRequest),
-      insertTableColumn: Schema.optional(InsertTableColumnRequest),
-      replaceNamedRangeContent: Schema.optional(
-        ReplaceNamedRangeContentRequest,
-      ),
-      updateDocumentTabProperties: Schema.optional(
-        UpdateDocumentTabPropertiesRequest,
-      ),
-      updateParagraphStyle: Schema.optional(UpdateParagraphStyleRequest),
-      createNamedRange: Schema.optional(CreateNamedRangeRequest),
-      replaceImage: Schema.optional(ReplaceImageRequest),
-      deleteTableColumn: Schema.optional(DeleteTableColumnRequest),
-      deleteTableRow: Schema.optional(DeleteTableRowRequest),
-      insertSectionBreak: Schema.optional(InsertSectionBreakRequest),
-      addDocumentTab: Schema.optional(AddDocumentTabRequest),
-      insertPerson: Schema.optional(InsertPersonRequest),
-      insertTableRow: Schema.optional(InsertTableRowRequest),
-      insertDate: Schema.optional(InsertDateRequest),
-      updateTableColumnProperties: Schema.optional(
-        UpdateTableColumnPropertiesRequest,
-      ),
-      updateTextStyle: Schema.optional(UpdateTextStyleRequest),
-      createFooter: Schema.optional(CreateFooterRequest),
-      createFootnote: Schema.optional(CreateFootnoteRequest),
-      deleteHeader: Schema.optional(DeleteHeaderRequest),
-      replaceAllText: Schema.optional(ReplaceAllTextRequest),
-      deletePositionedObject: Schema.optional(DeletePositionedObjectRequest),
-    }),
-  ).annotate({ identifier: "Request" }) as any as Schema.Schema<Request>;
+export const Request = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  updateSectionStyle: Schema.optional(UpdateSectionStyleRequest),
+  deleteParagraphBullets: Schema.optional(DeleteParagraphBulletsRequest),
+  deleteContentRange: Schema.optional(DeleteContentRangeRequest),
+  updateDocumentStyle: Schema.optional(UpdateDocumentStyleRequest),
+  updateTableCellStyle: Schema.optional(UpdateTableCellStyleRequest),
+  insertText: Schema.optional(InsertTextRequest),
+  updateTableRowStyle: Schema.optional(UpdateTableRowStyleRequest),
+  createParagraphBullets: Schema.optional(CreateParagraphBulletsRequest),
+  insertTable: Schema.optional(InsertTableRequest),
+  insertInlineImage: Schema.optional(InsertInlineImageRequest),
+  mergeTableCells: Schema.optional(MergeTableCellsRequest),
+  deleteTab: Schema.optional(DeleteTabRequest),
+  deleteNamedRange: Schema.optional(DeleteNamedRangeRequest),
+  pinTableHeaderRows: Schema.optional(PinTableHeaderRowsRequest),
+  createHeader: Schema.optional(CreateHeaderRequest),
+  unmergeTableCells: Schema.optional(UnmergeTableCellsRequest),
+  deleteFooter: Schema.optional(DeleteFooterRequest),
+  insertPageBreak: Schema.optional(InsertPageBreakRequest),
+  insertTableColumn: Schema.optional(InsertTableColumnRequest),
+  replaceNamedRangeContent: Schema.optional(ReplaceNamedRangeContentRequest),
+  updateDocumentTabProperties: Schema.optional(
+    UpdateDocumentTabPropertiesRequest,
+  ),
+  updateParagraphStyle: Schema.optional(UpdateParagraphStyleRequest),
+  createNamedRange: Schema.optional(CreateNamedRangeRequest),
+  replaceImage: Schema.optional(ReplaceImageRequest),
+  deleteTableColumn: Schema.optional(DeleteTableColumnRequest),
+  deleteTableRow: Schema.optional(DeleteTableRowRequest),
+  insertSectionBreak: Schema.optional(InsertSectionBreakRequest),
+  addDocumentTab: Schema.optional(AddDocumentTabRequest),
+  insertPerson: Schema.optional(InsertPersonRequest),
+  insertTableRow: Schema.optional(InsertTableRowRequest),
+  insertDate: Schema.optional(InsertDateRequest),
+  updateTableColumnProperties: Schema.optional(
+    UpdateTableColumnPropertiesRequest,
+  ),
+  updateTextStyle: Schema.optional(UpdateTextStyleRequest),
+  createFooter: Schema.optional(CreateFooterRequest),
+  createFootnote: Schema.optional(CreateFootnoteRequest),
+  deleteHeader: Schema.optional(DeleteHeaderRequest),
+  replaceAllText: Schema.optional(ReplaceAllTextRequest),
+  deletePositionedObject: Schema.optional(DeletePositionedObjectRequest),
+}).annotate({ identifier: "Request" });
 
 export interface WriteControl {
   /** The optional revision ID of the document the write request is applied to. If this is not the latest revision of the document, the request is not processed and returns a 400 bad request error. When a required revision ID is returned in a response, it indicates the revision ID of the document after the request was applied. */
@@ -2967,15 +2485,10 @@ export interface WriteControl {
   targetRevisionId?: string;
 }
 
-export const WriteControl: Schema.Schema<WriteControl> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requiredRevisionId: Schema.optional(Schema.String),
-      targetRevisionId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WriteControl",
-  }) as any as Schema.Schema<WriteControl>;
+export const WriteControl = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  requiredRevisionId: Schema.optional(Schema.String),
+  targetRevisionId: Schema.optional(Schema.String),
+}).annotate({ identifier: "WriteControl" });
 
 export interface BatchUpdateDocumentRequest {
   /** A list of updates to apply to the document. */
@@ -2984,15 +2497,11 @@ export interface BatchUpdateDocumentRequest {
   writeControl?: WriteControl;
 }
 
-export const BatchUpdateDocumentRequest: Schema.Schema<BatchUpdateDocumentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requests: Schema.optional(Schema.Array(Request)),
-      writeControl: Schema.optional(WriteControl),
-    }),
-  ).annotate({
-    identifier: "BatchUpdateDocumentRequest",
-  }) as any as Schema.Schema<BatchUpdateDocumentRequest>;
+export const BatchUpdateDocumentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requests: Schema.optional(Schema.Array(Request)),
+    writeControl: Schema.optional(WriteControl),
+  }).annotate({ identifier: "BatchUpdateDocumentRequest" });
 
 export interface SheetsChartReferenceSuggestionState {
   /** Indicates if there was a suggested change to chart_id. */
@@ -3001,38 +2510,30 @@ export interface SheetsChartReferenceSuggestionState {
   spreadsheetIdSuggested?: boolean;
 }
 
-export const SheetsChartReferenceSuggestionState: Schema.Schema<SheetsChartReferenceSuggestionState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      chartIdSuggested: Schema.optional(Schema.Boolean),
-      spreadsheetIdSuggested: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "SheetsChartReferenceSuggestionState",
-  }) as any as Schema.Schema<SheetsChartReferenceSuggestionState>;
+export const SheetsChartReferenceSuggestionState =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    chartIdSuggested: Schema.optional(Schema.Boolean),
+    spreadsheetIdSuggested: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "SheetsChartReferenceSuggestionState" });
 
 export interface LinkedContentReferenceSuggestionState {
   /** A mask that indicates which of the fields in sheets_chart_reference have been changed in this suggestion. */
   sheetsChartReferenceSuggestionState?: SheetsChartReferenceSuggestionState;
 }
 
-export const LinkedContentReferenceSuggestionState: Schema.Schema<LinkedContentReferenceSuggestionState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sheetsChartReferenceSuggestionState: Schema.optional(
-        SheetsChartReferenceSuggestionState,
-      ),
-    }),
-  ).annotate({
-    identifier: "LinkedContentReferenceSuggestionState",
-  }) as any as Schema.Schema<LinkedContentReferenceSuggestionState>;
+export const LinkedContentReferenceSuggestionState =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sheetsChartReferenceSuggestionState: Schema.optional(
+      SheetsChartReferenceSuggestionState,
+    ),
+  }).annotate({ identifier: "LinkedContentReferenceSuggestionState" });
 
 export interface EmbeddedDrawingPropertiesSuggestionState {}
 
-export const EmbeddedDrawingPropertiesSuggestionState: Schema.Schema<EmbeddedDrawingPropertiesSuggestionState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const EmbeddedDrawingPropertiesSuggestionState =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "EmbeddedDrawingPropertiesSuggestionState",
-  }) as any as Schema.Schema<EmbeddedDrawingPropertiesSuggestionState>;
+  });
 
 export interface EmbeddedObjectBorderSuggestionState {
   /** Indicates if there was a suggested change to color. */
@@ -3045,17 +2546,13 @@ export interface EmbeddedObjectBorderSuggestionState {
   propertyStateSuggested?: boolean;
 }
 
-export const EmbeddedObjectBorderSuggestionState: Schema.Schema<EmbeddedObjectBorderSuggestionState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      colorSuggested: Schema.optional(Schema.Boolean),
-      dashStyleSuggested: Schema.optional(Schema.Boolean),
-      widthSuggested: Schema.optional(Schema.Boolean),
-      propertyStateSuggested: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "EmbeddedObjectBorderSuggestionState",
-  }) as any as Schema.Schema<EmbeddedObjectBorderSuggestionState>;
+export const EmbeddedObjectBorderSuggestionState =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    colorSuggested: Schema.optional(Schema.Boolean),
+    dashStyleSuggested: Schema.optional(Schema.Boolean),
+    widthSuggested: Schema.optional(Schema.Boolean),
+    propertyStateSuggested: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "EmbeddedObjectBorderSuggestionState" });
 
 export interface SizeSuggestionState {
   /** Indicates if there was a suggested change to width. */
@@ -3064,15 +2561,10 @@ export interface SizeSuggestionState {
   heightSuggested?: boolean;
 }
 
-export const SizeSuggestionState: Schema.Schema<SizeSuggestionState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      widthSuggested: Schema.optional(Schema.Boolean),
-      heightSuggested: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "SizeSuggestionState",
-  }) as any as Schema.Schema<SizeSuggestionState>;
+export const SizeSuggestionState = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  widthSuggested: Schema.optional(Schema.Boolean),
+  heightSuggested: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "SizeSuggestionState" });
 
 export interface EmbeddedObjectSuggestionState {
   /** Indicates if there was a suggested change to margin_right. */
@@ -3099,32 +2591,28 @@ export interface EmbeddedObjectSuggestionState {
   marginBottomSuggested?: boolean;
 }
 
-export const EmbeddedObjectSuggestionState: Schema.Schema<EmbeddedObjectSuggestionState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      marginRightSuggested: Schema.optional(Schema.Boolean),
-      linkedContentReferenceSuggestionState: Schema.optional(
-        LinkedContentReferenceSuggestionState,
-      ),
-      marginLeftSuggested: Schema.optional(Schema.Boolean),
-      marginTopSuggested: Schema.optional(Schema.Boolean),
-      descriptionSuggested: Schema.optional(Schema.Boolean),
-      embeddedDrawingPropertiesSuggestionState: Schema.optional(
-        EmbeddedDrawingPropertiesSuggestionState,
-      ),
-      embeddedObjectBorderSuggestionState: Schema.optional(
-        EmbeddedObjectBorderSuggestionState,
-      ),
-      titleSuggested: Schema.optional(Schema.Boolean),
-      sizeSuggestionState: Schema.optional(SizeSuggestionState),
-      imagePropertiesSuggestionState: Schema.optional(
-        ImagePropertiesSuggestionState,
-      ),
-      marginBottomSuggested: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "EmbeddedObjectSuggestionState",
-  }) as any as Schema.Schema<EmbeddedObjectSuggestionState>;
+export const EmbeddedObjectSuggestionState =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    marginRightSuggested: Schema.optional(Schema.Boolean),
+    linkedContentReferenceSuggestionState: Schema.optional(
+      LinkedContentReferenceSuggestionState,
+    ),
+    marginLeftSuggested: Schema.optional(Schema.Boolean),
+    marginTopSuggested: Schema.optional(Schema.Boolean),
+    descriptionSuggested: Schema.optional(Schema.Boolean),
+    embeddedDrawingPropertiesSuggestionState: Schema.optional(
+      EmbeddedDrawingPropertiesSuggestionState,
+    ),
+    embeddedObjectBorderSuggestionState: Schema.optional(
+      EmbeddedObjectBorderSuggestionState,
+    ),
+    titleSuggested: Schema.optional(Schema.Boolean),
+    sizeSuggestionState: Schema.optional(SizeSuggestionState),
+    imagePropertiesSuggestionState: Schema.optional(
+      ImagePropertiesSuggestionState,
+    ),
+    marginBottomSuggested: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "EmbeddedObjectSuggestionState" });
 
 export interface PositionedObjectPositioningSuggestionState {
   /** Indicates if there was a suggested change to layout. */
@@ -3135,16 +2623,12 @@ export interface PositionedObjectPositioningSuggestionState {
   topOffsetSuggested?: boolean;
 }
 
-export const PositionedObjectPositioningSuggestionState: Schema.Schema<PositionedObjectPositioningSuggestionState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      layoutSuggested: Schema.optional(Schema.Boolean),
-      leftOffsetSuggested: Schema.optional(Schema.Boolean),
-      topOffsetSuggested: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "PositionedObjectPositioningSuggestionState",
-  }) as any as Schema.Schema<PositionedObjectPositioningSuggestionState>;
+export const PositionedObjectPositioningSuggestionState =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    layoutSuggested: Schema.optional(Schema.Boolean),
+    leftOffsetSuggested: Schema.optional(Schema.Boolean),
+    topOffsetSuggested: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "PositionedObjectPositioningSuggestionState" });
 
 export interface PositionedObjectPropertiesSuggestionState {
   /** A mask that indicates which of the fields in embedded_object have been changed in this suggestion. */
@@ -3153,19 +2637,15 @@ export interface PositionedObjectPropertiesSuggestionState {
   positioningSuggestionState?: PositionedObjectPositioningSuggestionState;
 }
 
-export const PositionedObjectPropertiesSuggestionState: Schema.Schema<PositionedObjectPropertiesSuggestionState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      embeddedObjectSuggestionState: Schema.optional(
-        EmbeddedObjectSuggestionState,
-      ),
-      positioningSuggestionState: Schema.optional(
-        PositionedObjectPositioningSuggestionState,
-      ),
-    }),
-  ).annotate({
-    identifier: "PositionedObjectPropertiesSuggestionState",
-  }) as any as Schema.Schema<PositionedObjectPropertiesSuggestionState>;
+export const PositionedObjectPropertiesSuggestionState =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    embeddedObjectSuggestionState: Schema.optional(
+      EmbeddedObjectSuggestionState,
+    ),
+    positioningSuggestionState: Schema.optional(
+      PositionedObjectPositioningSuggestionState,
+    ),
+  }).annotate({ identifier: "PositionedObjectPropertiesSuggestionState" });
 
 export interface NestingLevelSuggestionState {
   /** Indicates if there was a suggested change to glyph_type. */
@@ -3186,49 +2666,37 @@ export interface NestingLevelSuggestionState {
   startNumberSuggested?: boolean;
 }
 
-export const NestingLevelSuggestionState: Schema.Schema<NestingLevelSuggestionState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      glyphTypeSuggested: Schema.optional(Schema.Boolean),
-      indentFirstLineSuggested: Schema.optional(Schema.Boolean),
-      glyphSymbolSuggested: Schema.optional(Schema.Boolean),
-      bulletAlignmentSuggested: Schema.optional(Schema.Boolean),
-      glyphFormatSuggested: Schema.optional(Schema.Boolean),
-      indentStartSuggested: Schema.optional(Schema.Boolean),
-      textStyleSuggestionState: Schema.optional(TextStyleSuggestionState),
-      startNumberSuggested: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "NestingLevelSuggestionState",
-  }) as any as Schema.Schema<NestingLevelSuggestionState>;
+export const NestingLevelSuggestionState =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    glyphTypeSuggested: Schema.optional(Schema.Boolean),
+    indentFirstLineSuggested: Schema.optional(Schema.Boolean),
+    glyphSymbolSuggested: Schema.optional(Schema.Boolean),
+    bulletAlignmentSuggested: Schema.optional(Schema.Boolean),
+    glyphFormatSuggested: Schema.optional(Schema.Boolean),
+    indentStartSuggested: Schema.optional(Schema.Boolean),
+    textStyleSuggestionState: Schema.optional(TextStyleSuggestionState),
+    startNumberSuggested: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "NestingLevelSuggestionState" });
 
 export interface InsertInlineImageResponse {
   /** The ID of the created InlineObject. */
   objectId?: string;
 }
 
-export const InsertInlineImageResponse: Schema.Schema<InsertInlineImageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      objectId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InsertInlineImageResponse",
-  }) as any as Schema.Schema<InsertInlineImageResponse>;
+export const InsertInlineImageResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    objectId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "InsertInlineImageResponse" });
 
 export interface BackgroundSuggestionState {
   /** Indicates whether the current background color has been modified in this suggestion. */
   backgroundColorSuggested?: boolean;
 }
 
-export const BackgroundSuggestionState: Schema.Schema<BackgroundSuggestionState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      backgroundColorSuggested: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "BackgroundSuggestionState",
-  }) as any as Schema.Schema<BackgroundSuggestionState>;
+export const BackgroundSuggestionState =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    backgroundColorSuggested: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "BackgroundSuggestionState" });
 
 export interface DocumentStyleSuggestionState {
   /** A mask that indicates which of the fields in background have been changed in this suggestion. */
@@ -3271,32 +2739,28 @@ export interface DocumentStyleSuggestionState {
   pageNumberStartSuggested?: boolean;
 }
 
-export const DocumentStyleSuggestionState: Schema.Schema<DocumentStyleSuggestionState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      backgroundSuggestionState: Schema.optional(BackgroundSuggestionState),
-      firstPageHeaderIdSuggested: Schema.optional(Schema.Boolean),
-      evenPageHeaderIdSuggested: Schema.optional(Schema.Boolean),
-      marginFooterSuggested: Schema.optional(Schema.Boolean),
-      flipPageOrientationSuggested: Schema.optional(Schema.Boolean),
-      firstPageFooterIdSuggested: Schema.optional(Schema.Boolean),
-      marginRightSuggested: Schema.optional(Schema.Boolean),
-      marginHeaderSuggested: Schema.optional(Schema.Boolean),
-      evenPageFooterIdSuggested: Schema.optional(Schema.Boolean),
-      useEvenPageHeaderFooterSuggested: Schema.optional(Schema.Boolean),
-      marginBottomSuggested: Schema.optional(Schema.Boolean),
-      useCustomHeaderFooterMarginsSuggested: Schema.optional(Schema.Boolean),
-      defaultHeaderIdSuggested: Schema.optional(Schema.Boolean),
-      marginTopSuggested: Schema.optional(Schema.Boolean),
-      marginLeftSuggested: Schema.optional(Schema.Boolean),
-      pageSizeSuggestionState: Schema.optional(SizeSuggestionState),
-      defaultFooterIdSuggested: Schema.optional(Schema.Boolean),
-      useFirstPageHeaderFooterSuggested: Schema.optional(Schema.Boolean),
-      pageNumberStartSuggested: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "DocumentStyleSuggestionState",
-  }) as any as Schema.Schema<DocumentStyleSuggestionState>;
+export const DocumentStyleSuggestionState =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    backgroundSuggestionState: Schema.optional(BackgroundSuggestionState),
+    firstPageHeaderIdSuggested: Schema.optional(Schema.Boolean),
+    evenPageHeaderIdSuggested: Schema.optional(Schema.Boolean),
+    marginFooterSuggested: Schema.optional(Schema.Boolean),
+    flipPageOrientationSuggested: Schema.optional(Schema.Boolean),
+    firstPageFooterIdSuggested: Schema.optional(Schema.Boolean),
+    marginRightSuggested: Schema.optional(Schema.Boolean),
+    marginHeaderSuggested: Schema.optional(Schema.Boolean),
+    evenPageFooterIdSuggested: Schema.optional(Schema.Boolean),
+    useEvenPageHeaderFooterSuggested: Schema.optional(Schema.Boolean),
+    marginBottomSuggested: Schema.optional(Schema.Boolean),
+    useCustomHeaderFooterMarginsSuggested: Schema.optional(Schema.Boolean),
+    defaultHeaderIdSuggested: Schema.optional(Schema.Boolean),
+    marginTopSuggested: Schema.optional(Schema.Boolean),
+    marginLeftSuggested: Schema.optional(Schema.Boolean),
+    pageSizeSuggestionState: Schema.optional(SizeSuggestionState),
+    defaultFooterIdSuggested: Schema.optional(Schema.Boolean),
+    useFirstPageHeaderFooterSuggested: Schema.optional(Schema.Boolean),
+    pageNumberStartSuggested: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "DocumentStyleSuggestionState" });
 
 export interface PositionedObjectPositioning {
   /** The layout of this positioned object. */
@@ -3315,23 +2779,19 @@ export interface PositionedObjectPositioning {
   topOffset?: Dimension;
 }
 
-export const PositionedObjectPositioning: Schema.Schema<PositionedObjectPositioning> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      layout: Schema.optional(Schema.String),
-      leftOffset: Schema.optional(Dimension),
-      topOffset: Schema.optional(Dimension),
-    }),
-  ).annotate({
-    identifier: "PositionedObjectPositioning",
-  }) as any as Schema.Schema<PositionedObjectPositioning>;
+export const PositionedObjectPositioning =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    layout: Schema.optional(Schema.String),
+    leftOffset: Schema.optional(Dimension),
+    topOffset: Schema.optional(Dimension),
+  }).annotate({ identifier: "PositionedObjectPositioning" });
 
 export interface EmbeddedDrawingProperties {}
 
-export const EmbeddedDrawingProperties: Schema.Schema<EmbeddedDrawingProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const EmbeddedDrawingProperties =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "EmbeddedDrawingProperties",
-  }) as any as Schema.Schema<EmbeddedDrawingProperties>;
+  });
 
 export interface CropProperties {
   /** The offset specifies how far inwards the right edge of the crop rectangle is from the right edge of the original content as a fraction of the original content's width. */
@@ -3346,18 +2806,13 @@ export interface CropProperties {
   offsetBottom?: number;
 }
 
-export const CropProperties: Schema.Schema<CropProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      offsetRight: Schema.optional(Schema.Number),
-      angle: Schema.optional(Schema.Number),
-      offsetLeft: Schema.optional(Schema.Number),
-      offsetTop: Schema.optional(Schema.Number),
-      offsetBottom: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "CropProperties",
-  }) as any as Schema.Schema<CropProperties>;
+export const CropProperties = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  offsetRight: Schema.optional(Schema.Number),
+  angle: Schema.optional(Schema.Number),
+  offsetLeft: Schema.optional(Schema.Number),
+  offsetTop: Schema.optional(Schema.Number),
+  offsetBottom: Schema.optional(Schema.Number),
+}).annotate({ identifier: "CropProperties" });
 
 export interface ImageProperties {
   /** The clockwise rotation angle of the image, in radians. */
@@ -3376,20 +2831,15 @@ export interface ImageProperties {
   transparency?: number;
 }
 
-export const ImageProperties: Schema.Schema<ImageProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      angle: Schema.optional(Schema.Number),
-      contrast: Schema.optional(Schema.Number),
-      cropProperties: Schema.optional(CropProperties),
-      contentUri: Schema.optional(Schema.String),
-      sourceUri: Schema.optional(Schema.String),
-      brightness: Schema.optional(Schema.Number),
-      transparency: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "ImageProperties",
-  }) as any as Schema.Schema<ImageProperties>;
+export const ImageProperties = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  angle: Schema.optional(Schema.Number),
+  contrast: Schema.optional(Schema.Number),
+  cropProperties: Schema.optional(CropProperties),
+  contentUri: Schema.optional(Schema.String),
+  sourceUri: Schema.optional(Schema.String),
+  brightness: Schema.optional(Schema.Number),
+  transparency: Schema.optional(Schema.Number),
+}).annotate({ identifier: "ImageProperties" });
 
 export interface EmbeddedObjectBorder {
   /** The width of the border. */
@@ -3407,17 +2857,12 @@ export interface EmbeddedObjectBorder {
   color?: OptionalColor;
 }
 
-export const EmbeddedObjectBorder: Schema.Schema<EmbeddedObjectBorder> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      width: Schema.optional(Dimension),
-      dashStyle: Schema.optional(Schema.String),
-      propertyState: Schema.optional(Schema.String),
-      color: Schema.optional(OptionalColor),
-    }),
-  ).annotate({
-    identifier: "EmbeddedObjectBorder",
-  }) as any as Schema.Schema<EmbeddedObjectBorder>;
+export const EmbeddedObjectBorder = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  width: Schema.optional(Dimension),
+  dashStyle: Schema.optional(Schema.String),
+  propertyState: Schema.optional(Schema.String),
+  color: Schema.optional(OptionalColor),
+}).annotate({ identifier: "EmbeddedObjectBorder" });
 
 export interface EmbeddedObject {
   /** The bottom margin of the embedded object. */
@@ -3444,24 +2889,19 @@ export interface EmbeddedObject {
   embeddedObjectBorder?: EmbeddedObjectBorder;
 }
 
-export const EmbeddedObject: Schema.Schema<EmbeddedObject> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      marginBottom: Schema.optional(Dimension),
-      marginRight: Schema.optional(Dimension),
-      size: Schema.optional(Size),
-      embeddedDrawingProperties: Schema.optional(EmbeddedDrawingProperties),
-      marginLeft: Schema.optional(Dimension),
-      imageProperties: Schema.optional(ImageProperties),
-      description: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      linkedContentReference: Schema.optional(LinkedContentReference),
-      marginTop: Schema.optional(Dimension),
-      embeddedObjectBorder: Schema.optional(EmbeddedObjectBorder),
-    }),
-  ).annotate({
-    identifier: "EmbeddedObject",
-  }) as any as Schema.Schema<EmbeddedObject>;
+export const EmbeddedObject = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  marginBottom: Schema.optional(Dimension),
+  marginRight: Schema.optional(Dimension),
+  size: Schema.optional(Size),
+  embeddedDrawingProperties: Schema.optional(EmbeddedDrawingProperties),
+  marginLeft: Schema.optional(Dimension),
+  imageProperties: Schema.optional(ImageProperties),
+  description: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  linkedContentReference: Schema.optional(LinkedContentReference),
+  marginTop: Schema.optional(Dimension),
+  embeddedObjectBorder: Schema.optional(EmbeddedObjectBorder),
+}).annotate({ identifier: "EmbeddedObject" });
 
 export interface PositionedObjectProperties {
   /** The positioning of this positioned object relative to the newline of the Paragraph that references this positioned object. */
@@ -3470,45 +2910,34 @@ export interface PositionedObjectProperties {
   embeddedObject?: EmbeddedObject;
 }
 
-export const PositionedObjectProperties: Schema.Schema<PositionedObjectProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      positioning: Schema.optional(PositionedObjectPositioning),
-      embeddedObject: Schema.optional(EmbeddedObject),
-    }),
-  ).annotate({
-    identifier: "PositionedObjectProperties",
-  }) as any as Schema.Schema<PositionedObjectProperties>;
+export const PositionedObjectProperties =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    positioning: Schema.optional(PositionedObjectPositioning),
+    embeddedObject: Schema.optional(EmbeddedObject),
+  }).annotate({ identifier: "PositionedObjectProperties" });
 
 export interface InlineObjectProperties {
   /** The embedded object of this inline object. */
   embeddedObject?: EmbeddedObject;
 }
 
-export const InlineObjectProperties: Schema.Schema<InlineObjectProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      embeddedObject: Schema.optional(EmbeddedObject),
-    }),
-  ).annotate({
-    identifier: "InlineObjectProperties",
-  }) as any as Schema.Schema<InlineObjectProperties>;
+export const InlineObjectProperties = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    embeddedObject: Schema.optional(EmbeddedObject),
+  },
+).annotate({ identifier: "InlineObjectProperties" });
 
 export interface InlineObjectPropertiesSuggestionState {
   /** A mask that indicates which of the fields in embedded_object have been changed in this suggestion. */
   embeddedObjectSuggestionState?: EmbeddedObjectSuggestionState;
 }
 
-export const InlineObjectPropertiesSuggestionState: Schema.Schema<InlineObjectPropertiesSuggestionState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      embeddedObjectSuggestionState: Schema.optional(
-        EmbeddedObjectSuggestionState,
-      ),
-    }),
-  ).annotate({
-    identifier: "InlineObjectPropertiesSuggestionState",
-  }) as any as Schema.Schema<InlineObjectPropertiesSuggestionState>;
+export const InlineObjectPropertiesSuggestionState =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    embeddedObjectSuggestionState: Schema.optional(
+      EmbeddedObjectSuggestionState,
+    ),
+  }).annotate({ identifier: "InlineObjectPropertiesSuggestionState" });
 
 export interface SuggestedInlineObjectProperties {
   /** An InlineObjectProperties that only includes the changes made in this suggestion. This can be used along with the inline_object_properties_suggestion_state to see which fields have changed and their new values. */
@@ -3517,31 +2946,23 @@ export interface SuggestedInlineObjectProperties {
   inlineObjectPropertiesSuggestionState?: InlineObjectPropertiesSuggestionState;
 }
 
-export const SuggestedInlineObjectProperties: Schema.Schema<SuggestedInlineObjectProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inlineObjectProperties: Schema.optional(InlineObjectProperties),
-      inlineObjectPropertiesSuggestionState: Schema.optional(
-        InlineObjectPropertiesSuggestionState,
-      ),
-    }),
-  ).annotate({
-    identifier: "SuggestedInlineObjectProperties",
-  }) as any as Schema.Schema<SuggestedInlineObjectProperties>;
+export const SuggestedInlineObjectProperties =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    inlineObjectProperties: Schema.optional(InlineObjectProperties),
+    inlineObjectPropertiesSuggestionState: Schema.optional(
+      InlineObjectPropertiesSuggestionState,
+    ),
+  }).annotate({ identifier: "SuggestedInlineObjectProperties" });
 
 export interface CreateNamedRangeResponse {
   /** The ID of the created named range. */
   namedRangeId?: string;
 }
 
-export const CreateNamedRangeResponse: Schema.Schema<CreateNamedRangeResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      namedRangeId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreateNamedRangeResponse",
-  }) as any as Schema.Schema<CreateNamedRangeResponse>;
+export const CreateNamedRangeResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    namedRangeId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CreateNamedRangeResponse" });
 
 export interface Footnote {
   /** The contents of the footnote. The indexes for a footnote's content begin at zero. */
@@ -3550,29 +2971,22 @@ export interface Footnote {
   footnoteId?: string;
 }
 
-export const Footnote: Schema.Schema<Footnote> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      content: Schema.optional(Schema.Array(StructuralElement)),
-      footnoteId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Footnote" }) as any as Schema.Schema<Footnote>;
+export const Footnote = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  content: Schema.optional(Schema.Array(StructuralElement)),
+  footnoteId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Footnote" });
 
 export interface ListPropertiesSuggestionState {
   /** A mask that indicates which of the fields on the corresponding NestingLevel in nesting_levels have been changed in this suggestion. The nesting level suggestion states are returned in ascending order of the nesting level with the least nested returned first. */
   nestingLevelsSuggestionStates?: Array<NestingLevelSuggestionState>;
 }
 
-export const ListPropertiesSuggestionState: Schema.Schema<ListPropertiesSuggestionState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nestingLevelsSuggestionStates: Schema.optional(
-        Schema.Array(NestingLevelSuggestionState),
-      ),
-    }),
-  ).annotate({
-    identifier: "ListPropertiesSuggestionState",
-  }) as any as Schema.Schema<ListPropertiesSuggestionState>;
+export const ListPropertiesSuggestionState =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nestingLevelsSuggestionStates: Schema.optional(
+      Schema.Array(NestingLevelSuggestionState),
+    ),
+  }).annotate({ identifier: "ListPropertiesSuggestionState" });
 
 export interface NestingLevel {
   /** The alignment of the bullet within the space allotted for rendering the bullet. */
@@ -3607,35 +3021,25 @@ export interface NestingLevel {
   startNumber?: number;
 }
 
-export const NestingLevel: Schema.Schema<NestingLevel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bulletAlignment: Schema.optional(Schema.String),
-      glyphSymbol: Schema.optional(Schema.String),
-      textStyle: Schema.optional(TextStyle),
-      indentFirstLine: Schema.optional(Dimension),
-      glyphFormat: Schema.optional(Schema.String),
-      glyphType: Schema.optional(Schema.String),
-      indentStart: Schema.optional(Dimension),
-      startNumber: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "NestingLevel",
-  }) as any as Schema.Schema<NestingLevel>;
+export const NestingLevel = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bulletAlignment: Schema.optional(Schema.String),
+  glyphSymbol: Schema.optional(Schema.String),
+  textStyle: Schema.optional(TextStyle),
+  indentFirstLine: Schema.optional(Dimension),
+  glyphFormat: Schema.optional(Schema.String),
+  glyphType: Schema.optional(Schema.String),
+  indentStart: Schema.optional(Dimension),
+  startNumber: Schema.optional(Schema.Number),
+}).annotate({ identifier: "NestingLevel" });
 
 export interface ListProperties {
   /** Describes the properties of the bullets at the associated level. A list has at most 9 levels of nesting with nesting level 0 corresponding to the top-most level and nesting level 8 corresponding to the most nested level. The nesting levels are returned in ascending order with the least nested returned first. */
   nestingLevels?: Array<NestingLevel>;
 }
 
-export const ListProperties: Schema.Schema<ListProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nestingLevels: Schema.optional(Schema.Array(NestingLevel)),
-    }),
-  ).annotate({
-    identifier: "ListProperties",
-  }) as any as Schema.Schema<ListProperties>;
+export const ListProperties = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nestingLevels: Schema.optional(Schema.Array(NestingLevel)),
+}).annotate({ identifier: "ListProperties" });
 
 export interface SuggestedListProperties {
   /** A mask that indicates which of the fields on the base ListProperties have been changed in this suggestion. */
@@ -3644,17 +3048,13 @@ export interface SuggestedListProperties {
   listProperties?: ListProperties;
 }
 
-export const SuggestedListProperties: Schema.Schema<SuggestedListProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      listPropertiesSuggestionState: Schema.optional(
-        ListPropertiesSuggestionState,
-      ),
-      listProperties: Schema.optional(ListProperties),
-    }),
-  ).annotate({
-    identifier: "SuggestedListProperties",
-  }) as any as Schema.Schema<SuggestedListProperties>;
+export const SuggestedListProperties =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    listPropertiesSuggestionState: Schema.optional(
+      ListPropertiesSuggestionState,
+    ),
+    listProperties: Schema.optional(ListProperties),
+  }).annotate({ identifier: "SuggestedListProperties" });
 
 export interface List {
   /** The suggested changes to the list properties, keyed by suggestion ID. */
@@ -3667,17 +3067,14 @@ export interface List {
   listProperties?: ListProperties;
 }
 
-export const List: Schema.Schema<List> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      suggestedListPropertiesChanges: Schema.optional(
-        Schema.Record(Schema.String, SuggestedListProperties),
-      ),
-      suggestedInsertionId: Schema.optional(Schema.String),
-      suggestedDeletionIds: Schema.optional(Schema.Array(Schema.String)),
-      listProperties: Schema.optional(ListProperties),
-    }),
-  ).annotate({ identifier: "List" }) as any as Schema.Schema<List>;
+export const List = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  suggestedListPropertiesChanges: Schema.optional(
+    Schema.Record(Schema.String, SuggestedListProperties),
+  ),
+  suggestedInsertionId: Schema.optional(Schema.String),
+  suggestedDeletionIds: Schema.optional(Schema.Array(Schema.String)),
+  listProperties: Schema.optional(ListProperties),
+}).annotate({ identifier: "List" });
 
 export interface SuggestedPositionedObjectProperties {
   /** A PositionedObjectProperties that only includes the changes made in this suggestion. This can be used along with the positioned_object_properties_suggestion_state to see which fields have changed and their new values. */
@@ -3686,17 +3083,13 @@ export interface SuggestedPositionedObjectProperties {
   positionedObjectPropertiesSuggestionState?: PositionedObjectPropertiesSuggestionState;
 }
 
-export const SuggestedPositionedObjectProperties: Schema.Schema<SuggestedPositionedObjectProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      positionedObjectProperties: Schema.optional(PositionedObjectProperties),
-      positionedObjectPropertiesSuggestionState: Schema.optional(
-        PositionedObjectPropertiesSuggestionState,
-      ),
-    }),
-  ).annotate({
-    identifier: "SuggestedPositionedObjectProperties",
-  }) as any as Schema.Schema<SuggestedPositionedObjectProperties>;
+export const SuggestedPositionedObjectProperties =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    positionedObjectProperties: Schema.optional(PositionedObjectProperties),
+    positionedObjectPropertiesSuggestionState: Schema.optional(
+      PositionedObjectPropertiesSuggestionState,
+    ),
+  }).annotate({ identifier: "SuggestedPositionedObjectProperties" });
 
 export interface PositionedObject {
   /** The properties of this positioned object. */
@@ -3714,20 +3107,15 @@ export interface PositionedObject {
   >;
 }
 
-export const PositionedObject: Schema.Schema<PositionedObject> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      positionedObjectProperties: Schema.optional(PositionedObjectProperties),
-      suggestedDeletionIds: Schema.optional(Schema.Array(Schema.String)),
-      suggestedInsertionId: Schema.optional(Schema.String),
-      objectId: Schema.optional(Schema.String),
-      suggestedPositionedObjectPropertiesChanges: Schema.optional(
-        Schema.Record(Schema.String, SuggestedPositionedObjectProperties),
-      ),
-    }),
-  ).annotate({
-    identifier: "PositionedObject",
-  }) as any as Schema.Schema<PositionedObject>;
+export const PositionedObject = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  positionedObjectProperties: Schema.optional(PositionedObjectProperties),
+  suggestedDeletionIds: Schema.optional(Schema.Array(Schema.String)),
+  suggestedInsertionId: Schema.optional(Schema.String),
+  objectId: Schema.optional(Schema.String),
+  suggestedPositionedObjectPropertiesChanges: Schema.optional(
+    Schema.Record(Schema.String, SuggestedPositionedObjectProperties),
+  ),
+}).annotate({ identifier: "PositionedObject" });
 
 export interface InlineObject {
   /** The suggested deletion IDs. If empty, then there are no suggested deletions of this content. */
@@ -3745,20 +3133,15 @@ export interface InlineObject {
   objectId?: string;
 }
 
-export const InlineObject: Schema.Schema<InlineObject> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      suggestedDeletionIds: Schema.optional(Schema.Array(Schema.String)),
-      inlineObjectProperties: Schema.optional(InlineObjectProperties),
-      suggestedInlineObjectPropertiesChanges: Schema.optional(
-        Schema.Record(Schema.String, SuggestedInlineObjectProperties),
-      ),
-      suggestedInsertionId: Schema.optional(Schema.String),
-      objectId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InlineObject",
-  }) as any as Schema.Schema<InlineObject>;
+export const InlineObject = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  suggestedDeletionIds: Schema.optional(Schema.Array(Schema.String)),
+  inlineObjectProperties: Schema.optional(InlineObjectProperties),
+  suggestedInlineObjectPropertiesChanges: Schema.optional(
+    Schema.Record(Schema.String, SuggestedInlineObjectProperties),
+  ),
+  suggestedInsertionId: Schema.optional(Schema.String),
+  objectId: Schema.optional(Schema.String),
+}).annotate({ identifier: "InlineObject" });
 
 export interface SuggestedDocumentStyle {
   /** A DocumentStyle that only includes the changes made in this suggestion. This can be used along with the document_style_suggestion_state to see which fields have changed and their new values. */
@@ -3767,17 +3150,12 @@ export interface SuggestedDocumentStyle {
   documentStyleSuggestionState?: DocumentStyleSuggestionState;
 }
 
-export const SuggestedDocumentStyle: Schema.Schema<SuggestedDocumentStyle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      documentStyle: Schema.optional(DocumentStyle),
-      documentStyleSuggestionState: Schema.optional(
-        DocumentStyleSuggestionState,
-      ),
-    }),
-  ).annotate({
-    identifier: "SuggestedDocumentStyle",
-  }) as any as Schema.Schema<SuggestedDocumentStyle>;
+export const SuggestedDocumentStyle = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    documentStyle: Schema.optional(DocumentStyle),
+    documentStyleSuggestionState: Schema.optional(DocumentStyleSuggestionState),
+  },
+).annotate({ identifier: "SuggestedDocumentStyle" });
 
 export interface NamedRange {
   /** The name of the named range. */
@@ -3788,14 +3166,11 @@ export interface NamedRange {
   ranges?: Array<Range>;
 }
 
-export const NamedRange: Schema.Schema<NamedRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      namedRangeId: Schema.optional(Schema.String),
-      ranges: Schema.optional(Schema.Array(Range)),
-    }),
-  ).annotate({ identifier: "NamedRange" }) as any as Schema.Schema<NamedRange>;
+export const NamedRange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  namedRangeId: Schema.optional(Schema.String),
+  ranges: Schema.optional(Schema.Array(Range)),
+}).annotate({ identifier: "NamedRange" });
 
 export interface NamedRanges {
   /** The NamedRanges that share the same name. */
@@ -3804,15 +3179,10 @@ export interface NamedRanges {
   name?: string;
 }
 
-export const NamedRanges: Schema.Schema<NamedRanges> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      namedRanges: Schema.optional(Schema.Array(NamedRange)),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NamedRanges",
-  }) as any as Schema.Schema<NamedRanges>;
+export const NamedRanges = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  namedRanges: Schema.optional(Schema.Array(NamedRange)),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "NamedRanges" });
 
 export interface Header {
   /** The ID of the header. */
@@ -3821,13 +3191,10 @@ export interface Header {
   content?: Array<StructuralElement>;
 }
 
-export const Header: Schema.Schema<Header> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      headerId: Schema.optional(Schema.String),
-      content: Schema.optional(Schema.Array(StructuralElement)),
-    }),
-  ).annotate({ identifier: "Header" }) as any as Schema.Schema<Header>;
+export const Header = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  headerId: Schema.optional(Schema.String),
+  content: Schema.optional(Schema.Array(StructuralElement)),
+}).annotate({ identifier: "Header" });
 
 export interface DocumentTab {
   /** The main body of the document tab. */
@@ -3856,103 +3223,76 @@ export interface DocumentTab {
   headers?: Record<string, Header>;
 }
 
-export const DocumentTab: Schema.Schema<DocumentTab> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      body: Schema.optional(Body),
-      namedStyles: Schema.optional(NamedStyles),
-      footnotes: Schema.optional(Schema.Record(Schema.String, Footnote)),
-      documentStyle: Schema.optional(DocumentStyle),
-      lists: Schema.optional(Schema.Record(Schema.String, List)),
-      footers: Schema.optional(Schema.Record(Schema.String, Footer)),
-      positionedObjects: Schema.optional(
-        Schema.Record(Schema.String, PositionedObject),
-      ),
-      suggestedNamedStylesChanges: Schema.optional(
-        Schema.Record(Schema.String, SuggestedNamedStyles),
-      ),
-      inlineObjects: Schema.optional(
-        Schema.Record(Schema.String, InlineObject),
-      ),
-      suggestedDocumentStyleChanges: Schema.optional(
-        Schema.Record(Schema.String, SuggestedDocumentStyle),
-      ),
-      namedRanges: Schema.optional(Schema.Record(Schema.String, NamedRanges)),
-      headers: Schema.optional(Schema.Record(Schema.String, Header)),
-    }),
-  ).annotate({
-    identifier: "DocumentTab",
-  }) as any as Schema.Schema<DocumentTab>;
+export const DocumentTab = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  body: Schema.optional(Body),
+  namedStyles: Schema.optional(NamedStyles),
+  footnotes: Schema.optional(Schema.Record(Schema.String, Footnote)),
+  documentStyle: Schema.optional(DocumentStyle),
+  lists: Schema.optional(Schema.Record(Schema.String, List)),
+  footers: Schema.optional(Schema.Record(Schema.String, Footer)),
+  positionedObjects: Schema.optional(
+    Schema.Record(Schema.String, PositionedObject),
+  ),
+  suggestedNamedStylesChanges: Schema.optional(
+    Schema.Record(Schema.String, SuggestedNamedStyles),
+  ),
+  inlineObjects: Schema.optional(Schema.Record(Schema.String, InlineObject)),
+  suggestedDocumentStyleChanges: Schema.optional(
+    Schema.Record(Schema.String, SuggestedDocumentStyle),
+  ),
+  namedRanges: Schema.optional(Schema.Record(Schema.String, NamedRanges)),
+  headers: Schema.optional(Schema.Record(Schema.String, Header)),
+}).annotate({ identifier: "DocumentTab" });
 
 export interface ReplaceAllTextResponse {
   /** The number of occurrences changed by replacing all text. */
   occurrencesChanged?: number;
 }
 
-export const ReplaceAllTextResponse: Schema.Schema<ReplaceAllTextResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      occurrencesChanged: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "ReplaceAllTextResponse",
-  }) as any as Schema.Schema<ReplaceAllTextResponse>;
+export const ReplaceAllTextResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    occurrencesChanged: Schema.optional(Schema.Number),
+  },
+).annotate({ identifier: "ReplaceAllTextResponse" });
 
 export interface CreateFooterResponse {
   /** The ID of the created footer. */
   footerId?: string;
 }
 
-export const CreateFooterResponse: Schema.Schema<CreateFooterResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      footerId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreateFooterResponse",
-  }) as any as Schema.Schema<CreateFooterResponse>;
+export const CreateFooterResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  footerId: Schema.optional(Schema.String),
+}).annotate({ identifier: "CreateFooterResponse" });
 
 export interface InsertInlineSheetsChartResponse {
   /** The object ID of the inserted chart. */
   objectId?: string;
 }
 
-export const InsertInlineSheetsChartResponse: Schema.Schema<InsertInlineSheetsChartResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      objectId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InsertInlineSheetsChartResponse",
-  }) as any as Schema.Schema<InsertInlineSheetsChartResponse>;
+export const InsertInlineSheetsChartResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    objectId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "InsertInlineSheetsChartResponse" });
 
 export interface AddDocumentTabResponse {
   /** The properties of the newly added tab. */
   tabProperties?: TabProperties;
 }
 
-export const AddDocumentTabResponse: Schema.Schema<AddDocumentTabResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tabProperties: Schema.optional(TabProperties),
-    }),
-  ).annotate({
-    identifier: "AddDocumentTabResponse",
-  }) as any as Schema.Schema<AddDocumentTabResponse>;
+export const AddDocumentTabResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    tabProperties: Schema.optional(TabProperties),
+  },
+).annotate({ identifier: "AddDocumentTabResponse" });
 
 export interface CreateHeaderResponse {
   /** The ID of the created header. */
   headerId?: string;
 }
 
-export const CreateHeaderResponse: Schema.Schema<CreateHeaderResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      headerId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreateHeaderResponse",
-  }) as any as Schema.Schema<CreateHeaderResponse>;
+export const CreateHeaderResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  headerId: Schema.optional(Schema.String),
+}).annotate({ identifier: "CreateHeaderResponse" });
 
 export interface Response {
   /** The result of creating a named range. */
@@ -3973,19 +3313,16 @@ export interface Response {
   createHeader?: CreateHeaderResponse;
 }
 
-export const Response: Schema.Schema<Response> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createNamedRange: Schema.optional(CreateNamedRangeResponse),
-      createFooter: Schema.optional(CreateFooterResponse),
-      createFootnote: Schema.optional(CreateFootnoteResponse),
-      insertInlineSheetsChart: Schema.optional(InsertInlineSheetsChartResponse),
-      replaceAllText: Schema.optional(ReplaceAllTextResponse),
-      addDocumentTab: Schema.optional(AddDocumentTabResponse),
-      insertInlineImage: Schema.optional(InsertInlineImageResponse),
-      createHeader: Schema.optional(CreateHeaderResponse),
-    }),
-  ).annotate({ identifier: "Response" }) as any as Schema.Schema<Response>;
+export const Response = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createNamedRange: Schema.optional(CreateNamedRangeResponse),
+  createFooter: Schema.optional(CreateFooterResponse),
+  createFootnote: Schema.optional(CreateFootnoteResponse),
+  insertInlineSheetsChart: Schema.optional(InsertInlineSheetsChartResponse),
+  replaceAllText: Schema.optional(ReplaceAllTextResponse),
+  addDocumentTab: Schema.optional(AddDocumentTabResponse),
+  insertInlineImage: Schema.optional(InsertInlineImageResponse),
+  createHeader: Schema.optional(CreateHeaderResponse),
+}).annotate({ identifier: "Response" });
 
 export interface BatchUpdateDocumentResponse {
   /** The ID of the document to which the updates were applied to. */
@@ -3996,16 +3333,12 @@ export interface BatchUpdateDocumentResponse {
   writeControl?: WriteControl;
 }
 
-export const BatchUpdateDocumentResponse: Schema.Schema<BatchUpdateDocumentResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      documentId: Schema.optional(Schema.String),
-      replies: Schema.optional(Schema.Array(Response)),
-      writeControl: Schema.optional(WriteControl),
-    }),
-  ).annotate({
-    identifier: "BatchUpdateDocumentResponse",
-  }) as any as Schema.Schema<BatchUpdateDocumentResponse>;
+export const BatchUpdateDocumentResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    documentId: Schema.optional(Schema.String),
+    replies: Schema.optional(Schema.Array(Response)),
+    writeControl: Schema.optional(WriteControl),
+  }).annotate({ identifier: "BatchUpdateDocumentResponse" });
 
 export interface Tab {
   /** The child tabs nested within this tab. */
@@ -4067,36 +3400,31 @@ export interface Document {
   inlineObjects?: Record<string, InlineObject>;
 }
 
-export const Document: Schema.Schema<Document> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      footnotes: Schema.optional(Schema.Record(Schema.String, Footnote)),
-      positionedObjects: Schema.optional(
-        Schema.Record(Schema.String, PositionedObject),
-      ),
-      revisionId: Schema.optional(Schema.String),
-      namedRanges: Schema.optional(Schema.Record(Schema.String, NamedRanges)),
-      headers: Schema.optional(Schema.Record(Schema.String, Header)),
-      body: Schema.optional(Body),
-      namedStyles: Schema.optional(NamedStyles),
-      documentStyle: Schema.optional(DocumentStyle),
-      lists: Schema.optional(Schema.Record(Schema.String, List)),
-      footers: Schema.optional(Schema.Record(Schema.String, Footer)),
-      documentId: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      suggestionsViewMode: Schema.optional(Schema.String),
-      tabs: Schema.optional(Schema.Array(Tab)),
-      suggestedNamedStylesChanges: Schema.optional(
-        Schema.Record(Schema.String, SuggestedNamedStyles),
-      ),
-      suggestedDocumentStyleChanges: Schema.optional(
-        Schema.Record(Schema.String, SuggestedDocumentStyle),
-      ),
-      inlineObjects: Schema.optional(
-        Schema.Record(Schema.String, InlineObject),
-      ),
-    }),
-  ).annotate({ identifier: "Document" }) as any as Schema.Schema<Document>;
+export const Document = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  footnotes: Schema.optional(Schema.Record(Schema.String, Footnote)),
+  positionedObjects: Schema.optional(
+    Schema.Record(Schema.String, PositionedObject),
+  ),
+  revisionId: Schema.optional(Schema.String),
+  namedRanges: Schema.optional(Schema.Record(Schema.String, NamedRanges)),
+  headers: Schema.optional(Schema.Record(Schema.String, Header)),
+  body: Schema.optional(Body),
+  namedStyles: Schema.optional(NamedStyles),
+  documentStyle: Schema.optional(DocumentStyle),
+  lists: Schema.optional(Schema.Record(Schema.String, List)),
+  footers: Schema.optional(Schema.Record(Schema.String, Footer)),
+  documentId: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  suggestionsViewMode: Schema.optional(Schema.String),
+  tabs: Schema.optional(Schema.Array(Tab)),
+  suggestedNamedStylesChanges: Schema.optional(
+    Schema.Record(Schema.String, SuggestedNamedStyles),
+  ),
+  suggestedDocumentStyleChanges: Schema.optional(
+    Schema.Record(Schema.String, SuggestedDocumentStyle),
+  ),
+  inlineObjects: Schema.optional(Schema.Record(Schema.String, InlineObject)),
+}).annotate({ identifier: "Document" });
 
 // ==========================================================================
 // Operations

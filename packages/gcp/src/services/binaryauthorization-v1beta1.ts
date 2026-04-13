@@ -49,15 +49,10 @@ export interface PkixPublicKey {
     | (string & {});
 }
 
-export const PkixPublicKey: Schema.Schema<PkixPublicKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      publicKeyPem: Schema.optional(Schema.String),
-      signatureAlgorithm: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PkixPublicKey",
-  }) as any as Schema.Schema<PkixPublicKey>;
+export const PkixPublicKey = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  publicKeyPem: Schema.optional(Schema.String),
+  signatureAlgorithm: Schema.optional(Schema.String),
+}).annotate({ identifier: "PkixPublicKey" });
 
 export interface AttestorPublicKey {
   /** The ID of this public key. Signatures verified by BinAuthz must include the ID of the public key that can be used to verify them, and that ID must match the contents of this field exactly. Additional restrictions on this field can be imposed based on which public key type is encapsulated. See the documentation on `public_key` cases below for details. */
@@ -70,17 +65,12 @@ export interface AttestorPublicKey {
   asciiArmoredPgpPublicKey?: string;
 }
 
-export const AttestorPublicKey: Schema.Schema<AttestorPublicKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      pkixPublicKey: Schema.optional(PkixPublicKey),
-      comment: Schema.optional(Schema.String),
-      asciiArmoredPgpPublicKey: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AttestorPublicKey",
-  }) as any as Schema.Schema<AttestorPublicKey>;
+export const AttestorPublicKey = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  pkixPublicKey: Schema.optional(PkixPublicKey),
+  comment: Schema.optional(Schema.String),
+  asciiArmoredPgpPublicKey: Schema.optional(Schema.String),
+}).annotate({ identifier: "AttestorPublicKey" });
 
 export interface UserOwnedDrydockNote {
   /** Required. The Drydock resource name of a ATTESTATION_AUTHORITY Note, created by the user, in the format: `projects/* /notes/*` (or the legacy `providers/* /notes/*`). This field may not be updated. An attestation by this attestor is stored as a Drydock ATTESTATION_AUTHORITY Occurrence that names a container image and that links to this Note. Drydock is an external dependency. */
@@ -91,16 +81,11 @@ export interface UserOwnedDrydockNote {
   delegationServiceAccountEmail?: string;
 }
 
-export const UserOwnedDrydockNote: Schema.Schema<UserOwnedDrydockNote> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      noteReference: Schema.optional(Schema.String),
-      publicKeys: Schema.optional(Schema.Array(AttestorPublicKey)),
-      delegationServiceAccountEmail: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UserOwnedDrydockNote",
-  }) as any as Schema.Schema<UserOwnedDrydockNote>;
+export const UserOwnedDrydockNote = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  noteReference: Schema.optional(Schema.String),
+  publicKeys: Schema.optional(Schema.Array(AttestorPublicKey)),
+  delegationServiceAccountEmail: Schema.optional(Schema.String),
+}).annotate({ identifier: "UserOwnedDrydockNote" });
 
 export interface Attestor {
   /** Optional. A checksum, returned by the server, that can be sent on update requests to ensure the attestor has an up-to-date value before attempting to update it. See https://google.aip.dev/154. */
@@ -115,16 +100,13 @@ export interface Attestor {
   userOwnedDrydockNote?: UserOwnedDrydockNote;
 }
 
-export const Attestor: Schema.Schema<Attestor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      etag: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      userOwnedDrydockNote: Schema.optional(UserOwnedDrydockNote),
-    }),
-  ).annotate({ identifier: "Attestor" }) as any as Schema.Schema<Attestor>;
+export const Attestor = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  etag: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  userOwnedDrydockNote: Schema.optional(UserOwnedDrydockNote),
+}).annotate({ identifier: "Attestor" });
 
 export interface ListAttestorsResponse {
   /** The list of attestors. */
@@ -133,41 +115,29 @@ export interface ListAttestorsResponse {
   nextPageToken?: string;
 }
 
-export const ListAttestorsResponse: Schema.Schema<ListAttestorsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      attestors: Schema.optional(Schema.Array(Attestor)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAttestorsResponse",
-  }) as any as Schema.Schema<ListAttestorsResponse>;
+export const ListAttestorsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  attestors: Schema.optional(Schema.Array(Attestor)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListAttestorsResponse" });
 
 export interface Jwt {
   /** The compact encoding of a JWS, which is always three base64 encoded strings joined by periods. For details, see: https://tools.ietf.org/html/rfc7515.html#section-3.1 */
   compactJwt?: string;
 }
 
-export const Jwt: Schema.Schema<Jwt> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      compactJwt: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Jwt" }) as any as Schema.Schema<Jwt>;
+export const Jwt = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  compactJwt: Schema.optional(Schema.String),
+}).annotate({ identifier: "Jwt" });
 
 export interface AdmissionWhitelistPattern {
   /** An image name pattern to allowlist, in the form `registry/path/to/image`. This supports a trailing `*` as a wildcard, but this is allowed only in text after the `registry/` part. `*` wildcard does not match `/`, i.e., `gcr.io/nginx*` matches `gcr.io/nginx@latest`, but it does not match `gcr.io/nginx/image`. This also supports a trailing `**` wildcard which matches subdirectories, i.e., `gcr.io/nginx**` matches `gcr.io/nginx/image`. */
   namePattern?: string;
 }
 
-export const AdmissionWhitelistPattern: Schema.Schema<AdmissionWhitelistPattern> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      namePattern: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AdmissionWhitelistPattern",
-  }) as any as Schema.Schema<AdmissionWhitelistPattern>;
+export const AdmissionWhitelistPattern =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    namePattern: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AdmissionWhitelistPattern" });
 
 export interface Expr {
   /** Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI. */
@@ -180,15 +150,12 @@ export interface Expr {
   title?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      expression: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Expr" }) as any as Schema.Schema<Expr>;
+export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  expression: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+}).annotate({ identifier: "Expr" });
 
 export interface Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -199,14 +166,11 @@ export interface Binding {
   members?: Array<string>;
 }
 
-export const Binding: Schema.Schema<Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      condition: Schema.optional(Expr),
-      role: Schema.optional(Schema.String),
-      members: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "Binding" }) as any as Schema.Schema<Binding>;
+export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  condition: Schema.optional(Expr),
+  role: Schema.optional(Schema.String),
+  members: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Binding" });
 
 export interface IamPolicy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
@@ -217,28 +181,20 @@ export interface IamPolicy {
   etag?: string;
 }
 
-export const IamPolicy: Schema.Schema<IamPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bindings: Schema.optional(Schema.Array(Binding)),
-      version: Schema.optional(Schema.Number),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "IamPolicy" }) as any as Schema.Schema<IamPolicy>;
+export const IamPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bindings: Schema.optional(Schema.Array(Binding)),
+  version: Schema.optional(Schema.Number),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "IamPolicy" });
 
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: IamPolicy;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policy: Schema.optional(IamPolicy),
-    }),
-  ).annotate({
-    identifier: "SetIamPolicyRequest",
-  }) as any as Schema.Schema<SetIamPolicyRequest>;
+export const SetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policy: Schema.optional(IamPolicy),
+}).annotate({ identifier: "SetIamPolicyRequest" });
 
 export interface AdmissionRule {
   /** Required. How this admission rule will be evaluated. */
@@ -257,16 +213,11 @@ export interface AdmissionRule {
     | (string & {});
 }
 
-export const AdmissionRule: Schema.Schema<AdmissionRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      evaluationMode: Schema.optional(Schema.String),
-      requireAttestationsBy: Schema.optional(Schema.Array(Schema.String)),
-      enforcementMode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AdmissionRule",
-  }) as any as Schema.Schema<AdmissionRule>;
+export const AdmissionRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  evaluationMode: Schema.optional(Schema.String),
+  requireAttestationsBy: Schema.optional(Schema.Array(Schema.String)),
+  enforcementMode: Schema.optional(Schema.String),
+}).annotate({ identifier: "AdmissionRule" });
 
 export interface Signature {
   /** The content of the signature, an opaque bytestring. The payload that this signature verifies MUST be unambiguously provided with the Signature during verification. A wrapper message might provide the payload explicitly. Alternatively, a message might have a canonical serialization that can always be unambiguously computed to derive the payload. */
@@ -275,13 +226,10 @@ export interface Signature {
   publicKeyId?: string;
 }
 
-export const Signature: Schema.Schema<Signature> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      signature: Schema.optional(Schema.String),
-      publicKeyId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Signature" }) as any as Schema.Schema<Signature>;
+export const Signature = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  signature: Schema.optional(Schema.String),
+  publicKeyId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Signature" });
 
 export interface ValidateAttestationOccurrenceResponse {
   /** The result of the Attestation validation. */
@@ -294,15 +242,11 @@ export interface ValidateAttestationOccurrenceResponse {
   denialReason?: string;
 }
 
-export const ValidateAttestationOccurrenceResponse: Schema.Schema<ValidateAttestationOccurrenceResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      result: Schema.optional(Schema.String),
-      denialReason: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ValidateAttestationOccurrenceResponse",
-  }) as any as Schema.Schema<ValidateAttestationOccurrenceResponse>;
+export const ValidateAttestationOccurrenceResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    result: Schema.optional(Schema.String),
+    denialReason: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ValidateAttestationOccurrenceResponse" });
 
 export interface Policy {
   /** Optional. Per-kubernetes-service-account admission rules. Service account spec format: `namespace:serviceaccount`. e.g. `test-ns:default` */
@@ -333,67 +277,55 @@ export interface Policy {
   clusterAdmissionRules?: Record<string, AdmissionRule>;
 }
 
-export const Policy: Schema.Schema<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kubernetesServiceAccountAdmissionRules: Schema.optional(
-        Schema.Record(Schema.String, AdmissionRule),
-      ),
-      description: Schema.optional(Schema.String),
-      istioServiceIdentityAdmissionRules: Schema.optional(
-        Schema.Record(Schema.String, AdmissionRule),
-      ),
-      updateTime: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      kubernetesNamespaceAdmissionRules: Schema.optional(
-        Schema.Record(Schema.String, AdmissionRule),
-      ),
-      name: Schema.optional(Schema.String),
-      admissionWhitelistPatterns: Schema.optional(
-        Schema.Array(AdmissionWhitelistPattern),
-      ),
-      defaultAdmissionRule: Schema.optional(AdmissionRule),
-      globalPolicyEvaluationMode: Schema.optional(Schema.String),
-      clusterAdmissionRules: Schema.optional(
-        Schema.Record(Schema.String, AdmissionRule),
-      ),
-    }),
-  ).annotate({ identifier: "Policy" }) as any as Schema.Schema<Policy>;
+export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kubernetesServiceAccountAdmissionRules: Schema.optional(
+    Schema.Record(Schema.String, AdmissionRule),
+  ),
+  description: Schema.optional(Schema.String),
+  istioServiceIdentityAdmissionRules: Schema.optional(
+    Schema.Record(Schema.String, AdmissionRule),
+  ),
+  updateTime: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  kubernetesNamespaceAdmissionRules: Schema.optional(
+    Schema.Record(Schema.String, AdmissionRule),
+  ),
+  name: Schema.optional(Schema.String),
+  admissionWhitelistPatterns: Schema.optional(
+    Schema.Array(AdmissionWhitelistPattern),
+  ),
+  defaultAdmissionRule: Schema.optional(AdmissionRule),
+  globalPolicyEvaluationMode: Schema.optional(Schema.String),
+  clusterAdmissionRules: Schema.optional(
+    Schema.Record(Schema.String, AdmissionRule),
+  ),
+}).annotate({ identifier: "Policy" });
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsRequest",
-  }) as any as Schema.Schema<TestIamPermissionsRequest>;
+export const TestIamPermissionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsRequest" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsResponse",
-  }) as any as Schema.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsResponse" });
 
 export interface AttestationOccurrence {
   /** One or more JWTs encoding a self-contained attestation. Each JWT encodes the payload that it verifies within the JWT itself. Verifier implementation SHOULD ignore the `serialized_payload` field when verifying these JWTs. If only JWTs are present on this AttestationOccurrence, then the `serialized_payload` SHOULD be left empty. Each JWT SHOULD encode a claim specific to the `resource_uri` of this Occurrence, but this is not validated by Grafeas metadata API implementations. The JWT itself is opaque to Grafeas. */
@@ -404,16 +336,11 @@ export interface AttestationOccurrence {
   signatures?: Array<Signature>;
 }
 
-export const AttestationOccurrence: Schema.Schema<AttestationOccurrence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      jwts: Schema.optional(Schema.Array(Jwt)),
-      serializedPayload: Schema.optional(Schema.String),
-      signatures: Schema.optional(Schema.Array(Signature)),
-    }),
-  ).annotate({
-    identifier: "AttestationOccurrence",
-  }) as any as Schema.Schema<AttestationOccurrence>;
+export const AttestationOccurrence = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  jwts: Schema.optional(Schema.Array(Jwt)),
+  serializedPayload: Schema.optional(Schema.String),
+  signatures: Schema.optional(Schema.Array(Signature)),
+}).annotate({ identifier: "AttestationOccurrence" });
 
 export interface ValidateAttestationOccurrenceRequest {
   /** Required. An AttestationOccurrence to be checked that it can be verified by the `Attestor`. It does not have to be an existing entity in Container Analysis. It must otherwise be a valid `AttestationOccurrence`. */
@@ -424,16 +351,12 @@ export interface ValidateAttestationOccurrenceRequest {
   occurrenceResourceUri?: string;
 }
 
-export const ValidateAttestationOccurrenceRequest: Schema.Schema<ValidateAttestationOccurrenceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      attestation: Schema.optional(AttestationOccurrence),
-      occurrenceNote: Schema.optional(Schema.String),
-      occurrenceResourceUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ValidateAttestationOccurrenceRequest",
-  }) as any as Schema.Schema<ValidateAttestationOccurrenceRequest>;
+export const ValidateAttestationOccurrenceRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    attestation: Schema.optional(AttestationOccurrence),
+    occurrenceNote: Schema.optional(Schema.String),
+    occurrenceResourceUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ValidateAttestationOccurrenceRequest" });
 
 // ==========================================================================
 // Operations

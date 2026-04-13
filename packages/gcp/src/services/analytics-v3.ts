@@ -43,20 +43,17 @@ export interface Segment {
   type?: string;
 }
 
-export const Segment: Schema.Schema<Segment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      selfLink: Schema.optional(Schema.String),
-      definition: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      created: Schema.optional(Schema.String),
-      updated: Schema.optional(Schema.String),
-      segmentId: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Segment" }) as any as Schema.Schema<Segment>;
+export const Segment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  selfLink: Schema.optional(Schema.String),
+  definition: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  created: Schema.optional(Schema.String),
+  updated: Schema.optional(Schema.String),
+  segmentId: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "Segment" });
 
 export interface Segments {
   /** A list of segments. */
@@ -77,19 +74,16 @@ export interface Segments {
   previousLink?: string;
 }
 
-export const Segments: Schema.Schema<Segments> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      items: Schema.optional(Schema.Array(Segment)),
-      itemsPerPage: Schema.optional(Schema.Number),
-      startIndex: Schema.optional(Schema.Number),
-      kind: Schema.optional(Schema.String),
-      totalResults: Schema.optional(Schema.Number),
-      nextLink: Schema.optional(Schema.String),
-      username: Schema.optional(Schema.String),
-      previousLink: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Segments" }) as any as Schema.Schema<Segments>;
+export const Segments = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  items: Schema.optional(Schema.Array(Segment)),
+  itemsPerPage: Schema.optional(Schema.Number),
+  startIndex: Schema.optional(Schema.Number),
+  kind: Schema.optional(Schema.String),
+  totalResults: Schema.optional(Schema.Number),
+  nextLink: Schema.optional(Schema.String),
+  username: Schema.optional(Schema.String),
+  previousLink: Schema.optional(Schema.String),
+}).annotate({ identifier: "Segments" });
 
 export interface ProfileSummary {
   /** View (profile) name. */
@@ -104,18 +98,13 @@ export interface ProfileSummary {
   id?: string;
 }
 
-export const ProfileSummary: Schema.Schema<ProfileSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      starred: Schema.optional(Schema.Boolean),
-      type: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProfileSummary",
-  }) as any as Schema.Schema<ProfileSummary>;
+export const ProfileSummary = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  starred: Schema.optional(Schema.Boolean),
+  type: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+}).annotate({ identifier: "ProfileSummary" });
 
 export interface WebPropertySummary {
   /** List of profiles under this web property. */
@@ -136,21 +125,16 @@ export interface WebPropertySummary {
   websiteUrl?: string;
 }
 
-export const WebPropertySummary: Schema.Schema<WebPropertySummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      profiles: Schema.optional(Schema.Array(ProfileSummary)),
-      name: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      level: Schema.optional(Schema.String),
-      starred: Schema.optional(Schema.Boolean),
-      internalWebPropertyId: Schema.optional(Schema.String),
-      websiteUrl: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WebPropertySummary",
-  }) as any as Schema.Schema<WebPropertySummary>;
+export const WebPropertySummary = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  profiles: Schema.optional(Schema.Array(ProfileSummary)),
+  name: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  level: Schema.optional(Schema.String),
+  starred: Schema.optional(Schema.Boolean),
+  internalWebPropertyId: Schema.optional(Schema.String),
+  websiteUrl: Schema.optional(Schema.String),
+}).annotate({ identifier: "WebPropertySummary" });
 
 export interface AccountSummary {
   /** Account name. */
@@ -165,18 +149,13 @@ export interface AccountSummary {
   id?: string;
 }
 
-export const AccountSummary: Schema.Schema<AccountSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      starred: Schema.optional(Schema.Boolean),
-      webProperties: Schema.optional(Schema.Array(WebPropertySummary)),
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccountSummary",
-  }) as any as Schema.Schema<AccountSummary>;
+export const AccountSummary = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  starred: Schema.optional(Schema.Boolean),
+  webProperties: Schema.optional(Schema.Array(WebPropertySummary)),
+  id: Schema.optional(Schema.String),
+}).annotate({ identifier: "AccountSummary" });
 
 export interface AccountSummaries {
   /** Link to previous page for this AccountSummary collection. */
@@ -197,21 +176,16 @@ export interface AccountSummaries {
   kind?: string;
 }
 
-export const AccountSummaries: Schema.Schema<AccountSummaries> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      previousLink: Schema.optional(Schema.String),
-      totalResults: Schema.optional(Schema.Number),
-      nextLink: Schema.optional(Schema.String),
-      username: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(AccountSummary)),
-      itemsPerPage: Schema.optional(Schema.Number),
-      startIndex: Schema.optional(Schema.Number),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccountSummaries",
-  }) as any as Schema.Schema<AccountSummaries>;
+export const AccountSummaries = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  previousLink: Schema.optional(Schema.String),
+  totalResults: Schema.optional(Schema.Number),
+  nextLink: Schema.optional(Schema.String),
+  username: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(AccountSummary)),
+  itemsPerPage: Schema.optional(Schema.Number),
+  startIndex: Schema.optional(Schema.Number),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "AccountSummaries" });
 
 export interface FilterExpression {
   /** Match type for this filter. Possible values are BEGINS_WITH, EQUAL, ENDS_WITH, CONTAINS, or MATCHES. GEO_DOMAIN, GEO_IP_ADDRESS, PAGE_REQUEST_URI, or PAGE_HOSTNAME filters can use any match type; all other filters must use MATCHES. */
@@ -228,19 +202,14 @@ export interface FilterExpression {
   expressionValue?: string;
 }
 
-export const FilterExpression: Schema.Schema<FilterExpression> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      matchType: Schema.optional(Schema.String),
-      field: Schema.optional(Schema.String),
-      fieldIndex: Schema.optional(Schema.Number),
-      caseSensitive: Schema.optional(Schema.Boolean),
-      kind: Schema.optional(Schema.String),
-      expressionValue: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FilterExpression",
-  }) as any as Schema.Schema<FilterExpression>;
+export const FilterExpression = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  matchType: Schema.optional(Schema.String),
+  field: Schema.optional(Schema.String),
+  fieldIndex: Schema.optional(Schema.Number),
+  caseSensitive: Schema.optional(Schema.Boolean),
+  kind: Schema.optional(Schema.String),
+  expressionValue: Schema.optional(Schema.String),
+}).annotate({ identifier: "FilterExpression" });
 
 export interface Filter {
   /** Details for the filter of the type UPPER. */
@@ -295,65 +264,62 @@ export interface Filter {
   };
 }
 
-export const Filter: Schema.Schema<Filter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const Filter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  uppercaseDetails: Schema.optional(
     Schema.Struct({
-      uppercaseDetails: Schema.optional(
-        Schema.Struct({
-          field: Schema.optional(Schema.String),
-          fieldIndex: Schema.optional(Schema.Number),
-        }),
-      ),
-      selfLink: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      includeDetails: Schema.optional(FilterExpression),
-      id: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      parentLink: Schema.optional(
-        Schema.Struct({
-          href: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
-      advancedDetails: Schema.optional(
-        Schema.Struct({
-          fieldB: Schema.optional(Schema.String),
-          outputConstructor: Schema.optional(Schema.String),
-          outputToFieldIndex: Schema.optional(Schema.Number),
-          fieldARequired: Schema.optional(Schema.Boolean),
-          fieldA: Schema.optional(Schema.String),
-          fieldBIndex: Schema.optional(Schema.Number),
-          caseSensitive: Schema.optional(Schema.Boolean),
-          extractA: Schema.optional(Schema.String),
-          overrideOutputField: Schema.optional(Schema.Boolean),
-          extractB: Schema.optional(Schema.String),
-          fieldAIndex: Schema.optional(Schema.Number),
-          outputToField: Schema.optional(Schema.String),
-          fieldBRequired: Schema.optional(Schema.Boolean),
-        }),
-      ),
-      lowercaseDetails: Schema.optional(
-        Schema.Struct({
-          field: Schema.optional(Schema.String),
-          fieldIndex: Schema.optional(Schema.Number),
-        }),
-      ),
-      created: Schema.optional(Schema.String),
-      updated: Schema.optional(Schema.String),
-      excludeDetails: Schema.optional(FilterExpression),
-      kind: Schema.optional(Schema.String),
-      searchAndReplaceDetails: Schema.optional(
-        Schema.Struct({
-          caseSensitive: Schema.optional(Schema.Boolean),
-          replaceString: Schema.optional(Schema.String),
-          field: Schema.optional(Schema.String),
-          fieldIndex: Schema.optional(Schema.Number),
-          searchString: Schema.optional(Schema.String),
-        }),
-      ),
+      field: Schema.optional(Schema.String),
+      fieldIndex: Schema.optional(Schema.Number),
     }),
-  ).annotate({ identifier: "Filter" }) as any as Schema.Schema<Filter>;
+  ),
+  selfLink: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  includeDetails: Schema.optional(FilterExpression),
+  id: Schema.optional(Schema.String),
+  accountId: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  parentLink: Schema.optional(
+    Schema.Struct({
+      href: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+    }),
+  ),
+  advancedDetails: Schema.optional(
+    Schema.Struct({
+      fieldB: Schema.optional(Schema.String),
+      outputConstructor: Schema.optional(Schema.String),
+      outputToFieldIndex: Schema.optional(Schema.Number),
+      fieldARequired: Schema.optional(Schema.Boolean),
+      fieldA: Schema.optional(Schema.String),
+      fieldBIndex: Schema.optional(Schema.Number),
+      caseSensitive: Schema.optional(Schema.Boolean),
+      extractA: Schema.optional(Schema.String),
+      overrideOutputField: Schema.optional(Schema.Boolean),
+      extractB: Schema.optional(Schema.String),
+      fieldAIndex: Schema.optional(Schema.Number),
+      outputToField: Schema.optional(Schema.String),
+      fieldBRequired: Schema.optional(Schema.Boolean),
+    }),
+  ),
+  lowercaseDetails: Schema.optional(
+    Schema.Struct({
+      field: Schema.optional(Schema.String),
+      fieldIndex: Schema.optional(Schema.Number),
+    }),
+  ),
+  created: Schema.optional(Schema.String),
+  updated: Schema.optional(Schema.String),
+  excludeDetails: Schema.optional(FilterExpression),
+  kind: Schema.optional(Schema.String),
+  searchAndReplaceDetails: Schema.optional(
+    Schema.Struct({
+      caseSensitive: Schema.optional(Schema.Boolean),
+      replaceString: Schema.optional(Schema.String),
+      field: Schema.optional(Schema.String),
+      fieldIndex: Schema.optional(Schema.Number),
+      searchString: Schema.optional(Schema.String),
+    }),
+  ),
+}).annotate({ identifier: "Filter" });
 
 export interface AdWordsAccount {
   /** Resource type for Google Ads account. */
@@ -364,16 +330,11 @@ export interface AdWordsAccount {
   customerId?: string;
 }
 
-export const AdWordsAccount: Schema.Schema<AdWordsAccount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      autoTaggingEnabled: Schema.optional(Schema.Boolean),
-      customerId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AdWordsAccount",
-  }) as any as Schema.Schema<AdWordsAccount>;
+export const AdWordsAccount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  autoTaggingEnabled: Schema.optional(Schema.Boolean),
+  customerId: Schema.optional(Schema.String),
+}).annotate({ identifier: "AdWordsAccount" });
 
 export interface WebPropertyRef {
   /** Link for this web property. */
@@ -390,19 +351,14 @@ export interface WebPropertyRef {
   kind?: string;
 }
 
-export const WebPropertyRef: Schema.Schema<WebPropertyRef> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      href: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      internalWebPropertyId: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WebPropertyRef",
-  }) as any as Schema.Schema<WebPropertyRef>;
+export const WebPropertyRef = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  href: Schema.optional(Schema.String),
+  accountId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  internalWebPropertyId: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "WebPropertyRef" });
 
 export interface EntityAdWordsLink {
   /** A list of Google Ads client accounts. These cannot be MCC accounts. This field is required when creating a Google Ads link. It cannot be empty. */
@@ -421,22 +377,17 @@ export interface EntityAdWordsLink {
   id?: string;
 }
 
-export const EntityAdWordsLink: Schema.Schema<EntityAdWordsLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      adWordsAccounts: Schema.optional(Schema.Array(AdWordsAccount)),
-      name: Schema.optional(Schema.String),
-      selfLink: Schema.optional(Schema.String),
-      entity: Schema.optional(
-        Schema.Struct({ webPropertyRef: Schema.optional(WebPropertyRef) }),
-      ),
-      kind: Schema.optional(Schema.String),
-      profileIds: Schema.optional(Schema.Array(Schema.String)),
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EntityAdWordsLink",
-  }) as any as Schema.Schema<EntityAdWordsLink>;
+export const EntityAdWordsLink = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  adWordsAccounts: Schema.optional(Schema.Array(AdWordsAccount)),
+  name: Schema.optional(Schema.String),
+  selfLink: Schema.optional(Schema.String),
+  entity: Schema.optional(
+    Schema.Struct({ webPropertyRef: Schema.optional(WebPropertyRef) }),
+  ),
+  kind: Schema.optional(Schema.String),
+  profileIds: Schema.optional(Schema.Array(Schema.String)),
+  id: Schema.optional(Schema.String),
+}).annotate({ identifier: "EntityAdWordsLink" });
 
 export interface EntityAdWordsLinks {
   /** Previous link for this Google Ads link collection. */
@@ -455,20 +406,15 @@ export interface EntityAdWordsLinks {
   nextLink?: string;
 }
 
-export const EntityAdWordsLinks: Schema.Schema<EntityAdWordsLinks> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      previousLink: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(EntityAdWordsLink)),
-      itemsPerPage: Schema.optional(Schema.Number),
-      startIndex: Schema.optional(Schema.Number),
-      kind: Schema.optional(Schema.String),
-      totalResults: Schema.optional(Schema.Number),
-      nextLink: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EntityAdWordsLinks",
-  }) as any as Schema.Schema<EntityAdWordsLinks>;
+export const EntityAdWordsLinks = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  previousLink: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(EntityAdWordsLink)),
+  itemsPerPage: Schema.optional(Schema.Number),
+  startIndex: Schema.optional(Schema.Number),
+  kind: Schema.optional(Schema.String),
+  totalResults: Schema.optional(Schema.Number),
+  nextLink: Schema.optional(Schema.String),
+}).annotate({ identifier: "EntityAdWordsLinks" });
 
 export interface Upload {
   /** Custom data source Id to which this data import belongs. */
@@ -487,18 +433,15 @@ export interface Upload {
   status?: string;
 }
 
-export const Upload: Schema.Schema<Upload> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customDataSourceId: Schema.optional(Schema.String),
-      errors: Schema.optional(Schema.Array(Schema.String)),
-      accountId: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      uploadTime: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Upload" }) as any as Schema.Schema<Upload>;
+export const Upload = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  customDataSourceId: Schema.optional(Schema.String),
+  errors: Schema.optional(Schema.Array(Schema.String)),
+  accountId: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  uploadTime: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.String),
+}).annotate({ identifier: "Upload" });
 
 export interface RealtimeData {
   /** Unique ID for this data response. */
@@ -539,50 +482,45 @@ export interface RealtimeData {
   totalsForAllResults?: Record<string, string>;
 }
 
-export const RealtimeData: Schema.Schema<RealtimeData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const RealtimeData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  columnHeaders: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        dataType: Schema.optional(Schema.String),
+        columnType: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
+  profileInfo: Schema.optional(
     Schema.Struct({
-      id: Schema.optional(Schema.String),
-      columnHeaders: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            dataType: Schema.optional(Schema.String),
-            columnType: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      profileInfo: Schema.optional(
-        Schema.Struct({
-          accountId: Schema.optional(Schema.String),
-          profileName: Schema.optional(Schema.String),
-          profileId: Schema.optional(Schema.String),
-          tableId: Schema.optional(Schema.String),
-          webPropertyId: Schema.optional(Schema.String),
-          internalWebPropertyId: Schema.optional(Schema.String),
-        }),
-      ),
-      rows: Schema.optional(Schema.Array(Schema.Array(Schema.String))),
-      selfLink: Schema.optional(Schema.String),
-      totalResults: Schema.optional(Schema.Number),
-      kind: Schema.optional(Schema.String),
-      query: Schema.optional(
-        Schema.Struct({
-          sort: Schema.optional(Schema.Array(Schema.String)),
-          metrics: Schema.optional(Schema.Array(Schema.String)),
-          ids: Schema.optional(Schema.String),
-          "max-results": Schema.optional(Schema.Number),
-          dimensions: Schema.optional(Schema.String),
-          filters: Schema.optional(Schema.String),
-        }),
-      ),
-      totalsForAllResults: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
+      accountId: Schema.optional(Schema.String),
+      profileName: Schema.optional(Schema.String),
+      profileId: Schema.optional(Schema.String),
+      tableId: Schema.optional(Schema.String),
+      webPropertyId: Schema.optional(Schema.String),
+      internalWebPropertyId: Schema.optional(Schema.String),
     }),
-  ).annotate({
-    identifier: "RealtimeData",
-  }) as any as Schema.Schema<RealtimeData>;
+  ),
+  rows: Schema.optional(Schema.Array(Schema.Array(Schema.String))),
+  selfLink: Schema.optional(Schema.String),
+  totalResults: Schema.optional(Schema.Number),
+  kind: Schema.optional(Schema.String),
+  query: Schema.optional(
+    Schema.Struct({
+      sort: Schema.optional(Schema.Array(Schema.String)),
+      metrics: Schema.optional(Schema.Array(Schema.String)),
+      ids: Schema.optional(Schema.String),
+      "max-results": Schema.optional(Schema.Number),
+      dimensions: Schema.optional(Schema.String),
+      filters: Schema.optional(Schema.String),
+    }),
+  ),
+  totalsForAllResults: Schema.optional(
+    Schema.Record(Schema.String, Schema.String),
+  ),
+}).annotate({ identifier: "RealtimeData" });
 
 export interface CustomDimension {
   /** Boolean indicating whether the custom dimension is active. */
@@ -611,30 +549,25 @@ export interface CustomDimension {
   created?: string;
 }
 
-export const CustomDimension: Schema.Schema<CustomDimension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const CustomDimension = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  active: Schema.optional(Schema.Boolean),
+  scope: Schema.optional(Schema.String),
+  index: Schema.optional(Schema.Number),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  selfLink: Schema.optional(Schema.String),
+  parentLink: Schema.optional(
     Schema.Struct({
-      active: Schema.optional(Schema.Boolean),
-      scope: Schema.optional(Schema.String),
-      index: Schema.optional(Schema.Number),
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      selfLink: Schema.optional(Schema.String),
-      parentLink: Schema.optional(
-        Schema.Struct({
-          type: Schema.optional(Schema.String),
-          href: Schema.optional(Schema.String),
-        }),
-      ),
-      kind: Schema.optional(Schema.String),
-      webPropertyId: Schema.optional(Schema.String),
-      updated: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-      created: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      href: Schema.optional(Schema.String),
     }),
-  ).annotate({
-    identifier: "CustomDimension",
-  }) as any as Schema.Schema<CustomDimension>;
+  ),
+  kind: Schema.optional(Schema.String),
+  webPropertyId: Schema.optional(Schema.String),
+  updated: Schema.optional(Schema.String),
+  accountId: Schema.optional(Schema.String),
+  created: Schema.optional(Schema.String),
+}).annotate({ identifier: "CustomDimension" });
 
 export interface CustomDimensions {
   /** Link to previous page for this custom dimension collection. */
@@ -655,21 +588,16 @@ export interface CustomDimensions {
   kind?: string;
 }
 
-export const CustomDimensions: Schema.Schema<CustomDimensions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      previousLink: Schema.optional(Schema.String),
-      totalResults: Schema.optional(Schema.Number),
-      nextLink: Schema.optional(Schema.String),
-      username: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(CustomDimension)),
-      itemsPerPage: Schema.optional(Schema.Number),
-      startIndex: Schema.optional(Schema.Number),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomDimensions",
-  }) as any as Schema.Schema<CustomDimensions>;
+export const CustomDimensions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  previousLink: Schema.optional(Schema.String),
+  totalResults: Schema.optional(Schema.Number),
+  nextLink: Schema.optional(Schema.String),
+  username: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(CustomDimension)),
+  itemsPerPage: Schema.optional(Schema.Number),
+  startIndex: Schema.optional(Schema.Number),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "CustomDimensions" });
 
 export interface FilterRef {
   /** Filter ID. */
@@ -684,16 +612,13 @@ export interface FilterRef {
   name?: string;
 }
 
-export const FilterRef: Schema.Schema<FilterRef> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      href: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "FilterRef" }) as any as Schema.Schema<FilterRef>;
+export const FilterRef = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  href: Schema.optional(Schema.String),
+  accountId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "FilterRef" });
 
 export interface ProfileRef {
   /** View (Profile) ID. */
@@ -712,18 +637,15 @@ export interface ProfileRef {
   name?: string;
 }
 
-export const ProfileRef: Schema.Schema<ProfileRef> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      webPropertyId: Schema.optional(Schema.String),
-      internalWebPropertyId: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-      href: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "ProfileRef" }) as any as Schema.Schema<ProfileRef>;
+export const ProfileRef = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  webPropertyId: Schema.optional(Schema.String),
+  internalWebPropertyId: Schema.optional(Schema.String),
+  accountId: Schema.optional(Schema.String),
+  href: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "ProfileRef" });
 
 export interface ProfileFilterLink {
   /** Profile filter link ID. */
@@ -740,19 +662,14 @@ export interface ProfileFilterLink {
   profileRef?: ProfileRef;
 }
 
-export const ProfileFilterLink: Schema.Schema<ProfileFilterLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      rank: Schema.optional(Schema.Number),
-      filterRef: Schema.optional(FilterRef),
-      selfLink: Schema.optional(Schema.String),
-      profileRef: Schema.optional(ProfileRef),
-    }),
-  ).annotate({
-    identifier: "ProfileFilterLink",
-  }) as any as Schema.Schema<ProfileFilterLink>;
+export const ProfileFilterLink = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  rank: Schema.optional(Schema.Number),
+  filterRef: Schema.optional(FilterRef),
+  selfLink: Schema.optional(Schema.String),
+  profileRef: Schema.optional(ProfileRef),
+}).annotate({ identifier: "ProfileFilterLink" });
 
 export interface ProfileFilterLinks {
   /** Link to next page for this profile filter link collection. */
@@ -773,21 +690,16 @@ export interface ProfileFilterLinks {
   previousLink?: string;
 }
 
-export const ProfileFilterLinks: Schema.Schema<ProfileFilterLinks> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextLink: Schema.optional(Schema.String),
-      username: Schema.optional(Schema.String),
-      totalResults: Schema.optional(Schema.Number),
-      kind: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(ProfileFilterLink)),
-      itemsPerPage: Schema.optional(Schema.Number),
-      startIndex: Schema.optional(Schema.Number),
-      previousLink: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProfileFilterLinks",
-  }) as any as Schema.Schema<ProfileFilterLinks>;
+export const ProfileFilterLinks = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+  username: Schema.optional(Schema.String),
+  totalResults: Schema.optional(Schema.Number),
+  kind: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(ProfileFilterLink)),
+  itemsPerPage: Schema.optional(Schema.Number),
+  startIndex: Schema.optional(Schema.Number),
+  previousLink: Schema.optional(Schema.String),
+}).annotate({ identifier: "ProfileFilterLinks" });
 
 export interface Experiment {
   /** View (Profile) ID to which this experiment belongs. This field is read-only. */
@@ -854,54 +766,51 @@ export interface Experiment {
   accountId?: string;
 }
 
-export const Experiment: Schema.Schema<Experiment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const Experiment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  profileId: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+  rewriteVariationUrlsAsOriginal: Schema.optional(Schema.Boolean),
+  editableInGaUi: Schema.optional(Schema.Boolean),
+  winnerConfidenceLevel: Schema.optional(Schema.Number),
+  objectiveMetric: Schema.optional(Schema.String),
+  updated: Schema.optional(Schema.String),
+  created: Schema.optional(Schema.String),
+  equalWeighting: Schema.optional(Schema.Boolean),
+  kind: Schema.optional(Schema.String),
+  internalWebPropertyId: Schema.optional(Schema.String),
+  trafficCoverage: Schema.optional(Schema.Number),
+  variations: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        url: Schema.optional(Schema.String),
+        weight: Schema.optional(Schema.Number),
+        won: Schema.optional(Schema.Boolean),
+        status: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
+  servingFramework: Schema.optional(Schema.String),
+  selfLink: Schema.optional(Schema.String),
+  optimizationType: Schema.optional(Schema.String),
+  snippet: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  winnerFound: Schema.optional(Schema.Boolean),
+  reasonExperimentEnded: Schema.optional(Schema.String),
+  webPropertyId: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.String),
+  parentLink: Schema.optional(
     Schema.Struct({
-      profileId: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      rewriteVariationUrlsAsOriginal: Schema.optional(Schema.Boolean),
-      editableInGaUi: Schema.optional(Schema.Boolean),
-      winnerConfidenceLevel: Schema.optional(Schema.Number),
-      objectiveMetric: Schema.optional(Schema.String),
-      updated: Schema.optional(Schema.String),
-      created: Schema.optional(Schema.String),
-      equalWeighting: Schema.optional(Schema.Boolean),
-      kind: Schema.optional(Schema.String),
-      internalWebPropertyId: Schema.optional(Schema.String),
-      trafficCoverage: Schema.optional(Schema.Number),
-      variations: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            url: Schema.optional(Schema.String),
-            weight: Schema.optional(Schema.Number),
-            won: Schema.optional(Schema.Boolean),
-            status: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      servingFramework: Schema.optional(Schema.String),
-      selfLink: Schema.optional(Schema.String),
-      optimizationType: Schema.optional(Schema.String),
-      snippet: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      winnerFound: Schema.optional(Schema.Boolean),
-      reasonExperimentEnded: Schema.optional(Schema.String),
-      webPropertyId: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-      parentLink: Schema.optional(
-        Schema.Struct({
-          type: Schema.optional(Schema.String),
-          href: Schema.optional(Schema.String),
-        }),
-      ),
-      description: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      minimumExperimentLengthInDays: Schema.optional(Schema.Number),
-      endTime: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      href: Schema.optional(Schema.String),
     }),
-  ).annotate({ identifier: "Experiment" }) as any as Schema.Schema<Experiment>;
+  ),
+  description: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  minimumExperimentLengthInDays: Schema.optional(Schema.Number),
+  endTime: Schema.optional(Schema.String),
+  accountId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Experiment" });
 
 export interface IncludeConditions {
   /** Number of days (in the range 1 to 540) a user remains in the audience. */
@@ -916,18 +825,13 @@ export interface IncludeConditions {
   segment?: string;
 }
 
-export const IncludeConditions: Schema.Schema<IncludeConditions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      membershipDurationDays: Schema.optional(Schema.Number),
-      daysToLookBack: Schema.optional(Schema.Number),
-      isSmartList: Schema.optional(Schema.Boolean),
-      kind: Schema.optional(Schema.String),
-      segment: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "IncludeConditions",
-  }) as any as Schema.Schema<IncludeConditions>;
+export const IncludeConditions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  membershipDurationDays: Schema.optional(Schema.Number),
+  daysToLookBack: Schema.optional(Schema.Number),
+  isSmartList: Schema.optional(Schema.Boolean),
+  kind: Schema.optional(Schema.String),
+  segment: Schema.optional(Schema.String),
+}).annotate({ identifier: "IncludeConditions" });
 
 export interface LinkedForeignAccount {
   /** Resource type for linked foreign account. */
@@ -952,23 +856,18 @@ export interface LinkedForeignAccount {
   id?: string;
 }
 
-export const LinkedForeignAccount: Schema.Schema<LinkedForeignAccount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      webPropertyId: Schema.optional(Schema.String),
-      internalWebPropertyId: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-      linkedAccountId: Schema.optional(Schema.String),
-      remarketingAudienceId: Schema.optional(Schema.String),
-      eligibleForSearch: Schema.optional(Schema.Boolean),
-      accountId: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LinkedForeignAccount",
-  }) as any as Schema.Schema<LinkedForeignAccount>;
+export const LinkedForeignAccount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  webPropertyId: Schema.optional(Schema.String),
+  internalWebPropertyId: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.String),
+  linkedAccountId: Schema.optional(Schema.String),
+  remarketingAudienceId: Schema.optional(Schema.String),
+  eligibleForSearch: Schema.optional(Schema.Boolean),
+  accountId: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+}).annotate({ identifier: "LinkedForeignAccount" });
 
 export interface RemarketingAudience {
   /** Time this remarketing audience was last modified. */
@@ -1004,41 +903,34 @@ export interface RemarketingAudience {
   id?: string;
 }
 
-export const RemarketingAudience: Schema.Schema<RemarketingAudience> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const RemarketingAudience = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  updated: Schema.optional(Schema.String),
+  audienceDefinition: Schema.optional(
+    Schema.Struct({ includeConditions: Schema.optional(IncludeConditions) }),
+  ),
+  created: Schema.optional(Schema.String),
+  internalWebPropertyId: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  audienceType: Schema.optional(Schema.String),
+  linkedViews: Schema.optional(Schema.Array(Schema.String)),
+  stateBasedAudienceDefinition: Schema.optional(
     Schema.Struct({
-      updated: Schema.optional(Schema.String),
-      audienceDefinition: Schema.optional(
+      excludeConditions: Schema.optional(
         Schema.Struct({
-          includeConditions: Schema.optional(IncludeConditions),
+          exclusionDuration: Schema.optional(Schema.String),
+          segment: Schema.optional(Schema.String),
         }),
       ),
-      created: Schema.optional(Schema.String),
-      internalWebPropertyId: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      audienceType: Schema.optional(Schema.String),
-      linkedViews: Schema.optional(Schema.Array(Schema.String)),
-      stateBasedAudienceDefinition: Schema.optional(
-        Schema.Struct({
-          excludeConditions: Schema.optional(
-            Schema.Struct({
-              exclusionDuration: Schema.optional(Schema.String),
-              segment: Schema.optional(Schema.String),
-            }),
-          ),
-          includeConditions: Schema.optional(IncludeConditions),
-        }),
-      ),
-      accountId: Schema.optional(Schema.String),
-      webPropertyId: Schema.optional(Schema.String),
-      linkedAdAccounts: Schema.optional(Schema.Array(LinkedForeignAccount)),
-      name: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
+      includeConditions: Schema.optional(IncludeConditions),
     }),
-  ).annotate({
-    identifier: "RemarketingAudience",
-  }) as any as Schema.Schema<RemarketingAudience>;
+  ),
+  accountId: Schema.optional(Schema.String),
+  webPropertyId: Schema.optional(Schema.String),
+  linkedAdAccounts: Schema.optional(Schema.Array(LinkedForeignAccount)),
+  name: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+}).annotate({ identifier: "RemarketingAudience" });
 
 export interface GaData {
   dataTable?: {
@@ -1102,84 +994,81 @@ export interface GaData {
   sampleSize?: string;
 }
 
-export const GaData: Schema.Schema<GaData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const GaData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dataTable: Schema.optional(
     Schema.Struct({
-      dataTable: Schema.optional(
-        Schema.Struct({
-          cols: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                label: Schema.optional(Schema.String),
-                type: Schema.optional(Schema.String),
-                id: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          rows: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                c: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({ v: Schema.optional(Schema.String) }),
-                  ),
-                ),
-              }),
-            ),
-          ),
-        }),
-      ),
-      rows: Schema.optional(Schema.Array(Schema.Array(Schema.String))),
-      profileInfo: Schema.optional(
-        Schema.Struct({
-          profileId: Schema.optional(Schema.String),
-          profileName: Schema.optional(Schema.String),
-          accountId: Schema.optional(Schema.String),
-          internalWebPropertyId: Schema.optional(Schema.String),
-          webPropertyId: Schema.optional(Schema.String),
-          tableId: Schema.optional(Schema.String),
-        }),
-      ),
-      nextLink: Schema.optional(Schema.String),
-      query: Schema.optional(
-        Schema.Struct({
-          dimensions: Schema.optional(Schema.String),
-          filters: Schema.optional(Schema.String),
-          "max-results": Schema.optional(Schema.Number),
-          segment: Schema.optional(Schema.String),
-          "start-date": Schema.optional(Schema.String),
-          sort: Schema.optional(Schema.Array(Schema.String)),
-          metrics: Schema.optional(Schema.Array(Schema.String)),
-          samplingLevel: Schema.optional(Schema.String),
-          ids: Schema.optional(Schema.String),
-          "end-date": Schema.optional(Schema.String),
-          "start-index": Schema.optional(Schema.Number),
-        }),
-      ),
-      itemsPerPage: Schema.optional(Schema.Number),
-      kind: Schema.optional(Schema.String),
-      totalResults: Schema.optional(Schema.Number),
-      previousLink: Schema.optional(Schema.String),
-      selfLink: Schema.optional(Schema.String),
-      columnHeaders: Schema.optional(
+      cols: Schema.optional(
         Schema.Array(
           Schema.Struct({
-            name: Schema.optional(Schema.String),
-            columnType: Schema.optional(Schema.String),
-            dataType: Schema.optional(Schema.String),
+            label: Schema.optional(Schema.String),
+            type: Schema.optional(Schema.String),
+            id: Schema.optional(Schema.String),
           }),
         ),
       ),
-      dataLastRefreshed: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      totalsForAllResults: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
+      rows: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            c: Schema.optional(
+              Schema.Array(
+                Schema.Struct({ v: Schema.optional(Schema.String) }),
+              ),
+            ),
+          }),
+        ),
       ),
-      containsSampledData: Schema.optional(Schema.Boolean),
-      sampleSpace: Schema.optional(Schema.String),
-      sampleSize: Schema.optional(Schema.String),
     }),
-  ).annotate({ identifier: "GaData" }) as any as Schema.Schema<GaData>;
+  ),
+  rows: Schema.optional(Schema.Array(Schema.Array(Schema.String))),
+  profileInfo: Schema.optional(
+    Schema.Struct({
+      profileId: Schema.optional(Schema.String),
+      profileName: Schema.optional(Schema.String),
+      accountId: Schema.optional(Schema.String),
+      internalWebPropertyId: Schema.optional(Schema.String),
+      webPropertyId: Schema.optional(Schema.String),
+      tableId: Schema.optional(Schema.String),
+    }),
+  ),
+  nextLink: Schema.optional(Schema.String),
+  query: Schema.optional(
+    Schema.Struct({
+      dimensions: Schema.optional(Schema.String),
+      filters: Schema.optional(Schema.String),
+      "max-results": Schema.optional(Schema.Number),
+      segment: Schema.optional(Schema.String),
+      "start-date": Schema.optional(Schema.String),
+      sort: Schema.optional(Schema.Array(Schema.String)),
+      metrics: Schema.optional(Schema.Array(Schema.String)),
+      samplingLevel: Schema.optional(Schema.String),
+      ids: Schema.optional(Schema.String),
+      "end-date": Schema.optional(Schema.String),
+      "start-index": Schema.optional(Schema.Number),
+    }),
+  ),
+  itemsPerPage: Schema.optional(Schema.Number),
+  kind: Schema.optional(Schema.String),
+  totalResults: Schema.optional(Schema.Number),
+  previousLink: Schema.optional(Schema.String),
+  selfLink: Schema.optional(Schema.String),
+  columnHeaders: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        columnType: Schema.optional(Schema.String),
+        dataType: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
+  dataLastRefreshed: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  totalsForAllResults: Schema.optional(
+    Schema.Record(Schema.String, Schema.String),
+  ),
+  containsSampledData: Schema.optional(Schema.Boolean),
+  sampleSpace: Schema.optional(Schema.String),
+  sampleSize: Schema.optional(Schema.String),
+}).annotate({ identifier: "GaData" });
 
 export interface Account {
   /** Link for this account. */
@@ -1202,29 +1091,24 @@ export interface Account {
   starred?: boolean;
 }
 
-export const Account: Schema.Schema<Account> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const Account = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  selfLink: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  created: Schema.optional(Schema.String),
+  permissions: Schema.optional(
+    Schema.Struct({ effective: Schema.optional(Schema.Array(Schema.String)) }),
+  ),
+  updated: Schema.optional(Schema.String),
+  childLink: Schema.optional(
     Schema.Struct({
-      selfLink: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      created: Schema.optional(Schema.String),
-      permissions: Schema.optional(
-        Schema.Struct({
-          effective: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ),
-      updated: Schema.optional(Schema.String),
-      childLink: Schema.optional(
-        Schema.Struct({
-          href: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
-      kind: Schema.optional(Schema.String),
-      starred: Schema.optional(Schema.Boolean),
+      href: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
     }),
-  ).annotate({ identifier: "Account" }) as any as Schema.Schema<Account>;
+  ),
+  kind: Schema.optional(Schema.String),
+  starred: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Account" });
 
 export interface Accounts {
   /** The total number of results for the query, regardless of the number of results in the response. */
@@ -1245,33 +1129,26 @@ export interface Accounts {
   previousLink?: string;
 }
 
-export const Accounts: Schema.Schema<Accounts> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      totalResults: Schema.optional(Schema.Number),
-      nextLink: Schema.optional(Schema.String),
-      username: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(Account)),
-      itemsPerPage: Schema.optional(Schema.Number),
-      startIndex: Schema.optional(Schema.Number),
-      kind: Schema.optional(Schema.String),
-      previousLink: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Accounts" }) as any as Schema.Schema<Accounts>;
+export const Accounts = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  totalResults: Schema.optional(Schema.Number),
+  nextLink: Schema.optional(Schema.String),
+  username: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(Account)),
+  itemsPerPage: Schema.optional(Schema.Number),
+  startIndex: Schema.optional(Schema.Number),
+  kind: Schema.optional(Schema.String),
+  previousLink: Schema.optional(Schema.String),
+}).annotate({ identifier: "Accounts" });
 
 export interface AnalyticsDataimportDeleteUploadDataRequest {
   /** A list of upload UIDs. */
   customDataImportUids?: Array<string>;
 }
 
-export const AnalyticsDataimportDeleteUploadDataRequest: Schema.Schema<AnalyticsDataimportDeleteUploadDataRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customDataImportUids: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AnalyticsDataimportDeleteUploadDataRequest",
-  }) as any as Schema.Schema<AnalyticsDataimportDeleteUploadDataRequest>;
+export const AnalyticsDataimportDeleteUploadDataRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customDataImportUids: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "AnalyticsDataimportDeleteUploadDataRequest" });
 
 export interface Goal {
   /** Details for the goal of the type URL_DESTINATION. */
@@ -1330,75 +1207,72 @@ export interface Goal {
   accountId?: string;
 }
 
-export const Goal: Schema.Schema<Goal> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const Goal = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  urlDestinationDetails: Schema.optional(
     Schema.Struct({
-      urlDestinationDetails: Schema.optional(
-        Schema.Struct({
-          matchType: Schema.optional(Schema.String),
-          steps: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                number: Schema.optional(Schema.Number),
-                name: Schema.optional(Schema.String),
-                url: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          url: Schema.optional(Schema.String),
-          firstStepRequired: Schema.optional(Schema.Boolean),
-          caseSensitive: Schema.optional(Schema.Boolean),
-        }),
+      matchType: Schema.optional(Schema.String),
+      steps: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            number: Schema.optional(Schema.Number),
+            name: Schema.optional(Schema.String),
+            url: Schema.optional(Schema.String),
+          }),
+        ),
       ),
-      visitNumPagesDetails: Schema.optional(
-        Schema.Struct({
-          comparisonType: Schema.optional(Schema.String),
-          comparisonValue: Schema.optional(Schema.String),
-        }),
-      ),
-      profileId: Schema.optional(Schema.String),
-      parentLink: Schema.optional(
-        Schema.Struct({
-          type: Schema.optional(Schema.String),
-          href: Schema.optional(Schema.String),
-        }),
-      ),
-      internalWebPropertyId: Schema.optional(Schema.String),
-      eventDetails: Schema.optional(
-        Schema.Struct({
-          eventConditions: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                comparisonType: Schema.optional(Schema.String),
-                matchType: Schema.optional(Schema.String),
-                expression: Schema.optional(Schema.String),
-                comparisonValue: Schema.optional(Schema.String),
-                type: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          useEventValue: Schema.optional(Schema.Boolean),
-        }),
-      ),
-      kind: Schema.optional(Schema.String),
-      updated: Schema.optional(Schema.String),
-      visitTimeOnSiteDetails: Schema.optional(
-        Schema.Struct({
-          comparisonType: Schema.optional(Schema.String),
-          comparisonValue: Schema.optional(Schema.String),
-        }),
-      ),
-      created: Schema.optional(Schema.String),
-      active: Schema.optional(Schema.Boolean),
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      selfLink: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      webPropertyId: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.Number),
-      accountId: Schema.optional(Schema.String),
+      url: Schema.optional(Schema.String),
+      firstStepRequired: Schema.optional(Schema.Boolean),
+      caseSensitive: Schema.optional(Schema.Boolean),
     }),
-  ).annotate({ identifier: "Goal" }) as any as Schema.Schema<Goal>;
+  ),
+  visitNumPagesDetails: Schema.optional(
+    Schema.Struct({
+      comparisonType: Schema.optional(Schema.String),
+      comparisonValue: Schema.optional(Schema.String),
+    }),
+  ),
+  profileId: Schema.optional(Schema.String),
+  parentLink: Schema.optional(
+    Schema.Struct({
+      type: Schema.optional(Schema.String),
+      href: Schema.optional(Schema.String),
+    }),
+  ),
+  internalWebPropertyId: Schema.optional(Schema.String),
+  eventDetails: Schema.optional(
+    Schema.Struct({
+      eventConditions: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            comparisonType: Schema.optional(Schema.String),
+            matchType: Schema.optional(Schema.String),
+            expression: Schema.optional(Schema.String),
+            comparisonValue: Schema.optional(Schema.String),
+            type: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      useEventValue: Schema.optional(Schema.Boolean),
+    }),
+  ),
+  kind: Schema.optional(Schema.String),
+  updated: Schema.optional(Schema.String),
+  visitTimeOnSiteDetails: Schema.optional(
+    Schema.Struct({
+      comparisonType: Schema.optional(Schema.String),
+      comparisonValue: Schema.optional(Schema.String),
+    }),
+  ),
+  created: Schema.optional(Schema.String),
+  active: Schema.optional(Schema.Boolean),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  selfLink: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  webPropertyId: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.Number),
+  accountId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Goal" });
 
 export interface UnsampledReport {
   /** The segment for the unsampled report. */
@@ -1441,39 +1315,34 @@ export interface UnsampledReport {
   metrics?: string;
 }
 
-export const UnsampledReport: Schema.Schema<UnsampledReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const UnsampledReport = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  segment: Schema.optional(Schema.String),
+  webPropertyId: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.String),
+  accountId: Schema.optional(Schema.String),
+  dimensions: Schema.optional(Schema.String),
+  "end-date": Schema.optional(Schema.String),
+  driveDownloadDetails: Schema.optional(
+    Schema.Struct({ documentId: Schema.optional(Schema.String) }),
+  ),
+  id: Schema.optional(Schema.String),
+  selfLink: Schema.optional(Schema.String),
+  "start-date": Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  updated: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  created: Schema.optional(Schema.String),
+  filters: Schema.optional(Schema.String),
+  cloudStorageDownloadDetails: Schema.optional(
     Schema.Struct({
-      segment: Schema.optional(Schema.String),
-      webPropertyId: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-      dimensions: Schema.optional(Schema.String),
-      "end-date": Schema.optional(Schema.String),
-      driveDownloadDetails: Schema.optional(
-        Schema.Struct({ documentId: Schema.optional(Schema.String) }),
-      ),
-      id: Schema.optional(Schema.String),
-      selfLink: Schema.optional(Schema.String),
-      "start-date": Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      updated: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      created: Schema.optional(Schema.String),
-      filters: Schema.optional(Schema.String),
-      cloudStorageDownloadDetails: Schema.optional(
-        Schema.Struct({
-          bucketId: Schema.optional(Schema.String),
-          objectId: Schema.optional(Schema.String),
-        }),
-      ),
-      downloadType: Schema.optional(Schema.String),
-      profileId: Schema.optional(Schema.String),
-      metrics: Schema.optional(Schema.String),
+      bucketId: Schema.optional(Schema.String),
+      objectId: Schema.optional(Schema.String),
     }),
-  ).annotate({
-    identifier: "UnsampledReport",
-  }) as any as Schema.Schema<UnsampledReport>;
+  ),
+  downloadType: Schema.optional(Schema.String),
+  profileId: Schema.optional(Schema.String),
+  metrics: Schema.optional(Schema.String),
+}).annotate({ identifier: "UnsampledReport" });
 
 export interface AccountTreeRequest {
   /** Resource type for account ticket. */
@@ -1485,19 +1354,14 @@ export interface AccountTreeRequest {
   profileName?: string;
 }
 
-export const AccountTreeRequest: Schema.Schema<AccountTreeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      timezone: Schema.optional(Schema.String),
-      webpropertyName: Schema.optional(Schema.String),
-      websiteUrl: Schema.optional(Schema.String),
-      accountName: Schema.optional(Schema.String),
-      profileName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccountTreeRequest",
-  }) as any as Schema.Schema<AccountTreeRequest>;
+export const AccountTreeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  timezone: Schema.optional(Schema.String),
+  webpropertyName: Schema.optional(Schema.String),
+  websiteUrl: Schema.optional(Schema.String),
+  accountName: Schema.optional(Schema.String),
+  profileName: Schema.optional(Schema.String),
+}).annotate({ identifier: "AccountTreeRequest" });
 
 export interface Filters {
   /** Link to next page for this filter collection. */
@@ -1518,19 +1382,16 @@ export interface Filters {
   previousLink?: string;
 }
 
-export const Filters: Schema.Schema<Filters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextLink: Schema.optional(Schema.String),
-      username: Schema.optional(Schema.String),
-      totalResults: Schema.optional(Schema.Number),
-      kind: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(Filter)),
-      itemsPerPage: Schema.optional(Schema.Number),
-      startIndex: Schema.optional(Schema.Number),
-      previousLink: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Filters" }) as any as Schema.Schema<Filters>;
+export const Filters = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+  username: Schema.optional(Schema.String),
+  totalResults: Schema.optional(Schema.Number),
+  kind: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(Filter)),
+  itemsPerPage: Schema.optional(Schema.Number),
+  startIndex: Schema.optional(Schema.Number),
+  previousLink: Schema.optional(Schema.String),
+}).annotate({ identifier: "Filters" });
 
 export interface McfData {
   /** Determines if the Analytics data contains sampled data. */
@@ -1596,75 +1457,72 @@ export interface McfData {
   nextLink?: string;
 }
 
-export const McfData: Schema.Schema<McfData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const McfData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  containsSampledData: Schema.optional(Schema.Boolean),
+  sampleSpace: Schema.optional(Schema.String),
+  totalsForAllResults: Schema.optional(
+    Schema.Record(Schema.String, Schema.String),
+  ),
+  sampleSize: Schema.optional(Schema.String),
+  previousLink: Schema.optional(Schema.String),
+  columnHeaders: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        dataType: Schema.optional(Schema.String),
+        columnType: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
+  selfLink: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  query: Schema.optional(
     Schema.Struct({
-      containsSampledData: Schema.optional(Schema.Boolean),
-      sampleSpace: Schema.optional(Schema.String),
-      totalsForAllResults: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      sampleSize: Schema.optional(Schema.String),
-      previousLink: Schema.optional(Schema.String),
-      columnHeaders: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            dataType: Schema.optional(Schema.String),
-            columnType: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      selfLink: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      query: Schema.optional(
-        Schema.Struct({
-          "max-results": Schema.optional(Schema.Number),
-          dimensions: Schema.optional(Schema.String),
-          filters: Schema.optional(Schema.String),
-          sort: Schema.optional(Schema.Array(Schema.String)),
-          segment: Schema.optional(Schema.String),
-          "start-date": Schema.optional(Schema.String),
-          ids: Schema.optional(Schema.String),
-          metrics: Schema.optional(Schema.Array(Schema.String)),
-          samplingLevel: Schema.optional(Schema.String),
-          "start-index": Schema.optional(Schema.Number),
-          "end-date": Schema.optional(Schema.String),
-        }),
-      ),
-      kind: Schema.optional(Schema.String),
-      itemsPerPage: Schema.optional(Schema.Number),
-      totalResults: Schema.optional(Schema.Number),
-      profileInfo: Schema.optional(
-        Schema.Struct({
-          webPropertyId: Schema.optional(Schema.String),
-          internalWebPropertyId: Schema.optional(Schema.String),
-          tableId: Schema.optional(Schema.String),
-          profileId: Schema.optional(Schema.String),
-          accountId: Schema.optional(Schema.String),
-          profileName: Schema.optional(Schema.String),
-        }),
-      ),
-      rows: Schema.optional(
-        Schema.Array(
-          Schema.Array(
-            Schema.Struct({
-              primitiveValue: Schema.optional(Schema.String),
-              conversionPathValue: Schema.optional(
-                Schema.Array(
-                  Schema.Struct({
-                    interactionType: Schema.optional(Schema.String),
-                    nodeValue: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-            }),
-          ),
-        ),
-      ),
-      nextLink: Schema.optional(Schema.String),
+      "max-results": Schema.optional(Schema.Number),
+      dimensions: Schema.optional(Schema.String),
+      filters: Schema.optional(Schema.String),
+      sort: Schema.optional(Schema.Array(Schema.String)),
+      segment: Schema.optional(Schema.String),
+      "start-date": Schema.optional(Schema.String),
+      ids: Schema.optional(Schema.String),
+      metrics: Schema.optional(Schema.Array(Schema.String)),
+      samplingLevel: Schema.optional(Schema.String),
+      "start-index": Schema.optional(Schema.Number),
+      "end-date": Schema.optional(Schema.String),
     }),
-  ).annotate({ identifier: "McfData" }) as any as Schema.Schema<McfData>;
+  ),
+  kind: Schema.optional(Schema.String),
+  itemsPerPage: Schema.optional(Schema.Number),
+  totalResults: Schema.optional(Schema.Number),
+  profileInfo: Schema.optional(
+    Schema.Struct({
+      webPropertyId: Schema.optional(Schema.String),
+      internalWebPropertyId: Schema.optional(Schema.String),
+      tableId: Schema.optional(Schema.String),
+      profileId: Schema.optional(Schema.String),
+      accountId: Schema.optional(Schema.String),
+      profileName: Schema.optional(Schema.String),
+    }),
+  ),
+  rows: Schema.optional(
+    Schema.Array(
+      Schema.Array(
+        Schema.Struct({
+          primitiveValue: Schema.optional(Schema.String),
+          conversionPathValue: Schema.optional(
+            Schema.Array(
+              Schema.Struct({
+                interactionType: Schema.optional(Schema.String),
+                nodeValue: Schema.optional(Schema.String),
+              }),
+            ),
+          ),
+        }),
+      ),
+    ),
+  ),
+  nextLink: Schema.optional(Schema.String),
+}).annotate({ identifier: "McfData" });
 
 export interface Column {
   /** Resource type for Analytics column. */
@@ -1675,14 +1533,11 @@ export interface Column {
   attributes?: Record<string, string>;
 }
 
-export const Column: Schema.Schema<Column> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      attributes: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({ identifier: "Column" }) as any as Schema.Schema<Column>;
+export const Column = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  attributes: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "Column" });
 
 export interface Columns {
   /** List of attributes names returned by columns. */
@@ -1697,16 +1552,13 @@ export interface Columns {
   items?: Array<Column>;
 }
 
-export const Columns: Schema.Schema<Columns> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      attributeNames: Schema.optional(Schema.Array(Schema.String)),
-      etag: Schema.optional(Schema.String),
-      totalResults: Schema.optional(Schema.Number),
-      kind: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(Column)),
-    }),
-  ).annotate({ identifier: "Columns" }) as any as Schema.Schema<Columns>;
+export const Columns = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  attributeNames: Schema.optional(Schema.Array(Schema.String)),
+  etag: Schema.optional(Schema.String),
+  totalResults: Schema.optional(Schema.Number),
+  kind: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(Column)),
+}).annotate({ identifier: "Columns" });
 
 export interface Experiments {
   /** Link to previous page for this experiment collection. */
@@ -1727,21 +1579,16 @@ export interface Experiments {
   startIndex?: number;
 }
 
-export const Experiments: Schema.Schema<Experiments> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      previousLink: Schema.optional(Schema.String),
-      nextLink: Schema.optional(Schema.String),
-      username: Schema.optional(Schema.String),
-      totalResults: Schema.optional(Schema.Number),
-      kind: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(Experiment)),
-      itemsPerPage: Schema.optional(Schema.Number),
-      startIndex: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "Experiments",
-  }) as any as Schema.Schema<Experiments>;
+export const Experiments = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  previousLink: Schema.optional(Schema.String),
+  nextLink: Schema.optional(Schema.String),
+  username: Schema.optional(Schema.String),
+  totalResults: Schema.optional(Schema.Number),
+  kind: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(Experiment)),
+  itemsPerPage: Schema.optional(Schema.Number),
+  startIndex: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Experiments" });
 
 export interface UnsampledReports {
   /** Link to next page for this unsampled report collection. */
@@ -1762,21 +1609,16 @@ export interface UnsampledReports {
   previousLink?: string;
 }
 
-export const UnsampledReports: Schema.Schema<UnsampledReports> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextLink: Schema.optional(Schema.String),
-      username: Schema.optional(Schema.String),
-      totalResults: Schema.optional(Schema.Number),
-      kind: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(UnsampledReport)),
-      itemsPerPage: Schema.optional(Schema.Number),
-      startIndex: Schema.optional(Schema.Number),
-      previousLink: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UnsampledReports",
-  }) as any as Schema.Schema<UnsampledReports>;
+export const UnsampledReports = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+  username: Schema.optional(Schema.String),
+  totalResults: Schema.optional(Schema.Number),
+  kind: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(UnsampledReport)),
+  itemsPerPage: Schema.optional(Schema.Number),
+  startIndex: Schema.optional(Schema.Number),
+  previousLink: Schema.optional(Schema.String),
+}).annotate({ identifier: "UnsampledReports" });
 
 export interface HashClientIdRequest {
   clientId?: string;
@@ -1784,16 +1626,11 @@ export interface HashClientIdRequest {
   webPropertyId?: string;
 }
 
-export const HashClientIdRequest: Schema.Schema<HashClientIdRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clientId: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      webPropertyId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "HashClientIdRequest",
-  }) as any as Schema.Schema<HashClientIdRequest>;
+export const HashClientIdRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  clientId: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  webPropertyId: Schema.optional(Schema.String),
+}).annotate({ identifier: "HashClientIdRequest" });
 
 export interface CustomDataSource {
   /** Resource type for Analytics custom data source. */
@@ -1828,39 +1665,34 @@ export interface CustomDataSource {
   selfLink?: string;
 }
 
-export const CustomDataSource: Schema.Schema<CustomDataSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const CustomDataSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  schema: Schema.optional(Schema.Array(Schema.String)),
+  childLink: Schema.optional(
     Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      schema: Schema.optional(Schema.Array(Schema.String)),
-      childLink: Schema.optional(
-        Schema.Struct({
-          href: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
-      updated: Schema.optional(Schema.String),
-      created: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      parentLink: Schema.optional(
-        Schema.Struct({
-          type: Schema.optional(Schema.String),
-          href: Schema.optional(Schema.String),
-        }),
-      ),
-      profilesLinked: Schema.optional(Schema.Array(Schema.String)),
+      href: Schema.optional(Schema.String),
       type: Schema.optional(Schema.String),
-      webPropertyId: Schema.optional(Schema.String),
-      uploadType: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-      importBehavior: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      selfLink: Schema.optional(Schema.String),
     }),
-  ).annotate({
-    identifier: "CustomDataSource",
-  }) as any as Schema.Schema<CustomDataSource>;
+  ),
+  updated: Schema.optional(Schema.String),
+  created: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  parentLink: Schema.optional(
+    Schema.Struct({
+      type: Schema.optional(Schema.String),
+      href: Schema.optional(Schema.String),
+    }),
+  ),
+  profilesLinked: Schema.optional(Schema.Array(Schema.String)),
+  type: Schema.optional(Schema.String),
+  webPropertyId: Schema.optional(Schema.String),
+  uploadType: Schema.optional(Schema.String),
+  accountId: Schema.optional(Schema.String),
+  importBehavior: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  selfLink: Schema.optional(Schema.String),
+}).annotate({ identifier: "CustomDataSource" });
 
 export interface CustomDataSources {
   /** Collection of custom data sources. */
@@ -1881,21 +1713,16 @@ export interface CustomDataSources {
   previousLink?: string;
 }
 
-export const CustomDataSources: Schema.Schema<CustomDataSources> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      items: Schema.optional(Schema.Array(CustomDataSource)),
-      itemsPerPage: Schema.optional(Schema.Number),
-      startIndex: Schema.optional(Schema.Number),
-      kind: Schema.optional(Schema.String),
-      totalResults: Schema.optional(Schema.Number),
-      nextLink: Schema.optional(Schema.String),
-      username: Schema.optional(Schema.String),
-      previousLink: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomDataSources",
-  }) as any as Schema.Schema<CustomDataSources>;
+export const CustomDataSources = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  items: Schema.optional(Schema.Array(CustomDataSource)),
+  itemsPerPage: Schema.optional(Schema.Number),
+  startIndex: Schema.optional(Schema.Number),
+  kind: Schema.optional(Schema.String),
+  totalResults: Schema.optional(Schema.Number),
+  nextLink: Schema.optional(Schema.String),
+  username: Schema.optional(Schema.String),
+  previousLink: Schema.optional(Schema.String),
+}).annotate({ identifier: "CustomDataSources" });
 
 export interface AccountRef {
   /** Link for this account. */
@@ -1908,15 +1735,12 @@ export interface AccountRef {
   name?: string;
 }
 
-export const AccountRef: Schema.Schema<AccountRef> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      href: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "AccountRef" }) as any as Schema.Schema<AccountRef>;
+export const AccountRef = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  href: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "AccountRef" });
 
 export interface UserRef {
   /** Email ID of this user. */
@@ -1926,14 +1750,11 @@ export interface UserRef {
   kind?: string;
 }
 
-export const UserRef: Schema.Schema<UserRef> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      email: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "UserRef" }) as any as Schema.Schema<UserRef>;
+export const UserRef = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  email: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "UserRef" });
 
 export interface EntityUserLink {
   /** Entity for this link. It can be an account, a web property, or a view (profile). */
@@ -1954,30 +1775,25 @@ export interface EntityUserLink {
   selfLink?: string;
 }
 
-export const EntityUserLink: Schema.Schema<EntityUserLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const EntityUserLink = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  entity: Schema.optional(
     Schema.Struct({
-      entity: Schema.optional(
-        Schema.Struct({
-          accountRef: Schema.optional(AccountRef),
-          profileRef: Schema.optional(ProfileRef),
-          webPropertyRef: Schema.optional(WebPropertyRef),
-        }),
-      ),
-      kind: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      userRef: Schema.optional(UserRef),
-      permissions: Schema.optional(
-        Schema.Struct({
-          effective: Schema.optional(Schema.Array(Schema.String)),
-          local: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ),
-      selfLink: Schema.optional(Schema.String),
+      accountRef: Schema.optional(AccountRef),
+      profileRef: Schema.optional(ProfileRef),
+      webPropertyRef: Schema.optional(WebPropertyRef),
     }),
-  ).annotate({
-    identifier: "EntityUserLink",
-  }) as any as Schema.Schema<EntityUserLink>;
+  ),
+  kind: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  userRef: Schema.optional(UserRef),
+  permissions: Schema.optional(
+    Schema.Struct({
+      effective: Schema.optional(Schema.Array(Schema.String)),
+      local: Schema.optional(Schema.Array(Schema.String)),
+    }),
+  ),
+  selfLink: Schema.optional(Schema.String),
+}).annotate({ identifier: "EntityUserLink" });
 
 export interface EntityUserLinks {
   /** Next link for this account collection. */
@@ -1996,20 +1812,15 @@ export interface EntityUserLinks {
   previousLink?: string;
 }
 
-export const EntityUserLinks: Schema.Schema<EntityUserLinks> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextLink: Schema.optional(Schema.String),
-      totalResults: Schema.optional(Schema.Number),
-      kind: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(EntityUserLink)),
-      itemsPerPage: Schema.optional(Schema.Number),
-      startIndex: Schema.optional(Schema.Number),
-      previousLink: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EntityUserLinks",
-  }) as any as Schema.Schema<EntityUserLinks>;
+export const EntityUserLinks = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+  totalResults: Schema.optional(Schema.Number),
+  kind: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(EntityUserLink)),
+  itemsPerPage: Schema.optional(Schema.Number),
+  startIndex: Schema.optional(Schema.Number),
+  previousLink: Schema.optional(Schema.String),
+}).annotate({ identifier: "EntityUserLinks" });
 
 export interface Profile {
   /** Default page for this view (profile). */
@@ -2066,51 +1877,46 @@ export interface Profile {
   internalWebPropertyId?: string;
 }
 
-export const Profile: Schema.Schema<Profile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const Profile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  defaultPage: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  currency: Schema.optional(Schema.String),
+  accountId: Schema.optional(Schema.String),
+  permissions: Schema.optional(
+    Schema.Struct({ effective: Schema.optional(Schema.Array(Schema.String)) }),
+  ),
+  timezone: Schema.optional(Schema.String),
+  parentLink: Schema.optional(
     Schema.Struct({
-      defaultPage: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      currency: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-      permissions: Schema.optional(
-        Schema.Struct({
-          effective: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ),
-      timezone: Schema.optional(Schema.String),
-      parentLink: Schema.optional(
-        Schema.Struct({
-          type: Schema.optional(Schema.String),
-          href: Schema.optional(Schema.String),
-        }),
-      ),
-      excludeQueryParameters: Schema.optional(Schema.String),
-      siteSearchQueryParameters: Schema.optional(Schema.String),
-      stripSiteSearchQueryParameters: Schema.optional(Schema.Boolean),
-      siteSearchCategoryParameters: Schema.optional(Schema.String),
-      starred: Schema.optional(Schema.Boolean),
-      stripSiteSearchCategoryParameters: Schema.optional(Schema.Boolean),
-      selfLink: Schema.optional(Schema.String),
-      enhancedECommerceTracking: Schema.optional(Schema.Boolean),
-      id: Schema.optional(Schema.String),
       type: Schema.optional(Schema.String),
-      webPropertyId: Schema.optional(Schema.String),
-      botFilteringEnabled: Schema.optional(Schema.Boolean),
-      websiteUrl: Schema.optional(Schema.String),
-      created: Schema.optional(Schema.String),
-      updated: Schema.optional(Schema.String),
-      childLink: Schema.optional(
-        Schema.Struct({
-          type: Schema.optional(Schema.String),
-          href: Schema.optional(Schema.String),
-        }),
-      ),
-      eCommerceTracking: Schema.optional(Schema.Boolean),
-      kind: Schema.optional(Schema.String),
-      internalWebPropertyId: Schema.optional(Schema.String),
+      href: Schema.optional(Schema.String),
     }),
-  ).annotate({ identifier: "Profile" }) as any as Schema.Schema<Profile>;
+  ),
+  excludeQueryParameters: Schema.optional(Schema.String),
+  siteSearchQueryParameters: Schema.optional(Schema.String),
+  stripSiteSearchQueryParameters: Schema.optional(Schema.Boolean),
+  siteSearchCategoryParameters: Schema.optional(Schema.String),
+  starred: Schema.optional(Schema.Boolean),
+  stripSiteSearchCategoryParameters: Schema.optional(Schema.Boolean),
+  selfLink: Schema.optional(Schema.String),
+  enhancedECommerceTracking: Schema.optional(Schema.Boolean),
+  id: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  webPropertyId: Schema.optional(Schema.String),
+  botFilteringEnabled: Schema.optional(Schema.Boolean),
+  websiteUrl: Schema.optional(Schema.String),
+  created: Schema.optional(Schema.String),
+  updated: Schema.optional(Schema.String),
+  childLink: Schema.optional(
+    Schema.Struct({
+      type: Schema.optional(Schema.String),
+      href: Schema.optional(Schema.String),
+    }),
+  ),
+  eCommerceTracking: Schema.optional(Schema.Boolean),
+  kind: Schema.optional(Schema.String),
+  internalWebPropertyId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Profile" });
 
 export interface Profiles {
   /** The total number of results for the query, regardless of the number of results in the response. */
@@ -2131,19 +1937,16 @@ export interface Profiles {
   previousLink?: string;
 }
 
-export const Profiles: Schema.Schema<Profiles> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      totalResults: Schema.optional(Schema.Number),
-      nextLink: Schema.optional(Schema.String),
-      username: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(Profile)),
-      itemsPerPage: Schema.optional(Schema.Number),
-      startIndex: Schema.optional(Schema.Number),
-      kind: Schema.optional(Schema.String),
-      previousLink: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Profiles" }) as any as Schema.Schema<Profiles>;
+export const Profiles = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  totalResults: Schema.optional(Schema.Number),
+  nextLink: Schema.optional(Schema.String),
+  username: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(Profile)),
+  itemsPerPage: Schema.optional(Schema.Number),
+  startIndex: Schema.optional(Schema.Number),
+  kind: Schema.optional(Schema.String),
+  previousLink: Schema.optional(Schema.String),
+}).annotate({ identifier: "Profiles" });
 
 export interface Goals {
   /** Link to previous page for this goal collection. */
@@ -2164,19 +1967,16 @@ export interface Goals {
   kind?: string;
 }
 
-export const Goals: Schema.Schema<Goals> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      previousLink: Schema.optional(Schema.String),
-      totalResults: Schema.optional(Schema.Number),
-      nextLink: Schema.optional(Schema.String),
-      username: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(Goal)),
-      itemsPerPage: Schema.optional(Schema.Number),
-      startIndex: Schema.optional(Schema.Number),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Goals" }) as any as Schema.Schema<Goals>;
+export const Goals = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  previousLink: Schema.optional(Schema.String),
+  totalResults: Schema.optional(Schema.Number),
+  nextLink: Schema.optional(Schema.String),
+  username: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(Goal)),
+  itemsPerPage: Schema.optional(Schema.Number),
+  startIndex: Schema.optional(Schema.Number),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "Goals" });
 
 export interface Uploads {
   /** Link to next page for this upload collection. */
@@ -2195,18 +1995,15 @@ export interface Uploads {
   previousLink?: string;
 }
 
-export const Uploads: Schema.Schema<Uploads> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextLink: Schema.optional(Schema.String),
-      totalResults: Schema.optional(Schema.Number),
-      kind: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(Upload)),
-      itemsPerPage: Schema.optional(Schema.Number),
-      startIndex: Schema.optional(Schema.Number),
-      previousLink: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Uploads" }) as any as Schema.Schema<Uploads>;
+export const Uploads = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+  totalResults: Schema.optional(Schema.Number),
+  kind: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(Upload)),
+  itemsPerPage: Schema.optional(Schema.Number),
+  startIndex: Schema.optional(Schema.Number),
+  previousLink: Schema.optional(Schema.String),
+}).annotate({ identifier: "Uploads" });
 
 export interface CustomMetric {
   /** Account ID. */
@@ -2241,33 +2038,28 @@ export interface CustomMetric {
   max_value?: string;
 }
 
-export const CustomMetric: Schema.Schema<CustomMetric> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const CustomMetric = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  accountId: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  webPropertyId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  selfLink: Schema.optional(Schema.String),
+  active: Schema.optional(Schema.Boolean),
+  scope: Schema.optional(Schema.String),
+  index: Schema.optional(Schema.Number),
+  id: Schema.optional(Schema.String),
+  updated: Schema.optional(Schema.String),
+  min_value: Schema.optional(Schema.String),
+  created: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  parentLink: Schema.optional(
     Schema.Struct({
-      accountId: Schema.optional(Schema.String),
       type: Schema.optional(Schema.String),
-      webPropertyId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      selfLink: Schema.optional(Schema.String),
-      active: Schema.optional(Schema.Boolean),
-      scope: Schema.optional(Schema.String),
-      index: Schema.optional(Schema.Number),
-      id: Schema.optional(Schema.String),
-      updated: Schema.optional(Schema.String),
-      min_value: Schema.optional(Schema.String),
-      created: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      parentLink: Schema.optional(
-        Schema.Struct({
-          type: Schema.optional(Schema.String),
-          href: Schema.optional(Schema.String),
-        }),
-      ),
-      max_value: Schema.optional(Schema.String),
+      href: Schema.optional(Schema.String),
     }),
-  ).annotate({
-    identifier: "CustomMetric",
-  }) as any as Schema.Schema<CustomMetric>;
+  ),
+  max_value: Schema.optional(Schema.String),
+}).annotate({ identifier: "CustomMetric" });
 
 export interface CustomMetrics {
   /** Collection type. */
@@ -2288,21 +2080,16 @@ export interface CustomMetrics {
   previousLink?: string;
 }
 
-export const CustomMetrics: Schema.Schema<CustomMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(CustomMetric)),
-      itemsPerPage: Schema.optional(Schema.Number),
-      startIndex: Schema.optional(Schema.Number),
-      nextLink: Schema.optional(Schema.String),
-      username: Schema.optional(Schema.String),
-      totalResults: Schema.optional(Schema.Number),
-      previousLink: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomMetrics",
-  }) as any as Schema.Schema<CustomMetrics>;
+export const CustomMetrics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(CustomMetric)),
+  itemsPerPage: Schema.optional(Schema.Number),
+  startIndex: Schema.optional(Schema.Number),
+  nextLink: Schema.optional(Schema.String),
+  username: Schema.optional(Schema.String),
+  totalResults: Schema.optional(Schema.Number),
+  previousLink: Schema.optional(Schema.String),
+}).annotate({ identifier: "CustomMetrics" });
 
 export interface Webproperty {
   /** Website url for this web property. */
@@ -2345,46 +2132,39 @@ export interface Webproperty {
   permissions?: { effective?: Array<string> };
 }
 
-export const Webproperty: Schema.Schema<Webproperty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const Webproperty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  websiteUrl: Schema.optional(Schema.String),
+  level: Schema.optional(Schema.String),
+  parentLink: Schema.optional(
     Schema.Struct({
-      websiteUrl: Schema.optional(Schema.String),
-      level: Schema.optional(Schema.String),
-      parentLink: Schema.optional(
-        Schema.Struct({
-          type: Schema.optional(Schema.String),
-          href: Schema.optional(Schema.String),
-        }),
-      ),
-      childLink: Schema.optional(
-        Schema.Struct({
-          href: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
-      internalWebPropertyId: Schema.optional(Schema.String),
-      profileCount: Schema.optional(Schema.Number),
-      kind: Schema.optional(Schema.String),
-      starred: Schema.optional(Schema.Boolean),
-      industryVertical: Schema.optional(Schema.String),
-      created: Schema.optional(Schema.String),
-      updated: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      dataRetentionTtl: Schema.optional(Schema.String),
-      selfLink: Schema.optional(Schema.String),
-      dataRetentionResetOnNewActivity: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-      defaultProfileId: Schema.optional(Schema.String),
-      permissions: Schema.optional(
-        Schema.Struct({
-          effective: Schema.optional(Schema.Array(Schema.String)),
-        }),
-      ),
+      type: Schema.optional(Schema.String),
+      href: Schema.optional(Schema.String),
     }),
-  ).annotate({
-    identifier: "Webproperty",
-  }) as any as Schema.Schema<Webproperty>;
+  ),
+  childLink: Schema.optional(
+    Schema.Struct({
+      href: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+    }),
+  ),
+  internalWebPropertyId: Schema.optional(Schema.String),
+  profileCount: Schema.optional(Schema.Number),
+  kind: Schema.optional(Schema.String),
+  starred: Schema.optional(Schema.Boolean),
+  industryVertical: Schema.optional(Schema.String),
+  created: Schema.optional(Schema.String),
+  updated: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  dataRetentionTtl: Schema.optional(Schema.String),
+  selfLink: Schema.optional(Schema.String),
+  dataRetentionResetOnNewActivity: Schema.optional(Schema.Boolean),
+  name: Schema.optional(Schema.String),
+  accountId: Schema.optional(Schema.String),
+  defaultProfileId: Schema.optional(Schema.String),
+  permissions: Schema.optional(
+    Schema.Struct({ effective: Schema.optional(Schema.Array(Schema.String)) }),
+  ),
+}).annotate({ identifier: "Webproperty" });
 
 export interface AccountTreeResponse {
   /** View (Profile) for the account. */
@@ -2397,17 +2177,12 @@ export interface AccountTreeResponse {
   webproperty?: Webproperty;
 }
 
-export const AccountTreeResponse: Schema.Schema<AccountTreeResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      profile: Schema.optional(Profile),
-      account: Schema.optional(Account),
-      kind: Schema.optional(Schema.String),
-      webproperty: Schema.optional(Webproperty),
-    }),
-  ).annotate({
-    identifier: "AccountTreeResponse",
-  }) as any as Schema.Schema<AccountTreeResponse>;
+export const AccountTreeResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  profile: Schema.optional(Profile),
+  account: Schema.optional(Account),
+  kind: Schema.optional(Schema.String),
+  webproperty: Schema.optional(Webproperty),
+}).annotate({ identifier: "AccountTreeResponse" });
 
 export interface RemarketingAudiences {
   /** Link to previous page for this view (profile) collection. */
@@ -2428,21 +2203,16 @@ export interface RemarketingAudiences {
   totalResults?: number;
 }
 
-export const RemarketingAudiences: Schema.Schema<RemarketingAudiences> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      previousLink: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(RemarketingAudience)),
-      itemsPerPage: Schema.optional(Schema.Number),
-      startIndex: Schema.optional(Schema.Number),
-      nextLink: Schema.optional(Schema.String),
-      username: Schema.optional(Schema.String),
-      totalResults: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "RemarketingAudiences",
-  }) as any as Schema.Schema<RemarketingAudiences>;
+export const RemarketingAudiences = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  previousLink: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(RemarketingAudience)),
+  itemsPerPage: Schema.optional(Schema.Number),
+  startIndex: Schema.optional(Schema.Number),
+  nextLink: Schema.optional(Schema.String),
+  username: Schema.optional(Schema.String),
+  totalResults: Schema.optional(Schema.Number),
+}).annotate({ identifier: "RemarketingAudiences" });
 
 export interface Webproperties {
   /** Collection type. */
@@ -2463,21 +2233,16 @@ export interface Webproperties {
   previousLink?: string;
 }
 
-export const Webproperties: Schema.Schema<Webproperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(Webproperty)),
-      itemsPerPage: Schema.optional(Schema.Number),
-      startIndex: Schema.optional(Schema.Number),
-      nextLink: Schema.optional(Schema.String),
-      username: Schema.optional(Schema.String),
-      totalResults: Schema.optional(Schema.Number),
-      previousLink: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Webproperties",
-  }) as any as Schema.Schema<Webproperties>;
+export const Webproperties = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(Webproperty)),
+  itemsPerPage: Schema.optional(Schema.Number),
+  startIndex: Schema.optional(Schema.Number),
+  nextLink: Schema.optional(Schema.String),
+  username: Schema.optional(Schema.String),
+  totalResults: Schema.optional(Schema.Number),
+  previousLink: Schema.optional(Schema.String),
+}).annotate({ identifier: "Webproperties" });
 
 export interface HashClientIdResponse {
   clientId?: string;
@@ -2486,17 +2251,12 @@ export interface HashClientIdResponse {
   webPropertyId?: string;
 }
 
-export const HashClientIdResponse: Schema.Schema<HashClientIdResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clientId: Schema.optional(Schema.String),
-      hashedClientId: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      webPropertyId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "HashClientIdResponse",
-  }) as any as Schema.Schema<HashClientIdResponse>;
+export const HashClientIdResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  clientId: Schema.optional(Schema.String),
+  hashedClientId: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  webPropertyId: Schema.optional(Schema.String),
+}).annotate({ identifier: "HashClientIdResponse" });
 
 export interface AccountTicket {
   /** Account ticket ID used to access the account ticket. */
@@ -2513,19 +2273,14 @@ export interface AccountTicket {
   webproperty?: Webproperty;
 }
 
-export const AccountTicket: Schema.Schema<AccountTicket> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      redirectUri: Schema.optional(Schema.String),
-      account: Schema.optional(Account),
-      kind: Schema.optional(Schema.String),
-      profile: Schema.optional(Profile),
-      webproperty: Schema.optional(Webproperty),
-    }),
-  ).annotate({
-    identifier: "AccountTicket",
-  }) as any as Schema.Schema<AccountTicket>;
+export const AccountTicket = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  redirectUri: Schema.optional(Schema.String),
+  account: Schema.optional(Account),
+  kind: Schema.optional(Schema.String),
+  profile: Schema.optional(Profile),
+  webproperty: Schema.optional(Webproperty),
+}).annotate({ identifier: "AccountTicket" });
 
 export interface UserDeletionRequest {
   /** User ID. */
@@ -2542,24 +2297,19 @@ export interface UserDeletionRequest {
   propertyId?: string;
 }
 
-export const UserDeletionRequest: Schema.Schema<UserDeletionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const UserDeletionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(
     Schema.Struct({
-      id: Schema.optional(
-        Schema.Struct({
-          userId: Schema.optional(Schema.String),
-          type: Schema.optional(Schema.String),
-        }),
-      ),
-      deletionRequestTime: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      webPropertyId: Schema.optional(Schema.String),
-      firebaseProjectId: Schema.optional(Schema.String),
-      propertyId: Schema.optional(Schema.String),
+      userId: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
     }),
-  ).annotate({
-    identifier: "UserDeletionRequest",
-  }) as any as Schema.Schema<UserDeletionRequest>;
+  ),
+  deletionRequestTime: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  webPropertyId: Schema.optional(Schema.String),
+  firebaseProjectId: Schema.optional(Schema.String),
+  propertyId: Schema.optional(Schema.String),
+}).annotate({ identifier: "UserDeletionRequest" });
 
 // ==========================================================================
 // Operations

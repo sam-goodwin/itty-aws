@@ -29,15 +29,11 @@ export interface GoogleExampleLibraryagentV1Shelf {
   theme?: string;
 }
 
-export const GoogleExampleLibraryagentV1Shelf: Schema.Schema<GoogleExampleLibraryagentV1Shelf> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      theme: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleExampleLibraryagentV1Shelf",
-  }) as any as Schema.Schema<GoogleExampleLibraryagentV1Shelf>;
+export const GoogleExampleLibraryagentV1Shelf =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    theme: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleExampleLibraryagentV1Shelf" });
 
 export interface GoogleExampleLibraryagentV1Book {
   /** The resource name of the book. Book names have the form `shelves/{shelf_id}/books/{book_id}`. The name is ignored when creating a book. */
@@ -50,17 +46,13 @@ export interface GoogleExampleLibraryagentV1Book {
   read?: boolean;
 }
 
-export const GoogleExampleLibraryagentV1Book: Schema.Schema<GoogleExampleLibraryagentV1Book> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      author: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      read: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleExampleLibraryagentV1Book",
-  }) as any as Schema.Schema<GoogleExampleLibraryagentV1Book>;
+export const GoogleExampleLibraryagentV1Book =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    author: Schema.optional(Schema.String),
+    title: Schema.optional(Schema.String),
+    read: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleExampleLibraryagentV1Book" });
 
 export interface GoogleExampleLibraryagentV1ListBooksResponse {
   /** A token to retrieve next page of results. Pass this value in the ListBooksRequest.page_token field in the subsequent call to `ListBooks` method to retrieve the next page of results. */
@@ -69,15 +61,11 @@ export interface GoogleExampleLibraryagentV1ListBooksResponse {
   books?: Array<GoogleExampleLibraryagentV1Book>;
 }
 
-export const GoogleExampleLibraryagentV1ListBooksResponse: Schema.Schema<GoogleExampleLibraryagentV1ListBooksResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      books: Schema.optional(Schema.Array(GoogleExampleLibraryagentV1Book)),
-    }),
-  ).annotate({
-    identifier: "GoogleExampleLibraryagentV1ListBooksResponse",
-  }) as any as Schema.Schema<GoogleExampleLibraryagentV1ListBooksResponse>;
+export const GoogleExampleLibraryagentV1ListBooksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    books: Schema.optional(Schema.Array(GoogleExampleLibraryagentV1Book)),
+  }).annotate({ identifier: "GoogleExampleLibraryagentV1ListBooksResponse" });
 
 export interface GoogleExampleLibraryagentV1ListShelvesResponse {
   /** A token to retrieve next page of results. Pass this value in the ListShelvesRequest.page_token field in the subsequent call to `ListShelves` method to retrieve the next page of results. */
@@ -86,15 +74,11 @@ export interface GoogleExampleLibraryagentV1ListShelvesResponse {
   shelves?: Array<GoogleExampleLibraryagentV1Shelf>;
 }
 
-export const GoogleExampleLibraryagentV1ListShelvesResponse: Schema.Schema<GoogleExampleLibraryagentV1ListShelvesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      shelves: Schema.optional(Schema.Array(GoogleExampleLibraryagentV1Shelf)),
-    }),
-  ).annotate({
-    identifier: "GoogleExampleLibraryagentV1ListShelvesResponse",
-  }) as any as Schema.Schema<GoogleExampleLibraryagentV1ListShelvesResponse>;
+export const GoogleExampleLibraryagentV1ListShelvesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    shelves: Schema.optional(Schema.Array(GoogleExampleLibraryagentV1Shelf)),
+  }).annotate({ identifier: "GoogleExampleLibraryagentV1ListShelvesResponse" });
 
 // ==========================================================================
 // Operations

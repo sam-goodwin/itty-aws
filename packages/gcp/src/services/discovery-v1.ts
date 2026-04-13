@@ -162,57 +162,54 @@ export interface RestMethod {
   useMediaDownloadService?: boolean;
 }
 
-export const RestMethod: Schema.Schema<RestMethod> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const RestMethod = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  supportsMediaDownload: Schema.optional(Schema.Boolean),
+  parameters: Schema.optional(Schema.Record(Schema.String, JsonSchema)),
+  flatPath: Schema.optional(Schema.String),
+  response: Schema.optional(
+    Schema.Struct({ $ref: Schema.optional(Schema.String) }),
+  ),
+  deprecated: Schema.optional(Schema.Boolean),
+  request: Schema.optional(
     Schema.Struct({
-      supportsMediaDownload: Schema.optional(Schema.Boolean),
-      parameters: Schema.optional(Schema.Record(Schema.String, JsonSchema)),
-      flatPath: Schema.optional(Schema.String),
-      response: Schema.optional(
-        Schema.Struct({ $ref: Schema.optional(Schema.String) }),
-      ),
-      deprecated: Schema.optional(Schema.Boolean),
-      request: Schema.optional(
+      $ref: Schema.optional(Schema.String),
+      parameterName: Schema.optional(Schema.String),
+    }),
+  ),
+  parameterOrder: Schema.optional(Schema.Array(Schema.String)),
+  supportsSubscription: Schema.optional(Schema.Boolean),
+  id: Schema.optional(Schema.String),
+  apiVersion: Schema.optional(Schema.String),
+  path: Schema.optional(Schema.String),
+  httpMethod: Schema.optional(Schema.String),
+  scopes: Schema.optional(Schema.Array(Schema.String)),
+  mediaUpload: Schema.optional(
+    Schema.Struct({
+      maxSize: Schema.optional(Schema.String),
+      accept: Schema.optional(Schema.Array(Schema.String)),
+      protocols: Schema.optional(
         Schema.Struct({
-          $ref: Schema.optional(Schema.String),
-          parameterName: Schema.optional(Schema.String),
-        }),
-      ),
-      parameterOrder: Schema.optional(Schema.Array(Schema.String)),
-      supportsSubscription: Schema.optional(Schema.Boolean),
-      id: Schema.optional(Schema.String),
-      apiVersion: Schema.optional(Schema.String),
-      path: Schema.optional(Schema.String),
-      httpMethod: Schema.optional(Schema.String),
-      scopes: Schema.optional(Schema.Array(Schema.String)),
-      mediaUpload: Schema.optional(
-        Schema.Struct({
-          maxSize: Schema.optional(Schema.String),
-          accept: Schema.optional(Schema.Array(Schema.String)),
-          protocols: Schema.optional(
+          resumable: Schema.optional(
             Schema.Struct({
-              resumable: Schema.optional(
-                Schema.Struct({
-                  multipart: Schema.optional(Schema.Boolean),
-                  path: Schema.optional(Schema.String),
-                }),
-              ),
-              simple: Schema.optional(
-                Schema.Struct({
-                  path: Schema.optional(Schema.String),
-                  multipart: Schema.optional(Schema.Boolean),
-                }),
-              ),
+              multipart: Schema.optional(Schema.Boolean),
+              path: Schema.optional(Schema.String),
+            }),
+          ),
+          simple: Schema.optional(
+            Schema.Struct({
+              path: Schema.optional(Schema.String),
+              multipart: Schema.optional(Schema.Boolean),
             }),
           ),
         }),
       ),
-      description: Schema.optional(Schema.String),
-      supportsMediaUpload: Schema.optional(Schema.Boolean),
-      etagRequired: Schema.optional(Schema.Boolean),
-      useMediaDownloadService: Schema.optional(Schema.Boolean),
     }),
-  ).annotate({ identifier: "RestMethod" }) as any as Schema.Schema<RestMethod>;
+  ),
+  description: Schema.optional(Schema.String),
+  supportsMediaUpload: Schema.optional(Schema.Boolean),
+  etagRequired: Schema.optional(Schema.Boolean),
+  useMediaDownloadService: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "RestMethod" });
 
 export interface RestResource {
   /** Sub-resources on this resource. */
@@ -303,73 +300,66 @@ export interface RestDescription {
   rootUrl?: string;
 }
 
-export const RestDescription: Schema.Schema<RestDescription> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const RestDescription = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  endpoints: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        location: Schema.optional(Schema.String),
+        deprecated: Schema.optional(Schema.Boolean),
+        endpointUrl: Schema.optional(Schema.String),
+        description: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
+  features: Schema.optional(Schema.Array(Schema.String)),
+  kind: Schema.optional(Schema.String),
+  exponentialBackoffDefault: Schema.optional(Schema.Boolean),
+  documentationLink: Schema.optional(Schema.String),
+  resources: Schema.optional(Schema.Record(Schema.String, RestResource)),
+  methods: Schema.optional(Schema.Record(Schema.String, RestMethod)),
+  revision: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+  packagePath: Schema.optional(Schema.String),
+  discoveryVersion: Schema.optional(Schema.String),
+  protocol: Schema.optional(Schema.String),
+  servicePath: Schema.optional(Schema.String),
+  version_module: Schema.optional(Schema.Boolean),
+  ownerDomain: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  auth: Schema.optional(
     Schema.Struct({
-      name: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      endpoints: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            location: Schema.optional(Schema.String),
-            deprecated: Schema.optional(Schema.Boolean),
-            endpointUrl: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      features: Schema.optional(Schema.Array(Schema.String)),
-      kind: Schema.optional(Schema.String),
-      exponentialBackoffDefault: Schema.optional(Schema.Boolean),
-      documentationLink: Schema.optional(Schema.String),
-      resources: Schema.optional(Schema.Record(Schema.String, RestResource)),
-      methods: Schema.optional(Schema.Record(Schema.String, RestMethod)),
-      revision: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-      packagePath: Schema.optional(Schema.String),
-      discoveryVersion: Schema.optional(Schema.String),
-      protocol: Schema.optional(Schema.String),
-      servicePath: Schema.optional(Schema.String),
-      version_module: Schema.optional(Schema.Boolean),
-      ownerDomain: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      auth: Schema.optional(
+      oauth2: Schema.optional(
         Schema.Struct({
-          oauth2: Schema.optional(
-            Schema.Struct({
-              scopes: Schema.optional(
-                Schema.Record(
-                  Schema.String,
-                  Schema.Struct({
-                    description: Schema.optional(Schema.String),
-                  }),
-                ),
-              ),
-            }),
+          scopes: Schema.optional(
+            Schema.Record(
+              Schema.String,
+              Schema.Struct({ description: Schema.optional(Schema.String) }),
+            ),
           ),
         }),
       ),
-      etag: Schema.optional(Schema.String),
-      batchPath: Schema.optional(Schema.String),
-      schemas: Schema.optional(Schema.Record(Schema.String, JsonSchema)),
-      icons: Schema.optional(
-        Schema.Struct({
-          x32: Schema.optional(Schema.String),
-          x16: Schema.optional(Schema.String),
-        }),
-      ),
-      basePath: Schema.optional(Schema.String),
-      baseUrl: Schema.optional(Schema.String),
-      parameters: Schema.optional(Schema.Record(Schema.String, JsonSchema)),
-      canonicalName: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Array(Schema.String)),
-      description: Schema.optional(Schema.String),
-      ownerName: Schema.optional(Schema.String),
-      rootUrl: Schema.optional(Schema.String),
     }),
-  ).annotate({
-    identifier: "RestDescription",
-  }) as any as Schema.Schema<RestDescription>;
+  ),
+  etag: Schema.optional(Schema.String),
+  batchPath: Schema.optional(Schema.String),
+  schemas: Schema.optional(Schema.Record(Schema.String, JsonSchema)),
+  icons: Schema.optional(
+    Schema.Struct({
+      x32: Schema.optional(Schema.String),
+      x16: Schema.optional(Schema.String),
+    }),
+  ),
+  basePath: Schema.optional(Schema.String),
+  baseUrl: Schema.optional(Schema.String),
+  parameters: Schema.optional(Schema.Record(Schema.String, JsonSchema)),
+  canonicalName: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Array(Schema.String)),
+  description: Schema.optional(Schema.String),
+  ownerName: Schema.optional(Schema.String),
+  rootUrl: Schema.optional(Schema.String),
+}).annotate({ identifier: "RestDescription" });
 
 export interface DirectoryList {
   /** Indicate the version of the Discovery API used to generate this doc. */
@@ -393,38 +383,33 @@ export interface DirectoryList {
   kind?: string;
 }
 
-export const DirectoryList: Schema.Schema<DirectoryList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      discoveryVersion: Schema.optional(Schema.String),
-      items: Schema.optional(
-        Schema.Array(
+export const DirectoryList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  discoveryVersion: Schema.optional(Schema.String),
+  items: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        labels: Schema.optional(Schema.Array(Schema.String)),
+        preferred: Schema.optional(Schema.Boolean),
+        name: Schema.optional(Schema.String),
+        id: Schema.optional(Schema.String),
+        description: Schema.optional(Schema.String),
+        kind: Schema.optional(Schema.String),
+        discoveryRestUrl: Schema.optional(Schema.String),
+        icons: Schema.optional(
           Schema.Struct({
-            labels: Schema.optional(Schema.Array(Schema.String)),
-            preferred: Schema.optional(Schema.Boolean),
-            name: Schema.optional(Schema.String),
-            id: Schema.optional(Schema.String),
-            description: Schema.optional(Schema.String),
-            kind: Schema.optional(Schema.String),
-            discoveryRestUrl: Schema.optional(Schema.String),
-            icons: Schema.optional(
-              Schema.Struct({
-                x32: Schema.optional(Schema.String),
-                x16: Schema.optional(Schema.String),
-              }),
-            ),
-            documentationLink: Schema.optional(Schema.String),
-            version: Schema.optional(Schema.String),
-            title: Schema.optional(Schema.String),
-            discoveryLink: Schema.optional(Schema.String),
+            x32: Schema.optional(Schema.String),
+            x16: Schema.optional(Schema.String),
           }),
         ),
-      ),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DirectoryList",
-  }) as any as Schema.Schema<DirectoryList>;
+        documentationLink: Schema.optional(Schema.String),
+        version: Schema.optional(Schema.String),
+        title: Schema.optional(Schema.String),
+        discoveryLink: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "DirectoryList" });
 
 // ==========================================================================
 // Operations

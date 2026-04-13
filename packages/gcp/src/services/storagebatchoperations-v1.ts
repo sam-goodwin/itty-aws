@@ -31,16 +31,13 @@ export interface Status {
   code?: number;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      message: Schema.optional(Schema.String),
-      code: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  message: Schema.optional(Schema.String),
+  code: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
@@ -55,16 +52,13 @@ export interface Operation {
   error?: Status;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      name: Schema.optional(Schema.String),
-      done: Schema.optional(Schema.Boolean),
-      error: Schema.optional(Status),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  name: Schema.optional(Schema.String),
+  done: Schema.optional(Schema.Boolean),
+  error: Schema.optional(Status),
+}).annotate({ identifier: "Operation" });
 
 export interface PutObjectHold {
   /** Required. Updates object temporary holds state. When object temporary hold is set, object cannot be deleted or replaced. */
@@ -73,15 +67,10 @@ export interface PutObjectHold {
   eventBasedHold?: "HOLD_STATUS_UNSPECIFIED" | "SET" | "UNSET" | (string & {});
 }
 
-export const PutObjectHold: Schema.Schema<PutObjectHold> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      temporaryHold: Schema.optional(Schema.String),
-      eventBasedHold: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PutObjectHold",
-  }) as any as Schema.Schema<PutObjectHold>;
+export const PutObjectHold = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  temporaryHold: Schema.optional(Schema.String),
+  eventBasedHold: Schema.optional(Schema.String),
+}).annotate({ identifier: "PutObjectHold" });
 
 export interface Location {
   /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
@@ -96,16 +85,13 @@ export interface Location {
   locationId?: string;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      locationId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  locationId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Location" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -114,36 +100,26 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(Location)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelOperationRequest",
-  }) as any as Schema.Schema<CancelOperationRequest>;
+export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelOperationRequest" });
 
 export interface ObjectCustomContextPayload {
   /** The value of the object custom context. If set, `value` must NOT be an empty string since it is a required field in custom context. If unset, `value` will be ignored and no changes will be made to the `value` field of the custom context payload. */
   value?: string;
 }
 
-export const ObjectCustomContextPayload: Schema.Schema<ObjectCustomContextPayload> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ObjectCustomContextPayload",
-  }) as any as Schema.Schema<ObjectCustomContextPayload>;
+export const ObjectCustomContextPayload =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ObjectCustomContextPayload" });
 
 export interface CustomContextUpdates {
   /** Optional. Insert or update the existing custom contexts. */
@@ -152,31 +128,21 @@ export interface CustomContextUpdates {
   keysToClear?: Array<string>;
 }
 
-export const CustomContextUpdates: Schema.Schema<CustomContextUpdates> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updates: Schema.optional(
-        Schema.Record(Schema.String, ObjectCustomContextPayload),
-      ),
-      keysToClear: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "CustomContextUpdates",
-  }) as any as Schema.Schema<CustomContextUpdates>;
+export const CustomContextUpdates = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  updates: Schema.optional(
+    Schema.Record(Schema.String, ObjectCustomContextPayload),
+  ),
+  keysToClear: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "CustomContextUpdates" });
 
 export interface CancelJobRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID in case you need to retry your request. Requests with same `request_id` will be ignored for at least 60 minutes since the first request. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
   requestId?: string;
 }
 
-export const CancelJobRequest: Schema.Schema<CancelJobRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CancelJobRequest",
-  }) as any as Schema.Schema<CancelJobRequest>;
+export const CancelJobRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  requestId: Schema.optional(Schema.String),
+}).annotate({ identifier: "CancelJobRequest" });
 
 export interface LoggingConfig {
   /** Required. Specifies the actions to be logged. */
@@ -189,29 +155,19 @@ export interface LoggingConfig {
   >;
 }
 
-export const LoggingConfig: Schema.Schema<LoggingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      logActions: Schema.optional(Schema.Array(Schema.String)),
-      logActionStates: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "LoggingConfig",
-  }) as any as Schema.Schema<LoggingConfig>;
+export const LoggingConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  logActions: Schema.optional(Schema.Array(Schema.String)),
+  logActionStates: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "LoggingConfig" });
 
 export interface DeleteObject {
   /** Required. Controls deletion behavior when versioning is enabled for the object's bucket. If true both live and noncurrent objects will be permanently deleted. Otherwise live objects in versioned buckets will become noncurrent and objects that were already noncurrent will be skipped. This setting doesn't have any impact on the Soft Delete feature. All objects deleted by this service can be be restored for the duration of the Soft Delete retention duration if enabled. If enabled and the manifest doesn't specify an object's generation, a GetObjectMetadata call (a Class B operation) will be made to determine the live object generation. */
   permanentObjectDeletionEnabled?: boolean;
 }
 
-export const DeleteObject: Schema.Schema<DeleteObject> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permanentObjectDeletionEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "DeleteObject",
-  }) as any as Schema.Schema<DeleteObject>;
+export const DeleteObject = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  permanentObjectDeletionEnabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "DeleteObject" });
 
 export interface Counters {
   /** Output only. Number of objects completed. */
@@ -230,18 +186,15 @@ export interface Counters {
   totalBytesFound?: string;
 }
 
-export const Counters: Schema.Schema<Counters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      succeededObjectCount: Schema.optional(Schema.String),
-      objectCustomContextsUpdated: Schema.optional(Schema.String),
-      objectCustomContextsCreated: Schema.optional(Schema.String),
-      failedObjectCount: Schema.optional(Schema.String),
-      objectCustomContextsDeleted: Schema.optional(Schema.String),
-      totalObjectCount: Schema.optional(Schema.String),
-      totalBytesFound: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Counters" }) as any as Schema.Schema<Counters>;
+export const Counters = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  succeededObjectCount: Schema.optional(Schema.String),
+  objectCustomContextsUpdated: Schema.optional(Schema.String),
+  objectCustomContextsCreated: Schema.optional(Schema.String),
+  failedObjectCount: Schema.optional(Schema.String),
+  objectCustomContextsDeleted: Schema.optional(Schema.String),
+  totalObjectCount: Schema.optional(Schema.String),
+  totalBytesFound: Schema.optional(Schema.String),
+}).annotate({ identifier: "Counters" });
 
 export interface UpdateObjectCustomContext {
   /** A collection of updates to apply to specific custom contexts. Use this to add, update or delete individual contexts by key. */
@@ -250,15 +203,11 @@ export interface UpdateObjectCustomContext {
   clearAll?: boolean;
 }
 
-export const UpdateObjectCustomContext: Schema.Schema<UpdateObjectCustomContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customContextUpdates: Schema.optional(CustomContextUpdates),
-      clearAll: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "UpdateObjectCustomContext",
-  }) as any as Schema.Schema<UpdateObjectCustomContext>;
+export const UpdateObjectCustomContext =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customContextUpdates: Schema.optional(CustomContextUpdates),
+    clearAll: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "UpdateObjectCustomContext" });
 
 export interface ObjectRetention {
   /** Required. The time when the object will be retained until. UNSET will clear the retention. Must be specified in RFC 3339 format e.g. YYYY-MM-DD'T'HH:MM:SS.SS'Z' or YYYY-MM-DD'T'HH:MM:SS'Z'. */
@@ -271,15 +220,10 @@ export interface ObjectRetention {
     | (string & {});
 }
 
-export const ObjectRetention: Schema.Schema<ObjectRetention> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      retainUntilTime: Schema.optional(Schema.String),
-      retentionMode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ObjectRetention",
-  }) as any as Schema.Schema<ObjectRetention>;
+export const ObjectRetention = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  retainUntilTime: Schema.optional(Schema.String),
+  retentionMode: Schema.optional(Schema.String),
+}).annotate({ identifier: "ObjectRetention" });
 
 export interface PutMetadata {
   /** Optional. Updates objects Custom-Time fixed metadata. Unset values will be ignored. Set empty values to clear the metadata. Refer to documentation in https://cloud.google.com/storage/docs/metadata#custom-time. */
@@ -300,37 +244,25 @@ export interface PutMetadata {
   cacheControl?: string;
 }
 
-export const PutMetadata: Schema.Schema<PutMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customTime: Schema.optional(Schema.String),
-      customMetadata: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      contentEncoding: Schema.optional(Schema.String),
-      contentLanguage: Schema.optional(Schema.String),
-      objectRetention: Schema.optional(ObjectRetention),
-      contentDisposition: Schema.optional(Schema.String),
-      contentType: Schema.optional(Schema.String),
-      cacheControl: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PutMetadata",
-  }) as any as Schema.Schema<PutMetadata>;
+export const PutMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  customTime: Schema.optional(Schema.String),
+  customMetadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  contentEncoding: Schema.optional(Schema.String),
+  contentLanguage: Schema.optional(Schema.String),
+  objectRetention: Schema.optional(ObjectRetention),
+  contentDisposition: Schema.optional(Schema.String),
+  contentType: Schema.optional(Schema.String),
+  cacheControl: Schema.optional(Schema.String),
+}).annotate({ identifier: "PutMetadata" });
 
 export interface RewriteObject {
   /** Required. Resource name of the Cloud KMS key that will be used to encrypt the object. The Cloud KMS key must be located in same location as the object. Refer to https://cloud.google.com/storage/docs/encryption/using-customer-managed-keys#add-object-key for additional documentation. Format: projects/{project}/locations/{location}/keyRings/{keyring}/cryptoKeys/{key} For example: "projects/123456/locations/us-central1/keyRings/my-keyring/cryptoKeys/my-key". The object will be rewritten and set with the specified KMS key. */
   kmsKey?: string;
 }
 
-export const RewriteObject: Schema.Schema<RewriteObject> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kmsKey: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RewriteObject",
-  }) as any as Schema.Schema<RewriteObject>;
+export const RewriteObject = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kmsKey: Schema.optional(Schema.String),
+}).annotate({ identifier: "RewriteObject" });
 
 export interface ErrorLogEntry {
   /** Required. Output only. Object URL. e.g. gs://my_bucket/object.txt */
@@ -339,15 +271,10 @@ export interface ErrorLogEntry {
   errorDetails?: Array<string>;
 }
 
-export const ErrorLogEntry: Schema.Schema<ErrorLogEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      objectUri: Schema.optional(Schema.String),
-      errorDetails: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ErrorLogEntry",
-  }) as any as Schema.Schema<ErrorLogEntry>;
+export const ErrorLogEntry = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  objectUri: Schema.optional(Schema.String),
+  errorDetails: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ErrorLogEntry" });
 
 export interface ErrorSummary {
   /** Required. The canonical error code. */
@@ -376,40 +303,29 @@ export interface ErrorSummary {
   errorLogEntries?: Array<ErrorLogEntry>;
 }
 
-export const ErrorSummary: Schema.Schema<ErrorSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errorCode: Schema.optional(Schema.String),
-      errorCount: Schema.optional(Schema.String),
-      errorLogEntries: Schema.optional(Schema.Array(ErrorLogEntry)),
-    }),
-  ).annotate({
-    identifier: "ErrorSummary",
-  }) as any as Schema.Schema<ErrorSummary>;
+export const ErrorSummary = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  errorCode: Schema.optional(Schema.String),
+  errorCount: Schema.optional(Schema.String),
+  errorLogEntries: Schema.optional(Schema.Array(ErrorLogEntry)),
+}).annotate({ identifier: "ErrorSummary" });
 
 export interface Manifest {
   /** Required. `manifest_location` must contain the manifest source file that is a CSV file in a Google Cloud Storage bucket. Each row in the file must include the object details i.e. BucketId and Name. Generation may optionally be specified. When it is not specified the live object is acted upon. `manifest_location` should either be 1) An absolute path to the object in the format of `gs://bucket_name/path/file_name.csv`. 2) An absolute path with a single wildcard character in the file name, for example `gs://bucket_name/path/file_name*.csv`. If manifest location is specified with a wildcard, objects in all manifest files matching the pattern will be acted upon. */
   manifestLocation?: string;
 }
 
-export const Manifest: Schema.Schema<Manifest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      manifestLocation: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Manifest" }) as any as Schema.Schema<Manifest>;
+export const Manifest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  manifestLocation: Schema.optional(Schema.String),
+}).annotate({ identifier: "Manifest" });
 
 export interface PrefixList {
   /** Optional. Include prefixes of the objects to be transformed. * Supports full object name * Supports prefix of the object name * Wildcards are not supported * Supports empty string for all objects in a bucket. */
   includedObjectPrefixes?: Array<string>;
 }
 
-export const PrefixList: Schema.Schema<PrefixList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      includedObjectPrefixes: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "PrefixList" }) as any as Schema.Schema<PrefixList>;
+export const PrefixList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  includedObjectPrefixes: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "PrefixList" });
 
 export interface Bucket {
   /** Specifies objects in a manifest file. */
@@ -420,26 +336,20 @@ export interface Bucket {
   bucket?: string;
 }
 
-export const Bucket: Schema.Schema<Bucket> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      manifest: Schema.optional(Manifest),
-      prefixList: Schema.optional(PrefixList),
-      bucket: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Bucket" }) as any as Schema.Schema<Bucket>;
+export const Bucket = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  manifest: Schema.optional(Manifest),
+  prefixList: Schema.optional(PrefixList),
+  bucket: Schema.optional(Schema.String),
+}).annotate({ identifier: "Bucket" });
 
 export interface BucketList {
   /** Required. List of buckets and their objects to be transformed. Currently, only one bucket configuration is supported. If multiple buckets are specified, an error will be returned. */
   buckets?: Array<Bucket>;
 }
 
-export const BucketList: Schema.Schema<BucketList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      buckets: Schema.optional(Schema.Array(Bucket)),
-    }),
-  ).annotate({ identifier: "BucketList" }) as any as Schema.Schema<BucketList>;
+export const BucketList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  buckets: Schema.optional(Schema.Array(Bucket)),
+}).annotate({ identifier: "BucketList" });
 
 export interface Job {
   /** Optional. Logging configuration. */
@@ -485,28 +395,25 @@ export interface Job {
   bucketList?: BucketList;
 }
 
-export const Job: Schema.Schema<Job> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      loggingConfig: Schema.optional(LoggingConfig),
-      dryRun: Schema.optional(Schema.Boolean),
-      createTime: Schema.optional(Schema.String),
-      deleteObject: Schema.optional(DeleteObject),
-      completeTime: Schema.optional(Schema.String),
-      scheduleTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      counters: Schema.optional(Counters),
-      putObjectHold: Schema.optional(PutObjectHold),
-      updateObjectCustomContext: Schema.optional(UpdateObjectCustomContext),
-      putMetadata: Schema.optional(PutMetadata),
-      rewriteObject: Schema.optional(RewriteObject),
-      isMultiBucketJob: Schema.optional(Schema.Boolean),
-      state: Schema.optional(Schema.String),
-      errorSummaries: Schema.optional(Schema.Array(ErrorSummary)),
-      description: Schema.optional(Schema.String),
-      bucketList: Schema.optional(BucketList),
-    }),
-  ).annotate({ identifier: "Job" }) as any as Schema.Schema<Job>;
+export const Job = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  loggingConfig: Schema.optional(LoggingConfig),
+  dryRun: Schema.optional(Schema.Boolean),
+  createTime: Schema.optional(Schema.String),
+  deleteObject: Schema.optional(DeleteObject),
+  completeTime: Schema.optional(Schema.String),
+  scheduleTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  counters: Schema.optional(Counters),
+  putObjectHold: Schema.optional(PutObjectHold),
+  updateObjectCustomContext: Schema.optional(UpdateObjectCustomContext),
+  putMetadata: Schema.optional(PutMetadata),
+  rewriteObject: Schema.optional(RewriteObject),
+  isMultiBucketJob: Schema.optional(Schema.Boolean),
+  state: Schema.optional(Schema.String),
+  errorSummaries: Schema.optional(Schema.Array(ErrorSummary)),
+  description: Schema.optional(Schema.String),
+  bucketList: Schema.optional(BucketList),
+}).annotate({ identifier: "Job" });
 
 export interface ListJobsResponse {
   /** A list of storage batch jobs. */
@@ -517,23 +424,17 @@ export interface ListJobsResponse {
   nextPageToken?: string;
 }
 
-export const ListJobsResponse: Schema.Schema<ListJobsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      jobs: Schema.optional(Schema.Array(Job)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListJobsResponse",
-  }) as any as Schema.Schema<ListJobsResponse>;
+export const ListJobsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  jobs: Schema.optional(Schema.Array(Job)),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListJobsResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface BucketOperation {
   /** Output only. The time that the BucketOperation was started. */
@@ -575,28 +476,23 @@ export interface BucketOperation {
   prefixList?: PrefixList;
 }
 
-export const BucketOperation: Schema.Schema<BucketOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Schema.String),
-      errorSummaries: Schema.optional(Schema.Array(ErrorSummary)),
-      state: Schema.optional(Schema.String),
-      putMetadata: Schema.optional(PutMetadata),
-      rewriteObject: Schema.optional(RewriteObject),
-      manifest: Schema.optional(Manifest),
-      updateObjectCustomContext: Schema.optional(UpdateObjectCustomContext),
-      putObjectHold: Schema.optional(PutObjectHold),
-      name: Schema.optional(Schema.String),
-      counters: Schema.optional(Counters),
-      createTime: Schema.optional(Schema.String),
-      deleteObject: Schema.optional(DeleteObject),
-      completeTime: Schema.optional(Schema.String),
-      bucketName: Schema.optional(Schema.String),
-      prefixList: Schema.optional(PrefixList),
-    }),
-  ).annotate({
-    identifier: "BucketOperation",
-  }) as any as Schema.Schema<BucketOperation>;
+export const BucketOperation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startTime: Schema.optional(Schema.String),
+  errorSummaries: Schema.optional(Schema.Array(ErrorSummary)),
+  state: Schema.optional(Schema.String),
+  putMetadata: Schema.optional(PutMetadata),
+  rewriteObject: Schema.optional(RewriteObject),
+  manifest: Schema.optional(Manifest),
+  updateObjectCustomContext: Schema.optional(UpdateObjectCustomContext),
+  putObjectHold: Schema.optional(PutObjectHold),
+  name: Schema.optional(Schema.String),
+  counters: Schema.optional(Counters),
+  createTime: Schema.optional(Schema.String),
+  deleteObject: Schema.optional(DeleteObject),
+  completeTime: Schema.optional(Schema.String),
+  bucketName: Schema.optional(Schema.String),
+  prefixList: Schema.optional(PrefixList),
+}).annotate({ identifier: "BucketOperation" });
 
 export interface ListBucketOperationsResponse {
   /** A token identifying a page of results. */
@@ -607,16 +503,12 @@ export interface ListBucketOperationsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListBucketOperationsResponse: Schema.Schema<ListBucketOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      bucketOperations: Schema.optional(Schema.Array(BucketOperation)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListBucketOperationsResponse",
-  }) as any as Schema.Schema<ListBucketOperationsResponse>;
+export const ListBucketOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    bucketOperations: Schema.optional(Schema.Array(BucketOperation)),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListBucketOperationsResponse" });
 
 export interface OperationMetadata {
   /** Output only. The Job associated with the operation. */
@@ -633,26 +525,20 @@ export interface OperationMetadata {
   endTime?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      job: Schema.optional(Job),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      operation: Schema.optional(Schema.String),
-      apiVersion: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  job: Schema.optional(Job),
+  requestedCancellation: Schema.optional(Schema.Boolean),
+  operation: Schema.optional(Schema.String),
+  apiVersion: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationMetadata" });
 
 export interface CancelJobResponse {}
 
-export const CancelJobResponse: Schema.Schema<CancelJobResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelJobResponse",
-  }) as any as Schema.Schema<CancelJobResponse>;
+export const CancelJobResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelJobResponse" });
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -663,16 +549,13 @@ export interface ListOperationsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(Schema.Array(Operation)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    operations: Schema.optional(Schema.Array(Operation)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 // ==========================================================================
 // Operations

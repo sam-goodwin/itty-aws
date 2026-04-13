@@ -55,21 +55,16 @@ export interface PlaceActionLink {
   updateTime?: string;
 }
 
-export const PlaceActionLink: Schema.Schema<PlaceActionLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      placeActionType: Schema.optional(Schema.String),
-      providerType: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      isPreferred: Schema.optional(Schema.Boolean),
-      uri: Schema.optional(Schema.String),
-      isEditable: Schema.optional(Schema.Boolean),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PlaceActionLink",
-  }) as any as Schema.Schema<PlaceActionLink>;
+export const PlaceActionLink = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  placeActionType: Schema.optional(Schema.String),
+  providerType: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  isPreferred: Schema.optional(Schema.Boolean),
+  uri: Schema.optional(Schema.String),
+  isEditable: Schema.optional(Schema.Boolean),
+  updateTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "PlaceActionLink" });
 
 export interface PlaceActionTypeMetadata {
   /** The localized display name for the attribute, if available; otherwise, the English display name. */
@@ -88,15 +83,11 @@ export interface PlaceActionTypeMetadata {
     | (string & {});
 }
 
-export const PlaceActionTypeMetadata: Schema.Schema<PlaceActionTypeMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      placeActionType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PlaceActionTypeMetadata",
-  }) as any as Schema.Schema<PlaceActionTypeMetadata>;
+export const PlaceActionTypeMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    placeActionType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PlaceActionTypeMetadata" });
 
 export interface ListPlaceActionTypeMetadataResponse {
   /** A collection of metadata for the available place action types. */
@@ -105,17 +96,13 @@ export interface ListPlaceActionTypeMetadataResponse {
   nextPageToken?: string;
 }
 
-export const ListPlaceActionTypeMetadataResponse: Schema.Schema<ListPlaceActionTypeMetadataResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      placeActionTypeMetadata: Schema.optional(
-        Schema.Array(PlaceActionTypeMetadata),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListPlaceActionTypeMetadataResponse",
-  }) as any as Schema.Schema<ListPlaceActionTypeMetadataResponse>;
+export const ListPlaceActionTypeMetadataResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    placeActionTypeMetadata: Schema.optional(
+      Schema.Array(PlaceActionTypeMetadata),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListPlaceActionTypeMetadataResponse" });
 
 export interface ListPlaceActionLinksResponse {
   /** The returned list of place action links. */
@@ -124,22 +111,17 @@ export interface ListPlaceActionLinksResponse {
   nextPageToken?: string;
 }
 
-export const ListPlaceActionLinksResponse: Schema.Schema<ListPlaceActionLinksResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      placeActionLinks: Schema.optional(Schema.Array(PlaceActionLink)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListPlaceActionLinksResponse",
-  }) as any as Schema.Schema<ListPlaceActionLinksResponse>;
+export const ListPlaceActionLinksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    placeActionLinks: Schema.optional(Schema.Array(PlaceActionLink)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListPlaceActionLinksResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 // ==========================================================================
 // Operations

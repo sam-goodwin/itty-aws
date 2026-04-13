@@ -40,18 +40,14 @@ export interface ServiceProjectAttachment {
     | (string & {});
 }
 
-export const ServiceProjectAttachment: Schema.Schema<ServiceProjectAttachment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      uid: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      serviceProject: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ServiceProjectAttachment",
-  }) as any as Schema.Schema<ServiceProjectAttachment>;
+export const ServiceProjectAttachment =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    uid: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    serviceProject: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ServiceProjectAttachment" });
 
 export interface Expr {
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
@@ -64,15 +60,12 @@ export interface Expr {
   location?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      expression: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Expr" }) as any as Schema.Schema<Expr>;
+export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  title: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  expression: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+}).annotate({ identifier: "Expr" });
 
 export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
@@ -83,14 +76,11 @@ export interface Binding {
   members?: Array<string>;
 }
 
-export const Binding: Schema.Schema<Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      role: Schema.optional(Schema.String),
-      condition: Schema.optional(Expr),
-      members: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "Binding" }) as any as Schema.Schema<Binding>;
+export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  role: Schema.optional(Schema.String),
+  condition: Schema.optional(Expr),
+  members: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Binding" });
 
 export interface AuditLogConfig {
   /** The log type that this config enables. */
@@ -104,15 +94,10 @@ export interface AuditLogConfig {
   exemptedMembers?: Array<string>;
 }
 
-export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      logType: Schema.optional(Schema.String),
-      exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AuditLogConfig",
-  }) as any as Schema.Schema<AuditLogConfig>;
+export const AuditLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  logType: Schema.optional(Schema.String),
+  exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "AuditLogConfig" });
 
 export interface AuditConfig {
   /** The configuration for logging of each type of permission. */
@@ -121,15 +106,10 @@ export interface AuditConfig {
   service?: string;
 }
 
-export const AuditConfig: Schema.Schema<AuditConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
-      service: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AuditConfig",
-  }) as any as Schema.Schema<AuditConfig>;
+export const AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
+  service: Schema.optional(Schema.String),
+}).annotate({ identifier: "AuditConfig" });
 
 export interface Policy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
@@ -142,15 +122,12 @@ export interface Policy {
   etag?: string;
 }
 
-export const Policy: Schema.Schema<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bindings: Schema.optional(Schema.Array(Binding)),
-      auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
-      version: Schema.optional(Schema.Number),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Policy" }) as any as Schema.Schema<Policy>;
+export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bindings: Schema.optional(Schema.Array(Binding)),
+  auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
+  version: Schema.optional(Schema.Number),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "Policy" });
 
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -161,16 +138,13 @@ export interface Status {
   message?: string;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      message: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  message: Schema.optional(Schema.String),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -185,23 +159,19 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      done: Schema.optional(Schema.Boolean),
-      error: Schema.optional(Status),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  done: Schema.optional(Schema.Boolean),
+  error: Schema.optional(Status),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Operation" });
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelOperationRequest",
-  }) as any as Schema.Schema<CancelOperationRequest>;
+export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelOperationRequest" });
 
 export interface ExtendedMetadataSchema {
   /** Output only. The JSON schema as a string. */
@@ -212,16 +182,13 @@ export interface ExtendedMetadataSchema {
   schemaVersion?: string;
 }
 
-export const ExtendedMetadataSchema: Schema.Schema<ExtendedMetadataSchema> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      jsonSchema: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      schemaVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ExtendedMetadataSchema",
-  }) as any as Schema.Schema<ExtendedMetadataSchema>;
+export const ExtendedMetadataSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    jsonSchema: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    schemaVersion: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ExtendedMetadataSchema" });
 
 export interface ContactInfo {
   /** Optional. Contact's name. Can have a maximum length of 63 characters. */
@@ -230,15 +197,10 @@ export interface ContactInfo {
   email?: string;
 }
 
-export const ContactInfo: Schema.Schema<ContactInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      email: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ContactInfo",
-  }) as any as Schema.Schema<ContactInfo>;
+export const ContactInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+  email: Schema.optional(Schema.String),
+}).annotate({ identifier: "ContactInfo" });
 
 export interface Criticality {
   /** Required. Criticality Type. */
@@ -251,14 +213,9 @@ export interface Criticality {
     | (string & {});
 }
 
-export const Criticality: Schema.Schema<Criticality> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Criticality",
-  }) as any as Schema.Schema<Criticality>;
+export const Criticality = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "Criticality" });
 
 export interface Environment {
   /** Required. Environment Type. */
@@ -271,14 +228,9 @@ export interface Environment {
     | (string & {});
 }
 
-export const Environment: Schema.Schema<Environment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Environment",
-  }) as any as Schema.Schema<Environment>;
+export const Environment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "Environment" });
 
 export interface Attributes {
   /** Optional. Operator team that ensures runtime and operations. */
@@ -293,28 +245,22 @@ export interface Attributes {
   businessOwners?: Array<ContactInfo>;
 }
 
-export const Attributes: Schema.Schema<Attributes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operatorOwners: Schema.optional(Schema.Array(ContactInfo)),
-      criticality: Schema.optional(Criticality),
-      environment: Schema.optional(Environment),
-      developerOwners: Schema.optional(Schema.Array(ContactInfo)),
-      businessOwners: Schema.optional(Schema.Array(ContactInfo)),
-    }),
-  ).annotate({ identifier: "Attributes" }) as any as Schema.Schema<Attributes>;
+export const Attributes = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  operatorOwners: Schema.optional(Schema.Array(ContactInfo)),
+  criticality: Schema.optional(Criticality),
+  environment: Schema.optional(Environment),
+  developerOwners: Schema.optional(Schema.Array(ContactInfo)),
+  businessOwners: Schema.optional(Schema.Array(ContactInfo)),
+}).annotate({ identifier: "Attributes" });
 
 export interface Scope {
   /** Required. Scope Type. */
   type?: "TYPE_UNSPECIFIED" | "REGIONAL" | "GLOBAL" | (string & {});
 }
 
-export const Scope: Schema.Schema<Scope> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Scope" }) as any as Schema.Schema<Scope>;
+export const Scope = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "Scope" });
 
 export interface Application {
   /** Optional. Consumer provided attributes. */
@@ -342,22 +288,17 @@ export interface Application {
   displayName?: string;
 }
 
-export const Application: Schema.Schema<Application> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      attributes: Schema.optional(Attributes),
-      uid: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      scope: Schema.optional(Scope),
-      createTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Application",
-  }) as any as Schema.Schema<Application>;
+export const Application = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  attributes: Schema.optional(Attributes),
+  uid: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  scope: Schema.optional(Scope),
+  createTime: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+}).annotate({ identifier: "Application" });
 
 export interface ListApplicationsResponse {
   /** List of Applications. */
@@ -368,121 +309,83 @@ export interface ListApplicationsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListApplicationsResponse: Schema.Schema<ListApplicationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      applications: Schema.optional(Schema.Array(Application)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListApplicationsResponse",
-  }) as any as Schema.Schema<ListApplicationsResponse>;
+export const ListApplicationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    applications: Schema.optional(Schema.Array(Application)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListApplicationsResponse" });
 
 export interface WorkloadReference {
   /** Output only. The underlying compute resource uri. */
   uri?: string;
 }
 
-export const WorkloadReference: Schema.Schema<WorkloadReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WorkloadReference",
-  }) as any as Schema.Schema<WorkloadReference>;
+export const WorkloadReference = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  uri: Schema.optional(Schema.String),
+}).annotate({ identifier: "WorkloadReference" });
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsRequest",
-  }) as any as Schema.Schema<TestIamPermissionsRequest>;
+export const TestIamPermissionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsRequest" });
 
 export interface Identity {
   /** Output only. The principal of the identity. Supported formats: * `sa://my-sa@PROJECT_ID.iam.gserviceaccount.com` for GCP Service Account * `principal://POOL_ID.global.PROJECT_NUMBER.workload.id.goog/ns/NAMESPACE_ID/sa/MANAGED_IDENTITY_ID` for Managed Workload Identity */
   principal?: string;
 }
 
-export const Identity: Schema.Schema<Identity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      principal: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Identity" }) as any as Schema.Schema<Identity>;
+export const Identity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  principal: Schema.optional(Schema.String),
+}).annotate({ identifier: "Identity" });
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsResponse",
-  }) as any as Schema.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface ServiceReference {
   /** Output only. The underlying resource URI. For example, URI of Forwarding Rule, URL Map, and Backend Service. */
   uri?: string;
 }
 
-export const ServiceReference: Schema.Schema<ServiceReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ServiceReference",
-  }) as any as Schema.Schema<ServiceReference>;
+export const ServiceReference = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  uri: Schema.optional(Schema.String),
+}).annotate({ identifier: "ServiceReference" });
 
 export interface ExtendedMetadata {
   /** Output only. The metadata contents. */
   metadataStruct?: Record<string, unknown>;
 }
 
-export const ExtendedMetadata: Schema.Schema<ExtendedMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadataStruct: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-    }),
-  ).annotate({
-    identifier: "ExtendedMetadata",
-  }) as any as Schema.Schema<ExtendedMetadata>;
+export const ExtendedMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metadataStruct: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "ExtendedMetadata" });
 
 export interface RegistrationType {
   /** Output only. The registration type of a service. */
   type?: "TYPE_UNSPECIFIED" | "EXCLUSIVE" | "SHARED" | (string & {});
 }
 
-export const RegistrationType: Schema.Schema<RegistrationType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RegistrationType",
-  }) as any as Schema.Schema<RegistrationType>;
+export const RegistrationType = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "RegistrationType" });
 
 export interface FunctionalType {
   /** Output only. The functional type of a service or workload. */
@@ -494,14 +397,9 @@ export interface FunctionalType {
     | (string & {});
 }
 
-export const FunctionalType: Schema.Schema<FunctionalType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FunctionalType",
-  }) as any as Schema.Schema<FunctionalType>;
+export const FunctionalType = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "FunctionalType" });
 
 export interface ServiceProperties {
   /** Output only. Additional metadata specific to the resource type. The key is a string that identifies the type of metadata and the value is the metadata contents specific to that type. Key format: `apphub.googleapis.com/{metadataType}` */
@@ -520,22 +418,17 @@ export interface ServiceProperties {
   functionalType?: FunctionalType;
 }
 
-export const ServiceProperties: Schema.Schema<ServiceProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      extendedMetadata: Schema.optional(
-        Schema.Record(Schema.String, ExtendedMetadata),
-      ),
-      location: Schema.optional(Schema.String),
-      zone: Schema.optional(Schema.String),
-      registrationType: Schema.optional(RegistrationType),
-      gcpProject: Schema.optional(Schema.String),
-      identity: Schema.optional(Identity),
-      functionalType: Schema.optional(FunctionalType),
-    }),
-  ).annotate({
-    identifier: "ServiceProperties",
-  }) as any as Schema.Schema<ServiceProperties>;
+export const ServiceProperties = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  extendedMetadata: Schema.optional(
+    Schema.Record(Schema.String, ExtendedMetadata),
+  ),
+  location: Schema.optional(Schema.String),
+  zone: Schema.optional(Schema.String),
+  registrationType: Schema.optional(RegistrationType),
+  gcpProject: Schema.optional(Schema.String),
+  identity: Schema.optional(Identity),
+  functionalType: Schema.optional(FunctionalType),
+}).annotate({ identifier: "ServiceProperties" });
 
 export interface DiscoveredService {
   /** Output only. Reference to an underlying networking resource that can comprise a Service. These are immutable. */
@@ -546,16 +439,11 @@ export interface DiscoveredService {
   serviceProperties?: ServiceProperties;
 }
 
-export const DiscoveredService: Schema.Schema<DiscoveredService> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serviceReference: Schema.optional(ServiceReference),
-      name: Schema.optional(Schema.String),
-      serviceProperties: Schema.optional(ServiceProperties),
-    }),
-  ).annotate({
-    identifier: "DiscoveredService",
-  }) as any as Schema.Schema<DiscoveredService>;
+export const DiscoveredService = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  serviceReference: Schema.optional(ServiceReference),
+  name: Schema.optional(Schema.String),
+  serviceProperties: Schema.optional(ServiceProperties),
+}).annotate({ identifier: "DiscoveredService" });
 
 export interface ListDiscoveredServicesResponse {
   /** A token identifying a page of results the server should return. */
@@ -566,16 +454,12 @@ export interface ListDiscoveredServicesResponse {
   discoveredServices?: Array<DiscoveredService>;
 }
 
-export const ListDiscoveredServicesResponse: Schema.Schema<ListDiscoveredServicesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      discoveredServices: Schema.optional(Schema.Array(DiscoveredService)),
-    }),
-  ).annotate({
-    identifier: "ListDiscoveredServicesResponse",
-  }) as any as Schema.Schema<ListDiscoveredServicesResponse>;
+export const ListDiscoveredServicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    discoveredServices: Schema.optional(Schema.Array(DiscoveredService)),
+  }).annotate({ identifier: "ListDiscoveredServicesResponse" });
 
 export interface Boundary {
   /** Identifier. The resource name of the boundary. Format: "projects/{project}/locations/{location}/boundary" */
@@ -595,23 +479,20 @@ export interface Boundary {
     | (string & {});
 }
 
-export const Boundary: Schema.Schema<Boundary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      crmNode: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Boundary" }) as any as Schema.Schema<Boundary>;
+export const Boundary = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  crmNode: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "Boundary" });
 
 export interface DetachServiceProjectAttachmentRequest {}
 
-export const DetachServiceProjectAttachmentRequest: Schema.Schema<DetachServiceProjectAttachmentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const DetachServiceProjectAttachmentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DetachServiceProjectAttachmentRequest",
-  }) as any as Schema.Schema<DetachServiceProjectAttachmentRequest>;
+  });
 
 export interface WorkloadProperties {
   /** Output only. The type of the workload. */
@@ -628,21 +509,16 @@ export interface WorkloadProperties {
   extendedMetadata?: Record<string, ExtendedMetadata>;
 }
 
-export const WorkloadProperties: Schema.Schema<WorkloadProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      functionalType: Schema.optional(FunctionalType),
-      gcpProject: Schema.optional(Schema.String),
-      identity: Schema.optional(Identity),
-      location: Schema.optional(Schema.String),
-      zone: Schema.optional(Schema.String),
-      extendedMetadata: Schema.optional(
-        Schema.Record(Schema.String, ExtendedMetadata),
-      ),
-    }),
-  ).annotate({
-    identifier: "WorkloadProperties",
-  }) as any as Schema.Schema<WorkloadProperties>;
+export const WorkloadProperties = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  functionalType: Schema.optional(FunctionalType),
+  gcpProject: Schema.optional(Schema.String),
+  identity: Schema.optional(Identity),
+  location: Schema.optional(Schema.String),
+  zone: Schema.optional(Schema.String),
+  extendedMetadata: Schema.optional(
+    Schema.Record(Schema.String, ExtendedMetadata),
+  ),
+}).annotate({ identifier: "WorkloadProperties" });
 
 export interface Service {
   /** Output only. Update time. */
@@ -675,22 +551,19 @@ export interface Service {
   serviceProperties?: ServiceProperties;
 }
 
-export const Service: Schema.Schema<Service> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateTime: Schema.optional(Schema.String),
-      serviceReference: Schema.optional(ServiceReference),
-      createTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      attributes: Schema.optional(Attributes),
-      uid: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      discoveredService: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      serviceProperties: Schema.optional(ServiceProperties),
-    }),
-  ).annotate({ identifier: "Service" }) as any as Schema.Schema<Service>;
+export const Service = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  updateTime: Schema.optional(Schema.String),
+  serviceReference: Schema.optional(ServiceReference),
+  createTime: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  attributes: Schema.optional(Attributes),
+  uid: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  discoveredService: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  serviceProperties: Schema.optional(ServiceProperties),
+}).annotate({ identifier: "Service" });
 
 export interface ListServicesResponse {
   /** A token identifying a page of results the server should return. */
@@ -701,16 +574,11 @@ export interface ListServicesResponse {
   services?: Array<Service>;
 }
 
-export const ListServicesResponse: Schema.Schema<ListServicesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      services: Schema.optional(Schema.Array(Service)),
-    }),
-  ).annotate({
-    identifier: "ListServicesResponse",
-  }) as any as Schema.Schema<ListServicesResponse>;
+export const ListServicesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+  services: Schema.optional(Schema.Array(Service)),
+}).annotate({ identifier: "ListServicesResponse" });
 
 export interface DiscoveredWorkload {
   /** Output only. Reference of an underlying compute resource represented by the Workload. These are immutable. */
@@ -721,16 +589,11 @@ export interface DiscoveredWorkload {
   name?: string;
 }
 
-export const DiscoveredWorkload: Schema.Schema<DiscoveredWorkload> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      workloadReference: Schema.optional(WorkloadReference),
-      workloadProperties: Schema.optional(WorkloadProperties),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DiscoveredWorkload",
-  }) as any as Schema.Schema<DiscoveredWorkload>;
+export const DiscoveredWorkload = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  workloadReference: Schema.optional(WorkloadReference),
+  workloadProperties: Schema.optional(WorkloadProperties),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "DiscoveredWorkload" });
 
 export interface ListDiscoveredWorkloadsResponse {
   /** List of Discovered Workloads. */
@@ -741,16 +604,12 @@ export interface ListDiscoveredWorkloadsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListDiscoveredWorkloadsResponse: Schema.Schema<ListDiscoveredWorkloadsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      discoveredWorkloads: Schema.optional(Schema.Array(DiscoveredWorkload)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListDiscoveredWorkloadsResponse",
-  }) as any as Schema.Schema<ListDiscoveredWorkloadsResponse>;
+export const ListDiscoveredWorkloadsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    discoveredWorkloads: Schema.optional(Schema.Array(DiscoveredWorkload)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListDiscoveredWorkloadsResponse" });
 
 export interface Workload {
   /** Output only. Properties of an underlying compute resource represented by the Workload. These are immutable. */
@@ -783,22 +642,19 @@ export interface Workload {
   updateTime?: string;
 }
 
-export const Workload: Schema.Schema<Workload> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      workloadProperties: Schema.optional(WorkloadProperties),
-      discoveredWorkload: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      attributes: Schema.optional(Attributes),
-      uid: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      workloadReference: Schema.optional(WorkloadReference),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Workload" }) as any as Schema.Schema<Workload>;
+export const Workload = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  workloadProperties: Schema.optional(WorkloadProperties),
+  discoveredWorkload: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  attributes: Schema.optional(Attributes),
+  uid: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  workloadReference: Schema.optional(WorkloadReference),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Workload" });
 
 export interface ListWorkloadsResponse {
   /** A token identifying a page of results the server should return. */
@@ -809,16 +665,11 @@ export interface ListWorkloadsResponse {
   workloads?: Array<Workload>;
 }
 
-export const ListWorkloadsResponse: Schema.Schema<ListWorkloadsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      workloads: Schema.optional(Schema.Array(Workload)),
-    }),
-  ).annotate({
-    identifier: "ListWorkloadsResponse",
-  }) as any as Schema.Schema<ListWorkloadsResponse>;
+export const ListWorkloadsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+  workloads: Schema.optional(Schema.Array(Workload)),
+}).annotate({ identifier: "ListWorkloadsResponse" });
 
 export interface ListExtendedMetadataSchemasResponse {
   /** List of Extended Metadata Schemas. */
@@ -827,31 +678,23 @@ export interface ListExtendedMetadataSchemasResponse {
   nextPageToken?: string;
 }
 
-export const ListExtendedMetadataSchemasResponse: Schema.Schema<ListExtendedMetadataSchemasResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      extendedMetadataSchemas: Schema.optional(
-        Schema.Array(ExtendedMetadataSchema),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListExtendedMetadataSchemasResponse",
-  }) as any as Schema.Schema<ListExtendedMetadataSchemasResponse>;
+export const ListExtendedMetadataSchemasResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    extendedMetadataSchemas: Schema.optional(
+      Schema.Array(ExtendedMetadataSchema),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListExtendedMetadataSchemasResponse" });
 
 export interface LookupDiscoveredWorkloadResponse {
   /** Discovered Workload if exists, empty otherwise. */
   discoveredWorkload?: DiscoveredWorkload;
 }
 
-export const LookupDiscoveredWorkloadResponse: Schema.Schema<LookupDiscoveredWorkloadResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      discoveredWorkload: Schema.optional(DiscoveredWorkload),
-    }),
-  ).annotate({
-    identifier: "LookupDiscoveredWorkloadResponse",
-  }) as any as Schema.Schema<LookupDiscoveredWorkloadResponse>;
+export const LookupDiscoveredWorkloadResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    discoveredWorkload: Schema.optional(DiscoveredWorkload),
+  }).annotate({ identifier: "LookupDiscoveredWorkloadResponse" });
 
 export interface Location {
   /** Service-specific metadata. For example the available capacity at the given location. */
@@ -866,16 +709,13 @@ export interface Location {
   labels?: Record<string, string>;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      displayName: Schema.optional(Schema.String),
-      locationId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  displayName: Schema.optional(Schema.String),
+  locationId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "Location" });
 
 export interface ReconciliationOperationMetadata {
   /** Excluisive action returned by the CLH. */
@@ -888,15 +728,11 @@ export interface ReconciliationOperationMetadata {
   deleteResource?: boolean;
 }
 
-export const ReconciliationOperationMetadata: Schema.Schema<ReconciliationOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      exclusiveAction: Schema.optional(Schema.String),
-      deleteResource: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ReconciliationOperationMetadata",
-  }) as any as Schema.Schema<ReconciliationOperationMetadata>;
+export const ReconciliationOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    exclusiveAction: Schema.optional(Schema.String),
+    deleteResource: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "ReconciliationOperationMetadata" });
 
 export interface ListServiceProjectAttachmentsResponse {
   /** List of service project attachments. */
@@ -907,32 +743,24 @@ export interface ListServiceProjectAttachmentsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListServiceProjectAttachmentsResponse: Schema.Schema<ListServiceProjectAttachmentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serviceProjectAttachments: Schema.optional(
-        Schema.Array(ServiceProjectAttachment),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListServiceProjectAttachmentsResponse",
-  }) as any as Schema.Schema<ListServiceProjectAttachmentsResponse>;
+export const ListServiceProjectAttachmentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    serviceProjectAttachments: Schema.optional(
+      Schema.Array(ServiceProjectAttachment),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListServiceProjectAttachmentsResponse" });
 
 export interface LookupServiceProjectAttachmentResponse {
   /** Service project attachment for a project if exists, empty otherwise. */
   serviceProjectAttachment?: ServiceProjectAttachment;
 }
 
-export const LookupServiceProjectAttachmentResponse: Schema.Schema<LookupServiceProjectAttachmentResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serviceProjectAttachment: Schema.optional(ServiceProjectAttachment),
-    }),
-  ).annotate({
-    identifier: "LookupServiceProjectAttachmentResponse",
-  }) as any as Schema.Schema<LookupServiceProjectAttachmentResponse>;
+export const LookupServiceProjectAttachmentResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    serviceProjectAttachment: Schema.optional(ServiceProjectAttachment),
+  }).annotate({ identifier: "LookupServiceProjectAttachmentResponse" });
 
 export interface OperationMetadata {
   /** Output only. The time the operation finished running. */
@@ -951,20 +779,15 @@ export interface OperationMetadata {
   verb?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-      apiVersion: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      verb: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  endTime: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  statusMessage: Schema.optional(Schema.String),
+  apiVersion: Schema.optional(Schema.String),
+  requestedCancellation: Schema.optional(Schema.Boolean),
+  verb: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationMetadata" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -973,29 +796,20 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(Location)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface LookupDiscoveredServiceResponse {
   /** Discovered Service if exists, empty otherwise. */
   discoveredService?: DiscoveredService;
 }
 
-export const LookupDiscoveredServiceResponse: Schema.Schema<LookupDiscoveredServiceResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      discoveredService: Schema.optional(DiscoveredService),
-    }),
-  ).annotate({
-    identifier: "LookupDiscoveredServiceResponse",
-  }) as any as Schema.Schema<LookupDiscoveredServiceResponse>;
+export const LookupDiscoveredServiceResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    discoveredService: Schema.optional(DiscoveredService),
+  }).annotate({ identifier: "LookupDiscoveredServiceResponse" });
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -1006,23 +820,20 @@ export interface ListOperationsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(Schema.Array(Operation)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    operations: Schema.optional(Schema.Array(Operation)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 export interface DetachServiceProjectAttachmentResponse {}
 
-export const DetachServiceProjectAttachmentResponse: Schema.Schema<DetachServiceProjectAttachmentResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const DetachServiceProjectAttachmentResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DetachServiceProjectAttachmentResponse",
-  }) as any as Schema.Schema<DetachServiceProjectAttachmentResponse>;
+  });
 
 export interface SetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
@@ -1031,15 +842,10 @@ export interface SetIamPolicyRequest {
   policy?: Policy;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateMask: Schema.optional(Schema.String),
-      policy: Schema.optional(Policy),
-    }),
-  ).annotate({
-    identifier: "SetIamPolicyRequest",
-  }) as any as Schema.Schema<SetIamPolicyRequest>;
+export const SetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  updateMask: Schema.optional(Schema.String),
+  policy: Schema.optional(Policy),
+}).annotate({ identifier: "SetIamPolicyRequest" });
 
 // ==========================================================================
 // Operations

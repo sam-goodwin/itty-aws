@@ -32,15 +32,13 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegat
     | (string & {});
 }
 
-export const GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      outputType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    outputType: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo>;
+  });
 
 export interface GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo {
   /** The timestamp to collect the info. It is suggested to be set by the topmost level resource only. */
@@ -81,31 +79,27 @@ export interface GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoSe
   email?: string;
 }
 
-export const GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount: Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      email: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    email: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount>;
+  });
 
 export interface GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo {
   /** A GCP service account. */
   serviceAccount?: GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount;
 }
 
-export const GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo: Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serviceAccount: Schema.optional(
-        GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    serviceAccount: Schema.optional(
+      GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfoServiceAccount,
+    ),
+  }).annotate({
     identifier: "GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo>;
+  });
 
 export interface GoogleCloudBeyondcorpAppconnectorsV1AppConnector {
   /** Output only. Timestamp when the resource was last modified. */
@@ -135,47 +129,43 @@ export interface GoogleCloudBeyondcorpAppconnectorsV1AppConnector {
     | (string & {});
 }
 
-export const GoogleCloudBeyondcorpAppconnectorsV1AppConnector: Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1AppConnector> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateTime: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      resourceInfo: Schema.optional(
-        GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo,
-      ),
-      uid: Schema.optional(Schema.String),
-      principalInfo: Schema.optional(
-        GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo,
-      ),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudBeyondcorpAppconnectorsV1AppConnector =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateTime: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    resourceInfo: Schema.optional(
+      GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo,
+    ),
+    uid: Schema.optional(Schema.String),
+    principalInfo: Schema.optional(
+      GoogleCloudBeyondcorpAppconnectorsV1AppConnectorPrincipalInfo,
+    ),
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    state: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudBeyondcorpAppconnectorsV1AppConnector",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1AppConnector>;
+  });
 
 export interface GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway {
   /** Output only. List of IP addresses assigned to the Cloud NAT. */
   assignedIps?: Array<string>;
 }
 
-export const GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      assignedIps: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    assignedIps: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway>;
+  });
 
 export interface GoogleLongrunningCancelOperationRequest {}
 
-export const GoogleLongrunningCancelOperationRequest: Schema.Schema<GoogleLongrunningCancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleLongrunningCancelOperationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleLongrunningCancelOperationRequest",
-  }) as any as Schema.Schema<GoogleLongrunningCancelOperationRequest>;
+  });
 
 export interface GoogleTypeExpr {
   /** Textual representation of an expression in Common Expression Language syntax. */
@@ -188,17 +178,12 @@ export interface GoogleTypeExpr {
   description?: string;
 }
 
-export const GoogleTypeExpr: Schema.Schema<GoogleTypeExpr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expression: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleTypeExpr",
-  }) as any as Schema.Schema<GoogleTypeExpr>;
+export const GoogleTypeExpr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  expression: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "GoogleTypeExpr" });
 
 export interface GoogleIamV1Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
@@ -209,16 +194,11 @@ export interface GoogleIamV1Binding {
   role?: string;
 }
 
-export const GoogleIamV1Binding: Schema.Schema<GoogleIamV1Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      members: Schema.optional(Schema.Array(Schema.String)),
-      condition: Schema.optional(GoogleTypeExpr),
-      role: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1Binding",
-  }) as any as Schema.Schema<GoogleIamV1Binding>;
+export const GoogleIamV1Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  members: Schema.optional(Schema.Array(Schema.String)),
+  condition: Schema.optional(GoogleTypeExpr),
+  role: Schema.optional(Schema.String),
+}).annotate({ identifier: "GoogleIamV1Binding" });
 
 export interface GoogleIamV1AuditLogConfig {
   /** The log type that this config enables. */
@@ -232,15 +212,11 @@ export interface GoogleIamV1AuditLogConfig {
   exemptedMembers?: Array<string>;
 }
 
-export const GoogleIamV1AuditLogConfig: Schema.Schema<GoogleIamV1AuditLogConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      logType: Schema.optional(Schema.String),
-      exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1AuditLogConfig",
-  }) as any as Schema.Schema<GoogleIamV1AuditLogConfig>;
+export const GoogleIamV1AuditLogConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    logType: Schema.optional(Schema.String),
+    exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleIamV1AuditLogConfig" });
 
 export interface GoogleIamV1AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
@@ -249,15 +225,12 @@ export interface GoogleIamV1AuditConfig {
   auditLogConfigs?: Array<GoogleIamV1AuditLogConfig>;
 }
 
-export const GoogleIamV1AuditConfig: Schema.Schema<GoogleIamV1AuditConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      service: Schema.optional(Schema.String),
-      auditLogConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditLogConfig)),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1AuditConfig",
-  }) as any as Schema.Schema<GoogleIamV1AuditConfig>;
+export const GoogleIamV1AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    service: Schema.optional(Schema.String),
+    auditLogConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditLogConfig)),
+  },
+).annotate({ identifier: "GoogleIamV1AuditConfig" });
 
 export interface GoogleIamV1Policy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
@@ -270,17 +243,12 @@ export interface GoogleIamV1Policy {
   auditConfigs?: Array<GoogleIamV1AuditConfig>;
 }
 
-export const GoogleIamV1Policy: Schema.Schema<GoogleIamV1Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bindings: Schema.optional(Schema.Array(GoogleIamV1Binding)),
-      etag: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.Number),
-      auditConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditConfig)),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1Policy",
-  }) as any as Schema.Schema<GoogleIamV1Policy>;
+export const GoogleIamV1Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bindings: Schema.optional(Schema.Array(GoogleIamV1Binding)),
+  etag: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.Number),
+  auditConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditConfig)),
+}).annotate({ identifier: "GoogleIamV1Policy" });
 
 export interface GoogleCloudBeyondcorpAppconnectorsV1alphaContainerHealthDetails {
   /** The version of the current config. */
@@ -293,20 +261,18 @@ export interface GoogleCloudBeyondcorpAppconnectorsV1alphaContainerHealthDetails
   expectedConfigVersion?: string;
 }
 
-export const GoogleCloudBeyondcorpAppconnectorsV1alphaContainerHealthDetails: Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1alphaContainerHealthDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      currentConfigVersion: Schema.optional(Schema.String),
-      extendedStatus: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      errorMsg: Schema.optional(Schema.String),
-      expectedConfigVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudBeyondcorpAppconnectorsV1alphaContainerHealthDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    currentConfigVersion: Schema.optional(Schema.String),
+    extendedStatus: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    errorMsg: Schema.optional(Schema.String),
+    expectedConfigVersion: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudBeyondcorpAppconnectorsV1alphaContainerHealthDetails",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1alphaContainerHealthDetails>;
+  });
 
 export interface GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo {
   /** Optional. The delegated user's information. */
@@ -318,15 +284,13 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegat
     | (string & {});
 }
 
-export const GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      outputType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    outputType: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo>;
+  });
 
 export interface GoogleCloudBeyondcorpAppconnectionsV1AppConnectionOperationMetadata {
   /** Output only. Human-readable status of the operation, if any. */
@@ -345,53 +309,47 @@ export interface GoogleCloudBeyondcorpAppconnectionsV1AppConnectionOperationMeta
   target?: string;
 }
 
-export const GoogleCloudBeyondcorpAppconnectionsV1AppConnectionOperationMetadata: Schema.Schema<GoogleCloudBeyondcorpAppconnectionsV1AppConnectionOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      statusMessage: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      apiVersion: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudBeyondcorpAppconnectionsV1AppConnectionOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    statusMessage: Schema.optional(Schema.String),
+    requestedCancellation: Schema.optional(Schema.Boolean),
+    apiVersion: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudBeyondcorpAppconnectionsV1AppConnectionOperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpAppconnectionsV1AppConnectionOperationMetadata>;
+  });
 
 export interface GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGatewayOperationDescriptor {
   /** Optional. Contains the URI path fragment where HTTP request is sent. */
   path?: string;
 }
 
-export const GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGatewayOperationDescriptor: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGatewayOperationDescriptor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      path: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGatewayOperationDescriptor =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    path: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGatewayOperationDescriptor",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGatewayOperationDescriptor>;
+  });
 
 export interface GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGateway {
   /** Optional. Enables fetching resource model updates to alter service behavior per Chrome profile. */
   resourceOverride?: GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGatewayOperationDescriptor;
 }
 
-export const GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGateway: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGateway> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceOverride: Schema.optional(
-        GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGatewayOperationDescriptor,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGateway =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceOverride: Schema.optional(
+      GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGatewayOperationDescriptor,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGateway",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGateway>;
+  });
 
 export interface GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo {
   /** Optional. The output type details for the delegated device. */
@@ -403,15 +361,13 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegat
     | (string & {});
 }
 
-export const GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      outputType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    outputType: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo>;
+  });
 
 export interface GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders {
   /** Optional. Default output type for all enabled headers. */
@@ -429,23 +385,21 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders {
   groupInfo?: GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo;
 }
 
-export const GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      outputType: Schema.optional(Schema.String),
-      userInfo: Schema.optional(
-        GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo,
-      ),
-      deviceInfo: Schema.optional(
-        GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo,
-      ),
-      groupInfo: Schema.optional(
-        GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    outputType: Schema.optional(Schema.String),
+    userInfo: Schema.optional(
+      GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedUserInfo,
+    ),
+    deviceInfo: Schema.optional(
+      GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedDeviceInfo,
+    ),
+    groupInfo: Schema.optional(
+      GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeadersDelegatedGroupInfo,
+    ),
+  }).annotate({
     identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders>;
+  });
 
 export interface GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig {
   /** Optional. List of the allowed client header names. */
@@ -463,53 +417,47 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig {
   contextualHeaders?: GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders;
 }
 
-export const GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      allowedClientHeaders: Schema.optional(Schema.Array(Schema.String)),
-      metadataHeaders: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      clientIp: Schema.optional(Schema.Boolean),
-      gatewayIdentity: Schema.optional(Schema.String),
-      contextualHeaders: Schema.optional(
-        GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allowedClientHeaders: Schema.optional(Schema.Array(Schema.String)),
+    metadataHeaders: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    clientIp: Schema.optional(Schema.Boolean),
+    gatewayIdentity: Schema.optional(Schema.String),
+    contextualHeaders: Schema.optional(
+      GoogleCloudBeyondcorpSecuritygatewaysV1ContextualHeaders,
+    ),
+  }).annotate({
     identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig>;
+  });
 
 export interface GoogleCloudBeyondcorpAppconnectorsV1NotificationConfigCloudPubSubNotificationConfig {
   /** The Pub/Sub subscription the AppConnector uses to receive notifications. */
   pubsubSubscription?: string;
 }
 
-export const GoogleCloudBeyondcorpAppconnectorsV1NotificationConfigCloudPubSubNotificationConfig: Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1NotificationConfigCloudPubSubNotificationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pubsubSubscription: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudBeyondcorpAppconnectorsV1NotificationConfigCloudPubSubNotificationConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pubsubSubscription: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudBeyondcorpAppconnectorsV1NotificationConfigCloudPubSubNotificationConfig",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1NotificationConfigCloudPubSubNotificationConfig>;
+  });
 
 export interface GoogleCloudBeyondcorpAppconnectorsV1NotificationConfig {
   /** Cloud Pub/Sub Configuration to receive notifications. */
   pubsubNotification?: GoogleCloudBeyondcorpAppconnectorsV1NotificationConfigCloudPubSubNotificationConfig;
 }
 
-export const GoogleCloudBeyondcorpAppconnectorsV1NotificationConfig: Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1NotificationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pubsubNotification: Schema.optional(
-        GoogleCloudBeyondcorpAppconnectorsV1NotificationConfigCloudPubSubNotificationConfig,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudBeyondcorpAppconnectorsV1NotificationConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pubsubNotification: Schema.optional(
+      GoogleCloudBeyondcorpAppconnectorsV1NotificationConfigCloudPubSubNotificationConfig,
+    ),
+  }).annotate({
     identifier: "GoogleCloudBeyondcorpAppconnectorsV1NotificationConfig",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1NotificationConfig>;
+  });
 
 export interface GoogleCloudBeyondcorpAppconnectorsV1ImageConfig {
   /** The stable image that the remote agent will fallback to if the target image fails. Format would be a gcr image path, e.g.: gcr.io/PROJECT-ID/my-image:tag1 */
@@ -518,15 +466,13 @@ export interface GoogleCloudBeyondcorpAppconnectorsV1ImageConfig {
   targetImage?: string;
 }
 
-export const GoogleCloudBeyondcorpAppconnectorsV1ImageConfig: Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1ImageConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stableImage: Schema.optional(Schema.String),
-      targetImage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudBeyondcorpAppconnectorsV1ImageConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    stableImage: Schema.optional(Schema.String),
+    targetImage: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudBeyondcorpAppconnectorsV1ImageConfig",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1ImageConfig>;
+  });
 
 export interface GoogleCloudBeyondcorpAppconnectorsV1AppConnectorInstanceConfig {
   /** Required. A monotonically increasing number generated and maintained by the API provider. Every time a config changes in the backend, the sequenceNumber should be bumped up to reflect the change. */
@@ -539,41 +485,37 @@ export interface GoogleCloudBeyondcorpAppconnectorsV1AppConnectorInstanceConfig 
   imageConfig?: GoogleCloudBeyondcorpAppconnectorsV1ImageConfig;
 }
 
-export const GoogleCloudBeyondcorpAppconnectorsV1AppConnectorInstanceConfig: Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1AppConnectorInstanceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sequenceNumber: Schema.optional(Schema.String),
-      instanceConfig: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-      notificationConfig: Schema.optional(
-        GoogleCloudBeyondcorpAppconnectorsV1NotificationConfig,
-      ),
-      imageConfig: Schema.optional(
-        GoogleCloudBeyondcorpAppconnectorsV1ImageConfig,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudBeyondcorpAppconnectorsV1AppConnectorInstanceConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sequenceNumber: Schema.optional(Schema.String),
+    instanceConfig: Schema.optional(
+      Schema.Record(Schema.String, Schema.Unknown),
+    ),
+    notificationConfig: Schema.optional(
+      GoogleCloudBeyondcorpAppconnectorsV1NotificationConfig,
+    ),
+    imageConfig: Schema.optional(
+      GoogleCloudBeyondcorpAppconnectorsV1ImageConfig,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudBeyondcorpAppconnectorsV1AppConnectorInstanceConfig",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1AppConnectorInstanceConfig>;
+  });
 
 export interface GoogleCloudBeyondcorpAppconnectorsV1ResolveInstanceConfigResponse {
   /** AppConnectorInstanceConfig. */
   instanceConfig?: GoogleCloudBeyondcorpAppconnectorsV1AppConnectorInstanceConfig;
 }
 
-export const GoogleCloudBeyondcorpAppconnectorsV1ResolveInstanceConfigResponse: Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1ResolveInstanceConfigResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      instanceConfig: Schema.optional(
-        GoogleCloudBeyondcorpAppconnectorsV1AppConnectorInstanceConfig,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudBeyondcorpAppconnectorsV1ResolveInstanceConfigResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    instanceConfig: Schema.optional(
+      GoogleCloudBeyondcorpAppconnectorsV1AppConnectorInstanceConfig,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudBeyondcorpAppconnectorsV1ResolveInstanceConfigResponse",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1ResolveInstanceConfigResponse>;
+  });
 
 export interface GoogleCloudBeyondcorpAppconnectorsV1ListAppConnectorsResponse {
   /** A token to retrieve the next page of results, or empty if there are no more results in the list. */
@@ -584,18 +526,16 @@ export interface GoogleCloudBeyondcorpAppconnectorsV1ListAppConnectorsResponse {
   unreachable?: Array<string>;
 }
 
-export const GoogleCloudBeyondcorpAppconnectorsV1ListAppConnectorsResponse: Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1ListAppConnectorsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      appConnectors: Schema.optional(
-        Schema.Array(GoogleCloudBeyondcorpAppconnectorsV1AppConnector),
-      ),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudBeyondcorpAppconnectorsV1ListAppConnectorsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    appConnectors: Schema.optional(
+      Schema.Array(GoogleCloudBeyondcorpAppconnectorsV1AppConnector),
+    ),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudBeyondcorpAppconnectorsV1ListAppConnectorsResponse",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1ListAppConnectorsResponse>;
+  });
 
 export interface GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway {
   /** Required. The type of hosting used by the gateway. */
@@ -610,18 +550,16 @@ export interface GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway {
   appGateway?: string;
 }
 
-export const GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway: Schema.Schema<GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      l7psc: Schema.optional(Schema.String),
-      ingressPort: Schema.optional(Schema.Number),
-      uri: Schema.optional(Schema.String),
-      appGateway: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    l7psc: Schema.optional(Schema.String),
+    ingressPort: Schema.optional(Schema.Number),
+    uri: Schema.optional(Schema.String),
+    appGateway: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway>;
+  });
 
 export interface GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint {
   /** Required. Port of the remote application endpoint. */
@@ -630,16 +568,14 @@ export interface GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEn
   host?: string;
 }
 
-export const GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint: Schema.Schema<GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      port: Schema.optional(Schema.Number),
-      host: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    port: Schema.optional(Schema.Number),
+    host: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint>;
+  });
 
 export interface GoogleCloudBeyondcorpAppconnectionsV1AppConnection {
   /** Optional. List of [google.cloud.beyondcorp.v1main.Connector.name] that are authorized to be associated with this AppConnection. */
@@ -677,30 +613,28 @@ export interface GoogleCloudBeyondcorpAppconnectionsV1AppConnection {
   satisfiesPzs?: boolean;
 }
 
-export const GoogleCloudBeyondcorpAppconnectionsV1AppConnection: Schema.Schema<GoogleCloudBeyondcorpAppconnectionsV1AppConnection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      connectors: Schema.optional(Schema.Array(Schema.String)),
-      displayName: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      gateway: Schema.optional(
-        GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway,
-      ),
-      name: Schema.optional(Schema.String),
-      applicationEndpoint: Schema.optional(
-        GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint,
-      ),
-      satisfiesPzi: Schema.optional(Schema.Boolean),
-      uid: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      satisfiesPzs: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudBeyondcorpAppconnectionsV1AppConnection =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    connectors: Schema.optional(Schema.Array(Schema.String)),
+    displayName: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    gateway: Schema.optional(
+      GoogleCloudBeyondcorpAppconnectionsV1AppConnectionGateway,
+    ),
+    name: Schema.optional(Schema.String),
+    applicationEndpoint: Schema.optional(
+      GoogleCloudBeyondcorpAppconnectionsV1AppConnectionApplicationEndpoint,
+    ),
+    satisfiesPzi: Schema.optional(Schema.Boolean),
+    uid: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    satisfiesPzs: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudBeyondcorpAppconnectionsV1AppConnection",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpAppconnectionsV1AppConnection>;
+  });
 
 export interface GoogleCloudBeyondcorpAppconnectionsV1ListAppConnectionsResponse {
   /** A list of locations that could not be reached. */
@@ -711,35 +645,31 @@ export interface GoogleCloudBeyondcorpAppconnectionsV1ListAppConnectionsResponse
   nextPageToken?: string;
 }
 
-export const GoogleCloudBeyondcorpAppconnectionsV1ListAppConnectionsResponse: Schema.Schema<GoogleCloudBeyondcorpAppconnectionsV1ListAppConnectionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      appConnections: Schema.optional(
-        Schema.Array(GoogleCloudBeyondcorpAppconnectionsV1AppConnection),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudBeyondcorpAppconnectionsV1ListAppConnectionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    appConnections: Schema.optional(
+      Schema.Array(GoogleCloudBeyondcorpAppconnectionsV1AppConnection),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudBeyondcorpAppconnectionsV1ListAppConnectionsResponse",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpAppconnectionsV1ListAppConnectionsResponse>;
+  });
 
 export interface GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscovery {
   /** Optional. External API configuration. */
   apiGateway?: GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGateway;
 }
 
-export const GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscovery: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscovery> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      apiGateway: Schema.optional(
-        GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGateway,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscovery =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apiGateway: Schema.optional(
+      GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscoveryApiGateway,
+    ),
+  }).annotate({
     identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscovery",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscovery>;
+  });
 
 export interface GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionOperationMetadata {
   /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have google.longrunning.Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
@@ -758,21 +688,19 @@ export interface GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionOperatio
   verb?: string;
 }
 
-export const GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionOperationMetadata: Schema.Schema<GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      apiVersion: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestedCancellation: Schema.optional(Schema.Boolean),
+    apiVersion: Schema.optional(Schema.String),
+    statusMessage: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionOperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpAppconnectionsV1alphaAppConnectionOperationMetadata>;
+  });
 
 export interface GoogleCloudBeyondcorpPartnerservicesV1mainPartnerServiceOperationMetadata {
   /** Output only. Identifies whether the caller has requested cancellation of the operation. Operations that have successfully been cancelled have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
@@ -791,28 +719,25 @@ export interface GoogleCloudBeyondcorpPartnerservicesV1mainPartnerServiceOperati
   verb?: string;
 }
 
-export const GoogleCloudBeyondcorpPartnerservicesV1mainPartnerServiceOperationMetadata: Schema.Schema<GoogleCloudBeyondcorpPartnerservicesV1mainPartnerServiceOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      apiVersion: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudBeyondcorpPartnerservicesV1mainPartnerServiceOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestedCancellation: Schema.optional(Schema.Boolean),
+    apiVersion: Schema.optional(Schema.String),
+    statusMessage: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudBeyondcorpPartnerservicesV1mainPartnerServiceOperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpPartnerservicesV1mainPartnerServiceOperationMetadata>;
+  });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface GoogleCloudBeyondcorpConnectorsV1alphaContainerHealthDetails {
   /** The version of the expected config. */
@@ -825,19 +750,17 @@ export interface GoogleCloudBeyondcorpConnectorsV1alphaContainerHealthDetails {
   currentConfigVersion?: string;
 }
 
-export const GoogleCloudBeyondcorpConnectorsV1alphaContainerHealthDetails: Schema.Schema<GoogleCloudBeyondcorpConnectorsV1alphaContainerHealthDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expectedConfigVersion: Schema.optional(Schema.String),
-      extendedStatus: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      errorMsg: Schema.optional(Schema.String),
-      currentConfigVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudBeyondcorpConnectorsV1alphaContainerHealthDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    expectedConfigVersion: Schema.optional(Schema.String),
+    extendedStatus: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    errorMsg: Schema.optional(Schema.String),
+    currentConfigVersion: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudBeyondcorpConnectorsV1alphaContainerHealthDetails",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpConnectorsV1alphaContainerHealthDetails>;
+  });
 
 export interface AppGatewayOperationMetadata {
   /** Output only. The time the operation finished running. */
@@ -856,35 +779,29 @@ export interface AppGatewayOperationMetadata {
   statusMessage?: string;
 }
 
-export const AppGatewayOperationMetadata: Schema.Schema<AppGatewayOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      apiVersion: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AppGatewayOperationMetadata",
-  }) as any as Schema.Schema<AppGatewayOperationMetadata>;
+export const AppGatewayOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endTime: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+    requestedCancellation: Schema.optional(Schema.Boolean),
+    apiVersion: Schema.optional(Schema.String),
+    statusMessage: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AppGatewayOperationMetadata" });
 
 export interface GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamNetwork {
   /** Required. Network name is of the format: `projects/{project}/global/networks/{network} */
   name?: string;
 }
 
-export const GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamNetwork: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamNetwork> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamNetwork =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamNetwork",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamNetwork>;
+  });
 
 export interface GoogleCloudBeyondcorpSecuritygatewaysV1Endpoint {
   /** Required. Hostname of the endpoint. */
@@ -893,46 +810,40 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1Endpoint {
   port?: number;
 }
 
-export const GoogleCloudBeyondcorpSecuritygatewaysV1Endpoint: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1Endpoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hostname: Schema.optional(Schema.String),
-      port: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudBeyondcorpSecuritygatewaysV1Endpoint =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    hostname: Schema.optional(Schema.String),
+    port: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1Endpoint",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1Endpoint>;
+  });
 
 export interface GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamExternal {
   /** Required. List of the endpoints to forward traffic to. */
   endpoints?: Array<GoogleCloudBeyondcorpSecuritygatewaysV1Endpoint>;
 }
 
-export const GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamExternal: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamExternal> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endpoints: Schema.optional(
-        Schema.Array(GoogleCloudBeyondcorpSecuritygatewaysV1Endpoint),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamExternal =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endpoints: Schema.optional(
+      Schema.Array(GoogleCloudBeyondcorpSecuritygatewaysV1Endpoint),
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamExternal",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamExternal>;
+  });
 
 export interface GoogleCloudBeyondcorpSecuritygatewaysV1EgressPolicy {
   /** Required. List of the regions where the application sends traffic. */
   regions?: Array<string>;
 }
 
-export const GoogleCloudBeyondcorpSecuritygatewaysV1EgressPolicy: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1EgressPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      regions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudBeyondcorpSecuritygatewaysV1EgressPolicy =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    regions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1EgressPolicy",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1EgressPolicy>;
+  });
 
 export interface GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream {
   /** Network to forward traffic to. */
@@ -945,25 +856,23 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream {
   proxyProtocol?: GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig;
 }
 
-export const GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      network: Schema.optional(
-        GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamNetwork,
-      ),
-      external: Schema.optional(
-        GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamExternal,
-      ),
-      egressPolicy: Schema.optional(
-        GoogleCloudBeyondcorpSecuritygatewaysV1EgressPolicy,
-      ),
-      proxyProtocol: Schema.optional(
-        GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    network: Schema.optional(
+      GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamNetwork,
+    ),
+    external: Schema.optional(
+      GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstreamExternal,
+    ),
+    egressPolicy: Schema.optional(
+      GoogleCloudBeyondcorpSecuritygatewaysV1EgressPolicy,
+    ),
+    proxyProtocol: Schema.optional(
+      GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig,
+    ),
+  }).annotate({
     identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream>;
+  });
 
 export interface GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher {
   /** Required. Hostname of the application. */
@@ -972,15 +881,13 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher {
   ports?: Array<number>;
 }
 
-export const GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hostname: Schema.optional(Schema.String),
-      ports: Schema.optional(Schema.Array(Schema.Number)),
-    }),
-  ).annotate({
+export const GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    hostname: Schema.optional(Schema.String),
+    ports: Schema.optional(Schema.Array(Schema.Number)),
+  }).annotate({
     identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher>;
+  });
 
 export interface GoogleCloudBeyondcorpSecuritygatewaysV1Application {
   /** Optional. Which upstream resources to forward traffic to. */
@@ -1003,26 +910,22 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1Application {
     | (string & {});
 }
 
-export const GoogleCloudBeyondcorpSecuritygatewaysV1Application: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1Application> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      upstreams: Schema.optional(
-        Schema.Array(
-          GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream,
-        ),
-      ),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      endpointMatchers: Schema.optional(
-        Schema.Array(GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher),
-      ),
-      updateTime: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      schema: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudBeyondcorpSecuritygatewaysV1Application =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    upstreams: Schema.optional(
+      Schema.Array(GoogleCloudBeyondcorpSecuritygatewaysV1ApplicationUpstream),
+    ),
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    endpointMatchers: Schema.optional(
+      Schema.Array(GoogleCloudBeyondcorpSecuritygatewaysV1EndpointMatcher),
+    ),
+    updateTime: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    schema: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1Application",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1Application>;
+  });
 
 export interface GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse {
   /** A token to retrieve the next page of results, or empty if there are no more results in the list. */
@@ -1033,19 +936,17 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse
   unreachable?: Array<string>;
 }
 
-export const GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      applications: Schema.optional(
-        Schema.Array(GoogleCloudBeyondcorpSecuritygatewaysV1Application),
-      ),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    applications: Schema.optional(
+      Schema.Array(GoogleCloudBeyondcorpSecuritygatewaysV1Application),
+    ),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier:
       "GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ListApplicationsResponse>;
+  });
 
 export interface GoogleCloudBeyondcorpConnectionsV1alphaConnectionOperationMetadata {
   /** Output only. The time the operation finished running. */
@@ -1064,21 +965,19 @@ export interface GoogleCloudBeyondcorpConnectionsV1alphaConnectionOperationMetad
   statusMessage?: string;
 }
 
-export const GoogleCloudBeyondcorpConnectionsV1alphaConnectionOperationMetadata: Schema.Schema<GoogleCloudBeyondcorpConnectionsV1alphaConnectionOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      apiVersion: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudBeyondcorpConnectionsV1alphaConnectionOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endTime: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+    requestedCancellation: Schema.optional(Schema.Boolean),
+    apiVersion: Schema.optional(Schema.String),
+    statusMessage: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudBeyondcorpConnectionsV1alphaConnectionOperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpConnectionsV1alphaConnectionOperationMetadata>;
+  });
 
 export interface GoogleIamV1SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
@@ -1087,15 +986,11 @@ export interface GoogleIamV1SetIamPolicyRequest {
   updateMask?: string;
 }
 
-export const GoogleIamV1SetIamPolicyRequest: Schema.Schema<GoogleIamV1SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policy: Schema.optional(GoogleIamV1Policy),
-      updateMask: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1SetIamPolicyRequest",
-  }) as any as Schema.Schema<GoogleIamV1SetIamPolicyRequest>;
+export const GoogleIamV1SetIamPolicyRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policy: Schema.optional(GoogleIamV1Policy),
+    updateMask: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleIamV1SetIamPolicyRequest" });
 
 export interface GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGatewayOperationMetadata {
   /** Output only. The time the operation was created. */
@@ -1114,21 +1009,19 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGatewayOper
   apiVersion?: string;
 }
 
-export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGatewayOperationMetadata: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGatewayOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      apiVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGatewayOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+    statusMessage: Schema.optional(Schema.String),
+    requestedCancellation: Schema.optional(Schema.Boolean),
+    apiVersion: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGatewayOperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1alphaSecurityGatewayOperationMetadata>;
+  });
 
 export interface GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails {
   /** A BeyondCorp AppConnection in the project. */
@@ -1137,18 +1030,16 @@ export interface GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsRespo
   recentMigVms?: Array<string>;
 }
 
-export const GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails: Schema.Schema<GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      appConnection: Schema.optional(
-        GoogleCloudBeyondcorpAppconnectionsV1AppConnection,
-      ),
-      recentMigVms: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    appConnection: Schema.optional(
+      GoogleCloudBeyondcorpAppconnectionsV1AppConnection,
+    ),
+    recentMigVms: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier:
       "GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails>;
+  });
 
 export interface GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponse {
   /** A list of locations that could not be reached. */
@@ -1159,21 +1050,19 @@ export interface GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsRespo
   nextPageToken?: string;
 }
 
-export const GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponse: Schema.Schema<GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      appConnectionDetails: Schema.optional(
-        Schema.Array(
-          GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails,
-        ),
+export const GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    appConnectionDetails: Schema.optional(
+      Schema.Array(
+        GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponseAppConnectionDetails,
       ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponse",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpAppconnectionsV1ResolveAppConnectionsResponse>;
+  });
 
 export interface GoogleRpcStatus {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
@@ -1184,18 +1073,13 @@ export interface GoogleRpcStatus {
   message?: string;
 }
 
-export const GoogleRpcStatus: Schema.Schema<GoogleRpcStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleRpcStatus",
-  }) as any as Schema.Schema<GoogleRpcStatus>;
+export const GoogleRpcStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+}).annotate({ identifier: "GoogleRpcStatus" });
 
 export interface GoogleLongrunningOperation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
@@ -1210,18 +1094,14 @@ export interface GoogleLongrunningOperation {
   response?: Record<string, unknown>;
 }
 
-export const GoogleLongrunningOperation: Schema.Schema<GoogleLongrunningOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      done: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      error: Schema.optional(GoogleRpcStatus),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
-    identifier: "GoogleLongrunningOperation",
-  }) as any as Schema.Schema<GoogleLongrunningOperation>;
+export const GoogleLongrunningOperation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    done: Schema.optional(Schema.Boolean),
+    name: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    error: Schema.optional(GoogleRpcStatus),
+    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "GoogleLongrunningOperation" });
 
 export interface GoogleLongrunningListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
@@ -1232,16 +1112,12 @@ export interface GoogleLongrunningListOperationsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleLongrunningListOperationsResponse: Schema.Schema<GoogleLongrunningListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleLongrunningListOperationsResponse",
-  }) as any as Schema.Schema<GoogleLongrunningListOperationsResponse>;
+export const GoogleLongrunningListOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleLongrunningListOperationsResponse" });
 
 export interface Tunnelv1ProtoTunnelerError {
   /** retryable isn't used for now, but we may want to reuse it in the future. */
@@ -1250,15 +1126,11 @@ export interface Tunnelv1ProtoTunnelerError {
   err?: string;
 }
 
-export const Tunnelv1ProtoTunnelerError: Schema.Schema<Tunnelv1ProtoTunnelerError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      retryable: Schema.optional(Schema.Boolean),
-      err: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Tunnelv1ProtoTunnelerError",
-  }) as any as Schema.Schema<Tunnelv1ProtoTunnelerError>;
+export const Tunnelv1ProtoTunnelerError =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    retryable: Schema.optional(Schema.Boolean),
+    err: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Tunnelv1ProtoTunnelerError" });
 
 export interface Tunnelv1ProtoTunnelerInfo {
   /** latest_err stores the Error for the latest tunneler failure. Gets reset everytime the tunneler is retried by tunManager. */
@@ -1273,18 +1145,14 @@ export interface Tunnelv1ProtoTunnelerInfo {
   latestRetryTime?: string;
 }
 
-export const Tunnelv1ProtoTunnelerInfo: Schema.Schema<Tunnelv1ProtoTunnelerInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      latestErr: Schema.optional(Tunnelv1ProtoTunnelerError),
-      totalRetryCount: Schema.optional(Schema.Number),
-      id: Schema.optional(Schema.String),
-      backoffRetryCount: Schema.optional(Schema.Number),
-      latestRetryTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Tunnelv1ProtoTunnelerInfo",
-  }) as any as Schema.Schema<Tunnelv1ProtoTunnelerInfo>;
+export const Tunnelv1ProtoTunnelerInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    latestErr: Schema.optional(Tunnelv1ProtoTunnelerError),
+    totalRetryCount: Schema.optional(Schema.Number),
+    id: Schema.optional(Schema.String),
+    backoffRetryCount: Schema.optional(Schema.Number),
+    latestRetryTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Tunnelv1ProtoTunnelerInfo" });
 
 export interface CloudSecurityZerotrustApplinkAppConnectorProtoGateway {
   /** self_link is the gateway URL in the form https://www.googleapis.com/compute/${version}/projects/${project}/zones/${zone}/instances/${instance} */
@@ -1301,19 +1169,17 @@ export interface CloudSecurityZerotrustApplinkAppConnectorProtoGateway {
   port?: number;
 }
 
-export const CloudSecurityZerotrustApplinkAppConnectorProtoGateway: Schema.Schema<CloudSecurityZerotrustApplinkAppConnectorProtoGateway> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      selfLink: Schema.optional(Schema.String),
-      interface: Schema.optional(Schema.String),
-      zone: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      project: Schema.optional(Schema.String),
-      port: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const CloudSecurityZerotrustApplinkAppConnectorProtoGateway =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    selfLink: Schema.optional(Schema.String),
+    interface: Schema.optional(Schema.String),
+    zone: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    project: Schema.optional(Schema.String),
+    port: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "CloudSecurityZerotrustApplinkAppConnectorProtoGateway",
-  }) as any as Schema.Schema<CloudSecurityZerotrustApplinkAppConnectorProtoGateway>;
+  });
 
 export interface CloudSecurityZerotrustApplinkAppConnectorProtoConnectionConfig {
   /** project represents the consumer project the connection belongs to. */
@@ -1332,23 +1198,21 @@ export interface CloudSecurityZerotrustApplinkAppConnectorProtoConnectionConfig 
   userPort?: number;
 }
 
-export const CloudSecurityZerotrustApplinkAppConnectorProtoConnectionConfig: Schema.Schema<CloudSecurityZerotrustApplinkAppConnectorProtoConnectionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      project: Schema.optional(Schema.String),
-      applicationEndpoint: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      applicationName: Schema.optional(Schema.String),
-      gateway: Schema.optional(
-        Schema.Array(CloudSecurityZerotrustApplinkAppConnectorProtoGateway),
-      ),
-      tunnelsPerGateway: Schema.optional(Schema.Number),
-      userPort: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const CloudSecurityZerotrustApplinkAppConnectorProtoConnectionConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    project: Schema.optional(Schema.String),
+    applicationEndpoint: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    applicationName: Schema.optional(Schema.String),
+    gateway: Schema.optional(
+      Schema.Array(CloudSecurityZerotrustApplinkAppConnectorProtoGateway),
+    ),
+    tunnelsPerGateway: Schema.optional(Schema.Number),
+    userPort: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "CloudSecurityZerotrustApplinkAppConnectorProtoConnectionConfig",
-  }) as any as Schema.Schema<CloudSecurityZerotrustApplinkAppConnectorProtoConnectionConfig>;
+  });
 
 export interface GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerServiceOperationMetadata {
   /** Output only. Human-readable status of the operation, if any. */
@@ -1367,28 +1231,26 @@ export interface GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerServiceOperat
   target?: string;
 }
 
-export const GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerServiceOperationMetadata: Schema.Schema<GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerServiceOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      statusMessage: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      apiVersion: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerServiceOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    statusMessage: Schema.optional(Schema.String),
+    requestedCancellation: Schema.optional(Schema.Boolean),
+    apiVersion: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerServiceOperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpPartnerservicesV1alphaPartnerServiceOperationMetadata>;
+  });
 
 export interface GoogleCloudBeyondcorpSecuritygatewaysV1LoggingConfig {}
 
-export const GoogleCloudBeyondcorpSecuritygatewaysV1LoggingConfig: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1LoggingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudBeyondcorpSecuritygatewaysV1LoggingConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1LoggingConfig",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1LoggingConfig>;
+  });
 
 export interface GoogleCloudLocationLocation {
   /** The canonical id for this location. For example: `"us-east1"`. */
@@ -1403,18 +1265,14 @@ export interface GoogleCloudLocationLocation {
   labels?: Record<string, string>;
 }
 
-export const GoogleCloudLocationLocation: Schema.Schema<GoogleCloudLocationLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locationId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudLocationLocation",
-  }) as any as Schema.Schema<GoogleCloudLocationLocation>;
+export const GoogleCloudLocationLocation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locationId: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({ identifier: "GoogleCloudLocationLocation" });
 
 export interface GoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest {
   /** Required. Resource info of the connector. */
@@ -1425,25 +1283,23 @@ export interface GoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest {
   validateOnly?: boolean;
 }
 
-export const GoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest: Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceInfo: Schema.optional(
-        GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo,
-      ),
-      requestId: Schema.optional(Schema.String),
-      validateOnly: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceInfo: Schema.optional(
+      GoogleCloudBeyondcorpAppconnectorsV1ResourceInfo,
+    ),
+    requestId: Schema.optional(Schema.String),
+    validateOnly: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1ReportStatusRequest>;
+  });
 
 export interface CloudSecurityZerotrustApplinkLogagentProtoLogAgentDetails {}
 
-export const CloudSecurityZerotrustApplinkLogagentProtoLogAgentDetails: Schema.Schema<CloudSecurityZerotrustApplinkLogagentProtoLogAgentDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const CloudSecurityZerotrustApplinkLogagentProtoLogAgentDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CloudSecurityZerotrustApplinkLogagentProtoLogAgentDetails",
-  }) as any as Schema.Schema<CloudSecurityZerotrustApplinkLogagentProtoLogAgentDetails>;
+  });
 
 export interface GoogleCloudBeyondcorpAppgatewaysV1alphaAppGatewayOperationMetadata {
   /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have google.longrunning.Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
@@ -1462,45 +1318,39 @@ export interface GoogleCloudBeyondcorpAppgatewaysV1alphaAppGatewayOperationMetad
   verb?: string;
 }
 
-export const GoogleCloudBeyondcorpAppgatewaysV1alphaAppGatewayOperationMetadata: Schema.Schema<GoogleCloudBeyondcorpAppgatewaysV1alphaAppGatewayOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      apiVersion: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudBeyondcorpAppgatewaysV1alphaAppGatewayOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestedCancellation: Schema.optional(Schema.Boolean),
+    apiVersion: Schema.optional(Schema.String),
+    statusMessage: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudBeyondcorpAppgatewaysV1alphaAppGatewayOperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpAppgatewaysV1alphaAppGatewayOperationMetadata>;
+  });
 
 export interface CloudSecurityZerotrustApplinkAppConnectorProtoConnectorDetails {}
 
-export const CloudSecurityZerotrustApplinkAppConnectorProtoConnectorDetails: Schema.Schema<CloudSecurityZerotrustApplinkAppConnectorProtoConnectorDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const CloudSecurityZerotrustApplinkAppConnectorProtoConnectorDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier:
       "CloudSecurityZerotrustApplinkAppConnectorProtoConnectorDetails",
-  }) as any as Schema.Schema<CloudSecurityZerotrustApplinkAppConnectorProtoConnectorDetails>;
+  });
 
 export interface GoogleCloudBeyondcorpSecuritygatewaysV1Hub {
   /** Optional. Internet Gateway configuration. */
   internetGateway?: GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway;
 }
 
-export const GoogleCloudBeyondcorpSecuritygatewaysV1Hub: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1Hub> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      internetGateway: Schema.optional(
-        GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1Hub",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1Hub>;
+export const GoogleCloudBeyondcorpSecuritygatewaysV1Hub =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    internetGateway: Schema.optional(
+      GoogleCloudBeyondcorpSecuritygatewaysV1InternetGateway,
+    ),
+  }).annotate({ identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1Hub" });
 
 export interface GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway {
   /** Optional. Map of Hubs that represents regional data path deployment with GCP region as a key. */
@@ -1535,35 +1385,30 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway {
   delegatingServiceAccount?: string;
 }
 
-export const GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hubs: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          GoogleCloudBeyondcorpSecuritygatewaysV1Hub,
-        ),
-      ),
-      logging: Schema.optional(
-        GoogleCloudBeyondcorpSecuritygatewaysV1LoggingConfig,
-      ),
-      updateTime: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      proxyProtocolConfig: Schema.optional(
-        GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig,
-      ),
-      state: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      serviceDiscovery: Schema.optional(
-        GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscovery,
-      ),
-      createTime: Schema.optional(Schema.String),
-      externalIps: Schema.optional(Schema.Array(Schema.String)),
-      delegatingServiceAccount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    hubs: Schema.optional(
+      Schema.Record(Schema.String, GoogleCloudBeyondcorpSecuritygatewaysV1Hub),
+    ),
+    logging: Schema.optional(
+      GoogleCloudBeyondcorpSecuritygatewaysV1LoggingConfig,
+    ),
+    updateTime: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    proxyProtocolConfig: Schema.optional(
+      GoogleCloudBeyondcorpSecuritygatewaysV1ProxyProtocolConfig,
+    ),
+    state: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    serviceDiscovery: Schema.optional(
+      GoogleCloudBeyondcorpSecuritygatewaysV1ServiceDiscovery,
+    ),
+    createTime: Schema.optional(Schema.String),
+    externalIps: Schema.optional(Schema.Array(Schema.String)),
+    delegatingServiceAccount: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway>;
+  });
 
 export interface GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorOperationMetadata {
   /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have successfully been cancelled have google.longrunning.Operation.error value with a google.rpc.Status.code of `1`, corresponding to `Code.CANCELLED`. */
@@ -1582,35 +1427,29 @@ export interface GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorOperationM
   verb?: string;
 }
 
-export const GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorOperationMetadata: Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      apiVersion: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestedCancellation: Schema.optional(Schema.Boolean),
+    apiVersion: Schema.optional(Schema.String),
+    statusMessage: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorOperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1alphaAppConnectorOperationMetadata>;
+  });
 
 export interface GoogleIamV1TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: Array<string>;
 }
 
-export const GoogleIamV1TestIamPermissionsResponse: Schema.Schema<GoogleIamV1TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1TestIamPermissionsResponse",
-  }) as any as Schema.Schema<GoogleIamV1TestIamPermissionsResponse>;
+export const GoogleIamV1TestIamPermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleIamV1TestIamPermissionsResponse" });
 
 export interface GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse {
   /** A list of BeyondCorp SecurityGateway in the project. */
@@ -1621,19 +1460,17 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResp
   nextPageToken?: string;
 }
 
-export const GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      securityGateways: Schema.optional(
-        Schema.Array(GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway),
-      ),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    securityGateways: Schema.optional(
+      Schema.Array(GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGateway),
+    ),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1ListSecurityGatewaysResponse>;
+  });
 
 export interface GoogleCloudBeyondcorpAppconnectorsV1AppConnectorOperationMetadata {
   /** Output only. The time the operation was created. */
@@ -1652,28 +1489,26 @@ export interface GoogleCloudBeyondcorpAppconnectorsV1AppConnectorOperationMetada
   apiVersion?: string;
 }
 
-export const GoogleCloudBeyondcorpAppconnectorsV1AppConnectorOperationMetadata: Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1AppConnectorOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      apiVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudBeyondcorpAppconnectorsV1AppConnectorOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+    statusMessage: Schema.optional(Schema.String),
+    requestedCancellation: Schema.optional(Schema.Boolean),
+    apiVersion: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudBeyondcorpAppconnectorsV1AppConnectorOperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1AppConnectorOperationMetadata>;
+  });
 
 export interface GoogleCloudBeyondcorpAppconnectorsV1alphaRemoteAgentDetails {}
 
-export const GoogleCloudBeyondcorpAppconnectorsV1alphaRemoteAgentDetails: Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1alphaRemoteAgentDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudBeyondcorpAppconnectorsV1alphaRemoteAgentDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudBeyondcorpAppconnectorsV1alphaRemoteAgentDetails",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1alphaRemoteAgentDetails>;
+  });
 
 export interface GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGatewayOperationMetadata {
   /** Output only. Identifies whether the user has requested cancellation of the operation. Operations that have been cancelled successfully have Operation.error value with a google.rpc.Status.code of 1, corresponding to `Code.CANCELLED`. */
@@ -1692,35 +1527,29 @@ export interface GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGatewayOperation
   verb?: string;
 }
 
-export const GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGatewayOperationMetadata: Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGatewayOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      apiVersion: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGatewayOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestedCancellation: Schema.optional(Schema.Boolean),
+    apiVersion: Schema.optional(Schema.String),
+    statusMessage: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGatewayOperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpSecuritygatewaysV1SecurityGatewayOperationMetadata>;
+  });
 
 export interface GoogleIamV1TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: Array<string>;
 }
 
-export const GoogleIamV1TestIamPermissionsRequest: Schema.Schema<GoogleIamV1TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1TestIamPermissionsRequest",
-  }) as any as Schema.Schema<GoogleIamV1TestIamPermissionsRequest>;
+export const GoogleIamV1TestIamPermissionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleIamV1TestIamPermissionsRequest" });
 
 export interface GoogleCloudBeyondcorpConnectorsV1alphaConnectorOperationMetadata {
   /** Output only. The time the operation was created. */
@@ -1739,21 +1568,19 @@ export interface GoogleCloudBeyondcorpConnectorsV1alphaConnectorOperationMetadat
   apiVersion?: string;
 }
 
-export const GoogleCloudBeyondcorpConnectorsV1alphaConnectorOperationMetadata: Schema.Schema<GoogleCloudBeyondcorpConnectorsV1alphaConnectorOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      apiVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudBeyondcorpConnectorsV1alphaConnectorOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    verb: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+    statusMessage: Schema.optional(Schema.String),
+    requestedCancellation: Schema.optional(Schema.Boolean),
+    apiVersion: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudBeyondcorpConnectorsV1alphaConnectorOperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpConnectorsV1alphaConnectorOperationMetadata>;
+  });
 
 export interface AllocatedConnection {
   /** Required. The ingress port of an allocated connection */
@@ -1762,15 +1589,10 @@ export interface AllocatedConnection {
   pscUri?: string;
 }
 
-export const AllocatedConnection: Schema.Schema<AllocatedConnection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ingressPort: Schema.optional(Schema.Number),
-      pscUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AllocatedConnection",
-  }) as any as Schema.Schema<AllocatedConnection>;
+export const AllocatedConnection = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ingressPort: Schema.optional(Schema.Number),
+  pscUri: Schema.optional(Schema.String),
+}).annotate({ identifier: "AllocatedConnection" });
 
 export interface AppGateway {
   /** Output only. A list of connections allocated for the Gateway */
@@ -1808,24 +1630,21 @@ export interface AppGateway {
   type?: "TYPE_UNSPECIFIED" | "TCP_PROXY" | (string & {});
 }
 
-export const AppGateway: Schema.Schema<AppGateway> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      allocatedConnections: Schema.optional(Schema.Array(AllocatedConnection)),
-      displayName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      uid: Schema.optional(Schema.String),
-      satisfiesPzi: Schema.optional(Schema.Boolean),
-      updateTime: Schema.optional(Schema.String),
-      hostType: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      uri: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      satisfiesPzs: Schema.optional(Schema.Boolean),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "AppGateway" }) as any as Schema.Schema<AppGateway>;
+export const AppGateway = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  allocatedConnections: Schema.optional(Schema.Array(AllocatedConnection)),
+  displayName: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  uid: Schema.optional(Schema.String),
+  satisfiesPzi: Schema.optional(Schema.Boolean),
+  updateTime: Schema.optional(Schema.String),
+  hostType: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  uri: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  satisfiesPzs: Schema.optional(Schema.Boolean),
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "AppGateway" });
 
 export interface ListAppGatewaysResponse {
   /** A token to retrieve the next page of results, or empty if there are no more results in the list. */
@@ -1836,16 +1655,12 @@ export interface ListAppGatewaysResponse {
   unreachable?: Array<string>;
 }
 
-export const ListAppGatewaysResponse: Schema.Schema<ListAppGatewaysResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      appGateways: Schema.optional(Schema.Array(AppGateway)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListAppGatewaysResponse",
-  }) as any as Schema.Schema<ListAppGatewaysResponse>;
+export const ListAppGatewaysResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    appGateways: Schema.optional(Schema.Array(AppGateway)),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListAppGatewaysResponse" });
 
 export interface GoogleCloudBeyondcorpAppconnectorsV1ContainerHealthDetails {
   /** The extended status. Such as ExitCode, StartedAt, FinishedAt, etc. */
@@ -1858,26 +1673,24 @@ export interface GoogleCloudBeyondcorpAppconnectorsV1ContainerHealthDetails {
   expectedConfigVersion?: string;
 }
 
-export const GoogleCloudBeyondcorpAppconnectorsV1ContainerHealthDetails: Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1ContainerHealthDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      extendedStatus: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      errorMsg: Schema.optional(Schema.String),
-      currentConfigVersion: Schema.optional(Schema.String),
-      expectedConfigVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudBeyondcorpAppconnectorsV1ContainerHealthDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    extendedStatus: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    errorMsg: Schema.optional(Schema.String),
+    currentConfigVersion: Schema.optional(Schema.String),
+    expectedConfigVersion: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudBeyondcorpAppconnectorsV1ContainerHealthDetails",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1ContainerHealthDetails>;
+  });
 
 export interface GoogleCloudBeyondcorpConnectorsV1alphaRemoteAgentDetails {}
 
-export const GoogleCloudBeyondcorpConnectorsV1alphaRemoteAgentDetails: Schema.Schema<GoogleCloudBeyondcorpConnectorsV1alphaRemoteAgentDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudBeyondcorpConnectorsV1alphaRemoteAgentDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudBeyondcorpConnectorsV1alphaRemoteAgentDetails",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpConnectorsV1alphaRemoteAgentDetails>;
+  });
 
 export interface GoogleCloudLocationListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -1886,22 +1699,18 @@ export interface GoogleCloudLocationListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudLocationListLocationsResponse: Schema.Schema<GoogleCloudLocationListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(GoogleCloudLocationLocation)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudLocationListLocationsResponse",
-  }) as any as Schema.Schema<GoogleCloudLocationListLocationsResponse>;
+export const GoogleCloudLocationListLocationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locations: Schema.optional(Schema.Array(GoogleCloudLocationLocation)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudLocationListLocationsResponse" });
 
 export interface GoogleCloudBeyondcorpAppconnectorsV1RemoteAgentDetails {}
 
-export const GoogleCloudBeyondcorpAppconnectorsV1RemoteAgentDetails: Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1RemoteAgentDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudBeyondcorpAppconnectorsV1RemoteAgentDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudBeyondcorpAppconnectorsV1RemoteAgentDetails",
-  }) as any as Schema.Schema<GoogleCloudBeyondcorpAppconnectorsV1RemoteAgentDetails>;
+  });
 
 // ==========================================================================
 // Operations

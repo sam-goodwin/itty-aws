@@ -52,20 +52,15 @@ export interface PlatformSummary {
   reportUrl?: string;
 }
 
-export const PlatformSummary: Schema.Schema<PlatformSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      region: Schema.optional(Schema.Array(Schema.String)),
-      underReview: Schema.optional(Schema.Boolean),
-      lastChangeTime: Schema.optional(Schema.String),
-      betterAdsStatus: Schema.optional(Schema.String),
-      enforcementTime: Schema.optional(Schema.String),
-      filterStatus: Schema.optional(Schema.String),
-      reportUrl: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PlatformSummary",
-  }) as any as Schema.Schema<PlatformSummary>;
+export const PlatformSummary = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  region: Schema.optional(Schema.Array(Schema.String)),
+  underReview: Schema.optional(Schema.Boolean),
+  lastChangeTime: Schema.optional(Schema.String),
+  betterAdsStatus: Schema.optional(Schema.String),
+  enforcementTime: Schema.optional(Schema.String),
+  filterStatus: Schema.optional(Schema.String),
+  reportUrl: Schema.optional(Schema.String),
+}).annotate({ identifier: "PlatformSummary" });
 
 export interface SiteSummaryResponse {
   /** The site's Ad Experience Report summary on mobile. */
@@ -76,30 +71,22 @@ export interface SiteSummaryResponse {
   reviewedSite?: string;
 }
 
-export const SiteSummaryResponse: Schema.Schema<SiteSummaryResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mobileSummary: Schema.optional(PlatformSummary),
-      desktopSummary: Schema.optional(PlatformSummary),
-      reviewedSite: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SiteSummaryResponse",
-  }) as any as Schema.Schema<SiteSummaryResponse>;
+export const SiteSummaryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  mobileSummary: Schema.optional(PlatformSummary),
+  desktopSummary: Schema.optional(PlatformSummary),
+  reviewedSite: Schema.optional(Schema.String),
+}).annotate({ identifier: "SiteSummaryResponse" });
 
 export interface ViolatingSitesResponse {
   /** The list of violating sites. */
   violatingSites?: Array<SiteSummaryResponse>;
 }
 
-export const ViolatingSitesResponse: Schema.Schema<ViolatingSitesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      violatingSites: Schema.optional(Schema.Array(SiteSummaryResponse)),
-    }),
-  ).annotate({
-    identifier: "ViolatingSitesResponse",
-  }) as any as Schema.Schema<ViolatingSitesResponse>;
+export const ViolatingSitesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    violatingSites: Schema.optional(Schema.Array(SiteSummaryResponse)),
+  },
+).annotate({ identifier: "ViolatingSitesResponse" });
 
 // ==========================================================================
 // Operations

@@ -31,16 +31,11 @@ export interface SavedColumn {
   type?: string;
 }
 
-export const SavedColumn: Schema.Schema<SavedColumn> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      savedColumnName: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SavedColumn",
-  }) as any as Schema.Schema<SavedColumn>;
+export const SavedColumn = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  savedColumnName: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "SavedColumn" });
 
 export interface Availability {
   /** The time by which all conversions have been uploaded, in epoch millis UTC. */
@@ -59,41 +54,31 @@ export interface Availability {
   segmentationType?: string;
 }
 
-export const Availability: Schema.Schema<Availability> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      availabilityTimestamp: Schema.optional(Schema.String),
-      segmentationId: Schema.optional(Schema.String),
-      segmentationName: Schema.optional(Schema.String),
-      customerId: Schema.optional(Schema.String),
-      advertiserId: Schema.optional(Schema.String),
-      agencyId: Schema.optional(Schema.String),
-      segmentationType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Availability",
-  }) as any as Schema.Schema<Availability>;
+export const Availability = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  availabilityTimestamp: Schema.optional(Schema.String),
+  segmentationId: Schema.optional(Schema.String),
+  segmentationName: Schema.optional(Schema.String),
+  customerId: Schema.optional(Schema.String),
+  advertiserId: Schema.optional(Schema.String),
+  agencyId: Schema.optional(Schema.String),
+  segmentationType: Schema.optional(Schema.String),
+}).annotate({ identifier: "Availability" });
 
 export interface UpdateAvailabilityRequest {
   /** The availabilities being requested. */
   availabilities?: Array<Availability>;
 }
 
-export const UpdateAvailabilityRequest: Schema.Schema<UpdateAvailabilityRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      availabilities: Schema.optional(Schema.Array(Availability)),
-    }),
-  ).annotate({
-    identifier: "UpdateAvailabilityRequest",
-  }) as any as Schema.Schema<UpdateAvailabilityRequest>;
+export const UpdateAvailabilityRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    availabilities: Schema.optional(Schema.Array(Availability)),
+  }).annotate({ identifier: "UpdateAvailabilityRequest" });
 
 export interface IdMappingFile {}
 
-export const IdMappingFile: Schema.Schema<IdMappingFile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "IdMappingFile",
-  }) as any as Schema.Schema<IdMappingFile>;
+export const IdMappingFile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "IdMappingFile" });
 
 export interface ReportApiColumnSpec {
   /** Segments a report by a custom dimension. The report must be scoped to an advertiser or lower, and the custom dimension must already be set up in DoubleClick Search. The custom dimension name, which appears in DoubleClick Search, is case sensitive.\ If used in a conversion report, returns the value of the specified custom dimension for the given conversion, if set. This column does not segment the conversion report. */
@@ -118,23 +103,18 @@ export interface ReportApiColumnSpec {
   customMetricName?: string;
 }
 
-export const ReportApiColumnSpec: Schema.Schema<ReportApiColumnSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customDimensionName: Schema.optional(Schema.String),
-      endDate: Schema.optional(Schema.String),
-      savedColumnName: Schema.optional(Schema.String),
-      groupByColumn: Schema.optional(Schema.Boolean),
-      headerText: Schema.optional(Schema.String),
-      platformSource: Schema.optional(Schema.String),
-      startDate: Schema.optional(Schema.String),
-      columnName: Schema.optional(Schema.String),
-      productReportPerspective: Schema.optional(Schema.String),
-      customMetricName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ReportApiColumnSpec",
-  }) as any as Schema.Schema<ReportApiColumnSpec>;
+export const ReportApiColumnSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  customDimensionName: Schema.optional(Schema.String),
+  endDate: Schema.optional(Schema.String),
+  savedColumnName: Schema.optional(Schema.String),
+  groupByColumn: Schema.optional(Schema.Boolean),
+  headerText: Schema.optional(Schema.String),
+  platformSource: Schema.optional(Schema.String),
+  startDate: Schema.optional(Schema.String),
+  columnName: Schema.optional(Schema.String),
+  productReportPerspective: Schema.optional(Schema.String),
+  customMetricName: Schema.optional(Schema.String),
+}).annotate({ identifier: "ReportApiColumnSpec" });
 
 export type ReportRow = Record<string, unknown>;
 export const ReportRow: Schema.Schema<ReportRow> =
@@ -191,59 +171,54 @@ export interface ReportRequest {
   startRow?: number;
 }
 
-export const ReportRequest: Schema.Schema<ReportRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const ReportRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  includeDeletedEntities: Schema.optional(Schema.Boolean),
+  filters: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        operator: Schema.optional(Schema.String),
+        column: Schema.optional(ReportApiColumnSpec),
+        values: Schema.optional(Schema.Array(Schema.Unknown)),
+      }),
+    ),
+  ),
+  reportType: Schema.optional(Schema.String),
+  statisticsCurrency: Schema.optional(Schema.String),
+  columns: Schema.optional(Schema.Array(ReportApiColumnSpec)),
+  includeRemovedEntities: Schema.optional(Schema.Boolean),
+  maxRowsPerFile: Schema.optional(Schema.Number),
+  downloadFormat: Schema.optional(Schema.String),
+  rowCount: Schema.optional(Schema.Number),
+  reportScope: Schema.optional(
     Schema.Struct({
-      includeDeletedEntities: Schema.optional(Schema.Boolean),
-      filters: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            operator: Schema.optional(Schema.String),
-            column: Schema.optional(ReportApiColumnSpec),
-            values: Schema.optional(Schema.Array(Schema.Unknown)),
-          }),
-        ),
-      ),
-      reportType: Schema.optional(Schema.String),
-      statisticsCurrency: Schema.optional(Schema.String),
-      columns: Schema.optional(Schema.Array(ReportApiColumnSpec)),
-      includeRemovedEntities: Schema.optional(Schema.Boolean),
-      maxRowsPerFile: Schema.optional(Schema.Number),
-      downloadFormat: Schema.optional(Schema.String),
-      rowCount: Schema.optional(Schema.Number),
-      reportScope: Schema.optional(
-        Schema.Struct({
-          engineAccountId: Schema.optional(Schema.String),
-          campaignId: Schema.optional(Schema.String),
-          keywordId: Schema.optional(Schema.String),
-          adGroupId: Schema.optional(Schema.String),
-          advertiserId: Schema.optional(Schema.String),
-          agencyId: Schema.optional(Schema.String),
-          adId: Schema.optional(Schema.String),
-        }),
-      ),
-      timeRange: Schema.optional(
-        Schema.Struct({
-          startDate: Schema.optional(Schema.String),
-          changedMetricsSinceTimestamp: Schema.optional(Schema.String),
-          changedAttributesSinceTimestamp: Schema.optional(Schema.String),
-          endDate: Schema.optional(Schema.String),
-        }),
-      ),
-      orderBy: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            column: Schema.optional(ReportApiColumnSpec),
-            sortOrder: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      verifySingleTimeZone: Schema.optional(Schema.Boolean),
-      startRow: Schema.optional(Schema.Number),
+      engineAccountId: Schema.optional(Schema.String),
+      campaignId: Schema.optional(Schema.String),
+      keywordId: Schema.optional(Schema.String),
+      adGroupId: Schema.optional(Schema.String),
+      advertiserId: Schema.optional(Schema.String),
+      agencyId: Schema.optional(Schema.String),
+      adId: Schema.optional(Schema.String),
     }),
-  ).annotate({
-    identifier: "ReportRequest",
-  }) as any as Schema.Schema<ReportRequest>;
+  ),
+  timeRange: Schema.optional(
+    Schema.Struct({
+      startDate: Schema.optional(Schema.String),
+      changedMetricsSinceTimestamp: Schema.optional(Schema.String),
+      changedAttributesSinceTimestamp: Schema.optional(Schema.String),
+      endDate: Schema.optional(Schema.String),
+    }),
+  ),
+  orderBy: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        column: Schema.optional(ReportApiColumnSpec),
+        sortOrder: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
+  verifySingleTimeZone: Schema.optional(Schema.Boolean),
+  startRow: Schema.optional(Schema.Number),
+}).annotate({ identifier: "ReportRequest" });
 
 export interface CustomMetric {
   /** Custom metric name. */
@@ -252,15 +227,10 @@ export interface CustomMetric {
   value?: number;
 }
 
-export const CustomMetric: Schema.Schema<CustomMetric> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "CustomMetric",
-  }) as any as Schema.Schema<CustomMetric>;
+export const CustomMetric = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.Number),
+}).annotate({ identifier: "CustomMetric" });
 
 export interface Report {
   /** Asynchronous report only. Id of the report. */
@@ -283,27 +253,24 @@ export interface Report {
   request?: ReportRequest;
 }
 
-export const Report: Schema.Schema<Report> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      files: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            byteCount: Schema.optional(Schema.String),
-            url: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      statisticsCurrencyCode: Schema.optional(Schema.String),
-      statisticsTimeZone: Schema.optional(Schema.String),
-      rowCount: Schema.optional(Schema.Number),
-      rows: Schema.optional(Schema.Array(ReportRow)),
-      isReportReady: Schema.optional(Schema.Boolean),
-      kind: Schema.optional(Schema.String),
-      request: Schema.optional(ReportRequest),
-    }),
-  ).annotate({ identifier: "Report" }) as any as Schema.Schema<Report>;
+export const Report = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  files: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        byteCount: Schema.optional(Schema.String),
+        url: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
+  statisticsCurrencyCode: Schema.optional(Schema.String),
+  statisticsTimeZone: Schema.optional(Schema.String),
+  rowCount: Schema.optional(Schema.Number),
+  rows: Schema.optional(Schema.Array(ReportRow)),
+  isReportReady: Schema.optional(Schema.Boolean),
+  kind: Schema.optional(Schema.String),
+  request: Schema.optional(ReportRequest),
+}).annotate({ identifier: "Report" });
 
 export interface CustomDimension {
   /** Custom dimension name. */
@@ -312,15 +279,10 @@ export interface CustomDimension {
   value?: string;
 }
 
-export const CustomDimension: Schema.Schema<CustomDimension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomDimension",
-  }) as any as Schema.Schema<CustomDimension>;
+export const CustomDimension = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+}).annotate({ identifier: "CustomDimension" });
 
 export interface Conversion {
   /** Custom metrics for the conversion. */
@@ -395,46 +357,43 @@ export interface Conversion {
   segmentationType?: string;
 }
 
-export const Conversion: Schema.Schema<Conversion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customMetric: Schema.optional(Schema.Array(CustomMetric)),
-      productGroupId: Schema.optional(Schema.String),
-      adId: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      conversionModifiedTimestamp: Schema.optional(Schema.String),
-      attributionModel: Schema.optional(Schema.String),
-      productCountry: Schema.optional(Schema.String),
-      inventoryAccountId: Schema.optional(Schema.String),
-      productId: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      engineAccountId: Schema.optional(Schema.String),
-      conversionTimestamp: Schema.optional(Schema.String),
-      segmentationName: Schema.optional(Schema.String),
-      clickId: Schema.optional(Schema.String),
-      segmentationId: Schema.optional(Schema.String),
-      floodlightOrderId: Schema.optional(Schema.String),
-      customerId: Schema.optional(Schema.String),
-      customDimension: Schema.optional(Schema.Array(CustomDimension)),
-      advertiserId: Schema.optional(Schema.String),
-      revenueMicros: Schema.optional(Schema.String),
-      conversionId: Schema.optional(Schema.String),
-      productLanguage: Schema.optional(Schema.String),
-      currencyCode: Schema.optional(Schema.String),
-      adUserDataConsent: Schema.optional(Schema.String),
-      dsConversionId: Schema.optional(Schema.String),
-      adGroupId: Schema.optional(Schema.String),
-      countMillis: Schema.optional(Schema.String),
-      deviceType: Schema.optional(Schema.String),
-      agencyId: Schema.optional(Schema.String),
-      campaignId: Schema.optional(Schema.String),
-      channel: Schema.optional(Schema.String),
-      quantityMillis: Schema.optional(Schema.String),
-      criterionId: Schema.optional(Schema.String),
-      storeId: Schema.optional(Schema.String),
-      segmentationType: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Conversion" }) as any as Schema.Schema<Conversion>;
+export const Conversion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  customMetric: Schema.optional(Schema.Array(CustomMetric)),
+  productGroupId: Schema.optional(Schema.String),
+  adId: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  conversionModifiedTimestamp: Schema.optional(Schema.String),
+  attributionModel: Schema.optional(Schema.String),
+  productCountry: Schema.optional(Schema.String),
+  inventoryAccountId: Schema.optional(Schema.String),
+  productId: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  engineAccountId: Schema.optional(Schema.String),
+  conversionTimestamp: Schema.optional(Schema.String),
+  segmentationName: Schema.optional(Schema.String),
+  clickId: Schema.optional(Schema.String),
+  segmentationId: Schema.optional(Schema.String),
+  floodlightOrderId: Schema.optional(Schema.String),
+  customerId: Schema.optional(Schema.String),
+  customDimension: Schema.optional(Schema.Array(CustomDimension)),
+  advertiserId: Schema.optional(Schema.String),
+  revenueMicros: Schema.optional(Schema.String),
+  conversionId: Schema.optional(Schema.String),
+  productLanguage: Schema.optional(Schema.String),
+  currencyCode: Schema.optional(Schema.String),
+  adUserDataConsent: Schema.optional(Schema.String),
+  dsConversionId: Schema.optional(Schema.String),
+  adGroupId: Schema.optional(Schema.String),
+  countMillis: Schema.optional(Schema.String),
+  deviceType: Schema.optional(Schema.String),
+  agencyId: Schema.optional(Schema.String),
+  campaignId: Schema.optional(Schema.String),
+  channel: Schema.optional(Schema.String),
+  quantityMillis: Schema.optional(Schema.String),
+  criterionId: Schema.optional(Schema.String),
+  storeId: Schema.optional(Schema.String),
+  segmentationType: Schema.optional(Schema.String),
+}).annotate({ identifier: "Conversion" });
 
 export interface ConversionList {
   /** The conversions being requested. */
@@ -443,29 +402,20 @@ export interface ConversionList {
   kind?: string;
 }
 
-export const ConversionList: Schema.Schema<ConversionList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conversion: Schema.optional(Schema.Array(Conversion)),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConversionList",
-  }) as any as Schema.Schema<ConversionList>;
+export const ConversionList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  conversion: Schema.optional(Schema.Array(Conversion)),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "ConversionList" });
 
 export interface UpdateAvailabilityResponse {
   /** The availabilities being returned. */
   availabilities?: Array<Availability>;
 }
 
-export const UpdateAvailabilityResponse: Schema.Schema<UpdateAvailabilityResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      availabilities: Schema.optional(Schema.Array(Availability)),
-    }),
-  ).annotate({
-    identifier: "UpdateAvailabilityResponse",
-  }) as any as Schema.Schema<UpdateAvailabilityResponse>;
+export const UpdateAvailabilityResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    availabilities: Schema.optional(Schema.Array(Availability)),
+  }).annotate({ identifier: "UpdateAvailabilityResponse" });
 
 export interface SavedColumnList {
   /** Identifies this as a SavedColumnList resource. Value: the fixed string doubleclicksearch#savedColumnList. */
@@ -474,15 +424,10 @@ export interface SavedColumnList {
   items?: Array<SavedColumn>;
 }
 
-export const SavedColumnList: Schema.Schema<SavedColumnList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(SavedColumn)),
-    }),
-  ).annotate({
-    identifier: "SavedColumnList",
-  }) as any as Schema.Schema<SavedColumnList>;
+export const SavedColumnList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(SavedColumn)),
+}).annotate({ identifier: "SavedColumnList" });
 
 // ==========================================================================
 // Operations

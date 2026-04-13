@@ -29,15 +29,11 @@ export interface WorkforcePoolAllowedLocations {
   encodedLocations?: string;
 }
 
-export const WorkforcePoolAllowedLocations: Schema.Schema<WorkforcePoolAllowedLocations> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Schema.String)),
-      encodedLocations: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WorkforcePoolAllowedLocations",
-  }) as any as Schema.Schema<WorkforcePoolAllowedLocations>;
+export const WorkforcePoolAllowedLocations =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locations: Schema.optional(Schema.Array(Schema.String)),
+    encodedLocations: Schema.optional(Schema.String),
+  }).annotate({ identifier: "WorkforcePoolAllowedLocations" });
 
 export interface ServiceAccountAllowedLocations {
   /** Output only. The human readable trust boundary locations. For example, ["us-central1", "europe-west1"] */
@@ -46,15 +42,11 @@ export interface ServiceAccountAllowedLocations {
   encodedLocations?: string;
 }
 
-export const ServiceAccountAllowedLocations: Schema.Schema<ServiceAccountAllowedLocations> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Schema.String)),
-      encodedLocations: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ServiceAccountAllowedLocations",
-  }) as any as Schema.Schema<ServiceAccountAllowedLocations>;
+export const ServiceAccountAllowedLocations =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locations: Schema.optional(Schema.Array(Schema.String)),
+    encodedLocations: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ServiceAccountAllowedLocations" });
 
 export interface SignJwtResponse {
   /** The ID of the key used to sign the JWT. The key used for signing will remain valid for at least 12 hours after the JWT is signed. To verify the signature, you can retrieve the public key in several formats from the following endpoints: - RSA public key wrapped in an X.509 v3 certificate: `https://www.googleapis.com/service_accounts/v1/metadata/x509/{ACCOUNT_EMAIL}` - Raw key in JSON format: `https://www.googleapis.com/service_accounts/v1/metadata/raw/{ACCOUNT_EMAIL}` - JSON Web Key (JWK): `https://www.googleapis.com/service_accounts/v1/metadata/jwk/{ACCOUNT_EMAIL}` */
@@ -63,29 +55,20 @@ export interface SignJwtResponse {
   signedJwt?: string;
 }
 
-export const SignJwtResponse: Schema.Schema<SignJwtResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      keyId: Schema.optional(Schema.String),
-      signedJwt: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SignJwtResponse",
-  }) as any as Schema.Schema<SignJwtResponse>;
+export const SignJwtResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  keyId: Schema.optional(Schema.String),
+  signedJwt: Schema.optional(Schema.String),
+}).annotate({ identifier: "SignJwtResponse" });
 
 export interface GenerateIdTokenResponse {
   /** The OpenId Connect ID token. The token is a JSON Web Token (JWT) that contains a payload with claims. See the [JSON Web Token spec](https://tools.ietf.org/html/rfc7519) for more information. Here is an example of a decoded JWT payload: ``` { "iss": "https://accounts.google.com", "iat": 1496953245, "exp": 1496953245, "aud": "https://www.example.com", "sub": "107517467455664443765", "azp": "107517467455664443765", "email": "my-iam-account@my-project.iam.gserviceaccount.com", "email_verified": true, "google": { "organization_number": 123456 } } ``` */
   token?: string;
 }
 
-export const GenerateIdTokenResponse: Schema.Schema<GenerateIdTokenResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      token: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GenerateIdTokenResponse",
-  }) as any as Schema.Schema<GenerateIdTokenResponse>;
+export const GenerateIdTokenResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    token: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GenerateIdTokenResponse" });
 
 export interface GenerateAccessTokenRequest {
   /** The desired lifetime duration of the access token in seconds. By default, the maximum allowed value is 1 hour. To set a lifetime of up to 12 hours, you can add the service account as an allowed value in an Organization Policy that enforces the `constraints/iam.allowServiceAccountCredentialLifetimeExtension` constraint. See detailed instructions at https://cloud.google.com/iam/help/credentials/lifetime If a value is not specified, the token's lifetime will be set to a default value of 1 hour. */
@@ -96,16 +79,12 @@ export interface GenerateAccessTokenRequest {
   scope?: Array<string>;
 }
 
-export const GenerateAccessTokenRequest: Schema.Schema<GenerateAccessTokenRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lifetime: Schema.optional(Schema.String),
-      delegates: Schema.optional(Schema.Array(Schema.String)),
-      scope: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GenerateAccessTokenRequest",
-  }) as any as Schema.Schema<GenerateAccessTokenRequest>;
+export const GenerateAccessTokenRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    lifetime: Schema.optional(Schema.String),
+    delegates: Schema.optional(Schema.Array(Schema.String)),
+    scope: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GenerateAccessTokenRequest" });
 
 export interface SignBlobResponse {
   /** The signature for the blob. Does not include the original blob. After the key pair referenced by the `key_id` response field expires, Google no longer exposes the public key that can be used to verify the blob. As a result, the receiver can no longer verify the signature. */
@@ -114,15 +93,10 @@ export interface SignBlobResponse {
   keyId?: string;
 }
 
-export const SignBlobResponse: Schema.Schema<SignBlobResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      signedBlob: Schema.optional(Schema.String),
-      keyId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SignBlobResponse",
-  }) as any as Schema.Schema<SignBlobResponse>;
+export const SignBlobResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  signedBlob: Schema.optional(Schema.String),
+  keyId: Schema.optional(Schema.String),
+}).annotate({ identifier: "SignBlobResponse" });
 
 export interface WorkloadIdentityPoolAllowedLocations {
   /** Output only. The human readable trust boundary locations. For example, ["us-central1", "europe-west1"] */
@@ -131,15 +105,11 @@ export interface WorkloadIdentityPoolAllowedLocations {
   encodedLocations?: string;
 }
 
-export const WorkloadIdentityPoolAllowedLocations: Schema.Schema<WorkloadIdentityPoolAllowedLocations> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Schema.String)),
-      encodedLocations: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WorkloadIdentityPoolAllowedLocations",
-  }) as any as Schema.Schema<WorkloadIdentityPoolAllowedLocations>;
+export const WorkloadIdentityPoolAllowedLocations =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locations: Schema.optional(Schema.Array(Schema.String)),
+    encodedLocations: Schema.optional(Schema.String),
+  }).annotate({ identifier: "WorkloadIdentityPoolAllowedLocations" });
 
 export interface GenerateIdTokenRequest {
   /** Required. The audience for the token, such as the API or account that this token grants access to. */
@@ -152,17 +122,14 @@ export interface GenerateIdTokenRequest {
   delegates?: Array<string>;
 }
 
-export const GenerateIdTokenRequest: Schema.Schema<GenerateIdTokenRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      audience: Schema.optional(Schema.String),
-      organizationNumberIncluded: Schema.optional(Schema.Boolean),
-      includeEmail: Schema.optional(Schema.Boolean),
-      delegates: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GenerateIdTokenRequest",
-  }) as any as Schema.Schema<GenerateIdTokenRequest>;
+export const GenerateIdTokenRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    audience: Schema.optional(Schema.String),
+    organizationNumberIncluded: Schema.optional(Schema.Boolean),
+    includeEmail: Schema.optional(Schema.Boolean),
+    delegates: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "GenerateIdTokenRequest" });
 
 export interface GenerateAccessTokenResponse {
   /** The OAuth 2.0 access token. */
@@ -171,15 +138,11 @@ export interface GenerateAccessTokenResponse {
   expireTime?: string;
 }
 
-export const GenerateAccessTokenResponse: Schema.Schema<GenerateAccessTokenResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accessToken: Schema.optional(Schema.String),
-      expireTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GenerateAccessTokenResponse",
-  }) as any as Schema.Schema<GenerateAccessTokenResponse>;
+export const GenerateAccessTokenResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accessToken: Schema.optional(Schema.String),
+    expireTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GenerateAccessTokenResponse" });
 
 export interface SignBlobRequest {
   /** The sequence of service accounts in a delegation chain. Each service account must be granted the `roles/iam.serviceAccountTokenCreator` role on its next service account in the chain. The last service account in the chain must be granted the `roles/iam.serviceAccountTokenCreator` role on the service account that is specified in the `name` field of the request. The delegates must have the following format: `projects/-/serviceAccounts/{ACCOUNT_EMAIL_OR_UNIQUEID}`. The `-` wildcard character is required; replacing it with a project ID is invalid. */
@@ -188,15 +151,10 @@ export interface SignBlobRequest {
   payload?: string;
 }
 
-export const SignBlobRequest: Schema.Schema<SignBlobRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      delegates: Schema.optional(Schema.Array(Schema.String)),
-      payload: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SignBlobRequest",
-  }) as any as Schema.Schema<SignBlobRequest>;
+export const SignBlobRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  delegates: Schema.optional(Schema.Array(Schema.String)),
+  payload: Schema.optional(Schema.String),
+}).annotate({ identifier: "SignBlobRequest" });
 
 export interface SignJwtRequest {
   /** Required. The JWT payload to sign. Must be a serialized JSON object that contains a JWT Claims Set. For example: `{"sub": "user@example.com", "iat": 313435}` If the JWT Claims Set contains an expiration time (`exp`) claim, it must be an integer timestamp that is not in the past and no more than 12 hours in the future. */
@@ -205,15 +163,10 @@ export interface SignJwtRequest {
   delegates?: Array<string>;
 }
 
-export const SignJwtRequest: Schema.Schema<SignJwtRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      payload: Schema.optional(Schema.String),
-      delegates: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "SignJwtRequest",
-  }) as any as Schema.Schema<SignJwtRequest>;
+export const SignJwtRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  payload: Schema.optional(Schema.String),
+  delegates: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "SignJwtRequest" });
 
 // ==========================================================================
 // Operations

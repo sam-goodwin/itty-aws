@@ -35,60 +35,42 @@ export interface AdaptiveMtFile {
   name?: string;
 }
 
-export const AdaptiveMtFile: Schema.Schema<AdaptiveMtFile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      entryCount: Schema.optional(Schema.Number),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AdaptiveMtFile",
-  }) as any as Schema.Schema<AdaptiveMtFile>;
+export const AdaptiveMtFile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+  entryCount: Schema.optional(Schema.Number),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "AdaptiveMtFile" });
 
 export interface ImportAdaptiveMtFileResponse {
   /** Output only. The Adaptive MT file that was imported. */
   adaptiveMtFile?: AdaptiveMtFile;
 }
 
-export const ImportAdaptiveMtFileResponse: Schema.Schema<ImportAdaptiveMtFileResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      adaptiveMtFile: Schema.optional(AdaptiveMtFile),
-    }),
-  ).annotate({
-    identifier: "ImportAdaptiveMtFileResponse",
-  }) as any as Schema.Schema<ImportAdaptiveMtFileResponse>;
+export const ImportAdaptiveMtFileResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    adaptiveMtFile: Schema.optional(AdaptiveMtFile),
+  }).annotate({ identifier: "ImportAdaptiveMtFileResponse" });
 
 export interface GcsDestination {
   /** Required. The bucket used in 'output_uri_prefix' must exist and there must be no files under 'output_uri_prefix'. 'output_uri_prefix' must end with "/" and start with "gs://". One 'output_uri_prefix' can only be used by one batch translation job at a time. Otherwise an INVALID_ARGUMENT (400) error is returned. */
   outputUriPrefix?: string;
 }
 
-export const GcsDestination: Schema.Schema<GcsDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      outputUriPrefix: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GcsDestination",
-  }) as any as Schema.Schema<GcsDestination>;
+export const GcsDestination = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  outputUriPrefix: Schema.optional(Schema.String),
+}).annotate({ identifier: "GcsDestination" });
 
 export interface BatchDocumentOutputConfig {
   /** Google Cloud Storage destination for output content. For every single input document (for example, gs://a/b/c.[extension]), we generate at most 2 * n output files. (n is the # of target_language_codes in the BatchTranslateDocumentRequest). While the input documents are being processed, we write/update an index file `index.csv` under `gcs_destination.output_uri_prefix` (for example, gs://translation_output/index.csv) The index file is generated/updated as new files are being translated. The format is: input_document,target_language_code,translation_output,error_output, glossary_translation_output,glossary_error_output `input_document` is one file we matched using gcs_source.input_uri. `target_language_code` is provided in the request. `translation_output` contains the translations. (details provided below) `error_output` contains the error message during processing of the file. Both translations_file and errors_file could be empty strings if we have no content to output. `glossary_translation_output` and `glossary_error_output` are the translated output/error when we apply glossaries. They could also be empty if we have no content to output. Once a row is present in index.csv, the input/output matching never changes. Callers should also expect all the content in input_file are processed and ready to be consumed (that is, no partial output file is written). Since index.csv will be keeping updated during the process, please make sure there is no custom retention policy applied on the output bucket that may avoid file updating. (https://cloud.google.com/storage/docs/bucket-lock#retention-policy) The naming format of translation output files follows (for target language code [trg]): `translation_output`: `gs://translation_output/a_b_c_[trg]_translation.[extension]` `glossary_translation_output`: `gs://translation_test/a_b_c_[trg]_glossary_translation.[extension]`. The output document will maintain the same file format as the input document. The naming format of error output files follows (for target language code [trg]): `error_output`: `gs://translation_test/a_b_c_[trg]_errors.txt` `glossary_error_output`: `gs://translation_test/a_b_c_[trg]_glossary_translation.txt`. The error output is a txt file containing error details. */
   gcsDestination?: GcsDestination;
 }
 
-export const BatchDocumentOutputConfig: Schema.Schema<BatchDocumentOutputConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsDestination: Schema.optional(GcsDestination),
-    }),
-  ).annotate({
-    identifier: "BatchDocumentOutputConfig",
-  }) as any as Schema.Schema<BatchDocumentOutputConfig>;
+export const BatchDocumentOutputConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gcsDestination: Schema.optional(GcsDestination),
+  }).annotate({ identifier: "BatchDocumentOutputConfig" });
 
 export interface TranslateTextGlossaryConfig {
   /** Required. The `glossary` to be applied for this translation. The format depends on the glossary: - User-provided custom glossary: `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}` */
@@ -99,28 +81,21 @@ export interface TranslateTextGlossaryConfig {
   contextualTranslationEnabled?: boolean;
 }
 
-export const TranslateTextGlossaryConfig: Schema.Schema<TranslateTextGlossaryConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      glossary: Schema.optional(Schema.String),
-      ignoreCase: Schema.optional(Schema.Boolean),
-      contextualTranslationEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "TranslateTextGlossaryConfig",
-  }) as any as Schema.Schema<TranslateTextGlossaryConfig>;
+export const TranslateTextGlossaryConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    glossary: Schema.optional(Schema.String),
+    ignoreCase: Schema.optional(Schema.Boolean),
+    contextualTranslationEnabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "TranslateTextGlossaryConfig" });
 
 export interface GcsSource {
   /** Required. Source data URI. For example, `gs://my_bucket/my_object`. */
   inputUri?: string;
 }
 
-export const GcsSource: Schema.Schema<GcsSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inputUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "GcsSource" }) as any as Schema.Schema<GcsSource>;
+export const GcsSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  inputUri: Schema.optional(Schema.String),
+}).annotate({ identifier: "GcsSource" });
 
 export interface DocumentInputConfig {
   /** Document's content represented as a stream of bytes. */
@@ -131,16 +106,11 @@ export interface DocumentInputConfig {
   mimeType?: string;
 }
 
-export const DocumentInputConfig: Schema.Schema<DocumentInputConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      content: Schema.optional(Schema.String),
-      gcsSource: Schema.optional(GcsSource),
-      mimeType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DocumentInputConfig",
-  }) as any as Schema.Schema<DocumentInputConfig>;
+export const DocumentInputConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  content: Schema.optional(Schema.String),
+  gcsSource: Schema.optional(GcsSource),
+  mimeType: Schema.optional(Schema.String),
+}).annotate({ identifier: "DocumentInputConfig" });
 
 export interface DocumentOutputConfig {
   /** Optional. Specifies the translated document's mime_type. If not specified, the translated file's mime type will be the same as the input file's mime type. Currently only support the output mime type to be the same as input mime type. - application/pdf - application/vnd.openxmlformats-officedocument.wordprocessingml.document - application/vnd.openxmlformats-officedocument.presentationml.presentation - application/vnd.openxmlformats-officedocument.spreadsheetml.sheet */
@@ -149,15 +119,10 @@ export interface DocumentOutputConfig {
   gcsDestination?: GcsDestination;
 }
 
-export const DocumentOutputConfig: Schema.Schema<DocumentOutputConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mimeType: Schema.optional(Schema.String),
-      gcsDestination: Schema.optional(GcsDestination),
-    }),
-  ).annotate({
-    identifier: "DocumentOutputConfig",
-  }) as any as Schema.Schema<DocumentOutputConfig>;
+export const DocumentOutputConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  mimeType: Schema.optional(Schema.String),
+  gcsDestination: Schema.optional(GcsDestination),
+}).annotate({ identifier: "DocumentOutputConfig" });
 
 export interface TranslateDocumentRequest {
   /** Optional. The ISO-639 language code of the input document if known, for example, "en-US" or "sr-Latn". Supported language codes are listed in [Language Support](https://cloud.google.com/translate/docs/languages). If the source language isn't specified, the API attempts to identify the source language automatically and returns the source language within the response. Source language must be specified if the request contains a glossary or a custom model. */
@@ -184,24 +149,20 @@ export interface TranslateDocumentRequest {
   documentOutputConfig?: DocumentOutputConfig;
 }
 
-export const TranslateDocumentRequest: Schema.Schema<TranslateDocumentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sourceLanguageCode: Schema.optional(Schema.String),
-      customizedAttribution: Schema.optional(Schema.String),
-      enableRotationCorrection: Schema.optional(Schema.Boolean),
-      model: Schema.optional(Schema.String),
-      targetLanguageCode: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      isTranslateNativePdfOnly: Schema.optional(Schema.Boolean),
-      enableShadowRemovalNativePdf: Schema.optional(Schema.Boolean),
-      glossaryConfig: Schema.optional(TranslateTextGlossaryConfig),
-      documentInputConfig: Schema.optional(DocumentInputConfig),
-      documentOutputConfig: Schema.optional(DocumentOutputConfig),
-    }),
-  ).annotate({
-    identifier: "TranslateDocumentRequest",
-  }) as any as Schema.Schema<TranslateDocumentRequest>;
+export const TranslateDocumentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sourceLanguageCode: Schema.optional(Schema.String),
+    customizedAttribution: Schema.optional(Schema.String),
+    enableRotationCorrection: Schema.optional(Schema.Boolean),
+    model: Schema.optional(Schema.String),
+    targetLanguageCode: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    isTranslateNativePdfOnly: Schema.optional(Schema.Boolean),
+    enableShadowRemovalNativePdf: Schema.optional(Schema.Boolean),
+    glossaryConfig: Schema.optional(TranslateTextGlossaryConfig),
+    documentInputConfig: Schema.optional(DocumentInputConfig),
+    documentOutputConfig: Schema.optional(DocumentOutputConfig),
+  }).annotate({ identifier: "TranslateDocumentRequest" });
 
 export interface Location {
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
@@ -216,16 +177,13 @@ export interface Location {
   metadata?: Record<string, unknown>;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      locationId: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  locationId: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Location" });
 
 export interface AdaptiveMtDataset {
   /** Output only. Timestamp when this dataset was created. */
@@ -244,20 +202,15 @@ export interface AdaptiveMtDataset {
   sourceLanguageCode?: string;
 }
 
-export const AdaptiveMtDataset: Schema.Schema<AdaptiveMtDataset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      targetLanguageCode: Schema.optional(Schema.String),
-      exampleCount: Schema.optional(Schema.Number),
-      displayName: Schema.optional(Schema.String),
-      sourceLanguageCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AdaptiveMtDataset",
-  }) as any as Schema.Schema<AdaptiveMtDataset>;
+export const AdaptiveMtDataset = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  targetLanguageCode: Schema.optional(Schema.String),
+  exampleCount: Schema.optional(Schema.Number),
+  displayName: Schema.optional(Schema.String),
+  sourceLanguageCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "AdaptiveMtDataset" });
 
 export interface RefinementEntry {
   /** Required. The original translation of the source text. */
@@ -266,15 +219,10 @@ export interface RefinementEntry {
   sourceText?: string;
 }
 
-export const RefinementEntry: Schema.Schema<RefinementEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      originalTranslation: Schema.optional(Schema.String),
-      sourceText: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RefinementEntry",
-  }) as any as Schema.Schema<RefinementEntry>;
+export const RefinementEntry = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  originalTranslation: Schema.optional(Schema.String),
+  sourceText: Schema.optional(Schema.String),
+}).annotate({ identifier: "RefinementEntry" });
 
 export interface RefineTextRequest {
   /** Required. The source texts and original translations in the source and target languages. */
@@ -285,16 +233,11 @@ export interface RefineTextRequest {
   sourceLanguageCode?: string;
 }
 
-export const RefineTextRequest: Schema.Schema<RefineTextRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      refinementEntries: Schema.optional(Schema.Array(RefinementEntry)),
-      targetLanguageCode: Schema.optional(Schema.String),
-      sourceLanguageCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RefineTextRequest",
-  }) as any as Schema.Schema<RefineTextRequest>;
+export const RefineTextRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  refinementEntries: Schema.optional(Schema.Array(RefinementEntry)),
+  targetLanguageCode: Schema.optional(Schema.String),
+  sourceLanguageCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "RefineTextRequest" });
 
 export interface Example {
   /** Sentence in source language. */
@@ -307,15 +250,12 @@ export interface Example {
   targetText?: string;
 }
 
-export const Example: Schema.Schema<Example> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sourceText: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      usage: Schema.optional(Schema.String),
-      targetText: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Example" }) as any as Schema.Schema<Example>;
+export const Example = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sourceText: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  usage: Schema.optional(Schema.String),
+  targetText: Schema.optional(Schema.String),
+}).annotate({ identifier: "Example" });
 
 export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -326,16 +266,13 @@ export interface Status {
   code?: number;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      code: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  code: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** The error result of the operation in case of failure or cancellation. */
@@ -350,16 +287,13 @@ export interface Operation {
   done?: boolean;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      error: Schema.optional(Status),
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  error: Schema.optional(Status),
+  name: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  done: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Operation" });
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -370,44 +304,31 @@ export interface ListOperationsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(Schema.Array(Operation)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    operations: Schema.optional(Schema.Array(Operation)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 export interface GcsOutputDestination {
   /** Required. Google Cloud Storage URI to output directory. For example, `gs://bucket/directory`. The requesting user must have write permission to the bucket. The directory will be created if it doesn't exist. */
   outputUriPrefix?: string;
 }
 
-export const GcsOutputDestination: Schema.Schema<GcsOutputDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      outputUriPrefix: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GcsOutputDestination",
-  }) as any as Schema.Schema<GcsOutputDestination>;
+export const GcsOutputDestination = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  outputUriPrefix: Schema.optional(Schema.String),
+}).annotate({ identifier: "GcsOutputDestination" });
 
 export interface DatasetOutputConfig {
   /** Google Cloud Storage destination to write the output. */
   gcsDestination?: GcsOutputDestination;
 }
 
-export const DatasetOutputConfig: Schema.Schema<DatasetOutputConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsDestination: Schema.optional(GcsOutputDestination),
-    }),
-  ).annotate({
-    identifier: "DatasetOutputConfig",
-  }) as any as Schema.Schema<DatasetOutputConfig>;
+export const DatasetOutputConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gcsDestination: Schema.optional(GcsOutputDestination),
+}).annotate({ identifier: "DatasetOutputConfig" });
 
 export interface Translation {
   /** Text translated into the target language. If an error occurs during translation, this field might be excluded from the response. */
@@ -420,17 +341,12 @@ export interface Translation {
   glossaryConfig?: TranslateTextGlossaryConfig;
 }
 
-export const Translation: Schema.Schema<Translation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      translatedText: Schema.optional(Schema.String),
-      model: Schema.optional(Schema.String),
-      detectedLanguageCode: Schema.optional(Schema.String),
-      glossaryConfig: Schema.optional(TranslateTextGlossaryConfig),
-    }),
-  ).annotate({
-    identifier: "Translation",
-  }) as any as Schema.Schema<Translation>;
+export const Translation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  translatedText: Schema.optional(Schema.String),
+  model: Schema.optional(Schema.String),
+  detectedLanguageCode: Schema.optional(Schema.String),
+  glossaryConfig: Schema.optional(TranslateTextGlossaryConfig),
+}).annotate({ identifier: "Translation" });
 
 export interface TranslateTextResponse {
   /** Text translation responses if a glossary is provided in the request. This can be the same as `translations` if no terms apply. This field has the same length as `contents`. */
@@ -439,15 +355,10 @@ export interface TranslateTextResponse {
   translations?: Array<Translation>;
 }
 
-export const TranslateTextResponse: Schema.Schema<TranslateTextResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      glossaryTranslations: Schema.optional(Schema.Array(Translation)),
-      translations: Schema.optional(Schema.Array(Translation)),
-    }),
-  ).annotate({
-    identifier: "TranslateTextResponse",
-  }) as any as Schema.Schema<TranslateTextResponse>;
+export const TranslateTextResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  glossaryTranslations: Schema.optional(Schema.Array(Translation)),
+  translations: Schema.optional(Schema.Array(Translation)),
+}).annotate({ identifier: "TranslateTextResponse" });
 
 export interface GlossaryTerm {
   /** The language for this glossary term. */
@@ -456,29 +367,19 @@ export interface GlossaryTerm {
   text?: string;
 }
 
-export const GlossaryTerm: Schema.Schema<GlossaryTerm> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      languageCode: Schema.optional(Schema.String),
-      text: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GlossaryTerm",
-  }) as any as Schema.Schema<GlossaryTerm>;
+export const GlossaryTerm = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  languageCode: Schema.optional(Schema.String),
+  text: Schema.optional(Schema.String),
+}).annotate({ identifier: "GlossaryTerm" });
 
 export interface GlossaryTermsSet {
   /** Each term in the set represents a term that can be replaced by the other terms. */
   terms?: Array<GlossaryTerm>;
 }
 
-export const GlossaryTermsSet: Schema.Schema<GlossaryTermsSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      terms: Schema.optional(Schema.Array(GlossaryTerm)),
-    }),
-  ).annotate({
-    identifier: "GlossaryTermsSet",
-  }) as any as Schema.Schema<GlossaryTermsSet>;
+export const GlossaryTermsSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  terms: Schema.optional(Schema.Array(GlossaryTerm)),
+}).annotate({ identifier: "GlossaryTermsSet" });
 
 export interface GlossaryTermsPair {
   /** The source term is the term that will get match in the text, */
@@ -487,15 +388,10 @@ export interface GlossaryTermsPair {
   targetTerm?: GlossaryTerm;
 }
 
-export const GlossaryTermsPair: Schema.Schema<GlossaryTermsPair> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sourceTerm: Schema.optional(GlossaryTerm),
-      targetTerm: Schema.optional(GlossaryTerm),
-    }),
-  ).annotate({
-    identifier: "GlossaryTermsPair",
-  }) as any as Schema.Schema<GlossaryTermsPair>;
+export const GlossaryTermsPair = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sourceTerm: Schema.optional(GlossaryTerm),
+  targetTerm: Schema.optional(GlossaryTerm),
+}).annotate({ identifier: "GlossaryTermsPair" });
 
 export interface GlossaryEntry {
   /** Identifier. The resource name of the entry. Format: `projects/* /locations/* /glossaries/* /glossaryEntries/*` */
@@ -508,17 +404,12 @@ export interface GlossaryEntry {
   termsPair?: GlossaryTermsPair;
 }
 
-export const GlossaryEntry: Schema.Schema<GlossaryEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      termsSet: Schema.optional(GlossaryTermsSet),
-      termsPair: Schema.optional(GlossaryTermsPair),
-    }),
-  ).annotate({
-    identifier: "GlossaryEntry",
-  }) as any as Schema.Schema<GlossaryEntry>;
+export const GlossaryEntry = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  termsSet: Schema.optional(GlossaryTermsSet),
+  termsPair: Schema.optional(GlossaryTermsPair),
+}).annotate({ identifier: "GlossaryEntry" });
 
 export interface ListGlossaryEntriesResponse {
   /** Optional. A token to retrieve a page of results. Pass this value in the [ListGLossaryEntriesRequest.page_token] field in the subsequent calls. */
@@ -527,29 +418,20 @@ export interface ListGlossaryEntriesResponse {
   glossaryEntries?: Array<GlossaryEntry>;
 }
 
-export const ListGlossaryEntriesResponse: Schema.Schema<ListGlossaryEntriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      glossaryEntries: Schema.optional(Schema.Array(GlossaryEntry)),
-    }),
-  ).annotate({
-    identifier: "ListGlossaryEntriesResponse",
-  }) as any as Schema.Schema<ListGlossaryEntriesResponse>;
+export const ListGlossaryEntriesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    glossaryEntries: Schema.optional(Schema.Array(GlossaryEntry)),
+  }).annotate({ identifier: "ListGlossaryEntriesResponse" });
 
 export interface ExportDataRequest {
   /** Required. The config for the output content. */
   outputConfig?: DatasetOutputConfig;
 }
 
-export const ExportDataRequest: Schema.Schema<ExportDataRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      outputConfig: Schema.optional(DatasetOutputConfig),
-    }),
-  ).annotate({
-    identifier: "ExportDataRequest",
-  }) as any as Schema.Schema<ExportDataRequest>;
+export const ExportDataRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  outputConfig: Schema.optional(DatasetOutputConfig),
+}).annotate({ identifier: "ExportDataRequest" });
 
 export interface InputConfig {
   /** Optional. Can be "text/plain" or "text/html". For `.tsv`, "text/html" is used if mime_type is missing. For `.html`, this field must be "text/html" or empty. For `.txt`, this field must be "text/plain" or empty. */
@@ -558,29 +440,19 @@ export interface InputConfig {
   gcsSource?: GcsSource;
 }
 
-export const InputConfig: Schema.Schema<InputConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mimeType: Schema.optional(Schema.String),
-      gcsSource: Schema.optional(GcsSource),
-    }),
-  ).annotate({
-    identifier: "InputConfig",
-  }) as any as Schema.Schema<InputConfig>;
+export const InputConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  mimeType: Schema.optional(Schema.String),
+  gcsSource: Schema.optional(GcsSource),
+}).annotate({ identifier: "InputConfig" });
 
 export interface GcsInputSource {
   /** Required. Source data URI. For example, `gs://my_bucket/my_object`. */
   inputUri?: string;
 }
 
-export const GcsInputSource: Schema.Schema<GcsInputSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inputUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GcsInputSource",
-  }) as any as Schema.Schema<GcsInputSource>;
+export const GcsInputSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  inputUri: Schema.optional(Schema.String),
+}).annotate({ identifier: "GcsInputSource" });
 
 export interface SupportedLanguage {
   /** Can be used as a source language. */
@@ -593,17 +465,12 @@ export interface SupportedLanguage {
   supportTarget?: boolean;
 }
 
-export const SupportedLanguage: Schema.Schema<SupportedLanguage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      supportSource: Schema.optional(Schema.Boolean),
-      languageCode: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      supportTarget: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "SupportedLanguage",
-  }) as any as Schema.Schema<SupportedLanguage>;
+export const SupportedLanguage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  supportSource: Schema.optional(Schema.Boolean),
+  languageCode: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  supportTarget: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "SupportedLanguage" });
 
 export interface ReferenceSentencePair {
   /** Source sentence in the sentence pair. */
@@ -612,31 +479,22 @@ export interface ReferenceSentencePair {
   targetSentence?: string;
 }
 
-export const ReferenceSentencePair: Schema.Schema<ReferenceSentencePair> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sourceSentence: Schema.optional(Schema.String),
-      targetSentence: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ReferenceSentencePair",
-  }) as any as Schema.Schema<ReferenceSentencePair>;
+export const ReferenceSentencePair = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sourceSentence: Schema.optional(Schema.String),
+  targetSentence: Schema.optional(Schema.String),
+}).annotate({ identifier: "ReferenceSentencePair" });
 
 export interface ReferenceSentencePairList {
   /** Reference sentence pairs. */
   referenceSentencePairs?: Array<ReferenceSentencePair>;
 }
 
-export const ReferenceSentencePairList: Schema.Schema<ReferenceSentencePairList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      referenceSentencePairs: Schema.optional(
-        Schema.Array(ReferenceSentencePair),
-      ),
-    }),
-  ).annotate({
-    identifier: "ReferenceSentencePairList",
-  }) as any as Schema.Schema<ReferenceSentencePairList>;
+export const ReferenceSentencePairList =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    referenceSentencePairs: Schema.optional(
+      Schema.Array(ReferenceSentencePair),
+    ),
+  }).annotate({ identifier: "ReferenceSentencePairList" });
 
 export interface ReferenceSentenceConfig {
   /** Reference sentences pair lists. Each list will be used as the references to translate the sentence under "content" field at the corresponding index. Length of the list is required to be equal to the length of "content" field. */
@@ -647,18 +505,14 @@ export interface ReferenceSentenceConfig {
   targetLanguageCode?: string;
 }
 
-export const ReferenceSentenceConfig: Schema.Schema<ReferenceSentenceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      referenceSentencePairLists: Schema.optional(
-        Schema.Array(ReferenceSentencePairList),
-      ),
-      sourceLanguageCode: Schema.optional(Schema.String),
-      targetLanguageCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ReferenceSentenceConfig",
-  }) as any as Schema.Schema<ReferenceSentenceConfig>;
+export const ReferenceSentenceConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    referenceSentencePairLists: Schema.optional(
+      Schema.Array(ReferenceSentencePairList),
+    ),
+    sourceLanguageCode: Schema.optional(Schema.String),
+    targetLanguageCode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ReferenceSentenceConfig" });
 
 export interface GlossaryConfig {
   /** Required. The `glossary` to be applied for this translation. The format depends on the glossary: - User-provided custom glossary: `projects/{project-number-or-id}/locations/{location-id}/glossaries/{glossary-id}` */
@@ -669,16 +523,11 @@ export interface GlossaryConfig {
   contextualTranslationEnabled?: boolean;
 }
 
-export const GlossaryConfig: Schema.Schema<GlossaryConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      glossary: Schema.optional(Schema.String),
-      ignoreCase: Schema.optional(Schema.Boolean),
-      contextualTranslationEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GlossaryConfig",
-  }) as any as Schema.Schema<GlossaryConfig>;
+export const GlossaryConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  glossary: Schema.optional(Schema.String),
+  ignoreCase: Schema.optional(Schema.Boolean),
+  contextualTranslationEnabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "GlossaryConfig" });
 
 export interface AdaptiveMtTranslateRequest {
   /** Required. The resource name for the dataset to use for adaptive MT translation. `projects/{project}/locations/{location-id}/adaptiveMtDatasets/{dataset}` */
@@ -691,17 +540,13 @@ export interface AdaptiveMtTranslateRequest {
   glossaryConfig?: GlossaryConfig;
 }
 
-export const AdaptiveMtTranslateRequest: Schema.Schema<AdaptiveMtTranslateRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataset: Schema.optional(Schema.String),
-      content: Schema.optional(Schema.Array(Schema.String)),
-      referenceSentenceConfig: Schema.optional(ReferenceSentenceConfig),
-      glossaryConfig: Schema.optional(GlossaryConfig),
-    }),
-  ).annotate({
-    identifier: "AdaptiveMtTranslateRequest",
-  }) as any as Schema.Schema<AdaptiveMtTranslateRequest>;
+export const AdaptiveMtTranslateRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataset: Schema.optional(Schema.String),
+    content: Schema.optional(Schema.Array(Schema.String)),
+    referenceSentenceConfig: Schema.optional(ReferenceSentenceConfig),
+    glossaryConfig: Schema.optional(GlossaryConfig),
+  }).annotate({ identifier: "AdaptiveMtTranslateRequest" });
 
 export interface ListAdaptiveMtFilesResponse {
   /** Output only. The Adaptive MT files. */
@@ -710,15 +555,11 @@ export interface ListAdaptiveMtFilesResponse {
   nextPageToken?: string;
 }
 
-export const ListAdaptiveMtFilesResponse: Schema.Schema<ListAdaptiveMtFilesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      adaptiveMtFiles: Schema.optional(Schema.Array(AdaptiveMtFile)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAdaptiveMtFilesResponse",
-  }) as any as Schema.Schema<ListAdaptiveMtFilesResponse>;
+export const ListAdaptiveMtFilesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    adaptiveMtFiles: Schema.optional(Schema.Array(AdaptiveMtFile)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListAdaptiveMtFilesResponse" });
 
 export interface AdaptiveMtSentence {
   /** Identifier. The resource name of the file, in form of `projects/{project-number-or-id}/locations/{location_id}/adaptiveMtDatasets/{dataset}/adaptiveMtFiles/{file}/adaptiveMtSentences/{sentence}` */
@@ -733,18 +574,13 @@ export interface AdaptiveMtSentence {
   targetSentence?: string;
 }
 
-export const AdaptiveMtSentence: Schema.Schema<AdaptiveMtSentence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      sourceSentence: Schema.optional(Schema.String),
-      targetSentence: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AdaptiveMtSentence",
-  }) as any as Schema.Schema<AdaptiveMtSentence>;
+export const AdaptiveMtSentence = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  sourceSentence: Schema.optional(Schema.String),
+  targetSentence: Schema.optional(Schema.String),
+}).annotate({ identifier: "AdaptiveMtSentence" });
 
 export interface ListAdaptiveMtSentencesResponse {
   /** Output only. The list of AdaptiveMtSentences. */
@@ -753,29 +589,20 @@ export interface ListAdaptiveMtSentencesResponse {
   nextPageToken?: string;
 }
 
-export const ListAdaptiveMtSentencesResponse: Schema.Schema<ListAdaptiveMtSentencesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      adaptiveMtSentences: Schema.optional(Schema.Array(AdaptiveMtSentence)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAdaptiveMtSentencesResponse",
-  }) as any as Schema.Schema<ListAdaptiveMtSentencesResponse>;
+export const ListAdaptiveMtSentencesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    adaptiveMtSentences: Schema.optional(Schema.Array(AdaptiveMtSentence)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListAdaptiveMtSentencesResponse" });
 
 export interface OutputConfig {
   /** Google Cloud Storage destination for output content. For every single input file (for example, gs://a/b/c.[extension]), we generate at most 2 * n output files. (n is the # of target_language_codes in the BatchTranslateTextRequest). Output files (tsv) generated are compliant with RFC 4180 except that record delimiters are '\n' instead of '\r\n'. We don't provide any way to change record delimiters. While the input files are being processed, we write/update an index file 'index.csv' under 'output_uri_prefix' (for example, gs://translation-test/index.csv) The index file is generated/updated as new files are being translated. The format is: input_file,target_language_code,translations_file,errors_file, glossary_translations_file,glossary_errors_file input_file is one file we matched using gcs_source.input_uri. target_language_code is provided in the request. translations_file contains the translations. (details provided below) errors_file contains the errors during processing of the file. (details below). Both translations_file and errors_file could be empty strings if we have no content to output. glossary_translations_file and glossary_errors_file are always empty strings if the input_file is tsv. They could also be empty if we have no content to output. Once a row is present in index.csv, the input/output matching never changes. Callers should also expect all the content in input_file are processed and ready to be consumed (that is, no partial output file is written). Since index.csv will be keeping updated during the process, please make sure there is no custom retention policy applied on the output bucket that may avoid file updating. (https://cloud.google.com/storage/docs/bucket-lock#retention-policy) The format of translations_file (for target language code 'trg') is: `gs://translation_test/a_b_c_'trg'_translations.[extension]` If the input file extension is tsv, the output has the following columns: Column 1: ID of the request provided in the input, if it's not provided in the input, then the input row number is used (0-based). Column 2: source sentence. Column 3: translation without applying a glossary. Empty string if there is an error. Column 4 (only present if a glossary is provided in the request): translation after applying the glossary. Empty string if there is an error applying the glossary. Could be same string as column 3 if there is no glossary applied. If input file extension is a txt or html, the translation is directly written to the output file. If glossary is requested, a separate glossary_translations_file has format of `gs://translation_test/a_b_c_'trg'_glossary_translations.[extension]` The format of errors file (for target language code 'trg') is: `gs://translation_test/a_b_c_'trg'_errors.[extension]` If the input file extension is tsv, errors_file contains the following: Column 1: ID of the request provided in the input, if it's not provided in the input, then the input row number is used (0-based). Column 2: source sentence. Column 3: Error detail for the translation. Could be empty. Column 4 (only present if a glossary is provided in the request): Error when applying the glossary. If the input file extension is txt or html, glossary_error_file will be generated that contains error details. glossary_error_file has format of `gs://translation_test/a_b_c_'trg'_glossary_errors.[extension]` */
   gcsDestination?: GcsDestination;
 }
 
-export const OutputConfig: Schema.Schema<OutputConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsDestination: Schema.optional(GcsDestination),
-    }),
-  ).annotate({
-    identifier: "OutputConfig",
-  }) as any as Schema.Schema<OutputConfig>;
+export const OutputConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gcsDestination: Schema.optional(GcsDestination),
+}).annotate({ identifier: "OutputConfig" });
 
 export interface BatchTranslateTextRequest {
   /** Required. Input configurations. The total number of files matched should be <= 100. The total content size should be <= 100M Unicode codepoints. The files must use UTF-8 encoding. */
@@ -794,22 +621,18 @@ export interface BatchTranslateTextRequest {
   labels?: Record<string, string>;
 }
 
-export const BatchTranslateTextRequest: Schema.Schema<BatchTranslateTextRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inputConfigs: Schema.optional(Schema.Array(InputConfig)),
-      outputConfig: Schema.optional(OutputConfig),
-      glossaries: Schema.optional(
-        Schema.Record(Schema.String, TranslateTextGlossaryConfig),
-      ),
-      targetLanguageCodes: Schema.optional(Schema.Array(Schema.String)),
-      models: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      sourceLanguageCode: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "BatchTranslateTextRequest",
-  }) as any as Schema.Schema<BatchTranslateTextRequest>;
+export const BatchTranslateTextRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    inputConfigs: Schema.optional(Schema.Array(InputConfig)),
+    outputConfig: Schema.optional(OutputConfig),
+    glossaries: Schema.optional(
+      Schema.Record(Schema.String, TranslateTextGlossaryConfig),
+    ),
+    targetLanguageCodes: Schema.optional(Schema.Array(Schema.String)),
+    models: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    sourceLanguageCode: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({ identifier: "BatchTranslateTextRequest" });
 
 export interface RomanizeTextRequest {
   /** Required. The content of the input in string format. */
@@ -818,29 +641,19 @@ export interface RomanizeTextRequest {
   sourceLanguageCode?: string;
 }
 
-export const RomanizeTextRequest: Schema.Schema<RomanizeTextRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contents: Schema.optional(Schema.Array(Schema.String)),
-      sourceLanguageCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RomanizeTextRequest",
-  }) as any as Schema.Schema<RomanizeTextRequest>;
+export const RomanizeTextRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  contents: Schema.optional(Schema.Array(Schema.String)),
+  sourceLanguageCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "RomanizeTextRequest" });
 
 export interface LanguageCodesSet {
   /** Optional. The ISO-639 language code(s) for terms defined in the glossary. All entries are unique. The list contains at least two entries. Expected to be an exact match for GlossaryTerm.language_code. */
   languageCodes?: Array<string>;
 }
 
-export const LanguageCodesSet: Schema.Schema<LanguageCodesSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      languageCodes: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "LanguageCodesSet",
-  }) as any as Schema.Schema<LanguageCodesSet>;
+export const LanguageCodesSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  languageCodes: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "LanguageCodesSet" });
 
 export interface Romanization {
   /** Romanized text. If an error occurs during romanization, this field might be excluded from the response. */
@@ -849,29 +662,20 @@ export interface Romanization {
   detectedLanguageCode?: string;
 }
 
-export const Romanization: Schema.Schema<Romanization> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      romanizedText: Schema.optional(Schema.String),
-      detectedLanguageCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Romanization",
-  }) as any as Schema.Schema<Romanization>;
+export const Romanization = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  romanizedText: Schema.optional(Schema.String),
+  detectedLanguageCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "Romanization" });
 
 export interface BatchDocumentInputConfig {
   /** Google Cloud Storage location for the source input. This can be a single file (for example, `gs://translation-test/input.docx`) or a wildcard (for example, `gs://translation-test/*`). File mime type is determined based on extension. Supported mime type includes: - `pdf`, application/pdf - `docx`, application/vnd.openxmlformats-officedocument.wordprocessingml.document - `pptx`, application/vnd.openxmlformats-officedocument.presentationml.presentation - `xlsx`, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet The max file size to support for `.docx`, `.pptx` and `.xlsx` is 100MB. The max file size to support for `.pdf` is 1GB and the max page limit is 1000 pages. The max file size to support for all input documents is 1GB. */
   gcsSource?: GcsSource;
 }
 
-export const BatchDocumentInputConfig: Schema.Schema<BatchDocumentInputConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsSource: Schema.optional(GcsSource),
-    }),
-  ).annotate({
-    identifier: "BatchDocumentInputConfig",
-  }) as any as Schema.Schema<BatchDocumentInputConfig>;
+export const BatchDocumentInputConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gcsSource: Schema.optional(GcsSource),
+  }).annotate({ identifier: "BatchDocumentInputConfig" });
 
 export interface BatchTranslateDocumentRequest {
   /** Optional. If true, use the text removal server to remove the shadow text on background image for native pdf translation. Shadow removal feature can only be enabled when is_translate_native_pdf_only: false && pdf_native_only: false */
@@ -898,28 +702,24 @@ export interface BatchTranslateDocumentRequest {
   models?: Record<string, string>;
 }
 
-export const BatchTranslateDocumentRequest: Schema.Schema<BatchTranslateDocumentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableShadowRemovalNativePdf: Schema.optional(Schema.Boolean),
-      pdfNativeOnly: Schema.optional(Schema.Boolean),
-      inputConfigs: Schema.optional(Schema.Array(BatchDocumentInputConfig)),
-      outputConfig: Schema.optional(BatchDocumentOutputConfig),
-      glossaries: Schema.optional(
-        Schema.Record(Schema.String, TranslateTextGlossaryConfig),
-      ),
-      formatConversions: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      sourceLanguageCode: Schema.optional(Schema.String),
-      customizedAttribution: Schema.optional(Schema.String),
-      enableRotationCorrection: Schema.optional(Schema.Boolean),
-      targetLanguageCodes: Schema.optional(Schema.Array(Schema.String)),
-      models: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "BatchTranslateDocumentRequest",
-  }) as any as Schema.Schema<BatchTranslateDocumentRequest>;
+export const BatchTranslateDocumentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enableShadowRemovalNativePdf: Schema.optional(Schema.Boolean),
+    pdfNativeOnly: Schema.optional(Schema.Boolean),
+    inputConfigs: Schema.optional(Schema.Array(BatchDocumentInputConfig)),
+    outputConfig: Schema.optional(BatchDocumentOutputConfig),
+    glossaries: Schema.optional(
+      Schema.Record(Schema.String, TranslateTextGlossaryConfig),
+    ),
+    formatConversions: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    sourceLanguageCode: Schema.optional(Schema.String),
+    customizedAttribution: Schema.optional(Schema.String),
+    enableRotationCorrection: Schema.optional(Schema.Boolean),
+    targetLanguageCodes: Schema.optional(Schema.Array(Schema.String)),
+    models: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({ identifier: "BatchTranslateDocumentRequest" });
 
 export interface DetectedLanguage {
   /** The ISO-639 language code of the source content in the request, detected automatically. */
@@ -928,15 +728,10 @@ export interface DetectedLanguage {
   confidence?: number;
 }
 
-export const DetectedLanguage: Schema.Schema<DetectedLanguage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      languageCode: Schema.optional(Schema.String),
-      confidence: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "DetectedLanguage",
-  }) as any as Schema.Schema<DetectedLanguage>;
+export const DetectedLanguage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  languageCode: Schema.optional(Schema.String),
+  confidence: Schema.optional(Schema.Number),
+}).annotate({ identifier: "DetectedLanguage" });
 
 export interface FileInputSource {
   /** Required. The file's byte contents. */
@@ -947,16 +742,11 @@ export interface FileInputSource {
   displayName?: string;
 }
 
-export const FileInputSource: Schema.Schema<FileInputSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      content: Schema.optional(Schema.String),
-      mimeType: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FileInputSource",
-  }) as any as Schema.Schema<FileInputSource>;
+export const FileInputSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  content: Schema.optional(Schema.String),
+  mimeType: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+}).annotate({ identifier: "FileInputSource" });
 
 export interface ImportAdaptiveMtFileRequest {
   /** Google Cloud Storage file source. */
@@ -965,29 +755,20 @@ export interface ImportAdaptiveMtFileRequest {
   fileInputSource?: FileInputSource;
 }
 
-export const ImportAdaptiveMtFileRequest: Schema.Schema<ImportAdaptiveMtFileRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsInputSource: Schema.optional(GcsInputSource),
-      fileInputSource: Schema.optional(FileInputSource),
-    }),
-  ).annotate({
-    identifier: "ImportAdaptiveMtFileRequest",
-  }) as any as Schema.Schema<ImportAdaptiveMtFileRequest>;
+export const ImportAdaptiveMtFileRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gcsInputSource: Schema.optional(GcsInputSource),
+    fileInputSource: Schema.optional(FileInputSource),
+  }).annotate({ identifier: "ImportAdaptiveMtFileRequest" });
 
 export interface GlossaryInputConfig {
   /** Required. Google Cloud Storage location of glossary data. File format is determined based on the filename extension. API returns [google.rpc.Code.INVALID_ARGUMENT] for unsupported URI-s and file formats. Wildcards are not allowed. This must be a single file in one of the following formats: For unidirectional glossaries: - TSV/CSV (`.tsv`/`.csv`): Two column file, tab- or comma-separated. The first column is source text. The second column is target text. No headers in this file. The first row contains data and not column names. - TMX (`.tmx`): TMX file with parallel data defining source/target term pairs. For equivalent term sets glossaries: - CSV (`.csv`): Multi-column CSV file defining equivalent glossary terms in multiple languages. See documentation for more information - [glossaries](https://cloud.google.com/translate/docs/advanced/glossary). */
   gcsSource?: GcsSource;
 }
 
-export const GlossaryInputConfig: Schema.Schema<GlossaryInputConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsSource: Schema.optional(GcsSource),
-    }),
-  ).annotate({
-    identifier: "GlossaryInputConfig",
-  }) as any as Schema.Schema<GlossaryInputConfig>;
+export const GlossaryInputConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gcsSource: Schema.optional(GcsSource),
+}).annotate({ identifier: "GlossaryInputConfig" });
 
 export interface LanguageCodePair {
   /** Required. The ISO-639 language code for translation output, for example, "zh-CN". Expected to be an exact match for GlossaryTerm.language_code. */
@@ -996,15 +777,10 @@ export interface LanguageCodePair {
   sourceLanguageCode?: string;
 }
 
-export const LanguageCodePair: Schema.Schema<LanguageCodePair> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetLanguageCode: Schema.optional(Schema.String),
-      sourceLanguageCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LanguageCodePair",
-  }) as any as Schema.Schema<LanguageCodePair>;
+export const LanguageCodePair = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  targetLanguageCode: Schema.optional(Schema.String),
+  sourceLanguageCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "LanguageCodePair" });
 
 export interface Glossary {
   /** Used with equivalent term set glossaries. */
@@ -1025,26 +801,22 @@ export interface Glossary {
   entryCount?: number;
 }
 
-export const Glossary: Schema.Schema<Glossary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      languageCodesSet: Schema.optional(LanguageCodesSet),
-      inputConfig: Schema.optional(GlossaryInputConfig),
-      submitTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      languagePair: Schema.optional(LanguageCodePair),
-      entryCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Glossary" }) as any as Schema.Schema<Glossary>;
+export const Glossary = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  languageCodesSet: Schema.optional(LanguageCodesSet),
+  inputConfig: Schema.optional(GlossaryInputConfig),
+  submitTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  languagePair: Schema.optional(LanguageCodePair),
+  entryCount: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Glossary" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface ListGlossariesResponse {
   /** The list of glossaries for a project. */
@@ -1053,29 +825,21 @@ export interface ListGlossariesResponse {
   nextPageToken?: string;
 }
 
-export const ListGlossariesResponse: Schema.Schema<ListGlossariesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      glossaries: Schema.optional(Schema.Array(Glossary)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListGlossariesResponse",
-  }) as any as Schema.Schema<ListGlossariesResponse>;
+export const ListGlossariesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    glossaries: Schema.optional(Schema.Array(Glossary)),
+    nextPageToken: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ListGlossariesResponse" });
 
 export interface AdaptiveMtTranslation {
   /** Output only. The translated text. */
   translatedText?: string;
 }
 
-export const AdaptiveMtTranslation: Schema.Schema<AdaptiveMtTranslation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      translatedText: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AdaptiveMtTranslation",
-  }) as any as Schema.Schema<AdaptiveMtTranslation>;
+export const AdaptiveMtTranslation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  translatedText: Schema.optional(Schema.String),
+}).annotate({ identifier: "AdaptiveMtTranslation" });
 
 export interface AdaptiveMtTranslateResponse {
   /** Text translation response if a glossary is provided in the request. This could be the same as 'translation' above if no terms apply. */
@@ -1086,32 +850,21 @@ export interface AdaptiveMtTranslateResponse {
   languageCode?: string;
 }
 
-export const AdaptiveMtTranslateResponse: Schema.Schema<AdaptiveMtTranslateResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      glossaryTranslations: Schema.optional(
-        Schema.Array(AdaptiveMtTranslation),
-      ),
-      translations: Schema.optional(Schema.Array(AdaptiveMtTranslation)),
-      languageCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AdaptiveMtTranslateResponse",
-  }) as any as Schema.Schema<AdaptiveMtTranslateResponse>;
+export const AdaptiveMtTranslateResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    glossaryTranslations: Schema.optional(Schema.Array(AdaptiveMtTranslation)),
+    translations: Schema.optional(Schema.Array(AdaptiveMtTranslation)),
+    languageCode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AdaptiveMtTranslateResponse" });
 
 export interface RomanizeTextResponse {
   /** Text romanization responses. This field has the same length as `contents`. */
   romanizations?: Array<Romanization>;
 }
 
-export const RomanizeTextResponse: Schema.Schema<RomanizeTextResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      romanizations: Schema.optional(Schema.Array(Romanization)),
-    }),
-  ).annotate({
-    identifier: "RomanizeTextResponse",
-  }) as any as Schema.Schema<RomanizeTextResponse>;
+export const RomanizeTextResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  romanizations: Schema.optional(Schema.Array(Romanization)),
+}).annotate({ identifier: "RomanizeTextResponse" });
 
 export interface Dataset {
   /** Output only. Number of training examples (sentence pairs). */
@@ -1136,21 +889,18 @@ export interface Dataset {
   targetLanguageCode?: string;
 }
 
-export const Dataset: Schema.Schema<Dataset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      trainExampleCount: Schema.optional(Schema.Number),
-      displayName: Schema.optional(Schema.String),
-      exampleCount: Schema.optional(Schema.Number),
-      testExampleCount: Schema.optional(Schema.Number),
-      sourceLanguageCode: Schema.optional(Schema.String),
-      validateExampleCount: Schema.optional(Schema.Number),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      targetLanguageCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Dataset" }) as any as Schema.Schema<Dataset>;
+export const Dataset = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  trainExampleCount: Schema.optional(Schema.Number),
+  displayName: Schema.optional(Schema.String),
+  exampleCount: Schema.optional(Schema.Number),
+  testExampleCount: Schema.optional(Schema.Number),
+  sourceLanguageCode: Schema.optional(Schema.String),
+  validateExampleCount: Schema.optional(Schema.Number),
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  targetLanguageCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "Dataset" });
 
 export interface ListDatasetsResponse {
   /** The datasets read. */
@@ -1159,15 +909,10 @@ export interface ListDatasetsResponse {
   nextPageToken?: string;
 }
 
-export const ListDatasetsResponse: Schema.Schema<ListDatasetsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      datasets: Schema.optional(Schema.Array(Dataset)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListDatasetsResponse",
-  }) as any as Schema.Schema<ListDatasetsResponse>;
+export const ListDatasetsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  datasets: Schema.optional(Schema.Array(Dataset)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListDatasetsResponse" });
 
 export interface InputFile {
   /** Google Cloud Storage file source. */
@@ -1176,27 +921,19 @@ export interface InputFile {
   usage?: string;
 }
 
-export const InputFile: Schema.Schema<InputFile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsSource: Schema.optional(GcsInputSource),
-      usage: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "InputFile" }) as any as Schema.Schema<InputFile>;
+export const InputFile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gcsSource: Schema.optional(GcsInputSource),
+  usage: Schema.optional(Schema.String),
+}).annotate({ identifier: "InputFile" });
 
 export interface TransliterationConfig {
   /** If true, source text in romanized form can be translated to the target language. */
   enableTransliteration?: boolean;
 }
 
-export const TransliterationConfig: Schema.Schema<TransliterationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableTransliteration: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "TransliterationConfig",
-  }) as any as Schema.Schema<TransliterationConfig>;
+export const TransliterationConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enableTransliteration: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "TransliterationConfig" });
 
 export interface TranslateTextRequest {
   /** Required. The content of the input in string format. We recommend the total content be less than 30,000 codepoints. The max length of this field is 1024. Use BatchTranslateText for larger text. */
@@ -1217,35 +954,25 @@ export interface TranslateTextRequest {
   model?: string;
 }
 
-export const TranslateTextRequest: Schema.Schema<TranslateTextRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contents: Schema.optional(Schema.Array(Schema.String)),
-      glossaryConfig: Schema.optional(TranslateTextGlossaryConfig),
-      sourceLanguageCode: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      targetLanguageCode: Schema.optional(Schema.String),
-      mimeType: Schema.optional(Schema.String),
-      transliterationConfig: Schema.optional(TransliterationConfig),
-      model: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TranslateTextRequest",
-  }) as any as Schema.Schema<TranslateTextRequest>;
+export const TranslateTextRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  contents: Schema.optional(Schema.Array(Schema.String)),
+  glossaryConfig: Schema.optional(TranslateTextGlossaryConfig),
+  sourceLanguageCode: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  targetLanguageCode: Schema.optional(Schema.String),
+  mimeType: Schema.optional(Schema.String),
+  transliterationConfig: Schema.optional(TransliterationConfig),
+  model: Schema.optional(Schema.String),
+}).annotate({ identifier: "TranslateTextRequest" });
 
 export interface DatasetInputConfig {
   /** Files containing the sentence pairs to be imported to the dataset. */
   inputFiles?: Array<InputFile>;
 }
 
-export const DatasetInputConfig: Schema.Schema<DatasetInputConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inputFiles: Schema.optional(Schema.Array(InputFile)),
-    }),
-  ).annotate({
-    identifier: "DatasetInputConfig",
-  }) as any as Schema.Schema<DatasetInputConfig>;
+export const DatasetInputConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  inputFiles: Schema.optional(Schema.Array(InputFile)),
+}).annotate({ identifier: "DatasetInputConfig" });
 
 export interface ListAdaptiveMtDatasetsResponse {
   /** Output only. A list of Adaptive MT datasets. */
@@ -1254,15 +981,11 @@ export interface ListAdaptiveMtDatasetsResponse {
   nextPageToken?: string;
 }
 
-export const ListAdaptiveMtDatasetsResponse: Schema.Schema<ListAdaptiveMtDatasetsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      adaptiveMtDatasets: Schema.optional(Schema.Array(AdaptiveMtDataset)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAdaptiveMtDatasetsResponse",
-  }) as any as Schema.Schema<ListAdaptiveMtDatasetsResponse>;
+export const ListAdaptiveMtDatasetsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    adaptiveMtDatasets: Schema.optional(Schema.Array(AdaptiveMtDataset)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListAdaptiveMtDatasetsResponse" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -1271,29 +994,21 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(Location)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface DetectLanguageResponse {
   /** The most probable language detected by the Translation API. For each request, the Translation API will always return only one result. */
   languages?: Array<DetectedLanguage>;
 }
 
-export const DetectLanguageResponse: Schema.Schema<DetectLanguageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      languages: Schema.optional(Schema.Array(DetectedLanguage)),
-    }),
-  ).annotate({
-    identifier: "DetectLanguageResponse",
-  }) as any as Schema.Schema<DetectLanguageResponse>;
+export const DetectLanguageResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    languages: Schema.optional(Schema.Array(DetectedLanguage)),
+  },
+).annotate({ identifier: "DetectLanguageResponse" });
 
 export interface DetectLanguageRequest {
   /** Optional. The format of the source text, for example, "text/html", "text/plain". If left blank, the MIME type defaults to "text/html". */
@@ -1308,18 +1023,13 @@ export interface DetectLanguageRequest {
   labels?: Record<string, string>;
 }
 
-export const DetectLanguageRequest: Schema.Schema<DetectLanguageRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mimeType: Schema.optional(Schema.String),
-      documentInputConfig: Schema.optional(DocumentInputConfig),
-      model: Schema.optional(Schema.String),
-      content: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "DetectLanguageRequest",
-  }) as any as Schema.Schema<DetectLanguageRequest>;
+export const DetectLanguageRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  mimeType: Schema.optional(Schema.String),
+  documentInputConfig: Schema.optional(DocumentInputConfig),
+  model: Schema.optional(Schema.String),
+  content: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "DetectLanguageRequest" });
 
 export interface Model {
   /** The resource name of the model, in form of `projects/{project-number-or-id}/locations/{location_id}/models/{model_id}` */
@@ -1344,35 +1054,27 @@ export interface Model {
   displayName?: string;
 }
 
-export const Model: Schema.Schema<Model> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      dataset: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      targetLanguageCode: Schema.optional(Schema.String),
-      testExampleCount: Schema.optional(Schema.Number),
-      sourceLanguageCode: Schema.optional(Schema.String),
-      validateExampleCount: Schema.optional(Schema.Number),
-      trainExampleCount: Schema.optional(Schema.Number),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Model" }) as any as Schema.Schema<Model>;
+export const Model = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  dataset: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  targetLanguageCode: Schema.optional(Schema.String),
+  testExampleCount: Schema.optional(Schema.Number),
+  sourceLanguageCode: Schema.optional(Schema.String),
+  validateExampleCount: Schema.optional(Schema.Number),
+  trainExampleCount: Schema.optional(Schema.Number),
+  displayName: Schema.optional(Schema.String),
+}).annotate({ identifier: "Model" });
 
 export interface SupportedLanguages {
   /** A list of supported language responses. This list contains an entry for each language the Translation API supports. */
   languages?: Array<SupportedLanguage>;
 }
 
-export const SupportedLanguages: Schema.Schema<SupportedLanguages> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      languages: Schema.optional(Schema.Array(SupportedLanguage)),
-    }),
-  ).annotate({
-    identifier: "SupportedLanguages",
-  }) as any as Schema.Schema<SupportedLanguages>;
+export const SupportedLanguages = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  languages: Schema.optional(Schema.Array(SupportedLanguage)),
+}).annotate({ identifier: "SupportedLanguages" });
 
 export interface ListExamplesResponse {
   /** The sentence pairs. */
@@ -1381,15 +1083,10 @@ export interface ListExamplesResponse {
   nextPageToken?: string;
 }
 
-export const ListExamplesResponse: Schema.Schema<ListExamplesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      examples: Schema.optional(Schema.Array(Example)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListExamplesResponse",
-  }) as any as Schema.Schema<ListExamplesResponse>;
+export const ListExamplesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  examples: Schema.optional(Schema.Array(Example)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListExamplesResponse" });
 
 export interface ListModelsResponse {
   /** A token to retrieve next page of results. Pass this token to the page_token field in the ListModelsRequest to obtain the corresponding page. */
@@ -1398,43 +1095,28 @@ export interface ListModelsResponse {
   models?: Array<Model>;
 }
 
-export const ListModelsResponse: Schema.Schema<ListModelsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      models: Schema.optional(Schema.Array(Model)),
-    }),
-  ).annotate({
-    identifier: "ListModelsResponse",
-  }) as any as Schema.Schema<ListModelsResponse>;
+export const ListModelsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  models: Schema.optional(Schema.Array(Model)),
+}).annotate({ identifier: "ListModelsResponse" });
 
 export interface RefineTextResponse {
   /** The refined translations obtained from the original translations. */
   refinedTranslations?: Array<string>;
 }
 
-export const RefineTextResponse: Schema.Schema<RefineTextResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      refinedTranslations: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "RefineTextResponse",
-  }) as any as Schema.Schema<RefineTextResponse>;
+export const RefineTextResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  refinedTranslations: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "RefineTextResponse" });
 
 export interface WaitOperationRequest {
   /** The maximum duration to wait before timing out. If left blank, the wait will be at most the time permitted by the underlying HTTP/RPC protocol. If RPC context deadline is also specified, the shorter one will be used. */
   timeout?: string;
 }
 
-export const WaitOperationRequest: Schema.Schema<WaitOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      timeout: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WaitOperationRequest",
-  }) as any as Schema.Schema<WaitOperationRequest>;
+export const WaitOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  timeout: Schema.optional(Schema.String),
+}).annotate({ identifier: "WaitOperationRequest" });
 
 export interface DocumentTranslation {
   /** The array of translated documents. It is expected to be size 1 for now. We may produce multiple translated documents in the future for other type of file formats. */
@@ -1445,16 +1127,11 @@ export interface DocumentTranslation {
   mimeType?: string;
 }
 
-export const DocumentTranslation: Schema.Schema<DocumentTranslation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      byteStreamOutputs: Schema.optional(Schema.Array(Schema.String)),
-      detectedLanguageCode: Schema.optional(Schema.String),
-      mimeType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DocumentTranslation",
-  }) as any as Schema.Schema<DocumentTranslation>;
+export const DocumentTranslation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  byteStreamOutputs: Schema.optional(Schema.Array(Schema.String)),
+  detectedLanguageCode: Schema.optional(Schema.String),
+  mimeType: Schema.optional(Schema.String),
+}).annotate({ identifier: "DocumentTranslation" });
 
 export interface TranslateDocumentResponse {
   /** Translated document. */
@@ -1467,38 +1144,28 @@ export interface TranslateDocumentResponse {
   model?: string;
 }
 
-export const TranslateDocumentResponse: Schema.Schema<TranslateDocumentResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      documentTranslation: Schema.optional(DocumentTranslation),
-      glossaryConfig: Schema.optional(TranslateTextGlossaryConfig),
-      glossaryDocumentTranslation: Schema.optional(DocumentTranslation),
-      model: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TranslateDocumentResponse",
-  }) as any as Schema.Schema<TranslateDocumentResponse>;
+export const TranslateDocumentResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    documentTranslation: Schema.optional(DocumentTranslation),
+    glossaryConfig: Schema.optional(TranslateTextGlossaryConfig),
+    glossaryDocumentTranslation: Schema.optional(DocumentTranslation),
+    model: Schema.optional(Schema.String),
+  }).annotate({ identifier: "TranslateDocumentResponse" });
 
 export interface ImportDataRequest {
   /** Required. The config for the input content. */
   inputConfig?: DatasetInputConfig;
 }
 
-export const ImportDataRequest: Schema.Schema<ImportDataRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inputConfig: Schema.optional(DatasetInputConfig),
-    }),
-  ).annotate({
-    identifier: "ImportDataRequest",
-  }) as any as Schema.Schema<ImportDataRequest>;
+export const ImportDataRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  inputConfig: Schema.optional(DatasetInputConfig),
+}).annotate({ identifier: "ImportDataRequest" });
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelOperationRequest",
-  }) as any as Schema.Schema<CancelOperationRequest>;
+export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelOperationRequest" });
 
 // ==========================================================================
 // Operations

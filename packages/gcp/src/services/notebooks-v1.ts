@@ -29,15 +29,10 @@ export interface ContainerImage {
   tag?: string;
 }
 
-export const ContainerImage: Schema.Schema<ContainerImage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      repository: Schema.optional(Schema.String),
-      tag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ContainerImage",
-  }) as any as Schema.Schema<ContainerImage>;
+export const ContainerImage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  repository: Schema.optional(Schema.String),
+  tag: Schema.optional(Schema.String),
+}).annotate({ identifier: "ContainerImage" });
 
 export interface ShieldedInstanceConfig {
   /** Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created. Enabled by default. */
@@ -48,16 +43,13 @@ export interface ShieldedInstanceConfig {
   enableSecureBoot?: boolean;
 }
 
-export const ShieldedInstanceConfig: Schema.Schema<ShieldedInstanceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableIntegrityMonitoring: Schema.optional(Schema.Boolean),
-      enableVtpm: Schema.optional(Schema.Boolean),
-      enableSecureBoot: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ShieldedInstanceConfig",
-  }) as any as Schema.Schema<ShieldedInstanceConfig>;
+export const ShieldedInstanceConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    enableIntegrityMonitoring: Schema.optional(Schema.Boolean),
+    enableVtpm: Schema.optional(Schema.Boolean),
+    enableSecureBoot: Schema.optional(Schema.Boolean),
+  },
+).annotate({ identifier: "ShieldedInstanceConfig" });
 
 export interface InstanceMigrationEligibility {
   /** Output only. Certain configurations will be defaulted during the migration. */
@@ -75,31 +67,20 @@ export interface InstanceMigrationEligibility {
   errors?: Array<"ERROR_UNSPECIFIED" | "DATAPROC_HUB" | (string & {})>;
 }
 
-export const InstanceMigrationEligibility: Schema.Schema<InstanceMigrationEligibility> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      warnings: Schema.optional(Schema.Array(Schema.String)),
-      errors: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "InstanceMigrationEligibility",
-  }) as any as Schema.Schema<InstanceMigrationEligibility>;
+export const InstanceMigrationEligibility =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    warnings: Schema.optional(Schema.Array(Schema.String)),
+    errors: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "InstanceMigrationEligibility" });
 
 export interface RuntimeMetrics {
   /** Output only. The system metrics. */
   systemMetrics?: Record<string, string>;
 }
 
-export const RuntimeMetrics: Schema.Schema<RuntimeMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      systemMetrics: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-    }),
-  ).annotate({
-    identifier: "RuntimeMetrics",
-  }) as any as Schema.Schema<RuntimeMetrics>;
+export const RuntimeMetrics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  systemMetrics: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "RuntimeMetrics" });
 
 export interface RuntimeAccessConfig {
   /** Output only. The proxy endpoint that is used to access the runtime. */
@@ -114,16 +95,11 @@ export interface RuntimeAccessConfig {
     | (string & {});
 }
 
-export const RuntimeAccessConfig: Schema.Schema<RuntimeAccessConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      proxyUri: Schema.optional(Schema.String),
-      runtimeOwner: Schema.optional(Schema.String),
-      accessType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RuntimeAccessConfig",
-  }) as any as Schema.Schema<RuntimeAccessConfig>;
+export const RuntimeAccessConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  proxyUri: Schema.optional(Schema.String),
+  runtimeOwner: Schema.optional(Schema.String),
+  accessType: Schema.optional(Schema.String),
+}).annotate({ identifier: "RuntimeAccessConfig" });
 
 export interface RuntimeSoftwareConfig {
   /** Runtime will automatically shutdown after idle_shutdown_time. Default: True */
@@ -158,26 +134,21 @@ export interface RuntimeSoftwareConfig {
     | (string & {});
 }
 
-export const RuntimeSoftwareConfig: Schema.Schema<RuntimeSoftwareConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      idleShutdown: Schema.optional(Schema.Boolean),
-      enableHealthMonitoring: Schema.optional(Schema.Boolean),
-      upgradeable: Schema.optional(Schema.Boolean),
-      version: Schema.optional(Schema.String),
-      installGpuDriver: Schema.optional(Schema.Boolean),
-      mixerDisabled: Schema.optional(Schema.Boolean),
-      postStartupScript: Schema.optional(Schema.String),
-      notebookUpgradeSchedule: Schema.optional(Schema.String),
-      disableTerminal: Schema.optional(Schema.Boolean),
-      customGpuDriverPath: Schema.optional(Schema.String),
-      kernels: Schema.optional(Schema.Array(ContainerImage)),
-      idleShutdownTimeout: Schema.optional(Schema.Number),
-      postStartupScriptBehavior: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RuntimeSoftwareConfig",
-  }) as any as Schema.Schema<RuntimeSoftwareConfig>;
+export const RuntimeSoftwareConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  idleShutdown: Schema.optional(Schema.Boolean),
+  enableHealthMonitoring: Schema.optional(Schema.Boolean),
+  upgradeable: Schema.optional(Schema.Boolean),
+  version: Schema.optional(Schema.String),
+  installGpuDriver: Schema.optional(Schema.Boolean),
+  mixerDisabled: Schema.optional(Schema.Boolean),
+  postStartupScript: Schema.optional(Schema.String),
+  notebookUpgradeSchedule: Schema.optional(Schema.String),
+  disableTerminal: Schema.optional(Schema.Boolean),
+  customGpuDriverPath: Schema.optional(Schema.String),
+  kernels: Schema.optional(Schema.Array(ContainerImage)),
+  idleShutdownTimeout: Schema.optional(Schema.Number),
+  postStartupScriptBehavior: Schema.optional(Schema.String),
+}).annotate({ identifier: "RuntimeSoftwareConfig" });
 
 export interface RuntimeMigrationEligibility {
   /** Output only. Certain configurations will be defaulted during the migration. */
@@ -195,15 +166,11 @@ export interface RuntimeMigrationEligibility {
   errors?: Array<"ERROR_UNSPECIFIED" | "CUSTOM_CONTAINER" | (string & {})>;
 }
 
-export const RuntimeMigrationEligibility: Schema.Schema<RuntimeMigrationEligibility> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      warnings: Schema.optional(Schema.Array(Schema.String)),
-      errors: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "RuntimeMigrationEligibility",
-  }) as any as Schema.Schema<RuntimeMigrationEligibility>;
+export const RuntimeMigrationEligibility =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    warnings: Schema.optional(Schema.Array(Schema.String)),
+    errors: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "RuntimeMigrationEligibility" });
 
 export interface RuntimeAcceleratorConfig {
   /** Accelerator model. */
@@ -226,43 +193,29 @@ export interface RuntimeAcceleratorConfig {
   coreCount?: string;
 }
 
-export const RuntimeAcceleratorConfig: Schema.Schema<RuntimeAcceleratorConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      coreCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RuntimeAcceleratorConfig",
-  }) as any as Schema.Schema<RuntimeAcceleratorConfig>;
+export const RuntimeAcceleratorConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    coreCount: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RuntimeAcceleratorConfig" });
 
 export interface EncryptionConfig {
   /** The Cloud KMS resource identifier of the customer-managed encryption key used to protect a resource, such as a disks. It has the following format: `projects/{PROJECT_ID}/locations/{REGION}/keyRings/{KEY_RING_NAME}/cryptoKeys/{KEY_NAME}` */
   kmsKey?: string;
 }
 
-export const EncryptionConfig: Schema.Schema<EncryptionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kmsKey: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EncryptionConfig",
-  }) as any as Schema.Schema<EncryptionConfig>;
+export const EncryptionConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kmsKey: Schema.optional(Schema.String),
+}).annotate({ identifier: "EncryptionConfig" });
 
 export interface RuntimeGuestOsFeature {
   /** The ID of a supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options. Valid values: * `FEATURE_TYPE_UNSPECIFIED` * `MULTI_IP_SUBNET` * `SECURE_BOOT` * `UEFI_COMPATIBLE` * `VIRTIO_SCSI_MULTIQUEUE` * `WINDOWS` */
   type?: string;
 }
 
-export const RuntimeGuestOsFeature: Schema.Schema<RuntimeGuestOsFeature> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RuntimeGuestOsFeature",
-  }) as any as Schema.Schema<RuntimeGuestOsFeature>;
+export const RuntimeGuestOsFeature = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "RuntimeGuestOsFeature" });
 
 export interface LocalDiskInitializeParams {
   /** Optional. Specifies the size of the disk in base-2 GB. If not specified, the disk will be the same size as the image (usually 10GB). If specified, the size must be equal to or larger than 10GB. Default 100 GB. */
@@ -283,18 +236,14 @@ export interface LocalDiskInitializeParams {
   diskName?: string;
 }
 
-export const LocalDiskInitializeParams: Schema.Schema<LocalDiskInitializeParams> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      diskSizeGb: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      diskType: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      diskName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LocalDiskInitializeParams",
-  }) as any as Schema.Schema<LocalDiskInitializeParams>;
+export const LocalDiskInitializeParams =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    diskSizeGb: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    diskType: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    diskName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "LocalDiskInitializeParams" });
 
 export interface LocalDisk {
   /** Output only. A zero-based index to this disk, where 0 is reserved for the boot disk. If you have many disks attached to an instance, each disk would have a unique index number. */
@@ -323,30 +272,26 @@ export interface LocalDisk {
   source?: string;
 }
 
-export const LocalDisk: Schema.Schema<LocalDisk> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      index: Schema.optional(Schema.Number),
-      guestOsFeatures: Schema.optional(Schema.Array(RuntimeGuestOsFeature)),
-      initializeParams: Schema.optional(LocalDiskInitializeParams),
-      interface: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      autoDelete: Schema.optional(Schema.Boolean),
-      deviceName: Schema.optional(Schema.String),
-      licenses: Schema.optional(Schema.Array(Schema.String)),
-      boot: Schema.optional(Schema.Boolean),
-      mode: Schema.optional(Schema.String),
-      source: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "LocalDisk" }) as any as Schema.Schema<LocalDisk>;
+export const LocalDisk = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  index: Schema.optional(Schema.Number),
+  guestOsFeatures: Schema.optional(Schema.Array(RuntimeGuestOsFeature)),
+  initializeParams: Schema.optional(LocalDiskInitializeParams),
+  interface: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  autoDelete: Schema.optional(Schema.Boolean),
+  deviceName: Schema.optional(Schema.String),
+  licenses: Schema.optional(Schema.Array(Schema.String)),
+  boot: Schema.optional(Schema.Boolean),
+  mode: Schema.optional(Schema.String),
+  source: Schema.optional(Schema.String),
+}).annotate({ identifier: "LocalDisk" });
 
 export interface BootImage {}
 
-export const BootImage: Schema.Schema<BootImage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "BootImage",
-  }) as any as Schema.Schema<BootImage>;
+export const BootImage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate(
+  { identifier: "BootImage" },
+);
 
 export interface RuntimeShieldedInstanceConfig {
   /** Defines whether the instance has Secure Boot enabled. Secure Boot helps ensure that the system only runs authentic software by verifying the digital signature of all boot components, and halting the boot process if signature verification fails. Disabled by default. */
@@ -357,16 +302,12 @@ export interface RuntimeShieldedInstanceConfig {
   enableIntegrityMonitoring?: boolean;
 }
 
-export const RuntimeShieldedInstanceConfig: Schema.Schema<RuntimeShieldedInstanceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableSecureBoot: Schema.optional(Schema.Boolean),
-      enableVtpm: Schema.optional(Schema.Boolean),
-      enableIntegrityMonitoring: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "RuntimeShieldedInstanceConfig",
-  }) as any as Schema.Schema<RuntimeShieldedInstanceConfig>;
+export const RuntimeShieldedInstanceConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enableSecureBoot: Schema.optional(Schema.Boolean),
+    enableVtpm: Schema.optional(Schema.Boolean),
+    enableIntegrityMonitoring: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "RuntimeShieldedInstanceConfig" });
 
 export interface VirtualMachineConfig {
   /** Output only. The Compute Engine guest attributes. (see [Project and instance guest attributes](https://cloud.google.com/compute/docs/storing-retrieving-metadata#guest_attributes)). */
@@ -405,32 +346,25 @@ export interface VirtualMachineConfig {
   subnet?: string;
 }
 
-export const VirtualMachineConfig: Schema.Schema<VirtualMachineConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      guestAttributes: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      reservedIpRange: Schema.optional(Schema.String),
-      internalIpOnly: Schema.optional(Schema.Boolean),
-      nicType: Schema.optional(Schema.String),
-      zone: Schema.optional(Schema.String),
-      network: Schema.optional(Schema.String),
-      containerImages: Schema.optional(Schema.Array(ContainerImage)),
-      acceleratorConfig: Schema.optional(RuntimeAcceleratorConfig),
-      encryptionConfig: Schema.optional(EncryptionConfig),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      dataDisk: Schema.optional(LocalDisk),
-      machineType: Schema.optional(Schema.String),
-      tags: Schema.optional(Schema.Array(Schema.String)),
-      bootImage: Schema.optional(BootImage),
-      shieldedInstanceConfig: Schema.optional(RuntimeShieldedInstanceConfig),
-      subnet: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VirtualMachineConfig",
-  }) as any as Schema.Schema<VirtualMachineConfig>;
+export const VirtualMachineConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  guestAttributes: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  reservedIpRange: Schema.optional(Schema.String),
+  internalIpOnly: Schema.optional(Schema.Boolean),
+  nicType: Schema.optional(Schema.String),
+  zone: Schema.optional(Schema.String),
+  network: Schema.optional(Schema.String),
+  containerImages: Schema.optional(Schema.Array(ContainerImage)),
+  acceleratorConfig: Schema.optional(RuntimeAcceleratorConfig),
+  encryptionConfig: Schema.optional(EncryptionConfig),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  dataDisk: Schema.optional(LocalDisk),
+  machineType: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Array(Schema.String)),
+  bootImage: Schema.optional(BootImage),
+  shieldedInstanceConfig: Schema.optional(RuntimeShieldedInstanceConfig),
+  subnet: Schema.optional(Schema.String),
+}).annotate({ identifier: "VirtualMachineConfig" });
 
 export interface VirtualMachine {
   /** Virtual Machine configuration settings. */
@@ -441,16 +375,11 @@ export interface VirtualMachine {
   instanceName?: string;
 }
 
-export const VirtualMachine: Schema.Schema<VirtualMachine> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      virtualMachineConfig: Schema.optional(VirtualMachineConfig),
-      instanceId: Schema.optional(Schema.String),
-      instanceName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VirtualMachine",
-  }) as any as Schema.Schema<VirtualMachine>;
+export const VirtualMachine = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  virtualMachineConfig: Schema.optional(VirtualMachineConfig),
+  instanceId: Schema.optional(Schema.String),
+  instanceName: Schema.optional(Schema.String),
+}).annotate({ identifier: "VirtualMachine" });
 
 export interface Runtime {
   /** Output only. Bool indicating whether this notebook has been migrated to a Workbench Instance */
@@ -495,37 +424,30 @@ export interface Runtime {
   virtualMachine?: VirtualMachine;
 }
 
-export const Runtime: Schema.Schema<Runtime> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      migrated: Schema.optional(Schema.Boolean),
-      metrics: Schema.optional(RuntimeMetrics),
-      name: Schema.optional(Schema.String),
-      accessConfig: Schema.optional(RuntimeAccessConfig),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      updateTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      softwareConfig: Schema.optional(RuntimeSoftwareConfig),
-      healthState: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      runtimeMigrationEligibility: Schema.optional(RuntimeMigrationEligibility),
-      virtualMachine: Schema.optional(VirtualMachine),
-    }),
-  ).annotate({ identifier: "Runtime" }) as any as Schema.Schema<Runtime>;
+export const Runtime = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  migrated: Schema.optional(Schema.Boolean),
+  metrics: Schema.optional(RuntimeMetrics),
+  name: Schema.optional(Schema.String),
+  accessConfig: Schema.optional(RuntimeAccessConfig),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  updateTime: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  softwareConfig: Schema.optional(RuntimeSoftwareConfig),
+  healthState: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  runtimeMigrationEligibility: Schema.optional(RuntimeMigrationEligibility),
+  virtualMachine: Schema.optional(VirtualMachine),
+}).annotate({ identifier: "Runtime" });
 
 export interface UpdateInstanceMetadataItemsResponse {
   /** Map of items that were added/updated to/in the metadata. */
   items?: Record<string, string>;
 }
 
-export const UpdateInstanceMetadataItemsResponse: Schema.Schema<UpdateInstanceMetadataItemsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      items: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "UpdateInstanceMetadataItemsResponse",
-  }) as any as Schema.Schema<UpdateInstanceMetadataItemsResponse>;
+export const UpdateInstanceMetadataItemsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    items: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({ identifier: "UpdateInstanceMetadataItemsResponse" });
 
 export interface ReportInstanceInfoRequest {
   /** Required. The VM hardware token for authenticating the VM. https://cloud.google.com/compute/docs/instances/verifying-instance-identity */
@@ -534,29 +456,20 @@ export interface ReportInstanceInfoRequest {
   metadata?: Record<string, string>;
 }
 
-export const ReportInstanceInfoRequest: Schema.Schema<ReportInstanceInfoRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      vmId: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ReportInstanceInfoRequest",
-  }) as any as Schema.Schema<ReportInstanceInfoRequest>;
+export const ReportInstanceInfoRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    vmId: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({ identifier: "ReportInstanceInfoRequest" });
 
 export interface StartRuntimeRequest {
   /** Idempotent request UUID. */
   requestId?: string;
 }
 
-export const StartRuntimeRequest: Schema.Schema<StartRuntimeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StartRuntimeRequest",
-  }) as any as Schema.Schema<StartRuntimeRequest>;
+export const StartRuntimeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  requestId: Schema.optional(Schema.String),
+}).annotate({ identifier: "StartRuntimeRequest" });
 
 export interface SchedulerAcceleratorConfig {
   /** Type of this accelerator. */
@@ -575,15 +488,11 @@ export interface SchedulerAcceleratorConfig {
   coreCount?: string;
 }
 
-export const SchedulerAcceleratorConfig: Schema.Schema<SchedulerAcceleratorConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      coreCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SchedulerAcceleratorConfig",
-  }) as any as Schema.Schema<SchedulerAcceleratorConfig>;
+export const SchedulerAcceleratorConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    coreCount: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SchedulerAcceleratorConfig" });
 
 export interface VertexAIParameters {
   /** Environment variables. At most 100 environment variables can be specified and unique. Example: `GCP_BUCKET=gs://my-bucket/samples/` */
@@ -592,29 +501,19 @@ export interface VertexAIParameters {
   network?: string;
 }
 
-export const VertexAIParameters: Schema.Schema<VertexAIParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      env: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      network: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VertexAIParameters",
-  }) as any as Schema.Schema<VertexAIParameters>;
+export const VertexAIParameters = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  env: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  network: Schema.optional(Schema.String),
+}).annotate({ identifier: "VertexAIParameters" });
 
 export interface DataprocParameters {
   /** URI for cluster used to run Dataproc execution. Format: `projects/{PROJECT_ID}/regions/{REGION}/clusters/{CLUSTER_NAME}` */
   cluster?: string;
 }
 
-export const DataprocParameters: Schema.Schema<DataprocParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cluster: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DataprocParameters",
-  }) as any as Schema.Schema<DataprocParameters>;
+export const DataprocParameters = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cluster: Schema.optional(Schema.String),
+}).annotate({ identifier: "DataprocParameters" });
 
 export interface ExecutionTemplate {
   /** Configuration (count and accelerator type) for hardware running notebook execution. */
@@ -657,28 +556,23 @@ export interface ExecutionTemplate {
   parameters?: string;
 }
 
-export const ExecutionTemplate: Schema.Schema<ExecutionTemplate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      acceleratorConfig: Schema.optional(SchedulerAcceleratorConfig),
-      containerImageUri: Schema.optional(Schema.String),
-      jobType: Schema.optional(Schema.String),
-      tensorboard: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      outputNotebookFolder: Schema.optional(Schema.String),
-      inputNotebookFile: Schema.optional(Schema.String),
-      paramsYamlFile: Schema.optional(Schema.String),
-      vertexAiParameters: Schema.optional(VertexAIParameters),
-      dataprocParameters: Schema.optional(DataprocParameters),
-      kernelSpec: Schema.optional(Schema.String),
-      masterType: Schema.optional(Schema.String),
-      scaleTier: Schema.optional(Schema.String),
-      serviceAccount: Schema.optional(Schema.String),
-      parameters: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ExecutionTemplate",
-  }) as any as Schema.Schema<ExecutionTemplate>;
+export const ExecutionTemplate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  acceleratorConfig: Schema.optional(SchedulerAcceleratorConfig),
+  containerImageUri: Schema.optional(Schema.String),
+  jobType: Schema.optional(Schema.String),
+  tensorboard: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  outputNotebookFolder: Schema.optional(Schema.String),
+  inputNotebookFile: Schema.optional(Schema.String),
+  paramsYamlFile: Schema.optional(Schema.String),
+  vertexAiParameters: Schema.optional(VertexAIParameters),
+  dataprocParameters: Schema.optional(DataprocParameters),
+  kernelSpec: Schema.optional(Schema.String),
+  masterType: Schema.optional(Schema.String),
+  scaleTier: Schema.optional(Schema.String),
+  serviceAccount: Schema.optional(Schema.String),
+  parameters: Schema.optional(Schema.String),
+}).annotate({ identifier: "ExecutionTemplate" });
 
 export interface Execution {
   /** Output only. Name used for UI purposes. Name can only contain alphanumeric characters and underscores '_'. */
@@ -712,20 +606,17 @@ export interface Execution {
   name?: string;
 }
 
-export const Execution: Schema.Schema<Execution> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      jobUri: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      executionTemplate: Schema.optional(ExecutionTemplate),
-      description: Schema.optional(Schema.String),
-      outputNotebookFile: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Execution" }) as any as Schema.Schema<Execution>;
+export const Execution = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  jobUri: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  executionTemplate: Schema.optional(ExecutionTemplate),
+  description: Schema.optional(Schema.String),
+  outputNotebookFile: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Execution" });
 
 export interface ListExecutionsResponse {
   /** Page token that can be used to continue listing from the last result in the next list call. */
@@ -736,16 +627,13 @@ export interface ListExecutionsResponse {
   executions?: Array<Execution>;
 }
 
-export const ListExecutionsResponse: Schema.Schema<ListExecutionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      executions: Schema.optional(Schema.Array(Execution)),
-    }),
-  ).annotate({
-    identifier: "ListExecutionsResponse",
-  }) as any as Schema.Schema<ListExecutionsResponse>;
+export const ListExecutionsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    executions: Schema.optional(Schema.Array(Execution)),
+  },
+).annotate({ identifier: "ListExecutionsResponse" });
 
 export interface UpgradeHistoryEntry {
   /** The container image before this instance upgrade. */
@@ -775,23 +663,18 @@ export interface UpgradeHistoryEntry {
     | (string & {});
 }
 
-export const UpgradeHistoryEntry: Schema.Schema<UpgradeHistoryEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      containerImage: Schema.optional(Schema.String),
-      action: Schema.optional(Schema.String),
-      vmImage: Schema.optional(Schema.String),
-      targetVersion: Schema.optional(Schema.String),
-      targetImage: Schema.optional(Schema.String),
-      framework: Schema.optional(Schema.String),
-      snapshot: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpgradeHistoryEntry",
-  }) as any as Schema.Schema<UpgradeHistoryEntry>;
+export const UpgradeHistoryEntry = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  containerImage: Schema.optional(Schema.String),
+  action: Schema.optional(Schema.String),
+  vmImage: Schema.optional(Schema.String),
+  targetVersion: Schema.optional(Schema.String),
+  targetImage: Schema.optional(Schema.String),
+  framework: Schema.optional(Schema.String),
+  snapshot: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+}).annotate({ identifier: "UpgradeHistoryEntry" });
 
 export interface InstanceConfig {
   /** Cron expression in UTC timezone, used to schedule instance auto upgrade. Please follow the [cron format](https://en.wikipedia.org/wiki/Cron). */
@@ -800,29 +683,20 @@ export interface InstanceConfig {
   enableHealthMonitoring?: boolean;
 }
 
-export const InstanceConfig: Schema.Schema<InstanceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      notebookUpgradeSchedule: Schema.optional(Schema.String),
-      enableHealthMonitoring: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "InstanceConfig",
-  }) as any as Schema.Schema<InstanceConfig>;
+export const InstanceConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  notebookUpgradeSchedule: Schema.optional(Schema.String),
+  enableHealthMonitoring: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "InstanceConfig" });
 
 export interface UpdateInstanceConfigRequest {
   /** The instance configurations to be updated. */
   config?: InstanceConfig;
 }
 
-export const UpdateInstanceConfigRequest: Schema.Schema<UpdateInstanceConfigRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      config: Schema.optional(InstanceConfig),
-    }),
-  ).annotate({
-    identifier: "UpdateInstanceConfigRequest",
-  }) as any as Schema.Schema<UpdateInstanceConfigRequest>;
+export const UpdateInstanceConfigRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    config: Schema.optional(InstanceConfig),
+  }).annotate({ identifier: "UpdateInstanceConfigRequest" });
 
 export interface UpgradeInstanceRequest {
   /** Optional. The optional UpgradeType. Setting this field will search for additional compute images to upgrade this instance. */
@@ -835,14 +709,11 @@ export interface UpgradeInstanceRequest {
     | (string & {});
 }
 
-export const UpgradeInstanceRequest: Schema.Schema<UpgradeInstanceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpgradeInstanceRequest",
-  }) as any as Schema.Schema<UpgradeInstanceRequest>;
+export const UpgradeInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    type: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "UpgradeInstanceRequest" });
 
 export interface DiagnosticConfig {
   /** Optional. Enables flag to copy all `/home/jupyter` folder contents */
@@ -857,18 +728,13 @@ export interface DiagnosticConfig {
   repairFlagEnabled?: boolean;
 }
 
-export const DiagnosticConfig: Schema.Schema<DiagnosticConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      copyHomeFilesFlagEnabled: Schema.optional(Schema.Boolean),
-      relativePath: Schema.optional(Schema.String),
-      packetCaptureFlagEnabled: Schema.optional(Schema.Boolean),
-      gcsBucket: Schema.optional(Schema.String),
-      repairFlagEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "DiagnosticConfig",
-  }) as any as Schema.Schema<DiagnosticConfig>;
+export const DiagnosticConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  copyHomeFilesFlagEnabled: Schema.optional(Schema.Boolean),
+  relativePath: Schema.optional(Schema.String),
+  packetCaptureFlagEnabled: Schema.optional(Schema.Boolean),
+  gcsBucket: Schema.optional(Schema.String),
+  repairFlagEnabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "DiagnosticConfig" });
 
 export interface DiagnoseInstanceRequest {
   /** Required. Defines flags that are used to run the diagnostic tool */
@@ -877,43 +743,32 @@ export interface DiagnoseInstanceRequest {
   timeoutMinutes?: number;
 }
 
-export const DiagnoseInstanceRequest: Schema.Schema<DiagnoseInstanceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      diagnosticConfig: Schema.optional(DiagnosticConfig),
-      timeoutMinutes: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "DiagnoseInstanceRequest",
-  }) as any as Schema.Schema<DiagnoseInstanceRequest>;
+export const DiagnoseInstanceRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    diagnosticConfig: Schema.optional(DiagnosticConfig),
+    timeoutMinutes: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "DiagnoseInstanceRequest" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelOperationRequest",
-  }) as any as Schema.Schema<CancelOperationRequest>;
+export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelOperationRequest" });
 
 export interface UpgradeRuntimeRequest {
   /** Idempotent request UUID. */
   requestId?: string;
 }
 
-export const UpgradeRuntimeRequest: Schema.Schema<UpgradeRuntimeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpgradeRuntimeRequest",
-  }) as any as Schema.Schema<UpgradeRuntimeRequest>;
+export const UpgradeRuntimeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  requestId: Schema.optional(Schema.String),
+}).annotate({ identifier: "UpgradeRuntimeRequest" });
 
 export interface Event {
   /** Event report time. */
@@ -930,14 +785,11 @@ export interface Event {
   details?: Record<string, string>;
 }
 
-export const Event: Schema.Schema<Event> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reportTime: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      details: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({ identifier: "Event" }) as any as Schema.Schema<Event>;
+export const Event = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  reportTime: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  details: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "Event" });
 
 export interface ReportInstanceEventRequest {
   /** Required. The VM hardware token for authenticating the VM. https://cloud.google.com/compute/docs/instances/verifying-instance-identity */
@@ -946,15 +798,11 @@ export interface ReportInstanceEventRequest {
   event?: Event;
 }
 
-export const ReportInstanceEventRequest: Schema.Schema<ReportInstanceEventRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      vmId: Schema.optional(Schema.String),
-      event: Schema.optional(Event),
-    }),
-  ).annotate({
-    identifier: "ReportInstanceEventRequest",
-  }) as any as Schema.Schema<ReportInstanceEventRequest>;
+export const ReportInstanceEventRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    vmId: Schema.optional(Schema.String),
+    event: Schema.optional(Event),
+  }).annotate({ identifier: "ReportInstanceEventRequest" });
 
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -965,30 +813,22 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface GuestOsFeature {
   /** The ID of a supported feature. Read Enabling guest operating system features to see a list of available options. Valid values: * `FEATURE_TYPE_UNSPECIFIED` * `MULTI_IP_SUBNET` * `SECURE_BOOT` * `UEFI_COMPATIBLE` * `VIRTIO_SCSI_MULTIQUEUE` * `WINDOWS` */
   type?: string;
 }
 
-export const GuestOsFeature: Schema.Schema<GuestOsFeature> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GuestOsFeature",
-  }) as any as Schema.Schema<GuestOsFeature>;
+export const GuestOsFeature = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "GuestOsFeature" });
 
 export interface Disk {
   /** Indicates whether the disk will be auto-deleted when the instance is deleted (but not when the disk is detached from the instance). */
@@ -1017,51 +857,40 @@ export interface Disk {
   kind?: string;
 }
 
-export const Disk: Schema.Schema<Disk> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      autoDelete: Schema.optional(Schema.Boolean),
-      deviceName: Schema.optional(Schema.String),
-      licenses: Schema.optional(Schema.Array(Schema.String)),
-      boot: Schema.optional(Schema.Boolean),
-      mode: Schema.optional(Schema.String),
-      source: Schema.optional(Schema.String),
-      diskSizeGb: Schema.optional(Schema.String),
-      index: Schema.optional(Schema.String),
-      guestOsFeatures: Schema.optional(Schema.Array(GuestOsFeature)),
-      interface: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Disk" }) as any as Schema.Schema<Disk>;
+export const Disk = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  autoDelete: Schema.optional(Schema.Boolean),
+  deviceName: Schema.optional(Schema.String),
+  licenses: Schema.optional(Schema.Array(Schema.String)),
+  boot: Schema.optional(Schema.Boolean),
+  mode: Schema.optional(Schema.String),
+  source: Schema.optional(Schema.String),
+  diskSizeGb: Schema.optional(Schema.String),
+  index: Schema.optional(Schema.String),
+  guestOsFeatures: Schema.optional(Schema.Array(GuestOsFeature)),
+  interface: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "Disk" });
 
 export interface RegisterInstanceRequest {
   /** Required. User defined unique ID of this instance. The `instance_id` must be 1 to 63 characters long and contain only lowercase letters, numeric characters, and dashes. The first character must be a lowercase letter and the last character cannot be a dash. */
   instanceId?: string;
 }
 
-export const RegisterInstanceRequest: Schema.Schema<RegisterInstanceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      instanceId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RegisterInstanceRequest",
-  }) as any as Schema.Schema<RegisterInstanceRequest>;
+export const RegisterInstanceRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    instanceId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RegisterInstanceRequest" });
 
 export interface UpdateShieldedInstanceConfigRequest {
   /** ShieldedInstance configuration to be updated. */
   shieldedInstanceConfig?: ShieldedInstanceConfig;
 }
 
-export const UpdateShieldedInstanceConfigRequest: Schema.Schema<UpdateShieldedInstanceConfigRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      shieldedInstanceConfig: Schema.optional(ShieldedInstanceConfig),
-    }),
-  ).annotate({
-    identifier: "UpdateShieldedInstanceConfigRequest",
-  }) as any as Schema.Schema<UpdateShieldedInstanceConfigRequest>;
+export const UpdateShieldedInstanceConfigRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    shieldedInstanceConfig: Schema.optional(ShieldedInstanceConfig),
+  }).annotate({ identifier: "UpdateShieldedInstanceConfigRequest" });
 
 export interface VmImage {
   /** Required. The name of the Google Cloud project that this VM image belongs to. Format: `{project_id}` */
@@ -1072,28 +901,21 @@ export interface VmImage {
   imageFamily?: string;
 }
 
-export const VmImage: Schema.Schema<VmImage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      project: Schema.optional(Schema.String),
-      imageName: Schema.optional(Schema.String),
-      imageFamily: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "VmImage" }) as any as Schema.Schema<VmImage>;
+export const VmImage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  project: Schema.optional(Schema.String),
+  imageName: Schema.optional(Schema.String),
+  imageFamily: Schema.optional(Schema.String),
+}).annotate({ identifier: "VmImage" });
 
 export interface RollbackInstanceRequest {
   /** Required. The snapshot for rollback. Example: `projects/test-project/global/snapshots/krwlzipynril`. */
   targetSnapshot?: string;
 }
 
-export const RollbackInstanceRequest: Schema.Schema<RollbackInstanceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetSnapshot: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RollbackInstanceRequest",
-  }) as any as Schema.Schema<RollbackInstanceRequest>;
+export const RollbackInstanceRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetSnapshot: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RollbackInstanceRequest" });
 
 export interface MigrateInstanceRequest {
   /** Optional. Specifies the behavior of post startup script during migration. */
@@ -1104,14 +926,11 @@ export interface MigrateInstanceRequest {
     | (string & {});
 }
 
-export const MigrateInstanceRequest: Schema.Schema<MigrateInstanceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      postStartupScriptOption: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MigrateInstanceRequest",
-  }) as any as Schema.Schema<MigrateInstanceRequest>;
+export const MigrateInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    postStartupScriptOption: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "MigrateInstanceRequest" });
 
 export interface IsInstanceUpgradeableResponse {
   /** Additional information about upgrade. */
@@ -1124,17 +943,13 @@ export interface IsInstanceUpgradeableResponse {
   upgradeVersion?: string;
 }
 
-export const IsInstanceUpgradeableResponse: Schema.Schema<IsInstanceUpgradeableResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      upgradeInfo: Schema.optional(Schema.String),
-      upgradeImage: Schema.optional(Schema.String),
-      upgradeable: Schema.optional(Schema.Boolean),
-      upgradeVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "IsInstanceUpgradeableResponse",
-  }) as any as Schema.Schema<IsInstanceUpgradeableResponse>;
+export const IsInstanceUpgradeableResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    upgradeInfo: Schema.optional(Schema.String),
+    upgradeImage: Schema.optional(Schema.String),
+    upgradeable: Schema.optional(Schema.Boolean),
+    upgradeVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "IsInstanceUpgradeableResponse" });
 
 export interface Expr {
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
@@ -1147,15 +962,12 @@ export interface Expr {
   location?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      expression: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Expr" }) as any as Schema.Schema<Expr>;
+export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  title: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  expression: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+}).annotate({ identifier: "Expr" });
 
 export interface Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -1166,14 +978,11 @@ export interface Binding {
   members?: Array<string>;
 }
 
-export const Binding: Schema.Schema<Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      condition: Schema.optional(Expr),
-      role: Schema.optional(Schema.String),
-      members: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "Binding" }) as any as Schema.Schema<Binding>;
+export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  condition: Schema.optional(Expr),
+  role: Schema.optional(Schema.String),
+  members: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Binding" });
 
 export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -1184,28 +993,21 @@ export interface Policy {
   etag?: string;
 }
 
-export const Policy: Schema.Schema<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.Number),
-      bindings: Schema.optional(Schema.Array(Binding)),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Policy" }) as any as Schema.Schema<Policy>;
+export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.Number),
+  bindings: Schema.optional(Schema.Array(Binding)),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "Policy" });
 
 export interface SetInstanceMachineTypeRequest {
   /** Required. The [Compute Engine machine type](https://cloud.google.com/compute/docs/machine-resource). */
   machineType?: string;
 }
 
-export const SetInstanceMachineTypeRequest: Schema.Schema<SetInstanceMachineTypeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      machineType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SetInstanceMachineTypeRequest",
-  }) as any as Schema.Schema<SetInstanceMachineTypeRequest>;
+export const SetInstanceMachineTypeRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    machineType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SetInstanceMachineTypeRequest" });
 
 export interface AcceleratorConfig {
   /** Type of this accelerator. */
@@ -1231,15 +1033,10 @@ export interface AcceleratorConfig {
   coreCount?: string;
 }
 
-export const AcceleratorConfig: Schema.Schema<AcceleratorConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      coreCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AcceleratorConfig",
-  }) as any as Schema.Schema<AcceleratorConfig>;
+export const AcceleratorConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  coreCount: Schema.optional(Schema.String),
+}).annotate({ identifier: "AcceleratorConfig" });
 
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -1254,30 +1051,25 @@ export interface Operation {
   error?: Status;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      error: Schema.optional(Status),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  done: Schema.optional(Schema.Boolean),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  error: Schema.optional(Status),
+}).annotate({ identifier: "Operation" });
 
 export interface StopInstanceRequest {}
 
-export const StopInstanceRequest: Schema.Schema<StopInstanceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "StopInstanceRequest",
-  }) as any as Schema.Schema<StopInstanceRequest>;
+export const StopInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "StopInstanceRequest" });
 
 export interface ResetInstanceRequest {}
 
-export const ResetInstanceRequest: Schema.Schema<ResetInstanceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "ResetInstanceRequest",
-  }) as any as Schema.Schema<ResetInstanceRequest>;
+export const ResetInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "ResetInstanceRequest" });
 
 export interface Location {
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
@@ -1292,16 +1084,13 @@ export interface Location {
   metadata?: Record<string, unknown>;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      locationId: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      displayName: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  locationId: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  displayName: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Location" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -1310,15 +1099,10 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(Location)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface Environment {
   /** Display name of this environment for the UI. */
@@ -1337,20 +1121,15 @@ export interface Environment {
   createTime?: string;
 }
 
-export const Environment: Schema.Schema<Environment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      containerImage: Schema.optional(ContainerImage),
-      postStartupScript: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      vmImage: Schema.optional(VmImage),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Environment",
-  }) as any as Schema.Schema<Environment>;
+export const Environment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  containerImage: Schema.optional(ContainerImage),
+  postStartupScript: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  vmImage: Schema.optional(VmImage),
+  createTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Environment" });
 
 export interface Schedule {
   /** Timezone on which the cron_schedule. The value of this field must be a time zone name from the tz database. TZ Database: https://en.wikipedia.org/wiki/List_of_tz_database_time_zones Note that some time zones include a provision for daylight savings time. The rules for daylight saving time are determined by the chosen tz. For UTC use the string "utc". If a time zone is not specified, the default will be in UTC (also known as GMT). */
@@ -1382,21 +1161,18 @@ export interface Schedule {
   updateTime?: string;
 }
 
-export const Schedule: Schema.Schema<Schedule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      timeZone: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      recentExecutions: Schema.optional(Schema.Array(Execution)),
-      executionTemplate: Schema.optional(ExecutionTemplate),
-      createTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      cronSchedule: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Schedule" }) as any as Schema.Schema<Schedule>;
+export const Schedule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  timeZone: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  recentExecutions: Schema.optional(Schema.Array(Execution)),
+  executionTemplate: Schema.optional(ExecutionTemplate),
+  createTime: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  cronSchedule: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Schedule" });
 
 export interface ReservationAffinity {
   /** Optional. Type of reservation to consume */
@@ -1412,16 +1188,11 @@ export interface ReservationAffinity {
   values?: Array<string>;
 }
 
-export const ReservationAffinity: Schema.Schema<ReservationAffinity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      consumeReservationType: Schema.optional(Schema.String),
-      key: Schema.optional(Schema.String),
-      values: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ReservationAffinity",
-  }) as any as Schema.Schema<ReservationAffinity>;
+export const ReservationAffinity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  consumeReservationType: Schema.optional(Schema.String),
+  key: Schema.optional(Schema.String),
+  values: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ReservationAffinity" });
 
 export interface Instance {
   /** Optional. The URIs of service account scopes to be included in Compute Engine instances. If not specified, the following [scopes](https://cloud.google.com/compute/docs/access/service-accounts#accesscopesiam) are defined: - https://www.googleapis.com/auth/cloud-platform - https://www.googleapis.com/auth/userinfo.email If not using default scopes, you need at least: https://www.googleapis.com/auth/compute */
@@ -1531,51 +1302,46 @@ export interface Instance {
   subnet?: string;
 }
 
-export const Instance: Schema.Schema<Instance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serviceAccountScopes: Schema.optional(Schema.Array(Schema.String)),
-      reservationAffinity: Schema.optional(ReservationAffinity),
-      state: Schema.optional(Schema.String),
-      dataDiskType: Schema.optional(Schema.String),
-      disks: Schema.optional(Schema.Array(Disk)),
-      diskEncryption: Schema.optional(Schema.String),
-      acceleratorConfig: Schema.optional(AcceleratorConfig),
-      network: Schema.optional(Schema.String),
-      machineType: Schema.optional(Schema.String),
-      kmsKey: Schema.optional(Schema.String),
-      tags: Schema.optional(Schema.Array(Schema.String)),
-      creator: Schema.optional(Schema.String),
-      serviceAccount: Schema.optional(Schema.String),
-      upgradeHistory: Schema.optional(Schema.Array(UpgradeHistoryEntry)),
-      postStartupScript: Schema.optional(Schema.String),
-      bootDiskSizeGb: Schema.optional(Schema.String),
-      containerImage: Schema.optional(ContainerImage),
-      customGpuDriverPath: Schema.optional(Schema.String),
-      noProxyAccess: Schema.optional(Schema.Boolean),
-      shieldedInstanceConfig: Schema.optional(ShieldedInstanceConfig),
-      migrated: Schema.optional(Schema.Boolean),
-      instanceOwners: Schema.optional(Schema.Array(Schema.String)),
-      proxyUri: Schema.optional(Schema.String),
-      nicType: Schema.optional(Schema.String),
-      noPublicIp: Schema.optional(Schema.Boolean),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      vmImage: Schema.optional(VmImage),
-      bootDiskType: Schema.optional(Schema.String),
-      installGpuDriver: Schema.optional(Schema.Boolean),
-      dataDiskSizeGb: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      instanceMigrationEligibility: Schema.optional(
-        InstanceMigrationEligibility,
-      ),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      updateTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      noRemoveDataDisk: Schema.optional(Schema.Boolean),
-      canIpForward: Schema.optional(Schema.Boolean),
-      subnet: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Instance" }) as any as Schema.Schema<Instance>;
+export const Instance = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  serviceAccountScopes: Schema.optional(Schema.Array(Schema.String)),
+  reservationAffinity: Schema.optional(ReservationAffinity),
+  state: Schema.optional(Schema.String),
+  dataDiskType: Schema.optional(Schema.String),
+  disks: Schema.optional(Schema.Array(Disk)),
+  diskEncryption: Schema.optional(Schema.String),
+  acceleratorConfig: Schema.optional(AcceleratorConfig),
+  network: Schema.optional(Schema.String),
+  machineType: Schema.optional(Schema.String),
+  kmsKey: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Array(Schema.String)),
+  creator: Schema.optional(Schema.String),
+  serviceAccount: Schema.optional(Schema.String),
+  upgradeHistory: Schema.optional(Schema.Array(UpgradeHistoryEntry)),
+  postStartupScript: Schema.optional(Schema.String),
+  bootDiskSizeGb: Schema.optional(Schema.String),
+  containerImage: Schema.optional(ContainerImage),
+  customGpuDriverPath: Schema.optional(Schema.String),
+  noProxyAccess: Schema.optional(Schema.Boolean),
+  shieldedInstanceConfig: Schema.optional(ShieldedInstanceConfig),
+  migrated: Schema.optional(Schema.Boolean),
+  instanceOwners: Schema.optional(Schema.Array(Schema.String)),
+  proxyUri: Schema.optional(Schema.String),
+  nicType: Schema.optional(Schema.String),
+  noPublicIp: Schema.optional(Schema.Boolean),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  vmImage: Schema.optional(VmImage),
+  bootDiskType: Schema.optional(Schema.String),
+  installGpuDriver: Schema.optional(Schema.Boolean),
+  dataDiskSizeGb: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  instanceMigrationEligibility: Schema.optional(InstanceMigrationEligibility),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  updateTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  noRemoveDataDisk: Schema.optional(Schema.Boolean),
+  canIpForward: Schema.optional(Schema.Boolean),
+  subnet: Schema.optional(Schema.String),
+}).annotate({ identifier: "Instance" });
 
 export interface ListInstancesResponse {
   /** Page token that can be used to continue listing from the last result in the next list call. */
@@ -1586,16 +1352,11 @@ export interface ListInstancesResponse {
   unreachable?: Array<string>;
 }
 
-export const ListInstancesResponse: Schema.Schema<ListInstancesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      instances: Schema.optional(Schema.Array(Instance)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListInstancesResponse",
-  }) as any as Schema.Schema<ListInstancesResponse>;
+export const ListInstancesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  instances: Schema.optional(Schema.Array(Instance)),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ListInstancesResponse" });
 
 export interface GetInstanceHealthResponse {
   /** Output only. Additional information about instance health. Example: healthInfo": { "docker_proxy_agent_status": "1", "docker_status": "1", "jupyterlab_api_status": "-1", "jupyterlab_status": "-1", "updated": "2020-10-18 09:40:03.573409" } */
@@ -1610,43 +1371,30 @@ export interface GetInstanceHealthResponse {
     | (string & {});
 }
 
-export const GetInstanceHealthResponse: Schema.Schema<GetInstanceHealthResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      healthInfo: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      healthState: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GetInstanceHealthResponse",
-  }) as any as Schema.Schema<GetInstanceHealthResponse>;
+export const GetInstanceHealthResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    healthInfo: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    healthState: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GetInstanceHealthResponse" });
 
 export interface ResetRuntimeRequest {
   /** Idempotent request UUID. */
   requestId?: string;
 }
 
-export const ResetRuntimeRequest: Schema.Schema<ResetRuntimeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ResetRuntimeRequest",
-  }) as any as Schema.Schema<ResetRuntimeRequest>;
+export const ResetRuntimeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  requestId: Schema.optional(Schema.String),
+}).annotate({ identifier: "ResetRuntimeRequest" });
 
 export interface RefreshRuntimeTokenInternalRequest {
   /** Required. The VM hardware token for authenticating the VM. https://cloud.google.com/compute/docs/instances/verifying-instance-identity */
   vmId?: string;
 }
 
-export const RefreshRuntimeTokenInternalRequest: Schema.Schema<RefreshRuntimeTokenInternalRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      vmId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RefreshRuntimeTokenInternalRequest",
-  }) as any as Schema.Schema<RefreshRuntimeTokenInternalRequest>;
+export const RefreshRuntimeTokenInternalRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    vmId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RefreshRuntimeTokenInternalRequest" });
 
 export interface DiagnoseRuntimeRequest {
   /** Required. Defines flags that are used to run the diagnostic tool */
@@ -1655,36 +1403,28 @@ export interface DiagnoseRuntimeRequest {
   timeoutMinutes?: number;
 }
 
-export const DiagnoseRuntimeRequest: Schema.Schema<DiagnoseRuntimeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      diagnosticConfig: Schema.optional(DiagnosticConfig),
-      timeoutMinutes: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "DiagnoseRuntimeRequest",
-  }) as any as Schema.Schema<DiagnoseRuntimeRequest>;
+export const DiagnoseRuntimeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    diagnosticConfig: Schema.optional(DiagnosticConfig),
+    timeoutMinutes: Schema.optional(Schema.Number),
+  },
+).annotate({ identifier: "DiagnoseRuntimeRequest" });
 
 export interface StartInstanceRequest {}
 
-export const StartInstanceRequest: Schema.Schema<StartInstanceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "StartInstanceRequest",
-  }) as any as Schema.Schema<StartInstanceRequest>;
+export const StartInstanceRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "StartInstanceRequest" });
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsResponse",
-  }) as any as Schema.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsResponse" });
 
 export interface ReportRuntimeEventRequest {
   /** Required. The VM hardware token for authenticating the VM. https://cloud.google.com/compute/docs/instances/verifying-instance-identity */
@@ -1693,15 +1433,11 @@ export interface ReportRuntimeEventRequest {
   event?: Event;
 }
 
-export const ReportRuntimeEventRequest: Schema.Schema<ReportRuntimeEventRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      vmId: Schema.optional(Schema.String),
-      event: Schema.optional(Event),
-    }),
-  ).annotate({
-    identifier: "ReportRuntimeEventRequest",
-  }) as any as Schema.Schema<ReportRuntimeEventRequest>;
+export const ReportRuntimeEventRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    vmId: Schema.optional(Schema.String),
+    event: Schema.optional(Event),
+  }).annotate({ identifier: "ReportRuntimeEventRequest" });
 
 export interface MigrateRuntimeRequest {
   /** Optional. The service account to be included in the Compute Engine instance of the new Workbench Instance when the Runtime uses "single user only" mode for permission. If not specified, the [Compute Engine default service account](https://cloud.google.com/compute/docs/access/service-accounts#default_service_account) is used. When the Runtime uses service account mode for permission, it will reuse the same service account, and this field must be empty. */
@@ -1720,18 +1456,13 @@ export interface MigrateRuntimeRequest {
     | (string & {});
 }
 
-export const MigrateRuntimeRequest: Schema.Schema<MigrateRuntimeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serviceAccount: Schema.optional(Schema.String),
-      requestId: Schema.optional(Schema.String),
-      network: Schema.optional(Schema.String),
-      subnet: Schema.optional(Schema.String),
-      postStartupScriptOption: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MigrateRuntimeRequest",
-  }) as any as Schema.Schema<MigrateRuntimeRequest>;
+export const MigrateRuntimeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  serviceAccount: Schema.optional(Schema.String),
+  requestId: Schema.optional(Schema.String),
+  network: Schema.optional(Schema.String),
+  subnet: Schema.optional(Schema.String),
+  postStartupScriptOption: Schema.optional(Schema.String),
+}).annotate({ identifier: "MigrateRuntimeRequest" });
 
 export interface SwitchRuntimeRequest {
   /** Idempotent request UUID. */
@@ -1742,16 +1473,11 @@ export interface SwitchRuntimeRequest {
   acceleratorConfig?: RuntimeAcceleratorConfig;
 }
 
-export const SwitchRuntimeRequest: Schema.Schema<SwitchRuntimeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestId: Schema.optional(Schema.String),
-      machineType: Schema.optional(Schema.String),
-      acceleratorConfig: Schema.optional(RuntimeAcceleratorConfig),
-    }),
-  ).annotate({
-    identifier: "SwitchRuntimeRequest",
-  }) as any as Schema.Schema<SwitchRuntimeRequest>;
+export const SwitchRuntimeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  requestId: Schema.optional(Schema.String),
+  machineType: Schema.optional(Schema.String),
+  acceleratorConfig: Schema.optional(RuntimeAcceleratorConfig),
+}).annotate({ identifier: "SwitchRuntimeRequest" });
 
 export interface RefreshRuntimeTokenInternalResponse {
   /** Output only. Token expiration time. */
@@ -1760,15 +1486,11 @@ export interface RefreshRuntimeTokenInternalResponse {
   accessToken?: string;
 }
 
-export const RefreshRuntimeTokenInternalResponse: Schema.Schema<RefreshRuntimeTokenInternalResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expireTime: Schema.optional(Schema.String),
-      accessToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RefreshRuntimeTokenInternalResponse",
-  }) as any as Schema.Schema<RefreshRuntimeTokenInternalResponse>;
+export const RefreshRuntimeTokenInternalResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    expireTime: Schema.optional(Schema.String),
+    accessToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RefreshRuntimeTokenInternalResponse" });
 
 export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
@@ -1779,30 +1501,22 @@ export interface ListOperationsResponse {
   nextPageToken?: string;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      operations: Schema.optional(Schema.Array(Operation)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    operations: Schema.optional(Schema.Array(Operation)),
+    nextPageToken: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: Policy;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policy: Schema.optional(Policy),
-    }),
-  ).annotate({
-    identifier: "SetIamPolicyRequest",
-  }) as any as Schema.Schema<SetIamPolicyRequest>;
+export const SetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policy: Schema.optional(Policy),
+}).annotate({ identifier: "SetIamPolicyRequest" });
 
 export interface ListSchedulesResponse {
   /** Page token that can be used to continue listing from the last result in the next list call. */
@@ -1813,58 +1527,40 @@ export interface ListSchedulesResponse {
   unreachable?: Array<string>;
 }
 
-export const ListSchedulesResponse: Schema.Schema<ListSchedulesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      schedules: Schema.optional(Schema.Array(Schedule)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListSchedulesResponse",
-  }) as any as Schema.Schema<ListSchedulesResponse>;
+export const ListSchedulesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  schedules: Schema.optional(Schema.Array(Schedule)),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ListSchedulesResponse" });
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsRequest",
-  }) as any as Schema.Schema<TestIamPermissionsRequest>;
+export const TestIamPermissionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsRequest" });
 
 export interface SetInstanceLabelsRequest {
   /** Labels to apply to this instance. These can be later modified by the setLabels method */
   labels?: Record<string, string>;
 }
 
-export const SetInstanceLabelsRequest: Schema.Schema<SetInstanceLabelsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "SetInstanceLabelsRequest",
-  }) as any as Schema.Schema<SetInstanceLabelsRequest>;
+export const SetInstanceLabelsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({ identifier: "SetInstanceLabelsRequest" });
 
 export interface StopRuntimeRequest {
   /** Idempotent request UUID. */
   requestId?: string;
 }
 
-export const StopRuntimeRequest: Schema.Schema<StopRuntimeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StopRuntimeRequest",
-  }) as any as Schema.Schema<StopRuntimeRequest>;
+export const StopRuntimeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  requestId: Schema.optional(Schema.String),
+}).annotate({ identifier: "StopRuntimeRequest" });
 
 export interface ListRuntimesResponse {
   /** Locations that could not be reached. For example, `['us-west1', 'us-central1']`. A ListRuntimesResponse will only contain either runtimes or unreachables, */
@@ -1875,16 +1571,11 @@ export interface ListRuntimesResponse {
   nextPageToken?: string;
 }
 
-export const ListRuntimesResponse: Schema.Schema<ListRuntimesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      runtimes: Schema.optional(Schema.Array(Runtime)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListRuntimesResponse",
-  }) as any as Schema.Schema<ListRuntimesResponse>;
+export const ListRuntimesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+  runtimes: Schema.optional(Schema.Array(Runtime)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListRuntimesResponse" });
 
 export interface SetInstanceAcceleratorRequest {
   /** Required. Type of this accelerator. */
@@ -1910,15 +1601,11 @@ export interface SetInstanceAcceleratorRequest {
   coreCount?: string;
 }
 
-export const SetInstanceAcceleratorRequest: Schema.Schema<SetInstanceAcceleratorRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      coreCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SetInstanceAcceleratorRequest",
-  }) as any as Schema.Schema<SetInstanceAcceleratorRequest>;
+export const SetInstanceAcceleratorRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    coreCount: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SetInstanceAcceleratorRequest" });
 
 export interface UpgradeInstanceInternalRequest {
   /** Required. The VM hardware token for authenticating the VM. https://cloud.google.com/compute/docs/instances/verifying-instance-identity */
@@ -1933,36 +1620,27 @@ export interface UpgradeInstanceInternalRequest {
     | (string & {});
 }
 
-export const UpgradeInstanceInternalRequest: Schema.Schema<UpgradeInstanceInternalRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      vmId: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpgradeInstanceInternalRequest",
-  }) as any as Schema.Schema<UpgradeInstanceInternalRequest>;
+export const UpgradeInstanceInternalRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    vmId: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UpgradeInstanceInternalRequest" });
 
 export interface UpdateInstanceMetadataItemsRequest {
   /** Metadata items to add/update for the instance. */
   items?: Record<string, string>;
 }
 
-export const UpdateInstanceMetadataItemsRequest: Schema.Schema<UpdateInstanceMetadataItemsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      items: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "UpdateInstanceMetadataItemsRequest",
-  }) as any as Schema.Schema<UpdateInstanceMetadataItemsRequest>;
+export const UpdateInstanceMetadataItemsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    items: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({ identifier: "UpdateInstanceMetadataItemsRequest" });
 
 export interface TriggerScheduleRequest {}
 
-export const TriggerScheduleRequest: Schema.Schema<TriggerScheduleRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "TriggerScheduleRequest",
-  }) as any as Schema.Schema<TriggerScheduleRequest>;
+export const TriggerScheduleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "TriggerScheduleRequest" });
 
 export interface OperationMetadata {
   /** The time the operation was created. */
@@ -1983,21 +1661,16 @@ export interface OperationMetadata {
   endpoint?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      apiVersion: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      endpoint: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createTime: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  statusMessage: Schema.optional(Schema.String),
+  verb: Schema.optional(Schema.String),
+  apiVersion: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  requestedCancellation: Schema.optional(Schema.Boolean),
+  endpoint: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationMetadata" });
 
 export interface ListEnvironmentsResponse {
   /** Locations that could not be reached. */
@@ -2008,16 +1681,12 @@ export interface ListEnvironmentsResponse {
   environments?: Array<Environment>;
 }
 
-export const ListEnvironmentsResponse: Schema.Schema<ListEnvironmentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-      environments: Schema.optional(Schema.Array(Environment)),
-    }),
-  ).annotate({
-    identifier: "ListEnvironmentsResponse",
-  }) as any as Schema.Schema<ListEnvironmentsResponse>;
+export const ListEnvironmentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+    environments: Schema.optional(Schema.Array(Environment)),
+  }).annotate({ identifier: "ListEnvironmentsResponse" });
 
 // ==========================================================================
 // Operations

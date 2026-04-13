@@ -24,10 +24,9 @@ const svc = T.Service({
 
 export interface GoogleProtobufEmpty {}
 
-export const GoogleProtobufEmpty: Schema.Schema<GoogleProtobufEmpty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "GoogleProtobufEmpty",
-  }) as any as Schema.Schema<GoogleProtobufEmpty>;
+export const GoogleProtobufEmpty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "GoogleProtobufEmpty" });
 
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -38,16 +37,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
@@ -62,16 +58,13 @@ export interface Operation {
   done?: boolean;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      error: Schema.optional(Status),
-      name: Schema.optional(Schema.String),
-      done: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  error: Schema.optional(Status),
+  name: Schema.optional(Schema.String),
+  done: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Operation" });
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -80,15 +73,12 @@ export interface ListOperationsResponse {
   nextPageToken?: string;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(Schema.Array(Operation)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    operations: Schema.optional(Schema.Array(Operation)),
+    nextPageToken: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 export interface GethDetails {
   /** Immutable. Blockchain garbage collection mode. */
@@ -99,14 +89,9 @@ export interface GethDetails {
     | (string & {});
 }
 
-export const GethDetails: Schema.Schema<GethDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      garbageCollectionMode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GethDetails",
-  }) as any as Schema.Schema<GethDetails>;
+export const GethDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  garbageCollectionMode: Schema.optional(Schema.String),
+}).annotate({ identifier: "GethDetails" });
 
 export interface EthereumEndpoints {
   /** Output only. The assigned URL for the node's Beacon API endpoint. */
@@ -117,18 +102,11 @@ export interface EthereumEndpoints {
   beaconPrometheusMetricsApiEndpoint?: string;
 }
 
-export const EthereumEndpoints: Schema.Schema<EthereumEndpoints> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      beaconApiEndpoint: Schema.optional(Schema.String),
-      executionClientPrometheusMetricsApiEndpoint: Schema.optional(
-        Schema.String,
-      ),
-      beaconPrometheusMetricsApiEndpoint: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EthereumEndpoints",
-  }) as any as Schema.Schema<EthereumEndpoints>;
+export const EthereumEndpoints = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  beaconApiEndpoint: Schema.optional(Schema.String),
+  executionClientPrometheusMetricsApiEndpoint: Schema.optional(Schema.String),
+  beaconPrometheusMetricsApiEndpoint: Schema.optional(Schema.String),
+}).annotate({ identifier: "EthereumEndpoints" });
 
 export interface ValidatorConfig {
   /** URLs for MEV-relay services to use for block building. When set, a GCP-managed MEV-boost service is configured on the beacon client. */
@@ -139,16 +117,11 @@ export interface ValidatorConfig {
   beaconFeeRecipient?: string;
 }
 
-export const ValidatorConfig: Schema.Schema<ValidatorConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mevRelayUrls: Schema.optional(Schema.Array(Schema.String)),
-      managedValidatorClient: Schema.optional(Schema.Boolean),
-      beaconFeeRecipient: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ValidatorConfig",
-  }) as any as Schema.Schema<ValidatorConfig>;
+export const ValidatorConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  mevRelayUrls: Schema.optional(Schema.Array(Schema.String)),
+  managedValidatorClient: Schema.optional(Schema.Boolean),
+  beaconFeeRecipient: Schema.optional(Schema.String),
+}).annotate({ identifier: "ValidatorConfig" });
 
 export interface EthereumDetails {
   /** Immutable. The type of Ethereum node. */
@@ -190,22 +163,17 @@ export interface EthereumDetails {
   validatorConfig?: ValidatorConfig;
 }
 
-export const EthereumDetails: Schema.Schema<EthereumDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nodeType: Schema.optional(Schema.String),
-      executionClient: Schema.optional(Schema.String),
-      consensusClient: Schema.optional(Schema.String),
-      gethDetails: Schema.optional(GethDetails),
-      apiEnableDebug: Schema.optional(Schema.Boolean),
-      network: Schema.optional(Schema.String),
-      additionalEndpoints: Schema.optional(EthereumEndpoints),
-      apiEnableAdmin: Schema.optional(Schema.Boolean),
-      validatorConfig: Schema.optional(ValidatorConfig),
-    }),
-  ).annotate({
-    identifier: "EthereumDetails",
-  }) as any as Schema.Schema<EthereumDetails>;
+export const EthereumDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nodeType: Schema.optional(Schema.String),
+  executionClient: Schema.optional(Schema.String),
+  consensusClient: Schema.optional(Schema.String),
+  gethDetails: Schema.optional(GethDetails),
+  apiEnableDebug: Schema.optional(Schema.Boolean),
+  network: Schema.optional(Schema.String),
+  additionalEndpoints: Schema.optional(EthereumEndpoints),
+  apiEnableAdmin: Schema.optional(Schema.Boolean),
+  validatorConfig: Schema.optional(ValidatorConfig),
+}).annotate({ identifier: "EthereumDetails" });
 
 export interface EndpointInfo {
   /** Output only. The assigned URL for the node JSON-RPC API endpoint. */
@@ -214,15 +182,10 @@ export interface EndpointInfo {
   websocketsApiEndpoint?: string;
 }
 
-export const EndpointInfo: Schema.Schema<EndpointInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      jsonRpcApiEndpoint: Schema.optional(Schema.String),
-      websocketsApiEndpoint: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EndpointInfo",
-  }) as any as Schema.Schema<EndpointInfo>;
+export const EndpointInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  jsonRpcApiEndpoint: Schema.optional(Schema.String),
+  websocketsApiEndpoint: Schema.optional(Schema.String),
+}).annotate({ identifier: "EndpointInfo" });
 
 export interface ConnectionInfo {
   /** Output only. The endpoint information through which to interact with a blockchain node. */
@@ -231,15 +194,10 @@ export interface ConnectionInfo {
   serviceAttachment?: string;
 }
 
-export const ConnectionInfo: Schema.Schema<ConnectionInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endpointInfo: Schema.optional(EndpointInfo),
-      serviceAttachment: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConnectionInfo",
-  }) as any as Schema.Schema<ConnectionInfo>;
+export const ConnectionInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  endpointInfo: Schema.optional(EndpointInfo),
+  serviceAttachment: Schema.optional(Schema.String),
+}).annotate({ identifier: "ConnectionInfo" });
 
 export interface BlockchainNode {
   /** Ethereum-specific blockchain node details. */
@@ -272,22 +230,17 @@ export interface BlockchainNode {
   createTime?: string;
 }
 
-export const BlockchainNode: Schema.Schema<BlockchainNode> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ethereumDetails: Schema.optional(EthereumDetails),
-      updateTime: Schema.optional(Schema.String),
-      privateServiceConnectEnabled: Schema.optional(Schema.Boolean),
-      connectionInfo: Schema.optional(ConnectionInfo),
-      name: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      blockchainType: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BlockchainNode",
-  }) as any as Schema.Schema<BlockchainNode>;
+export const BlockchainNode = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ethereumDetails: Schema.optional(EthereumDetails),
+  updateTime: Schema.optional(Schema.String),
+  privateServiceConnectEnabled: Schema.optional(Schema.Boolean),
+  connectionInfo: Schema.optional(ConnectionInfo),
+  name: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  blockchainType: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "BlockchainNode" });
 
 export interface ListBlockchainNodesResponse {
   /** A token identifying a page of results the server should return. */
@@ -298,23 +251,18 @@ export interface ListBlockchainNodesResponse {
   blockchainNodes?: Array<BlockchainNode>;
 }
 
-export const ListBlockchainNodesResponse: Schema.Schema<ListBlockchainNodesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      blockchainNodes: Schema.optional(Schema.Array(BlockchainNode)),
-    }),
-  ).annotate({
-    identifier: "ListBlockchainNodesResponse",
-  }) as any as Schema.Schema<ListBlockchainNodesResponse>;
+export const ListBlockchainNodesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    blockchainNodes: Schema.optional(Schema.Array(BlockchainNode)),
+  }).annotate({ identifier: "ListBlockchainNodesResponse" });
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelOperationRequest",
-  }) as any as Schema.Schema<CancelOperationRequest>;
+export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelOperationRequest" });
 
 export interface Location {
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
@@ -329,16 +277,13 @@ export interface Location {
   metadata?: Record<string, unknown>;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      locationId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  locationId: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Location" });
 
 export interface OperationMetadata {
   /** Output only. Server-defined resource path for the target of the operation. */
@@ -357,20 +302,15 @@ export interface OperationMetadata {
   endTime?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      target: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      apiVersion: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  target: Schema.optional(Schema.String),
+  verb: Schema.optional(Schema.String),
+  requestedCancellation: Schema.optional(Schema.Boolean),
+  apiVersion: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  statusMessage: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationMetadata" });
 
 export interface ListLocationsResponse {
   /** The standard List next-page token. */
@@ -379,15 +319,10 @@ export interface ListLocationsResponse {
   locations?: Array<Location>;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      locations: Schema.optional(Schema.Array(Location)),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  locations: Schema.optional(Schema.Array(Location)),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 // ==========================================================================
 // Operations

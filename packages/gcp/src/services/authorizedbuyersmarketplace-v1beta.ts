@@ -29,15 +29,11 @@ export interface VideoPlayerSizeTargeting {
   minimumHeight?: string;
 }
 
-export const VideoPlayerSizeTargeting: Schema.Schema<VideoPlayerSizeTargeting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      minimumWidth: Schema.optional(Schema.String),
-      minimumHeight: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VideoPlayerSizeTargeting",
-  }) as any as Schema.Schema<VideoPlayerSizeTargeting>;
+export const VideoPlayerSizeTargeting =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    minimumWidth: Schema.optional(Schema.String),
+    minimumHeight: Schema.optional(Schema.String),
+  }).annotate({ identifier: "VideoPlayerSizeTargeting" });
 
 export interface TaxonomyTargeting {
   /** Optional. The list of targeted content taxonomy IDs. */
@@ -46,15 +42,10 @@ export interface TaxonomyTargeting {
   excludedTaxonomyIds?: Array<string>;
 }
 
-export const TaxonomyTargeting: Schema.Schema<TaxonomyTargeting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetedTaxonomyIds: Schema.optional(Schema.Array(Schema.String)),
-      excludedTaxonomyIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TaxonomyTargeting",
-  }) as any as Schema.Schema<TaxonomyTargeting>;
+export const TaxonomyTargeting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  targetedTaxonomyIds: Schema.optional(Schema.Array(Schema.String)),
+  excludedTaxonomyIds: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "TaxonomyTargeting" });
 
 export interface StringTargetingDimension {
   /** Required. The values specified. */
@@ -67,15 +58,11 @@ export interface StringTargetingDimension {
     | (string & {});
 }
 
-export const StringTargetingDimension: Schema.Schema<StringTargetingDimension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      values: Schema.optional(Schema.Array(Schema.String)),
-      selectionType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StringTargetingDimension",
-  }) as any as Schema.Schema<StringTargetingDimension>;
+export const StringTargetingDimension =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    values: Schema.optional(Schema.Array(Schema.String)),
+    selectionType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "StringTargetingDimension" });
 
 export interface PackagePublisherProvidedSignalsTargeting {
   /** Optional. The list of targeted or excluded audience IDs. Based off of IAB Audience Taxonomy version 1.1 (https://github.com/InteractiveAdvertisingBureau/Taxonomies/blob/main/Audience%20Taxonomies/Audience%20Taxonomy%201.1.tsv) */
@@ -86,16 +73,12 @@ export interface PackagePublisherProvidedSignalsTargeting {
   videoAndAudioSignalsTargeting?: StringTargetingDimension;
 }
 
-export const PackagePublisherProvidedSignalsTargeting: Schema.Schema<PackagePublisherProvidedSignalsTargeting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      audienceTargeting: Schema.optional(TaxonomyTargeting),
-      contentTargeting: Schema.optional(TaxonomyTargeting),
-      videoAndAudioSignalsTargeting: Schema.optional(StringTargetingDimension),
-    }),
-  ).annotate({
-    identifier: "PackagePublisherProvidedSignalsTargeting",
-  }) as any as Schema.Schema<PackagePublisherProvidedSignalsTargeting>;
+export const PackagePublisherProvidedSignalsTargeting =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    audienceTargeting: Schema.optional(TaxonomyTargeting),
+    contentTargeting: Schema.optional(TaxonomyTargeting),
+    videoAndAudioSignalsTargeting: Schema.optional(StringTargetingDimension),
+  }).annotate({ identifier: "PackagePublisherProvidedSignalsTargeting" });
 
 export interface VideoPlcmtTargeting {
   /** Required. The selection type for the list of video plcmts. */
@@ -115,15 +98,10 @@ export interface VideoPlcmtTargeting {
   >;
 }
 
-export const VideoPlcmtTargeting: Schema.Schema<VideoPlcmtTargeting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      selectionType: Schema.optional(Schema.String),
-      videoPlcmtTypes: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "VideoPlcmtTargeting",
-  }) as any as Schema.Schema<VideoPlcmtTargeting>;
+export const VideoPlcmtTargeting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  selectionType: Schema.optional(Schema.String),
+  videoPlcmtTypes: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "VideoPlcmtTargeting" });
 
 export interface PackageVideoTargeting {
   /** Optional. The list of targeted video mime types using the IANA published MIME type strings (https://www.iana.org/assignments/media-types/media-types.xhtml). If empty, inventory will be targeted regardless of video mime type. */
@@ -177,21 +155,16 @@ export interface PackageVideoTargeting {
   includedPlayerSizeTargeting?: VideoPlayerSizeTargeting;
 }
 
-export const PackageVideoTargeting: Schema.Schema<PackageVideoTargeting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      includedMimeTypes: Schema.optional(Schema.Array(Schema.String)),
-      minimumPredictedCompletionRatePercentage: Schema.optional(Schema.String),
-      includedMaximumAdDurationTargeting: Schema.optional(Schema.String),
-      includedPlaybackMethods: Schema.optional(Schema.Array(Schema.String)),
-      includedContentDeliveryMethod: Schema.optional(Schema.String),
-      plcmtTargeting: Schema.optional(VideoPlcmtTargeting),
-      includedPositionTypes: Schema.optional(Schema.Array(Schema.String)),
-      includedPlayerSizeTargeting: Schema.optional(VideoPlayerSizeTargeting),
-    }),
-  ).annotate({
-    identifier: "PackageVideoTargeting",
-  }) as any as Schema.Schema<PackageVideoTargeting>;
+export const PackageVideoTargeting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  includedMimeTypes: Schema.optional(Schema.Array(Schema.String)),
+  minimumPredictedCompletionRatePercentage: Schema.optional(Schema.String),
+  includedMaximumAdDurationTargeting: Schema.optional(Schema.String),
+  includedPlaybackMethods: Schema.optional(Schema.Array(Schema.String)),
+  includedContentDeliveryMethod: Schema.optional(Schema.String),
+  plcmtTargeting: Schema.optional(VideoPlcmtTargeting),
+  includedPositionTypes: Schema.optional(Schema.Array(Schema.String)),
+  includedPlayerSizeTargeting: Schema.optional(VideoPlayerSizeTargeting),
+}).annotate({ identifier: "PackageVideoTargeting" });
 
 export interface CriteriaTargeting {
   /** A list of numeric IDs to be included. */
@@ -200,15 +173,10 @@ export interface CriteriaTargeting {
   excludedCriteriaIds?: Array<string>;
 }
 
-export const CriteriaTargeting: Schema.Schema<CriteriaTargeting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetedCriteriaIds: Schema.optional(Schema.Array(Schema.String)),
-      excludedCriteriaIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "CriteriaTargeting",
-  }) as any as Schema.Schema<CriteriaTargeting>;
+export const CriteriaTargeting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  targetedCriteriaIds: Schema.optional(Schema.Array(Schema.String)),
+  excludedCriteriaIds: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "CriteriaTargeting" });
 
 export interface AdSize {
   /** The width of the ad slot in pixels. This field will be present only when size type is `PIXEL`. */
@@ -225,14 +193,11 @@ export interface AdSize {
     | (string & {});
 }
 
-export const AdSize: Schema.Schema<AdSize> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      width: Schema.optional(Schema.String),
-      height: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "AdSize" }) as any as Schema.Schema<AdSize>;
+export const AdSize = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  width: Schema.optional(Schema.String),
+  height: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "AdSize" });
 
 export interface PackagePlacementTargeting {
   /** Optional. The list of targeted or excluded URLs. The domains should have the http/https stripped (for example, google.com), and can contain a max of 5 paths per url. */
@@ -243,18 +208,14 @@ export interface PackagePlacementTargeting {
   includedMobileAppCategoryTargeting?: Array<string>;
 }
 
-export const PackagePlacementTargeting: Schema.Schema<PackagePlacementTargeting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uriTargeting: Schema.optional(StringTargetingDimension),
-      mobileAppTargeting: Schema.optional(StringTargetingDimension),
-      includedMobileAppCategoryTargeting: Schema.optional(
-        Schema.Array(Schema.String),
-      ),
-    }),
-  ).annotate({
-    identifier: "PackagePlacementTargeting",
-  }) as any as Schema.Schema<PackagePlacementTargeting>;
+export const PackagePlacementTargeting =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uriTargeting: Schema.optional(StringTargetingDimension),
+    mobileAppTargeting: Schema.optional(StringTargetingDimension),
+    includedMobileAppCategoryTargeting: Schema.optional(
+      Schema.Array(Schema.String),
+    ),
+  }).annotate({ identifier: "PackagePlacementTargeting" });
 
 export interface PackageTargeting {
   /** Optional. The creative format to target. If unset, all creative markup types are targeted. */
@@ -343,45 +304,34 @@ export interface PackageTargeting {
   >;
 }
 
-export const PackageTargeting: Schema.Schema<PackageTargeting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      includedCreativeFormat: Schema.optional(Schema.String),
-      videoTargeting: Schema.optional(PackageVideoTargeting),
-      includedDataSegments: Schema.optional(Schema.Array(Schema.String)),
-      includedDeviceTypes: Schema.optional(Schema.Array(Schema.String)),
-      verticalTargeting: Schema.optional(CriteriaTargeting),
-      languageTargeting: Schema.optional(StringTargetingDimension),
-      includedAdSizes: Schema.optional(Schema.Array(AdSize)),
-      publisherTargeting: Schema.optional(StringTargetingDimension),
-      includedRestrictedCategories: Schema.optional(
-        Schema.Array(Schema.String),
-      ),
-      includedAuthorizedSellerStatuses: Schema.optional(
-        Schema.Array(Schema.String),
-      ),
-      includedOpenMeasurementTypes: Schema.optional(
-        Schema.Array(Schema.String),
-      ),
-      geoTargeting: Schema.optional(CriteriaTargeting),
-      includedEnvironment: Schema.optional(Schema.String),
-      publisherProvidedSignalsTargeting: Schema.optional(
-        PackagePublisherProvidedSignalsTargeting,
-      ),
-      includedRewardedType: Schema.optional(Schema.String),
-      minimumPredictedViewabilityPercentage: Schema.optional(Schema.String),
-      minimumPredictedClickThroughRatePercentageMillis: Schema.optional(
-        Schema.String,
-      ),
-      placementTargeting: Schema.optional(PackagePlacementTargeting),
-      includedAcceleratedMobilePageType: Schema.optional(Schema.String),
-      includedNativeInventoryTypes: Schema.optional(
-        Schema.Array(Schema.String),
-      ),
-    }),
-  ).annotate({
-    identifier: "PackageTargeting",
-  }) as any as Schema.Schema<PackageTargeting>;
+export const PackageTargeting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  includedCreativeFormat: Schema.optional(Schema.String),
+  videoTargeting: Schema.optional(PackageVideoTargeting),
+  includedDataSegments: Schema.optional(Schema.Array(Schema.String)),
+  includedDeviceTypes: Schema.optional(Schema.Array(Schema.String)),
+  verticalTargeting: Schema.optional(CriteriaTargeting),
+  languageTargeting: Schema.optional(StringTargetingDimension),
+  includedAdSizes: Schema.optional(Schema.Array(AdSize)),
+  publisherTargeting: Schema.optional(StringTargetingDimension),
+  includedRestrictedCategories: Schema.optional(Schema.Array(Schema.String)),
+  includedAuthorizedSellerStatuses: Schema.optional(
+    Schema.Array(Schema.String),
+  ),
+  includedOpenMeasurementTypes: Schema.optional(Schema.Array(Schema.String)),
+  geoTargeting: Schema.optional(CriteriaTargeting),
+  includedEnvironment: Schema.optional(Schema.String),
+  publisherProvidedSignalsTargeting: Schema.optional(
+    PackagePublisherProvidedSignalsTargeting,
+  ),
+  includedRewardedType: Schema.optional(Schema.String),
+  minimumPredictedViewabilityPercentage: Schema.optional(Schema.String),
+  minimumPredictedClickThroughRatePercentageMillis: Schema.optional(
+    Schema.String,
+  ),
+  placementTargeting: Schema.optional(PackagePlacementTargeting),
+  includedAcceleratedMobilePageType: Schema.optional(Schema.String),
+  includedNativeInventoryTypes: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "PackageTargeting" });
 
 export interface Money {
   /** The three-letter currency code defined in ISO 4217. */
@@ -392,28 +342,20 @@ export interface Money {
   units?: string;
 }
 
-export const Money: Schema.Schema<Money> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      currencyCode: Schema.optional(Schema.String),
-      nanos: Schema.optional(Schema.Number),
-      units: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Money" }) as any as Schema.Schema<Money>;
+export const Money = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  currencyCode: Schema.optional(Schema.String),
+  nanos: Schema.optional(Schema.Number),
+  units: Schema.optional(Schema.String),
+}).annotate({ identifier: "Money" });
 
 export interface AccessControlSettings {
   /** Required. Immutable. The list of media planners that are explicitly granted access to the curated package. Eligible media planners can be found in the mediaPlanners.list method. Only a single media planner may be allowlisted at this time. Format: `mediaPlanners/{mediaPlannerAccountId}` */
   allowlistedMediaPlanners?: Array<string>;
 }
 
-export const AccessControlSettings: Schema.Schema<AccessControlSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      allowlistedMediaPlanners: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AccessControlSettings",
-  }) as any as Schema.Schema<AccessControlSettings>;
+export const AccessControlSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  allowlistedMediaPlanners: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "AccessControlSettings" });
 
 export interface CuratedPackage {
   /** Optional. The minimum CPM a buyer has to bid to participate in auctions for inventory in this curated package. Can be used to filter the response of the curatedPackages.list method. */
@@ -438,23 +380,18 @@ export interface CuratedPackage {
   description?: string;
 }
 
-export const CuratedPackage: Schema.Schema<CuratedPackage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      floorPriceCpm: Schema.optional(Money),
-      targeting: Schema.optional(PackageTargeting),
-      feeCpm: Schema.optional(Money),
-      accessSettings: Schema.optional(AccessControlSettings),
-      state: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CuratedPackage",
-  }) as any as Schema.Schema<CuratedPackage>;
+export const CuratedPackage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  floorPriceCpm: Schema.optional(Money),
+  targeting: Schema.optional(PackageTargeting),
+  feeCpm: Schema.optional(Money),
+  accessSettings: Schema.optional(AccessControlSettings),
+  state: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "CuratedPackage" });
 
 export interface MediaPlanner {
   /** Output only. Account ID of the media planner. */
@@ -467,24 +404,19 @@ export interface MediaPlanner {
   name?: string;
 }
 
-export const MediaPlanner: Schema.Schema<MediaPlanner> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accountId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      ancestorNames: Schema.optional(Schema.Array(Schema.String)),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MediaPlanner",
-  }) as any as Schema.Schema<MediaPlanner>;
+export const MediaPlanner = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  accountId: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  ancestorNames: Schema.optional(Schema.Array(Schema.String)),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "MediaPlanner" });
 
 export interface ActivateDataSegmentRequest {}
 
-export const ActivateDataSegmentRequest: Schema.Schema<ActivateDataSegmentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const ActivateDataSegmentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ActivateDataSegmentRequest",
-  }) as any as Schema.Schema<ActivateDataSegmentRequest>;
+  });
 
 export interface ListCuratedPackagesResponse {
   /** The list of curated packages. */
@@ -493,29 +425,25 @@ export interface ListCuratedPackagesResponse {
   nextPageToken?: string;
 }
 
-export const ListCuratedPackagesResponse: Schema.Schema<ListCuratedPackagesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      curatedPackages: Schema.optional(Schema.Array(CuratedPackage)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListCuratedPackagesResponse",
-  }) as any as Schema.Schema<ListCuratedPackagesResponse>;
+export const ListCuratedPackagesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    curatedPackages: Schema.optional(Schema.Array(CuratedPackage)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListCuratedPackagesResponse" });
 
 export interface DeactivateCuratedPackageRequest {}
 
-export const DeactivateCuratedPackageRequest: Schema.Schema<DeactivateCuratedPackageRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const DeactivateCuratedPackageRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeactivateCuratedPackageRequest",
-  }) as any as Schema.Schema<DeactivateCuratedPackageRequest>;
+  });
 
 export interface DeactivateDataSegmentRequest {}
 
-export const DeactivateDataSegmentRequest: Schema.Schema<DeactivateDataSegmentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const DeactivateDataSegmentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeactivateDataSegmentRequest",
-  }) as any as Schema.Schema<DeactivateDataSegmentRequest>;
+  });
 
 export interface DataSegment {
   /** Optional. A fixed fee charged per thousand impressions. Once set, the currency code cannot be changed. */
@@ -530,18 +458,13 @@ export interface DataSegment {
   updateTime?: string;
 }
 
-export const DataSegment: Schema.Schema<DataSegment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cpmFee: Schema.optional(Money),
-      name: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DataSegment",
-  }) as any as Schema.Schema<DataSegment>;
+export const DataSegment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cpmFee: Schema.optional(Money),
+  name: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "DataSegment" });
 
 export interface ListDataSegmentsResponse {
   /** The list of data segments. */
@@ -550,15 +473,11 @@ export interface ListDataSegmentsResponse {
   nextPageToken?: string;
 }
 
-export const ListDataSegmentsResponse: Schema.Schema<ListDataSegmentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataSegments: Schema.optional(Schema.Array(DataSegment)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListDataSegmentsResponse",
-  }) as any as Schema.Schema<ListDataSegmentsResponse>;
+export const ListDataSegmentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataSegments: Schema.optional(Schema.Array(DataSegment)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListDataSegmentsResponse" });
 
 export interface ListMediaPlannersResponse {
   /** List of media planners. */
@@ -567,22 +486,18 @@ export interface ListMediaPlannersResponse {
   nextPageToken?: string;
 }
 
-export const ListMediaPlannersResponse: Schema.Schema<ListMediaPlannersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mediaPlanners: Schema.optional(Schema.Array(MediaPlanner)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListMediaPlannersResponse",
-  }) as any as Schema.Schema<ListMediaPlannersResponse>;
+export const ListMediaPlannersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    mediaPlanners: Schema.optional(Schema.Array(MediaPlanner)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListMediaPlannersResponse" });
 
 export interface ActivateCuratedPackageRequest {}
 
-export const ActivateCuratedPackageRequest: Schema.Schema<ActivateCuratedPackageRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const ActivateCuratedPackageRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ActivateCuratedPackageRequest",
-  }) as any as Schema.Schema<ActivateCuratedPackageRequest>;
+  });
 
 // ==========================================================================
 // Operations

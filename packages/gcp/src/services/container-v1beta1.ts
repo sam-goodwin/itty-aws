@@ -27,28 +27,18 @@ export interface ConfigConnectorConfig {
   enabled?: boolean;
 }
 
-export const ConfigConnectorConfig: Schema.Schema<ConfigConnectorConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ConfigConnectorConfig",
-  }) as any as Schema.Schema<ConfigConnectorConfig>;
+export const ConfigConnectorConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "ConfigConnectorConfig" });
 
 export interface NetworkPolicyConfig {
   /** Whether NetworkPolicy is enabled for this cluster. */
   disabled?: boolean;
 }
 
-export const NetworkPolicyConfig: Schema.Schema<NetworkPolicyConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      disabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "NetworkPolicyConfig",
-  }) as any as Schema.Schema<NetworkPolicyConfig>;
+export const NetworkPolicyConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  disabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "NetworkPolicyConfig" });
 
 export interface SandboxConfig {
   /** Type of the sandbox to use for the node (e.g. 'gvisor') */
@@ -57,15 +47,10 @@ export interface SandboxConfig {
   type?: "UNSPECIFIED" | "GVISOR" | (string & {});
 }
 
-export const SandboxConfig: Schema.Schema<SandboxConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sandboxType: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SandboxConfig",
-  }) as any as Schema.Schema<SandboxConfig>;
+export const SandboxConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sandboxType: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "SandboxConfig" });
 
 export interface LustreCsiDriverConfig {
   /** If set to true, the Lustre CSI driver will install Lustre kernel modules using port 6988. This serves as a workaround for a port conflict with the gke-metadata-server. This field is required ONLY under the following conditions: 1. The GKE node version is older than 1.33.2-gke.4655000. 2. You're connecting to a Lustre instance that has the 'gke-support-enabled' flag. Deprecated: This flag is no longer required as of GKE node version 1.33.2-gke.4655000, unless you are connecting to a Lustre instance that has the `gke-support-enabled` flag. */
@@ -76,84 +61,58 @@ export interface LustreCsiDriverConfig {
   disableMultiNic?: boolean;
 }
 
-export const LustreCsiDriverConfig: Schema.Schema<LustreCsiDriverConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableLegacyLustrePort: Schema.optional(Schema.Boolean),
-      enabled: Schema.optional(Schema.Boolean),
-      disableMultiNic: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "LustreCsiDriverConfig",
-  }) as any as Schema.Schema<LustreCsiDriverConfig>;
+export const LustreCsiDriverConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enableLegacyLustrePort: Schema.optional(Schema.Boolean),
+  enabled: Schema.optional(Schema.Boolean),
+  disableMultiNic: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "LustreCsiDriverConfig" });
 
 export interface VirtualNIC {
   /** Whether gVNIC features are enabled in the node pool. */
   enabled?: boolean;
 }
 
-export const VirtualNIC: Schema.Schema<VirtualNIC> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "VirtualNIC" }) as any as Schema.Schema<VirtualNIC>;
+export const VirtualNIC = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "VirtualNIC" });
 
 export interface DefaultSnatStatus {
   /** Disables cluster default sNAT rules. */
   disabled?: boolean;
 }
 
-export const DefaultSnatStatus: Schema.Schema<DefaultSnatStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      disabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "DefaultSnatStatus",
-  }) as any as Schema.Schema<DefaultSnatStatus>;
+export const DefaultSnatStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  disabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "DefaultSnatStatus" });
 
 export interface PrivilegedAdmissionConfig {
   /** The customer allowlist Cloud Storage paths for the cluster. These paths are used with the `--autopilot-privileged-admission` flag to authorize privileged workloads in Autopilot clusters. Paths can be GKE-owned, in the format `gke:////`, or customer-owned, in the format `gs:///`. Wildcards (`*`) are supported to authorize all allowlists under specific paths or directories. Example: `gs://my-bucket/*` will authorize all allowlists under the `my-bucket` bucket. */
   allowlistPaths?: Array<string>;
 }
 
-export const PrivilegedAdmissionConfig: Schema.Schema<PrivilegedAdmissionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      allowlistPaths: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "PrivilegedAdmissionConfig",
-  }) as any as Schema.Schema<PrivilegedAdmissionConfig>;
+export const PrivilegedAdmissionConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allowlistPaths: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "PrivilegedAdmissionConfig" });
 
 export interface IdentityServiceConfig {
   /** Whether to enable the Identity Service component */
   enabled?: boolean;
 }
 
-export const IdentityServiceConfig: Schema.Schema<IdentityServiceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "IdentityServiceConfig",
-  }) as any as Schema.Schema<IdentityServiceConfig>;
+export const IdentityServiceConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "IdentityServiceConfig" });
 
 export interface DefaultComputeClassConfig {
   /** Enables default compute class. */
   enabled?: boolean;
 }
 
-export const DefaultComputeClassConfig: Schema.Schema<DefaultComputeClassConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "DefaultComputeClassConfig",
-  }) as any as Schema.Schema<DefaultComputeClassConfig>;
+export const DefaultComputeClassConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "DefaultComputeClassConfig" });
 
 export interface ResourceLimit {
   /** Minimum amount of the resource in the cluster. */
@@ -164,16 +123,11 @@ export interface ResourceLimit {
   maximum?: string;
 }
 
-export const ResourceLimit: Schema.Schema<ResourceLimit> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      minimum: Schema.optional(Schema.String),
-      resourceType: Schema.optional(Schema.String),
-      maximum: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ResourceLimit",
-  }) as any as Schema.Schema<ResourceLimit>;
+export const ResourceLimit = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  minimum: Schema.optional(Schema.String),
+  resourceType: Schema.optional(Schema.String),
+  maximum: Schema.optional(Schema.String),
+}).annotate({ identifier: "ResourceLimit" });
 
 export interface ShieldedInstanceConfig {
   /** Defines whether the instance has integrity monitoring enabled. Enables monitoring and attestation of the boot integrity of the instance. The attestation is performed against the integrity policy baseline. This baseline is initially derived from the implicitly trusted boot image when the instance is created. */
@@ -182,15 +136,12 @@ export interface ShieldedInstanceConfig {
   enableSecureBoot?: boolean;
 }
 
-export const ShieldedInstanceConfig: Schema.Schema<ShieldedInstanceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableIntegrityMonitoring: Schema.optional(Schema.Boolean),
-      enableSecureBoot: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ShieldedInstanceConfig",
-  }) as any as Schema.Schema<ShieldedInstanceConfig>;
+export const ShieldedInstanceConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    enableIntegrityMonitoring: Schema.optional(Schema.Boolean),
+    enableSecureBoot: Schema.optional(Schema.Boolean),
+  },
+).annotate({ identifier: "ShieldedInstanceConfig" });
 
 export interface StandardRolloutPolicy {
   /** Soak time after each batch gets drained. Default to zero. */
@@ -201,30 +152,21 @@ export interface StandardRolloutPolicy {
   batchNodeCount?: number;
 }
 
-export const StandardRolloutPolicy: Schema.Schema<StandardRolloutPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      batchSoakDuration: Schema.optional(Schema.String),
-      batchPercentage: Schema.optional(Schema.Number),
-      batchNodeCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "StandardRolloutPolicy",
-  }) as any as Schema.Schema<StandardRolloutPolicy>;
+export const StandardRolloutPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  batchSoakDuration: Schema.optional(Schema.String),
+  batchPercentage: Schema.optional(Schema.Number),
+  batchNodeCount: Schema.optional(Schema.Number),
+}).annotate({ identifier: "StandardRolloutPolicy" });
 
 export interface AutoscaledRolloutPolicy {
   /** Optional. Time to wait after cordoning the blue pool before draining the nodes. Defaults to 3 days. The value can be set between 0 and 7 days, inclusive. */
   waitForDrainDuration?: string;
 }
 
-export const AutoscaledRolloutPolicy: Schema.Schema<AutoscaledRolloutPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      waitForDrainDuration: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AutoscaledRolloutPolicy",
-  }) as any as Schema.Schema<AutoscaledRolloutPolicy>;
+export const AutoscaledRolloutPolicy =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    waitForDrainDuration: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AutoscaledRolloutPolicy" });
 
 export interface BlueGreenSettings {
   /** Standard policy for the blue-green upgrade. */
@@ -235,16 +177,11 @@ export interface BlueGreenSettings {
   nodePoolSoakDuration?: string;
 }
 
-export const BlueGreenSettings: Schema.Schema<BlueGreenSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      standardRolloutPolicy: Schema.optional(StandardRolloutPolicy),
-      autoscaledRolloutPolicy: Schema.optional(AutoscaledRolloutPolicy),
-      nodePoolSoakDuration: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BlueGreenSettings",
-  }) as any as Schema.Schema<BlueGreenSettings>;
+export const BlueGreenSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  standardRolloutPolicy: Schema.optional(StandardRolloutPolicy),
+  autoscaledRolloutPolicy: Schema.optional(AutoscaledRolloutPolicy),
+  nodePoolSoakDuration: Schema.optional(Schema.String),
+}).annotate({ identifier: "BlueGreenSettings" });
 
 export interface UpgradeSettings {
   /** The maximum number of nodes that can be simultaneously unavailable during the upgrade process. A node is considered available if its status is Ready. */
@@ -262,17 +199,12 @@ export interface UpgradeSettings {
   maxSurge?: number;
 }
 
-export const UpgradeSettings: Schema.Schema<UpgradeSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      maxUnavailable: Schema.optional(Schema.Number),
-      blueGreenSettings: Schema.optional(BlueGreenSettings),
-      strategy: Schema.optional(Schema.String),
-      maxSurge: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "UpgradeSettings",
-  }) as any as Schema.Schema<UpgradeSettings>;
+export const UpgradeSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  maxUnavailable: Schema.optional(Schema.Number),
+  blueGreenSettings: Schema.optional(BlueGreenSettings),
+  strategy: Schema.optional(Schema.String),
+  maxSurge: Schema.optional(Schema.Number),
+}).annotate({ identifier: "UpgradeSettings" });
 
 export interface AutoUpgradeOptions {
   /** Output only. This field is set when upgrades are about to commence with the approximate start time for the upgrades, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format. */
@@ -281,15 +213,10 @@ export interface AutoUpgradeOptions {
   description?: string;
 }
 
-export const AutoUpgradeOptions: Schema.Schema<AutoUpgradeOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      autoUpgradeStartTime: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AutoUpgradeOptions",
-  }) as any as Schema.Schema<AutoUpgradeOptions>;
+export const AutoUpgradeOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  autoUpgradeStartTime: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "AutoUpgradeOptions" });
 
 export interface NodeManagement {
   /** Whether the nodes will be automatically upgraded. */
@@ -300,16 +227,11 @@ export interface NodeManagement {
   upgradeOptions?: AutoUpgradeOptions;
 }
 
-export const NodeManagement: Schema.Schema<NodeManagement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      autoUpgrade: Schema.optional(Schema.Boolean),
-      autoRepair: Schema.optional(Schema.Boolean),
-      upgradeOptions: Schema.optional(AutoUpgradeOptions),
-    }),
-  ).annotate({
-    identifier: "NodeManagement",
-  }) as any as Schema.Schema<NodeManagement>;
+export const NodeManagement = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  autoUpgrade: Schema.optional(Schema.Boolean),
+  autoRepair: Schema.optional(Schema.Boolean),
+  upgradeOptions: Schema.optional(AutoUpgradeOptions),
+}).annotate({ identifier: "NodeManagement" });
 
 export interface AutoprovisioningNodePoolDefaults {
   /** Shielded Instance options. */
@@ -336,24 +258,20 @@ export interface AutoprovisioningNodePoolDefaults {
   serviceAccount?: string;
 }
 
-export const AutoprovisioningNodePoolDefaults: Schema.Schema<AutoprovisioningNodePoolDefaults> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      shieldedInstanceConfig: Schema.optional(ShieldedInstanceConfig),
-      bootDiskKmsKey: Schema.optional(Schema.String),
-      oauthScopes: Schema.optional(Schema.Array(Schema.String)),
-      upgradeSettings: Schema.optional(UpgradeSettings),
-      imageType: Schema.optional(Schema.String),
-      management: Schema.optional(NodeManagement),
-      minCpuPlatform: Schema.optional(Schema.String),
-      diskSizeGb: Schema.optional(Schema.Number),
-      diskType: Schema.optional(Schema.String),
-      insecureKubeletReadonlyPortEnabled: Schema.optional(Schema.Boolean),
-      serviceAccount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AutoprovisioningNodePoolDefaults",
-  }) as any as Schema.Schema<AutoprovisioningNodePoolDefaults>;
+export const AutoprovisioningNodePoolDefaults =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    shieldedInstanceConfig: Schema.optional(ShieldedInstanceConfig),
+    bootDiskKmsKey: Schema.optional(Schema.String),
+    oauthScopes: Schema.optional(Schema.Array(Schema.String)),
+    upgradeSettings: Schema.optional(UpgradeSettings),
+    imageType: Schema.optional(Schema.String),
+    management: Schema.optional(NodeManagement),
+    minCpuPlatform: Schema.optional(Schema.String),
+    diskSizeGb: Schema.optional(Schema.Number),
+    diskType: Schema.optional(Schema.String),
+    insecureKubeletReadonlyPortEnabled: Schema.optional(Schema.Boolean),
+    serviceAccount: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AutoprovisioningNodePoolDefaults" });
 
 export interface ClusterAutoscaling {
   /** Default compute class is a configuration for default compute class. */
@@ -380,50 +298,35 @@ export interface ClusterAutoscaling {
   autoprovisioningNodePoolDefaults?: AutoprovisioningNodePoolDefaults;
 }
 
-export const ClusterAutoscaling: Schema.Schema<ClusterAutoscaling> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      defaultComputeClassConfig: Schema.optional(DefaultComputeClassConfig),
-      autopilotGeneralProfile: Schema.optional(Schema.String),
-      autoprovisioningLocations: Schema.optional(Schema.Array(Schema.String)),
-      autoscalingProfile: Schema.optional(Schema.String),
-      enableNodeAutoprovisioning: Schema.optional(Schema.Boolean),
-      resourceLimits: Schema.optional(Schema.Array(ResourceLimit)),
-      autoprovisioningNodePoolDefaults: Schema.optional(
-        AutoprovisioningNodePoolDefaults,
-      ),
-    }),
-  ).annotate({
-    identifier: "ClusterAutoscaling",
-  }) as any as Schema.Schema<ClusterAutoscaling>;
+export const ClusterAutoscaling = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  defaultComputeClassConfig: Schema.optional(DefaultComputeClassConfig),
+  autopilotGeneralProfile: Schema.optional(Schema.String),
+  autoprovisioningLocations: Schema.optional(Schema.Array(Schema.String)),
+  autoscalingProfile: Schema.optional(Schema.String),
+  enableNodeAutoprovisioning: Schema.optional(Schema.Boolean),
+  resourceLimits: Schema.optional(Schema.Array(ResourceLimit)),
+  autoprovisioningNodePoolDefaults: Schema.optional(
+    AutoprovisioningNodePoolDefaults,
+  ),
+}).annotate({ identifier: "ClusterAutoscaling" });
 
 export interface NetworkTags {
   /** List of network tags. */
   tags?: Array<string>;
 }
 
-export const NetworkTags: Schema.Schema<NetworkTags> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tags: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "NetworkTags",
-  }) as any as Schema.Schema<NetworkTags>;
+export const NetworkTags = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tags: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "NetworkTags" });
 
 export interface ShieldedNodes {
   /** Whether Shielded Nodes features are enabled on all nodes in this cluster. */
   enabled?: boolean;
 }
 
-export const ShieldedNodes: Schema.Schema<ShieldedNodes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ShieldedNodes",
-  }) as any as Schema.Schema<ShieldedNodes>;
+export const ShieldedNodes = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "ShieldedNodes" });
 
 export interface GatewayAPIConfig {
   /** The Gateway API release channel to use for Gateway API. */
@@ -435,28 +338,18 @@ export interface GatewayAPIConfig {
     | (string & {});
 }
 
-export const GatewayAPIConfig: Schema.Schema<GatewayAPIConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      channel: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GatewayAPIConfig",
-  }) as any as Schema.Schema<GatewayAPIConfig>;
+export const GatewayAPIConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  channel: Schema.optional(Schema.String),
+}).annotate({ identifier: "GatewayAPIConfig" });
 
 export interface K8sBetaAPIConfig {
   /** api name, e.g. storage.k8s.io/v1beta1/csistoragecapacities. */
   enabledApis?: Array<string>;
 }
 
-export const K8sBetaAPIConfig: Schema.Schema<K8sBetaAPIConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabledApis: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "K8sBetaAPIConfig",
-  }) as any as Schema.Schema<K8sBetaAPIConfig>;
+export const K8sBetaAPIConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabledApis: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "K8sBetaAPIConfig" });
 
 export interface TpuConfig {
   /** IPv4 CIDR block reserved for Cloud TPU in the VPC. */
@@ -467,42 +360,30 @@ export interface TpuConfig {
   enabled?: boolean;
 }
 
-export const TpuConfig: Schema.Schema<TpuConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ipv4CidrBlock: Schema.optional(Schema.String),
-      useServiceNetworking: Schema.optional(Schema.Boolean),
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "TpuConfig" }) as any as Schema.Schema<TpuConfig>;
+export const TpuConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ipv4CidrBlock: Schema.optional(Schema.String),
+  useServiceNetworking: Schema.optional(Schema.Boolean),
+  enabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "TpuConfig" });
 
 export interface BigQueryDestination {
   /** The ID of a BigQuery Dataset. */
   datasetId?: string;
 }
 
-export const BigQueryDestination: Schema.Schema<BigQueryDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      datasetId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BigQueryDestination",
-  }) as any as Schema.Schema<BigQueryDestination>;
+export const BigQueryDestination = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  datasetId: Schema.optional(Schema.String),
+}).annotate({ identifier: "BigQueryDestination" });
 
 export interface ConsumptionMeteringConfig {
   /** Whether to enable consumption metering for this cluster. If enabled, a second BigQuery table will be created to hold resource consumption records. */
   enabled?: boolean;
 }
 
-export const ConsumptionMeteringConfig: Schema.Schema<ConsumptionMeteringConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ConsumptionMeteringConfig",
-  }) as any as Schema.Schema<ConsumptionMeteringConfig>;
+export const ConsumptionMeteringConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "ConsumptionMeteringConfig" });
 
 export interface ResourceUsageExportConfig {
   /** Configuration to use BigQuery as usage export destination. */
@@ -513,58 +394,39 @@ export interface ResourceUsageExportConfig {
   consumptionMeteringConfig?: ConsumptionMeteringConfig;
 }
 
-export const ResourceUsageExportConfig: Schema.Schema<ResourceUsageExportConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bigqueryDestination: Schema.optional(BigQueryDestination),
-      enableNetworkEgressMetering: Schema.optional(Schema.Boolean),
-      consumptionMeteringConfig: Schema.optional(ConsumptionMeteringConfig),
-    }),
-  ).annotate({
-    identifier: "ResourceUsageExportConfig",
-  }) as any as Schema.Schema<ResourceUsageExportConfig>;
+export const ResourceUsageExportConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bigqueryDestination: Schema.optional(BigQueryDestination),
+    enableNetworkEgressMetering: Schema.optional(Schema.Boolean),
+    consumptionMeteringConfig: Schema.optional(ConsumptionMeteringConfig),
+  }).annotate({ identifier: "ResourceUsageExportConfig" });
 
 export interface ResourceManagerTags {
   /** Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}` */
   tags?: Record<string, string>;
 }
 
-export const ResourceManagerTags: Schema.Schema<ResourceManagerTags> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ResourceManagerTags",
-  }) as any as Schema.Schema<ResourceManagerTags>;
+export const ResourceManagerTags = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "ResourceManagerTags" });
 
 export interface GkeAutoUpgradeConfig {
   /** PatchMode specifies how auto upgrade patch builds should be selected. */
   patchMode?: "PATCH_MODE_UNSPECIFIED" | "ACCELERATED" | (string & {});
 }
 
-export const GkeAutoUpgradeConfig: Schema.Schema<GkeAutoUpgradeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      patchMode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GkeAutoUpgradeConfig",
-  }) as any as Schema.Schema<GkeAutoUpgradeConfig>;
+export const GkeAutoUpgradeConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  patchMode: Schema.optional(Schema.String),
+}).annotate({ identifier: "GkeAutoUpgradeConfig" });
 
 export interface AutoIpamConfig {
   /** The flag that enables Auto IPAM on this cluster */
   enabled?: boolean;
 }
 
-export const AutoIpamConfig: Schema.Schema<AutoIpamConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "AutoIpamConfig",
-  }) as any as Schema.Schema<AutoIpamConfig>;
+export const AutoIpamConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "AutoIpamConfig" });
 
 export interface OpportunisticMaintenanceStrategy {
   /** The minimum nodes required to be available in a pool. Blocks maintenance if it would cause the number of running nodes to dip below this value. */
@@ -575,16 +437,12 @@ export interface OpportunisticMaintenanceStrategy {
   maintenanceAvailabilityWindow?: string;
 }
 
-export const OpportunisticMaintenanceStrategy: Schema.Schema<OpportunisticMaintenanceStrategy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      minNodesPerPool: Schema.optional(Schema.String),
-      nodeIdleTimeWindow: Schema.optional(Schema.String),
-      maintenanceAvailabilityWindow: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OpportunisticMaintenanceStrategy",
-  }) as any as Schema.Schema<OpportunisticMaintenanceStrategy>;
+export const OpportunisticMaintenanceStrategy =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    minNodesPerPool: Schema.optional(Schema.String),
+    nodeIdleTimeWindow: Schema.optional(Schema.String),
+    maintenanceAvailabilityWindow: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OpportunisticMaintenanceStrategy" });
 
 export interface HostMaintenancePolicy {
   /** Specifies the frequency of planned maintenance events. */
@@ -597,17 +455,12 @@ export interface HostMaintenancePolicy {
   opportunisticMaintenanceStrategy?: OpportunisticMaintenanceStrategy;
 }
 
-export const HostMaintenancePolicy: Schema.Schema<HostMaintenancePolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      maintenanceInterval: Schema.optional(Schema.String),
-      opportunisticMaintenanceStrategy: Schema.optional(
-        OpportunisticMaintenanceStrategy,
-      ),
-    }),
-  ).annotate({
-    identifier: "HostMaintenancePolicy",
-  }) as any as Schema.Schema<HostMaintenancePolicy>;
+export const HostMaintenancePolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  maintenanceInterval: Schema.optional(Schema.String),
+  opportunisticMaintenanceStrategy: Schema.optional(
+    OpportunisticMaintenanceStrategy,
+  ),
+}).annotate({ identifier: "HostMaintenancePolicy" });
 
 export interface SyncRotationConfig {
   /** The interval between two consecutive rotations. Default rotation interval is 2 minutes. */
@@ -616,15 +469,10 @@ export interface SyncRotationConfig {
   enabled?: boolean;
 }
 
-export const SyncRotationConfig: Schema.Schema<SyncRotationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rotationInterval: Schema.optional(Schema.String),
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "SyncRotationConfig",
-  }) as any as Schema.Schema<SyncRotationConfig>;
+export const SyncRotationConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  rotationInterval: Schema.optional(Schema.String),
+  enabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "SyncRotationConfig" });
 
 export interface SecretSyncConfig {
   /** Enable/Disable Secret Sync Config. */
@@ -633,15 +481,10 @@ export interface SecretSyncConfig {
   rotationConfig?: SyncRotationConfig;
 }
 
-export const SecretSyncConfig: Schema.Schema<SecretSyncConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-      rotationConfig: Schema.optional(SyncRotationConfig),
-    }),
-  ).annotate({
-    identifier: "SecretSyncConfig",
-  }) as any as Schema.Schema<SecretSyncConfig>;
+export const SecretSyncConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabled: Schema.optional(Schema.Boolean),
+  rotationConfig: Schema.optional(SyncRotationConfig),
+}).annotate({ identifier: "SecretSyncConfig" });
 
 export interface LoggingVariantConfig {
   /** Logging variant deployed on nodes. */
@@ -652,56 +495,38 @@ export interface LoggingVariantConfig {
     | (string & {});
 }
 
-export const LoggingVariantConfig: Schema.Schema<LoggingVariantConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      variant: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LoggingVariantConfig",
-  }) as any as Schema.Schema<LoggingVariantConfig>;
+export const LoggingVariantConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  variant: Schema.optional(Schema.String),
+}).annotate({ identifier: "LoggingVariantConfig" });
 
 export interface NodePoolLoggingConfig {
   /** Logging variant configuration. */
   variantConfig?: LoggingVariantConfig;
 }
 
-export const NodePoolLoggingConfig: Schema.Schema<NodePoolLoggingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      variantConfig: Schema.optional(LoggingVariantConfig),
-    }),
-  ).annotate({
-    identifier: "NodePoolLoggingConfig",
-  }) as any as Schema.Schema<NodePoolLoggingConfig>;
+export const NodePoolLoggingConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  variantConfig: Schema.optional(LoggingVariantConfig),
+}).annotate({ identifier: "NodePoolLoggingConfig" });
 
 export interface ClusterNetworkPerformanceConfig {
   /** Specifies the total network bandwidth tier for the NodePool. */
   totalEgressBandwidthTier?: "TIER_UNSPECIFIED" | "TIER_1" | (string & {});
 }
 
-export const ClusterNetworkPerformanceConfig: Schema.Schema<ClusterNetworkPerformanceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      totalEgressBandwidthTier: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ClusterNetworkPerformanceConfig",
-  }) as any as Schema.Schema<ClusterNetworkPerformanceConfig>;
+export const ClusterNetworkPerformanceConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    totalEgressBandwidthTier: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ClusterNetworkPerformanceConfig" });
 
 export interface GCPSecretManagerCertificateConfig {
   /** Secret URI, in the form "projects/$PROJECT_ID/secrets/$SECRET_NAME/versions/$VERSION". Version can be fixed (e.g. "2") or "latest" */
   secretUri?: string;
 }
 
-export const GCPSecretManagerCertificateConfig: Schema.Schema<GCPSecretManagerCertificateConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      secretUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GCPSecretManagerCertificateConfig",
-  }) as any as Schema.Schema<GCPSecretManagerCertificateConfig>;
+export const GCPSecretManagerCertificateConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    secretUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GCPSecretManagerCertificateConfig" });
 
 export interface CertificateAuthorityDomainConfig {
   /** Secret Manager certificate configuration. */
@@ -710,17 +535,13 @@ export interface CertificateAuthorityDomainConfig {
   fqdns?: Array<string>;
 }
 
-export const CertificateAuthorityDomainConfig: Schema.Schema<CertificateAuthorityDomainConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcpSecretManagerCertificateConfig: Schema.optional(
-        GCPSecretManagerCertificateConfig,
-      ),
-      fqdns: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "CertificateAuthorityDomainConfig",
-  }) as any as Schema.Schema<CertificateAuthorityDomainConfig>;
+export const CertificateAuthorityDomainConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gcpSecretManagerCertificateConfig: Schema.optional(
+      GCPSecretManagerCertificateConfig,
+    ),
+    fqdns: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "CertificateAuthorityDomainConfig" });
 
 export interface PrivateRegistryAccessConfig {
   /** Private registry access is enabled. */
@@ -729,45 +550,31 @@ export interface PrivateRegistryAccessConfig {
   certificateAuthorityDomainConfig?: Array<CertificateAuthorityDomainConfig>;
 }
 
-export const PrivateRegistryAccessConfig: Schema.Schema<PrivateRegistryAccessConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-      certificateAuthorityDomainConfig: Schema.optional(
-        Schema.Array(CertificateAuthorityDomainConfig),
-      ),
-    }),
-  ).annotate({
-    identifier: "PrivateRegistryAccessConfig",
-  }) as any as Schema.Schema<PrivateRegistryAccessConfig>;
+export const PrivateRegistryAccessConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+    certificateAuthorityDomainConfig: Schema.optional(
+      Schema.Array(CertificateAuthorityDomainConfig),
+    ),
+  }).annotate({ identifier: "PrivateRegistryAccessConfig" });
 
 export interface WritableCgroups {
   /** Optional. Whether writable cgroups is enabled. */
   enabled?: boolean;
 }
 
-export const WritableCgroups: Schema.Schema<WritableCgroups> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "WritableCgroups",
-  }) as any as Schema.Schema<WritableCgroups>;
+export const WritableCgroups = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "WritableCgroups" });
 
 export interface CertificateConfig {
   /** The URI configures a secret from [Secret Manager](https://cloud.google.com/secret-manager) in the format "projects/$PROJECT_ID/secrets/$SECRET_NAME/versions/$VERSION" for global secret or "projects/$PROJECT_ID/locations/$REGION/secrets/$SECRET_NAME/versions/$VERSION" for regional secret. Version can be fixed (e.g. "2") or "latest" */
   gcpSecretManagerSecretUri?: string;
 }
 
-export const CertificateConfig: Schema.Schema<CertificateConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcpSecretManagerSecretUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CertificateConfig",
-  }) as any as Schema.Schema<CertificateConfig>;
+export const CertificateConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gcpSecretManagerSecretUri: Schema.optional(Schema.String),
+}).annotate({ identifier: "CertificateConfig" });
 
 export interface CertificateConfigPair {
   /** Key configures the client private key. Optional. */
@@ -776,15 +583,10 @@ export interface CertificateConfigPair {
   cert?: CertificateConfig;
 }
 
-export const CertificateConfigPair: Schema.Schema<CertificateConfigPair> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      key: Schema.optional(CertificateConfig),
-      cert: Schema.optional(CertificateConfig),
-    }),
-  ).annotate({
-    identifier: "CertificateConfigPair",
-  }) as any as Schema.Schema<CertificateConfigPair>;
+export const CertificateConfigPair = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  key: Schema.optional(CertificateConfig),
+  cert: Schema.optional(CertificateConfig),
+}).annotate({ identifier: "CertificateConfigPair" });
 
 export interface RegistryHeader {
   /** Key configures the header key. */
@@ -793,15 +595,10 @@ export interface RegistryHeader {
   value?: Array<string>;
 }
 
-export const RegistryHeader: Schema.Schema<RegistryHeader> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      key: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "RegistryHeader",
-  }) as any as Schema.Schema<RegistryHeader>;
+export const RegistryHeader = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  key: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "RegistryHeader" });
 
 export interface HostConfig {
   /** Client configures the registry host client certificate and key. */
@@ -826,18 +623,15 @@ export interface HostConfig {
   >;
 }
 
-export const HostConfig: Schema.Schema<HostConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      client: Schema.optional(Schema.Array(CertificateConfigPair)),
-      header: Schema.optional(Schema.Array(RegistryHeader)),
-      overridePath: Schema.optional(Schema.Boolean),
-      dialTimeout: Schema.optional(Schema.String),
-      host: Schema.optional(Schema.String),
-      ca: Schema.optional(Schema.Array(CertificateConfig)),
-      capabilities: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "HostConfig" }) as any as Schema.Schema<HostConfig>;
+export const HostConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  client: Schema.optional(Schema.Array(CertificateConfigPair)),
+  header: Schema.optional(Schema.Array(RegistryHeader)),
+  overridePath: Schema.optional(Schema.Boolean),
+  dialTimeout: Schema.optional(Schema.String),
+  host: Schema.optional(Schema.String),
+  ca: Schema.optional(Schema.Array(CertificateConfig)),
+  capabilities: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "HostConfig" });
 
 export interface RegistryHostConfig {
   /** Defines the host name of the registry server, which will be used to create configuration file as /etc/containerd/hosts.d//hosts.toml. It supports fully qualified domain names (FQDN) and IP addresses: Specifying port is supported, while scheme and path are NOT supported. Wildcards are NOT supported. Examples: - `my.customdomain.com` - `10.0.1.2:5000` */
@@ -846,15 +640,10 @@ export interface RegistryHostConfig {
   hosts?: Array<HostConfig>;
 }
 
-export const RegistryHostConfig: Schema.Schema<RegistryHostConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      server: Schema.optional(Schema.String),
-      hosts: Schema.optional(Schema.Array(HostConfig)),
-    }),
-  ).annotate({
-    identifier: "RegistryHostConfig",
-  }) as any as Schema.Schema<RegistryHostConfig>;
+export const RegistryHostConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  server: Schema.optional(Schema.String),
+  hosts: Schema.optional(Schema.Array(HostConfig)),
+}).annotate({ identifier: "RegistryHostConfig" });
 
 export interface ContainerdConfig {
   /** PrivateRegistryAccessConfig is used to configure access configuration for private container registries. */
@@ -865,16 +654,11 @@ export interface ContainerdConfig {
   registryHosts?: Array<RegistryHostConfig>;
 }
 
-export const ContainerdConfig: Schema.Schema<ContainerdConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      privateRegistryAccessConfig: Schema.optional(PrivateRegistryAccessConfig),
-      writableCgroups: Schema.optional(WritableCgroups),
-      registryHosts: Schema.optional(Schema.Array(RegistryHostConfig)),
-    }),
-  ).annotate({
-    identifier: "ContainerdConfig",
-  }) as any as Schema.Schema<ContainerdConfig>;
+export const ContainerdConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  privateRegistryAccessConfig: Schema.optional(PrivateRegistryAccessConfig),
+  writableCgroups: Schema.optional(WritableCgroups),
+  registryHosts: Schema.optional(Schema.Array(RegistryHostConfig)),
+}).annotate({ identifier: "ContainerdConfig" });
 
 export interface DesiredEnterpriseConfig {
   /** desired_tier specifies the desired tier of the cluster. */
@@ -885,14 +669,10 @@ export interface DesiredEnterpriseConfig {
     | (string & {});
 }
 
-export const DesiredEnterpriseConfig: Schema.Schema<DesiredEnterpriseConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      desiredTier: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DesiredEnterpriseConfig",
-  }) as any as Schema.Schema<DesiredEnterpriseConfig>;
+export const DesiredEnterpriseConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    desiredTier: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DesiredEnterpriseConfig" });
 
 export interface ClusterPolicyConfig {
   /** Denotes preventing standard node pools and requiring only autopilot node pools. */
@@ -905,31 +685,21 @@ export interface ClusterPolicyConfig {
   noSystemImpersonation?: boolean;
 }
 
-export const ClusterPolicyConfig: Schema.Schema<ClusterPolicyConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      noStandardNodePools: Schema.optional(Schema.Boolean),
-      noUnsafeWebhooks: Schema.optional(Schema.Boolean),
-      noSystemMutation: Schema.optional(Schema.Boolean),
-      noSystemImpersonation: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ClusterPolicyConfig",
-  }) as any as Schema.Schema<ClusterPolicyConfig>;
+export const ClusterPolicyConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  noStandardNodePools: Schema.optional(Schema.Boolean),
+  noUnsafeWebhooks: Schema.optional(Schema.Boolean),
+  noSystemMutation: Schema.optional(Schema.Boolean),
+  noSystemImpersonation: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "ClusterPolicyConfig" });
 
 export interface ComplianceStandard {
   /** Name of the compliance standard. */
   standard?: string;
 }
 
-export const ComplianceStandard: Schema.Schema<ComplianceStandard> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      standard: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ComplianceStandard",
-  }) as any as Schema.Schema<ComplianceStandard>;
+export const ComplianceStandard = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  standard: Schema.optional(Schema.String),
+}).annotate({ identifier: "ComplianceStandard" });
 
 export interface CompliancePostureConfig {
   /** List of enabled compliance standards. */
@@ -938,15 +708,11 @@ export interface CompliancePostureConfig {
   mode?: "MODE_UNSPECIFIED" | "DISABLED" | "ENABLED" | (string & {});
 }
 
-export const CompliancePostureConfig: Schema.Schema<CompliancePostureConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      complianceStandards: Schema.optional(Schema.Array(ComplianceStandard)),
-      mode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CompliancePostureConfig",
-  }) as any as Schema.Schema<CompliancePostureConfig>;
+export const CompliancePostureConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    complianceStandards: Schema.optional(Schema.Array(ComplianceStandard)),
+    mode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CompliancePostureConfig" });
 
 export interface WorkloadConfig {
   /** Sets which mode of auditing should be used for the cluster's workloads. */
@@ -959,14 +725,9 @@ export interface WorkloadConfig {
     | (string & {});
 }
 
-export const WorkloadConfig: Schema.Schema<WorkloadConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      auditMode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WorkloadConfig",
-  }) as any as Schema.Schema<WorkloadConfig>;
+export const WorkloadConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  auditMode: Schema.optional(Schema.String),
+}).annotate({ identifier: "WorkloadConfig" });
 
 export interface ProtectConfig {
   /** WorkloadConfig defines which actions are enabled for a cluster's workload configurations. */
@@ -979,15 +740,10 @@ export interface ProtectConfig {
     | (string & {});
 }
 
-export const ProtectConfig: Schema.Schema<ProtectConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      workloadConfig: Schema.optional(WorkloadConfig),
-      workloadVulnerabilityMode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProtectConfig",
-  }) as any as Schema.Schema<ProtectConfig>;
+export const ProtectConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  workloadConfig: Schema.optional(WorkloadConfig),
+  workloadVulnerabilityMode: Schema.optional(Schema.String),
+}).annotate({ identifier: "ProtectConfig" });
 
 export interface CidrBlock {
   /** display_name is an optional field for users to identify CIDR blocks. */
@@ -996,13 +752,10 @@ export interface CidrBlock {
   cidrBlock?: string;
 }
 
-export const CidrBlock: Schema.Schema<CidrBlock> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      cidrBlock: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "CidrBlock" }) as any as Schema.Schema<CidrBlock>;
+export const CidrBlock = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+  cidrBlock: Schema.optional(Schema.String),
+}).annotate({ identifier: "CidrBlock" });
 
 export interface MasterAuthorizedNetworksConfig {
   /** cidr_blocks define up to 10 external networks that could access Kubernetes master through HTTPS. */
@@ -1015,31 +768,24 @@ export interface MasterAuthorizedNetworksConfig {
   privateEndpointEnforcementEnabled?: boolean;
 }
 
-export const MasterAuthorizedNetworksConfig: Schema.Schema<MasterAuthorizedNetworksConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cidrBlocks: Schema.optional(Schema.Array(CidrBlock)),
-      gcpPublicCidrsAccessEnabled: Schema.optional(Schema.Boolean),
-      enabled: Schema.optional(Schema.Boolean),
-      privateEndpointEnforcementEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "MasterAuthorizedNetworksConfig",
-  }) as any as Schema.Schema<MasterAuthorizedNetworksConfig>;
+export const MasterAuthorizedNetworksConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cidrBlocks: Schema.optional(Schema.Array(CidrBlock)),
+    gcpPublicCidrsAccessEnabled: Schema.optional(Schema.Boolean),
+    enabled: Schema.optional(Schema.Boolean),
+    privateEndpointEnforcementEnabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "MasterAuthorizedNetworksConfig" });
 
 export interface CrashLoopBackOffConfig {
   /** Optional. The maximum duration the backoff delay can accrue to for container restarts, minimum 1 second, maximum 300 seconds. If not set, defaults to the internal crashloopbackoff maximum. The string must be a sequence of decimal numbers, each with optional fraction and a unit suffix, such as "300ms". Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". See https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle/#configurable-container-restart-delay for more details. */
   maxContainerRestartPeriod?: string;
 }
 
-export const CrashLoopBackOffConfig: Schema.Schema<CrashLoopBackOffConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      maxContainerRestartPeriod: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CrashLoopBackOffConfig",
-  }) as any as Schema.Schema<CrashLoopBackOffConfig>;
+export const CrashLoopBackOffConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    maxContainerRestartPeriod: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "CrashLoopBackOffConfig" });
 
 export interface EvictionMinimumReclaim {
   /** Optional. Minimum reclaim for eviction due to memory available signal. Only take percentage value for now. Sample format: "10%". Must be <=10%. See https://kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#eviction-signals */
@@ -1056,19 +802,16 @@ export interface EvictionMinimumReclaim {
   nodefsAvailable?: string;
 }
 
-export const EvictionMinimumReclaim: Schema.Schema<EvictionMinimumReclaim> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      memoryAvailable: Schema.optional(Schema.String),
-      pidAvailable: Schema.optional(Schema.String),
-      imagefsInodesFree: Schema.optional(Schema.String),
-      imagefsAvailable: Schema.optional(Schema.String),
-      nodefsInodesFree: Schema.optional(Schema.String),
-      nodefsAvailable: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EvictionMinimumReclaim",
-  }) as any as Schema.Schema<EvictionMinimumReclaim>;
+export const EvictionMinimumReclaim = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    memoryAvailable: Schema.optional(Schema.String),
+    pidAvailable: Schema.optional(Schema.String),
+    imagefsInodesFree: Schema.optional(Schema.String),
+    imagefsAvailable: Schema.optional(Schema.String),
+    nodefsInodesFree: Schema.optional(Schema.String),
+    nodefsAvailable: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "EvictionMinimumReclaim" });
 
 export interface TopologyManager {
   /** Configures the strategy for resource alignment. Allowed values are: * none: the default policy, and does not perform any topology alignment. * restricted: the topology manager stores the preferred NUMA node affinity for the container, and will reject the pod if the affinity if not preferred. * best-effort: the topology manager stores the preferred NUMA node affinity for the container. If the affinity is not preferred, the topology manager will admit the pod to the node anyway. * single-numa-node: the topology manager determines if the single NUMA node affinity is possible. If it is, Topology Manager will store this and the Hint Providers can then use this information when making the resource allocation decision. If, however, this is not possible then the Topology Manager will reject the pod from the node. This will result in a pod in a Terminated state with a pod admission failure. The default policy value is 'none' if unspecified. Details about each strategy can be found [here](https://kubernetes.io/docs/tasks/administer-cluster/topology-manager/#topology-manager-policies). */
@@ -1077,15 +820,10 @@ export interface TopologyManager {
   scope?: string;
 }
 
-export const TopologyManager: Schema.Schema<TopologyManager> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policy: Schema.optional(Schema.String),
-      scope: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TopologyManager",
-  }) as any as Schema.Schema<TopologyManager>;
+export const TopologyManager = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policy: Schema.optional(Schema.String),
+  scope: Schema.optional(Schema.String),
+}).annotate({ identifier: "TopologyManager" });
 
 export interface EvictionSignals {
   /** Optional. Amount of storage available on filesystem that container runtime uses for storing images layers. If the container filesystem and image filesystem are not separate, then imagefs can store both image layers and writeable layers. Defines the amount of "imagefs.available" signal in kubelet. Default is unset, if not specified in the kubelet config. Sample format: "30%". Must be >= 15%. See https://kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#eviction-signals */
@@ -1102,19 +840,14 @@ export interface EvictionSignals {
   memoryAvailable?: string;
 }
 
-export const EvictionSignals: Schema.Schema<EvictionSignals> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      imagefsAvailable: Schema.optional(Schema.String),
-      nodefsAvailable: Schema.optional(Schema.String),
-      pidAvailable: Schema.optional(Schema.String),
-      imagefsInodesFree: Schema.optional(Schema.String),
-      nodefsInodesFree: Schema.optional(Schema.String),
-      memoryAvailable: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EvictionSignals",
-  }) as any as Schema.Schema<EvictionSignals>;
+export const EvictionSignals = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  imagefsAvailable: Schema.optional(Schema.String),
+  nodefsAvailable: Schema.optional(Schema.String),
+  pidAvailable: Schema.optional(Schema.String),
+  imagefsInodesFree: Schema.optional(Schema.String),
+  nodefsInodesFree: Schema.optional(Schema.String),
+  memoryAvailable: Schema.optional(Schema.String),
+}).annotate({ identifier: "EvictionSignals" });
 
 export interface EvictionGracePeriod {
   /** Optional. Grace period for eviction due to nodefs inodes free signal. Sample format: "10s". Must be >= 0. See https://kubernetes.io/docs/concepts/scheduling-eviction/node-pressure-eviction/#eviction-signals */
@@ -1131,33 +864,23 @@ export interface EvictionGracePeriod {
   memoryAvailable?: string;
 }
 
-export const EvictionGracePeriod: Schema.Schema<EvictionGracePeriod> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nodefsInodesFree: Schema.optional(Schema.String),
-      imagefsInodesFree: Schema.optional(Schema.String),
-      pidAvailable: Schema.optional(Schema.String),
-      nodefsAvailable: Schema.optional(Schema.String),
-      imagefsAvailable: Schema.optional(Schema.String),
-      memoryAvailable: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EvictionGracePeriod",
-  }) as any as Schema.Schema<EvictionGracePeriod>;
+export const EvictionGracePeriod = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nodefsInodesFree: Schema.optional(Schema.String),
+  imagefsInodesFree: Schema.optional(Schema.String),
+  pidAvailable: Schema.optional(Schema.String),
+  nodefsAvailable: Schema.optional(Schema.String),
+  imagefsAvailable: Schema.optional(Schema.String),
+  memoryAvailable: Schema.optional(Schema.String),
+}).annotate({ identifier: "EvictionGracePeriod" });
 
 export interface MemoryManager {
   /** Controls the memory management policy on the Node. See https://kubernetes.io/docs/tasks/administer-cluster/memory-manager/#policies The following values are allowed. * "none" * "static" The default value is 'none' if unspecified. */
   policy?: string;
 }
 
-export const MemoryManager: Schema.Schema<MemoryManager> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policy: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MemoryManager",
-  }) as any as Schema.Schema<MemoryManager>;
+export const MemoryManager = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policy: Schema.optional(Schema.String),
+}).annotate({ identifier: "MemoryManager" });
 
 export interface NodeKubeletConfig {
   /** Optional. Defines the minimum age for an unused image before it is garbage collected. The string must be a sequence of decimal numbers, each with optional fraction and a unit suffix, such as "300s", "1.5h", and "2h45m". Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h". The value must be a positive duration less than or equal to 2 minutes. The default value is "2m0s" if unspecified. */
@@ -1208,36 +931,31 @@ export interface NodeKubeletConfig {
   memoryManager?: MemoryManager;
 }
 
-export const NodeKubeletConfig: Schema.Schema<NodeKubeletConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      imageMinimumGcAge: Schema.optional(Schema.String),
-      crashLoopBackOff: Schema.optional(CrashLoopBackOffConfig),
-      cpuCfsQuota: Schema.optional(Schema.Boolean),
-      allowedUnsafeSysctls: Schema.optional(Schema.Array(Schema.String)),
-      imageGcHighThresholdPercent: Schema.optional(Schema.Number),
-      maxParallelImagePulls: Schema.optional(Schema.Number),
-      imageMaximumGcAge: Schema.optional(Schema.String),
-      evictionMinimumReclaim: Schema.optional(EvictionMinimumReclaim),
-      topologyManager: Schema.optional(TopologyManager),
-      shutdownGracePeriodSeconds: Schema.optional(Schema.Number),
-      cpuCfsQuotaPeriod: Schema.optional(Schema.String),
-      cpuManagerPolicy: Schema.optional(Schema.String),
-      evictionSoft: Schema.optional(EvictionSignals),
-      evictionMaxPodGracePeriodSeconds: Schema.optional(Schema.Number),
-      shutdownGracePeriodCriticalPodsSeconds: Schema.optional(Schema.Number),
-      podPidsLimit: Schema.optional(Schema.String),
-      evictionSoftGracePeriod: Schema.optional(EvictionGracePeriod),
-      imageGcLowThresholdPercent: Schema.optional(Schema.Number),
-      singleProcessOomKill: Schema.optional(Schema.Boolean),
-      insecureKubeletReadonlyPortEnabled: Schema.optional(Schema.Boolean),
-      containerLogMaxSize: Schema.optional(Schema.String),
-      containerLogMaxFiles: Schema.optional(Schema.Number),
-      memoryManager: Schema.optional(MemoryManager),
-    }),
-  ).annotate({
-    identifier: "NodeKubeletConfig",
-  }) as any as Schema.Schema<NodeKubeletConfig>;
+export const NodeKubeletConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  imageMinimumGcAge: Schema.optional(Schema.String),
+  crashLoopBackOff: Schema.optional(CrashLoopBackOffConfig),
+  cpuCfsQuota: Schema.optional(Schema.Boolean),
+  allowedUnsafeSysctls: Schema.optional(Schema.Array(Schema.String)),
+  imageGcHighThresholdPercent: Schema.optional(Schema.Number),
+  maxParallelImagePulls: Schema.optional(Schema.Number),
+  imageMaximumGcAge: Schema.optional(Schema.String),
+  evictionMinimumReclaim: Schema.optional(EvictionMinimumReclaim),
+  topologyManager: Schema.optional(TopologyManager),
+  shutdownGracePeriodSeconds: Schema.optional(Schema.Number),
+  cpuCfsQuotaPeriod: Schema.optional(Schema.String),
+  cpuManagerPolicy: Schema.optional(Schema.String),
+  evictionSoft: Schema.optional(EvictionSignals),
+  evictionMaxPodGracePeriodSeconds: Schema.optional(Schema.Number),
+  shutdownGracePeriodCriticalPodsSeconds: Schema.optional(Schema.Number),
+  podPidsLimit: Schema.optional(Schema.String),
+  evictionSoftGracePeriod: Schema.optional(EvictionGracePeriod),
+  imageGcLowThresholdPercent: Schema.optional(Schema.Number),
+  singleProcessOomKill: Schema.optional(Schema.Boolean),
+  insecureKubeletReadonlyPortEnabled: Schema.optional(Schema.Boolean),
+  containerLogMaxSize: Schema.optional(Schema.String),
+  containerLogMaxFiles: Schema.optional(Schema.Number),
+  memoryManager: Schema.optional(MemoryManager),
+}).annotate({ identifier: "NodeKubeletConfig" });
 
 export interface OperationError {
   /** CloudKMS key resource that had the error. */
@@ -1248,16 +966,11 @@ export interface OperationError {
   timestamp?: string;
 }
 
-export const OperationError: Schema.Schema<OperationError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      keyName: Schema.optional(Schema.String),
-      errorMessage: Schema.optional(Schema.String),
-      timestamp: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationError",
-  }) as any as Schema.Schema<OperationError>;
+export const OperationError = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  keyName: Schema.optional(Schema.String),
+  errorMessage: Schema.optional(Schema.String),
+  timestamp: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationError" });
 
 export interface DatabaseEncryption {
   /** Output only. Records errors seen during DatabaseEncryption update operations. */
@@ -1288,18 +1001,13 @@ export interface DatabaseEncryption {
   keyName?: string;
 }
 
-export const DatabaseEncryption: Schema.Schema<DatabaseEncryption> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lastOperationErrors: Schema.optional(Schema.Array(OperationError)),
-      state: Schema.optional(Schema.String),
-      currentState: Schema.optional(Schema.String),
-      decryptionKeys: Schema.optional(Schema.Array(Schema.String)),
-      keyName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DatabaseEncryption",
-  }) as any as Schema.Schema<DatabaseEncryption>;
+export const DatabaseEncryption = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  lastOperationErrors: Schema.optional(Schema.Array(OperationError)),
+  state: Schema.optional(Schema.String),
+  currentState: Schema.optional(Schema.String),
+  decryptionKeys: Schema.optional(Schema.Array(Schema.String)),
+  keyName: Schema.optional(Schema.String),
+}).annotate({ identifier: "DatabaseEncryption" });
 
 export interface PodAutoscaling {
   /** Selected Horizontal Pod Autoscaling profile. */
@@ -1310,28 +1018,18 @@ export interface PodAutoscaling {
     | (string & {});
 }
 
-export const PodAutoscaling: Schema.Schema<PodAutoscaling> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hpaProfile: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PodAutoscaling",
-  }) as any as Schema.Schema<PodAutoscaling>;
+export const PodAutoscaling = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  hpaProfile: Schema.optional(Schema.String),
+}).annotate({ identifier: "PodAutoscaling" });
 
 export interface WorkloadALTSConfig {
   /** enable_alts controls whether the alts handshaker should be enabled or not for direct-path. Requires Workload Identity (workload_pool must be non-empty). */
   enableAlts?: boolean;
 }
 
-export const WorkloadALTSConfig: Schema.Schema<WorkloadALTSConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableAlts: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "WorkloadALTSConfig",
-  }) as any as Schema.Schema<WorkloadALTSConfig>;
+export const WorkloadALTSConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enableAlts: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "WorkloadALTSConfig" });
 
 export interface ParentProductConfig {
   /** Name of the parent product associated with the cluster. */
@@ -1340,29 +1038,20 @@ export interface ParentProductConfig {
   labels?: Record<string, string>;
 }
 
-export const ParentProductConfig: Schema.Schema<ParentProductConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      productName: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ParentProductConfig",
-  }) as any as Schema.Schema<ParentProductConfig>;
+export const ParentProductConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  productName: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "ParentProductConfig" });
 
 export interface ServiceExternalIPsConfig {
   /** Whether Services with ExternalIPs field are allowed or not. */
   enabled?: boolean;
 }
 
-export const ServiceExternalIPsConfig: Schema.Schema<ServiceExternalIPsConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ServiceExternalIPsConfig",
-  }) as any as Schema.Schema<ServiceExternalIPsConfig>;
+export const ServiceExternalIPsConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "ServiceExternalIPsConfig" });
 
 export interface AdvancedDatapathObservabilityConfig {
   /** Expose flow metrics on nodes */
@@ -1378,30 +1067,21 @@ export interface AdvancedDatapathObservabilityConfig {
     | (string & {});
 }
 
-export const AdvancedDatapathObservabilityConfig: Schema.Schema<AdvancedDatapathObservabilityConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableMetrics: Schema.optional(Schema.Boolean),
-      enableRelay: Schema.optional(Schema.Boolean),
-      relayMode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AdvancedDatapathObservabilityConfig",
-  }) as any as Schema.Schema<AdvancedDatapathObservabilityConfig>;
+export const AdvancedDatapathObservabilityConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enableMetrics: Schema.optional(Schema.Boolean),
+    enableRelay: Schema.optional(Schema.Boolean),
+    relayMode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AdvancedDatapathObservabilityConfig" });
 
 export interface AutoMonitoringConfig {
   /** Scope for GKE Workload Auto-Monitoring. */
   scope?: "SCOPE_UNSPECIFIED" | "ALL" | "NONE" | (string & {});
 }
 
-export const AutoMonitoringConfig: Schema.Schema<AutoMonitoringConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scope: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AutoMonitoringConfig",
-  }) as any as Schema.Schema<AutoMonitoringConfig>;
+export const AutoMonitoringConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  scope: Schema.optional(Schema.String),
+}).annotate({ identifier: "AutoMonitoringConfig" });
 
 export interface ManagedPrometheusConfig {
   /** Enable Managed Collection. */
@@ -1410,15 +1090,11 @@ export interface ManagedPrometheusConfig {
   autoMonitoringConfig?: AutoMonitoringConfig;
 }
 
-export const ManagedPrometheusConfig: Schema.Schema<ManagedPrometheusConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-      autoMonitoringConfig: Schema.optional(AutoMonitoringConfig),
-    }),
-  ).annotate({
-    identifier: "ManagedPrometheusConfig",
-  }) as any as Schema.Schema<ManagedPrometheusConfig>;
+export const ManagedPrometheusConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+    autoMonitoringConfig: Schema.optional(AutoMonitoringConfig),
+  }).annotate({ identifier: "ManagedPrometheusConfig" });
 
 export interface MonitoringComponentConfig {
   /** Select components to collect metrics. An empty set would disable all monitoring. */
@@ -1443,14 +1119,10 @@ export interface MonitoringComponentConfig {
   >;
 }
 
-export const MonitoringComponentConfig: Schema.Schema<MonitoringComponentConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableComponents: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "MonitoringComponentConfig",
-  }) as any as Schema.Schema<MonitoringComponentConfig>;
+export const MonitoringComponentConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enableComponents: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "MonitoringComponentConfig" });
 
 export interface MonitoringConfig {
   /** Configuration of Advanced Datapath Observability features. */
@@ -1461,32 +1133,22 @@ export interface MonitoringConfig {
   componentConfig?: MonitoringComponentConfig;
 }
 
-export const MonitoringConfig: Schema.Schema<MonitoringConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      advancedDatapathObservabilityConfig: Schema.optional(
-        AdvancedDatapathObservabilityConfig,
-      ),
-      managedPrometheusConfig: Schema.optional(ManagedPrometheusConfig),
-      componentConfig: Schema.optional(MonitoringComponentConfig),
-    }),
-  ).annotate({
-    identifier: "MonitoringConfig",
-  }) as any as Schema.Schema<MonitoringConfig>;
+export const MonitoringConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  advancedDatapathObservabilityConfig: Schema.optional(
+    AdvancedDatapathObservabilityConfig,
+  ),
+  managedPrometheusConfig: Schema.optional(ManagedPrometheusConfig),
+  componentConfig: Schema.optional(MonitoringComponentConfig),
+}).annotate({ identifier: "MonitoringConfig" });
 
 export interface RollbackSafeUpgrade {
   /** A user-defined period for the cluster remains in the rollbackable state. ex: {seconds: 21600}. */
   controlPlaneSoakDuration?: string;
 }
 
-export const RollbackSafeUpgrade: Schema.Schema<RollbackSafeUpgrade> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      controlPlaneSoakDuration: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RollbackSafeUpgrade",
-  }) as any as Schema.Schema<RollbackSafeUpgrade>;
+export const RollbackSafeUpgrade = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  controlPlaneSoakDuration: Schema.optional(Schema.String),
+}).annotate({ identifier: "RollbackSafeUpgrade" });
 
 export interface RBACBindingConfig {
   /** Setting this to true will allow any ClusterRoleBinding and RoleBinding with subjects system:authenticated. */
@@ -1495,17 +1157,10 @@ export interface RBACBindingConfig {
   enableInsecureBindingSystemUnauthenticated?: boolean;
 }
 
-export const RBACBindingConfig: Schema.Schema<RBACBindingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableInsecureBindingSystemAuthenticated: Schema.optional(Schema.Boolean),
-      enableInsecureBindingSystemUnauthenticated: Schema.optional(
-        Schema.Boolean,
-      ),
-    }),
-  ).annotate({
-    identifier: "RBACBindingConfig",
-  }) as any as Schema.Schema<RBACBindingConfig>;
+export const RBACBindingConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enableInsecureBindingSystemAuthenticated: Schema.optional(Schema.Boolean),
+  enableInsecureBindingSystemUnauthenticated: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "RBACBindingConfig" });
 
 export interface LoggingComponentConfig {
   /** Select components to collect logs. An empty set would disable all logging. */
@@ -1523,42 +1178,29 @@ export interface LoggingComponentConfig {
   >;
 }
 
-export const LoggingComponentConfig: Schema.Schema<LoggingComponentConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableComponents: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "LoggingComponentConfig",
-  }) as any as Schema.Schema<LoggingComponentConfig>;
+export const LoggingComponentConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    enableComponents: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "LoggingComponentConfig" });
 
 export interface LoggingConfig {
   /** Logging components configuration */
   componentConfig?: LoggingComponentConfig;
 }
 
-export const LoggingConfig: Schema.Schema<LoggingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      componentConfig: Schema.optional(LoggingComponentConfig),
-    }),
-  ).annotate({
-    identifier: "LoggingConfig",
-  }) as any as Schema.Schema<LoggingConfig>;
+export const LoggingConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  componentConfig: Schema.optional(LoggingComponentConfig),
+}).annotate({ identifier: "LoggingConfig" });
 
 export interface WorkloadCertificates {
   /** enable_certificates controls issuance of workload mTLS certificates. If set, the GKE Workload Identity Certificates controller and node agent will be deployed in the cluster, which can then be configured by creating a WorkloadCertificateConfig Custom Resource. Requires Workload Identity (workload_pool must be non-empty). */
   enableCertificates?: boolean;
 }
 
-export const WorkloadCertificates: Schema.Schema<WorkloadCertificates> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableCertificates: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "WorkloadCertificates",
-  }) as any as Schema.Schema<WorkloadCertificates>;
+export const WorkloadCertificates = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enableCertificates: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "WorkloadCertificates" });
 
 export interface CompatibilityStatus {
   /** Output only. Last time the control plane became available after a minor version binary upgrade with emulated version set. It indicates the last time the cluster entered the rollback safe mode. */
@@ -1567,41 +1209,29 @@ export interface CompatibilityStatus {
   downgradableVersion?: string;
 }
 
-export const CompatibilityStatus: Schema.Schema<CompatibilityStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      emulatedVersionTime: Schema.optional(Schema.String),
-      downgradableVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CompatibilityStatus",
-  }) as any as Schema.Schema<CompatibilityStatus>;
+export const CompatibilityStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  emulatedVersionTime: Schema.optional(Schema.String),
+  downgradableVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "CompatibilityStatus" });
 
 export interface Master {
   /** Output only. The compatibility status of the control plane. It should be empty if the cluster does not have emulated version. */
   compatibilityStatus?: CompatibilityStatus;
 }
 
-export const Master: Schema.Schema<Master> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      compatibilityStatus: Schema.optional(CompatibilityStatus),
-    }),
-  ).annotate({ identifier: "Master" }) as any as Schema.Schema<Master>;
+export const Master = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  compatibilityStatus: Schema.optional(CompatibilityStatus),
+}).annotate({ identifier: "Master" });
 
 export interface PrivateClusterMasterGlobalAccessConfig {
   /** Whenever master is accessible globally or not. */
   enabled?: boolean;
 }
 
-export const PrivateClusterMasterGlobalAccessConfig: Schema.Schema<PrivateClusterMasterGlobalAccessConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "PrivateClusterMasterGlobalAccessConfig",
-  }) as any as Schema.Schema<PrivateClusterMasterGlobalAccessConfig>;
+export const PrivateClusterMasterGlobalAccessConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "PrivateClusterMasterGlobalAccessConfig" });
 
 export interface PrivateClusterConfig {
   /** Whether the master's internal IP address is used as the cluster endpoint. Use ControlPlaneEndpointsConfig.IPEndpointsConfig.enable_public_endpoint instead. Note that the value of enable_public_endpoint is reversed: if enable_private_endpoint is false, then enable_public_endpoint will be true. */
@@ -1622,23 +1252,18 @@ export interface PrivateClusterConfig {
   privateEndpoint?: string;
 }
 
-export const PrivateClusterConfig: Schema.Schema<PrivateClusterConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enablePrivateEndpoint: Schema.optional(Schema.Boolean),
-      masterGlobalAccessConfig: Schema.optional(
-        PrivateClusterMasterGlobalAccessConfig,
-      ),
-      privateEndpointSubnetwork: Schema.optional(Schema.String),
-      peeringName: Schema.optional(Schema.String),
-      enablePrivateNodes: Schema.optional(Schema.Boolean),
-      masterIpv4CidrBlock: Schema.optional(Schema.String),
-      publicEndpoint: Schema.optional(Schema.String),
-      privateEndpoint: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PrivateClusterConfig",
-  }) as any as Schema.Schema<PrivateClusterConfig>;
+export const PrivateClusterConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enablePrivateEndpoint: Schema.optional(Schema.Boolean),
+  masterGlobalAccessConfig: Schema.optional(
+    PrivateClusterMasterGlobalAccessConfig,
+  ),
+  privateEndpointSubnetwork: Schema.optional(Schema.String),
+  peeringName: Schema.optional(Schema.String),
+  enablePrivateNodes: Schema.optional(Schema.Boolean),
+  masterIpv4CidrBlock: Schema.optional(Schema.String),
+  publicEndpoint: Schema.optional(Schema.String),
+  privateEndpoint: Schema.optional(Schema.String),
+}).annotate({ identifier: "PrivateClusterConfig" });
 
 export interface WorkloadPolicyConfig {
   /** If true, workloads can use NET_ADMIN capability. */
@@ -1647,15 +1272,10 @@ export interface WorkloadPolicyConfig {
   autopilotCompatibilityAuditingEnabled?: boolean;
 }
 
-export const WorkloadPolicyConfig: Schema.Schema<WorkloadPolicyConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      allowNetAdmin: Schema.optional(Schema.Boolean),
-      autopilotCompatibilityAuditingEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "WorkloadPolicyConfig",
-  }) as any as Schema.Schema<WorkloadPolicyConfig>;
+export const WorkloadPolicyConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  allowNetAdmin: Schema.optional(Schema.Boolean),
+  autopilotCompatibilityAuditingEnabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "WorkloadPolicyConfig" });
 
 export interface AdditionalIPRangesConfig {
   /** List of secondary ranges names within this subnetwork that can be used for pod IPs. Example1: gke-pod-range1 Example2: gke-pod-range1,gke-pod-range2 */
@@ -1666,46 +1286,33 @@ export interface AdditionalIPRangesConfig {
   subnetwork?: string;
 }
 
-export const AdditionalIPRangesConfig: Schema.Schema<AdditionalIPRangesConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      podIpv4RangeNames: Schema.optional(Schema.Array(Schema.String)),
-      status: Schema.optional(Schema.String),
-      subnetwork: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AdditionalIPRangesConfig",
-  }) as any as Schema.Schema<AdditionalIPRangesConfig>;
+export const AdditionalIPRangesConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    podIpv4RangeNames: Schema.optional(Schema.Array(Schema.String)),
+    status: Schema.optional(Schema.String),
+    subnetwork: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AdditionalIPRangesConfig" });
 
 export interface DesiredAdditionalIPRangesConfig {
   /** List of additional IP ranges configs where each AdditionalIPRangesConfig corresponds to one subnetwork's IP ranges */
   additionalIpRangesConfigs?: Array<AdditionalIPRangesConfig>;
 }
 
-export const DesiredAdditionalIPRangesConfig: Schema.Schema<DesiredAdditionalIPRangesConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      additionalIpRangesConfigs: Schema.optional(
-        Schema.Array(AdditionalIPRangesConfig),
-      ),
-    }),
-  ).annotate({
-    identifier: "DesiredAdditionalIPRangesConfig",
-  }) as any as Schema.Schema<DesiredAdditionalIPRangesConfig>;
+export const DesiredAdditionalIPRangesConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    additionalIpRangesConfigs: Schema.optional(
+      Schema.Array(AdditionalIPRangesConfig),
+    ),
+  }).annotate({ identifier: "DesiredAdditionalIPRangesConfig" });
 
 export interface EncryptionConfig {
   /** Optional. If true, swap space will not be encrypted. Defaults to false (encrypted). */
   disabled?: boolean;
 }
 
-export const EncryptionConfig: Schema.Schema<EncryptionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      disabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "EncryptionConfig",
-  }) as any as Schema.Schema<EncryptionConfig>;
+export const EncryptionConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  disabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "EncryptionConfig" });
 
 export interface BootDiskProfile {
   /** Specifies the size of the swap space in gibibytes (GiB). */
@@ -1714,29 +1321,20 @@ export interface BootDiskProfile {
   swapSizePercent?: number;
 }
 
-export const BootDiskProfile: Schema.Schema<BootDiskProfile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      swapSizeGib: Schema.optional(Schema.String),
-      swapSizePercent: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "BootDiskProfile",
-  }) as any as Schema.Schema<BootDiskProfile>;
+export const BootDiskProfile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  swapSizeGib: Schema.optional(Schema.String),
+  swapSizePercent: Schema.optional(Schema.Number),
+}).annotate({ identifier: "BootDiskProfile" });
 
 export interface DedicatedLocalSsdProfile {
   /** The number of physical local NVMe SSD disks to attach. */
   diskCount?: string;
 }
 
-export const DedicatedLocalSsdProfile: Schema.Schema<DedicatedLocalSsdProfile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      diskCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DedicatedLocalSsdProfile",
-  }) as any as Schema.Schema<DedicatedLocalSsdProfile>;
+export const DedicatedLocalSsdProfile =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    diskCount: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DedicatedLocalSsdProfile" });
 
 export interface EphemeralLocalSsdProfile {
   /** Specifies the size of the swap space in gibibytes (GiB). */
@@ -1745,15 +1343,11 @@ export interface EphemeralLocalSsdProfile {
   swapSizePercent?: number;
 }
 
-export const EphemeralLocalSsdProfile: Schema.Schema<EphemeralLocalSsdProfile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      swapSizeGib: Schema.optional(Schema.String),
-      swapSizePercent: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "EphemeralLocalSsdProfile",
-  }) as any as Schema.Schema<EphemeralLocalSsdProfile>;
+export const EphemeralLocalSsdProfile =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    swapSizeGib: Schema.optional(Schema.String),
+    swapSizePercent: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "EphemeralLocalSsdProfile" });
 
 export interface SwapConfig {
   /** Optional. If omitted, swap space is encrypted by default. */
@@ -1768,30 +1362,22 @@ export interface SwapConfig {
   enabled?: boolean;
 }
 
-export const SwapConfig: Schema.Schema<SwapConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      encryptionConfig: Schema.optional(EncryptionConfig),
-      bootDiskProfile: Schema.optional(BootDiskProfile),
-      dedicatedLocalSsdProfile: Schema.optional(DedicatedLocalSsdProfile),
-      ephemeralLocalSsdProfile: Schema.optional(EphemeralLocalSsdProfile),
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "SwapConfig" }) as any as Schema.Schema<SwapConfig>;
+export const SwapConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  encryptionConfig: Schema.optional(EncryptionConfig),
+  bootDiskProfile: Schema.optional(BootDiskProfile),
+  dedicatedLocalSsdProfile: Schema.optional(DedicatedLocalSsdProfile),
+  ephemeralLocalSsdProfile: Schema.optional(EphemeralLocalSsdProfile),
+  enabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "SwapConfig" });
 
 export interface AccurateTimeConfig {
   /** Enables enhanced time synchronization using PTP-KVM. */
   enablePtpKvmTimeSync?: boolean;
 }
 
-export const AccurateTimeConfig: Schema.Schema<AccurateTimeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enablePtpKvmTimeSync: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "AccurateTimeConfig",
-  }) as any as Schema.Schema<AccurateTimeConfig>;
+export const AccurateTimeConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enablePtpKvmTimeSync: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "AccurateTimeConfig" });
 
 export interface HugepagesConfig {
   /** Optional. Amount of 1G hugepages */
@@ -1800,15 +1386,10 @@ export interface HugepagesConfig {
   hugepageSize2m?: number;
 }
 
-export const HugepagesConfig: Schema.Schema<HugepagesConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hugepageSize1g: Schema.optional(Schema.Number),
-      hugepageSize2m: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "HugepagesConfig",
-  }) as any as Schema.Schema<HugepagesConfig>;
+export const HugepagesConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  hugepageSize1g: Schema.optional(Schema.Number),
+  hugepageSize2m: Schema.optional(Schema.Number),
+}).annotate({ identifier: "HugepagesConfig" });
 
 export interface NodeKernelModuleLoading {
   /** Set the node module loading policy for nodes in the node pool. */
@@ -1819,14 +1400,10 @@ export interface NodeKernelModuleLoading {
     | (string & {});
 }
 
-export const NodeKernelModuleLoading: Schema.Schema<NodeKernelModuleLoading> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policy: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NodeKernelModuleLoading",
-  }) as any as Schema.Schema<NodeKernelModuleLoading>;
+export const NodeKernelModuleLoading =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policy: Schema.optional(Schema.String),
+  }).annotate({ identifier: "NodeKernelModuleLoading" });
 
 export interface LinuxNodeConfig {
   /** Optional. Enables and configures swap space on nodes. If omitted, swap is disabled. */
@@ -1863,21 +1440,16 @@ export interface LinuxNodeConfig {
     | (string & {});
 }
 
-export const LinuxNodeConfig: Schema.Schema<LinuxNodeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      swapConfig: Schema.optional(SwapConfig),
-      accurateTimeConfig: Schema.optional(AccurateTimeConfig),
-      cgroupMode: Schema.optional(Schema.String),
-      hugepages: Schema.optional(HugepagesConfig),
-      nodeKernelModuleLoading: Schema.optional(NodeKernelModuleLoading),
-      sysctls: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      transparentHugepageDefrag: Schema.optional(Schema.String),
-      transparentHugepageEnabled: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LinuxNodeConfig",
-  }) as any as Schema.Schema<LinuxNodeConfig>;
+export const LinuxNodeConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  swapConfig: Schema.optional(SwapConfig),
+  accurateTimeConfig: Schema.optional(AccurateTimeConfig),
+  cgroupMode: Schema.optional(Schema.String),
+  hugepages: Schema.optional(HugepagesConfig),
+  nodeKernelModuleLoading: Schema.optional(NodeKernelModuleLoading),
+  sysctls: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  transparentHugepageDefrag: Schema.optional(Schema.String),
+  transparentHugepageEnabled: Schema.optional(Schema.String),
+}).annotate({ identifier: "LinuxNodeConfig" });
 
 export interface RangeInfo {
   /** Output only. Name of a range. */
@@ -1886,13 +1458,10 @@ export interface RangeInfo {
   utilization?: number;
 }
 
-export const RangeInfo: Schema.Schema<RangeInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rangeName: Schema.optional(Schema.String),
-      utilization: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "RangeInfo" }) as any as Schema.Schema<RangeInfo>;
+export const RangeInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  rangeName: Schema.optional(Schema.String),
+  utilization: Schema.optional(Schema.Number),
+}).annotate({ identifier: "RangeInfo" });
 
 export interface AdditionalPodRangesConfig {
   /** Output only. Information for additional pod range. */
@@ -1901,15 +1470,11 @@ export interface AdditionalPodRangesConfig {
   podRangeNames?: Array<string>;
 }
 
-export const AdditionalPodRangesConfig: Schema.Schema<AdditionalPodRangesConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      podRangeInfo: Schema.optional(Schema.Array(RangeInfo)),
-      podRangeNames: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AdditionalPodRangesConfig",
-  }) as any as Schema.Schema<AdditionalPodRangesConfig>;
+export const AdditionalPodRangesConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    podRangeInfo: Schema.optional(Schema.Array(RangeInfo)),
+    podRangeNames: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "AdditionalPodRangesConfig" });
 
 export interface Filter {
   /** Event types to allowlist. */
@@ -1923,12 +1488,9 @@ export interface Filter {
   >;
 }
 
-export const Filter: Schema.Schema<Filter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      eventType: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "Filter" }) as any as Schema.Schema<Filter>;
+export const Filter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  eventType: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Filter" });
 
 export interface PubSub {
   /** Allows filtering to one or more specific event types. If no filter is specified, or if a filter is specified with no event types, all event types will be sent */
@@ -1939,28 +1501,20 @@ export interface PubSub {
   enabled?: boolean;
 }
 
-export const PubSub: Schema.Schema<PubSub> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filter: Schema.optional(Filter),
-      topic: Schema.optional(Schema.String),
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "PubSub" }) as any as Schema.Schema<PubSub>;
+export const PubSub = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  filter: Schema.optional(Filter),
+  topic: Schema.optional(Schema.String),
+  enabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "PubSub" });
 
 export interface NotificationConfig {
   /** Notification config for Pub/Sub. */
   pubsub?: PubSub;
 }
 
-export const NotificationConfig: Schema.Schema<NotificationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pubsub: Schema.optional(PubSub),
-    }),
-  ).annotate({
-    identifier: "NotificationConfig",
-  }) as any as Schema.Schema<NotificationConfig>;
+export const NotificationConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pubsub: Schema.optional(PubSub),
+}).annotate({ identifier: "NotificationConfig" });
 
 export interface Fleet {
   /** The type of the cluster's fleet membership. */
@@ -1976,29 +1530,21 @@ export interface Fleet {
   membership?: string;
 }
 
-export const Fleet: Schema.Schema<Fleet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      membershipType: Schema.optional(Schema.String),
-      project: Schema.optional(Schema.String),
-      preRegistered: Schema.optional(Schema.Boolean),
-      membership: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Fleet" }) as any as Schema.Schema<Fleet>;
+export const Fleet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  membershipType: Schema.optional(Schema.String),
+  project: Schema.optional(Schema.String),
+  preRegistered: Schema.optional(Schema.Boolean),
+  membership: Schema.optional(Schema.String),
+}).annotate({ identifier: "Fleet" });
 
 export interface PolicyBinding {
   /** The relative resource name of the binauthz platform policy to evaluate. GKE platform policies have the following format: `projects/{project_number}/platforms/gke/policies/{policy_id}`. */
   name?: string;
 }
 
-export const PolicyBinding: Schema.Schema<PolicyBinding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PolicyBinding",
-  }) as any as Schema.Schema<PolicyBinding>;
+export const PolicyBinding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "PolicyBinding" });
 
 export interface BinaryAuthorization {
   /** This field is deprecated. Leave this unset and instead configure BinaryAuthorization using evaluation_mode. If evaluation_mode is set to anything other than EVALUATION_MODE_UNSPECIFIED, this field is ignored. */
@@ -2015,30 +1561,20 @@ export interface BinaryAuthorization {
   policyBindings?: Array<PolicyBinding>;
 }
 
-export const BinaryAuthorization: Schema.Schema<BinaryAuthorization> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-      evaluationMode: Schema.optional(Schema.String),
-      policyBindings: Schema.optional(Schema.Array(PolicyBinding)),
-    }),
-  ).annotate({
-    identifier: "BinaryAuthorization",
-  }) as any as Schema.Schema<BinaryAuthorization>;
+export const BinaryAuthorization = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabled: Schema.optional(Schema.Boolean),
+  evaluationMode: Schema.optional(Schema.String),
+  policyBindings: Schema.optional(Schema.Array(PolicyBinding)),
+}).annotate({ identifier: "BinaryAuthorization" });
 
 export interface ControlPlaneEgress {
   /** Defines the mode of control plane egress. */
   mode?: "MODE_UNSPECIFIED" | "VIA_CONTROL_PLANE" | "NONE" | (string & {});
 }
 
-export const ControlPlaneEgress: Schema.Schema<ControlPlaneEgress> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ControlPlaneEgress",
-  }) as any as Schema.Schema<ControlPlaneEgress>;
+export const ControlPlaneEgress = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  mode: Schema.optional(Schema.String),
+}).annotate({ identifier: "ControlPlaneEgress" });
 
 export interface WorkloadIdentityConfig {
   /** The workload pool to attach all Kubernetes service accounts to. */
@@ -2049,44 +1585,32 @@ export interface WorkloadIdentityConfig {
   identityNamespace?: string;
 }
 
-export const WorkloadIdentityConfig: Schema.Schema<WorkloadIdentityConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      workloadPool: Schema.optional(Schema.String),
-      identityProvider: Schema.optional(Schema.String),
-      identityNamespace: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WorkloadIdentityConfig",
-  }) as any as Schema.Schema<WorkloadIdentityConfig>;
+export const WorkloadIdentityConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    workloadPool: Schema.optional(Schema.String),
+    identityProvider: Schema.optional(Schema.String),
+    identityNamespace: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "WorkloadIdentityConfig" });
 
 export interface ScheduleUpgradeConfig {
   /** Optional. Whether or not scheduled upgrades are enabled. */
   enabled?: boolean;
 }
 
-export const ScheduleUpgradeConfig: Schema.Schema<ScheduleUpgradeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ScheduleUpgradeConfig",
-  }) as any as Schema.Schema<ScheduleUpgradeConfig>;
+export const ScheduleUpgradeConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "ScheduleUpgradeConfig" });
 
 export interface IntraNodeVisibilityConfig {
   /** Enables intra node visibility for this cluster. */
   enabled?: boolean;
 }
 
-export const IntraNodeVisibilityConfig: Schema.Schema<IntraNodeVisibilityConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "IntraNodeVisibilityConfig",
-  }) as any as Schema.Schema<IntraNodeVisibilityConfig>;
+export const IntraNodeVisibilityConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "IntraNodeVisibilityConfig" });
 
 export interface ReleaseChannel {
   /** channel specifies which release channel the cluster is subscribed to. */
@@ -2099,26 +1623,18 @@ export interface ReleaseChannel {
     | (string & {});
 }
 
-export const ReleaseChannel: Schema.Schema<ReleaseChannel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      channel: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ReleaseChannel",
-  }) as any as Schema.Schema<ReleaseChannel>;
+export const ReleaseChannel = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  channel: Schema.optional(Schema.String),
+}).annotate({ identifier: "ReleaseChannel" });
 
 export interface GcfsConfig {
   /** Whether to use GCFS. */
   enabled?: boolean;
 }
 
-export const GcfsConfig: Schema.Schema<GcfsConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "GcfsConfig" }) as any as Schema.Schema<GcfsConfig>;
+export const GcfsConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "GcfsConfig" });
 
 export interface UserManagedKeysConfig {
   /** Resource path of the Certificate Authority Service caPool to use for the etcd API CA in this cluster. */
@@ -2141,54 +1657,38 @@ export interface UserManagedKeysConfig {
   serviceAccountVerificationKeys?: Array<string>;
 }
 
-export const UserManagedKeysConfig: Schema.Schema<UserManagedKeysConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      etcdApiCa: Schema.optional(Schema.String),
-      aggregationCa: Schema.optional(Schema.String),
-      controlPlaneDiskEncryptionKeyVersions: Schema.optional(
-        Schema.Array(Schema.String),
-      ),
-      serviceAccountSigningKeys: Schema.optional(Schema.Array(Schema.String)),
-      gkeopsEtcdBackupEncryptionKey: Schema.optional(Schema.String),
-      clusterCa: Schema.optional(Schema.String),
-      etcdPeerCa: Schema.optional(Schema.String),
-      controlPlaneDiskEncryptionKey: Schema.optional(Schema.String),
-      serviceAccountVerificationKeys: Schema.optional(
-        Schema.Array(Schema.String),
-      ),
-    }),
-  ).annotate({
-    identifier: "UserManagedKeysConfig",
-  }) as any as Schema.Schema<UserManagedKeysConfig>;
+export const UserManagedKeysConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  etcdApiCa: Schema.optional(Schema.String),
+  aggregationCa: Schema.optional(Schema.String),
+  controlPlaneDiskEncryptionKeyVersions: Schema.optional(
+    Schema.Array(Schema.String),
+  ),
+  serviceAccountSigningKeys: Schema.optional(Schema.Array(Schema.String)),
+  gkeopsEtcdBackupEncryptionKey: Schema.optional(Schema.String),
+  clusterCa: Schema.optional(Schema.String),
+  etcdPeerCa: Schema.optional(Schema.String),
+  controlPlaneDiskEncryptionKey: Schema.optional(Schema.String),
+  serviceAccountVerificationKeys: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "UserManagedKeysConfig" });
 
 export interface ILBSubsettingConfig {
   /** Enables l4 ILB subsetting for this cluster */
   enabled?: boolean;
 }
 
-export const ILBSubsettingConfig: Schema.Schema<ILBSubsettingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ILBSubsettingConfig",
-  }) as any as Schema.Schema<ILBSubsettingConfig>;
+export const ILBSubsettingConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "ILBSubsettingConfig" });
 
 export interface ManagedMachineLearningDiagnosticsConfig {
   /** Enable/Disable Managed Machine Learning Diagnostics. */
   enabled?: boolean;
 }
 
-export const ManagedMachineLearningDiagnosticsConfig: Schema.Schema<ManagedMachineLearningDiagnosticsConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ManagedMachineLearningDiagnosticsConfig",
-  }) as any as Schema.Schema<ManagedMachineLearningDiagnosticsConfig>;
+export const ManagedMachineLearningDiagnosticsConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "ManagedMachineLearningDiagnosticsConfig" });
 
 export interface DNSEndpointConfig {
   /** Controls whether user traffic is allowed over this endpoint. Note that Google-managed services may still use the endpoint even if this is false. */
@@ -2201,17 +1701,12 @@ export interface DNSEndpointConfig {
   enableK8sTokensViaDns?: boolean;
 }
 
-export const DNSEndpointConfig: Schema.Schema<DNSEndpointConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      allowExternalTraffic: Schema.optional(Schema.Boolean),
-      enableK8sCertsViaDns: Schema.optional(Schema.Boolean),
-      endpoint: Schema.optional(Schema.String),
-      enableK8sTokensViaDns: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "DNSEndpointConfig",
-  }) as any as Schema.Schema<DNSEndpointConfig>;
+export const DNSEndpointConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  allowExternalTraffic: Schema.optional(Schema.Boolean),
+  enableK8sCertsViaDns: Schema.optional(Schema.Boolean),
+  endpoint: Schema.optional(Schema.String),
+  enableK8sTokensViaDns: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "DNSEndpointConfig" });
 
 export interface IPEndpointsConfig {
   /** Subnet to provision the master's private endpoint during cluster creation. Specified in projects/* /regions/* /subnetworks/* format. It is invalid to specify both PrivateClusterConfig.privateEndpointSubnetwork and this field at the same time. */
@@ -2230,20 +1725,15 @@ export interface IPEndpointsConfig {
   globalAccess?: boolean;
 }
 
-export const IPEndpointsConfig: Schema.Schema<IPEndpointsConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      privateEndpointSubnetwork: Schema.optional(Schema.String),
-      authorizedNetworksConfig: Schema.optional(MasterAuthorizedNetworksConfig),
-      enabled: Schema.optional(Schema.Boolean),
-      privateEndpoint: Schema.optional(Schema.String),
-      enablePublicEndpoint: Schema.optional(Schema.Boolean),
-      publicEndpoint: Schema.optional(Schema.String),
-      globalAccess: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "IPEndpointsConfig",
-  }) as any as Schema.Schema<IPEndpointsConfig>;
+export const IPEndpointsConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  privateEndpointSubnetwork: Schema.optional(Schema.String),
+  authorizedNetworksConfig: Schema.optional(MasterAuthorizedNetworksConfig),
+  enabled: Schema.optional(Schema.Boolean),
+  privateEndpoint: Schema.optional(Schema.String),
+  enablePublicEndpoint: Schema.optional(Schema.Boolean),
+  publicEndpoint: Schema.optional(Schema.String),
+  globalAccess: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "IPEndpointsConfig" });
 
 export interface ControlPlaneEndpointsConfig {
   /** DNS endpoint configuration. */
@@ -2252,15 +1742,11 @@ export interface ControlPlaneEndpointsConfig {
   ipEndpointsConfig?: IPEndpointsConfig;
 }
 
-export const ControlPlaneEndpointsConfig: Schema.Schema<ControlPlaneEndpointsConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dnsEndpointConfig: Schema.optional(DNSEndpointConfig),
-      ipEndpointsConfig: Schema.optional(IPEndpointsConfig),
-    }),
-  ).annotate({
-    identifier: "ControlPlaneEndpointsConfig",
-  }) as any as Schema.Schema<ControlPlaneEndpointsConfig>;
+export const ControlPlaneEndpointsConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dnsEndpointConfig: Schema.optional(DNSEndpointConfig),
+    ipEndpointsConfig: Schema.optional(IPEndpointsConfig),
+  }).annotate({ identifier: "ControlPlaneEndpointsConfig" });
 
 export interface AuthenticatorGroupsConfig {
   /** The name of the security group-of-groups to be used. Only relevant if enabled = true. */
@@ -2269,15 +1755,11 @@ export interface AuthenticatorGroupsConfig {
   enabled?: boolean;
 }
 
-export const AuthenticatorGroupsConfig: Schema.Schema<AuthenticatorGroupsConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      securityGroup: Schema.optional(Schema.String),
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "AuthenticatorGroupsConfig",
-  }) as any as Schema.Schema<AuthenticatorGroupsConfig>;
+export const AuthenticatorGroupsConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    securityGroup: Schema.optional(Schema.String),
+    enabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "AuthenticatorGroupsConfig" });
 
 export interface NodePoolAutoscaling {
   /** Maximum number of nodes in the node pool. Must be greater than or equal to total_min_node_count. There has to be enough quota to scale up the cluster. The total_*_node_count fields are mutually exclusive with the *_node_count fields. */
@@ -2300,48 +1782,33 @@ export interface NodePoolAutoscaling {
   autoprovisioned?: boolean;
 }
 
-export const NodePoolAutoscaling: Schema.Schema<NodePoolAutoscaling> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      totalMaxNodeCount: Schema.optional(Schema.Number),
-      minNodeCount: Schema.optional(Schema.Number),
-      maxNodeCount: Schema.optional(Schema.Number),
-      totalMinNodeCount: Schema.optional(Schema.Number),
-      locationPolicy: Schema.optional(Schema.String),
-      enabled: Schema.optional(Schema.Boolean),
-      autoprovisioned: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "NodePoolAutoscaling",
-  }) as any as Schema.Schema<NodePoolAutoscaling>;
+export const NodePoolAutoscaling = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  totalMaxNodeCount: Schema.optional(Schema.Number),
+  minNodeCount: Schema.optional(Schema.Number),
+  maxNodeCount: Schema.optional(Schema.Number),
+  totalMinNodeCount: Schema.optional(Schema.Number),
+  locationPolicy: Schema.optional(Schema.String),
+  enabled: Schema.optional(Schema.Boolean),
+  autoprovisioned: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "NodePoolAutoscaling" });
 
 export interface ClusterTelemetry {
   /** Type of the integration. */
   type?: "UNSPECIFIED" | "DISABLED" | "ENABLED" | "SYSTEM_ONLY" | (string & {});
 }
 
-export const ClusterTelemetry: Schema.Schema<ClusterTelemetry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ClusterTelemetry",
-  }) as any as Schema.Schema<ClusterTelemetry>;
+export const ClusterTelemetry = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "ClusterTelemetry" });
 
 export interface MeshCertificates {
   /** enable_certificates controls issuance of workload mTLS certificates. If set, the GKE Workload Identity Certificates controller and node agent will be deployed in the cluster, which can then be configured by creating a WorkloadCertificateConfig Custom Resource. Requires Workload Identity (workload_pool must be non-empty). */
   enableCertificates?: boolean;
 }
 
-export const MeshCertificates: Schema.Schema<MeshCertificates> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableCertificates: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "MeshCertificates",
-  }) as any as Schema.Schema<MeshCertificates>;
+export const MeshCertificates = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enableCertificates: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "MeshCertificates" });
 
 export interface DNSConfig {
   /** cluster_dns_domain is the suffix used for all cluster service records. */
@@ -2363,15 +1830,12 @@ export interface DNSConfig {
     | (string & {});
 }
 
-export const DNSConfig: Schema.Schema<DNSConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clusterDnsDomain: Schema.optional(Schema.String),
-      clusterDnsScope: Schema.optional(Schema.String),
-      additiveVpcScopeDnsDomain: Schema.optional(Schema.String),
-      clusterDns: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "DNSConfig" }) as any as Schema.Schema<DNSConfig>;
+export const DNSConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  clusterDnsDomain: Schema.optional(Schema.String),
+  clusterDnsScope: Schema.optional(Schema.String),
+  additiveVpcScopeDnsDomain: Schema.optional(Schema.String),
+  clusterDns: Schema.optional(Schema.String),
+}).annotate({ identifier: "DNSConfig" });
 
 export interface ManagedOpenTelemetryConfig {
   /** Scope of the Managed OpenTelemetry pipeline. */
@@ -2382,14 +1846,10 @@ export interface ManagedOpenTelemetryConfig {
     | (string & {});
 }
 
-export const ManagedOpenTelemetryConfig: Schema.Schema<ManagedOpenTelemetryConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scope: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ManagedOpenTelemetryConfig",
-  }) as any as Schema.Schema<ManagedOpenTelemetryConfig>;
+export const ManagedOpenTelemetryConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scope: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ManagedOpenTelemetryConfig" });
 
 export interface SecurityPostureConfig {
   /** Sets which mode to use for Security Posture features. */
@@ -2408,29 +1868,20 @@ export interface SecurityPostureConfig {
     | (string & {});
 }
 
-export const SecurityPostureConfig: Schema.Schema<SecurityPostureConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mode: Schema.optional(Schema.String),
-      vulnerabilityMode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SecurityPostureConfig",
-  }) as any as Schema.Schema<SecurityPostureConfig>;
+export const SecurityPostureConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  mode: Schema.optional(Schema.String),
+  vulnerabilityMode: Schema.optional(Schema.String),
+}).annotate({ identifier: "SecurityPostureConfig" });
 
 export interface AnonymousAuthenticationConfig {
   /** Defines the mode of limiting anonymous access in the cluster. */
   mode?: "MODE_UNSPECIFIED" | "ENABLED" | "LIMITED" | (string & {});
 }
 
-export const AnonymousAuthenticationConfig: Schema.Schema<AnonymousAuthenticationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AnonymousAuthenticationConfig",
-  }) as any as Schema.Schema<AnonymousAuthenticationConfig>;
+export const AnonymousAuthenticationConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    mode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AnonymousAuthenticationConfig" });
 
 export interface RotationConfig {
   /** Whether the rotation is enabled. */
@@ -2439,15 +1890,10 @@ export interface RotationConfig {
   rotationInterval?: string;
 }
 
-export const RotationConfig: Schema.Schema<RotationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-      rotationInterval: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RotationConfig",
-  }) as any as Schema.Schema<RotationConfig>;
+export const RotationConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabled: Schema.optional(Schema.Boolean),
+  rotationInterval: Schema.optional(Schema.String),
+}).annotate({ identifier: "RotationConfig" });
 
 export interface SecretManagerConfig {
   /** Rotation config for secret manager. */
@@ -2456,43 +1902,29 @@ export interface SecretManagerConfig {
   enabled?: boolean;
 }
 
-export const SecretManagerConfig: Schema.Schema<SecretManagerConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rotationConfig: Schema.optional(RotationConfig),
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "SecretManagerConfig",
-  }) as any as Schema.Schema<SecretManagerConfig>;
+export const SecretManagerConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  rotationConfig: Schema.optional(RotationConfig),
+  enabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "SecretManagerConfig" });
 
 export interface KubernetesDashboard {
   /** Whether the Kubernetes Dashboard is enabled for this cluster. */
   disabled?: boolean;
 }
 
-export const KubernetesDashboard: Schema.Schema<KubernetesDashboard> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      disabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "KubernetesDashboard",
-  }) as any as Schema.Schema<KubernetesDashboard>;
+export const KubernetesDashboard = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  disabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "KubernetesDashboard" });
 
 export interface GcePersistentDiskCsiDriverConfig {
   /** Whether the Compute Engine PD CSI driver is enabled for this cluster. */
   enabled?: boolean;
 }
 
-export const GcePersistentDiskCsiDriverConfig: Schema.Schema<GcePersistentDiskCsiDriverConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GcePersistentDiskCsiDriverConfig",
-  }) as any as Schema.Schema<GcePersistentDiskCsiDriverConfig>;
+export const GcePersistentDiskCsiDriverConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GcePersistentDiskCsiDriverConfig" });
 
 export interface IstioConfig {
   /** Whether Istio is enabled for this cluster. */
@@ -2501,127 +1933,86 @@ export interface IstioConfig {
   auth?: "AUTH_NONE" | "AUTH_MUTUAL_TLS" | (string & {});
 }
 
-export const IstioConfig: Schema.Schema<IstioConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      disabled: Schema.optional(Schema.Boolean),
-      auth: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "IstioConfig",
-  }) as any as Schema.Schema<IstioConfig>;
+export const IstioConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  disabled: Schema.optional(Schema.Boolean),
+  auth: Schema.optional(Schema.String),
+}).annotate({ identifier: "IstioConfig" });
 
 export interface PodSnapshotConfig {
   /** Whether or not the Pod Snapshots feature is enabled. */
   enabled?: boolean;
 }
 
-export const PodSnapshotConfig: Schema.Schema<PodSnapshotConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "PodSnapshotConfig",
-  }) as any as Schema.Schema<PodSnapshotConfig>;
+export const PodSnapshotConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "PodSnapshotConfig" });
 
 export interface GcsFuseCsiDriverConfig {
   /** Whether the Cloud Storage Fuse CSI driver is enabled for this cluster. */
   enabled?: boolean;
 }
 
-export const GcsFuseCsiDriverConfig: Schema.Schema<GcsFuseCsiDriverConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GcsFuseCsiDriverConfig",
-  }) as any as Schema.Schema<GcsFuseCsiDriverConfig>;
+export const GcsFuseCsiDriverConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    enabled: Schema.optional(Schema.Boolean),
+  },
+).annotate({ identifier: "GcsFuseCsiDriverConfig" });
 
 export interface GcpFilestoreCsiDriverConfig {
   /** Whether the Filestore CSI driver is enabled for this cluster. */
   enabled?: boolean;
 }
 
-export const GcpFilestoreCsiDriverConfig: Schema.Schema<GcpFilestoreCsiDriverConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GcpFilestoreCsiDriverConfig",
-  }) as any as Schema.Schema<GcpFilestoreCsiDriverConfig>;
+export const GcpFilestoreCsiDriverConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GcpFilestoreCsiDriverConfig" });
 
 export interface HttpLoadBalancing {
   /** Whether the HTTP Load Balancing controller is enabled in the cluster. When enabled, it runs a small pod in the cluster that manages the load balancers. */
   disabled?: boolean;
 }
 
-export const HttpLoadBalancing: Schema.Schema<HttpLoadBalancing> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      disabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "HttpLoadBalancing",
-  }) as any as Schema.Schema<HttpLoadBalancing>;
+export const HttpLoadBalancing = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  disabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "HttpLoadBalancing" });
 
 export interface AgentSandboxConfig {
   /** Optional. Whether AgentSandbox is enabled for this cluster. */
   enabled?: boolean;
 }
 
-export const AgentSandboxConfig: Schema.Schema<AgentSandboxConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "AgentSandboxConfig",
-  }) as any as Schema.Schema<AgentSandboxConfig>;
+export const AgentSandboxConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "AgentSandboxConfig" });
 
 export interface HighScaleCheckpointingConfig {
   /** Whether the High Scale Checkpointing is enabled for this cluster. */
   enabled?: boolean;
 }
 
-export const HighScaleCheckpointingConfig: Schema.Schema<HighScaleCheckpointingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "HighScaleCheckpointingConfig",
-  }) as any as Schema.Schema<HighScaleCheckpointingConfig>;
+export const HighScaleCheckpointingConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "HighScaleCheckpointingConfig" });
 
 export interface StatefulHAConfig {
   /** Whether the Stateful HA add-on is enabled for this cluster. */
   enabled?: boolean;
 }
 
-export const StatefulHAConfig: Schema.Schema<StatefulHAConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "StatefulHAConfig",
-  }) as any as Schema.Schema<StatefulHAConfig>;
+export const StatefulHAConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "StatefulHAConfig" });
 
 export interface SliceControllerConfig {
   /** Optional. Indicates whether Slice Controller is enabled in the cluster. */
   enabled?: boolean;
 }
 
-export const SliceControllerConfig: Schema.Schema<SliceControllerConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "SliceControllerConfig",
-  }) as any as Schema.Schema<SliceControllerConfig>;
+export const SliceControllerConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "SliceControllerConfig" });
 
 export interface CloudRunConfig {
   /** Whether Cloud Run addon is enabled for this cluster. */
@@ -2634,111 +2025,77 @@ export interface CloudRunConfig {
     | (string & {});
 }
 
-export const CloudRunConfig: Schema.Schema<CloudRunConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      disabled: Schema.optional(Schema.Boolean),
-      loadBalancerType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CloudRunConfig",
-  }) as any as Schema.Schema<CloudRunConfig>;
+export const CloudRunConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  disabled: Schema.optional(Schema.Boolean),
+  loadBalancerType: Schema.optional(Schema.String),
+}).annotate({ identifier: "CloudRunConfig" });
 
 export interface GkeBackupAgentConfig {
   /** Whether the Backup for GKE agent is enabled for this cluster. */
   enabled?: boolean;
 }
 
-export const GkeBackupAgentConfig: Schema.Schema<GkeBackupAgentConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GkeBackupAgentConfig",
-  }) as any as Schema.Schema<GkeBackupAgentConfig>;
+export const GkeBackupAgentConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "GkeBackupAgentConfig" });
 
 export interface ParallelstoreCsiDriverConfig {
   /** Whether the Cloud Storage Parallelstore CSI driver is enabled for this cluster. */
   enabled?: boolean;
 }
 
-export const ParallelstoreCsiDriverConfig: Schema.Schema<ParallelstoreCsiDriverConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ParallelstoreCsiDriverConfig",
-  }) as any as Schema.Schema<ParallelstoreCsiDriverConfig>;
+export const ParallelstoreCsiDriverConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "ParallelstoreCsiDriverConfig" });
 
 export interface KalmConfig {
   /** Whether KALM is enabled for this cluster. */
   enabled?: boolean;
 }
 
-export const KalmConfig: Schema.Schema<KalmConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "KalmConfig" }) as any as Schema.Schema<KalmConfig>;
+export const KalmConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "KalmConfig" });
 
 export interface HorizontalPodAutoscaling {
   /** Whether the Horizontal Pod Autoscaling feature is enabled in the cluster. When enabled, it ensures that metrics are collected into Stackdriver Monitoring. */
   disabled?: boolean;
 }
 
-export const HorizontalPodAutoscaling: Schema.Schema<HorizontalPodAutoscaling> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      disabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "HorizontalPodAutoscaling",
-  }) as any as Schema.Schema<HorizontalPodAutoscaling>;
+export const HorizontalPodAutoscaling =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    disabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "HorizontalPodAutoscaling" });
 
 export interface DnsCacheConfig {
   /** Whether NodeLocal DNSCache is enabled for this cluster. */
   enabled?: boolean;
 }
 
-export const DnsCacheConfig: Schema.Schema<DnsCacheConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "DnsCacheConfig",
-  }) as any as Schema.Schema<DnsCacheConfig>;
+export const DnsCacheConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "DnsCacheConfig" });
 
 export interface RayClusterLoggingConfig {
   /** Enable log collection for Ray clusters. */
   enabled?: boolean;
 }
 
-export const RayClusterLoggingConfig: Schema.Schema<RayClusterLoggingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "RayClusterLoggingConfig",
-  }) as any as Schema.Schema<RayClusterLoggingConfig>;
+export const RayClusterLoggingConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "RayClusterLoggingConfig" });
 
 export interface RayClusterMonitoringConfig {
   /** Enable metrics collection for Ray clusters. */
   enabled?: boolean;
 }
 
-export const RayClusterMonitoringConfig: Schema.Schema<RayClusterMonitoringConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "RayClusterMonitoringConfig",
-  }) as any as Schema.Schema<RayClusterMonitoringConfig>;
+export const RayClusterMonitoringConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "RayClusterMonitoringConfig" });
 
 export interface RayOperatorConfig {
   /** Optional. Logging configuration for Ray clusters. */
@@ -2749,16 +2106,11 @@ export interface RayOperatorConfig {
   enabled?: boolean;
 }
 
-export const RayOperatorConfig: Schema.Schema<RayOperatorConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rayClusterLoggingConfig: Schema.optional(RayClusterLoggingConfig),
-      rayClusterMonitoringConfig: Schema.optional(RayClusterMonitoringConfig),
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "RayOperatorConfig",
-  }) as any as Schema.Schema<RayOperatorConfig>;
+export const RayOperatorConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  rayClusterLoggingConfig: Schema.optional(RayClusterLoggingConfig),
+  rayClusterMonitoringConfig: Schema.optional(RayClusterMonitoringConfig),
+  enabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "RayOperatorConfig" });
 
 export interface AddonsConfig {
   /** Configuration for the Kubernetes Dashboard. This addon is deprecated, and will be disabled in 1.15. It is recommended to use the Cloud Console to manage and monitor your Kubernetes clusters, workloads and applications. For more information, see: https://cloud.google.com/kubernetes-engine/docs/concepts/dashboards */
@@ -2805,68 +2157,50 @@ export interface AddonsConfig {
   rayOperatorConfig?: RayOperatorConfig;
 }
 
-export const AddonsConfig: Schema.Schema<AddonsConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kubernetesDashboard: Schema.optional(KubernetesDashboard),
-      gcePersistentDiskCsiDriverConfig: Schema.optional(
-        GcePersistentDiskCsiDriverConfig,
-      ),
-      istioConfig: Schema.optional(IstioConfig),
-      podSnapshotConfig: Schema.optional(PodSnapshotConfig),
-      gcsFuseCsiDriverConfig: Schema.optional(GcsFuseCsiDriverConfig),
-      gcpFilestoreCsiDriverConfig: Schema.optional(GcpFilestoreCsiDriverConfig),
-      httpLoadBalancing: Schema.optional(HttpLoadBalancing),
-      agentSandboxConfig: Schema.optional(AgentSandboxConfig),
-      highScaleCheckpointingConfig: Schema.optional(
-        HighScaleCheckpointingConfig,
-      ),
-      statefulHaConfig: Schema.optional(StatefulHAConfig),
-      sliceControllerConfig: Schema.optional(SliceControllerConfig),
-      configConnectorConfig: Schema.optional(ConfigConnectorConfig),
-      cloudRunConfig: Schema.optional(CloudRunConfig),
-      gkeBackupAgentConfig: Schema.optional(GkeBackupAgentConfig),
-      parallelstoreCsiDriverConfig: Schema.optional(
-        ParallelstoreCsiDriverConfig,
-      ),
-      kalmConfig: Schema.optional(KalmConfig),
-      lustreCsiDriverConfig: Schema.optional(LustreCsiDriverConfig),
-      horizontalPodAutoscaling: Schema.optional(HorizontalPodAutoscaling),
-      dnsCacheConfig: Schema.optional(DnsCacheConfig),
-      networkPolicyConfig: Schema.optional(NetworkPolicyConfig),
-      rayOperatorConfig: Schema.optional(RayOperatorConfig),
-    }),
-  ).annotate({
-    identifier: "AddonsConfig",
-  }) as any as Schema.Schema<AddonsConfig>;
+export const AddonsConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kubernetesDashboard: Schema.optional(KubernetesDashboard),
+  gcePersistentDiskCsiDriverConfig: Schema.optional(
+    GcePersistentDiskCsiDriverConfig,
+  ),
+  istioConfig: Schema.optional(IstioConfig),
+  podSnapshotConfig: Schema.optional(PodSnapshotConfig),
+  gcsFuseCsiDriverConfig: Schema.optional(GcsFuseCsiDriverConfig),
+  gcpFilestoreCsiDriverConfig: Schema.optional(GcpFilestoreCsiDriverConfig),
+  httpLoadBalancing: Schema.optional(HttpLoadBalancing),
+  agentSandboxConfig: Schema.optional(AgentSandboxConfig),
+  highScaleCheckpointingConfig: Schema.optional(HighScaleCheckpointingConfig),
+  statefulHaConfig: Schema.optional(StatefulHAConfig),
+  sliceControllerConfig: Schema.optional(SliceControllerConfig),
+  configConnectorConfig: Schema.optional(ConfigConnectorConfig),
+  cloudRunConfig: Schema.optional(CloudRunConfig),
+  gkeBackupAgentConfig: Schema.optional(GkeBackupAgentConfig),
+  parallelstoreCsiDriverConfig: Schema.optional(ParallelstoreCsiDriverConfig),
+  kalmConfig: Schema.optional(KalmConfig),
+  lustreCsiDriverConfig: Schema.optional(LustreCsiDriverConfig),
+  horizontalPodAutoscaling: Schema.optional(HorizontalPodAutoscaling),
+  dnsCacheConfig: Schema.optional(DnsCacheConfig),
+  networkPolicyConfig: Schema.optional(NetworkPolicyConfig),
+  rayOperatorConfig: Schema.optional(RayOperatorConfig),
+}).annotate({ identifier: "AddonsConfig" });
 
 export interface CostManagementConfig {
   /** Whether the feature is enabled or not. */
   enabled?: boolean;
 }
 
-export const CostManagementConfig: Schema.Schema<CostManagementConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "CostManagementConfig",
-  }) as any as Schema.Schema<CostManagementConfig>;
+export const CostManagementConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "CostManagementConfig" });
 
 export interface PodSecurityPolicyConfig {
   /** Enable the PodSecurityPolicy controller for this cluster. If enabled, pods must be valid under a PodSecurityPolicy to be created. */
   enabled?: boolean;
 }
 
-export const PodSecurityPolicyConfig: Schema.Schema<PodSecurityPolicyConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "PodSecurityPolicyConfig",
-  }) as any as Schema.Schema<PodSecurityPolicyConfig>;
+export const PodSecurityPolicyConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "PodSecurityPolicyConfig" });
 
 export interface NetworkTierConfig {
   /** Network tier configuration. */
@@ -2878,28 +2212,20 @@ export interface NetworkTierConfig {
     | (string & {});
 }
 
-export const NetworkTierConfig: Schema.Schema<NetworkTierConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      networkTier: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NetworkTierConfig",
-  }) as any as Schema.Schema<NetworkTierConfig>;
+export const NetworkTierConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  networkTier: Schema.optional(Schema.String),
+}).annotate({ identifier: "NetworkTierConfig" });
 
 export interface VerticalPodAutoscaling {
   /** Enables vertical pod autoscaling. */
   enabled?: boolean;
 }
 
-export const VerticalPodAutoscaling: Schema.Schema<VerticalPodAutoscaling> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "VerticalPodAutoscaling",
-  }) as any as Schema.Schema<VerticalPodAutoscaling>;
+export const VerticalPodAutoscaling = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    enabled: Schema.optional(Schema.Boolean),
+  },
+).annotate({ identifier: "VerticalPodAutoscaling" });
 
 export interface ClusterUpdate {
   /** The desired status of whether to disable default sNAT for this cluster. */
@@ -3101,135 +2427,113 @@ export interface ClusterUpdate {
   desiredEnablePrivateEndpoint?: boolean;
 }
 
-export const ClusterUpdate: Schema.Schema<ClusterUpdate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      desiredDefaultSnatStatus: Schema.optional(DefaultSnatStatus),
-      desiredDisableL4LbFirewallReconciliation: Schema.optional(Schema.Boolean),
-      desiredPrivilegedAdmissionConfig: Schema.optional(
-        PrivilegedAdmissionConfig,
-      ),
-      desiredIdentityServiceConfig: Schema.optional(IdentityServiceConfig),
-      desiredImageType: Schema.optional(Schema.String),
-      desiredClusterAutoscaling: Schema.optional(ClusterAutoscaling),
-      desiredNodePoolAutoConfigNetworkTags: Schema.optional(NetworkTags),
-      desiredShieldedNodes: Schema.optional(ShieldedNodes),
-      desiredGatewayApiConfig: Schema.optional(GatewayAPIConfig),
-      desiredPrivateIpv6GoogleAccess: Schema.optional(Schema.String),
-      desiredK8sBetaApis: Schema.optional(K8sBetaAPIConfig),
-      desiredTpuConfig: Schema.optional(TpuConfig),
-      desiredResourceUsageExportConfig: Schema.optional(
-        ResourceUsageExportConfig,
-      ),
-      desiredDatapathProvider: Schema.optional(Schema.String),
-      desiredNodePoolAutoConfigResourceManagerTags:
-        Schema.optional(ResourceManagerTags),
-      gkeAutoUpgradeConfig: Schema.optional(GkeAutoUpgradeConfig),
-      desiredAutoIpamConfig: Schema.optional(AutoIpamConfig),
-      desiredHostMaintenancePolicy: Schema.optional(HostMaintenancePolicy),
-      desiredSecretSyncConfig: Schema.optional(SecretSyncConfig),
-      desiredNodePoolLoggingConfig: Schema.optional(NodePoolLoggingConfig),
-      desiredNetworkPerformanceConfig: Schema.optional(
-        ClusterNetworkPerformanceConfig,
-      ),
-      desiredContainerdConfig: Schema.optional(ContainerdConfig),
-      desiredEnterpriseConfig: Schema.optional(DesiredEnterpriseConfig),
-      desiredMonitoringService: Schema.optional(Schema.String),
-      desiredAutopilotClusterPolicyConfig: Schema.optional(ClusterPolicyConfig),
-      desiredCompliancePostureConfig: Schema.optional(CompliancePostureConfig),
-      desiredMasterVersion: Schema.optional(Schema.String),
-      desiredProtectConfig: Schema.optional(ProtectConfig),
-      desiredMasterAuthorizedNetworksConfig: Schema.optional(
-        MasterAuthorizedNetworksConfig,
-      ),
-      desiredLoggingService: Schema.optional(Schema.String),
-      desiredNodePoolAutoConfigKubeletConfig:
-        Schema.optional(NodeKubeletConfig),
-      desiredDatabaseEncryption: Schema.optional(DatabaseEncryption),
-      desiredPodAutoscaling: Schema.optional(PodAutoscaling),
-      desiredWorkloadAltsConfig: Schema.optional(WorkloadALTSConfig),
-      desiredEnableFqdnNetworkPolicy: Schema.optional(Schema.Boolean),
-      desiredParentProductConfig: Schema.optional(ParentProductConfig),
-      desiredServiceExternalIpsConfig: Schema.optional(
-        ServiceExternalIPsConfig,
-      ),
-      desiredMonitoringConfig: Schema.optional(MonitoringConfig),
-      desiredRollbackSafeUpgrade: Schema.optional(RollbackSafeUpgrade),
-      etag: Schema.optional(Schema.String),
-      desiredRbacBindingConfig: Schema.optional(RBACBindingConfig),
-      desiredLocations: Schema.optional(Schema.Array(Schema.String)),
-      desiredLoggingConfig: Schema.optional(LoggingConfig),
-      desiredWorkloadCertificates: Schema.optional(WorkloadCertificates),
-      desiredMaster: Schema.optional(Master),
-      desiredPrivateClusterConfig: Schema.optional(PrivateClusterConfig),
-      desiredAutopilotWorkloadPolicyConfig:
-        Schema.optional(WorkloadPolicyConfig),
-      desiredStackType: Schema.optional(Schema.String),
-      desiredEnableMultiNetworking: Schema.optional(Schema.Boolean),
-      privateClusterConfig: Schema.optional(PrivateClusterConfig),
-      desiredAdditionalIpRangesConfig: Schema.optional(
-        DesiredAdditionalIPRangesConfig,
-      ),
-      desiredNodeVersion: Schema.optional(Schema.String),
-      enableK8sBetaApis: Schema.optional(K8sBetaAPIConfig),
-      desiredNodePoolAutoConfigLinuxNodeConfig:
-        Schema.optional(LinuxNodeConfig),
-      additionalPodRangesConfig: Schema.optional(AdditionalPodRangesConfig),
-      desiredNodeKubeletConfig: Schema.optional(NodeKubeletConfig),
-      desiredEnableCiliumClusterwideNetworkPolicy: Schema.optional(
-        Schema.Boolean,
-      ),
-      desiredNotificationConfig: Schema.optional(NotificationConfig),
-      desiredFleet: Schema.optional(Fleet),
-      desiredBinaryAuthorization: Schema.optional(BinaryAuthorization),
-      desiredControlPlaneEgress: Schema.optional(ControlPlaneEgress),
-      desiredWorkloadIdentityConfig: Schema.optional(WorkloadIdentityConfig),
-      removedAdditionalPodRangesConfig: Schema.optional(
-        AdditionalPodRangesConfig,
-      ),
-      desiredScheduleUpgradeConfig: Schema.optional(ScheduleUpgradeConfig),
-      desiredDefaultEnablePrivateNodes: Schema.optional(Schema.Boolean),
-      desiredIntraNodeVisibilityConfig: Schema.optional(
-        IntraNodeVisibilityConfig,
-      ),
-      desiredReleaseChannel: Schema.optional(ReleaseChannel),
-      desiredGcfsConfig: Schema.optional(GcfsConfig),
-      desiredUserManagedKeysConfig: Schema.optional(UserManagedKeysConfig),
-      desiredL4ilbSubsettingConfig: Schema.optional(ILBSubsettingConfig),
-      desiredManagedMachineLearningDiagnosticsConfig: Schema.optional(
-        ManagedMachineLearningDiagnosticsConfig,
-      ),
-      desiredControlPlaneEndpointsConfig: Schema.optional(
-        ControlPlaneEndpointsConfig,
-      ),
-      desiredAuthenticatorGroupsConfig: Schema.optional(
-        AuthenticatorGroupsConfig,
-      ),
-      desiredNodePoolAutoscaling: Schema.optional(NodePoolAutoscaling),
-      desiredClusterTelemetry: Schema.optional(ClusterTelemetry),
-      desiredMeshCertificates: Schema.optional(MeshCertificates),
-      desiredDnsConfig: Schema.optional(DNSConfig),
-      desiredManagedOpentelemetryConfig: Schema.optional(
-        ManagedOpenTelemetryConfig,
-      ),
-      desiredInTransitEncryptionConfig: Schema.optional(Schema.String),
-      desiredSecurityPostureConfig: Schema.optional(SecurityPostureConfig),
-      desiredAnonymousAuthenticationConfig: Schema.optional(
-        AnonymousAuthenticationConfig,
-      ),
-      desiredSecretManagerConfig: Schema.optional(SecretManagerConfig),
-      desiredAddonsConfig: Schema.optional(AddonsConfig),
-      desiredCostManagementConfig: Schema.optional(CostManagementConfig),
-      userManagedKeysConfig: Schema.optional(UserManagedKeysConfig),
-      desiredPodSecurityPolicyConfig: Schema.optional(PodSecurityPolicyConfig),
-      desiredNetworkTierConfig: Schema.optional(NetworkTierConfig),
-      desiredNodePoolId: Schema.optional(Schema.String),
-      desiredVerticalPodAutoscaling: Schema.optional(VerticalPodAutoscaling),
-      desiredEnablePrivateEndpoint: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ClusterUpdate",
-  }) as any as Schema.Schema<ClusterUpdate>;
+export const ClusterUpdate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  desiredDefaultSnatStatus: Schema.optional(DefaultSnatStatus),
+  desiredDisableL4LbFirewallReconciliation: Schema.optional(Schema.Boolean),
+  desiredPrivilegedAdmissionConfig: Schema.optional(PrivilegedAdmissionConfig),
+  desiredIdentityServiceConfig: Schema.optional(IdentityServiceConfig),
+  desiredImageType: Schema.optional(Schema.String),
+  desiredClusterAutoscaling: Schema.optional(ClusterAutoscaling),
+  desiredNodePoolAutoConfigNetworkTags: Schema.optional(NetworkTags),
+  desiredShieldedNodes: Schema.optional(ShieldedNodes),
+  desiredGatewayApiConfig: Schema.optional(GatewayAPIConfig),
+  desiredPrivateIpv6GoogleAccess: Schema.optional(Schema.String),
+  desiredK8sBetaApis: Schema.optional(K8sBetaAPIConfig),
+  desiredTpuConfig: Schema.optional(TpuConfig),
+  desiredResourceUsageExportConfig: Schema.optional(ResourceUsageExportConfig),
+  desiredDatapathProvider: Schema.optional(Schema.String),
+  desiredNodePoolAutoConfigResourceManagerTags:
+    Schema.optional(ResourceManagerTags),
+  gkeAutoUpgradeConfig: Schema.optional(GkeAutoUpgradeConfig),
+  desiredAutoIpamConfig: Schema.optional(AutoIpamConfig),
+  desiredHostMaintenancePolicy: Schema.optional(HostMaintenancePolicy),
+  desiredSecretSyncConfig: Schema.optional(SecretSyncConfig),
+  desiredNodePoolLoggingConfig: Schema.optional(NodePoolLoggingConfig),
+  desiredNetworkPerformanceConfig: Schema.optional(
+    ClusterNetworkPerformanceConfig,
+  ),
+  desiredContainerdConfig: Schema.optional(ContainerdConfig),
+  desiredEnterpriseConfig: Schema.optional(DesiredEnterpriseConfig),
+  desiredMonitoringService: Schema.optional(Schema.String),
+  desiredAutopilotClusterPolicyConfig: Schema.optional(ClusterPolicyConfig),
+  desiredCompliancePostureConfig: Schema.optional(CompliancePostureConfig),
+  desiredMasterVersion: Schema.optional(Schema.String),
+  desiredProtectConfig: Schema.optional(ProtectConfig),
+  desiredMasterAuthorizedNetworksConfig: Schema.optional(
+    MasterAuthorizedNetworksConfig,
+  ),
+  desiredLoggingService: Schema.optional(Schema.String),
+  desiredNodePoolAutoConfigKubeletConfig: Schema.optional(NodeKubeletConfig),
+  desiredDatabaseEncryption: Schema.optional(DatabaseEncryption),
+  desiredPodAutoscaling: Schema.optional(PodAutoscaling),
+  desiredWorkloadAltsConfig: Schema.optional(WorkloadALTSConfig),
+  desiredEnableFqdnNetworkPolicy: Schema.optional(Schema.Boolean),
+  desiredParentProductConfig: Schema.optional(ParentProductConfig),
+  desiredServiceExternalIpsConfig: Schema.optional(ServiceExternalIPsConfig),
+  desiredMonitoringConfig: Schema.optional(MonitoringConfig),
+  desiredRollbackSafeUpgrade: Schema.optional(RollbackSafeUpgrade),
+  etag: Schema.optional(Schema.String),
+  desiredRbacBindingConfig: Schema.optional(RBACBindingConfig),
+  desiredLocations: Schema.optional(Schema.Array(Schema.String)),
+  desiredLoggingConfig: Schema.optional(LoggingConfig),
+  desiredWorkloadCertificates: Schema.optional(WorkloadCertificates),
+  desiredMaster: Schema.optional(Master),
+  desiredPrivateClusterConfig: Schema.optional(PrivateClusterConfig),
+  desiredAutopilotWorkloadPolicyConfig: Schema.optional(WorkloadPolicyConfig),
+  desiredStackType: Schema.optional(Schema.String),
+  desiredEnableMultiNetworking: Schema.optional(Schema.Boolean),
+  privateClusterConfig: Schema.optional(PrivateClusterConfig),
+  desiredAdditionalIpRangesConfig: Schema.optional(
+    DesiredAdditionalIPRangesConfig,
+  ),
+  desiredNodeVersion: Schema.optional(Schema.String),
+  enableK8sBetaApis: Schema.optional(K8sBetaAPIConfig),
+  desiredNodePoolAutoConfigLinuxNodeConfig: Schema.optional(LinuxNodeConfig),
+  additionalPodRangesConfig: Schema.optional(AdditionalPodRangesConfig),
+  desiredNodeKubeletConfig: Schema.optional(NodeKubeletConfig),
+  desiredEnableCiliumClusterwideNetworkPolicy: Schema.optional(Schema.Boolean),
+  desiredNotificationConfig: Schema.optional(NotificationConfig),
+  desiredFleet: Schema.optional(Fleet),
+  desiredBinaryAuthorization: Schema.optional(BinaryAuthorization),
+  desiredControlPlaneEgress: Schema.optional(ControlPlaneEgress),
+  desiredWorkloadIdentityConfig: Schema.optional(WorkloadIdentityConfig),
+  removedAdditionalPodRangesConfig: Schema.optional(AdditionalPodRangesConfig),
+  desiredScheduleUpgradeConfig: Schema.optional(ScheduleUpgradeConfig),
+  desiredDefaultEnablePrivateNodes: Schema.optional(Schema.Boolean),
+  desiredIntraNodeVisibilityConfig: Schema.optional(IntraNodeVisibilityConfig),
+  desiredReleaseChannel: Schema.optional(ReleaseChannel),
+  desiredGcfsConfig: Schema.optional(GcfsConfig),
+  desiredUserManagedKeysConfig: Schema.optional(UserManagedKeysConfig),
+  desiredL4ilbSubsettingConfig: Schema.optional(ILBSubsettingConfig),
+  desiredManagedMachineLearningDiagnosticsConfig: Schema.optional(
+    ManagedMachineLearningDiagnosticsConfig,
+  ),
+  desiredControlPlaneEndpointsConfig: Schema.optional(
+    ControlPlaneEndpointsConfig,
+  ),
+  desiredAuthenticatorGroupsConfig: Schema.optional(AuthenticatorGroupsConfig),
+  desiredNodePoolAutoscaling: Schema.optional(NodePoolAutoscaling),
+  desiredClusterTelemetry: Schema.optional(ClusterTelemetry),
+  desiredMeshCertificates: Schema.optional(MeshCertificates),
+  desiredDnsConfig: Schema.optional(DNSConfig),
+  desiredManagedOpentelemetryConfig: Schema.optional(
+    ManagedOpenTelemetryConfig,
+  ),
+  desiredInTransitEncryptionConfig: Schema.optional(Schema.String),
+  desiredSecurityPostureConfig: Schema.optional(SecurityPostureConfig),
+  desiredAnonymousAuthenticationConfig: Schema.optional(
+    AnonymousAuthenticationConfig,
+  ),
+  desiredSecretManagerConfig: Schema.optional(SecretManagerConfig),
+  desiredAddonsConfig: Schema.optional(AddonsConfig),
+  desiredCostManagementConfig: Schema.optional(CostManagementConfig),
+  userManagedKeysConfig: Schema.optional(UserManagedKeysConfig),
+  desiredPodSecurityPolicyConfig: Schema.optional(PodSecurityPolicyConfig),
+  desiredNetworkTierConfig: Schema.optional(NetworkTierConfig),
+  desiredNodePoolId: Schema.optional(Schema.String),
+  desiredVerticalPodAutoscaling: Schema.optional(VerticalPodAutoscaling),
+  desiredEnablePrivateEndpoint: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "ClusterUpdate" });
 
 export interface DisruptionBudget {
   /** Optional. The minimum duration between two patch version upgrades of the control plane. */
@@ -3242,17 +2546,12 @@ export interface DisruptionBudget {
   lastMinorVersionDisruptionTime?: string;
 }
 
-export const DisruptionBudget: Schema.Schema<DisruptionBudget> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      patchVersionDisruptionInterval: Schema.optional(Schema.String),
-      minorVersionDisruptionInterval: Schema.optional(Schema.String),
-      lastDisruptionTime: Schema.optional(Schema.String),
-      lastMinorVersionDisruptionTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DisruptionBudget",
-  }) as any as Schema.Schema<DisruptionBudget>;
+export const DisruptionBudget = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  patchVersionDisruptionInterval: Schema.optional(Schema.String),
+  minorVersionDisruptionInterval: Schema.optional(Schema.String),
+  lastDisruptionTime: Schema.optional(Schema.String),
+  lastMinorVersionDisruptionTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "DisruptionBudget" });
 
 export interface Metric {
   /** Required. Metric name, e.g., "nodes total", "percent done". */
@@ -3265,15 +2564,12 @@ export interface Metric {
   intValue?: string;
 }
 
-export const Metric: Schema.Schema<Metric> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      stringValue: Schema.optional(Schema.String),
-      doubleValue: Schema.optional(Schema.Number),
-      intValue: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Metric" }) as any as Schema.Schema<Metric>;
+export const Metric = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  stringValue: Schema.optional(Schema.String),
+  doubleValue: Schema.optional(Schema.Number),
+  intValue: Schema.optional(Schema.String),
+}).annotate({ identifier: "Metric" });
 
 export interface AvailableVersion {
   /** Kubernetes version. */
@@ -3282,15 +2578,10 @@ export interface AvailableVersion {
   reason?: string;
 }
 
-export const AvailableVersion: Schema.Schema<AvailableVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.String),
-      reason: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AvailableVersion",
-  }) as any as Schema.Schema<AvailableVersion>;
+export const AvailableVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+}).annotate({ identifier: "AvailableVersion" });
 
 export interface ReleaseChannelConfig {
   /** The release channel this configuration applies to. */
@@ -3311,18 +2602,13 @@ export interface ReleaseChannelConfig {
   defaultVersion?: string;
 }
 
-export const ReleaseChannelConfig: Schema.Schema<ReleaseChannelConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      channel: Schema.optional(Schema.String),
-      upgradeTargetVersion: Schema.optional(Schema.String),
-      availableVersions: Schema.optional(Schema.Array(AvailableVersion)),
-      validVersions: Schema.optional(Schema.Array(Schema.String)),
-      defaultVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ReleaseChannelConfig",
-  }) as any as Schema.Schema<ReleaseChannelConfig>;
+export const ReleaseChannelConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  channel: Schema.optional(Schema.String),
+  upgradeTargetVersion: Schema.optional(Schema.String),
+  availableVersions: Schema.optional(Schema.Array(AvailableVersion)),
+  validVersions: Schema.optional(Schema.Array(Schema.String)),
+  defaultVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "ReleaseChannelConfig" });
 
 export interface MaintenanceExclusionOptions {
   /** EndTimeBehavior specifies the behavior of the exclusion end time. */
@@ -3338,15 +2624,11 @@ export interface MaintenanceExclusionOptions {
     | (string & {});
 }
 
-export const MaintenanceExclusionOptions: Schema.Schema<MaintenanceExclusionOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endTimeBehavior: Schema.optional(Schema.String),
-      scope: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MaintenanceExclusionOptions",
-  }) as any as Schema.Schema<MaintenanceExclusionOptions>;
+export const MaintenanceExclusionOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endTimeBehavior: Schema.optional(Schema.String),
+    scope: Schema.optional(Schema.String),
+  }).annotate({ identifier: "MaintenanceExclusionOptions" });
 
 export interface TimeWindow {
   /** The time that the window ends. The end time should take place after the start time. */
@@ -3357,14 +2639,11 @@ export interface TimeWindow {
   startTime?: string;
 }
 
-export const TimeWindow: Schema.Schema<TimeWindow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endTime: Schema.optional(Schema.String),
-      maintenanceExclusionOptions: Schema.optional(MaintenanceExclusionOptions),
-      startTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "TimeWindow" }) as any as Schema.Schema<TimeWindow>;
+export const TimeWindow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  endTime: Schema.optional(Schema.String),
+  maintenanceExclusionOptions: Schema.optional(MaintenanceExclusionOptions),
+  startTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "TimeWindow" });
 
 export interface UpdateClusterRequest {
   /** Deprecated. The name of the cluster to upgrade. This field has been deprecated and replaced by the name field. */
@@ -3379,32 +2658,22 @@ export interface UpdateClusterRequest {
   zone?: string;
 }
 
-export const UpdateClusterRequest: Schema.Schema<UpdateClusterRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clusterId: Schema.optional(Schema.String),
-      projectId: Schema.optional(Schema.String),
-      update: Schema.optional(ClusterUpdate),
-      name: Schema.optional(Schema.String),
-      zone: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpdateClusterRequest",
-  }) as any as Schema.Schema<UpdateClusterRequest>;
+export const UpdateClusterRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  clusterId: Schema.optional(Schema.String),
+  projectId: Schema.optional(Schema.String),
+  update: Schema.optional(ClusterUpdate),
+  name: Schema.optional(Schema.String),
+  zone: Schema.optional(Schema.String),
+}).annotate({ identifier: "UpdateClusterRequest" });
 
 export interface MaxPodsConstraint {
   /** Constraint enforced on the max num of pods per node. */
   maxPodsPerNode?: string;
 }
 
-export const MaxPodsConstraint: Schema.Schema<MaxPodsConstraint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      maxPodsPerNode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MaxPodsConstraint",
-  }) as any as Schema.Schema<MaxPodsConstraint>;
+export const MaxPodsConstraint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  maxPodsPerNode: Schema.optional(Schema.String),
+}).annotate({ identifier: "MaxPodsConstraint" });
 
 export interface SetNodePoolSizeRequest {
   /** Required. The desired node count for the pool. */
@@ -3421,19 +2690,16 @@ export interface SetNodePoolSizeRequest {
   zone?: string;
 }
 
-export const SetNodePoolSizeRequest: Schema.Schema<SetNodePoolSizeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nodeCount: Schema.optional(Schema.Number),
-      name: Schema.optional(Schema.String),
-      projectId: Schema.optional(Schema.String),
-      nodePoolId: Schema.optional(Schema.String),
-      clusterId: Schema.optional(Schema.String),
-      zone: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SetNodePoolSizeRequest",
-  }) as any as Schema.Schema<SetNodePoolSizeRequest>;
+export const SetNodePoolSizeRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    nodeCount: Schema.optional(Schema.Number),
+    name: Schema.optional(Schema.String),
+    projectId: Schema.optional(Schema.String),
+    nodePoolId: Schema.optional(Schema.String),
+    clusterId: Schema.optional(Schema.String),
+    zone: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "SetNodePoolSizeRequest" });
 
 export interface StatusCondition {
   /** Machine-friendly representation of the condition Deprecated. Use canonical_code instead. */
@@ -3472,51 +2738,37 @@ export interface StatusCondition {
     | (string & {});
 }
 
-export const StatusCondition: Schema.Schema<StatusCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-      canonicalCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StatusCondition",
-  }) as any as Schema.Schema<StatusCondition>;
+export const StatusCondition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+  canonicalCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "StatusCondition" });
 
 export interface QueuedProvisioning {
   /** Denotes that this node pool is QRM specific, meaning nodes can be only obtained through queuing via the Cluster Autoscaler ProvisioningRequest API. */
   enabled?: boolean;
 }
 
-export const QueuedProvisioning: Schema.Schema<QueuedProvisioning> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "QueuedProvisioning",
-  }) as any as Schema.Schema<QueuedProvisioning>;
+export const QueuedProvisioning = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "QueuedProvisioning" });
 
 export interface CompleteNodePoolUpgradeRequest {}
 
-export const CompleteNodePoolUpgradeRequest: Schema.Schema<CompleteNodePoolUpgradeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const CompleteNodePoolUpgradeRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CompleteNodePoolUpgradeRequest",
-  }) as any as Schema.Schema<CompleteNodePoolUpgradeRequest>;
+  });
 
 export interface LocalNvmeSsdBlockConfig {
   /** Number of local NVMe SSDs to use. The limit for this value is dependent upon the maximum number of disk available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information. A zero (or unset) value has different meanings depending on machine type being used: 1. For pre-Gen3 machines, which support flexible numbers of local ssds, zero (or unset) means to disable using local SSDs as ephemeral storage. 2. For Gen3 machines which dictate a specific number of local ssds, zero (or unset) means to use the default number of local ssds that goes with that machine type. For example, for a c3-standard-8-lssd machine, 2 local ssds would be provisioned. For c3-standard-8 (which doesn't support local ssds), 0 will be provisioned. See https://cloud.google.com/compute/docs/disks/local-ssd#choose_number_local_ssds for more info. */
   localSsdCount?: number;
 }
 
-export const LocalNvmeSsdBlockConfig: Schema.Schema<LocalNvmeSsdBlockConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      localSsdCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "LocalNvmeSsdBlockConfig",
-  }) as any as Schema.Schema<LocalNvmeSsdBlockConfig>;
+export const LocalNvmeSsdBlockConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    localSsdCount: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "LocalNvmeSsdBlockConfig" });
 
 export interface NodeConfigDefaults {
   /** Parameters for containerd customization. */
@@ -3531,32 +2783,22 @@ export interface NodeConfigDefaults {
   nodeKubeletConfig?: NodeKubeletConfig;
 }
 
-export const NodeConfigDefaults: Schema.Schema<NodeConfigDefaults> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      containerdConfig: Schema.optional(ContainerdConfig),
-      loggingConfig: Schema.optional(NodePoolLoggingConfig),
-      hostMaintenancePolicy: Schema.optional(HostMaintenancePolicy),
-      gcfsConfig: Schema.optional(GcfsConfig),
-      nodeKubeletConfig: Schema.optional(NodeKubeletConfig),
-    }),
-  ).annotate({
-    identifier: "NodeConfigDefaults",
-  }) as any as Schema.Schema<NodeConfigDefaults>;
+export const NodeConfigDefaults = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  containerdConfig: Schema.optional(ContainerdConfig),
+  loggingConfig: Schema.optional(NodePoolLoggingConfig),
+  hostMaintenancePolicy: Schema.optional(HostMaintenancePolicy),
+  gcfsConfig: Schema.optional(GcfsConfig),
+  nodeKubeletConfig: Schema.optional(NodeKubeletConfig),
+}).annotate({ identifier: "NodeConfigDefaults" });
 
 export interface NodePoolDefaults {
   /** Subset of NodeConfig message that has defaults. */
   nodeConfigDefaults?: NodeConfigDefaults;
 }
 
-export const NodePoolDefaults: Schema.Schema<NodePoolDefaults> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nodeConfigDefaults: Schema.optional(NodeConfigDefaults),
-    }),
-  ).annotate({
-    identifier: "NodePoolDefaults",
-  }) as any as Schema.Schema<NodePoolDefaults>;
+export const NodePoolDefaults = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nodeConfigDefaults: Schema.optional(NodeConfigDefaults),
+}).annotate({ identifier: "NodePoolDefaults" });
 
 export interface Jwk {
   /** Key Type. */
@@ -3579,20 +2821,17 @@ export interface Jwk {
   e?: string;
 }
 
-export const Jwk: Schema.Schema<Jwk> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kty: Schema.optional(Schema.String),
-      use: Schema.optional(Schema.String),
-      kid: Schema.optional(Schema.String),
-      y: Schema.optional(Schema.String),
-      n: Schema.optional(Schema.String),
-      crv: Schema.optional(Schema.String),
-      alg: Schema.optional(Schema.String),
-      x: Schema.optional(Schema.String),
-      e: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Jwk" }) as any as Schema.Schema<Jwk>;
+export const Jwk = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kty: Schema.optional(Schema.String),
+  use: Schema.optional(Schema.String),
+  kid: Schema.optional(Schema.String),
+  y: Schema.optional(Schema.String),
+  n: Schema.optional(Schema.String),
+  crv: Schema.optional(Schema.String),
+  alg: Schema.optional(Schema.String),
+  x: Schema.optional(Schema.String),
+  e: Schema.optional(Schema.String),
+}).annotate({ identifier: "Jwk" });
 
 export interface ConfidentialNodes {
   /** Defines the type of technology used by the confidential node. */
@@ -3606,15 +2845,10 @@ export interface ConfidentialNodes {
   enabled?: boolean;
 }
 
-export const ConfidentialNodes: Schema.Schema<ConfidentialNodes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      confidentialInstanceType: Schema.optional(Schema.String),
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ConfidentialNodes",
-  }) as any as Schema.Schema<ConfidentialNodes>;
+export const ConfidentialNodes = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  confidentialInstanceType: Schema.optional(Schema.String),
+  enabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "ConfidentialNodes" });
 
 export interface BootDisk {
   /** For Hyperdisk-Balanced only, the provisioned IOPS config value. */
@@ -3627,15 +2861,12 @@ export interface BootDisk {
   diskType?: string;
 }
 
-export const BootDisk: Schema.Schema<BootDisk> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      provisionedIops: Schema.optional(Schema.String),
-      provisionedThroughput: Schema.optional(Schema.String),
-      sizeGb: Schema.optional(Schema.String),
-      diskType: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "BootDisk" }) as any as Schema.Schema<BootDisk>;
+export const BootDisk = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provisionedIops: Schema.optional(Schema.String),
+  provisionedThroughput: Schema.optional(Schema.String),
+  sizeGb: Schema.optional(Schema.String),
+  diskType: Schema.optional(Schema.String),
+}).annotate({ identifier: "BootDisk" });
 
 export interface BlueGreenInfo {
   /** Time to start deleting blue pool to complete blue-green upgrade, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format. */
@@ -3660,30 +2891,22 @@ export interface BlueGreenInfo {
   blueInstanceGroupUrls?: Array<string>;
 }
 
-export const BlueGreenInfo: Schema.Schema<BlueGreenInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bluePoolDeletionStartTime: Schema.optional(Schema.String),
-      phase: Schema.optional(Schema.String),
-      greenPoolVersion: Schema.optional(Schema.String),
-      greenInstanceGroupUrls: Schema.optional(Schema.Array(Schema.String)),
-      blueInstanceGroupUrls: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "BlueGreenInfo",
-  }) as any as Schema.Schema<BlueGreenInfo>;
+export const BlueGreenInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bluePoolDeletionStartTime: Schema.optional(Schema.String),
+  phase: Schema.optional(Schema.String),
+  greenPoolVersion: Schema.optional(Schema.String),
+  greenInstanceGroupUrls: Schema.optional(Schema.Array(Schema.String)),
+  blueInstanceGroupUrls: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "BlueGreenInfo" });
 
 export interface UpdateInfo {
   /** Information of a blue-green upgrade. */
   blueGreenInfo?: BlueGreenInfo;
 }
 
-export const UpdateInfo: Schema.Schema<UpdateInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      blueGreenInfo: Schema.optional(BlueGreenInfo),
-    }),
-  ).annotate({ identifier: "UpdateInfo" }) as any as Schema.Schema<UpdateInfo>;
+export const UpdateInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  blueGreenInfo: Schema.optional(BlueGreenInfo),
+}).annotate({ identifier: "UpdateInfo" });
 
 export interface PlacementPolicy {
   /** TPU placement topology for pod slice node pool. https://cloud.google.com/tpu/docs/types-topologies#tpu_topologies */
@@ -3694,30 +2917,21 @@ export interface PlacementPolicy {
   policyName?: string;
 }
 
-export const PlacementPolicy: Schema.Schema<PlacementPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tpuTopology: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      policyName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PlacementPolicy",
-  }) as any as Schema.Schema<PlacementPolicy>;
+export const PlacementPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tpuTopology: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  policyName: Schema.optional(Schema.String),
+}).annotate({ identifier: "PlacementPolicy" });
 
 export interface PodCIDROverprovisionConfig {
   /** Whether Pod CIDR overprovisioning is disabled. Note: Pod CIDR overprovisioning is enabled by default. */
   disable?: boolean;
 }
 
-export const PodCIDROverprovisionConfig: Schema.Schema<PodCIDROverprovisionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      disable: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "PodCIDROverprovisionConfig",
-  }) as any as Schema.Schema<PodCIDROverprovisionConfig>;
+export const PodCIDROverprovisionConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    disable: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "PodCIDROverprovisionConfig" });
 
 export interface AdditionalNodeNetworkConfig {
   /** Name of the VPC where the additional interface belongs */
@@ -3726,15 +2940,11 @@ export interface AdditionalNodeNetworkConfig {
   subnetwork?: string;
 }
 
-export const AdditionalNodeNetworkConfig: Schema.Schema<AdditionalNodeNetworkConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      network: Schema.optional(Schema.String),
-      subnetwork: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AdditionalNodeNetworkConfig",
-  }) as any as Schema.Schema<AdditionalNodeNetworkConfig>;
+export const AdditionalNodeNetworkConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    network: Schema.optional(Schema.String),
+    subnetwork: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AdditionalNodeNetworkConfig" });
 
 export interface AdditionalPodNetworkConfig {
   /** The name of the secondary range on the subnet which provides IP address for this pod range. */
@@ -3747,17 +2957,13 @@ export interface AdditionalPodNetworkConfig {
   subnetwork?: string;
 }
 
-export const AdditionalPodNetworkConfig: Schema.Schema<AdditionalPodNetworkConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      secondaryPodRange: Schema.optional(Schema.String),
-      maxPodsPerNode: Schema.optional(MaxPodsConstraint),
-      networkAttachment: Schema.optional(Schema.String),
-      subnetwork: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AdditionalPodNetworkConfig",
-  }) as any as Schema.Schema<AdditionalPodNetworkConfig>;
+export const AdditionalPodNetworkConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    secondaryPodRange: Schema.optional(Schema.String),
+    maxPodsPerNode: Schema.optional(MaxPodsConstraint),
+    networkAttachment: Schema.optional(Schema.String),
+    subnetwork: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AdditionalPodNetworkConfig" });
 
 export interface NetworkPerformanceConfig {
   /** Specifies the total network bandwidth tier for the NodePool. */
@@ -3766,15 +2972,11 @@ export interface NetworkPerformanceConfig {
   externalIpEgressBandwidthTier?: "TIER_UNSPECIFIED" | "TIER_1" | (string & {});
 }
 
-export const NetworkPerformanceConfig: Schema.Schema<NetworkPerformanceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      totalEgressBandwidthTier: Schema.optional(Schema.String),
-      externalIpEgressBandwidthTier: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NetworkPerformanceConfig",
-  }) as any as Schema.Schema<NetworkPerformanceConfig>;
+export const NetworkPerformanceConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    totalEgressBandwidthTier: Schema.optional(Schema.String),
+    externalIpEgressBandwidthTier: Schema.optional(Schema.String),
+  }).annotate({ identifier: "NetworkPerformanceConfig" });
 
 export interface NodeNetworkConfig {
   /** The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID. Only applicable if `ip_allocation_policy.use_ip_aliases` is true. This field cannot be changed after the node pool has been created. */
@@ -3803,57 +3005,42 @@ export interface NodeNetworkConfig {
   subnetwork?: string;
 }
 
-export const NodeNetworkConfig: Schema.Schema<NodeNetworkConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      podRange: Schema.optional(Schema.String),
-      podCidrOverprovisionConfig: Schema.optional(PodCIDROverprovisionConfig),
-      enablePrivateNodes: Schema.optional(Schema.Boolean),
-      podIpv4CidrBlock: Schema.optional(Schema.String),
-      createPodRange: Schema.optional(Schema.Boolean),
-      acceleratorNetworkProfile: Schema.optional(Schema.String),
-      additionalNodeNetworkConfigs: Schema.optional(
-        Schema.Array(AdditionalNodeNetworkConfig),
-      ),
-      additionalPodNetworkConfigs: Schema.optional(
-        Schema.Array(AdditionalPodNetworkConfig),
-      ),
-      networkPerformanceConfig: Schema.optional(NetworkPerformanceConfig),
-      networkTierConfig: Schema.optional(NetworkTierConfig),
-      podIpv4RangeUtilization: Schema.optional(Schema.Number),
-      subnetwork: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NodeNetworkConfig",
-  }) as any as Schema.Schema<NodeNetworkConfig>;
+export const NodeNetworkConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  podRange: Schema.optional(Schema.String),
+  podCidrOverprovisionConfig: Schema.optional(PodCIDROverprovisionConfig),
+  enablePrivateNodes: Schema.optional(Schema.Boolean),
+  podIpv4CidrBlock: Schema.optional(Schema.String),
+  createPodRange: Schema.optional(Schema.Boolean),
+  acceleratorNetworkProfile: Schema.optional(Schema.String),
+  additionalNodeNetworkConfigs: Schema.optional(
+    Schema.Array(AdditionalNodeNetworkConfig),
+  ),
+  additionalPodNetworkConfigs: Schema.optional(
+    Schema.Array(AdditionalPodNetworkConfig),
+  ),
+  networkPerformanceConfig: Schema.optional(NetworkPerformanceConfig),
+  networkTierConfig: Schema.optional(NetworkTierConfig),
+  podIpv4RangeUtilization: Schema.optional(Schema.Number),
+  subnetwork: Schema.optional(Schema.String),
+}).annotate({ identifier: "NodeNetworkConfig" });
 
 export interface AutopilotConfig {
   /** Denotes that nodes belonging to this node pool are Autopilot nodes. */
   enabled?: boolean;
 }
 
-export const AutopilotConfig: Schema.Schema<AutopilotConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "AutopilotConfig",
-  }) as any as Schema.Schema<AutopilotConfig>;
+export const AutopilotConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "AutopilotConfig" });
 
 export interface NodeDrainConfig {
   /** Whether to respect PDB during node pool deletion. */
   respectPdbDuringNodePoolDeletion?: boolean;
 }
 
-export const NodeDrainConfig: Schema.Schema<NodeDrainConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      respectPdbDuringNodePoolDeletion: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "NodeDrainConfig",
-  }) as any as Schema.Schema<NodeDrainConfig>;
+export const NodeDrainConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  respectPdbDuringNodePoolDeletion: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "NodeDrainConfig" });
 
 export interface WindowsNodeConfig {
   /** OSVersion specifies the Windows node config to be used on the node. */
@@ -3864,14 +3051,9 @@ export interface WindowsNodeConfig {
     | (string & {});
 }
 
-export const WindowsNodeConfig: Schema.Schema<WindowsNodeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      osVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WindowsNodeConfig",
-  }) as any as Schema.Schema<WindowsNodeConfig>;
+export const WindowsNodeConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  osVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "WindowsNodeConfig" });
 
 export interface NodeAffinity {
   /** Values for NodeAffinity. */
@@ -3882,16 +3064,11 @@ export interface NodeAffinity {
   operator?: "OPERATOR_UNSPECIFIED" | "IN" | "NOT_IN" | (string & {});
 }
 
-export const NodeAffinity: Schema.Schema<NodeAffinity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      values: Schema.optional(Schema.Array(Schema.String)),
-      key: Schema.optional(Schema.String),
-      operator: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NodeAffinity",
-  }) as any as Schema.Schema<NodeAffinity>;
+export const NodeAffinity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  values: Schema.optional(Schema.Array(Schema.String)),
+  key: Schema.optional(Schema.String),
+  operator: Schema.optional(Schema.String),
+}).annotate({ identifier: "NodeAffinity" });
 
 export interface SoleTenantConfig {
   /** Optional. The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node. This field can only be set if the node pool is created in a shared sole-tenant node group. */
@@ -3900,15 +3077,10 @@ export interface SoleTenantConfig {
   nodeAffinities?: Array<NodeAffinity>;
 }
 
-export const SoleTenantConfig: Schema.Schema<SoleTenantConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      minNodeCpus: Schema.optional(Schema.Number),
-      nodeAffinities: Schema.optional(Schema.Array(NodeAffinity)),
-    }),
-  ).annotate({
-    identifier: "SoleTenantConfig",
-  }) as any as Schema.Schema<SoleTenantConfig>;
+export const SoleTenantConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  minNodeCpus: Schema.optional(Schema.Number),
+  nodeAffinities: Schema.optional(Schema.Array(NodeAffinity)),
+}).annotate({ identifier: "SoleTenantConfig" });
 
 export interface SecondaryBootDisk {
   /** Fully-qualified resource ID for an existing disk image. */
@@ -3917,15 +3089,10 @@ export interface SecondaryBootDisk {
   mode?: "MODE_UNSPECIFIED" | "CONTAINER_IMAGE_CACHE" | (string & {});
 }
 
-export const SecondaryBootDisk: Schema.Schema<SecondaryBootDisk> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      diskImage: Schema.optional(Schema.String),
-      mode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SecondaryBootDisk",
-  }) as any as Schema.Schema<SecondaryBootDisk>;
+export const SecondaryBootDisk = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  diskImage: Schema.optional(Schema.String),
+  mode: Schema.optional(Schema.String),
+}).annotate({ identifier: "SecondaryBootDisk" });
 
 export interface NodeTaint {
   /** Key for taint. */
@@ -3941,14 +3108,11 @@ export interface NodeTaint {
     | (string & {});
 }
 
-export const NodeTaint: Schema.Schema<NodeTaint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      key: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-      effect: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "NodeTaint" }) as any as Schema.Schema<NodeTaint>;
+export const NodeTaint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  key: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+  effect: Schema.optional(Schema.String),
+}).annotate({ identifier: "NodeTaint" });
 
 export interface GPUDirectConfig {
   /** The type of GPU direct strategy to enable on the node pool. */
@@ -3958,14 +3122,9 @@ export interface GPUDirectConfig {
     | (string & {});
 }
 
-export const GPUDirectConfig: Schema.Schema<GPUDirectConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gpuDirectStrategy: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GPUDirectConfig",
-  }) as any as Schema.Schema<GPUDirectConfig>;
+export const GPUDirectConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gpuDirectStrategy: Schema.optional(Schema.String),
+}).annotate({ identifier: "GPUDirectConfig" });
 
 export interface TaintConfig {
   /** Optional. Controls architecture tainting behavior. */
@@ -3976,28 +3135,20 @@ export interface TaintConfig {
     | (string & {});
 }
 
-export const TaintConfig: Schema.Schema<TaintConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      architectureTaintBehavior: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TaintConfig",
-  }) as any as Schema.Schema<TaintConfig>;
+export const TaintConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  architectureTaintBehavior: Schema.optional(Schema.String),
+}).annotate({ identifier: "TaintConfig" });
 
 export interface EphemeralStorageConfig {
   /** Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. The limit for this value is dependent upon the maximum number of disk available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information. A zero (or unset) value has different meanings depending on machine type being used: 1. For pre-Gen3 machines, which support flexible numbers of local ssds, zero (or unset) means to disable using local SSDs as ephemeral storage. 2. For Gen3 machines which dictate a specific number of local ssds, zero (or unset) means to use the default number of local ssds that goes with that machine type. For example, for a c3-standard-8-lssd machine, 2 local ssds would be provisioned. For c3-standard-8 (which doesn't support local ssds), 0 will be provisioned. See https://cloud.google.com/compute/docs/disks/local-ssd#choose_number_local_ssds for more info. */
   localSsdCount?: number;
 }
 
-export const EphemeralStorageConfig: Schema.Schema<EphemeralStorageConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      localSsdCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "EphemeralStorageConfig",
-  }) as any as Schema.Schema<EphemeralStorageConfig>;
+export const EphemeralStorageConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    localSsdCount: Schema.optional(Schema.Number),
+  },
+).annotate({ identifier: "EphemeralStorageConfig" });
 
 export interface WorkloadMetadataConfig {
   /** NodeMetadata is the configuration for how to expose metadata to the workloads running on the node. */
@@ -4011,22 +3162,19 @@ export interface WorkloadMetadataConfig {
   mode?: "MODE_UNSPECIFIED" | "GCE_METADATA" | "GKE_METADATA" | (string & {});
 }
 
-export const WorkloadMetadataConfig: Schema.Schema<WorkloadMetadataConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nodeMetadata: Schema.optional(Schema.String),
-      mode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WorkloadMetadataConfig",
-  }) as any as Schema.Schema<WorkloadMetadataConfig>;
+export const WorkloadMetadataConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    nodeMetadata: Schema.optional(Schema.String),
+    mode: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "WorkloadMetadataConfig" });
 
 export interface SecondaryBootDiskUpdateStrategy {}
 
-export const SecondaryBootDiskUpdateStrategy: Schema.Schema<SecondaryBootDiskUpdateStrategy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const SecondaryBootDiskUpdateStrategy =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "SecondaryBootDiskUpdateStrategy",
-  }) as any as Schema.Schema<SecondaryBootDiskUpdateStrategy>;
+  });
 
 export interface AdvancedMachineFeatures {
   /** The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed. */
@@ -4042,16 +3190,12 @@ export interface AdvancedMachineFeatures {
     | (string & {});
 }
 
-export const AdvancedMachineFeatures: Schema.Schema<AdvancedMachineFeatures> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      threadsPerCore: Schema.optional(Schema.String),
-      enableNestedVirtualization: Schema.optional(Schema.Boolean),
-      performanceMonitoringUnit: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AdvancedMachineFeatures",
-  }) as any as Schema.Schema<AdvancedMachineFeatures>;
+export const AdvancedMachineFeatures =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    threadsPerCore: Schema.optional(Schema.String),
+    enableNestedVirtualization: Schema.optional(Schema.Boolean),
+    performanceMonitoringUnit: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AdvancedMachineFeatures" });
 
 export interface EphemeralStorageLocalSsdConfig {
   /** Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. A zero (or unset) value has different meanings depending on machine type being used: 1. For pre-Gen3 machines, which support flexible numbers of local ssds, zero (or unset) means to disable using local SSDs as ephemeral storage. The limit for this value is dependent upon the maximum number of disk available on a machine per zone. See: https://cloud.google.com/compute/docs/disks/local-ssd for more information. 2. For Gen3 machines which dictate a specific number of local ssds, zero (or unset) means to use the default number of local ssds that goes with that machine type. For example, for a c3-standard-8-lssd machine, 2 local ssds would be provisioned. For c3-standard-8 (which doesn't support local ssds), 0 will be provisioned. See https://cloud.google.com/compute/docs/disks/local-ssd#choose_number_local_ssds for more info. */
@@ -4060,27 +3204,20 @@ export interface EphemeralStorageLocalSsdConfig {
   dataCacheCount?: number;
 }
 
-export const EphemeralStorageLocalSsdConfig: Schema.Schema<EphemeralStorageLocalSsdConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      localSsdCount: Schema.optional(Schema.Number),
-      dataCacheCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "EphemeralStorageLocalSsdConfig",
-  }) as any as Schema.Schema<EphemeralStorageLocalSsdConfig>;
+export const EphemeralStorageLocalSsdConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    localSsdCount: Schema.optional(Schema.Number),
+    dataCacheCount: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "EphemeralStorageLocalSsdConfig" });
 
 export interface FastSocket {
   /** Whether Fast Socket features are enabled in the node pool. */
   enabled?: boolean;
 }
 
-export const FastSocket: Schema.Schema<FastSocket> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "FastSocket" }) as any as Schema.Schema<FastSocket>;
+export const FastSocket = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "FastSocket" });
 
 export interface ReservationAffinity {
   /** Corresponds to the label value(s) of reservation resource(s). */
@@ -4096,16 +3233,11 @@ export interface ReservationAffinity {
   key?: string;
 }
 
-export const ReservationAffinity: Schema.Schema<ReservationAffinity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      values: Schema.optional(Schema.Array(Schema.String)),
-      consumeReservationType: Schema.optional(Schema.String),
-      key: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ReservationAffinity",
-  }) as any as Schema.Schema<ReservationAffinity>;
+export const ReservationAffinity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  values: Schema.optional(Schema.Array(Schema.String)),
+  consumeReservationType: Schema.optional(Schema.String),
+  key: Schema.optional(Schema.String),
+}).annotate({ identifier: "ReservationAffinity" });
 
 export interface GPUSharingConfig {
   /** The max number of containers that can share a physical GPU. */
@@ -4118,15 +3250,10 @@ export interface GPUSharingConfig {
     | (string & {});
 }
 
-export const GPUSharingConfig: Schema.Schema<GPUSharingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      maxSharedClientsPerGpu: Schema.optional(Schema.String),
-      gpuSharingStrategy: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GPUSharingConfig",
-  }) as any as Schema.Schema<GPUSharingConfig>;
+export const GPUSharingConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  maxSharedClientsPerGpu: Schema.optional(Schema.String),
+  gpuSharingStrategy: Schema.optional(Schema.String),
+}).annotate({ identifier: "GPUSharingConfig" });
 
 export interface GPUDriverInstallationConfig {
   /** Mode for how the GPU driver is installed. */
@@ -4138,14 +3265,10 @@ export interface GPUDriverInstallationConfig {
     | (string & {});
 }
 
-export const GPUDriverInstallationConfig: Schema.Schema<GPUDriverInstallationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gpuDriverVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GPUDriverInstallationConfig",
-  }) as any as Schema.Schema<GPUDriverInstallationConfig>;
+export const GPUDriverInstallationConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gpuDriverVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GPUDriverInstallationConfig" });
 
 export interface AcceleratorConfig {
   /** The configuration for GPU sharing options. */
@@ -4162,19 +3285,14 @@ export interface AcceleratorConfig {
   gpuPartitionSize?: string;
 }
 
-export const AcceleratorConfig: Schema.Schema<AcceleratorConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gpuSharingConfig: Schema.optional(GPUSharingConfig),
-      maxTimeSharedClientsPerGpu: Schema.optional(Schema.String),
-      acceleratorCount: Schema.optional(Schema.String),
-      gpuDriverInstallationConfig: Schema.optional(GPUDriverInstallationConfig),
-      acceleratorType: Schema.optional(Schema.String),
-      gpuPartitionSize: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AcceleratorConfig",
-  }) as any as Schema.Schema<AcceleratorConfig>;
+export const AcceleratorConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gpuSharingConfig: Schema.optional(GPUSharingConfig),
+  maxTimeSharedClientsPerGpu: Schema.optional(Schema.String),
+  acceleratorCount: Schema.optional(Schema.String),
+  gpuDriverInstallationConfig: Schema.optional(GPUDriverInstallationConfig),
+  acceleratorType: Schema.optional(Schema.String),
+  gpuPartitionSize: Schema.optional(Schema.String),
+}).annotate({ identifier: "AcceleratorConfig" });
 
 export interface NodeConfig {
   /** The resource labels for the node pool to use to annotate any related Google Compute Engine resources. */
@@ -4287,67 +3405,62 @@ export interface NodeConfig {
   shieldedInstanceConfig?: ShieldedInstanceConfig;
 }
 
-export const NodeConfig: Schema.Schema<NodeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceLabels: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      flexStart: Schema.optional(Schema.Boolean),
-      windowsNodeConfig: Schema.optional(WindowsNodeConfig),
-      linuxNodeConfig: Schema.optional(LinuxNodeConfig),
-      machineType: Schema.optional(Schema.String),
-      sandboxConfig: Schema.optional(SandboxConfig),
-      resourceManagerTags: Schema.optional(ResourceManagerTags),
-      localSsdCount: Schema.optional(Schema.Number),
-      loggingConfig: Schema.optional(NodePoolLoggingConfig),
-      soleTenantConfig: Schema.optional(SoleTenantConfig),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      secondaryBootDisks: Schema.optional(Schema.Array(SecondaryBootDisk)),
-      diskSizeGb: Schema.optional(Schema.Number),
-      containerdConfig: Schema.optional(ContainerdConfig),
-      nodeGroup: Schema.optional(Schema.String),
-      storagePools: Schema.optional(Schema.Array(Schema.String)),
-      confidentialNodes: Schema.optional(ConfidentialNodes),
-      preemptible: Schema.optional(Schema.Boolean),
-      consolidationDelay: Schema.optional(Schema.String),
-      oauthScopes: Schema.optional(Schema.Array(Schema.String)),
-      localSsdEncryptionMode: Schema.optional(Schema.String),
-      tags: Schema.optional(Schema.Array(Schema.String)),
-      taints: Schema.optional(Schema.Array(NodeTaint)),
-      gpuDirectConfig: Schema.optional(GPUDirectConfig),
-      serviceAccount: Schema.optional(Schema.String),
-      imageType: Schema.optional(Schema.String),
-      maxRunDuration: Schema.optional(Schema.String),
-      kubeletConfig: Schema.optional(NodeKubeletConfig),
-      localNvmeSsdBlockConfig: Schema.optional(LocalNvmeSsdBlockConfig),
-      minCpuPlatform: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      taintConfig: Schema.optional(TaintConfig),
-      gcfsConfig: Schema.optional(GcfsConfig),
-      ephemeralStorageConfig: Schema.optional(EphemeralStorageConfig),
-      gvnic: Schema.optional(VirtualNIC),
-      workloadMetadataConfig: Schema.optional(WorkloadMetadataConfig),
-      bootDiskKmsKey: Schema.optional(Schema.String),
-      secondaryBootDiskUpdateStrategy: Schema.optional(
-        SecondaryBootDiskUpdateStrategy,
-      ),
-      advancedMachineFeatures: Schema.optional(AdvancedMachineFeatures),
-      effectiveCgroupMode: Schema.optional(Schema.String),
-      diskType: Schema.optional(Schema.String),
-      bootDisk: Schema.optional(BootDisk),
-      ephemeralStorageLocalSsdConfig: Schema.optional(
-        EphemeralStorageLocalSsdConfig,
-      ),
-      fastSocket: Schema.optional(FastSocket),
-      enableConfidentialStorage: Schema.optional(Schema.Boolean),
-      spot: Schema.optional(Schema.Boolean),
-      reservationAffinity: Schema.optional(ReservationAffinity),
-      accelerators: Schema.optional(Schema.Array(AcceleratorConfig)),
-      hostMaintenancePolicy: Schema.optional(HostMaintenancePolicy),
-      shieldedInstanceConfig: Schema.optional(ShieldedInstanceConfig),
-    }),
-  ).annotate({ identifier: "NodeConfig" }) as any as Schema.Schema<NodeConfig>;
+export const NodeConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceLabels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  flexStart: Schema.optional(Schema.Boolean),
+  windowsNodeConfig: Schema.optional(WindowsNodeConfig),
+  linuxNodeConfig: Schema.optional(LinuxNodeConfig),
+  machineType: Schema.optional(Schema.String),
+  sandboxConfig: Schema.optional(SandboxConfig),
+  resourceManagerTags: Schema.optional(ResourceManagerTags),
+  localSsdCount: Schema.optional(Schema.Number),
+  loggingConfig: Schema.optional(NodePoolLoggingConfig),
+  soleTenantConfig: Schema.optional(SoleTenantConfig),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  secondaryBootDisks: Schema.optional(Schema.Array(SecondaryBootDisk)),
+  diskSizeGb: Schema.optional(Schema.Number),
+  containerdConfig: Schema.optional(ContainerdConfig),
+  nodeGroup: Schema.optional(Schema.String),
+  storagePools: Schema.optional(Schema.Array(Schema.String)),
+  confidentialNodes: Schema.optional(ConfidentialNodes),
+  preemptible: Schema.optional(Schema.Boolean),
+  consolidationDelay: Schema.optional(Schema.String),
+  oauthScopes: Schema.optional(Schema.Array(Schema.String)),
+  localSsdEncryptionMode: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Array(Schema.String)),
+  taints: Schema.optional(Schema.Array(NodeTaint)),
+  gpuDirectConfig: Schema.optional(GPUDirectConfig),
+  serviceAccount: Schema.optional(Schema.String),
+  imageType: Schema.optional(Schema.String),
+  maxRunDuration: Schema.optional(Schema.String),
+  kubeletConfig: Schema.optional(NodeKubeletConfig),
+  localNvmeSsdBlockConfig: Schema.optional(LocalNvmeSsdBlockConfig),
+  minCpuPlatform: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  taintConfig: Schema.optional(TaintConfig),
+  gcfsConfig: Schema.optional(GcfsConfig),
+  ephemeralStorageConfig: Schema.optional(EphemeralStorageConfig),
+  gvnic: Schema.optional(VirtualNIC),
+  workloadMetadataConfig: Schema.optional(WorkloadMetadataConfig),
+  bootDiskKmsKey: Schema.optional(Schema.String),
+  secondaryBootDiskUpdateStrategy: Schema.optional(
+    SecondaryBootDiskUpdateStrategy,
+  ),
+  advancedMachineFeatures: Schema.optional(AdvancedMachineFeatures),
+  effectiveCgroupMode: Schema.optional(Schema.String),
+  diskType: Schema.optional(Schema.String),
+  bootDisk: Schema.optional(BootDisk),
+  ephemeralStorageLocalSsdConfig: Schema.optional(
+    EphemeralStorageLocalSsdConfig,
+  ),
+  fastSocket: Schema.optional(FastSocket),
+  enableConfidentialStorage: Schema.optional(Schema.Boolean),
+  spot: Schema.optional(Schema.Boolean),
+  reservationAffinity: Schema.optional(ReservationAffinity),
+  accelerators: Schema.optional(Schema.Array(AcceleratorConfig)),
+  hostMaintenancePolicy: Schema.optional(HostMaintenancePolicy),
+  shieldedInstanceConfig: Schema.optional(ShieldedInstanceConfig),
+}).annotate({ identifier: "NodeConfig" });
 
 export interface BestEffortProvisioning {
   /** When this is enabled, cluster/node pool creations will ignore non-fatal errors like stockout to best provision as many nodes as possible right now and eventually bring up all target number of nodes */
@@ -4356,15 +3469,12 @@ export interface BestEffortProvisioning {
   minProvisionNodes?: number;
 }
 
-export const BestEffortProvisioning: Schema.Schema<BestEffortProvisioning> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-      minProvisionNodes: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "BestEffortProvisioning",
-  }) as any as Schema.Schema<BestEffortProvisioning>;
+export const BestEffortProvisioning = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    enabled: Schema.optional(Schema.Boolean),
+    minProvisionNodes: Schema.optional(Schema.Number),
+  },
+).annotate({ identifier: "BestEffortProvisioning" });
 
 export interface NodePool {
   /** The initial node count for the pool. You must ensure that your Compute Engine [resource quota](https://cloud.google.com/compute/quotas) is sufficient for this number of instances. You must also have available firewall and routes quota. */
@@ -4423,34 +3533,31 @@ export interface NodePool {
   instanceGroupUrls?: Array<string>;
 }
 
-export const NodePool: Schema.Schema<NodePool> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      initialNodeCount: Schema.optional(Schema.Number),
-      conditions: Schema.optional(Schema.Array(StatusCondition)),
-      updateInfo: Schema.optional(UpdateInfo),
-      selfLink: Schema.optional(Schema.String),
-      maxPodsConstraint: Schema.optional(MaxPodsConstraint),
-      placementPolicy: Schema.optional(PlacementPolicy),
-      management: Schema.optional(NodeManagement),
-      networkConfig: Schema.optional(NodeNetworkConfig),
-      autopilotConfig: Schema.optional(AutopilotConfig),
-      status: Schema.optional(Schema.String),
-      nodeDrainConfig: Schema.optional(NodeDrainConfig),
-      locations: Schema.optional(Schema.Array(Schema.String)),
-      podIpv4CidrSize: Schema.optional(Schema.Number),
-      upgradeSettings: Schema.optional(UpgradeSettings),
-      queuedProvisioning: Schema.optional(QueuedProvisioning),
-      statusMessage: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      config: Schema.optional(NodeConfig),
-      version: Schema.optional(Schema.String),
-      autoscaling: Schema.optional(NodePoolAutoscaling),
-      name: Schema.optional(Schema.String),
-      bestEffortProvisioning: Schema.optional(BestEffortProvisioning),
-      instanceGroupUrls: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "NodePool" }) as any as Schema.Schema<NodePool>;
+export const NodePool = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  initialNodeCount: Schema.optional(Schema.Number),
+  conditions: Schema.optional(Schema.Array(StatusCondition)),
+  updateInfo: Schema.optional(UpdateInfo),
+  selfLink: Schema.optional(Schema.String),
+  maxPodsConstraint: Schema.optional(MaxPodsConstraint),
+  placementPolicy: Schema.optional(PlacementPolicy),
+  management: Schema.optional(NodeManagement),
+  networkConfig: Schema.optional(NodeNetworkConfig),
+  autopilotConfig: Schema.optional(AutopilotConfig),
+  status: Schema.optional(Schema.String),
+  nodeDrainConfig: Schema.optional(NodeDrainConfig),
+  locations: Schema.optional(Schema.Array(Schema.String)),
+  podIpv4CidrSize: Schema.optional(Schema.Number),
+  upgradeSettings: Schema.optional(UpgradeSettings),
+  queuedProvisioning: Schema.optional(QueuedProvisioning),
+  statusMessage: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  config: Schema.optional(NodeConfig),
+  version: Schema.optional(Schema.String),
+  autoscaling: Schema.optional(NodePoolAutoscaling),
+  name: Schema.optional(Schema.String),
+  bestEffortProvisioning: Schema.optional(BestEffortProvisioning),
+  instanceGroupUrls: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "NodePool" });
 
 export interface CancelOperationRequest {
   /** The name (project, location, operation id) of the operation to cancel. Specified in the format `projects/* /locations/* /operations/*`. */
@@ -4463,17 +3570,14 @@ export interface CancelOperationRequest {
   operationId?: string;
 }
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      zone: Schema.optional(Schema.String),
-      projectId: Schema.optional(Schema.String),
-      operationId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CancelOperationRequest",
-  }) as any as Schema.Schema<CancelOperationRequest>;
+export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    name: Schema.optional(Schema.String),
+    zone: Schema.optional(Schema.String),
+    projectId: Schema.optional(Schema.String),
+    operationId: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "CancelOperationRequest" });
 
 export interface HttpCacheControlResponseHeader {
   /** 14.6 response cache age, in seconds since the response is generated */
@@ -4484,16 +3588,12 @@ export interface HttpCacheControlResponseHeader {
   directive?: string;
 }
 
-export const HttpCacheControlResponseHeader: Schema.Schema<HttpCacheControlResponseHeader> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      age: Schema.optional(Schema.String),
-      expires: Schema.optional(Schema.String),
-      directive: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "HttpCacheControlResponseHeader",
-  }) as any as Schema.Schema<HttpCacheControlResponseHeader>;
+export const HttpCacheControlResponseHeader =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    age: Schema.optional(Schema.String),
+    expires: Schema.optional(Schema.String),
+    directive: Schema.optional(Schema.String),
+  }).annotate({ identifier: "HttpCacheControlResponseHeader" });
 
 export interface GetOpenIDConfigResponse {
   /** Supported claims. */
@@ -4514,61 +3614,46 @@ export interface GetOpenIDConfigResponse {
   subject_types_supported?: Array<string>;
 }
 
-export const GetOpenIDConfigResponse: Schema.Schema<GetOpenIDConfigResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      claims_supported: Schema.optional(Schema.Array(Schema.String)),
-      cacheHeader: Schema.optional(HttpCacheControlResponseHeader),
-      jwks_uri: Schema.optional(Schema.String),
-      id_token_signing_alg_values_supported: Schema.optional(
-        Schema.Array(Schema.String),
-      ),
-      issuer: Schema.optional(Schema.String),
-      grant_types: Schema.optional(Schema.Array(Schema.String)),
-      response_types_supported: Schema.optional(Schema.Array(Schema.String)),
-      subject_types_supported: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GetOpenIDConfigResponse",
-  }) as any as Schema.Schema<GetOpenIDConfigResponse>;
+export const GetOpenIDConfigResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    claims_supported: Schema.optional(Schema.Array(Schema.String)),
+    cacheHeader: Schema.optional(HttpCacheControlResponseHeader),
+    jwks_uri: Schema.optional(Schema.String),
+    id_token_signing_alg_values_supported: Schema.optional(
+      Schema.Array(Schema.String),
+    ),
+    issuer: Schema.optional(Schema.String),
+    grant_types: Schema.optional(Schema.Array(Schema.String)),
+    response_types_supported: Schema.optional(Schema.Array(Schema.String)),
+    subject_types_supported: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GetOpenIDConfigResponse" });
 
 export interface NodeLabels {
   /** Map of node label keys and node label values. */
   labels?: Record<string, string>;
 }
 
-export const NodeLabels: Schema.Schema<NodeLabels> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({ identifier: "NodeLabels" }) as any as Schema.Schema<NodeLabels>;
+export const NodeLabels = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "NodeLabels" });
 
 export interface ResourceLabels {
   /** Map of node label keys and node label values. */
   labels?: Record<string, string>;
 }
 
-export const ResourceLabels: Schema.Schema<ResourceLabels> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ResourceLabels",
-  }) as any as Schema.Schema<ResourceLabels>;
+export const ResourceLabels = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "ResourceLabels" });
 
 export interface NodeTaints {
   /** List of node taints. */
   taints?: Array<NodeTaint>;
 }
 
-export const NodeTaints: Schema.Schema<NodeTaints> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      taints: Schema.optional(Schema.Array(NodeTaint)),
-    }),
-  ).annotate({ identifier: "NodeTaints" }) as any as Schema.Schema<NodeTaints>;
+export const NodeTaints = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  taints: Schema.optional(Schema.Array(NodeTaint)),
+}).annotate({ identifier: "NodeTaints" });
 
 export interface UpdateNodePoolRequest {
   /** Required. The Kubernetes version to change the nodes to (typically an upgrade). Users may specify either explicit versions offered by Kubernetes Engine or version aliases, which have the following behavior: - "latest": picks the highest valid Kubernetes version - "1.X": picks the highest valid patch+gke.N patch in the 1.X version - "1.X.Y": picks the highest valid gke.N patch in the 1.X.Y version - "1.X.Y-gke.N": picks an explicit Kubernetes version - "-": picks the Kubernetes master version */
@@ -4647,50 +3732,45 @@ export interface UpdateNodePoolRequest {
   bootDisk?: BootDisk;
 }
 
-export const UpdateNodePoolRequest: Schema.Schema<UpdateNodePoolRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nodeVersion: Schema.optional(Schema.String),
-      linuxNodeConfig: Schema.optional(LinuxNodeConfig),
-      confidentialNodes: Schema.optional(ConfidentialNodes),
-      nodeDrainConfig: Schema.optional(NodeDrainConfig),
-      diskSizeGb: Schema.optional(Schema.String),
-      nodePoolId: Schema.optional(Schema.String),
-      resourceManagerTags: Schema.optional(ResourceManagerTags),
-      kubeletConfig: Schema.optional(NodeKubeletConfig),
-      queuedProvisioning: Schema.optional(QueuedProvisioning),
-      zone: Schema.optional(Schema.String),
-      gcfsConfig: Schema.optional(GcfsConfig),
-      loggingConfig: Schema.optional(NodePoolLoggingConfig),
-      clusterId: Schema.optional(Schema.String),
-      machineType: Schema.optional(Schema.String),
-      upgradeSettings: Schema.optional(UpgradeSettings),
-      windowsNodeConfig: Schema.optional(WindowsNodeConfig),
-      accelerators: Schema.optional(Schema.Array(AcceleratorConfig)),
-      nodeNetworkConfig: Schema.optional(NodeNetworkConfig),
-      labels: Schema.optional(NodeLabels),
-      resourceLabels: Schema.optional(ResourceLabels),
-      projectId: Schema.optional(Schema.String),
-      fastSocket: Schema.optional(FastSocket),
-      consolidationDelay: Schema.optional(Schema.String),
-      tags: Schema.optional(NetworkTags),
-      locations: Schema.optional(Schema.Array(Schema.String)),
-      gvnic: Schema.optional(VirtualNIC),
-      etag: Schema.optional(Schema.String),
-      workloadMetadataConfig: Schema.optional(WorkloadMetadataConfig),
-      imageType: Schema.optional(Schema.String),
-      flexStart: Schema.optional(Schema.Boolean),
-      diskType: Schema.optional(Schema.String),
-      containerdConfig: Schema.optional(ContainerdConfig),
-      taints: Schema.optional(NodeTaints),
-      storagePools: Schema.optional(Schema.Array(Schema.String)),
-      name: Schema.optional(Schema.String),
-      maxRunDuration: Schema.optional(Schema.String),
-      bootDisk: Schema.optional(BootDisk),
-    }),
-  ).annotate({
-    identifier: "UpdateNodePoolRequest",
-  }) as any as Schema.Schema<UpdateNodePoolRequest>;
+export const UpdateNodePoolRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nodeVersion: Schema.optional(Schema.String),
+  linuxNodeConfig: Schema.optional(LinuxNodeConfig),
+  confidentialNodes: Schema.optional(ConfidentialNodes),
+  nodeDrainConfig: Schema.optional(NodeDrainConfig),
+  diskSizeGb: Schema.optional(Schema.String),
+  nodePoolId: Schema.optional(Schema.String),
+  resourceManagerTags: Schema.optional(ResourceManagerTags),
+  kubeletConfig: Schema.optional(NodeKubeletConfig),
+  queuedProvisioning: Schema.optional(QueuedProvisioning),
+  zone: Schema.optional(Schema.String),
+  gcfsConfig: Schema.optional(GcfsConfig),
+  loggingConfig: Schema.optional(NodePoolLoggingConfig),
+  clusterId: Schema.optional(Schema.String),
+  machineType: Schema.optional(Schema.String),
+  upgradeSettings: Schema.optional(UpgradeSettings),
+  windowsNodeConfig: Schema.optional(WindowsNodeConfig),
+  accelerators: Schema.optional(Schema.Array(AcceleratorConfig)),
+  nodeNetworkConfig: Schema.optional(NodeNetworkConfig),
+  labels: Schema.optional(NodeLabels),
+  resourceLabels: Schema.optional(ResourceLabels),
+  projectId: Schema.optional(Schema.String),
+  fastSocket: Schema.optional(FastSocket),
+  consolidationDelay: Schema.optional(Schema.String),
+  tags: Schema.optional(NetworkTags),
+  locations: Schema.optional(Schema.Array(Schema.String)),
+  gvnic: Schema.optional(VirtualNIC),
+  etag: Schema.optional(Schema.String),
+  workloadMetadataConfig: Schema.optional(WorkloadMetadataConfig),
+  imageType: Schema.optional(Schema.String),
+  flexStart: Schema.optional(Schema.Boolean),
+  diskType: Schema.optional(Schema.String),
+  containerdConfig: Schema.optional(ContainerdConfig),
+  taints: Schema.optional(NodeTaints),
+  storagePools: Schema.optional(Schema.Array(Schema.String)),
+  name: Schema.optional(Schema.String),
+  maxRunDuration: Schema.optional(Schema.String),
+  bootDisk: Schema.optional(BootDisk),
+}).annotate({ identifier: "UpdateNodePoolRequest" });
 
 export interface OperationProgress {
   /** A non-parameterized string describing an operation stage. Unset for single-stage operations. */
@@ -4746,21 +3826,16 @@ export interface UpgradeDetails {
   startTime?: string;
 }
 
-export const UpgradeDetails: Schema.Schema<UpgradeDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      targetVersion: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      initialVersion: Schema.optional(Schema.String),
-      startType: Schema.optional(Schema.String),
-      initialEmulatedVersion: Schema.optional(Schema.String),
-      targetEmulatedVersion: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpgradeDetails",
-  }) as any as Schema.Schema<UpgradeDetails>;
+export const UpgradeDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.String),
+  targetVersion: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  initialVersion: Schema.optional(Schema.String),
+  startType: Schema.optional(Schema.String),
+  initialEmulatedVersion: Schema.optional(Schema.String),
+  targetEmulatedVersion: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "UpgradeDetails" });
 
 export interface NodePoolUpgradeInfo {
   /** The list of past auto upgrades. */
@@ -4792,20 +3867,15 @@ export interface NodePoolUpgradeInfo {
   minorTargetVersion?: string;
 }
 
-export const NodePoolUpgradeInfo: Schema.Schema<NodePoolUpgradeInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      upgradeDetails: Schema.optional(Schema.Array(UpgradeDetails)),
-      endOfExtendedSupportTimestamp: Schema.optional(Schema.String),
-      endOfStandardSupportTimestamp: Schema.optional(Schema.String),
-      patchTargetVersion: Schema.optional(Schema.String),
-      autoUpgradeStatus: Schema.optional(Schema.Array(Schema.String)),
-      pausedReason: Schema.optional(Schema.Array(Schema.String)),
-      minorTargetVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NodePoolUpgradeInfo",
-  }) as any as Schema.Schema<NodePoolUpgradeInfo>;
+export const NodePoolUpgradeInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  upgradeDetails: Schema.optional(Schema.Array(UpgradeDetails)),
+  endOfExtendedSupportTimestamp: Schema.optional(Schema.String),
+  endOfStandardSupportTimestamp: Schema.optional(Schema.String),
+  patchTargetVersion: Schema.optional(Schema.String),
+  autoUpgradeStatus: Schema.optional(Schema.Array(Schema.String)),
+  pausedReason: Schema.optional(Schema.Array(Schema.String)),
+  minorTargetVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "NodePoolUpgradeInfo" });
 
 export interface RecurringTimeWindow {
   /** An RRULE (https://tools.ietf.org/html/rfc5545#section-3.8.5.3) for how this window reccurs. They go on for the span of time between the start and end time. For example, to have something repeat every weekday, you'd use: `FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR` To repeat some window daily (equivalent to the DailyMaintenanceWindow): `FREQ=DAILY` For the first weekend of every month: `FREQ=MONTHLY;BYSETPOS=1;BYDAY=SA,SU` This specifies how frequently the window starts. Eg, if you wanted to have a 9-5 UTC-4 window every weekday, you'd use something like: ``` start time = 2019-01-01T09:00:00-0400 end time = 2019-01-01T17:00:00-0400 recurrence = FREQ=WEEKLY;BYDAY=MO,TU,WE,TH,FR ``` Windows can span multiple days. Eg, to make the window encompass every weekend from midnight Saturday till the last minute of Sunday UTC: ``` start time = 2019-01-05T00:00:00Z end time = 2019-01-07T23:59:00Z recurrence = FREQ=WEEKLY;BYDAY=SA ``` Note the start and end time's specific dates are largely arbitrary except to specify duration of the window and when it first starts. The FREQ values of HOURLY, MINUTELY, and SECONDLY are not supported. */
@@ -4814,15 +3884,10 @@ export interface RecurringTimeWindow {
   window?: TimeWindow;
 }
 
-export const RecurringTimeWindow: Schema.Schema<RecurringTimeWindow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      recurrence: Schema.optional(Schema.String),
-      window: Schema.optional(TimeWindow),
-    }),
-  ).annotate({
-    identifier: "RecurringTimeWindow",
-  }) as any as Schema.Schema<RecurringTimeWindow>;
+export const RecurringTimeWindow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  recurrence: Schema.optional(Schema.String),
+  window: Schema.optional(TimeWindow),
+}).annotate({ identifier: "RecurringTimeWindow" });
 
 export interface DailyMaintenanceWindow {
   /** Time within the maintenance window to start the maintenance operations. It must be in format "HH:MM", where HH : [00-23] and MM : [00-59] GMT. */
@@ -4831,15 +3896,12 @@ export interface DailyMaintenanceWindow {
   duration?: string;
 }
 
-export const DailyMaintenanceWindow: Schema.Schema<DailyMaintenanceWindow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Schema.String),
-      duration: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DailyMaintenanceWindow",
-  }) as any as Schema.Schema<DailyMaintenanceWindow>;
+export const DailyMaintenanceWindow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    startTime: Schema.optional(Schema.String),
+    duration: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "DailyMaintenanceWindow" });
 
 export interface MaintenanceWindow {
   /** RecurringWindow specifies some number of recurring time periods for maintenance to occur. The time windows may be overlapping. If no maintenance windows are set, maintenance can occur at any time. */
@@ -4850,18 +3912,13 @@ export interface MaintenanceWindow {
   maintenanceExclusions?: Record<string, TimeWindow>;
 }
 
-export const MaintenanceWindow: Schema.Schema<MaintenanceWindow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      recurringWindow: Schema.optional(RecurringTimeWindow),
-      dailyMaintenanceWindow: Schema.optional(DailyMaintenanceWindow),
-      maintenanceExclusions: Schema.optional(
-        Schema.Record(Schema.String, TimeWindow),
-      ),
-    }),
-  ).annotate({
-    identifier: "MaintenanceWindow",
-  }) as any as Schema.Schema<MaintenanceWindow>;
+export const MaintenanceWindow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  recurringWindow: Schema.optional(RecurringTimeWindow),
+  dailyMaintenanceWindow: Schema.optional(DailyMaintenanceWindow),
+  maintenanceExclusions: Schema.optional(
+    Schema.Record(Schema.String, TimeWindow),
+  ),
+}).annotate({ identifier: "MaintenanceWindow" });
 
 export interface MaintenancePolicy {
   /** Optional. The upgrade disruption budget for the cluster control plane. */
@@ -4872,16 +3929,11 @@ export interface MaintenancePolicy {
   resourceVersion?: string;
 }
 
-export const MaintenancePolicy: Schema.Schema<MaintenancePolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      disruptionBudget: Schema.optional(DisruptionBudget),
-      window: Schema.optional(MaintenanceWindow),
-      resourceVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MaintenancePolicy",
-  }) as any as Schema.Schema<MaintenancePolicy>;
+export const MaintenancePolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  disruptionBudget: Schema.optional(DisruptionBudget),
+  window: Schema.optional(MaintenanceWindow),
+  resourceVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "MaintenancePolicy" });
 
 export interface NetworkPolicy {
   /** The selected network policy provider. */
@@ -4890,15 +3942,10 @@ export interface NetworkPolicy {
   enabled?: boolean;
 }
 
-export const NetworkPolicy: Schema.Schema<NetworkPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      provider: Schema.optional(Schema.String),
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "NetworkPolicy",
-  }) as any as Schema.Schema<NetworkPolicy>;
+export const NetworkPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provider: Schema.optional(Schema.String),
+  enabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "NetworkPolicy" });
 
 export interface IPAllocationPolicy {
   /** Output only. The services IPv6 CIDR block for the cluster. */
@@ -4955,53 +4002,44 @@ export interface IPAllocationPolicy {
   podCidrOverprovisionConfig?: PodCIDROverprovisionConfig;
 }
 
-export const IPAllocationPolicy: Schema.Schema<IPAllocationPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      servicesIpv6CidrBlock: Schema.optional(Schema.String),
-      clusterIpv4CidrBlock: Schema.optional(Schema.String),
-      allowRouteOverlap: Schema.optional(Schema.Boolean),
-      createSubnetwork: Schema.optional(Schema.Boolean),
-      servicesSecondaryRangeName: Schema.optional(Schema.String),
-      additionalIpRangesConfigs: Schema.optional(
-        Schema.Array(AdditionalIPRangesConfig),
-      ),
-      autoIpamConfig: Schema.optional(AutoIpamConfig),
-      nodeIpv4CidrBlock: Schema.optional(Schema.String),
-      servicesIpv4Cidr: Schema.optional(Schema.String),
-      clusterIpv4Cidr: Schema.optional(Schema.String),
-      stackType: Schema.optional(Schema.String),
-      servicesIpv4CidrBlock: Schema.optional(Schema.String),
-      defaultPodIpv4RangeUtilization: Schema.optional(Schema.Number),
-      ipv6AccessType: Schema.optional(Schema.String),
-      useIpAliases: Schema.optional(Schema.Boolean),
-      subnetIpv6CidrBlock: Schema.optional(Schema.String),
-      useRoutes: Schema.optional(Schema.Boolean),
-      networkTierConfig: Schema.optional(NetworkTierConfig),
-      nodeIpv4Cidr: Schema.optional(Schema.String),
-      additionalPodRangesConfig: Schema.optional(AdditionalPodRangesConfig),
-      tpuIpv4CidrBlock: Schema.optional(Schema.String),
-      clusterSecondaryRangeName: Schema.optional(Schema.String),
-      subnetworkName: Schema.optional(Schema.String),
-      podCidrOverprovisionConfig: Schema.optional(PodCIDROverprovisionConfig),
-    }),
-  ).annotate({
-    identifier: "IPAllocationPolicy",
-  }) as any as Schema.Schema<IPAllocationPolicy>;
+export const IPAllocationPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  servicesIpv6CidrBlock: Schema.optional(Schema.String),
+  clusterIpv4CidrBlock: Schema.optional(Schema.String),
+  allowRouteOverlap: Schema.optional(Schema.Boolean),
+  createSubnetwork: Schema.optional(Schema.Boolean),
+  servicesSecondaryRangeName: Schema.optional(Schema.String),
+  additionalIpRangesConfigs: Schema.optional(
+    Schema.Array(AdditionalIPRangesConfig),
+  ),
+  autoIpamConfig: Schema.optional(AutoIpamConfig),
+  nodeIpv4CidrBlock: Schema.optional(Schema.String),
+  servicesIpv4Cidr: Schema.optional(Schema.String),
+  clusterIpv4Cidr: Schema.optional(Schema.String),
+  stackType: Schema.optional(Schema.String),
+  servicesIpv4CidrBlock: Schema.optional(Schema.String),
+  defaultPodIpv4RangeUtilization: Schema.optional(Schema.Number),
+  ipv6AccessType: Schema.optional(Schema.String),
+  useIpAliases: Schema.optional(Schema.Boolean),
+  subnetIpv6CidrBlock: Schema.optional(Schema.String),
+  useRoutes: Schema.optional(Schema.Boolean),
+  networkTierConfig: Schema.optional(NetworkTierConfig),
+  nodeIpv4Cidr: Schema.optional(Schema.String),
+  additionalPodRangesConfig: Schema.optional(AdditionalPodRangesConfig),
+  tpuIpv4CidrBlock: Schema.optional(Schema.String),
+  clusterSecondaryRangeName: Schema.optional(Schema.String),
+  subnetworkName: Schema.optional(Schema.String),
+  podCidrOverprovisionConfig: Schema.optional(PodCIDROverprovisionConfig),
+}).annotate({ identifier: "IPAllocationPolicy" });
 
 export interface ClientCertificateConfig {
   /** Issue a client certificate. */
   issueClientCertificate?: boolean;
 }
 
-export const ClientCertificateConfig: Schema.Schema<ClientCertificateConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      issueClientCertificate: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ClientCertificateConfig",
-  }) as any as Schema.Schema<ClientCertificateConfig>;
+export const ClientCertificateConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    issueClientCertificate: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "ClientCertificateConfig" });
 
 export interface MasterAuth {
   /** Configuration for client certificate authentication on the cluster. For clusters before v1.12, if no configuration is specified, a client certificate is issued. */
@@ -5018,17 +4056,14 @@ export interface MasterAuth {
   password?: string;
 }
 
-export const MasterAuth: Schema.Schema<MasterAuth> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clientCertificateConfig: Schema.optional(ClientCertificateConfig),
-      clusterCaCertificate: Schema.optional(Schema.String),
-      clientCertificate: Schema.optional(Schema.String),
-      username: Schema.optional(Schema.String),
-      clientKey: Schema.optional(Schema.String),
-      password: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "MasterAuth" }) as any as Schema.Schema<MasterAuth>;
+export const MasterAuth = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  clientCertificateConfig: Schema.optional(ClientCertificateConfig),
+  clusterCaCertificate: Schema.optional(Schema.String),
+  clientCertificate: Schema.optional(Schema.String),
+  username: Schema.optional(Schema.String),
+  clientKey: Schema.optional(Schema.String),
+  password: Schema.optional(Schema.String),
+}).annotate({ identifier: "MasterAuth" });
 
 export interface NetworkConfig {
   /** Whether CiliumClusterWideNetworkPolicy is enabled on this cluster. */
@@ -5080,32 +4115,25 @@ export interface NetworkConfig {
   enableMultiNetworking?: boolean;
 }
 
-export const NetworkConfig: Schema.Schema<NetworkConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableCiliumClusterwideNetworkPolicy: Schema.optional(Schema.Boolean),
-      inTransitEncryptionConfig: Schema.optional(Schema.String),
-      serviceExternalIpsConfig: Schema.optional(ServiceExternalIPsConfig),
-      networkPerformanceConfig: Schema.optional(
-        ClusterNetworkPerformanceConfig,
-      ),
-      enableFqdnNetworkPolicy: Schema.optional(Schema.Boolean),
-      disableL4LbFirewallReconciliation: Schema.optional(Schema.Boolean),
-      datapathProvider: Schema.optional(Schema.String),
-      defaultEnablePrivateNodes: Schema.optional(Schema.Boolean),
-      gatewayApiConfig: Schema.optional(GatewayAPIConfig),
-      defaultSnatStatus: Schema.optional(DefaultSnatStatus),
-      subnetwork: Schema.optional(Schema.String),
-      privateIpv6GoogleAccess: Schema.optional(Schema.String),
-      dnsConfig: Schema.optional(DNSConfig),
-      enableL4ilbSubsetting: Schema.optional(Schema.Boolean),
-      enableIntraNodeVisibility: Schema.optional(Schema.Boolean),
-      network: Schema.optional(Schema.String),
-      enableMultiNetworking: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "NetworkConfig",
-  }) as any as Schema.Schema<NetworkConfig>;
+export const NetworkConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enableCiliumClusterwideNetworkPolicy: Schema.optional(Schema.Boolean),
+  inTransitEncryptionConfig: Schema.optional(Schema.String),
+  serviceExternalIpsConfig: Schema.optional(ServiceExternalIPsConfig),
+  networkPerformanceConfig: Schema.optional(ClusterNetworkPerformanceConfig),
+  enableFqdnNetworkPolicy: Schema.optional(Schema.Boolean),
+  disableL4LbFirewallReconciliation: Schema.optional(Schema.Boolean),
+  datapathProvider: Schema.optional(Schema.String),
+  defaultEnablePrivateNodes: Schema.optional(Schema.Boolean),
+  gatewayApiConfig: Schema.optional(GatewayAPIConfig),
+  defaultSnatStatus: Schema.optional(DefaultSnatStatus),
+  subnetwork: Schema.optional(Schema.String),
+  privateIpv6GoogleAccess: Schema.optional(Schema.String),
+  dnsConfig: Schema.optional(DNSConfig),
+  enableL4ilbSubsetting: Schema.optional(Schema.Boolean),
+  enableIntraNodeVisibility: Schema.optional(Schema.Boolean),
+  network: Schema.optional(Schema.String),
+  enableMultiNetworking: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "NetworkConfig" });
 
 export interface EnterpriseConfig {
   /** Output only. cluster_tier indicates the effective tier of the cluster. */
@@ -5122,27 +4150,19 @@ export interface EnterpriseConfig {
     | (string & {});
 }
 
-export const EnterpriseConfig: Schema.Schema<EnterpriseConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clusterTier: Schema.optional(Schema.String),
-      desiredTier: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EnterpriseConfig",
-  }) as any as Schema.Schema<EnterpriseConfig>;
+export const EnterpriseConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  clusterTier: Schema.optional(Schema.String),
+  desiredTier: Schema.optional(Schema.String),
+}).annotate({ identifier: "EnterpriseConfig" });
 
 export interface LegacyAbac {
   /** Whether the ABAC authorizer is enabled for this cluster. When enabled, identities in the system, including service accounts, nodes, and controllers, will have statically granted permissions beyond those provided by the RBAC configuration or IAM. */
   enabled?: boolean;
 }
 
-export const LegacyAbac: Schema.Schema<LegacyAbac> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "LegacyAbac" }) as any as Schema.Schema<LegacyAbac>;
+export const LegacyAbac = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "LegacyAbac" });
 
 export interface NodePoolAutoConfig {
   /** Resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. */
@@ -5155,31 +4175,22 @@ export interface NodePoolAutoConfig {
   networkTags?: NetworkTags;
 }
 
-export const NodePoolAutoConfig: Schema.Schema<NodePoolAutoConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceManagerTags: Schema.optional(ResourceManagerTags),
-      nodeKubeletConfig: Schema.optional(NodeKubeletConfig),
-      linuxNodeConfig: Schema.optional(LinuxNodeConfig),
-      networkTags: Schema.optional(NetworkTags),
-    }),
-  ).annotate({
-    identifier: "NodePoolAutoConfig",
-  }) as any as Schema.Schema<NodePoolAutoConfig>;
+export const NodePoolAutoConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceManagerTags: Schema.optional(ResourceManagerTags),
+  nodeKubeletConfig: Schema.optional(NodeKubeletConfig),
+  linuxNodeConfig: Schema.optional(LinuxNodeConfig),
+  networkTags: Schema.optional(NetworkTags),
+}).annotate({ identifier: "NodePoolAutoConfig" });
 
 export interface AutopilotConversionStatus {
   /** Output only. The current state of the conversion. */
   state?: "STATE_UNSPECIFIED" | "DONE" | (string & {});
 }
 
-export const AutopilotConversionStatus: Schema.Schema<AutopilotConversionStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AutopilotConversionStatus",
-  }) as any as Schema.Schema<AutopilotConversionStatus>;
+export const AutopilotConversionStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AutopilotConversionStatus" });
 
 export interface Autopilot {
   /** PrivilegedAdmissionConfig is the configuration related to privileged admission control. */
@@ -5194,16 +4205,13 @@ export interface Autopilot {
   workloadPolicyConfig?: WorkloadPolicyConfig;
 }
 
-export const Autopilot: Schema.Schema<Autopilot> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      privilegedAdmissionConfig: Schema.optional(PrivilegedAdmissionConfig),
-      clusterPolicyConfig: Schema.optional(ClusterPolicyConfig),
-      conversionStatus: Schema.optional(AutopilotConversionStatus),
-      enabled: Schema.optional(Schema.Boolean),
-      workloadPolicyConfig: Schema.optional(WorkloadPolicyConfig),
-    }),
-  ).annotate({ identifier: "Autopilot" }) as any as Schema.Schema<Autopilot>;
+export const Autopilot = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  privilegedAdmissionConfig: Schema.optional(PrivilegedAdmissionConfig),
+  clusterPolicyConfig: Schema.optional(ClusterPolicyConfig),
+  conversionStatus: Schema.optional(AutopilotConversionStatus),
+  enabled: Schema.optional(Schema.Boolean),
+  workloadPolicyConfig: Schema.optional(WorkloadPolicyConfig),
+}).annotate({ identifier: "Autopilot" });
 
 export interface Cluster {
   /** Configuration for issuance of mTLS keys and certificates to Kubernetes pods. */
@@ -5406,114 +4414,107 @@ export interface Cluster {
   instanceGroupUrls?: Array<string>;
 }
 
-export const Cluster: Schema.Schema<Cluster> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      workloadCertificates: Schema.optional(WorkloadCertificates),
-      compliancePostureConfig: Schema.optional(CompliancePostureConfig),
-      tpuIpv4CidrBlock: Schema.optional(Schema.String),
-      loggingConfig: Schema.optional(LoggingConfig),
-      authenticatorGroupsConfig: Schema.optional(AuthenticatorGroupsConfig),
-      addonsConfig: Schema.optional(AddonsConfig),
-      servicesIpv4Cidr: Schema.optional(Schema.String),
-      satisfiesPzs: Schema.optional(Schema.Boolean),
-      initialClusterVersion: Schema.optional(Schema.String),
-      podSecurityPolicyConfig: Schema.optional(PodSecurityPolicyConfig),
-      maintenancePolicy: Schema.optional(MaintenancePolicy),
-      currentNodeCount: Schema.optional(Schema.Number),
-      networkPolicy: Schema.optional(NetworkPolicy),
-      secretSyncConfig: Schema.optional(SecretSyncConfig),
-      enableKubernetesAlpha: Schema.optional(Schema.Boolean),
-      parentProductConfig: Schema.optional(ParentProductConfig),
-      masterIpv4CidrBlock: Schema.optional(Schema.String),
-      rollbackSafeUpgrade: Schema.optional(RollbackSafeUpgrade),
-      gkeAutoUpgradeConfig: Schema.optional(GkeAutoUpgradeConfig),
-      userManagedKeysConfig: Schema.optional(UserManagedKeysConfig),
-      masterAuthorizedNetworksConfig: Schema.optional(
-        MasterAuthorizedNetworksConfig,
-      ),
-      initialNodeCount: Schema.optional(Schema.Number),
-      monitoringConfig: Schema.optional(MonitoringConfig),
-      privateCluster: Schema.optional(Schema.Boolean),
-      ipAllocationPolicy: Schema.optional(IPAllocationPolicy),
-      createTime: Schema.optional(Schema.String),
-      controlPlaneEgress: Schema.optional(ControlPlaneEgress),
-      clusterTelemetry: Schema.optional(ClusterTelemetry),
-      nodePoolDefaults: Schema.optional(NodePoolDefaults),
-      resourceLabels: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      scheduleUpgradeConfig: Schema.optional(ScheduleUpgradeConfig),
-      enableK8sBetaApis: Schema.optional(K8sBetaAPIConfig),
-      description: Schema.optional(Schema.String),
-      rbacBindingConfig: Schema.optional(RBACBindingConfig),
-      nodePools: Schema.optional(Schema.Array(NodePool)),
-      shieldedNodes: Schema.optional(ShieldedNodes),
-      master: Schema.optional(Master),
-      privateClusterConfig: Schema.optional(PrivateClusterConfig),
-      labelFingerprint: Schema.optional(Schema.String),
-      workloadAltsConfig: Schema.optional(WorkloadALTSConfig),
-      releaseChannel: Schema.optional(ReleaseChannel),
-      alphaClusterFeatureGates: Schema.optional(Schema.Array(Schema.String)),
-      satisfiesPzi: Schema.optional(Schema.Boolean),
-      verticalPodAutoscaling: Schema.optional(VerticalPodAutoscaling),
-      subnetwork: Schema.optional(Schema.String),
-      masterAuth: Schema.optional(MasterAuth),
-      status: Schema.optional(Schema.String),
-      conditions: Schema.optional(Schema.Array(StatusCondition)),
-      monitoringService: Schema.optional(Schema.String),
-      workloadIdentityConfig: Schema.optional(WorkloadIdentityConfig),
-      managedMachineLearningDiagnosticsConfig: Schema.optional(
-        ManagedMachineLearningDiagnosticsConfig,
-      ),
-      location: Schema.optional(Schema.String),
-      managedOpentelemetryConfig: Schema.optional(ManagedOpenTelemetryConfig),
-      networkConfig: Schema.optional(NetworkConfig),
-      resourceUsageExportConfig: Schema.optional(ResourceUsageExportConfig),
-      currentEmulatedVersion: Schema.optional(Schema.String),
-      identityServiceConfig: Schema.optional(IdentityServiceConfig),
-      binaryAuthorization: Schema.optional(BinaryAuthorization),
-      defaultMaxPodsConstraint: Schema.optional(MaxPodsConstraint),
-      expireTime: Schema.optional(Schema.String),
-      anonymousAuthenticationConfig: Schema.optional(
-        AnonymousAuthenticationConfig,
-      ),
-      locations: Schema.optional(Schema.Array(Schema.String)),
-      controlPlaneEndpointsConfig: Schema.optional(ControlPlaneEndpointsConfig),
-      statusMessage: Schema.optional(Schema.String),
-      currentNodeVersion: Schema.optional(Schema.String),
-      meshCertificates: Schema.optional(MeshCertificates),
-      zone: Schema.optional(Schema.String),
-      fleet: Schema.optional(Fleet),
-      network: Schema.optional(Schema.String),
-      databaseEncryption: Schema.optional(DatabaseEncryption),
-      loggingService: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      nodeConfig: Schema.optional(NodeConfig),
-      enableTpu: Schema.optional(Schema.Boolean),
-      selfLink: Schema.optional(Schema.String),
-      confidentialNodes: Schema.optional(ConfidentialNodes),
-      enterpriseConfig: Schema.optional(EnterpriseConfig),
-      podAutoscaling: Schema.optional(PodAutoscaling),
-      secretManagerConfig: Schema.optional(SecretManagerConfig),
-      legacyAbac: Schema.optional(LegacyAbac),
-      securityPostureConfig: Schema.optional(SecurityPostureConfig),
-      endpoint: Schema.optional(Schema.String),
-      protectConfig: Schema.optional(ProtectConfig),
-      currentMasterVersion: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      nodeIpv4CidrSize: Schema.optional(Schema.Number),
-      autoscaling: Schema.optional(ClusterAutoscaling),
-      costManagementConfig: Schema.optional(CostManagementConfig),
-      nodePoolAutoConfig: Schema.optional(NodePoolAutoConfig),
-      tpuConfig: Schema.optional(TpuConfig),
-      etag: Schema.optional(Schema.String),
-      clusterIpv4Cidr: Schema.optional(Schema.String),
-      autopilot: Schema.optional(Autopilot),
-      notificationConfig: Schema.optional(NotificationConfig),
-      instanceGroupUrls: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "Cluster" }) as any as Schema.Schema<Cluster>;
+export const Cluster = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  workloadCertificates: Schema.optional(WorkloadCertificates),
+  compliancePostureConfig: Schema.optional(CompliancePostureConfig),
+  tpuIpv4CidrBlock: Schema.optional(Schema.String),
+  loggingConfig: Schema.optional(LoggingConfig),
+  authenticatorGroupsConfig: Schema.optional(AuthenticatorGroupsConfig),
+  addonsConfig: Schema.optional(AddonsConfig),
+  servicesIpv4Cidr: Schema.optional(Schema.String),
+  satisfiesPzs: Schema.optional(Schema.Boolean),
+  initialClusterVersion: Schema.optional(Schema.String),
+  podSecurityPolicyConfig: Schema.optional(PodSecurityPolicyConfig),
+  maintenancePolicy: Schema.optional(MaintenancePolicy),
+  currentNodeCount: Schema.optional(Schema.Number),
+  networkPolicy: Schema.optional(NetworkPolicy),
+  secretSyncConfig: Schema.optional(SecretSyncConfig),
+  enableKubernetesAlpha: Schema.optional(Schema.Boolean),
+  parentProductConfig: Schema.optional(ParentProductConfig),
+  masterIpv4CidrBlock: Schema.optional(Schema.String),
+  rollbackSafeUpgrade: Schema.optional(RollbackSafeUpgrade),
+  gkeAutoUpgradeConfig: Schema.optional(GkeAutoUpgradeConfig),
+  userManagedKeysConfig: Schema.optional(UserManagedKeysConfig),
+  masterAuthorizedNetworksConfig: Schema.optional(
+    MasterAuthorizedNetworksConfig,
+  ),
+  initialNodeCount: Schema.optional(Schema.Number),
+  monitoringConfig: Schema.optional(MonitoringConfig),
+  privateCluster: Schema.optional(Schema.Boolean),
+  ipAllocationPolicy: Schema.optional(IPAllocationPolicy),
+  createTime: Schema.optional(Schema.String),
+  controlPlaneEgress: Schema.optional(ControlPlaneEgress),
+  clusterTelemetry: Schema.optional(ClusterTelemetry),
+  nodePoolDefaults: Schema.optional(NodePoolDefaults),
+  resourceLabels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  scheduleUpgradeConfig: Schema.optional(ScheduleUpgradeConfig),
+  enableK8sBetaApis: Schema.optional(K8sBetaAPIConfig),
+  description: Schema.optional(Schema.String),
+  rbacBindingConfig: Schema.optional(RBACBindingConfig),
+  nodePools: Schema.optional(Schema.Array(NodePool)),
+  shieldedNodes: Schema.optional(ShieldedNodes),
+  master: Schema.optional(Master),
+  privateClusterConfig: Schema.optional(PrivateClusterConfig),
+  labelFingerprint: Schema.optional(Schema.String),
+  workloadAltsConfig: Schema.optional(WorkloadALTSConfig),
+  releaseChannel: Schema.optional(ReleaseChannel),
+  alphaClusterFeatureGates: Schema.optional(Schema.Array(Schema.String)),
+  satisfiesPzi: Schema.optional(Schema.Boolean),
+  verticalPodAutoscaling: Schema.optional(VerticalPodAutoscaling),
+  subnetwork: Schema.optional(Schema.String),
+  masterAuth: Schema.optional(MasterAuth),
+  status: Schema.optional(Schema.String),
+  conditions: Schema.optional(Schema.Array(StatusCondition)),
+  monitoringService: Schema.optional(Schema.String),
+  workloadIdentityConfig: Schema.optional(WorkloadIdentityConfig),
+  managedMachineLearningDiagnosticsConfig: Schema.optional(
+    ManagedMachineLearningDiagnosticsConfig,
+  ),
+  location: Schema.optional(Schema.String),
+  managedOpentelemetryConfig: Schema.optional(ManagedOpenTelemetryConfig),
+  networkConfig: Schema.optional(NetworkConfig),
+  resourceUsageExportConfig: Schema.optional(ResourceUsageExportConfig),
+  currentEmulatedVersion: Schema.optional(Schema.String),
+  identityServiceConfig: Schema.optional(IdentityServiceConfig),
+  binaryAuthorization: Schema.optional(BinaryAuthorization),
+  defaultMaxPodsConstraint: Schema.optional(MaxPodsConstraint),
+  expireTime: Schema.optional(Schema.String),
+  anonymousAuthenticationConfig: Schema.optional(AnonymousAuthenticationConfig),
+  locations: Schema.optional(Schema.Array(Schema.String)),
+  controlPlaneEndpointsConfig: Schema.optional(ControlPlaneEndpointsConfig),
+  statusMessage: Schema.optional(Schema.String),
+  currentNodeVersion: Schema.optional(Schema.String),
+  meshCertificates: Schema.optional(MeshCertificates),
+  zone: Schema.optional(Schema.String),
+  fleet: Schema.optional(Fleet),
+  network: Schema.optional(Schema.String),
+  databaseEncryption: Schema.optional(DatabaseEncryption),
+  loggingService: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  nodeConfig: Schema.optional(NodeConfig),
+  enableTpu: Schema.optional(Schema.Boolean),
+  selfLink: Schema.optional(Schema.String),
+  confidentialNodes: Schema.optional(ConfidentialNodes),
+  enterpriseConfig: Schema.optional(EnterpriseConfig),
+  podAutoscaling: Schema.optional(PodAutoscaling),
+  secretManagerConfig: Schema.optional(SecretManagerConfig),
+  legacyAbac: Schema.optional(LegacyAbac),
+  securityPostureConfig: Schema.optional(SecurityPostureConfig),
+  endpoint: Schema.optional(Schema.String),
+  protectConfig: Schema.optional(ProtectConfig),
+  currentMasterVersion: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  nodeIpv4CidrSize: Schema.optional(Schema.Number),
+  autoscaling: Schema.optional(ClusterAutoscaling),
+  costManagementConfig: Schema.optional(CostManagementConfig),
+  nodePoolAutoConfig: Schema.optional(NodePoolAutoConfig),
+  tpuConfig: Schema.optional(TpuConfig),
+  etag: Schema.optional(Schema.String),
+  clusterIpv4Cidr: Schema.optional(Schema.String),
+  autopilot: Schema.optional(Autopilot),
+  notificationConfig: Schema.optional(NotificationConfig),
+  instanceGroupUrls: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Cluster" });
 
 export interface SetLocationsRequest {
   /** Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the name field. */
@@ -5528,18 +4529,13 @@ export interface SetLocationsRequest {
   zone?: string;
 }
 
-export const SetLocationsRequest: Schema.Schema<SetLocationsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      projectId: Schema.optional(Schema.String),
-      locations: Schema.optional(Schema.Array(Schema.String)),
-      name: Schema.optional(Schema.String),
-      clusterId: Schema.optional(Schema.String),
-      zone: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SetLocationsRequest",
-  }) as any as Schema.Schema<SetLocationsRequest>;
+export const SetLocationsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  projectId: Schema.optional(Schema.String),
+  locations: Schema.optional(Schema.Array(Schema.String)),
+  name: Schema.optional(Schema.String),
+  clusterId: Schema.optional(Schema.String),
+  zone: Schema.optional(Schema.String),
+}).annotate({ identifier: "SetLocationsRequest" });
 
 export interface SetNetworkPolicyRequest {
   /** Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the name field. */
@@ -5554,18 +4550,14 @@ export interface SetNetworkPolicyRequest {
   name?: string;
 }
 
-export const SetNetworkPolicyRequest: Schema.Schema<SetNetworkPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      zone: Schema.optional(Schema.String),
-      projectId: Schema.optional(Schema.String),
-      clusterId: Schema.optional(Schema.String),
-      networkPolicy: Schema.optional(NetworkPolicy),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SetNetworkPolicyRequest",
-  }) as any as Schema.Schema<SetNetworkPolicyRequest>;
+export const SetNetworkPolicyRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zone: Schema.optional(Schema.String),
+    projectId: Schema.optional(Schema.String),
+    clusterId: Schema.optional(Schema.String),
+    networkPolicy: Schema.optional(NetworkPolicy),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SetNetworkPolicyRequest" });
 
 export interface Container_Date {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
@@ -5576,16 +4568,11 @@ export interface Container_Date {
   month?: number;
 }
 
-export const Container_Date: Schema.Schema<Container_Date> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      year: Schema.optional(Schema.Number),
-      day: Schema.optional(Schema.Number),
-      month: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "Container_Date",
-  }) as any as Schema.Schema<Container_Date>;
+export const Container_Date = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  year: Schema.optional(Schema.Number),
+  day: Schema.optional(Schema.Number),
+  month: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Container_Date" });
 
 export interface SetMasterAuthRequest {
   /** Deprecated. The name of the cluster to upgrade. This field has been deprecated and replaced by the name field. */
@@ -5607,19 +4594,14 @@ export interface SetMasterAuthRequest {
   update?: MasterAuth;
 }
 
-export const SetMasterAuthRequest: Schema.Schema<SetMasterAuthRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clusterId: Schema.optional(Schema.String),
-      projectId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      zone: Schema.optional(Schema.String),
-      action: Schema.optional(Schema.String),
-      update: Schema.optional(MasterAuth),
-    }),
-  ).annotate({
-    identifier: "SetMasterAuthRequest",
-  }) as any as Schema.Schema<SetMasterAuthRequest>;
+export const SetMasterAuthRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  clusterId: Schema.optional(Schema.String),
+  projectId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  zone: Schema.optional(Schema.String),
+  action: Schema.optional(Schema.String),
+  update: Schema.optional(MasterAuth),
+}).annotate({ identifier: "SetMasterAuthRequest" });
 
 export interface WindowsVersion {
   /** Windows server build number */
@@ -5630,30 +4612,20 @@ export interface WindowsVersion {
   imageType?: string;
 }
 
-export const WindowsVersion: Schema.Schema<WindowsVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      osVersion: Schema.optional(Schema.String),
-      supportEndDate: Schema.optional(Container_Date),
-      imageType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WindowsVersion",
-  }) as any as Schema.Schema<WindowsVersion>;
+export const WindowsVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  osVersion: Schema.optional(Schema.String),
+  supportEndDate: Schema.optional(Container_Date),
+  imageType: Schema.optional(Schema.String),
+}).annotate({ identifier: "WindowsVersion" });
 
 export interface WindowsVersions {
   /** List of Windows server versions. */
   windowsVersions?: Array<WindowsVersion>;
 }
 
-export const WindowsVersions: Schema.Schema<WindowsVersions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      windowsVersions: Schema.optional(Schema.Array(WindowsVersion)),
-    }),
-  ).annotate({
-    identifier: "WindowsVersions",
-  }) as any as Schema.Schema<WindowsVersions>;
+export const WindowsVersions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  windowsVersions: Schema.optional(Schema.Array(WindowsVersion)),
+}).annotate({ identifier: "WindowsVersions" });
 
 export interface UpgradeAvailableEvent {
   /** The release version available for upgrade. */
@@ -5672,18 +4644,13 @@ export interface UpgradeAvailableEvent {
   resource?: string;
 }
 
-export const UpgradeAvailableEvent: Schema.Schema<UpgradeAvailableEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.String),
-      windowsVersions: Schema.optional(WindowsVersions),
-      releaseChannel: Schema.optional(ReleaseChannel),
-      resourceType: Schema.optional(Schema.String),
-      resource: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpgradeAvailableEvent",
-  }) as any as Schema.Schema<UpgradeAvailableEvent>;
+export const UpgradeAvailableEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.String),
+  windowsVersions: Schema.optional(WindowsVersions),
+  releaseChannel: Schema.optional(ReleaseChannel),
+  resourceType: Schema.optional(Schema.String),
+  resource: Schema.optional(Schema.String),
+}).annotate({ identifier: "UpgradeAvailableEvent" });
 
 export interface SetMaintenancePolicyRequest {
   /** Required. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. */
@@ -5698,18 +4665,14 @@ export interface SetMaintenancePolicyRequest {
   clusterId?: string;
 }
 
-export const SetMaintenancePolicyRequest: Schema.Schema<SetMaintenancePolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      zone: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      maintenancePolicy: Schema.optional(MaintenancePolicy),
-      projectId: Schema.optional(Schema.String),
-      clusterId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SetMaintenancePolicyRequest",
-  }) as any as Schema.Schema<SetMaintenancePolicyRequest>;
+export const SetMaintenancePolicyRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zone: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    maintenancePolicy: Schema.optional(MaintenancePolicy),
+    projectId: Schema.optional(Schema.String),
+    clusterId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SetMaintenancePolicyRequest" });
 
 export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -5720,16 +4683,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      message: Schema.optional(Schema.String),
-      code: Schema.optional(Schema.Number),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  message: Schema.optional(Schema.String),
+  code: Schema.optional(Schema.Number),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** Output only. The time the operation started, in [RFC3339](https://www.ietf.org/rfc/rfc3339.txt) text format. */
@@ -5790,26 +4750,23 @@ export interface Operation {
   statusMessage?: string;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      clusterConditions: Schema.optional(Schema.Array(StatusCondition)),
-      error: Schema.optional(Status),
-      name: Schema.optional(Schema.String),
-      progress: Schema.optional(OperationProgress),
-      targetLink: Schema.optional(Schema.String),
-      nodepoolConditions: Schema.optional(Schema.Array(StatusCondition)),
-      location: Schema.optional(Schema.String),
-      operationType: Schema.optional(Schema.String),
-      detail: Schema.optional(Schema.String),
-      zone: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-      selfLink: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  clusterConditions: Schema.optional(Schema.Array(StatusCondition)),
+  error: Schema.optional(Status),
+  name: Schema.optional(Schema.String),
+  progress: Schema.optional(OperationProgress),
+  targetLink: Schema.optional(Schema.String),
+  nodepoolConditions: Schema.optional(Schema.Array(StatusCondition)),
+  location: Schema.optional(Schema.String),
+  operationType: Schema.optional(Schema.String),
+  detail: Schema.optional(Schema.String),
+  zone: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.String),
+  selfLink: Schema.optional(Schema.String),
+  statusMessage: Schema.optional(Schema.String),
+}).annotate({ identifier: "Operation" });
 
 export interface Location {
   /** Contains the name of the resource requested. Specified in the format `projects/* /locations/*`. */
@@ -5820,14 +4777,11 @@ export interface Location {
   recommended?: boolean;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      recommended: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  recommended: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Location" });
 
 export interface SetLegacyAbacRequest {
   /** Required. Whether ABAC authorization will be enabled in the cluster. */
@@ -5842,18 +4796,13 @@ export interface SetLegacyAbacRequest {
   projectId?: string;
 }
 
-export const SetLegacyAbacRequest: Schema.Schema<SetLegacyAbacRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-      clusterId: Schema.optional(Schema.String),
-      zone: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      projectId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SetLegacyAbacRequest",
-  }) as any as Schema.Schema<SetLegacyAbacRequest>;
+export const SetLegacyAbacRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabled: Schema.optional(Schema.Boolean),
+  clusterId: Schema.optional(Schema.String),
+  zone: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  projectId: Schema.optional(Schema.String),
+}).annotate({ identifier: "SetLegacyAbacRequest" });
 
 export interface RollbackSafeUpgradeStatus {
   /** The rollback-safe mode expiration time. */
@@ -5867,16 +4816,12 @@ export interface RollbackSafeUpgradeStatus {
   previousVersion?: string;
 }
 
-export const RollbackSafeUpgradeStatus: Schema.Schema<RollbackSafeUpgradeStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      controlPlaneUpgradeRollbackEndTime: Schema.optional(Schema.String),
-      mode: Schema.optional(Schema.String),
-      previousVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RollbackSafeUpgradeStatus",
-  }) as any as Schema.Schema<RollbackSafeUpgradeStatus>;
+export const RollbackSafeUpgradeStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    controlPlaneUpgradeRollbackEndTime: Schema.optional(Schema.String),
+    mode: Schema.optional(Schema.String),
+    previousVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RollbackSafeUpgradeStatus" });
 
 export interface ClusterUpgradeInfo {
   /** The cluster's current minor version's end of standard support timestamp. */
@@ -5912,21 +4857,16 @@ export interface ClusterUpgradeInfo {
   >;
 }
 
-export const ClusterUpgradeInfo: Schema.Schema<ClusterUpgradeInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endOfStandardSupportTimestamp: Schema.optional(Schema.String),
-      upgradeDetails: Schema.optional(Schema.Array(UpgradeDetails)),
-      patchTargetVersion: Schema.optional(Schema.String),
-      minorTargetVersion: Schema.optional(Schema.String),
-      endOfExtendedSupportTimestamp: Schema.optional(Schema.String),
-      autoUpgradeStatus: Schema.optional(Schema.Array(Schema.String)),
-      rollbackSafeUpgradeStatus: Schema.optional(RollbackSafeUpgradeStatus),
-      pausedReason: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ClusterUpgradeInfo",
-  }) as any as Schema.Schema<ClusterUpgradeInfo>;
+export const ClusterUpgradeInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  endOfStandardSupportTimestamp: Schema.optional(Schema.String),
+  upgradeDetails: Schema.optional(Schema.Array(UpgradeDetails)),
+  patchTargetVersion: Schema.optional(Schema.String),
+  minorTargetVersion: Schema.optional(Schema.String),
+  endOfExtendedSupportTimestamp: Schema.optional(Schema.String),
+  autoUpgradeStatus: Schema.optional(Schema.Array(Schema.String)),
+  rollbackSafeUpgradeStatus: Schema.optional(RollbackSafeUpgradeStatus),
+  pausedReason: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ClusterUpgradeInfo" });
 
 export interface StartIPRotationRequest {
   /** Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the name field. */
@@ -5941,39 +4881,31 @@ export interface StartIPRotationRequest {
   rotateCredentials?: boolean;
 }
 
-export const StartIPRotationRequest: Schema.Schema<StartIPRotationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      zone: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      projectId: Schema.optional(Schema.String),
-      clusterId: Schema.optional(Schema.String),
-      rotateCredentials: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "StartIPRotationRequest",
-  }) as any as Schema.Schema<StartIPRotationRequest>;
+export const StartIPRotationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    zone: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    projectId: Schema.optional(Schema.String),
+    clusterId: Schema.optional(Schema.String),
+    rotateCredentials: Schema.optional(Schema.Boolean),
+  },
+).annotate({ identifier: "StartIPRotationRequest" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface CompleteControlPlaneUpgradeRequest {
   /** API request version that initiates this operation. */
   version?: string;
 }
 
-export const CompleteControlPlaneUpgradeRequest: Schema.Schema<CompleteControlPlaneUpgradeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CompleteControlPlaneUpgradeRequest",
-  }) as any as Schema.Schema<CompleteControlPlaneUpgradeRequest>;
+export const CompleteControlPlaneUpgradeRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    version: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CompleteControlPlaneUpgradeRequest" });
 
 export interface SetNodePoolAutoscalingRequest {
   /** Deprecated. The name of the node pool to upgrade. This field has been deprecated and replaced by the name field. */
@@ -5990,19 +4922,15 @@ export interface SetNodePoolAutoscalingRequest {
   zone?: string;
 }
 
-export const SetNodePoolAutoscalingRequest: Schema.Schema<SetNodePoolAutoscalingRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nodePoolId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      projectId: Schema.optional(Schema.String),
-      clusterId: Schema.optional(Schema.String),
-      autoscaling: Schema.optional(NodePoolAutoscaling),
-      zone: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SetNodePoolAutoscalingRequest",
-  }) as any as Schema.Schema<SetNodePoolAutoscalingRequest>;
+export const SetNodePoolAutoscalingRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nodePoolId: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    projectId: Schema.optional(Schema.String),
+    clusterId: Schema.optional(Schema.String),
+    autoscaling: Schema.optional(NodePoolAutoscaling),
+    zone: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SetNodePoolAutoscalingRequest" });
 
 export interface CreateClusterRequest {
   /** Required. A [cluster resource](https://cloud.google.com/container-engine/reference/rest/v1beta1/projects.locations.clusters) */
@@ -6015,17 +4943,12 @@ export interface CreateClusterRequest {
   projectId?: string;
 }
 
-export const CreateClusterRequest: Schema.Schema<CreateClusterRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cluster: Schema.optional(Cluster),
-      zone: Schema.optional(Schema.String),
-      parent: Schema.optional(Schema.String),
-      projectId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreateClusterRequest",
-  }) as any as Schema.Schema<CreateClusterRequest>;
+export const CreateClusterRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cluster: Schema.optional(Cluster),
+  zone: Schema.optional(Schema.String),
+  parent: Schema.optional(Schema.String),
+  projectId: Schema.optional(Schema.String),
+}).annotate({ identifier: "CreateClusterRequest" });
 
 export interface GetJSONWebKeysResponse {
   /** For HTTP requests, this field is automatically extracted into the Cache-Control HTTP header. */
@@ -6034,15 +4957,12 @@ export interface GetJSONWebKeysResponse {
   keys?: Array<Jwk>;
 }
 
-export const GetJSONWebKeysResponse: Schema.Schema<GetJSONWebKeysResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cacheHeader: Schema.optional(HttpCacheControlResponseHeader),
-      keys: Schema.optional(Schema.Array(Jwk)),
-    }),
-  ).annotate({
-    identifier: "GetJSONWebKeysResponse",
-  }) as any as Schema.Schema<GetJSONWebKeysResponse>;
+export const GetJSONWebKeysResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    cacheHeader: Schema.optional(HttpCacheControlResponseHeader),
+    keys: Schema.optional(Schema.Array(Jwk)),
+  },
+).annotate({ identifier: "GetJSONWebKeysResponse" });
 
 export interface ServerConfig {
   /** Maps of Kubernetes version and supported Windows server versions. */
@@ -6061,22 +4981,17 @@ export interface ServerConfig {
   validImageTypes?: Array<string>;
 }
 
-export const ServerConfig: Schema.Schema<ServerConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      windowsVersionMaps: Schema.optional(
-        Schema.Record(Schema.String, WindowsVersions),
-      ),
-      defaultClusterVersion: Schema.optional(Schema.String),
-      channels: Schema.optional(Schema.Array(ReleaseChannelConfig)),
-      validNodeVersions: Schema.optional(Schema.Array(Schema.String)),
-      validMasterVersions: Schema.optional(Schema.Array(Schema.String)),
-      defaultImageType: Schema.optional(Schema.String),
-      validImageTypes: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ServerConfig",
-  }) as any as Schema.Schema<ServerConfig>;
+export const ServerConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  windowsVersionMaps: Schema.optional(
+    Schema.Record(Schema.String, WindowsVersions),
+  ),
+  defaultClusterVersion: Schema.optional(Schema.String),
+  channels: Schema.optional(Schema.Array(ReleaseChannelConfig)),
+  validNodeVersions: Schema.optional(Schema.Array(Schema.String)),
+  validMasterVersions: Schema.optional(Schema.Array(Schema.String)),
+  defaultImageType: Schema.optional(Schema.String),
+  validImageTypes: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ServerConfig" });
 
 export interface ListOperationsResponse {
   /** If any zones are listed here, the list of operations returned may be missing the operations from those zones. */
@@ -6085,15 +5000,12 @@ export interface ListOperationsResponse {
   operations?: Array<Operation>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      missingZones: Schema.optional(Schema.Array(Schema.String)),
-      operations: Schema.optional(Schema.Array(Operation)),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    missingZones: Schema.optional(Schema.Array(Schema.String)),
+    operations: Schema.optional(Schema.Array(Operation)),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 export interface SetLoggingServiceRequest {
   /** Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the name field. */
@@ -6108,18 +5020,14 @@ export interface SetLoggingServiceRequest {
   loggingService?: string;
 }
 
-export const SetLoggingServiceRequest: Schema.Schema<SetLoggingServiceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      zone: Schema.optional(Schema.String),
-      projectId: Schema.optional(Schema.String),
-      clusterId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      loggingService: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SetLoggingServiceRequest",
-  }) as any as Schema.Schema<SetLoggingServiceRequest>;
+export const SetLoggingServiceRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zone: Schema.optional(Schema.String),
+    projectId: Schema.optional(Schema.String),
+    clusterId: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    loggingService: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SetLoggingServiceRequest" });
 
 export interface PdbBlockedPod {
   /** The namespace of the pod. */
@@ -6128,15 +5036,10 @@ export interface PdbBlockedPod {
   name?: string;
 }
 
-export const PdbBlockedPod: Schema.Schema<PdbBlockedPod> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      namespace: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PdbBlockedPod",
-  }) as any as Schema.Schema<PdbBlockedPod>;
+export const PdbBlockedPod = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  namespace: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "PdbBlockedPod" });
 
 export interface DisruptionEvent {
   /** The node whose drain is blocked by PDB. This field is set for both POD_PDB_VIOLATION and POD_NOT_ENOUGH_PDB event. */
@@ -6153,17 +5056,12 @@ export interface DisruptionEvent {
   pdbViolationTimeout?: string;
 }
 
-export const DisruptionEvent: Schema.Schema<DisruptionEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pdbBlockedNode: Schema.optional(Schema.String),
-      disruptionType: Schema.optional(Schema.String),
-      pdbBlockedPod: Schema.optional(Schema.Array(PdbBlockedPod)),
-      pdbViolationTimeout: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DisruptionEvent",
-  }) as any as Schema.Schema<DisruptionEvent>;
+export const DisruptionEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pdbBlockedNode: Schema.optional(Schema.String),
+  disruptionType: Schema.optional(Schema.String),
+  pdbBlockedPod: Schema.optional(Schema.Array(PdbBlockedPod)),
+  pdbViolationTimeout: Schema.optional(Schema.String),
+}).annotate({ identifier: "DisruptionEvent" });
 
 export interface UpgradeInfoEvent {
   /** Output only. The state of the upgrade. */
@@ -6215,28 +5113,23 @@ export interface UpgradeInfoEvent {
   currentVersion?: string;
 }
 
-export const UpgradeInfoEvent: Schema.Schema<UpgradeInfoEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      resourceType: Schema.optional(Schema.String),
-      currentEmulatedVersion: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      eventType: Schema.optional(Schema.String),
-      resource: Schema.optional(Schema.String),
-      targetVersion: Schema.optional(Schema.String),
-      extendedSupportEndTime: Schema.optional(Schema.String),
-      standardSupportEndTime: Schema.optional(Schema.String),
-      targetEmulatedVersion: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      disruptionEvent: Schema.optional(DisruptionEvent),
-      operation: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      currentVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpgradeInfoEvent",
-  }) as any as Schema.Schema<UpgradeInfoEvent>;
+export const UpgradeInfoEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.String),
+  resourceType: Schema.optional(Schema.String),
+  currentEmulatedVersion: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+  eventType: Schema.optional(Schema.String),
+  resource: Schema.optional(Schema.String),
+  targetVersion: Schema.optional(Schema.String),
+  extendedSupportEndTime: Schema.optional(Schema.String),
+  standardSupportEndTime: Schema.optional(Schema.String),
+  targetEmulatedVersion: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  disruptionEvent: Schema.optional(DisruptionEvent),
+  operation: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  currentVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "UpgradeInfoEvent" });
 
 export interface CreateNodePoolRequest {
   /** Required. The node pool to create. */
@@ -6251,32 +5144,22 @@ export interface CreateNodePoolRequest {
   zone?: string;
 }
 
-export const CreateNodePoolRequest: Schema.Schema<CreateNodePoolRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nodePool: Schema.optional(NodePool),
-      clusterId: Schema.optional(Schema.String),
-      parent: Schema.optional(Schema.String),
-      projectId: Schema.optional(Schema.String),
-      zone: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreateNodePoolRequest",
-  }) as any as Schema.Schema<CreateNodePoolRequest>;
+export const CreateNodePoolRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nodePool: Schema.optional(NodePool),
+  clusterId: Schema.optional(Schema.String),
+  parent: Schema.optional(Schema.String),
+  projectId: Schema.optional(Schema.String),
+  zone: Schema.optional(Schema.String),
+}).annotate({ identifier: "CreateNodePoolRequest" });
 
 export interface ListNodePoolsResponse {
   /** A list of node pools for a cluster. */
   nodePools?: Array<NodePool>;
 }
 
-export const ListNodePoolsResponse: Schema.Schema<ListNodePoolsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nodePools: Schema.optional(Schema.Array(NodePool)),
-    }),
-  ).annotate({
-    identifier: "ListNodePoolsResponse",
-  }) as any as Schema.Schema<ListNodePoolsResponse>;
+export const ListNodePoolsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nodePools: Schema.optional(Schema.Array(NodePool)),
+}).annotate({ identifier: "ListNodePoolsResponse" });
 
 export interface UsableSubnetworkSecondaryRange {
   /** This field is to determine the status of the secondary range programmably. */
@@ -6293,16 +5176,12 @@ export interface UsableSubnetworkSecondaryRange {
   ipCidrRange?: string;
 }
 
-export const UsableSubnetworkSecondaryRange: Schema.Schema<UsableSubnetworkSecondaryRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      status: Schema.optional(Schema.String),
-      rangeName: Schema.optional(Schema.String),
-      ipCidrRange: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UsableSubnetworkSecondaryRange",
-  }) as any as Schema.Schema<UsableSubnetworkSecondaryRange>;
+export const UsableSubnetworkSecondaryRange =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    status: Schema.optional(Schema.String),
+    rangeName: Schema.optional(Schema.String),
+    ipCidrRange: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UsableSubnetworkSecondaryRange" });
 
 export interface UsableSubnetwork {
   /** Subnetwork Name. Example: projects/my-project/regions/us-central1/subnetworks/my-subnet */
@@ -6317,20 +5196,15 @@ export interface UsableSubnetwork {
   secondaryIpRanges?: Array<UsableSubnetworkSecondaryRange>;
 }
 
-export const UsableSubnetwork: Schema.Schema<UsableSubnetwork> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subnetwork: Schema.optional(Schema.String),
-      network: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-      ipCidrRange: Schema.optional(Schema.String),
-      secondaryIpRanges: Schema.optional(
-        Schema.Array(UsableSubnetworkSecondaryRange),
-      ),
-    }),
-  ).annotate({
-    identifier: "UsableSubnetwork",
-  }) as any as Schema.Schema<UsableSubnetwork>;
+export const UsableSubnetwork = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subnetwork: Schema.optional(Schema.String),
+  network: Schema.optional(Schema.String),
+  statusMessage: Schema.optional(Schema.String),
+  ipCidrRange: Schema.optional(Schema.String),
+  secondaryIpRanges: Schema.optional(
+    Schema.Array(UsableSubnetworkSecondaryRange),
+  ),
+}).annotate({ identifier: "UsableSubnetwork" });
 
 export interface SetNodePoolManagementRequest {
   /** Deprecated. The name of the cluster to update. This field has been deprecated and replaced by the name field. */
@@ -6347,19 +5221,15 @@ export interface SetNodePoolManagementRequest {
   projectId?: string;
 }
 
-export const SetNodePoolManagementRequest: Schema.Schema<SetNodePoolManagementRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clusterId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      nodePoolId: Schema.optional(Schema.String),
-      management: Schema.optional(NodeManagement),
-      zone: Schema.optional(Schema.String),
-      projectId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SetNodePoolManagementRequest",
-  }) as any as Schema.Schema<SetNodePoolManagementRequest>;
+export const SetNodePoolManagementRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    clusterId: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    nodePoolId: Schema.optional(Schema.String),
+    management: Schema.optional(NodeManagement),
+    zone: Schema.optional(Schema.String),
+    projectId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SetNodePoolManagementRequest" });
 
 export interface ListLocationsResponse {
   /** A full list of GKE locations. */
@@ -6368,15 +5238,10 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(Location)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface CompleteIPRotationRequest {
   /** Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the name field. */
@@ -6389,17 +5254,13 @@ export interface CompleteIPRotationRequest {
   clusterId?: string;
 }
 
-export const CompleteIPRotationRequest: Schema.Schema<CompleteIPRotationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      zone: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      projectId: Schema.optional(Schema.String),
-      clusterId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CompleteIPRotationRequest",
-  }) as any as Schema.Schema<CompleteIPRotationRequest>;
+export const CompleteIPRotationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zone: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    projectId: Schema.optional(Schema.String),
+    clusterId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CompleteIPRotationRequest" });
 
 export interface ListUsableSubnetworksResponse {
   /** This token allows you to get the next page of results for list requests. If the number of results is larger than `page_size`, use the `next_page_token` as a value for the query parameter `page_token` in the next request. The value will become empty when there are no more pages. */
@@ -6408,15 +5269,11 @@ export interface ListUsableSubnetworksResponse {
   subnetworks?: Array<UsableSubnetwork>;
 }
 
-export const ListUsableSubnetworksResponse: Schema.Schema<ListUsableSubnetworksResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      subnetworks: Schema.optional(Schema.Array(UsableSubnetwork)),
-    }),
-  ).annotate({
-    identifier: "ListUsableSubnetworksResponse",
-  }) as any as Schema.Schema<ListUsableSubnetworksResponse>;
+export const ListUsableSubnetworksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    subnetworks: Schema.optional(Schema.Array(UsableSubnetwork)),
+  }).annotate({ identifier: "ListUsableSubnetworksResponse" });
 
 export interface SecurityBulletinEvent {
   /** The URI link to the bulletin on the website for more information. */
@@ -6443,24 +5300,19 @@ export interface SecurityBulletinEvent {
   manualStepsRequired?: boolean;
 }
 
-export const SecurityBulletinEvent: Schema.Schema<SecurityBulletinEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bulletinUri: Schema.optional(Schema.String),
-      affectedSupportedMinors: Schema.optional(Schema.Array(Schema.String)),
-      patchedVersions: Schema.optional(Schema.Array(Schema.String)),
-      resourceTypeAffected: Schema.optional(Schema.String),
-      bulletinId: Schema.optional(Schema.String),
-      cveIds: Schema.optional(Schema.Array(Schema.String)),
-      suggestedUpgradeTarget: Schema.optional(Schema.String),
-      mitigatedVersions: Schema.optional(Schema.Array(Schema.String)),
-      severity: Schema.optional(Schema.String),
-      briefDescription: Schema.optional(Schema.String),
-      manualStepsRequired: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "SecurityBulletinEvent",
-  }) as any as Schema.Schema<SecurityBulletinEvent>;
+export const SecurityBulletinEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bulletinUri: Schema.optional(Schema.String),
+  affectedSupportedMinors: Schema.optional(Schema.Array(Schema.String)),
+  patchedVersions: Schema.optional(Schema.Array(Schema.String)),
+  resourceTypeAffected: Schema.optional(Schema.String),
+  bulletinId: Schema.optional(Schema.String),
+  cveIds: Schema.optional(Schema.Array(Schema.String)),
+  suggestedUpgradeTarget: Schema.optional(Schema.String),
+  mitigatedVersions: Schema.optional(Schema.Array(Schema.String)),
+  severity: Schema.optional(Schema.String),
+  briefDescription: Schema.optional(Schema.String),
+  manualStepsRequired: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "SecurityBulletinEvent" });
 
 export interface RollbackNodePoolUpgradeRequest {
   /** Option for rollback to ignore the PodDisruptionBudget. Default value is false. */
@@ -6477,19 +5329,15 @@ export interface RollbackNodePoolUpgradeRequest {
   name?: string;
 }
 
-export const RollbackNodePoolUpgradeRequest: Schema.Schema<RollbackNodePoolUpgradeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      respectPdb: Schema.optional(Schema.Boolean),
-      zone: Schema.optional(Schema.String),
-      nodePoolId: Schema.optional(Schema.String),
-      clusterId: Schema.optional(Schema.String),
-      projectId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RollbackNodePoolUpgradeRequest",
-  }) as any as Schema.Schema<RollbackNodePoolUpgradeRequest>;
+export const RollbackNodePoolUpgradeRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    respectPdb: Schema.optional(Schema.Boolean),
+    zone: Schema.optional(Schema.String),
+    nodePoolId: Schema.optional(Schema.String),
+    clusterId: Schema.optional(Schema.String),
+    projectId: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RollbackNodePoolUpgradeRequest" });
 
 export interface UpdateMasterRequest {
   /** Deprecated. The Google Developers Console [project ID or project number](https://cloud.google.com/resource-manager/docs/creating-managing-projects). This field has been deprecated and replaced by the name field. */
@@ -6504,18 +5352,13 @@ export interface UpdateMasterRequest {
   clusterId?: string;
 }
 
-export const UpdateMasterRequest: Schema.Schema<UpdateMasterRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      projectId: Schema.optional(Schema.String),
-      masterVersion: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      zone: Schema.optional(Schema.String),
-      clusterId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpdateMasterRequest",
-  }) as any as Schema.Schema<UpdateMasterRequest>;
+export const UpdateMasterRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  projectId: Schema.optional(Schema.String),
+  masterVersion: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  zone: Schema.optional(Schema.String),
+  clusterId: Schema.optional(Schema.String),
+}).annotate({ identifier: "UpdateMasterRequest" });
 
 export interface AutopilotCompatibilityIssue {
   /** The name of the resources which are subject to this issue. */
@@ -6537,19 +5380,15 @@ export interface AutopilotCompatibilityIssue {
   constraintType?: string;
 }
 
-export const AutopilotCompatibilityIssue: Schema.Schema<AutopilotCompatibilityIssue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subjects: Schema.optional(Schema.Array(Schema.String)),
-      lastObservation: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      documentationUrl: Schema.optional(Schema.String),
-      incompatibilityType: Schema.optional(Schema.String),
-      constraintType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AutopilotCompatibilityIssue",
-  }) as any as Schema.Schema<AutopilotCompatibilityIssue>;
+export const AutopilotCompatibilityIssue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subjects: Schema.optional(Schema.Array(Schema.String)),
+    lastObservation: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    documentationUrl: Schema.optional(Schema.String),
+    incompatibilityType: Schema.optional(Schema.String),
+    constraintType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AutopilotCompatibilityIssue" });
 
 export interface CheckAutopilotCompatibilityResponse {
   /** The list of issues for the given operation. */
@@ -6558,15 +5397,11 @@ export interface CheckAutopilotCompatibilityResponse {
   summary?: string;
 }
 
-export const CheckAutopilotCompatibilityResponse: Schema.Schema<CheckAutopilotCompatibilityResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      issues: Schema.optional(Schema.Array(AutopilotCompatibilityIssue)),
-      summary: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CheckAutopilotCompatibilityResponse",
-  }) as any as Schema.Schema<CheckAutopilotCompatibilityResponse>;
+export const CheckAutopilotCompatibilityResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    issues: Schema.optional(Schema.Array(AutopilotCompatibilityIssue)),
+    summary: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CheckAutopilotCompatibilityResponse" });
 
 export interface SetLabelsRequest {
   /** Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the name field. */
@@ -6583,21 +5418,14 @@ export interface SetLabelsRequest {
   labelFingerprint?: string;
 }
 
-export const SetLabelsRequest: Schema.Schema<SetLabelsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      zone: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      clusterId: Schema.optional(Schema.String),
-      projectId: Schema.optional(Schema.String),
-      resourceLabels: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      labelFingerprint: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SetLabelsRequest",
-  }) as any as Schema.Schema<SetLabelsRequest>;
+export const SetLabelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  zone: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  clusterId: Schema.optional(Schema.String),
+  projectId: Schema.optional(Schema.String),
+  resourceLabels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  labelFingerprint: Schema.optional(Schema.String),
+}).annotate({ identifier: "SetLabelsRequest" });
 
 export interface UpgradeEvent {
   /** The target version for the upgrade. */
@@ -6622,21 +5450,16 @@ export interface UpgradeEvent {
     | (string & {});
 }
 
-export const UpgradeEvent: Schema.Schema<UpgradeEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetVersion: Schema.optional(Schema.String),
-      currentVersion: Schema.optional(Schema.String),
-      resource: Schema.optional(Schema.String),
-      currentEmulatedVersion: Schema.optional(Schema.String),
-      operation: Schema.optional(Schema.String),
-      operationStartTime: Schema.optional(Schema.String),
-      targetEmulatedVersion: Schema.optional(Schema.String),
-      resourceType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpgradeEvent",
-  }) as any as Schema.Schema<UpgradeEvent>;
+export const UpgradeEvent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  targetVersion: Schema.optional(Schema.String),
+  currentVersion: Schema.optional(Schema.String),
+  resource: Schema.optional(Schema.String),
+  currentEmulatedVersion: Schema.optional(Schema.String),
+  operation: Schema.optional(Schema.String),
+  operationStartTime: Schema.optional(Schema.String),
+  targetEmulatedVersion: Schema.optional(Schema.String),
+  resourceType: Schema.optional(Schema.String),
+}).annotate({ identifier: "UpgradeEvent" });
 
 export interface ListClustersResponse {
   /** A list of clusters in the project in the specified zone, or across all ones. */
@@ -6645,15 +5468,10 @@ export interface ListClustersResponse {
   missingZones?: Array<string>;
 }
 
-export const ListClustersResponse: Schema.Schema<ListClustersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clusters: Schema.optional(Schema.Array(Cluster)),
-      missingZones: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListClustersResponse",
-  }) as any as Schema.Schema<ListClustersResponse>;
+export const ListClustersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  clusters: Schema.optional(Schema.Array(Cluster)),
+  missingZones: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ListClustersResponse" });
 
 export interface SetAddonsConfigRequest {
   /** Deprecated. The name of the Google Compute Engine [zone](https://cloud.google.com/compute/docs/zones#available) in which the cluster resides. This field has been deprecated and replaced by the name field. */
@@ -6668,18 +5486,15 @@ export interface SetAddonsConfigRequest {
   addonsConfig?: AddonsConfig;
 }
 
-export const SetAddonsConfigRequest: Schema.Schema<SetAddonsConfigRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      zone: Schema.optional(Schema.String),
-      projectId: Schema.optional(Schema.String),
-      clusterId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      addonsConfig: Schema.optional(AddonsConfig),
-    }),
-  ).annotate({
-    identifier: "SetAddonsConfigRequest",
-  }) as any as Schema.Schema<SetAddonsConfigRequest>;
+export const SetAddonsConfigRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    zone: Schema.optional(Schema.String),
+    projectId: Schema.optional(Schema.String),
+    clusterId: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    addonsConfig: Schema.optional(AddonsConfig),
+  },
+).annotate({ identifier: "SetAddonsConfigRequest" });
 
 export interface SetMonitoringServiceRequest {
   /** The name (project, location, cluster) of the cluster to set monitoring. Specified in the format `projects/* /locations/* /clusters/*`. */
@@ -6694,18 +5509,14 @@ export interface SetMonitoringServiceRequest {
   clusterId?: string;
 }
 
-export const SetMonitoringServiceRequest: Schema.Schema<SetMonitoringServiceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      zone: Schema.optional(Schema.String),
-      projectId: Schema.optional(Schema.String),
-      monitoringService: Schema.optional(Schema.String),
-      clusterId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SetMonitoringServiceRequest",
-  }) as any as Schema.Schema<SetMonitoringServiceRequest>;
+export const SetMonitoringServiceRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    zone: Schema.optional(Schema.String),
+    projectId: Schema.optional(Schema.String),
+    monitoringService: Schema.optional(Schema.String),
+    clusterId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SetMonitoringServiceRequest" });
 
 // ==========================================================================
 // Operations

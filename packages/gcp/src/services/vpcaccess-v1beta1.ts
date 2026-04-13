@@ -33,17 +33,12 @@ export interface OperationMetadata {
   createTime?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      method: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  method: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationMetadata" });
 
 export interface Location {
   /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
@@ -58,16 +53,13 @@ export interface Location {
   locationId?: string;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      locationId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  locationId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Location" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -76,15 +68,10 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(Location)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -95,16 +82,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** The error result of the operation in case of failure or cancellation. */
@@ -119,16 +103,13 @@ export interface Operation {
   done?: boolean;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      error: Schema.optional(Status),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      name: Schema.optional(Schema.String),
-      done: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  error: Schema.optional(Status),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  name: Schema.optional(Schema.String),
+  done: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Operation" });
 
 export interface Subnet {
   /** Optional. Project in which the subnet exists. If not set, this project is assumed to be the project for which the connector create request was issued. */
@@ -137,13 +118,10 @@ export interface Subnet {
   name?: string;
 }
 
-export const Subnet: Schema.Schema<Subnet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      projectId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Subnet" }) as any as Schema.Schema<Subnet>;
+export const Subnet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  projectId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Subnet" });
 
 export interface OperationMetadataV1Alpha1 {
   /** Output only. Time when the operation was created. */
@@ -156,17 +134,13 @@ export interface OperationMetadataV1Alpha1 {
   target?: string;
 }
 
-export const OperationMetadataV1Alpha1: Schema.Schema<OperationMetadataV1Alpha1> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      insertTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      method: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadataV1Alpha1",
-  }) as any as Schema.Schema<OperationMetadataV1Alpha1>;
+export const OperationMetadataV1Alpha1 =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    insertTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    method: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OperationMetadataV1Alpha1" });
 
 export interface Connector {
   /** Maximum throughput of the connector in Mbps. Refers to the expected throughput when using an `e2-micro` machine type. Value must be a multiple of 100 from 300 through 1000. Must be higher than the value specified by --min-throughput. If both max-throughput and max-instances are provided, max-instances takes precedence over max-throughput. The use of `max-throughput` is discouraged in favor of `max-instances`. */
@@ -204,24 +178,21 @@ export interface Connector {
   minInstances?: number;
 }
 
-export const Connector: Schema.Schema<Connector> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      maxThroughput: Schema.optional(Schema.Number),
-      lastRestartTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      minThroughput: Schema.optional(Schema.Number),
-      connectedProjects: Schema.optional(Schema.Array(Schema.String)),
-      createTime: Schema.optional(Schema.String),
-      maxInstances: Schema.optional(Schema.Number),
-      subnet: Schema.optional(Subnet),
-      ipCidrRange: Schema.optional(Schema.String),
-      machineType: Schema.optional(Schema.String),
-      network: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      minInstances: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Connector" }) as any as Schema.Schema<Connector>;
+export const Connector = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  maxThroughput: Schema.optional(Schema.Number),
+  lastRestartTime: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  minThroughput: Schema.optional(Schema.Number),
+  connectedProjects: Schema.optional(Schema.Array(Schema.String)),
+  createTime: Schema.optional(Schema.String),
+  maxInstances: Schema.optional(Schema.Number),
+  subnet: Schema.optional(Subnet),
+  ipCidrRange: Schema.optional(Schema.String),
+  machineType: Schema.optional(Schema.String),
+  network: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  minInstances: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Connector" });
 
 export interface ListConnectorsResponse {
   /** List of Serverless VPC Access connectors. */
@@ -230,15 +201,12 @@ export interface ListConnectorsResponse {
   nextPageToken?: string;
 }
 
-export const ListConnectorsResponse: Schema.Schema<ListConnectorsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      connectors: Schema.optional(Schema.Array(Connector)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListConnectorsResponse",
-  }) as any as Schema.Schema<ListConnectorsResponse>;
+export const ListConnectorsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    connectors: Schema.optional(Schema.Array(Connector)),
+    nextPageToken: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ListConnectorsResponse" });
 
 export interface OperationMetadataV1Beta1 {
   /** Output only. Method that initiated the operation e.g. google.cloud.vpcaccess.v1beta1.Connectors.CreateConnector. */
@@ -251,17 +219,13 @@ export interface OperationMetadataV1Beta1 {
   createTime?: string;
 }
 
-export const OperationMetadataV1Beta1: Schema.Schema<OperationMetadataV1Beta1> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      method: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadataV1Beta1",
-  }) as any as Schema.Schema<OperationMetadataV1Beta1>;
+export const OperationMetadataV1Beta1 =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    method: Schema.optional(Schema.String),
+    target: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OperationMetadataV1Beta1" });
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -272,16 +236,13 @@ export interface ListOperationsResponse {
   nextPageToken?: string;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(Schema.Array(Operation)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    operations: Schema.optional(Schema.Array(Operation)),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 // ==========================================================================
 // Operations

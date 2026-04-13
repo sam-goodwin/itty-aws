@@ -29,15 +29,13 @@ export interface GoogleChromePolicyVersionsV1NumericRangeConstraint {
   maximum?: string;
 }
 
-export const GoogleChromePolicyVersionsV1NumericRangeConstraint: Schema.Schema<GoogleChromePolicyVersionsV1NumericRangeConstraint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      minimum: Schema.optional(Schema.String),
-      maximum: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromePolicyVersionsV1NumericRangeConstraint =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    minimum: Schema.optional(Schema.String),
+    maximum: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleChromePolicyVersionsV1NumericRangeConstraint",
-  }) as any as Schema.Schema<GoogleChromePolicyVersionsV1NumericRangeConstraint>;
+  });
 
 export interface GoogleChromePolicyVersionsV1PolicySchemaNoticeDescription {
   /** Output only. Whether the user needs to acknowledge the notice message before the value can be set. */
@@ -50,17 +48,15 @@ export interface GoogleChromePolicyVersionsV1PolicySchemaNoticeDescription {
   noticeValue?: string;
 }
 
-export const GoogleChromePolicyVersionsV1PolicySchemaNoticeDescription: Schema.Schema<GoogleChromePolicyVersionsV1PolicySchemaNoticeDescription> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      acknowledgementRequired: Schema.optional(Schema.Boolean),
-      field: Schema.optional(Schema.String),
-      noticeMessage: Schema.optional(Schema.String),
-      noticeValue: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromePolicyVersionsV1PolicySchemaNoticeDescription =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    acknowledgementRequired: Schema.optional(Schema.Boolean),
+    field: Schema.optional(Schema.String),
+    noticeMessage: Schema.optional(Schema.String),
+    noticeValue: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleChromePolicyVersionsV1PolicySchemaNoticeDescription",
-  }) as any as Schema.Schema<GoogleChromePolicyVersionsV1PolicySchemaNoticeDescription>;
+  });
 
 export interface GoogleChromePolicyVersionsV1RemoveNetworkRequest {
   /** Required. The target resource on which this network will be removed. The following resources are supported: * Organizational Unit ("orgunits/{orgunit_id}") */
@@ -69,15 +65,13 @@ export interface GoogleChromePolicyVersionsV1RemoveNetworkRequest {
   networkId?: string;
 }
 
-export const GoogleChromePolicyVersionsV1RemoveNetworkRequest: Schema.Schema<GoogleChromePolicyVersionsV1RemoveNetworkRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetResource: Schema.optional(Schema.String),
-      networkId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromePolicyVersionsV1RemoveNetworkRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetResource: Schema.optional(Schema.String),
+    networkId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleChromePolicyVersionsV1RemoveNetworkRequest",
-  }) as any as Schema.Schema<GoogleChromePolicyVersionsV1RemoveNetworkRequest>;
+  });
 
 export interface GoogleChromePolicyVersionsV1PolicyModificationFieldError {
   /** Output only. The name of the field with the error. */
@@ -86,15 +80,13 @@ export interface GoogleChromePolicyVersionsV1PolicyModificationFieldError {
   error?: string;
 }
 
-export const GoogleChromePolicyVersionsV1PolicyModificationFieldError: Schema.Schema<GoogleChromePolicyVersionsV1PolicyModificationFieldError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      field: Schema.optional(Schema.String),
-      error: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromePolicyVersionsV1PolicyModificationFieldError =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    field: Schema.optional(Schema.String),
+    error: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleChromePolicyVersionsV1PolicyModificationFieldError",
-  }) as any as Schema.Schema<GoogleChromePolicyVersionsV1PolicyModificationFieldError>;
+  });
 
 export interface GoogleChromePolicyVersionsV1PolicyTargetKey {
   /** The target resource on which this policy is applied. The following resources are supported: * Organizational Unit ("orgunits/{orgunit_id}") * Group ("groups/{group_id}") */
@@ -103,17 +95,13 @@ export interface GoogleChromePolicyVersionsV1PolicyTargetKey {
   additionalTargetKeys?: Record<string, string>;
 }
 
-export const GoogleChromePolicyVersionsV1PolicyTargetKey: Schema.Schema<GoogleChromePolicyVersionsV1PolicyTargetKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetResource: Schema.optional(Schema.String),
-      additionalTargetKeys: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleChromePolicyVersionsV1PolicyTargetKey",
-  }) as any as Schema.Schema<GoogleChromePolicyVersionsV1PolicyTargetKey>;
+export const GoogleChromePolicyVersionsV1PolicyTargetKey =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetResource: Schema.optional(Schema.String),
+    additionalTargetKeys: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+  }).annotate({ identifier: "GoogleChromePolicyVersionsV1PolicyTargetKey" });
 
 export interface GoogleChromePolicyVersionsV1PolicyModificationError {
   /** Output only. The error messages related to the modification. */
@@ -126,21 +114,19 @@ export interface GoogleChromePolicyVersionsV1PolicyModificationError {
   policyTargetKey?: GoogleChromePolicyVersionsV1PolicyTargetKey;
 }
 
-export const GoogleChromePolicyVersionsV1PolicyModificationError: Schema.Schema<GoogleChromePolicyVersionsV1PolicyModificationError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fieldErrors: Schema.optional(
-        Schema.Array(GoogleChromePolicyVersionsV1PolicyModificationFieldError),
-      ),
-      policySchema: Schema.optional(Schema.String),
-      errors: Schema.optional(Schema.Array(Schema.String)),
-      policyTargetKey: Schema.optional(
-        GoogleChromePolicyVersionsV1PolicyTargetKey,
-      ),
-    }),
-  ).annotate({
+export const GoogleChromePolicyVersionsV1PolicyModificationError =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fieldErrors: Schema.optional(
+      Schema.Array(GoogleChromePolicyVersionsV1PolicyModificationFieldError),
+    ),
+    policySchema: Schema.optional(Schema.String),
+    errors: Schema.optional(Schema.Array(Schema.String)),
+    policyTargetKey: Schema.optional(
+      GoogleChromePolicyVersionsV1PolicyTargetKey,
+    ),
+  }).annotate({
     identifier: "GoogleChromePolicyVersionsV1PolicyModificationError",
-  }) as any as Schema.Schema<GoogleChromePolicyVersionsV1PolicyModificationError>;
+  });
 
 export interface GoogleChromePolicyVersionsV1PolicySchemaRequiredItems {
   /** The value(s) of the field that provoke required field enforcement. An empty field_conditions implies that any value assigned to this field will provoke required field enforcement. */
@@ -149,15 +135,13 @@ export interface GoogleChromePolicyVersionsV1PolicySchemaRequiredItems {
   requiredFields?: Array<string>;
 }
 
-export const GoogleChromePolicyVersionsV1PolicySchemaRequiredItems: Schema.Schema<GoogleChromePolicyVersionsV1PolicySchemaRequiredItems> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fieldConditions: Schema.optional(Schema.Array(Schema.String)),
-      requiredFields: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleChromePolicyVersionsV1PolicySchemaRequiredItems =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fieldConditions: Schema.optional(Schema.Array(Schema.String)),
+    requiredFields: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleChromePolicyVersionsV1PolicySchemaRequiredItems",
-  }) as any as Schema.Schema<GoogleChromePolicyVersionsV1PolicySchemaRequiredItems>;
+  });
 
 export interface GoogleTypeDate {
   /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
@@ -168,16 +152,11 @@ export interface GoogleTypeDate {
   year?: number;
 }
 
-export const GoogleTypeDate: Schema.Schema<GoogleTypeDate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      month: Schema.optional(Schema.Number),
-      day: Schema.optional(Schema.Number),
-      year: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleTypeDate",
-  }) as any as Schema.Schema<GoogleTypeDate>;
+export const GoogleTypeDate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  month: Schema.optional(Schema.Number),
+  day: Schema.optional(Schema.Number),
+  year: Schema.optional(Schema.Number),
+}).annotate({ identifier: "GoogleTypeDate" });
 
 export interface GoogleChromePolicyVersionsV1PolicyApiLifecycle {
   /** Description about current life cycle. */
@@ -198,20 +177,14 @@ export interface GoogleChromePolicyVersionsV1PolicyApiLifecycle {
   endSupport?: GoogleTypeDate;
 }
 
-export const GoogleChromePolicyVersionsV1PolicyApiLifecycle: Schema.Schema<GoogleChromePolicyVersionsV1PolicyApiLifecycle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      deprecatedInFavorOf: Schema.optional(Schema.Array(Schema.String)),
-      scheduledToDeprecatePolicies: Schema.optional(
-        Schema.Array(Schema.String),
-      ),
-      policyApiLifecycleStage: Schema.optional(Schema.String),
-      endSupport: Schema.optional(GoogleTypeDate),
-    }),
-  ).annotate({
-    identifier: "GoogleChromePolicyVersionsV1PolicyApiLifecycle",
-  }) as any as Schema.Schema<GoogleChromePolicyVersionsV1PolicyApiLifecycle>;
+export const GoogleChromePolicyVersionsV1PolicyApiLifecycle =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    deprecatedInFavorOf: Schema.optional(Schema.Array(Schema.String)),
+    scheduledToDeprecatePolicies: Schema.optional(Schema.Array(Schema.String)),
+    policyApiLifecycleStage: Schema.optional(Schema.String),
+    endSupport: Schema.optional(GoogleTypeDate),
+  }).annotate({ identifier: "GoogleChromePolicyVersionsV1PolicyApiLifecycle" });
 
 export interface Proto2FieldDescriptorProto {
   /** For message and enum types, this is the name of the type. If the name starts with a '.', it is fully-qualified. Otherwise, C++-like scoping rules are used to find the type (i.e. first the nested types within this message are searched, then within the parent, on up to the root namespace). */
@@ -254,50 +227,38 @@ export interface Proto2FieldDescriptorProto {
   number?: number;
 }
 
-export const Proto2FieldDescriptorProto: Schema.Schema<Proto2FieldDescriptorProto> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      typeName: Schema.optional(Schema.String),
-      jsonName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      proto3Optional: Schema.optional(Schema.Boolean),
-      oneofIndex: Schema.optional(Schema.Number),
-      defaultValue: Schema.optional(Schema.String),
-      label: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      number: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "Proto2FieldDescriptorProto",
-  }) as any as Schema.Schema<Proto2FieldDescriptorProto>;
+export const Proto2FieldDescriptorProto =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    typeName: Schema.optional(Schema.String),
+    jsonName: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    proto3Optional: Schema.optional(Schema.Boolean),
+    oneofIndex: Schema.optional(Schema.Number),
+    defaultValue: Schema.optional(Schema.String),
+    label: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    number: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "Proto2FieldDescriptorProto" });
 
 export interface Proto2OneofDescriptorProto {
   name?: string;
 }
 
-export const Proto2OneofDescriptorProto: Schema.Schema<Proto2OneofDescriptorProto> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Proto2OneofDescriptorProto",
-  }) as any as Schema.Schema<Proto2OneofDescriptorProto>;
+export const Proto2OneofDescriptorProto =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Proto2OneofDescriptorProto" });
 
 export interface Proto2EnumValueDescriptorProto {
   name?: string;
   number?: number;
 }
 
-export const Proto2EnumValueDescriptorProto: Schema.Schema<Proto2EnumValueDescriptorProto> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      number: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "Proto2EnumValueDescriptorProto",
-  }) as any as Schema.Schema<Proto2EnumValueDescriptorProto>;
+export const Proto2EnumValueDescriptorProto =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    number: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "Proto2EnumValueDescriptorProto" });
 
 export interface Proto2EnumDescriptorProto {
   /** Support for `export` and `local` keywords on enums. */
@@ -310,16 +271,12 @@ export interface Proto2EnumDescriptorProto {
   name?: string;
 }
 
-export const Proto2EnumDescriptorProto: Schema.Schema<Proto2EnumDescriptorProto> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      visibility: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.Array(Proto2EnumValueDescriptorProto)),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Proto2EnumDescriptorProto",
-  }) as any as Schema.Schema<Proto2EnumDescriptorProto>;
+export const Proto2EnumDescriptorProto =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    visibility: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.Array(Proto2EnumValueDescriptorProto)),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Proto2EnumDescriptorProto" });
 
 export interface Proto2DescriptorProto {
   field?: Array<Proto2FieldDescriptorProto>;
@@ -365,20 +322,16 @@ export interface Proto2FileDescriptorProto {
   editionDeprecated?: string;
 }
 
-export const Proto2FileDescriptorProto: Schema.Schema<Proto2FileDescriptorProto> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      package: Schema.optional(Schema.String),
-      optionDependency: Schema.optional(Schema.Array(Schema.String)),
-      messageType: Schema.optional(Schema.Array(Proto2DescriptorProto)),
-      enumType: Schema.optional(Schema.Array(Proto2EnumDescriptorProto)),
-      name: Schema.optional(Schema.String),
-      syntax: Schema.optional(Schema.String),
-      editionDeprecated: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Proto2FileDescriptorProto",
-  }) as any as Schema.Schema<Proto2FileDescriptorProto>;
+export const Proto2FileDescriptorProto =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    package: Schema.optional(Schema.String),
+    optionDependency: Schema.optional(Schema.Array(Schema.String)),
+    messageType: Schema.optional(Schema.Array(Proto2DescriptorProto)),
+    enumType: Schema.optional(Schema.Array(Proto2EnumDescriptorProto)),
+    name: Schema.optional(Schema.String),
+    syntax: Schema.optional(Schema.String),
+    editionDeprecated: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Proto2FileDescriptorProto" });
 
 export interface GoogleChromePolicyVersionsV1AdditionalTargetKeyName {
   /** Key name. */
@@ -387,15 +340,13 @@ export interface GoogleChromePolicyVersionsV1AdditionalTargetKeyName {
   keyDescription?: string;
 }
 
-export const GoogleChromePolicyVersionsV1AdditionalTargetKeyName: Schema.Schema<GoogleChromePolicyVersionsV1AdditionalTargetKeyName> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      key: Schema.optional(Schema.String),
-      keyDescription: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromePolicyVersionsV1AdditionalTargetKeyName =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    key: Schema.optional(Schema.String),
+    keyDescription: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleChromePolicyVersionsV1AdditionalTargetKeyName",
-  }) as any as Schema.Schema<GoogleChromePolicyVersionsV1AdditionalTargetKeyName>;
+  });
 
 export interface GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies {
   /** The source field which this field depends on. */
@@ -404,15 +355,13 @@ export interface GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies {
   sourceFieldValue?: string;
 }
 
-export const GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies: Schema.Schema<GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sourceField: Schema.optional(Schema.String),
-      sourceFieldValue: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sourceField: Schema.optional(Schema.String),
+    sourceFieldValue: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies",
-  }) as any as Schema.Schema<GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies>;
+  });
 
 export interface GoogleChromePolicyVersionsV1UploadedFileConstraints {
   /** The size limit of uploaded files for a setting, in bytes. */
@@ -435,15 +384,13 @@ export interface GoogleChromePolicyVersionsV1UploadedFileConstraints {
   >;
 }
 
-export const GoogleChromePolicyVersionsV1UploadedFileConstraints: Schema.Schema<GoogleChromePolicyVersionsV1UploadedFileConstraints> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sizeLimitBytes: Schema.optional(Schema.String),
-      supportedContentTypes: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleChromePolicyVersionsV1UploadedFileConstraints =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sizeLimitBytes: Schema.optional(Schema.String),
+    supportedContentTypes: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleChromePolicyVersionsV1UploadedFileConstraints",
-  }) as any as Schema.Schema<GoogleChromePolicyVersionsV1UploadedFileConstraints>;
+  });
 
 export interface GoogleChromePolicyVersionsV1FieldConstraints {
   /** Constraints on the uploaded file of a file policy. If present, this policy requires a URL that can be fetched by uploading a file with the constraints specified in this proto. */
@@ -452,19 +399,15 @@ export interface GoogleChromePolicyVersionsV1FieldConstraints {
   numericRangeConstraint?: GoogleChromePolicyVersionsV1NumericRangeConstraint;
 }
 
-export const GoogleChromePolicyVersionsV1FieldConstraints: Schema.Schema<GoogleChromePolicyVersionsV1FieldConstraints> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uploadedFileConstraints: Schema.optional(
-        GoogleChromePolicyVersionsV1UploadedFileConstraints,
-      ),
-      numericRangeConstraint: Schema.optional(
-        GoogleChromePolicyVersionsV1NumericRangeConstraint,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleChromePolicyVersionsV1FieldConstraints",
-  }) as any as Schema.Schema<GoogleChromePolicyVersionsV1FieldConstraints>;
+export const GoogleChromePolicyVersionsV1FieldConstraints =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uploadedFileConstraints: Schema.optional(
+      GoogleChromePolicyVersionsV1UploadedFileConstraints,
+    ),
+    numericRangeConstraint: Schema.optional(
+      GoogleChromePolicyVersionsV1NumericRangeConstraint,
+    ),
+  }).annotate({ identifier: "GoogleChromePolicyVersionsV1FieldConstraints" });
 
 export interface GoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription {
   /** Output only. Field conditions required for this value to be valid. */
@@ -475,19 +418,17 @@ export interface GoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescript
   value?: string;
 }
 
-export const GoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription: Schema.Schema<GoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fieldDependencies: Schema.optional(
-        Schema.Array(GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies),
-      ),
-      description: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fieldDependencies: Schema.optional(
+      Schema.Array(GoogleChromePolicyVersionsV1PolicySchemaFieldDependencies),
+    ),
+    description: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription",
-  }) as any as Schema.Schema<GoogleChromePolicyVersionsV1PolicySchemaFieldKnownValueDescription>;
+  });
 
 export interface GoogleChromePolicyVersionsV1PolicySchemaFieldDescription {
   /** Output only. Client default if the policy is unset. */
@@ -583,34 +524,30 @@ export interface GoogleChromePolicyVersionsV1PolicySchema {
   name?: string;
 }
 
-export const GoogleChromePolicyVersionsV1PolicySchema: Schema.Schema<GoogleChromePolicyVersionsV1PolicySchema> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policyDescription: Schema.optional(Schema.String),
-      policyApiLifecycle: Schema.optional(
-        GoogleChromePolicyVersionsV1PolicyApiLifecycle,
-      ),
-      supportedPlatforms: Schema.optional(Schema.Array(Schema.String)),
-      accessRestrictions: Schema.optional(Schema.Array(Schema.String)),
-      supportUri: Schema.optional(Schema.String),
-      validTargetResources: Schema.optional(Schema.Array(Schema.String)),
-      definition: Schema.optional(Proto2FileDescriptorProto),
-      additionalTargetKeyNames: Schema.optional(
-        Schema.Array(GoogleChromePolicyVersionsV1AdditionalTargetKeyName),
-      ),
-      schemaName: Schema.optional(Schema.String),
-      fieldDescriptions: Schema.optional(
-        Schema.Array(GoogleChromePolicyVersionsV1PolicySchemaFieldDescription),
-      ),
-      categoryTitle: Schema.optional(Schema.String),
-      notices: Schema.optional(
-        Schema.Array(GoogleChromePolicyVersionsV1PolicySchemaNoticeDescription),
-      ),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChromePolicyVersionsV1PolicySchema",
-  }) as any as Schema.Schema<GoogleChromePolicyVersionsV1PolicySchema>;
+export const GoogleChromePolicyVersionsV1PolicySchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policyDescription: Schema.optional(Schema.String),
+    policyApiLifecycle: Schema.optional(
+      GoogleChromePolicyVersionsV1PolicyApiLifecycle,
+    ),
+    supportedPlatforms: Schema.optional(Schema.Array(Schema.String)),
+    accessRestrictions: Schema.optional(Schema.Array(Schema.String)),
+    supportUri: Schema.optional(Schema.String),
+    validTargetResources: Schema.optional(Schema.Array(Schema.String)),
+    definition: Schema.optional(Proto2FileDescriptorProto),
+    additionalTargetKeyNames: Schema.optional(
+      Schema.Array(GoogleChromePolicyVersionsV1AdditionalTargetKeyName),
+    ),
+    schemaName: Schema.optional(Schema.String),
+    fieldDescriptions: Schema.optional(
+      Schema.Array(GoogleChromePolicyVersionsV1PolicySchemaFieldDescription),
+    ),
+    categoryTitle: Schema.optional(Schema.String),
+    notices: Schema.optional(
+      Schema.Array(GoogleChromePolicyVersionsV1PolicySchemaNoticeDescription),
+    ),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChromePolicyVersionsV1PolicySchema" });
 
 export interface GoogleChromePolicyVersionsV1NetworkSetting {
   /** The fully qualified name of the network setting. */
@@ -619,15 +556,11 @@ export interface GoogleChromePolicyVersionsV1NetworkSetting {
   value?: Record<string, unknown>;
 }
 
-export const GoogleChromePolicyVersionsV1NetworkSetting: Schema.Schema<GoogleChromePolicyVersionsV1NetworkSetting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policySchema: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
-    identifier: "GoogleChromePolicyVersionsV1NetworkSetting",
-  }) as any as Schema.Schema<GoogleChromePolicyVersionsV1NetworkSetting>;
+export const GoogleChromePolicyVersionsV1NetworkSetting =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policySchema: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "GoogleChromePolicyVersionsV1NetworkSetting" });
 
 export interface GoogleChromePolicyVersionsV1DefineCertificateRequest {
   /** Required. The raw contents of the .PEM, .CRT, or .CER file. */
@@ -640,35 +573,31 @@ export interface GoogleChromePolicyVersionsV1DefineCertificateRequest {
   settings?: Array<GoogleChromePolicyVersionsV1NetworkSetting>;
 }
 
-export const GoogleChromePolicyVersionsV1DefineCertificateRequest: Schema.Schema<GoogleChromePolicyVersionsV1DefineCertificateRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      certificate: Schema.optional(Schema.String),
-      targetResource: Schema.optional(Schema.String),
-      ceritificateName: Schema.optional(Schema.String),
-      settings: Schema.optional(
-        Schema.Array(GoogleChromePolicyVersionsV1NetworkSetting),
-      ),
-    }),
-  ).annotate({
+export const GoogleChromePolicyVersionsV1DefineCertificateRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    certificate: Schema.optional(Schema.String),
+    targetResource: Schema.optional(Schema.String),
+    ceritificateName: Schema.optional(Schema.String),
+    settings: Schema.optional(
+      Schema.Array(GoogleChromePolicyVersionsV1NetworkSetting),
+    ),
+  }).annotate({
     identifier: "GoogleChromePolicyVersionsV1DefineCertificateRequest",
-  }) as any as Schema.Schema<GoogleChromePolicyVersionsV1DefineCertificateRequest>;
+  });
 
 export interface GoogleChromePolicyVersionsV1PolicyModificationErrorDetails {
   /** Output only. List of specific policy modifications errors that may have occurred during a modifying request. */
   modificationErrors?: Array<GoogleChromePolicyVersionsV1PolicyModificationError>;
 }
 
-export const GoogleChromePolicyVersionsV1PolicyModificationErrorDetails: Schema.Schema<GoogleChromePolicyVersionsV1PolicyModificationErrorDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      modificationErrors: Schema.optional(
-        Schema.Array(GoogleChromePolicyVersionsV1PolicyModificationError),
-      ),
-    }),
-  ).annotate({
+export const GoogleChromePolicyVersionsV1PolicyModificationErrorDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    modificationErrors: Schema.optional(
+      Schema.Array(GoogleChromePolicyVersionsV1PolicyModificationError),
+    ),
+  }).annotate({
     identifier: "GoogleChromePolicyVersionsV1PolicyModificationErrorDetails",
-  }) as any as Schema.Schema<GoogleChromePolicyVersionsV1PolicyModificationErrorDetails>;
+  });
 
 export interface GoogleChromePolicyVersionsV1PolicyValue {
   /** The fully qualified name of the policy schema associated with this policy. */
@@ -677,15 +606,11 @@ export interface GoogleChromePolicyVersionsV1PolicyValue {
   value?: Record<string, unknown>;
 }
 
-export const GoogleChromePolicyVersionsV1PolicyValue: Schema.Schema<GoogleChromePolicyVersionsV1PolicyValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policySchema: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
-    identifier: "GoogleChromePolicyVersionsV1PolicyValue",
-  }) as any as Schema.Schema<GoogleChromePolicyVersionsV1PolicyValue>;
+export const GoogleChromePolicyVersionsV1PolicyValue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policySchema: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "GoogleChromePolicyVersionsV1PolicyValue" });
 
 export interface GoogleChromePolicyVersionsV1ModifyGroupPolicyRequest {
   /** The new value for the policy. */
@@ -696,32 +621,28 @@ export interface GoogleChromePolicyVersionsV1ModifyGroupPolicyRequest {
   policyTargetKey?: GoogleChromePolicyVersionsV1PolicyTargetKey;
 }
 
-export const GoogleChromePolicyVersionsV1ModifyGroupPolicyRequest: Schema.Schema<GoogleChromePolicyVersionsV1ModifyGroupPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policyValue: Schema.optional(GoogleChromePolicyVersionsV1PolicyValue),
-      updateMask: Schema.optional(Schema.String),
-      policyTargetKey: Schema.optional(
-        GoogleChromePolicyVersionsV1PolicyTargetKey,
-      ),
-    }),
-  ).annotate({
+export const GoogleChromePolicyVersionsV1ModifyGroupPolicyRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policyValue: Schema.optional(GoogleChromePolicyVersionsV1PolicyValue),
+    updateMask: Schema.optional(Schema.String),
+    policyTargetKey: Schema.optional(
+      GoogleChromePolicyVersionsV1PolicyTargetKey,
+    ),
+  }).annotate({
     identifier: "GoogleChromePolicyVersionsV1ModifyGroupPolicyRequest",
-  }) as any as Schema.Schema<GoogleChromePolicyVersionsV1ModifyGroupPolicyRequest>;
+  });
 
 export interface GoogleChromePolicyVersionsV1UploadPolicyFileResponse {
   /** The uri for end user to download the file. */
   downloadUri?: string;
 }
 
-export const GoogleChromePolicyVersionsV1UploadPolicyFileResponse: Schema.Schema<GoogleChromePolicyVersionsV1UploadPolicyFileResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      downloadUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromePolicyVersionsV1UploadPolicyFileResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    downloadUri: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleChromePolicyVersionsV1UploadPolicyFileResponse",
-  }) as any as Schema.Schema<GoogleChromePolicyVersionsV1UploadPolicyFileResponse>;
+  });
 
 export interface GoogleChromePolicyVersionsV1ListPolicySchemasResponse {
   /** The list of policy schemas that match the query. */
@@ -730,17 +651,15 @@ export interface GoogleChromePolicyVersionsV1ListPolicySchemasResponse {
   nextPageToken?: string;
 }
 
-export const GoogleChromePolicyVersionsV1ListPolicySchemasResponse: Schema.Schema<GoogleChromePolicyVersionsV1ListPolicySchemasResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policySchemas: Schema.optional(
-        Schema.Array(GoogleChromePolicyVersionsV1PolicySchema),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromePolicyVersionsV1ListPolicySchemasResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policySchemas: Schema.optional(
+      Schema.Array(GoogleChromePolicyVersionsV1PolicySchema),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleChromePolicyVersionsV1ListPolicySchemasResponse",
-  }) as any as Schema.Schema<GoogleChromePolicyVersionsV1ListPolicySchemasResponse>;
+  });
 
 export interface GoogleChromePolicyVersionsV1ResolvedPolicy {
   /** Output only. The target resource for which the resolved policy value applies. */
@@ -753,19 +672,15 @@ export interface GoogleChromePolicyVersionsV1ResolvedPolicy {
   value?: GoogleChromePolicyVersionsV1PolicyValue;
 }
 
-export const GoogleChromePolicyVersionsV1ResolvedPolicy: Schema.Schema<GoogleChromePolicyVersionsV1ResolvedPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetKey: Schema.optional(GoogleChromePolicyVersionsV1PolicyTargetKey),
-      sourceKey: Schema.optional(GoogleChromePolicyVersionsV1PolicyTargetKey),
-      addedSourceKey: Schema.optional(
-        GoogleChromePolicyVersionsV1PolicyTargetKey,
-      ),
-      value: Schema.optional(GoogleChromePolicyVersionsV1PolicyValue),
-    }),
-  ).annotate({
-    identifier: "GoogleChromePolicyVersionsV1ResolvedPolicy",
-  }) as any as Schema.Schema<GoogleChromePolicyVersionsV1ResolvedPolicy>;
+export const GoogleChromePolicyVersionsV1ResolvedPolicy =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetKey: Schema.optional(GoogleChromePolicyVersionsV1PolicyTargetKey),
+    sourceKey: Schema.optional(GoogleChromePolicyVersionsV1PolicyTargetKey),
+    addedSourceKey: Schema.optional(
+      GoogleChromePolicyVersionsV1PolicyTargetKey,
+    ),
+    value: Schema.optional(GoogleChromePolicyVersionsV1PolicyValue),
+  }).annotate({ identifier: "GoogleChromePolicyVersionsV1ResolvedPolicy" });
 
 export interface GoogleChromePolicyVersionsV1ResolveResponse {
   /** The list of resolved policies found by the resolve request. */
@@ -774,17 +689,13 @@ export interface GoogleChromePolicyVersionsV1ResolveResponse {
   nextPageToken?: string;
 }
 
-export const GoogleChromePolicyVersionsV1ResolveResponse: Schema.Schema<GoogleChromePolicyVersionsV1ResolveResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resolvedPolicies: Schema.optional(
-        Schema.Array(GoogleChromePolicyVersionsV1ResolvedPolicy),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChromePolicyVersionsV1ResolveResponse",
-  }) as any as Schema.Schema<GoogleChromePolicyVersionsV1ResolveResponse>;
+export const GoogleChromePolicyVersionsV1ResolveResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resolvedPolicies: Schema.optional(
+      Schema.Array(GoogleChromePolicyVersionsV1ResolvedPolicy),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChromePolicyVersionsV1ResolveResponse" });
 
 export interface GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest {
   /** Required. The key of the target for which we want to modify a policy. The target resource must point to an Org Unit. */
@@ -793,17 +704,15 @@ export interface GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest {
   policySchema?: string;
 }
 
-export const GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest: Schema.Schema<GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policyTargetKey: Schema.optional(
-        GoogleChromePolicyVersionsV1PolicyTargetKey,
-      ),
-      policySchema: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policyTargetKey: Schema.optional(
+      GoogleChromePolicyVersionsV1PolicyTargetKey,
+    ),
+    policySchema: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest",
-  }) as any as Schema.Schema<GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest>;
+  });
 
 export interface GoogleChromePolicyVersionsV1DefineNetworkRequest {
   /** Required. The target resource on which this new network will be defined. The following resources are supported: * Organizational Unit ("orgunits/{orgunit_id}") */
@@ -814,56 +723,51 @@ export interface GoogleChromePolicyVersionsV1DefineNetworkRequest {
   settings?: Array<GoogleChromePolicyVersionsV1NetworkSetting>;
 }
 
-export const GoogleChromePolicyVersionsV1DefineNetworkRequest: Schema.Schema<GoogleChromePolicyVersionsV1DefineNetworkRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetResource: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      settings: Schema.optional(
-        Schema.Array(GoogleChromePolicyVersionsV1NetworkSetting),
-      ),
-    }),
-  ).annotate({
+export const GoogleChromePolicyVersionsV1DefineNetworkRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetResource: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    settings: Schema.optional(
+      Schema.Array(GoogleChromePolicyVersionsV1NetworkSetting),
+    ),
+  }).annotate({
     identifier: "GoogleChromePolicyVersionsV1DefineNetworkRequest",
-  }) as any as Schema.Schema<GoogleChromePolicyVersionsV1DefineNetworkRequest>;
+  });
 
 export interface GoogleChromePolicyVersionsV1RemoveNetworkResponse {}
 
-export const GoogleChromePolicyVersionsV1RemoveNetworkResponse: Schema.Schema<GoogleChromePolicyVersionsV1RemoveNetworkResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleChromePolicyVersionsV1RemoveNetworkResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleChromePolicyVersionsV1RemoveNetworkResponse",
-  }) as any as Schema.Schema<GoogleChromePolicyVersionsV1RemoveNetworkResponse>;
+  });
 
 export interface GoogleChromePolicyVersionsV1BatchInheritOrgUnitPoliciesRequest {
   /** List of policies that have to inherit their values as defined by the `requests`. All requests in the list must follow these restrictions: 1. All schemas in the list must have the same root namespace. 2. All `policyTargetKey.targetResource` values must point to an org unit resource. 3. All `policyTargetKey` values must have the same key names in the ` additionalTargetKeys`. This also means if one of the targets has an empty `additionalTargetKeys` map, all of the targets must have an empty `additionalTargetKeys` map. 4. No two modification requests can reference the same `policySchema` + ` policyTargetKey` pair. */
   requests?: Array<GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest>;
 }
 
-export const GoogleChromePolicyVersionsV1BatchInheritOrgUnitPoliciesRequest: Schema.Schema<GoogleChromePolicyVersionsV1BatchInheritOrgUnitPoliciesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requests: Schema.optional(
-        Schema.Array(GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest),
-      ),
-    }),
-  ).annotate({
+export const GoogleChromePolicyVersionsV1BatchInheritOrgUnitPoliciesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requests: Schema.optional(
+      Schema.Array(GoogleChromePolicyVersionsV1InheritOrgUnitPolicyRequest),
+    ),
+  }).annotate({
     identifier:
       "GoogleChromePolicyVersionsV1BatchInheritOrgUnitPoliciesRequest",
-  }) as any as Schema.Schema<GoogleChromePolicyVersionsV1BatchInheritOrgUnitPoliciesRequest>;
+  });
 
 export interface GoogleChromePolicyVersionsV1RemoveCertificateResponse {}
 
-export const GoogleChromePolicyVersionsV1RemoveCertificateResponse: Schema.Schema<GoogleChromePolicyVersionsV1RemoveCertificateResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleChromePolicyVersionsV1RemoveCertificateResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleChromePolicyVersionsV1RemoveCertificateResponse",
-  }) as any as Schema.Schema<GoogleChromePolicyVersionsV1RemoveCertificateResponse>;
+  });
 
 export interface GoogleProtobufEmpty {}
 
-export const GoogleProtobufEmpty: Schema.Schema<GoogleProtobufEmpty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "GoogleProtobufEmpty",
-  }) as any as Schema.Schema<GoogleProtobufEmpty>;
+export const GoogleProtobufEmpty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "GoogleProtobufEmpty" });
 
 export interface GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest {
   /** The new value for the policy. */
@@ -874,18 +778,16 @@ export interface GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest {
   policyTargetKey?: GoogleChromePolicyVersionsV1PolicyTargetKey;
 }
 
-export const GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest: Schema.Schema<GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policyValue: Schema.optional(GoogleChromePolicyVersionsV1PolicyValue),
-      updateMask: Schema.optional(Schema.String),
-      policyTargetKey: Schema.optional(
-        GoogleChromePolicyVersionsV1PolicyTargetKey,
-      ),
-    }),
-  ).annotate({
+export const GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policyValue: Schema.optional(GoogleChromePolicyVersionsV1PolicyValue),
+    updateMask: Schema.optional(Schema.String),
+    policyTargetKey: Schema.optional(
+      GoogleChromePolicyVersionsV1PolicyTargetKey,
+    ),
+  }).annotate({
     identifier: "GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest",
-  }) as any as Schema.Schema<GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest>;
+  });
 
 export interface GoogleChromePolicyVersionsV1ResolveRequest {
   /** Required. The key of the target resource on which the policies should be resolved. */
@@ -898,19 +800,15 @@ export interface GoogleChromePolicyVersionsV1ResolveRequest {
   pageToken?: string;
 }
 
-export const GoogleChromePolicyVersionsV1ResolveRequest: Schema.Schema<GoogleChromePolicyVersionsV1ResolveRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policyTargetKey: Schema.optional(
-        GoogleChromePolicyVersionsV1PolicyTargetKey,
-      ),
-      policySchemaFilter: Schema.optional(Schema.String),
-      pageSize: Schema.optional(Schema.Number),
-      pageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChromePolicyVersionsV1ResolveRequest",
-  }) as any as Schema.Schema<GoogleChromePolicyVersionsV1ResolveRequest>;
+export const GoogleChromePolicyVersionsV1ResolveRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policyTargetKey: Schema.optional(
+      GoogleChromePolicyVersionsV1PolicyTargetKey,
+    ),
+    policySchemaFilter: Schema.optional(Schema.String),
+    pageSize: Schema.optional(Schema.Number),
+    pageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleChromePolicyVersionsV1ResolveRequest" });
 
 export interface GoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest {
   /** Required. The key of the target for which we want to retrieve the group priority ordering. The target resource must point to an app. */
@@ -921,18 +819,16 @@ export interface GoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest {
   policySchema?: string;
 }
 
-export const GoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest: Schema.Schema<GoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policyTargetKey: Schema.optional(
-        GoogleChromePolicyVersionsV1PolicyTargetKey,
-      ),
-      policyNamespace: Schema.optional(Schema.String),
-      policySchema: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policyTargetKey: Schema.optional(
+      GoogleChromePolicyVersionsV1PolicyTargetKey,
+    ),
+    policyNamespace: Schema.optional(Schema.String),
+    policySchema: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest",
-  }) as any as Schema.Schema<GoogleChromePolicyVersionsV1ListGroupPriorityOrderingRequest>;
+  });
 
 export interface GoogleChromePolicyVersionsV1CertificateReference {
   /** Output only. The obfuscated id of the org unit the referencing network is in. */
@@ -941,45 +837,39 @@ export interface GoogleChromePolicyVersionsV1CertificateReference {
   network?: string;
 }
 
-export const GoogleChromePolicyVersionsV1CertificateReference: Schema.Schema<GoogleChromePolicyVersionsV1CertificateReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      orgUnitId: Schema.optional(Schema.String),
-      network: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromePolicyVersionsV1CertificateReference =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    orgUnitId: Schema.optional(Schema.String),
+    network: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleChromePolicyVersionsV1CertificateReference",
-  }) as any as Schema.Schema<GoogleChromePolicyVersionsV1CertificateReference>;
+  });
 
 export interface GoogleChromePolicyVersionsV1RemoveCertificateErrorDetails {
   /** Output only. If the certificate was not removed, a list of references to the certificate that prevented it from being removed. Only unreferenced certificates can be removed. */
   certificateReferences?: Array<GoogleChromePolicyVersionsV1CertificateReference>;
 }
 
-export const GoogleChromePolicyVersionsV1RemoveCertificateErrorDetails: Schema.Schema<GoogleChromePolicyVersionsV1RemoveCertificateErrorDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      certificateReferences: Schema.optional(
-        Schema.Array(GoogleChromePolicyVersionsV1CertificateReference),
-      ),
-    }),
-  ).annotate({
+export const GoogleChromePolicyVersionsV1RemoveCertificateErrorDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    certificateReferences: Schema.optional(
+      Schema.Array(GoogleChromePolicyVersionsV1CertificateReference),
+    ),
+  }).annotate({
     identifier: "GoogleChromePolicyVersionsV1RemoveCertificateErrorDetails",
-  }) as any as Schema.Schema<GoogleChromePolicyVersionsV1RemoveCertificateErrorDetails>;
+  });
 
 export interface GoogleChromePolicyVersionsV1UploadPolicyFileRequest {
   /** Required. The fully qualified policy schema and field name this file is uploaded for. This information will be used to validate the content type of the file. */
   policyField?: string;
 }
 
-export const GoogleChromePolicyVersionsV1UploadPolicyFileRequest: Schema.Schema<GoogleChromePolicyVersionsV1UploadPolicyFileRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policyField: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromePolicyVersionsV1UploadPolicyFileRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policyField: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleChromePolicyVersionsV1UploadPolicyFileRequest",
-  }) as any as Schema.Schema<GoogleChromePolicyVersionsV1UploadPolicyFileRequest>;
+  });
 
 export interface GoogleChromePolicyVersionsV1DefineCertificateResponse {
   /** The guid of the certificate created by the action. */
@@ -990,34 +880,30 @@ export interface GoogleChromePolicyVersionsV1DefineCertificateResponse {
   settings?: Array<GoogleChromePolicyVersionsV1NetworkSetting>;
 }
 
-export const GoogleChromePolicyVersionsV1DefineCertificateResponse: Schema.Schema<GoogleChromePolicyVersionsV1DefineCertificateResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      networkId: Schema.optional(Schema.String),
-      targetResource: Schema.optional(Schema.String),
-      settings: Schema.optional(
-        Schema.Array(GoogleChromePolicyVersionsV1NetworkSetting),
-      ),
-    }),
-  ).annotate({
+export const GoogleChromePolicyVersionsV1DefineCertificateResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    networkId: Schema.optional(Schema.String),
+    targetResource: Schema.optional(Schema.String),
+    settings: Schema.optional(
+      Schema.Array(GoogleChromePolicyVersionsV1NetworkSetting),
+    ),
+  }).annotate({
     identifier: "GoogleChromePolicyVersionsV1DefineCertificateResponse",
-  }) as any as Schema.Schema<GoogleChromePolicyVersionsV1DefineCertificateResponse>;
+  });
 
 export interface GoogleChromePolicyVersionsV1BatchModifyOrgUnitPoliciesRequest {
   /** List of policies to modify as defined by the `requests`. All requests in the list must follow these restrictions: 1. All schemas in the list must have the same root namespace. 2. All `policyTargetKey.targetResource` values must point to an org unit resource. 3. All `policyTargetKey` values must have the same key names in the ` additionalTargetKeys`. This also means if one of the targets has an empty `additionalTargetKeys` map, all of the targets must have an empty `additionalTargetKeys` map. 4. No two modification requests can reference the same `policySchema` + ` policyTargetKey` pair. */
   requests?: Array<GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest>;
 }
 
-export const GoogleChromePolicyVersionsV1BatchModifyOrgUnitPoliciesRequest: Schema.Schema<GoogleChromePolicyVersionsV1BatchModifyOrgUnitPoliciesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requests: Schema.optional(
-        Schema.Array(GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest),
-      ),
-    }),
-  ).annotate({
+export const GoogleChromePolicyVersionsV1BatchModifyOrgUnitPoliciesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requests: Schema.optional(
+      Schema.Array(GoogleChromePolicyVersionsV1ModifyOrgUnitPolicyRequest),
+    ),
+  }).annotate({
     identifier: "GoogleChromePolicyVersionsV1BatchModifyOrgUnitPoliciesRequest",
-  }) as any as Schema.Schema<GoogleChromePolicyVersionsV1BatchModifyOrgUnitPoliciesRequest>;
+  });
 
 export interface GoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest {
   /** Required. The key of the target for which we want to update the group priority ordering. The target resource must point to an app. */
@@ -1030,36 +916,32 @@ export interface GoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest 
   policySchema?: string;
 }
 
-export const GoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest: Schema.Schema<GoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policyTargetKey: Schema.optional(
-        GoogleChromePolicyVersionsV1PolicyTargetKey,
-      ),
-      groupIds: Schema.optional(Schema.Array(Schema.String)),
-      policyNamespace: Schema.optional(Schema.String),
-      policySchema: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policyTargetKey: Schema.optional(
+      GoogleChromePolicyVersionsV1PolicyTargetKey,
+    ),
+    groupIds: Schema.optional(Schema.Array(Schema.String)),
+    policyNamespace: Schema.optional(Schema.String),
+    policySchema: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest",
-  }) as any as Schema.Schema<GoogleChromePolicyVersionsV1UpdateGroupPriorityOrderingRequest>;
+  });
 
 export interface GoogleChromePolicyVersionsV1BatchModifyGroupPoliciesRequest {
   /** List of policies to modify as defined by the `requests`. All requests in the list must follow these restrictions: 1. All schemas in the list must have the same root namespace. 2. All `policyTargetKey.targetResource` values must point to a group resource. 3. All `policyTargetKey` values must have the same `app_id` key name in the `additionalTargetKeys`. 4. No two modification requests can reference the same `policySchema` + ` policyTargetKey` pair. */
   requests?: Array<GoogleChromePolicyVersionsV1ModifyGroupPolicyRequest>;
 }
 
-export const GoogleChromePolicyVersionsV1BatchModifyGroupPoliciesRequest: Schema.Schema<GoogleChromePolicyVersionsV1BatchModifyGroupPoliciesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requests: Schema.optional(
-        Schema.Array(GoogleChromePolicyVersionsV1ModifyGroupPolicyRequest),
-      ),
-    }),
-  ).annotate({
+export const GoogleChromePolicyVersionsV1BatchModifyGroupPoliciesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requests: Schema.optional(
+      Schema.Array(GoogleChromePolicyVersionsV1ModifyGroupPolicyRequest),
+    ),
+  }).annotate({
     identifier: "GoogleChromePolicyVersionsV1BatchModifyGroupPoliciesRequest",
-  }) as any as Schema.Schema<GoogleChromePolicyVersionsV1BatchModifyGroupPoliciesRequest>;
+  });
 
 export interface GoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse {
   /** Output only. The schema name of the policy for the group IDs. */
@@ -1072,19 +954,17 @@ export interface GoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse {
   groupIds?: Array<string>;
 }
 
-export const GoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse: Schema.Schema<GoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policySchema: Schema.optional(Schema.String),
-      policyNamespace: Schema.optional(Schema.String),
-      policyTargetKey: Schema.optional(
-        GoogleChromePolicyVersionsV1PolicyTargetKey,
-      ),
-      groupIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policySchema: Schema.optional(Schema.String),
+    policyNamespace: Schema.optional(Schema.String),
+    policyTargetKey: Schema.optional(
+      GoogleChromePolicyVersionsV1PolicyTargetKey,
+    ),
+    groupIds: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse",
-  }) as any as Schema.Schema<GoogleChromePolicyVersionsV1ListGroupPriorityOrderingResponse>;
+  });
 
 export interface GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest {
   /** Required. The key of the target for which we want to modify a policy. The target resource must point to a Group. */
@@ -1093,17 +973,15 @@ export interface GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest {
   policySchema?: string;
 }
 
-export const GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest: Schema.Schema<GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policyTargetKey: Schema.optional(
-        GoogleChromePolicyVersionsV1PolicyTargetKey,
-      ),
-      policySchema: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policyTargetKey: Schema.optional(
+      GoogleChromePolicyVersionsV1PolicyTargetKey,
+    ),
+    policySchema: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest",
-  }) as any as Schema.Schema<GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest>;
+  });
 
 export interface GoogleChromePolicyVersionsV1DefineNetworkResponse {
   /** The target resource on which this new network will be defined. The following resources are supported: * Organizational Unit ("orgunits/{orgunit_id}") */
@@ -1114,34 +992,30 @@ export interface GoogleChromePolicyVersionsV1DefineNetworkResponse {
   networkId?: string;
 }
 
-export const GoogleChromePolicyVersionsV1DefineNetworkResponse: Schema.Schema<GoogleChromePolicyVersionsV1DefineNetworkResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetResource: Schema.optional(Schema.String),
-      settings: Schema.optional(
-        Schema.Array(GoogleChromePolicyVersionsV1NetworkSetting),
-      ),
-      networkId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromePolicyVersionsV1DefineNetworkResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetResource: Schema.optional(Schema.String),
+    settings: Schema.optional(
+      Schema.Array(GoogleChromePolicyVersionsV1NetworkSetting),
+    ),
+    networkId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleChromePolicyVersionsV1DefineNetworkResponse",
-  }) as any as Schema.Schema<GoogleChromePolicyVersionsV1DefineNetworkResponse>;
+  });
 
 export interface GoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest {
   /** List of policies that will be deleted as defined by the `requests`. All requests in the list must follow these restrictions: 1. All schemas in the list must have the same root namespace. 2. All `policyTargetKey.targetResource` values must point to a group resource. 3. All `policyTargetKey` values must have the same `app_id` key name in the `additionalTargetKeys`. 4. No two modification requests can reference the same `policySchema` + ` policyTargetKey` pair. */
   requests?: Array<GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest>;
 }
 
-export const GoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest: Schema.Schema<GoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requests: Schema.optional(
-        Schema.Array(GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest),
-      ),
-    }),
-  ).annotate({
+export const GoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requests: Schema.optional(
+      Schema.Array(GoogleChromePolicyVersionsV1DeleteGroupPolicyRequest),
+    ),
+  }).annotate({
     identifier: "GoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest",
-  }) as any as Schema.Schema<GoogleChromePolicyVersionsV1BatchDeleteGroupPoliciesRequest>;
+  });
 
 export interface GoogleChromePolicyVersionsV1RemoveCertificateRequest {
   /** Required. The target resource on which this certificate will be removed. The following resources are supported: * Organizational Unit ("orgunits/{orgunit_id}") */
@@ -1150,15 +1024,13 @@ export interface GoogleChromePolicyVersionsV1RemoveCertificateRequest {
   networkId?: string;
 }
 
-export const GoogleChromePolicyVersionsV1RemoveCertificateRequest: Schema.Schema<GoogleChromePolicyVersionsV1RemoveCertificateRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetResource: Schema.optional(Schema.String),
-      networkId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleChromePolicyVersionsV1RemoveCertificateRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetResource: Schema.optional(Schema.String),
+    networkId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleChromePolicyVersionsV1RemoveCertificateRequest",
-  }) as any as Schema.Schema<GoogleChromePolicyVersionsV1RemoveCertificateRequest>;
+  });
 
 // ==========================================================================
 // Operations

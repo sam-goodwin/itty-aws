@@ -35,16 +35,13 @@ export interface Location {
   metadata?: Record<string, unknown>;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      locationId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  locationId: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Location" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -53,15 +50,10 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(Location)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface Expr {
   /** Textual representation of an expression in Common Expression Language syntax. */
@@ -74,15 +66,12 @@ export interface Expr {
   location?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expression: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Expr" }) as any as Schema.Schema<Expr>;
+export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  expression: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+}).annotate({ identifier: "Expr" });
 
 export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
@@ -93,14 +82,11 @@ export interface Binding {
   condition?: Expr;
 }
 
-export const Binding: Schema.Schema<Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      role: Schema.optional(Schema.String),
-      members: Schema.optional(Schema.Array(Schema.String)),
-      condition: Schema.optional(Expr),
-    }),
-  ).annotate({ identifier: "Binding" }) as any as Schema.Schema<Binding>;
+export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  role: Schema.optional(Schema.String),
+  members: Schema.optional(Schema.Array(Schema.String)),
+  condition: Schema.optional(Expr),
+}).annotate({ identifier: "Binding" });
 
 export interface AuditLogConfig {
   /** The log type that this config enables. */
@@ -114,15 +100,10 @@ export interface AuditLogConfig {
   exemptedMembers?: Array<string>;
 }
 
-export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      logType: Schema.optional(Schema.String),
-      exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AuditLogConfig",
-  }) as any as Schema.Schema<AuditLogConfig>;
+export const AuditLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  logType: Schema.optional(Schema.String),
+  exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "AuditLogConfig" });
 
 export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
@@ -131,15 +112,10 @@ export interface AuditConfig {
   auditLogConfigs?: Array<AuditLogConfig>;
 }
 
-export const AuditConfig: Schema.Schema<AuditConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      service: Schema.optional(Schema.String),
-      auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
-    }),
-  ).annotate({
-    identifier: "AuditConfig",
-  }) as any as Schema.Schema<AuditConfig>;
+export const AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  service: Schema.optional(Schema.String),
+  auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
+}).annotate({ identifier: "AuditConfig" });
 
 export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -152,15 +128,12 @@ export interface Policy {
   etag?: string;
 }
 
-export const Policy: Schema.Schema<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.Number),
-      bindings: Schema.optional(Schema.Array(Binding)),
-      auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Policy" }) as any as Schema.Schema<Policy>;
+export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.Number),
+  bindings: Schema.optional(Schema.Array(Binding)),
+  auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "Policy" });
 
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
@@ -169,43 +142,30 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policy: Schema.optional(Policy),
-      updateMask: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SetIamPolicyRequest",
-  }) as any as Schema.Schema<SetIamPolicyRequest>;
+export const SetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policy: Schema.optional(Policy),
+  updateMask: Schema.optional(Schema.String),
+}).annotate({ identifier: "SetIamPolicyRequest" });
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsRequest",
-  }) as any as Schema.Schema<TestIamPermissionsRequest>;
+export const TestIamPermissionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsRequest" });
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsResponse",
-  }) as any as Schema.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsResponse" });
 
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -216,16 +176,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -240,16 +197,13 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      error: Schema.optional(Status),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  done: Schema.optional(Schema.Boolean),
+  error: Schema.optional(Status),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Operation" });
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -260,30 +214,25 @@ export interface ListOperationsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(Schema.Array(Operation)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    operations: Schema.optional(Schema.Array(Operation)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelOperationRequest",
-  }) as any as Schema.Schema<CancelOperationRequest>;
+export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelOperationRequest" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface ConsentStore {
   /** Identifier. Resource name of the consent store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}`. Cannot be changed after creation. */
@@ -296,17 +245,12 @@ export interface ConsentStore {
   enableConsentCreateOnUpdate?: boolean;
 }
 
-export const ConsentStore: Schema.Schema<ConsentStore> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      defaultConsentTtl: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      enableConsentCreateOnUpdate: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ConsentStore",
-  }) as any as Schema.Schema<ConsentStore>;
+export const ConsentStore = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  defaultConsentTtl: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  enableConsentCreateOnUpdate: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "ConsentStore" });
 
 export interface ListConsentStoresResponse {
   /** The returned consent stores. The maximum number of stores returned is determined by the value of page_size in the ListConsentStoresRequest. */
@@ -315,15 +259,11 @@ export interface ListConsentStoresResponse {
   nextPageToken?: string;
 }
 
-export const ListConsentStoresResponse: Schema.Schema<ListConsentStoresResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      consentStores: Schema.optional(Schema.Array(ConsentStore)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListConsentStoresResponse",
-  }) as any as Schema.Schema<ListConsentStoresResponse>;
+export const ListConsentStoresResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    consentStores: Schema.optional(Schema.Array(ConsentStore)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListConsentStoresResponse" });
 
 export interface AttributeDefinition {
   /** Identifier. Resource name of the Attribute definition, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/attributeDefinitions/{attribute_definition_id}`. Cannot be changed after creation. */
@@ -340,19 +280,14 @@ export interface AttributeDefinition {
   dataMappingDefaultValue?: string;
 }
 
-export const AttributeDefinition: Schema.Schema<AttributeDefinition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      category: Schema.optional(Schema.String),
-      allowedValues: Schema.optional(Schema.Array(Schema.String)),
-      consentDefaultValues: Schema.optional(Schema.Array(Schema.String)),
-      dataMappingDefaultValue: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AttributeDefinition",
-  }) as any as Schema.Schema<AttributeDefinition>;
+export const AttributeDefinition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  category: Schema.optional(Schema.String),
+  allowedValues: Schema.optional(Schema.Array(Schema.String)),
+  consentDefaultValues: Schema.optional(Schema.Array(Schema.String)),
+  dataMappingDefaultValue: Schema.optional(Schema.String),
+}).annotate({ identifier: "AttributeDefinition" });
 
 export interface ListAttributeDefinitionsResponse {
   /** The returned Attribute definitions. The maximum number of attributes returned is determined by the value of page_size in the ListAttributeDefinitionsRequest. */
@@ -361,15 +296,11 @@ export interface ListAttributeDefinitionsResponse {
   nextPageToken?: string;
 }
 
-export const ListAttributeDefinitionsResponse: Schema.Schema<ListAttributeDefinitionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      attributeDefinitions: Schema.optional(Schema.Array(AttributeDefinition)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAttributeDefinitionsResponse",
-  }) as any as Schema.Schema<ListAttributeDefinitionsResponse>;
+export const ListAttributeDefinitionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    attributeDefinitions: Schema.optional(Schema.Array(AttributeDefinition)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListAttributeDefinitionsResponse" });
 
 export interface Image {
   /** Consent artifact content represented as a stream of bytes. This field is populated when returned in GetConsentArtifact response, but not included in CreateConsentArtifact and ListConsentArtifact response. */
@@ -378,13 +309,10 @@ export interface Image {
   gcsUri?: string;
 }
 
-export const Image: Schema.Schema<Image> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rawBytes: Schema.optional(Schema.String),
-      gcsUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Image" }) as any as Schema.Schema<Image>;
+export const Image = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  rawBytes: Schema.optional(Schema.String),
+  gcsUri: Schema.optional(Schema.String),
+}).annotate({ identifier: "Image" });
 
 export interface Signature {
   /** Required. User's UUID provided by the client. */
@@ -397,15 +325,12 @@ export interface Signature {
   signatureTime?: string;
 }
 
-export const Signature: Schema.Schema<Signature> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userId: Schema.optional(Schema.String),
-      image: Schema.optional(Image),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      signatureTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Signature" }) as any as Schema.Schema<Signature>;
+export const Signature = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  userId: Schema.optional(Schema.String),
+  image: Schema.optional(Image),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  signatureTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Signature" });
 
 export interface ConsentArtifact {
   /** Identifier. Resource name of the Consent artifact, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. Cannot be changed after creation. */
@@ -426,21 +351,16 @@ export interface ConsentArtifact {
   metadata?: Record<string, string>;
 }
 
-export const ConsentArtifact: Schema.Schema<ConsentArtifact> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      userId: Schema.optional(Schema.String),
-      userSignature: Schema.optional(Signature),
-      guardianSignature: Schema.optional(Signature),
-      witnessSignature: Schema.optional(Signature),
-      consentContentScreenshots: Schema.optional(Schema.Array(Image)),
-      consentContentVersion: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ConsentArtifact",
-  }) as any as Schema.Schema<ConsentArtifact>;
+export const ConsentArtifact = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  userId: Schema.optional(Schema.String),
+  userSignature: Schema.optional(Signature),
+  guardianSignature: Schema.optional(Signature),
+  witnessSignature: Schema.optional(Signature),
+  consentContentScreenshots: Schema.optional(Schema.Array(Image)),
+  consentContentVersion: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "ConsentArtifact" });
 
 export interface ListConsentArtifactsResponse {
   /** The returned Consent artifacts. The maximum number of artifacts returned is determined by the value of page_size in the ListConsentArtifactsRequest. */
@@ -449,15 +369,11 @@ export interface ListConsentArtifactsResponse {
   nextPageToken?: string;
 }
 
-export const ListConsentArtifactsResponse: Schema.Schema<ListConsentArtifactsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      consentArtifacts: Schema.optional(Schema.Array(ConsentArtifact)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListConsentArtifactsResponse",
-  }) as any as Schema.Schema<ListConsentArtifactsResponse>;
+export const ListConsentArtifactsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    consentArtifacts: Schema.optional(Schema.Array(ConsentArtifact)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListConsentArtifactsResponse" });
 
 export interface Attribute {
   /** Indicates the name of an attribute defined in the consent store. */
@@ -466,13 +382,10 @@ export interface Attribute {
   values?: Array<string>;
 }
 
-export const Attribute: Schema.Schema<Attribute> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      attributeDefinitionId: Schema.optional(Schema.String),
-      values: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "Attribute" }) as any as Schema.Schema<Attribute>;
+export const Attribute = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  attributeDefinitionId: Schema.optional(Schema.String),
+  values: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Attribute" });
 
 export interface GoogleCloudHealthcareV1ConsentPolicy {
   /** The resources that this policy applies to. A resource is a match if it matches all the attributes listed here. If empty, this policy applies to all User data mappings for the given user. */
@@ -481,15 +394,11 @@ export interface GoogleCloudHealthcareV1ConsentPolicy {
   authorizationRule?: Expr;
 }
 
-export const GoogleCloudHealthcareV1ConsentPolicy: Schema.Schema<GoogleCloudHealthcareV1ConsentPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceAttributes: Schema.optional(Schema.Array(Attribute)),
-      authorizationRule: Schema.optional(Expr),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudHealthcareV1ConsentPolicy",
-  }) as any as Schema.Schema<GoogleCloudHealthcareV1ConsentPolicy>;
+export const GoogleCloudHealthcareV1ConsentPolicy =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceAttributes: Schema.optional(Schema.Array(Attribute)),
+    authorizationRule: Schema.optional(Expr),
+  }).annotate({ identifier: "GoogleCloudHealthcareV1ConsentPolicy" });
 
 export interface Consent {
   /** Identifier. Resource name of the Consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`. Cannot be changed after creation. */
@@ -521,23 +430,18 @@ export interface Consent {
   metadata?: Record<string, string>;
 }
 
-export const Consent: Schema.Schema<Consent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      revisionId: Schema.optional(Schema.String),
-      revisionCreateTime: Schema.optional(Schema.String),
-      userId: Schema.optional(Schema.String),
-      policies: Schema.optional(
-        Schema.Array(GoogleCloudHealthcareV1ConsentPolicy),
-      ),
-      consentArtifact: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      expireTime: Schema.optional(Schema.String),
-      ttl: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({ identifier: "Consent" }) as any as Schema.Schema<Consent>;
+export const Consent = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  revisionId: Schema.optional(Schema.String),
+  revisionCreateTime: Schema.optional(Schema.String),
+  userId: Schema.optional(Schema.String),
+  policies: Schema.optional(Schema.Array(GoogleCloudHealthcareV1ConsentPolicy)),
+  consentArtifact: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  expireTime: Schema.optional(Schema.String),
+  ttl: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "Consent" });
 
 export interface ActivateConsentRequest {
   /** Required. The resource name of the Consent artifact that contains documentation of the user's consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. If the draft Consent had a Consent artifact, this Consent artifact overwrites it. */
@@ -548,30 +452,22 @@ export interface ActivateConsentRequest {
   ttl?: string;
 }
 
-export const ActivateConsentRequest: Schema.Schema<ActivateConsentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      consentArtifact: Schema.optional(Schema.String),
-      expireTime: Schema.optional(Schema.String),
-      ttl: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ActivateConsentRequest",
-  }) as any as Schema.Schema<ActivateConsentRequest>;
+export const ActivateConsentRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    consentArtifact: Schema.optional(Schema.String),
+    expireTime: Schema.optional(Schema.String),
+    ttl: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ActivateConsentRequest" });
 
 export interface RejectConsentRequest {
   /** Optional. The resource name of the Consent artifact that contains documentation of the user's rejection of the draft Consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. If the draft Consent had a Consent artifact, this Consent artifact overwrites it. */
   consentArtifact?: string;
 }
 
-export const RejectConsentRequest: Schema.Schema<RejectConsentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      consentArtifact: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RejectConsentRequest",
-  }) as any as Schema.Schema<RejectConsentRequest>;
+export const RejectConsentRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  consentArtifact: Schema.optional(Schema.String),
+}).annotate({ identifier: "RejectConsentRequest" });
 
 export interface ListConsentsResponse {
   /** The returned Consents. The maximum number of Consents returned is determined by the value of page_size in the ListConsentsRequest. */
@@ -580,15 +476,10 @@ export interface ListConsentsResponse {
   nextPageToken?: string;
 }
 
-export const ListConsentsResponse: Schema.Schema<ListConsentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      consents: Schema.optional(Schema.Array(Consent)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListConsentsResponse",
-  }) as any as Schema.Schema<ListConsentsResponse>;
+export const ListConsentsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  consents: Schema.optional(Schema.Array(Consent)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListConsentsResponse" });
 
 export interface ListConsentRevisionsResponse {
   /** The returned Consent revisions. The maximum number of revisions returned is determined by the value of `page_size` in the ListConsentRevisionsRequest. */
@@ -597,29 +488,20 @@ export interface ListConsentRevisionsResponse {
   nextPageToken?: string;
 }
 
-export const ListConsentRevisionsResponse: Schema.Schema<ListConsentRevisionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      consents: Schema.optional(Schema.Array(Consent)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListConsentRevisionsResponse",
-  }) as any as Schema.Schema<ListConsentRevisionsResponse>;
+export const ListConsentRevisionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    consents: Schema.optional(Schema.Array(Consent)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListConsentRevisionsResponse" });
 
 export interface RevokeConsentRequest {
   /** Optional. The resource name of the Consent artifact that contains proof of the user's revocation of the Consent, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consentArtifacts/{consent_artifact_id}`. */
   consentArtifact?: string;
 }
 
-export const RevokeConsentRequest: Schema.Schema<RevokeConsentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      consentArtifact: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RevokeConsentRequest",
-  }) as any as Schema.Schema<RevokeConsentRequest>;
+export const RevokeConsentRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  consentArtifact: Schema.optional(Schema.String),
+}).annotate({ identifier: "RevokeConsentRequest" });
 
 export interface UserDataMapping {
   /** Resource name of the User data mapping, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/userDataMappings/{user_data_mapping_id}`. */
@@ -636,19 +518,14 @@ export interface UserDataMapping {
   archiveTime?: string;
 }
 
-export const UserDataMapping: Schema.Schema<UserDataMapping> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      dataId: Schema.optional(Schema.String),
-      userId: Schema.optional(Schema.String),
-      resourceAttributes: Schema.optional(Schema.Array(Attribute)),
-      archived: Schema.optional(Schema.Boolean),
-      archiveTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UserDataMapping",
-  }) as any as Schema.Schema<UserDataMapping>;
+export const UserDataMapping = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  dataId: Schema.optional(Schema.String),
+  userId: Schema.optional(Schema.String),
+  resourceAttributes: Schema.optional(Schema.Array(Attribute)),
+  archived: Schema.optional(Schema.Boolean),
+  archiveTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "UserDataMapping" });
 
 export interface ListUserDataMappingsResponse {
   /** The returned User data mappings. The maximum number of User data mappings returned is determined by the value of page_size in the ListUserDataMappingsRequest. */
@@ -657,43 +534,34 @@ export interface ListUserDataMappingsResponse {
   nextPageToken?: string;
 }
 
-export const ListUserDataMappingsResponse: Schema.Schema<ListUserDataMappingsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userDataMappings: Schema.optional(Schema.Array(UserDataMapping)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListUserDataMappingsResponse",
-  }) as any as Schema.Schema<ListUserDataMappingsResponse>;
+export const ListUserDataMappingsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userDataMappings: Schema.optional(Schema.Array(UserDataMapping)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListUserDataMappingsResponse" });
 
 export interface ArchiveUserDataMappingRequest {}
 
-export const ArchiveUserDataMappingRequest: Schema.Schema<ArchiveUserDataMappingRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const ArchiveUserDataMappingRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ArchiveUserDataMappingRequest",
-  }) as any as Schema.Schema<ArchiveUserDataMappingRequest>;
+  });
 
 export interface ArchiveUserDataMappingResponse {}
 
-export const ArchiveUserDataMappingResponse: Schema.Schema<ArchiveUserDataMappingResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const ArchiveUserDataMappingResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ArchiveUserDataMappingResponse",
-  }) as any as Schema.Schema<ArchiveUserDataMappingResponse>;
+  });
 
 export interface ConsentList {
   /** The resource names of the Consents to evaluate against, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/consentStores/{consent_store_id}/consents/{consent_id}`. */
   consents?: Array<string>;
 }
 
-export const ConsentList: Schema.Schema<ConsentList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      consents: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ConsentList",
-  }) as any as Schema.Schema<ConsentList>;
+export const ConsentList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  consents: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ConsentList" });
 
 export interface CheckDataAccessRequest {
   /** Required. The unique identifier of the resource to check access for. This identifier must correspond to a User data mapping in the given consent store. */
@@ -706,19 +574,16 @@ export interface CheckDataAccessRequest {
   responseView?: "RESPONSE_VIEW_UNSPECIFIED" | "BASIC" | "FULL" | (string & {});
 }
 
-export const CheckDataAccessRequest: Schema.Schema<CheckDataAccessRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataId: Schema.optional(Schema.String),
-      requestAttributes: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      consentList: Schema.optional(ConsentList),
-      responseView: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CheckDataAccessRequest",
-  }) as any as Schema.Schema<CheckDataAccessRequest>;
+export const CheckDataAccessRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    dataId: Schema.optional(Schema.String),
+    requestAttributes: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    consentList: Schema.optional(ConsentList),
+    responseView: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "CheckDataAccessRequest" });
 
 export interface ConsentEvaluation {
   /** The evaluation result. */
@@ -731,14 +596,9 @@ export interface ConsentEvaluation {
     | (string & {});
 }
 
-export const ConsentEvaluation: Schema.Schema<ConsentEvaluation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      evaluationResult: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConsentEvaluation",
-  }) as any as Schema.Schema<ConsentEvaluation>;
+export const ConsentEvaluation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  evaluationResult: Schema.optional(Schema.String),
+}).annotate({ identifier: "ConsentEvaluation" });
 
 export interface CheckDataAccessResponse {
   /** Whether the requested resource is consented for the given use. */
@@ -747,31 +607,23 @@ export interface CheckDataAccessResponse {
   consentDetails?: Record<string, ConsentEvaluation>;
 }
 
-export const CheckDataAccessResponse: Schema.Schema<CheckDataAccessResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      consented: Schema.optional(Schema.Boolean),
-      consentDetails: Schema.optional(
-        Schema.Record(Schema.String, ConsentEvaluation),
-      ),
-    }),
-  ).annotate({
-    identifier: "CheckDataAccessResponse",
-  }) as any as Schema.Schema<CheckDataAccessResponse>;
+export const CheckDataAccessResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    consented: Schema.optional(Schema.Boolean),
+    consentDetails: Schema.optional(
+      Schema.Record(Schema.String, ConsentEvaluation),
+    ),
+  }).annotate({ identifier: "CheckDataAccessResponse" });
 
 export interface GoogleCloudHealthcareV1ConsentGcsDestination {
   /** URI for a Cloud Storage directory where the server writes result files, in the format `gs://{bucket-id}/{path/to/destination/dir}`. If there is no trailing slash, the service appends one when composing the object path. The user is responsible for creating the Cloud Storage bucket and directory referenced in `uri_prefix`. */
   uriPrefix?: string;
 }
 
-export const GoogleCloudHealthcareV1ConsentGcsDestination: Schema.Schema<GoogleCloudHealthcareV1ConsentGcsDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uriPrefix: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudHealthcareV1ConsentGcsDestination",
-  }) as any as Schema.Schema<GoogleCloudHealthcareV1ConsentGcsDestination>;
+export const GoogleCloudHealthcareV1ConsentGcsDestination =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uriPrefix: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudHealthcareV1ConsentGcsDestination" });
 
 export interface QueryAccessibleDataRequest {
   /** The Cloud Storage destination. The Cloud Healthcare API service account must have the `roles/storage.objectAdmin` Cloud IAM role for this Cloud Storage location. */
@@ -782,22 +634,18 @@ export interface QueryAccessibleDataRequest {
   requestAttributes?: Record<string, string>;
 }
 
-export const QueryAccessibleDataRequest: Schema.Schema<QueryAccessibleDataRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsDestination: Schema.optional(
-        GoogleCloudHealthcareV1ConsentGcsDestination,
-      ),
-      resourceAttributes: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      requestAttributes: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-    }),
-  ).annotate({
-    identifier: "QueryAccessibleDataRequest",
-  }) as any as Schema.Schema<QueryAccessibleDataRequest>;
+export const QueryAccessibleDataRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gcsDestination: Schema.optional(
+      GoogleCloudHealthcareV1ConsentGcsDestination,
+    ),
+    resourceAttributes: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    requestAttributes: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+  }).annotate({ identifier: "QueryAccessibleDataRequest" });
 
 export interface EvaluateUserConsentsRequest {
   /** Required. User ID to evaluate consents for. */
@@ -816,24 +664,20 @@ export interface EvaluateUserConsentsRequest {
   pageToken?: string;
 }
 
-export const EvaluateUserConsentsRequest: Schema.Schema<EvaluateUserConsentsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userId: Schema.optional(Schema.String),
-      resourceAttributes: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      requestAttributes: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      consentList: Schema.optional(ConsentList),
-      responseView: Schema.optional(Schema.String),
-      pageSize: Schema.optional(Schema.Number),
-      pageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EvaluateUserConsentsRequest",
-  }) as any as Schema.Schema<EvaluateUserConsentsRequest>;
+export const EvaluateUserConsentsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userId: Schema.optional(Schema.String),
+    resourceAttributes: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    requestAttributes: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    consentList: Schema.optional(ConsentList),
+    responseView: Schema.optional(Schema.String),
+    pageSize: Schema.optional(Schema.Number),
+    pageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EvaluateUserConsentsRequest" });
 
 export interface Result {
   /** The unique identifier of the evaluated resource. */
@@ -844,16 +688,13 @@ export interface Result {
   consentDetails?: Record<string, ConsentEvaluation>;
 }
 
-export const Result: Schema.Schema<Result> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataId: Schema.optional(Schema.String),
-      consented: Schema.optional(Schema.Boolean),
-      consentDetails: Schema.optional(
-        Schema.Record(Schema.String, ConsentEvaluation),
-      ),
-    }),
-  ).annotate({ identifier: "Result" }) as any as Schema.Schema<Result>;
+export const Result = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dataId: Schema.optional(Schema.String),
+  consented: Schema.optional(Schema.Boolean),
+  consentDetails: Schema.optional(
+    Schema.Record(Schema.String, ConsentEvaluation),
+  ),
+}).annotate({ identifier: "Result" });
 
 export interface EvaluateUserConsentsResponse {
   /** The consent evaluation result for each `data_id`. */
@@ -862,29 +703,20 @@ export interface EvaluateUserConsentsResponse {
   nextPageToken?: string;
 }
 
-export const EvaluateUserConsentsResponse: Schema.Schema<EvaluateUserConsentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      results: Schema.optional(Schema.Array(Result)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EvaluateUserConsentsResponse",
-  }) as any as Schema.Schema<EvaluateUserConsentsResponse>;
+export const EvaluateUserConsentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    results: Schema.optional(Schema.Array(Result)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EvaluateUserConsentsResponse" });
 
 export interface TagFilterList {
   /** Optional. Tags to be filtered. Tags must be DICOM Data Elements, File Meta Elements, or Directory Structuring Elements, as defined at: https://dicom.nema.org/medical/dicom/current/output/html/part06.html#table_6-1,. They may be provided by "Keyword" or "Tag". For example "PatientID", "00100010". */
   tags?: Array<string>;
 }
 
-export const TagFilterList: Schema.Schema<TagFilterList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tags: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TagFilterList",
-  }) as any as Schema.Schema<TagFilterList>;
+export const TagFilterList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tags: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "TagFilterList" });
 
 export interface DicomConfig {
   /** Optional. If true, skip replacing StudyInstanceUID, SeriesInstanceUID, SOPInstanceUID, and MediaStorageSOPInstanceUID and leave them untouched. The Cloud Healthcare API regenerates these UIDs by default based on the DICOM Standard's reasoning: "Whilst these UIDs cannot be mapped directly to an individual out of context, given access to the original images, or to a database of the original images containing the UIDs, it would be possible to recover the individual's identity." https://dicom.nema.org/medical/dicom/current/output/chtml/part15/sect_E.3.9.html */
@@ -903,17 +735,12 @@ export interface DicomConfig {
     | (string & {});
 }
 
-export const DicomConfig: Schema.Schema<DicomConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      skipIdRedaction: Schema.optional(Schema.Boolean),
-      keepList: Schema.optional(TagFilterList),
-      removeList: Schema.optional(TagFilterList),
-      filterProfile: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DicomConfig",
-  }) as any as Schema.Schema<DicomConfig>;
+export const DicomConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  skipIdRedaction: Schema.optional(Schema.Boolean),
+  keepList: Schema.optional(TagFilterList),
+  removeList: Schema.optional(TagFilterList),
+  filterProfile: Schema.optional(Schema.String),
+}).annotate({ identifier: "DicomConfig" });
 
 export interface FieldMetadata {
   /** Optional. List of paths to FHIR fields to be redacted. Each path is a period-separated list where each component is either a field name or FHIR type name, for example: Patient, HumanName. For "choice" types (those defined in the FHIR spec with the form: field[x]) we use two separate components. For example, "deceasedAge.unit" is matched by "Deceased.Age.unit". Supported types are: AdministrativeGenderCode, Base64Binary, Boolean, Code, Date, DateTime, Decimal, HumanName, Id, Instant, Integer, LanguageCode, Markdown, Oid, PositiveInt, String, UnsignedInt, Uri, Uuid, Xhtml. */
@@ -927,15 +754,10 @@ export interface FieldMetadata {
     | (string & {});
 }
 
-export const FieldMetadata: Schema.Schema<FieldMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      paths: Schema.optional(Schema.Array(Schema.String)),
-      action: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FieldMetadata",
-  }) as any as Schema.Schema<FieldMetadata>;
+export const FieldMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  paths: Schema.optional(Schema.Array(Schema.String)),
+  action: Schema.optional(Schema.String),
+}).annotate({ identifier: "FieldMetadata" });
 
 export interface FhirConfig {
   /** Optional. Specifies FHIR paths to match and how to transform them. Any field that is not matched by a FieldMetadata is passed through to the output dataset unmodified. All extensions will be processed according to `default_keep_extensions`. */
@@ -944,13 +766,10 @@ export interface FhirConfig {
   defaultKeepExtensions?: boolean;
 }
 
-export const FhirConfig: Schema.Schema<FhirConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fieldMetadataList: Schema.optional(Schema.Array(FieldMetadata)),
-      defaultKeepExtensions: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "FhirConfig" }) as any as Schema.Schema<FhirConfig>;
+export const FhirConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fieldMetadataList: Schema.optional(Schema.Array(FieldMetadata)),
+  defaultKeepExtensions: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "FhirConfig" });
 
 export interface ImageConfig {
   /** Optional. Determines how to redact text from image. */
@@ -962,35 +781,24 @@ export interface ImageConfig {
     | (string & {});
 }
 
-export const ImageConfig: Schema.Schema<ImageConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      textRedactionMode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ImageConfig",
-  }) as any as Schema.Schema<ImageConfig>;
+export const ImageConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  textRedactionMode: Schema.optional(Schema.String),
+}).annotate({ identifier: "ImageConfig" });
 
 export interface RedactConfig {}
 
-export const RedactConfig: Schema.Schema<RedactConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "RedactConfig",
-  }) as any as Schema.Schema<RedactConfig>;
+export const RedactConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "RedactConfig" });
 
 export interface CharacterMaskConfig {
   /** Optional. Character to mask the sensitive values. If not supplied, defaults to "*". */
   maskingCharacter?: string;
 }
 
-export const CharacterMaskConfig: Schema.Schema<CharacterMaskConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      maskingCharacter: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CharacterMaskConfig",
-  }) as any as Schema.Schema<CharacterMaskConfig>;
+export const CharacterMaskConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  maskingCharacter: Schema.optional(Schema.String),
+}).annotate({ identifier: "CharacterMaskConfig" });
 
 export interface KmsWrappedCryptoKey {
   /** Required. The wrapped data crypto key. */
@@ -999,15 +807,10 @@ export interface KmsWrappedCryptoKey {
   cryptoKey?: string;
 }
 
-export const KmsWrappedCryptoKey: Schema.Schema<KmsWrappedCryptoKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      wrappedKey: Schema.optional(Schema.String),
-      cryptoKey: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "KmsWrappedCryptoKey",
-  }) as any as Schema.Schema<KmsWrappedCryptoKey>;
+export const KmsWrappedCryptoKey = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  wrappedKey: Schema.optional(Schema.String),
+  cryptoKey: Schema.optional(Schema.String),
+}).annotate({ identifier: "KmsWrappedCryptoKey" });
 
 export interface DateShiftConfig {
   /** An AES 128/192/256 bit key. The date shift is computed based on this key and the patient ID. If the patient ID is empty for a DICOM resource, the date shift is computed based on this key and the study instance UID. If `crypto_key` is not set, then `kms_wrapped` is used to calculate the date shift. If neither is set, a default key is generated for each de-identify operation. Must not be set if `kms_wrapped` is set. */
@@ -1016,15 +819,10 @@ export interface DateShiftConfig {
   kmsWrapped?: KmsWrappedCryptoKey;
 }
 
-export const DateShiftConfig: Schema.Schema<DateShiftConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cryptoKey: Schema.optional(Schema.String),
-      kmsWrapped: Schema.optional(KmsWrappedCryptoKey),
-    }),
-  ).annotate({
-    identifier: "DateShiftConfig",
-  }) as any as Schema.Schema<DateShiftConfig>;
+export const DateShiftConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cryptoKey: Schema.optional(Schema.String),
+  kmsWrapped: Schema.optional(KmsWrappedCryptoKey),
+}).annotate({ identifier: "DateShiftConfig" });
 
 export interface CryptoHashConfig {
   /** An AES 128/192/256 bit key. Causes the hash to be computed based on this key. A default key is generated for each Deidentify operation and is used when neither `crypto_key` nor `kms_wrapped` is specified. Must not be set if `kms_wrapped` is set. */
@@ -1033,22 +831,17 @@ export interface CryptoHashConfig {
   kmsWrapped?: KmsWrappedCryptoKey;
 }
 
-export const CryptoHashConfig: Schema.Schema<CryptoHashConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cryptoKey: Schema.optional(Schema.String),
-      kmsWrapped: Schema.optional(KmsWrappedCryptoKey),
-    }),
-  ).annotate({
-    identifier: "CryptoHashConfig",
-  }) as any as Schema.Schema<CryptoHashConfig>;
+export const CryptoHashConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cryptoKey: Schema.optional(Schema.String),
+  kmsWrapped: Schema.optional(KmsWrappedCryptoKey),
+}).annotate({ identifier: "CryptoHashConfig" });
 
 export interface ReplaceWithInfoTypeConfig {}
 
-export const ReplaceWithInfoTypeConfig: Schema.Schema<ReplaceWithInfoTypeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const ReplaceWithInfoTypeConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ReplaceWithInfoTypeConfig",
-  }) as any as Schema.Schema<ReplaceWithInfoTypeConfig>;
+  });
 
 export interface InfoTypeTransformation {
   /** Optional. InfoTypes to apply this transformation to. If this is not specified, the transformation applies to any info_type. */
@@ -1065,19 +858,16 @@ export interface InfoTypeTransformation {
   replaceWithInfoTypeConfig?: ReplaceWithInfoTypeConfig;
 }
 
-export const InfoTypeTransformation: Schema.Schema<InfoTypeTransformation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      infoTypes: Schema.optional(Schema.Array(Schema.String)),
-      redactConfig: Schema.optional(RedactConfig),
-      characterMaskConfig: Schema.optional(CharacterMaskConfig),
-      dateShiftConfig: Schema.optional(DateShiftConfig),
-      cryptoHashConfig: Schema.optional(CryptoHashConfig),
-      replaceWithInfoTypeConfig: Schema.optional(ReplaceWithInfoTypeConfig),
-    }),
-  ).annotate({
-    identifier: "InfoTypeTransformation",
-  }) as any as Schema.Schema<InfoTypeTransformation>;
+export const InfoTypeTransformation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    infoTypes: Schema.optional(Schema.Array(Schema.String)),
+    redactConfig: Schema.optional(RedactConfig),
+    characterMaskConfig: Schema.optional(CharacterMaskConfig),
+    dateShiftConfig: Schema.optional(DateShiftConfig),
+    cryptoHashConfig: Schema.optional(CryptoHashConfig),
+    replaceWithInfoTypeConfig: Schema.optional(ReplaceWithInfoTypeConfig),
+  },
+).annotate({ identifier: "InfoTypeTransformation" });
 
 export interface TextConfig {
   /** Optional. The transformations to apply to the detected data. Deprecated. Use `additional_transformations` instead. */
@@ -1088,16 +878,13 @@ export interface TextConfig {
   excludeInfoTypes?: Array<string>;
 }
 
-export const TextConfig: Schema.Schema<TextConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      transformations: Schema.optional(Schema.Array(InfoTypeTransformation)),
-      additionalTransformations: Schema.optional(
-        Schema.Array(InfoTypeTransformation),
-      ),
-      excludeInfoTypes: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "TextConfig" }) as any as Schema.Schema<TextConfig>;
+export const TextConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  transformations: Schema.optional(Schema.Array(InfoTypeTransformation)),
+  additionalTransformations: Schema.optional(
+    Schema.Array(InfoTypeTransformation),
+  ),
+  excludeInfoTypes: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "TextConfig" });
 
 export interface DeidentifyConfig {
   /** Optional. Configures de-id of application/DICOM content. */
@@ -1112,42 +899,31 @@ export interface DeidentifyConfig {
   useRegionalDataProcessing?: boolean;
 }
 
-export const DeidentifyConfig: Schema.Schema<DeidentifyConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dicom: Schema.optional(DicomConfig),
-      fhir: Schema.optional(FhirConfig),
-      image: Schema.optional(ImageConfig),
-      text: Schema.optional(TextConfig),
-      useRegionalDataProcessing: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "DeidentifyConfig",
-  }) as any as Schema.Schema<DeidentifyConfig>;
+export const DeidentifyConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dicom: Schema.optional(DicomConfig),
+  fhir: Schema.optional(FhirConfig),
+  image: Schema.optional(ImageConfig),
+  text: Schema.optional(TextConfig),
+  useRegionalDataProcessing: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "DeidentifyConfig" });
 
 export interface Resources {
   /** List of resources IDs. For example, "Patient/1234". */
   resources?: Array<string>;
 }
 
-export const Resources: Schema.Schema<Resources> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resources: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "Resources" }) as any as Schema.Schema<Resources>;
+export const Resources = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resources: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Resources" });
 
 export interface FhirFilter {
   /** List of resources to include in the output. If this list is empty or not specified, all resources are included in the output. */
   resources?: Resources;
 }
 
-export const FhirFilter: Schema.Schema<FhirFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resources: Schema.optional(Resources),
-    }),
-  ).annotate({ identifier: "FhirFilter" }) as any as Schema.Schema<FhirFilter>;
+export const FhirFilter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resources: Schema.optional(Resources),
+}).annotate({ identifier: "FhirFilter" });
 
 export interface DeidentifyFhirStoreRequest {
   /** Required. The name of the FHIR store to write the redacted data to. For example, `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`. * The destination dataset and FHIR store must exist. * The source dataset and destination dataset must both reside in the same location. De-identifying data across multiple locations is not supported. * The caller must have the healthcare.fhirResources.update permission to write to the destination FHIR store. */
@@ -1162,32 +938,23 @@ export interface DeidentifyFhirStoreRequest {
   skipModifiedResources?: boolean;
 }
 
-export const DeidentifyFhirStoreRequest: Schema.Schema<DeidentifyFhirStoreRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      destinationStore: Schema.optional(Schema.String),
-      config: Schema.optional(DeidentifyConfig),
-      gcsConfigUri: Schema.optional(Schema.String),
-      resourceFilter: Schema.optional(FhirFilter),
-      skipModifiedResources: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "DeidentifyFhirStoreRequest",
-  }) as any as Schema.Schema<DeidentifyFhirStoreRequest>;
+export const DeidentifyFhirStoreRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    destinationStore: Schema.optional(Schema.String),
+    config: Schema.optional(DeidentifyConfig),
+    gcsConfigUri: Schema.optional(Schema.String),
+    resourceFilter: Schema.optional(FhirFilter),
+    skipModifiedResources: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "DeidentifyFhirStoreRequest" });
 
 export interface DicomFilterConfig {
   /** The Cloud Storage location of the filter configuration file. The `gcs_uri` must be in the format `gs://bucket/path/to/object`. The filter configuration file must contain a list of resource paths separated by newline characters (\n or \r\n). Each resource path must be in the format "/studies/{studyUID}[/series/{seriesUID}[/instances/{instanceUID}]]" The Cloud Healthcare API service account must have the `roles/storage.objectViewer` Cloud IAM role for this Cloud Storage location. */
   resourcePathsGcsUri?: string;
 }
 
-export const DicomFilterConfig: Schema.Schema<DicomFilterConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourcePathsGcsUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DicomFilterConfig",
-  }) as any as Schema.Schema<DicomFilterConfig>;
+export const DicomFilterConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourcePathsGcsUri: Schema.optional(Schema.String),
+}).annotate({ identifier: "DicomFilterConfig" });
 
 export interface DeidentifyDicomStoreRequest {
   /** Required. The name of the DICOM store to write the redacted data to. For example, `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`. * The destination dataset and DICOM store must exist. * The source dataset and destination dataset must both reside in the same location. De-identifying data across multiple locations is not supported. * The caller must have the healthcare.dicomStores.dicomWebWrite permission to write to the destination DICOM store. */
@@ -1200,31 +967,22 @@ export interface DeidentifyDicomStoreRequest {
   filterConfig?: DicomFilterConfig;
 }
 
-export const DeidentifyDicomStoreRequest: Schema.Schema<DeidentifyDicomStoreRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      destinationStore: Schema.optional(Schema.String),
-      config: Schema.optional(DeidentifyConfig),
-      gcsConfigUri: Schema.optional(Schema.String),
-      filterConfig: Schema.optional(DicomFilterConfig),
-    }),
-  ).annotate({
-    identifier: "DeidentifyDicomStoreRequest",
-  }) as any as Schema.Schema<DeidentifyDicomStoreRequest>;
+export const DeidentifyDicomStoreRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    destinationStore: Schema.optional(Schema.String),
+    config: Schema.optional(DeidentifyConfig),
+    gcsConfigUri: Schema.optional(Schema.String),
+    filterConfig: Schema.optional(DicomFilterConfig),
+  }).annotate({ identifier: "DeidentifyDicomStoreRequest" });
 
 export interface EncryptionSpec {
   /** Required. The resource name of customer-managed encryption key that is used to secure a resource and its sub-resources. Only the key in the same location as this Dataset is allowed to be used for encryption. Format is: `projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{key}` */
   kmsKeyName?: string;
 }
 
-export const EncryptionSpec: Schema.Schema<EncryptionSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kmsKeyName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EncryptionSpec",
-  }) as any as Schema.Schema<EncryptionSpec>;
+export const EncryptionSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kmsKeyName: Schema.optional(Schema.String),
+}).annotate({ identifier: "EncryptionSpec" });
 
 export interface Dataset {
   /** Identifier. Resource name of the dataset, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}`. */
@@ -1239,16 +997,13 @@ export interface Dataset {
   satisfiesPzi?: boolean;
 }
 
-export const Dataset: Schema.Schema<Dataset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      timeZone: Schema.optional(Schema.String),
-      encryptionSpec: Schema.optional(EncryptionSpec),
-      satisfiesPzs: Schema.optional(Schema.Boolean),
-      satisfiesPzi: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "Dataset" }) as any as Schema.Schema<Dataset>;
+export const Dataset = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  timeZone: Schema.optional(Schema.String),
+  encryptionSpec: Schema.optional(EncryptionSpec),
+  satisfiesPzs: Schema.optional(Schema.Boolean),
+  satisfiesPzi: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Dataset" });
 
 export interface ListDatasetsResponse {
   /** The first page of datasets. */
@@ -1257,15 +1012,10 @@ export interface ListDatasetsResponse {
   nextPageToken?: string;
 }
 
-export const ListDatasetsResponse: Schema.Schema<ListDatasetsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      datasets: Schema.optional(Schema.Array(Dataset)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListDatasetsResponse",
-  }) as any as Schema.Schema<ListDatasetsResponse>;
+export const ListDatasetsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  datasets: Schema.optional(Schema.Array(Dataset)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListDatasetsResponse" });
 
 export interface DeidentifyDatasetRequest {
   /** Required. The name of the dataset resource to create and write the redacted data to. * The destination dataset must not exist. * The destination dataset must be in the same location as the source dataset. De-identifying data across multiple locations is not supported. */
@@ -1276,30 +1026,21 @@ export interface DeidentifyDatasetRequest {
   gcsConfigUri?: string;
 }
 
-export const DeidentifyDatasetRequest: Schema.Schema<DeidentifyDatasetRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      destinationDataset: Schema.optional(Schema.String),
-      config: Schema.optional(DeidentifyConfig),
-      gcsConfigUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DeidentifyDatasetRequest",
-  }) as any as Schema.Schema<DeidentifyDatasetRequest>;
+export const DeidentifyDatasetRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    destinationDataset: Schema.optional(Schema.String),
+    config: Schema.optional(DeidentifyConfig),
+    gcsConfigUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DeidentifyDatasetRequest" });
 
 export interface StructuredStorageInfo {
   /** Size in bytes of data stored in structured storage. */
   sizeBytes?: string;
 }
 
-export const StructuredStorageInfo: Schema.Schema<StructuredStorageInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sizeBytes: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StructuredStorageInfo",
-  }) as any as Schema.Schema<StructuredStorageInfo>;
+export const StructuredStorageInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sizeBytes: Schema.optional(Schema.String),
+}).annotate({ identifier: "StructuredStorageInfo" });
 
 export interface BlobStorageInfo {
   /** Size in bytes of data stored in Blob Storage. */
@@ -1316,16 +1057,11 @@ export interface BlobStorageInfo {
   storageClassUpdateTime?: string;
 }
 
-export const BlobStorageInfo: Schema.Schema<BlobStorageInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sizeBytes: Schema.optional(Schema.String),
-      storageClass: Schema.optional(Schema.String),
-      storageClassUpdateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BlobStorageInfo",
-  }) as any as Schema.Schema<BlobStorageInfo>;
+export const BlobStorageInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sizeBytes: Schema.optional(Schema.String),
+  storageClass: Schema.optional(Schema.String),
+  storageClassUpdateTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "BlobStorageInfo" });
 
 export interface StorageInfo {
   /** The resource whose storage info is returned. For example: `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}/dicomWeb/studies/{studyUID}/series/{seriesUID}/instances/{instanceUID}` */
@@ -1336,16 +1072,11 @@ export interface StorageInfo {
   blobStorageInfo?: BlobStorageInfo;
 }
 
-export const StorageInfo: Schema.Schema<StorageInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      referencedResource: Schema.optional(Schema.String),
-      structuredStorageInfo: Schema.optional(StructuredStorageInfo),
-      blobStorageInfo: Schema.optional(BlobStorageInfo),
-    }),
-  ).annotate({
-    identifier: "StorageInfo",
-  }) as any as Schema.Schema<StorageInfo>;
+export const StorageInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  referencedResource: Schema.optional(Schema.String),
+  structuredStorageInfo: Schema.optional(StructuredStorageInfo),
+  blobStorageInfo: Schema.optional(BlobStorageInfo),
+}).annotate({ identifier: "StorageInfo" });
 
 export interface BlobStorageSettings {
   /** The Storage class in which the Blob data is stored. */
@@ -1358,14 +1089,9 @@ export interface BlobStorageSettings {
     | (string & {});
 }
 
-export const BlobStorageSettings: Schema.Schema<BlobStorageSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      blobStorageClass: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BlobStorageSettings",
-  }) as any as Schema.Schema<BlobStorageSettings>;
+export const BlobStorageSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  blobStorageClass: Schema.optional(Schema.String),
+}).annotate({ identifier: "BlobStorageSettings" });
 
 export interface SetBlobStorageSettingsRequest {
   /** Optional. A filter configuration. If `filter_config` is specified, set the value of `resource` to the resource name of a DICOM store in the format `projects/{projectID}/locations/{locationID}/datasets/{datasetID}/dicomStores/{dicomStoreID}`. */
@@ -1374,15 +1100,11 @@ export interface SetBlobStorageSettingsRequest {
   blobStorageSettings?: BlobStorageSettings;
 }
 
-export const SetBlobStorageSettingsRequest: Schema.Schema<SetBlobStorageSettingsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filterConfig: Schema.optional(DicomFilterConfig),
-      blobStorageSettings: Schema.optional(BlobStorageSettings),
-    }),
-  ).annotate({
-    identifier: "SetBlobStorageSettingsRequest",
-  }) as any as Schema.Schema<SetBlobStorageSettingsRequest>;
+export const SetBlobStorageSettingsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filterConfig: Schema.optional(DicomFilterConfig),
+    blobStorageSettings: Schema.optional(BlobStorageSettings),
+  }).annotate({ identifier: "SetBlobStorageSettingsRequest" });
 
 export interface NotificationConfig {
   /** The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that notifications of changes are published on. Supplied by the client. PubsubMessage.Data contains the resource name. PubsubMessage.MessageId is the ID of this message. It is guaranteed to be unique within the topic. PubsubMessage.PublishTime is the time at which the message was published. Notifications are only sent if the topic is non-empty. [Topic names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped to a project. Cloud Healthcare API service account must have publisher permissions on the given Pub/Sub topic. Not having adequate permissions causes the calls that send notifications to fail. If a notification can't be published to Pub/Sub, errors are logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). If the number of errors exceeds a certain rate, some aren't submitted. Note that not all operations trigger notifications, see [Configuring Pub/Sub notifications](https://cloud.google.com/healthcare/docs/how-tos/pubsub) for specific details. */
@@ -1391,29 +1113,22 @@ export interface NotificationConfig {
   sendForBulkImport?: boolean;
 }
 
-export const NotificationConfig: Schema.Schema<NotificationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pubsubTopic: Schema.optional(Schema.String),
-      sendForBulkImport: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "NotificationConfig",
-  }) as any as Schema.Schema<NotificationConfig>;
+export const NotificationConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pubsubTopic: Schema.optional(Schema.String),
+  sendForBulkImport: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "NotificationConfig" });
 
 export interface SchemaFlattened {}
 
-export const SchemaFlattened: Schema.Schema<SchemaFlattened> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "SchemaFlattened",
-  }) as any as Schema.Schema<SchemaFlattened>;
+export const SchemaFlattened = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "SchemaFlattened" });
 
 export interface SchemaJSON {}
 
-export const SchemaJSON: Schema.Schema<SchemaJSON> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "SchemaJSON",
-  }) as any as Schema.Schema<SchemaJSON>;
+export const SchemaJSON = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "SchemaJSON" });
 
 export interface GoogleCloudHealthcareV1DicomBigQueryDestination {
   /** Optional. BigQuery URI to a table, up to 2000 characters long, in the format `bq://projectId.bqDatasetId.tableId` */
@@ -1435,49 +1150,39 @@ export interface GoogleCloudHealthcareV1DicomBigQueryDestination {
   schemaJson?: SchemaJSON;
 }
 
-export const GoogleCloudHealthcareV1DicomBigQueryDestination: Schema.Schema<GoogleCloudHealthcareV1DicomBigQueryDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tableUri: Schema.optional(Schema.String),
-      force: Schema.optional(Schema.Boolean),
-      writeDisposition: Schema.optional(Schema.String),
-      includeSourceStore: Schema.optional(Schema.Boolean),
-      schemaFlattened: Schema.optional(SchemaFlattened),
-      schemaJson: Schema.optional(SchemaJSON),
-    }),
-  ).annotate({
+export const GoogleCloudHealthcareV1DicomBigQueryDestination =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tableUri: Schema.optional(Schema.String),
+    force: Schema.optional(Schema.Boolean),
+    writeDisposition: Schema.optional(Schema.String),
+    includeSourceStore: Schema.optional(Schema.Boolean),
+    schemaFlattened: Schema.optional(SchemaFlattened),
+    schemaJson: Schema.optional(SchemaJSON),
+  }).annotate({
     identifier: "GoogleCloudHealthcareV1DicomBigQueryDestination",
-  }) as any as Schema.Schema<GoogleCloudHealthcareV1DicomBigQueryDestination>;
+  });
 
 export interface GoogleCloudHealthcareV1DicomStreamConfig {
   /** Results are appended to this table. The server creates a new table in the given BigQuery dataset if the specified table does not exist. To enable the Cloud Healthcare API to write to your BigQuery table, you must give the Cloud Healthcare API service account the bigquery.dataEditor role. The service account is: `service-{PROJECT_NUMBER}@gcp-sa-healthcare.iam.gserviceaccount.com`. The PROJECT_NUMBER identifies the project that the DICOM store resides in. To get the project number, go to the Cloud Console Dashboard. It is recommended to not have a custom schema in the destination table which could conflict with the schema created by the Cloud Healthcare API. Instance deletions are not applied to the destination table. The destination's table schema will be automatically updated in case a new instance's data is incompatible with the current schema. The schema should not be updated manually as this can cause incompatibilies that cannot be resolved automatically. One resolution in this case is to delete the incompatible table and let the server recreate one, though the newly created table only contains data after the table recreation. BigQuery imposes a 1 MB limit on streaming insert row size, therefore any instance that generates more than 1 MB of BigQuery data will not be streamed. If an instance cannot be streamed to BigQuery, errors will be logged to Cloud Logging (see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). */
   bigqueryDestination?: GoogleCloudHealthcareV1DicomBigQueryDestination;
 }
 
-export const GoogleCloudHealthcareV1DicomStreamConfig: Schema.Schema<GoogleCloudHealthcareV1DicomStreamConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bigqueryDestination: Schema.optional(
-        GoogleCloudHealthcareV1DicomBigQueryDestination,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudHealthcareV1DicomStreamConfig",
-  }) as any as Schema.Schema<GoogleCloudHealthcareV1DicomStreamConfig>;
+export const GoogleCloudHealthcareV1DicomStreamConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bigqueryDestination: Schema.optional(
+      GoogleCloudHealthcareV1DicomBigQueryDestination,
+    ),
+  }).annotate({ identifier: "GoogleCloudHealthcareV1DicomStreamConfig" });
 
 export interface DicomNotificationConfig {
   /** Required. The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that notifications of changes are published on. Supplied by the client. The notification is a `PubsubMessage` with the following fields: * `PubsubMessage.Data` contains the resource name. * `PubsubMessage.MessageId` is the ID of this notification. It is guaranteed to be unique within the topic. * `PubsubMessage.PublishTime` is the time when the message was published. * `PubsubMessage.Attributes` contains the following attributes: * `action`: The name of the endpoint that generated the notification. Possible values are `StoreInstances`, `SetBlobSettings`, `ImportDicomData`, etc. * `lastUpdatedTime`: The latest timestamp when the DICOM instance was updated. * `storeName`: The resource name of the DICOM store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`. * `studyInstanceUID`: The study UID of the DICOM instance that was changed. * `seriesInstanceUID`: The series UID of the DICOM instance that was changed. * `sopInstanceUID`: The instance UID of the DICOM instance that was changed. * `versionId`: The version ID of the DICOM instance that was changed. * `modality`: The modality tag of the DICOM instance that was changed. * `previousStorageClass`: The storage class where the DICOM instance was previously stored if the storage class was changed. * `storageClass`: The storage class where the DICOM instance is currently stored. Note that notifications are only sent if the topic is non-empty. [Topic names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped to a project. The Cloud Healthcare API service account, service-@gcp-sa-healthcare.iam.gserviceaccount.com, must have the `pubsub.topics.publish` permission (which is typically included in `roles/pubsub.publisher` role) on the given Pub/Sub topic. Not having adequate permissions causes the calls that send notifications to fail (https://cloud.google.com/healthcare-api/docs/permissions-healthcare-api-gcp-products#dicom_fhir_and_hl7v2_store_cloud_pubsub_permissions). If a notification can't be published to Pub/Sub, errors are logged to Cloud Logging. For more information, see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare-api/docs/how-tos/logging). */
   pubsubTopic?: string;
 }
 
-export const DicomNotificationConfig: Schema.Schema<DicomNotificationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pubsubTopic: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DicomNotificationConfig",
-  }) as any as Schema.Schema<DicomNotificationConfig>;
+export const DicomNotificationConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pubsubTopic: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DicomNotificationConfig" });
 
 export interface DicomStore {
   /** Identifier. Resource name of the DICOM store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`. */
@@ -1492,20 +1197,15 @@ export interface DicomStore {
   notificationConfigs?: Array<DicomNotificationConfig>;
 }
 
-export const DicomStore: Schema.Schema<DicomStore> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      notificationConfig: Schema.optional(NotificationConfig),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      streamConfigs: Schema.optional(
-        Schema.Array(GoogleCloudHealthcareV1DicomStreamConfig),
-      ),
-      notificationConfigs: Schema.optional(
-        Schema.Array(DicomNotificationConfig),
-      ),
-    }),
-  ).annotate({ identifier: "DicomStore" }) as any as Schema.Schema<DicomStore>;
+export const DicomStore = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  notificationConfig: Schema.optional(NotificationConfig),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  streamConfigs: Schema.optional(
+    Schema.Array(GoogleCloudHealthcareV1DicomStreamConfig),
+  ),
+  notificationConfigs: Schema.optional(Schema.Array(DicomNotificationConfig)),
+}).annotate({ identifier: "DicomStore" });
 
 export interface ListDicomStoresResponse {
   /** The returned DICOM stores. Won't be more DICOM stores than the value of page_size in the request. */
@@ -1514,29 +1214,21 @@ export interface ListDicomStoresResponse {
   nextPageToken?: string;
 }
 
-export const ListDicomStoresResponse: Schema.Schema<ListDicomStoresResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dicomStores: Schema.optional(Schema.Array(DicomStore)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListDicomStoresResponse",
-  }) as any as Schema.Schema<ListDicomStoresResponse>;
+export const ListDicomStoresResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dicomStores: Schema.optional(Schema.Array(DicomStore)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListDicomStoresResponse" });
 
 export interface GoogleCloudHealthcareV1DicomGcsSource {
   /** Points to a Cloud Storage URI containing file(s) with content only. The URI must be in the following format: `gs://{bucket_id}/{object_id}`. The URI can include wildcards in `object_id` and thus identify multiple files. Supported wildcards: * '*' to match 0 or more non-separator characters * '**' to match 0 or more characters (including separators). Must be used at the end of a path and with no other wildcards in the path. Can also be used with a file extension (such as .dcm), which imports all files with the extension in the specified directory and its sub-directories. For example, `gs://my-bucket/my-directory/**.dcm` imports all files with .dcm extensions in `my-directory/` and its sub-directories. * '?' to match 1 character. All other URI formats are invalid. Files matching the wildcard are expected to contain content only, no metadata. */
   uri?: string;
 }
 
-export const GoogleCloudHealthcareV1DicomGcsSource: Schema.Schema<GoogleCloudHealthcareV1DicomGcsSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudHealthcareV1DicomGcsSource",
-  }) as any as Schema.Schema<GoogleCloudHealthcareV1DicomGcsSource>;
+export const GoogleCloudHealthcareV1DicomGcsSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudHealthcareV1DicomGcsSource" });
 
 export interface ImportDicomDataRequest {
   /** Cloud Storage source data location and import configuration. The Cloud Healthcare Service Agent requires the `roles/storage.objectViewer` Cloud IAM roles on the Cloud Storage location. */
@@ -1545,15 +1237,12 @@ export interface ImportDicomDataRequest {
   blobStorageSettings?: BlobStorageSettings;
 }
 
-export const ImportDicomDataRequest: Schema.Schema<ImportDicomDataRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsSource: Schema.optional(GoogleCloudHealthcareV1DicomGcsSource),
-      blobStorageSettings: Schema.optional(BlobStorageSettings),
-    }),
-  ).annotate({
-    identifier: "ImportDicomDataRequest",
-  }) as any as Schema.Schema<ImportDicomDataRequest>;
+export const ImportDicomDataRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    gcsSource: Schema.optional(GoogleCloudHealthcareV1DicomGcsSource),
+    blobStorageSettings: Schema.optional(BlobStorageSettings),
+  },
+).annotate({ identifier: "ImportDicomDataRequest" });
 
 export interface GoogleCloudHealthcareV1DicomGcsDestination {
   /** The Cloud Storage destination to export to. URI for a Cloud Storage directory where the server writes the result files, in the format `gs://{bucket-id}/{path/to/destination/dir}`). If there is no trailing slash, the service appends one when composing the object path. The user is responsible for creating the Cloud Storage bucket referenced in `uri_prefix`. */
@@ -1562,15 +1251,11 @@ export interface GoogleCloudHealthcareV1DicomGcsDestination {
   mimeType?: string;
 }
 
-export const GoogleCloudHealthcareV1DicomGcsDestination: Schema.Schema<GoogleCloudHealthcareV1DicomGcsDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uriPrefix: Schema.optional(Schema.String),
-      mimeType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudHealthcareV1DicomGcsDestination",
-  }) as any as Schema.Schema<GoogleCloudHealthcareV1DicomGcsDestination>;
+export const GoogleCloudHealthcareV1DicomGcsDestination =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uriPrefix: Schema.optional(Schema.String),
+    mimeType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudHealthcareV1DicomGcsDestination" });
 
 export interface ExportDicomDataRequest {
   /** The Cloud Storage output destination. The Cloud Healthcare Service Agent requires the `roles/storage.objectAdmin` Cloud IAM roles on the Cloud Storage location. */
@@ -1579,19 +1264,14 @@ export interface ExportDicomDataRequest {
   bigqueryDestination?: GoogleCloudHealthcareV1DicomBigQueryDestination;
 }
 
-export const ExportDicomDataRequest: Schema.Schema<ExportDicomDataRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsDestination: Schema.optional(
-        GoogleCloudHealthcareV1DicomGcsDestination,
-      ),
-      bigqueryDestination: Schema.optional(
-        GoogleCloudHealthcareV1DicomBigQueryDestination,
-      ),
-    }),
-  ).annotate({
-    identifier: "ExportDicomDataRequest",
-  }) as any as Schema.Schema<ExportDicomDataRequest>;
+export const ExportDicomDataRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    gcsDestination: Schema.optional(GoogleCloudHealthcareV1DicomGcsDestination),
+    bigqueryDestination: Schema.optional(
+      GoogleCloudHealthcareV1DicomBigQueryDestination,
+    ),
+  },
+).annotate({ identifier: "ExportDicomDataRequest" });
 
 export interface DicomStoreMetrics {
   /** Resource name of the DICOM store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}`. */
@@ -1608,19 +1288,14 @@ export interface DicomStoreMetrics {
   blobStorageSizeBytes?: string;
 }
 
-export const DicomStoreMetrics: Schema.Schema<DicomStoreMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      studyCount: Schema.optional(Schema.String),
-      seriesCount: Schema.optional(Schema.String),
-      instanceCount: Schema.optional(Schema.String),
-      structuredStorageSizeBytes: Schema.optional(Schema.String),
-      blobStorageSizeBytes: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DicomStoreMetrics",
-  }) as any as Schema.Schema<DicomStoreMetrics>;
+export const DicomStoreMetrics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  studyCount: Schema.optional(Schema.String),
+  seriesCount: Schema.optional(Schema.String),
+  instanceCount: Schema.optional(Schema.String),
+  structuredStorageSizeBytes: Schema.optional(Schema.String),
+  blobStorageSizeBytes: Schema.optional(Schema.String),
+}).annotate({ identifier: "DicomStoreMetrics" });
 
 export interface HttpBody {
   /** The HTTP Content-Type header value specifying the content type of the body. */
@@ -1631,16 +1306,13 @@ export interface HttpBody {
   extensions?: Array<Record<string, unknown>>;
 }
 
-export const HttpBody: Schema.Schema<HttpBody> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contentType: Schema.optional(Schema.String),
-      data: Schema.optional(Schema.String),
-      extensions: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "HttpBody" }) as any as Schema.Schema<HttpBody>;
+export const HttpBody = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  contentType: Schema.optional(Schema.String),
+  data: Schema.optional(Schema.String),
+  extensions: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "HttpBody" });
 
 export interface StudyMetrics {
   /** The study resource path. For example, `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}/dicomWeb/studies/{study_uid}`. */
@@ -1655,18 +1327,13 @@ export interface StudyMetrics {
   seriesCount?: string;
 }
 
-export const StudyMetrics: Schema.Schema<StudyMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      study: Schema.optional(Schema.String),
-      structuredStorageSizeBytes: Schema.optional(Schema.String),
-      blobStorageSizeBytes: Schema.optional(Schema.String),
-      instanceCount: Schema.optional(Schema.String),
-      seriesCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StudyMetrics",
-  }) as any as Schema.Schema<StudyMetrics>;
+export const StudyMetrics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  study: Schema.optional(Schema.String),
+  structuredStorageSizeBytes: Schema.optional(Schema.String),
+  blobStorageSizeBytes: Schema.optional(Schema.String),
+  instanceCount: Schema.optional(Schema.String),
+  seriesCount: Schema.optional(Schema.String),
+}).annotate({ identifier: "StudyMetrics" });
 
 export interface SeriesMetrics {
   /** The series resource path. For example, `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/dicomStores/{dicom_store_id}/dicomWeb/studies/{study_uid}/series/{series_uid}`. */
@@ -1679,17 +1346,12 @@ export interface SeriesMetrics {
   instanceCount?: string;
 }
 
-export const SeriesMetrics: Schema.Schema<SeriesMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      series: Schema.optional(Schema.String),
-      structuredStorageSizeBytes: Schema.optional(Schema.String),
-      blobStorageSizeBytes: Schema.optional(Schema.String),
-      instanceCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SeriesMetrics",
-  }) as any as Schema.Schema<SeriesMetrics>;
+export const SeriesMetrics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  series: Schema.optional(Schema.String),
+  structuredStorageSizeBytes: Schema.optional(Schema.String),
+  blobStorageSizeBytes: Schema.optional(Schema.String),
+  instanceCount: Schema.optional(Schema.String),
+}).annotate({ identifier: "SeriesMetrics" });
 
 export interface VersionSource {
   /** The field to extract from the MSH segment. For example, "3.1" or "18[1].1". */
@@ -1698,15 +1360,10 @@ export interface VersionSource {
   value?: string;
 }
 
-export const VersionSource: Schema.Schema<VersionSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mshField: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VersionSource",
-  }) as any as Schema.Schema<VersionSource>;
+export const VersionSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  mshField: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+}).annotate({ identifier: "VersionSource" });
 
 export interface SchemaSegment {
   /** The Segment type. For example, "PID". */
@@ -1717,16 +1374,11 @@ export interface SchemaSegment {
   maxOccurs?: number;
 }
 
-export const SchemaSegment: Schema.Schema<SchemaSegment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      minOccurs: Schema.optional(Schema.Number),
-      maxOccurs: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "SchemaSegment",
-  }) as any as Schema.Schema<SchemaSegment>;
+export const SchemaSegment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  minOccurs: Schema.optional(Schema.Number),
+  maxOccurs: Schema.optional(Schema.Number),
+}).annotate({ identifier: "SchemaSegment" });
 
 export interface GroupOrSegment {
   segment?: SchemaSegment;
@@ -1776,17 +1428,12 @@ export interface Hl7SchemaConfig {
   messageSchemaConfigs?: Record<string, SchemaGroup>;
 }
 
-export const Hl7SchemaConfig: Schema.Schema<Hl7SchemaConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.Array(VersionSource)),
-      messageSchemaConfigs: Schema.optional(
-        Schema.Record(Schema.String, SchemaGroup),
-      ),
-    }),
-  ).annotate({
-    identifier: "Hl7SchemaConfig",
-  }) as any as Schema.Schema<Hl7SchemaConfig>;
+export const Hl7SchemaConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.Array(VersionSource)),
+  messageSchemaConfigs: Schema.optional(
+    Schema.Record(Schema.String, SchemaGroup),
+  ),
+}).annotate({ identifier: "Hl7SchemaConfig" });
 
 export interface Field {
   /** The name of the field. For example, "PID-1" or just "1". */
@@ -1801,16 +1448,13 @@ export interface Field {
   maxOccurs?: number;
 }
 
-export const Field: Schema.Schema<Field> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      table: Schema.optional(Schema.String),
-      minOccurs: Schema.optional(Schema.Number),
-      maxOccurs: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Field" }) as any as Schema.Schema<Field>;
+export const Field = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  table: Schema.optional(Schema.String),
+  minOccurs: Schema.optional(Schema.Number),
+  maxOccurs: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Field" });
 
 export interface Type {
   /** The name of this type. This would be the segment or datatype name. For example, "PID" or "XPN". */
@@ -1826,14 +1470,11 @@ export interface Type {
   fields?: Array<Field>;
 }
 
-export const Type: Schema.Schema<Type> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      primitive: Schema.optional(Schema.String),
-      fields: Schema.optional(Schema.Array(Field)),
-    }),
-  ).annotate({ identifier: "Type" }) as any as Schema.Schema<Type>;
+export const Type = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  primitive: Schema.optional(Schema.String),
+  fields: Schema.optional(Schema.Array(Field)),
+}).annotate({ identifier: "Type" });
 
 export interface Hl7TypesConfig {
   /** The version selectors that this config applies to. A message must match ALL version sources to apply. */
@@ -1842,15 +1483,10 @@ export interface Hl7TypesConfig {
   type?: Array<Type>;
 }
 
-export const Hl7TypesConfig: Schema.Schema<Hl7TypesConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.Array(VersionSource)),
-      type: Schema.optional(Schema.Array(Type)),
-    }),
-  ).annotate({
-    identifier: "Hl7TypesConfig",
-  }) as any as Schema.Schema<Hl7TypesConfig>;
+export const Hl7TypesConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.Array(VersionSource)),
+  type: Schema.optional(Schema.Array(Type)),
+}).annotate({ identifier: "Hl7TypesConfig" });
 
 export interface SchemaPackage {
   /** Optional. Determines how messages that fail to parse are handled. */
@@ -1874,18 +1510,13 @@ export interface SchemaPackage {
     | (string & {});
 }
 
-export const SchemaPackage: Schema.Schema<SchemaPackage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      schematizedParsingType: Schema.optional(Schema.String),
-      schemas: Schema.optional(Schema.Array(Hl7SchemaConfig)),
-      types: Schema.optional(Schema.Array(Hl7TypesConfig)),
-      ignoreMinOccurs: Schema.optional(Schema.Boolean),
-      unexpectedSegmentHandling: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SchemaPackage",
-  }) as any as Schema.Schema<SchemaPackage>;
+export const SchemaPackage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  schematizedParsingType: Schema.optional(Schema.String),
+  schemas: Schema.optional(Schema.Array(Hl7SchemaConfig)),
+  types: Schema.optional(Schema.Array(Hl7TypesConfig)),
+  ignoreMinOccurs: Schema.optional(Schema.Boolean),
+  unexpectedSegmentHandling: Schema.optional(Schema.String),
+}).annotate({ identifier: "SchemaPackage" });
 
 export interface ParserConfig {
   /** Optional. Determines whether messages with no header are allowed. */
@@ -1898,17 +1529,12 @@ export interface ParserConfig {
   version?: "PARSER_VERSION_UNSPECIFIED" | "V1" | "V2" | "V3" | (string & {});
 }
 
-export const ParserConfig: Schema.Schema<ParserConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      allowNullHeader: Schema.optional(Schema.Boolean),
-      segmentTerminator: Schema.optional(Schema.String),
-      schema: Schema.optional(SchemaPackage),
-      version: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ParserConfig",
-  }) as any as Schema.Schema<ParserConfig>;
+export const ParserConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  allowNullHeader: Schema.optional(Schema.Boolean),
+  segmentTerminator: Schema.optional(Schema.String),
+  schema: Schema.optional(SchemaPackage),
+  version: Schema.optional(Schema.String),
+}).annotate({ identifier: "ParserConfig" });
 
 export interface Hl7V2NotificationConfig {
   /** The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that notifications of changes are published on. Supplied by the client. The notification is a `PubsubMessage` with the following fields: * `PubsubMessage.Data` contains the resource name. * `PubsubMessage.MessageId` is the ID of this notification. It's guaranteed to be unique within the topic. * `PubsubMessage.PublishTime` is the time when the message was published. Note that notifications are only sent if the topic is non-empty. [Topic names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped to a project. The Cloud Healthcare API service account, service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com, must have publisher permissions on the given Pub/Sub topic. Not having adequate permissions causes the calls that send notifications to fail. If a notification cannot be published to Pub/Sub, errors are logged to Cloud Logging. For more information, see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare/docs/how-tos/logging)). */
@@ -1917,15 +1543,11 @@ export interface Hl7V2NotificationConfig {
   filter?: string;
 }
 
-export const Hl7V2NotificationConfig: Schema.Schema<Hl7V2NotificationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pubsubTopic: Schema.optional(Schema.String),
-      filter: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Hl7V2NotificationConfig",
-  }) as any as Schema.Schema<Hl7V2NotificationConfig>;
+export const Hl7V2NotificationConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pubsubTopic: Schema.optional(Schema.String),
+    filter: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Hl7V2NotificationConfig" });
 
 export interface Hl7V2Store {
   /** Identifier. Resource name of the HL7v2 store, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`. */
@@ -1940,18 +1562,13 @@ export interface Hl7V2Store {
   rejectDuplicateMessage?: boolean;
 }
 
-export const Hl7V2Store: Schema.Schema<Hl7V2Store> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      parserConfig: Schema.optional(ParserConfig),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      notificationConfigs: Schema.optional(
-        Schema.Array(Hl7V2NotificationConfig),
-      ),
-      rejectDuplicateMessage: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "Hl7V2Store" }) as any as Schema.Schema<Hl7V2Store>;
+export const Hl7V2Store = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  parserConfig: Schema.optional(ParserConfig),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  notificationConfigs: Schema.optional(Schema.Array(Hl7V2NotificationConfig)),
+  rejectDuplicateMessage: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Hl7V2Store" });
 
 export interface ListHl7V2StoresResponse {
   /** The returned HL7v2 stores. Won't be more HL7v2 stores than the value of page_size in the request. */
@@ -1960,15 +1577,11 @@ export interface ListHl7V2StoresResponse {
   nextPageToken?: string;
 }
 
-export const ListHl7V2StoresResponse: Schema.Schema<ListHl7V2StoresResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hl7V2Stores: Schema.optional(Schema.Array(Hl7V2Store)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListHl7V2StoresResponse",
-  }) as any as Schema.Schema<ListHl7V2StoresResponse>;
+export const ListHl7V2StoresResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    hl7V2Stores: Schema.optional(Schema.Array(Hl7V2Store)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListHl7V2StoresResponse" });
 
 export interface PatientId {
   /** The patient's unique identifier. */
@@ -1977,13 +1590,10 @@ export interface PatientId {
   type?: string;
 }
 
-export const PatientId: Schema.Schema<PatientId> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "PatientId" }) as any as Schema.Schema<PatientId>;
+export const PatientId = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "PatientId" });
 
 export interface Segment {
   /** A string that indicates the type of segment. For example, EVN or PID. */
@@ -1994,25 +1604,19 @@ export interface Segment {
   fields?: Record<string, string>;
 }
 
-export const Segment: Schema.Schema<Segment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      segmentId: Schema.optional(Schema.String),
-      setId: Schema.optional(Schema.String),
-      fields: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({ identifier: "Segment" }) as any as Schema.Schema<Segment>;
+export const Segment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  segmentId: Schema.optional(Schema.String),
+  setId: Schema.optional(Schema.String),
+  fields: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "Segment" });
 
 export interface ParsedData {
   segments?: Array<Segment>;
 }
 
-export const ParsedData: Schema.Schema<ParsedData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      segments: Schema.optional(Schema.Array(Segment)),
-    }),
-  ).annotate({ identifier: "ParsedData" }) as any as Schema.Schema<ParsedData>;
+export const ParsedData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  segments: Schema.optional(Schema.Array(Segment)),
+}).annotate({ identifier: "ParsedData" });
 
 export interface SchematizedData {
   /** JSON output of the parser. */
@@ -2021,15 +1625,10 @@ export interface SchematizedData {
   error?: string;
 }
 
-export const SchematizedData: Schema.Schema<SchematizedData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      data: Schema.optional(Schema.String),
-      error: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SchematizedData",
-  }) as any as Schema.Schema<SchematizedData>;
+export const SchematizedData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  data: Schema.optional(Schema.String),
+  error: Schema.optional(Schema.String),
+}).annotate({ identifier: "SchematizedData" });
 
 export interface Message {
   /** Output only. Resource name of the Message, of the form `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/hl7V2Stores/{hl7_v2_store_id}/messages/{message_id}`. */
@@ -2054,35 +1653,27 @@ export interface Message {
   schematizedData?: SchematizedData;
 }
 
-export const Message: Schema.Schema<Message> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      data: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      sendFacility: Schema.optional(Schema.String),
-      sendTime: Schema.optional(Schema.String),
-      messageType: Schema.optional(Schema.String),
-      patientIds: Schema.optional(Schema.Array(PatientId)),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      parsedData: Schema.optional(ParsedData),
-      schematizedData: Schema.optional(SchematizedData),
-    }),
-  ).annotate({ identifier: "Message" }) as any as Schema.Schema<Message>;
+export const Message = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  data: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  sendFacility: Schema.optional(Schema.String),
+  sendTime: Schema.optional(Schema.String),
+  messageType: Schema.optional(Schema.String),
+  patientIds: Schema.optional(Schema.Array(PatientId)),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  parsedData: Schema.optional(ParsedData),
+  schematizedData: Schema.optional(SchematizedData),
+}).annotate({ identifier: "Message" });
 
 export interface IngestMessageRequest {
   /** Required. HL7v2 message to ingest. */
   message?: Message;
 }
 
-export const IngestMessageRequest: Schema.Schema<IngestMessageRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      message: Schema.optional(Message),
-    }),
-  ).annotate({
-    identifier: "IngestMessageRequest",
-  }) as any as Schema.Schema<IngestMessageRequest>;
+export const IngestMessageRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  message: Schema.optional(Message),
+}).annotate({ identifier: "IngestMessageRequest" });
 
 export interface IngestMessageResponse {
   /** HL7v2 ACK message. */
@@ -2091,29 +1682,19 @@ export interface IngestMessageResponse {
   message?: Message;
 }
 
-export const IngestMessageResponse: Schema.Schema<IngestMessageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hl7Ack: Schema.optional(Schema.String),
-      message: Schema.optional(Message),
-    }),
-  ).annotate({
-    identifier: "IngestMessageResponse",
-  }) as any as Schema.Schema<IngestMessageResponse>;
+export const IngestMessageResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  hl7Ack: Schema.optional(Schema.String),
+  message: Schema.optional(Message),
+}).annotate({ identifier: "IngestMessageResponse" });
 
 export interface CreateMessageRequest {
   /** Required. HL7v2 message. */
   message?: Message;
 }
 
-export const CreateMessageRequest: Schema.Schema<CreateMessageRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      message: Schema.optional(Message),
-    }),
-  ).annotate({
-    identifier: "CreateMessageRequest",
-  }) as any as Schema.Schema<CreateMessageRequest>;
+export const CreateMessageRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  message: Schema.optional(Message),
+}).annotate({ identifier: "CreateMessageRequest" });
 
 export interface ListMessagesResponse {
   /** The returned Messages. Won't be more Messages than the value of page_size in the request. See view for populated fields. */
@@ -2122,15 +1703,10 @@ export interface ListMessagesResponse {
   nextPageToken?: string;
 }
 
-export const ListMessagesResponse: Schema.Schema<ListMessagesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hl7V2Messages: Schema.optional(Schema.Array(Message)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListMessagesResponse",
-  }) as any as Schema.Schema<ListMessagesResponse>;
+export const ListMessagesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  hl7V2Messages: Schema.optional(Schema.Array(Message)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListMessagesResponse" });
 
 export interface GcsDestination {
   /** URI of an existing Cloud Storage directory where the server writes result files, in the format `gs://{bucket-id}/{path/to/destination/dir}`. If there is no trailing slash, the service appends one when composing the object path. */
@@ -2151,30 +1727,20 @@ export interface GcsDestination {
     | (string & {});
 }
 
-export const GcsDestination: Schema.Schema<GcsDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uriPrefix: Schema.optional(Schema.String),
-      messageView: Schema.optional(Schema.String),
-      contentStructure: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GcsDestination",
-  }) as any as Schema.Schema<GcsDestination>;
+export const GcsDestination = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  uriPrefix: Schema.optional(Schema.String),
+  messageView: Schema.optional(Schema.String),
+  contentStructure: Schema.optional(Schema.String),
+}).annotate({ identifier: "GcsDestination" });
 
 export interface PubsubDestination {
   /** The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that Pub/Sub messages are published on. Supplied by the client. The `PubsubMessage` contains the following fields: * `PubsubMessage.Data` contains the resource name. * `PubsubMessage.MessageId` is the ID of this notification. It is guaranteed to be unique within the topic. * `PubsubMessage.PublishTime` is the time when the message was published. [Topic names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped to a project. The Cloud Healthcare API service account, service-PROJECT_NUMBER@gcp-sa-healthcare.iam.gserviceaccount.com, must have publisher permissions on the given Pub/Sub topic. Not having adequate permissions causes the calls that send notifications to fail. */
   pubsubTopic?: string;
 }
 
-export const PubsubDestination: Schema.Schema<PubsubDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pubsubTopic: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PubsubDestination",
-  }) as any as Schema.Schema<PubsubDestination>;
+export const PubsubDestination = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pubsubTopic: Schema.optional(Schema.String),
+}).annotate({ identifier: "PubsubDestination" });
 
 export interface ExportMessagesRequest {
   /** The start of the range in `send_time` (MSH.7, https://www.hl7.org/documentcenter/public_temp_2E58C1F9-1C23-BA17-0C6126475344DA9D/wg/conf/HL7MSH.htm) to process. If not specified, the UNIX epoch (1970-01-01T00:00:00Z) is used. This value has to come before the `end_time` defined below. Only messages whose `send_time` lies in the range `start_time` (inclusive) to `end_time` (exclusive) are exported. */
@@ -2189,44 +1755,31 @@ export interface ExportMessagesRequest {
   pubsubDestination?: PubsubDestination;
 }
 
-export const ExportMessagesRequest: Schema.Schema<ExportMessagesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      filter: Schema.optional(Schema.String),
-      gcsDestination: Schema.optional(GcsDestination),
-      pubsubDestination: Schema.optional(PubsubDestination),
-    }),
-  ).annotate({
-    identifier: "ExportMessagesRequest",
-  }) as any as Schema.Schema<ExportMessagesRequest>;
+export const ExportMessagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  filter: Schema.optional(Schema.String),
+  gcsDestination: Schema.optional(GcsDestination),
+  pubsubDestination: Schema.optional(PubsubDestination),
+}).annotate({ identifier: "ExportMessagesRequest" });
 
 export interface GcsSource {
   /** Points to a Cloud Storage URI containing file(s) to import. The URI must be in the following format: `gs://{bucket_id}/{object_id}`. The URI can include wildcards in `object_id` and thus identify multiple files. Supported wildcards: * `*` to match 0 or more non-separator characters * `**` to match 0 or more characters (including separators). Must be used at the end of a path and with no other wildcards in the path. Can also be used with a file extension (such as .ndjson), which imports all files with the extension in the specified directory and its sub-directories. For example, `gs://my-bucket/my-directory/**.ndjson` imports all files with `.ndjson` extensions in `my-directory/` and its sub-directories. * `?` to match 1 character Files matching the wildcard are expected to contain content only, no metadata. */
   uri?: string;
 }
 
-export const GcsSource: Schema.Schema<GcsSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "GcsSource" }) as any as Schema.Schema<GcsSource>;
+export const GcsSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  uri: Schema.optional(Schema.String),
+}).annotate({ identifier: "GcsSource" });
 
 export interface ImportMessagesRequest {
   /** Cloud Storage source data location and import configuration. The Cloud Healthcare Service Agent requires the `roles/storage.objectViewer` Cloud IAM roles on the Cloud Storage location. */
   gcsSource?: GcsSource;
 }
 
-export const ImportMessagesRequest: Schema.Schema<ImportMessagesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsSource: Schema.optional(GcsSource),
-    }),
-  ).annotate({
-    identifier: "ImportMessagesRequest",
-  }) as any as Schema.Schema<ImportMessagesRequest>;
+export const ImportMessagesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gcsSource: Schema.optional(GcsSource),
+}).annotate({ identifier: "ImportMessagesRequest" });
 
 export interface Hl7V2StoreMetric {
   /** The Hl7v2 message type this metric applies to, such as `ADT` or `ORU`. */
@@ -2237,16 +1790,11 @@ export interface Hl7V2StoreMetric {
   structuredStorageSizeBytes?: string;
 }
 
-export const Hl7V2StoreMetric: Schema.Schema<Hl7V2StoreMetric> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      messageType: Schema.optional(Schema.String),
-      count: Schema.optional(Schema.String),
-      structuredStorageSizeBytes: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Hl7V2StoreMetric",
-  }) as any as Schema.Schema<Hl7V2StoreMetric>;
+export const Hl7V2StoreMetric = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  messageType: Schema.optional(Schema.String),
+  count: Schema.optional(Schema.String),
+  structuredStorageSizeBytes: Schema.optional(Schema.String),
+}).annotate({ identifier: "Hl7V2StoreMetric" });
 
 export interface Hl7V2StoreMetrics {
   /** The resource name of the HL7v2 store to get metrics for, in the format `projects/{project_id}/datasets/{dataset_id}/hl7V2Stores/{hl7v2_store_id}`. */
@@ -2255,29 +1803,20 @@ export interface Hl7V2StoreMetrics {
   metrics?: Array<Hl7V2StoreMetric>;
 }
 
-export const Hl7V2StoreMetrics: Schema.Schema<Hl7V2StoreMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      metrics: Schema.optional(Schema.Array(Hl7V2StoreMetric)),
-    }),
-  ).annotate({
-    identifier: "Hl7V2StoreMetrics",
-  }) as any as Schema.Schema<Hl7V2StoreMetrics>;
+export const Hl7V2StoreMetrics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  metrics: Schema.optional(Schema.Array(Hl7V2StoreMetric)),
+}).annotate({ identifier: "Hl7V2StoreMetrics" });
 
 export interface RollbackHL7MessagesFilteringFields {
   /** Optional. A list of operation IDs to roll back. */
   operationIds?: Array<string>;
 }
 
-export const RollbackHL7MessagesFilteringFields: Schema.Schema<RollbackHL7MessagesFilteringFields> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operationIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "RollbackHL7MessagesFilteringFields",
-  }) as any as Schema.Schema<RollbackHL7MessagesFilteringFields>;
+export const RollbackHL7MessagesFilteringFields =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operationIds: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "RollbackHL7MessagesFilteringFields" });
 
 export interface RollbackHl7V2MessagesRequest {
   /** Required. Times point to rollback to. */
@@ -2302,20 +1841,16 @@ export interface RollbackHl7V2MessagesRequest {
   filteringFields?: RollbackHL7MessagesFilteringFields;
 }
 
-export const RollbackHl7V2MessagesRequest: Schema.Schema<RollbackHl7V2MessagesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rollbackTime: Schema.optional(Schema.String),
-      force: Schema.optional(Schema.Boolean),
-      changeType: Schema.optional(Schema.String),
-      resultGcsBucket: Schema.optional(Schema.String),
-      inputGcsObject: Schema.optional(Schema.String),
-      excludeRollbacks: Schema.optional(Schema.Boolean),
-      filteringFields: Schema.optional(RollbackHL7MessagesFilteringFields),
-    }),
-  ).annotate({
-    identifier: "RollbackHl7V2MessagesRequest",
-  }) as any as Schema.Schema<RollbackHl7V2MessagesRequest>;
+export const RollbackHl7V2MessagesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rollbackTime: Schema.optional(Schema.String),
+    force: Schema.optional(Schema.Boolean),
+    changeType: Schema.optional(Schema.String),
+    resultGcsBucket: Schema.optional(Schema.String),
+    inputGcsObject: Schema.optional(Schema.String),
+    excludeRollbacks: Schema.optional(Schema.Boolean),
+    filteringFields: Schema.optional(RollbackHL7MessagesFilteringFields),
+  }).annotate({ identifier: "RollbackHl7V2MessagesRequest" });
 
 export interface TimePartitioning {
   /** Type of partitioning. */
@@ -2330,15 +1865,10 @@ export interface TimePartitioning {
   expirationMs?: string;
 }
 
-export const TimePartitioning: Schema.Schema<TimePartitioning> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      expirationMs: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TimePartitioning",
-  }) as any as Schema.Schema<TimePartitioning>;
+export const TimePartitioning = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  expirationMs: Schema.optional(Schema.String),
+}).annotate({ identifier: "TimePartitioning" });
 
 export interface SchemaConfig {
   /** Specifies the output schema type. Schema type is required. */
@@ -2353,16 +1883,11 @@ export interface SchemaConfig {
   lastUpdatedPartitionConfig?: TimePartitioning;
 }
 
-export const SchemaConfig: Schema.Schema<SchemaConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      schemaType: Schema.optional(Schema.String),
-      recursiveStructureDepth: Schema.optional(Schema.String),
-      lastUpdatedPartitionConfig: Schema.optional(TimePartitioning),
-    }),
-  ).annotate({
-    identifier: "SchemaConfig",
-  }) as any as Schema.Schema<SchemaConfig>;
+export const SchemaConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  schemaType: Schema.optional(Schema.String),
+  recursiveStructureDepth: Schema.optional(Schema.String),
+  lastUpdatedPartitionConfig: Schema.optional(TimePartitioning),
+}).annotate({ identifier: "SchemaConfig" });
 
 export interface GoogleCloudHealthcareV1FhirBigQueryDestination {
   /** Optional. BigQuery URI to an existing dataset, up to 2000 characters long, in the format `bq://projectId.bqDatasetId`. */
@@ -2380,17 +1905,13 @@ export interface GoogleCloudHealthcareV1FhirBigQueryDestination {
     | (string & {});
 }
 
-export const GoogleCloudHealthcareV1FhirBigQueryDestination: Schema.Schema<GoogleCloudHealthcareV1FhirBigQueryDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      datasetUri: Schema.optional(Schema.String),
-      schemaConfig: Schema.optional(SchemaConfig),
-      force: Schema.optional(Schema.Boolean),
-      writeDisposition: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudHealthcareV1FhirBigQueryDestination",
-  }) as any as Schema.Schema<GoogleCloudHealthcareV1FhirBigQueryDestination>;
+export const GoogleCloudHealthcareV1FhirBigQueryDestination =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    datasetUri: Schema.optional(Schema.String),
+    schemaConfig: Schema.optional(SchemaConfig),
+    force: Schema.optional(Schema.Boolean),
+    writeDisposition: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudHealthcareV1FhirBigQueryDestination" });
 
 export interface DeidentifiedStoreDestination {
   /** Optional. The full resource name of a Cloud Healthcare FHIR store, for example, `projects/{project_id}/locations/{location_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`. */
@@ -2399,15 +1920,11 @@ export interface DeidentifiedStoreDestination {
   config?: DeidentifyConfig;
 }
 
-export const DeidentifiedStoreDestination: Schema.Schema<DeidentifiedStoreDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      store: Schema.optional(Schema.String),
-      config: Schema.optional(DeidentifyConfig),
-    }),
-  ).annotate({
-    identifier: "DeidentifiedStoreDestination",
-  }) as any as Schema.Schema<DeidentifiedStoreDestination>;
+export const DeidentifiedStoreDestination =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    store: Schema.optional(Schema.String),
+    config: Schema.optional(DeidentifyConfig),
+  }).annotate({ identifier: "DeidentifiedStoreDestination" });
 
 export interface StreamConfig {
   /** Optional. Supply a FHIR resource type (such as "Patient" or "Observation"). See https://www.hl7.org/fhir/valueset-resource-types.html for a list of all FHIR resource types. The server treats an empty list as an intent to stream all the supported resource types in this FHIR store. */
@@ -2418,20 +1935,13 @@ export interface StreamConfig {
   deidentifiedStoreDestination?: DeidentifiedStoreDestination;
 }
 
-export const StreamConfig: Schema.Schema<StreamConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceTypes: Schema.optional(Schema.Array(Schema.String)),
-      bigqueryDestination: Schema.optional(
-        GoogleCloudHealthcareV1FhirBigQueryDestination,
-      ),
-      deidentifiedStoreDestination: Schema.optional(
-        DeidentifiedStoreDestination,
-      ),
-    }),
-  ).annotate({
-    identifier: "StreamConfig",
-  }) as any as Schema.Schema<StreamConfig>;
+export const StreamConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceTypes: Schema.optional(Schema.Array(Schema.String)),
+  bigqueryDestination: Schema.optional(
+    GoogleCloudHealthcareV1FhirBigQueryDestination,
+  ),
+  deidentifiedStoreDestination: Schema.optional(DeidentifiedStoreDestination),
+}).annotate({ identifier: "StreamConfig" });
 
 export interface ValidationConfig {
   /** Optional. Whether to disable profile validation for this FHIR store. The default value is false. Set this to true to disable checking incoming resources for conformance against structure definitions in this FHIR store. */
@@ -2448,19 +1958,14 @@ export interface ValidationConfig {
   enableFhirpathProfileValidation?: boolean;
 }
 
-export const ValidationConfig: Schema.Schema<ValidationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      disableProfileValidation: Schema.optional(Schema.Boolean),
-      enabledImplementationGuides: Schema.optional(Schema.Array(Schema.String)),
-      disableRequiredFieldValidation: Schema.optional(Schema.Boolean),
-      disableReferenceTypeValidation: Schema.optional(Schema.Boolean),
-      disableFhirpathValidation: Schema.optional(Schema.Boolean),
-      enableFhirpathProfileValidation: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ValidationConfig",
-  }) as any as Schema.Schema<ValidationConfig>;
+export const ValidationConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  disableProfileValidation: Schema.optional(Schema.Boolean),
+  enabledImplementationGuides: Schema.optional(Schema.Array(Schema.String)),
+  disableRequiredFieldValidation: Schema.optional(Schema.Boolean),
+  disableReferenceTypeValidation: Schema.optional(Schema.Boolean),
+  disableFhirpathValidation: Schema.optional(Schema.Boolean),
+  enableFhirpathProfileValidation: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "ValidationConfig" });
 
 export interface FhirNotificationConfig {
   /** Optional. The [Pub/Sub](https://cloud.google.com/pubsub/docs/) topic that notifications of changes are published on. Supplied by the client. The notification is a `PubsubMessage` with the following fields: * `PubsubMessage.Data` contains the resource name. * `PubsubMessage.MessageId` is the ID of this notification. It is guaranteed to be unique within the topic. * `PubsubMessage.PublishTime` is the time when the message was published. Note that notifications are only sent if the topic is non-empty. [Topic names](https://cloud.google.com/pubsub/docs/overview#names) must be scoped to a project. The Cloud Healthcare API service account, service-@gcp-sa-healthcare.iam.gserviceaccount.com, must have publisher permissions on the given Pub/Sub topic. Not having adequate permissions causes the calls that send notifications to fail (https://cloud.google.com/healthcare-api/docs/permissions-healthcare-api-gcp-products#dicom_fhir_and_hl7v2_store_cloud_pubsub_permissions). If a notification can't be published to Pub/Sub, errors are logged to Cloud Logging. For more information, see [Viewing error logs in Cloud Logging](https://cloud.google.com/healthcare-api/docs/how-tos/logging). */
@@ -2471,30 +1976,23 @@ export interface FhirNotificationConfig {
   sendPreviousResourceOnDelete?: boolean;
 }
 
-export const FhirNotificationConfig: Schema.Schema<FhirNotificationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pubsubTopic: Schema.optional(Schema.String),
-      sendFullResource: Schema.optional(Schema.Boolean),
-      sendPreviousResourceOnDelete: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "FhirNotificationConfig",
-  }) as any as Schema.Schema<FhirNotificationConfig>;
+export const FhirNotificationConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    pubsubTopic: Schema.optional(Schema.String),
+    sendFullResource: Schema.optional(Schema.Boolean),
+    sendPreviousResourceOnDelete: Schema.optional(Schema.Boolean),
+  },
+).annotate({ identifier: "FhirNotificationConfig" });
 
 export interface BulkExportGcsDestination {
   /** Optional. URI for a Cloud Storage directory where the server writes result files, in the format `gs://{bucket-id}/{path/to/destination/dir}`. If there is no trailing slash, the service appends one when composing the object path. The user is responsible for creating the Cloud Storage bucket referenced in `uri_prefix`. */
   uriPrefix?: string;
 }
 
-export const BulkExportGcsDestination: Schema.Schema<BulkExportGcsDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uriPrefix: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BulkExportGcsDestination",
-  }) as any as Schema.Schema<BulkExportGcsDestination>;
+export const BulkExportGcsDestination =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uriPrefix: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BulkExportGcsDestination" });
 
 export interface ConsentHeaderHandling {
   /** Optional. Specifies the default server behavior when the header is empty. If not specified, the `ScopeProfile.PERMIT_EMPTY_SCOPE` option is used. */
@@ -2505,14 +2003,9 @@ export interface ConsentHeaderHandling {
     | (string & {});
 }
 
-export const ConsentHeaderHandling: Schema.Schema<ConsentHeaderHandling> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      profile: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConsentHeaderHandling",
-  }) as any as Schema.Schema<ConsentHeaderHandling>;
+export const ConsentHeaderHandling = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  profile: Schema.optional(Schema.String),
+}).annotate({ identifier: "ConsentHeaderHandling" });
 
 export interface AccessDeterminationLogConfig {
   /** Optional. Controls the amount of detail to include as part of the audit logs. */
@@ -2524,14 +2017,10 @@ export interface AccessDeterminationLogConfig {
     | (string & {});
 }
 
-export const AccessDeterminationLogConfig: Schema.Schema<AccessDeterminationLogConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      logLevel: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccessDeterminationLogConfig",
-  }) as any as Schema.Schema<AccessDeterminationLogConfig>;
+export const AccessDeterminationLogConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    logLevel: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AccessDeterminationLogConfig" });
 
 export interface ConsentConfig {
   /** Required. Specifies which consent enforcement version is being used for this FHIR store. This field can only be set once by either CreateFhirStore or UpdateFhirStore. After that, you must call ApplyConsents to change the version. */
@@ -2546,20 +2035,13 @@ export interface ConsentConfig {
   enforcedAdminConsents?: Array<string>;
 }
 
-export const ConsentConfig: Schema.Schema<ConsentConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.String),
-      accessEnforced: Schema.optional(Schema.Boolean),
-      consentHeaderHandling: Schema.optional(ConsentHeaderHandling),
-      accessDeterminationLogConfig: Schema.optional(
-        AccessDeterminationLogConfig,
-      ),
-      enforcedAdminConsents: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ConsentConfig",
-  }) as any as Schema.Schema<ConsentConfig>;
+export const ConsentConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.String),
+  accessEnforced: Schema.optional(Schema.Boolean),
+  consentHeaderHandling: Schema.optional(ConsentHeaderHandling),
+  accessDeterminationLogConfig: Schema.optional(AccessDeterminationLogConfig),
+  enforcedAdminConsents: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ConsentConfig" });
 
 export interface FhirStore {
   /** Output only. Identifier. Resource name of the FHIR store, of the form `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`. */
@@ -2602,27 +2084,22 @@ export interface FhirStore {
   consentConfig?: ConsentConfig;
 }
 
-export const FhirStore: Schema.Schema<FhirStore> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      enableUpdateCreate: Schema.optional(Schema.Boolean),
-      notificationConfig: Schema.optional(NotificationConfig),
-      disableReferentialIntegrity: Schema.optional(Schema.Boolean),
-      disableResourceVersioning: Schema.optional(Schema.Boolean),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      version: Schema.optional(Schema.String),
-      streamConfigs: Schema.optional(Schema.Array(StreamConfig)),
-      validationConfig: Schema.optional(ValidationConfig),
-      defaultSearchHandlingStrict: Schema.optional(Schema.Boolean),
-      complexDataTypeReferenceParsing: Schema.optional(Schema.String),
-      notificationConfigs: Schema.optional(
-        Schema.Array(FhirNotificationConfig),
-      ),
-      bulkExportGcsDestination: Schema.optional(BulkExportGcsDestination),
-      consentConfig: Schema.optional(ConsentConfig),
-    }),
-  ).annotate({ identifier: "FhirStore" }) as any as Schema.Schema<FhirStore>;
+export const FhirStore = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  enableUpdateCreate: Schema.optional(Schema.Boolean),
+  notificationConfig: Schema.optional(NotificationConfig),
+  disableReferentialIntegrity: Schema.optional(Schema.Boolean),
+  disableResourceVersioning: Schema.optional(Schema.Boolean),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  version: Schema.optional(Schema.String),
+  streamConfigs: Schema.optional(Schema.Array(StreamConfig)),
+  validationConfig: Schema.optional(ValidationConfig),
+  defaultSearchHandlingStrict: Schema.optional(Schema.Boolean),
+  complexDataTypeReferenceParsing: Schema.optional(Schema.String),
+  notificationConfigs: Schema.optional(Schema.Array(FhirNotificationConfig)),
+  bulkExportGcsDestination: Schema.optional(BulkExportGcsDestination),
+  consentConfig: Schema.optional(ConsentConfig),
+}).annotate({ identifier: "FhirStore" });
 
 export interface ListFhirStoresResponse {
   /** The returned FHIR stores. Won't be more FHIR stores than the value of page_size in the request. */
@@ -2631,29 +2108,22 @@ export interface ListFhirStoresResponse {
   nextPageToken?: string;
 }
 
-export const ListFhirStoresResponse: Schema.Schema<ListFhirStoresResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fhirStores: Schema.optional(Schema.Array(FhirStore)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListFhirStoresResponse",
-  }) as any as Schema.Schema<ListFhirStoresResponse>;
+export const ListFhirStoresResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    fhirStores: Schema.optional(Schema.Array(FhirStore)),
+    nextPageToken: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ListFhirStoresResponse" });
 
 export interface GoogleCloudHealthcareV1FhirGcsSource {
   /** Points to a Cloud Storage URI containing file(s) to import. The URI must be in the following format: `gs://{bucket_id}/{object_id}`. The URI can include wildcards in `object_id` and thus identify multiple files. Supported wildcards: * `*` to match 0 or more non-separator characters * `**` to match 0 or more characters (including separators). Must be used at the end of a path and with no other wildcards in the path. Can also be used with a file extension (such as .ndjson), which imports all files with the extension in the specified directory and its sub-directories. For example, `gs://my-bucket/my-directory/**.ndjson` imports all files with `.ndjson` extensions in `my-directory/` and its sub-directories. * `?` to match 1 character Files matching the wildcard are expected to contain content only, no metadata. */
   uri?: string;
 }
 
-export const GoogleCloudHealthcareV1FhirGcsSource: Schema.Schema<GoogleCloudHealthcareV1FhirGcsSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudHealthcareV1FhirGcsSource",
-  }) as any as Schema.Schema<GoogleCloudHealthcareV1FhirGcsSource>;
+export const GoogleCloudHealthcareV1FhirGcsSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudHealthcareV1FhirGcsSource" });
 
 export interface ImportResourcesRequest {
   /** The content structure in the source location. If not specified, the server treats the input source files as BUNDLE. */
@@ -2668,29 +2138,21 @@ export interface ImportResourcesRequest {
   gcsSource?: GoogleCloudHealthcareV1FhirGcsSource;
 }
 
-export const ImportResourcesRequest: Schema.Schema<ImportResourcesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contentStructure: Schema.optional(Schema.String),
-      gcsSource: Schema.optional(GoogleCloudHealthcareV1FhirGcsSource),
-    }),
-  ).annotate({
-    identifier: "ImportResourcesRequest",
-  }) as any as Schema.Schema<ImportResourcesRequest>;
+export const ImportResourcesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    contentStructure: Schema.optional(Schema.String),
+    gcsSource: Schema.optional(GoogleCloudHealthcareV1FhirGcsSource),
+  },
+).annotate({ identifier: "ImportResourcesRequest" });
 
 export interface PatientScope {
   /** Optional. The list of patient IDs whose Consent resources will be enforced. At most 10,000 patients can be specified. An empty list is equivalent to all patients (meaning the entire FHIR store). */
   patientIds?: Array<string>;
 }
 
-export const PatientScope: Schema.Schema<PatientScope> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      patientIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "PatientScope",
-  }) as any as Schema.Schema<PatientScope>;
+export const PatientScope = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  patientIds: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "PatientScope" });
 
 export interface TimeRange {
   /** Optional. The earliest consent change time, in format YYYY-MM-DDThh:mm:ss.sss+zz:zz If not specified, the system uses the FHIR store creation time. */
@@ -2699,13 +2161,10 @@ export interface TimeRange {
   end?: string;
 }
 
-export const TimeRange: Schema.Schema<TimeRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      start: Schema.optional(Schema.String),
-      end: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "TimeRange" }) as any as Schema.Schema<TimeRange>;
+export const TimeRange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  start: Schema.optional(Schema.String),
+  end: Schema.optional(Schema.String),
+}).annotate({ identifier: "TimeRange" });
 
 export interface ApplyConsentsRequest {
   /** Optional. Scope down to a list of patients. */
@@ -2716,30 +2175,20 @@ export interface ApplyConsentsRequest {
   validateOnly?: boolean;
 }
 
-export const ApplyConsentsRequest: Schema.Schema<ApplyConsentsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      patientScope: Schema.optional(PatientScope),
-      timeRange: Schema.optional(TimeRange),
-      validateOnly: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ApplyConsentsRequest",
-  }) as any as Schema.Schema<ApplyConsentsRequest>;
+export const ApplyConsentsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  patientScope: Schema.optional(PatientScope),
+  timeRange: Schema.optional(TimeRange),
+  validateOnly: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "ApplyConsentsRequest" });
 
 export interface AdminConsents {
   /** Optional. The versioned names of the admin Consent resource(s), in the format `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Consent/{resource_id}/_history/{version_id}`. For FHIR stores with `disable_resource_versioning=true`, the format is `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Consent/{resource_id}`. */
   names?: Array<string>;
 }
 
-export const AdminConsents: Schema.Schema<AdminConsents> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      names: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AdminConsents",
-  }) as any as Schema.Schema<AdminConsents>;
+export const AdminConsents = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  names: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "AdminConsents" });
 
 export interface ApplyAdminConsentsRequest {
   /** A new list of admin Consent resources to be applied. Any existing enforced Consents, which are specified in `consent_config.enforced_admin_consents` of the FhirStore, that are not part of this list will be disabled. An empty list is equivalent to clearing or disabling all Consents enforced on the FHIR store. When a FHIR store has `disable_resource_versioning=true` and this list contains a Consent resource that exists in `consent_config.enforced_admin_consents`, the method enforces any updates to the existing resource since the last enforcement. If the existing resource hasn't been updated since the last enforcement, the resource is unaffected. After the method finishes, the resulting consent enforcement model is determined by the contents of the Consent resource(s) when the method was called: * When `disable_resource_versioning=true`, the result is identical to the current resource(s) in the FHIR store. * When `disable_resource_versioning=false`, the result is based on the historical version(s) of the Consent resource(s) at the point in time when the method was called. At most 200 Consents can be specified. */
@@ -2748,15 +2197,11 @@ export interface ApplyAdminConsentsRequest {
   validateOnly?: boolean;
 }
 
-export const ApplyAdminConsentsRequest: Schema.Schema<ApplyAdminConsentsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      newConsentsList: Schema.optional(AdminConsents),
-      validateOnly: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ApplyAdminConsentsRequest",
-  }) as any as Schema.Schema<ApplyAdminConsentsRequest>;
+export const ApplyAdminConsentsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    newConsentsList: Schema.optional(AdminConsents),
+    validateOnly: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "ApplyAdminConsentsRequest" });
 
 export interface ConsentAccessorScope {
   /** An individual, group, or access role that identifies the accessor or a characteristic of the accessor. This can be a resource ID (such as `{resourceType}/{id}`) or an external URI. This value must be present. */
@@ -2767,16 +2212,11 @@ export interface ConsentAccessorScope {
   environment?: string;
 }
 
-export const ConsentAccessorScope: Schema.Schema<ConsentAccessorScope> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      actor: Schema.optional(Schema.String),
-      purpose: Schema.optional(Schema.String),
-      environment: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConsentAccessorScope",
-  }) as any as Schema.Schema<ConsentAccessorScope>;
+export const ConsentAccessorScope = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  actor: Schema.optional(Schema.String),
+  purpose: Schema.optional(Schema.String),
+  environment: Schema.optional(Schema.String),
+}).annotate({ identifier: "ConsentAccessorScope" });
 
 export interface ExplainDataAccessConsentInfo {
   /** The resource name of this consent resource, in the format: `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Consent/{resource_id}`. */
@@ -2804,22 +2244,16 @@ export interface ExplainDataAccessConsentInfo {
   matchingAccessorScopes?: Array<ConsentAccessorScope>;
 }
 
-export const ExplainDataAccessConsentInfo: Schema.Schema<ExplainDataAccessConsentInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      consentResource: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      variants: Schema.optional(Schema.Array(Schema.String)),
-      enforcementTime: Schema.optional(Schema.String),
-      patientConsentOwner: Schema.optional(Schema.String),
-      cascadeOrigins: Schema.optional(Schema.Array(Schema.String)),
-      matchingAccessorScopes: Schema.optional(
-        Schema.Array(ConsentAccessorScope),
-      ),
-    }),
-  ).annotate({
-    identifier: "ExplainDataAccessConsentInfo",
-  }) as any as Schema.Schema<ExplainDataAccessConsentInfo>;
+export const ExplainDataAccessConsentInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    consentResource: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    variants: Schema.optional(Schema.Array(Schema.String)),
+    enforcementTime: Schema.optional(Schema.String),
+    patientConsentOwner: Schema.optional(Schema.String),
+    cascadeOrigins: Schema.optional(Schema.Array(Schema.String)),
+    matchingAccessorScopes: Schema.optional(Schema.Array(ConsentAccessorScope)),
+  }).annotate({ identifier: "ExplainDataAccessConsentInfo" });
 
 export interface ExplainDataAccessConsentScope {
   /** Whether the current consent scope is permitted or denied access on the requested resource. */
@@ -2857,31 +2291,21 @@ export interface ExplainDataAccessResponse {
   warning?: string;
 }
 
-export const ExplainDataAccessResponse: Schema.Schema<ExplainDataAccessResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      consentScopes: Schema.optional(
-        Schema.Array(ExplainDataAccessConsentScope),
-      ),
-      warning: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ExplainDataAccessResponse",
-  }) as any as Schema.Schema<ExplainDataAccessResponse>;
+export const ExplainDataAccessResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    consentScopes: Schema.optional(Schema.Array(ExplainDataAccessConsentScope)),
+    warning: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ExplainDataAccessResponse" });
 
 export interface GoogleCloudHealthcareV1FhirGcsDestination {
   /** URI for a Cloud Storage directory where result files should be written, in the format of `gs://{bucket-id}/{path/to/destination/dir}`. If there is no trailing slash, the service appends one when composing the object path. The user is responsible for creating the Cloud Storage bucket referenced in `uri_prefix`. */
   uriPrefix?: string;
 }
 
-export const GoogleCloudHealthcareV1FhirGcsDestination: Schema.Schema<GoogleCloudHealthcareV1FhirGcsDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uriPrefix: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudHealthcareV1FhirGcsDestination",
-  }) as any as Schema.Schema<GoogleCloudHealthcareV1FhirGcsDestination>;
+export const GoogleCloudHealthcareV1FhirGcsDestination =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uriPrefix: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudHealthcareV1FhirGcsDestination" });
 
 export interface ExportResourcesRequest {
   /** The Cloud Storage output destination. The Healthcare Service Agent account requires the `roles/storage.objectAdmin` role on the Cloud Storage location. The exported outputs are organized by FHIR resource types. The server creates one object per resource type. Each object contains newline delimited JSON, and each line is a FHIR resource. */
@@ -2894,21 +2318,16 @@ export interface ExportResourcesRequest {
   _type?: string;
 }
 
-export const ExportResourcesRequest: Schema.Schema<ExportResourcesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsDestination: Schema.optional(
-        GoogleCloudHealthcareV1FhirGcsDestination,
-      ),
-      bigqueryDestination: Schema.optional(
-        GoogleCloudHealthcareV1FhirBigQueryDestination,
-      ),
-      _since: Schema.optional(Schema.String),
-      _type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ExportResourcesRequest",
-  }) as any as Schema.Schema<ExportResourcesRequest>;
+export const ExportResourcesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    gcsDestination: Schema.optional(GoogleCloudHealthcareV1FhirGcsDestination),
+    bigqueryDestination: Schema.optional(
+      GoogleCloudHealthcareV1FhirBigQueryDestination,
+    ),
+    _since: Schema.optional(Schema.String),
+    _type: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ExportResourcesRequest" });
 
 export interface BulkDeleteResourcesRequest {
   /** Optional. Specifies which version of the resources to delete. */
@@ -2926,19 +2345,13 @@ export interface BulkDeleteResourcesRequest {
   gcsDestination?: GoogleCloudHealthcareV1FhirGcsDestination;
 }
 
-export const BulkDeleteResourcesRequest: Schema.Schema<BulkDeleteResourcesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      versionConfig: Schema.optional(Schema.String),
-      until: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      gcsDestination: Schema.optional(
-        GoogleCloudHealthcareV1FhirGcsDestination,
-      ),
-    }),
-  ).annotate({
-    identifier: "BulkDeleteResourcesRequest",
-  }) as any as Schema.Schema<BulkDeleteResourcesRequest>;
+export const BulkDeleteResourcesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    versionConfig: Schema.optional(Schema.String),
+    until: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    gcsDestination: Schema.optional(GoogleCloudHealthcareV1FhirGcsDestination),
+  }).annotate({ identifier: "BulkDeleteResourcesRequest" });
 
 export interface FhirStoreMetric {
   /** The FHIR resource type this metric applies to. */
@@ -2951,17 +2364,12 @@ export interface FhirStoreMetric {
   versionedStorageSizeBytes?: string;
 }
 
-export const FhirStoreMetric: Schema.Schema<FhirStoreMetric> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceType: Schema.optional(Schema.String),
-      count: Schema.optional(Schema.String),
-      structuredStorageSizeBytes: Schema.optional(Schema.String),
-      versionedStorageSizeBytes: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FhirStoreMetric",
-  }) as any as Schema.Schema<FhirStoreMetric>;
+export const FhirStoreMetric = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceType: Schema.optional(Schema.String),
+  count: Schema.optional(Schema.String),
+  structuredStorageSizeBytes: Schema.optional(Schema.String),
+  versionedStorageSizeBytes: Schema.optional(Schema.String),
+}).annotate({ identifier: "FhirStoreMetric" });
 
 export interface FhirStoreMetrics {
   /** The resource name of the FHIR store to get metrics for, in the format `projects/{project_id}/datasets/{dataset_id}/fhirStores/{fhir_store_id}`. */
@@ -2970,15 +2378,10 @@ export interface FhirStoreMetrics {
   metrics?: Array<FhirStoreMetric>;
 }
 
-export const FhirStoreMetrics: Schema.Schema<FhirStoreMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      metrics: Schema.optional(Schema.Array(FhirStoreMetric)),
-    }),
-  ).annotate({
-    identifier: "FhirStoreMetrics",
-  }) as any as Schema.Schema<FhirStoreMetrics>;
+export const FhirStoreMetrics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  metrics: Schema.optional(Schema.Array(FhirStoreMetric)),
+}).annotate({ identifier: "FhirStoreMetrics" });
 
 export interface RollbackFhirResourceFilteringFields {
   /** Optional. A list of operation IDs to roll back. */
@@ -2987,15 +2390,11 @@ export interface RollbackFhirResourceFilteringFields {
   metadataFilter?: string;
 }
 
-export const RollbackFhirResourceFilteringFields: Schema.Schema<RollbackFhirResourceFilteringFields> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operationIds: Schema.optional(Schema.Array(Schema.String)),
-      metadataFilter: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RollbackFhirResourceFilteringFields",
-  }) as any as Schema.Schema<RollbackFhirResourceFilteringFields>;
+export const RollbackFhirResourceFilteringFields =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operationIds: Schema.optional(Schema.Array(Schema.String)),
+    metadataFilter: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RollbackFhirResourceFilteringFields" });
 
 export interface RollbackFhirResourcesRequest {
   /** Optional. If specified, revert only resources of these types */
@@ -3022,21 +2421,17 @@ export interface RollbackFhirResourcesRequest {
   excludeRollbacks?: boolean;
 }
 
-export const RollbackFhirResourcesRequest: Schema.Schema<RollbackFhirResourcesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.Array(Schema.String)),
-      rollbackTime: Schema.optional(Schema.String),
-      filteringFields: Schema.optional(RollbackFhirResourceFilteringFields),
-      force: Schema.optional(Schema.Boolean),
-      changeType: Schema.optional(Schema.String),
-      resultGcsBucket: Schema.optional(Schema.String),
-      inputGcsObject: Schema.optional(Schema.String),
-      excludeRollbacks: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "RollbackFhirResourcesRequest",
-  }) as any as Schema.Schema<RollbackFhirResourcesRequest>;
+export const RollbackFhirResourcesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.Array(Schema.String)),
+    rollbackTime: Schema.optional(Schema.String),
+    filteringFields: Schema.optional(RollbackFhirResourceFilteringFields),
+    force: Schema.optional(Schema.Boolean),
+    changeType: Schema.optional(Schema.String),
+    resultGcsBucket: Schema.optional(Schema.String),
+    inputGcsObject: Schema.optional(Schema.String),
+    excludeRollbacks: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "RollbackFhirResourcesRequest" });
 
 export interface AnalyzeEntitiesRequest {
   /** document_content is a document to be annotated. */
@@ -3055,16 +2450,13 @@ export interface AnalyzeEntitiesRequest {
     | (string & {});
 }
 
-export const AnalyzeEntitiesRequest: Schema.Schema<AnalyzeEntitiesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      documentContent: Schema.optional(Schema.String),
-      licensedVocabularies: Schema.optional(Schema.Array(Schema.String)),
-      alternativeOutputFormat: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AnalyzeEntitiesRequest",
-  }) as any as Schema.Schema<AnalyzeEntitiesRequest>;
+export const AnalyzeEntitiesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    documentContent: Schema.optional(Schema.String),
+    licensedVocabularies: Schema.optional(Schema.Array(Schema.String)),
+    alternativeOutputFormat: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "AnalyzeEntitiesRequest" });
 
 export interface TextSpan {
   /** The original text contained in this span. */
@@ -3073,27 +2465,19 @@ export interface TextSpan {
   beginOffset?: number;
 }
 
-export const TextSpan: Schema.Schema<TextSpan> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      content: Schema.optional(Schema.String),
-      beginOffset: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "TextSpan" }) as any as Schema.Schema<TextSpan>;
+export const TextSpan = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  content: Schema.optional(Schema.String),
+  beginOffset: Schema.optional(Schema.Number),
+}).annotate({ identifier: "TextSpan" });
 
 export interface LinkedEntity {
   /** entity_id is a concept unique identifier. These are prefixed by a string that identifies the entity coding system, followed by the unique identifier within that system. For example, "UMLS/C0000970". This also supports ad hoc entities, which are formed by normalizing entity mention content. */
   entityId?: string;
 }
 
-export const LinkedEntity: Schema.Schema<LinkedEntity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entityId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LinkedEntity",
-  }) as any as Schema.Schema<LinkedEntity>;
+export const LinkedEntity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  entityId: Schema.optional(Schema.String),
+}).annotate({ identifier: "LinkedEntity" });
 
 export interface Feature {
   /** The value of this feature annotation. Its range depends on the type of the feature. */
@@ -3102,13 +2486,10 @@ export interface Feature {
   confidence?: number;
 }
 
-export const Feature: Schema.Schema<Feature> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-      confidence: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Feature" }) as any as Schema.Schema<Feature>;
+export const Feature = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.String),
+  confidence: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Feature" });
 
 export interface EntityMention {
   /** mention_id uniquely identifies each entity mention in a single response. */
@@ -3129,21 +2510,16 @@ export interface EntityMention {
   confidence?: number;
 }
 
-export const EntityMention: Schema.Schema<EntityMention> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mentionId: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      text: Schema.optional(TextSpan),
-      linkedEntities: Schema.optional(Schema.Array(LinkedEntity)),
-      temporalAssessment: Schema.optional(Feature),
-      certaintyAssessment: Schema.optional(Feature),
-      subject: Schema.optional(Feature),
-      confidence: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "EntityMention",
-  }) as any as Schema.Schema<EntityMention>;
+export const EntityMention = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  mentionId: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  text: Schema.optional(TextSpan),
+  linkedEntities: Schema.optional(Schema.Array(LinkedEntity)),
+  temporalAssessment: Schema.optional(Feature),
+  certaintyAssessment: Schema.optional(Feature),
+  subject: Schema.optional(Feature),
+  confidence: Schema.optional(Schema.Number),
+}).annotate({ identifier: "EntityMention" });
 
 export interface Entity {
   /** entity_id is a first class field entity_id uniquely identifies this concept and its meta-vocabulary. For example, "UMLS/C0000970". */
@@ -3154,14 +2530,11 @@ export interface Entity {
   vocabularyCodes?: Array<string>;
 }
 
-export const Entity: Schema.Schema<Entity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entityId: Schema.optional(Schema.String),
-      preferredTerm: Schema.optional(Schema.String),
-      vocabularyCodes: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "Entity" }) as any as Schema.Schema<Entity>;
+export const Entity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  entityId: Schema.optional(Schema.String),
+  preferredTerm: Schema.optional(Schema.String),
+  vocabularyCodes: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Entity" });
 
 export interface EntityMentionRelationship {
   /** subject_id is the id of the subject entity mention. */
@@ -3172,16 +2545,12 @@ export interface EntityMentionRelationship {
   confidence?: number;
 }
 
-export const EntityMentionRelationship: Schema.Schema<EntityMentionRelationship> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subjectId: Schema.optional(Schema.String),
-      objectId: Schema.optional(Schema.String),
-      confidence: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "EntityMentionRelationship",
-  }) as any as Schema.Schema<EntityMentionRelationship>;
+export const EntityMentionRelationship =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subjectId: Schema.optional(Schema.String),
+    objectId: Schema.optional(Schema.String),
+    confidence: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "EntityMentionRelationship" });
 
 export interface AnalyzeEntitiesResponse {
   /** The `entity_mentions` field contains all the annotated medical entities that were mentioned in the provided document. */
@@ -3194,17 +2563,13 @@ export interface AnalyzeEntitiesResponse {
   fhirBundle?: string;
 }
 
-export const AnalyzeEntitiesResponse: Schema.Schema<AnalyzeEntitiesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entityMentions: Schema.optional(Schema.Array(EntityMention)),
-      entities: Schema.optional(Schema.Array(Entity)),
-      relationships: Schema.optional(Schema.Array(EntityMentionRelationship)),
-      fhirBundle: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AnalyzeEntitiesResponse",
-  }) as any as Schema.Schema<AnalyzeEntitiesResponse>;
+export const AnalyzeEntitiesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entityMentions: Schema.optional(Schema.Array(EntityMention)),
+    entities: Schema.optional(Schema.Array(Entity)),
+    relationships: Schema.optional(Schema.Array(EntityMentionRelationship)),
+    fhirBundle: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AnalyzeEntitiesResponse" });
 
 export interface ProgressCounter {
   /** The number of units that are pending in the operation. */
@@ -3219,18 +2584,13 @@ export interface ProgressCounter {
   secondaryFailure?: string;
 }
 
-export const ProgressCounter: Schema.Schema<ProgressCounter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pending: Schema.optional(Schema.String),
-      success: Schema.optional(Schema.String),
-      failure: Schema.optional(Schema.String),
-      secondarySuccess: Schema.optional(Schema.String),
-      secondaryFailure: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProgressCounter",
-  }) as any as Schema.Schema<ProgressCounter>;
+export const ProgressCounter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pending: Schema.optional(Schema.String),
+  success: Schema.optional(Schema.String),
+  failure: Schema.optional(Schema.String),
+  secondarySuccess: Schema.optional(Schema.String),
+  secondaryFailure: Schema.optional(Schema.String),
+}).annotate({ identifier: "ProgressCounter" });
 
 export interface OperationMetadata {
   /** The name of the API method that initiated the operation. */
@@ -3246,96 +2606,82 @@ export interface OperationMetadata {
   logsUrl?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      apiMethodName: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      counter: Schema.optional(ProgressCounter),
-      cancelRequested: Schema.optional(Schema.Boolean),
-      logsUrl: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  apiMethodName: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  counter: Schema.optional(ProgressCounter),
+  cancelRequested: Schema.optional(Schema.Boolean),
+  logsUrl: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationMetadata" });
 
 export interface QueryAccessibleDataResponse {
   /** List of files, each of which contains a list of data_id(s) that are consented for a specified use in the request. */
   gcsUris?: Array<string>;
 }
 
-export const QueryAccessibleDataResponse: Schema.Schema<QueryAccessibleDataResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcsUris: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "QueryAccessibleDataResponse",
-  }) as any as Schema.Schema<QueryAccessibleDataResponse>;
+export const QueryAccessibleDataResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gcsUris: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "QueryAccessibleDataResponse" });
 
 export interface DeidentifySummary {}
 
-export const DeidentifySummary: Schema.Schema<DeidentifySummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "DeidentifySummary",
-  }) as any as Schema.Schema<DeidentifySummary>;
+export const DeidentifySummary = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "DeidentifySummary" });
 
 export interface GoogleCloudHealthcareV1DeidentifyDeidentifyDicomStoreSummary {}
 
-export const GoogleCloudHealthcareV1DeidentifyDeidentifyDicomStoreSummary: Schema.Schema<GoogleCloudHealthcareV1DeidentifyDeidentifyDicomStoreSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudHealthcareV1DeidentifyDeidentifyDicomStoreSummary =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudHealthcareV1DeidentifyDeidentifyDicomStoreSummary",
-  }) as any as Schema.Schema<GoogleCloudHealthcareV1DeidentifyDeidentifyDicomStoreSummary>;
+  });
 
 export interface GoogleCloudHealthcareV1DeidentifyDeidentifyFhirStoreSummary {}
 
-export const GoogleCloudHealthcareV1DeidentifyDeidentifyFhirStoreSummary: Schema.Schema<GoogleCloudHealthcareV1DeidentifyDeidentifyFhirStoreSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudHealthcareV1DeidentifyDeidentifyFhirStoreSummary =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudHealthcareV1DeidentifyDeidentifyFhirStoreSummary",
-  }) as any as Schema.Schema<GoogleCloudHealthcareV1DeidentifyDeidentifyFhirStoreSummary>;
+  });
 
 export interface ImportDicomDataResponse {}
 
-export const ImportDicomDataResponse: Schema.Schema<ImportDicomDataResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const ImportDicomDataResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ImportDicomDataResponse",
-  }) as any as Schema.Schema<ImportDicomDataResponse>;
+  });
 
 export interface ExportDicomDataResponse {}
 
-export const ExportDicomDataResponse: Schema.Schema<ExportDicomDataResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const ExportDicomDataResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ExportDicomDataResponse",
-  }) as any as Schema.Schema<ExportDicomDataResponse>;
+  });
 
 export interface ImportResourcesResponse {}
 
-export const ImportResourcesResponse: Schema.Schema<ImportResourcesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const ImportResourcesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ImportResourcesResponse",
-  }) as any as Schema.Schema<ImportResourcesResponse>;
+  });
 
 export interface ExportResourcesResponse {}
 
-export const ExportResourcesResponse: Schema.Schema<ExportResourcesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const ExportResourcesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ExportResourcesResponse",
-  }) as any as Schema.Schema<ExportResourcesResponse>;
+  });
 
 export interface RollbackFhirResourcesResponse {
   /** The name of the FHIR store to rollback, in the format of "projects/{project_id}/locations/{location_id}/datasets/{dataset_id} /fhirStores/{fhir_store_id}". */
   fhirStore?: string;
 }
 
-export const RollbackFhirResourcesResponse: Schema.Schema<RollbackFhirResourcesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fhirStore: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RollbackFhirResourcesResponse",
-  }) as any as Schema.Schema<RollbackFhirResourcesResponse>;
+export const RollbackFhirResourcesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fhirStore: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RollbackFhirResourcesResponse" });
 
 export interface ApplyConsentsResponse {
   /** If `validate_only = false` in ApplyConsentsRequest, this counter is the number of Consent resources that were successfully applied. Otherwise, it is the number of Consent resources that are supported. */
@@ -3348,17 +2694,12 @@ export interface ApplyConsentsResponse {
   failedResources?: string;
 }
 
-export const ApplyConsentsResponse: Schema.Schema<ApplyConsentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      consentApplySuccess: Schema.optional(Schema.String),
-      consentApplyFailure: Schema.optional(Schema.String),
-      affectedResources: Schema.optional(Schema.String),
-      failedResources: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ApplyConsentsResponse",
-  }) as any as Schema.Schema<ApplyConsentsResponse>;
+export const ApplyConsentsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  consentApplySuccess: Schema.optional(Schema.String),
+  consentApplyFailure: Schema.optional(Schema.String),
+  affectedResources: Schema.optional(Schema.String),
+  failedResources: Schema.optional(Schema.String),
+}).annotate({ identifier: "ApplyConsentsResponse" });
 
 export interface ApplyAdminConsentsResponse {
   /** If `validate_only=false` in ApplyAdminConsentsRequest, this counter contains the number of Consent resources that were successfully applied. Otherwise, it is the number of Consent resources that are supported. */
@@ -3369,16 +2710,12 @@ export interface ApplyAdminConsentsResponse {
   failedResources?: string;
 }
 
-export const ApplyAdminConsentsResponse: Schema.Schema<ApplyAdminConsentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      consentApplySuccess: Schema.optional(Schema.String),
-      affectedResources: Schema.optional(Schema.String),
-      failedResources: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ApplyAdminConsentsResponse",
-  }) as any as Schema.Schema<ApplyAdminConsentsResponse>;
+export const ApplyAdminConsentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    consentApplySuccess: Schema.optional(Schema.String),
+    affectedResources: Schema.optional(Schema.String),
+    failedResources: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ApplyAdminConsentsResponse" });
 
 export interface ConsentErrors {
   /** The versioned name of the admin Consent resource, in the format `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Consent/{resource_id}/_history/{version_id}`. For FHIR stores with `disable_resource_versioning=true`, the format is `projects/{project_id}/locations/{location}/datasets/{dataset_id}/fhirStores/{fhir_store_id}/fhir/Consent/{resource_id}`. */
@@ -3387,15 +2724,10 @@ export interface ConsentErrors {
   error?: Status;
 }
 
-export const ConsentErrors: Schema.Schema<ConsentErrors> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      error: Schema.optional(Status),
-    }),
-  ).annotate({
-    identifier: "ConsentErrors",
-  }) as any as Schema.Schema<ConsentErrors>;
+export const ConsentErrors = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  error: Schema.optional(Status),
+}).annotate({ identifier: "ConsentErrors" });
 
 export interface ApplyAdminConsentsErrorDetail {
   /** The list of Consent resources that are unsupported or cannot be applied and the error associated with each of them. */
@@ -3404,50 +2736,40 @@ export interface ApplyAdminConsentsErrorDetail {
   existingOperationId?: string;
 }
 
-export const ApplyAdminConsentsErrorDetail: Schema.Schema<ApplyAdminConsentsErrorDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      consentErrors: Schema.optional(Schema.Array(ConsentErrors)),
-      existingOperationId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ApplyAdminConsentsErrorDetail",
-  }) as any as Schema.Schema<ApplyAdminConsentsErrorDetail>;
+export const ApplyAdminConsentsErrorDetail =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    consentErrors: Schema.optional(Schema.Array(ConsentErrors)),
+    existingOperationId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ApplyAdminConsentsErrorDetail" });
 
 export interface ExportMessagesResponse {}
 
-export const ExportMessagesResponse: Schema.Schema<ExportMessagesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "ExportMessagesResponse",
-  }) as any as Schema.Schema<ExportMessagesResponse>;
+export const ExportMessagesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "ExportMessagesResponse" });
 
 export interface ImportMessagesResponse {}
 
-export const ImportMessagesResponse: Schema.Schema<ImportMessagesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "ImportMessagesResponse",
-  }) as any as Schema.Schema<ImportMessagesResponse>;
+export const ImportMessagesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "ImportMessagesResponse" });
 
 export interface RollbackHl7V2MessagesResponse {
   /** The name of the HL7v2 store to rollback, in the format of "projects/{project_id}/locations/{location_id}/datasets/{dataset_id} /hl7v2Stores/{hl7v2_store_id}". */
   hl7v2Store?: string;
 }
 
-export const RollbackHl7V2MessagesResponse: Schema.Schema<RollbackHl7V2MessagesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hl7v2Store: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RollbackHl7V2MessagesResponse",
-  }) as any as Schema.Schema<RollbackHl7V2MessagesResponse>;
+export const RollbackHl7V2MessagesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    hl7v2Store: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RollbackHl7V2MessagesResponse" });
 
 export interface SetBlobStorageSettingsResponse {}
 
-export const SetBlobStorageSettingsResponse: Schema.Schema<SetBlobStorageSettingsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const SetBlobStorageSettingsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "SetBlobStorageSettingsResponse",
-  }) as any as Schema.Schema<SetBlobStorageSettingsResponse>;
+  });
 
 // ==========================================================================
 // Operations

@@ -28,15 +28,11 @@ export interface ManagedZonePrivateVisibilityConfigGKECluster {
   kind?: string;
 }
 
-export const ManagedZonePrivateVisibilityConfigGKECluster: Schema.Schema<ManagedZonePrivateVisibilityConfigGKECluster> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gkeClusterName: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ManagedZonePrivateVisibilityConfigGKECluster",
-  }) as any as Schema.Schema<ManagedZonePrivateVisibilityConfigGKECluster>;
+export const ManagedZonePrivateVisibilityConfigGKECluster =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gkeClusterName: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ManagedZonePrivateVisibilityConfigGKECluster" });
 
 export interface ManagedZonePrivateVisibilityConfigNetwork {
   kind?: string;
@@ -44,15 +40,11 @@ export interface ManagedZonePrivateVisibilityConfigNetwork {
   networkUrl?: string;
 }
 
-export const ManagedZonePrivateVisibilityConfigNetwork: Schema.Schema<ManagedZonePrivateVisibilityConfigNetwork> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      networkUrl: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ManagedZonePrivateVisibilityConfigNetwork",
-  }) as any as Schema.Schema<ManagedZonePrivateVisibilityConfigNetwork>;
+export const ManagedZonePrivateVisibilityConfigNetwork =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    networkUrl: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ManagedZonePrivateVisibilityConfigNetwork" });
 
 export interface ManagedZonePrivateVisibilityConfig {
   /** The list of Google Kubernetes Engine clusters that can see this zone. */
@@ -62,20 +54,16 @@ export interface ManagedZonePrivateVisibilityConfig {
   kind?: string;
 }
 
-export const ManagedZonePrivateVisibilityConfig: Schema.Schema<ManagedZonePrivateVisibilityConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gkeClusters: Schema.optional(
-        Schema.Array(ManagedZonePrivateVisibilityConfigGKECluster),
-      ),
-      networks: Schema.optional(
-        Schema.Array(ManagedZonePrivateVisibilityConfigNetwork),
-      ),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ManagedZonePrivateVisibilityConfig",
-  }) as any as Schema.Schema<ManagedZonePrivateVisibilityConfig>;
+export const ManagedZonePrivateVisibilityConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gkeClusters: Schema.optional(
+      Schema.Array(ManagedZonePrivateVisibilityConfigGKECluster),
+    ),
+    networks: Schema.optional(
+      Schema.Array(ManagedZonePrivateVisibilityConfigNetwork),
+    ),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ManagedZonePrivateVisibilityConfig" });
 
 export interface ManagedZonePeeringConfigTargetNetwork {
   kind?: string;
@@ -85,16 +73,12 @@ export interface ManagedZonePeeringConfigTargetNetwork {
   deactivateTime?: string;
 }
 
-export const ManagedZonePeeringConfigTargetNetwork: Schema.Schema<ManagedZonePeeringConfigTargetNetwork> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      networkUrl: Schema.optional(Schema.String),
-      deactivateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ManagedZonePeeringConfigTargetNetwork",
-  }) as any as Schema.Schema<ManagedZonePeeringConfigTargetNetwork>;
+export const ManagedZonePeeringConfigTargetNetwork =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    networkUrl: Schema.optional(Schema.String),
+    deactivateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ManagedZonePeeringConfigTargetNetwork" });
 
 export interface RRSetRoutingPolicyLoadBalancerTarget {
   /** The fully qualified URL of the network that the load balancer is attached to. This should be formatted like `https://www.googleapis.com/compute/v1/projects/{project}/global/networks/{network}`. */
@@ -119,21 +103,17 @@ export interface RRSetRoutingPolicyLoadBalancerTarget {
   kind?: string;
 }
 
-export const RRSetRoutingPolicyLoadBalancerTarget: Schema.Schema<RRSetRoutingPolicyLoadBalancerTarget> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      networkUrl: Schema.optional(Schema.String),
-      region: Schema.optional(Schema.String),
-      loadBalancerType: Schema.optional(Schema.String),
-      project: Schema.optional(Schema.String),
-      port: Schema.optional(Schema.String),
-      ipAddress: Schema.optional(Schema.String),
-      ipProtocol: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RRSetRoutingPolicyLoadBalancerTarget",
-  }) as any as Schema.Schema<RRSetRoutingPolicyLoadBalancerTarget>;
+export const RRSetRoutingPolicyLoadBalancerTarget =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    networkUrl: Schema.optional(Schema.String),
+    region: Schema.optional(Schema.String),
+    loadBalancerType: Schema.optional(Schema.String),
+    project: Schema.optional(Schema.String),
+    port: Schema.optional(Schema.String),
+    ipAddress: Schema.optional(Schema.String),
+    ipProtocol: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RRSetRoutingPolicyLoadBalancerTarget" });
 
 export interface RRSetRoutingPolicyHealthCheckTargets {
   /** Configuration for internal load balancers to be health checked. */
@@ -142,17 +122,13 @@ export interface RRSetRoutingPolicyHealthCheckTargets {
   externalEndpoints?: Array<string>;
 }
 
-export const RRSetRoutingPolicyHealthCheckTargets: Schema.Schema<RRSetRoutingPolicyHealthCheckTargets> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      internalLoadBalancers: Schema.optional(
-        Schema.Array(RRSetRoutingPolicyLoadBalancerTarget),
-      ),
-      externalEndpoints: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "RRSetRoutingPolicyHealthCheckTargets",
-  }) as any as Schema.Schema<RRSetRoutingPolicyHealthCheckTargets>;
+export const RRSetRoutingPolicyHealthCheckTargets =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    internalLoadBalancers: Schema.optional(
+      Schema.Array(RRSetRoutingPolicyLoadBalancerTarget),
+    ),
+    externalEndpoints: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "RRSetRoutingPolicyHealthCheckTargets" });
 
 export interface RRSetRoutingPolicyWrrPolicyWrrPolicyItem {
   /** Endpoints that are health checked before making the routing decision. The unhealthy endpoints are omitted from the result. If all endpoints within a bucket are unhealthy, we choose a different bucket (sampled with respect to its weight) for responding. If DNSSEC is enabled for this zone, only one of `rrdata` or `health_checked_targets` can be set. */
@@ -165,37 +141,27 @@ export interface RRSetRoutingPolicyWrrPolicyWrrPolicyItem {
   kind?: string;
 }
 
-export const RRSetRoutingPolicyWrrPolicyWrrPolicyItem: Schema.Schema<RRSetRoutingPolicyWrrPolicyWrrPolicyItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      healthCheckedTargets: Schema.optional(
-        RRSetRoutingPolicyHealthCheckTargets,
-      ),
-      weight: Schema.optional(Schema.Number),
-      rrdatas: Schema.optional(Schema.Array(Schema.String)),
-      signatureRrdatas: Schema.optional(Schema.Array(Schema.String)),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RRSetRoutingPolicyWrrPolicyWrrPolicyItem",
-  }) as any as Schema.Schema<RRSetRoutingPolicyWrrPolicyWrrPolicyItem>;
+export const RRSetRoutingPolicyWrrPolicyWrrPolicyItem =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    healthCheckedTargets: Schema.optional(RRSetRoutingPolicyHealthCheckTargets),
+    weight: Schema.optional(Schema.Number),
+    rrdatas: Schema.optional(Schema.Array(Schema.String)),
+    signatureRrdatas: Schema.optional(Schema.Array(Schema.String)),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RRSetRoutingPolicyWrrPolicyWrrPolicyItem" });
 
 export interface RRSetRoutingPolicyWrrPolicy {
   items?: Array<RRSetRoutingPolicyWrrPolicyWrrPolicyItem>;
   kind?: string;
 }
 
-export const RRSetRoutingPolicyWrrPolicy: Schema.Schema<RRSetRoutingPolicyWrrPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      items: Schema.optional(
-        Schema.Array(RRSetRoutingPolicyWrrPolicyWrrPolicyItem),
-      ),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RRSetRoutingPolicyWrrPolicy",
-  }) as any as Schema.Schema<RRSetRoutingPolicyWrrPolicy>;
+export const RRSetRoutingPolicyWrrPolicy =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    items: Schema.optional(
+      Schema.Array(RRSetRoutingPolicyWrrPolicyWrrPolicyItem),
+    ),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RRSetRoutingPolicyWrrPolicy" });
 
 export interface RRSetRoutingPolicyGeoPolicyGeoPolicyItem {
   /** For A and AAAA types only. Endpoints to return in the query result only if they are healthy. These can be specified along with `rrdata` within this item. */
@@ -208,20 +174,14 @@ export interface RRSetRoutingPolicyGeoPolicyGeoPolicyItem {
   kind?: string;
 }
 
-export const RRSetRoutingPolicyGeoPolicyGeoPolicyItem: Schema.Schema<RRSetRoutingPolicyGeoPolicyGeoPolicyItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      healthCheckedTargets: Schema.optional(
-        RRSetRoutingPolicyHealthCheckTargets,
-      ),
-      rrdatas: Schema.optional(Schema.Array(Schema.String)),
-      location: Schema.optional(Schema.String),
-      signatureRrdatas: Schema.optional(Schema.Array(Schema.String)),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RRSetRoutingPolicyGeoPolicyGeoPolicyItem",
-  }) as any as Schema.Schema<RRSetRoutingPolicyGeoPolicyGeoPolicyItem>;
+export const RRSetRoutingPolicyGeoPolicyGeoPolicyItem =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    healthCheckedTargets: Schema.optional(RRSetRoutingPolicyHealthCheckTargets),
+    rrdatas: Schema.optional(Schema.Array(Schema.String)),
+    location: Schema.optional(Schema.String),
+    signatureRrdatas: Schema.optional(Schema.Array(Schema.String)),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RRSetRoutingPolicyGeoPolicyGeoPolicyItem" });
 
 export interface RRSetRoutingPolicyGeoPolicy {
   /** The primary geo routing configuration. If there are multiple items with the same location, an error is returned instead. */
@@ -231,18 +191,14 @@ export interface RRSetRoutingPolicyGeoPolicy {
   kind?: string;
 }
 
-export const RRSetRoutingPolicyGeoPolicy: Schema.Schema<RRSetRoutingPolicyGeoPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      items: Schema.optional(
-        Schema.Array(RRSetRoutingPolicyGeoPolicyGeoPolicyItem),
-      ),
-      enableFencing: Schema.optional(Schema.Boolean),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RRSetRoutingPolicyGeoPolicy",
-  }) as any as Schema.Schema<RRSetRoutingPolicyGeoPolicy>;
+export const RRSetRoutingPolicyGeoPolicy =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    items: Schema.optional(
+      Schema.Array(RRSetRoutingPolicyGeoPolicyGeoPolicyItem),
+    ),
+    enableFencing: Schema.optional(Schema.Boolean),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RRSetRoutingPolicyGeoPolicy" });
 
 export interface RRSetRoutingPolicyPrimaryBackupPolicy {
   kind?: string;
@@ -254,17 +210,13 @@ export interface RRSetRoutingPolicyPrimaryBackupPolicy {
   backupGeoTargets?: RRSetRoutingPolicyGeoPolicy;
 }
 
-export const RRSetRoutingPolicyPrimaryBackupPolicy: Schema.Schema<RRSetRoutingPolicyPrimaryBackupPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      trickleTraffic: Schema.optional(Schema.Number),
-      primaryTargets: Schema.optional(RRSetRoutingPolicyHealthCheckTargets),
-      backupGeoTargets: Schema.optional(RRSetRoutingPolicyGeoPolicy),
-    }),
-  ).annotate({
-    identifier: "RRSetRoutingPolicyPrimaryBackupPolicy",
-  }) as any as Schema.Schema<RRSetRoutingPolicyPrimaryBackupPolicy>;
+export const RRSetRoutingPolicyPrimaryBackupPolicy =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    trickleTraffic: Schema.optional(Schema.Number),
+    primaryTargets: Schema.optional(RRSetRoutingPolicyHealthCheckTargets),
+    backupGeoTargets: Schema.optional(RRSetRoutingPolicyGeoPolicy),
+  }).annotate({ identifier: "RRSetRoutingPolicyPrimaryBackupPolicy" });
 
 export interface RRSetRoutingPolicy {
   wrrPolicy?: RRSetRoutingPolicyWrrPolicy;
@@ -277,20 +229,15 @@ export interface RRSetRoutingPolicy {
   kind?: string;
 }
 
-export const RRSetRoutingPolicy: Schema.Schema<RRSetRoutingPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      wrrPolicy: Schema.optional(RRSetRoutingPolicyWrrPolicy),
-      healthCheck: Schema.optional(Schema.String),
-      primaryBackup: Schema.optional(RRSetRoutingPolicyPrimaryBackupPolicy),
-      wrr: Schema.optional(RRSetRoutingPolicyWrrPolicy),
-      geoPolicy: Schema.optional(RRSetRoutingPolicyGeoPolicy),
-      geo: Schema.optional(RRSetRoutingPolicyGeoPolicy),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RRSetRoutingPolicy",
-  }) as any as Schema.Schema<RRSetRoutingPolicy>;
+export const RRSetRoutingPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  wrrPolicy: Schema.optional(RRSetRoutingPolicyWrrPolicy),
+  healthCheck: Schema.optional(Schema.String),
+  primaryBackup: Schema.optional(RRSetRoutingPolicyPrimaryBackupPolicy),
+  wrr: Schema.optional(RRSetRoutingPolicyWrrPolicy),
+  geoPolicy: Schema.optional(RRSetRoutingPolicyGeoPolicy),
+  geo: Schema.optional(RRSetRoutingPolicyGeoPolicy),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "RRSetRoutingPolicy" });
 
 export interface ResourceRecordSet {
   /** For example, www.example.com. */
@@ -308,34 +255,25 @@ export interface ResourceRecordSet {
   ttl?: number;
 }
 
-export const ResourceRecordSet: Schema.Schema<ResourceRecordSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      signatureRrdatas: Schema.optional(Schema.Array(Schema.String)),
-      kind: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      rrdatas: Schema.optional(Schema.Array(Schema.String)),
-      routingPolicy: Schema.optional(RRSetRoutingPolicy),
-      ttl: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "ResourceRecordSet",
-  }) as any as Schema.Schema<ResourceRecordSet>;
+export const ResourceRecordSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  signatureRrdatas: Schema.optional(Schema.Array(Schema.String)),
+  kind: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  rrdatas: Schema.optional(Schema.Array(Schema.String)),
+  routingPolicy: Schema.optional(RRSetRoutingPolicy),
+  ttl: Schema.optional(Schema.Number),
+}).annotate({ identifier: "ResourceRecordSet" });
 
 export interface ResponsePolicyRuleLocalData {
   /** All resource record sets for this selector, one per resource record type. The name must match the dns_name. */
   localDatas?: Array<ResourceRecordSet>;
 }
 
-export const ResponsePolicyRuleLocalData: Schema.Schema<ResponsePolicyRuleLocalData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      localDatas: Schema.optional(Schema.Array(ResourceRecordSet)),
-    }),
-  ).annotate({
-    identifier: "ResponsePolicyRuleLocalData",
-  }) as any as Schema.Schema<ResponsePolicyRuleLocalData>;
+export const ResponsePolicyRuleLocalData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    localDatas: Schema.optional(Schema.Array(ResourceRecordSet)),
+  }).annotate({ identifier: "ResponsePolicyRuleLocalData" });
 
 export interface ResponsePolicyRule {
   /** An identifier for this rule. Must be unique with the ResponsePolicy. */
@@ -349,18 +287,13 @@ export interface ResponsePolicyRule {
   localData?: ResponsePolicyRuleLocalData;
 }
 
-export const ResponsePolicyRule: Schema.Schema<ResponsePolicyRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ruleName: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      dnsName: Schema.optional(Schema.String),
-      behavior: Schema.optional(Schema.String),
-      localData: Schema.optional(ResponsePolicyRuleLocalData),
-    }),
-  ).annotate({
-    identifier: "ResponsePolicyRule",
-  }) as any as Schema.Schema<ResponsePolicyRule>;
+export const ResponsePolicyRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ruleName: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  dnsName: Schema.optional(Schema.String),
+  behavior: Schema.optional(Schema.String),
+  localData: Schema.optional(ResponsePolicyRuleLocalData),
+}).annotate({ identifier: "ResponsePolicyRule" });
 
 export interface ResponsePolicyRulesListResponse {
   /** The Response Policy Rule resources. */
@@ -369,15 +302,11 @@ export interface ResponsePolicyRulesListResponse {
   nextPageToken?: string;
 }
 
-export const ResponsePolicyRulesListResponse: Schema.Schema<ResponsePolicyRulesListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      responsePolicyRules: Schema.optional(Schema.Array(ResponsePolicyRule)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ResponsePolicyRulesListResponse",
-  }) as any as Schema.Schema<ResponsePolicyRulesListResponse>;
+export const ResponsePolicyRulesListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    responsePolicyRules: Schema.optional(Schema.Array(ResponsePolicyRule)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ResponsePolicyRulesListResponse" });
 
 export interface ManagedZoneServiceDirectoryConfigNamespace {
   kind?: string;
@@ -387,16 +316,12 @@ export interface ManagedZoneServiceDirectoryConfigNamespace {
   deletionTime?: string;
 }
 
-export const ManagedZoneServiceDirectoryConfigNamespace: Schema.Schema<ManagedZoneServiceDirectoryConfigNamespace> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      namespaceUrl: Schema.optional(Schema.String),
-      deletionTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ManagedZoneServiceDirectoryConfigNamespace",
-  }) as any as Schema.Schema<ManagedZoneServiceDirectoryConfigNamespace>;
+export const ManagedZoneServiceDirectoryConfigNamespace =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    namespaceUrl: Schema.optional(Schema.String),
+    deletionTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ManagedZoneServiceDirectoryConfigNamespace" });
 
 export interface ManagedZoneServiceDirectoryConfig {
   /** Contains information about the namespace associated with the zone. */
@@ -404,15 +329,11 @@ export interface ManagedZoneServiceDirectoryConfig {
   kind?: string;
 }
 
-export const ManagedZoneServiceDirectoryConfig: Schema.Schema<ManagedZoneServiceDirectoryConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      namespace: Schema.optional(ManagedZoneServiceDirectoryConfigNamespace),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ManagedZoneServiceDirectoryConfig",
-  }) as any as Schema.Schema<ManagedZoneServiceDirectoryConfig>;
+export const ManagedZoneServiceDirectoryConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    namespace: Schema.optional(ManagedZoneServiceDirectoryConfigNamespace),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ManagedZoneServiceDirectoryConfig" });
 
 export interface ManagedZoneForwardingConfigNameServerTarget {
   /** IPv4 address of a target name server. */
@@ -426,18 +347,14 @@ export interface ManagedZoneForwardingConfigNameServerTarget {
   domainName?: string;
 }
 
-export const ManagedZoneForwardingConfigNameServerTarget: Schema.Schema<ManagedZoneForwardingConfigNameServerTarget> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ipv4Address: Schema.optional(Schema.String),
-      ipv6Address: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      forwardingPath: Schema.optional(Schema.String),
-      domainName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ManagedZoneForwardingConfigNameServerTarget",
-  }) as any as Schema.Schema<ManagedZoneForwardingConfigNameServerTarget>;
+export const ManagedZoneForwardingConfigNameServerTarget =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ipv4Address: Schema.optional(Schema.String),
+    ipv6Address: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    forwardingPath: Schema.optional(Schema.String),
+    domainName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ManagedZoneForwardingConfigNameServerTarget" });
 
 export interface ManagedZoneForwardingConfig {
   /** List of target name servers to forward to. Cloud DNS selects the best available name server if more than one target is given. */
@@ -445,30 +362,22 @@ export interface ManagedZoneForwardingConfig {
   kind?: string;
 }
 
-export const ManagedZoneForwardingConfig: Schema.Schema<ManagedZoneForwardingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetNameServers: Schema.optional(
-        Schema.Array(ManagedZoneForwardingConfigNameServerTarget),
-      ),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ManagedZoneForwardingConfig",
-  }) as any as Schema.Schema<ManagedZoneForwardingConfig>;
+export const ManagedZoneForwardingConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetNameServers: Schema.optional(
+      Schema.Array(ManagedZoneForwardingConfigNameServerTarget),
+    ),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ManagedZoneForwardingConfig" });
 
 export interface ManagedZoneReverseLookupConfig {
   kind?: string;
 }
 
-export const ManagedZoneReverseLookupConfig: Schema.Schema<ManagedZoneReverseLookupConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ManagedZoneReverseLookupConfig",
-  }) as any as Schema.Schema<ManagedZoneReverseLookupConfig>;
+export const ManagedZoneReverseLookupConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ManagedZoneReverseLookupConfig" });
 
 export interface ManagedZonePeeringConfig {
   /** The network with which to peer. */
@@ -476,15 +385,11 @@ export interface ManagedZonePeeringConfig {
   kind?: string;
 }
 
-export const ManagedZonePeeringConfig: Schema.Schema<ManagedZonePeeringConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetNetwork: Schema.optional(ManagedZonePeeringConfigTargetNetwork),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ManagedZonePeeringConfig",
-  }) as any as Schema.Schema<ManagedZonePeeringConfig>;
+export const ManagedZonePeeringConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetNetwork: Schema.optional(ManagedZonePeeringConfigTargetNetwork),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ManagedZonePeeringConfig" });
 
 export interface ManagedZoneCloudLoggingConfig {
   /** If set, enable query logging for this ManagedZone. False by default, making logging opt-in. */
@@ -492,15 +397,11 @@ export interface ManagedZoneCloudLoggingConfig {
   kind?: string;
 }
 
-export const ManagedZoneCloudLoggingConfig: Schema.Schema<ManagedZoneCloudLoggingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableLogging: Schema.optional(Schema.Boolean),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ManagedZoneCloudLoggingConfig",
-  }) as any as Schema.Schema<ManagedZoneCloudLoggingConfig>;
+export const ManagedZoneCloudLoggingConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enableLogging: Schema.optional(Schema.Boolean),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ManagedZoneCloudLoggingConfig" });
 
 export interface DnsKeySpec {
   /** Specifies whether this is a key signing key (KSK) or a zone signing key (ZSK). Key signing keys have the Secure Entry Point flag set and, when active, are only used to sign resource record sets of type DNSKEY. Zone signing keys do not have the Secure Entry Point flag set and are used to sign all other types of resource record sets. */
@@ -518,15 +419,12 @@ export interface DnsKeySpec {
   kind?: string;
 }
 
-export const DnsKeySpec: Schema.Schema<DnsKeySpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      keyType: Schema.optional(Schema.String),
-      algorithm: Schema.optional(Schema.String),
-      keyLength: Schema.optional(Schema.Number),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "DnsKeySpec" }) as any as Schema.Schema<DnsKeySpec>;
+export const DnsKeySpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  keyType: Schema.optional(Schema.String),
+  algorithm: Schema.optional(Schema.String),
+  keyLength: Schema.optional(Schema.Number),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "DnsKeySpec" });
 
 export interface ManagedZoneDnsSecConfig {
   kind?: string;
@@ -538,17 +436,13 @@ export interface ManagedZoneDnsSecConfig {
   nonExistence?: "nsec" | "nsec3" | (string & {});
 }
 
-export const ManagedZoneDnsSecConfig: Schema.Schema<ManagedZoneDnsSecConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      defaultKeySpecs: Schema.optional(Schema.Array(DnsKeySpec)),
-      nonExistence: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ManagedZoneDnsSecConfig",
-  }) as any as Schema.Schema<ManagedZoneDnsSecConfig>;
+export const ManagedZoneDnsSecConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    defaultKeySpecs: Schema.optional(Schema.Array(DnsKeySpec)),
+    nonExistence: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ManagedZoneDnsSecConfig" });
 
 export interface ManagedZone {
   /** For privately visible zones, the set of Virtual Private Cloud resources that the zone is visible from. */
@@ -585,34 +479,25 @@ export interface ManagedZone {
   dnssecConfig?: ManagedZoneDnsSecConfig;
 }
 
-export const ManagedZone: Schema.Schema<ManagedZone> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      privateVisibilityConfig: Schema.optional(
-        ManagedZonePrivateVisibilityConfig,
-      ),
-      serviceDirectoryConfig: Schema.optional(
-        ManagedZoneServiceDirectoryConfig,
-      ),
-      description: Schema.optional(Schema.String),
-      nameServerSet: Schema.optional(Schema.String),
-      forwardingConfig: Schema.optional(ManagedZoneForwardingConfig),
-      id: Schema.optional(Schema.String),
-      reverseLookupConfig: Schema.optional(ManagedZoneReverseLookupConfig),
-      nameServers: Schema.optional(Schema.Array(Schema.String)),
-      creationTime: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      peeringConfig: Schema.optional(ManagedZonePeeringConfig),
-      kind: Schema.optional(Schema.String),
-      visibility: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      cloudLoggingConfig: Schema.optional(ManagedZoneCloudLoggingConfig),
-      dnsName: Schema.optional(Schema.String),
-      dnssecConfig: Schema.optional(ManagedZoneDnsSecConfig),
-    }),
-  ).annotate({
-    identifier: "ManagedZone",
-  }) as any as Schema.Schema<ManagedZone>;
+export const ManagedZone = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  privateVisibilityConfig: Schema.optional(ManagedZonePrivateVisibilityConfig),
+  serviceDirectoryConfig: Schema.optional(ManagedZoneServiceDirectoryConfig),
+  description: Schema.optional(Schema.String),
+  nameServerSet: Schema.optional(Schema.String),
+  forwardingConfig: Schema.optional(ManagedZoneForwardingConfig),
+  id: Schema.optional(Schema.String),
+  reverseLookupConfig: Schema.optional(ManagedZoneReverseLookupConfig),
+  nameServers: Schema.optional(Schema.Array(Schema.String)),
+  creationTime: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  peeringConfig: Schema.optional(ManagedZonePeeringConfig),
+  kind: Schema.optional(Schema.String),
+  visibility: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  cloudLoggingConfig: Schema.optional(ManagedZoneCloudLoggingConfig),
+  dnsName: Schema.optional(Schema.String),
+  dnssecConfig: Schema.optional(ManagedZoneDnsSecConfig),
+}).annotate({ identifier: "ManagedZone" });
 
 export interface OperationManagedZoneContext {
   /** The post-operation ManagedZone resource. */
@@ -621,15 +506,11 @@ export interface OperationManagedZoneContext {
   oldValue?: ManagedZone;
 }
 
-export const OperationManagedZoneContext: Schema.Schema<OperationManagedZoneContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      newValue: Schema.optional(ManagedZone),
-      oldValue: Schema.optional(ManagedZone),
-    }),
-  ).annotate({
-    identifier: "OperationManagedZoneContext",
-  }) as any as Schema.Schema<OperationManagedZoneContext>;
+export const OperationManagedZoneContext =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    newValue: Schema.optional(ManagedZone),
+    oldValue: Schema.optional(ManagedZone),
+  }).annotate({ identifier: "OperationManagedZoneContext" });
 
 export interface PolicyNetwork {
   kind?: string;
@@ -637,15 +518,10 @@ export interface PolicyNetwork {
   networkUrl?: string;
 }
 
-export const PolicyNetwork: Schema.Schema<PolicyNetwork> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      networkUrl: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PolicyNetwork",
-  }) as any as Schema.Schema<PolicyNetwork>;
+export const PolicyNetwork = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  networkUrl: Schema.optional(Schema.String),
+}).annotate({ identifier: "PolicyNetwork" });
 
 export interface PolicyAlternativeNameServerConfigTargetNameServer {
   /** IPv4 address to forward queries to. */
@@ -657,17 +533,15 @@ export interface PolicyAlternativeNameServerConfigTargetNameServer {
   kind?: string;
 }
 
-export const PolicyAlternativeNameServerConfigTargetNameServer: Schema.Schema<PolicyAlternativeNameServerConfigTargetNameServer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ipv4Address: Schema.optional(Schema.String),
-      ipv6Address: Schema.optional(Schema.String),
-      forwardingPath: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const PolicyAlternativeNameServerConfigTargetNameServer =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ipv4Address: Schema.optional(Schema.String),
+    ipv6Address: Schema.optional(Schema.String),
+    forwardingPath: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "PolicyAlternativeNameServerConfigTargetNameServer",
-  }) as any as Schema.Schema<PolicyAlternativeNameServerConfigTargetNameServer>;
+  });
 
 export interface PolicyAlternativeNameServerConfig {
   /** Sets an alternative name server for the associated networks. When specified, all DNS queries are forwarded to a name server that you choose. Names such as .internal are not available when an alternative name server is specified. */
@@ -675,17 +549,13 @@ export interface PolicyAlternativeNameServerConfig {
   kind?: string;
 }
 
-export const PolicyAlternativeNameServerConfig: Schema.Schema<PolicyAlternativeNameServerConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetNameServers: Schema.optional(
-        Schema.Array(PolicyAlternativeNameServerConfigTargetNameServer),
-      ),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PolicyAlternativeNameServerConfig",
-  }) as any as Schema.Schema<PolicyAlternativeNameServerConfig>;
+export const PolicyAlternativeNameServerConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetNameServers: Schema.optional(
+      Schema.Array(PolicyAlternativeNameServerConfigTargetNameServer),
+    ),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PolicyAlternativeNameServerConfig" });
 
 export interface PolicyDns64ConfigScope {
   kind?: string;
@@ -693,15 +563,12 @@ export interface PolicyDns64ConfigScope {
   allQueries?: boolean;
 }
 
-export const PolicyDns64ConfigScope: Schema.Schema<PolicyDns64ConfigScope> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      allQueries: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "PolicyDns64ConfigScope",
-  }) as any as Schema.Schema<PolicyDns64ConfigScope>;
+export const PolicyDns64ConfigScope = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    kind: Schema.optional(Schema.String),
+    allQueries: Schema.optional(Schema.Boolean),
+  },
+).annotate({ identifier: "PolicyDns64ConfigScope" });
 
 export interface PolicyDns64Config {
   /** The scope to which DNS64 config will be applied to. */
@@ -709,15 +576,10 @@ export interface PolicyDns64Config {
   kind?: string;
 }
 
-export const PolicyDns64Config: Schema.Schema<PolicyDns64Config> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scope: Schema.optional(PolicyDns64ConfigScope),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PolicyDns64Config",
-  }) as any as Schema.Schema<PolicyDns64Config>;
+export const PolicyDns64Config = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  scope: Schema.optional(PolicyDns64ConfigScope),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "PolicyDns64Config" });
 
 export interface Policy {
   kind?: string;
@@ -739,48 +601,36 @@ export interface Policy {
   enableLogging?: boolean;
 }
 
-export const Policy: Schema.Schema<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      enableInboundForwarding: Schema.optional(Schema.Boolean),
-      description: Schema.optional(Schema.String),
-      networks: Schema.optional(Schema.Array(PolicyNetwork)),
-      alternativeNameServerConfig: Schema.optional(
-        PolicyAlternativeNameServerConfig,
-      ),
-      name: Schema.optional(Schema.String),
-      dns64Config: Schema.optional(PolicyDns64Config),
-      id: Schema.optional(Schema.String),
-      enableLogging: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "Policy" }) as any as Schema.Schema<Policy>;
+export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  enableInboundForwarding: Schema.optional(Schema.Boolean),
+  description: Schema.optional(Schema.String),
+  networks: Schema.optional(Schema.Array(PolicyNetwork)),
+  alternativeNameServerConfig: Schema.optional(
+    PolicyAlternativeNameServerConfig,
+  ),
+  name: Schema.optional(Schema.String),
+  dns64Config: Schema.optional(PolicyDns64Config),
+  id: Schema.optional(Schema.String),
+  enableLogging: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Policy" });
 
 export interface PoliciesPatchResponse {
   policy?: Policy;
 }
 
-export const PoliciesPatchResponse: Schema.Schema<PoliciesPatchResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policy: Schema.optional(Policy),
-    }),
-  ).annotate({
-    identifier: "PoliciesPatchResponse",
-  }) as any as Schema.Schema<PoliciesPatchResponse>;
+export const PoliciesPatchResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policy: Schema.optional(Policy),
+}).annotate({ identifier: "PoliciesPatchResponse" });
 
 export interface ResponsePolicyRulesUpdateResponse {
   responsePolicyRule?: ResponsePolicyRule;
 }
 
-export const ResponsePolicyRulesUpdateResponse: Schema.Schema<ResponsePolicyRulesUpdateResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      responsePolicyRule: Schema.optional(ResponsePolicyRule),
-    }),
-  ).annotate({
-    identifier: "ResponsePolicyRulesUpdateResponse",
-  }) as any as Schema.Schema<ResponsePolicyRulesUpdateResponse>;
+export const ResponsePolicyRulesUpdateResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    responsePolicyRule: Schema.optional(ResponsePolicyRule),
+  }).annotate({ identifier: "ResponsePolicyRulesUpdateResponse" });
 
 export interface Quota {
   /** Maximum allowed number of alternative target name servers per policy. */
@@ -835,37 +685,34 @@ export interface Quota {
   nameserversPerDelegation?: number;
 }
 
-export const Quota: Schema.Schema<Quota> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetNameServersPerPolicy: Schema.optional(Schema.Number),
-      peeringZonesPerTargetNetwork: Schema.optional(Schema.Number),
-      gkeClustersPerPolicy: Schema.optional(Schema.Number),
-      managedZones: Schema.optional(Schema.Number),
-      managedZonesPerNetwork: Schema.optional(Schema.Number),
-      responsePolicyRulesPerResponsePolicy: Schema.optional(Schema.Number),
-      policies: Schema.optional(Schema.Number),
-      totalRrdataSizePerChange: Schema.optional(Schema.Number),
-      internetHealthChecksPerManagedZone: Schema.optional(Schema.Number),
-      kind: Schema.optional(Schema.String),
-      dnsKeysPerManagedZone: Schema.optional(Schema.Number),
-      responsePolicies: Schema.optional(Schema.Number),
-      whitelistedKeySpecs: Schema.optional(Schema.Array(DnsKeySpec)),
-      gkeClustersPerResponsePolicy: Schema.optional(Schema.Number),
-      networksPerManagedZone: Schema.optional(Schema.Number),
-      managedZonesPerGkeCluster: Schema.optional(Schema.Number),
-      networksPerPolicy: Schema.optional(Schema.Number),
-      gkeClustersPerManagedZone: Schema.optional(Schema.Number),
-      rrsetDeletionsPerChange: Schema.optional(Schema.Number),
-      rrsetAdditionsPerChange: Schema.optional(Schema.Number),
-      itemsPerRoutingPolicy: Schema.optional(Schema.Number),
-      rrsetsPerManagedZone: Schema.optional(Schema.Number),
-      networksPerResponsePolicy: Schema.optional(Schema.Number),
-      resourceRecordsPerRrset: Schema.optional(Schema.Number),
-      targetNameServersPerManagedZone: Schema.optional(Schema.Number),
-      nameserversPerDelegation: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Quota" }) as any as Schema.Schema<Quota>;
+export const Quota = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  targetNameServersPerPolicy: Schema.optional(Schema.Number),
+  peeringZonesPerTargetNetwork: Schema.optional(Schema.Number),
+  gkeClustersPerPolicy: Schema.optional(Schema.Number),
+  managedZones: Schema.optional(Schema.Number),
+  managedZonesPerNetwork: Schema.optional(Schema.Number),
+  responsePolicyRulesPerResponsePolicy: Schema.optional(Schema.Number),
+  policies: Schema.optional(Schema.Number),
+  totalRrdataSizePerChange: Schema.optional(Schema.Number),
+  internetHealthChecksPerManagedZone: Schema.optional(Schema.Number),
+  kind: Schema.optional(Schema.String),
+  dnsKeysPerManagedZone: Schema.optional(Schema.Number),
+  responsePolicies: Schema.optional(Schema.Number),
+  whitelistedKeySpecs: Schema.optional(Schema.Array(DnsKeySpec)),
+  gkeClustersPerResponsePolicy: Schema.optional(Schema.Number),
+  networksPerManagedZone: Schema.optional(Schema.Number),
+  managedZonesPerGkeCluster: Schema.optional(Schema.Number),
+  networksPerPolicy: Schema.optional(Schema.Number),
+  gkeClustersPerManagedZone: Schema.optional(Schema.Number),
+  rrsetDeletionsPerChange: Schema.optional(Schema.Number),
+  rrsetAdditionsPerChange: Schema.optional(Schema.Number),
+  itemsPerRoutingPolicy: Schema.optional(Schema.Number),
+  rrsetsPerManagedZone: Schema.optional(Schema.Number),
+  networksPerResponsePolicy: Schema.optional(Schema.Number),
+  resourceRecordsPerRrset: Schema.optional(Schema.Number),
+  targetNameServersPerManagedZone: Schema.optional(Schema.Number),
+  nameserversPerDelegation: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Quota" });
 
 export interface GoogleIamV1AuditLogConfig {
   /** The log type that this config enables. */
@@ -879,15 +726,11 @@ export interface GoogleIamV1AuditLogConfig {
   exemptedMembers?: Array<string>;
 }
 
-export const GoogleIamV1AuditLogConfig: Schema.Schema<GoogleIamV1AuditLogConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      logType: Schema.optional(Schema.String),
-      exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1AuditLogConfig",
-  }) as any as Schema.Schema<GoogleIamV1AuditLogConfig>;
+export const GoogleIamV1AuditLogConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    logType: Schema.optional(Schema.String),
+    exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleIamV1AuditLogConfig" });
 
 export interface ResponsePolicyGKECluster {
   /** The resource name of the cluster to bind this response policy to. This should be specified in the format like: projects/* /locations/* /clusters/*. This is referenced from GKE projects.locations.clusters.get API: https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations.clusters/get */
@@ -895,15 +738,11 @@ export interface ResponsePolicyGKECluster {
   kind?: string;
 }
 
-export const ResponsePolicyGKECluster: Schema.Schema<ResponsePolicyGKECluster> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gkeClusterName: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ResponsePolicyGKECluster",
-  }) as any as Schema.Schema<ResponsePolicyGKECluster>;
+export const ResponsePolicyGKECluster =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gkeClusterName: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ResponsePolicyGKECluster" });
 
 export interface ResourceRecordSetsListResponse {
   /** This field indicates that more results are available beyond the last page displayed. To fetch the results, make another list request and use this value as your page token. This lets you retrieve the complete contents of a very large collection one page at a time. However, if the contents of the collection change between the first and last paginated list request, the set of all elements returned are an inconsistent view of the collection. You can't retrieve a consistent snapshot of a collection larger than the maximum page size. */
@@ -914,30 +753,22 @@ export interface ResourceRecordSetsListResponse {
   rrsets?: Array<ResourceRecordSet>;
 }
 
-export const ResourceRecordSetsListResponse: Schema.Schema<ResourceRecordSetsListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      rrsets: Schema.optional(Schema.Array(ResourceRecordSet)),
-    }),
-  ).annotate({
-    identifier: "ResourceRecordSetsListResponse",
-  }) as any as Schema.Schema<ResourceRecordSetsListResponse>;
+export const ResourceRecordSetsListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    rrsets: Schema.optional(Schema.Array(ResourceRecordSet)),
+  }).annotate({ identifier: "ResourceRecordSetsListResponse" });
 
 export interface GoogleIamV1TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: Array<string>;
 }
 
-export const GoogleIamV1TestIamPermissionsResponse: Schema.Schema<GoogleIamV1TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1TestIamPermissionsResponse",
-  }) as any as Schema.Schema<GoogleIamV1TestIamPermissionsResponse>;
+export const GoogleIamV1TestIamPermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleIamV1TestIamPermissionsResponse" });
 
 export interface Change {
   /** Which ResourceRecordSets to add? */
@@ -955,18 +786,15 @@ export interface Change {
   startTime?: string;
 }
 
-export const Change: Schema.Schema<Change> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      additions: Schema.optional(Schema.Array(ResourceRecordSet)),
-      deletions: Schema.optional(Schema.Array(ResourceRecordSet)),
-      kind: Schema.optional(Schema.String),
-      isServing: Schema.optional(Schema.Boolean),
-      status: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Change" }) as any as Schema.Schema<Change>;
+export const Change = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  additions: Schema.optional(Schema.Array(ResourceRecordSet)),
+  deletions: Schema.optional(Schema.Array(ResourceRecordSet)),
+  kind: Schema.optional(Schema.String),
+  isServing: Schema.optional(Schema.Boolean),
+  status: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Change" });
 
 export interface Expr {
   /** Textual representation of an expression in Common Expression Language syntax. */
@@ -979,15 +807,12 @@ export interface Expr {
   location?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expression: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Expr" }) as any as Schema.Schema<Expr>;
+export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  expression: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+}).annotate({ identifier: "Expr" });
 
 export interface GoogleIamV1Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
@@ -998,16 +823,11 @@ export interface GoogleIamV1Binding {
   condition?: Expr;
 }
 
-export const GoogleIamV1Binding: Schema.Schema<GoogleIamV1Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      members: Schema.optional(Schema.Array(Schema.String)),
-      role: Schema.optional(Schema.String),
-      condition: Schema.optional(Expr),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1Binding",
-  }) as any as Schema.Schema<GoogleIamV1Binding>;
+export const GoogleIamV1Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  members: Schema.optional(Schema.Array(Schema.String)),
+  role: Schema.optional(Schema.String),
+  condition: Schema.optional(Expr),
+}).annotate({ identifier: "GoogleIamV1Binding" });
 
 export interface GoogleIamV1AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
@@ -1016,15 +836,12 @@ export interface GoogleIamV1AuditConfig {
   auditLogConfigs?: Array<GoogleIamV1AuditLogConfig>;
 }
 
-export const GoogleIamV1AuditConfig: Schema.Schema<GoogleIamV1AuditConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      service: Schema.optional(Schema.String),
-      auditLogConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditLogConfig)),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1AuditConfig",
-  }) as any as Schema.Schema<GoogleIamV1AuditConfig>;
+export const GoogleIamV1AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    service: Schema.optional(Schema.String),
+    auditLogConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditLogConfig)),
+  },
+).annotate({ identifier: "GoogleIamV1AuditConfig" });
 
 export interface GoogleIamV1Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -1037,17 +854,12 @@ export interface GoogleIamV1Policy {
   auditConfigs?: Array<GoogleIamV1AuditConfig>;
 }
 
-export const GoogleIamV1Policy: Schema.Schema<GoogleIamV1Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.Number),
-      etag: Schema.optional(Schema.String),
-      bindings: Schema.optional(Schema.Array(GoogleIamV1Binding)),
-      auditConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditConfig)),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1Policy",
-  }) as any as Schema.Schema<GoogleIamV1Policy>;
+export const GoogleIamV1Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.Number),
+  etag: Schema.optional(Schema.String),
+  bindings: Schema.optional(Schema.Array(GoogleIamV1Binding)),
+  auditConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditConfig)),
+}).annotate({ identifier: "GoogleIamV1Policy" });
 
 export interface PoliciesListResponse {
   /** The policy resources. */
@@ -1058,16 +870,11 @@ export interface PoliciesListResponse {
   kind?: string;
 }
 
-export const PoliciesListResponse: Schema.Schema<PoliciesListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policies: Schema.optional(Schema.Array(Policy)),
-      nextPageToken: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PoliciesListResponse",
-  }) as any as Schema.Schema<PoliciesListResponse>;
+export const PoliciesListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policies: Schema.optional(Schema.Array(Policy)),
+  nextPageToken: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "PoliciesListResponse" });
 
 export interface DnsKeyDigest {
   /** Specifies the algorithm used to calculate this digest. */
@@ -1076,15 +883,10 @@ export interface DnsKeyDigest {
   digest?: string;
 }
 
-export const DnsKeyDigest: Schema.Schema<DnsKeyDigest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      digest: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DnsKeyDigest",
-  }) as any as Schema.Schema<DnsKeyDigest>;
+export const DnsKeyDigest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  digest: Schema.optional(Schema.String),
+}).annotate({ identifier: "DnsKeyDigest" });
 
 export interface DnsKey {
   /** Base64 encoded public half of this key. Output only. */
@@ -1116,22 +918,19 @@ export interface DnsKey {
   description?: string;
 }
 
-export const DnsKey: Schema.Schema<DnsKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      publicKey: Schema.optional(Schema.String),
-      isActive: Schema.optional(Schema.Boolean),
-      id: Schema.optional(Schema.String),
-      keyTag: Schema.optional(Schema.Number),
-      keyLength: Schema.optional(Schema.Number),
-      type: Schema.optional(Schema.String),
-      digests: Schema.optional(Schema.Array(DnsKeyDigest)),
-      creationTime: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      algorithm: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "DnsKey" }) as any as Schema.Schema<DnsKey>;
+export const DnsKey = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  publicKey: Schema.optional(Schema.String),
+  isActive: Schema.optional(Schema.Boolean),
+  id: Schema.optional(Schema.String),
+  keyTag: Schema.optional(Schema.Number),
+  keyLength: Schema.optional(Schema.Number),
+  type: Schema.optional(Schema.String),
+  digests: Schema.optional(Schema.Array(DnsKeyDigest)),
+  creationTime: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  algorithm: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "DnsKey" });
 
 export interface OperationDnsKeyContext {
   /** The pre-operation DnsKey resource. */
@@ -1140,15 +939,12 @@ export interface OperationDnsKeyContext {
   newValue?: DnsKey;
 }
 
-export const OperationDnsKeyContext: Schema.Schema<OperationDnsKeyContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      oldValue: Schema.optional(DnsKey),
-      newValue: Schema.optional(DnsKey),
-    }),
-  ).annotate({
-    identifier: "OperationDnsKeyContext",
-  }) as any as Schema.Schema<OperationDnsKeyContext>;
+export const OperationDnsKeyContext = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    oldValue: Schema.optional(DnsKey),
+    newValue: Schema.optional(DnsKey),
+  },
+).annotate({ identifier: "OperationDnsKeyContext" });
 
 export interface Operation {
   /** The time that this operation was started by the server. This is in RFC3339 text format (output only). */
@@ -1168,19 +964,16 @@ export interface Operation {
   zoneContext?: OperationManagedZoneContext;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      dnsKeyContext: Schema.optional(OperationDnsKeyContext),
-      status: Schema.optional(Schema.String),
-      user: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      zoneContext: Schema.optional(OperationManagedZoneContext),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startTime: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  dnsKeyContext: Schema.optional(OperationDnsKeyContext),
+  status: Schema.optional(Schema.String),
+  user: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  zoneContext: Schema.optional(OperationManagedZoneContext),
+}).annotate({ identifier: "Operation" });
 
 export interface ManagedZoneOperationsListResponse {
   /** Type of resource. */
@@ -1191,16 +984,12 @@ export interface ManagedZoneOperationsListResponse {
   nextPageToken?: string;
 }
 
-export const ManagedZoneOperationsListResponse: Schema.Schema<ManagedZoneOperationsListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      operations: Schema.optional(Schema.Array(Operation)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ManagedZoneOperationsListResponse",
-  }) as any as Schema.Schema<ManagedZoneOperationsListResponse>;
+export const ManagedZoneOperationsListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    operations: Schema.optional(Schema.Array(Operation)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ManagedZoneOperationsListResponse" });
 
 export interface DnsKeysListResponse {
   /** The requested resources. */
@@ -1211,16 +1000,11 @@ export interface DnsKeysListResponse {
   kind?: string;
 }
 
-export const DnsKeysListResponse: Schema.Schema<DnsKeysListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dnsKeys: Schema.optional(Schema.Array(DnsKey)),
-      nextPageToken: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DnsKeysListResponse",
-  }) as any as Schema.Schema<DnsKeysListResponse>;
+export const DnsKeysListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dnsKeys: Schema.optional(Schema.Array(DnsKey)),
+  nextPageToken: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "DnsKeysListResponse" });
 
 export interface ResponsePolicyNetwork {
   kind?: string;
@@ -1228,15 +1012,10 @@ export interface ResponsePolicyNetwork {
   networkUrl?: string;
 }
 
-export const ResponsePolicyNetwork: Schema.Schema<ResponsePolicyNetwork> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      networkUrl: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ResponsePolicyNetwork",
-  }) as any as Schema.Schema<ResponsePolicyNetwork>;
+export const ResponsePolicyNetwork = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  networkUrl: Schema.optional(Schema.String),
+}).annotate({ identifier: "ResponsePolicyNetwork" });
 
 export interface ResponsePolicy {
   /** User labels. */
@@ -1254,20 +1033,15 @@ export interface ResponsePolicy {
   networks?: Array<ResponsePolicyNetwork>;
 }
 
-export const ResponsePolicy: Schema.Schema<ResponsePolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      kind: Schema.optional(Schema.String),
-      responsePolicyName: Schema.optional(Schema.String),
-      gkeClusters: Schema.optional(Schema.Array(ResponsePolicyGKECluster)),
-      description: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      networks: Schema.optional(Schema.Array(ResponsePolicyNetwork)),
-    }),
-  ).annotate({
-    identifier: "ResponsePolicy",
-  }) as any as Schema.Schema<ResponsePolicy>;
+export const ResponsePolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  kind: Schema.optional(Schema.String),
+  responsePolicyName: Schema.optional(Schema.String),
+  gkeClusters: Schema.optional(Schema.Array(ResponsePolicyGKECluster)),
+  description: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  networks: Schema.optional(Schema.Array(ResponsePolicyNetwork)),
+}).annotate({ identifier: "ResponsePolicy" });
 
 export interface ManagedZonesListResponse {
   /** Type of resource. */
@@ -1278,30 +1052,22 @@ export interface ManagedZonesListResponse {
   nextPageToken?: string;
 }
 
-export const ManagedZonesListResponse: Schema.Schema<ManagedZonesListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      managedZones: Schema.optional(Schema.Array(ManagedZone)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ManagedZonesListResponse",
-  }) as any as Schema.Schema<ManagedZonesListResponse>;
+export const ManagedZonesListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    managedZones: Schema.optional(Schema.Array(ManagedZone)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ManagedZonesListResponse" });
 
 export interface GoogleIamV1GetPolicyOptions {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   requestedPolicyVersion?: number;
 }
 
-export const GoogleIamV1GetPolicyOptions: Schema.Schema<GoogleIamV1GetPolicyOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestedPolicyVersion: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1GetPolicyOptions",
-  }) as any as Schema.Schema<GoogleIamV1GetPolicyOptions>;
+export const GoogleIamV1GetPolicyOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestedPolicyVersion: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleIamV1GetPolicyOptions" });
 
 export interface GoogleIamV1SetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
@@ -1310,15 +1076,11 @@ export interface GoogleIamV1SetIamPolicyRequest {
   policy?: GoogleIamV1Policy;
 }
 
-export const GoogleIamV1SetIamPolicyRequest: Schema.Schema<GoogleIamV1SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateMask: Schema.optional(Schema.String),
-      policy: Schema.optional(GoogleIamV1Policy),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1SetIamPolicyRequest",
-  }) as any as Schema.Schema<GoogleIamV1SetIamPolicyRequest>;
+export const GoogleIamV1SetIamPolicyRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateMask: Schema.optional(Schema.String),
+    policy: Schema.optional(GoogleIamV1Policy),
+  }).annotate({ identifier: "GoogleIamV1SetIamPolicyRequest" });
 
 export interface ChangesListResponse {
   /** The requested changes. */
@@ -1329,43 +1091,30 @@ export interface ChangesListResponse {
   nextPageToken?: string;
 }
 
-export const ChangesListResponse: Schema.Schema<ChangesListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      changes: Schema.optional(Schema.Array(Change)),
-      kind: Schema.optional(Schema.String),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ChangesListResponse",
-  }) as any as Schema.Schema<ChangesListResponse>;
+export const ChangesListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  changes: Schema.optional(Schema.Array(Change)),
+  kind: Schema.optional(Schema.String),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ChangesListResponse" });
 
 export interface ResponsePoliciesUpdateResponse {
   responsePolicy?: ResponsePolicy;
 }
 
-export const ResponsePoliciesUpdateResponse: Schema.Schema<ResponsePoliciesUpdateResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      responsePolicy: Schema.optional(ResponsePolicy),
-    }),
-  ).annotate({
-    identifier: "ResponsePoliciesUpdateResponse",
-  }) as any as Schema.Schema<ResponsePoliciesUpdateResponse>;
+export const ResponsePoliciesUpdateResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    responsePolicy: Schema.optional(ResponsePolicy),
+  }).annotate({ identifier: "ResponsePoliciesUpdateResponse" });
 
 export interface GoogleIamV1GetIamPolicyRequest {
   /** OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`. */
   options?: GoogleIamV1GetPolicyOptions;
 }
 
-export const GoogleIamV1GetIamPolicyRequest: Schema.Schema<GoogleIamV1GetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      options: Schema.optional(GoogleIamV1GetPolicyOptions),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1GetIamPolicyRequest",
-  }) as any as Schema.Schema<GoogleIamV1GetIamPolicyRequest>;
+export const GoogleIamV1GetIamPolicyRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    options: Schema.optional(GoogleIamV1GetPolicyOptions),
+  }).annotate({ identifier: "GoogleIamV1GetIamPolicyRequest" });
 
 export interface ResponsePoliciesListResponse {
   /** The Response Policy resources. */
@@ -1374,55 +1123,39 @@ export interface ResponsePoliciesListResponse {
   nextPageToken?: string;
 }
 
-export const ResponsePoliciesListResponse: Schema.Schema<ResponsePoliciesListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      responsePolicies: Schema.optional(Schema.Array(ResponsePolicy)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ResponsePoliciesListResponse",
-  }) as any as Schema.Schema<ResponsePoliciesListResponse>;
+export const ResponsePoliciesListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    responsePolicies: Schema.optional(Schema.Array(ResponsePolicy)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ResponsePoliciesListResponse" });
 
 export interface ResponsePolicyRulesPatchResponse {
   responsePolicyRule?: ResponsePolicyRule;
 }
 
-export const ResponsePolicyRulesPatchResponse: Schema.Schema<ResponsePolicyRulesPatchResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      responsePolicyRule: Schema.optional(ResponsePolicyRule),
-    }),
-  ).annotate({
-    identifier: "ResponsePolicyRulesPatchResponse",
-  }) as any as Schema.Schema<ResponsePolicyRulesPatchResponse>;
+export const ResponsePolicyRulesPatchResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    responsePolicyRule: Schema.optional(ResponsePolicyRule),
+  }).annotate({ identifier: "ResponsePolicyRulesPatchResponse" });
 
 export interface GoogleIamV1TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: Array<string>;
 }
 
-export const GoogleIamV1TestIamPermissionsRequest: Schema.Schema<GoogleIamV1TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1TestIamPermissionsRequest",
-  }) as any as Schema.Schema<GoogleIamV1TestIamPermissionsRequest>;
+export const GoogleIamV1TestIamPermissionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleIamV1TestIamPermissionsRequest" });
 
 export interface ResponsePoliciesPatchResponse {
   responsePolicy?: ResponsePolicy;
 }
 
-export const ResponsePoliciesPatchResponse: Schema.Schema<ResponsePoliciesPatchResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      responsePolicy: Schema.optional(ResponsePolicy),
-    }),
-  ).annotate({
-    identifier: "ResponsePoliciesPatchResponse",
-  }) as any as Schema.Schema<ResponsePoliciesPatchResponse>;
+export const ResponsePoliciesPatchResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    responsePolicy: Schema.optional(ResponsePolicy),
+  }).annotate({ identifier: "ResponsePoliciesPatchResponse" });
 
 export interface Project {
   /** Unique numeric identifier for the resource; defined by the server (output only). */
@@ -1434,28 +1167,22 @@ export interface Project {
   quota?: Quota;
 }
 
-export const Project: Schema.Schema<Project> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      number: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      quota: Schema.optional(Quota),
-    }),
-  ).annotate({ identifier: "Project" }) as any as Schema.Schema<Project>;
+export const Project = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  number: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  quota: Schema.optional(Quota),
+}).annotate({ identifier: "Project" });
 
 export interface PoliciesUpdateResponse {
   policy?: Policy;
 }
 
-export const PoliciesUpdateResponse: Schema.Schema<PoliciesUpdateResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policy: Schema.optional(Policy),
-    }),
-  ).annotate({
-    identifier: "PoliciesUpdateResponse",
-  }) as any as Schema.Schema<PoliciesUpdateResponse>;
+export const PoliciesUpdateResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    policy: Schema.optional(Policy),
+  },
+).annotate({ identifier: "PoliciesUpdateResponse" });
 
 // ==========================================================================
 // Operations

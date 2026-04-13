@@ -48,16 +48,12 @@ export interface BatchChangeChromeOsDeviceStatusRequest {
     | (string & {});
 }
 
-export const BatchChangeChromeOsDeviceStatusRequest: Schema.Schema<BatchChangeChromeOsDeviceStatusRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deviceIds: Schema.optional(Schema.Array(Schema.String)),
-      changeChromeOsDeviceStatusAction: Schema.optional(Schema.String),
-      deprovisionReason: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BatchChangeChromeOsDeviceStatusRequest",
-  }) as any as Schema.Schema<BatchChangeChromeOsDeviceStatusRequest>;
+export const BatchChangeChromeOsDeviceStatusRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deviceIds: Schema.optional(Schema.Array(Schema.String)),
+    changeChromeOsDeviceStatusAction: Schema.optional(Schema.String),
+    deprovisionReason: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BatchChangeChromeOsDeviceStatusRequest" });
 
 export type UserCustomProperties = Record<string, unknown>;
 export const UserCustomProperties: Schema.Schema<UserCustomProperties> =
@@ -77,29 +73,21 @@ export interface UserName {
   givenName?: string;
 }
 
-export const UserName: Schema.Schema<UserName> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fullName: Schema.optional(Schema.String),
-      familyName: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      givenName: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "UserName" }) as any as Schema.Schema<UserName>;
+export const UserName = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fullName: Schema.optional(Schema.String),
+  familyName: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  givenName: Schema.optional(Schema.String),
+}).annotate({ identifier: "UserName" });
 
 export interface GuestAccountInfo {
   /** Immutable. The guest's external email. */
   primaryGuestEmail?: string;
 }
 
-export const GuestAccountInfo: Schema.Schema<GuestAccountInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      primaryGuestEmail: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GuestAccountInfo",
-  }) as any as Schema.Schema<GuestAccountInfo>;
+export const GuestAccountInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  primaryGuestEmail: Schema.optional(Schema.String),
+}).annotate({ identifier: "GuestAccountInfo" });
 
 export interface User {
   /** Output only. The type of the API resource. For Users resources, the value is `admin#directory#user`. */
@@ -199,61 +187,58 @@ export interface User {
   addresses?: unknown;
 }
 
-export const User: Schema.Schema<User> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      changePasswordAtNextLogin: Schema.optional(Schema.Boolean),
-      password: Schema.optional(Schema.String),
-      customerId: Schema.optional(Schema.String),
-      ims: Schema.optional(Schema.Unknown),
-      notes: Schema.optional(Schema.Unknown),
-      phones: Schema.optional(Schema.Unknown),
-      posixAccounts: Schema.optional(Schema.Unknown),
-      suspensionReason: Schema.optional(Schema.String),
-      agreedToTerms: Schema.optional(Schema.Boolean),
-      includeInGlobalAddressList: Schema.optional(Schema.Boolean),
-      languages: Schema.optional(Schema.Unknown),
-      websites: Schema.optional(Schema.Unknown),
-      externalIds: Schema.optional(Schema.Unknown),
-      customSchemas: Schema.optional(
-        Schema.Record(Schema.String, UserCustomProperties),
-      ),
-      aliases: Schema.optional(Schema.Array(Schema.String)),
-      etag: Schema.optional(Schema.String),
-      isEnforcedIn2Sv: Schema.optional(Schema.Boolean),
-      keywords: Schema.optional(Schema.Unknown),
-      suspended: Schema.optional(Schema.Boolean),
-      primaryEmail: Schema.optional(Schema.String),
-      isDelegatedAdmin: Schema.optional(Schema.Boolean),
-      isEnrolledIn2Sv: Schema.optional(Schema.Boolean),
-      isGuestUser: Schema.optional(Schema.Boolean),
-      isAdmin: Schema.optional(Schema.Boolean),
-      archived: Schema.optional(Schema.Boolean),
-      hashFunction: Schema.optional(Schema.String),
-      ipWhitelisted: Schema.optional(Schema.Boolean),
-      name: Schema.optional(UserName),
-      thumbnailPhotoUrl: Schema.optional(Schema.String),
-      organizations: Schema.optional(Schema.Unknown),
-      thumbnailPhotoEtag: Schema.optional(Schema.String),
-      guestAccountInfo: Schema.optional(GuestAccountInfo),
-      relations: Schema.optional(Schema.Unknown),
-      nonEditableAliases: Schema.optional(Schema.Array(Schema.String)),
-      recoveryEmail: Schema.optional(Schema.String),
-      creationTime: Schema.optional(Schema.String),
-      deletionTime: Schema.optional(Schema.String),
-      gender: Schema.optional(Schema.Unknown),
-      orgUnitPath: Schema.optional(Schema.String),
-      isMailboxSetup: Schema.optional(Schema.Boolean),
-      sshPublicKeys: Schema.optional(Schema.Unknown),
-      locations: Schema.optional(Schema.Unknown),
-      emails: Schema.optional(Schema.Unknown),
-      lastLoginTime: Schema.optional(Schema.String),
-      recoveryPhone: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      addresses: Schema.optional(Schema.Unknown),
-    }),
-  ).annotate({ identifier: "User" }) as any as Schema.Schema<User>;
+export const User = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  changePasswordAtNextLogin: Schema.optional(Schema.Boolean),
+  password: Schema.optional(Schema.String),
+  customerId: Schema.optional(Schema.String),
+  ims: Schema.optional(Schema.Unknown),
+  notes: Schema.optional(Schema.Unknown),
+  phones: Schema.optional(Schema.Unknown),
+  posixAccounts: Schema.optional(Schema.Unknown),
+  suspensionReason: Schema.optional(Schema.String),
+  agreedToTerms: Schema.optional(Schema.Boolean),
+  includeInGlobalAddressList: Schema.optional(Schema.Boolean),
+  languages: Schema.optional(Schema.Unknown),
+  websites: Schema.optional(Schema.Unknown),
+  externalIds: Schema.optional(Schema.Unknown),
+  customSchemas: Schema.optional(
+    Schema.Record(Schema.String, UserCustomProperties),
+  ),
+  aliases: Schema.optional(Schema.Array(Schema.String)),
+  etag: Schema.optional(Schema.String),
+  isEnforcedIn2Sv: Schema.optional(Schema.Boolean),
+  keywords: Schema.optional(Schema.Unknown),
+  suspended: Schema.optional(Schema.Boolean),
+  primaryEmail: Schema.optional(Schema.String),
+  isDelegatedAdmin: Schema.optional(Schema.Boolean),
+  isEnrolledIn2Sv: Schema.optional(Schema.Boolean),
+  isGuestUser: Schema.optional(Schema.Boolean),
+  isAdmin: Schema.optional(Schema.Boolean),
+  archived: Schema.optional(Schema.Boolean),
+  hashFunction: Schema.optional(Schema.String),
+  ipWhitelisted: Schema.optional(Schema.Boolean),
+  name: Schema.optional(UserName),
+  thumbnailPhotoUrl: Schema.optional(Schema.String),
+  organizations: Schema.optional(Schema.Unknown),
+  thumbnailPhotoEtag: Schema.optional(Schema.String),
+  guestAccountInfo: Schema.optional(GuestAccountInfo),
+  relations: Schema.optional(Schema.Unknown),
+  nonEditableAliases: Schema.optional(Schema.Array(Schema.String)),
+  recoveryEmail: Schema.optional(Schema.String),
+  creationTime: Schema.optional(Schema.String),
+  deletionTime: Schema.optional(Schema.String),
+  gender: Schema.optional(Schema.Unknown),
+  orgUnitPath: Schema.optional(Schema.String),
+  isMailboxSetup: Schema.optional(Schema.Boolean),
+  sshPublicKeys: Schema.optional(Schema.Unknown),
+  locations: Schema.optional(Schema.Unknown),
+  emails: Schema.optional(Schema.Unknown),
+  lastLoginTime: Schema.optional(Schema.String),
+  recoveryPhone: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  addresses: Schema.optional(Schema.Unknown),
+}).annotate({ identifier: "User" });
 
 export interface UserAddress {
   /** Formatted address. */
@@ -284,26 +269,21 @@ export interface UserAddress {
   region?: string;
 }
 
-export const UserAddress: Schema.Schema<UserAddress> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      formatted: Schema.optional(Schema.String),
-      locality: Schema.optional(Schema.String),
-      sourceIsStructured: Schema.optional(Schema.Boolean),
-      countryCode: Schema.optional(Schema.String),
-      extendedAddress: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      customType: Schema.optional(Schema.String),
-      streetAddress: Schema.optional(Schema.String),
-      country: Schema.optional(Schema.String),
-      poBox: Schema.optional(Schema.String),
-      postalCode: Schema.optional(Schema.String),
-      primary: Schema.optional(Schema.Boolean),
-      region: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UserAddress",
-  }) as any as Schema.Schema<UserAddress>;
+export const UserAddress = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  formatted: Schema.optional(Schema.String),
+  locality: Schema.optional(Schema.String),
+  sourceIsStructured: Schema.optional(Schema.Boolean),
+  countryCode: Schema.optional(Schema.String),
+  extendedAddress: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  customType: Schema.optional(Schema.String),
+  streetAddress: Schema.optional(Schema.String),
+  country: Schema.optional(Schema.String),
+  poBox: Schema.optional(Schema.String),
+  postalCode: Schema.optional(Schema.String),
+  primary: Schema.optional(Schema.Boolean),
+  region: Schema.optional(Schema.String),
+}).annotate({ identifier: "UserAddress" });
 
 export interface DirectoryChromeosdevicesCommandResult {
   /** The error message with a short explanation as to why the command failed. Only present if the command failed. */
@@ -321,17 +301,13 @@ export interface DirectoryChromeosdevicesCommandResult {
     | (string & {});
 }
 
-export const DirectoryChromeosdevicesCommandResult: Schema.Schema<DirectoryChromeosdevicesCommandResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errorMessage: Schema.optional(Schema.String),
-      commandResultPayload: Schema.optional(Schema.String),
-      executeTime: Schema.optional(Schema.String),
-      result: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DirectoryChromeosdevicesCommandResult",
-  }) as any as Schema.Schema<DirectoryChromeosdevicesCommandResult>;
+export const DirectoryChromeosdevicesCommandResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    errorMessage: Schema.optional(Schema.String),
+    commandResultPayload: Schema.optional(Schema.String),
+    executeTime: Schema.optional(Schema.String),
+    result: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DirectoryChromeosdevicesCommandResult" });
 
 export interface DirectoryChromeosdevicesCommand {
   /** The payload that the command specified, if any. */
@@ -369,20 +345,16 @@ export interface DirectoryChromeosdevicesCommand {
     | (string & {});
 }
 
-export const DirectoryChromeosdevicesCommand: Schema.Schema<DirectoryChromeosdevicesCommand> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      payload: Schema.optional(Schema.String),
-      commandId: Schema.optional(Schema.String),
-      commandExpireTime: Schema.optional(Schema.String),
-      commandResult: Schema.optional(DirectoryChromeosdevicesCommandResult),
-      state: Schema.optional(Schema.String),
-      issueTime: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DirectoryChromeosdevicesCommand",
-  }) as any as Schema.Schema<DirectoryChromeosdevicesCommand>;
+export const DirectoryChromeosdevicesCommand =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    payload: Schema.optional(Schema.String),
+    commandId: Schema.optional(Schema.String),
+    commandExpireTime: Schema.optional(Schema.String),
+    commandResult: Schema.optional(DirectoryChromeosdevicesCommandResult),
+    state: Schema.optional(Schema.String),
+    issueTime: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DirectoryChromeosdevicesCommand" });
 
 export interface Token {
   /** Whether the application is registered with Google. The value is `true` if the application has an anonymous Client ID. */
@@ -403,19 +375,16 @@ export interface Token {
   displayText?: string;
 }
 
-export const Token: Schema.Schema<Token> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      anonymous: Schema.optional(Schema.Boolean),
-      clientId: Schema.optional(Schema.String),
-      scopes: Schema.optional(Schema.Array(Schema.String)),
-      kind: Schema.optional(Schema.String),
-      userKey: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      nativeApp: Schema.optional(Schema.Boolean),
-      displayText: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Token" }) as any as Schema.Schema<Token>;
+export const Token = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  anonymous: Schema.optional(Schema.Boolean),
+  clientId: Schema.optional(Schema.String),
+  scopes: Schema.optional(Schema.Array(Schema.String)),
+  kind: Schema.optional(Schema.String),
+  userKey: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  nativeApp: Schema.optional(Schema.Boolean),
+  displayText: Schema.optional(Schema.String),
+}).annotate({ identifier: "Token" });
 
 export interface UserKeyword {
   /** Custom Type. */
@@ -426,16 +395,11 @@ export interface UserKeyword {
   value?: string;
 }
 
-export const UserKeyword: Schema.Schema<UserKeyword> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customType: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UserKeyword",
-  }) as any as Schema.Schema<UserKeyword>;
+export const UserKeyword = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  customType: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+}).annotate({ identifier: "UserKeyword" });
 
 export interface UserOrganization {
   /** The domain to which the organization belongs to. */
@@ -464,25 +428,20 @@ export interface UserOrganization {
   customType?: string;
 }
 
-export const UserOrganization: Schema.Schema<UserOrganization> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      domain: Schema.optional(Schema.String),
-      symbol: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      primary: Schema.optional(Schema.Boolean),
-      department: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-      costCenter: Schema.optional(Schema.String),
-      fullTimeEquivalent: Schema.optional(Schema.Number),
-      name: Schema.optional(Schema.String),
-      customType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UserOrganization",
-  }) as any as Schema.Schema<UserOrganization>;
+export const UserOrganization = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  domain: Schema.optional(Schema.String),
+  symbol: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  primary: Schema.optional(Schema.Boolean),
+  department: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  costCenter: Schema.optional(Schema.String),
+  fullTimeEquivalent: Schema.optional(Schema.Number),
+  name: Schema.optional(Schema.String),
+  customType: Schema.optional(Schema.String),
+}).annotate({ identifier: "UserOrganization" });
 
 export interface SchemaFieldSpec {
   /** The name of the field. */
@@ -507,28 +466,23 @@ export interface SchemaFieldSpec {
   kind?: string;
 }
 
-export const SchemaFieldSpec: Schema.Schema<SchemaFieldSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const SchemaFieldSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fieldName: Schema.optional(Schema.String),
+  fieldType: Schema.optional(Schema.String),
+  indexed: Schema.optional(Schema.Boolean),
+  numericIndexingSpec: Schema.optional(
     Schema.Struct({
-      fieldName: Schema.optional(Schema.String),
-      fieldType: Schema.optional(Schema.String),
-      indexed: Schema.optional(Schema.Boolean),
-      numericIndexingSpec: Schema.optional(
-        Schema.Struct({
-          minValue: Schema.optional(Schema.Number),
-          maxValue: Schema.optional(Schema.Number),
-        }),
-      ),
-      etag: Schema.optional(Schema.String),
-      fieldId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      readAccessType: Schema.optional(Schema.String),
-      multiValued: Schema.optional(Schema.Boolean),
-      kind: Schema.optional(Schema.String),
+      minValue: Schema.optional(Schema.Number),
+      maxValue: Schema.optional(Schema.Number),
     }),
-  ).annotate({
-    identifier: "SchemaFieldSpec",
-  }) as any as Schema.Schema<SchemaFieldSpec>;
+  ),
+  etag: Schema.optional(Schema.String),
+  fieldId: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  readAccessType: Schema.optional(Schema.String),
+  multiValued: Schema.optional(Schema.Boolean),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "SchemaFieldSpec" });
 
 export interface Admin_Schema {
   /** The schema's name. Each `schema_name` must be unique within a customer. Reusing a name results in a `409: Entity already exists` error. */
@@ -545,19 +499,14 @@ export interface Admin_Schema {
   etag?: string;
 }
 
-export const Admin_Schema: Schema.Schema<Admin_Schema> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      schemaName: Schema.optional(Schema.String),
-      schemaId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      fields: Schema.optional(Schema.Array(SchemaFieldSpec)),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Admin_Schema",
-  }) as any as Schema.Schema<Admin_Schema>;
+export const Admin_Schema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  schemaName: Schema.optional(Schema.String),
+  schemaId: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  fields: Schema.optional(Schema.Array(SchemaFieldSpec)),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "Admin_Schema" });
 
 export interface Schemas {
   /** ETag of the resource. */
@@ -568,14 +517,11 @@ export interface Schemas {
   schemas?: Array<Admin_Schema>;
 }
 
-export const Schemas: Schema.Schema<Schemas> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      etag: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      schemas: Schema.optional(Schema.Array(Admin_Schema)),
-    }),
-  ).annotate({ identifier: "Schemas" }) as any as Schema.Schema<Schemas>;
+export const Schemas = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  etag: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  schemas: Schema.optional(Schema.Array(Admin_Schema)),
+}).annotate({ identifier: "Schemas" });
 
 export interface Tokens {
   /** The type of the API resource. This is always `admin#directory#tokenList`. */
@@ -586,14 +532,11 @@ export interface Tokens {
   etag?: string;
 }
 
-export const Tokens: Schema.Schema<Tokens> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(Token)),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Tokens" }) as any as Schema.Schema<Tokens>;
+export const Tokens = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(Token)),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "Tokens" });
 
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -604,16 +547,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface PrintServer {
   /** Immutable. ID of the print server. Leave empty when creating. */
@@ -632,20 +572,15 @@ export interface PrintServer {
   orgUnitId?: string;
 }
 
-export const PrintServer: Schema.Schema<PrintServer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      uri: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      orgUnitId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PrintServer",
-  }) as any as Schema.Schema<PrintServer>;
+export const PrintServer = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  uri: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  orgUnitId: Schema.optional(Schema.String),
+}).annotate({ identifier: "PrintServer" });
 
 export interface PrintServerFailureInfo {
   /** Canonical code for why the update failed to apply. */
@@ -676,17 +611,14 @@ export interface PrintServerFailureInfo {
   errorMessage?: string;
 }
 
-export const PrintServerFailureInfo: Schema.Schema<PrintServerFailureInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errorCode: Schema.optional(Schema.String),
-      printServerId: Schema.optional(Schema.String),
-      printServer: Schema.optional(PrintServer),
-      errorMessage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PrintServerFailureInfo",
-  }) as any as Schema.Schema<PrintServerFailureInfo>;
+export const PrintServerFailureInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    errorCode: Schema.optional(Schema.String),
+    printServerId: Schema.optional(Schema.String),
+    printServer: Schema.optional(PrintServer),
+    errorMessage: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "PrintServerFailureInfo" });
 
 export interface UserExternalId {
   /** The value of the id. */
@@ -697,16 +629,11 @@ export interface UserExternalId {
   type?: string;
 }
 
-export const UserExternalId: Schema.Schema<UserExternalId> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-      customType: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UserExternalId",
-  }) as any as Schema.Schema<UserExternalId>;
+export const UserExternalId = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.String),
+  customType: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "UserExternalId" });
 
 export interface AuxiliaryMessage {
   /** Human readable message in English. Example: "Given printer is invalid or no longer supported." */
@@ -722,16 +649,11 @@ export interface AuxiliaryMessage {
   fieldMask?: string;
 }
 
-export const AuxiliaryMessage: Schema.Schema<AuxiliaryMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      auxiliaryMessage: Schema.optional(Schema.String),
-      severity: Schema.optional(Schema.String),
-      fieldMask: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AuxiliaryMessage",
-  }) as any as Schema.Schema<AuxiliaryMessage>;
+export const AuxiliaryMessage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  auxiliaryMessage: Schema.optional(Schema.String),
+  severity: Schema.optional(Schema.String),
+  fieldMask: Schema.optional(Schema.String),
+}).annotate({ identifier: "AuxiliaryMessage" });
 
 export interface Printer {
   /** Output only. Time when printer was created. */
@@ -756,21 +678,18 @@ export interface Printer {
   orgUnitId?: string;
 }
 
-export const Printer: Schema.Schema<Printer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      uri: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      auxiliaryMessages: Schema.optional(Schema.Array(AuxiliaryMessage)),
-      name: Schema.optional(Schema.String),
-      makeAndModel: Schema.optional(Schema.String),
-      useDriverlessConfig: Schema.optional(Schema.Boolean),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      orgUnitId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Printer" }) as any as Schema.Schema<Printer>;
+export const Printer = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createTime: Schema.optional(Schema.String),
+  uri: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  auxiliaryMessages: Schema.optional(Schema.Array(AuxiliaryMessage)),
+  name: Schema.optional(Schema.String),
+  makeAndModel: Schema.optional(Schema.String),
+  useDriverlessConfig: Schema.optional(Schema.Boolean),
+  displayName: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  orgUnitId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Printer" });
 
 export interface FailureInfo {
   /** Failure reason message. */
@@ -801,17 +720,12 @@ export interface FailureInfo {
     | (string & {});
 }
 
-export const FailureInfo: Schema.Schema<FailureInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errorMessage: Schema.optional(Schema.String),
-      printerId: Schema.optional(Schema.String),
-      printer: Schema.optional(Printer),
-      errorCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FailureInfo",
-  }) as any as Schema.Schema<FailureInfo>;
+export const FailureInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  errorMessage: Schema.optional(Schema.String),
+  printerId: Schema.optional(Schema.String),
+  printer: Schema.optional(Printer),
+  errorCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "FailureInfo" });
 
 export interface Channel {
   /** A UUID or similar unique string that identifies this channel. */
@@ -836,21 +750,18 @@ export interface Channel {
   resourceUri?: string;
 }
 
-export const Channel: Schema.Schema<Channel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      params: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      token: Schema.optional(Schema.String),
-      address: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      resourceId: Schema.optional(Schema.String),
-      expiration: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      payload: Schema.optional(Schema.Boolean),
-      resourceUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Channel" }) as any as Schema.Schema<Channel>;
+export const Channel = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  params: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  token: Schema.optional(Schema.String),
+  address: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  resourceId: Schema.optional(Schema.String),
+  expiration: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  payload: Schema.optional(Schema.Boolean),
+  resourceUri: Schema.optional(Schema.String),
+}).annotate({ identifier: "Channel" });
 
 export interface UserSshPublicKey {
   /** An SSH public key. */
@@ -861,16 +772,11 @@ export interface UserSshPublicKey {
   expirationTimeUsec?: string;
 }
 
-export const UserSshPublicKey: Schema.Schema<UserSshPublicKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      key: Schema.optional(Schema.String),
-      fingerprint: Schema.optional(Schema.String),
-      expirationTimeUsec: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UserSshPublicKey",
-  }) as any as Schema.Schema<UserSshPublicKey>;
+export const UserSshPublicKey = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  key: Schema.optional(Schema.String),
+  fingerprint: Schema.optional(Schema.String),
+  expirationTimeUsec: Schema.optional(Schema.String),
+}).annotate({ identifier: "UserSshPublicKey" });
 
 export interface UserPosixAccount {
   /** System identifier for which account Username or Uid apply to. */
@@ -895,23 +801,18 @@ export interface UserPosixAccount {
   primary?: boolean;
 }
 
-export const UserPosixAccount: Schema.Schema<UserPosixAccount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      systemId: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-      username: Schema.optional(Schema.String),
-      gid: Schema.optional(Schema.String),
-      uid: Schema.optional(Schema.String),
-      gecos: Schema.optional(Schema.String),
-      homeDirectory: Schema.optional(Schema.String),
-      shell: Schema.optional(Schema.String),
-      operatingSystemType: Schema.optional(Schema.String),
-      primary: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "UserPosixAccount",
-  }) as any as Schema.Schema<UserPosixAccount>;
+export const UserPosixAccount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  systemId: Schema.optional(Schema.String),
+  accountId: Schema.optional(Schema.String),
+  username: Schema.optional(Schema.String),
+  gid: Schema.optional(Schema.String),
+  uid: Schema.optional(Schema.String),
+  gecos: Schema.optional(Schema.String),
+  homeDirectory: Schema.optional(Schema.String),
+  shell: Schema.optional(Schema.String),
+  operatingSystemType: Schema.optional(Schema.String),
+  primary: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "UserPosixAccount" });
 
 export interface VerificationCode {
   /** The obfuscated unique ID of the user. */
@@ -924,17 +825,12 @@ export interface VerificationCode {
   etag?: string;
 }
 
-export const VerificationCode: Schema.Schema<VerificationCode> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userId: Schema.optional(Schema.String),
-      verificationCode: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VerificationCode",
-  }) as any as Schema.Schema<VerificationCode>;
+export const VerificationCode = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  userId: Schema.optional(Schema.String),
+  verificationCode: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "VerificationCode" });
 
 export interface UserAbout {
   /** About entry can have a type which indicates the content type. It can either be plain or html. By default, notes contents are assumed to contain plain text. */
@@ -943,27 +839,19 @@ export interface UserAbout {
   value?: string;
 }
 
-export const UserAbout: Schema.Schema<UserAbout> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contentType: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "UserAbout" }) as any as Schema.Schema<UserAbout>;
+export const UserAbout = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  contentType: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+}).annotate({ identifier: "UserAbout" });
 
 export interface MobileDeviceAction {
   /** The action to be performed on the device. */
   action?: string;
 }
 
-export const MobileDeviceAction: Schema.Schema<MobileDeviceAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      action: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MobileDeviceAction",
-  }) as any as Schema.Schema<MobileDeviceAction>;
+export const MobileDeviceAction = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  action: Schema.optional(Schema.String),
+}).annotate({ identifier: "MobileDeviceAction" });
 
 export interface Asp {
   /** The unique ID of the ASP. */
@@ -982,18 +870,15 @@ export interface Asp {
   lastTimeUsed?: string;
 }
 
-export const Asp: Schema.Schema<Asp> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      codeId: Schema.optional(Schema.Number),
-      userKey: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      creationTime: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      lastTimeUsed: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Asp" }) as any as Schema.Schema<Asp>;
+export const Asp = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  codeId: Schema.optional(Schema.Number),
+  userKey: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  creationTime: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  lastTimeUsed: Schema.optional(Schema.String),
+}).annotate({ identifier: "Asp" });
 
 export interface Asps {
   /** ETag of the resource. */
@@ -1004,14 +889,11 @@ export interface Asps {
   items?: Array<Asp>;
 }
 
-export const Asps: Schema.Schema<Asps> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      etag: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(Asp)),
-    }),
-  ).annotate({ identifier: "Asps" }) as any as Schema.Schema<Asps>;
+export const Asps = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  etag: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(Asp)),
+}).annotate({ identifier: "Asps" });
 
 export interface Group {
   /** Read-only. The list of a group's alias email addresses. To add, update, or remove a group's aliases, use the `groups.aliases` methods. If edited in a group's POST or PUT request, the edit is ignored. */
@@ -1036,28 +918,25 @@ export interface Group {
   adminCreated?: boolean;
 }
 
-export const Group: Schema.Schema<Group> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      aliases: Schema.optional(Schema.Array(Schema.String)),
-      email: Schema.optional(Schema.String),
-      directMembersCount: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      nonEditableAliases: Schema.optional(Schema.Array(Schema.String)),
-      description: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      adminCreated: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "Group" }) as any as Schema.Schema<Group>;
+export const Group = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  aliases: Schema.optional(Schema.Array(Schema.String)),
+  email: Schema.optional(Schema.String),
+  directMembersCount: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  nonEditableAliases: Schema.optional(Schema.Array(Schema.String)),
+  description: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  adminCreated: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Group" });
 
 export interface ChangeChromeOsDeviceStatusSucceeded {}
 
-export const ChangeChromeOsDeviceStatusSucceeded: Schema.Schema<ChangeChromeOsDeviceStatusSucceeded> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const ChangeChromeOsDeviceStatusSucceeded =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ChangeChromeOsDeviceStatusSucceeded",
-  }) as any as Schema.Schema<ChangeChromeOsDeviceStatusSucceeded>;
+  });
 
 export interface ChangeChromeOsDeviceStatusResult {
   /** The error result of the operation in case of failure. */
@@ -1068,32 +947,24 @@ export interface ChangeChromeOsDeviceStatusResult {
   deviceId?: string;
 }
 
-export const ChangeChromeOsDeviceStatusResult: Schema.Schema<ChangeChromeOsDeviceStatusResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      error: Schema.optional(Status),
-      response: Schema.optional(ChangeChromeOsDeviceStatusSucceeded),
-      deviceId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ChangeChromeOsDeviceStatusResult",
-  }) as any as Schema.Schema<ChangeChromeOsDeviceStatusResult>;
+export const ChangeChromeOsDeviceStatusResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(Status),
+    response: Schema.optional(ChangeChromeOsDeviceStatusSucceeded),
+    deviceId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ChangeChromeOsDeviceStatusResult" });
 
 export interface BatchChangeChromeOsDeviceStatusResponse {
   /** The results for each of the ChromeOS devices provided in the request. */
   changeChromeOsDeviceStatusResults?: Array<ChangeChromeOsDeviceStatusResult>;
 }
 
-export const BatchChangeChromeOsDeviceStatusResponse: Schema.Schema<BatchChangeChromeOsDeviceStatusResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      changeChromeOsDeviceStatusResults: Schema.optional(
-        Schema.Array(ChangeChromeOsDeviceStatusResult),
-      ),
-    }),
-  ).annotate({
-    identifier: "BatchChangeChromeOsDeviceStatusResponse",
-  }) as any as Schema.Schema<BatchChangeChromeOsDeviceStatusResponse>;
+export const BatchChangeChromeOsDeviceStatusResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    changeChromeOsDeviceStatusResults: Schema.optional(
+      Schema.Array(ChangeChromeOsDeviceStatusResult),
+    ),
+  }).annotate({ identifier: "BatchChangeChromeOsDeviceStatusResponse" });
 
 export interface GroupAlias {
   /** The type of the API resource. For Alias resources, the value is `admin#directory#alias`. */
@@ -1108,16 +979,13 @@ export interface GroupAlias {
   id?: string;
 }
 
-export const GroupAlias: Schema.Schema<GroupAlias> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      primaryEmail: Schema.optional(Schema.String),
-      alias: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "GroupAlias" }) as any as Schema.Schema<GroupAlias>;
+export const GroupAlias = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  primaryEmail: Schema.optional(Schema.String),
+  alias: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+}).annotate({ identifier: "GroupAlias" });
 
 export interface CalendarResource {
   /** The read-only email for the calendar resource. Generated as part of creating a new calendar resource. */
@@ -1152,28 +1020,23 @@ export interface CalendarResource {
   resourceId?: string;
 }
 
-export const CalendarResource: Schema.Schema<CalendarResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceEmail: Schema.optional(Schema.String),
-      resourceCategory: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      resourceDescription: Schema.optional(Schema.String),
-      resourceType: Schema.optional(Schema.String),
-      generatedResourceName: Schema.optional(Schema.String),
-      featureInstances: Schema.optional(Schema.Unknown),
-      capacity: Schema.optional(Schema.Number),
-      buildingId: Schema.optional(Schema.String),
-      floorSection: Schema.optional(Schema.String),
-      resourceName: Schema.optional(Schema.String),
-      floorName: Schema.optional(Schema.String),
-      etags: Schema.optional(Schema.String),
-      userVisibleDescription: Schema.optional(Schema.String),
-      resourceId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CalendarResource",
-  }) as any as Schema.Schema<CalendarResource>;
+export const CalendarResource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceEmail: Schema.optional(Schema.String),
+  resourceCategory: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  resourceDescription: Schema.optional(Schema.String),
+  resourceType: Schema.optional(Schema.String),
+  generatedResourceName: Schema.optional(Schema.String),
+  featureInstances: Schema.optional(Schema.Unknown),
+  capacity: Schema.optional(Schema.Number),
+  buildingId: Schema.optional(Schema.String),
+  floorSection: Schema.optional(Schema.String),
+  resourceName: Schema.optional(Schema.String),
+  floorName: Schema.optional(Schema.String),
+  etags: Schema.optional(Schema.String),
+  userVisibleDescription: Schema.optional(Schema.String),
+  resourceId: Schema.optional(Schema.String),
+}).annotate({ identifier: "CalendarResource" });
 
 export interface DomainAlias {
   /** Kind of resource this is. */
@@ -1190,19 +1053,14 @@ export interface DomainAlias {
   domainAliasName?: string;
 }
 
-export const DomainAlias: Schema.Schema<DomainAlias> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      creationTime: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      parentDomainName: Schema.optional(Schema.String),
-      verified: Schema.optional(Schema.Boolean),
-      domainAliasName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DomainAlias",
-  }) as any as Schema.Schema<DomainAlias>;
+export const DomainAlias = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  creationTime: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  parentDomainName: Schema.optional(Schema.String),
+  verified: Schema.optional(Schema.Boolean),
+  domainAliasName: Schema.optional(Schema.String),
+}).annotate({ identifier: "DomainAlias" });
 
 export interface DomainAliases {
   /** A list of domain alias objects. */
@@ -1213,16 +1071,11 @@ export interface DomainAliases {
   etag?: string;
 }
 
-export const DomainAliases: Schema.Schema<DomainAliases> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      domainAliases: Schema.optional(Schema.Array(DomainAlias)),
-      kind: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DomainAliases",
-  }) as any as Schema.Schema<DomainAliases>;
+export const DomainAliases = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  domainAliases: Schema.optional(Schema.Array(DomainAlias)),
+  kind: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "DomainAliases" });
 
 export interface BatchCreatePrintServersResponse {
   /** A list of successfully created print servers with their IDs populated. */
@@ -1231,15 +1084,11 @@ export interface BatchCreatePrintServersResponse {
   failures?: Array<PrintServerFailureInfo>;
 }
 
-export const BatchCreatePrintServersResponse: Schema.Schema<BatchCreatePrintServersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      printServers: Schema.optional(Schema.Array(PrintServer)),
-      failures: Schema.optional(Schema.Array(PrintServerFailureInfo)),
-    }),
-  ).annotate({
-    identifier: "BatchCreatePrintServersResponse",
-  }) as any as Schema.Schema<BatchCreatePrintServersResponse>;
+export const BatchCreatePrintServersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    printServers: Schema.optional(Schema.Array(PrintServer)),
+    failures: Schema.optional(Schema.Array(PrintServerFailureInfo)),
+  }).annotate({ identifier: "BatchCreatePrintServersResponse" });
 
 export interface CalendarResources {
   /** The continuation token, used to page through large result sets. Provide this value in a subsequent request to return the next page of results. */
@@ -1252,17 +1101,12 @@ export interface CalendarResources {
   etag?: string;
 }
 
-export const CalendarResources: Schema.Schema<CalendarResources> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(CalendarResource)),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CalendarResources",
-  }) as any as Schema.Schema<CalendarResources>;
+export const CalendarResources = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(CalendarResource)),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "CalendarResources" });
 
 export interface UserGender {
   /** Custom gender. */
@@ -1273,14 +1117,11 @@ export interface UserGender {
   addressMeAs?: string;
 }
 
-export const UserGender: Schema.Schema<UserGender> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customGender: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      addressMeAs: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "UserGender" }) as any as Schema.Schema<UserGender>;
+export const UserGender = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  customGender: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  addressMeAs: Schema.optional(Schema.String),
+}).annotate({ identifier: "UserGender" });
 
 export interface Feature {
   /** ETag of the resource. */
@@ -1291,14 +1132,11 @@ export interface Feature {
   kind?: string;
 }
 
-export const Feature: Schema.Schema<Feature> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      etags: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Feature" }) as any as Schema.Schema<Feature>;
+export const Feature = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  etags: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "Feature" });
 
 export interface CreatePrintServerRequest {
   /** Required. The [unique ID](https://developers.google.com/workspace/admin/directory/reference/rest/v1/customers) of the customer's Google Workspace account. Format: `customers/{id}` */
@@ -1307,15 +1145,11 @@ export interface CreatePrintServerRequest {
   printServer?: PrintServer;
 }
 
-export const CreatePrintServerRequest: Schema.Schema<CreatePrintServerRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parent: Schema.optional(Schema.String),
-      printServer: Schema.optional(PrintServer),
-    }),
-  ).annotate({
-    identifier: "CreatePrintServerRequest",
-  }) as any as Schema.Schema<CreatePrintServerRequest>;
+export const CreatePrintServerRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.optional(Schema.String),
+    printServer: Schema.optional(PrintServer),
+  }).annotate({ identifier: "CreatePrintServerRequest" });
 
 export interface OrgUnit {
   /** The full path to the organizational unit. The `orgUnitPath` is a derived property. When listed, it is derived from `parentOrgunitPath` and organizational unit's `name`. For example, for an organizational unit named 'apps' under parent organization '/engineering', the orgUnitPath is '/engineering/apps'. In order to edit an `orgUnitPath`, either update the name of the organization or the `parentOrgunitPath`. A user's organizational unit determines which Google Workspace services the user has access to. If the user is moved to a new organization, the user's access changes. For more information about organization structures, see the [administration help center](https://support.google.com/a/answer/4352075). For more information about moving a user to a different organization, see [Update a user](https://developers.google.com/workspace/admin/directory/v1/guides/manage-users.html#update_user). */
@@ -1338,20 +1172,17 @@ export interface OrgUnit {
   etag?: string;
 }
 
-export const OrgUnit: Schema.Schema<OrgUnit> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      orgUnitPath: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      blockInheritance: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-      orgUnitId: Schema.optional(Schema.String),
-      parentOrgUnitId: Schema.optional(Schema.String),
-      parentOrgUnitPath: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "OrgUnit" }) as any as Schema.Schema<OrgUnit>;
+export const OrgUnit = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  orgUnitPath: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  blockInheritance: Schema.optional(Schema.Boolean),
+  name: Schema.optional(Schema.String),
+  orgUnitId: Schema.optional(Schema.String),
+  parentOrgUnitId: Schema.optional(Schema.String),
+  parentOrgUnitPath: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "OrgUnit" });
 
 export interface Aliases {
   etag?: string;
@@ -1359,14 +1190,11 @@ export interface Aliases {
   aliases?: Array<unknown>;
 }
 
-export const Aliases: Schema.Schema<Aliases> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      etag: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      aliases: Schema.optional(Schema.Array(Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Aliases" }) as any as Schema.Schema<Aliases>;
+export const Aliases = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  etag: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  aliases: Schema.optional(Schema.Array(Schema.Unknown)),
+}).annotate({ identifier: "Aliases" });
 
 export interface Features {
   /** The Features in this page of results. */
@@ -1379,15 +1207,12 @@ export interface Features {
   etag?: string;
 }
 
-export const Features: Schema.Schema<Features> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      features: Schema.optional(Schema.Array(Feature)),
-      nextPageToken: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Features" }) as any as Schema.Schema<Features>;
+export const Features = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  features: Schema.optional(Schema.Array(Feature)),
+  nextPageToken: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "Features" });
 
 export interface UserIm {
   /** If this is user's primary im. Only one entry could be marked as primary. */
@@ -1404,17 +1229,14 @@ export interface UserIm {
   im?: string;
 }
 
-export const UserIm: Schema.Schema<UserIm> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      primary: Schema.optional(Schema.Boolean),
-      customProtocol: Schema.optional(Schema.String),
-      customType: Schema.optional(Schema.String),
-      protocol: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      im: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "UserIm" }) as any as Schema.Schema<UserIm>;
+export const UserIm = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  primary: Schema.optional(Schema.Boolean),
+  customProtocol: Schema.optional(Schema.String),
+  customType: Schema.optional(Schema.String),
+  protocol: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  im: Schema.optional(Schema.String),
+}).annotate({ identifier: "UserIm" });
 
 export interface ListPrintServersResponse {
   /** A token that can be sent as `page_token` in a request to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -1423,15 +1245,11 @@ export interface ListPrintServersResponse {
   printServers?: Array<PrintServer>;
 }
 
-export const ListPrintServersResponse: Schema.Schema<ListPrintServersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      printServers: Schema.optional(Schema.Array(PrintServer)),
-    }),
-  ).annotate({
-    identifier: "ListPrintServersResponse",
-  }) as any as Schema.Schema<ListPrintServersResponse>;
+export const ListPrintServersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    printServers: Schema.optional(Schema.Array(PrintServer)),
+  }).annotate({ identifier: "ListPrintServersResponse" });
 
 export interface BuildingAddress {
   /** Optional. BCP-47 language code of the contents of this address (if known). */
@@ -1450,20 +1268,15 @@ export interface BuildingAddress {
   regionCode?: string;
 }
 
-export const BuildingAddress: Schema.Schema<BuildingAddress> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      languageCode: Schema.optional(Schema.String),
-      addressLines: Schema.optional(Schema.Array(Schema.String)),
-      postalCode: Schema.optional(Schema.String),
-      sublocality: Schema.optional(Schema.String),
-      administrativeArea: Schema.optional(Schema.String),
-      locality: Schema.optional(Schema.String),
-      regionCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BuildingAddress",
-  }) as any as Schema.Schema<BuildingAddress>;
+export const BuildingAddress = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  languageCode: Schema.optional(Schema.String),
+  addressLines: Schema.optional(Schema.Array(Schema.String)),
+  postalCode: Schema.optional(Schema.String),
+  sublocality: Schema.optional(Schema.String),
+  administrativeArea: Schema.optional(Schema.String),
+  locality: Schema.optional(Schema.String),
+  regionCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "BuildingAddress" });
 
 export interface BuildingCoordinates {
   /** Latitude in decimal degrees. */
@@ -1472,15 +1285,10 @@ export interface BuildingCoordinates {
   longitude?: number;
 }
 
-export const BuildingCoordinates: Schema.Schema<BuildingCoordinates> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      latitude: Schema.optional(Schema.Number),
-      longitude: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "BuildingCoordinates",
-  }) as any as Schema.Schema<BuildingCoordinates>;
+export const BuildingCoordinates = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  latitude: Schema.optional(Schema.Number),
+  longitude: Schema.optional(Schema.Number),
+}).annotate({ identifier: "BuildingCoordinates" });
 
 export interface Building {
   /** ETag of the resource. */
@@ -1501,19 +1309,16 @@ export interface Building {
   floorNames?: Array<string>;
 }
 
-export const Building: Schema.Schema<Building> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      etags: Schema.optional(Schema.String),
-      buildingId: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      address: Schema.optional(BuildingAddress),
-      coordinates: Schema.optional(BuildingCoordinates),
-      buildingName: Schema.optional(Schema.String),
-      floorNames: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "Building" }) as any as Schema.Schema<Building>;
+export const Building = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  etags: Schema.optional(Schema.String),
+  buildingId: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  address: Schema.optional(BuildingAddress),
+  coordinates: Schema.optional(BuildingCoordinates),
+  buildingName: Schema.optional(Schema.String),
+  floorNames: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Building" });
 
 export interface RoleAssignment {
   /** The ID of the role that is assigned. */
@@ -1536,22 +1341,17 @@ export interface RoleAssignment {
   assignedTo?: string;
 }
 
-export const RoleAssignment: Schema.Schema<RoleAssignment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      roleId: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      scopeType: Schema.optional(Schema.String),
-      condition: Schema.optional(Schema.String),
-      roleAssignmentId: Schema.optional(Schema.String),
-      assigneeType: Schema.optional(Schema.String),
-      orgUnitId: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      assignedTo: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RoleAssignment",
-  }) as any as Schema.Schema<RoleAssignment>;
+export const RoleAssignment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  roleId: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  scopeType: Schema.optional(Schema.String),
+  condition: Schema.optional(Schema.String),
+  roleAssignmentId: Schema.optional(Schema.String),
+  assigneeType: Schema.optional(Schema.String),
+  orgUnitId: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  assignedTo: Schema.optional(Schema.String),
+}).annotate({ identifier: "RoleAssignment" });
 
 export interface RoleAssignments {
   /** ETag of the resource. */
@@ -1563,17 +1363,12 @@ export interface RoleAssignments {
   nextPageToken?: string;
 }
 
-export const RoleAssignments: Schema.Schema<RoleAssignments> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      etag: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(RoleAssignment)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RoleAssignments",
-  }) as any as Schema.Schema<RoleAssignments>;
+export const RoleAssignments = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  etag: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(RoleAssignment)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "RoleAssignments" });
 
 export interface BatchDeletePrintersResponse {
   /** A list of update failures. */
@@ -1582,41 +1377,29 @@ export interface BatchDeletePrintersResponse {
   printerIds?: Array<string>;
 }
 
-export const BatchDeletePrintersResponse: Schema.Schema<BatchDeletePrintersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      failedPrinters: Schema.optional(Schema.Array(FailureInfo)),
-      printerIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "BatchDeletePrintersResponse",
-  }) as any as Schema.Schema<BatchDeletePrintersResponse>;
+export const BatchDeletePrintersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    failedPrinters: Schema.optional(Schema.Array(FailureInfo)),
+    printerIds: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "BatchDeletePrintersResponse" });
 
 export interface FanInfo {
   /** Output only. Fan speed in RPM. */
   speedRpm?: number;
 }
 
-export const FanInfo: Schema.Schema<FanInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      speedRpm: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "FanInfo" }) as any as Schema.Schema<FanInfo>;
+export const FanInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  speedRpm: Schema.optional(Schema.Number),
+}).annotate({ identifier: "FanInfo" });
 
 export interface FeatureInstance {
   /** The feature that this is an instance of. A calendar resource may have multiple instances of a feature. */
   feature?: Feature;
 }
 
-export const FeatureInstance: Schema.Schema<FeatureInstance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      feature: Schema.optional(Feature),
-    }),
-  ).annotate({
-    identifier: "FeatureInstance",
-  }) as any as Schema.Schema<FeatureInstance>;
+export const FeatureInstance = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  feature: Schema.optional(Feature),
+}).annotate({ identifier: "FeatureInstance" });
 
 export interface PrinterModel {
   /** Manufacturer. eq. "Brother" */
@@ -1627,16 +1410,11 @@ export interface PrinterModel {
   displayName?: string;
 }
 
-export const PrinterModel: Schema.Schema<PrinterModel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      manufacturer: Schema.optional(Schema.String),
-      makeAndModel: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PrinterModel",
-  }) as any as Schema.Schema<PrinterModel>;
+export const PrinterModel = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  manufacturer: Schema.optional(Schema.String),
+  makeAndModel: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+}).annotate({ identifier: "PrinterModel" });
 
 export interface ListPrinterModelsResponse {
   /** Printer models that are currently allowed to be configured for ChromeOs. Some printers may be added or removed over time. */
@@ -1645,29 +1423,20 @@ export interface ListPrinterModelsResponse {
   nextPageToken?: string;
 }
 
-export const ListPrinterModelsResponse: Schema.Schema<ListPrinterModelsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      printerModels: Schema.optional(Schema.Array(PrinterModel)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListPrinterModelsResponse",
-  }) as any as Schema.Schema<ListPrinterModelsResponse>;
+export const ListPrinterModelsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    printerModels: Schema.optional(Schema.Array(PrinterModel)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListPrinterModelsResponse" });
 
 export interface MembersHasMember {
   /** Output only. Identifies whether the given user is a member of the group. Membership can be direct or nested. */
   isMember?: boolean;
 }
 
-export const MembersHasMember: Schema.Schema<MembersHasMember> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      isMember: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "MembersHasMember",
-  }) as any as Schema.Schema<MembersHasMember>;
+export const MembersHasMember = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  isMember: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "MembersHasMember" });
 
 export interface VerificationCodes {
   /** The type of the resource. This is always `admin#directory#verificationCodesList`. */
@@ -1678,16 +1447,11 @@ export interface VerificationCodes {
   etag?: string;
 }
 
-export const VerificationCodes: Schema.Schema<VerificationCodes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(VerificationCode)),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VerificationCodes",
-  }) as any as Schema.Schema<VerificationCodes>;
+export const VerificationCodes = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(VerificationCode)),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "VerificationCodes" });
 
 export interface OsUpdateStatus {
   /** New platform version of the OS image being downloaded and applied. It is only set when update status is UPDATE_STATUS_DOWNLOAD_IN_PROGRESS or UPDATE_STATUS_NEED_REBOOT. Note this could be a dummy "0.0.0.0" for UPDATE_STATUS_NEED_REBOOT for some edge cases, e.g. update engine is restarted without a reboot. */
@@ -1709,33 +1473,24 @@ export interface OsUpdateStatus {
   rebootTime?: string;
 }
 
-export const OsUpdateStatus: Schema.Schema<OsUpdateStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetOsVersion: Schema.optional(Schema.String),
-      targetKioskAppVersion: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      updateCheckTime: Schema.optional(Schema.String),
-      rebootTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OsUpdateStatus",
-  }) as any as Schema.Schema<OsUpdateStatus>;
+export const OsUpdateStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  targetOsVersion: Schema.optional(Schema.String),
+  targetKioskAppVersion: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  updateCheckTime: Schema.optional(Schema.String),
+  rebootTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "OsUpdateStatus" });
 
 export interface BatchCreatePrintServersRequest {
   /** Required. A list of `PrintServer` resources to be created (max `50` per batch). */
   requests?: Array<CreatePrintServerRequest>;
 }
 
-export const BatchCreatePrintServersRequest: Schema.Schema<BatchCreatePrintServersRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requests: Schema.optional(Schema.Array(CreatePrintServerRequest)),
-    }),
-  ).annotate({
-    identifier: "BatchCreatePrintServersRequest",
-  }) as any as Schema.Schema<BatchCreatePrintServersRequest>;
+export const BatchCreatePrintServersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requests: Schema.optional(Schema.Array(CreatePrintServerRequest)),
+  }).annotate({ identifier: "BatchCreatePrintServersRequest" });
 
 export interface DirectoryUsersCreateGuestRequest {
   /** Immutable. External email of the guest user being created. */
@@ -1744,43 +1499,30 @@ export interface DirectoryUsersCreateGuestRequest {
   customer?: string;
 }
 
-export const DirectoryUsersCreateGuestRequest: Schema.Schema<DirectoryUsersCreateGuestRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      primaryGuestEmail: Schema.optional(Schema.String),
-      customer: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DirectoryUsersCreateGuestRequest",
-  }) as any as Schema.Schema<DirectoryUsersCreateGuestRequest>;
+export const DirectoryUsersCreateGuestRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    primaryGuestEmail: Schema.optional(Schema.String),
+    customer: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DirectoryUsersCreateGuestRequest" });
 
 export interface BatchDeletePrintersRequest {
   /** A list of Printer.id that should be deleted. Max 100 at a time. */
   printerIds?: Array<string>;
 }
 
-export const BatchDeletePrintersRequest: Schema.Schema<BatchDeletePrintersRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      printerIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "BatchDeletePrintersRequest",
-  }) as any as Schema.Schema<BatchDeletePrintersRequest>;
+export const BatchDeletePrintersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    printerIds: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "BatchDeletePrintersRequest" });
 
 export interface UserUndelete {
   /** OrgUnit of User */
   orgUnitPath?: string;
 }
 
-export const UserUndelete: Schema.Schema<UserUndelete> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      orgUnitPath: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UserUndelete",
-  }) as any as Schema.Schema<UserUndelete>;
+export const UserUndelete = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  orgUnitPath: Schema.optional(Schema.String),
+}).annotate({ identifier: "UserUndelete" });
 
 export interface DirectoryChromeosdevicesIssueCommandRequest {
   /** The type of command. */
@@ -1800,36 +1542,27 @@ export interface DirectoryChromeosdevicesIssueCommandRequest {
   payload?: string;
 }
 
-export const DirectoryChromeosdevicesIssueCommandRequest: Schema.Schema<DirectoryChromeosdevicesIssueCommandRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commandType: Schema.optional(Schema.String),
-      payload: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DirectoryChromeosdevicesIssueCommandRequest",
-  }) as any as Schema.Schema<DirectoryChromeosdevicesIssueCommandRequest>;
+export const DirectoryChromeosdevicesIssueCommandRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commandType: Schema.optional(Schema.String),
+    payload: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DirectoryChromeosdevicesIssueCommandRequest" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface DirectoryChromeosdevicesIssueCommandResponse {
   /** The unique ID of the issued command, used to retrieve the command status. */
   commandId?: string;
 }
 
-export const DirectoryChromeosdevicesIssueCommandResponse: Schema.Schema<DirectoryChromeosdevicesIssueCommandResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commandId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DirectoryChromeosdevicesIssueCommandResponse",
-  }) as any as Schema.Schema<DirectoryChromeosdevicesIssueCommandResponse>;
+export const DirectoryChromeosdevicesIssueCommandResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commandId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DirectoryChromeosdevicesIssueCommandResponse" });
 
 export interface Domains {
   /** A list of domain alias objects. (Read-only) */
@@ -1848,32 +1581,25 @@ export interface Domains {
   etag?: string;
 }
 
-export const Domains: Schema.Schema<Domains> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      domainAliases: Schema.optional(Schema.Array(DomainAlias)),
-      verified: Schema.optional(Schema.Boolean),
-      isPrimary: Schema.optional(Schema.Boolean),
-      kind: Schema.optional(Schema.String),
-      creationTime: Schema.optional(Schema.String),
-      domainName: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Domains" }) as any as Schema.Schema<Domains>;
+export const Domains = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  domainAliases: Schema.optional(Schema.Array(DomainAlias)),
+  verified: Schema.optional(Schema.Boolean),
+  isPrimary: Schema.optional(Schema.Boolean),
+  kind: Schema.optional(Schema.String),
+  creationTime: Schema.optional(Schema.String),
+  domainName: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "Domains" });
 
 export interface CountChromeOsDevicesResponse {
   /** The total number of devices matching the request. */
   count?: string;
 }
 
-export const CountChromeOsDevicesResponse: Schema.Schema<CountChromeOsDevicesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      count: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CountChromeOsDevicesResponse",
-  }) as any as Schema.Schema<CountChromeOsDevicesResponse>;
+export const CountChromeOsDevicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    count: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CountChromeOsDevicesResponse" });
 
 export interface BluetoothAdapterInfo {
   /** Output only. The number of devices connected to this adapter. */
@@ -1882,29 +1608,20 @@ export interface BluetoothAdapterInfo {
   address?: string;
 }
 
-export const BluetoothAdapterInfo: Schema.Schema<BluetoothAdapterInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      numConnectedDevices: Schema.optional(Schema.Number),
-      address: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BluetoothAdapterInfo",
-  }) as any as Schema.Schema<BluetoothAdapterInfo>;
+export const BluetoothAdapterInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  numConnectedDevices: Schema.optional(Schema.Number),
+  address: Schema.optional(Schema.String),
+}).annotate({ identifier: "BluetoothAdapterInfo" });
 
 export interface BatchDeletePrintServersRequest {
   /** A list of print server IDs that should be deleted (max `100` per batch). */
   printServerIds?: Array<string>;
 }
 
-export const BatchDeletePrintServersRequest: Schema.Schema<BatchDeletePrintServersRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      printServerIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "BatchDeletePrintServersRequest",
-  }) as any as Schema.Schema<BatchDeletePrintServersRequest>;
+export const BatchDeletePrintServersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    printServerIds: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "BatchDeletePrintServersRequest" });
 
 export interface UserEmail {
   /** Email id of the user. */
@@ -1923,22 +1640,19 @@ export interface UserEmail {
   type?: string;
 }
 
-export const UserEmail: Schema.Schema<UserEmail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const UserEmail = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  address: Schema.optional(Schema.String),
+  primary: Schema.optional(Schema.Boolean),
+  public_key_encryption_certificates: Schema.optional(
     Schema.Struct({
-      address: Schema.optional(Schema.String),
-      primary: Schema.optional(Schema.Boolean),
-      public_key_encryption_certificates: Schema.optional(
-        Schema.Struct({
-          certificate: Schema.optional(Schema.String),
-          is_default: Schema.optional(Schema.Boolean),
-          state: Schema.optional(Schema.String),
-        }),
-      ),
-      customType: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
+      certificate: Schema.optional(Schema.String),
+      is_default: Schema.optional(Schema.Boolean),
+      state: Schema.optional(Schema.String),
     }),
-  ).annotate({ identifier: "UserEmail" }) as any as Schema.Schema<UserEmail>;
+  ),
+  customType: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "UserEmail" });
 
 export interface UserWebsite {
   /** If this is user's primary website or not. */
@@ -1951,17 +1665,12 @@ export interface UserWebsite {
   type?: string;
 }
 
-export const UserWebsite: Schema.Schema<UserWebsite> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      primary: Schema.optional(Schema.Boolean),
-      value: Schema.optional(Schema.String),
-      customType: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UserWebsite",
-  }) as any as Schema.Schema<UserWebsite>;
+export const UserWebsite = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  primary: Schema.optional(Schema.Boolean),
+  value: Schema.optional(Schema.String),
+  customType: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "UserWebsite" });
 
 export interface Users {
   /** Event that triggered this response (only used in case of Push Response) */
@@ -1976,16 +1685,13 @@ export interface Users {
   users?: Array<User>;
 }
 
-export const Users: Schema.Schema<Users> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      trigger_event: Schema.optional(Schema.String),
-      nextPageToken: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      users: Schema.optional(Schema.Array(User)),
-    }),
-  ).annotate({ identifier: "Users" }) as any as Schema.Schema<Users>;
+export const Users = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  trigger_event: Schema.optional(Schema.String),
+  nextPageToken: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  users: Schema.optional(Schema.Array(User)),
+}).annotate({ identifier: "Users" });
 
 export interface UserPhone {
   /** If this is user's primary phone or not. */
@@ -1998,15 +1704,12 @@ export interface UserPhone {
   type?: string;
 }
 
-export const UserPhone: Schema.Schema<UserPhone> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      primary: Schema.optional(Schema.Boolean),
-      value: Schema.optional(Schema.String),
-      customType: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "UserPhone" }) as any as Schema.Schema<UserPhone>;
+export const UserPhone = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  primary: Schema.optional(Schema.Boolean),
+  value: Schema.optional(Schema.String),
+  customType: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "UserPhone" });
 
 export interface ChromeOsDeviceAction {
   /** Action to be taken on the Chrome OS device. */
@@ -2015,15 +1718,10 @@ export interface ChromeOsDeviceAction {
   deprovisionReason?: string;
 }
 
-export const ChromeOsDeviceAction: Schema.Schema<ChromeOsDeviceAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      action: Schema.optional(Schema.String),
-      deprovisionReason: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ChromeOsDeviceAction",
-  }) as any as Schema.Schema<ChromeOsDeviceAction>;
+export const ChromeOsDeviceAction = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  action: Schema.optional(Schema.String),
+  deprovisionReason: Schema.optional(Schema.String),
+}).annotate({ identifier: "ChromeOsDeviceAction" });
 
 export interface UserAlias {
   /** The unique ID for the user. */
@@ -2038,16 +1736,13 @@ export interface UserAlias {
   etag?: string;
 }
 
-export const UserAlias: Schema.Schema<UserAlias> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      primaryEmail: Schema.optional(Schema.String),
-      alias: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "UserAlias" }) as any as Schema.Schema<UserAlias>;
+export const UserAlias = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  primaryEmail: Schema.optional(Schema.String),
+  alias: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "UserAlias" });
 
 export interface CustomerPostalAddress {
   /** Address line 2 of the address. */
@@ -2070,22 +1765,17 @@ export interface CustomerPostalAddress {
   postalCode?: string;
 }
 
-export const CustomerPostalAddress: Schema.Schema<CustomerPostalAddress> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      addressLine2: Schema.optional(Schema.String),
-      locality: Schema.optional(Schema.String),
-      organizationName: Schema.optional(Schema.String),
-      contactName: Schema.optional(Schema.String),
-      addressLine3: Schema.optional(Schema.String),
-      countryCode: Schema.optional(Schema.String),
-      addressLine1: Schema.optional(Schema.String),
-      region: Schema.optional(Schema.String),
-      postalCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomerPostalAddress",
-  }) as any as Schema.Schema<CustomerPostalAddress>;
+export const CustomerPostalAddress = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  addressLine2: Schema.optional(Schema.String),
+  locality: Schema.optional(Schema.String),
+  organizationName: Schema.optional(Schema.String),
+  contactName: Schema.optional(Schema.String),
+  addressLine3: Schema.optional(Schema.String),
+  countryCode: Schema.optional(Schema.String),
+  addressLine1: Schema.optional(Schema.String),
+  region: Schema.optional(Schema.String),
+  postalCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "CustomerPostalAddress" });
 
 export interface Privilege {
   /** ETag of the resource. */
@@ -2126,28 +1816,21 @@ export interface Privileges {
   etag?: string;
 }
 
-export const Privileges: Schema.Schema<Privileges> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(Privilege)),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Privileges" }) as any as Schema.Schema<Privileges>;
+export const Privileges = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(Privilege)),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "Privileges" });
 
 export interface ChromeOsMoveDevicesToOu {
   /** Chrome OS devices to be moved to OU */
   deviceIds?: Array<string>;
 }
 
-export const ChromeOsMoveDevicesToOu: Schema.Schema<ChromeOsMoveDevicesToOu> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deviceIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ChromeOsMoveDevicesToOu",
-  }) as any as Schema.Schema<ChromeOsMoveDevicesToOu>;
+export const ChromeOsMoveDevicesToOu =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deviceIds: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ChromeOsMoveDevicesToOu" });
 
 export interface Member {
   /** Defines mail delivery preferences of member. This field is only supported by `insert`, `update`, and `get` methods. */
@@ -2168,19 +1851,16 @@ export interface Member {
   id?: string;
 }
 
-export const Member: Schema.Schema<Member> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      delivery_settings: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      email: Schema.optional(Schema.String),
-      role: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Member" }) as any as Schema.Schema<Member>;
+export const Member = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  delivery_settings: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  email: Schema.optional(Schema.String),
+  role: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+}).annotate({ identifier: "Member" });
 
 export interface Buildings {
   /** The Buildings in this page of results. */
@@ -2193,15 +1873,12 @@ export interface Buildings {
   etag?: string;
 }
 
-export const Buildings: Schema.Schema<Buildings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      buildings: Schema.optional(Schema.Array(Building)),
-      nextPageToken: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Buildings" }) as any as Schema.Schema<Buildings>;
+export const Buildings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  buildings: Schema.optional(Schema.Array(Building)),
+  nextPageToken: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "Buildings" });
 
 export interface Members {
   /** Token used to access next page of this result. */
@@ -2214,15 +1891,12 @@ export interface Members {
   kind?: string;
 }
 
-export const Members: Schema.Schema<Members> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      members: Schema.optional(Schema.Array(Member)),
-      etag: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Members" }) as any as Schema.Schema<Members>;
+export const Members = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  members: Schema.optional(Schema.Array(Member)),
+  etag: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "Members" });
 
 export interface Role {
   /** Returns `true` if this is a pre-defined system role. */
@@ -2243,26 +1917,23 @@ export interface Role {
   isSuperAdminRole?: boolean;
 }
 
-export const Role: Schema.Schema<Role> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      isSystemRole: Schema.optional(Schema.Boolean),
-      roleName: Schema.optional(Schema.String),
-      roleDescription: Schema.optional(Schema.String),
-      roleId: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      rolePrivileges: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            serviceId: Schema.optional(Schema.String),
-            privilegeName: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      isSuperAdminRole: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "Role" }) as any as Schema.Schema<Role>;
+export const Role = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  isSystemRole: Schema.optional(Schema.Boolean),
+  roleName: Schema.optional(Schema.String),
+  roleDescription: Schema.optional(Schema.String),
+  roleId: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  rolePrivileges: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        serviceId: Schema.optional(Schema.String),
+        privilegeName: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
+  isSuperAdminRole: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Role" });
 
 export interface Roles {
   /** The type of the API resource. This is always `admin#directory#roles`. */
@@ -2274,29 +1945,21 @@ export interface Roles {
   nextPageToken?: string;
 }
 
-export const Roles: Schema.Schema<Roles> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(Role)),
-      etag: Schema.optional(Schema.String),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Roles" }) as any as Schema.Schema<Roles>;
+export const Roles = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(Role)),
+  etag: Schema.optional(Schema.String),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "Roles" });
 
 export interface UserMakeAdmin {
   /** Indicates the administrator status of the user. */
   status?: boolean;
 }
 
-export const UserMakeAdmin: Schema.Schema<UserMakeAdmin> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      status: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "UserMakeAdmin",
-  }) as any as Schema.Schema<UserMakeAdmin>;
+export const UserMakeAdmin = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  status: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "UserMakeAdmin" });
 
 export interface OrgUnits {
   /** The type of the API resource. For Org Unit resources, the type is `admin#directory#orgUnits`. */
@@ -2307,14 +1970,11 @@ export interface OrgUnits {
   organizationUnits?: Array<OrgUnit>;
 }
 
-export const OrgUnits: Schema.Schema<OrgUnits> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      organizationUnits: Schema.optional(Schema.Array(OrgUnit)),
-    }),
-  ).annotate({ identifier: "OrgUnits" }) as any as Schema.Schema<OrgUnits>;
+export const OrgUnits = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  organizationUnits: Schema.optional(Schema.Array(OrgUnit)),
+}).annotate({ identifier: "OrgUnits" });
 
 export interface Alias {
   alias?: string;
@@ -2324,16 +1984,13 @@ export interface Alias {
   kind?: string;
 }
 
-export const Alias: Schema.Schema<Alias> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      alias: Schema.optional(Schema.String),
-      primaryEmail: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Alias" }) as any as Schema.Schema<Alias>;
+export const Alias = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  alias: Schema.optional(Schema.String),
+  primaryEmail: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "Alias" });
 
 export interface ByteUsage {
   /** Output only. The total capacity value, in bytes. */
@@ -2342,13 +1999,10 @@ export interface ByteUsage {
   usedBytes?: string;
 }
 
-export const ByteUsage: Schema.Schema<ByteUsage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      capacityBytes: Schema.optional(Schema.String),
-      usedBytes: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "ByteUsage" }) as any as Schema.Schema<ByteUsage>;
+export const ByteUsage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  capacityBytes: Schema.optional(Schema.String),
+  usedBytes: Schema.optional(Schema.String),
+}).annotate({ identifier: "ByteUsage" });
 
 export interface MobileDevice {
   /** The device's status. */
@@ -2439,63 +2093,58 @@ export interface MobileDevice {
   networkOperator?: string;
 }
 
-export const MobileDevice: Schema.Schema<MobileDevice> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      status: Schema.optional(Schema.String),
-      kernelVersion: Schema.optional(Schema.String),
-      adbStatus: Schema.optional(Schema.Boolean),
-      securityPatchLevel: Schema.optional(Schema.String),
-      serialNumber: Schema.optional(Schema.String),
-      meid: Schema.optional(Schema.String),
-      email: Schema.optional(Schema.Array(Schema.String)),
-      privilege: Schema.optional(Schema.String),
-      supportsWorkProfile: Schema.optional(Schema.Boolean),
-      defaultLanguage: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.Array(Schema.String)),
-      managedAccountIsOnOwnerProfile: Schema.optional(Schema.Boolean),
-      applications: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            versionName: Schema.optional(Schema.String),
-            permission: Schema.optional(Schema.Array(Schema.String)),
-            versionCode: Schema.optional(Schema.Number),
-            displayName: Schema.optional(Schema.String),
-            packageName: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      model: Schema.optional(Schema.String),
-      deviceCompromisedStatus: Schema.optional(Schema.String),
-      buildNumber: Schema.optional(Schema.String),
-      imei: Schema.optional(Schema.String),
-      hardware: Schema.optional(Schema.String),
-      encryptionStatus: Schema.optional(Schema.String),
-      devicePasswordStatus: Schema.optional(Schema.String),
-      os: Schema.optional(Schema.String),
-      developerOptionsStatus: Schema.optional(Schema.Boolean),
-      manufacturer: Schema.optional(Schema.String),
-      otherAccountsInfo: Schema.optional(Schema.Array(Schema.String)),
-      releaseVersion: Schema.optional(Schema.String),
-      userAgent: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      unknownSourcesStatus: Schema.optional(Schema.Boolean),
-      hardwareId: Schema.optional(Schema.String),
-      deviceId: Schema.optional(Schema.String),
-      resourceId: Schema.optional(Schema.String),
-      basebandVersion: Schema.optional(Schema.String),
-      brand: Schema.optional(Schema.String),
-      firstSync: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      lastSync: Schema.optional(Schema.String),
-      bootloaderVersion: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      wifiMacAddress: Schema.optional(Schema.String),
-      networkOperator: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MobileDevice",
-  }) as any as Schema.Schema<MobileDevice>;
+export const MobileDevice = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  status: Schema.optional(Schema.String),
+  kernelVersion: Schema.optional(Schema.String),
+  adbStatus: Schema.optional(Schema.Boolean),
+  securityPatchLevel: Schema.optional(Schema.String),
+  serialNumber: Schema.optional(Schema.String),
+  meid: Schema.optional(Schema.String),
+  email: Schema.optional(Schema.Array(Schema.String)),
+  privilege: Schema.optional(Schema.String),
+  supportsWorkProfile: Schema.optional(Schema.Boolean),
+  defaultLanguage: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.Array(Schema.String)),
+  managedAccountIsOnOwnerProfile: Schema.optional(Schema.Boolean),
+  applications: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        versionName: Schema.optional(Schema.String),
+        permission: Schema.optional(Schema.Array(Schema.String)),
+        versionCode: Schema.optional(Schema.Number),
+        displayName: Schema.optional(Schema.String),
+        packageName: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
+  model: Schema.optional(Schema.String),
+  deviceCompromisedStatus: Schema.optional(Schema.String),
+  buildNumber: Schema.optional(Schema.String),
+  imei: Schema.optional(Schema.String),
+  hardware: Schema.optional(Schema.String),
+  encryptionStatus: Schema.optional(Schema.String),
+  devicePasswordStatus: Schema.optional(Schema.String),
+  os: Schema.optional(Schema.String),
+  developerOptionsStatus: Schema.optional(Schema.Boolean),
+  manufacturer: Schema.optional(Schema.String),
+  otherAccountsInfo: Schema.optional(Schema.Array(Schema.String)),
+  releaseVersion: Schema.optional(Schema.String),
+  userAgent: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  unknownSourcesStatus: Schema.optional(Schema.Boolean),
+  hardwareId: Schema.optional(Schema.String),
+  deviceId: Schema.optional(Schema.String),
+  resourceId: Schema.optional(Schema.String),
+  basebandVersion: Schema.optional(Schema.String),
+  brand: Schema.optional(Schema.String),
+  firstSync: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  lastSync: Schema.optional(Schema.String),
+  bootloaderVersion: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  wifiMacAddress: Schema.optional(Schema.String),
+  networkOperator: Schema.optional(Schema.String),
+}).annotate({ identifier: "MobileDevice" });
 
 export interface MobileDevices {
   /** Kind of resource this is. */
@@ -2508,17 +2157,12 @@ export interface MobileDevices {
   nextPageToken?: string;
 }
 
-export const MobileDevices: Schema.Schema<MobileDevices> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      mobiledevices: Schema.optional(Schema.Array(MobileDevice)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MobileDevices",
-  }) as any as Schema.Schema<MobileDevices>;
+export const MobileDevices = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  mobiledevices: Schema.optional(Schema.Array(MobileDevice)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "MobileDevices" });
 
 export interface BacklightInfo {
   /** Output only. Path to this backlight on the system. Useful if the caller needs to correlate with other information. */
@@ -2529,16 +2173,11 @@ export interface BacklightInfo {
   maxBrightness?: number;
 }
 
-export const BacklightInfo: Schema.Schema<BacklightInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      path: Schema.optional(Schema.String),
-      brightness: Schema.optional(Schema.Number),
-      maxBrightness: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "BacklightInfo",
-  }) as any as Schema.Schema<BacklightInfo>;
+export const BacklightInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  path: Schema.optional(Schema.String),
+  brightness: Schema.optional(Schema.Number),
+  maxBrightness: Schema.optional(Schema.Number),
+}).annotate({ identifier: "BacklightInfo" });
 
 export interface Groups {
   /** Kind of resource this is. */
@@ -2551,15 +2190,12 @@ export interface Groups {
   nextPageToken?: string;
 }
 
-export const Groups: Schema.Schema<Groups> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      groups: Schema.optional(Schema.Array(Group)),
-      etag: Schema.optional(Schema.String),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Groups" }) as any as Schema.Schema<Groups>;
+export const Groups = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  groups: Schema.optional(Schema.Array(Group)),
+  etag: Schema.optional(Schema.String),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "Groups" });
 
 export interface ChromeOsDevice {
   /** The unique ID of the organizational unit. orgUnitPath is the human readable version of orgUnitId. While orgUnitPath may change by renaming an organizational unit within the path, orgUnitId is unchangeable for one organizational unit. This property can be [updated](https://developers.google.com/workspace/admin/directory/v1/guides/manage-chrome-devices#move_chrome_devices_to_ou) using the API. For more information about how to create an organizational structure for your device, see the [administration help center](https://support.google.com/a/answer/182433). */
@@ -2744,178 +2380,173 @@ export interface ChromeOsDevice {
   supportEndDate?: string;
 }
 
-export const ChromeOsDevice: Schema.Schema<ChromeOsDevice> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const ChromeOsDevice = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  orgUnitId: Schema.optional(Schema.String),
+  lastDeprovisionTimestamp: Schema.optional(Schema.String),
+  autoUpdateThrough: Schema.optional(Schema.String),
+  diskSpaceUsage: Schema.optional(ByteUsage),
+  cpuInfo: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        model: Schema.optional(Schema.String),
+        logicalCpus: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              maxScalingFrequencyKhz: Schema.optional(Schema.Number),
+              currentScalingFrequencyKhz: Schema.optional(Schema.Number),
+              cStates: Schema.optional(
+                Schema.Array(
+                  Schema.Struct({
+                    displayName: Schema.optional(Schema.String),
+                    sessionDuration: Schema.optional(Schema.String),
+                  }),
+                ),
+              ),
+              idleDuration: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+        maxClockSpeedKhz: Schema.optional(Schema.Number),
+        architecture: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
+  extendedSupportStart: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.String),
+  orderNumber: Schema.optional(Schema.String),
+  ethernetMacAddress: Schema.optional(Schema.String),
+  annotatedAssetId: Schema.optional(Schema.String),
+  deviceLicenseType: Schema.optional(Schema.String),
+  annotatedLocation: Schema.optional(Schema.String),
+  meid: Schema.optional(Schema.String),
+  bootMode: Schema.optional(Schema.String),
+  fanInfo: Schema.optional(Schema.Array(FanInfo)),
+  deviceFiles: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        downloadUrl: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        createTime: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
+  lastEnrollmentTime: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  chromeOsType: Schema.optional(Schema.String),
+  activeTimeRanges: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        activeTime: Schema.optional(Schema.Number),
+        date: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
+  systemRamFreeReports: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        systemRamFreeInfo: Schema.optional(Schema.Array(Schema.String)),
+        reportTime: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
+  lastKnownNetwork: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        ipAddress: Schema.optional(Schema.String),
+        wanIpAddress: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
+  annotatedUser: Schema.optional(Schema.String),
+  macAddress: Schema.optional(Schema.String),
+  model: Schema.optional(Schema.String),
+  osVersionCompliance: Schema.optional(Schema.String),
+  osVersion: Schema.optional(Schema.String),
+  extendedSupportEnabled: Schema.optional(Schema.Boolean),
+  firmwareVersion: Schema.optional(Schema.String),
+  diskVolumeReports: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        volumeInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              volumeId: Schema.optional(Schema.String),
+              storageTotal: Schema.optional(Schema.String),
+              storageFree: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+  ),
+  backlightInfo: Schema.optional(Schema.Array(BacklightInfo)),
+  tpmVersionInfo: Schema.optional(
     Schema.Struct({
-      orgUnitId: Schema.optional(Schema.String),
-      lastDeprovisionTimestamp: Schema.optional(Schema.String),
-      autoUpdateThrough: Schema.optional(Schema.String),
-      diskSpaceUsage: Schema.optional(ByteUsage),
-      cpuInfo: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            model: Schema.optional(Schema.String),
-            logicalCpus: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  maxScalingFrequencyKhz: Schema.optional(Schema.Number),
-                  currentScalingFrequencyKhz: Schema.optional(Schema.Number),
-                  cStates: Schema.optional(
-                    Schema.Array(
-                      Schema.Struct({
-                        displayName: Schema.optional(Schema.String),
-                        sessionDuration: Schema.optional(Schema.String),
-                      }),
-                    ),
-                  ),
-                  idleDuration: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            maxClockSpeedKhz: Schema.optional(Schema.Number),
-            architecture: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      extendedSupportStart: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-      orderNumber: Schema.optional(Schema.String),
-      ethernetMacAddress: Schema.optional(Schema.String),
-      annotatedAssetId: Schema.optional(Schema.String),
-      deviceLicenseType: Schema.optional(Schema.String),
-      annotatedLocation: Schema.optional(Schema.String),
-      meid: Schema.optional(Schema.String),
-      bootMode: Schema.optional(Schema.String),
-      fanInfo: Schema.optional(Schema.Array(FanInfo)),
-      deviceFiles: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            downloadUrl: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-            createTime: Schema.optional(Schema.String),
-            type: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      lastEnrollmentTime: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      chromeOsType: Schema.optional(Schema.String),
-      activeTimeRanges: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            activeTime: Schema.optional(Schema.Number),
-            date: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      systemRamFreeReports: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            systemRamFreeInfo: Schema.optional(Schema.Array(Schema.String)),
-            reportTime: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      lastKnownNetwork: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            ipAddress: Schema.optional(Schema.String),
-            wanIpAddress: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      annotatedUser: Schema.optional(Schema.String),
-      macAddress: Schema.optional(Schema.String),
-      model: Schema.optional(Schema.String),
-      osVersionCompliance: Schema.optional(Schema.String),
-      osVersion: Schema.optional(Schema.String),
-      extendedSupportEnabled: Schema.optional(Schema.Boolean),
+      specLevel: Schema.optional(Schema.String),
+      vendorSpecific: Schema.optional(Schema.String),
       firmwareVersion: Schema.optional(Schema.String),
-      diskVolumeReports: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            volumeInfo: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  volumeId: Schema.optional(Schema.String),
-                  storageTotal: Schema.optional(Schema.String),
-                  storageFree: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-      ),
-      backlightInfo: Schema.optional(Schema.Array(BacklightInfo)),
-      tpmVersionInfo: Schema.optional(
-        Schema.Struct({
-          specLevel: Schema.optional(Schema.String),
-          vendorSpecific: Schema.optional(Schema.String),
-          firmwareVersion: Schema.optional(Schema.String),
-          family: Schema.optional(Schema.String),
-          tpmModel: Schema.optional(Schema.String),
-          manufacturer: Schema.optional(Schema.String),
-        }),
-      ),
-      ethernetMacAddress0: Schema.optional(Schema.String),
-      orgUnitPath: Schema.optional(Schema.String),
-      serialNumber: Schema.optional(Schema.String),
-      dockMacAddress: Schema.optional(Schema.String),
-      willAutoRenew: Schema.optional(Schema.Boolean),
-      manufactureDate: Schema.optional(Schema.String),
-      bluetoothAdapterInfo: Schema.optional(Schema.Array(BluetoothAdapterInfo)),
-      notes: Schema.optional(Schema.String),
-      lastSync: Schema.optional(Schema.String),
-      screenshotFiles: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            downloadUrl: Schema.optional(Schema.String),
-            type: Schema.optional(Schema.String),
-            name: Schema.optional(Schema.String),
-            createTime: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      etag: Schema.optional(Schema.String),
-      osUpdateStatus: Schema.optional(OsUpdateStatus),
-      extendedSupportEligible: Schema.optional(Schema.Boolean),
-      cpuStatusReports: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            reportTime: Schema.optional(Schema.String),
-            cpuUtilizationPercentageInfo: Schema.optional(
-              Schema.Array(Schema.Number),
-            ),
-            cpuTemperatureInfo: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  temperature: Schema.optional(Schema.Number),
-                  label: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
-        ),
-      ),
-      autoUpdateExpiration: Schema.optional(Schema.String),
-      deprovisionReason: Schema.optional(Schema.String),
-      platformVersion: Schema.optional(Schema.String),
-      recentUsers: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            email: Schema.optional(Schema.String),
-            type: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      firstEnrollmentTime: Schema.optional(Schema.String),
-      deviceId: Schema.optional(Schema.String),
-      systemRamTotal: Schema.optional(Schema.String),
-      supportEndDate: Schema.optional(Schema.String),
+      family: Schema.optional(Schema.String),
+      tpmModel: Schema.optional(Schema.String),
+      manufacturer: Schema.optional(Schema.String),
     }),
-  ).annotate({
-    identifier: "ChromeOsDevice",
-  }) as any as Schema.Schema<ChromeOsDevice>;
+  ),
+  ethernetMacAddress0: Schema.optional(Schema.String),
+  orgUnitPath: Schema.optional(Schema.String),
+  serialNumber: Schema.optional(Schema.String),
+  dockMacAddress: Schema.optional(Schema.String),
+  willAutoRenew: Schema.optional(Schema.Boolean),
+  manufactureDate: Schema.optional(Schema.String),
+  bluetoothAdapterInfo: Schema.optional(Schema.Array(BluetoothAdapterInfo)),
+  notes: Schema.optional(Schema.String),
+  lastSync: Schema.optional(Schema.String),
+  screenshotFiles: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        downloadUrl: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+        name: Schema.optional(Schema.String),
+        createTime: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
+  etag: Schema.optional(Schema.String),
+  osUpdateStatus: Schema.optional(OsUpdateStatus),
+  extendedSupportEligible: Schema.optional(Schema.Boolean),
+  cpuStatusReports: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        reportTime: Schema.optional(Schema.String),
+        cpuUtilizationPercentageInfo: Schema.optional(
+          Schema.Array(Schema.Number),
+        ),
+        cpuTemperatureInfo: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              temperature: Schema.optional(Schema.Number),
+              label: Schema.optional(Schema.String),
+            }),
+          ),
+        ),
+      }),
+    ),
+  ),
+  autoUpdateExpiration: Schema.optional(Schema.String),
+  deprovisionReason: Schema.optional(Schema.String),
+  platformVersion: Schema.optional(Schema.String),
+  recentUsers: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        email: Schema.optional(Schema.String),
+        type: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
+  firstEnrollmentTime: Schema.optional(Schema.String),
+  deviceId: Schema.optional(Schema.String),
+  systemRamTotal: Schema.optional(Schema.String),
+  supportEndDate: Schema.optional(Schema.String),
+}).annotate({ identifier: "ChromeOsDevice" });
 
 export interface CreatePrinterRequest {
   /** Required. The name of the customer. Format: customers/{customer_id} */
@@ -2924,15 +2555,10 @@ export interface CreatePrinterRequest {
   printer?: Printer;
 }
 
-export const CreatePrinterRequest: Schema.Schema<CreatePrinterRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parent: Schema.optional(Schema.String),
-      printer: Schema.optional(Printer),
-    }),
-  ).annotate({
-    identifier: "CreatePrinterRequest",
-  }) as any as Schema.Schema<CreatePrinterRequest>;
+export const CreatePrinterRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  parent: Schema.optional(Schema.String),
+  printer: Schema.optional(Printer),
+}).annotate({ identifier: "CreatePrinterRequest" });
 
 export interface ListPrintersResponse {
   /** List of printers. If `org_unit_id` was given in the request, then only printers visible for this OU will be returned. If `org_unit_id` was not given in the request, then all printers will be returned. */
@@ -2941,15 +2567,10 @@ export interface ListPrintersResponse {
   nextPageToken?: string;
 }
 
-export const ListPrintersResponse: Schema.Schema<ListPrintersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      printers: Schema.optional(Schema.Array(Printer)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListPrintersResponse",
-  }) as any as Schema.Schema<ListPrintersResponse>;
+export const ListPrintersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  printers: Schema.optional(Schema.Array(Printer)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListPrintersResponse" });
 
 export interface Customer {
   /** Identifies the resource as a customer. Value: `admin#directory#customer` */
@@ -2972,34 +2593,27 @@ export interface Customer {
   alternateEmail?: string;
 }
 
-export const Customer: Schema.Schema<Customer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      customerDomain: Schema.optional(Schema.String),
-      postalAddress: Schema.optional(CustomerPostalAddress),
-      phoneNumber: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      customerCreationTime: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      language: Schema.optional(Schema.String),
-      alternateEmail: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Customer" }) as any as Schema.Schema<Customer>;
+export const Customer = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  customerDomain: Schema.optional(Schema.String),
+  postalAddress: Schema.optional(CustomerPostalAddress),
+  phoneNumber: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  customerCreationTime: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  language: Schema.optional(Schema.String),
+  alternateEmail: Schema.optional(Schema.String),
+}).annotate({ identifier: "Customer" });
 
 export interface BatchCreatePrintersRequest {
   /** A list of Printers to be created. Max 50 at a time. */
   requests?: Array<CreatePrinterRequest>;
 }
 
-export const BatchCreatePrintersRequest: Schema.Schema<BatchCreatePrintersRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requests: Schema.optional(Schema.Array(CreatePrinterRequest)),
-    }),
-  ).annotate({
-    identifier: "BatchCreatePrintersRequest",
-  }) as any as Schema.Schema<BatchCreatePrintersRequest>;
+export const BatchCreatePrintersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requests: Schema.optional(Schema.Array(CreatePrinterRequest)),
+  }).annotate({ identifier: "BatchCreatePrintersRequest" });
 
 export interface BatchCreatePrintersResponse {
   /** A list of successfully created printers with their IDs populated. */
@@ -3008,15 +2622,11 @@ export interface BatchCreatePrintersResponse {
   failures?: Array<FailureInfo>;
 }
 
-export const BatchCreatePrintersResponse: Schema.Schema<BatchCreatePrintersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      printers: Schema.optional(Schema.Array(Printer)),
-      failures: Schema.optional(Schema.Array(FailureInfo)),
-    }),
-  ).annotate({
-    identifier: "BatchCreatePrintersResponse",
-  }) as any as Schema.Schema<BatchCreatePrintersResponse>;
+export const BatchCreatePrintersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    printers: Schema.optional(Schema.Array(Printer)),
+    failures: Schema.optional(Schema.Array(FailureInfo)),
+  }).annotate({ identifier: "BatchCreatePrintersResponse" });
 
 export interface UserLanguage {
   /** Other language. User can provide their own language name if there is no corresponding ISO 639 language code. If this is set, `languageCode` can't be set. */
@@ -3027,16 +2637,11 @@ export interface UserLanguage {
   preference?: string;
 }
 
-export const UserLanguage: Schema.Schema<UserLanguage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customLanguage: Schema.optional(Schema.String),
-      languageCode: Schema.optional(Schema.String),
-      preference: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UserLanguage",
-  }) as any as Schema.Schema<UserLanguage>;
+export const UserLanguage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  customLanguage: Schema.optional(Schema.String),
+  languageCode: Schema.optional(Schema.String),
+  preference: Schema.optional(Schema.String),
+}).annotate({ identifier: "UserLanguage" });
 
 export interface UserLocation {
   /** Textual location. This is most useful for display purposes to concisely describe the location. For example 'Mountain View, CA', 'Near Seattle', 'US-NYC-9TH 9A209A.'' */
@@ -3055,20 +2660,15 @@ export interface UserLocation {
   floorSection?: string;
 }
 
-export const UserLocation: Schema.Schema<UserLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      area: Schema.optional(Schema.String),
-      customType: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      floorName: Schema.optional(Schema.String),
-      buildingId: Schema.optional(Schema.String),
-      deskCode: Schema.optional(Schema.String),
-      floorSection: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UserLocation",
-  }) as any as Schema.Schema<UserLocation>;
+export const UserLocation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  area: Schema.optional(Schema.String),
+  customType: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  floorName: Schema.optional(Schema.String),
+  buildingId: Schema.optional(Schema.String),
+  deskCode: Schema.optional(Schema.String),
+  floorSection: Schema.optional(Schema.String),
+}).annotate({ identifier: "UserLocation" });
 
 export interface UserRelation {
   /** Custom Type. */
@@ -3079,30 +2679,20 @@ export interface UserRelation {
   value?: string;
 }
 
-export const UserRelation: Schema.Schema<UserRelation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customType: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UserRelation",
-  }) as any as Schema.Schema<UserRelation>;
+export const UserRelation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  customType: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+}).annotate({ identifier: "UserRelation" });
 
 export interface FeatureRename {
   /** New name of the feature. */
   newName?: string;
 }
 
-export const FeatureRename: Schema.Schema<FeatureRename> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      newName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FeatureRename",
-  }) as any as Schema.Schema<FeatureRename>;
+export const FeatureRename = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  newName: Schema.optional(Schema.String),
+}).annotate({ identifier: "FeatureRename" });
 
 export interface ChromeOsDevices {
   /** Kind of resource this is. */
@@ -3115,17 +2705,12 @@ export interface ChromeOsDevices {
   nextPageToken?: string;
 }
 
-export const ChromeOsDevices: Schema.Schema<ChromeOsDevices> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      chromeosdevices: Schema.optional(Schema.Array(ChromeOsDevice)),
-      etag: Schema.optional(Schema.String),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ChromeOsDevices",
-  }) as any as Schema.Schema<ChromeOsDevices>;
+export const ChromeOsDevices = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  chromeosdevices: Schema.optional(Schema.Array(ChromeOsDevice)),
+  etag: Schema.optional(Schema.String),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ChromeOsDevices" });
 
 export interface UserPhoto {
   /** The user's primary email address. */
@@ -3146,19 +2731,16 @@ export interface UserPhoto {
   etag?: string;
 }
 
-export const UserPhoto: Schema.Schema<UserPhoto> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      primaryEmail: Schema.optional(Schema.String),
-      mimeType: Schema.optional(Schema.String),
-      height: Schema.optional(Schema.Number),
-      id: Schema.optional(Schema.String),
-      width: Schema.optional(Schema.Number),
-      photoData: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "UserPhoto" }) as any as Schema.Schema<UserPhoto>;
+export const UserPhoto = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  primaryEmail: Schema.optional(Schema.String),
+  mimeType: Schema.optional(Schema.String),
+  height: Schema.optional(Schema.Number),
+  id: Schema.optional(Schema.String),
+  width: Schema.optional(Schema.Number),
+  photoData: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "UserPhoto" });
 
 export interface BatchDeletePrintServersResponse {
   /** A list of print server IDs that were successfully deleted. */
@@ -3167,15 +2749,11 @@ export interface BatchDeletePrintServersResponse {
   failedPrintServers?: Array<PrintServerFailureInfo>;
 }
 
-export const BatchDeletePrintServersResponse: Schema.Schema<BatchDeletePrintServersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      printServerIds: Schema.optional(Schema.Array(Schema.String)),
-      failedPrintServers: Schema.optional(Schema.Array(PrintServerFailureInfo)),
-    }),
-  ).annotate({
-    identifier: "BatchDeletePrintServersResponse",
-  }) as any as Schema.Schema<BatchDeletePrintServersResponse>;
+export const BatchDeletePrintServersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    printServerIds: Schema.optional(Schema.Array(Schema.String)),
+    failedPrintServers: Schema.optional(Schema.Array(PrintServerFailureInfo)),
+  }).annotate({ identifier: "BatchDeletePrintServersResponse" });
 
 export interface Domains2 {
   /** Kind of resource this is. */
@@ -3186,14 +2764,11 @@ export interface Domains2 {
   domains?: Array<Domains>;
 }
 
-export const Domains2: Schema.Schema<Domains2> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      domains: Schema.optional(Schema.Array(Domains)),
-    }),
-  ).annotate({ identifier: "Domains2" }) as any as Schema.Schema<Domains2>;
+export const Domains2 = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  domains: Schema.optional(Schema.Array(Domains)),
+}).annotate({ identifier: "Domains2" });
 
 // ==========================================================================
 // Operations

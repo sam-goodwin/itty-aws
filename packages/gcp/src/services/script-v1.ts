@@ -33,17 +33,12 @@ export interface DeploymentConfig {
   description?: string;
 }
 
-export const DeploymentConfig: Schema.Schema<DeploymentConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scriptId: Schema.optional(Schema.String),
-      versionNumber: Schema.optional(Schema.Number),
-      manifestFileName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DeploymentConfig",
-  }) as any as Schema.Schema<DeploymentConfig>;
+export const DeploymentConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  scriptId: Schema.optional(Schema.String),
+  versionNumber: Schema.optional(Schema.Number),
+  manifestFileName: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "DeploymentConfig" });
 
 export interface GoogleAppsScriptTypeWebAppConfig {
   /** Who has permission to run the web app. */
@@ -62,15 +57,11 @@ export interface GoogleAppsScriptTypeWebAppConfig {
     | (string & {});
 }
 
-export const GoogleAppsScriptTypeWebAppConfig: Schema.Schema<GoogleAppsScriptTypeWebAppConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      access: Schema.optional(Schema.String),
-      executeAs: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAppsScriptTypeWebAppConfig",
-  }) as any as Schema.Schema<GoogleAppsScriptTypeWebAppConfig>;
+export const GoogleAppsScriptTypeWebAppConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    access: Schema.optional(Schema.String),
+    executeAs: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleAppsScriptTypeWebAppConfig" });
 
 export interface GoogleAppsScriptTypeWebAppEntryPoint {
   /** The URL for the web application. */
@@ -79,15 +70,11 @@ export interface GoogleAppsScriptTypeWebAppEntryPoint {
   entryPointConfig?: GoogleAppsScriptTypeWebAppConfig;
 }
 
-export const GoogleAppsScriptTypeWebAppEntryPoint: Schema.Schema<GoogleAppsScriptTypeWebAppEntryPoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      url: Schema.optional(Schema.String),
-      entryPointConfig: Schema.optional(GoogleAppsScriptTypeWebAppConfig),
-    }),
-  ).annotate({
-    identifier: "GoogleAppsScriptTypeWebAppEntryPoint",
-  }) as any as Schema.Schema<GoogleAppsScriptTypeWebAppEntryPoint>;
+export const GoogleAppsScriptTypeWebAppEntryPoint =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    url: Schema.optional(Schema.String),
+    entryPointConfig: Schema.optional(GoogleAppsScriptTypeWebAppConfig),
+  }).annotate({ identifier: "GoogleAppsScriptTypeWebAppEntryPoint" });
 
 export interface GoogleAppsScriptTypeExecutionApiConfig {
   /** Who has permission to run the API executable. */
@@ -100,28 +87,20 @@ export interface GoogleAppsScriptTypeExecutionApiConfig {
     | (string & {});
 }
 
-export const GoogleAppsScriptTypeExecutionApiConfig: Schema.Schema<GoogleAppsScriptTypeExecutionApiConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      access: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAppsScriptTypeExecutionApiConfig",
-  }) as any as Schema.Schema<GoogleAppsScriptTypeExecutionApiConfig>;
+export const GoogleAppsScriptTypeExecutionApiConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    access: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleAppsScriptTypeExecutionApiConfig" });
 
 export interface GoogleAppsScriptTypeExecutionApiEntryPoint {
   /** The entry point's configuration. */
   entryPointConfig?: GoogleAppsScriptTypeExecutionApiConfig;
 }
 
-export const GoogleAppsScriptTypeExecutionApiEntryPoint: Schema.Schema<GoogleAppsScriptTypeExecutionApiEntryPoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entryPointConfig: Schema.optional(GoogleAppsScriptTypeExecutionApiConfig),
-    }),
-  ).annotate({
-    identifier: "GoogleAppsScriptTypeExecutionApiEntryPoint",
-  }) as any as Schema.Schema<GoogleAppsScriptTypeExecutionApiEntryPoint>;
+export const GoogleAppsScriptTypeExecutionApiEntryPoint =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entryPointConfig: Schema.optional(GoogleAppsScriptTypeExecutionApiConfig),
+  }).annotate({ identifier: "GoogleAppsScriptTypeExecutionApiEntryPoint" });
 
 export interface GoogleAppsScriptTypeAddOnEntryPoint {
   /** The add-on's required list of supported container types. */
@@ -138,19 +117,15 @@ export interface GoogleAppsScriptTypeAddOnEntryPoint {
   postInstallTipUrl?: string;
 }
 
-export const GoogleAppsScriptTypeAddOnEntryPoint: Schema.Schema<GoogleAppsScriptTypeAddOnEntryPoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      addOnType: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      helpUrl: Schema.optional(Schema.String),
-      reportIssueUrl: Schema.optional(Schema.String),
-      postInstallTipUrl: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAppsScriptTypeAddOnEntryPoint",
-  }) as any as Schema.Schema<GoogleAppsScriptTypeAddOnEntryPoint>;
+export const GoogleAppsScriptTypeAddOnEntryPoint =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    addOnType: Schema.optional(Schema.String),
+    title: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    helpUrl: Schema.optional(Schema.String),
+    reportIssueUrl: Schema.optional(Schema.String),
+    postInstallTipUrl: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleAppsScriptTypeAddOnEntryPoint" });
 
 export interface EntryPoint {
   /** The type of the entry point. */
@@ -168,15 +143,12 @@ export interface EntryPoint {
   addOn?: GoogleAppsScriptTypeAddOnEntryPoint;
 }
 
-export const EntryPoint: Schema.Schema<EntryPoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entryPointType: Schema.optional(Schema.String),
-      webApp: Schema.optional(GoogleAppsScriptTypeWebAppEntryPoint),
-      executionApi: Schema.optional(GoogleAppsScriptTypeExecutionApiEntryPoint),
-      addOn: Schema.optional(GoogleAppsScriptTypeAddOnEntryPoint),
-    }),
-  ).annotate({ identifier: "EntryPoint" }) as any as Schema.Schema<EntryPoint>;
+export const EntryPoint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  entryPointType: Schema.optional(Schema.String),
+  webApp: Schema.optional(GoogleAppsScriptTypeWebAppEntryPoint),
+  executionApi: Schema.optional(GoogleAppsScriptTypeExecutionApiEntryPoint),
+  addOn: Schema.optional(GoogleAppsScriptTypeAddOnEntryPoint),
+}).annotate({ identifier: "EntryPoint" });
 
 export interface Deployment {
   /** The deployment ID for this deployment. */
@@ -189,36 +161,28 @@ export interface Deployment {
   entryPoints?: Array<EntryPoint>;
 }
 
-export const Deployment: Schema.Schema<Deployment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deploymentId: Schema.optional(Schema.String),
-      deploymentConfig: Schema.optional(DeploymentConfig),
-      updateTime: Schema.optional(Schema.String),
-      entryPoints: Schema.optional(Schema.Array(EntryPoint)),
-    }),
-  ).annotate({ identifier: "Deployment" }) as any as Schema.Schema<Deployment>;
+export const Deployment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  deploymentId: Schema.optional(Schema.String),
+  deploymentConfig: Schema.optional(DeploymentConfig),
+  updateTime: Schema.optional(Schema.String),
+  entryPoints: Schema.optional(Schema.Array(EntryPoint)),
+}).annotate({ identifier: "Deployment" });
 
 export interface UpdateDeploymentRequest {
   /** The deployment configuration. */
   deploymentConfig?: DeploymentConfig;
 }
 
-export const UpdateDeploymentRequest: Schema.Schema<UpdateDeploymentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deploymentConfig: Schema.optional(DeploymentConfig),
-    }),
-  ).annotate({
-    identifier: "UpdateDeploymentRequest",
-  }) as any as Schema.Schema<UpdateDeploymentRequest>;
+export const UpdateDeploymentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deploymentConfig: Schema.optional(DeploymentConfig),
+  }).annotate({ identifier: "UpdateDeploymentRequest" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface ListDeploymentsResponse {
   /** The list of deployments. */
@@ -227,15 +191,11 @@ export interface ListDeploymentsResponse {
   nextPageToken?: string;
 }
 
-export const ListDeploymentsResponse: Schema.Schema<ListDeploymentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deployments: Schema.optional(Schema.Array(Deployment)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListDeploymentsResponse",
-  }) as any as Schema.Schema<ListDeploymentsResponse>;
+export const ListDeploymentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deployments: Schema.optional(Schema.Array(Deployment)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListDeploymentsResponse" });
 
 export interface MetricsValue {
   /** Indicates the number of executions counted. */
@@ -246,16 +206,11 @@ export interface MetricsValue {
   endTime?: string;
 }
 
-export const MetricsValue: Schema.Schema<MetricsValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MetricsValue",
-  }) as any as Schema.Schema<MetricsValue>;
+export const MetricsValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "MetricsValue" });
 
 export interface Metrics {
   /** Number of active users. */
@@ -266,14 +221,11 @@ export interface Metrics {
   failedExecutions?: Array<MetricsValue>;
 }
 
-export const Metrics: Schema.Schema<Metrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      activeUsers: Schema.optional(Schema.Array(MetricsValue)),
-      totalExecutions: Schema.optional(Schema.Array(MetricsValue)),
-      failedExecutions: Schema.optional(Schema.Array(MetricsValue)),
-    }),
-  ).annotate({ identifier: "Metrics" }) as any as Schema.Schema<Metrics>;
+export const Metrics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  activeUsers: Schema.optional(Schema.Array(MetricsValue)),
+  totalExecutions: Schema.optional(Schema.Array(MetricsValue)),
+  failedExecutions: Schema.optional(Schema.Array(MetricsValue)),
+}).annotate({ identifier: "Metrics" });
 
 export interface GoogleAppsScriptTypeProcess {
   /** Name of the script being executed. */
@@ -326,21 +278,17 @@ export interface GoogleAppsScriptTypeProcess {
     | (string & {});
 }
 
-export const GoogleAppsScriptTypeProcess: Schema.Schema<GoogleAppsScriptTypeProcess> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      projectName: Schema.optional(Schema.String),
-      functionName: Schema.optional(Schema.String),
-      processType: Schema.optional(Schema.String),
-      processStatus: Schema.optional(Schema.String),
-      userAccessLevel: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      duration: Schema.optional(Schema.String),
-      runtimeVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAppsScriptTypeProcess",
-  }) as any as Schema.Schema<GoogleAppsScriptTypeProcess>;
+export const GoogleAppsScriptTypeProcess =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    projectName: Schema.optional(Schema.String),
+    functionName: Schema.optional(Schema.String),
+    processType: Schema.optional(Schema.String),
+    processStatus: Schema.optional(Schema.String),
+    userAccessLevel: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    duration: Schema.optional(Schema.String),
+    runtimeVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleAppsScriptTypeProcess" });
 
 export interface ListScriptProcessesResponse {
   /** List of processes matching request parameters. */
@@ -349,15 +297,11 @@ export interface ListScriptProcessesResponse {
   nextPageToken?: string;
 }
 
-export const ListScriptProcessesResponse: Schema.Schema<ListScriptProcessesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      processes: Schema.optional(Schema.Array(GoogleAppsScriptTypeProcess)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListScriptProcessesResponse",
-  }) as any as Schema.Schema<ListScriptProcessesResponse>;
+export const ListScriptProcessesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    processes: Schema.optional(Schema.Array(GoogleAppsScriptTypeProcess)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListScriptProcessesResponse" });
 
 export interface ListUserProcessesResponse {
   /** List of processes matching request parameters. */
@@ -366,15 +310,11 @@ export interface ListUserProcessesResponse {
   nextPageToken?: string;
 }
 
-export const ListUserProcessesResponse: Schema.Schema<ListUserProcessesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      processes: Schema.optional(Schema.Array(GoogleAppsScriptTypeProcess)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListUserProcessesResponse",
-  }) as any as Schema.Schema<ListUserProcessesResponse>;
+export const ListUserProcessesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    processes: Schema.optional(Schema.Array(GoogleAppsScriptTypeProcess)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListUserProcessesResponse" });
 
 export interface CreateProjectRequest {
   /** The title for the project. */
@@ -383,15 +323,10 @@ export interface CreateProjectRequest {
   parentId?: string;
 }
 
-export const CreateProjectRequest: Schema.Schema<CreateProjectRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-      parentId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreateProjectRequest",
-  }) as any as Schema.Schema<CreateProjectRequest>;
+export const CreateProjectRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  title: Schema.optional(Schema.String),
+  parentId: Schema.optional(Schema.String),
+}).annotate({ identifier: "CreateProjectRequest" });
 
 export interface GoogleAppsScriptTypeUser {
   /** The user's domain. */
@@ -404,17 +339,13 @@ export interface GoogleAppsScriptTypeUser {
   photoUrl?: string;
 }
 
-export const GoogleAppsScriptTypeUser: Schema.Schema<GoogleAppsScriptTypeUser> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      domain: Schema.optional(Schema.String),
-      email: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      photoUrl: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAppsScriptTypeUser",
-  }) as any as Schema.Schema<GoogleAppsScriptTypeUser>;
+export const GoogleAppsScriptTypeUser =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    domain: Schema.optional(Schema.String),
+    email: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    photoUrl: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleAppsScriptTypeUser" });
 
 export interface Project {
   /** The script project's Drive ID. */
@@ -433,18 +364,15 @@ export interface Project {
   lastModifyUser?: GoogleAppsScriptTypeUser;
 }
 
-export const Project: Schema.Schema<Project> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scriptId: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      parentId: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      creator: Schema.optional(GoogleAppsScriptTypeUser),
-      lastModifyUser: Schema.optional(GoogleAppsScriptTypeUser),
-    }),
-  ).annotate({ identifier: "Project" }) as any as Schema.Schema<Project>;
+export const Project = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  scriptId: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  parentId: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  creator: Schema.optional(GoogleAppsScriptTypeUser),
+  lastModifyUser: Schema.optional(GoogleAppsScriptTypeUser),
+}).annotate({ identifier: "Project" });
 
 export interface GoogleAppsScriptTypeFunction {
   /** The function name in the script project. */
@@ -453,29 +381,21 @@ export interface GoogleAppsScriptTypeFunction {
   parameters?: Array<string>;
 }
 
-export const GoogleAppsScriptTypeFunction: Schema.Schema<GoogleAppsScriptTypeFunction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      parameters: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleAppsScriptTypeFunction",
-  }) as any as Schema.Schema<GoogleAppsScriptTypeFunction>;
+export const GoogleAppsScriptTypeFunction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    parameters: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleAppsScriptTypeFunction" });
 
 export interface GoogleAppsScriptTypeFunctionSet {
   /** A list of functions composing the set. */
   values?: Array<GoogleAppsScriptTypeFunction>;
 }
 
-export const GoogleAppsScriptTypeFunctionSet: Schema.Schema<GoogleAppsScriptTypeFunctionSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      values: Schema.optional(Schema.Array(GoogleAppsScriptTypeFunction)),
-    }),
-  ).annotate({
-    identifier: "GoogleAppsScriptTypeFunctionSet",
-  }) as any as Schema.Schema<GoogleAppsScriptTypeFunctionSet>;
+export const GoogleAppsScriptTypeFunctionSet =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    values: Schema.optional(Schema.Array(GoogleAppsScriptTypeFunction)),
+  }).annotate({ identifier: "GoogleAppsScriptTypeFunctionSet" });
 
 export interface File {
   /** The name of the file. The file extension is not part of the file name, which can be identified from the type field. */
@@ -499,18 +419,15 @@ export interface File {
   functionSet?: GoogleAppsScriptTypeFunctionSet;
 }
 
-export const File: Schema.Schema<File> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      source: Schema.optional(Schema.String),
-      lastModifyUser: Schema.optional(GoogleAppsScriptTypeUser),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      functionSet: Schema.optional(GoogleAppsScriptTypeFunctionSet),
-    }),
-  ).annotate({ identifier: "File" }) as any as Schema.Schema<File>;
+export const File = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  source: Schema.optional(Schema.String),
+  lastModifyUser: Schema.optional(GoogleAppsScriptTypeUser),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  functionSet: Schema.optional(GoogleAppsScriptTypeFunctionSet),
+}).annotate({ identifier: "File" });
 
 export interface Content {
   /** The script project's Drive ID. */
@@ -519,13 +436,10 @@ export interface Content {
   files?: Array<File>;
 }
 
-export const Content: Schema.Schema<Content> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scriptId: Schema.optional(Schema.String),
-      files: Schema.optional(Schema.Array(File)),
-    }),
-  ).annotate({ identifier: "Content" }) as any as Schema.Schema<Content>;
+export const Content = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  scriptId: Schema.optional(Schema.String),
+  files: Schema.optional(Schema.Array(File)),
+}).annotate({ identifier: "Content" });
 
 export interface Version {
   /** The script project's Drive ID. */
@@ -538,15 +452,12 @@ export interface Version {
   createTime?: string;
 }
 
-export const Version: Schema.Schema<Version> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scriptId: Schema.optional(Schema.String),
-      versionNumber: Schema.optional(Schema.Number),
-      description: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Version" }) as any as Schema.Schema<Version>;
+export const Version = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  scriptId: Schema.optional(Schema.String),
+  versionNumber: Schema.optional(Schema.Number),
+  description: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Version" });
 
 export interface ListVersionsResponse {
   /** The list of versions. */
@@ -555,15 +466,10 @@ export interface ListVersionsResponse {
   nextPageToken?: string;
 }
 
-export const ListVersionsResponse: Schema.Schema<ListVersionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      versions: Schema.optional(Schema.Array(Version)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListVersionsResponse",
-  }) as any as Schema.Schema<ListVersionsResponse>;
+export const ListVersionsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  versions: Schema.optional(Schema.Array(Version)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListVersionsResponse" });
 
 export interface ExecutionRequest {
   /** The name of the function to execute in the given script. The name does not include parentheses or parameters. It can reference a function in an included library such as `Library.libFunction1`. */
@@ -576,17 +482,12 @@ export interface ExecutionRequest {
   devMode?: boolean;
 }
 
-export const ExecutionRequest: Schema.Schema<ExecutionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      function: Schema.optional(Schema.String),
-      parameters: Schema.optional(Schema.Array(Schema.Unknown)),
-      sessionState: Schema.optional(Schema.String),
-      devMode: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ExecutionRequest",
-  }) as any as Schema.Schema<ExecutionRequest>;
+export const ExecutionRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  function: Schema.optional(Schema.String),
+  parameters: Schema.optional(Schema.Array(Schema.Unknown)),
+  sessionState: Schema.optional(Schema.String),
+  devMode: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "ExecutionRequest" });
 
 export interface Status {
   /** The status code. For this API, this value either: - 10, indicating a `SCRIPT_TIMEOUT` error, - 3, indicating an `INVALID_ARGUMENT` error, or - 1, indicating a `CANCELLED` execution. */
@@ -597,16 +498,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** This field indicates whether the script execution has completed. A completed execution has a populated `response` field containing the ExecutionResponse from function that was executed. */
@@ -617,14 +515,11 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      done: Schema.optional(Schema.Boolean),
-      error: Schema.optional(Status),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  done: Schema.optional(Schema.Boolean),
+  error: Schema.optional(Status),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Operation" });
 
 export interface ScriptStackTraceElement {
   /** The name of the function that failed. */
@@ -633,15 +528,11 @@ export interface ScriptStackTraceElement {
   lineNumber?: number;
 }
 
-export const ScriptStackTraceElement: Schema.Schema<ScriptStackTraceElement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      function: Schema.optional(Schema.String),
-      lineNumber: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "ScriptStackTraceElement",
-  }) as any as Schema.Schema<ScriptStackTraceElement>;
+export const ScriptStackTraceElement =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    function: Schema.optional(Schema.String),
+    lineNumber: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "ScriptStackTraceElement" });
 
 export interface ExecutionError {
   /** An array of objects that provide a stack trace through the script to show where the execution failed, with the deepest call first. */
@@ -652,32 +543,22 @@ export interface ExecutionError {
   errorType?: string;
 }
 
-export const ExecutionError: Schema.Schema<ExecutionError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scriptStackTraceElements: Schema.optional(
-        Schema.Array(ScriptStackTraceElement),
-      ),
-      errorMessage: Schema.optional(Schema.String),
-      errorType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ExecutionError",
-  }) as any as Schema.Schema<ExecutionError>;
+export const ExecutionError = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  scriptStackTraceElements: Schema.optional(
+    Schema.Array(ScriptStackTraceElement),
+  ),
+  errorMessage: Schema.optional(Schema.String),
+  errorType: Schema.optional(Schema.String),
+}).annotate({ identifier: "ExecutionError" });
 
 export interface ExecutionResponse {
   /** The return value of the script function. The type matches the object type returned in Apps Script. Functions called using the Apps Script API cannot return Apps Script-specific objects (such as a `Document` or a `Calendar`); they can only return primitive types such as a `string`, `number`, `array`, `object`, or `boolean`. */
   result?: unknown;
 }
 
-export const ExecutionResponse: Schema.Schema<ExecutionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      result: Schema.optional(Schema.Unknown),
-    }),
-  ).annotate({
-    identifier: "ExecutionResponse",
-  }) as any as Schema.Schema<ExecutionResponse>;
+export const ExecutionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  result: Schema.optional(Schema.Unknown),
+}).annotate({ identifier: "ExecutionResponse" });
 
 // ==========================================================================
 // Operations

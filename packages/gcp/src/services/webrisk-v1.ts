@@ -31,18 +31,13 @@ export interface GoogleRpcStatus {
   details?: Array<Record<string, unknown>>;
 }
 
-export const GoogleRpcStatus: Schema.Schema<GoogleRpcStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleRpcStatus",
-  }) as any as Schema.Schema<GoogleRpcStatus>;
+export const GoogleRpcStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "GoogleRpcStatus" });
 
 export interface GoogleLongrunningOperation {
   /** The error result of the operation in case of failure or cancellation. */
@@ -57,18 +52,14 @@ export interface GoogleLongrunningOperation {
   name?: string;
 }
 
-export const GoogleLongrunningOperation: Schema.Schema<GoogleLongrunningOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      error: Schema.optional(GoogleRpcStatus),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleLongrunningOperation",
-  }) as any as Schema.Schema<GoogleLongrunningOperation>;
+export const GoogleLongrunningOperation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(GoogleRpcStatus),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    done: Schema.optional(Schema.Boolean),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleLongrunningOperation" });
 
 export interface GoogleLongrunningListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
@@ -79,16 +70,12 @@ export interface GoogleLongrunningListOperationsResponse {
   operations?: Array<GoogleLongrunningOperation>;
 }
 
-export const GoogleLongrunningListOperationsResponse: Schema.Schema<GoogleLongrunningListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-      operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
-    }),
-  ).annotate({
-    identifier: "GoogleLongrunningListOperationsResponse",
-  }) as any as Schema.Schema<GoogleLongrunningListOperationsResponse>;
+export const GoogleLongrunningListOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+    operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
+  }).annotate({ identifier: "GoogleLongrunningListOperationsResponse" });
 
 export interface GoogleCloudWebriskV1RawHashes {
   /** The hashes, in binary format, concatenated into one long string. Hashes are sorted in lexicographic order. For JSON API users, hashes are base64-encoded. */
@@ -97,15 +84,11 @@ export interface GoogleCloudWebriskV1RawHashes {
   prefixSize?: number;
 }
 
-export const GoogleCloudWebriskV1RawHashes: Schema.Schema<GoogleCloudWebriskV1RawHashes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rawHashes: Schema.optional(Schema.String),
-      prefixSize: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudWebriskV1RawHashes",
-  }) as any as Schema.Schema<GoogleCloudWebriskV1RawHashes>;
+export const GoogleCloudWebriskV1RawHashes =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rawHashes: Schema.optional(Schema.String),
+    prefixSize: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudWebriskV1RawHashes" });
 
 export interface GoogleCloudWebriskV1RiceDeltaEncoding {
   /** The offset of the first entry in the encoded data, or, if only a single integer was encoded, that single integer's value. If the field is empty or missing, assume zero. */
@@ -118,17 +101,13 @@ export interface GoogleCloudWebriskV1RiceDeltaEncoding {
   riceParameter?: number;
 }
 
-export const GoogleCloudWebriskV1RiceDeltaEncoding: Schema.Schema<GoogleCloudWebriskV1RiceDeltaEncoding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      firstValue: Schema.optional(Schema.String),
-      entryCount: Schema.optional(Schema.Number),
-      encodedData: Schema.optional(Schema.String),
-      riceParameter: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudWebriskV1RiceDeltaEncoding",
-  }) as any as Schema.Schema<GoogleCloudWebriskV1RiceDeltaEncoding>;
+export const GoogleCloudWebriskV1RiceDeltaEncoding =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    firstValue: Schema.optional(Schema.String),
+    entryCount: Schema.optional(Schema.Number),
+    encodedData: Schema.optional(Schema.String),
+    riceParameter: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudWebriskV1RiceDeltaEncoding" });
 
 export interface GoogleCloudWebriskV1ThreatEntryAdditions {
   /** The raw SHA256-formatted entries. Repeated to allow returning sets of hashes with different prefix sizes. */
@@ -137,36 +116,27 @@ export interface GoogleCloudWebriskV1ThreatEntryAdditions {
   riceHashes?: GoogleCloudWebriskV1RiceDeltaEncoding;
 }
 
-export const GoogleCloudWebriskV1ThreatEntryAdditions: Schema.Schema<GoogleCloudWebriskV1ThreatEntryAdditions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rawHashes: Schema.optional(Schema.Array(GoogleCloudWebriskV1RawHashes)),
-      riceHashes: Schema.optional(GoogleCloudWebriskV1RiceDeltaEncoding),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudWebriskV1ThreatEntryAdditions",
-  }) as any as Schema.Schema<GoogleCloudWebriskV1ThreatEntryAdditions>;
+export const GoogleCloudWebriskV1ThreatEntryAdditions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rawHashes: Schema.optional(Schema.Array(GoogleCloudWebriskV1RawHashes)),
+    riceHashes: Schema.optional(GoogleCloudWebriskV1RiceDeltaEncoding),
+  }).annotate({ identifier: "GoogleCloudWebriskV1ThreatEntryAdditions" });
 
 export interface GoogleProtobufEmpty {}
 
-export const GoogleProtobufEmpty: Schema.Schema<GoogleProtobufEmpty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "GoogleProtobufEmpty",
-  }) as any as Schema.Schema<GoogleProtobufEmpty>;
+export const GoogleProtobufEmpty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "GoogleProtobufEmpty" });
 
 export interface GoogleCloudWebriskV1RawIndices {
   /** The indices to remove from a lexicographically-sorted local list. */
   indices?: Array<number>;
 }
 
-export const GoogleCloudWebriskV1RawIndices: Schema.Schema<GoogleCloudWebriskV1RawIndices> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      indices: Schema.optional(Schema.Array(Schema.Number)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudWebriskV1RawIndices",
-  }) as any as Schema.Schema<GoogleCloudWebriskV1RawIndices>;
+export const GoogleCloudWebriskV1RawIndices =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    indices: Schema.optional(Schema.Array(Schema.Number)),
+  }).annotate({ identifier: "GoogleCloudWebriskV1RawIndices" });
 
 export interface GoogleCloudWebriskV1ThreatEntryRemovals {
   /** The raw removal indices for a local list. */
@@ -175,36 +145,28 @@ export interface GoogleCloudWebriskV1ThreatEntryRemovals {
   riceIndices?: GoogleCloudWebriskV1RiceDeltaEncoding;
 }
 
-export const GoogleCloudWebriskV1ThreatEntryRemovals: Schema.Schema<GoogleCloudWebriskV1ThreatEntryRemovals> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rawIndices: Schema.optional(GoogleCloudWebriskV1RawIndices),
-      riceIndices: Schema.optional(GoogleCloudWebriskV1RiceDeltaEncoding),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudWebriskV1ThreatEntryRemovals",
-  }) as any as Schema.Schema<GoogleCloudWebriskV1ThreatEntryRemovals>;
+export const GoogleCloudWebriskV1ThreatEntryRemovals =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rawIndices: Schema.optional(GoogleCloudWebriskV1RawIndices),
+    riceIndices: Schema.optional(GoogleCloudWebriskV1RiceDeltaEncoding),
+  }).annotate({ identifier: "GoogleCloudWebriskV1ThreatEntryRemovals" });
 
 export interface GoogleLongrunningCancelOperationRequest {}
 
-export const GoogleLongrunningCancelOperationRequest: Schema.Schema<GoogleLongrunningCancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleLongrunningCancelOperationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleLongrunningCancelOperationRequest",
-  }) as any as Schema.Schema<GoogleLongrunningCancelOperationRequest>;
+  });
 
 export interface GoogleCloudWebriskV1Submission {
   /** Required. The URI that is being reported for malicious content to be analyzed. */
   uri?: string;
 }
 
-export const GoogleCloudWebriskV1Submission: Schema.Schema<GoogleCloudWebriskV1Submission> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudWebriskV1Submission",
-  }) as any as Schema.Schema<GoogleCloudWebriskV1Submission>;
+export const GoogleCloudWebriskV1Submission =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudWebriskV1Submission" });
 
 export interface GoogleCloudWebriskV1SearchUrisResponseThreatUri {
   /** The cache lifetime for the returned match. Clients must not cache this response past this timestamp to avoid false positives. */
@@ -220,29 +182,23 @@ export interface GoogleCloudWebriskV1SearchUrisResponseThreatUri {
   >;
 }
 
-export const GoogleCloudWebriskV1SearchUrisResponseThreatUri: Schema.Schema<GoogleCloudWebriskV1SearchUrisResponseThreatUri> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expireTime: Schema.optional(Schema.String),
-      threatTypes: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudWebriskV1SearchUrisResponseThreatUri =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    expireTime: Schema.optional(Schema.String),
+    threatTypes: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudWebriskV1SearchUrisResponseThreatUri",
-  }) as any as Schema.Schema<GoogleCloudWebriskV1SearchUrisResponseThreatUri>;
+  });
 
 export interface GoogleCloudWebriskV1SearchUrisResponse {
   /** The threat list matches. This might be empty if the URI is on no list. */
   threat?: GoogleCloudWebriskV1SearchUrisResponseThreatUri;
 }
 
-export const GoogleCloudWebriskV1SearchUrisResponse: Schema.Schema<GoogleCloudWebriskV1SearchUrisResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      threat: Schema.optional(GoogleCloudWebriskV1SearchUrisResponseThreatUri),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudWebriskV1SearchUrisResponse",
-  }) as any as Schema.Schema<GoogleCloudWebriskV1SearchUrisResponse>;
+export const GoogleCloudWebriskV1SearchUrisResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    threat: Schema.optional(GoogleCloudWebriskV1SearchUrisResponseThreatUri),
+  }).annotate({ identifier: "GoogleCloudWebriskV1SearchUrisResponse" });
 
 export interface GoogleCloudWebriskV1SearchHashesResponseThreatHash {
   /** The cache lifetime for the returned match. Clients must not cache this response past this timestamp to avoid false positives. */
@@ -260,16 +216,14 @@ export interface GoogleCloudWebriskV1SearchHashesResponseThreatHash {
   hash?: string;
 }
 
-export const GoogleCloudWebriskV1SearchHashesResponseThreatHash: Schema.Schema<GoogleCloudWebriskV1SearchHashesResponseThreatHash> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expireTime: Schema.optional(Schema.String),
-      threatTypes: Schema.optional(Schema.Array(Schema.String)),
-      hash: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudWebriskV1SearchHashesResponseThreatHash =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    expireTime: Schema.optional(Schema.String),
+    threatTypes: Schema.optional(Schema.Array(Schema.String)),
+    hash: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudWebriskV1SearchHashesResponseThreatHash",
-  }) as any as Schema.Schema<GoogleCloudWebriskV1SearchHashesResponseThreatHash>;
+  });
 
 export interface GoogleCloudWebriskV1SearchHashesResponse {
   /** For requested entities that did not match the threat list, how long to cache the response until. */
@@ -278,31 +232,25 @@ export interface GoogleCloudWebriskV1SearchHashesResponse {
   threats?: Array<GoogleCloudWebriskV1SearchHashesResponseThreatHash>;
 }
 
-export const GoogleCloudWebriskV1SearchHashesResponse: Schema.Schema<GoogleCloudWebriskV1SearchHashesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      negativeExpireTime: Schema.optional(Schema.String),
-      threats: Schema.optional(
-        Schema.Array(GoogleCloudWebriskV1SearchHashesResponseThreatHash),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudWebriskV1SearchHashesResponse",
-  }) as any as Schema.Schema<GoogleCloudWebriskV1SearchHashesResponse>;
+export const GoogleCloudWebriskV1SearchHashesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    negativeExpireTime: Schema.optional(Schema.String),
+    threats: Schema.optional(
+      Schema.Array(GoogleCloudWebriskV1SearchHashesResponseThreatHash),
+    ),
+  }).annotate({ identifier: "GoogleCloudWebriskV1SearchHashesResponse" });
 
 export interface GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum {
   /** The SHA256 hash of the client state; that is, of the sorted list of all hashes present in the database. */
   sha256?: string;
 }
 
-export const GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum: Schema.Schema<GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sha256: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sha256: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum",
-  }) as any as Schema.Schema<GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum>;
+  });
 
 export interface GoogleCloudWebriskV1ComputeThreatListDiffResponse {
   /** The expected SHA256 hash of the client state; that is, of the sorted list of all hashes present in the database after applying the provided diff. If the client state doesn't match the expected state, the client must discard this diff and retry later. */
@@ -319,21 +267,19 @@ export interface GoogleCloudWebriskV1ComputeThreatListDiffResponse {
   additions?: GoogleCloudWebriskV1ThreatEntryAdditions;
 }
 
-export const GoogleCloudWebriskV1ComputeThreatListDiffResponse: Schema.Schema<GoogleCloudWebriskV1ComputeThreatListDiffResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      checksum: Schema.optional(
-        GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum,
-      ),
-      newVersionToken: Schema.optional(Schema.String),
-      responseType: Schema.optional(Schema.String),
-      recommendedNextDiff: Schema.optional(Schema.String),
-      removals: Schema.optional(GoogleCloudWebriskV1ThreatEntryRemovals),
-      additions: Schema.optional(GoogleCloudWebriskV1ThreatEntryAdditions),
-    }),
-  ).annotate({
+export const GoogleCloudWebriskV1ComputeThreatListDiffResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    checksum: Schema.optional(
+      GoogleCloudWebriskV1ComputeThreatListDiffResponseChecksum,
+    ),
+    newVersionToken: Schema.optional(Schema.String),
+    responseType: Schema.optional(Schema.String),
+    recommendedNextDiff: Schema.optional(Schema.String),
+    removals: Schema.optional(GoogleCloudWebriskV1ThreatEntryRemovals),
+    additions: Schema.optional(GoogleCloudWebriskV1ThreatEntryAdditions),
+  }).annotate({
     identifier: "GoogleCloudWebriskV1ComputeThreatListDiffResponse",
-  }) as any as Schema.Schema<GoogleCloudWebriskV1ComputeThreatListDiffResponse>;
+  });
 
 // ==========================================================================
 // Operations

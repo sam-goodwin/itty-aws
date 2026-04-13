@@ -31,16 +31,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -55,16 +52,13 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      error: Schema.optional(Status),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  done: Schema.optional(Schema.Boolean),
+  error: Schema.optional(Status),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Operation" });
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -75,30 +69,25 @@ export interface ListOperationsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(Schema.Array(Operation)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    operations: Schema.optional(Schema.Array(Operation)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelOperationRequest",
-  }) as any as Schema.Schema<CancelOperationRequest>;
+export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelOperationRequest" });
 
 export interface DnsRecord {
   /** Output only. The domain name the record pertains to, e.g. `foo.bar.com.`. */
@@ -118,15 +107,12 @@ export interface DnsRecord {
   requiredAction?: "NONE" | "ADD" | "REMOVE" | (string & {});
 }
 
-export const DnsRecord: Schema.Schema<DnsRecord> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      domainName: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      rdata: Schema.optional(Schema.String),
-      requiredAction: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "DnsRecord" }) as any as Schema.Schema<DnsRecord>;
+export const DnsRecord = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  domainName: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  rdata: Schema.optional(Schema.String),
+  requiredAction: Schema.optional(Schema.String),
+}).annotate({ identifier: "DnsRecord" });
 
 export interface DnsRecordSet {
   /** Output only. The domain name the record set pertains to. */
@@ -137,16 +123,11 @@ export interface DnsRecordSet {
   records?: Array<DnsRecord>;
 }
 
-export const DnsRecordSet: Schema.Schema<DnsRecordSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      domainName: Schema.optional(Schema.String),
-      checkError: Schema.optional(Status),
-      records: Schema.optional(Schema.Array(DnsRecord)),
-    }),
-  ).annotate({
-    identifier: "DnsRecordSet",
-  }) as any as Schema.Schema<DnsRecordSet>;
+export const DnsRecordSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  domainName: Schema.optional(Schema.String),
+  checkError: Schema.optional(Status),
+  records: Schema.optional(Schema.Array(DnsRecord)),
+}).annotate({ identifier: "DnsRecordSet" });
 
 export interface DnsUpdates {
   /** The set of DNS records Hosting discovered when inspecting a domain. */
@@ -157,14 +138,11 @@ export interface DnsUpdates {
   checkTime?: string;
 }
 
-export const DnsUpdates: Schema.Schema<DnsUpdates> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      discovered: Schema.optional(Schema.Array(DnsRecordSet)),
-      desired: Schema.optional(Schema.Array(DnsRecordSet)),
-      checkTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "DnsUpdates" }) as any as Schema.Schema<DnsUpdates>;
+export const DnsUpdates = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  discovered: Schema.optional(Schema.Array(DnsRecordSet)),
+  desired: Schema.optional(Schema.Array(DnsRecordSet)),
+  checkTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "DnsUpdates" });
 
 export interface HttpUpdate {
   /** Output only. The path to the file. */
@@ -179,16 +157,13 @@ export interface HttpUpdate {
   checkError?: Status;
 }
 
-export const HttpUpdate: Schema.Schema<HttpUpdate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      path: Schema.optional(Schema.String),
-      desired: Schema.optional(Schema.String),
-      discovered: Schema.optional(Schema.String),
-      lastCheckTime: Schema.optional(Schema.String),
-      checkError: Schema.optional(Status),
-    }),
-  ).annotate({ identifier: "HttpUpdate" }) as any as Schema.Schema<HttpUpdate>;
+export const HttpUpdate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  path: Schema.optional(Schema.String),
+  desired: Schema.optional(Schema.String),
+  discovered: Schema.optional(Schema.String),
+  lastCheckTime: Schema.optional(Schema.String),
+  checkError: Schema.optional(Status),
+}).annotate({ identifier: "HttpUpdate" });
 
 export interface CertVerification {
   /** Output only. A `TXT` record to add to your DNS records that confirms your intent to let Hosting create an SSL cert for your domain name. */
@@ -197,15 +172,10 @@ export interface CertVerification {
   http?: HttpUpdate;
 }
 
-export const CertVerification: Schema.Schema<CertVerification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dns: Schema.optional(DnsUpdates),
-      http: Schema.optional(HttpUpdate),
-    }),
-  ).annotate({
-    identifier: "CertVerification",
-  }) as any as Schema.Schema<CertVerification>;
+export const CertVerification = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dns: Schema.optional(DnsUpdates),
+  http: Schema.optional(HttpUpdate),
+}).annotate({ identifier: "CertVerification" });
 
 export interface LiveMigrationStep {
   /** Output only. The state of the live migration step, indicates whether you should work to complete the step now, in the future, or have already completed it. */
@@ -225,17 +195,12 @@ export interface LiveMigrationStep {
   issues?: Array<Status>;
 }
 
-export const LiveMigrationStep: Schema.Schema<LiveMigrationStep> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      certVerification: Schema.optional(CertVerification),
-      dnsUpdates: Schema.optional(DnsUpdates),
-      issues: Schema.optional(Schema.Array(Status)),
-    }),
-  ).annotate({
-    identifier: "LiveMigrationStep",
-  }) as any as Schema.Schema<LiveMigrationStep>;
+export const LiveMigrationStep = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.String),
+  certVerification: Schema.optional(CertVerification),
+  dnsUpdates: Schema.optional(DnsUpdates),
+  issues: Schema.optional(Schema.Array(Status)),
+}).annotate({ identifier: "LiveMigrationStep" });
 
 export interface CustomDomainMetadata {
   /** The `HostState` of the domain name this `CustomDomain` refers to. */
@@ -275,19 +240,14 @@ export interface CustomDomainMetadata {
   issues?: Array<Status>;
 }
 
-export const CustomDomainMetadata: Schema.Schema<CustomDomainMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hostState: Schema.optional(Schema.String),
-      ownershipState: Schema.optional(Schema.String),
-      certState: Schema.optional(Schema.String),
-      liveMigrationSteps: Schema.optional(Schema.Array(LiveMigrationStep)),
-      quickSetupUpdates: Schema.optional(DnsUpdates),
-      issues: Schema.optional(Schema.Array(Status)),
-    }),
-  ).annotate({
-    identifier: "CustomDomainMetadata",
-  }) as any as Schema.Schema<CustomDomainMetadata>;
+export const CustomDomainMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  hostState: Schema.optional(Schema.String),
+  ownershipState: Schema.optional(Schema.String),
+  certState: Schema.optional(Schema.String),
+  liveMigrationSteps: Schema.optional(Schema.Array(LiveMigrationStep)),
+  quickSetupUpdates: Schema.optional(DnsUpdates),
+  issues: Schema.optional(Schema.Array(Status)),
+}).annotate({ identifier: "CustomDomainMetadata" });
 
 // ==========================================================================
 // Operations

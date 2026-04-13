@@ -39,20 +39,18 @@ export interface GoogleCloudIdentitytoolkitV1IssueSamlResponseResponse {
   isNewUser?: boolean;
 }
 
-export const GoogleCloudIdentitytoolkitV1IssueSamlResponseResponse: Schema.Schema<GoogleCloudIdentitytoolkitV1IssueSamlResponseResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      relayState: Schema.optional(Schema.String),
-      lastName: Schema.optional(Schema.String),
-      acsEndpoint: Schema.optional(Schema.String),
-      samlResponse: Schema.optional(Schema.String),
-      email: Schema.optional(Schema.String),
-      firstName: Schema.optional(Schema.String),
-      isNewUser: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudIdentitytoolkitV1IssueSamlResponseResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    relayState: Schema.optional(Schema.String),
+    lastName: Schema.optional(Schema.String),
+    acsEndpoint: Schema.optional(Schema.String),
+    samlResponse: Schema.optional(Schema.String),
+    email: Schema.optional(Schema.String),
+    firstName: Schema.optional(Schema.String),
+    isNewUser: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudIdentitytoolkitV1IssueSamlResponseResponse",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1IssueSamlResponseResponse>;
+  });
 
 export interface GoogleCloudIdentitytoolkitV1BatchDeleteErrorInfo {
   /** The index of the errored item in the original local_ids field. */
@@ -63,32 +61,28 @@ export interface GoogleCloudIdentitytoolkitV1BatchDeleteErrorInfo {
   message?: string;
 }
 
-export const GoogleCloudIdentitytoolkitV1BatchDeleteErrorInfo: Schema.Schema<GoogleCloudIdentitytoolkitV1BatchDeleteErrorInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      index: Schema.optional(Schema.Number),
-      localId: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIdentitytoolkitV1BatchDeleteErrorInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    index: Schema.optional(Schema.Number),
+    localId: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIdentitytoolkitV1BatchDeleteErrorInfo",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1BatchDeleteErrorInfo>;
+  });
 
 export interface GoogleCloudIdentitytoolkitV1BatchDeleteAccountsResponse {
   /** Detailed error info for accounts that cannot be deleted. */
   errors?: Array<GoogleCloudIdentitytoolkitV1BatchDeleteErrorInfo>;
 }
 
-export const GoogleCloudIdentitytoolkitV1BatchDeleteAccountsResponse: Schema.Schema<GoogleCloudIdentitytoolkitV1BatchDeleteAccountsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errors: Schema.optional(
-        Schema.Array(GoogleCloudIdentitytoolkitV1BatchDeleteErrorInfo),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudIdentitytoolkitV1BatchDeleteAccountsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    errors: Schema.optional(
+      Schema.Array(GoogleCloudIdentitytoolkitV1BatchDeleteErrorInfo),
+    ),
+  }).annotate({
     identifier: "GoogleCloudIdentitytoolkitV1BatchDeleteAccountsResponse",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1BatchDeleteAccountsResponse>;
+  });
 
 export interface GoogleCloudIdentitytoolkitV1DeleteAccountRequest {
   /** The ID of user account to delete. Specifying this field requires a Google OAuth 2.0 credential with proper [permissions](https://cloud.google.com/identity-platform/docs/access-control). Requests from users lacking the credential should pass an ID token instead. */
@@ -102,18 +96,16 @@ export interface GoogleCloudIdentitytoolkitV1DeleteAccountRequest {
   targetProjectId?: string;
 }
 
-export const GoogleCloudIdentitytoolkitV1DeleteAccountRequest: Schema.Schema<GoogleCloudIdentitytoolkitV1DeleteAccountRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      localId: Schema.optional(Schema.String),
-      delegatedProjectNumber: Schema.optional(Schema.String),
-      idToken: Schema.optional(Schema.String),
-      tenantId: Schema.optional(Schema.String),
-      targetProjectId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIdentitytoolkitV1DeleteAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    localId: Schema.optional(Schema.String),
+    delegatedProjectNumber: Schema.optional(Schema.String),
+    idToken: Schema.optional(Schema.String),
+    tenantId: Schema.optional(Schema.String),
+    targetProjectId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIdentitytoolkitV1DeleteAccountRequest",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1DeleteAccountRequest>;
+  });
 
 export interface GoogleCloudIdentitytoolkitV1OpenIdConnectKey {
   /** Unique string to identify this key. */
@@ -130,40 +122,32 @@ export interface GoogleCloudIdentitytoolkitV1OpenIdConnectKey {
   alg?: string;
 }
 
-export const GoogleCloudIdentitytoolkitV1OpenIdConnectKey: Schema.Schema<GoogleCloudIdentitytoolkitV1OpenIdConnectKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kid: Schema.optional(Schema.String),
-      use: Schema.optional(Schema.String),
-      n: Schema.optional(Schema.String),
-      kty: Schema.optional(Schema.String),
-      e: Schema.optional(Schema.String),
-      alg: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIdentitytoolkitV1OpenIdConnectKey",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1OpenIdConnectKey>;
+export const GoogleCloudIdentitytoolkitV1OpenIdConnectKey =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kid: Schema.optional(Schema.String),
+    use: Schema.optional(Schema.String),
+    n: Schema.optional(Schema.String),
+    kty: Schema.optional(Schema.String),
+    e: Schema.optional(Schema.String),
+    alg: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudIdentitytoolkitV1OpenIdConnectKey" });
 
 export interface GoogleCloudIdentitytoolkitV1EmailInfo {
   /** Email address that a MFA verification should be sent to. */
   emailAddress?: string;
 }
 
-export const GoogleCloudIdentitytoolkitV1EmailInfo: Schema.Schema<GoogleCloudIdentitytoolkitV1EmailInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      emailAddress: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIdentitytoolkitV1EmailInfo",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1EmailInfo>;
+export const GoogleCloudIdentitytoolkitV1EmailInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    emailAddress: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudIdentitytoolkitV1EmailInfo" });
 
 export interface GoogleCloudIdentitytoolkitV1TotpInfo {}
 
-export const GoogleCloudIdentitytoolkitV1TotpInfo: Schema.Schema<GoogleCloudIdentitytoolkitV1TotpInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudIdentitytoolkitV1TotpInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudIdentitytoolkitV1TotpInfo",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1TotpInfo>;
+  });
 
 export interface GoogleCloudIdentitytoolkitV1MfaEnrollment {
   /** Display name for this mfa option e.g. "corp cell phone". */
@@ -182,20 +166,16 @@ export interface GoogleCloudIdentitytoolkitV1MfaEnrollment {
   totpInfo?: GoogleCloudIdentitytoolkitV1TotpInfo;
 }
 
-export const GoogleCloudIdentitytoolkitV1MfaEnrollment: Schema.Schema<GoogleCloudIdentitytoolkitV1MfaEnrollment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      enrolledAt: Schema.optional(Schema.String),
-      phoneInfo: Schema.optional(Schema.String),
-      emailInfo: Schema.optional(GoogleCloudIdentitytoolkitV1EmailInfo),
-      unobfuscatedPhoneInfo: Schema.optional(Schema.String),
-      mfaEnrollmentId: Schema.optional(Schema.String),
-      totpInfo: Schema.optional(GoogleCloudIdentitytoolkitV1TotpInfo),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIdentitytoolkitV1MfaEnrollment",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1MfaEnrollment>;
+export const GoogleCloudIdentitytoolkitV1MfaEnrollment =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    enrolledAt: Schema.optional(Schema.String),
+    phoneInfo: Schema.optional(Schema.String),
+    emailInfo: Schema.optional(GoogleCloudIdentitytoolkitV1EmailInfo),
+    unobfuscatedPhoneInfo: Schema.optional(Schema.String),
+    mfaEnrollmentId: Schema.optional(Schema.String),
+    totpInfo: Schema.optional(GoogleCloudIdentitytoolkitV1TotpInfo),
+  }).annotate({ identifier: "GoogleCloudIdentitytoolkitV1MfaEnrollment" });
 
 export interface GoogleCloudIdentitytoolkitV1SignInWithEmailLinkResponse {
   /** Whether the authenticated user was created by this request. */
@@ -217,24 +197,22 @@ export interface GoogleCloudIdentitytoolkitV1SignInWithEmailLinkResponse {
   mfaInfo?: Array<GoogleCloudIdentitytoolkitV1MfaEnrollment>;
 }
 
-export const GoogleCloudIdentitytoolkitV1SignInWithEmailLinkResponse: Schema.Schema<GoogleCloudIdentitytoolkitV1SignInWithEmailLinkResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      isNewUser: Schema.optional(Schema.Boolean),
-      kind: Schema.optional(Schema.String),
-      expiresIn: Schema.optional(Schema.String),
-      localId: Schema.optional(Schema.String),
-      refreshToken: Schema.optional(Schema.String),
-      mfaPendingCredential: Schema.optional(Schema.String),
-      idToken: Schema.optional(Schema.String),
-      email: Schema.optional(Schema.String),
-      mfaInfo: Schema.optional(
-        Schema.Array(GoogleCloudIdentitytoolkitV1MfaEnrollment),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudIdentitytoolkitV1SignInWithEmailLinkResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    isNewUser: Schema.optional(Schema.Boolean),
+    kind: Schema.optional(Schema.String),
+    expiresIn: Schema.optional(Schema.String),
+    localId: Schema.optional(Schema.String),
+    refreshToken: Schema.optional(Schema.String),
+    mfaPendingCredential: Schema.optional(Schema.String),
+    idToken: Schema.optional(Schema.String),
+    email: Schema.optional(Schema.String),
+    mfaInfo: Schema.optional(
+      Schema.Array(GoogleCloudIdentitytoolkitV1MfaEnrollment),
+    ),
+  }).annotate({
     identifier: "GoogleCloudIdentitytoolkitV1SignInWithEmailLinkResponse",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1SignInWithEmailLinkResponse>;
+  });
 
 export interface GoogleCloudIdentitytoolkitV1SignInWithCustomTokenRequest {
   /** Should always be true. */
@@ -247,18 +225,16 @@ export interface GoogleCloudIdentitytoolkitV1SignInWithCustomTokenRequest {
   instanceId?: string;
 }
 
-export const GoogleCloudIdentitytoolkitV1SignInWithCustomTokenRequest: Schema.Schema<GoogleCloudIdentitytoolkitV1SignInWithCustomTokenRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      returnSecureToken: Schema.optional(Schema.Boolean),
-      delegatedProjectNumber: Schema.optional(Schema.String),
-      tenantId: Schema.optional(Schema.String),
-      token: Schema.optional(Schema.String),
-      instanceId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIdentitytoolkitV1SignInWithCustomTokenRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    returnSecureToken: Schema.optional(Schema.Boolean),
+    delegatedProjectNumber: Schema.optional(Schema.String),
+    tenantId: Schema.optional(Schema.String),
+    token: Schema.optional(Schema.String),
+    instanceId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIdentitytoolkitV1SignInWithCustomTokenRequest",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1SignInWithCustomTokenRequest>;
+  });
 
 export interface GoogleCloudIdentitytoolkitV1CreateSessionCookieRequest {
   /** Required. A valid Identity Platform ID token. */
@@ -269,16 +245,14 @@ export interface GoogleCloudIdentitytoolkitV1CreateSessionCookieRequest {
   tenantId?: string;
 }
 
-export const GoogleCloudIdentitytoolkitV1CreateSessionCookieRequest: Schema.Schema<GoogleCloudIdentitytoolkitV1CreateSessionCookieRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      idToken: Schema.optional(Schema.String),
-      validDuration: Schema.optional(Schema.String),
-      tenantId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIdentitytoolkitV1CreateSessionCookieRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    idToken: Schema.optional(Schema.String),
+    validDuration: Schema.optional(Schema.String),
+    tenantId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIdentitytoolkitV1CreateSessionCookieRequest",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1CreateSessionCookieRequest>;
+  });
 
 export interface GoogleCloudIdentitytoolkitV1SignInWithIdpRequest {
   /** Should always be true. */
@@ -304,25 +278,23 @@ export interface GoogleCloudIdentitytoolkitV1SignInWithIdpRequest {
   pendingToken?: string;
 }
 
-export const GoogleCloudIdentitytoolkitV1SignInWithIdpRequest: Schema.Schema<GoogleCloudIdentitytoolkitV1SignInWithIdpRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      returnSecureToken: Schema.optional(Schema.Boolean),
-      pendingIdToken: Schema.optional(Schema.String),
-      delegatedProjectNumber: Schema.optional(Schema.String),
-      returnIdpCredential: Schema.optional(Schema.Boolean),
-      returnRefreshToken: Schema.optional(Schema.Boolean),
-      sessionId: Schema.optional(Schema.String),
-      idToken: Schema.optional(Schema.String),
-      tenantId: Schema.optional(Schema.String),
-      autoCreate: Schema.optional(Schema.Boolean),
-      postBody: Schema.optional(Schema.String),
-      requestUri: Schema.optional(Schema.String),
-      pendingToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIdentitytoolkitV1SignInWithIdpRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    returnSecureToken: Schema.optional(Schema.Boolean),
+    pendingIdToken: Schema.optional(Schema.String),
+    delegatedProjectNumber: Schema.optional(Schema.String),
+    returnIdpCredential: Schema.optional(Schema.Boolean),
+    returnRefreshToken: Schema.optional(Schema.Boolean),
+    sessionId: Schema.optional(Schema.String),
+    idToken: Schema.optional(Schema.String),
+    tenantId: Schema.optional(Schema.String),
+    autoCreate: Schema.optional(Schema.Boolean),
+    postBody: Schema.optional(Schema.String),
+    requestUri: Schema.optional(Schema.String),
+    pendingToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIdentitytoolkitV1SignInWithIdpRequest",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1SignInWithIdpRequest>;
+  });
 
 export interface GoogleCloudIdentitytoolkitV1CreateAuthUriResponse {
   /** Whether a CAPTCHA is needed because there have been too many failed login attempts by the user. Present only when a registered email identifier is set in the request. */
@@ -343,22 +315,20 @@ export interface GoogleCloudIdentitytoolkitV1CreateAuthUriResponse {
   sessionId?: string;
 }
 
-export const GoogleCloudIdentitytoolkitV1CreateAuthUriResponse: Schema.Schema<GoogleCloudIdentitytoolkitV1CreateAuthUriResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      captchaRequired: Schema.optional(Schema.Boolean),
-      signinMethods: Schema.optional(Schema.Array(Schema.String)),
-      providerId: Schema.optional(Schema.String),
-      allProviders: Schema.optional(Schema.Array(Schema.String)),
-      registered: Schema.optional(Schema.Boolean),
-      authUri: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      forExistingProvider: Schema.optional(Schema.Boolean),
-      sessionId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIdentitytoolkitV1CreateAuthUriResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    captchaRequired: Schema.optional(Schema.Boolean),
+    signinMethods: Schema.optional(Schema.Array(Schema.String)),
+    providerId: Schema.optional(Schema.String),
+    allProviders: Schema.optional(Schema.Array(Schema.String)),
+    registered: Schema.optional(Schema.Boolean),
+    authUri: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    forExistingProvider: Schema.optional(Schema.Boolean),
+    sessionId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIdentitytoolkitV1CreateAuthUriResponse",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1CreateAuthUriResponse>;
+  });
 
 export interface GoogleCloudIdentitytoolkitV1Argon2Parameters {
   /** Required. The degree of parallelism, also called threads or lanes. Minimum is 1, maximum is 16. */
@@ -382,20 +352,16 @@ export interface GoogleCloudIdentitytoolkitV1Argon2Parameters {
     | (string & {});
 }
 
-export const GoogleCloudIdentitytoolkitV1Argon2Parameters: Schema.Schema<GoogleCloudIdentitytoolkitV1Argon2Parameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parallelism: Schema.optional(Schema.Number),
-      memoryCostKib: Schema.optional(Schema.Number),
-      iterations: Schema.optional(Schema.Number),
-      associatedData: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-      hashLengthBytes: Schema.optional(Schema.Number),
-      hashType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIdentitytoolkitV1Argon2Parameters",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1Argon2Parameters>;
+export const GoogleCloudIdentitytoolkitV1Argon2Parameters =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parallelism: Schema.optional(Schema.Number),
+    memoryCostKib: Schema.optional(Schema.Number),
+    iterations: Schema.optional(Schema.Number),
+    associatedData: Schema.optional(Schema.String),
+    version: Schema.optional(Schema.String),
+    hashLengthBytes: Schema.optional(Schema.Number),
+    hashType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudIdentitytoolkitV1Argon2Parameters" });
 
 export interface GoogleCloudIdentitytoolkitV1MfaFactor {
   /** Display name for this mfa option e.g. "corp cell phone". */
@@ -404,15 +370,11 @@ export interface GoogleCloudIdentitytoolkitV1MfaFactor {
   phoneInfo?: string;
 }
 
-export const GoogleCloudIdentitytoolkitV1MfaFactor: Schema.Schema<GoogleCloudIdentitytoolkitV1MfaFactor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      phoneInfo: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIdentitytoolkitV1MfaFactor",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1MfaFactor>;
+export const GoogleCloudIdentitytoolkitV1MfaFactor =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    phoneInfo: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudIdentitytoolkitV1MfaFactor" });
 
 export interface GoogleCloudIdentitytoolkitV1SignUpRequest {
   /** The email to assign to the created user. The length of the email should be less than 256 characters and in the format of `name@domain.tld`. The email should also match the [RFC 822](https://tools.ietf.org/html/rfc822) addr-spec production. An anonymous user will be created if not provided. */
@@ -457,32 +419,28 @@ export interface GoogleCloudIdentitytoolkitV1SignUpRequest {
   emailVerified?: boolean;
 }
 
-export const GoogleCloudIdentitytoolkitV1SignUpRequest: Schema.Schema<GoogleCloudIdentitytoolkitV1SignUpRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      email: Schema.optional(Schema.String),
-      disabled: Schema.optional(Schema.Boolean),
-      idToken: Schema.optional(Schema.String),
-      targetProjectId: Schema.optional(Schema.String),
-      recaptchaVersion: Schema.optional(Schema.String),
-      clientType: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      instanceId: Schema.optional(Schema.String),
-      localId: Schema.optional(Schema.String),
-      captchaChallenge: Schema.optional(Schema.String),
-      captchaResponse: Schema.optional(Schema.String),
-      password: Schema.optional(Schema.String),
-      tenantId: Schema.optional(Schema.String),
-      mfaInfo: Schema.optional(
-        Schema.Array(GoogleCloudIdentitytoolkitV1MfaFactor),
-      ),
-      photoUrl: Schema.optional(Schema.String),
-      phoneNumber: Schema.optional(Schema.String),
-      emailVerified: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIdentitytoolkitV1SignUpRequest",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1SignUpRequest>;
+export const GoogleCloudIdentitytoolkitV1SignUpRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    email: Schema.optional(Schema.String),
+    disabled: Schema.optional(Schema.Boolean),
+    idToken: Schema.optional(Schema.String),
+    targetProjectId: Schema.optional(Schema.String),
+    recaptchaVersion: Schema.optional(Schema.String),
+    clientType: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    instanceId: Schema.optional(Schema.String),
+    localId: Schema.optional(Schema.String),
+    captchaChallenge: Schema.optional(Schema.String),
+    captchaResponse: Schema.optional(Schema.String),
+    password: Schema.optional(Schema.String),
+    tenantId: Schema.optional(Schema.String),
+    mfaInfo: Schema.optional(
+      Schema.Array(GoogleCloudIdentitytoolkitV1MfaFactor),
+    ),
+    photoUrl: Schema.optional(Schema.String),
+    phoneNumber: Schema.optional(Schema.String),
+    emailVerified: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudIdentitytoolkitV1SignUpRequest" });
 
 export interface GoogleCloudIdentitytoolkitV1BatchDeleteAccountsRequest {
   /** Required. List of user IDs to be deleted. */
@@ -493,32 +451,26 @@ export interface GoogleCloudIdentitytoolkitV1BatchDeleteAccountsRequest {
   tenantId?: string;
 }
 
-export const GoogleCloudIdentitytoolkitV1BatchDeleteAccountsRequest: Schema.Schema<GoogleCloudIdentitytoolkitV1BatchDeleteAccountsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      localIds: Schema.optional(Schema.Array(Schema.String)),
-      force: Schema.optional(Schema.Boolean),
-      tenantId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIdentitytoolkitV1BatchDeleteAccountsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    localIds: Schema.optional(Schema.Array(Schema.String)),
+    force: Schema.optional(Schema.Boolean),
+    tenantId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIdentitytoolkitV1BatchDeleteAccountsRequest",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1BatchDeleteAccountsRequest>;
+  });
 
 export interface GoogleCloudIdentitytoolkitV1MfaInfo {
   /** The second factors the user has enrolled. */
   enrollments?: Array<GoogleCloudIdentitytoolkitV1MfaEnrollment>;
 }
 
-export const GoogleCloudIdentitytoolkitV1MfaInfo: Schema.Schema<GoogleCloudIdentitytoolkitV1MfaInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enrollments: Schema.optional(
-        Schema.Array(GoogleCloudIdentitytoolkitV1MfaEnrollment),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIdentitytoolkitV1MfaInfo",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1MfaInfo>;
+export const GoogleCloudIdentitytoolkitV1MfaInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enrollments: Schema.optional(
+      Schema.Array(GoogleCloudIdentitytoolkitV1MfaEnrollment),
+    ),
+  }).annotate({ identifier: "GoogleCloudIdentitytoolkitV1MfaInfo" });
 
 export interface GoogleCloudIdentitytoolkitV1EmailTemplate {
   /** Reply-to address */
@@ -547,23 +499,19 @@ export interface GoogleCloudIdentitytoolkitV1EmailTemplate {
     | (string & {});
 }
 
-export const GoogleCloudIdentitytoolkitV1EmailTemplate: Schema.Schema<GoogleCloudIdentitytoolkitV1EmailTemplate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      replyTo: Schema.optional(Schema.String),
-      fromLocalPart: Schema.optional(Schema.String),
-      disabled: Schema.optional(Schema.Boolean),
-      from: Schema.optional(Schema.String),
-      body: Schema.optional(Schema.String),
-      subject: Schema.optional(Schema.String),
-      customized: Schema.optional(Schema.Boolean),
-      locale: Schema.optional(Schema.String),
-      fromDisplayName: Schema.optional(Schema.String),
-      format: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIdentitytoolkitV1EmailTemplate",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1EmailTemplate>;
+export const GoogleCloudIdentitytoolkitV1EmailTemplate =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    replyTo: Schema.optional(Schema.String),
+    fromLocalPart: Schema.optional(Schema.String),
+    disabled: Schema.optional(Schema.Boolean),
+    from: Schema.optional(Schema.String),
+    body: Schema.optional(Schema.String),
+    subject: Schema.optional(Schema.String),
+    customized: Schema.optional(Schema.Boolean),
+    locale: Schema.optional(Schema.String),
+    fromDisplayName: Schema.optional(Schema.String),
+    format: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudIdentitytoolkitV1EmailTemplate" });
 
 export interface GoogleCloudIdentitytoolkitV1IdpConfig {
   /** True if allows the user to sign in with the provider. */
@@ -592,19 +540,15 @@ export interface GoogleCloudIdentitytoolkitV1IdpConfig {
   whitelistedAudiences?: Array<string>;
 }
 
-export const GoogleCloudIdentitytoolkitV1IdpConfig: Schema.Schema<GoogleCloudIdentitytoolkitV1IdpConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-      secret: Schema.optional(Schema.String),
-      experimentPercent: Schema.optional(Schema.Number),
-      provider: Schema.optional(Schema.String),
-      clientId: Schema.optional(Schema.String),
-      whitelistedAudiences: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIdentitytoolkitV1IdpConfig",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1IdpConfig>;
+export const GoogleCloudIdentitytoolkitV1IdpConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+    secret: Schema.optional(Schema.String),
+    experimentPercent: Schema.optional(Schema.Number),
+    provider: Schema.optional(Schema.String),
+    clientId: Schema.optional(Schema.String),
+    whitelistedAudiences: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudIdentitytoolkitV1IdpConfig" });
 
 export interface GoogleCloudIdentitytoolkitV1GetProjectConfigResponse {
   /** Google Cloud API key. This field is only returned for authenticated calls from a developer. */
@@ -635,38 +579,36 @@ export interface GoogleCloudIdentitytoolkitV1GetProjectConfigResponse {
   authorizedDomains?: Array<string>;
 }
 
-export const GoogleCloudIdentitytoolkitV1GetProjectConfigResponse: Schema.Schema<GoogleCloudIdentitytoolkitV1GetProjectConfigResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      apiKey: Schema.optional(Schema.String),
-      resetPasswordTemplate: Schema.optional(
-        GoogleCloudIdentitytoolkitV1EmailTemplate,
-      ),
-      useEmailSending: Schema.optional(Schema.Boolean),
-      projectId: Schema.optional(Schema.String),
-      legacyResetPasswordTemplate: Schema.optional(
-        GoogleCloudIdentitytoolkitV1EmailTemplate,
-      ),
-      verifyEmailTemplate: Schema.optional(
-        GoogleCloudIdentitytoolkitV1EmailTemplate,
-      ),
-      idpConfig: Schema.optional(
-        Schema.Array(GoogleCloudIdentitytoolkitV1IdpConfig),
-      ),
-      allowPasswordUser: Schema.optional(Schema.Boolean),
-      changeEmailTemplate: Schema.optional(
-        GoogleCloudIdentitytoolkitV1EmailTemplate,
-      ),
-      dynamicLinksDomain: Schema.optional(Schema.String),
-      revertSecondFactorAdditionTemplate: Schema.optional(
-        GoogleCloudIdentitytoolkitV1EmailTemplate,
-      ),
-      enableAnonymousUser: Schema.optional(Schema.Boolean),
-      authorizedDomains: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudIdentitytoolkitV1GetProjectConfigResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    apiKey: Schema.optional(Schema.String),
+    resetPasswordTemplate: Schema.optional(
+      GoogleCloudIdentitytoolkitV1EmailTemplate,
+    ),
+    useEmailSending: Schema.optional(Schema.Boolean),
+    projectId: Schema.optional(Schema.String),
+    legacyResetPasswordTemplate: Schema.optional(
+      GoogleCloudIdentitytoolkitV1EmailTemplate,
+    ),
+    verifyEmailTemplate: Schema.optional(
+      GoogleCloudIdentitytoolkitV1EmailTemplate,
+    ),
+    idpConfig: Schema.optional(
+      Schema.Array(GoogleCloudIdentitytoolkitV1IdpConfig),
+    ),
+    allowPasswordUser: Schema.optional(Schema.Boolean),
+    changeEmailTemplate: Schema.optional(
+      GoogleCloudIdentitytoolkitV1EmailTemplate,
+    ),
+    dynamicLinksDomain: Schema.optional(Schema.String),
+    revertSecondFactorAdditionTemplate: Schema.optional(
+      GoogleCloudIdentitytoolkitV1EmailTemplate,
+    ),
+    enableAnonymousUser: Schema.optional(Schema.Boolean),
+    authorizedDomains: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudIdentitytoolkitV1GetProjectConfigResponse",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1GetProjectConfigResponse>;
+  });
 
 export interface GoogleCloudIdentitytoolkitV1ProviderUserInfo {
   /** The user's screen_name at Twitter or login name at GitHub. */
@@ -687,21 +629,17 @@ export interface GoogleCloudIdentitytoolkitV1ProviderUserInfo {
   providerId?: string;
 }
 
-export const GoogleCloudIdentitytoolkitV1ProviderUserInfo: Schema.Schema<GoogleCloudIdentitytoolkitV1ProviderUserInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      screenName: Schema.optional(Schema.String),
-      email: Schema.optional(Schema.String),
-      rawId: Schema.optional(Schema.String),
-      federatedId: Schema.optional(Schema.String),
-      phoneNumber: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      photoUrl: Schema.optional(Schema.String),
-      providerId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIdentitytoolkitV1ProviderUserInfo",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1ProviderUserInfo>;
+export const GoogleCloudIdentitytoolkitV1ProviderUserInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    screenName: Schema.optional(Schema.String),
+    email: Schema.optional(Schema.String),
+    rawId: Schema.optional(Schema.String),
+    federatedId: Schema.optional(Schema.String),
+    phoneNumber: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    photoUrl: Schema.optional(Schema.String),
+    providerId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudIdentitytoolkitV1ProviderUserInfo" });
 
 export interface GoogleCloudIdentitytoolkitV1UserInfo {
   /** Immutable. The unique ID of the account. */
@@ -760,44 +698,40 @@ export interface GoogleCloudIdentitytoolkitV1UserInfo {
   photoUrl?: string;
 }
 
-export const GoogleCloudIdentitytoolkitV1UserInfo: Schema.Schema<GoogleCloudIdentitytoolkitV1UserInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      localId: Schema.optional(Schema.String),
-      customAttributes: Schema.optional(Schema.String),
-      salt: Schema.optional(Schema.String),
-      email: Schema.optional(Schema.String),
-      passwordUpdatedAt: Schema.optional(Schema.Number),
-      language: Schema.optional(Schema.String),
-      phoneNumber: Schema.optional(Schema.String),
-      emailVerified: Schema.optional(Schema.Boolean),
-      createdAt: Schema.optional(Schema.String),
-      passwordHash: Schema.optional(Schema.String),
-      initialEmail: Schema.optional(Schema.String),
-      lastLoginAt: Schema.optional(Schema.String),
-      lastRefreshAt: Schema.optional(Schema.String),
-      mfaInfo: Schema.optional(
-        Schema.Array(GoogleCloudIdentitytoolkitV1MfaEnrollment),
-      ),
-      emailLinkSignin: Schema.optional(Schema.Boolean),
-      providerUserInfo: Schema.optional(
-        Schema.Array(GoogleCloudIdentitytoolkitV1ProviderUserInfo),
-      ),
-      screenName: Schema.optional(Schema.String),
-      tenantId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      validSince: Schema.optional(Schema.String),
-      disabled: Schema.optional(Schema.Boolean),
-      dateOfBirth: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.Number),
-      customAuth: Schema.optional(Schema.Boolean),
-      timeZone: Schema.optional(Schema.String),
-      rawPassword: Schema.optional(Schema.String),
-      photoUrl: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIdentitytoolkitV1UserInfo",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1UserInfo>;
+export const GoogleCloudIdentitytoolkitV1UserInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    localId: Schema.optional(Schema.String),
+    customAttributes: Schema.optional(Schema.String),
+    salt: Schema.optional(Schema.String),
+    email: Schema.optional(Schema.String),
+    passwordUpdatedAt: Schema.optional(Schema.Number),
+    language: Schema.optional(Schema.String),
+    phoneNumber: Schema.optional(Schema.String),
+    emailVerified: Schema.optional(Schema.Boolean),
+    createdAt: Schema.optional(Schema.String),
+    passwordHash: Schema.optional(Schema.String),
+    initialEmail: Schema.optional(Schema.String),
+    lastLoginAt: Schema.optional(Schema.String),
+    lastRefreshAt: Schema.optional(Schema.String),
+    mfaInfo: Schema.optional(
+      Schema.Array(GoogleCloudIdentitytoolkitV1MfaEnrollment),
+    ),
+    emailLinkSignin: Schema.optional(Schema.Boolean),
+    providerUserInfo: Schema.optional(
+      Schema.Array(GoogleCloudIdentitytoolkitV1ProviderUserInfo),
+    ),
+    screenName: Schema.optional(Schema.String),
+    tenantId: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    validSince: Schema.optional(Schema.String),
+    disabled: Schema.optional(Schema.Boolean),
+    dateOfBirth: Schema.optional(Schema.String),
+    version: Schema.optional(Schema.Number),
+    customAuth: Schema.optional(Schema.Boolean),
+    timeZone: Schema.optional(Schema.String),
+    rawPassword: Schema.optional(Schema.String),
+    photoUrl: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudIdentitytoolkitV1UserInfo" });
 
 export interface GoogleCloudIdentitytoolkitV1SignInWithIdpResponse {
   /** An Identity Platform ID token for the authenticated user. */
@@ -877,54 +811,52 @@ export interface GoogleCloudIdentitytoolkitV1SignInWithIdpResponse {
   dateOfBirth?: string;
 }
 
-export const GoogleCloudIdentitytoolkitV1SignInWithIdpResponse: Schema.Schema<GoogleCloudIdentitytoolkitV1SignInWithIdpResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      idToken: Schema.optional(Schema.String),
-      email: Schema.optional(Schema.String),
-      oauthAuthorizationCode: Schema.optional(Schema.String),
-      oauthAccessToken: Schema.optional(Schema.String),
-      context: Schema.optional(Schema.String),
-      oauthIdToken: Schema.optional(Schema.String),
-      isNewUser: Schema.optional(Schema.Boolean),
-      expiresIn: Schema.optional(Schema.String),
-      originalEmail: Schema.optional(Schema.String),
-      needConfirmation: Schema.optional(Schema.Boolean),
-      providerId: Schema.optional(Schema.String),
-      localId: Schema.optional(Schema.String),
-      oauthTokenSecret: Schema.optional(Schema.String),
-      tenantId: Schema.optional(Schema.String),
-      firstName: Schema.optional(Schema.String),
-      errorMessage: Schema.optional(Schema.String),
-      screenName: Schema.optional(Schema.String),
-      rawUserInfo: Schema.optional(Schema.String),
-      oauthExpireIn: Schema.optional(Schema.Number),
-      needEmail: Schema.optional(Schema.Boolean),
-      mfaInfo: Schema.optional(
-        Schema.Array(GoogleCloudIdentitytoolkitV1MfaEnrollment),
-      ),
-      emailVerified: Schema.optional(Schema.Boolean),
-      verifiedProvider: Schema.optional(Schema.Array(Schema.String)),
-      language: Schema.optional(Schema.String),
-      refreshToken: Schema.optional(Schema.String),
-      federatedId: Schema.optional(Schema.String),
-      inputEmail: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      nickName: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      mfaPendingCredential: Schema.optional(Schema.String),
-      lastName: Schema.optional(Schema.String),
-      photoUrl: Schema.optional(Schema.String),
-      oauthRefreshToken: Schema.optional(Schema.String),
-      fullName: Schema.optional(Schema.String),
-      emailRecycled: Schema.optional(Schema.Boolean),
-      timeZone: Schema.optional(Schema.String),
-      pendingToken: Schema.optional(Schema.String),
-      dateOfBirth: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIdentitytoolkitV1SignInWithIdpResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    idToken: Schema.optional(Schema.String),
+    email: Schema.optional(Schema.String),
+    oauthAuthorizationCode: Schema.optional(Schema.String),
+    oauthAccessToken: Schema.optional(Schema.String),
+    context: Schema.optional(Schema.String),
+    oauthIdToken: Schema.optional(Schema.String),
+    isNewUser: Schema.optional(Schema.Boolean),
+    expiresIn: Schema.optional(Schema.String),
+    originalEmail: Schema.optional(Schema.String),
+    needConfirmation: Schema.optional(Schema.Boolean),
+    providerId: Schema.optional(Schema.String),
+    localId: Schema.optional(Schema.String),
+    oauthTokenSecret: Schema.optional(Schema.String),
+    tenantId: Schema.optional(Schema.String),
+    firstName: Schema.optional(Schema.String),
+    errorMessage: Schema.optional(Schema.String),
+    screenName: Schema.optional(Schema.String),
+    rawUserInfo: Schema.optional(Schema.String),
+    oauthExpireIn: Schema.optional(Schema.Number),
+    needEmail: Schema.optional(Schema.Boolean),
+    mfaInfo: Schema.optional(
+      Schema.Array(GoogleCloudIdentitytoolkitV1MfaEnrollment),
+    ),
+    emailVerified: Schema.optional(Schema.Boolean),
+    verifiedProvider: Schema.optional(Schema.Array(Schema.String)),
+    language: Schema.optional(Schema.String),
+    refreshToken: Schema.optional(Schema.String),
+    federatedId: Schema.optional(Schema.String),
+    inputEmail: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    nickName: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    mfaPendingCredential: Schema.optional(Schema.String),
+    lastName: Schema.optional(Schema.String),
+    photoUrl: Schema.optional(Schema.String),
+    oauthRefreshToken: Schema.optional(Schema.String),
+    fullName: Schema.optional(Schema.String),
+    emailRecycled: Schema.optional(Schema.Boolean),
+    timeZone: Schema.optional(Schema.String),
+    pendingToken: Schema.optional(Schema.String),
+    dateOfBirth: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIdentitytoolkitV1SignInWithIdpResponse",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1SignInWithIdpResponse>;
+  });
 
 export interface GoogleCloudIdentitytoolkitV1VerifyIosClientResponse {
   /** Receipt of successful app token validation. */
@@ -933,15 +865,13 @@ export interface GoogleCloudIdentitytoolkitV1VerifyIosClientResponse {
   suggestedTimeout?: string;
 }
 
-export const GoogleCloudIdentitytoolkitV1VerifyIosClientResponse: Schema.Schema<GoogleCloudIdentitytoolkitV1VerifyIosClientResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      receipt: Schema.optional(Schema.String),
-      suggestedTimeout: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIdentitytoolkitV1VerifyIosClientResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    receipt: Schema.optional(Schema.String),
+    suggestedTimeout: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIdentitytoolkitV1VerifyIosClientResponse",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1VerifyIosClientResponse>;
+  });
 
 export interface GoogleCloudIdentitytoolkitV1UploadAccountRequest {
   /** One or more bytes to be inserted between the salt and plain text password. For stronger security, this should be a single non-printable character. */
@@ -980,47 +910,39 @@ export interface GoogleCloudIdentitytoolkitV1UploadAccountRequest {
   blockSize?: number;
 }
 
-export const GoogleCloudIdentitytoolkitV1UploadAccountRequest: Schema.Schema<GoogleCloudIdentitytoolkitV1UploadAccountRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      saltSeparator: Schema.optional(Schema.String),
-      users: Schema.optional(
-        Schema.Array(GoogleCloudIdentitytoolkitV1UserInfo),
-      ),
-      allowOverwrite: Schema.optional(Schema.Boolean),
-      argon2Parameters: Schema.optional(
-        GoogleCloudIdentitytoolkitV1Argon2Parameters,
-      ),
-      signerKey: Schema.optional(Schema.String),
-      memoryCost: Schema.optional(Schema.Number),
-      sanityCheck: Schema.optional(Schema.Boolean),
-      tenantId: Schema.optional(Schema.String),
-      parallelization: Schema.optional(Schema.Number),
-      cpuMemCost: Schema.optional(Schema.Number),
-      rounds: Schema.optional(Schema.Number),
-      dkLen: Schema.optional(Schema.Number),
-      hashAlgorithm: Schema.optional(Schema.String),
-      delegatedProjectNumber: Schema.optional(Schema.String),
-      passwordHashOrder: Schema.optional(Schema.String),
-      blockSize: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudIdentitytoolkitV1UploadAccountRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    saltSeparator: Schema.optional(Schema.String),
+    users: Schema.optional(Schema.Array(GoogleCloudIdentitytoolkitV1UserInfo)),
+    allowOverwrite: Schema.optional(Schema.Boolean),
+    argon2Parameters: Schema.optional(
+      GoogleCloudIdentitytoolkitV1Argon2Parameters,
+    ),
+    signerKey: Schema.optional(Schema.String),
+    memoryCost: Schema.optional(Schema.Number),
+    sanityCheck: Schema.optional(Schema.Boolean),
+    tenantId: Schema.optional(Schema.String),
+    parallelization: Schema.optional(Schema.Number),
+    cpuMemCost: Schema.optional(Schema.Number),
+    rounds: Schema.optional(Schema.Number),
+    dkLen: Schema.optional(Schema.Number),
+    hashAlgorithm: Schema.optional(Schema.String),
+    delegatedProjectNumber: Schema.optional(Schema.String),
+    passwordHashOrder: Schema.optional(Schema.String),
+    blockSize: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleCloudIdentitytoolkitV1UploadAccountRequest",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1UploadAccountRequest>;
+  });
 
 export interface GoogleCloudIdentitytoolkitV1AutoRetrievalInfo {
   /** The Android app's signature hash for Google Play Service's SMS Retriever API. */
   appSignatureHash?: string;
 }
 
-export const GoogleCloudIdentitytoolkitV1AutoRetrievalInfo: Schema.Schema<GoogleCloudIdentitytoolkitV1AutoRetrievalInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      appSignatureHash: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIdentitytoolkitV1AutoRetrievalInfo",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1AutoRetrievalInfo>;
+export const GoogleCloudIdentitytoolkitV1AutoRetrievalInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    appSignatureHash: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudIdentitytoolkitV1AutoRetrievalInfo" });
 
 export interface GoogleCloudIdentitytoolkitV1SendVerificationCodeRequest {
   /** Receipt of successful iOS app token validation. At least one of (`ios_receipt` and `ios_secret`), `recaptcha_token`, or `play_integrity_token` must be specified to verify the verification code is being sent on behalf of a real app and not an emulator, if 'captcha_response' is not used (reCAPTCHA enterprise is not enabled). This should come from the response of verifyIosClient. If present, the caller should also provide the `ios_secret`, as well as a bundle ID in the `x-ios-bundle-identifier` header, which must match the bundle ID from the verifyIosClient request. */
@@ -1055,26 +977,24 @@ export interface GoogleCloudIdentitytoolkitV1SendVerificationCodeRequest {
   phoneNumber?: string;
 }
 
-export const GoogleCloudIdentitytoolkitV1SendVerificationCodeRequest: Schema.Schema<GoogleCloudIdentitytoolkitV1SendVerificationCodeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      iosReceipt: Schema.optional(Schema.String),
-      captchaResponse: Schema.optional(Schema.String),
-      autoRetrievalInfo: Schema.optional(
-        GoogleCloudIdentitytoolkitV1AutoRetrievalInfo,
-      ),
-      tenantId: Schema.optional(Schema.String),
-      iosSecret: Schema.optional(Schema.String),
-      recaptchaToken: Schema.optional(Schema.String),
-      recaptchaVersion: Schema.optional(Schema.String),
-      safetyNetToken: Schema.optional(Schema.String),
-      playIntegrityToken: Schema.optional(Schema.String),
-      clientType: Schema.optional(Schema.String),
-      phoneNumber: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIdentitytoolkitV1SendVerificationCodeRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    iosReceipt: Schema.optional(Schema.String),
+    captchaResponse: Schema.optional(Schema.String),
+    autoRetrievalInfo: Schema.optional(
+      GoogleCloudIdentitytoolkitV1AutoRetrievalInfo,
+    ),
+    tenantId: Schema.optional(Schema.String),
+    iosSecret: Schema.optional(Schema.String),
+    recaptchaToken: Schema.optional(Schema.String),
+    recaptchaVersion: Schema.optional(Schema.String),
+    safetyNetToken: Schema.optional(Schema.String),
+    playIntegrityToken: Schema.optional(Schema.String),
+    clientType: Schema.optional(Schema.String),
+    phoneNumber: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIdentitytoolkitV1SendVerificationCodeRequest",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1SendVerificationCodeRequest>;
+  });
 
 export interface GoogleCloudIdentitytoolkitV1SignInWithCustomTokenResponse {
   /** An Identity Platform refresh token for the authenticated user. */
@@ -1088,18 +1008,16 @@ export interface GoogleCloudIdentitytoolkitV1SignInWithCustomTokenResponse {
   isNewUser?: boolean;
 }
 
-export const GoogleCloudIdentitytoolkitV1SignInWithCustomTokenResponse: Schema.Schema<GoogleCloudIdentitytoolkitV1SignInWithCustomTokenResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      refreshToken: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      expiresIn: Schema.optional(Schema.String),
-      idToken: Schema.optional(Schema.String),
-      isNewUser: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudIdentitytoolkitV1SignInWithCustomTokenResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    refreshToken: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    expiresIn: Schema.optional(Schema.String),
+    idToken: Schema.optional(Schema.String),
+    isNewUser: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudIdentitytoolkitV1SignInWithCustomTokenResponse",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1SignInWithCustomTokenResponse>;
+  });
 
 export interface GoogleCloudIdentitytoolkitV1FederatedUserIdentifier {
   /** The user ID of the account at the third-party Identity Provider specified by `provider_id`. */
@@ -1108,15 +1026,13 @@ export interface GoogleCloudIdentitytoolkitV1FederatedUserIdentifier {
   providerId?: string;
 }
 
-export const GoogleCloudIdentitytoolkitV1FederatedUserIdentifier: Schema.Schema<GoogleCloudIdentitytoolkitV1FederatedUserIdentifier> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rawId: Schema.optional(Schema.String),
-      providerId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIdentitytoolkitV1FederatedUserIdentifier =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rawId: Schema.optional(Schema.String),
+    providerId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIdentitytoolkitV1FederatedUserIdentifier",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1FederatedUserIdentifier>;
+  });
 
 export interface GoogleCloudIdentitytoolkitV1SignInWithEmailLinkRequest {
   /** Required. The out-of-band code from the email link. */
@@ -1129,17 +1045,15 @@ export interface GoogleCloudIdentitytoolkitV1SignInWithEmailLinkRequest {
   tenantId?: string;
 }
 
-export const GoogleCloudIdentitytoolkitV1SignInWithEmailLinkRequest: Schema.Schema<GoogleCloudIdentitytoolkitV1SignInWithEmailLinkRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      oobCode: Schema.optional(Schema.String),
-      email: Schema.optional(Schema.String),
-      idToken: Schema.optional(Schema.String),
-      tenantId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIdentitytoolkitV1SignInWithEmailLinkRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    oobCode: Schema.optional(Schema.String),
+    email: Schema.optional(Schema.String),
+    idToken: Schema.optional(Schema.String),
+    tenantId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIdentitytoolkitV1SignInWithEmailLinkRequest",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1SignInWithEmailLinkRequest>;
+  });
 
 export interface GoogleCloudIdentitytoolkitV1ResetPasswordResponse {
   requestType?:
@@ -1160,18 +1074,16 @@ export interface GoogleCloudIdentitytoolkitV1ResetPasswordResponse {
   kind?: string;
 }
 
-export const GoogleCloudIdentitytoolkitV1ResetPasswordResponse: Schema.Schema<GoogleCloudIdentitytoolkitV1ResetPasswordResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestType: Schema.optional(Schema.String),
-      mfaInfo: Schema.optional(GoogleCloudIdentitytoolkitV1MfaEnrollment),
-      newEmail: Schema.optional(Schema.String),
-      email: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIdentitytoolkitV1ResetPasswordResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestType: Schema.optional(Schema.String),
+    mfaInfo: Schema.optional(GoogleCloudIdentitytoolkitV1MfaEnrollment),
+    newEmail: Schema.optional(Schema.String),
+    email: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIdentitytoolkitV1ResetPasswordResponse",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1ResetPasswordResponse>;
+  });
 
 export interface GoogleCloudIdentitytoolkitV1GetRecaptchaParamResponse {
   recaptchaStoken?: string;
@@ -1182,17 +1094,15 @@ export interface GoogleCloudIdentitytoolkitV1GetRecaptchaParamResponse {
   producerProjectNumber?: string;
 }
 
-export const GoogleCloudIdentitytoolkitV1GetRecaptchaParamResponse: Schema.Schema<GoogleCloudIdentitytoolkitV1GetRecaptchaParamResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      recaptchaStoken: Schema.optional(Schema.String),
-      recaptchaSiteKey: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      producerProjectNumber: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIdentitytoolkitV1GetRecaptchaParamResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    recaptchaStoken: Schema.optional(Schema.String),
+    recaptchaSiteKey: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    producerProjectNumber: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIdentitytoolkitV1GetRecaptchaParamResponse",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1GetRecaptchaParamResponse>;
+  });
 
 export interface GoogleCloudIdentitytoolkitV1QueryUserInfoResponse {
   /** If `return_user_info` in the request is true, this is the accounts matching the query. */
@@ -1201,17 +1111,15 @@ export interface GoogleCloudIdentitytoolkitV1QueryUserInfoResponse {
   recordsCount?: string;
 }
 
-export const GoogleCloudIdentitytoolkitV1QueryUserInfoResponse: Schema.Schema<GoogleCloudIdentitytoolkitV1QueryUserInfoResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userInfo: Schema.optional(
-        Schema.Array(GoogleCloudIdentitytoolkitV1UserInfo),
-      ),
-      recordsCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIdentitytoolkitV1QueryUserInfoResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userInfo: Schema.optional(
+      Schema.Array(GoogleCloudIdentitytoolkitV1UserInfo),
+    ),
+    recordsCount: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIdentitytoolkitV1QueryUserInfoResponse",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1QueryUserInfoResponse>;
+  });
 
 export interface GoogleCloudIdentitytoolkitV1CreateAuthUriRequest {
   otaApp?: string;
@@ -1240,29 +1148,27 @@ export interface GoogleCloudIdentitytoolkitV1CreateAuthUriRequest {
   providerId?: string;
 }
 
-export const GoogleCloudIdentitytoolkitV1CreateAuthUriRequest: Schema.Schema<GoogleCloudIdentitytoolkitV1CreateAuthUriRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      otaApp: Schema.optional(Schema.String),
-      sessionId: Schema.optional(Schema.String),
-      authFlowType: Schema.optional(Schema.String),
-      tenantId: Schema.optional(Schema.String),
-      hostedDomain: Schema.optional(Schema.String),
-      continueUri: Schema.optional(Schema.String),
-      oauthConsumerKey: Schema.optional(Schema.String),
-      customParameter: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      oauthScope: Schema.optional(Schema.String),
-      openidRealm: Schema.optional(Schema.String),
-      identifier: Schema.optional(Schema.String),
-      context: Schema.optional(Schema.String),
-      appId: Schema.optional(Schema.String),
-      providerId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIdentitytoolkitV1CreateAuthUriRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    otaApp: Schema.optional(Schema.String),
+    sessionId: Schema.optional(Schema.String),
+    authFlowType: Schema.optional(Schema.String),
+    tenantId: Schema.optional(Schema.String),
+    hostedDomain: Schema.optional(Schema.String),
+    continueUri: Schema.optional(Schema.String),
+    oauthConsumerKey: Schema.optional(Schema.String),
+    customParameter: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    oauthScope: Schema.optional(Schema.String),
+    openidRealm: Schema.optional(Schema.String),
+    identifier: Schema.optional(Schema.String),
+    context: Schema.optional(Schema.String),
+    appId: Schema.optional(Schema.String),
+    providerId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIdentitytoolkitV1CreateAuthUriRequest",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1CreateAuthUriRequest>;
+  });
 
 export interface GoogleCloudIdentitytoolkitV1GetOobCodeResponse {
   kind?: string;
@@ -1274,17 +1180,13 @@ export interface GoogleCloudIdentitytoolkitV1GetOobCodeResponse {
   oobLink?: string;
 }
 
-export const GoogleCloudIdentitytoolkitV1GetOobCodeResponse: Schema.Schema<GoogleCloudIdentitytoolkitV1GetOobCodeResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      oobCode: Schema.optional(Schema.String),
-      email: Schema.optional(Schema.String),
-      oobLink: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIdentitytoolkitV1GetOobCodeResponse",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1GetOobCodeResponse>;
+export const GoogleCloudIdentitytoolkitV1GetOobCodeResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    oobCode: Schema.optional(Schema.String),
+    email: Schema.optional(Schema.String),
+    oobLink: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudIdentitytoolkitV1GetOobCodeResponse" });
 
 export interface GoogleCloudIdentitytoolkitV1SignInWithPasswordRequest {
   /** The reCAPTCHA version of the reCAPTCHA token in the captcha_response. */
@@ -1316,25 +1218,23 @@ export interface GoogleCloudIdentitytoolkitV1SignInWithPasswordRequest {
     | (string & {});
 }
 
-export const GoogleCloudIdentitytoolkitV1SignInWithPasswordRequest: Schema.Schema<GoogleCloudIdentitytoolkitV1SignInWithPasswordRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      recaptchaVersion: Schema.optional(Schema.String),
-      idToken: Schema.optional(Schema.String),
-      tenantId: Schema.optional(Schema.String),
-      password: Schema.optional(Schema.String),
-      pendingIdToken: Schema.optional(Schema.String),
-      delegatedProjectNumber: Schema.optional(Schema.String),
-      email: Schema.optional(Schema.String),
-      captchaChallenge: Schema.optional(Schema.String),
-      captchaResponse: Schema.optional(Schema.String),
-      returnSecureToken: Schema.optional(Schema.Boolean),
-      instanceId: Schema.optional(Schema.String),
-      clientType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIdentitytoolkitV1SignInWithPasswordRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    recaptchaVersion: Schema.optional(Schema.String),
+    idToken: Schema.optional(Schema.String),
+    tenantId: Schema.optional(Schema.String),
+    password: Schema.optional(Schema.String),
+    pendingIdToken: Schema.optional(Schema.String),
+    delegatedProjectNumber: Schema.optional(Schema.String),
+    email: Schema.optional(Schema.String),
+    captchaChallenge: Schema.optional(Schema.String),
+    captchaResponse: Schema.optional(Schema.String),
+    returnSecureToken: Schema.optional(Schema.Boolean),
+    instanceId: Schema.optional(Schema.String),
+    clientType: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIdentitytoolkitV1SignInWithPasswordRequest",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1SignInWithPasswordRequest>;
+  });
 
 export interface GoogleCloudIdentitytoolkitV1UserNotification {
   /** Warning notification enum. Can be used for localization. */
@@ -1351,15 +1251,11 @@ export interface GoogleCloudIdentitytoolkitV1UserNotification {
   notificationMessage?: string;
 }
 
-export const GoogleCloudIdentitytoolkitV1UserNotification: Schema.Schema<GoogleCloudIdentitytoolkitV1UserNotification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      notificationCode: Schema.optional(Schema.String),
-      notificationMessage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIdentitytoolkitV1UserNotification",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1UserNotification>;
+export const GoogleCloudIdentitytoolkitV1UserNotification =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    notificationCode: Schema.optional(Schema.String),
+    notificationMessage: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudIdentitytoolkitV1UserNotification" });
 
 export interface GoogleCloudIdentitytoolkitV1SetAccountInfoRequest {
   /** The timestamp in milliseconds when the account was created. */
@@ -1423,42 +1319,40 @@ export interface GoogleCloudIdentitytoolkitV1SetAccountInfoRequest {
   validSince?: string;
 }
 
-export const GoogleCloudIdentitytoolkitV1SetAccountInfoRequest: Schema.Schema<GoogleCloudIdentitytoolkitV1SetAccountInfoRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createdAt: Schema.optional(Schema.String),
-      phoneNumber: Schema.optional(Schema.String),
-      emailVerified: Schema.optional(Schema.Boolean),
-      tenantId: Schema.optional(Schema.String),
-      password: Schema.optional(Schema.String),
-      lastLoginAt: Schema.optional(Schema.String),
-      upgradeToFederatedLogin: Schema.optional(Schema.Boolean),
-      linkProviderUserInfo: Schema.optional(
-        GoogleCloudIdentitytoolkitV1ProviderUserInfo,
-      ),
-      customAttributes: Schema.optional(Schema.String),
-      localId: Schema.optional(Schema.String),
-      disableUser: Schema.optional(Schema.Boolean),
-      email: Schema.optional(Schema.String),
-      oobCode: Schema.optional(Schema.String),
-      idToken: Schema.optional(Schema.String),
-      delegatedProjectNumber: Schema.optional(Schema.String),
-      deleteProvider: Schema.optional(Schema.Array(Schema.String)),
-      captchaChallenge: Schema.optional(Schema.String),
-      captchaResponse: Schema.optional(Schema.String),
-      provider: Schema.optional(Schema.Array(Schema.String)),
-      photoUrl: Schema.optional(Schema.String),
-      mfa: Schema.optional(GoogleCloudIdentitytoolkitV1MfaInfo),
-      displayName: Schema.optional(Schema.String),
-      instanceId: Schema.optional(Schema.String),
-      deleteAttribute: Schema.optional(Schema.Array(Schema.String)),
-      returnSecureToken: Schema.optional(Schema.Boolean),
-      targetProjectId: Schema.optional(Schema.String),
-      validSince: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIdentitytoolkitV1SetAccountInfoRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createdAt: Schema.optional(Schema.String),
+    phoneNumber: Schema.optional(Schema.String),
+    emailVerified: Schema.optional(Schema.Boolean),
+    tenantId: Schema.optional(Schema.String),
+    password: Schema.optional(Schema.String),
+    lastLoginAt: Schema.optional(Schema.String),
+    upgradeToFederatedLogin: Schema.optional(Schema.Boolean),
+    linkProviderUserInfo: Schema.optional(
+      GoogleCloudIdentitytoolkitV1ProviderUserInfo,
+    ),
+    customAttributes: Schema.optional(Schema.String),
+    localId: Schema.optional(Schema.String),
+    disableUser: Schema.optional(Schema.Boolean),
+    email: Schema.optional(Schema.String),
+    oobCode: Schema.optional(Schema.String),
+    idToken: Schema.optional(Schema.String),
+    delegatedProjectNumber: Schema.optional(Schema.String),
+    deleteProvider: Schema.optional(Schema.Array(Schema.String)),
+    captchaChallenge: Schema.optional(Schema.String),
+    captchaResponse: Schema.optional(Schema.String),
+    provider: Schema.optional(Schema.Array(Schema.String)),
+    photoUrl: Schema.optional(Schema.String),
+    mfa: Schema.optional(GoogleCloudIdentitytoolkitV1MfaInfo),
+    displayName: Schema.optional(Schema.String),
+    instanceId: Schema.optional(Schema.String),
+    deleteAttribute: Schema.optional(Schema.Array(Schema.String)),
+    returnSecureToken: Schema.optional(Schema.Boolean),
+    targetProjectId: Schema.optional(Schema.String),
+    validSince: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIdentitytoolkitV1SetAccountInfoRequest",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1SetAccountInfoRequest>;
+  });
 
 export interface GoogleCloudIdentitytoolkitV1SqlExpression {
   /** A case insensitive string that the account's email should match. Only one of `email`, `phone_number`, or `user_id` should be specified in a SqlExpression. If more than one is specified, only the first (in that order) will be applied. */
@@ -1469,30 +1363,24 @@ export interface GoogleCloudIdentitytoolkitV1SqlExpression {
   phoneNumber?: string;
 }
 
-export const GoogleCloudIdentitytoolkitV1SqlExpression: Schema.Schema<GoogleCloudIdentitytoolkitV1SqlExpression> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      email: Schema.optional(Schema.String),
-      userId: Schema.optional(Schema.String),
-      phoneNumber: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIdentitytoolkitV1SqlExpression",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1SqlExpression>;
+export const GoogleCloudIdentitytoolkitV1SqlExpression =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    email: Schema.optional(Schema.String),
+    userId: Schema.optional(Schema.String),
+    phoneNumber: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudIdentitytoolkitV1SqlExpression" });
 
 export interface GoogleCloudIdentitytoolkitV1SendVerificationCodeResponse {
   /** Encrypted session information. This can be used in signInWithPhoneNumber to authenticate the phone number. */
   sessionInfo?: string;
 }
 
-export const GoogleCloudIdentitytoolkitV1SendVerificationCodeResponse: Schema.Schema<GoogleCloudIdentitytoolkitV1SendVerificationCodeResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sessionInfo: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIdentitytoolkitV1SendVerificationCodeResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sessionInfo: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIdentitytoolkitV1SendVerificationCodeResponse",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1SendVerificationCodeResponse>;
+  });
 
 export interface GoogleCloudIdentitytoolkitV1SignInWithGameCenterRequest {
   /** The user's Game Center game player ID. A unique identifier for a player of the game. https://developer.apple.com/documentation/gamekit/gkplayer/3113960-gameplayerid */
@@ -1517,23 +1405,21 @@ export interface GoogleCloudIdentitytoolkitV1SignInWithGameCenterRequest {
   salt?: string;
 }
 
-export const GoogleCloudIdentitytoolkitV1SignInWithGameCenterRequest: Schema.Schema<GoogleCloudIdentitytoolkitV1SignInWithGameCenterRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gamePlayerId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      teamPlayerId: Schema.optional(Schema.String),
-      timestamp: Schema.optional(Schema.String),
-      publicKeyUrl: Schema.optional(Schema.String),
-      signature: Schema.optional(Schema.String),
-      idToken: Schema.optional(Schema.String),
-      tenantId: Schema.optional(Schema.String),
-      playerId: Schema.optional(Schema.String),
-      salt: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIdentitytoolkitV1SignInWithGameCenterRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gamePlayerId: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    teamPlayerId: Schema.optional(Schema.String),
+    timestamp: Schema.optional(Schema.String),
+    publicKeyUrl: Schema.optional(Schema.String),
+    signature: Schema.optional(Schema.String),
+    idToken: Schema.optional(Schema.String),
+    tenantId: Schema.optional(Schema.String),
+    playerId: Schema.optional(Schema.String),
+    salt: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIdentitytoolkitV1SignInWithGameCenterRequest",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1SignInWithGameCenterRequest>;
+  });
 
 export interface GoogleCloudIdentitytoolkitV1ErrorInfo {
   /** The index of the item, range is [0, request.size - 1] */
@@ -1542,15 +1428,11 @@ export interface GoogleCloudIdentitytoolkitV1ErrorInfo {
   message?: string;
 }
 
-export const GoogleCloudIdentitytoolkitV1ErrorInfo: Schema.Schema<GoogleCloudIdentitytoolkitV1ErrorInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      index: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIdentitytoolkitV1ErrorInfo",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1ErrorInfo>;
+export const GoogleCloudIdentitytoolkitV1ErrorInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    index: Schema.optional(Schema.Number),
+    message: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudIdentitytoolkitV1ErrorInfo" });
 
 export interface GoogleCloudIdentitytoolkitV1UploadAccountResponse {
   kind?: string;
@@ -1558,30 +1440,24 @@ export interface GoogleCloudIdentitytoolkitV1UploadAccountResponse {
   error?: Array<GoogleCloudIdentitytoolkitV1ErrorInfo>;
 }
 
-export const GoogleCloudIdentitytoolkitV1UploadAccountResponse: Schema.Schema<GoogleCloudIdentitytoolkitV1UploadAccountResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      error: Schema.optional(
-        Schema.Array(GoogleCloudIdentitytoolkitV1ErrorInfo),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudIdentitytoolkitV1UploadAccountResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    error: Schema.optional(Schema.Array(GoogleCloudIdentitytoolkitV1ErrorInfo)),
+  }).annotate({
     identifier: "GoogleCloudIdentitytoolkitV1UploadAccountResponse",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1UploadAccountResponse>;
+  });
 
 export interface GoogleCloudIdentitytoolkitV1DeleteAccountResponse {
   kind?: string;
 }
 
-export const GoogleCloudIdentitytoolkitV1DeleteAccountResponse: Schema.Schema<GoogleCloudIdentitytoolkitV1DeleteAccountResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIdentitytoolkitV1DeleteAccountResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIdentitytoolkitV1DeleteAccountResponse",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1DeleteAccountResponse>;
+  });
 
 export interface GoogleCloudIdentitytoolkitV1GetAccountInfoRequest {
   /** The phone number of one or more accounts to fetch. Should only be specified by authenticated requests from a developer and should be in E.164 format, for example, +15555555555. */
@@ -1602,41 +1478,37 @@ export interface GoogleCloudIdentitytoolkitV1GetAccountInfoRequest {
   delegatedProjectNumber?: string;
 }
 
-export const GoogleCloudIdentitytoolkitV1GetAccountInfoRequest: Schema.Schema<GoogleCloudIdentitytoolkitV1GetAccountInfoRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      phoneNumber: Schema.optional(Schema.Array(Schema.String)),
-      localId: Schema.optional(Schema.Array(Schema.String)),
-      initialEmail: Schema.optional(Schema.Array(Schema.String)),
-      federatedUserId: Schema.optional(
-        Schema.Array(GoogleCloudIdentitytoolkitV1FederatedUserIdentifier),
-      ),
-      email: Schema.optional(Schema.Array(Schema.String)),
-      idToken: Schema.optional(Schema.String),
-      tenantId: Schema.optional(Schema.String),
-      targetProjectId: Schema.optional(Schema.String),
-      delegatedProjectNumber: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIdentitytoolkitV1GetAccountInfoRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    phoneNumber: Schema.optional(Schema.Array(Schema.String)),
+    localId: Schema.optional(Schema.Array(Schema.String)),
+    initialEmail: Schema.optional(Schema.Array(Schema.String)),
+    federatedUserId: Schema.optional(
+      Schema.Array(GoogleCloudIdentitytoolkitV1FederatedUserIdentifier),
+    ),
+    email: Schema.optional(Schema.Array(Schema.String)),
+    idToken: Schema.optional(Schema.String),
+    tenantId: Schema.optional(Schema.String),
+    targetProjectId: Schema.optional(Schema.String),
+    delegatedProjectNumber: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIdentitytoolkitV1GetAccountInfoRequest",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1GetAccountInfoRequest>;
+  });
 
 export interface GoogleCloudIdentitytoolkitV1GetSessionCookiePublicKeysResponse {
   /** Public keys of the session cookie signer, formatted as [JSON Web Keys (JWK)](https://tools.ietf.org/html/rfc7517). */
   keys?: Array<GoogleCloudIdentitytoolkitV1OpenIdConnectKey>;
 }
 
-export const GoogleCloudIdentitytoolkitV1GetSessionCookiePublicKeysResponse: Schema.Schema<GoogleCloudIdentitytoolkitV1GetSessionCookiePublicKeysResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      keys: Schema.optional(
-        Schema.Array(GoogleCloudIdentitytoolkitV1OpenIdConnectKey),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudIdentitytoolkitV1GetSessionCookiePublicKeysResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    keys: Schema.optional(
+      Schema.Array(GoogleCloudIdentitytoolkitV1OpenIdConnectKey),
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudIdentitytoolkitV1GetSessionCookiePublicKeysResponse",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1GetSessionCookiePublicKeysResponse>;
+  });
 
 export interface GoogleCloudIdentitytoolkitV1SetAccountInfoResponse {
   kind?: string;
@@ -1664,27 +1536,25 @@ export interface GoogleCloudIdentitytoolkitV1SetAccountInfoResponse {
   photoUrl?: string;
 }
 
-export const GoogleCloudIdentitytoolkitV1SetAccountInfoResponse: Schema.Schema<GoogleCloudIdentitytoolkitV1SetAccountInfoResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      expiresIn: Schema.optional(Schema.String),
-      passwordHash: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      newEmail: Schema.optional(Schema.String),
-      localId: Schema.optional(Schema.String),
-      emailVerified: Schema.optional(Schema.Boolean),
-      refreshToken: Schema.optional(Schema.String),
-      idToken: Schema.optional(Schema.String),
-      providerUserInfo: Schema.optional(
-        Schema.Array(GoogleCloudIdentitytoolkitV1ProviderUserInfo),
-      ),
-      email: Schema.optional(Schema.String),
-      photoUrl: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIdentitytoolkitV1SetAccountInfoResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    expiresIn: Schema.optional(Schema.String),
+    passwordHash: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    newEmail: Schema.optional(Schema.String),
+    localId: Schema.optional(Schema.String),
+    emailVerified: Schema.optional(Schema.Boolean),
+    refreshToken: Schema.optional(Schema.String),
+    idToken: Schema.optional(Schema.String),
+    providerUserInfo: Schema.optional(
+      Schema.Array(GoogleCloudIdentitytoolkitV1ProviderUserInfo),
+    ),
+    email: Schema.optional(Schema.String),
+    photoUrl: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIdentitytoolkitV1SetAccountInfoResponse",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1SetAccountInfoResponse>;
+  });
 
 export interface GoogleCloudIdentitytoolkitV1DownloadAccountResponse {
   /** If there are more accounts to be downloaded, a token that can be passed back to DownloadAccount to get more accounts. Otherwise, this is blank. */
@@ -1694,32 +1564,26 @@ export interface GoogleCloudIdentitytoolkitV1DownloadAccountResponse {
   kind?: string;
 }
 
-export const GoogleCloudIdentitytoolkitV1DownloadAccountResponse: Schema.Schema<GoogleCloudIdentitytoolkitV1DownloadAccountResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      users: Schema.optional(
-        Schema.Array(GoogleCloudIdentitytoolkitV1UserInfo),
-      ),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIdentitytoolkitV1DownloadAccountResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    users: Schema.optional(Schema.Array(GoogleCloudIdentitytoolkitV1UserInfo)),
+    kind: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIdentitytoolkitV1DownloadAccountResponse",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1DownloadAccountResponse>;
+  });
 
 export interface GoogleCloudIdentitytoolkitV1CreateSessionCookieResponse {
   /** The session cookie that has been created from the Identity Platform ID token specified in the request. It is in the form of a JSON Web Token (JWT). Always present. */
   sessionCookie?: string;
 }
 
-export const GoogleCloudIdentitytoolkitV1CreateSessionCookieResponse: Schema.Schema<GoogleCloudIdentitytoolkitV1CreateSessionCookieResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sessionCookie: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIdentitytoolkitV1CreateSessionCookieResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sessionCookie: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIdentitytoolkitV1CreateSessionCookieResponse",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1CreateSessionCookieResponse>;
+  });
 
 export interface GoogleCloudIdentitytoolkitV1SignInWithPhoneNumberResponse {
   /** The id of the authenticated user. Present in the case of a successful authentication. In the case when the phone could be verified but the account operation could not be performed, a temporary proof will be returned instead. */
@@ -1744,23 +1608,21 @@ export interface GoogleCloudIdentitytoolkitV1SignInWithPhoneNumberResponse {
   verificationProof?: string;
 }
 
-export const GoogleCloudIdentitytoolkitV1SignInWithPhoneNumberResponse: Schema.Schema<GoogleCloudIdentitytoolkitV1SignInWithPhoneNumberResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      localId: Schema.optional(Schema.String),
-      refreshToken: Schema.optional(Schema.String),
-      phoneNumber: Schema.optional(Schema.String),
-      isNewUser: Schema.optional(Schema.Boolean),
-      expiresIn: Schema.optional(Schema.String),
-      temporaryProof: Schema.optional(Schema.String),
-      idToken: Schema.optional(Schema.String),
-      verificationProofExpiresIn: Schema.optional(Schema.String),
-      temporaryProofExpiresIn: Schema.optional(Schema.String),
-      verificationProof: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIdentitytoolkitV1SignInWithPhoneNumberResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    localId: Schema.optional(Schema.String),
+    refreshToken: Schema.optional(Schema.String),
+    phoneNumber: Schema.optional(Schema.String),
+    isNewUser: Schema.optional(Schema.Boolean),
+    expiresIn: Schema.optional(Schema.String),
+    temporaryProof: Schema.optional(Schema.String),
+    idToken: Schema.optional(Schema.String),
+    verificationProofExpiresIn: Schema.optional(Schema.String),
+    temporaryProofExpiresIn: Schema.optional(Schema.String),
+    verificationProof: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIdentitytoolkitV1SignInWithPhoneNumberResponse",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1SignInWithPhoneNumberResponse>;
+  });
 
 export interface GoogleCloudIdentitytoolkitV1SignInWithPasswordResponse {
   /** Whether the email is for an existing account. Always true. */
@@ -1793,32 +1655,30 @@ export interface GoogleCloudIdentitytoolkitV1SignInWithPasswordResponse {
   idToken?: string;
 }
 
-export const GoogleCloudIdentitytoolkitV1SignInWithPasswordResponse: Schema.Schema<GoogleCloudIdentitytoolkitV1SignInWithPasswordResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      registered: Schema.optional(Schema.Boolean),
-      refreshToken: Schema.optional(Schema.String),
-      mfaInfo: Schema.optional(
-        Schema.Array(GoogleCloudIdentitytoolkitV1MfaEnrollment),
-      ),
-      oauthExpireIn: Schema.optional(Schema.Number),
-      profilePicture: Schema.optional(Schema.String),
-      mfaPendingCredential: Schema.optional(Schema.String),
-      userNotifications: Schema.optional(
-        Schema.Array(GoogleCloudIdentitytoolkitV1UserNotification),
-      ),
-      displayName: Schema.optional(Schema.String),
-      localId: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      expiresIn: Schema.optional(Schema.String),
-      oauthAccessToken: Schema.optional(Schema.String),
-      oauthAuthorizationCode: Schema.optional(Schema.String),
-      email: Schema.optional(Schema.String),
-      idToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIdentitytoolkitV1SignInWithPasswordResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    registered: Schema.optional(Schema.Boolean),
+    refreshToken: Schema.optional(Schema.String),
+    mfaInfo: Schema.optional(
+      Schema.Array(GoogleCloudIdentitytoolkitV1MfaEnrollment),
+    ),
+    oauthExpireIn: Schema.optional(Schema.Number),
+    profilePicture: Schema.optional(Schema.String),
+    mfaPendingCredential: Schema.optional(Schema.String),
+    userNotifications: Schema.optional(
+      Schema.Array(GoogleCloudIdentitytoolkitV1UserNotification),
+    ),
+    displayName: Schema.optional(Schema.String),
+    localId: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    expiresIn: Schema.optional(Schema.String),
+    oauthAccessToken: Schema.optional(Schema.String),
+    oauthAuthorizationCode: Schema.optional(Schema.String),
+    email: Schema.optional(Schema.String),
+    idToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIdentitytoolkitV1SignInWithPasswordResponse",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1SignInWithPasswordResponse>;
+  });
 
 export interface GoogleCloudIdentitytoolkitV1IssueSamlResponseRequest {
   /** The Identity Platform ID token. It will be verified and then converted to a new SAMLResponse. */
@@ -1829,16 +1689,14 @@ export interface GoogleCloudIdentitytoolkitV1IssueSamlResponseRequest {
   samlAppEntityId?: string;
 }
 
-export const GoogleCloudIdentitytoolkitV1IssueSamlResponseRequest: Schema.Schema<GoogleCloudIdentitytoolkitV1IssueSamlResponseRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      idToken: Schema.optional(Schema.String),
-      rpId: Schema.optional(Schema.String),
-      samlAppEntityId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIdentitytoolkitV1IssueSamlResponseRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    idToken: Schema.optional(Schema.String),
+    rpId: Schema.optional(Schema.String),
+    samlAppEntityId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIdentitytoolkitV1IssueSamlResponseRequest",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1IssueSamlResponseRequest>;
+  });
 
 export interface GoogleCloudIdentitytoolkitV1ResetPasswordRequest {
   /** The current password of the account to be modified. Specify this and email to change an account's password without using an out-of-band code. */
@@ -1853,18 +1711,16 @@ export interface GoogleCloudIdentitytoolkitV1ResetPasswordRequest {
   newPassword?: string;
 }
 
-export const GoogleCloudIdentitytoolkitV1ResetPasswordRequest: Schema.Schema<GoogleCloudIdentitytoolkitV1ResetPasswordRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      oldPassword: Schema.optional(Schema.String),
-      oobCode: Schema.optional(Schema.String),
-      email: Schema.optional(Schema.String),
-      tenantId: Schema.optional(Schema.String),
-      newPassword: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIdentitytoolkitV1ResetPasswordRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    oldPassword: Schema.optional(Schema.String),
+    oobCode: Schema.optional(Schema.String),
+    email: Schema.optional(Schema.String),
+    tenantId: Schema.optional(Schema.String),
+    newPassword: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIdentitytoolkitV1ResetPasswordRequest",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1ResetPasswordRequest>;
+  });
 
 export interface GoogleCloudIdentitytoolkitV1SignInWithGameCenterResponse {
   /** The number of seconds until the ID token expires. */
@@ -1887,22 +1743,20 @@ export interface GoogleCloudIdentitytoolkitV1SignInWithGameCenterResponse {
   idToken?: string;
 }
 
-export const GoogleCloudIdentitytoolkitV1SignInWithGameCenterResponse: Schema.Schema<GoogleCloudIdentitytoolkitV1SignInWithGameCenterResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expiresIn: Schema.optional(Schema.String),
-      isNewUser: Schema.optional(Schema.Boolean),
-      refreshToken: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      teamPlayerId: Schema.optional(Schema.String),
-      localId: Schema.optional(Schema.String),
-      gamePlayerId: Schema.optional(Schema.String),
-      playerId: Schema.optional(Schema.String),
-      idToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIdentitytoolkitV1SignInWithGameCenterResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    expiresIn: Schema.optional(Schema.String),
+    isNewUser: Schema.optional(Schema.Boolean),
+    refreshToken: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    teamPlayerId: Schema.optional(Schema.String),
+    localId: Schema.optional(Schema.String),
+    gamePlayerId: Schema.optional(Schema.String),
+    playerId: Schema.optional(Schema.String),
+    idToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIdentitytoolkitV1SignInWithGameCenterResponse",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1SignInWithGameCenterResponse>;
+  });
 
 export interface GoogleCloudIdentitytoolkitV1SignUpResponse {
   /** The created user's email. */
@@ -1920,20 +1774,16 @@ export interface GoogleCloudIdentitytoolkitV1SignUpResponse {
   localId?: string;
 }
 
-export const GoogleCloudIdentitytoolkitV1SignUpResponse: Schema.Schema<GoogleCloudIdentitytoolkitV1SignUpResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      email: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      expiresIn: Schema.optional(Schema.String),
-      idToken: Schema.optional(Schema.String),
-      refreshToken: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      localId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIdentitytoolkitV1SignUpResponse",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1SignUpResponse>;
+export const GoogleCloudIdentitytoolkitV1SignUpResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    email: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    expiresIn: Schema.optional(Schema.String),
+    idToken: Schema.optional(Schema.String),
+    refreshToken: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    localId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudIdentitytoolkitV1SignUpResponse" });
 
 export interface GoogleCloudIdentitytoolkitV1SignInWithPhoneNumberRequest {
   /** The user's phone number to sign in with. This is necessary in the case of uing a temporary proof, in which case it must match the phone number that was authenticated in the request that generated the temporary proof. This field is ignored if a session info is passed. */
@@ -1959,21 +1809,19 @@ export interface GoogleCloudIdentitytoolkitV1SignInWithPhoneNumberRequest {
   tenantId?: string;
 }
 
-export const GoogleCloudIdentitytoolkitV1SignInWithPhoneNumberRequest: Schema.Schema<GoogleCloudIdentitytoolkitV1SignInWithPhoneNumberRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      phoneNumber: Schema.optional(Schema.String),
-      code: Schema.optional(Schema.String),
-      verificationProof: Schema.optional(Schema.String),
-      sessionInfo: Schema.optional(Schema.String),
-      temporaryProof: Schema.optional(Schema.String),
-      operation: Schema.optional(Schema.String),
-      idToken: Schema.optional(Schema.String),
-      tenantId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIdentitytoolkitV1SignInWithPhoneNumberRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    phoneNumber: Schema.optional(Schema.String),
+    code: Schema.optional(Schema.String),
+    verificationProof: Schema.optional(Schema.String),
+    sessionInfo: Schema.optional(Schema.String),
+    temporaryProof: Schema.optional(Schema.String),
+    operation: Schema.optional(Schema.String),
+    idToken: Schema.optional(Schema.String),
+    tenantId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIdentitytoolkitV1SignInWithPhoneNumberRequest",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1SignInWithPhoneNumberRequest>;
+  });
 
 export interface GoogleCloudIdentitytoolkitV1QueryUserInfoRequest {
   /** The number of accounts to skip from the beginning of matching records. Only valid when `return_user_info` is set to `true`. */
@@ -1996,22 +1844,20 @@ export interface GoogleCloudIdentitytoolkitV1QueryUserInfoRequest {
   order?: "ORDER_UNSPECIFIED" | "ASC" | "DESC" | (string & {});
 }
 
-export const GoogleCloudIdentitytoolkitV1QueryUserInfoRequest: Schema.Schema<GoogleCloudIdentitytoolkitV1QueryUserInfoRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      offset: Schema.optional(Schema.String),
-      sortBy: Schema.optional(Schema.String),
-      expression: Schema.optional(
-        Schema.Array(GoogleCloudIdentitytoolkitV1SqlExpression),
-      ),
-      returnUserInfo: Schema.optional(Schema.Boolean),
-      tenantId: Schema.optional(Schema.String),
-      limit: Schema.optional(Schema.String),
-      order: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudIdentitytoolkitV1QueryUserInfoRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    offset: Schema.optional(Schema.String),
+    sortBy: Schema.optional(Schema.String),
+    expression: Schema.optional(
+      Schema.Array(GoogleCloudIdentitytoolkitV1SqlExpression),
+    ),
+    returnUserInfo: Schema.optional(Schema.Boolean),
+    tenantId: Schema.optional(Schema.String),
+    limit: Schema.optional(Schema.String),
+    order: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudIdentitytoolkitV1QueryUserInfoRequest",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1QueryUserInfoRequest>;
+  });
 
 export interface GoogleCloudIdentitytoolkitV1VerifyIosClientRequest {
   /** A device token that the iOS client gets after registering to APNs (Apple Push Notification service). */
@@ -2020,15 +1866,13 @@ export interface GoogleCloudIdentitytoolkitV1VerifyIosClientRequest {
   isSandbox?: boolean;
 }
 
-export const GoogleCloudIdentitytoolkitV1VerifyIosClientRequest: Schema.Schema<GoogleCloudIdentitytoolkitV1VerifyIosClientRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      appToken: Schema.optional(Schema.String),
-      isSandbox: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudIdentitytoolkitV1VerifyIosClientRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    appToken: Schema.optional(Schema.String),
+    isSandbox: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudIdentitytoolkitV1VerifyIosClientRequest",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1VerifyIosClientRequest>;
+  });
 
 export interface GoogleCloudIdentitytoolkitV1GetOobCodeRequest {
   /** The tenant ID of the Identity Platform tenant the account belongs to. */
@@ -2092,34 +1936,30 @@ export interface GoogleCloudIdentitytoolkitV1GetOobCodeRequest {
   dynamicLinkDomain?: string;
 }
 
-export const GoogleCloudIdentitytoolkitV1GetOobCodeRequest: Schema.Schema<GoogleCloudIdentitytoolkitV1GetOobCodeRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tenantId: Schema.optional(Schema.String),
-      continueUrl: Schema.optional(Schema.String),
-      userIp: Schema.optional(Schema.String),
-      iOSBundleId: Schema.optional(Schema.String),
-      androidMinimumVersion: Schema.optional(Schema.String),
-      androidPackageName: Schema.optional(Schema.String),
-      email: Schema.optional(Schema.String),
-      canHandleCodeInApp: Schema.optional(Schema.Boolean),
-      challenge: Schema.optional(Schema.String),
-      idToken: Schema.optional(Schema.String),
-      targetProjectId: Schema.optional(Schema.String),
-      iOSAppStoreId: Schema.optional(Schema.String),
-      returnOobLink: Schema.optional(Schema.Boolean),
-      recaptchaVersion: Schema.optional(Schema.String),
-      captchaResp: Schema.optional(Schema.String),
-      androidInstallApp: Schema.optional(Schema.Boolean),
-      clientType: Schema.optional(Schema.String),
-      requestType: Schema.optional(Schema.String),
-      linkDomain: Schema.optional(Schema.String),
-      newEmail: Schema.optional(Schema.String),
-      dynamicLinkDomain: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudIdentitytoolkitV1GetOobCodeRequest",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1GetOobCodeRequest>;
+export const GoogleCloudIdentitytoolkitV1GetOobCodeRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tenantId: Schema.optional(Schema.String),
+    continueUrl: Schema.optional(Schema.String),
+    userIp: Schema.optional(Schema.String),
+    iOSBundleId: Schema.optional(Schema.String),
+    androidMinimumVersion: Schema.optional(Schema.String),
+    androidPackageName: Schema.optional(Schema.String),
+    email: Schema.optional(Schema.String),
+    canHandleCodeInApp: Schema.optional(Schema.Boolean),
+    challenge: Schema.optional(Schema.String),
+    idToken: Schema.optional(Schema.String),
+    targetProjectId: Schema.optional(Schema.String),
+    iOSAppStoreId: Schema.optional(Schema.String),
+    returnOobLink: Schema.optional(Schema.Boolean),
+    recaptchaVersion: Schema.optional(Schema.String),
+    captchaResp: Schema.optional(Schema.String),
+    androidInstallApp: Schema.optional(Schema.Boolean),
+    clientType: Schema.optional(Schema.String),
+    requestType: Schema.optional(Schema.String),
+    linkDomain: Schema.optional(Schema.String),
+    newEmail: Schema.optional(Schema.String),
+    dynamicLinkDomain: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudIdentitytoolkitV1GetOobCodeRequest" });
 
 export interface GoogleCloudIdentitytoolkitV1GetAccountInfoResponse {
   kind?: string;
@@ -2127,17 +1967,13 @@ export interface GoogleCloudIdentitytoolkitV1GetAccountInfoResponse {
   users?: Array<GoogleCloudIdentitytoolkitV1UserInfo>;
 }
 
-export const GoogleCloudIdentitytoolkitV1GetAccountInfoResponse: Schema.Schema<GoogleCloudIdentitytoolkitV1GetAccountInfoResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      users: Schema.optional(
-        Schema.Array(GoogleCloudIdentitytoolkitV1UserInfo),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudIdentitytoolkitV1GetAccountInfoResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    users: Schema.optional(Schema.Array(GoogleCloudIdentitytoolkitV1UserInfo)),
+  }).annotate({
     identifier: "GoogleCloudIdentitytoolkitV1GetAccountInfoResponse",
-  }) as any as Schema.Schema<GoogleCloudIdentitytoolkitV1GetAccountInfoResponse>;
+  });
 
 // ==========================================================================
 // Operations

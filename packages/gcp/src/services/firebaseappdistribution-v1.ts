@@ -27,28 +27,22 @@ export interface GoogleFirebaseAppdistroV1BatchRemoveTestersRequest {
   emails?: Array<string>;
 }
 
-export const GoogleFirebaseAppdistroV1BatchRemoveTestersRequest: Schema.Schema<GoogleFirebaseAppdistroV1BatchRemoveTestersRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      emails: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppdistroV1BatchRemoveTestersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    emails: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleFirebaseAppdistroV1BatchRemoveTestersRequest",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1BatchRemoveTestersRequest>;
+  });
 
 export interface GoogleFirebaseAppdistroV1ReleaseNotes {
   /** The text of the release notes. */
   text?: string;
 }
 
-export const GoogleFirebaseAppdistroV1ReleaseNotes: Schema.Schema<GoogleFirebaseAppdistroV1ReleaseNotes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppdistroV1ReleaseNotes",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1ReleaseNotes>;
+export const GoogleFirebaseAppdistroV1ReleaseNotes =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirebaseAppdistroV1ReleaseNotes" });
 
 export interface GoogleFirebaseAppdistroV1Release {
   /** Output only. The time the release will expire. */
@@ -73,23 +67,19 @@ export interface GoogleFirebaseAppdistroV1Release {
   updateTime?: string;
 }
 
-export const GoogleFirebaseAppdistroV1Release: Schema.Schema<GoogleFirebaseAppdistroV1Release> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expireTime: Schema.optional(Schema.String),
-      firebaseConsoleUri: Schema.optional(Schema.String),
-      releaseNotes: Schema.optional(GoogleFirebaseAppdistroV1ReleaseNotes),
-      binaryDownloadUri: Schema.optional(Schema.String),
-      buildVersion: Schema.optional(Schema.String),
-      displayVersion: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      testingUri: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppdistroV1Release",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1Release>;
+export const GoogleFirebaseAppdistroV1Release =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    expireTime: Schema.optional(Schema.String),
+    firebaseConsoleUri: Schema.optional(Schema.String),
+    releaseNotes: Schema.optional(GoogleFirebaseAppdistroV1ReleaseNotes),
+    binaryDownloadUri: Schema.optional(Schema.String),
+    buildVersion: Schema.optional(Schema.String),
+    displayVersion: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    testingUri: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirebaseAppdistroV1Release" });
 
 export interface GoogleFirebaseAppdistroV1Group {
   /** The name of the group resource. Format: `projects/{project_number}/groups/{group_alias}` */
@@ -104,32 +94,26 @@ export interface GoogleFirebaseAppdistroV1Group {
   displayName?: string;
 }
 
-export const GoogleFirebaseAppdistroV1Group: Schema.Schema<GoogleFirebaseAppdistroV1Group> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      testerCount: Schema.optional(Schema.Number),
-      inviteLinkCount: Schema.optional(Schema.Number),
-      releaseCount: Schema.optional(Schema.Number),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppdistroV1Group",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1Group>;
+export const GoogleFirebaseAppdistroV1Group =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    testerCount: Schema.optional(Schema.Number),
+    inviteLinkCount: Schema.optional(Schema.Number),
+    releaseCount: Schema.optional(Schema.Number),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirebaseAppdistroV1Group" });
 
 export interface GoogleFirebaseAppdistroV1BatchAddTestersRequest {
   /** Required. The email addresses of the tester resources to create. A maximum of 999 and a minimum of 1 tester can be created in a batch. */
   emails?: Array<string>;
 }
 
-export const GoogleFirebaseAppdistroV1BatchAddTestersRequest: Schema.Schema<GoogleFirebaseAppdistroV1BatchAddTestersRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      emails: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppdistroV1BatchAddTestersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    emails: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleFirebaseAppdistroV1BatchAddTestersRequest",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1BatchAddTestersRequest>;
+  });
 
 export interface GoogleRpcStatus {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
@@ -140,25 +124,19 @@ export interface GoogleRpcStatus {
   code?: number;
 }
 
-export const GoogleRpcStatus: Schema.Schema<GoogleRpcStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      message: Schema.optional(Schema.String),
-      code: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleRpcStatus",
-  }) as any as Schema.Schema<GoogleRpcStatus>;
+export const GoogleRpcStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  message: Schema.optional(Schema.String),
+  code: Schema.optional(Schema.Number),
+}).annotate({ identifier: "GoogleRpcStatus" });
 
 export interface GoogleProtobufEmpty {}
 
-export const GoogleProtobufEmpty: Schema.Schema<GoogleProtobufEmpty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "GoogleProtobufEmpty",
-  }) as any as Schema.Schema<GoogleProtobufEmpty>;
+export const GoogleProtobufEmpty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "GoogleProtobufEmpty" });
 
 export interface GdataObjectId {
   /** The name of the object. */
@@ -169,16 +147,11 @@ export interface GdataObjectId {
   bucketName?: string;
 }
 
-export const GdataObjectId: Schema.Schema<GdataObjectId> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      objectName: Schema.optional(Schema.String),
-      generation: Schema.optional(Schema.String),
-      bucketName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GdataObjectId",
-  }) as any as Schema.Schema<GdataObjectId>;
+export const GdataObjectId = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  objectName: Schema.optional(Schema.String),
+  generation: Schema.optional(Schema.String),
+  bucketName: Schema.optional(Schema.String),
+}).annotate({ identifier: "GdataObjectId" });
 
 export interface GoogleLongrunningOperation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
@@ -193,18 +166,14 @@ export interface GoogleLongrunningOperation {
   response?: Record<string, unknown>;
 }
 
-export const GoogleLongrunningOperation: Schema.Schema<GoogleLongrunningOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-      error: Schema.optional(GoogleRpcStatus),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
-    identifier: "GoogleLongrunningOperation",
-  }) as any as Schema.Schema<GoogleLongrunningOperation>;
+export const GoogleLongrunningOperation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    done: Schema.optional(Schema.Boolean),
+    name: Schema.optional(Schema.String),
+    error: Schema.optional(GoogleRpcStatus),
+    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "GoogleLongrunningOperation" });
 
 export interface GoogleLongrunningListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -215,16 +184,12 @@ export interface GoogleLongrunningListOperationsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleLongrunningListOperationsResponse: Schema.Schema<GoogleLongrunningListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleLongrunningListOperationsResponse",
-  }) as any as Schema.Schema<GoogleLongrunningListOperationsResponse>;
+export const GoogleLongrunningListOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleLongrunningListOperationsResponse" });
 
 export interface GdataDownloadParameters {
   /** Determining whether or not Apiary should skip the inclusion of any Content-Range header on its response to Scotty. */
@@ -233,15 +198,11 @@ export interface GdataDownloadParameters {
   allowGzipCompression?: boolean;
 }
 
-export const GdataDownloadParameters: Schema.Schema<GdataDownloadParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ignoreRange: Schema.optional(Schema.Boolean),
-      allowGzipCompression: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GdataDownloadParameters",
-  }) as any as Schema.Schema<GdataDownloadParameters>;
+export const GdataDownloadParameters =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ignoreRange: Schema.optional(Schema.Boolean),
+    allowGzipCompression: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GdataDownloadParameters" });
 
 export interface GdataBlobstore2Info {
   /** A serialized Object Fragment List Creation Info passed from Bigstore -> Scotty for a GCS upload. This field must never be consumed outside of Bigstore, and is not applicable to non-GCS media uploads. */
@@ -260,20 +221,15 @@ export interface GdataBlobstore2Info {
   downloadExternalReadToken?: string;
 }
 
-export const GdataBlobstore2Info: Schema.Schema<GdataBlobstore2Info> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uploadFragmentListCreationInfo: Schema.optional(Schema.String),
-      uploadMetadataContainer: Schema.optional(Schema.String),
-      readToken: Schema.optional(Schema.String),
-      downloadReadHandle: Schema.optional(Schema.String),
-      blobId: Schema.optional(Schema.String),
-      blobGeneration: Schema.optional(Schema.String),
-      downloadExternalReadToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GdataBlobstore2Info",
-  }) as any as Schema.Schema<GdataBlobstore2Info>;
+export const GdataBlobstore2Info = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  uploadFragmentListCreationInfo: Schema.optional(Schema.String),
+  uploadMetadataContainer: Schema.optional(Schema.String),
+  readToken: Schema.optional(Schema.String),
+  downloadReadHandle: Schema.optional(Schema.String),
+  blobId: Schema.optional(Schema.String),
+  blobGeneration: Schema.optional(Schema.String),
+  downloadExternalReadToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "GdataBlobstore2Info" });
 
 export interface GdataCompositeMedia {
   /** A binary data reference for a media download. Serves as a technology-agnostic binary reference in some Google infrastructure. This value is a serialized storage_cosmo.BinaryReference proto. Storing it as bytes is a hack to get around the fact that the cosmo proto (as well as others it includes) doesn't support JavaScript. This prevents us from including the actual type of this field. */
@@ -306,24 +262,19 @@ export interface GdataCompositeMedia {
   path?: string;
 }
 
-export const GdataCompositeMedia: Schema.Schema<GdataCompositeMedia> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cosmoBinaryReference: Schema.optional(Schema.String),
-      blobstore2Info: Schema.optional(GdataBlobstore2Info),
-      md5Hash: Schema.optional(Schema.String),
-      objectId: Schema.optional(GdataObjectId),
-      blobRef: Schema.optional(Schema.String),
-      crc32cHash: Schema.optional(Schema.Number),
-      inline: Schema.optional(Schema.String),
-      length: Schema.optional(Schema.String),
-      referenceType: Schema.optional(Schema.String),
-      sha1Hash: Schema.optional(Schema.String),
-      path: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GdataCompositeMedia",
-  }) as any as Schema.Schema<GdataCompositeMedia>;
+export const GdataCompositeMedia = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cosmoBinaryReference: Schema.optional(Schema.String),
+  blobstore2Info: Schema.optional(GdataBlobstore2Info),
+  md5Hash: Schema.optional(Schema.String),
+  objectId: Schema.optional(GdataObjectId),
+  blobRef: Schema.optional(Schema.String),
+  crc32cHash: Schema.optional(Schema.Number),
+  inline: Schema.optional(Schema.String),
+  length: Schema.optional(Schema.String),
+  referenceType: Schema.optional(Schema.String),
+  sha1Hash: Schema.optional(Schema.String),
+  path: Schema.optional(Schema.String),
+}).annotate({ identifier: "GdataCompositeMedia" });
 
 export interface GdataDiffChecksumsResponse {
   /** If set, calculate the checksums based on the contents and return them to the caller. */
@@ -338,18 +289,14 @@ export interface GdataDiffChecksumsResponse {
   checksumsLocation?: GdataCompositeMedia;
 }
 
-export const GdataDiffChecksumsResponse: Schema.Schema<GdataDiffChecksumsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      objectLocation: Schema.optional(GdataCompositeMedia),
-      objectVersion: Schema.optional(Schema.String),
-      objectSizeBytes: Schema.optional(Schema.String),
-      chunkSizeBytes: Schema.optional(Schema.String),
-      checksumsLocation: Schema.optional(GdataCompositeMedia),
-    }),
-  ).annotate({
-    identifier: "GdataDiffChecksumsResponse",
-  }) as any as Schema.Schema<GdataDiffChecksumsResponse>;
+export const GdataDiffChecksumsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    objectLocation: Schema.optional(GdataCompositeMedia),
+    objectVersion: Schema.optional(Schema.String),
+    objectSizeBytes: Schema.optional(Schema.String),
+    chunkSizeBytes: Schema.optional(Schema.String),
+    checksumsLocation: Schema.optional(GdataCompositeMedia),
+  }).annotate({ identifier: "GdataDiffChecksumsResponse" });
 
 export interface GdataDiffUploadRequest {
   /** The location of the new object. Agents must clone the object located here, as the upload server will delete the contents once a response is received. */
@@ -360,30 +307,23 @@ export interface GdataDiffUploadRequest {
   checksumsInfo?: GdataCompositeMedia;
 }
 
-export const GdataDiffUploadRequest: Schema.Schema<GdataDiffUploadRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      objectInfo: Schema.optional(GdataCompositeMedia),
-      objectVersion: Schema.optional(Schema.String),
-      checksumsInfo: Schema.optional(GdataCompositeMedia),
-    }),
-  ).annotate({
-    identifier: "GdataDiffUploadRequest",
-  }) as any as Schema.Schema<GdataDiffUploadRequest>;
+export const GdataDiffUploadRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    objectInfo: Schema.optional(GdataCompositeMedia),
+    objectVersion: Schema.optional(Schema.String),
+    checksumsInfo: Schema.optional(GdataCompositeMedia),
+  },
+).annotate({ identifier: "GdataDiffUploadRequest" });
 
 export interface GdataDiffDownloadResponse {
   /** The original object location. */
   objectLocation?: GdataCompositeMedia;
 }
 
-export const GdataDiffDownloadResponse: Schema.Schema<GdataDiffDownloadResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      objectLocation: Schema.optional(GdataCompositeMedia),
-    }),
-  ).annotate({
-    identifier: "GdataDiffDownloadResponse",
-  }) as any as Schema.Schema<GdataDiffDownloadResponse>;
+export const GdataDiffDownloadResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    objectLocation: Schema.optional(GdataCompositeMedia),
+  }).annotate({ identifier: "GdataDiffDownloadResponse" });
 
 export interface GdataDiffVersionResponse {
   /** The version of the object stored at the server. */
@@ -392,15 +332,11 @@ export interface GdataDiffVersionResponse {
   objectSizeBytes?: string;
 }
 
-export const GdataDiffVersionResponse: Schema.Schema<GdataDiffVersionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      objectVersion: Schema.optional(Schema.String),
-      objectSizeBytes: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GdataDiffVersionResponse",
-  }) as any as Schema.Schema<GdataDiffVersionResponse>;
+export const GdataDiffVersionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    objectVersion: Schema.optional(Schema.String),
+    objectSizeBytes: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GdataDiffVersionResponse" });
 
 export interface GdataContentTypeInfo {
   /** The content type of the file derived from the file extension of the URL path. The URL path is assumed to represent a file name (which is typically only true for agents that are providing a REST API). */
@@ -419,20 +355,15 @@ export interface GdataContentTypeInfo {
   fromBytes?: string;
 }
 
-export const GdataContentTypeInfo: Schema.Schema<GdataContentTypeInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fromUrlPath: Schema.optional(Schema.String),
-      fusionIdDetectionMetadata: Schema.optional(Schema.String),
-      bestGuess: Schema.optional(Schema.String),
-      fromHeader: Schema.optional(Schema.String),
-      fromFusionId: Schema.optional(Schema.String),
-      fromFileName: Schema.optional(Schema.String),
-      fromBytes: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GdataContentTypeInfo",
-  }) as any as Schema.Schema<GdataContentTypeInfo>;
+export const GdataContentTypeInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fromUrlPath: Schema.optional(Schema.String),
+  fusionIdDetectionMetadata: Schema.optional(Schema.String),
+  bestGuess: Schema.optional(Schema.String),
+  fromHeader: Schema.optional(Schema.String),
+  fromFusionId: Schema.optional(Schema.String),
+  fromFileName: Schema.optional(Schema.String),
+  fromBytes: Schema.optional(Schema.String),
+}).annotate({ identifier: "GdataContentTypeInfo" });
 
 export interface GdataDiffUploadResponse {
   /** The object version of the object at the server. Must be included in the end notification response. The version in the end notification response must correspond to the new version of the object that is now stored at the server, after the upload. */
@@ -441,15 +372,11 @@ export interface GdataDiffUploadResponse {
   originalObject?: GdataCompositeMedia;
 }
 
-export const GdataDiffUploadResponse: Schema.Schema<GdataDiffUploadResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      objectVersion: Schema.optional(Schema.String),
-      originalObject: Schema.optional(GdataCompositeMedia),
-    }),
-  ).annotate({
-    identifier: "GdataDiffUploadResponse",
-  }) as any as Schema.Schema<GdataDiffUploadResponse>;
+export const GdataDiffUploadResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    objectVersion: Schema.optional(Schema.String),
+    originalObject: Schema.optional(GdataCompositeMedia),
+  }).annotate({ identifier: "GdataDiffUploadResponse" });
 
 export interface GdataMedia {
   /** A unique fingerprint/version id for the media data */
@@ -528,55 +455,48 @@ export interface GdataMedia {
   bigstoreObjectRef?: string;
 }
 
-export const GdataMedia: Schema.Schema<GdataMedia> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      token: Schema.optional(Schema.String),
-      downloadParameters: Schema.optional(GdataDownloadParameters),
-      isPotentialRetry: Schema.optional(Schema.Boolean),
-      diffChecksumsResponse: Schema.optional(GdataDiffChecksumsResponse),
-      crc32cHash: Schema.optional(Schema.Number),
-      diffUploadRequest: Schema.optional(GdataDiffUploadRequest),
-      blobRef: Schema.optional(Schema.String),
-      diffDownloadResponse: Schema.optional(GdataDiffDownloadResponse),
-      inline: Schema.optional(Schema.String),
-      length: Schema.optional(Schema.String),
-      contentType: Schema.optional(Schema.String),
-      diffVersionResponse: Schema.optional(GdataDiffVersionResponse),
-      filename: Schema.optional(Schema.String),
-      hashVerified: Schema.optional(Schema.Boolean),
-      algorithm: Schema.optional(Schema.String),
-      blobstore2Info: Schema.optional(GdataBlobstore2Info),
-      md5Hash: Schema.optional(Schema.String),
-      objectId: Schema.optional(GdataObjectId),
-      hash: Schema.optional(Schema.String),
-      mediaId: Schema.optional(Schema.String),
-      contentTypeInfo: Schema.optional(GdataContentTypeInfo),
-      diffUploadResponse: Schema.optional(GdataDiffUploadResponse),
-      timestamp: Schema.optional(Schema.String),
-      cosmoBinaryReference: Schema.optional(Schema.String),
-      sha256Hash: Schema.optional(Schema.String),
-      path: Schema.optional(Schema.String),
-      referenceType: Schema.optional(Schema.String),
-      sha1Hash: Schema.optional(Schema.String),
-      compositeMedia: Schema.optional(Schema.Array(GdataCompositeMedia)),
-      bigstoreObjectRef: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "GdataMedia" }) as any as Schema.Schema<GdataMedia>;
+export const GdataMedia = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  token: Schema.optional(Schema.String),
+  downloadParameters: Schema.optional(GdataDownloadParameters),
+  isPotentialRetry: Schema.optional(Schema.Boolean),
+  diffChecksumsResponse: Schema.optional(GdataDiffChecksumsResponse),
+  crc32cHash: Schema.optional(Schema.Number),
+  diffUploadRequest: Schema.optional(GdataDiffUploadRequest),
+  blobRef: Schema.optional(Schema.String),
+  diffDownloadResponse: Schema.optional(GdataDiffDownloadResponse),
+  inline: Schema.optional(Schema.String),
+  length: Schema.optional(Schema.String),
+  contentType: Schema.optional(Schema.String),
+  diffVersionResponse: Schema.optional(GdataDiffVersionResponse),
+  filename: Schema.optional(Schema.String),
+  hashVerified: Schema.optional(Schema.Boolean),
+  algorithm: Schema.optional(Schema.String),
+  blobstore2Info: Schema.optional(GdataBlobstore2Info),
+  md5Hash: Schema.optional(Schema.String),
+  objectId: Schema.optional(GdataObjectId),
+  hash: Schema.optional(Schema.String),
+  mediaId: Schema.optional(Schema.String),
+  contentTypeInfo: Schema.optional(GdataContentTypeInfo),
+  diffUploadResponse: Schema.optional(GdataDiffUploadResponse),
+  timestamp: Schema.optional(Schema.String),
+  cosmoBinaryReference: Schema.optional(Schema.String),
+  sha256Hash: Schema.optional(Schema.String),
+  path: Schema.optional(Schema.String),
+  referenceType: Schema.optional(Schema.String),
+  sha1Hash: Schema.optional(Schema.String),
+  compositeMedia: Schema.optional(Schema.Array(GdataCompositeMedia)),
+  bigstoreObjectRef: Schema.optional(Schema.String),
+}).annotate({ identifier: "GdataMedia" });
 
 export interface GoogleFirebaseAppdistroV1UploadReleaseRequest {
   /** Binary to upload */
   blob?: GdataMedia;
 }
 
-export const GoogleFirebaseAppdistroV1UploadReleaseRequest: Schema.Schema<GoogleFirebaseAppdistroV1UploadReleaseRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      blob: Schema.optional(GdataMedia),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppdistroV1UploadReleaseRequest",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1UploadReleaseRequest>;
+export const GoogleFirebaseAppdistroV1UploadReleaseRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    blob: Schema.optional(GdataMedia),
+  }).annotate({ identifier: "GoogleFirebaseAppdistroV1UploadReleaseRequest" });
 
 export interface GoogleFirebaseAppdistroV1Tester {
   /** The resource names of the groups this tester belongs to. */
@@ -589,31 +509,25 @@ export interface GoogleFirebaseAppdistroV1Tester {
   lastActivityTime?: string;
 }
 
-export const GoogleFirebaseAppdistroV1Tester: Schema.Schema<GoogleFirebaseAppdistroV1Tester> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      groups: Schema.optional(Schema.Array(Schema.String)),
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      lastActivityTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppdistroV1Tester",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1Tester>;
+export const GoogleFirebaseAppdistroV1Tester =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groups: Schema.optional(Schema.Array(Schema.String)),
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    lastActivityTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirebaseAppdistroV1Tester" });
 
 export interface GoogleFirebaseAppdistroV1BatchAddTestersResponse {
   /** The testers which are created and/or already exist */
   testers?: Array<GoogleFirebaseAppdistroV1Tester>;
 }
 
-export const GoogleFirebaseAppdistroV1BatchAddTestersResponse: Schema.Schema<GoogleFirebaseAppdistroV1BatchAddTestersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      testers: Schema.optional(Schema.Array(GoogleFirebaseAppdistroV1Tester)),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppdistroV1BatchAddTestersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    testers: Schema.optional(Schema.Array(GoogleFirebaseAppdistroV1Tester)),
+  }).annotate({
     identifier: "GoogleFirebaseAppdistroV1BatchAddTestersResponse",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1BatchAddTestersResponse>;
+  });
 
 export interface GoogleFirebaseAppdistroV1TestCertificate {
   /** Hex string of SHA256 hash of the test certificate used to resign the AAB */
@@ -624,30 +538,24 @@ export interface GoogleFirebaseAppdistroV1TestCertificate {
   hashSha1?: string;
 }
 
-export const GoogleFirebaseAppdistroV1TestCertificate: Schema.Schema<GoogleFirebaseAppdistroV1TestCertificate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hashSha256: Schema.optional(Schema.String),
-      hashMd5: Schema.optional(Schema.String),
-      hashSha1: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppdistroV1TestCertificate",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1TestCertificate>;
+export const GoogleFirebaseAppdistroV1TestCertificate =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    hashSha256: Schema.optional(Schema.String),
+    hashMd5: Schema.optional(Schema.String),
+    hashSha1: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirebaseAppdistroV1TestCertificate" });
 
 export interface GoogleFirebaseAppdistroV1BatchRemoveTestersResponse {
   /** List of deleted tester emails */
   emails?: Array<string>;
 }
 
-export const GoogleFirebaseAppdistroV1BatchRemoveTestersResponse: Schema.Schema<GoogleFirebaseAppdistroV1BatchRemoveTestersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      emails: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppdistroV1BatchRemoveTestersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    emails: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleFirebaseAppdistroV1BatchRemoveTestersResponse",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1BatchRemoveTestersResponse>;
+  });
 
 export interface GoogleFirebaseAppdistroV1UploadReleaseResponse {
   /** Result of upload release. */
@@ -661,22 +569,18 @@ export interface GoogleFirebaseAppdistroV1UploadReleaseResponse {
   release?: GoogleFirebaseAppdistroV1Release;
 }
 
-export const GoogleFirebaseAppdistroV1UploadReleaseResponse: Schema.Schema<GoogleFirebaseAppdistroV1UploadReleaseResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      result: Schema.optional(Schema.String),
-      release: Schema.optional(GoogleFirebaseAppdistroV1Release),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppdistroV1UploadReleaseResponse",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1UploadReleaseResponse>;
+export const GoogleFirebaseAppdistroV1UploadReleaseResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    result: Schema.optional(Schema.String),
+    release: Schema.optional(GoogleFirebaseAppdistroV1Release),
+  }).annotate({ identifier: "GoogleFirebaseAppdistroV1UploadReleaseResponse" });
 
 export interface GoogleFirebaseAppdistroV1UploadReleaseMetadata {}
 
-export const GoogleFirebaseAppdistroV1UploadReleaseMetadata: Schema.Schema<GoogleFirebaseAppdistroV1UploadReleaseMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleFirebaseAppdistroV1UploadReleaseMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleFirebaseAppdistroV1UploadReleaseMetadata",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1UploadReleaseMetadata>;
+  });
 
 export interface GoogleFirebaseAppdistroV1DistributeReleaseRequest {
   /** Optional. A list of group aliases (IDs) to be given access to this release. A combined maximum of 999 `testerEmails` and `groupAliases` can be specified in a single request. */
@@ -685,29 +589,27 @@ export interface GoogleFirebaseAppdistroV1DistributeReleaseRequest {
   testerEmails?: Array<string>;
 }
 
-export const GoogleFirebaseAppdistroV1DistributeReleaseRequest: Schema.Schema<GoogleFirebaseAppdistroV1DistributeReleaseRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      groupAliases: Schema.optional(Schema.Array(Schema.String)),
-      testerEmails: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppdistroV1DistributeReleaseRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupAliases: Schema.optional(Schema.Array(Schema.String)),
+    testerEmails: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleFirebaseAppdistroV1DistributeReleaseRequest",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1DistributeReleaseRequest>;
+  });
 
 export interface GoogleLongrunningCancelOperationRequest {}
 
-export const GoogleLongrunningCancelOperationRequest: Schema.Schema<GoogleLongrunningCancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleLongrunningCancelOperationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleLongrunningCancelOperationRequest",
-  }) as any as Schema.Schema<GoogleLongrunningCancelOperationRequest>;
+  });
 
 export interface GoogleFirebaseAppdistroV1DistributeReleaseResponse {}
 
-export const GoogleFirebaseAppdistroV1DistributeReleaseResponse: Schema.Schema<GoogleFirebaseAppdistroV1DistributeReleaseResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleFirebaseAppdistroV1DistributeReleaseResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleFirebaseAppdistroV1DistributeReleaseResponse",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1DistributeReleaseResponse>;
+  });
 
 export interface GoogleFirebaseAppdistroV1ListReleasesResponse {
   /** The releases */
@@ -716,29 +618,23 @@ export interface GoogleFirebaseAppdistroV1ListReleasesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleFirebaseAppdistroV1ListReleasesResponse: Schema.Schema<GoogleFirebaseAppdistroV1ListReleasesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      releases: Schema.optional(Schema.Array(GoogleFirebaseAppdistroV1Release)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppdistroV1ListReleasesResponse",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1ListReleasesResponse>;
+export const GoogleFirebaseAppdistroV1ListReleasesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    releases: Schema.optional(Schema.Array(GoogleFirebaseAppdistroV1Release)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirebaseAppdistroV1ListReleasesResponse" });
 
 export interface GoogleFirebaseAppdistroV1BatchLeaveGroupRequest {
   /** Required. The email addresses of the testers to be removed from the group. A maximum of 999 and a minimum of 1 testers can be removed in a batch. */
   emails?: Array<string>;
 }
 
-export const GoogleFirebaseAppdistroV1BatchLeaveGroupRequest: Schema.Schema<GoogleFirebaseAppdistroV1BatchLeaveGroupRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      emails: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppdistroV1BatchLeaveGroupRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    emails: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleFirebaseAppdistroV1BatchLeaveGroupRequest",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1BatchLeaveGroupRequest>;
+  });
 
 export interface GoogleFirebaseAppdistroV1FeedbackReport {
   /** Output only. The resource name of the tester who submitted the feedback report. */
@@ -755,19 +651,15 @@ export interface GoogleFirebaseAppdistroV1FeedbackReport {
   screenshotUri?: string;
 }
 
-export const GoogleFirebaseAppdistroV1FeedbackReport: Schema.Schema<GoogleFirebaseAppdistroV1FeedbackReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tester: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      text: Schema.optional(Schema.String),
-      firebaseConsoleUri: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      screenshotUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppdistroV1FeedbackReport",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1FeedbackReport>;
+export const GoogleFirebaseAppdistroV1FeedbackReport =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tester: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    text: Schema.optional(Schema.String),
+    firebaseConsoleUri: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    screenshotUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirebaseAppdistroV1FeedbackReport" });
 
 export interface GoogleFirebaseAppdistroV1ListFeedbackReportsResponse {
   /** A short-lived token, which can be sent as `pageToken` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -776,17 +668,15 @@ export interface GoogleFirebaseAppdistroV1ListFeedbackReportsResponse {
   feedbackReports?: Array<GoogleFirebaseAppdistroV1FeedbackReport>;
 }
 
-export const GoogleFirebaseAppdistroV1ListFeedbackReportsResponse: Schema.Schema<GoogleFirebaseAppdistroV1ListFeedbackReportsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      feedbackReports: Schema.optional(
-        Schema.Array(GoogleFirebaseAppdistroV1FeedbackReport),
-      ),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppdistroV1ListFeedbackReportsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    feedbackReports: Schema.optional(
+      Schema.Array(GoogleFirebaseAppdistroV1FeedbackReport),
+    ),
+  }).annotate({
     identifier: "GoogleFirebaseAppdistroV1ListFeedbackReportsResponse",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1ListFeedbackReportsResponse>;
+  });
 
 export interface GoogleFirebaseAppdistroV1ListTestersResponse {
   /** The testers listed. */
@@ -795,29 +685,23 @@ export interface GoogleFirebaseAppdistroV1ListTestersResponse {
   nextPageToken?: string;
 }
 
-export const GoogleFirebaseAppdistroV1ListTestersResponse: Schema.Schema<GoogleFirebaseAppdistroV1ListTestersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      testers: Schema.optional(Schema.Array(GoogleFirebaseAppdistroV1Tester)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppdistroV1ListTestersResponse",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1ListTestersResponse>;
+export const GoogleFirebaseAppdistroV1ListTestersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    testers: Schema.optional(Schema.Array(GoogleFirebaseAppdistroV1Tester)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirebaseAppdistroV1ListTestersResponse" });
 
 export interface GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest {
   /** Required. The names of the release resources to delete. Format: `projects/{project_number}/apps/{app}/releases/{release}` A maximum of 100 releases can be deleted per request. */
   names?: Array<string>;
 }
 
-export const GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest: Schema.Schema<GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      names: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    names: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1BatchDeleteReleasesRequest>;
+  });
 
 export interface GoogleFirebaseAppdistroV1ListGroupsResponse {
   /** The groups listed. */
@@ -826,29 +710,21 @@ export interface GoogleFirebaseAppdistroV1ListGroupsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleFirebaseAppdistroV1ListGroupsResponse: Schema.Schema<GoogleFirebaseAppdistroV1ListGroupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      groups: Schema.optional(Schema.Array(GoogleFirebaseAppdistroV1Group)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppdistroV1ListGroupsResponse",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1ListGroupsResponse>;
+export const GoogleFirebaseAppdistroV1ListGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groups: Schema.optional(Schema.Array(GoogleFirebaseAppdistroV1Group)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirebaseAppdistroV1ListGroupsResponse" });
 
 export interface GoogleLongrunningWaitOperationRequest {
   /** The maximum duration to wait before timing out. If left blank, the wait will be at most the time permitted by the underlying HTTP/RPC protocol. If RPC context deadline is also specified, the shorter one will be used. */
   timeout?: string;
 }
 
-export const GoogleLongrunningWaitOperationRequest: Schema.Schema<GoogleLongrunningWaitOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      timeout: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleLongrunningWaitOperationRequest",
-  }) as any as Schema.Schema<GoogleLongrunningWaitOperationRequest>;
+export const GoogleLongrunningWaitOperationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    timeout: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleLongrunningWaitOperationRequest" });
 
 export interface GoogleFirebaseAppdistroV1AabInfo {
   /** App bundle integration state. Only valid for android apps. */
@@ -867,18 +743,12 @@ export interface GoogleFirebaseAppdistroV1AabInfo {
   name?: string;
 }
 
-export const GoogleFirebaseAppdistroV1AabInfo: Schema.Schema<GoogleFirebaseAppdistroV1AabInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      integrationState: Schema.optional(Schema.String),
-      testCertificate: Schema.optional(
-        GoogleFirebaseAppdistroV1TestCertificate,
-      ),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppdistroV1AabInfo",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1AabInfo>;
+export const GoogleFirebaseAppdistroV1AabInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    integrationState: Schema.optional(Schema.String),
+    testCertificate: Schema.optional(GoogleFirebaseAppdistroV1TestCertificate),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleFirebaseAppdistroV1AabInfo" });
 
 export interface GoogleFirebaseAppdistroV1BatchJoinGroupRequest {
   /** Required. The emails of the testers to be added to the group. A maximum of 999 and a minimum of 1 tester can be created in a batch. */
@@ -887,15 +757,11 @@ export interface GoogleFirebaseAppdistroV1BatchJoinGroupRequest {
   createMissingTesters?: boolean;
 }
 
-export const GoogleFirebaseAppdistroV1BatchJoinGroupRequest: Schema.Schema<GoogleFirebaseAppdistroV1BatchJoinGroupRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      emails: Schema.optional(Schema.Array(Schema.String)),
-      createMissingTesters: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleFirebaseAppdistroV1BatchJoinGroupRequest",
-  }) as any as Schema.Schema<GoogleFirebaseAppdistroV1BatchJoinGroupRequest>;
+export const GoogleFirebaseAppdistroV1BatchJoinGroupRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    emails: Schema.optional(Schema.Array(Schema.String)),
+    createMissingTesters: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleFirebaseAppdistroV1BatchJoinGroupRequest" });
 
 // ==========================================================================
 // Operations

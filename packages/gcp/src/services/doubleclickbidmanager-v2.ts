@@ -31,16 +31,12 @@ export interface Doubleclickbidmanager_Date {
   month?: number;
 }
 
-export const Doubleclickbidmanager_Date: Schema.Schema<Doubleclickbidmanager_Date> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      year: Schema.optional(Schema.Number),
-      day: Schema.optional(Schema.Number),
-      month: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "Doubleclickbidmanager_Date",
-  }) as any as Schema.Schema<Doubleclickbidmanager_Date>;
+export const Doubleclickbidmanager_Date =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    year: Schema.optional(Schema.Number),
+    day: Schema.optional(Schema.Number),
+    month: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "Doubleclickbidmanager_Date" });
 
 export interface DataRange {
   /** The preset date range to be reported on. If `CUSTOM_DATES` is assigned to this field, fields custom_start_date and custom_end_date must be set to specify the custom date range. */
@@ -71,28 +67,20 @@ export interface DataRange {
   customStartDate?: Doubleclickbidmanager_Date;
 }
 
-export const DataRange: Schema.Schema<DataRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      range: Schema.optional(Schema.String),
-      customEndDate: Schema.optional(Doubleclickbidmanager_Date),
-      customStartDate: Schema.optional(Doubleclickbidmanager_Date),
-    }),
-  ).annotate({ identifier: "DataRange" }) as any as Schema.Schema<DataRange>;
+export const DataRange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  range: Schema.optional(Schema.String),
+  customEndDate: Schema.optional(Doubleclickbidmanager_Date),
+  customStartDate: Schema.optional(Doubleclickbidmanager_Date),
+}).annotate({ identifier: "DataRange" });
 
 export interface RunQueryRequest {
   /** The date range used by the query to generate the report. If unspecified, the query's original data_range is used. */
   dataRange?: DataRange;
 }
 
-export const RunQueryRequest: Schema.Schema<RunQueryRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataRange: Schema.optional(DataRange),
-    }),
-  ).annotate({
-    identifier: "RunQueryRequest",
-  }) as any as Schema.Schema<RunQueryRequest>;
+export const RunQueryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dataRange: Schema.optional(DataRange),
+}).annotate({ identifier: "RunQueryRequest" });
 
 export interface QuerySchedule {
   /** The canonical code for the timezone the query schedule is based on. Scheduled runs are usually conducted in the morning of a given day. Defaults to `America/New_York`. */
@@ -114,17 +102,12 @@ export interface QuerySchedule {
     | (string & {});
 }
 
-export const QuerySchedule: Schema.Schema<QuerySchedule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextRunTimezoneCode: Schema.optional(Schema.String),
-      endDate: Schema.optional(Doubleclickbidmanager_Date),
-      startDate: Schema.optional(Doubleclickbidmanager_Date),
-      frequency: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "QuerySchedule",
-  }) as any as Schema.Schema<QuerySchedule>;
+export const QuerySchedule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextRunTimezoneCode: Schema.optional(Schema.String),
+  endDate: Schema.optional(Doubleclickbidmanager_Date),
+  startDate: Schema.optional(Doubleclickbidmanager_Date),
+  frequency: Schema.optional(Schema.String),
+}).annotate({ identifier: "QuerySchedule" });
 
 export interface FilterPair {
   /** The type of value to filter by. Defined by a [Filter](/bid-manager/reference/rest/v2/filters-metrics#filters) value. */
@@ -133,13 +116,10 @@ export interface FilterPair {
   value?: string;
 }
 
-export const FilterPair: Schema.Schema<FilterPair> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "FilterPair" }) as any as Schema.Schema<FilterPair>;
+export const FilterPair = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+}).annotate({ identifier: "FilterPair" });
 
 export interface ReportStatus {
   /** Output only. The state of the report generation. */
@@ -156,16 +136,11 @@ export interface ReportStatus {
   finishTime?: string;
 }
 
-export const ReportStatus: Schema.Schema<ReportStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      format: Schema.optional(Schema.String),
-      finishTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ReportStatus",
-  }) as any as Schema.Schema<ReportStatus>;
+export const ReportStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.String),
+  format: Schema.optional(Schema.String),
+  finishTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "ReportStatus" });
 
 export interface ReportMetadata {
   /** The start date of the report data date range. */
@@ -178,17 +153,12 @@ export interface ReportMetadata {
   status?: ReportStatus;
 }
 
-export const ReportMetadata: Schema.Schema<ReportMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reportDataStartDate: Schema.optional(Doubleclickbidmanager_Date),
-      reportDataEndDate: Schema.optional(Doubleclickbidmanager_Date),
-      googleCloudStoragePath: Schema.optional(Schema.String),
-      status: Schema.optional(ReportStatus),
-    }),
-  ).annotate({
-    identifier: "ReportMetadata",
-  }) as any as Schema.Schema<ReportMetadata>;
+export const ReportMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  reportDataStartDate: Schema.optional(Doubleclickbidmanager_Date),
+  reportDataEndDate: Schema.optional(Doubleclickbidmanager_Date),
+  googleCloudStoragePath: Schema.optional(Schema.String),
+  status: Schema.optional(ReportStatus),
+}).annotate({ identifier: "ReportMetadata" });
 
 export interface ReportKey {
   /** Output only. The unique ID of the query that generated the report. */
@@ -197,25 +167,19 @@ export interface ReportKey {
   reportId?: string;
 }
 
-export const ReportKey: Schema.Schema<ReportKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      queryId: Schema.optional(Schema.String),
-      reportId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "ReportKey" }) as any as Schema.Schema<ReportKey>;
+export const ReportKey = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  queryId: Schema.optional(Schema.String),
+  reportId: Schema.optional(Schema.String),
+}).annotate({ identifier: "ReportKey" });
 
 export interface Options {
   /** Whether to include data for audience lists specifically targeted by filtered line items or insertion orders. Requires the use of `FILTER_INSERTION_ORDER` or `FILTER_LINE_ITEM` filters. */
   includeOnlyTargetedUserLists?: boolean;
 }
 
-export const Options: Schema.Schema<Options> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      includeOnlyTargetedUserLists: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "Options" }) as any as Schema.Schema<Options>;
+export const Options = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  includeOnlyTargetedUserLists: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Options" });
 
 export interface Parameters {
   /** The type of the report. The type of the report determines the dimesions, filters, and metrics that can be used. */
@@ -243,16 +207,13 @@ export interface Parameters {
   filters?: Array<FilterPair>;
 }
 
-export const Parameters: Schema.Schema<Parameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      metrics: Schema.optional(Schema.Array(Schema.String)),
-      options: Schema.optional(Options),
-      groupBys: Schema.optional(Schema.Array(Schema.String)),
-      filters: Schema.optional(Schema.Array(FilterPair)),
-    }),
-  ).annotate({ identifier: "Parameters" }) as any as Schema.Schema<Parameters>;
+export const Parameters = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  metrics: Schema.optional(Schema.Array(Schema.String)),
+  options: Schema.optional(Options),
+  groupBys: Schema.optional(Schema.Array(Schema.String)),
+  filters: Schema.optional(Schema.Array(FilterPair)),
+}).annotate({ identifier: "Parameters" });
 
 export interface QueryMetadata {
   /** The display name of the query. This value will be used in the file name of reports generated by the query. */
@@ -267,18 +228,13 @@ export interface QueryMetadata {
   format?: "FORMAT_UNSPECIFIED" | "CSV" | "XLSX" | (string & {});
 }
 
-export const QueryMetadata: Schema.Schema<QueryMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-      sendNotification: Schema.optional(Schema.Boolean),
-      shareEmailAddress: Schema.optional(Schema.Array(Schema.String)),
-      dataRange: Schema.optional(DataRange),
-      format: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "QueryMetadata",
-  }) as any as Schema.Schema<QueryMetadata>;
+export const QueryMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  title: Schema.optional(Schema.String),
+  sendNotification: Schema.optional(Schema.Boolean),
+  shareEmailAddress: Schema.optional(Schema.Array(Schema.String)),
+  dataRange: Schema.optional(DataRange),
+  format: Schema.optional(Schema.String),
+}).annotate({ identifier: "QueryMetadata" });
 
 export interface Query {
   /** The parameters of the report generated by the query. */
@@ -291,15 +247,12 @@ export interface Query {
   metadata?: QueryMetadata;
 }
 
-export const Query: Schema.Schema<Query> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      params: Schema.optional(Parameters),
-      queryId: Schema.optional(Schema.String),
-      schedule: Schema.optional(QuerySchedule),
-      metadata: Schema.optional(QueryMetadata),
-    }),
-  ).annotate({ identifier: "Query" }) as any as Schema.Schema<Query>;
+export const Query = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  params: Schema.optional(Parameters),
+  queryId: Schema.optional(Schema.String),
+  schedule: Schema.optional(QuerySchedule),
+  metadata: Schema.optional(QueryMetadata),
+}).annotate({ identifier: "Query" });
 
 export interface ListQueriesResponse {
   /** The list of queries. This field will be absent if empty. */
@@ -308,15 +261,10 @@ export interface ListQueriesResponse {
   nextPageToken?: string;
 }
 
-export const ListQueriesResponse: Schema.Schema<ListQueriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      queries: Schema.optional(Schema.Array(Query)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListQueriesResponse",
-  }) as any as Schema.Schema<ListQueriesResponse>;
+export const ListQueriesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  queries: Schema.optional(Schema.Array(Query)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListQueriesResponse" });
 
 export interface Report {
   /** The key information identifying the report. */
@@ -327,14 +275,11 @@ export interface Report {
   params?: Parameters;
 }
 
-export const Report: Schema.Schema<Report> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      key: Schema.optional(ReportKey),
-      metadata: Schema.optional(ReportMetadata),
-      params: Schema.optional(Parameters),
-    }),
-  ).annotate({ identifier: "Report" }) as any as Schema.Schema<Report>;
+export const Report = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  key: Schema.optional(ReportKey),
+  metadata: Schema.optional(ReportMetadata),
+  params: Schema.optional(Parameters),
+}).annotate({ identifier: "Report" });
 
 export interface ListReportsResponse {
   /** The list of reports. This field will be absent if empty. */
@@ -343,15 +288,10 @@ export interface ListReportsResponse {
   nextPageToken?: string;
 }
 
-export const ListReportsResponse: Schema.Schema<ListReportsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reports: Schema.optional(Schema.Array(Report)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListReportsResponse",
-  }) as any as Schema.Schema<ListReportsResponse>;
+export const ListReportsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  reports: Schema.optional(Schema.Array(Report)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListReportsResponse" });
 
 // ==========================================================================
 // Operations

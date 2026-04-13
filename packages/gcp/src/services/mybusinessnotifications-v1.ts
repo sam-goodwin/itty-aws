@@ -45,16 +45,11 @@ export interface NotificationSetting {
   name?: string;
 }
 
-export const NotificationSetting: Schema.Schema<NotificationSetting> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pubsubTopic: Schema.optional(Schema.String),
-      notificationTypes: Schema.optional(Schema.Array(Schema.String)),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NotificationSetting",
-  }) as any as Schema.Schema<NotificationSetting>;
+export const NotificationSetting = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pubsubTopic: Schema.optional(Schema.String),
+  notificationTypes: Schema.optional(Schema.Array(Schema.String)),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "NotificationSetting" });
 
 // ==========================================================================
 // Operations

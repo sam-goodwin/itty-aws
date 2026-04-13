@@ -31,18 +31,13 @@ export interface GoogleRpcStatus {
   details?: Array<Record<string, unknown>>;
 }
 
-export const GoogleRpcStatus: Schema.Schema<GoogleRpcStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      message: Schema.optional(Schema.String),
-      code: Schema.optional(Schema.Number),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleRpcStatus",
-  }) as any as Schema.Schema<GoogleRpcStatus>;
+export const GoogleRpcStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  message: Schema.optional(Schema.String),
+  code: Schema.optional(Schema.Number),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "GoogleRpcStatus" });
 
 export interface GoogleLongrunningOperation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
@@ -57,18 +52,14 @@ export interface GoogleLongrunningOperation {
   error?: GoogleRpcStatus;
 }
 
-export const GoogleLongrunningOperation: Schema.Schema<GoogleLongrunningOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      done: Schema.optional(Schema.Boolean),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      name: Schema.optional(Schema.String),
-      error: Schema.optional(GoogleRpcStatus),
-    }),
-  ).annotate({
-    identifier: "GoogleLongrunningOperation",
-  }) as any as Schema.Schema<GoogleLongrunningOperation>;
+export const GoogleLongrunningOperation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    done: Schema.optional(Schema.Boolean),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    name: Schema.optional(Schema.String),
+    error: Schema.optional(GoogleRpcStatus),
+  }).annotate({ identifier: "GoogleLongrunningOperation" });
 
 export interface GoogleDevtoolsCloudbuildV1Hash {
   /** The type of hash that was performed. */
@@ -84,29 +75,21 @@ export interface GoogleDevtoolsCloudbuildV1Hash {
   value?: string;
 }
 
-export const GoogleDevtoolsCloudbuildV1Hash: Schema.Schema<GoogleDevtoolsCloudbuildV1Hash> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleDevtoolsCloudbuildV1Hash",
-  }) as any as Schema.Schema<GoogleDevtoolsCloudbuildV1Hash>;
+export const GoogleDevtoolsCloudbuildV1Hash =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleDevtoolsCloudbuildV1Hash" });
 
 export interface GoogleDevtoolsCloudbuildV1FileHashes {
   /** Collection of file hashes. */
   fileHash?: Array<GoogleDevtoolsCloudbuildV1Hash>;
 }
 
-export const GoogleDevtoolsCloudbuildV1FileHashes: Schema.Schema<GoogleDevtoolsCloudbuildV1FileHashes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fileHash: Schema.optional(Schema.Array(GoogleDevtoolsCloudbuildV1Hash)),
-    }),
-  ).annotate({
-    identifier: "GoogleDevtoolsCloudbuildV1FileHashes",
-  }) as any as Schema.Schema<GoogleDevtoolsCloudbuildV1FileHashes>;
+export const GoogleDevtoolsCloudbuildV1FileHashes =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fileHash: Schema.optional(Schema.Array(GoogleDevtoolsCloudbuildV1Hash)),
+  }).annotate({ identifier: "GoogleDevtoolsCloudbuildV1FileHashes" });
 
 export interface GoogleDevtoolsCloudbuildV1TimeSpan {
   /** Start of time span. */
@@ -115,15 +98,11 @@ export interface GoogleDevtoolsCloudbuildV1TimeSpan {
   endTime?: string;
 }
 
-export const GoogleDevtoolsCloudbuildV1TimeSpan: Schema.Schema<GoogleDevtoolsCloudbuildV1TimeSpan> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleDevtoolsCloudbuildV1TimeSpan",
-  }) as any as Schema.Schema<GoogleDevtoolsCloudbuildV1TimeSpan>;
+export const GoogleDevtoolsCloudbuildV1TimeSpan =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleDevtoolsCloudbuildV1TimeSpan" });
 
 export interface GoogleDevtoolsCloudbuildV1UploadedMavenArtifact {
   /** Hash types and values of the Maven Artifact. */
@@ -136,17 +115,15 @@ export interface GoogleDevtoolsCloudbuildV1UploadedMavenArtifact {
   pushTiming?: GoogleDevtoolsCloudbuildV1TimeSpan;
 }
 
-export const GoogleDevtoolsCloudbuildV1UploadedMavenArtifact: Schema.Schema<GoogleDevtoolsCloudbuildV1UploadedMavenArtifact> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fileHashes: Schema.optional(GoogleDevtoolsCloudbuildV1FileHashes),
-      artifactRegistryPackage: Schema.optional(Schema.String),
-      uri: Schema.optional(Schema.String),
-      pushTiming: Schema.optional(GoogleDevtoolsCloudbuildV1TimeSpan),
-    }),
-  ).annotate({
+export const GoogleDevtoolsCloudbuildV1UploadedMavenArtifact =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fileHashes: Schema.optional(GoogleDevtoolsCloudbuildV1FileHashes),
+    artifactRegistryPackage: Schema.optional(Schema.String),
+    uri: Schema.optional(Schema.String),
+    pushTiming: Schema.optional(GoogleDevtoolsCloudbuildV1TimeSpan),
+  }).annotate({
     identifier: "GoogleDevtoolsCloudbuildV1UploadedMavenArtifact",
-  }) as any as Schema.Schema<GoogleDevtoolsCloudbuildV1UploadedMavenArtifact>;
+  });
 
 export interface GoogleDevtoolsCloudbuildV1MavenArtifact {
   /** Maven `artifactId` value used when uploading the artifact to Artifact Registry. */
@@ -163,19 +140,15 @@ export interface GoogleDevtoolsCloudbuildV1MavenArtifact {
   path?: string;
 }
 
-export const GoogleDevtoolsCloudbuildV1MavenArtifact: Schema.Schema<GoogleDevtoolsCloudbuildV1MavenArtifact> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      artifactId: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-      repository: Schema.optional(Schema.String),
-      groupId: Schema.optional(Schema.String),
-      deployFolder: Schema.optional(Schema.String),
-      path: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleDevtoolsCloudbuildV1MavenArtifact",
-  }) as any as Schema.Schema<GoogleDevtoolsCloudbuildV1MavenArtifact>;
+export const GoogleDevtoolsCloudbuildV1MavenArtifact =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    artifactId: Schema.optional(Schema.String),
+    version: Schema.optional(Schema.String),
+    repository: Schema.optional(Schema.String),
+    groupId: Schema.optional(Schema.String),
+    deployFolder: Schema.optional(Schema.String),
+    path: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleDevtoolsCloudbuildV1MavenArtifact" });
 
 export interface GoogleCloudRunV2VersionToPath {
   /** Required. The relative path of the secret in the container. */
@@ -186,16 +159,12 @@ export interface GoogleCloudRunV2VersionToPath {
   version?: string;
 }
 
-export const GoogleCloudRunV2VersionToPath: Schema.Schema<GoogleCloudRunV2VersionToPath> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      path: Schema.optional(Schema.String),
-      mode: Schema.optional(Schema.Number),
-      version: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2VersionToPath",
-  }) as any as Schema.Schema<GoogleCloudRunV2VersionToPath>;
+export const GoogleCloudRunV2VersionToPath =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    path: Schema.optional(Schema.String),
+    mode: Schema.optional(Schema.Number),
+    version: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudRunV2VersionToPath" });
 
 export interface GoogleCloudRunV2SecretVolumeSource {
   /** Required. The name of the secret in Cloud Secret Manager. Format: {secret} if the secret is in the same project. projects/{project}/secrets/{secret} if the secret is in a different project. */
@@ -206,16 +175,12 @@ export interface GoogleCloudRunV2SecretVolumeSource {
   defaultMode?: number;
 }
 
-export const GoogleCloudRunV2SecretVolumeSource: Schema.Schema<GoogleCloudRunV2SecretVolumeSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      secret: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(GoogleCloudRunV2VersionToPath)),
-      defaultMode: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2SecretVolumeSource",
-  }) as any as Schema.Schema<GoogleCloudRunV2SecretVolumeSource>;
+export const GoogleCloudRunV2SecretVolumeSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    secret: Schema.optional(Schema.String),
+    items: Schema.optional(Schema.Array(GoogleCloudRunV2VersionToPath)),
+    defaultMode: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudRunV2SecretVolumeSource" });
 
 export interface GoogleDevtoolsCloudbuildV1SecretManagerSecret {
   /** Resource name of the SecretVersion. In format: projects/* /secrets/* /versions/* */
@@ -224,15 +189,11 @@ export interface GoogleDevtoolsCloudbuildV1SecretManagerSecret {
   env?: string;
 }
 
-export const GoogleDevtoolsCloudbuildV1SecretManagerSecret: Schema.Schema<GoogleDevtoolsCloudbuildV1SecretManagerSecret> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      versionName: Schema.optional(Schema.String),
-      env: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleDevtoolsCloudbuildV1SecretManagerSecret",
-  }) as any as Schema.Schema<GoogleDevtoolsCloudbuildV1SecretManagerSecret>;
+export const GoogleDevtoolsCloudbuildV1SecretManagerSecret =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    versionName: Schema.optional(Schema.String),
+    env: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleDevtoolsCloudbuildV1SecretManagerSecret" });
 
 export interface GoogleDevtoolsCloudbuildV1InlineSecret {
   /** Resource name of Cloud KMS crypto key to decrypt the encrypted value. In format: projects/* /locations/* /keyRings/* /cryptoKeys/* */
@@ -241,15 +202,11 @@ export interface GoogleDevtoolsCloudbuildV1InlineSecret {
   envMap?: Record<string, string>;
 }
 
-export const GoogleDevtoolsCloudbuildV1InlineSecret: Schema.Schema<GoogleDevtoolsCloudbuildV1InlineSecret> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kmsKeyName: Schema.optional(Schema.String),
-      envMap: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleDevtoolsCloudbuildV1InlineSecret",
-  }) as any as Schema.Schema<GoogleDevtoolsCloudbuildV1InlineSecret>;
+export const GoogleDevtoolsCloudbuildV1InlineSecret =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kmsKeyName: Schema.optional(Schema.String),
+    envMap: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({ identifier: "GoogleDevtoolsCloudbuildV1InlineSecret" });
 
 export interface GoogleDevtoolsCloudbuildV1Secrets {
   /** Secrets in Secret Manager and associated secret environment variable. */
@@ -258,19 +215,15 @@ export interface GoogleDevtoolsCloudbuildV1Secrets {
   inline?: Array<GoogleDevtoolsCloudbuildV1InlineSecret>;
 }
 
-export const GoogleDevtoolsCloudbuildV1Secrets: Schema.Schema<GoogleDevtoolsCloudbuildV1Secrets> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      secretManager: Schema.optional(
-        Schema.Array(GoogleDevtoolsCloudbuildV1SecretManagerSecret),
-      ),
-      inline: Schema.optional(
-        Schema.Array(GoogleDevtoolsCloudbuildV1InlineSecret),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleDevtoolsCloudbuildV1Secrets",
-  }) as any as Schema.Schema<GoogleDevtoolsCloudbuildV1Secrets>;
+export const GoogleDevtoolsCloudbuildV1Secrets =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    secretManager: Schema.optional(
+      Schema.Array(GoogleDevtoolsCloudbuildV1SecretManagerSecret),
+    ),
+    inline: Schema.optional(
+      Schema.Array(GoogleDevtoolsCloudbuildV1InlineSecret),
+    ),
+  }).annotate({ identifier: "GoogleDevtoolsCloudbuildV1Secrets" });
 
 export interface GoogleCloudRunV2EmptyDirVolumeSource {
   /** The medium on which the data is stored. Acceptable values today is only MEMORY or none. When none, the default will currently be backed by memory but could change over time. +optional */
@@ -279,15 +232,11 @@ export interface GoogleCloudRunV2EmptyDirVolumeSource {
   sizeLimit?: string;
 }
 
-export const GoogleCloudRunV2EmptyDirVolumeSource: Schema.Schema<GoogleCloudRunV2EmptyDirVolumeSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      medium: Schema.optional(Schema.String),
-      sizeLimit: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2EmptyDirVolumeSource",
-  }) as any as Schema.Schema<GoogleCloudRunV2EmptyDirVolumeSource>;
+export const GoogleCloudRunV2EmptyDirVolumeSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    medium: Schema.optional(Schema.String),
+    sizeLimit: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudRunV2EmptyDirVolumeSource" });
 
 export interface GoogleCloudRunV2HTTPHeader {
   /** Required. The header field name */
@@ -296,15 +245,11 @@ export interface GoogleCloudRunV2HTTPHeader {
   value?: string;
 }
 
-export const GoogleCloudRunV2HTTPHeader: Schema.Schema<GoogleCloudRunV2HTTPHeader> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2HTTPHeader",
-  }) as any as Schema.Schema<GoogleCloudRunV2HTTPHeader>;
+export const GoogleCloudRunV2HTTPHeader =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudRunV2HTTPHeader" });
 
 export interface GoogleCloudRunV2HTTPGetAction {
   /** Optional. Path to access on the HTTP server. Defaults to '/'. */
@@ -315,16 +260,12 @@ export interface GoogleCloudRunV2HTTPGetAction {
   httpHeaders?: Array<GoogleCloudRunV2HTTPHeader>;
 }
 
-export const GoogleCloudRunV2HTTPGetAction: Schema.Schema<GoogleCloudRunV2HTTPGetAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      path: Schema.optional(Schema.String),
-      port: Schema.optional(Schema.Number),
-      httpHeaders: Schema.optional(Schema.Array(GoogleCloudRunV2HTTPHeader)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2HTTPGetAction",
-  }) as any as Schema.Schema<GoogleCloudRunV2HTTPGetAction>;
+export const GoogleCloudRunV2HTTPGetAction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    path: Schema.optional(Schema.String),
+    port: Schema.optional(Schema.Number),
+    httpHeaders: Schema.optional(Schema.Array(GoogleCloudRunV2HTTPHeader)),
+  }).annotate({ identifier: "GoogleCloudRunV2HTTPGetAction" });
 
 export interface GoogleCloudRunV2Condition {
   /** Output only. A reason for the revision condition. */
@@ -395,21 +336,17 @@ export interface GoogleCloudRunV2Condition {
     | (string & {});
 }
 
-export const GoogleCloudRunV2Condition: Schema.Schema<GoogleCloudRunV2Condition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      revisionReason: Schema.optional(Schema.String),
-      severity: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      executionReason: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      lastTransitionTime: Schema.optional(Schema.String),
-      reason: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2Condition",
-  }) as any as Schema.Schema<GoogleCloudRunV2Condition>;
+export const GoogleCloudRunV2Condition =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    revisionReason: Schema.optional(Schema.String),
+    severity: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    executionReason: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    lastTransitionTime: Schema.optional(Schema.String),
+    reason: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudRunV2Condition" });
 
 export interface GoogleDevtoolsCloudbuildV1GitSource {
   /** Required. Location of the Git repo to build. This will be used as a `git remote`, see https://git-scm.com/docs/git-remote. */
@@ -420,16 +357,12 @@ export interface GoogleDevtoolsCloudbuildV1GitSource {
   dir?: string;
 }
 
-export const GoogleDevtoolsCloudbuildV1GitSource: Schema.Schema<GoogleDevtoolsCloudbuildV1GitSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      url: Schema.optional(Schema.String),
-      revision: Schema.optional(Schema.String),
-      dir: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleDevtoolsCloudbuildV1GitSource",
-  }) as any as Schema.Schema<GoogleDevtoolsCloudbuildV1GitSource>;
+export const GoogleDevtoolsCloudbuildV1GitSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    url: Schema.optional(Schema.String),
+    revision: Schema.optional(Schema.String),
+    dir: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleDevtoolsCloudbuildV1GitSource" });
 
 export interface GoogleDevtoolsCloudbuildV1DeveloperConnectConfig {
   /** Required. The Developer Connect Git repository link, formatted as `projects/* /locations/* /connections/* /gitRepositoryLink/*`. */
@@ -440,16 +373,14 @@ export interface GoogleDevtoolsCloudbuildV1DeveloperConnectConfig {
   revision?: string;
 }
 
-export const GoogleDevtoolsCloudbuildV1DeveloperConnectConfig: Schema.Schema<GoogleDevtoolsCloudbuildV1DeveloperConnectConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gitRepositoryLink: Schema.optional(Schema.String),
-      dir: Schema.optional(Schema.String),
-      revision: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleDevtoolsCloudbuildV1DeveloperConnectConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gitRepositoryLink: Schema.optional(Schema.String),
+    dir: Schema.optional(Schema.String),
+    revision: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleDevtoolsCloudbuildV1DeveloperConnectConfig",
-  }) as any as Schema.Schema<GoogleDevtoolsCloudbuildV1DeveloperConnectConfig>;
+  });
 
 export interface GoogleDevtoolsCloudbuildV1StorageSourceManifest {
   /** Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used. */
@@ -460,16 +391,14 @@ export interface GoogleDevtoolsCloudbuildV1StorageSourceManifest {
   bucket?: string;
 }
 
-export const GoogleDevtoolsCloudbuildV1StorageSourceManifest: Schema.Schema<GoogleDevtoolsCloudbuildV1StorageSourceManifest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      generation: Schema.optional(Schema.String),
-      object: Schema.optional(Schema.String),
-      bucket: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleDevtoolsCloudbuildV1StorageSourceManifest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    generation: Schema.optional(Schema.String),
+    object: Schema.optional(Schema.String),
+    bucket: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleDevtoolsCloudbuildV1StorageSourceManifest",
-  }) as any as Schema.Schema<GoogleDevtoolsCloudbuildV1StorageSourceManifest>;
+  });
 
 export interface GoogleDevtoolsCloudbuildV1StorageSource {
   /** Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). */
@@ -486,17 +415,13 @@ export interface GoogleDevtoolsCloudbuildV1StorageSource {
   generation?: string;
 }
 
-export const GoogleDevtoolsCloudbuildV1StorageSource: Schema.Schema<GoogleDevtoolsCloudbuildV1StorageSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bucket: Schema.optional(Schema.String),
-      sourceFetcher: Schema.optional(Schema.String),
-      object: Schema.optional(Schema.String),
-      generation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleDevtoolsCloudbuildV1StorageSource",
-  }) as any as Schema.Schema<GoogleDevtoolsCloudbuildV1StorageSource>;
+export const GoogleDevtoolsCloudbuildV1StorageSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bucket: Schema.optional(Schema.String),
+    sourceFetcher: Schema.optional(Schema.String),
+    object: Schema.optional(Schema.String),
+    generation: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleDevtoolsCloudbuildV1StorageSource" });
 
 export interface GoogleDevtoolsCloudbuildV1ConnectedRepository {
   /** Required. Name of the Google Cloud Build repository, formatted as `projects/* /locations/* /connections/* /repositories/*`. */
@@ -507,16 +432,12 @@ export interface GoogleDevtoolsCloudbuildV1ConnectedRepository {
   dir?: string;
 }
 
-export const GoogleDevtoolsCloudbuildV1ConnectedRepository: Schema.Schema<GoogleDevtoolsCloudbuildV1ConnectedRepository> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      repository: Schema.optional(Schema.String),
-      revision: Schema.optional(Schema.String),
-      dir: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleDevtoolsCloudbuildV1ConnectedRepository",
-  }) as any as Schema.Schema<GoogleDevtoolsCloudbuildV1ConnectedRepository>;
+export const GoogleDevtoolsCloudbuildV1ConnectedRepository =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    repository: Schema.optional(Schema.String),
+    revision: Schema.optional(Schema.String),
+    dir: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleDevtoolsCloudbuildV1ConnectedRepository" });
 
 export interface GoogleDevtoolsCloudbuildV1RepoSource {
   /** Optional. ID of the project that owns the Cloud Source Repository. If omitted, the project ID requesting the build is assumed. */
@@ -537,23 +458,17 @@ export interface GoogleDevtoolsCloudbuildV1RepoSource {
   repoName?: string;
 }
 
-export const GoogleDevtoolsCloudbuildV1RepoSource: Schema.Schema<GoogleDevtoolsCloudbuildV1RepoSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      projectId: Schema.optional(Schema.String),
-      branchName: Schema.optional(Schema.String),
-      tagName: Schema.optional(Schema.String),
-      dir: Schema.optional(Schema.String),
-      invertRegex: Schema.optional(Schema.Boolean),
-      substitutions: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      commitSha: Schema.optional(Schema.String),
-      repoName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleDevtoolsCloudbuildV1RepoSource",
-  }) as any as Schema.Schema<GoogleDevtoolsCloudbuildV1RepoSource>;
+export const GoogleDevtoolsCloudbuildV1RepoSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    projectId: Schema.optional(Schema.String),
+    branchName: Schema.optional(Schema.String),
+    tagName: Schema.optional(Schema.String),
+    dir: Schema.optional(Schema.String),
+    invertRegex: Schema.optional(Schema.Boolean),
+    substitutions: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    commitSha: Schema.optional(Schema.String),
+    repoName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleDevtoolsCloudbuildV1RepoSource" });
 
 export interface GoogleDevtoolsCloudbuildV1Source {
   /** If provided, get the source from this Git repository. */
@@ -570,25 +485,21 @@ export interface GoogleDevtoolsCloudbuildV1Source {
   repoSource?: GoogleDevtoolsCloudbuildV1RepoSource;
 }
 
-export const GoogleDevtoolsCloudbuildV1Source: Schema.Schema<GoogleDevtoolsCloudbuildV1Source> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gitSource: Schema.optional(GoogleDevtoolsCloudbuildV1GitSource),
-      developerConnectConfig: Schema.optional(
-        GoogleDevtoolsCloudbuildV1DeveloperConnectConfig,
-      ),
-      storageSourceManifest: Schema.optional(
-        GoogleDevtoolsCloudbuildV1StorageSourceManifest,
-      ),
-      storageSource: Schema.optional(GoogleDevtoolsCloudbuildV1StorageSource),
-      connectedRepository: Schema.optional(
-        GoogleDevtoolsCloudbuildV1ConnectedRepository,
-      ),
-      repoSource: Schema.optional(GoogleDevtoolsCloudbuildV1RepoSource),
-    }),
-  ).annotate({
-    identifier: "GoogleDevtoolsCloudbuildV1Source",
-  }) as any as Schema.Schema<GoogleDevtoolsCloudbuildV1Source>;
+export const GoogleDevtoolsCloudbuildV1Source =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gitSource: Schema.optional(GoogleDevtoolsCloudbuildV1GitSource),
+    developerConnectConfig: Schema.optional(
+      GoogleDevtoolsCloudbuildV1DeveloperConnectConfig,
+    ),
+    storageSourceManifest: Schema.optional(
+      GoogleDevtoolsCloudbuildV1StorageSourceManifest,
+    ),
+    storageSource: Schema.optional(GoogleDevtoolsCloudbuildV1StorageSource),
+    connectedRepository: Schema.optional(
+      GoogleDevtoolsCloudbuildV1ConnectedRepository,
+    ),
+    repoSource: Schema.optional(GoogleDevtoolsCloudbuildV1RepoSource),
+  }).annotate({ identifier: "GoogleDevtoolsCloudbuildV1Source" });
 
 export interface GoogleDevtoolsCloudbuildV1GenericArtifactDependency {
   /** Required. The location to download the artifact files from. Ex: projects/p1/locations/us/repositories/r1/packages/p1/versions/v1 */
@@ -597,15 +508,13 @@ export interface GoogleDevtoolsCloudbuildV1GenericArtifactDependency {
   destPath?: string;
 }
 
-export const GoogleDevtoolsCloudbuildV1GenericArtifactDependency: Schema.Schema<GoogleDevtoolsCloudbuildV1GenericArtifactDependency> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resource: Schema.optional(Schema.String),
-      destPath: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleDevtoolsCloudbuildV1GenericArtifactDependency =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.optional(Schema.String),
+    destPath: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleDevtoolsCloudbuildV1GenericArtifactDependency",
-  }) as any as Schema.Schema<GoogleDevtoolsCloudbuildV1GenericArtifactDependency>;
+  });
 
 export interface GoogleCloudRunV2SecretKeySelector {
   /** Required. The name of the secret in Cloud Secret Manager. Format: {secret_name} if the secret is in the same project. projects/{project}/secrets/{secret_name} if the secret is in a different project. */
@@ -614,15 +523,11 @@ export interface GoogleCloudRunV2SecretKeySelector {
   version?: string;
 }
 
-export const GoogleCloudRunV2SecretKeySelector: Schema.Schema<GoogleCloudRunV2SecretKeySelector> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      secret: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2SecretKeySelector",
-  }) as any as Schema.Schema<GoogleCloudRunV2SecretKeySelector>;
+export const GoogleCloudRunV2SecretKeySelector =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    secret: Schema.optional(Schema.String),
+    version: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudRunV2SecretKeySelector" });
 
 export interface GoogleCloudRunV2RevisionScaling {
   /** Optional. Determines a threshold for concurrency utilization before scaling begins. Accepted values are between `0.1` and `0.95` (inclusive) or `0.0` to disable concurrency utilization as threshold for scaling. CPU and concurrency scaling cannot both be disabled. */
@@ -635,17 +540,13 @@ export interface GoogleCloudRunV2RevisionScaling {
   maxInstanceCount?: number;
 }
 
-export const GoogleCloudRunV2RevisionScaling: Schema.Schema<GoogleCloudRunV2RevisionScaling> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      concurrencyUtilization: Schema.optional(Schema.Number),
-      minInstanceCount: Schema.optional(Schema.Number),
-      cpuUtilization: Schema.optional(Schema.Number),
-      maxInstanceCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2RevisionScaling",
-  }) as any as Schema.Schema<GoogleCloudRunV2RevisionScaling>;
+export const GoogleCloudRunV2RevisionScaling =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    concurrencyUtilization: Schema.optional(Schema.Number),
+    minInstanceCount: Schema.optional(Schema.Number),
+    cpuUtilization: Schema.optional(Schema.Number),
+    maxInstanceCount: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudRunV2RevisionScaling" });
 
 export interface GoogleCloudRunV2ResourceRequirements {
   /** Determines whether CPU should be boosted on startup of a new container instance above the requested CPU threshold, this can help reduce cold-start latency. */
@@ -656,16 +557,12 @@ export interface GoogleCloudRunV2ResourceRequirements {
   cpuIdle?: boolean;
 }
 
-export const GoogleCloudRunV2ResourceRequirements: Schema.Schema<GoogleCloudRunV2ResourceRequirements> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startupCpuBoost: Schema.optional(Schema.Boolean),
-      limits: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      cpuIdle: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2ResourceRequirements",
-  }) as any as Schema.Schema<GoogleCloudRunV2ResourceRequirements>;
+export const GoogleCloudRunV2ResourceRequirements =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startupCpuBoost: Schema.optional(Schema.Boolean),
+    limits: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    cpuIdle: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudRunV2ResourceRequirements" });
 
 export interface GoogleCloudRunV2VolumeMount {
   /** Required. Path within the container at which the volume should be mounted. Must not contain ':'. For Cloud SQL volumes, it can be left empty, or must otherwise be `/cloudsql`. All instances defined in the Volume will be available as `/cloudsql/[instance]`. For more information on Cloud SQL volumes, visit https://cloud.google.com/sql/docs/mysql/connect-run */
@@ -676,16 +573,12 @@ export interface GoogleCloudRunV2VolumeMount {
   subPath?: string;
 }
 
-export const GoogleCloudRunV2VolumeMount: Schema.Schema<GoogleCloudRunV2VolumeMount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mountPath: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      subPath: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2VolumeMount",
-  }) as any as Schema.Schema<GoogleCloudRunV2VolumeMount>;
+export const GoogleCloudRunV2VolumeMount =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    mountPath: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    subPath: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudRunV2VolumeMount" });
 
 export interface GoogleCloudRunV2CloudStorageSource {
   /** Required. The Cloud Storage object name. */
@@ -696,16 +589,12 @@ export interface GoogleCloudRunV2CloudStorageSource {
   generation?: string;
 }
 
-export const GoogleCloudRunV2CloudStorageSource: Schema.Schema<GoogleCloudRunV2CloudStorageSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      object: Schema.optional(Schema.String),
-      bucket: Schema.optional(Schema.String),
-      generation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2CloudStorageSource",
-  }) as any as Schema.Schema<GoogleCloudRunV2CloudStorageSource>;
+export const GoogleCloudRunV2CloudStorageSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    object: Schema.optional(Schema.String),
+    bucket: Schema.optional(Schema.String),
+    generation: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudRunV2CloudStorageSource" });
 
 export interface GoogleCloudRunV2SourceFile {
   /** Required. Input only. Represents the exact, literal, and complete source code of the file. Placeholders like `...` or comments such as `# [rest of code]` should NEVER be used as omission. Every character in this field will be built into the final container. Any omission will result in a broken application. */
@@ -714,29 +603,21 @@ export interface GoogleCloudRunV2SourceFile {
   filename?: string;
 }
 
-export const GoogleCloudRunV2SourceFile: Schema.Schema<GoogleCloudRunV2SourceFile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      content: Schema.optional(Schema.String),
-      filename: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2SourceFile",
-  }) as any as Schema.Schema<GoogleCloudRunV2SourceFile>;
+export const GoogleCloudRunV2SourceFile =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    content: Schema.optional(Schema.String),
+    filename: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudRunV2SourceFile" });
 
 export interface GoogleCloudRunV2InlinedSource {
   /** Required. Input only. The source code. */
   sources?: Array<GoogleCloudRunV2SourceFile>;
 }
 
-export const GoogleCloudRunV2InlinedSource: Schema.Schema<GoogleCloudRunV2InlinedSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sources: Schema.optional(Schema.Array(GoogleCloudRunV2SourceFile)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2InlinedSource",
-  }) as any as Schema.Schema<GoogleCloudRunV2InlinedSource>;
+export const GoogleCloudRunV2InlinedSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sources: Schema.optional(Schema.Array(GoogleCloudRunV2SourceFile)),
+  }).annotate({ identifier: "GoogleCloudRunV2InlinedSource" });
 
 export interface GoogleCloudRunV2SourceCode {
   /** The source is a Cloud Storage bucket. */
@@ -745,29 +626,21 @@ export interface GoogleCloudRunV2SourceCode {
   inlinedSource?: GoogleCloudRunV2InlinedSource;
 }
 
-export const GoogleCloudRunV2SourceCode: Schema.Schema<GoogleCloudRunV2SourceCode> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cloudStorageSource: Schema.optional(GoogleCloudRunV2CloudStorageSource),
-      inlinedSource: Schema.optional(GoogleCloudRunV2InlinedSource),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2SourceCode",
-  }) as any as Schema.Schema<GoogleCloudRunV2SourceCode>;
+export const GoogleCloudRunV2SourceCode =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cloudStorageSource: Schema.optional(GoogleCloudRunV2CloudStorageSource),
+    inlinedSource: Schema.optional(GoogleCloudRunV2InlinedSource),
+  }).annotate({ identifier: "GoogleCloudRunV2SourceCode" });
 
 export interface GoogleCloudRunV2EnvVarSource {
   /** Selects a secret and a specific version from Cloud Secret Manager. */
   secretKeyRef?: GoogleCloudRunV2SecretKeySelector;
 }
 
-export const GoogleCloudRunV2EnvVarSource: Schema.Schema<GoogleCloudRunV2EnvVarSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      secretKeyRef: Schema.optional(GoogleCloudRunV2SecretKeySelector),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2EnvVarSource",
-  }) as any as Schema.Schema<GoogleCloudRunV2EnvVarSource>;
+export const GoogleCloudRunV2EnvVarSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    secretKeyRef: Schema.optional(GoogleCloudRunV2SecretKeySelector),
+  }).annotate({ identifier: "GoogleCloudRunV2EnvVarSource" });
 
 export interface GoogleCloudRunV2EnvVar {
   /** Source for the environment variable's value. */
@@ -778,30 +651,23 @@ export interface GoogleCloudRunV2EnvVar {
   value?: string;
 }
 
-export const GoogleCloudRunV2EnvVar: Schema.Schema<GoogleCloudRunV2EnvVar> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      valueSource: Schema.optional(GoogleCloudRunV2EnvVarSource),
-      name: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2EnvVar",
-  }) as any as Schema.Schema<GoogleCloudRunV2EnvVar>;
+export const GoogleCloudRunV2EnvVar = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    valueSource: Schema.optional(GoogleCloudRunV2EnvVarSource),
+    name: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "GoogleCloudRunV2EnvVar" });
 
 export interface GoogleCloudRunV2TCPSocketAction {
   /** Optional. Port number to access on the container. Must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort. */
   port?: number;
 }
 
-export const GoogleCloudRunV2TCPSocketAction: Schema.Schema<GoogleCloudRunV2TCPSocketAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      port: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2TCPSocketAction",
-  }) as any as Schema.Schema<GoogleCloudRunV2TCPSocketAction>;
+export const GoogleCloudRunV2TCPSocketAction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    port: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudRunV2TCPSocketAction" });
 
 export interface GoogleCloudRunV2GRPCAction {
   /** Optional. Port number of the gRPC service. Number must be in the range 1 to 65535. If not specified, defaults to the exposed port of the container, which is the value of container.ports[0].containerPort. */
@@ -810,15 +676,11 @@ export interface GoogleCloudRunV2GRPCAction {
   service?: string;
 }
 
-export const GoogleCloudRunV2GRPCAction: Schema.Schema<GoogleCloudRunV2GRPCAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      port: Schema.optional(Schema.Number),
-      service: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2GRPCAction",
-  }) as any as Schema.Schema<GoogleCloudRunV2GRPCAction>;
+export const GoogleCloudRunV2GRPCAction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    port: Schema.optional(Schema.Number),
+    service: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudRunV2GRPCAction" });
 
 export interface GoogleCloudRunV2Probe {
   /** Optional. Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. */
@@ -837,20 +699,15 @@ export interface GoogleCloudRunV2Probe {
   grpc?: GoogleCloudRunV2GRPCAction;
 }
 
-export const GoogleCloudRunV2Probe: Schema.Schema<GoogleCloudRunV2Probe> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      initialDelaySeconds: Schema.optional(Schema.Number),
-      failureThreshold: Schema.optional(Schema.Number),
-      httpGet: Schema.optional(GoogleCloudRunV2HTTPGetAction),
-      timeoutSeconds: Schema.optional(Schema.Number),
-      periodSeconds: Schema.optional(Schema.Number),
-      tcpSocket: Schema.optional(GoogleCloudRunV2TCPSocketAction),
-      grpc: Schema.optional(GoogleCloudRunV2GRPCAction),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2Probe",
-  }) as any as Schema.Schema<GoogleCloudRunV2Probe>;
+export const GoogleCloudRunV2Probe = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  initialDelaySeconds: Schema.optional(Schema.Number),
+  failureThreshold: Schema.optional(Schema.Number),
+  httpGet: Schema.optional(GoogleCloudRunV2HTTPGetAction),
+  timeoutSeconds: Schema.optional(Schema.Number),
+  periodSeconds: Schema.optional(Schema.Number),
+  tcpSocket: Schema.optional(GoogleCloudRunV2TCPSocketAction),
+  grpc: Schema.optional(GoogleCloudRunV2GRPCAction),
+}).annotate({ identifier: "GoogleCloudRunV2Probe" });
 
 export interface GoogleCloudRunV2ContainerPort {
   /** Port number the container listens on. This must be a valid TCP port number, 0 < container_port < 65536. */
@@ -859,15 +716,11 @@ export interface GoogleCloudRunV2ContainerPort {
   name?: string;
 }
 
-export const GoogleCloudRunV2ContainerPort: Schema.Schema<GoogleCloudRunV2ContainerPort> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      containerPort: Schema.optional(Schema.Number),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2ContainerPort",
-  }) as any as Schema.Schema<GoogleCloudRunV2ContainerPort>;
+export const GoogleCloudRunV2ContainerPort =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    containerPort: Schema.optional(Schema.Number),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudRunV2ContainerPort" });
 
 export interface GoogleCloudRunV2BuildInfo {
   /** Output only. Entry point of the function when the image is a Cloud Run function. */
@@ -876,15 +729,11 @@ export interface GoogleCloudRunV2BuildInfo {
   sourceLocation?: string;
 }
 
-export const GoogleCloudRunV2BuildInfo: Schema.Schema<GoogleCloudRunV2BuildInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      functionTarget: Schema.optional(Schema.String),
-      sourceLocation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2BuildInfo",
-  }) as any as Schema.Schema<GoogleCloudRunV2BuildInfo>;
+export const GoogleCloudRunV2BuildInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    functionTarget: Schema.optional(Schema.String),
+    sourceLocation: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudRunV2BuildInfo" });
 
 export interface GoogleCloudRunV2Container {
   /** Compute Resource requirements by this container. */
@@ -921,57 +770,45 @@ export interface GoogleCloudRunV2Container {
   baseImageUri?: string;
 }
 
-export const GoogleCloudRunV2Container: Schema.Schema<GoogleCloudRunV2Container> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resources: Schema.optional(GoogleCloudRunV2ResourceRequirements),
-      volumeMounts: Schema.optional(Schema.Array(GoogleCloudRunV2VolumeMount)),
-      dependsOn: Schema.optional(Schema.Array(Schema.String)),
-      sourceCode: Schema.optional(GoogleCloudRunV2SourceCode),
-      workingDir: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      args: Schema.optional(Schema.Array(Schema.String)),
-      command: Schema.optional(Schema.Array(Schema.String)),
-      env: Schema.optional(Schema.Array(GoogleCloudRunV2EnvVar)),
-      livenessProbe: Schema.optional(GoogleCloudRunV2Probe),
-      readinessProbe: Schema.optional(GoogleCloudRunV2Probe),
-      ports: Schema.optional(Schema.Array(GoogleCloudRunV2ContainerPort)),
-      image: Schema.optional(Schema.String),
-      startupProbe: Schema.optional(GoogleCloudRunV2Probe),
-      buildInfo: Schema.optional(GoogleCloudRunV2BuildInfo),
-      baseImageUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2Container",
-  }) as any as Schema.Schema<GoogleCloudRunV2Container>;
+export const GoogleCloudRunV2Container =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resources: Schema.optional(GoogleCloudRunV2ResourceRequirements),
+    volumeMounts: Schema.optional(Schema.Array(GoogleCloudRunV2VolumeMount)),
+    dependsOn: Schema.optional(Schema.Array(Schema.String)),
+    sourceCode: Schema.optional(GoogleCloudRunV2SourceCode),
+    workingDir: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    args: Schema.optional(Schema.Array(Schema.String)),
+    command: Schema.optional(Schema.Array(Schema.String)),
+    env: Schema.optional(Schema.Array(GoogleCloudRunV2EnvVar)),
+    livenessProbe: Schema.optional(GoogleCloudRunV2Probe),
+    readinessProbe: Schema.optional(GoogleCloudRunV2Probe),
+    ports: Schema.optional(Schema.Array(GoogleCloudRunV2ContainerPort)),
+    image: Schema.optional(Schema.String),
+    startupProbe: Schema.optional(GoogleCloudRunV2Probe),
+    buildInfo: Schema.optional(GoogleCloudRunV2BuildInfo),
+    baseImageUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudRunV2Container" });
 
 export interface GoogleCloudRunV2ServiceMesh {
   /** The Mesh resource name. Format: `projects/{project}/locations/global/meshes/{mesh}`, where `{project}` can be project id or number. */
   mesh?: string;
 }
 
-export const GoogleCloudRunV2ServiceMesh: Schema.Schema<GoogleCloudRunV2ServiceMesh> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mesh: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2ServiceMesh",
-  }) as any as Schema.Schema<GoogleCloudRunV2ServiceMesh>;
+export const GoogleCloudRunV2ServiceMesh =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    mesh: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudRunV2ServiceMesh" });
 
 export interface GoogleCloudRunV2CloudSqlInstance {
   /** A list of Cloud SQL instance connection names. Cloud Run uses these to establish connections to the specified Cloud SQL instances. While the SQL instance name itself is unique within a project, the full connection name requires the location for proper routing. Format: `{project}:{location}:{instance}` Example: `my-project:us-central1:my-instance` You can find this value on the instance's **Overview** page in the Google Cloud console or by using the following `gcloud` command: ```sh gcloud sql instances describe INSTANCE_NAME \ --format='value(connectionName)' ``` Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. */
   instances?: Array<string>;
 }
 
-export const GoogleCloudRunV2CloudSqlInstance: Schema.Schema<GoogleCloudRunV2CloudSqlInstance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      instances: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2CloudSqlInstance",
-  }) as any as Schema.Schema<GoogleCloudRunV2CloudSqlInstance>;
+export const GoogleCloudRunV2CloudSqlInstance =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    instances: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudRunV2CloudSqlInstance" });
 
 export interface GoogleCloudRunV2NFSVolumeSource {
   /** Path that is exported by the NFS server. */
@@ -982,16 +819,12 @@ export interface GoogleCloudRunV2NFSVolumeSource {
   readOnly?: boolean;
 }
 
-export const GoogleCloudRunV2NFSVolumeSource: Schema.Schema<GoogleCloudRunV2NFSVolumeSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      path: Schema.optional(Schema.String),
-      server: Schema.optional(Schema.String),
-      readOnly: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2NFSVolumeSource",
-  }) as any as Schema.Schema<GoogleCloudRunV2NFSVolumeSource>;
+export const GoogleCloudRunV2NFSVolumeSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    path: Schema.optional(Schema.String),
+    server: Schema.optional(Schema.String),
+    readOnly: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudRunV2NFSVolumeSource" });
 
 export interface GoogleCloudRunV2GCSVolumeSource {
   /** A list of additional flags to pass to the gcsfuse CLI. Options should be specified without the leading "--". */
@@ -1002,16 +835,12 @@ export interface GoogleCloudRunV2GCSVolumeSource {
   readOnly?: boolean;
 }
 
-export const GoogleCloudRunV2GCSVolumeSource: Schema.Schema<GoogleCloudRunV2GCSVolumeSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mountOptions: Schema.optional(Schema.Array(Schema.String)),
-      bucket: Schema.optional(Schema.String),
-      readOnly: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2GCSVolumeSource",
-  }) as any as Schema.Schema<GoogleCloudRunV2GCSVolumeSource>;
+export const GoogleCloudRunV2GCSVolumeSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    mountOptions: Schema.optional(Schema.Array(Schema.String)),
+    bucket: Schema.optional(Schema.String),
+    readOnly: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudRunV2GCSVolumeSource" });
 
 export interface GoogleCloudRunV2Volume {
   /** For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run. */
@@ -1028,47 +857,36 @@ export interface GoogleCloudRunV2Volume {
   gcs?: GoogleCloudRunV2GCSVolumeSource;
 }
 
-export const GoogleCloudRunV2Volume: Schema.Schema<GoogleCloudRunV2Volume> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cloudSqlInstance: Schema.optional(GoogleCloudRunV2CloudSqlInstance),
-      name: Schema.optional(Schema.String),
-      nfs: Schema.optional(GoogleCloudRunV2NFSVolumeSource),
-      emptyDir: Schema.optional(GoogleCloudRunV2EmptyDirVolumeSource),
-      secret: Schema.optional(GoogleCloudRunV2SecretVolumeSource),
-      gcs: Schema.optional(GoogleCloudRunV2GCSVolumeSource),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2Volume",
-  }) as any as Schema.Schema<GoogleCloudRunV2Volume>;
+export const GoogleCloudRunV2Volume = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    cloudSqlInstance: Schema.optional(GoogleCloudRunV2CloudSqlInstance),
+    name: Schema.optional(Schema.String),
+    nfs: Schema.optional(GoogleCloudRunV2NFSVolumeSource),
+    emptyDir: Schema.optional(GoogleCloudRunV2EmptyDirVolumeSource),
+    secret: Schema.optional(GoogleCloudRunV2SecretVolumeSource),
+    gcs: Schema.optional(GoogleCloudRunV2GCSVolumeSource),
+  },
+).annotate({ identifier: "GoogleCloudRunV2Volume" });
 
 export interface GoogleCloudRunV2NodeSelector {
   /** Required. GPU accelerator type to attach to an instance. */
   accelerator?: string;
 }
 
-export const GoogleCloudRunV2NodeSelector: Schema.Schema<GoogleCloudRunV2NodeSelector> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accelerator: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2NodeSelector",
-  }) as any as Schema.Schema<GoogleCloudRunV2NodeSelector>;
+export const GoogleCloudRunV2NodeSelector =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accelerator: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudRunV2NodeSelector" });
 
 export interface GoogleCloudRunV2RevisionScalingStatus {
   /** The current number of min instances provisioned for this revision. */
   desiredMinInstanceCount?: number;
 }
 
-export const GoogleCloudRunV2RevisionScalingStatus: Schema.Schema<GoogleCloudRunV2RevisionScalingStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      desiredMinInstanceCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2RevisionScalingStatus",
-  }) as any as Schema.Schema<GoogleCloudRunV2RevisionScalingStatus>;
+export const GoogleCloudRunV2RevisionScalingStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    desiredMinInstanceCount: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudRunV2RevisionScalingStatus" });
 
 export interface GoogleCloudRunV2NetworkInterface {
   /** Optional. The VPC subnetwork that the Cloud Run resource will get IPs from. At least one of network or subnetwork must be specified. If both network and subnetwork are specified, the given VPC subnetwork must belong to the given VPC network. If subnetwork is not specified, the subnetwork with the same name with the network will be used. */
@@ -1079,16 +897,12 @@ export interface GoogleCloudRunV2NetworkInterface {
   network?: string;
 }
 
-export const GoogleCloudRunV2NetworkInterface: Schema.Schema<GoogleCloudRunV2NetworkInterface> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subnetwork: Schema.optional(Schema.String),
-      tags: Schema.optional(Schema.Array(Schema.String)),
-      network: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2NetworkInterface",
-  }) as any as Schema.Schema<GoogleCloudRunV2NetworkInterface>;
+export const GoogleCloudRunV2NetworkInterface =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subnetwork: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Array(Schema.String)),
+    network: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudRunV2NetworkInterface" });
 
 export interface GoogleCloudRunV2VpcAccess {
   /** Optional. Traffic VPC egress settings. If not provided, it defaults to PRIVATE_RANGES_ONLY. */
@@ -1103,18 +917,14 @@ export interface GoogleCloudRunV2VpcAccess {
   networkInterfaces?: Array<GoogleCloudRunV2NetworkInterface>;
 }
 
-export const GoogleCloudRunV2VpcAccess: Schema.Schema<GoogleCloudRunV2VpcAccess> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      egress: Schema.optional(Schema.String),
-      connector: Schema.optional(Schema.String),
-      networkInterfaces: Schema.optional(
-        Schema.Array(GoogleCloudRunV2NetworkInterface),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2VpcAccess",
-  }) as any as Schema.Schema<GoogleCloudRunV2VpcAccess>;
+export const GoogleCloudRunV2VpcAccess =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    egress: Schema.optional(Schema.String),
+    connector: Schema.optional(Schema.String),
+    networkInterfaces: Schema.optional(
+      Schema.Array(GoogleCloudRunV2NetworkInterface),
+    ),
+  }).annotate({ identifier: "GoogleCloudRunV2VpcAccess" });
 
 export interface GoogleCloudRunV2Revision {
   /** Output only. Arbitrary identifier for the API client. */
@@ -1208,49 +1018,45 @@ export interface GoogleCloudRunV2Revision {
   conditions?: Array<GoogleCloudRunV2Condition>;
 }
 
-export const GoogleCloudRunV2Revision: Schema.Schema<GoogleCloudRunV2Revision> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      client: Schema.optional(Schema.String),
-      clientVersion: Schema.optional(Schema.String),
-      executionEnvironment: Schema.optional(Schema.String),
-      observedGeneration: Schema.optional(Schema.String),
-      scaling: Schema.optional(GoogleCloudRunV2RevisionScaling),
-      containers: Schema.optional(Schema.Array(GoogleCloudRunV2Container)),
-      name: Schema.optional(Schema.String),
-      generation: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      serviceMesh: Schema.optional(GoogleCloudRunV2ServiceMesh),
-      service: Schema.optional(Schema.String),
-      launchStage: Schema.optional(Schema.String),
-      encryptionKeyRevocationAction: Schema.optional(Schema.String),
-      creator: Schema.optional(Schema.String),
-      serviceAccount: Schema.optional(Schema.String),
-      expireTime: Schema.optional(Schema.String),
-      maxInstanceRequestConcurrency: Schema.optional(Schema.Number),
-      uid: Schema.optional(Schema.String),
-      volumes: Schema.optional(Schema.Array(GoogleCloudRunV2Volume)),
-      deleteTime: Schema.optional(Schema.String),
-      nodeSelector: Schema.optional(GoogleCloudRunV2NodeSelector),
-      createTime: Schema.optional(Schema.String),
-      reconciling: Schema.optional(Schema.Boolean),
-      sessionAffinity: Schema.optional(Schema.Boolean),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      satisfiesPzs: Schema.optional(Schema.Boolean),
-      updateTime: Schema.optional(Schema.String),
-      encryptionKeyShutdownDuration: Schema.optional(Schema.String),
-      scalingStatus: Schema.optional(GoogleCloudRunV2RevisionScalingStatus),
-      logUri: Schema.optional(Schema.String),
-      encryptionKey: Schema.optional(Schema.String),
-      timeout: Schema.optional(Schema.String),
-      gpuZonalRedundancyDisabled: Schema.optional(Schema.Boolean),
-      vpcAccess: Schema.optional(GoogleCloudRunV2VpcAccess),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      conditions: Schema.optional(Schema.Array(GoogleCloudRunV2Condition)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2Revision",
-  }) as any as Schema.Schema<GoogleCloudRunV2Revision>;
+export const GoogleCloudRunV2Revision =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    client: Schema.optional(Schema.String),
+    clientVersion: Schema.optional(Schema.String),
+    executionEnvironment: Schema.optional(Schema.String),
+    observedGeneration: Schema.optional(Schema.String),
+    scaling: Schema.optional(GoogleCloudRunV2RevisionScaling),
+    containers: Schema.optional(Schema.Array(GoogleCloudRunV2Container)),
+    name: Schema.optional(Schema.String),
+    generation: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    serviceMesh: Schema.optional(GoogleCloudRunV2ServiceMesh),
+    service: Schema.optional(Schema.String),
+    launchStage: Schema.optional(Schema.String),
+    encryptionKeyRevocationAction: Schema.optional(Schema.String),
+    creator: Schema.optional(Schema.String),
+    serviceAccount: Schema.optional(Schema.String),
+    expireTime: Schema.optional(Schema.String),
+    maxInstanceRequestConcurrency: Schema.optional(Schema.Number),
+    uid: Schema.optional(Schema.String),
+    volumes: Schema.optional(Schema.Array(GoogleCloudRunV2Volume)),
+    deleteTime: Schema.optional(Schema.String),
+    nodeSelector: Schema.optional(GoogleCloudRunV2NodeSelector),
+    createTime: Schema.optional(Schema.String),
+    reconciling: Schema.optional(Schema.Boolean),
+    sessionAffinity: Schema.optional(Schema.Boolean),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    satisfiesPzs: Schema.optional(Schema.Boolean),
+    updateTime: Schema.optional(Schema.String),
+    encryptionKeyShutdownDuration: Schema.optional(Schema.String),
+    scalingStatus: Schema.optional(GoogleCloudRunV2RevisionScalingStatus),
+    logUri: Schema.optional(Schema.String),
+    encryptionKey: Schema.optional(Schema.String),
+    timeout: Schema.optional(Schema.String),
+    gpuZonalRedundancyDisabled: Schema.optional(Schema.Boolean),
+    vpcAccess: Schema.optional(GoogleCloudRunV2VpcAccess),
+    annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    conditions: Schema.optional(Schema.Array(GoogleCloudRunV2Condition)),
+  }).annotate({ identifier: "GoogleCloudRunV2Revision" });
 
 export interface GoogleCloudRunV2ListRevisionsResponse {
   /** The resulting list of Revisions. */
@@ -1259,15 +1065,11 @@ export interface GoogleCloudRunV2ListRevisionsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudRunV2ListRevisionsResponse: Schema.Schema<GoogleCloudRunV2ListRevisionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      revisions: Schema.optional(Schema.Array(GoogleCloudRunV2Revision)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2ListRevisionsResponse",
-  }) as any as Schema.Schema<GoogleCloudRunV2ListRevisionsResponse>;
+export const GoogleCloudRunV2ListRevisionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    revisions: Schema.optional(Schema.Array(GoogleCloudRunV2Revision)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudRunV2ListRevisionsResponse" });
 
 export interface GoogleCloudRunV2TaskAttemptResult {
   /** Output only. The status of this attempt. If the status code is OK, then the attempt succeeded. */
@@ -1278,23 +1080,18 @@ export interface GoogleCloudRunV2TaskAttemptResult {
   exitCode?: number;
 }
 
-export const GoogleCloudRunV2TaskAttemptResult: Schema.Schema<GoogleCloudRunV2TaskAttemptResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      status: Schema.optional(GoogleRpcStatus),
-      termSignal: Schema.optional(Schema.Number),
-      exitCode: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2TaskAttemptResult",
-  }) as any as Schema.Schema<GoogleCloudRunV2TaskAttemptResult>;
+export const GoogleCloudRunV2TaskAttemptResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    status: Schema.optional(GoogleRpcStatus),
+    termSignal: Schema.optional(Schema.Number),
+    exitCode: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudRunV2TaskAttemptResult" });
 
 export interface Proto2BridgeMessageSet {}
 
-export const Proto2BridgeMessageSet: Schema.Schema<Proto2BridgeMessageSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Proto2BridgeMessageSet",
-  }) as any as Schema.Schema<Proto2BridgeMessageSet>;
+export const Proto2BridgeMessageSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "Proto2BridgeMessageSet" });
 
 export interface UtilStatusProto {
   /** message_set associates an arbitrary proto message with the status. copybara:strip_begin(b/383363683) copybara:strip_end_and_replace optional proto2.bridge.MessageSet message_set = 5; */
@@ -1309,18 +1106,13 @@ export interface UtilStatusProto {
   space?: string;
 }
 
-export const UtilStatusProto: Schema.Schema<UtilStatusProto> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      messageSet: Schema.optional(Proto2BridgeMessageSet),
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      canonicalCode: Schema.optional(Schema.Number),
-      space: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UtilStatusProto",
-  }) as any as Schema.Schema<UtilStatusProto>;
+export const UtilStatusProto = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  messageSet: Schema.optional(Proto2BridgeMessageSet),
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  canonicalCode: Schema.optional(Schema.Number),
+  space: Schema.optional(Schema.String),
+}).annotate({ identifier: "UtilStatusProto" });
 
 export interface GoogleCloudRunV2ImageExportStatus {
   /** The exported image ID as it will appear in Artifact Registry. */
@@ -1337,17 +1129,13 @@ export interface GoogleCloudRunV2ImageExportStatus {
   status?: UtilStatusProto;
 }
 
-export const GoogleCloudRunV2ImageExportStatus: Schema.Schema<GoogleCloudRunV2ImageExportStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      exportedImageDigest: Schema.optional(Schema.String),
-      exportJobState: Schema.optional(Schema.String),
-      tag: Schema.optional(Schema.String),
-      status: Schema.optional(UtilStatusProto),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2ImageExportStatus",
-  }) as any as Schema.Schema<GoogleCloudRunV2ImageExportStatus>;
+export const GoogleCloudRunV2ImageExportStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    exportedImageDigest: Schema.optional(Schema.String),
+    exportJobState: Schema.optional(Schema.String),
+    tag: Schema.optional(Schema.String),
+    status: Schema.optional(UtilStatusProto),
+  }).annotate({ identifier: "GoogleCloudRunV2ImageExportStatus" });
 
 export interface GoogleCloudRunV2ExportStatusResponse {
   /** The status of each image export job. */
@@ -1362,32 +1150,24 @@ export interface GoogleCloudRunV2ExportStatusResponse {
   operationId?: string;
 }
 
-export const GoogleCloudRunV2ExportStatusResponse: Schema.Schema<GoogleCloudRunV2ExportStatusResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      imageExportStatuses: Schema.optional(
-        Schema.Array(GoogleCloudRunV2ImageExportStatus),
-      ),
-      operationState: Schema.optional(Schema.String),
-      operationId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2ExportStatusResponse",
-  }) as any as Schema.Schema<GoogleCloudRunV2ExportStatusResponse>;
+export const GoogleCloudRunV2ExportStatusResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    imageExportStatuses: Schema.optional(
+      Schema.Array(GoogleCloudRunV2ImageExportStatus),
+    ),
+    operationState: Schema.optional(Schema.String),
+    operationId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudRunV2ExportStatusResponse" });
 
 export interface GoogleIamV1TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: Array<string>;
 }
 
-export const GoogleIamV1TestIamPermissionsResponse: Schema.Schema<GoogleIamV1TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1TestIamPermissionsResponse",
-  }) as any as Schema.Schema<GoogleIamV1TestIamPermissionsResponse>;
+export const GoogleIamV1TestIamPermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleIamV1TestIamPermissionsResponse" });
 
 export interface GoogleDevtoolsCloudbuildV1NpmPackage {
   /** Artifact Registry repository, in the form "https://$REGION-npm.pkg.dev/$PROJECT/$REPOSITORY" Npm package in the workspace specified by path will be zipped and uploaded to Artifact Registry with this location as a prefix. */
@@ -1396,15 +1176,11 @@ export interface GoogleDevtoolsCloudbuildV1NpmPackage {
   packagePath?: string;
 }
 
-export const GoogleDevtoolsCloudbuildV1NpmPackage: Schema.Schema<GoogleDevtoolsCloudbuildV1NpmPackage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      repository: Schema.optional(Schema.String),
-      packagePath: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleDevtoolsCloudbuildV1NpmPackage",
-  }) as any as Schema.Schema<GoogleDevtoolsCloudbuildV1NpmPackage>;
+export const GoogleDevtoolsCloudbuildV1NpmPackage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    repository: Schema.optional(Schema.String),
+    packagePath: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleDevtoolsCloudbuildV1NpmPackage" });
 
 export interface GoogleDevtoolsCloudbuildV1GitSourceRepository {
   /** Location of the Git repository. */
@@ -1413,15 +1189,11 @@ export interface GoogleDevtoolsCloudbuildV1GitSourceRepository {
   developerConnect?: string;
 }
 
-export const GoogleDevtoolsCloudbuildV1GitSourceRepository: Schema.Schema<GoogleDevtoolsCloudbuildV1GitSourceRepository> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      url: Schema.optional(Schema.String),
-      developerConnect: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleDevtoolsCloudbuildV1GitSourceRepository",
-  }) as any as Schema.Schema<GoogleDevtoolsCloudbuildV1GitSourceRepository>;
+export const GoogleDevtoolsCloudbuildV1GitSourceRepository =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    url: Schema.optional(Schema.String),
+    developerConnect: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleDevtoolsCloudbuildV1GitSourceRepository" });
 
 export interface GoogleDevtoolsCloudbuildV1GitSourceDependency {
   /** Required. Where should the files be placed on the worker. */
@@ -1436,20 +1208,14 @@ export interface GoogleDevtoolsCloudbuildV1GitSourceDependency {
   depth?: string;
 }
 
-export const GoogleDevtoolsCloudbuildV1GitSourceDependency: Schema.Schema<GoogleDevtoolsCloudbuildV1GitSourceDependency> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      destPath: Schema.optional(Schema.String),
-      recurseSubmodules: Schema.optional(Schema.Boolean),
-      repository: Schema.optional(
-        GoogleDevtoolsCloudbuildV1GitSourceRepository,
-      ),
-      revision: Schema.optional(Schema.String),
-      depth: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleDevtoolsCloudbuildV1GitSourceDependency",
-  }) as any as Schema.Schema<GoogleDevtoolsCloudbuildV1GitSourceDependency>;
+export const GoogleDevtoolsCloudbuildV1GitSourceDependency =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    destPath: Schema.optional(Schema.String),
+    recurseSubmodules: Schema.optional(Schema.Boolean),
+    repository: Schema.optional(GoogleDevtoolsCloudbuildV1GitSourceRepository),
+    revision: Schema.optional(Schema.String),
+    depth: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleDevtoolsCloudbuildV1GitSourceDependency" });
 
 export interface GoogleDevtoolsCloudbuildV1UploadedGenericArtifact {
   /** Output only. Stores timing information for pushing the specified artifact. */
@@ -1464,50 +1230,38 @@ export interface GoogleDevtoolsCloudbuildV1UploadedGenericArtifact {
   artifactFingerprint?: GoogleDevtoolsCloudbuildV1FileHashes;
 }
 
-export const GoogleDevtoolsCloudbuildV1UploadedGenericArtifact: Schema.Schema<GoogleDevtoolsCloudbuildV1UploadedGenericArtifact> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pushTiming: Schema.optional(GoogleDevtoolsCloudbuildV1TimeSpan),
-      fileHashes: Schema.optional(
-        Schema.Record(Schema.String, GoogleDevtoolsCloudbuildV1FileHashes),
-      ),
-      artifactRegistryPackage: Schema.optional(Schema.String),
-      uri: Schema.optional(Schema.String),
-      artifactFingerprint: Schema.optional(
-        GoogleDevtoolsCloudbuildV1FileHashes,
-      ),
-    }),
-  ).annotate({
+export const GoogleDevtoolsCloudbuildV1UploadedGenericArtifact =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pushTiming: Schema.optional(GoogleDevtoolsCloudbuildV1TimeSpan),
+    fileHashes: Schema.optional(
+      Schema.Record(Schema.String, GoogleDevtoolsCloudbuildV1FileHashes),
+    ),
+    artifactRegistryPackage: Schema.optional(Schema.String),
+    uri: Schema.optional(Schema.String),
+    artifactFingerprint: Schema.optional(GoogleDevtoolsCloudbuildV1FileHashes),
+  }).annotate({
     identifier: "GoogleDevtoolsCloudbuildV1UploadedGenericArtifact",
-  }) as any as Schema.Schema<GoogleDevtoolsCloudbuildV1UploadedGenericArtifact>;
+  });
 
 export interface GoogleDevtoolsCloudbuildV1HttpConfig {
   /** SecretVersion resource of the HTTP proxy URL. The Service Account used in the build (either the default Service Account or user-specified Service Account) should have `secretmanager.versions.access` permissions on this secret. The proxy URL should be in format `protocol://@]proxyhost[:port]`. */
   proxySecretVersionName?: string;
 }
 
-export const GoogleDevtoolsCloudbuildV1HttpConfig: Schema.Schema<GoogleDevtoolsCloudbuildV1HttpConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      proxySecretVersionName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleDevtoolsCloudbuildV1HttpConfig",
-  }) as any as Schema.Schema<GoogleDevtoolsCloudbuildV1HttpConfig>;
+export const GoogleDevtoolsCloudbuildV1HttpConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    proxySecretVersionName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleDevtoolsCloudbuildV1HttpConfig" });
 
 export interface GoogleDevtoolsCloudbuildV1GitConfig {
   /** Configuration for HTTP related git operations. */
   http?: GoogleDevtoolsCloudbuildV1HttpConfig;
 }
 
-export const GoogleDevtoolsCloudbuildV1GitConfig: Schema.Schema<GoogleDevtoolsCloudbuildV1GitConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      http: Schema.optional(GoogleDevtoolsCloudbuildV1HttpConfig),
-    }),
-  ).annotate({
-    identifier: "GoogleDevtoolsCloudbuildV1GitConfig",
-  }) as any as Schema.Schema<GoogleDevtoolsCloudbuildV1GitConfig>;
+export const GoogleDevtoolsCloudbuildV1GitConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    http: Schema.optional(GoogleDevtoolsCloudbuildV1HttpConfig),
+  }).annotate({ identifier: "GoogleDevtoolsCloudbuildV1GitConfig" });
 
 export interface GoogleCloudRunV2ServiceScaling {
   /** Optional. total max instances for the service. This number of instances is divided among all revisions with specified traffic based on the percent of traffic they are receiving. */
@@ -1524,17 +1278,13 @@ export interface GoogleCloudRunV2ServiceScaling {
   manualInstanceCount?: number;
 }
 
-export const GoogleCloudRunV2ServiceScaling: Schema.Schema<GoogleCloudRunV2ServiceScaling> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      maxInstanceCount: Schema.optional(Schema.Number),
-      minInstanceCount: Schema.optional(Schema.Number),
-      scalingMode: Schema.optional(Schema.String),
-      manualInstanceCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2ServiceScaling",
-  }) as any as Schema.Schema<GoogleCloudRunV2ServiceScaling>;
+export const GoogleCloudRunV2ServiceScaling =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    maxInstanceCount: Schema.optional(Schema.Number),
+    minInstanceCount: Schema.optional(Schema.Number),
+    scalingMode: Schema.optional(Schema.String),
+    manualInstanceCount: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudRunV2ServiceScaling" });
 
 export interface GoogleDevtoolsCloudbuildV1Dependency {
   /** If set to true disable all dependency fetching (ignoring the default source as well). */
@@ -1545,18 +1295,14 @@ export interface GoogleDevtoolsCloudbuildV1Dependency {
   genericArtifact?: GoogleDevtoolsCloudbuildV1GenericArtifactDependency;
 }
 
-export const GoogleDevtoolsCloudbuildV1Dependency: Schema.Schema<GoogleDevtoolsCloudbuildV1Dependency> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      empty: Schema.optional(Schema.Boolean),
-      gitSource: Schema.optional(GoogleDevtoolsCloudbuildV1GitSourceDependency),
-      genericArtifact: Schema.optional(
-        GoogleDevtoolsCloudbuildV1GenericArtifactDependency,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleDevtoolsCloudbuildV1Dependency",
-  }) as any as Schema.Schema<GoogleDevtoolsCloudbuildV1Dependency>;
+export const GoogleDevtoolsCloudbuildV1Dependency =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    empty: Schema.optional(Schema.Boolean),
+    gitSource: Schema.optional(GoogleDevtoolsCloudbuildV1GitSourceDependency),
+    genericArtifact: Schema.optional(
+      GoogleDevtoolsCloudbuildV1GenericArtifactDependency,
+    ),
+  }).annotate({ identifier: "GoogleDevtoolsCloudbuildV1Dependency" });
 
 export interface GoogleDevtoolsCloudbuildV1GenericArtifact {
   /** Required. Registry path to upload the generic artifact to, in the form projects/$PROJECT/locations/$LOCATION/repositories/$REPO/packages/$PACKAGE/versions/$VERSION */
@@ -1565,15 +1311,11 @@ export interface GoogleDevtoolsCloudbuildV1GenericArtifact {
   folder?: string;
 }
 
-export const GoogleDevtoolsCloudbuildV1GenericArtifact: Schema.Schema<GoogleDevtoolsCloudbuildV1GenericArtifact> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      registryPath: Schema.optional(Schema.String),
-      folder: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleDevtoolsCloudbuildV1GenericArtifact",
-  }) as any as Schema.Schema<GoogleDevtoolsCloudbuildV1GenericArtifact>;
+export const GoogleDevtoolsCloudbuildV1GenericArtifact =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    registryPath: Schema.optional(Schema.String),
+    folder: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleDevtoolsCloudbuildV1GenericArtifact" });
 
 export interface GoogleDevtoolsCloudbuildV1UploadedNpmPackage {
   /** URI of the uploaded npm package. */
@@ -1586,17 +1328,13 @@ export interface GoogleDevtoolsCloudbuildV1UploadedNpmPackage {
   artifactRegistryPackage?: string;
 }
 
-export const GoogleDevtoolsCloudbuildV1UploadedNpmPackage: Schema.Schema<GoogleDevtoolsCloudbuildV1UploadedNpmPackage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-      pushTiming: Schema.optional(GoogleDevtoolsCloudbuildV1TimeSpan),
-      fileHashes: Schema.optional(GoogleDevtoolsCloudbuildV1FileHashes),
-      artifactRegistryPackage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleDevtoolsCloudbuildV1UploadedNpmPackage",
-  }) as any as Schema.Schema<GoogleDevtoolsCloudbuildV1UploadedNpmPackage>;
+export const GoogleDevtoolsCloudbuildV1UploadedNpmPackage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uri: Schema.optional(Schema.String),
+    pushTiming: Schema.optional(GoogleDevtoolsCloudbuildV1TimeSpan),
+    fileHashes: Schema.optional(GoogleDevtoolsCloudbuildV1FileHashes),
+    artifactRegistryPackage: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleDevtoolsCloudbuildV1UploadedNpmPackage" });
 
 export interface GoogleDevtoolsCloudbuildV1BuiltImage {
   /** Docker Registry 2.0 digest. */
@@ -1615,18 +1353,14 @@ export interface GoogleDevtoolsCloudbuildV1BuiltImage {
     | (string & {});
 }
 
-export const GoogleDevtoolsCloudbuildV1BuiltImage: Schema.Schema<GoogleDevtoolsCloudbuildV1BuiltImage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      digest: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      artifactRegistryPackage: Schema.optional(Schema.String),
-      pushTiming: Schema.optional(GoogleDevtoolsCloudbuildV1TimeSpan),
-      ociMediaType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleDevtoolsCloudbuildV1BuiltImage",
-  }) as any as Schema.Schema<GoogleDevtoolsCloudbuildV1BuiltImage>;
+export const GoogleDevtoolsCloudbuildV1BuiltImage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    digest: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    artifactRegistryPackage: Schema.optional(Schema.String),
+    pushTiming: Schema.optional(GoogleDevtoolsCloudbuildV1TimeSpan),
+    ociMediaType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleDevtoolsCloudbuildV1BuiltImage" });
 
 export interface GoogleDevtoolsCloudbuildV1UploadedPythonPackage {
   /** URI of the uploaded artifact. */
@@ -1639,17 +1373,15 @@ export interface GoogleDevtoolsCloudbuildV1UploadedPythonPackage {
   artifactRegistryPackage?: string;
 }
 
-export const GoogleDevtoolsCloudbuildV1UploadedPythonPackage: Schema.Schema<GoogleDevtoolsCloudbuildV1UploadedPythonPackage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-      pushTiming: Schema.optional(GoogleDevtoolsCloudbuildV1TimeSpan),
-      fileHashes: Schema.optional(GoogleDevtoolsCloudbuildV1FileHashes),
-      artifactRegistryPackage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleDevtoolsCloudbuildV1UploadedPythonPackage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uri: Schema.optional(Schema.String),
+    pushTiming: Schema.optional(GoogleDevtoolsCloudbuildV1TimeSpan),
+    fileHashes: Schema.optional(GoogleDevtoolsCloudbuildV1FileHashes),
+    artifactRegistryPackage: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleDevtoolsCloudbuildV1UploadedPythonPackage",
-  }) as any as Schema.Schema<GoogleDevtoolsCloudbuildV1UploadedPythonPackage>;
+  });
 
 export interface GoogleDevtoolsCloudbuildV1UploadedGoModule {
   /** URI of the uploaded artifact. */
@@ -1662,17 +1394,13 @@ export interface GoogleDevtoolsCloudbuildV1UploadedGoModule {
   artifactRegistryPackage?: string;
 }
 
-export const GoogleDevtoolsCloudbuildV1UploadedGoModule: Schema.Schema<GoogleDevtoolsCloudbuildV1UploadedGoModule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-      pushTiming: Schema.optional(GoogleDevtoolsCloudbuildV1TimeSpan),
-      fileHashes: Schema.optional(GoogleDevtoolsCloudbuildV1FileHashes),
-      artifactRegistryPackage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleDevtoolsCloudbuildV1UploadedGoModule",
-  }) as any as Schema.Schema<GoogleDevtoolsCloudbuildV1UploadedGoModule>;
+export const GoogleDevtoolsCloudbuildV1UploadedGoModule =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uri: Schema.optional(Schema.String),
+    pushTiming: Schema.optional(GoogleDevtoolsCloudbuildV1TimeSpan),
+    fileHashes: Schema.optional(GoogleDevtoolsCloudbuildV1FileHashes),
+    artifactRegistryPackage: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleDevtoolsCloudbuildV1UploadedGoModule" });
 
 export interface GoogleDevtoolsCloudbuildV1Results {
   /** Time to push all non-container artifacts to Cloud Storage. */
@@ -1699,36 +1427,30 @@ export interface GoogleDevtoolsCloudbuildV1Results {
   goModules?: Array<GoogleDevtoolsCloudbuildV1UploadedGoModule>;
 }
 
-export const GoogleDevtoolsCloudbuildV1Results: Schema.Schema<GoogleDevtoolsCloudbuildV1Results> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      artifactTiming: Schema.optional(GoogleDevtoolsCloudbuildV1TimeSpan),
-      buildStepOutputs: Schema.optional(Schema.Array(Schema.String)),
-      npmPackages: Schema.optional(
-        Schema.Array(GoogleDevtoolsCloudbuildV1UploadedNpmPackage),
-      ),
-      artifactManifest: Schema.optional(Schema.String),
-      genericArtifacts: Schema.optional(
-        Schema.Array(GoogleDevtoolsCloudbuildV1UploadedGenericArtifact),
-      ),
-      numArtifacts: Schema.optional(Schema.String),
-      images: Schema.optional(
-        Schema.Array(GoogleDevtoolsCloudbuildV1BuiltImage),
-      ),
-      mavenArtifacts: Schema.optional(
-        Schema.Array(GoogleDevtoolsCloudbuildV1UploadedMavenArtifact),
-      ),
-      pythonPackages: Schema.optional(
-        Schema.Array(GoogleDevtoolsCloudbuildV1UploadedPythonPackage),
-      ),
-      buildStepImages: Schema.optional(Schema.Array(Schema.String)),
-      goModules: Schema.optional(
-        Schema.Array(GoogleDevtoolsCloudbuildV1UploadedGoModule),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleDevtoolsCloudbuildV1Results",
-  }) as any as Schema.Schema<GoogleDevtoolsCloudbuildV1Results>;
+export const GoogleDevtoolsCloudbuildV1Results =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    artifactTiming: Schema.optional(GoogleDevtoolsCloudbuildV1TimeSpan),
+    buildStepOutputs: Schema.optional(Schema.Array(Schema.String)),
+    npmPackages: Schema.optional(
+      Schema.Array(GoogleDevtoolsCloudbuildV1UploadedNpmPackage),
+    ),
+    artifactManifest: Schema.optional(Schema.String),
+    genericArtifacts: Schema.optional(
+      Schema.Array(GoogleDevtoolsCloudbuildV1UploadedGenericArtifact),
+    ),
+    numArtifacts: Schema.optional(Schema.String),
+    images: Schema.optional(Schema.Array(GoogleDevtoolsCloudbuildV1BuiltImage)),
+    mavenArtifacts: Schema.optional(
+      Schema.Array(GoogleDevtoolsCloudbuildV1UploadedMavenArtifact),
+    ),
+    pythonPackages: Schema.optional(
+      Schema.Array(GoogleDevtoolsCloudbuildV1UploadedPythonPackage),
+    ),
+    buildStepImages: Schema.optional(Schema.Array(Schema.String)),
+    goModules: Schema.optional(
+      Schema.Array(GoogleDevtoolsCloudbuildV1UploadedGoModule),
+    ),
+  }).annotate({ identifier: "GoogleDevtoolsCloudbuildV1Results" });
 
 export interface GoogleCloudRunV2TaskTemplate {
   /** Number of retries allowed per Task, before marking this Task failed. Defaults to 3. */
@@ -1757,23 +1479,19 @@ export interface GoogleCloudRunV2TaskTemplate {
   serviceAccount?: string;
 }
 
-export const GoogleCloudRunV2TaskTemplate: Schema.Schema<GoogleCloudRunV2TaskTemplate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      maxRetries: Schema.optional(Schema.Number),
-      vpcAccess: Schema.optional(GoogleCloudRunV2VpcAccess),
-      timeout: Schema.optional(Schema.String),
-      gpuZonalRedundancyDisabled: Schema.optional(Schema.Boolean),
-      executionEnvironment: Schema.optional(Schema.String),
-      volumes: Schema.optional(Schema.Array(GoogleCloudRunV2Volume)),
-      encryptionKey: Schema.optional(Schema.String),
-      nodeSelector: Schema.optional(GoogleCloudRunV2NodeSelector),
-      containers: Schema.optional(Schema.Array(GoogleCloudRunV2Container)),
-      serviceAccount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2TaskTemplate",
-  }) as any as Schema.Schema<GoogleCloudRunV2TaskTemplate>;
+export const GoogleCloudRunV2TaskTemplate =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    maxRetries: Schema.optional(Schema.Number),
+    vpcAccess: Schema.optional(GoogleCloudRunV2VpcAccess),
+    timeout: Schema.optional(Schema.String),
+    gpuZonalRedundancyDisabled: Schema.optional(Schema.Boolean),
+    executionEnvironment: Schema.optional(Schema.String),
+    volumes: Schema.optional(Schema.Array(GoogleCloudRunV2Volume)),
+    encryptionKey: Schema.optional(Schema.String),
+    nodeSelector: Schema.optional(GoogleCloudRunV2NodeSelector),
+    containers: Schema.optional(Schema.Array(GoogleCloudRunV2Container)),
+    serviceAccount: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudRunV2TaskTemplate" });
 
 export interface GoogleCloudRunV2ExecutionTemplate {
   /** Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment, state, etc. For more information, visit https://cloud.google.com/resource-manager/docs/creating-managing-labels or https://cloud.google.com/run/docs/configuring/labels. Cloud Run API v2 does not support labels with `run.googleapis.com`, `cloud.googleapis.com`, `serving.knative.dev`, or `autoscaling.knative.dev` namespaces, and they will be rejected. All system labels in v1 now have a corresponding field in v2 ExecutionTemplate. */
@@ -1792,20 +1510,16 @@ export interface GoogleCloudRunV2ExecutionTemplate {
   taskCount?: number;
 }
 
-export const GoogleCloudRunV2ExecutionTemplate: Schema.Schema<GoogleCloudRunV2ExecutionTemplate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      parallelism: Schema.optional(Schema.Number),
-      template: Schema.optional(GoogleCloudRunV2TaskTemplate),
-      client: Schema.optional(Schema.String),
-      clientVersion: Schema.optional(Schema.String),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      taskCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2ExecutionTemplate",
-  }) as any as Schema.Schema<GoogleCloudRunV2ExecutionTemplate>;
+export const GoogleCloudRunV2ExecutionTemplate =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    parallelism: Schema.optional(Schema.Number),
+    template: Schema.optional(GoogleCloudRunV2TaskTemplate),
+    client: Schema.optional(Schema.String),
+    clientVersion: Schema.optional(Schema.String),
+    annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    taskCount: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudRunV2ExecutionTemplate" });
 
 export interface GoogleCloudRunV2ExecutionReference {
   /** Creation timestamp of the execution. */
@@ -1827,18 +1541,14 @@ export interface GoogleCloudRunV2ExecutionReference {
   createTime?: string;
 }
 
-export const GoogleCloudRunV2ExecutionReference: Schema.Schema<GoogleCloudRunV2ExecutionReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      completionTime: Schema.optional(Schema.String),
-      completionStatus: Schema.optional(Schema.String),
-      deleteTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2ExecutionReference",
-  }) as any as Schema.Schema<GoogleCloudRunV2ExecutionReference>;
+export const GoogleCloudRunV2ExecutionReference =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    completionTime: Schema.optional(Schema.String),
+    completionStatus: Schema.optional(Schema.String),
+    deleteTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudRunV2ExecutionReference" });
 
 export interface GoogleCloudRunV2BinaryAuthorization {
   /** Optional. The path to a binary authorization policy. Format: `projects/{project}/platforms/cloudRun/{policy-name}` */
@@ -1849,16 +1559,12 @@ export interface GoogleCloudRunV2BinaryAuthorization {
   breakglassJustification?: string;
 }
 
-export const GoogleCloudRunV2BinaryAuthorization: Schema.Schema<GoogleCloudRunV2BinaryAuthorization> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policy: Schema.optional(Schema.String),
-      useDefault: Schema.optional(Schema.Boolean),
-      breakglassJustification: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2BinaryAuthorization",
-  }) as any as Schema.Schema<GoogleCloudRunV2BinaryAuthorization>;
+export const GoogleCloudRunV2BinaryAuthorization =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policy: Schema.optional(Schema.String),
+    useDefault: Schema.optional(Schema.Boolean),
+    breakglassJustification: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudRunV2BinaryAuthorization" });
 
 export interface GoogleCloudRunV2Job {
   /** The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output. */
@@ -1924,41 +1630,34 @@ export interface GoogleCloudRunV2Job {
   binaryAuthorization?: GoogleCloudRunV2BinaryAuthorization;
 }
 
-export const GoogleCloudRunV2Job: Schema.Schema<GoogleCloudRunV2Job> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      launchStage: Schema.optional(Schema.String),
-      template: Schema.optional(GoogleCloudRunV2ExecutionTemplate),
-      generation: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      client: Schema.optional(Schema.String),
-      clientVersion: Schema.optional(Schema.String),
-      observedGeneration: Schema.optional(Schema.String),
-      uid: Schema.optional(Schema.String),
-      expireTime: Schema.optional(Schema.String),
-      terminalCondition: Schema.optional(GoogleCloudRunV2Condition),
-      creator: Schema.optional(Schema.String),
-      satisfiesPzs: Schema.optional(Schema.Boolean),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      reconciling: Schema.optional(Schema.Boolean),
-      createTime: Schema.optional(Schema.String),
-      executionCount: Schema.optional(Schema.Number),
-      deleteTime: Schema.optional(Schema.String),
-      lastModifier: Schema.optional(Schema.String),
-      conditions: Schema.optional(Schema.Array(GoogleCloudRunV2Condition)),
-      runExecutionToken: Schema.optional(Schema.String),
-      latestCreatedExecution: Schema.optional(
-        GoogleCloudRunV2ExecutionReference,
-      ),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      updateTime: Schema.optional(Schema.String),
-      startExecutionToken: Schema.optional(Schema.String),
-      binaryAuthorization: Schema.optional(GoogleCloudRunV2BinaryAuthorization),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2Job",
-  }) as any as Schema.Schema<GoogleCloudRunV2Job>;
+export const GoogleCloudRunV2Job = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  launchStage: Schema.optional(Schema.String),
+  template: Schema.optional(GoogleCloudRunV2ExecutionTemplate),
+  generation: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  client: Schema.optional(Schema.String),
+  clientVersion: Schema.optional(Schema.String),
+  observedGeneration: Schema.optional(Schema.String),
+  uid: Schema.optional(Schema.String),
+  expireTime: Schema.optional(Schema.String),
+  terminalCondition: Schema.optional(GoogleCloudRunV2Condition),
+  creator: Schema.optional(Schema.String),
+  satisfiesPzs: Schema.optional(Schema.Boolean),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  reconciling: Schema.optional(Schema.Boolean),
+  createTime: Schema.optional(Schema.String),
+  executionCount: Schema.optional(Schema.Number),
+  deleteTime: Schema.optional(Schema.String),
+  lastModifier: Schema.optional(Schema.String),
+  conditions: Schema.optional(Schema.Array(GoogleCloudRunV2Condition)),
+  runExecutionToken: Schema.optional(Schema.String),
+  latestCreatedExecution: Schema.optional(GoogleCloudRunV2ExecutionReference),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  updateTime: Schema.optional(Schema.String),
+  startExecutionToken: Schema.optional(Schema.String),
+  binaryAuthorization: Schema.optional(GoogleCloudRunV2BinaryAuthorization),
+}).annotate({ identifier: "GoogleCloudRunV2Job" });
 
 export interface GoogleCloudRunV2CancelExecutionRequest {
   /** Indicates that the request should be validated without actually cancelling any resources. */
@@ -1967,15 +1666,11 @@ export interface GoogleCloudRunV2CancelExecutionRequest {
   etag?: string;
 }
 
-export const GoogleCloudRunV2CancelExecutionRequest: Schema.Schema<GoogleCloudRunV2CancelExecutionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      validateOnly: Schema.optional(Schema.Boolean),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2CancelExecutionRequest",
-  }) as any as Schema.Schema<GoogleCloudRunV2CancelExecutionRequest>;
+export const GoogleCloudRunV2CancelExecutionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    validateOnly: Schema.optional(Schema.Boolean),
+    etag: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudRunV2CancelExecutionRequest" });
 
 export interface GoogleIamV1AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
@@ -1989,15 +1684,11 @@ export interface GoogleIamV1AuditLogConfig {
     | (string & {});
 }
 
-export const GoogleIamV1AuditLogConfig: Schema.Schema<GoogleIamV1AuditLogConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
-      logType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1AuditLogConfig",
-  }) as any as Schema.Schema<GoogleIamV1AuditLogConfig>;
+export const GoogleIamV1AuditLogConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
+    logType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleIamV1AuditLogConfig" });
 
 export interface GoogleIamV1AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
@@ -2006,15 +1697,12 @@ export interface GoogleIamV1AuditConfig {
   auditLogConfigs?: Array<GoogleIamV1AuditLogConfig>;
 }
 
-export const GoogleIamV1AuditConfig: Schema.Schema<GoogleIamV1AuditConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      service: Schema.optional(Schema.String),
-      auditLogConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditLogConfig)),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1AuditConfig",
-  }) as any as Schema.Schema<GoogleIamV1AuditConfig>;
+export const GoogleIamV1AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    service: Schema.optional(Schema.String),
+    auditLogConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditLogConfig)),
+  },
+).annotate({ identifier: "GoogleIamV1AuditConfig" });
 
 export interface GoogleCloudRunV2ContainerOverride {
   /** List of environment variables to set in the container. Will be merged with existing env for override. */
@@ -2027,24 +1715,19 @@ export interface GoogleCloudRunV2ContainerOverride {
   name?: string;
 }
 
-export const GoogleCloudRunV2ContainerOverride: Schema.Schema<GoogleCloudRunV2ContainerOverride> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      env: Schema.optional(Schema.Array(GoogleCloudRunV2EnvVar)),
-      args: Schema.optional(Schema.Array(Schema.String)),
-      clearArgs: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2ContainerOverride",
-  }) as any as Schema.Schema<GoogleCloudRunV2ContainerOverride>;
+export const GoogleCloudRunV2ContainerOverride =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    env: Schema.optional(Schema.Array(GoogleCloudRunV2EnvVar)),
+    args: Schema.optional(Schema.Array(Schema.String)),
+    clearArgs: Schema.optional(Schema.Boolean),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudRunV2ContainerOverride" });
 
 export interface GoogleProtobufEmpty {}
 
-export const GoogleProtobufEmpty: Schema.Schema<GoogleProtobufEmpty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "GoogleProtobufEmpty",
-  }) as any as Schema.Schema<GoogleProtobufEmpty>;
+export const GoogleProtobufEmpty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "GoogleProtobufEmpty" });
 
 export interface GoogleDevtoolsCloudbuildV1ArtifactObjects {
   /** Path globs used to match files in the build's workspace. */
@@ -2055,30 +1738,22 @@ export interface GoogleDevtoolsCloudbuildV1ArtifactObjects {
   timing?: GoogleDevtoolsCloudbuildV1TimeSpan;
 }
 
-export const GoogleDevtoolsCloudbuildV1ArtifactObjects: Schema.Schema<GoogleDevtoolsCloudbuildV1ArtifactObjects> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      paths: Schema.optional(Schema.Array(Schema.String)),
-      location: Schema.optional(Schema.String),
-      timing: Schema.optional(GoogleDevtoolsCloudbuildV1TimeSpan),
-    }),
-  ).annotate({
-    identifier: "GoogleDevtoolsCloudbuildV1ArtifactObjects",
-  }) as any as Schema.Schema<GoogleDevtoolsCloudbuildV1ArtifactObjects>;
+export const GoogleDevtoolsCloudbuildV1ArtifactObjects =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    paths: Schema.optional(Schema.Array(Schema.String)),
+    location: Schema.optional(Schema.String),
+    timing: Schema.optional(GoogleDevtoolsCloudbuildV1TimeSpan),
+  }).annotate({ identifier: "GoogleDevtoolsCloudbuildV1ArtifactObjects" });
 
 export interface GoogleDevtoolsCloudbuildV1PoolOption {
   /** The `WorkerPool` resource to execute the build on. You must have `cloudbuild.workerpools.use` on the project hosting the WorkerPool. Format projects/{project}/locations/{location}/workerPools/{workerPoolId} */
   name?: string;
 }
 
-export const GoogleDevtoolsCloudbuildV1PoolOption: Schema.Schema<GoogleDevtoolsCloudbuildV1PoolOption> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleDevtoolsCloudbuildV1PoolOption",
-  }) as any as Schema.Schema<GoogleDevtoolsCloudbuildV1PoolOption>;
+export const GoogleDevtoolsCloudbuildV1PoolOption =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleDevtoolsCloudbuildV1PoolOption" });
 
 export interface GoogleCloudRunV2Overrides {
   /** Duration in seconds the task may be active before the system will actively try to mark it failed and kill associated containers. Will replace existing timeout_seconds value. */
@@ -2089,18 +1764,14 @@ export interface GoogleCloudRunV2Overrides {
   taskCount?: number;
 }
 
-export const GoogleCloudRunV2Overrides: Schema.Schema<GoogleCloudRunV2Overrides> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      timeout: Schema.optional(Schema.String),
-      containerOverrides: Schema.optional(
-        Schema.Array(GoogleCloudRunV2ContainerOverride),
-      ),
-      taskCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2Overrides",
-  }) as any as Schema.Schema<GoogleCloudRunV2Overrides>;
+export const GoogleCloudRunV2Overrides =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    timeout: Schema.optional(Schema.String),
+    containerOverrides: Schema.optional(
+      Schema.Array(GoogleCloudRunV2ContainerOverride),
+    ),
+    taskCount: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudRunV2Overrides" });
 
 export interface GoogleCloudRunV2RunJobRequest {
   /** A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates. */
@@ -2111,16 +1782,12 @@ export interface GoogleCloudRunV2RunJobRequest {
   validateOnly?: boolean;
 }
 
-export const GoogleCloudRunV2RunJobRequest: Schema.Schema<GoogleCloudRunV2RunJobRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      etag: Schema.optional(Schema.String),
-      overrides: Schema.optional(GoogleCloudRunV2Overrides),
-      validateOnly: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2RunJobRequest",
-  }) as any as Schema.Schema<GoogleCloudRunV2RunJobRequest>;
+export const GoogleCloudRunV2RunJobRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    etag: Schema.optional(Schema.String),
+    overrides: Schema.optional(GoogleCloudRunV2Overrides),
+    validateOnly: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudRunV2RunJobRequest" });
 
 export interface GoogleDevtoolsCloudbuildV1ApprovalResult {
   /** Output only. Email of the user that called the ApproveBuild API to approve or reject a build at the time that the API was called. */
@@ -2135,32 +1802,24 @@ export interface GoogleDevtoolsCloudbuildV1ApprovalResult {
   comment?: string;
 }
 
-export const GoogleDevtoolsCloudbuildV1ApprovalResult: Schema.Schema<GoogleDevtoolsCloudbuildV1ApprovalResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      approverAccount: Schema.optional(Schema.String),
-      url: Schema.optional(Schema.String),
-      approvalTime: Schema.optional(Schema.String),
-      decision: Schema.optional(Schema.String),
-      comment: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleDevtoolsCloudbuildV1ApprovalResult",
-  }) as any as Schema.Schema<GoogleDevtoolsCloudbuildV1ApprovalResult>;
+export const GoogleDevtoolsCloudbuildV1ApprovalResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    approverAccount: Schema.optional(Schema.String),
+    url: Schema.optional(Schema.String),
+    approvalTime: Schema.optional(Schema.String),
+    decision: Schema.optional(Schema.String),
+    comment: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleDevtoolsCloudbuildV1ApprovalResult" });
 
 export interface GoogleDevtoolsCloudbuildV1ApprovalConfig {
   /** Whether or not approval is needed. If this is set on a build, it will become pending when created, and will need to be explicitly approved to start. */
   approvalRequired?: boolean;
 }
 
-export const GoogleDevtoolsCloudbuildV1ApprovalConfig: Schema.Schema<GoogleDevtoolsCloudbuildV1ApprovalConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      approvalRequired: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleDevtoolsCloudbuildV1ApprovalConfig",
-  }) as any as Schema.Schema<GoogleDevtoolsCloudbuildV1ApprovalConfig>;
+export const GoogleDevtoolsCloudbuildV1ApprovalConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    approvalRequired: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleDevtoolsCloudbuildV1ApprovalConfig" });
 
 export interface GoogleDevtoolsCloudbuildV1BuildApproval {
   /** Output only. The state of this build's approval. */
@@ -2177,16 +1836,12 @@ export interface GoogleDevtoolsCloudbuildV1BuildApproval {
   config?: GoogleDevtoolsCloudbuildV1ApprovalConfig;
 }
 
-export const GoogleDevtoolsCloudbuildV1BuildApproval: Schema.Schema<GoogleDevtoolsCloudbuildV1BuildApproval> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      result: Schema.optional(GoogleDevtoolsCloudbuildV1ApprovalResult),
-      config: Schema.optional(GoogleDevtoolsCloudbuildV1ApprovalConfig),
-    }),
-  ).annotate({
-    identifier: "GoogleDevtoolsCloudbuildV1BuildApproval",
-  }) as any as Schema.Schema<GoogleDevtoolsCloudbuildV1BuildApproval>;
+export const GoogleDevtoolsCloudbuildV1BuildApproval =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+    result: Schema.optional(GoogleDevtoolsCloudbuildV1ApprovalResult),
+    config: Schema.optional(GoogleDevtoolsCloudbuildV1ApprovalConfig),
+  }).annotate({ identifier: "GoogleDevtoolsCloudbuildV1BuildApproval" });
 
 export interface GoogleCloudRunV2TrafficTarget {
   /** Revision to which to send this portion of traffic, if traffic allocation is by revision. */
@@ -2203,17 +1858,13 @@ export interface GoogleCloudRunV2TrafficTarget {
   percent?: number;
 }
 
-export const GoogleCloudRunV2TrafficTarget: Schema.Schema<GoogleCloudRunV2TrafficTarget> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      revision: Schema.optional(Schema.String),
-      tag: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      percent: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2TrafficTarget",
-  }) as any as Schema.Schema<GoogleCloudRunV2TrafficTarget>;
+export const GoogleCloudRunV2TrafficTarget =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    revision: Schema.optional(Schema.String),
+    tag: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    percent: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudRunV2TrafficTarget" });
 
 export interface GoogleDevtoolsCloudbuildV1Volume {
   /** Name of the volume to mount. Volume names must be unique per build step and must be valid names for Docker volumes. Each named volume must be used by at least two build steps. */
@@ -2222,15 +1873,11 @@ export interface GoogleDevtoolsCloudbuildV1Volume {
   path?: string;
 }
 
-export const GoogleDevtoolsCloudbuildV1Volume: Schema.Schema<GoogleDevtoolsCloudbuildV1Volume> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      path: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleDevtoolsCloudbuildV1Volume",
-  }) as any as Schema.Schema<GoogleDevtoolsCloudbuildV1Volume>;
+export const GoogleDevtoolsCloudbuildV1Volume =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    path: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleDevtoolsCloudbuildV1Volume" });
 
 export interface GoogleCloudRunV2InstanceSplit {
   /** Revision to which to assign this portion of instances, if split allocation is by revision. */
@@ -2245,16 +1892,12 @@ export interface GoogleCloudRunV2InstanceSplit {
   percent?: number;
 }
 
-export const GoogleCloudRunV2InstanceSplit: Schema.Schema<GoogleCloudRunV2InstanceSplit> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      revision: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      percent: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2InstanceSplit",
-  }) as any as Schema.Schema<GoogleCloudRunV2InstanceSplit>;
+export const GoogleCloudRunV2InstanceSplit =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    revision: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    percent: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudRunV2InstanceSplit" });
 
 export interface GoogleCloudRunV2InstanceSplitStatus {
   /** The allocation type for this instance split. */
@@ -2269,16 +1912,12 @@ export interface GoogleCloudRunV2InstanceSplitStatus {
   revision?: string;
 }
 
-export const GoogleCloudRunV2InstanceSplitStatus: Schema.Schema<GoogleCloudRunV2InstanceSplitStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      percent: Schema.optional(Schema.Number),
-      revision: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2InstanceSplitStatus",
-  }) as any as Schema.Schema<GoogleCloudRunV2InstanceSplitStatus>;
+export const GoogleCloudRunV2InstanceSplitStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    percent: Schema.optional(Schema.Number),
+    revision: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudRunV2InstanceSplitStatus" });
 
 export interface GoogleCloudRunV2WorkerPoolRevisionTemplate {
   /** A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek */
@@ -2317,42 +1956,34 @@ export interface GoogleCloudRunV2WorkerPoolRevisionTemplate {
   serviceMesh?: GoogleCloudRunV2ServiceMesh;
 }
 
-export const GoogleCloudRunV2WorkerPoolRevisionTemplate: Schema.Schema<GoogleCloudRunV2WorkerPoolRevisionTemplate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      encryptionKey: Schema.optional(Schema.String),
-      serviceAccount: Schema.optional(Schema.String),
-      encryptionKeyShutdownDuration: Schema.optional(Schema.String),
-      revision: Schema.optional(Schema.String),
-      encryptionKeyRevocationAction: Schema.optional(Schema.String),
-      vpcAccess: Schema.optional(GoogleCloudRunV2VpcAccess),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      gpuZonalRedundancyDisabled: Schema.optional(Schema.Boolean),
-      nodeSelector: Schema.optional(GoogleCloudRunV2NodeSelector),
-      containers: Schema.optional(Schema.Array(GoogleCloudRunV2Container)),
-      volumes: Schema.optional(Schema.Array(GoogleCloudRunV2Volume)),
-      client: Schema.optional(Schema.String),
-      clientVersion: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      serviceMesh: Schema.optional(GoogleCloudRunV2ServiceMesh),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2WorkerPoolRevisionTemplate",
-  }) as any as Schema.Schema<GoogleCloudRunV2WorkerPoolRevisionTemplate>;
+export const GoogleCloudRunV2WorkerPoolRevisionTemplate =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    encryptionKey: Schema.optional(Schema.String),
+    serviceAccount: Schema.optional(Schema.String),
+    encryptionKeyShutdownDuration: Schema.optional(Schema.String),
+    revision: Schema.optional(Schema.String),
+    encryptionKeyRevocationAction: Schema.optional(Schema.String),
+    vpcAccess: Schema.optional(GoogleCloudRunV2VpcAccess),
+    annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    gpuZonalRedundancyDisabled: Schema.optional(Schema.Boolean),
+    nodeSelector: Schema.optional(GoogleCloudRunV2NodeSelector),
+    containers: Schema.optional(Schema.Array(GoogleCloudRunV2Container)),
+    volumes: Schema.optional(Schema.Array(GoogleCloudRunV2Volume)),
+    client: Schema.optional(Schema.String),
+    clientVersion: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    serviceMesh: Schema.optional(GoogleCloudRunV2ServiceMesh),
+  }).annotate({ identifier: "GoogleCloudRunV2WorkerPoolRevisionTemplate" });
 
 export interface GoogleCloudRunV2WorkerPoolScaling {
   /** Optional. The total number of instances in manual scaling mode. */
   manualInstanceCount?: number;
 }
 
-export const GoogleCloudRunV2WorkerPoolScaling: Schema.Schema<GoogleCloudRunV2WorkerPoolScaling> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      manualInstanceCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2WorkerPoolScaling",
-  }) as any as Schema.Schema<GoogleCloudRunV2WorkerPoolScaling>;
+export const GoogleCloudRunV2WorkerPoolScaling =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    manualInstanceCount: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudRunV2WorkerPoolScaling" });
 
 export interface GoogleCloudRunV2WorkerPool {
   /** Optional. Specifies how to distribute instances over a collection of Revisions belonging to the WorkerPool. If instance split is empty or not provided, defaults to 100% instances assigned to the latest `Ready` Revision. */
@@ -2426,47 +2057,43 @@ export interface GoogleCloudRunV2WorkerPool {
   creator?: string;
 }
 
-export const GoogleCloudRunV2WorkerPool: Schema.Schema<GoogleCloudRunV2WorkerPool> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      instanceSplits: Schema.optional(
-        Schema.Array(GoogleCloudRunV2InstanceSplit),
-      ),
-      satisfiesPzs: Schema.optional(Schema.Boolean),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      reconciling: Schema.optional(Schema.Boolean),
-      createTime: Schema.optional(Schema.String),
-      instanceSplitStatuses: Schema.optional(
-        Schema.Array(GoogleCloudRunV2InstanceSplitStatus),
-      ),
-      description: Schema.optional(Schema.String),
-      deleteTime: Schema.optional(Schema.String),
-      lastModifier: Schema.optional(Schema.String),
-      conditions: Schema.optional(Schema.Array(GoogleCloudRunV2Condition)),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      updateTime: Schema.optional(Schema.String),
-      threatDetectionEnabled: Schema.optional(Schema.Boolean),
-      customAudiences: Schema.optional(Schema.Array(Schema.String)),
-      latestCreatedRevision: Schema.optional(Schema.String),
-      binaryAuthorization: Schema.optional(GoogleCloudRunV2BinaryAuthorization),
-      launchStage: Schema.optional(Schema.String),
-      template: Schema.optional(GoogleCloudRunV2WorkerPoolRevisionTemplate),
-      generation: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      scaling: Schema.optional(GoogleCloudRunV2WorkerPoolScaling),
-      name: Schema.optional(Schema.String),
-      client: Schema.optional(Schema.String),
-      clientVersion: Schema.optional(Schema.String),
-      observedGeneration: Schema.optional(Schema.String),
-      latestReadyRevision: Schema.optional(Schema.String),
-      uid: Schema.optional(Schema.String),
-      expireTime: Schema.optional(Schema.String),
-      terminalCondition: Schema.optional(GoogleCloudRunV2Condition),
-      creator: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2WorkerPool",
-  }) as any as Schema.Schema<GoogleCloudRunV2WorkerPool>;
+export const GoogleCloudRunV2WorkerPool =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    instanceSplits: Schema.optional(
+      Schema.Array(GoogleCloudRunV2InstanceSplit),
+    ),
+    satisfiesPzs: Schema.optional(Schema.Boolean),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    reconciling: Schema.optional(Schema.Boolean),
+    createTime: Schema.optional(Schema.String),
+    instanceSplitStatuses: Schema.optional(
+      Schema.Array(GoogleCloudRunV2InstanceSplitStatus),
+    ),
+    description: Schema.optional(Schema.String),
+    deleteTime: Schema.optional(Schema.String),
+    lastModifier: Schema.optional(Schema.String),
+    conditions: Schema.optional(Schema.Array(GoogleCloudRunV2Condition)),
+    annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    updateTime: Schema.optional(Schema.String),
+    threatDetectionEnabled: Schema.optional(Schema.Boolean),
+    customAudiences: Schema.optional(Schema.Array(Schema.String)),
+    latestCreatedRevision: Schema.optional(Schema.String),
+    binaryAuthorization: Schema.optional(GoogleCloudRunV2BinaryAuthorization),
+    launchStage: Schema.optional(Schema.String),
+    template: Schema.optional(GoogleCloudRunV2WorkerPoolRevisionTemplate),
+    generation: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    scaling: Schema.optional(GoogleCloudRunV2WorkerPoolScaling),
+    name: Schema.optional(Schema.String),
+    client: Schema.optional(Schema.String),
+    clientVersion: Schema.optional(Schema.String),
+    observedGeneration: Schema.optional(Schema.String),
+    latestReadyRevision: Schema.optional(Schema.String),
+    uid: Schema.optional(Schema.String),
+    expireTime: Schema.optional(Schema.String),
+    terminalCondition: Schema.optional(GoogleCloudRunV2Condition),
+    creator: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudRunV2WorkerPool" });
 
 export interface GoogleCloudRunV2ListWorkerPoolsResponse {
   /** The resulting list of WorkerPools. */
@@ -2475,15 +2102,11 @@ export interface GoogleCloudRunV2ListWorkerPoolsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudRunV2ListWorkerPoolsResponse: Schema.Schema<GoogleCloudRunV2ListWorkerPoolsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      workerPools: Schema.optional(Schema.Array(GoogleCloudRunV2WorkerPool)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2ListWorkerPoolsResponse",
-  }) as any as Schema.Schema<GoogleCloudRunV2ListWorkerPoolsResponse>;
+export const GoogleCloudRunV2ListWorkerPoolsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    workerPools: Schema.optional(Schema.Array(GoogleCloudRunV2WorkerPool)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudRunV2ListWorkerPoolsResponse" });
 
 export interface GoogleDevtoolsCloudbuildV1Warning {
   /** Explanation of the warning generated. */
@@ -2497,15 +2120,11 @@ export interface GoogleDevtoolsCloudbuildV1Warning {
     | (string & {});
 }
 
-export const GoogleDevtoolsCloudbuildV1Warning: Schema.Schema<GoogleDevtoolsCloudbuildV1Warning> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-      priority: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleDevtoolsCloudbuildV1Warning",
-  }) as any as Schema.Schema<GoogleDevtoolsCloudbuildV1Warning>;
+export const GoogleDevtoolsCloudbuildV1Warning =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.String),
+    priority: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleDevtoolsCloudbuildV1Warning" });
 
 export interface GoogleDevtoolsCloudbuildV1SourceProvenance {
   /** A copy of the build's `source.repo_source`, if exists, with any revisions resolved. */
@@ -2522,27 +2141,23 @@ export interface GoogleDevtoolsCloudbuildV1SourceProvenance {
   resolvedStorageSourceManifest?: GoogleDevtoolsCloudbuildV1StorageSourceManifest;
 }
 
-export const GoogleDevtoolsCloudbuildV1SourceProvenance: Schema.Schema<GoogleDevtoolsCloudbuildV1SourceProvenance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resolvedRepoSource: Schema.optional(GoogleDevtoolsCloudbuildV1RepoSource),
-      resolvedConnectedRepository: Schema.optional(
-        GoogleDevtoolsCloudbuildV1ConnectedRepository,
-      ),
-      resolvedGitSource: Schema.optional(GoogleDevtoolsCloudbuildV1GitSource),
-      fileHashes: Schema.optional(
-        Schema.Record(Schema.String, GoogleDevtoolsCloudbuildV1FileHashes),
-      ),
-      resolvedStorageSource: Schema.optional(
-        GoogleDevtoolsCloudbuildV1StorageSource,
-      ),
-      resolvedStorageSourceManifest: Schema.optional(
-        GoogleDevtoolsCloudbuildV1StorageSourceManifest,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleDevtoolsCloudbuildV1SourceProvenance",
-  }) as any as Schema.Schema<GoogleDevtoolsCloudbuildV1SourceProvenance>;
+export const GoogleDevtoolsCloudbuildV1SourceProvenance =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resolvedRepoSource: Schema.optional(GoogleDevtoolsCloudbuildV1RepoSource),
+    resolvedConnectedRepository: Schema.optional(
+      GoogleDevtoolsCloudbuildV1ConnectedRepository,
+    ),
+    resolvedGitSource: Schema.optional(GoogleDevtoolsCloudbuildV1GitSource),
+    fileHashes: Schema.optional(
+      Schema.Record(Schema.String, GoogleDevtoolsCloudbuildV1FileHashes),
+    ),
+    resolvedStorageSource: Schema.optional(
+      GoogleDevtoolsCloudbuildV1StorageSource,
+    ),
+    resolvedStorageSourceManifest: Schema.optional(
+      GoogleDevtoolsCloudbuildV1StorageSourceManifest,
+    ),
+  }).annotate({ identifier: "GoogleDevtoolsCloudbuildV1SourceProvenance" });
 
 export interface GoogleDevtoolsCloudbuildV1Secret {
   /** Cloud KMS key name to use to decrypt these envs. */
@@ -2551,15 +2166,11 @@ export interface GoogleDevtoolsCloudbuildV1Secret {
   secretEnv?: Record<string, string>;
 }
 
-export const GoogleDevtoolsCloudbuildV1Secret: Schema.Schema<GoogleDevtoolsCloudbuildV1Secret> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kmsKeyName: Schema.optional(Schema.String),
-      secretEnv: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleDevtoolsCloudbuildV1Secret",
-  }) as any as Schema.Schema<GoogleDevtoolsCloudbuildV1Secret>;
+export const GoogleDevtoolsCloudbuildV1Secret =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kmsKeyName: Schema.optional(Schema.String),
+    secretEnv: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({ identifier: "GoogleDevtoolsCloudbuildV1Secret" });
 
 export interface GoogleDevtoolsCloudbuildV1Oci {
   /** Required. Registry path to upload the container to. e.g. us-east1-docker.pkg.dev/my-project/my-repo/my-image */
@@ -2570,16 +2181,12 @@ export interface GoogleDevtoolsCloudbuildV1Oci {
   file?: string;
 }
 
-export const GoogleDevtoolsCloudbuildV1Oci: Schema.Schema<GoogleDevtoolsCloudbuildV1Oci> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      registryPath: Schema.optional(Schema.String),
-      tags: Schema.optional(Schema.Array(Schema.String)),
-      file: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleDevtoolsCloudbuildV1Oci",
-  }) as any as Schema.Schema<GoogleDevtoolsCloudbuildV1Oci>;
+export const GoogleDevtoolsCloudbuildV1Oci =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    registryPath: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Array(Schema.String)),
+    file: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleDevtoolsCloudbuildV1Oci" });
 
 export interface GoogleDevtoolsCloudbuildV1PythonPackage {
   /** Path globs used to match files in the build's workspace. For Python/ Twine, this is usually `dist/*`, and sometimes additionally an `.asc` file. */
@@ -2588,15 +2195,11 @@ export interface GoogleDevtoolsCloudbuildV1PythonPackage {
   repository?: string;
 }
 
-export const GoogleDevtoolsCloudbuildV1PythonPackage: Schema.Schema<GoogleDevtoolsCloudbuildV1PythonPackage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      paths: Schema.optional(Schema.Array(Schema.String)),
-      repository: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleDevtoolsCloudbuildV1PythonPackage",
-  }) as any as Schema.Schema<GoogleDevtoolsCloudbuildV1PythonPackage>;
+export const GoogleDevtoolsCloudbuildV1PythonPackage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    paths: Schema.optional(Schema.Array(Schema.String)),
+    repository: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleDevtoolsCloudbuildV1PythonPackage" });
 
 export interface GoogleDevtoolsCloudbuildV1GoModule {
   /** Optional. The Go module's "module path". e.g. example.com/foo/v2 */
@@ -2613,19 +2216,15 @@ export interface GoogleDevtoolsCloudbuildV1GoModule {
   sourcePath?: string;
 }
 
-export const GoogleDevtoolsCloudbuildV1GoModule: Schema.Schema<GoogleDevtoolsCloudbuildV1GoModule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      modulePath: Schema.optional(Schema.String),
-      moduleVersion: Schema.optional(Schema.String),
-      repositoryLocation: Schema.optional(Schema.String),
-      repositoryProjectId: Schema.optional(Schema.String),
-      repositoryName: Schema.optional(Schema.String),
-      sourcePath: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleDevtoolsCloudbuildV1GoModule",
-  }) as any as Schema.Schema<GoogleDevtoolsCloudbuildV1GoModule>;
+export const GoogleDevtoolsCloudbuildV1GoModule =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    modulePath: Schema.optional(Schema.String),
+    moduleVersion: Schema.optional(Schema.String),
+    repositoryLocation: Schema.optional(Schema.String),
+    repositoryProjectId: Schema.optional(Schema.String),
+    repositoryName: Schema.optional(Schema.String),
+    sourcePath: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleDevtoolsCloudbuildV1GoModule" });
 
 export interface GoogleDevtoolsCloudbuildV1Artifacts {
   /** A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps. Files in the workspace matching specified paths globs will be uploaded to the specified Cloud Storage location using the builder service account's credentials. The location and generation of the uploaded objects will be stored in the Build resource's results field. If any objects fail to be pushed, the build is marked FAILURE. */
@@ -2646,31 +2245,27 @@ export interface GoogleDevtoolsCloudbuildV1Artifacts {
   npmPackages?: Array<GoogleDevtoolsCloudbuildV1NpmPackage>;
 }
 
-export const GoogleDevtoolsCloudbuildV1Artifacts: Schema.Schema<GoogleDevtoolsCloudbuildV1Artifacts> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      objects: Schema.optional(GoogleDevtoolsCloudbuildV1ArtifactObjects),
-      oci: Schema.optional(Schema.Array(GoogleDevtoolsCloudbuildV1Oci)),
-      genericArtifacts: Schema.optional(
-        Schema.Array(GoogleDevtoolsCloudbuildV1GenericArtifact),
-      ),
-      images: Schema.optional(Schema.Array(Schema.String)),
-      mavenArtifacts: Schema.optional(
-        Schema.Array(GoogleDevtoolsCloudbuildV1MavenArtifact),
-      ),
-      pythonPackages: Schema.optional(
-        Schema.Array(GoogleDevtoolsCloudbuildV1PythonPackage),
-      ),
-      goModules: Schema.optional(
-        Schema.Array(GoogleDevtoolsCloudbuildV1GoModule),
-      ),
-      npmPackages: Schema.optional(
-        Schema.Array(GoogleDevtoolsCloudbuildV1NpmPackage),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleDevtoolsCloudbuildV1Artifacts",
-  }) as any as Schema.Schema<GoogleDevtoolsCloudbuildV1Artifacts>;
+export const GoogleDevtoolsCloudbuildV1Artifacts =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    objects: Schema.optional(GoogleDevtoolsCloudbuildV1ArtifactObjects),
+    oci: Schema.optional(Schema.Array(GoogleDevtoolsCloudbuildV1Oci)),
+    genericArtifacts: Schema.optional(
+      Schema.Array(GoogleDevtoolsCloudbuildV1GenericArtifact),
+    ),
+    images: Schema.optional(Schema.Array(Schema.String)),
+    mavenArtifacts: Schema.optional(
+      Schema.Array(GoogleDevtoolsCloudbuildV1MavenArtifact),
+    ),
+    pythonPackages: Schema.optional(
+      Schema.Array(GoogleDevtoolsCloudbuildV1PythonPackage),
+    ),
+    goModules: Schema.optional(
+      Schema.Array(GoogleDevtoolsCloudbuildV1GoModule),
+    ),
+    npmPackages: Schema.optional(
+      Schema.Array(GoogleDevtoolsCloudbuildV1NpmPackage),
+    ),
+  }).annotate({ identifier: "GoogleDevtoolsCloudbuildV1Artifacts" });
 
 export interface GoogleDevtoolsCloudbuildV1BuildStep {
   /** Required. The name of the container image that will run this particular build step. If the image is available in the host's Docker daemon's cache, it will be run directly. If not, the host will attempt to pull the image first, using the builder service account's credentials if necessary. The Docker daemon's cache will already have the latest versions of all of the officially supported build steps ([https://github.com/GoogleCloudPlatform/cloud-builders](https://github.com/GoogleCloudPlatform/cloud-builders)). The Docker daemon will also have cached many of the layers for some popular images, like "ubuntu", "debian", but they will be refreshed at the time you attempt to use them. If you built an image in a previous build step, it will be stored in the host's Docker daemon's cache and is available to use as the name for a later build step. */
@@ -2722,31 +2317,27 @@ export interface GoogleDevtoolsCloudbuildV1BuildStep {
   timeout?: string;
 }
 
-export const GoogleDevtoolsCloudbuildV1BuildStep: Schema.Schema<GoogleDevtoolsCloudbuildV1BuildStep> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      exitCode: Schema.optional(Schema.Number),
-      id: Schema.optional(Schema.String),
-      volumes: Schema.optional(Schema.Array(GoogleDevtoolsCloudbuildV1Volume)),
-      secretEnv: Schema.optional(Schema.Array(Schema.String)),
-      script: Schema.optional(Schema.String),
-      allowExitCodes: Schema.optional(Schema.Array(Schema.Number)),
-      waitFor: Schema.optional(Schema.Array(Schema.String)),
-      dir: Schema.optional(Schema.String),
-      automapSubstitutions: Schema.optional(Schema.Boolean),
-      timing: Schema.optional(GoogleDevtoolsCloudbuildV1TimeSpan),
-      entrypoint: Schema.optional(Schema.String),
-      pullTiming: Schema.optional(GoogleDevtoolsCloudbuildV1TimeSpan),
-      env: Schema.optional(Schema.Array(Schema.String)),
-      status: Schema.optional(Schema.String),
-      allowFailure: Schema.optional(Schema.Boolean),
-      args: Schema.optional(Schema.Array(Schema.String)),
-      timeout: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleDevtoolsCloudbuildV1BuildStep",
-  }) as any as Schema.Schema<GoogleDevtoolsCloudbuildV1BuildStep>;
+export const GoogleDevtoolsCloudbuildV1BuildStep =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    exitCode: Schema.optional(Schema.Number),
+    id: Schema.optional(Schema.String),
+    volumes: Schema.optional(Schema.Array(GoogleDevtoolsCloudbuildV1Volume)),
+    secretEnv: Schema.optional(Schema.Array(Schema.String)),
+    script: Schema.optional(Schema.String),
+    allowExitCodes: Schema.optional(Schema.Array(Schema.Number)),
+    waitFor: Schema.optional(Schema.Array(Schema.String)),
+    dir: Schema.optional(Schema.String),
+    automapSubstitutions: Schema.optional(Schema.Boolean),
+    timing: Schema.optional(GoogleDevtoolsCloudbuildV1TimeSpan),
+    entrypoint: Schema.optional(Schema.String),
+    pullTiming: Schema.optional(GoogleDevtoolsCloudbuildV1TimeSpan),
+    env: Schema.optional(Schema.Array(Schema.String)),
+    status: Schema.optional(Schema.String),
+    allowFailure: Schema.optional(Schema.Boolean),
+    args: Schema.optional(Schema.Array(Schema.String)),
+    timeout: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleDevtoolsCloudbuildV1BuildStep" });
 
 export interface GoogleDevtoolsCloudbuildV1FailureInfo {
   /** The name of the failure. */
@@ -2763,15 +2354,11 @@ export interface GoogleDevtoolsCloudbuildV1FailureInfo {
   detail?: string;
 }
 
-export const GoogleDevtoolsCloudbuildV1FailureInfo: Schema.Schema<GoogleDevtoolsCloudbuildV1FailureInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      detail: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleDevtoolsCloudbuildV1FailureInfo",
-  }) as any as Schema.Schema<GoogleDevtoolsCloudbuildV1FailureInfo>;
+export const GoogleDevtoolsCloudbuildV1FailureInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    detail: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleDevtoolsCloudbuildV1FailureInfo" });
 
 export interface GoogleDevtoolsCloudbuildV1BuildOptions {
   /** Global list of volumes to mount for ALL build steps Each volume is created as an empty volume prior to starting the build process. Upon completion of the build, volumes and their contents are discarded. Global volume names and paths cannot conflict with the volumes defined a build step. Using a global volume in a build with only one step is not valid as it is indicative of a build request with an incorrect configuration. */
@@ -2840,30 +2427,26 @@ export interface GoogleDevtoolsCloudbuildV1BuildOptions {
   workerPool?: string;
 }
 
-export const GoogleDevtoolsCloudbuildV1BuildOptions: Schema.Schema<GoogleDevtoolsCloudbuildV1BuildOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      volumes: Schema.optional(Schema.Array(GoogleDevtoolsCloudbuildV1Volume)),
-      secretEnv: Schema.optional(Schema.Array(Schema.String)),
-      dynamicSubstitutions: Schema.optional(Schema.Boolean),
-      machineType: Schema.optional(Schema.String),
-      requestedVerifyOption: Schema.optional(Schema.String),
-      pool: Schema.optional(GoogleDevtoolsCloudbuildV1PoolOption),
-      pubsubTopic: Schema.optional(Schema.String),
-      substitutionOption: Schema.optional(Schema.String),
-      logging: Schema.optional(Schema.String),
-      sourceProvenanceHash: Schema.optional(Schema.Array(Schema.String)),
-      diskSizeGb: Schema.optional(Schema.String),
-      automapSubstitutions: Schema.optional(Schema.Boolean),
-      enableStructuredLogging: Schema.optional(Schema.Boolean),
-      logStreamingOption: Schema.optional(Schema.String),
-      env: Schema.optional(Schema.Array(Schema.String)),
-      defaultLogsBucketBehavior: Schema.optional(Schema.String),
-      workerPool: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleDevtoolsCloudbuildV1BuildOptions",
-  }) as any as Schema.Schema<GoogleDevtoolsCloudbuildV1BuildOptions>;
+export const GoogleDevtoolsCloudbuildV1BuildOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    volumes: Schema.optional(Schema.Array(GoogleDevtoolsCloudbuildV1Volume)),
+    secretEnv: Schema.optional(Schema.Array(Schema.String)),
+    dynamicSubstitutions: Schema.optional(Schema.Boolean),
+    machineType: Schema.optional(Schema.String),
+    requestedVerifyOption: Schema.optional(Schema.String),
+    pool: Schema.optional(GoogleDevtoolsCloudbuildV1PoolOption),
+    pubsubTopic: Schema.optional(Schema.String),
+    substitutionOption: Schema.optional(Schema.String),
+    logging: Schema.optional(Schema.String),
+    sourceProvenanceHash: Schema.optional(Schema.Array(Schema.String)),
+    diskSizeGb: Schema.optional(Schema.String),
+    automapSubstitutions: Schema.optional(Schema.Boolean),
+    enableStructuredLogging: Schema.optional(Schema.Boolean),
+    logStreamingOption: Schema.optional(Schema.String),
+    env: Schema.optional(Schema.Array(Schema.String)),
+    defaultLogsBucketBehavior: Schema.optional(Schema.String),
+    workerPool: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleDevtoolsCloudbuildV1BuildOptions" });
 
 export interface GoogleDevtoolsCloudbuildV1Build {
   /** Output only. Non-fatal problems encountered during the execution of the build. */
@@ -2941,68 +2524,58 @@ export interface GoogleDevtoolsCloudbuildV1Build {
   options?: GoogleDevtoolsCloudbuildV1BuildOptions;
 }
 
-export const GoogleDevtoolsCloudbuildV1Build: Schema.Schema<GoogleDevtoolsCloudbuildV1Build> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      warnings: Schema.optional(
-        Schema.Array(GoogleDevtoolsCloudbuildV1Warning),
-      ),
-      name: Schema.optional(Schema.String),
-      logUrl: Schema.optional(Schema.String),
-      statusDetail: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-      images: Schema.optional(Schema.Array(Schema.String)),
-      substitutions: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      queueTtl: Schema.optional(Schema.String),
-      finishTime: Schema.optional(Schema.String),
-      availableSecrets: Schema.optional(GoogleDevtoolsCloudbuildV1Secrets),
-      sourceProvenance: Schema.optional(
-        GoogleDevtoolsCloudbuildV1SourceProvenance,
-      ),
-      secrets: Schema.optional(Schema.Array(GoogleDevtoolsCloudbuildV1Secret)),
-      timing: Schema.optional(
-        Schema.Record(Schema.String, GoogleDevtoolsCloudbuildV1TimeSpan),
-      ),
-      logsBucket: Schema.optional(Schema.String),
-      serviceAccount: Schema.optional(Schema.String),
-      buildTriggerId: Schema.optional(Schema.String),
-      tags: Schema.optional(Schema.Array(Schema.String)),
-      artifacts: Schema.optional(GoogleDevtoolsCloudbuildV1Artifacts),
-      dependencies: Schema.optional(
-        Schema.Array(GoogleDevtoolsCloudbuildV1Dependency),
-      ),
-      results: Schema.optional(GoogleDevtoolsCloudbuildV1Results),
-      startTime: Schema.optional(Schema.String),
-      steps: Schema.optional(Schema.Array(GoogleDevtoolsCloudbuildV1BuildStep)),
-      projectId: Schema.optional(Schema.String),
-      source: Schema.optional(GoogleDevtoolsCloudbuildV1Source),
-      createTime: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      approval: Schema.optional(GoogleDevtoolsCloudbuildV1BuildApproval),
-      timeout: Schema.optional(Schema.String),
-      gitConfig: Schema.optional(GoogleDevtoolsCloudbuildV1GitConfig),
-      failureInfo: Schema.optional(GoogleDevtoolsCloudbuildV1FailureInfo),
-      options: Schema.optional(GoogleDevtoolsCloudbuildV1BuildOptions),
-    }),
-  ).annotate({
-    identifier: "GoogleDevtoolsCloudbuildV1Build",
-  }) as any as Schema.Schema<GoogleDevtoolsCloudbuildV1Build>;
+export const GoogleDevtoolsCloudbuildV1Build =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    warnings: Schema.optional(Schema.Array(GoogleDevtoolsCloudbuildV1Warning)),
+    name: Schema.optional(Schema.String),
+    logUrl: Schema.optional(Schema.String),
+    statusDetail: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+    images: Schema.optional(Schema.Array(Schema.String)),
+    substitutions: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    queueTtl: Schema.optional(Schema.String),
+    finishTime: Schema.optional(Schema.String),
+    availableSecrets: Schema.optional(GoogleDevtoolsCloudbuildV1Secrets),
+    sourceProvenance: Schema.optional(
+      GoogleDevtoolsCloudbuildV1SourceProvenance,
+    ),
+    secrets: Schema.optional(Schema.Array(GoogleDevtoolsCloudbuildV1Secret)),
+    timing: Schema.optional(
+      Schema.Record(Schema.String, GoogleDevtoolsCloudbuildV1TimeSpan),
+    ),
+    logsBucket: Schema.optional(Schema.String),
+    serviceAccount: Schema.optional(Schema.String),
+    buildTriggerId: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Array(Schema.String)),
+    artifacts: Schema.optional(GoogleDevtoolsCloudbuildV1Artifacts),
+    dependencies: Schema.optional(
+      Schema.Array(GoogleDevtoolsCloudbuildV1Dependency),
+    ),
+    results: Schema.optional(GoogleDevtoolsCloudbuildV1Results),
+    startTime: Schema.optional(Schema.String),
+    steps: Schema.optional(Schema.Array(GoogleDevtoolsCloudbuildV1BuildStep)),
+    projectId: Schema.optional(Schema.String),
+    source: Schema.optional(GoogleDevtoolsCloudbuildV1Source),
+    createTime: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    approval: Schema.optional(GoogleDevtoolsCloudbuildV1BuildApproval),
+    timeout: Schema.optional(Schema.String),
+    gitConfig: Schema.optional(GoogleDevtoolsCloudbuildV1GitConfig),
+    failureInfo: Schema.optional(GoogleDevtoolsCloudbuildV1FailureInfo),
+    options: Schema.optional(GoogleDevtoolsCloudbuildV1BuildOptions),
+  }).annotate({ identifier: "GoogleDevtoolsCloudbuildV1Build" });
 
 export interface GoogleDevtoolsCloudbuildV1BuildOperationMetadata {
   /** The build that the operation is tracking. */
   build?: GoogleDevtoolsCloudbuildV1Build;
 }
 
-export const GoogleDevtoolsCloudbuildV1BuildOperationMetadata: Schema.Schema<GoogleDevtoolsCloudbuildV1BuildOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      build: Schema.optional(GoogleDevtoolsCloudbuildV1Build),
-    }),
-  ).annotate({
+export const GoogleDevtoolsCloudbuildV1BuildOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    build: Schema.optional(GoogleDevtoolsCloudbuildV1Build),
+  }).annotate({
     identifier: "GoogleDevtoolsCloudbuildV1BuildOperationMetadata",
-  }) as any as Schema.Schema<GoogleDevtoolsCloudbuildV1BuildOperationMetadata>;
+  });
 
 export interface GoogleCloudRunV2MultiRegionSettings {
   /** Optional. System-generated unique id for the multi-region Service. */
@@ -3011,29 +2584,21 @@ export interface GoogleCloudRunV2MultiRegionSettings {
   regions?: Array<string>;
 }
 
-export const GoogleCloudRunV2MultiRegionSettings: Schema.Schema<GoogleCloudRunV2MultiRegionSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      multiRegionId: Schema.optional(Schema.String),
-      regions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2MultiRegionSettings",
-  }) as any as Schema.Schema<GoogleCloudRunV2MultiRegionSettings>;
+export const GoogleCloudRunV2MultiRegionSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    multiRegionId: Schema.optional(Schema.String),
+    regions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudRunV2MultiRegionSettings" });
 
 export interface GoogleCloudRunV2Metadata {
   /** JSON encoded Google-generated Customer Metadata for a given resource/project. */
   metadata?: string;
 }
 
-export const GoogleCloudRunV2Metadata: Schema.Schema<GoogleCloudRunV2Metadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadata: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2Metadata",
-  }) as any as Schema.Schema<GoogleCloudRunV2Metadata>;
+export const GoogleCloudRunV2Metadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    metadata: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudRunV2Metadata" });
 
 export interface GoogleCloudRunV2Task {
   /** Output only. The name of the parent Job. */
@@ -3108,46 +2673,41 @@ export interface GoogleCloudRunV2Task {
   volumes?: Array<GoogleCloudRunV2Volume>;
 }
 
-export const GoogleCloudRunV2Task: Schema.Schema<GoogleCloudRunV2Task> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      job: Schema.optional(Schema.String),
-      uid: Schema.optional(Schema.String),
-      lastAttemptResult: Schema.optional(GoogleCloudRunV2TaskAttemptResult),
-      serviceAccount: Schema.optional(Schema.String),
-      index: Schema.optional(Schema.Number),
-      expireTime: Schema.optional(Schema.String),
-      scheduledTime: Schema.optional(Schema.String),
-      generation: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      containers: Schema.optional(Schema.Array(GoogleCloudRunV2Container)),
-      executionEnvironment: Schema.optional(Schema.String),
-      observedGeneration: Schema.optional(Schema.String),
-      conditions: Schema.optional(Schema.Array(GoogleCloudRunV2Condition)),
-      vpcAccess: Schema.optional(GoogleCloudRunV2VpcAccess),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      execution: Schema.optional(Schema.String),
-      maxRetries: Schema.optional(Schema.Number),
-      timeout: Schema.optional(Schema.String),
-      gpuZonalRedundancyDisabled: Schema.optional(Schema.Boolean),
-      encryptionKey: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      logUri: Schema.optional(Schema.String),
-      completionTime: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      satisfiesPzs: Schema.optional(Schema.Boolean),
-      reconciling: Schema.optional(Schema.Boolean),
-      nodeSelector: Schema.optional(GoogleCloudRunV2NodeSelector),
-      createTime: Schema.optional(Schema.String),
-      retried: Schema.optional(Schema.Number),
-      deleteTime: Schema.optional(Schema.String),
-      volumes: Schema.optional(Schema.Array(GoogleCloudRunV2Volume)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2Task",
-  }) as any as Schema.Schema<GoogleCloudRunV2Task>;
+export const GoogleCloudRunV2Task = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  job: Schema.optional(Schema.String),
+  uid: Schema.optional(Schema.String),
+  lastAttemptResult: Schema.optional(GoogleCloudRunV2TaskAttemptResult),
+  serviceAccount: Schema.optional(Schema.String),
+  index: Schema.optional(Schema.Number),
+  expireTime: Schema.optional(Schema.String),
+  scheduledTime: Schema.optional(Schema.String),
+  generation: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  containers: Schema.optional(Schema.Array(GoogleCloudRunV2Container)),
+  executionEnvironment: Schema.optional(Schema.String),
+  observedGeneration: Schema.optional(Schema.String),
+  conditions: Schema.optional(Schema.Array(GoogleCloudRunV2Condition)),
+  vpcAccess: Schema.optional(GoogleCloudRunV2VpcAccess),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  execution: Schema.optional(Schema.String),
+  maxRetries: Schema.optional(Schema.Number),
+  timeout: Schema.optional(Schema.String),
+  gpuZonalRedundancyDisabled: Schema.optional(Schema.Boolean),
+  encryptionKey: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  logUri: Schema.optional(Schema.String),
+  completionTime: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  satisfiesPzs: Schema.optional(Schema.Boolean),
+  reconciling: Schema.optional(Schema.Boolean),
+  nodeSelector: Schema.optional(GoogleCloudRunV2NodeSelector),
+  createTime: Schema.optional(Schema.String),
+  retried: Schema.optional(Schema.Number),
+  deleteTime: Schema.optional(Schema.String),
+  volumes: Schema.optional(Schema.Array(GoogleCloudRunV2Volume)),
+}).annotate({ identifier: "GoogleCloudRunV2Task" });
 
 export interface GoogleCloudRunV2ListTasksResponse {
   /** The resulting list of Tasks. */
@@ -3156,15 +2716,11 @@ export interface GoogleCloudRunV2ListTasksResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudRunV2ListTasksResponse: Schema.Schema<GoogleCloudRunV2ListTasksResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tasks: Schema.optional(Schema.Array(GoogleCloudRunV2Task)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2ListTasksResponse",
-  }) as any as Schema.Schema<GoogleCloudRunV2ListTasksResponse>;
+export const GoogleCloudRunV2ListTasksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tasks: Schema.optional(Schema.Array(GoogleCloudRunV2Task)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudRunV2ListTasksResponse" });
 
 export interface GoogleCloudRunV2TrafficTargetStatus {
   /** Revision to which this traffic is sent. */
@@ -3183,18 +2739,14 @@ export interface GoogleCloudRunV2TrafficTargetStatus {
   uri?: string;
 }
 
-export const GoogleCloudRunV2TrafficTargetStatus: Schema.Schema<GoogleCloudRunV2TrafficTargetStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      revision: Schema.optional(Schema.String),
-      percent: Schema.optional(Schema.Number),
-      tag: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      uri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2TrafficTargetStatus",
-  }) as any as Schema.Schema<GoogleCloudRunV2TrafficTargetStatus>;
+export const GoogleCloudRunV2TrafficTargetStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    revision: Schema.optional(Schema.String),
+    percent: Schema.optional(Schema.Number),
+    tag: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    uri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudRunV2TrafficTargetStatus" });
 
 export interface GoogleTypeExpr {
   /** Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression. */
@@ -3207,31 +2759,22 @@ export interface GoogleTypeExpr {
   location?: string;
 }
 
-export const GoogleTypeExpr: Schema.Schema<GoogleTypeExpr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-      expression: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleTypeExpr",
-  }) as any as Schema.Schema<GoogleTypeExpr>;
+export const GoogleTypeExpr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  title: Schema.optional(Schema.String),
+  expression: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+}).annotate({ identifier: "GoogleTypeExpr" });
 
 export interface GoogleIamV1TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: Array<string>;
 }
 
-export const GoogleIamV1TestIamPermissionsRequest: Schema.Schema<GoogleIamV1TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1TestIamPermissionsRequest",
-  }) as any as Schema.Schema<GoogleIamV1TestIamPermissionsRequest>;
+export const GoogleIamV1TestIamPermissionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleIamV1TestIamPermissionsRequest" });
 
 export interface GoogleCloudRunV2BuildConfig {
   /** Optional. The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function". */
@@ -3254,24 +2797,20 @@ export interface GoogleCloudRunV2BuildConfig {
   sourceLocation?: string;
 }
 
-export const GoogleCloudRunV2BuildConfig: Schema.Schema<GoogleCloudRunV2BuildConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      functionTarget: Schema.optional(Schema.String),
-      environmentVariables: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      baseImage: Schema.optional(Schema.String),
-      workerPool: Schema.optional(Schema.String),
-      enableAutomaticUpdates: Schema.optional(Schema.Boolean),
-      imageUri: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      serviceAccount: Schema.optional(Schema.String),
-      sourceLocation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2BuildConfig",
-  }) as any as Schema.Schema<GoogleCloudRunV2BuildConfig>;
+export const GoogleCloudRunV2BuildConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    functionTarget: Schema.optional(Schema.String),
+    environmentVariables: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    baseImage: Schema.optional(Schema.String),
+    workerPool: Schema.optional(Schema.String),
+    enableAutomaticUpdates: Schema.optional(Schema.Boolean),
+    imageUri: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    serviceAccount: Schema.optional(Schema.String),
+    sourceLocation: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudRunV2BuildConfig" });
 
 export interface GoogleCloudRunV2BuildpacksBuild {
   /** Optional. The base image to use for the build. */
@@ -3290,36 +2829,28 @@ export interface GoogleCloudRunV2BuildpacksBuild {
   projectDescriptor?: string;
 }
 
-export const GoogleCloudRunV2BuildpacksBuild: Schema.Schema<GoogleCloudRunV2BuildpacksBuild> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      baseImage: Schema.optional(Schema.String),
-      runtime: Schema.optional(Schema.String),
-      enableAutomaticUpdates: Schema.optional(Schema.Boolean),
-      environmentVariables: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      functionTarget: Schema.optional(Schema.String),
-      cacheImageUri: Schema.optional(Schema.String),
-      projectDescriptor: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2BuildpacksBuild",
-  }) as any as Schema.Schema<GoogleCloudRunV2BuildpacksBuild>;
+export const GoogleCloudRunV2BuildpacksBuild =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    baseImage: Schema.optional(Schema.String),
+    runtime: Schema.optional(Schema.String),
+    enableAutomaticUpdates: Schema.optional(Schema.Boolean),
+    environmentVariables: Schema.optional(
+      Schema.Record(Schema.String, Schema.String),
+    ),
+    functionTarget: Schema.optional(Schema.String),
+    cacheImageUri: Schema.optional(Schema.String),
+    projectDescriptor: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudRunV2BuildpacksBuild" });
 
 export interface GoogleCloudRunV2ExportImageRequest {
   /** Required. The export destination url (the Artifact Registry repo). */
   destinationRepo?: string;
 }
 
-export const GoogleCloudRunV2ExportImageRequest: Schema.Schema<GoogleCloudRunV2ExportImageRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      destinationRepo: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2ExportImageRequest",
-  }) as any as Schema.Schema<GoogleCloudRunV2ExportImageRequest>;
+export const GoogleCloudRunV2ExportImageRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    destinationRepo: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudRunV2ExportImageRequest" });
 
 export interface GoogleCloudRunV2RevisionTemplate {
   /** A reference to a customer managed encryption key (CMEK) to use to encrypt this container image. For more information, go to https://cloud.google.com/run/docs/securing/using-cmek */
@@ -3374,34 +2905,30 @@ export interface GoogleCloudRunV2RevisionTemplate {
   serviceMesh?: GoogleCloudRunV2ServiceMesh;
 }
 
-export const GoogleCloudRunV2RevisionTemplate: Schema.Schema<GoogleCloudRunV2RevisionTemplate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      encryptionKey: Schema.optional(Schema.String),
-      maxInstanceRequestConcurrency: Schema.optional(Schema.Number),
-      serviceAccount: Schema.optional(Schema.String),
-      encryptionKeyShutdownDuration: Schema.optional(Schema.String),
-      revision: Schema.optional(Schema.String),
-      encryptionKeyRevocationAction: Schema.optional(Schema.String),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      vpcAccess: Schema.optional(GoogleCloudRunV2VpcAccess),
-      healthCheckDisabled: Schema.optional(Schema.Boolean),
-      timeout: Schema.optional(Schema.String),
-      gpuZonalRedundancyDisabled: Schema.optional(Schema.Boolean),
-      nodeSelector: Schema.optional(GoogleCloudRunV2NodeSelector),
-      scaling: Schema.optional(GoogleCloudRunV2RevisionScaling),
-      containers: Schema.optional(Schema.Array(GoogleCloudRunV2Container)),
-      executionEnvironment: Schema.optional(Schema.String),
-      volumes: Schema.optional(Schema.Array(GoogleCloudRunV2Volume)),
-      client: Schema.optional(Schema.String),
-      clientVersion: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      sessionAffinity: Schema.optional(Schema.Boolean),
-      serviceMesh: Schema.optional(GoogleCloudRunV2ServiceMesh),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2RevisionTemplate",
-  }) as any as Schema.Schema<GoogleCloudRunV2RevisionTemplate>;
+export const GoogleCloudRunV2RevisionTemplate =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    encryptionKey: Schema.optional(Schema.String),
+    maxInstanceRequestConcurrency: Schema.optional(Schema.Number),
+    serviceAccount: Schema.optional(Schema.String),
+    encryptionKeyShutdownDuration: Schema.optional(Schema.String),
+    revision: Schema.optional(Schema.String),
+    encryptionKeyRevocationAction: Schema.optional(Schema.String),
+    annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    vpcAccess: Schema.optional(GoogleCloudRunV2VpcAccess),
+    healthCheckDisabled: Schema.optional(Schema.Boolean),
+    timeout: Schema.optional(Schema.String),
+    gpuZonalRedundancyDisabled: Schema.optional(Schema.Boolean),
+    nodeSelector: Schema.optional(GoogleCloudRunV2NodeSelector),
+    scaling: Schema.optional(GoogleCloudRunV2RevisionScaling),
+    containers: Schema.optional(Schema.Array(GoogleCloudRunV2Container)),
+    executionEnvironment: Schema.optional(Schema.String),
+    volumes: Schema.optional(Schema.Array(GoogleCloudRunV2Volume)),
+    client: Schema.optional(Schema.String),
+    clientVersion: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    sessionAffinity: Schema.optional(Schema.Boolean),
+    serviceMesh: Schema.optional(GoogleCloudRunV2ServiceMesh),
+  }).annotate({ identifier: "GoogleCloudRunV2RevisionTemplate" });
 
 export interface GoogleCloudRunV2Service {
   /** Output only. The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Service does not reach its Serving state. See comments in `reconciling` for additional information on reconciliation process in Cloud Run. */
@@ -3497,53 +3024,49 @@ export interface GoogleCloudRunV2Service {
   clientVersion?: string;
 }
 
-export const GoogleCloudRunV2Service: Schema.Schema<GoogleCloudRunV2Service> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conditions: Schema.optional(Schema.Array(GoogleCloudRunV2Condition)),
-      buildConfig: Schema.optional(GoogleCloudRunV2BuildConfig),
-      ingress: Schema.optional(Schema.String),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      updateTime: Schema.optional(Schema.String),
-      traffic: Schema.optional(Schema.Array(GoogleCloudRunV2TrafficTarget)),
-      customAudiences: Schema.optional(Schema.Array(Schema.String)),
-      threatDetectionEnabled: Schema.optional(Schema.Boolean),
-      binaryAuthorization: Schema.optional(GoogleCloudRunV2BinaryAuthorization),
-      urls: Schema.optional(Schema.Array(Schema.String)),
-      latestCreatedRevision: Schema.optional(Schema.String),
-      iapEnabled: Schema.optional(Schema.Boolean),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      satisfiesPzs: Schema.optional(Schema.Boolean),
-      reconciling: Schema.optional(Schema.Boolean),
-      createTime: Schema.optional(Schema.String),
-      deleteTime: Schema.optional(Schema.String),
-      lastModifier: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      latestReadyRevision: Schema.optional(Schema.String),
-      uid: Schema.optional(Schema.String),
-      multiRegionSettings: Schema.optional(GoogleCloudRunV2MultiRegionSettings),
-      terminalCondition: Schema.optional(GoogleCloudRunV2Condition),
-      expireTime: Schema.optional(Schema.String),
-      invokerIamDisabled: Schema.optional(Schema.Boolean),
-      creator: Schema.optional(Schema.String),
-      launchStage: Schema.optional(Schema.String),
-      template: Schema.optional(GoogleCloudRunV2RevisionTemplate),
-      defaultUriDisabled: Schema.optional(Schema.Boolean),
-      uri: Schema.optional(Schema.String),
-      generation: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      scaling: Schema.optional(GoogleCloudRunV2ServiceScaling),
-      observedGeneration: Schema.optional(Schema.String),
-      trafficStatuses: Schema.optional(
-        Schema.Array(GoogleCloudRunV2TrafficTargetStatus),
-      ),
-      client: Schema.optional(Schema.String),
-      clientVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2Service",
-  }) as any as Schema.Schema<GoogleCloudRunV2Service>;
+export const GoogleCloudRunV2Service =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conditions: Schema.optional(Schema.Array(GoogleCloudRunV2Condition)),
+    buildConfig: Schema.optional(GoogleCloudRunV2BuildConfig),
+    ingress: Schema.optional(Schema.String),
+    annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    updateTime: Schema.optional(Schema.String),
+    traffic: Schema.optional(Schema.Array(GoogleCloudRunV2TrafficTarget)),
+    customAudiences: Schema.optional(Schema.Array(Schema.String)),
+    threatDetectionEnabled: Schema.optional(Schema.Boolean),
+    binaryAuthorization: Schema.optional(GoogleCloudRunV2BinaryAuthorization),
+    urls: Schema.optional(Schema.Array(Schema.String)),
+    latestCreatedRevision: Schema.optional(Schema.String),
+    iapEnabled: Schema.optional(Schema.Boolean),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    satisfiesPzs: Schema.optional(Schema.Boolean),
+    reconciling: Schema.optional(Schema.Boolean),
+    createTime: Schema.optional(Schema.String),
+    deleteTime: Schema.optional(Schema.String),
+    lastModifier: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    latestReadyRevision: Schema.optional(Schema.String),
+    uid: Schema.optional(Schema.String),
+    multiRegionSettings: Schema.optional(GoogleCloudRunV2MultiRegionSettings),
+    terminalCondition: Schema.optional(GoogleCloudRunV2Condition),
+    expireTime: Schema.optional(Schema.String),
+    invokerIamDisabled: Schema.optional(Schema.Boolean),
+    creator: Schema.optional(Schema.String),
+    launchStage: Schema.optional(Schema.String),
+    template: Schema.optional(GoogleCloudRunV2RevisionTemplate),
+    defaultUriDisabled: Schema.optional(Schema.Boolean),
+    uri: Schema.optional(Schema.String),
+    generation: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    scaling: Schema.optional(GoogleCloudRunV2ServiceScaling),
+    observedGeneration: Schema.optional(Schema.String),
+    trafficStatuses: Schema.optional(
+      Schema.Array(GoogleCloudRunV2TrafficTargetStatus),
+    ),
+    client: Schema.optional(Schema.String),
+    clientVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudRunV2Service" });
 
 export interface GoogleIamV1Binding {
   /** The condition that is associated with this binding. If the condition evaluates to `true`, then this binding applies to the current request. If the condition evaluates to `false`, then this binding does not apply to the current request. However, a different role binding might grant the same role to one or more of the principals in this binding. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -3554,30 +3077,21 @@ export interface GoogleIamV1Binding {
   members?: Array<string>;
 }
 
-export const GoogleIamV1Binding: Schema.Schema<GoogleIamV1Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      condition: Schema.optional(GoogleTypeExpr),
-      role: Schema.optional(Schema.String),
-      members: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1Binding",
-  }) as any as Schema.Schema<GoogleIamV1Binding>;
+export const GoogleIamV1Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  condition: Schema.optional(GoogleTypeExpr),
+  role: Schema.optional(Schema.String),
+  members: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "GoogleIamV1Binding" });
 
 export interface GoogleLongrunningWaitOperationRequest {
   /** The maximum duration to wait before timing out. If left blank, the wait will be at most the time permitted by the underlying HTTP/RPC protocol. If RPC context deadline is also specified, the shorter one will be used. */
   timeout?: string;
 }
 
-export const GoogleLongrunningWaitOperationRequest: Schema.Schema<GoogleLongrunningWaitOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      timeout: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleLongrunningWaitOperationRequest",
-  }) as any as Schema.Schema<GoogleLongrunningWaitOperationRequest>;
+export const GoogleLongrunningWaitOperationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    timeout: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleLongrunningWaitOperationRequest" });
 
 export interface GoogleCloudRunV2ListJobsResponse {
   /** The resulting list of Jobs. */
@@ -3586,15 +3100,11 @@ export interface GoogleCloudRunV2ListJobsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudRunV2ListJobsResponse: Schema.Schema<GoogleCloudRunV2ListJobsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      jobs: Schema.optional(Schema.Array(GoogleCloudRunV2Job)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2ListJobsResponse",
-  }) as any as Schema.Schema<GoogleCloudRunV2ListJobsResponse>;
+export const GoogleCloudRunV2ListJobsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    jobs: Schema.optional(Schema.Array(GoogleCloudRunV2Job)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudRunV2ListJobsResponse" });
 
 export interface GoogleIamV1Policy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
@@ -3607,17 +3117,12 @@ export interface GoogleIamV1Policy {
   etag?: string;
 }
 
-export const GoogleIamV1Policy: Schema.Schema<GoogleIamV1Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bindings: Schema.optional(Schema.Array(GoogleIamV1Binding)),
-      auditConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditConfig)),
-      version: Schema.optional(Schema.Number),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1Policy",
-  }) as any as Schema.Schema<GoogleIamV1Policy>;
+export const GoogleIamV1Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bindings: Schema.optional(Schema.Array(GoogleIamV1Binding)),
+  auditConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditConfig)),
+  version: Schema.optional(Schema.Number),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "GoogleIamV1Policy" });
 
 export interface GoogleIamV1SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
@@ -3626,15 +3131,11 @@ export interface GoogleIamV1SetIamPolicyRequest {
   updateMask?: string;
 }
 
-export const GoogleIamV1SetIamPolicyRequest: Schema.Schema<GoogleIamV1SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policy: Schema.optional(GoogleIamV1Policy),
-      updateMask: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1SetIamPolicyRequest",
-  }) as any as Schema.Schema<GoogleIamV1SetIamPolicyRequest>;
+export const GoogleIamV1SetIamPolicyRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policy: Schema.optional(GoogleIamV1Policy),
+    updateMask: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleIamV1SetIamPolicyRequest" });
 
 export interface GoogleCloudRunV2StartInstanceRequest {
   /** Optional. A system-generated fingerprint for this version of the resource. This may be used to detect modification conflict during updates. */
@@ -3643,29 +3144,21 @@ export interface GoogleCloudRunV2StartInstanceRequest {
   validateOnly?: boolean;
 }
 
-export const GoogleCloudRunV2StartInstanceRequest: Schema.Schema<GoogleCloudRunV2StartInstanceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      etag: Schema.optional(Schema.String),
-      validateOnly: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2StartInstanceRequest",
-  }) as any as Schema.Schema<GoogleCloudRunV2StartInstanceRequest>;
+export const GoogleCloudRunV2StartInstanceRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    etag: Schema.optional(Schema.String),
+    validateOnly: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudRunV2StartInstanceRequest" });
 
 export interface GoogleCloudRunV2ExportImageResponse {
   /** An operation ID used to track the status of image exports tied to the original pod ID in the request. */
   operationId?: string;
 }
 
-export const GoogleCloudRunV2ExportImageResponse: Schema.Schema<GoogleCloudRunV2ExportImageResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operationId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2ExportImageResponse",
-  }) as any as Schema.Schema<GoogleCloudRunV2ExportImageResponse>;
+export const GoogleCloudRunV2ExportImageResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operationId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudRunV2ExportImageResponse" });
 
 export interface GoogleCloudRunV2StorageSource {
   /** Optional. Google Cloud Storage generation for the object. If the generation is omitted, the latest generation will be used. */
@@ -3676,23 +3169,19 @@ export interface GoogleCloudRunV2StorageSource {
   object?: string;
 }
 
-export const GoogleCloudRunV2StorageSource: Schema.Schema<GoogleCloudRunV2StorageSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      generation: Schema.optional(Schema.String),
-      bucket: Schema.optional(Schema.String),
-      object: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2StorageSource",
-  }) as any as Schema.Schema<GoogleCloudRunV2StorageSource>;
+export const GoogleCloudRunV2StorageSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    generation: Schema.optional(Schema.String),
+    bucket: Schema.optional(Schema.String),
+    object: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudRunV2StorageSource" });
 
 export interface GoogleCloudRunV2DockerBuild {}
 
-export const GoogleCloudRunV2DockerBuild: Schema.Schema<GoogleCloudRunV2DockerBuild> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudRunV2DockerBuild =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudRunV2DockerBuild",
-  }) as any as Schema.Schema<GoogleCloudRunV2DockerBuild>;
+  });
 
 export interface GoogleCloudRunV2SubmitBuildRequest {
   /** Optional. The release track of the client that initiated the build request. */
@@ -3726,23 +3215,19 @@ export interface GoogleCloudRunV2SubmitBuildRequest {
   tags?: Array<string>;
 }
 
-export const GoogleCloudRunV2SubmitBuildRequest: Schema.Schema<GoogleCloudRunV2SubmitBuildRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      releaseTrack: Schema.optional(Schema.String),
-      buildpackBuild: Schema.optional(GoogleCloudRunV2BuildpacksBuild),
-      storageSource: Schema.optional(GoogleCloudRunV2StorageSource),
-      workerPool: Schema.optional(Schema.String),
-      dockerBuild: Schema.optional(GoogleCloudRunV2DockerBuild),
-      machineType: Schema.optional(Schema.String),
-      serviceAccount: Schema.optional(Schema.String),
-      imageUri: Schema.optional(Schema.String),
-      client: Schema.optional(Schema.String),
-      tags: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2SubmitBuildRequest",
-  }) as any as Schema.Schema<GoogleCloudRunV2SubmitBuildRequest>;
+export const GoogleCloudRunV2SubmitBuildRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    releaseTrack: Schema.optional(Schema.String),
+    buildpackBuild: Schema.optional(GoogleCloudRunV2BuildpacksBuild),
+    storageSource: Schema.optional(GoogleCloudRunV2StorageSource),
+    workerPool: Schema.optional(Schema.String),
+    dockerBuild: Schema.optional(GoogleCloudRunV2DockerBuild),
+    machineType: Schema.optional(Schema.String),
+    serviceAccount: Schema.optional(Schema.String),
+    imageUri: Schema.optional(Schema.String),
+    client: Schema.optional(Schema.String),
+    tags: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudRunV2SubmitBuildRequest" });
 
 export interface GoogleCloudRunV2SubmitBuildResponse {
   /** Warning message for the base image. */
@@ -3753,16 +3238,12 @@ export interface GoogleCloudRunV2SubmitBuildResponse {
   baseImageUri?: string;
 }
 
-export const GoogleCloudRunV2SubmitBuildResponse: Schema.Schema<GoogleCloudRunV2SubmitBuildResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      baseImageWarning: Schema.optional(Schema.String),
-      buildOperation: Schema.optional(GoogleLongrunningOperation),
-      baseImageUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2SubmitBuildResponse",
-  }) as any as Schema.Schema<GoogleCloudRunV2SubmitBuildResponse>;
+export const GoogleCloudRunV2SubmitBuildResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    baseImageWarning: Schema.optional(Schema.String),
+    buildOperation: Schema.optional(GoogleLongrunningOperation),
+    baseImageUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudRunV2SubmitBuildResponse" });
 
 export interface GoogleLongrunningListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -3773,16 +3254,12 @@ export interface GoogleLongrunningListOperationsResponse {
   unreachable?: Array<string>;
 }
 
-export const GoogleLongrunningListOperationsResponse: Schema.Schema<GoogleLongrunningListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleLongrunningListOperationsResponse",
-  }) as any as Schema.Schema<GoogleLongrunningListOperationsResponse>;
+export const GoogleLongrunningListOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleLongrunningListOperationsResponse" });
 
 export interface GoogleCloudRunV2ContainerStatus {
   /** The name of the container, if specified. */
@@ -3791,15 +3268,11 @@ export interface GoogleCloudRunV2ContainerStatus {
   imageDigest?: string;
 }
 
-export const GoogleCloudRunV2ContainerStatus: Schema.Schema<GoogleCloudRunV2ContainerStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      imageDigest: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2ContainerStatus",
-  }) as any as Schema.Schema<GoogleCloudRunV2ContainerStatus>;
+export const GoogleCloudRunV2ContainerStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    imageDigest: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudRunV2ContainerStatus" });
 
 export interface GoogleCloudRunV2Instance {
   /** The launch stage as defined by [Google Cloud Platform Launch Stages](https://cloud.google.com/terms/launch-stages). Cloud Run supports `ALPHA`, `BETA`, and `GA`. If no value is specified, GA is assumed. Set the launch stage to a preview stage on input to allow use of preview features in that stage. On read (or output), describes whether the resource uses preview features. For example, if ALPHA is provided as input, but only BETA and GA-level features are used, this field will be BETA on output. */
@@ -3896,53 +3369,49 @@ export interface GoogleCloudRunV2Instance {
   binaryAuthorization?: GoogleCloudRunV2BinaryAuthorization;
 }
 
-export const GoogleCloudRunV2Instance: Schema.Schema<GoogleCloudRunV2Instance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      launchStage: Schema.optional(Schema.String),
-      generation: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      containers: Schema.optional(Schema.Array(GoogleCloudRunV2Container)),
-      name: Schema.optional(Schema.String),
-      client: Schema.optional(Schema.String),
-      clientVersion: Schema.optional(Schema.String),
-      observedGeneration: Schema.optional(Schema.String),
-      uid: Schema.optional(Schema.String),
-      expireTime: Schema.optional(Schema.String),
-      serviceAccount: Schema.optional(Schema.String),
-      terminalCondition: Schema.optional(GoogleCloudRunV2Condition),
-      containerStatuses: Schema.optional(
-        Schema.Array(GoogleCloudRunV2ContainerStatus),
-      ),
-      creator: Schema.optional(Schema.String),
-      encryptionKeyRevocationAction: Schema.optional(Schema.String),
-      invokerIamDisabled: Schema.optional(Schema.Boolean),
-      satisfiesPzs: Schema.optional(Schema.Boolean),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      iapEnabled: Schema.optional(Schema.Boolean),
-      reconciling: Schema.optional(Schema.Boolean),
-      createTime: Schema.optional(Schema.String),
-      nodeSelector: Schema.optional(GoogleCloudRunV2NodeSelector),
-      description: Schema.optional(Schema.String),
-      volumes: Schema.optional(Schema.Array(GoogleCloudRunV2Volume)),
-      deleteTime: Schema.optional(Schema.String),
-      lastModifier: Schema.optional(Schema.String),
-      conditions: Schema.optional(Schema.Array(GoogleCloudRunV2Condition)),
-      gpuZonalRedundancyDisabled: Schema.optional(Schema.Boolean),
-      timeout: Schema.optional(Schema.String),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      vpcAccess: Schema.optional(GoogleCloudRunV2VpcAccess),
-      ingress: Schema.optional(Schema.String),
-      logUri: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      encryptionKeyShutdownDuration: Schema.optional(Schema.String),
-      encryptionKey: Schema.optional(Schema.String),
-      urls: Schema.optional(Schema.Array(Schema.String)),
-      binaryAuthorization: Schema.optional(GoogleCloudRunV2BinaryAuthorization),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2Instance",
-  }) as any as Schema.Schema<GoogleCloudRunV2Instance>;
+export const GoogleCloudRunV2Instance =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    launchStage: Schema.optional(Schema.String),
+    generation: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    containers: Schema.optional(Schema.Array(GoogleCloudRunV2Container)),
+    name: Schema.optional(Schema.String),
+    client: Schema.optional(Schema.String),
+    clientVersion: Schema.optional(Schema.String),
+    observedGeneration: Schema.optional(Schema.String),
+    uid: Schema.optional(Schema.String),
+    expireTime: Schema.optional(Schema.String),
+    serviceAccount: Schema.optional(Schema.String),
+    terminalCondition: Schema.optional(GoogleCloudRunV2Condition),
+    containerStatuses: Schema.optional(
+      Schema.Array(GoogleCloudRunV2ContainerStatus),
+    ),
+    creator: Schema.optional(Schema.String),
+    encryptionKeyRevocationAction: Schema.optional(Schema.String),
+    invokerIamDisabled: Schema.optional(Schema.Boolean),
+    satisfiesPzs: Schema.optional(Schema.Boolean),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    iapEnabled: Schema.optional(Schema.Boolean),
+    reconciling: Schema.optional(Schema.Boolean),
+    createTime: Schema.optional(Schema.String),
+    nodeSelector: Schema.optional(GoogleCloudRunV2NodeSelector),
+    description: Schema.optional(Schema.String),
+    volumes: Schema.optional(Schema.Array(GoogleCloudRunV2Volume)),
+    deleteTime: Schema.optional(Schema.String),
+    lastModifier: Schema.optional(Schema.String),
+    conditions: Schema.optional(Schema.Array(GoogleCloudRunV2Condition)),
+    gpuZonalRedundancyDisabled: Schema.optional(Schema.Boolean),
+    timeout: Schema.optional(Schema.String),
+    annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    vpcAccess: Schema.optional(GoogleCloudRunV2VpcAccess),
+    ingress: Schema.optional(Schema.String),
+    logUri: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    encryptionKeyShutdownDuration: Schema.optional(Schema.String),
+    encryptionKey: Schema.optional(Schema.String),
+    urls: Schema.optional(Schema.Array(Schema.String)),
+    binaryAuthorization: Schema.optional(GoogleCloudRunV2BinaryAuthorization),
+  }).annotate({ identifier: "GoogleCloudRunV2Instance" });
 
 export interface GoogleCloudRunV2ListInstancesResponse {
   /** A token indicating there are more items than page_size. Use it in the next ListInstances request to continue. */
@@ -3951,15 +3420,11 @@ export interface GoogleCloudRunV2ListInstancesResponse {
   instances?: Array<GoogleCloudRunV2Instance>;
 }
 
-export const GoogleCloudRunV2ListInstancesResponse: Schema.Schema<GoogleCloudRunV2ListInstancesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      instances: Schema.optional(Schema.Array(GoogleCloudRunV2Instance)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2ListInstancesResponse",
-  }) as any as Schema.Schema<GoogleCloudRunV2ListInstancesResponse>;
+export const GoogleCloudRunV2ListInstancesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    instances: Schema.optional(Schema.Array(GoogleCloudRunV2Instance)),
+  }).annotate({ identifier: "GoogleCloudRunV2ListInstancesResponse" });
 
 export interface GoogleCloudRunV2ListServicesResponse {
   /** A token indicating there are more items than page_size. Use it in the next ListServices request to continue. */
@@ -3970,16 +3435,12 @@ export interface GoogleCloudRunV2ListServicesResponse {
   unreachable?: Array<string>;
 }
 
-export const GoogleCloudRunV2ListServicesResponse: Schema.Schema<GoogleCloudRunV2ListServicesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      services: Schema.optional(Schema.Array(GoogleCloudRunV2Service)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2ListServicesResponse",
-  }) as any as Schema.Schema<GoogleCloudRunV2ListServicesResponse>;
+export const GoogleCloudRunV2ListServicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    services: Schema.optional(Schema.Array(GoogleCloudRunV2Service)),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudRunV2ListServicesResponse" });
 
 export interface GoogleCloudRunV2Execution {
   /** Output only. The number of tasks which have retried at least once. */
@@ -4053,43 +3514,39 @@ export interface GoogleCloudRunV2Execution {
   updateTime?: string;
 }
 
-export const GoogleCloudRunV2Execution: Schema.Schema<GoogleCloudRunV2Execution> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      retriedCount: Schema.optional(Schema.Number),
-      generation: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      launchStage: Schema.optional(Schema.String),
-      template: Schema.optional(GoogleCloudRunV2TaskTemplate),
-      succeededCount: Schema.optional(Schema.Number),
-      client: Schema.optional(Schema.String),
-      clientVersion: Schema.optional(Schema.String),
-      observedGeneration: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      uid: Schema.optional(Schema.String),
-      job: Schema.optional(Schema.String),
-      parallelism: Schema.optional(Schema.Number),
-      creator: Schema.optional(Schema.String),
-      cancelledCount: Schema.optional(Schema.Number),
-      taskCount: Schema.optional(Schema.Number),
-      expireTime: Schema.optional(Schema.String),
-      runningCount: Schema.optional(Schema.Number),
-      reconciling: Schema.optional(Schema.Boolean),
-      satisfiesPzs: Schema.optional(Schema.Boolean),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      startTime: Schema.optional(Schema.String),
-      deleteTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      failedCount: Schema.optional(Schema.Number),
-      conditions: Schema.optional(Schema.Array(GoogleCloudRunV2Condition)),
-      completionTime: Schema.optional(Schema.String),
-      logUri: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2Execution",
-  }) as any as Schema.Schema<GoogleCloudRunV2Execution>;
+export const GoogleCloudRunV2Execution =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    retriedCount: Schema.optional(Schema.Number),
+    generation: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    launchStage: Schema.optional(Schema.String),
+    template: Schema.optional(GoogleCloudRunV2TaskTemplate),
+    succeededCount: Schema.optional(Schema.Number),
+    client: Schema.optional(Schema.String),
+    clientVersion: Schema.optional(Schema.String),
+    observedGeneration: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    uid: Schema.optional(Schema.String),
+    job: Schema.optional(Schema.String),
+    parallelism: Schema.optional(Schema.Number),
+    creator: Schema.optional(Schema.String),
+    cancelledCount: Schema.optional(Schema.Number),
+    taskCount: Schema.optional(Schema.Number),
+    expireTime: Schema.optional(Schema.String),
+    runningCount: Schema.optional(Schema.Number),
+    reconciling: Schema.optional(Schema.Boolean),
+    satisfiesPzs: Schema.optional(Schema.Boolean),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    startTime: Schema.optional(Schema.String),
+    deleteTime: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    failedCount: Schema.optional(Schema.Number),
+    conditions: Schema.optional(Schema.Array(GoogleCloudRunV2Condition)),
+    completionTime: Schema.optional(Schema.String),
+    logUri: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudRunV2Execution" });
 
 export interface GoogleCloudRunV2ListExecutionsResponse {
   /** The resulting list of Executions. */
@@ -4098,15 +3555,11 @@ export interface GoogleCloudRunV2ListExecutionsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudRunV2ListExecutionsResponse: Schema.Schema<GoogleCloudRunV2ListExecutionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      executions: Schema.optional(Schema.Array(GoogleCloudRunV2Execution)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2ListExecutionsResponse",
-  }) as any as Schema.Schema<GoogleCloudRunV2ListExecutionsResponse>;
+export const GoogleCloudRunV2ListExecutionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    executions: Schema.optional(Schema.Array(GoogleCloudRunV2Execution)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudRunV2ListExecutionsResponse" });
 
 export interface GoogleCloudRunV2StopInstanceRequest {
   /** Optional. A system-generated fingerprint for this version of the resource. This may be used to detect modification conflict during updates. */
@@ -4115,15 +3568,11 @@ export interface GoogleCloudRunV2StopInstanceRequest {
   validateOnly?: boolean;
 }
 
-export const GoogleCloudRunV2StopInstanceRequest: Schema.Schema<GoogleCloudRunV2StopInstanceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      etag: Schema.optional(Schema.String),
-      validateOnly: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRunV2StopInstanceRequest",
-  }) as any as Schema.Schema<GoogleCloudRunV2StopInstanceRequest>;
+export const GoogleCloudRunV2StopInstanceRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    etag: Schema.optional(Schema.String),
+    validateOnly: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudRunV2StopInstanceRequest" });
 
 // ==========================================================================
 // Operations

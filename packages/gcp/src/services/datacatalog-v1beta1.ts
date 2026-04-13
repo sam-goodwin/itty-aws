@@ -33,17 +33,15 @@ export interface GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope {
   restrictedLocations?: Array<string>;
 }
 
-export const GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope: Schema.Schema<GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      includeOrgIds: Schema.optional(Schema.Array(Schema.String)),
-      includeProjectIds: Schema.optional(Schema.Array(Schema.String)),
-      includeGcpPublicDatasets: Schema.optional(Schema.Boolean),
-      restrictedLocations: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    includeOrgIds: Schema.optional(Schema.Array(Schema.String)),
+    includeProjectIds: Schema.optional(Schema.Array(Schema.String)),
+    includeGcpPublicDatasets: Schema.optional(Schema.Boolean),
+    restrictedLocations: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope>;
+  });
 
 export interface GoogleCloudDatacatalogV1beta1SearchCatalogRequest {
   /** Required. The scope of this search request. A `scope` that has empty `include_org_ids`, `include_project_ids` AND false `include_gcp_public_datasets` is considered invalid. Data Catalog will return an error in such a case. */
@@ -58,20 +56,18 @@ export interface GoogleCloudDatacatalogV1beta1SearchCatalogRequest {
   orderBy?: string;
 }
 
-export const GoogleCloudDatacatalogV1beta1SearchCatalogRequest: Schema.Schema<GoogleCloudDatacatalogV1beta1SearchCatalogRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scope: Schema.optional(
-        GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope,
-      ),
-      query: Schema.optional(Schema.String),
-      pageSize: Schema.optional(Schema.Number),
-      pageToken: Schema.optional(Schema.String),
-      orderBy: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDatacatalogV1beta1SearchCatalogRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scope: Schema.optional(
+      GoogleCloudDatacatalogV1beta1SearchCatalogRequestScope,
+    ),
+    query: Schema.optional(Schema.String),
+    pageSize: Schema.optional(Schema.Number),
+    pageToken: Schema.optional(Schema.String),
+    orderBy: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDatacatalogV1beta1SearchCatalogRequest",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1beta1SearchCatalogRequest>;
+  });
 
 export interface GoogleCloudDatacatalogV1beta1SearchCatalogResult {
   /** Type of the search result. This field can be used to determine which Get method to call to fetch the full resource. */
@@ -91,18 +87,16 @@ export interface GoogleCloudDatacatalogV1beta1SearchCatalogResult {
   modifyTime?: string;
 }
 
-export const GoogleCloudDatacatalogV1beta1SearchCatalogResult: Schema.Schema<GoogleCloudDatacatalogV1beta1SearchCatalogResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      searchResultType: Schema.optional(Schema.String),
-      searchResultSubtype: Schema.optional(Schema.String),
-      relativeResourceName: Schema.optional(Schema.String),
-      linkedResource: Schema.optional(Schema.String),
-      modifyTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDatacatalogV1beta1SearchCatalogResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    searchResultType: Schema.optional(Schema.String),
+    searchResultSubtype: Schema.optional(Schema.String),
+    relativeResourceName: Schema.optional(Schema.String),
+    linkedResource: Schema.optional(Schema.String),
+    modifyTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDatacatalogV1beta1SearchCatalogResult",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1beta1SearchCatalogResult>;
+  });
 
 export interface GoogleCloudDatacatalogV1beta1SearchCatalogResponse {
   /** Search results. */
@@ -115,19 +109,17 @@ export interface GoogleCloudDatacatalogV1beta1SearchCatalogResponse {
   unreachable?: Array<string>;
 }
 
-export const GoogleCloudDatacatalogV1beta1SearchCatalogResponse: Schema.Schema<GoogleCloudDatacatalogV1beta1SearchCatalogResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      results: Schema.optional(
-        Schema.Array(GoogleCloudDatacatalogV1beta1SearchCatalogResult),
-      ),
-      totalSize: Schema.optional(Schema.Number),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudDatacatalogV1beta1SearchCatalogResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    results: Schema.optional(
+      Schema.Array(GoogleCloudDatacatalogV1beta1SearchCatalogResult),
+    ),
+    totalSize: Schema.optional(Schema.Number),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudDatacatalogV1beta1SearchCatalogResponse",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1beta1SearchCatalogResponse>;
+  });
 
 export interface GoogleCloudDatacatalogV1beta1SystemTimestamps {
   /** The creation time of the resource within the given system. */
@@ -138,16 +130,12 @@ export interface GoogleCloudDatacatalogV1beta1SystemTimestamps {
   expireTime?: string;
 }
 
-export const GoogleCloudDatacatalogV1beta1SystemTimestamps: Schema.Schema<GoogleCloudDatacatalogV1beta1SystemTimestamps> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      expireTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1beta1SystemTimestamps",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1beta1SystemTimestamps>;
+export const GoogleCloudDatacatalogV1beta1SystemTimestamps =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    expireTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1beta1SystemTimestamps" });
 
 export interface GoogleCloudDatacatalogV1beta1EntryGroup {
   /** Identifier. The resource name of the entry group in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id} Note that this EntryGroup and its child resources may not actually be stored in the location in this name. */
@@ -160,26 +148,21 @@ export interface GoogleCloudDatacatalogV1beta1EntryGroup {
   dataCatalogTimestamps?: GoogleCloudDatacatalogV1beta1SystemTimestamps;
 }
 
-export const GoogleCloudDatacatalogV1beta1EntryGroup: Schema.Schema<GoogleCloudDatacatalogV1beta1EntryGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      dataCatalogTimestamps: Schema.optional(
-        GoogleCloudDatacatalogV1beta1SystemTimestamps,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1beta1EntryGroup",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1beta1EntryGroup>;
+export const GoogleCloudDatacatalogV1beta1EntryGroup =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    dataCatalogTimestamps: Schema.optional(
+      GoogleCloudDatacatalogV1beta1SystemTimestamps,
+    ),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1beta1EntryGroup" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse {
   /** EntryGroup details. */
@@ -188,17 +171,15 @@ export interface GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse: Schema.Schema<GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entryGroups: Schema.optional(
-        Schema.Array(GoogleCloudDatacatalogV1beta1EntryGroup),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entryGroups: Schema.optional(
+      Schema.Array(GoogleCloudDatacatalogV1beta1EntryGroup),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1beta1ListEntryGroupsResponse>;
+  });
 
 export interface GoogleCloudDatacatalogV1beta1GcsFileSpec {
   /** Required. The full file path. Example: `gs://bucket_name/a/b.txt`. */
@@ -209,18 +190,14 @@ export interface GoogleCloudDatacatalogV1beta1GcsFileSpec {
   sizeBytes?: string;
 }
 
-export const GoogleCloudDatacatalogV1beta1GcsFileSpec: Schema.Schema<GoogleCloudDatacatalogV1beta1GcsFileSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filePath: Schema.optional(Schema.String),
-      gcsTimestamps: Schema.optional(
-        GoogleCloudDatacatalogV1beta1SystemTimestamps,
-      ),
-      sizeBytes: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1beta1GcsFileSpec",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1beta1GcsFileSpec>;
+export const GoogleCloudDatacatalogV1beta1GcsFileSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filePath: Schema.optional(Schema.String),
+    gcsTimestamps: Schema.optional(
+      GoogleCloudDatacatalogV1beta1SystemTimestamps,
+    ),
+    sizeBytes: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1beta1GcsFileSpec" });
 
 export interface GoogleCloudDatacatalogV1beta1GcsFilesetSpec {
   /** Required. Patterns to identify a set of files in Google Cloud Storage. See [Cloud Storage documentation](https://cloud.google.com/storage/docs/wildcards) for more information. Note that bucket wildcards are currently not supported. Examples of valid file_patterns: * `gs://bucket_name/dir/*`: matches all files within `bucket_name/dir` directory. * `gs://bucket_name/dir/**`: matches all files in `bucket_name/dir` spanning all subdirectories. * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/* /b`: matches all files in `bucket_name` that match `a/* /b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt` You can combine wildcards to provide more powerful matches, for example: * `gs://bucket_name/[a-m]??.j*g` */
@@ -229,45 +206,33 @@ export interface GoogleCloudDatacatalogV1beta1GcsFilesetSpec {
   sampleGcsFileSpecs?: Array<GoogleCloudDatacatalogV1beta1GcsFileSpec>;
 }
 
-export const GoogleCloudDatacatalogV1beta1GcsFilesetSpec: Schema.Schema<GoogleCloudDatacatalogV1beta1GcsFilesetSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filePatterns: Schema.optional(Schema.Array(Schema.String)),
-      sampleGcsFileSpecs: Schema.optional(
-        Schema.Array(GoogleCloudDatacatalogV1beta1GcsFileSpec),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1beta1GcsFilesetSpec",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1beta1GcsFilesetSpec>;
+export const GoogleCloudDatacatalogV1beta1GcsFilesetSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filePatterns: Schema.optional(Schema.Array(Schema.String)),
+    sampleGcsFileSpecs: Schema.optional(
+      Schema.Array(GoogleCloudDatacatalogV1beta1GcsFileSpec),
+    ),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1beta1GcsFilesetSpec" });
 
 export interface GoogleCloudDatacatalogV1beta1ViewSpec {
   /** Output only. The query that defines the table view. */
   viewQuery?: string;
 }
 
-export const GoogleCloudDatacatalogV1beta1ViewSpec: Schema.Schema<GoogleCloudDatacatalogV1beta1ViewSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      viewQuery: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1beta1ViewSpec",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1beta1ViewSpec>;
+export const GoogleCloudDatacatalogV1beta1ViewSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    viewQuery: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1beta1ViewSpec" });
 
 export interface GoogleCloudDatacatalogV1beta1TableSpec {
   /** Output only. If the table is a dated shard, i.e., with name pattern `[prefix]YYYYMMDD`, `grouped_entry` is the Data Catalog resource name of the date sharded grouped entry, for example, `projects/{project_id}/locations/{location}/entrygroups/{entry_group_id}/entries/{entry_id}`. Otherwise, `grouped_entry` is empty. */
   groupedEntry?: string;
 }
 
-export const GoogleCloudDatacatalogV1beta1TableSpec: Schema.Schema<GoogleCloudDatacatalogV1beta1TableSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      groupedEntry: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1beta1TableSpec",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1beta1TableSpec>;
+export const GoogleCloudDatacatalogV1beta1TableSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupedEntry: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1beta1TableSpec" });
 
 export interface GoogleCloudDatacatalogV1beta1BigQueryTableSpec {
   /** Output only. The table source type. */
@@ -283,16 +248,12 @@ export interface GoogleCloudDatacatalogV1beta1BigQueryTableSpec {
   tableSpec?: GoogleCloudDatacatalogV1beta1TableSpec;
 }
 
-export const GoogleCloudDatacatalogV1beta1BigQueryTableSpec: Schema.Schema<GoogleCloudDatacatalogV1beta1BigQueryTableSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tableSourceType: Schema.optional(Schema.String),
-      viewSpec: Schema.optional(GoogleCloudDatacatalogV1beta1ViewSpec),
-      tableSpec: Schema.optional(GoogleCloudDatacatalogV1beta1TableSpec),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1beta1BigQueryTableSpec",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1beta1BigQueryTableSpec>;
+export const GoogleCloudDatacatalogV1beta1BigQueryTableSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tableSourceType: Schema.optional(Schema.String),
+    viewSpec: Schema.optional(GoogleCloudDatacatalogV1beta1ViewSpec),
+    tableSpec: Schema.optional(GoogleCloudDatacatalogV1beta1TableSpec),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1beta1BigQueryTableSpec" });
 
 export interface GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec {
   /** Output only. The Data Catalog resource name of the dataset entry the current table belongs to, for example, `projects/{project_id}/locations/{location}/entrygroups/{entry_group_id}/entries/{entry_id}`. */
@@ -303,16 +264,14 @@ export interface GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec {
   shardCount?: string;
 }
 
-export const GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec: Schema.Schema<GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataset: Schema.optional(Schema.String),
-      tablePrefix: Schema.optional(Schema.String),
-      shardCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataset: Schema.optional(Schema.String),
+    tablePrefix: Schema.optional(Schema.String),
+    shardCount: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec>;
+  });
 
 export interface GoogleCloudDatacatalogV1beta1ColumnSchema {
   /** Required. Name of the column. */
@@ -347,16 +306,12 @@ export interface GoogleCloudDatacatalogV1beta1Schema {
   columns?: Array<GoogleCloudDatacatalogV1beta1ColumnSchema>;
 }
 
-export const GoogleCloudDatacatalogV1beta1Schema: Schema.Schema<GoogleCloudDatacatalogV1beta1Schema> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      columns: Schema.optional(
-        Schema.Array(GoogleCloudDatacatalogV1beta1ColumnSchema),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1beta1Schema",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1beta1Schema>;
+export const GoogleCloudDatacatalogV1beta1Schema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    columns: Schema.optional(
+      Schema.Array(GoogleCloudDatacatalogV1beta1ColumnSchema),
+    ),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1beta1Schema" });
 
 export interface GoogleCloudDatacatalogV1beta1UsageStats {
   /** The number of times that the underlying entry was successfully used. */
@@ -369,17 +324,13 @@ export interface GoogleCloudDatacatalogV1beta1UsageStats {
   totalExecutionTimeForCompletionsMillis?: number;
 }
 
-export const GoogleCloudDatacatalogV1beta1UsageStats: Schema.Schema<GoogleCloudDatacatalogV1beta1UsageStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      totalCompletions: Schema.optional(Schema.Number),
-      totalFailures: Schema.optional(Schema.Number),
-      totalCancellations: Schema.optional(Schema.Number),
-      totalExecutionTimeForCompletionsMillis: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1beta1UsageStats",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1beta1UsageStats>;
+export const GoogleCloudDatacatalogV1beta1UsageStats =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    totalCompletions: Schema.optional(Schema.Number),
+    totalFailures: Schema.optional(Schema.Number),
+    totalCancellations: Schema.optional(Schema.Number),
+    totalExecutionTimeForCompletionsMillis: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1beta1UsageStats" });
 
 export interface GoogleCloudDatacatalogV1beta1UsageSignal {
   /** The timestamp of the end of the usage statistics duration. */
@@ -391,17 +342,13 @@ export interface GoogleCloudDatacatalogV1beta1UsageSignal {
   >;
 }
 
-export const GoogleCloudDatacatalogV1beta1UsageSignal: Schema.Schema<GoogleCloudDatacatalogV1beta1UsageSignal> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateTime: Schema.optional(Schema.String),
-      usageWithinTimeRange: Schema.optional(
-        Schema.Record(Schema.String, GoogleCloudDatacatalogV1beta1UsageStats),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1beta1UsageSignal",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1beta1UsageSignal>;
+export const GoogleCloudDatacatalogV1beta1UsageSignal =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateTime: Schema.optional(Schema.String),
+    usageWithinTimeRange: Schema.optional(
+      Schema.Record(Schema.String, GoogleCloudDatacatalogV1beta1UsageStats),
+    ),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1beta1UsageSignal" });
 
 export interface GoogleCloudDatacatalogV1beta1Entry {
   /** Output only. Identifier. The Data Catalog resource name of the entry in URL format. Example: * projects/{project_id}/locations/{location}/entryGroups/{entry_group_id}/entries/{entry_id} Note that this Entry and its child resources may not actually be stored in the location in this name. */
@@ -444,35 +391,31 @@ export interface GoogleCloudDatacatalogV1beta1Entry {
   usageSignal?: GoogleCloudDatacatalogV1beta1UsageSignal;
 }
 
-export const GoogleCloudDatacatalogV1beta1Entry: Schema.Schema<GoogleCloudDatacatalogV1beta1Entry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      linkedResource: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      userSpecifiedType: Schema.optional(Schema.String),
-      integratedSystem: Schema.optional(Schema.String),
-      userSpecifiedSystem: Schema.optional(Schema.String),
-      gcsFilesetSpec: Schema.optional(
-        GoogleCloudDatacatalogV1beta1GcsFilesetSpec,
-      ),
-      bigqueryTableSpec: Schema.optional(
-        GoogleCloudDatacatalogV1beta1BigQueryTableSpec,
-      ),
-      bigqueryDateShardedSpec: Schema.optional(
-        GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec,
-      ),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      schema: Schema.optional(GoogleCloudDatacatalogV1beta1Schema),
-      sourceSystemTimestamps: Schema.optional(
-        GoogleCloudDatacatalogV1beta1SystemTimestamps,
-      ),
-      usageSignal: Schema.optional(GoogleCloudDatacatalogV1beta1UsageSignal),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1beta1Entry",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1beta1Entry>;
+export const GoogleCloudDatacatalogV1beta1Entry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    linkedResource: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    userSpecifiedType: Schema.optional(Schema.String),
+    integratedSystem: Schema.optional(Schema.String),
+    userSpecifiedSystem: Schema.optional(Schema.String),
+    gcsFilesetSpec: Schema.optional(
+      GoogleCloudDatacatalogV1beta1GcsFilesetSpec,
+    ),
+    bigqueryTableSpec: Schema.optional(
+      GoogleCloudDatacatalogV1beta1BigQueryTableSpec,
+    ),
+    bigqueryDateShardedSpec: Schema.optional(
+      GoogleCloudDatacatalogV1beta1BigQueryDateShardedSpec,
+    ),
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    schema: Schema.optional(GoogleCloudDatacatalogV1beta1Schema),
+    sourceSystemTimestamps: Schema.optional(
+      GoogleCloudDatacatalogV1beta1SystemTimestamps,
+    ),
+    usageSignal: Schema.optional(GoogleCloudDatacatalogV1beta1UsageSignal),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1beta1Entry" });
 
 export interface GoogleCloudDatacatalogV1beta1ListEntriesResponse {
   /** Entry details. */
@@ -481,46 +424,36 @@ export interface GoogleCloudDatacatalogV1beta1ListEntriesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDatacatalogV1beta1ListEntriesResponse: Schema.Schema<GoogleCloudDatacatalogV1beta1ListEntriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entries: Schema.optional(
-        Schema.Array(GoogleCloudDatacatalogV1beta1Entry),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDatacatalogV1beta1ListEntriesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entries: Schema.optional(Schema.Array(GoogleCloudDatacatalogV1beta1Entry)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDatacatalogV1beta1ListEntriesResponse",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1beta1ListEntriesResponse>;
+  });
 
 export interface GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue {
   /** Required. The display name of the enum value. Must not be an empty string. */
   displayName?: string;
 }
 
-export const GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue: Schema.Schema<GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue>;
+  });
 
 export interface GoogleCloudDatacatalogV1beta1FieldTypeEnumType {
   allowedValues?: Array<GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue>;
 }
 
-export const GoogleCloudDatacatalogV1beta1FieldTypeEnumType: Schema.Schema<GoogleCloudDatacatalogV1beta1FieldTypeEnumType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      allowedValues: Schema.optional(
-        Schema.Array(GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1beta1FieldTypeEnumType",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1beta1FieldTypeEnumType>;
+export const GoogleCloudDatacatalogV1beta1FieldTypeEnumType =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allowedValues: Schema.optional(
+      Schema.Array(GoogleCloudDatacatalogV1beta1FieldTypeEnumTypeEnumValue),
+    ),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1beta1FieldTypeEnumType" });
 
 export interface GoogleCloudDatacatalogV1beta1FieldType {
   /** Represents primitive types - string, bool etc. */
@@ -535,15 +468,11 @@ export interface GoogleCloudDatacatalogV1beta1FieldType {
   enumType?: GoogleCloudDatacatalogV1beta1FieldTypeEnumType;
 }
 
-export const GoogleCloudDatacatalogV1beta1FieldType: Schema.Schema<GoogleCloudDatacatalogV1beta1FieldType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      primitiveType: Schema.optional(Schema.String),
-      enumType: Schema.optional(GoogleCloudDatacatalogV1beta1FieldTypeEnumType),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1beta1FieldType",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1beta1FieldType>;
+export const GoogleCloudDatacatalogV1beta1FieldType =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    primitiveType: Schema.optional(Schema.String),
+    enumType: Schema.optional(GoogleCloudDatacatalogV1beta1FieldTypeEnumType),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1beta1FieldType" });
 
 export interface GoogleCloudDatacatalogV1beta1TagTemplateField {
   /** Output only. Identifier. The resource name of the tag template field in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template}/fields/{field} Note that this TagTemplateField may not actually be stored in the location in this name. */
@@ -560,19 +489,15 @@ export interface GoogleCloudDatacatalogV1beta1TagTemplateField {
   order?: number;
 }
 
-export const GoogleCloudDatacatalogV1beta1TagTemplateField: Schema.Schema<GoogleCloudDatacatalogV1beta1TagTemplateField> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      type: Schema.optional(GoogleCloudDatacatalogV1beta1FieldType),
-      isRequired: Schema.optional(Schema.Boolean),
-      description: Schema.optional(Schema.String),
-      order: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1beta1TagTemplateField",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1beta1TagTemplateField>;
+export const GoogleCloudDatacatalogV1beta1TagTemplateField =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    type: Schema.optional(GoogleCloudDatacatalogV1beta1FieldType),
+    isRequired: Schema.optional(Schema.Boolean),
+    description: Schema.optional(Schema.String),
+    order: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1beta1TagTemplateField" });
 
 export interface GoogleCloudDatacatalogV1beta1TagTemplate {
   /** Identifier. The resource name of the tag template in URL format. Example: * projects/{project_id}/locations/{location}/tagTemplates/{tag_template_id} Note that this TagTemplate and its child resources may not actually be stored in the location in this name. */
@@ -588,65 +513,53 @@ export interface GoogleCloudDatacatalogV1beta1TagTemplate {
     | (string & {});
 }
 
-export const GoogleCloudDatacatalogV1beta1TagTemplate: Schema.Schema<GoogleCloudDatacatalogV1beta1TagTemplate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      fields: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          GoogleCloudDatacatalogV1beta1TagTemplateField,
-        ),
+export const GoogleCloudDatacatalogV1beta1TagTemplate =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    fields: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        GoogleCloudDatacatalogV1beta1TagTemplateField,
       ),
-      dataplexTransferStatus: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1beta1TagTemplate",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1beta1TagTemplate>;
+    ),
+    dataplexTransferStatus: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1beta1TagTemplate" });
 
 export interface GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest {
   /** Required. The new ID of this tag template field. For example, `my_new_field`. */
   newTagTemplateFieldId?: string;
 }
 
-export const GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest: Schema.Schema<GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      newTagTemplateFieldId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    newTagTemplateFieldId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldRequest>;
+  });
 
 export interface GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest {
   /** Required. The new display name of the enum value. For example, `my_new_enum_value`. */
   newEnumValueDisplayName?: string;
 }
 
-export const GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest: Schema.Schema<GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      newEnumValueDisplayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    newEnumValueDisplayName: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1beta1RenameTagTemplateFieldEnumValueRequest>;
+  });
 
 export interface GoogleCloudDatacatalogV1beta1TagFieldEnumValue {
   /** The display name of the enum value. */
   displayName?: string;
 }
 
-export const GoogleCloudDatacatalogV1beta1TagFieldEnumValue: Schema.Schema<GoogleCloudDatacatalogV1beta1TagFieldEnumValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1beta1TagFieldEnumValue",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1beta1TagFieldEnumValue>;
+export const GoogleCloudDatacatalogV1beta1TagFieldEnumValue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1beta1TagFieldEnumValue" });
 
 export interface GoogleCloudDatacatalogV1beta1TagField {
   /** Output only. The display name of this field. */
@@ -665,22 +578,16 @@ export interface GoogleCloudDatacatalogV1beta1TagField {
   order?: number;
 }
 
-export const GoogleCloudDatacatalogV1beta1TagField: Schema.Schema<GoogleCloudDatacatalogV1beta1TagField> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      doubleValue: Schema.optional(Schema.Number),
-      stringValue: Schema.optional(Schema.String),
-      boolValue: Schema.optional(Schema.Boolean),
-      timestampValue: Schema.optional(Schema.String),
-      enumValue: Schema.optional(
-        GoogleCloudDatacatalogV1beta1TagFieldEnumValue,
-      ),
-      order: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1beta1TagField",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1beta1TagField>;
+export const GoogleCloudDatacatalogV1beta1TagField =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    doubleValue: Schema.optional(Schema.Number),
+    stringValue: Schema.optional(Schema.String),
+    boolValue: Schema.optional(Schema.Boolean),
+    timestampValue: Schema.optional(Schema.String),
+    enumValue: Schema.optional(GoogleCloudDatacatalogV1beta1TagFieldEnumValue),
+    order: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1beta1TagField" });
 
 export interface GoogleCloudDatacatalogV1beta1Tag {
   /** Identifier. The resource name of the tag in URL format. Example: * projects/{project_id}/locations/{location}/entrygroups/{entry_group_id}/entries/{entry_id}/tags/{tag_id} where `tag_id` is a system-generated identifier. Note that this Tag may not actually be stored in the location in this name. */
@@ -695,20 +602,16 @@ export interface GoogleCloudDatacatalogV1beta1Tag {
   fields?: Record<string, GoogleCloudDatacatalogV1beta1TagField>;
 }
 
-export const GoogleCloudDatacatalogV1beta1Tag: Schema.Schema<GoogleCloudDatacatalogV1beta1Tag> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      template: Schema.optional(Schema.String),
-      templateDisplayName: Schema.optional(Schema.String),
-      column: Schema.optional(Schema.String),
-      fields: Schema.optional(
-        Schema.Record(Schema.String, GoogleCloudDatacatalogV1beta1TagField),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1beta1Tag",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1beta1Tag>;
+export const GoogleCloudDatacatalogV1beta1Tag =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    template: Schema.optional(Schema.String),
+    templateDisplayName: Schema.optional(Schema.String),
+    column: Schema.optional(Schema.String),
+    fields: Schema.optional(
+      Schema.Record(Schema.String, GoogleCloudDatacatalogV1beta1TagField),
+    ),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1beta1Tag" });
 
 export interface GoogleCloudDatacatalogV1beta1ListTagsResponse {
   /** Tag details. */
@@ -717,15 +620,11 @@ export interface GoogleCloudDatacatalogV1beta1ListTagsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDatacatalogV1beta1ListTagsResponse: Schema.Schema<GoogleCloudDatacatalogV1beta1ListTagsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tags: Schema.optional(Schema.Array(GoogleCloudDatacatalogV1beta1Tag)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1beta1ListTagsResponse",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1beta1ListTagsResponse>;
+export const GoogleCloudDatacatalogV1beta1ListTagsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tags: Schema.optional(Schema.Array(GoogleCloudDatacatalogV1beta1Tag)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1beta1ListTagsResponse" });
 
 export interface Expr {
   /** Textual representation of an expression in Common Expression Language syntax. */
@@ -738,15 +637,12 @@ export interface Expr {
   location?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expression: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Expr" }) as any as Schema.Schema<Expr>;
+export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  expression: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+}).annotate({ identifier: "Expr" });
 
 export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
@@ -757,14 +653,11 @@ export interface Binding {
   condition?: Expr;
 }
 
-export const Binding: Schema.Schema<Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      role: Schema.optional(Schema.String),
-      members: Schema.optional(Schema.Array(Schema.String)),
-      condition: Schema.optional(Expr),
-    }),
-  ).annotate({ identifier: "Binding" }) as any as Schema.Schema<Binding>;
+export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  role: Schema.optional(Schema.String),
+  members: Schema.optional(Schema.Array(Schema.String)),
+  condition: Schema.optional(Expr),
+}).annotate({ identifier: "Binding" });
 
 export interface Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -775,84 +668,58 @@ export interface Policy {
   etag?: string;
 }
 
-export const Policy: Schema.Schema<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.Number),
-      bindings: Schema.optional(Schema.Array(Binding)),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Policy" }) as any as Schema.Schema<Policy>;
+export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.Number),
+  bindings: Schema.optional(Schema.Array(Binding)),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "Policy" });
 
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
   policy?: Policy;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policy: Schema.optional(Policy),
-    }),
-  ).annotate({
-    identifier: "SetIamPolicyRequest",
-  }) as any as Schema.Schema<SetIamPolicyRequest>;
+export const SetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policy: Schema.optional(Policy),
+}).annotate({ identifier: "SetIamPolicyRequest" });
 
 export interface GetPolicyOptions {
   /** Optional. The maximum policy version that will be used to format the policy. Valid values are 0, 1, and 3. Requests specifying an invalid value will be rejected. Requests for policies with any conditional role bindings must specify version 3. Policies with no conditional role bindings may specify any valid value or leave the field unset. The policy in the response might use the policy version that you specified, or it might use a lower policy version. For example, if you specify version 3, but the policy has no conditional role bindings, the response uses version 1. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
   requestedPolicyVersion?: number;
 }
 
-export const GetPolicyOptions: Schema.Schema<GetPolicyOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestedPolicyVersion: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GetPolicyOptions",
-  }) as any as Schema.Schema<GetPolicyOptions>;
+export const GetPolicyOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  requestedPolicyVersion: Schema.optional(Schema.Number),
+}).annotate({ identifier: "GetPolicyOptions" });
 
 export interface GetIamPolicyRequest {
   /** OPTIONAL: A `GetPolicyOptions` object for specifying options to `GetIamPolicy`. */
   options?: GetPolicyOptions;
 }
 
-export const GetIamPolicyRequest: Schema.Schema<GetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      options: Schema.optional(GetPolicyOptions),
-    }),
-  ).annotate({
-    identifier: "GetIamPolicyRequest",
-  }) as any as Schema.Schema<GetIamPolicyRequest>;
+export const GetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  options: Schema.optional(GetPolicyOptions),
+}).annotate({ identifier: "GetIamPolicyRequest" });
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsRequest",
-  }) as any as Schema.Schema<TestIamPermissionsRequest>;
+export const TestIamPermissionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsRequest" });
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsResponse",
-  }) as any as Schema.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsResponse" });
 
 export interface GoogleCloudDatacatalogV1beta1TaxonomyService {
   /** The Google Cloud service name. */
@@ -865,15 +732,11 @@ export interface GoogleCloudDatacatalogV1beta1TaxonomyService {
   identity?: string;
 }
 
-export const GoogleCloudDatacatalogV1beta1TaxonomyService: Schema.Schema<GoogleCloudDatacatalogV1beta1TaxonomyService> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      identity: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1beta1TaxonomyService",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1beta1TaxonomyService>;
+export const GoogleCloudDatacatalogV1beta1TaxonomyService =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    identity: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1beta1TaxonomyService" });
 
 export interface GoogleCloudDatacatalogV1beta1Taxonomy {
   /** Identifier. Resource name of this taxonomy, whose format is: "projects/{project_number}/locations/{location_id}/taxonomies/{id}". */
@@ -894,22 +757,18 @@ export interface GoogleCloudDatacatalogV1beta1Taxonomy {
   service?: GoogleCloudDatacatalogV1beta1TaxonomyService;
 }
 
-export const GoogleCloudDatacatalogV1beta1Taxonomy: Schema.Schema<GoogleCloudDatacatalogV1beta1Taxonomy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      policyTagCount: Schema.optional(Schema.Number),
-      taxonomyTimestamps: Schema.optional(
-        GoogleCloudDatacatalogV1beta1SystemTimestamps,
-      ),
-      activatedPolicyTypes: Schema.optional(Schema.Array(Schema.String)),
-      service: Schema.optional(GoogleCloudDatacatalogV1beta1TaxonomyService),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1beta1Taxonomy",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1beta1Taxonomy>;
+export const GoogleCloudDatacatalogV1beta1Taxonomy =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    policyTagCount: Schema.optional(Schema.Number),
+    taxonomyTimestamps: Schema.optional(
+      GoogleCloudDatacatalogV1beta1SystemTimestamps,
+    ),
+    activatedPolicyTypes: Schema.optional(Schema.Array(Schema.String)),
+    service: Schema.optional(GoogleCloudDatacatalogV1beta1TaxonomyService),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1beta1Taxonomy" });
 
 export interface GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse {
   /** Taxonomies that the project contains. */
@@ -918,17 +777,15 @@ export interface GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse: Schema.Schema<GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      taxonomies: Schema.optional(
-        Schema.Array(GoogleCloudDatacatalogV1beta1Taxonomy),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    taxonomies: Schema.optional(
+      Schema.Array(GoogleCloudDatacatalogV1beta1Taxonomy),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1beta1ListTaxonomiesResponse>;
+  });
 
 export interface GoogleCloudDatacatalogV1beta1PolicyTag {
   /** Identifier. Resource name of this policy tag, whose format is: "projects/{project_number}/locations/{location_id}/taxonomies/{taxonomy_id}/policyTags/{id}". */
@@ -943,18 +800,14 @@ export interface GoogleCloudDatacatalogV1beta1PolicyTag {
   childPolicyTags?: Array<string>;
 }
 
-export const GoogleCloudDatacatalogV1beta1PolicyTag: Schema.Schema<GoogleCloudDatacatalogV1beta1PolicyTag> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      parentPolicyTag: Schema.optional(Schema.String),
-      childPolicyTags: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1beta1PolicyTag",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1beta1PolicyTag>;
+export const GoogleCloudDatacatalogV1beta1PolicyTag =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    parentPolicyTag: Schema.optional(Schema.String),
+    childPolicyTags: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1beta1PolicyTag" });
 
 export interface GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse {
   /** The policy tags that are in the requested taxonomy. */
@@ -963,17 +816,15 @@ export interface GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse: Schema.Schema<GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policyTags: Schema.optional(
-        Schema.Array(GoogleCloudDatacatalogV1beta1PolicyTag),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policyTags: Schema.optional(
+      Schema.Array(GoogleCloudDatacatalogV1beta1PolicyTag),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1beta1ListPolicyTagsResponse>;
+  });
 
 export interface GoogleCloudDatacatalogV1beta1SerializedPolicyTag {
   /** Resource name of the policy tag. This field will be ignored when calling ImportTaxonomies. */
@@ -1013,81 +864,69 @@ export interface GoogleCloudDatacatalogV1beta1SerializedTaxonomy {
   >;
 }
 
-export const GoogleCloudDatacatalogV1beta1SerializedTaxonomy: Schema.Schema<GoogleCloudDatacatalogV1beta1SerializedTaxonomy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      policyTags: Schema.optional(
-        Schema.Array(GoogleCloudDatacatalogV1beta1SerializedPolicyTag),
-      ),
-      activatedPolicyTypes: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudDatacatalogV1beta1SerializedTaxonomy =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    policyTags: Schema.optional(
+      Schema.Array(GoogleCloudDatacatalogV1beta1SerializedPolicyTag),
+    ),
+    activatedPolicyTypes: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudDatacatalogV1beta1SerializedTaxonomy",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1beta1SerializedTaxonomy>;
+  });
 
 export interface GoogleCloudDatacatalogV1beta1InlineSource {
   /** Required. Taxonomies to be imported. */
   taxonomies?: Array<GoogleCloudDatacatalogV1beta1SerializedTaxonomy>;
 }
 
-export const GoogleCloudDatacatalogV1beta1InlineSource: Schema.Schema<GoogleCloudDatacatalogV1beta1InlineSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      taxonomies: Schema.optional(
-        Schema.Array(GoogleCloudDatacatalogV1beta1SerializedTaxonomy),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1beta1InlineSource",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1beta1InlineSource>;
+export const GoogleCloudDatacatalogV1beta1InlineSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    taxonomies: Schema.optional(
+      Schema.Array(GoogleCloudDatacatalogV1beta1SerializedTaxonomy),
+    ),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1beta1InlineSource" });
 
 export interface GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest {
   /** Inline source used for taxonomies to be imported. */
   inlineSource?: GoogleCloudDatacatalogV1beta1InlineSource;
 }
 
-export const GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest: Schema.Schema<GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inlineSource: Schema.optional(GoogleCloudDatacatalogV1beta1InlineSource),
-    }),
-  ).annotate({
+export const GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    inlineSource: Schema.optional(GoogleCloudDatacatalogV1beta1InlineSource),
+  }).annotate({
     identifier: "GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1beta1ImportTaxonomiesRequest>;
+  });
 
 export interface GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse {
   /** Taxonomies that were imported. */
   taxonomies?: Array<GoogleCloudDatacatalogV1beta1Taxonomy>;
 }
 
-export const GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse: Schema.Schema<GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      taxonomies: Schema.optional(
-        Schema.Array(GoogleCloudDatacatalogV1beta1Taxonomy),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    taxonomies: Schema.optional(
+      Schema.Array(GoogleCloudDatacatalogV1beta1Taxonomy),
+    ),
+  }).annotate({
     identifier: "GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1beta1ImportTaxonomiesResponse>;
+  });
 
 export interface GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse {
   /** List of taxonomies and policy tags in a tree structure. */
   taxonomies?: Array<GoogleCloudDatacatalogV1beta1SerializedTaxonomy>;
 }
 
-export const GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse: Schema.Schema<GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      taxonomies: Schema.optional(
-        Schema.Array(GoogleCloudDatacatalogV1beta1SerializedTaxonomy),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    taxonomies: Schema.optional(
+      Schema.Array(GoogleCloudDatacatalogV1beta1SerializedTaxonomy),
+    ),
+  }).annotate({
     identifier: "GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1beta1ExportTaxonomiesResponse>;
+  });
 
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -1098,16 +937,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface GoogleCloudDatacatalogV1ReconcileTagsMetadata {
   /** State of the reconciliation operation. */
@@ -1121,15 +957,11 @@ export interface GoogleCloudDatacatalogV1ReconcileTagsMetadata {
   errors?: Record<string, Status>;
 }
 
-export const GoogleCloudDatacatalogV1ReconcileTagsMetadata: Schema.Schema<GoogleCloudDatacatalogV1ReconcileTagsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      errors: Schema.optional(Schema.Record(Schema.String, Status)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1ReconcileTagsMetadata",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1ReconcileTagsMetadata>;
+export const GoogleCloudDatacatalogV1ReconcileTagsMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+    errors: Schema.optional(Schema.Record(Schema.String, Status)),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1ReconcileTagsMetadata" });
 
 export interface GoogleCloudDatacatalogV1ReconcileTagsResponse {
   /** Number of tags created in the request. */
@@ -1140,16 +972,12 @@ export interface GoogleCloudDatacatalogV1ReconcileTagsResponse {
   deletedTagsCount?: string;
 }
 
-export const GoogleCloudDatacatalogV1ReconcileTagsResponse: Schema.Schema<GoogleCloudDatacatalogV1ReconcileTagsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createdTagsCount: Schema.optional(Schema.String),
-      updatedTagsCount: Schema.optional(Schema.String),
-      deletedTagsCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1ReconcileTagsResponse",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1ReconcileTagsResponse>;
+export const GoogleCloudDatacatalogV1ReconcileTagsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createdTagsCount: Schema.optional(Schema.String),
+    updatedTagsCount: Schema.optional(Schema.String),
+    deletedTagsCount: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1ReconcileTagsResponse" });
 
 export interface GoogleCloudDatacatalogV1ImportEntriesMetadata {
   /** State of the import operation. */
@@ -1164,15 +992,11 @@ export interface GoogleCloudDatacatalogV1ImportEntriesMetadata {
   errors?: Array<Status>;
 }
 
-export const GoogleCloudDatacatalogV1ImportEntriesMetadata: Schema.Schema<GoogleCloudDatacatalogV1ImportEntriesMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      errors: Schema.optional(Schema.Array(Status)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1ImportEntriesMetadata",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1ImportEntriesMetadata>;
+export const GoogleCloudDatacatalogV1ImportEntriesMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+    errors: Schema.optional(Schema.Array(Status)),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1ImportEntriesMetadata" });
 
 export interface GoogleCloudDatacatalogV1ImportEntriesResponse {
   /** Cumulative number of entries created and entries updated as a result of import operation. */
@@ -1181,15 +1005,11 @@ export interface GoogleCloudDatacatalogV1ImportEntriesResponse {
   deletedEntriesCount?: string;
 }
 
-export const GoogleCloudDatacatalogV1ImportEntriesResponse: Schema.Schema<GoogleCloudDatacatalogV1ImportEntriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      upsertedEntriesCount: Schema.optional(Schema.String),
-      deletedEntriesCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1ImportEntriesResponse",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1ImportEntriesResponse>;
+export const GoogleCloudDatacatalogV1ImportEntriesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    upsertedEntriesCount: Schema.optional(Schema.String),
+    deletedEntriesCount: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1ImportEntriesResponse" });
 
 export interface GoogleCloudDatacatalogV1SqlDatabaseSystemSpec {
   /** SQL Database Engine. enum SqlEngine { UNDEFINED = 0; MY_SQL = 1; POSTGRE_SQL = 2; SQL_SERVER = 3; } Engine of the enclosing database instance. */
@@ -1200,16 +1020,12 @@ export interface GoogleCloudDatacatalogV1SqlDatabaseSystemSpec {
   instanceHost?: string;
 }
 
-export const GoogleCloudDatacatalogV1SqlDatabaseSystemSpec: Schema.Schema<GoogleCloudDatacatalogV1SqlDatabaseSystemSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sqlEngine: Schema.optional(Schema.String),
-      databaseVersion: Schema.optional(Schema.String),
-      instanceHost: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1SqlDatabaseSystemSpec",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1SqlDatabaseSystemSpec>;
+export const GoogleCloudDatacatalogV1SqlDatabaseSystemSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sqlEngine: Schema.optional(Schema.String),
+    databaseVersion: Schema.optional(Schema.String),
+    instanceHost: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1SqlDatabaseSystemSpec" });
 
 export interface GoogleCloudDatacatalogV1LookerSystemSpec {
   /** ID of the parent Looker Instance. Empty if it does not exist. Example value: `someinstance.looker.com` */
@@ -1226,33 +1042,27 @@ export interface GoogleCloudDatacatalogV1LookerSystemSpec {
   parentViewDisplayName?: string;
 }
 
-export const GoogleCloudDatacatalogV1LookerSystemSpec: Schema.Schema<GoogleCloudDatacatalogV1LookerSystemSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parentInstanceId: Schema.optional(Schema.String),
-      parentInstanceDisplayName: Schema.optional(Schema.String),
-      parentModelId: Schema.optional(Schema.String),
-      parentModelDisplayName: Schema.optional(Schema.String),
-      parentViewId: Schema.optional(Schema.String),
-      parentViewDisplayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1LookerSystemSpec",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1LookerSystemSpec>;
+export const GoogleCloudDatacatalogV1LookerSystemSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parentInstanceId: Schema.optional(Schema.String),
+    parentInstanceDisplayName: Schema.optional(Schema.String),
+    parentModelId: Schema.optional(Schema.String),
+    parentModelDisplayName: Schema.optional(Schema.String),
+    parentViewId: Schema.optional(Schema.String),
+    parentViewDisplayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1LookerSystemSpec" });
 
 export interface GoogleCloudDatacatalogV1CloudBigtableSystemSpec {
   /** Display name of the Instance. This is user specified and different from the resource name. */
   instanceDisplayName?: string;
 }
 
-export const GoogleCloudDatacatalogV1CloudBigtableSystemSpec: Schema.Schema<GoogleCloudDatacatalogV1CloudBigtableSystemSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      instanceDisplayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDatacatalogV1CloudBigtableSystemSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    instanceDisplayName: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDatacatalogV1CloudBigtableSystemSpec",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1CloudBigtableSystemSpec>;
+  });
 
 export interface GoogleCloudDatacatalogV1SystemTimestamps {
   /** Creation timestamp of the resource within the given system. */
@@ -1263,16 +1073,12 @@ export interface GoogleCloudDatacatalogV1SystemTimestamps {
   expireTime?: string;
 }
 
-export const GoogleCloudDatacatalogV1SystemTimestamps: Schema.Schema<GoogleCloudDatacatalogV1SystemTimestamps> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      expireTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1SystemTimestamps",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1SystemTimestamps>;
+export const GoogleCloudDatacatalogV1SystemTimestamps =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    expireTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1SystemTimestamps" });
 
 export interface GoogleCloudDatacatalogV1GcsFileSpec {
   /** Required. Full file path. Example: `gs://bucket_name/a/b.txt`. */
@@ -1283,16 +1089,12 @@ export interface GoogleCloudDatacatalogV1GcsFileSpec {
   sizeBytes?: string;
 }
 
-export const GoogleCloudDatacatalogV1GcsFileSpec: Schema.Schema<GoogleCloudDatacatalogV1GcsFileSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filePath: Schema.optional(Schema.String),
-      gcsTimestamps: Schema.optional(GoogleCloudDatacatalogV1SystemTimestamps),
-      sizeBytes: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1GcsFileSpec",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1GcsFileSpec>;
+export const GoogleCloudDatacatalogV1GcsFileSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filePath: Schema.optional(Schema.String),
+    gcsTimestamps: Schema.optional(GoogleCloudDatacatalogV1SystemTimestamps),
+    sizeBytes: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1GcsFileSpec" });
 
 export interface GoogleCloudDatacatalogV1GcsFilesetSpec {
   /** Required. Patterns to identify a set of files in Google Cloud Storage. For more information, see [Wildcard Names] (https://cloud.google.com/storage/docs/wildcards). Note: Currently, bucket wildcards are not supported. Examples of valid `file_patterns`: * `gs://bucket_name/dir/*`: matches all files in `bucket_name/dir` directory * `gs://bucket_name/dir/**`: matches all files in `bucket_name/dir` and all subdirectories * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/* /b`: matches all files in `bucket_name` that match the `a/* /b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt` You can combine wildcards to match complex sets of files, for example: `gs://bucket_name/[a-m]??.j*g` */
@@ -1301,45 +1103,33 @@ export interface GoogleCloudDatacatalogV1GcsFilesetSpec {
   sampleGcsFileSpecs?: Array<GoogleCloudDatacatalogV1GcsFileSpec>;
 }
 
-export const GoogleCloudDatacatalogV1GcsFilesetSpec: Schema.Schema<GoogleCloudDatacatalogV1GcsFilesetSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filePatterns: Schema.optional(Schema.Array(Schema.String)),
-      sampleGcsFileSpecs: Schema.optional(
-        Schema.Array(GoogleCloudDatacatalogV1GcsFileSpec),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1GcsFilesetSpec",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1GcsFilesetSpec>;
+export const GoogleCloudDatacatalogV1GcsFilesetSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filePatterns: Schema.optional(Schema.Array(Schema.String)),
+    sampleGcsFileSpecs: Schema.optional(
+      Schema.Array(GoogleCloudDatacatalogV1GcsFileSpec),
+    ),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1GcsFilesetSpec" });
 
 export interface GoogleCloudDatacatalogV1ViewSpec {
   /** Output only. The query that defines the table view. */
   viewQuery?: string;
 }
 
-export const GoogleCloudDatacatalogV1ViewSpec: Schema.Schema<GoogleCloudDatacatalogV1ViewSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      viewQuery: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1ViewSpec",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1ViewSpec>;
+export const GoogleCloudDatacatalogV1ViewSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    viewQuery: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1ViewSpec" });
 
 export interface GoogleCloudDatacatalogV1TableSpec {
   /** Output only. If the table is date-sharded, that is, it matches the `[prefix]YYYYMMDD` name pattern, this field is the Data Catalog resource name of the date-sharded grouped entry. For example: `projects/{PROJECT_ID}/locations/{LOCATION}/entrygroups/{ENTRY_GROUP_ID}/entries/{ENTRY_ID}`. Otherwise, `grouped_entry` is empty. */
   groupedEntry?: string;
 }
 
-export const GoogleCloudDatacatalogV1TableSpec: Schema.Schema<GoogleCloudDatacatalogV1TableSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      groupedEntry: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1TableSpec",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1TableSpec>;
+export const GoogleCloudDatacatalogV1TableSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    groupedEntry: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1TableSpec" });
 
 export interface GoogleCloudDatacatalogV1BigQueryTableSpec {
   /** Output only. The table source type. */
@@ -1355,16 +1145,12 @@ export interface GoogleCloudDatacatalogV1BigQueryTableSpec {
   tableSpec?: GoogleCloudDatacatalogV1TableSpec;
 }
 
-export const GoogleCloudDatacatalogV1BigQueryTableSpec: Schema.Schema<GoogleCloudDatacatalogV1BigQueryTableSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tableSourceType: Schema.optional(Schema.String),
-      viewSpec: Schema.optional(GoogleCloudDatacatalogV1ViewSpec),
-      tableSpec: Schema.optional(GoogleCloudDatacatalogV1TableSpec),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1BigQueryTableSpec",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1BigQueryTableSpec>;
+export const GoogleCloudDatacatalogV1BigQueryTableSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tableSourceType: Schema.optional(Schema.String),
+    viewSpec: Schema.optional(GoogleCloudDatacatalogV1ViewSpec),
+    tableSpec: Schema.optional(GoogleCloudDatacatalogV1TableSpec),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1BigQueryTableSpec" });
 
 export interface GoogleCloudDatacatalogV1BigQueryDateShardedSpec {
   /** Output only. The Data Catalog resource name of the dataset entry the current table belongs to. For example: `projects/{PROJECT_ID}/locations/{LOCATION}/entrygroups/{ENTRY_GROUP_ID}/entries/{ENTRY_ID}`. */
@@ -1377,17 +1163,15 @@ export interface GoogleCloudDatacatalogV1BigQueryDateShardedSpec {
   latestShardResource?: string;
 }
 
-export const GoogleCloudDatacatalogV1BigQueryDateShardedSpec: Schema.Schema<GoogleCloudDatacatalogV1BigQueryDateShardedSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataset: Schema.optional(Schema.String),
-      tablePrefix: Schema.optional(Schema.String),
-      shardCount: Schema.optional(Schema.String),
-      latestShardResource: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDatacatalogV1BigQueryDateShardedSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataset: Schema.optional(Schema.String),
+    tablePrefix: Schema.optional(Schema.String),
+    shardCount: Schema.optional(Schema.String),
+    latestShardResource: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDatacatalogV1BigQueryDateShardedSpec",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1BigQueryDateShardedSpec>;
+  });
 
 export interface GoogleCloudDatacatalogV1DataplexExternalTable {
   /** Service in which the external table is registered. */
@@ -1411,80 +1195,70 @@ export interface GoogleCloudDatacatalogV1DataplexExternalTable {
   dataCatalogEntry?: string;
 }
 
-export const GoogleCloudDatacatalogV1DataplexExternalTable: Schema.Schema<GoogleCloudDatacatalogV1DataplexExternalTable> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      system: Schema.optional(Schema.String),
-      fullyQualifiedName: Schema.optional(Schema.String),
-      googleCloudResource: Schema.optional(Schema.String),
-      dataCatalogEntry: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1DataplexExternalTable",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1DataplexExternalTable>;
+export const GoogleCloudDatacatalogV1DataplexExternalTable =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    system: Schema.optional(Schema.String),
+    fullyQualifiedName: Schema.optional(Schema.String),
+    googleCloudResource: Schema.optional(Schema.String),
+    dataCatalogEntry: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1DataplexExternalTable" });
 
 export interface GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema {
   /** JSON source of the Avro schema. */
   text?: string;
 }
 
-export const GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema: Schema.Schema<GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema>;
+  });
 
 export interface GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema {
   /** Thrift IDL source of the schema. */
   text?: string;
 }
 
-export const GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema: Schema.Schema<GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema>;
+  });
 
 export interface GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema {
   /** Protocol buffer source of the schema. */
   text?: string;
 }
 
-export const GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema: Schema.Schema<GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema>;
+  });
 
 export interface GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema {}
 
-export const GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema: Schema.Schema<GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema>;
+  });
 
 export interface GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema {}
 
-export const GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema: Schema.Schema<GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema>;
+  });
 
 export interface GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema {}
 
-export const GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema: Schema.Schema<GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema>;
+  });
 
 export interface GoogleCloudDatacatalogV1PhysicalSchema {
   /** Schema in Avro JSON format. */
@@ -1501,25 +1275,19 @@ export interface GoogleCloudDatacatalogV1PhysicalSchema {
   csv?: GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema;
 }
 
-export const GoogleCloudDatacatalogV1PhysicalSchema: Schema.Schema<GoogleCloudDatacatalogV1PhysicalSchema> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      avro: Schema.optional(GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema),
-      thrift: Schema.optional(
-        GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema,
-      ),
-      protobuf: Schema.optional(
-        GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema,
-      ),
-      parquet: Schema.optional(
-        GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema,
-      ),
-      orc: Schema.optional(GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema),
-      csv: Schema.optional(GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1PhysicalSchema",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1PhysicalSchema>;
+export const GoogleCloudDatacatalogV1PhysicalSchema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    avro: Schema.optional(GoogleCloudDatacatalogV1PhysicalSchemaAvroSchema),
+    thrift: Schema.optional(GoogleCloudDatacatalogV1PhysicalSchemaThriftSchema),
+    protobuf: Schema.optional(
+      GoogleCloudDatacatalogV1PhysicalSchemaProtobufSchema,
+    ),
+    parquet: Schema.optional(
+      GoogleCloudDatacatalogV1PhysicalSchemaParquetSchema,
+    ),
+    orc: Schema.optional(GoogleCloudDatacatalogV1PhysicalSchemaOrcSchema),
+    csv: Schema.optional(GoogleCloudDatacatalogV1PhysicalSchemaCsvSchema),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1PhysicalSchema" });
 
 export interface GoogleCloudDatacatalogV1DataplexSpec {
   /** Fully qualified resource name of an asset in Dataplex Universal Catalog, to which the underlying data source (Cloud Storage bucket or BigQuery dataset) of the entity is attached. */
@@ -1532,17 +1300,13 @@ export interface GoogleCloudDatacatalogV1DataplexSpec {
   projectId?: string;
 }
 
-export const GoogleCloudDatacatalogV1DataplexSpec: Schema.Schema<GoogleCloudDatacatalogV1DataplexSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      asset: Schema.optional(Schema.String),
-      dataFormat: Schema.optional(GoogleCloudDatacatalogV1PhysicalSchema),
-      compressionFormat: Schema.optional(Schema.String),
-      projectId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1DataplexSpec",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1DataplexSpec>;
+export const GoogleCloudDatacatalogV1DataplexSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    asset: Schema.optional(Schema.String),
+    dataFormat: Schema.optional(GoogleCloudDatacatalogV1PhysicalSchema),
+    compressionFormat: Schema.optional(Schema.String),
+    projectId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1DataplexSpec" });
 
 export interface GoogleCloudDatacatalogV1DataplexTableSpec {
   /** List of external tables registered by Dataplex Universal Catalog in other systems based on the same underlying data. External tables allow to query this data in those systems. */
@@ -1553,18 +1317,14 @@ export interface GoogleCloudDatacatalogV1DataplexTableSpec {
   userManaged?: boolean;
 }
 
-export const GoogleCloudDatacatalogV1DataplexTableSpec: Schema.Schema<GoogleCloudDatacatalogV1DataplexTableSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      externalTables: Schema.optional(
-        Schema.Array(GoogleCloudDatacatalogV1DataplexExternalTable),
-      ),
-      dataplexSpec: Schema.optional(GoogleCloudDatacatalogV1DataplexSpec),
-      userManaged: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1DataplexTableSpec",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1DataplexTableSpec>;
+export const GoogleCloudDatacatalogV1DataplexTableSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    externalTables: Schema.optional(
+      Schema.Array(GoogleCloudDatacatalogV1DataplexExternalTable),
+    ),
+    dataplexSpec: Schema.optional(GoogleCloudDatacatalogV1DataplexSpec),
+    userManaged: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1DataplexTableSpec" });
 
 export interface GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec {
   /** Type of this view. */
@@ -1579,16 +1339,14 @@ export interface GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec {
   sqlQuery?: string;
 }
 
-export const GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec: Schema.Schema<GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      viewType: Schema.optional(Schema.String),
-      baseTable: Schema.optional(Schema.String),
-      sqlQuery: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    viewType: Schema.optional(Schema.String),
+    baseTable: Schema.optional(Schema.String),
+    sqlQuery: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec>;
+  });
 
 export interface GoogleCloudDatacatalogV1DatabaseTableSpec {
   /** Type of this table. */
@@ -1599,18 +1357,14 @@ export interface GoogleCloudDatacatalogV1DatabaseTableSpec {
   databaseViewSpec?: GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec;
 }
 
-export const GoogleCloudDatacatalogV1DatabaseTableSpec: Schema.Schema<GoogleCloudDatacatalogV1DatabaseTableSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      dataplexTable: Schema.optional(GoogleCloudDatacatalogV1DataplexTableSpec),
-      databaseViewSpec: Schema.optional(
-        GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1DatabaseTableSpec",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1DatabaseTableSpec>;
+export const GoogleCloudDatacatalogV1DatabaseTableSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    dataplexTable: Schema.optional(GoogleCloudDatacatalogV1DataplexTableSpec),
+    databaseViewSpec: Schema.optional(
+      GoogleCloudDatacatalogV1DatabaseTableSpecDatabaseViewSpec,
+    ),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1DatabaseTableSpec" });
 
 export interface GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec {
   /** Cloud SQL instance ID in the format of `project:location:instance`. */
@@ -1621,16 +1375,14 @@ export interface GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec {
   type?: "DATABASE_TYPE_UNSPECIFIED" | "POSTGRES" | "MYSQL" | (string & {});
 }
 
-export const GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec: Schema.Schema<GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      instanceId: Schema.optional(Schema.String),
-      database: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    instanceId: Schema.optional(Schema.String),
+    database: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec>;
+  });
 
 export interface GoogleCloudDatacatalogV1BigQueryConnectionSpec {
   /** The type of the BigQuery connection. */
@@ -1641,34 +1393,28 @@ export interface GoogleCloudDatacatalogV1BigQueryConnectionSpec {
   hasCredential?: boolean;
 }
 
-export const GoogleCloudDatacatalogV1BigQueryConnectionSpec: Schema.Schema<GoogleCloudDatacatalogV1BigQueryConnectionSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      connectionType: Schema.optional(Schema.String),
-      cloudSql: Schema.optional(
-        GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec,
-      ),
-      hasCredential: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1BigQueryConnectionSpec",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1BigQueryConnectionSpec>;
+export const GoogleCloudDatacatalogV1BigQueryConnectionSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    connectionType: Schema.optional(Schema.String),
+    cloudSql: Schema.optional(
+      GoogleCloudDatacatalogV1CloudSqlBigQueryConnectionSpec,
+    ),
+    hasCredential: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1BigQueryConnectionSpec" });
 
 export interface GoogleCloudDatacatalogV1DataSourceConnectionSpec {
   /** Output only. Fields specific to BigQuery connections. */
   bigqueryConnectionSpec?: GoogleCloudDatacatalogV1BigQueryConnectionSpec;
 }
 
-export const GoogleCloudDatacatalogV1DataSourceConnectionSpec: Schema.Schema<GoogleCloudDatacatalogV1DataSourceConnectionSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bigqueryConnectionSpec: Schema.optional(
-        GoogleCloudDatacatalogV1BigQueryConnectionSpec,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDatacatalogV1DataSourceConnectionSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bigqueryConnectionSpec: Schema.optional(
+      GoogleCloudDatacatalogV1BigQueryConnectionSpec,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDatacatalogV1DataSourceConnectionSpec",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1DataSourceConnectionSpec>;
+  });
 
 export interface GoogleCloudDatacatalogV1RoutineSpecArgument {
   /** The name of the argument. A return argument of a function might not have a name. */
@@ -1679,30 +1425,22 @@ export interface GoogleCloudDatacatalogV1RoutineSpecArgument {
   type?: string;
 }
 
-export const GoogleCloudDatacatalogV1RoutineSpecArgument: Schema.Schema<GoogleCloudDatacatalogV1RoutineSpecArgument> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      mode: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1RoutineSpecArgument",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1RoutineSpecArgument>;
+export const GoogleCloudDatacatalogV1RoutineSpecArgument =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    mode: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1RoutineSpecArgument" });
 
 export interface GoogleCloudDatacatalogV1BigQueryRoutineSpec {
   /** Paths of the imported libraries. */
   importedLibraries?: Array<string>;
 }
 
-export const GoogleCloudDatacatalogV1BigQueryRoutineSpec: Schema.Schema<GoogleCloudDatacatalogV1BigQueryRoutineSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      importedLibraries: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1BigQueryRoutineSpec",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1BigQueryRoutineSpec>;
+export const GoogleCloudDatacatalogV1BigQueryRoutineSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    importedLibraries: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1BigQueryRoutineSpec" });
 
 export interface GoogleCloudDatacatalogV1RoutineSpec {
   /** The type of the routine. */
@@ -1723,23 +1461,19 @@ export interface GoogleCloudDatacatalogV1RoutineSpec {
   bigqueryRoutineSpec?: GoogleCloudDatacatalogV1BigQueryRoutineSpec;
 }
 
-export const GoogleCloudDatacatalogV1RoutineSpec: Schema.Schema<GoogleCloudDatacatalogV1RoutineSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      routineType: Schema.optional(Schema.String),
-      language: Schema.optional(Schema.String),
-      routineArguments: Schema.optional(
-        Schema.Array(GoogleCloudDatacatalogV1RoutineSpecArgument),
-      ),
-      returnType: Schema.optional(Schema.String),
-      definitionBody: Schema.optional(Schema.String),
-      bigqueryRoutineSpec: Schema.optional(
-        GoogleCloudDatacatalogV1BigQueryRoutineSpec,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1RoutineSpec",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1RoutineSpec>;
+export const GoogleCloudDatacatalogV1RoutineSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    routineType: Schema.optional(Schema.String),
+    language: Schema.optional(Schema.String),
+    routineArguments: Schema.optional(
+      Schema.Array(GoogleCloudDatacatalogV1RoutineSpecArgument),
+    ),
+    returnType: Schema.optional(Schema.String),
+    definitionBody: Schema.optional(Schema.String),
+    bigqueryRoutineSpec: Schema.optional(
+      GoogleCloudDatacatalogV1BigQueryRoutineSpec,
+    ),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1RoutineSpec" });
 
 export interface GoogleCloudDatacatalogV1VertexDatasetSpec {
   /** The number of DataItems in this Dataset. Only apply for non-structured Dataset. */
@@ -1762,61 +1496,45 @@ export interface GoogleCloudDatacatalogV1VertexDatasetSpec {
     | (string & {});
 }
 
-export const GoogleCloudDatacatalogV1VertexDatasetSpec: Schema.Schema<GoogleCloudDatacatalogV1VertexDatasetSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataItemCount: Schema.optional(Schema.String),
-      dataType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1VertexDatasetSpec",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1VertexDatasetSpec>;
+export const GoogleCloudDatacatalogV1VertexDatasetSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataItemCount: Schema.optional(Schema.String),
+    dataType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1VertexDatasetSpec" });
 
 export interface GoogleCloudDatacatalogV1DatasetSpec {
   /** Vertex AI Dataset specific fields */
   vertexDatasetSpec?: GoogleCloudDatacatalogV1VertexDatasetSpec;
 }
 
-export const GoogleCloudDatacatalogV1DatasetSpec: Schema.Schema<GoogleCloudDatacatalogV1DatasetSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      vertexDatasetSpec: Schema.optional(
-        GoogleCloudDatacatalogV1VertexDatasetSpec,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1DatasetSpec",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1DatasetSpec>;
+export const GoogleCloudDatacatalogV1DatasetSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    vertexDatasetSpec: Schema.optional(
+      GoogleCloudDatacatalogV1VertexDatasetSpec,
+    ),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1DatasetSpec" });
 
 export interface GoogleCloudDatacatalogV1DataplexFilesetSpec {
   /** Common Dataplex Universal Catalog fields. */
   dataplexSpec?: GoogleCloudDatacatalogV1DataplexSpec;
 }
 
-export const GoogleCloudDatacatalogV1DataplexFilesetSpec: Schema.Schema<GoogleCloudDatacatalogV1DataplexFilesetSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataplexSpec: Schema.optional(GoogleCloudDatacatalogV1DataplexSpec),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1DataplexFilesetSpec",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1DataplexFilesetSpec>;
+export const GoogleCloudDatacatalogV1DataplexFilesetSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataplexSpec: Schema.optional(GoogleCloudDatacatalogV1DataplexSpec),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1DataplexFilesetSpec" });
 
 export interface GoogleCloudDatacatalogV1FilesetSpec {
   /** Fields specific to a Dataplex Universal Catalog fileset and present only in the Dataplex Universal Catalog fileset entries. */
   dataplexFileset?: GoogleCloudDatacatalogV1DataplexFilesetSpec;
 }
 
-export const GoogleCloudDatacatalogV1FilesetSpec: Schema.Schema<GoogleCloudDatacatalogV1FilesetSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataplexFileset: Schema.optional(
-        GoogleCloudDatacatalogV1DataplexFilesetSpec,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1FilesetSpec",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1FilesetSpec>;
+export const GoogleCloudDatacatalogV1FilesetSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataplexFileset: Schema.optional(
+      GoogleCloudDatacatalogV1DataplexFilesetSpec,
+    ),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1FilesetSpec" });
 
 export interface GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec {
   /** Name of the cluster. */
@@ -1829,52 +1547,44 @@ export interface GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableC
   linkedResource?: string;
 }
 
-export const GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec: Schema.Schema<GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      linkedResource: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    location: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    linkedResource: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec>;
+  });
 
 export interface GoogleCloudDatacatalogV1CloudBigtableInstanceSpec {
   /** The list of clusters for the Instance. */
   cloudBigtableClusterSpecs?: Array<GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec>;
 }
 
-export const GoogleCloudDatacatalogV1CloudBigtableInstanceSpec: Schema.Schema<GoogleCloudDatacatalogV1CloudBigtableInstanceSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cloudBigtableClusterSpecs: Schema.optional(
-        Schema.Array(
-          GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec,
-        ),
+export const GoogleCloudDatacatalogV1CloudBigtableInstanceSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cloudBigtableClusterSpecs: Schema.optional(
+      Schema.Array(
+        GoogleCloudDatacatalogV1CloudBigtableInstanceSpecCloudBigtableClusterSpec,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier: "GoogleCloudDatacatalogV1CloudBigtableInstanceSpec",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1CloudBigtableInstanceSpec>;
+  });
 
 export interface GoogleCloudDatacatalogV1ServiceSpec {
   /** Specification that applies to Instance entries of `CLOUD_BIGTABLE` system. */
   cloudBigtableInstanceSpec?: GoogleCloudDatacatalogV1CloudBigtableInstanceSpec;
 }
 
-export const GoogleCloudDatacatalogV1ServiceSpec: Schema.Schema<GoogleCloudDatacatalogV1ServiceSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cloudBigtableInstanceSpec: Schema.optional(
-        GoogleCloudDatacatalogV1CloudBigtableInstanceSpec,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1ServiceSpec",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1ServiceSpec>;
+export const GoogleCloudDatacatalogV1ServiceSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cloudBigtableInstanceSpec: Schema.optional(
+      GoogleCloudDatacatalogV1CloudBigtableInstanceSpec,
+    ),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1ServiceSpec" });
 
 export interface GoogleCloudDatacatalogV1VertexModelSourceInfo {
   /** Type of the model source. */
@@ -1892,15 +1602,11 @@ export interface GoogleCloudDatacatalogV1VertexModelSourceInfo {
   copy?: boolean;
 }
 
-export const GoogleCloudDatacatalogV1VertexModelSourceInfo: Schema.Schema<GoogleCloudDatacatalogV1VertexModelSourceInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sourceType: Schema.optional(Schema.String),
-      copy: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1VertexModelSourceInfo",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1VertexModelSourceInfo>;
+export const GoogleCloudDatacatalogV1VertexModelSourceInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sourceType: Schema.optional(Schema.String),
+    copy: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1VertexModelSourceInfo" });
 
 export interface GoogleCloudDatacatalogV1VertexModelSpec {
   /** The version ID of the model. */
@@ -1915,34 +1621,26 @@ export interface GoogleCloudDatacatalogV1VertexModelSpec {
   containerImageUri?: string;
 }
 
-export const GoogleCloudDatacatalogV1VertexModelSpec: Schema.Schema<GoogleCloudDatacatalogV1VertexModelSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      versionId: Schema.optional(Schema.String),
-      versionAliases: Schema.optional(Schema.Array(Schema.String)),
-      versionDescription: Schema.optional(Schema.String),
-      vertexModelSourceInfo: Schema.optional(
-        GoogleCloudDatacatalogV1VertexModelSourceInfo,
-      ),
-      containerImageUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1VertexModelSpec",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1VertexModelSpec>;
+export const GoogleCloudDatacatalogV1VertexModelSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    versionId: Schema.optional(Schema.String),
+    versionAliases: Schema.optional(Schema.Array(Schema.String)),
+    versionDescription: Schema.optional(Schema.String),
+    vertexModelSourceInfo: Schema.optional(
+      GoogleCloudDatacatalogV1VertexModelSourceInfo,
+    ),
+    containerImageUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1VertexModelSpec" });
 
 export interface GoogleCloudDatacatalogV1ModelSpec {
   /** Specification for vertex model resources. */
   vertexModelSpec?: GoogleCloudDatacatalogV1VertexModelSpec;
 }
 
-export const GoogleCloudDatacatalogV1ModelSpec: Schema.Schema<GoogleCloudDatacatalogV1ModelSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      vertexModelSpec: Schema.optional(GoogleCloudDatacatalogV1VertexModelSpec),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1ModelSpec",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1ModelSpec>;
+export const GoogleCloudDatacatalogV1ModelSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    vertexModelSpec: Schema.optional(GoogleCloudDatacatalogV1VertexModelSpec),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1ModelSpec" });
 
 export interface GoogleCloudDatacatalogV1FeatureOnlineStoreSpec {
   /** Output only. Type of underlying storage for the FeatureOnlineStore. */
@@ -1953,14 +1651,10 @@ export interface GoogleCloudDatacatalogV1FeatureOnlineStoreSpec {
     | (string & {});
 }
 
-export const GoogleCloudDatacatalogV1FeatureOnlineStoreSpec: Schema.Schema<GoogleCloudDatacatalogV1FeatureOnlineStoreSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      storageType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1FeatureOnlineStoreSpec",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1FeatureOnlineStoreSpec>;
+export const GoogleCloudDatacatalogV1FeatureOnlineStoreSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    storageType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1FeatureOnlineStoreSpec" });
 
 export interface GoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty {
   /** Required. Property name. */
@@ -1969,15 +1663,13 @@ export interface GoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty {
   type?: string;
 }
 
-export const GoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty: Schema.Schema<GoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty>;
+  });
 
 export interface GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties {
   /** Required. The name of the label. */
@@ -1986,20 +1678,16 @@ export interface GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndPrope
   properties?: Array<GoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty>;
 }
 
-export const GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties: Schema.Schema<GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      label: Schema.optional(Schema.String),
-      properties: Schema.optional(
-        Schema.Array(
-          GoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty,
-        ),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    label: Schema.optional(Schema.String),
+    properties: Schema.optional(
+      Schema.Array(GoogleCloudDatacatalogV1GraphSpecGraphElementTableProperty),
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties>;
+  });
 
 export interface GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference {
   /** Required. The reference to the source/destination node of the edge. This name must be a valid `alias` of a node element in the same graph. Example, `Person` node can be a source node name of an edge element `Person_to_Address`. */
@@ -2010,17 +1698,15 @@ export interface GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeRefe
   nodeTableColumns?: Array<string>;
 }
 
-export const GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference: Schema.Schema<GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nodeAlias: Schema.optional(Schema.String),
-      edgeTableColumns: Schema.optional(Schema.Array(Schema.String)),
-      nodeTableColumns: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nodeAlias: Schema.optional(Schema.String),
+    edgeTableColumns: Schema.optional(Schema.Array(Schema.String)),
+    nodeTableColumns: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier:
       "GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference>;
+  });
 
 export interface GoogleCloudDatacatalogV1GraphSpecGraphElementTable {
   /** Required. The name of the data source. This is either a table name or a view name that is used for graph element input source. E.g. `Person` table or `PersonView` view. */
@@ -2045,31 +1731,29 @@ export interface GoogleCloudDatacatalogV1GraphSpecGraphElementTable {
   destinationNodeReference?: GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference;
 }
 
-export const GoogleCloudDatacatalogV1GraphSpecGraphElementTable: Schema.Schema<GoogleCloudDatacatalogV1GraphSpecGraphElementTable> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataSource: Schema.optional(Schema.String),
-      alias: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      inputSource: Schema.optional(Schema.String),
-      elementKeys: Schema.optional(Schema.Array(Schema.String)),
-      labelAndProperties: Schema.optional(
-        Schema.Array(
-          GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties,
-        ),
+export const GoogleCloudDatacatalogV1GraphSpecGraphElementTable =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataSource: Schema.optional(Schema.String),
+    alias: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    inputSource: Schema.optional(Schema.String),
+    elementKeys: Schema.optional(Schema.Array(Schema.String)),
+    labelAndProperties: Schema.optional(
+      Schema.Array(
+        GoogleCloudDatacatalogV1GraphSpecGraphElementTableLabelAndProperties,
       ),
-      dynamicLabelColumn: Schema.optional(Schema.String),
-      dynamicPropertiesColumn: Schema.optional(Schema.String),
-      sourceNodeReference: Schema.optional(
-        GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference,
-      ),
-      destinationNodeReference: Schema.optional(
-        GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference,
-      ),
-    }),
-  ).annotate({
+    ),
+    dynamicLabelColumn: Schema.optional(Schema.String),
+    dynamicPropertiesColumn: Schema.optional(Schema.String),
+    sourceNodeReference: Schema.optional(
+      GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference,
+    ),
+    destinationNodeReference: Schema.optional(
+      GoogleCloudDatacatalogV1GraphSpecGraphElementTableGraphNodeReference,
+    ),
+  }).annotate({
     identifier: "GoogleCloudDatacatalogV1GraphSpecGraphElementTable",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1GraphSpecGraphElementTable>;
+  });
 
 export interface GoogleCloudDatacatalogV1GraphSpec {
   /** Output only. Fully qualified graph name. e.g. `named_catalog.MyGraph` */
@@ -2080,34 +1764,28 @@ export interface GoogleCloudDatacatalogV1GraphSpec {
   edgeTables?: Array<GoogleCloudDatacatalogV1GraphSpecGraphElementTable>;
 }
 
-export const GoogleCloudDatacatalogV1GraphSpec: Schema.Schema<GoogleCloudDatacatalogV1GraphSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      nodeTables: Schema.optional(
-        Schema.Array(GoogleCloudDatacatalogV1GraphSpecGraphElementTable),
-      ),
-      edgeTables: Schema.optional(
-        Schema.Array(GoogleCloudDatacatalogV1GraphSpecGraphElementTable),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1GraphSpec",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1GraphSpec>;
+export const GoogleCloudDatacatalogV1GraphSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    nodeTables: Schema.optional(
+      Schema.Array(GoogleCloudDatacatalogV1GraphSpecGraphElementTable),
+    ),
+    edgeTables: Schema.optional(
+      Schema.Array(GoogleCloudDatacatalogV1GraphSpecGraphElementTable),
+    ),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1GraphSpec" });
 
 export interface GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey {
   /** Output only. Column names of the primary key. */
   columns?: Array<string>;
 }
 
-export const GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey: Schema.Schema<GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      columns: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    columns: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey>;
+  });
 
 export interface GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping {
   /** Output only. The column in the current table that is part of the foreign key. */
@@ -2116,16 +1794,14 @@ export interface GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeig
   referenceColumn?: string;
 }
 
-export const GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping: Schema.Schema<GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      column: Schema.optional(Schema.String),
-      referenceColumn: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    column: Schema.optional(Schema.String),
+    referenceColumn: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping>;
+  });
 
 export interface GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey {
   /** Output only. The constraint_name of the foreign key, for example, FK_CustomerOrder. */
@@ -2136,20 +1812,18 @@ export interface GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey {
   columnMappings?: Array<GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping>;
 }
 
-export const GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey: Schema.Schema<GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      entry: Schema.optional(Schema.String),
-      columnMappings: Schema.optional(
-        Schema.Array(
-          GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping,
-        ),
+export const GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    entry: Schema.optional(Schema.String),
+    columnMappings: Schema.optional(
+      Schema.Array(
+        GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKeyForeignKeyColumnMapping,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier: "GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey>;
+  });
 
 export interface GoogleCloudDatacatalogV1SpannerTableSpec {
   /** Output only. The primary key of the table. */
@@ -2158,33 +1832,25 @@ export interface GoogleCloudDatacatalogV1SpannerTableSpec {
   foreignKeys?: Array<GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey>;
 }
 
-export const GoogleCloudDatacatalogV1SpannerTableSpec: Schema.Schema<GoogleCloudDatacatalogV1SpannerTableSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      primaryKey: Schema.optional(
-        GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey,
-      ),
-      foreignKeys: Schema.optional(
-        Schema.Array(GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1SpannerTableSpec",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1SpannerTableSpec>;
+export const GoogleCloudDatacatalogV1SpannerTableSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    primaryKey: Schema.optional(
+      GoogleCloudDatacatalogV1SpannerTableSpecSpannerPrimaryKey,
+    ),
+    foreignKeys: Schema.optional(
+      Schema.Array(GoogleCloudDatacatalogV1SpannerTableSpecSpannerForeignKey),
+    ),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1SpannerTableSpec" });
 
 export interface GoogleCloudDatacatalogV1EntryOverview {
   /** Entry overview with support for rich text. The overview must only contain Unicode characters, and should be formatted using HTML. The maximum length is 10 MiB as this value holds HTML descriptions including encoded images. The maximum length of the text without images is 100 KiB. */
   overview?: string;
 }
 
-export const GoogleCloudDatacatalogV1EntryOverview: Schema.Schema<GoogleCloudDatacatalogV1EntryOverview> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      overview: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1EntryOverview",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1EntryOverview>;
+export const GoogleCloudDatacatalogV1EntryOverview =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    overview: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1EntryOverview" });
 
 export interface GoogleCloudDatacatalogV1ContactsPerson {
   /** Designation of the person, for example, Data Steward. */
@@ -2193,31 +1859,23 @@ export interface GoogleCloudDatacatalogV1ContactsPerson {
   email?: string;
 }
 
-export const GoogleCloudDatacatalogV1ContactsPerson: Schema.Schema<GoogleCloudDatacatalogV1ContactsPerson> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      designation: Schema.optional(Schema.String),
-      email: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1ContactsPerson",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1ContactsPerson>;
+export const GoogleCloudDatacatalogV1ContactsPerson =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    designation: Schema.optional(Schema.String),
+    email: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1ContactsPerson" });
 
 export interface GoogleCloudDatacatalogV1Contacts {
   /** The list of contact people for the entry. */
   people?: Array<GoogleCloudDatacatalogV1ContactsPerson>;
 }
 
-export const GoogleCloudDatacatalogV1Contacts: Schema.Schema<GoogleCloudDatacatalogV1Contacts> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      people: Schema.optional(
-        Schema.Array(GoogleCloudDatacatalogV1ContactsPerson),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1Contacts",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1Contacts>;
+export const GoogleCloudDatacatalogV1Contacts =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    people: Schema.optional(
+      Schema.Array(GoogleCloudDatacatalogV1ContactsPerson),
+    ),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1Contacts" });
 
 export interface GoogleCloudDatacatalogV1BusinessContext {
   /** Entry overview fields for rich text descriptions of entries. */
@@ -2226,15 +1884,11 @@ export interface GoogleCloudDatacatalogV1BusinessContext {
   contacts?: GoogleCloudDatacatalogV1Contacts;
 }
 
-export const GoogleCloudDatacatalogV1BusinessContext: Schema.Schema<GoogleCloudDatacatalogV1BusinessContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entryOverview: Schema.optional(GoogleCloudDatacatalogV1EntryOverview),
-      contacts: Schema.optional(GoogleCloudDatacatalogV1Contacts),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1BusinessContext",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1BusinessContext>;
+export const GoogleCloudDatacatalogV1BusinessContext =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entryOverview: Schema.optional(GoogleCloudDatacatalogV1EntryOverview),
+    contacts: Schema.optional(GoogleCloudDatacatalogV1Contacts),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1BusinessContext" });
 
 export interface GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec {
   /** Looker specific column type of this column. */
@@ -2248,28 +1902,24 @@ export interface GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec {
     | (string & {});
 }
 
-export const GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec: Schema.Schema<GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1ColumnSchemaLookerColumnSpec>;
+  });
 
 export interface GoogleCloudDatacatalogV1ColumnSchemaFieldElementType {
   /** Required. The type of a field element. See ColumnSchema.type. */
   type?: string;
 }
 
-export const GoogleCloudDatacatalogV1ColumnSchemaFieldElementType: Schema.Schema<GoogleCloudDatacatalogV1ColumnSchemaFieldElementType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDatacatalogV1ColumnSchemaFieldElementType =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDatacatalogV1ColumnSchemaFieldElementType",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1ColumnSchemaFieldElementType>;
+  });
 
 export interface GoogleCloudDatacatalogV1ColumnSchema {
   /** Required. Name of the column. Must be a UTF-8 string without dots (.). The maximum size is 64 bytes. */
@@ -2332,16 +1982,12 @@ export interface GoogleCloudDatacatalogV1Schema {
   columns?: Array<GoogleCloudDatacatalogV1ColumnSchema>;
 }
 
-export const GoogleCloudDatacatalogV1Schema: Schema.Schema<GoogleCloudDatacatalogV1Schema> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      columns: Schema.optional(
-        Schema.Array(GoogleCloudDatacatalogV1ColumnSchema),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1Schema",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1Schema>;
+export const GoogleCloudDatacatalogV1Schema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    columns: Schema.optional(
+      Schema.Array(GoogleCloudDatacatalogV1ColumnSchema),
+    ),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1Schema" });
 
 export interface GoogleCloudDatacatalogV1UsageStats {
   /** The number of successful uses of the underlying entry. */
@@ -2354,31 +2000,23 @@ export interface GoogleCloudDatacatalogV1UsageStats {
   totalExecutionTimeForCompletionsMillis?: number;
 }
 
-export const GoogleCloudDatacatalogV1UsageStats: Schema.Schema<GoogleCloudDatacatalogV1UsageStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      totalCompletions: Schema.optional(Schema.Number),
-      totalFailures: Schema.optional(Schema.Number),
-      totalCancellations: Schema.optional(Schema.Number),
-      totalExecutionTimeForCompletionsMillis: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1UsageStats",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1UsageStats>;
+export const GoogleCloudDatacatalogV1UsageStats =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    totalCompletions: Schema.optional(Schema.Number),
+    totalFailures: Schema.optional(Schema.Number),
+    totalCancellations: Schema.optional(Schema.Number),
+    totalExecutionTimeForCompletionsMillis: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1UsageStats" });
 
 export interface GoogleCloudDatacatalogV1CommonUsageStats {
   /** View count in source system. */
   viewCount?: string;
 }
 
-export const GoogleCloudDatacatalogV1CommonUsageStats: Schema.Schema<GoogleCloudDatacatalogV1CommonUsageStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      viewCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1CommonUsageStats",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1CommonUsageStats>;
+export const GoogleCloudDatacatalogV1CommonUsageStats =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    viewCount: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1CommonUsageStats" });
 
 export interface GoogleCloudDatacatalogV1UsageSignal {
   /** The end timestamp of the duration of usage statistics. */
@@ -2394,21 +2032,17 @@ export interface GoogleCloudDatacatalogV1UsageSignal {
   favoriteCount?: string;
 }
 
-export const GoogleCloudDatacatalogV1UsageSignal: Schema.Schema<GoogleCloudDatacatalogV1UsageSignal> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateTime: Schema.optional(Schema.String),
-      usageWithinTimeRange: Schema.optional(
-        Schema.Record(Schema.String, GoogleCloudDatacatalogV1UsageStats),
-      ),
-      commonUsageWithinTimeRange: Schema.optional(
-        Schema.Record(Schema.String, GoogleCloudDatacatalogV1CommonUsageStats),
-      ),
-      favoriteCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1UsageSignal",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1UsageSignal>;
+export const GoogleCloudDatacatalogV1UsageSignal =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateTime: Schema.optional(Schema.String),
+    usageWithinTimeRange: Schema.optional(
+      Schema.Record(Schema.String, GoogleCloudDatacatalogV1UsageStats),
+    ),
+    commonUsageWithinTimeRange: Schema.optional(
+      Schema.Record(Schema.String, GoogleCloudDatacatalogV1CommonUsageStats),
+    ),
+    favoriteCount: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1UsageSignal" });
 
 export interface GoogleCloudDatacatalogV1StorageProperties {
   /** Patterns to identify a set of files for this fileset. Examples of a valid `file_pattern`: * `gs://bucket_name/dir/*`: matches all files in the `bucket_name/dir` directory * `gs://bucket_name/dir/**`: matches all files in the `bucket_name/dir` and all subdirectories recursively * `gs://bucket_name/file*`: matches files prefixed by `file` in `bucket_name` * `gs://bucket_name/??.txt`: matches files with two characters followed by `.txt` in `bucket_name` * `gs://bucket_name/[aeiou].txt`: matches files that contain a single vowel character followed by `.txt` in `bucket_name` * `gs://bucket_name/[a-m].txt`: matches files that contain `a`, `b`, ... or `m` followed by `.txt` in `bucket_name` * `gs://bucket_name/a/* /b`: matches all files in `bucket_name` that match the `a/* /b` pattern, such as `a/c/b`, `a/d/b` * `gs://another_bucket/a.txt`: matches `gs://another_bucket/a.txt` */
@@ -2417,15 +2051,11 @@ export interface GoogleCloudDatacatalogV1StorageProperties {
   fileType?: string;
 }
 
-export const GoogleCloudDatacatalogV1StorageProperties: Schema.Schema<GoogleCloudDatacatalogV1StorageProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filePattern: Schema.optional(Schema.Array(Schema.String)),
-      fileType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1StorageProperties",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1StorageProperties>;
+export const GoogleCloudDatacatalogV1StorageProperties =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filePattern: Schema.optional(Schema.Array(Schema.String)),
+    fileType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1StorageProperties" });
 
 export interface GoogleCloudDatacatalogV1DataSource {
   /** Service that physically stores the data. */
@@ -2442,19 +2072,15 @@ export interface GoogleCloudDatacatalogV1DataSource {
   storageProperties?: GoogleCloudDatacatalogV1StorageProperties;
 }
 
-export const GoogleCloudDatacatalogV1DataSource: Schema.Schema<GoogleCloudDatacatalogV1DataSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      service: Schema.optional(Schema.String),
-      resource: Schema.optional(Schema.String),
-      sourceEntry: Schema.optional(Schema.String),
-      storageProperties: Schema.optional(
-        GoogleCloudDatacatalogV1StorageProperties,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1DataSource",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1DataSource>;
+export const GoogleCloudDatacatalogV1DataSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    service: Schema.optional(Schema.String),
+    resource: Schema.optional(Schema.String),
+    sourceEntry: Schema.optional(Schema.String),
+    storageProperties: Schema.optional(
+      GoogleCloudDatacatalogV1StorageProperties,
+    ),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1DataSource" });
 
 export interface GoogleCloudDatacatalogV1PersonalDetails {
   /** True if the entry is starred by the user; false otherwise. */
@@ -2463,15 +2089,11 @@ export interface GoogleCloudDatacatalogV1PersonalDetails {
   starTime?: string;
 }
 
-export const GoogleCloudDatacatalogV1PersonalDetails: Schema.Schema<GoogleCloudDatacatalogV1PersonalDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      starred: Schema.optional(Schema.Boolean),
-      starTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1PersonalDetails",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1PersonalDetails>;
+export const GoogleCloudDatacatalogV1PersonalDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    starred: Schema.optional(Schema.Boolean),
+    starTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1PersonalDetails" });
 
 export interface GoogleCloudDatacatalogV1Entry {
   /** Output only. Identifier. The resource name of an entry in URL format. Note: The entry itself and its child resources might not be stored in the location specified in its name. */
@@ -2572,79 +2194,67 @@ export interface GoogleCloudDatacatalogV1Entry {
   personalDetails?: GoogleCloudDatacatalogV1PersonalDetails;
 }
 
-export const GoogleCloudDatacatalogV1Entry: Schema.Schema<GoogleCloudDatacatalogV1Entry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      linkedResource: Schema.optional(Schema.String),
-      fullyQualifiedName: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      userSpecifiedType: Schema.optional(Schema.String),
-      integratedSystem: Schema.optional(Schema.String),
-      userSpecifiedSystem: Schema.optional(Schema.String),
-      sqlDatabaseSystemSpec: Schema.optional(
-        GoogleCloudDatacatalogV1SqlDatabaseSystemSpec,
-      ),
-      lookerSystemSpec: Schema.optional(
-        GoogleCloudDatacatalogV1LookerSystemSpec,
-      ),
-      cloudBigtableSystemSpec: Schema.optional(
-        GoogleCloudDatacatalogV1CloudBigtableSystemSpec,
-      ),
-      gcsFilesetSpec: Schema.optional(GoogleCloudDatacatalogV1GcsFilesetSpec),
-      bigqueryTableSpec: Schema.optional(
-        GoogleCloudDatacatalogV1BigQueryTableSpec,
-      ),
-      bigqueryDateShardedSpec: Schema.optional(
-        GoogleCloudDatacatalogV1BigQueryDateShardedSpec,
-      ),
-      databaseTableSpec: Schema.optional(
-        GoogleCloudDatacatalogV1DatabaseTableSpec,
-      ),
-      dataSourceConnectionSpec: Schema.optional(
-        GoogleCloudDatacatalogV1DataSourceConnectionSpec,
-      ),
-      routineSpec: Schema.optional(GoogleCloudDatacatalogV1RoutineSpec),
-      datasetSpec: Schema.optional(GoogleCloudDatacatalogV1DatasetSpec),
-      filesetSpec: Schema.optional(GoogleCloudDatacatalogV1FilesetSpec),
-      serviceSpec: Schema.optional(GoogleCloudDatacatalogV1ServiceSpec),
-      modelSpec: Schema.optional(GoogleCloudDatacatalogV1ModelSpec),
-      featureOnlineStoreSpec: Schema.optional(
-        GoogleCloudDatacatalogV1FeatureOnlineStoreSpec,
-      ),
-      graphSpec: Schema.optional(GoogleCloudDatacatalogV1GraphSpec),
-      spannerTableSpec: Schema.optional(
-        GoogleCloudDatacatalogV1SpannerTableSpec,
-      ),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      businessContext: Schema.optional(GoogleCloudDatacatalogV1BusinessContext),
-      schema: Schema.optional(GoogleCloudDatacatalogV1Schema),
-      sourceSystemTimestamps: Schema.optional(
-        GoogleCloudDatacatalogV1SystemTimestamps,
-      ),
-      usageSignal: Schema.optional(GoogleCloudDatacatalogV1UsageSignal),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      dataSource: Schema.optional(GoogleCloudDatacatalogV1DataSource),
-      personalDetails: Schema.optional(GoogleCloudDatacatalogV1PersonalDetails),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1Entry",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1Entry>;
+export const GoogleCloudDatacatalogV1Entry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    linkedResource: Schema.optional(Schema.String),
+    fullyQualifiedName: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    userSpecifiedType: Schema.optional(Schema.String),
+    integratedSystem: Schema.optional(Schema.String),
+    userSpecifiedSystem: Schema.optional(Schema.String),
+    sqlDatabaseSystemSpec: Schema.optional(
+      GoogleCloudDatacatalogV1SqlDatabaseSystemSpec,
+    ),
+    lookerSystemSpec: Schema.optional(GoogleCloudDatacatalogV1LookerSystemSpec),
+    cloudBigtableSystemSpec: Schema.optional(
+      GoogleCloudDatacatalogV1CloudBigtableSystemSpec,
+    ),
+    gcsFilesetSpec: Schema.optional(GoogleCloudDatacatalogV1GcsFilesetSpec),
+    bigqueryTableSpec: Schema.optional(
+      GoogleCloudDatacatalogV1BigQueryTableSpec,
+    ),
+    bigqueryDateShardedSpec: Schema.optional(
+      GoogleCloudDatacatalogV1BigQueryDateShardedSpec,
+    ),
+    databaseTableSpec: Schema.optional(
+      GoogleCloudDatacatalogV1DatabaseTableSpec,
+    ),
+    dataSourceConnectionSpec: Schema.optional(
+      GoogleCloudDatacatalogV1DataSourceConnectionSpec,
+    ),
+    routineSpec: Schema.optional(GoogleCloudDatacatalogV1RoutineSpec),
+    datasetSpec: Schema.optional(GoogleCloudDatacatalogV1DatasetSpec),
+    filesetSpec: Schema.optional(GoogleCloudDatacatalogV1FilesetSpec),
+    serviceSpec: Schema.optional(GoogleCloudDatacatalogV1ServiceSpec),
+    modelSpec: Schema.optional(GoogleCloudDatacatalogV1ModelSpec),
+    featureOnlineStoreSpec: Schema.optional(
+      GoogleCloudDatacatalogV1FeatureOnlineStoreSpec,
+    ),
+    graphSpec: Schema.optional(GoogleCloudDatacatalogV1GraphSpec),
+    spannerTableSpec: Schema.optional(GoogleCloudDatacatalogV1SpannerTableSpec),
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    businessContext: Schema.optional(GoogleCloudDatacatalogV1BusinessContext),
+    schema: Schema.optional(GoogleCloudDatacatalogV1Schema),
+    sourceSystemTimestamps: Schema.optional(
+      GoogleCloudDatacatalogV1SystemTimestamps,
+    ),
+    usageSignal: Schema.optional(GoogleCloudDatacatalogV1UsageSignal),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    dataSource: Schema.optional(GoogleCloudDatacatalogV1DataSource),
+    personalDetails: Schema.optional(GoogleCloudDatacatalogV1PersonalDetails),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1Entry" });
 
 export interface GoogleCloudDatacatalogV1TagFieldEnumValue {
   /** The display name of the enum value. */
   displayName?: string;
 }
 
-export const GoogleCloudDatacatalogV1TagFieldEnumValue: Schema.Schema<GoogleCloudDatacatalogV1TagFieldEnumValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1TagFieldEnumValue",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1TagFieldEnumValue>;
+export const GoogleCloudDatacatalogV1TagFieldEnumValue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1TagFieldEnumValue" });
 
 export interface GoogleCloudDatacatalogV1TagField {
   /** Output only. The display name of this field. */
@@ -2665,21 +2275,17 @@ export interface GoogleCloudDatacatalogV1TagField {
   order?: number;
 }
 
-export const GoogleCloudDatacatalogV1TagField: Schema.Schema<GoogleCloudDatacatalogV1TagField> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      doubleValue: Schema.optional(Schema.Number),
-      stringValue: Schema.optional(Schema.String),
-      boolValue: Schema.optional(Schema.Boolean),
-      timestampValue: Schema.optional(Schema.String),
-      enumValue: Schema.optional(GoogleCloudDatacatalogV1TagFieldEnumValue),
-      richtextValue: Schema.optional(Schema.String),
-      order: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1TagField",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1TagField>;
+export const GoogleCloudDatacatalogV1TagField =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    doubleValue: Schema.optional(Schema.Number),
+    stringValue: Schema.optional(Schema.String),
+    boolValue: Schema.optional(Schema.Boolean),
+    timestampValue: Schema.optional(Schema.String),
+    enumValue: Schema.optional(GoogleCloudDatacatalogV1TagFieldEnumValue),
+    richtextValue: Schema.optional(Schema.String),
+    order: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1TagField" });
 
 export interface GoogleCloudDatacatalogV1Tag {
   /** Identifier. The resource name of the tag in URL format where tag ID is a system-generated identifier. Note: The tag itself might not be stored in the location specified in its name. */
@@ -2700,21 +2306,17 @@ export interface GoogleCloudDatacatalogV1Tag {
     | (string & {});
 }
 
-export const GoogleCloudDatacatalogV1Tag: Schema.Schema<GoogleCloudDatacatalogV1Tag> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      template: Schema.optional(Schema.String),
-      templateDisplayName: Schema.optional(Schema.String),
-      column: Schema.optional(Schema.String),
-      fields: Schema.optional(
-        Schema.Record(Schema.String, GoogleCloudDatacatalogV1TagField),
-      ),
-      dataplexTransferStatus: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1Tag",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1Tag>;
+export const GoogleCloudDatacatalogV1Tag =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    template: Schema.optional(Schema.String),
+    templateDisplayName: Schema.optional(Schema.String),
+    column: Schema.optional(Schema.String),
+    fields: Schema.optional(
+      Schema.Record(Schema.String, GoogleCloudDatacatalogV1TagField),
+    ),
+    dataplexTransferStatus: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1Tag" });
 
 export interface GoogleCloudDatacatalogV1TaggedEntry {
   /** Non-encrypted Data Catalog v1 Entry. */
@@ -2725,30 +2327,22 @@ export interface GoogleCloudDatacatalogV1TaggedEntry {
   absentTags?: Array<GoogleCloudDatacatalogV1Tag>;
 }
 
-export const GoogleCloudDatacatalogV1TaggedEntry: Schema.Schema<GoogleCloudDatacatalogV1TaggedEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      v1Entry: Schema.optional(GoogleCloudDatacatalogV1Entry),
-      presentTags: Schema.optional(Schema.Array(GoogleCloudDatacatalogV1Tag)),
-      absentTags: Schema.optional(Schema.Array(GoogleCloudDatacatalogV1Tag)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1TaggedEntry",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1TaggedEntry>;
+export const GoogleCloudDatacatalogV1TaggedEntry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    v1Entry: Schema.optional(GoogleCloudDatacatalogV1Entry),
+    presentTags: Schema.optional(Schema.Array(GoogleCloudDatacatalogV1Tag)),
+    absentTags: Schema.optional(Schema.Array(GoogleCloudDatacatalogV1Tag)),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1TaggedEntry" });
 
 export interface GoogleCloudDatacatalogV1DumpItem {
   /** Entry and its tags. */
   taggedEntry?: GoogleCloudDatacatalogV1TaggedEntry;
 }
 
-export const GoogleCloudDatacatalogV1DumpItem: Schema.Schema<GoogleCloudDatacatalogV1DumpItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      taggedEntry: Schema.optional(GoogleCloudDatacatalogV1TaggedEntry),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogV1DumpItem",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogV1DumpItem>;
+export const GoogleCloudDatacatalogV1DumpItem =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    taggedEntry: Schema.optional(GoogleCloudDatacatalogV1TaggedEntry),
+  }).annotate({ identifier: "GoogleCloudDatacatalogV1DumpItem" });
 
 // ==========================================================================
 // Operations

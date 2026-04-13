@@ -27,28 +27,18 @@ export interface BucketReference {
   bucket?: string;
 }
 
-export const BucketReference: Schema.Schema<BucketReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bucket: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BucketReference",
-  }) as any as Schema.Schema<BucketReference>;
+export const BucketReference = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bucket: Schema.optional(Schema.String),
+}).annotate({ identifier: "BucketReference" });
 
 export interface ExistingLustreConfig {
   /** Required. Immutable. Name of the Managed Lustre instance to import, in the format `projects/{project}/locations/{location}/instances/{instance}` */
   lustre?: string;
 }
 
-export const ExistingLustreConfig: Schema.Schema<ExistingLustreConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lustre: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ExistingLustreConfig",
-  }) as any as Schema.Schema<ExistingLustreConfig>;
+export const ExistingLustreConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  lustre: Schema.optional(Schema.String),
+}).annotate({ identifier: "ExistingLustreConfig" });
 
 export interface BootDisk {
   /** Required. Immutable. [Persistent disk type](https://cloud.google.com/compute/docs/disks#disk-types), in the format `projects/{project}/zones/{zone}/diskTypes/{disk_type}`. */
@@ -57,13 +47,10 @@ export interface BootDisk {
   sizeGb?: string;
 }
 
-export const BootDisk: Schema.Schema<BootDisk> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      sizeGb: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "BootDisk" }) as any as Schema.Schema<BootDisk>;
+export const BootDisk = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  sizeGb: Schema.optional(Schema.String),
+}).annotate({ identifier: "BootDisk" });
 
 export interface NewSpotInstancesConfig {
   /** Required. Immutable. Name of the Compute Engine [machine type](https://cloud.google.com/compute/docs/machine-resource) to use, e.g. `n2-standard-2`. */
@@ -78,16 +65,13 @@ export interface NewSpotInstancesConfig {
     | (string & {});
 }
 
-export const NewSpotInstancesConfig: Schema.Schema<NewSpotInstancesConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      machineType: Schema.optional(Schema.String),
-      zone: Schema.optional(Schema.String),
-      terminationAction: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NewSpotInstancesConfig",
-  }) as any as Schema.Schema<NewSpotInstancesConfig>;
+export const NewSpotInstancesConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    machineType: Schema.optional(Schema.String),
+    zone: Schema.optional(Schema.String),
+    terminationAction: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "NewSpotInstancesConfig" });
 
 export interface SlurmPartition {
   /** Required. IDs of the nodesets that make up this partition. Values must match SlurmNodeSet.id. */
@@ -96,15 +80,10 @@ export interface SlurmPartition {
   id?: string;
 }
 
-export const SlurmPartition: Schema.Schema<SlurmPartition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nodeSetIds: Schema.optional(Schema.Array(Schema.String)),
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SlurmPartition",
-  }) as any as Schema.Schema<SlurmPartition>;
+export const SlurmPartition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nodeSetIds: Schema.optional(Schema.Array(Schema.String)),
+  id: Schema.optional(Schema.String),
+}).annotate({ identifier: "SlurmPartition" });
 
 export interface ComputeInstanceSlurmNodeSet {
   /** Optional. Boot disk for the compute instance */
@@ -115,16 +94,12 @@ export interface ComputeInstanceSlurmNodeSet {
   startupScript?: string;
 }
 
-export const ComputeInstanceSlurmNodeSet: Schema.Schema<ComputeInstanceSlurmNodeSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bootDisk: Schema.optional(BootDisk),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      startupScript: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ComputeInstanceSlurmNodeSet",
-  }) as any as Schema.Schema<ComputeInstanceSlurmNodeSet>;
+export const ComputeInstanceSlurmNodeSet =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bootDisk: Schema.optional(BootDisk),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    startupScript: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ComputeInstanceSlurmNodeSet" });
 
 export interface StorageConfig {
   /** Required. ID of the storage resource to mount, which must match a key in the cluster's storage_resources. */
@@ -133,15 +108,10 @@ export interface StorageConfig {
   localMount?: string;
 }
 
-export const StorageConfig: Schema.Schema<StorageConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      localMount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StorageConfig",
-  }) as any as Schema.Schema<StorageConfig>;
+export const StorageConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  localMount: Schema.optional(Schema.String),
+}).annotate({ identifier: "StorageConfig" });
 
 export interface SlurmNodeSet {
   /** Optional. Number of nodes to be statically created for this nodeset. The cluster will attempt to ensure that at least this many nodes exist at all times. */
@@ -158,33 +128,23 @@ export interface SlurmNodeSet {
   storageConfigs?: Array<StorageConfig>;
 }
 
-export const SlurmNodeSet: Schema.Schema<SlurmNodeSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      staticNodeCount: Schema.optional(Schema.String),
-      computeInstance: Schema.optional(ComputeInstanceSlurmNodeSet),
-      id: Schema.optional(Schema.String),
-      maxDynamicNodeCount: Schema.optional(Schema.String),
-      computeId: Schema.optional(Schema.String),
-      storageConfigs: Schema.optional(Schema.Array(StorageConfig)),
-    }),
-  ).annotate({
-    identifier: "SlurmNodeSet",
-  }) as any as Schema.Schema<SlurmNodeSet>;
+export const SlurmNodeSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  staticNodeCount: Schema.optional(Schema.String),
+  computeInstance: Schema.optional(ComputeInstanceSlurmNodeSet),
+  id: Schema.optional(Schema.String),
+  maxDynamicNodeCount: Schema.optional(Schema.String),
+  computeId: Schema.optional(Schema.String),
+  storageConfigs: Schema.optional(Schema.Array(StorageConfig)),
+}).annotate({ identifier: "SlurmNodeSet" });
 
 export interface ComputeInstance {
   /** Output only. Name of the VM instance, in the format `projects/{project}/zones/{zone}/instances/{instance}`. */
   instance?: string;
 }
 
-export const ComputeInstance: Schema.Schema<ComputeInstance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      instance: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ComputeInstance",
-  }) as any as Schema.Schema<ComputeInstance>;
+export const ComputeInstance = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  instance: Schema.optional(Schema.String),
+}).annotate({ identifier: "ComputeInstance" });
 
 export interface SlurmLoginNodes {
   /** Required. Number of login node instances to create. */
@@ -209,23 +169,18 @@ export interface SlurmLoginNodes {
   machineType?: string;
 }
 
-export const SlurmLoginNodes: Schema.Schema<SlurmLoginNodes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      count: Schema.optional(Schema.String),
-      startupScript: Schema.optional(Schema.String),
-      storageConfigs: Schema.optional(Schema.Array(StorageConfig)),
-      enableOsLogin: Schema.optional(Schema.Boolean),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      bootDisk: Schema.optional(BootDisk),
-      instances: Schema.optional(Schema.Array(ComputeInstance)),
-      zone: Schema.optional(Schema.String),
-      enablePublicIps: Schema.optional(Schema.Boolean),
-      machineType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SlurmLoginNodes",
-  }) as any as Schema.Schema<SlurmLoginNodes>;
+export const SlurmLoginNodes = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  count: Schema.optional(Schema.String),
+  startupScript: Schema.optional(Schema.String),
+  storageConfigs: Schema.optional(Schema.Array(StorageConfig)),
+  enableOsLogin: Schema.optional(Schema.Boolean),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  bootDisk: Schema.optional(BootDisk),
+  instances: Schema.optional(Schema.Array(ComputeInstance)),
+  zone: Schema.optional(Schema.String),
+  enablePublicIps: Schema.optional(Schema.Boolean),
+  machineType: Schema.optional(Schema.String),
+}).annotate({ identifier: "SlurmLoginNodes" });
 
 export interface SlurmOrchestrator {
   /** Optional. Configuration for the Slurm partitions in your cluster. Each partition can contain one or more nodesets, and you can submit separate jobs on each partition. If you don't specify at least one partition in your cluster, you can't submit jobs to the cluster. */
@@ -242,33 +197,23 @@ export interface SlurmOrchestrator {
   prologBashScripts?: Array<string>;
 }
 
-export const SlurmOrchestrator: Schema.Schema<SlurmOrchestrator> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      partitions: Schema.optional(Schema.Array(SlurmPartition)),
-      nodeSets: Schema.optional(Schema.Array(SlurmNodeSet)),
-      loginNodes: Schema.optional(SlurmLoginNodes),
-      defaultPartition: Schema.optional(Schema.String),
-      epilogBashScripts: Schema.optional(Schema.Array(Schema.String)),
-      prologBashScripts: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "SlurmOrchestrator",
-  }) as any as Schema.Schema<SlurmOrchestrator>;
+export const SlurmOrchestrator = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  partitions: Schema.optional(Schema.Array(SlurmPartition)),
+  nodeSets: Schema.optional(Schema.Array(SlurmNodeSet)),
+  loginNodes: Schema.optional(SlurmLoginNodes),
+  defaultPartition: Schema.optional(Schema.String),
+  epilogBashScripts: Schema.optional(Schema.Array(Schema.String)),
+  prologBashScripts: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "SlurmOrchestrator" });
 
 export interface Orchestrator {
   /** Optional. If set, indicates that the cluster should use Slurm as the orchestrator. */
   slurm?: SlurmOrchestrator;
 }
 
-export const Orchestrator: Schema.Schema<Orchestrator> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      slurm: Schema.optional(SlurmOrchestrator),
-    }),
-  ).annotate({
-    identifier: "Orchestrator",
-  }) as any as Schema.Schema<Orchestrator>;
+export const Orchestrator = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  slurm: Schema.optional(SlurmOrchestrator),
+}).annotate({ identifier: "Orchestrator" });
 
 export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -279,16 +224,13 @@ export interface Status {
   code?: number;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      code: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  code: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
@@ -303,16 +245,13 @@ export interface Operation {
   name?: string;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      done: Schema.optional(Schema.Boolean),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      error: Schema.optional(Status),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  done: Schema.optional(Schema.Boolean),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  error: Schema.optional(Status),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Operation" });
 
 export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
@@ -323,30 +262,22 @@ export interface ListOperationsResponse {
   nextPageToken?: string;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      operations: Schema.optional(Schema.Array(Operation)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    operations: Schema.optional(Schema.Array(Operation)),
+    nextPageToken: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 export interface CreateStorageBucket {
   /** Output only. Name of the bucket. */
   bucket?: string;
 }
 
-export const CreateStorageBucket: Schema.Schema<CreateStorageBucket> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bucket: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreateStorageBucket",
-  }) as any as Schema.Schema<CreateStorageBucket>;
+export const CreateStorageBucket = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bucket: Schema.optional(Schema.String),
+}).annotate({ identifier: "CreateStorageBucket" });
 
 export interface FileShareConfig {
   /** Required. Size of the filestore in GB. Must be between 1024 and 102400, and must meet scalability requirements described at https://cloud.google.com/filestore/docs/service-tiers. */
@@ -355,15 +286,10 @@ export interface FileShareConfig {
   fileShare?: string;
 }
 
-export const FileShareConfig: Schema.Schema<FileShareConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      capacityGb: Schema.optional(Schema.String),
-      fileShare: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FileShareConfig",
-  }) as any as Schema.Schema<FileShareConfig>;
+export const FileShareConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  capacityGb: Schema.optional(Schema.String),
+  fileShare: Schema.optional(Schema.String),
+}).annotate({ identifier: "FileShareConfig" });
 
 export interface NewFilestoreConfig {
   /** Required. Immutable. Name of the Filestore instance to create, in the format `projects/{project}/locations/{location}/instances/{instance}` */
@@ -378,32 +304,22 @@ export interface NewFilestoreConfig {
   protocol?: "PROTOCOL_UNSPECIFIED" | "NFSV3" | "NFSV41" | (string & {});
 }
 
-export const NewFilestoreConfig: Schema.Schema<NewFilestoreConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filestore: Schema.optional(Schema.String),
-      tier: Schema.optional(Schema.String),
-      fileShares: Schema.optional(Schema.Array(FileShareConfig)),
-      description: Schema.optional(Schema.String),
-      protocol: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NewFilestoreConfig",
-  }) as any as Schema.Schema<NewFilestoreConfig>;
+export const NewFilestoreConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  filestore: Schema.optional(Schema.String),
+  tier: Schema.optional(Schema.String),
+  fileShares: Schema.optional(Schema.Array(FileShareConfig)),
+  description: Schema.optional(Schema.String),
+  protocol: Schema.optional(Schema.String),
+}).annotate({ identifier: "NewFilestoreConfig" });
 
 export interface DeleteNetwork {
   /** Output only. Name of the network to delete, in the format `projects/{project}/global/networks/{network}`. */
   network?: string;
 }
 
-export const DeleteNetwork: Schema.Schema<DeleteNetwork> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      network: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DeleteNetwork",
-  }) as any as Schema.Schema<DeleteNetwork>;
+export const DeleteNetwork = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  network: Schema.optional(Schema.String),
+}).annotate({ identifier: "DeleteNetwork" });
 
 export interface NewOnDemandInstancesConfig {
   /** Required. Immutable. Name of the zone in which VM instances should run, e.g., `us-central1-a`. Must be in the same region as the cluster, and must match the zone of any other resources specified in the cluster. */
@@ -412,29 +328,21 @@ export interface NewOnDemandInstancesConfig {
   machineType?: string;
 }
 
-export const NewOnDemandInstancesConfig: Schema.Schema<NewOnDemandInstancesConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      zone: Schema.optional(Schema.String),
-      machineType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NewOnDemandInstancesConfig",
-  }) as any as Schema.Schema<NewOnDemandInstancesConfig>;
+export const NewOnDemandInstancesConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zone: Schema.optional(Schema.String),
+    machineType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "NewOnDemandInstancesConfig" });
 
 export interface NewReservedInstancesConfig {
   /** Optional. Immutable. Name of the reservation from which VM instances should be created, in the format `projects/{project}/zones/{zone}/reservations/{reservation}`. */
   reservation?: string;
 }
 
-export const NewReservedInstancesConfig: Schema.Schema<NewReservedInstancesConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reservation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NewReservedInstancesConfig",
-  }) as any as Schema.Schema<NewReservedInstancesConfig>;
+export const NewReservedInstancesConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reservation: Schema.optional(Schema.String),
+  }).annotate({ identifier: "NewReservedInstancesConfig" });
 
 export interface NewFlexStartInstancesConfig {
   /** Required. Immutable. Name of the zone in which VM instances should run, e.g., `us-central1-a`. Must be in the same region as the cluster, and must match the zone of any other resources specified in the cluster. */
@@ -445,16 +353,12 @@ export interface NewFlexStartInstancesConfig {
   maxDuration?: string;
 }
 
-export const NewFlexStartInstancesConfig: Schema.Schema<NewFlexStartInstancesConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      zone: Schema.optional(Schema.String),
-      machineType: Schema.optional(Schema.String),
-      maxDuration: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NewFlexStartInstancesConfig",
-  }) as any as Schema.Schema<NewFlexStartInstancesConfig>;
+export const NewFlexStartInstancesConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    zone: Schema.optional(Schema.String),
+    machineType: Schema.optional(Schema.String),
+    maxDuration: Schema.optional(Schema.String),
+  }).annotate({ identifier: "NewFlexStartInstancesConfig" });
 
 export interface ComputeResourceConfig {
   /** Optional. Immutable. If set, indicates that this resource should use on-demand VMs. */
@@ -467,31 +371,21 @@ export interface ComputeResourceConfig {
   newFlexStartInstances?: NewFlexStartInstancesConfig;
 }
 
-export const ComputeResourceConfig: Schema.Schema<ComputeResourceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      newOnDemandInstances: Schema.optional(NewOnDemandInstancesConfig),
-      newReservedInstances: Schema.optional(NewReservedInstancesConfig),
-      newSpotInstances: Schema.optional(NewSpotInstancesConfig),
-      newFlexStartInstances: Schema.optional(NewFlexStartInstancesConfig),
-    }),
-  ).annotate({
-    identifier: "ComputeResourceConfig",
-  }) as any as Schema.Schema<ComputeResourceConfig>;
+export const ComputeResourceConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  newOnDemandInstances: Schema.optional(NewOnDemandInstancesConfig),
+  newReservedInstances: Schema.optional(NewReservedInstancesConfig),
+  newSpotInstances: Schema.optional(NewSpotInstancesConfig),
+  newFlexStartInstances: Schema.optional(NewFlexStartInstancesConfig),
+}).annotate({ identifier: "ComputeResourceConfig" });
 
 export interface ComputeResource {
   /** Required. Immutable. Configuration for this compute resource, which describes how it should be created at runtime. */
   config?: ComputeResourceConfig;
 }
 
-export const ComputeResource: Schema.Schema<ComputeResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      config: Schema.optional(ComputeResourceConfig),
-    }),
-  ).annotate({
-    identifier: "ComputeResource",
-  }) as any as Schema.Schema<ComputeResource>;
+export const ComputeResource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  config: Schema.optional(ComputeResourceConfig),
+}).annotate({ identifier: "ComputeResource" });
 
 export interface NewNetworkConfig {
   /** Required. Immutable. Name of the network to create, in the format `projects/{project}/global/networks/{network}`. */
@@ -500,85 +394,56 @@ export interface NewNetworkConfig {
   description?: string;
 }
 
-export const NewNetworkConfig: Schema.Schema<NewNetworkConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      network: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NewNetworkConfig",
-  }) as any as Schema.Schema<NewNetworkConfig>;
+export const NewNetworkConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  network: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "NewNetworkConfig" });
 
 export interface CreatePartition {
   /** Output only. Name of the partition to create */
   partitions?: Array<string>;
 }
 
-export const CreatePartition: Schema.Schema<CreatePartition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      partitions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "CreatePartition",
-  }) as any as Schema.Schema<CreatePartition>;
+export const CreatePartition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  partitions: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "CreatePartition" });
 
 export interface CreateLustreInstance {
   /** Output only. Name of the Managed Lustre instance, in the format `projects/{project}/locations/{location}/instances/{instance}` */
   lustre?: string;
 }
 
-export const CreateLustreInstance: Schema.Schema<CreateLustreInstance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lustre: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreateLustreInstance",
-  }) as any as Schema.Schema<CreateLustreInstance>;
+export const CreateLustreInstance = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  lustre: Schema.optional(Schema.String),
+}).annotate({ identifier: "CreateLustreInstance" });
 
 export interface DeleteLustreInstance {
   /** Output only. Name of the Managed Lustre instance, in the format `projects/{project}/locations/{location}/instances/{instance}` */
   lustre?: string;
 }
 
-export const DeleteLustreInstance: Schema.Schema<DeleteLustreInstance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lustre: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DeleteLustreInstance",
-  }) as any as Schema.Schema<DeleteLustreInstance>;
+export const DeleteLustreInstance = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  lustre: Schema.optional(Schema.String),
+}).annotate({ identifier: "DeleteLustreInstance" });
 
 export interface FilestoreReference {
   /** Output only. Name of the Filestore instance, in the format `projects/{project}/locations/{location}/instances/{instance}` */
   filestore?: string;
 }
 
-export const FilestoreReference: Schema.Schema<FilestoreReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filestore: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FilestoreReference",
-  }) as any as Schema.Schema<FilestoreReference>;
+export const FilestoreReference = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  filestore: Schema.optional(Schema.String),
+}).annotate({ identifier: "FilestoreReference" });
 
 export interface GcsHierarchicalNamespaceConfig {
   /** Required. Enables hierarchical namespace setup for the bucket. */
   enabled?: boolean;
 }
 
-export const GcsHierarchicalNamespaceConfig: Schema.Schema<GcsHierarchicalNamespaceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GcsHierarchicalNamespaceConfig",
-  }) as any as Schema.Schema<GcsHierarchicalNamespaceConfig>;
+export const GcsHierarchicalNamespaceConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GcsHierarchicalNamespaceConfig" });
 
 export interface GcsAutoclassConfig {
   /** Required. Enables Auto-class feature. */
@@ -587,15 +452,10 @@ export interface GcsAutoclassConfig {
   terminalStorageClass?: "TERMINAL_STORAGE_CLASS_UNSPECIFIED" | (string & {});
 }
 
-export const GcsAutoclassConfig: Schema.Schema<GcsAutoclassConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-      terminalStorageClass: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GcsAutoclassConfig",
-  }) as any as Schema.Schema<GcsAutoclassConfig>;
+export const GcsAutoclassConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabled: Schema.optional(Schema.Boolean),
+  terminalStorageClass: Schema.optional(Schema.String),
+}).annotate({ identifier: "GcsAutoclassConfig" });
 
 export interface NewBucketConfig {
   /** Optional. Immutable. If set, indicates that the bucket should use [hierarchical namespaces](https://cloud.google.com/storage/docs/hns-overview). */
@@ -614,17 +474,12 @@ export interface NewBucketConfig {
     | (string & {});
 }
 
-export const NewBucketConfig: Schema.Schema<NewBucketConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hierarchicalNamespace: Schema.optional(GcsHierarchicalNamespaceConfig),
-      autoclass: Schema.optional(GcsAutoclassConfig),
-      bucket: Schema.optional(Schema.String),
-      storageClass: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NewBucketConfig",
-  }) as any as Schema.Schema<NewBucketConfig>;
+export const NewBucketConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  hierarchicalNamespace: Schema.optional(GcsHierarchicalNamespaceConfig),
+  autoclass: Schema.optional(GcsAutoclassConfig),
+  bucket: Schema.optional(Schema.String),
+  storageClass: Schema.optional(Schema.String),
+}).annotate({ identifier: "NewBucketConfig" });
 
 export interface ExistingNetworkConfig {
   /** Required. Immutable. Name of the network to import, in the format `projects/{project}/global/networks/{network}`. */
@@ -633,78 +488,53 @@ export interface ExistingNetworkConfig {
   subnetwork?: string;
 }
 
-export const ExistingNetworkConfig: Schema.Schema<ExistingNetworkConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      network: Schema.optional(Schema.String),
-      subnetwork: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ExistingNetworkConfig",
-  }) as any as Schema.Schema<ExistingNetworkConfig>;
+export const ExistingNetworkConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  network: Schema.optional(Schema.String),
+  subnetwork: Schema.optional(Schema.String),
+}).annotate({ identifier: "ExistingNetworkConfig" });
 
 export interface UpdatePartition {
   /** Output only. Name of the partition to update */
   partitions?: Array<string>;
 }
 
-export const UpdatePartition: Schema.Schema<UpdatePartition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      partitions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "UpdatePartition",
-  }) as any as Schema.Schema<UpdatePartition>;
+export const UpdatePartition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  partitions: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "UpdatePartition" });
 
 export interface CreateOrchestrator {}
 
-export const CreateOrchestrator: Schema.Schema<CreateOrchestrator> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CreateOrchestrator",
-  }) as any as Schema.Schema<CreateOrchestrator>;
+export const CreateOrchestrator = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CreateOrchestrator" });
 
 export interface DeletePartition {
   /** Output only. Name of the partition to delete */
   partitions?: Array<string>;
 }
 
-export const DeletePartition: Schema.Schema<DeletePartition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      partitions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "DeletePartition",
-  }) as any as Schema.Schema<DeletePartition>;
+export const DeletePartition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  partitions: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "DeletePartition" });
 
 export interface ExistingBucketConfig {
   /** Required. Immutable. Name of the Cloud Storage bucket to import. */
   bucket?: string;
 }
 
-export const ExistingBucketConfig: Schema.Schema<ExistingBucketConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bucket: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ExistingBucketConfig",
-  }) as any as Schema.Schema<ExistingBucketConfig>;
+export const ExistingBucketConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bucket: Schema.optional(Schema.String),
+}).annotate({ identifier: "ExistingBucketConfig" });
 
 export interface ExistingFilestoreConfig {
   /** Required. Immutable. Name of the Filestore instance to import, in the format `projects/{project}/locations/{location}/instances/{instance}` */
   filestore?: string;
 }
 
-export const ExistingFilestoreConfig: Schema.Schema<ExistingFilestoreConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filestore: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ExistingFilestoreConfig",
-  }) as any as Schema.Schema<ExistingFilestoreConfig>;
+export const ExistingFilestoreConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filestore: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ExistingFilestoreConfig" });
 
 export interface NewLustreConfig {
   /** Required. Immutable. Filesystem name for this instance. This name is used by client-side tools, including when mounting the instance. Must be 8 characters or less and can only contain letters and numbers. */
@@ -717,17 +547,12 @@ export interface NewLustreConfig {
   description?: string;
 }
 
-export const NewLustreConfig: Schema.Schema<NewLustreConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filesystem: Schema.optional(Schema.String),
-      capacityGb: Schema.optional(Schema.String),
-      lustre: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NewLustreConfig",
-  }) as any as Schema.Schema<NewLustreConfig>;
+export const NewLustreConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  filesystem: Schema.optional(Schema.String),
+  capacityGb: Schema.optional(Schema.String),
+  lustre: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "NewLustreConfig" });
 
 export interface StorageResourceConfig {
   /** Optional. Immutable. If set, indicates that a new Filestore instance should be created. */
@@ -744,19 +569,14 @@ export interface StorageResourceConfig {
   newLustre?: NewLustreConfig;
 }
 
-export const StorageResourceConfig: Schema.Schema<StorageResourceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      newFilestore: Schema.optional(NewFilestoreConfig),
-      newBucket: Schema.optional(NewBucketConfig),
-      existingLustre: Schema.optional(ExistingLustreConfig),
-      existingBucket: Schema.optional(ExistingBucketConfig),
-      existingFilestore: Schema.optional(ExistingFilestoreConfig),
-      newLustre: Schema.optional(NewLustreConfig),
-    }),
-  ).annotate({
-    identifier: "StorageResourceConfig",
-  }) as any as Schema.Schema<StorageResourceConfig>;
+export const StorageResourceConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  newFilestore: Schema.optional(NewFilestoreConfig),
+  newBucket: Schema.optional(NewBucketConfig),
+  existingLustre: Schema.optional(ExistingLustreConfig),
+  existingBucket: Schema.optional(ExistingBucketConfig),
+  existingFilestore: Schema.optional(ExistingFilestoreConfig),
+  newLustre: Schema.optional(NewLustreConfig),
+}).annotate({ identifier: "StorageResourceConfig" });
 
 export interface NetworkResourceConfig {
   /** Optional. Immutable. If set, indicates that a new network should be created. */
@@ -765,15 +585,10 @@ export interface NetworkResourceConfig {
   existingNetwork?: ExistingNetworkConfig;
 }
 
-export const NetworkResourceConfig: Schema.Schema<NetworkResourceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      newNetwork: Schema.optional(NewNetworkConfig),
-      existingNetwork: Schema.optional(ExistingNetworkConfig),
-    }),
-  ).annotate({
-    identifier: "NetworkResourceConfig",
-  }) as any as Schema.Schema<NetworkResourceConfig>;
+export const NetworkResourceConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  newNetwork: Schema.optional(NewNetworkConfig),
+  existingNetwork: Schema.optional(ExistingNetworkConfig),
+}).annotate({ identifier: "NetworkResourceConfig" });
 
 export interface NetworkReference {
   /** Output only. Name of the network, in the format `projects/{project}/global/networks/{network}`. */
@@ -782,169 +597,125 @@ export interface NetworkReference {
   subnetwork?: string;
 }
 
-export const NetworkReference: Schema.Schema<NetworkReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      network: Schema.optional(Schema.String),
-      subnetwork: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NetworkReference",
-  }) as any as Schema.Schema<NetworkReference>;
+export const NetworkReference = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  network: Schema.optional(Schema.String),
+  subnetwork: Schema.optional(Schema.String),
+}).annotate({ identifier: "NetworkReference" });
 
 export interface CheckClusterHealth {}
 
-export const CheckClusterHealth: Schema.Schema<CheckClusterHealth> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CheckClusterHealth",
-  }) as any as Schema.Schema<CheckClusterHealth>;
+export const CheckClusterHealth = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CheckClusterHealth" });
 
 export interface DeleteNodeset {
   /** Output only. Name of the nodeset to delete */
   nodesets?: Array<string>;
 }
 
-export const DeleteNodeset: Schema.Schema<DeleteNodeset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nodesets: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "DeleteNodeset",
-  }) as any as Schema.Schema<DeleteNodeset>;
+export const DeleteNodeset = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nodesets: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "DeleteNodeset" });
 
 export interface UpdateLoginNode {}
 
-export const UpdateLoginNode: Schema.Schema<UpdateLoginNode> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "UpdateLoginNode",
-  }) as any as Schema.Schema<UpdateLoginNode>;
+export const UpdateLoginNode = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "UpdateLoginNode" });
 
 export interface UpdateNodeset {
   /** Output only. Name of the nodeset to update */
   nodesets?: Array<string>;
 }
 
-export const UpdateNodeset: Schema.Schema<UpdateNodeset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nodesets: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "UpdateNodeset",
-  }) as any as Schema.Schema<UpdateNodeset>;
+export const UpdateNodeset = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nodesets: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "UpdateNodeset" });
 
 export interface CreateLoginNode {}
 
-export const CreateLoginNode: Schema.Schema<CreateLoginNode> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CreateLoginNode",
-  }) as any as Schema.Schema<CreateLoginNode>;
+export const CreateLoginNode = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CreateLoginNode" });
 
 export interface DeleteFilestoreInstance {
   /** Output only. Name of the Filestore instance, in the format `projects/{project}/locations/{location}/instances/{instance}` */
   filestore?: string;
 }
 
-export const DeleteFilestoreInstance: Schema.Schema<DeleteFilestoreInstance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filestore: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DeleteFilestoreInstance",
-  }) as any as Schema.Schema<DeleteFilestoreInstance>;
+export const DeleteFilestoreInstance =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filestore: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DeleteFilestoreInstance" });
 
 export interface CreateFilestoreInstance {
   /** Output only. Name of the Filestore instance, in the format `projects/{project}/locations/{location}/instances/{instance}` */
   filestore?: string;
 }
 
-export const CreateFilestoreInstance: Schema.Schema<CreateFilestoreInstance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filestore: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreateFilestoreInstance",
-  }) as any as Schema.Schema<CreateFilestoreInstance>;
+export const CreateFilestoreInstance =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    filestore: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CreateFilestoreInstance" });
 
 export interface DeletePrivateServiceAccess {}
 
-export const DeletePrivateServiceAccess: Schema.Schema<DeletePrivateServiceAccess> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const DeletePrivateServiceAccess =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeletePrivateServiceAccess",
-  }) as any as Schema.Schema<DeletePrivateServiceAccess>;
+  });
 
 export interface CreateNodeset {
   /** Output only. Name of the nodeset to create */
   nodesets?: Array<string>;
 }
 
-export const CreateNodeset: Schema.Schema<CreateNodeset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nodesets: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "CreateNodeset",
-  }) as any as Schema.Schema<CreateNodeset>;
+export const CreateNodeset = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nodesets: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "CreateNodeset" });
 
 export interface CreateNetwork {
   /** Output only. Name of the network to create, in the format `projects/{project}/global/networks/{network}`. */
   network?: string;
 }
 
-export const CreateNetwork: Schema.Schema<CreateNetwork> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      network: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreateNetwork",
-  }) as any as Schema.Schema<CreateNetwork>;
+export const CreateNetwork = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  network: Schema.optional(Schema.String),
+}).annotate({ identifier: "CreateNetwork" });
 
 export interface CreatePrivateServiceAccess {}
 
-export const CreatePrivateServiceAccess: Schema.Schema<CreatePrivateServiceAccess> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const CreatePrivateServiceAccess =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CreatePrivateServiceAccess",
-  }) as any as Schema.Schema<CreatePrivateServiceAccess>;
+  });
 
 export interface UpdateOrchestrator {}
 
-export const UpdateOrchestrator: Schema.Schema<UpdateOrchestrator> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "UpdateOrchestrator",
-  }) as any as Schema.Schema<UpdateOrchestrator>;
+export const UpdateOrchestrator = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "UpdateOrchestrator" });
 
 export interface DeleteStorageBucket {
   /** Output only. Name of the bucket. */
   bucket?: string;
 }
 
-export const DeleteStorageBucket: Schema.Schema<DeleteStorageBucket> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bucket: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DeleteStorageBucket",
-  }) as any as Schema.Schema<DeleteStorageBucket>;
+export const DeleteStorageBucket = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bucket: Schema.optional(Schema.String),
+}).annotate({ identifier: "DeleteStorageBucket" });
 
 export interface DeleteLoginNode {}
 
-export const DeleteLoginNode: Schema.Schema<DeleteLoginNode> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "DeleteLoginNode",
-  }) as any as Schema.Schema<DeleteLoginNode>;
+export const DeleteLoginNode = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "DeleteLoginNode" });
 
 export interface DeleteOrchestrator {}
 
-export const DeleteOrchestrator: Schema.Schema<DeleteOrchestrator> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "DeleteOrchestrator",
-  }) as any as Schema.Schema<DeleteOrchestrator>;
+export const DeleteOrchestrator = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "DeleteOrchestrator" });
 
 export interface OperationStep {
   /** Output only. If set, indicates that Filestore instance deletion is part of the operation. */
@@ -1002,51 +773,41 @@ export interface OperationStep {
   deleteOrchestrator?: DeleteOrchestrator;
 }
 
-export const OperationStep: Schema.Schema<OperationStep> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deleteFilestoreInstance: Schema.optional(DeleteFilestoreInstance),
-      checkClusterHealth: Schema.optional(CheckClusterHealth),
-      createFilestoreInstance: Schema.optional(CreateFilestoreInstance),
-      deletePrivateServiceAccess: Schema.optional(DeletePrivateServiceAccess),
-      updatePartition: Schema.optional(UpdatePartition),
-      deleteNodeset: Schema.optional(DeleteNodeset),
-      state: Schema.optional(Schema.String),
-      createStorageBucket: Schema.optional(CreateStorageBucket),
-      createLustreInstance: Schema.optional(CreateLustreInstance),
-      createPartition: Schema.optional(CreatePartition),
-      updateLoginNode: Schema.optional(UpdateLoginNode),
-      createNodeset: Schema.optional(CreateNodeset),
-      createNetwork: Schema.optional(CreateNetwork),
-      createLoginNode: Schema.optional(CreateLoginNode),
-      deletePartition: Schema.optional(DeletePartition),
-      createPrivateServiceAccess: Schema.optional(CreatePrivateServiceAccess),
-      deleteNetwork: Schema.optional(DeleteNetwork),
-      updateOrchestrator: Schema.optional(UpdateOrchestrator),
-      deleteStorageBucket: Schema.optional(DeleteStorageBucket),
-      createOrchestrator: Schema.optional(CreateOrchestrator),
-      deleteLustreInstance: Schema.optional(DeleteLustreInstance),
-      deleteLoginNode: Schema.optional(DeleteLoginNode),
-      updateNodeset: Schema.optional(UpdateNodeset),
-      deleteOrchestrator: Schema.optional(DeleteOrchestrator),
-    }),
-  ).annotate({
-    identifier: "OperationStep",
-  }) as any as Schema.Schema<OperationStep>;
+export const OperationStep = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  deleteFilestoreInstance: Schema.optional(DeleteFilestoreInstance),
+  checkClusterHealth: Schema.optional(CheckClusterHealth),
+  createFilestoreInstance: Schema.optional(CreateFilestoreInstance),
+  deletePrivateServiceAccess: Schema.optional(DeletePrivateServiceAccess),
+  updatePartition: Schema.optional(UpdatePartition),
+  deleteNodeset: Schema.optional(DeleteNodeset),
+  state: Schema.optional(Schema.String),
+  createStorageBucket: Schema.optional(CreateStorageBucket),
+  createLustreInstance: Schema.optional(CreateLustreInstance),
+  createPartition: Schema.optional(CreatePartition),
+  updateLoginNode: Schema.optional(UpdateLoginNode),
+  createNodeset: Schema.optional(CreateNodeset),
+  createNetwork: Schema.optional(CreateNetwork),
+  createLoginNode: Schema.optional(CreateLoginNode),
+  deletePartition: Schema.optional(DeletePartition),
+  createPrivateServiceAccess: Schema.optional(CreatePrivateServiceAccess),
+  deleteNetwork: Schema.optional(DeleteNetwork),
+  updateOrchestrator: Schema.optional(UpdateOrchestrator),
+  deleteStorageBucket: Schema.optional(DeleteStorageBucket),
+  createOrchestrator: Schema.optional(CreateOrchestrator),
+  deleteLustreInstance: Schema.optional(DeleteLustreInstance),
+  deleteLoginNode: Schema.optional(DeleteLoginNode),
+  updateNodeset: Schema.optional(UpdateNodeset),
+  deleteOrchestrator: Schema.optional(DeleteOrchestrator),
+}).annotate({ identifier: "OperationStep" });
 
 export interface OperationProgress {
   /** Output only. Steps and status of the operation. */
   steps?: Array<OperationStep>;
 }
 
-export const OperationProgress: Schema.Schema<OperationProgress> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      steps: Schema.optional(Schema.Array(OperationStep)),
-    }),
-  ).annotate({
-    identifier: "OperationProgress",
-  }) as any as Schema.Schema<OperationProgress>;
+export const OperationProgress = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  steps: Schema.optional(Schema.Array(OperationStep)),
+}).annotate({ identifier: "OperationProgress" });
 
 export interface NetworkResource {
   /** Output only. Reference to a network in Google Compute Engine. */
@@ -1055,29 +816,19 @@ export interface NetworkResource {
   config?: NetworkResourceConfig;
 }
 
-export const NetworkResource: Schema.Schema<NetworkResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      network: Schema.optional(NetworkReference),
-      config: Schema.optional(NetworkResourceConfig),
-    }),
-  ).annotate({
-    identifier: "NetworkResource",
-  }) as any as Schema.Schema<NetworkResource>;
+export const NetworkResource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  network: Schema.optional(NetworkReference),
+  config: Schema.optional(NetworkResourceConfig),
+}).annotate({ identifier: "NetworkResource" });
 
 export interface LustreReference {
   /** Output only. Name of the Managed Lustre instance, in the format `projects/{project}/locations/{location}/instances/{instance}` */
   lustre?: string;
 }
 
-export const LustreReference: Schema.Schema<LustreReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lustre: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LustreReference",
-  }) as any as Schema.Schema<LustreReference>;
+export const LustreReference = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  lustre: Schema.optional(Schema.String),
+}).annotate({ identifier: "LustreReference" });
 
 export interface StorageResource {
   /** Output only. Reference to a Filestore instance. Populated if and only if the storage resource was configured to use Filestore. */
@@ -1090,17 +841,12 @@ export interface StorageResource {
   bucket?: BucketReference;
 }
 
-export const StorageResource: Schema.Schema<StorageResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filestore: Schema.optional(FilestoreReference),
-      lustre: Schema.optional(LustreReference),
-      config: Schema.optional(StorageResourceConfig),
-      bucket: Schema.optional(BucketReference),
-    }),
-  ).annotate({
-    identifier: "StorageResource",
-  }) as any as Schema.Schema<StorageResource>;
+export const StorageResource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  filestore: Schema.optional(FilestoreReference),
+  lustre: Schema.optional(LustreReference),
+  config: Schema.optional(StorageResourceConfig),
+  bucket: Schema.optional(BucketReference),
+}).annotate({ identifier: "StorageResource" });
 
 export interface Cluster {
   /** Output only. Time that the cluster was originally created. */
@@ -1125,34 +871,30 @@ export interface Cluster {
   orchestrator?: Orchestrator;
 }
 
-export const Cluster: Schema.Schema<Cluster> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      reconciling: Schema.optional(Schema.Boolean),
-      networkResources: Schema.optional(
-        Schema.Record(Schema.String, NetworkResource),
-      ),
-      storageResources: Schema.optional(
-        Schema.Record(Schema.String, StorageResource),
-      ),
-      name: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      computeResources: Schema.optional(
-        Schema.Record(Schema.String, ComputeResource),
-      ),
-      updateTime: Schema.optional(Schema.String),
-      orchestrator: Schema.optional(Orchestrator),
-    }),
-  ).annotate({ identifier: "Cluster" }) as any as Schema.Schema<Cluster>;
+export const Cluster = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createTime: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  reconciling: Schema.optional(Schema.Boolean),
+  networkResources: Schema.optional(
+    Schema.Record(Schema.String, NetworkResource),
+  ),
+  storageResources: Schema.optional(
+    Schema.Record(Schema.String, StorageResource),
+  ),
+  name: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  computeResources: Schema.optional(
+    Schema.Record(Schema.String, ComputeResource),
+  ),
+  updateTime: Schema.optional(Schema.String),
+  orchestrator: Schema.optional(Orchestrator),
+}).annotate({ identifier: "Cluster" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface OperationMetadata {
   /** Output only. API version used to start the operation. */
@@ -1171,20 +913,15 @@ export interface OperationMetadata {
   endTime?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      apiVersion: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      progress: Schema.optional(OperationProgress),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      createTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  verb: Schema.optional(Schema.String),
+  progress: Schema.optional(OperationProgress),
+  requestedCancellation: Schema.optional(Schema.Boolean),
+  createTime: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationMetadata" });
 
 export interface Location {
   /** The canonical id for this location. For example: `"us-east1"`. */
@@ -1199,16 +936,13 @@ export interface Location {
   metadata?: Record<string, unknown>;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locationId: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locationId: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Location" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -1217,15 +951,10 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(Location)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface ListClustersResponse {
   /** Locations that could not be reached. */
@@ -1236,23 +965,17 @@ export interface ListClustersResponse {
   nextPageToken?: string;
 }
 
-export const ListClustersResponse: Schema.Schema<ListClustersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      clusters: Schema.optional(Schema.Array(Cluster)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListClustersResponse",
-  }) as any as Schema.Schema<ListClustersResponse>;
+export const ListClustersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+  clusters: Schema.optional(Schema.Array(Cluster)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListClustersResponse" });
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelOperationRequest",
-  }) as any as Schema.Schema<CancelOperationRequest>;
+export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelOperationRequest" });
 
 // ==========================================================================
 // Operations

@@ -31,32 +31,26 @@ export interface GoogleHomeEnterpriseSdmV1Structure {
   ghpName?: string;
 }
 
-export const GoogleHomeEnterpriseSdmV1Structure: Schema.Schema<GoogleHomeEnterpriseSdmV1Structure> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      traits: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      name: Schema.optional(Schema.String),
-      ghpName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleHomeEnterpriseSdmV1Structure",
-  }) as any as Schema.Schema<GoogleHomeEnterpriseSdmV1Structure>;
+export const GoogleHomeEnterpriseSdmV1Structure =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    traits: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    name: Schema.optional(Schema.String),
+    ghpName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleHomeEnterpriseSdmV1Structure" });
 
 export interface GoogleHomeEnterpriseSdmV1ListStructuresResponse {
   /** The list of structures. */
   structures?: Array<GoogleHomeEnterpriseSdmV1Structure>;
 }
 
-export const GoogleHomeEnterpriseSdmV1ListStructuresResponse: Schema.Schema<GoogleHomeEnterpriseSdmV1ListStructuresResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      structures: Schema.optional(
-        Schema.Array(GoogleHomeEnterpriseSdmV1Structure),
-      ),
-    }),
-  ).annotate({
+export const GoogleHomeEnterpriseSdmV1ListStructuresResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    structures: Schema.optional(
+      Schema.Array(GoogleHomeEnterpriseSdmV1Structure),
+    ),
+  }).annotate({
     identifier: "GoogleHomeEnterpriseSdmV1ListStructuresResponse",
-  }) as any as Schema.Schema<GoogleHomeEnterpriseSdmV1ListStructuresResponse>;
+  });
 
 export interface GoogleHomeEnterpriseSdmV1Room {
   /** Output only. The resource name of the room. For example: "enterprises/XYZ/structures/ABC/rooms/123". */
@@ -65,43 +59,33 @@ export interface GoogleHomeEnterpriseSdmV1Room {
   traits?: Record<string, unknown>;
 }
 
-export const GoogleHomeEnterpriseSdmV1Room: Schema.Schema<GoogleHomeEnterpriseSdmV1Room> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      traits: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
-    identifier: "GoogleHomeEnterpriseSdmV1Room",
-  }) as any as Schema.Schema<GoogleHomeEnterpriseSdmV1Room>;
+export const GoogleHomeEnterpriseSdmV1Room =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    traits: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "GoogleHomeEnterpriseSdmV1Room" });
 
 export interface GoogleHomeEnterpriseSdmV1ListRoomsResponse {
   /** The list of rooms. */
   rooms?: Array<GoogleHomeEnterpriseSdmV1Room>;
 }
 
-export const GoogleHomeEnterpriseSdmV1ListRoomsResponse: Schema.Schema<GoogleHomeEnterpriseSdmV1ListRoomsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rooms: Schema.optional(Schema.Array(GoogleHomeEnterpriseSdmV1Room)),
-    }),
-  ).annotate({
-    identifier: "GoogleHomeEnterpriseSdmV1ListRoomsResponse",
-  }) as any as Schema.Schema<GoogleHomeEnterpriseSdmV1ListRoomsResponse>;
+export const GoogleHomeEnterpriseSdmV1ListRoomsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rooms: Schema.optional(Schema.Array(GoogleHomeEnterpriseSdmV1Room)),
+  }).annotate({ identifier: "GoogleHomeEnterpriseSdmV1ListRoomsResponse" });
 
 export interface GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse {
   /** The results of executing the command. */
   results?: Record<string, unknown>;
 }
 
-export const GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse: Schema.Schema<GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      results: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
+export const GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    results: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({
     identifier: "GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse",
-  }) as any as Schema.Schema<GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandResponse>;
+  });
 
 export interface GoogleHomeEnterpriseSdmV1ParentRelation {
   /** Output only. The GHP name of the relation -- e.g., structure/room where the device is assigned to. For example: "homegraph.googleapis.com/Structure/ABC" or "homegraph.googleapis.com/Room/ABC" */
@@ -112,16 +96,12 @@ export interface GoogleHomeEnterpriseSdmV1ParentRelation {
   displayName?: string;
 }
 
-export const GoogleHomeEnterpriseSdmV1ParentRelation: Schema.Schema<GoogleHomeEnterpriseSdmV1ParentRelation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ghpParent: Schema.optional(Schema.String),
-      parent: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleHomeEnterpriseSdmV1ParentRelation",
-  }) as any as Schema.Schema<GoogleHomeEnterpriseSdmV1ParentRelation>;
+export const GoogleHomeEnterpriseSdmV1ParentRelation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ghpParent: Schema.optional(Schema.String),
+    parent: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleHomeEnterpriseSdmV1ParentRelation" });
 
 export interface GoogleHomeEnterpriseSdmV1Device {
   /** Output only. Type of the device for general display purposes. For example: "THERMOSTAT". The device type should not be used to deduce or infer functionality of the actual device it is assigned to. Instead, use the returned traits for the device. */
@@ -136,34 +116,26 @@ export interface GoogleHomeEnterpriseSdmV1Device {
   parentRelations?: Array<GoogleHomeEnterpriseSdmV1ParentRelation>;
 }
 
-export const GoogleHomeEnterpriseSdmV1Device: Schema.Schema<GoogleHomeEnterpriseSdmV1Device> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      traits: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      ghpName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      parentRelations: Schema.optional(
-        Schema.Array(GoogleHomeEnterpriseSdmV1ParentRelation),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleHomeEnterpriseSdmV1Device",
-  }) as any as Schema.Schema<GoogleHomeEnterpriseSdmV1Device>;
+export const GoogleHomeEnterpriseSdmV1Device =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    traits: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    ghpName: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    parentRelations: Schema.optional(
+      Schema.Array(GoogleHomeEnterpriseSdmV1ParentRelation),
+    ),
+  }).annotate({ identifier: "GoogleHomeEnterpriseSdmV1Device" });
 
 export interface GoogleHomeEnterpriseSdmV1ListDevicesResponse {
   /** The list of devices. */
   devices?: Array<GoogleHomeEnterpriseSdmV1Device>;
 }
 
-export const GoogleHomeEnterpriseSdmV1ListDevicesResponse: Schema.Schema<GoogleHomeEnterpriseSdmV1ListDevicesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      devices: Schema.optional(Schema.Array(GoogleHomeEnterpriseSdmV1Device)),
-    }),
-  ).annotate({
-    identifier: "GoogleHomeEnterpriseSdmV1ListDevicesResponse",
-  }) as any as Schema.Schema<GoogleHomeEnterpriseSdmV1ListDevicesResponse>;
+export const GoogleHomeEnterpriseSdmV1ListDevicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    devices: Schema.optional(Schema.Array(GoogleHomeEnterpriseSdmV1Device)),
+  }).annotate({ identifier: "GoogleHomeEnterpriseSdmV1ListDevicesResponse" });
 
 export interface GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest {
   /** The command name to execute, represented by the fully qualified protobuf message name. */
@@ -172,15 +144,13 @@ export interface GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest {
   params?: Record<string, unknown>;
 }
 
-export const GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest: Schema.Schema<GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      command: Schema.optional(Schema.String),
-      params: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
+export const GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    command: Schema.optional(Schema.String),
+    params: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({
     identifier: "GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest",
-  }) as any as Schema.Schema<GoogleHomeEnterpriseSdmV1ExecuteDeviceCommandRequest>;
+  });
 
 // ==========================================================================
 // Operations

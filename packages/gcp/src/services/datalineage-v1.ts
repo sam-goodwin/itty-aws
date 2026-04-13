@@ -31,16 +31,12 @@ export interface GoogleCloudDatacatalogLineageV1ProcessLinkInfo {
   link?: string;
 }
 
-export const GoogleCloudDatacatalogLineageV1ProcessLinkInfo: Schema.Schema<GoogleCloudDatacatalogLineageV1ProcessLinkInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      link: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogLineageV1ProcessLinkInfo",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogLineageV1ProcessLinkInfo>;
+export const GoogleCloudDatacatalogLineageV1ProcessLinkInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    link: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDatacatalogLineageV1ProcessLinkInfo" });
 
 export interface GoogleCloudDatacatalogLineageV1ProcessLinks {
   /** The process name in the format of `projects/{project}/locations/{location}/processes/{process}`. */
@@ -49,17 +45,13 @@ export interface GoogleCloudDatacatalogLineageV1ProcessLinks {
   links?: Array<GoogleCloudDatacatalogLineageV1ProcessLinkInfo>;
 }
 
-export const GoogleCloudDatacatalogLineageV1ProcessLinks: Schema.Schema<GoogleCloudDatacatalogLineageV1ProcessLinks> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      process: Schema.optional(Schema.String),
-      links: Schema.optional(
-        Schema.Array(GoogleCloudDatacatalogLineageV1ProcessLinkInfo),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogLineageV1ProcessLinks",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogLineageV1ProcessLinks>;
+export const GoogleCloudDatacatalogLineageV1ProcessLinks =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    process: Schema.optional(Schema.String),
+    links: Schema.optional(
+      Schema.Array(GoogleCloudDatacatalogLineageV1ProcessLinkInfo),
+    ),
+  }).annotate({ identifier: "GoogleCloudDatacatalogLineageV1ProcessLinks" });
 
 export interface GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesResponse {
   /** An array of processes associated with the specified links. */
@@ -68,18 +60,16 @@ export interface GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesResponse
   nextPageToken?: string;
 }
 
-export const GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesResponse: Schema.Schema<GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      processLinks: Schema.optional(
-        Schema.Array(GoogleCloudDatacatalogLineageV1ProcessLinks),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    processLinks: Schema.optional(
+      Schema.Array(GoogleCloudDatacatalogLineageV1ProcessLinks),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesResponse",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesResponse>;
+  });
 
 export interface GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelector {
   /** Required. Integration to which the rule applies. This field can be used to specify the integration against which the ingestion rule should be applied. */
@@ -90,30 +80,26 @@ export interface GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionI
     | (string & {});
 }
 
-export const GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelector: Schema.Schema<GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelector> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      integration: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelector =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    integration: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelector",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelector>;
+  });
 
 export interface GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleLineageEnablement {
   /** Optional. If true, ingestion of lineage should be enabled. If false, it should be disabled. If unspecified, the system default value is used. */
   enabled?: boolean;
 }
 
-export const GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleLineageEnablement: Schema.Schema<GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleLineageEnablement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleLineageEnablement =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier:
       "GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleLineageEnablement",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleLineageEnablement>;
+  });
 
 export interface GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRule {
   /** Required. Integration selector of the rule. The rule is only applied to the Integration selected by the selector. */
@@ -122,39 +108,35 @@ export interface GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionI
   lineageEnablement?: GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleLineageEnablement;
 }
 
-export const GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRule: Schema.Schema<GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      integrationSelector: Schema.optional(
-        GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelector,
-      ),
-      lineageEnablement: Schema.optional(
-        GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleLineageEnablement,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRule =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    integrationSelector: Schema.optional(
+      GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleIntegrationSelector,
+    ),
+    lineageEnablement: Schema.optional(
+      GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRuleLineageEnablement,
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRule",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRule>;
+  });
 
 export interface GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestion {
   /** Optional. List of rules for Data Lineage ingestion. */
   rules?: Array<GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRule>;
 }
 
-export const GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestion: Schema.Schema<GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rules: Schema.optional(
-        Schema.Array(
-          GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRule,
-        ),
+export const GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestion =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rules: Schema.optional(
+      Schema.Array(
+        GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestionIngestionRule,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier:
       "GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestion",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestion>;
+  });
 
 export interface GoogleRpcStatus {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
@@ -165,18 +147,13 @@ export interface GoogleRpcStatus {
   message?: string;
 }
 
-export const GoogleRpcStatus: Schema.Schema<GoogleRpcStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleRpcStatus",
-  }) as any as Schema.Schema<GoogleRpcStatus>;
+export const GoogleRpcStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+}).annotate({ identifier: "GoogleRpcStatus" });
 
 export interface GoogleLongrunningOperation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
@@ -191,18 +168,14 @@ export interface GoogleLongrunningOperation {
   name?: string;
 }
 
-export const GoogleLongrunningOperation: Schema.Schema<GoogleLongrunningOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      error: Schema.optional(GoogleRpcStatus),
-      done: Schema.optional(Schema.Boolean),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleLongrunningOperation",
-  }) as any as Schema.Schema<GoogleLongrunningOperation>;
+export const GoogleLongrunningOperation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    error: Schema.optional(GoogleRpcStatus),
+    done: Schema.optional(Schema.Boolean),
+    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleLongrunningOperation" });
 
 export interface GoogleLongrunningListOperationsResponse {
   /** The standard List next-page token. */
@@ -213,30 +186,22 @@ export interface GoogleLongrunningListOperationsResponse {
   unreachable?: Array<string>;
 }
 
-export const GoogleLongrunningListOperationsResponse: Schema.Schema<GoogleLongrunningListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleLongrunningListOperationsResponse",
-  }) as any as Schema.Schema<GoogleLongrunningListOperationsResponse>;
+export const GoogleLongrunningListOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleLongrunningListOperationsResponse" });
 
 export interface GoogleCloudDatacatalogLineageV1EntityReference {
   /** Required. [Fully Qualified Name (FQN)](https://cloud.google.com/dataplex/docs/fully-qualified-names) of the entity. */
   fullyQualifiedName?: string;
 }
 
-export const GoogleCloudDatacatalogLineageV1EntityReference: Schema.Schema<GoogleCloudDatacatalogLineageV1EntityReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fullyQualifiedName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogLineageV1EntityReference",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogLineageV1EntityReference>;
+export const GoogleCloudDatacatalogLineageV1EntityReference =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fullyQualifiedName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDatacatalogLineageV1EntityReference" });
 
 export interface GoogleCloudDatacatalogLineageV1Link {
   /** The pointer to the entity that is the **source** of this link. */
@@ -251,18 +216,14 @@ export interface GoogleCloudDatacatalogLineageV1Link {
   endTime?: string;
 }
 
-export const GoogleCloudDatacatalogLineageV1Link: Schema.Schema<GoogleCloudDatacatalogLineageV1Link> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      source: Schema.optional(GoogleCloudDatacatalogLineageV1EntityReference),
-      target: Schema.optional(GoogleCloudDatacatalogLineageV1EntityReference),
-      name: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogLineageV1Link",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogLineageV1Link>;
+export const GoogleCloudDatacatalogLineageV1Link =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    source: Schema.optional(GoogleCloudDatacatalogLineageV1EntityReference),
+    target: Schema.optional(GoogleCloudDatacatalogLineageV1EntityReference),
+    name: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDatacatalogLineageV1Link" });
 
 export interface GoogleCloudDatacatalogLineageConfigmanagementV1Config {
   /** Identifier. The resource name of the config. Format: `organizations/{organization_id}/locations/global/config` `folders/{folder_id}/locations/global/config` `projects/{project_id}/locations/global/config` `projects/{project_number}/locations/global/config` */
@@ -273,18 +234,16 @@ export interface GoogleCloudDatacatalogLineageConfigmanagementV1Config {
   etag?: string;
 }
 
-export const GoogleCloudDatacatalogLineageConfigmanagementV1Config: Schema.Schema<GoogleCloudDatacatalogLineageConfigmanagementV1Config> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      ingestion: Schema.optional(
-        GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestion,
-      ),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDatacatalogLineageConfigmanagementV1Config =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    ingestion: Schema.optional(
+      GoogleCloudDatacatalogLineageConfigmanagementV1ConfigIngestion,
+    ),
+    etag: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDatacatalogLineageConfigmanagementV1Config",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogLineageConfigmanagementV1Config>;
+  });
 
 export interface GoogleCloudDatacatalogLineageV1Origin {
   /** Type of the source. Use of a source_type other than `CUSTOM` for process creation or updating is highly discouraged. It might be restricted in the future without notice. There will be increase in cost if you use any of the source types other than `CUSTOM`. */
@@ -303,15 +262,11 @@ export interface GoogleCloudDatacatalogLineageV1Origin {
   name?: string;
 }
 
-export const GoogleCloudDatacatalogLineageV1Origin: Schema.Schema<GoogleCloudDatacatalogLineageV1Origin> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sourceType: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogLineageV1Origin",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogLineageV1Origin>;
+export const GoogleCloudDatacatalogLineageV1Origin =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sourceType: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDatacatalogLineageV1Origin" });
 
 export interface GoogleCloudDatacatalogLineageV1Process {
   /** Immutable. The resource name of the lineage process. Format: `projects/{project}/locations/{location}/processes/{process}`. Can be specified or auto-assigned. {process} must be not longer than 200 characters and only contain characters in a set: `a-zA-Z0-9_-:.` */
@@ -324,17 +279,13 @@ export interface GoogleCloudDatacatalogLineageV1Process {
   displayName?: string;
 }
 
-export const GoogleCloudDatacatalogLineageV1Process: Schema.Schema<GoogleCloudDatacatalogLineageV1Process> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      origin: Schema.optional(GoogleCloudDatacatalogLineageV1Origin),
-      attributes: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogLineageV1Process",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogLineageV1Process>;
+export const GoogleCloudDatacatalogLineageV1Process =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    origin: Schema.optional(GoogleCloudDatacatalogLineageV1Origin),
+    attributes: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDatacatalogLineageV1Process" });
 
 export interface GoogleCloudDatacatalogLineageV1ListProcessesResponse {
   /** The processes from the specified project and location. */
@@ -343,17 +294,15 @@ export interface GoogleCloudDatacatalogLineageV1ListProcessesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDatacatalogLineageV1ListProcessesResponse: Schema.Schema<GoogleCloudDatacatalogLineageV1ListProcessesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      processes: Schema.optional(
-        Schema.Array(GoogleCloudDatacatalogLineageV1Process),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDatacatalogLineageV1ListProcessesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    processes: Schema.optional(
+      Schema.Array(GoogleCloudDatacatalogLineageV1Process),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDatacatalogLineageV1ListProcessesResponse",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogLineageV1ListProcessesResponse>;
+  });
 
 export interface GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse {
   /** Created run name. Format: `projects/{project}/locations/{location}/processes/{process}/runs/{run}`. */
@@ -364,17 +313,15 @@ export interface GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventRespon
   lineageEvents?: Array<string>;
 }
 
-export const GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse: Schema.Schema<GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      run: Schema.optional(Schema.String),
-      process: Schema.optional(Schema.String),
-      lineageEvents: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    run: Schema.optional(Schema.String),
+    process: Schema.optional(Schema.String),
+    lineageEvents: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier:
       "GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogLineageV1ProcessOpenLineageRunEventResponse>;
+  });
 
 export interface GoogleCloudDatacatalogLineageV1OperationMetadata {
   /** Output only. The [relative name] (https://cloud.google.com//apis/design/resource_names#relative_resource_name) of the resource being operated on. */
@@ -397,26 +344,24 @@ export interface GoogleCloudDatacatalogLineageV1OperationMetadata {
   operationType?: "TYPE_UNSPECIFIED" | "DELETE" | "CREATE" | (string & {});
 }
 
-export const GoogleCloudDatacatalogLineageV1OperationMetadata: Schema.Schema<GoogleCloudDatacatalogLineageV1OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resource: Schema.optional(Schema.String),
-      resourceUuid: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      operationType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDatacatalogLineageV1OperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.optional(Schema.String),
+    resourceUuid: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    operationType: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDatacatalogLineageV1OperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogLineageV1OperationMetadata>;
+  });
 
 export interface GoogleLongrunningCancelOperationRequest {}
 
-export const GoogleLongrunningCancelOperationRequest: Schema.Schema<GoogleLongrunningCancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleLongrunningCancelOperationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleLongrunningCancelOperationRequest",
-  }) as any as Schema.Schema<GoogleLongrunningCancelOperationRequest>;
+  });
 
 export interface GoogleCloudDatacatalogLineageV1SearchLinksRequest {
   /** Optional. The maximum number of links to return in a single page of the response. A page may contain fewer links than this value. If unspecified, at most 10 links are returned. Maximum value is 100; values greater than 100 are reduced to 100. */
@@ -429,24 +374,21 @@ export interface GoogleCloudDatacatalogLineageV1SearchLinksRequest {
   source?: GoogleCloudDatacatalogLineageV1EntityReference;
 }
 
-export const GoogleCloudDatacatalogLineageV1SearchLinksRequest: Schema.Schema<GoogleCloudDatacatalogLineageV1SearchLinksRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pageSize: Schema.optional(Schema.Number),
-      target: Schema.optional(GoogleCloudDatacatalogLineageV1EntityReference),
-      pageToken: Schema.optional(Schema.String),
-      source: Schema.optional(GoogleCloudDatacatalogLineageV1EntityReference),
-    }),
-  ).annotate({
+export const GoogleCloudDatacatalogLineageV1SearchLinksRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageSize: Schema.optional(Schema.Number),
+    target: Schema.optional(GoogleCloudDatacatalogLineageV1EntityReference),
+    pageToken: Schema.optional(Schema.String),
+    source: Schema.optional(GoogleCloudDatacatalogLineageV1EntityReference),
+  }).annotate({
     identifier: "GoogleCloudDatacatalogLineageV1SearchLinksRequest",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogLineageV1SearchLinksRequest>;
+  });
 
 export interface GoogleProtobufEmpty {}
 
-export const GoogleProtobufEmpty: Schema.Schema<GoogleProtobufEmpty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "GoogleProtobufEmpty",
-  }) as any as Schema.Schema<GoogleProtobufEmpty>;
+export const GoogleProtobufEmpty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "GoogleProtobufEmpty" });
 
 export interface GoogleCloudDatacatalogLineageV1Run {
   /** Immutable. The resource name of the run. Format: `projects/{project}/locations/{location}/processes/{process}/runs/{run}`. Can be specified or auto-assigned. {run} must be not longer than 200 characters and only contain characters in a set: `a-zA-Z0-9_-:.` */
@@ -469,19 +411,15 @@ export interface GoogleCloudDatacatalogLineageV1Run {
   displayName?: string;
 }
 
-export const GoogleCloudDatacatalogLineageV1Run: Schema.Schema<GoogleCloudDatacatalogLineageV1Run> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      attributes: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      state: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogLineageV1Run",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogLineageV1Run>;
+export const GoogleCloudDatacatalogLineageV1Run =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    attributes: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    state: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDatacatalogLineageV1Run" });
 
 export interface GoogleCloudDatacatalogLineageV1SearchLinksResponse {
   /** The list of links for a given asset. Can be empty if the asset has no relations of requested type (source or target). */
@@ -490,15 +428,13 @@ export interface GoogleCloudDatacatalogLineageV1SearchLinksResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDatacatalogLineageV1SearchLinksResponse: Schema.Schema<GoogleCloudDatacatalogLineageV1SearchLinksResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      links: Schema.optional(Schema.Array(GoogleCloudDatacatalogLineageV1Link)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDatacatalogLineageV1SearchLinksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    links: Schema.optional(Schema.Array(GoogleCloudDatacatalogLineageV1Link)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDatacatalogLineageV1SearchLinksResponse",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogLineageV1SearchLinksResponse>;
+  });
 
 export interface GoogleCloudDatacatalogLineageV1EventLink {
   /** Required. Reference to the source entity */
@@ -507,15 +443,11 @@ export interface GoogleCloudDatacatalogLineageV1EventLink {
   target?: GoogleCloudDatacatalogLineageV1EntityReference;
 }
 
-export const GoogleCloudDatacatalogLineageV1EventLink: Schema.Schema<GoogleCloudDatacatalogLineageV1EventLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      source: Schema.optional(GoogleCloudDatacatalogLineageV1EntityReference),
-      target: Schema.optional(GoogleCloudDatacatalogLineageV1EntityReference),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogLineageV1EventLink",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogLineageV1EventLink>;
+export const GoogleCloudDatacatalogLineageV1EventLink =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    source: Schema.optional(GoogleCloudDatacatalogLineageV1EntityReference),
+    target: Schema.optional(GoogleCloudDatacatalogLineageV1EntityReference),
+  }).annotate({ identifier: "GoogleCloudDatacatalogLineageV1EventLink" });
 
 export interface GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesRequest {
   /** The page token received from a previous `BatchSearchLinkProcesses` call. Use it to get the next page. When requesting subsequent pages of a response, remember that all parameters must match the values you provided in the original request. */
@@ -526,17 +458,15 @@ export interface GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesRequest 
   links?: Array<string>;
 }
 
-export const GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesRequest: Schema.Schema<GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pageToken: Schema.optional(Schema.String),
-      pageSize: Schema.optional(Schema.Number),
-      links: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageToken: Schema.optional(Schema.String),
+    pageSize: Schema.optional(Schema.Number),
+    links: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier:
       "GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesRequest",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogLineageV1BatchSearchLinkProcessesRequest>;
+  });
 
 export interface GoogleCloudDatacatalogLineageV1LineageEvent {
   /** Optional. List of source-target pairs. Can't contain more than 100 tuples. */
@@ -549,19 +479,15 @@ export interface GoogleCloudDatacatalogLineageV1LineageEvent {
   endTime?: string;
 }
 
-export const GoogleCloudDatacatalogLineageV1LineageEvent: Schema.Schema<GoogleCloudDatacatalogLineageV1LineageEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      links: Schema.optional(
-        Schema.Array(GoogleCloudDatacatalogLineageV1EventLink),
-      ),
-      name: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudDatacatalogLineageV1LineageEvent",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogLineageV1LineageEvent>;
+export const GoogleCloudDatacatalogLineageV1LineageEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    links: Schema.optional(
+      Schema.Array(GoogleCloudDatacatalogLineageV1EventLink),
+    ),
+    name: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudDatacatalogLineageV1LineageEvent" });
 
 export interface GoogleCloudDatacatalogLineageV1ListLineageEventsResponse {
   /** Lineage events from the specified project and location. */
@@ -570,17 +496,15 @@ export interface GoogleCloudDatacatalogLineageV1ListLineageEventsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudDatacatalogLineageV1ListLineageEventsResponse: Schema.Schema<GoogleCloudDatacatalogLineageV1ListLineageEventsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lineageEvents: Schema.optional(
-        Schema.Array(GoogleCloudDatacatalogLineageV1LineageEvent),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudDatacatalogLineageV1ListLineageEventsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    lineageEvents: Schema.optional(
+      Schema.Array(GoogleCloudDatacatalogLineageV1LineageEvent),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudDatacatalogLineageV1ListLineageEventsResponse",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogLineageV1ListLineageEventsResponse>;
+  });
 
 export interface GoogleCloudDatacatalogLineageV1ListRunsResponse {
   /** The token to specify as `page_token` in the next call to get the next page. If this field is omitted, there are no subsequent pages. */
@@ -589,15 +513,13 @@ export interface GoogleCloudDatacatalogLineageV1ListRunsResponse {
   runs?: Array<GoogleCloudDatacatalogLineageV1Run>;
 }
 
-export const GoogleCloudDatacatalogLineageV1ListRunsResponse: Schema.Schema<GoogleCloudDatacatalogLineageV1ListRunsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      runs: Schema.optional(Schema.Array(GoogleCloudDatacatalogLineageV1Run)),
-    }),
-  ).annotate({
+export const GoogleCloudDatacatalogLineageV1ListRunsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    runs: Schema.optional(Schema.Array(GoogleCloudDatacatalogLineageV1Run)),
+  }).annotate({
     identifier: "GoogleCloudDatacatalogLineageV1ListRunsResponse",
-  }) as any as Schema.Schema<GoogleCloudDatacatalogLineageV1ListRunsResponse>;
+  });
 
 // ==========================================================================
 // Operations

@@ -27,28 +27,24 @@ export interface GoogleCloudRecommenderV1beta1InsightRecommendationReference {
   recommendation?: string;
 }
 
-export const GoogleCloudRecommenderV1beta1InsightRecommendationReference: Schema.Schema<GoogleCloudRecommenderV1beta1InsightRecommendationReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      recommendation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudRecommenderV1beta1InsightRecommendationReference =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    recommendation: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudRecommenderV1beta1InsightRecommendationReference",
-  }) as any as Schema.Schema<GoogleCloudRecommenderV1beta1InsightRecommendationReference>;
+  });
 
 export interface GoogleCloudRecommenderV1beta1RecommenderGenerationConfig {
   /** Parameters for this RecommenderGenerationConfig. These configs can be used by or are applied to all subtypes. */
   params?: Record<string, unknown>;
 }
 
-export const GoogleCloudRecommenderV1beta1RecommenderGenerationConfig: Schema.Schema<GoogleCloudRecommenderV1beta1RecommenderGenerationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      params: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
+export const GoogleCloudRecommenderV1beta1RecommenderGenerationConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    params: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({
     identifier: "GoogleCloudRecommenderV1beta1RecommenderGenerationConfig",
-  }) as any as Schema.Schema<GoogleCloudRecommenderV1beta1RecommenderGenerationConfig>;
+  });
 
 export interface GoogleCloudRecommenderV1beta1RecommenderConfig {
   /** Identifier. Name of recommender config. Eg, projects/[PROJECT_NUMBER]/locations/[LOCATION]/recommenders/[RECOMMENDER_ID]/config */
@@ -67,50 +63,38 @@ export interface GoogleCloudRecommenderV1beta1RecommenderConfig {
   displayName?: string;
 }
 
-export const GoogleCloudRecommenderV1beta1RecommenderConfig: Schema.Schema<GoogleCloudRecommenderV1beta1RecommenderConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      etag: Schema.optional(Schema.String),
-      revisionId: Schema.optional(Schema.String),
-      recommenderGenerationConfig: Schema.optional(
-        GoogleCloudRecommenderV1beta1RecommenderGenerationConfig,
-      ),
-      updateTime: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecommenderV1beta1RecommenderConfig",
-  }) as any as Schema.Schema<GoogleCloudRecommenderV1beta1RecommenderConfig>;
+export const GoogleCloudRecommenderV1beta1RecommenderConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    etag: Schema.optional(Schema.String),
+    revisionId: Schema.optional(Schema.String),
+    recommenderGenerationConfig: Schema.optional(
+      GoogleCloudRecommenderV1beta1RecommenderGenerationConfig,
+    ),
+    updateTime: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudRecommenderV1beta1RecommenderConfig" });
 
 export interface GoogleCloudRecommenderV1beta1RecommenderType {
   /** The recommender's name in format RecommenderTypes/{recommender_type} eg: recommenderTypes/google.iam.policy.Recommender */
   name?: string;
 }
 
-export const GoogleCloudRecommenderV1beta1RecommenderType: Schema.Schema<GoogleCloudRecommenderV1beta1RecommenderType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecommenderV1beta1RecommenderType",
-  }) as any as Schema.Schema<GoogleCloudRecommenderV1beta1RecommenderType>;
+export const GoogleCloudRecommenderV1beta1RecommenderType =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudRecommenderV1beta1RecommenderType" });
 
 export interface GoogleCloudRecommenderV1beta1InsightType {
   /** The insight_type's name in format insightTypes/{insight_type} eg: insightTypes/google.iam.policy.Insight */
   name?: string;
 }
 
-export const GoogleCloudRecommenderV1beta1InsightType: Schema.Schema<GoogleCloudRecommenderV1beta1InsightType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecommenderV1beta1InsightType",
-  }) as any as Schema.Schema<GoogleCloudRecommenderV1beta1InsightType>;
+export const GoogleCloudRecommenderV1beta1InsightType =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudRecommenderV1beta1InsightType" });
 
 export interface GoogleCloudRecommenderV1beta1ListInsightTypesResponse {
   /** The set of recommenders available */
@@ -119,17 +103,15 @@ export interface GoogleCloudRecommenderV1beta1ListInsightTypesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudRecommenderV1beta1ListInsightTypesResponse: Schema.Schema<GoogleCloudRecommenderV1beta1ListInsightTypesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      insightTypes: Schema.optional(
-        Schema.Array(GoogleCloudRecommenderV1beta1InsightType),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudRecommenderV1beta1ListInsightTypesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    insightTypes: Schema.optional(
+      Schema.Array(GoogleCloudRecommenderV1beta1InsightType),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudRecommenderV1beta1ListInsightTypesResponse",
-  }) as any as Schema.Schema<GoogleCloudRecommenderV1beta1ListInsightTypesResponse>;
+  });
 
 export interface GoogleCloudRecommenderV1beta1ReliabilityProjection {
   /** Reliability risks mitigated by this recommendation. */
@@ -144,15 +126,13 @@ export interface GoogleCloudRecommenderV1beta1ReliabilityProjection {
   details?: Record<string, unknown>;
 }
 
-export const GoogleCloudRecommenderV1beta1ReliabilityProjection: Schema.Schema<GoogleCloudRecommenderV1beta1ReliabilityProjection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      risks: Schema.optional(Schema.Array(Schema.String)),
-      details: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
+export const GoogleCloudRecommenderV1beta1ReliabilityProjection =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    risks: Schema.optional(Schema.Array(Schema.String)),
+    details: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({
     identifier: "GoogleCloudRecommenderV1beta1ReliabilityProjection",
-  }) as any as Schema.Schema<GoogleCloudRecommenderV1beta1ReliabilityProjection>;
+  });
 
 export interface GoogleTypeMoney {
   /** The three-letter currency code defined in ISO 4217. */
@@ -163,16 +143,11 @@ export interface GoogleTypeMoney {
   nanos?: number;
 }
 
-export const GoogleTypeMoney: Schema.Schema<GoogleTypeMoney> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      currencyCode: Schema.optional(Schema.String),
-      units: Schema.optional(Schema.String),
-      nanos: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleTypeMoney",
-  }) as any as Schema.Schema<GoogleTypeMoney>;
+export const GoogleTypeMoney = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  currencyCode: Schema.optional(Schema.String),
+  units: Schema.optional(Schema.String),
+  nanos: Schema.optional(Schema.Number),
+}).annotate({ identifier: "GoogleTypeMoney" });
 
 export interface GoogleCloudRecommenderV1beta1CostProjection {
   /** Duration for which this cost applies. */
@@ -189,17 +164,13 @@ export interface GoogleCloudRecommenderV1beta1CostProjection {
   costInLocalCurrency?: GoogleTypeMoney;
 }
 
-export const GoogleCloudRecommenderV1beta1CostProjection: Schema.Schema<GoogleCloudRecommenderV1beta1CostProjection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      duration: Schema.optional(Schema.String),
-      pricingType: Schema.optional(Schema.String),
-      cost: Schema.optional(GoogleTypeMoney),
-      costInLocalCurrency: Schema.optional(GoogleTypeMoney),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecommenderV1beta1CostProjection",
-  }) as any as Schema.Schema<GoogleCloudRecommenderV1beta1CostProjection>;
+export const GoogleCloudRecommenderV1beta1CostProjection =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    duration: Schema.optional(Schema.String),
+    pricingType: Schema.optional(Schema.String),
+    cost: Schema.optional(GoogleTypeMoney),
+    costInLocalCurrency: Schema.optional(GoogleTypeMoney),
+  }).annotate({ identifier: "GoogleCloudRecommenderV1beta1CostProjection" });
 
 export interface GoogleCloudRecommenderV1beta1SustainabilityProjection {
   /** Carbon Footprint generated in kg of CO2 equivalent. Chose kg_c_o2e so that the name renders correctly in camelCase (kgCO2e). */
@@ -208,29 +179,25 @@ export interface GoogleCloudRecommenderV1beta1SustainabilityProjection {
   duration?: string;
 }
 
-export const GoogleCloudRecommenderV1beta1SustainabilityProjection: Schema.Schema<GoogleCloudRecommenderV1beta1SustainabilityProjection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kgCO2e: Schema.optional(Schema.Number),
-      duration: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudRecommenderV1beta1SustainabilityProjection =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kgCO2e: Schema.optional(Schema.Number),
+    duration: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudRecommenderV1beta1SustainabilityProjection",
-  }) as any as Schema.Schema<GoogleCloudRecommenderV1beta1SustainabilityProjection>;
+  });
 
 export interface GoogleCloudRecommenderV1beta1SecurityProjection {
   /** This field can be used by the recommender to define details specific to security impact. */
   details?: Record<string, unknown>;
 }
 
-export const GoogleCloudRecommenderV1beta1SecurityProjection: Schema.Schema<GoogleCloudRecommenderV1beta1SecurityProjection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      details: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
+export const GoogleCloudRecommenderV1beta1SecurityProjection =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    details: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({
     identifier: "GoogleCloudRecommenderV1beta1SecurityProjection",
-  }) as any as Schema.Schema<GoogleCloudRecommenderV1beta1SecurityProjection>;
+  });
 
 export interface GoogleCloudRecommenderV1beta1Impact {
   /** Use with CategoryType.RELIABILITY */
@@ -255,41 +222,35 @@ export interface GoogleCloudRecommenderV1beta1Impact {
   securityProjection?: GoogleCloudRecommenderV1beta1SecurityProjection;
 }
 
-export const GoogleCloudRecommenderV1beta1Impact: Schema.Schema<GoogleCloudRecommenderV1beta1Impact> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reliabilityProjection: Schema.optional(
-        GoogleCloudRecommenderV1beta1ReliabilityProjection,
-      ),
-      costProjection: Schema.optional(
-        GoogleCloudRecommenderV1beta1CostProjection,
-      ),
-      service: Schema.optional(Schema.String),
-      category: Schema.optional(Schema.String),
-      sustainabilityProjection: Schema.optional(
-        GoogleCloudRecommenderV1beta1SustainabilityProjection,
-      ),
-      securityProjection: Schema.optional(
-        GoogleCloudRecommenderV1beta1SecurityProjection,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecommenderV1beta1Impact",
-  }) as any as Schema.Schema<GoogleCloudRecommenderV1beta1Impact>;
+export const GoogleCloudRecommenderV1beta1Impact =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reliabilityProjection: Schema.optional(
+      GoogleCloudRecommenderV1beta1ReliabilityProjection,
+    ),
+    costProjection: Schema.optional(
+      GoogleCloudRecommenderV1beta1CostProjection,
+    ),
+    service: Schema.optional(Schema.String),
+    category: Schema.optional(Schema.String),
+    sustainabilityProjection: Schema.optional(
+      GoogleCloudRecommenderV1beta1SustainabilityProjection,
+    ),
+    securityProjection: Schema.optional(
+      GoogleCloudRecommenderV1beta1SecurityProjection,
+    ),
+  }).annotate({ identifier: "GoogleCloudRecommenderV1beta1Impact" });
 
 export interface GoogleCloudRecommenderV1beta1InsightTypeGenerationConfig {
   /** Parameters for this InsightTypeGenerationConfig. These configs can be used by or are applied to all subtypes. */
   params?: Record<string, unknown>;
 }
 
-export const GoogleCloudRecommenderV1beta1InsightTypeGenerationConfig: Schema.Schema<GoogleCloudRecommenderV1beta1InsightTypeGenerationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      params: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
+export const GoogleCloudRecommenderV1beta1InsightTypeGenerationConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    params: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({
     identifier: "GoogleCloudRecommenderV1beta1InsightTypeGenerationConfig",
-  }) as any as Schema.Schema<GoogleCloudRecommenderV1beta1InsightTypeGenerationConfig>;
+  });
 
 export interface GoogleCloudRecommenderV1beta1InsightStateInfo {
   /** Insight state. */
@@ -303,17 +264,11 @@ export interface GoogleCloudRecommenderV1beta1InsightStateInfo {
   stateMetadata?: Record<string, string>;
 }
 
-export const GoogleCloudRecommenderV1beta1InsightStateInfo: Schema.Schema<GoogleCloudRecommenderV1beta1InsightStateInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      stateMetadata: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecommenderV1beta1InsightStateInfo",
-  }) as any as Schema.Schema<GoogleCloudRecommenderV1beta1InsightStateInfo>;
+export const GoogleCloudRecommenderV1beta1InsightStateInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+    stateMetadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({ identifier: "GoogleCloudRecommenderV1beta1InsightStateInfo" });
 
 export interface GoogleCloudRecommenderV1beta1Insight {
   /** Insight subtype. Insight content schema will be stable for a given subtype. */
@@ -356,29 +311,23 @@ export interface GoogleCloudRecommenderV1beta1Insight {
     | (string & {});
 }
 
-export const GoogleCloudRecommenderV1beta1Insight: Schema.Schema<GoogleCloudRecommenderV1beta1Insight> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      insightSubtype: Schema.optional(Schema.String),
-      lastRefreshTime: Schema.optional(Schema.String),
-      observationPeriod: Schema.optional(Schema.String),
-      targetResources: Schema.optional(Schema.Array(Schema.String)),
-      content: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      associatedRecommendations: Schema.optional(
-        Schema.Array(
-          GoogleCloudRecommenderV1beta1InsightRecommendationReference,
-        ),
-      ),
-      severity: Schema.optional(Schema.String),
-      stateInfo: Schema.optional(GoogleCloudRecommenderV1beta1InsightStateInfo),
-      category: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecommenderV1beta1Insight",
-  }) as any as Schema.Schema<GoogleCloudRecommenderV1beta1Insight>;
+export const GoogleCloudRecommenderV1beta1Insight =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    insightSubtype: Schema.optional(Schema.String),
+    lastRefreshTime: Schema.optional(Schema.String),
+    observationPeriod: Schema.optional(Schema.String),
+    targetResources: Schema.optional(Schema.Array(Schema.String)),
+    content: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    name: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    associatedRecommendations: Schema.optional(
+      Schema.Array(GoogleCloudRecommenderV1beta1InsightRecommendationReference),
+    ),
+    severity: Schema.optional(Schema.String),
+    stateInfo: Schema.optional(GoogleCloudRecommenderV1beta1InsightStateInfo),
+    category: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudRecommenderV1beta1Insight" });
 
 export interface GoogleCloudRecommenderV1beta1ListInsightsResponse {
   /** The set of insights for the `parent` resource. */
@@ -387,17 +336,15 @@ export interface GoogleCloudRecommenderV1beta1ListInsightsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudRecommenderV1beta1ListInsightsResponse: Schema.Schema<GoogleCloudRecommenderV1beta1ListInsightsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      insights: Schema.optional(
-        Schema.Array(GoogleCloudRecommenderV1beta1Insight),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudRecommenderV1beta1ListInsightsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    insights: Schema.optional(
+      Schema.Array(GoogleCloudRecommenderV1beta1Insight),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudRecommenderV1beta1ListInsightsResponse",
-  }) as any as Schema.Schema<GoogleCloudRecommenderV1beta1ListInsightsResponse>;
+  });
 
 export interface GoogleCloudRecommenderV1beta1InsightTypeConfig {
   /** InsightTypeGenerationConfig which configures the generation of insights for this insight type. */
@@ -416,36 +363,30 @@ export interface GoogleCloudRecommenderV1beta1InsightTypeConfig {
   revisionId?: string;
 }
 
-export const GoogleCloudRecommenderV1beta1InsightTypeConfig: Schema.Schema<GoogleCloudRecommenderV1beta1InsightTypeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      insightTypeGenerationConfig: Schema.optional(
-        GoogleCloudRecommenderV1beta1InsightTypeGenerationConfig,
-      ),
-      updateTime: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      revisionId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecommenderV1beta1InsightTypeConfig",
-  }) as any as Schema.Schema<GoogleCloudRecommenderV1beta1InsightTypeConfig>;
+export const GoogleCloudRecommenderV1beta1InsightTypeConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    insightTypeGenerationConfig: Schema.optional(
+      GoogleCloudRecommenderV1beta1InsightTypeGenerationConfig,
+    ),
+    updateTime: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    revisionId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudRecommenderV1beta1InsightTypeConfig" });
 
 export interface GoogleCloudRecommenderV1beta1RecommendationInsightReference {
   /** Insight resource name, e.g. projects/[PROJECT_NUMBER]/locations/[LOCATION]/insightTypes/[INSIGHT_TYPE_ID]/insights/[INSIGHT_ID] */
   insight?: string;
 }
 
-export const GoogleCloudRecommenderV1beta1RecommendationInsightReference: Schema.Schema<GoogleCloudRecommenderV1beta1RecommendationInsightReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      insight: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudRecommenderV1beta1RecommendationInsightReference =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    insight: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudRecommenderV1beta1RecommendationInsightReference",
-  }) as any as Schema.Schema<GoogleCloudRecommenderV1beta1RecommendationInsightReference>;
+  });
 
 export interface GoogleCloudLocationLocation {
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
@@ -460,18 +401,14 @@ export interface GoogleCloudLocationLocation {
   displayName?: string;
 }
 
-export const GoogleCloudLocationLocation: Schema.Schema<GoogleCloudLocationLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      locationId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudLocationLocation",
-  }) as any as Schema.Schema<GoogleCloudLocationLocation>;
+export const GoogleCloudLocationLocation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    locationId: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudLocationLocation" });
 
 export interface GoogleCloudLocationListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -480,29 +417,21 @@ export interface GoogleCloudLocationListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudLocationListLocationsResponse: Schema.Schema<GoogleCloudLocationListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(GoogleCloudLocationLocation)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudLocationListLocationsResponse",
-  }) as any as Schema.Schema<GoogleCloudLocationListLocationsResponse>;
+export const GoogleCloudLocationListLocationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locations: Schema.optional(Schema.Array(GoogleCloudLocationLocation)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudLocationListLocationsResponse" });
 
 export interface GoogleCloudRecommenderV1beta1ValueMatcher {
   /** To be used for full regex matching. The regular expression is using the Google RE2 syntax (https://github.com/google/re2/wiki/Syntax), so to be used with RE2::FullMatch */
   matchesPattern?: string;
 }
 
-export const GoogleCloudRecommenderV1beta1ValueMatcher: Schema.Schema<GoogleCloudRecommenderV1beta1ValueMatcher> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      matchesPattern: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecommenderV1beta1ValueMatcher",
-  }) as any as Schema.Schema<GoogleCloudRecommenderV1beta1ValueMatcher>;
+export const GoogleCloudRecommenderV1beta1ValueMatcher =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    matchesPattern: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudRecommenderV1beta1ValueMatcher" });
 
 export interface GoogleCloudRecommenderV1beta1Operation {
   /** Contains the fully qualified resource name. This field is always populated. ex: //cloudresourcemanager.googleapis.com/projects/foo. */
@@ -527,43 +456,33 @@ export interface GoogleCloudRecommenderV1beta1Operation {
   pathValueMatchers?: Record<string, GoogleCloudRecommenderV1beta1ValueMatcher>;
 }
 
-export const GoogleCloudRecommenderV1beta1Operation: Schema.Schema<GoogleCloudRecommenderV1beta1Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resource: Schema.optional(Schema.String),
-      pathFilters: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-      sourcePath: Schema.optional(Schema.String),
-      action: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.Unknown),
-      valueMatcher: Schema.optional(GoogleCloudRecommenderV1beta1ValueMatcher),
-      resourceType: Schema.optional(Schema.String),
-      path: Schema.optional(Schema.String),
-      sourceResource: Schema.optional(Schema.String),
-      pathValueMatchers: Schema.optional(
-        Schema.Record(Schema.String, GoogleCloudRecommenderV1beta1ValueMatcher),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecommenderV1beta1Operation",
-  }) as any as Schema.Schema<GoogleCloudRecommenderV1beta1Operation>;
+export const GoogleCloudRecommenderV1beta1Operation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.optional(Schema.String),
+    pathFilters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    sourcePath: Schema.optional(Schema.String),
+    action: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.Unknown),
+    valueMatcher: Schema.optional(GoogleCloudRecommenderV1beta1ValueMatcher),
+    resourceType: Schema.optional(Schema.String),
+    path: Schema.optional(Schema.String),
+    sourceResource: Schema.optional(Schema.String),
+    pathValueMatchers: Schema.optional(
+      Schema.Record(Schema.String, GoogleCloudRecommenderV1beta1ValueMatcher),
+    ),
+  }).annotate({ identifier: "GoogleCloudRecommenderV1beta1Operation" });
 
 export interface GoogleCloudRecommenderV1beta1OperationGroup {
   /** List of operations across one or more resources that belong to this group. Loosely based on RFC6902 and should be performed in the order they appear. */
   operations?: Array<GoogleCloudRecommenderV1beta1Operation>;
 }
 
-export const GoogleCloudRecommenderV1beta1OperationGroup: Schema.Schema<GoogleCloudRecommenderV1beta1OperationGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(
-        Schema.Array(GoogleCloudRecommenderV1beta1Operation),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecommenderV1beta1OperationGroup",
-  }) as any as Schema.Schema<GoogleCloudRecommenderV1beta1OperationGroup>;
+export const GoogleCloudRecommenderV1beta1OperationGroup =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operations: Schema.optional(
+      Schema.Array(GoogleCloudRecommenderV1beta1Operation),
+    ),
+  }).annotate({ identifier: "GoogleCloudRecommenderV1beta1OperationGroup" });
 
 export interface GoogleCloudRecommenderV1beta1RecommendationContent {
   /** Operations to one or more Google Cloud resources grouped in such a way that, all operations within one group are expected to be performed atomically and in an order. */
@@ -572,17 +491,15 @@ export interface GoogleCloudRecommenderV1beta1RecommendationContent {
   overview?: Record<string, unknown>;
 }
 
-export const GoogleCloudRecommenderV1beta1RecommendationContent: Schema.Schema<GoogleCloudRecommenderV1beta1RecommendationContent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operationGroups: Schema.optional(
-        Schema.Array(GoogleCloudRecommenderV1beta1OperationGroup),
-      ),
-      overview: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
+export const GoogleCloudRecommenderV1beta1RecommendationContent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operationGroups: Schema.optional(
+      Schema.Array(GoogleCloudRecommenderV1beta1OperationGroup),
+    ),
+    overview: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({
     identifier: "GoogleCloudRecommenderV1beta1RecommendationContent",
-  }) as any as Schema.Schema<GoogleCloudRecommenderV1beta1RecommendationContent>;
+  });
 
 export interface GoogleCloudRecommenderV1beta1RecommendationStateInfo {
   /** The state of the recommendation, Eg ACTIVE, SUCCEEDED, FAILED. */
@@ -598,17 +515,13 @@ export interface GoogleCloudRecommenderV1beta1RecommendationStateInfo {
   stateMetadata?: Record<string, string>;
 }
 
-export const GoogleCloudRecommenderV1beta1RecommendationStateInfo: Schema.Schema<GoogleCloudRecommenderV1beta1RecommendationStateInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      stateMetadata: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudRecommenderV1beta1RecommendationStateInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+    stateMetadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudRecommenderV1beta1RecommendationStateInfo",
-  }) as any as Schema.Schema<GoogleCloudRecommenderV1beta1RecommendationStateInfo>;
+  });
 
 export interface GoogleCloudRecommenderV1beta1Recommendation {
   /** Recommendation's priority. */
@@ -639,36 +552,30 @@ export interface GoogleCloudRecommenderV1beta1Recommendation {
   targetResources?: Array<string>;
 }
 
-export const GoogleCloudRecommenderV1beta1Recommendation: Schema.Schema<GoogleCloudRecommenderV1beta1Recommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      priority: Schema.optional(Schema.String),
-      content: Schema.optional(
-        GoogleCloudRecommenderV1beta1RecommendationContent,
-      ),
-      name: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      additionalImpact: Schema.optional(
-        Schema.Array(GoogleCloudRecommenderV1beta1Impact),
-      ),
-      associatedInsights: Schema.optional(
-        Schema.Array(
-          GoogleCloudRecommenderV1beta1RecommendationInsightReference,
-        ),
-      ),
-      recommenderSubtype: Schema.optional(Schema.String),
-      primaryImpact: Schema.optional(GoogleCloudRecommenderV1beta1Impact),
-      lastRefreshTime: Schema.optional(Schema.String),
-      xorGroupId: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      stateInfo: Schema.optional(
-        GoogleCloudRecommenderV1beta1RecommendationStateInfo,
-      ),
-      targetResources: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudRecommenderV1beta1Recommendation",
-  }) as any as Schema.Schema<GoogleCloudRecommenderV1beta1Recommendation>;
+export const GoogleCloudRecommenderV1beta1Recommendation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    priority: Schema.optional(Schema.String),
+    content: Schema.optional(
+      GoogleCloudRecommenderV1beta1RecommendationContent,
+    ),
+    name: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    additionalImpact: Schema.optional(
+      Schema.Array(GoogleCloudRecommenderV1beta1Impact),
+    ),
+    associatedInsights: Schema.optional(
+      Schema.Array(GoogleCloudRecommenderV1beta1RecommendationInsightReference),
+    ),
+    recommenderSubtype: Schema.optional(Schema.String),
+    primaryImpact: Schema.optional(GoogleCloudRecommenderV1beta1Impact),
+    lastRefreshTime: Schema.optional(Schema.String),
+    xorGroupId: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    stateInfo: Schema.optional(
+      GoogleCloudRecommenderV1beta1RecommendationStateInfo,
+    ),
+    targetResources: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudRecommenderV1beta1Recommendation" });
 
 export interface GoogleCloudRecommenderV1beta1ListRecommendersResponse {
   /** The set of recommenders available */
@@ -677,17 +584,15 @@ export interface GoogleCloudRecommenderV1beta1ListRecommendersResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudRecommenderV1beta1ListRecommendersResponse: Schema.Schema<GoogleCloudRecommenderV1beta1ListRecommendersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      recommenders: Schema.optional(
-        Schema.Array(GoogleCloudRecommenderV1beta1RecommenderType),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudRecommenderV1beta1ListRecommendersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    recommenders: Schema.optional(
+      Schema.Array(GoogleCloudRecommenderV1beta1RecommenderType),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudRecommenderV1beta1ListRecommendersResponse",
-  }) as any as Schema.Schema<GoogleCloudRecommenderV1beta1ListRecommendersResponse>;
+  });
 
 export interface GoogleCloudRecommenderV1beta1ListRecommendationsResponse {
   /** The set of recommendations for the `parent` resource. */
@@ -696,17 +601,15 @@ export interface GoogleCloudRecommenderV1beta1ListRecommendationsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudRecommenderV1beta1ListRecommendationsResponse: Schema.Schema<GoogleCloudRecommenderV1beta1ListRecommendationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      recommendations: Schema.optional(
-        Schema.Array(GoogleCloudRecommenderV1beta1Recommendation),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudRecommenderV1beta1ListRecommendationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    recommendations: Schema.optional(
+      Schema.Array(GoogleCloudRecommenderV1beta1Recommendation),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudRecommenderV1beta1ListRecommendationsResponse",
-  }) as any as Schema.Schema<GoogleCloudRecommenderV1beta1ListRecommendationsResponse>;
+  });
 
 export interface GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest {
   /** Optional. State properties user wish to include with this state. Full replace of the current state_metadata. */
@@ -715,32 +618,26 @@ export interface GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest {
   etag?: string;
 }
 
-export const GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest: Schema.Schema<GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stateMetadata: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    stateMetadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    etag: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest",
-  }) as any as Schema.Schema<GoogleCloudRecommenderV1beta1MarkInsightAcceptedRequest>;
+  });
 
 export interface GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest {
   /** Fingerprint of the Recommendation. Provides optimistic locking. */
   etag?: string;
 }
 
-export const GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest: Schema.Schema<GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    etag: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest",
-  }) as any as Schema.Schema<GoogleCloudRecommenderV1beta1MarkRecommendationDismissedRequest>;
+  });
 
 export interface GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest {
   /** State properties to include with this state. Overwrites any existing `state_metadata`. Keys must match the regex `/^a-z0-9{0,62}$/`. Values must match the regex `/^[a-zA-Z0-9_./-]{0,255}$/`. */
@@ -749,17 +646,13 @@ export interface GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest {
   etag?: string;
 }
 
-export const GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest: Schema.Schema<GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stateMetadata: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    stateMetadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    etag: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest",
-  }) as any as Schema.Schema<GoogleCloudRecommenderV1beta1MarkRecommendationClaimedRequest>;
+  });
 
 export interface GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest {
   /** State properties to include with this state. Overwrites any existing `state_metadata`. Keys must match the regex `/^a-z0-9{0,62}$/`. Values must match the regex `/^[a-zA-Z0-9_./-]{0,255}$/`. */
@@ -768,17 +661,13 @@ export interface GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest {
   etag?: string;
 }
 
-export const GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest: Schema.Schema<GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stateMetadata: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    stateMetadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    etag: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest",
-  }) as any as Schema.Schema<GoogleCloudRecommenderV1beta1MarkRecommendationFailedRequest>;
+  });
 
 export interface GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest {
   /** State properties to include with this state. Overwrites any existing `state_metadata`. Keys must match the regex `/^a-z0-9{0,62}$/`. Values must match the regex `/^[a-zA-Z0-9_./-]{0,255}$/`. */
@@ -787,18 +676,14 @@ export interface GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest
   etag?: string;
 }
 
-export const GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest: Schema.Schema<GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stateMetadata: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    stateMetadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    etag: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest",
-  }) as any as Schema.Schema<GoogleCloudRecommenderV1beta1MarkRecommendationSucceededRequest>;
+  });
 
 // ==========================================================================
 // Operations

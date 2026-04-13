@@ -29,15 +29,11 @@ export interface ApplicationTransferParam {
   key?: string;
 }
 
-export const ApplicationTransferParam: Schema.Schema<ApplicationTransferParam> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.Array(Schema.String)),
-      key: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ApplicationTransferParam",
-  }) as any as Schema.Schema<ApplicationTransferParam>;
+export const ApplicationTransferParam =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(Schema.Array(Schema.String)),
+    key: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ApplicationTransferParam" });
 
 export interface Application {
   /** The application's ID. Retrievable by using the [`applications.list()`](https://developers.google.com/workspace/admin/data-transfer/reference/rest/v1/applications/list) method. */
@@ -52,18 +48,13 @@ export interface Application {
   etag?: string;
 }
 
-export const Application: Schema.Schema<Application> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      transferParams: Schema.optional(Schema.Array(ApplicationTransferParam)),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Application",
-  }) as any as Schema.Schema<Application>;
+export const Application = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  transferParams: Schema.optional(Schema.Array(ApplicationTransferParam)),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "Application" });
 
 export interface ApplicationDataTransfer {
   /** The application's ID. */
@@ -74,18 +65,14 @@ export interface ApplicationDataTransfer {
   applicationTransferParams?: Array<ApplicationTransferParam>;
 }
 
-export const ApplicationDataTransfer: Schema.Schema<ApplicationDataTransfer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      applicationId: Schema.optional(Schema.String),
-      applicationTransferStatus: Schema.optional(Schema.String),
-      applicationTransferParams: Schema.optional(
-        Schema.Array(ApplicationTransferParam),
-      ),
-    }),
-  ).annotate({
-    identifier: "ApplicationDataTransfer",
-  }) as any as Schema.Schema<ApplicationDataTransfer>;
+export const ApplicationDataTransfer =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    applicationId: Schema.optional(Schema.String),
+    applicationTransferStatus: Schema.optional(Schema.String),
+    applicationTransferParams: Schema.optional(
+      Schema.Array(ApplicationTransferParam),
+    ),
+  }).annotate({ identifier: "ApplicationDataTransfer" });
 
 export interface DataTransfer {
   /** ETag of the resource. */
@@ -106,23 +93,18 @@ export interface DataTransfer {
   oldOwnerUserId?: string;
 }
 
-export const DataTransfer: Schema.Schema<DataTransfer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      etag: Schema.optional(Schema.String),
-      overallTransferStatusCode: Schema.optional(Schema.String),
-      requestTime: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      newOwnerUserId: Schema.optional(Schema.String),
-      applicationDataTransfers: Schema.optional(
-        Schema.Array(ApplicationDataTransfer),
-      ),
-      id: Schema.optional(Schema.String),
-      oldOwnerUserId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DataTransfer",
-  }) as any as Schema.Schema<DataTransfer>;
+export const DataTransfer = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  etag: Schema.optional(Schema.String),
+  overallTransferStatusCode: Schema.optional(Schema.String),
+  requestTime: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  newOwnerUserId: Schema.optional(Schema.String),
+  applicationDataTransfers: Schema.optional(
+    Schema.Array(ApplicationDataTransfer),
+  ),
+  id: Schema.optional(Schema.String),
+  oldOwnerUserId: Schema.optional(Schema.String),
+}).annotate({ identifier: "DataTransfer" });
 
 export interface DataTransfersListResponse {
   /** Identifies the resource as a collection of data transfer requests. */
@@ -135,17 +117,13 @@ export interface DataTransfersListResponse {
   nextPageToken?: string;
 }
 
-export const DataTransfersListResponse: Schema.Schema<DataTransfersListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      dataTransfers: Schema.optional(Schema.Array(DataTransfer)),
-      etag: Schema.optional(Schema.String),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DataTransfersListResponse",
-  }) as any as Schema.Schema<DataTransfersListResponse>;
+export const DataTransfersListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    dataTransfers: Schema.optional(Schema.Array(DataTransfer)),
+    etag: Schema.optional(Schema.String),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DataTransfersListResponse" });
 
 export interface ApplicationsListResponse {
   /** Identifies the resource as a collection of Applications. */
@@ -158,17 +136,13 @@ export interface ApplicationsListResponse {
   applications?: Array<Application>;
 }
 
-export const ApplicationsListResponse: Schema.Schema<ApplicationsListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      nextPageToken: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      applications: Schema.optional(Schema.Array(Application)),
-    }),
-  ).annotate({
-    identifier: "ApplicationsListResponse",
-  }) as any as Schema.Schema<ApplicationsListResponse>;
+export const ApplicationsListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    nextPageToken: Schema.optional(Schema.String),
+    etag: Schema.optional(Schema.String),
+    applications: Schema.optional(Schema.Array(Application)),
+  }).annotate({ identifier: "ApplicationsListResponse" });
 
 // ==========================================================================
 // Operations

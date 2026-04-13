@@ -29,29 +29,19 @@ export interface HttpGraphql {
   timeout?: string;
 }
 
-export const HttpGraphql: Schema.Schema<HttpGraphql> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-      timeout: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "HttpGraphql",
-  }) as any as Schema.Schema<HttpGraphql>;
+export const HttpGraphql = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  uri: Schema.optional(Schema.String),
+  timeout: Schema.optional(Schema.String),
+}).annotate({ identifier: "HttpGraphql" });
 
 export interface CloudSqlInstance {
   /** Required. Name of the CloudSQL instance, in the format: ``` projects/{project}/locations/{location}/instances/{instance} ``` */
   instance?: string;
 }
 
-export const CloudSqlInstance: Schema.Schema<CloudSqlInstance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      instance: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CloudSqlInstance",
-  }) as any as Schema.Schema<CloudSqlInstance>;
+export const CloudSqlInstance = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  instance: Schema.optional(Schema.String),
+}).annotate({ identifier: "CloudSqlInstance" });
 
 export interface PostgreSql {
   /** Optional. User-configured PostgreSQL schema. Defaults to "public" if not specified. */
@@ -78,18 +68,15 @@ export interface PostgreSql {
   unlinked?: boolean;
 }
 
-export const PostgreSql: Schema.Schema<PostgreSql> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      schema: Schema.optional(Schema.String),
-      ephemeral: Schema.optional(Schema.Boolean),
-      schemaValidation: Schema.optional(Schema.String),
-      cloudSql: Schema.optional(CloudSqlInstance),
-      database: Schema.optional(Schema.String),
-      schemaMigration: Schema.optional(Schema.String),
-      unlinked: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "PostgreSql" }) as any as Schema.Schema<PostgreSql>;
+export const PostgreSql = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  schema: Schema.optional(Schema.String),
+  ephemeral: Schema.optional(Schema.Boolean),
+  schemaValidation: Schema.optional(Schema.String),
+  cloudSql: Schema.optional(CloudSqlInstance),
+  database: Schema.optional(Schema.String),
+  schemaMigration: Schema.optional(Schema.String),
+  unlinked: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "PostgreSql" });
 
 export interface Datasource {
   /** HTTP GraphQL server webhook configurations. */
@@ -98,13 +85,10 @@ export interface Datasource {
   postgresql?: PostgreSql;
 }
 
-export const Datasource: Schema.Schema<Datasource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      httpGraphql: Schema.optional(HttpGraphql),
-      postgresql: Schema.optional(PostgreSql),
-    }),
-  ).annotate({ identifier: "Datasource" }) as any as Schema.Schema<Datasource>;
+export const Datasource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  httpGraphql: Schema.optional(HttpGraphql),
+  postgresql: Schema.optional(PostgreSql),
+}).annotate({ identifier: "Datasource" });
 
 export interface File {
   /** Required. The file name including folder path, if applicable. The path should be relative to a local workspace (e.g. dataconnect/(schema|connector)/*.gql) and not an absolute path (e.g. /absolute/path/(schema|connector)/*.gql). */
@@ -113,25 +97,19 @@ export interface File {
   content?: string;
 }
 
-export const File: Schema.Schema<File> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      path: Schema.optional(Schema.String),
-      content: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "File" }) as any as Schema.Schema<File>;
+export const File = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  path: Schema.optional(Schema.String),
+  content: Schema.optional(Schema.String),
+}).annotate({ identifier: "File" });
 
 export interface Source {
   /** Required. The files that comprise the source set. */
   files?: Array<File>;
 }
 
-export const Source: Schema.Schema<Source> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      files: Schema.optional(Schema.Array(File)),
-    }),
-  ).annotate({ identifier: "Source" }) as any as Schema.Schema<Source>;
+export const Source = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  files: Schema.optional(Schema.Array(File)),
+}).annotate({ identifier: "Source" });
 
 export interface Firebasedataconnect_Schema {
   /** Output only. [Output only] Update time stamp. */
@@ -158,24 +136,20 @@ export interface Firebasedataconnect_Schema {
   etag?: string;
 }
 
-export const Firebasedataconnect_Schema: Schema.Schema<Firebasedataconnect_Schema> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateTime: Schema.optional(Schema.String),
-      datasources: Schema.optional(Schema.Array(Datasource)),
-      name: Schema.optional(Schema.String),
-      reconciling: Schema.optional(Schema.Boolean),
-      displayName: Schema.optional(Schema.String),
-      source: Schema.optional(Source),
-      createTime: Schema.optional(Schema.String),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      uid: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Firebasedataconnect_Schema",
-  }) as any as Schema.Schema<Firebasedataconnect_Schema>;
+export const Firebasedataconnect_Schema =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateTime: Schema.optional(Schema.String),
+    datasources: Schema.optional(Schema.Array(Datasource)),
+    name: Schema.optional(Schema.String),
+    reconciling: Schema.optional(Schema.Boolean),
+    displayName: Schema.optional(Schema.String),
+    source: Schema.optional(Source),
+    createTime: Schema.optional(Schema.String),
+    annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    uid: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    etag: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Firebasedataconnect_Schema" });
 
 export interface Workaround {
   /** Why would this workaround address the error and warning. */
@@ -186,14 +160,11 @@ export interface Workaround {
   description?: string;
 }
 
-export const Workaround: Schema.Schema<Workaround> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reason: Schema.optional(Schema.String),
-      replace: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Workaround" }) as any as Schema.Schema<Workaround>;
+export const Workaround = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  reason: Schema.optional(Schema.String),
+  replace: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "Workaround" });
 
 export interface GraphqlErrorExtensions {
   /** More detailed error message to assist debugging. It contains application business logic that are inappropriate to leak publicly. In the emulator, Data Connect API always includes it to assist local development and debugging. In the backend, ConnectorService always hides it. GraphqlService without impersonation always include it. GraphqlService with impersonation includes it only if explicitly opted-in with `include_debug_details` in `GraphqlRequestExtensions`. */
@@ -232,18 +203,15 @@ export interface GraphqlErrorExtensions {
   file?: string;
 }
 
-export const GraphqlErrorExtensions: Schema.Schema<GraphqlErrorExtensions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      debugDetails: Schema.optional(Schema.String),
-      workarounds: Schema.optional(Schema.Array(Workaround)),
-      warningLevel: Schema.optional(Schema.String),
-      code: Schema.optional(Schema.String),
-      file: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GraphqlErrorExtensions",
-  }) as any as Schema.Schema<GraphqlErrorExtensions>;
+export const GraphqlErrorExtensions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    debugDetails: Schema.optional(Schema.String),
+    workarounds: Schema.optional(Schema.Array(Workaround)),
+    warningLevel: Schema.optional(Schema.String),
+    code: Schema.optional(Schema.String),
+    file: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "GraphqlErrorExtensions" });
 
 export interface SourceLocation {
   /** Line number starting at 1. */
@@ -252,15 +220,10 @@ export interface SourceLocation {
   column?: number;
 }
 
-export const SourceLocation: Schema.Schema<SourceLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      line: Schema.optional(Schema.Number),
-      column: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "SourceLocation",
-  }) as any as Schema.Schema<SourceLocation>;
+export const SourceLocation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  line: Schema.optional(Schema.Number),
+  column: Schema.optional(Schema.Number),
+}).annotate({ identifier: "SourceLocation" });
 
 export interface GraphqlError {
   /** Additional error information. */
@@ -273,17 +236,12 @@ export interface GraphqlError {
   path?: Array<unknown>;
 }
 
-export const GraphqlError: Schema.Schema<GraphqlError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      extensions: Schema.optional(GraphqlErrorExtensions),
-      message: Schema.optional(Schema.String),
-      locations: Schema.optional(Schema.Array(SourceLocation)),
-      path: Schema.optional(Schema.Array(Schema.Unknown)),
-    }),
-  ).annotate({
-    identifier: "GraphqlError",
-  }) as any as Schema.Schema<GraphqlError>;
+export const GraphqlError = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  extensions: Schema.optional(GraphqlErrorExtensions),
+  message: Schema.optional(Schema.String),
+  locations: Schema.optional(Schema.Array(SourceLocation)),
+  path: Schema.optional(Schema.Array(Schema.Unknown)),
+}).annotate({ identifier: "GraphqlError" });
 
 export interface DataConnectProperties {
   /** The path under response.data where the rest of the fields apply. Each element may be a string (field name) or number (array index). The root of response.data is denoted by the empty list `[]`. */
@@ -296,31 +254,22 @@ export interface DataConnectProperties {
   maxAge?: string;
 }
 
-export const DataConnectProperties: Schema.Schema<DataConnectProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      path: Schema.optional(Schema.Array(Schema.Unknown)),
-      entityId: Schema.optional(Schema.String),
-      entityIds: Schema.optional(Schema.Array(Schema.String)),
-      maxAge: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DataConnectProperties",
-  }) as any as Schema.Schema<DataConnectProperties>;
+export const DataConnectProperties = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  path: Schema.optional(Schema.Array(Schema.Unknown)),
+  entityId: Schema.optional(Schema.String),
+  entityIds: Schema.optional(Schema.Array(Schema.String)),
+  maxAge: Schema.optional(Schema.String),
+}).annotate({ identifier: "DataConnectProperties" });
 
 export interface GraphqlResponseExtensions {
   /** Data Connect specific GraphQL extension, a list of paths and properties. */
   dataConnect?: Array<DataConnectProperties>;
 }
 
-export const GraphqlResponseExtensions: Schema.Schema<GraphqlResponseExtensions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataConnect: Schema.optional(Schema.Array(DataConnectProperties)),
-    }),
-  ).annotate({
-    identifier: "GraphqlResponseExtensions",
-  }) as any as Schema.Schema<GraphqlResponseExtensions>;
+export const GraphqlResponseExtensions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataConnect: Schema.optional(Schema.Array(DataConnectProperties)),
+  }).annotate({ identifier: "GraphqlResponseExtensions" });
 
 export interface GraphqlResponse {
   /** Errors of this response. If the data entry in the response is not present, the errors entry must be present. It conforms to https://spec.graphql.org/draft/#sec-Errors . */
@@ -331,16 +280,11 @@ export interface GraphqlResponse {
   data?: Record<string, unknown>;
 }
 
-export const GraphqlResponse: Schema.Schema<GraphqlResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errors: Schema.optional(Schema.Array(GraphqlError)),
-      extensions: Schema.optional(GraphqlResponseExtensions),
-      data: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
-    identifier: "GraphqlResponse",
-  }) as any as Schema.Schema<GraphqlResponse>;
+export const GraphqlResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  errors: Schema.optional(Schema.Array(GraphqlError)),
+  extensions: Schema.optional(GraphqlResponseExtensions),
+  data: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "GraphqlResponse" });
 
 export interface Impersonation {
   /** Evaluate the auth policy as an unauthenticated request. Can only be set to true. */
@@ -351,30 +295,21 @@ export interface Impersonation {
   includeDebugDetails?: boolean;
 }
 
-export const Impersonation: Schema.Schema<Impersonation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unauthenticated: Schema.optional(Schema.Boolean),
-      authClaims: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      includeDebugDetails: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "Impersonation",
-  }) as any as Schema.Schema<Impersonation>;
+export const Impersonation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  unauthenticated: Schema.optional(Schema.Boolean),
+  authClaims: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  includeDebugDetails: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Impersonation" });
 
 export interface GraphqlRequestExtensions {
   /** Optional. If set, impersonate a request with given Firebase Auth context and evaluate the auth policies on the operation. If omitted, bypass any defined auth policies. */
   impersonate?: Impersonation;
 }
 
-export const GraphqlRequestExtensions: Schema.Schema<GraphqlRequestExtensions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      impersonate: Schema.optional(Impersonation),
-    }),
-  ).annotate({
-    identifier: "GraphqlRequestExtensions",
-  }) as any as Schema.Schema<GraphqlRequestExtensions>;
+export const GraphqlRequestExtensions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    impersonate: Schema.optional(Impersonation),
+  }).annotate({ identifier: "GraphqlRequestExtensions" });
 
 export interface ImpersonateRequest {
   /** Optional. Values for GraphQL variables provided in this request. */
@@ -385,16 +320,11 @@ export interface ImpersonateRequest {
   extensions?: GraphqlRequestExtensions;
 }
 
-export const ImpersonateRequest: Schema.Schema<ImpersonateRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      variables: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      operationName: Schema.optional(Schema.String),
-      extensions: Schema.optional(GraphqlRequestExtensions),
-    }),
-  ).annotate({
-    identifier: "ImpersonateRequest",
-  }) as any as Schema.Schema<ImpersonateRequest>;
+export const ImpersonateRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  variables: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  operationName: Schema.optional(Schema.String),
+  extensions: Schema.optional(GraphqlRequestExtensions),
+}).annotate({ identifier: "ImpersonateRequest" });
 
 export interface ClientCache {
   /** Optional. A field that, if true, means that responses served by this connector will include entityIds in GraphQL response extensions. This helps the client SDK cache responses in an improved way, known as "normalized caching", if caching is enabled on the client. Each entityId is a stable key based on primary key values. Therefore, this field should only be set to true if the primary keys of accessed tables do not contain sensitive information. */
@@ -403,15 +333,10 @@ export interface ClientCache {
   strictValidationEnabled?: boolean;
 }
 
-export const ClientCache: Schema.Schema<ClientCache> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entityIdIncluded: Schema.optional(Schema.Boolean),
-      strictValidationEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ClientCache",
-  }) as any as Schema.Schema<ClientCache>;
+export const ClientCache = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  entityIdIncluded: Schema.optional(Schema.Boolean),
+  strictValidationEnabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "ClientCache" });
 
 export interface Connector {
   /** Output only. A field that if true, indicates that the system is working to compile and deploy the connector. */
@@ -438,22 +363,19 @@ export interface Connector {
   name?: string;
 }
 
-export const Connector: Schema.Schema<Connector> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reconciling: Schema.optional(Schema.Boolean),
-      displayName: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      uid: Schema.optional(Schema.String),
-      source: Schema.optional(Source),
-      etag: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      updateTime: Schema.optional(Schema.String),
-      clientCache: Schema.optional(ClientCache),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Connector" }) as any as Schema.Schema<Connector>;
+export const Connector = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  reconciling: Schema.optional(Schema.Boolean),
+  displayName: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  uid: Schema.optional(Schema.String),
+  source: Schema.optional(Source),
+  etag: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  updateTime: Schema.optional(Schema.String),
+  clientCache: Schema.optional(ClientCache),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Connector" });
 
 export interface GraphqlRequest {
   /** Required. The GraphQL query document source. */
@@ -466,17 +388,12 @@ export interface GraphqlRequest {
   operationName?: string;
 }
 
-export const GraphqlRequest: Schema.Schema<GraphqlRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      query: Schema.optional(Schema.String),
-      variables: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      extensions: Schema.optional(GraphqlRequestExtensions),
-      operationName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GraphqlRequest",
-  }) as any as Schema.Schema<GraphqlRequest>;
+export const GraphqlRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  query: Schema.optional(Schema.String),
+  variables: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  extensions: Schema.optional(GraphqlRequestExtensions),
+  operationName: Schema.optional(Schema.String),
+}).annotate({ identifier: "GraphqlRequest" });
 
 export interface ExecuteMutationResponse {
   /** Errors of this response. */
@@ -487,16 +404,12 @@ export interface ExecuteMutationResponse {
   extensions?: GraphqlResponseExtensions;
 }
 
-export const ExecuteMutationResponse: Schema.Schema<ExecuteMutationResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errors: Schema.optional(Schema.Array(GraphqlError)),
-      data: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      extensions: Schema.optional(GraphqlResponseExtensions),
-    }),
-  ).annotate({
-    identifier: "ExecuteMutationResponse",
-  }) as any as Schema.Schema<ExecuteMutationResponse>;
+export const ExecuteMutationResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    errors: Schema.optional(Schema.Array(GraphqlError)),
+    data: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    extensions: Schema.optional(GraphqlResponseExtensions),
+  }).annotate({ identifier: "ExecuteMutationResponse" });
 
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -507,16 +420,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
@@ -531,16 +441,13 @@ export interface Operation {
   name?: string;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      done: Schema.optional(Schema.Boolean),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      error: Schema.optional(Status),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  done: Schema.optional(Schema.Boolean),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  error: Schema.optional(Status),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Operation" });
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -551,16 +458,13 @@ export interface ListOperationsResponse {
   nextPageToken?: string;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(Schema.Array(Operation)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    operations: Schema.optional(Schema.Array(Operation)),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 export interface ExecuteQueryResponse {
   /** The result of executing the requested operation. */
@@ -571,16 +475,11 @@ export interface ExecuteQueryResponse {
   errors?: Array<GraphqlError>;
 }
 
-export const ExecuteQueryResponse: Schema.Schema<ExecuteQueryResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      data: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      extensions: Schema.optional(GraphqlResponseExtensions),
-      errors: Schema.optional(Schema.Array(GraphqlError)),
-    }),
-  ).annotate({
-    identifier: "ExecuteQueryResponse",
-  }) as any as Schema.Schema<ExecuteQueryResponse>;
+export const ExecuteQueryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  data: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  extensions: Schema.optional(GraphqlResponseExtensions),
+  errors: Schema.optional(Schema.Array(GraphqlError)),
+}).annotate({ identifier: "ExecuteQueryResponse" });
 
 export interface Location {
   /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
@@ -595,16 +494,13 @@ export interface Location {
   labels?: Record<string, string>;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      locationId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  locationId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "Location" });
 
 export interface ExecuteMutationRequest {
   /** Required. The name of the GraphQL operation name. Required because all Connector operations must be named. See https://graphql.org/learn/queries/#operation-name. */
@@ -613,15 +509,12 @@ export interface ExecuteMutationRequest {
   variables?: Record<string, unknown>;
 }
 
-export const ExecuteMutationRequest: Schema.Schema<ExecuteMutationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operationName: Schema.optional(Schema.String),
-      variables: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
-    identifier: "ExecuteMutationRequest",
-  }) as any as Schema.Schema<ExecuteMutationRequest>;
+export const ExecuteMutationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    operationName: Schema.optional(Schema.String),
+    variables: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  },
+).annotate({ identifier: "ExecuteMutationRequest" });
 
 export interface ListSchemasResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -632,16 +525,11 @@ export interface ListSchemasResponse {
   schemas?: Array<Firebasedataconnect_Schema>;
 }
 
-export const ListSchemasResponse: Schema.Schema<ListSchemasResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      schemas: Schema.optional(Schema.Array(Firebasedataconnect_Schema)),
-    }),
-  ).annotate({
-    identifier: "ListSchemasResponse",
-  }) as any as Schema.Schema<ListSchemasResponse>;
+export const ListSchemasResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+  schemas: Schema.optional(Schema.Array(Firebasedataconnect_Schema)),
+}).annotate({ identifier: "ListSchemasResponse" });
 
 export interface ListConnectorsResponse {
   /** The list of Connectors. */
@@ -652,16 +540,13 @@ export interface ListConnectorsResponse {
   nextPageToken?: string;
 }
 
-export const ListConnectorsResponse: Schema.Schema<ListConnectorsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      connectors: Schema.optional(Schema.Array(Connector)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListConnectorsResponse",
-  }) as any as Schema.Schema<ListConnectorsResponse>;
+export const ListConnectorsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    connectors: Schema.optional(Schema.Array(Connector)),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ListConnectorsResponse" });
 
 export interface OperationMetadata {
   /** Output only. The time the operation was created. */
@@ -680,27 +565,21 @@ export interface OperationMetadata {
   apiVersion?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      endTime: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      apiVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createTime: Schema.optional(Schema.String),
+  statusMessage: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  requestedCancellation: Schema.optional(Schema.Boolean),
+  endTime: Schema.optional(Schema.String),
+  verb: Schema.optional(Schema.String),
+  apiVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationMetadata" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -709,15 +588,10 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(Location)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface Service {
   /** Output only. A field that if true, indicates that the system is working update the service. */
@@ -740,27 +614,23 @@ export interface Service {
   name?: string;
 }
 
-export const Service: Schema.Schema<Service> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reconciling: Schema.optional(Schema.Boolean),
-      displayName: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      uid: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      etag: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Service" }) as any as Schema.Schema<Service>;
+export const Service = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  reconciling: Schema.optional(Schema.Boolean),
+  displayName: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  uid: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  etag: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Service" });
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelOperationRequest",
-  }) as any as Schema.Schema<CancelOperationRequest>;
+export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelOperationRequest" });
 
 export interface ExecuteQueryRequest {
   /** Required. The name of the GraphQL operation name. Required because all Connector operations must be named. See https://graphql.org/learn/queries/#operation-name. */
@@ -769,15 +639,10 @@ export interface ExecuteQueryRequest {
   variables?: Record<string, unknown>;
 }
 
-export const ExecuteQueryRequest: Schema.Schema<ExecuteQueryRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operationName: Schema.optional(Schema.String),
-      variables: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
-    identifier: "ExecuteQueryRequest",
-  }) as any as Schema.Schema<ExecuteQueryRequest>;
+export const ExecuteQueryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  operationName: Schema.optional(Schema.String),
+  variables: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "ExecuteQueryRequest" });
 
 export interface ListServicesResponse {
   /** Locations that could not be reached. */
@@ -788,16 +653,11 @@ export interface ListServicesResponse {
   services?: Array<Service>;
 }
 
-export const ListServicesResponse: Schema.Schema<ListServicesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-      services: Schema.optional(Schema.Array(Service)),
-    }),
-  ).annotate({
-    identifier: "ListServicesResponse",
-  }) as any as Schema.Schema<ListServicesResponse>;
+export const ListServicesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+  nextPageToken: Schema.optional(Schema.String),
+  services: Schema.optional(Schema.Array(Service)),
+}).annotate({ identifier: "ListServicesResponse" });
 
 // ==========================================================================
 // Operations

@@ -33,17 +33,12 @@ export interface StackPack {
   id?: string;
 }
 
-export const StackPack: Schema.Schema<StackPack> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      descriptions: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      title: Schema.optional(Schema.String),
-      iconDataURL: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "StackPack" }) as any as Schema.Schema<StackPack>;
+export const StackPack = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  descriptions: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  title: Schema.optional(Schema.String),
+  iconDataURL: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+}).annotate({ identifier: "StackPack" });
 
 export interface AuditRefs {
   /** The weight this audit's score has on the overall category score. */
@@ -58,16 +53,13 @@ export interface AuditRefs {
   id?: string;
 }
 
-export const AuditRefs: Schema.Schema<AuditRefs> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      weight: Schema.optional(Schema.Number),
-      group: Schema.optional(Schema.String),
-      acronym: Schema.optional(Schema.String),
-      relevantAudits: Schema.optional(Schema.Array(Schema.String)),
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "AuditRefs" }) as any as Schema.Schema<AuditRefs>;
+export const AuditRefs = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  weight: Schema.optional(Schema.Number),
+  group: Schema.optional(Schema.String),
+  acronym: Schema.optional(Schema.String),
+  relevantAudits: Schema.optional(Schema.Array(Schema.String)),
+  id: Schema.optional(Schema.String),
+}).annotate({ identifier: "AuditRefs" });
 
 export interface LighthouseCategoryV5 {
   /** A description for the manual audits in the category. */
@@ -84,19 +76,14 @@ export interface LighthouseCategoryV5 {
   description?: string;
 }
 
-export const LighthouseCategoryV5: Schema.Schema<LighthouseCategoryV5> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      manualDescription: Schema.optional(Schema.String),
-      auditRefs: Schema.optional(Schema.Array(AuditRefs)),
-      id: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      score: Schema.optional(Schema.Unknown),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LighthouseCategoryV5",
-  }) as any as Schema.Schema<LighthouseCategoryV5>;
+export const LighthouseCategoryV5 = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  manualDescription: Schema.optional(Schema.String),
+  auditRefs: Schema.optional(Schema.Array(AuditRefs)),
+  id: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  score: Schema.optional(Schema.Unknown),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "LighthouseCategoryV5" });
 
 export interface Categories {
   /** The accessibility category, containing all accessibility related audits. */
@@ -111,28 +98,22 @@ export interface Categories {
   "best-practices"?: LighthouseCategoryV5;
 }
 
-export const Categories: Schema.Schema<Categories> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accessibility: Schema.optional(LighthouseCategoryV5),
-      pwa: Schema.optional(LighthouseCategoryV5),
-      performance: Schema.optional(LighthouseCategoryV5),
-      seo: Schema.optional(LighthouseCategoryV5),
-      "best-practices": Schema.optional(LighthouseCategoryV5),
-    }),
-  ).annotate({ identifier: "Categories" }) as any as Schema.Schema<Categories>;
+export const Categories = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  accessibility: Schema.optional(LighthouseCategoryV5),
+  pwa: Schema.optional(LighthouseCategoryV5),
+  performance: Schema.optional(LighthouseCategoryV5),
+  seo: Schema.optional(LighthouseCategoryV5),
+  "best-practices": Schema.optional(LighthouseCategoryV5),
+}).annotate({ identifier: "Categories" });
 
 export interface Timing {
   /** The total duration of Lighthouse's run. */
   total?: number;
 }
 
-export const Timing: Schema.Schema<Timing> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      total: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Timing" }) as any as Schema.Schema<Timing>;
+export const Timing = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  total: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Timing" });
 
 export interface LhrEntity {
   /** Optional. An optional homepage URL of the entity. */
@@ -149,17 +130,14 @@ export interface LhrEntity {
   origins?: Array<string>;
 }
 
-export const LhrEntity: Schema.Schema<LhrEntity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      homepage: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      isUnrecognized: Schema.optional(Schema.Boolean),
-      category: Schema.optional(Schema.String),
-      isFirstParty: Schema.optional(Schema.Boolean),
-      origins: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "LhrEntity" }) as any as Schema.Schema<LhrEntity>;
+export const LhrEntity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  homepage: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  isUnrecognized: Schema.optional(Schema.Boolean),
+  category: Schema.optional(Schema.String),
+  isFirstParty: Schema.optional(Schema.Boolean),
+  origins: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "LhrEntity" });
 
 export interface MetricSavings {
   /** Optional. Optional numeric value representing the audit's savings for the FCP metric. */
@@ -174,18 +152,13 @@ export interface MetricSavings {
   LCP?: number;
 }
 
-export const MetricSavings: Schema.Schema<MetricSavings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      FCP: Schema.optional(Schema.Number),
-      INP: Schema.optional(Schema.Number),
-      TBT: Schema.optional(Schema.Number),
-      CLS: Schema.optional(Schema.Number),
-      LCP: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "MetricSavings",
-  }) as any as Schema.Schema<MetricSavings>;
+export const MetricSavings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  FCP: Schema.optional(Schema.Number),
+  INP: Schema.optional(Schema.Number),
+  TBT: Schema.optional(Schema.Number),
+  CLS: Schema.optional(Schema.Number),
+  LCP: Schema.optional(Schema.Number),
+}).annotate({ identifier: "MetricSavings" });
 
 export interface LighthouseAuditResultV5 {
   /** The audit's id. */
@@ -216,26 +189,22 @@ export interface LighthouseAuditResultV5 {
   metricSavings?: MetricSavings;
 }
 
-export const LighthouseAuditResultV5: Schema.Schema<LighthouseAuditResultV5> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      details: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      scoreDisplayMode: Schema.optional(Schema.String),
-      displayValue: Schema.optional(Schema.String),
-      warnings: Schema.optional(Schema.Unknown),
-      numericValue: Schema.optional(Schema.Number),
-      errorMessage: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      score: Schema.optional(Schema.Unknown),
-      explanation: Schema.optional(Schema.String),
-      numericUnit: Schema.optional(Schema.String),
-      metricSavings: Schema.optional(MetricSavings),
-    }),
-  ).annotate({
-    identifier: "LighthouseAuditResultV5",
-  }) as any as Schema.Schema<LighthouseAuditResultV5>;
+export const LighthouseAuditResultV5 =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    details: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    scoreDisplayMode: Schema.optional(Schema.String),
+    displayValue: Schema.optional(Schema.String),
+    warnings: Schema.optional(Schema.Unknown),
+    numericValue: Schema.optional(Schema.Number),
+    errorMessage: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    title: Schema.optional(Schema.String),
+    score: Schema.optional(Schema.Unknown),
+    explanation: Schema.optional(Schema.String),
+    numericUnit: Schema.optional(Schema.String),
+    metricSavings: Schema.optional(MetricSavings),
+  }).annotate({ identifier: "LighthouseAuditResultV5" });
 
 export interface Environment {
   /** The user agent string of the version of Chrome used. */
@@ -248,17 +217,12 @@ export interface Environment {
   networkUserAgent?: string;
 }
 
-export const Environment: Schema.Schema<Environment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hostUserAgent: Schema.optional(Schema.String),
-      benchmarkIndex: Schema.optional(Schema.Number),
-      credits: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      networkUserAgent: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Environment",
-  }) as any as Schema.Schema<Environment>;
+export const Environment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  hostUserAgent: Schema.optional(Schema.String),
+  benchmarkIndex: Schema.optional(Schema.Number),
+  credits: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  networkUserAgent: Schema.optional(Schema.String),
+}).annotate({ identifier: "Environment" });
 
 export interface RuntimeError {
   /** The enumerated Lighthouse Error code. */
@@ -267,15 +231,10 @@ export interface RuntimeError {
   message?: string;
 }
 
-export const RuntimeError: Schema.Schema<RuntimeError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RuntimeError",
-  }) as any as Schema.Schema<RuntimeError>;
+export const RuntimeError = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+}).annotate({ identifier: "RuntimeError" });
 
 export interface RendererFormattedStrings {
   /** Label for a button that opens the Treemap App */
@@ -376,73 +335,66 @@ export interface RendererFormattedStrings {
   runtimeSettingsFetchTime?: string;
 }
 
-export const RendererFormattedStrings: Schema.Schema<RendererFormattedStrings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      viewTreemapLabel: Schema.optional(Schema.String),
-      thirdPartyResourcesLabel: Schema.optional(Schema.String),
-      runtimeSettingsBenchmark: Schema.optional(Schema.String),
-      dropdownSaveJSON: Schema.optional(Schema.String),
-      opportunityResourceColumnLabel: Schema.optional(Schema.String),
-      runtimeMobileEmulation: Schema.optional(Schema.String),
-      runtimeSettingsNetworkThrottling: Schema.optional(Schema.String),
-      runtimeUnknown: Schema.optional(Schema.String),
-      dropdownPrintSummary: Schema.optional(Schema.String),
-      dropdownSaveGist: Schema.optional(Schema.String),
-      passedAuditsGroupTitle: Schema.optional(Schema.String),
-      runtimeSettingsCPUThrottling: Schema.optional(Schema.String),
-      auditGroupExpandTooltip: Schema.optional(Schema.String),
-      errorMissingAuditInfo: Schema.optional(Schema.String),
-      lsPerformanceCategoryDescription: Schema.optional(Schema.String),
-      runtimeSettingsUA: Schema.optional(Schema.String),
-      runtimeNoEmulation: Schema.optional(Schema.String),
-      runtimeSettingsAxeVersion: Schema.optional(Schema.String),
-      scorescaleLabel: Schema.optional(Schema.String),
-      dropdownDarkTheme: Schema.optional(Schema.String),
-      dropdownViewer: Schema.optional(Schema.String),
-      crcInitialNavigation: Schema.optional(Schema.String),
-      warningHeader: Schema.optional(Schema.String),
-      notApplicableAuditsGroupTitle: Schema.optional(Schema.String),
-      crcLongestDurationLabel: Schema.optional(Schema.String),
-      dropdownPrintExpanded: Schema.optional(Schema.String),
-      varianceDisclaimer: Schema.optional(Schema.String),
-      dropdownCopyJSON: Schema.optional(Schema.String),
-      throttlingProvided: Schema.optional(Schema.String),
-      dropdownSaveHTML: Schema.optional(Schema.String),
-      opportunitySavingsColumnLabel: Schema.optional(Schema.String),
-      runtimeSettingsTitle: Schema.optional(Schema.String),
-      footerIssue: Schema.optional(Schema.String),
-      runtimeSettingsChannel: Schema.optional(Schema.String),
-      runtimeSettingsDevice: Schema.optional(Schema.String),
-      runtimeSettingsUANetwork: Schema.optional(Schema.String),
-      snippetCollapseButtonLabel: Schema.optional(Schema.String),
-      runtimeDesktopEmulation: Schema.optional(Schema.String),
-      warningAuditsGroupTitle: Schema.optional(Schema.String),
-      runtimeSettingsUrl: Schema.optional(Schema.String),
-      toplevelWarningsMessage: Schema.optional(Schema.String),
-      showRelevantAudits: Schema.optional(Schema.String),
-      manualAuditsGroupTitle: Schema.optional(Schema.String),
-      snippetExpandButtonLabel: Schema.optional(Schema.String),
-      calculatorLink: Schema.optional(Schema.String),
-      errorLabel: Schema.optional(Schema.String),
-      labDataTitle: Schema.optional(Schema.String),
-      runtimeSettingsFetchTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RendererFormattedStrings",
-  }) as any as Schema.Schema<RendererFormattedStrings>;
+export const RendererFormattedStrings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    viewTreemapLabel: Schema.optional(Schema.String),
+    thirdPartyResourcesLabel: Schema.optional(Schema.String),
+    runtimeSettingsBenchmark: Schema.optional(Schema.String),
+    dropdownSaveJSON: Schema.optional(Schema.String),
+    opportunityResourceColumnLabel: Schema.optional(Schema.String),
+    runtimeMobileEmulation: Schema.optional(Schema.String),
+    runtimeSettingsNetworkThrottling: Schema.optional(Schema.String),
+    runtimeUnknown: Schema.optional(Schema.String),
+    dropdownPrintSummary: Schema.optional(Schema.String),
+    dropdownSaveGist: Schema.optional(Schema.String),
+    passedAuditsGroupTitle: Schema.optional(Schema.String),
+    runtimeSettingsCPUThrottling: Schema.optional(Schema.String),
+    auditGroupExpandTooltip: Schema.optional(Schema.String),
+    errorMissingAuditInfo: Schema.optional(Schema.String),
+    lsPerformanceCategoryDescription: Schema.optional(Schema.String),
+    runtimeSettingsUA: Schema.optional(Schema.String),
+    runtimeNoEmulation: Schema.optional(Schema.String),
+    runtimeSettingsAxeVersion: Schema.optional(Schema.String),
+    scorescaleLabel: Schema.optional(Schema.String),
+    dropdownDarkTheme: Schema.optional(Schema.String),
+    dropdownViewer: Schema.optional(Schema.String),
+    crcInitialNavigation: Schema.optional(Schema.String),
+    warningHeader: Schema.optional(Schema.String),
+    notApplicableAuditsGroupTitle: Schema.optional(Schema.String),
+    crcLongestDurationLabel: Schema.optional(Schema.String),
+    dropdownPrintExpanded: Schema.optional(Schema.String),
+    varianceDisclaimer: Schema.optional(Schema.String),
+    dropdownCopyJSON: Schema.optional(Schema.String),
+    throttlingProvided: Schema.optional(Schema.String),
+    dropdownSaveHTML: Schema.optional(Schema.String),
+    opportunitySavingsColumnLabel: Schema.optional(Schema.String),
+    runtimeSettingsTitle: Schema.optional(Schema.String),
+    footerIssue: Schema.optional(Schema.String),
+    runtimeSettingsChannel: Schema.optional(Schema.String),
+    runtimeSettingsDevice: Schema.optional(Schema.String),
+    runtimeSettingsUANetwork: Schema.optional(Schema.String),
+    snippetCollapseButtonLabel: Schema.optional(Schema.String),
+    runtimeDesktopEmulation: Schema.optional(Schema.String),
+    warningAuditsGroupTitle: Schema.optional(Schema.String),
+    runtimeSettingsUrl: Schema.optional(Schema.String),
+    toplevelWarningsMessage: Schema.optional(Schema.String),
+    showRelevantAudits: Schema.optional(Schema.String),
+    manualAuditsGroupTitle: Schema.optional(Schema.String),
+    snippetExpandButtonLabel: Schema.optional(Schema.String),
+    calculatorLink: Schema.optional(Schema.String),
+    errorLabel: Schema.optional(Schema.String),
+    labDataTitle: Schema.optional(Schema.String),
+    runtimeSettingsFetchTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RendererFormattedStrings" });
 
 export interface I18n {
   /** Internationalized strings that are formatted to the locale in configSettings. */
   rendererFormattedStrings?: RendererFormattedStrings;
 }
 
-export const I18n: Schema.Schema<I18n> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rendererFormattedStrings: Schema.optional(RendererFormattedStrings),
-    }),
-  ).annotate({ identifier: "I18n" }) as any as Schema.Schema<I18n>;
+export const I18n = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  rendererFormattedStrings: Schema.optional(RendererFormattedStrings),
+}).annotate({ identifier: "I18n" });
 
 export interface CategoryGroupV5 {
   /** The description of what the category is grouping */
@@ -451,15 +403,10 @@ export interface CategoryGroupV5 {
   title?: string;
 }
 
-export const CategoryGroupV5: Schema.Schema<CategoryGroupV5> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CategoryGroupV5",
-  }) as any as Schema.Schema<CategoryGroupV5>;
+export const CategoryGroupV5 = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+}).annotate({ identifier: "CategoryGroupV5" });
 
 export interface ConfigSettings {
   /** The locale setting. */
@@ -474,18 +421,13 @@ export interface ConfigSettings {
   emulatedFormFactor?: string;
 }
 
-export const ConfigSettings: Schema.Schema<ConfigSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locale: Schema.optional(Schema.String),
-      formFactor: Schema.optional(Schema.String),
-      onlyCategories: Schema.optional(Schema.Unknown),
-      channel: Schema.optional(Schema.String),
-      emulatedFormFactor: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConfigSettings",
-  }) as any as Schema.Schema<ConfigSettings>;
+export const ConfigSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locale: Schema.optional(Schema.String),
+  formFactor: Schema.optional(Schema.String),
+  onlyCategories: Schema.optional(Schema.Unknown),
+  channel: Schema.optional(Schema.String),
+  emulatedFormFactor: Schema.optional(Schema.String),
+}).annotate({ identifier: "ConfigSettings" });
 
 export interface LighthouseResultV5 {
   /** URL of the main document request of the final navigation. */
@@ -528,36 +470,31 @@ export interface LighthouseResultV5 {
   configSettings?: ConfigSettings;
 }
 
-export const LighthouseResultV5: Schema.Schema<LighthouseResultV5> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mainDocumentUrl: Schema.optional(Schema.String),
-      stackPacks: Schema.optional(Schema.Array(StackPack)),
-      requestedUrl: Schema.optional(Schema.String),
-      fetchTime: Schema.optional(Schema.String),
-      categories: Schema.optional(Categories),
-      timing: Schema.optional(Timing),
-      entities: Schema.optional(Schema.Array(LhrEntity)),
-      finalDisplayedUrl: Schema.optional(Schema.String),
-      audits: Schema.optional(
-        Schema.Record(Schema.String, LighthouseAuditResultV5),
-      ),
-      environment: Schema.optional(Environment),
-      userAgent: Schema.optional(Schema.String),
-      runtimeError: Schema.optional(RuntimeError),
-      runWarnings: Schema.optional(Schema.Array(Schema.Unknown)),
-      fullPageScreenshot: Schema.optional(Schema.Unknown),
-      i18n: Schema.optional(I18n),
-      finalUrl: Schema.optional(Schema.String),
-      lighthouseVersion: Schema.optional(Schema.String),
-      categoryGroups: Schema.optional(
-        Schema.Record(Schema.String, CategoryGroupV5),
-      ),
-      configSettings: Schema.optional(ConfigSettings),
-    }),
-  ).annotate({
-    identifier: "LighthouseResultV5",
-  }) as any as Schema.Schema<LighthouseResultV5>;
+export const LighthouseResultV5 = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  mainDocumentUrl: Schema.optional(Schema.String),
+  stackPacks: Schema.optional(Schema.Array(StackPack)),
+  requestedUrl: Schema.optional(Schema.String),
+  fetchTime: Schema.optional(Schema.String),
+  categories: Schema.optional(Categories),
+  timing: Schema.optional(Timing),
+  entities: Schema.optional(Schema.Array(LhrEntity)),
+  finalDisplayedUrl: Schema.optional(Schema.String),
+  audits: Schema.optional(
+    Schema.Record(Schema.String, LighthouseAuditResultV5),
+  ),
+  environment: Schema.optional(Environment),
+  userAgent: Schema.optional(Schema.String),
+  runtimeError: Schema.optional(RuntimeError),
+  runWarnings: Schema.optional(Schema.Array(Schema.Unknown)),
+  fullPageScreenshot: Schema.optional(Schema.Unknown),
+  i18n: Schema.optional(I18n),
+  finalUrl: Schema.optional(Schema.String),
+  lighthouseVersion: Schema.optional(Schema.String),
+  categoryGroups: Schema.optional(
+    Schema.Record(Schema.String, CategoryGroupV5),
+  ),
+  configSettings: Schema.optional(ConfigSettings),
+}).annotate({ identifier: "LighthouseResultV5" });
 
 export interface PagespeedVersion {
   /** The major version number of PageSpeed used to generate these results. */
@@ -566,15 +503,10 @@ export interface PagespeedVersion {
   minor?: string;
 }
 
-export const PagespeedVersion: Schema.Schema<PagespeedVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      major: Schema.optional(Schema.String),
-      minor: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PagespeedVersion",
-  }) as any as Schema.Schema<PagespeedVersion>;
+export const PagespeedVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  major: Schema.optional(Schema.String),
+  minor: Schema.optional(Schema.String),
+}).annotate({ identifier: "PagespeedVersion" });
 
 export interface Bucket {
   /** The proportion of data in this bucket. */
@@ -585,14 +517,11 @@ export interface Bucket {
   max?: number;
 }
 
-export const Bucket: Schema.Schema<Bucket> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      proportion: Schema.optional(Schema.Number),
-      min: Schema.optional(Schema.Number),
-      max: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Bucket" }) as any as Schema.Schema<Bucket>;
+export const Bucket = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  proportion: Schema.optional(Schema.Number),
+  min: Schema.optional(Schema.Number),
+  max: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Bucket" });
 
 export interface UserPageLoadMetricV5 {
   /** The category of the specific time metric. */
@@ -609,19 +538,14 @@ export interface UserPageLoadMetricV5 {
   percentile?: number;
 }
 
-export const UserPageLoadMetricV5: Schema.Schema<UserPageLoadMetricV5> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      category: Schema.optional(Schema.String),
-      metricId: Schema.optional(Schema.String),
-      distributions: Schema.optional(Schema.Array(Bucket)),
-      formFactor: Schema.optional(Schema.String),
-      median: Schema.optional(Schema.Number),
-      percentile: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "UserPageLoadMetricV5",
-  }) as any as Schema.Schema<UserPageLoadMetricV5>;
+export const UserPageLoadMetricV5 = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  category: Schema.optional(Schema.String),
+  metricId: Schema.optional(Schema.String),
+  distributions: Schema.optional(Schema.Array(Bucket)),
+  formFactor: Schema.optional(Schema.String),
+  median: Schema.optional(Schema.Number),
+  percentile: Schema.optional(Schema.Number),
+}).annotate({ identifier: "UserPageLoadMetricV5" });
 
 export interface PagespeedApiLoadingExperienceV5 {
   /** The human readable speed "category" of the id. */
@@ -636,20 +560,16 @@ export interface PagespeedApiLoadingExperienceV5 {
   initial_url?: string;
 }
 
-export const PagespeedApiLoadingExperienceV5: Schema.Schema<PagespeedApiLoadingExperienceV5> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      overall_category: Schema.optional(Schema.String),
-      origin_fallback: Schema.optional(Schema.Boolean),
-      id: Schema.optional(Schema.String),
-      metrics: Schema.optional(
-        Schema.Record(Schema.String, UserPageLoadMetricV5),
-      ),
-      initial_url: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PagespeedApiLoadingExperienceV5",
-  }) as any as Schema.Schema<PagespeedApiLoadingExperienceV5>;
+export const PagespeedApiLoadingExperienceV5 =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    overall_category: Schema.optional(Schema.String),
+    origin_fallback: Schema.optional(Schema.Boolean),
+    id: Schema.optional(Schema.String),
+    metrics: Schema.optional(
+      Schema.Record(Schema.String, UserPageLoadMetricV5),
+    ),
+    initial_url: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PagespeedApiLoadingExperienceV5" });
 
 export interface PagespeedApiPagespeedResponseV5 {
   /** Lighthouse response for the audit url as an object. */
@@ -670,21 +590,17 @@ export interface PagespeedApiPagespeedResponseV5 {
   kind?: string;
 }
 
-export const PagespeedApiPagespeedResponseV5: Schema.Schema<PagespeedApiPagespeedResponseV5> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lighthouseResult: Schema.optional(LighthouseResultV5),
-      captchaResult: Schema.optional(Schema.String),
-      analysisUTCTimestamp: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      version: Schema.optional(PagespeedVersion),
-      originLoadingExperience: Schema.optional(PagespeedApiLoadingExperienceV5),
-      loadingExperience: Schema.optional(PagespeedApiLoadingExperienceV5),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PagespeedApiPagespeedResponseV5",
-  }) as any as Schema.Schema<PagespeedApiPagespeedResponseV5>;
+export const PagespeedApiPagespeedResponseV5 =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    lighthouseResult: Schema.optional(LighthouseResultV5),
+    captchaResult: Schema.optional(Schema.String),
+    analysisUTCTimestamp: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+    version: Schema.optional(PagespeedVersion),
+    originLoadingExperience: Schema.optional(PagespeedApiLoadingExperienceV5),
+    loadingExperience: Schema.optional(PagespeedApiLoadingExperienceV5),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PagespeedApiPagespeedResponseV5" });
 
 // ==========================================================================
 // Operations

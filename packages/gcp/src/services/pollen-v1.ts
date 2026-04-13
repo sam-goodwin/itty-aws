@@ -41,21 +41,16 @@ export interface PlantDescription {
   pictureCloseup?: string;
 }
 
-export const PlantDescription: Schema.Schema<PlantDescription> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      specialColors: Schema.optional(Schema.String),
-      picture: Schema.optional(Schema.String),
-      family: Schema.optional(Schema.String),
-      season: Schema.optional(Schema.String),
-      specialShapes: Schema.optional(Schema.String),
-      crossReaction: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      pictureCloseup: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PlantDescription",
-  }) as any as Schema.Schema<PlantDescription>;
+export const PlantDescription = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  specialColors: Schema.optional(Schema.String),
+  picture: Schema.optional(Schema.String),
+  family: Schema.optional(Schema.String),
+  season: Schema.optional(Schema.String),
+  specialShapes: Schema.optional(Schema.String),
+  crossReaction: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  pictureCloseup: Schema.optional(Schema.String),
+}).annotate({ identifier: "PlantDescription" });
 
 export interface Color {
   /** The amount of red in the color as a value in the interval [0, 1]. */
@@ -68,15 +63,12 @@ export interface Color {
   alpha?: number;
 }
 
-export const Color: Schema.Schema<Color> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      red: Schema.optional(Schema.Number),
-      blue: Schema.optional(Schema.Number),
-      green: Schema.optional(Schema.Number),
-      alpha: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Color" }) as any as Schema.Schema<Color>;
+export const Color = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  red: Schema.optional(Schema.Number),
+  blue: Schema.optional(Schema.Number),
+  green: Schema.optional(Schema.Number),
+  alpha: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Color" });
 
 export interface IndexInfo {
   /** The index's numeric score. Numeric range is between 0 and 5. */
@@ -93,17 +85,14 @@ export interface IndexInfo {
   color?: Color;
 }
 
-export const IndexInfo: Schema.Schema<IndexInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.Number),
-      displayName: Schema.optional(Schema.String),
-      code: Schema.optional(Schema.String),
-      category: Schema.optional(Schema.String),
-      indexDescription: Schema.optional(Schema.String),
-      color: Schema.optional(Color),
-    }),
-  ).annotate({ identifier: "IndexInfo" }) as any as Schema.Schema<IndexInfo>;
+export const IndexInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.Number),
+  displayName: Schema.optional(Schema.String),
+  code: Schema.optional(Schema.String),
+  category: Schema.optional(Schema.String),
+  indexDescription: Schema.optional(Schema.String),
+  color: Schema.optional(Color),
+}).annotate({ identifier: "IndexInfo" });
 
 export interface PlantInfo {
   /** Contains general information about plants, including details on their seasonality, special shapes and colors, information about allergic cross-reactions, and plant photos. */
@@ -137,16 +126,13 @@ export interface PlantInfo {
   inSeason?: boolean;
 }
 
-export const PlantInfo: Schema.Schema<PlantInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      plantDescription: Schema.optional(PlantDescription),
-      indexInfo: Schema.optional(IndexInfo),
-      code: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      inSeason: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "PlantInfo" }) as any as Schema.Schema<PlantInfo>;
+export const PlantInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  plantDescription: Schema.optional(PlantDescription),
+  indexInfo: Schema.optional(IndexInfo),
+  code: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  inSeason: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "PlantInfo" });
 
 export interface PollenTypeInfo {
   /** The pollen type's code name. For example: "GRASS" */
@@ -161,18 +147,13 @@ export interface PollenTypeInfo {
   inSeason?: boolean;
 }
 
-export const PollenTypeInfo: Schema.Schema<PollenTypeInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.String),
-      healthRecommendations: Schema.optional(Schema.Array(Schema.String)),
-      indexInfo: Schema.optional(IndexInfo),
-      displayName: Schema.optional(Schema.String),
-      inSeason: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "PollenTypeInfo",
-  }) as any as Schema.Schema<PollenTypeInfo>;
+export const PollenTypeInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.String),
+  healthRecommendations: Schema.optional(Schema.Array(Schema.String)),
+  indexInfo: Schema.optional(IndexInfo),
+  displayName: Schema.optional(Schema.String),
+  inSeason: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "PollenTypeInfo" });
 
 export interface Pollen_Date {
   /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
@@ -183,16 +164,11 @@ export interface Pollen_Date {
   day?: number;
 }
 
-export const Pollen_Date: Schema.Schema<Pollen_Date> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      month: Schema.optional(Schema.Number),
-      year: Schema.optional(Schema.Number),
-      day: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "Pollen_Date",
-  }) as any as Schema.Schema<Pollen_Date>;
+export const Pollen_Date = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  month: Schema.optional(Schema.Number),
+  year: Schema.optional(Schema.Number),
+  day: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Pollen_Date" });
 
 export interface DayInfo {
   /** The date in UTC at which the pollen forecast data is represented. */
@@ -203,14 +179,11 @@ export interface DayInfo {
   plantInfo?: Array<PlantInfo>;
 }
 
-export const DayInfo: Schema.Schema<DayInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      date: Schema.optional(Pollen_Date),
-      pollenTypeInfo: Schema.optional(Schema.Array(PollenTypeInfo)),
-      plantInfo: Schema.optional(Schema.Array(PlantInfo)),
-    }),
-  ).annotate({ identifier: "DayInfo" }) as any as Schema.Schema<DayInfo>;
+export const DayInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  date: Schema.optional(Pollen_Date),
+  pollenTypeInfo: Schema.optional(Schema.Array(PollenTypeInfo)),
+  plantInfo: Schema.optional(Schema.Array(PlantInfo)),
+}).annotate({ identifier: "DayInfo" });
 
 export interface HttpBody {
   /** The HTTP Content-Type header value specifying the content type of the body. */
@@ -221,16 +194,13 @@ export interface HttpBody {
   data?: string;
 }
 
-export const HttpBody: Schema.Schema<HttpBody> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contentType: Schema.optional(Schema.String),
-      extensions: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      data: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "HttpBody" }) as any as Schema.Schema<HttpBody>;
+export const HttpBody = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  contentType: Schema.optional(Schema.String),
+  extensions: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  data: Schema.optional(Schema.String),
+}).annotate({ identifier: "HttpBody" });
 
 export interface LookupForecastResponse {
   /** Optional. The token to retrieve the next page. */
@@ -241,16 +211,13 @@ export interface LookupForecastResponse {
   regionCode?: string;
 }
 
-export const LookupForecastResponse: Schema.Schema<LookupForecastResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      dailyInfo: Schema.optional(Schema.Array(DayInfo)),
-      regionCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LookupForecastResponse",
-  }) as any as Schema.Schema<LookupForecastResponse>;
+export const LookupForecastResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    nextPageToken: Schema.optional(Schema.String),
+    dailyInfo: Schema.optional(Schema.Array(DayInfo)),
+    regionCode: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "LookupForecastResponse" });
 
 // ==========================================================================
 // Operations

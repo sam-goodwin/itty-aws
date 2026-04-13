@@ -31,14 +31,11 @@ export interface Gcloud {
   additionalLinks?: Array<string>;
 }
 
-export const Gcloud: Schema.Schema<Gcloud> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcloudCommands: Schema.optional(Schema.Array(Schema.String)),
-      steps: Schema.optional(Schema.Array(Schema.String)),
-      additionalLinks: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "Gcloud" }) as any as Schema.Schema<Gcloud>;
+export const Gcloud = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gcloudCommands: Schema.optional(Schema.Array(Schema.String)),
+  steps: Schema.optional(Schema.Array(Schema.String)),
+  additionalLinks: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Gcloud" });
 
 export interface Console {
   /** Steps to resolve violation via cloud console */
@@ -49,14 +46,11 @@ export interface Console {
   additionalLinks?: Array<string>;
 }
 
-export const Console: Schema.Schema<Console> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      steps: Schema.optional(Schema.Array(Schema.String)),
-      consoleUris: Schema.optional(Schema.Array(Schema.String)),
-      additionalLinks: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "Console" }) as any as Schema.Schema<Console>;
+export const Console = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  steps: Schema.optional(Schema.Array(Schema.String)),
+  consoleUris: Schema.optional(Schema.Array(Schema.String)),
+  additionalLinks: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Console" });
 
 export interface Instructions {
   /** Remediation instructions to resolve violation via gcloud cli */
@@ -65,15 +59,10 @@ export interface Instructions {
   consoleInstructions?: Console;
 }
 
-export const Instructions: Schema.Schema<Instructions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcloudInstructions: Schema.optional(Gcloud),
-      consoleInstructions: Schema.optional(Console),
-    }),
-  ).annotate({
-    identifier: "Instructions",
-  }) as any as Schema.Schema<Instructions>;
+export const Instructions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gcloudInstructions: Schema.optional(Gcloud),
+  consoleInstructions: Schema.optional(Console),
+}).annotate({ identifier: "Instructions" });
 
 export interface Remediation {
   /** Values that can resolve the violation For example: for list org policy violations, this will either be the list of allowed or denied values */
@@ -91,16 +80,11 @@ export interface Remediation {
     | (string & {});
 }
 
-export const Remediation: Schema.Schema<Remediation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      compliantValues: Schema.optional(Schema.Array(Schema.String)),
-      instructions: Schema.optional(Instructions),
-      remediationType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Remediation",
-  }) as any as Schema.Schema<Remediation>;
+export const Remediation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  compliantValues: Schema.optional(Schema.Array(Schema.String)),
+  instructions: Schema.optional(Instructions),
+  remediationType: Schema.optional(Schema.String),
+}).annotate({ identifier: "Remediation" });
 
 export interface Violation {
   /** Output only. Compliance violation remediation */
@@ -130,21 +114,18 @@ export interface Violation {
   name?: string;
 }
 
-export const Violation: Schema.Schema<Violation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      remediation: Schema.optional(Remediation),
-      folderId: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      beginTime: Schema.optional(Schema.String),
-      category: Schema.optional(Schema.String),
-      nonCompliantOrgPolicy: Schema.optional(Schema.String),
-      resolveTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Violation" }) as any as Schema.Schema<Violation>;
+export const Violation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  remediation: Schema.optional(Remediation),
+  folderId: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  beginTime: Schema.optional(Schema.String),
+  category: Schema.optional(Schema.String),
+  nonCompliantOrgPolicy: Schema.optional(Schema.String),
+  resolveTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Violation" });
 
 export interface CustomerOnboardingStep {
   /** The starting time of the onboarding step */
@@ -167,24 +148,20 @@ export interface CustomerOnboardingStep {
     | (string & {});
 }
 
-export const CustomerOnboardingStep: Schema.Schema<CustomerOnboardingStep> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Schema.String),
-      completionState: Schema.optional(Schema.String),
-      completionTime: Schema.optional(Schema.String),
-      step: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomerOnboardingStep",
-  }) as any as Schema.Schema<CustomerOnboardingStep>;
+export const CustomerOnboardingStep = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    startTime: Schema.optional(Schema.String),
+    completionState: Schema.optional(Schema.String),
+    completionTime: Schema.optional(Schema.String),
+    step: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "CustomerOnboardingStep" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface EkmMetadata {
   /** Endpoint for sending requests to the EKM for key provisioning during Assured Workload creation. */
@@ -199,29 +176,20 @@ export interface EkmMetadata {
     | (string & {});
 }
 
-export const EkmMetadata: Schema.Schema<EkmMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ekmEndpointUri: Schema.optional(Schema.String),
-      ekmSolution: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EkmMetadata",
-  }) as any as Schema.Schema<EkmMetadata>;
+export const EkmMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ekmEndpointUri: Schema.optional(Schema.String),
+  ekmSolution: Schema.optional(Schema.String),
+}).annotate({ identifier: "EkmMetadata" });
 
 export interface CustomerOnboardingState {
   /** List of customer onboarding steps */
   onboardingSteps?: Array<CustomerOnboardingStep>;
 }
 
-export const CustomerOnboardingState: Schema.Schema<CustomerOnboardingState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      onboardingSteps: Schema.optional(Schema.Array(CustomerOnboardingStep)),
-    }),
-  ).annotate({
-    identifier: "CustomerOnboardingState",
-  }) as any as Schema.Schema<CustomerOnboardingState>;
+export const CustomerOnboardingState =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    onboardingSteps: Schema.optional(Schema.Array(CustomerOnboardingStep)),
+  }).annotate({ identifier: "CustomerOnboardingState" });
 
 export interface WorkloadOnboardingStep {
   /** The completion time of the onboarding step. */
@@ -244,31 +212,24 @@ export interface WorkloadOnboardingStep {
     | (string & {});
 }
 
-export const WorkloadOnboardingStep: Schema.Schema<WorkloadOnboardingStep> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      completionTime: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      completionState: Schema.optional(Schema.String),
-      step: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WorkloadOnboardingStep",
-  }) as any as Schema.Schema<WorkloadOnboardingStep>;
+export const WorkloadOnboardingStep = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    completionTime: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    completionState: Schema.optional(Schema.String),
+    step: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "WorkloadOnboardingStep" });
 
 export interface WorkloadOnboardingState {
   /** List of workload onboarding steps. */
   onboardingSteps?: Array<WorkloadOnboardingStep>;
 }
 
-export const WorkloadOnboardingState: Schema.Schema<WorkloadOnboardingState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      onboardingSteps: Schema.optional(Schema.Array(WorkloadOnboardingStep)),
-    }),
-  ).annotate({
-    identifier: "WorkloadOnboardingState",
-  }) as any as Schema.Schema<WorkloadOnboardingState>;
+export const WorkloadOnboardingState =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    onboardingSteps: Schema.optional(Schema.Array(WorkloadOnboardingStep)),
+  }).annotate({ identifier: "WorkloadOnboardingState" });
 
 export interface Workload {
   /** Partner associated with this workload. */
@@ -300,20 +261,17 @@ export interface Workload {
   folderId?: string;
 }
 
-export const Workload: Schema.Schema<Workload> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      partner: Schema.optional(Schema.String),
-      isOnboarded: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-      workloadOnboardingState: Schema.optional(WorkloadOnboardingState),
-      keyManagementProjectId: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      folder: Schema.optional(Schema.String),
-      folderId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Workload" }) as any as Schema.Schema<Workload>;
+export const Workload = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  partner: Schema.optional(Schema.String),
+  isOnboarded: Schema.optional(Schema.Boolean),
+  name: Schema.optional(Schema.String),
+  workloadOnboardingState: Schema.optional(WorkloadOnboardingState),
+  keyManagementProjectId: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  folder: Schema.optional(Schema.String),
+  folderId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Workload" });
 
 export interface ListViolationsResponse {
   /** List of violation */
@@ -324,16 +282,13 @@ export interface ListViolationsResponse {
   nextPageToken?: string;
 }
 
-export const ListViolationsResponse: Schema.Schema<ListViolationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      violations: Schema.optional(Schema.Array(Violation)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListViolationsResponse",
-  }) as any as Schema.Schema<ListViolationsResponse>;
+export const ListViolationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    violations: Schema.optional(Schema.Array(Violation)),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ListViolationsResponse" });
 
 export interface PartnerPermissions {
   /** The partner permissions granted for the workload */
@@ -350,15 +305,10 @@ export interface PartnerPermissions {
   name?: string;
 }
 
-export const PartnerPermissions: Schema.Schema<PartnerPermissions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      partnerPermissions: Schema.optional(Schema.Array(Schema.String)),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PartnerPermissions",
-  }) as any as Schema.Schema<PartnerPermissions>;
+export const PartnerPermissions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  partnerPermissions: Schema.optional(Schema.Array(Schema.String)),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "PartnerPermissions" });
 
 export interface Customer {
   /** Required. Display name for the customer */
@@ -373,16 +323,13 @@ export interface Customer {
   isOnboarded?: boolean;
 }
 
-export const Customer: Schema.Schema<Customer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      organizationDomain: Schema.optional(Schema.String),
-      customerOnboardingState: Schema.optional(CustomerOnboardingState),
-      isOnboarded: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "Customer" }) as any as Schema.Schema<Customer>;
+export const Customer = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  organizationDomain: Schema.optional(Schema.String),
+  customerOnboardingState: Schema.optional(CustomerOnboardingState),
+  isOnboarded: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Customer" });
 
 export interface ListCustomersResponse {
   /** List of customers */
@@ -393,16 +340,11 @@ export interface ListCustomersResponse {
   unreachable?: Array<string>;
 }
 
-export const ListCustomersResponse: Schema.Schema<ListCustomersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customers: Schema.optional(Schema.Array(Customer)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListCustomersResponse",
-  }) as any as Schema.Schema<ListCustomersResponse>;
+export const ListCustomersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  customers: Schema.optional(Schema.Array(Customer)),
+  nextPageToken: Schema.optional(Schema.String),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ListCustomersResponse" });
 
 export interface Sku {
   /** Argentum product SKU, that is associated with the partner offerings to customers used by Syntro for billing purposes. SKUs can represent resold Google products or support services. */
@@ -411,13 +353,10 @@ export interface Sku {
   displayName?: string;
 }
 
-export const Sku: Schema.Schema<Sku> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Sku" }) as any as Schema.Schema<Sku>;
+export const Sku = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+}).annotate({ identifier: "Sku" });
 
 export interface Partner {
   /** Identifier. The resource name of the partner. Format: `organizations/{organization}/locations/{location}/partner` Example: "organizations/123456/locations/us-central1/partner" */
@@ -436,18 +375,15 @@ export interface Partner {
   partnerProjectId?: string;
 }
 
-export const Partner: Schema.Schema<Partner> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      skus: Schema.optional(Schema.Array(Sku)),
-      updateTime: Schema.optional(Schema.String),
-      operatedCloudRegions: Schema.optional(Schema.Array(Schema.String)),
-      createTime: Schema.optional(Schema.String),
-      ekmSolutions: Schema.optional(Schema.Array(EkmMetadata)),
-      partnerProjectId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Partner" }) as any as Schema.Schema<Partner>;
+export const Partner = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  skus: Schema.optional(Schema.Array(Sku)),
+  updateTime: Schema.optional(Schema.String),
+  operatedCloudRegions: Schema.optional(Schema.Array(Schema.String)),
+  createTime: Schema.optional(Schema.String),
+  ekmSolutions: Schema.optional(Schema.Array(EkmMetadata)),
+  partnerProjectId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Partner" });
 
 export interface AccessReason {
   /** Type of access justification. */
@@ -464,15 +400,10 @@ export interface AccessReason {
   detail?: string;
 }
 
-export const AccessReason: Schema.Schema<AccessReason> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      detail: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccessReason",
-  }) as any as Schema.Schema<AccessReason>;
+export const AccessReason = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  detail: Schema.optional(Schema.String),
+}).annotate({ identifier: "AccessReason" });
 
 export interface AccessApprovalRequest {
   /** Identifier. Format: `organizations/{organization}/locations/{location}/customers/{customer}/workloads/{workload}/accessApprovalRequests/{access_approval_request}` */
@@ -485,17 +416,12 @@ export interface AccessApprovalRequest {
   requestedExpirationTime?: string;
 }
 
-export const AccessApprovalRequest: Schema.Schema<AccessApprovalRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      requestTime: Schema.optional(Schema.String),
-      requestedReason: Schema.optional(AccessReason),
-      requestedExpirationTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccessApprovalRequest",
-  }) as any as Schema.Schema<AccessApprovalRequest>;
+export const AccessApprovalRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  requestTime: Schema.optional(Schema.String),
+  requestedReason: Schema.optional(AccessReason),
+  requestedExpirationTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "AccessApprovalRequest" });
 
 export interface ListAccessApprovalRequestsResponse {
   /** List of access approval requests */
@@ -506,18 +432,14 @@ export interface ListAccessApprovalRequestsResponse {
   nextPageToken?: string;
 }
 
-export const ListAccessApprovalRequestsResponse: Schema.Schema<ListAccessApprovalRequestsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accessApprovalRequests: Schema.optional(
-        Schema.Array(AccessApprovalRequest),
-      ),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAccessApprovalRequestsResponse",
-  }) as any as Schema.Schema<ListAccessApprovalRequestsResponse>;
+export const ListAccessApprovalRequestsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accessApprovalRequests: Schema.optional(
+      Schema.Array(AccessApprovalRequest),
+    ),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListAccessApprovalRequestsResponse" });
 
 export interface ListWorkloadsResponse {
   /** Locations that could not be reached. */
@@ -528,16 +450,11 @@ export interface ListWorkloadsResponse {
   nextPageToken?: string;
 }
 
-export const ListWorkloadsResponse: Schema.Schema<ListWorkloadsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      workloads: Schema.optional(Schema.Array(Workload)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListWorkloadsResponse",
-  }) as any as Schema.Schema<ListWorkloadsResponse>;
+export const ListWorkloadsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+  workloads: Schema.optional(Schema.Array(Workload)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListWorkloadsResponse" });
 
 export interface ConnectionError {
   /** The error domain for the error */
@@ -546,15 +463,10 @@ export interface ConnectionError {
   errorMessage?: string;
 }
 
-export const ConnectionError: Schema.Schema<ConnectionError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errorDomain: Schema.optional(Schema.String),
-      errorMessage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConnectionError",
-  }) as any as Schema.Schema<ConnectionError>;
+export const ConnectionError = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  errorDomain: Schema.optional(Schema.String),
+  errorMessage: Schema.optional(Schema.String),
+}).annotate({ identifier: "ConnectionError" });
 
 export interface EkmConnection {
   /** The connection error that occurred if any */
@@ -571,16 +483,11 @@ export interface EkmConnection {
   connectionName?: string;
 }
 
-export const EkmConnection: Schema.Schema<EkmConnection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      connectionError: Schema.optional(ConnectionError),
-      connectionState: Schema.optional(Schema.String),
-      connectionName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EkmConnection",
-  }) as any as Schema.Schema<EkmConnection>;
+export const EkmConnection = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  connectionError: Schema.optional(ConnectionError),
+  connectionState: Schema.optional(Schema.String),
+  connectionName: Schema.optional(Schema.String),
+}).annotate({ identifier: "EkmConnection" });
 
 export interface OperationMetadata {
   /** Output only. Server-defined resource path for the target of the operation. */
@@ -599,20 +506,15 @@ export interface OperationMetadata {
   apiVersion?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      target: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      createTime: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-      apiVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  target: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  verb: Schema.optional(Schema.String),
+  requestedCancellation: Schema.optional(Schema.Boolean),
+  createTime: Schema.optional(Schema.String),
+  statusMessage: Schema.optional(Schema.String),
+  apiVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationMetadata" });
 
 export interface EkmConnections {
   /** The EKM connections associated with the workload */
@@ -621,15 +523,10 @@ export interface EkmConnections {
   name?: string;
 }
 
-export const EkmConnections: Schema.Schema<EkmConnections> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ekmConnections: Schema.optional(Schema.Array(EkmConnection)),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EkmConnections",
-  }) as any as Schema.Schema<EkmConnections>;
+export const EkmConnections = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ekmConnections: Schema.optional(Schema.Array(EkmConnection)),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "EkmConnections" });
 
 // ==========================================================================
 // Operations

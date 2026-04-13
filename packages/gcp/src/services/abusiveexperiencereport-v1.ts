@@ -45,34 +45,26 @@ export interface SiteSummaryResponse {
   underReview?: boolean;
 }
 
-export const SiteSummaryResponse: Schema.Schema<SiteSummaryResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reviewedSite: Schema.optional(Schema.String),
-      lastChangeTime: Schema.optional(Schema.String),
-      enforcementTime: Schema.optional(Schema.String),
-      reportUrl: Schema.optional(Schema.String),
-      filterStatus: Schema.optional(Schema.String),
-      abusiveStatus: Schema.optional(Schema.String),
-      underReview: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "SiteSummaryResponse",
-  }) as any as Schema.Schema<SiteSummaryResponse>;
+export const SiteSummaryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  reviewedSite: Schema.optional(Schema.String),
+  lastChangeTime: Schema.optional(Schema.String),
+  enforcementTime: Schema.optional(Schema.String),
+  reportUrl: Schema.optional(Schema.String),
+  filterStatus: Schema.optional(Schema.String),
+  abusiveStatus: Schema.optional(Schema.String),
+  underReview: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "SiteSummaryResponse" });
 
 export interface ViolatingSitesResponse {
   /** The list of violating sites. */
   violatingSites?: Array<SiteSummaryResponse>;
 }
 
-export const ViolatingSitesResponse: Schema.Schema<ViolatingSitesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      violatingSites: Schema.optional(Schema.Array(SiteSummaryResponse)),
-    }),
-  ).annotate({
-    identifier: "ViolatingSitesResponse",
-  }) as any as Schema.Schema<ViolatingSitesResponse>;
+export const ViolatingSitesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    violatingSites: Schema.optional(Schema.Array(SiteSummaryResponse)),
+  },
+).annotate({ identifier: "ViolatingSitesResponse" });
 
 // ==========================================================================
 // Operations

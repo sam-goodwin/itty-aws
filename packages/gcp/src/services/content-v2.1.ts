@@ -27,14 +27,10 @@ export interface AccountsClaimWebsiteResponse {
   kind?: string;
 }
 
-export const AccountsClaimWebsiteResponse: Schema.Schema<AccountsClaimWebsiteResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccountsClaimWebsiteResponse",
-  }) as any as Schema.Schema<AccountsClaimWebsiteResponse>;
+export const AccountsClaimWebsiteResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AccountsClaimWebsiteResponse" });
 
 export interface Price {
   /** The currency of the price. */
@@ -43,13 +39,10 @@ export interface Price {
   value?: string;
 }
 
-export const Price: Schema.Schema<Price> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      currency: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Price" }) as any as Schema.Schema<Price>;
+export const Price = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  currency: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+}).annotate({ identifier: "Price" });
 
 export interface Value {
   /** If true, then the product can't ship. Must be true when set, can only be set if all other fields are not set. */
@@ -64,28 +57,22 @@ export interface Value {
   subtableName?: string;
 }
 
-export const Value: Schema.Schema<Value> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      noShipping: Schema.optional(Schema.Boolean),
-      flatRate: Schema.optional(Price),
-      pricePercentage: Schema.optional(Schema.String),
-      carrierRateName: Schema.optional(Schema.String),
-      subtableName: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Value" }) as any as Schema.Schema<Value>;
+export const Value = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  noShipping: Schema.optional(Schema.Boolean),
+  flatRate: Schema.optional(Price),
+  pricePercentage: Schema.optional(Schema.String),
+  carrierRateName: Schema.optional(Schema.String),
+  subtableName: Schema.optional(Schema.String),
+}).annotate({ identifier: "Value" });
 
 export interface Row {
   /** The list of cells that constitute the row. Must have the same length as `columnHeaders` for two-dimensional tables, a length of 1 for one-dimensional tables. Required. */
   cells?: Array<Value>;
 }
 
-export const Row: Schema.Schema<Row> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cells: Schema.optional(Schema.Array(Value)),
-    }),
-  ).annotate({ identifier: "Row" }) as any as Schema.Schema<Row>;
+export const Row = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cells: Schema.optional(Schema.Array(Value)),
+}).annotate({ identifier: "Row" });
 
 export interface TextWithTooltip {
   /** Value of the message as a simple text. */
@@ -100,16 +87,11 @@ export interface TextWithTooltip {
     | (string & {});
 }
 
-export const TextWithTooltip: Schema.Schema<TextWithTooltip> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      simpleValue: Schema.optional(Schema.String),
-      simpleTooltipValue: Schema.optional(Schema.String),
-      tooltipIconStyle: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TextWithTooltip",
-  }) as any as Schema.Schema<TextWithTooltip>;
+export const TextWithTooltip = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  simpleValue: Schema.optional(Schema.String),
+  simpleTooltipValue: Schema.optional(Schema.String),
+  tooltipIconStyle: Schema.optional(Schema.String),
+}).annotate({ identifier: "TextWithTooltip" });
 
 export interface InputFieldTextInput {
   /** Type of the text input */
@@ -126,17 +108,12 @@ export interface InputFieldTextInput {
   ariaLabel?: string;
 }
 
-export const InputFieldTextInput: Schema.Schema<InputFieldTextInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      formatInfo: Schema.optional(Schema.String),
-      additionalInfo: Schema.optional(TextWithTooltip),
-      ariaLabel: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InputFieldTextInput",
-  }) as any as Schema.Schema<InputFieldTextInput>;
+export const InputFieldTextInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  formatInfo: Schema.optional(Schema.String),
+  additionalInfo: Schema.optional(TextWithTooltip),
+  ariaLabel: Schema.optional(Schema.String),
+}).annotate({ identifier: "InputFieldTextInput" });
 
 export interface Address {
   /** Required. Postal code or ZIP (for example, "94043"). */
@@ -151,16 +128,13 @@ export interface Address {
   city?: string;
 }
 
-export const Address: Schema.Schema<Address> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      postalCode: Schema.optional(Schema.String),
-      country: Schema.optional(Schema.String),
-      streetAddress: Schema.optional(Schema.String),
-      administrativeArea: Schema.optional(Schema.String),
-      city: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Address" }) as any as Schema.Schema<Address>;
+export const Address = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  postalCode: Schema.optional(Schema.String),
+  country: Schema.optional(Schema.String),
+  streetAddress: Schema.optional(Schema.String),
+  administrativeArea: Schema.optional(Schema.String),
+  city: Schema.optional(Schema.String),
+}).annotate({ identifier: "Address" });
 
 export interface GmbAccountsGmbAccount {
   /** The type of the Business Profile (User or Business). */
@@ -173,17 +147,12 @@ export interface GmbAccountsGmbAccount {
   listingCount?: string;
 }
 
-export const GmbAccountsGmbAccount: Schema.Schema<GmbAccountsGmbAccount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      email: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      listingCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GmbAccountsGmbAccount",
-  }) as any as Schema.Schema<GmbAccountsGmbAccount>;
+export const GmbAccountsGmbAccount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  email: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  listingCount: Schema.optional(Schema.String),
+}).annotate({ identifier: "GmbAccountsGmbAccount" });
 
 export interface GmbAccounts {
   /** The ID of the Merchant Center account. */
@@ -192,15 +161,10 @@ export interface GmbAccounts {
   gmbAccounts?: Array<GmbAccountsGmbAccount>;
 }
 
-export const GmbAccounts: Schema.Schema<GmbAccounts> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accountId: Schema.optional(Schema.String),
-      gmbAccounts: Schema.optional(Schema.Array(GmbAccountsGmbAccount)),
-    }),
-  ).annotate({
-    identifier: "GmbAccounts",
-  }) as any as Schema.Schema<GmbAccounts>;
+export const GmbAccounts = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  accountId: Schema.optional(Schema.String),
+  gmbAccounts: Schema.optional(Schema.Array(GmbAccountsGmbAccount)),
+}).annotate({ identifier: "GmbAccounts" });
 
 export interface LinkService {
   /** Service provided to or by the linked account. Acceptable values are: - "`shoppingActionsOrderManagement`" - "`shoppingActionsProductManagement`" - "`shoppingAdsProductManagement`" - "`paymentProcessing`" */
@@ -209,15 +173,10 @@ export interface LinkService {
   status?: string;
 }
 
-export const LinkService: Schema.Schema<LinkService> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      service: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LinkService",
-  }) as any as Schema.Schema<LinkService>;
+export const LinkService = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  service: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.String),
+}).annotate({ identifier: "LinkService" });
 
 export interface LinkedAccount {
   /** The ID of the linked account. */
@@ -226,15 +185,10 @@ export interface LinkedAccount {
   services?: Array<LinkService>;
 }
 
-export const LinkedAccount: Schema.Schema<LinkedAccount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      linkedAccountId: Schema.optional(Schema.String),
-      services: Schema.optional(Schema.Array(LinkService)),
-    }),
-  ).annotate({
-    identifier: "LinkedAccount",
-  }) as any as Schema.Schema<LinkedAccount>;
+export const LinkedAccount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  linkedAccountId: Schema.optional(Schema.String),
+  services: Schema.optional(Schema.Array(LinkService)),
+}).annotate({ identifier: "LinkedAccount" });
 
 export interface AccountsListLinksResponse {
   /** The list of available links. */
@@ -245,16 +199,12 @@ export interface AccountsListLinksResponse {
   kind?: string;
 }
 
-export const AccountsListLinksResponse: Schema.Schema<AccountsListLinksResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      links: Schema.optional(Schema.Array(LinkedAccount)),
-      nextPageToken: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccountsListLinksResponse",
-  }) as any as Schema.Schema<AccountsListLinksResponse>;
+export const AccountsListLinksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    links: Schema.optional(Schema.Array(LinkedAccount)),
+    nextPageToken: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AccountsListLinksResponse" });
 
 export interface RenderAccountIssuesRequestPayload {
   /** Optional. How the detailed content should be returned. Default option is to return the content as a pre-rendered HTML text. */
@@ -270,15 +220,11 @@ export interface RenderAccountIssuesRequestPayload {
     | (string & {});
 }
 
-export const RenderAccountIssuesRequestPayload: Schema.Schema<RenderAccountIssuesRequestPayload> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contentOption: Schema.optional(Schema.String),
-      userInputActionOption: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RenderAccountIssuesRequestPayload",
-  }) as any as Schema.Schema<RenderAccountIssuesRequestPayload>;
+export const RenderAccountIssuesRequestPayload =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    contentOption: Schema.optional(Schema.String),
+    userInputActionOption: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RenderAccountIssuesRequestPayload" });
 
 export interface CollectionStatusItemLevelIssue {
   /** How this issue affects the serving of the collection. */
@@ -301,22 +247,18 @@ export interface CollectionStatusItemLevelIssue {
   documentation?: string;
 }
 
-export const CollectionStatusItemLevelIssue: Schema.Schema<CollectionStatusItemLevelIssue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      servability: Schema.optional(Schema.String),
-      detail: Schema.optional(Schema.String),
-      applicableCountries: Schema.optional(Schema.Array(Schema.String)),
-      code: Schema.optional(Schema.String),
-      destination: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      resolution: Schema.optional(Schema.String),
-      attributeName: Schema.optional(Schema.String),
-      documentation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CollectionStatusItemLevelIssue",
-  }) as any as Schema.Schema<CollectionStatusItemLevelIssue>;
+export const CollectionStatusItemLevelIssue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    servability: Schema.optional(Schema.String),
+    detail: Schema.optional(Schema.String),
+    applicableCountries: Schema.optional(Schema.Array(Schema.String)),
+    code: Schema.optional(Schema.String),
+    destination: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    resolution: Schema.optional(Schema.String),
+    attributeName: Schema.optional(Schema.String),
+    documentation: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CollectionStatusItemLevelIssue" });
 
 export interface CollectionStatusDestinationStatus {
   /** The name of the destination */
@@ -331,18 +273,14 @@ export interface CollectionStatusDestinationStatus {
   pendingCountries?: Array<string>;
 }
 
-export const CollectionStatusDestinationStatus: Schema.Schema<CollectionStatusDestinationStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      destination: Schema.optional(Schema.String),
-      disapprovedCountries: Schema.optional(Schema.Array(Schema.String)),
-      approvedCountries: Schema.optional(Schema.Array(Schema.String)),
-      status: Schema.optional(Schema.String),
-      pendingCountries: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "CollectionStatusDestinationStatus",
-  }) as any as Schema.Schema<CollectionStatusDestinationStatus>;
+export const CollectionStatusDestinationStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    destination: Schema.optional(Schema.String),
+    disapprovedCountries: Schema.optional(Schema.Array(Schema.String)),
+    approvedCountries: Schema.optional(Schema.Array(Schema.String)),
+    status: Schema.optional(Schema.String),
+    pendingCountries: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "CollectionStatusDestinationStatus" });
 
 export interface CollectionStatus {
   /** A list of all issues associated with the collection. */
@@ -357,22 +295,17 @@ export interface CollectionStatus {
   creationDate?: string;
 }
 
-export const CollectionStatus: Schema.Schema<CollectionStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      collectionLevelIssuses: Schema.optional(
-        Schema.Array(CollectionStatusItemLevelIssue),
-      ),
-      lastUpdateDate: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      destinationStatuses: Schema.optional(
-        Schema.Array(CollectionStatusDestinationStatus),
-      ),
-      creationDate: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CollectionStatus",
-  }) as any as Schema.Schema<CollectionStatus>;
+export const CollectionStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  collectionLevelIssuses: Schema.optional(
+    Schema.Array(CollectionStatusItemLevelIssue),
+  ),
+  lastUpdateDate: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  destinationStatuses: Schema.optional(
+    Schema.Array(CollectionStatusDestinationStatus),
+  ),
+  creationDate: Schema.optional(Schema.String),
+}).annotate({ identifier: "CollectionStatus" });
 
 export interface RecommendationCallToAction {
   /** Output only. Intent of the action. This value describes the intent (for example, `OPEN_CREATE_EMAIL_CAMPAIGN_FLOW`) and can vary from recommendation to recommendation. This value can change over time for the same recommendation. Currently available intent values: - OPEN_CREATE_EMAIL_CAMPAIGN_FLOW: Opens a user journey where they can create a marketing email campaign. (No default URL) - OPEN_CREATE_COLLECTION_TAB: Opens a user journey where they can [create a collection](https://support.google.com/merchants/answer/9703228) for their Merchant account. (No default URL) */
@@ -383,16 +316,12 @@ export interface RecommendationCallToAction {
   uri?: string;
 }
 
-export const RecommendationCallToAction: Schema.Schema<RecommendationCallToAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      intent: Schema.optional(Schema.String),
-      localizedText: Schema.optional(Schema.String),
-      uri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RecommendationCallToAction",
-  }) as any as Schema.Schema<RecommendationCallToAction>;
+export const RecommendationCallToAction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    intent: Schema.optional(Schema.String),
+    localizedText: Schema.optional(Schema.String),
+    uri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RecommendationCallToAction" });
 
 export interface RecommendationCreative {
   /** Type of the creative. */
@@ -401,15 +330,12 @@ export interface RecommendationCreative {
   uri?: string;
 }
 
-export const RecommendationCreative: Schema.Schema<RecommendationCreative> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      uri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RecommendationCreative",
-  }) as any as Schema.Schema<RecommendationCreative>;
+export const RecommendationCreative = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    type: Schema.optional(Schema.String),
+    uri: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "RecommendationCreative" });
 
 export interface RecommendationDescription {
   /** Output only. Text of the description. */
@@ -418,15 +344,11 @@ export interface RecommendationDescription {
   type?: "DESCRIPTION_TYPE_UNSPECIFIED" | "SHORT" | "LONG" | (string & {});
 }
 
-export const RecommendationDescription: Schema.Schema<RecommendationDescription> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RecommendationDescription",
-  }) as any as Schema.Schema<RecommendationDescription>;
+export const RecommendationDescription =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RecommendationDescription" });
 
 export interface Recommendation {
   /** Output only. Type of the recommendation. List of currently available recommendation types: - OPPORTUNITY_CREATE_NEW_COLLECTION - OPPORTUNITY_CREATE_EMAIL_CAMPAIGN */
@@ -453,28 +375,23 @@ export interface Recommendation {
   additionalCallToAction?: Array<RecommendationCallToAction>;
 }
 
-export const Recommendation: Schema.Schema<Recommendation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      defaultCallToAction: Schema.optional(RecommendationCallToAction),
-      paid: Schema.optional(Schema.Boolean),
-      creative: Schema.optional(Schema.Array(RecommendationCreative)),
-      title: Schema.optional(Schema.String),
-      defaultDescription: Schema.optional(Schema.String),
-      numericalImpact: Schema.optional(Schema.Number),
-      subType: Schema.optional(Schema.String),
-      recommendationName: Schema.optional(Schema.String),
-      additionalDescriptions: Schema.optional(
-        Schema.Array(RecommendationDescription),
-      ),
-      additionalCallToAction: Schema.optional(
-        Schema.Array(RecommendationCallToAction),
-      ),
-    }),
-  ).annotate({
-    identifier: "Recommendation",
-  }) as any as Schema.Schema<Recommendation>;
+export const Recommendation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  defaultCallToAction: Schema.optional(RecommendationCallToAction),
+  paid: Schema.optional(Schema.Boolean),
+  creative: Schema.optional(Schema.Array(RecommendationCreative)),
+  title: Schema.optional(Schema.String),
+  defaultDescription: Schema.optional(Schema.String),
+  numericalImpact: Schema.optional(Schema.Number),
+  subType: Schema.optional(Schema.String),
+  recommendationName: Schema.optional(Schema.String),
+  additionalDescriptions: Schema.optional(
+    Schema.Array(RecommendationDescription),
+  ),
+  additionalCallToAction: Schema.optional(
+    Schema.Array(RecommendationCallToAction),
+  ),
+}).annotate({ identifier: "Recommendation" });
 
 export interface GenerateRecommendationsResponse {
   /** Recommendations generated for a request. */
@@ -483,15 +400,11 @@ export interface GenerateRecommendationsResponse {
   responseToken?: string;
 }
 
-export const GenerateRecommendationsResponse: Schema.Schema<GenerateRecommendationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      recommendations: Schema.optional(Schema.Array(Recommendation)),
-      responseToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GenerateRecommendationsResponse",
-  }) as any as Schema.Schema<GenerateRecommendationsResponse>;
+export const GenerateRecommendationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    recommendations: Schema.optional(Schema.Array(Recommendation)),
+    responseToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GenerateRecommendationsResponse" });
 
 export interface PosInventoryRequest {
   /** Required. The identifier of the merchant's store. Either a `storeCode` inserted through the API or the code of the store in a Business Profile. */
@@ -516,23 +429,18 @@ export interface PosInventoryRequest {
   targetCountry?: string;
 }
 
-export const PosInventoryRequest: Schema.Schema<PosInventoryRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      storeCode: Schema.optional(Schema.String),
-      pickupSla: Schema.optional(Schema.String),
-      timestamp: Schema.optional(Schema.String),
-      itemId: Schema.optional(Schema.String),
-      quantity: Schema.optional(Schema.String),
-      price: Schema.optional(Price),
-      pickupMethod: Schema.optional(Schema.String),
-      gtin: Schema.optional(Schema.String),
-      contentLanguage: Schema.optional(Schema.String),
-      targetCountry: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PosInventoryRequest",
-  }) as any as Schema.Schema<PosInventoryRequest>;
+export const PosInventoryRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  storeCode: Schema.optional(Schema.String),
+  pickupSla: Schema.optional(Schema.String),
+  timestamp: Schema.optional(Schema.String),
+  itemId: Schema.optional(Schema.String),
+  quantity: Schema.optional(Schema.String),
+  price: Schema.optional(Price),
+  pickupMethod: Schema.optional(Schema.String),
+  gtin: Schema.optional(Schema.String),
+  contentLanguage: Schema.optional(Schema.String),
+  targetCountry: Schema.optional(Schema.String),
+}).annotate({ identifier: "PosInventoryRequest" });
 
 export interface MinimumOrderValueTableStoreCodeSetWithMov {
   /** A list of unique store codes or empty for the catch all. */
@@ -541,44 +449,33 @@ export interface MinimumOrderValueTableStoreCodeSetWithMov {
   value?: Price;
 }
 
-export const MinimumOrderValueTableStoreCodeSetWithMov: Schema.Schema<MinimumOrderValueTableStoreCodeSetWithMov> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      storeCodes: Schema.optional(Schema.Array(Schema.String)),
-      value: Schema.optional(Price),
-    }),
-  ).annotate({
-    identifier: "MinimumOrderValueTableStoreCodeSetWithMov",
-  }) as any as Schema.Schema<MinimumOrderValueTableStoreCodeSetWithMov>;
+export const MinimumOrderValueTableStoreCodeSetWithMov =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    storeCodes: Schema.optional(Schema.Array(Schema.String)),
+    value: Schema.optional(Price),
+  }).annotate({ identifier: "MinimumOrderValueTableStoreCodeSetWithMov" });
 
 export interface MinimumOrderValueTable {
   storeCodeSetWithMovs?: Array<MinimumOrderValueTableStoreCodeSetWithMov>;
 }
 
-export const MinimumOrderValueTable: Schema.Schema<MinimumOrderValueTable> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      storeCodeSetWithMovs: Schema.optional(
-        Schema.Array(MinimumOrderValueTableStoreCodeSetWithMov),
-      ),
-    }),
-  ).annotate({
-    identifier: "MinimumOrderValueTable",
-  }) as any as Schema.Schema<MinimumOrderValueTable>;
+export const MinimumOrderValueTable = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    storeCodeSetWithMovs: Schema.optional(
+      Schema.Array(MinimumOrderValueTableStoreCodeSetWithMov),
+    ),
+  },
+).annotate({ identifier: "MinimumOrderValueTable" });
 
 export interface LiasettingsSetPosDataProviderResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#liasettingsSetPosDataProviderResponse`". */
   kind?: string;
 }
 
-export const LiasettingsSetPosDataProviderResponse: Schema.Schema<LiasettingsSetPosDataProviderResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LiasettingsSetPosDataProviderResponse",
-  }) as any as Schema.Schema<LiasettingsSetPosDataProviderResponse>;
+export const LiasettingsSetPosDataProviderResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "LiasettingsSetPosDataProviderResponse" });
 
 export interface CustomAttribute {
   /** The value of the attribute. */
@@ -607,15 +504,10 @@ export interface ProductDimension {
   value?: number;
 }
 
-export const ProductDimension: Schema.Schema<ProductDimension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unit: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "ProductDimension",
-  }) as any as Schema.Schema<ProductDimension>;
+export const ProductDimension = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  unit: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.Number),
+}).annotate({ identifier: "ProductDimension" });
 
 export interface ProductShippingDimension {
   /** The unit of value. */
@@ -624,15 +516,11 @@ export interface ProductShippingDimension {
   value?: number;
 }
 
-export const ProductShippingDimension: Schema.Schema<ProductShippingDimension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unit: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "ProductShippingDimension",
-  }) as any as Schema.Schema<ProductShippingDimension>;
+export const ProductShippingDimension =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unit: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "ProductShippingDimension" });
 
 export interface LoyaltyProgram {
   /** Optional. The cashback that can be used for future purchases. */
@@ -651,20 +539,15 @@ export interface LoyaltyProgram {
   programLabel?: string;
 }
 
-export const LoyaltyProgram: Schema.Schema<LoyaltyProgram> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cashbackForFutureUse: Schema.optional(Price),
-      memberPriceEffectiveDate: Schema.optional(Schema.String),
-      tierLabel: Schema.optional(Schema.String),
-      loyaltyPoints: Schema.optional(Schema.String),
-      shippingLabel: Schema.optional(Schema.String),
-      price: Schema.optional(Price),
-      programLabel: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LoyaltyProgram",
-  }) as any as Schema.Schema<LoyaltyProgram>;
+export const LoyaltyProgram = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cashbackForFutureUse: Schema.optional(Price),
+  memberPriceEffectiveDate: Schema.optional(Schema.String),
+  tierLabel: Schema.optional(Schema.String),
+  loyaltyPoints: Schema.optional(Schema.String),
+  shippingLabel: Schema.optional(Schema.String),
+  price: Schema.optional(Price),
+  programLabel: Schema.optional(Schema.String),
+}).annotate({ identifier: "LoyaltyProgram" });
 
 export interface ProductUnitPricingBaseMeasure {
   /** The unit of the denominator. */
@@ -673,15 +556,11 @@ export interface ProductUnitPricingBaseMeasure {
   value?: string;
 }
 
-export const ProductUnitPricingBaseMeasure: Schema.Schema<ProductUnitPricingBaseMeasure> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unit: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProductUnitPricingBaseMeasure",
-  }) as any as Schema.Schema<ProductUnitPricingBaseMeasure>;
+export const ProductUnitPricingBaseMeasure =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unit: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ProductUnitPricingBaseMeasure" });
 
 export interface ProductProductDetail {
   /** The name of the product detail. */
@@ -692,16 +571,11 @@ export interface ProductProductDetail {
   attributeValue?: string;
 }
 
-export const ProductProductDetail: Schema.Schema<ProductProductDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      attributeName: Schema.optional(Schema.String),
-      sectionName: Schema.optional(Schema.String),
-      attributeValue: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProductProductDetail",
-  }) as any as Schema.Schema<ProductProductDetail>;
+export const ProductProductDetail = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  attributeName: Schema.optional(Schema.String),
+  sectionName: Schema.optional(Schema.String),
+  attributeValue: Schema.optional(Schema.String),
+}).annotate({ identifier: "ProductProductDetail" });
 
 export interface ProductSustainabilityIncentive {
   /** Optional. The percentage of the sale price that the incentive is applied to. */
@@ -716,16 +590,12 @@ export interface ProductSustainabilityIncentive {
   amount?: Price;
 }
 
-export const ProductSustainabilityIncentive: Schema.Schema<ProductSustainabilityIncentive> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      percentage: Schema.optional(Schema.Number),
-      type: Schema.optional(Schema.String),
-      amount: Schema.optional(Price),
-    }),
-  ).annotate({
-    identifier: "ProductSustainabilityIncentive",
-  }) as any as Schema.Schema<ProductSustainabilityIncentive>;
+export const ProductSustainabilityIncentive =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    percentage: Schema.optional(Schema.Number),
+    type: Schema.optional(Schema.String),
+    amount: Schema.optional(Price),
+  }).annotate({ identifier: "ProductSustainabilityIncentive" });
 
 export interface Installment {
   /** Optional. Type of installment payments. Supported values are: - "`finance`" - "`lease`" */
@@ -738,17 +608,12 @@ export interface Installment {
   downpayment?: Price;
 }
 
-export const Installment: Schema.Schema<Installment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      creditType: Schema.optional(Schema.String),
-      months: Schema.optional(Schema.String),
-      amount: Schema.optional(Price),
-      downpayment: Schema.optional(Price),
-    }),
-  ).annotate({
-    identifier: "Installment",
-  }) as any as Schema.Schema<Installment>;
+export const Installment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  creditType: Schema.optional(Schema.String),
+  months: Schema.optional(Schema.String),
+  amount: Schema.optional(Price),
+  downpayment: Schema.optional(Price),
+}).annotate({ identifier: "Installment" });
 
 export interface ProductStructuredDescription {
   /** Optional. The digital source type. Acceptable values are: - "`trained_algorithmic_media`" - "`default`" */
@@ -757,15 +622,11 @@ export interface ProductStructuredDescription {
   content?: string;
 }
 
-export const ProductStructuredDescription: Schema.Schema<ProductStructuredDescription> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      digitalSourceType: Schema.optional(Schema.String),
-      content: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProductStructuredDescription",
-  }) as any as Schema.Schema<ProductStructuredDescription>;
+export const ProductStructuredDescription =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    digitalSourceType: Schema.optional(Schema.String),
+    content: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ProductStructuredDescription" });
 
 export interface ProductUnitPricingMeasure {
   /** The unit of the measure. */
@@ -774,15 +635,11 @@ export interface ProductUnitPricingMeasure {
   value?: number;
 }
 
-export const ProductUnitPricingMeasure: Schema.Schema<ProductUnitPricingMeasure> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unit: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "ProductUnitPricingMeasure",
-  }) as any as Schema.Schema<ProductUnitPricingMeasure>;
+export const ProductUnitPricingMeasure =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unit: Schema.optional(Schema.String),
+    value: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "ProductUnitPricingMeasure" });
 
 export interface ProductStructuredTitle {
   /** Optional. The digital source type. Acceptable values are: - "`trained_algorithmic_media`" - "`default`" */
@@ -791,15 +648,12 @@ export interface ProductStructuredTitle {
   content?: string;
 }
 
-export const ProductStructuredTitle: Schema.Schema<ProductStructuredTitle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      digitalSourceType: Schema.optional(Schema.String),
-      content: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProductStructuredTitle",
-  }) as any as Schema.Schema<ProductStructuredTitle>;
+export const ProductStructuredTitle = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    digitalSourceType: Schema.optional(Schema.String),
+    content: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ProductStructuredTitle" });
 
 export interface ProductCertification {
   /** The certification authority, for example "European_Commission". Maximum length is 2000 characters. */
@@ -812,17 +666,12 @@ export interface ProductCertification {
   certificationName?: string;
 }
 
-export const ProductCertification: Schema.Schema<ProductCertification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      certificationAuthority: Schema.optional(Schema.String),
-      certificationValue: Schema.optional(Schema.String),
-      certificationCode: Schema.optional(Schema.String),
-      certificationName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProductCertification",
-  }) as any as Schema.Schema<ProductCertification>;
+export const ProductCertification = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  certificationAuthority: Schema.optional(Schema.String),
+  certificationValue: Schema.optional(Schema.String),
+  certificationCode: Schema.optional(Schema.String),
+  certificationName: Schema.optional(Schema.String),
+}).annotate({ identifier: "ProductCertification" });
 
 export interface ProductWeight {
   /** Required. The weight unit. Acceptable values are: - "`g`" - "`kg`" - "`oz`" - "`lb`" */
@@ -831,15 +680,10 @@ export interface ProductWeight {
   value?: number;
 }
 
-export const ProductWeight: Schema.Schema<ProductWeight> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unit: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "ProductWeight",
-  }) as any as Schema.Schema<ProductWeight>;
+export const ProductWeight = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  unit: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.Number),
+}).annotate({ identifier: "ProductWeight" });
 
 export interface ProductShippingWeight {
   /** The unit of value. */
@@ -848,15 +692,10 @@ export interface ProductShippingWeight {
   value?: number;
 }
 
-export const ProductShippingWeight: Schema.Schema<ProductShippingWeight> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unit: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "ProductShippingWeight",
-  }) as any as Schema.Schema<ProductShippingWeight>;
+export const ProductShippingWeight = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  unit: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.Number),
+}).annotate({ identifier: "ProductShippingWeight" });
 
 export interface ProductSubscriptionCost {
   /** The amount the buyer has to pay per subscription period. */
@@ -867,16 +706,12 @@ export interface ProductSubscriptionCost {
   periodLength?: string;
 }
 
-export const ProductSubscriptionCost: Schema.Schema<ProductSubscriptionCost> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      amount: Schema.optional(Price),
-      period: Schema.optional(Schema.String),
-      periodLength: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProductSubscriptionCost",
-  }) as any as Schema.Schema<ProductSubscriptionCost>;
+export const ProductSubscriptionCost =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    amount: Schema.optional(Price),
+    period: Schema.optional(Schema.String),
+    periodLength: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ProductSubscriptionCost" });
 
 export interface CloudExportAdditionalProperties {
   /** Text value of the given property. For example, "8K(UHD)" could be a text value for a TV product. Maximum number of specified values for this field is 400. Values are stored in an arbitrary but consistent order. Maximum string size is 256 characters. */
@@ -897,21 +732,17 @@ export interface CloudExportAdditionalProperties {
   maxValue?: number;
 }
 
-export const CloudExportAdditionalProperties: Schema.Schema<CloudExportAdditionalProperties> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      textValue: Schema.optional(Schema.Array(Schema.String)),
-      intValue: Schema.optional(Schema.Array(Schema.String)),
-      floatValue: Schema.optional(Schema.Array(Schema.Number)),
-      unitCode: Schema.optional(Schema.String),
-      minValue: Schema.optional(Schema.Number),
-      propertyName: Schema.optional(Schema.String),
-      boolValue: Schema.optional(Schema.Boolean),
-      maxValue: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "CloudExportAdditionalProperties",
-  }) as any as Schema.Schema<CloudExportAdditionalProperties>;
+export const CloudExportAdditionalProperties =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    textValue: Schema.optional(Schema.Array(Schema.String)),
+    intValue: Schema.optional(Schema.Array(Schema.String)),
+    floatValue: Schema.optional(Schema.Array(Schema.Number)),
+    unitCode: Schema.optional(Schema.String),
+    minValue: Schema.optional(Schema.Number),
+    propertyName: Schema.optional(Schema.String),
+    boolValue: Schema.optional(Schema.Boolean),
+    maxValue: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "CloudExportAdditionalProperties" });
 
 export interface ProductShipping {
   /** The numeric ID of a location that the shipping rate applies to as defined in the Google Ads API. */
@@ -938,24 +769,19 @@ export interface ProductShipping {
   maxTransitTime?: string;
 }
 
-export const ProductShipping: Schema.Schema<ProductShipping> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locationId: Schema.optional(Schema.String),
-      locationGroupName: Schema.optional(Schema.String),
-      minHandlingTime: Schema.optional(Schema.String),
-      country: Schema.optional(Schema.String),
-      postalCode: Schema.optional(Schema.String),
-      price: Schema.optional(Price),
-      maxHandlingTime: Schema.optional(Schema.String),
-      minTransitTime: Schema.optional(Schema.String),
-      region: Schema.optional(Schema.String),
-      service: Schema.optional(Schema.String),
-      maxTransitTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProductShipping",
-  }) as any as Schema.Schema<ProductShipping>;
+export const ProductShipping = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locationId: Schema.optional(Schema.String),
+  locationGroupName: Schema.optional(Schema.String),
+  minHandlingTime: Schema.optional(Schema.String),
+  country: Schema.optional(Schema.String),
+  postalCode: Schema.optional(Schema.String),
+  price: Schema.optional(Price),
+  maxHandlingTime: Schema.optional(Schema.String),
+  minTransitTime: Schema.optional(Schema.String),
+  region: Schema.optional(Schema.String),
+  service: Schema.optional(Schema.String),
+  maxTransitTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "ProductShipping" });
 
 export interface ProductTax {
   /** The percentage of tax rate that applies to the item price. */
@@ -972,17 +798,14 @@ export interface ProductTax {
   postalCode?: string;
 }
 
-export const ProductTax: Schema.Schema<ProductTax> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rate: Schema.optional(Schema.Number),
-      region: Schema.optional(Schema.String),
-      locationId: Schema.optional(Schema.String),
-      country: Schema.optional(Schema.String),
-      taxShip: Schema.optional(Schema.Boolean),
-      postalCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "ProductTax" }) as any as Schema.Schema<ProductTax>;
+export const ProductTax = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  rate: Schema.optional(Schema.Number),
+  region: Schema.optional(Schema.String),
+  locationId: Schema.optional(Schema.String),
+  country: Schema.optional(Schema.String),
+  taxShip: Schema.optional(Schema.Boolean),
+  postalCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "ProductTax" });
 
 export interface FreeShippingThreshold {
   /** Required. The [CLDR territory code](http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml) of the country to which an item will ship. */
@@ -991,15 +814,10 @@ export interface FreeShippingThreshold {
   priceThreshold?: Price;
 }
 
-export const FreeShippingThreshold: Schema.Schema<FreeShippingThreshold> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      country: Schema.optional(Schema.String),
-      priceThreshold: Schema.optional(Price),
-    }),
-  ).annotate({
-    identifier: "FreeShippingThreshold",
-  }) as any as Schema.Schema<FreeShippingThreshold>;
+export const FreeShippingThreshold = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  country: Schema.optional(Schema.String),
+  priceThreshold: Schema.optional(Price),
+}).annotate({ identifier: "FreeShippingThreshold" });
 
 export interface Product {
   /** The number of identical products in a merchant-defined multipack. */
@@ -1212,123 +1030,116 @@ export interface Product {
   contentLanguage?: string;
 }
 
-export const Product: Schema.Schema<Product> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      multipack: Schema.optional(Schema.String),
-      taxCategory: Schema.optional(Schema.String),
-      customAttributes: Schema.optional(Schema.Array(CustomAttribute)),
-      maxHandlingTime: Schema.optional(Schema.String),
-      additionalSizeType: Schema.optional(Schema.String),
-      feedLabel: Schema.optional(Schema.String),
-      productLength: Schema.optional(ProductDimension),
-      displayAdsId: Schema.optional(Schema.String),
-      ageGroup: Schema.optional(Schema.String),
-      gtin: Schema.optional(Schema.String),
-      shippingLength: Schema.optional(ProductShippingDimension),
-      lifestyleImageLinks: Schema.optional(Schema.Array(Schema.String)),
-      adsLabels: Schema.optional(Schema.Array(Schema.String)),
-      id: Schema.optional(Schema.String),
-      itemGroupId: Schema.optional(Schema.String),
-      loyaltyPrograms: Schema.optional(Schema.Array(LoyaltyProgram)),
-      customLabel4: Schema.optional(Schema.String),
-      availabilityDate: Schema.optional(Schema.String),
-      minEnergyEfficiencyClass: Schema.optional(Schema.String),
-      unitPricingBaseMeasure: Schema.optional(ProductUnitPricingBaseMeasure),
-      productDetails: Schema.optional(Schema.Array(ProductProductDetail)),
-      offerId: Schema.optional(Schema.String),
-      sustainabilityIncentives: Schema.optional(
-        Schema.Array(ProductSustainabilityIncentive),
-      ),
-      channel: Schema.optional(Schema.String),
-      salePrice: Schema.optional(Price),
-      installment: Schema.optional(Installment),
-      pickupSla: Schema.optional(Schema.String),
-      imageLink: Schema.optional(Schema.String),
-      sizeType: Schema.optional(Schema.String),
-      transitTimeLabel: Schema.optional(Schema.String),
-      productHighlights: Schema.optional(Schema.Array(Schema.String)),
-      color: Schema.optional(Schema.String),
-      expirationDate: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      mobileLinkTemplate: Schema.optional(Schema.String),
-      shoppingAdsExcludedCountries: Schema.optional(
-        Schema.Array(Schema.String),
-      ),
-      structuredDescription: Schema.optional(ProductStructuredDescription),
-      loyaltyProgram: Schema.optional(LoyaltyProgram),
-      disclosureDate: Schema.optional(Schema.String),
-      adult: Schema.optional(Schema.Boolean),
-      isBundle: Schema.optional(Schema.Boolean),
-      price: Schema.optional(Price),
-      maximumRetailPrice: Schema.optional(Price),
-      autoPricingMinPrice: Schema.optional(Price),
-      energyEfficiencyClass: Schema.optional(Schema.String),
-      customLabel2: Schema.optional(Schema.String),
-      unitPricingMeasure: Schema.optional(ProductUnitPricingMeasure),
-      condition: Schema.optional(Schema.String),
-      promotionIds: Schema.optional(Schema.Array(Schema.String)),
-      displayAdsValue: Schema.optional(Schema.Number),
-      structuredTitle: Schema.optional(ProductStructuredTitle),
-      displayAdsSimilarIds: Schema.optional(Schema.Array(Schema.String)),
-      productWidth: Schema.optional(ProductDimension),
-      mobileLink: Schema.optional(Schema.String),
-      displayAdsTitle: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      gender: Schema.optional(Schema.String),
-      certifications: Schema.optional(Schema.Array(ProductCertification)),
-      sellOnGoogleQuantity: Schema.optional(Schema.String),
-      salePriceEffectiveDate: Schema.optional(Schema.String),
-      source: Schema.optional(Schema.String),
-      pause: Schema.optional(Schema.String),
-      sizes: Schema.optional(Schema.Array(Schema.String)),
-      shippingLabel: Schema.optional(Schema.String),
-      shippingWidth: Schema.optional(ProductShippingDimension),
-      productWeight: Schema.optional(ProductWeight),
-      productTypes: Schema.optional(Schema.Array(Schema.String)),
-      productHeight: Schema.optional(ProductDimension),
-      costOfGoodsSold: Schema.optional(Price),
-      identifierExists: Schema.optional(Schema.Boolean),
-      mpn: Schema.optional(Schema.String),
-      minHandlingTime: Schema.optional(Schema.String),
-      additionalImageLinks: Schema.optional(Schema.Array(Schema.String)),
-      sizeSystem: Schema.optional(Schema.String),
-      shippingWeight: Schema.optional(ProductShippingWeight),
-      excludedDestinations: Schema.optional(Schema.Array(Schema.String)),
-      externalSellerId: Schema.optional(Schema.String),
-      pickupMethod: Schema.optional(Schema.String),
-      subscriptionCost: Schema.optional(ProductSubscriptionCost),
-      adsRedirect: Schema.optional(Schema.String),
-      virtualModelLink: Schema.optional(Schema.String),
-      targetCountry: Schema.optional(Schema.String),
-      cloudExportAdditionalProperties: Schema.optional(
-        Schema.Array(CloudExportAdditionalProperties),
-      ),
-      availability: Schema.optional(Schema.String),
-      customLabel3: Schema.optional(Schema.String),
-      displayAdsLink: Schema.optional(Schema.String),
-      shipping: Schema.optional(Schema.Array(ProductShipping)),
-      linkTemplate: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      taxes: Schema.optional(Schema.Array(ProductTax)),
-      canonicalLink: Schema.optional(Schema.String),
-      customLabel1: Schema.optional(Schema.String),
-      includedDestinations: Schema.optional(Schema.Array(Schema.String)),
-      link: Schema.optional(Schema.String),
-      shippingHeight: Schema.optional(ProductShippingDimension),
-      adsGrouping: Schema.optional(Schema.String),
-      material: Schema.optional(Schema.String),
-      maxEnergyEfficiencyClass: Schema.optional(Schema.String),
-      customLabel0: Schema.optional(Schema.String),
-      googleProductCategory: Schema.optional(Schema.String),
-      brand: Schema.optional(Schema.String),
-      pattern: Schema.optional(Schema.String),
-      freeShippingThreshold: Schema.optional(
-        Schema.Array(FreeShippingThreshold),
-      ),
-      contentLanguage: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Product" }) as any as Schema.Schema<Product>;
+export const Product = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  multipack: Schema.optional(Schema.String),
+  taxCategory: Schema.optional(Schema.String),
+  customAttributes: Schema.optional(Schema.Array(CustomAttribute)),
+  maxHandlingTime: Schema.optional(Schema.String),
+  additionalSizeType: Schema.optional(Schema.String),
+  feedLabel: Schema.optional(Schema.String),
+  productLength: Schema.optional(ProductDimension),
+  displayAdsId: Schema.optional(Schema.String),
+  ageGroup: Schema.optional(Schema.String),
+  gtin: Schema.optional(Schema.String),
+  shippingLength: Schema.optional(ProductShippingDimension),
+  lifestyleImageLinks: Schema.optional(Schema.Array(Schema.String)),
+  adsLabels: Schema.optional(Schema.Array(Schema.String)),
+  id: Schema.optional(Schema.String),
+  itemGroupId: Schema.optional(Schema.String),
+  loyaltyPrograms: Schema.optional(Schema.Array(LoyaltyProgram)),
+  customLabel4: Schema.optional(Schema.String),
+  availabilityDate: Schema.optional(Schema.String),
+  minEnergyEfficiencyClass: Schema.optional(Schema.String),
+  unitPricingBaseMeasure: Schema.optional(ProductUnitPricingBaseMeasure),
+  productDetails: Schema.optional(Schema.Array(ProductProductDetail)),
+  offerId: Schema.optional(Schema.String),
+  sustainabilityIncentives: Schema.optional(
+    Schema.Array(ProductSustainabilityIncentive),
+  ),
+  channel: Schema.optional(Schema.String),
+  salePrice: Schema.optional(Price),
+  installment: Schema.optional(Installment),
+  pickupSla: Schema.optional(Schema.String),
+  imageLink: Schema.optional(Schema.String),
+  sizeType: Schema.optional(Schema.String),
+  transitTimeLabel: Schema.optional(Schema.String),
+  productHighlights: Schema.optional(Schema.Array(Schema.String)),
+  color: Schema.optional(Schema.String),
+  expirationDate: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  mobileLinkTemplate: Schema.optional(Schema.String),
+  shoppingAdsExcludedCountries: Schema.optional(Schema.Array(Schema.String)),
+  structuredDescription: Schema.optional(ProductStructuredDescription),
+  loyaltyProgram: Schema.optional(LoyaltyProgram),
+  disclosureDate: Schema.optional(Schema.String),
+  adult: Schema.optional(Schema.Boolean),
+  isBundle: Schema.optional(Schema.Boolean),
+  price: Schema.optional(Price),
+  maximumRetailPrice: Schema.optional(Price),
+  autoPricingMinPrice: Schema.optional(Price),
+  energyEfficiencyClass: Schema.optional(Schema.String),
+  customLabel2: Schema.optional(Schema.String),
+  unitPricingMeasure: Schema.optional(ProductUnitPricingMeasure),
+  condition: Schema.optional(Schema.String),
+  promotionIds: Schema.optional(Schema.Array(Schema.String)),
+  displayAdsValue: Schema.optional(Schema.Number),
+  structuredTitle: Schema.optional(ProductStructuredTitle),
+  displayAdsSimilarIds: Schema.optional(Schema.Array(Schema.String)),
+  productWidth: Schema.optional(ProductDimension),
+  mobileLink: Schema.optional(Schema.String),
+  displayAdsTitle: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  gender: Schema.optional(Schema.String),
+  certifications: Schema.optional(Schema.Array(ProductCertification)),
+  sellOnGoogleQuantity: Schema.optional(Schema.String),
+  salePriceEffectiveDate: Schema.optional(Schema.String),
+  source: Schema.optional(Schema.String),
+  pause: Schema.optional(Schema.String),
+  sizes: Schema.optional(Schema.Array(Schema.String)),
+  shippingLabel: Schema.optional(Schema.String),
+  shippingWidth: Schema.optional(ProductShippingDimension),
+  productWeight: Schema.optional(ProductWeight),
+  productTypes: Schema.optional(Schema.Array(Schema.String)),
+  productHeight: Schema.optional(ProductDimension),
+  costOfGoodsSold: Schema.optional(Price),
+  identifierExists: Schema.optional(Schema.Boolean),
+  mpn: Schema.optional(Schema.String),
+  minHandlingTime: Schema.optional(Schema.String),
+  additionalImageLinks: Schema.optional(Schema.Array(Schema.String)),
+  sizeSystem: Schema.optional(Schema.String),
+  shippingWeight: Schema.optional(ProductShippingWeight),
+  excludedDestinations: Schema.optional(Schema.Array(Schema.String)),
+  externalSellerId: Schema.optional(Schema.String),
+  pickupMethod: Schema.optional(Schema.String),
+  subscriptionCost: Schema.optional(ProductSubscriptionCost),
+  adsRedirect: Schema.optional(Schema.String),
+  virtualModelLink: Schema.optional(Schema.String),
+  targetCountry: Schema.optional(Schema.String),
+  cloudExportAdditionalProperties: Schema.optional(
+    Schema.Array(CloudExportAdditionalProperties),
+  ),
+  availability: Schema.optional(Schema.String),
+  customLabel3: Schema.optional(Schema.String),
+  displayAdsLink: Schema.optional(Schema.String),
+  shipping: Schema.optional(Schema.Array(ProductShipping)),
+  linkTemplate: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  taxes: Schema.optional(Schema.Array(ProductTax)),
+  canonicalLink: Schema.optional(Schema.String),
+  customLabel1: Schema.optional(Schema.String),
+  includedDestinations: Schema.optional(Schema.Array(Schema.String)),
+  link: Schema.optional(Schema.String),
+  shippingHeight: Schema.optional(ProductShippingDimension),
+  adsGrouping: Schema.optional(Schema.String),
+  material: Schema.optional(Schema.String),
+  maxEnergyEfficiencyClass: Schema.optional(Schema.String),
+  customLabel0: Schema.optional(Schema.String),
+  googleProductCategory: Schema.optional(Schema.String),
+  brand: Schema.optional(Schema.String),
+  pattern: Schema.optional(Schema.String),
+  freeShippingThreshold: Schema.optional(Schema.Array(FreeShippingThreshold)),
+  contentLanguage: Schema.optional(Schema.String),
+}).annotate({ identifier: "Product" });
 
 export interface ProductsCustomBatchRequestEntry {
   /** The method of the batch entry. Acceptable values are: - "`delete`" - "`get`" - "`insert`" - "`update`" */
@@ -1347,34 +1158,26 @@ export interface ProductsCustomBatchRequestEntry {
   merchantId?: string;
 }
 
-export const ProductsCustomBatchRequestEntry: Schema.Schema<ProductsCustomBatchRequestEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      method: Schema.optional(Schema.String),
-      feedId: Schema.optional(Schema.String),
-      batchId: Schema.optional(Schema.Number),
-      productId: Schema.optional(Schema.String),
-      product: Schema.optional(Product),
-      updateMask: Schema.optional(Schema.String),
-      merchantId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProductsCustomBatchRequestEntry",
-  }) as any as Schema.Schema<ProductsCustomBatchRequestEntry>;
+export const ProductsCustomBatchRequestEntry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    method: Schema.optional(Schema.String),
+    feedId: Schema.optional(Schema.String),
+    batchId: Schema.optional(Schema.Number),
+    productId: Schema.optional(Schema.String),
+    product: Schema.optional(Product),
+    updateMask: Schema.optional(Schema.String),
+    merchantId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ProductsCustomBatchRequestEntry" });
 
 export interface RequestReviewShoppingAdsRequest {
   /** The code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the country for which review is to be requested. */
   regionCode?: string;
 }
 
-export const RequestReviewShoppingAdsRequest: Schema.Schema<RequestReviewShoppingAdsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      regionCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RequestReviewShoppingAdsRequest",
-  }) as any as Schema.Schema<RequestReviewShoppingAdsRequest>;
+export const RequestReviewShoppingAdsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    regionCode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RequestReviewShoppingAdsRequest" });
 
 export interface PriceAmount {
   /** The price represented as a number. */
@@ -1383,15 +1186,10 @@ export interface PriceAmount {
   currency?: string;
 }
 
-export const PriceAmount: Schema.Schema<PriceAmount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-      currency: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PriceAmount",
-  }) as any as Schema.Schema<PriceAmount>;
+export const PriceAmount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.String),
+  currency: Schema.optional(Schema.String),
+}).annotate({ identifier: "PriceAmount" });
 
 export interface ReturnPolicyOnlineRestockingFee {
   /** Fixed restocking fee. */
@@ -1400,15 +1198,11 @@ export interface ReturnPolicyOnlineRestockingFee {
   microPercent?: number;
 }
 
-export const ReturnPolicyOnlineRestockingFee: Schema.Schema<ReturnPolicyOnlineRestockingFee> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fixedFee: Schema.optional(PriceAmount),
-      microPercent: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "ReturnPolicyOnlineRestockingFee",
-  }) as any as Schema.Schema<ReturnPolicyOnlineRestockingFee>;
+export const ReturnPolicyOnlineRestockingFee =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fixedFee: Schema.optional(PriceAmount),
+    microPercent: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "ReturnPolicyOnlineRestockingFee" });
 
 export interface Content_Date {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
@@ -1419,16 +1213,11 @@ export interface Content_Date {
   day?: number;
 }
 
-export const Content_Date: Schema.Schema<Content_Date> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      year: Schema.optional(Schema.Number),
-      month: Schema.optional(Schema.Number),
-      day: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "Content_Date",
-  }) as any as Schema.Schema<Content_Date>;
+export const Content_Date = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  year: Schema.optional(Schema.Number),
+  month: Schema.optional(Schema.Number),
+  day: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Content_Date" });
 
 export interface Segments {
   /** Brand of the product. */
@@ -1485,34 +1274,31 @@ export interface Segments {
   productTypeL4?: string;
 }
 
-export const Segments: Schema.Schema<Segments> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      brand: Schema.optional(Schema.String),
-      productTypeL2: Schema.optional(Schema.String),
-      customLabel0: Schema.optional(Schema.String),
-      program: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      customLabel3: Schema.optional(Schema.String),
-      categoryL1: Schema.optional(Schema.String),
-      customLabel2: Schema.optional(Schema.String),
-      offerId: Schema.optional(Schema.String),
-      productTypeL1: Schema.optional(Schema.String),
-      currencyCode: Schema.optional(Schema.String),
-      productTypeL5: Schema.optional(Schema.String),
-      week: Schema.optional(Content_Date),
-      date: Schema.optional(Content_Date),
-      customerCountryCode: Schema.optional(Schema.String),
-      categoryL3: Schema.optional(Schema.String),
-      customLabel1: Schema.optional(Schema.String),
-      categoryL2: Schema.optional(Schema.String),
-      categoryL4: Schema.optional(Schema.String),
-      customLabel4: Schema.optional(Schema.String),
-      categoryL5: Schema.optional(Schema.String),
-      productTypeL3: Schema.optional(Schema.String),
-      productTypeL4: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Segments" }) as any as Schema.Schema<Segments>;
+export const Segments = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  brand: Schema.optional(Schema.String),
+  productTypeL2: Schema.optional(Schema.String),
+  customLabel0: Schema.optional(Schema.String),
+  program: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  customLabel3: Schema.optional(Schema.String),
+  categoryL1: Schema.optional(Schema.String),
+  customLabel2: Schema.optional(Schema.String),
+  offerId: Schema.optional(Schema.String),
+  productTypeL1: Schema.optional(Schema.String),
+  currencyCode: Schema.optional(Schema.String),
+  productTypeL5: Schema.optional(Schema.String),
+  week: Schema.optional(Content_Date),
+  date: Schema.optional(Content_Date),
+  customerCountryCode: Schema.optional(Schema.String),
+  categoryL3: Schema.optional(Schema.String),
+  customLabel1: Schema.optional(Schema.String),
+  categoryL2: Schema.optional(Schema.String),
+  categoryL4: Schema.optional(Schema.String),
+  customLabel4: Schema.optional(Schema.String),
+  categoryL5: Schema.optional(Schema.String),
+  productTypeL3: Schema.optional(Schema.String),
+  productTypeL4: Schema.optional(Schema.String),
+}).annotate({ identifier: "Segments" });
 
 export interface AccountTaxTaxRule {
   /** Country code in which tax is applicable. */
@@ -1527,18 +1313,13 @@ export interface AccountTaxTaxRule {
   useGlobalRate?: boolean;
 }
 
-export const AccountTaxTaxRule: Schema.Schema<AccountTaxTaxRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      country: Schema.optional(Schema.String),
-      shippingTaxed: Schema.optional(Schema.Boolean),
-      locationId: Schema.optional(Schema.String),
-      ratePercent: Schema.optional(Schema.String),
-      useGlobalRate: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "AccountTaxTaxRule",
-  }) as any as Schema.Schema<AccountTaxTaxRule>;
+export const AccountTaxTaxRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  country: Schema.optional(Schema.String),
+  shippingTaxed: Schema.optional(Schema.Boolean),
+  locationId: Schema.optional(Schema.String),
+  ratePercent: Schema.optional(Schema.String),
+  useGlobalRate: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "AccountTaxTaxRule" });
 
 export interface AccountTax {
   /** Required. The ID of the account to which these account tax settings belong. */
@@ -1549,14 +1330,11 @@ export interface AccountTax {
   kind?: string;
 }
 
-export const AccountTax: Schema.Schema<AccountTax> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accountId: Schema.optional(Schema.String),
-      rules: Schema.optional(Schema.Array(AccountTaxTaxRule)),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "AccountTax" }) as any as Schema.Schema<AccountTax>;
+export const AccountTax = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  accountId: Schema.optional(Schema.String),
+  rules: Schema.optional(Schema.Array(AccountTaxTaxRule)),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "AccountTax" });
 
 export interface AccounttaxListResponse {
   /** The token for the retrieval of the next page of account tax settings. */
@@ -1566,30 +1344,25 @@ export interface AccounttaxListResponse {
   kind?: string;
 }
 
-export const AccounttaxListResponse: Schema.Schema<AccounttaxListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      resources: Schema.optional(Schema.Array(AccountTax)),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccounttaxListResponse",
-  }) as any as Schema.Schema<AccounttaxListResponse>;
+export const AccounttaxListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    nextPageToken: Schema.optional(Schema.String),
+    resources: Schema.optional(Schema.Array(AccountTax)),
+    kind: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "AccounttaxListResponse" });
 
 export interface FreeListingsProgramStatusReviewIneligibilityReasonDetails {
   /** This timestamp represents end of cooldown period for review ineligbility reason `IN_COOLDOWN_PERIOD`. */
   cooldownTime?: string;
 }
 
-export const FreeListingsProgramStatusReviewIneligibilityReasonDetails: Schema.Schema<FreeListingsProgramStatusReviewIneligibilityReasonDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cooldownTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const FreeListingsProgramStatusReviewIneligibilityReasonDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cooldownTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "FreeListingsProgramStatusReviewIneligibilityReasonDetails",
-  }) as any as Schema.Schema<FreeListingsProgramStatusReviewIneligibilityReasonDetails>;
+  });
 
 export interface FreeListingsProgramStatusRegionStatus {
   /** Date by which eligibilityStatus will go from `WARNING` to `DISAPPROVED`. Only visible when your eligibilityStatus is WARNING. In [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) format: `YYYY-MM-DD`. */
@@ -1634,24 +1407,20 @@ export interface FreeListingsProgramStatusRegionStatus {
   reviewIneligibilityReasonDetails?: FreeListingsProgramStatusReviewIneligibilityReasonDetails;
 }
 
-export const FreeListingsProgramStatusRegionStatus: Schema.Schema<FreeListingsProgramStatusRegionStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      disapprovalDate: Schema.optional(Schema.String),
-      reviewEligibilityStatus: Schema.optional(Schema.String),
-      reviewIssues: Schema.optional(Schema.Array(Schema.String)),
-      regionCodes: Schema.optional(Schema.Array(Schema.String)),
-      eligibilityStatus: Schema.optional(Schema.String),
-      onboardingIssues: Schema.optional(Schema.Array(Schema.String)),
-      reviewIneligibilityReasonDescription: Schema.optional(Schema.String),
-      reviewIneligibilityReason: Schema.optional(Schema.String),
-      reviewIneligibilityReasonDetails: Schema.optional(
-        FreeListingsProgramStatusReviewIneligibilityReasonDetails,
-      ),
-    }),
-  ).annotate({
-    identifier: "FreeListingsProgramStatusRegionStatus",
-  }) as any as Schema.Schema<FreeListingsProgramStatusRegionStatus>;
+export const FreeListingsProgramStatusRegionStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    disapprovalDate: Schema.optional(Schema.String),
+    reviewEligibilityStatus: Schema.optional(Schema.String),
+    reviewIssues: Schema.optional(Schema.Array(Schema.String)),
+    regionCodes: Schema.optional(Schema.Array(Schema.String)),
+    eligibilityStatus: Schema.optional(Schema.String),
+    onboardingIssues: Schema.optional(Schema.Array(Schema.String)),
+    reviewIneligibilityReasonDescription: Schema.optional(Schema.String),
+    reviewIneligibilityReason: Schema.optional(Schema.String),
+    reviewIneligibilityReasonDetails: Schema.optional(
+      FreeListingsProgramStatusReviewIneligibilityReasonDetails,
+    ),
+  }).annotate({ identifier: "FreeListingsProgramStatusRegionStatus" });
 
 export interface FreeListingsProgramStatus {
   /** Status of the program in each region. Regions with the same status and review eligibility are grouped together in `regionCodes`. */
@@ -1665,17 +1434,13 @@ export interface FreeListingsProgramStatus {
     | (string & {});
 }
 
-export const FreeListingsProgramStatus: Schema.Schema<FreeListingsProgramStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      regionStatuses: Schema.optional(
-        Schema.Array(FreeListingsProgramStatusRegionStatus),
-      ),
-      globalState: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FreeListingsProgramStatus",
-  }) as any as Schema.Schema<FreeListingsProgramStatus>;
+export const FreeListingsProgramStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    regionStatuses: Schema.optional(
+      Schema.Array(FreeListingsProgramStatusRegionStatus),
+    ),
+    globalState: Schema.optional(Schema.String),
+  }).annotate({ identifier: "FreeListingsProgramStatus" });
 
 export interface Content_Error {
   /** A description of the error. */
@@ -1686,16 +1451,11 @@ export interface Content_Error {
   domain?: string;
 }
 
-export const Content_Error: Schema.Schema<Content_Error> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      message: Schema.optional(Schema.String),
-      reason: Schema.optional(Schema.String),
-      domain: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Content_Error",
-  }) as any as Schema.Schema<Content_Error>;
+export const Content_Error = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  message: Schema.optional(Schema.String),
+  reason: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}).annotate({ identifier: "Content_Error" });
 
 export interface Errors {
   /** A list of errors. */
@@ -1706,28 +1466,20 @@ export interface Errors {
   message?: string;
 }
 
-export const Errors: Schema.Schema<Errors> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errors: Schema.optional(Schema.Array(Content_Error)),
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Errors" }) as any as Schema.Schema<Errors>;
+export const Errors = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  errors: Schema.optional(Schema.Array(Content_Error)),
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+}).annotate({ identifier: "Errors" });
 
 export interface AccountIdentityType {
   /** Optional. Indicates that the business identifies itself with a given identity type. Setting this field does not automatically mean eligibility for promotions. */
   selfIdentified?: boolean;
 }
 
-export const AccountIdentityType: Schema.Schema<AccountIdentityType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      selfIdentified: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "AccountIdentityType",
-  }) as any as Schema.Schema<AccountIdentityType>;
+export const AccountIdentityType = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  selfIdentified: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "AccountIdentityType" });
 
 export interface AccountBusinessIdentity {
   /** Specifies whether the business identifies itself as a small business. This optional field is only available for merchants with a business country set to "US". It is also not allowed for marketplaces, but it is allowed to marketplace sellers. */
@@ -1744,33 +1496,25 @@ export interface AccountBusinessIdentity {
   latinoOwned?: AccountIdentityType;
 }
 
-export const AccountBusinessIdentity: Schema.Schema<AccountBusinessIdentity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      smallBusiness: Schema.optional(AccountIdentityType),
-      blackOwned: Schema.optional(AccountIdentityType),
-      womenOwned: Schema.optional(AccountIdentityType),
-      includeForPromotions: Schema.optional(Schema.Boolean),
-      veteranOwned: Schema.optional(AccountIdentityType),
-      latinoOwned: Schema.optional(AccountIdentityType),
-    }),
-  ).annotate({
-    identifier: "AccountBusinessIdentity",
-  }) as any as Schema.Schema<AccountBusinessIdentity>;
+export const AccountBusinessIdentity =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    smallBusiness: Schema.optional(AccountIdentityType),
+    blackOwned: Schema.optional(AccountIdentityType),
+    womenOwned: Schema.optional(AccountIdentityType),
+    includeForPromotions: Schema.optional(Schema.Boolean),
+    veteranOwned: Schema.optional(AccountIdentityType),
+    latinoOwned: Schema.optional(AccountIdentityType),
+  }).annotate({ identifier: "AccountBusinessIdentity" });
 
 export interface AccountImageImprovementsSettings {
   /** Enables automatic image improvements. */
   allowAutomaticImageImprovements?: boolean;
 }
 
-export const AccountImageImprovementsSettings: Schema.Schema<AccountImageImprovementsSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      allowAutomaticImageImprovements: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "AccountImageImprovementsSettings",
-  }) as any as Schema.Schema<AccountImageImprovementsSettings>;
+export const AccountImageImprovementsSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allowAutomaticImageImprovements: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "AccountImageImprovementsSettings" });
 
 export interface AccountImageImprovements {
   /** Output only. The effective value of allow_automatic_image_improvements. If account_image_improvements_settings is present, then this value is the same. Otherwise, it represents the inherited value of the parent account. Read-only. */
@@ -1779,17 +1523,13 @@ export interface AccountImageImprovements {
   accountImageImprovementsSettings?: AccountImageImprovementsSettings;
 }
 
-export const AccountImageImprovements: Schema.Schema<AccountImageImprovements> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      effectiveAllowAutomaticImageImprovements: Schema.optional(Schema.Boolean),
-      accountImageImprovementsSettings: Schema.optional(
-        AccountImageImprovementsSettings,
-      ),
-    }),
-  ).annotate({
-    identifier: "AccountImageImprovements",
-  }) as any as Schema.Schema<AccountImageImprovements>;
+export const AccountImageImprovements =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    effectiveAllowAutomaticImageImprovements: Schema.optional(Schema.Boolean),
+    accountImageImprovementsSettings: Schema.optional(
+      AccountImageImprovementsSettings,
+    ),
+  }).annotate({ identifier: "AccountImageImprovements" });
 
 export interface AccountItemUpdatesSettings {
   /** If condition updates are enabled, Google always updates item condition with the condition detected from the details of your product. */
@@ -1802,17 +1542,13 @@ export interface AccountItemUpdatesSettings {
   allowAvailabilityUpdates?: boolean;
 }
 
-export const AccountItemUpdatesSettings: Schema.Schema<AccountItemUpdatesSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      allowConditionUpdates: Schema.optional(Schema.Boolean),
-      allowPriceUpdates: Schema.optional(Schema.Boolean),
-      allowStrictAvailabilityUpdates: Schema.optional(Schema.Boolean),
-      allowAvailabilityUpdates: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "AccountItemUpdatesSettings",
-  }) as any as Schema.Schema<AccountItemUpdatesSettings>;
+export const AccountItemUpdatesSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allowConditionUpdates: Schema.optional(Schema.Boolean),
+    allowPriceUpdates: Schema.optional(Schema.Boolean),
+    allowStrictAvailabilityUpdates: Schema.optional(Schema.Boolean),
+    allowAvailabilityUpdates: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "AccountItemUpdatesSettings" });
 
 export interface AccountItemUpdates {
   /** Determines which attributes of the items should be automatically updated. If this field is not present, then the settings will be deleted. If there are no settings for subaccount, they are inherited from aggregator. */
@@ -1827,32 +1563,23 @@ export interface AccountItemUpdates {
   effectiveAllowPriceUpdates?: boolean;
 }
 
-export const AccountItemUpdates: Schema.Schema<AccountItemUpdates> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accountItemUpdatesSettings: Schema.optional(AccountItemUpdatesSettings),
-      effectiveAllowStrictAvailabilityUpdates: Schema.optional(Schema.Boolean),
-      effectiveAllowConditionUpdates: Schema.optional(Schema.Boolean),
-      effectiveAllowAvailabilityUpdates: Schema.optional(Schema.Boolean),
-      effectiveAllowPriceUpdates: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "AccountItemUpdates",
-  }) as any as Schema.Schema<AccountItemUpdates>;
+export const AccountItemUpdates = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  accountItemUpdatesSettings: Schema.optional(AccountItemUpdatesSettings),
+  effectiveAllowStrictAvailabilityUpdates: Schema.optional(Schema.Boolean),
+  effectiveAllowConditionUpdates: Schema.optional(Schema.Boolean),
+  effectiveAllowAvailabilityUpdates: Schema.optional(Schema.Boolean),
+  effectiveAllowPriceUpdates: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "AccountItemUpdates" });
 
 export interface AccountShippingImprovements {
   /** Enables automatic shipping improvements. */
   allowShippingImprovements?: boolean;
 }
 
-export const AccountShippingImprovements: Schema.Schema<AccountShippingImprovements> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      allowShippingImprovements: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "AccountShippingImprovements",
-  }) as any as Schema.Schema<AccountShippingImprovements>;
+export const AccountShippingImprovements =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allowShippingImprovements: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "AccountShippingImprovements" });
 
 export interface AccountAutomaticImprovements {
   /** This improvement will attempt to automatically correct submitted images if they don't meet the [image requirements](https://support.google.com/merchants/answer/6324350), for example, removing overlays. If successful, the image will be replaced and approved. This improvement is only applied to images of disapproved offers. For more information see: [Automatic image improvements](https://support.google.com/merchants/answer/9242973) This field is only updated (cleared) if provided. */
@@ -1863,16 +1590,12 @@ export interface AccountAutomaticImprovements {
   shippingImprovements?: AccountShippingImprovements;
 }
 
-export const AccountAutomaticImprovements: Schema.Schema<AccountAutomaticImprovements> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      imageImprovements: Schema.optional(AccountImageImprovements),
-      itemUpdates: Schema.optional(AccountItemUpdates),
-      shippingImprovements: Schema.optional(AccountShippingImprovements),
-    }),
-  ).annotate({
-    identifier: "AccountAutomaticImprovements",
-  }) as any as Schema.Schema<AccountAutomaticImprovements>;
+export const AccountAutomaticImprovements =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    imageImprovements: Schema.optional(AccountImageImprovements),
+    itemUpdates: Schema.optional(AccountItemUpdates),
+    shippingImprovements: Schema.optional(AccountShippingImprovements),
+  }).annotate({ identifier: "AccountAutomaticImprovements" });
 
 export interface AccountYouTubeChannelLink {
   /** Channel ID. */
@@ -1881,15 +1604,11 @@ export interface AccountYouTubeChannelLink {
   status?: string;
 }
 
-export const AccountYouTubeChannelLink: Schema.Schema<AccountYouTubeChannelLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      channelId: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccountYouTubeChannelLink",
-  }) as any as Schema.Schema<AccountYouTubeChannelLink>;
+export const AccountYouTubeChannelLink =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    channelId: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AccountYouTubeChannelLink" });
 
 export interface AccountUser {
   /** This role is deprecated and can no longer be assigned. Any value set will be ignored. */
@@ -1908,20 +1627,15 @@ export interface AccountUser {
   orderManager?: boolean;
 }
 
-export const AccountUser: Schema.Schema<AccountUser> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      paymentsManager: Schema.optional(Schema.Boolean),
-      emailAddress: Schema.optional(Schema.String),
-      paymentsAnalyst: Schema.optional(Schema.Boolean),
-      reportingManager: Schema.optional(Schema.Boolean),
-      readOnly: Schema.optional(Schema.Boolean),
-      admin: Schema.optional(Schema.Boolean),
-      orderManager: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "AccountUser",
-  }) as any as Schema.Schema<AccountUser>;
+export const AccountUser = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  paymentsManager: Schema.optional(Schema.Boolean),
+  emailAddress: Schema.optional(Schema.String),
+  paymentsAnalyst: Schema.optional(Schema.Boolean),
+  reportingManager: Schema.optional(Schema.Boolean),
+  readOnly: Schema.optional(Schema.Boolean),
+  admin: Schema.optional(Schema.Boolean),
+  orderManager: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "AccountUser" });
 
 export interface AccountAdsLink {
   /** Status of the link between this Merchant Center account and the Ads account. Upon retrieval, it represents the actual status of the link and can be either `active` if it was approved in Google Ads or `pending` if it's pending approval. Upon insertion, it represents the *intended* status of the link. Re-uploading a link with status `active` when it's still pending or with status `pending` when it's already active will have no effect: the status will remain unchanged. Re-uploading a link with deprecated status `inactive` is equivalent to not submitting the link at all and will delete the link if it was active or cancel the link request if it was pending. Acceptable values are: - "`active`" - "`pending`" */
@@ -1930,15 +1644,10 @@ export interface AccountAdsLink {
   adsId?: string;
 }
 
-export const AccountAdsLink: Schema.Schema<AccountAdsLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      status: Schema.optional(Schema.String),
-      adsId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccountAdsLink",
-  }) as any as Schema.Schema<AccountAdsLink>;
+export const AccountAdsLink = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  status: Schema.optional(Schema.String),
+  adsId: Schema.optional(Schema.String),
+}).annotate({ identifier: "AccountAdsLink" });
 
 export interface AccountAddress {
   /** Postal code or ZIP (for example, "94043"). */
@@ -1953,18 +1662,13 @@ export interface AccountAddress {
   region?: string;
 }
 
-export const AccountAddress: Schema.Schema<AccountAddress> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      postalCode: Schema.optional(Schema.String),
-      country: Schema.optional(Schema.String),
-      streetAddress: Schema.optional(Schema.String),
-      locality: Schema.optional(Schema.String),
-      region: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccountAddress",
-  }) as any as Schema.Schema<AccountAddress>;
+export const AccountAddress = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  postalCode: Schema.optional(Schema.String),
+  country: Schema.optional(Schema.String),
+  streetAddress: Schema.optional(Schema.String),
+  locality: Schema.optional(Schema.String),
+  region: Schema.optional(Schema.String),
+}).annotate({ identifier: "AccountAddress" });
 
 export interface AccountCustomerService {
   /** Customer service email. */
@@ -1975,16 +1679,13 @@ export interface AccountCustomerService {
   url?: string;
 }
 
-export const AccountCustomerService: Schema.Schema<AccountCustomerService> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      email: Schema.optional(Schema.String),
-      phoneNumber: Schema.optional(Schema.String),
-      url: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccountCustomerService",
-  }) as any as Schema.Schema<AccountCustomerService>;
+export const AccountCustomerService = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    email: Schema.optional(Schema.String),
+    phoneNumber: Schema.optional(Schema.String),
+    url: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "AccountCustomerService" });
 
 export interface AccountBusinessInformation {
   /** The 10-digit [Korean business registration number](https://support.google.com/merchants/answer/9037766) separated with dashes in the format: XXX-XX-XXXXX. This field will only be updated if explicitly set. */
@@ -1999,32 +1700,24 @@ export interface AccountBusinessInformation {
   phoneVerificationStatus?: string;
 }
 
-export const AccountBusinessInformation: Schema.Schema<AccountBusinessInformation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      koreanBusinessRegistrationNumber: Schema.optional(Schema.String),
-      address: Schema.optional(AccountAddress),
-      customerService: Schema.optional(AccountCustomerService),
-      phoneNumber: Schema.optional(Schema.String),
-      phoneVerificationStatus: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccountBusinessInformation",
-  }) as any as Schema.Schema<AccountBusinessInformation>;
+export const AccountBusinessInformation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    koreanBusinessRegistrationNumber: Schema.optional(Schema.String),
+    address: Schema.optional(AccountAddress),
+    customerService: Schema.optional(AccountCustomerService),
+    phoneNumber: Schema.optional(Schema.String),
+    phoneVerificationStatus: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AccountBusinessInformation" });
 
 export interface AccountConversionSettings {
   /** When enabled, free listing URLs have a parameter to enable conversion tracking for products owned by the current merchant account. See [auto-tagging](https://support.google.com/merchants/answer/11127659). */
   freeListingsAutoTaggingEnabled?: boolean;
 }
 
-export const AccountConversionSettings: Schema.Schema<AccountConversionSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      freeListingsAutoTaggingEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "AccountConversionSettings",
-  }) as any as Schema.Schema<AccountConversionSettings>;
+export const AccountConversionSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    freeListingsAutoTaggingEnabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "AccountConversionSettings" });
 
 export interface AccountGoogleMyBusinessLink {
   /** The Business Profile email address of a specific account within a Business Profile. A sample account within a Business Profile could be a business account with set of locations, managed under the Business Profile. */
@@ -2035,16 +1728,12 @@ export interface AccountGoogleMyBusinessLink {
   gmbAccountId?: string;
 }
 
-export const AccountGoogleMyBusinessLink: Schema.Schema<AccountGoogleMyBusinessLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gmbEmail: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-      gmbAccountId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccountGoogleMyBusinessLink",
-  }) as any as Schema.Schema<AccountGoogleMyBusinessLink>;
+export const AccountGoogleMyBusinessLink =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gmbEmail: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+    gmbAccountId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AccountGoogleMyBusinessLink" });
 
 export interface Account {
   /** The business identity attributes can be used to self-declare attributes that let customers know more about your business. */
@@ -2085,31 +1774,26 @@ export interface Account {
   adultContent?: boolean;
 }
 
-export const Account: Schema.Schema<Account> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      businessIdentity: Schema.optional(AccountBusinessIdentity),
-      automaticImprovements: Schema.optional(AccountAutomaticImprovements),
-      name: Schema.optional(Schema.String),
-      youtubeChannelLinks: Schema.optional(
-        Schema.Array(AccountYouTubeChannelLink),
-      ),
-      automaticLabelIds: Schema.optional(Schema.Array(Schema.String)),
-      users: Schema.optional(Schema.Array(AccountUser)),
-      id: Schema.optional(Schema.String),
-      adsLinks: Schema.optional(Schema.Array(AccountAdsLink)),
-      kind: Schema.optional(Schema.String),
-      websiteUrl: Schema.optional(Schema.String),
-      sellerId: Schema.optional(Schema.String),
-      cssId: Schema.optional(Schema.String),
-      labelIds: Schema.optional(Schema.Array(Schema.String)),
-      accountManagement: Schema.optional(Schema.String),
-      businessInformation: Schema.optional(AccountBusinessInformation),
-      conversionSettings: Schema.optional(AccountConversionSettings),
-      googleMyBusinessLink: Schema.optional(AccountGoogleMyBusinessLink),
-      adultContent: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "Account" }) as any as Schema.Schema<Account>;
+export const Account = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  businessIdentity: Schema.optional(AccountBusinessIdentity),
+  automaticImprovements: Schema.optional(AccountAutomaticImprovements),
+  name: Schema.optional(Schema.String),
+  youtubeChannelLinks: Schema.optional(Schema.Array(AccountYouTubeChannelLink)),
+  automaticLabelIds: Schema.optional(Schema.Array(Schema.String)),
+  users: Schema.optional(Schema.Array(AccountUser)),
+  id: Schema.optional(Schema.String),
+  adsLinks: Schema.optional(Schema.Array(AccountAdsLink)),
+  kind: Schema.optional(Schema.String),
+  websiteUrl: Schema.optional(Schema.String),
+  sellerId: Schema.optional(Schema.String),
+  cssId: Schema.optional(Schema.String),
+  labelIds: Schema.optional(Schema.Array(Schema.String)),
+  accountManagement: Schema.optional(Schema.String),
+  businessInformation: Schema.optional(AccountBusinessInformation),
+  conversionSettings: Schema.optional(AccountConversionSettings),
+  googleMyBusinessLink: Schema.optional(AccountGoogleMyBusinessLink),
+  adultContent: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Account" });
 
 export interface AccountsCustomBatchResponseEntry {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#accountsCustomBatchResponseEntry`" */
@@ -2122,17 +1806,13 @@ export interface AccountsCustomBatchResponseEntry {
   account?: Account;
 }
 
-export const AccountsCustomBatchResponseEntry: Schema.Schema<AccountsCustomBatchResponseEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      batchId: Schema.optional(Schema.Number),
-      errors: Schema.optional(Errors),
-      account: Schema.optional(Account),
-    }),
-  ).annotate({
-    identifier: "AccountsCustomBatchResponseEntry",
-  }) as any as Schema.Schema<AccountsCustomBatchResponseEntry>;
+export const AccountsCustomBatchResponseEntry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    batchId: Schema.optional(Schema.Number),
+    errors: Schema.optional(Errors),
+    account: Schema.optional(Account),
+  }).annotate({ identifier: "AccountsCustomBatchResponseEntry" });
 
 export interface PubsubNotificationSettings {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#pubsubNotificationSettings`" */
@@ -2143,16 +1823,12 @@ export interface PubsubNotificationSettings {
   cloudTopicName?: string;
 }
 
-export const PubsubNotificationSettings: Schema.Schema<PubsubNotificationSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      registeredEvents: Schema.optional(Schema.Array(Schema.String)),
-      cloudTopicName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PubsubNotificationSettings",
-  }) as any as Schema.Schema<PubsubNotificationSettings>;
+export const PubsubNotificationSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    registeredEvents: Schema.optional(Schema.Array(Schema.String)),
+    cloudTopicName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PubsubNotificationSettings" });
 
 export interface DatafeedTarget {
   /** Deprecated. Use `feedLabel` instead. The country where the items in the feed will be included in the search index, represented as a CLDR territory code. */
@@ -2169,19 +1845,14 @@ export interface DatafeedTarget {
   includedDestinations?: Array<string>;
 }
 
-export const DatafeedTarget: Schema.Schema<DatafeedTarget> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      country: Schema.optional(Schema.String),
-      targetCountries: Schema.optional(Schema.Array(Schema.String)),
-      excludedDestinations: Schema.optional(Schema.Array(Schema.String)),
-      language: Schema.optional(Schema.String),
-      feedLabel: Schema.optional(Schema.String),
-      includedDestinations: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "DatafeedTarget",
-  }) as any as Schema.Schema<DatafeedTarget>;
+export const DatafeedTarget = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  country: Schema.optional(Schema.String),
+  targetCountries: Schema.optional(Schema.Array(Schema.String)),
+  excludedDestinations: Schema.optional(Schema.Array(Schema.String)),
+  language: Schema.optional(Schema.String),
+  feedLabel: Schema.optional(Schema.String),
+  includedDestinations: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "DatafeedTarget" });
 
 export interface ServiceStoreConfigCutoffConfigLocalCutoffTime {
   /** Hour local delivery orders must be placed by to process the same day. */
@@ -2190,15 +1861,11 @@ export interface ServiceStoreConfigCutoffConfigLocalCutoffTime {
   minute?: string;
 }
 
-export const ServiceStoreConfigCutoffConfigLocalCutoffTime: Schema.Schema<ServiceStoreConfigCutoffConfigLocalCutoffTime> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hour: Schema.optional(Schema.String),
-      minute: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ServiceStoreConfigCutoffConfigLocalCutoffTime",
-  }) as any as Schema.Schema<ServiceStoreConfigCutoffConfigLocalCutoffTime>;
+export const ServiceStoreConfigCutoffConfigLocalCutoffTime =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    hour: Schema.optional(Schema.String),
+    minute: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ServiceStoreConfigCutoffConfigLocalCutoffTime" });
 
 export interface ServiceStoreConfigCutoffConfig {
   /** Time in hours and minutes in the local timezone when local delivery ends. */
@@ -2209,18 +1876,14 @@ export interface ServiceStoreConfigCutoffConfig {
   storeCloseOffsetHours?: string;
 }
 
-export const ServiceStoreConfigCutoffConfig: Schema.Schema<ServiceStoreConfigCutoffConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      localCutoffTime: Schema.optional(
-        ServiceStoreConfigCutoffConfigLocalCutoffTime,
-      ),
-      noDeliveryPostCutoff: Schema.optional(Schema.Boolean),
-      storeCloseOffsetHours: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ServiceStoreConfigCutoffConfig",
-  }) as any as Schema.Schema<ServiceStoreConfigCutoffConfig>;
+export const ServiceStoreConfigCutoffConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    localCutoffTime: Schema.optional(
+      ServiceStoreConfigCutoffConfigLocalCutoffTime,
+    ),
+    noDeliveryPostCutoff: Schema.optional(Schema.Boolean),
+    storeCloseOffsetHours: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ServiceStoreConfigCutoffConfig" });
 
 export interface Distance {
   /** The distance represented as a number. */
@@ -2229,13 +1892,10 @@ export interface Distance {
   unit?: string;
 }
 
-export const Distance: Schema.Schema<Distance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-      unit: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Distance" }) as any as Schema.Schema<Distance>;
+export const Distance = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.String),
+  unit: Schema.optional(Schema.String),
+}).annotate({ identifier: "Distance" });
 
 export interface ServiceStoreConfig {
   /** A list of store codes that provide local delivery. If empty, then `store_service_type` must be `all_stores`, or an error is thrown. If not empty, then `store_service_type` must be `selected_stores`, or an error is thrown. */
@@ -2248,17 +1908,12 @@ export interface ServiceStoreConfig {
   storeServiceType?: string;
 }
 
-export const ServiceStoreConfig: Schema.Schema<ServiceStoreConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      storeCodes: Schema.optional(Schema.Array(Schema.String)),
-      cutoffConfig: Schema.optional(ServiceStoreConfigCutoffConfig),
-      serviceRadius: Schema.optional(Distance),
-      storeServiceType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ServiceStoreConfig",
-  }) as any as Schema.Schema<ServiceStoreConfig>;
+export const ServiceStoreConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  storeCodes: Schema.optional(Schema.Array(Schema.String)),
+  cutoffConfig: Schema.optional(ServiceStoreConfigCutoffConfig),
+  serviceRadius: Schema.optional(Distance),
+  storeServiceType: Schema.optional(Schema.String),
+}).annotate({ identifier: "ServiceStoreConfig" });
 
 export interface CarrierRate {
   /** Multiplicative shipping rate modifier as a number in decimal notation. Can be negative. For example `"5.4"` increases the rate by 5.4%, `"-3"` decreases the rate by 3%. Optional. */
@@ -2275,19 +1930,14 @@ export interface CarrierRate {
   originPostalCode?: string;
 }
 
-export const CarrierRate: Schema.Schema<CarrierRate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      percentageAdjustment: Schema.optional(Schema.String),
-      carrierName: Schema.optional(Schema.String),
-      carrierService: Schema.optional(Schema.String),
-      flatAdjustment: Schema.optional(Price),
-      name: Schema.optional(Schema.String),
-      originPostalCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CarrierRate",
-  }) as any as Schema.Schema<CarrierRate>;
+export const CarrierRate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  percentageAdjustment: Schema.optional(Schema.String),
+  carrierName: Schema.optional(Schema.String),
+  carrierService: Schema.optional(Schema.String),
+  flatAdjustment: Schema.optional(Price),
+  name: Schema.optional(Schema.String),
+  originPostalCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "CarrierRate" });
 
 export interface Weight {
   /** Required. The weight unit. Acceptable values are: - "`kg`" - "`lb`" */
@@ -2296,27 +1946,19 @@ export interface Weight {
   value?: string;
 }
 
-export const Weight: Schema.Schema<Weight> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unit: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Weight" }) as any as Schema.Schema<Weight>;
+export const Weight = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  unit: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+}).annotate({ identifier: "Weight" });
 
 export interface LocationIdSet {
   /** A non-empty list of location IDs. They must all be of the same location type (for example, state). */
   locationIds?: Array<string>;
 }
 
-export const LocationIdSet: Schema.Schema<LocationIdSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locationIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "LocationIdSet",
-  }) as any as Schema.Schema<LocationIdSet>;
+export const LocationIdSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locationIds: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "LocationIdSet" });
 
 export interface Headers {
   /** A list of inclusive number of items upper bounds. The last value can be `"infinity"`. For example `["10", "50", "infinity"]` represents the headers "<= 10 items", "<= 50 items", and "> 50 items". Must be non-empty. Can only be set if all other fields are not set. */
@@ -2331,16 +1973,13 @@ export interface Headers {
   locations?: Array<LocationIdSet>;
 }
 
-export const Headers: Schema.Schema<Headers> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      numberOfItems: Schema.optional(Schema.Array(Schema.String)),
-      postalCodeGroupNames: Schema.optional(Schema.Array(Schema.String)),
-      prices: Schema.optional(Schema.Array(Price)),
-      weights: Schema.optional(Schema.Array(Weight)),
-      locations: Schema.optional(Schema.Array(LocationIdSet)),
-    }),
-  ).annotate({ identifier: "Headers" }) as any as Schema.Schema<Headers>;
+export const Headers = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  numberOfItems: Schema.optional(Schema.Array(Schema.String)),
+  postalCodeGroupNames: Schema.optional(Schema.Array(Schema.String)),
+  prices: Schema.optional(Schema.Array(Price)),
+  weights: Schema.optional(Schema.Array(Weight)),
+  locations: Schema.optional(Schema.Array(LocationIdSet)),
+}).annotate({ identifier: "Headers" });
 
 export interface Table {
   /** The list of rows that constitute the table. Must have the same length as `rowHeaders`. Required. */
@@ -2353,15 +1992,12 @@ export interface Table {
   columnHeaders?: Headers;
 }
 
-export const Table: Schema.Schema<Table> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rows: Schema.optional(Schema.Array(Row)),
-      name: Schema.optional(Schema.String),
-      rowHeaders: Schema.optional(Headers),
-      columnHeaders: Schema.optional(Headers),
-    }),
-  ).annotate({ identifier: "Table" }) as any as Schema.Schema<Table>;
+export const Table = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  rows: Schema.optional(Schema.Array(Row)),
+  name: Schema.optional(Schema.String),
+  rowHeaders: Schema.optional(Headers),
+  columnHeaders: Schema.optional(Headers),
+}).annotate({ identifier: "Table" });
 
 export interface RateGroup {
   /** A list of carrier rates that can be referred to by `mainTable` or `singleValue`. */
@@ -2378,17 +2014,14 @@ export interface RateGroup {
   mainTable?: Table;
 }
 
-export const RateGroup: Schema.Schema<RateGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      carrierRates: Schema.optional(Schema.Array(CarrierRate)),
-      name: Schema.optional(Schema.String),
-      applicableShippingLabels: Schema.optional(Schema.Array(Schema.String)),
-      subtables: Schema.optional(Schema.Array(Table)),
-      singleValue: Schema.optional(Value),
-      mainTable: Schema.optional(Table),
-    }),
-  ).annotate({ identifier: "RateGroup" }) as any as Schema.Schema<RateGroup>;
+export const RateGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  carrierRates: Schema.optional(Schema.Array(CarrierRate)),
+  name: Schema.optional(Schema.String),
+  applicableShippingLabels: Schema.optional(Schema.Array(Schema.String)),
+  subtables: Schema.optional(Schema.Array(Table)),
+  singleValue: Schema.optional(Value),
+  mainTable: Schema.optional(Table),
+}).annotate({ identifier: "RateGroup" });
 
 export interface PickupCarrierService {
   /** The name of the pickup service (for example, `"Access point"`). Required. */
@@ -2397,15 +2030,10 @@ export interface PickupCarrierService {
   carrierName?: string;
 }
 
-export const PickupCarrierService: Schema.Schema<PickupCarrierService> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serviceName: Schema.optional(Schema.String),
-      carrierName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PickupCarrierService",
-  }) as any as Schema.Schema<PickupCarrierService>;
+export const PickupCarrierService = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  serviceName: Schema.optional(Schema.String),
+  carrierName: Schema.optional(Schema.String),
+}).annotate({ identifier: "PickupCarrierService" });
 
 export interface TransitTableTransitTimeRowTransitTimeValue {
   /** Transit time range (min-max) in business days. 0 means same day delivery, 1 means next day delivery. */
@@ -2414,30 +2042,22 @@ export interface TransitTableTransitTimeRowTransitTimeValue {
   maxTransitTimeInDays?: number;
 }
 
-export const TransitTableTransitTimeRowTransitTimeValue: Schema.Schema<TransitTableTransitTimeRowTransitTimeValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      minTransitTimeInDays: Schema.optional(Schema.Number),
-      maxTransitTimeInDays: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "TransitTableTransitTimeRowTransitTimeValue",
-  }) as any as Schema.Schema<TransitTableTransitTimeRowTransitTimeValue>;
+export const TransitTableTransitTimeRowTransitTimeValue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    minTransitTimeInDays: Schema.optional(Schema.Number),
+    maxTransitTimeInDays: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "TransitTableTransitTimeRowTransitTimeValue" });
 
 export interface TransitTableTransitTimeRow {
   values?: Array<TransitTableTransitTimeRowTransitTimeValue>;
 }
 
-export const TransitTableTransitTimeRow: Schema.Schema<TransitTableTransitTimeRow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      values: Schema.optional(
-        Schema.Array(TransitTableTransitTimeRowTransitTimeValue),
-      ),
-    }),
-  ).annotate({
-    identifier: "TransitTableTransitTimeRow",
-  }) as any as Schema.Schema<TransitTableTransitTimeRow>;
+export const TransitTableTransitTimeRow =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    values: Schema.optional(
+      Schema.Array(TransitTableTransitTimeRowTransitTimeValue),
+    ),
+  }).annotate({ identifier: "TransitTableTransitTimeRow" });
 
 export interface TransitTable {
   rows?: Array<TransitTableTransitTimeRow>;
@@ -2447,16 +2067,11 @@ export interface TransitTable {
   transitTimeLabels?: Array<string>;
 }
 
-export const TransitTable: Schema.Schema<TransitTable> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rows: Schema.optional(Schema.Array(TransitTableTransitTimeRow)),
-      postalCodeGroupNames: Schema.optional(Schema.Array(Schema.String)),
-      transitTimeLabels: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TransitTable",
-  }) as any as Schema.Schema<TransitTable>;
+export const TransitTable = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  rows: Schema.optional(Schema.Array(TransitTableTransitTimeRow)),
+  postalCodeGroupNames: Schema.optional(Schema.Array(Schema.String)),
+  transitTimeLabels: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "TransitTable" });
 
 export interface WarehouseBasedDeliveryTime {
   /** Required. Carrier service, such as `"ground"` or `"2 days"`. The list of supported services for a carrier can be retrieved through the `listSupportedCarriers` method. The name of the service must be in the eddSupportedServices list. */
@@ -2477,35 +2092,26 @@ export interface WarehouseBasedDeliveryTime {
   originAdministrativeArea?: string;
 }
 
-export const WarehouseBasedDeliveryTime: Schema.Schema<WarehouseBasedDeliveryTime> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      carrierService: Schema.optional(Schema.String),
-      warehouseName: Schema.optional(Schema.String),
-      originCountry: Schema.optional(Schema.String),
-      carrier: Schema.optional(Schema.String),
-      originPostalCode: Schema.optional(Schema.String),
-      originCity: Schema.optional(Schema.String),
-      originStreetAddress: Schema.optional(Schema.String),
-      originAdministrativeArea: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WarehouseBasedDeliveryTime",
-  }) as any as Schema.Schema<WarehouseBasedDeliveryTime>;
+export const WarehouseBasedDeliveryTime =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    carrierService: Schema.optional(Schema.String),
+    warehouseName: Schema.optional(Schema.String),
+    originCountry: Schema.optional(Schema.String),
+    carrier: Schema.optional(Schema.String),
+    originPostalCode: Schema.optional(Schema.String),
+    originCity: Schema.optional(Schema.String),
+    originStreetAddress: Schema.optional(Schema.String),
+    originAdministrativeArea: Schema.optional(Schema.String),
+  }).annotate({ identifier: "WarehouseBasedDeliveryTime" });
 
 export interface BusinessDayConfig {
   /** Regular business days, such as '"monday"'. May not be empty. */
   businessDays?: Array<string>;
 }
 
-export const BusinessDayConfig: Schema.Schema<BusinessDayConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      businessDays: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "BusinessDayConfig",
-  }) as any as Schema.Schema<BusinessDayConfig>;
+export const BusinessDayConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  businessDays: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "BusinessDayConfig" });
 
 export interface CutoffTime {
   /** Hour of the cutoff time until which an order has to be placed to be processed in the same day. Required. */
@@ -2516,14 +2122,11 @@ export interface CutoffTime {
   timezone?: string;
 }
 
-export const CutoffTime: Schema.Schema<CutoffTime> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hour: Schema.optional(Schema.Number),
-      minute: Schema.optional(Schema.Number),
-      timezone: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "CutoffTime" }) as any as Schema.Schema<CutoffTime>;
+export const CutoffTime = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  hour: Schema.optional(Schema.Number),
+  minute: Schema.optional(Schema.Number),
+  timezone: Schema.optional(Schema.String),
+}).annotate({ identifier: "CutoffTime" });
 
 export interface HolidayCutoff {
   /** Date on which the deadline will become visible to consumers in ISO 8601 format. For example, "2016-10-31" for 31st October 2016. Required. */
@@ -2538,18 +2141,13 @@ export interface HolidayCutoff {
   deadlineHour?: number;
 }
 
-export const HolidayCutoff: Schema.Schema<HolidayCutoff> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      visibleFromDate: Schema.optional(Schema.String),
-      holidayId: Schema.optional(Schema.String),
-      deadlineTimezone: Schema.optional(Schema.String),
-      deadlineDate: Schema.optional(Schema.String),
-      deadlineHour: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "HolidayCutoff",
-  }) as any as Schema.Schema<HolidayCutoff>;
+export const HolidayCutoff = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  visibleFromDate: Schema.optional(Schema.String),
+  holidayId: Schema.optional(Schema.String),
+  deadlineTimezone: Schema.optional(Schema.String),
+  deadlineDate: Schema.optional(Schema.String),
+  deadlineHour: Schema.optional(Schema.Number),
+}).annotate({ identifier: "HolidayCutoff" });
 
 export interface DeliveryTime {
   /** Transit time table, number of business days spent in transit based on row and column dimensions. Either `{min,max}TransitTimeInDays` or `transitTimeTable` can be set, but not both. */
@@ -2574,25 +2172,20 @@ export interface DeliveryTime {
   minHandlingTimeInDays?: number;
 }
 
-export const DeliveryTime: Schema.Schema<DeliveryTime> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      transitTimeTable: Schema.optional(TransitTable),
-      warehouseBasedDeliveryTimes: Schema.optional(
-        Schema.Array(WarehouseBasedDeliveryTime),
-      ),
-      minTransitTimeInDays: Schema.optional(Schema.Number),
-      handlingBusinessDayConfig: Schema.optional(BusinessDayConfig),
-      cutoffTime: Schema.optional(CutoffTime),
-      transitBusinessDayConfig: Schema.optional(BusinessDayConfig),
-      maxHandlingTimeInDays: Schema.optional(Schema.Number),
-      maxTransitTimeInDays: Schema.optional(Schema.Number),
-      holidayCutoffs: Schema.optional(Schema.Array(HolidayCutoff)),
-      minHandlingTimeInDays: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "DeliveryTime",
-  }) as any as Schema.Schema<DeliveryTime>;
+export const DeliveryTime = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  transitTimeTable: Schema.optional(TransitTable),
+  warehouseBasedDeliveryTimes: Schema.optional(
+    Schema.Array(WarehouseBasedDeliveryTime),
+  ),
+  minTransitTimeInDays: Schema.optional(Schema.Number),
+  handlingBusinessDayConfig: Schema.optional(BusinessDayConfig),
+  cutoffTime: Schema.optional(CutoffTime),
+  transitBusinessDayConfig: Schema.optional(BusinessDayConfig),
+  maxHandlingTimeInDays: Schema.optional(Schema.Number),
+  maxTransitTimeInDays: Schema.optional(Schema.Number),
+  holidayCutoffs: Schema.optional(Schema.Array(HolidayCutoff)),
+  minHandlingTimeInDays: Schema.optional(Schema.Number),
+}).annotate({ identifier: "DeliveryTime" });
 
 export interface Service {
   /** A list of stores your products are delivered from. This is only available for the local delivery shipment type. */
@@ -2621,65 +2214,50 @@ export interface Service {
   currency?: string;
 }
 
-export const Service: Schema.Schema<Service> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      storeConfig: Schema.optional(ServiceStoreConfig),
-      rateGroups: Schema.optional(Schema.Array(RateGroup)),
-      name: Schema.optional(Schema.String),
-      pickupService: Schema.optional(PickupCarrierService),
-      eligibility: Schema.optional(Schema.String),
-      active: Schema.optional(Schema.Boolean),
-      minimumOrderValueTable: Schema.optional(MinimumOrderValueTable),
-      minimumOrderValue: Schema.optional(Price),
-      deliveryTime: Schema.optional(DeliveryTime),
-      shipmentType: Schema.optional(Schema.String),
-      deliveryCountry: Schema.optional(Schema.String),
-      currency: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Service" }) as any as Schema.Schema<Service>;
+export const Service = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  storeConfig: Schema.optional(ServiceStoreConfig),
+  rateGroups: Schema.optional(Schema.Array(RateGroup)),
+  name: Schema.optional(Schema.String),
+  pickupService: Schema.optional(PickupCarrierService),
+  eligibility: Schema.optional(Schema.String),
+  active: Schema.optional(Schema.Boolean),
+  minimumOrderValueTable: Schema.optional(MinimumOrderValueTable),
+  minimumOrderValue: Schema.optional(Price),
+  deliveryTime: Schema.optional(DeliveryTime),
+  shipmentType: Schema.optional(Schema.String),
+  deliveryCountry: Schema.optional(Schema.String),
+  currency: Schema.optional(Schema.String),
+}).annotate({ identifier: "Service" });
 
 export interface InputValueTextInputValue {
   /** Required. Text provided by the merchant. */
   value?: string;
 }
 
-export const InputValueTextInputValue: Schema.Schema<InputValueTextInputValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InputValueTextInputValue",
-  }) as any as Schema.Schema<InputValueTextInputValue>;
+export const InputValueTextInputValue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(Schema.String),
+  }).annotate({ identifier: "InputValueTextInputValue" });
 
 export interface InputValueChoiceInputValue {
   /** Required. Id of the option that was selected by the merchant. */
   choiceInputOptionId?: string;
 }
 
-export const InputValueChoiceInputValue: Schema.Schema<InputValueChoiceInputValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      choiceInputOptionId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InputValueChoiceInputValue",
-  }) as any as Schema.Schema<InputValueChoiceInputValue>;
+export const InputValueChoiceInputValue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    choiceInputOptionId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "InputValueChoiceInputValue" });
 
 export interface InputValueCheckboxInputValue {
   /** Required. True if the merchant checked the box field. False otherwise. */
   value?: boolean;
 }
 
-export const InputValueCheckboxInputValue: Schema.Schema<InputValueCheckboxInputValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "InputValueCheckboxInputValue",
-  }) as any as Schema.Schema<InputValueCheckboxInputValue>;
+export const InputValueCheckboxInputValue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "InputValueCheckboxInputValue" });
 
 export interface InputValue {
   /** Value for text input field. */
@@ -2692,29 +2270,22 @@ export interface InputValue {
   checkboxInputValue?: InputValueCheckboxInputValue;
 }
 
-export const InputValue: Schema.Schema<InputValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      textInputValue: Schema.optional(InputValueTextInputValue),
-      choiceInputValue: Schema.optional(InputValueChoiceInputValue),
-      inputFieldId: Schema.optional(Schema.String),
-      checkboxInputValue: Schema.optional(InputValueCheckboxInputValue),
-    }),
-  ).annotate({ identifier: "InputValue" }) as any as Schema.Schema<InputValue>;
+export const InputValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  textInputValue: Schema.optional(InputValueTextInputValue),
+  choiceInputValue: Schema.optional(InputValueChoiceInputValue),
+  inputFieldId: Schema.optional(Schema.String),
+  checkboxInputValue: Schema.optional(InputValueCheckboxInputValue),
+}).annotate({ identifier: "InputValue" });
 
 export interface AccountsUpdateLabelsRequest {
   /** The IDs of labels that should be assigned to the account. */
   labelIds?: Array<string>;
 }
 
-export const AccountsUpdateLabelsRequest: Schema.Schema<AccountsUpdateLabelsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labelIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AccountsUpdateLabelsRequest",
-  }) as any as Schema.Schema<AccountsUpdateLabelsRequest>;
+export const AccountsUpdateLabelsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    labelIds: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "AccountsUpdateLabelsRequest" });
 
 export interface ProductViewItemIssueItemIssueType {
   /** Canonical attribute name for attribute-specific issues. */
@@ -2723,15 +2294,11 @@ export interface ProductViewItemIssueItemIssueType {
   code?: string;
 }
 
-export const ProductViewItemIssueItemIssueType: Schema.Schema<ProductViewItemIssueItemIssueType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      canonicalAttribute: Schema.optional(Schema.String),
-      code: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProductViewItemIssueItemIssueType",
-  }) as any as Schema.Schema<ProductViewItemIssueItemIssueType>;
+export const ProductViewItemIssueItemIssueType =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    canonicalAttribute: Schema.optional(Schema.String),
+    code: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ProductViewItemIssueItemIssueType" });
 
 export interface LiaAboutPageSettings {
   /** The status of the verification process for the About page. Supported values are: - "`active`" - "`inactive`" - "`pending`" */
@@ -2740,15 +2307,10 @@ export interface LiaAboutPageSettings {
   url?: string;
 }
 
-export const LiaAboutPageSettings: Schema.Schema<LiaAboutPageSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      status: Schema.optional(Schema.String),
-      url: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LiaAboutPageSettings",
-  }) as any as Schema.Schema<LiaAboutPageSettings>;
+export const LiaAboutPageSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  status: Schema.optional(Schema.String),
+  url: Schema.optional(Schema.String),
+}).annotate({ identifier: "LiaAboutPageSettings" });
 
 export interface AccountStatusItemLevelIssue {
   /** The attribute's name, if the issue is caused by a single attribute. */
@@ -2769,21 +2331,17 @@ export interface AccountStatusItemLevelIssue {
   detail?: string;
 }
 
-export const AccountStatusItemLevelIssue: Schema.Schema<AccountStatusItemLevelIssue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      attributeName: Schema.optional(Schema.String),
-      code: Schema.optional(Schema.String),
-      documentation: Schema.optional(Schema.String),
-      numItems: Schema.optional(Schema.String),
-      servability: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      resolution: Schema.optional(Schema.String),
-      detail: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccountStatusItemLevelIssue",
-  }) as any as Schema.Schema<AccountStatusItemLevelIssue>;
+export const AccountStatusItemLevelIssue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    attributeName: Schema.optional(Schema.String),
+    code: Schema.optional(Schema.String),
+    documentation: Schema.optional(Schema.String),
+    numItems: Schema.optional(Schema.String),
+    servability: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    resolution: Schema.optional(Schema.String),
+    detail: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AccountStatusItemLevelIssue" });
 
 export interface AccountStatusStatistics {
   /** Number of active offers. */
@@ -2796,17 +2354,13 @@ export interface AccountStatusStatistics {
   expiring?: string;
 }
 
-export const AccountStatusStatistics: Schema.Schema<AccountStatusStatistics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      active: Schema.optional(Schema.String),
-      pending: Schema.optional(Schema.String),
-      disapproved: Schema.optional(Schema.String),
-      expiring: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccountStatusStatistics",
-  }) as any as Schema.Schema<AccountStatusStatistics>;
+export const AccountStatusStatistics =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    active: Schema.optional(Schema.String),
+    pending: Schema.optional(Schema.String),
+    disapproved: Schema.optional(Schema.String),
+    expiring: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AccountStatusStatistics" });
 
 export interface AccountStatusProducts {
   /** List of item-level issues. */
@@ -2821,20 +2375,13 @@ export interface AccountStatusProducts {
   destination?: string;
 }
 
-export const AccountStatusProducts: Schema.Schema<AccountStatusProducts> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      itemLevelIssues: Schema.optional(
-        Schema.Array(AccountStatusItemLevelIssue),
-      ),
-      channel: Schema.optional(Schema.String),
-      statistics: Schema.optional(AccountStatusStatistics),
-      country: Schema.optional(Schema.String),
-      destination: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccountStatusProducts",
-  }) as any as Schema.Schema<AccountStatusProducts>;
+export const AccountStatusProducts = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  itemLevelIssues: Schema.optional(Schema.Array(AccountStatusItemLevelIssue)),
+  channel: Schema.optional(Schema.String),
+  statistics: Schema.optional(AccountStatusStatistics),
+  country: Schema.optional(Schema.String),
+  destination: Schema.optional(Schema.String),
+}).annotate({ identifier: "AccountStatusProducts" });
 
 export interface Callout {
   /** A full message that needs to be shown to the merchant. */
@@ -2848,13 +2395,10 @@ export interface Callout {
     | (string & {});
 }
 
-export const Callout: Schema.Schema<Callout> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fullMessage: Schema.optional(TextWithTooltip),
-      styleHint: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Callout" }) as any as Schema.Schema<Callout>;
+export const Callout = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fullMessage: Schema.optional(TextWithTooltip),
+  styleHint: Schema.optional(Schema.String),
+}).annotate({ identifier: "Callout" });
 
 export interface PriceCompetitiveness {
   /** The latest available price benchmark in micros (1 millionth of a standard unit, 1 USD = 1000000 micros) for the product's catalog in the benchmark country. */
@@ -2865,16 +2409,11 @@ export interface PriceCompetitiveness {
   countryCode?: string;
 }
 
-export const PriceCompetitiveness: Schema.Schema<PriceCompetitiveness> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      benchmarkPriceMicros: Schema.optional(Schema.String),
-      benchmarkPriceCurrencyCode: Schema.optional(Schema.String),
-      countryCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PriceCompetitiveness",
-  }) as any as Schema.Schema<PriceCompetitiveness>;
+export const PriceCompetitiveness = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  benchmarkPriceMicros: Schema.optional(Schema.String),
+  benchmarkPriceCurrencyCode: Schema.optional(Schema.String),
+  countryCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "PriceCompetitiveness" });
 
 export interface DatafeedFetchSchedule {
   /** The day of the week the feed file should be fetched. Acceptable values are: - "`monday`" - "`tuesday`" - "`wednesday`" - "`thursday`" - "`friday`" - "`saturday`" - "`sunday`" */
@@ -2897,22 +2436,17 @@ export interface DatafeedFetchSchedule {
   dayOfMonth?: number;
 }
 
-export const DatafeedFetchSchedule: Schema.Schema<DatafeedFetchSchedule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      weekday: Schema.optional(Schema.String),
-      hour: Schema.optional(Schema.Number),
-      password: Schema.optional(Schema.String),
-      fetchUrl: Schema.optional(Schema.String),
-      paused: Schema.optional(Schema.Boolean),
-      timeZone: Schema.optional(Schema.String),
-      username: Schema.optional(Schema.String),
-      minuteOfHour: Schema.optional(Schema.Number),
-      dayOfMonth: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "DatafeedFetchSchedule",
-  }) as any as Schema.Schema<DatafeedFetchSchedule>;
+export const DatafeedFetchSchedule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  weekday: Schema.optional(Schema.String),
+  hour: Schema.optional(Schema.Number),
+  password: Schema.optional(Schema.String),
+  fetchUrl: Schema.optional(Schema.String),
+  paused: Schema.optional(Schema.Boolean),
+  timeZone: Schema.optional(Schema.String),
+  username: Schema.optional(Schema.String),
+  minuteOfHour: Schema.optional(Schema.Number),
+  dayOfMonth: Schema.optional(Schema.Number),
+}).annotate({ identifier: "DatafeedFetchSchedule" });
 
 export interface DatafeedFormat {
   /** Character encoding scheme of the data feed. If not specified, the encoding will be auto-detected. Acceptable values are: - "`latin-1`" - "`utf-16be`" - "`utf-16le`" - "`utf-8`" - "`windows-1252`" */
@@ -2923,16 +2457,11 @@ export interface DatafeedFormat {
   quotingMode?: string;
 }
 
-export const DatafeedFormat: Schema.Schema<DatafeedFormat> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fileEncoding: Schema.optional(Schema.String),
-      columnDelimiter: Schema.optional(Schema.String),
-      quotingMode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DatafeedFormat",
-  }) as any as Schema.Schema<DatafeedFormat>;
+export const DatafeedFormat = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fileEncoding: Schema.optional(Schema.String),
+  columnDelimiter: Schema.optional(Schema.String),
+  quotingMode: Schema.optional(Schema.String),
+}).annotate({ identifier: "DatafeedFormat" });
 
 export interface Datafeed {
   /** Required for insert. A descriptive name of the data feed. */
@@ -2955,20 +2484,17 @@ export interface Datafeed {
   fileName?: string;
 }
 
-export const Datafeed: Schema.Schema<Datafeed> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      attributeLanguage: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      targets: Schema.optional(Schema.Array(DatafeedTarget)),
-      contentType: Schema.optional(Schema.String),
-      fetchSchedule: Schema.optional(DatafeedFetchSchedule),
-      format: Schema.optional(DatafeedFormat),
-      id: Schema.optional(Schema.String),
-      fileName: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Datafeed" }) as any as Schema.Schema<Datafeed>;
+export const Datafeed = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  attributeLanguage: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  targets: Schema.optional(Schema.Array(DatafeedTarget)),
+  contentType: Schema.optional(Schema.String),
+  fetchSchedule: Schema.optional(DatafeedFetchSchedule),
+  format: Schema.optional(DatafeedFormat),
+  id: Schema.optional(Schema.String),
+  fileName: Schema.optional(Schema.String),
+}).annotate({ identifier: "Datafeed" });
 
 export interface DatafeedsCustomBatchResponseEntry {
   /** The ID of the request entry this entry responds to. */
@@ -2979,16 +2505,12 @@ export interface DatafeedsCustomBatchResponseEntry {
   datafeed?: Datafeed;
 }
 
-export const DatafeedsCustomBatchResponseEntry: Schema.Schema<DatafeedsCustomBatchResponseEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      batchId: Schema.optional(Schema.Number),
-      errors: Schema.optional(Errors),
-      datafeed: Schema.optional(Datafeed),
-    }),
-  ).annotate({
-    identifier: "DatafeedsCustomBatchResponseEntry",
-  }) as any as Schema.Schema<DatafeedsCustomBatchResponseEntry>;
+export const DatafeedsCustomBatchResponseEntry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    batchId: Schema.optional(Schema.Number),
+    errors: Schema.optional(Errors),
+    datafeed: Schema.optional(Datafeed),
+  }).annotate({ identifier: "DatafeedsCustomBatchResponseEntry" });
 
 export interface DatafeedsCustomBatchResponse {
   /** The result of the execution of the batch requests. */
@@ -2997,15 +2519,11 @@ export interface DatafeedsCustomBatchResponse {
   kind?: string;
 }
 
-export const DatafeedsCustomBatchResponse: Schema.Schema<DatafeedsCustomBatchResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entries: Schema.optional(Schema.Array(DatafeedsCustomBatchResponseEntry)),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DatafeedsCustomBatchResponse",
-  }) as any as Schema.Schema<DatafeedsCustomBatchResponse>;
+export const DatafeedsCustomBatchResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entries: Schema.optional(Schema.Array(DatafeedsCustomBatchResponseEntry)),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DatafeedsCustomBatchResponse" });
 
 export interface WarehouseCutoffTime {
   /** Required. Hour (24-hour clock) of the cutoff time until which an order has to be placed to be processed in the same day by the warehouse. Hour is based on the timezone of warehouse. */
@@ -3014,15 +2532,10 @@ export interface WarehouseCutoffTime {
   minute?: number;
 }
 
-export const WarehouseCutoffTime: Schema.Schema<WarehouseCutoffTime> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hour: Schema.optional(Schema.Number),
-      minute: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "WarehouseCutoffTime",
-  }) as any as Schema.Schema<WarehouseCutoffTime>;
+export const WarehouseCutoffTime = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  hour: Schema.optional(Schema.Number),
+  minute: Schema.optional(Schema.Number),
+}).annotate({ identifier: "WarehouseCutoffTime" });
 
 export interface HolidaysHoliday {
   /** Date of the holiday, in ISO 8601 format. For example, "2016-12-25" for Christmas 2016. Always present. */
@@ -3039,19 +2552,14 @@ export interface HolidaysHoliday {
   deliveryGuaranteeHour?: string;
 }
 
-export const HolidaysHoliday: Schema.Schema<HolidaysHoliday> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      date: Schema.optional(Schema.String),
-      countryCode: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      deliveryGuaranteeDate: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      deliveryGuaranteeHour: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "HolidaysHoliday",
-  }) as any as Schema.Schema<HolidaysHoliday>;
+export const HolidaysHoliday = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  date: Schema.optional(Schema.String),
+  countryCode: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  deliveryGuaranteeDate: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  deliveryGuaranteeHour: Schema.optional(Schema.String),
+}).annotate({ identifier: "HolidaysHoliday" });
 
 export interface ProductViewItemIssueIssueSeverityPerDestination {
   /** List of demoted countries in the destination. */
@@ -3062,16 +2570,14 @@ export interface ProductViewItemIssueIssueSeverityPerDestination {
   destination?: string;
 }
 
-export const ProductViewItemIssueIssueSeverityPerDestination: Schema.Schema<ProductViewItemIssueIssueSeverityPerDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      demotedCountries: Schema.optional(Schema.Array(Schema.String)),
-      disapprovedCountries: Schema.optional(Schema.Array(Schema.String)),
-      destination: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const ProductViewItemIssueIssueSeverityPerDestination =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    demotedCountries: Schema.optional(Schema.Array(Schema.String)),
+    disapprovedCountries: Schema.optional(Schema.Array(Schema.String)),
+    destination: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "ProductViewItemIssueIssueSeverityPerDestination",
-  }) as any as Schema.Schema<ProductViewItemIssueIssueSeverityPerDestination>;
+  });
 
 export interface ProductViewItemIssueItemIssueSeverity {
   /** Item issue severity for every destination. */
@@ -3085,17 +2591,13 @@ export interface ProductViewItemIssueItemIssueSeverity {
     | (string & {});
 }
 
-export const ProductViewItemIssueItemIssueSeverity: Schema.Schema<ProductViewItemIssueItemIssueSeverity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      severityPerDestination: Schema.optional(
-        Schema.Array(ProductViewItemIssueIssueSeverityPerDestination),
-      ),
-      aggregatedSeverity: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProductViewItemIssueItemIssueSeverity",
-  }) as any as Schema.Schema<ProductViewItemIssueItemIssueSeverity>;
+export const ProductViewItemIssueItemIssueSeverity =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    severityPerDestination: Schema.optional(
+      Schema.Array(ProductViewItemIssueIssueSeverityPerDestination),
+    ),
+    aggregatedSeverity: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ProductViewItemIssueItemIssueSeverity" });
 
 export interface PostalCodeRange {
   /** A postal code or a pattern of the form `prefix*` denoting the inclusive lower bound of the range defining the area. Examples values: `"94108"`, `"9410*"`, `"9*"`. Required. */
@@ -3104,15 +2606,10 @@ export interface PostalCodeRange {
   postalCodeRangeEnd?: string;
 }
 
-export const PostalCodeRange: Schema.Schema<PostalCodeRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      postalCodeRangeBegin: Schema.optional(Schema.String),
-      postalCodeRangeEnd: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PostalCodeRange",
-  }) as any as Schema.Schema<PostalCodeRange>;
+export const PostalCodeRange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  postalCodeRangeBegin: Schema.optional(Schema.String),
+  postalCodeRangeEnd: Schema.optional(Schema.String),
+}).annotate({ identifier: "PostalCodeRange" });
 
 export interface PostalCodeGroup {
   /** The name of the postal code group, referred to in headers. Required. */
@@ -3123,16 +2620,11 @@ export interface PostalCodeGroup {
   postalCodeRanges?: Array<PostalCodeRange>;
 }
 
-export const PostalCodeGroup: Schema.Schema<PostalCodeGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      country: Schema.optional(Schema.String),
-      postalCodeRanges: Schema.optional(Schema.Array(PostalCodeRange)),
-    }),
-  ).annotate({
-    identifier: "PostalCodeGroup",
-  }) as any as Schema.Schema<PostalCodeGroup>;
+export const PostalCodeGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  country: Schema.optional(Schema.String),
+  postalCodeRanges: Schema.optional(Schema.Array(PostalCodeRange)),
+}).annotate({ identifier: "PostalCodeGroup" });
 
 export interface Warehouse {
   /** Required. The name of the warehouse. Must be unique within account. */
@@ -3147,16 +2639,13 @@ export interface Warehouse {
   cutoffTime?: WarehouseCutoffTime;
 }
 
-export const Warehouse: Schema.Schema<Warehouse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      businessDayConfig: Schema.optional(BusinessDayConfig),
-      handlingDays: Schema.optional(Schema.String),
-      shippingAddress: Schema.optional(Address),
-      cutoffTime: Schema.optional(WarehouseCutoffTime),
-    }),
-  ).annotate({ identifier: "Warehouse" }) as any as Schema.Schema<Warehouse>;
+export const Warehouse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  businessDayConfig: Schema.optional(BusinessDayConfig),
+  handlingDays: Schema.optional(Schema.String),
+  shippingAddress: Schema.optional(Address),
+  cutoffTime: Schema.optional(WarehouseCutoffTime),
+}).annotate({ identifier: "Warehouse" });
 
 export interface ShippingSettings {
   /** The ID of the account to which these account shipping settings belong. Ignored upon update, always present in get request responses. */
@@ -3169,17 +2658,12 @@ export interface ShippingSettings {
   services?: Array<Service>;
 }
 
-export const ShippingSettings: Schema.Schema<ShippingSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accountId: Schema.optional(Schema.String),
-      postalCodeGroups: Schema.optional(Schema.Array(PostalCodeGroup)),
-      warehouses: Schema.optional(Schema.Array(Warehouse)),
-      services: Schema.optional(Schema.Array(Service)),
-    }),
-  ).annotate({
-    identifier: "ShippingSettings",
-  }) as any as Schema.Schema<ShippingSettings>;
+export const ShippingSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  accountId: Schema.optional(Schema.String),
+  postalCodeGroups: Schema.optional(Schema.Array(PostalCodeGroup)),
+  warehouses: Schema.optional(Schema.Array(Warehouse)),
+  services: Schema.optional(Schema.Array(Service)),
+}).annotate({ identifier: "ShippingSettings" });
 
 export interface ShippingsettingsCustomBatchResponseEntry {
   /** The ID of the request entry to which this entry responds. */
@@ -3192,31 +2676,23 @@ export interface ShippingsettingsCustomBatchResponseEntry {
   shippingSettings?: ShippingSettings;
 }
 
-export const ShippingsettingsCustomBatchResponseEntry: Schema.Schema<ShippingsettingsCustomBatchResponseEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      batchId: Schema.optional(Schema.Number),
-      errors: Schema.optional(Errors),
-      kind: Schema.optional(Schema.String),
-      shippingSettings: Schema.optional(ShippingSettings),
-    }),
-  ).annotate({
-    identifier: "ShippingsettingsCustomBatchResponseEntry",
-  }) as any as Schema.Schema<ShippingsettingsCustomBatchResponseEntry>;
+export const ShippingsettingsCustomBatchResponseEntry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    batchId: Schema.optional(Schema.Number),
+    errors: Schema.optional(Errors),
+    kind: Schema.optional(Schema.String),
+    shippingSettings: Schema.optional(ShippingSettings),
+  }).annotate({ identifier: "ShippingsettingsCustomBatchResponseEntry" });
 
 export interface AccountsUpdateLabelsResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#accountsUpdateLabelsResponse`". */
   kind?: string;
 }
 
-export const AccountsUpdateLabelsResponse: Schema.Schema<AccountsUpdateLabelsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccountsUpdateLabelsResponse",
-  }) as any as Schema.Schema<AccountsUpdateLabelsResponse>;
+export const AccountsUpdateLabelsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AccountsUpdateLabelsResponse" });
 
 export interface LocalinventoryCustomBatchResponseEntry {
   /** The ID of the request entry this entry responds to. */
@@ -3227,16 +2703,12 @@ export interface LocalinventoryCustomBatchResponseEntry {
   kind?: string;
 }
 
-export const LocalinventoryCustomBatchResponseEntry: Schema.Schema<LocalinventoryCustomBatchResponseEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      batchId: Schema.optional(Schema.Number),
-      errors: Schema.optional(Errors),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LocalinventoryCustomBatchResponseEntry",
-  }) as any as Schema.Schema<LocalinventoryCustomBatchResponseEntry>;
+export const LocalinventoryCustomBatchResponseEntry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    batchId: Schema.optional(Schema.Number),
+    errors: Schema.optional(Errors),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "LocalinventoryCustomBatchResponseEntry" });
 
 export interface LocalInventory {
   /** The availability of the product. For accepted attribute values, see the local product inventory feed specification. */
@@ -3263,24 +2735,19 @@ export interface LocalInventory {
   pickupSla?: string;
 }
 
-export const LocalInventory: Schema.Schema<LocalInventory> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      availability: Schema.optional(Schema.String),
-      quantity: Schema.optional(Schema.Number),
-      instoreProductLocation: Schema.optional(Schema.String),
-      price: Schema.optional(Price),
-      pickupMethod: Schema.optional(Schema.String),
-      salePrice: Schema.optional(Price),
-      kind: Schema.optional(Schema.String),
-      salePriceEffectiveDate: Schema.optional(Schema.String),
-      customAttributes: Schema.optional(Schema.Array(CustomAttribute)),
-      storeCode: Schema.optional(Schema.String),
-      pickupSla: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LocalInventory",
-  }) as any as Schema.Schema<LocalInventory>;
+export const LocalInventory = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  availability: Schema.optional(Schema.String),
+  quantity: Schema.optional(Schema.Number),
+  instoreProductLocation: Schema.optional(Schema.String),
+  price: Schema.optional(Price),
+  pickupMethod: Schema.optional(Schema.String),
+  salePrice: Schema.optional(Price),
+  kind: Schema.optional(Schema.String),
+  salePriceEffectiveDate: Schema.optional(Schema.String),
+  customAttributes: Schema.optional(Schema.Array(CustomAttribute)),
+  storeCode: Schema.optional(Schema.String),
+  pickupSla: Schema.optional(Schema.String),
+}).annotate({ identifier: "LocalInventory" });
 
 export interface LocalinventoryCustomBatchRequestEntry {
   /** Local inventory of the product. */
@@ -3295,18 +2762,14 @@ export interface LocalinventoryCustomBatchRequestEntry {
   batchId?: number;
 }
 
-export const LocalinventoryCustomBatchRequestEntry: Schema.Schema<LocalinventoryCustomBatchRequestEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      localInventory: Schema.optional(LocalInventory),
-      productId: Schema.optional(Schema.String),
-      merchantId: Schema.optional(Schema.String),
-      method: Schema.optional(Schema.String),
-      batchId: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "LocalinventoryCustomBatchRequestEntry",
-  }) as any as Schema.Schema<LocalinventoryCustomBatchRequestEntry>;
+export const LocalinventoryCustomBatchRequestEntry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    localInventory: Schema.optional(LocalInventory),
+    productId: Schema.optional(Schema.String),
+    merchantId: Schema.optional(Schema.String),
+    method: Schema.optional(Schema.String),
+    batchId: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "LocalinventoryCustomBatchRequestEntry" });
 
 export interface RenderProductIssuesRequestPayload {
   /** Optional. How actions with user input form should be handled. If not provided, actions will be returned as links that points merchant to Merchant Center where they can request the action. */
@@ -3322,15 +2785,11 @@ export interface RenderProductIssuesRequestPayload {
     | (string & {});
 }
 
-export const RenderProductIssuesRequestPayload: Schema.Schema<RenderProductIssuesRequestPayload> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userInputActionOption: Schema.optional(Schema.String),
-      contentOption: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RenderProductIssuesRequestPayload",
-  }) as any as Schema.Schema<RenderProductIssuesRequestPayload>;
+export const RenderProductIssuesRequestPayload =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userInputActionOption: Schema.optional(Schema.String),
+    contentOption: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RenderProductIssuesRequestPayload" });
 
 export interface TimeZone {
   /** IANA Time Zone Database time zone. For example "America/New_York". */
@@ -3339,13 +2798,10 @@ export interface TimeZone {
   version?: string;
 }
 
-export const TimeZone: Schema.Schema<TimeZone> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "TimeZone" }) as any as Schema.Schema<TimeZone>;
+export const TimeZone = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+}).annotate({ identifier: "TimeZone" });
 
 export interface AccountLabel {
   /** Output only. The ID of the label. */
@@ -3360,18 +2816,13 @@ export interface AccountLabel {
   name?: string;
 }
 
-export const AccountLabel: Schema.Schema<AccountLabel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labelId: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      labelType: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccountLabel",
-  }) as any as Schema.Schema<AccountLabel>;
+export const AccountLabel = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  labelId: Schema.optional(Schema.String),
+  accountId: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  labelType: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "AccountLabel" });
 
 export interface AttributionSettingsConversionType {
   /** Output only. Option indicating if the type should be included in Merchant Center reporting. */
@@ -3380,15 +2831,11 @@ export interface AttributionSettingsConversionType {
   name?: string;
 }
 
-export const AttributionSettingsConversionType: Schema.Schema<AttributionSettingsConversionType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      includeInReporting: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AttributionSettingsConversionType",
-  }) as any as Schema.Schema<AttributionSettingsConversionType>;
+export const AttributionSettingsConversionType =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    includeInReporting: Schema.optional(Schema.Boolean),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AttributionSettingsConversionType" });
 
 export interface AttributionSettings {
   attributionModel?:
@@ -3407,18 +2854,13 @@ export interface AttributionSettings {
   conversionType?: Array<AttributionSettingsConversionType>;
 }
 
-export const AttributionSettings: Schema.Schema<AttributionSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      attributionModel: Schema.optional(Schema.String),
-      attributionLookbackWindowInDays: Schema.optional(Schema.Number),
-      conversionType: Schema.optional(
-        Schema.Array(AttributionSettingsConversionType),
-      ),
-    }),
-  ).annotate({
-    identifier: "AttributionSettings",
-  }) as any as Schema.Schema<AttributionSettings>;
+export const AttributionSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  attributionModel: Schema.optional(Schema.String),
+  attributionLookbackWindowInDays: Schema.optional(Schema.Number),
+  conversionType: Schema.optional(
+    Schema.Array(AttributionSettingsConversionType),
+  ),
+}).annotate({ identifier: "AttributionSettings" });
 
 export interface MerchantCenterDestination {
   /** Required. Attribution settings being used for the Merchant Center Destination. */
@@ -3431,17 +2873,13 @@ export interface MerchantCenterDestination {
   destinationId?: string;
 }
 
-export const MerchantCenterDestination: Schema.Schema<MerchantCenterDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      attributionSettings: Schema.optional(AttributionSettings),
-      displayName: Schema.optional(Schema.String),
-      currencyCode: Schema.optional(Schema.String),
-      destinationId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MerchantCenterDestination",
-  }) as any as Schema.Schema<MerchantCenterDestination>;
+export const MerchantCenterDestination =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    attributionSettings: Schema.optional(AttributionSettings),
+    displayName: Schema.optional(Schema.String),
+    currencyCode: Schema.optional(Schema.String),
+    destinationId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "MerchantCenterDestination" });
 
 export interface GoogleAnalyticsLink {
   /** Output only. Name of the Google Analytics property the merchant is linked to. */
@@ -3452,16 +2890,11 @@ export interface GoogleAnalyticsLink {
   propertyId?: string;
 }
 
-export const GoogleAnalyticsLink: Schema.Schema<GoogleAnalyticsLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      propertyName: Schema.optional(Schema.String),
-      attributionSettings: Schema.optional(AttributionSettings),
-      propertyId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAnalyticsLink",
-  }) as any as Schema.Schema<GoogleAnalyticsLink>;
+export const GoogleAnalyticsLink = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  propertyName: Schema.optional(Schema.String),
+  attributionSettings: Schema.optional(AttributionSettings),
+  propertyId: Schema.optional(Schema.String),
+}).annotate({ identifier: "GoogleAnalyticsLink" });
 
 export interface ConversionSource {
   /** Output only. Generated by the Content API upon creation of a new `ConversionSource`. Format: [a-z]{4}:.+ The four characters before the colon represent the type of conversio source. Content after the colon represents the ID of the conversion source within that type. The ID of two different conversion sources might be the same across different types. The following type prefixes are supported: - galk: For GoogleAnalyticsLink sources. - mcdn: For MerchantCenterDestination sources. */
@@ -3481,18 +2914,13 @@ export interface ConversionSource {
   expireTime?: string;
 }
 
-export const ConversionSource: Schema.Schema<ConversionSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conversionSourceId: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      merchantCenterDestination: Schema.optional(MerchantCenterDestination),
-      googleAnalyticsLink: Schema.optional(GoogleAnalyticsLink),
-      expireTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConversionSource",
-  }) as any as Schema.Schema<ConversionSource>;
+export const ConversionSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  conversionSourceId: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  merchantCenterDestination: Schema.optional(MerchantCenterDestination),
+  googleAnalyticsLink: Schema.optional(GoogleAnalyticsLink),
+  expireTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "ConversionSource" });
 
 export interface BreakdownRegion {
   /** The [CLDR territory code] (http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml) */
@@ -3501,15 +2929,10 @@ export interface BreakdownRegion {
   name?: string;
 }
 
-export const BreakdownRegion: Schema.Schema<BreakdownRegion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BreakdownRegion",
-  }) as any as Schema.Schema<BreakdownRegion>;
+export const BreakdownRegion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "BreakdownRegion" });
 
 export interface Breakdown {
   /** Human readable, localized description of issue's effect on different targets. Should be rendered as a list. For example: * "Products not showing in ads" * "Products not showing organically" */
@@ -3518,13 +2941,10 @@ export interface Breakdown {
   regions?: Array<BreakdownRegion>;
 }
 
-export const Breakdown: Schema.Schema<Breakdown> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      details: Schema.optional(Schema.Array(Schema.String)),
-      regions: Schema.optional(Schema.Array(BreakdownRegion)),
-    }),
-  ).annotate({ identifier: "Breakdown" }) as any as Schema.Schema<Breakdown>;
+export const Breakdown = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  details: Schema.optional(Schema.Array(Schema.String)),
+  regions: Schema.optional(Schema.Array(BreakdownRegion)),
+}).annotate({ identifier: "Breakdown" });
 
 export interface ProductIssueImpact {
   /** The severity of the issue. */
@@ -3540,30 +2960,20 @@ export interface ProductIssueImpact {
   breakdowns?: Array<Breakdown>;
 }
 
-export const ProductIssueImpact: Schema.Schema<ProductIssueImpact> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      severity: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-      breakdowns: Schema.optional(Schema.Array(Breakdown)),
-    }),
-  ).annotate({
-    identifier: "ProductIssueImpact",
-  }) as any as Schema.Schema<ProductIssueImpact>;
+export const ProductIssueImpact = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  severity: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+  breakdowns: Schema.optional(Schema.Array(Breakdown)),
+}).annotate({ identifier: "ProductIssueImpact" });
 
 export interface AccountsLinkResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#accountsLinkResponse`". */
   kind?: string;
 }
 
-export const AccountsLinkResponse: Schema.Schema<AccountsLinkResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccountsLinkResponse",
-  }) as any as Schema.Schema<AccountsLinkResponse>;
+export const AccountsLinkResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "AccountsLinkResponse" });
 
 export interface PosSale {
   /** Required. The inventory timestamp, in ISO 8601 format. */
@@ -3588,21 +2998,18 @@ export interface PosSale {
   saleId?: string;
 }
 
-export const PosSale: Schema.Schema<PosSale> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      timestamp: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      storeCode: Schema.optional(Schema.String),
-      targetCountry: Schema.optional(Schema.String),
-      contentLanguage: Schema.optional(Schema.String),
-      gtin: Schema.optional(Schema.String),
-      price: Schema.optional(Price),
-      quantity: Schema.optional(Schema.String),
-      itemId: Schema.optional(Schema.String),
-      saleId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "PosSale" }) as any as Schema.Schema<PosSale>;
+export const PosSale = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  timestamp: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  storeCode: Schema.optional(Schema.String),
+  targetCountry: Schema.optional(Schema.String),
+  contentLanguage: Schema.optional(Schema.String),
+  gtin: Schema.optional(Schema.String),
+  price: Schema.optional(Price),
+  quantity: Schema.optional(Schema.String),
+  itemId: Schema.optional(Schema.String),
+  saleId: Schema.optional(Schema.String),
+}).annotate({ identifier: "PosSale" });
 
 export interface PosInventoryResponse {
   /** Required. The inventory timestamp, in ISO 8601 format. */
@@ -3629,24 +3036,19 @@ export interface PosInventoryResponse {
   itemId?: string;
 }
 
-export const PosInventoryResponse: Schema.Schema<PosInventoryResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      timestamp: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      pickupSla: Schema.optional(Schema.String),
-      storeCode: Schema.optional(Schema.String),
-      targetCountry: Schema.optional(Schema.String),
-      contentLanguage: Schema.optional(Schema.String),
-      gtin: Schema.optional(Schema.String),
-      price: Schema.optional(Price),
-      pickupMethod: Schema.optional(Schema.String),
-      quantity: Schema.optional(Schema.String),
-      itemId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PosInventoryResponse",
-  }) as any as Schema.Schema<PosInventoryResponse>;
+export const PosInventoryResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  timestamp: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  pickupSla: Schema.optional(Schema.String),
+  storeCode: Schema.optional(Schema.String),
+  targetCountry: Schema.optional(Schema.String),
+  contentLanguage: Schema.optional(Schema.String),
+  gtin: Schema.optional(Schema.String),
+  price: Schema.optional(Price),
+  pickupMethod: Schema.optional(Schema.String),
+  quantity: Schema.optional(Schema.String),
+  itemId: Schema.optional(Schema.String),
+}).annotate({ identifier: "PosInventoryResponse" });
 
 export interface ProductstatusesCustomBatchRequestEntry {
   /** An entry ID, unique within the batch request. */
@@ -3663,19 +3065,15 @@ export interface ProductstatusesCustomBatchRequestEntry {
   productId?: string;
 }
 
-export const ProductstatusesCustomBatchRequestEntry: Schema.Schema<ProductstatusesCustomBatchRequestEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      batchId: Schema.optional(Schema.Number),
-      destinations: Schema.optional(Schema.Array(Schema.String)),
-      method: Schema.optional(Schema.String),
-      includeAttributes: Schema.optional(Schema.Boolean),
-      merchantId: Schema.optional(Schema.String),
-      productId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProductstatusesCustomBatchRequestEntry",
-  }) as any as Schema.Schema<ProductstatusesCustomBatchRequestEntry>;
+export const ProductstatusesCustomBatchRequestEntry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    batchId: Schema.optional(Schema.Number),
+    destinations: Schema.optional(Schema.Array(Schema.String)),
+    method: Schema.optional(Schema.String),
+    includeAttributes: Schema.optional(Schema.Boolean),
+    merchantId: Schema.optional(Schema.String),
+    productId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ProductstatusesCustomBatchRequestEntry" });
 
 export interface DatafeedsCustomBatchRequestEntry {
   /** The ID of the data feed to get, delete or fetch. */
@@ -3690,48 +3088,36 @@ export interface DatafeedsCustomBatchRequestEntry {
   batchId?: number;
 }
 
-export const DatafeedsCustomBatchRequestEntry: Schema.Schema<DatafeedsCustomBatchRequestEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      datafeedId: Schema.optional(Schema.String),
-      datafeed: Schema.optional(Datafeed),
-      merchantId: Schema.optional(Schema.String),
-      method: Schema.optional(Schema.String),
-      batchId: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "DatafeedsCustomBatchRequestEntry",
-  }) as any as Schema.Schema<DatafeedsCustomBatchRequestEntry>;
+export const DatafeedsCustomBatchRequestEntry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    datafeedId: Schema.optional(Schema.String),
+    datafeed: Schema.optional(Datafeed),
+    merchantId: Schema.optional(Schema.String),
+    method: Schema.optional(Schema.String),
+    batchId: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "DatafeedsCustomBatchRequestEntry" });
 
 export interface DatafeedsCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   entries?: Array<DatafeedsCustomBatchRequestEntry>;
 }
 
-export const DatafeedsCustomBatchRequest: Schema.Schema<DatafeedsCustomBatchRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entries: Schema.optional(Schema.Array(DatafeedsCustomBatchRequestEntry)),
-    }),
-  ).annotate({
-    identifier: "DatafeedsCustomBatchRequest",
-  }) as any as Schema.Schema<DatafeedsCustomBatchRequest>;
+export const DatafeedsCustomBatchRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entries: Schema.optional(Schema.Array(DatafeedsCustomBatchRequestEntry)),
+  }).annotate({ identifier: "DatafeedsCustomBatchRequest" });
 
 export interface ProductstatusesCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   entries?: Array<ProductstatusesCustomBatchRequestEntry>;
 }
 
-export const ProductstatusesCustomBatchRequest: Schema.Schema<ProductstatusesCustomBatchRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entries: Schema.optional(
-        Schema.Array(ProductstatusesCustomBatchRequestEntry),
-      ),
-    }),
-  ).annotate({
-    identifier: "ProductstatusesCustomBatchRequest",
-  }) as any as Schema.Schema<ProductstatusesCustomBatchRequest>;
+export const ProductstatusesCustomBatchRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entries: Schema.optional(
+      Schema.Array(ProductstatusesCustomBatchRequestEntry),
+    ),
+  }).annotate({ identifier: "ProductstatusesCustomBatchRequest" });
 
 export interface RegionalInventory {
   /** The ID uniquely identifying each region. */
@@ -3750,20 +3136,15 @@ export interface RegionalInventory {
   customAttributes?: Array<CustomAttribute>;
 }
 
-export const RegionalInventory: Schema.Schema<RegionalInventory> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      regionId: Schema.optional(Schema.String),
-      price: Schema.optional(Price),
-      salePrice: Schema.optional(Price),
-      kind: Schema.optional(Schema.String),
-      salePriceEffectiveDate: Schema.optional(Schema.String),
-      availability: Schema.optional(Schema.String),
-      customAttributes: Schema.optional(Schema.Array(CustomAttribute)),
-    }),
-  ).annotate({
-    identifier: "RegionalInventory",
-  }) as any as Schema.Schema<RegionalInventory>;
+export const RegionalInventory = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  regionId: Schema.optional(Schema.String),
+  price: Schema.optional(Price),
+  salePrice: Schema.optional(Price),
+  kind: Schema.optional(Schema.String),
+  salePriceEffectiveDate: Schema.optional(Schema.String),
+  availability: Schema.optional(Schema.String),
+  customAttributes: Schema.optional(Schema.Array(CustomAttribute)),
+}).annotate({ identifier: "RegionalInventory" });
 
 export interface BuiltInSimpleActionAdditionalContent {
   /** Title of the additional content; */
@@ -3772,15 +3153,11 @@ export interface BuiltInSimpleActionAdditionalContent {
   paragraphs?: Array<string>;
 }
 
-export const BuiltInSimpleActionAdditionalContent: Schema.Schema<BuiltInSimpleActionAdditionalContent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-      paragraphs: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "BuiltInSimpleActionAdditionalContent",
-  }) as any as Schema.Schema<BuiltInSimpleActionAdditionalContent>;
+export const BuiltInSimpleActionAdditionalContent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    title: Schema.optional(Schema.String),
+    paragraphs: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "BuiltInSimpleActionAdditionalContent" });
 
 export interface BuiltInSimpleAction {
   /** The attribute that needs to be updated. Present when the type is `EDIT_ITEM_ATTRIBUTE`. This field contains a code for attribute, represented in snake_case. You can find a list of product's attributes, with their codes [here](https://support.google.com/merchants/answer/7052112). */
@@ -3802,16 +3179,11 @@ export interface BuiltInSimpleAction {
   additionalContent?: BuiltInSimpleActionAdditionalContent;
 }
 
-export const BuiltInSimpleAction: Schema.Schema<BuiltInSimpleAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      attributeCode: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      additionalContent: Schema.optional(BuiltInSimpleActionAdditionalContent),
-    }),
-  ).annotate({
-    identifier: "BuiltInSimpleAction",
-  }) as any as Schema.Schema<BuiltInSimpleAction>;
+export const BuiltInSimpleAction = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  attributeCode: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  additionalContent: Schema.optional(BuiltInSimpleActionAdditionalContent),
+}).annotate({ identifier: "BuiltInSimpleAction" });
 
 export interface RegionPostalCodeAreaPostalCodeRange {
   /** Required. A postal code or a pattern of the form prefix* denoting the inclusive lower bound of the range defining the area. Examples values: "94108", "9410*", "9*". */
@@ -3820,15 +3192,11 @@ export interface RegionPostalCodeAreaPostalCodeRange {
   end?: string;
 }
 
-export const RegionPostalCodeAreaPostalCodeRange: Schema.Schema<RegionPostalCodeAreaPostalCodeRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      begin: Schema.optional(Schema.String),
-      end: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RegionPostalCodeAreaPostalCodeRange",
-  }) as any as Schema.Schema<RegionPostalCodeAreaPostalCodeRange>;
+export const RegionPostalCodeAreaPostalCodeRange =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    begin: Schema.optional(Schema.String),
+    end: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RegionPostalCodeAreaPostalCodeRange" });
 
 export interface RegionPostalCodeArea {
   /** Required. CLDR territory code or the country the postal code group applies to. */
@@ -3837,17 +3205,12 @@ export interface RegionPostalCodeArea {
   postalCodes?: Array<RegionPostalCodeAreaPostalCodeRange>;
 }
 
-export const RegionPostalCodeArea: Schema.Schema<RegionPostalCodeArea> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      regionCode: Schema.optional(Schema.String),
-      postalCodes: Schema.optional(
-        Schema.Array(RegionPostalCodeAreaPostalCodeRange),
-      ),
-    }),
-  ).annotate({
-    identifier: "RegionPostalCodeArea",
-  }) as any as Schema.Schema<RegionPostalCodeArea>;
+export const RegionPostalCodeArea = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  regionCode: Schema.optional(Schema.String),
+  postalCodes: Schema.optional(
+    Schema.Array(RegionPostalCodeAreaPostalCodeRange),
+  ),
+}).annotate({ identifier: "RegionPostalCodeArea" });
 
 export interface AccountStatusAccountLevelIssue {
   /** Severity of the issue. Acceptable values are: - "`critical`" - "`error`" - "`suggestion`" */
@@ -3866,20 +3229,16 @@ export interface AccountStatusAccountLevelIssue {
   id?: string;
 }
 
-export const AccountStatusAccountLevelIssue: Schema.Schema<AccountStatusAccountLevelIssue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      severity: Schema.optional(Schema.String),
-      destination: Schema.optional(Schema.String),
-      country: Schema.optional(Schema.String),
-      documentation: Schema.optional(Schema.String),
-      detail: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccountStatusAccountLevelIssue",
-  }) as any as Schema.Schema<AccountStatusAccountLevelIssue>;
+export const AccountStatusAccountLevelIssue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    severity: Schema.optional(Schema.String),
+    destination: Schema.optional(Schema.String),
+    country: Schema.optional(Schema.String),
+    documentation: Schema.optional(Schema.String),
+    detail: Schema.optional(Schema.String),
+    title: Schema.optional(Schema.String),
+    id: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AccountStatusAccountLevelIssue" });
 
 export interface AccountStatus {
   /** Whether the account's website is claimed or not. */
@@ -3896,21 +3255,16 @@ export interface AccountStatus {
   accountLevelIssues?: Array<AccountStatusAccountLevelIssue>;
 }
 
-export const AccountStatus: Schema.Schema<AccountStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      websiteClaimed: Schema.optional(Schema.Boolean),
-      accountManagement: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-      products: Schema.optional(Schema.Array(AccountStatusProducts)),
-      kind: Schema.optional(Schema.String),
-      accountLevelIssues: Schema.optional(
-        Schema.Array(AccountStatusAccountLevelIssue),
-      ),
-    }),
-  ).annotate({
-    identifier: "AccountStatus",
-  }) as any as Schema.Schema<AccountStatus>;
+export const AccountStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  websiteClaimed: Schema.optional(Schema.Boolean),
+  accountManagement: Schema.optional(Schema.String),
+  accountId: Schema.optional(Schema.String),
+  products: Schema.optional(Schema.Array(AccountStatusProducts)),
+  kind: Schema.optional(Schema.String),
+  accountLevelIssues: Schema.optional(
+    Schema.Array(AccountStatusAccountLevelIssue),
+  ),
+}).annotate({ identifier: "AccountStatus" });
 
 export interface OrderTrackingSignalLineItemDetails {
   /** Brand of the product. */
@@ -3935,23 +3289,19 @@ export interface OrderTrackingSignalLineItemDetails {
   sku?: string;
 }
 
-export const OrderTrackingSignalLineItemDetails: Schema.Schema<OrderTrackingSignalLineItemDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      brand: Schema.optional(Schema.String),
-      lineItemId: Schema.optional(Schema.String),
-      gtin: Schema.optional(Schema.String),
-      mpn: Schema.optional(Schema.String),
-      productTitle: Schema.optional(Schema.String),
-      quantity: Schema.optional(Schema.String),
-      productId: Schema.optional(Schema.String),
-      upc: Schema.optional(Schema.String),
-      productDescription: Schema.optional(Schema.String),
-      sku: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OrderTrackingSignalLineItemDetails",
-  }) as any as Schema.Schema<OrderTrackingSignalLineItemDetails>;
+export const OrderTrackingSignalLineItemDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    brand: Schema.optional(Schema.String),
+    lineItemId: Schema.optional(Schema.String),
+    gtin: Schema.optional(Schema.String),
+    mpn: Schema.optional(Schema.String),
+    productTitle: Schema.optional(Schema.String),
+    quantity: Schema.optional(Schema.String),
+    productId: Schema.optional(Schema.String),
+    upc: Schema.optional(Schema.String),
+    productDescription: Schema.optional(Schema.String),
+    sku: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OrderTrackingSignalLineItemDetails" });
 
 export interface DateTime {
   /** Optional. Year of date. Must be from 1 to 9999, or 0 if specifying a datetime without a year. */
@@ -3974,20 +3324,17 @@ export interface DateTime {
   minutes?: number;
 }
 
-export const DateTime: Schema.Schema<DateTime> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      year: Schema.optional(Schema.Number),
-      day: Schema.optional(Schema.Number),
-      seconds: Schema.optional(Schema.Number),
-      utcOffset: Schema.optional(Schema.String),
-      hours: Schema.optional(Schema.Number),
-      nanos: Schema.optional(Schema.Number),
-      timeZone: Schema.optional(TimeZone),
-      month: Schema.optional(Schema.Number),
-      minutes: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "DateTime" }) as any as Schema.Schema<DateTime>;
+export const DateTime = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  year: Schema.optional(Schema.Number),
+  day: Schema.optional(Schema.Number),
+  seconds: Schema.optional(Schema.Number),
+  utcOffset: Schema.optional(Schema.String),
+  hours: Schema.optional(Schema.Number),
+  nanos: Schema.optional(Schema.Number),
+  timeZone: Schema.optional(TimeZone),
+  month: Schema.optional(Schema.Number),
+  minutes: Schema.optional(Schema.Number),
+}).annotate({ identifier: "DateTime" });
 
 export interface OrderTrackingSignalShippingInfo {
   /** The [CLDR territory code] (http://www.unicode.org/repos/cldr/tags/latest/common/main/en.xml) for the shipping origin. */
@@ -4018,24 +3365,20 @@ export interface OrderTrackingSignalShippingInfo {
   shippedTime?: DateTime;
 }
 
-export const OrderTrackingSignalShippingInfo: Schema.Schema<OrderTrackingSignalShippingInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      originRegionCode: Schema.optional(Schema.String),
-      trackingId: Schema.optional(Schema.String),
-      originPostalCode: Schema.optional(Schema.String),
-      shipmentId: Schema.optional(Schema.String),
-      carrierName: Schema.optional(Schema.String),
-      earliestDeliveryPromiseTime: Schema.optional(DateTime),
-      actualDeliveryTime: Schema.optional(DateTime),
-      shippingStatus: Schema.optional(Schema.String),
-      carrierServiceName: Schema.optional(Schema.String),
-      latestDeliveryPromiseTime: Schema.optional(DateTime),
-      shippedTime: Schema.optional(DateTime),
-    }),
-  ).annotate({
-    identifier: "OrderTrackingSignalShippingInfo",
-  }) as any as Schema.Schema<OrderTrackingSignalShippingInfo>;
+export const OrderTrackingSignalShippingInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    originRegionCode: Schema.optional(Schema.String),
+    trackingId: Schema.optional(Schema.String),
+    originPostalCode: Schema.optional(Schema.String),
+    shipmentId: Schema.optional(Schema.String),
+    carrierName: Schema.optional(Schema.String),
+    earliestDeliveryPromiseTime: Schema.optional(DateTime),
+    actualDeliveryTime: Schema.optional(DateTime),
+    shippingStatus: Schema.optional(Schema.String),
+    carrierServiceName: Schema.optional(Schema.String),
+    latestDeliveryPromiseTime: Schema.optional(DateTime),
+    shippedTime: Schema.optional(DateTime),
+  }).annotate({ identifier: "OrderTrackingSignalShippingInfo" });
 
 export interface OrderTrackingSignalShipmentLineItemMapping {
   /** Required. The shipment ID. This field will be hashed in returned OrderTrackingSignal creation response. */
@@ -4046,16 +3389,12 @@ export interface OrderTrackingSignalShipmentLineItemMapping {
   quantity?: string;
 }
 
-export const OrderTrackingSignalShipmentLineItemMapping: Schema.Schema<OrderTrackingSignalShipmentLineItemMapping> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      shipmentId: Schema.optional(Schema.String),
-      lineItemId: Schema.optional(Schema.String),
-      quantity: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OrderTrackingSignalShipmentLineItemMapping",
-  }) as any as Schema.Schema<OrderTrackingSignalShipmentLineItemMapping>;
+export const OrderTrackingSignalShipmentLineItemMapping =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    shipmentId: Schema.optional(Schema.String),
+    lineItemId: Schema.optional(Schema.String),
+    quantity: Schema.optional(Schema.String),
+  }).annotate({ identifier: "OrderTrackingSignalShipmentLineItemMapping" });
 
 export interface OrderTrackingSignal {
   /** Information about line items in the order. */
@@ -4080,29 +3419,20 @@ export interface OrderTrackingSignal {
   customerShippingFee?: PriceAmount;
 }
 
-export const OrderTrackingSignal: Schema.Schema<OrderTrackingSignal> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lineItems: Schema.optional(
-        Schema.Array(OrderTrackingSignalLineItemDetails),
-      ),
-      merchantId: Schema.optional(Schema.String),
-      orderId: Schema.optional(Schema.String),
-      orderCreatedTime: Schema.optional(DateTime),
-      deliveryPostalCode: Schema.optional(Schema.String),
-      shippingInfo: Schema.optional(
-        Schema.Array(OrderTrackingSignalShippingInfo),
-      ),
-      deliveryRegionCode: Schema.optional(Schema.String),
-      shipmentLineItemMapping: Schema.optional(
-        Schema.Array(OrderTrackingSignalShipmentLineItemMapping),
-      ),
-      orderTrackingSignalId: Schema.optional(Schema.String),
-      customerShippingFee: Schema.optional(PriceAmount),
-    }),
-  ).annotate({
-    identifier: "OrderTrackingSignal",
-  }) as any as Schema.Schema<OrderTrackingSignal>;
+export const OrderTrackingSignal = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  lineItems: Schema.optional(Schema.Array(OrderTrackingSignalLineItemDetails)),
+  merchantId: Schema.optional(Schema.String),
+  orderId: Schema.optional(Schema.String),
+  orderCreatedTime: Schema.optional(DateTime),
+  deliveryPostalCode: Schema.optional(Schema.String),
+  shippingInfo: Schema.optional(Schema.Array(OrderTrackingSignalShippingInfo)),
+  deliveryRegionCode: Schema.optional(Schema.String),
+  shipmentLineItemMapping: Schema.optional(
+    Schema.Array(OrderTrackingSignalShipmentLineItemMapping),
+  ),
+  orderTrackingSignalId: Schema.optional(Schema.String),
+  customerShippingFee: Schema.optional(PriceAmount),
+}).annotate({ identifier: "OrderTrackingSignal" });
 
 export interface CompetitiveVisibility {
   /** Change in visibility based on impressions with respect to the start of the selected time range (or first day with non-zero impressions) for a combined set of merchants with highest visibility approximating the market. Available only in `CompetitiveVisibilityBenchmarkView`. Cannot be filtered on in the 'WHERE' clause. */
@@ -4133,54 +3463,39 @@ export interface CompetitiveVisibility {
   adsOrganicRatio?: number;
 }
 
-export const CompetitiveVisibility: Schema.Schema<CompetitiveVisibility> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      categoryBenchmarkVisibilityTrend: Schema.optional(Schema.Number),
-      isYourDomain: Schema.optional(Schema.Boolean),
-      relativeVisibility: Schema.optional(Schema.Number),
-      domain: Schema.optional(Schema.String),
-      date: Schema.optional(Content_Date),
-      pageOverlapRate: Schema.optional(Schema.Number),
-      trafficSource: Schema.optional(Schema.String),
-      categoryId: Schema.optional(Schema.String),
-      yourDomainVisibilityTrend: Schema.optional(Schema.Number),
-      higherPositionRate: Schema.optional(Schema.Number),
-      rank: Schema.optional(Schema.String),
-      countryCode: Schema.optional(Schema.String),
-      adsOrganicRatio: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "CompetitiveVisibility",
-  }) as any as Schema.Schema<CompetitiveVisibility>;
+export const CompetitiveVisibility = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  categoryBenchmarkVisibilityTrend: Schema.optional(Schema.Number),
+  isYourDomain: Schema.optional(Schema.Boolean),
+  relativeVisibility: Schema.optional(Schema.Number),
+  domain: Schema.optional(Schema.String),
+  date: Schema.optional(Content_Date),
+  pageOverlapRate: Schema.optional(Schema.Number),
+  trafficSource: Schema.optional(Schema.String),
+  categoryId: Schema.optional(Schema.String),
+  yourDomainVisibilityTrend: Schema.optional(Schema.Number),
+  higherPositionRate: Schema.optional(Schema.Number),
+  rank: Schema.optional(Schema.String),
+  countryCode: Schema.optional(Schema.String),
+  adsOrganicRatio: Schema.optional(Schema.Number),
+}).annotate({ identifier: "CompetitiveVisibility" });
 
 export interface TriggerActionResponse {
   /** The message for merchant. */
   message?: string;
 }
 
-export const TriggerActionResponse: Schema.Schema<TriggerActionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      message: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TriggerActionResponse",
-  }) as any as Schema.Schema<TriggerActionResponse>;
+export const TriggerActionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  message: Schema.optional(Schema.String),
+}).annotate({ identifier: "TriggerActionResponse" });
 
 export interface RegionGeoTargetArea {
   /** Required. A non-empty list of [location IDs](https://developers.google.com/adwords/api/docs/appendix/geotargeting). They must all be of the same location type (e.g., state). */
   geotargetCriteriaIds?: Array<string>;
 }
 
-export const RegionGeoTargetArea: Schema.Schema<RegionGeoTargetArea> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      geotargetCriteriaIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "RegionGeoTargetArea",
-  }) as any as Schema.Schema<RegionGeoTargetArea>;
+export const RegionGeoTargetArea = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  geotargetCriteriaIds: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "RegionGeoTargetArea" });
 
 export interface PriceInsights {
   /** *Deprecated*: This field is no longer supported and will start returning 0. The predicted change in gross profit in micros (1 millionth of a standard unit, 1 USD = 1000000 micros) after introducing the suggested price for a month compared to current active price. */
@@ -4208,24 +3523,17 @@ export interface PriceInsights {
   predictedGrossProfitChangeFraction?: number;
 }
 
-export const PriceInsights: Schema.Schema<PriceInsights> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      predictedMonthlyGrossProfitChangeMicros: Schema.optional(Schema.String),
-      predictedConversionsChangeFraction: Schema.optional(Schema.Number),
-      effectiveness: Schema.optional(Schema.String),
-      suggestedPriceCurrencyCode: Schema.optional(Schema.String),
-      predictedImpressionsChangeFraction: Schema.optional(Schema.Number),
-      suggestedPriceMicros: Schema.optional(Schema.String),
-      predictedMonthlyGrossProfitChangeCurrencyCode: Schema.optional(
-        Schema.String,
-      ),
-      predictedClicksChangeFraction: Schema.optional(Schema.Number),
-      predictedGrossProfitChangeFraction: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "PriceInsights",
-  }) as any as Schema.Schema<PriceInsights>;
+export const PriceInsights = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  predictedMonthlyGrossProfitChangeMicros: Schema.optional(Schema.String),
+  predictedConversionsChangeFraction: Schema.optional(Schema.Number),
+  effectiveness: Schema.optional(Schema.String),
+  suggestedPriceCurrencyCode: Schema.optional(Schema.String),
+  predictedImpressionsChangeFraction: Schema.optional(Schema.Number),
+  suggestedPriceMicros: Schema.optional(Schema.String),
+  predictedMonthlyGrossProfitChangeCurrencyCode: Schema.optional(Schema.String),
+  predictedClicksChangeFraction: Schema.optional(Schema.Number),
+  predictedGrossProfitChangeFraction: Schema.optional(Schema.Number),
+}).annotate({ identifier: "PriceInsights" });
 
 export interface ListAccountLabelsResponse {
   /** The labels from the specified account. */
@@ -4234,34 +3542,27 @@ export interface ListAccountLabelsResponse {
   nextPageToken?: string;
 }
 
-export const ListAccountLabelsResponse: Schema.Schema<ListAccountLabelsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accountLabels: Schema.optional(Schema.Array(AccountLabel)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAccountLabelsResponse",
-  }) as any as Schema.Schema<ListAccountLabelsResponse>;
+export const ListAccountLabelsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountLabels: Schema.optional(Schema.Array(AccountLabel)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListAccountLabelsResponse" });
 
 export interface Brand {
   /** Name of the brand. */
   name?: string;
 }
 
-export const Brand: Schema.Schema<Brand> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Brand" }) as any as Schema.Schema<Brand>;
+export const Brand = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Brand" });
 
 export interface InputFieldCheckboxInput {}
 
-export const InputFieldCheckboxInput: Schema.Schema<InputFieldCheckboxInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const InputFieldCheckboxInput =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "InputFieldCheckboxInput",
-  }) as any as Schema.Schema<InputFieldCheckboxInput>;
+  });
 
 export interface InputFieldChoiceInputChoiceInputOption {
   /** Short description of the choice option. There may be more information to be shown as a tooltip. */
@@ -4343,18 +3644,15 @@ export interface ActionFlow {
   dialogTitle?: string;
 }
 
-export const ActionFlow: Schema.Schema<ActionFlow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dialogCallout: Schema.optional(Callout),
-      dialogButtonLabel: Schema.optional(Schema.String),
-      label: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      dialogMessage: Schema.optional(TextWithTooltip),
-      inputs: Schema.optional(Schema.Array(InputField)),
-      dialogTitle: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "ActionFlow" }) as any as Schema.Schema<ActionFlow>;
+export const ActionFlow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dialogCallout: Schema.optional(Callout),
+  dialogButtonLabel: Schema.optional(Schema.String),
+  label: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  dialogMessage: Schema.optional(TextWithTooltip),
+  inputs: Schema.optional(Schema.Array(InputField)),
+  dialogTitle: Schema.optional(Schema.String),
+}).annotate({ identifier: "ActionFlow" });
 
 export interface BuiltInUserInputAction {
   /** Internal details. Not for display but need to be sent back when triggering the action. */
@@ -4363,15 +3661,12 @@ export interface BuiltInUserInputAction {
   flows?: Array<ActionFlow>;
 }
 
-export const BuiltInUserInputAction: Schema.Schema<BuiltInUserInputAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      actionContext: Schema.optional(Schema.String),
-      flows: Schema.optional(Schema.Array(ActionFlow)),
-    }),
-  ).annotate({
-    identifier: "BuiltInUserInputAction",
-  }) as any as Schema.Schema<BuiltInUserInputAction>;
+export const BuiltInUserInputAction = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    actionContext: Schema.optional(Schema.String),
+    flows: Schema.optional(Schema.Array(ActionFlow)),
+  },
+).annotate({ identifier: "BuiltInUserInputAction" });
 
 export interface ActionReason {
   /** Optional. An action that needs to be performed to solve the problem represented by this reason. This action will always be available. Should be rendered as a link or button next to the summarizing message. For example, the review may be available only once merchant configure all required attributes. In such a situation this action can be a link to the form, where they can fill the missing attribute to unblock the main action. */
@@ -4406,15 +3701,10 @@ export interface ExternalAction {
   uri?: string;
 }
 
-export const ExternalAction: Schema.Schema<ExternalAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      uri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ExternalAction",
-  }) as any as Schema.Schema<ExternalAction>;
+export const ExternalAction = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  uri: Schema.optional(Schema.String),
+}).annotate({ identifier: "ExternalAction" });
 
 export interface Action {
   /** Label of the action button. */
@@ -4457,16 +3747,11 @@ export interface AccountIssueImpact {
   breakdowns?: Array<Breakdown>;
 }
 
-export const AccountIssueImpact: Schema.Schema<AccountIssueImpact> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      severity: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-      breakdowns: Schema.optional(Schema.Array(Breakdown)),
-    }),
-  ).annotate({
-    identifier: "AccountIssueImpact",
-  }) as any as Schema.Schema<AccountIssueImpact>;
+export const AccountIssueImpact = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  severity: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+  breakdowns: Schema.optional(Schema.Array(Breakdown)),
+}).annotate({ identifier: "AccountIssueImpact" });
 
 export interface AccountIssue {
   /** A list of actionable steps that can be executed to solve the issue. An example is requesting a re-review or providing arguments when merchant disagrees with the issue. Actions that are supported in (your) third-party application can be rendered as buttons and should be available to merchant when they expand the issue. */
@@ -4481,18 +3766,13 @@ export interface AccountIssue {
   prerenderedOutOfCourtDisputeSettlement?: string;
 }
 
-export const AccountIssue: Schema.Schema<AccountIssue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      actions: Schema.optional(Schema.Array(Action)),
-      impact: Schema.optional(AccountIssueImpact),
-      title: Schema.optional(Schema.String),
-      prerenderedContent: Schema.optional(Schema.String),
-      prerenderedOutOfCourtDisputeSettlement: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccountIssue",
-  }) as any as Schema.Schema<AccountIssue>;
+export const AccountIssue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  actions: Schema.optional(Schema.Array(Action)),
+  impact: Schema.optional(AccountIssueImpact),
+  title: Schema.optional(Schema.String),
+  prerenderedContent: Schema.optional(Schema.String),
+  prerenderedOutOfCourtDisputeSettlement: Schema.optional(Schema.String),
+}).annotate({ identifier: "AccountIssue" });
 
 export interface AlternateDisputeResolution {
   /** The URL pointing to a page, where merchant can request alternative dispute resolution with an [external body](https://support.google.com/european-union-digital-services-act-redress-options/answer/13535501). */
@@ -4501,15 +3781,11 @@ export interface AlternateDisputeResolution {
   label?: string;
 }
 
-export const AlternateDisputeResolution: Schema.Schema<AlternateDisputeResolution> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-      label: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AlternateDisputeResolution",
-  }) as any as Schema.Schema<AlternateDisputeResolution>;
+export const AlternateDisputeResolution =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uri: Schema.optional(Schema.String),
+    label: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AlternateDisputeResolution" });
 
 export interface RenderAccountIssuesResponse {
   /** List of account issues for a given account. This list can be shown with compressed, expandable items. In the compressed form, the title and impact should be shown for each issue. Once the issue is expanded, the detailed content and available actions should be rendered. */
@@ -4518,15 +3794,11 @@ export interface RenderAccountIssuesResponse {
   alternateDisputeResolution?: AlternateDisputeResolution;
 }
 
-export const RenderAccountIssuesResponse: Schema.Schema<RenderAccountIssuesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      issues: Schema.optional(Schema.Array(AccountIssue)),
-      alternateDisputeResolution: Schema.optional(AlternateDisputeResolution),
-    }),
-  ).annotate({
-    identifier: "RenderAccountIssuesResponse",
-  }) as any as Schema.Schema<RenderAccountIssuesResponse>;
+export const RenderAccountIssuesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    issues: Schema.optional(Schema.Array(AccountIssue)),
+    alternateDisputeResolution: Schema.optional(AlternateDisputeResolution),
+  }).annotate({ identifier: "RenderAccountIssuesResponse" });
 
 export interface ReturnPolicyOnlineReturnShippingFee {
   /** Type of return shipping fee. */
@@ -4539,15 +3811,11 @@ export interface ReturnPolicyOnlineReturnShippingFee {
   fixedFee?: PriceAmount;
 }
 
-export const ReturnPolicyOnlineReturnShippingFee: Schema.Schema<ReturnPolicyOnlineReturnShippingFee> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      fixedFee: Schema.optional(PriceAmount),
-    }),
-  ).annotate({
-    identifier: "ReturnPolicyOnlineReturnShippingFee",
-  }) as any as Schema.Schema<ReturnPolicyOnlineReturnShippingFee>;
+export const ReturnPolicyOnlineReturnShippingFee =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    fixedFee: Schema.optional(PriceAmount),
+  }).annotate({ identifier: "ReturnPolicyOnlineReturnShippingFee" });
 
 export interface AccounttaxCustomBatchRequestEntry {
   /** An entry ID, unique within the batch request. */
@@ -4562,32 +3830,24 @@ export interface AccounttaxCustomBatchRequestEntry {
   accountTax?: AccountTax;
 }
 
-export const AccounttaxCustomBatchRequestEntry: Schema.Schema<AccounttaxCustomBatchRequestEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      batchId: Schema.optional(Schema.Number),
-      method: Schema.optional(Schema.String),
-      merchantId: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-      accountTax: Schema.optional(AccountTax),
-    }),
-  ).annotate({
-    identifier: "AccounttaxCustomBatchRequestEntry",
-  }) as any as Schema.Schema<AccounttaxCustomBatchRequestEntry>;
+export const AccounttaxCustomBatchRequestEntry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    batchId: Schema.optional(Schema.Number),
+    method: Schema.optional(Schema.String),
+    merchantId: Schema.optional(Schema.String),
+    accountId: Schema.optional(Schema.String),
+    accountTax: Schema.optional(AccountTax),
+  }).annotate({ identifier: "AccounttaxCustomBatchRequestEntry" });
 
 export interface AccounttaxCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   entries?: Array<AccounttaxCustomBatchRequestEntry>;
 }
 
-export const AccounttaxCustomBatchRequest: Schema.Schema<AccounttaxCustomBatchRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entries: Schema.optional(Schema.Array(AccounttaxCustomBatchRequestEntry)),
-    }),
-  ).annotate({
-    identifier: "AccounttaxCustomBatchRequest",
-  }) as any as Schema.Schema<AccounttaxCustomBatchRequest>;
+export const AccounttaxCustomBatchRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entries: Schema.optional(Schema.Array(AccounttaxCustomBatchRequestEntry)),
+  }).annotate({ identifier: "AccounttaxCustomBatchRequest" });
 
 export interface RegionalinventoryCustomBatchRequestEntry {
   /** An entry ID, unique within the batch request. */
@@ -4602,32 +3862,26 @@ export interface RegionalinventoryCustomBatchRequestEntry {
   productId?: string;
 }
 
-export const RegionalinventoryCustomBatchRequestEntry: Schema.Schema<RegionalinventoryCustomBatchRequestEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      batchId: Schema.optional(Schema.Number),
-      method: Schema.optional(Schema.String),
-      merchantId: Schema.optional(Schema.String),
-      regionalInventory: Schema.optional(RegionalInventory),
-      productId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RegionalinventoryCustomBatchRequestEntry",
-  }) as any as Schema.Schema<RegionalinventoryCustomBatchRequestEntry>;
+export const RegionalinventoryCustomBatchRequestEntry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    batchId: Schema.optional(Schema.Number),
+    method: Schema.optional(Schema.String),
+    merchantId: Schema.optional(Schema.String),
+    regionalInventory: Schema.optional(RegionalInventory),
+    productId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RegionalinventoryCustomBatchRequestEntry" });
 
 export interface ShoppingAdsProgramStatusReviewIneligibilityReasonDetails {
   /** This timestamp represents end of cooldown period for review ineligbility reason `IN_COOLDOWN_PERIOD`. */
   cooldownTime?: string;
 }
 
-export const ShoppingAdsProgramStatusReviewIneligibilityReasonDetails: Schema.Schema<ShoppingAdsProgramStatusReviewIneligibilityReasonDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cooldownTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const ShoppingAdsProgramStatusReviewIneligibilityReasonDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cooldownTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "ShoppingAdsProgramStatusReviewIneligibilityReasonDetails",
-  }) as any as Schema.Schema<ShoppingAdsProgramStatusReviewIneligibilityReasonDetails>;
+  });
 
 export interface ShoppingAdsProgramStatusRegionStatus {
   /** If a program is eligible for review in a specific region. Only visible if `eligibilityStatus` is `DISAPPROVED`. */
@@ -4672,24 +3926,20 @@ export interface ShoppingAdsProgramStatusRegionStatus {
   regionCodes?: Array<string>;
 }
 
-export const ShoppingAdsProgramStatusRegionStatus: Schema.Schema<ShoppingAdsProgramStatusRegionStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reviewEligibilityStatus: Schema.optional(Schema.String),
-      reviewIssues: Schema.optional(Schema.Array(Schema.String)),
-      disapprovalDate: Schema.optional(Schema.String),
-      reviewIneligibilityReasonDetails: Schema.optional(
-        ShoppingAdsProgramStatusReviewIneligibilityReasonDetails,
-      ),
-      reviewIneligibilityReason: Schema.optional(Schema.String),
-      reviewIneligibilityReasonDescription: Schema.optional(Schema.String),
-      eligibilityStatus: Schema.optional(Schema.String),
-      onboardingIssues: Schema.optional(Schema.Array(Schema.String)),
-      regionCodes: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ShoppingAdsProgramStatusRegionStatus",
-  }) as any as Schema.Schema<ShoppingAdsProgramStatusRegionStatus>;
+export const ShoppingAdsProgramStatusRegionStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reviewEligibilityStatus: Schema.optional(Schema.String),
+    reviewIssues: Schema.optional(Schema.Array(Schema.String)),
+    disapprovalDate: Schema.optional(Schema.String),
+    reviewIneligibilityReasonDetails: Schema.optional(
+      ShoppingAdsProgramStatusReviewIneligibilityReasonDetails,
+    ),
+    reviewIneligibilityReason: Schema.optional(Schema.String),
+    reviewIneligibilityReasonDescription: Schema.optional(Schema.String),
+    eligibilityStatus: Schema.optional(Schema.String),
+    onboardingIssues: Schema.optional(Schema.Array(Schema.String)),
+    regionCodes: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ShoppingAdsProgramStatusRegionStatus" });
 
 export interface ShoppingAdsProgramStatus {
   /** State of the program. `ENABLED` if there are offers for at least one region. */
@@ -4703,17 +3953,13 @@ export interface ShoppingAdsProgramStatus {
   regionStatuses?: Array<ShoppingAdsProgramStatusRegionStatus>;
 }
 
-export const ShoppingAdsProgramStatus: Schema.Schema<ShoppingAdsProgramStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      globalState: Schema.optional(Schema.String),
-      regionStatuses: Schema.optional(
-        Schema.Array(ShoppingAdsProgramStatusRegionStatus),
-      ),
-    }),
-  ).annotate({
-    identifier: "ShoppingAdsProgramStatus",
-  }) as any as Schema.Schema<ShoppingAdsProgramStatus>;
+export const ShoppingAdsProgramStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    globalState: Schema.optional(Schema.String),
+    regionStatuses: Schema.optional(
+      Schema.Array(ShoppingAdsProgramStatusRegionStatus),
+    ),
+  }).annotate({ identifier: "ShoppingAdsProgramStatus" });
 
 export interface ProductStatusItemLevelIssue {
   /** How this issue affects serving of the offer. */
@@ -4736,22 +3982,18 @@ export interface ProductStatusItemLevelIssue {
   documentation?: string;
 }
 
-export const ProductStatusItemLevelIssue: Schema.Schema<ProductStatusItemLevelIssue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      servability: Schema.optional(Schema.String),
-      detail: Schema.optional(Schema.String),
-      applicableCountries: Schema.optional(Schema.Array(Schema.String)),
-      code: Schema.optional(Schema.String),
-      destination: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      resolution: Schema.optional(Schema.String),
-      attributeName: Schema.optional(Schema.String),
-      documentation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProductStatusItemLevelIssue",
-  }) as any as Schema.Schema<ProductStatusItemLevelIssue>;
+export const ProductStatusItemLevelIssue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    servability: Schema.optional(Schema.String),
+    detail: Schema.optional(Schema.String),
+    applicableCountries: Schema.optional(Schema.Array(Schema.String)),
+    code: Schema.optional(Schema.String),
+    destination: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    resolution: Schema.optional(Schema.String),
+    attributeName: Schema.optional(Schema.String),
+    documentation: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ProductStatusItemLevelIssue" });
 
 export interface UrlSettings {
   /** URL template when the placeholders are expanded will redirect the buyer to the cart page on the merchant website with the selected item in cart. */
@@ -4760,15 +4002,10 @@ export interface UrlSettings {
   checkoutUriTemplate?: string;
 }
 
-export const UrlSettings: Schema.Schema<UrlSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cartUriTemplate: Schema.optional(Schema.String),
-      checkoutUriTemplate: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UrlSettings",
-  }) as any as Schema.Schema<UrlSettings>;
+export const UrlSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cartUriTemplate: Schema.optional(Schema.String),
+  checkoutUriTemplate: Schema.optional(Schema.String),
+}).annotate({ identifier: "UrlSettings" });
 
 export interface ProductIssue {
   /** Pre-rendered HTML that contains a link to the external location where the ODS can be requested and instructions for how to request it. HTML elements contain CSS classes that can be used to customize the style of this snippet. Always sanitize the HTML before embedding it directly to your application. The sanitizer needs to allow basic HTML tags, such as: `div`, `span`, `p`, `a`, `ul`, `li`, `table`, `tr`, `td`. For example, you can use [DOMPurify](https://www.npmjs.com/package/dompurify). CSS classes: * `ods-section`* - wrapper around the out-of-court dispute resolution section * `ods-description`* - intro text for the out-of-court dispute resolution. It may contain multiple segments and a link. * `ods-param`* - wrapper around the header-value pair for parameters that merchant may need to provide during the ODS process. * `ods-routing-id`* - ods param for the Routing ID. * `ods-reference-id`* - ods param for the Routing ID. * `ods-param-header`* - header for the ODS parameter * `ods-param-value`* - value of the ODS parameter. This value should be rendered in a way that it is easy for merchants to identify and copy. * `segment` - section of the text, `span` inside paragraph * `segment-attribute` - section of the text that represents a product attribute, for example 'image\_link' * `segment-literal` - section of the text that contains a special value, for example '0-1000 kg' * `segment-bold` - section of the text that should be rendered as bold * `segment-italic` - section of the text that should be rendered as italic * `tooltip` - used on paragraphs that should be rendered with a tooltip. A section of the text in such a paragraph will have a class `tooltip-text` and is intended to be shown in a mouse over dialog. If the style is not used, the `tooltip-text` section would be shown on a new line, after the main part of the text. * `tooltip-text` - marks a section of the text within a `tooltip`, that is intended to be shown in a mouse over dialog. * `tooltip-icon` - marks a section of the text within a `tooltip`, that can be replaced with a tooltip icon, for example '?' or 'i'. By default, this section contains a `br` tag, that is separating the main text and the tooltip text when the style is not used. * `tooltip-style-question` - the tooltip shows helpful information, can use the '?' as an icon. * `tooltip-style-info` - the tooltip adds additional information fitting to the context, can use the 'i' as an icon. */
@@ -4783,18 +4020,13 @@ export interface ProductIssue {
   actions?: Array<Action>;
 }
 
-export const ProductIssue: Schema.Schema<ProductIssue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      prerenderedOutOfCourtDisputeSettlement: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      prerenderedContent: Schema.optional(Schema.String),
-      impact: Schema.optional(ProductIssueImpact),
-      actions: Schema.optional(Schema.Array(Action)),
-    }),
-  ).annotate({
-    identifier: "ProductIssue",
-  }) as any as Schema.Schema<ProductIssue>;
+export const ProductIssue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  prerenderedOutOfCourtDisputeSettlement: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  prerenderedContent: Schema.optional(Schema.String),
+  impact: Schema.optional(ProductIssueImpact),
+  actions: Schema.optional(Schema.Array(Action)),
+}).annotate({ identifier: "ProductIssue" });
 
 export interface RenderProductIssuesResponse {
   /** List of issues for a given product. This list can be shown with compressed, expandable items. In the compressed form, the title and impact should be shown for each issue. Once the issue is expanded, the detailed content and available actions should be rendered. */
@@ -4803,15 +4035,11 @@ export interface RenderProductIssuesResponse {
   alternateDisputeResolution?: AlternateDisputeResolution;
 }
 
-export const RenderProductIssuesResponse: Schema.Schema<RenderProductIssuesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      issues: Schema.optional(Schema.Array(ProductIssue)),
-      alternateDisputeResolution: Schema.optional(AlternateDisputeResolution),
-    }),
-  ).annotate({
-    identifier: "RenderProductIssuesResponse",
-  }) as any as Schema.Schema<RenderProductIssuesResponse>;
+export const RenderProductIssuesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    issues: Schema.optional(Schema.Array(ProductIssue)),
+    alternateDisputeResolution: Schema.optional(AlternateDisputeResolution),
+  }).annotate({ identifier: "RenderProductIssuesResponse" });
 
 export interface LiaInventorySettings {
   /** The name of the contact for the inventory verification process. */
@@ -4824,17 +4052,12 @@ export interface LiaInventorySettings {
   status?: string;
 }
 
-export const LiaInventorySettings: Schema.Schema<LiaInventorySettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inventoryVerificationContactName: Schema.optional(Schema.String),
-      inventoryVerificationContactEmail: Schema.optional(Schema.String),
-      inventoryVerificationContactStatus: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LiaInventorySettings",
-  }) as any as Schema.Schema<LiaInventorySettings>;
+export const LiaInventorySettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  inventoryVerificationContactName: Schema.optional(Schema.String),
+  inventoryVerificationContactEmail: Schema.optional(Schema.String),
+  inventoryVerificationContactStatus: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.String),
+}).annotate({ identifier: "LiaInventorySettings" });
 
 export interface LiaOnDisplayToOrderSettings {
   /** The status of the ?On display to order? feature. Acceptable values are: - "`active`" - "`inactive`" - "`pending`" */
@@ -4843,15 +4066,11 @@ export interface LiaOnDisplayToOrderSettings {
   shippingCostPolicyUrl?: string;
 }
 
-export const LiaOnDisplayToOrderSettings: Schema.Schema<LiaOnDisplayToOrderSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      status: Schema.optional(Schema.String),
-      shippingCostPolicyUrl: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LiaOnDisplayToOrderSettings",
-  }) as any as Schema.Schema<LiaOnDisplayToOrderSettings>;
+export const LiaOnDisplayToOrderSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    status: Schema.optional(Schema.String),
+    shippingCostPolicyUrl: Schema.optional(Schema.String),
+  }).annotate({ identifier: "LiaOnDisplayToOrderSettings" });
 
 export interface LiaPosDataProvider {
   /** The ID of the POS data provider. */
@@ -4860,15 +4079,10 @@ export interface LiaPosDataProvider {
   posExternalAccountId?: string;
 }
 
-export const LiaPosDataProvider: Schema.Schema<LiaPosDataProvider> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      posDataProviderId: Schema.optional(Schema.String),
-      posExternalAccountId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LiaPosDataProvider",
-  }) as any as Schema.Schema<LiaPosDataProvider>;
+export const LiaPosDataProvider = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  posDataProviderId: Schema.optional(Schema.String),
+  posExternalAccountId: Schema.optional(Schema.String),
+}).annotate({ identifier: "LiaPosDataProvider" });
 
 export interface LiaOmnichannelExperience {
   /** The Local Store Front (LSF) type for this country. Acceptable values are: - "`ghlsf`" (Google-Hosted Local Store Front) - "`mhlsfBasic`" (Merchant-Hosted Local Store Front Basic) - "`mhlsfFull`" (Merchant-Hosted Local Store Front Full) More details about these types can be found here. */
@@ -4879,16 +4093,12 @@ export interface LiaOmnichannelExperience {
   country?: string;
 }
 
-export const LiaOmnichannelExperience: Schema.Schema<LiaOmnichannelExperience> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lsfType: Schema.optional(Schema.String),
-      pickupTypes: Schema.optional(Schema.Array(Schema.String)),
-      country: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LiaOmnichannelExperience",
-  }) as any as Schema.Schema<LiaOmnichannelExperience>;
+export const LiaOmnichannelExperience =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    lsfType: Schema.optional(Schema.String),
+    pickupTypes: Schema.optional(Schema.Array(Schema.String)),
+    country: Schema.optional(Schema.String),
+  }).annotate({ identifier: "LiaOmnichannelExperience" });
 
 export interface LiaCountrySettings {
   /** LIA inventory verification settings. */
@@ -4909,21 +4119,16 @@ export interface LiaCountrySettings {
   about?: LiaAboutPageSettings;
 }
 
-export const LiaCountrySettings: Schema.Schema<LiaCountrySettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inventory: Schema.optional(LiaInventorySettings),
-      storePickupActive: Schema.optional(Schema.Boolean),
-      onDisplayToOrder: Schema.optional(LiaOnDisplayToOrderSettings),
-      posDataProvider: Schema.optional(LiaPosDataProvider),
-      omnichannelExperience: Schema.optional(LiaOmnichannelExperience),
-      country: Schema.optional(Schema.String),
-      hostedLocalStorefrontActive: Schema.optional(Schema.Boolean),
-      about: Schema.optional(LiaAboutPageSettings),
-    }),
-  ).annotate({
-    identifier: "LiaCountrySettings",
-  }) as any as Schema.Schema<LiaCountrySettings>;
+export const LiaCountrySettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  inventory: Schema.optional(LiaInventorySettings),
+  storePickupActive: Schema.optional(Schema.Boolean),
+  onDisplayToOrder: Schema.optional(LiaOnDisplayToOrderSettings),
+  posDataProvider: Schema.optional(LiaPosDataProvider),
+  omnichannelExperience: Schema.optional(LiaOmnichannelExperience),
+  country: Schema.optional(Schema.String),
+  hostedLocalStorefrontActive: Schema.optional(Schema.Boolean),
+  about: Schema.optional(LiaAboutPageSettings),
+}).annotate({ identifier: "LiaCountrySettings" });
 
 export interface LiaSettings {
   /** The ID of the account to which these LIA settings belong. Ignored upon update, always present in get request responses. */
@@ -4934,16 +4139,11 @@ export interface LiaSettings {
   kind?: string;
 }
 
-export const LiaSettings: Schema.Schema<LiaSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accountId: Schema.optional(Schema.String),
-      countrySettings: Schema.optional(Schema.Array(LiaCountrySettings)),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LiaSettings",
-  }) as any as Schema.Schema<LiaSettings>;
+export const LiaSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  accountId: Schema.optional(Schema.String),
+  countrySettings: Schema.optional(Schema.Array(LiaCountrySettings)),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "LiaSettings" });
 
 export interface LiasettingsCustomBatchRequestEntry {
   /** The account Lia settings to update. Only defined if the method is `update`. */
@@ -4972,25 +4172,21 @@ export interface LiasettingsCustomBatchRequestEntry {
   accountId?: string;
 }
 
-export const LiasettingsCustomBatchRequestEntry: Schema.Schema<LiasettingsCustomBatchRequestEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      liaSettings: Schema.optional(LiaSettings),
-      posDataProviderId: Schema.optional(Schema.String),
-      method: Schema.optional(Schema.String),
-      country: Schema.optional(Schema.String),
-      gmbEmail: Schema.optional(Schema.String),
-      merchantId: Schema.optional(Schema.String),
-      omnichannelExperience: Schema.optional(LiaOmnichannelExperience),
-      posExternalAccountId: Schema.optional(Schema.String),
-      contactName: Schema.optional(Schema.String),
-      batchId: Schema.optional(Schema.Number),
-      contactEmail: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LiasettingsCustomBatchRequestEntry",
-  }) as any as Schema.Schema<LiasettingsCustomBatchRequestEntry>;
+export const LiasettingsCustomBatchRequestEntry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    liaSettings: Schema.optional(LiaSettings),
+    posDataProviderId: Schema.optional(Schema.String),
+    method: Schema.optional(Schema.String),
+    country: Schema.optional(Schema.String),
+    gmbEmail: Schema.optional(Schema.String),
+    merchantId: Schema.optional(Schema.String),
+    omnichannelExperience: Schema.optional(LiaOmnichannelExperience),
+    posExternalAccountId: Schema.optional(Schema.String),
+    contactName: Schema.optional(Schema.String),
+    batchId: Schema.optional(Schema.Number),
+    contactEmail: Schema.optional(Schema.String),
+    accountId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "LiasettingsCustomBatchRequestEntry" });
 
 export interface ProductViewItemIssue {
   /** Item issue type. */
@@ -5005,16 +4201,11 @@ export interface ProductViewItemIssue {
   severity?: ProductViewItemIssueItemIssueSeverity;
 }
 
-export const ProductViewItemIssue: Schema.Schema<ProductViewItemIssue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      issueType: Schema.optional(ProductViewItemIssueItemIssueType),
-      resolution: Schema.optional(Schema.String),
-      severity: Schema.optional(ProductViewItemIssueItemIssueSeverity),
-    }),
-  ).annotate({
-    identifier: "ProductViewItemIssue",
-  }) as any as Schema.Schema<ProductViewItemIssue>;
+export const ProductViewItemIssue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  issueType: Schema.optional(ProductViewItemIssueItemIssueType),
+  resolution: Schema.optional(Schema.String),
+  severity: Schema.optional(ProductViewItemIssueItemIssueSeverity),
+}).annotate({ identifier: "ProductViewItemIssue" });
 
 export interface PaymentServiceProviderLinkInfo {
   /** The id used by the third party service provider to identify the merchant. */
@@ -5023,29 +4214,21 @@ export interface PaymentServiceProviderLinkInfo {
   externalAccountBusinessCountry?: string;
 }
 
-export const PaymentServiceProviderLinkInfo: Schema.Schema<PaymentServiceProviderLinkInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      externalAccountId: Schema.optional(Schema.String),
-      externalAccountBusinessCountry: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PaymentServiceProviderLinkInfo",
-  }) as any as Schema.Schema<PaymentServiceProviderLinkInfo>;
+export const PaymentServiceProviderLinkInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    externalAccountId: Schema.optional(Schema.String),
+    externalAccountBusinessCountry: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PaymentServiceProviderLinkInfo" });
 
 export interface ECommercePlatformLinkInfo {
   /** The id used by the third party service provider to identify the merchant. */
   externalAccountId?: string;
 }
 
-export const ECommercePlatformLinkInfo: Schema.Schema<ECommercePlatformLinkInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      externalAccountId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ECommercePlatformLinkInfo",
-  }) as any as Schema.Schema<ECommercePlatformLinkInfo>;
+export const ECommercePlatformLinkInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    externalAccountId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ECommercePlatformLinkInfo" });
 
 export interface AccountsLinkRequest {
   /** The ID of the linked account. */
@@ -5062,21 +4245,16 @@ export interface AccountsLinkRequest {
   linkType?: string;
 }
 
-export const AccountsLinkRequest: Schema.Schema<AccountsLinkRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      linkedAccountId: Schema.optional(Schema.String),
-      services: Schema.optional(Schema.Array(Schema.String)),
-      paymentServiceProviderLinkInfo: Schema.optional(
-        PaymentServiceProviderLinkInfo,
-      ),
-      eCommercePlatformLinkInfo: Schema.optional(ECommercePlatformLinkInfo),
-      action: Schema.optional(Schema.String),
-      linkType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccountsLinkRequest",
-  }) as any as Schema.Schema<AccountsLinkRequest>;
+export const AccountsLinkRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  linkedAccountId: Schema.optional(Schema.String),
+  services: Schema.optional(Schema.Array(Schema.String)),
+  paymentServiceProviderLinkInfo: Schema.optional(
+    PaymentServiceProviderLinkInfo,
+  ),
+  eCommercePlatformLinkInfo: Schema.optional(ECommercePlatformLinkInfo),
+  action: Schema.optional(Schema.String),
+  linkType: Schema.optional(Schema.String),
+}).annotate({ identifier: "AccountsLinkRequest" });
 
 export interface AccountstatusesListResponse {
   /** The token for the retrieval of the next page of account statuses. */
@@ -5086,16 +4264,12 @@ export interface AccountstatusesListResponse {
   kind?: string;
 }
 
-export const AccountstatusesListResponse: Schema.Schema<AccountstatusesListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      resources: Schema.optional(Schema.Array(AccountStatus)),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccountstatusesListResponse",
-  }) as any as Schema.Schema<AccountstatusesListResponse>;
+export const AccountstatusesListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    resources: Schema.optional(Schema.Array(AccountStatus)),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AccountstatusesListResponse" });
 
 export interface ShippingsettingsCustomBatchRequestEntry {
   /** The method of the batch entry. Acceptable values are: - "`get`" - "`update`" */
@@ -5110,34 +4284,26 @@ export interface ShippingsettingsCustomBatchRequestEntry {
   accountId?: string;
 }
 
-export const ShippingsettingsCustomBatchRequestEntry: Schema.Schema<ShippingsettingsCustomBatchRequestEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      method: Schema.optional(Schema.String),
-      batchId: Schema.optional(Schema.Number),
-      shippingSettings: Schema.optional(ShippingSettings),
-      merchantId: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ShippingsettingsCustomBatchRequestEntry",
-  }) as any as Schema.Schema<ShippingsettingsCustomBatchRequestEntry>;
+export const ShippingsettingsCustomBatchRequestEntry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    method: Schema.optional(Schema.String),
+    batchId: Schema.optional(Schema.Number),
+    shippingSettings: Schema.optional(ShippingSettings),
+    merchantId: Schema.optional(Schema.String),
+    accountId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ShippingsettingsCustomBatchRequestEntry" });
 
 export interface ShippingsettingsCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   entries?: Array<ShippingsettingsCustomBatchRequestEntry>;
 }
 
-export const ShippingsettingsCustomBatchRequest: Schema.Schema<ShippingsettingsCustomBatchRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entries: Schema.optional(
-        Schema.Array(ShippingsettingsCustomBatchRequestEntry),
-      ),
-    }),
-  ).annotate({
-    identifier: "ShippingsettingsCustomBatchRequest",
-  }) as any as Schema.Schema<ShippingsettingsCustomBatchRequest>;
+export const ShippingsettingsCustomBatchRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entries: Schema.optional(
+      Schema.Array(ShippingsettingsCustomBatchRequestEntry),
+    ),
+  }).annotate({ identifier: "ShippingsettingsCustomBatchRequest" });
 
 export interface DeliveryAreaPostalCodeRange {
   /** Required. A postal code or a pattern of the form prefix* denoting the inclusive lower bound of the range defining the area. Examples values: `"94108"`, `"9410*"`, `"9*"`. */
@@ -5146,15 +4312,11 @@ export interface DeliveryAreaPostalCodeRange {
   lastPostalCode?: string;
 }
 
-export const DeliveryAreaPostalCodeRange: Schema.Schema<DeliveryAreaPostalCodeRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      firstPostalCode: Schema.optional(Schema.String),
-      lastPostalCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DeliveryAreaPostalCodeRange",
-  }) as any as Schema.Schema<DeliveryAreaPostalCodeRange>;
+export const DeliveryAreaPostalCodeRange =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    firstPostalCode: Schema.optional(Schema.String),
+    lastPostalCode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DeliveryAreaPostalCodeRange" });
 
 export interface DeliveryArea {
   /** A postal code, postal code range or postal code prefix that defines this area. Limited to US and AUS. */
@@ -5165,16 +4327,11 @@ export interface DeliveryArea {
   regionCode?: string;
 }
 
-export const DeliveryArea: Schema.Schema<DeliveryArea> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      postalCodeRange: Schema.optional(DeliveryAreaPostalCodeRange),
-      countryCode: Schema.optional(Schema.String),
-      regionCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DeliveryArea",
-  }) as any as Schema.Schema<DeliveryArea>;
+export const DeliveryArea = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  postalCodeRange: Schema.optional(DeliveryAreaPostalCodeRange),
+  countryCode: Schema.optional(Schema.String),
+  regionCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "DeliveryArea" });
 
 export interface AccountsCustomBatchResponse {
   /** The result of the execution of the batch requests. */
@@ -5183,15 +4340,11 @@ export interface AccountsCustomBatchResponse {
   kind?: string;
 }
 
-export const AccountsCustomBatchResponse: Schema.Schema<AccountsCustomBatchResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entries: Schema.optional(Schema.Array(AccountsCustomBatchResponseEntry)),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccountsCustomBatchResponse",
-  }) as any as Schema.Schema<AccountsCustomBatchResponse>;
+export const AccountsCustomBatchResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entries: Schema.optional(Schema.Array(AccountsCustomBatchResponseEntry)),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AccountsCustomBatchResponse" });
 
 export interface AccountstatusesCustomBatchResponseEntry {
   /** The requested account status. Defined if and only if the request was successful. */
@@ -5202,28 +4355,21 @@ export interface AccountstatusesCustomBatchResponseEntry {
   errors?: Errors;
 }
 
-export const AccountstatusesCustomBatchResponseEntry: Schema.Schema<AccountstatusesCustomBatchResponseEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accountStatus: Schema.optional(AccountStatus),
-      batchId: Schema.optional(Schema.Number),
-      errors: Schema.optional(Errors),
-    }),
-  ).annotate({
-    identifier: "AccountstatusesCustomBatchResponseEntry",
-  }) as any as Schema.Schema<AccountstatusesCustomBatchResponseEntry>;
+export const AccountstatusesCustomBatchResponseEntry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountStatus: Schema.optional(AccountStatus),
+    batchId: Schema.optional(Schema.Number),
+    errors: Schema.optional(Errors),
+  }).annotate({ identifier: "AccountstatusesCustomBatchResponseEntry" });
 
 export interface ProductId {
   /** The Content API ID of the product, in the form `channel:contentLanguage:targetCountry:offerId`. */
   productId?: string;
 }
 
-export const ProductId: Schema.Schema<ProductId> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      productId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "ProductId" }) as any as Schema.Schema<ProductId>;
+export const ProductId = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  productId: Schema.optional(Schema.String),
+}).annotate({ identifier: "ProductId" });
 
 export interface ProductDeliveryTimeAreaDeliveryTimeDeliveryTime {
   /** Required. The maximum number of business days (inclusive) between when an order is placed and when the product ships. If a product ships in the same day, set this value to 0. */
@@ -5236,17 +4382,15 @@ export interface ProductDeliveryTimeAreaDeliveryTimeDeliveryTime {
   maxTransitTimeDays?: number;
 }
 
-export const ProductDeliveryTimeAreaDeliveryTimeDeliveryTime: Schema.Schema<ProductDeliveryTimeAreaDeliveryTimeDeliveryTime> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      maxHandlingTimeDays: Schema.optional(Schema.Number),
-      minHandlingTimeDays: Schema.optional(Schema.Number),
-      minTransitTimeDays: Schema.optional(Schema.Number),
-      maxTransitTimeDays: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const ProductDeliveryTimeAreaDeliveryTimeDeliveryTime =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    maxHandlingTimeDays: Schema.optional(Schema.Number),
+    minHandlingTimeDays: Schema.optional(Schema.Number),
+    minTransitTimeDays: Schema.optional(Schema.Number),
+    maxTransitTimeDays: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "ProductDeliveryTimeAreaDeliveryTimeDeliveryTime",
-  }) as any as Schema.Schema<ProductDeliveryTimeAreaDeliveryTimeDeliveryTime>;
+  });
 
 export interface ProductDeliveryTimeAreaDeliveryTime {
   /** Required. The delivery time associated with `deliveryArea` for this product. */
@@ -5255,17 +4399,13 @@ export interface ProductDeliveryTimeAreaDeliveryTime {
   deliveryArea?: DeliveryArea;
 }
 
-export const ProductDeliveryTimeAreaDeliveryTime: Schema.Schema<ProductDeliveryTimeAreaDeliveryTime> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deliveryTime: Schema.optional(
-        ProductDeliveryTimeAreaDeliveryTimeDeliveryTime,
-      ),
-      deliveryArea: Schema.optional(DeliveryArea),
-    }),
-  ).annotate({
-    identifier: "ProductDeliveryTimeAreaDeliveryTime",
-  }) as any as Schema.Schema<ProductDeliveryTimeAreaDeliveryTime>;
+export const ProductDeliveryTimeAreaDeliveryTime =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deliveryTime: Schema.optional(
+      ProductDeliveryTimeAreaDeliveryTimeDeliveryTime,
+    ),
+    deliveryArea: Schema.optional(DeliveryArea),
+  }).annotate({ identifier: "ProductDeliveryTimeAreaDeliveryTime" });
 
 export interface ProductDeliveryTime {
   /** Required. The `id` of the product. */
@@ -5274,17 +4414,12 @@ export interface ProductDeliveryTime {
   areaDeliveryTimes?: Array<ProductDeliveryTimeAreaDeliveryTime>;
 }
 
-export const ProductDeliveryTime: Schema.Schema<ProductDeliveryTime> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      productId: Schema.optional(ProductId),
-      areaDeliveryTimes: Schema.optional(
-        Schema.Array(ProductDeliveryTimeAreaDeliveryTime),
-      ),
-    }),
-  ).annotate({
-    identifier: "ProductDeliveryTime",
-  }) as any as Schema.Schema<ProductDeliveryTime>;
+export const ProductDeliveryTime = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  productId: Schema.optional(ProductId),
+  areaDeliveryTimes: Schema.optional(
+    Schema.Array(ProductDeliveryTimeAreaDeliveryTime),
+  ),
+}).annotate({ identifier: "ProductDeliveryTime" });
 
 export interface AccountCredentials {
   /** Indicates to Google how Google should use these OAuth tokens. */
@@ -5299,16 +4434,11 @@ export interface AccountCredentials {
   expiresIn?: string;
 }
 
-export const AccountCredentials: Schema.Schema<AccountCredentials> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      purpose: Schema.optional(Schema.String),
-      accessToken: Schema.optional(Schema.String),
-      expiresIn: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccountCredentials",
-  }) as any as Schema.Schema<AccountCredentials>;
+export const AccountCredentials = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  purpose: Schema.optional(Schema.String),
+  accessToken: Schema.optional(Schema.String),
+  expiresIn: Schema.optional(Schema.String),
+}).annotate({ identifier: "AccountCredentials" });
 
 export interface LiasettingsGetAccessibleGmbAccountsResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#liasettingsGetAccessibleGmbAccountsResponse`". */
@@ -5319,16 +4449,12 @@ export interface LiasettingsGetAccessibleGmbAccountsResponse {
   accountId?: string;
 }
 
-export const LiasettingsGetAccessibleGmbAccountsResponse: Schema.Schema<LiasettingsGetAccessibleGmbAccountsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      gmbAccounts: Schema.optional(Schema.Array(GmbAccountsGmbAccount)),
-      accountId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LiasettingsGetAccessibleGmbAccountsResponse",
-  }) as any as Schema.Schema<LiasettingsGetAccessibleGmbAccountsResponse>;
+export const LiasettingsGetAccessibleGmbAccountsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    gmbAccounts: Schema.optional(Schema.Array(GmbAccountsGmbAccount)),
+    accountId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "LiasettingsGetAccessibleGmbAccountsResponse" });
 
 export interface LiasettingsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#liasettingsListResponse`". */
@@ -5338,30 +4464,22 @@ export interface LiasettingsListResponse {
   resources?: Array<LiaSettings>;
 }
 
-export const LiasettingsListResponse: Schema.Schema<LiasettingsListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      nextPageToken: Schema.optional(Schema.String),
-      resources: Schema.optional(Schema.Array(LiaSettings)),
-    }),
-  ).annotate({
-    identifier: "LiasettingsListResponse",
-  }) as any as Schema.Schema<LiasettingsListResponse>;
+export const LiasettingsListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    nextPageToken: Schema.optional(Schema.String),
+    resources: Schema.optional(Schema.Array(LiaSettings)),
+  }).annotate({ identifier: "LiasettingsListResponse" });
 
 export interface InsertCheckoutSettingsRequest {
   /** Required. The `UrlSettings` for the request. The presence of URL settings indicates `Checkout` enrollment. */
   uriSettings?: UrlSettings;
 }
 
-export const InsertCheckoutSettingsRequest: Schema.Schema<InsertCheckoutSettingsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uriSettings: Schema.optional(UrlSettings),
-    }),
-  ).annotate({
-    identifier: "InsertCheckoutSettingsRequest",
-  }) as any as Schema.Schema<InsertCheckoutSettingsRequest>;
+export const InsertCheckoutSettingsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uriSettings: Schema.optional(UrlSettings),
+  }).annotate({ identifier: "InsertCheckoutSettingsRequest" });
 
 export interface ProductsCustomBatchResponseEntry {
   /** The inserted product. Only defined if the method is `insert` and if the request was successful. */
@@ -5374,17 +4492,13 @@ export interface ProductsCustomBatchResponseEntry {
   errors?: Errors;
 }
 
-export const ProductsCustomBatchResponseEntry: Schema.Schema<ProductsCustomBatchResponseEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      product: Schema.optional(Product),
-      kind: Schema.optional(Schema.String),
-      batchId: Schema.optional(Schema.Number),
-      errors: Schema.optional(Errors),
-    }),
-  ).annotate({
-    identifier: "ProductsCustomBatchResponseEntry",
-  }) as any as Schema.Schema<ProductsCustomBatchResponseEntry>;
+export const ProductsCustomBatchResponseEntry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    product: Schema.optional(Product),
+    kind: Schema.optional(Schema.String),
+    batchId: Schema.optional(Schema.Number),
+    errors: Schema.optional(Errors),
+  }).annotate({ identifier: "ProductsCustomBatchResponseEntry" });
 
 export interface MethodQuota {
   /** Output only. The method name, for example `products.list`. Method name does not contain version because quota can be shared between different API versions of the same method. */
@@ -5397,17 +4511,12 @@ export interface MethodQuota {
   quotaMinuteLimit?: string;
 }
 
-export const MethodQuota: Schema.Schema<MethodQuota> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      method: Schema.optional(Schema.String),
-      quotaUsage: Schema.optional(Schema.String),
-      quotaLimit: Schema.optional(Schema.String),
-      quotaMinuteLimit: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MethodQuota",
-  }) as any as Schema.Schema<MethodQuota>;
+export const MethodQuota = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  method: Schema.optional(Schema.String),
+  quotaUsage: Schema.optional(Schema.String),
+  quotaLimit: Schema.optional(Schema.String),
+  quotaMinuteLimit: Schema.optional(Schema.String),
+}).annotate({ identifier: "MethodQuota" });
 
 export interface PromotionPromotionStatusDestinationStatus {
   /** The status for the specified destination. */
@@ -5424,15 +4533,11 @@ export interface PromotionPromotionStatusDestinationStatus {
   destination?: string;
 }
 
-export const PromotionPromotionStatusDestinationStatus: Schema.Schema<PromotionPromotionStatusDestinationStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      status: Schema.optional(Schema.String),
-      destination: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PromotionPromotionStatusDestinationStatus",
-  }) as any as Schema.Schema<PromotionPromotionStatusDestinationStatus>;
+export const PromotionPromotionStatusDestinationStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    status: Schema.optional(Schema.String),
+    destination: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PromotionPromotionStatusDestinationStatus" });
 
 export interface AccountsCustomBatchRequestEntryLinkRequest {
   /** Action to perform for this link. The `"request"` action is only available to select merchants. Acceptable values are: - "`approve`" - "`remove`" - "`request`" */
@@ -5445,17 +4550,13 @@ export interface AccountsCustomBatchRequestEntryLinkRequest {
   linkedAccountId?: string;
 }
 
-export const AccountsCustomBatchRequestEntryLinkRequest: Schema.Schema<AccountsCustomBatchRequestEntryLinkRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      action: Schema.optional(Schema.String),
-      linkType: Schema.optional(Schema.String),
-      services: Schema.optional(Schema.Array(Schema.String)),
-      linkedAccountId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccountsCustomBatchRequestEntryLinkRequest",
-  }) as any as Schema.Schema<AccountsCustomBatchRequestEntryLinkRequest>;
+export const AccountsCustomBatchRequestEntryLinkRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    action: Schema.optional(Schema.String),
+    linkType: Schema.optional(Schema.String),
+    services: Schema.optional(Schema.Array(Schema.String)),
+    linkedAccountId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AccountsCustomBatchRequestEntryLinkRequest" });
 
 export interface AccountsCustomBatchRequestEntry {
   /** The ID of the managing account. */
@@ -5480,37 +4581,29 @@ export interface AccountsCustomBatchRequestEntry {
   view?: string;
 }
 
-export const AccountsCustomBatchRequestEntry: Schema.Schema<AccountsCustomBatchRequestEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      merchantId: Schema.optional(Schema.String),
-      account: Schema.optional(Account),
-      method: Schema.optional(Schema.String),
-      force: Schema.optional(Schema.Boolean),
-      labelIds: Schema.optional(Schema.Array(Schema.String)),
-      accountId: Schema.optional(Schema.String),
-      overwrite: Schema.optional(Schema.Boolean),
-      linkRequest: Schema.optional(AccountsCustomBatchRequestEntryLinkRequest),
-      batchId: Schema.optional(Schema.Number),
-      view: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccountsCustomBatchRequestEntry",
-  }) as any as Schema.Schema<AccountsCustomBatchRequestEntry>;
+export const AccountsCustomBatchRequestEntry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    merchantId: Schema.optional(Schema.String),
+    account: Schema.optional(Account),
+    method: Schema.optional(Schema.String),
+    force: Schema.optional(Schema.Boolean),
+    labelIds: Schema.optional(Schema.Array(Schema.String)),
+    accountId: Schema.optional(Schema.String),
+    overwrite: Schema.optional(Schema.Boolean),
+    linkRequest: Schema.optional(AccountsCustomBatchRequestEntryLinkRequest),
+    batchId: Schema.optional(Schema.Number),
+    view: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AccountsCustomBatchRequestEntry" });
 
 export interface AccountsCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   entries?: Array<AccountsCustomBatchRequestEntry>;
 }
 
-export const AccountsCustomBatchRequest: Schema.Schema<AccountsCustomBatchRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entries: Schema.optional(Schema.Array(AccountsCustomBatchRequestEntry)),
-    }),
-  ).annotate({
-    identifier: "AccountsCustomBatchRequest",
-  }) as any as Schema.Schema<AccountsCustomBatchRequest>;
+export const AccountsCustomBatchRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entries: Schema.optional(Schema.Array(AccountsCustomBatchRequestEntry)),
+  }).annotate({ identifier: "AccountsCustomBatchRequest" });
 
 export interface ProductStatusDestinationStatus {
   /** The name of the destination */
@@ -5527,19 +4620,15 @@ export interface ProductStatusDestinationStatus {
   pendingCountries?: Array<string>;
 }
 
-export const ProductStatusDestinationStatus: Schema.Schema<ProductStatusDestinationStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      destination: Schema.optional(Schema.String),
-      disapprovedCountries: Schema.optional(Schema.Array(Schema.String)),
-      approvedCountries: Schema.optional(Schema.Array(Schema.String)),
-      channel: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-      pendingCountries: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ProductStatusDestinationStatus",
-  }) as any as Schema.Schema<ProductStatusDestinationStatus>;
+export const ProductStatusDestinationStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    destination: Schema.optional(Schema.String),
+    disapprovedCountries: Schema.optional(Schema.Array(Schema.String)),
+    approvedCountries: Schema.optional(Schema.Array(Schema.String)),
+    channel: Schema.optional(Schema.String),
+    status: Schema.optional(Schema.String),
+    pendingCountries: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ProductStatusDestinationStatus" });
 
 export interface ProductStatus {
   /** The ID of the product for which status is reported. */
@@ -5562,26 +4651,19 @@ export interface ProductStatus {
   googleExpirationDate?: string;
 }
 
-export const ProductStatus: Schema.Schema<ProductStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      productId: Schema.optional(Schema.String),
-      destinationStatuses: Schema.optional(
-        Schema.Array(ProductStatusDestinationStatus),
-      ),
-      title: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      creationDate: Schema.optional(Schema.String),
-      link: Schema.optional(Schema.String),
-      lastUpdateDate: Schema.optional(Schema.String),
-      itemLevelIssues: Schema.optional(
-        Schema.Array(ProductStatusItemLevelIssue),
-      ),
-      googleExpirationDate: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProductStatus",
-  }) as any as Schema.Schema<ProductStatus>;
+export const ProductStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  productId: Schema.optional(Schema.String),
+  destinationStatuses: Schema.optional(
+    Schema.Array(ProductStatusDestinationStatus),
+  ),
+  title: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  creationDate: Schema.optional(Schema.String),
+  link: Schema.optional(Schema.String),
+  lastUpdateDate: Schema.optional(Schema.String),
+  itemLevelIssues: Schema.optional(Schema.Array(ProductStatusItemLevelIssue)),
+  googleExpirationDate: Schema.optional(Schema.String),
+}).annotate({ identifier: "ProductStatus" });
 
 export interface PosInventory {
   /** Required. The inventory timestamp, in ISO 8601 format. */
@@ -5608,24 +4690,19 @@ export interface PosInventory {
   quantity?: string;
 }
 
-export const PosInventory: Schema.Schema<PosInventory> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      timestamp: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      pickupSla: Schema.optional(Schema.String),
-      storeCode: Schema.optional(Schema.String),
-      targetCountry: Schema.optional(Schema.String),
-      contentLanguage: Schema.optional(Schema.String),
-      price: Schema.optional(Price),
-      pickupMethod: Schema.optional(Schema.String),
-      gtin: Schema.optional(Schema.String),
-      itemId: Schema.optional(Schema.String),
-      quantity: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PosInventory",
-  }) as any as Schema.Schema<PosInventory>;
+export const PosInventory = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  timestamp: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  pickupSla: Schema.optional(Schema.String),
+  storeCode: Schema.optional(Schema.String),
+  targetCountry: Schema.optional(Schema.String),
+  contentLanguage: Schema.optional(Schema.String),
+  price: Schema.optional(Price),
+  pickupMethod: Schema.optional(Schema.String),
+  gtin: Schema.optional(Schema.String),
+  itemId: Schema.optional(Schema.String),
+  quantity: Schema.optional(Schema.String),
+}).annotate({ identifier: "PosInventory" });
 
 export interface PosStore {
   /** The business type of the store. */
@@ -5650,21 +4727,18 @@ export interface PosStore {
   storeAddress?: string;
 }
 
-export const PosStore: Schema.Schema<PosStore> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gcidCategory: Schema.optional(Schema.Array(Schema.String)),
-      matchingStatusHint: Schema.optional(Schema.String),
-      placeId: Schema.optional(Schema.String),
-      matchingStatus: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      websiteUrl: Schema.optional(Schema.String),
-      storeName: Schema.optional(Schema.String),
-      phoneNumber: Schema.optional(Schema.String),
-      storeCode: Schema.optional(Schema.String),
-      storeAddress: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "PosStore" }) as any as Schema.Schema<PosStore>;
+export const PosStore = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gcidCategory: Schema.optional(Schema.Array(Schema.String)),
+  matchingStatusHint: Schema.optional(Schema.String),
+  placeId: Schema.optional(Schema.String),
+  matchingStatus: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  websiteUrl: Schema.optional(Schema.String),
+  storeName: Schema.optional(Schema.String),
+  phoneNumber: Schema.optional(Schema.String),
+  storeCode: Schema.optional(Schema.String),
+  storeAddress: Schema.optional(Schema.String),
+}).annotate({ identifier: "PosStore" });
 
 export interface PosCustomBatchRequestEntry {
   /** The inventory to submit. This should be set only if the method is `inventory`. */
@@ -5685,21 +4759,17 @@ export interface PosCustomBatchRequestEntry {
   batchId?: number;
 }
 
-export const PosCustomBatchRequestEntry: Schema.Schema<PosCustomBatchRequestEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inventory: Schema.optional(PosInventory),
-      targetMerchantId: Schema.optional(Schema.String),
-      merchantId: Schema.optional(Schema.String),
-      sale: Schema.optional(PosSale),
-      method: Schema.optional(Schema.String),
-      storeCode: Schema.optional(Schema.String),
-      store: Schema.optional(PosStore),
-      batchId: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "PosCustomBatchRequestEntry",
-  }) as any as Schema.Schema<PosCustomBatchRequestEntry>;
+export const PosCustomBatchRequestEntry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    inventory: Schema.optional(PosInventory),
+    targetMerchantId: Schema.optional(Schema.String),
+    merchantId: Schema.optional(Schema.String),
+    sale: Schema.optional(PosSale),
+    method: Schema.optional(Schema.String),
+    storeCode: Schema.optional(Schema.String),
+    store: Schema.optional(PosStore),
+    batchId: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "PosCustomBatchRequestEntry" });
 
 export interface PickupServicesPickupService {
   /** The CLDR country code of the carrier (for example, "US"). Always present. */
@@ -5710,16 +4780,12 @@ export interface PickupServicesPickupService {
   carrierName?: string;
 }
 
-export const PickupServicesPickupService: Schema.Schema<PickupServicesPickupService> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      country: Schema.optional(Schema.String),
-      serviceName: Schema.optional(Schema.String),
-      carrierName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PickupServicesPickupService",
-  }) as any as Schema.Schema<PickupServicesPickupService>;
+export const PickupServicesPickupService =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    country: Schema.optional(Schema.String),
+    serviceName: Schema.optional(Schema.String),
+    carrierName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PickupServicesPickupService" });
 
 export interface AccountReturnCarrier {
   /** Name of the carrier account. */
@@ -5732,33 +4798,22 @@ export interface AccountReturnCarrier {
   carrierCode?: "CARRIER_CODE_UNSPECIFIED" | "FEDEX" | "UPS" | (string & {});
 }
 
-export const AccountReturnCarrier: Schema.Schema<AccountReturnCarrier> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      carrierAccountName: Schema.optional(Schema.String),
-      carrierAccountNumber: Schema.optional(Schema.String),
-      carrierAccountId: Schema.optional(Schema.String),
-      carrierCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccountReturnCarrier",
-  }) as any as Schema.Schema<AccountReturnCarrier>;
+export const AccountReturnCarrier = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  carrierAccountName: Schema.optional(Schema.String),
+  carrierAccountNumber: Schema.optional(Schema.String),
+  carrierAccountId: Schema.optional(Schema.String),
+  carrierCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "AccountReturnCarrier" });
 
 export interface ListAccountReturnCarrierResponse {
   /** List of all available account return carriers for the merchant. */
   accountReturnCarriers?: Array<AccountReturnCarrier>;
 }
 
-export const ListAccountReturnCarrierResponse: Schema.Schema<ListAccountReturnCarrierResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accountReturnCarriers: Schema.optional(
-        Schema.Array(AccountReturnCarrier),
-      ),
-    }),
-  ).annotate({
-    identifier: "ListAccountReturnCarrierResponse",
-  }) as any as Schema.Schema<ListAccountReturnCarrierResponse>;
+export const ListAccountReturnCarrierResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountReturnCarriers: Schema.optional(Schema.Array(AccountReturnCarrier)),
+  }).annotate({ identifier: "ListAccountReturnCarrierResponse" });
 
 export interface BestSellers {
   /** Popularity rank in the previous week or month. */
@@ -5804,22 +4859,17 @@ export interface BestSellers {
     | (string & {});
 }
 
-export const BestSellers: Schema.Schema<BestSellers> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      previousRank: Schema.optional(Schema.String),
-      relativeDemand: Schema.optional(Schema.String),
-      relativeDemandChange: Schema.optional(Schema.String),
-      previousRelativeDemand: Schema.optional(Schema.String),
-      countryCode: Schema.optional(Schema.String),
-      reportDate: Schema.optional(Content_Date),
-      rank: Schema.optional(Schema.String),
-      categoryId: Schema.optional(Schema.String),
-      reportGranularity: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BestSellers",
-  }) as any as Schema.Schema<BestSellers>;
+export const BestSellers = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  previousRank: Schema.optional(Schema.String),
+  relativeDemand: Schema.optional(Schema.String),
+  relativeDemandChange: Schema.optional(Schema.String),
+  previousRelativeDemand: Schema.optional(Schema.String),
+  countryCode: Schema.optional(Schema.String),
+  reportDate: Schema.optional(Content_Date),
+  rank: Schema.optional(Schema.String),
+  categoryId: Schema.optional(Schema.String),
+  reportGranularity: Schema.optional(Schema.String),
+}).annotate({ identifier: "BestSellers" });
 
 export interface DatafeedstatusesCustomBatchRequestEntry {
   /** The ID of the data feed to get. */
@@ -5838,20 +4888,16 @@ export interface DatafeedstatusesCustomBatchRequestEntry {
   batchId?: number;
 }
 
-export const DatafeedstatusesCustomBatchRequestEntry: Schema.Schema<DatafeedstatusesCustomBatchRequestEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      datafeedId: Schema.optional(Schema.String),
-      language: Schema.optional(Schema.String),
-      merchantId: Schema.optional(Schema.String),
-      feedLabel: Schema.optional(Schema.String),
-      method: Schema.optional(Schema.String),
-      country: Schema.optional(Schema.String),
-      batchId: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "DatafeedstatusesCustomBatchRequestEntry",
-  }) as any as Schema.Schema<DatafeedstatusesCustomBatchRequestEntry>;
+export const DatafeedstatusesCustomBatchRequestEntry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    datafeedId: Schema.optional(Schema.String),
+    language: Schema.optional(Schema.String),
+    merchantId: Schema.optional(Schema.String),
+    feedLabel: Schema.optional(Schema.String),
+    method: Schema.optional(Schema.String),
+    country: Schema.optional(Schema.String),
+    batchId: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "DatafeedstatusesCustomBatchRequestEntry" });
 
 export interface ReturnPolicyOnlinePolicy {
   /** The number of days items can be returned after delivery, where one day is defined to be 24 hours after the delivery timestamp. Required for `numberOfDaysAfterDelivery` returns. */
@@ -5865,15 +4911,11 @@ export interface ReturnPolicyOnlinePolicy {
     | (string & {});
 }
 
-export const ReturnPolicyOnlinePolicy: Schema.Schema<ReturnPolicyOnlinePolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      days: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ReturnPolicyOnlinePolicy",
-  }) as any as Schema.Schema<ReturnPolicyOnlinePolicy>;
+export const ReturnPolicyOnlinePolicy =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    days: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ReturnPolicyOnlinePolicy" });
 
 export interface AccounttaxCustomBatchResponseEntry {
   /** The retrieved or updated account tax settings. */
@@ -5886,17 +4928,13 @@ export interface AccounttaxCustomBatchResponseEntry {
   kind?: string;
 }
 
-export const AccounttaxCustomBatchResponseEntry: Schema.Schema<AccounttaxCustomBatchResponseEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accountTax: Schema.optional(AccountTax),
-      batchId: Schema.optional(Schema.Number),
-      errors: Schema.optional(Errors),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccounttaxCustomBatchResponseEntry",
-  }) as any as Schema.Schema<AccounttaxCustomBatchResponseEntry>;
+export const AccounttaxCustomBatchResponseEntry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountTax: Schema.optional(AccountTax),
+    batchId: Schema.optional(Schema.Number),
+    errors: Schema.optional(Errors),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AccounttaxCustomBatchResponseEntry" });
 
 export interface Metrics {
   /** *Deprecated*: This field is no longer supported and retrieving it returns 0 starting from May 2024. Number of shipped items, reported on the shipment date. **This metric cannot be segmented by customer_country_code.** */
@@ -5947,34 +4985,31 @@ export interface Metrics {
   unshippedItems?: number;
 }
 
-export const Metrics: Schema.Schema<Metrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      shippedItems: Schema.optional(Schema.String),
-      returnedItems: Schema.optional(Schema.String),
-      orders: Schema.optional(Schema.String),
-      unshippedOrders: Schema.optional(Schema.Number),
-      conversionRate: Schema.optional(Schema.Number),
-      conversionValueMicros: Schema.optional(Schema.String),
-      rejectedItems: Schema.optional(Schema.String),
-      conversions: Schema.optional(Schema.Number),
-      returnRate: Schema.optional(Schema.Number),
-      daysToShip: Schema.optional(Schema.Number),
-      aos: Schema.optional(Schema.Number),
-      returnsMicros: Schema.optional(Schema.String),
-      impressions: Schema.optional(Schema.String),
-      ctr: Schema.optional(Schema.Number),
-      itemDaysToShip: Schema.optional(Schema.Number),
-      orderedItems: Schema.optional(Schema.String),
-      orderedItemSalesMicros: Schema.optional(Schema.String),
-      aovMicros: Schema.optional(Schema.Number),
-      clicks: Schema.optional(Schema.String),
-      itemFillRate: Schema.optional(Schema.Number),
-      shippedOrders: Schema.optional(Schema.String),
-      shippedItemSalesMicros: Schema.optional(Schema.String),
-      unshippedItems: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Metrics" }) as any as Schema.Schema<Metrics>;
+export const Metrics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  shippedItems: Schema.optional(Schema.String),
+  returnedItems: Schema.optional(Schema.String),
+  orders: Schema.optional(Schema.String),
+  unshippedOrders: Schema.optional(Schema.Number),
+  conversionRate: Schema.optional(Schema.Number),
+  conversionValueMicros: Schema.optional(Schema.String),
+  rejectedItems: Schema.optional(Schema.String),
+  conversions: Schema.optional(Schema.Number),
+  returnRate: Schema.optional(Schema.Number),
+  daysToShip: Schema.optional(Schema.Number),
+  aos: Schema.optional(Schema.Number),
+  returnsMicros: Schema.optional(Schema.String),
+  impressions: Schema.optional(Schema.String),
+  ctr: Schema.optional(Schema.Number),
+  itemDaysToShip: Schema.optional(Schema.Number),
+  orderedItems: Schema.optional(Schema.String),
+  orderedItemSalesMicros: Schema.optional(Schema.String),
+  aovMicros: Schema.optional(Schema.Number),
+  clicks: Schema.optional(Schema.String),
+  itemFillRate: Schema.optional(Schema.Number),
+  shippedOrders: Schema.optional(Schema.String),
+  shippedItemSalesMicros: Schema.optional(Schema.String),
+  unshippedItems: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Metrics" });
 
 export interface RegionalinventoryCustomBatchResponseEntry {
   /** Price and availability of the product. */
@@ -5987,17 +5022,13 @@ export interface RegionalinventoryCustomBatchResponseEntry {
   kind?: string;
 }
 
-export const RegionalinventoryCustomBatchResponseEntry: Schema.Schema<RegionalinventoryCustomBatchResponseEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      regionalInventory: Schema.optional(RegionalInventory),
-      batchId: Schema.optional(Schema.Number),
-      errors: Schema.optional(Errors),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RegionalinventoryCustomBatchResponseEntry",
-  }) as any as Schema.Schema<RegionalinventoryCustomBatchResponseEntry>;
+export const RegionalinventoryCustomBatchResponseEntry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    regionalInventory: Schema.optional(RegionalInventory),
+    batchId: Schema.optional(Schema.Number),
+    errors: Schema.optional(Errors),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RegionalinventoryCustomBatchResponseEntry" });
 
 export interface RegionalinventoryCustomBatchResponse {
   /** The result of the execution of the batch requests. */
@@ -6006,17 +5037,13 @@ export interface RegionalinventoryCustomBatchResponse {
   kind?: string;
 }
 
-export const RegionalinventoryCustomBatchResponse: Schema.Schema<RegionalinventoryCustomBatchResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entries: Schema.optional(
-        Schema.Array(RegionalinventoryCustomBatchResponseEntry),
-      ),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RegionalinventoryCustomBatchResponse",
-  }) as any as Schema.Schema<RegionalinventoryCustomBatchResponse>;
+export const RegionalinventoryCustomBatchResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entries: Schema.optional(
+      Schema.Array(RegionalinventoryCustomBatchResponseEntry),
+    ),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RegionalinventoryCustomBatchResponse" });
 
 export interface AccountsListResponse {
   /** The token for the retrieval of the next page of accounts. */
@@ -6026,16 +5053,11 @@ export interface AccountsListResponse {
   kind?: string;
 }
 
-export const AccountsListResponse: Schema.Schema<AccountsListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      resources: Schema.optional(Schema.Array(Account)),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccountsListResponse",
-  }) as any as Schema.Schema<AccountsListResponse>;
+export const AccountsListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  resources: Schema.optional(Schema.Array(Account)),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "AccountsListResponse" });
 
 export interface ProductstatusesCustomBatchResponseEntry {
   /** The requested product status. Only defined if the request was successful. */
@@ -6048,17 +5070,13 @@ export interface ProductstatusesCustomBatchResponseEntry {
   errors?: Errors;
 }
 
-export const ProductstatusesCustomBatchResponseEntry: Schema.Schema<ProductstatusesCustomBatchResponseEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      productStatus: Schema.optional(ProductStatus),
-      kind: Schema.optional(Schema.String),
-      batchId: Schema.optional(Schema.Number),
-      errors: Schema.optional(Errors),
-    }),
-  ).annotate({
-    identifier: "ProductstatusesCustomBatchResponseEntry",
-  }) as any as Schema.Schema<ProductstatusesCustomBatchResponseEntry>;
+export const ProductstatusesCustomBatchResponseEntry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    productStatus: Schema.optional(ProductStatus),
+    kind: Schema.optional(Schema.String),
+    batchId: Schema.optional(Schema.Number),
+    errors: Schema.optional(Errors),
+  }).annotate({ identifier: "ProductstatusesCustomBatchResponseEntry" });
 
 export interface ProductstatusesCustomBatchResponse {
   /** The result of the execution of the batch requests. */
@@ -6067,31 +5085,23 @@ export interface ProductstatusesCustomBatchResponse {
   kind?: string;
 }
 
-export const ProductstatusesCustomBatchResponse: Schema.Schema<ProductstatusesCustomBatchResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entries: Schema.optional(
-        Schema.Array(ProductstatusesCustomBatchResponseEntry),
-      ),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProductstatusesCustomBatchResponse",
-  }) as any as Schema.Schema<ProductstatusesCustomBatchResponse>;
+export const ProductstatusesCustomBatchResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entries: Schema.optional(
+      Schema.Array(ProductstatusesCustomBatchResponseEntry),
+    ),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ProductstatusesCustomBatchResponse" });
 
 export interface RequestReviewFreeListingsRequest {
   /** The code [ISO 3166-1 alpha-2](https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2) of the country for which review is to be requested. */
   regionCode?: string;
 }
 
-export const RequestReviewFreeListingsRequest: Schema.Schema<RequestReviewFreeListingsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      regionCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RequestReviewFreeListingsRequest",
-  }) as any as Schema.Schema<RequestReviewFreeListingsRequest>;
+export const RequestReviewFreeListingsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    regionCode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RequestReviewFreeListingsRequest" });
 
 export interface ActionInput {
   /** Required. Id of the selected action flow. */
@@ -6100,15 +5110,10 @@ export interface ActionInput {
   inputValues?: Array<InputValue>;
 }
 
-export const ActionInput: Schema.Schema<ActionInput> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      actionFlowId: Schema.optional(Schema.String),
-      inputValues: Schema.optional(Schema.Array(InputValue)),
-    }),
-  ).annotate({
-    identifier: "ActionInput",
-  }) as any as Schema.Schema<ActionInput>;
+export const ActionInput = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  actionFlowId: Schema.optional(Schema.String),
+  inputValues: Schema.optional(Schema.Array(InputValue)),
+}).annotate({ identifier: "ActionInput" });
 
 export interface DatafeedStatusExample {
   /** The problematic value. */
@@ -6119,16 +5124,11 @@ export interface DatafeedStatusExample {
   itemId?: string;
 }
 
-export const DatafeedStatusExample: Schema.Schema<DatafeedStatusExample> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-      lineNumber: Schema.optional(Schema.String),
-      itemId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DatafeedStatusExample",
-  }) as any as Schema.Schema<DatafeedStatusExample>;
+export const DatafeedStatusExample = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.String),
+  lineNumber: Schema.optional(Schema.String),
+  itemId: Schema.optional(Schema.String),
+}).annotate({ identifier: "DatafeedStatusExample" });
 
 export interface DatafeedStatusError {
   /** The number of occurrences of the error in the feed. */
@@ -6141,17 +5141,12 @@ export interface DatafeedStatusError {
   message?: string;
 }
 
-export const DatafeedStatusError: Schema.Schema<DatafeedStatusError> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      count: Schema.optional(Schema.String),
-      examples: Schema.optional(Schema.Array(DatafeedStatusExample)),
-      code: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DatafeedStatusError",
-  }) as any as Schema.Schema<DatafeedStatusError>;
+export const DatafeedStatusError = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  count: Schema.optional(Schema.String),
+  examples: Schema.optional(Schema.Array(DatafeedStatusExample)),
+  code: Schema.optional(Schema.String),
+  message: Schema.optional(Schema.String),
+}).annotate({ identifier: "DatafeedStatusError" });
 
 export interface TopicTrends {
   /** Date the trend score was retrieved. */
@@ -6174,22 +5169,17 @@ export interface TopicTrends {
   next7DaysSearchInterest?: number;
 }
 
-export const TopicTrends: Schema.Schema<TopicTrends> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      date: Schema.optional(Content_Date),
-      customerCountryCode: Schema.optional(Schema.String),
-      topic: Schema.optional(Schema.String),
-      last120DaysSearchInterest: Schema.optional(Schema.Number),
-      searchInterest: Schema.optional(Schema.Number),
-      last7DaysSearchInterest: Schema.optional(Schema.Number),
-      last30DaysSearchInterest: Schema.optional(Schema.Number),
-      last90DaysSearchInterest: Schema.optional(Schema.Number),
-      next7DaysSearchInterest: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "TopicTrends",
-  }) as any as Schema.Schema<TopicTrends>;
+export const TopicTrends = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  date: Schema.optional(Content_Date),
+  customerCountryCode: Schema.optional(Schema.String),
+  topic: Schema.optional(Schema.String),
+  last120DaysSearchInterest: Schema.optional(Schema.Number),
+  searchInterest: Schema.optional(Schema.Number),
+  last7DaysSearchInterest: Schema.optional(Schema.Number),
+  last30DaysSearchInterest: Schema.optional(Schema.Number),
+  last90DaysSearchInterest: Schema.optional(Schema.Number),
+  next7DaysSearchInterest: Schema.optional(Schema.Number),
+}).annotate({ identifier: "TopicTrends" });
 
 export interface ProductView {
   /** Condition of the product. */
@@ -6263,42 +5253,37 @@ export interface ProductView {
   languageCode?: string;
 }
 
-export const ProductView: Schema.Schema<ProductView> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      condition: Schema.optional(Schema.String),
-      brand: Schema.optional(Schema.String),
-      channel: Schema.optional(Schema.String),
-      offerId: Schema.optional(Schema.String),
-      priceMicros: Schema.optional(Schema.String),
-      clickPotential: Schema.optional(Schema.String),
-      currencyCode: Schema.optional(Schema.String),
-      categoryL3: Schema.optional(Schema.String),
-      categoryL2: Schema.optional(Schema.String),
-      aggregatedDestinationStatus: Schema.optional(Schema.String),
-      categoryL5: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      shippingLabel: Schema.optional(Schema.String),
-      itemGroupId: Schema.optional(Schema.String),
-      productTypeL2: Schema.optional(Schema.String),
-      gtin: Schema.optional(Schema.Array(Schema.String)),
-      creationTime: Schema.optional(Schema.String),
-      itemIssues: Schema.optional(Schema.Array(ProductViewItemIssue)),
-      title: Schema.optional(Schema.String),
-      expirationDate: Schema.optional(Content_Date),
-      categoryL1: Schema.optional(Schema.String),
-      productTypeL1: Schema.optional(Schema.String),
-      availability: Schema.optional(Schema.String),
-      productTypeL5: Schema.optional(Schema.String),
-      categoryL4: Schema.optional(Schema.String),
-      clickPotentialRank: Schema.optional(Schema.String),
-      productTypeL3: Schema.optional(Schema.String),
-      productTypeL4: Schema.optional(Schema.String),
-      languageCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProductView",
-  }) as any as Schema.Schema<ProductView>;
+export const ProductView = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  condition: Schema.optional(Schema.String),
+  brand: Schema.optional(Schema.String),
+  channel: Schema.optional(Schema.String),
+  offerId: Schema.optional(Schema.String),
+  priceMicros: Schema.optional(Schema.String),
+  clickPotential: Schema.optional(Schema.String),
+  currencyCode: Schema.optional(Schema.String),
+  categoryL3: Schema.optional(Schema.String),
+  categoryL2: Schema.optional(Schema.String),
+  aggregatedDestinationStatus: Schema.optional(Schema.String),
+  categoryL5: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  shippingLabel: Schema.optional(Schema.String),
+  itemGroupId: Schema.optional(Schema.String),
+  productTypeL2: Schema.optional(Schema.String),
+  gtin: Schema.optional(Schema.Array(Schema.String)),
+  creationTime: Schema.optional(Schema.String),
+  itemIssues: Schema.optional(Schema.Array(ProductViewItemIssue)),
+  title: Schema.optional(Schema.String),
+  expirationDate: Schema.optional(Content_Date),
+  categoryL1: Schema.optional(Schema.String),
+  productTypeL1: Schema.optional(Schema.String),
+  availability: Schema.optional(Schema.String),
+  productTypeL5: Schema.optional(Schema.String),
+  categoryL4: Schema.optional(Schema.String),
+  clickPotentialRank: Schema.optional(Schema.String),
+  productTypeL3: Schema.optional(Schema.String),
+  productTypeL4: Schema.optional(Schema.String),
+  languageCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "ProductView" });
 
 export interface ProductCluster {
   /** Tells if there is at least one product of the brand currently `IN_STOCK` in your product feed across multiple countries, all products are `OUT_OF_STOCK` in your product feed, or `NOT_IN_INVENTORY`. The field doesn't take the Best Sellers report country filter into account. */
@@ -6333,23 +5318,18 @@ export interface ProductCluster {
   variantGtins?: Array<string>;
 }
 
-export const ProductCluster: Schema.Schema<ProductCluster> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      brandInventoryStatus: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      categoryL4: Schema.optional(Schema.String),
-      categoryL2: Schema.optional(Schema.String),
-      inventoryStatus: Schema.optional(Schema.String),
-      categoryL1: Schema.optional(Schema.String),
-      categoryL5: Schema.optional(Schema.String),
-      brand: Schema.optional(Schema.String),
-      categoryL3: Schema.optional(Schema.String),
-      variantGtins: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ProductCluster",
-  }) as any as Schema.Schema<ProductCluster>;
+export const ProductCluster = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  brandInventoryStatus: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  categoryL4: Schema.optional(Schema.String),
+  categoryL2: Schema.optional(Schema.String),
+  inventoryStatus: Schema.optional(Schema.String),
+  categoryL1: Schema.optional(Schema.String),
+  categoryL5: Schema.optional(Schema.String),
+  brand: Schema.optional(Schema.String),
+  categoryL3: Schema.optional(Schema.String),
+  variantGtins: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ProductCluster" });
 
 export interface ReportRow {
   /** Best sellers fields requested by the merchant in the query. Field values are only set if the merchant queries `BestSellersProductClusterView` or `BestSellersBrandView`. */
@@ -6374,21 +5354,18 @@ export interface ReportRow {
   competitiveVisibility?: CompetitiveVisibility;
 }
 
-export const ReportRow: Schema.Schema<ReportRow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bestSellers: Schema.optional(BestSellers),
-      topicTrends: Schema.optional(TopicTrends),
-      priceInsights: Schema.optional(PriceInsights),
-      segments: Schema.optional(Segments),
-      productView: Schema.optional(ProductView),
-      priceCompetitiveness: Schema.optional(PriceCompetitiveness),
-      brand: Schema.optional(Brand),
-      metrics: Schema.optional(Metrics),
-      productCluster: Schema.optional(ProductCluster),
-      competitiveVisibility: Schema.optional(CompetitiveVisibility),
-    }),
-  ).annotate({ identifier: "ReportRow" }) as any as Schema.Schema<ReportRow>;
+export const ReportRow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bestSellers: Schema.optional(BestSellers),
+  topicTrends: Schema.optional(TopicTrends),
+  priceInsights: Schema.optional(PriceInsights),
+  segments: Schema.optional(Segments),
+  productView: Schema.optional(ProductView),
+  priceCompetitiveness: Schema.optional(PriceCompetitiveness),
+  brand: Schema.optional(Brand),
+  metrics: Schema.optional(Metrics),
+  productCluster: Schema.optional(ProductCluster),
+  competitiveVisibility: Schema.optional(CompetitiveVisibility),
+}).annotate({ identifier: "ReportRow" });
 
 export interface SearchResponse {
   /** Rows that matched the search query. */
@@ -6397,15 +5374,10 @@ export interface SearchResponse {
   nextPageToken?: string;
 }
 
-export const SearchResponse: Schema.Schema<SearchResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      results: Schema.optional(Schema.Array(ReportRow)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SearchResponse",
-  }) as any as Schema.Schema<SearchResponse>;
+export const SearchResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  results: Schema.optional(Schema.Array(ReportRow)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "SearchResponse" });
 
 export interface CarriersCarrier {
   /** The name of the carrier (for example, `"UPS"`). Always present. */
@@ -6418,17 +5390,12 @@ export interface CarriersCarrier {
   services?: Array<string>;
 }
 
-export const CarriersCarrier: Schema.Schema<CarriersCarrier> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      country: Schema.optional(Schema.String),
-      eddServices: Schema.optional(Schema.Array(Schema.String)),
-      services: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "CarriersCarrier",
-  }) as any as Schema.Schema<CarriersCarrier>;
+export const CarriersCarrier = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  country: Schema.optional(Schema.String),
+  eddServices: Schema.optional(Schema.Array(Schema.String)),
+  services: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "CarriersCarrier" });
 
 export interface TimePeriod {
   /** The ending timestamp. */
@@ -6437,13 +5404,10 @@ export interface TimePeriod {
   startTime?: string;
 }
 
-export const TimePeriod: Schema.Schema<TimePeriod> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endTime: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "TimePeriod" }) as any as Schema.Schema<TimePeriod>;
+export const TimePeriod = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  endTime: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "TimePeriod" });
 
 export interface PromotionPromotionStatusPromotionIssue {
   /** Code of the issue. */
@@ -6452,15 +5416,11 @@ export interface PromotionPromotionStatusPromotionIssue {
   detail?: string;
 }
 
-export const PromotionPromotionStatusPromotionIssue: Schema.Schema<PromotionPromotionStatusPromotionIssue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.String),
-      detail: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PromotionPromotionStatusPromotionIssue",
-  }) as any as Schema.Schema<PromotionPromotionStatusPromotionIssue>;
+export const PromotionPromotionStatusPromotionIssue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    code: Schema.optional(Schema.String),
+    detail: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PromotionPromotionStatusPromotionIssue" });
 
 export interface PromotionPromotionStatus {
   /** The intended destinations for the promotion. */
@@ -6473,21 +5433,17 @@ export interface PromotionPromotionStatus {
   promotionIssue?: Array<PromotionPromotionStatusPromotionIssue>;
 }
 
-export const PromotionPromotionStatus: Schema.Schema<PromotionPromotionStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      destinationStatuses: Schema.optional(
-        Schema.Array(PromotionPromotionStatusDestinationStatus),
-      ),
-      creationDate: Schema.optional(Schema.String),
-      lastUpdateDate: Schema.optional(Schema.String),
-      promotionIssue: Schema.optional(
-        Schema.Array(PromotionPromotionStatusPromotionIssue),
-      ),
-    }),
-  ).annotate({
-    identifier: "PromotionPromotionStatus",
-  }) as any as Schema.Schema<PromotionPromotionStatus>;
+export const PromotionPromotionStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    destinationStatuses: Schema.optional(
+      Schema.Array(PromotionPromotionStatusDestinationStatus),
+    ),
+    creationDate: Schema.optional(Schema.String),
+    lastUpdateDate: Schema.optional(Schema.String),
+    promotionIssue: Schema.optional(
+      Schema.Array(PromotionPromotionStatusPromotionIssue),
+    ),
+  }).annotate({ identifier: "PromotionPromotionStatus" });
 
 export interface Promotion {
   /** Shipping service names for the promotion. */
@@ -6616,55 +5572,52 @@ export interface Promotion {
   contentLanguage?: string;
 }
 
-export const Promotion: Schema.Schema<Promotion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      shippingServiceNames: Schema.optional(Schema.Array(Schema.String)),
-      longTitle: Schema.optional(Schema.String),
-      percentOff: Schema.optional(Schema.Number),
-      getThisQuantityDiscounted: Schema.optional(Schema.Number),
-      productTypeExclusion: Schema.optional(Schema.Array(Schema.String)),
-      freeGiftValue: Schema.optional(PriceAmount),
-      limitQuantity: Schema.optional(Schema.Number),
-      limitValue: Schema.optional(PriceAmount),
-      itemId: Schema.optional(Schema.Array(Schema.String)),
-      targetCountry: Schema.optional(Schema.String),
-      promotionDisplayTimePeriod: Schema.optional(TimePeriod),
-      orderLimit: Schema.optional(Schema.Number),
-      storeCodeExclusion: Schema.optional(Schema.Array(Schema.String)),
-      promotionEffectiveDates: Schema.optional(Schema.String),
-      freeGiftDescription: Schema.optional(Schema.String),
-      moneyOffAmount: Schema.optional(PriceAmount),
-      genericRedemptionCode: Schema.optional(Schema.String),
-      promotionId: Schema.optional(Schema.String),
-      itemGroupIdExclusion: Schema.optional(Schema.Array(Schema.String)),
-      offerType: Schema.optional(Schema.String),
-      promotionDestinationIds: Schema.optional(Schema.Array(Schema.String)),
-      id: Schema.optional(Schema.String),
-      itemGroupId: Schema.optional(Schema.Array(Schema.String)),
-      promotionDisplayDates: Schema.optional(Schema.String),
-      storeApplicability: Schema.optional(Schema.String),
-      minimumPurchaseQuantity: Schema.optional(Schema.Number),
-      couponValueType: Schema.optional(Schema.String),
-      itemIdExclusion: Schema.optional(Schema.Array(Schema.String)),
-      brandExclusion: Schema.optional(Schema.Array(Schema.String)),
-      redemptionRestriction: Schema.optional(Schema.String),
-      customRedemptionRestriction: Schema.optional(Schema.String),
-      freeGiftItemId: Schema.optional(Schema.String),
-      promotionEffectiveTimePeriod: Schema.optional(TimePeriod),
-      promotionUrl: Schema.optional(Schema.String),
-      minimumPurchaseAmount: Schema.optional(PriceAmount),
-      storeCode: Schema.optional(Schema.Array(Schema.String)),
-      moneyBudget: Schema.optional(PriceAmount),
-      redemptionChannel: Schema.optional(Schema.Array(Schema.String)),
-      promotionStatus: Schema.optional(PromotionPromotionStatus),
-      brand: Schema.optional(Schema.Array(Schema.String)),
-      productType: Schema.optional(Schema.Array(Schema.String)),
-      maxDiscountAmount: Schema.optional(PriceAmount),
-      productApplicability: Schema.optional(Schema.String),
-      contentLanguage: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Promotion" }) as any as Schema.Schema<Promotion>;
+export const Promotion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  shippingServiceNames: Schema.optional(Schema.Array(Schema.String)),
+  longTitle: Schema.optional(Schema.String),
+  percentOff: Schema.optional(Schema.Number),
+  getThisQuantityDiscounted: Schema.optional(Schema.Number),
+  productTypeExclusion: Schema.optional(Schema.Array(Schema.String)),
+  freeGiftValue: Schema.optional(PriceAmount),
+  limitQuantity: Schema.optional(Schema.Number),
+  limitValue: Schema.optional(PriceAmount),
+  itemId: Schema.optional(Schema.Array(Schema.String)),
+  targetCountry: Schema.optional(Schema.String),
+  promotionDisplayTimePeriod: Schema.optional(TimePeriod),
+  orderLimit: Schema.optional(Schema.Number),
+  storeCodeExclusion: Schema.optional(Schema.Array(Schema.String)),
+  promotionEffectiveDates: Schema.optional(Schema.String),
+  freeGiftDescription: Schema.optional(Schema.String),
+  moneyOffAmount: Schema.optional(PriceAmount),
+  genericRedemptionCode: Schema.optional(Schema.String),
+  promotionId: Schema.optional(Schema.String),
+  itemGroupIdExclusion: Schema.optional(Schema.Array(Schema.String)),
+  offerType: Schema.optional(Schema.String),
+  promotionDestinationIds: Schema.optional(Schema.Array(Schema.String)),
+  id: Schema.optional(Schema.String),
+  itemGroupId: Schema.optional(Schema.Array(Schema.String)),
+  promotionDisplayDates: Schema.optional(Schema.String),
+  storeApplicability: Schema.optional(Schema.String),
+  minimumPurchaseQuantity: Schema.optional(Schema.Number),
+  couponValueType: Schema.optional(Schema.String),
+  itemIdExclusion: Schema.optional(Schema.Array(Schema.String)),
+  brandExclusion: Schema.optional(Schema.Array(Schema.String)),
+  redemptionRestriction: Schema.optional(Schema.String),
+  customRedemptionRestriction: Schema.optional(Schema.String),
+  freeGiftItemId: Schema.optional(Schema.String),
+  promotionEffectiveTimePeriod: Schema.optional(TimePeriod),
+  promotionUrl: Schema.optional(Schema.String),
+  minimumPurchaseAmount: Schema.optional(PriceAmount),
+  storeCode: Schema.optional(Schema.Array(Schema.String)),
+  moneyBudget: Schema.optional(PriceAmount),
+  redemptionChannel: Schema.optional(Schema.Array(Schema.String)),
+  promotionStatus: Schema.optional(PromotionPromotionStatus),
+  brand: Schema.optional(Schema.Array(Schema.String)),
+  productType: Schema.optional(Schema.Array(Schema.String)),
+  maxDiscountAmount: Schema.optional(PriceAmount),
+  productApplicability: Schema.optional(Schema.String),
+  contentLanguage: Schema.optional(Schema.String),
+}).annotate({ identifier: "Promotion" });
 
 export interface ListPromotionResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -6673,15 +5626,10 @@ export interface ListPromotionResponse {
   promotions?: Array<Promotion>;
 }
 
-export const ListPromotionResponse: Schema.Schema<ListPromotionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      promotions: Schema.optional(Schema.Array(Promotion)),
-    }),
-  ).annotate({
-    identifier: "ListPromotionResponse",
-  }) as any as Schema.Schema<ListPromotionResponse>;
+export const ListPromotionResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  promotions: Schema.optional(Schema.Array(Promotion)),
+}).annotate({ identifier: "ListPromotionResponse" });
 
 export interface DatafeedsListResponse {
   /** The token for the retrieval of the next page of datafeeds. */
@@ -6691,60 +5639,47 @@ export interface DatafeedsListResponse {
   kind?: string;
 }
 
-export const DatafeedsListResponse: Schema.Schema<DatafeedsListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      resources: Schema.optional(Schema.Array(Datafeed)),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DatafeedsListResponse",
-  }) as any as Schema.Schema<DatafeedsListResponse>;
+export const DatafeedsListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  resources: Schema.optional(Schema.Array(Datafeed)),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "DatafeedsListResponse" });
 
 export interface LiasettingsSetInventoryVerificationContactResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#liasettingsSetInventoryVerificationContactResponse`". */
   kind?: string;
 }
 
-export const LiasettingsSetInventoryVerificationContactResponse: Schema.Schema<LiasettingsSetInventoryVerificationContactResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const LiasettingsSetInventoryVerificationContactResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "LiasettingsSetInventoryVerificationContactResponse",
-  }) as any as Schema.Schema<LiasettingsSetInventoryVerificationContactResponse>;
+  });
 
 export interface LocalinventoryCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   entries?: Array<LocalinventoryCustomBatchRequestEntry>;
 }
 
-export const LocalinventoryCustomBatchRequest: Schema.Schema<LocalinventoryCustomBatchRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entries: Schema.optional(
-        Schema.Array(LocalinventoryCustomBatchRequestEntry),
-      ),
-    }),
-  ).annotate({
-    identifier: "LocalinventoryCustomBatchRequest",
-  }) as any as Schema.Schema<LocalinventoryCustomBatchRequest>;
+export const LocalinventoryCustomBatchRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entries: Schema.optional(
+      Schema.Array(LocalinventoryCustomBatchRequestEntry),
+    ),
+  }).annotate({ identifier: "LocalinventoryCustomBatchRequest" });
 
 export interface LiasettingsRequestInventoryVerificationResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#liasettingsRequestInventoryVerificationResponse`". */
   kind?: string;
 }
 
-export const LiasettingsRequestInventoryVerificationResponse: Schema.Schema<LiasettingsRequestInventoryVerificationResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const LiasettingsRequestInventoryVerificationResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "LiasettingsRequestInventoryVerificationResponse",
-  }) as any as Schema.Schema<LiasettingsRequestInventoryVerificationResponse>;
+  });
 
 export interface Css {
   /** Output only. Immutable. The ID of the CSS group this CSS domain is affiliated with. Only populated for CSS group users. */
@@ -6761,17 +5696,14 @@ export interface Css {
   cssDomainId?: string;
 }
 
-export const Css: Schema.Schema<Css> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cssGroupId: Schema.optional(Schema.String),
-      fullName: Schema.optional(Schema.String),
-      homepageUri: Schema.optional(Schema.String),
-      labelIds: Schema.optional(Schema.Array(Schema.String)),
-      displayName: Schema.optional(Schema.String),
-      cssDomainId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Css" }) as any as Schema.Schema<Css>;
+export const Css = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cssGroupId: Schema.optional(Schema.String),
+  fullName: Schema.optional(Schema.String),
+  homepageUri: Schema.optional(Schema.String),
+  labelIds: Schema.optional(Schema.Array(Schema.String)),
+  displayName: Schema.optional(Schema.String),
+  cssDomainId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Css" });
 
 export interface ListCssesResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -6780,15 +5712,10 @@ export interface ListCssesResponse {
   csses?: Array<Css>;
 }
 
-export const ListCssesResponse: Schema.Schema<ListCssesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      csses: Schema.optional(Schema.Array(Css)),
-    }),
-  ).annotate({
-    identifier: "ListCssesResponse",
-  }) as any as Schema.Schema<ListCssesResponse>;
+export const ListCssesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  csses: Schema.optional(Schema.Array(Css)),
+}).annotate({ identifier: "ListCssesResponse" });
 
 export interface PosDataProvidersPosDataProvider {
   /** The full name of this POS data Provider. */
@@ -6799,16 +5726,12 @@ export interface PosDataProvidersPosDataProvider {
   providerId?: string;
 }
 
-export const PosDataProvidersPosDataProvider: Schema.Schema<PosDataProvidersPosDataProvider> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fullName: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      providerId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PosDataProvidersPosDataProvider",
-  }) as any as Schema.Schema<PosDataProvidersPosDataProvider>;
+export const PosDataProvidersPosDataProvider =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fullName: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    providerId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "PosDataProvidersPosDataProvider" });
 
 export interface PosDataProviders {
   /** Country code. */
@@ -6817,17 +5740,12 @@ export interface PosDataProviders {
   posDataProviders?: Array<PosDataProvidersPosDataProvider>;
 }
 
-export const PosDataProviders: Schema.Schema<PosDataProviders> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      country: Schema.optional(Schema.String),
-      posDataProviders: Schema.optional(
-        Schema.Array(PosDataProvidersPosDataProvider),
-      ),
-    }),
-  ).annotate({
-    identifier: "PosDataProviders",
-  }) as any as Schema.Schema<PosDataProviders>;
+export const PosDataProviders = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  country: Schema.optional(Schema.String),
+  posDataProviders: Schema.optional(
+    Schema.Array(PosDataProvidersPosDataProvider),
+  ),
+}).annotate({ identifier: "PosDataProviders" });
 
 export interface LiasettingsListPosDataProvidersResponse {
   /** The list of POS data providers for each eligible country */
@@ -6836,15 +5754,11 @@ export interface LiasettingsListPosDataProvidersResponse {
   kind?: string;
 }
 
-export const LiasettingsListPosDataProvidersResponse: Schema.Schema<LiasettingsListPosDataProvidersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      posDataProviders: Schema.optional(Schema.Array(PosDataProviders)),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LiasettingsListPosDataProvidersResponse",
-  }) as any as Schema.Schema<LiasettingsListPosDataProvidersResponse>;
+export const LiasettingsListPosDataProvidersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    posDataProviders: Schema.optional(Schema.Array(PosDataProviders)),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "LiasettingsListPosDataProvidersResponse" });
 
 export interface ReturnPolicyOnlineReturnReasonCategoryInfo {
   /** The return reason category. */
@@ -6864,16 +5778,12 @@ export interface ReturnPolicyOnlineReturnReasonCategoryInfo {
   returnShippingFee?: ReturnPolicyOnlineReturnShippingFee;
 }
 
-export const ReturnPolicyOnlineReturnReasonCategoryInfo: Schema.Schema<ReturnPolicyOnlineReturnReasonCategoryInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      returnReasonCategory: Schema.optional(Schema.String),
-      returnLabelSource: Schema.optional(Schema.String),
-      returnShippingFee: Schema.optional(ReturnPolicyOnlineReturnShippingFee),
-    }),
-  ).annotate({
-    identifier: "ReturnPolicyOnlineReturnReasonCategoryInfo",
-  }) as any as Schema.Schema<ReturnPolicyOnlineReturnReasonCategoryInfo>;
+export const ReturnPolicyOnlineReturnReasonCategoryInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    returnReasonCategory: Schema.optional(Schema.String),
+    returnLabelSource: Schema.optional(Schema.String),
+    returnShippingFee: Schema.optional(ReturnPolicyOnlineReturnShippingFee),
+  }).annotate({ identifier: "ReturnPolicyOnlineReturnReasonCategoryInfo" });
 
 export interface PosCustomBatchResponseEntry {
   /** The updated sale information. */
@@ -6890,19 +5800,15 @@ export interface PosCustomBatchResponseEntry {
   store?: PosStore;
 }
 
-export const PosCustomBatchResponseEntry: Schema.Schema<PosCustomBatchResponseEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sale: Schema.optional(PosSale),
-      inventory: Schema.optional(PosInventory),
-      kind: Schema.optional(Schema.String),
-      batchId: Schema.optional(Schema.Number),
-      errors: Schema.optional(Errors),
-      store: Schema.optional(PosStore),
-    }),
-  ).annotate({
-    identifier: "PosCustomBatchResponseEntry",
-  }) as any as Schema.Schema<PosCustomBatchResponseEntry>;
+export const PosCustomBatchResponseEntry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sale: Schema.optional(PosSale),
+    inventory: Schema.optional(PosInventory),
+    kind: Schema.optional(Schema.String),
+    batchId: Schema.optional(Schema.Number),
+    errors: Schema.optional(Errors),
+    store: Schema.optional(PosStore),
+  }).annotate({ identifier: "PosCustomBatchResponseEntry" });
 
 export interface ProductstatusesListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#productstatusesListResponse`". */
@@ -6912,16 +5818,12 @@ export interface ProductstatusesListResponse {
   resources?: Array<ProductStatus>;
 }
 
-export const ProductstatusesListResponse: Schema.Schema<ProductstatusesListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      nextPageToken: Schema.optional(Schema.String),
-      resources: Schema.optional(Schema.Array(ProductStatus)),
-    }),
-  ).annotate({
-    identifier: "ProductstatusesListResponse",
-  }) as any as Schema.Schema<ProductstatusesListResponse>;
+export const ProductstatusesListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    nextPageToken: Schema.optional(Schema.String),
+    resources: Schema.optional(Schema.Array(ProductStatus)),
+  }).annotate({ identifier: "ProductstatusesListResponse" });
 
 export interface LiasettingsCustomBatchResponseEntry {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#liasettingsCustomBatchResponseEntry`" */
@@ -6940,20 +5842,16 @@ export interface LiasettingsCustomBatchResponseEntry {
   posDataProviders?: Array<PosDataProviders>;
 }
 
-export const LiasettingsCustomBatchResponseEntry: Schema.Schema<LiasettingsCustomBatchResponseEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      omnichannelExperience: Schema.optional(LiaOmnichannelExperience),
-      liaSettings: Schema.optional(LiaSettings),
-      batchId: Schema.optional(Schema.Number),
-      errors: Schema.optional(Errors),
-      gmbAccounts: Schema.optional(GmbAccounts),
-      posDataProviders: Schema.optional(Schema.Array(PosDataProviders)),
-    }),
-  ).annotate({
-    identifier: "LiasettingsCustomBatchResponseEntry",
-  }) as any as Schema.Schema<LiasettingsCustomBatchResponseEntry>;
+export const LiasettingsCustomBatchResponseEntry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    omnichannelExperience: Schema.optional(LiaOmnichannelExperience),
+    liaSettings: Schema.optional(LiaSettings),
+    batchId: Schema.optional(Schema.Number),
+    errors: Schema.optional(Errors),
+    gmbAccounts: Schema.optional(GmbAccounts),
+    posDataProviders: Schema.optional(Schema.Array(PosDataProviders)),
+  }).annotate({ identifier: "LiasettingsCustomBatchResponseEntry" });
 
 export interface AccountIdentifier {
   /** The aggregator ID, set for aggregators and subaccounts (in that case, it represents the aggregator of the subaccount). */
@@ -6962,15 +5860,10 @@ export interface AccountIdentifier {
   merchantId?: string;
 }
 
-export const AccountIdentifier: Schema.Schema<AccountIdentifier> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      aggregatorId: Schema.optional(Schema.String),
-      merchantId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccountIdentifier",
-  }) as any as Schema.Schema<AccountIdentifier>;
+export const AccountIdentifier = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  aggregatorId: Schema.optional(Schema.String),
+  merchantId: Schema.optional(Schema.String),
+}).annotate({ identifier: "AccountIdentifier" });
 
 export interface AccountsAuthInfoResponse {
   /** The account identifiers corresponding to the authenticated user. - For an individual account: only the merchant ID is defined - For an aggregator: only the aggregator ID is defined - For a subaccount of an MCA: both the merchant ID and the aggregator ID are defined. */
@@ -6979,15 +5872,11 @@ export interface AccountsAuthInfoResponse {
   kind?: string;
 }
 
-export const AccountsAuthInfoResponse: Schema.Schema<AccountsAuthInfoResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accountIdentifiers: Schema.optional(Schema.Array(AccountIdentifier)),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccountsAuthInfoResponse",
-  }) as any as Schema.Schema<AccountsAuthInfoResponse>;
+export const AccountsAuthInfoResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountIdentifiers: Schema.optional(Schema.Array(AccountIdentifier)),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AccountsAuthInfoResponse" });
 
 export interface DatafeedStatus {
   /** The number of items in the feed that were valid. */
@@ -7014,24 +5903,19 @@ export interface DatafeedStatus {
   feedLabel?: string;
 }
 
-export const DatafeedStatus: Schema.Schema<DatafeedStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      itemsValid: Schema.optional(Schema.String),
-      datafeedId: Schema.optional(Schema.String),
-      warnings: Schema.optional(Schema.Array(DatafeedStatusError)),
-      kind: Schema.optional(Schema.String),
-      processingStatus: Schema.optional(Schema.String),
-      language: Schema.optional(Schema.String),
-      country: Schema.optional(Schema.String),
-      errors: Schema.optional(Schema.Array(DatafeedStatusError)),
-      lastUploadDate: Schema.optional(Schema.String),
-      itemsTotal: Schema.optional(Schema.String),
-      feedLabel: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DatafeedStatus",
-  }) as any as Schema.Schema<DatafeedStatus>;
+export const DatafeedStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  itemsValid: Schema.optional(Schema.String),
+  datafeedId: Schema.optional(Schema.String),
+  warnings: Schema.optional(Schema.Array(DatafeedStatusError)),
+  kind: Schema.optional(Schema.String),
+  processingStatus: Schema.optional(Schema.String),
+  language: Schema.optional(Schema.String),
+  country: Schema.optional(Schema.String),
+  errors: Schema.optional(Schema.Array(DatafeedStatusError)),
+  lastUploadDate: Schema.optional(Schema.String),
+  itemsTotal: Schema.optional(Schema.String),
+  feedLabel: Schema.optional(Schema.String),
+}).annotate({ identifier: "DatafeedStatus" });
 
 export interface DatafeedstatusesListResponse {
   /** The token for the retrieval of the next page of datafeed statuses. */
@@ -7041,16 +5925,12 @@ export interface DatafeedstatusesListResponse {
   kind?: string;
 }
 
-export const DatafeedstatusesListResponse: Schema.Schema<DatafeedstatusesListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      resources: Schema.optional(Schema.Array(DatafeedStatus)),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DatafeedstatusesListResponse",
-  }) as any as Schema.Schema<DatafeedstatusesListResponse>;
+export const DatafeedstatusesListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    resources: Schema.optional(Schema.Array(DatafeedStatus)),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DatafeedstatusesListResponse" });
 
 export interface LocalinventoryCustomBatchResponse {
   /** The result of the execution of the batch requests. */
@@ -7059,45 +5939,33 @@ export interface LocalinventoryCustomBatchResponse {
   kind?: string;
 }
 
-export const LocalinventoryCustomBatchResponse: Schema.Schema<LocalinventoryCustomBatchResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entries: Schema.optional(
-        Schema.Array(LocalinventoryCustomBatchResponseEntry),
-      ),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LocalinventoryCustomBatchResponse",
-  }) as any as Schema.Schema<LocalinventoryCustomBatchResponse>;
+export const LocalinventoryCustomBatchResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entries: Schema.optional(
+      Schema.Array(LocalinventoryCustomBatchResponseEntry),
+    ),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "LocalinventoryCustomBatchResponse" });
 
 export interface LiasettingsRequestGmbAccessResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#liasettingsRequestGmbAccessResponse`". */
   kind?: string;
 }
 
-export const LiasettingsRequestGmbAccessResponse: Schema.Schema<LiasettingsRequestGmbAccessResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LiasettingsRequestGmbAccessResponse",
-  }) as any as Schema.Schema<LiasettingsRequestGmbAccessResponse>;
+export const LiasettingsRequestGmbAccessResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "LiasettingsRequestGmbAccessResponse" });
 
 export interface ProductsCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   entries?: Array<ProductsCustomBatchRequestEntry>;
 }
 
-export const ProductsCustomBatchRequest: Schema.Schema<ProductsCustomBatchRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entries: Schema.optional(Schema.Array(ProductsCustomBatchRequestEntry)),
-    }),
-  ).annotate({
-    identifier: "ProductsCustomBatchRequest",
-  }) as any as Schema.Schema<ProductsCustomBatchRequest>;
+export const ProductsCustomBatchRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entries: Schema.optional(Schema.Array(ProductsCustomBatchRequestEntry)),
+  }).annotate({ identifier: "ProductsCustomBatchRequest" });
 
 export interface ShippingsettingsCustomBatchResponse {
   /** The result of the execution of the batch requests. */
@@ -7106,17 +5974,13 @@ export interface ShippingsettingsCustomBatchResponse {
   kind?: string;
 }
 
-export const ShippingsettingsCustomBatchResponse: Schema.Schema<ShippingsettingsCustomBatchResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entries: Schema.optional(
-        Schema.Array(ShippingsettingsCustomBatchResponseEntry),
-      ),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ShippingsettingsCustomBatchResponse",
-  }) as any as Schema.Schema<ShippingsettingsCustomBatchResponse>;
+export const ShippingsettingsCustomBatchResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entries: Schema.optional(
+      Schema.Array(ShippingsettingsCustomBatchResponseEntry),
+    ),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ShippingsettingsCustomBatchResponse" });
 
 export interface Region {
   /** Output only. Immutable. Merchant that owns the region. */
@@ -7135,18 +5999,15 @@ export interface Region {
   geotargetArea?: RegionGeoTargetArea;
 }
 
-export const Region: Schema.Schema<Region> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      merchantId: Schema.optional(Schema.String),
-      regionalInventoryEligible: Schema.optional(Schema.Boolean),
-      displayName: Schema.optional(Schema.String),
-      postalCodeArea: Schema.optional(RegionPostalCodeArea),
-      regionId: Schema.optional(Schema.String),
-      shippingEligible: Schema.optional(Schema.Boolean),
-      geotargetArea: Schema.optional(RegionGeoTargetArea),
-    }),
-  ).annotate({ identifier: "Region" }) as any as Schema.Schema<Region>;
+export const Region = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  merchantId: Schema.optional(Schema.String),
+  regionalInventoryEligible: Schema.optional(Schema.Boolean),
+  displayName: Schema.optional(Schema.String),
+  postalCodeArea: Schema.optional(RegionPostalCodeArea),
+  regionId: Schema.optional(Schema.String),
+  shippingEligible: Schema.optional(Schema.Boolean),
+  geotargetArea: Schema.optional(RegionGeoTargetArea),
+}).annotate({ identifier: "Region" });
 
 export interface AccountstatusesCustomBatchResponse {
   /** The result of the execution of the batch requests. */
@@ -7155,17 +6016,13 @@ export interface AccountstatusesCustomBatchResponse {
   kind?: string;
 }
 
-export const AccountstatusesCustomBatchResponse: Schema.Schema<AccountstatusesCustomBatchResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entries: Schema.optional(
-        Schema.Array(AccountstatusesCustomBatchResponseEntry),
-      ),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccountstatusesCustomBatchResponse",
-  }) as any as Schema.Schema<AccountstatusesCustomBatchResponse>;
+export const AccountstatusesCustomBatchResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entries: Schema.optional(
+      Schema.Array(AccountstatusesCustomBatchResponseEntry),
+    ),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AccountstatusesCustomBatchResponse" });
 
 export interface PosSaleResponse {
   /** Required. The identifier of the merchant's store. Either a `storeCode` inserted through the API or the code of the store in a Business Profile. */
@@ -7190,39 +6047,30 @@ export interface PosSaleResponse {
   targetCountry?: string;
 }
 
-export const PosSaleResponse: Schema.Schema<PosSaleResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      storeCode: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      timestamp: Schema.optional(Schema.String),
-      quantity: Schema.optional(Schema.String),
-      itemId: Schema.optional(Schema.String),
-      saleId: Schema.optional(Schema.String),
-      gtin: Schema.optional(Schema.String),
-      price: Schema.optional(Price),
-      contentLanguage: Schema.optional(Schema.String),
-      targetCountry: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PosSaleResponse",
-  }) as any as Schema.Schema<PosSaleResponse>;
+export const PosSaleResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  storeCode: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  timestamp: Schema.optional(Schema.String),
+  quantity: Schema.optional(Schema.String),
+  itemId: Schema.optional(Schema.String),
+  saleId: Schema.optional(Schema.String),
+  gtin: Schema.optional(Schema.String),
+  price: Schema.optional(Price),
+  contentLanguage: Schema.optional(Schema.String),
+  targetCountry: Schema.optional(Schema.String),
+}).annotate({ identifier: "PosSaleResponse" });
 
 export interface DatafeedstatusesCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   entries?: Array<DatafeedstatusesCustomBatchRequestEntry>;
 }
 
-export const DatafeedstatusesCustomBatchRequest: Schema.Schema<DatafeedstatusesCustomBatchRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entries: Schema.optional(
-        Schema.Array(DatafeedstatusesCustomBatchRequestEntry),
-      ),
-    }),
-  ).annotate({
-    identifier: "DatafeedstatusesCustomBatchRequest",
-  }) as any as Schema.Schema<DatafeedstatusesCustomBatchRequest>;
+export const DatafeedstatusesCustomBatchRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entries: Schema.optional(
+      Schema.Array(DatafeedstatusesCustomBatchRequestEntry),
+    ),
+  }).annotate({ identifier: "DatafeedstatusesCustomBatchRequest" });
 
 export interface DatafeedstatusesCustomBatchResponseEntry {
   /** The ID of the request entry this entry responds to. */
@@ -7233,16 +6081,12 @@ export interface DatafeedstatusesCustomBatchResponseEntry {
   datafeedStatus?: DatafeedStatus;
 }
 
-export const DatafeedstatusesCustomBatchResponseEntry: Schema.Schema<DatafeedstatusesCustomBatchResponseEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      batchId: Schema.optional(Schema.Number),
-      errors: Schema.optional(Errors),
-      datafeedStatus: Schema.optional(DatafeedStatus),
-    }),
-  ).annotate({
-    identifier: "DatafeedstatusesCustomBatchResponseEntry",
-  }) as any as Schema.Schema<DatafeedstatusesCustomBatchResponseEntry>;
+export const DatafeedstatusesCustomBatchResponseEntry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    batchId: Schema.optional(Schema.Number),
+    errors: Schema.optional(Errors),
+    datafeedStatus: Schema.optional(DatafeedStatus),
+  }).annotate({ identifier: "DatafeedstatusesCustomBatchResponseEntry" });
 
 export interface DatafeedstatusesCustomBatchResponse {
   /** The result of the execution of the batch requests. */
@@ -7251,17 +6095,13 @@ export interface DatafeedstatusesCustomBatchResponse {
   kind?: string;
 }
 
-export const DatafeedstatusesCustomBatchResponse: Schema.Schema<DatafeedstatusesCustomBatchResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entries: Schema.optional(
-        Schema.Array(DatafeedstatusesCustomBatchResponseEntry),
-      ),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DatafeedstatusesCustomBatchResponse",
-  }) as any as Schema.Schema<DatafeedstatusesCustomBatchResponse>;
+export const DatafeedstatusesCustomBatchResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entries: Schema.optional(
+      Schema.Array(DatafeedstatusesCustomBatchResponseEntry),
+    ),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DatafeedstatusesCustomBatchResponse" });
 
 export interface ListConversionSourcesResponse {
   /** List of conversion sources. */
@@ -7270,15 +6110,11 @@ export interface ListConversionSourcesResponse {
   nextPageToken?: string;
 }
 
-export const ListConversionSourcesResponse: Schema.Schema<ListConversionSourcesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      conversionSources: Schema.optional(Schema.Array(ConversionSource)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListConversionSourcesResponse",
-  }) as any as Schema.Schema<ListConversionSourcesResponse>;
+export const ListConversionSourcesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    conversionSources: Schema.optional(Schema.Array(ConversionSource)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListConversionSourcesResponse" });
 
 export interface LiasettingsCustomBatchResponse {
   /** The result of the execution of the batch requests. */
@@ -7287,17 +6123,11 @@ export interface LiasettingsCustomBatchResponse {
   kind?: string;
 }
 
-export const LiasettingsCustomBatchResponse: Schema.Schema<LiasettingsCustomBatchResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entries: Schema.optional(
-        Schema.Array(LiasettingsCustomBatchResponseEntry),
-      ),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LiasettingsCustomBatchResponse",
-  }) as any as Schema.Schema<LiasettingsCustomBatchResponse>;
+export const LiasettingsCustomBatchResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entries: Schema.optional(Schema.Array(LiasettingsCustomBatchResponseEntry)),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "LiasettingsCustomBatchResponse" });
 
 export interface ReturnPolicyOnline {
   /** The unique user-defined label of the return policy. The same label cannot be used in different return policies for the same country. Policies with the label 'default' will apply to all products, unless a product specifies a return_policy_label attribute. */
@@ -7330,39 +6160,30 @@ export interface ReturnPolicyOnline {
   name?: string;
 }
 
-export const ReturnPolicyOnline: Schema.Schema<ReturnPolicyOnline> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      label: Schema.optional(Schema.String),
-      itemConditions: Schema.optional(Schema.Array(Schema.String)),
-      returnMethods: Schema.optional(Schema.Array(Schema.String)),
-      returnPolicyUri: Schema.optional(Schema.String),
-      policy: Schema.optional(ReturnPolicyOnlinePolicy),
-      countries: Schema.optional(Schema.Array(Schema.String)),
-      restockingFee: Schema.optional(ReturnPolicyOnlineRestockingFee),
-      returnPolicyId: Schema.optional(Schema.String),
-      returnReasonCategoryInfo: Schema.optional(
-        Schema.Array(ReturnPolicyOnlineReturnReasonCategoryInfo),
-      ),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ReturnPolicyOnline",
-  }) as any as Schema.Schema<ReturnPolicyOnline>;
+export const ReturnPolicyOnline = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  label: Schema.optional(Schema.String),
+  itemConditions: Schema.optional(Schema.Array(Schema.String)),
+  returnMethods: Schema.optional(Schema.Array(Schema.String)),
+  returnPolicyUri: Schema.optional(Schema.String),
+  policy: Schema.optional(ReturnPolicyOnlinePolicy),
+  countries: Schema.optional(Schema.Array(Schema.String)),
+  restockingFee: Schema.optional(ReturnPolicyOnlineRestockingFee),
+  returnPolicyId: Schema.optional(Schema.String),
+  returnReasonCategoryInfo: Schema.optional(
+    Schema.Array(ReturnPolicyOnlineReturnReasonCategoryInfo),
+  ),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "ReturnPolicyOnline" });
 
 export interface ListReturnPolicyOnlineResponse {
   /** The retrieved return policies. */
   returnPolicies?: Array<ReturnPolicyOnline>;
 }
 
-export const ListReturnPolicyOnlineResponse: Schema.Schema<ListReturnPolicyOnlineResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      returnPolicies: Schema.optional(Schema.Array(ReturnPolicyOnline)),
-    }),
-  ).annotate({
-    identifier: "ListReturnPolicyOnlineResponse",
-  }) as any as Schema.Schema<ListReturnPolicyOnlineResponse>;
+export const ListReturnPolicyOnlineResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    returnPolicies: Schema.optional(Schema.Array(ReturnPolicyOnline)),
+  }).annotate({ identifier: "ListReturnPolicyOnlineResponse" });
 
 export interface CollectionFeaturedProduct {
   /** The unique identifier for the product item. */
@@ -7373,23 +6194,19 @@ export interface CollectionFeaturedProduct {
   y?: number;
 }
 
-export const CollectionFeaturedProduct: Schema.Schema<CollectionFeaturedProduct> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      offerId: Schema.optional(Schema.String),
-      x: Schema.optional(Schema.Number),
-      y: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "CollectionFeaturedProduct",
-  }) as any as Schema.Schema<CollectionFeaturedProduct>;
+export const CollectionFeaturedProduct =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    offerId: Schema.optional(Schema.String),
+    x: Schema.optional(Schema.Number),
+    y: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "CollectionFeaturedProduct" });
 
 export interface UndeleteConversionSourceRequest {}
 
-export const UndeleteConversionSourceRequest: Schema.Schema<UndeleteConversionSourceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const UndeleteConversionSourceRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UndeleteConversionSourceRequest",
-  }) as any as Schema.Schema<UndeleteConversionSourceRequest>;
+  });
 
 export interface Collection {
   /** Label that you assign to a collection to help organize bidding and reporting in Shopping campaigns. */
@@ -7420,24 +6237,21 @@ export interface Collection {
   customLabel0?: string;
 }
 
-export const Collection: Schema.Schema<Collection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customLabel4: Schema.optional(Schema.String),
-      language: Schema.optional(Schema.String),
-      imageLink: Schema.optional(Schema.Array(Schema.String)),
-      link: Schema.optional(Schema.String),
-      headline: Schema.optional(Schema.Array(Schema.String)),
-      featuredProduct: Schema.optional(Schema.Array(CollectionFeaturedProduct)),
-      customLabel1: Schema.optional(Schema.String),
-      customLabel3: Schema.optional(Schema.String),
-      mobileLink: Schema.optional(Schema.String),
-      customLabel2: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      productCountry: Schema.optional(Schema.String),
-      customLabel0: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Collection" }) as any as Schema.Schema<Collection>;
+export const Collection = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  customLabel4: Schema.optional(Schema.String),
+  language: Schema.optional(Schema.String),
+  imageLink: Schema.optional(Schema.Array(Schema.String)),
+  link: Schema.optional(Schema.String),
+  headline: Schema.optional(Schema.Array(Schema.String)),
+  featuredProduct: Schema.optional(Schema.Array(CollectionFeaturedProduct)),
+  customLabel1: Schema.optional(Schema.String),
+  customLabel3: Schema.optional(Schema.String),
+  mobileLink: Schema.optional(Schema.String),
+  customLabel2: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  productCountry: Schema.optional(Schema.String),
+  customLabel0: Schema.optional(Schema.String),
+}).annotate({ identifier: "Collection" });
 
 export interface ListCollectionsResponse {
   /** The collections listed. */
@@ -7446,15 +6260,11 @@ export interface ListCollectionsResponse {
   nextPageToken?: string;
 }
 
-export const ListCollectionsResponse: Schema.Schema<ListCollectionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resources: Schema.optional(Schema.Array(Collection)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListCollectionsResponse",
-  }) as any as Schema.Schema<ListCollectionsResponse>;
+export const ListCollectionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resources: Schema.optional(Schema.Array(Collection)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListCollectionsResponse" });
 
 export interface VerifyPhoneNumberRequest {
   /** Verification method used to receive verification code. */
@@ -7469,44 +6279,31 @@ export interface VerifyPhoneNumberRequest {
   verificationCode?: string;
 }
 
-export const VerifyPhoneNumberRequest: Schema.Schema<VerifyPhoneNumberRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      phoneVerificationMethod: Schema.optional(Schema.String),
-      verificationId: Schema.optional(Schema.String),
-      verificationCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VerifyPhoneNumberRequest",
-  }) as any as Schema.Schema<VerifyPhoneNumberRequest>;
+export const VerifyPhoneNumberRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    phoneVerificationMethod: Schema.optional(Schema.String),
+    verificationId: Schema.optional(Schema.String),
+    verificationCode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "VerifyPhoneNumberRequest" });
 
 export interface DatafeedsFetchNowResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#datafeedsFetchNowResponse`". */
   kind?: string;
 }
 
-export const DatafeedsFetchNowResponse: Schema.Schema<DatafeedsFetchNowResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DatafeedsFetchNowResponse",
-  }) as any as Schema.Schema<DatafeedsFetchNowResponse>;
+export const DatafeedsFetchNowResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DatafeedsFetchNowResponse" });
 
 export interface PosCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   entries?: Array<PosCustomBatchRequestEntry>;
 }
 
-export const PosCustomBatchRequest: Schema.Schema<PosCustomBatchRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entries: Schema.optional(Schema.Array(PosCustomBatchRequestEntry)),
-    }),
-  ).annotate({
-    identifier: "PosCustomBatchRequest",
-  }) as any as Schema.Schema<PosCustomBatchRequest>;
+export const PosCustomBatchRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  entries: Schema.optional(Schema.Array(PosCustomBatchRequestEntry)),
+}).annotate({ identifier: "PosCustomBatchRequest" });
 
 export interface AccounttaxCustomBatchResponse {
   /** The result of the execution of the batch requests. */
@@ -7515,17 +6312,11 @@ export interface AccounttaxCustomBatchResponse {
   kind?: string;
 }
 
-export const AccounttaxCustomBatchResponse: Schema.Schema<AccounttaxCustomBatchResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entries: Schema.optional(
-        Schema.Array(AccounttaxCustomBatchResponseEntry),
-      ),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AccounttaxCustomBatchResponse",
-  }) as any as Schema.Schema<AccounttaxCustomBatchResponse>;
+export const AccounttaxCustomBatchResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entries: Schema.optional(Schema.Array(AccounttaxCustomBatchResponseEntry)),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AccounttaxCustomBatchResponse" });
 
 export interface PosListResponse {
   resources?: Array<PosStore>;
@@ -7533,29 +6324,20 @@ export interface PosListResponse {
   kind?: string;
 }
 
-export const PosListResponse: Schema.Schema<PosListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resources: Schema.optional(Schema.Array(PosStore)),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PosListResponse",
-  }) as any as Schema.Schema<PosListResponse>;
+export const PosListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resources: Schema.optional(Schema.Array(PosStore)),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "PosListResponse" });
 
 export interface VerifyPhoneNumberResponse {
   /** Verified phone number if verification is successful. This phone number can only be replaced by another verified phone number. */
   verifiedPhoneNumber?: string;
 }
 
-export const VerifyPhoneNumberResponse: Schema.Schema<VerifyPhoneNumberResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      verifiedPhoneNumber: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VerifyPhoneNumberResponse",
-  }) as any as Schema.Schema<VerifyPhoneNumberResponse>;
+export const VerifyPhoneNumberResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    verifiedPhoneNumber: Schema.optional(Schema.String),
+  }).annotate({ identifier: "VerifyPhoneNumberResponse" });
 
 export interface ListMethodQuotasResponse {
   /** The current quota usage and limits per each method. */
@@ -7564,15 +6346,11 @@ export interface ListMethodQuotasResponse {
   nextPageToken?: string;
 }
 
-export const ListMethodQuotasResponse: Schema.Schema<ListMethodQuotasResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      methodQuotas: Schema.optional(Schema.Array(MethodQuota)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListMethodQuotasResponse",
-  }) as any as Schema.Schema<ListMethodQuotasResponse>;
+export const ListMethodQuotasResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    methodQuotas: Schema.optional(Schema.Array(MethodQuota)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListMethodQuotasResponse" });
 
 export interface ShippingsettingsListResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#shippingsettingsListResponse`". */
@@ -7582,16 +6360,12 @@ export interface ShippingsettingsListResponse {
   resources?: Array<ShippingSettings>;
 }
 
-export const ShippingsettingsListResponse: Schema.Schema<ShippingsettingsListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      nextPageToken: Schema.optional(Schema.String),
-      resources: Schema.optional(Schema.Array(ShippingSettings)),
-    }),
-  ).annotate({
-    identifier: "ShippingsettingsListResponse",
-  }) as any as Schema.Schema<ShippingsettingsListResponse>;
+export const ShippingsettingsListResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    nextPageToken: Schema.optional(Schema.String),
+    resources: Schema.optional(Schema.Array(ShippingSettings)),
+  }).annotate({ identifier: "ShippingsettingsListResponse" });
 
 export interface RequestPhoneVerificationRequest {
   /** Phone number to be verified. */
@@ -7608,31 +6382,23 @@ export interface RequestPhoneVerificationRequest {
     | (string & {});
 }
 
-export const RequestPhoneVerificationRequest: Schema.Schema<RequestPhoneVerificationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      phoneNumber: Schema.optional(Schema.String),
-      languageCode: Schema.optional(Schema.String),
-      phoneRegionCode: Schema.optional(Schema.String),
-      phoneVerificationMethod: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RequestPhoneVerificationRequest",
-  }) as any as Schema.Schema<RequestPhoneVerificationRequest>;
+export const RequestPhoneVerificationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    phoneNumber: Schema.optional(Schema.String),
+    languageCode: Schema.optional(Schema.String),
+    phoneRegionCode: Schema.optional(Schema.String),
+    phoneVerificationMethod: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RequestPhoneVerificationRequest" });
 
 export interface RequestPhoneVerificationResponse {
   /** The verification ID to use in subsequent calls to `verifyphonenumber`. */
   verificationId?: string;
 }
 
-export const RequestPhoneVerificationResponse: Schema.Schema<RequestPhoneVerificationResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      verificationId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RequestPhoneVerificationResponse",
-  }) as any as Schema.Schema<RequestPhoneVerificationResponse>;
+export const RequestPhoneVerificationResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    verificationId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "RequestPhoneVerificationResponse" });
 
 export interface ListCollectionStatusesResponse {
   /** The collectionstatuses listed. */
@@ -7641,15 +6407,11 @@ export interface ListCollectionStatusesResponse {
   nextPageToken?: string;
 }
 
-export const ListCollectionStatusesResponse: Schema.Schema<ListCollectionStatusesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resources: Schema.optional(Schema.Array(CollectionStatus)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListCollectionStatusesResponse",
-  }) as any as Schema.Schema<ListCollectionStatusesResponse>;
+export const ListCollectionStatusesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resources: Schema.optional(Schema.Array(CollectionStatus)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListCollectionStatusesResponse" });
 
 export interface ProductsListResponse {
   /** The token for the retrieval of the next page of products. */
@@ -7659,16 +6421,11 @@ export interface ProductsListResponse {
   kind?: string;
 }
 
-export const ProductsListResponse: Schema.Schema<ProductsListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      resources: Schema.optional(Schema.Array(Product)),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProductsListResponse",
-  }) as any as Schema.Schema<ProductsListResponse>;
+export const ProductsListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  resources: Schema.optional(Schema.Array(Product)),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "ProductsListResponse" });
 
 export interface ReportInteractionRequest {
   /** Required. Type of the interaction that is reported, for example INTERACTION_CLICK. */
@@ -7685,17 +6442,13 @@ export interface ReportInteractionRequest {
   responseToken?: string;
 }
 
-export const ReportInteractionRequest: Schema.Schema<ReportInteractionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      interactionType: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      subtype: Schema.optional(Schema.String),
-      responseToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ReportInteractionRequest",
-  }) as any as Schema.Schema<ReportInteractionRequest>;
+export const ReportInteractionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    interactionType: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+    subtype: Schema.optional(Schema.String),
+    responseToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ReportInteractionRequest" });
 
 export interface PosCustomBatchResponse {
   /** The result of the execution of the batch requests. */
@@ -7704,15 +6457,12 @@ export interface PosCustomBatchResponse {
   kind?: string;
 }
 
-export const PosCustomBatchResponse: Schema.Schema<PosCustomBatchResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entries: Schema.optional(Schema.Array(PosCustomBatchResponseEntry)),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PosCustomBatchResponse",
-  }) as any as Schema.Schema<PosCustomBatchResponse>;
+export const PosCustomBatchResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    entries: Schema.optional(Schema.Array(PosCustomBatchResponseEntry)),
+    kind: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "PosCustomBatchResponse" });
 
 export interface ShippingsettingsGetSupportedPickupServicesResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#shippingsettingsGetSupportedPickupServicesResponse`". */
@@ -7721,33 +6471,25 @@ export interface ShippingsettingsGetSupportedPickupServicesResponse {
   pickupServices?: Array<PickupServicesPickupService>;
 }
 
-export const ShippingsettingsGetSupportedPickupServicesResponse: Schema.Schema<ShippingsettingsGetSupportedPickupServicesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      pickupServices: Schema.optional(
-        Schema.Array(PickupServicesPickupService),
-      ),
-    }),
-  ).annotate({
+export const ShippingsettingsGetSupportedPickupServicesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    pickupServices: Schema.optional(Schema.Array(PickupServicesPickupService)),
+  }).annotate({
     identifier: "ShippingsettingsGetSupportedPickupServicesResponse",
-  }) as any as Schema.Schema<ShippingsettingsGetSupportedPickupServicesResponse>;
+  });
 
 export interface RegionalinventoryCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   entries?: Array<RegionalinventoryCustomBatchRequestEntry>;
 }
 
-export const RegionalinventoryCustomBatchRequest: Schema.Schema<RegionalinventoryCustomBatchRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entries: Schema.optional(
-        Schema.Array(RegionalinventoryCustomBatchRequestEntry),
-      ),
-    }),
-  ).annotate({
-    identifier: "RegionalinventoryCustomBatchRequest",
-  }) as any as Schema.Schema<RegionalinventoryCustomBatchRequest>;
+export const RegionalinventoryCustomBatchRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entries: Schema.optional(
+      Schema.Array(RegionalinventoryCustomBatchRequestEntry),
+    ),
+  }).annotate({ identifier: "RegionalinventoryCustomBatchRequest" });
 
 export interface ListRegionsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -7756,27 +6498,19 @@ export interface ListRegionsResponse {
   regions?: Array<Region>;
 }
 
-export const ListRegionsResponse: Schema.Schema<ListRegionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      regions: Schema.optional(Schema.Array(Region)),
-    }),
-  ).annotate({
-    identifier: "ListRegionsResponse",
-  }) as any as Schema.Schema<ListRegionsResponse>;
+export const ListRegionsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  regions: Schema.optional(Schema.Array(Region)),
+}).annotate({ identifier: "ListRegionsResponse" });
 
 export interface LabelIds {
   /** The list of label IDs. */
   labelIds?: Array<string>;
 }
 
-export const LabelIds: Schema.Schema<LabelIds> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labelIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "LabelIds" }) as any as Schema.Schema<LabelIds>;
+export const LabelIds = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  labelIds: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "LabelIds" });
 
 export interface AccountstatusesCustomBatchRequestEntry {
   /** The ID of the managing account. */
@@ -7791,18 +6525,14 @@ export interface AccountstatusesCustomBatchRequestEntry {
   destinations?: Array<string>;
 }
 
-export const AccountstatusesCustomBatchRequestEntry: Schema.Schema<AccountstatusesCustomBatchRequestEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      merchantId: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-      method: Schema.optional(Schema.String),
-      batchId: Schema.optional(Schema.Number),
-      destinations: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AccountstatusesCustomBatchRequestEntry",
-  }) as any as Schema.Schema<AccountstatusesCustomBatchRequestEntry>;
+export const AccountstatusesCustomBatchRequestEntry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    merchantId: Schema.optional(Schema.String),
+    accountId: Schema.optional(Schema.String),
+    method: Schema.optional(Schema.String),
+    batchId: Schema.optional(Schema.Number),
+    destinations: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "AccountstatusesCustomBatchRequestEntry" });
 
 export interface ShippingsettingsGetSupportedCarriersResponse {
   /** Identifies what kind of resource this is. Value: the fixed string "`content#shippingsettingsGetSupportedCarriersResponse`". */
@@ -7811,15 +6541,11 @@ export interface ShippingsettingsGetSupportedCarriersResponse {
   carriers?: Array<CarriersCarrier>;
 }
 
-export const ShippingsettingsGetSupportedCarriersResponse: Schema.Schema<ShippingsettingsGetSupportedCarriersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      carriers: Schema.optional(Schema.Array(CarriersCarrier)),
-    }),
-  ).annotate({
-    identifier: "ShippingsettingsGetSupportedCarriersResponse",
-  }) as any as Schema.Schema<ShippingsettingsGetSupportedCarriersResponse>;
+export const ShippingsettingsGetSupportedCarriersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    carriers: Schema.optional(Schema.Array(CarriersCarrier)),
+  }).annotate({ identifier: "ShippingsettingsGetSupportedCarriersResponse" });
 
 export interface SearchRequest {
   /** Required. Query that defines performance metrics to retrieve and dimensions according to which the metrics are to be segmented. For details on how to construct your query, see the [Query Language guide](https://developers.google.com/shopping-content/guides/reports/query-language/overview). */
@@ -7830,16 +6556,11 @@ export interface SearchRequest {
   pageToken?: string;
 }
 
-export const SearchRequest: Schema.Schema<SearchRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      query: Schema.optional(Schema.String),
-      pageSize: Schema.optional(Schema.Number),
-      pageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SearchRequest",
-  }) as any as Schema.Schema<SearchRequest>;
+export const SearchRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  query: Schema.optional(Schema.String),
+  pageSize: Schema.optional(Schema.Number),
+  pageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "SearchRequest" });
 
 export interface PosSaleRequest {
   /** Required. The two-letter ISO 639-1 language code for the item. */
@@ -7862,22 +6583,17 @@ export interface PosSaleRequest {
   storeCode?: string;
 }
 
-export const PosSaleRequest: Schema.Schema<PosSaleRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      contentLanguage: Schema.optional(Schema.String),
-      targetCountry: Schema.optional(Schema.String),
-      quantity: Schema.optional(Schema.String),
-      itemId: Schema.optional(Schema.String),
-      saleId: Schema.optional(Schema.String),
-      gtin: Schema.optional(Schema.String),
-      price: Schema.optional(Price),
-      timestamp: Schema.optional(Schema.String),
-      storeCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PosSaleRequest",
-  }) as any as Schema.Schema<PosSaleRequest>;
+export const PosSaleRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  contentLanguage: Schema.optional(Schema.String),
+  targetCountry: Schema.optional(Schema.String),
+  quantity: Schema.optional(Schema.String),
+  itemId: Schema.optional(Schema.String),
+  saleId: Schema.optional(Schema.String),
+  gtin: Schema.optional(Schema.String),
+  price: Schema.optional(Price),
+  timestamp: Schema.optional(Schema.String),
+  storeCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "PosSaleRequest" });
 
 export interface CheckoutSettings {
   /** Output only. The effective value of review state for a given merchant ID. If account level settings are present then this value will be a copy of the account level settings. Otherwise, it will have the value of the parent account. */
@@ -7916,20 +6632,15 @@ export interface CheckoutSettings {
     | (string & {});
 }
 
-export const CheckoutSettings: Schema.Schema<CheckoutSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      effectiveReviewState: Schema.optional(Schema.String),
-      effectiveEnrollmentState: Schema.optional(Schema.String),
-      merchantId: Schema.optional(Schema.String),
-      uriSettings: Schema.optional(UrlSettings),
-      enrollmentState: Schema.optional(Schema.String),
-      effectiveUriSettings: Schema.optional(UrlSettings),
-      reviewState: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CheckoutSettings",
-  }) as any as Schema.Schema<CheckoutSettings>;
+export const CheckoutSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  effectiveReviewState: Schema.optional(Schema.String),
+  effectiveEnrollmentState: Schema.optional(Schema.String),
+  merchantId: Schema.optional(Schema.String),
+  uriSettings: Schema.optional(UrlSettings),
+  enrollmentState: Schema.optional(Schema.String),
+  effectiveUriSettings: Schema.optional(UrlSettings),
+  reviewState: Schema.optional(Schema.String),
+}).annotate({ identifier: "CheckoutSettings" });
 
 export interface ProductsCustomBatchResponse {
   /** The result of the execution of the batch requests. */
@@ -7938,15 +6649,11 @@ export interface ProductsCustomBatchResponse {
   kind?: string;
 }
 
-export const ProductsCustomBatchResponse: Schema.Schema<ProductsCustomBatchResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entries: Schema.optional(Schema.Array(ProductsCustomBatchResponseEntry)),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProductsCustomBatchResponse",
-  }) as any as Schema.Schema<ProductsCustomBatchResponse>;
+export const ProductsCustomBatchResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entries: Schema.optional(Schema.Array(ProductsCustomBatchResponseEntry)),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ProductsCustomBatchResponse" });
 
 export interface ShippingsettingsGetSupportedHolidaysResponse {
   /** A list of holidays applicable for delivery guarantees. May be empty. */
@@ -7955,31 +6662,23 @@ export interface ShippingsettingsGetSupportedHolidaysResponse {
   kind?: string;
 }
 
-export const ShippingsettingsGetSupportedHolidaysResponse: Schema.Schema<ShippingsettingsGetSupportedHolidaysResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      holidays: Schema.optional(Schema.Array(HolidaysHoliday)),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ShippingsettingsGetSupportedHolidaysResponse",
-  }) as any as Schema.Schema<ShippingsettingsGetSupportedHolidaysResponse>;
+export const ShippingsettingsGetSupportedHolidaysResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    holidays: Schema.optional(Schema.Array(HolidaysHoliday)),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ShippingsettingsGetSupportedHolidaysResponse" });
 
 export interface AccountstatusesCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   entries?: Array<AccountstatusesCustomBatchRequestEntry>;
 }
 
-export const AccountstatusesCustomBatchRequest: Schema.Schema<AccountstatusesCustomBatchRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entries: Schema.optional(
-        Schema.Array(AccountstatusesCustomBatchRequestEntry),
-      ),
-    }),
-  ).annotate({
-    identifier: "AccountstatusesCustomBatchRequest",
-  }) as any as Schema.Schema<AccountstatusesCustomBatchRequest>;
+export const AccountstatusesCustomBatchRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entries: Schema.optional(
+      Schema.Array(AccountstatusesCustomBatchRequestEntry),
+    ),
+  }).annotate({ identifier: "AccountstatusesCustomBatchRequest" });
 
 export interface TriggerActionPayload {
   /** Required. The context from the selected action. The value is obtained from rendered issues and needs to be sent back to identify the action that is being triggered. */
@@ -7988,31 +6687,20 @@ export interface TriggerActionPayload {
   actionInput?: ActionInput;
 }
 
-export const TriggerActionPayload: Schema.Schema<TriggerActionPayload> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      actionContext: Schema.optional(Schema.String),
-      actionInput: Schema.optional(ActionInput),
-    }),
-  ).annotate({
-    identifier: "TriggerActionPayload",
-  }) as any as Schema.Schema<TriggerActionPayload>;
+export const TriggerActionPayload = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  actionContext: Schema.optional(Schema.String),
+  actionInput: Schema.optional(ActionInput),
+}).annotate({ identifier: "TriggerActionPayload" });
 
 export interface LiasettingsCustomBatchRequest {
   /** The request entries to be processed in the batch. */
   entries?: Array<LiasettingsCustomBatchRequestEntry>;
 }
 
-export const LiasettingsCustomBatchRequest: Schema.Schema<LiasettingsCustomBatchRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entries: Schema.optional(
-        Schema.Array(LiasettingsCustomBatchRequestEntry),
-      ),
-    }),
-  ).annotate({
-    identifier: "LiasettingsCustomBatchRequest",
-  }) as any as Schema.Schema<LiasettingsCustomBatchRequest>;
+export const LiasettingsCustomBatchRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entries: Schema.optional(Schema.Array(LiasettingsCustomBatchRequestEntry)),
+  }).annotate({ identifier: "LiasettingsCustomBatchRequest" });
 
 // ==========================================================================
 // Operations

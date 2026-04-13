@@ -41,21 +41,18 @@ export interface ContainerVersionHeader {
   numVariables?: string;
 }
 
-export const ContainerVersionHeader: Schema.Schema<ContainerVersionHeader> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      containerId: Schema.optional(Schema.String),
-      numTriggers: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-      numTags: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      containerVersionId: Schema.optional(Schema.String),
-      deleted: Schema.optional(Schema.Boolean),
-      numVariables: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ContainerVersionHeader",
-  }) as any as Schema.Schema<ContainerVersionHeader>;
+export const ContainerVersionHeader = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    containerId: Schema.optional(Schema.String),
+    numTriggers: Schema.optional(Schema.String),
+    accountId: Schema.optional(Schema.String),
+    numTags: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    containerVersionId: Schema.optional(Schema.String),
+    deleted: Schema.optional(Schema.Boolean),
+    numVariables: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ContainerVersionHeader" });
 
 export interface AccountAccess {
   /** List of Account permissions. Valid account permissions are read and manage. */
@@ -70,14 +67,9 @@ export interface AccountAccess {
   >;
 }
 
-export const AccountAccess: Schema.Schema<AccountAccess> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permission: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AccountAccess",
-  }) as any as Schema.Schema<AccountAccess>;
+export const AccountAccess = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  permission: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "AccountAccess" });
 
 export interface ContainerAccess {
   /** GTM Container ID. */
@@ -94,15 +86,10 @@ export interface ContainerAccess {
   >;
 }
 
-export const ContainerAccess: Schema.Schema<ContainerAccess> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      containerId: Schema.optional(Schema.String),
-      permission: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ContainerAccess",
-  }) as any as Schema.Schema<ContainerAccess>;
+export const ContainerAccess = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  containerId: Schema.optional(Schema.String),
+  permission: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ContainerAccess" });
 
 export interface UserAccess {
   /** GTM Account ID. */
@@ -117,16 +104,13 @@ export interface UserAccess {
   emailAddress?: string;
 }
 
-export const UserAccess: Schema.Schema<UserAccess> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accountId: Schema.optional(Schema.String),
-      permissionId: Schema.optional(Schema.String),
-      accountAccess: Schema.optional(AccountAccess),
-      containerAccess: Schema.optional(Schema.Array(ContainerAccess)),
-      emailAddress: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "UserAccess" }) as any as Schema.Schema<UserAccess>;
+export const UserAccess = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  accountId: Schema.optional(Schema.String),
+  permissionId: Schema.optional(Schema.String),
+  accountAccess: Schema.optional(AccountAccess),
+  containerAccess: Schema.optional(Schema.Array(ContainerAccess)),
+  emailAddress: Schema.optional(Schema.String),
+}).annotate({ identifier: "UserAccess" });
 
 export interface CreateContainerVersionRequestVersionOptions {
   /** The creation of this version may be for quick preview and shouldn't be saved. */
@@ -137,16 +121,12 @@ export interface CreateContainerVersionRequestVersionOptions {
   name?: string;
 }
 
-export const CreateContainerVersionRequestVersionOptions: Schema.Schema<CreateContainerVersionRequestVersionOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      quickPreview: Schema.optional(Schema.Boolean),
-      notes: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreateContainerVersionRequestVersionOptions",
-  }) as any as Schema.Schema<CreateContainerVersionRequestVersionOptions>;
+export const CreateContainerVersionRequestVersionOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    quickPreview: Schema.optional(Schema.Boolean),
+    notes: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CreateContainerVersionRequestVersionOptions" });
 
 export interface Container {
   /** Container display name. */
@@ -291,22 +271,19 @@ export interface Container {
   notes?: string;
 }
 
-export const Container: Schema.Schema<Container> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      fingerprint: Schema.optional(Schema.String),
-      domainName: Schema.optional(Schema.Array(Schema.String)),
-      enabledBuiltInVariable: Schema.optional(Schema.Array(Schema.String)),
-      containerId: Schema.optional(Schema.String),
-      publicId: Schema.optional(Schema.String),
-      timeZoneCountryId: Schema.optional(Schema.String),
-      timeZoneId: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-      usageContext: Schema.optional(Schema.Array(Schema.String)),
-      notes: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Container" }) as any as Schema.Schema<Container>;
+export const Container = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  fingerprint: Schema.optional(Schema.String),
+  domainName: Schema.optional(Schema.Array(Schema.String)),
+  enabledBuiltInVariable: Schema.optional(Schema.Array(Schema.String)),
+  containerId: Schema.optional(Schema.String),
+  publicId: Schema.optional(Schema.String),
+  timeZoneCountryId: Schema.optional(Schema.String),
+  timeZoneId: Schema.optional(Schema.String),
+  accountId: Schema.optional(Schema.String),
+  usageContext: Schema.optional(Schema.Array(Schema.String)),
+  notes: Schema.optional(Schema.String),
+}).annotate({ identifier: "Container" });
 
 export interface Account {
   /** Account display name. */
@@ -319,15 +296,12 @@ export interface Account {
   accountId?: string;
 }
 
-export const Account: Schema.Schema<Account> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      fingerprint: Schema.optional(Schema.String),
-      shareData: Schema.optional(Schema.Boolean),
-      accountId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Account" }) as any as Schema.Schema<Account>;
+export const Account = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  fingerprint: Schema.optional(Schema.String),
+  shareData: Schema.optional(Schema.Boolean),
+  accountId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Account" });
 
 export interface Parameter {
   /** This map parameter's parameters (must have keys; keys must be unique). */
@@ -380,13 +354,10 @@ export interface Condition {
   parameter?: Array<Parameter>;
 }
 
-export const Condition: Schema.Schema<Condition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      parameter: Schema.optional(Schema.Array(Parameter)),
-    }),
-  ).annotate({ identifier: "Condition" }) as any as Schema.Schema<Condition>;
+export const Condition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  parameter: Schema.optional(Schema.Array(Parameter)),
+}).annotate({ identifier: "Condition" });
 
 export interface Trigger {
   /** List of integer percentage values for scroll triggers. The trigger will fire when each percentage is reached when the view is scrolled horizontally. Only valid for AMP scroll triggers. */
@@ -467,39 +438,36 @@ export interface Trigger {
   interval?: Parameter;
 }
 
-export const Trigger: Schema.Schema<Trigger> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      horizontalScrollPercentageList: Schema.optional(Parameter),
-      containerId: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      checkValidation: Schema.optional(Parameter),
-      customEventFilter: Schema.optional(Schema.Array(Condition)),
-      waitForTags: Schema.optional(Parameter),
-      maxTimerLengthSeconds: Schema.optional(Parameter),
-      selector: Schema.optional(Parameter),
-      uniqueTriggerId: Schema.optional(Parameter),
-      limit: Schema.optional(Parameter),
-      parentFolderId: Schema.optional(Schema.String),
-      fingerprint: Schema.optional(Schema.String),
-      eventName: Schema.optional(Parameter),
-      visibilitySelector: Schema.optional(Parameter),
-      visiblePercentageMin: Schema.optional(Parameter),
-      verticalScrollPercentageList: Schema.optional(Parameter),
-      parameter: Schema.optional(Schema.Array(Parameter)),
-      intervalSeconds: Schema.optional(Parameter),
-      triggerId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      waitForTagsTimeout: Schema.optional(Parameter),
-      visiblePercentageMax: Schema.optional(Parameter),
-      filter: Schema.optional(Schema.Array(Condition)),
-      continuousTimeMinMilliseconds: Schema.optional(Parameter),
-      totalTimeMinMilliseconds: Schema.optional(Parameter),
-      accountId: Schema.optional(Schema.String),
-      autoEventFilter: Schema.optional(Schema.Array(Condition)),
-      interval: Schema.optional(Parameter),
-    }),
-  ).annotate({ identifier: "Trigger" }) as any as Schema.Schema<Trigger>;
+export const Trigger = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  horizontalScrollPercentageList: Schema.optional(Parameter),
+  containerId: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  checkValidation: Schema.optional(Parameter),
+  customEventFilter: Schema.optional(Schema.Array(Condition)),
+  waitForTags: Schema.optional(Parameter),
+  maxTimerLengthSeconds: Schema.optional(Parameter),
+  selector: Schema.optional(Parameter),
+  uniqueTriggerId: Schema.optional(Parameter),
+  limit: Schema.optional(Parameter),
+  parentFolderId: Schema.optional(Schema.String),
+  fingerprint: Schema.optional(Schema.String),
+  eventName: Schema.optional(Parameter),
+  visibilitySelector: Schema.optional(Parameter),
+  visiblePercentageMin: Schema.optional(Parameter),
+  verticalScrollPercentageList: Schema.optional(Parameter),
+  parameter: Schema.optional(Schema.Array(Parameter)),
+  intervalSeconds: Schema.optional(Parameter),
+  triggerId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  waitForTagsTimeout: Schema.optional(Parameter),
+  visiblePercentageMax: Schema.optional(Parameter),
+  filter: Schema.optional(Schema.Array(Condition)),
+  continuousTimeMinMilliseconds: Schema.optional(Parameter),
+  totalTimeMinMilliseconds: Schema.optional(Parameter),
+  accountId: Schema.optional(Schema.String),
+  autoEventFilter: Schema.optional(Schema.Array(Condition)),
+  interval: Schema.optional(Parameter),
+}).annotate({ identifier: "Trigger" });
 
 export interface Variable {
   /** Parent folder id. */
@@ -530,24 +498,21 @@ export interface Variable {
   parameter?: Array<Parameter>;
 }
 
-export const Variable: Schema.Schema<Variable> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parentFolderId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      fingerprint: Schema.optional(Schema.String),
-      scheduleEndMs: Schema.optional(Schema.String),
-      disablingTriggerId: Schema.optional(Schema.Array(Schema.String)),
-      accountId: Schema.optional(Schema.String),
-      notes: Schema.optional(Schema.String),
-      scheduleStartMs: Schema.optional(Schema.String),
-      enablingTriggerId: Schema.optional(Schema.Array(Schema.String)),
-      type: Schema.optional(Schema.String),
-      variableId: Schema.optional(Schema.String),
-      containerId: Schema.optional(Schema.String),
-      parameter: Schema.optional(Schema.Array(Parameter)),
-    }),
-  ).annotate({ identifier: "Variable" }) as any as Schema.Schema<Variable>;
+export const Variable = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  parentFolderId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  fingerprint: Schema.optional(Schema.String),
+  scheduleEndMs: Schema.optional(Schema.String),
+  disablingTriggerId: Schema.optional(Schema.Array(Schema.String)),
+  accountId: Schema.optional(Schema.String),
+  notes: Schema.optional(Schema.String),
+  scheduleStartMs: Schema.optional(Schema.String),
+  enablingTriggerId: Schema.optional(Schema.Array(Schema.String)),
+  type: Schema.optional(Schema.String),
+  variableId: Schema.optional(Schema.String),
+  containerId: Schema.optional(Schema.String),
+  parameter: Schema.optional(Schema.Array(Parameter)),
+}).annotate({ identifier: "Variable" });
 
 export interface Folder {
   /** GTM Account ID. */
@@ -562,16 +527,13 @@ export interface Folder {
   folderId?: string;
 }
 
-export const Folder: Schema.Schema<Folder> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accountId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      fingerprint: Schema.optional(Schema.String),
-      containerId: Schema.optional(Schema.String),
-      folderId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Folder" }) as any as Schema.Schema<Folder>;
+export const Folder = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  accountId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  fingerprint: Schema.optional(Schema.String),
+  containerId: Schema.optional(Schema.String),
+  folderId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Folder" });
 
 export interface TeardownTag {
   /** The name of the teardown tag. */
@@ -580,15 +542,10 @@ export interface TeardownTag {
   stopTeardownOnFailure?: boolean;
 }
 
-export const TeardownTag: Schema.Schema<TeardownTag> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tagName: Schema.optional(Schema.String),
-      stopTeardownOnFailure: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "TeardownTag",
-  }) as any as Schema.Schema<TeardownTag>;
+export const TeardownTag = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tagName: Schema.optional(Schema.String),
+  stopTeardownOnFailure: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "TeardownTag" });
 
 export interface SetupTag {
   /** The name of the setup tag. */
@@ -597,13 +554,10 @@ export interface SetupTag {
   stopOnSetupFailure?: boolean;
 }
 
-export const SetupTag: Schema.Schema<SetupTag> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tagName: Schema.optional(Schema.String),
-      stopOnSetupFailure: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "SetupTag" }) as any as Schema.Schema<SetupTag>;
+export const SetupTag = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tagName: Schema.optional(Schema.String),
+  stopOnSetupFailure: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "SetupTag" });
 
 export interface Tag {
   /** Parent folder id. */
@@ -650,30 +604,27 @@ export interface Tag {
   setupTag?: Array<SetupTag>;
 }
 
-export const Tag: Schema.Schema<Tag> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parentFolderId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      fingerprint: Schema.optional(Schema.String),
-      scheduleEndMs: Schema.optional(Schema.String),
-      tagFiringOption: Schema.optional(Schema.String),
-      teardownTag: Schema.optional(Schema.Array(TeardownTag)),
-      accountId: Schema.optional(Schema.String),
-      priority: Schema.optional(Parameter),
-      notes: Schema.optional(Schema.String),
-      firingTriggerId: Schema.optional(Schema.Array(Schema.String)),
-      paused: Schema.optional(Schema.Boolean),
-      scheduleStartMs: Schema.optional(Schema.String),
-      liveOnly: Schema.optional(Schema.Boolean),
-      type: Schema.optional(Schema.String),
-      tagId: Schema.optional(Schema.String),
-      containerId: Schema.optional(Schema.String),
-      parameter: Schema.optional(Schema.Array(Parameter)),
-      blockingTriggerId: Schema.optional(Schema.Array(Schema.String)),
-      setupTag: Schema.optional(Schema.Array(SetupTag)),
-    }),
-  ).annotate({ identifier: "Tag" }) as any as Schema.Schema<Tag>;
+export const Tag = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  parentFolderId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  fingerprint: Schema.optional(Schema.String),
+  scheduleEndMs: Schema.optional(Schema.String),
+  tagFiringOption: Schema.optional(Schema.String),
+  teardownTag: Schema.optional(Schema.Array(TeardownTag)),
+  accountId: Schema.optional(Schema.String),
+  priority: Schema.optional(Parameter),
+  notes: Schema.optional(Schema.String),
+  firingTriggerId: Schema.optional(Schema.Array(Schema.String)),
+  paused: Schema.optional(Schema.Boolean),
+  scheduleStartMs: Schema.optional(Schema.String),
+  liveOnly: Schema.optional(Schema.Boolean),
+  type: Schema.optional(Schema.String),
+  tagId: Schema.optional(Schema.String),
+  containerId: Schema.optional(Schema.String),
+  parameter: Schema.optional(Schema.Array(Parameter)),
+  blockingTriggerId: Schema.optional(Schema.Array(Schema.String)),
+  setupTag: Schema.optional(Schema.Array(SetupTag)),
+}).annotate({ identifier: "Tag" });
 
 export interface ContainerVersion {
   /** GTM Container ID. */
@@ -702,25 +653,20 @@ export interface ContainerVersion {
   accountId?: string;
 }
 
-export const ContainerVersion: Schema.Schema<ContainerVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      containerId: Schema.optional(Schema.String),
-      container: Schema.optional(Container),
-      containerVersionId: Schema.optional(Schema.String),
-      deleted: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-      fingerprint: Schema.optional(Schema.String),
-      trigger: Schema.optional(Schema.Array(Trigger)),
-      variable: Schema.optional(Schema.Array(Variable)),
-      folder: Schema.optional(Schema.Array(Folder)),
-      tag: Schema.optional(Schema.Array(Tag)),
-      notes: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ContainerVersion",
-  }) as any as Schema.Schema<ContainerVersion>;
+export const ContainerVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  containerId: Schema.optional(Schema.String),
+  container: Schema.optional(Container),
+  containerVersionId: Schema.optional(Schema.String),
+  deleted: Schema.optional(Schema.Boolean),
+  name: Schema.optional(Schema.String),
+  fingerprint: Schema.optional(Schema.String),
+  trigger: Schema.optional(Schema.Array(Trigger)),
+  variable: Schema.optional(Schema.Array(Variable)),
+  folder: Schema.optional(Schema.Array(Folder)),
+  tag: Schema.optional(Schema.Array(Tag)),
+  notes: Schema.optional(Schema.String),
+  accountId: Schema.optional(Schema.String),
+}).annotate({ identifier: "ContainerVersion" });
 
 export interface ListContainerVersionsResponse {
   /** All container version headers of a GTM Container. */
@@ -729,17 +675,13 @@ export interface ListContainerVersionsResponse {
   containerVersion?: Array<ContainerVersion>;
 }
 
-export const ListContainerVersionsResponse: Schema.Schema<ListContainerVersionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      containerVersionHeader: Schema.optional(
-        Schema.Array(ContainerVersionHeader),
-      ),
-      containerVersion: Schema.optional(Schema.Array(ContainerVersion)),
-    }),
-  ).annotate({
-    identifier: "ListContainerVersionsResponse",
-  }) as any as Schema.Schema<ListContainerVersionsResponse>;
+export const ListContainerVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    containerVersionHeader: Schema.optional(
+      Schema.Array(ContainerVersionHeader),
+    ),
+    containerVersion: Schema.optional(Schema.Array(ContainerVersion)),
+  }).annotate({ identifier: "ListContainerVersionsResponse" });
 
 export interface PublishContainerVersionResponse {
   /** The container version created. */
@@ -748,43 +690,30 @@ export interface PublishContainerVersionResponse {
   compilerError?: boolean;
 }
 
-export const PublishContainerVersionResponse: Schema.Schema<PublishContainerVersionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      containerVersion: Schema.optional(ContainerVersion),
-      compilerError: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "PublishContainerVersionResponse",
-  }) as any as Schema.Schema<PublishContainerVersionResponse>;
+export const PublishContainerVersionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    containerVersion: Schema.optional(ContainerVersion),
+    compilerError: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "PublishContainerVersionResponse" });
 
 export interface ListAccountUsersResponse {
   /** All GTM AccountUsers of a GTM Account. */
   userAccess?: Array<UserAccess>;
 }
 
-export const ListAccountUsersResponse: Schema.Schema<ListAccountUsersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      userAccess: Schema.optional(Schema.Array(UserAccess)),
-    }),
-  ).annotate({
-    identifier: "ListAccountUsersResponse",
-  }) as any as Schema.Schema<ListAccountUsersResponse>;
+export const ListAccountUsersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    userAccess: Schema.optional(Schema.Array(UserAccess)),
+  }).annotate({ identifier: "ListAccountUsersResponse" });
 
 export interface ListFoldersResponse {
   /** All GTM Folders of a GTM Container. */
   folders?: Array<Folder>;
 }
 
-export const ListFoldersResponse: Schema.Schema<ListFoldersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      folders: Schema.optional(Schema.Array(Folder)),
-    }),
-  ).annotate({
-    identifier: "ListFoldersResponse",
-  }) as any as Schema.Schema<ListFoldersResponse>;
+export const ListFoldersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  folders: Schema.optional(Schema.Array(Folder)),
+}).annotate({ identifier: "ListFoldersResponse" });
 
 export interface Environment {
   /** GTM Container ID. */
@@ -812,25 +741,20 @@ export interface Environment {
   enableDebug?: boolean;
 }
 
-export const Environment: Schema.Schema<Environment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      containerId: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      environmentId: Schema.optional(Schema.String),
-      fingerprint: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      authorizationTimestampMs: Schema.optional(Schema.String),
-      authorizationCode: Schema.optional(Schema.String),
-      containerVersionId: Schema.optional(Schema.String),
-      url: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-      enableDebug: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "Environment",
-  }) as any as Schema.Schema<Environment>;
+export const Environment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  containerId: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  environmentId: Schema.optional(Schema.String),
+  fingerprint: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  authorizationTimestampMs: Schema.optional(Schema.String),
+  authorizationCode: Schema.optional(Schema.String),
+  containerVersionId: Schema.optional(Schema.String),
+  url: Schema.optional(Schema.String),
+  accountId: Schema.optional(Schema.String),
+  enableDebug: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Environment" });
 
 export interface CreateContainerVersionResponse {
   /** The container version created. */
@@ -839,85 +763,59 @@ export interface CreateContainerVersionResponse {
   compilerError?: boolean;
 }
 
-export const CreateContainerVersionResponse: Schema.Schema<CreateContainerVersionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      containerVersion: Schema.optional(ContainerVersion),
-      compilerError: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "CreateContainerVersionResponse",
-  }) as any as Schema.Schema<CreateContainerVersionResponse>;
+export const CreateContainerVersionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    containerVersion: Schema.optional(ContainerVersion),
+    compilerError: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "CreateContainerVersionResponse" });
 
 export interface ListEnvironmentsResponse {
   /** All Environments of a GTM Container. */
   environments?: Array<Environment>;
 }
 
-export const ListEnvironmentsResponse: Schema.Schema<ListEnvironmentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      environments: Schema.optional(Schema.Array(Environment)),
-    }),
-  ).annotate({
-    identifier: "ListEnvironmentsResponse",
-  }) as any as Schema.Schema<ListEnvironmentsResponse>;
+export const ListEnvironmentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    environments: Schema.optional(Schema.Array(Environment)),
+  }).annotate({ identifier: "ListEnvironmentsResponse" });
 
 export interface ListAccountsResponse {
   /** List of GTM Accounts that a user has access to. */
   accounts?: Array<Account>;
 }
 
-export const ListAccountsResponse: Schema.Schema<ListAccountsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accounts: Schema.optional(Schema.Array(Account)),
-    }),
-  ).annotate({
-    identifier: "ListAccountsResponse",
-  }) as any as Schema.Schema<ListAccountsResponse>;
+export const ListAccountsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  accounts: Schema.optional(Schema.Array(Account)),
+}).annotate({ identifier: "ListAccountsResponse" });
 
 export interface ListTriggersResponse {
   /** All GTM Triggers of a GTM Container. */
   triggers?: Array<Trigger>;
 }
 
-export const ListTriggersResponse: Schema.Schema<ListTriggersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      triggers: Schema.optional(Schema.Array(Trigger)),
-    }),
-  ).annotate({
-    identifier: "ListTriggersResponse",
-  }) as any as Schema.Schema<ListTriggersResponse>;
+export const ListTriggersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  triggers: Schema.optional(Schema.Array(Trigger)),
+}).annotate({ identifier: "ListTriggersResponse" });
 
 export interface ListContainersResponse {
   /** All Containers of a GTM Account. */
   containers?: Array<Container>;
 }
 
-export const ListContainersResponse: Schema.Schema<ListContainersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      containers: Schema.optional(Schema.Array(Container)),
-    }),
-  ).annotate({
-    identifier: "ListContainersResponse",
-  }) as any as Schema.Schema<ListContainersResponse>;
+export const ListContainersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    containers: Schema.optional(Schema.Array(Container)),
+  },
+).annotate({ identifier: "ListContainersResponse" });
 
 export interface ListTagsResponse {
   /** All GTM Tags of a GTM Container. */
   tags?: Array<Tag>;
 }
 
-export const ListTagsResponse: Schema.Schema<ListTagsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tags: Schema.optional(Schema.Array(Tag)),
-    }),
-  ).annotate({
-    identifier: "ListTagsResponse",
-  }) as any as Schema.Schema<ListTagsResponse>;
+export const ListTagsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tags: Schema.optional(Schema.Array(Tag)),
+}).annotate({ identifier: "ListTagsResponse" });
 
 export interface FolderEntities {
   /** The list of tags inside the folder. */
@@ -928,30 +826,20 @@ export interface FolderEntities {
   trigger?: Array<Trigger>;
 }
 
-export const FolderEntities: Schema.Schema<FolderEntities> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tag: Schema.optional(Schema.Array(Tag)),
-      variable: Schema.optional(Schema.Array(Variable)),
-      trigger: Schema.optional(Schema.Array(Trigger)),
-    }),
-  ).annotate({
-    identifier: "FolderEntities",
-  }) as any as Schema.Schema<FolderEntities>;
+export const FolderEntities = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tag: Schema.optional(Schema.Array(Tag)),
+  variable: Schema.optional(Schema.Array(Variable)),
+  trigger: Schema.optional(Schema.Array(Trigger)),
+}).annotate({ identifier: "FolderEntities" });
 
 export interface ListVariablesResponse {
   /** All GTM Variables of a GTM Container. */
   variables?: Array<Variable>;
 }
 
-export const ListVariablesResponse: Schema.Schema<ListVariablesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      variables: Schema.optional(Schema.Array(Variable)),
-    }),
-  ).annotate({
-    identifier: "ListVariablesResponse",
-  }) as any as Schema.Schema<ListVariablesResponse>;
+export const ListVariablesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  variables: Schema.optional(Schema.Array(Variable)),
+}).annotate({ identifier: "ListVariablesResponse" });
 
 // ==========================================================================
 // Operations

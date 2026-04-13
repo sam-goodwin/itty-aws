@@ -33,17 +33,13 @@ export interface AchievementResetResponse {
   currentState?: string;
 }
 
-export const AchievementResetResponse: Schema.Schema<AchievementResetResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      definitionId: Schema.optional(Schema.String),
-      updateOccurred: Schema.optional(Schema.Boolean),
-      currentState: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AchievementResetResponse",
-  }) as any as Schema.Schema<AchievementResetResponse>;
+export const AchievementResetResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    definitionId: Schema.optional(Schema.String),
+    updateOccurred: Schema.optional(Schema.Boolean),
+    currentState: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AchievementResetResponse" });
 
 export interface AchievementResetAllResponse {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `gamesManagement#achievementResetAllResponse`. */
@@ -52,15 +48,11 @@ export interface AchievementResetAllResponse {
   results?: Array<AchievementResetResponse>;
 }
 
-export const AchievementResetAllResponse: Schema.Schema<AchievementResetAllResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      results: Schema.optional(Schema.Array(AchievementResetResponse)),
-    }),
-  ).annotate({
-    identifier: "AchievementResetAllResponse",
-  }) as any as Schema.Schema<AchievementResetAllResponse>;
+export const AchievementResetAllResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    results: Schema.optional(Schema.Array(AchievementResetResponse)),
+  }).annotate({ identifier: "AchievementResetAllResponse" });
 
 export interface AchievementResetMultipleForAllRequest {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `gamesManagement#achievementResetMultipleForAllRequest`. */
@@ -69,15 +61,11 @@ export interface AchievementResetMultipleForAllRequest {
   achievement_ids?: Array<string>;
 }
 
-export const AchievementResetMultipleForAllRequest: Schema.Schema<AchievementResetMultipleForAllRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      achievement_ids: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AchievementResetMultipleForAllRequest",
-  }) as any as Schema.Schema<AchievementResetMultipleForAllRequest>;
+export const AchievementResetMultipleForAllRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    achievement_ids: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "AchievementResetMultipleForAllRequest" });
 
 export interface EventsResetMultipleForAllRequest {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `gamesManagement#eventsResetMultipleForAllRequest`. */
@@ -86,15 +74,11 @@ export interface EventsResetMultipleForAllRequest {
   event_ids?: Array<string>;
 }
 
-export const EventsResetMultipleForAllRequest: Schema.Schema<EventsResetMultipleForAllRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      event_ids: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "EventsResetMultipleForAllRequest",
-  }) as any as Schema.Schema<EventsResetMultipleForAllRequest>;
+export const EventsResetMultipleForAllRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    event_ids: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "EventsResetMultipleForAllRequest" });
 
 export interface ProfileSettings {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `gamesManagement#profileSettings`. */
@@ -102,15 +86,10 @@ export interface ProfileSettings {
   profileVisible?: boolean;
 }
 
-export const ProfileSettings: Schema.Schema<ProfileSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      profileVisible: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ProfileSettings",
-  }) as any as Schema.Schema<ProfileSettings>;
+export const ProfileSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  profileVisible: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "ProfileSettings" });
 
 export interface GamesPlayerLevelResource {
   /** The level for the user. */
@@ -121,16 +100,12 @@ export interface GamesPlayerLevelResource {
   maxExperiencePoints?: string;
 }
 
-export const GamesPlayerLevelResource: Schema.Schema<GamesPlayerLevelResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      level: Schema.optional(Schema.Number),
-      minExperiencePoints: Schema.optional(Schema.String),
-      maxExperiencePoints: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GamesPlayerLevelResource",
-  }) as any as Schema.Schema<GamesPlayerLevelResource>;
+export const GamesPlayerLevelResource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    level: Schema.optional(Schema.Number),
+    minExperiencePoints: Schema.optional(Schema.String),
+    maxExperiencePoints: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GamesPlayerLevelResource" });
 
 export interface GamesPlayerExperienceInfoResource {
   /** The current number of experience points for the player. */
@@ -143,17 +118,13 @@ export interface GamesPlayerExperienceInfoResource {
   nextLevel?: GamesPlayerLevelResource;
 }
 
-export const GamesPlayerExperienceInfoResource: Schema.Schema<GamesPlayerExperienceInfoResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      currentExperiencePoints: Schema.optional(Schema.String),
-      lastLevelUpTimestampMillis: Schema.optional(Schema.String),
-      currentLevel: Schema.optional(GamesPlayerLevelResource),
-      nextLevel: Schema.optional(GamesPlayerLevelResource),
-    }),
-  ).annotate({
-    identifier: "GamesPlayerExperienceInfoResource",
-  }) as any as Schema.Schema<GamesPlayerExperienceInfoResource>;
+export const GamesPlayerExperienceInfoResource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    currentExperiencePoints: Schema.optional(Schema.String),
+    lastLevelUpTimestampMillis: Schema.optional(Schema.String),
+    currentLevel: Schema.optional(GamesPlayerLevelResource),
+    nextLevel: Schema.optional(GamesPlayerLevelResource),
+  }).annotate({ identifier: "GamesPlayerExperienceInfoResource" });
 
 export interface Player {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `gamesManagement#player`. */
@@ -180,27 +151,24 @@ export interface Player {
   originalPlayerId?: string;
 }
 
-export const Player: Schema.Schema<Player> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const Player = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  playerId: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  avatarImageUrl: Schema.optional(Schema.String),
+  bannerUrlPortrait: Schema.optional(Schema.String),
+  bannerUrlLandscape: Schema.optional(Schema.String),
+  profileSettings: Schema.optional(ProfileSettings),
+  name: Schema.optional(
     Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      playerId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      avatarImageUrl: Schema.optional(Schema.String),
-      bannerUrlPortrait: Schema.optional(Schema.String),
-      bannerUrlLandscape: Schema.optional(Schema.String),
-      profileSettings: Schema.optional(ProfileSettings),
-      name: Schema.optional(
-        Schema.Struct({
-          givenName: Schema.optional(Schema.String),
-          familyName: Schema.optional(Schema.String),
-        }),
-      ),
-      experienceInfo: Schema.optional(GamesPlayerExperienceInfoResource),
-      title: Schema.optional(Schema.String),
-      originalPlayerId: Schema.optional(Schema.String),
+      givenName: Schema.optional(Schema.String),
+      familyName: Schema.optional(Schema.String),
     }),
-  ).annotate({ identifier: "Player" }) as any as Schema.Schema<Player>;
+  ),
+  experienceInfo: Schema.optional(GamesPlayerExperienceInfoResource),
+  title: Schema.optional(Schema.String),
+  originalPlayerId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Player" });
 
 export interface HiddenPlayer {
   /** Output only. Uniquely identifies the type of this resource. Value is always the fixed string `gamesManagement#hiddenPlayer`. */
@@ -211,16 +179,11 @@ export interface HiddenPlayer {
   hiddenTimeMillis?: string;
 }
 
-export const HiddenPlayer: Schema.Schema<HiddenPlayer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      player: Schema.optional(Player),
-      hiddenTimeMillis: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "HiddenPlayer",
-  }) as any as Schema.Schema<HiddenPlayer>;
+export const HiddenPlayer = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  player: Schema.optional(Player),
+  hiddenTimeMillis: Schema.optional(Schema.String),
+}).annotate({ identifier: "HiddenPlayer" });
 
 export interface HiddenPlayerList {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `gamesManagement#hiddenPlayerList`. */
@@ -231,16 +194,11 @@ export interface HiddenPlayerList {
   nextPageToken?: string;
 }
 
-export const HiddenPlayerList: Schema.Schema<HiddenPlayerList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(HiddenPlayer)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "HiddenPlayerList",
-  }) as any as Schema.Schema<HiddenPlayerList>;
+export const HiddenPlayerList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(HiddenPlayer)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "HiddenPlayerList" });
 
 export interface PlayerScoreResetResponse {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `gamesManagement#playerScoreResetResponse`. */
@@ -251,16 +209,12 @@ export interface PlayerScoreResetResponse {
   resetScoreTimeSpans?: Array<string>;
 }
 
-export const PlayerScoreResetResponse: Schema.Schema<PlayerScoreResetResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      definitionId: Schema.optional(Schema.String),
-      resetScoreTimeSpans: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "PlayerScoreResetResponse",
-  }) as any as Schema.Schema<PlayerScoreResetResponse>;
+export const PlayerScoreResetResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    definitionId: Schema.optional(Schema.String),
+    resetScoreTimeSpans: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "PlayerScoreResetResponse" });
 
 export interface PlayerScoreResetAllResponse {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `gamesManagement#playerScoreResetAllResponse`. */
@@ -269,15 +223,11 @@ export interface PlayerScoreResetAllResponse {
   results?: Array<PlayerScoreResetResponse>;
 }
 
-export const PlayerScoreResetAllResponse: Schema.Schema<PlayerScoreResetAllResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      results: Schema.optional(Schema.Array(PlayerScoreResetResponse)),
-    }),
-  ).annotate({
-    identifier: "PlayerScoreResetAllResponse",
-  }) as any as Schema.Schema<PlayerScoreResetAllResponse>;
+export const PlayerScoreResetAllResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    results: Schema.optional(Schema.Array(PlayerScoreResetResponse)),
+  }).annotate({ identifier: "PlayerScoreResetAllResponse" });
 
 export interface ScoresResetMultipleForAllRequest {
   /** Uniquely identifies the type of this resource. Value is always the fixed string `gamesManagement#scoresResetMultipleForAllRequest`. */
@@ -286,15 +236,11 @@ export interface ScoresResetMultipleForAllRequest {
   leaderboard_ids?: Array<string>;
 }
 
-export const ScoresResetMultipleForAllRequest: Schema.Schema<ScoresResetMultipleForAllRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      leaderboard_ids: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ScoresResetMultipleForAllRequest",
-  }) as any as Schema.Schema<ScoresResetMultipleForAllRequest>;
+export const ScoresResetMultipleForAllRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kind: Schema.optional(Schema.String),
+    leaderboard_ids: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ScoresResetMultipleForAllRequest" });
 
 // ==========================================================================
 // Operations

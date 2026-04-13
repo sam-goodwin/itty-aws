@@ -35,16 +35,13 @@ export interface Location {
   labels?: Record<string, string>;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      name: Schema.optional(Schema.String),
-      locationId: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  name: Schema.optional(Schema.String),
+  locationId: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "Location" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -53,43 +50,28 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(Location)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface TableDetail {
   /** Optional. Total number of partitions being tracked within the table. */
   partitionCount?: string;
 }
 
-export const TableDetail: Schema.Schema<TableDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      partitionCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TableDetail",
-  }) as any as Schema.Schema<TableDetail>;
+export const TableDetail = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  partitionCount: Schema.optional(Schema.String),
+}).annotate({ identifier: "TableDetail" });
 
 export interface PartitionDetail {
   /** Optional. Name of the table which has the partitions. */
   table?: string;
 }
 
-export const PartitionDetail: Schema.Schema<PartitionDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      table: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PartitionDetail",
-  }) as any as Schema.Schema<PartitionDetail>;
+export const PartitionDetail = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  table: Schema.optional(Schema.String),
+}).annotate({ identifier: "PartitionDetail" });
 
 export interface HierarchyDetail {
   /** Optional. Table details related to hierarchy. */
@@ -98,27 +80,19 @@ export interface HierarchyDetail {
   partitionDetail?: PartitionDetail;
 }
 
-export const HierarchyDetail: Schema.Schema<HierarchyDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tableDetail: Schema.optional(TableDetail),
-      partitionDetail: Schema.optional(PartitionDetail),
-    }),
-  ).annotate({
-    identifier: "HierarchyDetail",
-  }) as any as Schema.Schema<HierarchyDetail>;
+export const HierarchyDetail = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tableDetail: Schema.optional(TableDetail),
+  partitionDetail: Schema.optional(PartitionDetail),
+}).annotate({ identifier: "HierarchyDetail" });
 
 export interface UserInfo {
   /** E-mail address of the user. */
   email?: string;
 }
 
-export const UserInfo: Schema.Schema<UserInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      email: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "UserInfo" }) as any as Schema.Schema<UserInfo>;
+export const UserInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  email: Schema.optional(Schema.String),
+}).annotate({ identifier: "UserInfo" });
 
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -129,30 +103,22 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface EmailPreferences {
   /** If true, email notifications will be sent on transfer run failures. */
   enableFailureEmail?: boolean;
 }
 
-export const EmailPreferences: Schema.Schema<EmailPreferences> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableFailureEmail: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "EmailPreferences",
-  }) as any as Schema.Schema<EmailPreferences>;
+export const EmailPreferences = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enableFailureEmail: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "EmailPreferences" });
 
 export interface ScheduleOptions {
   /** If true, automatic scheduling of data transfer runs for this configuration will be disabled. The runs can be started on ad-hoc basis using StartManualTransferRuns API. When automatic scheduling is disabled, the TransferConfig.schedule field will be ignored. */
@@ -163,23 +129,17 @@ export interface ScheduleOptions {
   startTime?: string;
 }
 
-export const ScheduleOptions: Schema.Schema<ScheduleOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      disableAutoScheduling: Schema.optional(Schema.Boolean),
-      endTime: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ScheduleOptions",
-  }) as any as Schema.Schema<ScheduleOptions>;
+export const ScheduleOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  disableAutoScheduling: Schema.optional(Schema.Boolean),
+  endTime: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "ScheduleOptions" });
 
 export interface ManualSchedule {}
 
-export const ManualSchedule: Schema.Schema<ManualSchedule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "ManualSchedule",
-  }) as any as Schema.Schema<ManualSchedule>;
+export const ManualSchedule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "ManualSchedule" });
 
 export interface TimeBasedSchedule {
   /** Data transfer schedule. If the data source does not support a custom schedule, this should be empty. If it is empty, the default value for the data source will be used. The specified times are in UTC. Examples of valid format: `1st,3rd monday of month 15:30`, `every wed,fri of jan,jun 13:15`, and `first sunday of quarter 00:00`. See more explanation about the format here: https://cloud.google.com/appengine/docs/flexible/python/scheduling-jobs-with-cron-yaml#the_schedule_format NOTE: The minimum interval time between recurring transfers depends on the data source; refer to the documentation for your data source. */
@@ -190,30 +150,20 @@ export interface TimeBasedSchedule {
   endTime?: string;
 }
 
-export const TimeBasedSchedule: Schema.Schema<TimeBasedSchedule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      schedule: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TimeBasedSchedule",
-  }) as any as Schema.Schema<TimeBasedSchedule>;
+export const TimeBasedSchedule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  schedule: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "TimeBasedSchedule" });
 
 export interface EventDrivenSchedule {
   /** Pub/Sub subscription name used to receive events. Only Google Cloud Storage data source support this option. Format: projects/{project}/subscriptions/{subscription} */
   pubsubSubscription?: string;
 }
 
-export const EventDrivenSchedule: Schema.Schema<EventDrivenSchedule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pubsubSubscription: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EventDrivenSchedule",
-  }) as any as Schema.Schema<EventDrivenSchedule>;
+export const EventDrivenSchedule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pubsubSubscription: Schema.optional(Schema.String),
+}).annotate({ identifier: "EventDrivenSchedule" });
 
 export interface ScheduleOptionsV2 {
   /** Manual transfer schedule. If set, the transfer run will not be auto-scheduled by the system, unless the client invokes StartManualTransferRuns. This is equivalent to disable_auto_scheduling = true. */
@@ -224,30 +174,21 @@ export interface ScheduleOptionsV2 {
   eventDrivenSchedule?: EventDrivenSchedule;
 }
 
-export const ScheduleOptionsV2: Schema.Schema<ScheduleOptionsV2> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      manualSchedule: Schema.optional(ManualSchedule),
-      timeBasedSchedule: Schema.optional(TimeBasedSchedule),
-      eventDrivenSchedule: Schema.optional(EventDrivenSchedule),
-    }),
-  ).annotate({
-    identifier: "ScheduleOptionsV2",
-  }) as any as Schema.Schema<ScheduleOptionsV2>;
+export const ScheduleOptionsV2 = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  manualSchedule: Schema.optional(ManualSchedule),
+  timeBasedSchedule: Schema.optional(TimeBasedSchedule),
+  eventDrivenSchedule: Schema.optional(EventDrivenSchedule),
+}).annotate({ identifier: "ScheduleOptionsV2" });
 
 export interface EncryptionConfiguration {
   /** The name of the KMS key used for encrypting BigQuery data. */
   kmsKeyName?: string;
 }
 
-export const EncryptionConfiguration: Schema.Schema<EncryptionConfiguration> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kmsKeyName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EncryptionConfiguration",
-  }) as any as Schema.Schema<EncryptionConfiguration>;
+export const EncryptionConfiguration =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    kmsKeyName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EncryptionConfiguration" });
 
 export interface TransferConfig {
   /** Output only. Region in which BigQuery dataset is located. */
@@ -305,34 +246,29 @@ export interface TransferConfig {
   updateTime?: string;
 }
 
-export const TransferConfig: Schema.Schema<TransferConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      datasetRegion: Schema.optional(Schema.String),
-      schedule: Schema.optional(Schema.String),
-      ownerInfo: Schema.optional(UserInfo),
-      state: Schema.optional(Schema.String),
-      error: Schema.optional(Status),
-      disabled: Schema.optional(Schema.Boolean),
-      dataSourceId: Schema.optional(Schema.String),
-      emailPreferences: Schema.optional(EmailPreferences),
-      notificationPubsubTopic: Schema.optional(Schema.String),
-      params: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      destinationDatasetId: Schema.optional(Schema.String),
-      scheduleOptions: Schema.optional(ScheduleOptions),
-      displayName: Schema.optional(Schema.String),
-      dataRefreshWindowDays: Schema.optional(Schema.Number),
-      userId: Schema.optional(Schema.String),
-      scheduleOptionsV2: Schema.optional(ScheduleOptionsV2),
-      nextRunTime: Schema.optional(Schema.String),
-      encryptionConfiguration: Schema.optional(EncryptionConfiguration),
-      managedTableType: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TransferConfig",
-  }) as any as Schema.Schema<TransferConfig>;
+export const TransferConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  datasetRegion: Schema.optional(Schema.String),
+  schedule: Schema.optional(Schema.String),
+  ownerInfo: Schema.optional(UserInfo),
+  state: Schema.optional(Schema.String),
+  error: Schema.optional(Status),
+  disabled: Schema.optional(Schema.Boolean),
+  dataSourceId: Schema.optional(Schema.String),
+  emailPreferences: Schema.optional(EmailPreferences),
+  notificationPubsubTopic: Schema.optional(Schema.String),
+  params: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  destinationDatasetId: Schema.optional(Schema.String),
+  scheduleOptions: Schema.optional(ScheduleOptions),
+  displayName: Schema.optional(Schema.String),
+  dataRefreshWindowDays: Schema.optional(Schema.Number),
+  userId: Schema.optional(Schema.String),
+  scheduleOptionsV2: Schema.optional(ScheduleOptionsV2),
+  nextRunTime: Schema.optional(Schema.String),
+  encryptionConfiguration: Schema.optional(EncryptionConfiguration),
+  managedTableType: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "TransferConfig" });
 
 export interface TransferStatusMetric {
   /** Optional. Number of units transferred successfully. */
@@ -351,18 +287,13 @@ export interface TransferStatusMetric {
     | (string & {});
 }
 
-export const TransferStatusMetric: Schema.Schema<TransferStatusMetric> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      completed: Schema.optional(Schema.String),
-      pending: Schema.optional(Schema.String),
-      failed: Schema.optional(Schema.String),
-      total: Schema.optional(Schema.String),
-      unit: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TransferStatusMetric",
-  }) as any as Schema.Schema<TransferStatusMetric>;
+export const TransferStatusMetric = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  completed: Schema.optional(Schema.String),
+  pending: Schema.optional(Schema.String),
+  failed: Schema.optional(Schema.String),
+  total: Schema.optional(Schema.String),
+  unit: Schema.optional(Schema.String),
+}).annotate({ identifier: "TransferStatusMetric" });
 
 export interface TransferStatusSummary {
   /** Optional. List of transfer status metrics. */
@@ -375,15 +306,10 @@ export interface TransferStatusSummary {
     | (string & {});
 }
 
-export const TransferStatusSummary: Schema.Schema<TransferStatusSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metrics: Schema.optional(Schema.Array(TransferStatusMetric)),
-      progressUnit: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TransferStatusSummary",
-  }) as any as Schema.Schema<TransferStatusSummary>;
+export const TransferStatusSummary = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metrics: Schema.optional(Schema.Array(TransferStatusMetric)),
+  progressUnit: Schema.optional(Schema.String),
+}).annotate({ identifier: "TransferStatusSummary" });
 
 export interface TransferResourceStatusDetail {
   /** Output only. Percentage of the transfer completed. Valid values: 0-100. */
@@ -403,17 +329,13 @@ export interface TransferResourceStatusDetail {
   error?: Status;
 }
 
-export const TransferResourceStatusDetail: Schema.Schema<TransferResourceStatusDetail> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      completedPercentage: Schema.optional(Schema.Number),
-      state: Schema.optional(Schema.String),
-      summary: Schema.optional(TransferStatusSummary),
-      error: Schema.optional(Status),
-    }),
-  ).annotate({
-    identifier: "TransferResourceStatusDetail",
-  }) as any as Schema.Schema<TransferResourceStatusDetail>;
+export const TransferResourceStatusDetail =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    completedPercentage: Schema.optional(Schema.Number),
+    state: Schema.optional(Schema.String),
+    summary: Schema.optional(TransferStatusSummary),
+    error: Schema.optional(Status),
+  }).annotate({ identifier: "TransferResourceStatusDetail" });
 
 export interface TransferRunBrief {
   /** Optional. Run URI. The format must be: `projects/{project}/locations/{location}/transferConfigs/{transfer_config}/run/{run}` */
@@ -422,15 +344,10 @@ export interface TransferRunBrief {
   startTime?: string;
 }
 
-export const TransferRunBrief: Schema.Schema<TransferRunBrief> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      run: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TransferRunBrief",
-  }) as any as Schema.Schema<TransferRunBrief>;
+export const TransferRunBrief = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  run: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "TransferRunBrief" });
 
 export interface TransferResource {
   /** Optional. Details about the hierarchy. */
@@ -462,21 +379,16 @@ export interface TransferResource {
   lastSuccessfulRun?: TransferRunBrief;
 }
 
-export const TransferResource: Schema.Schema<TransferResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hierarchyDetail: Schema.optional(HierarchyDetail),
-      type: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      latestStatusDetail: Schema.optional(TransferResourceStatusDetail),
-      updateTime: Schema.optional(Schema.String),
-      destination: Schema.optional(Schema.String),
-      latestRun: Schema.optional(TransferRunBrief),
-      lastSuccessfulRun: Schema.optional(TransferRunBrief),
-    }),
-  ).annotate({
-    identifier: "TransferResource",
-  }) as any as Schema.Schema<TransferResource>;
+export const TransferResource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  hierarchyDetail: Schema.optional(HierarchyDetail),
+  type: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  latestStatusDetail: Schema.optional(TransferResourceStatusDetail),
+  updateTime: Schema.optional(Schema.String),
+  destination: Schema.optional(Schema.String),
+  latestRun: Schema.optional(TransferRunBrief),
+  lastSuccessfulRun: Schema.optional(TransferRunBrief),
+}).annotate({ identifier: "TransferResource" });
 
 export interface DataSourceParameter {
   /** Deprecated. This field has no effect. */
@@ -563,16 +475,11 @@ export interface TransferMessage {
     | (string & {});
 }
 
-export const TransferMessage: Schema.Schema<TransferMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      messageText: Schema.optional(Schema.String),
-      messageTime: Schema.optional(Schema.String),
-      severity: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TransferMessage",
-  }) as any as Schema.Schema<TransferMessage>;
+export const TransferMessage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  messageText: Schema.optional(Schema.String),
+  messageTime: Schema.optional(Schema.String),
+  severity: Schema.optional(Schema.String),
+}).annotate({ identifier: "TransferMessage" });
 
 export interface ScheduleTransferRunsRequest {
   /** Required. Start time of the range of transfer runs. For example, `"2017-05-25T00:00:00+00:00"`. */
@@ -581,15 +488,11 @@ export interface ScheduleTransferRunsRequest {
   endTime?: string;
 }
 
-export const ScheduleTransferRunsRequest: Schema.Schema<ScheduleTransferRunsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ScheduleTransferRunsRequest",
-  }) as any as Schema.Schema<ScheduleTransferRunsRequest>;
+export const ScheduleTransferRunsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ScheduleTransferRunsRequest" });
 
 export interface ListTransferResourcesResponse {
   /** Output only. The transfer resources. */
@@ -598,15 +501,11 @@ export interface ListTransferResourcesResponse {
   nextPageToken?: string;
 }
 
-export const ListTransferResourcesResponse: Schema.Schema<ListTransferResourcesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      transferResources: Schema.optional(Schema.Array(TransferResource)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListTransferResourcesResponse",
-  }) as any as Schema.Schema<ListTransferResourcesResponse>;
+export const ListTransferResourcesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    transferResources: Schema.optional(Schema.Array(TransferResource)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListTransferResourcesResponse" });
 
 export interface TransferRun {
   /** Identifier. The resource name of the transfer run. Transfer run names have the form `projects/{project_id}/locations/{location}/transferConfigs/{config_id}/runs/{run_id}`. The name is ignored when creating a transfer run. */
@@ -648,42 +547,33 @@ export interface TransferRun {
   scheduleTime?: string;
 }
 
-export const TransferRun: Schema.Schema<TransferRun> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      userId: Schema.optional(Schema.String),
-      destinationDatasetId: Schema.optional(Schema.String),
-      params: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      runTime: Schema.optional(Schema.String),
-      notificationPubsubTopic: Schema.optional(Schema.String),
-      emailPreferences: Schema.optional(EmailPreferences),
-      errorStatus: Schema.optional(Status),
-      dataSourceId: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      schedule: Schema.optional(Schema.String),
-      scheduleTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TransferRun",
-  }) as any as Schema.Schema<TransferRun>;
+export const TransferRun = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  userId: Schema.optional(Schema.String),
+  destinationDatasetId: Schema.optional(Schema.String),
+  params: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  runTime: Schema.optional(Schema.String),
+  notificationPubsubTopic: Schema.optional(Schema.String),
+  emailPreferences: Schema.optional(EmailPreferences),
+  errorStatus: Schema.optional(Status),
+  dataSourceId: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+  schedule: Schema.optional(Schema.String),
+  scheduleTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "TransferRun" });
 
 export interface CheckValidCredsResponse {
   /** If set to `true`, the credentials exist and are valid. */
   hasValidCreds?: boolean;
 }
 
-export const CheckValidCredsResponse: Schema.Schema<CheckValidCredsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hasValidCreds: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "CheckValidCredsResponse",
-  }) as any as Schema.Schema<CheckValidCredsResponse>;
+export const CheckValidCredsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    hasValidCreds: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "CheckValidCredsResponse" });
 
 export interface DataSource {
   /** User friendly data source name. */
@@ -737,29 +627,26 @@ export interface DataSource {
     | (string & {});
 }
 
-export const DataSource: Schema.Schema<DataSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      transferType: Schema.optional(Schema.String),
-      defaultDataRefreshWindowDays: Schema.optional(Schema.Number),
-      clientId: Schema.optional(Schema.String),
-      supportsMultipleTransfers: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-      updateDeadlineSeconds: Schema.optional(Schema.Number),
-      minimumScheduleInterval: Schema.optional(Schema.String),
-      supportsCustomSchedule: Schema.optional(Schema.Boolean),
-      dataRefreshType: Schema.optional(Schema.String),
-      helpUrl: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      scopes: Schema.optional(Schema.Array(Schema.String)),
-      manualRunsDisabled: Schema.optional(Schema.Boolean),
-      parameters: Schema.optional(Schema.Array(DataSourceParameter)),
-      defaultSchedule: Schema.optional(Schema.String),
-      dataSourceId: Schema.optional(Schema.String),
-      authorizationType: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "DataSource" }) as any as Schema.Schema<DataSource>;
+export const DataSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+  transferType: Schema.optional(Schema.String),
+  defaultDataRefreshWindowDays: Schema.optional(Schema.Number),
+  clientId: Schema.optional(Schema.String),
+  supportsMultipleTransfers: Schema.optional(Schema.Boolean),
+  name: Schema.optional(Schema.String),
+  updateDeadlineSeconds: Schema.optional(Schema.Number),
+  minimumScheduleInterval: Schema.optional(Schema.String),
+  supportsCustomSchedule: Schema.optional(Schema.Boolean),
+  dataRefreshType: Schema.optional(Schema.String),
+  helpUrl: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  scopes: Schema.optional(Schema.Array(Schema.String)),
+  manualRunsDisabled: Schema.optional(Schema.Boolean),
+  parameters: Schema.optional(Schema.Array(DataSourceParameter)),
+  defaultSchedule: Schema.optional(Schema.String),
+  dataSourceId: Schema.optional(Schema.String),
+  authorizationType: Schema.optional(Schema.String),
+}).annotate({ identifier: "DataSource" });
 
 export interface ListDataSourcesResponse {
   /** Output only. The next-pagination token. For multiple-page list results, this token can be used as the `ListDataSourcesRequest.page_token` to request the next page of list results. */
@@ -768,15 +655,11 @@ export interface ListDataSourcesResponse {
   dataSources?: Array<DataSource>;
 }
 
-export const ListDataSourcesResponse: Schema.Schema<ListDataSourcesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      dataSources: Schema.optional(Schema.Array(DataSource)),
-    }),
-  ).annotate({
-    identifier: "ListDataSourcesResponse",
-  }) as any as Schema.Schema<ListDataSourcesResponse>;
+export const ListDataSourcesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    dataSources: Schema.optional(Schema.Array(DataSource)),
+  }).annotate({ identifier: "ListDataSourcesResponse" });
 
 export interface TimeRange {
   /** Start time of the range of transfer runs. For example, `"2017-05-25T00:00:00+00:00"`. The start_time must be strictly less than the end_time. Creates transfer runs where run_time is in the range between start_time (inclusive) and end_time (exclusive). */
@@ -785,13 +668,10 @@ export interface TimeRange {
   endTime?: string;
 }
 
-export const TimeRange: Schema.Schema<TimeRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "TimeRange" }) as any as Schema.Schema<TimeRange>;
+export const TimeRange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "TimeRange" });
 
 export interface StartManualTransferRunsRequest {
   /** A time_range start and end timestamp for historical data files or reports that are scheduled to be transferred by the scheduled transfer run. requested_time_range must be a past time and cannot include future time values. */
@@ -800,29 +680,21 @@ export interface StartManualTransferRunsRequest {
   requestedRunTime?: string;
 }
 
-export const StartManualTransferRunsRequest: Schema.Schema<StartManualTransferRunsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestedTimeRange: Schema.optional(TimeRange),
-      requestedRunTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StartManualTransferRunsRequest",
-  }) as any as Schema.Schema<StartManualTransferRunsRequest>;
+export const StartManualTransferRunsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestedTimeRange: Schema.optional(TimeRange),
+    requestedRunTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "StartManualTransferRunsRequest" });
 
 export interface ScheduleTransferRunsResponse {
   /** The transfer runs that were scheduled. */
   runs?: Array<TransferRun>;
 }
 
-export const ScheduleTransferRunsResponse: Schema.Schema<ScheduleTransferRunsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      runs: Schema.optional(Schema.Array(TransferRun)),
-    }),
-  ).annotate({
-    identifier: "ScheduleTransferRunsResponse",
-  }) as any as Schema.Schema<ScheduleTransferRunsResponse>;
+export const ScheduleTransferRunsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    runs: Schema.optional(Schema.Array(TransferRun)),
+  }).annotate({ identifier: "ScheduleTransferRunsResponse" });
 
 export interface ListTransferRunsResponse {
   /** Output only. The stored pipeline transfer runs. */
@@ -831,15 +703,11 @@ export interface ListTransferRunsResponse {
   nextPageToken?: string;
 }
 
-export const ListTransferRunsResponse: Schema.Schema<ListTransferRunsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      transferRuns: Schema.optional(Schema.Array(TransferRun)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListTransferRunsResponse",
-  }) as any as Schema.Schema<ListTransferRunsResponse>;
+export const ListTransferRunsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    transferRuns: Schema.optional(Schema.Array(TransferRun)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListTransferRunsResponse" });
 
 export interface ListTransferLogsResponse {
   /** Output only. The next-pagination token. For multiple-page list results, this token can be used as the `GetTransferRunLogRequest.page_token` to request the next page of list results. */
@@ -848,64 +716,47 @@ export interface ListTransferLogsResponse {
   transferMessages?: Array<TransferMessage>;
 }
 
-export const ListTransferLogsResponse: Schema.Schema<ListTransferLogsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      transferMessages: Schema.optional(Schema.Array(TransferMessage)),
-    }),
-  ).annotate({
-    identifier: "ListTransferLogsResponse",
-  }) as any as Schema.Schema<ListTransferLogsResponse>;
+export const ListTransferLogsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    transferMessages: Schema.optional(Schema.Array(TransferMessage)),
+  }).annotate({ identifier: "ListTransferLogsResponse" });
 
 export interface StartManualTransferRunsResponse {
   /** The transfer runs that were created. */
   runs?: Array<TransferRun>;
 }
 
-export const StartManualTransferRunsResponse: Schema.Schema<StartManualTransferRunsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      runs: Schema.optional(Schema.Array(TransferRun)),
-    }),
-  ).annotate({
-    identifier: "StartManualTransferRunsResponse",
-  }) as any as Schema.Schema<StartManualTransferRunsResponse>;
+export const StartManualTransferRunsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    runs: Schema.optional(Schema.Array(TransferRun)),
+  }).annotate({ identifier: "StartManualTransferRunsResponse" });
 
 export interface CheckValidCredsRequest {}
 
-export const CheckValidCredsRequest: Schema.Schema<CheckValidCredsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CheckValidCredsRequest",
-  }) as any as Schema.Schema<CheckValidCredsRequest>;
+export const CheckValidCredsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CheckValidCredsRequest" });
 
 export interface EnrollDataSourcesRequest {
   /** Data sources that are enrolled. It is required to provide at least one data source id. */
   dataSourceIds?: Array<string>;
 }
 
-export const EnrollDataSourcesRequest: Schema.Schema<EnrollDataSourcesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataSourceIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "EnrollDataSourcesRequest",
-  }) as any as Schema.Schema<EnrollDataSourcesRequest>;
+export const EnrollDataSourcesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataSourceIds: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "EnrollDataSourcesRequest" });
 
 export interface UnenrollDataSourcesRequest {
   /** Data sources that are unenrolled. It is required to provide at least one data source id. */
   dataSourceIds?: Array<string>;
 }
 
-export const UnenrollDataSourcesRequest: Schema.Schema<UnenrollDataSourcesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataSourceIds: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "UnenrollDataSourcesRequest",
-  }) as any as Schema.Schema<UnenrollDataSourcesRequest>;
+export const UnenrollDataSourcesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataSourceIds: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "UnenrollDataSourcesRequest" });
 
 export interface ListTransferConfigsResponse {
   /** Output only. The stored pipeline transfer configurations. */
@@ -914,22 +765,17 @@ export interface ListTransferConfigsResponse {
   nextPageToken?: string;
 }
 
-export const ListTransferConfigsResponse: Schema.Schema<ListTransferConfigsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      transferConfigs: Schema.optional(Schema.Array(TransferConfig)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListTransferConfigsResponse",
-  }) as any as Schema.Schema<ListTransferConfigsResponse>;
+export const ListTransferConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    transferConfigs: Schema.optional(Schema.Array(TransferConfig)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListTransferConfigsResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 // ==========================================================================
 // Operations

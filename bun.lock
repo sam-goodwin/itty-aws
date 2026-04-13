@@ -37,7 +37,6 @@
       },
       "devDependencies": {
         "@effect/platform-bun": "catalog:",
-        "@effect/platform-node": "catalog:",
         "@effect/vitest": "catalog:",
         "@types/bun": "catalog:",
         "@types/node": "catalog:",
@@ -75,6 +74,7 @@
         "effect": "catalog:",
       },
       "devDependencies": {
+        "@effect/platform-bun": "catalog:",
         "@effect/platform-node": "catalog:",
         "@effect/vitest": "catalog:",
         "@types/bun": "catalog:",

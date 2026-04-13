@@ -27,14 +27,12 @@ export interface GoogleCloudEventarcV1PipelineMediationTransformation {
   transformationTemplate?: string;
 }
 
-export const GoogleCloudEventarcV1PipelineMediationTransformation: Schema.Schema<GoogleCloudEventarcV1PipelineMediationTransformation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      transformationTemplate: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudEventarcV1PipelineMediationTransformation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    transformationTemplate: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudEventarcV1PipelineMediationTransformation",
-  }) as any as Schema.Schema<GoogleCloudEventarcV1PipelineMediationTransformation>;
+  });
 
 export interface Enrollment {
   /** Output only. The last-modified time. */
@@ -61,36 +59,29 @@ export interface Enrollment {
   uid?: string;
 }
 
-export const Enrollment: Schema.Schema<Enrollment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateTime: Schema.optional(Schema.String),
-      messageBus: Schema.optional(Schema.String),
-      destination: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      etag: Schema.optional(Schema.String),
-      celMatch: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      name: Schema.optional(Schema.String),
-      uid: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Enrollment" }) as any as Schema.Schema<Enrollment>;
+export const Enrollment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  updateTime: Schema.optional(Schema.String),
+  messageBus: Schema.optional(Schema.String),
+  destination: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  etag: Schema.optional(Schema.String),
+  celMatch: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  name: Schema.optional(Schema.String),
+  uid: Schema.optional(Schema.String),
+}).annotate({ identifier: "Enrollment" });
 
 export interface OrganizationSubscription {
   /** Required. Enable org level subscription. */
   enabled?: boolean;
 }
 
-export const OrganizationSubscription: Schema.Schema<OrganizationSubscription> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "OrganizationSubscription",
-  }) as any as Schema.Schema<OrganizationSubscription>;
+export const OrganizationSubscription =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "OrganizationSubscription" });
 
 export interface LoggingConfig {
   /** Optional. The minimum severity of logs that will be sent to Stackdriver/Platform Telemetry. Logs at severitiy ≥ this value will be sent, unless it is NONE. */
@@ -108,14 +99,9 @@ export interface LoggingConfig {
     | (string & {});
 }
 
-export const LoggingConfig: Schema.Schema<LoggingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      logSeverity: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LoggingConfig",
-  }) as any as Schema.Schema<LoggingConfig>;
+export const LoggingConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  logSeverity: Schema.optional(Schema.String),
+}).annotate({ identifier: "LoggingConfig" });
 
 export interface MessageBus {
   /** Output only. The creation time. */
@@ -140,21 +126,18 @@ export interface MessageBus {
   cryptoKeyName?: string;
 }
 
-export const MessageBus: Schema.Schema<MessageBus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      etag: Schema.optional(Schema.String),
-      loggingConfig: Schema.optional(LoggingConfig),
-      updateTime: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      name: Schema.optional(Schema.String),
-      uid: Schema.optional(Schema.String),
-      cryptoKeyName: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "MessageBus" }) as any as Schema.Schema<MessageBus>;
+export const MessageBus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createTime: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  etag: Schema.optional(Schema.String),
+  loggingConfig: Schema.optional(LoggingConfig),
+  updateTime: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  name: Schema.optional(Schema.String),
+  uid: Schema.optional(Schema.String),
+  cryptoKeyName: Schema.optional(Schema.String),
+}).annotate({ identifier: "MessageBus" });
 
 export interface ListMessageBusesResponse {
   /** A page token that can be sent to `ListMessageBuses` to request the next page. If this is empty, then there are no more pages. */
@@ -165,66 +148,53 @@ export interface ListMessageBusesResponse {
   messageBuses?: Array<MessageBus>;
 }
 
-export const ListMessageBusesResponse: Schema.Schema<ListMessageBusesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      messageBuses: Schema.optional(Schema.Array(MessageBus)),
-    }),
-  ).annotate({
-    identifier: "ListMessageBusesResponse",
-  }) as any as Schema.Schema<ListMessageBusesResponse>;
+export const ListMessageBusesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    messageBuses: Schema.optional(Schema.Array(MessageBus)),
+  }).annotate({ identifier: "ListMessageBusesResponse" });
 
 export interface HttpEndpoint {
   /** Required. The URI of the HTTP endpoint. The value must be a RFC2396 URI string. Examples: `http://10.10.10.8:80/route`, `http://svc.us-central1.p.local:8080/`. Only HTTP and HTTPS protocols are supported. The host can be either a static IP addressable from the VPC specified by the network config, or an internal DNS hostname of the service resolvable via Cloud DNS. */
   uri?: string;
 }
 
-export const HttpEndpoint: Schema.Schema<HttpEndpoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "HttpEndpoint",
-  }) as any as Schema.Schema<HttpEndpoint>;
+export const HttpEndpoint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  uri: Schema.optional(Schema.String),
+}).annotate({ identifier: "HttpEndpoint" });
 
 export interface GoogleCloudEventarcV1PipelineMessagePayloadFormatJsonFormat {}
 
-export const GoogleCloudEventarcV1PipelineMessagePayloadFormatJsonFormat: Schema.Schema<GoogleCloudEventarcV1PipelineMessagePayloadFormatJsonFormat> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudEventarcV1PipelineMessagePayloadFormatJsonFormat =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudEventarcV1PipelineMessagePayloadFormatJsonFormat",
-  }) as any as Schema.Schema<GoogleCloudEventarcV1PipelineMessagePayloadFormatJsonFormat>;
+  });
 
 export interface GoogleCloudEventarcV1PipelineMessagePayloadFormatProtobufFormat {
   /** Optional. The entire schema definition is stored in this field. */
   schemaDefinition?: string;
 }
 
-export const GoogleCloudEventarcV1PipelineMessagePayloadFormatProtobufFormat: Schema.Schema<GoogleCloudEventarcV1PipelineMessagePayloadFormatProtobufFormat> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      schemaDefinition: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudEventarcV1PipelineMessagePayloadFormatProtobufFormat =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    schemaDefinition: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudEventarcV1PipelineMessagePayloadFormatProtobufFormat",
-  }) as any as Schema.Schema<GoogleCloudEventarcV1PipelineMessagePayloadFormatProtobufFormat>;
+  });
 
 export interface GoogleCloudEventarcV1PipelineMessagePayloadFormatAvroFormat {
   /** Optional. The entire schema definition is stored in this field. */
   schemaDefinition?: string;
 }
 
-export const GoogleCloudEventarcV1PipelineMessagePayloadFormatAvroFormat: Schema.Schema<GoogleCloudEventarcV1PipelineMessagePayloadFormatAvroFormat> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      schemaDefinition: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudEventarcV1PipelineMessagePayloadFormatAvroFormat =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    schemaDefinition: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudEventarcV1PipelineMessagePayloadFormatAvroFormat",
-  }) as any as Schema.Schema<GoogleCloudEventarcV1PipelineMessagePayloadFormatAvroFormat>;
+  });
 
 export interface GoogleCloudEventarcV1PipelineMessagePayloadFormat {
   /** Optional. JSON format. */
@@ -235,22 +205,20 @@ export interface GoogleCloudEventarcV1PipelineMessagePayloadFormat {
   avro?: GoogleCloudEventarcV1PipelineMessagePayloadFormatAvroFormat;
 }
 
-export const GoogleCloudEventarcV1PipelineMessagePayloadFormat: Schema.Schema<GoogleCloudEventarcV1PipelineMessagePayloadFormat> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      json: Schema.optional(
-        GoogleCloudEventarcV1PipelineMessagePayloadFormatJsonFormat,
-      ),
-      protobuf: Schema.optional(
-        GoogleCloudEventarcV1PipelineMessagePayloadFormatProtobufFormat,
-      ),
-      avro: Schema.optional(
-        GoogleCloudEventarcV1PipelineMessagePayloadFormatAvroFormat,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudEventarcV1PipelineMessagePayloadFormat =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    json: Schema.optional(
+      GoogleCloudEventarcV1PipelineMessagePayloadFormatJsonFormat,
+    ),
+    protobuf: Schema.optional(
+      GoogleCloudEventarcV1PipelineMessagePayloadFormatProtobufFormat,
+    ),
+    avro: Schema.optional(
+      GoogleCloudEventarcV1PipelineMessagePayloadFormatAvroFormat,
+    ),
+  }).annotate({
     identifier: "GoogleCloudEventarcV1PipelineMessagePayloadFormat",
-  }) as any as Schema.Schema<GoogleCloudEventarcV1PipelineMessagePayloadFormat>;
+  });
 
 export interface GoogleCloudEventarcV1PipelineDestinationHttpEndpoint {
   /** Required. The URI of the HTTP endpoint. The value must be a RFC2396 URI string. Examples: `https://svc.us-central1.p.local:8080/route`. Only the HTTPS protocol is supported. */
@@ -259,15 +227,13 @@ export interface GoogleCloudEventarcV1PipelineDestinationHttpEndpoint {
   messageBindingTemplate?: string;
 }
 
-export const GoogleCloudEventarcV1PipelineDestinationHttpEndpoint: Schema.Schema<GoogleCloudEventarcV1PipelineDestinationHttpEndpoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-      messageBindingTemplate: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudEventarcV1PipelineDestinationHttpEndpoint =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    uri: Schema.optional(Schema.String),
+    messageBindingTemplate: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudEventarcV1PipelineDestinationHttpEndpoint",
-  }) as any as Schema.Schema<GoogleCloudEventarcV1PipelineDestinationHttpEndpoint>;
+  });
 
 export interface GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOAuthToken {
   /** Required. Service account email used to generate the [OAuth token](https://developers.google.com/identity/protocols/OAuth2). The principal who calls this API must have iam.serviceAccounts.actAs permission in the service account. See https://cloud.google.com/iam/docs/understanding-service-accounts for more information. Eventarc service agents must have roles/roles/iam.serviceAccountTokenCreator role to allow Pipeline to create OAuth2 tokens for authenticated requests. */
@@ -276,16 +242,14 @@ export interface GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOAu
   scope?: string;
 }
 
-export const GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOAuthToken: Schema.Schema<GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOAuthToken> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serviceAccount: Schema.optional(Schema.String),
-      scope: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOAuthToken =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    serviceAccount: Schema.optional(Schema.String),
+    scope: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOAuthToken",
-  }) as any as Schema.Schema<GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOAuthToken>;
+  });
 
 export interface GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOidcToken {
   /** Optional. Audience to be used to generate the OIDC Token. The audience claim identifies the recipient that the JWT is intended for. If unspecified, the destination URI will be used. */
@@ -294,16 +258,14 @@ export interface GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOid
   serviceAccount?: string;
 }
 
-export const GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOidcToken: Schema.Schema<GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOidcToken> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      audience: Schema.optional(Schema.String),
-      serviceAccount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOidcToken =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    audience: Schema.optional(Schema.String),
+    serviceAccount: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOidcToken",
-  }) as any as Schema.Schema<GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOidcToken>;
+  });
 
 export interface GoogleCloudEventarcV1PipelineDestinationAuthenticationConfig {
   /** Optional. If specified, an [OAuth token](https://developers.google.com/identity/protocols/OAuth2) will be generated and attached as an `Authorization` header in the HTTP request. This type of authorization should generally only be used when calling Google APIs hosted on *.googleapis.com. */
@@ -312,33 +274,29 @@ export interface GoogleCloudEventarcV1PipelineDestinationAuthenticationConfig {
   googleOidc?: GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOidcToken;
 }
 
-export const GoogleCloudEventarcV1PipelineDestinationAuthenticationConfig: Schema.Schema<GoogleCloudEventarcV1PipelineDestinationAuthenticationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      oauthToken: Schema.optional(
-        GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOAuthToken,
-      ),
-      googleOidc: Schema.optional(
-        GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOidcToken,
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudEventarcV1PipelineDestinationAuthenticationConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    oauthToken: Schema.optional(
+      GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOAuthToken,
+    ),
+    googleOidc: Schema.optional(
+      GoogleCloudEventarcV1PipelineDestinationAuthenticationConfigOidcToken,
+    ),
+  }).annotate({
     identifier: "GoogleCloudEventarcV1PipelineDestinationAuthenticationConfig",
-  }) as any as Schema.Schema<GoogleCloudEventarcV1PipelineDestinationAuthenticationConfig>;
+  });
 
 export interface GoogleCloudEventarcV1PipelineDestinationNetworkConfig {
   /** Required. Name of the NetworkAttachment that allows access to the consumer VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}` */
   networkAttachment?: string;
 }
 
-export const GoogleCloudEventarcV1PipelineDestinationNetworkConfig: Schema.Schema<GoogleCloudEventarcV1PipelineDestinationNetworkConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      networkAttachment: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudEventarcV1PipelineDestinationNetworkConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    networkAttachment: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudEventarcV1PipelineDestinationNetworkConfig",
-  }) as any as Schema.Schema<GoogleCloudEventarcV1PipelineDestinationNetworkConfig>;
+  });
 
 export interface GoogleCloudEventarcV1PipelineDestination {
   /** Optional. The resource name of the Workflow whose Executions are triggered by the events. The Workflow resource should be deployed in the same project as the Pipeline. Format: `projects/{project}/locations/{location}/workflows/{workflow}` */
@@ -357,44 +315,36 @@ export interface GoogleCloudEventarcV1PipelineDestination {
   topic?: string;
 }
 
-export const GoogleCloudEventarcV1PipelineDestination: Schema.Schema<GoogleCloudEventarcV1PipelineDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      workflow: Schema.optional(Schema.String),
-      outputPayloadFormat: Schema.optional(
-        GoogleCloudEventarcV1PipelineMessagePayloadFormat,
-      ),
-      httpEndpoint: Schema.optional(
-        GoogleCloudEventarcV1PipelineDestinationHttpEndpoint,
-      ),
-      authenticationConfig: Schema.optional(
-        GoogleCloudEventarcV1PipelineDestinationAuthenticationConfig,
-      ),
-      messageBus: Schema.optional(Schema.String),
-      networkConfig: Schema.optional(
-        GoogleCloudEventarcV1PipelineDestinationNetworkConfig,
-      ),
-      topic: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudEventarcV1PipelineDestination",
-  }) as any as Schema.Schema<GoogleCloudEventarcV1PipelineDestination>;
+export const GoogleCloudEventarcV1PipelineDestination =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    workflow: Schema.optional(Schema.String),
+    outputPayloadFormat: Schema.optional(
+      GoogleCloudEventarcV1PipelineMessagePayloadFormat,
+    ),
+    httpEndpoint: Schema.optional(
+      GoogleCloudEventarcV1PipelineDestinationHttpEndpoint,
+    ),
+    authenticationConfig: Schema.optional(
+      GoogleCloudEventarcV1PipelineDestinationAuthenticationConfig,
+    ),
+    messageBus: Schema.optional(Schema.String),
+    networkConfig: Schema.optional(
+      GoogleCloudEventarcV1PipelineDestinationNetworkConfig,
+    ),
+    topic: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudEventarcV1PipelineDestination" });
 
 export interface GoogleCloudEventarcV1PipelineMediation {
   /** Optional. How the Pipeline is to transform messages */
   transformation?: GoogleCloudEventarcV1PipelineMediationTransformation;
 }
 
-export const GoogleCloudEventarcV1PipelineMediation: Schema.Schema<GoogleCloudEventarcV1PipelineMediation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      transformation: Schema.optional(
-        GoogleCloudEventarcV1PipelineMediationTransformation,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudEventarcV1PipelineMediation",
-  }) as any as Schema.Schema<GoogleCloudEventarcV1PipelineMediation>;
+export const GoogleCloudEventarcV1PipelineMediation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    transformation: Schema.optional(
+      GoogleCloudEventarcV1PipelineMediationTransformation,
+    ),
+  }).annotate({ identifier: "GoogleCloudEventarcV1PipelineMediation" });
 
 export interface GoogleCloudEventarcV1PipelineRetryPolicy {
   /** Optional. The maximum amount of seconds to wait between retry attempts. The value must be between 1 and 600. The default value for this field is 60. */
@@ -405,16 +355,12 @@ export interface GoogleCloudEventarcV1PipelineRetryPolicy {
   minRetryDelay?: string;
 }
 
-export const GoogleCloudEventarcV1PipelineRetryPolicy: Schema.Schema<GoogleCloudEventarcV1PipelineRetryPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      maxRetryDelay: Schema.optional(Schema.String),
-      maxAttempts: Schema.optional(Schema.Number),
-      minRetryDelay: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudEventarcV1PipelineRetryPolicy",
-  }) as any as Schema.Schema<GoogleCloudEventarcV1PipelineRetryPolicy>;
+export const GoogleCloudEventarcV1PipelineRetryPolicy =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    maxRetryDelay: Schema.optional(Schema.String),
+    maxAttempts: Schema.optional(Schema.Number),
+    minRetryDelay: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudEventarcV1PipelineRetryPolicy" });
 
 export interface Pipeline {
   /** Optional. User labels attached to the Pipeline that can be used to group resources. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }. */
@@ -449,32 +395,29 @@ export interface Pipeline {
   satisfiesPzs?: boolean;
 }
 
-export const Pipeline: Schema.Schema<Pipeline> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      name: Schema.optional(Schema.String),
-      loggingConfig: Schema.optional(LoggingConfig),
-      etag: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      destinations: Schema.optional(
-        Schema.Array(GoogleCloudEventarcV1PipelineDestination),
-      ),
-      uid: Schema.optional(Schema.String),
-      cryptoKeyName: Schema.optional(Schema.String),
-      inputPayloadFormat: Schema.optional(
-        GoogleCloudEventarcV1PipelineMessagePayloadFormat,
-      ),
-      mediations: Schema.optional(
-        Schema.Array(GoogleCloudEventarcV1PipelineMediation),
-      ),
-      retryPolicy: Schema.optional(GoogleCloudEventarcV1PipelineRetryPolicy),
-      createTime: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      satisfiesPzs: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "Pipeline" }) as any as Schema.Schema<Pipeline>;
+export const Pipeline = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  name: Schema.optional(Schema.String),
+  loggingConfig: Schema.optional(LoggingConfig),
+  etag: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  destinations: Schema.optional(
+    Schema.Array(GoogleCloudEventarcV1PipelineDestination),
+  ),
+  uid: Schema.optional(Schema.String),
+  cryptoKeyName: Schema.optional(Schema.String),
+  inputPayloadFormat: Schema.optional(
+    GoogleCloudEventarcV1PipelineMessagePayloadFormat,
+  ),
+  mediations: Schema.optional(
+    Schema.Array(GoogleCloudEventarcV1PipelineMediation),
+  ),
+  retryPolicy: Schema.optional(GoogleCloudEventarcV1PipelineRetryPolicy),
+  createTime: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  satisfiesPzs: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Pipeline" });
 
 export interface ListPipelinesResponse {
   /** The requested pipelines, up to the number specified in `page_size`. */
@@ -485,30 +428,20 @@ export interface ListPipelinesResponse {
   unreachable?: Array<string>;
 }
 
-export const ListPipelinesResponse: Schema.Schema<ListPipelinesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pipelines: Schema.optional(Schema.Array(Pipeline)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListPipelinesResponse",
-  }) as any as Schema.Schema<ListPipelinesResponse>;
+export const ListPipelinesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pipelines: Schema.optional(Schema.Array(Pipeline)),
+  nextPageToken: Schema.optional(Schema.String),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ListPipelinesResponse" });
 
 export interface ProjectSubscriptions {
   /** Required. A list of projects to receive events from. All the projects must be in the same org. The listed projects should have the format project/{identifier} where identifier can be either the project id for project number. A single list may contain both formats. At most 100 projects can be listed. */
   list?: Array<string>;
 }
 
-export const ProjectSubscriptions: Schema.Schema<ProjectSubscriptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      list: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ProjectSubscriptions",
-  }) as any as Schema.Schema<ProjectSubscriptions>;
+export const ProjectSubscriptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  list: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ProjectSubscriptions" });
 
 export interface GoogleRpcStatus {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -519,18 +452,13 @@ export interface GoogleRpcStatus {
   message?: string;
 }
 
-export const GoogleRpcStatus: Schema.Schema<GoogleRpcStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      message: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleRpcStatus",
-  }) as any as Schema.Schema<GoogleRpcStatus>;
+export const GoogleRpcStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  message: Schema.optional(Schema.String),
+}).annotate({ identifier: "GoogleRpcStatus" });
 
 export interface GoogleLongrunningOperation {
   /** The error result of the operation in case of failure or cancellation. */
@@ -545,18 +473,14 @@ export interface GoogleLongrunningOperation {
   metadata?: Record<string, unknown>;
 }
 
-export const GoogleLongrunningOperation: Schema.Schema<GoogleLongrunningOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      error: Schema.optional(GoogleRpcStatus),
-      name: Schema.optional(Schema.String),
-      done: Schema.optional(Schema.Boolean),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
-    identifier: "GoogleLongrunningOperation",
-  }) as any as Schema.Schema<GoogleLongrunningOperation>;
+export const GoogleLongrunningOperation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(GoogleRpcStatus),
+    name: Schema.optional(Schema.String),
+    done: Schema.optional(Schema.Boolean),
+    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "GoogleLongrunningOperation" });
 
 export interface GoogleLongrunningListOperationsResponse {
   /** The standard List next-page token. */
@@ -567,16 +491,12 @@ export interface GoogleLongrunningListOperationsResponse {
   operations?: Array<GoogleLongrunningOperation>;
 }
 
-export const GoogleLongrunningListOperationsResponse: Schema.Schema<GoogleLongrunningListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
-    }),
-  ).annotate({
-    identifier: "GoogleLongrunningListOperationsResponse",
-  }) as any as Schema.Schema<GoogleLongrunningListOperationsResponse>;
+export const GoogleLongrunningListOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
+  }).annotate({ identifier: "GoogleLongrunningListOperationsResponse" });
 
 export interface GoogleApiSource {
   /** Optional. Resource labels. */
@@ -607,26 +527,21 @@ export interface GoogleApiSource {
   annotations?: Record<string, string>;
 }
 
-export const GoogleApiSource: Schema.Schema<GoogleApiSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      organizationSubscription: Schema.optional(OrganizationSubscription),
-      name: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      destination: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      loggingConfig: Schema.optional(LoggingConfig),
-      uid: Schema.optional(Schema.String),
-      cryptoKeyName: Schema.optional(Schema.String),
-      projectSubscriptions: Schema.optional(ProjectSubscriptions),
-      createTime: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleApiSource",
-  }) as any as Schema.Schema<GoogleApiSource>;
+export const GoogleApiSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  organizationSubscription: Schema.optional(OrganizationSubscription),
+  name: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  destination: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  loggingConfig: Schema.optional(LoggingConfig),
+  uid: Schema.optional(Schema.String),
+  cryptoKeyName: Schema.optional(Schema.String),
+  projectSubscriptions: Schema.optional(ProjectSubscriptions),
+  createTime: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "GoogleApiSource" });
 
 export interface ListGoogleApiSourcesResponse {
   /** The requested GoogleApiSources, up to the number specified in `page_size`. */
@@ -637,16 +552,12 @@ export interface ListGoogleApiSourcesResponse {
   unreachable?: Array<string>;
 }
 
-export const ListGoogleApiSourcesResponse: Schema.Schema<ListGoogleApiSourcesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      googleApiSources: Schema.optional(Schema.Array(GoogleApiSource)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListGoogleApiSourcesResponse",
-  }) as any as Schema.Schema<ListGoogleApiSourcesResponse>;
+export const ListGoogleApiSourcesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    googleApiSources: Schema.optional(Schema.Array(GoogleApiSource)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListGoogleApiSourcesResponse" });
 
 export interface Location {
   /** Resource name for the location, which may vary between implementations. For example: `"projects/example-project/locations/us-east1"` */
@@ -661,16 +572,13 @@ export interface Location {
   metadata?: Record<string, unknown>;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      locationId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  locationId: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Location" });
 
 export interface Expr {
   /** Textual representation of an expression in Common Expression Language syntax. */
@@ -683,15 +591,12 @@ export interface Expr {
   title?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expression: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Expr" }) as any as Schema.Schema<Expr>;
+export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  expression: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+}).annotate({ identifier: "Expr" });
 
 export interface Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
@@ -702,14 +607,11 @@ export interface Binding {
   condition?: Expr;
 }
 
-export const Binding: Schema.Schema<Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      members: Schema.optional(Schema.Array(Schema.String)),
-      role: Schema.optional(Schema.String),
-      condition: Schema.optional(Expr),
-    }),
-  ).annotate({ identifier: "Binding" }) as any as Schema.Schema<Binding>;
+export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  members: Schema.optional(Schema.Array(Schema.String)),
+  role: Schema.optional(Schema.String),
+  condition: Schema.optional(Expr),
+}).annotate({ identifier: "Binding" });
 
 export interface Pubsub {
   /** Optional. The name of the Pub/Sub topic created and managed by Eventarc as a transport for the event delivery. Format: `projects/{PROJECT_ID}/topics/{TOPIC_NAME}`. You can set an existing topic for triggers of the type `google.cloud.pubsub.topic.v1.messagePublished`. The topic you provide here is not deleted by Eventarc at trigger deletion. */
@@ -718,25 +620,19 @@ export interface Pubsub {
   subscription?: string;
 }
 
-export const Pubsub: Schema.Schema<Pubsub> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      topic: Schema.optional(Schema.String),
-      subscription: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Pubsub" }) as any as Schema.Schema<Pubsub>;
+export const Pubsub = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  topic: Schema.optional(Schema.String),
+  subscription: Schema.optional(Schema.String),
+}).annotate({ identifier: "Pubsub" });
 
 export interface Transport {
   /** The Pub/Sub topic and subscription used by Eventarc as a transport intermediary. */
   pubsub?: Pubsub;
 }
 
-export const Transport: Schema.Schema<Transport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pubsub: Schema.optional(Pubsub),
-    }),
-  ).annotate({ identifier: "Transport" }) as any as Schema.Schema<Transport>;
+export const Transport = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pubsub: Schema.optional(Pubsub),
+}).annotate({ identifier: "Transport" });
 
 export interface StateCondition {
   /** Human-readable message. */
@@ -763,15 +659,10 @@ export interface StateCondition {
     | (string & {});
 }
 
-export const StateCondition: Schema.Schema<StateCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      message: Schema.optional(Schema.String),
-      code: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StateCondition",
-  }) as any as Schema.Schema<StateCondition>;
+export const StateCondition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  message: Schema.optional(Schema.String),
+  code: Schema.optional(Schema.String),
+}).annotate({ identifier: "StateCondition" });
 
 export interface FilteringAttribute {
   /** Output only. Description of the purpose of the attribute. */
@@ -784,17 +675,12 @@ export interface FilteringAttribute {
   attribute?: string;
 }
 
-export const FilteringAttribute: Schema.Schema<FilteringAttribute> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      pathPatternSupported: Schema.optional(Schema.Boolean),
-      required: Schema.optional(Schema.Boolean),
-      attribute: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FilteringAttribute",
-  }) as any as Schema.Schema<FilteringAttribute>;
+export const FilteringAttribute = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  pathPatternSupported: Schema.optional(Schema.Boolean),
+  required: Schema.optional(Schema.Boolean),
+  attribute: Schema.optional(Schema.String),
+}).annotate({ identifier: "FilteringAttribute" });
 
 export interface EventType {
   /** Output only. Human friendly description of what the event type is about. For example "Bucket created in Cloud Storage". */
@@ -807,29 +693,21 @@ export interface EventType {
   type?: string;
 }
 
-export const EventType: Schema.Schema<EventType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      eventSchemaUri: Schema.optional(Schema.String),
-      filteringAttributes: Schema.optional(Schema.Array(FilteringAttribute)),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "EventType" }) as any as Schema.Schema<EventType>;
+export const EventType = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  eventSchemaUri: Schema.optional(Schema.String),
+  filteringAttributes: Schema.optional(Schema.Array(FilteringAttribute)),
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "EventType" });
 
 export interface NetworkConfig {
   /** Required. Name of the NetworkAttachment that allows access to the customer's VPC. Format: `projects/{PROJECT_ID}/regions/{REGION}/networkAttachments/{NETWORK_ATTACHMENT_NAME}` */
   networkAttachment?: string;
 }
 
-export const NetworkConfig: Schema.Schema<NetworkConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      networkAttachment: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NetworkConfig",
-  }) as any as Schema.Schema<NetworkConfig>;
+export const NetworkConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  networkAttachment: Schema.optional(Schema.String),
+}).annotate({ identifier: "NetworkConfig" });
 
 export interface CloudRun {
   /** Optional. The relative path on the Cloud Run service the events should be sent to. The value must conform to the definition of a URI path segment (section 3.3 of RFC2396). Examples: "/route", "route", "route/subroute". */
@@ -840,14 +718,11 @@ export interface CloudRun {
   service?: string;
 }
 
-export const CloudRun: Schema.Schema<CloudRun> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      path: Schema.optional(Schema.String),
-      region: Schema.optional(Schema.String),
-      service: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "CloudRun" }) as any as Schema.Schema<CloudRun>;
+export const CloudRun = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  path: Schema.optional(Schema.String),
+  region: Schema.optional(Schema.String),
+  service: Schema.optional(Schema.String),
+}).annotate({ identifier: "CloudRun" });
 
 export interface GKE {
   /** Required. The name of the cluster the GKE service is running in. The cluster must be running in the same project as the trigger being created. */
@@ -862,16 +737,13 @@ export interface GKE {
   service?: string;
 }
 
-export const GKE: Schema.Schema<GKE> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cluster: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-      namespace: Schema.optional(Schema.String),
-      path: Schema.optional(Schema.String),
-      service: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "GKE" }) as any as Schema.Schema<GKE>;
+export const GKE = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cluster: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  namespace: Schema.optional(Schema.String),
+  path: Schema.optional(Schema.String),
+  service: Schema.optional(Schema.String),
+}).annotate({ identifier: "GKE" });
 
 export interface Destination {
   /** Optional. Network config is used to configure how Eventarc resolves and connect to a destination. This should only be used with HttpEndpoint destination type. */
@@ -888,33 +760,23 @@ export interface Destination {
   workflow?: string;
 }
 
-export const Destination: Schema.Schema<Destination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      networkConfig: Schema.optional(NetworkConfig),
-      httpEndpoint: Schema.optional(HttpEndpoint),
-      cloudRun: Schema.optional(CloudRun),
-      gke: Schema.optional(GKE),
-      cloudFunction: Schema.optional(Schema.String),
-      workflow: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Destination",
-  }) as any as Schema.Schema<Destination>;
+export const Destination = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  networkConfig: Schema.optional(NetworkConfig),
+  httpEndpoint: Schema.optional(HttpEndpoint),
+  cloudRun: Schema.optional(CloudRun),
+  gke: Schema.optional(GKE),
+  cloudFunction: Schema.optional(Schema.String),
+  workflow: Schema.optional(Schema.String),
+}).annotate({ identifier: "Destination" });
 
 export interface RetryPolicy {
   /** Optional. The maximum number of delivery attempts for any message. The only valid value is 1. */
   maxAttempts?: number;
 }
 
-export const RetryPolicy: Schema.Schema<RetryPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      maxAttempts: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "RetryPolicy",
-  }) as any as Schema.Schema<RetryPolicy>;
+export const RetryPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  maxAttempts: Schema.optional(Schema.Number),
+}).annotate({ identifier: "RetryPolicy" });
 
 export interface EventFilter {
   /** Optional. The operator used for matching the events with the value of the filter. If not specified, only events that have an exact key-value pair specified in the filter are matched. The allowed values are `path_pattern` and `match-path-pattern`. `path_pattern` is only allowed for GCFv1 triggers. */
@@ -925,16 +787,11 @@ export interface EventFilter {
   value?: string;
 }
 
-export const EventFilter: Schema.Schema<EventFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operator: Schema.optional(Schema.String),
-      attribute: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EventFilter",
-  }) as any as Schema.Schema<EventFilter>;
+export const EventFilter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  operator: Schema.optional(Schema.String),
+  attribute: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+}).annotate({ identifier: "EventFilter" });
 
 export interface AuditLogConfig {
   /** The log type that this config enables. */
@@ -948,15 +805,10 @@ export interface AuditLogConfig {
   exemptedMembers?: Array<string>;
 }
 
-export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      logType: Schema.optional(Schema.String),
-      exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AuditLogConfig",
-  }) as any as Schema.Schema<AuditLogConfig>;
+export const AuditLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  logType: Schema.optional(Schema.String),
+  exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "AuditLogConfig" });
 
 export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
@@ -965,15 +817,10 @@ export interface AuditConfig {
   auditLogConfigs?: Array<AuditLogConfig>;
 }
 
-export const AuditConfig: Schema.Schema<AuditConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      service: Schema.optional(Schema.String),
-      auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
-    }),
-  ).annotate({
-    identifier: "AuditConfig",
-  }) as any as Schema.Schema<AuditConfig>;
+export const AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  service: Schema.optional(Schema.String),
+  auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
+}).annotate({ identifier: "AuditConfig" });
 
 export interface Policy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
@@ -986,36 +833,28 @@ export interface Policy {
   etag?: string;
 }
 
-export const Policy: Schema.Schema<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bindings: Schema.optional(Schema.Array(Binding)),
-      version: Schema.optional(Schema.Number),
-      auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Policy" }) as any as Schema.Schema<Policy>;
+export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bindings: Schema.optional(Schema.Array(Binding)),
+  version: Schema.optional(Schema.Number),
+  auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "Policy" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsRequest",
-  }) as any as Schema.Schema<TestIamPermissionsRequest>;
+export const TestIamPermissionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsRequest" });
 
 export interface OperationMetadata {
   /** Output only. Name of the verb executed by the operation. */
@@ -1034,20 +873,15 @@ export interface OperationMetadata {
   createTime?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      verb: Schema.optional(Schema.String),
-      apiVersion: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      target: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  verb: Schema.optional(Schema.String),
+  apiVersion: Schema.optional(Schema.String),
+  requestedCancellation: Schema.optional(Schema.Boolean),
+  target: Schema.optional(Schema.String),
+  statusMessage: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationMetadata" });
 
 export interface ChannelConnection {
   /** Output only. The last-modified time. */
@@ -1066,20 +900,15 @@ export interface ChannelConnection {
   labels?: Record<string, string>;
 }
 
-export const ChannelConnection: Schema.Schema<ChannelConnection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      activationToken: Schema.optional(Schema.String),
-      uid: Schema.optional(Schema.String),
-      channel: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ChannelConnection",
-  }) as any as Schema.Schema<ChannelConnection>;
+export const ChannelConnection = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  updateTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  activationToken: Schema.optional(Schema.String),
+  uid: Schema.optional(Schema.String),
+  channel: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "ChannelConnection" });
 
 export interface Channel {
   /** Output only. Whether or not this Channel satisfies the requirements of physical zone separation */
@@ -1111,22 +940,19 @@ export interface Channel {
   labels?: Record<string, string>;
 }
 
-export const Channel: Schema.Schema<Channel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      satisfiesPzs: Schema.optional(Schema.Boolean),
-      updateTime: Schema.optional(Schema.String),
-      provider: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      pubsubTopic: Schema.optional(Schema.String),
-      uid: Schema.optional(Schema.String),
-      cryptoKeyName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      activationToken: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({ identifier: "Channel" }) as any as Schema.Schema<Channel>;
+export const Channel = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  satisfiesPzs: Schema.optional(Schema.Boolean),
+  updateTime: Schema.optional(Schema.String),
+  provider: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  pubsubTopic: Schema.optional(Schema.String),
+  uid: Schema.optional(Schema.String),
+  cryptoKeyName: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  activationToken: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "Channel" });
 
 export interface ListChannelConnectionsResponse {
   /** A page token that can be sent to `ListChannelConnections` to request the next page. If this is empty, then there are no more pages. */
@@ -1137,16 +963,12 @@ export interface ListChannelConnectionsResponse {
   channelConnections?: Array<ChannelConnection>;
 }
 
-export const ListChannelConnectionsResponse: Schema.Schema<ListChannelConnectionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      channelConnections: Schema.optional(Schema.Array(ChannelConnection)),
-    }),
-  ).annotate({
-    identifier: "ListChannelConnectionsResponse",
-  }) as any as Schema.Schema<ListChannelConnectionsResponse>;
+export const ListChannelConnectionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    channelConnections: Schema.optional(Schema.Array(ChannelConnection)),
+  }).annotate({ identifier: "ListChannelConnectionsResponse" });
 
 export interface SetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
@@ -1155,29 +977,20 @@ export interface SetIamPolicyRequest {
   policy?: Policy;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateMask: Schema.optional(Schema.String),
-      policy: Schema.optional(Policy),
-    }),
-  ).annotate({
-    identifier: "SetIamPolicyRequest",
-  }) as any as Schema.Schema<SetIamPolicyRequest>;
+export const SetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  updateMask: Schema.optional(Schema.String),
+  policy: Schema.optional(Policy),
+}).annotate({ identifier: "SetIamPolicyRequest" });
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsResponse",
-  }) as any as Schema.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsResponse" });
 
 export interface Provider {
   /** Output only. Human friendly name for the Provider. For example "Cloud Storage". */
@@ -1188,14 +1001,11 @@ export interface Provider {
   name?: string;
 }
 
-export const Provider: Schema.Schema<Provider> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      eventTypes: Schema.optional(Schema.Array(EventType)),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Provider" }) as any as Schema.Schema<Provider>;
+export const Provider = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+  eventTypes: Schema.optional(Schema.Array(EventType)),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Provider" });
 
 export interface ListProvidersResponse {
   /** The requested providers, up to the number specified in `page_size`. */
@@ -1206,23 +1016,18 @@ export interface ListProvidersResponse {
   unreachable?: Array<string>;
 }
 
-export const ListProvidersResponse: Schema.Schema<ListProvidersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      providers: Schema.optional(Schema.Array(Provider)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListProvidersResponse",
-  }) as any as Schema.Schema<ListProvidersResponse>;
+export const ListProvidersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  providers: Schema.optional(Schema.Array(Provider)),
+  nextPageToken: Schema.optional(Schema.String),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ListProvidersResponse" });
 
 export interface GoogleLongrunningCancelOperationRequest {}
 
-export const GoogleLongrunningCancelOperationRequest: Schema.Schema<GoogleLongrunningCancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleLongrunningCancelOperationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleLongrunningCancelOperationRequest",
-  }) as any as Schema.Schema<GoogleLongrunningCancelOperationRequest>;
+  });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -1231,15 +1036,10 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(Location)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface Trigger {
   /** Optional. The name of the channel associated with the trigger in `projects/{project}/locations/{location}/channels/{channel}` format. You must provide a channel to receive events from Eventarc SaaS partners. */
@@ -1274,26 +1074,23 @@ export interface Trigger {
   transport?: Transport;
 }
 
-export const Trigger: Schema.Schema<Trigger> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      channel: Schema.optional(Schema.String),
-      conditions: Schema.optional(Schema.Record(Schema.String, StateCondition)),
-      createTime: Schema.optional(Schema.String),
-      eventFilters: Schema.optional(Schema.Array(EventFilter)),
-      satisfiesPzs: Schema.optional(Schema.Boolean),
-      uid: Schema.optional(Schema.String),
-      retryPolicy: Schema.optional(RetryPolicy),
-      serviceAccount: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      eventDataContentType: Schema.optional(Schema.String),
-      destination: Schema.optional(Destination),
-      updateTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      transport: Schema.optional(Transport),
-    }),
-  ).annotate({ identifier: "Trigger" }) as any as Schema.Schema<Trigger>;
+export const Trigger = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  channel: Schema.optional(Schema.String),
+  conditions: Schema.optional(Schema.Record(Schema.String, StateCondition)),
+  createTime: Schema.optional(Schema.String),
+  eventFilters: Schema.optional(Schema.Array(EventFilter)),
+  satisfiesPzs: Schema.optional(Schema.Boolean),
+  uid: Schema.optional(Schema.String),
+  retryPolicy: Schema.optional(RetryPolicy),
+  serviceAccount: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  eventDataContentType: Schema.optional(Schema.String),
+  destination: Schema.optional(Destination),
+  updateTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  transport: Schema.optional(Transport),
+}).annotate({ identifier: "Trigger" });
 
 export interface ListTriggersResponse {
   /** The requested triggers, up to the number specified in `page_size`. */
@@ -1304,16 +1101,11 @@ export interface ListTriggersResponse {
   unreachable?: Array<string>;
 }
 
-export const ListTriggersResponse: Schema.Schema<ListTriggersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      triggers: Schema.optional(Schema.Array(Trigger)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListTriggersResponse",
-  }) as any as Schema.Schema<ListTriggersResponse>;
+export const ListTriggersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  triggers: Schema.optional(Schema.Array(Trigger)),
+  nextPageToken: Schema.optional(Schema.String),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ListTriggersResponse" });
 
 export interface GoogleChannelConfig {
   /** Optional. Resource labels. */
@@ -1326,17 +1118,12 @@ export interface GoogleChannelConfig {
   name?: string;
 }
 
-export const GoogleChannelConfig: Schema.Schema<GoogleChannelConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      updateTime: Schema.optional(Schema.String),
-      cryptoKeyName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleChannelConfig",
-  }) as any as Schema.Schema<GoogleChannelConfig>;
+export const GoogleChannelConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  updateTime: Schema.optional(Schema.String),
+  cryptoKeyName: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "GoogleChannelConfig" });
 
 export interface ListMessageBusEnrollmentsResponse {
   /** The requested enrollments, up to the number specified in `page_size`. */
@@ -1347,16 +1134,12 @@ export interface ListMessageBusEnrollmentsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListMessageBusEnrollmentsResponse: Schema.Schema<ListMessageBusEnrollmentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enrollments: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListMessageBusEnrollmentsResponse",
-  }) as any as Schema.Schema<ListMessageBusEnrollmentsResponse>;
+export const ListMessageBusEnrollmentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enrollments: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListMessageBusEnrollmentsResponse" });
 
 export interface ListEnrollmentsResponse {
   /** The requested Enrollments, up to the number specified in `page_size`. */
@@ -1367,16 +1150,12 @@ export interface ListEnrollmentsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListEnrollmentsResponse: Schema.Schema<ListEnrollmentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enrollments: Schema.optional(Schema.Array(Enrollment)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListEnrollmentsResponse",
-  }) as any as Schema.Schema<ListEnrollmentsResponse>;
+export const ListEnrollmentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enrollments: Schema.optional(Schema.Array(Enrollment)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListEnrollmentsResponse" });
 
 export interface ListChannelsResponse {
   /** The requested channels, up to the number specified in `page_size`. */
@@ -1387,16 +1166,11 @@ export interface ListChannelsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListChannelsResponse: Schema.Schema<ListChannelsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      channels: Schema.optional(Schema.Array(Channel)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListChannelsResponse",
-  }) as any as Schema.Schema<ListChannelsResponse>;
+export const ListChannelsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  channels: Schema.optional(Schema.Array(Channel)),
+  nextPageToken: Schema.optional(Schema.String),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ListChannelsResponse" });
 
 // ==========================================================================
 // Operations

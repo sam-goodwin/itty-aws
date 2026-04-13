@@ -27,14 +27,10 @@ export interface GoogleCloudChannelV1StartPaidServiceRequest {
   requestId?: string;
 }
 
-export const GoogleCloudChannelV1StartPaidServiceRequest: Schema.Schema<GoogleCloudChannelV1StartPaidServiceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1StartPaidServiceRequest",
-  }) as any as Schema.Schema<GoogleCloudChannelV1StartPaidServiceRequest>;
+export const GoogleCloudChannelV1StartPaidServiceRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1StartPaidServiceRequest" });
 
 export interface GoogleCloudChannelV1AdminUser {
   /** Family name of the admin user. */
@@ -45,16 +41,12 @@ export interface GoogleCloudChannelV1AdminUser {
   givenName?: string;
 }
 
-export const GoogleCloudChannelV1AdminUser: Schema.Schema<GoogleCloudChannelV1AdminUser> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      familyName: Schema.optional(Schema.String),
-      email: Schema.optional(Schema.String),
-      givenName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1AdminUser",
-  }) as any as Schema.Schema<GoogleCloudChannelV1AdminUser>;
+export const GoogleCloudChannelV1AdminUser =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    familyName: Schema.optional(Schema.String),
+    email: Schema.optional(Schema.String),
+    givenName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1AdminUser" });
 
 export interface GoogleCloudChannelV1Media {
   /** URL of the media. */
@@ -65,16 +57,12 @@ export interface GoogleCloudChannelV1Media {
   type?: "MEDIA_TYPE_UNSPECIFIED" | "MEDIA_TYPE_IMAGE" | (string & {});
 }
 
-export const GoogleCloudChannelV1Media: Schema.Schema<GoogleCloudChannelV1Media> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      content: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1Media",
-  }) as any as Schema.Schema<GoogleCloudChannelV1Media>;
+export const GoogleCloudChannelV1Media =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    content: Schema.optional(Schema.String),
+    title: Schema.optional(Schema.String),
+    type: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1Media" });
 
 export interface GoogleCloudChannelV1MarketingInfo {
   /** Human readable name. */
@@ -85,16 +73,12 @@ export interface GoogleCloudChannelV1MarketingInfo {
   description?: string;
 }
 
-export const GoogleCloudChannelV1MarketingInfo: Schema.Schema<GoogleCloudChannelV1MarketingInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      defaultLogo: Schema.optional(GoogleCloudChannelV1Media),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1MarketingInfo",
-  }) as any as Schema.Schema<GoogleCloudChannelV1MarketingInfo>;
+export const GoogleCloudChannelV1MarketingInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    defaultLogo: Schema.optional(GoogleCloudChannelV1Media),
+    description: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1MarketingInfo" });
 
 export interface GoogleCloudChannelV1Product {
   /** Resource Name of the Product. Format: products/{product_id} */
@@ -103,15 +87,11 @@ export interface GoogleCloudChannelV1Product {
   marketingInfo?: GoogleCloudChannelV1MarketingInfo;
 }
 
-export const GoogleCloudChannelV1Product: Schema.Schema<GoogleCloudChannelV1Product> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      marketingInfo: Schema.optional(GoogleCloudChannelV1MarketingInfo),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1Product",
-  }) as any as Schema.Schema<GoogleCloudChannelV1Product>;
+export const GoogleCloudChannelV1Product =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    marketingInfo: Schema.optional(GoogleCloudChannelV1MarketingInfo),
+  }).annotate({ identifier: "GoogleCloudChannelV1Product" });
 
 export interface GoogleCloudChannelV1Sku {
   /** Resource Name of the SKU. Format: products/{product_id}/skus/{sku_id} */
@@ -122,44 +102,32 @@ export interface GoogleCloudChannelV1Sku {
   product?: GoogleCloudChannelV1Product;
 }
 
-export const GoogleCloudChannelV1Sku: Schema.Schema<GoogleCloudChannelV1Sku> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      marketingInfo: Schema.optional(GoogleCloudChannelV1MarketingInfo),
-      product: Schema.optional(GoogleCloudChannelV1Product),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1Sku",
-  }) as any as Schema.Schema<GoogleCloudChannelV1Sku>;
+export const GoogleCloudChannelV1Sku =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    marketingInfo: Schema.optional(GoogleCloudChannelV1MarketingInfo),
+    product: Schema.optional(GoogleCloudChannelV1Product),
+  }).annotate({ identifier: "GoogleCloudChannelV1Sku" });
 
 export interface GoogleCloudChannelV1PurchasableSku {
   /** SKU */
   sku?: GoogleCloudChannelV1Sku;
 }
 
-export const GoogleCloudChannelV1PurchasableSku: Schema.Schema<GoogleCloudChannelV1PurchasableSku> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sku: Schema.optional(GoogleCloudChannelV1Sku),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1PurchasableSku",
-  }) as any as Schema.Schema<GoogleCloudChannelV1PurchasableSku>;
+export const GoogleCloudChannelV1PurchasableSku =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sku: Schema.optional(GoogleCloudChannelV1Sku),
+  }).annotate({ identifier: "GoogleCloudChannelV1PurchasableSku" });
 
 export interface GoogleCloudChannelV1AssociationInfo {
   /** The name of the base entitlement, for which this entitlement is an add-on. */
   baseEntitlement?: string;
 }
 
-export const GoogleCloudChannelV1AssociationInfo: Schema.Schema<GoogleCloudChannelV1AssociationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      baseEntitlement: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1AssociationInfo",
-  }) as any as Schema.Schema<GoogleCloudChannelV1AssociationInfo>;
+export const GoogleCloudChannelV1AssociationInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    baseEntitlement: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1AssociationInfo" });
 
 export interface GoogleCloudChannelV1ProvisionedService {
   /** Output only. Provisioning ID of the entitlement. For Google Workspace, this is the underlying Subscription ID. For Google Cloud, this is the Billing Account ID of the billing subaccount. */
@@ -170,16 +138,12 @@ export interface GoogleCloudChannelV1ProvisionedService {
   skuId?: string;
 }
 
-export const GoogleCloudChannelV1ProvisionedService: Schema.Schema<GoogleCloudChannelV1ProvisionedService> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      provisioningId: Schema.optional(Schema.String),
-      productId: Schema.optional(Schema.String),
-      skuId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1ProvisionedService",
-  }) as any as Schema.Schema<GoogleCloudChannelV1ProvisionedService>;
+export const GoogleCloudChannelV1ProvisionedService =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provisioningId: Schema.optional(Schema.String),
+    productId: Schema.optional(Schema.String),
+    skuId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1ProvisionedService" });
 
 export interface GoogleCloudChannelV1Period {
   /** Total duration of Period Type defined. */
@@ -193,15 +157,11 @@ export interface GoogleCloudChannelV1Period {
     | (string & {});
 }
 
-export const GoogleCloudChannelV1Period: Schema.Schema<GoogleCloudChannelV1Period> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      duration: Schema.optional(Schema.Number),
-      periodType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1Period",
-  }) as any as Schema.Schema<GoogleCloudChannelV1Period>;
+export const GoogleCloudChannelV1Period =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    duration: Schema.optional(Schema.Number),
+    periodType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1Period" });
 
 export interface GoogleCloudChannelV1RenewalSettings {
   /** If false, the plan will be completed at the end date. */
@@ -221,17 +181,13 @@ export interface GoogleCloudChannelV1RenewalSettings {
   paymentCycle?: GoogleCloudChannelV1Period;
 }
 
-export const GoogleCloudChannelV1RenewalSettings: Schema.Schema<GoogleCloudChannelV1RenewalSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableRenewal: Schema.optional(Schema.Boolean),
-      resizeUnitCount: Schema.optional(Schema.Boolean),
-      paymentPlan: Schema.optional(Schema.String),
-      paymentCycle: Schema.optional(GoogleCloudChannelV1Period),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1RenewalSettings",
-  }) as any as Schema.Schema<GoogleCloudChannelV1RenewalSettings>;
+export const GoogleCloudChannelV1RenewalSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enableRenewal: Schema.optional(Schema.Boolean),
+    resizeUnitCount: Schema.optional(Schema.Boolean),
+    paymentPlan: Schema.optional(Schema.String),
+    paymentCycle: Schema.optional(GoogleCloudChannelV1Period),
+  }).annotate({ identifier: "GoogleCloudChannelV1RenewalSettings" });
 
 export interface GoogleCloudChannelV1CommitmentSettings {
   /** Optional. Renewal settings applicable for a commitment-based Offer. */
@@ -242,16 +198,12 @@ export interface GoogleCloudChannelV1CommitmentSettings {
   startTime?: string;
 }
 
-export const GoogleCloudChannelV1CommitmentSettings: Schema.Schema<GoogleCloudChannelV1CommitmentSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      renewalSettings: Schema.optional(GoogleCloudChannelV1RenewalSettings),
-      endTime: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1CommitmentSettings",
-  }) as any as Schema.Schema<GoogleCloudChannelV1CommitmentSettings>;
+export const GoogleCloudChannelV1CommitmentSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    renewalSettings: Schema.optional(GoogleCloudChannelV1RenewalSettings),
+    endTime: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1CommitmentSettings" });
 
 export interface GoogleCloudChannelV1Value {
   /** Represents an 'Any' proto value. */
@@ -266,18 +218,14 @@ export interface GoogleCloudChannelV1Value {
   boolValue?: boolean;
 }
 
-export const GoogleCloudChannelV1Value: Schema.Schema<GoogleCloudChannelV1Value> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      protoValue: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      int64Value: Schema.optional(Schema.String),
-      stringValue: Schema.optional(Schema.String),
-      doubleValue: Schema.optional(Schema.Number),
-      boolValue: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1Value",
-  }) as any as Schema.Schema<GoogleCloudChannelV1Value>;
+export const GoogleCloudChannelV1Value =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    protoValue: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    int64Value: Schema.optional(Schema.String),
+    stringValue: Schema.optional(Schema.String),
+    doubleValue: Schema.optional(Schema.Number),
+    boolValue: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudChannelV1Value" });
 
 export interface GoogleCloudChannelV1Parameter {
   /** Name of the parameter. */
@@ -288,16 +236,12 @@ export interface GoogleCloudChannelV1Parameter {
   editable?: boolean;
 }
 
-export const GoogleCloudChannelV1Parameter: Schema.Schema<GoogleCloudChannelV1Parameter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      value: Schema.optional(GoogleCloudChannelV1Value),
-      editable: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1Parameter",
-  }) as any as Schema.Schema<GoogleCloudChannelV1Parameter>;
+export const GoogleCloudChannelV1Parameter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    value: Schema.optional(GoogleCloudChannelV1Value),
+    editable: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudChannelV1Parameter" });
 
 export interface GoogleCloudChannelV1TrialSettings {
   /** Determines if the entitlement is in a trial or not: * `true` - The entitlement is in trial. * `false` - The entitlement is not in trial. */
@@ -306,15 +250,11 @@ export interface GoogleCloudChannelV1TrialSettings {
   endTime?: string;
 }
 
-export const GoogleCloudChannelV1TrialSettings: Schema.Schema<GoogleCloudChannelV1TrialSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      trial: Schema.optional(Schema.Boolean),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1TrialSettings",
-  }) as any as Schema.Schema<GoogleCloudChannelV1TrialSettings>;
+export const GoogleCloudChannelV1TrialSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    trial: Schema.optional(Schema.Boolean),
+    endTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1TrialSettings" });
 
 export interface GoogleCloudChannelV1Entitlement {
   /** Optional. This purchase order (PO) information is for resellers to use for their company tracking usage. If a purchaseOrderId value is given, it appears in the API responses and shows up in the invoice. The property accepts up to 80 plain text characters. This is only supported for Google Workspace entitlements. */
@@ -359,31 +299,23 @@ export interface GoogleCloudChannelV1Entitlement {
   >;
 }
 
-export const GoogleCloudChannelV1Entitlement: Schema.Schema<GoogleCloudChannelV1Entitlement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      purchaseOrderId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      provisioningState: Schema.optional(Schema.String),
-      billingAccount: Schema.optional(Schema.String),
-      associationInfo: Schema.optional(GoogleCloudChannelV1AssociationInfo),
-      priceReferenceId: Schema.optional(Schema.String),
-      provisionedService: Schema.optional(
-        GoogleCloudChannelV1ProvisionedService,
-      ),
-      offer: Schema.optional(Schema.String),
-      commitmentSettings: Schema.optional(
-        GoogleCloudChannelV1CommitmentSettings,
-      ),
-      updateTime: Schema.optional(Schema.String),
-      parameters: Schema.optional(Schema.Array(GoogleCloudChannelV1Parameter)),
-      trialSettings: Schema.optional(GoogleCloudChannelV1TrialSettings),
-      createTime: Schema.optional(Schema.String),
-      suspensionReasons: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1Entitlement",
-  }) as any as Schema.Schema<GoogleCloudChannelV1Entitlement>;
+export const GoogleCloudChannelV1Entitlement =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    purchaseOrderId: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    provisioningState: Schema.optional(Schema.String),
+    billingAccount: Schema.optional(Schema.String),
+    associationInfo: Schema.optional(GoogleCloudChannelV1AssociationInfo),
+    priceReferenceId: Schema.optional(Schema.String),
+    provisionedService: Schema.optional(GoogleCloudChannelV1ProvisionedService),
+    offer: Schema.optional(Schema.String),
+    commitmentSettings: Schema.optional(GoogleCloudChannelV1CommitmentSettings),
+    updateTime: Schema.optional(Schema.String),
+    parameters: Schema.optional(Schema.Array(GoogleCloudChannelV1Parameter)),
+    trialSettings: Schema.optional(GoogleCloudChannelV1TrialSettings),
+    createTime: Schema.optional(Schema.String),
+    suspensionReasons: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudChannelV1Entitlement" });
 
 export interface GoogleTypeDate {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
@@ -394,16 +326,11 @@ export interface GoogleTypeDate {
   month?: number;
 }
 
-export const GoogleTypeDate: Schema.Schema<GoogleTypeDate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      year: Schema.optional(Schema.Number),
-      day: Schema.optional(Schema.Number),
-      month: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleTypeDate",
-  }) as any as Schema.Schema<GoogleTypeDate>;
+export const GoogleTypeDate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  year: Schema.optional(Schema.Number),
+  day: Schema.optional(Schema.Number),
+  month: Schema.optional(Schema.Number),
+}).annotate({ identifier: "GoogleTypeDate" });
 
 export interface GoogleTypeTimeZone {
   /** Optional. IANA Time Zone Database version number. For example "2019a". */
@@ -412,57 +339,40 @@ export interface GoogleTypeTimeZone {
   id?: string;
 }
 
-export const GoogleTypeTimeZone: Schema.Schema<GoogleTypeTimeZone> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleTypeTimeZone",
-  }) as any as Schema.Schema<GoogleTypeTimeZone>;
+export const GoogleTypeTimeZone = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+}).annotate({ identifier: "GoogleTypeTimeZone" });
 
 export interface GoogleCloudChannelV1alpha1AssociationInfo {
   /** The name of the base entitlement, for which this entitlement is an add-on. */
   baseEntitlement?: string;
 }
 
-export const GoogleCloudChannelV1alpha1AssociationInfo: Schema.Schema<GoogleCloudChannelV1alpha1AssociationInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      baseEntitlement: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1alpha1AssociationInfo",
-  }) as any as Schema.Schema<GoogleCloudChannelV1alpha1AssociationInfo>;
+export const GoogleCloudChannelV1alpha1AssociationInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    baseEntitlement: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1alpha1AssociationInfo" });
 
 export interface GoogleCloudChannelV1SkuGroupCondition {
   /** Specifies a SKU group (https://cloud.google.com/skus/sku-groups). Resource name of SKU group. Format: accounts/{account}/skuGroups/{sku_group}. Example: "accounts/C01234/skuGroups/3d50fd57-3157-4577-a5a9-a219b8490041". */
   skuGroup?: string;
 }
 
-export const GoogleCloudChannelV1SkuGroupCondition: Schema.Schema<GoogleCloudChannelV1SkuGroupCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      skuGroup: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1SkuGroupCondition",
-  }) as any as Schema.Schema<GoogleCloudChannelV1SkuGroupCondition>;
+export const GoogleCloudChannelV1SkuGroupCondition =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    skuGroup: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1SkuGroupCondition" });
 
 export interface GoogleCloudChannelV1RepricingCondition {
   /** SKU Group condition for override. */
   skuGroupCondition?: GoogleCloudChannelV1SkuGroupCondition;
 }
 
-export const GoogleCloudChannelV1RepricingCondition: Schema.Schema<GoogleCloudChannelV1RepricingCondition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      skuGroupCondition: Schema.optional(GoogleCloudChannelV1SkuGroupCondition),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1RepricingCondition",
-  }) as any as Schema.Schema<GoogleCloudChannelV1RepricingCondition>;
+export const GoogleCloudChannelV1RepricingCondition =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    skuGroupCondition: Schema.optional(GoogleCloudChannelV1SkuGroupCondition),
+  }).annotate({ identifier: "GoogleCloudChannelV1RepricingCondition" });
 
 export interface GoogleCloudChannelV1CustomerConstraints {
   /** Allowed geographical regions of the customer. */
@@ -481,60 +391,46 @@ export interface GoogleCloudChannelV1CustomerConstraints {
   >;
 }
 
-export const GoogleCloudChannelV1CustomerConstraints: Schema.Schema<GoogleCloudChannelV1CustomerConstraints> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      allowedRegions: Schema.optional(Schema.Array(Schema.String)),
-      allowedCustomerTypes: Schema.optional(Schema.Array(Schema.String)),
-      promotionalOrderTypes: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1CustomerConstraints",
-  }) as any as Schema.Schema<GoogleCloudChannelV1CustomerConstraints>;
+export const GoogleCloudChannelV1CustomerConstraints =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allowedRegions: Schema.optional(Schema.Array(Schema.String)),
+    allowedCustomerTypes: Schema.optional(Schema.Array(Schema.String)),
+    promotionalOrderTypes: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleCloudChannelV1CustomerConstraints" });
 
 export interface GoogleCloudChannelV1Constraints {
   /** Represents constraints required to purchase the Offer for a customer. */
   customerConstraints?: GoogleCloudChannelV1CustomerConstraints;
 }
 
-export const GoogleCloudChannelV1Constraints: Schema.Schema<GoogleCloudChannelV1Constraints> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customerConstraints: Schema.optional(
-        GoogleCloudChannelV1CustomerConstraints,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1Constraints",
-  }) as any as Schema.Schema<GoogleCloudChannelV1Constraints>;
+export const GoogleCloudChannelV1Constraints =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customerConstraints: Schema.optional(
+      GoogleCloudChannelV1CustomerConstraints,
+    ),
+  }).annotate({ identifier: "GoogleCloudChannelV1Constraints" });
 
 export interface GoogleCloudChannelV1RepricingConfigEntitlementGranularity {
   /** Resource name of the entitlement. Format: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id} */
   entitlement?: string;
 }
 
-export const GoogleCloudChannelV1RepricingConfigEntitlementGranularity: Schema.Schema<GoogleCloudChannelV1RepricingConfigEntitlementGranularity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entitlement: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudChannelV1RepricingConfigEntitlementGranularity =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entitlement: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudChannelV1RepricingConfigEntitlementGranularity",
-  }) as any as Schema.Schema<GoogleCloudChannelV1RepricingConfigEntitlementGranularity>;
+  });
 
 export interface GoogleCloudChannelV1ActivateEntitlementRequest {
   /** Optional. You can specify an optional unique request ID, and if you need to retry your request, the server will know to ignore the request if it's complete. For example, you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if it received the original operation with the same request ID. If it did, it will ignore the second request. The request ID must be a valid [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero UUID is not supported (`00000000-0000-0000-0000-000000000000`). */
   requestId?: string;
 }
 
-export const GoogleCloudChannelV1ActivateEntitlementRequest: Schema.Schema<GoogleCloudChannelV1ActivateEntitlementRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1ActivateEntitlementRequest",
-  }) as any as Schema.Schema<GoogleCloudChannelV1ActivateEntitlementRequest>;
+export const GoogleCloudChannelV1ActivateEntitlementRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1ActivateEntitlementRequest" });
 
 export interface GoogleCloudChannelV1Column {
   /** The unique name of the column (for example, customer_domain, channel_partner, customer_cost). You can use column IDs in RunReportJobRequest.filter. To see all reports and their columns, call CloudChannelReportsService.ListReports. */
@@ -553,16 +449,12 @@ export interface GoogleCloudChannelV1Column {
     | (string & {});
 }
 
-export const GoogleCloudChannelV1Column: Schema.Schema<GoogleCloudChannelV1Column> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      columnId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      dataType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1Column",
-  }) as any as Schema.Schema<GoogleCloudChannelV1Column>;
+export const GoogleCloudChannelV1Column =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    columnId: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    dataType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1Column" });
 
 export interface GoogleCloudChannelV1Report {
   /** Required. The report's resource name. Specifies the account and report used to generate report data. The report_id identifier is a UID (for example, `613bf59q`). Name uses the format: accounts/{account_id}/reports/{report_id} */
@@ -575,17 +467,13 @@ export interface GoogleCloudChannelV1Report {
   description?: string;
 }
 
-export const GoogleCloudChannelV1Report: Schema.Schema<GoogleCloudChannelV1Report> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      columns: Schema.optional(Schema.Array(GoogleCloudChannelV1Column)),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1Report",
-  }) as any as Schema.Schema<GoogleCloudChannelV1Report>;
+export const GoogleCloudChannelV1Report =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    columns: Schema.optional(Schema.Array(GoogleCloudChannelV1Column)),
+    description: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1Report" });
 
 export interface GoogleCloudChannelV1BillingAccount {
   /** Output only. Resource name of the billing account. Format: accounts/{account_id}/billingAccounts/{billing_account_id}. */
@@ -600,18 +488,14 @@ export interface GoogleCloudChannelV1BillingAccount {
   displayName?: string;
 }
 
-export const GoogleCloudChannelV1BillingAccount: Schema.Schema<GoogleCloudChannelV1BillingAccount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      currencyCode: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      regionCode: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1BillingAccount",
-  }) as any as Schema.Schema<GoogleCloudChannelV1BillingAccount>;
+export const GoogleCloudChannelV1BillingAccount =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    currencyCode: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    regionCode: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1BillingAccount" });
 
 export interface GoogleCloudChannelV1ListTransferableOffersRequest {
   /** Customer's Cloud Identity ID */
@@ -630,20 +514,18 @@ export interface GoogleCloudChannelV1ListTransferableOffersRequest {
   billingAccount?: string;
 }
 
-export const GoogleCloudChannelV1ListTransferableOffersRequest: Schema.Schema<GoogleCloudChannelV1ListTransferableOffersRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cloudIdentityId: Schema.optional(Schema.String),
-      pageToken: Schema.optional(Schema.String),
-      customerName: Schema.optional(Schema.String),
-      pageSize: Schema.optional(Schema.Number),
-      sku: Schema.optional(Schema.String),
-      languageCode: Schema.optional(Schema.String),
-      billingAccount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudChannelV1ListTransferableOffersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cloudIdentityId: Schema.optional(Schema.String),
+    pageToken: Schema.optional(Schema.String),
+    customerName: Schema.optional(Schema.String),
+    pageSize: Schema.optional(Schema.Number),
+    sku: Schema.optional(Schema.String),
+    languageCode: Schema.optional(Schema.String),
+    billingAccount: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudChannelV1ListTransferableOffersRequest",
-  }) as any as Schema.Schema<GoogleCloudChannelV1ListTransferableOffersRequest>;
+  });
 
 export interface GoogleTypePostalAddress {
   /** Optional. Postal code of the address. Not all countries use or require postal codes to be present, but where they are used, they may trigger additional validation with other parts of the address (for example, state or zip code validation in the United States). */
@@ -670,24 +552,20 @@ export interface GoogleTypePostalAddress {
   sortingCode?: string;
 }
 
-export const GoogleTypePostalAddress: Schema.Schema<GoogleTypePostalAddress> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      postalCode: Schema.optional(Schema.String),
-      sublocality: Schema.optional(Schema.String),
-      administrativeArea: Schema.optional(Schema.String),
-      recipients: Schema.optional(Schema.Array(Schema.String)),
-      regionCode: Schema.optional(Schema.String),
-      locality: Schema.optional(Schema.String),
-      revision: Schema.optional(Schema.Number),
-      addressLines: Schema.optional(Schema.Array(Schema.String)),
-      organization: Schema.optional(Schema.String),
-      languageCode: Schema.optional(Schema.String),
-      sortingCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleTypePostalAddress",
-  }) as any as Schema.Schema<GoogleTypePostalAddress>;
+export const GoogleTypePostalAddress =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    postalCode: Schema.optional(Schema.String),
+    sublocality: Schema.optional(Schema.String),
+    administrativeArea: Schema.optional(Schema.String),
+    recipients: Schema.optional(Schema.Array(Schema.String)),
+    regionCode: Schema.optional(Schema.String),
+    locality: Schema.optional(Schema.String),
+    revision: Schema.optional(Schema.Number),
+    addressLines: Schema.optional(Schema.Array(Schema.String)),
+    organization: Schema.optional(Schema.String),
+    languageCode: Schema.optional(Schema.String),
+    sortingCode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleTypePostalAddress" });
 
 export interface GoogleCloudChannelV1TransferEligibility {
   /** Localized description if reseller is not eligible to transfer the SKU. */
@@ -704,60 +582,43 @@ export interface GoogleCloudChannelV1TransferEligibility {
   isEligible?: boolean;
 }
 
-export const GoogleCloudChannelV1TransferEligibility: Schema.Schema<GoogleCloudChannelV1TransferEligibility> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      ineligibilityReason: Schema.optional(Schema.String),
-      isEligible: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1TransferEligibility",
-  }) as any as Schema.Schema<GoogleCloudChannelV1TransferEligibility>;
+export const GoogleCloudChannelV1TransferEligibility =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    ineligibilityReason: Schema.optional(Schema.String),
+    isEligible: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudChannelV1TransferEligibility" });
 
 export interface GoogleTypeDecimal {
   /** The decimal value, as a string. The string representation consists of an optional sign, `+` (`U+002B`) or `-` (`U+002D`), followed by a sequence of zero or more decimal digits ("the integer"), optionally followed by a fraction, optionally followed by an exponent. An empty string **should** be interpreted as `0`. The fraction consists of a decimal point followed by zero or more decimal digits. The string must contain at least one digit in either the integer or the fraction. The number formed by the sign, the integer and the fraction is referred to as the significand. The exponent consists of the character `e` (`U+0065`) or `E` (`U+0045`) followed by one or more decimal digits. Services **should** normalize decimal values before storing them by: - Removing an explicitly-provided `+` sign (`+2.5` -> `2.5`). - Replacing a zero-length integer value with `0` (`.5` -> `0.5`). - Coercing the exponent character to upper-case, with explicit sign (`2.5e8` -> `2.5E+8`). - Removing an explicitly-provided zero exponent (`2.5E0` -> `2.5`). Services **may** perform additional normalization based on its own needs and the internal decimal implementation selected, such as shifting the decimal point and exponent value together (example: `2.5E-1` <-> `0.25`). Additionally, services **may** preserve trailing zeroes in the fraction to indicate increased precision, but are not required to do so. Note that only the `.` character is supported to divide the integer and the fraction; `,` **should not** be supported regardless of locale. Additionally, thousand separators **should not** be supported. If a service does support them, values **must** be normalized. The ENBF grammar is: DecimalString = '' | [Sign] Significand [Exponent]; Sign = '+' | '-'; Significand = Digits '.' | [Digits] '.' Digits; Exponent = ('e' | 'E') [Sign] Digits; Digits = { '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9' }; Services **should** clearly document the range of supported values, the maximum supported precision (total number of digits), and, if applicable, the scale (number of digits after the decimal point), as well as how it behaves when receiving out-of-bounds values. Services **may** choose to accept values passed as input even when the value has a higher precision or scale than the service supports, and **should** round the value to fit the supported scale. Alternatively, the service **may** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if precision would be lost. Services **should** error with `400 Bad Request` (`INVALID_ARGUMENT` in gRPC) if the service receives a value outside of the supported range. */
   value?: string;
 }
 
-export const GoogleTypeDecimal: Schema.Schema<GoogleTypeDecimal> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleTypeDecimal",
-  }) as any as Schema.Schema<GoogleTypeDecimal>;
+export const GoogleTypeDecimal = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.String),
+}).annotate({ identifier: "GoogleTypeDecimal" });
 
 export interface GoogleCloudChannelV1PercentageAdjustment {
   /** The percentage of the bill to adjust. For example: Mark down by 1% => "-1.00" Mark up by 1% => "1.00" Pass-Through => "0.00" */
   percentage?: GoogleTypeDecimal;
 }
 
-export const GoogleCloudChannelV1PercentageAdjustment: Schema.Schema<GoogleCloudChannelV1PercentageAdjustment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      percentage: Schema.optional(GoogleTypeDecimal),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1PercentageAdjustment",
-  }) as any as Schema.Schema<GoogleCloudChannelV1PercentageAdjustment>;
+export const GoogleCloudChannelV1PercentageAdjustment =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    percentage: Schema.optional(GoogleTypeDecimal),
+  }).annotate({ identifier: "GoogleCloudChannelV1PercentageAdjustment" });
 
 export interface GoogleCloudChannelV1RepricingAdjustment {
   /** Flat markup or markdown on an entire bill. */
   percentageAdjustment?: GoogleCloudChannelV1PercentageAdjustment;
 }
 
-export const GoogleCloudChannelV1RepricingAdjustment: Schema.Schema<GoogleCloudChannelV1RepricingAdjustment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      percentageAdjustment: Schema.optional(
-        GoogleCloudChannelV1PercentageAdjustment,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1RepricingAdjustment",
-  }) as any as Schema.Schema<GoogleCloudChannelV1RepricingAdjustment>;
+export const GoogleCloudChannelV1RepricingAdjustment =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    percentageAdjustment: Schema.optional(
+      GoogleCloudChannelV1PercentageAdjustment,
+    ),
+  }).annotate({ identifier: "GoogleCloudChannelV1RepricingAdjustment" });
 
 export interface GoogleCloudChannelV1ListPurchasableSkusResponse {
   /** The list of SKUs requested. */
@@ -766,17 +627,15 @@ export interface GoogleCloudChannelV1ListPurchasableSkusResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudChannelV1ListPurchasableSkusResponse: Schema.Schema<GoogleCloudChannelV1ListPurchasableSkusResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      purchasableSkus: Schema.optional(
-        Schema.Array(GoogleCloudChannelV1PurchasableSku),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudChannelV1ListPurchasableSkusResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    purchasableSkus: Schema.optional(
+      Schema.Array(GoogleCloudChannelV1PurchasableSku),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudChannelV1ListPurchasableSkusResponse",
-  }) as any as Schema.Schema<GoogleCloudChannelV1ListPurchasableSkusResponse>;
+  });
 
 export interface GoogleCloudChannelV1EntitlementChange {
   /** e.g. purchase_number change reason, entered by CRS. */
@@ -845,27 +704,21 @@ export interface GoogleCloudChannelV1EntitlementChange {
   entitlement?: string;
 }
 
-export const GoogleCloudChannelV1EntitlementChange: Schema.Schema<GoogleCloudChannelV1EntitlementChange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      otherChangeReason: Schema.optional(Schema.String),
-      suspensionReason: Schema.optional(Schema.String),
-      offer: Schema.optional(Schema.String),
-      operatorType: Schema.optional(Schema.String),
-      activationReason: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      operator: Schema.optional(Schema.String),
-      cancellationReason: Schema.optional(Schema.String),
-      provisionedService: Schema.optional(
-        GoogleCloudChannelV1ProvisionedService,
-      ),
-      changeType: Schema.optional(Schema.String),
-      parameters: Schema.optional(Schema.Array(GoogleCloudChannelV1Parameter)),
-      entitlement: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1EntitlementChange",
-  }) as any as Schema.Schema<GoogleCloudChannelV1EntitlementChange>;
+export const GoogleCloudChannelV1EntitlementChange =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    otherChangeReason: Schema.optional(Schema.String),
+    suspensionReason: Schema.optional(Schema.String),
+    offer: Schema.optional(Schema.String),
+    operatorType: Schema.optional(Schema.String),
+    activationReason: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    operator: Schema.optional(Schema.String),
+    cancellationReason: Schema.optional(Schema.String),
+    provisionedService: Schema.optional(GoogleCloudChannelV1ProvisionedService),
+    changeType: Schema.optional(Schema.String),
+    parameters: Schema.optional(Schema.Array(GoogleCloudChannelV1Parameter)),
+    entitlement: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1EntitlementChange" });
 
 export interface GoogleCloudChannelV1ListEntitlementChangesResponse {
   /** The list of entitlement changes. */
@@ -874,17 +727,15 @@ export interface GoogleCloudChannelV1ListEntitlementChangesResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudChannelV1ListEntitlementChangesResponse: Schema.Schema<GoogleCloudChannelV1ListEntitlementChangesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entitlementChanges: Schema.optional(
-        Schema.Array(GoogleCloudChannelV1EntitlementChange),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudChannelV1ListEntitlementChangesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entitlementChanges: Schema.optional(
+      Schema.Array(GoogleCloudChannelV1EntitlementChange),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudChannelV1ListEntitlementChangesResponse",
-  }) as any as Schema.Schema<GoogleCloudChannelV1ListEntitlementChangesResponse>;
+  });
 
 export interface GoogleCloudChannelV1TransferEntitlementsRequest {
   /** Optional. You can specify an optional unique request ID, and if you need to retry your request, the server will know to ignore the request if it's complete. For example, you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if it received the original operation with the same request ID. If it did, it will ignore the second request. The request ID must be a valid [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero UUID is not supported (`00000000-0000-0000-0000-000000000000`). */
@@ -895,34 +746,30 @@ export interface GoogleCloudChannelV1TransferEntitlementsRequest {
   entitlements?: Array<GoogleCloudChannelV1Entitlement>;
 }
 
-export const GoogleCloudChannelV1TransferEntitlementsRequest: Schema.Schema<GoogleCloudChannelV1TransferEntitlementsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestId: Schema.optional(Schema.String),
-      authToken: Schema.optional(Schema.String),
-      entitlements: Schema.optional(
-        Schema.Array(GoogleCloudChannelV1Entitlement),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudChannelV1TransferEntitlementsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestId: Schema.optional(Schema.String),
+    authToken: Schema.optional(Schema.String),
+    entitlements: Schema.optional(
+      Schema.Array(GoogleCloudChannelV1Entitlement),
+    ),
+  }).annotate({
     identifier: "GoogleCloudChannelV1TransferEntitlementsRequest",
-  }) as any as Schema.Schema<GoogleCloudChannelV1TransferEntitlementsRequest>;
+  });
 
 export interface GoogleCloudChannelV1TransferEntitlementsResponse {
   /** The transferred entitlements. */
   entitlements?: Array<GoogleCloudChannelV1Entitlement>;
 }
 
-export const GoogleCloudChannelV1TransferEntitlementsResponse: Schema.Schema<GoogleCloudChannelV1TransferEntitlementsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entitlements: Schema.optional(
-        Schema.Array(GoogleCloudChannelV1Entitlement),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudChannelV1TransferEntitlementsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entitlements: Schema.optional(
+      Schema.Array(GoogleCloudChannelV1Entitlement),
+    ),
+  }).annotate({
     identifier: "GoogleCloudChannelV1TransferEntitlementsResponse",
-  }) as any as Schema.Schema<GoogleCloudChannelV1TransferEntitlementsResponse>;
+  });
 
 export interface GoogleCloudChannelV1ConditionalOverride {
   /** Required. Specifies the condition which, if met, will apply the override. */
@@ -937,18 +784,12 @@ export interface GoogleCloudChannelV1ConditionalOverride {
   adjustment?: GoogleCloudChannelV1RepricingAdjustment;
 }
 
-export const GoogleCloudChannelV1ConditionalOverride: Schema.Schema<GoogleCloudChannelV1ConditionalOverride> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      repricingCondition: Schema.optional(
-        GoogleCloudChannelV1RepricingCondition,
-      ),
-      rebillingBasis: Schema.optional(Schema.String),
-      adjustment: Schema.optional(GoogleCloudChannelV1RepricingAdjustment),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1ConditionalOverride",
-  }) as any as Schema.Schema<GoogleCloudChannelV1ConditionalOverride>;
+export const GoogleCloudChannelV1ConditionalOverride =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    repricingCondition: Schema.optional(GoogleCloudChannelV1RepricingCondition),
+    rebillingBasis: Schema.optional(Schema.String),
+    adjustment: Schema.optional(GoogleCloudChannelV1RepricingAdjustment),
+  }).annotate({ identifier: "GoogleCloudChannelV1ConditionalOverride" });
 
 export interface GoogleCloudChannelV1CloudIdentityCustomerAccount {
   /** If owned = true, the name of the customer that owns the Cloud Identity account. Customer_name uses the format: accounts/{account_id}/customers/{customer_id} */
@@ -969,19 +810,17 @@ export interface GoogleCloudChannelV1CloudIdentityCustomerAccount {
   owned?: boolean;
 }
 
-export const GoogleCloudChannelV1CloudIdentityCustomerAccount: Schema.Schema<GoogleCloudChannelV1CloudIdentityCustomerAccount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customerName: Schema.optional(Schema.String),
-      channelPartnerCloudIdentityId: Schema.optional(Schema.String),
-      customerCloudIdentityId: Schema.optional(Schema.String),
-      customerType: Schema.optional(Schema.String),
-      existing: Schema.optional(Schema.Boolean),
-      owned: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
+export const GoogleCloudChannelV1CloudIdentityCustomerAccount =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customerName: Schema.optional(Schema.String),
+    channelPartnerCloudIdentityId: Schema.optional(Schema.String),
+    customerCloudIdentityId: Schema.optional(Schema.String),
+    customerType: Schema.optional(Schema.String),
+    existing: Schema.optional(Schema.Boolean),
+    owned: Schema.optional(Schema.Boolean),
+  }).annotate({
     identifier: "GoogleCloudChannelV1CloudIdentityCustomerAccount",
-  }) as any as Schema.Schema<GoogleCloudChannelV1CloudIdentityCustomerAccount>;
+  });
 
 export interface GoogleCloudChannelV1alpha1ReportStatus {
   /** The current state of the report generation process. */
@@ -998,16 +837,12 @@ export interface GoogleCloudChannelV1alpha1ReportStatus {
   endTime?: string;
 }
 
-export const GoogleCloudChannelV1alpha1ReportStatus: Schema.Schema<GoogleCloudChannelV1alpha1ReportStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1alpha1ReportStatus",
-  }) as any as Schema.Schema<GoogleCloudChannelV1alpha1ReportStatus>;
+export const GoogleCloudChannelV1alpha1ReportStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1alpha1ReportStatus" });
 
 export interface GoogleCloudChannelV1alpha1ReportJob {
   /** Required. The resource name of a report job. Name uses the format: `accounts/{account_id}/reportJobs/{report_job_id}` */
@@ -1016,15 +851,11 @@ export interface GoogleCloudChannelV1alpha1ReportJob {
   reportStatus?: GoogleCloudChannelV1alpha1ReportStatus;
 }
 
-export const GoogleCloudChannelV1alpha1ReportJob: Schema.Schema<GoogleCloudChannelV1alpha1ReportJob> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      reportStatus: Schema.optional(GoogleCloudChannelV1alpha1ReportStatus),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1alpha1ReportJob",
-  }) as any as Schema.Schema<GoogleCloudChannelV1alpha1ReportJob>;
+export const GoogleCloudChannelV1alpha1ReportJob =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    reportStatus: Schema.optional(GoogleCloudChannelV1alpha1ReportStatus),
+  }).annotate({ identifier: "GoogleCloudChannelV1alpha1ReportJob" });
 
 export interface GoogleTypeDateTime {
   /** UTC offset. Must be whole seconds, between -18 hours and +18 hours. For example, a UTC offset of -4:00 would be represented as { seconds: -14400 }. */
@@ -1047,22 +878,17 @@ export interface GoogleTypeDateTime {
   month?: number;
 }
 
-export const GoogleTypeDateTime: Schema.Schema<GoogleTypeDateTime> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      utcOffset: Schema.optional(Schema.String),
-      year: Schema.optional(Schema.Number),
-      seconds: Schema.optional(Schema.Number),
-      minutes: Schema.optional(Schema.Number),
-      day: Schema.optional(Schema.Number),
-      hours: Schema.optional(Schema.Number),
-      nanos: Schema.optional(Schema.Number),
-      timeZone: Schema.optional(GoogleTypeTimeZone),
-      month: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleTypeDateTime",
-  }) as any as Schema.Schema<GoogleTypeDateTime>;
+export const GoogleTypeDateTime = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  utcOffset: Schema.optional(Schema.String),
+  year: Schema.optional(Schema.Number),
+  seconds: Schema.optional(Schema.Number),
+  minutes: Schema.optional(Schema.Number),
+  day: Schema.optional(Schema.Number),
+  hours: Schema.optional(Schema.Number),
+  nanos: Schema.optional(Schema.Number),
+  timeZone: Schema.optional(GoogleTypeTimeZone),
+  month: Schema.optional(Schema.Number),
+}).annotate({ identifier: "GoogleTypeDateTime" });
 
 export interface GoogleCloudChannelV1alpha1DateRange {
   /** The latest invoice date (inclusive). If this value is not the last day of a month, this will move it forward to the last day of the given month. */
@@ -1075,17 +901,13 @@ export interface GoogleCloudChannelV1alpha1DateRange {
   invoiceStartDate?: GoogleTypeDate;
 }
 
-export const GoogleCloudChannelV1alpha1DateRange: Schema.Schema<GoogleCloudChannelV1alpha1DateRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      invoiceEndDate: Schema.optional(GoogleTypeDate),
-      usageStartDateTime: Schema.optional(GoogleTypeDateTime),
-      usageEndDateTime: Schema.optional(GoogleTypeDateTime),
-      invoiceStartDate: Schema.optional(GoogleTypeDate),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1alpha1DateRange",
-  }) as any as Schema.Schema<GoogleCloudChannelV1alpha1DateRange>;
+export const GoogleCloudChannelV1alpha1DateRange =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    invoiceEndDate: Schema.optional(GoogleTypeDate),
+    usageStartDateTime: Schema.optional(GoogleTypeDateTime),
+    usageEndDateTime: Schema.optional(GoogleTypeDateTime),
+    invoiceStartDate: Schema.optional(GoogleTypeDate),
+  }).annotate({ identifier: "GoogleCloudChannelV1alpha1DateRange" });
 
 export interface GoogleCloudChannelV1alpha1Column {
   /** The type of the values for this column. */
@@ -1104,16 +926,12 @@ export interface GoogleCloudChannelV1alpha1Column {
   columnId?: string;
 }
 
-export const GoogleCloudChannelV1alpha1Column: Schema.Schema<GoogleCloudChannelV1alpha1Column> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dataType: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      columnId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1alpha1Column",
-  }) as any as Schema.Schema<GoogleCloudChannelV1alpha1Column>;
+export const GoogleCloudChannelV1alpha1Column =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dataType: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    columnId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1alpha1Column" });
 
 export interface GoogleCloudChannelV1alpha1Report {
   /** A description of other aspects of the report, such as the products it supports. */
@@ -1126,17 +944,13 @@ export interface GoogleCloudChannelV1alpha1Report {
   name?: string;
 }
 
-export const GoogleCloudChannelV1alpha1Report: Schema.Schema<GoogleCloudChannelV1alpha1Report> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      columns: Schema.optional(Schema.Array(GoogleCloudChannelV1alpha1Column)),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1alpha1Report",
-  }) as any as Schema.Schema<GoogleCloudChannelV1alpha1Report>;
+export const GoogleCloudChannelV1alpha1Report =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    description: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    columns: Schema.optional(Schema.Array(GoogleCloudChannelV1alpha1Column)),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1alpha1Report" });
 
 export interface GoogleCloudChannelV1alpha1ReportResultsMetadata {
   /** The total number of rows of data in the final report. */
@@ -1149,17 +963,15 @@ export interface GoogleCloudChannelV1alpha1ReportResultsMetadata {
   precedingDateRange?: GoogleCloudChannelV1alpha1DateRange;
 }
 
-export const GoogleCloudChannelV1alpha1ReportResultsMetadata: Schema.Schema<GoogleCloudChannelV1alpha1ReportResultsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rowCount: Schema.optional(Schema.String),
-      dateRange: Schema.optional(GoogleCloudChannelV1alpha1DateRange),
-      report: Schema.optional(GoogleCloudChannelV1alpha1Report),
-      precedingDateRange: Schema.optional(GoogleCloudChannelV1alpha1DateRange),
-    }),
-  ).annotate({
+export const GoogleCloudChannelV1alpha1ReportResultsMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rowCount: Schema.optional(Schema.String),
+    dateRange: Schema.optional(GoogleCloudChannelV1alpha1DateRange),
+    report: Schema.optional(GoogleCloudChannelV1alpha1Report),
+    precedingDateRange: Schema.optional(GoogleCloudChannelV1alpha1DateRange),
+  }).annotate({
     identifier: "GoogleCloudChannelV1alpha1ReportResultsMetadata",
-  }) as any as Schema.Schema<GoogleCloudChannelV1alpha1ReportResultsMetadata>;
+  });
 
 export interface GoogleCloudChannelV1alpha1RunReportJobResponse {
   /** Pass `report_job.name` to FetchReportResultsRequest.report_job to retrieve the report's results. */
@@ -1168,17 +980,13 @@ export interface GoogleCloudChannelV1alpha1RunReportJobResponse {
   reportMetadata?: GoogleCloudChannelV1alpha1ReportResultsMetadata;
 }
 
-export const GoogleCloudChannelV1alpha1RunReportJobResponse: Schema.Schema<GoogleCloudChannelV1alpha1RunReportJobResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reportJob: Schema.optional(GoogleCloudChannelV1alpha1ReportJob),
-      reportMetadata: Schema.optional(
-        GoogleCloudChannelV1alpha1ReportResultsMetadata,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1alpha1RunReportJobResponse",
-  }) as any as Schema.Schema<GoogleCloudChannelV1alpha1RunReportJobResponse>;
+export const GoogleCloudChannelV1alpha1RunReportJobResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reportJob: Schema.optional(GoogleCloudChannelV1alpha1ReportJob),
+    reportMetadata: Schema.optional(
+      GoogleCloudChannelV1alpha1ReportResultsMetadata,
+    ),
+  }).annotate({ identifier: "GoogleCloudChannelV1alpha1RunReportJobResponse" });
 
 export interface GoogleCloudChannelV1ParameterDefinition {
   /** Minimal value of the parameter, if applicable. Inclusive. For example, minimal commitment when purchasing Anthos is 0.01. Applicable to INT64 and DOUBLE parameter types. */
@@ -1201,19 +1009,15 @@ export interface GoogleCloudChannelV1ParameterDefinition {
     | (string & {});
 }
 
-export const GoogleCloudChannelV1ParameterDefinition: Schema.Schema<GoogleCloudChannelV1ParameterDefinition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      minValue: Schema.optional(GoogleCloudChannelV1Value),
-      maxValue: Schema.optional(GoogleCloudChannelV1Value),
-      allowedValues: Schema.optional(Schema.Array(GoogleCloudChannelV1Value)),
-      optional: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-      parameterType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1ParameterDefinition",
-  }) as any as Schema.Schema<GoogleCloudChannelV1ParameterDefinition>;
+export const GoogleCloudChannelV1ParameterDefinition =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    minValue: Schema.optional(GoogleCloudChannelV1Value),
+    maxValue: Schema.optional(GoogleCloudChannelV1Value),
+    allowedValues: Schema.optional(Schema.Array(GoogleCloudChannelV1Value)),
+    optional: Schema.optional(Schema.Boolean),
+    name: Schema.optional(Schema.String),
+    parameterType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1ParameterDefinition" });
 
 export interface GoogleTypeMoney {
   /** The three-letter currency code defined in ISO 4217. */
@@ -1224,16 +1028,11 @@ export interface GoogleTypeMoney {
   nanos?: number;
 }
 
-export const GoogleTypeMoney: Schema.Schema<GoogleTypeMoney> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      currencyCode: Schema.optional(Schema.String),
-      units: Schema.optional(Schema.String),
-      nanos: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleTypeMoney",
-  }) as any as Schema.Schema<GoogleTypeMoney>;
+export const GoogleTypeMoney = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  currencyCode: Schema.optional(Schema.String),
+  units: Schema.optional(Schema.String),
+  nanos: Schema.optional(Schema.Number),
+}).annotate({ identifier: "GoogleTypeMoney" });
 
 export interface GoogleCloudChannelV1DiscountComponent {
   /** Discount percentage, represented as decimal. For example, a 20% discount will be represented as 0.2. */
@@ -1251,16 +1050,12 @@ export interface GoogleCloudChannelV1DiscountComponent {
     | (string & {});
 }
 
-export const GoogleCloudChannelV1DiscountComponent: Schema.Schema<GoogleCloudChannelV1DiscountComponent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      discountPercentage: Schema.optional(Schema.Number),
-      discountAbsolute: Schema.optional(GoogleTypeMoney),
-      discountType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1DiscountComponent",
-  }) as any as Schema.Schema<GoogleCloudChannelV1DiscountComponent>;
+export const GoogleCloudChannelV1DiscountComponent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    discountPercentage: Schema.optional(Schema.Number),
+    discountAbsolute: Schema.optional(GoogleTypeMoney),
+    discountType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1DiscountComponent" });
 
 export interface GoogleCloudChannelV1Price {
   /** Discount percentage, represented as decimal. For example, a 20% discount will be represent as 0.2. */
@@ -1277,21 +1072,17 @@ export interface GoogleCloudChannelV1Price {
   discountComponents?: Array<GoogleCloudChannelV1DiscountComponent>;
 }
 
-export const GoogleCloudChannelV1Price: Schema.Schema<GoogleCloudChannelV1Price> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      discount: Schema.optional(Schema.Number),
-      effectivePrice: Schema.optional(GoogleTypeMoney),
-      externalPriceUri: Schema.optional(Schema.String),
-      basePrice: Schema.optional(GoogleTypeMoney),
-      pricePeriod: Schema.optional(GoogleCloudChannelV1Period),
-      discountComponents: Schema.optional(
-        Schema.Array(GoogleCloudChannelV1DiscountComponent),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1Price",
-  }) as any as Schema.Schema<GoogleCloudChannelV1Price>;
+export const GoogleCloudChannelV1Price =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    discount: Schema.optional(Schema.Number),
+    effectivePrice: Schema.optional(GoogleTypeMoney),
+    externalPriceUri: Schema.optional(Schema.String),
+    basePrice: Schema.optional(GoogleTypeMoney),
+    pricePeriod: Schema.optional(GoogleCloudChannelV1Period),
+    discountComponents: Schema.optional(
+      Schema.Array(GoogleCloudChannelV1DiscountComponent),
+    ),
+  }).annotate({ identifier: "GoogleCloudChannelV1Price" });
 
 export interface GoogleCloudChannelV1PriceTier {
   /** Last resource for which the tier price applies. */
@@ -1302,16 +1093,12 @@ export interface GoogleCloudChannelV1PriceTier {
   price?: GoogleCloudChannelV1Price;
 }
 
-export const GoogleCloudChannelV1PriceTier: Schema.Schema<GoogleCloudChannelV1PriceTier> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      lastResource: Schema.optional(Schema.Number),
-      firstResource: Schema.optional(Schema.Number),
-      price: Schema.optional(GoogleCloudChannelV1Price),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1PriceTier",
-  }) as any as Schema.Schema<GoogleCloudChannelV1PriceTier>;
+export const GoogleCloudChannelV1PriceTier =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    lastResource: Schema.optional(Schema.Number),
+    firstResource: Schema.optional(Schema.Number),
+    price: Schema.optional(GoogleCloudChannelV1Price),
+  }).annotate({ identifier: "GoogleCloudChannelV1PriceTier" });
 
 export interface GoogleCloudChannelV1PricePhase {
   /** Price of the phase. Present if there are no price tiers. */
@@ -1331,18 +1118,14 @@ export interface GoogleCloudChannelV1PricePhase {
   priceTiers?: Array<GoogleCloudChannelV1PriceTier>;
 }
 
-export const GoogleCloudChannelV1PricePhase: Schema.Schema<GoogleCloudChannelV1PricePhase> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      price: Schema.optional(GoogleCloudChannelV1Price),
-      firstPeriod: Schema.optional(Schema.Number),
-      periodType: Schema.optional(Schema.String),
-      lastPeriod: Schema.optional(Schema.Number),
-      priceTiers: Schema.optional(Schema.Array(GoogleCloudChannelV1PriceTier)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1PricePhase",
-  }) as any as Schema.Schema<GoogleCloudChannelV1PricePhase>;
+export const GoogleCloudChannelV1PricePhase =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    price: Schema.optional(GoogleCloudChannelV1Price),
+    firstPeriod: Schema.optional(Schema.Number),
+    periodType: Schema.optional(Schema.String),
+    lastPeriod: Schema.optional(Schema.Number),
+    priceTiers: Schema.optional(Schema.Array(GoogleCloudChannelV1PriceTier)),
+  }).annotate({ identifier: "GoogleCloudChannelV1PricePhase" });
 
 export interface GoogleCloudChannelV1PriceByResource {
   /** Price of the Offer. Present if there are no price phases. */
@@ -1362,18 +1145,12 @@ export interface GoogleCloudChannelV1PriceByResource {
     | (string & {});
 }
 
-export const GoogleCloudChannelV1PriceByResource: Schema.Schema<GoogleCloudChannelV1PriceByResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      price: Schema.optional(GoogleCloudChannelV1Price),
-      pricePhases: Schema.optional(
-        Schema.Array(GoogleCloudChannelV1PricePhase),
-      ),
-      resourceType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1PriceByResource",
-  }) as any as Schema.Schema<GoogleCloudChannelV1PriceByResource>;
+export const GoogleCloudChannelV1PriceByResource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    price: Schema.optional(GoogleCloudChannelV1Price),
+    pricePhases: Schema.optional(Schema.Array(GoogleCloudChannelV1PricePhase)),
+    resourceType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1PriceByResource" });
 
 export interface GoogleCloudChannelV1Plan {
   /** Reseller Billing account to charge after an offer transaction. Only present for Google Cloud offers. */
@@ -1399,18 +1176,14 @@ export interface GoogleCloudChannelV1Plan {
   paymentCycle?: GoogleCloudChannelV1Period;
 }
 
-export const GoogleCloudChannelV1Plan: Schema.Schema<GoogleCloudChannelV1Plan> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      billingAccount: Schema.optional(Schema.String),
-      trialPeriod: Schema.optional(GoogleCloudChannelV1Period),
-      paymentPlan: Schema.optional(Schema.String),
-      paymentType: Schema.optional(Schema.String),
-      paymentCycle: Schema.optional(GoogleCloudChannelV1Period),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1Plan",
-  }) as any as Schema.Schema<GoogleCloudChannelV1Plan>;
+export const GoogleCloudChannelV1Plan =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    billingAccount: Schema.optional(Schema.String),
+    trialPeriod: Schema.optional(GoogleCloudChannelV1Period),
+    paymentPlan: Schema.optional(Schema.String),
+    paymentType: Schema.optional(Schema.String),
+    paymentCycle: Schema.optional(GoogleCloudChannelV1Period),
+  }).annotate({ identifier: "GoogleCloudChannelV1Plan" });
 
 export interface GoogleCloudChannelV1Offer {
   /** SKU the offer is associated with. */
@@ -1435,27 +1208,23 @@ export interface GoogleCloudChannelV1Offer {
   dealCode?: string;
 }
 
-export const GoogleCloudChannelV1Offer: Schema.Schema<GoogleCloudChannelV1Offer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sku: Schema.optional(GoogleCloudChannelV1Sku),
-      parameterDefinitions: Schema.optional(
-        Schema.Array(GoogleCloudChannelV1ParameterDefinition),
-      ),
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      marketingInfo: Schema.optional(GoogleCloudChannelV1MarketingInfo),
-      priceByResources: Schema.optional(
-        Schema.Array(GoogleCloudChannelV1PriceByResource),
-      ),
-      plan: Schema.optional(GoogleCloudChannelV1Plan),
-      constraints: Schema.optional(GoogleCloudChannelV1Constraints),
-      dealCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1Offer",
-  }) as any as Schema.Schema<GoogleCloudChannelV1Offer>;
+export const GoogleCloudChannelV1Offer =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sku: Schema.optional(GoogleCloudChannelV1Sku),
+    parameterDefinitions: Schema.optional(
+      Schema.Array(GoogleCloudChannelV1ParameterDefinition),
+    ),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    marketingInfo: Schema.optional(GoogleCloudChannelV1MarketingInfo),
+    priceByResources: Schema.optional(
+      Schema.Array(GoogleCloudChannelV1PriceByResource),
+    ),
+    plan: Schema.optional(GoogleCloudChannelV1Plan),
+    constraints: Schema.optional(GoogleCloudChannelV1Constraints),
+    dealCode: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1Offer" });
 
 export interface GoogleCloudChannelV1TransferableOffer {
   /** Offer with parameter constraints updated to allow the Transfer. */
@@ -1464,15 +1233,11 @@ export interface GoogleCloudChannelV1TransferableOffer {
   priceReferenceId?: string;
 }
 
-export const GoogleCloudChannelV1TransferableOffer: Schema.Schema<GoogleCloudChannelV1TransferableOffer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      offer: Schema.optional(GoogleCloudChannelV1Offer),
-      priceReferenceId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1TransferableOffer",
-  }) as any as Schema.Schema<GoogleCloudChannelV1TransferableOffer>;
+export const GoogleCloudChannelV1TransferableOffer =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    offer: Schema.optional(GoogleCloudChannelV1Offer),
+    priceReferenceId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1TransferableOffer" });
 
 export interface GoogleCloudChannelV1ListTransferableOffersResponse {
   /** Information about Offers for a customer that can be used for transfer. */
@@ -1481,24 +1246,22 @@ export interface GoogleCloudChannelV1ListTransferableOffersResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudChannelV1ListTransferableOffersResponse: Schema.Schema<GoogleCloudChannelV1ListTransferableOffersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      transferableOffers: Schema.optional(
-        Schema.Array(GoogleCloudChannelV1TransferableOffer),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudChannelV1ListTransferableOffersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    transferableOffers: Schema.optional(
+      Schema.Array(GoogleCloudChannelV1TransferableOffer),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudChannelV1ListTransferableOffersResponse",
-  }) as any as Schema.Schema<GoogleCloudChannelV1ListTransferableOffersResponse>;
+  });
 
 export interface GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity {}
 
-export const GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity: Schema.Schema<GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity",
-  }) as any as Schema.Schema<GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity>;
+  });
 
 export interface GoogleCloudChannelV1RepricingConfig {
   /** Applies the repricing configuration at the channel partner level. Only ChannelPartnerRepricingConfig supports this value. Deprecated: This is no longer supported. Use RepricingConfig.entitlement_granularity instead. */
@@ -1519,25 +1282,21 @@ export interface GoogleCloudChannelV1RepricingConfig {
     | (string & {});
 }
 
-export const GoogleCloudChannelV1RepricingConfig: Schema.Schema<GoogleCloudChannelV1RepricingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      channelPartnerGranularity: Schema.optional(
-        GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity,
-      ),
-      adjustment: Schema.optional(GoogleCloudChannelV1RepricingAdjustment),
-      conditionalOverrides: Schema.optional(
-        Schema.Array(GoogleCloudChannelV1ConditionalOverride),
-      ),
-      entitlementGranularity: Schema.optional(
-        GoogleCloudChannelV1RepricingConfigEntitlementGranularity,
-      ),
-      effectiveInvoiceMonth: Schema.optional(GoogleTypeDate),
-      rebillingBasis: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1RepricingConfig",
-  }) as any as Schema.Schema<GoogleCloudChannelV1RepricingConfig>;
+export const GoogleCloudChannelV1RepricingConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    channelPartnerGranularity: Schema.optional(
+      GoogleCloudChannelV1RepricingConfigChannelPartnerGranularity,
+    ),
+    adjustment: Schema.optional(GoogleCloudChannelV1RepricingAdjustment),
+    conditionalOverrides: Schema.optional(
+      Schema.Array(GoogleCloudChannelV1ConditionalOverride),
+    ),
+    entitlementGranularity: Schema.optional(
+      GoogleCloudChannelV1RepricingConfigEntitlementGranularity,
+    ),
+    effectiveInvoiceMonth: Schema.optional(GoogleTypeDate),
+    rebillingBasis: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1RepricingConfig" });
 
 export interface GoogleCloudChannelV1ChannelPartnerRepricingConfig {
   /** Output only. Resource name of the ChannelPartnerRepricingConfig. Format: accounts/{account_id}/channelPartnerLinks/{channel_partner_id}/channelPartnerRepricingConfigs/{id}. */
@@ -1548,16 +1307,14 @@ export interface GoogleCloudChannelV1ChannelPartnerRepricingConfig {
   updateTime?: string;
 }
 
-export const GoogleCloudChannelV1ChannelPartnerRepricingConfig: Schema.Schema<GoogleCloudChannelV1ChannelPartnerRepricingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      repricingConfig: Schema.optional(GoogleCloudChannelV1RepricingConfig),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudChannelV1ChannelPartnerRepricingConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    repricingConfig: Schema.optional(GoogleCloudChannelV1RepricingConfig),
+    updateTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudChannelV1ChannelPartnerRepricingConfig",
-  }) as any as Schema.Schema<GoogleCloudChannelV1ChannelPartnerRepricingConfig>;
+  });
 
 export interface GoogleCloudChannelV1DateRange {
   /** The earliest usage date time (inclusive). If you use time groupings (daily, weekly, etc), each group uses midnight to midnight (Pacific time). The usage start date is rounded down to include all usage from the specified date. We recommend that clients pass `usage_start_date_time` in Pacific time. */
@@ -1570,17 +1327,13 @@ export interface GoogleCloudChannelV1DateRange {
   invoiceEndDate?: GoogleTypeDate;
 }
 
-export const GoogleCloudChannelV1DateRange: Schema.Schema<GoogleCloudChannelV1DateRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      usageStartDateTime: Schema.optional(GoogleTypeDateTime),
-      usageEndDateTime: Schema.optional(GoogleTypeDateTime),
-      invoiceStartDate: Schema.optional(GoogleTypeDate),
-      invoiceEndDate: Schema.optional(GoogleTypeDate),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1DateRange",
-  }) as any as Schema.Schema<GoogleCloudChannelV1DateRange>;
+export const GoogleCloudChannelV1DateRange =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    usageStartDateTime: Schema.optional(GoogleTypeDateTime),
+    usageEndDateTime: Schema.optional(GoogleTypeDateTime),
+    invoiceStartDate: Schema.optional(GoogleTypeDate),
+    invoiceEndDate: Schema.optional(GoogleTypeDate),
+  }).annotate({ identifier: "GoogleCloudChannelV1DateRange" });
 
 export interface GoogleCloudChannelV1RunReportJobRequest {
   /** Optional. The range of usage or invoice dates to include in the result. */
@@ -1591,30 +1344,24 @@ export interface GoogleCloudChannelV1RunReportJobRequest {
   filter?: string;
 }
 
-export const GoogleCloudChannelV1RunReportJobRequest: Schema.Schema<GoogleCloudChannelV1RunReportJobRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dateRange: Schema.optional(GoogleCloudChannelV1DateRange),
-      languageCode: Schema.optional(Schema.String),
-      filter: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1RunReportJobRequest",
-  }) as any as Schema.Schema<GoogleCloudChannelV1RunReportJobRequest>;
+export const GoogleCloudChannelV1RunReportJobRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dateRange: Schema.optional(GoogleCloudChannelV1DateRange),
+    languageCode: Schema.optional(Schema.String),
+    filter: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1RunReportJobRequest" });
 
 export interface GoogleCloudChannelV1UnregisterSubscriberResponse {
   /** Name of the topic the service account subscriber access was removed from. */
   topic?: string;
 }
 
-export const GoogleCloudChannelV1UnregisterSubscriberResponse: Schema.Schema<GoogleCloudChannelV1UnregisterSubscriberResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      topic: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudChannelV1UnregisterSubscriberResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    topic: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudChannelV1UnregisterSubscriberResponse",
-  }) as any as Schema.Schema<GoogleCloudChannelV1UnregisterSubscriberResponse>;
+  });
 
 export interface GoogleCloudChannelV1ListSubscribersResponse {
   /** List of service accounts which have subscriber access to the topic. */
@@ -1625,16 +1372,12 @@ export interface GoogleCloudChannelV1ListSubscribersResponse {
   topic?: string;
 }
 
-export const GoogleCloudChannelV1ListSubscribersResponse: Schema.Schema<GoogleCloudChannelV1ListSubscribersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serviceAccounts: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-      topic: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1ListSubscribersResponse",
-  }) as any as Schema.Schema<GoogleCloudChannelV1ListSubscribersResponse>;
+export const GoogleCloudChannelV1ListSubscribersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    serviceAccounts: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+    topic: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1ListSubscribersResponse" });
 
 export interface GoogleCloudChannelV1EduData {
   /** Designated institute type of customer. */
@@ -1658,16 +1401,12 @@ export interface GoogleCloudChannelV1EduData {
   website?: string;
 }
 
-export const GoogleCloudChannelV1EduData: Schema.Schema<GoogleCloudChannelV1EduData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      instituteType: Schema.optional(Schema.String),
-      instituteSize: Schema.optional(Schema.String),
-      website: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1EduData",
-  }) as any as Schema.Schema<GoogleCloudChannelV1EduData>;
+export const GoogleCloudChannelV1EduData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    instituteType: Schema.optional(Schema.String),
+    instituteSize: Schema.optional(Schema.String),
+    website: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1EduData" });
 
 export interface GoogleCloudChannelV1CloudIdentityInfo {
   /** Output only. Whether the domain is verified. This field is not returned for a Customer's cloud_identity_info resource. Partners can use the domains.get() method of the Workspace SDK's Directory API, or listen to the PRIMARY_DOMAIN_VERIFIED Pub/Sub event in to track domain verification of their resolve Workspace customers. */
@@ -1692,21 +1431,17 @@ export interface GoogleCloudChannelV1CloudIdentityInfo {
   adminConsoleUri?: string;
 }
 
-export const GoogleCloudChannelV1CloudIdentityInfo: Schema.Schema<GoogleCloudChannelV1CloudIdentityInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      isDomainVerified: Schema.optional(Schema.Boolean),
-      alternateEmail: Schema.optional(Schema.String),
-      phoneNumber: Schema.optional(Schema.String),
-      languageCode: Schema.optional(Schema.String),
-      primaryDomain: Schema.optional(Schema.String),
-      eduData: Schema.optional(GoogleCloudChannelV1EduData),
-      customerType: Schema.optional(Schema.String),
-      adminConsoleUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1CloudIdentityInfo",
-  }) as any as Schema.Schema<GoogleCloudChannelV1CloudIdentityInfo>;
+export const GoogleCloudChannelV1CloudIdentityInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    isDomainVerified: Schema.optional(Schema.Boolean),
+    alternateEmail: Schema.optional(Schema.String),
+    phoneNumber: Schema.optional(Schema.String),
+    languageCode: Schema.optional(Schema.String),
+    primaryDomain: Schema.optional(Schema.String),
+    eduData: Schema.optional(GoogleCloudChannelV1EduData),
+    customerType: Schema.optional(Schema.String),
+    adminConsoleUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1CloudIdentityInfo" });
 
 export interface GoogleCloudChannelV1ChannelPartnerLink {
   /** Required. Cloud Identity ID of the linked reseller. */
@@ -1733,23 +1468,19 @@ export interface GoogleCloudChannelV1ChannelPartnerLink {
   createTime?: string;
 }
 
-export const GoogleCloudChannelV1ChannelPartnerLink: Schema.Schema<GoogleCloudChannelV1ChannelPartnerLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resellerCloudIdentityId: Schema.optional(Schema.String),
-      publicId: Schema.optional(Schema.String),
-      channelPartnerCloudIdentityInfo: Schema.optional(
-        GoogleCloudChannelV1CloudIdentityInfo,
-      ),
-      linkState: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      inviteLinkUri: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1ChannelPartnerLink",
-  }) as any as Schema.Schema<GoogleCloudChannelV1ChannelPartnerLink>;
+export const GoogleCloudChannelV1ChannelPartnerLink =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resellerCloudIdentityId: Schema.optional(Schema.String),
+    publicId: Schema.optional(Schema.String),
+    channelPartnerCloudIdentityInfo: Schema.optional(
+      GoogleCloudChannelV1CloudIdentityInfo,
+    ),
+    linkState: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    inviteLinkUri: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1ChannelPartnerLink" });
 
 export interface GoogleCloudChannelV1ListChannelPartnerLinksResponse {
   /** A token to retrieve the next page of results. Pass to ListChannelPartnerLinksRequest.page_token to obtain that page. */
@@ -1758,17 +1489,15 @@ export interface GoogleCloudChannelV1ListChannelPartnerLinksResponse {
   channelPartnerLinks?: Array<GoogleCloudChannelV1ChannelPartnerLink>;
 }
 
-export const GoogleCloudChannelV1ListChannelPartnerLinksResponse: Schema.Schema<GoogleCloudChannelV1ListChannelPartnerLinksResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      channelPartnerLinks: Schema.optional(
-        Schema.Array(GoogleCloudChannelV1ChannelPartnerLink),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudChannelV1ListChannelPartnerLinksResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    channelPartnerLinks: Schema.optional(
+      Schema.Array(GoogleCloudChannelV1ChannelPartnerLink),
+    ),
+  }).annotate({
     identifier: "GoogleCloudChannelV1ListChannelPartnerLinksResponse",
-  }) as any as Schema.Schema<GoogleCloudChannelV1ListChannelPartnerLinksResponse>;
+  });
 
 export interface GoogleCloudChannelV1ImportCustomerRequest {
   /** Required. Customer domain. */
@@ -1787,20 +1516,16 @@ export interface GoogleCloudChannelV1ImportCustomerRequest {
   overwriteIfExists?: boolean;
 }
 
-export const GoogleCloudChannelV1ImportCustomerRequest: Schema.Schema<GoogleCloudChannelV1ImportCustomerRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      domain: Schema.optional(Schema.String),
-      cloudIdentityId: Schema.optional(Schema.String),
-      primaryAdminEmail: Schema.optional(Schema.String),
-      customer: Schema.optional(Schema.String),
-      channelPartnerId: Schema.optional(Schema.String),
-      authToken: Schema.optional(Schema.String),
-      overwriteIfExists: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1ImportCustomerRequest",
-  }) as any as Schema.Schema<GoogleCloudChannelV1ImportCustomerRequest>;
+export const GoogleCloudChannelV1ImportCustomerRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    domain: Schema.optional(Schema.String),
+    cloudIdentityId: Schema.optional(Schema.String),
+    primaryAdminEmail: Schema.optional(Schema.String),
+    customer: Schema.optional(Schema.String),
+    channelPartnerId: Schema.optional(Schema.String),
+    authToken: Schema.optional(Schema.String),
+    overwriteIfExists: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudChannelV1ImportCustomerRequest" });
 
 export interface GoogleCloudChannelV1alpha1Period {
   /** Total duration of Period Type defined. */
@@ -1814,15 +1539,11 @@ export interface GoogleCloudChannelV1alpha1Period {
     | (string & {});
 }
 
-export const GoogleCloudChannelV1alpha1Period: Schema.Schema<GoogleCloudChannelV1alpha1Period> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      duration: Schema.optional(Schema.Number),
-      periodType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1alpha1Period",
-  }) as any as Schema.Schema<GoogleCloudChannelV1alpha1Period>;
+export const GoogleCloudChannelV1alpha1Period =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    duration: Schema.optional(Schema.Number),
+    periodType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1alpha1Period" });
 
 export interface GoogleCloudChannelV1alpha1RenewalSettings {
   /** If true and enable_renewal = true, the unit (for example seats or licenses) will be set to the number of active units at renewal time. */
@@ -1852,20 +1573,16 @@ export interface GoogleCloudChannelV1alpha1RenewalSettings {
   enableRenewal?: boolean;
 }
 
-export const GoogleCloudChannelV1alpha1RenewalSettings: Schema.Schema<GoogleCloudChannelV1alpha1RenewalSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resizeUnitCount: Schema.optional(Schema.Boolean),
-      paymentCycle: Schema.optional(GoogleCloudChannelV1alpha1Period),
-      paymentOption: Schema.optional(Schema.String),
-      disableCommitment: Schema.optional(Schema.Boolean),
-      scheduledRenewalOffer: Schema.optional(Schema.String),
-      paymentPlan: Schema.optional(Schema.String),
-      enableRenewal: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1alpha1RenewalSettings",
-  }) as any as Schema.Schema<GoogleCloudChannelV1alpha1RenewalSettings>;
+export const GoogleCloudChannelV1alpha1RenewalSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resizeUnitCount: Schema.optional(Schema.Boolean),
+    paymentCycle: Schema.optional(GoogleCloudChannelV1alpha1Period),
+    paymentOption: Schema.optional(Schema.String),
+    disableCommitment: Schema.optional(Schema.Boolean),
+    scheduledRenewalOffer: Schema.optional(Schema.String),
+    paymentPlan: Schema.optional(Schema.String),
+    enableRenewal: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudChannelV1alpha1RenewalSettings" });
 
 export interface GoogleCloudChannelV1alpha1CommitmentSettings {
   /** Output only. Commitment end timestamp. */
@@ -1876,18 +1593,12 @@ export interface GoogleCloudChannelV1alpha1CommitmentSettings {
   renewalSettings?: GoogleCloudChannelV1alpha1RenewalSettings;
 }
 
-export const GoogleCloudChannelV1alpha1CommitmentSettings: Schema.Schema<GoogleCloudChannelV1alpha1CommitmentSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endTime: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      renewalSettings: Schema.optional(
-        GoogleCloudChannelV1alpha1RenewalSettings,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1alpha1CommitmentSettings",
-  }) as any as Schema.Schema<GoogleCloudChannelV1alpha1CommitmentSettings>;
+export const GoogleCloudChannelV1alpha1CommitmentSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endTime: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    renewalSettings: Schema.optional(GoogleCloudChannelV1alpha1RenewalSettings),
+  }).annotate({ identifier: "GoogleCloudChannelV1alpha1CommitmentSettings" });
 
 export interface GoogleCloudChannelV1ProvisionCloudIdentityRequest {
   /** Admin user information. */
@@ -1898,16 +1609,14 @@ export interface GoogleCloudChannelV1ProvisionCloudIdentityRequest {
   cloudIdentityInfo?: GoogleCloudChannelV1CloudIdentityInfo;
 }
 
-export const GoogleCloudChannelV1ProvisionCloudIdentityRequest: Schema.Schema<GoogleCloudChannelV1ProvisionCloudIdentityRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      user: Schema.optional(GoogleCloudChannelV1AdminUser),
-      validateOnly: Schema.optional(Schema.Boolean),
-      cloudIdentityInfo: Schema.optional(GoogleCloudChannelV1CloudIdentityInfo),
-    }),
-  ).annotate({
+export const GoogleCloudChannelV1ProvisionCloudIdentityRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    user: Schema.optional(GoogleCloudChannelV1AdminUser),
+    validateOnly: Schema.optional(Schema.Boolean),
+    cloudIdentityInfo: Schema.optional(GoogleCloudChannelV1CloudIdentityInfo),
+  }).annotate({
     identifier: "GoogleCloudChannelV1ProvisionCloudIdentityRequest",
-  }) as any as Schema.Schema<GoogleCloudChannelV1ProvisionCloudIdentityRequest>;
+  });
 
 export interface GoogleCloudChannelV1alpha1ChannelPartnerEvent {
   /** Resource name for the Channel Partner Link. Channel_partner uses the format: accounts/{account_id}/channelPartnerLinks/{channel_partner_id} */
@@ -1920,15 +1629,11 @@ export interface GoogleCloudChannelV1alpha1ChannelPartnerEvent {
     | (string & {});
 }
 
-export const GoogleCloudChannelV1alpha1ChannelPartnerEvent: Schema.Schema<GoogleCloudChannelV1alpha1ChannelPartnerEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      channelPartner: Schema.optional(Schema.String),
-      eventType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1alpha1ChannelPartnerEvent",
-  }) as any as Schema.Schema<GoogleCloudChannelV1alpha1ChannelPartnerEvent>;
+export const GoogleCloudChannelV1alpha1ChannelPartnerEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    channelPartner: Schema.optional(Schema.String),
+    eventType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1alpha1ChannelPartnerEvent" });
 
 export interface GoogleCloudChannelV1UpdateChannelPartnerLinkRequest {
   /** Required. The channel partner link to update. Only channel_partner_link.link_state is allowed for updates. */
@@ -1937,17 +1642,13 @@ export interface GoogleCloudChannelV1UpdateChannelPartnerLinkRequest {
   updateMask?: string;
 }
 
-export const GoogleCloudChannelV1UpdateChannelPartnerLinkRequest: Schema.Schema<GoogleCloudChannelV1UpdateChannelPartnerLinkRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      channelPartnerLink: Schema.optional(
-        GoogleCloudChannelV1ChannelPartnerLink,
-      ),
-      updateMask: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudChannelV1UpdateChannelPartnerLinkRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    channelPartnerLink: Schema.optional(GoogleCloudChannelV1ChannelPartnerLink),
+    updateMask: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudChannelV1UpdateChannelPartnerLinkRequest",
-  }) as any as Schema.Schema<GoogleCloudChannelV1UpdateChannelPartnerLinkRequest>;
+  });
 
 export interface GoogleCloudChannelV1CustomerRepricingConfig {
   /** Output only. Resource name of the CustomerRepricingConfig. Format: accounts/{account_id}/customers/{customer_id}/customerRepricingConfigs/{id}. */
@@ -1958,16 +1659,12 @@ export interface GoogleCloudChannelV1CustomerRepricingConfig {
   updateTime?: string;
 }
 
-export const GoogleCloudChannelV1CustomerRepricingConfig: Schema.Schema<GoogleCloudChannelV1CustomerRepricingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      repricingConfig: Schema.optional(GoogleCloudChannelV1RepricingConfig),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1CustomerRepricingConfig",
-  }) as any as Schema.Schema<GoogleCloudChannelV1CustomerRepricingConfig>;
+export const GoogleCloudChannelV1CustomerRepricingConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    repricingConfig: Schema.optional(GoogleCloudChannelV1RepricingConfig),
+    updateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1CustomerRepricingConfig" });
 
 export interface GoogleCloudChannelV1ListCustomerRepricingConfigsResponse {
   /** A token to retrieve the next page of results. Pass to ListCustomerRepricingConfigsRequest.page_token to obtain that page. */
@@ -1976,17 +1673,15 @@ export interface GoogleCloudChannelV1ListCustomerRepricingConfigsResponse {
   customerRepricingConfigs?: Array<GoogleCloudChannelV1CustomerRepricingConfig>;
 }
 
-export const GoogleCloudChannelV1ListCustomerRepricingConfigsResponse: Schema.Schema<GoogleCloudChannelV1ListCustomerRepricingConfigsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      customerRepricingConfigs: Schema.optional(
-        Schema.Array(GoogleCloudChannelV1CustomerRepricingConfig),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudChannelV1ListCustomerRepricingConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    customerRepricingConfigs: Schema.optional(
+      Schema.Array(GoogleCloudChannelV1CustomerRepricingConfig),
+    ),
+  }).annotate({
     identifier: "GoogleCloudChannelV1ListCustomerRepricingConfigsResponse",
-  }) as any as Schema.Schema<GoogleCloudChannelV1ListCustomerRepricingConfigsResponse>;
+  });
 
 export interface GoogleCloudChannelV1TransferableSku {
   /** Describes the transfer eligibility of a SKU. */
@@ -1997,18 +1692,14 @@ export interface GoogleCloudChannelV1TransferableSku {
   legacySku?: GoogleCloudChannelV1Sku;
 }
 
-export const GoogleCloudChannelV1TransferableSku: Schema.Schema<GoogleCloudChannelV1TransferableSku> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      transferEligibility: Schema.optional(
-        GoogleCloudChannelV1TransferEligibility,
-      ),
-      sku: Schema.optional(GoogleCloudChannelV1Sku),
-      legacySku: Schema.optional(GoogleCloudChannelV1Sku),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1TransferableSku",
-  }) as any as Schema.Schema<GoogleCloudChannelV1TransferableSku>;
+export const GoogleCloudChannelV1TransferableSku =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    transferEligibility: Schema.optional(
+      GoogleCloudChannelV1TransferEligibility,
+    ),
+    sku: Schema.optional(GoogleCloudChannelV1Sku),
+    legacySku: Schema.optional(GoogleCloudChannelV1Sku),
+  }).annotate({ identifier: "GoogleCloudChannelV1TransferableSku" });
 
 export interface GoogleCloudChannelV1alpha1OpportunityEvent {
   /** Type of event which happened for the opportunity. */
@@ -2024,32 +1715,26 @@ export interface GoogleCloudChannelV1alpha1OpportunityEvent {
   opportunity?: string;
 }
 
-export const GoogleCloudChannelV1alpha1OpportunityEvent: Schema.Schema<GoogleCloudChannelV1alpha1OpportunityEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      eventType: Schema.optional(Schema.String),
-      partner: Schema.optional(Schema.String),
-      opportunity: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1alpha1OpportunityEvent",
-  }) as any as Schema.Schema<GoogleCloudChannelV1alpha1OpportunityEvent>;
+export const GoogleCloudChannelV1alpha1OpportunityEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    eventType: Schema.optional(Schema.String),
+    partner: Schema.optional(Schema.String),
+    opportunity: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1alpha1OpportunityEvent" });
 
 export interface GoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse {
   /** The Cloud Identity accounts associated with the domain. */
   cloudIdentityAccounts?: Array<GoogleCloudChannelV1CloudIdentityCustomerAccount>;
 }
 
-export const GoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse: Schema.Schema<GoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cloudIdentityAccounts: Schema.optional(
-        Schema.Array(GoogleCloudChannelV1CloudIdentityCustomerAccount),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cloudIdentityAccounts: Schema.optional(
+      Schema.Array(GoogleCloudChannelV1CloudIdentityCustomerAccount),
+    ),
+  }).annotate({
     identifier: "GoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse",
-  }) as any as Schema.Schema<GoogleCloudChannelV1CheckCloudIdentityAccountsExistResponse>;
+  });
 
 export interface GoogleCloudChannelV1ChangeOfferRequest {
   /** Required. New Offer. Format: accounts/{account_id}/offers/{offer_id}. */
@@ -2066,33 +1751,25 @@ export interface GoogleCloudChannelV1ChangeOfferRequest {
   purchaseOrderId?: string;
 }
 
-export const GoogleCloudChannelV1ChangeOfferRequest: Schema.Schema<GoogleCloudChannelV1ChangeOfferRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      offer: Schema.optional(Schema.String),
-      priceReferenceId: Schema.optional(Schema.String),
-      parameters: Schema.optional(Schema.Array(GoogleCloudChannelV1Parameter)),
-      requestId: Schema.optional(Schema.String),
-      billingAccount: Schema.optional(Schema.String),
-      purchaseOrderId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1ChangeOfferRequest",
-  }) as any as Schema.Schema<GoogleCloudChannelV1ChangeOfferRequest>;
+export const GoogleCloudChannelV1ChangeOfferRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    offer: Schema.optional(Schema.String),
+    priceReferenceId: Schema.optional(Schema.String),
+    parameters: Schema.optional(Schema.Array(GoogleCloudChannelV1Parameter)),
+    requestId: Schema.optional(Schema.String),
+    billingAccount: Schema.optional(Schema.String),
+    purchaseOrderId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1ChangeOfferRequest" });
 
 export interface GoogleCloudChannelV1SuspendEntitlementRequest {
   /** Optional. You can specify an optional unique request ID, and if you need to retry your request, the server will know to ignore the request if it's complete. For example, you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if it received the original operation with the same request ID. If it did, it will ignore the second request. The request ID must be a valid [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero UUID is not supported (`00000000-0000-0000-0000-000000000000`). */
   requestId?: string;
 }
 
-export const GoogleCloudChannelV1SuspendEntitlementRequest: Schema.Schema<GoogleCloudChannelV1SuspendEntitlementRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1SuspendEntitlementRequest",
-  }) as any as Schema.Schema<GoogleCloudChannelV1SuspendEntitlementRequest>;
+export const GoogleCloudChannelV1SuspendEntitlementRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1SuspendEntitlementRequest" });
 
 export interface GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest {
   /** Required. Domain to fetch for Cloud Identity account customers, including domain and team customers. For team customers, please use the domain for their emails. */
@@ -2101,29 +1778,23 @@ export interface GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest {
   primaryAdminEmail?: string;
 }
 
-export const GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest: Schema.Schema<GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      domain: Schema.optional(Schema.String),
-      primaryAdminEmail: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    domain: Schema.optional(Schema.String),
+    primaryAdminEmail: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest",
-  }) as any as Schema.Schema<GoogleCloudChannelV1CheckCloudIdentityAccountsExistRequest>;
+  });
 
 export interface GoogleCloudChannelV1CancelEntitlementRequest {
   /** Optional. You can specify an optional unique request ID, and if you need to retry your request, the server will know to ignore the request if it's complete. For example, you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if it received the original operation with the same request ID. If it did, it will ignore the second request. The request ID must be a valid [UUID](https://tools.ietf.org/html/rfc4122) with the exception that zero UUID is not supported (`00000000-0000-0000-0000-000000000000`). */
   requestId?: string;
 }
 
-export const GoogleCloudChannelV1CancelEntitlementRequest: Schema.Schema<GoogleCloudChannelV1CancelEntitlementRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1CancelEntitlementRequest",
-  }) as any as Schema.Schema<GoogleCloudChannelV1CancelEntitlementRequest>;
+export const GoogleCloudChannelV1CancelEntitlementRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1CancelEntitlementRequest" });
 
 export interface GoogleCloudChannelV1CreateEntitlementRequest {
   /** Required. The entitlement to create. */
@@ -2132,15 +1803,11 @@ export interface GoogleCloudChannelV1CreateEntitlementRequest {
   requestId?: string;
 }
 
-export const GoogleCloudChannelV1CreateEntitlementRequest: Schema.Schema<GoogleCloudChannelV1CreateEntitlementRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entitlement: Schema.optional(GoogleCloudChannelV1Entitlement),
-      requestId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1CreateEntitlementRequest",
-  }) as any as Schema.Schema<GoogleCloudChannelV1CreateEntitlementRequest>;
+export const GoogleCloudChannelV1CreateEntitlementRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entitlement: Schema.optional(GoogleCloudChannelV1Entitlement),
+    requestId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1CreateEntitlementRequest" });
 
 export interface GoogleCloudChannelV1ListChannelPartnerRepricingConfigsResponse {
   /** The repricing configs for this channel partner. */
@@ -2149,18 +1816,16 @@ export interface GoogleCloudChannelV1ListChannelPartnerRepricingConfigsResponse 
   nextPageToken?: string;
 }
 
-export const GoogleCloudChannelV1ListChannelPartnerRepricingConfigsResponse: Schema.Schema<GoogleCloudChannelV1ListChannelPartnerRepricingConfigsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      channelPartnerRepricingConfigs: Schema.optional(
-        Schema.Array(GoogleCloudChannelV1ChannelPartnerRepricingConfig),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudChannelV1ListChannelPartnerRepricingConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    channelPartnerRepricingConfigs: Schema.optional(
+      Schema.Array(GoogleCloudChannelV1ChannelPartnerRepricingConfig),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudChannelV1ListChannelPartnerRepricingConfigsResponse",
-  }) as any as Schema.Schema<GoogleCloudChannelV1ListChannelPartnerRepricingConfigsResponse>;
+  });
 
 export interface GoogleCloudChannelV1ReportStatus {
   /** The current state of the report generation process. */
@@ -2177,16 +1842,12 @@ export interface GoogleCloudChannelV1ReportStatus {
   endTime?: string;
 }
 
-export const GoogleCloudChannelV1ReportStatus: Schema.Schema<GoogleCloudChannelV1ReportStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1ReportStatus",
-  }) as any as Schema.Schema<GoogleCloudChannelV1ReportStatus>;
+export const GoogleCloudChannelV1ReportStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+    startTime: Schema.optional(Schema.String),
+    endTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1ReportStatus" });
 
 export interface GoogleCloudChannelV1ReportJob {
   /** Required. The resource name of a report job. Name uses the format: `accounts/{account_id}/reportJobs/{report_job_id}` */
@@ -2195,15 +1856,11 @@ export interface GoogleCloudChannelV1ReportJob {
   reportStatus?: GoogleCloudChannelV1ReportStatus;
 }
 
-export const GoogleCloudChannelV1ReportJob: Schema.Schema<GoogleCloudChannelV1ReportJob> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      reportStatus: Schema.optional(GoogleCloudChannelV1ReportStatus),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1ReportJob",
-  }) as any as Schema.Schema<GoogleCloudChannelV1ReportJob>;
+export const GoogleCloudChannelV1ReportJob =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    reportStatus: Schema.optional(GoogleCloudChannelV1ReportStatus),
+  }).annotate({ identifier: "GoogleCloudChannelV1ReportJob" });
 
 export interface GoogleCloudChannelV1ContactInfo {
   /** Output only. The customer account contact's display name, formatted as a combination of the customer's first and last name. */
@@ -2220,19 +1877,15 @@ export interface GoogleCloudChannelV1ContactInfo {
   lastName?: string;
 }
 
-export const GoogleCloudChannelV1ContactInfo: Schema.Schema<GoogleCloudChannelV1ContactInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      phone: Schema.optional(Schema.String),
-      email: Schema.optional(Schema.String),
-      firstName: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      lastName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1ContactInfo",
-  }) as any as Schema.Schema<GoogleCloudChannelV1ContactInfo>;
+export const GoogleCloudChannelV1ContactInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    phone: Schema.optional(Schema.String),
+    email: Schema.optional(Schema.String),
+    firstName: Schema.optional(Schema.String),
+    title: Schema.optional(Schema.String),
+    lastName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1ContactInfo" });
 
 export interface GoogleCloudChannelV1alpha1ProvisionedService {
   /** Output only. Provisioning ID of the entitlement. For Google Workspace, this is the underlying Subscription ID. For Google Cloud, this is the Billing Account ID of the billing subaccount. */
@@ -2243,16 +1896,12 @@ export interface GoogleCloudChannelV1alpha1ProvisionedService {
   productId?: string;
 }
 
-export const GoogleCloudChannelV1alpha1ProvisionedService: Schema.Schema<GoogleCloudChannelV1alpha1ProvisionedService> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      provisioningId: Schema.optional(Schema.String),
-      skuId: Schema.optional(Schema.String),
-      productId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1alpha1ProvisionedService",
-  }) as any as Schema.Schema<GoogleCloudChannelV1alpha1ProvisionedService>;
+export const GoogleCloudChannelV1alpha1ProvisionedService =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    provisioningId: Schema.optional(Schema.String),
+    skuId: Schema.optional(Schema.String),
+    productId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1alpha1ProvisionedService" });
 
 export interface GoogleCloudChannelV1ChangeRenewalSettingsRequest {
   /** Required. New renewal settings. */
@@ -2261,15 +1910,13 @@ export interface GoogleCloudChannelV1ChangeRenewalSettingsRequest {
   requestId?: string;
 }
 
-export const GoogleCloudChannelV1ChangeRenewalSettingsRequest: Schema.Schema<GoogleCloudChannelV1ChangeRenewalSettingsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      renewalSettings: Schema.optional(GoogleCloudChannelV1RenewalSettings),
-      requestId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudChannelV1ChangeRenewalSettingsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    renewalSettings: Schema.optional(GoogleCloudChannelV1RenewalSettings),
+    requestId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudChannelV1ChangeRenewalSettingsRequest",
-  }) as any as Schema.Schema<GoogleCloudChannelV1ChangeRenewalSettingsRequest>;
+  });
 
 export interface GoogleCloudChannelV1EntitlementEvent {
   /** Resource name of an entitlement of the form: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id} */
@@ -2292,15 +1939,11 @@ export interface GoogleCloudChannelV1EntitlementEvent {
     | (string & {});
 }
 
-export const GoogleCloudChannelV1EntitlementEvent: Schema.Schema<GoogleCloudChannelV1EntitlementEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entitlement: Schema.optional(Schema.String),
-      eventType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1EntitlementEvent",
-  }) as any as Schema.Schema<GoogleCloudChannelV1EntitlementEvent>;
+export const GoogleCloudChannelV1EntitlementEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entitlement: Schema.optional(Schema.String),
+    eventType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1EntitlementEvent" });
 
 export interface GoogleCloudChannelV1CustomerEvent {
   /** Type of event which happened for the customer. */
@@ -2313,15 +1956,11 @@ export interface GoogleCloudChannelV1CustomerEvent {
   customer?: string;
 }
 
-export const GoogleCloudChannelV1CustomerEvent: Schema.Schema<GoogleCloudChannelV1CustomerEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      eventType: Schema.optional(Schema.String),
-      customer: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1CustomerEvent",
-  }) as any as Schema.Schema<GoogleCloudChannelV1CustomerEvent>;
+export const GoogleCloudChannelV1CustomerEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    eventType: Schema.optional(Schema.String),
+    customer: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1CustomerEvent" });
 
 export interface GoogleCloudChannelV1SubscriberEvent {
   /** Entitlement event sent as part of Pub/Sub event to partners. */
@@ -2330,15 +1969,11 @@ export interface GoogleCloudChannelV1SubscriberEvent {
   customerEvent?: GoogleCloudChannelV1CustomerEvent;
 }
 
-export const GoogleCloudChannelV1SubscriberEvent: Schema.Schema<GoogleCloudChannelV1SubscriberEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entitlementEvent: Schema.optional(GoogleCloudChannelV1EntitlementEvent),
-      customerEvent: Schema.optional(GoogleCloudChannelV1CustomerEvent),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1SubscriberEvent",
-  }) as any as Schema.Schema<GoogleCloudChannelV1SubscriberEvent>;
+export const GoogleCloudChannelV1SubscriberEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entitlementEvent: Schema.optional(GoogleCloudChannelV1EntitlementEvent),
+    customerEvent: Schema.optional(GoogleCloudChannelV1CustomerEvent),
+  }).annotate({ identifier: "GoogleCloudChannelV1SubscriberEvent" });
 
 export interface GoogleCloudChannelV1alpha1OperationMetadata {
   /** The RPC that initiated this Long Running Operation. */
@@ -2361,14 +1996,10 @@ export interface GoogleCloudChannelV1alpha1OperationMetadata {
     | (string & {});
 }
 
-export const GoogleCloudChannelV1alpha1OperationMetadata: Schema.Schema<GoogleCloudChannelV1alpha1OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operationType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1alpha1OperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudChannelV1alpha1OperationMetadata>;
+export const GoogleCloudChannelV1alpha1OperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operationType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1alpha1OperationMetadata" });
 
 export interface GoogleCloudChannelV1ReportValue {
   /** A value of type `string`. */
@@ -2385,19 +2016,15 @@ export interface GoogleCloudChannelV1ReportValue {
   dateTimeValue?: GoogleTypeDateTime;
 }
 
-export const GoogleCloudChannelV1ReportValue: Schema.Schema<GoogleCloudChannelV1ReportValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stringValue: Schema.optional(Schema.String),
-      moneyValue: Schema.optional(GoogleTypeMoney),
-      intValue: Schema.optional(Schema.String),
-      dateValue: Schema.optional(GoogleTypeDate),
-      decimalValue: Schema.optional(GoogleTypeDecimal),
-      dateTimeValue: Schema.optional(GoogleTypeDateTime),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1ReportValue",
-  }) as any as Schema.Schema<GoogleCloudChannelV1ReportValue>;
+export const GoogleCloudChannelV1ReportValue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    stringValue: Schema.optional(Schema.String),
+    moneyValue: Schema.optional(GoogleTypeMoney),
+    intValue: Schema.optional(Schema.String),
+    dateValue: Schema.optional(GoogleTypeDate),
+    decimalValue: Schema.optional(GoogleTypeDecimal),
+    dateTimeValue: Schema.optional(GoogleTypeDateTime),
+  }).annotate({ identifier: "GoogleCloudChannelV1ReportValue" });
 
 export interface GoogleCloudChannelV1Customer {
   /** Output only. Cloud Identity information for the customer. Populated only if a Cloud Identity account exists for this customer. */
@@ -2434,27 +2061,23 @@ export interface GoogleCloudChannelV1Customer {
   correlationId?: string;
 }
 
-export const GoogleCloudChannelV1Customer: Schema.Schema<GoogleCloudChannelV1Customer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cloudIdentityInfo: Schema.optional(GoogleCloudChannelV1CloudIdentityInfo),
-      name: Schema.optional(Schema.String),
-      primaryContactInfo: Schema.optional(GoogleCloudChannelV1ContactInfo),
-      cloudIdentityId: Schema.optional(Schema.String),
-      customerAttestationState: Schema.optional(Schema.String),
-      channelPartnerId: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      alternateEmail: Schema.optional(Schema.String),
-      languageCode: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      domain: Schema.optional(Schema.String),
-      orgDisplayName: Schema.optional(Schema.String),
-      orgPostalAddress: Schema.optional(GoogleTypePostalAddress),
-      correlationId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1Customer",
-  }) as any as Schema.Schema<GoogleCloudChannelV1Customer>;
+export const GoogleCloudChannelV1Customer =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cloudIdentityInfo: Schema.optional(GoogleCloudChannelV1CloudIdentityInfo),
+    name: Schema.optional(Schema.String),
+    primaryContactInfo: Schema.optional(GoogleCloudChannelV1ContactInfo),
+    cloudIdentityId: Schema.optional(Schema.String),
+    customerAttestationState: Schema.optional(Schema.String),
+    channelPartnerId: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    alternateEmail: Schema.optional(Schema.String),
+    languageCode: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    domain: Schema.optional(Schema.String),
+    orgDisplayName: Schema.optional(Schema.String),
+    orgPostalAddress: Schema.optional(GoogleTypePostalAddress),
+    correlationId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1Customer" });
 
 export interface GoogleCloudChannelV1OperationMetadata {
   /** The RPC that initiated this Long Running Operation. */
@@ -2474,14 +2097,10 @@ export interface GoogleCloudChannelV1OperationMetadata {
     | (string & {});
 }
 
-export const GoogleCloudChannelV1OperationMetadata: Schema.Schema<GoogleCloudChannelV1OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operationType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1OperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudChannelV1OperationMetadata>;
+export const GoogleCloudChannelV1OperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operationType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1OperationMetadata" });
 
 export interface GoogleCloudChannelV1alpha1Value {
   /** Represents an int64 value. */
@@ -2496,18 +2115,14 @@ export interface GoogleCloudChannelV1alpha1Value {
   protoValue?: Record<string, unknown>;
 }
 
-export const GoogleCloudChannelV1alpha1Value: Schema.Schema<GoogleCloudChannelV1alpha1Value> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      int64Value: Schema.optional(Schema.String),
-      stringValue: Schema.optional(Schema.String),
-      doubleValue: Schema.optional(Schema.Number),
-      boolValue: Schema.optional(Schema.Boolean),
-      protoValue: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1alpha1Value",
-  }) as any as Schema.Schema<GoogleCloudChannelV1alpha1Value>;
+export const GoogleCloudChannelV1alpha1Value =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    int64Value: Schema.optional(Schema.String),
+    stringValue: Schema.optional(Schema.String),
+    doubleValue: Schema.optional(Schema.Number),
+    boolValue: Schema.optional(Schema.Boolean),
+    protoValue: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "GoogleCloudChannelV1alpha1Value" });
 
 export interface GoogleCloudChannelV1alpha1Parameter {
   /** Name of the parameter. */
@@ -2518,16 +2133,12 @@ export interface GoogleCloudChannelV1alpha1Parameter {
   editable?: boolean;
 }
 
-export const GoogleCloudChannelV1alpha1Parameter: Schema.Schema<GoogleCloudChannelV1alpha1Parameter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      value: Schema.optional(GoogleCloudChannelV1alpha1Value),
-      editable: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1alpha1Parameter",
-  }) as any as Schema.Schema<GoogleCloudChannelV1alpha1Parameter>;
+export const GoogleCloudChannelV1alpha1Parameter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    value: Schema.optional(GoogleCloudChannelV1alpha1Value),
+    editable: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudChannelV1alpha1Parameter" });
 
 export interface GoogleCloudChannelV1alpha1TrialSettings {
   /** Determines if the entitlement is in a trial or not: * `true` - The entitlement is in trial. * `false` - The entitlement is not in trial. */
@@ -2536,15 +2147,11 @@ export interface GoogleCloudChannelV1alpha1TrialSettings {
   endTime?: string;
 }
 
-export const GoogleCloudChannelV1alpha1TrialSettings: Schema.Schema<GoogleCloudChannelV1alpha1TrialSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      trial: Schema.optional(Schema.Boolean),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1alpha1TrialSettings",
-  }) as any as Schema.Schema<GoogleCloudChannelV1alpha1TrialSettings>;
+export const GoogleCloudChannelV1alpha1TrialSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    trial: Schema.optional(Schema.Boolean),
+    endTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1alpha1TrialSettings" });
 
 export interface GoogleCloudChannelV1alpha1Entitlement {
   /** Commitment settings for a commitment-based Offer. Required for commitment based offers. */
@@ -2600,55 +2207,47 @@ export interface GoogleCloudChannelV1alpha1Entitlement {
   priceReferenceId?: string;
 }
 
-export const GoogleCloudChannelV1alpha1Entitlement: Schema.Schema<GoogleCloudChannelV1alpha1Entitlement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      commitmentSettings: Schema.optional(
-        GoogleCloudChannelV1alpha1CommitmentSettings,
-      ),
-      offer: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      suspensionReasons: Schema.optional(Schema.Array(Schema.String)),
-      updateTime: Schema.optional(Schema.String),
-      maxUnits: Schema.optional(Schema.Number),
-      parameters: Schema.optional(
-        Schema.Array(GoogleCloudChannelV1alpha1Parameter),
-      ),
-      numUnits: Schema.optional(Schema.Number),
-      trialSettings: Schema.optional(GoogleCloudChannelV1alpha1TrialSettings),
-      channelPartnerId: Schema.optional(Schema.String),
-      purchaseOrderId: Schema.optional(Schema.String),
-      assignedUnits: Schema.optional(Schema.Number),
-      provisionedService: Schema.optional(
-        GoogleCloudChannelV1alpha1ProvisionedService,
-      ),
-      name: Schema.optional(Schema.String),
-      provisioningState: Schema.optional(Schema.String),
-      billingAccount: Schema.optional(Schema.String),
-      associationInfo: Schema.optional(
-        GoogleCloudChannelV1alpha1AssociationInfo,
-      ),
-      priceReferenceId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1alpha1Entitlement",
-  }) as any as Schema.Schema<GoogleCloudChannelV1alpha1Entitlement>;
+export const GoogleCloudChannelV1alpha1Entitlement =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    commitmentSettings: Schema.optional(
+      GoogleCloudChannelV1alpha1CommitmentSettings,
+    ),
+    offer: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    suspensionReasons: Schema.optional(Schema.Array(Schema.String)),
+    updateTime: Schema.optional(Schema.String),
+    maxUnits: Schema.optional(Schema.Number),
+    parameters: Schema.optional(
+      Schema.Array(GoogleCloudChannelV1alpha1Parameter),
+    ),
+    numUnits: Schema.optional(Schema.Number),
+    trialSettings: Schema.optional(GoogleCloudChannelV1alpha1TrialSettings),
+    channelPartnerId: Schema.optional(Schema.String),
+    purchaseOrderId: Schema.optional(Schema.String),
+    assignedUnits: Schema.optional(Schema.Number),
+    provisionedService: Schema.optional(
+      GoogleCloudChannelV1alpha1ProvisionedService,
+    ),
+    name: Schema.optional(Schema.String),
+    provisioningState: Schema.optional(Schema.String),
+    billingAccount: Schema.optional(Schema.String),
+    associationInfo: Schema.optional(GoogleCloudChannelV1alpha1AssociationInfo),
+    priceReferenceId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1alpha1Entitlement" });
 
 export interface GoogleCloudChannelV1alpha1TransferEntitlementsResponse {
   /** The transferred entitlements. */
   entitlements?: Array<GoogleCloudChannelV1alpha1Entitlement>;
 }
 
-export const GoogleCloudChannelV1alpha1TransferEntitlementsResponse: Schema.Schema<GoogleCloudChannelV1alpha1TransferEntitlementsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entitlements: Schema.optional(
-        Schema.Array(GoogleCloudChannelV1alpha1Entitlement),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudChannelV1alpha1TransferEntitlementsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entitlements: Schema.optional(
+      Schema.Array(GoogleCloudChannelV1alpha1Entitlement),
+    ),
+  }).annotate({
     identifier: "GoogleCloudChannelV1alpha1TransferEntitlementsResponse",
-  }) as any as Schema.Schema<GoogleCloudChannelV1alpha1TransferEntitlementsResponse>;
+  });
 
 export interface GoogleCloudChannelV1SkuGroup {
   /** Unique human readable identifier for the SKU group. */
@@ -2657,15 +2256,11 @@ export interface GoogleCloudChannelV1SkuGroup {
   name?: string;
 }
 
-export const GoogleCloudChannelV1SkuGroup: Schema.Schema<GoogleCloudChannelV1SkuGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1SkuGroup",
-  }) as any as Schema.Schema<GoogleCloudChannelV1SkuGroup>;
+export const GoogleCloudChannelV1SkuGroup =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1SkuGroup" });
 
 export interface GoogleCloudChannelV1ListSkuGroupsResponse {
   /** The list of SKU groups requested. */
@@ -2674,15 +2269,11 @@ export interface GoogleCloudChannelV1ListSkuGroupsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudChannelV1ListSkuGroupsResponse: Schema.Schema<GoogleCloudChannelV1ListSkuGroupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      skuGroups: Schema.optional(Schema.Array(GoogleCloudChannelV1SkuGroup)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1ListSkuGroupsResponse",
-  }) as any as Schema.Schema<GoogleCloudChannelV1ListSkuGroupsResponse>;
+export const GoogleCloudChannelV1ListSkuGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    skuGroups: Schema.optional(Schema.Array(GoogleCloudChannelV1SkuGroup)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1ListSkuGroupsResponse" });
 
 export interface GoogleCloudChannelV1Row {
   /** The key for the partition this row belongs to. This field is empty if the report is not partitioned. */
@@ -2691,15 +2282,11 @@ export interface GoogleCloudChannelV1Row {
   values?: Array<GoogleCloudChannelV1ReportValue>;
 }
 
-export const GoogleCloudChannelV1Row: Schema.Schema<GoogleCloudChannelV1Row> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      partitionKey: Schema.optional(Schema.String),
-      values: Schema.optional(Schema.Array(GoogleCloudChannelV1ReportValue)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1Row",
-  }) as any as Schema.Schema<GoogleCloudChannelV1Row>;
+export const GoogleCloudChannelV1Row =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    partitionKey: Schema.optional(Schema.String),
+    values: Schema.optional(Schema.Array(GoogleCloudChannelV1ReportValue)),
+  }).annotate({ identifier: "GoogleCloudChannelV1Row" });
 
 export interface GoogleCloudChannelV1ReportResultsMetadata {
   /** The total number of rows of data in the final report. */
@@ -2712,17 +2299,13 @@ export interface GoogleCloudChannelV1ReportResultsMetadata {
   precedingDateRange?: GoogleCloudChannelV1DateRange;
 }
 
-export const GoogleCloudChannelV1ReportResultsMetadata: Schema.Schema<GoogleCloudChannelV1ReportResultsMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rowCount: Schema.optional(Schema.String),
-      dateRange: Schema.optional(GoogleCloudChannelV1DateRange),
-      report: Schema.optional(GoogleCloudChannelV1Report),
-      precedingDateRange: Schema.optional(GoogleCloudChannelV1DateRange),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1ReportResultsMetadata",
-  }) as any as Schema.Schema<GoogleCloudChannelV1ReportResultsMetadata>;
+export const GoogleCloudChannelV1ReportResultsMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rowCount: Schema.optional(Schema.String),
+    dateRange: Schema.optional(GoogleCloudChannelV1DateRange),
+    report: Schema.optional(GoogleCloudChannelV1Report),
+    precedingDateRange: Schema.optional(GoogleCloudChannelV1DateRange),
+  }).annotate({ identifier: "GoogleCloudChannelV1ReportResultsMetadata" });
 
 export interface GoogleCloudChannelV1RunReportJobResponse {
   /** The metadata for the report's results (display name, columns, row count, and date range). If you view this before the operation finishes, you may see incomplete data. */
@@ -2731,17 +2314,11 @@ export interface GoogleCloudChannelV1RunReportJobResponse {
   reportJob?: GoogleCloudChannelV1ReportJob;
 }
 
-export const GoogleCloudChannelV1RunReportJobResponse: Schema.Schema<GoogleCloudChannelV1RunReportJobResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reportMetadata: Schema.optional(
-        GoogleCloudChannelV1ReportResultsMetadata,
-      ),
-      reportJob: Schema.optional(GoogleCloudChannelV1ReportJob),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1RunReportJobResponse",
-  }) as any as Schema.Schema<GoogleCloudChannelV1RunReportJobResponse>;
+export const GoogleCloudChannelV1RunReportJobResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reportMetadata: Schema.optional(GoogleCloudChannelV1ReportResultsMetadata),
+    reportJob: Schema.optional(GoogleCloudChannelV1ReportJob),
+  }).annotate({ identifier: "GoogleCloudChannelV1RunReportJobResponse" });
 
 export interface GoogleCloudChannelV1ListProductsResponse {
   /** List of Products requested. */
@@ -2750,15 +2327,11 @@ export interface GoogleCloudChannelV1ListProductsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudChannelV1ListProductsResponse: Schema.Schema<GoogleCloudChannelV1ListProductsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      products: Schema.optional(Schema.Array(GoogleCloudChannelV1Product)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1ListProductsResponse",
-  }) as any as Schema.Schema<GoogleCloudChannelV1ListProductsResponse>;
+export const GoogleCloudChannelV1ListProductsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    products: Schema.optional(Schema.Array(GoogleCloudChannelV1Product)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1ListProductsResponse" });
 
 export interface GoogleCloudChannelV1ListSkusResponse {
   /** The list of SKUs requested. */
@@ -2767,15 +2340,11 @@ export interface GoogleCloudChannelV1ListSkusResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudChannelV1ListSkusResponse: Schema.Schema<GoogleCloudChannelV1ListSkusResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      skus: Schema.optional(Schema.Array(GoogleCloudChannelV1Sku)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1ListSkusResponse",
-  }) as any as Schema.Schema<GoogleCloudChannelV1ListSkusResponse>;
+export const GoogleCloudChannelV1ListSkusResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    skus: Schema.optional(Schema.Array(GoogleCloudChannelV1Sku)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1ListSkusResponse" });
 
 export interface GoogleCloudChannelV1alpha1CustomerEvent {
   /** Resource name of the customer. Format: accounts/{account_id}/customers/{customer_id} */
@@ -2788,15 +2357,11 @@ export interface GoogleCloudChannelV1alpha1CustomerEvent {
     | (string & {});
 }
 
-export const GoogleCloudChannelV1alpha1CustomerEvent: Schema.Schema<GoogleCloudChannelV1alpha1CustomerEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customer: Schema.optional(Schema.String),
-      eventType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1alpha1CustomerEvent",
-  }) as any as Schema.Schema<GoogleCloudChannelV1alpha1CustomerEvent>;
+export const GoogleCloudChannelV1alpha1CustomerEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customer: Schema.optional(Schema.String),
+    eventType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1alpha1CustomerEvent" });
 
 export interface GoogleCloudChannelV1alpha1EntitlementEvent {
   /** Resource name of an entitlement of the form: accounts/{account_id}/customers/{customer_id}/entitlements/{entitlement_id} */
@@ -2819,15 +2384,11 @@ export interface GoogleCloudChannelV1alpha1EntitlementEvent {
     | (string & {});
 }
 
-export const GoogleCloudChannelV1alpha1EntitlementEvent: Schema.Schema<GoogleCloudChannelV1alpha1EntitlementEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entitlement: Schema.optional(Schema.String),
-      eventType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1alpha1EntitlementEvent",
-  }) as any as Schema.Schema<GoogleCloudChannelV1alpha1EntitlementEvent>;
+export const GoogleCloudChannelV1alpha1EntitlementEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entitlement: Schema.optional(Schema.String),
+    eventType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1alpha1EntitlementEvent" });
 
 export interface GoogleCloudChannelV1alpha1SubscriberEvent {
   /** Customer event sent as part of Pub/Sub event to partners. */
@@ -2840,23 +2401,19 @@ export interface GoogleCloudChannelV1alpha1SubscriberEvent {
   entitlementEvent?: GoogleCloudChannelV1alpha1EntitlementEvent;
 }
 
-export const GoogleCloudChannelV1alpha1SubscriberEvent: Schema.Schema<GoogleCloudChannelV1alpha1SubscriberEvent> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customerEvent: Schema.optional(GoogleCloudChannelV1alpha1CustomerEvent),
-      channelPartnerEvent: Schema.optional(
-        GoogleCloudChannelV1alpha1ChannelPartnerEvent,
-      ),
-      opportunityEvent: Schema.optional(
-        GoogleCloudChannelV1alpha1OpportunityEvent,
-      ),
-      entitlementEvent: Schema.optional(
-        GoogleCloudChannelV1alpha1EntitlementEvent,
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1alpha1SubscriberEvent",
-  }) as any as Schema.Schema<GoogleCloudChannelV1alpha1SubscriberEvent>;
+export const GoogleCloudChannelV1alpha1SubscriberEvent =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customerEvent: Schema.optional(GoogleCloudChannelV1alpha1CustomerEvent),
+    channelPartnerEvent: Schema.optional(
+      GoogleCloudChannelV1alpha1ChannelPartnerEvent,
+    ),
+    opportunityEvent: Schema.optional(
+      GoogleCloudChannelV1alpha1OpportunityEvent,
+    ),
+    entitlementEvent: Schema.optional(
+      GoogleCloudChannelV1alpha1EntitlementEvent,
+    ),
+  }).annotate({ identifier: "GoogleCloudChannelV1alpha1SubscriberEvent" });
 
 export interface GoogleCloudChannelV1ListOffersResponse {
   /** The list of Offers requested. The pricing information for each Offer only includes the base price. Effective prices and discounts aren't populated. */
@@ -2865,15 +2422,11 @@ export interface GoogleCloudChannelV1ListOffersResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudChannelV1ListOffersResponse: Schema.Schema<GoogleCloudChannelV1ListOffersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      offers: Schema.optional(Schema.Array(GoogleCloudChannelV1Offer)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1ListOffersResponse",
-  }) as any as Schema.Schema<GoogleCloudChannelV1ListOffersResponse>;
+export const GoogleCloudChannelV1ListOffersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    offers: Schema.optional(Schema.Array(GoogleCloudChannelV1Offer)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1ListOffersResponse" });
 
 export interface GoogleCloudChannelV1RegisterSubscriberRequest {
   /** Optional. Resource name of the account. Required if integrator is not provided. Otherwise, leave this field empty/unset. */
@@ -2884,16 +2437,12 @@ export interface GoogleCloudChannelV1RegisterSubscriberRequest {
   integrator?: string;
 }
 
-export const GoogleCloudChannelV1RegisterSubscriberRequest: Schema.Schema<GoogleCloudChannelV1RegisterSubscriberRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      account: Schema.optional(Schema.String),
-      serviceAccount: Schema.optional(Schema.String),
-      integrator: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1RegisterSubscriberRequest",
-  }) as any as Schema.Schema<GoogleCloudChannelV1RegisterSubscriberRequest>;
+export const GoogleCloudChannelV1RegisterSubscriberRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    account: Schema.optional(Schema.String),
+    serviceAccount: Schema.optional(Schema.String),
+    integrator: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1RegisterSubscriberRequest" });
 
 export interface GoogleCloudChannelV1TransferEntitlementsToGoogleRequest {
   /** Required. The entitlements to transfer to Google. */
@@ -2902,17 +2451,15 @@ export interface GoogleCloudChannelV1TransferEntitlementsToGoogleRequest {
   requestId?: string;
 }
 
-export const GoogleCloudChannelV1TransferEntitlementsToGoogleRequest: Schema.Schema<GoogleCloudChannelV1TransferEntitlementsToGoogleRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entitlements: Schema.optional(
-        Schema.Array(GoogleCloudChannelV1Entitlement),
-      ),
-      requestId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudChannelV1TransferEntitlementsToGoogleRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entitlements: Schema.optional(
+      Schema.Array(GoogleCloudChannelV1Entitlement),
+    ),
+    requestId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudChannelV1TransferEntitlementsToGoogleRequest",
-  }) as any as Schema.Schema<GoogleCloudChannelV1TransferEntitlementsToGoogleRequest>;
+  });
 
 export interface GoogleCloudChannelV1PurchasableOffer {
   /** Offer. */
@@ -2921,29 +2468,21 @@ export interface GoogleCloudChannelV1PurchasableOffer {
   priceReferenceId?: string;
 }
 
-export const GoogleCloudChannelV1PurchasableOffer: Schema.Schema<GoogleCloudChannelV1PurchasableOffer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      offer: Schema.optional(GoogleCloudChannelV1Offer),
-      priceReferenceId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1PurchasableOffer",
-  }) as any as Schema.Schema<GoogleCloudChannelV1PurchasableOffer>;
+export const GoogleCloudChannelV1PurchasableOffer =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    offer: Schema.optional(GoogleCloudChannelV1Offer),
+    priceReferenceId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1PurchasableOffer" });
 
 export interface GoogleCloudChannelV1RegisterSubscriberResponse {
   /** Name of the topic the subscriber will listen to. */
   topic?: string;
 }
 
-export const GoogleCloudChannelV1RegisterSubscriberResponse: Schema.Schema<GoogleCloudChannelV1RegisterSubscriberResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      topic: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1RegisterSubscriberResponse",
-  }) as any as Schema.Schema<GoogleCloudChannelV1RegisterSubscriberResponse>;
+export const GoogleCloudChannelV1RegisterSubscriberResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    topic: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1RegisterSubscriberResponse" });
 
 export interface GoogleCloudChannelV1BillableSku {
   /** Unique human readable name for the SKU. */
@@ -2956,17 +2495,13 @@ export interface GoogleCloudChannelV1BillableSku {
   service?: string;
 }
 
-export const GoogleCloudChannelV1BillableSku: Schema.Schema<GoogleCloudChannelV1BillableSku> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      skuDisplayName: Schema.optional(Schema.String),
-      serviceDisplayName: Schema.optional(Schema.String),
-      sku: Schema.optional(Schema.String),
-      service: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1BillableSku",
-  }) as any as Schema.Schema<GoogleCloudChannelV1BillableSku>;
+export const GoogleCloudChannelV1BillableSku =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    skuDisplayName: Schema.optional(Schema.String),
+    serviceDisplayName: Schema.optional(Schema.String),
+    sku: Schema.optional(Schema.String),
+    service: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1BillableSku" });
 
 export interface GoogleCloudChannelV1ListSkuGroupBillableSkusResponse {
   /** The list of billable SKUs in the requested SKU group. */
@@ -2975,17 +2510,15 @@ export interface GoogleCloudChannelV1ListSkuGroupBillableSkusResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudChannelV1ListSkuGroupBillableSkusResponse: Schema.Schema<GoogleCloudChannelV1ListSkuGroupBillableSkusResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      billableSkus: Schema.optional(
-        Schema.Array(GoogleCloudChannelV1BillableSku),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudChannelV1ListSkuGroupBillableSkusResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    billableSkus: Schema.optional(
+      Schema.Array(GoogleCloudChannelV1BillableSku),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudChannelV1ListSkuGroupBillableSkusResponse",
-  }) as any as Schema.Schema<GoogleCloudChannelV1ListSkuGroupBillableSkusResponse>;
+  });
 
 export interface GoogleCloudChannelV1ListPurchasableOffersResponse {
   /** The list of Offers requested. */
@@ -2994,17 +2527,15 @@ export interface GoogleCloudChannelV1ListPurchasableOffersResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudChannelV1ListPurchasableOffersResponse: Schema.Schema<GoogleCloudChannelV1ListPurchasableOffersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      purchasableOffers: Schema.optional(
-        Schema.Array(GoogleCloudChannelV1PurchasableOffer),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudChannelV1ListPurchasableOffersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    purchasableOffers: Schema.optional(
+      Schema.Array(GoogleCloudChannelV1PurchasableOffer),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudChannelV1ListPurchasableOffersResponse",
-  }) as any as Schema.Schema<GoogleCloudChannelV1ListPurchasableOffersResponse>;
+  });
 
 export interface GoogleCloudChannelV1ListReportsResponse {
   /** The reports available to the partner. */
@@ -3013,15 +2544,11 @@ export interface GoogleCloudChannelV1ListReportsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudChannelV1ListReportsResponse: Schema.Schema<GoogleCloudChannelV1ListReportsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reports: Schema.optional(Schema.Array(GoogleCloudChannelV1Report)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1ListReportsResponse",
-  }) as any as Schema.Schema<GoogleCloudChannelV1ListReportsResponse>;
+export const GoogleCloudChannelV1ListReportsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reports: Schema.optional(Schema.Array(GoogleCloudChannelV1Report)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1ListReportsResponse" });
 
 export interface GoogleRpcStatus {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -3032,18 +2559,13 @@ export interface GoogleRpcStatus {
   details?: Array<Record<string, unknown>>;
 }
 
-export const GoogleRpcStatus: Schema.Schema<GoogleRpcStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleRpcStatus",
-  }) as any as Schema.Schema<GoogleRpcStatus>;
+export const GoogleRpcStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "GoogleRpcStatus" });
 
 export interface GoogleLongrunningOperation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
@@ -3058,18 +2580,14 @@ export interface GoogleLongrunningOperation {
   metadata?: Record<string, unknown>;
 }
 
-export const GoogleLongrunningOperation: Schema.Schema<GoogleLongrunningOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      done: Schema.optional(Schema.Boolean),
-      error: Schema.optional(GoogleRpcStatus),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
-    identifier: "GoogleLongrunningOperation",
-  }) as any as Schema.Schema<GoogleLongrunningOperation>;
+export const GoogleLongrunningOperation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    done: Schema.optional(Schema.Boolean),
+    error: Schema.optional(GoogleRpcStatus),
+    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    name: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  }).annotate({ identifier: "GoogleLongrunningOperation" });
 
 export interface GoogleCloudChannelV1ListEntitlementsResponse {
   /** The reseller customer's entitlements. */
@@ -3078,17 +2596,13 @@ export interface GoogleCloudChannelV1ListEntitlementsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudChannelV1ListEntitlementsResponse: Schema.Schema<GoogleCloudChannelV1ListEntitlementsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entitlements: Schema.optional(
-        Schema.Array(GoogleCloudChannelV1Entitlement),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1ListEntitlementsResponse",
-  }) as any as Schema.Schema<GoogleCloudChannelV1ListEntitlementsResponse>;
+export const GoogleCloudChannelV1ListEntitlementsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    entitlements: Schema.optional(
+      Schema.Array(GoogleCloudChannelV1Entitlement),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1ListEntitlementsResponse" });
 
 export interface GoogleCloudChannelV1UnregisterSubscriberRequest {
   /** Optional. Resource name of the account. Required if integrator is not provided. Otherwise, leave this field empty/unset. */
@@ -3099,30 +2613,24 @@ export interface GoogleCloudChannelV1UnregisterSubscriberRequest {
   integrator?: string;
 }
 
-export const GoogleCloudChannelV1UnregisterSubscriberRequest: Schema.Schema<GoogleCloudChannelV1UnregisterSubscriberRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      account: Schema.optional(Schema.String),
-      serviceAccount: Schema.optional(Schema.String),
-      integrator: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudChannelV1UnregisterSubscriberRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    account: Schema.optional(Schema.String),
+    serviceAccount: Schema.optional(Schema.String),
+    integrator: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudChannelV1UnregisterSubscriberRequest",
-  }) as any as Schema.Schema<GoogleCloudChannelV1UnregisterSubscriberRequest>;
+  });
 
 export interface GoogleCloudChannelV1BillingAccountPurchaseInfo {
   /** The billing account resource. */
   billingAccount?: GoogleCloudChannelV1BillingAccount;
 }
 
-export const GoogleCloudChannelV1BillingAccountPurchaseInfo: Schema.Schema<GoogleCloudChannelV1BillingAccountPurchaseInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      billingAccount: Schema.optional(GoogleCloudChannelV1BillingAccount),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1BillingAccountPurchaseInfo",
-  }) as any as Schema.Schema<GoogleCloudChannelV1BillingAccountPurchaseInfo>;
+export const GoogleCloudChannelV1BillingAccountPurchaseInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    billingAccount: Schema.optional(GoogleCloudChannelV1BillingAccount),
+  }).annotate({ identifier: "GoogleCloudChannelV1BillingAccountPurchaseInfo" });
 
 export interface GoogleCloudChannelV1SkuPurchaseGroup {
   /** Resource names of the SKUs included in this group. Format: products/{product_id}/skus/{sku_id}. */
@@ -3131,17 +2639,13 @@ export interface GoogleCloudChannelV1SkuPurchaseGroup {
   billingAccountPurchaseInfos?: Array<GoogleCloudChannelV1BillingAccountPurchaseInfo>;
 }
 
-export const GoogleCloudChannelV1SkuPurchaseGroup: Schema.Schema<GoogleCloudChannelV1SkuPurchaseGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      skus: Schema.optional(Schema.Array(Schema.String)),
-      billingAccountPurchaseInfos: Schema.optional(
-        Schema.Array(GoogleCloudChannelV1BillingAccountPurchaseInfo),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1SkuPurchaseGroup",
-  }) as any as Schema.Schema<GoogleCloudChannelV1SkuPurchaseGroup>;
+export const GoogleCloudChannelV1SkuPurchaseGroup =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    skus: Schema.optional(Schema.Array(Schema.String)),
+    billingAccountPurchaseInfos: Schema.optional(
+      Schema.Array(GoogleCloudChannelV1BillingAccountPurchaseInfo),
+    ),
+  }).annotate({ identifier: "GoogleCloudChannelV1SkuPurchaseGroup" });
 
 export interface GoogleLongrunningListOperationsResponse {
   /** The standard List next-page token. */
@@ -3152,16 +2656,12 @@ export interface GoogleLongrunningListOperationsResponse {
   operations?: Array<GoogleLongrunningOperation>;
 }
 
-export const GoogleLongrunningListOperationsResponse: Schema.Schema<GoogleLongrunningListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
-    }),
-  ).annotate({
-    identifier: "GoogleLongrunningListOperationsResponse",
-  }) as any as Schema.Schema<GoogleLongrunningListOperationsResponse>;
+export const GoogleLongrunningListOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
+  }).annotate({ identifier: "GoogleLongrunningListOperationsResponse" });
 
 export interface GoogleCloudChannelV1ChangeParametersRequest {
   /** Required. Entitlement parameters to update. You can only change editable parameters. To view the available Parameters for a request, refer to the Offer.parameter_definitions from the desired offer. */
@@ -3172,16 +2672,12 @@ export interface GoogleCloudChannelV1ChangeParametersRequest {
   purchaseOrderId?: string;
 }
 
-export const GoogleCloudChannelV1ChangeParametersRequest: Schema.Schema<GoogleCloudChannelV1ChangeParametersRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parameters: Schema.optional(Schema.Array(GoogleCloudChannelV1Parameter)),
-      requestId: Schema.optional(Schema.String),
-      purchaseOrderId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1ChangeParametersRequest",
-  }) as any as Schema.Schema<GoogleCloudChannelV1ChangeParametersRequest>;
+export const GoogleCloudChannelV1ChangeParametersRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parameters: Schema.optional(Schema.Array(GoogleCloudChannelV1Parameter)),
+    requestId: Schema.optional(Schema.String),
+    purchaseOrderId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1ChangeParametersRequest" });
 
 export interface GoogleCloudChannelV1ListTransferableSkusRequest {
   /** Optional. The super admin of the resold customer generates this token to authorize a reseller to access their Cloud Identity and purchase entitlements on their behalf. You can omit this token after authorization. See https://support.google.com/a/answer/7643790 for more details. */
@@ -3198,19 +2694,17 @@ export interface GoogleCloudChannelV1ListTransferableSkusRequest {
   pageToken?: string;
 }
 
-export const GoogleCloudChannelV1ListTransferableSkusRequest: Schema.Schema<GoogleCloudChannelV1ListTransferableSkusRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      authToken: Schema.optional(Schema.String),
-      languageCode: Schema.optional(Schema.String),
-      customerName: Schema.optional(Schema.String),
-      pageSize: Schema.optional(Schema.Number),
-      cloudIdentityId: Schema.optional(Schema.String),
-      pageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudChannelV1ListTransferableSkusRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    authToken: Schema.optional(Schema.String),
+    languageCode: Schema.optional(Schema.String),
+    customerName: Schema.optional(Schema.String),
+    pageSize: Schema.optional(Schema.Number),
+    cloudIdentityId: Schema.optional(Schema.String),
+    pageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudChannelV1ListTransferableSkusRequest",
-  }) as any as Schema.Schema<GoogleCloudChannelV1ListTransferableSkusRequest>;
+  });
 
 export interface GoogleCloudChannelV1ListTransferableSkusResponse {
   /** Information about existing SKUs for a customer that needs a transfer. */
@@ -3219,24 +2713,21 @@ export interface GoogleCloudChannelV1ListTransferableSkusResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudChannelV1ListTransferableSkusResponse: Schema.Schema<GoogleCloudChannelV1ListTransferableSkusResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      transferableSkus: Schema.optional(
-        Schema.Array(GoogleCloudChannelV1TransferableSku),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudChannelV1ListTransferableSkusResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    transferableSkus: Schema.optional(
+      Schema.Array(GoogleCloudChannelV1TransferableSku),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudChannelV1ListTransferableSkusResponse",
-  }) as any as Schema.Schema<GoogleCloudChannelV1ListTransferableSkusResponse>;
+  });
 
 export interface GoogleProtobufEmpty {}
 
-export const GoogleProtobufEmpty: Schema.Schema<GoogleProtobufEmpty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "GoogleProtobufEmpty",
-  }) as any as Schema.Schema<GoogleProtobufEmpty>;
+export const GoogleProtobufEmpty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "GoogleProtobufEmpty" });
 
 export interface GoogleCloudChannelV1FetchReportResultsRequest {
   /** Optional. Requested page size of the report. The server may return fewer results than requested. If you don't specify a page size, the server uses a sensible default (may change over time). The maximum value is 30,000; the server will change larger values to 30,000. */
@@ -3247,23 +2738,19 @@ export interface GoogleCloudChannelV1FetchReportResultsRequest {
   pageToken?: string;
 }
 
-export const GoogleCloudChannelV1FetchReportResultsRequest: Schema.Schema<GoogleCloudChannelV1FetchReportResultsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pageSize: Schema.optional(Schema.Number),
-      partitionKeys: Schema.optional(Schema.Array(Schema.String)),
-      pageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1FetchReportResultsRequest",
-  }) as any as Schema.Schema<GoogleCloudChannelV1FetchReportResultsRequest>;
+export const GoogleCloudChannelV1FetchReportResultsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageSize: Schema.optional(Schema.Number),
+    partitionKeys: Schema.optional(Schema.Array(Schema.String)),
+    pageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1FetchReportResultsRequest" });
 
 export interface GoogleLongrunningCancelOperationRequest {}
 
-export const GoogleLongrunningCancelOperationRequest: Schema.Schema<GoogleLongrunningCancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const GoogleLongrunningCancelOperationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "GoogleLongrunningCancelOperationRequest",
-  }) as any as Schema.Schema<GoogleLongrunningCancelOperationRequest>;
+  });
 
 export interface GoogleCloudChannelV1FetchReportResultsResponse {
   /** Pass this token to FetchReportResultsRequest.page_token to retrieve the next page of results. */
@@ -3274,34 +2761,26 @@ export interface GoogleCloudChannelV1FetchReportResultsResponse {
   rows?: Array<GoogleCloudChannelV1Row>;
 }
 
-export const GoogleCloudChannelV1FetchReportResultsResponse: Schema.Schema<GoogleCloudChannelV1FetchReportResultsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      reportMetadata: Schema.optional(
-        GoogleCloudChannelV1ReportResultsMetadata,
-      ),
-      rows: Schema.optional(Schema.Array(GoogleCloudChannelV1Row)),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1FetchReportResultsResponse",
-  }) as any as Schema.Schema<GoogleCloudChannelV1FetchReportResultsResponse>;
+export const GoogleCloudChannelV1FetchReportResultsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    reportMetadata: Schema.optional(GoogleCloudChannelV1ReportResultsMetadata),
+    rows: Schema.optional(Schema.Array(GoogleCloudChannelV1Row)),
+  }).annotate({ identifier: "GoogleCloudChannelV1FetchReportResultsResponse" });
 
 export interface GoogleCloudChannelV1QueryEligibleBillingAccountsResponse {
   /** List of SKU purchase groups where each group represents a set of SKUs that must be purchased using the same billing account. Each SKU from [QueryEligibleBillingAccountsRequest.skus] will appear in exactly one SKU group. */
   skuPurchaseGroups?: Array<GoogleCloudChannelV1SkuPurchaseGroup>;
 }
 
-export const GoogleCloudChannelV1QueryEligibleBillingAccountsResponse: Schema.Schema<GoogleCloudChannelV1QueryEligibleBillingAccountsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      skuPurchaseGroups: Schema.optional(
-        Schema.Array(GoogleCloudChannelV1SkuPurchaseGroup),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudChannelV1QueryEligibleBillingAccountsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    skuPurchaseGroups: Schema.optional(
+      Schema.Array(GoogleCloudChannelV1SkuPurchaseGroup),
+    ),
+  }).annotate({
     identifier: "GoogleCloudChannelV1QueryEligibleBillingAccountsResponse",
-  }) as any as Schema.Schema<GoogleCloudChannelV1QueryEligibleBillingAccountsResponse>;
+  });
 
 export interface GoogleCloudChannelV1ListCustomersResponse {
   /** The customers belonging to a reseller or distributor. */
@@ -3310,15 +2789,11 @@ export interface GoogleCloudChannelV1ListCustomersResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudChannelV1ListCustomersResponse: Schema.Schema<GoogleCloudChannelV1ListCustomersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customers: Schema.optional(Schema.Array(GoogleCloudChannelV1Customer)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudChannelV1ListCustomersResponse",
-  }) as any as Schema.Schema<GoogleCloudChannelV1ListCustomersResponse>;
+export const GoogleCloudChannelV1ListCustomersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customers: Schema.optional(Schema.Array(GoogleCloudChannelV1Customer)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudChannelV1ListCustomersResponse" });
 
 // ==========================================================================
 // Operations

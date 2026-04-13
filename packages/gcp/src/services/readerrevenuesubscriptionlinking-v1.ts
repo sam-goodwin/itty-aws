@@ -33,17 +33,12 @@ export interface Entitlement {
   subscriptionToken?: string;
 }
 
-export const Entitlement: Schema.Schema<Entitlement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      productId: Schema.optional(Schema.String),
-      detail: Schema.optional(Schema.String),
-      expireTime: Schema.optional(Schema.String),
-      subscriptionToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Entitlement",
-  }) as any as Schema.Schema<Entitlement>;
+export const Entitlement = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  productId: Schema.optional(Schema.String),
+  detail: Schema.optional(Schema.String),
+  expireTime: Schema.optional(Schema.String),
+  subscriptionToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "Entitlement" });
 
 export interface Reader {
   /** Output only. The resource name of the reader. The last part of ppid in the resource name is the publisher provided id. */
@@ -58,23 +53,19 @@ export interface Reader {
   originatingPublicationId?: string;
 }
 
-export const Reader: Schema.Schema<Reader> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      ppid: Schema.optional(Schema.String),
-      publicationId: Schema.optional(Schema.String),
-      originatingPublicationId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Reader" }) as any as Schema.Schema<Reader>;
+export const Reader = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  ppid: Schema.optional(Schema.String),
+  publicationId: Schema.optional(Schema.String),
+  originatingPublicationId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Reader" });
 
 export interface DeleteReaderResponse {}
 
-export const DeleteReaderResponse: Schema.Schema<DeleteReaderResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "DeleteReaderResponse",
-  }) as any as Schema.Schema<DeleteReaderResponse>;
+export const DeleteReaderResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "DeleteReaderResponse" });
 
 export interface ReaderEntitlements {
   /** Output only. The resource name of the singleton. */
@@ -83,15 +74,10 @@ export interface ReaderEntitlements {
   entitlements?: Array<Entitlement>;
 }
 
-export const ReaderEntitlements: Schema.Schema<ReaderEntitlements> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      entitlements: Schema.optional(Schema.Array(Entitlement)),
-    }),
-  ).annotate({
-    identifier: "ReaderEntitlements",
-  }) as any as Schema.Schema<ReaderEntitlements>;
+export const ReaderEntitlements = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  entitlements: Schema.optional(Schema.Array(Entitlement)),
+}).annotate({ identifier: "ReaderEntitlements" });
 
 // ==========================================================================
 // Operations

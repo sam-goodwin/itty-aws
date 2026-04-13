@@ -35,18 +35,16 @@ export interface GoogleAdsHomeservicesLocalservicesV1BookingLead {
   customerName?: string;
 }
 
-export const GoogleAdsHomeservicesLocalservicesV1BookingLead: Schema.Schema<GoogleAdsHomeservicesLocalservicesV1BookingLead> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      consumerEmail: Schema.optional(Schema.String),
-      consumerPhoneNumber: Schema.optional(Schema.String),
-      jobType: Schema.optional(Schema.String),
-      bookingAppointmentTimestamp: Schema.optional(Schema.String),
-      customerName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAdsHomeservicesLocalservicesV1BookingLead =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    consumerEmail: Schema.optional(Schema.String),
+    consumerPhoneNumber: Schema.optional(Schema.String),
+    jobType: Schema.optional(Schema.String),
+    bookingAppointmentTimestamp: Schema.optional(Schema.String),
+    customerName: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleAdsHomeservicesLocalservicesV1BookingLead",
-  }) as any as Schema.Schema<GoogleAdsHomeservicesLocalservicesV1BookingLead>;
+  });
 
 export interface GoogleTypeTimeZone {
   /** IANA Time Zone Database time zone. For example "America/New_York". */
@@ -55,29 +53,22 @@ export interface GoogleTypeTimeZone {
   version?: string;
 }
 
-export const GoogleTypeTimeZone: Schema.Schema<GoogleTypeTimeZone> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleTypeTimeZone",
-  }) as any as Schema.Schema<GoogleTypeTimeZone>;
+export const GoogleTypeTimeZone = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+}).annotate({ identifier: "GoogleTypeTimeZone" });
 
 export interface GoogleAdsHomeservicesLocalservicesV1AggregatorInfo {
   /** Provider id (listed in aggregator system) which maps to a account id in GLS system. */
   aggregatorProviderId?: string;
 }
 
-export const GoogleAdsHomeservicesLocalservicesV1AggregatorInfo: Schema.Schema<GoogleAdsHomeservicesLocalservicesV1AggregatorInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      aggregatorProviderId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAdsHomeservicesLocalservicesV1AggregatorInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    aggregatorProviderId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleAdsHomeservicesLocalservicesV1AggregatorInfo",
-  }) as any as Schema.Schema<GoogleAdsHomeservicesLocalservicesV1AggregatorInfo>;
+  });
 
 export interface GoogleAdsHomeservicesLocalservicesV1PhoneLead {
   /** Timestamp of the phone call which resulted in a charged phone lead. */
@@ -88,16 +79,12 @@ export interface GoogleAdsHomeservicesLocalservicesV1PhoneLead {
   consumerPhoneNumber?: string;
 }
 
-export const GoogleAdsHomeservicesLocalservicesV1PhoneLead: Schema.Schema<GoogleAdsHomeservicesLocalservicesV1PhoneLead> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      chargedCallTimestamp: Schema.optional(Schema.String),
-      chargedConnectedCallDurationSeconds: Schema.optional(Schema.String),
-      consumerPhoneNumber: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleAdsHomeservicesLocalservicesV1PhoneLead",
-  }) as any as Schema.Schema<GoogleAdsHomeservicesLocalservicesV1PhoneLead>;
+export const GoogleAdsHomeservicesLocalservicesV1PhoneLead =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    chargedCallTimestamp: Schema.optional(Schema.String),
+    chargedConnectedCallDurationSeconds: Schema.optional(Schema.String),
+    consumerPhoneNumber: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleAdsHomeservicesLocalservicesV1PhoneLead" });
 
 export interface GoogleAdsHomeservicesLocalservicesV1MessageLead {
   /** Name of the customer who created the lead. */
@@ -110,17 +97,15 @@ export interface GoogleAdsHomeservicesLocalservicesV1MessageLead {
   postalCode?: string;
 }
 
-export const GoogleAdsHomeservicesLocalservicesV1MessageLead: Schema.Schema<GoogleAdsHomeservicesLocalservicesV1MessageLead> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customerName: Schema.optional(Schema.String),
-      consumerPhoneNumber: Schema.optional(Schema.String),
-      jobType: Schema.optional(Schema.String),
-      postalCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAdsHomeservicesLocalservicesV1MessageLead =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customerName: Schema.optional(Schema.String),
+    consumerPhoneNumber: Schema.optional(Schema.String),
+    jobType: Schema.optional(Schema.String),
+    postalCode: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleAdsHomeservicesLocalservicesV1MessageLead",
-  }) as any as Schema.Schema<GoogleAdsHomeservicesLocalservicesV1MessageLead>;
+  });
 
 export interface GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport {
   /** Aggregator specific information related to the lead. */
@@ -168,36 +153,34 @@ export interface GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport {
   disputeStatus?: string;
 }
 
-export const GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport: Schema.Schema<GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      aggregatorInfo: Schema.optional(
-        GoogleAdsHomeservicesLocalservicesV1AggregatorInfo,
-      ),
-      accountId: Schema.optional(Schema.String),
-      phoneLead: Schema.optional(GoogleAdsHomeservicesLocalservicesV1PhoneLead),
-      businessName: Schema.optional(Schema.String),
-      chargeStatus: Schema.optional(Schema.String),
-      leadCreationTimestamp: Schema.optional(Schema.String),
-      geo: Schema.optional(Schema.String),
-      messageLead: Schema.optional(
-        GoogleAdsHomeservicesLocalservicesV1MessageLead,
-      ),
-      currencyCode: Schema.optional(Schema.String),
-      leadId: Schema.optional(Schema.String),
-      leadCategory: Schema.optional(Schema.String),
-      leadType: Schema.optional(Schema.String),
-      bookingLead: Schema.optional(
-        GoogleAdsHomeservicesLocalservicesV1BookingLead,
-      ),
-      leadPrice: Schema.optional(Schema.Number),
-      googleAdsLeadId: Schema.optional(Schema.String),
-      timezone: Schema.optional(GoogleTypeTimeZone),
-      disputeStatus: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    aggregatorInfo: Schema.optional(
+      GoogleAdsHomeservicesLocalservicesV1AggregatorInfo,
+    ),
+    accountId: Schema.optional(Schema.String),
+    phoneLead: Schema.optional(GoogleAdsHomeservicesLocalservicesV1PhoneLead),
+    businessName: Schema.optional(Schema.String),
+    chargeStatus: Schema.optional(Schema.String),
+    leadCreationTimestamp: Schema.optional(Schema.String),
+    geo: Schema.optional(Schema.String),
+    messageLead: Schema.optional(
+      GoogleAdsHomeservicesLocalservicesV1MessageLead,
+    ),
+    currencyCode: Schema.optional(Schema.String),
+    leadId: Schema.optional(Schema.String),
+    leadCategory: Schema.optional(Schema.String),
+    leadType: Schema.optional(Schema.String),
+    bookingLead: Schema.optional(
+      GoogleAdsHomeservicesLocalservicesV1BookingLead,
+    ),
+    leadPrice: Schema.optional(Schema.Number),
+    googleAdsLeadId: Schema.optional(Schema.String),
+    timezone: Schema.optional(GoogleTypeTimeZone),
+    disputeStatus: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport",
-  }) as any as Schema.Schema<GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport>;
+  });
 
 export interface GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse {
   /** Pagination token to retrieve the next page of results. When `next_page_token` is not filled in, there is no next page and the list returned is the last page in the result set. */
@@ -206,18 +189,16 @@ export interface GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsRe
   detailedLeadReports?: Array<GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport>;
 }
 
-export const GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse: Schema.Schema<GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      detailedLeadReports: Schema.optional(
-        Schema.Array(GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport),
-      ),
-    }),
-  ).annotate({
+export const GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    detailedLeadReports: Schema.optional(
+      Schema.Array(GoogleAdsHomeservicesLocalservicesV1DetailedLeadReport),
+    ),
+  }).annotate({
     identifier:
       "GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse",
-  }) as any as Schema.Schema<GoogleAdsHomeservicesLocalservicesV1SearchDetailedLeadReportsResponse>;
+  });
 
 export interface GoogleAdsHomeservicesLocalservicesV1AccountReport {
   /** Total number of reviews the account has up to current date. */
@@ -256,32 +237,30 @@ export interface GoogleAdsHomeservicesLocalservicesV1AccountReport {
   phoneLeadResponsiveness?: number;
 }
 
-export const GoogleAdsHomeservicesLocalservicesV1AccountReport: Schema.Schema<GoogleAdsHomeservicesLocalservicesV1AccountReport> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      totalReview: Schema.optional(Schema.Number),
-      currentPeriodPhoneCalls: Schema.optional(Schema.String),
-      currentPeriodConnectedPhoneCalls: Schema.optional(Schema.String),
-      previousPeriodConnectedPhoneCalls: Schema.optional(Schema.String),
-      currentPeriodChargedLeads: Schema.optional(Schema.String),
-      averageWeeklyBudget: Schema.optional(Schema.Number),
-      previousPeriodChargedLeads: Schema.optional(Schema.String),
-      currencyCode: Schema.optional(Schema.String),
-      previousPeriodTotalCost: Schema.optional(Schema.Number),
-      averageFiveStarRating: Schema.optional(Schema.Number),
-      businessName: Schema.optional(Schema.String),
-      accountId: Schema.optional(Schema.String),
-      currentPeriodTotalCost: Schema.optional(Schema.Number),
-      previousPeriodPhoneCalls: Schema.optional(Schema.String),
-      impressionsLastTwoDays: Schema.optional(Schema.String),
-      aggregatorInfo: Schema.optional(
-        GoogleAdsHomeservicesLocalservicesV1AggregatorInfo,
-      ),
-      phoneLeadResponsiveness: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleAdsHomeservicesLocalservicesV1AccountReport =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    totalReview: Schema.optional(Schema.Number),
+    currentPeriodPhoneCalls: Schema.optional(Schema.String),
+    currentPeriodConnectedPhoneCalls: Schema.optional(Schema.String),
+    previousPeriodConnectedPhoneCalls: Schema.optional(Schema.String),
+    currentPeriodChargedLeads: Schema.optional(Schema.String),
+    averageWeeklyBudget: Schema.optional(Schema.Number),
+    previousPeriodChargedLeads: Schema.optional(Schema.String),
+    currencyCode: Schema.optional(Schema.String),
+    previousPeriodTotalCost: Schema.optional(Schema.Number),
+    averageFiveStarRating: Schema.optional(Schema.Number),
+    businessName: Schema.optional(Schema.String),
+    accountId: Schema.optional(Schema.String),
+    currentPeriodTotalCost: Schema.optional(Schema.Number),
+    previousPeriodPhoneCalls: Schema.optional(Schema.String),
+    impressionsLastTwoDays: Schema.optional(Schema.String),
+    aggregatorInfo: Schema.optional(
+      GoogleAdsHomeservicesLocalservicesV1AggregatorInfo,
+    ),
+    phoneLeadResponsiveness: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "GoogleAdsHomeservicesLocalservicesV1AccountReport",
-  }) as any as Schema.Schema<GoogleAdsHomeservicesLocalservicesV1AccountReport>;
+  });
 
 export interface GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse {
   /** List of account reports which maps 1:1 to a particular linked GLS account. */
@@ -290,18 +269,16 @@ export interface GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsRespons
   nextPageToken?: string;
 }
 
-export const GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse: Schema.Schema<GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accountReports: Schema.optional(
-        Schema.Array(GoogleAdsHomeservicesLocalservicesV1AccountReport),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accountReports: Schema.optional(
+      Schema.Array(GoogleAdsHomeservicesLocalservicesV1AccountReport),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse",
-  }) as any as Schema.Schema<GoogleAdsHomeservicesLocalservicesV1SearchAccountReportsResponse>;
+  });
 
 // ==========================================================================
 // Operations

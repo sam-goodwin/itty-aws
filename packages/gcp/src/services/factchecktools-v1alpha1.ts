@@ -29,15 +29,13 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1Publisher {
   site?: string;
 }
 
-export const GoogleFactcheckingFactchecktoolsV1alpha1Publisher: Schema.Schema<GoogleFactcheckingFactchecktoolsV1alpha1Publisher> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      site: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleFactcheckingFactchecktoolsV1alpha1Publisher =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    site: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleFactcheckingFactchecktoolsV1alpha1Publisher",
-  }) as any as Schema.Schema<GoogleFactcheckingFactchecktoolsV1alpha1Publisher>;
+  });
 
 export interface GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview {
   /** The title of this claim review, if it can be determined. */
@@ -54,21 +52,19 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview {
   languageCode?: string;
 }
 
-export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview: Schema.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-      reviewDate: Schema.optional(Schema.String),
-      publisher: Schema.optional(
-        GoogleFactcheckingFactchecktoolsV1alpha1Publisher,
-      ),
-      url: Schema.optional(Schema.String),
-      textualRating: Schema.optional(Schema.String),
-      languageCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    title: Schema.optional(Schema.String),
+    reviewDate: Schema.optional(Schema.String),
+    publisher: Schema.optional(
+      GoogleFactcheckingFactchecktoolsV1alpha1Publisher,
+    ),
+    url: Schema.optional(Schema.String),
+    textualRating: Schema.optional(Schema.String),
+    languageCode: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview",
-  }) as any as Schema.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview>;
+  });
 
 export interface GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor {
   /** Corresponds to `ClaimReview.itemReviewed.author.image`. */
@@ -81,17 +77,15 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor {
   jobTitle?: string;
 }
 
-export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor: Schema.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      imageUrl: Schema.optional(Schema.String),
-      sameAs: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      jobTitle: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    imageUrl: Schema.optional(Schema.String),
+    sameAs: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    jobTitle: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor",
-  }) as any as Schema.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor>;
+  });
 
 export interface GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating {
   /** A numeric rating of this claim, in the range worstRating — bestRating inclusive. Corresponds to `ClaimReview.reviewRating.ratingValue`. */
@@ -108,19 +102,17 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating {
   textualRating?: string;
 }
 
-export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating: Schema.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ratingValue: Schema.optional(Schema.Number),
-      worstRating: Schema.optional(Schema.Number),
-      bestRating: Schema.optional(Schema.Number),
-      ratingExplanation: Schema.optional(Schema.String),
-      imageUrl: Schema.optional(Schema.String),
-      textualRating: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ratingValue: Schema.optional(Schema.Number),
+    worstRating: Schema.optional(Schema.Number),
+    bestRating: Schema.optional(Schema.Number),
+    ratingExplanation: Schema.optional(Schema.String),
+    imageUrl: Schema.optional(Schema.String),
+    textualRating: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating",
-  }) as any as Schema.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating>;
+  });
 
 export interface GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup {
   /** The location where this claim was made. Corresponds to `ClaimReview.itemReviewed.name`. */
@@ -141,25 +133,23 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup {
   rating?: GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating;
 }
 
-export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup: Schema.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      claimLocation: Schema.optional(Schema.String),
-      claimFirstAppearance: Schema.optional(Schema.String),
-      claimReviewed: Schema.optional(Schema.String),
-      claimAuthor: Schema.optional(
-        GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor,
-      ),
-      url: Schema.optional(Schema.String),
-      claimDate: Schema.optional(Schema.String),
-      claimAppearances: Schema.optional(Schema.Array(Schema.String)),
-      rating: Schema.optional(
-        GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating,
-      ),
-    }),
-  ).annotate({
+export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    claimLocation: Schema.optional(Schema.String),
+    claimFirstAppearance: Schema.optional(Schema.String),
+    claimReviewed: Schema.optional(Schema.String),
+    claimAuthor: Schema.optional(
+      GoogleFactcheckingFactchecktoolsV1alpha1ClaimAuthor,
+    ),
+    url: Schema.optional(Schema.String),
+    claimDate: Schema.optional(Schema.String),
+    claimAppearances: Schema.optional(Schema.Array(Schema.String)),
+    rating: Schema.optional(
+      GoogleFactcheckingFactchecktoolsV1alpha1ClaimRating,
+    ),
+  }).annotate({
     identifier: "GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup",
-  }) as any as Schema.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup>;
+  });
 
 export interface GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor {
   /** Name of the organization that is publishing the fact check. Corresponds to `ClaimReview.author.name`. */
@@ -168,15 +158,13 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor {
   imageUrl?: string;
 }
 
-export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor: Schema.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      imageUrl: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    imageUrl: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor",
-  }) as any as Schema.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor>;
+  });
 
 export interface GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage {
   /** The URL of the page associated with this `ClaimReview` markup. While every individual `ClaimReview` has its own URL field, semantically this is a page-level field, and each `ClaimReview` on this page will use this value unless individually overridden. Corresponds to `ClaimReview.url` */
@@ -193,23 +181,21 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage {
   publishDate?: string;
 }
 
-export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage: Schema.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pageUrl: Schema.optional(Schema.String),
-      claimReviewMarkups: Schema.optional(
-        Schema.Array(GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup),
-      ),
-      name: Schema.optional(Schema.String),
-      claimReviewAuthor: Schema.optional(
-        GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor,
-      ),
-      versionId: Schema.optional(Schema.String),
-      publishDate: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pageUrl: Schema.optional(Schema.String),
+    claimReviewMarkups: Schema.optional(
+      Schema.Array(GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkup),
+    ),
+    name: Schema.optional(Schema.String),
+    claimReviewAuthor: Schema.optional(
+      GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewAuthor,
+    ),
+    versionId: Schema.optional(Schema.String),
+    publishDate: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage",
-  }) as any as Schema.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage>;
+  });
 
 export interface GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse {
   /** The result list of pages of `ClaimReview` markup. */
@@ -218,27 +204,24 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPa
   nextPageToken?: string;
 }
 
-export const GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse: Schema.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      claimReviewMarkupPages: Schema.optional(
-        Schema.Array(
-          GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage,
-        ),
+export const GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    claimReviewMarkupPages: Schema.optional(
+      Schema.Array(
+        GoogleFactcheckingFactchecktoolsV1alpha1ClaimReviewMarkupPage,
       ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse",
-  }) as any as Schema.Schema<GoogleFactcheckingFactchecktoolsV1alpha1ListClaimReviewMarkupPagesResponse>;
+  });
 
 export interface GoogleProtobufEmpty {}
 
-export const GoogleProtobufEmpty: Schema.Schema<GoogleProtobufEmpty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "GoogleProtobufEmpty",
-  }) as any as Schema.Schema<GoogleProtobufEmpty>;
+export const GoogleProtobufEmpty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "GoogleProtobufEmpty" });
 
 export interface GoogleFactcheckingFactchecktoolsV1alpha1Claim {
   /** The claim text. For instance, "Crime has doubled in the last 2 years." */
@@ -251,19 +234,15 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1Claim {
   claimReview?: Array<GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview>;
 }
 
-export const GoogleFactcheckingFactchecktoolsV1alpha1Claim: Schema.Schema<GoogleFactcheckingFactchecktoolsV1alpha1Claim> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(Schema.String),
-      claimant: Schema.optional(Schema.String),
-      claimDate: Schema.optional(Schema.String),
-      claimReview: Schema.optional(
-        Schema.Array(GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleFactcheckingFactchecktoolsV1alpha1Claim",
-  }) as any as Schema.Schema<GoogleFactcheckingFactchecktoolsV1alpha1Claim>;
+export const GoogleFactcheckingFactchecktoolsV1alpha1Claim =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    text: Schema.optional(Schema.String),
+    claimant: Schema.optional(Schema.String),
+    claimDate: Schema.optional(Schema.String),
+    claimReview: Schema.optional(
+      Schema.Array(GoogleFactcheckingFactchecktoolsV1alpha1ClaimReview),
+    ),
+  }).annotate({ identifier: "GoogleFactcheckingFactchecktoolsV1alpha1Claim" });
 
 export interface GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse {
   /** The list of claims and all of their associated information. */
@@ -272,33 +251,29 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchR
   nextPageToken?: string;
 }
 
-export const GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse: Schema.Schema<GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      claims: Schema.optional(
-        Schema.Array(GoogleFactcheckingFactchecktoolsV1alpha1Claim),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    claims: Schema.optional(
+      Schema.Array(GoogleFactcheckingFactchecktoolsV1alpha1Claim),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse",
-  }) as any as Schema.Schema<GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimSearchResponse>;
+  });
 
 export interface GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult {
   /** A claim which matched the query. */
   claim?: GoogleFactcheckingFactchecktoolsV1alpha1Claim;
 }
 
-export const GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult: Schema.Schema<GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      claim: Schema.optional(GoogleFactcheckingFactchecktoolsV1alpha1Claim),
-    }),
-  ).annotate({
+export const GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    claim: Schema.optional(GoogleFactcheckingFactchecktoolsV1alpha1Claim),
+  }).annotate({
     identifier:
       "GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult",
-  }) as any as Schema.Schema<GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult>;
+  });
 
 export interface GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse {
   /** The list of claims and all of their associated information. */
@@ -307,20 +282,18 @@ export interface GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSe
   nextPageToken?: string;
 }
 
-export const GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse: Schema.Schema<GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      results: Schema.optional(
-        Schema.Array(
-          GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult,
-        ),
+export const GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    results: Schema.optional(
+      Schema.Array(
+        GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponseResult,
       ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse",
-  }) as any as Schema.Schema<GoogleFactcheckingFactchecktoolsV1alpha1FactCheckedClaimImageSearchResponse>;
+  });
 
 // ==========================================================================
 // Operations

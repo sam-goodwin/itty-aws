@@ -27,14 +27,10 @@ export interface ParameterVersionPayload {
   data?: string;
 }
 
-export const ParameterVersionPayload: Schema.Schema<ParameterVersionPayload> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      data: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ParameterVersionPayload",
-  }) as any as Schema.Schema<ParameterVersionPayload>;
+export const ParameterVersionPayload =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    data: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ParameterVersionPayload" });
 
 export interface ParameterVersion {
   /** Optional. Disabled boolean to determine if a ParameterVersion acts as a metadata only resource (payload is never returned if disabled is true). If true any calls will always default to BASIC view even if the user explicitly passes FULL view as part of the request. A render call on a disabled resource fails with an error. Default value is False. */
@@ -51,19 +47,14 @@ export interface ParameterVersion {
   updateTime?: string;
 }
 
-export const ParameterVersion: Schema.Schema<ParameterVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      disabled: Schema.optional(Schema.Boolean),
-      payload: Schema.optional(ParameterVersionPayload),
-      createTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      kmsKeyVersion: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ParameterVersion",
-  }) as any as Schema.Schema<ParameterVersion>;
+export const ParameterVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  disabled: Schema.optional(Schema.Boolean),
+  payload: Schema.optional(ParameterVersionPayload),
+  createTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  kmsKeyVersion: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "ParameterVersion" });
 
 export interface ListParameterVersionsResponse {
   /** A token identifying a page of results the server should return. */
@@ -74,16 +65,12 @@ export interface ListParameterVersionsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListParameterVersionsResponse: Schema.Schema<ListParameterVersionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      parameterVersions: Schema.optional(Schema.Array(ParameterVersion)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListParameterVersionsResponse",
-  }) as any as Schema.Schema<ListParameterVersionsResponse>;
+export const ListParameterVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    parameterVersions: Schema.optional(Schema.Array(ParameterVersion)),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListParameterVersionsResponse" });
 
 export interface RenderParameterVersionResponse {
   /** Output only. Server generated rendered version of the user provided payload data (ParameterVersionPayload) which has substitutions of all (if any) references to a SecretManager SecretVersion resources. This substitution only works for a Parameter which is in JSON or YAML format. */
@@ -94,16 +81,12 @@ export interface RenderParameterVersionResponse {
   payload?: ParameterVersionPayload;
 }
 
-export const RenderParameterVersionResponse: Schema.Schema<RenderParameterVersionResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      renderedPayload: Schema.optional(Schema.String),
-      parameterVersion: Schema.optional(Schema.String),
-      payload: Schema.optional(ParameterVersionPayload),
-    }),
-  ).annotate({
-    identifier: "RenderParameterVersionResponse",
-  }) as any as Schema.Schema<RenderParameterVersionResponse>;
+export const RenderParameterVersionResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    renderedPayload: Schema.optional(Schema.String),
+    parameterVersion: Schema.optional(Schema.String),
+    payload: Schema.optional(ParameterVersionPayload),
+  }).annotate({ identifier: "RenderParameterVersionResponse" });
 
 export interface Location {
   /** The canonical id for this location. For example: `"us-east1"`. */
@@ -118,16 +101,13 @@ export interface Location {
   labels?: Record<string, string>;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locationId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locationId: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "Location" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -136,15 +116,10 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(Location)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface ResourcePolicyMember {
   /** Output only. IAM policy binding member referring to a Google Cloud resource by system-assigned unique identifier (https://google.aip.dev/148#uid). If a resource is deleted and recreated with the same name, the binding will not be applicable to the new resource Example: `principal://parametermanager.googleapis.com/projects/12345/uid/locations/us-central1-a/parameters/a918fed5` */
@@ -153,15 +128,10 @@ export interface ResourcePolicyMember {
   iamPolicyNamePrincipal?: string;
 }
 
-export const ResourcePolicyMember: Schema.Schema<ResourcePolicyMember> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      iamPolicyUidPrincipal: Schema.optional(Schema.String),
-      iamPolicyNamePrincipal: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ResourcePolicyMember",
-  }) as any as Schema.Schema<ResourcePolicyMember>;
+export const ResourcePolicyMember = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  iamPolicyUidPrincipal: Schema.optional(Schema.String),
+  iamPolicyNamePrincipal: Schema.optional(Schema.String),
+}).annotate({ identifier: "ResourcePolicyMember" });
 
 export interface Parameter {
   /** Output only. [Output only] Update time stamp */
@@ -185,18 +155,15 @@ export interface Parameter {
   policyMember?: ResourcePolicyMember;
 }
 
-export const Parameter: Schema.Schema<Parameter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      kmsKey: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      format: Schema.optional(Schema.String),
-      policyMember: Schema.optional(ResourcePolicyMember),
-    }),
-  ).annotate({ identifier: "Parameter" }) as any as Schema.Schema<Parameter>;
+export const Parameter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  updateTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  kmsKey: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  format: Schema.optional(Schema.String),
+  policyMember: Schema.optional(ResourcePolicyMember),
+}).annotate({ identifier: "Parameter" });
 
 export interface ListParametersResponse {
   /** Unordered list. Locations that could not be reached. */
@@ -207,23 +174,19 @@ export interface ListParametersResponse {
   nextPageToken?: string;
 }
 
-export const ListParametersResponse: Schema.Schema<ListParametersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      parameters: Schema.optional(Schema.Array(Parameter)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListParametersResponse",
-  }) as any as Schema.Schema<ListParametersResponse>;
+export const ListParametersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    parameters: Schema.optional(Schema.Array(Parameter)),
+    nextPageToken: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ListParametersResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 // ==========================================================================
 // Operations

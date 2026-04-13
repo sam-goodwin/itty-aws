@@ -24,10 +24,10 @@ const svc = T.Service({
 
 export interface DisableDatabaseInstanceRequest {}
 
-export const DisableDatabaseInstanceRequest: Schema.Schema<DisableDatabaseInstanceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const DisableDatabaseInstanceRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DisableDatabaseInstanceRequest",
-  }) as any as Schema.Schema<DisableDatabaseInstanceRequest>;
+  });
 
 export interface DatabaseInstance {
   /** Output only. Output Only. The globally unique hostname of the database. */
@@ -51,18 +51,13 @@ export interface DatabaseInstance {
     | (string & {});
 }
 
-export const DatabaseInstance: Schema.Schema<DatabaseInstance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      databaseUrl: Schema.optional(Schema.String),
-      project: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DatabaseInstance",
-  }) as any as Schema.Schema<DatabaseInstance>;
+export const DatabaseInstance = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  databaseUrl: Schema.optional(Schema.String),
+  project: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "DatabaseInstance" });
 
 export interface ListDatabaseInstancesResponse {
   /** List of each DatabaseInstance that is in the parent Firebase project. */
@@ -71,29 +66,25 @@ export interface ListDatabaseInstancesResponse {
   nextPageToken?: string;
 }
 
-export const ListDatabaseInstancesResponse: Schema.Schema<ListDatabaseInstancesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      instances: Schema.optional(Schema.Array(DatabaseInstance)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListDatabaseInstancesResponse",
-  }) as any as Schema.Schema<ListDatabaseInstancesResponse>;
+export const ListDatabaseInstancesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    instances: Schema.optional(Schema.Array(DatabaseInstance)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListDatabaseInstancesResponse" });
 
 export interface UndeleteDatabaseInstanceRequest {}
 
-export const UndeleteDatabaseInstanceRequest: Schema.Schema<UndeleteDatabaseInstanceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const UndeleteDatabaseInstanceRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "UndeleteDatabaseInstanceRequest",
-  }) as any as Schema.Schema<UndeleteDatabaseInstanceRequest>;
+  });
 
 export interface ReenableDatabaseInstanceRequest {}
 
-export const ReenableDatabaseInstanceRequest: Schema.Schema<ReenableDatabaseInstanceRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const ReenableDatabaseInstanceRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ReenableDatabaseInstanceRequest",
-  }) as any as Schema.Schema<ReenableDatabaseInstanceRequest>;
+  });
 
 // ==========================================================================
 // Operations

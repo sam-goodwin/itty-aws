@@ -33,31 +33,22 @@ export interface GcePersistentDisk {
   readOnly?: boolean;
 }
 
-export const GcePersistentDisk: Schema.Schema<GcePersistentDisk> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sourceImage: Schema.optional(Schema.String),
-      diskType: Schema.optional(Schema.String),
-      sourceSnapshot: Schema.optional(Schema.String),
-      readOnly: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GcePersistentDisk",
-  }) as any as Schema.Schema<GcePersistentDisk>;
+export const GcePersistentDisk = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sourceImage: Schema.optional(Schema.String),
+  diskType: Schema.optional(Schema.String),
+  sourceSnapshot: Schema.optional(Schema.String),
+  readOnly: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "GcePersistentDisk" });
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsResponse",
-  }) as any as Schema.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsResponse" });
 
 export interface Accelerator {
   /** Optional. Type of accelerator resource to attach to the instance, for example, `"nvidia-tesla-p100"`. */
@@ -66,29 +57,20 @@ export interface Accelerator {
   count?: number;
 }
 
-export const Accelerator: Schema.Schema<Accelerator> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      count: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "Accelerator",
-  }) as any as Schema.Schema<Accelerator>;
+export const Accelerator = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  count: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Accelerator" });
 
 export interface GceConfidentialInstanceConfig {
   /** Optional. Whether the instance has confidential compute enabled. */
   enableConfidentialCompute?: boolean;
 }
 
-export const GceConfidentialInstanceConfig: Schema.Schema<GceConfidentialInstanceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableConfidentialCompute: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GceConfidentialInstanceConfig",
-  }) as any as Schema.Schema<GceConfidentialInstanceConfig>;
+export const GceConfidentialInstanceConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enableConfidentialCompute: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GceConfidentialInstanceConfig" });
 
 export interface GceShieldedInstanceConfig {
   /** Optional. Whether the instance has Secure Boot enabled. */
@@ -99,16 +81,12 @@ export interface GceShieldedInstanceConfig {
   enableIntegrityMonitoring?: boolean;
 }
 
-export const GceShieldedInstanceConfig: Schema.Schema<GceShieldedInstanceConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableSecureBoot: Schema.optional(Schema.Boolean),
-      enableVtpm: Schema.optional(Schema.Boolean),
-      enableIntegrityMonitoring: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GceShieldedInstanceConfig",
-  }) as any as Schema.Schema<GceShieldedInstanceConfig>;
+export const GceShieldedInstanceConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enableSecureBoot: Schema.optional(Schema.Boolean),
+    enableVtpm: Schema.optional(Schema.Boolean),
+    enableIntegrityMonitoring: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GceShieldedInstanceConfig" });
 
 export interface BoostConfig {
   /** Optional. Whether to enable nested virtualization on boosted Cloud Workstations VMs running using this boost configuration. Defaults to false. Nested virtualization lets you run virtual machine (VM) instances inside your workstation. Before enabling nested virtualization, consider the following important considerations. Cloud Workstations instances are subject to the [same restrictions as Compute Engine instances](https://cloud.google.com/compute/docs/instances/nested-virtualization/overview#restrictions): * **Organization policy**: projects, folders, or organizations may be restricted from creating nested VMs if the **Disable VM nested virtualization** constraint is enforced in the organization policy. For more information, see the Compute Engine section, [Checking whether nested virtualization is allowed](https://cloud.google.com/compute/docs/instances/nested-virtualization/managing-constraint#checking_whether_nested_virtualization_is_allowed). * **Performance**: nested VMs might experience a 10% or greater decrease in performance for workloads that are CPU-bound and possibly greater than a 10% decrease for workloads that are input/output bound. * **Machine Type**: nested virtualization can only be enabled on boost configurations that specify a machine_type in the N1 or N2 machine series. */
@@ -125,19 +103,14 @@ export interface BoostConfig {
   machineType?: string;
 }
 
-export const BoostConfig: Schema.Schema<BoostConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableNestedVirtualization: Schema.optional(Schema.Boolean),
-      accelerators: Schema.optional(Schema.Array(Accelerator)),
-      bootDiskSizeGb: Schema.optional(Schema.Number),
-      poolSize: Schema.optional(Schema.Number),
-      id: Schema.optional(Schema.String),
-      machineType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BoostConfig",
-  }) as any as Schema.Schema<BoostConfig>;
+export const BoostConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enableNestedVirtualization: Schema.optional(Schema.Boolean),
+  accelerators: Schema.optional(Schema.Array(Accelerator)),
+  bootDiskSizeGb: Schema.optional(Schema.Number),
+  poolSize: Schema.optional(Schema.Number),
+  id: Schema.optional(Schema.String),
+  machineType: Schema.optional(Schema.String),
+}).annotate({ identifier: "BoostConfig" });
 
 export interface GceInstance {
   /** Optional. The type of machine to use for VM instances—for example, `"e2-standard-4"`. For more information about machine types that Cloud Workstations supports, see the list of [available machine types](https://cloud.google.com/workstations/docs/available-machine-types). */
@@ -176,53 +149,42 @@ export interface GceInstance {
   vmTags?: Record<string, string>;
 }
 
-export const GceInstance: Schema.Schema<GceInstance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      machineType: Schema.optional(Schema.String),
-      pooledInstances: Schema.optional(Schema.Number),
-      instanceMetadata: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      accelerators: Schema.optional(Schema.Array(Accelerator)),
-      disableSsh: Schema.optional(Schema.Boolean),
-      enableNestedVirtualization: Schema.optional(Schema.Boolean),
-      confidentialInstanceConfig: Schema.optional(
-        GceConfidentialInstanceConfig,
-      ),
-      tags: Schema.optional(Schema.Array(Schema.String)),
-      disablePublicIpAddresses: Schema.optional(Schema.Boolean),
-      serviceAccount: Schema.optional(Schema.String),
-      startupScriptUri: Schema.optional(Schema.String),
-      bootDiskSizeGb: Schema.optional(Schema.Number),
-      shieldedInstanceConfig: Schema.optional(GceShieldedInstanceConfig),
-      poolSize: Schema.optional(Schema.Number),
-      serviceAccountScopes: Schema.optional(Schema.Array(Schema.String)),
-      boostConfigs: Schema.optional(Schema.Array(BoostConfig)),
-      vmTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GceInstance",
-  }) as any as Schema.Schema<GceInstance>;
+export const GceInstance = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  machineType: Schema.optional(Schema.String),
+  pooledInstances: Schema.optional(Schema.Number),
+  instanceMetadata: Schema.optional(
+    Schema.Record(Schema.String, Schema.String),
+  ),
+  accelerators: Schema.optional(Schema.Array(Accelerator)),
+  disableSsh: Schema.optional(Schema.Boolean),
+  enableNestedVirtualization: Schema.optional(Schema.Boolean),
+  confidentialInstanceConfig: Schema.optional(GceConfidentialInstanceConfig),
+  tags: Schema.optional(Schema.Array(Schema.String)),
+  disablePublicIpAddresses: Schema.optional(Schema.Boolean),
+  serviceAccount: Schema.optional(Schema.String),
+  startupScriptUri: Schema.optional(Schema.String),
+  bootDiskSizeGb: Schema.optional(Schema.Number),
+  shieldedInstanceConfig: Schema.optional(GceShieldedInstanceConfig),
+  poolSize: Schema.optional(Schema.Number),
+  serviceAccountScopes: Schema.optional(Schema.Array(Schema.String)),
+  boostConfigs: Schema.optional(Schema.Array(BoostConfig)),
+  vmTags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "GceInstance" });
 
 export interface Host {
   /** Specifies a Compute Engine instance as the host. */
   gceInstance?: GceInstance;
 }
 
-export const Host: Schema.Schema<Host> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gceInstance: Schema.optional(GceInstance),
-    }),
-  ).annotate({ identifier: "Host" }) as any as Schema.Schema<Host>;
+export const Host = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gceInstance: Schema.optional(GceInstance),
+}).annotate({ identifier: "Host" });
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelOperationRequest",
-  }) as any as Schema.Schema<CancelOperationRequest>;
+export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelOperationRequest" });
 
 export interface Status {
   /** A developer-facing error message, which should be in English. Any user-facing error message should be localized and sent in the google.rpc.Status.details field, or localized by the client. */
@@ -233,16 +195,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      message: Schema.optional(Schema.String),
-      code: Schema.optional(Schema.Number),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  message: Schema.optional(Schema.String),
+  code: Schema.optional(Schema.Number),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface Expr {
   /** Textual representation of an expression in Common Expression Language syntax. */
@@ -255,15 +214,12 @@ export interface Expr {
   location?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expression: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Expr" }) as any as Schema.Schema<Expr>;
+export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  expression: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+}).annotate({ identifier: "Expr" });
 
 export interface Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
@@ -274,21 +230,17 @@ export interface Binding {
   condition?: Expr;
 }
 
-export const Binding: Schema.Schema<Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      role: Schema.optional(Schema.String),
-      members: Schema.optional(Schema.Array(Schema.String)),
-      condition: Schema.optional(Expr),
-    }),
-  ).annotate({ identifier: "Binding" }) as any as Schema.Schema<Binding>;
+export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  role: Schema.optional(Schema.String),
+  members: Schema.optional(Schema.Array(Schema.String)),
+  condition: Schema.optional(Expr),
+}).annotate({ identifier: "Binding" });
 
 export interface GoogleProtobufEmpty {}
 
-export const GoogleProtobufEmpty: Schema.Schema<GoogleProtobufEmpty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "GoogleProtobufEmpty",
-  }) as any as Schema.Schema<GoogleProtobufEmpty>;
+export const GoogleProtobufEmpty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "GoogleProtobufEmpty" });
 
 export interface CustomerEncryptionKey {
   /** Immutable. The name of the Google Cloud KMS encryption key. For example, `"projects/PROJECT_ID/locations/REGION/keyRings/KEY_RING/cryptoKeys/KEY_NAME"`. The key must be in the same region as the workstation configuration. */
@@ -297,15 +249,10 @@ export interface CustomerEncryptionKey {
   kmsKeyServiceAccount?: string;
 }
 
-export const CustomerEncryptionKey: Schema.Schema<CustomerEncryptionKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kmsKey: Schema.optional(Schema.String),
-      kmsKeyServiceAccount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomerEncryptionKey",
-  }) as any as Schema.Schema<CustomerEncryptionKey>;
+export const CustomerEncryptionKey = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kmsKey: Schema.optional(Schema.String),
+  kmsKeyServiceAccount: Schema.optional(Schema.String),
+}).annotate({ identifier: "CustomerEncryptionKey" });
 
 export interface PortRange {
   /** Required. Starting port number for the current range of ports. Valid ports are 22, 80, and ports within the range 1024-65535. */
@@ -314,27 +261,19 @@ export interface PortRange {
   last?: number;
 }
 
-export const PortRange: Schema.Schema<PortRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      first: Schema.optional(Schema.Number),
-      last: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "PortRange" }) as any as Schema.Schema<PortRange>;
+export const PortRange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  first: Schema.optional(Schema.Number),
+  last: Schema.optional(Schema.Number),
+}).annotate({ identifier: "PortRange" });
 
 export interface DomainConfig {
   /** Immutable. Domain used by Workstations for HTTP ingress. */
   domain?: string;
 }
 
-export const DomainConfig: Schema.Schema<DomainConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      domain: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DomainConfig",
-  }) as any as Schema.Schema<DomainConfig>;
+export const DomainConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  domain: Schema.optional(Schema.String),
+}).annotate({ identifier: "DomainConfig" });
 
 export interface Operation {
   /** The error result of the operation in case of failure or cancellation. */
@@ -349,16 +288,13 @@ export interface Operation {
   name?: string;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      error: Schema.optional(Status),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  error: Schema.optional(Status),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  done: Schema.optional(Schema.Boolean),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Operation" });
 
 export interface GceRegionalPersistentDisk {
   /** Optional. Type of file system that the disk should be formatted with. The workstation image must support this file system type. Must be empty if source_snapshot is set. Defaults to `"ext4"`. */
@@ -377,18 +313,14 @@ export interface GceRegionalPersistentDisk {
     | (string & {});
 }
 
-export const GceRegionalPersistentDisk: Schema.Schema<GceRegionalPersistentDisk> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fsType: Schema.optional(Schema.String),
-      diskType: Schema.optional(Schema.String),
-      sourceSnapshot: Schema.optional(Schema.String),
-      sizeGb: Schema.optional(Schema.Number),
-      reclaimPolicy: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GceRegionalPersistentDisk",
-  }) as any as Schema.Schema<GceRegionalPersistentDisk>;
+export const GceRegionalPersistentDisk =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fsType: Schema.optional(Schema.String),
+    diskType: Schema.optional(Schema.String),
+    sourceSnapshot: Schema.optional(Schema.String),
+    sizeGb: Schema.optional(Schema.Number),
+    reclaimPolicy: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GceRegionalPersistentDisk" });
 
 export interface PrivateClusterConfig {
   /** Output only. Hostname for the workstation cluster. This field will be populated only when private endpoint is enabled. To access workstations in the workstation cluster, create a new DNS zone mapping this domain name to an internal IP address and a forwarding rule mapping that address to the service attachment. */
@@ -401,31 +333,21 @@ export interface PrivateClusterConfig {
   enablePrivateEndpoint?: boolean;
 }
 
-export const PrivateClusterConfig: Schema.Schema<PrivateClusterConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clusterHostname: Schema.optional(Schema.String),
-      allowedProjects: Schema.optional(Schema.Array(Schema.String)),
-      serviceAttachmentUri: Schema.optional(Schema.String),
-      enablePrivateEndpoint: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "PrivateClusterConfig",
-  }) as any as Schema.Schema<PrivateClusterConfig>;
+export const PrivateClusterConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  clusterHostname: Schema.optional(Schema.String),
+  allowedProjects: Schema.optional(Schema.Array(Schema.String)),
+  serviceAttachmentUri: Schema.optional(Schema.String),
+  enablePrivateEndpoint: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "PrivateClusterConfig" });
 
 export interface GatewayConfig {
   /** Optional. Whether HTTP/2 is enabled for this workstation cluster. Defaults to false. */
   http2Enabled?: boolean;
 }
 
-export const GatewayConfig: Schema.Schema<GatewayConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      http2Enabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GatewayConfig",
-  }) as any as Schema.Schema<GatewayConfig>;
+export const GatewayConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  http2Enabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "GatewayConfig" });
 
 export interface WorkstationCluster {
   /** Output only. Time when this workstation cluster was created. */
@@ -472,34 +394,29 @@ export interface WorkstationCluster {
   labels?: Record<string, string>;
 }
 
-export const WorkstationCluster: Schema.Schema<WorkstationCluster> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      privateClusterConfig: Schema.optional(PrivateClusterConfig),
-      domainConfig: Schema.optional(DomainConfig),
-      tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      etag: Schema.optional(Schema.String),
-      conditions: Schema.optional(Schema.Array(Status)),
-      reconciling: Schema.optional(Schema.Boolean),
-      deleteTime: Schema.optional(Schema.String),
-      subnetwork: Schema.optional(Schema.String),
-      uid: Schema.optional(Schema.String),
-      network: Schema.optional(Schema.String),
-      workstationAuthorizationUrl: Schema.optional(Schema.String),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      gatewayConfig: Schema.optional(GatewayConfig),
-      updateTime: Schema.optional(Schema.String),
-      controlPlaneIp: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      degraded: Schema.optional(Schema.Boolean),
-      workstationLaunchUrl: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "WorkstationCluster",
-  }) as any as Schema.Schema<WorkstationCluster>;
+export const WorkstationCluster = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createTime: Schema.optional(Schema.String),
+  privateClusterConfig: Schema.optional(PrivateClusterConfig),
+  domainConfig: Schema.optional(DomainConfig),
+  tags: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  etag: Schema.optional(Schema.String),
+  conditions: Schema.optional(Schema.Array(Status)),
+  reconciling: Schema.optional(Schema.Boolean),
+  deleteTime: Schema.optional(Schema.String),
+  subnetwork: Schema.optional(Schema.String),
+  uid: Schema.optional(Schema.String),
+  network: Schema.optional(Schema.String),
+  workstationAuthorizationUrl: Schema.optional(Schema.String),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  gatewayConfig: Schema.optional(GatewayConfig),
+  updateTime: Schema.optional(Schema.String),
+  controlPlaneIp: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  degraded: Schema.optional(Schema.Boolean),
+  workstationLaunchUrl: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "WorkstationCluster" });
 
 export interface ListWorkstationClustersResponse {
   /** Token to retrieve the next page of results, or empty if there are no more results in the list. */
@@ -510,16 +427,12 @@ export interface ListWorkstationClustersResponse {
   workstationClusters?: Array<WorkstationCluster>;
 }
 
-export const ListWorkstationClustersResponse: Schema.Schema<ListWorkstationClustersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      workstationClusters: Schema.optional(Schema.Array(WorkstationCluster)),
-    }),
-  ).annotate({
-    identifier: "ListWorkstationClustersResponse",
-  }) as any as Schema.Schema<ListWorkstationClustersResponse>;
+export const ListWorkstationClustersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    workstationClusters: Schema.optional(Schema.Array(WorkstationCluster)),
+  }).annotate({ identifier: "ListWorkstationClustersResponse" });
 
 export interface ReadinessCheck {
   /** Optional. Path to which the request should be sent. */
@@ -528,15 +441,10 @@ export interface ReadinessCheck {
   port?: number;
 }
 
-export const ReadinessCheck: Schema.Schema<ReadinessCheck> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      path: Schema.optional(Schema.String),
-      port: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "ReadinessCheck",
-  }) as any as Schema.Schema<ReadinessCheck>;
+export const ReadinessCheck = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  path: Schema.optional(Schema.String),
+  port: Schema.optional(Schema.Number),
+}).annotate({ identifier: "ReadinessCheck" });
 
 export interface GenerateAccessTokenResponse {
   /** Time at which the generated token will expire. */
@@ -545,29 +453,21 @@ export interface GenerateAccessTokenResponse {
   accessToken?: string;
 }
 
-export const GenerateAccessTokenResponse: Schema.Schema<GenerateAccessTokenResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expireTime: Schema.optional(Schema.String),
-      accessToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GenerateAccessTokenResponse",
-  }) as any as Schema.Schema<GenerateAccessTokenResponse>;
+export const GenerateAccessTokenResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    expireTime: Schema.optional(Schema.String),
+    accessToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GenerateAccessTokenResponse" });
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsRequest",
-  }) as any as Schema.Schema<TestIamPermissionsRequest>;
+export const TestIamPermissionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsRequest" });
 
 export interface GceInstanceHost {
   /** Optional. Output only. The name of the Compute Engine instance. */
@@ -578,30 +478,20 @@ export interface GceInstanceHost {
   zone?: string;
 }
 
-export const GceInstanceHost: Schema.Schema<GceInstanceHost> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      zone: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GceInstanceHost",
-  }) as any as Schema.Schema<GceInstanceHost>;
+export const GceInstanceHost = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  zone: Schema.optional(Schema.String),
+}).annotate({ identifier: "GceInstanceHost" });
 
 export interface RuntimeHost {
   /** Specifies a Compute Engine instance as the host. */
   gceInstanceHost?: GceInstanceHost;
 }
 
-export const RuntimeHost: Schema.Schema<RuntimeHost> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gceInstanceHost: Schema.optional(GceInstanceHost),
-    }),
-  ).annotate({
-    identifier: "RuntimeHost",
-  }) as any as Schema.Schema<RuntimeHost>;
+export const RuntimeHost = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gceInstanceHost: Schema.optional(GceInstanceHost),
+}).annotate({ identifier: "RuntimeHost" });
 
 export interface Workstation {
   /** Optional. Human-readable name for this workstation. */
@@ -648,30 +538,25 @@ export interface Workstation {
   etag?: string;
 }
 
-export const Workstation: Schema.Schema<Workstation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      env: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      host: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      kmsKey: Schema.optional(Schema.String),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      reconciling: Schema.optional(Schema.Boolean),
-      deleteTime: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      runtimeHost: Schema.optional(RuntimeHost),
-      uid: Schema.optional(Schema.String),
-      sourceWorkstation: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Workstation",
-  }) as any as Schema.Schema<Workstation>;
+export const Workstation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  env: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  host: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  kmsKey: Schema.optional(Schema.String),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  reconciling: Schema.optional(Schema.Boolean),
+  deleteTime: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  runtimeHost: Schema.optional(RuntimeHost),
+  uid: Schema.optional(Schema.String),
+  sourceWorkstation: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "Workstation" });
 
 export interface ListUsableWorkstationsResponse {
   /** Unreachable resources. */
@@ -682,16 +567,12 @@ export interface ListUsableWorkstationsResponse {
   nextPageToken?: string;
 }
 
-export const ListUsableWorkstationsResponse: Schema.Schema<ListUsableWorkstationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      workstations: Schema.optional(Schema.Array(Workstation)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListUsableWorkstationsResponse",
-  }) as any as Schema.Schema<ListUsableWorkstationsResponse>;
+export const ListUsableWorkstationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    workstations: Schema.optional(Schema.Array(Workstation)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListUsableWorkstationsResponse" });
 
 export interface AuditLogConfig {
   /** The log type that this config enables. */
@@ -705,15 +586,10 @@ export interface AuditLogConfig {
   exemptedMembers?: Array<string>;
 }
 
-export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      logType: Schema.optional(Schema.String),
-      exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AuditLogConfig",
-  }) as any as Schema.Schema<AuditLogConfig>;
+export const AuditLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  logType: Schema.optional(Schema.String),
+  exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "AuditLogConfig" });
 
 export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
@@ -722,15 +598,10 @@ export interface AuditConfig {
   auditLogConfigs?: Array<AuditLogConfig>;
 }
 
-export const AuditConfig: Schema.Schema<AuditConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      service: Schema.optional(Schema.String),
-      auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
-    }),
-  ).annotate({
-    identifier: "AuditConfig",
-  }) as any as Schema.Schema<AuditConfig>;
+export const AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  service: Schema.optional(Schema.String),
+  auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
+}).annotate({ identifier: "AuditConfig" });
 
 export interface ListWorkstationsResponse {
   /** Optional. Unreachable resources. */
@@ -741,16 +612,12 @@ export interface ListWorkstationsResponse {
   nextPageToken?: string;
 }
 
-export const ListWorkstationsResponse: Schema.Schema<ListWorkstationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      workstations: Schema.optional(Schema.Array(Workstation)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListWorkstationsResponse",
-  }) as any as Schema.Schema<ListWorkstationsResponse>;
+export const ListWorkstationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    workstations: Schema.optional(Schema.Array(Workstation)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListWorkstationsResponse" });
 
 export interface StartWorkstationRequest {
   /** Optional. If set, validate the request and preview the result, but do not actually apply it. */
@@ -761,16 +628,12 @@ export interface StartWorkstationRequest {
   boostConfig?: string;
 }
 
-export const StartWorkstationRequest: Schema.Schema<StartWorkstationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      validateOnly: Schema.optional(Schema.Boolean),
-      etag: Schema.optional(Schema.String),
-      boostConfig: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StartWorkstationRequest",
-  }) as any as Schema.Schema<StartWorkstationRequest>;
+export const StartWorkstationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    validateOnly: Schema.optional(Schema.Boolean),
+    etag: Schema.optional(Schema.String),
+    boostConfig: Schema.optional(Schema.String),
+  }).annotate({ identifier: "StartWorkstationRequest" });
 
 export interface Location {
   /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
@@ -785,16 +648,13 @@ export interface Location {
   locationId?: string;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      locationId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  locationId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Location" });
 
 export interface StopWorkstationRequest {
   /** Optional. If set, validate the request and preview the result, but do not actually apply it. */
@@ -803,15 +663,12 @@ export interface StopWorkstationRequest {
   etag?: string;
 }
 
-export const StopWorkstationRequest: Schema.Schema<StopWorkstationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      validateOnly: Schema.optional(Schema.Boolean),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StopWorkstationRequest",
-  }) as any as Schema.Schema<StopWorkstationRequest>;
+export const StopWorkstationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    validateOnly: Schema.optional(Schema.Boolean),
+    etag: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "StopWorkstationRequest" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -820,15 +677,10 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(Location)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
@@ -839,16 +691,13 @@ export interface ListOperationsResponse {
   operations?: Array<Operation>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-      operations: Schema.optional(Schema.Array(Operation)),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+    operations: Schema.optional(Schema.Array(Operation)),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 export interface Container {
   /** Optional. If set, overrides the USER specified in the image with the given uid. */
@@ -865,17 +714,14 @@ export interface Container {
   image?: string;
 }
 
-export const Container: Schema.Schema<Container> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      runAsUser: Schema.optional(Schema.Number),
-      env: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      command: Schema.optional(Schema.Array(Schema.String)),
-      args: Schema.optional(Schema.Array(Schema.String)),
-      workingDir: Schema.optional(Schema.String),
-      image: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Container" }) as any as Schema.Schema<Container>;
+export const Container = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  runAsUser: Schema.optional(Schema.Number),
+  env: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  command: Schema.optional(Schema.Array(Schema.String)),
+  args: Schema.optional(Schema.Array(Schema.String)),
+  workingDir: Schema.optional(Schema.String),
+  image: Schema.optional(Schema.String),
+}).annotate({ identifier: "Container" });
 
 export interface GenerateAccessTokenRequest {
   /** Desired expiration time of the access token. This value must be at most 24 hours in the future. If a value is not specified, the token's expiration time will be set to a default value of 1 hour in the future. */
@@ -886,16 +732,12 @@ export interface GenerateAccessTokenRequest {
   ttl?: string;
 }
 
-export const GenerateAccessTokenRequest: Schema.Schema<GenerateAccessTokenRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expireTime: Schema.optional(Schema.String),
-      port: Schema.optional(Schema.Number),
-      ttl: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GenerateAccessTokenRequest",
-  }) as any as Schema.Schema<GenerateAccessTokenRequest>;
+export const GenerateAccessTokenRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    expireTime: Schema.optional(Schema.String),
+    port: Schema.optional(Schema.Number),
+    ttl: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GenerateAccessTokenRequest" });
 
 export interface Policy {
   /** `etag` is used for optimistic concurrency control as a way to help prevent simultaneous updates of a policy from overwriting each other. It is strongly suggested that systems make use of the `etag` in the read-modify-write cycle to perform policy updates in order to avoid race conditions: An `etag` is returned in the response to `getIamPolicy`, and systems are expected to put that etag in the request to `setIamPolicy` to ensure that their change will be applied to the same version of the policy. **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. */
@@ -908,15 +750,12 @@ export interface Policy {
   bindings?: Array<Binding>;
 }
 
-export const Policy: Schema.Schema<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      etag: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.Number),
-      auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
-      bindings: Schema.optional(Schema.Array(Binding)),
-    }),
-  ).annotate({ identifier: "Policy" }) as any as Schema.Schema<Policy>;
+export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  etag: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.Number),
+  auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
+  bindings: Schema.optional(Schema.Array(Binding)),
+}).annotate({ identifier: "Policy" });
 
 export interface EphemeralDirectory {
   /** Required. Location of this directory in the running workstation. */
@@ -925,15 +764,10 @@ export interface EphemeralDirectory {
   gcePd?: GcePersistentDisk;
 }
 
-export const EphemeralDirectory: Schema.Schema<EphemeralDirectory> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mountPath: Schema.optional(Schema.String),
-      gcePd: Schema.optional(GcePersistentDisk),
-    }),
-  ).annotate({
-    identifier: "EphemeralDirectory",
-  }) as any as Schema.Schema<EphemeralDirectory>;
+export const EphemeralDirectory = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  mountPath: Schema.optional(Schema.String),
+  gcePd: Schema.optional(GcePersistentDisk),
+}).annotate({ identifier: "EphemeralDirectory" });
 
 export interface GceHyperdiskBalancedHighAvailability {
   /** Optional. Name of the snapshot to use as the source for the disk. If set, size_gb must be empty. Must be formatted as ext4 file system with no partitions. */
@@ -950,17 +784,13 @@ export interface GceHyperdiskBalancedHighAvailability {
   archiveTimeout?: string;
 }
 
-export const GceHyperdiskBalancedHighAvailability: Schema.Schema<GceHyperdiskBalancedHighAvailability> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sourceSnapshot: Schema.optional(Schema.String),
-      reclaimPolicy: Schema.optional(Schema.String),
-      sizeGb: Schema.optional(Schema.Number),
-      archiveTimeout: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GceHyperdiskBalancedHighAvailability",
-  }) as any as Schema.Schema<GceHyperdiskBalancedHighAvailability>;
+export const GceHyperdiskBalancedHighAvailability =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sourceSnapshot: Schema.optional(Schema.String),
+    reclaimPolicy: Schema.optional(Schema.String),
+    sizeGb: Schema.optional(Schema.Number),
+    archiveTimeout: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GceHyperdiskBalancedHighAvailability" });
 
 export interface PersistentDirectory {
   /** Optional. Location of this directory in the running workstation. */
@@ -971,16 +801,11 @@ export interface PersistentDirectory {
   gceHd?: GceHyperdiskBalancedHighAvailability;
 }
 
-export const PersistentDirectory: Schema.Schema<PersistentDirectory> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mountPath: Schema.optional(Schema.String),
-      gcePd: Schema.optional(GceRegionalPersistentDisk),
-      gceHd: Schema.optional(GceHyperdiskBalancedHighAvailability),
-    }),
-  ).annotate({
-    identifier: "PersistentDirectory",
-  }) as any as Schema.Schema<PersistentDirectory>;
+export const PersistentDirectory = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  mountPath: Schema.optional(Schema.String),
+  gcePd: Schema.optional(GceRegionalPersistentDisk),
+  gceHd: Schema.optional(GceHyperdiskBalancedHighAvailability),
+}).annotate({ identifier: "PersistentDirectory" });
 
 export interface WorkstationConfig {
   /** Optional. Grant creator of a workstation `roles/workstations.policyAdmin` role along with `roles/workstations.user` role on the workstation created by them. This allows workstation users to share access to either their entire workstation, or individual ports. Defaults to false. */
@@ -1037,39 +862,34 @@ export interface WorkstationConfig {
   runningTimeout?: string;
 }
 
-export const WorkstationConfig: Schema.Schema<WorkstationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      grantWorkstationAdminRoleOnCreate: Schema.optional(Schema.Boolean),
-      createTime: Schema.optional(Schema.String),
-      persistentDirectories: Schema.optional(Schema.Array(PersistentDirectory)),
-      conditions: Schema.optional(Schema.Array(Status)),
-      idleTimeout: Schema.optional(Schema.String),
-      uid: Schema.optional(Schema.String),
-      enableAuditAgent: Schema.optional(Schema.Boolean),
-      readinessChecks: Schema.optional(Schema.Array(ReadinessCheck)),
-      degraded: Schema.optional(Schema.Boolean),
-      disableTcpConnections: Schema.optional(Schema.Boolean),
-      etag: Schema.optional(Schema.String),
-      reconciling: Schema.optional(Schema.Boolean),
-      deleteTime: Schema.optional(Schema.String),
-      replicaZones: Schema.optional(Schema.Array(Schema.String)),
-      ephemeralDirectories: Schema.optional(Schema.Array(EphemeralDirectory)),
-      maxUsableWorkstations: Schema.optional(Schema.Number),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      encryptionKey: Schema.optional(CustomerEncryptionKey),
-      container: Schema.optional(Container),
-      displayName: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      allowedPorts: Schema.optional(Schema.Array(PortRange)),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      host: Schema.optional(Host),
-      name: Schema.optional(Schema.String),
-      runningTimeout: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WorkstationConfig",
-  }) as any as Schema.Schema<WorkstationConfig>;
+export const WorkstationConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  grantWorkstationAdminRoleOnCreate: Schema.optional(Schema.Boolean),
+  createTime: Schema.optional(Schema.String),
+  persistentDirectories: Schema.optional(Schema.Array(PersistentDirectory)),
+  conditions: Schema.optional(Schema.Array(Status)),
+  idleTimeout: Schema.optional(Schema.String),
+  uid: Schema.optional(Schema.String),
+  enableAuditAgent: Schema.optional(Schema.Boolean),
+  readinessChecks: Schema.optional(Schema.Array(ReadinessCheck)),
+  degraded: Schema.optional(Schema.Boolean),
+  disableTcpConnections: Schema.optional(Schema.Boolean),
+  etag: Schema.optional(Schema.String),
+  reconciling: Schema.optional(Schema.Boolean),
+  deleteTime: Schema.optional(Schema.String),
+  replicaZones: Schema.optional(Schema.Array(Schema.String)),
+  ephemeralDirectories: Schema.optional(Schema.Array(EphemeralDirectory)),
+  maxUsableWorkstations: Schema.optional(Schema.Number),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  encryptionKey: Schema.optional(CustomerEncryptionKey),
+  container: Schema.optional(Container),
+  displayName: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  allowedPorts: Schema.optional(Schema.Array(PortRange)),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  host: Schema.optional(Host),
+  name: Schema.optional(Schema.String),
+  runningTimeout: Schema.optional(Schema.String),
+}).annotate({ identifier: "WorkstationConfig" });
 
 export interface ListUsableWorkstationConfigsResponse {
   /** The requested configs. */
@@ -1080,16 +900,12 @@ export interface ListUsableWorkstationConfigsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListUsableWorkstationConfigsResponse: Schema.Schema<ListUsableWorkstationConfigsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      workstationConfigs: Schema.optional(Schema.Array(WorkstationConfig)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListUsableWorkstationConfigsResponse",
-  }) as any as Schema.Schema<ListUsableWorkstationConfigsResponse>;
+export const ListUsableWorkstationConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    workstationConfigs: Schema.optional(Schema.Array(WorkstationConfig)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListUsableWorkstationConfigsResponse" });
 
 export interface ListWorkstationConfigsResponse {
   /** Unreachable resources. */
@@ -1100,16 +916,12 @@ export interface ListWorkstationConfigsResponse {
   workstationConfigs?: Array<WorkstationConfig>;
 }
 
-export const ListWorkstationConfigsResponse: Schema.Schema<ListWorkstationConfigsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-      workstationConfigs: Schema.optional(Schema.Array(WorkstationConfig)),
-    }),
-  ).annotate({
-    identifier: "ListWorkstationConfigsResponse",
-  }) as any as Schema.Schema<ListWorkstationConfigsResponse>;
+export const ListWorkstationConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+    workstationConfigs: Schema.optional(Schema.Array(WorkstationConfig)),
+  }).annotate({ identifier: "ListWorkstationConfigsResponse" });
 
 export interface SetIamPolicyRequest {
   /** OPTIONAL: A FieldMask specifying which fields of the policy to modify. Only the fields in the mask will be modified. If no mask is provided, the following default mask is used: `paths: "bindings, etag"` */
@@ -1118,15 +930,10 @@ export interface SetIamPolicyRequest {
   policy?: Policy;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateMask: Schema.optional(Schema.String),
-      policy: Schema.optional(Policy),
-    }),
-  ).annotate({
-    identifier: "SetIamPolicyRequest",
-  }) as any as Schema.Schema<SetIamPolicyRequest>;
+export const SetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  updateMask: Schema.optional(Schema.String),
+  policy: Schema.optional(Policy),
+}).annotate({ identifier: "SetIamPolicyRequest" });
 
 export interface OperationMetadata {
   /** Output only. Time that the operation was created. */
@@ -1145,20 +952,15 @@ export interface OperationMetadata {
   apiVersion?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      target: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      apiVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createTime: Schema.optional(Schema.String),
+  verb: Schema.optional(Schema.String),
+  statusMessage: Schema.optional(Schema.String),
+  requestedCancellation: Schema.optional(Schema.Boolean),
+  target: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  apiVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationMetadata" });
 
 // ==========================================================================
 // Operations

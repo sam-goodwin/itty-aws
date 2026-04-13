@@ -35,65 +35,48 @@ export interface Tag {
   timeValue?: string;
 }
 
-export const Tag: Schema.Schema<Tag> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      key: Schema.optional(Schema.String),
-      booleanValue: Schema.optional(Schema.Boolean),
-      stringValue: Schema.optional(Schema.String),
-      int64Value: Schema.optional(Schema.String),
-      timeValue: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Tag" }) as any as Schema.Schema<Tag>;
+export const Tag = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  key: Schema.optional(Schema.String),
+  booleanValue: Schema.optional(Schema.Boolean),
+  stringValue: Schema.optional(Schema.String),
+  int64Value: Schema.optional(Schema.String),
+  timeValue: Schema.optional(Schema.String),
+}).annotate({ identifier: "Tag" });
 
 export interface CreateOrUpdateTagsRequest {
   /** Tags to be inserted or updated. */
   tags?: Array<Tag>;
 }
 
-export const CreateOrUpdateTagsRequest: Schema.Schema<CreateOrUpdateTagsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tags: Schema.optional(Schema.Array(Tag)),
-    }),
-  ).annotate({
-    identifier: "CreateOrUpdateTagsRequest",
-  }) as any as Schema.Schema<CreateOrUpdateTagsRequest>;
+export const CreateOrUpdateTagsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tags: Schema.optional(Schema.Array(Tag)),
+  }).annotate({ identifier: "CreateOrUpdateTagsRequest" });
 
 export interface CreateOrUpdateTagsResponse {
   /** All requested tags are returned, including pre-existing ones. */
   tags?: Array<Tag>;
 }
 
-export const CreateOrUpdateTagsResponse: Schema.Schema<CreateOrUpdateTagsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tags: Schema.optional(Schema.Array(Tag)),
-    }),
-  ).annotate({
-    identifier: "CreateOrUpdateTagsResponse",
-  }) as any as Schema.Schema<CreateOrUpdateTagsResponse>;
+export const CreateOrUpdateTagsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tags: Schema.optional(Schema.Array(Tag)),
+  }).annotate({ identifier: "CreateOrUpdateTagsResponse" });
 
 export interface VerifyTokenResponse {}
 
-export const VerifyTokenResponse: Schema.Schema<VerifyTokenResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "VerifyTokenResponse",
-  }) as any as Schema.Schema<VerifyTokenResponse>;
+export const VerifyTokenResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "VerifyTokenResponse" });
 
 export interface VerifyTokenRequest {
   /** Required. Persona represented by the token. Format: personas/{persona} */
   persona?: string;
 }
 
-export const VerifyTokenRequest: Schema.Schema<VerifyTokenRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      persona: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VerifyTokenRequest",
-  }) as any as Schema.Schema<VerifyTokenRequest>;
+export const VerifyTokenRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  persona: Schema.optional(Schema.String),
+}).annotate({ identifier: "VerifyTokenRequest" });
 
 // ==========================================================================
 // Operations

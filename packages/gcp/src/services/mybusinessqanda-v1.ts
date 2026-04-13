@@ -36,14 +36,11 @@ export interface Author {
   displayName?: string;
 }
 
-export const Author: Schema.Schema<Author> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      profilePhotoUri: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Author" }) as any as Schema.Schema<Author>;
+export const Author = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  profilePhotoUri: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+}).annotate({ identifier: "Author" });
 
 export interface Answer {
   /** Output only. The number of upvotes for the answer. */
@@ -60,17 +57,14 @@ export interface Answer {
   author?: Author;
 }
 
-export const Answer: Schema.Schema<Answer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      upvoteCount: Schema.optional(Schema.Number),
-      text: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      author: Schema.optional(Author),
-    }),
-  ).annotate({ identifier: "Answer" }) as any as Schema.Schema<Answer>;
+export const Answer = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  upvoteCount: Schema.optional(Schema.Number),
+  text: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  author: Schema.optional(Author),
+}).annotate({ identifier: "Answer" });
 
 export interface Question {
   /** Output only. The total number of answers posted for this question. */
@@ -91,19 +85,16 @@ export interface Question {
   createTime?: string;
 }
 
-export const Question: Schema.Schema<Question> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      totalAnswerCount: Schema.optional(Schema.Number),
-      updateTime: Schema.optional(Schema.String),
-      topAnswers: Schema.optional(Schema.Array(Answer)),
-      upvoteCount: Schema.optional(Schema.Number),
-      text: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      author: Schema.optional(Author),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Question" }) as any as Schema.Schema<Question>;
+export const Question = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  totalAnswerCount: Schema.optional(Schema.Number),
+  updateTime: Schema.optional(Schema.String),
+  topAnswers: Schema.optional(Schema.Array(Answer)),
+  upvoteCount: Schema.optional(Schema.Number),
+  text: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  author: Schema.optional(Author),
+  createTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Question" });
 
 export interface ListQuestionsResponse {
   /** The total number of questions posted for this location across all pages. */
@@ -114,23 +105,17 @@ export interface ListQuestionsResponse {
   nextPageToken?: string;
 }
 
-export const ListQuestionsResponse: Schema.Schema<ListQuestionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      totalSize: Schema.optional(Schema.Number),
-      questions: Schema.optional(Schema.Array(Question)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListQuestionsResponse",
-  }) as any as Schema.Schema<ListQuestionsResponse>;
+export const ListQuestionsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  totalSize: Schema.optional(Schema.Number),
+  questions: Schema.optional(Schema.Array(Question)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListQuestionsResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface ListAnswersResponse {
   /** The total number of answers posted for this question across all pages. */
@@ -141,30 +126,20 @@ export interface ListAnswersResponse {
   nextPageToken?: string;
 }
 
-export const ListAnswersResponse: Schema.Schema<ListAnswersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      totalSize: Schema.optional(Schema.Number),
-      answers: Schema.optional(Schema.Array(Answer)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAnswersResponse",
-  }) as any as Schema.Schema<ListAnswersResponse>;
+export const ListAnswersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  totalSize: Schema.optional(Schema.Number),
+  answers: Schema.optional(Schema.Array(Answer)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListAnswersResponse" });
 
 export interface UpsertAnswerRequest {
   /** Required. The new answer. */
   answer?: Answer;
 }
 
-export const UpsertAnswerRequest: Schema.Schema<UpsertAnswerRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      answer: Schema.optional(Answer),
-    }),
-  ).annotate({
-    identifier: "UpsertAnswerRequest",
-  }) as any as Schema.Schema<UpsertAnswerRequest>;
+export const UpsertAnswerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  answer: Schema.optional(Answer),
+}).annotate({ identifier: "UpsertAnswerRequest" });
 
 // ==========================================================================
 // Operations

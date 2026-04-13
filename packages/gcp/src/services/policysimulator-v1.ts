@@ -31,18 +31,13 @@ export interface GoogleRpcStatus {
   details?: Array<Record<string, unknown>>;
 }
 
-export const GoogleRpcStatus: Schema.Schema<GoogleRpcStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleRpcStatus",
-  }) as any as Schema.Schema<GoogleRpcStatus>;
+export const GoogleRpcStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "GoogleRpcStatus" });
 
 export interface GoogleTypeDate {
   /** Year of the date. Must be from 1 to 9999, or 0 to specify a date without a year. */
@@ -53,16 +48,11 @@ export interface GoogleTypeDate {
   day?: number;
 }
 
-export const GoogleTypeDate: Schema.Schema<GoogleTypeDate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      year: Schema.optional(Schema.Number),
-      month: Schema.optional(Schema.Number),
-      day: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GoogleTypeDate",
-  }) as any as Schema.Schema<GoogleTypeDate>;
+export const GoogleTypeDate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  year: Schema.optional(Schema.Number),
+  month: Schema.optional(Schema.Number),
+  day: Schema.optional(Schema.Number),
+}).annotate({ identifier: "GoogleTypeDate" });
 
 export interface GoogleTypeExpr {
   /** Textual representation of an expression in Common Expression Language syntax. */
@@ -75,17 +65,12 @@ export interface GoogleTypeExpr {
   location?: string;
 }
 
-export const GoogleTypeExpr: Schema.Schema<GoogleTypeExpr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expression: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleTypeExpr",
-  }) as any as Schema.Schema<GoogleTypeExpr>;
+export const GoogleTypeExpr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  expression: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+}).annotate({ identifier: "GoogleTypeExpr" });
 
 export interface GoogleCloudPolicysimulatorV1BindingExplanationAnnotatedMembership {
   /** The relevance of the principal's status to the overall determination for the binding. */
@@ -104,16 +89,14 @@ export interface GoogleCloudPolicysimulatorV1BindingExplanationAnnotatedMembersh
     | (string & {});
 }
 
-export const GoogleCloudPolicysimulatorV1BindingExplanationAnnotatedMembership: Schema.Schema<GoogleCloudPolicysimulatorV1BindingExplanationAnnotatedMembership> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      relevance: Schema.optional(Schema.String),
-      membership: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudPolicysimulatorV1BindingExplanationAnnotatedMembership =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    relevance: Schema.optional(Schema.String),
+    membership: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudPolicysimulatorV1BindingExplanationAnnotatedMembership",
-  }) as any as Schema.Schema<GoogleCloudPolicysimulatorV1BindingExplanationAnnotatedMembership>;
+  });
 
 export interface GoogleCloudPolicysimulatorV1BindingExplanation {
   /** Indicates whether the role granted by this binding contains the specified permission. */
@@ -154,25 +137,21 @@ export interface GoogleCloudPolicysimulatorV1BindingExplanation {
   >;
 }
 
-export const GoogleCloudPolicysimulatorV1BindingExplanation: Schema.Schema<GoogleCloudPolicysimulatorV1BindingExplanation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rolePermission: Schema.optional(Schema.String),
-      relevance: Schema.optional(Schema.String),
-      role: Schema.optional(Schema.String),
-      condition: Schema.optional(GoogleTypeExpr),
-      rolePermissionRelevance: Schema.optional(Schema.String),
-      access: Schema.optional(Schema.String),
-      memberships: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          GoogleCloudPolicysimulatorV1BindingExplanationAnnotatedMembership,
-        ),
+export const GoogleCloudPolicysimulatorV1BindingExplanation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rolePermission: Schema.optional(Schema.String),
+    relevance: Schema.optional(Schema.String),
+    role: Schema.optional(Schema.String),
+    condition: Schema.optional(GoogleTypeExpr),
+    rolePermissionRelevance: Schema.optional(Schema.String),
+    access: Schema.optional(Schema.String),
+    memberships: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        GoogleCloudPolicysimulatorV1BindingExplanationAnnotatedMembership,
       ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudPolicysimulatorV1BindingExplanation",
-  }) as any as Schema.Schema<GoogleCloudPolicysimulatorV1BindingExplanation>;
+    ),
+  }).annotate({ identifier: "GoogleCloudPolicysimulatorV1BindingExplanation" });
 
 export interface GoogleIamV1Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
@@ -183,16 +162,11 @@ export interface GoogleIamV1Binding {
   condition?: GoogleTypeExpr;
 }
 
-export const GoogleIamV1Binding: Schema.Schema<GoogleIamV1Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      role: Schema.optional(Schema.String),
-      members: Schema.optional(Schema.Array(Schema.String)),
-      condition: Schema.optional(GoogleTypeExpr),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1Binding",
-  }) as any as Schema.Schema<GoogleIamV1Binding>;
+export const GoogleIamV1Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  role: Schema.optional(Schema.String),
+  members: Schema.optional(Schema.Array(Schema.String)),
+  condition: Schema.optional(GoogleTypeExpr),
+}).annotate({ identifier: "GoogleIamV1Binding" });
 
 export interface GoogleIamV1AuditLogConfig {
   /** The log type that this config enables. */
@@ -206,15 +180,11 @@ export interface GoogleIamV1AuditLogConfig {
   exemptedMembers?: Array<string>;
 }
 
-export const GoogleIamV1AuditLogConfig: Schema.Schema<GoogleIamV1AuditLogConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      logType: Schema.optional(Schema.String),
-      exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1AuditLogConfig",
-  }) as any as Schema.Schema<GoogleIamV1AuditLogConfig>;
+export const GoogleIamV1AuditLogConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    logType: Schema.optional(Schema.String),
+    exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleIamV1AuditLogConfig" });
 
 export interface GoogleIamV1AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
@@ -223,15 +193,12 @@ export interface GoogleIamV1AuditConfig {
   auditLogConfigs?: Array<GoogleIamV1AuditLogConfig>;
 }
 
-export const GoogleIamV1AuditConfig: Schema.Schema<GoogleIamV1AuditConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      service: Schema.optional(Schema.String),
-      auditLogConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditLogConfig)),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1AuditConfig",
-  }) as any as Schema.Schema<GoogleIamV1AuditConfig>;
+export const GoogleIamV1AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    service: Schema.optional(Schema.String),
+    auditLogConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditLogConfig)),
+  },
+).annotate({ identifier: "GoogleIamV1AuditConfig" });
 
 export interface GoogleIamV1Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -244,17 +211,12 @@ export interface GoogleIamV1Policy {
   etag?: string;
 }
 
-export const GoogleIamV1Policy: Schema.Schema<GoogleIamV1Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.Number),
-      bindings: Schema.optional(Schema.Array(GoogleIamV1Binding)),
-      auditConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditConfig)),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1Policy",
-  }) as any as Schema.Schema<GoogleIamV1Policy>;
+export const GoogleIamV1Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.Number),
+  bindings: Schema.optional(Schema.Array(GoogleIamV1Binding)),
+  auditConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditConfig)),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "GoogleIamV1Policy" });
 
 export interface GoogleCloudPolicysimulatorV1ExplainedPolicy {
   /** Indicates whether _this policy_ provides the specified permission to the specified principal for the specified resource. This field does _not_ indicate whether the principal actually has the permission for the resource. There might be another policy that overrides this policy. To determine whether the principal actually has the permission, use the `access` field in the TroubleshootIamPolicyResponse. */
@@ -279,20 +241,16 @@ export interface GoogleCloudPolicysimulatorV1ExplainedPolicy {
     | (string & {});
 }
 
-export const GoogleCloudPolicysimulatorV1ExplainedPolicy: Schema.Schema<GoogleCloudPolicysimulatorV1ExplainedPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      access: Schema.optional(Schema.String),
-      fullResourceName: Schema.optional(Schema.String),
-      bindingExplanations: Schema.optional(
-        Schema.Array(GoogleCloudPolicysimulatorV1BindingExplanation),
-      ),
-      policy: Schema.optional(GoogleIamV1Policy),
-      relevance: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudPolicysimulatorV1ExplainedPolicy",
-  }) as any as Schema.Schema<GoogleCloudPolicysimulatorV1ExplainedPolicy>;
+export const GoogleCloudPolicysimulatorV1ExplainedPolicy =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    access: Schema.optional(Schema.String),
+    fullResourceName: Schema.optional(Schema.String),
+    bindingExplanations: Schema.optional(
+      Schema.Array(GoogleCloudPolicysimulatorV1BindingExplanation),
+    ),
+    policy: Schema.optional(GoogleIamV1Policy),
+    relevance: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudPolicysimulatorV1ExplainedPolicy" });
 
 export interface GoogleCloudPolicysimulatorV1ExplainedAccess {
   /** Whether the principal in the access tuple has permission to access the resource in the access tuple under the given policies. */
@@ -309,18 +267,14 @@ export interface GoogleCloudPolicysimulatorV1ExplainedAccess {
   policies?: Array<GoogleCloudPolicysimulatorV1ExplainedPolicy>;
 }
 
-export const GoogleCloudPolicysimulatorV1ExplainedAccess: Schema.Schema<GoogleCloudPolicysimulatorV1ExplainedAccess> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accessState: Schema.optional(Schema.String),
-      errors: Schema.optional(Schema.Array(GoogleRpcStatus)),
-      policies: Schema.optional(
-        Schema.Array(GoogleCloudPolicysimulatorV1ExplainedPolicy),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudPolicysimulatorV1ExplainedAccess",
-  }) as any as Schema.Schema<GoogleCloudPolicysimulatorV1ExplainedAccess>;
+export const GoogleCloudPolicysimulatorV1ExplainedAccess =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accessState: Schema.optional(Schema.String),
+    errors: Schema.optional(Schema.Array(GoogleRpcStatus)),
+    policies: Schema.optional(
+      Schema.Array(GoogleCloudPolicysimulatorV1ExplainedPolicy),
+    ),
+  }).annotate({ identifier: "GoogleCloudPolicysimulatorV1ExplainedAccess" });
 
 export interface GoogleCloudPolicysimulatorV1AccessStateDiff {
   /** The results of evaluating the access tuple under the proposed (simulated) policies. If the AccessState couldn't be fully evaluated, this field explains why. */
@@ -339,30 +293,22 @@ export interface GoogleCloudPolicysimulatorV1AccessStateDiff {
     | (string & {});
 }
 
-export const GoogleCloudPolicysimulatorV1AccessStateDiff: Schema.Schema<GoogleCloudPolicysimulatorV1AccessStateDiff> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      simulated: Schema.optional(GoogleCloudPolicysimulatorV1ExplainedAccess),
-      baseline: Schema.optional(GoogleCloudPolicysimulatorV1ExplainedAccess),
-      accessChange: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudPolicysimulatorV1AccessStateDiff",
-  }) as any as Schema.Schema<GoogleCloudPolicysimulatorV1AccessStateDiff>;
+export const GoogleCloudPolicysimulatorV1AccessStateDiff =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    simulated: Schema.optional(GoogleCloudPolicysimulatorV1ExplainedAccess),
+    baseline: Schema.optional(GoogleCloudPolicysimulatorV1ExplainedAccess),
+    accessChange: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudPolicysimulatorV1AccessStateDiff" });
 
 export interface GoogleCloudPolicysimulatorV1ReplayDiff {
   /** A summary and comparison of the principal's access under the current (baseline) policies and the proposed (simulated) policies for a single access tuple. The evaluation of the principal's access is reported in the AccessState field. */
   accessDiff?: GoogleCloudPolicysimulatorV1AccessStateDiff;
 }
 
-export const GoogleCloudPolicysimulatorV1ReplayDiff: Schema.Schema<GoogleCloudPolicysimulatorV1ReplayDiff> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accessDiff: Schema.optional(GoogleCloudPolicysimulatorV1AccessStateDiff),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudPolicysimulatorV1ReplayDiff",
-  }) as any as Schema.Schema<GoogleCloudPolicysimulatorV1ReplayDiff>;
+export const GoogleCloudPolicysimulatorV1ReplayDiff =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accessDiff: Schema.optional(GoogleCloudPolicysimulatorV1AccessStateDiff),
+  }).annotate({ identifier: "GoogleCloudPolicysimulatorV1ReplayDiff" });
 
 export interface GoogleCloudPolicysimulatorV1AccessTuple {
   /** Required. The principal whose access you want to check, in the form of the email address that represents that principal. For example, `alice@example.com` or `my-service-account@my-project.iam.gserviceaccount.com`. The principal must be a Google Account or a service account. Other types of principals are not supported. */
@@ -373,16 +319,12 @@ export interface GoogleCloudPolicysimulatorV1AccessTuple {
   fullResourceName?: string;
 }
 
-export const GoogleCloudPolicysimulatorV1AccessTuple: Schema.Schema<GoogleCloudPolicysimulatorV1AccessTuple> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      principal: Schema.optional(Schema.String),
-      permission: Schema.optional(Schema.String),
-      fullResourceName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudPolicysimulatorV1AccessTuple",
-  }) as any as Schema.Schema<GoogleCloudPolicysimulatorV1AccessTuple>;
+export const GoogleCloudPolicysimulatorV1AccessTuple =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    principal: Schema.optional(Schema.String),
+    permission: Schema.optional(Schema.String),
+    fullResourceName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudPolicysimulatorV1AccessTuple" });
 
 export interface GoogleCloudPolicysimulatorV1ReplayResult {
   /** The error that caused the access tuple replay to fail. This field is only included for access tuples that were not replayed successfully. */
@@ -399,19 +341,15 @@ export interface GoogleCloudPolicysimulatorV1ReplayResult {
   accessTuple?: GoogleCloudPolicysimulatorV1AccessTuple;
 }
 
-export const GoogleCloudPolicysimulatorV1ReplayResult: Schema.Schema<GoogleCloudPolicysimulatorV1ReplayResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      error: Schema.optional(GoogleRpcStatus),
-      parent: Schema.optional(Schema.String),
-      lastSeenDate: Schema.optional(GoogleTypeDate),
-      diff: Schema.optional(GoogleCloudPolicysimulatorV1ReplayDiff),
-      name: Schema.optional(Schema.String),
-      accessTuple: Schema.optional(GoogleCloudPolicysimulatorV1AccessTuple),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudPolicysimulatorV1ReplayResult",
-  }) as any as Schema.Schema<GoogleCloudPolicysimulatorV1ReplayResult>;
+export const GoogleCloudPolicysimulatorV1ReplayResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    error: Schema.optional(GoogleRpcStatus),
+    parent: Schema.optional(Schema.String),
+    lastSeenDate: Schema.optional(GoogleTypeDate),
+    diff: Schema.optional(GoogleCloudPolicysimulatorV1ReplayDiff),
+    name: Schema.optional(Schema.String),
+    accessTuple: Schema.optional(GoogleCloudPolicysimulatorV1AccessTuple),
+  }).annotate({ identifier: "GoogleCloudPolicysimulatorV1ReplayResult" });
 
 export interface GoogleCloudOrgpolicyV2CustomConstraint {
   /** A Common Expression Language (CEL) condition which is used in the evaluation of the constraint. For example: `resource.instanceName.matches("(production|test)_(.+_)?[\d]+")` or, `resource.management.auto_upgrade == true` The max length of the condition is 1000 characters. */
@@ -440,21 +378,17 @@ export interface GoogleCloudOrgpolicyV2CustomConstraint {
   actionType?: "ACTION_TYPE_UNSPECIFIED" | "ALLOW" | "DENY" | (string & {});
 }
 
-export const GoogleCloudOrgpolicyV2CustomConstraint: Schema.Schema<GoogleCloudOrgpolicyV2CustomConstraint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      condition: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      methodTypes: Schema.optional(Schema.Array(Schema.String)),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      resourceTypes: Schema.optional(Schema.Array(Schema.String)),
-      actionType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudOrgpolicyV2CustomConstraint",
-  }) as any as Schema.Schema<GoogleCloudOrgpolicyV2CustomConstraint>;
+export const GoogleCloudOrgpolicyV2CustomConstraint =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    condition: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    methodTypes: Schema.optional(Schema.Array(Schema.String)),
+    displayName: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    resourceTypes: Schema.optional(Schema.Array(Schema.String)),
+    actionType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudOrgpolicyV2CustomConstraint" });
 
 export interface GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlay {
   /** Optional. Resource the constraint is attached to. Example: "organization/987654" */
@@ -463,16 +397,14 @@ export interface GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOve
   customConstraint?: GoogleCloudOrgpolicyV2CustomConstraint;
 }
 
-export const GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlay: Schema.Schema<GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlay> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customConstraintParent: Schema.optional(Schema.String),
-      customConstraint: Schema.optional(GoogleCloudOrgpolicyV2CustomConstraint),
-    }),
-  ).annotate({
+export const GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlay =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customConstraintParent: Schema.optional(Schema.String),
+    customConstraint: Schema.optional(GoogleCloudOrgpolicyV2CustomConstraint),
+  }).annotate({
     identifier:
       "GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlay",
-  }) as any as Schema.Schema<GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlay>;
+  });
 
 export interface GoogleCloudPolicysimulatorV1ResourceContext {
   /** The asset type of the resource as defined by CAIS. Example: `compute.googleapis.com/Firewall` See [Supported asset types](https://cloud.google.com/asset-inventory/docs/supported-asset-types) for more information. */
@@ -483,16 +415,12 @@ export interface GoogleCloudPolicysimulatorV1ResourceContext {
   resource?: string;
 }
 
-export const GoogleCloudPolicysimulatorV1ResourceContext: Schema.Schema<GoogleCloudPolicysimulatorV1ResourceContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      assetType: Schema.optional(Schema.String),
-      ancestors: Schema.optional(Schema.Array(Schema.String)),
-      resource: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudPolicysimulatorV1ResourceContext",
-  }) as any as Schema.Schema<GoogleCloudPolicysimulatorV1ResourceContext>;
+export const GoogleCloudPolicysimulatorV1ResourceContext =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    assetType: Schema.optional(Schema.String),
+    ancestors: Schema.optional(Schema.Array(Schema.String)),
+    resource: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudPolicysimulatorV1ResourceContext" });
 
 export interface GoogleCloudPolicysimulatorV1ListReplayResultsResponse {
   /** The results of running a Replay. */
@@ -501,31 +429,27 @@ export interface GoogleCloudPolicysimulatorV1ListReplayResultsResponse {
   nextPageToken?: string;
 }
 
-export const GoogleCloudPolicysimulatorV1ListReplayResultsResponse: Schema.Schema<GoogleCloudPolicysimulatorV1ListReplayResultsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      replayResults: Schema.optional(
-        Schema.Array(GoogleCloudPolicysimulatorV1ReplayResult),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudPolicysimulatorV1ListReplayResultsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    replayResults: Schema.optional(
+      Schema.Array(GoogleCloudPolicysimulatorV1ReplayResult),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudPolicysimulatorV1ListReplayResultsResponse",
-  }) as any as Schema.Schema<GoogleCloudPolicysimulatorV1ListReplayResultsResponse>;
+  });
 
 export interface GoogleCloudPolicysimulatorV1ReplayOperationMetadata {
   /** Time when the request was received. */
   startTime?: string;
 }
 
-export const GoogleCloudPolicysimulatorV1ReplayOperationMetadata: Schema.Schema<GoogleCloudPolicysimulatorV1ReplayOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudPolicysimulatorV1ReplayOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudPolicysimulatorV1ReplayOperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudPolicysimulatorV1ReplayOperationMetadata>;
+  });
 
 export interface GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlay {
   /** Optional. Resource the constraint is attached to. Example: "organization/987654" */
@@ -534,16 +458,14 @@ export interface GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstrain
   customConstraint?: GoogleCloudOrgpolicyV2CustomConstraint;
 }
 
-export const GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlay: Schema.Schema<GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlay> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customConstraintParent: Schema.optional(Schema.String),
-      customConstraint: Schema.optional(GoogleCloudOrgpolicyV2CustomConstraint),
-    }),
-  ).annotate({
+export const GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlay =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    customConstraintParent: Schema.optional(Schema.String),
+    customConstraint: Schema.optional(GoogleCloudOrgpolicyV2CustomConstraint),
+  }).annotate({
     identifier:
       "GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlay",
-  }) as any as Schema.Schema<GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlay>;
+  });
 
 export interface GoogleCloudPolicysimulatorV1betaCreateOrgPolicyViolationsPreviewOperationMetadata {
   /** Time when the request started processing, i.e., when the state was set to RUNNING. */
@@ -566,20 +488,18 @@ export interface GoogleCloudPolicysimulatorV1betaCreateOrgPolicyViolationsPrevie
   resourcesScanned?: number;
 }
 
-export const GoogleCloudPolicysimulatorV1betaCreateOrgPolicyViolationsPreviewOperationMetadata: Schema.Schema<GoogleCloudPolicysimulatorV1betaCreateOrgPolicyViolationsPreviewOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Schema.String),
-      resourcesPending: Schema.optional(Schema.Number),
-      resourcesFound: Schema.optional(Schema.Number),
-      requestTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      resourcesScanned: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudPolicysimulatorV1betaCreateOrgPolicyViolationsPreviewOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startTime: Schema.optional(Schema.String),
+    resourcesPending: Schema.optional(Schema.Number),
+    resourcesFound: Schema.optional(Schema.Number),
+    requestTime: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    resourcesScanned: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudPolicysimulatorV1betaCreateOrgPolicyViolationsPreviewOperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudPolicysimulatorV1betaCreateOrgPolicyViolationsPreviewOperationMetadata>;
+  });
 
 export interface GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues {
   /** List of values allowed at this resource. */
@@ -588,15 +508,13 @@ export interface GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues {
   deniedValues?: Array<string>;
 }
 
-export const GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues: Schema.Schema<GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      allowedValues: Schema.optional(Schema.Array(Schema.String)),
-      deniedValues: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    allowedValues: Schema.optional(Schema.Array(Schema.String)),
+    deniedValues: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues",
-  }) as any as Schema.Schema<GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues>;
+  });
 
 export interface GoogleCloudOrgpolicyV2PolicySpecPolicyRule {
   /** List of values to be used for this policy rule. This field can be set only in policies for list constraints. */
@@ -613,21 +531,17 @@ export interface GoogleCloudOrgpolicyV2PolicySpecPolicyRule {
   allowAll?: boolean;
 }
 
-export const GoogleCloudOrgpolicyV2PolicySpecPolicyRule: Schema.Schema<GoogleCloudOrgpolicyV2PolicySpecPolicyRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      values: Schema.optional(
-        GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues,
-      ),
-      enforce: Schema.optional(Schema.Boolean),
-      parameters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      denyAll: Schema.optional(Schema.Boolean),
-      condition: Schema.optional(GoogleTypeExpr),
-      allowAll: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudOrgpolicyV2PolicySpecPolicyRule",
-  }) as any as Schema.Schema<GoogleCloudOrgpolicyV2PolicySpecPolicyRule>;
+export const GoogleCloudOrgpolicyV2PolicySpecPolicyRule =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    values: Schema.optional(
+      GoogleCloudOrgpolicyV2PolicySpecPolicyRuleStringValues,
+    ),
+    enforce: Schema.optional(Schema.Boolean),
+    parameters: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    denyAll: Schema.optional(Schema.Boolean),
+    condition: Schema.optional(GoogleTypeExpr),
+    allowAll: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudOrgpolicyV2PolicySpecPolicyRule" });
 
 export interface GoogleCloudOrgpolicyV2PolicySpec {
   /** Ignores policies set above this resource and restores the `constraint_default` enforcement behavior of the specific constraint at this resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be empty and `inherit_from_parent` must be set to false. */
@@ -642,20 +556,16 @@ export interface GoogleCloudOrgpolicyV2PolicySpec {
   inheritFromParent?: boolean;
 }
 
-export const GoogleCloudOrgpolicyV2PolicySpec: Schema.Schema<GoogleCloudOrgpolicyV2PolicySpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      reset: Schema.optional(Schema.Boolean),
-      etag: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      rules: Schema.optional(
-        Schema.Array(GoogleCloudOrgpolicyV2PolicySpecPolicyRule),
-      ),
-      inheritFromParent: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudOrgpolicyV2PolicySpec",
-  }) as any as Schema.Schema<GoogleCloudOrgpolicyV2PolicySpec>;
+export const GoogleCloudOrgpolicyV2PolicySpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    reset: Schema.optional(Schema.Boolean),
+    etag: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    rules: Schema.optional(
+      Schema.Array(GoogleCloudOrgpolicyV2PolicySpecPolicyRule),
+    ),
+    inheritFromParent: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "GoogleCloudOrgpolicyV2PolicySpec" });
 
 export interface GoogleCloudOrgpolicyV2AlternatePolicySpec {
   /** Reference to the launch that will be used while audit logging and to control the launch. Should be set only in the alternate policy. */
@@ -664,15 +574,11 @@ export interface GoogleCloudOrgpolicyV2AlternatePolicySpec {
   spec?: GoogleCloudOrgpolicyV2PolicySpec;
 }
 
-export const GoogleCloudOrgpolicyV2AlternatePolicySpec: Schema.Schema<GoogleCloudOrgpolicyV2AlternatePolicySpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      launch: Schema.optional(Schema.String),
-      spec: Schema.optional(GoogleCloudOrgpolicyV2PolicySpec),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudOrgpolicyV2AlternatePolicySpec",
-  }) as any as Schema.Schema<GoogleCloudOrgpolicyV2AlternatePolicySpec>;
+export const GoogleCloudOrgpolicyV2AlternatePolicySpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    launch: Schema.optional(Schema.String),
+    spec: Schema.optional(GoogleCloudOrgpolicyV2PolicySpec),
+  }).annotate({ identifier: "GoogleCloudOrgpolicyV2AlternatePolicySpec" });
 
 export interface GoogleCloudOrgpolicyV2Policy {
   /** Optional. An opaque tag indicating the current state of the policy, used for concurrency control. This entity tag (ETag) is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding. */
@@ -687,18 +593,14 @@ export interface GoogleCloudOrgpolicyV2Policy {
   dryRunSpec?: GoogleCloudOrgpolicyV2PolicySpec;
 }
 
-export const GoogleCloudOrgpolicyV2Policy: Schema.Schema<GoogleCloudOrgpolicyV2Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      etag: Schema.optional(Schema.String),
-      alternate: Schema.optional(GoogleCloudOrgpolicyV2AlternatePolicySpec),
-      name: Schema.optional(Schema.String),
-      spec: Schema.optional(GoogleCloudOrgpolicyV2PolicySpec),
-      dryRunSpec: Schema.optional(GoogleCloudOrgpolicyV2PolicySpec),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudOrgpolicyV2Policy",
-  }) as any as Schema.Schema<GoogleCloudOrgpolicyV2Policy>;
+export const GoogleCloudOrgpolicyV2Policy =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    etag: Schema.optional(Schema.String),
+    alternate: Schema.optional(GoogleCloudOrgpolicyV2AlternatePolicySpec),
+    name: Schema.optional(Schema.String),
+    spec: Schema.optional(GoogleCloudOrgpolicyV2PolicySpec),
+    dryRunSpec: Schema.optional(GoogleCloudOrgpolicyV2PolicySpec),
+  }).annotate({ identifier: "GoogleCloudOrgpolicyV2Policy" });
 
 export interface GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlay {
   /** Optional. The parent of the policy we are attaching to. Example: "projects/123456" */
@@ -707,15 +609,13 @@ export interface GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlay {
   policy?: GoogleCloudOrgpolicyV2Policy;
 }
 
-export const GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlay: Schema.Schema<GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlay> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policyParent: Schema.optional(Schema.String),
-      policy: Schema.optional(GoogleCloudOrgpolicyV2Policy),
-    }),
-  ).annotate({
+export const GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlay =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policyParent: Schema.optional(Schema.String),
+    policy: Schema.optional(GoogleCloudOrgpolicyV2Policy),
+  }).annotate({
     identifier: "GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlay",
-  }) as any as Schema.Schema<GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlay>;
+  });
 
 export interface GoogleCloudPolicysimulatorV1betaOrgPolicyOverlay {
   /** Optional. The OrgPolicy changes to preview violations for. Any existing OrgPolicies with the same name will be overridden in the simulation. That is, violations will be determined as if all policies in the overlay were created or updated. */
@@ -724,23 +624,21 @@ export interface GoogleCloudPolicysimulatorV1betaOrgPolicyOverlay {
   customConstraints?: Array<GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlay>;
 }
 
-export const GoogleCloudPolicysimulatorV1betaOrgPolicyOverlay: Schema.Schema<GoogleCloudPolicysimulatorV1betaOrgPolicyOverlay> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policies: Schema.optional(
-        Schema.Array(
-          GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlay,
-        ),
+export const GoogleCloudPolicysimulatorV1betaOrgPolicyOverlay =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policies: Schema.optional(
+      Schema.Array(
+        GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayPolicyOverlay,
       ),
-      customConstraints: Schema.optional(
-        Schema.Array(
-          GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlay,
-        ),
+    ),
+    customConstraints: Schema.optional(
+      Schema.Array(
+        GoogleCloudPolicysimulatorV1betaOrgPolicyOverlayCustomConstraintOverlay,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier: "GoogleCloudPolicysimulatorV1betaOrgPolicyOverlay",
-  }) as any as Schema.Schema<GoogleCloudPolicysimulatorV1betaOrgPolicyOverlay>;
+  });
 
 export interface GoogleLongrunningOperation {
   /** If the value is `false`, it means the operation is still in progress. If `true`, the operation is completed, and either `error` or `response` is available. */
@@ -755,18 +653,14 @@ export interface GoogleLongrunningOperation {
   error?: GoogleRpcStatus;
 }
 
-export const GoogleLongrunningOperation: Schema.Schema<GoogleLongrunningOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      done: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      error: Schema.optional(GoogleRpcStatus),
-    }),
-  ).annotate({
-    identifier: "GoogleLongrunningOperation",
-  }) as any as Schema.Schema<GoogleLongrunningOperation>;
+export const GoogleLongrunningOperation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    done: Schema.optional(Schema.Boolean),
+    name: Schema.optional(Schema.String),
+    metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+    error: Schema.optional(GoogleRpcStatus),
+  }).annotate({ identifier: "GoogleLongrunningOperation" });
 
 export interface GoogleLongrunningListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -777,16 +671,12 @@ export interface GoogleLongrunningListOperationsResponse {
   unreachable?: Array<string>;
 }
 
-export const GoogleLongrunningListOperationsResponse: Schema.Schema<GoogleLongrunningListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleLongrunningListOperationsResponse",
-  }) as any as Schema.Schema<GoogleLongrunningListOperationsResponse>;
+export const GoogleLongrunningListOperationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    operations: Schema.optional(Schema.Array(GoogleLongrunningOperation)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleLongrunningListOperationsResponse" });
 
 export interface GoogleCloudPolicysimulatorV1ReplayConfig {
   /** A mapping of the resources that you want to simulate policies for and the policies that you want to simulate. Keys are the full resource names for the resources. For example, `//cloudresourcemanager.googleapis.com/projects/my-project`. For examples of full resource names for Google Cloud services, see https://cloud.google.com/iam/help/troubleshooter/full-resource-names. Values are Policy objects representing the policies that you want to simulate. Replays automatically take into account any IAM policies inherited through the resource hierarchy, and any policies set on descendant resources. You do not need to include these policies in the policy overlay. */
@@ -795,17 +685,13 @@ export interface GoogleCloudPolicysimulatorV1ReplayConfig {
   logSource?: "LOG_SOURCE_UNSPECIFIED" | "RECENT_ACCESSES" | (string & {});
 }
 
-export const GoogleCloudPolicysimulatorV1ReplayConfig: Schema.Schema<GoogleCloudPolicysimulatorV1ReplayConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policyOverlay: Schema.optional(
-        Schema.Record(Schema.String, GoogleIamV1Policy),
-      ),
-      logSource: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudPolicysimulatorV1ReplayConfig",
-  }) as any as Schema.Schema<GoogleCloudPolicysimulatorV1ReplayConfig>;
+export const GoogleCloudPolicysimulatorV1ReplayConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policyOverlay: Schema.optional(
+      Schema.Record(Schema.String, GoogleIamV1Policy),
+    ),
+    logSource: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudPolicysimulatorV1ReplayConfig" });
 
 export interface GoogleCloudPolicysimulatorV1ReplayResultsSummary {
   /** The number of replayed log entries with a difference between baseline and simulated policies. */
@@ -822,19 +708,17 @@ export interface GoogleCloudPolicysimulatorV1ReplayResultsSummary {
   newestDate?: GoogleTypeDate;
 }
 
-export const GoogleCloudPolicysimulatorV1ReplayResultsSummary: Schema.Schema<GoogleCloudPolicysimulatorV1ReplayResultsSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      differenceCount: Schema.optional(Schema.Number),
-      errorCount: Schema.optional(Schema.Number),
-      logCount: Schema.optional(Schema.Number),
-      unchangedCount: Schema.optional(Schema.Number),
-      oldestDate: Schema.optional(GoogleTypeDate),
-      newestDate: Schema.optional(GoogleTypeDate),
-    }),
-  ).annotate({
+export const GoogleCloudPolicysimulatorV1ReplayResultsSummary =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    differenceCount: Schema.optional(Schema.Number),
+    errorCount: Schema.optional(Schema.Number),
+    logCount: Schema.optional(Schema.Number),
+    unchangedCount: Schema.optional(Schema.Number),
+    oldestDate: Schema.optional(GoogleTypeDate),
+    newestDate: Schema.optional(GoogleTypeDate),
+  }).annotate({
     identifier: "GoogleCloudPolicysimulatorV1ReplayResultsSummary",
-  }) as any as Schema.Schema<GoogleCloudPolicysimulatorV1ReplayResultsSummary>;
+  });
 
 export interface GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewResourceCounts {
   /** Output only. Number of scanned resources with at least one violation. */
@@ -849,19 +733,17 @@ export interface GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewResou
   errors?: number;
 }
 
-export const GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewResourceCounts: Schema.Schema<GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewResourceCounts> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      noncompliant: Schema.optional(Schema.Number),
-      scanned: Schema.optional(Schema.Number),
-      compliant: Schema.optional(Schema.Number),
-      unenforced: Schema.optional(Schema.Number),
-      errors: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewResourceCounts =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    noncompliant: Schema.optional(Schema.Number),
+    scanned: Schema.optional(Schema.Number),
+    compliant: Schema.optional(Schema.Number),
+    unenforced: Schema.optional(Schema.Number),
+    errors: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewResourceCounts",
-  }) as any as Schema.Schema<GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewResourceCounts>;
+  });
 
 export interface GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreview {
   /** Output only. The resource name of the `OrgPolicyViolationsPreview`. It has the following format: `organizations/{organization}/locations/{location}/orgPolicyViolationsPreviews/{orgPolicyViolationsPreview}` Example: `organizations/my-example-org/locations/global/orgPolicyViolationsPreviews/506a5f7f` */
@@ -886,24 +768,20 @@ export interface GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreview {
   createTime?: string;
 }
 
-export const GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreview: Schema.Schema<GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreview> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      overlay: Schema.optional(
-        GoogleCloudPolicysimulatorV1betaOrgPolicyOverlay,
-      ),
-      violationsCount: Schema.optional(Schema.Number),
-      state: Schema.optional(Schema.String),
-      resourceCounts: Schema.optional(
-        GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewResourceCounts,
-      ),
-      customConstraints: Schema.optional(Schema.Array(Schema.String)),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreview =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    overlay: Schema.optional(GoogleCloudPolicysimulatorV1betaOrgPolicyOverlay),
+    violationsCount: Schema.optional(Schema.Number),
+    state: Schema.optional(Schema.String),
+    resourceCounts: Schema.optional(
+      GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreviewResourceCounts,
+    ),
+    customConstraints: Schema.optional(Schema.Array(Schema.String)),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreview",
-  }) as any as Schema.Schema<GoogleCloudPolicysimulatorV1betaOrgPolicyViolationsPreview>;
+  });
 
 export interface GoogleCloudPolicysimulatorV1OrgPolicyViolation {
   /** The name of the `OrgPolicyViolation`. Example: organizations/my-example-org/locations/global/orgPolicyViolationsPreviews/506a5f7f/orgPolicyViolations/38ce` */
@@ -916,17 +794,13 @@ export interface GoogleCloudPolicysimulatorV1OrgPolicyViolation {
   error?: GoogleRpcStatus;
 }
 
-export const GoogleCloudPolicysimulatorV1OrgPolicyViolation: Schema.Schema<GoogleCloudPolicysimulatorV1OrgPolicyViolation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      resource: Schema.optional(GoogleCloudPolicysimulatorV1ResourceContext),
-      customConstraint: Schema.optional(GoogleCloudOrgpolicyV2CustomConstraint),
-      error: Schema.optional(GoogleRpcStatus),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudPolicysimulatorV1OrgPolicyViolation",
-  }) as any as Schema.Schema<GoogleCloudPolicysimulatorV1OrgPolicyViolation>;
+export const GoogleCloudPolicysimulatorV1OrgPolicyViolation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    resource: Schema.optional(GoogleCloudPolicysimulatorV1ResourceContext),
+    customConstraint: Schema.optional(GoogleCloudOrgpolicyV2CustomConstraint),
+    error: Schema.optional(GoogleRpcStatus),
+  }).annotate({ identifier: "GoogleCloudPolicysimulatorV1OrgPolicyViolation" });
 
 export interface GoogleCloudPolicysimulatorV1ListOrgPolicyViolationsResponse {
   /** A token that you can use to retrieve the next page of results. If this field is omitted, there are no subsequent pages. */
@@ -935,17 +809,15 @@ export interface GoogleCloudPolicysimulatorV1ListOrgPolicyViolationsResponse {
   orgPolicyViolations?: Array<GoogleCloudPolicysimulatorV1OrgPolicyViolation>;
 }
 
-export const GoogleCloudPolicysimulatorV1ListOrgPolicyViolationsResponse: Schema.Schema<GoogleCloudPolicysimulatorV1ListOrgPolicyViolationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      orgPolicyViolations: Schema.optional(
-        Schema.Array(GoogleCloudPolicysimulatorV1OrgPolicyViolation),
-      ),
-    }),
-  ).annotate({
+export const GoogleCloudPolicysimulatorV1ListOrgPolicyViolationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    orgPolicyViolations: Schema.optional(
+      Schema.Array(GoogleCloudPolicysimulatorV1OrgPolicyViolation),
+    ),
+  }).annotate({
     identifier: "GoogleCloudPolicysimulatorV1ListOrgPolicyViolationsResponse",
-  }) as any as Schema.Schema<GoogleCloudPolicysimulatorV1ListOrgPolicyViolationsResponse>;
+  });
 
 export interface GoogleCloudPolicysimulatorV1Replay {
   /** Required. The configuration used for the `Replay`. */
@@ -964,19 +836,15 @@ export interface GoogleCloudPolicysimulatorV1Replay {
     | (string & {});
 }
 
-export const GoogleCloudPolicysimulatorV1Replay: Schema.Schema<GoogleCloudPolicysimulatorV1Replay> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      config: Schema.optional(GoogleCloudPolicysimulatorV1ReplayConfig),
-      name: Schema.optional(Schema.String),
-      resultsSummary: Schema.optional(
-        GoogleCloudPolicysimulatorV1ReplayResultsSummary,
-      ),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudPolicysimulatorV1Replay",
-  }) as any as Schema.Schema<GoogleCloudPolicysimulatorV1Replay>;
+export const GoogleCloudPolicysimulatorV1Replay =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    config: Schema.optional(GoogleCloudPolicysimulatorV1ReplayConfig),
+    name: Schema.optional(Schema.String),
+    resultsSummary: Schema.optional(
+      GoogleCloudPolicysimulatorV1ReplayResultsSummary,
+    ),
+    state: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudPolicysimulatorV1Replay" });
 
 export interface GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewResourceCounts {
   /** Output only. Number of resources that returned an error when scanned. */
@@ -991,19 +859,17 @@ export interface GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewResourceC
   scanned?: number;
 }
 
-export const GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewResourceCounts: Schema.Schema<GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewResourceCounts> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errors: Schema.optional(Schema.Number),
-      compliant: Schema.optional(Schema.Number),
-      unenforced: Schema.optional(Schema.Number),
-      noncompliant: Schema.optional(Schema.Number),
-      scanned: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewResourceCounts =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    errors: Schema.optional(Schema.Number),
+    compliant: Schema.optional(Schema.Number),
+    unenforced: Schema.optional(Schema.Number),
+    noncompliant: Schema.optional(Schema.Number),
+    scanned: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewResourceCounts",
-  }) as any as Schema.Schema<GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewResourceCounts>;
+  });
 
 export interface GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlay {
   /** Optional. The parent of the policy we are attaching to. Example: "projects/123456" */
@@ -1012,15 +878,13 @@ export interface GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlay {
   policy?: GoogleCloudOrgpolicyV2Policy;
 }
 
-export const GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlay: Schema.Schema<GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlay> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policyParent: Schema.optional(Schema.String),
-      policy: Schema.optional(GoogleCloudOrgpolicyV2Policy),
-    }),
-  ).annotate({
+export const GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlay =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policyParent: Schema.optional(Schema.String),
+    policy: Schema.optional(GoogleCloudOrgpolicyV2Policy),
+  }).annotate({
     identifier: "GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlay",
-  }) as any as Schema.Schema<GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlay>;
+  });
 
 export interface GoogleCloudPolicysimulatorV1OrgPolicyOverlay {
   /** Optional. The OrgPolicy changes to preview violations for. Any existing OrgPolicies with the same name will be overridden in the simulation. That is, violations will be determined as if all policies in the overlay were created or updated. */
@@ -1029,21 +893,17 @@ export interface GoogleCloudPolicysimulatorV1OrgPolicyOverlay {
   customConstraints?: Array<GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlay>;
 }
 
-export const GoogleCloudPolicysimulatorV1OrgPolicyOverlay: Schema.Schema<GoogleCloudPolicysimulatorV1OrgPolicyOverlay> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policies: Schema.optional(
-        Schema.Array(GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlay),
+export const GoogleCloudPolicysimulatorV1OrgPolicyOverlay =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policies: Schema.optional(
+      Schema.Array(GoogleCloudPolicysimulatorV1OrgPolicyOverlayPolicyOverlay),
+    ),
+    customConstraints: Schema.optional(
+      Schema.Array(
+        GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlay,
       ),
-      customConstraints: Schema.optional(
-        Schema.Array(
-          GoogleCloudPolicysimulatorV1OrgPolicyOverlayCustomConstraintOverlay,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudPolicysimulatorV1OrgPolicyOverlay",
-  }) as any as Schema.Schema<GoogleCloudPolicysimulatorV1OrgPolicyOverlay>;
+    ),
+  }).annotate({ identifier: "GoogleCloudPolicysimulatorV1OrgPolicyOverlay" });
 
 export interface GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreview {
   /** Output only. The resource name of the `OrgPolicyViolationsPreview`. It has the following format: `organizations/{organization}/locations/{location}/orgPolicyViolationsPreviews/{orgPolicyViolationsPreview}` Example: `organizations/my-example-org/locations/global/orgPolicyViolationsPreviews/506a5f7f` */
@@ -1068,22 +928,20 @@ export interface GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreview {
   createTime?: string;
 }
 
-export const GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreview: Schema.Schema<GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreview> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      overlay: Schema.optional(GoogleCloudPolicysimulatorV1OrgPolicyOverlay),
-      violationsCount: Schema.optional(Schema.Number),
-      state: Schema.optional(Schema.String),
-      resourceCounts: Schema.optional(
-        GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewResourceCounts,
-      ),
-      customConstraints: Schema.optional(Schema.Array(Schema.String)),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreview =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    overlay: Schema.optional(GoogleCloudPolicysimulatorV1OrgPolicyOverlay),
+    violationsCount: Schema.optional(Schema.Number),
+    state: Schema.optional(Schema.String),
+    resourceCounts: Schema.optional(
+      GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreviewResourceCounts,
+    ),
+    customConstraints: Schema.optional(Schema.Array(Schema.String)),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreview",
-  }) as any as Schema.Schema<GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreview>;
+  });
 
 export interface GoogleCloudPolicysimulatorV1ListOrgPolicyViolationsPreviewsResponse {
   /** The list of OrgPolicyViolationsPreview */
@@ -1092,18 +950,16 @@ export interface GoogleCloudPolicysimulatorV1ListOrgPolicyViolationsPreviewsResp
   nextPageToken?: string;
 }
 
-export const GoogleCloudPolicysimulatorV1ListOrgPolicyViolationsPreviewsResponse: Schema.Schema<GoogleCloudPolicysimulatorV1ListOrgPolicyViolationsPreviewsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      orgPolicyViolationsPreviews: Schema.optional(
-        Schema.Array(GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreview),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const GoogleCloudPolicysimulatorV1ListOrgPolicyViolationsPreviewsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    orgPolicyViolationsPreviews: Schema.optional(
+      Schema.Array(GoogleCloudPolicysimulatorV1OrgPolicyViolationsPreview),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "GoogleCloudPolicysimulatorV1ListOrgPolicyViolationsPreviewsResponse",
-  }) as any as Schema.Schema<GoogleCloudPolicysimulatorV1ListOrgPolicyViolationsPreviewsResponse>;
+  });
 
 export interface GoogleCloudPolicysimulatorV1betaGenerateOrgPolicyViolationsPreviewOperationMetadata {
   /** Time when the request started processing, i.e. when the state was set to RUNNING. */
@@ -1126,20 +982,18 @@ export interface GoogleCloudPolicysimulatorV1betaGenerateOrgPolicyViolationsPrev
   resourcesScanned?: number;
 }
 
-export const GoogleCloudPolicysimulatorV1betaGenerateOrgPolicyViolationsPreviewOperationMetadata: Schema.Schema<GoogleCloudPolicysimulatorV1betaGenerateOrgPolicyViolationsPreviewOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Schema.String),
-      resourcesPending: Schema.optional(Schema.Number),
-      resourcesFound: Schema.optional(Schema.Number),
-      requestTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      resourcesScanned: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const GoogleCloudPolicysimulatorV1betaGenerateOrgPolicyViolationsPreviewOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    startTime: Schema.optional(Schema.String),
+    resourcesPending: Schema.optional(Schema.Number),
+    resourcesFound: Schema.optional(Schema.Number),
+    requestTime: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    resourcesScanned: Schema.optional(Schema.Number),
+  }).annotate({
     identifier:
       "GoogleCloudPolicysimulatorV1betaGenerateOrgPolicyViolationsPreviewOperationMetadata",
-  }) as any as Schema.Schema<GoogleCloudPolicysimulatorV1betaGenerateOrgPolicyViolationsPreviewOperationMetadata>;
+  });
 
 // ==========================================================================
 // Operations

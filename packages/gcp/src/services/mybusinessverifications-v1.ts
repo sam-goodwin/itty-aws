@@ -47,57 +47,46 @@ export interface PostalAddress {
   addressLines?: Array<string>;
 }
 
-export const PostalAddress: Schema.Schema<PostalAddress> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      regionCode: Schema.optional(Schema.String),
-      organization: Schema.optional(Schema.String),
-      administrativeArea: Schema.optional(Schema.String),
-      revision: Schema.optional(Schema.Number),
-      languageCode: Schema.optional(Schema.String),
-      sortingCode: Schema.optional(Schema.String),
-      recipients: Schema.optional(Schema.Array(Schema.String)),
-      locality: Schema.optional(Schema.String),
-      sublocality: Schema.optional(Schema.String),
-      postalCode: Schema.optional(Schema.String),
-      addressLines: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "PostalAddress",
-  }) as any as Schema.Schema<PostalAddress>;
+export const PostalAddress = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  regionCode: Schema.optional(Schema.String),
+  organization: Schema.optional(Schema.String),
+  administrativeArea: Schema.optional(Schema.String),
+  revision: Schema.optional(Schema.Number),
+  languageCode: Schema.optional(Schema.String),
+  sortingCode: Schema.optional(Schema.String),
+  recipients: Schema.optional(Schema.Array(Schema.String)),
+  locality: Schema.optional(Schema.String),
+  sublocality: Schema.optional(Schema.String),
+  postalCode: Schema.optional(Schema.String),
+  addressLines: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "PostalAddress" });
 
 export interface ServiceBusinessContext {
   /** The verification address of the location. It is used to either enable more verification options or send a postcard. */
   address?: PostalAddress;
 }
 
-export const ServiceBusinessContext: Schema.Schema<ServiceBusinessContext> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      address: Schema.optional(PostalAddress),
-    }),
-  ).annotate({
-    identifier: "ServiceBusinessContext",
-  }) as any as Schema.Schema<ServiceBusinessContext>;
+export const ServiceBusinessContext = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    address: Schema.optional(PostalAddress),
+  },
+).annotate({ identifier: "ServiceBusinessContext" });
 
 export interface ResolveOwnershipConflict {}
 
-export const ResolveOwnershipConflict: Schema.Schema<ResolveOwnershipConflict> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const ResolveOwnershipConflict =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ResolveOwnershipConflict",
-  }) as any as Schema.Schema<ResolveOwnershipConflict>;
+  });
 
 export interface Verify {
   /** Indicates whether a verification process has already started, and can be completed by the location. */
   hasPendingVerification?: boolean;
 }
 
-export const Verify: Schema.Schema<Verify> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hasPendingVerification: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "Verify" }) as any as Schema.Schema<Verify>;
+export const Verify = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  hasPendingVerification: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Verify" });
 
 export interface ComplyWithGuidelines {
   /** The reason why the location is being recommended to comply with guidelines. */
@@ -108,21 +97,15 @@ export interface ComplyWithGuidelines {
     | (string & {});
 }
 
-export const ComplyWithGuidelines: Schema.Schema<ComplyWithGuidelines> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      recommendationReason: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ComplyWithGuidelines",
-  }) as any as Schema.Schema<ComplyWithGuidelines>;
+export const ComplyWithGuidelines = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  recommendationReason: Schema.optional(Schema.String),
+}).annotate({ identifier: "ComplyWithGuidelines" });
 
 export interface WaitForVoiceOfMerchant {}
 
-export const WaitForVoiceOfMerchant: Schema.Schema<WaitForVoiceOfMerchant> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "WaitForVoiceOfMerchant",
-  }) as any as Schema.Schema<WaitForVoiceOfMerchant>;
+export const WaitForVoiceOfMerchant = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "WaitForVoiceOfMerchant" });
 
 export interface VoiceOfMerchantState {
   /** Indicates whether the location has the authority (ownership) over the business on Google. If true, another location cannot take over and become the dominant listing on Maps. However, edits will not become live unless Voice of Merchant is gained (i.e. has_voice_of_merchant is true). */
@@ -139,33 +122,23 @@ export interface VoiceOfMerchantState {
   waitForVoiceOfMerchant?: WaitForVoiceOfMerchant;
 }
 
-export const VoiceOfMerchantState: Schema.Schema<VoiceOfMerchantState> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hasBusinessAuthority: Schema.optional(Schema.Boolean),
-      resolveOwnershipConflict: Schema.optional(ResolveOwnershipConflict),
-      verify: Schema.optional(Verify),
-      complyWithGuidelines: Schema.optional(ComplyWithGuidelines),
-      hasVoiceOfMerchant: Schema.optional(Schema.Boolean),
-      waitForVoiceOfMerchant: Schema.optional(WaitForVoiceOfMerchant),
-    }),
-  ).annotate({
-    identifier: "VoiceOfMerchantState",
-  }) as any as Schema.Schema<VoiceOfMerchantState>;
+export const VoiceOfMerchantState = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  hasBusinessAuthority: Schema.optional(Schema.Boolean),
+  resolveOwnershipConflict: Schema.optional(ResolveOwnershipConflict),
+  verify: Schema.optional(Verify),
+  complyWithGuidelines: Schema.optional(ComplyWithGuidelines),
+  hasVoiceOfMerchant: Schema.optional(Schema.Boolean),
+  waitForVoiceOfMerchant: Schema.optional(WaitForVoiceOfMerchant),
+}).annotate({ identifier: "VoiceOfMerchantState" });
 
 export interface VerificationToken {
   /** The token string. */
   tokenString?: string;
 }
 
-export const VerificationToken: Schema.Schema<VerificationToken> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tokenString: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VerificationToken",
-  }) as any as Schema.Schema<VerificationToken>;
+export const VerificationToken = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tokenString: Schema.optional(Schema.String),
+}).annotate({ identifier: "VerificationToken" });
 
 export interface Verification {
   /** The method of the verification. */
@@ -194,18 +167,13 @@ export interface Verification {
   name?: string;
 }
 
-export const Verification: Schema.Schema<Verification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      method: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      announcement: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Verification",
-  }) as any as Schema.Schema<Verification>;
+export const Verification = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  method: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  announcement: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Verification" });
 
 export interface ListVerificationsResponse {
   /** List of the verifications. */
@@ -214,43 +182,32 @@ export interface ListVerificationsResponse {
   nextPageToken?: string;
 }
 
-export const ListVerificationsResponse: Schema.Schema<ListVerificationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      verifications: Schema.optional(Schema.Array(Verification)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListVerificationsResponse",
-  }) as any as Schema.Schema<ListVerificationsResponse>;
+export const ListVerificationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    verifications: Schema.optional(Schema.Array(Verification)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListVerificationsResponse" });
 
 export interface VerifyLocationResponse {
   /** The created verification request. */
   verification?: Verification;
 }
 
-export const VerifyLocationResponse: Schema.Schema<VerifyLocationResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      verification: Schema.optional(Verification),
-    }),
-  ).annotate({
-    identifier: "VerifyLocationResponse",
-  }) as any as Schema.Schema<VerifyLocationResponse>;
+export const VerifyLocationResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    verification: Schema.optional(Verification),
+  },
+).annotate({ identifier: "VerifyLocationResponse" });
 
 export interface CompleteVerificationRequest {
   /** Required. PIN code received by the merchant to complete the verification. */
   pin?: string;
 }
 
-export const CompleteVerificationRequest: Schema.Schema<CompleteVerificationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pin: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CompleteVerificationRequest",
-  }) as any as Schema.Schema<CompleteVerificationRequest>;
+export const CompleteVerificationRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pin: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CompleteVerificationRequest" });
 
 export interface LocationData {
   /** Immutable. Name should reflect your business's real-world name, as used consistently on your storefront, website, and stationery, and as known to customers. Any additional information, when relevant, can be included in other fields of the resource (for example, `Address`, `Categories`). Don't add unnecessary information to your name (for example, prefer "Google" over "Google Inc. - Mountain View Corporate Headquarters"). Don't include marketing taglines, store codes, special characters, hours or closed/open status, phone numbers, website URLs, service/product information, location/address or directions, or containment information (for example, "Chase ATM in Duane Reade"). */
@@ -259,15 +216,10 @@ export interface LocationData {
   address?: PostalAddress;
 }
 
-export const LocationData: Schema.Schema<LocationData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      address: Schema.optional(PostalAddress),
-    }),
-  ).annotate({
-    identifier: "LocationData",
-  }) as any as Schema.Schema<LocationData>;
+export const LocationData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  address: Schema.optional(PostalAddress),
+}).annotate({ identifier: "LocationData" });
 
 export interface GenerateInstantVerificationTokenRequest {
   /** The location identifier associated with an unverified listing. This is the location id generated at the time that the listing was originally created. It is the final portion of a location resource name as generated by the Google My Business API. Note: the caller must be an owner or manager of this listing in order to generate a verification token. See the [location resource](/my-business/reference/rest/v4/accounts.locations) documentation for more information. */
@@ -276,29 +228,21 @@ export interface GenerateInstantVerificationTokenRequest {
   locationData?: LocationData;
 }
 
-export const GenerateInstantVerificationTokenRequest: Schema.Schema<GenerateInstantVerificationTokenRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locationId: Schema.optional(Schema.String),
-      locationData: Schema.optional(LocationData),
-    }),
-  ).annotate({
-    identifier: "GenerateInstantVerificationTokenRequest",
-  }) as any as Schema.Schema<GenerateInstantVerificationTokenRequest>;
+export const GenerateInstantVerificationTokenRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    locationId: Schema.optional(Schema.String),
+    locationData: Schema.optional(LocationData),
+  }).annotate({ identifier: "GenerateInstantVerificationTokenRequest" });
 
 export interface CompleteVerificationResponse {
   /** The completed verification. */
   verification?: Verification;
 }
 
-export const CompleteVerificationResponse: Schema.Schema<CompleteVerificationResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      verification: Schema.optional(Verification),
-    }),
-  ).annotate({
-    identifier: "CompleteVerificationResponse",
-  }) as any as Schema.Schema<CompleteVerificationResponse>;
+export const CompleteVerificationResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    verification: Schema.optional(Verification),
+  }).annotate({ identifier: "CompleteVerificationResponse" });
 
 export interface EmailVerificationData {
   /** Whether client is allowed to provide a different user name. */
@@ -309,16 +253,11 @@ export interface EmailVerificationData {
   domain?: string;
 }
 
-export const EmailVerificationData: Schema.Schema<EmailVerificationData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      isUserNameEditable: Schema.optional(Schema.Boolean),
-      user: Schema.optional(Schema.String),
-      domain: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EmailVerificationData",
-  }) as any as Schema.Schema<EmailVerificationData>;
+export const EmailVerificationData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  isUserNameEditable: Schema.optional(Schema.Boolean),
+  user: Schema.optional(Schema.String),
+  domain: Schema.optional(Schema.String),
+}).annotate({ identifier: "EmailVerificationData" });
 
 export interface AddressVerificationData {
   /** Address that a postcard can be sent to. */
@@ -329,16 +268,12 @@ export interface AddressVerificationData {
   expectedDeliveryDaysRegion?: number;
 }
 
-export const AddressVerificationData: Schema.Schema<AddressVerificationData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      address: Schema.optional(PostalAddress),
-      business: Schema.optional(Schema.String),
-      expectedDeliveryDaysRegion: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "AddressVerificationData",
-  }) as any as Schema.Schema<AddressVerificationData>;
+export const AddressVerificationData =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    address: Schema.optional(PostalAddress),
+    business: Schema.optional(Schema.String),
+    expectedDeliveryDaysRegion: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "AddressVerificationData" });
 
 export interface VerificationOption {
   /** Set only if the method is VETTED_PARTNER. */
@@ -362,32 +297,23 @@ export interface VerificationOption {
   addressData?: AddressVerificationData;
 }
 
-export const VerificationOption: Schema.Schema<VerificationOption> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      announcement: Schema.optional(Schema.String),
-      phoneNumber: Schema.optional(Schema.String),
-      verificationMethod: Schema.optional(Schema.String),
-      emailData: Schema.optional(EmailVerificationData),
-      addressData: Schema.optional(AddressVerificationData),
-    }),
-  ).annotate({
-    identifier: "VerificationOption",
-  }) as any as Schema.Schema<VerificationOption>;
+export const VerificationOption = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  announcement: Schema.optional(Schema.String),
+  phoneNumber: Schema.optional(Schema.String),
+  verificationMethod: Schema.optional(Schema.String),
+  emailData: Schema.optional(EmailVerificationData),
+  addressData: Schema.optional(AddressVerificationData),
+}).annotate({ identifier: "VerificationOption" });
 
 export interface FetchVerificationOptionsResponse {
   /** The available verification options. */
   options?: Array<VerificationOption>;
 }
 
-export const FetchVerificationOptionsResponse: Schema.Schema<FetchVerificationOptionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      options: Schema.optional(Schema.Array(VerificationOption)),
-    }),
-  ).annotate({
-    identifier: "FetchVerificationOptionsResponse",
-  }) as any as Schema.Schema<FetchVerificationOptionsResponse>;
+export const FetchVerificationOptionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    options: Schema.optional(Schema.Array(VerificationOption)),
+  }).annotate({ identifier: "FetchVerificationOptionsResponse" });
 
 export interface GenerateInstantVerificationTokenResponse {
   /** Output only. The result of the instant verification token generation. */
@@ -396,15 +322,11 @@ export interface GenerateInstantVerificationTokenResponse {
   instantVerificationToken?: string;
 }
 
-export const GenerateInstantVerificationTokenResponse: Schema.Schema<GenerateInstantVerificationTokenResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      result: Schema.optional(Schema.String),
-      instantVerificationToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GenerateInstantVerificationTokenResponse",
-  }) as any as Schema.Schema<GenerateInstantVerificationTokenResponse>;
+export const GenerateInstantVerificationTokenResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    result: Schema.optional(Schema.String),
+    instantVerificationToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GenerateInstantVerificationTokenResponse" });
 
 export interface VerifyLocationRequest {
   /** Optional. The BCP 47 language code representing the language that is to be used for the verification process. */
@@ -434,21 +356,16 @@ export interface VerifyLocationRequest {
   context?: ServiceBusinessContext;
 }
 
-export const VerifyLocationRequest: Schema.Schema<VerifyLocationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      languageCode: Schema.optional(Schema.String),
-      token: Schema.optional(VerificationToken),
-      mailerContact: Schema.optional(Schema.String),
-      phoneNumber: Schema.optional(Schema.String),
-      trustedPartnerToken: Schema.optional(Schema.String),
-      emailAddress: Schema.optional(Schema.String),
-      method: Schema.optional(Schema.String),
-      context: Schema.optional(ServiceBusinessContext),
-    }),
-  ).annotate({
-    identifier: "VerifyLocationRequest",
-  }) as any as Schema.Schema<VerifyLocationRequest>;
+export const VerifyLocationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  languageCode: Schema.optional(Schema.String),
+  token: Schema.optional(VerificationToken),
+  mailerContact: Schema.optional(Schema.String),
+  phoneNumber: Schema.optional(Schema.String),
+  trustedPartnerToken: Schema.optional(Schema.String),
+  emailAddress: Schema.optional(Schema.String),
+  method: Schema.optional(Schema.String),
+  context: Schema.optional(ServiceBusinessContext),
+}).annotate({ identifier: "VerifyLocationRequest" });
 
 export interface FetchVerificationOptionsRequest {
   /** Required. The BCP 47 language code representing the language that is to be used for the verification process. Available options vary by language. */
@@ -457,15 +374,11 @@ export interface FetchVerificationOptionsRequest {
   context?: ServiceBusinessContext;
 }
 
-export const FetchVerificationOptionsRequest: Schema.Schema<FetchVerificationOptionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      languageCode: Schema.optional(Schema.String),
-      context: Schema.optional(ServiceBusinessContext),
-    }),
-  ).annotate({
-    identifier: "FetchVerificationOptionsRequest",
-  }) as any as Schema.Schema<FetchVerificationOptionsRequest>;
+export const FetchVerificationOptionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    languageCode: Schema.optional(Schema.String),
+    context: Schema.optional(ServiceBusinessContext),
+  }).annotate({ identifier: "FetchVerificationOptionsRequest" });
 
 // ==========================================================================
 // Operations

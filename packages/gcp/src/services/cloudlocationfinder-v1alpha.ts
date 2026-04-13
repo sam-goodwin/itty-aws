@@ -35,16 +35,13 @@ export interface Location {
   displayName?: string;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      locationId: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  locationId: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+}).annotate({ identifier: "Location" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -53,15 +50,10 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(Location)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface CloudLocation {
   /** Optional. The carbon free energy percentage of the cloud location. This represents the average percentage of time customers' application will be running on carbon-free energy. See https://cloud.google.com/sustainability/region-carbon for more details. There is a difference between default value 0 and unset value. 0 means the carbon free energy percentage is 0%, while unset value means the carbon footprint data is not available. */
@@ -92,20 +84,15 @@ export interface CloudLocation {
     | (string & {});
 }
 
-export const CloudLocation: Schema.Schema<CloudLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      carbonFreeEnergyPercentage: Schema.optional(Schema.Number),
-      cloudProvider: Schema.optional(Schema.String),
-      territoryCode: Schema.optional(Schema.String),
-      containingCloudLocation: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      cloudLocationType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CloudLocation",
-  }) as any as Schema.Schema<CloudLocation>;
+export const CloudLocation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  carbonFreeEnergyPercentage: Schema.optional(Schema.Number),
+  cloudProvider: Schema.optional(Schema.String),
+  territoryCode: Schema.optional(Schema.String),
+  containingCloudLocation: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  cloudLocationType: Schema.optional(Schema.String),
+}).annotate({ identifier: "CloudLocation" });
 
 export interface ListCloudLocationsResponse {
   /** Output only. List of cloud locations. */
@@ -114,15 +101,11 @@ export interface ListCloudLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListCloudLocationsResponse: Schema.Schema<ListCloudLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cloudLocations: Schema.optional(Schema.Array(CloudLocation)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListCloudLocationsResponse",
-  }) as any as Schema.Schema<ListCloudLocationsResponse>;
+export const ListCloudLocationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cloudLocations: Schema.optional(Schema.Array(CloudLocation)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListCloudLocationsResponse" });
 
 export interface SearchCloudLocationsResponse {
   /** Output only. List of cloud locations. */
@@ -131,15 +114,11 @@ export interface SearchCloudLocationsResponse {
   nextPageToken?: string;
 }
 
-export const SearchCloudLocationsResponse: Schema.Schema<SearchCloudLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cloudLocations: Schema.optional(Schema.Array(CloudLocation)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SearchCloudLocationsResponse",
-  }) as any as Schema.Schema<SearchCloudLocationsResponse>;
+export const SearchCloudLocationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cloudLocations: Schema.optional(Schema.Array(CloudLocation)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SearchCloudLocationsResponse" });
 
 // ==========================================================================
 // Operations

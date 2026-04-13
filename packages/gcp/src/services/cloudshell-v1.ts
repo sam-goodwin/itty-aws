@@ -31,16 +31,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** The server-assigned name, which is only unique within the same service that originally returns it. If you use the default HTTP mapping, the `name` should be a resource name ending with `operations/{unique_id}`. */
@@ -55,16 +52,13 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      error: Schema.optional(Status),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  done: Schema.optional(Schema.Boolean),
+  error: Schema.optional(Status),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Operation" });
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -75,44 +69,35 @@ export interface ListOperationsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(Schema.Array(Operation)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    operations: Schema.optional(Schema.Array(Operation)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelOperationRequest",
-  }) as any as Schema.Schema<CancelOperationRequest>;
+export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelOperationRequest" });
 
 export interface GenerateAccessTokenResponse {
   /** The access token. */
   accessToken?: string;
 }
 
-export const GenerateAccessTokenResponse: Schema.Schema<GenerateAccessTokenResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accessToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GenerateAccessTokenResponse",
-  }) as any as Schema.Schema<GenerateAccessTokenResponse>;
+export const GenerateAccessTokenResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accessToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GenerateAccessTokenResponse" });
 
 export interface Environment {
   /** Immutable. Full name of this resource, in the format `users/{owner_email}/environments/{environment_id}`. `{owner_email}` is the email address of the user to whom this environment belongs, and `{environment_id}` is the identifier of this environment. For example, `users/someone@example.com/environments/default`. */
@@ -141,22 +126,17 @@ export interface Environment {
   publicKeys?: Array<string>;
 }
 
-export const Environment: Schema.Schema<Environment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      dockerImage: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      webHost: Schema.optional(Schema.String),
-      sshUsername: Schema.optional(Schema.String),
-      sshHost: Schema.optional(Schema.String),
-      sshPort: Schema.optional(Schema.Number),
-      publicKeys: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "Environment",
-  }) as any as Schema.Schema<Environment>;
+export const Environment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  dockerImage: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  webHost: Schema.optional(Schema.String),
+  sshUsername: Schema.optional(Schema.String),
+  sshHost: Schema.optional(Schema.String),
+  sshPort: Schema.optional(Schema.Number),
+  publicKeys: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Environment" });
 
 export interface StartEnvironmentRequest {
   /** The initial access token passed to the environment. If this is present and valid, the environment will be pre-authenticated with gcloud so that the user can run gcloud commands in Cloud Shell without having to log in. This code can be updated later by calling AuthorizeEnvironment. */
@@ -165,15 +145,11 @@ export interface StartEnvironmentRequest {
   publicKeys?: Array<string>;
 }
 
-export const StartEnvironmentRequest: Schema.Schema<StartEnvironmentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accessToken: Schema.optional(Schema.String),
-      publicKeys: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "StartEnvironmentRequest",
-  }) as any as Schema.Schema<StartEnvironmentRequest>;
+export const StartEnvironmentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accessToken: Schema.optional(Schema.String),
+    publicKeys: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "StartEnvironmentRequest" });
 
 export interface AuthorizeEnvironmentRequest {
   /** The OAuth access token that should be sent to the environment. */
@@ -184,107 +160,89 @@ export interface AuthorizeEnvironmentRequest {
   expireTime?: string;
 }
 
-export const AuthorizeEnvironmentRequest: Schema.Schema<AuthorizeEnvironmentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      accessToken: Schema.optional(Schema.String),
-      idToken: Schema.optional(Schema.String),
-      expireTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AuthorizeEnvironmentRequest",
-  }) as any as Schema.Schema<AuthorizeEnvironmentRequest>;
+export const AuthorizeEnvironmentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    accessToken: Schema.optional(Schema.String),
+    idToken: Schema.optional(Schema.String),
+    expireTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AuthorizeEnvironmentRequest" });
 
 export interface AddPublicKeyRequest {
   /** Key that should be added to the environment. Supported formats are `ssh-dss` (see RFC4253), `ssh-rsa` (see RFC4253), `ecdsa-sha2-nistp256` (see RFC5656), `ecdsa-sha2-nistp384` (see RFC5656) and `ecdsa-sha2-nistp521` (see RFC5656). It should be structured as <format> <content>, where <content> part is encoded with Base64. */
   key?: string;
 }
 
-export const AddPublicKeyRequest: Schema.Schema<AddPublicKeyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      key: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AddPublicKeyRequest",
-  }) as any as Schema.Schema<AddPublicKeyRequest>;
+export const AddPublicKeyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  key: Schema.optional(Schema.String),
+}).annotate({ identifier: "AddPublicKeyRequest" });
 
 export interface RemovePublicKeyRequest {
   /** Key that should be removed from the environment. */
   key?: string;
 }
 
-export const RemovePublicKeyRequest: Schema.Schema<RemovePublicKeyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      key: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RemovePublicKeyRequest",
-  }) as any as Schema.Schema<RemovePublicKeyRequest>;
+export const RemovePublicKeyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    key: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "RemovePublicKeyRequest" });
 
 export interface AddPublicKeyMetadata {}
 
-export const AddPublicKeyMetadata: Schema.Schema<AddPublicKeyMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "AddPublicKeyMetadata",
-  }) as any as Schema.Schema<AddPublicKeyMetadata>;
+export const AddPublicKeyMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "AddPublicKeyMetadata" });
 
 export interface AddPublicKeyResponse {
   /** Key that was added to the environment. */
   key?: string;
 }
 
-export const AddPublicKeyResponse: Schema.Schema<AddPublicKeyResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      key: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AddPublicKeyResponse",
-  }) as any as Schema.Schema<AddPublicKeyResponse>;
+export const AddPublicKeyResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  key: Schema.optional(Schema.String),
+}).annotate({ identifier: "AddPublicKeyResponse" });
 
 export interface AuthorizeEnvironmentMetadata {}
 
-export const AuthorizeEnvironmentMetadata: Schema.Schema<AuthorizeEnvironmentMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const AuthorizeEnvironmentMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "AuthorizeEnvironmentMetadata",
-  }) as any as Schema.Schema<AuthorizeEnvironmentMetadata>;
+  });
 
 export interface AuthorizeEnvironmentResponse {}
 
-export const AuthorizeEnvironmentResponse: Schema.Schema<AuthorizeEnvironmentResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const AuthorizeEnvironmentResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "AuthorizeEnvironmentResponse",
-  }) as any as Schema.Schema<AuthorizeEnvironmentResponse>;
+  });
 
 export interface CreateEnvironmentMetadata {}
 
-export const CreateEnvironmentMetadata: Schema.Schema<CreateEnvironmentMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const CreateEnvironmentMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "CreateEnvironmentMetadata",
-  }) as any as Schema.Schema<CreateEnvironmentMetadata>;
+  });
 
 export interface DeleteEnvironmentMetadata {}
 
-export const DeleteEnvironmentMetadata: Schema.Schema<DeleteEnvironmentMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const DeleteEnvironmentMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeleteEnvironmentMetadata",
-  }) as any as Schema.Schema<DeleteEnvironmentMetadata>;
+  });
 
 export interface RemovePublicKeyMetadata {}
 
-export const RemovePublicKeyMetadata: Schema.Schema<RemovePublicKeyMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const RemovePublicKeyMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RemovePublicKeyMetadata",
-  }) as any as Schema.Schema<RemovePublicKeyMetadata>;
+  });
 
 export interface RemovePublicKeyResponse {}
 
-export const RemovePublicKeyResponse: Schema.Schema<RemovePublicKeyResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const RemovePublicKeyResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RemovePublicKeyResponse",
-  }) as any as Schema.Schema<RemovePublicKeyResponse>;
+  });
 
 export interface StartEnvironmentMetadata {
   /** Current state of the environment being started. */
@@ -297,28 +255,20 @@ export interface StartEnvironmentMetadata {
     | (string & {});
 }
 
-export const StartEnvironmentMetadata: Schema.Schema<StartEnvironmentMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StartEnvironmentMetadata",
-  }) as any as Schema.Schema<StartEnvironmentMetadata>;
+export const StartEnvironmentMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+  }).annotate({ identifier: "StartEnvironmentMetadata" });
 
 export interface StartEnvironmentResponse {
   /** Environment that was started. */
   environment?: Environment;
 }
 
-export const StartEnvironmentResponse: Schema.Schema<StartEnvironmentResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      environment: Schema.optional(Environment),
-    }),
-  ).annotate({
-    identifier: "StartEnvironmentResponse",
-  }) as any as Schema.Schema<StartEnvironmentResponse>;
+export const StartEnvironmentResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    environment: Schema.optional(Environment),
+  }).annotate({ identifier: "StartEnvironmentResponse" });
 
 // ==========================================================================
 // Operations

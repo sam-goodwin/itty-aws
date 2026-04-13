@@ -31,16 +31,11 @@ export interface WorkerConfig {
   diskSizeGb?: string;
 }
 
-export const WorkerConfig: Schema.Schema<WorkerConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enableNestedVirtualization: Schema.optional(Schema.Boolean),
-      machineType: Schema.optional(Schema.String),
-      diskSizeGb: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WorkerConfig",
-  }) as any as Schema.Schema<WorkerConfig>;
+export const WorkerConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enableNestedVirtualization: Schema.optional(Schema.Boolean),
+  machineType: Schema.optional(Schema.String),
+  diskSizeGb: Schema.optional(Schema.String),
+}).annotate({ identifier: "WorkerConfig" });
 
 export interface NetworkConfig {
   /** Option to configure network egress for the workers. */
@@ -55,16 +50,11 @@ export interface NetworkConfig {
   peeredNetworkIpRange?: string;
 }
 
-export const NetworkConfig: Schema.Schema<NetworkConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      egressOption: Schema.optional(Schema.String),
-      peeredNetwork: Schema.optional(Schema.String),
-      peeredNetworkIpRange: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NetworkConfig",
-  }) as any as Schema.Schema<NetworkConfig>;
+export const NetworkConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  egressOption: Schema.optional(Schema.String),
+  peeredNetwork: Schema.optional(Schema.String),
+  peeredNetworkIpRange: Schema.optional(Schema.String),
+}).annotate({ identifier: "NetworkConfig" });
 
 export interface PrivateServiceConnect {
   /** Required. Immutable. Disable public IP on the primary network interface. If true, workers are created without any public address, which prevents network egress to public IPs unless a network proxy is configured. If false, workers are created with a public address which allows for public internet egress. The public address only applies to traffic through the primary network interface. If `route_all_traffic` is set to true, all traffic will go through the non-primary network interface, this boolean has no effect. */
@@ -75,16 +65,11 @@ export interface PrivateServiceConnect {
   routeAllTraffic?: boolean;
 }
 
-export const PrivateServiceConnect: Schema.Schema<PrivateServiceConnect> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      publicIpAddressDisabled: Schema.optional(Schema.Boolean),
-      networkAttachment: Schema.optional(Schema.String),
-      routeAllTraffic: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "PrivateServiceConnect",
-  }) as any as Schema.Schema<PrivateServiceConnect>;
+export const PrivateServiceConnect = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  publicIpAddressDisabled: Schema.optional(Schema.Boolean),
+  networkAttachment: Schema.optional(Schema.String),
+  routeAllTraffic: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "PrivateServiceConnect" });
 
 export interface PrivatePoolV1Config {
   /** Machine configuration for the workers in the pool. */
@@ -95,16 +80,11 @@ export interface PrivatePoolV1Config {
   privateServiceConnect?: PrivateServiceConnect;
 }
 
-export const PrivatePoolV1Config: Schema.Schema<PrivatePoolV1Config> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      workerConfig: Schema.optional(WorkerConfig),
-      networkConfig: Schema.optional(NetworkConfig),
-      privateServiceConnect: Schema.optional(PrivateServiceConnect),
-    }),
-  ).annotate({
-    identifier: "PrivatePoolV1Config",
-  }) as any as Schema.Schema<PrivatePoolV1Config>;
+export const PrivatePoolV1Config = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  workerConfig: Schema.optional(WorkerConfig),
+  networkConfig: Schema.optional(NetworkConfig),
+  privateServiceConnect: Schema.optional(PrivateServiceConnect),
+}).annotate({ identifier: "PrivatePoolV1Config" });
 
 export interface BitbucketServerRepositoryId {
   /** Required. Identifier for the repository. */
@@ -115,16 +95,12 @@ export interface BitbucketServerRepositoryId {
   projectKey?: string;
 }
 
-export const BitbucketServerRepositoryId: Schema.Schema<BitbucketServerRepositoryId> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      repoSlug: Schema.optional(Schema.String),
-      webhookId: Schema.optional(Schema.Number),
-      projectKey: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BitbucketServerRepositoryId",
-  }) as any as Schema.Schema<BitbucketServerRepositoryId>;
+export const BitbucketServerRepositoryId =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    repoSlug: Schema.optional(Schema.String),
+    webhookId: Schema.optional(Schema.Number),
+    projectKey: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BitbucketServerRepositoryId" });
 
 export interface BitbucketServerSecrets {
   /** Required. The resource name for the read access token's secret version. */
@@ -135,16 +111,13 @@ export interface BitbucketServerSecrets {
   webhookSecretVersionName?: string;
 }
 
-export const BitbucketServerSecrets: Schema.Schema<BitbucketServerSecrets> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      readAccessTokenVersionName: Schema.optional(Schema.String),
-      adminAccessTokenVersionName: Schema.optional(Schema.String),
-      webhookSecretVersionName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BitbucketServerSecrets",
-  }) as any as Schema.Schema<BitbucketServerSecrets>;
+export const BitbucketServerSecrets = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    readAccessTokenVersionName: Schema.optional(Schema.String),
+    adminAccessTokenVersionName: Schema.optional(Schema.String),
+    webhookSecretVersionName: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "BitbucketServerSecrets" });
 
 export interface BitbucketServerConfig {
   /** Time when the config was created. */
@@ -171,26 +144,21 @@ export interface BitbucketServerConfig {
   secrets?: BitbucketServerSecrets;
 }
 
-export const BitbucketServerConfig: Schema.Schema<BitbucketServerConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      peeredNetwork: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      peeredNetworkIpRange: Schema.optional(Schema.String),
-      hostUri: Schema.optional(Schema.String),
-      apiKey: Schema.optional(Schema.String),
-      webhookKey: Schema.optional(Schema.String),
-      connectedRepositories: Schema.optional(
-        Schema.Array(BitbucketServerRepositoryId),
-      ),
-      sslCa: Schema.optional(Schema.String),
-      username: Schema.optional(Schema.String),
-      secrets: Schema.optional(BitbucketServerSecrets),
-    }),
-  ).annotate({
-    identifier: "BitbucketServerConfig",
-  }) as any as Schema.Schema<BitbucketServerConfig>;
+export const BitbucketServerConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createTime: Schema.optional(Schema.String),
+  peeredNetwork: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  peeredNetworkIpRange: Schema.optional(Schema.String),
+  hostUri: Schema.optional(Schema.String),
+  apiKey: Schema.optional(Schema.String),
+  webhookKey: Schema.optional(Schema.String),
+  connectedRepositories: Schema.optional(
+    Schema.Array(BitbucketServerRepositoryId),
+  ),
+  sslCa: Schema.optional(Schema.String),
+  username: Schema.optional(Schema.String),
+  secrets: Schema.optional(BitbucketServerSecrets),
+}).annotate({ identifier: "BitbucketServerConfig" });
 
 export interface ListBitbucketServerConfigsResponse {
   /** A list of BitbucketServerConfigs */
@@ -199,41 +167,31 @@ export interface ListBitbucketServerConfigsResponse {
   nextPageToken?: string;
 }
 
-export const ListBitbucketServerConfigsResponse: Schema.Schema<ListBitbucketServerConfigsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bitbucketServerConfigs: Schema.optional(
-        Schema.Array(BitbucketServerConfig),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListBitbucketServerConfigsResponse",
-  }) as any as Schema.Schema<ListBitbucketServerConfigsResponse>;
+export const ListBitbucketServerConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bitbucketServerConfigs: Schema.optional(
+      Schema.Array(BitbucketServerConfig),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListBitbucketServerConfigsResponse" });
 
 export interface HttpConfig {
   /** SecretVersion resource of the HTTP proxy URL. The Service Account used in the build (either the default Service Account or user-specified Service Account) should have `secretmanager.versions.access` permissions on this secret. The proxy URL should be in format `protocol://@]proxyhost[:port]`. */
   proxySecretVersionName?: string;
 }
 
-export const HttpConfig: Schema.Schema<HttpConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      proxySecretVersionName: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "HttpConfig" }) as any as Schema.Schema<HttpConfig>;
+export const HttpConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  proxySecretVersionName: Schema.optional(Schema.String),
+}).annotate({ identifier: "HttpConfig" });
 
 export interface GitConfig {
   /** Configuration for HTTP related git operations. */
   http?: HttpConfig;
 }
 
-export const GitConfig: Schema.Schema<GitConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      http: Schema.optional(HttpConfig),
-    }),
-  ).annotate({ identifier: "GitConfig" }) as any as Schema.Schema<GitConfig>;
+export const GitConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  http: Schema.optional(HttpConfig),
+}).annotate({ identifier: "GitConfig" });
 
 export interface StorageSource {
   /** Cloud Storage bucket containing the source (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). */
@@ -250,17 +208,12 @@ export interface StorageSource {
   object?: string;
 }
 
-export const StorageSource: Schema.Schema<StorageSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bucket: Schema.optional(Schema.String),
-      generation: Schema.optional(Schema.String),
-      sourceFetcher: Schema.optional(Schema.String),
-      object: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StorageSource",
-  }) as any as Schema.Schema<StorageSource>;
+export const StorageSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bucket: Schema.optional(Schema.String),
+  generation: Schema.optional(Schema.String),
+  sourceFetcher: Schema.optional(Schema.String),
+  object: Schema.optional(Schema.String),
+}).annotate({ identifier: "StorageSource" });
 
 export interface Hash {
   /** The hash value. */
@@ -276,25 +229,19 @@ export interface Hash {
     | (string & {});
 }
 
-export const Hash: Schema.Schema<Hash> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Hash" }) as any as Schema.Schema<Hash>;
+export const Hash = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  value: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "Hash" });
 
 export interface FileHashes {
   /** Collection of file hashes. */
   fileHash?: Array<Hash>;
 }
 
-export const FileHashes: Schema.Schema<FileHashes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fileHash: Schema.optional(Schema.Array(Hash)),
-    }),
-  ).annotate({ identifier: "FileHashes" }) as any as Schema.Schema<FileHashes>;
+export const FileHashes = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fileHash: Schema.optional(Schema.Array(Hash)),
+}).annotate({ identifier: "FileHashes" });
 
 export interface StorageSourceManifest {
   /** Required. Cloud Storage object containing the source manifest. This object must be a JSON file. */
@@ -305,16 +252,11 @@ export interface StorageSourceManifest {
   generation?: string;
 }
 
-export const StorageSourceManifest: Schema.Schema<StorageSourceManifest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      object: Schema.optional(Schema.String),
-      bucket: Schema.optional(Schema.String),
-      generation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StorageSourceManifest",
-  }) as any as Schema.Schema<StorageSourceManifest>;
+export const StorageSourceManifest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  object: Schema.optional(Schema.String),
+  bucket: Schema.optional(Schema.String),
+  generation: Schema.optional(Schema.String),
+}).annotate({ identifier: "StorageSourceManifest" });
 
 export interface ConnectedRepository {
   /** Required. The revision to fetch from the Git repository such as a branch, a tag, a commit SHA, or any Git ref. */
@@ -325,16 +267,11 @@ export interface ConnectedRepository {
   dir?: string;
 }
 
-export const ConnectedRepository: Schema.Schema<ConnectedRepository> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      revision: Schema.optional(Schema.String),
-      repository: Schema.optional(Schema.String),
-      dir: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConnectedRepository",
-  }) as any as Schema.Schema<ConnectedRepository>;
+export const ConnectedRepository = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  revision: Schema.optional(Schema.String),
+  repository: Schema.optional(Schema.String),
+  dir: Schema.optional(Schema.String),
+}).annotate({ identifier: "ConnectedRepository" });
 
 export interface GitSource {
   /** Required. Location of the Git repo to build. This will be used as a `git remote`, see https://git-scm.com/docs/git-remote. */
@@ -345,14 +282,11 @@ export interface GitSource {
   revision?: string;
 }
 
-export const GitSource: Schema.Schema<GitSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      url: Schema.optional(Schema.String),
-      dir: Schema.optional(Schema.String),
-      revision: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "GitSource" }) as any as Schema.Schema<GitSource>;
+export const GitSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  url: Schema.optional(Schema.String),
+  dir: Schema.optional(Schema.String),
+  revision: Schema.optional(Schema.String),
+}).annotate({ identifier: "GitSource" });
 
 export interface RepoSource {
   /** Required. Name of the Cloud Source Repository. */
@@ -373,21 +307,16 @@ export interface RepoSource {
   commitSha?: string;
 }
 
-export const RepoSource: Schema.Schema<RepoSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      repoName: Schema.optional(Schema.String),
-      dir: Schema.optional(Schema.String),
-      branchName: Schema.optional(Schema.String),
-      invertRegex: Schema.optional(Schema.Boolean),
-      substitutions: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      projectId: Schema.optional(Schema.String),
-      tagName: Schema.optional(Schema.String),
-      commitSha: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "RepoSource" }) as any as Schema.Schema<RepoSource>;
+export const RepoSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  repoName: Schema.optional(Schema.String),
+  dir: Schema.optional(Schema.String),
+  branchName: Schema.optional(Schema.String),
+  invertRegex: Schema.optional(Schema.Boolean),
+  substitutions: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  projectId: Schema.optional(Schema.String),
+  tagName: Schema.optional(Schema.String),
+  commitSha: Schema.optional(Schema.String),
+}).annotate({ identifier: "RepoSource" });
 
 export interface SourceProvenance {
   /** A copy of the build's `source.storage_source`, if exists, with any generations resolved. */
@@ -404,19 +333,14 @@ export interface SourceProvenance {
   resolvedRepoSource?: RepoSource;
 }
 
-export const SourceProvenance: Schema.Schema<SourceProvenance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resolvedStorageSource: Schema.optional(StorageSource),
-      fileHashes: Schema.optional(Schema.Record(Schema.String, FileHashes)),
-      resolvedStorageSourceManifest: Schema.optional(StorageSourceManifest),
-      resolvedConnectedRepository: Schema.optional(ConnectedRepository),
-      resolvedGitSource: Schema.optional(GitSource),
-      resolvedRepoSource: Schema.optional(RepoSource),
-    }),
-  ).annotate({
-    identifier: "SourceProvenance",
-  }) as any as Schema.Schema<SourceProvenance>;
+export const SourceProvenance = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resolvedStorageSource: Schema.optional(StorageSource),
+  fileHashes: Schema.optional(Schema.Record(Schema.String, FileHashes)),
+  resolvedStorageSourceManifest: Schema.optional(StorageSourceManifest),
+  resolvedConnectedRepository: Schema.optional(ConnectedRepository),
+  resolvedGitSource: Schema.optional(GitSource),
+  resolvedRepoSource: Schema.optional(RepoSource),
+}).annotate({ identifier: "SourceProvenance" });
 
 export interface SecretManagerSecret {
   /** Resource name of the SecretVersion. In format: projects/* /secrets/* /versions/* */
@@ -425,15 +349,10 @@ export interface SecretManagerSecret {
   env?: string;
 }
 
-export const SecretManagerSecret: Schema.Schema<SecretManagerSecret> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      versionName: Schema.optional(Schema.String),
-      env: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SecretManagerSecret",
-  }) as any as Schema.Schema<SecretManagerSecret>;
+export const SecretManagerSecret = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  versionName: Schema.optional(Schema.String),
+  env: Schema.optional(Schema.String),
+}).annotate({ identifier: "SecretManagerSecret" });
 
 export interface InlineSecret {
   /** Resource name of Cloud KMS crypto key to decrypt the encrypted value. In format: projects/* /locations/* /keyRings/* /cryptoKeys/* */
@@ -442,15 +361,10 @@ export interface InlineSecret {
   envMap?: Record<string, string>;
 }
 
-export const InlineSecret: Schema.Schema<InlineSecret> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kmsKeyName: Schema.optional(Schema.String),
-      envMap: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "InlineSecret",
-  }) as any as Schema.Schema<InlineSecret>;
+export const InlineSecret = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kmsKeyName: Schema.optional(Schema.String),
+  envMap: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "InlineSecret" });
 
 export interface Secrets {
   /** Secrets in Secret Manager and associated secret environment variable. */
@@ -459,13 +373,10 @@ export interface Secrets {
   inline?: Array<InlineSecret>;
 }
 
-export const Secrets: Schema.Schema<Secrets> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      secretManager: Schema.optional(Schema.Array(SecretManagerSecret)),
-      inline: Schema.optional(Schema.Array(InlineSecret)),
-    }),
-  ).annotate({ identifier: "Secrets" }) as any as Schema.Schema<Secrets>;
+export const Secrets = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  secretManager: Schema.optional(Schema.Array(SecretManagerSecret)),
+  inline: Schema.optional(Schema.Array(InlineSecret)),
+}).annotate({ identifier: "Secrets" });
 
 export interface FailureInfo {
   /** The name of the failure. */
@@ -482,15 +393,10 @@ export interface FailureInfo {
   detail?: string;
 }
 
-export const FailureInfo: Schema.Schema<FailureInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      detail: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FailureInfo",
-  }) as any as Schema.Schema<FailureInfo>;
+export const FailureInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  detail: Schema.optional(Schema.String),
+}).annotate({ identifier: "FailureInfo" });
 
 export interface Secret {
   /** Cloud KMS key name to use to decrypt these envs. */
@@ -499,13 +405,10 @@ export interface Secret {
   secretEnv?: Record<string, string>;
 }
 
-export const Secret: Schema.Schema<Secret> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kmsKeyName: Schema.optional(Schema.String),
-      secretEnv: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({ identifier: "Secret" }) as any as Schema.Schema<Secret>;
+export const Secret = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kmsKeyName: Schema.optional(Schema.String),
+  secretEnv: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "Secret" });
 
 export interface GitSourceRepository {
   /** Location of the Git repository. */
@@ -514,15 +417,10 @@ export interface GitSourceRepository {
   developerConnect?: string;
 }
 
-export const GitSourceRepository: Schema.Schema<GitSourceRepository> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      url: Schema.optional(Schema.String),
-      developerConnect: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GitSourceRepository",
-  }) as any as Schema.Schema<GitSourceRepository>;
+export const GitSourceRepository = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  url: Schema.optional(Schema.String),
+  developerConnect: Schema.optional(Schema.String),
+}).annotate({ identifier: "GitSourceRepository" });
 
 export interface GitSourceDependency {
   /** Required. Where should the files be placed on the worker. */
@@ -537,18 +435,13 @@ export interface GitSourceDependency {
   repository?: GitSourceRepository;
 }
 
-export const GitSourceDependency: Schema.Schema<GitSourceDependency> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      destPath: Schema.optional(Schema.String),
-      recurseSubmodules: Schema.optional(Schema.Boolean),
-      revision: Schema.optional(Schema.String),
-      depth: Schema.optional(Schema.String),
-      repository: Schema.optional(GitSourceRepository),
-    }),
-  ).annotate({
-    identifier: "GitSourceDependency",
-  }) as any as Schema.Schema<GitSourceDependency>;
+export const GitSourceDependency = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  destPath: Schema.optional(Schema.String),
+  recurseSubmodules: Schema.optional(Schema.Boolean),
+  revision: Schema.optional(Schema.String),
+  depth: Schema.optional(Schema.String),
+  repository: Schema.optional(GitSourceRepository),
+}).annotate({ identifier: "GitSourceDependency" });
 
 export interface Dependency {
   /** If set to true disable all dependency fetching (ignoring the default source as well). */
@@ -557,13 +450,10 @@ export interface Dependency {
   gitSource?: GitSourceDependency;
 }
 
-export const Dependency: Schema.Schema<Dependency> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      empty: Schema.optional(Schema.Boolean),
-      gitSource: Schema.optional(GitSourceDependency),
-    }),
-  ).annotate({ identifier: "Dependency" }) as any as Schema.Schema<Dependency>;
+export const Dependency = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  empty: Schema.optional(Schema.Boolean),
+  gitSource: Schema.optional(GitSourceDependency),
+}).annotate({ identifier: "Dependency" });
 
 export interface DeveloperConnectConfig {
   /** Required. Directory, relative to the source root, in which to run the build. */
@@ -574,16 +464,13 @@ export interface DeveloperConnectConfig {
   revision?: string;
 }
 
-export const DeveloperConnectConfig: Schema.Schema<DeveloperConnectConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dir: Schema.optional(Schema.String),
-      gitRepositoryLink: Schema.optional(Schema.String),
-      revision: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DeveloperConnectConfig",
-  }) as any as Schema.Schema<DeveloperConnectConfig>;
+export const DeveloperConnectConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    dir: Schema.optional(Schema.String),
+    gitRepositoryLink: Schema.optional(Schema.String),
+    revision: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "DeveloperConnectConfig" });
 
 export interface Source {
   /** If provided, get the source from this Developer Connect config. */
@@ -600,17 +487,14 @@ export interface Source {
   repoSource?: RepoSource;
 }
 
-export const Source: Schema.Schema<Source> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      developerConnectConfig: Schema.optional(DeveloperConnectConfig),
-      gitSource: Schema.optional(GitSource),
-      connectedRepository: Schema.optional(ConnectedRepository),
-      storageSource: Schema.optional(StorageSource),
-      storageSourceManifest: Schema.optional(StorageSourceManifest),
-      repoSource: Schema.optional(RepoSource),
-    }),
-  ).annotate({ identifier: "Source" }) as any as Schema.Schema<Source>;
+export const Source = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  developerConnectConfig: Schema.optional(DeveloperConnectConfig),
+  gitSource: Schema.optional(GitSource),
+  connectedRepository: Schema.optional(ConnectedRepository),
+  storageSource: Schema.optional(StorageSource),
+  storageSourceManifest: Schema.optional(StorageSourceManifest),
+  repoSource: Schema.optional(RepoSource),
+}).annotate({ identifier: "Source" });
 
 export interface ApprovalResult {
   /** Output only. The time when the approval decision was made. */
@@ -625,32 +509,22 @@ export interface ApprovalResult {
   comment?: string;
 }
 
-export const ApprovalResult: Schema.Schema<ApprovalResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      approvalTime: Schema.optional(Schema.String),
-      url: Schema.optional(Schema.String),
-      approverAccount: Schema.optional(Schema.String),
-      decision: Schema.optional(Schema.String),
-      comment: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ApprovalResult",
-  }) as any as Schema.Schema<ApprovalResult>;
+export const ApprovalResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  approvalTime: Schema.optional(Schema.String),
+  url: Schema.optional(Schema.String),
+  approverAccount: Schema.optional(Schema.String),
+  decision: Schema.optional(Schema.String),
+  comment: Schema.optional(Schema.String),
+}).annotate({ identifier: "ApprovalResult" });
 
 export interface ApprovalConfig {
   /** Whether or not approval is needed. If this is set on a build, it will become pending when created, and will need to be explicitly approved to start. */
   approvalRequired?: boolean;
 }
 
-export const ApprovalConfig: Schema.Schema<ApprovalConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      approvalRequired: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ApprovalConfig",
-  }) as any as Schema.Schema<ApprovalConfig>;
+export const ApprovalConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  approvalRequired: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "ApprovalConfig" });
 
 export interface BuildApproval {
   /** Output only. Result of manual approval for this Build. */
@@ -667,16 +541,11 @@ export interface BuildApproval {
   config?: ApprovalConfig;
 }
 
-export const BuildApproval: Schema.Schema<BuildApproval> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      result: Schema.optional(ApprovalResult),
-      state: Schema.optional(Schema.String),
-      config: Schema.optional(ApprovalConfig),
-    }),
-  ).annotate({
-    identifier: "BuildApproval",
-  }) as any as Schema.Schema<BuildApproval>;
+export const BuildApproval = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  result: Schema.optional(ApprovalResult),
+  state: Schema.optional(Schema.String),
+  config: Schema.optional(ApprovalConfig),
+}).annotate({ identifier: "BuildApproval" });
 
 export interface Warning {
   /** The priority for this warning. */
@@ -690,25 +559,19 @@ export interface Warning {
   text?: string;
 }
 
-export const Warning: Schema.Schema<Warning> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      priority: Schema.optional(Schema.String),
-      text: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Warning" }) as any as Schema.Schema<Warning>;
+export const Warning = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  priority: Schema.optional(Schema.String),
+  text: Schema.optional(Schema.String),
+}).annotate({ identifier: "Warning" });
 
 export interface PoolOption {
   /** The `WorkerPool` resource to execute the build on. You must have `cloudbuild.workerpools.use` on the project hosting the WorkerPool. Format projects/{project}/locations/{location}/workerPools/{workerPoolId} */
   name?: string;
 }
 
-export const PoolOption: Schema.Schema<PoolOption> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "PoolOption" }) as any as Schema.Schema<PoolOption>;
+export const PoolOption = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "PoolOption" });
 
 export interface Volume {
   /** Name of the volume to mount. Volume names must be unique per build step and must be valid names for Docker volumes. Each named volume must be used by at least two build steps. */
@@ -717,13 +580,10 @@ export interface Volume {
   path?: string;
 }
 
-export const Volume: Schema.Schema<Volume> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      path: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Volume" }) as any as Schema.Schema<Volume>;
+export const Volume = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  path: Schema.optional(Schema.String),
+}).annotate({ identifier: "Volume" });
 
 export interface BuildOptions {
   /** Requested disk size for the VM that runs the build. Note that this is *NOT* "disk free"; some of the space will be used by the operating system and build utilities. Also note that this is the minimum disk size that will be allocated for the build -- the build may run with a larger disk than requested. At present, the maximum disk size is 4000GB; builds that request more than the maximum are rejected with an error. */
@@ -792,30 +652,25 @@ export interface BuildOptions {
     | (string & {});
 }
 
-export const BuildOptions: Schema.Schema<BuildOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      diskSizeGb: Schema.optional(Schema.String),
-      env: Schema.optional(Schema.Array(Schema.String)),
-      substitutionOption: Schema.optional(Schema.String),
-      machineType: Schema.optional(Schema.String),
-      enableStructuredLogging: Schema.optional(Schema.Boolean),
-      dynamicSubstitutions: Schema.optional(Schema.Boolean),
-      pool: Schema.optional(PoolOption),
-      pubsubTopic: Schema.optional(Schema.String),
-      logging: Schema.optional(Schema.String),
-      secretEnv: Schema.optional(Schema.Array(Schema.String)),
-      logStreamingOption: Schema.optional(Schema.String),
-      volumes: Schema.optional(Schema.Array(Volume)),
-      requestedVerifyOption: Schema.optional(Schema.String),
-      workerPool: Schema.optional(Schema.String),
-      automapSubstitutions: Schema.optional(Schema.Boolean),
-      sourceProvenanceHash: Schema.optional(Schema.Array(Schema.String)),
-      defaultLogsBucketBehavior: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BuildOptions",
-  }) as any as Schema.Schema<BuildOptions>;
+export const BuildOptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  diskSizeGb: Schema.optional(Schema.String),
+  env: Schema.optional(Schema.Array(Schema.String)),
+  substitutionOption: Schema.optional(Schema.String),
+  machineType: Schema.optional(Schema.String),
+  enableStructuredLogging: Schema.optional(Schema.Boolean),
+  dynamicSubstitutions: Schema.optional(Schema.Boolean),
+  pool: Schema.optional(PoolOption),
+  pubsubTopic: Schema.optional(Schema.String),
+  logging: Schema.optional(Schema.String),
+  secretEnv: Schema.optional(Schema.Array(Schema.String)),
+  logStreamingOption: Schema.optional(Schema.String),
+  volumes: Schema.optional(Schema.Array(Volume)),
+  requestedVerifyOption: Schema.optional(Schema.String),
+  workerPool: Schema.optional(Schema.String),
+  automapSubstitutions: Schema.optional(Schema.Boolean),
+  sourceProvenanceHash: Schema.optional(Schema.Array(Schema.String)),
+  defaultLogsBucketBehavior: Schema.optional(Schema.String),
+}).annotate({ identifier: "BuildOptions" });
 
 export interface TimeSpan {
   /** Start of time span. */
@@ -824,13 +679,10 @@ export interface TimeSpan {
   endTime?: string;
 }
 
-export const TimeSpan: Schema.Schema<TimeSpan> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "TimeSpan" }) as any as Schema.Schema<TimeSpan>;
+export const TimeSpan = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "TimeSpan" });
 
 export interface UploadedGoModule {
   /** URI of the uploaded artifact. */
@@ -843,17 +695,12 @@ export interface UploadedGoModule {
   artifactRegistryPackage?: string;
 }
 
-export const UploadedGoModule: Schema.Schema<UploadedGoModule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-      pushTiming: Schema.optional(TimeSpan),
-      fileHashes: Schema.optional(FileHashes),
-      artifactRegistryPackage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UploadedGoModule",
-  }) as any as Schema.Schema<UploadedGoModule>;
+export const UploadedGoModule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  uri: Schema.optional(Schema.String),
+  pushTiming: Schema.optional(TimeSpan),
+  fileHashes: Schema.optional(FileHashes),
+  artifactRegistryPackage: Schema.optional(Schema.String),
+}).annotate({ identifier: "UploadedGoModule" });
 
 export interface UploadedPythonPackage {
   /** URI of the uploaded artifact. */
@@ -866,17 +713,12 @@ export interface UploadedPythonPackage {
   artifactRegistryPackage?: string;
 }
 
-export const UploadedPythonPackage: Schema.Schema<UploadedPythonPackage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-      pushTiming: Schema.optional(TimeSpan),
-      fileHashes: Schema.optional(FileHashes),
-      artifactRegistryPackage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UploadedPythonPackage",
-  }) as any as Schema.Schema<UploadedPythonPackage>;
+export const UploadedPythonPackage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  uri: Schema.optional(Schema.String),
+  pushTiming: Schema.optional(TimeSpan),
+  fileHashes: Schema.optional(FileHashes),
+  artifactRegistryPackage: Schema.optional(Schema.String),
+}).annotate({ identifier: "UploadedPythonPackage" });
 
 export interface UploadedMavenArtifact {
   /** URI of the uploaded artifact. */
@@ -889,17 +731,12 @@ export interface UploadedMavenArtifact {
   artifactRegistryPackage?: string;
 }
 
-export const UploadedMavenArtifact: Schema.Schema<UploadedMavenArtifact> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-      pushTiming: Schema.optional(TimeSpan),
-      fileHashes: Schema.optional(FileHashes),
-      artifactRegistryPackage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UploadedMavenArtifact",
-  }) as any as Schema.Schema<UploadedMavenArtifact>;
+export const UploadedMavenArtifact = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  uri: Schema.optional(Schema.String),
+  pushTiming: Schema.optional(TimeSpan),
+  fileHashes: Schema.optional(FileHashes),
+  artifactRegistryPackage: Schema.optional(Schema.String),
+}).annotate({ identifier: "UploadedMavenArtifact" });
 
 export interface UploadedNpmPackage {
   /** Hash types and values of the npm package. */
@@ -912,17 +749,12 @@ export interface UploadedNpmPackage {
   pushTiming?: TimeSpan;
 }
 
-export const UploadedNpmPackage: Schema.Schema<UploadedNpmPackage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fileHashes: Schema.optional(FileHashes),
-      artifactRegistryPackage: Schema.optional(Schema.String),
-      uri: Schema.optional(Schema.String),
-      pushTiming: Schema.optional(TimeSpan),
-    }),
-  ).annotate({
-    identifier: "UploadedNpmPackage",
-  }) as any as Schema.Schema<UploadedNpmPackage>;
+export const UploadedNpmPackage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fileHashes: Schema.optional(FileHashes),
+  artifactRegistryPackage: Schema.optional(Schema.String),
+  uri: Schema.optional(Schema.String),
+  pushTiming: Schema.optional(TimeSpan),
+}).annotate({ identifier: "UploadedNpmPackage" });
 
 export interface BuiltImage {
   /** Name used to push the container image to Google Container Registry, as presented to `docker push`. */
@@ -941,16 +773,13 @@ export interface BuiltImage {
     | (string & {});
 }
 
-export const BuiltImage: Schema.Schema<BuiltImage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      digest: Schema.optional(Schema.String),
-      pushTiming: Schema.optional(TimeSpan),
-      artifactRegistryPackage: Schema.optional(Schema.String),
-      ociMediaType: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "BuiltImage" }) as any as Schema.Schema<BuiltImage>;
+export const BuiltImage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  digest: Schema.optional(Schema.String),
+  pushTiming: Schema.optional(TimeSpan),
+  artifactRegistryPackage: Schema.optional(Schema.String),
+  ociMediaType: Schema.optional(Schema.String),
+}).annotate({ identifier: "BuiltImage" });
 
 export interface Results {
   /** Optional. Go module artifacts uploaded to Artifact Registry at the end of the build. */
@@ -975,21 +804,18 @@ export interface Results {
   artifactManifest?: string;
 }
 
-export const Results: Schema.Schema<Results> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      goModules: Schema.optional(Schema.Array(UploadedGoModule)),
-      pythonPackages: Schema.optional(Schema.Array(UploadedPythonPackage)),
-      mavenArtifacts: Schema.optional(Schema.Array(UploadedMavenArtifact)),
-      npmPackages: Schema.optional(Schema.Array(UploadedNpmPackage)),
-      buildStepImages: Schema.optional(Schema.Array(Schema.String)),
-      images: Schema.optional(Schema.Array(BuiltImage)),
-      buildStepOutputs: Schema.optional(Schema.Array(Schema.String)),
-      artifactTiming: Schema.optional(TimeSpan),
-      numArtifacts: Schema.optional(Schema.String),
-      artifactManifest: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Results" }) as any as Schema.Schema<Results>;
+export const Results = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  goModules: Schema.optional(Schema.Array(UploadedGoModule)),
+  pythonPackages: Schema.optional(Schema.Array(UploadedPythonPackage)),
+  mavenArtifacts: Schema.optional(Schema.Array(UploadedMavenArtifact)),
+  npmPackages: Schema.optional(Schema.Array(UploadedNpmPackage)),
+  buildStepImages: Schema.optional(Schema.Array(Schema.String)),
+  images: Schema.optional(Schema.Array(BuiltImage)),
+  buildStepOutputs: Schema.optional(Schema.Array(Schema.String)),
+  artifactTiming: Schema.optional(TimeSpan),
+  numArtifacts: Schema.optional(Schema.String),
+  artifactManifest: Schema.optional(Schema.String),
+}).annotate({ identifier: "Results" });
 
 export interface ArtifactObjects {
   /** Cloud Storage bucket and optional object path, in the form "gs://bucket/path/to/somewhere/". (see [Bucket Name Requirements](https://cloud.google.com/storage/docs/bucket-naming#requirements)). Files in the workspace matching any path pattern will be uploaded to Cloud Storage with this location as a prefix. */
@@ -1000,16 +826,11 @@ export interface ArtifactObjects {
   timing?: TimeSpan;
 }
 
-export const ArtifactObjects: Schema.Schema<ArtifactObjects> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      location: Schema.optional(Schema.String),
-      paths: Schema.optional(Schema.Array(Schema.String)),
-      timing: Schema.optional(TimeSpan),
-    }),
-  ).annotate({
-    identifier: "ArtifactObjects",
-  }) as any as Schema.Schema<ArtifactObjects>;
+export const ArtifactObjects = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  location: Schema.optional(Schema.String),
+  paths: Schema.optional(Schema.Array(Schema.String)),
+  timing: Schema.optional(TimeSpan),
+}).annotate({ identifier: "ArtifactObjects" });
 
 export interface PythonPackage {
   /** Artifact Registry repository, in the form "https://$REGION-python.pkg.dev/$PROJECT/$REPOSITORY" Files in the workspace matching any path pattern will be uploaded to Artifact Registry with this location as a prefix. */
@@ -1018,15 +839,10 @@ export interface PythonPackage {
   paths?: Array<string>;
 }
 
-export const PythonPackage: Schema.Schema<PythonPackage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      repository: Schema.optional(Schema.String),
-      paths: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "PythonPackage",
-  }) as any as Schema.Schema<PythonPackage>;
+export const PythonPackage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  repository: Schema.optional(Schema.String),
+  paths: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "PythonPackage" });
 
 export interface GoModule {
   /** Optional. The Go module's "module path". e.g. example.com/foo/v2 */
@@ -1043,17 +859,14 @@ export interface GoModule {
   sourcePath?: string;
 }
 
-export const GoModule: Schema.Schema<GoModule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      modulePath: Schema.optional(Schema.String),
-      repositoryName: Schema.optional(Schema.String),
-      repositoryProjectId: Schema.optional(Schema.String),
-      moduleVersion: Schema.optional(Schema.String),
-      repositoryLocation: Schema.optional(Schema.String),
-      sourcePath: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "GoModule" }) as any as Schema.Schema<GoModule>;
+export const GoModule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  modulePath: Schema.optional(Schema.String),
+  repositoryName: Schema.optional(Schema.String),
+  repositoryProjectId: Schema.optional(Schema.String),
+  moduleVersion: Schema.optional(Schema.String),
+  repositoryLocation: Schema.optional(Schema.String),
+  sourcePath: Schema.optional(Schema.String),
+}).annotate({ identifier: "GoModule" });
 
 export interface Oci {
   /** Required. Path on the local file system where to find the container to upload. e.g. /workspace/my-image.tar */
@@ -1064,14 +877,11 @@ export interface Oci {
   registryPath?: string;
 }
 
-export const Oci: Schema.Schema<Oci> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      file: Schema.optional(Schema.String),
-      tags: Schema.optional(Schema.Array(Schema.String)),
-      registryPath: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Oci" }) as any as Schema.Schema<Oci>;
+export const Oci = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  file: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Array(Schema.String)),
+  registryPath: Schema.optional(Schema.String),
+}).annotate({ identifier: "Oci" });
 
 export interface MavenArtifact {
   /** Optional. Path to an artifact in the build's workspace to be uploaded to Artifact Registry. This can be either an absolute path, e.g. /workspace/my-app/target/my-app-1.0.SNAPSHOT.jar or a relative path from /workspace, e.g. my-app/target/my-app-1.0.SNAPSHOT.jar. */
@@ -1088,19 +898,14 @@ export interface MavenArtifact {
   artifactId?: string;
 }
 
-export const MavenArtifact: Schema.Schema<MavenArtifact> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      path: Schema.optional(Schema.String),
-      groupId: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.String),
-      repository: Schema.optional(Schema.String),
-      deployFolder: Schema.optional(Schema.String),
-      artifactId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MavenArtifact",
-  }) as any as Schema.Schema<MavenArtifact>;
+export const MavenArtifact = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  path: Schema.optional(Schema.String),
+  groupId: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.String),
+  repository: Schema.optional(Schema.String),
+  deployFolder: Schema.optional(Schema.String),
+  artifactId: Schema.optional(Schema.String),
+}).annotate({ identifier: "MavenArtifact" });
 
 export interface NpmPackage {
   /** Artifact Registry repository, in the form "https://$REGION-npm.pkg.dev/$PROJECT/$REPOSITORY" Npm package in the workspace specified by path will be zipped and uploaded to Artifact Registry with this location as a prefix. */
@@ -1109,13 +914,10 @@ export interface NpmPackage {
   packagePath?: string;
 }
 
-export const NpmPackage: Schema.Schema<NpmPackage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      repository: Schema.optional(Schema.String),
-      packagePath: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "NpmPackage" }) as any as Schema.Schema<NpmPackage>;
+export const NpmPackage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  repository: Schema.optional(Schema.String),
+  packagePath: Schema.optional(Schema.String),
+}).annotate({ identifier: "NpmPackage" });
 
 export interface Artifacts {
   /** A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps. Files in the workspace matching specified paths globs will be uploaded to the specified Cloud Storage location using the builder service account's credentials. The location and generation of the uploaded objects will be stored in the Build resource's results field. If any objects fail to be pushed, the build is marked FAILURE. */
@@ -1134,18 +936,15 @@ export interface Artifacts {
   npmPackages?: Array<NpmPackage>;
 }
 
-export const Artifacts: Schema.Schema<Artifacts> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      objects: Schema.optional(ArtifactObjects),
-      images: Schema.optional(Schema.Array(Schema.String)),
-      pythonPackages: Schema.optional(Schema.Array(PythonPackage)),
-      goModules: Schema.optional(Schema.Array(GoModule)),
-      oci: Schema.optional(Schema.Array(Oci)),
-      mavenArtifacts: Schema.optional(Schema.Array(MavenArtifact)),
-      npmPackages: Schema.optional(Schema.Array(NpmPackage)),
-    }),
-  ).annotate({ identifier: "Artifacts" }) as any as Schema.Schema<Artifacts>;
+export const Artifacts = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  objects: Schema.optional(ArtifactObjects),
+  images: Schema.optional(Schema.Array(Schema.String)),
+  pythonPackages: Schema.optional(Schema.Array(PythonPackage)),
+  goModules: Schema.optional(Schema.Array(GoModule)),
+  oci: Schema.optional(Schema.Array(Oci)),
+  mavenArtifacts: Schema.optional(Schema.Array(MavenArtifact)),
+  npmPackages: Schema.optional(Schema.Array(NpmPackage)),
+}).annotate({ identifier: "Artifacts" });
 
 export interface BuildStep {
   /** Output only. Stores timing information for pulling this build step's builder image only. */
@@ -1197,29 +996,26 @@ export interface BuildStep {
   exitCode?: number;
 }
 
-export const BuildStep: Schema.Schema<BuildStep> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pullTiming: Schema.optional(TimeSpan),
-      allowExitCodes: Schema.optional(Schema.Array(Schema.Number)),
-      secretEnv: Schema.optional(Schema.Array(Schema.String)),
-      volumes: Schema.optional(Schema.Array(Volume)),
-      dir: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      script: Schema.optional(Schema.String),
-      automapSubstitutions: Schema.optional(Schema.Boolean),
-      entrypoint: Schema.optional(Schema.String),
-      allowFailure: Schema.optional(Schema.Boolean),
-      timing: Schema.optional(TimeSpan),
-      waitFor: Schema.optional(Schema.Array(Schema.String)),
-      args: Schema.optional(Schema.Array(Schema.String)),
-      env: Schema.optional(Schema.Array(Schema.String)),
-      name: Schema.optional(Schema.String),
-      timeout: Schema.optional(Schema.String),
-      exitCode: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "BuildStep" }) as any as Schema.Schema<BuildStep>;
+export const BuildStep = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pullTiming: Schema.optional(TimeSpan),
+  allowExitCodes: Schema.optional(Schema.Array(Schema.Number)),
+  secretEnv: Schema.optional(Schema.Array(Schema.String)),
+  volumes: Schema.optional(Schema.Array(Volume)),
+  dir: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  script: Schema.optional(Schema.String),
+  automapSubstitutions: Schema.optional(Schema.Boolean),
+  entrypoint: Schema.optional(Schema.String),
+  allowFailure: Schema.optional(Schema.Boolean),
+  timing: Schema.optional(TimeSpan),
+  waitFor: Schema.optional(Schema.Array(Schema.String)),
+  args: Schema.optional(Schema.Array(Schema.String)),
+  env: Schema.optional(Schema.Array(Schema.String)),
+  name: Schema.optional(Schema.String),
+  timeout: Schema.optional(Schema.String),
+  exitCode: Schema.optional(Schema.Number),
+}).annotate({ identifier: "BuildStep" });
 
 export interface Build {
   /** Optional. Configuration for git operations. */
@@ -1297,44 +1093,39 @@ export interface Build {
   projectId?: string;
 }
 
-export const Build: Schema.Schema<Build> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gitConfig: Schema.optional(GitConfig),
-      createTime: Schema.optional(Schema.String),
-      images: Schema.optional(Schema.Array(Schema.String)),
-      sourceProvenance: Schema.optional(SourceProvenance),
-      availableSecrets: Schema.optional(Secrets),
-      failureInfo: Schema.optional(FailureInfo),
-      secrets: Schema.optional(Schema.Array(Secret)),
-      queueTtl: Schema.optional(Schema.String),
-      dependencies: Schema.optional(Schema.Array(Dependency)),
-      source: Schema.optional(Source),
-      timeout: Schema.optional(Schema.String),
-      finishTime: Schema.optional(Schema.String),
-      tags: Schema.optional(Schema.Array(Schema.String)),
-      serviceAccount: Schema.optional(Schema.String),
-      logUrl: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      buildTriggerId: Schema.optional(Schema.String),
-      approval: Schema.optional(BuildApproval),
-      warnings: Schema.optional(Schema.Array(Warning)),
-      options: Schema.optional(BuildOptions),
-      substitutions: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      logsBucket: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      status: Schema.optional(Schema.String),
-      results: Schema.optional(Results),
-      artifacts: Schema.optional(Artifacts),
-      statusDetail: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      steps: Schema.optional(Schema.Array(BuildStep)),
-      timing: Schema.optional(Schema.Record(Schema.String, TimeSpan)),
-      projectId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Build" }) as any as Schema.Schema<Build>;
+export const Build = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  gitConfig: Schema.optional(GitConfig),
+  createTime: Schema.optional(Schema.String),
+  images: Schema.optional(Schema.Array(Schema.String)),
+  sourceProvenance: Schema.optional(SourceProvenance),
+  availableSecrets: Schema.optional(Secrets),
+  failureInfo: Schema.optional(FailureInfo),
+  secrets: Schema.optional(Schema.Array(Secret)),
+  queueTtl: Schema.optional(Schema.String),
+  dependencies: Schema.optional(Schema.Array(Dependency)),
+  source: Schema.optional(Source),
+  timeout: Schema.optional(Schema.String),
+  finishTime: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Array(Schema.String)),
+  serviceAccount: Schema.optional(Schema.String),
+  logUrl: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+  buildTriggerId: Schema.optional(Schema.String),
+  approval: Schema.optional(BuildApproval),
+  warnings: Schema.optional(Schema.Array(Warning)),
+  options: Schema.optional(BuildOptions),
+  substitutions: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  logsBucket: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  status: Schema.optional(Schema.String),
+  results: Schema.optional(Results),
+  artifacts: Schema.optional(Artifacts),
+  statusDetail: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  steps: Schema.optional(Schema.Array(BuildStep)),
+  timing: Schema.optional(Schema.Record(Schema.String, TimeSpan)),
+  projectId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Build" });
 
 export interface ListBuildsResponse {
   /** Builds will be sorted by `create_time`, descending. */
@@ -1343,15 +1134,10 @@ export interface ListBuildsResponse {
   nextPageToken?: string;
 }
 
-export const ListBuildsResponse: Schema.Schema<ListBuildsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      builds: Schema.optional(Schema.Array(Build)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListBuildsResponse",
-  }) as any as Schema.Schema<ListBuildsResponse>;
+export const ListBuildsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  builds: Schema.optional(Schema.Array(Build)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListBuildsResponse" });
 
 export interface GitHubEnterpriseSecrets {
   /** The resource name for the private key secret. */
@@ -1372,21 +1158,17 @@ export interface GitHubEnterpriseSecrets {
   oauthSecretVersionName?: string;
 }
 
-export const GitHubEnterpriseSecrets: Schema.Schema<GitHubEnterpriseSecrets> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      privateKeyName: Schema.optional(Schema.String),
-      webhookSecretVersionName: Schema.optional(Schema.String),
-      oauthClientIdVersionName: Schema.optional(Schema.String),
-      oauthSecretName: Schema.optional(Schema.String),
-      webhookSecretName: Schema.optional(Schema.String),
-      oauthClientIdName: Schema.optional(Schema.String),
-      privateKeyVersionName: Schema.optional(Schema.String),
-      oauthSecretVersionName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GitHubEnterpriseSecrets",
-  }) as any as Schema.Schema<GitHubEnterpriseSecrets>;
+export const GitHubEnterpriseSecrets =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    privateKeyName: Schema.optional(Schema.String),
+    webhookSecretVersionName: Schema.optional(Schema.String),
+    oauthClientIdVersionName: Schema.optional(Schema.String),
+    oauthSecretName: Schema.optional(Schema.String),
+    webhookSecretName: Schema.optional(Schema.String),
+    oauthClientIdName: Schema.optional(Schema.String),
+    privateKeyVersionName: Schema.optional(Schema.String),
+    oauthSecretVersionName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GitHubEnterpriseSecrets" });
 
 export interface DeleteWorkerPoolOperationMetadata {
   /** Time the operation was completed. */
@@ -1397,16 +1179,12 @@ export interface DeleteWorkerPoolOperationMetadata {
   createTime?: string;
 }
 
-export const DeleteWorkerPoolOperationMetadata: Schema.Schema<DeleteWorkerPoolOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      completeTime: Schema.optional(Schema.String),
-      workerPool: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DeleteWorkerPoolOperationMetadata",
-  }) as any as Schema.Schema<DeleteWorkerPoolOperationMetadata>;
+export const DeleteWorkerPoolOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    completeTime: Schema.optional(Schema.String),
+    workerPool: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DeleteWorkerPoolOperationMetadata" });
 
 export interface GitLabRepositoryId {
   /** Output only. The ID of the webhook that was created for receiving events from this repo. We only create and manage a single webhook for each repo. */
@@ -1415,15 +1193,10 @@ export interface GitLabRepositoryId {
   id?: string;
 }
 
-export const GitLabRepositoryId: Schema.Schema<GitLabRepositoryId> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      webhookId: Schema.optional(Schema.Number),
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GitLabRepositoryId",
-  }) as any as Schema.Schema<GitLabRepositoryId>;
+export const GitLabRepositoryId = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  webhookId: Schema.optional(Schema.Number),
+  id: Schema.optional(Schema.String),
+}).annotate({ identifier: "GitLabRepositoryId" });
 
 export interface Status {
   /** A list of messages that carry the error details. There is a common set of message types for APIs to use. */
@@ -1434,16 +1207,13 @@ export interface Status {
   message?: string;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+}).annotate({ identifier: "Status" });
 
 export interface WorkerPool {
   /** Output only. The resource name of the `WorkerPool`, with format `projects/{project}/locations/{location}/workerPools/{worker_pool}`. The value of `{worker_pool}` is provided by `worker_pool_id` in `CreateWorkerPool` request and the value of `{location}` is determined by the endpoint accessed. */
@@ -1475,21 +1245,18 @@ export interface WorkerPool {
   deleteTime?: string;
 }
 
-export const WorkerPool: Schema.Schema<WorkerPool> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      createTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      privatePoolV1Config: Schema.optional(PrivatePoolV1Config),
-      etag: Schema.optional(Schema.String),
-      uid: Schema.optional(Schema.String),
-      deleteTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "WorkerPool" }) as any as Schema.Schema<WorkerPool>;
+export const WorkerPool = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  annotations: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  createTime: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  privatePoolV1Config: Schema.optional(PrivatePoolV1Config),
+  etag: Schema.optional(Schema.String),
+  uid: Schema.optional(Schema.String),
+  deleteTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "WorkerPool" });
 
 export interface PullRequestFilter {
   /** Regex of branches to match. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax */
@@ -1504,16 +1271,11 @@ export interface PullRequestFilter {
   invertRegex?: boolean;
 }
 
-export const PullRequestFilter: Schema.Schema<PullRequestFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      branch: Schema.optional(Schema.String),
-      commentControl: Schema.optional(Schema.String),
-      invertRegex: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "PullRequestFilter",
-  }) as any as Schema.Schema<PullRequestFilter>;
+export const PullRequestFilter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  branch: Schema.optional(Schema.String),
+  commentControl: Schema.optional(Schema.String),
+  invertRegex: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "PullRequestFilter" });
 
 export interface DeleteGitLabConfigOperationMetadata {
   /** Time the operation was created. */
@@ -1524,16 +1286,12 @@ export interface DeleteGitLabConfigOperationMetadata {
   completeTime?: string;
 }
 
-export const DeleteGitLabConfigOperationMetadata: Schema.Schema<DeleteGitLabConfigOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      gitlabConfig: Schema.optional(Schema.String),
-      completeTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DeleteGitLabConfigOperationMetadata",
-  }) as any as Schema.Schema<DeleteGitLabConfigOperationMetadata>;
+export const DeleteGitLabConfigOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    gitlabConfig: Schema.optional(Schema.String),
+    completeTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DeleteGitLabConfigOperationMetadata" });
 
 export interface GitLabConnectedRepository {
   /** The name of the `GitLabConfig` that added connected repository. Format: `projects/{project}/locations/{location}/gitLabConfigs/{config}` */
@@ -1544,16 +1302,12 @@ export interface GitLabConnectedRepository {
   status?: Status;
 }
 
-export const GitLabConnectedRepository: Schema.Schema<GitLabConnectedRepository> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parent: Schema.optional(Schema.String),
-      repo: Schema.optional(GitLabRepositoryId),
-      status: Schema.optional(Status),
-    }),
-  ).annotate({
-    identifier: "GitLabConnectedRepository",
-  }) as any as Schema.Schema<GitLabConnectedRepository>;
+export const GitLabConnectedRepository =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.optional(Schema.String),
+    repo: Schema.optional(GitLabRepositoryId),
+    status: Schema.optional(Status),
+  }).annotate({ identifier: "GitLabConnectedRepository" });
 
 export interface CreateGitLabConnectedRepositoryRequest {
   /** Required. The name of the `GitLabConfig` that adds connected repository. Format: `projects/{project}/locations/{location}/gitLabConfigs/{config}` */
@@ -1562,38 +1316,29 @@ export interface CreateGitLabConnectedRepositoryRequest {
   gitlabConnectedRepository?: GitLabConnectedRepository;
 }
 
-export const CreateGitLabConnectedRepositoryRequest: Schema.Schema<CreateGitLabConnectedRepositoryRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parent: Schema.optional(Schema.String),
-      gitlabConnectedRepository: Schema.optional(GitLabConnectedRepository),
-    }),
-  ).annotate({
-    identifier: "CreateGitLabConnectedRepositoryRequest",
-  }) as any as Schema.Schema<CreateGitLabConnectedRepositoryRequest>;
+export const CreateGitLabConnectedRepositoryRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.optional(Schema.String),
+    gitlabConnectedRepository: Schema.optional(GitLabConnectedRepository),
+  }).annotate({ identifier: "CreateGitLabConnectedRepositoryRequest" });
 
 export interface BatchCreateGitLabConnectedRepositoriesRequest {
   /** Required. Requests to connect GitLab repositories. */
   requests?: Array<CreateGitLabConnectedRepositoryRequest>;
 }
 
-export const BatchCreateGitLabConnectedRepositoriesRequest: Schema.Schema<BatchCreateGitLabConnectedRepositoriesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requests: Schema.optional(
-        Schema.Array(CreateGitLabConnectedRepositoryRequest),
-      ),
-    }),
-  ).annotate({
-    identifier: "BatchCreateGitLabConnectedRepositoriesRequest",
-  }) as any as Schema.Schema<BatchCreateGitLabConnectedRepositoriesRequest>;
+export const BatchCreateGitLabConnectedRepositoriesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requests: Schema.optional(
+      Schema.Array(CreateGitLabConnectedRepositoryRequest),
+    ),
+  }).annotate({ identifier: "BatchCreateGitLabConnectedRepositoriesRequest" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface UpdateBitbucketServerConfigOperationMetadata {
   /** Time the operation was completed. */
@@ -1604,16 +1349,12 @@ export interface UpdateBitbucketServerConfigOperationMetadata {
   createTime?: string;
 }
 
-export const UpdateBitbucketServerConfigOperationMetadata: Schema.Schema<UpdateBitbucketServerConfigOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      completeTime: Schema.optional(Schema.String),
-      bitbucketServerConfig: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpdateBitbucketServerConfigOperationMetadata",
-  }) as any as Schema.Schema<UpdateBitbucketServerConfigOperationMetadata>;
+export const UpdateBitbucketServerConfigOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    completeTime: Schema.optional(Schema.String),
+    bitbucketServerConfig: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UpdateBitbucketServerConfigOperationMetadata" });
 
 export interface PushFilter {
   /** Regexes matching branches to build. The syntax of the regular expressions accepted is the syntax accepted by RE2 and described at https://github.com/google/re2/wiki/Syntax */
@@ -1624,14 +1365,11 @@ export interface PushFilter {
   invertRegex?: boolean;
 }
 
-export const PushFilter: Schema.Schema<PushFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      branch: Schema.optional(Schema.String),
-      tag: Schema.optional(Schema.String),
-      invertRegex: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "PushFilter" }) as any as Schema.Schema<PushFilter>;
+export const PushFilter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  branch: Schema.optional(Schema.String),
+  tag: Schema.optional(Schema.String),
+  invertRegex: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "PushFilter" });
 
 export interface RepositoryEventConfig {
   /** Filter to match changes in refs like branches, tags. */
@@ -1651,17 +1389,12 @@ export interface RepositoryEventConfig {
   repository?: string;
 }
 
-export const RepositoryEventConfig: Schema.Schema<RepositoryEventConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      push: Schema.optional(PushFilter),
-      repositoryType: Schema.optional(Schema.String),
-      pullRequest: Schema.optional(PullRequestFilter),
-      repository: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RepositoryEventConfig",
-  }) as any as Schema.Schema<RepositoryEventConfig>;
+export const RepositoryEventConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  push: Schema.optional(PushFilter),
+  repositoryType: Schema.optional(Schema.String),
+  pullRequest: Schema.optional(PullRequestFilter),
+  repository: Schema.optional(Schema.String),
+}).annotate({ identifier: "RepositoryEventConfig" });
 
 export interface DefaultServiceAccount {
   /** Identifier. Format: `projects/{project}/locations/{location}/defaultServiceAccount`. */
@@ -1670,15 +1403,10 @@ export interface DefaultServiceAccount {
   serviceAccountEmail?: string;
 }
 
-export const DefaultServiceAccount: Schema.Schema<DefaultServiceAccount> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      serviceAccountEmail: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DefaultServiceAccount",
-  }) as any as Schema.Schema<DefaultServiceAccount>;
+export const DefaultServiceAccount = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  serviceAccountEmail: Schema.optional(Schema.String),
+}).annotate({ identifier: "DefaultServiceAccount" });
 
 export interface GitLabSecrets {
   /** Required. The resource name for the read access token’s secret version */
@@ -1691,31 +1419,23 @@ export interface GitLabSecrets {
   apiAccessTokenVersion?: string;
 }
 
-export const GitLabSecrets: Schema.Schema<GitLabSecrets> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      readAccessTokenVersion: Schema.optional(Schema.String),
-      webhookSecretVersion: Schema.optional(Schema.String),
-      apiKeyVersion: Schema.optional(Schema.String),
-      apiAccessTokenVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GitLabSecrets",
-  }) as any as Schema.Schema<GitLabSecrets>;
+export const GitLabSecrets = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  readAccessTokenVersion: Schema.optional(Schema.String),
+  webhookSecretVersion: Schema.optional(Schema.String),
+  apiKeyVersion: Schema.optional(Schema.String),
+  apiAccessTokenVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "GitLabSecrets" });
 
 export interface ServiceDirectoryConfig {
   /** The Service Directory service name. Format: projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}. */
   service?: string;
 }
 
-export const ServiceDirectoryConfig: Schema.Schema<ServiceDirectoryConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      service: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ServiceDirectoryConfig",
-  }) as any as Schema.Schema<ServiceDirectoryConfig>;
+export const ServiceDirectoryConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    service: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ServiceDirectoryConfig" });
 
 export interface GitLabEnterpriseConfig {
   /** The SSL certificate to use in requests to GitLab Enterprise instances. */
@@ -1726,16 +1446,13 @@ export interface GitLabEnterpriseConfig {
   serviceDirectoryConfig?: ServiceDirectoryConfig;
 }
 
-export const GitLabEnterpriseConfig: Schema.Schema<GitLabEnterpriseConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sslCa: Schema.optional(Schema.String),
-      hostUri: Schema.optional(Schema.String),
-      serviceDirectoryConfig: Schema.optional(ServiceDirectoryConfig),
-    }),
-  ).annotate({
-    identifier: "GitLabEnterpriseConfig",
-  }) as any as Schema.Schema<GitLabEnterpriseConfig>;
+export const GitLabEnterpriseConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    sslCa: Schema.optional(Schema.String),
+    hostUri: Schema.optional(Schema.String),
+    serviceDirectoryConfig: Schema.optional(ServiceDirectoryConfig),
+  },
+).annotate({ identifier: "GitLabEnterpriseConfig" });
 
 export interface GitLabConfig {
   /** The resource name for the config. */
@@ -1754,20 +1471,15 @@ export interface GitLabConfig {
   enterpriseConfig?: GitLabEnterpriseConfig;
 }
 
-export const GitLabConfig: Schema.Schema<GitLabConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      username: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      connectedRepositories: Schema.optional(Schema.Array(GitLabRepositoryId)),
-      secrets: Schema.optional(GitLabSecrets),
-      webhookKey: Schema.optional(Schema.String),
-      enterpriseConfig: Schema.optional(GitLabEnterpriseConfig),
-    }),
-  ).annotate({
-    identifier: "GitLabConfig",
-  }) as any as Schema.Schema<GitLabConfig>;
+export const GitLabConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  username: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  connectedRepositories: Schema.optional(Schema.Array(GitLabRepositoryId)),
+  secrets: Schema.optional(GitLabSecrets),
+  webhookKey: Schema.optional(Schema.String),
+  enterpriseConfig: Schema.optional(GitLabEnterpriseConfig),
+}).annotate({ identifier: "GitLabConfig" });
 
 export interface GitLabEventsConfig {
   /** Namespace of the GitLab project. */
@@ -1782,18 +1494,13 @@ export interface GitLabEventsConfig {
   gitlabConfig?: GitLabConfig;
 }
 
-export const GitLabEventsConfig: Schema.Schema<GitLabEventsConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      projectNamespace: Schema.optional(Schema.String),
-      push: Schema.optional(PushFilter),
-      pullRequest: Schema.optional(PullRequestFilter),
-      gitlabConfigResource: Schema.optional(Schema.String),
-      gitlabConfig: Schema.optional(GitLabConfig),
-    }),
-  ).annotate({
-    identifier: "GitLabEventsConfig",
-  }) as any as Schema.Schema<GitLabEventsConfig>;
+export const GitLabEventsConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  projectNamespace: Schema.optional(Schema.String),
+  push: Schema.optional(PushFilter),
+  pullRequest: Schema.optional(PullRequestFilter),
+  gitlabConfigResource: Schema.optional(Schema.String),
+  gitlabConfig: Schema.optional(GitLabConfig),
+}).annotate({ identifier: "GitLabEventsConfig" });
 
 export interface BitbucketServerTriggerConfig {
   /** Filter to match changes in refs like branches, tags. */
@@ -1810,19 +1517,15 @@ export interface BitbucketServerTriggerConfig {
   bitbucketServerConfigResource?: string;
 }
 
-export const BitbucketServerTriggerConfig: Schema.Schema<BitbucketServerTriggerConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      push: Schema.optional(PushFilter),
-      bitbucketServerConfig: Schema.optional(BitbucketServerConfig),
-      projectKey: Schema.optional(Schema.String),
-      repoSlug: Schema.optional(Schema.String),
-      pullRequest: Schema.optional(PullRequestFilter),
-      bitbucketServerConfigResource: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BitbucketServerTriggerConfig",
-  }) as any as Schema.Schema<BitbucketServerTriggerConfig>;
+export const BitbucketServerTriggerConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    push: Schema.optional(PushFilter),
+    bitbucketServerConfig: Schema.optional(BitbucketServerConfig),
+    projectKey: Schema.optional(Schema.String),
+    repoSlug: Schema.optional(Schema.String),
+    pullRequest: Schema.optional(PullRequestFilter),
+    bitbucketServerConfigResource: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BitbucketServerTriggerConfig" });
 
 export interface BitbucketServerConnectedRepository {
   /** Output only. The status of the repo connection request. */
@@ -1833,16 +1536,12 @@ export interface BitbucketServerConnectedRepository {
   repo?: BitbucketServerRepositoryId;
 }
 
-export const BitbucketServerConnectedRepository: Schema.Schema<BitbucketServerConnectedRepository> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      status: Schema.optional(Status),
-      parent: Schema.optional(Schema.String),
-      repo: Schema.optional(BitbucketServerRepositoryId),
-    }),
-  ).annotate({
-    identifier: "BitbucketServerConnectedRepository",
-  }) as any as Schema.Schema<BitbucketServerConnectedRepository>;
+export const BitbucketServerConnectedRepository =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    status: Schema.optional(Status),
+    parent: Schema.optional(Schema.String),
+    repo: Schema.optional(BitbucketServerRepositoryId),
+  }).annotate({ identifier: "BitbucketServerConnectedRepository" });
 
 export interface CreateBitbucketServerConnectedRepositoryRequest {
   /** Required. The name of the `BitbucketServerConfig` that added connected repository. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{config}` */
@@ -1851,17 +1550,15 @@ export interface CreateBitbucketServerConnectedRepositoryRequest {
   bitbucketServerConnectedRepository?: BitbucketServerConnectedRepository;
 }
 
-export const CreateBitbucketServerConnectedRepositoryRequest: Schema.Schema<CreateBitbucketServerConnectedRepositoryRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parent: Schema.optional(Schema.String),
-      bitbucketServerConnectedRepository: Schema.optional(
-        BitbucketServerConnectedRepository,
-      ),
-    }),
-  ).annotate({
+export const CreateBitbucketServerConnectedRepositoryRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parent: Schema.optional(Schema.String),
+    bitbucketServerConnectedRepository: Schema.optional(
+      BitbucketServerConnectedRepository,
+    ),
+  }).annotate({
     identifier: "CreateBitbucketServerConnectedRepositoryRequest",
-  }) as any as Schema.Schema<CreateBitbucketServerConnectedRepositoryRequest>;
+  });
 
 export interface CreateGitHubEnterpriseConfigOperationMetadata {
   /** The resource name of the GitHubEnterprise to be created. Format: `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`. */
@@ -1872,32 +1569,26 @@ export interface CreateGitHubEnterpriseConfigOperationMetadata {
   createTime?: string;
 }
 
-export const CreateGitHubEnterpriseConfigOperationMetadata: Schema.Schema<CreateGitHubEnterpriseConfigOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      githubEnterpriseConfig: Schema.optional(Schema.String),
-      completeTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreateGitHubEnterpriseConfigOperationMetadata",
-  }) as any as Schema.Schema<CreateGitHubEnterpriseConfigOperationMetadata>;
+export const CreateGitHubEnterpriseConfigOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    githubEnterpriseConfig: Schema.optional(Schema.String),
+    completeTime: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CreateGitHubEnterpriseConfigOperationMetadata" });
 
 export interface BatchCreateBitbucketServerConnectedRepositoriesResponse {
   /** The connected Bitbucket Server repositories. */
   bitbucketServerConnectedRepositories?: Array<BitbucketServerConnectedRepository>;
 }
 
-export const BatchCreateBitbucketServerConnectedRepositoriesResponse: Schema.Schema<BatchCreateBitbucketServerConnectedRepositoriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bitbucketServerConnectedRepositories: Schema.optional(
-        Schema.Array(BitbucketServerConnectedRepository),
-      ),
-    }),
-  ).annotate({
+export const BatchCreateBitbucketServerConnectedRepositoriesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bitbucketServerConnectedRepositories: Schema.optional(
+      Schema.Array(BitbucketServerConnectedRepository),
+    ),
+  }).annotate({
     identifier: "BatchCreateBitbucketServerConnectedRepositoriesResponse",
-  }) as any as Schema.Schema<BatchCreateBitbucketServerConnectedRepositoriesResponse>;
+  });
 
 export interface BitbucketServerRepository {
   /** Link to the browse repo page on the Bitbucket Server instance. */
@@ -1912,18 +1603,14 @@ export interface BitbucketServerRepository {
   description?: string;
 }
 
-export const BitbucketServerRepository: Schema.Schema<BitbucketServerRepository> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      browseUri: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      repoId: Schema.optional(BitbucketServerRepositoryId),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BitbucketServerRepository",
-  }) as any as Schema.Schema<BitbucketServerRepository>;
+export const BitbucketServerRepository =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    browseUri: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    repoId: Schema.optional(BitbucketServerRepositoryId),
+    description: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BitbucketServerRepository" });
 
 export interface ListBitbucketServerRepositoriesResponse {
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -1932,17 +1619,13 @@ export interface ListBitbucketServerRepositoriesResponse {
   bitbucketServerRepositories?: Array<BitbucketServerRepository>;
 }
 
-export const ListBitbucketServerRepositoriesResponse: Schema.Schema<ListBitbucketServerRepositoriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      bitbucketServerRepositories: Schema.optional(
-        Schema.Array(BitbucketServerRepository),
-      ),
-    }),
-  ).annotate({
-    identifier: "ListBitbucketServerRepositoriesResponse",
-  }) as any as Schema.Schema<ListBitbucketServerRepositoriesResponse>;
+export const ListBitbucketServerRepositoriesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    bitbucketServerRepositories: Schema.optional(
+      Schema.Array(BitbucketServerRepository),
+    ),
+  }).annotate({ identifier: "ListBitbucketServerRepositoriesResponse" });
 
 export interface CreateBitbucketServerConfigOperationMetadata {
   /** Time the operation was completed. */
@@ -1953,16 +1636,12 @@ export interface CreateBitbucketServerConfigOperationMetadata {
   createTime?: string;
 }
 
-export const CreateBitbucketServerConfigOperationMetadata: Schema.Schema<CreateBitbucketServerConfigOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      completeTime: Schema.optional(Schema.String),
-      bitbucketServerConfig: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreateBitbucketServerConfigOperationMetadata",
-  }) as any as Schema.Schema<CreateBitbucketServerConfigOperationMetadata>;
+export const CreateBitbucketServerConfigOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    completeTime: Schema.optional(Schema.String),
+    bitbucketServerConfig: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CreateBitbucketServerConfigOperationMetadata" });
 
 export interface GitHubEventsConfig {
   /** filter to match changes in pull requests. */
@@ -1979,19 +1658,14 @@ export interface GitHubEventsConfig {
   enterpriseConfigResourceName?: string;
 }
 
-export const GitHubEventsConfig: Schema.Schema<GitHubEventsConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pullRequest: Schema.optional(PullRequestFilter),
-      installationId: Schema.optional(Schema.String),
-      owner: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      push: Schema.optional(PushFilter),
-      enterpriseConfigResourceName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GitHubEventsConfig",
-  }) as any as Schema.Schema<GitHubEventsConfig>;
+export const GitHubEventsConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  pullRequest: Schema.optional(PullRequestFilter),
+  installationId: Schema.optional(Schema.String),
+  owner: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  push: Schema.optional(PushFilter),
+  enterpriseConfigResourceName: Schema.optional(Schema.String),
+}).annotate({ identifier: "GitHubEventsConfig" });
 
 export interface GitFileSource {
   /** The full resource name of the bitbucket server config. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`. */
@@ -2017,20 +1691,15 @@ export interface GitFileSource {
   path?: string;
 }
 
-export const GitFileSource: Schema.Schema<GitFileSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bitbucketServerConfig: Schema.optional(Schema.String),
-      uri: Schema.optional(Schema.String),
-      repoType: Schema.optional(Schema.String),
-      repository: Schema.optional(Schema.String),
-      revision: Schema.optional(Schema.String),
-      githubEnterpriseConfig: Schema.optional(Schema.String),
-      path: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GitFileSource",
-  }) as any as Schema.Schema<GitFileSource>;
+export const GitFileSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bitbucketServerConfig: Schema.optional(Schema.String),
+  uri: Schema.optional(Schema.String),
+  repoType: Schema.optional(Schema.String),
+  repository: Schema.optional(Schema.String),
+  revision: Schema.optional(Schema.String),
+  githubEnterpriseConfig: Schema.optional(Schema.String),
+  path: Schema.optional(Schema.String),
+}).annotate({ identifier: "GitFileSource" });
 
 export interface GitRepoSource {
   /** The full resource name of the bitbucket server config. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`. */
@@ -2054,19 +1723,14 @@ export interface GitRepoSource {
   githubEnterpriseConfig?: string;
 }
 
-export const GitRepoSource: Schema.Schema<GitRepoSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bitbucketServerConfig: Schema.optional(Schema.String),
-      uri: Schema.optional(Schema.String),
-      repoType: Schema.optional(Schema.String),
-      repository: Schema.optional(Schema.String),
-      ref: Schema.optional(Schema.String),
-      githubEnterpriseConfig: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GitRepoSource",
-  }) as any as Schema.Schema<GitRepoSource>;
+export const GitRepoSource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bitbucketServerConfig: Schema.optional(Schema.String),
+  uri: Schema.optional(Schema.String),
+  repoType: Schema.optional(Schema.String),
+  repository: Schema.optional(Schema.String),
+  ref: Schema.optional(Schema.String),
+  githubEnterpriseConfig: Schema.optional(Schema.String),
+}).annotate({ identifier: "GitRepoSource" });
 
 export interface PubsubConfig {
   /** Service account that will make the push request. */
@@ -2085,17 +1749,12 @@ export interface PubsubConfig {
   subscription?: string;
 }
 
-export const PubsubConfig: Schema.Schema<PubsubConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serviceAccountEmail: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      topic: Schema.optional(Schema.String),
-      subscription: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PubsubConfig",
-  }) as any as Schema.Schema<PubsubConfig>;
+export const PubsubConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  serviceAccountEmail: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  topic: Schema.optional(Schema.String),
+  subscription: Schema.optional(Schema.String),
+}).annotate({ identifier: "PubsubConfig" });
 
 export interface WebhookConfig {
   /** Required. Resource name for the secret required as a URL parameter. */
@@ -2104,15 +1763,10 @@ export interface WebhookConfig {
   state?: "STATE_UNSPECIFIED" | "OK" | "SECRET_DELETED" | (string & {});
 }
 
-export const WebhookConfig: Schema.Schema<WebhookConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      secret: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WebhookConfig",
-  }) as any as Schema.Schema<WebhookConfig>;
+export const WebhookConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  secret: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+}).annotate({ identifier: "WebhookConfig" });
 
 export interface DeveloperConnectEventConfig {
   /** Output only. The type of DeveloperConnect GitRepositoryLink. */
@@ -2133,17 +1787,13 @@ export interface DeveloperConnectEventConfig {
   push?: PushFilter;
 }
 
-export const DeveloperConnectEventConfig: Schema.Schema<DeveloperConnectEventConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gitRepositoryLinkType: Schema.optional(Schema.String),
-      pullRequest: Schema.optional(PullRequestFilter),
-      gitRepositoryLink: Schema.optional(Schema.String),
-      push: Schema.optional(PushFilter),
-    }),
-  ).annotate({
-    identifier: "DeveloperConnectEventConfig",
-  }) as any as Schema.Schema<DeveloperConnectEventConfig>;
+export const DeveloperConnectEventConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gitRepositoryLinkType: Schema.optional(Schema.String),
+    pullRequest: Schema.optional(PullRequestFilter),
+    gitRepositoryLink: Schema.optional(Schema.String),
+    push: Schema.optional(PushFilter),
+  }).annotate({ identifier: "DeveloperConnectEventConfig" });
 
 export interface BuildTrigger {
   /** Autodetect build configuration. The following precedence is used (case insensitive): 1. cloudbuild.yaml 2. cloudbuild.yml 3. cloudbuild.json 4. Dockerfile Currently only available for GitHub App Triggers. */
@@ -2213,45 +1863,36 @@ export interface BuildTrigger {
   serviceAccount?: string;
 }
 
-export const BuildTrigger: Schema.Schema<BuildTrigger> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      autodetect: Schema.optional(Schema.Boolean),
-      github: Schema.optional(GitHubEventsConfig),
-      id: Schema.optional(Schema.String),
-      repositoryEventConfig: Schema.optional(RepositoryEventConfig),
-      gitFileSource: Schema.optional(GitFileSource),
-      sourceToBuild: Schema.optional(GitRepoSource),
-      approvalConfig: Schema.optional(ApprovalConfig),
-      gitlabEnterpriseEventsConfig: Schema.optional(GitLabEventsConfig),
-      includedFiles: Schema.optional(Schema.Array(Schema.String)),
-      build: Schema.optional(Build),
-      filename: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      disabled: Schema.optional(Schema.Boolean),
-      triggerTemplate: Schema.optional(RepoSource),
-      eventType: Schema.optional(Schema.String),
-      pubsubConfig: Schema.optional(PubsubConfig),
-      webhookConfig: Schema.optional(WebhookConfig),
-      bitbucketServerTriggerConfig: Schema.optional(
-        BitbucketServerTriggerConfig,
-      ),
-      createTime: Schema.optional(Schema.String),
-      ignoredFiles: Schema.optional(Schema.Array(Schema.String)),
-      includeBuildLogs: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      substitutions: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      developerConnectEventConfig: Schema.optional(DeveloperConnectEventConfig),
-      resourceName: Schema.optional(Schema.String),
-      filter: Schema.optional(Schema.String),
-      tags: Schema.optional(Schema.Array(Schema.String)),
-      serviceAccount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BuildTrigger",
-  }) as any as Schema.Schema<BuildTrigger>;
+export const BuildTrigger = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  autodetect: Schema.optional(Schema.Boolean),
+  github: Schema.optional(GitHubEventsConfig),
+  id: Schema.optional(Schema.String),
+  repositoryEventConfig: Schema.optional(RepositoryEventConfig),
+  gitFileSource: Schema.optional(GitFileSource),
+  sourceToBuild: Schema.optional(GitRepoSource),
+  approvalConfig: Schema.optional(ApprovalConfig),
+  gitlabEnterpriseEventsConfig: Schema.optional(GitLabEventsConfig),
+  includedFiles: Schema.optional(Schema.Array(Schema.String)),
+  build: Schema.optional(Build),
+  filename: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  disabled: Schema.optional(Schema.Boolean),
+  triggerTemplate: Schema.optional(RepoSource),
+  eventType: Schema.optional(Schema.String),
+  pubsubConfig: Schema.optional(PubsubConfig),
+  webhookConfig: Schema.optional(WebhookConfig),
+  bitbucketServerTriggerConfig: Schema.optional(BitbucketServerTriggerConfig),
+  createTime: Schema.optional(Schema.String),
+  ignoredFiles: Schema.optional(Schema.Array(Schema.String)),
+  includeBuildLogs: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  substitutions: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  developerConnectEventConfig: Schema.optional(DeveloperConnectEventConfig),
+  resourceName: Schema.optional(Schema.String),
+  filter: Schema.optional(Schema.String),
+  tags: Schema.optional(Schema.Array(Schema.String)),
+  serviceAccount: Schema.optional(Schema.String),
+}).annotate({ identifier: "BuildTrigger" });
 
 export interface ListBuildTriggersResponse {
   /** `BuildTriggers` for the project, sorted by `create_time` descending. */
@@ -2260,15 +1901,11 @@ export interface ListBuildTriggersResponse {
   nextPageToken?: string;
 }
 
-export const ListBuildTriggersResponse: Schema.Schema<ListBuildTriggersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      triggers: Schema.optional(Schema.Array(BuildTrigger)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListBuildTriggersResponse",
-  }) as any as Schema.Schema<ListBuildTriggersResponse>;
+export const ListBuildTriggersResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    triggers: Schema.optional(Schema.Array(BuildTrigger)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListBuildTriggersResponse" });
 
 export interface CancelBuildRequest {
   /** Required. ID of the build. */
@@ -2279,16 +1916,11 @@ export interface CancelBuildRequest {
   projectId?: string;
 }
 
-export const CancelBuildRequest: Schema.Schema<CancelBuildRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      projectId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CancelBuildRequest",
-  }) as any as Schema.Schema<CancelBuildRequest>;
+export const CancelBuildRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  projectId: Schema.optional(Schema.String),
+}).annotate({ identifier: "CancelBuildRequest" });
 
 export interface GitLabRepository {
   /** Display name of the repository */
@@ -2303,18 +1935,13 @@ export interface GitLabRepository {
   name?: string;
 }
 
-export const GitLabRepository: Schema.Schema<GitLabRepository> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      browseUri: Schema.optional(Schema.String),
-      repositoryId: Schema.optional(GitLabRepositoryId),
-      description: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GitLabRepository",
-  }) as any as Schema.Schema<GitLabRepository>;
+export const GitLabRepository = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+  browseUri: Schema.optional(Schema.String),
+  repositoryId: Schema.optional(GitLabRepositoryId),
+  description: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "GitLabRepository" });
 
 export interface ListGitLabRepositoriesResponse {
   /** List of GitLab repositories */
@@ -2323,15 +1950,11 @@ export interface ListGitLabRepositoriesResponse {
   nextPageToken?: string;
 }
 
-export const ListGitLabRepositoriesResponse: Schema.Schema<ListGitLabRepositoriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gitlabRepositories: Schema.optional(Schema.Array(GitLabRepository)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListGitLabRepositoriesResponse",
-  }) as any as Schema.Schema<ListGitLabRepositoriesResponse>;
+export const ListGitLabRepositoriesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gitlabRepositories: Schema.optional(Schema.Array(GitLabRepository)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListGitLabRepositoriesResponse" });
 
 export interface CreateGitLabConfigOperationMetadata {
   /** The resource name of the GitLabConfig to be created. Format: `projects/{project}/locations/{location}/gitlabConfigs/{id}`. */
@@ -2342,37 +1965,30 @@ export interface CreateGitLabConfigOperationMetadata {
   createTime?: string;
 }
 
-export const CreateGitLabConfigOperationMetadata: Schema.Schema<CreateGitLabConfigOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gitlabConfig: Schema.optional(Schema.String),
-      completeTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreateGitLabConfigOperationMetadata",
-  }) as any as Schema.Schema<CreateGitLabConfigOperationMetadata>;
+export const CreateGitLabConfigOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gitlabConfig: Schema.optional(Schema.String),
+    completeTime: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CreateGitLabConfigOperationMetadata" });
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelOperationRequest",
-  }) as any as Schema.Schema<CancelOperationRequest>;
+export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelOperationRequest" });
 
 export interface RemoveBitbucketServerConnectedRepositoryRequest {
   /** The connected repository to remove. */
   connectedRepository?: BitbucketServerRepositoryId;
 }
 
-export const RemoveBitbucketServerConnectedRepositoryRequest: Schema.Schema<RemoveBitbucketServerConnectedRepositoryRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      connectedRepository: Schema.optional(BitbucketServerRepositoryId),
-    }),
-  ).annotate({
+export const RemoveBitbucketServerConnectedRepositoryRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    connectedRepository: Schema.optional(BitbucketServerRepositoryId),
+  }).annotate({
     identifier: "RemoveBitbucketServerConnectedRepositoryRequest",
-  }) as any as Schema.Schema<RemoveBitbucketServerConnectedRepositoryRequest>;
+  });
 
 export interface RetryBuildRequest {
   /** Required. Build ID of the original build. */
@@ -2383,30 +1999,20 @@ export interface RetryBuildRequest {
   projectId?: string;
 }
 
-export const RetryBuildRequest: Schema.Schema<RetryBuildRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      projectId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RetryBuildRequest",
-  }) as any as Schema.Schema<RetryBuildRequest>;
+export const RetryBuildRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  projectId: Schema.optional(Schema.String),
+}).annotate({ identifier: "RetryBuildRequest" });
 
 export interface ApproveBuildRequest {
   /** Approval decision and metadata. */
   approvalResult?: ApprovalResult;
 }
 
-export const ApproveBuildRequest: Schema.Schema<ApproveBuildRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      approvalResult: Schema.optional(ApprovalResult),
-    }),
-  ).annotate({
-    identifier: "ApproveBuildRequest",
-  }) as any as Schema.Schema<ApproveBuildRequest>;
+export const ApproveBuildRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  approvalResult: Schema.optional(ApprovalResult),
+}).annotate({ identifier: "ApproveBuildRequest" });
 
 export interface DeleteBitbucketServerConfigOperationMetadata {
   /** The resource name of the BitbucketServerConfig to be deleted. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{id}`. */
@@ -2417,16 +2023,12 @@ export interface DeleteBitbucketServerConfigOperationMetadata {
   completeTime?: string;
 }
 
-export const DeleteBitbucketServerConfigOperationMetadata: Schema.Schema<DeleteBitbucketServerConfigOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bitbucketServerConfig: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      completeTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DeleteBitbucketServerConfigOperationMetadata",
-  }) as any as Schema.Schema<DeleteBitbucketServerConfigOperationMetadata>;
+export const DeleteBitbucketServerConfigOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    bitbucketServerConfig: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    completeTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DeleteBitbucketServerConfigOperationMetadata" });
 
 export interface RunBuildTriggerRequest {
   /** Required. ID of the trigger. */
@@ -2437,16 +2039,13 @@ export interface RunBuildTriggerRequest {
   projectId?: string;
 }
 
-export const RunBuildTriggerRequest: Schema.Schema<RunBuildTriggerRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      triggerId: Schema.optional(Schema.String),
-      source: Schema.optional(RepoSource),
-      projectId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RunBuildTriggerRequest",
-  }) as any as Schema.Schema<RunBuildTriggerRequest>;
+export const RunBuildTriggerRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    triggerId: Schema.optional(Schema.String),
+    source: Schema.optional(RepoSource),
+    projectId: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "RunBuildTriggerRequest" });
 
 export interface ProcessAppManifestCallbackOperationMetadata {
   /** Time the operation was created. */
@@ -2457,16 +2056,12 @@ export interface ProcessAppManifestCallbackOperationMetadata {
   completeTime?: string;
 }
 
-export const ProcessAppManifestCallbackOperationMetadata: Schema.Schema<ProcessAppManifestCallbackOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      githubEnterpriseConfig: Schema.optional(Schema.String),
-      completeTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProcessAppManifestCallbackOperationMetadata",
-  }) as any as Schema.Schema<ProcessAppManifestCallbackOperationMetadata>;
+export const ProcessAppManifestCallbackOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    githubEnterpriseConfig: Schema.optional(Schema.String),
+    completeTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ProcessAppManifestCallbackOperationMetadata" });
 
 export interface Operation {
   /** The error result of the operation in case of failure or cancellation. */
@@ -2481,23 +2076,20 @@ export interface Operation {
   name?: string;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      error: Schema.optional(Status),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      done: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  error: Schema.optional(Status),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  done: Schema.optional(Schema.Boolean),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Operation" });
 
 export interface ReceiveTriggerWebhookResponse {}
 
-export const ReceiveTriggerWebhookResponse: Schema.Schema<ReceiveTriggerWebhookResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const ReceiveTriggerWebhookResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "ReceiveTriggerWebhookResponse",
-  }) as any as Schema.Schema<ReceiveTriggerWebhookResponse>;
+  });
 
 export interface GitHubEnterpriseConfig {
   /** Optional. SSL certificate to use for requests to GitHub Enterprise. */
@@ -2520,36 +2112,29 @@ export interface GitHubEnterpriseConfig {
   webhookKey?: string;
 }
 
-export const GitHubEnterpriseConfig: Schema.Schema<GitHubEnterpriseConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sslCa: Schema.optional(Schema.String),
-      hostUrl: Schema.optional(Schema.String),
-      secrets: Schema.optional(GitHubEnterpriseSecrets),
-      displayName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      appId: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      peeredNetwork: Schema.optional(Schema.String),
-      webhookKey: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GitHubEnterpriseConfig",
-  }) as any as Schema.Schema<GitHubEnterpriseConfig>;
+export const GitHubEnterpriseConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    sslCa: Schema.optional(Schema.String),
+    hostUrl: Schema.optional(Schema.String),
+    secrets: Schema.optional(GitHubEnterpriseSecrets),
+    displayName: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    appId: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    peeredNetwork: Schema.optional(Schema.String),
+    webhookKey: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "GitHubEnterpriseConfig" });
 
 export interface ListGithubEnterpriseConfigsResponse {
   /** A list of GitHubEnterpriseConfigs */
   configs?: Array<GitHubEnterpriseConfig>;
 }
 
-export const ListGithubEnterpriseConfigsResponse: Schema.Schema<ListGithubEnterpriseConfigsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      configs: Schema.optional(Schema.Array(GitHubEnterpriseConfig)),
-    }),
-  ).annotate({
-    identifier: "ListGithubEnterpriseConfigsResponse",
-  }) as any as Schema.Schema<ListGithubEnterpriseConfigsResponse>;
+export const ListGithubEnterpriseConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    configs: Schema.optional(Schema.Array(GitHubEnterpriseConfig)),
+  }).annotate({ identifier: "ListGithubEnterpriseConfigsResponse" });
 
 export interface CreateWorkerPoolOperationMetadata {
   /** Time the operation was completed. */
@@ -2560,44 +2145,33 @@ export interface CreateWorkerPoolOperationMetadata {
   createTime?: string;
 }
 
-export const CreateWorkerPoolOperationMetadata: Schema.Schema<CreateWorkerPoolOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      completeTime: Schema.optional(Schema.String),
-      workerPool: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CreateWorkerPoolOperationMetadata",
-  }) as any as Schema.Schema<CreateWorkerPoolOperationMetadata>;
+export const CreateWorkerPoolOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    completeTime: Schema.optional(Schema.String),
+    workerPool: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CreateWorkerPoolOperationMetadata" });
 
 export interface RemoveGitLabConnectedRepositoryRequest {
   /** The connected repository to remove. */
   connectedRepository?: GitLabRepositoryId;
 }
 
-export const RemoveGitLabConnectedRepositoryRequest: Schema.Schema<RemoveGitLabConnectedRepositoryRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      connectedRepository: Schema.optional(GitLabRepositoryId),
-    }),
-  ).annotate({
-    identifier: "RemoveGitLabConnectedRepositoryRequest",
-  }) as any as Schema.Schema<RemoveGitLabConnectedRepositoryRequest>;
+export const RemoveGitLabConnectedRepositoryRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    connectedRepository: Schema.optional(GitLabRepositoryId),
+  }).annotate({ identifier: "RemoveGitLabConnectedRepositoryRequest" });
 
 export interface BuildOperationMetadata {
   /** The build that the operation is tracking. */
   build?: Build;
 }
 
-export const BuildOperationMetadata: Schema.Schema<BuildOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      build: Schema.optional(Build),
-    }),
-  ).annotate({
-    identifier: "BuildOperationMetadata",
-  }) as any as Schema.Schema<BuildOperationMetadata>;
+export const BuildOperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    build: Schema.optional(Build),
+  },
+).annotate({ identifier: "BuildOperationMetadata" });
 
 export interface BatchCreateGitLabConnectedRepositoriesResponseMetadata {
   /** Time the operation was created. */
@@ -2608,16 +2182,14 @@ export interface BatchCreateGitLabConnectedRepositoriesResponseMetadata {
   completeTime?: string;
 }
 
-export const BatchCreateGitLabConnectedRepositoriesResponseMetadata: Schema.Schema<BatchCreateGitLabConnectedRepositoriesResponseMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      config: Schema.optional(Schema.String),
-      completeTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const BatchCreateGitLabConnectedRepositoriesResponseMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    config: Schema.optional(Schema.String),
+    completeTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "BatchCreateGitLabConnectedRepositoriesResponseMetadata",
-  }) as any as Schema.Schema<BatchCreateGitLabConnectedRepositoriesResponseMetadata>;
+  });
 
 export interface ArtifactResult {
   /** The file hash of the artifact. */
@@ -2626,15 +2198,10 @@ export interface ArtifactResult {
   location?: string;
 }
 
-export const ArtifactResult: Schema.Schema<ArtifactResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fileHash: Schema.optional(Schema.Array(FileHashes)),
-      location: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ArtifactResult",
-  }) as any as Schema.Schema<ArtifactResult>;
+export const ArtifactResult = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fileHash: Schema.optional(Schema.Array(FileHashes)),
+  location: Schema.optional(Schema.String),
+}).annotate({ identifier: "ArtifactResult" });
 
 export interface UpdateGitHubEnterpriseConfigOperationMetadata {
   /** Time the operation was created. */
@@ -2645,16 +2212,12 @@ export interface UpdateGitHubEnterpriseConfigOperationMetadata {
   completeTime?: string;
 }
 
-export const UpdateGitHubEnterpriseConfigOperationMetadata: Schema.Schema<UpdateGitHubEnterpriseConfigOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      githubEnterpriseConfig: Schema.optional(Schema.String),
-      completeTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpdateGitHubEnterpriseConfigOperationMetadata",
-  }) as any as Schema.Schema<UpdateGitHubEnterpriseConfigOperationMetadata>;
+export const UpdateGitHubEnterpriseConfigOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    githubEnterpriseConfig: Schema.optional(Schema.String),
+    completeTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UpdateGitHubEnterpriseConfigOperationMetadata" });
 
 export interface ListWorkerPoolsResponse {
   /** `WorkerPools` for the specified project. */
@@ -2663,15 +2226,11 @@ export interface ListWorkerPoolsResponse {
   nextPageToken?: string;
 }
 
-export const ListWorkerPoolsResponse: Schema.Schema<ListWorkerPoolsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      workerPools: Schema.optional(Schema.Array(WorkerPool)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListWorkerPoolsResponse",
-  }) as any as Schema.Schema<ListWorkerPoolsResponse>;
+export const ListWorkerPoolsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    workerPools: Schema.optional(Schema.Array(WorkerPool)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListWorkerPoolsResponse" });
 
 export interface UpdateWorkerPoolOperationMetadata {
   /** The resource name of the `WorkerPool` being updated. Format: `projects/{project}/locations/{location}/workerPools/{worker_pool}`. */
@@ -2682,16 +2241,12 @@ export interface UpdateWorkerPoolOperationMetadata {
   completeTime?: string;
 }
 
-export const UpdateWorkerPoolOperationMetadata: Schema.Schema<UpdateWorkerPoolOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      workerPool: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      completeTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpdateWorkerPoolOperationMetadata",
-  }) as any as Schema.Schema<UpdateWorkerPoolOperationMetadata>;
+export const UpdateWorkerPoolOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    workerPool: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    completeTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UpdateWorkerPoolOperationMetadata" });
 
 export interface ListGitLabConfigsResponse {
   /** A list of GitLabConfigs */
@@ -2700,31 +2255,25 @@ export interface ListGitLabConfigsResponse {
   nextPageToken?: string;
 }
 
-export const ListGitLabConfigsResponse: Schema.Schema<ListGitLabConfigsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gitlabConfigs: Schema.optional(Schema.Array(GitLabConfig)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListGitLabConfigsResponse",
-  }) as any as Schema.Schema<ListGitLabConfigsResponse>;
+export const ListGitLabConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gitlabConfigs: Schema.optional(Schema.Array(GitLabConfig)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListGitLabConfigsResponse" });
 
 export interface BatchCreateBitbucketServerConnectedRepositoriesRequest {
   /** Required. Requests to connect Bitbucket Server repositories. */
   requests?: Array<CreateBitbucketServerConnectedRepositoryRequest>;
 }
 
-export const BatchCreateBitbucketServerConnectedRepositoriesRequest: Schema.Schema<BatchCreateBitbucketServerConnectedRepositoriesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requests: Schema.optional(
-        Schema.Array(CreateBitbucketServerConnectedRepositoryRequest),
-      ),
-    }),
-  ).annotate({
+export const BatchCreateBitbucketServerConnectedRepositoriesRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requests: Schema.optional(
+      Schema.Array(CreateBitbucketServerConnectedRepositoryRequest),
+    ),
+  }).annotate({
     identifier: "BatchCreateBitbucketServerConnectedRepositoriesRequest",
-  }) as any as Schema.Schema<BatchCreateBitbucketServerConnectedRepositoriesRequest>;
+  });
 
 export interface OperationMetadata {
   /** Output only. The time the operation was created. */
@@ -2743,20 +2292,15 @@ export interface OperationMetadata {
   statusDetail?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      cancelRequested: Schema.optional(Schema.Boolean),
-      apiVersion: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      statusDetail: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  verb: Schema.optional(Schema.String),
+  cancelRequested: Schema.optional(Schema.Boolean),
+  apiVersion: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  statusDetail: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationMetadata" });
 
 export interface DeleteGitHubEnterpriseConfigOperationMetadata {
   /** The resource name of the GitHubEnterprise to be deleted. Format: `projects/{project}/locations/{location}/githubEnterpriseConfigs/{id}`. */
@@ -2767,16 +2311,12 @@ export interface DeleteGitHubEnterpriseConfigOperationMetadata {
   createTime?: string;
 }
 
-export const DeleteGitHubEnterpriseConfigOperationMetadata: Schema.Schema<DeleteGitHubEnterpriseConfigOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      githubEnterpriseConfig: Schema.optional(Schema.String),
-      completeTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DeleteGitHubEnterpriseConfigOperationMetadata",
-  }) as any as Schema.Schema<DeleteGitHubEnterpriseConfigOperationMetadata>;
+export const DeleteGitHubEnterpriseConfigOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    githubEnterpriseConfig: Schema.optional(Schema.String),
+    completeTime: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DeleteGitHubEnterpriseConfigOperationMetadata" });
 
 export interface BatchCreateBitbucketServerConnectedRepositoriesResponseMetadata {
   /** The name of the `BitbucketServerConfig` that added connected repositories. Format: `projects/{project}/locations/{location}/bitbucketServerConfigs/{config}` */
@@ -2787,17 +2327,15 @@ export interface BatchCreateBitbucketServerConnectedRepositoriesResponseMetadata
   createTime?: string;
 }
 
-export const BatchCreateBitbucketServerConnectedRepositoriesResponseMetadata: Schema.Schema<BatchCreateBitbucketServerConnectedRepositoriesResponseMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      config: Schema.optional(Schema.String),
-      completeTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const BatchCreateBitbucketServerConnectedRepositoriesResponseMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    config: Schema.optional(Schema.String),
+    completeTime: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({
     identifier:
       "BatchCreateBitbucketServerConnectedRepositoriesResponseMetadata",
-  }) as any as Schema.Schema<BatchCreateBitbucketServerConnectedRepositoriesResponseMetadata>;
+  });
 
 export interface HttpBody {
   /** The HTTP request/response body as raw binary. */
@@ -2808,16 +2346,13 @@ export interface HttpBody {
   contentType?: string;
 }
 
-export const HttpBody: Schema.Schema<HttpBody> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      data: Schema.optional(Schema.String),
-      extensions: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      contentType: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "HttpBody" }) as any as Schema.Schema<HttpBody>;
+export const HttpBody = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  data: Schema.optional(Schema.String),
+  extensions: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  contentType: Schema.optional(Schema.String),
+}).annotate({ identifier: "HttpBody" });
 
 export interface UpdateGitLabConfigOperationMetadata {
   /** Time the operation was created. */
@@ -2828,32 +2363,24 @@ export interface UpdateGitLabConfigOperationMetadata {
   completeTime?: string;
 }
 
-export const UpdateGitLabConfigOperationMetadata: Schema.Schema<UpdateGitLabConfigOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      gitlabConfig: Schema.optional(Schema.String),
-      completeTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpdateGitLabConfigOperationMetadata",
-  }) as any as Schema.Schema<UpdateGitLabConfigOperationMetadata>;
+export const UpdateGitLabConfigOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    createTime: Schema.optional(Schema.String),
+    gitlabConfig: Schema.optional(Schema.String),
+    completeTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "UpdateGitLabConfigOperationMetadata" });
 
 export interface BatchCreateGitLabConnectedRepositoriesResponse {
   /** The GitLab connected repository requests' responses. */
   gitlabConnectedRepositories?: Array<GitLabConnectedRepository>;
 }
 
-export const BatchCreateGitLabConnectedRepositoriesResponse: Schema.Schema<BatchCreateGitLabConnectedRepositoriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      gitlabConnectedRepositories: Schema.optional(
-        Schema.Array(GitLabConnectedRepository),
-      ),
-    }),
-  ).annotate({
-    identifier: "BatchCreateGitLabConnectedRepositoriesResponse",
-  }) as any as Schema.Schema<BatchCreateGitLabConnectedRepositoriesResponse>;
+export const BatchCreateGitLabConnectedRepositoriesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    gitlabConnectedRepositories: Schema.optional(
+      Schema.Array(GitLabConnectedRepository),
+    ),
+  }).annotate({ identifier: "BatchCreateGitLabConnectedRepositoriesResponse" });
 
 // ==========================================================================
 // Operations

@@ -29,25 +29,19 @@ export interface PlaceInfo {
   placeId?: string;
 }
 
-export const PlaceInfo: Schema.Schema<PlaceInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      placeName: Schema.optional(Schema.String),
-      placeId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "PlaceInfo" }) as any as Schema.Schema<PlaceInfo>;
+export const PlaceInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  placeName: Schema.optional(Schema.String),
+  placeId: Schema.optional(Schema.String),
+}).annotate({ identifier: "PlaceInfo" });
 
 export interface Places {
   /** The areas represented by place IDs. Limited to a maximum of 20 places. */
   placeInfos?: Array<PlaceInfo>;
 }
 
-export const Places: Schema.Schema<Places> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      placeInfos: Schema.optional(Schema.Array(PlaceInfo)),
-    }),
-  ).annotate({ identifier: "Places" }) as any as Schema.Schema<Places>;
+export const Places = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  placeInfos: Schema.optional(Schema.Array(PlaceInfo)),
+}).annotate({ identifier: "Places" });
 
 export interface Mybusinessbusinessinformation_Date {
   /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
@@ -58,16 +52,12 @@ export interface Mybusinessbusinessinformation_Date {
   year?: number;
 }
 
-export const Mybusinessbusinessinformation_Date: Schema.Schema<Mybusinessbusinessinformation_Date> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      month: Schema.optional(Schema.Number),
-      day: Schema.optional(Schema.Number),
-      year: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "Mybusinessbusinessinformation_Date",
-  }) as any as Schema.Schema<Mybusinessbusinessinformation_Date>;
+export const Mybusinessbusinessinformation_Date =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    month: Schema.optional(Schema.Number),
+    day: Schema.optional(Schema.Number),
+    year: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "Mybusinessbusinessinformation_Date" });
 
 export interface ServiceType {
   /** Output only. A stable ID (provided by Google) for this service type. */
@@ -76,15 +66,10 @@ export interface ServiceType {
   displayName?: string;
 }
 
-export const ServiceType: Schema.Schema<ServiceType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serviceTypeId: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ServiceType",
-  }) as any as Schema.Schema<ServiceType>;
+export const ServiceType = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  serviceTypeId: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+}).annotate({ identifier: "ServiceType" });
 
 export interface MoreHoursType {
   /** Output only. The human-readable English display name for the hours type. */
@@ -95,16 +80,11 @@ export interface MoreHoursType {
   hoursTypeId?: string;
 }
 
-export const MoreHoursType: Schema.Schema<MoreHoursType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      localizedDisplayName: Schema.optional(Schema.String),
-      hoursTypeId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MoreHoursType",
-  }) as any as Schema.Schema<MoreHoursType>;
+export const MoreHoursType = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+  localizedDisplayName: Schema.optional(Schema.String),
+  hoursTypeId: Schema.optional(Schema.String),
+}).annotate({ identifier: "MoreHoursType" });
 
 export interface Category {
   /** Output only. The human-readable name of the category. This is set when reading the location. When modifying the location, `category_id` must be set. */
@@ -117,29 +97,22 @@ export interface Category {
   name?: string;
 }
 
-export const Category: Schema.Schema<Category> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      serviceTypes: Schema.optional(Schema.Array(ServiceType)),
-      moreHoursTypes: Schema.optional(Schema.Array(MoreHoursType)),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Category" }) as any as Schema.Schema<Category>;
+export const Category = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+  serviceTypes: Schema.optional(Schema.Array(ServiceType)),
+  moreHoursTypes: Schema.optional(Schema.Array(MoreHoursType)),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Category" });
 
 export interface BatchGetCategoriesResponse {
   /** Categories that match the GConcept ids provided in the request. They will not come in the same order as category ids in the request. */
   categories?: Array<Category>;
 }
 
-export const BatchGetCategoriesResponse: Schema.Schema<BatchGetCategoriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      categories: Schema.optional(Schema.Array(Category)),
-    }),
-  ).annotate({
-    identifier: "BatchGetCategoriesResponse",
-  }) as any as Schema.Schema<BatchGetCategoriesResponse>;
+export const BatchGetCategoriesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    categories: Schema.optional(Schema.Array(Category)),
+  }).annotate({ identifier: "BatchGetCategoriesResponse" });
 
 export interface Label {
   /** Optional. The BCP-47 language code that these strings apply for. Only one set of labels may be set per language. */
@@ -150,14 +123,11 @@ export interface Label {
   description?: string;
 }
 
-export const Label: Schema.Schema<Label> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      languageCode: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Label" }) as any as Schema.Schema<Label>;
+export const Label = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  languageCode: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "Label" });
 
 export interface AttributeValueMetadata {
   /** The attribute value. */
@@ -166,15 +136,12 @@ export interface AttributeValueMetadata {
   displayName?: string;
 }
 
-export const AttributeValueMetadata: Schema.Schema<AttributeValueMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.Unknown),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AttributeValueMetadata",
-  }) as any as Schema.Schema<AttributeValueMetadata>;
+export const AttributeValueMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    value: Schema.optional(Schema.Unknown),
+    displayName: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "AttributeValueMetadata" });
 
 export interface StructuredServiceItem {
   /** Required. The `service_type_id` field is a Google provided unique ID that can be found in `ServiceType`. This information is provided by `BatchGetCategories` rpc service. */
@@ -183,15 +150,10 @@ export interface StructuredServiceItem {
   description?: string;
 }
 
-export const StructuredServiceItem: Schema.Schema<StructuredServiceItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serviceTypeId: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StructuredServiceItem",
-  }) as any as Schema.Schema<StructuredServiceItem>;
+export const StructuredServiceItem = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  serviceTypeId: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "StructuredServiceItem" });
 
 export interface TimeOfDay {
   /** Seconds of a minute. Must be greater than or equal to 0 and typically must be less than or equal to 59. An API may allow the value 60 if it allows leap-seconds. */
@@ -204,15 +166,12 @@ export interface TimeOfDay {
   hours?: number;
 }
 
-export const TimeOfDay: Schema.Schema<TimeOfDay> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      seconds: Schema.optional(Schema.Number),
-      nanos: Schema.optional(Schema.Number),
-      minutes: Schema.optional(Schema.Number),
-      hours: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "TimeOfDay" }) as any as Schema.Schema<TimeOfDay>;
+export const TimeOfDay = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  seconds: Schema.optional(Schema.Number),
+  nanos: Schema.optional(Schema.Number),
+  minutes: Schema.optional(Schema.Number),
+  hours: Schema.optional(Schema.Number),
+}).annotate({ identifier: "TimeOfDay" });
 
 export interface FreeFormServiceItem {
   /** Required. This field represents the category name (i.e. the category's stable ID). The `category` and `service_type_id` should match the possible combinations provided in the `Category` message. */
@@ -221,15 +180,10 @@ export interface FreeFormServiceItem {
   label?: Label;
 }
 
-export const FreeFormServiceItem: Schema.Schema<FreeFormServiceItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      category: Schema.optional(Schema.String),
-      label: Schema.optional(Label),
-    }),
-  ).annotate({
-    identifier: "FreeFormServiceItem",
-  }) as any as Schema.Schema<FreeFormServiceItem>;
+export const FreeFormServiceItem = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  category: Schema.optional(Schema.String),
+  label: Schema.optional(Label),
+}).annotate({ identifier: "FreeFormServiceItem" });
 
 export interface Money {
   /** The three-letter currency code defined in ISO 4217. */
@@ -240,14 +194,11 @@ export interface Money {
   nanos?: number;
 }
 
-export const Money: Schema.Schema<Money> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      currencyCode: Schema.optional(Schema.String),
-      units: Schema.optional(Schema.String),
-      nanos: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Money" }) as any as Schema.Schema<Money>;
+export const Money = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  currencyCode: Schema.optional(Schema.String),
+  units: Schema.optional(Schema.String),
+  nanos: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Money" });
 
 export interface ServiceItem {
   /** Optional. This field will be set case of free-form services data. */
@@ -258,23 +209,17 @@ export interface ServiceItem {
   structuredServiceItem?: StructuredServiceItem;
 }
 
-export const ServiceItem: Schema.Schema<ServiceItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      freeFormServiceItem: Schema.optional(FreeFormServiceItem),
-      price: Schema.optional(Money),
-      structuredServiceItem: Schema.optional(StructuredServiceItem),
-    }),
-  ).annotate({
-    identifier: "ServiceItem",
-  }) as any as Schema.Schema<ServiceItem>;
+export const ServiceItem = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  freeFormServiceItem: Schema.optional(FreeFormServiceItem),
+  price: Schema.optional(Money),
+  structuredServiceItem: Schema.optional(StructuredServiceItem),
+}).annotate({ identifier: "ServiceItem" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface SpecialHourPeriod {
   /** Optional. Valid values are 00:00-24:00, where 24:00 represents midnight at the end of the specified day field. Must be specified if `closed` is false. */
@@ -289,18 +234,13 @@ export interface SpecialHourPeriod {
   closed?: boolean;
 }
 
-export const SpecialHourPeriod: Schema.Schema<SpecialHourPeriod> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      closeTime: Schema.optional(TimeOfDay),
-      startDate: Schema.optional(Mybusinessbusinessinformation_Date),
-      openTime: Schema.optional(TimeOfDay),
-      endDate: Schema.optional(Mybusinessbusinessinformation_Date),
-      closed: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "SpecialHourPeriod",
-  }) as any as Schema.Schema<SpecialHourPeriod>;
+export const SpecialHourPeriod = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  closeTime: Schema.optional(TimeOfDay),
+  startDate: Schema.optional(Mybusinessbusinessinformation_Date),
+  openTime: Schema.optional(TimeOfDay),
+  endDate: Schema.optional(Mybusinessbusinessinformation_Date),
+  closed: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "SpecialHourPeriod" });
 
 export interface RepeatedEnumAttributeValue {
   /** Enum values that are set. */
@@ -309,29 +249,20 @@ export interface RepeatedEnumAttributeValue {
   unsetValues?: Array<string>;
 }
 
-export const RepeatedEnumAttributeValue: Schema.Schema<RepeatedEnumAttributeValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      setValues: Schema.optional(Schema.Array(Schema.String)),
-      unsetValues: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "RepeatedEnumAttributeValue",
-  }) as any as Schema.Schema<RepeatedEnumAttributeValue>;
+export const RepeatedEnumAttributeValue =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    setValues: Schema.optional(Schema.Array(Schema.String)),
+    unsetValues: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "RepeatedEnumAttributeValue" });
 
 export interface UriAttributeValue {
   /** Required. The proposed URI value for this attribute. */
   uri?: string;
 }
 
-export const UriAttributeValue: Schema.Schema<UriAttributeValue> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UriAttributeValue",
-  }) as any as Schema.Schema<UriAttributeValue>;
+export const UriAttributeValue = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  uri: Schema.optional(Schema.String),
+}).annotate({ identifier: "UriAttributeValue" });
 
 export interface Attribute {
   /** When the attribute value type is REPEATED_ENUM, this contains the attribute value, and the other values fields must be empty. */
@@ -352,16 +283,13 @@ export interface Attribute {
   name?: string;
 }
 
-export const Attribute: Schema.Schema<Attribute> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      repeatedEnumValue: Schema.optional(RepeatedEnumAttributeValue),
-      values: Schema.optional(Schema.Array(Schema.Unknown)),
-      uriValues: Schema.optional(Schema.Array(UriAttributeValue)),
-      valueType: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Attribute" }) as any as Schema.Schema<Attribute>;
+export const Attribute = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  repeatedEnumValue: Schema.optional(RepeatedEnumAttributeValue),
+  values: Schema.optional(Schema.Array(Schema.Unknown)),
+  uriValues: Schema.optional(Schema.Array(UriAttributeValue)),
+  valueType: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Attribute" });
 
 export interface Attributes {
   /** Required. Google identifier for this location in the form of `locations/{location_id}/attributes`. */
@@ -370,13 +298,10 @@ export interface Attributes {
   attributes?: Array<Attribute>;
 }
 
-export const Attributes: Schema.Schema<Attributes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      attributes: Schema.optional(Schema.Array(Attribute)),
-    }),
-  ).annotate({ identifier: "Attributes" }) as any as Schema.Schema<Attributes>;
+export const Attributes = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  attributes: Schema.optional(Schema.Array(Attribute)),
+}).annotate({ identifier: "Attributes" });
 
 export interface PostalAddress {
   /** The schema revision of the `PostalAddress`. This must be set to 0, which is the latest revision. All new revisions **must** be backward compatible with old revisions. */
@@ -403,24 +328,19 @@ export interface PostalAddress {
   sublocality?: string;
 }
 
-export const PostalAddress: Schema.Schema<PostalAddress> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      revision: Schema.optional(Schema.Number),
-      languageCode: Schema.optional(Schema.String),
-      regionCode: Schema.optional(Schema.String),
-      sortingCode: Schema.optional(Schema.String),
-      locality: Schema.optional(Schema.String),
-      recipients: Schema.optional(Schema.Array(Schema.String)),
-      postalCode: Schema.optional(Schema.String),
-      addressLines: Schema.optional(Schema.Array(Schema.String)),
-      administrativeArea: Schema.optional(Schema.String),
-      organization: Schema.optional(Schema.String),
-      sublocality: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PostalAddress",
-  }) as any as Schema.Schema<PostalAddress>;
+export const PostalAddress = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  revision: Schema.optional(Schema.Number),
+  languageCode: Schema.optional(Schema.String),
+  regionCode: Schema.optional(Schema.String),
+  sortingCode: Schema.optional(Schema.String),
+  locality: Schema.optional(Schema.String),
+  recipients: Schema.optional(Schema.Array(Schema.String)),
+  postalCode: Schema.optional(Schema.String),
+  addressLines: Schema.optional(Schema.Array(Schema.String)),
+  administrativeArea: Schema.optional(Schema.String),
+  organization: Schema.optional(Schema.String),
+  sublocality: Schema.optional(Schema.String),
+}).annotate({ identifier: "PostalAddress" });
 
 export interface RelevantLocation {
   /** Required. Specify the location that is on the other side of the relation by its placeID. */
@@ -433,15 +353,10 @@ export interface RelevantLocation {
     | (string & {});
 }
 
-export const RelevantLocation: Schema.Schema<RelevantLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      placeId: Schema.optional(Schema.String),
-      relationType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RelevantLocation",
-  }) as any as Schema.Schema<RelevantLocation>;
+export const RelevantLocation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  placeId: Schema.optional(Schema.String),
+  relationType: Schema.optional(Schema.String),
+}).annotate({ identifier: "RelevantLocation" });
 
 export interface AttributeMetadata {
   /** If true, the attribute supports multiple values. If false, only a single value should be provided. */
@@ -466,20 +381,15 @@ export interface AttributeMetadata {
   valueMetadata?: Array<AttributeValueMetadata>;
 }
 
-export const AttributeMetadata: Schema.Schema<AttributeMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      repeatable: Schema.optional(Schema.Boolean),
-      parent: Schema.optional(Schema.String),
-      valueType: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      deprecated: Schema.optional(Schema.Boolean),
-      groupDisplayName: Schema.optional(Schema.String),
-      valueMetadata: Schema.optional(Schema.Array(AttributeValueMetadata)),
-    }),
-  ).annotate({
-    identifier: "AttributeMetadata",
-  }) as any as Schema.Schema<AttributeMetadata>;
+export const AttributeMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  repeatable: Schema.optional(Schema.Boolean),
+  parent: Schema.optional(Schema.String),
+  valueType: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  deprecated: Schema.optional(Schema.Boolean),
+  groupDisplayName: Schema.optional(Schema.String),
+  valueMetadata: Schema.optional(Schema.Array(AttributeValueMetadata)),
+}).annotate({ identifier: "AttributeMetadata" });
 
 export interface ListAttributeMetadataResponse {
   /** A collection of attribute metadata for the available attributes. */
@@ -488,15 +398,11 @@ export interface ListAttributeMetadataResponse {
   nextPageToken?: string;
 }
 
-export const ListAttributeMetadataResponse: Schema.Schema<ListAttributeMetadataResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      attributeMetadata: Schema.optional(Schema.Array(AttributeMetadata)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAttributeMetadataResponse",
-  }) as any as Schema.Schema<ListAttributeMetadataResponse>;
+export const ListAttributeMetadataResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    attributeMetadata: Schema.optional(Schema.Array(AttributeMetadata)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListAttributeMetadataResponse" });
 
 export interface ChainName {
   /** The BCP 47 code of language of the name. */
@@ -505,13 +411,10 @@ export interface ChainName {
   displayName?: string;
 }
 
-export const ChainName: Schema.Schema<ChainName> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      languageCode: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "ChainName" }) as any as Schema.Schema<ChainName>;
+export const ChainName = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  languageCode: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+}).annotate({ identifier: "ChainName" });
 
 export interface PhoneNumbers {
   /** Required. A phone number that connects to your individual business location as directly as possible. Use a local phone number instead of a central, call center helpline number whenever possible. */
@@ -520,41 +423,29 @@ export interface PhoneNumbers {
   additionalPhones?: Array<string>;
 }
 
-export const PhoneNumbers: Schema.Schema<PhoneNumbers> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      primaryPhone: Schema.optional(Schema.String),
-      additionalPhones: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "PhoneNumbers",
-  }) as any as Schema.Schema<PhoneNumbers>;
+export const PhoneNumbers = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  primaryPhone: Schema.optional(Schema.String),
+  additionalPhones: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "PhoneNumbers" });
 
 export interface Profile {
   /** Required. Description of the location in your own voice, not editable by anyone else. */
   description?: string;
 }
 
-export const Profile: Schema.Schema<Profile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Profile" }) as any as Schema.Schema<Profile>;
+export const Profile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "Profile" });
 
 export interface AdWordsLocationExtensions {
   /** Required. An alternate phone number to display on AdWords location extensions instead of the location's primary phone number. */
   adPhone?: string;
 }
 
-export const AdWordsLocationExtensions: Schema.Schema<AdWordsLocationExtensions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      adPhone: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AdWordsLocationExtensions",
-  }) as any as Schema.Schema<AdWordsLocationExtensions>;
+export const AdWordsLocationExtensions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    adPhone: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AdWordsLocationExtensions" });
 
 export interface ServiceAreaBusiness {
   /** Required. Indicates the type of the service area business. */
@@ -569,16 +460,11 @@ export interface ServiceAreaBusiness {
   regionCode?: string;
 }
 
-export const ServiceAreaBusiness: Schema.Schema<ServiceAreaBusiness> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      businessType: Schema.optional(Schema.String),
-      places: Schema.optional(Places),
-      regionCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ServiceAreaBusiness",
-  }) as any as Schema.Schema<ServiceAreaBusiness>;
+export const ServiceAreaBusiness = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  businessType: Schema.optional(Schema.String),
+  places: Schema.optional(Places),
+  regionCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "ServiceAreaBusiness" });
 
 export interface LatLng {
   /** The latitude in degrees. It must be in the range [-90.0, +90.0]. */
@@ -587,13 +473,10 @@ export interface LatLng {
   longitude?: number;
 }
 
-export const LatLng: Schema.Schema<LatLng> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      latitude: Schema.optional(Schema.Number),
-      longitude: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "LatLng" }) as any as Schema.Schema<LatLng>;
+export const LatLng = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  latitude: Schema.optional(Schema.Number),
+  longitude: Schema.optional(Schema.Number),
+}).annotate({ identifier: "LatLng" });
 
 export interface Categories {
   /** Required. Category that best describes the core business this location engages in. */
@@ -602,27 +485,19 @@ export interface Categories {
   additionalCategories?: Array<Category>;
 }
 
-export const Categories: Schema.Schema<Categories> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      primaryCategory: Schema.optional(Category),
-      additionalCategories: Schema.optional(Schema.Array(Category)),
-    }),
-  ).annotate({ identifier: "Categories" }) as any as Schema.Schema<Categories>;
+export const Categories = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  primaryCategory: Schema.optional(Category),
+  additionalCategories: Schema.optional(Schema.Array(Category)),
+}).annotate({ identifier: "Categories" });
 
 export interface SpecialHours {
   /** Required. A list of exceptions to the business's regular hours. */
   specialHourPeriods?: Array<SpecialHourPeriod>;
 }
 
-export const SpecialHours: Schema.Schema<SpecialHours> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      specialHourPeriods: Schema.optional(Schema.Array(SpecialHourPeriod)),
-    }),
-  ).annotate({
-    identifier: "SpecialHours",
-  }) as any as Schema.Schema<SpecialHours>;
+export const SpecialHours = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  specialHourPeriods: Schema.optional(Schema.Array(SpecialHourPeriod)),
+}).annotate({ identifier: "SpecialHours" });
 
 export interface RelationshipData {
   /** The parent location that this location has relations with. */
@@ -633,16 +508,11 @@ export interface RelationshipData {
   childrenLocations?: Array<RelevantLocation>;
 }
 
-export const RelationshipData: Schema.Schema<RelationshipData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parentLocation: Schema.optional(RelevantLocation),
-      parentChain: Schema.optional(Schema.String),
-      childrenLocations: Schema.optional(Schema.Array(RelevantLocation)),
-    }),
-  ).annotate({
-    identifier: "RelationshipData",
-  }) as any as Schema.Schema<RelationshipData>;
+export const RelationshipData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  parentLocation: Schema.optional(RelevantLocation),
+  parentChain: Schema.optional(Schema.String),
+  childrenLocations: Schema.optional(Schema.Array(RelevantLocation)),
+}).annotate({ identifier: "RelationshipData" });
 
 export interface TimePeriod {
   /** Required. Valid values are 00:00-24:00, where 24:00 represents midnight at the end of the specified day field. */
@@ -673,29 +543,21 @@ export interface TimePeriod {
     | (string & {});
 }
 
-export const TimePeriod: Schema.Schema<TimePeriod> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      openTime: Schema.optional(TimeOfDay),
-      closeDay: Schema.optional(Schema.String),
-      closeTime: Schema.optional(TimeOfDay),
-      openDay: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "TimePeriod" }) as any as Schema.Schema<TimePeriod>;
+export const TimePeriod = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  openTime: Schema.optional(TimeOfDay),
+  closeDay: Schema.optional(Schema.String),
+  closeTime: Schema.optional(TimeOfDay),
+  openDay: Schema.optional(Schema.String),
+}).annotate({ identifier: "TimePeriod" });
 
 export interface BusinessHours {
   /** Required. A collection of times that this location is open for business. Each period represents a range of hours when the location is open during the week. */
   periods?: Array<TimePeriod>;
 }
 
-export const BusinessHours: Schema.Schema<BusinessHours> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      periods: Schema.optional(Schema.Array(TimePeriod)),
-    }),
-  ).annotate({
-    identifier: "BusinessHours",
-  }) as any as Schema.Schema<BusinessHours>;
+export const BusinessHours = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  periods: Schema.optional(Schema.Array(TimePeriod)),
+}).annotate({ identifier: "BusinessHours" });
 
 export interface OpenInfo {
   /** Required. Indicates whether or not the Location is currently open for business. All locations are open by default, unless updated to be closed. */
@@ -711,14 +573,11 @@ export interface OpenInfo {
   canReopen?: boolean;
 }
 
-export const OpenInfo: Schema.Schema<OpenInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      status: Schema.optional(Schema.String),
-      openingDate: Schema.optional(Mybusinessbusinessinformation_Date),
-      canReopen: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "OpenInfo" }) as any as Schema.Schema<OpenInfo>;
+export const OpenInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  status: Schema.optional(Schema.String),
+  openingDate: Schema.optional(Mybusinessbusinessinformation_Date),
+  canReopen: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "OpenInfo" });
 
 export interface Metadata {
   /** Output only. Indicates if the listing is eligible for food menu. */
@@ -753,26 +612,23 @@ export interface Metadata {
   canHaveBusinessCalls?: boolean;
 }
 
-export const Metadata: Schema.Schema<Metadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      canHaveFoodMenus: Schema.optional(Schema.Boolean),
-      newReviewUri: Schema.optional(Schema.String),
-      canDelete: Schema.optional(Schema.Boolean),
-      mapsUri: Schema.optional(Schema.String),
-      canOperateLodgingData: Schema.optional(Schema.Boolean),
-      placeId: Schema.optional(Schema.String),
-      hasVoiceOfMerchant: Schema.optional(Schema.Boolean),
-      isParticularlyPersonalPlace: Schema.optional(Schema.Boolean),
-      canOperateHealthData: Schema.optional(Schema.Boolean),
-      duplicateLocation: Schema.optional(Schema.String),
-      hasGoogleUpdated: Schema.optional(Schema.Boolean),
-      canOperateLocalPost: Schema.optional(Schema.Boolean),
-      hasPendingEdits: Schema.optional(Schema.Boolean),
-      canModifyServiceList: Schema.optional(Schema.Boolean),
-      canHaveBusinessCalls: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "Metadata" }) as any as Schema.Schema<Metadata>;
+export const Metadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  canHaveFoodMenus: Schema.optional(Schema.Boolean),
+  newReviewUri: Schema.optional(Schema.String),
+  canDelete: Schema.optional(Schema.Boolean),
+  mapsUri: Schema.optional(Schema.String),
+  canOperateLodgingData: Schema.optional(Schema.Boolean),
+  placeId: Schema.optional(Schema.String),
+  hasVoiceOfMerchant: Schema.optional(Schema.Boolean),
+  isParticularlyPersonalPlace: Schema.optional(Schema.Boolean),
+  canOperateHealthData: Schema.optional(Schema.Boolean),
+  duplicateLocation: Schema.optional(Schema.String),
+  hasGoogleUpdated: Schema.optional(Schema.Boolean),
+  canOperateLocalPost: Schema.optional(Schema.Boolean),
+  hasPendingEdits: Schema.optional(Schema.Boolean),
+  canModifyServiceList: Schema.optional(Schema.Boolean),
+  canHaveBusinessCalls: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Metadata" });
 
 export interface MoreHours {
   /** Required. A collection of times that this location is open. Each period represents a range of hours when the location is open during the week. */
@@ -781,13 +637,10 @@ export interface MoreHours {
   hoursTypeId?: string;
 }
 
-export const MoreHours: Schema.Schema<MoreHours> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      periods: Schema.optional(Schema.Array(TimePeriod)),
-      hoursTypeId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "MoreHours" }) as any as Schema.Schema<MoreHours>;
+export const MoreHours = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  periods: Schema.optional(Schema.Array(TimePeriod)),
+  hoursTypeId: Schema.optional(Schema.String),
+}).annotate({ identifier: "MoreHours" });
 
 export interface Location {
   /** Required. Location name should reflect your business's real-world name, as used consistently on your storefront, website, and stationery, and as known to customers. Any additional information, when relevant, can be included in other fields of the resource (for example, `Address`, `Categories`). Don't add unnecessary information to your name (for example, prefer "Google" over "Google Inc. - Mountain View Corporate Headquarters"). Don't include marketing taglines, store codes, special characters, hours or closed/open status, phone numbers, website URLs, service/product information, location/address or directions, or containment information (for example, "Chase ATM in Duane Reade"). */
@@ -832,31 +685,28 @@ export interface Location {
   moreHours?: Array<MoreHours>;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      title: Schema.optional(Schema.String),
-      phoneNumbers: Schema.optional(PhoneNumbers),
-      profile: Schema.optional(Profile),
-      adWordsLocationExtensions: Schema.optional(AdWordsLocationExtensions),
-      serviceItems: Schema.optional(Schema.Array(ServiceItem)),
-      serviceArea: Schema.optional(ServiceAreaBusiness),
-      latlng: Schema.optional(LatLng),
-      categories: Schema.optional(Categories),
-      websiteUri: Schema.optional(Schema.String),
-      specialHours: Schema.optional(SpecialHours),
-      storefrontAddress: Schema.optional(PostalAddress),
-      relationshipData: Schema.optional(RelationshipData),
-      regularHours: Schema.optional(BusinessHours),
-      openInfo: Schema.optional(OpenInfo),
-      storeCode: Schema.optional(Schema.String),
-      metadata: Schema.optional(Metadata),
-      name: Schema.optional(Schema.String),
-      languageCode: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Array(Schema.String)),
-      moreHours: Schema.optional(Schema.Array(MoreHours)),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  title: Schema.optional(Schema.String),
+  phoneNumbers: Schema.optional(PhoneNumbers),
+  profile: Schema.optional(Profile),
+  adWordsLocationExtensions: Schema.optional(AdWordsLocationExtensions),
+  serviceItems: Schema.optional(Schema.Array(ServiceItem)),
+  serviceArea: Schema.optional(ServiceAreaBusiness),
+  latlng: Schema.optional(LatLng),
+  categories: Schema.optional(Categories),
+  websiteUri: Schema.optional(Schema.String),
+  specialHours: Schema.optional(SpecialHours),
+  storefrontAddress: Schema.optional(PostalAddress),
+  relationshipData: Schema.optional(RelationshipData),
+  regularHours: Schema.optional(BusinessHours),
+  openInfo: Schema.optional(OpenInfo),
+  storeCode: Schema.optional(Schema.String),
+  metadata: Schema.optional(Metadata),
+  name: Schema.optional(Schema.String),
+  languageCode: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Array(Schema.String)),
+  moreHours: Schema.optional(Schema.Array(MoreHours)),
+}).annotate({ identifier: "Location" });
 
 export interface GoogleUpdatedLocation {
   /** The Google-updated version of this location. */
@@ -867,16 +717,11 @@ export interface GoogleUpdatedLocation {
   diffMask?: string;
 }
 
-export const GoogleUpdatedLocation: Schema.Schema<GoogleUpdatedLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      location: Schema.optional(Location),
-      pendingMask: Schema.optional(Schema.String),
-      diffMask: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleUpdatedLocation",
-  }) as any as Schema.Schema<GoogleUpdatedLocation>;
+export const GoogleUpdatedLocation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  location: Schema.optional(Location),
+  pendingMask: Schema.optional(Schema.String),
+  diffMask: Schema.optional(Schema.String),
+}).annotate({ identifier: "GoogleUpdatedLocation" });
 
 export interface GoogleLocation {
   /** Resource name of this GoogleLocation, in the format `googleLocations/{googleLocationId}`. */
@@ -887,30 +732,21 @@ export interface GoogleLocation {
   location?: Location;
 }
 
-export const GoogleLocation: Schema.Schema<GoogleLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      requestAdminRightsUri: Schema.optional(Schema.String),
-      location: Schema.optional(Location),
-    }),
-  ).annotate({
-    identifier: "GoogleLocation",
-  }) as any as Schema.Schema<GoogleLocation>;
+export const GoogleLocation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  requestAdminRightsUri: Schema.optional(Schema.String),
+  location: Schema.optional(Location),
+}).annotate({ identifier: "GoogleLocation" });
 
 export interface SearchGoogleLocationsResponse {
   /** A collection of GoogleLocations that are potential matches to the specified request, listed in order from most to least accuracy. */
   googleLocations?: Array<GoogleLocation>;
 }
 
-export const SearchGoogleLocationsResponse: Schema.Schema<SearchGoogleLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      googleLocations: Schema.optional(Schema.Array(GoogleLocation)),
-    }),
-  ).annotate({
-    identifier: "SearchGoogleLocationsResponse",
-  }) as any as Schema.Schema<SearchGoogleLocationsResponse>;
+export const SearchGoogleLocationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    googleLocations: Schema.optional(Schema.Array(GoogleLocation)),
+  }).annotate({ identifier: "SearchGoogleLocationsResponse" });
 
 export interface ListCategoriesResponse {
   /** If the number of categories exceeded the requested page size, this field will be populated with a token to fetch the next page of categories on a subsequent call to `ListCategories`. */
@@ -919,27 +755,21 @@ export interface ListCategoriesResponse {
   categories?: Array<Category>;
 }
 
-export const ListCategoriesResponse: Schema.Schema<ListCategoriesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      categories: Schema.optional(Schema.Array(Category)),
-    }),
-  ).annotate({
-    identifier: "ListCategoriesResponse",
-  }) as any as Schema.Schema<ListCategoriesResponse>;
+export const ListCategoriesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    nextPageToken: Schema.optional(Schema.String),
+    categories: Schema.optional(Schema.Array(Category)),
+  },
+).annotate({ identifier: "ListCategoriesResponse" });
 
 export interface ChainUri {
   /** The uri for this chain. */
   uri?: string;
 }
 
-export const ChainUri: Schema.Schema<ChainUri> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      uri: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "ChainUri" }) as any as Schema.Schema<ChainUri>;
+export const ChainUri = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  uri: Schema.optional(Schema.String),
+}).annotate({ identifier: "ChainUri" });
 
 export interface Chain {
   /** Websites of the chain. */
@@ -952,15 +782,12 @@ export interface Chain {
   chainNames?: Array<ChainName>;
 }
 
-export const Chain: Schema.Schema<Chain> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      websites: Schema.optional(Schema.Array(ChainUri)),
-      locationCount: Schema.optional(Schema.Number),
-      name: Schema.optional(Schema.String),
-      chainNames: Schema.optional(Schema.Array(ChainName)),
-    }),
-  ).annotate({ identifier: "Chain" }) as any as Schema.Schema<Chain>;
+export const Chain = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  websites: Schema.optional(Schema.Array(ChainUri)),
+  locationCount: Schema.optional(Schema.Number),
+  name: Schema.optional(Schema.String),
+  chainNames: Schema.optional(Schema.Array(ChainName)),
+}).annotate({ identifier: "Chain" });
 
 export interface SearchGoogleLocationsRequest {
   /** Text query to search for. The search results from a query string will be less accurate than if providing an exact location, but can provide more inexact matches. */
@@ -971,16 +798,12 @@ export interface SearchGoogleLocationsRequest {
   location?: Location;
 }
 
-export const SearchGoogleLocationsRequest: Schema.Schema<SearchGoogleLocationsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      query: Schema.optional(Schema.String),
-      pageSize: Schema.optional(Schema.Number),
-      location: Schema.optional(Location),
-    }),
-  ).annotate({
-    identifier: "SearchGoogleLocationsRequest",
-  }) as any as Schema.Schema<SearchGoogleLocationsRequest>;
+export const SearchGoogleLocationsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    query: Schema.optional(Schema.String),
+    pageSize: Schema.optional(Schema.Number),
+    location: Schema.optional(Location),
+  }).annotate({ identifier: "SearchGoogleLocationsRequest" });
 
 export interface ListLocationsResponse {
   /** If the number of locations exceeded the requested page size, this field is populated with a token to fetch the next page of locations on a subsequent call to `ListLocations`. If there are no more locations, this field is not present in the response. */
@@ -991,30 +814,20 @@ export interface ListLocationsResponse {
   totalSize?: number;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      locations: Schema.optional(Schema.Array(Location)),
-      totalSize: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  locations: Schema.optional(Schema.Array(Location)),
+  totalSize: Schema.optional(Schema.Number),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface SearchChainsResponse {
   /** Chains that match the queried chain_display_name in SearchChainsRequest. If there are no matches, this field will be empty. Results are listed in order of relevance. */
   chains?: Array<Chain>;
 }
 
-export const SearchChainsResponse: Schema.Schema<SearchChainsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      chains: Schema.optional(Schema.Array(Chain)),
-    }),
-  ).annotate({
-    identifier: "SearchChainsResponse",
-  }) as any as Schema.Schema<SearchChainsResponse>;
+export const SearchChainsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  chains: Schema.optional(Schema.Array(Chain)),
+}).annotate({ identifier: "SearchChainsResponse" });
 
 // ==========================================================================
 // Operations

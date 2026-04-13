@@ -35,13 +35,10 @@ export interface Resource {
   pathTemplate?: string;
 }
 
-export const Resource: Schema.Schema<Resource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      pathTemplate: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Resource" }) as any as Schema.Schema<Resource>;
+export const Resource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  pathTemplate: Schema.optional(Schema.String),
+}).annotate({ identifier: "Resource" });
 
 export interface RoleGrant {
   /** Optional. Principal/Identity for whom the role need to assigned. */
@@ -54,15 +51,12 @@ export interface RoleGrant {
   resource?: Resource;
 }
 
-export const RoleGrant: Schema.Schema<RoleGrant> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      principal: Schema.optional(Schema.String),
-      roles: Schema.optional(Schema.Array(Schema.String)),
-      helperTextTemplate: Schema.optional(Schema.String),
-      resource: Schema.optional(Resource),
-    }),
-  ).annotate({ identifier: "RoleGrant" }) as any as Schema.Schema<RoleGrant>;
+export const RoleGrant = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  principal: Schema.optional(Schema.String),
+  roles: Schema.optional(Schema.Array(Schema.String)),
+  helperTextTemplate: Schema.optional(Schema.String),
+  resource: Schema.optional(Resource),
+}).annotate({ identifier: "RoleGrant" });
 
 export interface EndUserAuthenticationNotifyEndpointDestinationEndPointHeader {
   /** Required. Value of Header. */
@@ -71,15 +65,13 @@ export interface EndUserAuthenticationNotifyEndpointDestinationEndPointHeader {
   key?: string;
 }
 
-export const EndUserAuthenticationNotifyEndpointDestinationEndPointHeader: Schema.Schema<EndUserAuthenticationNotifyEndpointDestinationEndPointHeader> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-      key: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const EndUserAuthenticationNotifyEndpointDestinationEndPointHeader =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(Schema.String),
+    key: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "EndUserAuthenticationNotifyEndpointDestinationEndPointHeader",
-  }) as any as Schema.Schema<EndUserAuthenticationNotifyEndpointDestinationEndPointHeader>;
+  });
 
 export interface EndUserAuthenticationNotifyEndpointDestinationEndPoint {
   /** Required. The URI of the Endpoint. */
@@ -88,19 +80,17 @@ export interface EndUserAuthenticationNotifyEndpointDestinationEndPoint {
   headers?: Array<EndUserAuthenticationNotifyEndpointDestinationEndPointHeader>;
 }
 
-export const EndUserAuthenticationNotifyEndpointDestinationEndPoint: Schema.Schema<EndUserAuthenticationNotifyEndpointDestinationEndPoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endpointUri: Schema.optional(Schema.String),
-      headers: Schema.optional(
-        Schema.Array(
-          EndUserAuthenticationNotifyEndpointDestinationEndPointHeader,
-        ),
+export const EndUserAuthenticationNotifyEndpointDestinationEndPoint =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endpointUri: Schema.optional(Schema.String),
+    headers: Schema.optional(
+      Schema.Array(
+        EndUserAuthenticationNotifyEndpointDestinationEndPointHeader,
       ),
-    }),
-  ).annotate({
+    ),
+  }).annotate({
     identifier: "EndUserAuthenticationNotifyEndpointDestinationEndPoint",
-  }) as any as Schema.Schema<EndUserAuthenticationNotifyEndpointDestinationEndPoint>;
+  });
 
 export interface EndUserAuthenticationNotifyEndpointDestination {
   /** Optional. OPTION 1: Hit an endpoint when the refresh token is expired. */
@@ -111,18 +101,14 @@ export interface EndUserAuthenticationNotifyEndpointDestination {
   serviceAccount?: string;
 }
 
-export const EndUserAuthenticationNotifyEndpointDestination: Schema.Schema<EndUserAuthenticationNotifyEndpointDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endpoint: Schema.optional(
-        EndUserAuthenticationNotifyEndpointDestinationEndPoint,
-      ),
-      type: Schema.optional(Schema.String),
-      serviceAccount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EndUserAuthenticationNotifyEndpointDestination",
-  }) as any as Schema.Schema<EndUserAuthenticationNotifyEndpointDestination>;
+export const EndUserAuthenticationNotifyEndpointDestination =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    endpoint: Schema.optional(
+      EndUserAuthenticationNotifyEndpointDestinationEndPoint,
+    ),
+    type: Schema.optional(Schema.String),
+    serviceAccount: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EndUserAuthenticationNotifyEndpointDestination" });
 
 export interface EUASecret {
   /** Optional. The resource name of the secret version in the format, format as: `projects/* /secrets/* /versions/*`. */
@@ -131,13 +117,10 @@ export interface EUASecret {
   secretValue?: string;
 }
 
-export const EUASecret: Schema.Schema<EUASecret> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      secretVersion: Schema.optional(Schema.String),
-      secretValue: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "EUASecret" }) as any as Schema.Schema<EUASecret>;
+export const EUASecret = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  secretVersion: Schema.optional(Schema.String),
+  secretValue: Schema.optional(Schema.String),
+}).annotate({ identifier: "EUASecret" });
 
 export interface EndUserAuthenticationConfigUserPassword {
   /** Username. */
@@ -146,15 +129,11 @@ export interface EndUserAuthenticationConfigUserPassword {
   password?: EUASecret;
 }
 
-export const EndUserAuthenticationConfigUserPassword: Schema.Schema<EndUserAuthenticationConfigUserPassword> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      username: Schema.optional(Schema.String),
-      password: Schema.optional(EUASecret),
-    }),
-  ).annotate({
-    identifier: "EndUserAuthenticationConfigUserPassword",
-  }) as any as Schema.Schema<EndUserAuthenticationConfigUserPassword>;
+export const EndUserAuthenticationConfigUserPassword =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    username: Schema.optional(Schema.String),
+    password: Schema.optional(EUASecret),
+  }).annotate({ identifier: "EndUserAuthenticationConfigUserPassword" });
 
 export interface TimeOfDay {
   /** Minutes of an hour. Must be greater than or equal to 0 and less than or equal to 59. */
@@ -167,15 +146,12 @@ export interface TimeOfDay {
   hours?: number;
 }
 
-export const TimeOfDay: Schema.Schema<TimeOfDay> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      minutes: Schema.optional(Schema.Number),
-      seconds: Schema.optional(Schema.Number),
-      nanos: Schema.optional(Schema.Number),
-      hours: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "TimeOfDay" }) as any as Schema.Schema<TimeOfDay>;
+export const TimeOfDay = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  minutes: Schema.optional(Schema.Number),
+  seconds: Schema.optional(Schema.Number),
+  nanos: Schema.optional(Schema.Number),
+  hours: Schema.optional(Schema.Number),
+}).annotate({ identifier: "TimeOfDay" });
 
 export interface DailyCycle {
   /** Time within the day to start the operations. */
@@ -184,13 +160,10 @@ export interface DailyCycle {
   duration?: string;
 }
 
-export const DailyCycle: Schema.Schema<DailyCycle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(TimeOfDay),
-      duration: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "DailyCycle" }) as any as Schema.Schema<DailyCycle>;
+export const DailyCycle = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startTime: Schema.optional(TimeOfDay),
+  duration: Schema.optional(Schema.String),
+}).annotate({ identifier: "DailyCycle" });
 
 export interface Schedule {
   /** Time within the window to start the operations. */
@@ -210,28 +183,20 @@ export interface Schedule {
   duration?: string;
 }
 
-export const Schedule: Schema.Schema<Schedule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startTime: Schema.optional(TimeOfDay),
-      day: Schema.optional(Schema.String),
-      duration: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Schedule" }) as any as Schema.Schema<Schedule>;
+export const Schedule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startTime: Schema.optional(TimeOfDay),
+  day: Schema.optional(Schema.String),
+  duration: Schema.optional(Schema.String),
+}).annotate({ identifier: "Schedule" });
 
 export interface WeeklyCycle {
   /** User can specify multiple windows in a week. Minimum of 1 window. */
   schedule?: Array<Schedule>;
 }
 
-export const WeeklyCycle: Schema.Schema<WeeklyCycle> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      schedule: Schema.optional(Schema.Array(Schedule)),
-    }),
-  ).annotate({
-    identifier: "WeeklyCycle",
-  }) as any as Schema.Schema<WeeklyCycle>;
+export const WeeklyCycle = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  schedule: Schema.optional(Schema.Array(Schedule)),
+}).annotate({ identifier: "WeeklyCycle" });
 
 export interface MaintenanceWindow {
   /** Daily cycle. */
@@ -240,15 +205,10 @@ export interface MaintenanceWindow {
   weeklyCycle?: WeeklyCycle;
 }
 
-export const MaintenanceWindow: Schema.Schema<MaintenanceWindow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dailyCycle: Schema.optional(DailyCycle),
-      weeklyCycle: Schema.optional(WeeklyCycle),
-    }),
-  ).annotate({
-    identifier: "MaintenanceWindow",
-  }) as any as Schema.Schema<MaintenanceWindow>;
+export const MaintenanceWindow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dailyCycle: Schema.optional(DailyCycle),
+  weeklyCycle: Schema.optional(WeeklyCycle),
+}).annotate({ identifier: "MaintenanceWindow" });
 
 export interface AuditLogConfig {
   /** The log type that this config enables. */
@@ -262,15 +222,10 @@ export interface AuditLogConfig {
   exemptedMembers?: Array<string>;
 }
 
-export const AuditLogConfig: Schema.Schema<AuditLogConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      logType: Schema.optional(Schema.String),
-      exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AuditLogConfig",
-  }) as any as Schema.Schema<AuditLogConfig>;
+export const AuditLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  logType: Schema.optional(Schema.String),
+  exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "AuditLogConfig" });
 
 export interface AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
@@ -279,15 +234,10 @@ export interface AuditConfig {
   auditLogConfigs?: Array<AuditLogConfig>;
 }
 
-export const AuditConfig: Schema.Schema<AuditConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      service: Schema.optional(Schema.String),
-      auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
-    }),
-  ).annotate({
-    identifier: "AuditConfig",
-  }) as any as Schema.Schema<AuditConfig>;
+export const AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  service: Schema.optional(Schema.String),
+  auditLogConfigs: Schema.optional(Schema.Array(AuditLogConfig)),
+}).annotate({ identifier: "AuditConfig" });
 
 export interface ToolspecOverride {
   /** Output only. Updated time. */
@@ -298,32 +248,23 @@ export interface ToolspecOverride {
   createTime?: string;
 }
 
-export const ToolspecOverride: Schema.Schema<ToolspecOverride> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateTime: Schema.optional(Schema.String),
-      tools: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ToolspecOverride",
-  }) as any as Schema.Schema<ToolspecOverride>;
+export const ToolspecOverride = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  updateTime: Schema.optional(Schema.String),
+  tools: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  createTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "ToolspecOverride" });
 
 export interface FetchConnectionToolspecOverrideResponse {
   /** Toolspec overrides for the connection. */
   toolspecOverride?: ToolspecOverride;
 }
 
-export const FetchConnectionToolspecOverrideResponse: Schema.Schema<FetchConnectionToolspecOverrideResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      toolspecOverride: Schema.optional(ToolspecOverride),
-    }),
-  ).annotate({
-    identifier: "FetchConnectionToolspecOverrideResponse",
-  }) as any as Schema.Schema<FetchConnectionToolspecOverrideResponse>;
+export const FetchConnectionToolspecOverrideResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    toolspecOverride: Schema.optional(ToolspecOverride),
+  }).annotate({ identifier: "FetchConnectionToolspecOverrideResponse" });
 
 export interface LockConfig {
   /** Optional. Indicates whether or not the connection is locked. */
@@ -332,13 +273,10 @@ export interface LockConfig {
   reason?: string;
 }
 
-export const LockConfig: Schema.Schema<LockConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locked: Schema.optional(Schema.Boolean),
-      reason: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "LockConfig" }) as any as Schema.Schema<LockConfig>;
+export const LockConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locked: Schema.optional(Schema.Boolean),
+  reason: Schema.optional(Schema.String),
+}).annotate({ identifier: "LockConfig" });
 
 export interface RuntimeConfig {
   /** Output only. The Cloud Storage bucket that stores connector's schema reports. */
@@ -371,30 +309,24 @@ export interface RuntimeConfig {
   runtimeEndpoint?: string;
 }
 
-export const RuntimeConfig: Schema.Schema<RuntimeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      schemaGcsBucket: Schema.optional(Schema.String),
-      serviceDirectory: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      controlPlaneTopic: Schema.optional(Schema.String),
-      locationId: Schema.optional(Schema.String),
-      conndSubscription: Schema.optional(Schema.String),
-      controlPlaneSubscription: Schema.optional(Schema.String),
-      conndTopic: Schema.optional(Schema.String),
-      runtimeEndpoint: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RuntimeConfig",
-  }) as any as Schema.Schema<RuntimeConfig>;
+export const RuntimeConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  schemaGcsBucket: Schema.optional(Schema.String),
+  serviceDirectory: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  controlPlaneTopic: Schema.optional(Schema.String),
+  locationId: Schema.optional(Schema.String),
+  conndSubscription: Schema.optional(Schema.String),
+  controlPlaneSubscription: Schema.optional(Schema.String),
+  conndTopic: Schema.optional(Schema.String),
+  runtimeEndpoint: Schema.optional(Schema.String),
+}).annotate({ identifier: "RuntimeConfig" });
 
 export interface ListenEventResponse {}
 
-export const ListenEventResponse: Schema.Schema<ListenEventResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "ListenEventResponse",
-  }) as any as Schema.Schema<ListenEventResponse>;
+export const ListenEventResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "ListenEventResponse" });
 
 export interface PartnerMetadata {
   /** Optional. Marketplace product name. */
@@ -433,44 +365,35 @@ export interface PartnerMetadata {
   partner?: string;
 }
 
-export const PartnerMetadata: Schema.Schema<PartnerMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      marketplaceProduct: Schema.optional(Schema.String),
-      useCases: Schema.optional(Schema.String),
-      demoUri: Schema.optional(Schema.String),
-      integrationTemplates: Schema.optional(Schema.String),
-      publishRequestTime: Schema.optional(Schema.String),
-      hasDynamicSpecUri: Schema.optional(Schema.Boolean),
-      marketplaceProductUri: Schema.optional(Schema.String),
-      partnerConnectorDisplayName: Schema.optional(Schema.String),
-      targetApplication: Schema.optional(Schema.String),
-      acceptGcpTos: Schema.optional(Schema.Boolean),
-      targetCustomerSegment: Schema.optional(Schema.String),
-      marketplaceProductProjectId: Schema.optional(Schema.String),
-      confirmPartnerRequirements: Schema.optional(Schema.Boolean),
-      marketplaceProductId: Schema.optional(Schema.String),
-      localSpecPath: Schema.optional(Schema.String),
-      additionalComments: Schema.optional(Schema.String),
-      partner: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PartnerMetadata",
-  }) as any as Schema.Schema<PartnerMetadata>;
+export const PartnerMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  marketplaceProduct: Schema.optional(Schema.String),
+  useCases: Schema.optional(Schema.String),
+  demoUri: Schema.optional(Schema.String),
+  integrationTemplates: Schema.optional(Schema.String),
+  publishRequestTime: Schema.optional(Schema.String),
+  hasDynamicSpecUri: Schema.optional(Schema.Boolean),
+  marketplaceProductUri: Schema.optional(Schema.String),
+  partnerConnectorDisplayName: Schema.optional(Schema.String),
+  targetApplication: Schema.optional(Schema.String),
+  acceptGcpTos: Schema.optional(Schema.Boolean),
+  targetCustomerSegment: Schema.optional(Schema.String),
+  marketplaceProductProjectId: Schema.optional(Schema.String),
+  confirmPartnerRequirements: Schema.optional(Schema.Boolean),
+  marketplaceProductId: Schema.optional(Schema.String),
+  localSpecPath: Schema.optional(Schema.String),
+  additionalComments: Schema.optional(Schema.String),
+  partner: Schema.optional(Schema.String),
+}).annotate({ identifier: "PartnerMetadata" });
 
 export interface PublishCustomConnectorVersionRequest {
   /** Required. Partner metadata details for validating and publishing the custom connector as a partner connector version. */
   partnerMetadata?: PartnerMetadata;
 }
 
-export const PublishCustomConnectorVersionRequest: Schema.Schema<PublishCustomConnectorVersionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      partnerMetadata: Schema.optional(PartnerMetadata),
-    }),
-  ).annotate({
-    identifier: "PublishCustomConnectorVersionRequest",
-  }) as any as Schema.Schema<PublishCustomConnectorVersionRequest>;
+export const PublishCustomConnectorVersionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    partnerMetadata: Schema.optional(PartnerMetadata),
+  }).annotate({ identifier: "PublishCustomConnectorVersionRequest" });
 
 export interface EndUserAuthenticationConfigVariable {
   /** Value is a bool. */
@@ -485,30 +408,23 @@ export interface EndUserAuthenticationConfigVariable {
   stringValue?: string;
 }
 
-export const EndUserAuthenticationConfigVariable: Schema.Schema<EndUserAuthenticationConfigVariable> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      boolValue: Schema.optional(Schema.Boolean),
-      intValue: Schema.optional(Schema.String),
-      secretValue: Schema.optional(EUASecret),
-      key: Schema.optional(Schema.String),
-      stringValue: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EndUserAuthenticationConfigVariable",
-  }) as any as Schema.Schema<EndUserAuthenticationConfigVariable>;
+export const EndUserAuthenticationConfigVariable =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    boolValue: Schema.optional(Schema.Boolean),
+    intValue: Schema.optional(Schema.String),
+    secretValue: Schema.optional(EUASecret),
+    key: Schema.optional(Schema.String),
+    stringValue: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EndUserAuthenticationConfigVariable" });
 
 export interface Secret {
   /** Optional. The resource name of the secret version in the format, format as: `projects/* /secrets/* /versions/*`. */
   secretVersion?: string;
 }
 
-export const Secret: Schema.Schema<Secret> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      secretVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Secret" }) as any as Schema.Schema<Secret>;
+export const Secret = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  secretVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "Secret" });
 
 export interface JwtClaims {
   /** Optional. Value for the "iss" claim. */
@@ -519,14 +435,11 @@ export interface JwtClaims {
   subject?: string;
 }
 
-export const JwtClaims: Schema.Schema<JwtClaims> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      issuer: Schema.optional(Schema.String),
-      audience: Schema.optional(Schema.String),
-      subject: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "JwtClaims" }) as any as Schema.Schema<JwtClaims>;
+export const JwtClaims = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  issuer: Schema.optional(Schema.String),
+  audience: Schema.optional(Schema.String),
+  subject: Schema.optional(Schema.String),
+}).annotate({ identifier: "JwtClaims" });
 
 export interface Oauth2JwtBearer {
   /** Optional. Secret version reference containing a PKCS#8 PEM-encoded private key associated with the Client Certificate. This private key will be used to sign JWTs used for the jwt-bearer authorization grant. Specified in the form as: `projects/* /secrets/* /versions/*`. */
@@ -535,15 +448,10 @@ export interface Oauth2JwtBearer {
   jwtClaims?: JwtClaims;
 }
 
-export const Oauth2JwtBearer: Schema.Schema<Oauth2JwtBearer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clientKey: Schema.optional(Secret),
-      jwtClaims: Schema.optional(JwtClaims),
-    }),
-  ).annotate({
-    identifier: "Oauth2JwtBearer",
-  }) as any as Schema.Schema<Oauth2JwtBearer>;
+export const Oauth2JwtBearer = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  clientKey: Schema.optional(Secret),
+  jwtClaims: Schema.optional(JwtClaims),
+}).annotate({ identifier: "Oauth2JwtBearer" });
 
 export interface JsonSchema {
   /** Whether the items in the array field are unique. */
@@ -723,19 +631,14 @@ export interface InputParameter {
   defaultValue?: unknown;
 }
 
-export const InputParameter: Schema.Schema<InputParameter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parameter: Schema.optional(Schema.String),
-      jsonSchema: Schema.optional(JsonSchema),
-      description: Schema.optional(Schema.String),
-      dataType: Schema.optional(Schema.String),
-      nullable: Schema.optional(Schema.Boolean),
-      defaultValue: Schema.optional(Schema.Unknown),
-    }),
-  ).annotate({
-    identifier: "InputParameter",
-  }) as any as Schema.Schema<InputParameter>;
+export const InputParameter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  parameter: Schema.optional(Schema.String),
+  jsonSchema: Schema.optional(JsonSchema),
+  description: Schema.optional(Schema.String),
+  dataType: Schema.optional(Schema.String),
+  nullable: Schema.optional(Schema.Boolean),
+  defaultValue: Schema.optional(Schema.Unknown),
+}).annotate({ identifier: "InputParameter" });
 
 export interface ResultMetadata {
   /** Name of the result field. */
@@ -798,19 +701,14 @@ export interface ResultMetadata {
   nullable?: boolean;
 }
 
-export const ResultMetadata: Schema.Schema<ResultMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      field: Schema.optional(Schema.String),
-      defaultValue: Schema.optional(Schema.Unknown),
-      jsonSchema: Schema.optional(JsonSchema),
-      description: Schema.optional(Schema.String),
-      dataType: Schema.optional(Schema.String),
-      nullable: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ResultMetadata",
-  }) as any as Schema.Schema<ResultMetadata>;
+export const ResultMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  field: Schema.optional(Schema.String),
+  defaultValue: Schema.optional(Schema.Unknown),
+  jsonSchema: Schema.optional(JsonSchema),
+  description: Schema.optional(Schema.String),
+  dataType: Schema.optional(Schema.String),
+  nullable: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "ResultMetadata" });
 
 export interface RuntimeActionSchema {
   /** Output only. List of input parameter metadata for the action. */
@@ -833,22 +731,17 @@ export interface RuntimeActionSchema {
   inputJsonSchema?: JsonSchema;
 }
 
-export const RuntimeActionSchema: Schema.Schema<RuntimeActionSchema> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inputParameters: Schema.optional(Schema.Array(InputParameter)),
-      displayName: Schema.optional(Schema.String),
-      inputSchemaAsString: Schema.optional(Schema.String),
-      action: Schema.optional(Schema.String),
-      resultJsonSchema: Schema.optional(JsonSchema),
-      description: Schema.optional(Schema.String),
-      resultMetadata: Schema.optional(Schema.Array(ResultMetadata)),
-      resultSchemaAsString: Schema.optional(Schema.String),
-      inputJsonSchema: Schema.optional(JsonSchema),
-    }),
-  ).annotate({
-    identifier: "RuntimeActionSchema",
-  }) as any as Schema.Schema<RuntimeActionSchema>;
+export const RuntimeActionSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  inputParameters: Schema.optional(Schema.Array(InputParameter)),
+  displayName: Schema.optional(Schema.String),
+  inputSchemaAsString: Schema.optional(Schema.String),
+  action: Schema.optional(Schema.String),
+  resultJsonSchema: Schema.optional(JsonSchema),
+  description: Schema.optional(Schema.String),
+  resultMetadata: Schema.optional(Schema.Array(ResultMetadata)),
+  resultSchemaAsString: Schema.optional(Schema.String),
+  inputJsonSchema: Schema.optional(JsonSchema),
+}).annotate({ identifier: "RuntimeActionSchema" });
 
 export interface OAuthTokenData {
   /** Optional. Time in seconds when the access token expires. */
@@ -861,17 +754,12 @@ export interface OAuthTokenData {
   createTime?: string;
 }
 
-export const OAuthTokenData: Schema.Schema<OAuthTokenData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expiry: Schema.optional(Schema.String),
-      accessToken: Schema.optional(EUASecret),
-      refreshToken: Schema.optional(EUASecret),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OAuthTokenData",
-  }) as any as Schema.Schema<OAuthTokenData>;
+export const OAuthTokenData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  expiry: Schema.optional(Schema.String),
+  accessToken: Schema.optional(EUASecret),
+  refreshToken: Schema.optional(EUASecret),
+  createTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "OAuthTokenData" });
 
 export interface SupportedRuntimeFeatures {
   /** Specifies if the connector supports action apis like 'executeAction'. */
@@ -884,17 +772,13 @@ export interface SupportedRuntimeFeatures {
   asyncOperations?: boolean;
 }
 
-export const SupportedRuntimeFeatures: Schema.Schema<SupportedRuntimeFeatures> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      actionApis: Schema.optional(Schema.Boolean),
-      sqlQuery: Schema.optional(Schema.Boolean),
-      entityApis: Schema.optional(Schema.Boolean),
-      asyncOperations: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "SupportedRuntimeFeatures",
-  }) as any as Schema.Schema<SupportedRuntimeFeatures>;
+export const SupportedRuntimeFeatures =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    actionApis: Schema.optional(Schema.Boolean),
+    sqlQuery: Schema.optional(Schema.Boolean),
+    entityApis: Schema.optional(Schema.Boolean),
+    asyncOperations: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "SupportedRuntimeFeatures" });
 
 export interface SloEligibility {
   /** Whether an instance is eligible or ineligible. */
@@ -903,15 +787,10 @@ export interface SloEligibility {
   reason?: string;
 }
 
-export const SloEligibility: Schema.Schema<SloEligibility> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      eligible: Schema.optional(Schema.Boolean),
-      reason: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SloEligibility",
-  }) as any as Schema.Schema<SloEligibility>;
+export const SloEligibility = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  eligible: Schema.optional(Schema.Boolean),
+  reason: Schema.optional(Schema.String),
+}).annotate({ identifier: "SloEligibility" });
 
 export interface NodeConfig {
   /** Optional. Maximum number of nodes in the runtime nodes. */
@@ -920,13 +799,10 @@ export interface NodeConfig {
   minNodeCount?: number;
 }
 
-export const NodeConfig: Schema.Schema<NodeConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      maxNodeCount: Schema.optional(Schema.Number),
-      minNodeCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "NodeConfig" }) as any as Schema.Schema<NodeConfig>;
+export const NodeConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  maxNodeCount: Schema.optional(Schema.Number),
+  minNodeCount: Schema.optional(Schema.Number),
+}).annotate({ identifier: "NodeConfig" });
 
 export interface Oauth2AuthCodeFlowGoogleManaged {
   /** Required. Scopes the connection will request when the user performs the auth code flow. */
@@ -937,16 +813,12 @@ export interface Oauth2AuthCodeFlowGoogleManaged {
   redirectUri?: string;
 }
 
-export const Oauth2AuthCodeFlowGoogleManaged: Schema.Schema<Oauth2AuthCodeFlowGoogleManaged> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      scopes: Schema.optional(Schema.Array(Schema.String)),
-      authCode: Schema.optional(Schema.String),
-      redirectUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Oauth2AuthCodeFlowGoogleManaged",
-  }) as any as Schema.Schema<Oauth2AuthCodeFlowGoogleManaged>;
+export const Oauth2AuthCodeFlowGoogleManaged =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    scopes: Schema.optional(Schema.Array(Schema.String)),
+    authCode: Schema.optional(Schema.String),
+    redirectUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Oauth2AuthCodeFlowGoogleManaged" });
 
 export interface Oauth2AuthCodeFlow {
   /** Optional. Client secret for user-provided OAuth app. */
@@ -967,21 +839,16 @@ export interface Oauth2AuthCodeFlow {
   scopes?: Array<string>;
 }
 
-export const Oauth2AuthCodeFlow: Schema.Schema<Oauth2AuthCodeFlow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clientSecret: Schema.optional(Secret),
-      enablePkce: Schema.optional(Schema.Boolean),
-      pkceVerifier: Schema.optional(Schema.String),
-      clientId: Schema.optional(Schema.String),
-      authCode: Schema.optional(Schema.String),
-      redirectUri: Schema.optional(Schema.String),
-      authUri: Schema.optional(Schema.String),
-      scopes: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "Oauth2AuthCodeFlow",
-  }) as any as Schema.Schema<Oauth2AuthCodeFlow>;
+export const Oauth2AuthCodeFlow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  clientSecret: Schema.optional(Secret),
+  enablePkce: Schema.optional(Schema.Boolean),
+  pkceVerifier: Schema.optional(Schema.String),
+  clientId: Schema.optional(Schema.String),
+  authCode: Schema.optional(Schema.String),
+  redirectUri: Schema.optional(Schema.String),
+  authUri: Schema.optional(Schema.String),
+  scopes: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Oauth2AuthCodeFlow" });
 
 export interface UserPassword {
   /** Optional. Username. */
@@ -990,15 +857,10 @@ export interface UserPassword {
   password?: Secret;
 }
 
-export const UserPassword: Schema.Schema<UserPassword> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      username: Schema.optional(Schema.String),
-      password: Schema.optional(Secret),
-    }),
-  ).annotate({
-    identifier: "UserPassword",
-  }) as any as Schema.Schema<UserPassword>;
+export const UserPassword = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  username: Schema.optional(Schema.String),
+  password: Schema.optional(Secret),
+}).annotate({ identifier: "UserPassword" });
 
 export interface Oauth2ClientCredentials {
   /** Optional. Secret version reference containing the client secret. */
@@ -1007,15 +869,11 @@ export interface Oauth2ClientCredentials {
   clientId?: string;
 }
 
-export const Oauth2ClientCredentials: Schema.Schema<Oauth2ClientCredentials> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clientSecret: Schema.optional(Secret),
-      clientId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Oauth2ClientCredentials",
-  }) as any as Schema.Schema<Oauth2ClientCredentials>;
+export const Oauth2ClientCredentials =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    clientSecret: Schema.optional(Secret),
+    clientId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "Oauth2ClientCredentials" });
 
 export interface SshPublicKey {
   /** Optional. SSH Client Cert. It should contain both public and private key. */
@@ -1028,17 +886,12 @@ export interface SshPublicKey {
   sshClientCertPass?: Secret;
 }
 
-export const SshPublicKey: Schema.Schema<SshPublicKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sshClientCert: Schema.optional(Secret),
-      certType: Schema.optional(Schema.String),
-      username: Schema.optional(Schema.String),
-      sshClientCertPass: Schema.optional(Secret),
-    }),
-  ).annotate({
-    identifier: "SshPublicKey",
-  }) as any as Schema.Schema<SshPublicKey>;
+export const SshPublicKey = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sshClientCert: Schema.optional(Secret),
+  certType: Schema.optional(Schema.String),
+  username: Schema.optional(Schema.String),
+  sshClientCertPass: Schema.optional(Secret),
+}).annotate({ identifier: "SshPublicKey" });
 
 export interface EncryptionKey {
   /** Optional. Specifies the type of the encryption key. */
@@ -1051,15 +904,10 @@ export interface EncryptionKey {
   kmsKeyName?: string;
 }
 
-export const EncryptionKey: Schema.Schema<EncryptionKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      kmsKeyName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EncryptionKey",
-  }) as any as Schema.Schema<EncryptionKey>;
+export const EncryptionKey = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  kmsKeyName: Schema.optional(Schema.String),
+}).annotate({ identifier: "EncryptionKey" });
 
 export interface ConfigVariable {
   /** Optional. Value is a bool. */
@@ -1076,19 +924,14 @@ export interface ConfigVariable {
   stringValue?: string;
 }
 
-export const ConfigVariable: Schema.Schema<ConfigVariable> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      boolValue: Schema.optional(Schema.Boolean),
-      intValue: Schema.optional(Schema.String),
-      secretValue: Schema.optional(Secret),
-      encryptionKeyValue: Schema.optional(EncryptionKey),
-      key: Schema.optional(Schema.String),
-      stringValue: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConfigVariable",
-  }) as any as Schema.Schema<ConfigVariable>;
+export const ConfigVariable = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  boolValue: Schema.optional(Schema.Boolean),
+  intValue: Schema.optional(Schema.String),
+  secretValue: Schema.optional(Secret),
+  encryptionKeyValue: Schema.optional(EncryptionKey),
+  key: Schema.optional(Schema.String),
+  stringValue: Schema.optional(Schema.String),
+}).annotate({ identifier: "ConfigVariable" });
 
 export interface AuthConfig {
   /** Oauth2AuthCodeFlowGoogleManaged. */
@@ -1120,22 +963,19 @@ export interface AuthConfig {
   additionalVariables?: Array<ConfigVariable>;
 }
 
-export const AuthConfig: Schema.Schema<AuthConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      oauth2AuthCodeFlowGoogleManaged: Schema.optional(
-        Oauth2AuthCodeFlowGoogleManaged,
-      ),
-      authKey: Schema.optional(Schema.String),
-      oauth2JwtBearer: Schema.optional(Oauth2JwtBearer),
-      oauth2AuthCodeFlow: Schema.optional(Oauth2AuthCodeFlow),
-      authType: Schema.optional(Schema.String),
-      userPassword: Schema.optional(UserPassword),
-      oauth2ClientCredentials: Schema.optional(Oauth2ClientCredentials),
-      sshPublicKey: Schema.optional(SshPublicKey),
-      additionalVariables: Schema.optional(Schema.Array(ConfigVariable)),
-    }),
-  ).annotate({ identifier: "AuthConfig" }) as any as Schema.Schema<AuthConfig>;
+export const AuthConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  oauth2AuthCodeFlowGoogleManaged: Schema.optional(
+    Oauth2AuthCodeFlowGoogleManaged,
+  ),
+  authKey: Schema.optional(Schema.String),
+  oauth2JwtBearer: Schema.optional(Oauth2JwtBearer),
+  oauth2AuthCodeFlow: Schema.optional(Oauth2AuthCodeFlow),
+  authType: Schema.optional(Schema.String),
+  userPassword: Schema.optional(UserPassword),
+  oauth2ClientCredentials: Schema.optional(Oauth2ClientCredentials),
+  sshPublicKey: Schema.optional(SshPublicKey),
+  additionalVariables: Schema.optional(Schema.Array(ConfigVariable)),
+}).annotate({ identifier: "AuthConfig" });
 
 export interface SslConfig {
   /** Optional. Private Server Certificate. Needs to be specified if trust model is `PRIVATE`. */
@@ -1160,21 +1000,18 @@ export interface SslConfig {
   trustModel?: "PUBLIC" | "PRIVATE" | "INSECURE" | (string & {});
 }
 
-export const SslConfig: Schema.Schema<SslConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      privateServerCertificate: Schema.optional(Secret),
-      useSsl: Schema.optional(Schema.Boolean),
-      additionalVariables: Schema.optional(Schema.Array(ConfigVariable)),
-      type: Schema.optional(Schema.String),
-      clientCertType: Schema.optional(Schema.String),
-      serverCertType: Schema.optional(Schema.String),
-      clientCertificate: Schema.optional(Secret),
-      clientPrivateKey: Schema.optional(Secret),
-      clientPrivateKeyPass: Schema.optional(Secret),
-      trustModel: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "SslConfig" }) as any as Schema.Schema<SslConfig>;
+export const SslConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  privateServerCertificate: Schema.optional(Secret),
+  useSsl: Schema.optional(Schema.Boolean),
+  additionalVariables: Schema.optional(Schema.Array(ConfigVariable)),
+  type: Schema.optional(Schema.String),
+  clientCertType: Schema.optional(Schema.String),
+  serverCertType: Schema.optional(Schema.String),
+  clientCertificate: Schema.optional(Secret),
+  clientPrivateKey: Schema.optional(Secret),
+  clientPrivateKeyPass: Schema.optional(Secret),
+  trustModel: Schema.optional(Schema.String),
+}).annotate({ identifier: "SslConfig" });
 
 export interface Destination {
   /** PSC service attachments. Format: projects/* /regions/* /serviceAttachments/* */
@@ -1185,16 +1022,11 @@ export interface Destination {
   port?: number;
 }
 
-export const Destination: Schema.Schema<Destination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serviceAttachment: Schema.optional(Schema.String),
-      host: Schema.optional(Schema.String),
-      port: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "Destination",
-  }) as any as Schema.Schema<Destination>;
+export const Destination = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  serviceAttachment: Schema.optional(Schema.String),
+  host: Schema.optional(Schema.String),
+  port: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Destination" });
 
 export interface DestinationConfig {
   /** Optional. The destinations for the key. */
@@ -1203,29 +1035,19 @@ export interface DestinationConfig {
   key?: string;
 }
 
-export const DestinationConfig: Schema.Schema<DestinationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      destinations: Schema.optional(Schema.Array(Destination)),
-      key: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DestinationConfig",
-  }) as any as Schema.Schema<DestinationConfig>;
+export const DestinationConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  destinations: Schema.optional(Schema.Array(Destination)),
+  key: Schema.optional(Schema.String),
+}).annotate({ identifier: "DestinationConfig" });
 
 export interface EnrichmentConfig {
   /** Optional. Append ACL to the event. */
   appendAcl?: boolean;
 }
 
-export const EnrichmentConfig: Schema.Schema<EnrichmentConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      appendAcl: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "EnrichmentConfig",
-  }) as any as Schema.Schema<EnrichmentConfig>;
+export const EnrichmentConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  appendAcl: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "EnrichmentConfig" });
 
 export interface DeadLetterConfig {
   /** Optional. Topic to push events which couldn't be processed. */
@@ -1234,15 +1056,10 @@ export interface DeadLetterConfig {
   projectId?: string;
 }
 
-export const DeadLetterConfig: Schema.Schema<DeadLetterConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      topic: Schema.optional(Schema.String),
-      projectId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DeadLetterConfig",
-  }) as any as Schema.Schema<DeadLetterConfig>;
+export const DeadLetterConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  topic: Schema.optional(Schema.String),
+  projectId: Schema.optional(Schema.String),
+}).annotate({ identifier: "DeadLetterConfig" });
 
 export interface EventingConfig {
   /** Optional. Auth details for the event listener. */
@@ -1273,28 +1090,23 @@ export interface EventingConfig {
   enrichmentEnabled?: boolean;
 }
 
-export const EventingConfig: Schema.Schema<EventingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      listenerAuthConfig: Schema.optional(AuthConfig),
-      sslConfig: Schema.optional(SslConfig),
-      eventsListenerIngressEndpoint: Schema.optional(Schema.String),
-      proxyDestinationConfig: Schema.optional(DestinationConfig),
-      authConfig: Schema.optional(AuthConfig),
-      enrichmentConfig: Schema.optional(EnrichmentConfig),
-      privateConnectivityEnabled: Schema.optional(Schema.Boolean),
-      deadLetterConfig: Schema.optional(DeadLetterConfig),
-      allowedEventTypes: Schema.optional(Schema.Array(Schema.String)),
-      privateConnectivityAllowlistedProjects: Schema.optional(
-        Schema.Array(Schema.String),
-      ),
-      additionalVariables: Schema.optional(Schema.Array(ConfigVariable)),
-      registrationDestinationConfig: Schema.optional(DestinationConfig),
-      enrichmentEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "EventingConfig",
-  }) as any as Schema.Schema<EventingConfig>;
+export const EventingConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  listenerAuthConfig: Schema.optional(AuthConfig),
+  sslConfig: Schema.optional(SslConfig),
+  eventsListenerIngressEndpoint: Schema.optional(Schema.String),
+  proxyDestinationConfig: Schema.optional(DestinationConfig),
+  authConfig: Schema.optional(AuthConfig),
+  enrichmentConfig: Schema.optional(EnrichmentConfig),
+  privateConnectivityEnabled: Schema.optional(Schema.Boolean),
+  deadLetterConfig: Schema.optional(DeadLetterConfig),
+  allowedEventTypes: Schema.optional(Schema.Array(Schema.String)),
+  privateConnectivityAllowlistedProjects: Schema.optional(
+    Schema.Array(Schema.String),
+  ),
+  additionalVariables: Schema.optional(Schema.Array(ConfigVariable)),
+  registrationDestinationConfig: Schema.optional(DestinationConfig),
+  enrichmentEnabled: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "EventingConfig" });
 
 export interface ConnectorsLogConfig {
   /** Optional. Enabled represents whether logging is enabled or not for a connection. */
@@ -1303,15 +1115,10 @@ export interface ConnectorsLogConfig {
   level?: "LOG_LEVEL_UNSPECIFIED" | "ERROR" | "INFO" | "DEBUG" | (string & {});
 }
 
-export const ConnectorsLogConfig: Schema.Schema<ConnectorsLogConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-      level: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConnectorsLogConfig",
-  }) as any as Schema.Schema<ConnectorsLogConfig>;
+export const ConnectorsLogConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  enabled: Schema.optional(Schema.Boolean),
+  level: Schema.optional(Schema.String),
+}).annotate({ identifier: "ConnectorsLogConfig" });
 
 export interface ResourceRequests {
   /** Output only. CPU request. */
@@ -1320,15 +1127,10 @@ export interface ResourceRequests {
   memory?: string;
 }
 
-export const ResourceRequests: Schema.Schema<ResourceRequests> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cpu: Schema.optional(Schema.String),
-      memory: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ResourceRequests",
-  }) as any as Schema.Schema<ResourceRequests>;
+export const ResourceRequests = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cpu: Schema.optional(Schema.String),
+  memory: Schema.optional(Schema.String),
+}).annotate({ identifier: "ResourceRequests" });
 
 export interface ResourceLimits {
   /** Output only. CPU limit. */
@@ -1337,15 +1139,10 @@ export interface ResourceLimits {
   memory?: string;
 }
 
-export const ResourceLimits: Schema.Schema<ResourceLimits> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cpu: Schema.optional(Schema.String),
-      memory: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ResourceLimits",
-  }) as any as Schema.Schema<ResourceLimits>;
+export const ResourceLimits = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cpu: Schema.optional(Schema.String),
+  memory: Schema.optional(Schema.String),
+}).annotate({ identifier: "ResourceLimits" });
 
 export interface HPAConfig {
   /** Output only. Percent Memory utilization where HPA triggers autoscaling. */
@@ -1354,13 +1151,10 @@ export interface HPAConfig {
   cpuUtilizationThreshold?: string;
 }
 
-export const HPAConfig: Schema.Schema<HPAConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      memoryUtilizationThreshold: Schema.optional(Schema.String),
-      cpuUtilizationThreshold: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "HPAConfig" }) as any as Schema.Schema<HPAConfig>;
+export const HPAConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  memoryUtilizationThreshold: Schema.optional(Schema.String),
+  cpuUtilizationThreshold: Schema.optional(Schema.String),
+}).annotate({ identifier: "HPAConfig" });
 
 export interface ConnectorVersionInfraConfig {
   /** Output only. System resource requests. */
@@ -1401,24 +1195,20 @@ export interface ConnectorVersionInfraConfig {
   internalclientRatelimitThreshold?: string;
 }
 
-export const ConnectorVersionInfraConfig: Schema.Schema<ConnectorVersionInfraConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceRequests: Schema.optional(ResourceRequests),
-      sharedDeployment: Schema.optional(Schema.String),
-      connectionRatelimitWindowSeconds: Schema.optional(Schema.String),
-      maxInstanceRequestConcurrency: Schema.optional(Schema.Number),
-      tlsMigrationState: Schema.optional(Schema.String),
-      deploymentModel: Schema.optional(Schema.String),
-      resourceLimits: Schema.optional(ResourceLimits),
-      hpaConfig: Schema.optional(HPAConfig),
-      deploymentModelMigrationState: Schema.optional(Schema.String),
-      ratelimitThreshold: Schema.optional(Schema.String),
-      internalclientRatelimitThreshold: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConnectorVersionInfraConfig",
-  }) as any as Schema.Schema<ConnectorVersionInfraConfig>;
+export const ConnectorVersionInfraConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resourceRequests: Schema.optional(ResourceRequests),
+    sharedDeployment: Schema.optional(Schema.String),
+    connectionRatelimitWindowSeconds: Schema.optional(Schema.String),
+    maxInstanceRequestConcurrency: Schema.optional(Schema.Number),
+    tlsMigrationState: Schema.optional(Schema.String),
+    deploymentModel: Schema.optional(Schema.String),
+    resourceLimits: Schema.optional(ResourceLimits),
+    hpaConfig: Schema.optional(HPAConfig),
+    deploymentModelMigrationState: Schema.optional(Schema.String),
+    ratelimitThreshold: Schema.optional(Schema.String),
+    internalclientRatelimitThreshold: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ConnectorVersionInfraConfig" });
 
 export interface WebhookData {
   /** Output only. ID to uniquely identify webhook. */
@@ -1435,33 +1225,23 @@ export interface WebhookData {
   updateTime?: string;
 }
 
-export const WebhookData: Schema.Schema<WebhookData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      nextRefreshTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      additionalVariables: Schema.optional(Schema.Array(ConfigVariable)),
-      name: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "WebhookData",
-  }) as any as Schema.Schema<WebhookData>;
+export const WebhookData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  nextRefreshTime: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  additionalVariables: Schema.optional(Schema.Array(ConfigVariable)),
+  name: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "WebhookData" });
 
 export interface WebhookSubscriptions {
   /** Output only. Webhook data. */
   webhookData?: Array<WebhookData>;
 }
 
-export const WebhookSubscriptions: Schema.Schema<WebhookSubscriptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      webhookData: Schema.optional(Schema.Array(WebhookData)),
-    }),
-  ).annotate({
-    identifier: "WebhookSubscriptions",
-  }) as any as Schema.Schema<WebhookSubscriptions>;
+export const WebhookSubscriptions = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  webhookData: Schema.optional(Schema.Array(WebhookData)),
+}).annotate({ identifier: "WebhookSubscriptions" });
 
 export interface EventingStatus {
   /** Output only. State. */
@@ -1475,15 +1255,10 @@ export interface EventingStatus {
   description?: string;
 }
 
-export const EventingStatus: Schema.Schema<EventingStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EventingStatus",
-  }) as any as Schema.Schema<EventingStatus>;
+export const EventingStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  state: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "EventingStatus" });
 
 export interface EventingRuntimeData {
   /** Output only. Webhook data. */
@@ -1498,18 +1273,13 @@ export interface EventingRuntimeData {
   status?: EventingStatus;
 }
 
-export const EventingRuntimeData: Schema.Schema<EventingRuntimeData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      webhookData: Schema.optional(WebhookData),
-      eventsListenerEndpoint: Schema.optional(Schema.String),
-      webhookSubscriptions: Schema.optional(WebhookSubscriptions),
-      eventsListenerPscSa: Schema.optional(Schema.String),
-      status: Schema.optional(EventingStatus),
-    }),
-  ).annotate({
-    identifier: "EventingRuntimeData",
-  }) as any as Schema.Schema<EventingRuntimeData>;
+export const EventingRuntimeData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  webhookData: Schema.optional(WebhookData),
+  eventsListenerEndpoint: Schema.optional(Schema.String),
+  webhookSubscriptions: Schema.optional(WebhookSubscriptions),
+  eventsListenerPscSa: Schema.optional(Schema.String),
+  status: Schema.optional(EventingStatus),
+}).annotate({ identifier: "EventingRuntimeData" });
 
 export interface TrafficShapingConfig {
   /** Required. Specifies the duration over which the API call quota limits are calculated. This duration is used to define the time window for evaluating if the number of API calls made by a user is within the allowed quota limits. For example: - To define a quota sampled over 16 seconds, set `seconds` to 16 - To define a quota sampled over 5 minutes, set `seconds` to 300 (5 * 60) - To define a quota sampled over 1 day, set `seconds` to 86400 (24 * 60 * 60) and so on. It is important to note that this duration is not the time the quota is valid for, but rather the time window over which the quota is evaluated. For example, if the quota is 100 calls per 10 seconds, then this duration field would be set to 10 seconds. */
@@ -1518,15 +1288,10 @@ export interface TrafficShapingConfig {
   quotaLimit?: string;
 }
 
-export const TrafficShapingConfig: Schema.Schema<TrafficShapingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      duration: Schema.optional(Schema.String),
-      quotaLimit: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TrafficShapingConfig",
-  }) as any as Schema.Schema<TrafficShapingConfig>;
+export const TrafficShapingConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  duration: Schema.optional(Schema.String),
+  quotaLimit: Schema.optional(Schema.String),
+}).annotate({ identifier: "TrafficShapingConfig" });
 
 export interface ConnectionStatus {
   /** Status provides detailed information for the state. */
@@ -1546,16 +1311,11 @@ export interface ConnectionStatus {
   description?: string;
 }
 
-export const ConnectionStatus: Schema.Schema<ConnectionStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      status: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConnectionStatus",
-  }) as any as Schema.Schema<ConnectionStatus>;
+export const ConnectionStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  status: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "ConnectionStatus" });
 
 export interface BillingConfig {
   /** Output only. Billing category for the connector. */
@@ -1566,14 +1326,9 @@ export interface BillingConfig {
     | (string & {});
 }
 
-export const BillingConfig: Schema.Schema<BillingConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      billingCategory: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BillingConfig",
-  }) as any as Schema.Schema<BillingConfig>;
+export const BillingConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  billingCategory: Schema.optional(Schema.String),
+}).annotate({ identifier: "BillingConfig" });
 
 export interface Connection {
   /** Output only. GCR location where the envoy image is stored. formatted like: gcr.io/{bucketName}/{imageName} */
@@ -1663,48 +1418,43 @@ export interface Connection {
   nodeConfig?: NodeConfig;
 }
 
-export const Connection: Schema.Schema<Connection> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      envoyImageLocation: Schema.optional(Schema.String),
-      connectorVersionLaunchStage: Schema.optional(Schema.String),
-      authConfig: Schema.optional(AuthConfig),
-      updateTime: Schema.optional(Schema.String),
-      eventingConfig: Schema.optional(EventingConfig),
-      sslConfig: Schema.optional(SslConfig),
-      host: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      authOverrideEnabled: Schema.optional(Schema.Boolean),
-      createTime: Schema.optional(Schema.String),
-      logConfig: Schema.optional(ConnectorsLogConfig),
-      suspended: Schema.optional(Schema.Boolean),
-      description: Schema.optional(Schema.String),
-      imageLocation: Schema.optional(Schema.String),
-      lockConfig: Schema.optional(LockConfig),
-      connectorVersionInfraConfig: Schema.optional(ConnectorVersionInfraConfig),
-      subscriptionType: Schema.optional(Schema.String),
-      eventingEnablementType: Schema.optional(Schema.String),
-      serviceDirectory: Schema.optional(Schema.String),
-      asyncOperationsEnabled: Schema.optional(Schema.Boolean),
-      eventingRuntimeData: Schema.optional(EventingRuntimeData),
-      trafficShapingConfigs: Schema.optional(
-        Schema.Array(TrafficShapingConfig),
-      ),
-      connectorVersion: Schema.optional(Schema.String),
-      isTrustedTester: Schema.optional(Schema.Boolean),
-      euaOauthAuthConfig: Schema.optional(AuthConfig),
-      tlsServiceDirectory: Schema.optional(Schema.String),
-      status: Schema.optional(ConnectionStatus),
-      connectionRevision: Schema.optional(Schema.String),
-      billingConfig: Schema.optional(BillingConfig),
-      configVariables: Schema.optional(Schema.Array(ConfigVariable)),
-      serviceAccount: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      fallbackOnAdminCredentials: Schema.optional(Schema.Boolean),
-      destinationConfigs: Schema.optional(Schema.Array(DestinationConfig)),
-      nodeConfig: Schema.optional(NodeConfig),
-    }),
-  ).annotate({ identifier: "Connection" }) as any as Schema.Schema<Connection>;
+export const Connection = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  envoyImageLocation: Schema.optional(Schema.String),
+  connectorVersionLaunchStage: Schema.optional(Schema.String),
+  authConfig: Schema.optional(AuthConfig),
+  updateTime: Schema.optional(Schema.String),
+  eventingConfig: Schema.optional(EventingConfig),
+  sslConfig: Schema.optional(SslConfig),
+  host: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  authOverrideEnabled: Schema.optional(Schema.Boolean),
+  createTime: Schema.optional(Schema.String),
+  logConfig: Schema.optional(ConnectorsLogConfig),
+  suspended: Schema.optional(Schema.Boolean),
+  description: Schema.optional(Schema.String),
+  imageLocation: Schema.optional(Schema.String),
+  lockConfig: Schema.optional(LockConfig),
+  connectorVersionInfraConfig: Schema.optional(ConnectorVersionInfraConfig),
+  subscriptionType: Schema.optional(Schema.String),
+  eventingEnablementType: Schema.optional(Schema.String),
+  serviceDirectory: Schema.optional(Schema.String),
+  asyncOperationsEnabled: Schema.optional(Schema.Boolean),
+  eventingRuntimeData: Schema.optional(EventingRuntimeData),
+  trafficShapingConfigs: Schema.optional(Schema.Array(TrafficShapingConfig)),
+  connectorVersion: Schema.optional(Schema.String),
+  isTrustedTester: Schema.optional(Schema.Boolean),
+  euaOauthAuthConfig: Schema.optional(AuthConfig),
+  tlsServiceDirectory: Schema.optional(Schema.String),
+  status: Schema.optional(ConnectionStatus),
+  connectionRevision: Schema.optional(Schema.String),
+  billingConfig: Schema.optional(BillingConfig),
+  configVariables: Schema.optional(Schema.Array(ConfigVariable)),
+  serviceAccount: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  fallbackOnAdminCredentials: Schema.optional(Schema.Boolean),
+  destinationConfigs: Schema.optional(Schema.Array(DestinationConfig)),
+  nodeConfig: Schema.optional(NodeConfig),
+}).annotate({ identifier: "Connection" });
 
 export interface Field {
   /** Name of the Field. */
@@ -1773,22 +1523,19 @@ export interface Field {
   defaultValue?: unknown;
 }
 
-export const Field: Schema.Schema<Field> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      field: Schema.optional(Schema.String),
-      key: Schema.optional(Schema.Boolean),
-      readonly: Schema.optional(Schema.Boolean),
-      dataType: Schema.optional(Schema.String),
-      nullable: Schema.optional(Schema.Boolean),
-      jsonSchema: Schema.optional(JsonSchema),
-      additionalDetails: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-      description: Schema.optional(Schema.String),
-      defaultValue: Schema.optional(Schema.Unknown),
-    }),
-  ).annotate({ identifier: "Field" }) as any as Schema.Schema<Field>;
+export const Field = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  field: Schema.optional(Schema.String),
+  key: Schema.optional(Schema.Boolean),
+  readonly: Schema.optional(Schema.Boolean),
+  dataType: Schema.optional(Schema.String),
+  nullable: Schema.optional(Schema.Boolean),
+  jsonSchema: Schema.optional(JsonSchema),
+  additionalDetails: Schema.optional(
+    Schema.Record(Schema.String, Schema.Unknown),
+  ),
+  description: Schema.optional(Schema.String),
+  defaultValue: Schema.optional(Schema.Unknown),
+}).annotate({ identifier: "Field" });
 
 export interface RuntimeEntitySchema {
   /** Output only. Name of the entity. */
@@ -1809,17 +1556,12 @@ export interface RuntimeEntitySchema {
   jsonSchema?: JsonSchema;
 }
 
-export const RuntimeEntitySchema: Schema.Schema<RuntimeEntitySchema> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      entity: Schema.optional(Schema.String),
-      operations: Schema.optional(Schema.Array(Schema.String)),
-      fields: Schema.optional(Schema.Array(Field)),
-      jsonSchema: Schema.optional(JsonSchema),
-    }),
-  ).annotate({
-    identifier: "RuntimeEntitySchema",
-  }) as any as Schema.Schema<RuntimeEntitySchema>;
+export const RuntimeEntitySchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  entity: Schema.optional(Schema.String),
+  operations: Schema.optional(Schema.Array(Schema.String)),
+  fields: Schema.optional(Schema.Array(Field)),
+  jsonSchema: Schema.optional(JsonSchema),
+}).annotate({ identifier: "RuntimeEntitySchema" });
 
 export interface SearchConnectionInstance {
   /** Output only. Schema of a runtime action. */
@@ -1830,16 +1572,12 @@ export interface SearchConnectionInstance {
   entitySchema?: RuntimeEntitySchema;
 }
 
-export const SearchConnectionInstance: Schema.Schema<SearchConnectionInstance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      actionSchema: Schema.optional(RuntimeActionSchema),
-      connection: Schema.optional(Connection),
-      entitySchema: Schema.optional(RuntimeEntitySchema),
-    }),
-  ).annotate({
-    identifier: "SearchConnectionInstance",
-  }) as any as Schema.Schema<SearchConnectionInstance>;
+export const SearchConnectionInstance =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    actionSchema: Schema.optional(RuntimeActionSchema),
+    connection: Schema.optional(Connection),
+    entitySchema: Schema.optional(RuntimeEntitySchema),
+  }).annotate({ identifier: "SearchConnectionInstance" });
 
 export interface SearchConnectionsResponse {
   /** Locations that could not be reached. */
@@ -1850,16 +1588,12 @@ export interface SearchConnectionsResponse {
   connections?: Array<SearchConnectionInstance>;
 }
 
-export const SearchConnectionsResponse: Schema.Schema<SearchConnectionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-      connections: Schema.optional(Schema.Array(SearchConnectionInstance)),
-    }),
-  ).annotate({
-    identifier: "SearchConnectionsResponse",
-  }) as any as Schema.Schema<SearchConnectionsResponse>;
+export const SearchConnectionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+    connections: Schema.optional(Schema.Array(SearchConnectionInstance)),
+  }).annotate({ identifier: "SearchConnectionsResponse" });
 
 export interface Expr {
   /** Textual representation of an expression in Common Expression Language syntax. */
@@ -1872,15 +1606,12 @@ export interface Expr {
   description?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expression: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Expr" }) as any as Schema.Schema<Expr>;
+export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  expression: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "Expr" });
 
 export interface Binding {
   /** Specifies the principals requesting access for a Google Cloud resource. `members` can have the following values: * `allUsers`: A special identifier that represents anyone who is on the internet; with or without a Google account. * `allAuthenticatedUsers`: A special identifier that represents anyone who is authenticated with a Google account or a service account. Does not include identities that come from external identity providers (IdPs) through identity federation. * `user:{emailid}`: An email address that represents a specific Google account. For example, `alice@example.com` . * `serviceAccount:{emailid}`: An email address that represents a Google service account. For example, `my-other-app@appspot.gserviceaccount.com`. * `serviceAccount:{projectid}.svc.id.goog[{namespace}/{kubernetes-sa}]`: An identifier for a [Kubernetes service account](https://cloud.google.com/kubernetes-engine/docs/how-to/kubernetes-service-accounts). For example, `my-project.svc.id.goog[my-namespace/my-kubernetes-sa]`. * `group:{emailid}`: An email address that represents a Google group. For example, `admins@example.com`. * `domain:{domain}`: The G Suite domain (primary) that represents all the users of that domain. For example, `google.com` or `example.com`. * `principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workforce identity pool. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/group/{group_id}`: All workforce identities in a group. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All workforce identities with a specific attribute value. * `principalSet://iam.googleapis.com/locations/global/workforcePools/{pool_id}/*`: All identities in a workforce identity pool. * `principal://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/subject/{subject_attribute_value}`: A single identity in a workload identity pool. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/group/{group_id}`: A workload identity pool group. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/attribute.{attribute_name}/{attribute_value}`: All identities in a workload identity pool with a certain attribute. * `principalSet://iam.googleapis.com/projects/{project_number}/locations/global/workloadIdentityPools/{pool_id}/*`: All identities in a workload identity pool. * `deleted:user:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a user that has been recently deleted. For example, `alice@example.com?uid=123456789012345678901`. If the user is recovered, this value reverts to `user:{emailid}` and the recovered user retains the role in the binding. * `deleted:serviceAccount:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a service account that has been recently deleted. For example, `my-other-app@appspot.gserviceaccount.com?uid=123456789012345678901`. If the service account is undeleted, this value reverts to `serviceAccount:{emailid}` and the undeleted service account retains the role in the binding. * `deleted:group:{emailid}?uid={uniqueid}`: An email address (plus unique identifier) representing a Google group that has been recently deleted. For example, `admins@example.com?uid=123456789012345678901`. If the group is recovered, this value reverts to `group:{emailid}` and the recovered group retains the role in the binding. * `deleted:principal://iam.googleapis.com/locations/global/workforcePools/{pool_id}/subject/{subject_attribute_value}`: Deleted single identity in a workforce identity pool. For example, `deleted:principal://iam.googleapis.com/locations/global/workforcePools/my-pool-id/subject/my-subject-attribute-value`. */
@@ -1891,14 +1622,11 @@ export interface Binding {
   role?: string;
 }
 
-export const Binding: Schema.Schema<Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      members: Schema.optional(Schema.Array(Schema.String)),
-      condition: Schema.optional(Expr),
-      role: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Binding" }) as any as Schema.Schema<Binding>;
+export const Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  members: Schema.optional(Schema.Array(Schema.String)),
+  condition: Schema.optional(Expr),
+  role: Schema.optional(Schema.String),
+}).annotate({ identifier: "Binding" });
 
 export interface EndUserAuthenticationConfigOauth2AuthCodeFlowGoogleManaged {
   /** Auth Code Data */
@@ -1911,17 +1639,15 @@ export interface EndUserAuthenticationConfigOauth2AuthCodeFlowGoogleManaged {
   redirectUri?: string;
 }
 
-export const EndUserAuthenticationConfigOauth2AuthCodeFlowGoogleManaged: Schema.Schema<EndUserAuthenticationConfigOauth2AuthCodeFlowGoogleManaged> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      oauthTokenData: Schema.optional(OAuthTokenData),
-      scopes: Schema.optional(Schema.Array(Schema.String)),
-      authCode: Schema.optional(Schema.String),
-      redirectUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const EndUserAuthenticationConfigOauth2AuthCodeFlowGoogleManaged =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    oauthTokenData: Schema.optional(OAuthTokenData),
+    scopes: Schema.optional(Schema.Array(Schema.String)),
+    authCode: Schema.optional(Schema.String),
+    redirectUri: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "EndUserAuthenticationConfigOauth2AuthCodeFlowGoogleManaged",
-  }) as any as Schema.Schema<EndUserAuthenticationConfigOauth2AuthCodeFlowGoogleManaged>;
+  });
 
 export interface EndUserAuthenticationConfigOauth2JwtBearerJwtClaims {
   /** Value for the "sub" claim. */
@@ -1932,16 +1658,14 @@ export interface EndUserAuthenticationConfigOauth2JwtBearerJwtClaims {
   audience?: string;
 }
 
-export const EndUserAuthenticationConfigOauth2JwtBearerJwtClaims: Schema.Schema<EndUserAuthenticationConfigOauth2JwtBearerJwtClaims> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subject: Schema.optional(Schema.String),
-      issuer: Schema.optional(Schema.String),
-      audience: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const EndUserAuthenticationConfigOauth2JwtBearerJwtClaims =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subject: Schema.optional(Schema.String),
+    issuer: Schema.optional(Schema.String),
+    audience: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "EndUserAuthenticationConfigOauth2JwtBearerJwtClaims",
-  }) as any as Schema.Schema<EndUserAuthenticationConfigOauth2JwtBearerJwtClaims>;
+  });
 
 export interface EndUserAuthenticationConfigOauth2JwtBearer {
   /** Required. secret version/value reference containing a PKCS#8 PEM-encoded private key associated with the Client Certificate. This private key will be used to sign JWTs used for the jwt-bearer authorization grant. Specified in the form as: `projects/* /strings/* /versions/*`. */
@@ -1950,17 +1674,13 @@ export interface EndUserAuthenticationConfigOauth2JwtBearer {
   jwtClaims?: EndUserAuthenticationConfigOauth2JwtBearerJwtClaims;
 }
 
-export const EndUserAuthenticationConfigOauth2JwtBearer: Schema.Schema<EndUserAuthenticationConfigOauth2JwtBearer> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clientKey: Schema.optional(EUASecret),
-      jwtClaims: Schema.optional(
-        EndUserAuthenticationConfigOauth2JwtBearerJwtClaims,
-      ),
-    }),
-  ).annotate({
-    identifier: "EndUserAuthenticationConfigOauth2JwtBearer",
-  }) as any as Schema.Schema<EndUserAuthenticationConfigOauth2JwtBearer>;
+export const EndUserAuthenticationConfigOauth2JwtBearer =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    clientKey: Schema.optional(EUASecret),
+    jwtClaims: Schema.optional(
+      EndUserAuthenticationConfigOauth2JwtBearerJwtClaims,
+    ),
+  }).annotate({ identifier: "EndUserAuthenticationConfigOauth2JwtBearer" });
 
 export interface EndUserAuthenticationConfigOauth2AuthCodeFlow {
   /** Optional. Client secret for user-provided OAuth app. */
@@ -1983,22 +1703,18 @@ export interface EndUserAuthenticationConfigOauth2AuthCodeFlow {
   redirectUri?: string;
 }
 
-export const EndUserAuthenticationConfigOauth2AuthCodeFlow: Schema.Schema<EndUserAuthenticationConfigOauth2AuthCodeFlow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clientSecret: Schema.optional(EUASecret),
-      enablePkce: Schema.optional(Schema.Boolean),
-      authCode: Schema.optional(Schema.String),
-      clientId: Schema.optional(Schema.String),
-      oauthTokenData: Schema.optional(OAuthTokenData),
-      pkceVerifier: Schema.optional(Schema.String),
-      scopes: Schema.optional(Schema.Array(Schema.String)),
-      authUri: Schema.optional(Schema.String),
-      redirectUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EndUserAuthenticationConfigOauth2AuthCodeFlow",
-  }) as any as Schema.Schema<EndUserAuthenticationConfigOauth2AuthCodeFlow>;
+export const EndUserAuthenticationConfigOauth2AuthCodeFlow =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    clientSecret: Schema.optional(EUASecret),
+    enablePkce: Schema.optional(Schema.Boolean),
+    authCode: Schema.optional(Schema.String),
+    clientId: Schema.optional(Schema.String),
+    oauthTokenData: Schema.optional(OAuthTokenData),
+    pkceVerifier: Schema.optional(Schema.String),
+    scopes: Schema.optional(Schema.Array(Schema.String)),
+    authUri: Schema.optional(Schema.String),
+    redirectUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EndUserAuthenticationConfigOauth2AuthCodeFlow" });
 
 export interface EndUserAuthenticationConfigOauth2ClientCredentials {
   /** Required. string value or secret version containing the client secret. */
@@ -2007,15 +1723,13 @@ export interface EndUserAuthenticationConfigOauth2ClientCredentials {
   clientId?: string;
 }
 
-export const EndUserAuthenticationConfigOauth2ClientCredentials: Schema.Schema<EndUserAuthenticationConfigOauth2ClientCredentials> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clientSecret: Schema.optional(EUASecret),
-      clientId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const EndUserAuthenticationConfigOauth2ClientCredentials =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    clientSecret: Schema.optional(EUASecret),
+    clientId: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "EndUserAuthenticationConfigOauth2ClientCredentials",
-  }) as any as Schema.Schema<EndUserAuthenticationConfigOauth2ClientCredentials>;
+  });
 
 export interface EndUserAuthenticationConfigSshPublicKey {
   /** The user account used to authenticate. */
@@ -2028,17 +1742,13 @@ export interface EndUserAuthenticationConfigSshPublicKey {
   certType?: string;
 }
 
-export const EndUserAuthenticationConfigSshPublicKey: Schema.Schema<EndUserAuthenticationConfigSshPublicKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      username: Schema.optional(Schema.String),
-      sshClientCertPass: Schema.optional(EUASecret),
-      sshClientCert: Schema.optional(EUASecret),
-      certType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EndUserAuthenticationConfigSshPublicKey",
-  }) as any as Schema.Schema<EndUserAuthenticationConfigSshPublicKey>;
+export const EndUserAuthenticationConfigSshPublicKey =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    username: Schema.optional(Schema.String),
+    sshClientCertPass: Schema.optional(EUASecret),
+    sshClientCert: Schema.optional(EUASecret),
+    certType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EndUserAuthenticationConfigSshPublicKey" });
 
 export interface EndUserAuthenticationConfig {
   /** Oauth2AuthCodeFlowGoogleManaged. */
@@ -2070,32 +1780,28 @@ export interface EndUserAuthenticationConfig {
   sshPublicKey?: EndUserAuthenticationConfigSshPublicKey;
 }
 
-export const EndUserAuthenticationConfig: Schema.Schema<EndUserAuthenticationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      oauth2AuthCodeFlowGoogleManaged: Schema.optional(
-        EndUserAuthenticationConfigOauth2AuthCodeFlowGoogleManaged,
-      ),
-      authKey: Schema.optional(Schema.String),
-      oauth2JwtBearer: Schema.optional(
-        EndUserAuthenticationConfigOauth2JwtBearer,
-      ),
-      oauth2AuthCodeFlow: Schema.optional(
-        EndUserAuthenticationConfigOauth2AuthCodeFlow,
-      ),
-      additionalVariables: Schema.optional(
-        Schema.Array(EndUserAuthenticationConfigVariable),
-      ),
-      authType: Schema.optional(Schema.String),
-      userPassword: Schema.optional(EndUserAuthenticationConfigUserPassword),
-      oauth2ClientCredentials: Schema.optional(
-        EndUserAuthenticationConfigOauth2ClientCredentials,
-      ),
-      sshPublicKey: Schema.optional(EndUserAuthenticationConfigSshPublicKey),
-    }),
-  ).annotate({
-    identifier: "EndUserAuthenticationConfig",
-  }) as any as Schema.Schema<EndUserAuthenticationConfig>;
+export const EndUserAuthenticationConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    oauth2AuthCodeFlowGoogleManaged: Schema.optional(
+      EndUserAuthenticationConfigOauth2AuthCodeFlowGoogleManaged,
+    ),
+    authKey: Schema.optional(Schema.String),
+    oauth2JwtBearer: Schema.optional(
+      EndUserAuthenticationConfigOauth2JwtBearer,
+    ),
+    oauth2AuthCodeFlow: Schema.optional(
+      EndUserAuthenticationConfigOauth2AuthCodeFlow,
+    ),
+    additionalVariables: Schema.optional(
+      Schema.Array(EndUserAuthenticationConfigVariable),
+    ),
+    authType: Schema.optional(Schema.String),
+    userPassword: Schema.optional(EndUserAuthenticationConfigUserPassword),
+    oauth2ClientCredentials: Schema.optional(
+      EndUserAuthenticationConfigOauth2ClientCredentials,
+    ),
+    sshPublicKey: Schema.optional(EndUserAuthenticationConfigSshPublicKey),
+  }).annotate({ identifier: "EndUserAuthenticationConfig" });
 
 export interface FieldComparison {
   /** Integer value */
@@ -2114,18 +1820,13 @@ export interface FieldComparison {
   stringValue?: string;
 }
 
-export const FieldComparison: Schema.Schema<FieldComparison> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      intValue: Schema.optional(Schema.String),
-      comparator: Schema.optional(Schema.String),
-      boolValue: Schema.optional(Schema.Boolean),
-      key: Schema.optional(Schema.String),
-      stringValue: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FieldComparison",
-  }) as any as Schema.Schema<FieldComparison>;
+export const FieldComparison = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  intValue: Schema.optional(Schema.String),
+  comparator: Schema.optional(Schema.String),
+  boolValue: Schema.optional(Schema.Boolean),
+  key: Schema.optional(Schema.String),
+  stringValue: Schema.optional(Schema.String),
+}).annotate({ identifier: "FieldComparison" });
 
 export interface LogicalExpression {
   /** Optional. A list of fields to be compared. */
@@ -2177,21 +1878,18 @@ export interface Provider {
   displayName?: string;
 }
 
-export const Provider: Schema.Schema<Provider> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      description: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      webAssetsLocation: Schema.optional(Schema.String),
-      documentationUri: Schema.optional(Schema.String),
-      launchStage: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      externalUri: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Provider" }) as any as Schema.Schema<Provider>;
+export const Provider = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  description: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  webAssetsLocation: Schema.optional(Schema.String),
+  documentationUri: Schema.optional(Schema.String),
+  launchStage: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  externalUri: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+}).annotate({ identifier: "Provider" });
 
 export interface ListProvidersResponse {
   /** A list of providers. */
@@ -2202,44 +1900,34 @@ export interface ListProvidersResponse {
   unreachable?: Array<string>;
 }
 
-export const ListProvidersResponse: Schema.Schema<ListProvidersResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      providers: Schema.optional(Schema.Array(Provider)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListProvidersResponse",
-  }) as any as Schema.Schema<ListProvidersResponse>;
+export const ListProvidersResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  providers: Schema.optional(Schema.Array(Provider)),
+  nextPageToken: Schema.optional(Schema.String),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ListProvidersResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface DeprecateCustomConnectorVersionRequest {}
 
-export const DeprecateCustomConnectorVersionRequest: Schema.Schema<DeprecateCustomConnectorVersionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const DeprecateCustomConnectorVersionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "DeprecateCustomConnectorVersionRequest",
-  }) as any as Schema.Schema<DeprecateCustomConnectorVersionRequest>;
+  });
 
 export interface ModifyConnectionToolspecOverrideRequest {
   /** Required. Toolspec overrides to be modified. */
   toolspecOverride?: ToolspecOverride;
 }
 
-export const ModifyConnectionToolspecOverrideRequest: Schema.Schema<ModifyConnectionToolspecOverrideRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      toolspecOverride: Schema.optional(ToolspecOverride),
-    }),
-  ).annotate({
-    identifier: "ModifyConnectionToolspecOverrideRequest",
-  }) as any as Schema.Schema<ModifyConnectionToolspecOverrideRequest>;
+export const ModifyConnectionToolspecOverrideRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    toolspecOverride: Schema.optional(ToolspecOverride),
+  }).annotate({ identifier: "ModifyConnectionToolspecOverrideRequest" });
 
 export interface MultipleSelectOption {
   /** Required. Display name of the option. */
@@ -2252,17 +1940,12 @@ export interface MultipleSelectOption {
   key?: string;
 }
 
-export const MultipleSelectOption: Schema.Schema<MultipleSelectOption> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      preselected: Schema.optional(Schema.Boolean),
-      description: Schema.optional(Schema.String),
-      key: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MultipleSelectOption",
-  }) as any as Schema.Schema<MultipleSelectOption>;
+export const MultipleSelectOption = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+  preselected: Schema.optional(Schema.Boolean),
+  description: Schema.optional(Schema.String),
+  key: Schema.optional(Schema.String),
+}).annotate({ identifier: "MultipleSelectOption" });
 
 export interface MultipleSelectConfig {
   /** Required. Multiple select options. */
@@ -2273,18 +1956,11 @@ export interface MultipleSelectConfig {
   valueSeparator?: string;
 }
 
-export const MultipleSelectConfig: Schema.Schema<MultipleSelectConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      multipleSelectOptions: Schema.optional(
-        Schema.Array(MultipleSelectOption),
-      ),
-      allowCustomValues: Schema.optional(Schema.Boolean),
-      valueSeparator: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MultipleSelectConfig",
-  }) as any as Schema.Schema<MultipleSelectConfig>;
+export const MultipleSelectConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  multipleSelectOptions: Schema.optional(Schema.Array(MultipleSelectOption)),
+  allowCustomValues: Schema.optional(Schema.Boolean),
+  valueSeparator: Schema.optional(Schema.String),
+}).annotate({ identifier: "MultipleSelectConfig" });
 
 export interface AuthProperty {
   /** Type of the property. */
@@ -2293,15 +1969,10 @@ export interface AuthProperty {
   description?: string;
 }
 
-export const AuthProperty: Schema.Schema<AuthProperty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AuthProperty",
-  }) as any as Schema.Schema<AuthProperty>;
+export const AuthProperty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "AuthProperty" });
 
 export interface AuthObject {
   /** Description of the object. */
@@ -2320,18 +1991,15 @@ export interface AuthObject {
   additionalProperties?: boolean;
 }
 
-export const AuthObject: Schema.Schema<AuthObject> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      authType: Schema.optional(Schema.String),
-      properties: Schema.optional(Schema.Record(Schema.String, AuthProperty)),
-      isDefault: Schema.optional(Schema.Boolean),
-      authKey: Schema.optional(Schema.String),
-      additionalProperties: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "AuthObject" }) as any as Schema.Schema<AuthObject>;
+export const AuthObject = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  authType: Schema.optional(Schema.String),
+  properties: Schema.optional(Schema.Record(Schema.String, AuthProperty)),
+  isDefault: Schema.optional(Schema.Boolean),
+  authKey: Schema.optional(Schema.String),
+  additionalProperties: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "AuthObject" });
 
 export interface JsonAuthSchema {
   /** List of AuthObjects. */
@@ -2340,15 +2008,10 @@ export interface JsonAuthSchema {
   $schema?: string;
 }
 
-export const JsonAuthSchema: Schema.Schema<JsonAuthSchema> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      oneOf: Schema.optional(Schema.Array(AuthObject)),
-      $schema: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "JsonAuthSchema",
-  }) as any as Schema.Schema<JsonAuthSchema>;
+export const JsonAuthSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  oneOf: Schema.optional(Schema.Array(AuthObject)),
+  $schema: Schema.optional(Schema.String),
+}).annotate({ identifier: "JsonAuthSchema" });
 
 export interface EndpointAttachment {
   /** Output only. Resource name of the Endpoint Attachment. Format: projects/{project}/locations/{location}/endpointAttachments/{endpoint_attachment} */
@@ -2380,38 +2043,26 @@ export interface EndpointAttachment {
   labels?: Record<string, string>;
 }
 
-export const EndpointAttachment: Schema.Schema<EndpointAttachment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      endpointGlobalAccess: Schema.optional(Schema.Boolean),
-      state: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      endpointIp: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      serviceAttachment: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "EndpointAttachment",
-  }) as any as Schema.Schema<EndpointAttachment>;
+export const EndpointAttachment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  endpointGlobalAccess: Schema.optional(Schema.Boolean),
+  state: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  endpointIp: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  serviceAttachment: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "EndpointAttachment" });
 
 export interface PerSliSloEligibility {
   /** An entry in the eligibilities map specifies an eligibility for a particular SLI for the given instance. The SLI key in the name must be a valid SLI name specified in the Eligibility Exporter binary flags otherwise an error will be emitted by Eligibility Exporter and the oncaller will be alerted. If an SLI has been defined in the binary flags but the eligibilities map does not contain it, the corresponding SLI time series will not be emitted by the Eligibility Exporter. This ensures a smooth rollout and compatibility between the data produced by different versions of the Eligibility Exporters. If eligibilities map contains a key for an SLI which has not been declared in the binary flags, there will be an error message emitted in the Eligibility Exporter log and the metric for the SLI in question will not be emitted. */
   eligibilities?: Record<string, SloEligibility>;
 }
 
-export const PerSliSloEligibility: Schema.Schema<PerSliSloEligibility> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      eligibilities: Schema.optional(
-        Schema.Record(Schema.String, SloEligibility),
-      ),
-    }),
-  ).annotate({
-    identifier: "PerSliSloEligibility",
-  }) as any as Schema.Schema<PerSliSloEligibility>;
+export const PerSliSloEligibility = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  eligibilities: Schema.optional(Schema.Record(Schema.String, SloEligibility)),
+}).annotate({ identifier: "PerSliSloEligibility" });
 
 export interface NodeSloMetadata {
   /** The location of the node, if different from instance location. */
@@ -2422,16 +2073,11 @@ export interface NodeSloMetadata {
   nodeId?: string;
 }
 
-export const NodeSloMetadata: Schema.Schema<NodeSloMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      location: Schema.optional(Schema.String),
-      perSliEligibility: Schema.optional(PerSliSloEligibility),
-      nodeId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NodeSloMetadata",
-  }) as any as Schema.Schema<NodeSloMetadata>;
+export const NodeSloMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  location: Schema.optional(Schema.String),
+  perSliEligibility: Schema.optional(PerSliSloEligibility),
+  nodeId: Schema.optional(Schema.String),
+}).annotate({ identifier: "NodeSloMetadata" });
 
 export interface EnumOption {
   /** Optional. Id of the option. */
@@ -2440,13 +2086,10 @@ export interface EnumOption {
   displayName?: string;
 }
 
-export const EnumOption: Schema.Schema<EnumOption> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "EnumOption" }) as any as Schema.Schema<EnumOption>;
+export const EnumOption = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+}).annotate({ identifier: "EnumOption" });
 
 export interface AuthorizationCodeLink {
   /** Optional. The client secret assigned to the Google Cloud Connectors OAuth app for the connector data source. */
@@ -2463,19 +2106,14 @@ export interface AuthorizationCodeLink {
   scopes?: Array<string>;
 }
 
-export const AuthorizationCodeLink: Schema.Schema<AuthorizationCodeLink> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clientSecret: Schema.optional(Secret),
-      enablePkce: Schema.optional(Schema.Boolean),
-      clientId: Schema.optional(Schema.String),
-      uri: Schema.optional(Schema.String),
-      omitQueryParams: Schema.optional(Schema.Boolean),
-      scopes: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AuthorizationCodeLink",
-  }) as any as Schema.Schema<AuthorizationCodeLink>;
+export const AuthorizationCodeLink = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  clientSecret: Schema.optional(Secret),
+  enablePkce: Schema.optional(Schema.Boolean),
+  clientId: Schema.optional(Schema.String),
+  uri: Schema.optional(Schema.String),
+  omitQueryParams: Schema.optional(Schema.Boolean),
+  scopes: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "AuthorizationCodeLink" });
 
 export interface ConfigVariableTemplate {
   /** Optional. Type of the parameter: string, int, bool etc. consider custom type for the benefit for the validation. */
@@ -2526,28 +2164,25 @@ export interface ConfigVariableTemplate {
   authorizationCodeLink?: AuthorizationCodeLink;
 }
 
-export const ConfigVariableTemplate: Schema.Schema<ConfigVariableTemplate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      valueType: Schema.optional(Schema.String),
-      key: Schema.optional(Schema.String),
-      enumOptions: Schema.optional(Schema.Array(EnumOption)),
-      isAdvanced: Schema.optional(Schema.Boolean),
-      requiredCondition: Schema.optional(LogicalExpression),
-      enumSource: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      validationRegex: Schema.optional(Schema.String),
-      locationType: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      multipleSelectConfig: Schema.optional(MultipleSelectConfig),
-      required: Schema.optional(Schema.Boolean),
-      roleGrant: Schema.optional(RoleGrant),
-      authorizationCodeLink: Schema.optional(AuthorizationCodeLink),
-    }),
-  ).annotate({
-    identifier: "ConfigVariableTemplate",
-  }) as any as Schema.Schema<ConfigVariableTemplate>;
+export const ConfigVariableTemplate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    valueType: Schema.optional(Schema.String),
+    key: Schema.optional(Schema.String),
+    enumOptions: Schema.optional(Schema.Array(EnumOption)),
+    isAdvanced: Schema.optional(Schema.Boolean),
+    requiredCondition: Schema.optional(LogicalExpression),
+    enumSource: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    displayName: Schema.optional(Schema.String),
+    validationRegex: Schema.optional(Schema.String),
+    locationType: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    multipleSelectConfig: Schema.optional(MultipleSelectConfig),
+    required: Schema.optional(Schema.Boolean),
+    roleGrant: Schema.optional(RoleGrant),
+    authorizationCodeLink: Schema.optional(AuthorizationCodeLink),
+  },
+).annotate({ identifier: "ConfigVariableTemplate" });
 
 export interface AuthConfigTemplate {
   /** Config variables to describe an `AuthConfig` for a `Connection`. */
@@ -2573,21 +2208,16 @@ export interface AuthConfigTemplate {
   isDefault?: boolean;
 }
 
-export const AuthConfigTemplate: Schema.Schema<AuthConfigTemplate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      configVariableTemplates: Schema.optional(
-        Schema.Array(ConfigVariableTemplate),
-      ),
-      description: Schema.optional(Schema.String),
-      authType: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      authKey: Schema.optional(Schema.String),
-      isDefault: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "AuthConfigTemplate",
-  }) as any as Schema.Schema<AuthConfigTemplate>;
+export const AuthConfigTemplate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  configVariableTemplates: Schema.optional(
+    Schema.Array(ConfigVariableTemplate),
+  ),
+  description: Schema.optional(Schema.String),
+  authType: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  authKey: Schema.optional(Schema.String),
+  isDefault: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "AuthConfigTemplate" });
 
 export interface DestinationConfigTemplate {
   /** Display name of the parameter. */
@@ -2617,23 +2247,19 @@ export interface DestinationConfigTemplate {
   autocompleteSuggestions?: Array<string>;
 }
 
-export const DestinationConfigTemplate: Schema.Schema<DestinationConfigTemplate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      min: Schema.optional(Schema.Number),
-      key: Schema.optional(Schema.String),
-      regexPattern: Schema.optional(Schema.String),
-      isAdvanced: Schema.optional(Schema.Boolean),
-      portFieldType: Schema.optional(Schema.String),
-      defaultPort: Schema.optional(Schema.Number),
-      max: Schema.optional(Schema.Number),
-      description: Schema.optional(Schema.String),
-      autocompleteSuggestions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "DestinationConfigTemplate",
-  }) as any as Schema.Schema<DestinationConfigTemplate>;
+export const DestinationConfigTemplate =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    displayName: Schema.optional(Schema.String),
+    min: Schema.optional(Schema.Number),
+    key: Schema.optional(Schema.String),
+    regexPattern: Schema.optional(Schema.String),
+    isAdvanced: Schema.optional(Schema.Boolean),
+    portFieldType: Schema.optional(Schema.String),
+    defaultPort: Schema.optional(Schema.Number),
+    max: Schema.optional(Schema.Number),
+    description: Schema.optional(Schema.String),
+    autocompleteSuggestions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "DestinationConfigTemplate" });
 
 export interface SslConfigTemplate {
   /** Controls the ssl type for the given connector version */
@@ -2648,20 +2274,13 @@ export interface SslConfigTemplate {
   serverCertType?: Array<"CERT_TYPE_UNSPECIFIED" | "PEM" | (string & {})>;
 }
 
-export const SslConfigTemplate: Schema.Schema<SslConfigTemplate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sslType: Schema.optional(Schema.String),
-      isTlsMandatory: Schema.optional(Schema.Boolean),
-      clientCertType: Schema.optional(Schema.Array(Schema.String)),
-      additionalVariables: Schema.optional(
-        Schema.Array(ConfigVariableTemplate),
-      ),
-      serverCertType: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "SslConfigTemplate",
-  }) as any as Schema.Schema<SslConfigTemplate>;
+export const SslConfigTemplate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sslType: Schema.optional(Schema.String),
+  isTlsMandatory: Schema.optional(Schema.Boolean),
+  clientCertType: Schema.optional(Schema.Array(Schema.String)),
+  additionalVariables: Schema.optional(Schema.Array(ConfigVariableTemplate)),
+  serverCertType: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "SslConfigTemplate" });
 
 export interface EventingConfigTemplate {
   /** The type of the event listener for a specific connector. */
@@ -2696,46 +2315,36 @@ export interface EventingConfigTemplate {
   enrichmentSupported?: boolean;
 }
 
-export const EventingConfigTemplate: Schema.Schema<EventingConfigTemplate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      eventListenerType: Schema.optional(Schema.String),
-      listenerAuthConfigTemplates: Schema.optional(
-        Schema.Array(AuthConfigTemplate),
-      ),
-      proxyDestinationConfig: Schema.optional(DestinationConfigTemplate),
-      isEventingSupported: Schema.optional(Schema.Boolean),
-      sslConfigTemplate: Schema.optional(SslConfigTemplate),
-      authConfigTemplates: Schema.optional(Schema.Array(AuthConfigTemplate)),
-      encryptionKeyTemplate: Schema.optional(ConfigVariableTemplate),
-      triggerConfigVariables: Schema.optional(
-        Schema.Array(ConfigVariableTemplate),
-      ),
-      autoRegistrationSupported: Schema.optional(Schema.Boolean),
-      additionalVariables: Schema.optional(
-        Schema.Array(ConfigVariableTemplate),
-      ),
-      registrationDestinationConfig: Schema.optional(DestinationConfigTemplate),
-      autoRefresh: Schema.optional(Schema.Boolean),
-      enrichmentSupported: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "EventingConfigTemplate",
-  }) as any as Schema.Schema<EventingConfigTemplate>;
+export const EventingConfigTemplate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    eventListenerType: Schema.optional(Schema.String),
+    listenerAuthConfigTemplates: Schema.optional(
+      Schema.Array(AuthConfigTemplate),
+    ),
+    proxyDestinationConfig: Schema.optional(DestinationConfigTemplate),
+    isEventingSupported: Schema.optional(Schema.Boolean),
+    sslConfigTemplate: Schema.optional(SslConfigTemplate),
+    authConfigTemplates: Schema.optional(Schema.Array(AuthConfigTemplate)),
+    encryptionKeyTemplate: Schema.optional(ConfigVariableTemplate),
+    triggerConfigVariables: Schema.optional(
+      Schema.Array(ConfigVariableTemplate),
+    ),
+    autoRegistrationSupported: Schema.optional(Schema.Boolean),
+    additionalVariables: Schema.optional(Schema.Array(ConfigVariableTemplate)),
+    registrationDestinationConfig: Schema.optional(DestinationConfigTemplate),
+    autoRefresh: Schema.optional(Schema.Boolean),
+    enrichmentSupported: Schema.optional(Schema.Boolean),
+  },
+).annotate({ identifier: "EventingConfigTemplate" });
 
 export interface StandardEntity {
   /** Name of the standard entity. */
   name?: string;
 }
 
-export const StandardEntity: Schema.Schema<StandardEntity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StandardEntity",
-  }) as any as Schema.Schema<StandardEntity>;
+export const StandardEntity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "StandardEntity" });
 
 export interface SchemaRefreshConfig {
   /** Whether to use synchronous schema refresh. */
@@ -2744,15 +2353,10 @@ export interface SchemaRefreshConfig {
   useActionDisplayNames?: boolean;
 }
 
-export const SchemaRefreshConfig: Schema.Schema<SchemaRefreshConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      useSynchronousSchemaRefresh: Schema.optional(Schema.Boolean),
-      useActionDisplayNames: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "SchemaRefreshConfig",
-  }) as any as Schema.Schema<SchemaRefreshConfig>;
+export const SchemaRefreshConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  useSynchronousSchemaRefresh: Schema.optional(Schema.Boolean),
+  useActionDisplayNames: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "SchemaRefreshConfig" });
 
 export interface VpcscConfig {
   /** The list of allowlisted FQDNs for VPCSC. */
@@ -2761,29 +2365,19 @@ export interface VpcscConfig {
   disableFirewallVpcscFlow?: boolean;
 }
 
-export const VpcscConfig: Schema.Schema<VpcscConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      defaultAllowlistedHost: Schema.optional(Schema.Array(Schema.String)),
-      disableFirewallVpcscFlow: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "VpcscConfig",
-  }) as any as Schema.Schema<VpcscConfig>;
+export const VpcscConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  defaultAllowlistedHost: Schema.optional(Schema.Array(Schema.String)),
+  disableFirewallVpcscFlow: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "VpcscConfig" });
 
 export interface StandardAction {
   /** Name of the standard action. */
   name?: string;
 }
 
-export const StandardAction: Schema.Schema<StandardAction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StandardAction",
-  }) as any as Schema.Schema<StandardAction>;
+export const StandardAction = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "StandardAction" });
 
 export interface NetworkEgressModeOverride {
   /** Determines the VPC Egress mode for the connector. */
@@ -2798,16 +2392,12 @@ export interface NetworkEgressModeOverride {
   isJobsOverrideEnabled?: boolean;
 }
 
-export const NetworkEgressModeOverride: Schema.Schema<NetworkEgressModeOverride> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      networkEgressMode: Schema.optional(Schema.String),
-      isEventingOverrideEnabled: Schema.optional(Schema.Boolean),
-      isJobsOverrideEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "NetworkEgressModeOverride",
-  }) as any as Schema.Schema<NetworkEgressModeOverride>;
+export const NetworkEgressModeOverride =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    networkEgressMode: Schema.optional(Schema.String),
+    isEventingOverrideEnabled: Schema.optional(Schema.Boolean),
+    isJobsOverrideEnabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "NetworkEgressModeOverride" });
 
 export interface ConnectorInfraConfig {
   /** Indicate whether connector is being migrated to TLS. */
@@ -2852,31 +2442,26 @@ export interface ConnectorInfraConfig {
   hpaConfig?: HPAConfig;
 }
 
-export const ConnectorInfraConfig: Schema.Schema<ConnectorInfraConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      migrateTls: Schema.optional(Schema.Boolean),
-      resourceRequests: Schema.optional(ResourceRequests),
-      alwaysAllocateCpu: Schema.optional(Schema.Boolean),
-      provisionMemstore: Schema.optional(Schema.Boolean),
-      maxInstanceRequestConcurrency: Schema.optional(Schema.Number),
-      connectorVersioningEnabled: Schema.optional(Schema.Boolean),
-      connectionServiceAccountEnabled: Schema.optional(Schema.Boolean),
-      resourceLimits: Schema.optional(ResourceLimits),
-      migrateDeploymentModel: Schema.optional(Schema.Boolean),
-      deploymentModel: Schema.optional(Schema.String),
-      sharedDeployment: Schema.optional(Schema.String),
-      connectionRatelimitWindowSeconds: Schema.optional(Schema.String),
-      ratelimitThreshold: Schema.optional(Schema.String),
-      internalclientRatelimitThreshold: Schema.optional(Schema.String),
-      publicNetworkIngressEnabled: Schema.optional(Schema.Boolean),
-      networkEgressModeOverride: Schema.optional(NetworkEgressModeOverride),
-      provisionCloudSpanner: Schema.optional(Schema.Boolean),
-      hpaConfig: Schema.optional(HPAConfig),
-    }),
-  ).annotate({
-    identifier: "ConnectorInfraConfig",
-  }) as any as Schema.Schema<ConnectorInfraConfig>;
+export const ConnectorInfraConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  migrateTls: Schema.optional(Schema.Boolean),
+  resourceRequests: Schema.optional(ResourceRequests),
+  alwaysAllocateCpu: Schema.optional(Schema.Boolean),
+  provisionMemstore: Schema.optional(Schema.Boolean),
+  maxInstanceRequestConcurrency: Schema.optional(Schema.Number),
+  connectorVersioningEnabled: Schema.optional(Schema.Boolean),
+  connectionServiceAccountEnabled: Schema.optional(Schema.Boolean),
+  resourceLimits: Schema.optional(ResourceLimits),
+  migrateDeploymentModel: Schema.optional(Schema.Boolean),
+  deploymentModel: Schema.optional(Schema.String),
+  sharedDeployment: Schema.optional(Schema.String),
+  connectionRatelimitWindowSeconds: Schema.optional(Schema.String),
+  ratelimitThreshold: Schema.optional(Schema.String),
+  internalclientRatelimitThreshold: Schema.optional(Schema.String),
+  publicNetworkIngressEnabled: Schema.optional(Schema.Boolean),
+  networkEgressModeOverride: Schema.optional(NetworkEgressModeOverride),
+  provisionCloudSpanner: Schema.optional(Schema.Boolean),
+  hpaConfig: Schema.optional(HPAConfig),
+}).annotate({ identifier: "ConnectorInfraConfig" });
 
 export interface Source {
   /** Type of the source. */
@@ -2889,13 +2474,10 @@ export interface Source {
   fieldId?: string;
 }
 
-export const Source: Schema.Schema<Source> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sourceType: Schema.optional(Schema.String),
-      fieldId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Source" }) as any as Schema.Schema<Source>;
+export const Source = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sourceType: Schema.optional(Schema.String),
+  fieldId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Source" });
 
 export interface ExtractionRule {
   /** Source on which the rule is applied. */
@@ -2906,30 +2488,20 @@ export interface ExtractionRule {
   formatString?: string;
 }
 
-export const ExtractionRule: Schema.Schema<ExtractionRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      source: Schema.optional(Source),
-      extractionRegex: Schema.optional(Schema.String),
-      formatString: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ExtractionRule",
-  }) as any as Schema.Schema<ExtractionRule>;
+export const ExtractionRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  source: Schema.optional(Source),
+  extractionRegex: Schema.optional(Schema.String),
+  formatString: Schema.optional(Schema.String),
+}).annotate({ identifier: "ExtractionRule" });
 
 export interface ExtractionRules {
   /** Collection of Extraction Rule. */
   extractionRule?: Array<ExtractionRule>;
 }
 
-export const ExtractionRules: Schema.Schema<ExtractionRules> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      extractionRule: Schema.optional(Schema.Array(ExtractionRule)),
-    }),
-  ).annotate({
-    identifier: "ExtractionRules",
-  }) as any as Schema.Schema<ExtractionRules>;
+export const ExtractionRules = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  extractionRule: Schema.optional(Schema.Array(ExtractionRule)),
+}).annotate({ identifier: "ExtractionRules" });
 
 export interface EgressControlConfig {
   /** Additional extraction rules to identity the backends from customer provided configuration in Connection resource. These rules are applied in addition to the ones specified in `oneof_backends`. */
@@ -2955,19 +2527,14 @@ export interface EgressControlConfig {
   backends?: string;
 }
 
-export const EgressControlConfig: Schema.Schema<EgressControlConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      additionalExtractionRules: Schema.optional(ExtractionRules),
-      extractionRules: Schema.optional(ExtractionRules),
-      accessMode: Schema.optional(Schema.String),
-      allowlistedProjectNumbers: Schema.optional(Schema.Array(Schema.String)),
-      launchEnvironment: Schema.optional(Schema.String),
-      backends: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EgressControlConfig",
-  }) as any as Schema.Schema<EgressControlConfig>;
+export const EgressControlConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  additionalExtractionRules: Schema.optional(ExtractionRules),
+  extractionRules: Schema.optional(ExtractionRules),
+  accessMode: Schema.optional(Schema.String),
+  allowlistedProjectNumbers: Schema.optional(Schema.Array(Schema.String)),
+  launchEnvironment: Schema.optional(Schema.String),
+  backends: Schema.optional(Schema.String),
+}).annotate({ identifier: "EgressControlConfig" });
 
 export interface ConnectorVersion {
   /** Output only. Eventing configuration supported by the Connector. */
@@ -3035,42 +2602,37 @@ export interface ConnectorVersion {
   isCustomEntitiesSupported?: boolean;
 }
 
-export const ConnectorVersion: Schema.Schema<ConnectorVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      eventingConfigTemplate: Schema.optional(EventingConfigTemplate),
-      name: Schema.optional(Schema.String),
-      authOverrideEnabled: Schema.optional(Schema.Boolean),
-      launchStage: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      roleGrants: Schema.optional(Schema.Array(RoleGrant)),
-      isCustomActionsSupported: Schema.optional(Schema.Boolean),
-      destinationConfigTemplates: Schema.optional(
-        Schema.Array(DestinationConfigTemplate),
-      ),
-      supportedStandardEntities: Schema.optional(Schema.Array(StandardEntity)),
-      supportedRuntimeFeatures: Schema.optional(SupportedRuntimeFeatures),
-      authConfigTemplates: Schema.optional(Schema.Array(AuthConfigTemplate)),
-      displayName: Schema.optional(Schema.String),
-      schemaRefreshConfig: Schema.optional(SchemaRefreshConfig),
-      releaseVersion: Schema.optional(Schema.String),
-      unsupportedConnectionTypes: Schema.optional(Schema.Array(Schema.String)),
-      updateTime: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      configVariableTemplates: Schema.optional(
-        Schema.Array(ConfigVariableTemplate),
-      ),
-      vpcscConfig: Schema.optional(VpcscConfig),
-      supportedStandardActions: Schema.optional(Schema.Array(StandardAction)),
-      sslConfigTemplate: Schema.optional(SslConfigTemplate),
-      roleGrant: Schema.optional(RoleGrant),
-      connectorInfraConfig: Schema.optional(ConnectorInfraConfig),
-      egressControlConfig: Schema.optional(EgressControlConfig),
-      isCustomEntitiesSupported: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ConnectorVersion",
-  }) as any as Schema.Schema<ConnectorVersion>;
+export const ConnectorVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  eventingConfigTemplate: Schema.optional(EventingConfigTemplate),
+  name: Schema.optional(Schema.String),
+  authOverrideEnabled: Schema.optional(Schema.Boolean),
+  launchStage: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  roleGrants: Schema.optional(Schema.Array(RoleGrant)),
+  isCustomActionsSupported: Schema.optional(Schema.Boolean),
+  destinationConfigTemplates: Schema.optional(
+    Schema.Array(DestinationConfigTemplate),
+  ),
+  supportedStandardEntities: Schema.optional(Schema.Array(StandardEntity)),
+  supportedRuntimeFeatures: Schema.optional(SupportedRuntimeFeatures),
+  authConfigTemplates: Schema.optional(Schema.Array(AuthConfigTemplate)),
+  displayName: Schema.optional(Schema.String),
+  schemaRefreshConfig: Schema.optional(SchemaRefreshConfig),
+  releaseVersion: Schema.optional(Schema.String),
+  unsupportedConnectionTypes: Schema.optional(Schema.Array(Schema.String)),
+  updateTime: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  configVariableTemplates: Schema.optional(
+    Schema.Array(ConfigVariableTemplate),
+  ),
+  vpcscConfig: Schema.optional(VpcscConfig),
+  supportedStandardActions: Schema.optional(Schema.Array(StandardAction)),
+  sslConfigTemplate: Schema.optional(SslConfigTemplate),
+  roleGrant: Schema.optional(RoleGrant),
+  connectorInfraConfig: Schema.optional(ConnectorInfraConfig),
+  egressControlConfig: Schema.optional(EgressControlConfig),
+  isCustomEntitiesSupported: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "ConnectorVersion" });
 
 export interface ListConnectorVersionsResponse {
   /** A list of connector versions. */
@@ -3081,16 +2643,12 @@ export interface ListConnectorVersionsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListConnectorVersionsResponse: Schema.Schema<ListConnectorVersionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      connectorVersions: Schema.optional(Schema.Array(ConnectorVersion)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListConnectorVersionsResponse",
-  }) as any as Schema.Schema<ListConnectorVersionsResponse>;
+export const ListConnectorVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    connectorVersions: Schema.optional(Schema.Array(ConnectorVersion)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListConnectorVersionsResponse" });
 
 export interface EventType {
   /** Output only. Resource name of the eventtype. Format: projects/{project}/locations/{location}/providers/{provider}/connectors/{connector}/versions/{version}/eventtypes/{eventtype} Only global location is supported for Connector resource. */
@@ -3111,19 +2669,16 @@ export interface EventType {
   enrichedEventPayloadSchema?: string;
 }
 
-export const EventType: Schema.Schema<EventType> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      idPath: Schema.optional(Schema.String),
-      eventPayloadSchema: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      entityType: Schema.optional(Schema.String),
-      eventTypeId: Schema.optional(Schema.String),
-      enrichedEventPayloadSchema: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "EventType" }) as any as Schema.Schema<EventType>;
+export const EventType = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  idPath: Schema.optional(Schema.String),
+  eventPayloadSchema: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  entityType: Schema.optional(Schema.String),
+  eventTypeId: Schema.optional(Schema.String),
+  enrichedEventPayloadSchema: Schema.optional(Schema.String),
+}).annotate({ identifier: "EventType" });
 
 export interface ListEventTypesResponse {
   /** A list of connector versions. */
@@ -3132,15 +2687,12 @@ export interface ListEventTypesResponse {
   nextPageToken?: string;
 }
 
-export const ListEventTypesResponse: Schema.Schema<ListEventTypesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      eventTypes: Schema.optional(Schema.Array(EventType)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListEventTypesResponse",
-  }) as any as Schema.Schema<ListEventTypesResponse>;
+export const ListEventTypesResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    eventTypes: Schema.optional(Schema.Array(EventType)),
+    nextPageToken: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ListEventTypesResponse" });
 
 export interface ManagedZone {
   /** Required. DNS Name of the resource */
@@ -3161,21 +2713,16 @@ export interface ManagedZone {
   updateTime?: string;
 }
 
-export const ManagedZone: Schema.Schema<ManagedZone> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dns: Schema.optional(Schema.String),
-      targetVpc: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      createTime: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      targetProject: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ManagedZone",
-  }) as any as Schema.Schema<ManagedZone>;
+export const ManagedZone = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  dns: Schema.optional(Schema.String),
+  targetVpc: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  createTime: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  targetProject: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "ManagedZone" });
 
 export interface EventingDetails {
   /** Output only. Description. */
@@ -3203,21 +2750,16 @@ export interface EventingDetails {
   iconLocation?: string;
 }
 
-export const EventingDetails: Schema.Schema<EventingDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      searchTags: Schema.optional(Schema.Array(Schema.String)),
-      launchStage: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      customEventTypes: Schema.optional(Schema.Boolean),
-      documentationLink: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      iconLocation: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EventingDetails",
-  }) as any as Schema.Schema<EventingDetails>;
+export const EventingDetails = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  searchTags: Schema.optional(Schema.Array(Schema.String)),
+  launchStage: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  customEventTypes: Schema.optional(Schema.Boolean),
+  documentationLink: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  iconLocation: Schema.optional(Schema.String),
+}).annotate({ identifier: "EventingDetails" });
 
 export interface EndUserAuthenticationEndUserAuthenticationStatus {
   /** Output only. State of Event Subscription resource. */
@@ -3226,15 +2768,13 @@ export interface EndUserAuthenticationEndUserAuthenticationStatus {
   description?: string;
 }
 
-export const EndUserAuthenticationEndUserAuthenticationStatus: Schema.Schema<EndUserAuthenticationEndUserAuthenticationStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const EndUserAuthenticationEndUserAuthenticationStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "EndUserAuthenticationEndUserAuthenticationStatus",
-  }) as any as Schema.Schema<EndUserAuthenticationEndUserAuthenticationStatus>;
+  });
 
 export interface EndUserAuthentication {
   /** Optional. Labels for the EndUserAuthentication. */
@@ -3266,28 +2806,23 @@ export interface EndUserAuthentication {
   createTime?: string;
 }
 
-export const EndUserAuthentication: Schema.Schema<EndUserAuthentication> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labels: Schema.optional(Schema.Array(Schema.String)),
-      status: Schema.optional(EndUserAuthenticationEndUserAuthenticationStatus),
-      destinationConfigs: Schema.optional(Schema.Array(DestinationConfig)),
-      roles: Schema.optional(Schema.Array(Schema.String)),
-      updateTime: Schema.optional(Schema.String),
-      endUserAuthenticationConfig: Schema.optional(EndUserAuthenticationConfig),
-      notifyEndpointDestination: Schema.optional(
-        EndUserAuthenticationNotifyEndpointDestination,
-      ),
-      userId: Schema.optional(Schema.String),
-      configVariables: Schema.optional(
-        Schema.Array(EndUserAuthenticationConfigVariable),
-      ),
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EndUserAuthentication",
-  }) as any as Schema.Schema<EndUserAuthentication>;
+export const EndUserAuthentication = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  labels: Schema.optional(Schema.Array(Schema.String)),
+  status: Schema.optional(EndUserAuthenticationEndUserAuthenticationStatus),
+  destinationConfigs: Schema.optional(Schema.Array(DestinationConfig)),
+  roles: Schema.optional(Schema.Array(Schema.String)),
+  updateTime: Schema.optional(Schema.String),
+  endUserAuthenticationConfig: Schema.optional(EndUserAuthenticationConfig),
+  notifyEndpointDestination: Schema.optional(
+    EndUserAuthenticationNotifyEndpointDestination,
+  ),
+  userId: Schema.optional(Schema.String),
+  configVariables: Schema.optional(
+    Schema.Array(EndUserAuthenticationConfigVariable),
+  ),
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "EndUserAuthentication" });
 
 export interface Header {
   /** Optional. Key of Header. */
@@ -3296,13 +2831,10 @@ export interface Header {
   value?: string;
 }
 
-export const Header: Schema.Schema<Header> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      key: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Header" }) as any as Schema.Schema<Header>;
+export const Header = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  key: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+}).annotate({ identifier: "Header" });
 
 export interface EndPoint {
   /** Optional. List of Header to be added to the Endpoint. */
@@ -3311,13 +2843,10 @@ export interface EndPoint {
   endpointUri?: string;
 }
 
-export const EndPoint: Schema.Schema<EndPoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      headers: Schema.optional(Schema.Array(Header)),
-      endpointUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "EndPoint" }) as any as Schema.Schema<EndPoint>;
+export const EndPoint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  headers: Schema.optional(Schema.Array(Header)),
+  endpointUri: Schema.optional(Schema.String),
+}).annotate({ identifier: "EndPoint" });
 
 export interface Connectors_Date {
   /** Month of a year. Must be from 1 to 12, or 0 to specify a year without a month and day. */
@@ -3328,16 +2857,11 @@ export interface Connectors_Date {
   year?: number;
 }
 
-export const Connectors_Date: Schema.Schema<Connectors_Date> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      month: Schema.optional(Schema.Number),
-      day: Schema.optional(Schema.Number),
-      year: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "Connectors_Date",
-  }) as any as Schema.Schema<Connectors_Date>;
+export const Connectors_Date = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  month: Schema.optional(Schema.Number),
+  day: Schema.optional(Schema.Number),
+  year: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Connectors_Date" });
 
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -3348,16 +2872,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
@@ -3372,16 +2893,13 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      error: Schema.optional(Status),
-      name: Schema.optional(Schema.String),
-      done: Schema.optional(Schema.Boolean),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  error: Schema.optional(Status),
+  name: Schema.optional(Schema.String),
+  done: Schema.optional(Schema.Boolean),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Operation" });
 
 export interface ListOperationsResponse {
   /** The standard List next-page token. */
@@ -3392,16 +2910,13 @@ export interface ListOperationsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      operations: Schema.optional(Schema.Array(Operation)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    nextPageToken: Schema.optional(Schema.String),
+    operations: Schema.optional(Schema.Array(Operation)),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 export interface ConnectionSchemaMetadata {
   /** Output only. Resource name. Format: projects/{project}/locations/{location}/connections/{connection}/connectionSchemaMetadata */
@@ -3429,34 +2944,25 @@ export interface ConnectionSchemaMetadata {
   actions?: Array<string>;
 }
 
-export const ConnectionSchemaMetadata: Schema.Schema<ConnectionSchemaMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      errorMessage: Schema.optional(Schema.String),
-      entities: Schema.optional(Schema.Array(Schema.String)),
-      refreshTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      actions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ConnectionSchemaMetadata",
-  }) as any as Schema.Schema<ConnectionSchemaMetadata>;
+export const ConnectionSchemaMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    errorMessage: Schema.optional(Schema.String),
+    entities: Schema.optional(Schema.Array(Schema.String)),
+    refreshTime: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    actions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ConnectionSchemaMetadata" });
 
 export interface ListenEventRequest {
   /** Optional. Request payload. */
   payload?: Record<string, unknown>;
 }
 
-export const ListenEventRequest: Schema.Schema<ListenEventRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({
-    identifier: "ListenEventRequest",
-  }) as any as Schema.Schema<ListenEventRequest>;
+export const ListenEventRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  payload: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "ListenEventRequest" });
 
 export interface ProvisionedResource {
   /** Type of the resource. This can be either a GCP resource or a custom one (e.g. another cloud provider's VM). For GCP compute resources use singular form of the names listed in GCP compute API documentation (https://cloud.google.com/compute/docs/reference/rest/v1/), prefixed with 'compute-', for example: 'compute-instance', 'compute-disk', 'compute-autoscaler'. */
@@ -3465,15 +2971,10 @@ export interface ProvisionedResource {
   resourceUrl?: string;
 }
 
-export const ProvisionedResource: Schema.Schema<ProvisionedResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resourceType: Schema.optional(Schema.String),
-      resourceUrl: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProvisionedResource",
-  }) as any as Schema.Schema<ProvisionedResource>;
+export const ProvisionedResource = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  resourceType: Schema.optional(Schema.String),
+  resourceUrl: Schema.optional(Schema.String),
+}).annotate({ identifier: "ProvisionedResource" });
 
 export interface SloMetadata {
   /** Name of the SLO tier the Instance belongs to. This name will be expected to match the tiers specified in the service SLO configuration. Field is mandatory and must not be empty. */
@@ -3484,16 +2985,11 @@ export interface SloMetadata {
   nodes?: Array<NodeSloMetadata>;
 }
 
-export const SloMetadata: Schema.Schema<SloMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tier: Schema.optional(Schema.String),
-      perSliEligibility: Schema.optional(PerSliSloEligibility),
-      nodes: Schema.optional(Schema.Array(NodeSloMetadata)),
-    }),
-  ).annotate({
-    identifier: "SloMetadata",
-  }) as any as Schema.Schema<SloMetadata>;
+export const SloMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tier: Schema.optional(Schema.String),
+  perSliEligibility: Schema.optional(PerSliSloEligibility),
+  nodes: Schema.optional(Schema.Array(NodeSloMetadata)),
+}).annotate({ identifier: "SloMetadata" });
 
 export interface MaintenanceSchedule {
   /** The scheduled end time for the maintenance. */
@@ -3508,18 +3004,13 @@ export interface MaintenanceSchedule {
   rolloutManagementPolicy?: string;
 }
 
-export const MaintenanceSchedule: Schema.Schema<MaintenanceSchedule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      endTime: Schema.optional(Schema.String),
-      startTime: Schema.optional(Schema.String),
-      scheduleDeadlineTime: Schema.optional(Schema.String),
-      canReschedule: Schema.optional(Schema.Boolean),
-      rolloutManagementPolicy: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MaintenanceSchedule",
-  }) as any as Schema.Schema<MaintenanceSchedule>;
+export const MaintenanceSchedule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  endTime: Schema.optional(Schema.String),
+  startTime: Schema.optional(Schema.String),
+  scheduleDeadlineTime: Schema.optional(Schema.String),
+  canReschedule: Schema.optional(Schema.Boolean),
+  rolloutManagementPolicy: Schema.optional(Schema.String),
+}).annotate({ identifier: "MaintenanceSchedule" });
 
 export interface DenyMaintenancePeriod {
   /** Deny period start date. This can be: * A full date, with non-zero year, month and day values. * A month and day value, with a zero year. Allows recurring deny periods each year. Date matching this period will have to be the same or after the start. */
@@ -3530,16 +3021,11 @@ export interface DenyMaintenancePeriod {
   time?: TimeOfDay;
 }
 
-export const DenyMaintenancePeriod: Schema.Schema<DenyMaintenancePeriod> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startDate: Schema.optional(Connectors_Date),
-      endDate: Schema.optional(Connectors_Date),
-      time: Schema.optional(TimeOfDay),
-    }),
-  ).annotate({
-    identifier: "DenyMaintenancePeriod",
-  }) as any as Schema.Schema<DenyMaintenancePeriod>;
+export const DenyMaintenancePeriod = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startDate: Schema.optional(Connectors_Date),
+  endDate: Schema.optional(Connectors_Date),
+  time: Schema.optional(TimeOfDay),
+}).annotate({ identifier: "DenyMaintenancePeriod" });
 
 export interface UpdatePolicy {
   /** Optional. Maintenance window that is applied to resources covered by this policy. */
@@ -3557,18 +3043,11 @@ export interface UpdatePolicy {
     | (string & {});
 }
 
-export const UpdatePolicy: Schema.Schema<UpdatePolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      window: Schema.optional(MaintenanceWindow),
-      denyMaintenancePeriods: Schema.optional(
-        Schema.Array(DenyMaintenancePeriod),
-      ),
-      channel: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "UpdatePolicy",
-  }) as any as Schema.Schema<UpdatePolicy>;
+export const UpdatePolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  window: Schema.optional(MaintenanceWindow),
+  denyMaintenancePeriods: Schema.optional(Schema.Array(DenyMaintenancePeriod)),
+  channel: Schema.optional(Schema.String),
+}).annotate({ identifier: "UpdatePolicy" });
 
 export interface MaintenancePolicy {
   /** Optional. Description of what this policy is for. Create/Update methods return INVALID_ARGUMENT if the length is greater than 512. */
@@ -3587,20 +3066,15 @@ export interface MaintenancePolicy {
   updatePolicy?: UpdatePolicy;
 }
 
-export const MaintenancePolicy: Schema.Schema<MaintenancePolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      state: Schema.optional(Schema.String),
-      updatePolicy: Schema.optional(UpdatePolicy),
-    }),
-  ).annotate({
-    identifier: "MaintenancePolicy",
-  }) as any as Schema.Schema<MaintenancePolicy>;
+export const MaintenancePolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  state: Schema.optional(Schema.String),
+  updatePolicy: Schema.optional(UpdatePolicy),
+}).annotate({ identifier: "MaintenancePolicy" });
 
 export interface MaintenanceSettings {
   /** Optional. Exclude instance from maintenance. When true, rollout service will not attempt maintenance on the instance. Rollout service will include the instance in reported rollout progress as not attempted. */
@@ -3611,32 +3085,22 @@ export interface MaintenanceSettings {
   maintenancePolicies?: Record<string, MaintenancePolicy>;
 }
 
-export const MaintenanceSettings: Schema.Schema<MaintenanceSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      exclude: Schema.optional(Schema.Boolean),
-      isRollback: Schema.optional(Schema.Boolean),
-      maintenancePolicies: Schema.optional(
-        Schema.Record(Schema.String, MaintenancePolicy),
-      ),
-    }),
-  ).annotate({
-    identifier: "MaintenanceSettings",
-  }) as any as Schema.Schema<MaintenanceSettings>;
+export const MaintenanceSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  exclude: Schema.optional(Schema.Boolean),
+  isRollback: Schema.optional(Schema.Boolean),
+  maintenancePolicies: Schema.optional(
+    Schema.Record(Schema.String, MaintenancePolicy),
+  ),
+}).annotate({ identifier: "MaintenanceSettings" });
 
 export interface NotificationParameter {
   /** Optional. Array of string values. e.g. instance's replica information. */
   values?: Array<string>;
 }
 
-export const NotificationParameter: Schema.Schema<NotificationParameter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      values: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "NotificationParameter",
-  }) as any as Schema.Schema<NotificationParameter>;
+export const NotificationParameter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  values: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "NotificationParameter" });
 
 export interface Instance {
   /** Output only. Timestamp when the resource was last modified. */
@@ -3685,39 +3149,36 @@ export interface Instance {
   instanceType?: string;
 }
 
-export const Instance: Schema.Schema<Instance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateTime: Schema.optional(Schema.String),
-      softwareVersions: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      slmInstanceTemplate: Schema.optional(Schema.String),
-      tenantProjectId: Schema.optional(Schema.String),
-      producerMetadata: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      provisionedResources: Schema.optional(Schema.Array(ProvisionedResource)),
-      state: Schema.optional(Schema.String),
-      sloMetadata: Schema.optional(SloMetadata),
-      consumerProjectNumber: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      maintenanceSchedules: Schema.optional(
-        Schema.Record(Schema.String, MaintenanceSchedule),
-      ),
-      maintenancePolicyNames: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      maintenanceSettings: Schema.optional(MaintenanceSettings),
-      name: Schema.optional(Schema.String),
-      consumerDefinedName: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      notificationParameters: Schema.optional(
-        Schema.Record(Schema.String, NotificationParameter),
-      ),
-      instanceType: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Instance" }) as any as Schema.Schema<Instance>;
+export const Instance = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  updateTime: Schema.optional(Schema.String),
+  softwareVersions: Schema.optional(
+    Schema.Record(Schema.String, Schema.String),
+  ),
+  slmInstanceTemplate: Schema.optional(Schema.String),
+  tenantProjectId: Schema.optional(Schema.String),
+  producerMetadata: Schema.optional(
+    Schema.Record(Schema.String, Schema.String),
+  ),
+  provisionedResources: Schema.optional(Schema.Array(ProvisionedResource)),
+  state: Schema.optional(Schema.String),
+  sloMetadata: Schema.optional(SloMetadata),
+  consumerProjectNumber: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  maintenanceSchedules: Schema.optional(
+    Schema.Record(Schema.String, MaintenanceSchedule),
+  ),
+  maintenancePolicyNames: Schema.optional(
+    Schema.Record(Schema.String, Schema.String),
+  ),
+  maintenanceSettings: Schema.optional(MaintenanceSettings),
+  name: Schema.optional(Schema.String),
+  consumerDefinedName: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  notificationParameters: Schema.optional(
+    Schema.Record(Schema.String, NotificationParameter),
+  ),
+  instanceType: Schema.optional(Schema.String),
+}).annotate({ identifier: "Instance" });
 
 export interface PubSub {
   /** Optional. Configuration for configuring the trigger */
@@ -3730,15 +3191,12 @@ export interface PubSub {
   attributes?: Record<string, string>;
 }
 
-export const PubSub: Schema.Schema<PubSub> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      configVariables: Schema.optional(Schema.Array(ConfigVariable)),
-      projectId: Schema.optional(Schema.String),
-      topicId: Schema.optional(Schema.String),
-      attributes: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({ identifier: "PubSub" }) as any as Schema.Schema<PubSub>;
+export const PubSub = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  configVariables: Schema.optional(Schema.Array(ConfigVariable)),
+  projectId: Schema.optional(Schema.String),
+  topicId: Schema.optional(Schema.String),
+  attributes: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "PubSub" });
 
 export interface EventSubscriptionDestination {
   /** Optional. type of the destination */
@@ -3751,17 +3209,13 @@ export interface EventSubscriptionDestination {
   serviceAccount?: string;
 }
 
-export const EventSubscriptionDestination: Schema.Schema<EventSubscriptionDestination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      endpoint: Schema.optional(EndPoint),
-      pubsub: Schema.optional(PubSub),
-      serviceAccount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EventSubscriptionDestination",
-  }) as any as Schema.Schema<EventSubscriptionDestination>;
+export const EventSubscriptionDestination =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    type: Schema.optional(Schema.String),
+    endpoint: Schema.optional(EndPoint),
+    pubsub: Schema.optional(PubSub),
+    serviceAccount: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EventSubscriptionDestination" });
 
 export interface CustomConnector {
   /** Identifier. Resource name of the CustomConnector. Format: projects/{project}/locations/{location}/customConnectors/{connector} */
@@ -3795,34 +3249,27 @@ export interface CustomConnector {
   allMarketplaceVersions?: Array<string>;
 }
 
-export const CustomConnector: Schema.Schema<CustomConnector> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      activeConnectorVersions: Schema.optional(Schema.Array(Schema.String)),
-      allConnectorVersions: Schema.optional(Schema.Array(Schema.String)),
-      customConnectorType: Schema.optional(Schema.String),
-      publishedMarketplaceVersions: Schema.optional(
-        Schema.Array(Schema.String),
-      ),
-      updateTime: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      logo: Schema.optional(Schema.String),
-      allMarketplaceVersions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "CustomConnector",
-  }) as any as Schema.Schema<CustomConnector>;
+export const CustomConnector = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  activeConnectorVersions: Schema.optional(Schema.Array(Schema.String)),
+  allConnectorVersions: Schema.optional(Schema.Array(Schema.String)),
+  customConnectorType: Schema.optional(Schema.String),
+  publishedMarketplaceVersions: Schema.optional(Schema.Array(Schema.String)),
+  updateTime: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  logo: Schema.optional(Schema.String),
+  allMarketplaceVersions: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "CustomConnector" });
 
 export interface RetryEventSubscriptionRequest {}
 
-export const RetryEventSubscriptionRequest: Schema.Schema<RetryEventSubscriptionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const RetryEventSubscriptionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RetryEventSubscriptionRequest",
-  }) as any as Schema.Schema<RetryEventSubscriptionRequest>;
+  });
 
 export interface Location {
   /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
@@ -3837,16 +3284,13 @@ export interface Location {
   displayName?: string;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      locationId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  locationId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  displayName: Schema.optional(Schema.String),
+}).annotate({ identifier: "Location" });
 
 export interface ListLocationsResponse {
   /** The standard List next-page token. */
@@ -3855,15 +3299,10 @@ export interface ListLocationsResponse {
   locations?: Array<Location>;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      locations: Schema.optional(Schema.Array(Location)),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  locations: Schema.optional(Schema.Array(Location)),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface Policy {
   /** Associates a list of `members`, or principals, with a `role`. Optionally, may specify a `condition` that determines how and when the `bindings` are applied. Each of the `bindings` must contain at least one principal. The `bindings` in a `Policy` can refer to up to 1,500 principals; up to 250 of these principals can be Google groups. Each occurrence of a principal counts towards these limits. For example, if the `bindings` grant 50 different roles to `user:alice@example.com`, and not to any other principal, then you can add another 1,450 principals to the `bindings` in the `Policy`. */
@@ -3876,15 +3315,12 @@ export interface Policy {
   auditConfigs?: Array<AuditConfig>;
 }
 
-export const Policy: Schema.Schema<Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      bindings: Schema.optional(Schema.Array(Binding)),
-      etag: Schema.optional(Schema.String),
-      version: Schema.optional(Schema.Number),
-      auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
-    }),
-  ).annotate({ identifier: "Policy" }) as any as Schema.Schema<Policy>;
+export const Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  bindings: Schema.optional(Schema.Array(Binding)),
+  etag: Schema.optional(Schema.String),
+  version: Schema.optional(Schema.Number),
+  auditConfigs: Schema.optional(Schema.Array(AuditConfig)),
+}).annotate({ identifier: "Policy" });
 
 export interface SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
@@ -3893,15 +3329,10 @@ export interface SetIamPolicyRequest {
   updateMask?: string;
 }
 
-export const SetIamPolicyRequest: Schema.Schema<SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policy: Schema.optional(Policy),
-      updateMask: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SetIamPolicyRequest",
-  }) as any as Schema.Schema<SetIamPolicyRequest>;
+export const SetIamPolicyRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  policy: Schema.optional(Policy),
+  updateMask: Schema.optional(Schema.String),
+}).annotate({ identifier: "SetIamPolicyRequest" });
 
 export interface EventSubscriptionStatus {
   /** Output only. State of Event Subscription resource. */
@@ -3917,22 +3348,18 @@ export interface EventSubscriptionStatus {
   description?: string;
 }
 
-export const EventSubscriptionStatus: Schema.Schema<EventSubscriptionStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      state: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EventSubscriptionStatus",
-  }) as any as Schema.Schema<EventSubscriptionStatus>;
+export const EventSubscriptionStatus =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    state: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+  }).annotate({ identifier: "EventSubscriptionStatus" });
 
 export interface RemoveConnectionToolspecOverrideRequest {}
 
-export const RemoveConnectionToolspecOverrideRequest: Schema.Schema<RemoveConnectionToolspecOverrideRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const RemoveConnectionToolspecOverrideRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RemoveConnectionToolspecOverrideRequest",
-  }) as any as Schema.Schema<RemoveConnectionToolspecOverrideRequest>;
+  });
 
 export interface JMS {
   /** Optional. Type of the JMS Source. i.e. Queue or Topic */
@@ -3941,13 +3368,10 @@ export interface JMS {
   name?: string;
 }
 
-export const JMS: Schema.Schema<JMS> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "JMS" }) as any as Schema.Schema<JMS>;
+export const JMS = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "JMS" });
 
 export interface EventSubscription {
   /** Optional. name of the Subscriber for the current EventSubscription. */
@@ -3974,24 +3398,19 @@ export interface EventSubscription {
   jms?: JMS;
 }
 
-export const EventSubscription: Schema.Schema<EventSubscription> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subscriber: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      triggerConfigVariables: Schema.optional(Schema.Array(ConfigVariable)),
-      filter: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      eventTypeId: Schema.optional(Schema.String),
-      subscriberLink: Schema.optional(Schema.String),
-      status: Schema.optional(EventSubscriptionStatus),
-      updateTime: Schema.optional(Schema.String),
-      destinations: Schema.optional(EventSubscriptionDestination),
-      jms: Schema.optional(JMS),
-    }),
-  ).annotate({
-    identifier: "EventSubscription",
-  }) as any as Schema.Schema<EventSubscription>;
+export const EventSubscription = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subscriber: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  triggerConfigVariables: Schema.optional(Schema.Array(ConfigVariable)),
+  filter: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  eventTypeId: Schema.optional(Schema.String),
+  subscriberLink: Schema.optional(Schema.String),
+  status: Schema.optional(EventSubscriptionStatus),
+  updateTime: Schema.optional(Schema.String),
+  destinations: Schema.optional(EventSubscriptionDestination),
+  jms: Schema.optional(JMS),
+}).annotate({ identifier: "EventSubscription" });
 
 export interface PublishStatus {
   /** Output only. Publish state of the custom connector. */
@@ -4009,17 +3428,12 @@ export interface PublishStatus {
   publishedSource?: string;
 }
 
-export const PublishStatus: Schema.Schema<PublishStatus> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      publishState: Schema.optional(Schema.String),
-      publishTime: Schema.optional(Schema.String),
-      publishedAs: Schema.optional(Schema.String),
-      publishedSource: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PublishStatus",
-  }) as any as Schema.Schema<PublishStatus>;
+export const PublishStatus = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  publishState: Schema.optional(Schema.String),
+  publishTime: Schema.optional(Schema.String),
+  publishedAs: Schema.optional(Schema.String),
+  publishedSource: Schema.optional(Schema.String),
+}).annotate({ identifier: "PublishStatus" });
 
 export interface CustomConnectorVersion {
   /** Optional. Authentication config for accessing connector service (facade). This is used only when enable_backend_destination_config is true. */
@@ -4058,32 +3472,29 @@ export interface CustomConnectorVersion {
   serviceAccount?: string;
 }
 
-export const CustomConnectorVersion: Schema.Schema<CustomConnectorVersion> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      authConfig: Schema.optional(AuthConfig),
-      state: Schema.optional(Schema.String),
-      authConfigTemplates: Schema.optional(Schema.Array(AuthConfigTemplate)),
-      partnerMetadata: Schema.optional(PartnerMetadata),
-      publishStatus: Schema.optional(PublishStatus),
-      authOverrideSupport: Schema.optional(Schema.Boolean),
-      updateTime: Schema.optional(Schema.String),
-      specServerUrls: Schema.optional(Schema.Array(Schema.String)),
-      asyncOperationsSupport: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-      specLocation: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      enableBackendDestinationConfig: Schema.optional(Schema.Boolean),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      backendVariableTemplates: Schema.optional(
-        Schema.Array(ConfigVariableTemplate),
-      ),
-      destinationConfigs: Schema.optional(Schema.Array(DestinationConfig)),
-      serviceAccount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomConnectorVersion",
-  }) as any as Schema.Schema<CustomConnectorVersion>;
+export const CustomConnectorVersion = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    authConfig: Schema.optional(AuthConfig),
+    state: Schema.optional(Schema.String),
+    authConfigTemplates: Schema.optional(Schema.Array(AuthConfigTemplate)),
+    partnerMetadata: Schema.optional(PartnerMetadata),
+    publishStatus: Schema.optional(PublishStatus),
+    authOverrideSupport: Schema.optional(Schema.Boolean),
+    updateTime: Schema.optional(Schema.String),
+    specServerUrls: Schema.optional(Schema.Array(Schema.String)),
+    asyncOperationsSupport: Schema.optional(Schema.Boolean),
+    name: Schema.optional(Schema.String),
+    specLocation: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    enableBackendDestinationConfig: Schema.optional(Schema.Boolean),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    backendVariableTemplates: Schema.optional(
+      Schema.Array(ConfigVariableTemplate),
+    ),
+    destinationConfigs: Schema.optional(Schema.Array(DestinationConfig)),
+    serviceAccount: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "CustomConnectorVersion" });
 
 export interface ListCustomConnectorVersionsResponse {
   /** Locations that could not be reached. */
@@ -4094,18 +3505,14 @@ export interface ListCustomConnectorVersionsResponse {
   customConnectorVersions?: Array<CustomConnectorVersion>;
 }
 
-export const ListCustomConnectorVersionsResponse: Schema.Schema<ListCustomConnectorVersionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-      customConnectorVersions: Schema.optional(
-        Schema.Array(CustomConnectorVersion),
-      ),
-    }),
-  ).annotate({
-    identifier: "ListCustomConnectorVersionsResponse",
-  }) as any as Schema.Schema<ListCustomConnectorVersionsResponse>;
+export const ListCustomConnectorVersionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+    customConnectorVersions: Schema.optional(
+      Schema.Array(CustomConnectorVersion),
+    ),
+  }).annotate({ identifier: "ListCustomConnectorVersionsResponse" });
 
 export interface ListEntityTypesResponse {
   /** token for next page */
@@ -4114,15 +3521,11 @@ export interface ListEntityTypesResponse {
   entityTypes?: Array<RuntimeEntitySchema>;
 }
 
-export const ListEntityTypesResponse: Schema.Schema<ListEntityTypesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      entityTypes: Schema.optional(Schema.Array(RuntimeEntitySchema)),
-    }),
-  ).annotate({
-    identifier: "ListEntityTypesResponse",
-  }) as any as Schema.Schema<ListEntityTypesResponse>;
+export const ListEntityTypesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    entityTypes: Schema.optional(Schema.Array(RuntimeEntitySchema)),
+  }).annotate({ identifier: "ListEntityTypesResponse" });
 
 export interface ListEndpointAttachmentsResponse {
   /** Locations that could not be reached. */
@@ -4133,16 +3536,12 @@ export interface ListEndpointAttachmentsResponse {
   endpointAttachments?: Array<EndpointAttachment>;
 }
 
-export const ListEndpointAttachmentsResponse: Schema.Schema<ListEndpointAttachmentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-      endpointAttachments: Schema.optional(Schema.Array(EndpointAttachment)),
-    }),
-  ).annotate({
-    identifier: "ListEndpointAttachmentsResponse",
-  }) as any as Schema.Schema<ListEndpointAttachmentsResponse>;
+export const ListEndpointAttachmentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+    endpointAttachments: Schema.optional(Schema.Array(EndpointAttachment)),
+  }).annotate({ identifier: "ListEndpointAttachmentsResponse" });
 
 export interface EncryptionConfig {
   /** Optional. KMS crypto key. This field accepts identifiers of the form `projects/{project}/locations/{location}/keyRings/{key_ring}/cryptoKeys/ {crypto_key}` */
@@ -4155,15 +3554,10 @@ export interface EncryptionConfig {
     | (string & {});
 }
 
-export const EncryptionConfig: Schema.Schema<EncryptionConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kmsKeyName: Schema.optional(Schema.String),
-      encryptionType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "EncryptionConfig",
-  }) as any as Schema.Schema<EncryptionConfig>;
+export const EncryptionConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kmsKeyName: Schema.optional(Schema.String),
+  encryptionType: Schema.optional(Schema.String),
+}).annotate({ identifier: "EncryptionConfig" });
 
 export interface ListRuntimeEntitySchemasResponse {
   /** Next page token. */
@@ -4172,15 +3566,11 @@ export interface ListRuntimeEntitySchemasResponse {
   runtimeEntitySchemas?: Array<RuntimeEntitySchema>;
 }
 
-export const ListRuntimeEntitySchemasResponse: Schema.Schema<ListRuntimeEntitySchemasResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      runtimeEntitySchemas: Schema.optional(Schema.Array(RuntimeEntitySchema)),
-    }),
-  ).annotate({
-    identifier: "ListRuntimeEntitySchemasResponse",
-  }) as any as Schema.Schema<ListRuntimeEntitySchemasResponse>;
+export const ListRuntimeEntitySchemasResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    runtimeEntitySchemas: Schema.optional(Schema.Array(RuntimeEntitySchema)),
+  }).annotate({ identifier: "ListRuntimeEntitySchemasResponse" });
 
 export interface ListCustomConnectorsResponse {
   /** Locations that could not be reached. */
@@ -4191,16 +3581,12 @@ export interface ListCustomConnectorsResponse {
   nextPageToken?: string;
 }
 
-export const ListCustomConnectorsResponse: Schema.Schema<ListCustomConnectorsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      customConnectors: Schema.optional(Schema.Array(CustomConnector)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListCustomConnectorsResponse",
-  }) as any as Schema.Schema<ListCustomConnectorsResponse>;
+export const ListCustomConnectorsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    customConnectors: Schema.optional(Schema.Array(CustomConnector)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListCustomConnectorsResponse" });
 
 export interface ToolName {
   /** Optional. Operation for which the tool was generated. */
@@ -4218,28 +3604,21 @@ export interface ToolName {
   entityType?: string;
 }
 
-export const ToolName: Schema.Schema<ToolName> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operation: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      entityType: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "ToolName" }) as any as Schema.Schema<ToolName>;
+export const ToolName = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  operation: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  entityType: Schema.optional(Schema.String),
+}).annotate({ identifier: "ToolName" });
 
 export interface FetchConnectionToolspecOverrideRequest {
   /** Required. List of tools for which the tool spec override is to be generated. */
   toolNames?: Array<ToolName>;
 }
 
-export const FetchConnectionToolspecOverrideRequest: Schema.Schema<FetchConnectionToolspecOverrideRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      toolNames: Schema.optional(Schema.Array(ToolName)),
-    }),
-  ).annotate({
-    identifier: "FetchConnectionToolspecOverrideRequest",
-  }) as any as Schema.Schema<FetchConnectionToolspecOverrideRequest>;
+export const FetchConnectionToolspecOverrideRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    toolNames: Schema.optional(Schema.Array(ToolName)),
+  }).annotate({ identifier: "FetchConnectionToolspecOverrideRequest" });
 
 export interface MarketplaceConnectorDetails {
   /** The name of the partner. */
@@ -4252,17 +3631,13 @@ export interface MarketplaceConnectorDetails {
   marketplaceProductUri?: string;
 }
 
-export const MarketplaceConnectorDetails: Schema.Schema<MarketplaceConnectorDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      partner: Schema.optional(Schema.String),
-      marketplaceProduct: Schema.optional(Schema.String),
-      marketplaceProductId: Schema.optional(Schema.String),
-      marketplaceProductUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MarketplaceConnectorDetails",
-  }) as any as Schema.Schema<MarketplaceConnectorDetails>;
+export const MarketplaceConnectorDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    partner: Schema.optional(Schema.String),
+    marketplaceProduct: Schema.optional(Schema.String),
+    marketplaceProductId: Schema.optional(Schema.String),
+    marketplaceProductUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "MarketplaceConnectorDetails" });
 
 export interface Connector {
   /** Output only. Description of the resource. */
@@ -4309,26 +3684,23 @@ export interface Connector {
   documentationUri?: string;
 }
 
-export const Connector: Schema.Schema<Connector> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      webAssetsLocation: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      name: Schema.optional(Schema.String),
-      launchStage: Schema.optional(Schema.String),
-      eventingDetails: Schema.optional(EventingDetails),
-      tags: Schema.optional(Schema.Array(Schema.String)),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      connectorType: Schema.optional(Schema.String),
-      marketplaceConnectorDetails: Schema.optional(MarketplaceConnectorDetails),
-      category: Schema.optional(Schema.String),
-      externalUri: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      documentationUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Connector" }) as any as Schema.Schema<Connector>;
+export const Connector = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  webAssetsLocation: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  name: Schema.optional(Schema.String),
+  launchStage: Schema.optional(Schema.String),
+  eventingDetails: Schema.optional(EventingDetails),
+  tags: Schema.optional(Schema.Array(Schema.String)),
+  createTime: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  connectorType: Schema.optional(Schema.String),
+  marketplaceConnectorDetails: Schema.optional(MarketplaceConnectorDetails),
+  category: Schema.optional(Schema.String),
+  externalUri: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  documentationUri: Schema.optional(Schema.String),
+}).annotate({ identifier: "Connector" });
 
 export interface ListConnectorsResponse {
   /** A list of connectors. */
@@ -4339,16 +3711,13 @@ export interface ListConnectorsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListConnectorsResponse: Schema.Schema<ListConnectorsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      connectors: Schema.optional(Schema.Array(Connector)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListConnectorsResponse",
-  }) as any as Schema.Schema<ListConnectorsResponse>;
+export const ListConnectorsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    connectors: Schema.optional(Schema.Array(Connector)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "ListConnectorsResponse" });
 
 export interface AuthField {
   /** Key of the field. */
@@ -4359,14 +3728,11 @@ export interface AuthField {
   description?: string;
 }
 
-export const AuthField: Schema.Schema<AuthField> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      key: Schema.optional(Schema.String),
-      dataType: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "AuthField" }) as any as Schema.Schema<AuthField>;
+export const AuthField = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  key: Schema.optional(Schema.String),
+  dataType: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "AuthField" });
 
 export interface AuthSchema {
   /** Whether the auth schema is the default one. */
@@ -4392,17 +3758,14 @@ export interface AuthSchema {
   displayName?: string;
 }
 
-export const AuthSchema: Schema.Schema<AuthSchema> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      isDefault: Schema.optional(Schema.Boolean),
-      authKey: Schema.optional(Schema.String),
-      authFields: Schema.optional(Schema.Array(AuthField)),
-      description: Schema.optional(Schema.String),
-      authType: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "AuthSchema" }) as any as Schema.Schema<AuthSchema>;
+export const AuthSchema = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  isDefault: Schema.optional(Schema.Boolean),
+  authKey: Schema.optional(Schema.String),
+  authFields: Schema.optional(Schema.Array(AuthField)),
+  description: Schema.optional(Schema.String),
+  authType: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+}).annotate({ identifier: "AuthSchema" });
 
 export interface NetworkConfig {
   /** Optional. Egress mode for the network. */
@@ -4415,15 +3778,10 @@ export interface NetworkConfig {
   egressIps?: Array<string>;
 }
 
-export const NetworkConfig: Schema.Schema<NetworkConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      egressMode: Schema.optional(Schema.String),
-      egressIps: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "NetworkConfig",
-  }) as any as Schema.Schema<NetworkConfig>;
+export const NetworkConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  egressMode: Schema.optional(Schema.String),
+  egressIps: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "NetworkConfig" });
 
 export interface ValidateCustomConnectorSpecRequest {
   /** Required. Spec type of the custom connector spec. */
@@ -4439,44 +3797,32 @@ export interface ValidateCustomConnectorSpecRequest {
   serviceAccount?: string;
 }
 
-export const ValidateCustomConnectorSpecRequest: Schema.Schema<ValidateCustomConnectorSpecRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      specType: Schema.optional(Schema.String),
-      specLocation: Schema.optional(Schema.String),
-      serviceAccount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ValidateCustomConnectorSpecRequest",
-  }) as any as Schema.Schema<ValidateCustomConnectorSpecRequest>;
+export const ValidateCustomConnectorSpecRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    specType: Schema.optional(Schema.String),
+    specLocation: Schema.optional(Schema.String),
+    serviceAccount: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ValidateCustomConnectorSpecRequest" });
 
 export interface ValidateCustomConnectorSpecResponse {
   /** Error message. The spec is valid if the error message is empty. */
   errorMessage?: string;
 }
 
-export const ValidateCustomConnectorSpecResponse: Schema.Schema<ValidateCustomConnectorSpecResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errorMessage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ValidateCustomConnectorSpecResponse",
-  }) as any as Schema.Schema<ValidateCustomConnectorSpecResponse>;
+export const ValidateCustomConnectorSpecResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    errorMessage: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ValidateCustomConnectorSpecResponse" });
 
 export interface GenerateConnectionToolspecOverrideRequest {
   /** Required. List of tools for which the tool spec override is to be generated. */
   toolNames?: Array<ToolName>;
 }
 
-export const GenerateConnectionToolspecOverrideRequest: Schema.Schema<GenerateConnectionToolspecOverrideRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      toolNames: Schema.optional(Schema.Array(ToolName)),
-    }),
-  ).annotate({
-    identifier: "GenerateConnectionToolspecOverrideRequest",
-  }) as any as Schema.Schema<GenerateConnectionToolspecOverrideRequest>;
+export const GenerateConnectionToolspecOverrideRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    toolNames: Schema.optional(Schema.Array(ToolName)),
+  }).annotate({ identifier: "GenerateConnectionToolspecOverrideRequest" });
 
 export interface RegionalSettings {
   /** Output only. Specifies whether the region is provisioned. */
@@ -4489,17 +3835,12 @@ export interface RegionalSettings {
   name?: string;
 }
 
-export const RegionalSettings: Schema.Schema<RegionalSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      provisioned: Schema.optional(Schema.Boolean),
-      networkConfig: Schema.optional(NetworkConfig),
-      encryptionConfig: Schema.optional(EncryptionConfig),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RegionalSettings",
-  }) as any as Schema.Schema<RegionalSettings>;
+export const RegionalSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  provisioned: Schema.optional(Schema.Boolean),
+  networkConfig: Schema.optional(NetworkConfig),
+  encryptionConfig: Schema.optional(EncryptionConfig),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "RegionalSettings" });
 
 export interface ListEventSubscriptionsResponse {
   /** Subscriptions. */
@@ -4510,30 +3851,22 @@ export interface ListEventSubscriptionsResponse {
   nextPageToken?: string;
 }
 
-export const ListEventSubscriptionsResponse: Schema.Schema<ListEventSubscriptionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      eventSubscriptions: Schema.optional(Schema.Array(EventSubscription)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListEventSubscriptionsResponse",
-  }) as any as Schema.Schema<ListEventSubscriptionsResponse>;
+export const ListEventSubscriptionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    eventSubscriptions: Schema.optional(Schema.Array(EventSubscription)),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListEventSubscriptionsResponse" });
 
 export interface TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsResponse: Schema.Schema<TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsResponse",
-  }) as any as Schema.Schema<TestIamPermissionsResponse>;
+export const TestIamPermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsResponse" });
 
 export interface ListManagedZonesResponse {
   /** Next page token. */
@@ -4544,16 +3877,12 @@ export interface ListManagedZonesResponse {
   unreachable?: Array<string>;
 }
 
-export const ListManagedZonesResponse: Schema.Schema<ListManagedZonesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      managedZones: Schema.optional(Schema.Array(ManagedZone)),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListManagedZonesResponse",
-  }) as any as Schema.Schema<ListManagedZonesResponse>;
+export const ListManagedZonesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    managedZones: Schema.optional(Schema.Array(ManagedZone)),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListManagedZonesResponse" });
 
 export interface Settings {
   /** Output only. Resource name of the Connection. Format: projects/{project}/locations/global/settings} */
@@ -4566,50 +3895,41 @@ export interface Settings {
   tenantProjectId?: string;
 }
 
-export const Settings: Schema.Schema<Settings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      payg: Schema.optional(Schema.Boolean),
-      vpcsc: Schema.optional(Schema.Boolean),
-      tenantProjectId: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Settings" }) as any as Schema.Schema<Settings>;
+export const Settings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  payg: Schema.optional(Schema.Boolean),
+  vpcsc: Schema.optional(Schema.Boolean),
+  tenantProjectId: Schema.optional(Schema.String),
+}).annotate({ identifier: "Settings" });
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelOperationRequest",
-  }) as any as Schema.Schema<CancelOperationRequest>;
+export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelOperationRequest" });
 
 export interface RefreshConnectionSchemaMetadataRequest {}
 
-export const RefreshConnectionSchemaMetadataRequest: Schema.Schema<RefreshConnectionSchemaMetadataRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const RefreshConnectionSchemaMetadataRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "RefreshConnectionSchemaMetadataRequest",
-  }) as any as Schema.Schema<RefreshConnectionSchemaMetadataRequest>;
+  });
 
 export interface ModifyConnectionToolspecOverrideResponse {
   /** Toolspec overrides for the connection. */
   toolspecOverrides?: ToolspecOverride;
 }
 
-export const ModifyConnectionToolspecOverrideResponse: Schema.Schema<ModifyConnectionToolspecOverrideResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      toolspecOverrides: Schema.optional(ToolspecOverride),
-    }),
-  ).annotate({
-    identifier: "ModifyConnectionToolspecOverrideResponse",
-  }) as any as Schema.Schema<ModifyConnectionToolspecOverrideResponse>;
+export const ModifyConnectionToolspecOverrideResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    toolspecOverrides: Schema.optional(ToolspecOverride),
+  }).annotate({ identifier: "ModifyConnectionToolspecOverrideResponse" });
 
 export interface RepairEventingRequest {}
 
-export const RepairEventingRequest: Schema.Schema<RepairEventingRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "RepairEventingRequest",
-  }) as any as Schema.Schema<RepairEventingRequest>;
+export const RepairEventingRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "RepairEventingRequest" });
 
 export interface FetchAuthSchemaResponse {
   /** List of AuthSchemas. */
@@ -4618,22 +3938,18 @@ export interface FetchAuthSchemaResponse {
   jsonSchema?: JsonAuthSchema;
 }
 
-export const FetchAuthSchemaResponse: Schema.Schema<FetchAuthSchemaResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      authSchemas: Schema.optional(Schema.Array(AuthSchema)),
-      jsonSchema: Schema.optional(JsonAuthSchema),
-    }),
-  ).annotate({
-    identifier: "FetchAuthSchemaResponse",
-  }) as any as Schema.Schema<FetchAuthSchemaResponse>;
+export const FetchAuthSchemaResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    authSchemas: Schema.optional(Schema.Array(AuthSchema)),
+    jsonSchema: Schema.optional(JsonAuthSchema),
+  }).annotate({ identifier: "FetchAuthSchemaResponse" });
 
 export interface WithdrawCustomConnectorVersionRequest {}
 
-export const WithdrawCustomConnectorVersionRequest: Schema.Schema<WithdrawCustomConnectorVersionRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const WithdrawCustomConnectorVersionRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "WithdrawCustomConnectorVersionRequest",
-  }) as any as Schema.Schema<WithdrawCustomConnectorVersionRequest>;
+  });
 
 export interface ListConnectionsResponse {
   /** Next page token. */
@@ -4644,30 +3960,22 @@ export interface ListConnectionsResponse {
   connections?: Array<Connection>;
 }
 
-export const ListConnectionsResponse: Schema.Schema<ListConnectionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      connections: Schema.optional(Schema.Array(Connection)),
-    }),
-  ).annotate({
-    identifier: "ListConnectionsResponse",
-  }) as any as Schema.Schema<ListConnectionsResponse>;
+export const ListConnectionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    connections: Schema.optional(Schema.Array(Connection)),
+  }).annotate({ identifier: "ListConnectionsResponse" });
 
 export interface GenerateConnectionToolspecOverrideResponse {
   /** Toolspec overrides for the connection. */
   toolspecOverride?: ToolspecOverride;
 }
 
-export const GenerateConnectionToolspecOverrideResponse: Schema.Schema<GenerateConnectionToolspecOverrideResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      toolspecOverride: Schema.optional(ToolspecOverride),
-    }),
-  ).annotate({
-    identifier: "GenerateConnectionToolspecOverrideResponse",
-  }) as any as Schema.Schema<GenerateConnectionToolspecOverrideResponse>;
+export const GenerateConnectionToolspecOverrideResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    toolspecOverride: Schema.optional(ToolspecOverride),
+  }).annotate({ identifier: "GenerateConnectionToolspecOverrideResponse" });
 
 export interface ListRuntimeActionSchemasResponse {
   /** Next page token. */
@@ -4676,29 +3984,21 @@ export interface ListRuntimeActionSchemasResponse {
   runtimeActionSchemas?: Array<RuntimeActionSchema>;
 }
 
-export const ListRuntimeActionSchemasResponse: Schema.Schema<ListRuntimeActionSchemasResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      runtimeActionSchemas: Schema.optional(Schema.Array(RuntimeActionSchema)),
-    }),
-  ).annotate({
-    identifier: "ListRuntimeActionSchemasResponse",
-  }) as any as Schema.Schema<ListRuntimeActionSchemasResponse>;
+export const ListRuntimeActionSchemasResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    runtimeActionSchemas: Schema.optional(Schema.Array(RuntimeActionSchema)),
+  }).annotate({ identifier: "ListRuntimeActionSchemasResponse" });
 
 export interface TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: Array<string>;
 }
 
-export const TestIamPermissionsRequest: Schema.Schema<TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TestIamPermissionsRequest",
-  }) as any as Schema.Schema<TestIamPermissionsRequest>;
+export const TestIamPermissionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "TestIamPermissionsRequest" });
 
 export interface OperationMetadata {
   /** Output only. The time the operation was created. */
@@ -4717,20 +4017,15 @@ export interface OperationMetadata {
   statusMessage?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      apiVersion: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      verb: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createTime: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  apiVersion: Schema.optional(Schema.String),
+  requestedCancellation: Schema.optional(Schema.Boolean),
+  verb: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  statusMessage: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationMetadata" });
 
 export interface ListEndUserAuthenticationsResponse {
   /** Next page token. */
@@ -4741,18 +4036,14 @@ export interface ListEndUserAuthenticationsResponse {
   endUserAuthentications?: Array<EndUserAuthentication>;
 }
 
-export const ListEndUserAuthenticationsResponse: Schema.Schema<ListEndUserAuthenticationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      endUserAuthentications: Schema.optional(
-        Schema.Array(EndUserAuthentication),
-      ),
-    }),
-  ).annotate({
-    identifier: "ListEndUserAuthenticationsResponse",
-  }) as any as Schema.Schema<ListEndUserAuthenticationsResponse>;
+export const ListEndUserAuthenticationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    endUserAuthentications: Schema.optional(
+      Schema.Array(EndUserAuthentication),
+    ),
+  }).annotate({ identifier: "ListEndUserAuthenticationsResponse" });
 
 export interface ListActionsResponse {
   /** list of actions */
@@ -4761,15 +4052,10 @@ export interface ListActionsResponse {
   nextPageToken?: string;
 }
 
-export const ListActionsResponse: Schema.Schema<ListActionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      actions: Schema.optional(Schema.Array(RuntimeActionSchema)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListActionsResponse",
-  }) as any as Schema.Schema<ListActionsResponse>;
+export const ListActionsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  actions: Schema.optional(Schema.Array(RuntimeActionSchema)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListActionsResponse" });
 
 // ==========================================================================
 // Operations

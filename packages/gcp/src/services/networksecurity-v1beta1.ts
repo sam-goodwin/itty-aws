@@ -29,15 +29,10 @@ export interface InterceptLocation {
   state?: "STATE_UNSPECIFIED" | "ACTIVE" | "OUT_OF_SYNC" | (string & {});
 }
 
-export const InterceptLocation: Schema.Schema<InterceptLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      location: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InterceptLocation",
-  }) as any as Schema.Schema<InterceptLocation>;
+export const InterceptLocation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  location: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+}).annotate({ identifier: "InterceptLocation" });
 
 export interface InterceptEndpointGroupAssociationLocationDetails {
   /** Output only. The cloud location, e.g. "us-central1-a" or "asia-south1". */
@@ -46,15 +41,13 @@ export interface InterceptEndpointGroupAssociationLocationDetails {
   state?: "STATE_UNSPECIFIED" | "ACTIVE" | "OUT_OF_SYNC" | (string & {});
 }
 
-export const InterceptEndpointGroupAssociationLocationDetails: Schema.Schema<InterceptEndpointGroupAssociationLocationDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      location: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const InterceptEndpointGroupAssociationLocationDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "InterceptEndpointGroupAssociationLocationDetails",
-  }) as any as Schema.Schema<InterceptEndpointGroupAssociationLocationDetails>;
+  });
 
 export interface InterceptEndpointGroupAssociation {
   /** Optional. Labels are key/value pairs that help to organize and filter resources. */
@@ -89,26 +82,22 @@ export interface InterceptEndpointGroupAssociation {
   createTime?: string;
 }
 
-export const InterceptEndpointGroupAssociation: Schema.Schema<InterceptEndpointGroupAssociation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      name: Schema.optional(Schema.String),
-      interceptEndpointGroup: Schema.optional(Schema.String),
-      locations: Schema.optional(Schema.Array(InterceptLocation)),
-      locationsDetails: Schema.optional(
-        Schema.Array(InterceptEndpointGroupAssociationLocationDetails),
-      ),
-      updateTime: Schema.optional(Schema.String),
-      networkCookie: Schema.optional(Schema.Number),
-      state: Schema.optional(Schema.String),
-      reconciling: Schema.optional(Schema.Boolean),
-      network: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InterceptEndpointGroupAssociation",
-  }) as any as Schema.Schema<InterceptEndpointGroupAssociation>;
+export const InterceptEndpointGroupAssociation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    name: Schema.optional(Schema.String),
+    interceptEndpointGroup: Schema.optional(Schema.String),
+    locations: Schema.optional(Schema.Array(InterceptLocation)),
+    locationsDetails: Schema.optional(
+      Schema.Array(InterceptEndpointGroupAssociationLocationDetails),
+    ),
+    updateTime: Schema.optional(Schema.String),
+    networkCookie: Schema.optional(Schema.Number),
+    state: Schema.optional(Schema.String),
+    reconciling: Schema.optional(Schema.Boolean),
+    network: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "InterceptEndpointGroupAssociation" });
 
 export interface ListInterceptEndpointGroupAssociationsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. See https://google.aip.dev/158 for more details. */
@@ -117,17 +106,13 @@ export interface ListInterceptEndpointGroupAssociationsResponse {
   interceptEndpointGroupAssociations?: Array<InterceptEndpointGroupAssociation>;
 }
 
-export const ListInterceptEndpointGroupAssociationsResponse: Schema.Schema<ListInterceptEndpointGroupAssociationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      interceptEndpointGroupAssociations: Schema.optional(
-        Schema.Array(InterceptEndpointGroupAssociation),
-      ),
-    }),
-  ).annotate({
-    identifier: "ListInterceptEndpointGroupAssociationsResponse",
-  }) as any as Schema.Schema<ListInterceptEndpointGroupAssociationsResponse>;
+export const ListInterceptEndpointGroupAssociationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    interceptEndpointGroupAssociations: Schema.optional(
+      Schema.Array(InterceptEndpointGroupAssociation),
+    ),
+  }).annotate({ identifier: "ListInterceptEndpointGroupAssociationsResponse" });
 
 export interface Expr {
   /** Textual representation of an expression in Common Expression Language syntax. */
@@ -140,15 +125,12 @@ export interface Expr {
   location?: string;
 }
 
-export const Expr: Schema.Schema<Expr> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expression: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      location: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Expr" }) as any as Schema.Schema<Expr>;
+export const Expr = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  expression: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  location: Schema.optional(Schema.String),
+}).annotate({ identifier: "Expr" });
 
 export interface GoogleIamV1Binding {
   /** Role that is assigned to the list of `members`, or principals. For example, `roles/viewer`, `roles/editor`, or `roles/owner`. For an overview of the IAM roles and permissions, see the [IAM documentation](https://cloud.google.com/iam/docs/roles-overview). For a list of the available pre-defined roles, see [here](https://cloud.google.com/iam/docs/understanding-roles). */
@@ -159,16 +141,11 @@ export interface GoogleIamV1Binding {
   condition?: Expr;
 }
 
-export const GoogleIamV1Binding: Schema.Schema<GoogleIamV1Binding> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      role: Schema.optional(Schema.String),
-      members: Schema.optional(Schema.Array(Schema.String)),
-      condition: Schema.optional(Expr),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1Binding",
-  }) as any as Schema.Schema<GoogleIamV1Binding>;
+export const GoogleIamV1Binding = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  role: Schema.optional(Schema.String),
+  members: Schema.optional(Schema.Array(Schema.String)),
+  condition: Schema.optional(Expr),
+}).annotate({ identifier: "GoogleIamV1Binding" });
 
 export interface GoogleIamV1AuditLogConfig {
   /** Specifies the identities that do not cause logging for this type of permission. Follows the same format of Binding.members. */
@@ -182,15 +159,11 @@ export interface GoogleIamV1AuditLogConfig {
     | (string & {});
 }
 
-export const GoogleIamV1AuditLogConfig: Schema.Schema<GoogleIamV1AuditLogConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
-      logType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1AuditLogConfig",
-  }) as any as Schema.Schema<GoogleIamV1AuditLogConfig>;
+export const GoogleIamV1AuditLogConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    exemptedMembers: Schema.optional(Schema.Array(Schema.String)),
+    logType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleIamV1AuditLogConfig" });
 
 export interface GoogleIamV1AuditConfig {
   /** Specifies a service that will be enabled for audit logging. For example, `storage.googleapis.com`, `cloudsql.googleapis.com`. `allServices` is a special value that covers all services. */
@@ -199,15 +172,12 @@ export interface GoogleIamV1AuditConfig {
   auditLogConfigs?: Array<GoogleIamV1AuditLogConfig>;
 }
 
-export const GoogleIamV1AuditConfig: Schema.Schema<GoogleIamV1AuditConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      service: Schema.optional(Schema.String),
-      auditLogConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditLogConfig)),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1AuditConfig",
-  }) as any as Schema.Schema<GoogleIamV1AuditConfig>;
+export const GoogleIamV1AuditConfig = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    service: Schema.optional(Schema.String),
+    auditLogConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditLogConfig)),
+  },
+).annotate({ identifier: "GoogleIamV1AuditConfig" });
 
 export interface GoogleIamV1Policy {
   /** Specifies the format of the policy. Valid values are `0`, `1`, and `3`. Requests that specify an invalid value are rejected. Any operation that affects conditional role bindings must specify version `3`. This requirement applies to the following operations: * Getting a policy that includes a conditional role binding * Adding a conditional role binding to a policy * Changing a conditional role binding in a policy * Removing any role binding, with or without a condition, from a policy that includes conditions **Important:** If you use IAM Conditions, you must include the `etag` field whenever you call `setIamPolicy`. If you omit this field, then IAM allows you to overwrite a version `3` policy with a version `1` policy, and all of the conditions in the version `3` policy are lost. If a policy does not include any conditions, operations on that policy may specify any valid version or leave the field unset. To learn which resources support conditions in their IAM policies, see the [IAM documentation](https://cloud.google.com/iam/help/conditions/resource-policies). */
@@ -220,17 +190,12 @@ export interface GoogleIamV1Policy {
   etag?: string;
 }
 
-export const GoogleIamV1Policy: Schema.Schema<GoogleIamV1Policy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.Number),
-      bindings: Schema.optional(Schema.Array(GoogleIamV1Binding)),
-      auditConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditConfig)),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1Policy",
-  }) as any as Schema.Schema<GoogleIamV1Policy>;
+export const GoogleIamV1Policy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.Number),
+  bindings: Schema.optional(Schema.Array(GoogleIamV1Binding)),
+  auditConfigs: Schema.optional(Schema.Array(GoogleIamV1AuditConfig)),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "GoogleIamV1Policy" });
 
 export interface GoogleIamV1SetIamPolicyRequest {
   /** REQUIRED: The complete policy to be applied to the `resource`. The size of the policy is limited to a few 10s of KB. An empty policy is a valid policy but certain Google Cloud services (such as Projects) might reject them. */
@@ -239,15 +204,11 @@ export interface GoogleIamV1SetIamPolicyRequest {
   updateMask?: string;
 }
 
-export const GoogleIamV1SetIamPolicyRequest: Schema.Schema<GoogleIamV1SetIamPolicyRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      policy: Schema.optional(GoogleIamV1Policy),
-      updateMask: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1SetIamPolicyRequest",
-  }) as any as Schema.Schema<GoogleIamV1SetIamPolicyRequest>;
+export const GoogleIamV1SetIamPolicyRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    policy: Schema.optional(GoogleIamV1Policy),
+    updateMask: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleIamV1SetIamPolicyRequest" });
 
 export interface AddressGroup {
   /** Required. Name of the AddressGroup resource. It matches pattern `projects/* /locations/{location}/addressGroups/`. */
@@ -274,23 +235,18 @@ export interface AddressGroup {
   >;
 }
 
-export const AddressGroup: Schema.Schema<AddressGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      type: Schema.optional(Schema.String),
-      selfLink: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      capacity: Schema.optional(Schema.Number),
-      items: Schema.optional(Schema.Array(Schema.String)),
-      description: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      purpose: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AddressGroup",
-  }) as any as Schema.Schema<AddressGroup>;
+export const AddressGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  type: Schema.optional(Schema.String),
+  selfLink: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  capacity: Schema.optional(Schema.Number),
+  items: Schema.optional(Schema.Array(Schema.String)),
+  description: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  purpose: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "AddressGroup" });
 
 export interface ListAddressGroupsResponse {
   /** List of AddressGroups resources. */
@@ -301,16 +257,12 @@ export interface ListAddressGroupsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListAddressGroupsResponse: Schema.Schema<ListAddressGroupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      addressGroups: Schema.optional(Schema.Array(AddressGroup)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListAddressGroupsResponse",
-  }) as any as Schema.Schema<ListAddressGroupsResponse>;
+export const ListAddressGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    addressGroups: Schema.optional(Schema.Array(AddressGroup)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListAddressGroupsResponse" });
 
 export interface MirroringEndpointGroupAssociationLocationDetails {
   /** Output only. The cloud location, e.g. "us-central1-a" or "asia-south1". */
@@ -319,15 +271,13 @@ export interface MirroringEndpointGroupAssociationLocationDetails {
   state?: "STATE_UNSPECIFIED" | "ACTIVE" | "OUT_OF_SYNC" | (string & {});
 }
 
-export const MirroringEndpointGroupAssociationLocationDetails: Schema.Schema<MirroringEndpointGroupAssociationLocationDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      location: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const MirroringEndpointGroupAssociationLocationDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    location: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "MirroringEndpointGroupAssociationLocationDetails",
-  }) as any as Schema.Schema<MirroringEndpointGroupAssociationLocationDetails>;
+  });
 
 export interface MirroringLocation {
   /** Output only. The cloud location, e.g. "us-central1-a" or "asia-south1". */
@@ -336,15 +286,10 @@ export interface MirroringLocation {
   state?: "STATE_UNSPECIFIED" | "ACTIVE" | "OUT_OF_SYNC" | (string & {});
 }
 
-export const MirroringLocation: Schema.Schema<MirroringLocation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      location: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MirroringLocation",
-  }) as any as Schema.Schema<MirroringLocation>;
+export const MirroringLocation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  location: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+}).annotate({ identifier: "MirroringLocation" });
 
 export interface MirroringEndpointGroupAssociation {
   /** Immutable. The VPC network that is associated. for example: `projects/123456789/global/networks/my-network`. See https://google.aip.dev/124. */
@@ -377,25 +322,21 @@ export interface MirroringEndpointGroupAssociation {
   locations?: Array<MirroringLocation>;
 }
 
-export const MirroringEndpointGroupAssociation: Schema.Schema<MirroringEndpointGroupAssociation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      network: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      mirroringEndpointGroup: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      reconciling: Schema.optional(Schema.Boolean),
-      locationsDetails: Schema.optional(
-        Schema.Array(MirroringEndpointGroupAssociationLocationDetails),
-      ),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      name: Schema.optional(Schema.String),
-      locations: Schema.optional(Schema.Array(MirroringLocation)),
-    }),
-  ).annotate({
-    identifier: "MirroringEndpointGroupAssociation",
-  }) as any as Schema.Schema<MirroringEndpointGroupAssociation>;
+export const MirroringEndpointGroupAssociation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    network: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    mirroringEndpointGroup: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    reconciling: Schema.optional(Schema.Boolean),
+    locationsDetails: Schema.optional(
+      Schema.Array(MirroringEndpointGroupAssociationLocationDetails),
+    ),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    name: Schema.optional(Schema.String),
+    locations: Schema.optional(Schema.Array(MirroringLocation)),
+  }).annotate({ identifier: "MirroringEndpointGroupAssociation" });
 
 export interface ListMirroringEndpointGroupAssociationsResponse {
   /** The associations from the specified parent. */
@@ -404,17 +345,13 @@ export interface ListMirroringEndpointGroupAssociationsResponse {
   nextPageToken?: string;
 }
 
-export const ListMirroringEndpointGroupAssociationsResponse: Schema.Schema<ListMirroringEndpointGroupAssociationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mirroringEndpointGroupAssociations: Schema.optional(
-        Schema.Array(MirroringEndpointGroupAssociation),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListMirroringEndpointGroupAssociationsResponse",
-  }) as any as Schema.Schema<ListMirroringEndpointGroupAssociationsResponse>;
+export const ListMirroringEndpointGroupAssociationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    mirroringEndpointGroupAssociations: Schema.optional(
+      Schema.Array(MirroringEndpointGroupAssociation),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListMirroringEndpointGroupAssociationsResponse" });
 
 export interface SeverityOverride {
   /** Required. Severity level to match. */
@@ -436,15 +373,10 @@ export interface SeverityOverride {
     | (string & {});
 }
 
-export const SeverityOverride: Schema.Schema<SeverityOverride> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      severity: Schema.optional(Schema.String),
-      action: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SeverityOverride",
-  }) as any as Schema.Schema<SeverityOverride>;
+export const SeverityOverride = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  severity: Schema.optional(Schema.String),
+  action: Schema.optional(Schema.String),
+}).annotate({ identifier: "SeverityOverride" });
 
 export interface ThreatOverride {
   /** Required. Vendor-specific ID of a threat to override. */
@@ -468,16 +400,11 @@ export interface ThreatOverride {
     | (string & {});
 }
 
-export const ThreatOverride: Schema.Schema<ThreatOverride> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      threatId: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      action: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ThreatOverride",
-  }) as any as Schema.Schema<ThreatOverride>;
+export const ThreatOverride = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  threatId: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  action: Schema.optional(Schema.String),
+}).annotate({ identifier: "ThreatOverride" });
 
 export interface AntivirusOverride {
   /** Required. Threat action override. For some threat types, only a subset of actions applies. */
@@ -501,15 +428,10 @@ export interface AntivirusOverride {
     | (string & {});
 }
 
-export const AntivirusOverride: Schema.Schema<AntivirusOverride> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      action: Schema.optional(Schema.String),
-      protocol: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AntivirusOverride",
-  }) as any as Schema.Schema<AntivirusOverride>;
+export const AntivirusOverride = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  action: Schema.optional(Schema.String),
+  protocol: Schema.optional(Schema.String),
+}).annotate({ identifier: "AntivirusOverride" });
 
 export interface ThreatPreventionProfile {
   /** Optional. Configuration for overriding threats actions by severity match. */
@@ -520,44 +442,34 @@ export interface ThreatPreventionProfile {
   antivirusOverrides?: Array<AntivirusOverride>;
 }
 
-export const ThreatPreventionProfile: Schema.Schema<ThreatPreventionProfile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      severityOverrides: Schema.optional(Schema.Array(SeverityOverride)),
-      threatOverrides: Schema.optional(Schema.Array(ThreatOverride)),
-      antivirusOverrides: Schema.optional(Schema.Array(AntivirusOverride)),
-    }),
-  ).annotate({
-    identifier: "ThreatPreventionProfile",
-  }) as any as Schema.Schema<ThreatPreventionProfile>;
+export const ThreatPreventionProfile =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    severityOverrides: Schema.optional(Schema.Array(SeverityOverride)),
+    threatOverrides: Schema.optional(Schema.Array(ThreatOverride)),
+    antivirusOverrides: Schema.optional(Schema.Array(AntivirusOverride)),
+  }).annotate({ identifier: "ThreatPreventionProfile" });
 
 export interface CustomMirroringProfile {
   /** Required. Immutable. The target MirroringEndpointGroup. When a mirroring rule with this security profile attached matches a packet, a replica will be mirrored to the location-local target in this group. */
   mirroringEndpointGroup?: string;
 }
 
-export const CustomMirroringProfile: Schema.Schema<CustomMirroringProfile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mirroringEndpointGroup: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomMirroringProfile",
-  }) as any as Schema.Schema<CustomMirroringProfile>;
+export const CustomMirroringProfile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    mirroringEndpointGroup: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "CustomMirroringProfile" });
 
 export interface CustomInterceptProfile {
   /** Required. The target InterceptEndpointGroup. When a firewall rule with this security profile attached matches a packet, the packet will be intercepted to the location-local target in this group. */
   interceptEndpointGroup?: string;
 }
 
-export const CustomInterceptProfile: Schema.Schema<CustomInterceptProfile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      interceptEndpointGroup: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CustomInterceptProfile",
-  }) as any as Schema.Schema<CustomInterceptProfile>;
+export const CustomInterceptProfile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    interceptEndpointGroup: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "CustomInterceptProfile" });
 
 export interface UrlFilter {
   /** Required. The action taken when this filter is applied. */
@@ -572,28 +484,20 @@ export interface UrlFilter {
   priority?: number;
 }
 
-export const UrlFilter: Schema.Schema<UrlFilter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      filteringAction: Schema.optional(Schema.String),
-      urls: Schema.optional(Schema.Array(Schema.String)),
-      priority: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "UrlFilter" }) as any as Schema.Schema<UrlFilter>;
+export const UrlFilter = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  filteringAction: Schema.optional(Schema.String),
+  urls: Schema.optional(Schema.Array(Schema.String)),
+  priority: Schema.optional(Schema.Number),
+}).annotate({ identifier: "UrlFilter" });
 
 export interface UrlFilteringProfile {
   /** Optional. The list of filtering configs in which each config defines an action to take for some URL match. */
   urlFilters?: Array<UrlFilter>;
 }
 
-export const UrlFilteringProfile: Schema.Schema<UrlFilteringProfile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      urlFilters: Schema.optional(Schema.Array(UrlFilter)),
-    }),
-  ).annotate({
-    identifier: "UrlFilteringProfile",
-  }) as any as Schema.Schema<UrlFilteringProfile>;
+export const UrlFilteringProfile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  urlFilters: Schema.optional(Schema.Array(UrlFilter)),
+}).annotate({ identifier: "UrlFilteringProfile" });
 
 export interface SecurityProfile {
   /** The threat prevention configuration for the SecurityProfile. */
@@ -626,24 +530,19 @@ export interface SecurityProfile {
   urlFilteringProfile?: UrlFilteringProfile;
 }
 
-export const SecurityProfile: Schema.Schema<SecurityProfile> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      threatPreventionProfile: Schema.optional(ThreatPreventionProfile),
-      updateTime: Schema.optional(Schema.String),
-      customMirroringProfile: Schema.optional(CustomMirroringProfile),
-      customInterceptProfile: Schema.optional(CustomInterceptProfile),
-      description: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      name: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      urlFilteringProfile: Schema.optional(UrlFilteringProfile),
-    }),
-  ).annotate({
-    identifier: "SecurityProfile",
-  }) as any as Schema.Schema<SecurityProfile>;
+export const SecurityProfile = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  threatPreventionProfile: Schema.optional(ThreatPreventionProfile),
+  updateTime: Schema.optional(Schema.String),
+  customMirroringProfile: Schema.optional(CustomMirroringProfile),
+  customInterceptProfile: Schema.optional(CustomInterceptProfile),
+  description: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  name: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  urlFilteringProfile: Schema.optional(UrlFilteringProfile),
+}).annotate({ identifier: "SecurityProfile" });
 
 export interface UrlList {
   /** Output only. Time when the security policy was created. */
@@ -658,16 +557,13 @@ export interface UrlList {
   name?: string;
 }
 
-export const UrlList: Schema.Schema<UrlList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      values: Schema.optional(Schema.Array(Schema.String)),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "UrlList" }) as any as Schema.Schema<UrlList>;
+export const UrlList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createTime: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  values: Schema.optional(Schema.Array(Schema.String)),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "UrlList" });
 
 export interface ListUrlListsResponse {
   /** List of UrlList resources. */
@@ -678,16 +574,11 @@ export interface ListUrlListsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListUrlListsResponse: Schema.Schema<ListUrlListsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      urlLists: Schema.optional(Schema.Array(UrlList)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListUrlListsResponse",
-  }) as any as Schema.Schema<ListUrlListsResponse>;
+export const ListUrlListsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  urlLists: Schema.optional(Schema.Array(UrlList)),
+  nextPageToken: Schema.optional(Schema.String),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ListUrlListsResponse" });
 
 export interface Location {
   /** Cross-service attributes for the location. For example {"cloud.googleapis.com/region": "us-east1"} */
@@ -702,16 +593,13 @@ export interface Location {
   metadata?: Record<string, unknown>;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      locationId: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  locationId: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Location" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -720,43 +608,30 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(Location)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface GoogleCloudNetworksecurityV1beta1GrpcEndpoint {
   /** Required. The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:". */
   targetUri?: string;
 }
 
-export const GoogleCloudNetworksecurityV1beta1GrpcEndpoint: Schema.Schema<GoogleCloudNetworksecurityV1beta1GrpcEndpoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GoogleCloudNetworksecurityV1beta1GrpcEndpoint",
-  }) as any as Schema.Schema<GoogleCloudNetworksecurityV1beta1GrpcEndpoint>;
+export const GoogleCloudNetworksecurityV1beta1GrpcEndpoint =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetUri: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GoogleCloudNetworksecurityV1beta1GrpcEndpoint" });
 
 export interface CertificateProviderInstance {
   /** Required. Plugin instance name, used to locate and load CertificateProvider instance configuration. Set to "google_cloud_private_spiffe" to use Certificate Authority Service certificate provider instance. */
   pluginInstance?: string;
 }
 
-export const CertificateProviderInstance: Schema.Schema<CertificateProviderInstance> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      pluginInstance: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CertificateProviderInstance",
-  }) as any as Schema.Schema<CertificateProviderInstance>;
+export const CertificateProviderInstance =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    pluginInstance: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CertificateProviderInstance" });
 
 export interface GoogleCloudNetworksecurityV1beta1CertificateProvider {
   /** gRPC specific configuration to access the gRPC server to obtain the cert and private key. */
@@ -765,17 +640,15 @@ export interface GoogleCloudNetworksecurityV1beta1CertificateProvider {
   certificateProviderInstance?: CertificateProviderInstance;
 }
 
-export const GoogleCloudNetworksecurityV1beta1CertificateProvider: Schema.Schema<GoogleCloudNetworksecurityV1beta1CertificateProvider> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      grpcEndpoint: Schema.optional(
-        GoogleCloudNetworksecurityV1beta1GrpcEndpoint,
-      ),
-      certificateProviderInstance: Schema.optional(CertificateProviderInstance),
-    }),
-  ).annotate({
+export const GoogleCloudNetworksecurityV1beta1CertificateProvider =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    grpcEndpoint: Schema.optional(
+      GoogleCloudNetworksecurityV1beta1GrpcEndpoint,
+    ),
+    certificateProviderInstance: Schema.optional(CertificateProviderInstance),
+  }).annotate({
     identifier: "GoogleCloudNetworksecurityV1beta1CertificateProvider",
-  }) as any as Schema.Schema<GoogleCloudNetworksecurityV1beta1CertificateProvider>;
+  });
 
 export interface ValidationCA {
   /** The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information. */
@@ -784,17 +657,10 @@ export interface ValidationCA {
   grpcEndpoint?: GoogleCloudNetworksecurityV1beta1GrpcEndpoint;
 }
 
-export const ValidationCA: Schema.Schema<ValidationCA> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      certificateProviderInstance: Schema.optional(CertificateProviderInstance),
-      grpcEndpoint: Schema.optional(
-        GoogleCloudNetworksecurityV1beta1GrpcEndpoint,
-      ),
-    }),
-  ).annotate({
-    identifier: "ValidationCA",
-  }) as any as Schema.Schema<ValidationCA>;
+export const ValidationCA = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  certificateProviderInstance: Schema.optional(CertificateProviderInstance),
+  grpcEndpoint: Schema.optional(GoogleCloudNetworksecurityV1beta1GrpcEndpoint),
+}).annotate({ identifier: "ValidationCA" });
 
 export interface MTLSPolicy {
   /** Required if the policy is to be used with Traffic Director. For Application Load Balancers it must be empty. Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate. */
@@ -809,14 +675,11 @@ export interface MTLSPolicy {
     | (string & {});
 }
 
-export const MTLSPolicy: Schema.Schema<MTLSPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clientValidationCa: Schema.optional(Schema.Array(ValidationCA)),
-      clientValidationTrustConfig: Schema.optional(Schema.String),
-      clientValidationMode: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "MTLSPolicy" }) as any as Schema.Schema<MTLSPolicy>;
+export const MTLSPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  clientValidationCa: Schema.optional(Schema.Array(ValidationCA)),
+  clientValidationTrustConfig: Schema.optional(Schema.String),
+  clientValidationMode: Schema.optional(Schema.String),
+}).annotate({ identifier: "MTLSPolicy" });
 
 export interface ServerTlsPolicy {
   /** Required. Name of the ServerTlsPolicy resource. It matches the pattern `projects/* /locations/{location}/serverTlsPolicies/{server_tls_policy}` */
@@ -837,23 +700,18 @@ export interface ServerTlsPolicy {
   allowOpen?: boolean;
 }
 
-export const ServerTlsPolicy: Schema.Schema<ServerTlsPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      updateTime: Schema.optional(Schema.String),
-      serverCertificate: Schema.optional(
-        GoogleCloudNetworksecurityV1beta1CertificateProvider,
-      ),
-      description: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      mtlsPolicy: Schema.optional(MTLSPolicy),
-      allowOpen: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "ServerTlsPolicy",
-  }) as any as Schema.Schema<ServerTlsPolicy>;
+export const ServerTlsPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  updateTime: Schema.optional(Schema.String),
+  serverCertificate: Schema.optional(
+    GoogleCloudNetworksecurityV1beta1CertificateProvider,
+  ),
+  description: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  mtlsPolicy: Schema.optional(MTLSPolicy),
+  allowOpen: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "ServerTlsPolicy" });
 
 export interface ListServerTlsPoliciesResponse {
   /** List of ServerTlsPolicy resources. */
@@ -864,16 +722,12 @@ export interface ListServerTlsPoliciesResponse {
   unreachable?: Array<string>;
 }
 
-export const ListServerTlsPoliciesResponse: Schema.Schema<ListServerTlsPoliciesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serverTlsPolicies: Schema.optional(Schema.Array(ServerTlsPolicy)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListServerTlsPoliciesResponse",
-  }) as any as Schema.Schema<ListServerTlsPoliciesResponse>;
+export const ListServerTlsPoliciesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    serverTlsPolicies: Schema.optional(Schema.Array(ServerTlsPolicy)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListServerTlsPoliciesResponse" });
 
 export interface AuthzPolicyAuthzRuleStringMatch {
   /** The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead. Examples: * ``abc`` matches the value ``xyz.abc`` */
@@ -888,18 +742,14 @@ export interface AuthzPolicyAuthzRuleStringMatch {
   exact?: string;
 }
 
-export const AuthzPolicyAuthzRuleStringMatch: Schema.Schema<AuthzPolicyAuthzRuleStringMatch> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      suffix: Schema.optional(Schema.String),
-      ignoreCase: Schema.optional(Schema.Boolean),
-      prefix: Schema.optional(Schema.String),
-      contains: Schema.optional(Schema.String),
-      exact: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AuthzPolicyAuthzRuleStringMatch",
-  }) as any as Schema.Schema<AuthzPolicyAuthzRuleStringMatch>;
+export const AuthzPolicyAuthzRuleStringMatch =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    suffix: Schema.optional(Schema.String),
+    ignoreCase: Schema.optional(Schema.Boolean),
+    prefix: Schema.optional(Schema.String),
+    contains: Schema.optional(Schema.String),
+    exact: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AuthzPolicyAuthzRuleStringMatch" });
 
 export interface AuthzPolicyAuthzRuleHeaderMatch {
   /** Optional. Specifies how the header match will be performed. */
@@ -908,29 +758,23 @@ export interface AuthzPolicyAuthzRuleHeaderMatch {
   name?: string;
 }
 
-export const AuthzPolicyAuthzRuleHeaderMatch: Schema.Schema<AuthzPolicyAuthzRuleHeaderMatch> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(AuthzPolicyAuthzRuleStringMatch),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AuthzPolicyAuthzRuleHeaderMatch",
-  }) as any as Schema.Schema<AuthzPolicyAuthzRuleHeaderMatch>;
+export const AuthzPolicyAuthzRuleHeaderMatch =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(AuthzPolicyAuthzRuleStringMatch),
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AuthzPolicyAuthzRuleHeaderMatch" });
 
 export interface AuthzPolicyAuthzRuleToRequestOperationHeaderSet {
   /** Required. A list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set. Limited to 10 headers per Authorization Policy. */
   headers?: Array<AuthzPolicyAuthzRuleHeaderMatch>;
 }
 
-export const AuthzPolicyAuthzRuleToRequestOperationHeaderSet: Schema.Schema<AuthzPolicyAuthzRuleToRequestOperationHeaderSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      headers: Schema.optional(Schema.Array(AuthzPolicyAuthzRuleHeaderMatch)),
-    }),
-  ).annotate({
+export const AuthzPolicyAuthzRuleToRequestOperationHeaderSet =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    headers: Schema.optional(Schema.Array(AuthzPolicyAuthzRuleHeaderMatch)),
+  }).annotate({
     identifier: "AuthzPolicyAuthzRuleToRequestOperationHeaderSet",
-  }) as any as Schema.Schema<AuthzPolicyAuthzRuleToRequestOperationHeaderSet>;
+  });
 
 export interface AuthzPolicyAuthzRuleToRequestOperationMCPMethod {
   /** Required. The MCP method to match against. Allowed values are as follows: 1. `tools`, `prompts`, `resources` - these will match against all sub methods under the respective methods. 2. `prompts/list`, `tools/list`, `resources/list`, `resources/templates/list` 3. `prompts/get`, `tools/call`, `resources/subscribe`, `resources/unsubscribe`, `resources/read` Params cannot be specified for categories 1 and 2. */
@@ -939,15 +783,13 @@ export interface AuthzPolicyAuthzRuleToRequestOperationMCPMethod {
   params?: Array<AuthzPolicyAuthzRuleStringMatch>;
 }
 
-export const AuthzPolicyAuthzRuleToRequestOperationMCPMethod: Schema.Schema<AuthzPolicyAuthzRuleToRequestOperationMCPMethod> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      params: Schema.optional(Schema.Array(AuthzPolicyAuthzRuleStringMatch)),
-    }),
-  ).annotate({
+export const AuthzPolicyAuthzRuleToRequestOperationMCPMethod =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    params: Schema.optional(Schema.Array(AuthzPolicyAuthzRuleStringMatch)),
+  }).annotate({
     identifier: "AuthzPolicyAuthzRuleToRequestOperationMCPMethod",
-  }) as any as Schema.Schema<AuthzPolicyAuthzRuleToRequestOperationMCPMethod>;
+  });
 
 export interface AuthzPolicyAuthzRuleToRequestOperationMCP {
   /** Optional. If specified, matches on the MCP protocol’s non-access specific methods namely: * initialize * completion/ * logging/ * notifications/ * ping Defaults to SKIP_BASE_PROTOCOL_METHODS if not specified. */
@@ -960,17 +802,13 @@ export interface AuthzPolicyAuthzRuleToRequestOperationMCP {
   methods?: Array<AuthzPolicyAuthzRuleToRequestOperationMCPMethod>;
 }
 
-export const AuthzPolicyAuthzRuleToRequestOperationMCP: Schema.Schema<AuthzPolicyAuthzRuleToRequestOperationMCP> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      baseProtocolMethodsOption: Schema.optional(Schema.String),
-      methods: Schema.optional(
-        Schema.Array(AuthzPolicyAuthzRuleToRequestOperationMCPMethod),
-      ),
-    }),
-  ).annotate({
-    identifier: "AuthzPolicyAuthzRuleToRequestOperationMCP",
-  }) as any as Schema.Schema<AuthzPolicyAuthzRuleToRequestOperationMCP>;
+export const AuthzPolicyAuthzRuleToRequestOperationMCP =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    baseProtocolMethodsOption: Schema.optional(Schema.String),
+    methods: Schema.optional(
+      Schema.Array(AuthzPolicyAuthzRuleToRequestOperationMCPMethod),
+    ),
+  }).annotate({ identifier: "AuthzPolicyAuthzRuleToRequestOperationMCP" });
 
 export interface AuthzPolicyAuthzRuleToRequestOperation {
   /** Optional. A list of HTTP Hosts to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set. Limited to 10 hosts per Authorization Policy. */
@@ -985,20 +823,14 @@ export interface AuthzPolicyAuthzRuleToRequestOperation {
   mcp?: AuthzPolicyAuthzRuleToRequestOperationMCP;
 }
 
-export const AuthzPolicyAuthzRuleToRequestOperation: Schema.Schema<AuthzPolicyAuthzRuleToRequestOperation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hosts: Schema.optional(Schema.Array(AuthzPolicyAuthzRuleStringMatch)),
-      methods: Schema.optional(Schema.Array(Schema.String)),
-      headerSet: Schema.optional(
-        AuthzPolicyAuthzRuleToRequestOperationHeaderSet,
-      ),
-      paths: Schema.optional(Schema.Array(AuthzPolicyAuthzRuleStringMatch)),
-      mcp: Schema.optional(AuthzPolicyAuthzRuleToRequestOperationMCP),
-    }),
-  ).annotate({
-    identifier: "AuthzPolicyAuthzRuleToRequestOperation",
-  }) as any as Schema.Schema<AuthzPolicyAuthzRuleToRequestOperation>;
+export const AuthzPolicyAuthzRuleToRequestOperation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    hosts: Schema.optional(Schema.Array(AuthzPolicyAuthzRuleStringMatch)),
+    methods: Schema.optional(Schema.Array(Schema.String)),
+    headerSet: Schema.optional(AuthzPolicyAuthzRuleToRequestOperationHeaderSet),
+    paths: Schema.optional(Schema.Array(AuthzPolicyAuthzRuleStringMatch)),
+    mcp: Schema.optional(AuthzPolicyAuthzRuleToRequestOperationMCP),
+  }).annotate({ identifier: "AuthzPolicyAuthzRuleToRequestOperation" });
 
 export interface AuthzPolicyAuthzRuleTo {
   /** Optional. Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 1 operation. A match occurs when ANY operation (in operations or notOperations) matches. Within an operation, the match follows AND semantics across fields and OR semantics within a field, i.e. a match occurs when ANY path matches AND ANY header matches and ANY method matches. */
@@ -1007,19 +839,16 @@ export interface AuthzPolicyAuthzRuleTo {
   notOperations?: Array<AuthzPolicyAuthzRuleToRequestOperation>;
 }
 
-export const AuthzPolicyAuthzRuleTo: Schema.Schema<AuthzPolicyAuthzRuleTo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(
-        Schema.Array(AuthzPolicyAuthzRuleToRequestOperation),
-      ),
-      notOperations: Schema.optional(
-        Schema.Array(AuthzPolicyAuthzRuleToRequestOperation),
-      ),
-    }),
-  ).annotate({
-    identifier: "AuthzPolicyAuthzRuleTo",
-  }) as any as Schema.Schema<AuthzPolicyAuthzRuleTo>;
+export const AuthzPolicyAuthzRuleTo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    operations: Schema.optional(
+      Schema.Array(AuthzPolicyAuthzRuleToRequestOperation),
+    ),
+    notOperations: Schema.optional(
+      Schema.Array(AuthzPolicyAuthzRuleToRequestOperation),
+    ),
+  },
+).annotate({ identifier: "AuthzPolicyAuthzRuleTo" });
 
 export interface Source {
   /** Optional. List of peer identities to match for authorization. At least one principal should match. Each peer can be an exact match, or a prefix match (example, "namespace/*") or a suffix match (example, "* /service-account") or a presence match "*". Authorization based on the principal name without certificate validation (configured by ServerTlsPolicy resource) is considered insecure. */
@@ -1028,13 +857,10 @@ export interface Source {
   ipBlocks?: Array<string>;
 }
 
-export const Source: Schema.Schema<Source> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      principals: Schema.optional(Schema.Array(Schema.String)),
-      ipBlocks: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({ identifier: "Source" }) as any as Schema.Schema<Source>;
+export const Source = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  principals: Schema.optional(Schema.Array(Schema.String)),
+  ipBlocks: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Source" });
 
 export interface HttpHeaderMatch {
   /** Required. The value of the header must match the regular expression specified in regexMatch. For regular expression grammar, please see: en.cppreference.com/w/cpp/regex/ecmascript For matching against a port specified in the HTTP request, use a headerMatch with headerName set to Host and a regular expression that satisfies the RFC2616 Host header's port specifier. */
@@ -1043,15 +869,10 @@ export interface HttpHeaderMatch {
   headerName?: string;
 }
 
-export const HttpHeaderMatch: Schema.Schema<HttpHeaderMatch> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      regexMatch: Schema.optional(Schema.String),
-      headerName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "HttpHeaderMatch",
-  }) as any as Schema.Schema<HttpHeaderMatch>;
+export const HttpHeaderMatch = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  regexMatch: Schema.optional(Schema.String),
+  headerName: Schema.optional(Schema.String),
+}).annotate({ identifier: "HttpHeaderMatch" });
 
 export interface Destination {
   /** Optional. Match against key:value pair in http header. Provides a flexible match based on HTTP headers, for potentially advanced use cases. At least one header should match. Avoid using header matches to make authorization decisions unless there is a strong guarantee that requests arrive through a trusted client or proxy. */
@@ -1064,17 +885,12 @@ export interface Destination {
   hosts?: Array<string>;
 }
 
-export const Destination: Schema.Schema<Destination> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      httpHeaderMatch: Schema.optional(HttpHeaderMatch),
-      ports: Schema.optional(Schema.Array(Schema.Number)),
-      methods: Schema.optional(Schema.Array(Schema.String)),
-      hosts: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "Destination",
-  }) as any as Schema.Schema<Destination>;
+export const Destination = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  httpHeaderMatch: Schema.optional(HttpHeaderMatch),
+  ports: Schema.optional(Schema.Array(Schema.Number)),
+  methods: Schema.optional(Schema.Array(Schema.String)),
+  hosts: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "Destination" });
 
 export interface Rule {
   /** Optional. List of attributes for the traffic source. All of the sources must match. A source is a match if both principals and ip_blocks match. If not set, the action specified in the 'action' field will be applied without any rule checks for the source. */
@@ -1083,20 +899,17 @@ export interface Rule {
   destinations?: Array<Destination>;
 }
 
-export const Rule: Schema.Schema<Rule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sources: Schema.optional(Schema.Array(Source)),
-      destinations: Schema.optional(Schema.Array(Destination)),
-    }),
-  ).annotate({ identifier: "Rule" }) as any as Schema.Schema<Rule>;
+export const Rule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sources: Schema.optional(Schema.Array(Source)),
+  destinations: Schema.optional(Schema.Array(Destination)),
+}).annotate({ identifier: "Rule" });
 
 export interface AuthzPolicyCustomProviderCloudIap {}
 
-export const AuthzPolicyCustomProviderCloudIap: Schema.Schema<AuthzPolicyCustomProviderCloudIap> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const AuthzPolicyCustomProviderCloudIap =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "AuthzPolicyCustomProviderCloudIap",
-  }) as any as Schema.Schema<AuthzPolicyCustomProviderCloudIap>;
+  });
 
 export interface MirroringEndpointGroupConnectedDeploymentGroup {
   /** Output only. The connected deployment group's resource name, for example: `projects/123456789/locations/global/mirroringDeploymentGroups/my-dg`. See https://google.aip.dev/124. */
@@ -1105,15 +918,11 @@ export interface MirroringEndpointGroupConnectedDeploymentGroup {
   locations?: Array<MirroringLocation>;
 }
 
-export const MirroringEndpointGroupConnectedDeploymentGroup: Schema.Schema<MirroringEndpointGroupConnectedDeploymentGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      locations: Schema.optional(Schema.Array(MirroringLocation)),
-    }),
-  ).annotate({
-    identifier: "MirroringEndpointGroupConnectedDeploymentGroup",
-  }) as any as Schema.Schema<MirroringEndpointGroupConnectedDeploymentGroup>;
+export const MirroringEndpointGroupConnectedDeploymentGroup =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    locations: Schema.optional(Schema.Array(MirroringLocation)),
+  }).annotate({ identifier: "MirroringEndpointGroupConnectedDeploymentGroup" });
 
 export interface MirroringEndpointGroupAssociationDetails {
   /** Output only. The associated network, for example: projects/123456789/global/networks/my-network. See https://google.aip.dev/124. */
@@ -1132,16 +941,12 @@ export interface MirroringEndpointGroupAssociationDetails {
     | (string & {});
 }
 
-export const MirroringEndpointGroupAssociationDetails: Schema.Schema<MirroringEndpointGroupAssociationDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      network: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MirroringEndpointGroupAssociationDetails",
-  }) as any as Schema.Schema<MirroringEndpointGroupAssociationDetails>;
+export const MirroringEndpointGroupAssociationDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    network: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+  }).annotate({ identifier: "MirroringEndpointGroupAssociationDetails" });
 
 export interface MirroringEndpointGroup {
   /** Output only. The timestamp when the resource was created. See https://google.aip.dev/148#timestamps. */
@@ -1176,28 +981,25 @@ export interface MirroringEndpointGroup {
   name?: string;
 }
 
-export const MirroringEndpointGroup: Schema.Schema<MirroringEndpointGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      mirroringDeploymentGroup: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      reconciling: Schema.optional(Schema.Boolean),
-      connectedDeploymentGroups: Schema.optional(
-        Schema.Array(MirroringEndpointGroupConnectedDeploymentGroup),
-      ),
-      type: Schema.optional(Schema.String),
-      associations: Schema.optional(
-        Schema.Array(MirroringEndpointGroupAssociationDetails),
-      ),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MirroringEndpointGroup",
-  }) as any as Schema.Schema<MirroringEndpointGroup>;
+export const MirroringEndpointGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    createTime: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    mirroringDeploymentGroup: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    reconciling: Schema.optional(Schema.Boolean),
+    connectedDeploymentGroups: Schema.optional(
+      Schema.Array(MirroringEndpointGroupConnectedDeploymentGroup),
+    ),
+    type: Schema.optional(Schema.String),
+    associations: Schema.optional(
+      Schema.Array(MirroringEndpointGroupAssociationDetails),
+    ),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    name: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "MirroringEndpointGroup" });
 
 export interface GatewaySecurityPolicyRule {
   /** Required. Whether the rule is enforced. */
@@ -1222,23 +1024,19 @@ export interface GatewaySecurityPolicyRule {
   priority?: number;
 }
 
-export const GatewaySecurityPolicyRule: Schema.Schema<GatewaySecurityPolicyRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      enabled: Schema.optional(Schema.Boolean),
-      createTime: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      applicationMatcher: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      basicProfile: Schema.optional(Schema.String),
-      sessionMatcher: Schema.optional(Schema.String),
-      tlsInspectionEnabled: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-      priority: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "GatewaySecurityPolicyRule",
-  }) as any as Schema.Schema<GatewaySecurityPolicyRule>;
+export const GatewaySecurityPolicyRule =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    enabled: Schema.optional(Schema.Boolean),
+    createTime: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    applicationMatcher: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    basicProfile: Schema.optional(Schema.String),
+    sessionMatcher: Schema.optional(Schema.String),
+    tlsInspectionEnabled: Schema.optional(Schema.Boolean),
+    name: Schema.optional(Schema.String),
+    priority: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "GatewaySecurityPolicyRule" });
 
 export interface ListGatewaySecurityPolicyRulesResponse {
   /** If there might be more results than those appearing in this response, then 'next_page_token' is included. To get the next set of results, call this method again using the value of 'next_page_token' as 'page_token'. */
@@ -1249,18 +1047,14 @@ export interface ListGatewaySecurityPolicyRulesResponse {
   gatewaySecurityPolicyRules?: Array<GatewaySecurityPolicyRule>;
 }
 
-export const ListGatewaySecurityPolicyRulesResponse: Schema.Schema<ListGatewaySecurityPolicyRulesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      gatewaySecurityPolicyRules: Schema.optional(
-        Schema.Array(GatewaySecurityPolicyRule),
-      ),
-    }),
-  ).annotate({
-    identifier: "ListGatewaySecurityPolicyRulesResponse",
-  }) as any as Schema.Schema<ListGatewaySecurityPolicyRulesResponse>;
+export const ListGatewaySecurityPolicyRulesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    gatewaySecurityPolicyRules: Schema.optional(
+      Schema.Array(GatewaySecurityPolicyRule),
+    ),
+  }).annotate({ identifier: "ListGatewaySecurityPolicyRulesResponse" });
 
 export interface MirroringDeploymentGroupDeployment {
   /** Output only. The name of the Mirroring Deployment, in the format: `projects/{project}/locations/{location}/mirroringDeployments/{mirroring_deployment}`. */
@@ -1276,15 +1070,11 @@ export interface MirroringDeploymentGroupDeployment {
     | (string & {});
 }
 
-export const MirroringDeploymentGroupDeployment: Schema.Schema<MirroringDeploymentGroupDeployment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MirroringDeploymentGroupDeployment",
-  }) as any as Schema.Schema<MirroringDeploymentGroupDeployment>;
+export const MirroringDeploymentGroupDeployment =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+  }).annotate({ identifier: "MirroringDeploymentGroupDeployment" });
 
 export interface OperationMetadata {
   /** Output only. API version used to start the operation. */
@@ -1303,20 +1093,15 @@ export interface OperationMetadata {
   requestedCancellation?: boolean;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      apiVersion: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      target: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  apiVersion: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  verb: Schema.optional(Schema.String),
+  target: Schema.optional(Schema.String),
+  statusMessage: Schema.optional(Schema.String),
+  requestedCancellation: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "OperationMetadata" });
 
 export interface ListAddressGroupReferencesResponseAddressGroupReference {
   /** Rule priority of the FirewallPolicy that is using the Address Group. */
@@ -1327,16 +1112,14 @@ export interface ListAddressGroupReferencesResponseAddressGroupReference {
   firewallPolicy?: string;
 }
 
-export const ListAddressGroupReferencesResponseAddressGroupReference: Schema.Schema<ListAddressGroupReferencesResponseAddressGroupReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      rulePriority: Schema.optional(Schema.Number),
-      securityPolicy: Schema.optional(Schema.String),
-      firewallPolicy: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const ListAddressGroupReferencesResponseAddressGroupReference =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    rulePriority: Schema.optional(Schema.Number),
+    securityPolicy: Schema.optional(Schema.String),
+    firewallPolicy: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "ListAddressGroupReferencesResponseAddressGroupReference",
-  }) as any as Schema.Schema<ListAddressGroupReferencesResponseAddressGroupReference>;
+  });
 
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -1347,16 +1130,13 @@ export interface Status {
   details?: Array<Record<string, unknown>>;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** Service-specific metadata associated with the operation. It typically contains progress information and common metadata such as create time. Some services might not provide such metadata. Any method that returns a long-running operation should document the metadata type, if any. */
@@ -1371,16 +1151,13 @@ export interface Operation {
   response?: Record<string, unknown>;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      error: Schema.optional(Status),
-      done: Schema.optional(Schema.Boolean),
-      name: Schema.optional(Schema.String),
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  error: Schema.optional(Status),
+  done: Schema.optional(Schema.Boolean),
+  name: Schema.optional(Schema.String),
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Operation" });
 
 export interface AuthorizationPolicy {
   /** Required. Name of the AuthorizationPolicy resource. It matches pattern `projects/{project}/locations/{location}/authorizationPolicies/`. */
@@ -1399,20 +1176,15 @@ export interface AuthorizationPolicy {
   action?: "ACTION_UNSPECIFIED" | "ALLOW" | "DENY" | (string & {});
 }
 
-export const AuthorizationPolicy: Schema.Schema<AuthorizationPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      rules: Schema.optional(Schema.Array(Rule)),
-      updateTime: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      description: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      action: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AuthorizationPolicy",
-  }) as any as Schema.Schema<AuthorizationPolicy>;
+export const AuthorizationPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  rules: Schema.optional(Schema.Array(Rule)),
+  updateTime: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  description: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  action: Schema.optional(Schema.String),
+}).annotate({ identifier: "AuthorizationPolicy" });
 
 export interface InterceptDeployment {
   /** Output only. The timestamp when the resource was created. See https://google.aip.dev/148#timestamps. */
@@ -1442,22 +1214,17 @@ export interface InterceptDeployment {
   interceptDeploymentGroup?: string;
 }
 
-export const InterceptDeployment: Schema.Schema<InterceptDeployment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      reconciling: Schema.optional(Schema.Boolean),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      name: Schema.optional(Schema.String),
-      forwardingRule: Schema.optional(Schema.String),
-      interceptDeploymentGroup: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InterceptDeployment",
-  }) as any as Schema.Schema<InterceptDeployment>;
+export const InterceptDeployment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createTime: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  reconciling: Schema.optional(Schema.Boolean),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  name: Schema.optional(Schema.String),
+  forwardingRule: Schema.optional(Schema.String),
+  interceptDeploymentGroup: Schema.optional(Schema.String),
+}).annotate({ identifier: "InterceptDeployment" });
 
 export interface ListInterceptDeploymentsResponse {
   /** The deployments from the specified parent. */
@@ -1468,16 +1235,12 @@ export interface ListInterceptDeploymentsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListInterceptDeploymentsResponse: Schema.Schema<ListInterceptDeploymentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      interceptDeployments: Schema.optional(Schema.Array(InterceptDeployment)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListInterceptDeploymentsResponse",
-  }) as any as Schema.Schema<ListInterceptDeploymentsResponse>;
+export const ListInterceptDeploymentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    interceptDeployments: Schema.optional(Schema.Array(InterceptDeployment)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListInterceptDeploymentsResponse" });
 
 export interface FirewallEndpointAssociationReference {
   /** Output only. The resource name of the FirewallEndpointAssociation. Format: projects/{project}/locations/{location}/firewallEndpointAssociations/{id} */
@@ -1486,29 +1249,21 @@ export interface FirewallEndpointAssociationReference {
   network?: string;
 }
 
-export const FirewallEndpointAssociationReference: Schema.Schema<FirewallEndpointAssociationReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      network: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FirewallEndpointAssociationReference",
-  }) as any as Schema.Schema<FirewallEndpointAssociationReference>;
+export const FirewallEndpointAssociationReference =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    network: Schema.optional(Schema.String),
+  }).annotate({ identifier: "FirewallEndpointAssociationReference" });
 
 export interface FirewallEndpointEndpointSettings {
   /** Optional. Immutable. Indicates whether Jumbo Frames are enabled. Default value is false. */
   jumboFramesEnabled?: boolean;
 }
 
-export const FirewallEndpointEndpointSettings: Schema.Schema<FirewallEndpointEndpointSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      jumboFramesEnabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "FirewallEndpointEndpointSettings",
-  }) as any as Schema.Schema<FirewallEndpointEndpointSettings>;
+export const FirewallEndpointEndpointSettings =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    jumboFramesEnabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "FirewallEndpointEndpointSettings" });
 
 export interface FirewallEndpoint {
   /** Optional. Labels as key value pairs */
@@ -1545,28 +1300,23 @@ export interface FirewallEndpoint {
   description?: string;
 }
 
-export const FirewallEndpoint: Schema.Schema<FirewallEndpoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      createTime: Schema.optional(Schema.String),
-      satisfiesPzi: Schema.optional(Schema.Boolean),
-      satisfiesPzs: Schema.optional(Schema.Boolean),
-      updateTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      reconciling: Schema.optional(Schema.Boolean),
-      associations: Schema.optional(
-        Schema.Array(FirewallEndpointAssociationReference),
-      ),
-      associatedNetworks: Schema.optional(Schema.Array(Schema.String)),
-      endpointSettings: Schema.optional(FirewallEndpointEndpointSettings),
-      name: Schema.optional(Schema.String),
-      billingProjectId: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "FirewallEndpoint",
-  }) as any as Schema.Schema<FirewallEndpoint>;
+export const FirewallEndpoint = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  createTime: Schema.optional(Schema.String),
+  satisfiesPzi: Schema.optional(Schema.Boolean),
+  satisfiesPzs: Schema.optional(Schema.Boolean),
+  updateTime: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  reconciling: Schema.optional(Schema.Boolean),
+  associations: Schema.optional(
+    Schema.Array(FirewallEndpointAssociationReference),
+  ),
+  associatedNetworks: Schema.optional(Schema.Array(Schema.String)),
+  endpointSettings: Schema.optional(FirewallEndpointEndpointSettings),
+  name: Schema.optional(Schema.String),
+  billingProjectId: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "FirewallEndpoint" });
 
 export interface ListFirewallEndpointsResponse {
   /** The list of Endpoint */
@@ -1577,16 +1327,12 @@ export interface ListFirewallEndpointsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListFirewallEndpointsResponse: Schema.Schema<ListFirewallEndpointsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      firewallEndpoints: Schema.optional(Schema.Array(FirewallEndpoint)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListFirewallEndpointsResponse",
-  }) as any as Schema.Schema<ListFirewallEndpointsResponse>;
+export const ListFirewallEndpointsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    firewallEndpoints: Schema.optional(Schema.Array(FirewallEndpoint)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListFirewallEndpointsResponse" });
 
 export interface ClientTlsPolicy {
   /** Optional. Free-text description of the resource. */
@@ -1607,23 +1353,18 @@ export interface ClientTlsPolicy {
   labels?: Record<string, string>;
 }
 
-export const ClientTlsPolicy: Schema.Schema<ClientTlsPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      description: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      clientCertificate: Schema.optional(
-        GoogleCloudNetworksecurityV1beta1CertificateProvider,
-      ),
-      serverValidationCa: Schema.optional(Schema.Array(ValidationCA)),
-      sni: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ClientTlsPolicy",
-  }) as any as Schema.Schema<ClientTlsPolicy>;
+export const ClientTlsPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  description: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  clientCertificate: Schema.optional(
+    GoogleCloudNetworksecurityV1beta1CertificateProvider,
+  ),
+  serverValidationCa: Schema.optional(Schema.Array(ValidationCA)),
+  sni: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "ClientTlsPolicy" });
 
 export interface ListClientTlsPoliciesResponse {
   /** List of ClientTlsPolicy resources. */
@@ -1632,15 +1373,11 @@ export interface ListClientTlsPoliciesResponse {
   nextPageToken?: string;
 }
 
-export const ListClientTlsPoliciesResponse: Schema.Schema<ListClientTlsPoliciesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clientTlsPolicies: Schema.optional(Schema.Array(ClientTlsPolicy)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListClientTlsPoliciesResponse",
-  }) as any as Schema.Schema<ListClientTlsPoliciesResponse>;
+export const ListClientTlsPoliciesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    clientTlsPolicies: Schema.optional(Schema.Array(ClientTlsPolicy)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListClientTlsPoliciesResponse" });
 
 export interface FirewallEndpointAssociation {
   /** Optional. The URL of the TlsInspectionPolicy that is being associated. */
@@ -1672,23 +1409,19 @@ export interface FirewallEndpointAssociation {
   disabled?: boolean;
 }
 
-export const FirewallEndpointAssociation: Schema.Schema<FirewallEndpointAssociation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tlsInspectionPolicy: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      firewallEndpoint: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      network: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      reconciling: Schema.optional(Schema.Boolean),
-      disabled: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "FirewallEndpointAssociation",
-  }) as any as Schema.Schema<FirewallEndpointAssociation>;
+export const FirewallEndpointAssociation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tlsInspectionPolicy: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    firewallEndpoint: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    network: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    reconciling: Schema.optional(Schema.Boolean),
+    disabled: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "FirewallEndpointAssociation" });
 
 export interface ListFirewallEndpointAssociationsResponse {
   /** The list of Association */
@@ -1699,18 +1432,14 @@ export interface ListFirewallEndpointAssociationsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListFirewallEndpointAssociationsResponse: Schema.Schema<ListFirewallEndpointAssociationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      firewallEndpointAssociations: Schema.optional(
-        Schema.Array(FirewallEndpointAssociation),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListFirewallEndpointAssociationsResponse",
-  }) as any as Schema.Schema<ListFirewallEndpointAssociationsResponse>;
+export const ListFirewallEndpointAssociationsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    firewallEndpointAssociations: Schema.optional(
+      Schema.Array(FirewallEndpointAssociation),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListFirewallEndpointAssociationsResponse" });
 
 export interface MirroringDeployment {
   /** Immutable. Identifier. The resource name of this deployment, for example: `projects/123456789/locations/us-central1-a/mirroringDeployments/my-dep`. See https://google.aip.dev/122 for more details. */
@@ -1740,22 +1469,17 @@ export interface MirroringDeployment {
   updateTime?: string;
 }
 
-export const MirroringDeployment: Schema.Schema<MirroringDeployment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      forwardingRule: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      createTime: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      mirroringDeploymentGroup: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      reconciling: Schema.optional(Schema.Boolean),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MirroringDeployment",
-  }) as any as Schema.Schema<MirroringDeployment>;
+export const MirroringDeployment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  forwardingRule: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  createTime: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  mirroringDeploymentGroup: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  reconciling: Schema.optional(Schema.Boolean),
+  updateTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "MirroringDeployment" });
 
 export interface ListMirroringDeploymentsResponse {
   /** The deployments from the specified parent. */
@@ -1766,16 +1490,12 @@ export interface ListMirroringDeploymentsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListMirroringDeploymentsResponse: Schema.Schema<ListMirroringDeploymentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mirroringDeployments: Schema.optional(Schema.Array(MirroringDeployment)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListMirroringDeploymentsResponse",
-  }) as any as Schema.Schema<ListMirroringDeploymentsResponse>;
+export const ListMirroringDeploymentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    mirroringDeployments: Schema.optional(Schema.Array(MirroringDeployment)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListMirroringDeploymentsResponse" });
 
 export interface SACRealmSACRealmSymantecOptions {
   /** Optional. API Key used to call Symantec APIs on the user's behalf. Required if using Symantec Cloud SWG. P4SA account needs permissions granted to read this secret. A secret ID, secret name, or secret URI can be specified, but it will be parsed and stored as a secret URI in the form `projects/{project_number}/secrets/my-secret`. */
@@ -1792,44 +1512,32 @@ export interface SACRealmSACRealmSymantecOptions {
     | (string & {});
 }
 
-export const SACRealmSACRealmSymantecOptions: Schema.Schema<SACRealmSACRealmSymantecOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      secretPath: Schema.optional(Schema.String),
-      availableSymantecSites: Schema.optional(Schema.Array(Schema.String)),
-      symantecConnectionState: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SACRealmSACRealmSymantecOptions",
-  }) as any as Schema.Schema<SACRealmSACRealmSymantecOptions>;
+export const SACRealmSACRealmSymantecOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    secretPath: Schema.optional(Schema.String),
+    availableSymantecSites: Schema.optional(Schema.Array(Schema.String)),
+    symantecConnectionState: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SACRealmSACRealmSymantecOptions" });
 
 export interface GoogleIamV1TestIamPermissionsRequest {
   /** The set of permissions to check for the `resource`. Permissions with wildcards (such as `*` or `storage.*`) are not allowed. For more information see [IAM Overview](https://cloud.google.com/iam/docs/overview#permissions). */
   permissions?: Array<string>;
 }
 
-export const GoogleIamV1TestIamPermissionsRequest: Schema.Schema<GoogleIamV1TestIamPermissionsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1TestIamPermissionsRequest",
-  }) as any as Schema.Schema<GoogleIamV1TestIamPermissionsRequest>;
+export const GoogleIamV1TestIamPermissionsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleIamV1TestIamPermissionsRequest" });
 
 export interface MirroringDeploymentGroupConnectedEndpointGroup {
   /** Output only. The connected endpoint group's resource name, for example: `projects/123456789/locations/global/mirroringEndpointGroups/my-eg`. See https://google.aip.dev/124. */
   name?: string;
 }
 
-export const MirroringDeploymentGroupConnectedEndpointGroup: Schema.Schema<MirroringDeploymentGroupConnectedEndpointGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "MirroringDeploymentGroupConnectedEndpointGroup",
-  }) as any as Schema.Schema<MirroringDeploymentGroupConnectedEndpointGroup>;
+export const MirroringDeploymentGroupConnectedEndpointGroup =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "MirroringDeploymentGroupConnectedEndpointGroup" });
 
 export interface MirroringDeploymentGroup {
   /** Output only. The timestamp when the resource was most recently updated. See https://google.aip.dev/148#timestamps. */
@@ -1862,28 +1570,24 @@ export interface MirroringDeploymentGroup {
   nestedDeployments?: Array<MirroringDeploymentGroupDeployment>;
 }
 
-export const MirroringDeploymentGroup: Schema.Schema<MirroringDeploymentGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateTime: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      reconciling: Schema.optional(Schema.Boolean),
-      network: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      connectedEndpointGroups: Schema.optional(
-        Schema.Array(MirroringDeploymentGroupConnectedEndpointGroup),
-      ),
-      name: Schema.optional(Schema.String),
-      locations: Schema.optional(Schema.Array(MirroringLocation)),
-      nestedDeployments: Schema.optional(
-        Schema.Array(MirroringDeploymentGroupDeployment),
-      ),
-    }),
-  ).annotate({
-    identifier: "MirroringDeploymentGroup",
-  }) as any as Schema.Schema<MirroringDeploymentGroup>;
+export const MirroringDeploymentGroup =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    updateTime: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    reconciling: Schema.optional(Schema.Boolean),
+    network: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    connectedEndpointGroups: Schema.optional(
+      Schema.Array(MirroringDeploymentGroupConnectedEndpointGroup),
+    ),
+    name: Schema.optional(Schema.String),
+    locations: Schema.optional(Schema.Array(MirroringLocation)),
+    nestedDeployments: Schema.optional(
+      Schema.Array(MirroringDeploymentGroupDeployment),
+    ),
+  }).annotate({ identifier: "MirroringDeploymentGroup" });
 
 export interface AuthzPolicyAuthzRulePrincipal {
   /** Optional. An enum to decide what principal value the principal rule will match against. If not specified, the PrincipalSelector is CLIENT_CERT_URI_SAN. */
@@ -1897,29 +1601,23 @@ export interface AuthzPolicyAuthzRulePrincipal {
   principal?: AuthzPolicyAuthzRuleStringMatch;
 }
 
-export const AuthzPolicyAuthzRulePrincipal: Schema.Schema<AuthzPolicyAuthzRulePrincipal> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      principalSelector: Schema.optional(Schema.String),
-      principal: Schema.optional(AuthzPolicyAuthzRuleStringMatch),
-    }),
-  ).annotate({
-    identifier: "AuthzPolicyAuthzRulePrincipal",
-  }) as any as Schema.Schema<AuthzPolicyAuthzRulePrincipal>;
+export const AuthzPolicyAuthzRulePrincipal =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    principalSelector: Schema.optional(Schema.String),
+    principal: Schema.optional(AuthzPolicyAuthzRuleStringMatch),
+  }).annotate({ identifier: "AuthzPolicyAuthzRulePrincipal" });
 
 export interface AuthzPolicyAuthzRuleRequestResourceTagValueIdSet {
   /** Required. A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request. The match follows AND semantics which means all the ids must match. Limited to 5 ids in the Tag value id set. */
   ids?: Array<string>;
 }
 
-export const AuthzPolicyAuthzRuleRequestResourceTagValueIdSet: Schema.Schema<AuthzPolicyAuthzRuleRequestResourceTagValueIdSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ids: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
+export const AuthzPolicyAuthzRuleRequestResourceTagValueIdSet =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    ids: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({
     identifier: "AuthzPolicyAuthzRuleRequestResourceTagValueIdSet",
-  }) as any as Schema.Schema<AuthzPolicyAuthzRuleRequestResourceTagValueIdSet>;
+  });
 
 export interface AuthzPolicyAuthzRuleRequestResource {
   /** Optional. A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request. */
@@ -1928,17 +1626,13 @@ export interface AuthzPolicyAuthzRuleRequestResource {
   iamServiceAccount?: AuthzPolicyAuthzRuleStringMatch;
 }
 
-export const AuthzPolicyAuthzRuleRequestResource: Schema.Schema<AuthzPolicyAuthzRuleRequestResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tagValueIdSet: Schema.optional(
-        AuthzPolicyAuthzRuleRequestResourceTagValueIdSet,
-      ),
-      iamServiceAccount: Schema.optional(AuthzPolicyAuthzRuleStringMatch),
-    }),
-  ).annotate({
-    identifier: "AuthzPolicyAuthzRuleRequestResource",
-  }) as any as Schema.Schema<AuthzPolicyAuthzRuleRequestResource>;
+export const AuthzPolicyAuthzRuleRequestResource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tagValueIdSet: Schema.optional(
+      AuthzPolicyAuthzRuleRequestResourceTagValueIdSet,
+    ),
+    iamServiceAccount: Schema.optional(AuthzPolicyAuthzRuleStringMatch),
+  }).annotate({ identifier: "AuthzPolicyAuthzRuleRequestResource" });
 
 export interface AuthzPolicyAuthzRuleIpBlock {
   /** Required. The address prefix. */
@@ -1947,15 +1641,11 @@ export interface AuthzPolicyAuthzRuleIpBlock {
   length?: number;
 }
 
-export const AuthzPolicyAuthzRuleIpBlock: Schema.Schema<AuthzPolicyAuthzRuleIpBlock> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      prefix: Schema.optional(Schema.String),
-      length: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "AuthzPolicyAuthzRuleIpBlock",
-  }) as any as Schema.Schema<AuthzPolicyAuthzRuleIpBlock>;
+export const AuthzPolicyAuthzRuleIpBlock =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    prefix: Schema.optional(Schema.String),
+    length: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "AuthzPolicyAuthzRuleIpBlock" });
 
 export interface AuthzPolicyAuthzRuleFromRequestSource {
   /** Optional. A list of identities derived from the client's certificate. This field will not match on a request unless frontend mutual TLS is enabled for the forwarding rule or Gateway and the client certificate has been successfully validated by mTLS. Each identity is a string whose value is matched against a list of URI SANs, DNS Name SANs, or the common name in the client's certificate. A match happens when any principal matches with the rule. Limited to 50 principals per Authorization Policy for regional internal Application Load Balancers, regional external Application Load Balancers, cross-region internal Application Load Balancers, and Cloud Service Mesh. This field is not supported for global external Application Load Balancers. */
@@ -1966,18 +1656,14 @@ export interface AuthzPolicyAuthzRuleFromRequestSource {
   ipBlocks?: Array<AuthzPolicyAuthzRuleIpBlock>;
 }
 
-export const AuthzPolicyAuthzRuleFromRequestSource: Schema.Schema<AuthzPolicyAuthzRuleFromRequestSource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      principals: Schema.optional(Schema.Array(AuthzPolicyAuthzRulePrincipal)),
-      resources: Schema.optional(
-        Schema.Array(AuthzPolicyAuthzRuleRequestResource),
-      ),
-      ipBlocks: Schema.optional(Schema.Array(AuthzPolicyAuthzRuleIpBlock)),
-    }),
-  ).annotate({
-    identifier: "AuthzPolicyAuthzRuleFromRequestSource",
-  }) as any as Schema.Schema<AuthzPolicyAuthzRuleFromRequestSource>;
+export const AuthzPolicyAuthzRuleFromRequestSource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    principals: Schema.optional(Schema.Array(AuthzPolicyAuthzRulePrincipal)),
+    resources: Schema.optional(
+      Schema.Array(AuthzPolicyAuthzRuleRequestResource),
+    ),
+    ipBlocks: Schema.optional(Schema.Array(AuthzPolicyAuthzRuleIpBlock)),
+  }).annotate({ identifier: "AuthzPolicyAuthzRuleFromRequestSource" });
 
 export interface AuthzPolicyAuthzRuleFrom {
   /** Optional. Describes the negated properties of request sources. Matches requests from sources that do not match the criteria specified in this field. At least one of sources or notSources must be specified. */
@@ -1986,19 +1672,15 @@ export interface AuthzPolicyAuthzRuleFrom {
   sources?: Array<AuthzPolicyAuthzRuleFromRequestSource>;
 }
 
-export const AuthzPolicyAuthzRuleFrom: Schema.Schema<AuthzPolicyAuthzRuleFrom> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      notSources: Schema.optional(
-        Schema.Array(AuthzPolicyAuthzRuleFromRequestSource),
-      ),
-      sources: Schema.optional(
-        Schema.Array(AuthzPolicyAuthzRuleFromRequestSource),
-      ),
-    }),
-  ).annotate({
-    identifier: "AuthzPolicyAuthzRuleFrom",
-  }) as any as Schema.Schema<AuthzPolicyAuthzRuleFrom>;
+export const AuthzPolicyAuthzRuleFrom =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    notSources: Schema.optional(
+      Schema.Array(AuthzPolicyAuthzRuleFromRequestSource),
+    ),
+    sources: Schema.optional(
+      Schema.Array(AuthzPolicyAuthzRuleFromRequestSource),
+    ),
+  }).annotate({ identifier: "AuthzPolicyAuthzRuleFrom" });
 
 export interface SACRealmPairingKey {
   /** Output only. Key value. */
@@ -2007,15 +1689,10 @@ export interface SACRealmPairingKey {
   expireTime?: string;
 }
 
-export const SACRealmPairingKey: Schema.Schema<SACRealmPairingKey> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      key: Schema.optional(Schema.String),
-      expireTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SACRealmPairingKey",
-  }) as any as Schema.Schema<SACRealmPairingKey>;
+export const SACRealmPairingKey = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  key: Schema.optional(Schema.String),
+  expireTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "SACRealmPairingKey" });
 
 export interface SACRealm {
   /** Identifier. Resource name, in the form `projects/{project}/locations/global/sacRealms/{sacRealm}`. */
@@ -2046,19 +1723,16 @@ export interface SACRealm {
   pairingKey?: SACRealmPairingKey;
 }
 
-export const SACRealm: Schema.Schema<SACRealm> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      createTime: Schema.optional(Schema.String),
-      securityService: Schema.optional(Schema.String),
-      symantecOptions: Schema.optional(SACRealmSACRealmSymantecOptions),
-      pairingKey: Schema.optional(SACRealmPairingKey),
-    }),
-  ).annotate({ identifier: "SACRealm" }) as any as Schema.Schema<SACRealm>;
+export const SACRealm = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  state: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  createTime: Schema.optional(Schema.String),
+  securityService: Schema.optional(Schema.String),
+  symantecOptions: Schema.optional(SACRealmSACRealmSymantecOptions),
+  pairingKey: Schema.optional(SACRealmPairingKey),
+}).annotate({ identifier: "SACRealm" });
 
 export interface ListMirroringEndpointGroupsResponse {
   /** The endpoint groups from the specified parent. */
@@ -2067,17 +1741,13 @@ export interface ListMirroringEndpointGroupsResponse {
   nextPageToken?: string;
 }
 
-export const ListMirroringEndpointGroupsResponse: Schema.Schema<ListMirroringEndpointGroupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mirroringEndpointGroups: Schema.optional(
-        Schema.Array(MirroringEndpointGroup),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListMirroringEndpointGroupsResponse",
-  }) as any as Schema.Schema<ListMirroringEndpointGroupsResponse>;
+export const ListMirroringEndpointGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    mirroringEndpointGroups: Schema.optional(
+      Schema.Array(MirroringEndpointGroup),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListMirroringEndpointGroupsResponse" });
 
 export interface BackendAuthenticationConfig {
   /** Optional. A reference to a TrustConfig resource from the certificatemanager.googleapis.com namespace. This is a relative resource path following the form "projects/{project}/locations/{location}/trustConfigs/{trust_config}". A BackendService uses the chain of trust represented by this TrustConfig, if specified, to validate the server certificates presented by the backend. Required unless wellKnownRoots is set to PUBLIC_ROOTS. */
@@ -2104,22 +1774,18 @@ export interface BackendAuthenticationConfig {
   etag?: string;
 }
 
-export const BackendAuthenticationConfig: Schema.Schema<BackendAuthenticationConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      trustConfig: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      wellKnownRoots: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      clientCertificate: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BackendAuthenticationConfig",
-  }) as any as Schema.Schema<BackendAuthenticationConfig>;
+export const BackendAuthenticationConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    trustConfig: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    createTime: Schema.optional(Schema.String),
+    wellKnownRoots: Schema.optional(Schema.String),
+    updateTime: Schema.optional(Schema.String),
+    clientCertificate: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    etag: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BackendAuthenticationConfig" });
 
 export interface SecurityProfileGroup {
   /** Optional. Reference to a SecurityProfile with the CustomMirroring configuration. */
@@ -2146,24 +1812,19 @@ export interface SecurityProfileGroup {
   urlFilteringProfile?: string;
 }
 
-export const SecurityProfileGroup: Schema.Schema<SecurityProfileGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      customMirroringProfile: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      dataPathId: Schema.optional(Schema.String),
-      threatPreventionProfile: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      customInterceptProfile: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      urlFilteringProfile: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SecurityProfileGroup",
-  }) as any as Schema.Schema<SecurityProfileGroup>;
+export const SecurityProfileGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  customMirroringProfile: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  dataPathId: Schema.optional(Schema.String),
+  threatPreventionProfile: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  customInterceptProfile: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  urlFilteringProfile: Schema.optional(Schema.String),
+}).annotate({ identifier: "SecurityProfileGroup" });
 
 export interface ListSecurityProfileGroupsResponse {
   /** List of SecurityProfileGroups resources. */
@@ -2172,17 +1833,11 @@ export interface ListSecurityProfileGroupsResponse {
   nextPageToken?: string;
 }
 
-export const ListSecurityProfileGroupsResponse: Schema.Schema<ListSecurityProfileGroupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      securityProfileGroups: Schema.optional(
-        Schema.Array(SecurityProfileGroup),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListSecurityProfileGroupsResponse",
-  }) as any as Schema.Schema<ListSecurityProfileGroupsResponse>;
+export const ListSecurityProfileGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    securityProfileGroups: Schema.optional(Schema.Array(SecurityProfileGroup)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListSecurityProfileGroupsResponse" });
 
 export interface ListAuthorizationPoliciesResponse {
   /** List of AuthorizationPolicies resources. */
@@ -2191,29 +1846,21 @@ export interface ListAuthorizationPoliciesResponse {
   nextPageToken?: string;
 }
 
-export const ListAuthorizationPoliciesResponse: Schema.Schema<ListAuthorizationPoliciesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      authorizationPolicies: Schema.optional(Schema.Array(AuthorizationPolicy)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAuthorizationPoliciesResponse",
-  }) as any as Schema.Schema<ListAuthorizationPoliciesResponse>;
+export const ListAuthorizationPoliciesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    authorizationPolicies: Schema.optional(Schema.Array(AuthorizationPolicy)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListAuthorizationPoliciesResponse" });
 
 export interface AuthzPolicyCustomProviderAuthzExtension {
   /** Required. A list of references to authorization extensions that will be invoked for requests matching this policy. Limited to 1 custom provider. */
   resources?: Array<string>;
 }
 
-export const AuthzPolicyCustomProviderAuthzExtension: Schema.Schema<AuthzPolicyCustomProviderAuthzExtension> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resources: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AuthzPolicyCustomProviderAuthzExtension",
-  }) as any as Schema.Schema<AuthzPolicyCustomProviderAuthzExtension>;
+export const AuthzPolicyCustomProviderAuthzExtension =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resources: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "AuthzPolicyCustomProviderAuthzExtension" });
 
 export interface AuthzPolicyCustomProvider {
   /** Optional. Delegates authorization decisions to Cloud IAP. Applicable only for managed load balancers. Enabling Cloud IAP at the AuthzPolicy level is not compatible with Cloud IAP settings in the BackendService. Enabling IAP in both places will result in request failure. Ensure that IAP is enabled in either the AuthzPolicy or the BackendService but not in both places. */
@@ -2222,15 +1869,11 @@ export interface AuthzPolicyCustomProvider {
   authzExtension?: AuthzPolicyCustomProviderAuthzExtension;
 }
 
-export const AuthzPolicyCustomProvider: Schema.Schema<AuthzPolicyCustomProvider> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cloudIap: Schema.optional(AuthzPolicyCustomProviderCloudIap),
-      authzExtension: Schema.optional(AuthzPolicyCustomProviderAuthzExtension),
-    }),
-  ).annotate({
-    identifier: "AuthzPolicyCustomProvider",
-  }) as any as Schema.Schema<AuthzPolicyCustomProvider>;
+export const AuthzPolicyCustomProvider =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    cloudIap: Schema.optional(AuthzPolicyCustomProviderCloudIap),
+    authzExtension: Schema.optional(AuthzPolicyCustomProviderAuthzExtension),
+  }).annotate({ identifier: "AuthzPolicyCustomProvider" });
 
 export interface AddAddressGroupItemsRequest {
   /** Required. List of items to add. */
@@ -2239,29 +1882,21 @@ export interface AddAddressGroupItemsRequest {
   requestId?: string;
 }
 
-export const AddAddressGroupItemsRequest: Schema.Schema<AddAddressGroupItemsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      items: Schema.optional(Schema.Array(Schema.String)),
-      requestId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AddAddressGroupItemsRequest",
-  }) as any as Schema.Schema<AddAddressGroupItemsRequest>;
+export const AddAddressGroupItemsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    items: Schema.optional(Schema.Array(Schema.String)),
+    requestId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "AddAddressGroupItemsRequest" });
 
 export interface GoogleIamV1TestIamPermissionsResponse {
   /** A subset of `TestPermissionsRequest.permissions` that the caller is allowed. */
   permissions?: Array<string>;
 }
 
-export const GoogleIamV1TestIamPermissionsResponse: Schema.Schema<GoogleIamV1TestIamPermissionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissions: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "GoogleIamV1TestIamPermissionsResponse",
-  }) as any as Schema.Schema<GoogleIamV1TestIamPermissionsResponse>;
+export const GoogleIamV1TestIamPermissionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    permissions: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "GoogleIamV1TestIamPermissionsResponse" });
 
 export interface AuthzPolicyAuthzRule {
   /** Optional. Describes properties of a target of a request. */
@@ -2272,16 +1907,11 @@ export interface AuthzPolicyAuthzRule {
   when?: string;
 }
 
-export const AuthzPolicyAuthzRule: Schema.Schema<AuthzPolicyAuthzRule> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      to: Schema.optional(AuthzPolicyAuthzRuleTo),
-      from: Schema.optional(AuthzPolicyAuthzRuleFrom),
-      when: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AuthzPolicyAuthzRule",
-  }) as any as Schema.Schema<AuthzPolicyAuthzRule>;
+export const AuthzPolicyAuthzRule = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  to: Schema.optional(AuthzPolicyAuthzRuleTo),
+  from: Schema.optional(AuthzPolicyAuthzRuleFrom),
+  when: Schema.optional(Schema.String),
+}).annotate({ identifier: "AuthzPolicyAuthzRule" });
 
 export interface InterceptEndpointGroupConnectedDeploymentGroup {
   /** Output only. The connected deployment group's resource name, for example: `projects/123456789/locations/global/interceptDeploymentGroups/my-dg`. See https://google.aip.dev/124. */
@@ -2290,15 +1920,11 @@ export interface InterceptEndpointGroupConnectedDeploymentGroup {
   locations?: Array<InterceptLocation>;
 }
 
-export const InterceptEndpointGroupConnectedDeploymentGroup: Schema.Schema<InterceptEndpointGroupConnectedDeploymentGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      locations: Schema.optional(Schema.Array(InterceptLocation)),
-    }),
-  ).annotate({
-    identifier: "InterceptEndpointGroupConnectedDeploymentGroup",
-  }) as any as Schema.Schema<InterceptEndpointGroupConnectedDeploymentGroup>;
+export const InterceptEndpointGroupConnectedDeploymentGroup =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    locations: Schema.optional(Schema.Array(InterceptLocation)),
+  }).annotate({ identifier: "InterceptEndpointGroupConnectedDeploymentGroup" });
 
 export interface InterceptEndpointGroupAssociationDetails {
   /** Output only. The connected association's resource name, for example: `projects/123456789/locations/global/interceptEndpointGroupAssociations/my-ega`. See https://google.aip.dev/124. */
@@ -2317,16 +1943,12 @@ export interface InterceptEndpointGroupAssociationDetails {
   network?: string;
 }
 
-export const InterceptEndpointGroupAssociationDetails: Schema.Schema<InterceptEndpointGroupAssociationDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      network: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InterceptEndpointGroupAssociationDetails",
-  }) as any as Schema.Schema<InterceptEndpointGroupAssociationDetails>;
+export const InterceptEndpointGroupAssociationDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    network: Schema.optional(Schema.String),
+  }).annotate({ identifier: "InterceptEndpointGroupAssociationDetails" });
 
 export interface InterceptEndpointGroup {
   /** Output only. The timestamp when the resource was most recently updated. See https://google.aip.dev/148#timestamps. */
@@ -2359,27 +1981,24 @@ export interface InterceptEndpointGroup {
   associations?: Array<InterceptEndpointGroupAssociationDetails>;
 }
 
-export const InterceptEndpointGroup: Schema.Schema<InterceptEndpointGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateTime: Schema.optional(Schema.String),
-      connectedDeploymentGroup: Schema.optional(
-        InterceptEndpointGroupConnectedDeploymentGroup,
-      ),
-      state: Schema.optional(Schema.String),
-      reconciling: Schema.optional(Schema.Boolean),
-      createTime: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      name: Schema.optional(Schema.String),
-      interceptDeploymentGroup: Schema.optional(Schema.String),
-      associations: Schema.optional(
-        Schema.Array(InterceptEndpointGroupAssociationDetails),
-      ),
-    }),
-  ).annotate({
-    identifier: "InterceptEndpointGroup",
-  }) as any as Schema.Schema<InterceptEndpointGroup>;
+export const InterceptEndpointGroup = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    updateTime: Schema.optional(Schema.String),
+    connectedDeploymentGroup: Schema.optional(
+      InterceptEndpointGroupConnectedDeploymentGroup,
+    ),
+    state: Schema.optional(Schema.String),
+    reconciling: Schema.optional(Schema.Boolean),
+    createTime: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    name: Schema.optional(Schema.String),
+    interceptDeploymentGroup: Schema.optional(Schema.String),
+    associations: Schema.optional(
+      Schema.Array(InterceptEndpointGroupAssociationDetails),
+    ),
+  },
+).annotate({ identifier: "InterceptEndpointGroup" });
 
 export interface ListInterceptEndpointGroupsResponse {
   /** A token that can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. See https://google.aip.dev/158 for more details. */
@@ -2388,24 +2007,19 @@ export interface ListInterceptEndpointGroupsResponse {
   interceptEndpointGroups?: Array<InterceptEndpointGroup>;
 }
 
-export const ListInterceptEndpointGroupsResponse: Schema.Schema<ListInterceptEndpointGroupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      interceptEndpointGroups: Schema.optional(
-        Schema.Array(InterceptEndpointGroup),
-      ),
-    }),
-  ).annotate({
-    identifier: "ListInterceptEndpointGroupsResponse",
-  }) as any as Schema.Schema<ListInterceptEndpointGroupsResponse>;
+export const ListInterceptEndpointGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    interceptEndpointGroups: Schema.optional(
+      Schema.Array(InterceptEndpointGroup),
+    ),
+  }).annotate({ identifier: "ListInterceptEndpointGroupsResponse" });
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelOperationRequest",
-  }) as any as Schema.Schema<CancelOperationRequest>;
+export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelOperationRequest" });
 
 export interface SACAttachmentSACAttachmentSymantecOptions {
   /** Immutable. Name to be used when creating a location on the customer's behalf in Symantec's Location API. Not to be confused with Google Cloud locations. */
@@ -2414,15 +2028,11 @@ export interface SACAttachmentSACAttachmentSymantecOptions {
   symantecSite?: string;
 }
 
-export const SACAttachmentSACAttachmentSymantecOptions: Schema.Schema<SACAttachmentSACAttachmentSymantecOptions> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      symantecLocationName: Schema.optional(Schema.String),
-      symantecSite: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SACAttachmentSACAttachmentSymantecOptions",
-  }) as any as Schema.Schema<SACAttachmentSACAttachmentSymantecOptions>;
+export const SACAttachmentSACAttachmentSymantecOptions =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    symantecLocationName: Schema.optional(Schema.String),
+    symantecSite: Schema.optional(Schema.String),
+  }).annotate({ identifier: "SACAttachmentSACAttachmentSymantecOptions" });
 
 export interface SACAttachment {
   /** Required. SAC Realm which owns the attachment. This can be input as an ID or a full resource name. The output always has the form `projects/{project_number}/locations/{location}/sacRealms/{sac_realm}`. */
@@ -2452,25 +2062,18 @@ export interface SACAttachment {
   updateTime?: string;
 }
 
-export const SACAttachment: Schema.Schema<SACAttachment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sacRealm: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      country: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      createTime: Schema.optional(Schema.String),
-      nccGateway: Schema.optional(Schema.String),
-      symantecOptions: Schema.optional(
-        SACAttachmentSACAttachmentSymantecOptions,
-      ),
-      state: Schema.optional(Schema.String),
-      timeZone: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "SACAttachment",
-  }) as any as Schema.Schema<SACAttachment>;
+export const SACAttachment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sacRealm: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  country: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  createTime: Schema.optional(Schema.String),
+  nccGateway: Schema.optional(Schema.String),
+  symantecOptions: Schema.optional(SACAttachmentSACAttachmentSymantecOptions),
+  state: Schema.optional(Schema.String),
+  timeZone: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "SACAttachment" });
 
 export interface ListSACAttachmentsResponse {
   /** The list of SACAttachments. */
@@ -2481,16 +2084,12 @@ export interface ListSACAttachmentsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListSACAttachmentsResponse: Schema.Schema<ListSACAttachmentsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sacAttachments: Schema.optional(Schema.Array(SACAttachment)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListSACAttachmentsResponse",
-  }) as any as Schema.Schema<ListSACAttachmentsResponse>;
+export const ListSACAttachmentsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sacAttachments: Schema.optional(Schema.Array(SACAttachment)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListSACAttachmentsResponse" });
 
 export interface ListAddressGroupReferencesResponse {
   /** A list of references that matches the specified filter in the request. */
@@ -2499,17 +2098,13 @@ export interface ListAddressGroupReferencesResponse {
   nextPageToken?: string;
 }
 
-export const ListAddressGroupReferencesResponse: Schema.Schema<ListAddressGroupReferencesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      addressGroupReferences: Schema.optional(
-        Schema.Array(ListAddressGroupReferencesResponseAddressGroupReference),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListAddressGroupReferencesResponse",
-  }) as any as Schema.Schema<ListAddressGroupReferencesResponse>;
+export const ListAddressGroupReferencesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    addressGroupReferences: Schema.optional(
+      Schema.Array(ListAddressGroupReferencesResponseAddressGroupReference),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListAddressGroupReferencesResponse" });
 
 export interface TlsInspectionPolicy {
   /** Optional. Minimum TLS version that the firewall should use when negotiating connections with both clients and servers. If this is not set, then the default value is to allow the broadest set of clients and servers (TLS 1.0 or higher). Setting this to more restrictive values may improve security, but may also prevent the firewall from connecting to some clients or servers. Note that Secure Web Proxy does not yet honor this field. */
@@ -2546,23 +2141,18 @@ export interface TlsInspectionPolicy {
   customTlsFeatures?: Array<string>;
 }
 
-export const TlsInspectionPolicy: Schema.Schema<TlsInspectionPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      minTlsVersion: Schema.optional(Schema.String),
-      tlsFeatureProfile: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      excludePublicCaSet: Schema.optional(Schema.Boolean),
-      trustConfig: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      caPool: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      customTlsFeatures: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "TlsInspectionPolicy",
-  }) as any as Schema.Schema<TlsInspectionPolicy>;
+export const TlsInspectionPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  minTlsVersion: Schema.optional(Schema.String),
+  tlsFeatureProfile: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  excludePublicCaSet: Schema.optional(Schema.Boolean),
+  trustConfig: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  caPool: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  customTlsFeatures: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "TlsInspectionPolicy" });
 
 export interface InterceptDeploymentGroupDeployment {
   /** Output only. The name of the Intercept Deployment, in the format: `projects/{project}/locations/{location}/interceptDeployments/{intercept_deployment}`. */
@@ -2578,29 +2168,21 @@ export interface InterceptDeploymentGroupDeployment {
     | (string & {});
 }
 
-export const InterceptDeploymentGroupDeployment: Schema.Schema<InterceptDeploymentGroupDeployment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InterceptDeploymentGroupDeployment",
-  }) as any as Schema.Schema<InterceptDeploymentGroupDeployment>;
+export const InterceptDeploymentGroupDeployment =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+  }).annotate({ identifier: "InterceptDeploymentGroupDeployment" });
 
 export interface InterceptDeploymentGroupConnectedEndpointGroup {
   /** Output only. The connected endpoint group's resource name, for example: `projects/123456789/locations/global/interceptEndpointGroups/my-eg`. See https://google.aip.dev/124. */
   name?: string;
 }
 
-export const InterceptDeploymentGroupConnectedEndpointGroup: Schema.Schema<InterceptDeploymentGroupConnectedEndpointGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InterceptDeploymentGroupConnectedEndpointGroup",
-  }) as any as Schema.Schema<InterceptDeploymentGroupConnectedEndpointGroup>;
+export const InterceptDeploymentGroupConnectedEndpointGroup =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    name: Schema.optional(Schema.String),
+  }).annotate({ identifier: "InterceptDeploymentGroupConnectedEndpointGroup" });
 
 export interface InterceptDeploymentGroup {
   /** Output only. The list of Intercept Deployments that belong to this group. */
@@ -2632,28 +2214,24 @@ export interface InterceptDeploymentGroup {
   updateTime?: string;
 }
 
-export const InterceptDeploymentGroup: Schema.Schema<InterceptDeploymentGroup> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nestedDeployments: Schema.optional(
-        Schema.Array(InterceptDeploymentGroupDeployment),
-      ),
-      name: Schema.optional(Schema.String),
-      locations: Schema.optional(Schema.Array(InterceptLocation)),
-      connectedEndpointGroups: Schema.optional(
-        Schema.Array(InterceptDeploymentGroupConnectedEndpointGroup),
-      ),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      createTime: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      network: Schema.optional(Schema.String),
-      state: Schema.optional(Schema.String),
-      reconciling: Schema.optional(Schema.Boolean),
-      updateTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "InterceptDeploymentGroup",
-  }) as any as Schema.Schema<InterceptDeploymentGroup>;
+export const InterceptDeploymentGroup =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nestedDeployments: Schema.optional(
+      Schema.Array(InterceptDeploymentGroupDeployment),
+    ),
+    name: Schema.optional(Schema.String),
+    locations: Schema.optional(Schema.Array(InterceptLocation)),
+    connectedEndpointGroups: Schema.optional(
+      Schema.Array(InterceptDeploymentGroupConnectedEndpointGroup),
+    ),
+    labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+    createTime: Schema.optional(Schema.String),
+    description: Schema.optional(Schema.String),
+    network: Schema.optional(Schema.String),
+    state: Schema.optional(Schema.String),
+    reconciling: Schema.optional(Schema.Boolean),
+    updateTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "InterceptDeploymentGroup" });
 
 export interface GatewaySecurityPolicy {
   /** Output only. The timestamp when the resource was created. */
@@ -2668,18 +2246,13 @@ export interface GatewaySecurityPolicy {
   name?: string;
 }
 
-export const GatewaySecurityPolicy: Schema.Schema<GatewaySecurityPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      tlsInspectionPolicy: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GatewaySecurityPolicy",
-  }) as any as Schema.Schema<GatewaySecurityPolicy>;
+export const GatewaySecurityPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createTime: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  tlsInspectionPolicy: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "GatewaySecurityPolicy" });
 
 export interface AuthzPolicyTarget {
   /** Optional. All gateways and forwarding rules referenced by this policy and extensions must share the same load balancing scheme. Supported values: `INTERNAL_MANAGED` and `EXTERNAL_MANAGED`. For more information, refer to [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service). */
@@ -2693,15 +2266,10 @@ export interface AuthzPolicyTarget {
   resources?: Array<string>;
 }
 
-export const AuthzPolicyTarget: Schema.Schema<AuthzPolicyTarget> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      loadBalancingScheme: Schema.optional(Schema.String),
-      resources: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AuthzPolicyTarget",
-  }) as any as Schema.Schema<AuthzPolicyTarget>;
+export const AuthzPolicyTarget = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  loadBalancingScheme: Schema.optional(Schema.String),
+  resources: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "AuthzPolicyTarget" });
 
 export interface AuthzPolicy {
   /** Output only. The timestamp when the resource was created. */
@@ -2735,23 +2303,18 @@ export interface AuthzPolicy {
   labels?: Record<string, string>;
 }
 
-export const AuthzPolicy: Schema.Schema<AuthzPolicy> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      httpRules: Schema.optional(Schema.Array(AuthzPolicyAuthzRule)),
-      updateTime: Schema.optional(Schema.String),
-      policyProfile: Schema.optional(Schema.String),
-      customProvider: Schema.optional(AuthzPolicyCustomProvider),
-      target: Schema.optional(AuthzPolicyTarget),
-      action: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "AuthzPolicy",
-  }) as any as Schema.Schema<AuthzPolicy>;
+export const AuthzPolicy = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createTime: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  httpRules: Schema.optional(Schema.Array(AuthzPolicyAuthzRule)),
+  updateTime: Schema.optional(Schema.String),
+  policyProfile: Schema.optional(Schema.String),
+  customProvider: Schema.optional(AuthzPolicyCustomProvider),
+  target: Schema.optional(AuthzPolicyTarget),
+  action: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "AuthzPolicy" });
 
 export interface DnsThreatDetector {
   /** Output only. Create time stamp. */
@@ -2768,19 +2331,14 @@ export interface DnsThreatDetector {
   name?: string;
 }
 
-export const DnsThreatDetector: Schema.Schema<DnsThreatDetector> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      provider: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      excludedNetworks: Schema.optional(Schema.Array(Schema.String)),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DnsThreatDetector",
-  }) as any as Schema.Schema<DnsThreatDetector>;
+export const DnsThreatDetector = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createTime: Schema.optional(Schema.String),
+  provider: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  excludedNetworks: Schema.optional(Schema.Array(Schema.String)),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "DnsThreatDetector" });
 
 export interface ListDnsThreatDetectorsResponse {
   /** The list of DnsThreatDetector resources. */
@@ -2791,16 +2349,12 @@ export interface ListDnsThreatDetectorsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListDnsThreatDetectorsResponse: Schema.Schema<ListDnsThreatDetectorsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      dnsThreatDetectors: Schema.optional(Schema.Array(DnsThreatDetector)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListDnsThreatDetectorsResponse",
-  }) as any as Schema.Schema<ListDnsThreatDetectorsResponse>;
+export const ListDnsThreatDetectorsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    dnsThreatDetectors: Schema.optional(Schema.Array(DnsThreatDetector)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListDnsThreatDetectorsResponse" });
 
 export interface ListAuthzPoliciesResponse {
   /** The list of `AuthzPolicy` resources. */
@@ -2811,16 +2365,12 @@ export interface ListAuthzPoliciesResponse {
   unreachable?: Array<string>;
 }
 
-export const ListAuthzPoliciesResponse: Schema.Schema<ListAuthzPoliciesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      authzPolicies: Schema.optional(Schema.Array(AuthzPolicy)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListAuthzPoliciesResponse",
-  }) as any as Schema.Schema<ListAuthzPoliciesResponse>;
+export const ListAuthzPoliciesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    authzPolicies: Schema.optional(Schema.Array(AuthzPolicy)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListAuthzPoliciesResponse" });
 
 export interface ListGatewaySecurityPoliciesResponse {
   /** If there might be more results than those appearing in this response, then 'next_page_token' is included. To get the next set of results, call this method again using the value of 'next_page_token' as 'page_token'. */
@@ -2831,18 +2381,14 @@ export interface ListGatewaySecurityPoliciesResponse {
   gatewaySecurityPolicies?: Array<GatewaySecurityPolicy>;
 }
 
-export const ListGatewaySecurityPoliciesResponse: Schema.Schema<ListGatewaySecurityPoliciesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      gatewaySecurityPolicies: Schema.optional(
-        Schema.Array(GatewaySecurityPolicy),
-      ),
-    }),
-  ).annotate({
-    identifier: "ListGatewaySecurityPoliciesResponse",
-  }) as any as Schema.Schema<ListGatewaySecurityPoliciesResponse>;
+export const ListGatewaySecurityPoliciesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    gatewaySecurityPolicies: Schema.optional(
+      Schema.Array(GatewaySecurityPolicy),
+    ),
+  }).annotate({ identifier: "ListGatewaySecurityPoliciesResponse" });
 
 export interface ListBackendAuthenticationConfigsResponse {
   /** List of BackendAuthenticationConfig resources. */
@@ -2853,18 +2399,14 @@ export interface ListBackendAuthenticationConfigsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListBackendAuthenticationConfigsResponse: Schema.Schema<ListBackendAuthenticationConfigsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      backendAuthenticationConfigs: Schema.optional(
-        Schema.Array(BackendAuthenticationConfig),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListBackendAuthenticationConfigsResponse",
-  }) as any as Schema.Schema<ListBackendAuthenticationConfigsResponse>;
+export const ListBackendAuthenticationConfigsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    backendAuthenticationConfigs: Schema.optional(
+      Schema.Array(BackendAuthenticationConfig),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "ListBackendAuthenticationConfigsResponse" });
 
 export interface ListInterceptDeploymentGroupsResponse {
   /** The deployment groups from the specified parent. */
@@ -2873,17 +2415,13 @@ export interface ListInterceptDeploymentGroupsResponse {
   nextPageToken?: string;
 }
 
-export const ListInterceptDeploymentGroupsResponse: Schema.Schema<ListInterceptDeploymentGroupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      interceptDeploymentGroups: Schema.optional(
-        Schema.Array(InterceptDeploymentGroup),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListInterceptDeploymentGroupsResponse",
-  }) as any as Schema.Schema<ListInterceptDeploymentGroupsResponse>;
+export const ListInterceptDeploymentGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    interceptDeploymentGroups: Schema.optional(
+      Schema.Array(InterceptDeploymentGroup),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListInterceptDeploymentGroupsResponse" });
 
 export interface ListTlsInspectionPoliciesResponse {
   /** If there might be more results than those appearing in this response, then 'next_page_token' is included. To get the next set of results, call this method again using the value of 'next_page_token' as 'page_token'. */
@@ -2894,23 +2432,18 @@ export interface ListTlsInspectionPoliciesResponse {
   tlsInspectionPolicies?: Array<TlsInspectionPolicy>;
 }
 
-export const ListTlsInspectionPoliciesResponse: Schema.Schema<ListTlsInspectionPoliciesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      tlsInspectionPolicies: Schema.optional(Schema.Array(TlsInspectionPolicy)),
-    }),
-  ).annotate({
-    identifier: "ListTlsInspectionPoliciesResponse",
-  }) as any as Schema.Schema<ListTlsInspectionPoliciesResponse>;
+export const ListTlsInspectionPoliciesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    tlsInspectionPolicies: Schema.optional(Schema.Array(TlsInspectionPolicy)),
+  }).annotate({ identifier: "ListTlsInspectionPoliciesResponse" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface ListSACRealmsResponse {
   /** A token identifying a page of results the server should return. */
@@ -2921,16 +2454,11 @@ export interface ListSACRealmsResponse {
   sacRealms?: Array<SACRealm>;
 }
 
-export const ListSACRealmsResponse: Schema.Schema<ListSACRealmsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      sacRealms: Schema.optional(Schema.Array(SACRealm)),
-    }),
-  ).annotate({
-    identifier: "ListSACRealmsResponse",
-  }) as any as Schema.Schema<ListSACRealmsResponse>;
+export const ListSACRealmsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  unreachable: Schema.optional(Schema.Array(Schema.String)),
+  sacRealms: Schema.optional(Schema.Array(SACRealm)),
+}).annotate({ identifier: "ListSACRealmsResponse" });
 
 export interface ListMirroringDeploymentGroupsResponse {
   /** The deployment groups from the specified parent. */
@@ -2939,17 +2467,13 @@ export interface ListMirroringDeploymentGroupsResponse {
   nextPageToken?: string;
 }
 
-export const ListMirroringDeploymentGroupsResponse: Schema.Schema<ListMirroringDeploymentGroupsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mirroringDeploymentGroups: Schema.optional(
-        Schema.Array(MirroringDeploymentGroup),
-      ),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListMirroringDeploymentGroupsResponse",
-  }) as any as Schema.Schema<ListMirroringDeploymentGroupsResponse>;
+export const ListMirroringDeploymentGroupsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    mirroringDeploymentGroups: Schema.optional(
+      Schema.Array(MirroringDeploymentGroup),
+    ),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListMirroringDeploymentGroupsResponse" });
 
 export interface RemoveAddressGroupItemsRequest {
   /** Optional. An optional request ID to identify requests. Specify a unique request ID so that if you must retry your request, the server will know to ignore the request if it has already been completed. The server will guarantee that for at least 60 minutes since the first request. For example, consider a situation where you make an initial request and the request times out. If you make the request again with the same request ID, the server can check if original operation with the same request ID was received, and if so, will ignore the second request. This prevents clients from accidentally creating duplicate commitments. The request ID must be a valid UUID with the exception that zero UUID is not supported (00000000-0000-0000-0000-000000000000). */
@@ -2958,15 +2482,11 @@ export interface RemoveAddressGroupItemsRequest {
   items?: Array<string>;
 }
 
-export const RemoveAddressGroupItemsRequest: Schema.Schema<RemoveAddressGroupItemsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      requestId: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "RemoveAddressGroupItemsRequest",
-  }) as any as Schema.Schema<RemoveAddressGroupItemsRequest>;
+export const RemoveAddressGroupItemsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    requestId: Schema.optional(Schema.String),
+    items: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "RemoveAddressGroupItemsRequest" });
 
 export interface CloneAddressGroupItemsRequest {
   /** Required. Source address group to clone items from. */
@@ -2975,15 +2495,11 @@ export interface CloneAddressGroupItemsRequest {
   requestId?: string;
 }
 
-export const CloneAddressGroupItemsRequest: Schema.Schema<CloneAddressGroupItemsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sourceAddressGroup: Schema.optional(Schema.String),
-      requestId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CloneAddressGroupItemsRequest",
-  }) as any as Schema.Schema<CloneAddressGroupItemsRequest>;
+export const CloneAddressGroupItemsRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sourceAddressGroup: Schema.optional(Schema.String),
+    requestId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "CloneAddressGroupItemsRequest" });
 
 export interface ListOperationsResponse {
   /** A list of operations that matches the specified filter in the request. */
@@ -2994,16 +2510,13 @@ export interface ListOperationsResponse {
   unreachable?: Array<string>;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      operations: Schema.optional(Schema.Array(Operation)),
-      nextPageToken: Schema.optional(Schema.String),
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    operations: Schema.optional(Schema.Array(Operation)),
+    nextPageToken: Schema.optional(Schema.String),
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 export interface ListSecurityProfilesResponse {
   /** If there might be more results than those appearing in this response, then `next_page_token` is included. To get the next set of results, call this method again using the value of `next_page_token` as `page_token`. */
@@ -3012,15 +2525,11 @@ export interface ListSecurityProfilesResponse {
   securityProfiles?: Array<SecurityProfile>;
 }
 
-export const ListSecurityProfilesResponse: Schema.Schema<ListSecurityProfilesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      securityProfiles: Schema.optional(Schema.Array(SecurityProfile)),
-    }),
-  ).annotate({
-    identifier: "ListSecurityProfilesResponse",
-  }) as any as Schema.Schema<ListSecurityProfilesResponse>;
+export const ListSecurityProfilesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    securityProfiles: Schema.optional(Schema.Array(SecurityProfile)),
+  }).annotate({ identifier: "ListSecurityProfilesResponse" });
 
 // ==========================================================================
 // Operations

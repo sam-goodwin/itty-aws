@@ -31,16 +31,13 @@ export interface Status {
   message?: string;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      code: Schema.optional(Schema.Number),
-      message: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  code: Schema.optional(Schema.Number),
+  message: Schema.optional(Schema.String),
+}).annotate({ identifier: "Status" });
 
 export interface Operation {
   /** The normal, successful response of the operation. If the original method returns no data on success, such as `Delete`, the response is `google.protobuf.Empty`. If the original method is standard `Get`/`Create`/`Update`, the response should be the resource. For other methods, the response should have the type `XxxResponse`, where `Xxx` is the original method name. For example, if the original method name is `TakeSnapshot()`, the inferred response type is `TakeSnapshotResponse`. */
@@ -55,16 +52,13 @@ export interface Operation {
   name?: string;
 }
 
-export const Operation: Schema.Schema<Operation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      error: Schema.optional(Status),
-      done: Schema.optional(Schema.Boolean),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Operation" }) as any as Schema.Schema<Operation>;
+export const Operation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  response: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  error: Schema.optional(Status),
+  done: Schema.optional(Schema.Boolean),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "Operation" });
 
 export interface Location {
   /** The friendly name for this location, typically a nearby city name. For example, "Tokyo". */
@@ -79,16 +73,13 @@ export interface Location {
   metadata?: Record<string, unknown>;
 }
 
-export const Location: Schema.Schema<Location> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      locationId: Schema.optional(Schema.String),
-      labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
-    }),
-  ).annotate({ identifier: "Location" }) as any as Schema.Schema<Location>;
+export const Location = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+  locationId: Schema.optional(Schema.String),
+  labels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  name: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.Unknown)),
+}).annotate({ identifier: "Location" });
 
 export interface CmekSettings {
   /** Output only. The service account used to access the key. */
@@ -99,16 +90,11 @@ export interface CmekSettings {
   kmsKeyVersion?: string;
 }
 
-export const CmekSettings: Schema.Schema<CmekSettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serviceAccountId: Schema.optional(Schema.String),
-      kmsKey: Schema.optional(Schema.String),
-      kmsKeyVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CmekSettings",
-  }) as any as Schema.Schema<CmekSettings>;
+export const CmekSettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  serviceAccountId: Schema.optional(Schema.String),
+  kmsKey: Schema.optional(Schema.String),
+  kmsKeyVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "CmekSettings" });
 
 export interface Dataset {
   /** Output only. Delete timestamp. */
@@ -125,17 +111,14 @@ export interface Dataset {
   purgeTime?: string;
 }
 
-export const Dataset: Schema.Schema<Dataset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deleteTime: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      purgeTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Dataset" }) as any as Schema.Schema<Dataset>;
+export const Dataset = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  deleteTime: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  purgeTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Dataset" });
 
 export interface ListDatasetsResponse {
   /** The list of datasets. */
@@ -144,15 +127,10 @@ export interface ListDatasetsResponse {
   nextPageToken?: string;
 }
 
-export const ListDatasetsResponse: Schema.Schema<ListDatasetsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      datasets: Schema.optional(Schema.Array(Dataset)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListDatasetsResponse",
-  }) as any as Schema.Schema<ListDatasetsResponse>;
+export const ListDatasetsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  datasets: Schema.optional(Schema.Array(Dataset)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListDatasetsResponse" });
 
 export interface View {
   /** Output only. Update timestamp. */
@@ -167,16 +145,13 @@ export interface View {
   name?: string;
 }
 
-export const View: Schema.Schema<View> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateTime: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "View" }) as any as Schema.Schema<View>;
+export const View = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  updateTime: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "View" });
 
 export interface OperationMetadata {
   /** Output only. Server-defined resource path for the target of the operation. */
@@ -195,20 +170,15 @@ export interface OperationMetadata {
   endTime?: string;
 }
 
-export const OperationMetadata: Schema.Schema<OperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      target: Schema.optional(Schema.String),
-      statusMessage: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      requestedCancellation: Schema.optional(Schema.Boolean),
-      apiVersion: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      endTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "OperationMetadata",
-  }) as any as Schema.Schema<OperationMetadata>;
+export const OperationMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  target: Schema.optional(Schema.String),
+  statusMessage: Schema.optional(Schema.String),
+  verb: Schema.optional(Schema.String),
+  requestedCancellation: Schema.optional(Schema.Boolean),
+  apiVersion: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  endTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "OperationMetadata" });
 
 export interface TraceScope {
   /** Identifier. The resource name of the trace scope. For example: projects/my-project/locations/global/traceScopes/my-trace-scope */
@@ -223,16 +193,13 @@ export interface TraceScope {
   createTime?: string;
 }
 
-export const TraceScope: Schema.Schema<TraceScope> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      name: Schema.optional(Schema.String),
-      resourceNames: Schema.optional(Schema.Array(Schema.String)),
-      updateTime: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "TraceScope" }) as any as Schema.Schema<TraceScope>;
+export const TraceScope = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  name: Schema.optional(Schema.String),
+  resourceNames: Schema.optional(Schema.Array(Schema.String)),
+  updateTime: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "TraceScope" });
 
 export interface ListTraceScopesResponse {
   /** Optional. A list of trace scopes. */
@@ -241,15 +208,11 @@ export interface ListTraceScopesResponse {
   nextPageToken?: string;
 }
 
-export const ListTraceScopesResponse: Schema.Schema<ListTraceScopesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      traceScopes: Schema.optional(Schema.Array(TraceScope)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListTraceScopesResponse",
-  }) as any as Schema.Schema<ListTraceScopesResponse>;
+export const ListTraceScopesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    traceScopes: Schema.optional(Schema.Array(TraceScope)),
+    nextPageToken: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ListTraceScopesResponse" });
 
 export interface Bucket {
   /** Output only. Update timestamp. */
@@ -270,19 +233,16 @@ export interface Bucket {
   purgeTime?: string;
 }
 
-export const Bucket: Schema.Schema<Bucket> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      updateTime: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      createTime: Schema.optional(Schema.String),
-      deleteTime: Schema.optional(Schema.String),
-      cmekSettings: Schema.optional(CmekSettings),
-      name: Schema.optional(Schema.String),
-      purgeTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Bucket" }) as any as Schema.Schema<Bucket>;
+export const Bucket = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  updateTime: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  createTime: Schema.optional(Schema.String),
+  deleteTime: Schema.optional(Schema.String),
+  cmekSettings: Schema.optional(CmekSettings),
+  name: Schema.optional(Schema.String),
+  purgeTime: Schema.optional(Schema.String),
+}).annotate({ identifier: "Bucket" });
 
 export interface ListBucketsResponse {
   /** Optional. The list of buckets. */
@@ -291,15 +251,10 @@ export interface ListBucketsResponse {
   nextPageToken?: string;
 }
 
-export const ListBucketsResponse: Schema.Schema<ListBucketsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      buckets: Schema.optional(Schema.Array(Bucket)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListBucketsResponse",
-  }) as any as Schema.Schema<ListBucketsResponse>;
+export const ListBucketsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  buckets: Schema.optional(Schema.Array(Bucket)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListBucketsResponse" });
 
 export interface ListLocationsResponse {
   /** A list of locations that matches the specified filter in the request. */
@@ -308,15 +263,10 @@ export interface ListLocationsResponse {
   nextPageToken?: string;
 }
 
-export const ListLocationsResponse: Schema.Schema<ListLocationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      locations: Schema.optional(Schema.Array(Location)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLocationsResponse",
-  }) as any as Schema.Schema<ListLocationsResponse>;
+export const ListLocationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  locations: Schema.optional(Schema.Array(Location)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLocationsResponse" });
 
 export interface ListOperationsResponse {
   /** Unordered list. Unreachable resources. Populated when the request sets `ListOperationsRequest.return_partial_success` and reads across collections. For example, when attempting to list all resources across all supported locations. */
@@ -327,16 +277,13 @@ export interface ListOperationsResponse {
   nextPageToken?: string;
 }
 
-export const ListOperationsResponse: Schema.Schema<ListOperationsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      unreachable: Schema.optional(Schema.Array(Schema.String)),
-      operations: Schema.optional(Schema.Array(Operation)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListOperationsResponse",
-  }) as any as Schema.Schema<ListOperationsResponse>;
+export const ListOperationsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    unreachable: Schema.optional(Schema.Array(Schema.String)),
+    operations: Schema.optional(Schema.Array(Operation)),
+    nextPageToken: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ListOperationsResponse" });
 
 export interface Link {
   /** Output only. Create timestamp. */
@@ -349,15 +296,12 @@ export interface Link {
   description?: string;
 }
 
-export const Link: Schema.Schema<Link> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createTime: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      displayName: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Link" }) as any as Schema.Schema<Link>;
+export const Link = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createTime: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  displayName: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+}).annotate({ identifier: "Link" });
 
 export interface ListLinksResponse {
   /** The list of links. */
@@ -366,15 +310,10 @@ export interface ListLinksResponse {
   nextPageToken?: string;
 }
 
-export const ListLinksResponse: Schema.Schema<ListLinksResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      links: Schema.optional(Schema.Array(Link)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListLinksResponse",
-  }) as any as Schema.Schema<ListLinksResponse>;
+export const ListLinksResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  links: Schema.optional(Schema.Array(Link)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListLinksResponse" });
 
 export interface ListViewsResponse {
   /** The list of views. */
@@ -383,15 +322,10 @@ export interface ListViewsResponse {
   nextPageToken?: string;
 }
 
-export const ListViewsResponse: Schema.Schema<ListViewsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      views: Schema.optional(Schema.Array(View)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ListViewsResponse",
-  }) as any as Schema.Schema<ListViewsResponse>;
+export const ListViewsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  views: Schema.optional(Schema.Array(View)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "ListViewsResponse" });
 
 export interface Scope {
   /** Required. The full resource name of the `LogScope`. For example: //logging.googleapis.com/projects/myproject/locations/global/logScopes/my-log-scope */
@@ -404,15 +338,12 @@ export interface Scope {
   traceScope?: string;
 }
 
-export const Scope: Schema.Schema<Scope> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      logScope: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      updateTime: Schema.optional(Schema.String),
-      traceScope: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Scope" }) as any as Schema.Schema<Scope>;
+export const Scope = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  logScope: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  updateTime: Schema.optional(Schema.String),
+  traceScope: Schema.optional(Schema.String),
+}).annotate({ identifier: "Scope" });
 
 export interface Settings {
   /** Output only. The service account for the given resource container, such as project or folder. This will be used by Cloud Observability to perform actions in the container's project like access KMS keys or create Links. Always the same service account per resource container regardless of region. */
@@ -425,29 +356,24 @@ export interface Settings {
   defaultStorageLocation?: string;
 }
 
-export const Settings: Schema.Schema<Settings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      serviceAccountId: Schema.optional(Schema.String),
-      kmsKeyName: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      defaultStorageLocation: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Settings" }) as any as Schema.Schema<Settings>;
+export const Settings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  serviceAccountId: Schema.optional(Schema.String),
+  kmsKeyName: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  defaultStorageLocation: Schema.optional(Schema.String),
+}).annotate({ identifier: "Settings" });
 
 export interface CancelOperationRequest {}
 
-export const CancelOperationRequest: Schema.Schema<CancelOperationRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "CancelOperationRequest",
-  }) as any as Schema.Schema<CancelOperationRequest>;
+export const CancelOperationRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "CancelOperationRequest" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 // ==========================================================================
 // Operations

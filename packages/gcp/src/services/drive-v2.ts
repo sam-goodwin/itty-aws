@@ -37,19 +37,16 @@ export interface User {
   isAuthenticatedUser?: boolean;
 }
 
-export const User: Schema.Schema<User> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      emailAddress: Schema.optional(Schema.String),
-      permissionId: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      picture: Schema.optional(
-        Schema.Struct({ url: Schema.optional(Schema.String) }),
-      ),
-      isAuthenticatedUser: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "User" }) as any as Schema.Schema<User>;
+export const User = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+  emailAddress: Schema.optional(Schema.String),
+  permissionId: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  picture: Schema.optional(
+    Schema.Struct({ url: Schema.optional(Schema.String) }),
+  ),
+  isAuthenticatedUser: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "User" });
 
 export interface CommentReply {
   /** The date when this reply was first created. */
@@ -72,22 +69,17 @@ export interface CommentReply {
   replyId?: string;
 }
 
-export const CommentReply: Schema.Schema<CommentReply> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      createdDate: Schema.optional(Schema.String),
-      author: Schema.optional(User),
-      htmlContent: Schema.optional(Schema.String),
-      content: Schema.optional(Schema.String),
-      modifiedDate: Schema.optional(Schema.String),
-      verb: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      deleted: Schema.optional(Schema.Boolean),
-      replyId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CommentReply",
-  }) as any as Schema.Schema<CommentReply>;
+export const CommentReply = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  createdDate: Schema.optional(Schema.String),
+  author: Schema.optional(User),
+  htmlContent: Schema.optional(Schema.String),
+  content: Schema.optional(Schema.String),
+  modifiedDate: Schema.optional(Schema.String),
+  verb: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  deleted: Schema.optional(Schema.Boolean),
+  replyId: Schema.optional(Schema.String),
+}).annotate({ identifier: "CommentReply" });
 
 export interface Comment {
   /** The title of the file which this comment is addressing. */
@@ -122,31 +114,28 @@ export interface Comment {
   modifiedDate?: string;
 }
 
-export const Comment: Schema.Schema<Comment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const Comment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fileTitle: Schema.optional(Schema.String),
+  deleted: Schema.optional(Schema.Boolean),
+  status: Schema.optional(Schema.String),
+  createdDate: Schema.optional(Schema.String),
+  author: Schema.optional(User),
+  fileId: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  replies: Schema.optional(Schema.Array(CommentReply)),
+  selfLink: Schema.optional(Schema.String),
+  htmlContent: Schema.optional(Schema.String),
+  content: Schema.optional(Schema.String),
+  anchor: Schema.optional(Schema.String),
+  context: Schema.optional(
     Schema.Struct({
-      fileTitle: Schema.optional(Schema.String),
-      deleted: Schema.optional(Schema.Boolean),
-      status: Schema.optional(Schema.String),
-      createdDate: Schema.optional(Schema.String),
-      author: Schema.optional(User),
-      fileId: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      replies: Schema.optional(Schema.Array(CommentReply)),
-      selfLink: Schema.optional(Schema.String),
-      htmlContent: Schema.optional(Schema.String),
-      content: Schema.optional(Schema.String),
-      anchor: Schema.optional(Schema.String),
-      context: Schema.optional(
-        Schema.Struct({
-          type: Schema.optional(Schema.String),
-          value: Schema.optional(Schema.String),
-        }),
-      ),
-      commentId: Schema.optional(Schema.String),
-      modifiedDate: Schema.optional(Schema.String),
+      type: Schema.optional(Schema.String),
+      value: Schema.optional(Schema.String),
     }),
-  ).annotate({ identifier: "Comment" }) as any as Schema.Schema<Comment>;
+  ),
+  commentId: Schema.optional(Schema.String),
+  modifiedDate: Schema.optional(Schema.String),
+}).annotate({ identifier: "Comment" });
 
 export interface Revision {
   /** Whether subsequent revisions will be automatically republished. This is only populated and can only be modified for Docs Editors files. */
@@ -187,29 +176,26 @@ export interface Revision {
   fileSize?: string;
 }
 
-export const Revision: Schema.Schema<Revision> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      publishAuto: Schema.optional(Schema.Boolean),
-      downloadUrl: Schema.optional(Schema.String),
-      modifiedDate: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      publishedLink: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      pinned: Schema.optional(Schema.Boolean),
-      publishedOutsideDomain: Schema.optional(Schema.Boolean),
-      lastModifyingUserName: Schema.optional(Schema.String),
-      selfLink: Schema.optional(Schema.String),
-      mimeType: Schema.optional(Schema.String),
-      published: Schema.optional(Schema.Boolean),
-      etag: Schema.optional(Schema.String),
-      exportLinks: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      md5Checksum: Schema.optional(Schema.String),
-      originalFilename: Schema.optional(Schema.String),
-      lastModifyingUser: Schema.optional(User),
-      fileSize: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Revision" }) as any as Schema.Schema<Revision>;
+export const Revision = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  publishAuto: Schema.optional(Schema.Boolean),
+  downloadUrl: Schema.optional(Schema.String),
+  modifiedDate: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  publishedLink: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  pinned: Schema.optional(Schema.Boolean),
+  publishedOutsideDomain: Schema.optional(Schema.Boolean),
+  lastModifyingUserName: Schema.optional(Schema.String),
+  selfLink: Schema.optional(Schema.String),
+  mimeType: Schema.optional(Schema.String),
+  published: Schema.optional(Schema.Boolean),
+  etag: Schema.optional(Schema.String),
+  exportLinks: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  md5Checksum: Schema.optional(Schema.String),
+  originalFilename: Schema.optional(Schema.String),
+  lastModifyingUser: Schema.optional(User),
+  fileSize: Schema.optional(Schema.String),
+}).annotate({ identifier: "Revision" });
 
 export interface RevisionList {
   /** The list of revisions. If nextPageToken is populated, then this list may be incomplete and an additional page of results should be fetched. */
@@ -224,18 +210,13 @@ export interface RevisionList {
   etag?: string;
 }
 
-export const RevisionList: Schema.Schema<RevisionList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      items: Schema.optional(Schema.Array(Revision)),
-      nextPageToken: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      selfLink: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RevisionList",
-  }) as any as Schema.Schema<RevisionList>;
+export const RevisionList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  items: Schema.optional(Schema.Array(Revision)),
+  nextPageToken: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  selfLink: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "RevisionList" });
 
 export interface LabelField {
   /** The identifier of this label field. */
@@ -256,19 +237,16 @@ export interface LabelField {
   user?: Array<User>;
 }
 
-export const LabelField: Schema.Schema<LabelField> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      dateString: Schema.optional(Schema.Array(Schema.String)),
-      kind: Schema.optional(Schema.String),
-      selection: Schema.optional(Schema.Array(Schema.String)),
-      text: Schema.optional(Schema.Array(Schema.String)),
-      integer: Schema.optional(Schema.Array(Schema.String)),
-      valueType: Schema.optional(Schema.String),
-      user: Schema.optional(Schema.Array(User)),
-    }),
-  ).annotate({ identifier: "LabelField" }) as any as Schema.Schema<LabelField>;
+export const LabelField = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  dateString: Schema.optional(Schema.Array(Schema.String)),
+  kind: Schema.optional(Schema.String),
+  selection: Schema.optional(Schema.Array(Schema.String)),
+  text: Schema.optional(Schema.Array(Schema.String)),
+  integer: Schema.optional(Schema.Array(Schema.String)),
+  valueType: Schema.optional(Schema.String),
+  user: Schema.optional(Schema.Array(User)),
+}).annotate({ identifier: "LabelField" });
 
 export interface Label {
   /** A map of the fields on the label, keyed by the field's ID. */
@@ -281,15 +259,12 @@ export interface Label {
   kind?: string;
 }
 
-export const Label: Schema.Schema<Label> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fields: Schema.optional(Schema.Record(Schema.String, LabelField)),
-      id: Schema.optional(Schema.String),
-      revisionId: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Label" }) as any as Schema.Schema<Label>;
+export const Label = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  fields: Schema.optional(Schema.Record(Schema.String, LabelField)),
+  id: Schema.optional(Schema.String),
+  revisionId: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "Label" });
 
 export interface ChildReference {
   /** Output only. A link back to this reference. */
@@ -302,17 +277,12 @@ export interface ChildReference {
   childLink?: string;
 }
 
-export const ChildReference: Schema.Schema<ChildReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      selfLink: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      childLink: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ChildReference",
-  }) as any as Schema.Schema<ChildReference>;
+export const ChildReference = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  selfLink: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  childLink: Schema.optional(Schema.String),
+}).annotate({ identifier: "ChildReference" });
 
 export interface ParentReference {
   /** Output only. A link back to this reference. */
@@ -327,18 +297,13 @@ export interface ParentReference {
   id?: string;
 }
 
-export const ParentReference: Schema.Schema<ParentReference> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      selfLink: Schema.optional(Schema.String),
-      isRoot: Schema.optional(Schema.Boolean),
-      parentLink: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ParentReference",
-  }) as any as Schema.Schema<ParentReference>;
+export const ParentReference = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  selfLink: Schema.optional(Schema.String),
+  isRoot: Schema.optional(Schema.Boolean),
+  parentLink: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+}).annotate({ identifier: "ParentReference" });
 
 export interface ContentRestriction {
   /** Output only. The user who set the content restriction. Only populated if `readOnly` is true. */
@@ -357,20 +322,15 @@ export interface ContentRestriction {
   type?: string;
 }
 
-export const ContentRestriction: Schema.Schema<ContentRestriction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      restrictingUser: Schema.optional(User),
-      readOnly: Schema.optional(Schema.Boolean),
-      systemRestricted: Schema.optional(Schema.Boolean),
-      reason: Schema.optional(Schema.String),
-      restrictionDate: Schema.optional(Schema.String),
-      ownerRestricted: Schema.optional(Schema.Boolean),
-      type: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ContentRestriction",
-  }) as any as Schema.Schema<ContentRestriction>;
+export const ContentRestriction = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  restrictingUser: Schema.optional(User),
+  readOnly: Schema.optional(Schema.Boolean),
+  systemRestricted: Schema.optional(Schema.Boolean),
+  reason: Schema.optional(Schema.String),
+  restrictionDate: Schema.optional(Schema.String),
+  ownerRestricted: Schema.optional(Schema.Boolean),
+  type: Schema.optional(Schema.String),
+}).annotate({ identifier: "ContentRestriction" });
 
 export interface Permission {
   /** When true, only organizers, owners, and users with permissions added directly on the item can access it. */
@@ -429,52 +389,49 @@ export interface Permission {
   authKey?: string;
 }
 
-export const Permission: Schema.Schema<Permission> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inheritedPermissionsDisabled: Schema.optional(Schema.Boolean),
-      domain: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      role: Schema.optional(Schema.String),
-      withLink: Schema.optional(Schema.Boolean),
-      expirationDate: Schema.optional(Schema.String),
-      selfLink: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      emailAddress: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      pendingOwner: Schema.optional(Schema.Boolean),
-      etag: Schema.optional(Schema.String),
-      permissionDetails: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            inheritedFrom: Schema.optional(Schema.String),
-            permissionType: Schema.optional(Schema.String),
-            role: Schema.optional(Schema.String),
-            inherited: Schema.optional(Schema.Boolean),
-            additionalRoles: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-      ),
-      teamDrivePermissionDetails: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            additionalRoles: Schema.optional(Schema.Array(Schema.String)),
-            role: Schema.optional(Schema.String),
-            inherited: Schema.optional(Schema.Boolean),
-            teamDrivePermissionType: Schema.optional(Schema.String),
-            inheritedFrom: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      view: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      photoLink: Schema.optional(Schema.String),
-      deleted: Schema.optional(Schema.Boolean),
-      additionalRoles: Schema.optional(Schema.Array(Schema.String)),
-      authKey: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Permission" }) as any as Schema.Schema<Permission>;
+export const Permission = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  inheritedPermissionsDisabled: Schema.optional(Schema.Boolean),
+  domain: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  role: Schema.optional(Schema.String),
+  withLink: Schema.optional(Schema.Boolean),
+  expirationDate: Schema.optional(Schema.String),
+  selfLink: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  emailAddress: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  pendingOwner: Schema.optional(Schema.Boolean),
+  etag: Schema.optional(Schema.String),
+  permissionDetails: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        inheritedFrom: Schema.optional(Schema.String),
+        permissionType: Schema.optional(Schema.String),
+        role: Schema.optional(Schema.String),
+        inherited: Schema.optional(Schema.Boolean),
+        additionalRoles: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
+  ),
+  teamDrivePermissionDetails: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        additionalRoles: Schema.optional(Schema.Array(Schema.String)),
+        role: Schema.optional(Schema.String),
+        inherited: Schema.optional(Schema.Boolean),
+        teamDrivePermissionType: Schema.optional(Schema.String),
+        inheritedFrom: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
+  view: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  photoLink: Schema.optional(Schema.String),
+  deleted: Schema.optional(Schema.Boolean),
+  additionalRoles: Schema.optional(Schema.Array(Schema.String)),
+  authKey: Schema.optional(Schema.String),
+}).annotate({ identifier: "Permission" });
 
 export interface Property {
   /** The visibility of this property. Allowed values are PRIVATE (default) and PUBLIC. Private properties can only be retrieved using an authenticated request. An authenticated request uses an access token obtained with a OAuth 2 client ID. You cannot use an API key to retrieve private properties. */
@@ -491,17 +448,14 @@ export interface Property {
   selfLink?: string;
 }
 
-export const Property: Schema.Schema<Property> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      visibility: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      value: Schema.optional(Schema.String),
-      key: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      selfLink: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Property" }) as any as Schema.Schema<Property>;
+export const Property = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  visibility: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  value: Schema.optional(Schema.String),
+  key: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  selfLink: Schema.optional(Schema.String),
+}).annotate({ identifier: "Property" });
 
 export interface DecryptionMetadata {
   /** The name of the KACLS (Key ACL Service) used to encrypt the file. */
@@ -520,20 +474,15 @@ export interface DecryptionMetadata {
   kaclsId?: string;
 }
 
-export const DecryptionMetadata: Schema.Schema<DecryptionMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kaclsName: Schema.optional(Schema.String),
-      jwt: Schema.optional(Schema.String),
-      keyFormat: Schema.optional(Schema.String),
-      aes256GcmChunkSize: Schema.optional(Schema.String),
-      encryptionResourceKeyHash: Schema.optional(Schema.String),
-      wrappedKey: Schema.optional(Schema.String),
-      kaclsId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DecryptionMetadata",
-  }) as any as Schema.Schema<DecryptionMetadata>;
+export const DecryptionMetadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kaclsName: Schema.optional(Schema.String),
+  jwt: Schema.optional(Schema.String),
+  keyFormat: Schema.optional(Schema.String),
+  aes256GcmChunkSize: Schema.optional(Schema.String),
+  encryptionResourceKeyHash: Schema.optional(Schema.String),
+  wrappedKey: Schema.optional(Schema.String),
+  kaclsId: Schema.optional(Schema.String),
+}).annotate({ identifier: "DecryptionMetadata" });
 
 export interface ClientEncryptionDetails {
   /** The encryption state of the file. The values expected here are: - encrypted - unencrypted */
@@ -542,15 +491,11 @@ export interface ClientEncryptionDetails {
   decryptionMetadata?: DecryptionMetadata;
 }
 
-export const ClientEncryptionDetails: Schema.Schema<ClientEncryptionDetails> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      encryptionState: Schema.optional(Schema.String),
-      decryptionMetadata: Schema.optional(DecryptionMetadata),
-    }),
-  ).annotate({
-    identifier: "ClientEncryptionDetails",
-  }) as any as Schema.Schema<ClientEncryptionDetails>;
+export const ClientEncryptionDetails =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    encryptionState: Schema.optional(Schema.String),
+    decryptionMetadata: Schema.optional(DecryptionMetadata),
+  }).annotate({ identifier: "ClientEncryptionDetails" });
 
 export interface File {
   /** The ID of the file. */
@@ -793,203 +738,196 @@ export interface File {
   trashedDate?: string;
 }
 
-export const File: Schema.Schema<File> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const File = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  thumbnail: Schema.optional(
     Schema.Struct({
-      id: Schema.optional(Schema.String),
-      thumbnail: Schema.optional(
-        Schema.Struct({
-          mimeType: Schema.optional(Schema.String),
-          image: Schema.optional(Schema.String),
-        }),
-      ),
-      defaultOpenWithLink: Schema.optional(Schema.String),
-      modifiedDate: Schema.optional(Schema.String),
-      markedViewedByMeDate: Schema.optional(Schema.String),
-      inheritedPermissionsDisabled: Schema.optional(Schema.Boolean),
-      capabilities: Schema.optional(
-        Schema.Struct({
-          canMoveItemWithinTeamDrive: Schema.optional(Schema.Boolean),
-          canTrash: Schema.optional(Schema.Boolean),
-          canModifyEditorContentRestriction: Schema.optional(Schema.Boolean),
-          canModifyContent: Schema.optional(Schema.Boolean),
-          canAddFolderFromAnotherDrive: Schema.optional(Schema.Boolean),
-          canDeleteChildren: Schema.optional(Schema.Boolean),
-          canEdit: Schema.optional(Schema.Boolean),
-          canMoveItemOutOfTeamDrive: Schema.optional(Schema.Boolean),
-          canEnableInheritedPermissions: Schema.optional(Schema.Boolean),
-          canMoveItemWithinDrive: Schema.optional(Schema.Boolean),
-          canDownload: Schema.optional(Schema.Boolean),
-          canMoveChildrenOutOfTeamDrive: Schema.optional(Schema.Boolean),
-          canModifyLabels: Schema.optional(Schema.Boolean),
-          canAddChildren: Schema.optional(Schema.Boolean),
-          canCopy: Schema.optional(Schema.Boolean),
-          canListChildren: Schema.optional(Schema.Boolean),
-          canModifyOwnerContentRestriction: Schema.optional(Schema.Boolean),
-          canMoveItemIntoTeamDrive: Schema.optional(Schema.Boolean),
-          canMoveChildrenWithinDrive: Schema.optional(Schema.Boolean),
-          canChangeCopyRequiresWriterPermission: Schema.optional(
-            Schema.Boolean,
-          ),
-          canTrashChildren: Schema.optional(Schema.Boolean),
-          canRemoveChildren: Schema.optional(Schema.Boolean),
-          canUntrash: Schema.optional(Schema.Boolean),
-          canDisableInheritedPermissions: Schema.optional(Schema.Boolean),
-          canReadLabels: Schema.optional(Schema.Boolean),
-          canReadTeamDrive: Schema.optional(Schema.Boolean),
-          canShare: Schema.optional(Schema.Boolean),
-          canReadDrive: Schema.optional(Schema.Boolean),
-          canRename: Schema.optional(Schema.Boolean),
-          canChangeRestrictedDownload: Schema.optional(Schema.Boolean),
-          canAcceptOwnership: Schema.optional(Schema.Boolean),
-          canMoveItemOutOfDrive: Schema.optional(Schema.Boolean),
-          canMoveTeamDriveItem: Schema.optional(Schema.Boolean),
-          canChangeSecurityUpdateEnabled: Schema.optional(Schema.Boolean),
-          canComment: Schema.optional(Schema.Boolean),
-          canRemoveMyDriveParent: Schema.optional(Schema.Boolean),
-          canReadRevisions: Schema.optional(Schema.Boolean),
-          canDelete: Schema.optional(Schema.Boolean),
-          canMoveChildrenOutOfDrive: Schema.optional(Schema.Boolean),
-          canAddMyDriveParent: Schema.optional(Schema.Boolean),
-          canModifyContentRestriction: Schema.optional(Schema.Boolean),
-          canRemoveContentRestriction: Schema.optional(Schema.Boolean),
-          canMoveChildrenWithinTeamDrive: Schema.optional(Schema.Boolean),
-        }),
-      ),
-      driveId: Schema.optional(Schema.String),
-      lastViewedByMeDate: Schema.optional(Schema.String),
-      quotaBytesUsed: Schema.optional(Schema.String),
-      md5Checksum: Schema.optional(Schema.String),
-      openWithLinks: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      thumbnailVersion: Schema.optional(Schema.String),
-      webContentLink: Schema.optional(Schema.String),
-      fileExtension: Schema.optional(Schema.String),
-      iconLink: Schema.optional(Schema.String),
-      canComment: Schema.optional(Schema.Boolean),
-      teamDriveId: Schema.optional(Schema.String),
-      thumbnailLink: Schema.optional(Schema.String),
-      shared: Schema.optional(Schema.Boolean),
-      createdDate: Schema.optional(Schema.String),
-      labelInfo: Schema.optional(
-        Schema.Struct({ labels: Schema.optional(Schema.Array(Label)) }),
-      ),
-      title: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      linkShareMetadata: Schema.optional(
-        Schema.Struct({
-          securityUpdateEligible: Schema.optional(Schema.Boolean),
-          securityUpdateEnabled: Schema.optional(Schema.Boolean),
-        }),
-      ),
-      sha1Checksum: Schema.optional(Schema.String),
-      downloadUrl: Schema.optional(Schema.String),
-      shortcutDetails: Schema.optional(
-        Schema.Struct({
-          targetMimeType: Schema.optional(Schema.String),
-          targetId: Schema.optional(Schema.String),
-          targetResourceKey: Schema.optional(Schema.String),
-        }),
-      ),
-      sharingUser: Schema.optional(User),
-      parents: Schema.optional(Schema.Array(ParentReference)),
-      copyable: Schema.optional(Schema.Boolean),
-      spaces: Schema.optional(Schema.Array(Schema.String)),
-      modifiedByMeDate: Schema.optional(Schema.String),
-      folderColorRgb: Schema.optional(Schema.String),
-      fullFileExtension: Schema.optional(Schema.String),
-      hasAugmentedPermissions: Schema.optional(Schema.Boolean),
-      etag: Schema.optional(Schema.String),
-      editable: Schema.optional(Schema.Boolean),
-      headRevisionId: Schema.optional(Schema.String),
-      videoMediaMetadata: Schema.optional(
-        Schema.Struct({
-          durationMillis: Schema.optional(Schema.String),
-          width: Schema.optional(Schema.Number),
-          height: Schema.optional(Schema.Number),
-        }),
-      ),
-      ownerNames: Schema.optional(Schema.Array(Schema.String)),
-      ownedByMe: Schema.optional(Schema.Boolean),
-      shareable: Schema.optional(Schema.Boolean),
-      contentRestrictions: Schema.optional(Schema.Array(ContentRestriction)),
-      indexableText: Schema.optional(
-        Schema.Struct({ text: Schema.optional(Schema.String) }),
-      ),
-      trashingUser: Schema.optional(User),
-      hasThumbnail: Schema.optional(Schema.Boolean),
-      userPermission: Schema.optional(Permission),
-      lastModifyingUser: Schema.optional(User),
-      originalFilename: Schema.optional(Schema.String),
-      permissionIds: Schema.optional(Schema.Array(Schema.String)),
-      fileSize: Schema.optional(Schema.String),
-      canReadRevisions: Schema.optional(Schema.Boolean),
-      owners: Schema.optional(Schema.Array(User)),
-      alternateLink: Schema.optional(Schema.String),
-      copyRequiresWriterPermission: Schema.optional(Schema.Boolean),
-      version: Schema.optional(Schema.String),
-      exportLinks: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      lastModifyingUserName: Schema.optional(Schema.String),
-      selfLink: Schema.optional(Schema.String),
-      properties: Schema.optional(Schema.Array(Property)),
-      labels: Schema.optional(
-        Schema.Struct({
-          hidden: Schema.optional(Schema.Boolean),
-          viewed: Schema.optional(Schema.Boolean),
-          restricted: Schema.optional(Schema.Boolean),
-          trashed: Schema.optional(Schema.Boolean),
-          modified: Schema.optional(Schema.Boolean),
-          starred: Schema.optional(Schema.Boolean),
-        }),
-      ),
-      description: Schema.optional(Schema.String),
-      embedLink: Schema.optional(Schema.String),
-      appDataContents: Schema.optional(Schema.Boolean),
-      resourceKey: Schema.optional(Schema.String),
-      isAppAuthorized: Schema.optional(Schema.Boolean),
-      sha256Checksum: Schema.optional(Schema.String),
-      clientEncryptionDetails: Schema.optional(ClientEncryptionDetails),
-      explicitlyTrashed: Schema.optional(Schema.Boolean),
-      imageMediaMetadata: Schema.optional(
-        Schema.Struct({
-          exposureBias: Schema.optional(Schema.Number),
-          whiteBalance: Schema.optional(Schema.String),
-          isoSpeed: Schema.optional(Schema.Number),
-          flashUsed: Schema.optional(Schema.Boolean),
-          sensor: Schema.optional(Schema.String),
-          date: Schema.optional(Schema.String),
-          cameraMake: Schema.optional(Schema.String),
-          meteringMode: Schema.optional(Schema.String),
-          maxApertureValue: Schema.optional(Schema.Number),
-          focalLength: Schema.optional(Schema.Number),
-          lens: Schema.optional(Schema.String),
-          height: Schema.optional(Schema.Number),
-          aperture: Schema.optional(Schema.Number),
-          cameraModel: Schema.optional(Schema.String),
-          rotation: Schema.optional(Schema.Number),
-          exposureTime: Schema.optional(Schema.Number),
-          location: Schema.optional(
-            Schema.Struct({
-              latitude: Schema.optional(Schema.Number),
-              longitude: Schema.optional(Schema.Number),
-              altitude: Schema.optional(Schema.Number),
-            }),
-          ),
-          width: Schema.optional(Schema.Number),
-          subjectDistance: Schema.optional(Schema.Number),
-          colorSpace: Schema.optional(Schema.String),
-          exposureMode: Schema.optional(Schema.String),
-        }),
-      ),
-      webViewLink: Schema.optional(Schema.String),
-      permissions: Schema.optional(Schema.Array(Permission)),
-      sharedWithMeDate: Schema.optional(Schema.String),
-      writersCanShare: Schema.optional(Schema.Boolean),
       mimeType: Schema.optional(Schema.String),
-      trashedDate: Schema.optional(Schema.String),
+      image: Schema.optional(Schema.String),
     }),
-  ).annotate({ identifier: "File" }) as any as Schema.Schema<File>;
+  ),
+  defaultOpenWithLink: Schema.optional(Schema.String),
+  modifiedDate: Schema.optional(Schema.String),
+  markedViewedByMeDate: Schema.optional(Schema.String),
+  inheritedPermissionsDisabled: Schema.optional(Schema.Boolean),
+  capabilities: Schema.optional(
+    Schema.Struct({
+      canMoveItemWithinTeamDrive: Schema.optional(Schema.Boolean),
+      canTrash: Schema.optional(Schema.Boolean),
+      canModifyEditorContentRestriction: Schema.optional(Schema.Boolean),
+      canModifyContent: Schema.optional(Schema.Boolean),
+      canAddFolderFromAnotherDrive: Schema.optional(Schema.Boolean),
+      canDeleteChildren: Schema.optional(Schema.Boolean),
+      canEdit: Schema.optional(Schema.Boolean),
+      canMoveItemOutOfTeamDrive: Schema.optional(Schema.Boolean),
+      canEnableInheritedPermissions: Schema.optional(Schema.Boolean),
+      canMoveItemWithinDrive: Schema.optional(Schema.Boolean),
+      canDownload: Schema.optional(Schema.Boolean),
+      canMoveChildrenOutOfTeamDrive: Schema.optional(Schema.Boolean),
+      canModifyLabels: Schema.optional(Schema.Boolean),
+      canAddChildren: Schema.optional(Schema.Boolean),
+      canCopy: Schema.optional(Schema.Boolean),
+      canListChildren: Schema.optional(Schema.Boolean),
+      canModifyOwnerContentRestriction: Schema.optional(Schema.Boolean),
+      canMoveItemIntoTeamDrive: Schema.optional(Schema.Boolean),
+      canMoveChildrenWithinDrive: Schema.optional(Schema.Boolean),
+      canChangeCopyRequiresWriterPermission: Schema.optional(Schema.Boolean),
+      canTrashChildren: Schema.optional(Schema.Boolean),
+      canRemoveChildren: Schema.optional(Schema.Boolean),
+      canUntrash: Schema.optional(Schema.Boolean),
+      canDisableInheritedPermissions: Schema.optional(Schema.Boolean),
+      canReadLabels: Schema.optional(Schema.Boolean),
+      canReadTeamDrive: Schema.optional(Schema.Boolean),
+      canShare: Schema.optional(Schema.Boolean),
+      canReadDrive: Schema.optional(Schema.Boolean),
+      canRename: Schema.optional(Schema.Boolean),
+      canChangeRestrictedDownload: Schema.optional(Schema.Boolean),
+      canAcceptOwnership: Schema.optional(Schema.Boolean),
+      canMoveItemOutOfDrive: Schema.optional(Schema.Boolean),
+      canMoveTeamDriveItem: Schema.optional(Schema.Boolean),
+      canChangeSecurityUpdateEnabled: Schema.optional(Schema.Boolean),
+      canComment: Schema.optional(Schema.Boolean),
+      canRemoveMyDriveParent: Schema.optional(Schema.Boolean),
+      canReadRevisions: Schema.optional(Schema.Boolean),
+      canDelete: Schema.optional(Schema.Boolean),
+      canMoveChildrenOutOfDrive: Schema.optional(Schema.Boolean),
+      canAddMyDriveParent: Schema.optional(Schema.Boolean),
+      canModifyContentRestriction: Schema.optional(Schema.Boolean),
+      canRemoveContentRestriction: Schema.optional(Schema.Boolean),
+      canMoveChildrenWithinTeamDrive: Schema.optional(Schema.Boolean),
+    }),
+  ),
+  driveId: Schema.optional(Schema.String),
+  lastViewedByMeDate: Schema.optional(Schema.String),
+  quotaBytesUsed: Schema.optional(Schema.String),
+  md5Checksum: Schema.optional(Schema.String),
+  openWithLinks: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  thumbnailVersion: Schema.optional(Schema.String),
+  webContentLink: Schema.optional(Schema.String),
+  fileExtension: Schema.optional(Schema.String),
+  iconLink: Schema.optional(Schema.String),
+  canComment: Schema.optional(Schema.Boolean),
+  teamDriveId: Schema.optional(Schema.String),
+  thumbnailLink: Schema.optional(Schema.String),
+  shared: Schema.optional(Schema.Boolean),
+  createdDate: Schema.optional(Schema.String),
+  labelInfo: Schema.optional(
+    Schema.Struct({ labels: Schema.optional(Schema.Array(Label)) }),
+  ),
+  title: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  linkShareMetadata: Schema.optional(
+    Schema.Struct({
+      securityUpdateEligible: Schema.optional(Schema.Boolean),
+      securityUpdateEnabled: Schema.optional(Schema.Boolean),
+    }),
+  ),
+  sha1Checksum: Schema.optional(Schema.String),
+  downloadUrl: Schema.optional(Schema.String),
+  shortcutDetails: Schema.optional(
+    Schema.Struct({
+      targetMimeType: Schema.optional(Schema.String),
+      targetId: Schema.optional(Schema.String),
+      targetResourceKey: Schema.optional(Schema.String),
+    }),
+  ),
+  sharingUser: Schema.optional(User),
+  parents: Schema.optional(Schema.Array(ParentReference)),
+  copyable: Schema.optional(Schema.Boolean),
+  spaces: Schema.optional(Schema.Array(Schema.String)),
+  modifiedByMeDate: Schema.optional(Schema.String),
+  folderColorRgb: Schema.optional(Schema.String),
+  fullFileExtension: Schema.optional(Schema.String),
+  hasAugmentedPermissions: Schema.optional(Schema.Boolean),
+  etag: Schema.optional(Schema.String),
+  editable: Schema.optional(Schema.Boolean),
+  headRevisionId: Schema.optional(Schema.String),
+  videoMediaMetadata: Schema.optional(
+    Schema.Struct({
+      durationMillis: Schema.optional(Schema.String),
+      width: Schema.optional(Schema.Number),
+      height: Schema.optional(Schema.Number),
+    }),
+  ),
+  ownerNames: Schema.optional(Schema.Array(Schema.String)),
+  ownedByMe: Schema.optional(Schema.Boolean),
+  shareable: Schema.optional(Schema.Boolean),
+  contentRestrictions: Schema.optional(Schema.Array(ContentRestriction)),
+  indexableText: Schema.optional(
+    Schema.Struct({ text: Schema.optional(Schema.String) }),
+  ),
+  trashingUser: Schema.optional(User),
+  hasThumbnail: Schema.optional(Schema.Boolean),
+  userPermission: Schema.optional(Permission),
+  lastModifyingUser: Schema.optional(User),
+  originalFilename: Schema.optional(Schema.String),
+  permissionIds: Schema.optional(Schema.Array(Schema.String)),
+  fileSize: Schema.optional(Schema.String),
+  canReadRevisions: Schema.optional(Schema.Boolean),
+  owners: Schema.optional(Schema.Array(User)),
+  alternateLink: Schema.optional(Schema.String),
+  copyRequiresWriterPermission: Schema.optional(Schema.Boolean),
+  version: Schema.optional(Schema.String),
+  exportLinks: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  lastModifyingUserName: Schema.optional(Schema.String),
+  selfLink: Schema.optional(Schema.String),
+  properties: Schema.optional(Schema.Array(Property)),
+  labels: Schema.optional(
+    Schema.Struct({
+      hidden: Schema.optional(Schema.Boolean),
+      viewed: Schema.optional(Schema.Boolean),
+      restricted: Schema.optional(Schema.Boolean),
+      trashed: Schema.optional(Schema.Boolean),
+      modified: Schema.optional(Schema.Boolean),
+      starred: Schema.optional(Schema.Boolean),
+    }),
+  ),
+  description: Schema.optional(Schema.String),
+  embedLink: Schema.optional(Schema.String),
+  appDataContents: Schema.optional(Schema.Boolean),
+  resourceKey: Schema.optional(Schema.String),
+  isAppAuthorized: Schema.optional(Schema.Boolean),
+  sha256Checksum: Schema.optional(Schema.String),
+  clientEncryptionDetails: Schema.optional(ClientEncryptionDetails),
+  explicitlyTrashed: Schema.optional(Schema.Boolean),
+  imageMediaMetadata: Schema.optional(
+    Schema.Struct({
+      exposureBias: Schema.optional(Schema.Number),
+      whiteBalance: Schema.optional(Schema.String),
+      isoSpeed: Schema.optional(Schema.Number),
+      flashUsed: Schema.optional(Schema.Boolean),
+      sensor: Schema.optional(Schema.String),
+      date: Schema.optional(Schema.String),
+      cameraMake: Schema.optional(Schema.String),
+      meteringMode: Schema.optional(Schema.String),
+      maxApertureValue: Schema.optional(Schema.Number),
+      focalLength: Schema.optional(Schema.Number),
+      lens: Schema.optional(Schema.String),
+      height: Schema.optional(Schema.Number),
+      aperture: Schema.optional(Schema.Number),
+      cameraModel: Schema.optional(Schema.String),
+      rotation: Schema.optional(Schema.Number),
+      exposureTime: Schema.optional(Schema.Number),
+      location: Schema.optional(
+        Schema.Struct({
+          latitude: Schema.optional(Schema.Number),
+          longitude: Schema.optional(Schema.Number),
+          altitude: Schema.optional(Schema.Number),
+        }),
+      ),
+      width: Schema.optional(Schema.Number),
+      subjectDistance: Schema.optional(Schema.Number),
+      colorSpace: Schema.optional(Schema.String),
+      exposureMode: Schema.optional(Schema.String),
+    }),
+  ),
+  webViewLink: Schema.optional(Schema.String),
+  permissions: Schema.optional(Schema.Array(Permission)),
+  sharedWithMeDate: Schema.optional(Schema.String),
+  writersCanShare: Schema.optional(Schema.Boolean),
+  mimeType: Schema.optional(Schema.String),
+  trashedDate: Schema.optional(Schema.String),
+}).annotate({ identifier: "File" });
 
 export interface CommentReplyList {
   /** A link to the next page of replies. */
@@ -1004,18 +942,13 @@ export interface CommentReplyList {
   selfLink?: string;
 }
 
-export const CommentReplyList: Schema.Schema<CommentReplyList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextLink: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      nextPageToken: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(CommentReply)),
-      selfLink: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CommentReplyList",
-  }) as any as Schema.Schema<CommentReplyList>;
+export const CommentReplyList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextLink: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  nextPageToken: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(CommentReply)),
+  selfLink: Schema.optional(Schema.String),
+}).annotate({ identifier: "CommentReplyList" });
 
 export interface Drive {
   /** The color of this shared drive as an RGB hex string. It can only be set on a `drive.drives.update` request that does not set `themeId`. */
@@ -1076,66 +1009,63 @@ export interface Drive {
   hidden?: boolean;
 }
 
-export const Drive: Schema.Schema<Drive> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const Drive = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  colorRgb: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  themeId: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  restrictions: Schema.optional(
     Schema.Struct({
-      colorRgb: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      themeId: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      restrictions: Schema.optional(
-        Schema.Struct({
-          domainUsersOnly: Schema.optional(Schema.Boolean),
-          copyRequiresWriterPermission: Schema.optional(Schema.Boolean),
-          driveMembersOnly: Schema.optional(Schema.Boolean),
-          sharingFoldersRequiresOrganizerPermission: Schema.optional(
-            Schema.Boolean,
-          ),
-          adminManagedRestrictions: Schema.optional(Schema.Boolean),
-        }),
+      domainUsersOnly: Schema.optional(Schema.Boolean),
+      copyRequiresWriterPermission: Schema.optional(Schema.Boolean),
+      driveMembersOnly: Schema.optional(Schema.Boolean),
+      sharingFoldersRequiresOrganizerPermission: Schema.optional(
+        Schema.Boolean,
       ),
-      orgUnitId: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      backgroundImageFile: Schema.optional(
-        Schema.Struct({
-          xCoordinate: Schema.optional(Schema.Number),
-          id: Schema.optional(Schema.String),
-          yCoordinate: Schema.optional(Schema.Number),
-          width: Schema.optional(Schema.Number),
-        }),
-      ),
-      createdDate: Schema.optional(Schema.String),
-      backgroundImageLink: Schema.optional(Schema.String),
-      capabilities: Schema.optional(
-        Schema.Struct({
-          canShare: Schema.optional(Schema.Boolean),
-          canChangeDomainUsersOnlyRestriction: Schema.optional(Schema.Boolean),
-          canResetDriveRestrictions: Schema.optional(Schema.Boolean),
-          canDeleteDrive: Schema.optional(Schema.Boolean),
-          canEdit: Schema.optional(Schema.Boolean),
-          canRename: Schema.optional(Schema.Boolean),
-          canRenameDrive: Schema.optional(Schema.Boolean),
-          canDeleteChildren: Schema.optional(Schema.Boolean),
-          canChangeDriveMembersOnlyRestriction: Schema.optional(Schema.Boolean),
-          canChangeCopyRequiresWriterPermissionRestriction: Schema.optional(
-            Schema.Boolean,
-          ),
-          canChangeSharingFoldersRequiresOrganizerPermissionRestriction:
-            Schema.optional(Schema.Boolean),
-          canCopy: Schema.optional(Schema.Boolean),
-          canListChildren: Schema.optional(Schema.Boolean),
-          canAddChildren: Schema.optional(Schema.Boolean),
-          canReadRevisions: Schema.optional(Schema.Boolean),
-          canManageMembers: Schema.optional(Schema.Boolean),
-          canTrashChildren: Schema.optional(Schema.Boolean),
-          canDownload: Schema.optional(Schema.Boolean),
-          canComment: Schema.optional(Schema.Boolean),
-          canChangeDriveBackground: Schema.optional(Schema.Boolean),
-        }),
-      ),
-      hidden: Schema.optional(Schema.Boolean),
+      adminManagedRestrictions: Schema.optional(Schema.Boolean),
     }),
-  ).annotate({ identifier: "Drive" }) as any as Schema.Schema<Drive>;
+  ),
+  orgUnitId: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  backgroundImageFile: Schema.optional(
+    Schema.Struct({
+      xCoordinate: Schema.optional(Schema.Number),
+      id: Schema.optional(Schema.String),
+      yCoordinate: Schema.optional(Schema.Number),
+      width: Schema.optional(Schema.Number),
+    }),
+  ),
+  createdDate: Schema.optional(Schema.String),
+  backgroundImageLink: Schema.optional(Schema.String),
+  capabilities: Schema.optional(
+    Schema.Struct({
+      canShare: Schema.optional(Schema.Boolean),
+      canChangeDomainUsersOnlyRestriction: Schema.optional(Schema.Boolean),
+      canResetDriveRestrictions: Schema.optional(Schema.Boolean),
+      canDeleteDrive: Schema.optional(Schema.Boolean),
+      canEdit: Schema.optional(Schema.Boolean),
+      canRename: Schema.optional(Schema.Boolean),
+      canRenameDrive: Schema.optional(Schema.Boolean),
+      canDeleteChildren: Schema.optional(Schema.Boolean),
+      canChangeDriveMembersOnlyRestriction: Schema.optional(Schema.Boolean),
+      canChangeCopyRequiresWriterPermissionRestriction: Schema.optional(
+        Schema.Boolean,
+      ),
+      canChangeSharingFoldersRequiresOrganizerPermissionRestriction:
+        Schema.optional(Schema.Boolean),
+      canCopy: Schema.optional(Schema.Boolean),
+      canListChildren: Schema.optional(Schema.Boolean),
+      canAddChildren: Schema.optional(Schema.Boolean),
+      canReadRevisions: Schema.optional(Schema.Boolean),
+      canManageMembers: Schema.optional(Schema.Boolean),
+      canTrashChildren: Schema.optional(Schema.Boolean),
+      canDownload: Schema.optional(Schema.Boolean),
+      canComment: Schema.optional(Schema.Boolean),
+      canChangeDriveBackground: Schema.optional(Schema.Boolean),
+    }),
+  ),
+  hidden: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Drive" });
 
 export interface DriveList {
   /** The page token for the next page of shared drives. This will be absent if the end of the list has been reached. If the token is rejected for any reason, it should be discarded, and pagination should be restarted from the first page of results. */
@@ -1146,14 +1076,11 @@ export interface DriveList {
   items?: Array<Drive>;
 }
 
-export const DriveList: Schema.Schema<DriveList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(Drive)),
-    }),
-  ).annotate({ identifier: "DriveList" }) as any as Schema.Schema<DriveList>;
+export const DriveList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(Drive)),
+}).annotate({ identifier: "DriveList" });
 
 export interface ParentList {
   /** This is always `drive#parentList`. */
@@ -1166,15 +1093,12 @@ export interface ParentList {
   etag?: string;
 }
 
-export const ParentList: Schema.Schema<ParentList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      selfLink: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(ParentReference)),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "ParentList" }) as any as Schema.Schema<ParentList>;
+export const ParentList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  selfLink: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(ParentReference)),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "ParentList" });
 
 export interface StartPageToken {
   /** Identifies what kind of resource this is. Value: the fixed string `"drive#startPageToken"`. */
@@ -1183,15 +1107,10 @@ export interface StartPageToken {
   startPageToken?: string;
 }
 
-export const StartPageToken: Schema.Schema<StartPageToken> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      startPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "StartPageToken",
-  }) as any as Schema.Schema<StartPageToken>;
+export const StartPageToken = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  startPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "StartPageToken" });
 
 export interface LabelList {
   /** The page token for the next page of labels. This field will be absent if the end of the list has been reached. If the token is rejected for any reason, it should be discarded, and pagination should be restarted from the first page of results. */
@@ -1202,14 +1121,11 @@ export interface LabelList {
   items?: Array<Label>;
 }
 
-export const LabelList: Schema.Schema<LabelList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(Label)),
-    }),
-  ).annotate({ identifier: "LabelList" }) as any as Schema.Schema<LabelList>;
+export const LabelList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nextPageToken: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(Label)),
+}).annotate({ identifier: "LabelList" });
 
 export interface Channel {
   /** The type of delivery mechanism used for this channel. Valid values are "web_hook" or "webhook". */
@@ -1234,21 +1150,18 @@ export interface Channel {
   kind?: string;
 }
 
-export const Channel: Schema.Schema<Channel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      expiration: Schema.optional(Schema.String),
-      address: Schema.optional(Schema.String),
-      resourceId: Schema.optional(Schema.String),
-      resourceUri: Schema.optional(Schema.String),
-      token: Schema.optional(Schema.String),
-      payload: Schema.optional(Schema.Boolean),
-      id: Schema.optional(Schema.String),
-      params: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Channel" }) as any as Schema.Schema<Channel>;
+export const Channel = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  expiration: Schema.optional(Schema.String),
+  address: Schema.optional(Schema.String),
+  resourceId: Schema.optional(Schema.String),
+  resourceUri: Schema.optional(Schema.String),
+  token: Schema.optional(Schema.String),
+  payload: Schema.optional(Schema.Boolean),
+  id: Schema.optional(Schema.String),
+  params: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "Channel" });
 
 export interface FileList {
   /** The list of files. If nextPageToken is populated, then this list may be incomplete and an additional page of results should be fetched. */
@@ -1267,18 +1180,15 @@ export interface FileList {
   etag?: string;
 }
 
-export const FileList: Schema.Schema<FileList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      items: Schema.optional(Schema.Array(File)),
-      nextPageToken: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      nextLink: Schema.optional(Schema.String),
-      selfLink: Schema.optional(Schema.String),
-      incompleteSearch: Schema.optional(Schema.Boolean),
-      etag: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "FileList" }) as any as Schema.Schema<FileList>;
+export const FileList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  items: Schema.optional(Schema.Array(File)),
+  nextPageToken: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  nextLink: Schema.optional(Schema.String),
+  selfLink: Schema.optional(Schema.String),
+  incompleteSearch: Schema.optional(Schema.Boolean),
+  etag: Schema.optional(Schema.String),
+}).annotate({ identifier: "FileList" });
 
 export interface LabelFieldModification {
   /** Replaces the value of a dateString Field with these new values. The string must be in the RFC 3339 full-date format: YYYY-MM-DD. */
@@ -1299,21 +1209,18 @@ export interface LabelFieldModification {
   unsetValues?: boolean;
 }
 
-export const LabelFieldModification: Schema.Schema<LabelFieldModification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      setDateValues: Schema.optional(Schema.Array(Schema.String)),
-      setTextValues: Schema.optional(Schema.Array(Schema.String)),
-      kind: Schema.optional(Schema.String),
-      setSelectionValues: Schema.optional(Schema.Array(Schema.String)),
-      setUserValues: Schema.optional(Schema.Array(Schema.String)),
-      fieldId: Schema.optional(Schema.String),
-      setIntegerValues: Schema.optional(Schema.Array(Schema.String)),
-      unsetValues: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "LabelFieldModification",
-  }) as any as Schema.Schema<LabelFieldModification>;
+export const LabelFieldModification = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    setDateValues: Schema.optional(Schema.Array(Schema.String)),
+    setTextValues: Schema.optional(Schema.Array(Schema.String)),
+    kind: Schema.optional(Schema.String),
+    setSelectionValues: Schema.optional(Schema.Array(Schema.String)),
+    setUserValues: Schema.optional(Schema.Array(Schema.String)),
+    fieldId: Schema.optional(Schema.String),
+    setIntegerValues: Schema.optional(Schema.Array(Schema.String)),
+    unsetValues: Schema.optional(Schema.Boolean),
+  },
+).annotate({ identifier: "LabelFieldModification" });
 
 export interface LabelModification {
   /** If true, the label will be removed from the file. */
@@ -1326,17 +1233,12 @@ export interface LabelModification {
   labelId?: string;
 }
 
-export const LabelModification: Schema.Schema<LabelModification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      removeLabel: Schema.optional(Schema.Boolean),
-      kind: Schema.optional(Schema.String),
-      fieldModifications: Schema.optional(Schema.Array(LabelFieldModification)),
-      labelId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "LabelModification",
-  }) as any as Schema.Schema<LabelModification>;
+export const LabelModification = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  removeLabel: Schema.optional(Schema.Boolean),
+  kind: Schema.optional(Schema.String),
+  fieldModifications: Schema.optional(Schema.Array(LabelFieldModification)),
+  labelId: Schema.optional(Schema.String),
+}).annotate({ identifier: "LabelModification" });
 
 export interface About {
   /** The current user's ID as visible in the permissions collection. */
@@ -1408,104 +1310,101 @@ export interface About {
   }>;
 }
 
-export const About: Schema.Schema<About> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      permissionId: Schema.optional(Schema.String),
-      quotaBytesUsed: Schema.optional(Schema.String),
-      quotaBytesUsedInTrash: Schema.optional(Schema.String),
-      remainingChangeIds: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      folderColorPalette: Schema.optional(Schema.Array(Schema.String)),
-      features: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            featureName: Schema.optional(Schema.String),
-            featureRate: Schema.optional(Schema.Number),
-          }),
+export const About = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  permissionId: Schema.optional(Schema.String),
+  quotaBytesUsed: Schema.optional(Schema.String),
+  quotaBytesUsedInTrash: Schema.optional(Schema.String),
+  remainingChangeIds: Schema.optional(Schema.String),
+  name: Schema.optional(Schema.String),
+  folderColorPalette: Schema.optional(Schema.Array(Schema.String)),
+  features: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        featureName: Schema.optional(Schema.String),
+        featureRate: Schema.optional(Schema.Number),
+      }),
+    ),
+  ),
+  canCreateDrives: Schema.optional(Schema.Boolean),
+  teamDriveThemes: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        backgroundImageLink: Schema.optional(Schema.String),
+        colorRgb: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
+  quotaBytesUsedAggregate: Schema.optional(Schema.String),
+  importFormats: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        source: Schema.optional(Schema.String),
+        targets: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
+  ),
+  quotaType: Schema.optional(Schema.String),
+  isCurrentAppInstalled: Schema.optional(Schema.Boolean),
+  additionalRoleInfo: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        type: Schema.optional(Schema.String),
+        roleSets: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              primaryRole: Schema.optional(Schema.String),
+              additionalRoles: Schema.optional(Schema.Array(Schema.String)),
+            }),
+          ),
         ),
-      ),
-      canCreateDrives: Schema.optional(Schema.Boolean),
-      teamDriveThemes: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-            backgroundImageLink: Schema.optional(Schema.String),
-            colorRgb: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      quotaBytesUsedAggregate: Schema.optional(Schema.String),
-      importFormats: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            source: Schema.optional(Schema.String),
-            targets: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-      ),
-      quotaType: Schema.optional(Schema.String),
-      isCurrentAppInstalled: Schema.optional(Schema.Boolean),
-      additionalRoleInfo: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            type: Schema.optional(Schema.String),
-            roleSets: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  primaryRole: Schema.optional(Schema.String),
-                  additionalRoles: Schema.optional(Schema.Array(Schema.String)),
-                }),
-              ),
-            ),
-          }),
-        ),
-      ),
-      exportFormats: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            source: Schema.optional(Schema.String),
-            targets: Schema.optional(Schema.Array(Schema.String)),
-          }),
-        ),
-      ),
-      rootFolderId: Schema.optional(Schema.String),
-      quotaBytesByService: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            serviceName: Schema.optional(Schema.String),
-            bytesUsed: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      maxUploadSizes: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            type: Schema.optional(Schema.String),
-            size: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      largestChangeId: Schema.optional(Schema.String),
-      user: Schema.optional(User),
-      etag: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      domainSharingPolicy: Schema.optional(Schema.String),
-      quotaBytesTotal: Schema.optional(Schema.String),
-      selfLink: Schema.optional(Schema.String),
-      languageCode: Schema.optional(Schema.String),
-      canCreateTeamDrives: Schema.optional(Schema.Boolean),
-      driveThemes: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            colorRgb: Schema.optional(Schema.String),
-            id: Schema.optional(Schema.String),
-            backgroundImageLink: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-    }),
-  ).annotate({ identifier: "About" }) as any as Schema.Schema<About>;
+      }),
+    ),
+  ),
+  exportFormats: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        source: Schema.optional(Schema.String),
+        targets: Schema.optional(Schema.Array(Schema.String)),
+      }),
+    ),
+  ),
+  rootFolderId: Schema.optional(Schema.String),
+  quotaBytesByService: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        serviceName: Schema.optional(Schema.String),
+        bytesUsed: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
+  maxUploadSizes: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        type: Schema.optional(Schema.String),
+        size: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
+  largestChangeId: Schema.optional(Schema.String),
+  user: Schema.optional(User),
+  etag: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  domainSharingPolicy: Schema.optional(Schema.String),
+  quotaBytesTotal: Schema.optional(Schema.String),
+  selfLink: Schema.optional(Schema.String),
+  languageCode: Schema.optional(Schema.String),
+  canCreateTeamDrives: Schema.optional(Schema.Boolean),
+  driveThemes: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        colorRgb: Schema.optional(Schema.String),
+        id: Schema.optional(Schema.String),
+        backgroundImageLink: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
+}).annotate({ identifier: "About" });
 
 export interface TeamDrive {
   /** The organizational unit of this shared drive. This field is only populated on `drives.list` responses when the `useDomainAdminAccess` parameter is set to `true`. */
@@ -1565,66 +1464,63 @@ export interface TeamDrive {
   };
 }
 
-export const TeamDrive: Schema.Schema<TeamDrive> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const TeamDrive = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  orgUnitId: Schema.optional(Schema.String),
+  restrictions: Schema.optional(
     Schema.Struct({
-      orgUnitId: Schema.optional(Schema.String),
-      restrictions: Schema.optional(
-        Schema.Struct({
-          teamMembersOnly: Schema.optional(Schema.Boolean),
-          domainUsersOnly: Schema.optional(Schema.Boolean),
-          adminManagedRestrictions: Schema.optional(Schema.Boolean),
-          sharingFoldersRequiresOrganizerPermission: Schema.optional(
-            Schema.Boolean,
-          ),
-          copyRequiresWriterPermission: Schema.optional(Schema.Boolean),
-        }),
+      teamMembersOnly: Schema.optional(Schema.Boolean),
+      domainUsersOnly: Schema.optional(Schema.Boolean),
+      adminManagedRestrictions: Schema.optional(Schema.Boolean),
+      sharingFoldersRequiresOrganizerPermission: Schema.optional(
+        Schema.Boolean,
       ),
-      name: Schema.optional(Schema.String),
-      colorRgb: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      themeId: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      backgroundImageFile: Schema.optional(
-        Schema.Struct({
-          xCoordinate: Schema.optional(Schema.Number),
-          id: Schema.optional(Schema.String),
-          yCoordinate: Schema.optional(Schema.Number),
-          width: Schema.optional(Schema.Number),
-        }),
-      ),
-      createdDate: Schema.optional(Schema.String),
-      backgroundImageLink: Schema.optional(Schema.String),
-      capabilities: Schema.optional(
-        Schema.Struct({
-          canRenameTeamDrive: Schema.optional(Schema.Boolean),
-          canManageMembers: Schema.optional(Schema.Boolean),
-          canTrashChildren: Schema.optional(Schema.Boolean),
-          canAddChildren: Schema.optional(Schema.Boolean),
-          canReadRevisions: Schema.optional(Schema.Boolean),
-          canCopy: Schema.optional(Schema.Boolean),
-          canListChildren: Schema.optional(Schema.Boolean),
-          canChangeSharingFoldersRequiresOrganizerPermissionRestriction:
-            Schema.optional(Schema.Boolean),
-          canComment: Schema.optional(Schema.Boolean),
-          canDownload: Schema.optional(Schema.Boolean),
-          canDeleteTeamDrive: Schema.optional(Schema.Boolean),
-          canDeleteChildren: Schema.optional(Schema.Boolean),
-          canEdit: Schema.optional(Schema.Boolean),
-          canRename: Schema.optional(Schema.Boolean),
-          canResetTeamDriveRestrictions: Schema.optional(Schema.Boolean),
-          canChangeDomainUsersOnlyRestriction: Schema.optional(Schema.Boolean),
-          canChangeTeamDriveBackground: Schema.optional(Schema.Boolean),
-          canShare: Schema.optional(Schema.Boolean),
-          canChangeCopyRequiresWriterPermissionRestriction: Schema.optional(
-            Schema.Boolean,
-          ),
-          canChangeTeamMembersOnlyRestriction: Schema.optional(Schema.Boolean),
-          canRemoveChildren: Schema.optional(Schema.Boolean),
-        }),
-      ),
+      copyRequiresWriterPermission: Schema.optional(Schema.Boolean),
     }),
-  ).annotate({ identifier: "TeamDrive" }) as any as Schema.Schema<TeamDrive>;
+  ),
+  name: Schema.optional(Schema.String),
+  colorRgb: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  themeId: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  backgroundImageFile: Schema.optional(
+    Schema.Struct({
+      xCoordinate: Schema.optional(Schema.Number),
+      id: Schema.optional(Schema.String),
+      yCoordinate: Schema.optional(Schema.Number),
+      width: Schema.optional(Schema.Number),
+    }),
+  ),
+  createdDate: Schema.optional(Schema.String),
+  backgroundImageLink: Schema.optional(Schema.String),
+  capabilities: Schema.optional(
+    Schema.Struct({
+      canRenameTeamDrive: Schema.optional(Schema.Boolean),
+      canManageMembers: Schema.optional(Schema.Boolean),
+      canTrashChildren: Schema.optional(Schema.Boolean),
+      canAddChildren: Schema.optional(Schema.Boolean),
+      canReadRevisions: Schema.optional(Schema.Boolean),
+      canCopy: Schema.optional(Schema.Boolean),
+      canListChildren: Schema.optional(Schema.Boolean),
+      canChangeSharingFoldersRequiresOrganizerPermissionRestriction:
+        Schema.optional(Schema.Boolean),
+      canComment: Schema.optional(Schema.Boolean),
+      canDownload: Schema.optional(Schema.Boolean),
+      canDeleteTeamDrive: Schema.optional(Schema.Boolean),
+      canDeleteChildren: Schema.optional(Schema.Boolean),
+      canEdit: Schema.optional(Schema.Boolean),
+      canRename: Schema.optional(Schema.Boolean),
+      canResetTeamDriveRestrictions: Schema.optional(Schema.Boolean),
+      canChangeDomainUsersOnlyRestriction: Schema.optional(Schema.Boolean),
+      canChangeTeamDriveBackground: Schema.optional(Schema.Boolean),
+      canShare: Schema.optional(Schema.Boolean),
+      canChangeCopyRequiresWriterPermissionRestriction: Schema.optional(
+        Schema.Boolean,
+      ),
+      canChangeTeamMembersOnlyRestriction: Schema.optional(Schema.Boolean),
+      canRemoveChildren: Schema.optional(Schema.Boolean),
+    }),
+  ),
+}).annotate({ identifier: "TeamDrive" });
 
 export interface Change {
   /** The ID of the shared drive associated with this change. */
@@ -1655,24 +1551,21 @@ export interface Change {
   deleted?: boolean;
 }
 
-export const Change: Schema.Schema<Change> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      driveId: Schema.optional(Schema.String),
-      file: Schema.optional(File),
-      teamDrive: Schema.optional(TeamDrive),
-      drive: Schema.optional(Drive),
-      changeType: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-      selfLink: Schema.optional(Schema.String),
-      teamDriveId: Schema.optional(Schema.String),
-      fileId: Schema.optional(Schema.String),
-      modificationDate: Schema.optional(Schema.String),
-      deleted: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({ identifier: "Change" }) as any as Schema.Schema<Change>;
+export const Change = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  driveId: Schema.optional(Schema.String),
+  file: Schema.optional(File),
+  teamDrive: Schema.optional(TeamDrive),
+  drive: Schema.optional(Drive),
+  changeType: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+  selfLink: Schema.optional(Schema.String),
+  teamDriveId: Schema.optional(Schema.String),
+  fileId: Schema.optional(Schema.String),
+  modificationDate: Schema.optional(Schema.String),
+  deleted: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "Change" });
 
 export interface ModifyLabelsRequest {
   /** The list of modifications to apply to the labels on the file. */
@@ -1681,15 +1574,10 @@ export interface ModifyLabelsRequest {
   kind?: string;
 }
 
-export const ModifyLabelsRequest: Schema.Schema<ModifyLabelsRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labelModifications: Schema.optional(Schema.Array(LabelModification)),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ModifyLabelsRequest",
-  }) as any as Schema.Schema<ModifyLabelsRequest>;
+export const ModifyLabelsRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  labelModifications: Schema.optional(Schema.Array(LabelModification)),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "ModifyLabelsRequest" });
 
 export interface PermissionList {
   /** The list of permissions. */
@@ -1704,18 +1592,13 @@ export interface PermissionList {
   selfLink?: string;
 }
 
-export const PermissionList: Schema.Schema<PermissionList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      items: Schema.optional(Schema.Array(Permission)),
-      nextPageToken: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      selfLink: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PermissionList",
-  }) as any as Schema.Schema<PermissionList>;
+export const PermissionList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  items: Schema.optional(Schema.Array(Permission)),
+  nextPageToken: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  selfLink: Schema.optional(Schema.String),
+}).annotate({ identifier: "PermissionList" });
 
 export interface PropertyList {
   /** The ETag of the list. */
@@ -1728,17 +1611,12 @@ export interface PropertyList {
   items?: Array<Property>;
 }
 
-export const PropertyList: Schema.Schema<PropertyList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      etag: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      selfLink: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(Property)),
-    }),
-  ).annotate({
-    identifier: "PropertyList",
-  }) as any as Schema.Schema<PropertyList>;
+export const PropertyList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  etag: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  selfLink: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(Property)),
+}).annotate({ identifier: "PropertyList" });
 
 export interface PermissionId {
   /** This is always `drive#permissionId`. */
@@ -1747,15 +1625,10 @@ export interface PermissionId {
   id?: string;
 }
 
-export const PermissionId: Schema.Schema<PermissionId> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      id: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "PermissionId",
-  }) as any as Schema.Schema<PermissionId>;
+export const PermissionId = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  id: Schema.optional(Schema.String),
+}).annotate({ identifier: "PermissionId" });
 
 export interface TeamDriveList {
   /** The list of Team Drives. */
@@ -1766,16 +1639,11 @@ export interface TeamDriveList {
   kind?: string;
 }
 
-export const TeamDriveList: Schema.Schema<TeamDriveList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      items: Schema.optional(Schema.Array(TeamDrive)),
-      nextPageToken: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "TeamDriveList",
-  }) as any as Schema.Schema<TeamDriveList>;
+export const TeamDriveList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  items: Schema.optional(Schema.Array(TeamDrive)),
+  nextPageToken: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "TeamDriveList" });
 
 export interface ChildList {
   /** A link back to this list. */
@@ -1792,17 +1660,14 @@ export interface ChildList {
   nextLink?: string;
 }
 
-export const ChildList: Schema.Schema<ChildList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      selfLink: Schema.optional(Schema.String),
-      etag: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(ChildReference)),
-      nextPageToken: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      nextLink: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "ChildList" }) as any as Schema.Schema<ChildList>;
+export const ChildList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  selfLink: Schema.optional(Schema.String),
+  etag: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(ChildReference)),
+  nextPageToken: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  nextLink: Schema.optional(Schema.String),
+}).annotate({ identifier: "ChildList" });
 
 export interface ModifyLabelsResponse {
   /** The list of labels which were added or updated by the request. */
@@ -1811,15 +1676,10 @@ export interface ModifyLabelsResponse {
   kind?: string;
 }
 
-export const ModifyLabelsResponse: Schema.Schema<ModifyLabelsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      modifiedLabels: Schema.optional(Schema.Array(Label)),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ModifyLabelsResponse",
-  }) as any as Schema.Schema<ModifyLabelsResponse>;
+export const ModifyLabelsResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  modifiedLabels: Schema.optional(Schema.Array(Label)),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "ModifyLabelsResponse" });
 
 export interface App {
   /** The ID of the product listing for this app. */
@@ -1872,43 +1732,40 @@ export interface App {
   name?: string;
 }
 
-export const App: Schema.Schema<App> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      productId: Schema.optional(Schema.String),
-      secondaryMimeTypes: Schema.optional(Schema.Array(Schema.String)),
-      hasDriveWideScope: Schema.optional(Schema.Boolean),
-      installed: Schema.optional(Schema.Boolean),
-      secondaryFileExtensions: Schema.optional(Schema.Array(Schema.String)),
-      icons: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            size: Schema.optional(Schema.Number),
-            category: Schema.optional(Schema.String),
-            iconUrl: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      authorized: Schema.optional(Schema.Boolean),
-      kind: Schema.optional(Schema.String),
-      supportsCreate: Schema.optional(Schema.Boolean),
-      id: Schema.optional(Schema.String),
-      createInFolderTemplate: Schema.optional(Schema.String),
-      longDescription: Schema.optional(Schema.String),
-      productUrl: Schema.optional(Schema.String),
-      createUrl: Schema.optional(Schema.String),
-      shortDescription: Schema.optional(Schema.String),
-      objectType: Schema.optional(Schema.String),
-      supportsOfflineCreate: Schema.optional(Schema.Boolean),
-      supportsImport: Schema.optional(Schema.Boolean),
-      useByDefault: Schema.optional(Schema.Boolean),
-      openUrlTemplate: Schema.optional(Schema.String),
-      supportsMultiOpen: Schema.optional(Schema.Boolean),
-      primaryMimeTypes: Schema.optional(Schema.Array(Schema.String)),
-      primaryFileExtensions: Schema.optional(Schema.Array(Schema.String)),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "App" }) as any as Schema.Schema<App>;
+export const App = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  productId: Schema.optional(Schema.String),
+  secondaryMimeTypes: Schema.optional(Schema.Array(Schema.String)),
+  hasDriveWideScope: Schema.optional(Schema.Boolean),
+  installed: Schema.optional(Schema.Boolean),
+  secondaryFileExtensions: Schema.optional(Schema.Array(Schema.String)),
+  icons: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        size: Schema.optional(Schema.Number),
+        category: Schema.optional(Schema.String),
+        iconUrl: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
+  authorized: Schema.optional(Schema.Boolean),
+  kind: Schema.optional(Schema.String),
+  supportsCreate: Schema.optional(Schema.Boolean),
+  id: Schema.optional(Schema.String),
+  createInFolderTemplate: Schema.optional(Schema.String),
+  longDescription: Schema.optional(Schema.String),
+  productUrl: Schema.optional(Schema.String),
+  createUrl: Schema.optional(Schema.String),
+  shortDescription: Schema.optional(Schema.String),
+  objectType: Schema.optional(Schema.String),
+  supportsOfflineCreate: Schema.optional(Schema.Boolean),
+  supportsImport: Schema.optional(Schema.Boolean),
+  useByDefault: Schema.optional(Schema.Boolean),
+  openUrlTemplate: Schema.optional(Schema.String),
+  supportsMultiOpen: Schema.optional(Schema.Boolean),
+  primaryMimeTypes: Schema.optional(Schema.Array(Schema.String)),
+  primaryFileExtensions: Schema.optional(Schema.Array(Schema.String)),
+  name: Schema.optional(Schema.String),
+}).annotate({ identifier: "App" });
 
 export interface AppList {
   /** List of app IDs that the user has specified to use by default. The list is in reverse-priority order (lowest to highest). */
@@ -1923,16 +1780,13 @@ export interface AppList {
   selfLink?: string;
 }
 
-export const AppList: Schema.Schema<AppList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      defaultAppIds: Schema.optional(Schema.Array(Schema.String)),
-      kind: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(App)),
-      etag: Schema.optional(Schema.String),
-      selfLink: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "AppList" }) as any as Schema.Schema<AppList>;
+export const AppList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  defaultAppIds: Schema.optional(Schema.Array(Schema.String)),
+  kind: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(App)),
+  etag: Schema.optional(Schema.String),
+  selfLink: Schema.optional(Schema.String),
+}).annotate({ identifier: "AppList" });
 
 export interface GenerateCseTokenResponse {
   /** The fileId for which the JWT was generated. */
@@ -1947,18 +1801,14 @@ export interface GenerateCseTokenResponse {
   kind?: string;
 }
 
-export const GenerateCseTokenResponse: Schema.Schema<GenerateCseTokenResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      fileId: Schema.optional(Schema.String),
-      currentKaclsId: Schema.optional(Schema.String),
-      jwt: Schema.optional(Schema.String),
-      currentKaclsName: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GenerateCseTokenResponse",
-  }) as any as Schema.Schema<GenerateCseTokenResponse>;
+export const GenerateCseTokenResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    fileId: Schema.optional(Schema.String),
+    currentKaclsId: Schema.optional(Schema.String),
+    jwt: Schema.optional(Schema.String),
+    currentKaclsName: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "GenerateCseTokenResponse" });
 
 export interface CommentList {
   /** The list of comments. If nextPageToken is populated, then this list may be incomplete and an additional page of results should be fetched. */
@@ -1973,18 +1823,13 @@ export interface CommentList {
   selfLink?: string;
 }
 
-export const CommentList: Schema.Schema<CommentList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      items: Schema.optional(Schema.Array(Comment)),
-      kind: Schema.optional(Schema.String),
-      nextPageToken: Schema.optional(Schema.String),
-      nextLink: Schema.optional(Schema.String),
-      selfLink: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CommentList",
-  }) as any as Schema.Schema<CommentList>;
+export const CommentList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  items: Schema.optional(Schema.Array(Comment)),
+  kind: Schema.optional(Schema.String),
+  nextPageToken: Schema.optional(Schema.String),
+  nextLink: Schema.optional(Schema.String),
+  selfLink: Schema.optional(Schema.String),
+}).annotate({ identifier: "CommentList" });
 
 export interface ChangeList {
   /** The ETag of the list. */
@@ -2005,19 +1850,16 @@ export interface ChangeList {
   items?: Array<Change>;
 }
 
-export const ChangeList: Schema.Schema<ChangeList> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      etag: Schema.optional(Schema.String),
-      selfLink: Schema.optional(Schema.String),
-      largestChangeId: Schema.optional(Schema.String),
-      nextLink: Schema.optional(Schema.String),
-      nextPageToken: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      newStartPageToken: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(Change)),
-    }),
-  ).annotate({ identifier: "ChangeList" }) as any as Schema.Schema<ChangeList>;
+export const ChangeList = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  etag: Schema.optional(Schema.String),
+  selfLink: Schema.optional(Schema.String),
+  largestChangeId: Schema.optional(Schema.String),
+  nextLink: Schema.optional(Schema.String),
+  nextPageToken: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  newStartPageToken: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(Change)),
+}).annotate({ identifier: "ChangeList" });
 
 export interface GeneratedIds {
   /** The IDs generated for the requesting user in the specified space. */
@@ -2028,16 +1870,11 @@ export interface GeneratedIds {
   kind?: string;
 }
 
-export const GeneratedIds: Schema.Schema<GeneratedIds> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ids: Schema.optional(Schema.Array(Schema.String)),
-      space: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "GeneratedIds",
-  }) as any as Schema.Schema<GeneratedIds>;
+export const GeneratedIds = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ids: Schema.optional(Schema.Array(Schema.String)),
+  space: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "GeneratedIds" });
 
 // ==========================================================================
 // Operations

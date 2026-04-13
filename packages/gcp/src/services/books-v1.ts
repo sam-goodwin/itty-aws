@@ -45,21 +45,18 @@ export interface Bookshelf {
   created?: string;
 }
 
-export const Bookshelf: Schema.Schema<Bookshelf> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.Number),
-      kind: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      description: Schema.optional(Schema.String),
-      access: Schema.optional(Schema.String),
-      updated: Schema.optional(Schema.String),
-      volumeCount: Schema.optional(Schema.Number),
-      volumesLastUpdated: Schema.optional(Schema.String),
-      selfLink: Schema.optional(Schema.String),
-      created: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Bookshelf" }) as any as Schema.Schema<Bookshelf>;
+export const Bookshelf = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.Number),
+  kind: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  description: Schema.optional(Schema.String),
+  access: Schema.optional(Schema.String),
+  updated: Schema.optional(Schema.String),
+  volumeCount: Schema.optional(Schema.Number),
+  volumesLastUpdated: Schema.optional(Schema.String),
+  selfLink: Schema.optional(Schema.String),
+  created: Schema.optional(Schema.String),
+}).annotate({ identifier: "Bookshelf" });
 
 export interface Bookshelves {
   /** Resource type. */
@@ -68,15 +65,10 @@ export interface Bookshelves {
   items?: Array<Bookshelf>;
 }
 
-export const Bookshelves: Schema.Schema<Bookshelves> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(Bookshelf)),
-    }),
-  ).annotate({
-    identifier: "Bookshelves",
-  }) as any as Schema.Schema<Bookshelves>;
+export const Bookshelves = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(Bookshelf)),
+}).annotate({ identifier: "Bookshelves" });
 
 export interface Volumeseriesinfo {
   /** Short book title in the context of the series. */
@@ -93,33 +85,28 @@ export interface Volumeseriesinfo {
   kind?: string;
 }
 
-export const Volumeseriesinfo: Schema.Schema<Volumeseriesinfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      shortSeriesBookTitle: Schema.optional(Schema.String),
-      volumeSeries: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            seriesId: Schema.optional(Schema.String),
-            seriesBookType: Schema.optional(Schema.String),
-            orderNumber: Schema.optional(Schema.Number),
-            issue: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  issueOrderNumber: Schema.optional(Schema.Number),
-                  issueDisplayNumber: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-          }),
+export const Volumeseriesinfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  shortSeriesBookTitle: Schema.optional(Schema.String),
+  volumeSeries: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        seriesId: Schema.optional(Schema.String),
+        seriesBookType: Schema.optional(Schema.String),
+        orderNumber: Schema.optional(Schema.Number),
+        issue: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              issueOrderNumber: Schema.optional(Schema.Number),
+              issueDisplayNumber: Schema.optional(Schema.String),
+            }),
+          ),
         ),
-      ),
-      bookDisplayNumber: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Volumeseriesinfo",
-  }) as any as Schema.Schema<Volumeseriesinfo>;
+      }),
+    ),
+  ),
+  bookDisplayNumber: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "Volumeseriesinfo" });
 
 export interface Review {
   /** Volume that this review is for. */
@@ -144,29 +131,26 @@ export interface Review {
   source?: { description?: string; url?: string; extraDescription?: string };
 }
 
-export const Review: Schema.Schema<Review> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const Review = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  volumeId: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  date: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  content: Schema.optional(Schema.String),
+  rating: Schema.optional(Schema.String),
+  fullTextUrl: Schema.optional(Schema.String),
+  author: Schema.optional(
+    Schema.Struct({ displayName: Schema.optional(Schema.String) }),
+  ),
+  source: Schema.optional(
     Schema.Struct({
-      volumeId: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      date: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      content: Schema.optional(Schema.String),
-      rating: Schema.optional(Schema.String),
-      fullTextUrl: Schema.optional(Schema.String),
-      author: Schema.optional(
-        Schema.Struct({ displayName: Schema.optional(Schema.String) }),
-      ),
-      source: Schema.optional(
-        Schema.Struct({
-          description: Schema.optional(Schema.String),
-          url: Schema.optional(Schema.String),
-          extraDescription: Schema.optional(Schema.String),
-        }),
-      ),
+      description: Schema.optional(Schema.String),
+      url: Schema.optional(Schema.String),
+      extraDescription: Schema.optional(Schema.String),
     }),
-  ).annotate({ identifier: "Review" }) as any as Schema.Schema<Review>;
+  ),
+}).annotate({ identifier: "Review" });
 
 export interface ReadingPosition {
   /** Volume id associated with this reading position. */
@@ -185,20 +169,15 @@ export interface ReadingPosition {
   updated?: string;
 }
 
-export const ReadingPosition: Schema.Schema<ReadingPosition> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      volumeId: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      gbTextPosition: Schema.optional(Schema.String),
-      gbImagePosition: Schema.optional(Schema.String),
-      pdfPosition: Schema.optional(Schema.String),
-      epubCfiPosition: Schema.optional(Schema.String),
-      updated: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ReadingPosition",
-  }) as any as Schema.Schema<ReadingPosition>;
+export const ReadingPosition = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  volumeId: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  gbTextPosition: Schema.optional(Schema.String),
+  gbImagePosition: Schema.optional(Schema.String),
+  pdfPosition: Schema.optional(Schema.String),
+  epubCfiPosition: Schema.optional(Schema.String),
+  updated: Schema.optional(Schema.String),
+}).annotate({ identifier: "ReadingPosition" });
 
 export interface DownloadAccessRestriction {
   /** If restricted, whether access is granted for this (user, device, volume). */
@@ -227,25 +206,21 @@ export interface DownloadAccessRestriction {
   kind?: string;
 }
 
-export const DownloadAccessRestriction: Schema.Schema<DownloadAccessRestriction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deviceAllowed: Schema.optional(Schema.Boolean),
-      volumeId: Schema.optional(Schema.String),
-      maxDownloadDevices: Schema.optional(Schema.Number),
-      reasonCode: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-      nonce: Schema.optional(Schema.String),
-      source: Schema.optional(Schema.String),
-      signature: Schema.optional(Schema.String),
-      downloadsAcquired: Schema.optional(Schema.Number),
-      restricted: Schema.optional(Schema.Boolean),
-      justAcquired: Schema.optional(Schema.Boolean),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DownloadAccessRestriction",
-  }) as any as Schema.Schema<DownloadAccessRestriction>;
+export const DownloadAccessRestriction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deviceAllowed: Schema.optional(Schema.Boolean),
+    volumeId: Schema.optional(Schema.String),
+    maxDownloadDevices: Schema.optional(Schema.Number),
+    reasonCode: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+    nonce: Schema.optional(Schema.String),
+    source: Schema.optional(Schema.String),
+    signature: Schema.optional(Schema.String),
+    downloadsAcquired: Schema.optional(Schema.Number),
+    restricted: Schema.optional(Schema.Boolean),
+    justAcquired: Schema.optional(Schema.Boolean),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "DownloadAccessRestriction" });
 
 export interface Volume {
   /** Unique identifier for a volume. (In LITE projection.) */
@@ -382,219 +357,216 @@ export interface Volume {
   recommendedInfo?: { explanation?: string };
 }
 
-export const Volume: Schema.Schema<Volume> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const Volume = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  selfLink: Schema.optional(Schema.String),
+  layerInfo: Schema.optional(
     Schema.Struct({
-      id: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      selfLink: Schema.optional(Schema.String),
-      layerInfo: Schema.optional(
-        Schema.Struct({
-          layers: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                layerId: Schema.optional(Schema.String),
-                volumeAnnotationsVersion: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-        }),
-      ),
-      etag: Schema.optional(Schema.String),
-      volumeInfo: Schema.optional(
-        Schema.Struct({
-          title: Schema.optional(Schema.String),
-          subtitle: Schema.optional(Schema.String),
-          authors: Schema.optional(Schema.Array(Schema.String)),
-          publisher: Schema.optional(Schema.String),
-          publishedDate: Schema.optional(Schema.String),
-          description: Schema.optional(Schema.String),
-          pageCount: Schema.optional(Schema.Number),
-          printType: Schema.optional(Schema.String),
-          averageRating: Schema.optional(Schema.Number),
-          ratingsCount: Schema.optional(Schema.Number),
-          contentVersion: Schema.optional(Schema.String),
-          imageLinks: Schema.optional(
-            Schema.Struct({
-              thumbnail: Schema.optional(Schema.String),
-              small: Schema.optional(Schema.String),
-              medium: Schema.optional(Schema.String),
-              large: Schema.optional(Schema.String),
-              extraLarge: Schema.optional(Schema.String),
-              smallThumbnail: Schema.optional(Schema.String),
-            }),
-          ),
-          language: Schema.optional(Schema.String),
-          previewLink: Schema.optional(Schema.String),
-          industryIdentifiers: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                type: Schema.optional(Schema.String),
-                identifier: Schema.optional(Schema.String),
-              }),
-            ),
-          ),
-          infoLink: Schema.optional(Schema.String),
-          canonicalVolumeLink: Schema.optional(Schema.String),
-          categories: Schema.optional(Schema.Array(Schema.String)),
-          printedPageCount: Schema.optional(Schema.Number),
-          readingModes: Schema.optional(
-            Schema.Struct({
-              text: Schema.optional(Schema.Boolean),
-              image: Schema.optional(Schema.Boolean),
-            }),
-          ),
-          samplePageCount: Schema.optional(Schema.Number),
-          maturityRating: Schema.optional(Schema.String),
-          allowAnonLogging: Schema.optional(Schema.Boolean),
-          seriesInfo: Schema.optional(Volumeseriesinfo),
-          comicsContent: Schema.optional(Schema.Boolean),
-          dimensions: Schema.optional(
-            Schema.Struct({
-              height: Schema.optional(Schema.String),
-              width: Schema.optional(Schema.String),
-              thickness: Schema.optional(Schema.String),
-            }),
-          ),
-          mainCategory: Schema.optional(Schema.String),
-          panelizationSummary: Schema.optional(
-            Schema.Struct({
-              containsEpubBubbles: Schema.optional(Schema.Boolean),
-              containsImageBubbles: Schema.optional(Schema.Boolean),
-              epubBubbleVersion: Schema.optional(Schema.String),
-              imageBubbleVersion: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
-      userInfo: Schema.optional(
-        Schema.Struct({
-          familySharing: Schema.optional(
-            Schema.Struct({
-              isSharingAllowed: Schema.optional(Schema.Boolean),
-              isSharingDisabledByFop: Schema.optional(Schema.Boolean),
-              familyRole: Schema.optional(Schema.String),
-            }),
-          ),
-          review: Schema.optional(Review),
-          readingPosition: Schema.optional(ReadingPosition),
-          isPurchased: Schema.optional(Schema.Boolean),
-          updated: Schema.optional(Schema.String),
-          isPreordered: Schema.optional(Schema.Boolean),
-          isInMyBooks: Schema.optional(Schema.Boolean),
-          isUploaded: Schema.optional(Schema.Boolean),
-          rentalState: Schema.optional(Schema.String),
-          acquisitionType: Schema.optional(Schema.Number),
-          entitlementType: Schema.optional(Schema.Number),
-          acquiredTime: Schema.optional(Schema.String),
-          isFamilySharedFromUser: Schema.optional(Schema.Boolean),
-          isFamilySharedToUser: Schema.optional(Schema.Boolean),
-          isFamilySharingAllowed: Schema.optional(Schema.Boolean),
-          isFamilySharingDisabledByFop: Schema.optional(Schema.Boolean),
-          userUploadedVolumeInfo: Schema.optional(
-            Schema.Struct({ processingState: Schema.optional(Schema.String) }),
-          ),
-          rentalPeriod: Schema.optional(
-            Schema.Struct({
-              startUtcSec: Schema.optional(Schema.String),
-              endUtcSec: Schema.optional(Schema.String),
-            }),
-          ),
-          copy: Schema.optional(
-            Schema.Struct({
-              remainingCharacterCount: Schema.optional(Schema.Number),
-              allowedCharacterCount: Schema.optional(Schema.Number),
-              limitType: Schema.optional(Schema.String),
-              updated: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
-      saleInfo: Schema.optional(
-        Schema.Struct({
-          country: Schema.optional(Schema.String),
-          saleability: Schema.optional(Schema.String),
-          isEbook: Schema.optional(Schema.Boolean),
-          buyLink: Schema.optional(Schema.String),
-          offers: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                finskyOfferType: Schema.optional(Schema.Number),
-                giftable: Schema.optional(Schema.Boolean),
-                retailPrice: Schema.optional(
-                  Schema.Struct({
-                    currencyCode: Schema.optional(Schema.String),
-                    amountInMicros: Schema.optional(Schema.Number),
-                  }),
-                ),
-                rentalDuration: Schema.optional(
-                  Schema.Struct({
-                    unit: Schema.optional(Schema.String),
-                    count: Schema.optional(Schema.Number),
-                  }),
-                ),
-                listPrice: Schema.optional(
-                  Schema.Struct({
-                    currencyCode: Schema.optional(Schema.String),
-                    amountInMicros: Schema.optional(Schema.Number),
-                  }),
-                ),
-              }),
-            ),
-          ),
-          onSaleDate: Schema.optional(Schema.String),
-          listPrice: Schema.optional(
-            Schema.Struct({
-              amount: Schema.optional(Schema.Number),
-              currencyCode: Schema.optional(Schema.String),
-            }),
-          ),
-          retailPrice: Schema.optional(
-            Schema.Struct({
-              amount: Schema.optional(Schema.Number),
-              currencyCode: Schema.optional(Schema.String),
-            }),
-          ),
-        }),
-      ),
-      accessInfo: Schema.optional(
-        Schema.Struct({
-          country: Schema.optional(Schema.String),
-          viewability: Schema.optional(Schema.String),
-          embeddable: Schema.optional(Schema.Boolean),
-          publicDomain: Schema.optional(Schema.Boolean),
-          accessViewStatus: Schema.optional(Schema.String),
-          downloadAccess: Schema.optional(DownloadAccessRestriction),
-          textToSpeechPermission: Schema.optional(Schema.String),
-          webReaderLink: Schema.optional(Schema.String),
-          epub: Schema.optional(
-            Schema.Struct({
-              downloadLink: Schema.optional(Schema.String),
-              acsTokenLink: Schema.optional(Schema.String),
-              isAvailable: Schema.optional(Schema.Boolean),
-            }),
-          ),
-          pdf: Schema.optional(
-            Schema.Struct({
-              downloadLink: Schema.optional(Schema.String),
-              acsTokenLink: Schema.optional(Schema.String),
-              isAvailable: Schema.optional(Schema.Boolean),
-            }),
-          ),
-          viewOrderUrl: Schema.optional(Schema.String),
-          explicitOfflineLicenseManagement: Schema.optional(Schema.Boolean),
-          quoteSharingAllowed: Schema.optional(Schema.Boolean),
-          driveImportedContentLink: Schema.optional(Schema.String),
-        }),
-      ),
-      searchInfo: Schema.optional(
-        Schema.Struct({ textSnippet: Schema.optional(Schema.String) }),
-      ),
-      recommendedInfo: Schema.optional(
-        Schema.Struct({ explanation: Schema.optional(Schema.String) }),
+      layers: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            layerId: Schema.optional(Schema.String),
+            volumeAnnotationsVersion: Schema.optional(Schema.String),
+          }),
+        ),
       ),
     }),
-  ).annotate({ identifier: "Volume" }) as any as Schema.Schema<Volume>;
+  ),
+  etag: Schema.optional(Schema.String),
+  volumeInfo: Schema.optional(
+    Schema.Struct({
+      title: Schema.optional(Schema.String),
+      subtitle: Schema.optional(Schema.String),
+      authors: Schema.optional(Schema.Array(Schema.String)),
+      publisher: Schema.optional(Schema.String),
+      publishedDate: Schema.optional(Schema.String),
+      description: Schema.optional(Schema.String),
+      pageCount: Schema.optional(Schema.Number),
+      printType: Schema.optional(Schema.String),
+      averageRating: Schema.optional(Schema.Number),
+      ratingsCount: Schema.optional(Schema.Number),
+      contentVersion: Schema.optional(Schema.String),
+      imageLinks: Schema.optional(
+        Schema.Struct({
+          thumbnail: Schema.optional(Schema.String),
+          small: Schema.optional(Schema.String),
+          medium: Schema.optional(Schema.String),
+          large: Schema.optional(Schema.String),
+          extraLarge: Schema.optional(Schema.String),
+          smallThumbnail: Schema.optional(Schema.String),
+        }),
+      ),
+      language: Schema.optional(Schema.String),
+      previewLink: Schema.optional(Schema.String),
+      industryIdentifiers: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            type: Schema.optional(Schema.String),
+            identifier: Schema.optional(Schema.String),
+          }),
+        ),
+      ),
+      infoLink: Schema.optional(Schema.String),
+      canonicalVolumeLink: Schema.optional(Schema.String),
+      categories: Schema.optional(Schema.Array(Schema.String)),
+      printedPageCount: Schema.optional(Schema.Number),
+      readingModes: Schema.optional(
+        Schema.Struct({
+          text: Schema.optional(Schema.Boolean),
+          image: Schema.optional(Schema.Boolean),
+        }),
+      ),
+      samplePageCount: Schema.optional(Schema.Number),
+      maturityRating: Schema.optional(Schema.String),
+      allowAnonLogging: Schema.optional(Schema.Boolean),
+      seriesInfo: Schema.optional(Volumeseriesinfo),
+      comicsContent: Schema.optional(Schema.Boolean),
+      dimensions: Schema.optional(
+        Schema.Struct({
+          height: Schema.optional(Schema.String),
+          width: Schema.optional(Schema.String),
+          thickness: Schema.optional(Schema.String),
+        }),
+      ),
+      mainCategory: Schema.optional(Schema.String),
+      panelizationSummary: Schema.optional(
+        Schema.Struct({
+          containsEpubBubbles: Schema.optional(Schema.Boolean),
+          containsImageBubbles: Schema.optional(Schema.Boolean),
+          epubBubbleVersion: Schema.optional(Schema.String),
+          imageBubbleVersion: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  userInfo: Schema.optional(
+    Schema.Struct({
+      familySharing: Schema.optional(
+        Schema.Struct({
+          isSharingAllowed: Schema.optional(Schema.Boolean),
+          isSharingDisabledByFop: Schema.optional(Schema.Boolean),
+          familyRole: Schema.optional(Schema.String),
+        }),
+      ),
+      review: Schema.optional(Review),
+      readingPosition: Schema.optional(ReadingPosition),
+      isPurchased: Schema.optional(Schema.Boolean),
+      updated: Schema.optional(Schema.String),
+      isPreordered: Schema.optional(Schema.Boolean),
+      isInMyBooks: Schema.optional(Schema.Boolean),
+      isUploaded: Schema.optional(Schema.Boolean),
+      rentalState: Schema.optional(Schema.String),
+      acquisitionType: Schema.optional(Schema.Number),
+      entitlementType: Schema.optional(Schema.Number),
+      acquiredTime: Schema.optional(Schema.String),
+      isFamilySharedFromUser: Schema.optional(Schema.Boolean),
+      isFamilySharedToUser: Schema.optional(Schema.Boolean),
+      isFamilySharingAllowed: Schema.optional(Schema.Boolean),
+      isFamilySharingDisabledByFop: Schema.optional(Schema.Boolean),
+      userUploadedVolumeInfo: Schema.optional(
+        Schema.Struct({ processingState: Schema.optional(Schema.String) }),
+      ),
+      rentalPeriod: Schema.optional(
+        Schema.Struct({
+          startUtcSec: Schema.optional(Schema.String),
+          endUtcSec: Schema.optional(Schema.String),
+        }),
+      ),
+      copy: Schema.optional(
+        Schema.Struct({
+          remainingCharacterCount: Schema.optional(Schema.Number),
+          allowedCharacterCount: Schema.optional(Schema.Number),
+          limitType: Schema.optional(Schema.String),
+          updated: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  saleInfo: Schema.optional(
+    Schema.Struct({
+      country: Schema.optional(Schema.String),
+      saleability: Schema.optional(Schema.String),
+      isEbook: Schema.optional(Schema.Boolean),
+      buyLink: Schema.optional(Schema.String),
+      offers: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            finskyOfferType: Schema.optional(Schema.Number),
+            giftable: Schema.optional(Schema.Boolean),
+            retailPrice: Schema.optional(
+              Schema.Struct({
+                currencyCode: Schema.optional(Schema.String),
+                amountInMicros: Schema.optional(Schema.Number),
+              }),
+            ),
+            rentalDuration: Schema.optional(
+              Schema.Struct({
+                unit: Schema.optional(Schema.String),
+                count: Schema.optional(Schema.Number),
+              }),
+            ),
+            listPrice: Schema.optional(
+              Schema.Struct({
+                currencyCode: Schema.optional(Schema.String),
+                amountInMicros: Schema.optional(Schema.Number),
+              }),
+            ),
+          }),
+        ),
+      ),
+      onSaleDate: Schema.optional(Schema.String),
+      listPrice: Schema.optional(
+        Schema.Struct({
+          amount: Schema.optional(Schema.Number),
+          currencyCode: Schema.optional(Schema.String),
+        }),
+      ),
+      retailPrice: Schema.optional(
+        Schema.Struct({
+          amount: Schema.optional(Schema.Number),
+          currencyCode: Schema.optional(Schema.String),
+        }),
+      ),
+    }),
+  ),
+  accessInfo: Schema.optional(
+    Schema.Struct({
+      country: Schema.optional(Schema.String),
+      viewability: Schema.optional(Schema.String),
+      embeddable: Schema.optional(Schema.Boolean),
+      publicDomain: Schema.optional(Schema.Boolean),
+      accessViewStatus: Schema.optional(Schema.String),
+      downloadAccess: Schema.optional(DownloadAccessRestriction),
+      textToSpeechPermission: Schema.optional(Schema.String),
+      webReaderLink: Schema.optional(Schema.String),
+      epub: Schema.optional(
+        Schema.Struct({
+          downloadLink: Schema.optional(Schema.String),
+          acsTokenLink: Schema.optional(Schema.String),
+          isAvailable: Schema.optional(Schema.Boolean),
+        }),
+      ),
+      pdf: Schema.optional(
+        Schema.Struct({
+          downloadLink: Schema.optional(Schema.String),
+          acsTokenLink: Schema.optional(Schema.String),
+          isAvailable: Schema.optional(Schema.Boolean),
+        }),
+      ),
+      viewOrderUrl: Schema.optional(Schema.String),
+      explicitOfflineLicenseManagement: Schema.optional(Schema.Boolean),
+      quoteSharingAllowed: Schema.optional(Schema.Boolean),
+      driveImportedContentLink: Schema.optional(Schema.String),
+    }),
+  ),
+  searchInfo: Schema.optional(
+    Schema.Struct({ textSnippet: Schema.optional(Schema.String) }),
+  ),
+  recommendedInfo: Schema.optional(
+    Schema.Struct({ explanation: Schema.optional(Schema.String) }),
+  ),
+}).annotate({ identifier: "Volume" });
 
 export interface Volumes {
   /** Resource type. */
@@ -605,14 +577,11 @@ export interface Volumes {
   totalItems?: number;
 }
 
-export const Volumes: Schema.Schema<Volumes> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(Volume)),
-      totalItems: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Volumes" }) as any as Schema.Schema<Volumes>;
+export const Volumes = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(Volume)),
+  totalItems: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Volumes" });
 
 export interface BooksCloudloadingResource {
   volumeId?: string;
@@ -621,24 +590,19 @@ export interface BooksCloudloadingResource {
   processingState?: string;
 }
 
-export const BooksCloudloadingResource: Schema.Schema<BooksCloudloadingResource> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      volumeId: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      author: Schema.optional(Schema.String),
-      processingState: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BooksCloudloadingResource",
-  }) as any as Schema.Schema<BooksCloudloadingResource>;
+export const BooksCloudloadingResource =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    volumeId: Schema.optional(Schema.String),
+    title: Schema.optional(Schema.String),
+    author: Schema.optional(Schema.String),
+    processingState: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BooksCloudloadingResource" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface Metadata {
   /** Resource type. */
@@ -653,23 +617,20 @@ export interface Metadata {
   }>;
 }
 
-export const Metadata: Schema.Schema<Metadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      items: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            language: Schema.optional(Schema.String),
-            size: Schema.optional(Schema.String),
-            version: Schema.optional(Schema.String),
-            download_url: Schema.optional(Schema.String),
-            encrypted_key: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-    }),
-  ).annotate({ identifier: "Metadata" }) as any as Schema.Schema<Metadata>;
+export const Metadata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  items: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        language: Schema.optional(Schema.String),
+        size: Schema.optional(Schema.String),
+        version: Schema.optional(Schema.String),
+        download_url: Schema.optional(Schema.String),
+        encrypted_key: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
+}).annotate({ identifier: "Metadata" });
 
 export interface FamilyInfo {
   /** Resource type. */
@@ -684,21 +645,18 @@ export interface FamilyInfo {
   };
 }
 
-export const FamilyInfo: Schema.Schema<FamilyInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const FamilyInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  membership: Schema.optional(
     Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      membership: Schema.optional(
-        Schema.Struct({
-          isInFamily: Schema.optional(Schema.Boolean),
-          role: Schema.optional(Schema.String),
-          ageGroup: Schema.optional(Schema.String),
-          acquirePermission: Schema.optional(Schema.String),
-          allowedMaturityRating: Schema.optional(Schema.String),
-        }),
-      ),
+      isInFamily: Schema.optional(Schema.Boolean),
+      role: Schema.optional(Schema.String),
+      ageGroup: Schema.optional(Schema.String),
+      acquirePermission: Schema.optional(Schema.String),
+      allowedMaturityRating: Schema.optional(Schema.String),
     }),
-  ).annotate({ identifier: "FamilyInfo" }) as any as Schema.Schema<FamilyInfo>;
+  ),
+}).annotate({ identifier: "FamilyInfo" });
 
 export interface Layersummary {
   /** Unique id of this layer summary. */
@@ -729,26 +687,21 @@ export interface Layersummary {
   annotationsDataLink?: string;
 }
 
-export const Layersummary: Schema.Schema<Layersummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      layerId: Schema.optional(Schema.String),
-      volumeId: Schema.optional(Schema.String),
-      contentVersion: Schema.optional(Schema.String),
-      annotationTypes: Schema.optional(Schema.Array(Schema.String)),
-      annotationCount: Schema.optional(Schema.Number),
-      dataCount: Schema.optional(Schema.Number),
-      kind: Schema.optional(Schema.String),
-      selfLink: Schema.optional(Schema.String),
-      updated: Schema.optional(Schema.String),
-      volumeAnnotationsVersion: Schema.optional(Schema.String),
-      annotationsLink: Schema.optional(Schema.String),
-      annotationsDataLink: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Layersummary",
-  }) as any as Schema.Schema<Layersummary>;
+export const Layersummary = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  layerId: Schema.optional(Schema.String),
+  volumeId: Schema.optional(Schema.String),
+  contentVersion: Schema.optional(Schema.String),
+  annotationTypes: Schema.optional(Schema.Array(Schema.String)),
+  annotationCount: Schema.optional(Schema.Number),
+  dataCount: Schema.optional(Schema.Number),
+  kind: Schema.optional(Schema.String),
+  selfLink: Schema.optional(Schema.String),
+  updated: Schema.optional(Schema.String),
+  volumeAnnotationsVersion: Schema.optional(Schema.String),
+  annotationsLink: Schema.optional(Schema.String),
+  annotationsDataLink: Schema.optional(Schema.String),
+}).annotate({ identifier: "Layersummary" });
 
 export interface Layersummaries {
   /** Resource type. */
@@ -759,16 +712,11 @@ export interface Layersummaries {
   totalItems?: number;
 }
 
-export const Layersummaries: Schema.Schema<Layersummaries> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(Layersummary)),
-      totalItems: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "Layersummaries",
-  }) as any as Schema.Schema<Layersummaries>;
+export const Layersummaries = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(Layersummary)),
+  totalItems: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Layersummaries" });
 
 export interface Dictlayerdata {
   kind?: string;
@@ -808,124 +756,117 @@ export interface Dictlayerdata {
   common?: { title?: string };
 }
 
-export const Dictlayerdata: Schema.Schema<Dictlayerdata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const Dictlayerdata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  dict: Schema.optional(
     Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      dict: Schema.optional(
-        Schema.Struct({
-          words: Schema.optional(
-            Schema.Array(
-              Schema.Struct({
-                senses: Schema.optional(
-                  Schema.Array(
-                    Schema.Struct({
-                      syllabification: Schema.optional(Schema.String),
-                      pronunciation: Schema.optional(Schema.String),
-                      partOfSpeech: Schema.optional(Schema.String),
-                      pronunciationUrl: Schema.optional(Schema.String),
-                      definitions: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            definition: Schema.optional(Schema.String),
-                            examples: Schema.optional(
-                              Schema.Array(
+      words: Schema.optional(
+        Schema.Array(
+          Schema.Struct({
+            senses: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  syllabification: Schema.optional(Schema.String),
+                  pronunciation: Schema.optional(Schema.String),
+                  partOfSpeech: Schema.optional(Schema.String),
+                  pronunciationUrl: Schema.optional(Schema.String),
+                  definitions: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        definition: Schema.optional(Schema.String),
+                        examples: Schema.optional(
+                          Schema.Array(
+                            Schema.Struct({
+                              text: Schema.optional(Schema.String),
+                              source: Schema.optional(
                                 Schema.Struct({
-                                  text: Schema.optional(Schema.String),
-                                  source: Schema.optional(
-                                    Schema.Struct({
-                                      url: Schema.optional(Schema.String),
-                                      attribution: Schema.optional(
-                                        Schema.String,
-                                      ),
-                                    }),
-                                  ),
+                                  url: Schema.optional(Schema.String),
+                                  attribution: Schema.optional(Schema.String),
                                 }),
                               ),
-                            ),
-                          }),
+                            }),
+                          ),
                         ),
-                      ),
-                      synonyms: Schema.optional(
-                        Schema.Array(
+                      }),
+                    ),
+                  ),
+                  synonyms: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        text: Schema.optional(Schema.String),
+                        source: Schema.optional(
                           Schema.Struct({
-                            text: Schema.optional(Schema.String),
-                            source: Schema.optional(
-                              Schema.Struct({
-                                url: Schema.optional(Schema.String),
-                                attribution: Schema.optional(Schema.String),
-                              }),
-                            ),
+                            url: Schema.optional(Schema.String),
+                            attribution: Schema.optional(Schema.String),
                           }),
                         ),
-                      ),
-                      conjugations: Schema.optional(
-                        Schema.Array(
-                          Schema.Struct({
-                            value: Schema.optional(Schema.String),
-                            type: Schema.optional(Schema.String),
-                          }),
-                        ),
-                      ),
-                      source: Schema.optional(
-                        Schema.Struct({
-                          url: Schema.optional(Schema.String),
-                          attribution: Schema.optional(Schema.String),
-                        }),
-                      ),
-                    }),
+                      }),
+                    ),
                   ),
-                ),
-                examples: Schema.optional(
-                  Schema.Array(
+                  conjugations: Schema.optional(
+                    Schema.Array(
+                      Schema.Struct({
+                        value: Schema.optional(Schema.String),
+                        type: Schema.optional(Schema.String),
+                      }),
+                    ),
+                  ),
+                  source: Schema.optional(
                     Schema.Struct({
-                      text: Schema.optional(Schema.String),
-                      source: Schema.optional(
-                        Schema.Struct({
-                          url: Schema.optional(Schema.String),
-                          attribution: Schema.optional(Schema.String),
-                        }),
-                      ),
+                      url: Schema.optional(Schema.String),
+                      attribution: Schema.optional(Schema.String),
                     }),
                   ),
-                ),
-                derivatives: Schema.optional(
-                  Schema.Array(
+                }),
+              ),
+            ),
+            examples: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  text: Schema.optional(Schema.String),
+                  source: Schema.optional(
                     Schema.Struct({
-                      text: Schema.optional(Schema.String),
-                      source: Schema.optional(
-                        Schema.Struct({
-                          url: Schema.optional(Schema.String),
-                          attribution: Schema.optional(Schema.String),
-                        }),
-                      ),
+                      url: Schema.optional(Schema.String),
+                      attribution: Schema.optional(Schema.String),
                     }),
                   ),
-                ),
-                source: Schema.optional(
-                  Schema.Struct({
-                    url: Schema.optional(Schema.String),
-                    attribution: Schema.optional(Schema.String),
-                  }),
-                ),
+                }),
+              ),
+            ),
+            derivatives: Schema.optional(
+              Schema.Array(
+                Schema.Struct({
+                  text: Schema.optional(Schema.String),
+                  source: Schema.optional(
+                    Schema.Struct({
+                      url: Schema.optional(Schema.String),
+                      attribution: Schema.optional(Schema.String),
+                    }),
+                  ),
+                }),
+              ),
+            ),
+            source: Schema.optional(
+              Schema.Struct({
+                url: Schema.optional(Schema.String),
+                attribution: Schema.optional(Schema.String),
               }),
             ),
-          ),
-          source: Schema.optional(
-            Schema.Struct({
-              url: Schema.optional(Schema.String),
-              attribution: Schema.optional(Schema.String),
-            }),
-          ),
+          }),
+        ),
+      ),
+      source: Schema.optional(
+        Schema.Struct({
+          url: Schema.optional(Schema.String),
+          attribution: Schema.optional(Schema.String),
         }),
       ),
-      common: Schema.optional(
-        Schema.Struct({ title: Schema.optional(Schema.String) }),
-      ),
     }),
-  ).annotate({
-    identifier: "Dictlayerdata",
-  }) as any as Schema.Schema<Dictlayerdata>;
+  ),
+  common: Schema.optional(
+    Schema.Struct({ title: Schema.optional(Schema.String) }),
+  ),
+}).annotate({ identifier: "Dictlayerdata" });
 
 export interface DictionaryAnnotationdata {
   /** Unique id for this annotation data. */
@@ -948,22 +889,18 @@ export interface DictionaryAnnotationdata {
   data?: Dictlayerdata;
 }
 
-export const DictionaryAnnotationdata: Schema.Schema<DictionaryAnnotationdata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      layerId: Schema.optional(Schema.String),
-      selfLink: Schema.optional(Schema.String),
-      annotationType: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      encodedData: Schema.optional(Schema.String),
-      updated: Schema.optional(Schema.String),
-      volumeId: Schema.optional(Schema.String),
-      data: Schema.optional(Dictlayerdata),
-    }),
-  ).annotate({
-    identifier: "DictionaryAnnotationdata",
-  }) as any as Schema.Schema<DictionaryAnnotationdata>;
+export const DictionaryAnnotationdata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    id: Schema.optional(Schema.String),
+    layerId: Schema.optional(Schema.String),
+    selfLink: Schema.optional(Schema.String),
+    annotationType: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+    encodedData: Schema.optional(Schema.String),
+    updated: Schema.optional(Schema.String),
+    volumeId: Schema.optional(Schema.String),
+    data: Schema.optional(Dictlayerdata),
+  }).annotate({ identifier: "DictionaryAnnotationdata" });
 
 export interface Geolayerdata {
   kind?: string;
@@ -989,50 +926,45 @@ export interface Geolayerdata {
   };
 }
 
-export const Geolayerdata: Schema.Schema<Geolayerdata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const Geolayerdata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  geo: Schema.optional(
     Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      geo: Schema.optional(
+      viewport: Schema.optional(
         Schema.Struct({
-          viewport: Schema.optional(
+          lo: Schema.optional(
             Schema.Struct({
-              lo: Schema.optional(
-                Schema.Struct({
-                  longitude: Schema.optional(Schema.Number),
-                  latitude: Schema.optional(Schema.Number),
-                }),
-              ),
-              hi: Schema.optional(
-                Schema.Struct({
-                  longitude: Schema.optional(Schema.Number),
-                  latitude: Schema.optional(Schema.Number),
-                }),
-              ),
+              longitude: Schema.optional(Schema.Number),
+              latitude: Schema.optional(Schema.Number),
             }),
           ),
-          countryCode: Schema.optional(Schema.String),
-          mapType: Schema.optional(Schema.String),
-          zoom: Schema.optional(Schema.Number),
-          cachePolicy: Schema.optional(Schema.String),
-          longitude: Schema.optional(Schema.Number),
-          latitude: Schema.optional(Schema.Number),
-          boundary: Schema.optional(Schema.Array(Schema.String)),
+          hi: Schema.optional(
+            Schema.Struct({
+              longitude: Schema.optional(Schema.Number),
+              latitude: Schema.optional(Schema.Number),
+            }),
+          ),
         }),
       ),
-      common: Schema.optional(
-        Schema.Struct({
-          lang: Schema.optional(Schema.String),
-          snippetUrl: Schema.optional(Schema.String),
-          snippet: Schema.optional(Schema.String),
-          previewImageUrl: Schema.optional(Schema.String),
-          title: Schema.optional(Schema.String),
-        }),
-      ),
+      countryCode: Schema.optional(Schema.String),
+      mapType: Schema.optional(Schema.String),
+      zoom: Schema.optional(Schema.Number),
+      cachePolicy: Schema.optional(Schema.String),
+      longitude: Schema.optional(Schema.Number),
+      latitude: Schema.optional(Schema.Number),
+      boundary: Schema.optional(Schema.Array(Schema.String)),
     }),
-  ).annotate({
-    identifier: "Geolayerdata",
-  }) as any as Schema.Schema<Geolayerdata>;
+  ),
+  common: Schema.optional(
+    Schema.Struct({
+      lang: Schema.optional(Schema.String),
+      snippetUrl: Schema.optional(Schema.String),
+      snippet: Schema.optional(Schema.String),
+      previewImageUrl: Schema.optional(Schema.String),
+      title: Schema.optional(Schema.String),
+    }),
+  ),
+}).annotate({ identifier: "Geolayerdata" });
 
 export interface GeoAnnotationdata {
   /** Unique id for this annotation data. */
@@ -1055,22 +987,17 @@ export interface GeoAnnotationdata {
   data?: Geolayerdata;
 }
 
-export const GeoAnnotationdata: Schema.Schema<GeoAnnotationdata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      id: Schema.optional(Schema.String),
-      layerId: Schema.optional(Schema.String),
-      selfLink: Schema.optional(Schema.String),
-      annotationType: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      encodedData: Schema.optional(Schema.String),
-      updated: Schema.optional(Schema.String),
-      volumeId: Schema.optional(Schema.String),
-      data: Schema.optional(Geolayerdata),
-    }),
-  ).annotate({
-    identifier: "GeoAnnotationdata",
-  }) as any as Schema.Schema<GeoAnnotationdata>;
+export const GeoAnnotationdata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  layerId: Schema.optional(Schema.String),
+  selfLink: Schema.optional(Schema.String),
+  annotationType: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  encodedData: Schema.optional(Schema.String),
+  updated: Schema.optional(Schema.String),
+  volumeId: Schema.optional(Schema.String),
+  data: Schema.optional(Geolayerdata),
+}).annotate({ identifier: "GeoAnnotationdata" });
 
 export interface Annotationsdata {
   /** Resource type */
@@ -1083,17 +1010,12 @@ export interface Annotationsdata {
   nextPageToken?: string;
 }
 
-export const Annotationsdata: Schema.Schema<Annotationsdata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(GeoAnnotationdata)),
-      totalItems: Schema.optional(Schema.Number),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Annotationsdata",
-  }) as any as Schema.Schema<Annotationsdata>;
+export const Annotationsdata = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(GeoAnnotationdata)),
+  totalItems: Schema.optional(Schema.Number),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "Annotationsdata" });
 
 export interface BooksAnnotationsRange {
   /** The starting position for the range. */
@@ -1106,17 +1028,12 @@ export interface BooksAnnotationsRange {
   endOffset?: string;
 }
 
-export const BooksAnnotationsRange: Schema.Schema<BooksAnnotationsRange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      startPosition: Schema.optional(Schema.String),
-      startOffset: Schema.optional(Schema.String),
-      endPosition: Schema.optional(Schema.String),
-      endOffset: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BooksAnnotationsRange",
-  }) as any as Schema.Schema<BooksAnnotationsRange>;
+export const BooksAnnotationsRange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  startPosition: Schema.optional(Schema.String),
+  startOffset: Schema.optional(Schema.String),
+  endPosition: Schema.optional(Schema.String),
+  endOffset: Schema.optional(Schema.String),
+}).annotate({ identifier: "BooksAnnotationsRange" });
 
 export interface Volumeannotation {
   /** Unique id of this volume annotation. */
@@ -1154,34 +1071,29 @@ export interface Volumeannotation {
   };
 }
 
-export const Volumeannotation: Schema.Schema<Volumeannotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const Volumeannotation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  selfLink: Schema.optional(Schema.String),
+  layerId: Schema.optional(Schema.String),
+  annotationType: Schema.optional(Schema.String),
+  pageIds: Schema.optional(Schema.Array(Schema.String)),
+  selectedText: Schema.optional(Schema.String),
+  data: Schema.optional(Schema.String),
+  annotationDataId: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  updated: Schema.optional(Schema.String),
+  deleted: Schema.optional(Schema.Boolean),
+  volumeId: Schema.optional(Schema.String),
+  annotationDataLink: Schema.optional(Schema.String),
+  contentRanges: Schema.optional(
     Schema.Struct({
-      id: Schema.optional(Schema.String),
-      selfLink: Schema.optional(Schema.String),
-      layerId: Schema.optional(Schema.String),
-      annotationType: Schema.optional(Schema.String),
-      pageIds: Schema.optional(Schema.Array(Schema.String)),
-      selectedText: Schema.optional(Schema.String),
-      data: Schema.optional(Schema.String),
-      annotationDataId: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      updated: Schema.optional(Schema.String),
-      deleted: Schema.optional(Schema.Boolean),
-      volumeId: Schema.optional(Schema.String),
-      annotationDataLink: Schema.optional(Schema.String),
-      contentRanges: Schema.optional(
-        Schema.Struct({
-          contentVersion: Schema.optional(Schema.String),
-          gbTextRange: Schema.optional(BooksAnnotationsRange),
-          gbImageRange: Schema.optional(BooksAnnotationsRange),
-          cfiRange: Schema.optional(BooksAnnotationsRange),
-        }),
-      ),
+      contentVersion: Schema.optional(Schema.String),
+      gbTextRange: Schema.optional(BooksAnnotationsRange),
+      gbImageRange: Schema.optional(BooksAnnotationsRange),
+      cfiRange: Schema.optional(BooksAnnotationsRange),
     }),
-  ).annotate({
-    identifier: "Volumeannotation",
-  }) as any as Schema.Schema<Volumeannotation>;
+  ),
+}).annotate({ identifier: "Volumeannotation" });
 
 export interface Volumeannotations {
   /** The version string for all of the volume annotations in this layer (not just the ones in this response). Note: the version string doesn't apply to the annotation data, just the information in this response (e.g. the location of annotations in the book). */
@@ -1196,18 +1108,13 @@ export interface Volumeannotations {
   nextPageToken?: string;
 }
 
-export const Volumeannotations: Schema.Schema<Volumeannotations> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      version: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(Volumeannotation)),
-      totalItems: Schema.optional(Schema.Number),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Volumeannotations",
-  }) as any as Schema.Schema<Volumeannotations>;
+export const Volumeannotations = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  version: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(Volumeannotation)),
+  totalItems: Schema.optional(Schema.Number),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "Volumeannotations" });
 
 export interface Usersettings {
   /** Resource type. */
@@ -1223,39 +1130,34 @@ export interface Usersettings {
   notesExport?: { isEnabled?: boolean; folderName?: string };
 }
 
-export const Usersettings: Schema.Schema<Usersettings> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const Usersettings = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  notification: Schema.optional(
     Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      notification: Schema.optional(
-        Schema.Struct({
-          moreFromAuthors: Schema.optional(
-            Schema.Struct({ opted_state: Schema.optional(Schema.String) }),
-          ),
-          moreFromSeries: Schema.optional(
-            Schema.Struct({ opted_state: Schema.optional(Schema.String) }),
-          ),
-          rewardExpirations: Schema.optional(
-            Schema.Struct({ opted_state: Schema.optional(Schema.String) }),
-          ),
-          priceDrop: Schema.optional(
-            Schema.Struct({ opted_state: Schema.optional(Schema.String) }),
-          ),
-          matchMyInterests: Schema.optional(
-            Schema.Struct({ opted_state: Schema.optional(Schema.String) }),
-          ),
-        }),
+      moreFromAuthors: Schema.optional(
+        Schema.Struct({ opted_state: Schema.optional(Schema.String) }),
       ),
-      notesExport: Schema.optional(
-        Schema.Struct({
-          isEnabled: Schema.optional(Schema.Boolean),
-          folderName: Schema.optional(Schema.String),
-        }),
+      moreFromSeries: Schema.optional(
+        Schema.Struct({ opted_state: Schema.optional(Schema.String) }),
+      ),
+      rewardExpirations: Schema.optional(
+        Schema.Struct({ opted_state: Schema.optional(Schema.String) }),
+      ),
+      priceDrop: Schema.optional(
+        Schema.Struct({ opted_state: Schema.optional(Schema.String) }),
+      ),
+      matchMyInterests: Schema.optional(
+        Schema.Struct({ opted_state: Schema.optional(Schema.String) }),
       ),
     }),
-  ).annotate({
-    identifier: "Usersettings",
-  }) as any as Schema.Schema<Usersettings>;
+  ),
+  notesExport: Schema.optional(
+    Schema.Struct({
+      isEnabled: Schema.optional(Schema.Boolean),
+      folderName: Schema.optional(Schema.String),
+    }),
+  ),
+}).annotate({ identifier: "Usersettings" });
 
 export interface DownloadAccesses {
   /** A list of download access responses. */
@@ -1264,17 +1166,10 @@ export interface DownloadAccesses {
   kind?: string;
 }
 
-export const DownloadAccesses: Schema.Schema<DownloadAccesses> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      downloadAccessList: Schema.optional(
-        Schema.Array(DownloadAccessRestriction),
-      ),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "DownloadAccesses",
-  }) as any as Schema.Schema<DownloadAccesses>;
+export const DownloadAccesses = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  downloadAccessList: Schema.optional(Schema.Array(DownloadAccessRestriction)),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "DownloadAccesses" });
 
 export interface ConcurrentAccessRestriction {
   /** Whether access is granted for this (user, device, volume). */
@@ -1301,24 +1196,20 @@ export interface ConcurrentAccessRestriction {
   kind?: string;
 }
 
-export const ConcurrentAccessRestriction: Schema.Schema<ConcurrentAccessRestriction> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      deviceAllowed: Schema.optional(Schema.Boolean),
-      timeWindowSeconds: Schema.optional(Schema.Number),
-      maxConcurrentDevices: Schema.optional(Schema.Number),
-      reasonCode: Schema.optional(Schema.String),
-      message: Schema.optional(Schema.String),
-      volumeId: Schema.optional(Schema.String),
-      restricted: Schema.optional(Schema.Boolean),
-      nonce: Schema.optional(Schema.String),
-      source: Schema.optional(Schema.String),
-      signature: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ConcurrentAccessRestriction",
-  }) as any as Schema.Schema<ConcurrentAccessRestriction>;
+export const ConcurrentAccessRestriction =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    deviceAllowed: Schema.optional(Schema.Boolean),
+    timeWindowSeconds: Schema.optional(Schema.Number),
+    maxConcurrentDevices: Schema.optional(Schema.Number),
+    reasonCode: Schema.optional(Schema.String),
+    message: Schema.optional(Schema.String),
+    volumeId: Schema.optional(Schema.String),
+    restricted: Schema.optional(Schema.Boolean),
+    nonce: Schema.optional(Schema.String),
+    source: Schema.optional(Schema.String),
+    signature: Schema.optional(Schema.String),
+    kind: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ConcurrentAccessRestriction" });
 
 export interface RequestAccessData {
   /** A concurrent access response. */
@@ -1329,16 +1220,11 @@ export interface RequestAccessData {
   kind?: string;
 }
 
-export const RequestAccessData: Schema.Schema<RequestAccessData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      concurrentAccess: Schema.optional(ConcurrentAccessRestriction),
-      downloadAccess: Schema.optional(DownloadAccessRestriction),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "RequestAccessData",
-  }) as any as Schema.Schema<RequestAccessData>;
+export const RequestAccessData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  concurrentAccess: Schema.optional(ConcurrentAccessRestriction),
+  downloadAccess: Schema.optional(DownloadAccessRestriction),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "RequestAccessData" });
 
 export interface Annotation {
   /** Id of this annotation, in the form of a GUID. */
@@ -1392,50 +1278,47 @@ export interface Annotation {
   };
 }
 
-export const Annotation: Schema.Schema<Annotation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
+export const Annotation = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  id: Schema.optional(Schema.String),
+  volumeId: Schema.optional(Schema.String),
+  currentVersionRanges: Schema.optional(
     Schema.Struct({
-      id: Schema.optional(Schema.String),
-      volumeId: Schema.optional(Schema.String),
-      currentVersionRanges: Schema.optional(
-        Schema.Struct({
-          contentVersion: Schema.optional(Schema.String),
-          gbImageRange: Schema.optional(BooksAnnotationsRange),
-          gbTextRange: Schema.optional(BooksAnnotationsRange),
-          cfiRange: Schema.optional(BooksAnnotationsRange),
-          imageCfiRange: Schema.optional(BooksAnnotationsRange),
-        }),
-      ),
-      pageIds: Schema.optional(Schema.Array(Schema.String)),
-      selectedText: Schema.optional(Schema.String),
-      beforeSelectedText: Schema.optional(Schema.String),
-      afterSelectedText: Schema.optional(Schema.String),
-      data: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-      selfLink: Schema.optional(Schema.String),
-      layerSummary: Schema.optional(
-        Schema.Struct({
-          remainingCharacterCount: Schema.optional(Schema.Number),
-          allowedCharacterCount: Schema.optional(Schema.Number),
-          limitType: Schema.optional(Schema.String),
-        }),
-      ),
-      highlightStyle: Schema.optional(Schema.String),
-      updated: Schema.optional(Schema.String),
-      created: Schema.optional(Schema.String),
-      layerId: Schema.optional(Schema.String),
-      deleted: Schema.optional(Schema.Boolean),
-      clientVersionRanges: Schema.optional(
-        Schema.Struct({
-          gbImageRange: Schema.optional(BooksAnnotationsRange),
-          gbTextRange: Schema.optional(BooksAnnotationsRange),
-          cfiRange: Schema.optional(BooksAnnotationsRange),
-          contentVersion: Schema.optional(Schema.String),
-          imageCfiRange: Schema.optional(BooksAnnotationsRange),
-        }),
-      ),
+      contentVersion: Schema.optional(Schema.String),
+      gbImageRange: Schema.optional(BooksAnnotationsRange),
+      gbTextRange: Schema.optional(BooksAnnotationsRange),
+      cfiRange: Schema.optional(BooksAnnotationsRange),
+      imageCfiRange: Schema.optional(BooksAnnotationsRange),
     }),
-  ).annotate({ identifier: "Annotation" }) as any as Schema.Schema<Annotation>;
+  ),
+  pageIds: Schema.optional(Schema.Array(Schema.String)),
+  selectedText: Schema.optional(Schema.String),
+  beforeSelectedText: Schema.optional(Schema.String),
+  afterSelectedText: Schema.optional(Schema.String),
+  data: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+  selfLink: Schema.optional(Schema.String),
+  layerSummary: Schema.optional(
+    Schema.Struct({
+      remainingCharacterCount: Schema.optional(Schema.Number),
+      allowedCharacterCount: Schema.optional(Schema.Number),
+      limitType: Schema.optional(Schema.String),
+    }),
+  ),
+  highlightStyle: Schema.optional(Schema.String),
+  updated: Schema.optional(Schema.String),
+  created: Schema.optional(Schema.String),
+  layerId: Schema.optional(Schema.String),
+  deleted: Schema.optional(Schema.Boolean),
+  clientVersionRanges: Schema.optional(
+    Schema.Struct({
+      gbImageRange: Schema.optional(BooksAnnotationsRange),
+      gbTextRange: Schema.optional(BooksAnnotationsRange),
+      cfiRange: Schema.optional(BooksAnnotationsRange),
+      contentVersion: Schema.optional(Schema.String),
+      imageCfiRange: Schema.optional(BooksAnnotationsRange),
+    }),
+  ),
+}).annotate({ identifier: "Annotation" });
 
 export interface Annotations {
   /** Resource type. */
@@ -1448,17 +1331,12 @@ export interface Annotations {
   nextPageToken?: string;
 }
 
-export const Annotations: Schema.Schema<Annotations> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(Annotation)),
-      totalItems: Schema.optional(Schema.Number),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Annotations",
-  }) as any as Schema.Schema<Annotations>;
+export const Annotations = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(Annotation)),
+  totalItems: Schema.optional(Schema.Number),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "Annotations" });
 
 export interface AnnotationsSummary {
   layers?: Array<{
@@ -1471,25 +1349,20 @@ export interface AnnotationsSummary {
   kind?: string;
 }
 
-export const AnnotationsSummary: Schema.Schema<AnnotationsSummary> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      layers: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            layerId: Schema.optional(Schema.String),
-            remainingCharacterCount: Schema.optional(Schema.Number),
-            allowedCharacterCount: Schema.optional(Schema.Number),
-            limitType: Schema.optional(Schema.String),
-            updated: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AnnotationsSummary",
-  }) as any as Schema.Schema<AnnotationsSummary>;
+export const AnnotationsSummary = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  layers: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        layerId: Schema.optional(Schema.String),
+        remainingCharacterCount: Schema.optional(Schema.Number),
+        allowedCharacterCount: Schema.optional(Schema.Number),
+        limitType: Schema.optional(Schema.String),
+        updated: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "AnnotationsSummary" });
 
 export interface Notification {
   /** Resource type. */
@@ -1512,29 +1385,24 @@ export interface Notification {
   timeToExpireMs?: string;
 }
 
-export const Notification: Schema.Schema<Notification> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      title: Schema.optional(Schema.String),
-      body: Schema.optional(Schema.String),
-      iconUrl: Schema.optional(Schema.String),
-      targetUrl: Schema.optional(Schema.String),
-      notification_type: Schema.optional(Schema.String),
-      show_notification_settings_action: Schema.optional(Schema.Boolean),
-      pcampaign_id: Schema.optional(Schema.String),
-      dont_show_notification: Schema.optional(Schema.Boolean),
-      reason: Schema.optional(Schema.String),
-      doc_type: Schema.optional(Schema.String),
-      doc_id: Schema.optional(Schema.String),
-      crmExperimentIds: Schema.optional(Schema.Array(Schema.String)),
-      notificationGroup: Schema.optional(Schema.String),
-      is_document_mature: Schema.optional(Schema.Boolean),
-      timeToExpireMs: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Notification",
-  }) as any as Schema.Schema<Notification>;
+export const Notification = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  title: Schema.optional(Schema.String),
+  body: Schema.optional(Schema.String),
+  iconUrl: Schema.optional(Schema.String),
+  targetUrl: Schema.optional(Schema.String),
+  notification_type: Schema.optional(Schema.String),
+  show_notification_settings_action: Schema.optional(Schema.Boolean),
+  pcampaign_id: Schema.optional(Schema.String),
+  dont_show_notification: Schema.optional(Schema.Boolean),
+  reason: Schema.optional(Schema.String),
+  doc_type: Schema.optional(Schema.String),
+  doc_id: Schema.optional(Schema.String),
+  crmExperimentIds: Schema.optional(Schema.Array(Schema.String)),
+  notificationGroup: Schema.optional(Schema.String),
+  is_document_mature: Schema.optional(Schema.Boolean),
+  timeToExpireMs: Schema.optional(Schema.String),
+}).annotate({ identifier: "Notification" });
 
 export interface Category {
   /** Resource type. */
@@ -1543,21 +1411,18 @@ export interface Category {
   items?: Array<{ name?: string; categoryId?: string; badgeUrl?: string }>;
 }
 
-export const Category: Schema.Schema<Category> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      items: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            name: Schema.optional(Schema.String),
-            categoryId: Schema.optional(Schema.String),
-            badgeUrl: Schema.optional(Schema.String),
-          }),
-        ),
-      ),
-    }),
-  ).annotate({ identifier: "Category" }) as any as Schema.Schema<Category>;
+export const Category = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  items: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        name: Schema.optional(Schema.String),
+        categoryId: Schema.optional(Schema.String),
+        badgeUrl: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
+}).annotate({ identifier: "Category" });
 
 export interface Volume2 {
   /** Resource type. */
@@ -1567,14 +1432,11 @@ export interface Volume2 {
   nextPageToken?: string;
 }
 
-export const Volume2: Schema.Schema<Volume2> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      items: Schema.optional(Schema.Array(Volume)),
-      nextPageToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Volume2" }) as any as Schema.Schema<Volume2>;
+export const Volume2 = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  items: Schema.optional(Schema.Array(Volume)),
+  nextPageToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "Volume2" });
 
 export interface Discoveryclusters {
   totalClusters?: number;
@@ -1597,36 +1459,31 @@ export interface Discoveryclusters {
   }>;
 }
 
-export const Discoveryclusters: Schema.Schema<Discoveryclusters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      totalClusters: Schema.optional(Schema.Number),
-      kind: Schema.optional(Schema.String),
-      clusters: Schema.optional(
-        Schema.Array(
+export const Discoveryclusters = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  totalClusters: Schema.optional(Schema.Number),
+  kind: Schema.optional(Schema.String),
+  clusters: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        totalVolumes: Schema.optional(Schema.Number),
+        uid: Schema.optional(Schema.String),
+        title: Schema.optional(Schema.String),
+        subTitle: Schema.optional(Schema.String),
+        volumes: Schema.optional(Schema.Array(Volume)),
+        banner_with_content_container: Schema.optional(
           Schema.Struct({
-            totalVolumes: Schema.optional(Schema.Number),
-            uid: Schema.optional(Schema.String),
-            title: Schema.optional(Schema.String),
-            subTitle: Schema.optional(Schema.String),
-            volumes: Schema.optional(Schema.Array(Volume)),
-            banner_with_content_container: Schema.optional(
-              Schema.Struct({
-                imageUrl: Schema.optional(Schema.String),
-                moreButtonUrl: Schema.optional(Schema.String),
-                moreButtonText: Schema.optional(Schema.String),
-                maskColorArgb: Schema.optional(Schema.String),
-                fillColorArgb: Schema.optional(Schema.String),
-                textColorArgb: Schema.optional(Schema.String),
-              }),
-            ),
+            imageUrl: Schema.optional(Schema.String),
+            moreButtonUrl: Schema.optional(Schema.String),
+            moreButtonText: Schema.optional(Schema.String),
+            maskColorArgb: Schema.optional(Schema.String),
+            fillColorArgb: Schema.optional(Schema.String),
+            textColorArgb: Schema.optional(Schema.String),
           }),
         ),
-      ),
-    }),
-  ).annotate({
-    identifier: "Discoveryclusters",
-  }) as any as Schema.Schema<Discoveryclusters>;
+      }),
+    ),
+  ),
+}).annotate({ identifier: "Discoveryclusters" });
 
 export interface Offers {
   /** Resource type. */
@@ -1647,33 +1504,30 @@ export interface Offers {
   }>;
 }
 
-export const Offers: Schema.Schema<Offers> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      kind: Schema.optional(Schema.String),
-      items: Schema.optional(
-        Schema.Array(
-          Schema.Struct({
-            id: Schema.optional(Schema.String),
-            artUrl: Schema.optional(Schema.String),
-            items: Schema.optional(
-              Schema.Array(
-                Schema.Struct({
-                  volumeId: Schema.optional(Schema.String),
-                  canonicalVolumeLink: Schema.optional(Schema.String),
-                  coverUrl: Schema.optional(Schema.String),
-                  title: Schema.optional(Schema.String),
-                  author: Schema.optional(Schema.String),
-                  description: Schema.optional(Schema.String),
-                }),
-              ),
-            ),
-            gservicesKey: Schema.optional(Schema.String),
-          }),
+export const Offers = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  kind: Schema.optional(Schema.String),
+  items: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        id: Schema.optional(Schema.String),
+        artUrl: Schema.optional(Schema.String),
+        items: Schema.optional(
+          Schema.Array(
+            Schema.Struct({
+              volumeId: Schema.optional(Schema.String),
+              canonicalVolumeLink: Schema.optional(Schema.String),
+              coverUrl: Schema.optional(Schema.String),
+              title: Schema.optional(Schema.String),
+              author: Schema.optional(Schema.String),
+              description: Schema.optional(Schema.String),
+            }),
+          ),
         ),
-      ),
-    }),
-  ).annotate({ identifier: "Offers" }) as any as Schema.Schema<Offers>;
+        gservicesKey: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
+}).annotate({ identifier: "Offers" });
 
 export interface Series {
   series?: Array<{
@@ -1707,49 +1561,46 @@ export interface Series {
   kind?: string;
 }
 
-export const Series: Schema.Schema<Series> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      series: Schema.optional(
-        Schema.Array(
+export const Series = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  series: Schema.optional(
+    Schema.Array(
+      Schema.Struct({
+        seriesId: Schema.optional(Schema.String),
+        title: Schema.optional(Schema.String),
+        imageUrl: Schema.optional(Schema.String),
+        bannerImageUrl: Schema.optional(Schema.String),
+        seriesType: Schema.optional(Schema.String),
+        eligibleForSubscription: Schema.optional(Schema.Boolean),
+        isComplete: Schema.optional(Schema.Boolean),
+        subscriptionId: Schema.optional(Schema.String),
+        seriesSubscriptionReleaseInfo: Schema.optional(
           Schema.Struct({
-            seriesId: Schema.optional(Schema.String),
-            title: Schema.optional(Schema.String),
-            imageUrl: Schema.optional(Schema.String),
-            bannerImageUrl: Schema.optional(Schema.String),
-            seriesType: Schema.optional(Schema.String),
-            eligibleForSubscription: Schema.optional(Schema.Boolean),
-            isComplete: Schema.optional(Schema.Boolean),
-            subscriptionId: Schema.optional(Schema.String),
-            seriesSubscriptionReleaseInfo: Schema.optional(
+            seriesSubscriptionType: Schema.optional(Schema.String),
+            currentReleaseInfo: Schema.optional(
               Schema.Struct({
-                seriesSubscriptionType: Schema.optional(Schema.String),
-                currentReleaseInfo: Schema.optional(
-                  Schema.Struct({
-                    releaseNumber: Schema.optional(Schema.String),
-                    releaseTime: Schema.optional(Schema.String),
-                    currencyCode: Schema.optional(Schema.String),
-                    amountInMicros: Schema.optional(Schema.Number),
-                  }),
-                ),
-                nextReleaseInfo: Schema.optional(
-                  Schema.Struct({
-                    releaseNumber: Schema.optional(Schema.String),
-                    releaseTime: Schema.optional(Schema.String),
-                    currencyCode: Schema.optional(Schema.String),
-                    amountInMicros: Schema.optional(Schema.Number),
-                  }),
-                ),
-                cancelTime: Schema.optional(Schema.String),
+                releaseNumber: Schema.optional(Schema.String),
+                releaseTime: Schema.optional(Schema.String),
+                currencyCode: Schema.optional(Schema.String),
+                amountInMicros: Schema.optional(Schema.Number),
               }),
             ),
-            seriesFormatType: Schema.optional(Schema.String),
+            nextReleaseInfo: Schema.optional(
+              Schema.Struct({
+                releaseNumber: Schema.optional(Schema.String),
+                releaseTime: Schema.optional(Schema.String),
+                currencyCode: Schema.optional(Schema.String),
+                amountInMicros: Schema.optional(Schema.Number),
+              }),
+            ),
+            cancelTime: Schema.optional(Schema.String),
           }),
         ),
-      ),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Series" }) as any as Schema.Schema<Series>;
+        seriesFormatType: Schema.optional(Schema.String),
+      }),
+    ),
+  ),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "Series" });
 
 export interface Seriesmembership {
   member?: Array<Volume>;
@@ -1758,29 +1609,20 @@ export interface Seriesmembership {
   kind?: string;
 }
 
-export const Seriesmembership: Schema.Schema<Seriesmembership> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      member: Schema.optional(Schema.Array(Volume)),
-      nextPageToken: Schema.optional(Schema.String),
-      kind: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "Seriesmembership",
-  }) as any as Schema.Schema<Seriesmembership>;
+export const Seriesmembership = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  member: Schema.optional(Schema.Array(Volume)),
+  nextPageToken: Schema.optional(Schema.String),
+  kind: Schema.optional(Schema.String),
+}).annotate({ identifier: "Seriesmembership" });
 
 export interface BooksVolumesRecommendedRateResponse {
   consistency_token?: string;
 }
 
-export const BooksVolumesRecommendedRateResponse: Schema.Schema<BooksVolumesRecommendedRateResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      consistency_token: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BooksVolumesRecommendedRateResponse",
-  }) as any as Schema.Schema<BooksVolumesRecommendedRateResponse>;
+export const BooksVolumesRecommendedRateResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    consistency_token: Schema.optional(Schema.String),
+  }).annotate({ identifier: "BooksVolumesRecommendedRateResponse" });
 
 // ==========================================================================
 // Operations

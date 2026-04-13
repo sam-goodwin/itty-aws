@@ -48,46 +48,33 @@ export interface CheckResponse {
   >;
 }
 
-export const CheckResponse: Schema.Schema<CheckResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      linked: Schema.optional(Schema.Boolean),
-      relationExtensions: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      maxAge: Schema.optional(Schema.String),
-      debugString: Schema.optional(Schema.String),
-      errorCode: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "CheckResponse",
-  }) as any as Schema.Schema<CheckResponse>;
+export const CheckResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  linked: Schema.optional(Schema.Boolean),
+  relationExtensions: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  maxAge: Schema.optional(Schema.String),
+  debugString: Schema.optional(Schema.String),
+  errorCode: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "CheckResponse" });
 
 export interface WebAsset {
   /** Web assets are identified by a URL that contains only the scheme, hostname and port parts. The format is http[s]://[:] Hostnames must be fully qualified: they must end in a single period ("`.`"). Only the schemes "http" and "https" are currently allowed. Port numbers are given as a decimal number, and they must be omitted if the standard port numbers are used: 80 for http and 443 for https. We call this limited URL the "site". All URLs that share the same scheme, hostname and port are considered to be a part of the site and thus belong to the web asset. Example: the asset with the site `https://www.google.com` contains all these URLs: * `https://www.google.com/` * `https://www.google.com:443/` * `https://www.google.com/foo` * `https://www.google.com/foo?bar` * `https://www.google.com/foo#bar` * `https://user@password:www.google.com/` But it does not contain these URLs: * `http://www.google.com/` (wrong scheme) * `https://google.com/` (hostname does not match) * `https://www.google.com:444/` (port does not match) REQUIRED */
   site?: string;
 }
 
-export const WebAsset: Schema.Schema<WebAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      site: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "WebAsset" }) as any as Schema.Schema<WebAsset>;
+export const WebAsset = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  site: Schema.optional(Schema.String),
+}).annotate({ identifier: "WebAsset" });
 
 export interface CertificateInfo {
   /** The uppercase SHA-265 fingerprint of the certificate. From the PEM certificate, it can be acquired like this: $ keytool -printcert -file $CERTFILE | grep SHA256: SHA256: 14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83: \ 42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5 or like this: $ openssl x509 -in $CERTFILE -noout -fingerprint -sha256 SHA256 Fingerprint=14:6D:E9:83:C5:73:06:50:D8:EE:B9:95:2F:34:FC:64: \ 16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF:44:E5 In this example, the contents of this field would be `14:6D:E9:83:C5:73: 06:50:D8:EE:B9:95:2F:34:FC:64:16:A0:83:42:E6:1D:BE:A8:8A:04:96:B2:3F:CF: 44:E5`. If these tools are not available to you, you can convert the PEM certificate into the DER format, compute the SHA-256 hash of that string and represent the result as a hexstring (that is, uppercase hexadecimal representations of each octet, separated by colons). */
   sha256Fingerprint?: string;
 }
 
-export const CertificateInfo: Schema.Schema<CertificateInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sha256Fingerprint: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "CertificateInfo",
-  }) as any as Schema.Schema<CertificateInfo>;
+export const CertificateInfo = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sha256Fingerprint: Schema.optional(Schema.String),
+}).annotate({ identifier: "CertificateInfo" });
 
 export interface AndroidAppAsset {
   /** Android App assets are naturally identified by their Java package name. For example, the Google Maps app uses the package name `com.google.android.apps.maps`. REQUIRED */
@@ -96,15 +83,10 @@ export interface AndroidAppAsset {
   certificate?: CertificateInfo;
 }
 
-export const AndroidAppAsset: Schema.Schema<AndroidAppAsset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      packageName: Schema.optional(Schema.String),
-      certificate: Schema.optional(CertificateInfo),
-    }),
-  ).annotate({
-    identifier: "AndroidAppAsset",
-  }) as any as Schema.Schema<AndroidAppAsset>;
+export const AndroidAppAsset = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  packageName: Schema.optional(Schema.String),
+  certificate: Schema.optional(CertificateInfo),
+}).annotate({ identifier: "AndroidAppAsset" });
 
 export interface Asset {
   /** Set if this is a web asset. */
@@ -113,13 +95,10 @@ export interface Asset {
   androidApp?: AndroidAppAsset;
 }
 
-export const Asset: Schema.Schema<Asset> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      web: Schema.optional(WebAsset),
-      androidApp: Schema.optional(AndroidAppAsset),
-    }),
-  ).annotate({ identifier: "Asset" }) as any as Schema.Schema<Asset>;
+export const Asset = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  web: Schema.optional(WebAsset),
+  androidApp: Schema.optional(AndroidAppAsset),
+}).annotate({ identifier: "Asset" });
 
 export interface StatementTemplate {
   /** The source asset that is asserting the statement. If omitted, you must specify a BulkCheckRequest.default_source value to use here. */
@@ -130,16 +109,11 @@ export interface StatementTemplate {
   target?: Asset;
 }
 
-export const StatementTemplate: Schema.Schema<StatementTemplate> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      source: Schema.optional(Asset),
-      relation: Schema.optional(Schema.String),
-      target: Schema.optional(Asset),
-    }),
-  ).annotate({
-    identifier: "StatementTemplate",
-  }) as any as Schema.Schema<StatementTemplate>;
+export const StatementTemplate = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  source: Schema.optional(Asset),
+  relation: Schema.optional(Schema.String),
+  target: Schema.optional(Asset),
+}).annotate({ identifier: "StatementTemplate" });
 
 export interface BulkCheckRequest {
   /** List of statements to check. For each statement, you can omit a field if the corresponding default_* field below was supplied. Minimum 1 statement; maximum 1,000 statements. Any additional statements will be ignored. */
@@ -154,18 +128,13 @@ export interface BulkCheckRequest {
   returnRelationExtensions?: boolean;
 }
 
-export const BulkCheckRequest: Schema.Schema<BulkCheckRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      statements: Schema.optional(Schema.Array(StatementTemplate)),
-      defaultSource: Schema.optional(Asset),
-      defaultRelation: Schema.optional(Schema.String),
-      defaultTarget: Schema.optional(Asset),
-      returnRelationExtensions: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "BulkCheckRequest",
-  }) as any as Schema.Schema<BulkCheckRequest>;
+export const BulkCheckRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  statements: Schema.optional(Schema.Array(StatementTemplate)),
+  defaultSource: Schema.optional(Asset),
+  defaultRelation: Schema.optional(Schema.String),
+  defaultTarget: Schema.optional(Asset),
+  returnRelationExtensions: Schema.optional(Schema.Boolean),
+}).annotate({ identifier: "BulkCheckRequest" });
 
 export interface BulkCheckResponse {
   /** List of results for each check request. Results are returned in the same order in which they were sent in the request. */
@@ -186,15 +155,10 @@ export interface BulkCheckResponse {
     | (string & {});
 }
 
-export const BulkCheckResponse: Schema.Schema<BulkCheckResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      checkResults: Schema.optional(Schema.Array(CheckResponse)),
-      bulkErrorCode: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "BulkCheckResponse",
-  }) as any as Schema.Schema<BulkCheckResponse>;
+export const BulkCheckResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  checkResults: Schema.optional(Schema.Array(CheckResponse)),
+  bulkErrorCode: Schema.optional(Schema.String),
+}).annotate({ identifier: "BulkCheckResponse" });
 
 export interface Statement {
   /** Every statement has a source asset. REQUIRED */
@@ -207,17 +171,14 @@ export interface Statement {
   relationExtensions?: Record<string, unknown>;
 }
 
-export const Statement: Schema.Schema<Statement> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      source: Schema.optional(Asset),
-      relation: Schema.optional(Schema.String),
-      target: Schema.optional(Asset),
-      relationExtensions: Schema.optional(
-        Schema.Record(Schema.String, Schema.Unknown),
-      ),
-    }),
-  ).annotate({ identifier: "Statement" }) as any as Schema.Schema<Statement>;
+export const Statement = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  source: Schema.optional(Asset),
+  relation: Schema.optional(Schema.String),
+  target: Schema.optional(Asset),
+  relationExtensions: Schema.optional(
+    Schema.Record(Schema.String, Schema.Unknown),
+  ),
+}).annotate({ identifier: "Statement" });
 
 export interface ListResponse {
   /** A list of all the matching statements that have been found. */
@@ -243,17 +204,12 @@ export interface ListResponse {
   >;
 }
 
-export const ListResponse: Schema.Schema<ListResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      statements: Schema.optional(Schema.Array(Statement)),
-      maxAge: Schema.optional(Schema.String),
-      debugString: Schema.optional(Schema.String),
-      errorCode: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "ListResponse",
-  }) as any as Schema.Schema<ListResponse>;
+export const ListResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  statements: Schema.optional(Schema.Array(Statement)),
+  maxAge: Schema.optional(Schema.String),
+  debugString: Schema.optional(Schema.String),
+  errorCode: Schema.optional(Schema.Array(Schema.String)),
+}).annotate({ identifier: "ListResponse" });
 
 // ==========================================================================
 // Operations

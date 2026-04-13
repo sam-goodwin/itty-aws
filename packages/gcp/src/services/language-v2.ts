@@ -31,16 +31,13 @@ export interface ClassificationCategory {
   name?: string;
 }
 
-export const ClassificationCategory: Schema.Schema<ClassificationCategory> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      severity: Schema.optional(Schema.Number),
-      confidence: Schema.optional(Schema.Number),
-      name: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ClassificationCategory",
-  }) as any as Schema.Schema<ClassificationCategory>;
+export const ClassificationCategory = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    severity: Schema.optional(Schema.Number),
+    confidence: Schema.optional(Schema.Number),
+    name: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "ClassificationCategory" });
 
 export interface XPSImageModelServingSpecModelThroughputEstimation {
   /** Estimated latency. */
@@ -77,17 +74,15 @@ export interface XPSImageModelServingSpecModelThroughputEstimation {
     | (string & {});
 }
 
-export const XPSImageModelServingSpecModelThroughputEstimation: Schema.Schema<XPSImageModelServingSpecModelThroughputEstimation> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      latencyInMilliseconds: Schema.optional(Schema.Number),
-      servomaticPartitionType: Schema.optional(Schema.String),
-      nodeQps: Schema.optional(Schema.Number),
-      computeEngineAcceleratorType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const XPSImageModelServingSpecModelThroughputEstimation =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    latencyInMilliseconds: Schema.optional(Schema.Number),
+    servomaticPartitionType: Schema.optional(Schema.String),
+    nodeQps: Schema.optional(Schema.Number),
+    computeEngineAcceleratorType: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "XPSImageModelServingSpecModelThroughputEstimation",
-  }) as any as Schema.Schema<XPSImageModelServingSpecModelThroughputEstimation>;
+  });
 
 export interface XPSModelArtifactItem {
   /** The model artifact format. */
@@ -104,15 +99,10 @@ export interface XPSModelArtifactItem {
   gcsUri?: string;
 }
 
-export const XPSModelArtifactItem: Schema.Schema<XPSModelArtifactItem> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      artifactFormat: Schema.optional(Schema.String),
-      gcsUri: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "XPSModelArtifactItem",
-  }) as any as Schema.Schema<XPSModelArtifactItem>;
+export const XPSModelArtifactItem = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  artifactFormat: Schema.optional(Schema.String),
+  gcsUri: Schema.optional(Schema.String),
+}).annotate({ identifier: "XPSModelArtifactItem" });
 
 export interface XPSTextComponentModel {
   /** The Cloud Storage resource path to hold online prediction model. */
@@ -156,36 +146,26 @@ export interface XPSTextComponentModel {
     | (string & {});
 }
 
-export const XPSTextComponentModel: Schema.Schema<XPSTextComponentModel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      onlinePredictionModelGcsUri: Schema.optional(Schema.String),
-      tfRuntimeVersion: Schema.optional(Schema.String),
-      servoModelName: Schema.optional(Schema.String),
-      servingArtifact: Schema.optional(XPSModelArtifactItem),
-      batchPredictionModelGcsUri: Schema.optional(Schema.String),
-      submodelType: Schema.optional(Schema.String),
-      versionNumber: Schema.optional(Schema.String),
-      submodelName: Schema.optional(Schema.String),
-      partition: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "XPSTextComponentModel",
-  }) as any as Schema.Schema<XPSTextComponentModel>;
+export const XPSTextComponentModel = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  onlinePredictionModelGcsUri: Schema.optional(Schema.String),
+  tfRuntimeVersion: Schema.optional(Schema.String),
+  servoModelName: Schema.optional(Schema.String),
+  servingArtifact: Schema.optional(XPSModelArtifactItem),
+  batchPredictionModelGcsUri: Schema.optional(Schema.String),
+  submodelType: Schema.optional(Schema.String),
+  versionNumber: Schema.optional(Schema.String),
+  submodelName: Schema.optional(Schema.String),
+  partition: Schema.optional(Schema.String),
+}).annotate({ identifier: "XPSTextComponentModel" });
 
 export interface XPSTextTrainResponse {
   /** Component submodels. */
   componentModel?: Array<XPSTextComponentModel>;
 }
 
-export const XPSTextTrainResponse: Schema.Schema<XPSTextTrainResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      componentModel: Schema.optional(Schema.Array(XPSTextComponentModel)),
-    }),
-  ).annotate({
-    identifier: "XPSTextTrainResponse",
-  }) as any as Schema.Schema<XPSTextTrainResponse>;
+export const XPSTextTrainResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  componentModel: Schema.optional(Schema.Array(XPSTextComponentModel)),
+}).annotate({ identifier: "XPSTextTrainResponse" });
 
 export interface Document {
   /** Required. If the type is not set or is `TYPE_UNSPECIFIED`, returns an `INVALID_ARGUMENT` error. */
@@ -198,15 +178,12 @@ export interface Document {
   content?: string;
 }
 
-export const Document: Schema.Schema<Document> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      type: Schema.optional(Schema.String),
-      gcsContentUri: Schema.optional(Schema.String),
-      languageCode: Schema.optional(Schema.String),
-      content: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Document" }) as any as Schema.Schema<Document>;
+export const Document = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  type: Schema.optional(Schema.String),
+  gcsContentUri: Schema.optional(Schema.String),
+  languageCode: Schema.optional(Schema.String),
+  content: Schema.optional(Schema.String),
+}).annotate({ identifier: "Document" });
 
 export interface XPSTrackMetricsEntryConfidenceMetricsEntry {
   /** Output only. The confidence threshold value used to compute the metrics. */
@@ -221,18 +198,14 @@ export interface XPSTrackMetricsEntryConfidenceMetricsEntry {
   trackingRecall?: number;
 }
 
-export const XPSTrackMetricsEntryConfidenceMetricsEntry: Schema.Schema<XPSTrackMetricsEntryConfidenceMetricsEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      confidenceThreshold: Schema.optional(Schema.Number),
-      trackingPrecision: Schema.optional(Schema.Number),
-      boundingBoxIou: Schema.optional(Schema.Number),
-      mismatchRate: Schema.optional(Schema.Number),
-      trackingRecall: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "XPSTrackMetricsEntryConfidenceMetricsEntry",
-  }) as any as Schema.Schema<XPSTrackMetricsEntryConfidenceMetricsEntry>;
+export const XPSTrackMetricsEntryConfidenceMetricsEntry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    confidenceThreshold: Schema.optional(Schema.Number),
+    trackingPrecision: Schema.optional(Schema.Number),
+    boundingBoxIou: Schema.optional(Schema.Number),
+    mismatchRate: Schema.optional(Schema.Number),
+    trackingRecall: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "XPSTrackMetricsEntryConfidenceMetricsEntry" });
 
 export interface XPSTrackMetricsEntry {
   /** Output only. The intersection-over-union threshold value between bounding boxes across frames used to compute this metric entry. */
@@ -247,20 +220,15 @@ export interface XPSTrackMetricsEntry {
   confidenceMetricsEntries?: Array<XPSTrackMetricsEntryConfidenceMetricsEntry>;
 }
 
-export const XPSTrackMetricsEntry: Schema.Schema<XPSTrackMetricsEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      iouThreshold: Schema.optional(Schema.Number),
-      meanMismatchRate: Schema.optional(Schema.Number),
-      meanTrackingAveragePrecision: Schema.optional(Schema.Number),
-      meanBoundingBoxIou: Schema.optional(Schema.Number),
-      confidenceMetricsEntries: Schema.optional(
-        Schema.Array(XPSTrackMetricsEntryConfidenceMetricsEntry),
-      ),
-    }),
-  ).annotate({
-    identifier: "XPSTrackMetricsEntry",
-  }) as any as Schema.Schema<XPSTrackMetricsEntry>;
+export const XPSTrackMetricsEntry = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  iouThreshold: Schema.optional(Schema.Number),
+  meanMismatchRate: Schema.optional(Schema.Number),
+  meanTrackingAveragePrecision: Schema.optional(Schema.Number),
+  meanBoundingBoxIou: Schema.optional(Schema.Number),
+  confidenceMetricsEntries: Schema.optional(
+    Schema.Array(XPSTrackMetricsEntryConfidenceMetricsEntry),
+  ),
+}).annotate({ identifier: "XPSTrackMetricsEntry" });
 
 export interface XPSConfusionMatrixRow {
   /** Same as above except intended to represent other counts (for e.g. for segmentation this is pixel count). NOTE(params): Only example_count or count is set (oneoff does not support repeated fields unless they are embedded inside another message). */
@@ -269,15 +237,10 @@ export interface XPSConfusionMatrixRow {
   exampleCount?: Array<number>;
 }
 
-export const XPSConfusionMatrixRow: Schema.Schema<XPSConfusionMatrixRow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      count: Schema.optional(Schema.Array(Schema.String)),
-      exampleCount: Schema.optional(Schema.Array(Schema.Number)),
-    }),
-  ).annotate({
-    identifier: "XPSConfusionMatrixRow",
-  }) as any as Schema.Schema<XPSConfusionMatrixRow>;
+export const XPSConfusionMatrixRow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  count: Schema.optional(Schema.Array(Schema.String)),
+  exampleCount: Schema.optional(Schema.Array(Schema.Number)),
+}).annotate({ identifier: "XPSConfusionMatrixRow" });
 
 export interface XPSTablesConfidenceMetricsEntry {
   /** True negative count. */
@@ -302,23 +265,19 @@ export interface XPSTablesConfidenceMetricsEntry {
   recall?: number;
 }
 
-export const XPSTablesConfidenceMetricsEntry: Schema.Schema<XPSTablesConfidenceMetricsEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      trueNegativeCount: Schema.optional(Schema.String),
-      truePositiveRate: Schema.optional(Schema.Number),
-      falsePositiveCount: Schema.optional(Schema.String),
-      falseNegativeCount: Schema.optional(Schema.String),
-      falsePositiveRate: Schema.optional(Schema.Number),
-      truePositiveCount: Schema.optional(Schema.String),
-      precision: Schema.optional(Schema.Number),
-      confidenceThreshold: Schema.optional(Schema.Number),
-      f1Score: Schema.optional(Schema.Number),
-      recall: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "XPSTablesConfidenceMetricsEntry",
-  }) as any as Schema.Schema<XPSTablesConfidenceMetricsEntry>;
+export const XPSTablesConfidenceMetricsEntry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    trueNegativeCount: Schema.optional(Schema.String),
+    truePositiveRate: Schema.optional(Schema.Number),
+    falsePositiveCount: Schema.optional(Schema.String),
+    falseNegativeCount: Schema.optional(Schema.String),
+    falsePositiveRate: Schema.optional(Schema.Number),
+    truePositiveCount: Schema.optional(Schema.String),
+    precision: Schema.optional(Schema.Number),
+    confidenceThreshold: Schema.optional(Schema.Number),
+    f1Score: Schema.optional(Schema.Number),
+    recall: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "XPSTablesConfidenceMetricsEntry" });
 
 export interface XPSTablesClassificationMetricsCurveMetrics {
   /** Metrics that have confidence thresholds. Precision-recall curve and ROC curve can be derived from them. */
@@ -335,35 +294,26 @@ export interface XPSTablesClassificationMetricsCurveMetrics {
   logLoss?: number;
 }
 
-export const XPSTablesClassificationMetricsCurveMetrics: Schema.Schema<XPSTablesClassificationMetricsCurveMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      confidenceMetricsEntries: Schema.optional(
-        Schema.Array(XPSTablesConfidenceMetricsEntry),
-      ),
-      value: Schema.optional(Schema.String),
-      aucPr: Schema.optional(Schema.Number),
-      aucRoc: Schema.optional(Schema.Number),
-      positionThreshold: Schema.optional(Schema.Number),
-      logLoss: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "XPSTablesClassificationMetricsCurveMetrics",
-  }) as any as Schema.Schema<XPSTablesClassificationMetricsCurveMetrics>;
+export const XPSTablesClassificationMetricsCurveMetrics =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    confidenceMetricsEntries: Schema.optional(
+      Schema.Array(XPSTablesConfidenceMetricsEntry),
+    ),
+    value: Schema.optional(Schema.String),
+    aucPr: Schema.optional(Schema.Number),
+    aucRoc: Schema.optional(Schema.Number),
+    positionThreshold: Schema.optional(Schema.Number),
+    logLoss: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "XPSTablesClassificationMetricsCurveMetrics" });
 
 export interface XPSXraiAttribution {
   /** The number of steps for approximating the path integral. A good value to start is 50 and gradually increase until the sum to diff property is met within the desired error range. Valid range of its value is [1, 100], inclusively. */
   stepCount?: number;
 }
 
-export const XPSXraiAttribution: Schema.Schema<XPSXraiAttribution> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stepCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "XPSXraiAttribution",
-  }) as any as Schema.Schema<XPSXraiAttribution>;
+export const XPSXraiAttribution = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  stepCount: Schema.optional(Schema.Number),
+}).annotate({ identifier: "XPSXraiAttribution" });
 
 export interface Sentiment {
   /** A non-negative number in the [0, +inf] range, which represents the absolute magnitude of sentiment regardless of score (positive or negative). */
@@ -372,13 +322,10 @@ export interface Sentiment {
   score?: number;
 }
 
-export const Sentiment: Schema.Schema<Sentiment> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      magnitude: Schema.optional(Schema.Number),
-      score: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Sentiment" }) as any as Schema.Schema<Sentiment>;
+export const Sentiment = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  magnitude: Schema.optional(Schema.Number),
+  score: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Sentiment" });
 
 export interface TextSpan {
   /** The content of the text span, which is a substring of the document. */
@@ -387,13 +334,10 @@ export interface TextSpan {
   beginOffset?: number;
 }
 
-export const TextSpan: Schema.Schema<TextSpan> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      content: Schema.optional(Schema.String),
-      beginOffset: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "TextSpan" }) as any as Schema.Schema<TextSpan>;
+export const TextSpan = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  content: Schema.optional(Schema.String),
+  beginOffset: Schema.optional(Schema.Number),
+}).annotate({ identifier: "TextSpan" });
 
 export interface Sentence {
   /** For calls to AnalyzeSentiment or if AnnotateTextRequest.Features.extract_document_sentiment is set to true, this field will contain the sentiment for the sentence. */
@@ -402,13 +346,10 @@ export interface Sentence {
   text?: TextSpan;
 }
 
-export const Sentence: Schema.Schema<Sentence> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sentiment: Schema.optional(Sentiment),
-      text: Schema.optional(TextSpan),
-    }),
-  ).annotate({ identifier: "Sentence" }) as any as Schema.Schema<Sentence>;
+export const Sentence = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  sentiment: Schema.optional(Sentiment),
+  text: Schema.optional(TextSpan),
+}).annotate({ identifier: "Sentence" });
 
 export interface AnalyzeSentimentResponse {
   /** The language of the text, which will be the same as the language specified in the request or, if not specified, the automatically-detected language. See Document.language_code field for more details. */
@@ -421,17 +362,13 @@ export interface AnalyzeSentimentResponse {
   sentences?: Array<Sentence>;
 }
 
-export const AnalyzeSentimentResponse: Schema.Schema<AnalyzeSentimentResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      languageCode: Schema.optional(Schema.String),
-      languageSupported: Schema.optional(Schema.Boolean),
-      documentSentiment: Schema.optional(Sentiment),
-      sentences: Schema.optional(Schema.Array(Sentence)),
-    }),
-  ).annotate({
-    identifier: "AnalyzeSentimentResponse",
-  }) as any as Schema.Schema<AnalyzeSentimentResponse>;
+export const AnalyzeSentimentResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    languageCode: Schema.optional(Schema.String),
+    languageSupported: Schema.optional(Schema.Boolean),
+    documentSentiment: Schema.optional(Sentiment),
+    sentences: Schema.optional(Schema.Array(Sentence)),
+  }).annotate({ identifier: "AnalyzeSentimentResponse" });
 
 export interface XPSSpeechModelSpecSubModelSpec {
   /** In S3, Recognition ClientContextId.client_id */
@@ -450,17 +387,13 @@ export interface XPSSpeechModelSpecSubModelSpec {
   isEnhancedModel?: boolean;
 }
 
-export const XPSSpeechModelSpecSubModelSpec: Schema.Schema<XPSSpeechModelSpecSubModelSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      clientId: Schema.optional(Schema.String),
-      contextId: Schema.optional(Schema.String),
-      biasingModelType: Schema.optional(Schema.String),
-      isEnhancedModel: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "XPSSpeechModelSpecSubModelSpec",
-  }) as any as Schema.Schema<XPSSpeechModelSpecSubModelSpec>;
+export const XPSSpeechModelSpecSubModelSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    clientId: Schema.optional(Schema.String),
+    contextId: Schema.optional(Schema.String),
+    biasingModelType: Schema.optional(Schema.String),
+    isEnhancedModel: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "XPSSpeechModelSpecSubModelSpec" });
 
 export interface XPSSpeechModelSpec {
   /** Model specs for all submodels contained in this model. */
@@ -470,18 +403,11 @@ export interface XPSSpeechModelSpec {
   language?: string;
 }
 
-export const XPSSpeechModelSpec: Schema.Schema<XPSSpeechModelSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subModelSpecs: Schema.optional(
-        Schema.Array(XPSSpeechModelSpecSubModelSpec),
-      ),
-      datasetId: Schema.optional(Schema.String),
-      language: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "XPSSpeechModelSpec",
-  }) as any as Schema.Schema<XPSSpeechModelSpec>;
+export const XPSSpeechModelSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  subModelSpecs: Schema.optional(Schema.Array(XPSSpeechModelSpecSubModelSpec)),
+  datasetId: Schema.optional(Schema.String),
+  language: Schema.optional(Schema.String),
+}).annotate({ identifier: "XPSSpeechModelSpec" });
 
 export interface XPSConfusionMatrix {
   /** For the following three repeated fields, only one is intended to be set. annotation_spec_id_token is preferable to be set. ID tokens of the annotation specs used in the confusion matrix. */
@@ -494,17 +420,12 @@ export interface XPSConfusionMatrix {
   row?: Array<XPSConfusionMatrixRow>;
 }
 
-export const XPSConfusionMatrix: Schema.Schema<XPSConfusionMatrix> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      annotationSpecIdToken: Schema.optional(Schema.Array(Schema.String)),
-      category: Schema.optional(Schema.Array(Schema.Number)),
-      sentimentLabel: Schema.optional(Schema.Array(Schema.Number)),
-      row: Schema.optional(Schema.Array(XPSConfusionMatrixRow)),
-    }),
-  ).annotate({
-    identifier: "XPSConfusionMatrix",
-  }) as any as Schema.Schema<XPSConfusionMatrix>;
+export const XPSConfusionMatrix = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  annotationSpecIdToken: Schema.optional(Schema.Array(Schema.String)),
+  category: Schema.optional(Schema.Array(Schema.Number)),
+  sentimentLabel: Schema.optional(Schema.Array(Schema.Number)),
+  row: Schema.optional(Schema.Array(XPSConfusionMatrixRow)),
+}).annotate({ identifier: "XPSConfusionMatrix" });
 
 export interface XPSTextSentimentEvaluationMetrics {
   /** Output only. The harmonic mean of recall and precision. */
@@ -525,35 +446,27 @@ export interface XPSTextSentimentEvaluationMetrics {
   meanAbsoluteError?: number;
 }
 
-export const XPSTextSentimentEvaluationMetrics: Schema.Schema<XPSTextSentimentEvaluationMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      f1Score: Schema.optional(Schema.Number),
-      linearKappa: Schema.optional(Schema.Number),
-      confusionMatrix: Schema.optional(XPSConfusionMatrix),
-      recall: Schema.optional(Schema.Number),
-      meanSquaredError: Schema.optional(Schema.Number),
-      quadraticKappa: Schema.optional(Schema.Number),
-      precision: Schema.optional(Schema.Number),
-      meanAbsoluteError: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "XPSTextSentimentEvaluationMetrics",
-  }) as any as Schema.Schema<XPSTextSentimentEvaluationMetrics>;
+export const XPSTextSentimentEvaluationMetrics =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    f1Score: Schema.optional(Schema.Number),
+    linearKappa: Schema.optional(Schema.Number),
+    confusionMatrix: Schema.optional(XPSConfusionMatrix),
+    recall: Schema.optional(Schema.Number),
+    meanSquaredError: Schema.optional(Schema.Number),
+    quadraticKappa: Schema.optional(Schema.Number),
+    precision: Schema.optional(Schema.Number),
+    meanAbsoluteError: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "XPSTextSentimentEvaluationMetrics" });
 
 export interface XPSTimestampStatsGranularStats {
   /** A map from granularity key to example count for that key. E.g. for hour_of_day `13` means 1pm, or for month_of_year `5` means May). */
   buckets?: Record<string, string>;
 }
 
-export const XPSTimestampStatsGranularStats: Schema.Schema<XPSTimestampStatsGranularStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      buckets: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({
-    identifier: "XPSTimestampStatsGranularStats",
-  }) as any as Schema.Schema<XPSTimestampStatsGranularStats>;
+export const XPSTimestampStatsGranularStats =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    buckets: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  }).annotate({ identifier: "XPSTimestampStatsGranularStats" });
 
 export interface XPSTablesModelStructureModelParametersParameter {
   /** Float type parameter value. */
@@ -566,17 +479,15 @@ export interface XPSTablesModelStructureModelParametersParameter {
   stringValue?: string;
 }
 
-export const XPSTablesModelStructureModelParametersParameter: Schema.Schema<XPSTablesModelStructureModelParametersParameter> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      floatValue: Schema.optional(Schema.Number),
-      intValue: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      stringValue: Schema.optional(Schema.String),
-    }),
-  ).annotate({
+export const XPSTablesModelStructureModelParametersParameter =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    floatValue: Schema.optional(Schema.Number),
+    intValue: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    stringValue: Schema.optional(Schema.String),
+  }).annotate({
     identifier: "XPSTablesModelStructureModelParametersParameter",
-  }) as any as Schema.Schema<XPSTablesModelStructureModelParametersParameter>;
+  });
 
 export interface XPSVisualization {
   /** Whether to only highlight pixels with positive contributions, negative or both. Defaults to POSITIVE. */
@@ -612,19 +523,14 @@ export interface XPSVisualization {
   clipPercentLowerbound?: number;
 }
 
-export const XPSVisualization: Schema.Schema<XPSVisualization> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      polarity: Schema.optional(Schema.String),
-      colorMap: Schema.optional(Schema.String),
-      clipPercentUpperbound: Schema.optional(Schema.Number),
-      overlayType: Schema.optional(Schema.String),
-      type: Schema.optional(Schema.String),
-      clipPercentLowerbound: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "XPSVisualization",
-  }) as any as Schema.Schema<XPSVisualization>;
+export const XPSVisualization = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  polarity: Schema.optional(Schema.String),
+  colorMap: Schema.optional(Schema.String),
+  clipPercentUpperbound: Schema.optional(Schema.Number),
+  overlayType: Schema.optional(Schema.String),
+  type: Schema.optional(Schema.String),
+  clipPercentLowerbound: Schema.optional(Schema.Number),
+}).annotate({ identifier: "XPSVisualization" });
 
 export interface XPSResponseExplanationMetadataInputMetadata {
   /** Modality of the feature. Valid values are: numeric, image. Defaults to numeric. */
@@ -640,30 +546,22 @@ export interface XPSResponseExplanationMetadataInputMetadata {
   visualizationConfig?: XPSVisualization;
 }
 
-export const XPSResponseExplanationMetadataInputMetadata: Schema.Schema<XPSResponseExplanationMetadataInputMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      modality: Schema.optional(Schema.String),
-      inputTensorName: Schema.optional(Schema.String),
-      visualizationConfig: Schema.optional(XPSVisualization),
-    }),
-  ).annotate({
-    identifier: "XPSResponseExplanationMetadataInputMetadata",
-  }) as any as Schema.Schema<XPSResponseExplanationMetadataInputMetadata>;
+export const XPSResponseExplanationMetadataInputMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    modality: Schema.optional(Schema.String),
+    inputTensorName: Schema.optional(Schema.String),
+    visualizationConfig: Schema.optional(XPSVisualization),
+  }).annotate({ identifier: "XPSResponseExplanationMetadataInputMetadata" });
 
 export interface XPSIntegratedGradientsAttribution {
   /** The number of steps for approximating the path integral. A good value to start is 50 and gradually increase until the sum to diff property is within the desired error range. Valid range of its value is [1, 100], inclusively. */
   stepCount?: number;
 }
 
-export const XPSIntegratedGradientsAttribution: Schema.Schema<XPSIntegratedGradientsAttribution> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      stepCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "XPSIntegratedGradientsAttribution",
-  }) as any as Schema.Schema<XPSIntegratedGradientsAttribution>;
+export const XPSIntegratedGradientsAttribution =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    stepCount: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "XPSIntegratedGradientsAttribution" });
 
 export interface Status {
   /** The status code, which should be an enum value of google.rpc.Code. */
@@ -674,30 +572,25 @@ export interface Status {
   message?: string;
 }
 
-export const Status: Schema.Schema<Status> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      code: Schema.optional(Schema.Number),
-      details: Schema.optional(
-        Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
-      ),
-      message: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "Status" }) as any as Schema.Schema<Status>;
+export const Status = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  code: Schema.optional(Schema.Number),
+  details: Schema.optional(
+    Schema.Array(Schema.Record(Schema.String, Schema.Unknown)),
+  ),
+  message: Schema.optional(Schema.String),
+}).annotate({ identifier: "Status" });
 
 export interface XPSTfJsFormat {}
 
-export const XPSTfJsFormat: Schema.Schema<XPSTfJsFormat> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "XPSTfJsFormat",
-  }) as any as Schema.Schema<XPSTfJsFormat>;
+export const XPSTfJsFormat = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "XPSTfJsFormat" });
 
 export interface XPSCoreMlFormat {}
 
-export const XPSCoreMlFormat: Schema.Schema<XPSCoreMlFormat> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "XPSCoreMlFormat",
-  }) as any as Schema.Schema<XPSCoreMlFormat>;
+export const XPSCoreMlFormat = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "XPSCoreMlFormat" });
 
 export interface XPSDockerFormat {
   /** Optional. Additional cpu information describing the requirements for the to be exported model files. */
@@ -712,36 +605,28 @@ export interface XPSDockerFormat {
     | (string & {});
 }
 
-export const XPSDockerFormat: Schema.Schema<XPSDockerFormat> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cpuArchitecture: Schema.optional(Schema.String),
-      gpuArchitecture: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "XPSDockerFormat",
-  }) as any as Schema.Schema<XPSDockerFormat>;
+export const XPSDockerFormat = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cpuArchitecture: Schema.optional(Schema.String),
+  gpuArchitecture: Schema.optional(Schema.String),
+}).annotate({ identifier: "XPSDockerFormat" });
 
 export interface XPSEdgeTpuTfLiteFormat {}
 
-export const XPSEdgeTpuTfLiteFormat: Schema.Schema<XPSEdgeTpuTfLiteFormat> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "XPSEdgeTpuTfLiteFormat",
-  }) as any as Schema.Schema<XPSEdgeTpuTfLiteFormat>;
+export const XPSEdgeTpuTfLiteFormat = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "XPSEdgeTpuTfLiteFormat" });
 
 export interface XPSTfLiteFormat {}
 
-export const XPSTfLiteFormat: Schema.Schema<XPSTfLiteFormat> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "XPSTfLiteFormat",
-  }) as any as Schema.Schema<XPSTfLiteFormat>;
+export const XPSTfLiteFormat = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "XPSTfLiteFormat" });
 
 export interface XPSTfSavedModelFormat {}
 
-export const XPSTfSavedModelFormat: Schema.Schema<XPSTfSavedModelFormat> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "XPSTfSavedModelFormat",
-  }) as any as Schema.Schema<XPSTfSavedModelFormat>;
+export const XPSTfSavedModelFormat = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {},
+).annotate({ identifier: "XPSTfSavedModelFormat" });
 
 export interface XPSExportModelOutputConfig {
   tfJsFormat?: XPSTfJsFormat;
@@ -758,38 +643,30 @@ export interface XPSExportModelOutputConfig {
   tfSavedModelFormat?: XPSTfSavedModelFormat;
 }
 
-export const XPSExportModelOutputConfig: Schema.Schema<XPSExportModelOutputConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tfJsFormat: Schema.optional(XPSTfJsFormat),
-      coreMlFormat: Schema.optional(XPSCoreMlFormat),
-      dockerFormat: Schema.optional(XPSDockerFormat),
-      edgeTpuTfLiteFormat: Schema.optional(XPSEdgeTpuTfLiteFormat),
-      outputGcrUri: Schema.optional(Schema.String),
-      exportFirebaseAuxiliaryInfo: Schema.optional(Schema.Boolean),
-      outputGcsUri: Schema.optional(Schema.String),
-      tfLiteFormat: Schema.optional(XPSTfLiteFormat),
-      tfSavedModelFormat: Schema.optional(XPSTfSavedModelFormat),
-    }),
-  ).annotate({
-    identifier: "XPSExportModelOutputConfig",
-  }) as any as Schema.Schema<XPSExportModelOutputConfig>;
+export const XPSExportModelOutputConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tfJsFormat: Schema.optional(XPSTfJsFormat),
+    coreMlFormat: Schema.optional(XPSCoreMlFormat),
+    dockerFormat: Schema.optional(XPSDockerFormat),
+    edgeTpuTfLiteFormat: Schema.optional(XPSEdgeTpuTfLiteFormat),
+    outputGcrUri: Schema.optional(Schema.String),
+    exportFirebaseAuxiliaryInfo: Schema.optional(Schema.Boolean),
+    outputGcsUri: Schema.optional(Schema.String),
+    tfLiteFormat: Schema.optional(XPSTfLiteFormat),
+    tfSavedModelFormat: Schema.optional(XPSTfSavedModelFormat),
+  }).annotate({ identifier: "XPSExportModelOutputConfig" });
 
 export interface XPSVideoExportModelSpec {
   /** Contains the model format and internal location of the model files to be exported/downloaded. Use the Google Cloud Storage bucket name which is provided via TrainRequest.gcs_bucket_name to store the model files. */
   exportModelOutputConfig?: Array<XPSExportModelOutputConfig>;
 }
 
-export const XPSVideoExportModelSpec: Schema.Schema<XPSVideoExportModelSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      exportModelOutputConfig: Schema.optional(
-        Schema.Array(XPSExportModelOutputConfig),
-      ),
-    }),
-  ).annotate({
-    identifier: "XPSVideoExportModelSpec",
-  }) as any as Schema.Schema<XPSVideoExportModelSpec>;
+export const XPSVideoExportModelSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    exportModelOutputConfig: Schema.optional(
+      Schema.Array(XPSExportModelOutputConfig),
+    ),
+  }).annotate({ identifier: "XPSVideoExportModelSpec" });
 
 export interface XPSVideoModelArtifactSpec {
   /** The model binary files in different formats for model export. */
@@ -798,15 +675,11 @@ export interface XPSVideoModelArtifactSpec {
   servingArtifact?: XPSModelArtifactItem;
 }
 
-export const XPSVideoModelArtifactSpec: Schema.Schema<XPSVideoModelArtifactSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      exportArtifact: Schema.optional(Schema.Array(XPSModelArtifactItem)),
-      servingArtifact: Schema.optional(XPSModelArtifactItem),
-    }),
-  ).annotate({
-    identifier: "XPSVideoModelArtifactSpec",
-  }) as any as Schema.Schema<XPSVideoModelArtifactSpec>;
+export const XPSVideoModelArtifactSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    exportArtifact: Schema.optional(Schema.Array(XPSModelArtifactItem)),
+    servingArtifact: Schema.optional(XPSModelArtifactItem),
+  }).annotate({ identifier: "XPSVideoModelArtifactSpec" });
 
 export interface XPSVideoObjectTrackingTrainResponse {
   /** Populated for AutoML request only. */
@@ -817,30 +690,21 @@ export interface XPSVideoObjectTrackingTrainResponse {
   trainCostNodeSeconds?: string;
 }
 
-export const XPSVideoObjectTrackingTrainResponse: Schema.Schema<XPSVideoObjectTrackingTrainResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      exportModelSpec: Schema.optional(XPSVideoExportModelSpec),
-      modelArtifactSpec: Schema.optional(XPSVideoModelArtifactSpec),
-      trainCostNodeSeconds: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "XPSVideoObjectTrackingTrainResponse",
-  }) as any as Schema.Schema<XPSVideoObjectTrackingTrainResponse>;
+export const XPSVideoObjectTrackingTrainResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    exportModelSpec: Schema.optional(XPSVideoExportModelSpec),
+    modelArtifactSpec: Schema.optional(XPSVideoModelArtifactSpec),
+    trainCostNodeSeconds: Schema.optional(Schema.String),
+  }).annotate({ identifier: "XPSVideoObjectTrackingTrainResponse" });
 
 export interface ClassifyTextRequest {
   /** Required. Input document. */
   document?: Document;
 }
 
-export const ClassifyTextRequest: Schema.Schema<ClassifyTextRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      document: Schema.optional(Document),
-    }),
-  ).annotate({
-    identifier: "ClassifyTextRequest",
-  }) as any as Schema.Schema<ClassifyTextRequest>;
+export const ClassifyTextRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  document: Schema.optional(Document),
+}).annotate({ identifier: "ClassifyTextRequest" });
 
 export interface XPSDataErrors {
   /** Type of the error. */
@@ -855,15 +719,10 @@ export interface XPSDataErrors {
   count?: number;
 }
 
-export const XPSDataErrors: Schema.Schema<XPSDataErrors> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      errorType: Schema.optional(Schema.String),
-      count: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "XPSDataErrors",
-  }) as any as Schema.Schema<XPSDataErrors>;
+export const XPSDataErrors = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  errorType: Schema.optional(Schema.String),
+  count: Schema.optional(Schema.Number),
+}).annotate({ identifier: "XPSDataErrors" });
 
 export interface XPSSpeechPreprocessStats {
   /** The number of words in the test data set. */
@@ -888,23 +747,19 @@ export interface XPSSpeechPreprocessStats {
   trainSentencesCount?: number;
 }
 
-export const XPSSpeechPreprocessStats: Schema.Schema<XPSSpeechPreprocessStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      testWordsCount: Schema.optional(Schema.Number),
-      trainExamplesCount: Schema.optional(Schema.Number),
-      testExamplesCount: Schema.optional(Schema.Number),
-      numMachineTranscribedExamples: Schema.optional(Schema.Number),
-      numLogsExamples: Schema.optional(Schema.Number),
-      dataErrors: Schema.optional(Schema.Array(XPSDataErrors)),
-      trainWordsCount: Schema.optional(Schema.Number),
-      numHumanLabeledExamples: Schema.optional(Schema.Number),
-      testSentencesCount: Schema.optional(Schema.Number),
-      trainSentencesCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "XPSSpeechPreprocessStats",
-  }) as any as Schema.Schema<XPSSpeechPreprocessStats>;
+export const XPSSpeechPreprocessStats =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    testWordsCount: Schema.optional(Schema.Number),
+    trainExamplesCount: Schema.optional(Schema.Number),
+    testExamplesCount: Schema.optional(Schema.Number),
+    numMachineTranscribedExamples: Schema.optional(Schema.Number),
+    numLogsExamples: Schema.optional(Schema.Number),
+    dataErrors: Schema.optional(Schema.Array(XPSDataErrors)),
+    trainWordsCount: Schema.optional(Schema.Number),
+    numHumanLabeledExamples: Schema.optional(Schema.Number),
+    testSentencesCount: Schema.optional(Schema.Number),
+    trainSentencesCount: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "XPSSpeechPreprocessStats" });
 
 export interface XPSMetricEntryLabel {
   /** The name of the label. */
@@ -913,15 +768,10 @@ export interface XPSMetricEntryLabel {
   labelValue?: string;
 }
 
-export const XPSMetricEntryLabel: Schema.Schema<XPSMetricEntryLabel> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labelName: Schema.optional(Schema.String),
-      labelValue: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "XPSMetricEntryLabel",
-  }) as any as Schema.Schema<XPSMetricEntryLabel>;
+export const XPSMetricEntryLabel = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  labelName: Schema.optional(Schema.String),
+  labelValue: Schema.optional(Schema.String),
+}).annotate({ identifier: "XPSMetricEntryLabel" });
 
 export interface XPSMetricEntry {
   /** The metric name defined in the service configuration. */
@@ -936,18 +786,13 @@ export interface XPSMetricEntry {
   argentumMetricId?: string;
 }
 
-export const XPSMetricEntry: Schema.Schema<XPSMetricEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metricName: Schema.optional(Schema.String),
-      systemLabels: Schema.optional(Schema.Array(XPSMetricEntryLabel)),
-      int64Value: Schema.optional(Schema.String),
-      doubleValue: Schema.optional(Schema.Number),
-      argentumMetricId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "XPSMetricEntry",
-  }) as any as Schema.Schema<XPSMetricEntry>;
+export const XPSMetricEntry = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metricName: Schema.optional(Schema.String),
+  systemLabels: Schema.optional(Schema.Array(XPSMetricEntryLabel)),
+  int64Value: Schema.optional(Schema.String),
+  doubleValue: Schema.optional(Schema.Number),
+  argentumMetricId: Schema.optional(Schema.String),
+}).annotate({ identifier: "XPSMetricEntry" });
 
 export interface XPSReportingMetrics {
   /** One entry per metric name. The values must be aggregated per metric name. */
@@ -956,15 +801,10 @@ export interface XPSReportingMetrics {
   effectiveTrainingDuration?: string;
 }
 
-export const XPSReportingMetrics: Schema.Schema<XPSReportingMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      metricEntries: Schema.optional(Schema.Array(XPSMetricEntry)),
-      effectiveTrainingDuration: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "XPSReportingMetrics",
-  }) as any as Schema.Schema<XPSReportingMetrics>;
+export const XPSReportingMetrics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  metricEntries: Schema.optional(Schema.Array(XPSMetricEntry)),
+  effectiveTrainingDuration: Schema.optional(Schema.String),
+}).annotate({ identifier: "XPSReportingMetrics" });
 
 export interface XPSConfidenceMetricsEntry {
   /** Recall (true positive rate) for the given confidence threshold. */
@@ -997,27 +837,23 @@ export interface XPSConfidenceMetricsEntry {
   falsePositiveCount?: string;
 }
 
-export const XPSConfidenceMetricsEntry: Schema.Schema<XPSConfidenceMetricsEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      recall: Schema.optional(Schema.Number),
-      f1ScoreAt1: Schema.optional(Schema.Number),
-      precisionAt1: Schema.optional(Schema.Number),
-      falseNegativeCount: Schema.optional(Schema.String),
-      recallAt1: Schema.optional(Schema.Number),
-      confidenceThreshold: Schema.optional(Schema.Number),
-      f1Score: Schema.optional(Schema.Number),
-      truePositiveCount: Schema.optional(Schema.String),
-      precision: Schema.optional(Schema.Number),
-      falsePositiveRateAt1: Schema.optional(Schema.Number),
-      positionThreshold: Schema.optional(Schema.Number),
-      falsePositiveRate: Schema.optional(Schema.Number),
-      trueNegativeCount: Schema.optional(Schema.String),
-      falsePositiveCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "XPSConfidenceMetricsEntry",
-  }) as any as Schema.Schema<XPSConfidenceMetricsEntry>;
+export const XPSConfidenceMetricsEntry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    recall: Schema.optional(Schema.Number),
+    f1ScoreAt1: Schema.optional(Schema.Number),
+    precisionAt1: Schema.optional(Schema.Number),
+    falseNegativeCount: Schema.optional(Schema.String),
+    recallAt1: Schema.optional(Schema.Number),
+    confidenceThreshold: Schema.optional(Schema.Number),
+    f1Score: Schema.optional(Schema.Number),
+    truePositiveCount: Schema.optional(Schema.String),
+    precision: Schema.optional(Schema.Number),
+    falsePositiveRateAt1: Schema.optional(Schema.Number),
+    positionThreshold: Schema.optional(Schema.Number),
+    falsePositiveRate: Schema.optional(Schema.Number),
+    trueNegativeCount: Schema.optional(Schema.String),
+    falsePositiveCount: Schema.optional(Schema.String),
+  }).annotate({ identifier: "XPSConfidenceMetricsEntry" });
 
 export interface XPSTextExtractionEvaluationMetrics {
   /** If the enclosing EvaluationMetrics.label is empty, confidence_metrics_entries is an evaluation of the entire model across all labels. If the enclosing EvaluationMetrics.label is set, confidence_metrics_entries applies to that label. */
@@ -1030,21 +866,17 @@ export interface XPSTextExtractionEvaluationMetrics {
   confusionMatrix?: XPSConfusionMatrix;
 }
 
-export const XPSTextExtractionEvaluationMetrics: Schema.Schema<XPSTextExtractionEvaluationMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      confidenceMetricsEntries: Schema.optional(
-        Schema.Array(XPSConfidenceMetricsEntry),
-      ),
-      bestF1ConfidenceMetrics: Schema.optional(XPSConfidenceMetricsEntry),
-      perLabelConfidenceMetrics: Schema.optional(
-        Schema.Record(Schema.String, XPSConfidenceMetricsEntry),
-      ),
-      confusionMatrix: Schema.optional(XPSConfusionMatrix),
-    }),
-  ).annotate({
-    identifier: "XPSTextExtractionEvaluationMetrics",
-  }) as any as Schema.Schema<XPSTextExtractionEvaluationMetrics>;
+export const XPSTextExtractionEvaluationMetrics =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    confidenceMetricsEntries: Schema.optional(
+      Schema.Array(XPSConfidenceMetricsEntry),
+    ),
+    bestF1ConfidenceMetrics: Schema.optional(XPSConfidenceMetricsEntry),
+    perLabelConfidenceMetrics: Schema.optional(
+      Schema.Record(Schema.String, XPSConfidenceMetricsEntry),
+    ),
+    confusionMatrix: Schema.optional(XPSConfusionMatrix),
+  }).annotate({ identifier: "XPSTextExtractionEvaluationMetrics" });
 
 export interface XPSFileSpec {
   /** Deprecated. Use file_spec. */
@@ -1063,17 +895,12 @@ export interface XPSFileSpec {
     | (string & {});
 }
 
-export const XPSFileSpec: Schema.Schema<XPSFileSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      singleFilePath: Schema.optional(Schema.String),
-      fileSpec: Schema.optional(Schema.String),
-      directoryPath: Schema.optional(Schema.String),
-      fileFormat: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "XPSFileSpec",
-  }) as any as Schema.Schema<XPSFileSpec>;
+export const XPSFileSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  singleFilePath: Schema.optional(Schema.String),
+  fileSpec: Schema.optional(Schema.String),
+  directoryPath: Schema.optional(Schema.String),
+  fileFormat: Schema.optional(Schema.String),
+}).annotate({ identifier: "XPSFileSpec" });
 
 export interface XPSExampleSet {
   /** Number of input sources. */
@@ -1086,31 +913,22 @@ export interface XPSExampleSet {
   fingerprint?: string;
 }
 
-export const XPSExampleSet: Schema.Schema<XPSExampleSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      numInputSources: Schema.optional(Schema.String),
-      fileSpec: Schema.optional(XPSFileSpec),
-      numExamples: Schema.optional(Schema.String),
-      fingerprint: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "XPSExampleSet",
-  }) as any as Schema.Schema<XPSExampleSet>;
+export const XPSExampleSet = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  numInputSources: Schema.optional(Schema.String),
+  fileSpec: Schema.optional(XPSFileSpec),
+  numExamples: Schema.optional(Schema.String),
+  fingerprint: Schema.optional(Schema.String),
+}).annotate({ identifier: "XPSExampleSet" });
 
 export interface XPSBatchPredictResponse {
   /** Examples for batch prediction result. Under full API implementation, results are stored in shared RecordIO of AnnotatedExample protobufs, the annotations field of which is populated by XPS backend. */
   exampleSet?: XPSExampleSet;
 }
 
-export const XPSBatchPredictResponse: Schema.Schema<XPSBatchPredictResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      exampleSet: Schema.optional(XPSExampleSet),
-    }),
-  ).annotate({
-    identifier: "XPSBatchPredictResponse",
-  }) as any as Schema.Schema<XPSBatchPredictResponse>;
+export const XPSBatchPredictResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    exampleSet: Schema.optional(XPSExampleSet),
+  }).annotate({ identifier: "XPSBatchPredictResponse" });
 
 export interface XPSCategoryStatsSingleCategoryStats {
   /** The CATEGORY value. */
@@ -1119,15 +937,11 @@ export interface XPSCategoryStatsSingleCategoryStats {
   count?: string;
 }
 
-export const XPSCategoryStatsSingleCategoryStats: Schema.Schema<XPSCategoryStatsSingleCategoryStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-      count: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "XPSCategoryStatsSingleCategoryStats",
-  }) as any as Schema.Schema<XPSCategoryStatsSingleCategoryStats>;
+export const XPSCategoryStatsSingleCategoryStats =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(Schema.String),
+    count: Schema.optional(Schema.String),
+  }).annotate({ identifier: "XPSCategoryStatsSingleCategoryStats" });
 
 export interface XPSCommonStats {
   nullValueCount?: string;
@@ -1135,16 +949,11 @@ export interface XPSCommonStats {
   distinctValueCount?: string;
 }
 
-export const XPSCommonStats: Schema.Schema<XPSCommonStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nullValueCount: Schema.optional(Schema.String),
-      validValueCount: Schema.optional(Schema.String),
-      distinctValueCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "XPSCommonStats",
-  }) as any as Schema.Schema<XPSCommonStats>;
+export const XPSCommonStats = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  nullValueCount: Schema.optional(Schema.String),
+  validValueCount: Schema.optional(Schema.String),
+  distinctValueCount: Schema.optional(Schema.String),
+}).annotate({ identifier: "XPSCommonStats" });
 
 export interface XPSCategoryStats {
   /** The statistics of the top 20 CATEGORY values, ordered by CategoryStats.SingleCategoryStats.count. */
@@ -1152,17 +961,12 @@ export interface XPSCategoryStats {
   commonStats?: XPSCommonStats;
 }
 
-export const XPSCategoryStats: Schema.Schema<XPSCategoryStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      topCategoryStats: Schema.optional(
-        Schema.Array(XPSCategoryStatsSingleCategoryStats),
-      ),
-      commonStats: Schema.optional(XPSCommonStats),
-    }),
-  ).annotate({
-    identifier: "XPSCategoryStats",
-  }) as any as Schema.Schema<XPSCategoryStats>;
+export const XPSCategoryStats = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  topCategoryStats: Schema.optional(
+    Schema.Array(XPSCategoryStatsSingleCategoryStats),
+  ),
+  commonStats: Schema.optional(XPSCommonStats),
+}).annotate({ identifier: "XPSCategoryStats" });
 
 export interface XPSTrainingObjectivePoint {
   /** The objective value when this point was recorded. */
@@ -1171,46 +975,34 @@ export interface XPSTrainingObjectivePoint {
   createTime?: string;
 }
 
-export const XPSTrainingObjectivePoint: Schema.Schema<XPSTrainingObjectivePoint> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.Number),
-      createTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "XPSTrainingObjectivePoint",
-  }) as any as Schema.Schema<XPSTrainingObjectivePoint>;
+export const XPSTrainingObjectivePoint =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(Schema.Number),
+    createTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "XPSTrainingObjectivePoint" });
 
 export interface XPSTablesModelStructureModelParameters {
   hyperparameters?: Array<XPSTablesModelStructureModelParametersParameter>;
 }
 
-export const XPSTablesModelStructureModelParameters: Schema.Schema<XPSTablesModelStructureModelParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      hyperparameters: Schema.optional(
-        Schema.Array(XPSTablesModelStructureModelParametersParameter),
-      ),
-    }),
-  ).annotate({
-    identifier: "XPSTablesModelStructureModelParameters",
-  }) as any as Schema.Schema<XPSTablesModelStructureModelParameters>;
+export const XPSTablesModelStructureModelParameters =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    hyperparameters: Schema.optional(
+      Schema.Array(XPSTablesModelStructureModelParametersParameter),
+    ),
+  }).annotate({ identifier: "XPSTablesModelStructureModelParameters" });
 
 export interface XPSTablesModelStructure {
   /** A list of models. */
   modelParameters?: Array<XPSTablesModelStructureModelParameters>;
 }
 
-export const XPSTablesModelStructure: Schema.Schema<XPSTablesModelStructure> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      modelParameters: Schema.optional(
-        Schema.Array(XPSTablesModelStructureModelParameters),
-      ),
-    }),
-  ).annotate({
-    identifier: "XPSTablesModelStructure",
-  }) as any as Schema.Schema<XPSTablesModelStructure>;
+export const XPSTablesModelStructure =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    modelParameters: Schema.optional(
+      Schema.Array(XPSTablesModelStructureModelParameters),
+    ),
+  }).annotate({ identifier: "XPSTablesModelStructure" });
 
 export interface XPSTuningTrial {
   /** Model parameters for the trial. */
@@ -1219,15 +1011,10 @@ export interface XPSTuningTrial {
   trainingObjectivePoint?: XPSTrainingObjectivePoint;
 }
 
-export const XPSTuningTrial: Schema.Schema<XPSTuningTrial> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      modelStructure: Schema.optional(XPSTablesModelStructure),
-      trainingObjectivePoint: Schema.optional(XPSTrainingObjectivePoint),
-    }),
-  ).annotate({
-    identifier: "XPSTuningTrial",
-  }) as any as Schema.Schema<XPSTuningTrial>;
+export const XPSTuningTrial = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  modelStructure: Schema.optional(XPSTablesModelStructure),
+  trainingObjectivePoint: Schema.optional(XPSTrainingObjectivePoint),
+}).annotate({ identifier: "XPSTuningTrial" });
 
 export interface XPSTablesTrainingOperationMetadata {
   /** The optimization objective for model. */
@@ -1250,21 +1037,17 @@ export interface XPSTablesTrainingOperationMetadata {
   trainingStartTime?: string;
 }
 
-export const XPSTablesTrainingOperationMetadata: Schema.Schema<XPSTablesTrainingOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      optimizationObjective: Schema.optional(Schema.String),
-      trainingObjectivePoints: Schema.optional(
-        Schema.Array(XPSTrainingObjectivePoint),
-      ),
-      createModelStage: Schema.optional(Schema.String),
-      trainBudgetMilliNodeHours: Schema.optional(Schema.String),
-      topTrials: Schema.optional(Schema.Array(XPSTuningTrial)),
-      trainingStartTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "XPSTablesTrainingOperationMetadata",
-  }) as any as Schema.Schema<XPSTablesTrainingOperationMetadata>;
+export const XPSTablesTrainingOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    optimizationObjective: Schema.optional(Schema.String),
+    trainingObjectivePoints: Schema.optional(
+      Schema.Array(XPSTrainingObjectivePoint),
+    ),
+    createModelStage: Schema.optional(Schema.String),
+    trainBudgetMilliNodeHours: Schema.optional(Schema.String),
+    topTrials: Schema.optional(Schema.Array(XPSTuningTrial)),
+    trainingStartTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "XPSTablesTrainingOperationMetadata" });
 
 export interface XPSRegressionMetricsEntry {
   /** The actual target value for a row in the dataset. */
@@ -1273,15 +1056,11 @@ export interface XPSRegressionMetricsEntry {
   predictedValue?: number;
 }
 
-export const XPSRegressionMetricsEntry: Schema.Schema<XPSRegressionMetricsEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      trueValue: Schema.optional(Schema.Number),
-      predictedValue: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "XPSRegressionMetricsEntry",
-  }) as any as Schema.Schema<XPSRegressionMetricsEntry>;
+export const XPSRegressionMetricsEntry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    trueValue: Schema.optional(Schema.Number),
+    predictedValue: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "XPSRegressionMetricsEntry" });
 
 export interface XPSTablesRegressionMetrics {
   /** Mean absolute error. */
@@ -1298,21 +1077,17 @@ export interface XPSTablesRegressionMetrics {
   rSquared?: number;
 }
 
-export const XPSTablesRegressionMetrics: Schema.Schema<XPSTablesRegressionMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      meanAbsoluteError: Schema.optional(Schema.Number),
-      regressionMetricsEntries: Schema.optional(
-        Schema.Array(XPSRegressionMetricsEntry),
-      ),
-      rootMeanSquaredError: Schema.optional(Schema.Number),
-      meanAbsolutePercentageError: Schema.optional(Schema.Number),
-      rootMeanSquaredLogError: Schema.optional(Schema.Number),
-      rSquared: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "XPSTablesRegressionMetrics",
-  }) as any as Schema.Schema<XPSTablesRegressionMetrics>;
+export const XPSTablesRegressionMetrics =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    meanAbsoluteError: Schema.optional(Schema.Number),
+    regressionMetricsEntries: Schema.optional(
+      Schema.Array(XPSRegressionMetricsEntry),
+    ),
+    rootMeanSquaredError: Schema.optional(Schema.Number),
+    meanAbsolutePercentageError: Schema.optional(Schema.Number),
+    rootMeanSquaredLogError: Schema.optional(Schema.Number),
+    rSquared: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "XPSTablesRegressionMetrics" });
 
 export interface XPSResponseExplanationParameters {
   /** An attribution method that redistributes Integrated Gradients attribution to segmented regions, taking advantage of the model's fully differentiable structure. Refer to this paper for more details: https://arxiv.org/abs/1906.02825 XRAI currently performs better on natural images, like a picture of a house or an animal. If the images are taken in artificial environments, like a lab or manufacturing line, or from diagnostic equipment, like x-rays or quality-control cameras, use Integrated Gradients instead. */
@@ -1321,17 +1096,13 @@ export interface XPSResponseExplanationParameters {
   integratedGradientsAttribution?: XPSIntegratedGradientsAttribution;
 }
 
-export const XPSResponseExplanationParameters: Schema.Schema<XPSResponseExplanationParameters> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      xraiAttribution: Schema.optional(XPSXraiAttribution),
-      integratedGradientsAttribution: Schema.optional(
-        XPSIntegratedGradientsAttribution,
-      ),
-    }),
-  ).annotate({
-    identifier: "XPSResponseExplanationParameters",
-  }) as any as Schema.Schema<XPSResponseExplanationParameters>;
+export const XPSResponseExplanationParameters =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    xraiAttribution: Schema.optional(XPSXraiAttribution),
+    integratedGradientsAttribution: Schema.optional(
+      XPSIntegratedGradientsAttribution,
+    ),
+  }).annotate({ identifier: "XPSResponseExplanationParameters" });
 
 export interface XPSTimestampStats {
   medianTimestampNanos?: string;
@@ -1340,25 +1111,20 @@ export interface XPSTimestampStats {
   commonStats?: XPSCommonStats;
 }
 
-export const XPSTimestampStats: Schema.Schema<XPSTimestampStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      medianTimestampNanos: Schema.optional(Schema.String),
-      granularStats: Schema.optional(
-        Schema.Record(Schema.String, XPSTimestampStatsGranularStats),
-      ),
-      commonStats: Schema.optional(XPSCommonStats),
-    }),
-  ).annotate({
-    identifier: "XPSTimestampStats",
-  }) as any as Schema.Schema<XPSTimestampStats>;
+export const XPSTimestampStats = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  medianTimestampNanos: Schema.optional(Schema.String),
+  granularStats: Schema.optional(
+    Schema.Record(Schema.String, XPSTimestampStatsGranularStats),
+  ),
+  commonStats: Schema.optional(XPSCommonStats),
+}).annotate({ identifier: "XPSTimestampStats" });
 
 export interface XPSTextToSpeechTrainResponse {}
 
-export const XPSTextToSpeechTrainResponse: Schema.Schema<XPSTextToSpeechTrainResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
+export const XPSTextToSpeechTrainResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
     identifier: "XPSTextToSpeechTrainResponse",
-  }) as any as Schema.Schema<XPSTextToSpeechTrainResponse>;
+  });
 
 export interface XPSVisionErrorAnalysisConfig {
   /** The number of query examples in error analysis. */
@@ -1372,45 +1138,33 @@ export interface XPSVisionErrorAnalysisConfig {
     | (string & {});
 }
 
-export const XPSVisionErrorAnalysisConfig: Schema.Schema<XPSVisionErrorAnalysisConfig> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      exampleCount: Schema.optional(Schema.Number),
-      queryType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "XPSVisionErrorAnalysisConfig",
-  }) as any as Schema.Schema<XPSVisionErrorAnalysisConfig>;
+export const XPSVisionErrorAnalysisConfig =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    exampleCount: Schema.optional(Schema.Number),
+    queryType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "XPSVisionErrorAnalysisConfig" });
 
 export interface XPSTranslationTrainResponse {
   /** Type of the model. */
   modelType?: "MODEL_TYPE_UNSPECIFIED" | "LEGACY" | "CURRENT" | (string & {});
 }
 
-export const XPSTranslationTrainResponse: Schema.Schema<XPSTranslationTrainResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      modelType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "XPSTranslationTrainResponse",
-  }) as any as Schema.Schema<XPSTranslationTrainResponse>;
+export const XPSTranslationTrainResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    modelType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "XPSTranslationTrainResponse" });
 
 export interface XPSImageExportModelSpec {
   /** Contains the model format and internal location of the model files to be exported/downloaded. Use the Google Cloud Storage bucket name which is provided via TrainRequest.gcs_bucket_name to store the model files. */
   exportModelOutputConfig?: Array<XPSExportModelOutputConfig>;
 }
 
-export const XPSImageExportModelSpec: Schema.Schema<XPSImageExportModelSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      exportModelOutputConfig: Schema.optional(
-        Schema.Array(XPSExportModelOutputConfig),
-      ),
-    }),
-  ).annotate({
-    identifier: "XPSImageExportModelSpec",
-  }) as any as Schema.Schema<XPSImageExportModelSpec>;
+export const XPSImageExportModelSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    exportModelOutputConfig: Schema.optional(
+      Schema.Array(XPSExportModelOutputConfig),
+    ),
+  }).annotate({ identifier: "XPSImageExportModelSpec" });
 
 export interface XPSImageModelArtifactSpec {
   /** Google Cloud Storage URI of decoded labels file for model export 'dict.txt'. */
@@ -1427,19 +1181,15 @@ export interface XPSImageModelArtifactSpec {
   checkpointArtifact?: XPSModelArtifactItem;
 }
 
-export const XPSImageModelArtifactSpec: Schema.Schema<XPSImageModelArtifactSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      labelGcsUri: Schema.optional(Schema.String),
-      tfJsBinaryGcsPrefix: Schema.optional(Schema.String),
-      exportArtifact: Schema.optional(Schema.Array(XPSModelArtifactItem)),
-      tfLiteMetadataGcsUri: Schema.optional(Schema.String),
-      servingArtifact: Schema.optional(XPSModelArtifactItem),
-      checkpointArtifact: Schema.optional(XPSModelArtifactItem),
-    }),
-  ).annotate({
-    identifier: "XPSImageModelArtifactSpec",
-  }) as any as Schema.Schema<XPSImageModelArtifactSpec>;
+export const XPSImageModelArtifactSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    labelGcsUri: Schema.optional(Schema.String),
+    tfJsBinaryGcsPrefix: Schema.optional(Schema.String),
+    exportArtifact: Schema.optional(Schema.Array(XPSModelArtifactItem)),
+    tfLiteMetadataGcsUri: Schema.optional(Schema.String),
+    servingArtifact: Schema.optional(XPSModelArtifactItem),
+    checkpointArtifact: Schema.optional(XPSModelArtifactItem),
+  }).annotate({ identifier: "XPSImageModelArtifactSpec" });
 
 export interface XPSImageModelServingSpec {
   /** An estimated value of how much traffic a node can serve. Populated for AutoMl request only. */
@@ -1450,18 +1200,14 @@ export interface XPSImageModelServingSpec {
   tfRuntimeVersion?: string;
 }
 
-export const XPSImageModelServingSpec: Schema.Schema<XPSImageModelServingSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nodeQps: Schema.optional(Schema.Number),
-      modelThroughputEstimation: Schema.optional(
-        Schema.Array(XPSImageModelServingSpecModelThroughputEstimation),
-      ),
-      tfRuntimeVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "XPSImageModelServingSpec",
-  }) as any as Schema.Schema<XPSImageModelServingSpec>;
+export const XPSImageModelServingSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nodeQps: Schema.optional(Schema.Number),
+    modelThroughputEstimation: Schema.optional(
+      Schema.Array(XPSImageModelServingSpecModelThroughputEstimation),
+    ),
+    tfRuntimeVersion: Schema.optional(Schema.String),
+  }).annotate({ identifier: "XPSImageModelServingSpec" });
 
 export interface XPSImageObjectDetectionModelSpec {
   exportModelSpec?: XPSImageExportModelSpec;
@@ -1483,34 +1229,26 @@ export interface XPSImageObjectDetectionModelSpec {
   modelServingSpec?: XPSImageModelServingSpec;
 }
 
-export const XPSImageObjectDetectionModelSpec: Schema.Schema<XPSImageObjectDetectionModelSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      exportModelSpec: Schema.optional(XPSImageExportModelSpec),
-      maxBoundingBoxCount: Schema.optional(Schema.String),
-      modelArtifactSpec: Schema.optional(XPSImageModelArtifactSpec),
-      classCount: Schema.optional(Schema.String),
-      trainCostNodeSeconds: Schema.optional(Schema.String),
-      stopReason: Schema.optional(Schema.String),
-      modelServingSpec: Schema.optional(XPSImageModelServingSpec),
-    }),
-  ).annotate({
-    identifier: "XPSImageObjectDetectionModelSpec",
-  }) as any as Schema.Schema<XPSImageObjectDetectionModelSpec>;
+export const XPSImageObjectDetectionModelSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    exportModelSpec: Schema.optional(XPSImageExportModelSpec),
+    maxBoundingBoxCount: Schema.optional(Schema.String),
+    modelArtifactSpec: Schema.optional(XPSImageModelArtifactSpec),
+    classCount: Schema.optional(Schema.String),
+    trainCostNodeSeconds: Schema.optional(Schema.String),
+    stopReason: Schema.optional(Schema.String),
+    modelServingSpec: Schema.optional(XPSImageModelServingSpec),
+  }).annotate({ identifier: "XPSImageObjectDetectionModelSpec" });
 
 export interface XPSResponseExplanationMetadataOutputMetadata {
   /** Name of the output tensor. Only needed in train response. */
   outputTensorName?: string;
 }
 
-export const XPSResponseExplanationMetadataOutputMetadata: Schema.Schema<XPSResponseExplanationMetadataOutputMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      outputTensorName: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "XPSResponseExplanationMetadataOutputMetadata",
-  }) as any as Schema.Schema<XPSResponseExplanationMetadataOutputMetadata>;
+export const XPSResponseExplanationMetadataOutputMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    outputTensorName: Schema.optional(Schema.String),
+  }).annotate({ identifier: "XPSResponseExplanationMetadataOutputMetadata" });
 
 export interface XPSResponseExplanationMetadata {
   /** Metadata of the input. */
@@ -1519,25 +1257,18 @@ export interface XPSResponseExplanationMetadata {
   outputs?: Record<string, XPSResponseExplanationMetadataOutputMetadata>;
 }
 
-export const XPSResponseExplanationMetadata: Schema.Schema<XPSResponseExplanationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      inputs: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          XPSResponseExplanationMetadataInputMetadata,
-        ),
+export const XPSResponseExplanationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    inputs: Schema.optional(
+      Schema.Record(Schema.String, XPSResponseExplanationMetadataInputMetadata),
+    ),
+    outputs: Schema.optional(
+      Schema.Record(
+        Schema.String,
+        XPSResponseExplanationMetadataOutputMetadata,
       ),
-      outputs: Schema.optional(
-        Schema.Record(
-          Schema.String,
-          XPSResponseExplanationMetadataOutputMetadata,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "XPSResponseExplanationMetadata",
-  }) as any as Schema.Schema<XPSResponseExplanationMetadata>;
+    ),
+  }).annotate({ identifier: "XPSResponseExplanationMetadata" });
 
 export interface XPSResponseExplanationSpec {
   /** Parameters that configure explaining of the Model's predictions. */
@@ -1548,16 +1279,12 @@ export interface XPSResponseExplanationSpec {
   metadata?: XPSResponseExplanationMetadata;
 }
 
-export const XPSResponseExplanationSpec: Schema.Schema<XPSResponseExplanationSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parameters: Schema.optional(XPSResponseExplanationParameters),
-      explanationType: Schema.optional(Schema.String),
-      metadata: Schema.optional(XPSResponseExplanationMetadata),
-    }),
-  ).annotate({
-    identifier: "XPSResponseExplanationSpec",
-  }) as any as Schema.Schema<XPSResponseExplanationSpec>;
+export const XPSResponseExplanationSpec =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parameters: Schema.optional(XPSResponseExplanationParameters),
+    explanationType: Schema.optional(Schema.String),
+    metadata: Schema.optional(XPSResponseExplanationMetadata),
+  }).annotate({ identifier: "XPSResponseExplanationSpec" });
 
 export interface XPSClassificationEvaluationMetrics {
   /** Confusion matrix of the evaluation. Only set for MULTICLASS classification problems where number of annotation specs is no more than 10. Only set for model level evaluation, not for evaluation per label. */
@@ -1576,22 +1303,18 @@ export interface XPSClassificationEvaluationMetrics {
   logLoss?: number;
 }
 
-export const XPSClassificationEvaluationMetrics: Schema.Schema<XPSClassificationEvaluationMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      confusionMatrix: Schema.optional(XPSConfusionMatrix),
-      auPrc: Schema.optional(Schema.Number),
-      baseAuPrc: Schema.optional(Schema.Number),
-      confidenceMetricsEntries: Schema.optional(
-        Schema.Array(XPSConfidenceMetricsEntry),
-      ),
-      evaluatedExamplesCount: Schema.optional(Schema.Number),
-      auRoc: Schema.optional(Schema.Number),
-      logLoss: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "XPSClassificationEvaluationMetrics",
-  }) as any as Schema.Schema<XPSClassificationEvaluationMetrics>;
+export const XPSClassificationEvaluationMetrics =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    confusionMatrix: Schema.optional(XPSConfusionMatrix),
+    auPrc: Schema.optional(Schema.Number),
+    baseAuPrc: Schema.optional(Schema.Number),
+    confidenceMetricsEntries: Schema.optional(
+      Schema.Array(XPSConfidenceMetricsEntry),
+    ),
+    evaluatedExamplesCount: Schema.optional(Schema.Number),
+    auRoc: Schema.optional(Schema.Number),
+    logLoss: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "XPSClassificationEvaluationMetrics" });
 
 export interface XPSRegressionEvaluationMetrics {
   /** Mean Absolute Error (MAE). */
@@ -1608,37 +1331,29 @@ export interface XPSRegressionEvaluationMetrics {
   rSquared?: number;
 }
 
-export const XPSRegressionEvaluationMetrics: Schema.Schema<XPSRegressionEvaluationMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      meanAbsoluteError: Schema.optional(Schema.Number),
-      regressionMetricsEntries: Schema.optional(
-        Schema.Array(XPSRegressionMetricsEntry),
-      ),
-      rootMeanSquaredError: Schema.optional(Schema.Number),
-      meanAbsolutePercentageError: Schema.optional(Schema.Number),
-      rootMeanSquaredLogError: Schema.optional(Schema.Number),
-      rSquared: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "XPSRegressionEvaluationMetrics",
-  }) as any as Schema.Schema<XPSRegressionEvaluationMetrics>;
+export const XPSRegressionEvaluationMetrics =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    meanAbsoluteError: Schema.optional(Schema.Number),
+    regressionMetricsEntries: Schema.optional(
+      Schema.Array(XPSRegressionMetricsEntry),
+    ),
+    rootMeanSquaredError: Schema.optional(Schema.Number),
+    meanAbsolutePercentageError: Schema.optional(Schema.Number),
+    rootMeanSquaredLogError: Schema.optional(Schema.Number),
+    rSquared: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "XPSRegressionEvaluationMetrics" });
 
 export interface XPSTablesClassificationMetrics {
   /** Metrics building a curve. */
   curveMetrics?: Array<XPSTablesClassificationMetricsCurveMetrics>;
 }
 
-export const XPSTablesClassificationMetrics: Schema.Schema<XPSTablesClassificationMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      curveMetrics: Schema.optional(
-        Schema.Array(XPSTablesClassificationMetricsCurveMetrics),
-      ),
-    }),
-  ).annotate({
-    identifier: "XPSTablesClassificationMetrics",
-  }) as any as Schema.Schema<XPSTablesClassificationMetrics>;
+export const XPSTablesClassificationMetrics =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    curveMetrics: Schema.optional(
+      Schema.Array(XPSTablesClassificationMetricsCurveMetrics),
+    ),
+  }).annotate({ identifier: "XPSTablesClassificationMetrics" });
 
 export interface XPSTablesEvaluationMetrics {
   /** Classification metrics. */
@@ -1647,15 +1362,11 @@ export interface XPSTablesEvaluationMetrics {
   regressionMetrics?: XPSTablesRegressionMetrics;
 }
 
-export const XPSTablesEvaluationMetrics: Schema.Schema<XPSTablesEvaluationMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      classificationMetrics: Schema.optional(XPSTablesClassificationMetrics),
-      regressionMetrics: Schema.optional(XPSTablesRegressionMetrics),
-    }),
-  ).annotate({
-    identifier: "XPSTablesEvaluationMetrics",
-  }) as any as Schema.Schema<XPSTablesEvaluationMetrics>;
+export const XPSTablesEvaluationMetrics =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    classificationMetrics: Schema.optional(XPSTablesClassificationMetrics),
+    regressionMetrics: Schema.optional(XPSTablesRegressionMetrics),
+  }).annotate({ identifier: "XPSTablesEvaluationMetrics" });
 
 export interface XPSBoundingBoxMetricsEntryConfidenceMetricsEntry {
   /** The harmonic mean of recall and precision. */
@@ -1668,17 +1379,15 @@ export interface XPSBoundingBoxMetricsEntryConfidenceMetricsEntry {
   precision?: number;
 }
 
-export const XPSBoundingBoxMetricsEntryConfidenceMetricsEntry: Schema.Schema<XPSBoundingBoxMetricsEntryConfidenceMetricsEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      f1Score: Schema.optional(Schema.Number),
-      recall: Schema.optional(Schema.Number),
-      confidenceThreshold: Schema.optional(Schema.Number),
-      precision: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const XPSBoundingBoxMetricsEntryConfidenceMetricsEntry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    f1Score: Schema.optional(Schema.Number),
+    recall: Schema.optional(Schema.Number),
+    confidenceThreshold: Schema.optional(Schema.Number),
+    precision: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "XPSBoundingBoxMetricsEntryConfidenceMetricsEntry",
-  }) as any as Schema.Schema<XPSBoundingBoxMetricsEntryConfidenceMetricsEntry>;
+  });
 
 export interface XPSBoundingBoxMetricsEntry {
   /** The intersection-over-union threshold value used to compute this metrics entry. */
@@ -1689,18 +1398,14 @@ export interface XPSBoundingBoxMetricsEntry {
   confidenceMetricsEntries?: Array<XPSBoundingBoxMetricsEntryConfidenceMetricsEntry>;
 }
 
-export const XPSBoundingBoxMetricsEntry: Schema.Schema<XPSBoundingBoxMetricsEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      iouThreshold: Schema.optional(Schema.Number),
-      meanAveragePrecision: Schema.optional(Schema.Number),
-      confidenceMetricsEntries: Schema.optional(
-        Schema.Array(XPSBoundingBoxMetricsEntryConfidenceMetricsEntry),
-      ),
-    }),
-  ).annotate({
-    identifier: "XPSBoundingBoxMetricsEntry",
-  }) as any as Schema.Schema<XPSBoundingBoxMetricsEntry>;
+export const XPSBoundingBoxMetricsEntry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    iouThreshold: Schema.optional(Schema.Number),
+    meanAveragePrecision: Schema.optional(Schema.Number),
+    confidenceMetricsEntries: Schema.optional(
+      Schema.Array(XPSBoundingBoxMetricsEntryConfidenceMetricsEntry),
+    ),
+  }).annotate({ identifier: "XPSBoundingBoxMetricsEntry" });
 
 export interface XPSImageObjectDetectionEvaluationMetrics {
   /** The single metric for bounding boxes evaluation: the mean_average_precision averaged over all bounding_box_metrics_entries. */
@@ -1711,18 +1416,14 @@ export interface XPSImageObjectDetectionEvaluationMetrics {
   evaluatedBoundingBoxCount?: number;
 }
 
-export const XPSImageObjectDetectionEvaluationMetrics: Schema.Schema<XPSImageObjectDetectionEvaluationMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      boundingBoxMeanAveragePrecision: Schema.optional(Schema.Number),
-      boundingBoxMetricsEntries: Schema.optional(
-        Schema.Array(XPSBoundingBoxMetricsEntry),
-      ),
-      evaluatedBoundingBoxCount: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "XPSImageObjectDetectionEvaluationMetrics",
-  }) as any as Schema.Schema<XPSImageObjectDetectionEvaluationMetrics>;
+export const XPSImageObjectDetectionEvaluationMetrics =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    boundingBoxMeanAveragePrecision: Schema.optional(Schema.Number),
+    boundingBoxMetricsEntries: Schema.optional(
+      Schema.Array(XPSBoundingBoxMetricsEntry),
+    ),
+    evaluatedBoundingBoxCount: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "XPSImageObjectDetectionEvaluationMetrics" });
 
 export interface XPSImageSegmentationEvaluationMetricsConfidenceMetricsEntry {
   /** DSC or the F1 score: The harmonic mean of recall and precision. */
@@ -1739,37 +1440,29 @@ export interface XPSImageSegmentationEvaluationMetricsConfidenceMetricsEntry {
   precision?: number;
 }
 
-export const XPSImageSegmentationEvaluationMetricsConfidenceMetricsEntry: Schema.Schema<XPSImageSegmentationEvaluationMetricsConfidenceMetricsEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      diceScoreCoefficient: Schema.optional(Schema.Number),
-      confidenceThreshold: Schema.optional(Schema.Number),
-      recall: Schema.optional(Schema.Number),
-      iouScore: Schema.optional(Schema.Number),
-      confusionMatrix: Schema.optional(XPSConfusionMatrix),
-      precision: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const XPSImageSegmentationEvaluationMetricsConfidenceMetricsEntry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    diceScoreCoefficient: Schema.optional(Schema.Number),
+    confidenceThreshold: Schema.optional(Schema.Number),
+    recall: Schema.optional(Schema.Number),
+    iouScore: Schema.optional(Schema.Number),
+    confusionMatrix: Schema.optional(XPSConfusionMatrix),
+    precision: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "XPSImageSegmentationEvaluationMetricsConfidenceMetricsEntry",
-  }) as any as Schema.Schema<XPSImageSegmentationEvaluationMetricsConfidenceMetricsEntry>;
+  });
 
 export interface XPSImageSegmentationEvaluationMetrics {
   /** Metrics that have confidence thresholds. Precision-recall curve can be derived from it. */
   confidenceMetricsEntries?: Array<XPSImageSegmentationEvaluationMetricsConfidenceMetricsEntry>;
 }
 
-export const XPSImageSegmentationEvaluationMetrics: Schema.Schema<XPSImageSegmentationEvaluationMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      confidenceMetricsEntries: Schema.optional(
-        Schema.Array(
-          XPSImageSegmentationEvaluationMetricsConfidenceMetricsEntry,
-        ),
-      ),
-    }),
-  ).annotate({
-    identifier: "XPSImageSegmentationEvaluationMetrics",
-  }) as any as Schema.Schema<XPSImageSegmentationEvaluationMetrics>;
+export const XPSImageSegmentationEvaluationMetrics =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    confidenceMetricsEntries: Schema.optional(
+      Schema.Array(XPSImageSegmentationEvaluationMetricsConfidenceMetricsEntry),
+    ),
+  }).annotate({ identifier: "XPSImageSegmentationEvaluationMetrics" });
 
 export interface XPSVideoObjectTrackingEvaluationMetrics {
   /** Output only. The single metric for bounding boxes evaluation: the mean_average_precision averaged over all bounding_box_metrics_entries. */
@@ -1792,24 +1485,20 @@ export interface XPSVideoObjectTrackingEvaluationMetrics {
   trackMetricsEntries?: Array<XPSTrackMetricsEntry>;
 }
 
-export const XPSVideoObjectTrackingEvaluationMetrics: Schema.Schema<XPSVideoObjectTrackingEvaluationMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      boundingBoxMeanAveragePrecision: Schema.optional(Schema.Number),
-      trackMeanAveragePrecision: Schema.optional(Schema.Number),
-      evaluatedTrackCount: Schema.optional(Schema.Number),
-      evaluatedBoundingboxCount: Schema.optional(Schema.Number),
-      boundingBoxMetricsEntries: Schema.optional(
-        Schema.Array(XPSBoundingBoxMetricsEntry),
-      ),
-      trackMeanMismatchRate: Schema.optional(Schema.Number),
-      evaluatedFrameCount: Schema.optional(Schema.Number),
-      trackMeanBoundingBoxIou: Schema.optional(Schema.Number),
-      trackMetricsEntries: Schema.optional(Schema.Array(XPSTrackMetricsEntry)),
-    }),
-  ).annotate({
-    identifier: "XPSVideoObjectTrackingEvaluationMetrics",
-  }) as any as Schema.Schema<XPSVideoObjectTrackingEvaluationMetrics>;
+export const XPSVideoObjectTrackingEvaluationMetrics =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    boundingBoxMeanAveragePrecision: Schema.optional(Schema.Number),
+    trackMeanAveragePrecision: Schema.optional(Schema.Number),
+    evaluatedTrackCount: Schema.optional(Schema.Number),
+    evaluatedBoundingboxCount: Schema.optional(Schema.Number),
+    boundingBoxMetricsEntries: Schema.optional(
+      Schema.Array(XPSBoundingBoxMetricsEntry),
+    ),
+    trackMeanMismatchRate: Schema.optional(Schema.Number),
+    evaluatedFrameCount: Schema.optional(Schema.Number),
+    trackMeanBoundingBoxIou: Schema.optional(Schema.Number),
+    trackMetricsEntries: Schema.optional(Schema.Array(XPSTrackMetricsEntry)),
+  }).annotate({ identifier: "XPSVideoObjectTrackingEvaluationMetrics" });
 
 export interface XPSTranslationEvaluationMetrics {
   /** BLEU score for base model. */
@@ -1818,15 +1507,11 @@ export interface XPSTranslationEvaluationMetrics {
   bleuScore?: number;
 }
 
-export const XPSTranslationEvaluationMetrics: Schema.Schema<XPSTranslationEvaluationMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      baseBleuScore: Schema.optional(Schema.Number),
-      bleuScore: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "XPSTranslationEvaluationMetrics",
-  }) as any as Schema.Schema<XPSTranslationEvaluationMetrics>;
+export const XPSTranslationEvaluationMetrics =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    baseBleuScore: Schema.optional(Schema.Number),
+    bleuScore: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "XPSTranslationEvaluationMetrics" });
 
 export interface XPSVideoActionMetricsEntryConfidenceMetricsEntry {
   /** Output only. The harmonic mean of recall and precision. */
@@ -1839,17 +1524,15 @@ export interface XPSVideoActionMetricsEntryConfidenceMetricsEntry {
   precision?: number;
 }
 
-export const XPSVideoActionMetricsEntryConfidenceMetricsEntry: Schema.Schema<XPSVideoActionMetricsEntryConfidenceMetricsEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      f1Score: Schema.optional(Schema.Number),
-      recall: Schema.optional(Schema.Number),
-      confidenceThreshold: Schema.optional(Schema.Number),
-      precision: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const XPSVideoActionMetricsEntryConfidenceMetricsEntry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    f1Score: Schema.optional(Schema.Number),
+    recall: Schema.optional(Schema.Number),
+    confidenceThreshold: Schema.optional(Schema.Number),
+    precision: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "XPSVideoActionMetricsEntryConfidenceMetricsEntry",
-  }) as any as Schema.Schema<XPSVideoActionMetricsEntryConfidenceMetricsEntry>;
+  });
 
 export interface XPSVideoActionMetricsEntry {
   /** This VideoActionMetricsEntry is calculated based on this prediction window length. If the predicted action's timestamp is inside the time window whose center is the ground truth action's timestamp with this specific length, the prediction result is treated as a true positive. */
@@ -1860,18 +1543,14 @@ export interface XPSVideoActionMetricsEntry {
   confidenceMetricsEntries?: Array<XPSVideoActionMetricsEntryConfidenceMetricsEntry>;
 }
 
-export const XPSVideoActionMetricsEntry: Schema.Schema<XPSVideoActionMetricsEntry> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      precisionWindowLength: Schema.optional(Schema.String),
-      meanAveragePrecision: Schema.optional(Schema.Number),
-      confidenceMetricsEntries: Schema.optional(
-        Schema.Array(XPSVideoActionMetricsEntryConfidenceMetricsEntry),
-      ),
-    }),
-  ).annotate({
-    identifier: "XPSVideoActionMetricsEntry",
-  }) as any as Schema.Schema<XPSVideoActionMetricsEntry>;
+export const XPSVideoActionMetricsEntry =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    precisionWindowLength: Schema.optional(Schema.String),
+    meanAveragePrecision: Schema.optional(Schema.Number),
+    confidenceMetricsEntries: Schema.optional(
+      Schema.Array(XPSVideoActionMetricsEntryConfidenceMetricsEntry),
+    ),
+  }).annotate({ identifier: "XPSVideoActionMetricsEntry" });
 
 export interface XPSVideoActionRecognitionEvaluationMetrics {
   /** Output only. The number of ground truth actions used to create this evaluation. */
@@ -1880,17 +1559,13 @@ export interface XPSVideoActionRecognitionEvaluationMetrics {
   videoActionMetricsEntries?: Array<XPSVideoActionMetricsEntry>;
 }
 
-export const XPSVideoActionRecognitionEvaluationMetrics: Schema.Schema<XPSVideoActionRecognitionEvaluationMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      evaluatedActionCount: Schema.optional(Schema.Number),
-      videoActionMetricsEntries: Schema.optional(
-        Schema.Array(XPSVideoActionMetricsEntry),
-      ),
-    }),
-  ).annotate({
-    identifier: "XPSVideoActionRecognitionEvaluationMetrics",
-  }) as any as Schema.Schema<XPSVideoActionRecognitionEvaluationMetrics>;
+export const XPSVideoActionRecognitionEvaluationMetrics =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    evaluatedActionCount: Schema.optional(Schema.Number),
+    videoActionMetricsEntries: Schema.optional(
+      Schema.Array(XPSVideoActionMetricsEntry),
+    ),
+  }).annotate({ identifier: "XPSVideoActionRecognitionEvaluationMetrics" });
 
 export interface XPSEvaluationMetrics {
   videoClassificationEvalMetrics?: XPSClassificationEvaluationMetrics;
@@ -1916,50 +1591,43 @@ export interface XPSEvaluationMetrics {
   videoActionRecognitionEvalMetrics?: XPSVideoActionRecognitionEvaluationMetrics;
 }
 
-export const XPSEvaluationMetrics: Schema.Schema<XPSEvaluationMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      videoClassificationEvalMetrics: Schema.optional(
-        XPSClassificationEvaluationMetrics,
-      ),
-      regressionEvalMetrics: Schema.optional(XPSRegressionEvaluationMetrics),
-      tablesEvalMetrics: Schema.optional(XPSTablesEvaluationMetrics),
-      textSentimentEvalMetrics: Schema.optional(
-        XPSTextSentimentEvaluationMetrics,
-      ),
-      imageObjectDetectionEvalMetrics: Schema.optional(
-        XPSImageObjectDetectionEvaluationMetrics,
-      ),
-      imageSegmentationEvalMetrics: Schema.optional(
-        XPSImageSegmentationEvaluationMetrics,
-      ),
-      annotationSpecIdToken: Schema.optional(Schema.String),
-      category: Schema.optional(Schema.Number),
-      evaluatedExampleCount: Schema.optional(Schema.Number),
-      imageClassificationEvalMetrics: Schema.optional(
-        XPSClassificationEvaluationMetrics,
-      ),
-      textClassificationEvalMetrics: Schema.optional(
-        XPSClassificationEvaluationMetrics,
-      ),
-      tablesClassificationEvalMetrics: Schema.optional(
-        XPSClassificationEvaluationMetrics,
-      ),
-      videoObjectTrackingEvalMetrics: Schema.optional(
-        XPSVideoObjectTrackingEvaluationMetrics,
-      ),
-      textExtractionEvalMetrics: Schema.optional(
-        XPSTextExtractionEvaluationMetrics,
-      ),
-      translationEvalMetrics: Schema.optional(XPSTranslationEvaluationMetrics),
-      label: Schema.optional(Schema.String),
-      videoActionRecognitionEvalMetrics: Schema.optional(
-        XPSVideoActionRecognitionEvaluationMetrics,
-      ),
-    }),
-  ).annotate({
-    identifier: "XPSEvaluationMetrics",
-  }) as any as Schema.Schema<XPSEvaluationMetrics>;
+export const XPSEvaluationMetrics = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  videoClassificationEvalMetrics: Schema.optional(
+    XPSClassificationEvaluationMetrics,
+  ),
+  regressionEvalMetrics: Schema.optional(XPSRegressionEvaluationMetrics),
+  tablesEvalMetrics: Schema.optional(XPSTablesEvaluationMetrics),
+  textSentimentEvalMetrics: Schema.optional(XPSTextSentimentEvaluationMetrics),
+  imageObjectDetectionEvalMetrics: Schema.optional(
+    XPSImageObjectDetectionEvaluationMetrics,
+  ),
+  imageSegmentationEvalMetrics: Schema.optional(
+    XPSImageSegmentationEvaluationMetrics,
+  ),
+  annotationSpecIdToken: Schema.optional(Schema.String),
+  category: Schema.optional(Schema.Number),
+  evaluatedExampleCount: Schema.optional(Schema.Number),
+  imageClassificationEvalMetrics: Schema.optional(
+    XPSClassificationEvaluationMetrics,
+  ),
+  textClassificationEvalMetrics: Schema.optional(
+    XPSClassificationEvaluationMetrics,
+  ),
+  tablesClassificationEvalMetrics: Schema.optional(
+    XPSClassificationEvaluationMetrics,
+  ),
+  videoObjectTrackingEvalMetrics: Schema.optional(
+    XPSVideoObjectTrackingEvaluationMetrics,
+  ),
+  textExtractionEvalMetrics: Schema.optional(
+    XPSTextExtractionEvaluationMetrics,
+  ),
+  translationEvalMetrics: Schema.optional(XPSTranslationEvaluationMetrics),
+  label: Schema.optional(Schema.String),
+  videoActionRecognitionEvalMetrics: Schema.optional(
+    XPSVideoActionRecognitionEvaluationMetrics,
+  ),
+}).annotate({ identifier: "XPSEvaluationMetrics" });
 
 export interface XPSEvaluationMetricsSet {
   /** Inline EvaluationMetrics - should be relatively small. For passing large quantities of exhaustive metrics, use file_spec. */
@@ -1970,16 +1638,12 @@ export interface XPSEvaluationMetricsSet {
   fileSpec?: XPSFileSpec;
 }
 
-export const XPSEvaluationMetricsSet: Schema.Schema<XPSEvaluationMetricsSet> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      evaluationMetrics: Schema.optional(Schema.Array(XPSEvaluationMetrics)),
-      numEvaluationMetrics: Schema.optional(Schema.String),
-      fileSpec: Schema.optional(XPSFileSpec),
-    }),
-  ).annotate({
-    identifier: "XPSEvaluationMetricsSet",
-  }) as any as Schema.Schema<XPSEvaluationMetricsSet>;
+export const XPSEvaluationMetricsSet =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    evaluationMetrics: Schema.optional(Schema.Array(XPSEvaluationMetrics)),
+    numEvaluationMetrics: Schema.optional(Schema.String),
+    fileSpec: Schema.optional(XPSFileSpec),
+  }).annotate({ identifier: "XPSEvaluationMetricsSet" });
 
 export interface XPSTablesModelColumnInfo {
   /** The ID of the column. */
@@ -1988,15 +1652,11 @@ export interface XPSTablesModelColumnInfo {
   featureImportance?: number;
 }
 
-export const XPSTablesModelColumnInfo: Schema.Schema<XPSTablesModelColumnInfo> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      columnId: Schema.optional(Schema.Number),
-      featureImportance: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "XPSTablesModelColumnInfo",
-  }) as any as Schema.Schema<XPSTablesModelColumnInfo>;
+export const XPSTablesModelColumnInfo =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    columnId: Schema.optional(Schema.Number),
+    featureImportance: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "XPSTablesModelColumnInfo" });
 
 export interface XPSRow {
   /** The values of the row cells, given in the same order as the column_ids. If column_ids is not set, then in the same order as the input_feature_column_ids in TablesModelMetadata. */
@@ -2005,13 +1665,10 @@ export interface XPSRow {
   columnIds?: Array<number>;
 }
 
-export const XPSRow: Schema.Schema<XPSRow> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      values: Schema.optional(Schema.Array(Schema.Unknown)),
-      columnIds: Schema.optional(Schema.Array(Schema.Number)),
-    }),
-  ).annotate({ identifier: "XPSRow" }) as any as Schema.Schema<XPSRow>;
+export const XPSRow = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  values: Schema.optional(Schema.Array(Schema.Unknown)),
+  columnIds: Schema.optional(Schema.Array(Schema.Number)),
+}).annotate({ identifier: "XPSRow" });
 
 export interface XPSTablesTrainResponse {
   /** Output only. Auxiliary information for each of the input_feature_column_specs, with respect to this particular model. */
@@ -2023,19 +1680,16 @@ export interface XPSTablesTrainResponse {
   predictionSampleRows?: Array<XPSRow>;
 }
 
-export const XPSTablesTrainResponse: Schema.Schema<XPSTablesTrainResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tablesModelColumnInfo: Schema.optional(
-        Schema.Array(XPSTablesModelColumnInfo),
-      ),
-      trainCostMilliNodeHours: Schema.optional(Schema.String),
-      modelStructure: Schema.optional(XPSTablesModelStructure),
-      predictionSampleRows: Schema.optional(Schema.Array(XPSRow)),
-    }),
-  ).annotate({
-    identifier: "XPSTablesTrainResponse",
-  }) as any as Schema.Schema<XPSTablesTrainResponse>;
+export const XPSTablesTrainResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    tablesModelColumnInfo: Schema.optional(
+      Schema.Array(XPSTablesModelColumnInfo),
+    ),
+    trainCostMilliNodeHours: Schema.optional(Schema.String),
+    modelStructure: Schema.optional(XPSTablesModelStructure),
+    predictionSampleRows: Schema.optional(Schema.Array(XPSRow)),
+  },
+).annotate({ identifier: "XPSTablesTrainResponse" });
 
 export interface XPSImageClassificationTrainResponse {
   /** ## The fields below are only populated under uCAIP request scope. */
@@ -2058,20 +1712,16 @@ export interface XPSImageClassificationTrainResponse {
   trainCostInNodeTime?: string;
 }
 
-export const XPSImageClassificationTrainResponse: Schema.Schema<XPSImageClassificationTrainResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      modelArtifactSpec: Schema.optional(XPSImageModelArtifactSpec),
-      classCount: Schema.optional(Schema.String),
-      trainCostNodeSeconds: Schema.optional(Schema.String),
-      stopReason: Schema.optional(Schema.String),
-      modelServingSpec: Schema.optional(XPSImageModelServingSpec),
-      exportModelSpec: Schema.optional(XPSImageExportModelSpec),
-      trainCostInNodeTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "XPSImageClassificationTrainResponse",
-  }) as any as Schema.Schema<XPSImageClassificationTrainResponse>;
+export const XPSImageClassificationTrainResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    modelArtifactSpec: Schema.optional(XPSImageModelArtifactSpec),
+    classCount: Schema.optional(Schema.String),
+    trainCostNodeSeconds: Schema.optional(Schema.String),
+    stopReason: Schema.optional(Schema.String),
+    modelServingSpec: Schema.optional(XPSImageModelServingSpec),
+    exportModelSpec: Schema.optional(XPSImageExportModelSpec),
+    trainCostInNodeTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "XPSImageClassificationTrainResponse" });
 
 export interface XPSVideoClassificationTrainResponse {
   /** ## The fields below are only populated under uCAIP request scope. */
@@ -2080,15 +1730,11 @@ export interface XPSVideoClassificationTrainResponse {
   trainCostNodeSeconds?: string;
 }
 
-export const XPSVideoClassificationTrainResponse: Schema.Schema<XPSVideoClassificationTrainResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      modelArtifactSpec: Schema.optional(XPSVideoModelArtifactSpec),
-      trainCostNodeSeconds: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "XPSVideoClassificationTrainResponse",
-  }) as any as Schema.Schema<XPSVideoClassificationTrainResponse>;
+export const XPSVideoClassificationTrainResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    modelArtifactSpec: Schema.optional(XPSVideoModelArtifactSpec),
+    trainCostNodeSeconds: Schema.optional(Schema.String),
+  }).annotate({ identifier: "XPSVideoClassificationTrainResponse" });
 
 export interface XPSVideoActionRecognitionTrainResponse {
   /** ## The fields below are only populated under uCAIP request scope. */
@@ -2097,15 +1743,11 @@ export interface XPSVideoActionRecognitionTrainResponse {
   trainCostNodeSeconds?: string;
 }
 
-export const XPSVideoActionRecognitionTrainResponse: Schema.Schema<XPSVideoActionRecognitionTrainResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      modelArtifactSpec: Schema.optional(XPSVideoModelArtifactSpec),
-      trainCostNodeSeconds: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "XPSVideoActionRecognitionTrainResponse",
-  }) as any as Schema.Schema<XPSVideoActionRecognitionTrainResponse>;
+export const XPSVideoActionRecognitionTrainResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    modelArtifactSpec: Schema.optional(XPSVideoModelArtifactSpec),
+    trainCostNodeSeconds: Schema.optional(Schema.String),
+  }).annotate({ identifier: "XPSVideoActionRecognitionTrainResponse" });
 
 export interface Color {
   /** The amount of red in the color as a value in the interval [0, 1]. */
@@ -2118,15 +1760,12 @@ export interface Color {
   alpha?: number;
 }
 
-export const Color: Schema.Schema<Color> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      red: Schema.optional(Schema.Number),
-      green: Schema.optional(Schema.Number),
-      blue: Schema.optional(Schema.Number),
-      alpha: Schema.optional(Schema.Number),
-    }),
-  ).annotate({ identifier: "Color" }) as any as Schema.Schema<Color>;
+export const Color = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  red: Schema.optional(Schema.Number),
+  green: Schema.optional(Schema.Number),
+  blue: Schema.optional(Schema.Number),
+  alpha: Schema.optional(Schema.Number),
+}).annotate({ identifier: "Color" });
 
 export interface XPSColorMapIntColor {
   /** The value should be in range of [0, 255]. */
@@ -2137,16 +1776,11 @@ export interface XPSColorMapIntColor {
   red?: number;
 }
 
-export const XPSColorMapIntColor: Schema.Schema<XPSColorMapIntColor> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      green: Schema.optional(Schema.Number),
-      blue: Schema.optional(Schema.Number),
-      red: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "XPSColorMapIntColor",
-  }) as any as Schema.Schema<XPSColorMapIntColor>;
+export const XPSColorMapIntColor = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  green: Schema.optional(Schema.Number),
+  blue: Schema.optional(Schema.Number),
+  red: Schema.optional(Schema.Number),
+}).annotate({ identifier: "XPSColorMapIntColor" });
 
 export interface XPSColorMap {
   /** Should be used during preprocessing. */
@@ -2158,17 +1792,12 @@ export interface XPSColorMap {
   annotationSpecIdToken?: string;
 }
 
-export const XPSColorMap: Schema.Schema<XPSColorMap> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      displayName: Schema.optional(Schema.String),
-      color: Schema.optional(Color),
-      intColor: Schema.optional(XPSColorMapIntColor),
-      annotationSpecIdToken: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "XPSColorMap",
-  }) as any as Schema.Schema<XPSColorMap>;
+export const XPSColorMap = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  displayName: Schema.optional(Schema.String),
+  color: Schema.optional(Color),
+  intColor: Schema.optional(XPSColorMapIntColor),
+  annotationSpecIdToken: Schema.optional(Schema.String),
+}).annotate({ identifier: "XPSColorMap" });
 
 export interface XPSImageSegmentationTrainResponse {
   /** ## The fields below are only populated under uCAIP request scope. Model artifact spec stores and model gcs pathes and related metadata */
@@ -2189,19 +1818,15 @@ export interface XPSImageSegmentationTrainResponse {
   exportModelSpec?: XPSImageExportModelSpec;
 }
 
-export const XPSImageSegmentationTrainResponse: Schema.Schema<XPSImageSegmentationTrainResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      modelArtifactSpec: Schema.optional(XPSImageModelArtifactSpec),
-      trainCostNodeSeconds: Schema.optional(Schema.String),
-      stopReason: Schema.optional(Schema.String),
-      modelServingSpec: Schema.optional(XPSImageModelServingSpec),
-      colorMaps: Schema.optional(Schema.Array(XPSColorMap)),
-      exportModelSpec: Schema.optional(XPSImageExportModelSpec),
-    }),
-  ).annotate({
-    identifier: "XPSImageSegmentationTrainResponse",
-  }) as any as Schema.Schema<XPSImageSegmentationTrainResponse>;
+export const XPSImageSegmentationTrainResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    modelArtifactSpec: Schema.optional(XPSImageModelArtifactSpec),
+    trainCostNodeSeconds: Schema.optional(Schema.String),
+    stopReason: Schema.optional(Schema.String),
+    modelServingSpec: Schema.optional(XPSImageModelServingSpec),
+    colorMaps: Schema.optional(Schema.Array(XPSColorMap)),
+    exportModelSpec: Schema.optional(XPSImageExportModelSpec),
+  }).annotate({ identifier: "XPSImageSegmentationTrainResponse" });
 
 export interface XPSTrainResponse {
   textToSpeechTrainResp?: XPSTextToSpeechTrainResponse;
@@ -2230,46 +1855,39 @@ export interface XPSTrainResponse {
   imageSegmentationTrainResp?: XPSImageSegmentationTrainResponse;
 }
 
-export const XPSTrainResponse: Schema.Schema<XPSTrainResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      textToSpeechTrainResp: Schema.optional(XPSTextToSpeechTrainResponse),
-      errorAnalysisConfigs: Schema.optional(
-        Schema.Array(XPSVisionErrorAnalysisConfig),
-      ),
-      deployedModelSizeBytes: Schema.optional(Schema.String),
-      translationTrainResp: Schema.optional(XPSTranslationTrainResponse),
-      imageObjectDetectionTrainResp: Schema.optional(
-        XPSImageObjectDetectionModelSpec,
-      ),
-      evaluatedExampleSet: Schema.optional(XPSExampleSet),
-      speechTrainResp: Schema.optional(XPSSpeechModelSpec),
-      textTrainResp: Schema.optional(XPSTextTrainResponse),
-      modelToken: Schema.optional(Schema.String),
-      explanationConfigs: Schema.optional(
-        Schema.Array(XPSResponseExplanationSpec),
-      ),
-      evaluationMetricsSet: Schema.optional(XPSEvaluationMetricsSet),
-      tablesTrainResp: Schema.optional(XPSTablesTrainResponse),
-      imageClassificationTrainResp: Schema.optional(
-        XPSImageClassificationTrainResponse,
-      ),
-      videoClassificationTrainResp: Schema.optional(
-        XPSVideoClassificationTrainResponse,
-      ),
-      videoActionRecognitionTrainResp: Schema.optional(
-        XPSVideoActionRecognitionTrainResponse,
-      ),
-      videoObjectTrackingTrainResp: Schema.optional(
-        XPSVideoObjectTrackingTrainResponse,
-      ),
-      imageSegmentationTrainResp: Schema.optional(
-        XPSImageSegmentationTrainResponse,
-      ),
-    }),
-  ).annotate({
-    identifier: "XPSTrainResponse",
-  }) as any as Schema.Schema<XPSTrainResponse>;
+export const XPSTrainResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  textToSpeechTrainResp: Schema.optional(XPSTextToSpeechTrainResponse),
+  errorAnalysisConfigs: Schema.optional(
+    Schema.Array(XPSVisionErrorAnalysisConfig),
+  ),
+  deployedModelSizeBytes: Schema.optional(Schema.String),
+  translationTrainResp: Schema.optional(XPSTranslationTrainResponse),
+  imageObjectDetectionTrainResp: Schema.optional(
+    XPSImageObjectDetectionModelSpec,
+  ),
+  evaluatedExampleSet: Schema.optional(XPSExampleSet),
+  speechTrainResp: Schema.optional(XPSSpeechModelSpec),
+  textTrainResp: Schema.optional(XPSTextTrainResponse),
+  modelToken: Schema.optional(Schema.String),
+  explanationConfigs: Schema.optional(Schema.Array(XPSResponseExplanationSpec)),
+  evaluationMetricsSet: Schema.optional(XPSEvaluationMetricsSet),
+  tablesTrainResp: Schema.optional(XPSTablesTrainResponse),
+  imageClassificationTrainResp: Schema.optional(
+    XPSImageClassificationTrainResponse,
+  ),
+  videoClassificationTrainResp: Schema.optional(
+    XPSVideoClassificationTrainResponse,
+  ),
+  videoActionRecognitionTrainResp: Schema.optional(
+    XPSVideoActionRecognitionTrainResponse,
+  ),
+  videoObjectTrackingTrainResp: Schema.optional(
+    XPSVideoObjectTrackingTrainResponse,
+  ),
+  imageSegmentationTrainResp: Schema.optional(
+    XPSImageSegmentationTrainResponse,
+  ),
+}).annotate({ identifier: "XPSTrainResponse" });
 
 export interface ModerateTextRequest {
   /** Required. Input document. */
@@ -2282,15 +1900,10 @@ export interface ModerateTextRequest {
     | (string & {});
 }
 
-export const ModerateTextRequest: Schema.Schema<ModerateTextRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      document: Schema.optional(Document),
-      modelVersion: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ModerateTextRequest",
-  }) as any as Schema.Schema<ModerateTextRequest>;
+export const ModerateTextRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  document: Schema.optional(Document),
+  modelVersion: Schema.optional(Schema.String),
+}).annotate({ identifier: "ModerateTextRequest" });
 
 export interface EntityMention {
   /** The mention text. */
@@ -2303,17 +1916,12 @@ export interface EntityMention {
   sentiment?: Sentiment;
 }
 
-export const EntityMention: Schema.Schema<EntityMention> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      text: Schema.optional(TextSpan),
-      probability: Schema.optional(Schema.Number),
-      type: Schema.optional(Schema.String),
-      sentiment: Schema.optional(Sentiment),
-    }),
-  ).annotate({
-    identifier: "EntityMention",
-  }) as any as Schema.Schema<EntityMention>;
+export const EntityMention = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  text: Schema.optional(TextSpan),
+  probability: Schema.optional(Schema.Number),
+  type: Schema.optional(Schema.String),
+  sentiment: Schema.optional(Sentiment),
+}).annotate({ identifier: "EntityMention" });
 
 export interface Entity {
   /** The mentions of this entity in the input document. The API currently supports proper noun mentions. */
@@ -2342,16 +1950,13 @@ export interface Entity {
   metadata?: Record<string, string>;
 }
 
-export const Entity: Schema.Schema<Entity> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      mentions: Schema.optional(Schema.Array(EntityMention)),
-      type: Schema.optional(Schema.String),
-      sentiment: Schema.optional(Sentiment),
-      name: Schema.optional(Schema.String),
-      metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
-    }),
-  ).annotate({ identifier: "Entity" }) as any as Schema.Schema<Entity>;
+export const Entity = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  mentions: Schema.optional(Schema.Array(EntityMention)),
+  type: Schema.optional(Schema.String),
+  sentiment: Schema.optional(Sentiment),
+  name: Schema.optional(Schema.String),
+  metadata: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "Entity" });
 
 export interface XPSStringStatsUnigramStats {
   /** The unigram. */
@@ -2360,15 +1965,11 @@ export interface XPSStringStatsUnigramStats {
   count?: string;
 }
 
-export const XPSStringStatsUnigramStats: Schema.Schema<XPSStringStatsUnigramStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      value: Schema.optional(Schema.String),
-      count: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "XPSStringStatsUnigramStats",
-  }) as any as Schema.Schema<XPSStringStatsUnigramStats>;
+export const XPSStringStatsUnigramStats =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    value: Schema.optional(Schema.String),
+    count: Schema.optional(Schema.String),
+  }).annotate({ identifier: "XPSStringStatsUnigramStats" });
 
 export interface XPSSpeechEvaluationMetricsSubModelEvaluationMetric {
   /** Below fields are used for debugging purposes */
@@ -2394,38 +1995,32 @@ export interface XPSSpeechEvaluationMetricsSubModelEvaluationMetric {
   wer?: number;
 }
 
-export const XPSSpeechEvaluationMetricsSubModelEvaluationMetric: Schema.Schema<XPSSpeechEvaluationMetricsSubModelEvaluationMetric> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      sentenceAccuracy: Schema.optional(Schema.Number),
-      numSubstitutions: Schema.optional(Schema.Number),
-      numUtterances: Schema.optional(Schema.Number),
-      biasingModelType: Schema.optional(Schema.String),
-      isEnhancedModel: Schema.optional(Schema.Boolean),
-      numInsertions: Schema.optional(Schema.Number),
-      numWords: Schema.optional(Schema.Number),
-      numDeletions: Schema.optional(Schema.Number),
-      wer: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
+export const XPSSpeechEvaluationMetricsSubModelEvaluationMetric =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    sentenceAccuracy: Schema.optional(Schema.Number),
+    numSubstitutions: Schema.optional(Schema.Number),
+    numUtterances: Schema.optional(Schema.Number),
+    biasingModelType: Schema.optional(Schema.String),
+    isEnhancedModel: Schema.optional(Schema.Boolean),
+    numInsertions: Schema.optional(Schema.Number),
+    numWords: Schema.optional(Schema.Number),
+    numDeletions: Schema.optional(Schema.Number),
+    wer: Schema.optional(Schema.Number),
+  }).annotate({
     identifier: "XPSSpeechEvaluationMetricsSubModelEvaluationMetric",
-  }) as any as Schema.Schema<XPSSpeechEvaluationMetricsSubModelEvaluationMetric>;
+  });
 
 export interface XPSSpeechEvaluationMetrics {
   /** Evaluation metrics for all submodels contained in this model. */
   subModelEvaluationMetrics?: Array<XPSSpeechEvaluationMetricsSubModelEvaluationMetric>;
 }
 
-export const XPSSpeechEvaluationMetrics: Schema.Schema<XPSSpeechEvaluationMetrics> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      subModelEvaluationMetrics: Schema.optional(
-        Schema.Array(XPSSpeechEvaluationMetricsSubModelEvaluationMetric),
-      ),
-    }),
-  ).annotate({
-    identifier: "XPSSpeechEvaluationMetrics",
-  }) as any as Schema.Schema<XPSSpeechEvaluationMetrics>;
+export const XPSSpeechEvaluationMetrics =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    subModelEvaluationMetrics: Schema.optional(
+      Schema.Array(XPSSpeechEvaluationMetricsSubModelEvaluationMetric),
+    ),
+  }).annotate({ identifier: "XPSSpeechEvaluationMetrics" });
 
 export interface AnalyzeEntitiesResponse {
   /** The language of the text, which will be the same as the language specified in the request or, if not specified, the automatically-detected language. See Document.language_code field for more details. */
@@ -2436,16 +2031,12 @@ export interface AnalyzeEntitiesResponse {
   entities?: Array<Entity>;
 }
 
-export const AnalyzeEntitiesResponse: Schema.Schema<AnalyzeEntitiesResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      languageCode: Schema.optional(Schema.String),
-      languageSupported: Schema.optional(Schema.Boolean),
-      entities: Schema.optional(Schema.Array(Entity)),
-    }),
-  ).annotate({
-    identifier: "AnalyzeEntitiesResponse",
-  }) as any as Schema.Schema<AnalyzeEntitiesResponse>;
+export const AnalyzeEntitiesResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    languageCode: Schema.optional(Schema.String),
+    languageSupported: Schema.optional(Schema.Boolean),
+    entities: Schema.optional(Schema.Array(Entity)),
+  }).annotate({ identifier: "AnalyzeEntitiesResponse" });
 
 export interface XPSFloat64StatsHistogramBucket {
   /** The maximum value of the bucket, exclusive unless max = `"Infinity"`, in which case it's inclusive. */
@@ -2456,16 +2047,12 @@ export interface XPSFloat64StatsHistogramBucket {
   min?: number;
 }
 
-export const XPSFloat64StatsHistogramBucket: Schema.Schema<XPSFloat64StatsHistogramBucket> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      max: Schema.optional(Schema.Number),
-      count: Schema.optional(Schema.String),
-      min: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "XPSFloat64StatsHistogramBucket",
-  }) as any as Schema.Schema<XPSFloat64StatsHistogramBucket>;
+export const XPSFloat64StatsHistogramBucket =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    max: Schema.optional(Schema.Number),
+    count: Schema.optional(Schema.String),
+    min: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "XPSFloat64StatsHistogramBucket" });
 
 export interface AnnotateTextResponse {
   /** The language of the text, which will be the same as the language specified in the request or, if not specified, the automatically-detected language. See Document.language_code field for more details. */
@@ -2484,22 +2071,15 @@ export interface AnnotateTextResponse {
   moderationCategories?: Array<ClassificationCategory>;
 }
 
-export const AnnotateTextResponse: Schema.Schema<AnnotateTextResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      languageCode: Schema.optional(Schema.String),
-      languageSupported: Schema.optional(Schema.Boolean),
-      categories: Schema.optional(Schema.Array(ClassificationCategory)),
-      sentences: Schema.optional(Schema.Array(Sentence)),
-      entities: Schema.optional(Schema.Array(Entity)),
-      documentSentiment: Schema.optional(Sentiment),
-      moderationCategories: Schema.optional(
-        Schema.Array(ClassificationCategory),
-      ),
-    }),
-  ).annotate({
-    identifier: "AnnotateTextResponse",
-  }) as any as Schema.Schema<AnnotateTextResponse>;
+export const AnnotateTextResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  languageCode: Schema.optional(Schema.String),
+  languageSupported: Schema.optional(Schema.Boolean),
+  categories: Schema.optional(Schema.Array(ClassificationCategory)),
+  sentences: Schema.optional(Schema.Array(Sentence)),
+  entities: Schema.optional(Schema.Array(Entity)),
+  documentSentiment: Schema.optional(Sentiment),
+  moderationCategories: Schema.optional(Schema.Array(ClassificationCategory)),
+}).annotate({ identifier: "AnnotateTextResponse" });
 
 export interface TpuMetric {
   /** Required. Type of TPU, e.g. TPU_V2, TPU_V3_POD. */
@@ -2515,42 +2095,30 @@ export interface TpuMetric {
   tpuSec?: string;
 }
 
-export const TpuMetric: Schema.Schema<TpuMetric> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tpuType: Schema.optional(Schema.String),
-      tpuSec: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "TpuMetric" }) as any as Schema.Schema<TpuMetric>;
+export const TpuMetric = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  tpuType: Schema.optional(Schema.String),
+  tpuSec: Schema.optional(Schema.String),
+}).annotate({ identifier: "TpuMetric" });
 
 export interface XPSCorrelationStats {
   /** The correlation value using the Cramer's V measure. */
   cramersV?: number;
 }
 
-export const XPSCorrelationStats: Schema.Schema<XPSCorrelationStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cramersV: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "XPSCorrelationStats",
-  }) as any as Schema.Schema<XPSCorrelationStats>;
+export const XPSCorrelationStats = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cramersV: Schema.optional(Schema.Number),
+}).annotate({ identifier: "XPSCorrelationStats" });
 
 export interface XPSColumnSpecCorrelatedColumn {
   columnId?: number;
   correlationStats?: XPSCorrelationStats;
 }
 
-export const XPSColumnSpecCorrelatedColumn: Schema.Schema<XPSColumnSpecCorrelatedColumn> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      columnId: Schema.optional(Schema.Number),
-      correlationStats: Schema.optional(XPSCorrelationStats),
-    }),
-  ).annotate({
-    identifier: "XPSColumnSpecCorrelatedColumn",
-  }) as any as Schema.Schema<XPSColumnSpecCorrelatedColumn>;
+export const XPSColumnSpecCorrelatedColumn =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    columnId: Schema.optional(Schema.Number),
+    correlationStats: Schema.optional(XPSCorrelationStats),
+  }).annotate({ identifier: "XPSColumnSpecCorrelatedColumn" });
 
 export interface XPSColumnSpecForecastingMetadata {
   /** The type of the column for FORECASTING model training purposes. */
@@ -2563,14 +2131,10 @@ export interface XPSColumnSpecForecastingMetadata {
     | (string & {});
 }
 
-export const XPSColumnSpecForecastingMetadata: Schema.Schema<XPSColumnSpecForecastingMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      columnType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "XPSColumnSpecForecastingMetadata",
-  }) as any as Schema.Schema<XPSColumnSpecForecastingMetadata>;
+export const XPSColumnSpecForecastingMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    columnType: Schema.optional(Schema.String),
+  }).annotate({ identifier: "XPSColumnSpecForecastingMetadata" });
 
 export interface XPSFloat64Stats {
   /** Histogram buckets of the data series. Sorted by the min value of the bucket, ascendingly, and the number of the buckets is dynamically generated. The buckets are non-overlapping and completely cover whole FLOAT64 range with min of first bucket being `"-Infinity"`, and max of the last one being `"Infinity"`. */
@@ -2584,20 +2148,15 @@ export interface XPSFloat64Stats {
   commonStats?: XPSCommonStats;
 }
 
-export const XPSFloat64Stats: Schema.Schema<XPSFloat64Stats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      histogramBuckets: Schema.optional(
-        Schema.Array(XPSFloat64StatsHistogramBucket),
-      ),
-      standardDeviation: Schema.optional(Schema.Number),
-      quantiles: Schema.optional(Schema.Array(Schema.Number)),
-      mean: Schema.optional(Schema.Number),
-      commonStats: Schema.optional(XPSCommonStats),
-    }),
-  ).annotate({
-    identifier: "XPSFloat64Stats",
-  }) as any as Schema.Schema<XPSFloat64Stats>;
+export const XPSFloat64Stats = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  histogramBuckets: Schema.optional(
+    Schema.Array(XPSFloat64StatsHistogramBucket),
+  ),
+  standardDeviation: Schema.optional(Schema.Number),
+  quantiles: Schema.optional(Schema.Array(Schema.Number)),
+  mean: Schema.optional(Schema.Number),
+  commonStats: Schema.optional(XPSCommonStats),
+}).annotate({ identifier: "XPSFloat64Stats" });
 
 export interface XPSStructStats {
   /** Map from a field name of the struct to data stats aggregated over series of all data in that field across all the structs. */
@@ -2621,17 +2180,10 @@ export interface XPSStringStats {
   commonStats?: XPSCommonStats;
 }
 
-export const XPSStringStats: Schema.Schema<XPSStringStats> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      topUnigramStats: Schema.optional(
-        Schema.Array(XPSStringStatsUnigramStats),
-      ),
-      commonStats: Schema.optional(XPSCommonStats),
-    }),
-  ).annotate({
-    identifier: "XPSStringStats",
-  }) as any as Schema.Schema<XPSStringStats>;
+export const XPSStringStats = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  topUnigramStats: Schema.optional(Schema.Array(XPSStringStatsUnigramStats)),
+  commonStats: Schema.optional(XPSCommonStats),
+}).annotate({ identifier: "XPSStringStats" });
 
 export interface XPSArrayStats {
   commonStats?: XPSCommonStats;
@@ -2752,21 +2304,16 @@ export interface XPSColumnSpec {
   dataType?: XPSDataType;
 }
 
-export const XPSColumnSpec: Schema.Schema<XPSColumnSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      topCorrelatedColumns: Schema.optional(
-        Schema.Array(XPSColumnSpecCorrelatedColumn),
-      ),
-      forecastingMetadata: Schema.optional(XPSColumnSpecForecastingMetadata),
-      displayName: Schema.optional(Schema.String),
-      dataStats: Schema.optional(XPSDataStats),
-      columnId: Schema.optional(Schema.Number),
-      dataType: Schema.optional(XPSDataType),
-    }),
-  ).annotate({
-    identifier: "XPSColumnSpec",
-  }) as any as Schema.Schema<XPSColumnSpec>;
+export const XPSColumnSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  topCorrelatedColumns: Schema.optional(
+    Schema.Array(XPSColumnSpecCorrelatedColumn),
+  ),
+  forecastingMetadata: Schema.optional(XPSColumnSpecForecastingMetadata),
+  displayName: Schema.optional(Schema.String),
+  dataStats: Schema.optional(XPSDataStats),
+  columnId: Schema.optional(Schema.Number),
+  dataType: Schema.optional(XPSDataType),
+}).annotate({ identifier: "XPSColumnSpec" });
 
 export interface ClassifyTextResponse {
   /** The language of the text, which will be the same as the language specified in the request or, if not specified, the automatically-detected language. See Document.language_code field for more details. */
@@ -2777,16 +2324,11 @@ export interface ClassifyTextResponse {
   categories?: Array<ClassificationCategory>;
 }
 
-export const ClassifyTextResponse: Schema.Schema<ClassifyTextResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      languageCode: Schema.optional(Schema.String),
-      languageSupported: Schema.optional(Schema.Boolean),
-      categories: Schema.optional(Schema.Array(ClassificationCategory)),
-    }),
-  ).annotate({
-    identifier: "ClassifyTextResponse",
-  }) as any as Schema.Schema<ClassifyTextResponse>;
+export const ClassifyTextResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  languageCode: Schema.optional(Schema.String),
+  languageSupported: Schema.optional(Schema.Boolean),
+  categories: Schema.optional(Schema.Array(ClassificationCategory)),
+}).annotate({ identifier: "ClassifyTextResponse" });
 
 export interface XPSTableSpec {
   /** Mapping from column id to column spec. */
@@ -2801,18 +2343,13 @@ export interface XPSTableSpec {
   importedDataSizeInBytes?: string;
 }
 
-export const XPSTableSpec: Schema.Schema<XPSTableSpec> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      columnSpecs: Schema.optional(Schema.Record(Schema.String, XPSColumnSpec)),
-      rowCount: Schema.optional(Schema.String),
-      timeColumnId: Schema.optional(Schema.Number),
-      validRowCount: Schema.optional(Schema.String),
-      importedDataSizeInBytes: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "XPSTableSpec",
-  }) as any as Schema.Schema<XPSTableSpec>;
+export const XPSTableSpec = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  columnSpecs: Schema.optional(Schema.Record(Schema.String, XPSColumnSpec)),
+  rowCount: Schema.optional(Schema.String),
+  timeColumnId: Schema.optional(Schema.Number),
+  validRowCount: Schema.optional(Schema.String),
+  importedDataSizeInBytes: Schema.optional(Schema.String),
+}).annotate({ identifier: "XPSTableSpec" });
 
 export interface ModerateTextResponse {
   /** The language of the text, which will be the same as the language specified in the request or, if not specified, the automatically-detected language. See Document.language_code field for more details. */
@@ -2823,18 +2360,11 @@ export interface ModerateTextResponse {
   moderationCategories?: Array<ClassificationCategory>;
 }
 
-export const ModerateTextResponse: Schema.Schema<ModerateTextResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      languageCode: Schema.optional(Schema.String),
-      languageSupported: Schema.optional(Schema.Boolean),
-      moderationCategories: Schema.optional(
-        Schema.Array(ClassificationCategory),
-      ),
-    }),
-  ).annotate({
-    identifier: "ModerateTextResponse",
-  }) as any as Schema.Schema<ModerateTextResponse>;
+export const ModerateTextResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  languageCode: Schema.optional(Schema.String),
+  languageSupported: Schema.optional(Schema.Boolean),
+  moderationCategories: Schema.optional(Schema.Array(ClassificationCategory)),
+}).annotate({ identifier: "ModerateTextResponse" });
 
 export interface CpuMetric {
   /** Billing tracking labels. They do not contain any user data but only the labels set by Vertex Core Infra itself. Tracking labels' keys are defined with special format: goog-[\p{Ll}\p{N}]+ E.g. "key": "goog-k8s-cluster-name","value": "us-east1-b4rk" */
@@ -3171,18 +2701,13 @@ export interface CpuMetric {
     | (string & {});
 }
 
-export const CpuMetric: Schema.Schema<CpuMetric> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      trackingLabels: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      coreNumber: Schema.optional(Schema.String),
-      coreSec: Schema.optional(Schema.String),
-      cpuType: Schema.optional(Schema.String),
-      machineSpec: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "CpuMetric" }) as any as Schema.Schema<CpuMetric>;
+export const CpuMetric = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  trackingLabels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  coreNumber: Schema.optional(Schema.String),
+  coreSec: Schema.optional(Schema.String),
+  cpuType: Schema.optional(Schema.String),
+  machineSpec: Schema.optional(Schema.String),
+}).annotate({ identifier: "CpuMetric" });
 
 export interface DiskMetric {
   /** Required. Type of Disk, e.g. REGIONAL_SSD. */
@@ -3198,13 +2723,10 @@ export interface DiskMetric {
   gibSec?: string;
 }
 
-export const DiskMetric: Schema.Schema<DiskMetric> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      diskType: Schema.optional(Schema.String),
-      gibSec: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "DiskMetric" }) as any as Schema.Schema<DiskMetric>;
+export const DiskMetric = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  diskType: Schema.optional(Schema.String),
+  gibSec: Schema.optional(Schema.String),
+}).annotate({ identifier: "DiskMetric" });
 
 export interface XPSSpeechPreprocessResponse {
   /** Stats associated with the data. */
@@ -3217,19 +2739,13 @@ export interface XPSSpeechPreprocessResponse {
   prebuiltModelEvaluationMetrics?: XPSSpeechEvaluationMetrics;
 }
 
-export const XPSSpeechPreprocessResponse: Schema.Schema<XPSSpeechPreprocessResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      speechPreprocessStats: Schema.optional(XPSSpeechPreprocessStats),
-      cnsTrainDataPath: Schema.optional(Schema.String),
-      cnsTestDataPath: Schema.optional(Schema.String),
-      prebuiltModelEvaluationMetrics: Schema.optional(
-        XPSSpeechEvaluationMetrics,
-      ),
-    }),
-  ).annotate({
-    identifier: "XPSSpeechPreprocessResponse",
-  }) as any as Schema.Schema<XPSSpeechPreprocessResponse>;
+export const XPSSpeechPreprocessResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    speechPreprocessStats: Schema.optional(XPSSpeechPreprocessStats),
+    cnsTrainDataPath: Schema.optional(Schema.String),
+    cnsTestDataPath: Schema.optional(Schema.String),
+    prebuiltModelEvaluationMetrics: Schema.optional(XPSSpeechEvaluationMetrics),
+  }).annotate({ identifier: "XPSSpeechPreprocessResponse" });
 
 export interface GpuMetric {
   /** Billing tracking labels. They do not contain any user data but only the labels set by Vertex Core Infra itself. Tracking labels' keys are defined with special format: goog-[\p{Ll}\p{N}]+ E.g. "key": "goog-k8s-cluster-name","value": "us-east1-b4rk" */
@@ -3555,17 +3071,12 @@ export interface GpuMetric {
     | (string & {});
 }
 
-export const GpuMetric: Schema.Schema<GpuMetric> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      trackingLabels: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-      gpuType: Schema.optional(Schema.String),
-      gpuSec: Schema.optional(Schema.String),
-      machineSpec: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "GpuMetric" }) as any as Schema.Schema<GpuMetric>;
+export const GpuMetric = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  trackingLabels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+  gpuType: Schema.optional(Schema.String),
+  gpuSec: Schema.optional(Schema.String),
+  machineSpec: Schema.optional(Schema.String),
+}).annotate({ identifier: "GpuMetric" });
 
 export interface RamMetric {
   /** Required. Type of ram. */
@@ -3902,18 +3413,13 @@ export interface RamMetric {
   trackingLabels?: Record<string, string>;
 }
 
-export const RamMetric: Schema.Schema<RamMetric> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      ramType: Schema.optional(Schema.String),
-      memories: Schema.optional(Schema.Number),
-      machineSpec: Schema.optional(Schema.String),
-      gibSec: Schema.optional(Schema.String),
-      trackingLabels: Schema.optional(
-        Schema.Record(Schema.String, Schema.String),
-      ),
-    }),
-  ).annotate({ identifier: "RamMetric" }) as any as Schema.Schema<RamMetric>;
+export const RamMetric = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  ramType: Schema.optional(Schema.String),
+  memories: Schema.optional(Schema.Number),
+  machineSpec: Schema.optional(Schema.String),
+  gibSec: Schema.optional(Schema.String),
+  trackingLabels: Schema.optional(Schema.Record(Schema.String, Schema.String)),
+}).annotate({ identifier: "RamMetric" });
 
 export interface InfraUsage {
   /** Aggregated core metrics since requested start_time. */
@@ -3928,16 +3434,13 @@ export interface InfraUsage {
   tpuMetrics?: Array<TpuMetric>;
 }
 
-export const InfraUsage: Schema.Schema<InfraUsage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      cpuMetrics: Schema.optional(Schema.Array(CpuMetric)),
-      gpuMetrics: Schema.optional(Schema.Array(GpuMetric)),
-      diskMetrics: Schema.optional(Schema.Array(DiskMetric)),
-      ramMetrics: Schema.optional(Schema.Array(RamMetric)),
-      tpuMetrics: Schema.optional(Schema.Array(TpuMetric)),
-    }),
-  ).annotate({ identifier: "InfraUsage" }) as any as Schema.Schema<InfraUsage>;
+export const InfraUsage = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  cpuMetrics: Schema.optional(Schema.Array(CpuMetric)),
+  gpuMetrics: Schema.optional(Schema.Array(GpuMetric)),
+  diskMetrics: Schema.optional(Schema.Array(DiskMetric)),
+  ramMetrics: Schema.optional(Schema.Array(RamMetric)),
+  tpuMetrics: Schema.optional(Schema.Array(TpuMetric)),
+}).annotate({ identifier: "InfraUsage" });
 
 export interface AnalyzeSentimentRequest {
   /** The encoding type used by the API to calculate sentence offsets. */
@@ -3946,43 +3449,31 @@ export interface AnalyzeSentimentRequest {
   document?: Document;
 }
 
-export const AnalyzeSentimentRequest: Schema.Schema<AnalyzeSentimentRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      encodingType: Schema.optional(Schema.String),
-      document: Schema.optional(Document),
-    }),
-  ).annotate({
-    identifier: "AnalyzeSentimentRequest",
-  }) as any as Schema.Schema<AnalyzeSentimentRequest>;
+export const AnalyzeSentimentRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    encodingType: Schema.optional(Schema.String),
+    document: Schema.optional(Document),
+  }).annotate({ identifier: "AnalyzeSentimentRequest" });
 
 export interface XPSVisionTrainingOperationMetadata {
   /** Aggregated infra usage within certain time period, for billing report purpose if XAI is enable in training request. */
   explanationUsage?: InfraUsage;
 }
 
-export const XPSVisionTrainingOperationMetadata: Schema.Schema<XPSVisionTrainingOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      explanationUsage: Schema.optional(InfraUsage),
-    }),
-  ).annotate({
-    identifier: "XPSVisionTrainingOperationMetadata",
-  }) as any as Schema.Schema<XPSVisionTrainingOperationMetadata>;
+export const XPSVisionTrainingOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    explanationUsage: Schema.optional(InfraUsage),
+  }).annotate({ identifier: "XPSVisionTrainingOperationMetadata" });
 
 export interface XPSVideoBatchPredictOperationMetadata {
   /** All the partial batch prediction results that are completed at the moment. Output examples are sorted by completion time. The order will not be changed. Each output example should be the path of a single RecordIO file of AnnotatedExamples. */
   outputExamples?: Array<string>;
 }
 
-export const XPSVideoBatchPredictOperationMetadata: Schema.Schema<XPSVideoBatchPredictOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      outputExamples: Schema.optional(Schema.Array(Schema.String)),
-    }),
-  ).annotate({
-    identifier: "XPSVideoBatchPredictOperationMetadata",
-  }) as any as Schema.Schema<XPSVideoBatchPredictOperationMetadata>;
+export const XPSVideoBatchPredictOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    outputExamples: Schema.optional(Schema.Array(Schema.String)),
+  }).annotate({ identifier: "XPSVideoBatchPredictOperationMetadata" });
 
 export interface AnnotateTextRequestFeatures {
   /** Optional. Extract document-level sentiment. */
@@ -3995,17 +3486,13 @@ export interface AnnotateTextRequestFeatures {
   classifyText?: boolean;
 }
 
-export const AnnotateTextRequestFeatures: Schema.Schema<AnnotateTextRequestFeatures> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      extractDocumentSentiment: Schema.optional(Schema.Boolean),
-      moderateText: Schema.optional(Schema.Boolean),
-      extractEntities: Schema.optional(Schema.Boolean),
-      classifyText: Schema.optional(Schema.Boolean),
-    }),
-  ).annotate({
-    identifier: "AnnotateTextRequestFeatures",
-  }) as any as Schema.Schema<AnnotateTextRequestFeatures>;
+export const AnnotateTextRequestFeatures =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    extractDocumentSentiment: Schema.optional(Schema.Boolean),
+    moderateText: Schema.optional(Schema.Boolean),
+    extractEntities: Schema.optional(Schema.Boolean),
+    classifyText: Schema.optional(Schema.Boolean),
+  }).annotate({ identifier: "AnnotateTextRequestFeatures" });
 
 export interface AnnotateTextRequest {
   /** The encoding type used by the API to calculate offsets. */
@@ -4016,16 +3503,11 @@ export interface AnnotateTextRequest {
   features?: AnnotateTextRequestFeatures;
 }
 
-export const AnnotateTextRequest: Schema.Schema<AnnotateTextRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      encodingType: Schema.optional(Schema.String),
-      document: Schema.optional(Document),
-      features: Schema.optional(AnnotateTextRequestFeatures),
-    }),
-  ).annotate({
-    identifier: "AnnotateTextRequest",
-  }) as any as Schema.Schema<AnnotateTextRequest>;
+export const AnnotateTextRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  encodingType: Schema.optional(Schema.String),
+  document: Schema.optional(Document),
+  features: Schema.optional(AnnotateTextRequestFeatures),
+}).annotate({ identifier: "AnnotateTextRequest" });
 
 export interface AnalyzeEntitiesRequest {
   /** Required. Input document. */
@@ -4034,29 +3516,22 @@ export interface AnalyzeEntitiesRequest {
   encodingType?: "NONE" | "UTF8" | "UTF16" | "UTF32" | (string & {});
 }
 
-export const AnalyzeEntitiesRequest: Schema.Schema<AnalyzeEntitiesRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      document: Schema.optional(Document),
-      encodingType: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "AnalyzeEntitiesRequest",
-  }) as any as Schema.Schema<AnalyzeEntitiesRequest>;
+export const AnalyzeEntitiesRequest = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct(
+  {
+    document: Schema.optional(Document),
+    encodingType: Schema.optional(Schema.String),
+  },
+).annotate({ identifier: "AnalyzeEntitiesRequest" });
 
 export interface XPSVideoTrainingOperationMetadata {
   /** This is an estimation of the node hours necessary for training a model, expressed in milli node hours (i.e. 1,000 value in this field means 1 node hour). A node hour represents the time a virtual machine spends running your training job. The cost of one node running for one hour is a node hour. */
   trainCostMilliNodeHour?: string;
 }
 
-export const XPSVideoTrainingOperationMetadata: Schema.Schema<XPSVideoTrainingOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      trainCostMilliNodeHour: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "XPSVideoTrainingOperationMetadata",
-  }) as any as Schema.Schema<XPSVideoTrainingOperationMetadata>;
+export const XPSVideoTrainingOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    trainCostMilliNodeHour: Schema.optional(Schema.String),
+  }).annotate({ identifier: "XPSVideoTrainingOperationMetadata" });
 
 export interface XPSXpsOperationMetadata {
   /** Optional. XPS server can opt to provide example count of the long running operation (e.g. training, data importing, batch prediction). */
@@ -4069,27 +3544,23 @@ export interface XPSXpsOperationMetadata {
   visionTrainingOperationMetadata?: XPSVisionTrainingOperationMetadata;
 }
 
-export const XPSXpsOperationMetadata: Schema.Schema<XPSXpsOperationMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      exampleCount: Schema.optional(Schema.String),
-      tablesTrainingOperationMetadata: Schema.optional(
-        XPSTablesTrainingOperationMetadata,
-      ),
-      reportingMetrics: Schema.optional(XPSReportingMetrics),
-      videoBatchPredictOperationMetadata: Schema.optional(
-        XPSVideoBatchPredictOperationMetadata,
-      ),
-      videoTrainingOperationMetadata: Schema.optional(
-        XPSVideoTrainingOperationMetadata,
-      ),
-      visionTrainingOperationMetadata: Schema.optional(
-        XPSVisionTrainingOperationMetadata,
-      ),
-    }),
-  ).annotate({
-    identifier: "XPSXpsOperationMetadata",
-  }) as any as Schema.Schema<XPSXpsOperationMetadata>;
+export const XPSXpsOperationMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    exampleCount: Schema.optional(Schema.String),
+    tablesTrainingOperationMetadata: Schema.optional(
+      XPSTablesTrainingOperationMetadata,
+    ),
+    reportingMetrics: Schema.optional(XPSReportingMetrics),
+    videoBatchPredictOperationMetadata: Schema.optional(
+      XPSVideoBatchPredictOperationMetadata,
+    ),
+    videoTrainingOperationMetadata: Schema.optional(
+      XPSVideoTrainingOperationMetadata,
+    ),
+    visionTrainingOperationMetadata: Schema.optional(
+      XPSVisionTrainingOperationMetadata,
+    ),
+  }).annotate({ identifier: "XPSXpsOperationMetadata" });
 
 export interface XPSTablesDatasetMetadata {
   /** (the column id : its CorrelationStats with target column). */
@@ -4104,20 +3575,16 @@ export interface XPSTablesDatasetMetadata {
   mlUseColumnId?: number;
 }
 
-export const XPSTablesDatasetMetadata: Schema.Schema<XPSTablesDatasetMetadata> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      targetColumnCorrelations: Schema.optional(
-        Schema.Record(Schema.String, XPSCorrelationStats),
-      ),
-      weightColumnId: Schema.optional(Schema.Number),
-      targetColumnId: Schema.optional(Schema.Number),
-      primaryTableSpec: Schema.optional(XPSTableSpec),
-      mlUseColumnId: Schema.optional(Schema.Number),
-    }),
-  ).annotate({
-    identifier: "XPSTablesDatasetMetadata",
-  }) as any as Schema.Schema<XPSTablesDatasetMetadata>;
+export const XPSTablesDatasetMetadata =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    targetColumnCorrelations: Schema.optional(
+      Schema.Record(Schema.String, XPSCorrelationStats),
+    ),
+    weightColumnId: Schema.optional(Schema.Number),
+    targetColumnId: Schema.optional(Schema.Number),
+    primaryTableSpec: Schema.optional(XPSTableSpec),
+    mlUseColumnId: Schema.optional(Schema.Number),
+  }).annotate({ identifier: "XPSTablesDatasetMetadata" });
 
 export interface XPSTranslationPreprocessResponse {
   /** Total example count parsed. */
@@ -4126,29 +3593,21 @@ export interface XPSTranslationPreprocessResponse {
   validExampleCount?: string;
 }
 
-export const XPSTranslationPreprocessResponse: Schema.Schema<XPSTranslationPreprocessResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      parsedExampleCount: Schema.optional(Schema.String),
-      validExampleCount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "XPSTranslationPreprocessResponse",
-  }) as any as Schema.Schema<XPSTranslationPreprocessResponse>;
+export const XPSTranslationPreprocessResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    parsedExampleCount: Schema.optional(Schema.String),
+    validExampleCount: Schema.optional(Schema.String),
+  }).annotate({ identifier: "XPSTranslationPreprocessResponse" });
 
 export interface XPSTablesPreprocessResponse {
   /** The table/column id, column_name and the DataTypes of the columns will be populated. */
   tablesDatasetMetadata?: XPSTablesDatasetMetadata;
 }
 
-export const XPSTablesPreprocessResponse: Schema.Schema<XPSTablesPreprocessResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      tablesDatasetMetadata: Schema.optional(XPSTablesDatasetMetadata),
-    }),
-  ).annotate({
-    identifier: "XPSTablesPreprocessResponse",
-  }) as any as Schema.Schema<XPSTablesPreprocessResponse>;
+export const XPSTablesPreprocessResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    tablesDatasetMetadata: Schema.optional(XPSTablesDatasetMetadata),
+  }).annotate({ identifier: "XPSTablesPreprocessResponse" });
 
 export interface XPSPreprocessResponse {
   /** Preprocessed examples, that are to be imported into AutoML storage. This should point to RecordIO file(s) of PreprocessedExample messages. The PreprocessedExample.mvp_training_data-s returned here are later verbatim passed to Train() call in TrainExample.mvp_training_data. */
@@ -4158,19 +3617,12 @@ export interface XPSPreprocessResponse {
   tablesPreprocessResponse?: XPSTablesPreprocessResponse;
 }
 
-export const XPSPreprocessResponse: Schema.Schema<XPSPreprocessResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      outputExampleSet: Schema.optional(XPSExampleSet),
-      speechPreprocessResp: Schema.optional(XPSSpeechPreprocessResponse),
-      translationPreprocessResp: Schema.optional(
-        XPSTranslationPreprocessResponse,
-      ),
-      tablesPreprocessResponse: Schema.optional(XPSTablesPreprocessResponse),
-    }),
-  ).annotate({
-    identifier: "XPSPreprocessResponse",
-  }) as any as Schema.Schema<XPSPreprocessResponse>;
+export const XPSPreprocessResponse = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  outputExampleSet: Schema.optional(XPSExampleSet),
+  speechPreprocessResp: Schema.optional(XPSSpeechPreprocessResponse),
+  translationPreprocessResp: Schema.optional(XPSTranslationPreprocessResponse),
+  tablesPreprocessResponse: Schema.optional(XPSTablesPreprocessResponse),
+}).annotate({ identifier: "XPSPreprocessResponse" });
 
 // ==========================================================================
 // Operations

@@ -38,18 +38,14 @@ export interface NotificationSubscription {
   targetAccount?: string;
 }
 
-export const NotificationSubscription: Schema.Schema<NotificationSubscription> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      registeredEvent: Schema.optional(Schema.String),
-      name: Schema.optional(Schema.String),
-      allManagedAccounts: Schema.optional(Schema.Boolean),
-      callBackUri: Schema.optional(Schema.String),
-      targetAccount: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "NotificationSubscription",
-  }) as any as Schema.Schema<NotificationSubscription>;
+export const NotificationSubscription =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    registeredEvent: Schema.optional(Schema.String),
+    name: Schema.optional(Schema.String),
+    allManagedAccounts: Schema.optional(Schema.Boolean),
+    callBackUri: Schema.optional(Schema.String),
+    targetAccount: Schema.optional(Schema.String),
+  }).annotate({ identifier: "NotificationSubscription" });
 
 export interface ProductChange {
   /** Countries that have the change (if applicable). Represented in the ISO 3166 format. */
@@ -83,17 +79,12 @@ export interface ProductChange {
   newValue?: string;
 }
 
-export const ProductChange: Schema.Schema<ProductChange> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      regionCode: Schema.optional(Schema.String),
-      oldValue: Schema.optional(Schema.String),
-      reportingContext: Schema.optional(Schema.String),
-      newValue: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProductChange",
-  }) as any as Schema.Schema<ProductChange>;
+export const ProductChange = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  regionCode: Schema.optional(Schema.String),
+  oldValue: Schema.optional(Schema.String),
+  reportingContext: Schema.optional(Schema.String),
+  newValue: Schema.optional(Schema.String),
+}).annotate({ identifier: "ProductChange" });
 
 export interface ListNotificationSubscriptionsResponse {
   /** A token, which can be sent as `page_token` to retrieve the next page. If this field is omitted, there are no subsequent pages. */
@@ -102,17 +93,13 @@ export interface ListNotificationSubscriptionsResponse {
   notificationSubscriptions?: Array<NotificationSubscription>;
 }
 
-export const ListNotificationSubscriptionsResponse: Schema.Schema<ListNotificationSubscriptionsResponse> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      nextPageToken: Schema.optional(Schema.String),
-      notificationSubscriptions: Schema.optional(
-        Schema.Array(NotificationSubscription),
-      ),
-    }),
-  ).annotate({
-    identifier: "ListNotificationSubscriptionsResponse",
-  }) as any as Schema.Schema<ListNotificationSubscriptionsResponse>;
+export const ListNotificationSubscriptionsResponse =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    nextPageToken: Schema.optional(Schema.String),
+    notificationSubscriptions: Schema.optional(
+      Schema.Array(NotificationSubscription),
+    ),
+  }).annotate({ identifier: "ListNotificationSubscriptionsResponse" });
 
 export interface ProductStatusChangeMessage {
   /** The product name. Format: `accounts/{account}/products/{product}` */
@@ -135,29 +122,24 @@ export interface ProductStatusChangeMessage {
   eventTime?: string;
 }
 
-export const ProductStatusChangeMessage: Schema.Schema<ProductStatusChangeMessage> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      resource: Schema.optional(Schema.String),
-      managingAccount: Schema.optional(Schema.String),
-      resourceType: Schema.optional(Schema.String),
-      account: Schema.optional(Schema.String),
-      expirationTime: Schema.optional(Schema.String),
-      changes: Schema.optional(Schema.Array(ProductChange)),
-      resourceId: Schema.optional(Schema.String),
-      attribute: Schema.optional(Schema.String),
-      eventTime: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "ProductStatusChangeMessage",
-  }) as any as Schema.Schema<ProductStatusChangeMessage>;
+export const ProductStatusChangeMessage =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    resource: Schema.optional(Schema.String),
+    managingAccount: Schema.optional(Schema.String),
+    resourceType: Schema.optional(Schema.String),
+    account: Schema.optional(Schema.String),
+    expirationTime: Schema.optional(Schema.String),
+    changes: Schema.optional(Schema.Array(ProductChange)),
+    resourceId: Schema.optional(Schema.String),
+    attribute: Schema.optional(Schema.String),
+    eventTime: Schema.optional(Schema.String),
+  }).annotate({ identifier: "ProductStatusChangeMessage" });
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 // ==========================================================================
 // Operations

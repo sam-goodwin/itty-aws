@@ -24,10 +24,9 @@ const svc = T.Service({
 
 export interface Empty {}
 
-export const Empty: Schema.Schema<Empty> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() => Schema.Struct({})).annotate({
-    identifier: "Empty",
-  }) as any as Schema.Schema<Empty>;
+export const Empty = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({}).annotate({
+  identifier: "Empty",
+});
 
 export interface SignedData {
   /** The data to be signed. */
@@ -36,13 +35,10 @@ export interface SignedData {
   signature?: string;
 }
 
-export const SignedData: Schema.Schema<SignedData> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      data: Schema.optional(Schema.String),
-      signature: Schema.optional(Schema.String),
-    }),
-  ).annotate({ identifier: "SignedData" }) as any as Schema.Schema<SignedData>;
+export const SignedData = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  data: Schema.optional(Schema.String),
+  signature: Schema.optional(Schema.String),
+}).annotate({ identifier: "SignedData" });
 
 export interface Challenge {
   /** Generated challenge */
@@ -51,13 +47,10 @@ export interface Challenge {
   alternativeChallenge?: SignedData;
 }
 
-export const Challenge: Schema.Schema<Challenge> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      challenge: Schema.optional(SignedData),
-      alternativeChallenge: Schema.optional(SignedData),
-    }),
-  ).annotate({ identifier: "Challenge" }) as any as Schema.Schema<Challenge>;
+export const Challenge = /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+  challenge: Schema.optional(SignedData),
+  alternativeChallenge: Schema.optional(SignedData),
+}).annotate({ identifier: "Challenge" });
 
 export interface VerifyChallengeResponseRequest {
   /** Service can optionally provide identity information about the device or user associated with the key. For an EMK, this value is the enrolled domain. For an EUK, this value is the user's email address. If present, this value will be checked against contents of the response, and verification will fail if there is no match. */
@@ -66,15 +59,11 @@ export interface VerifyChallengeResponseRequest {
   challengeResponse?: SignedData;
 }
 
-export const VerifyChallengeResponseRequest: Schema.Schema<VerifyChallengeResponseRequest> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      expectedIdentity: Schema.optional(Schema.String),
-      challengeResponse: Schema.optional(SignedData),
-    }),
-  ).annotate({
-    identifier: "VerifyChallengeResponseRequest",
-  }) as any as Schema.Schema<VerifyChallengeResponseRequest>;
+export const VerifyChallengeResponseRequest =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    expectedIdentity: Schema.optional(Schema.String),
+    challengeResponse: Schema.optional(SignedData),
+  }).annotate({ identifier: "VerifyChallengeResponseRequest" });
 
 export interface VerifyChallengeResponseResult {
   /** Certificate Signing Request (in the SPKAC format, base64 encoded) is returned in this field. This field will be set only if device has included CSR in its challenge response. (the option to include CSR is now available for both user and machine responses) */
@@ -89,18 +78,14 @@ export interface VerifyChallengeResponseResult {
   attestedDeviceId?: string;
 }
 
-export const VerifyChallengeResponseResult: Schema.Schema<VerifyChallengeResponseResult> =
-  /*@__PURE__*/ /*#__PURE__*/ Schema.suspend(() =>
-    Schema.Struct({
-      signedPublicKeyAndChallenge: Schema.optional(Schema.String),
-      verificationOutput: Schema.optional(Schema.String),
-      deviceEnrollmentId: Schema.optional(Schema.String),
-      devicePermanentId: Schema.optional(Schema.String),
-      attestedDeviceId: Schema.optional(Schema.String),
-    }),
-  ).annotate({
-    identifier: "VerifyChallengeResponseResult",
-  }) as any as Schema.Schema<VerifyChallengeResponseResult>;
+export const VerifyChallengeResponseResult =
+  /*@__PURE__*/ /*#__PURE__*/ Schema.Struct({
+    signedPublicKeyAndChallenge: Schema.optional(Schema.String),
+    verificationOutput: Schema.optional(Schema.String),
+    deviceEnrollmentId: Schema.optional(Schema.String),
+    devicePermanentId: Schema.optional(Schema.String),
+    attestedDeviceId: Schema.optional(Schema.String),
+  }).annotate({ identifier: "VerifyChallengeResponseResult" });
 
 // ==========================================================================
 // Operations
